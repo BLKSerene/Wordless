@@ -70,8 +70,6 @@ def wl_lemmatize(main, inputs, lang, tokenized = 'No', tagged = 'No', lemmatizer
 def wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer):
     lemmas = []
 
-    re_tags = wl_matching.get_re_tags(main)
-
     # spaCy
     if lemmatizer.startswith('spacy_'):
         if not lang.startswith('srp_'):
@@ -140,7 +138,7 @@ def wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer):
                     lemma, word = line.rstrip().split('\t')
 
                     mapping_lemmas[word] = lemma
-                except:
+                except ValueError:
                     pass
 
         tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
@@ -176,7 +174,7 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
 
             del tokens[i]
             del tags[i]
-    
+
     # spaCy
     if 'spacy' in lemmatizer:
         if not lang.startswith('srp_'):
@@ -259,7 +257,7 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
                     lemma, word = line.rstrip().split('\t')
 
                     mapping_lemmas[word] = lemma
-                except:
+                except ValueError:
                     pass
 
         lemma_tokens = tokens.copy()

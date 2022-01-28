@@ -20,7 +20,7 @@
 # Universal POS Tags: http://universaldependencies.org/u/pos/all.html
 MAPPINGS = [
     ['NPRP', 'PROPN', 'Proper noun', 'วินโดวส์ 95, โคโรน่า, โค้ก'],
-    
+
     ['NCNM', 'NUM', 'Cardinal number', 'หนึ่ง, สอง, สาม, 1, 2, 10'],
     ['NONM', 'ADJ', 'Ordinal number', 'ที่หนึ่ง, ที่สอง, ที่สาม, ที่1, ที่2'],
 

@@ -16,13 +16,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import math
+
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_utils import wl_misc
 
-# Combo Box
+# Combo boxes
 class Wl_Combo_Box(QComboBox):
     def __init__(self, parent):
         super().__init__(parent)
@@ -71,7 +73,7 @@ class Wl_Combo_Box_File_To_Filter(Wl_Combo_Box):
 
         self.table = table
 
-        self.table.itemChanged.connect(self.table_item_changed)
+        self.table.model().itemChanged.connect(self.table_item_changed)
 
         self.table_item_changed()
 
@@ -103,7 +105,7 @@ class Wl_Combo_Box_File(Wl_Combo_Box):
 
         self.addItems(self.main.wl_files.get_selected_file_names())
 
-        self.main.wl_files.table.itemChanged.connect(self.wl_files_changed)
+        self.main.wl_files.table.model().itemChanged.connect(self.wl_files_changed)
 
         self.wl_files_changed()
 
@@ -154,7 +156,7 @@ class Wl_Combo_Box_Font_Size(Wl_Combo_Box):
     def get_val(self):
         return self.FONT_SIZES[self.currentText()]
 
-# Spin Box
+# Spin boxes
 class Wl_Spin_Box(QSpinBox):
     def __init__(self, parent):
         super().__init__(parent)
@@ -212,7 +214,7 @@ class Wl_Spin_Box_Font_Size(Wl_Spin_Box):
 
         self.setRange(8, 72)
 
-# Text Browser
+# Text browsers
 class Wl_Text_Browser(QTextBrowser):
     def __init__(self, parent):
         super().__init__(parent)
@@ -221,3 +223,83 @@ class Wl_Text_Browser(QTextBrowser):
 
         self.setOpenExternalLinks(True)
         self.setContentsMargins(3, 3, 3, 3)
+
+# Item delegates
+class Wl_Item_Delegate_Combo_Box(QStyledItemDelegate):
+    def __init__(self, parent, items = [], row = None, col = None, editable = False):
+        super().__init__(parent)
+
+        self.items = items
+        self.row = row
+        self.col = col
+        self.enabled = True
+        self.editable = editable
+
+    def paint(self, painter, option, index):
+        super().paint(painter, option, index)
+
+        if self.is_editable(index):
+            painter.save()
+
+            height = option.rect.height()
+
+            top_right = option.rect.topRight()
+            top_right_x = top_right.x()
+            top_right_y = top_right.y()
+
+            painter.setBrush(QBrush(QColor(73, 74, 76)))
+
+            painter.drawLine(
+                top_right_x - 7 - 8,
+                top_right_y + math.ceil((height - 5) / 2),
+                top_right_x - 7 - 4,
+                top_right_y + math.ceil((height - 5) / 2) + 4
+            )
+            painter.drawLine(
+                top_right_x - 7 - 4,
+                top_right_y + math.ceil((height - 5) / 2) + 4,
+                top_right_x - 7,
+                top_right_y + math.ceil((height - 5) / 2)
+            )
+
+            painter.restore()
+
+    def createEditor(self, parent, option, index):
+        if self.is_editable(index):
+            combo_box = Wl_Combo_Box(parent)
+            combo_box.addItems(self.items)
+
+            combo_box.setEditable(self.editable)
+
+            if not self.enabled:
+                combo_box.setEnabled(False)
+
+            return combo_box
+
+    def is_editable(self, index):
+        rows_editable = cols_editable = False
+
+        if self.row is None or self.row == index.row():
+            rows_editable = True
+        if self.col is None or self.col == index.column():
+            cols_editable = True
+
+        return rows_editable and cols_editable
+
+    def set_enabled(self, enabled):
+        self.enabled = enabled
+
+class Wl_Item_Delegate_Combo_Box_Custom(Wl_Item_Delegate_Combo_Box):
+    def __init__(self, parent, Combo_Box, row = None, col = None):
+        super().__init__(parent, row = row, col = col)
+
+        self.Combo_Box = Combo_Box
+
+    def createEditor(self, parent, option, index):
+        if self.is_editable(index):
+            combo_box = self.Combo_Box(parent)
+
+            if not self.enabled:
+                combo_box.setEnabled(False)
+
+            return combo_box

@@ -81,7 +81,7 @@ def init_settings_default(main):
                 'show_breakdown': True
             }
         },
-    
+
         'concordancer': {
             'parallel_mode': False,
             'token_settings': {
@@ -90,7 +90,7 @@ def init_settings_default(main):
                 'ignore_tags': True,
                 'use_tags': False
             },
-            
+
             'search_settings': {
                 'multi_search_mode': False,
                 'search_term': '',
@@ -120,12 +120,12 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 },
-                
+
                 'exclusion': {
                     'exclusion': False,
 
@@ -140,13 +140,13 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 }
             },
-            
+
             'generation_settings': {
                 'width_left_para': 0,
                 'width_left_sentence': 0,
@@ -184,9 +184,9 @@ def init_settings_default(main):
 
             'sort_results': {
                 'sorting_rules': [
-                    [main.tr('Node'), 0],
-                    [main.tr('File'), 0],
-                    [main.tr('Token No.'), 0]
+                    [main.tr('Node'), main.tr('Ascending')],
+                    [main.tr('File'), main.tr('Ascending')],
+                    [main.tr('Token No.'), main.tr('Ascending')]
                 ],
 
                 'highlight_colors': [
@@ -228,7 +228,7 @@ def init_settings_default(main):
                 'ignore_tags': True,
                 'use_tags': False
             },
-            
+
             'search_settings': {
                 'multi_search_mode': False,
                 'search_term': '',
@@ -258,12 +258,12 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 },
-                
+
                 'exclusion': {
                     'exclusion': False,
 
@@ -278,13 +278,13 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 }
             },
-            
+
             'generation_settings': {
                 'src_file': '',
                 'tgt_file': '',
@@ -302,8 +302,8 @@ def init_settings_default(main):
 
             'sort_results': {
                 'sorting_rules': [
-                    [main.tr('Node'), 0],
-                    [main.tr('Segment No.'), 0]
+                    [main.tr('Node'), main.tr('Ascending')],
+                    [main.tr('Segment No.'), main.tr('Ascending')]
                 ],
 
                 'highlight_colors': [
@@ -336,7 +336,7 @@ def init_settings_default(main):
                 'match_tags': False
             }
         },
-    
+
         'wordlist': {
             'token_settings': {
                 'words': True,
@@ -421,7 +421,7 @@ def init_settings_default(main):
                 'match_tags': False
             }
         },
-    
+
         'ngram': {
             'token_settings': {
                 'words': True,
@@ -476,12 +476,12 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 },
-                
+
                 'exclusion': {
                     'exclusion': False,
 
@@ -496,13 +496,13 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 }
             },
-            
+
             'generation_settings': {
                 'ngram_size_sync': False,
                 'ngram_size_min': 2,
@@ -593,7 +593,7 @@ def init_settings_default(main):
                 'ignore_tags': True,
                 'use_tags': False
             },
-            
+
             'search_settings': {
                 'search_settings': True,
 
@@ -625,12 +625,12 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 },
-                
+
                 'exclusion': {
                     'exclusion': False,
 
@@ -645,13 +645,13 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 }
             },
-            
+
             'generation_settings': {
                 'window_sync': False,
                 'window_left': -5,
@@ -786,12 +786,12 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 },
-                
+
                 'exclusion': {
                     'exclusion': False,
 
@@ -806,13 +806,13 @@ def init_settings_default(main):
 
                     'ignore_tags': True,
                     'match_tags': False,
-                    
+
                     'context_window_sync': False,
                     'context_window_left': -5,
                     'context_window_right': 5
                 }
             },
-            
+
             'generation_settings': {
                 'window_sync': False,
                 'window_left': -5,
@@ -921,7 +921,7 @@ def init_settings_default(main):
                 'test_significance': main.tr('Log-likelihood Ratio Test'),
                 'measure_effect_size': main.tr("Kilgarriff's Ratio"),
             },
-            
+
             'table_settings': {
                 'show_pct': True,
                 'show_cumulative': False,
@@ -1090,26 +1090,26 @@ def init_settings_default(main):
 
         'tags': {
             'tags_header': [
-                [main.tr('Non-embedded'), main.tr('Header'), '<teiHeader>', '</teiHeader>']
+                [main.tr('Non-embedded'), main.tr('Header'), '<teiHeader>']
             ],
 
             'tags_body': [
-                [main.tr('Embedded'), main.tr('Part of Speech'), '_', ''],
-                [main.tr('Embedded'), main.tr('Part of Speech'), '/', ''],
-                [main.tr('Non-embedded'), main.tr('Others'), '<*>', '</*>']
+                [main.tr('Embedded'), main.tr('Part of Speech'), '_'],
+                [main.tr('Embedded'), main.tr('Part of Speech'), '/'],
+                [main.tr('Non-embedded'), main.tr('Others'), '<*>']
             ],
 
             'tags_xml': [
-                [main.tr('Non-embedded'), main.tr('Paragraph'), '<p>', '</p>'],
-                [main.tr('Non-embedded'), main.tr('Sentence'), '<s>', '</s>'],
-                [main.tr('Non-embedded'), main.tr('Word'), '<w>', '</w>'],
-                [main.tr('Non-embedded'), main.tr('Word'), '<c>', '</c>']
+                [main.tr('Non-embedded'), main.tr('Paragraph'), '<p>'],
+                [main.tr('Non-embedded'), main.tr('Sentence'), '<s>'],
+                [main.tr('Non-embedded'), main.tr('Word'), '<w>'],
+                [main.tr('Non-embedded'), main.tr('Word'), '<c>']
             ]
         },
 
         'data': {
             'continue_numbering_after_ties': False,
-            
+
             'precision_decimal': 2,
             'precision_pct': 2,
             'precision_p_value': 5
@@ -1718,7 +1718,7 @@ def init_settings_default(main):
                 'vie': [],
                 'yor': [],
                 'zul': [],
-                
+
                 'other': []
             },
 

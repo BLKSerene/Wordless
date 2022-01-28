@@ -29,7 +29,7 @@ main = wl_test_init.Wl_Test_Main()
 main.settings_custom['files']['auto_detection_settings']['number_lines_no_limit'] = True
 
 # Encoding detection
-@pytest.mark.parametrize('file_path', glob.glob(f'wl_tests_files/wl_utils/wl_detection/encoding/*.txt'))
+@pytest.mark.parametrize('file_path', glob.glob('wl_tests_files/wl_utils/wl_detection/encoding/*.txt'))
 def test_detection_encoding(file_path):
     file_name = os.path.basename(file_path)
 
@@ -43,7 +43,7 @@ def test_detection_encoding(file_path):
     assert encoding_code == encoding_code_file
 
 # Language detection
-@pytest.mark.parametrize('file_path', glob.glob(f'wl_tests_files/wl_utils/wl_detection/lang/*.txt'))
+@pytest.mark.parametrize('file_path', glob.glob('wl_tests_files/wl_utils/wl_detection/lang/*.txt'))
 def test_detection_lang(file_path):
     file = {}
 

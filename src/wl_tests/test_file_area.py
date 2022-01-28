@@ -42,12 +42,10 @@ def open_file(file_paths, update_gui):
             file_paths = [file_path]
         )
         worker_open_files.run()
-        
+
     print(f'Done! (In {round(time.time() - time_start, 2)} seconds)')
 
 def test_file_area():
-    new_files = []
-
     # Clean cached files
     for file in glob.glob('Import/*.*'):
         os.remove(file)

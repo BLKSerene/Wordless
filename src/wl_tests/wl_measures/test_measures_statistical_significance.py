@@ -70,7 +70,7 @@ def test_mann_whitney_u_test():
 #     Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. (p. 73)
 #     Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
 def test_pearsons_chi_squared_test():
-    main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = False 
+    main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = False
 
     assert round(wl_measures_statistical_significance.pearsons_chi_squared_test(main, 3, 0, 0, 31774)[0], 0) == 31777
 

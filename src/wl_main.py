@@ -121,7 +121,7 @@ class Wl_Main(QMainWindow):
         self.ver_major, self.ver_minor, self.ver_patch = wl_misc.split_wl_ver(self.ver)
 
         # Title
-        self.setWindowTitle(self.tr(f'Wordless'))
+        self.setWindowTitle(self.tr('Wordless'))
 
         # Icon
         self.setWindowIcon(QIcon(wl_misc.get_normalized_path('imgs/wl_icon.ico')))
@@ -428,7 +428,7 @@ class Wl_Main(QMainWindow):
         )
 
         self.wl_work_area.currentChanged.connect(self.work_area_changed)
-        
+
         self.load_settings_work_area()
 
     def load_settings_work_area(self):
@@ -462,7 +462,7 @@ class Wl_Main(QMainWindow):
     def work_area_changed(self):
         # Current tab
         self.settings_custom['work_area_cur'] = self.wl_work_area.tabText(self.wl_work_area.currentIndex())
-        
+
         # Parallel mode
         if platform.system() in ['Windows', 'Linux']:
             if self.wl_work_area.count() == 8:
@@ -578,36 +578,36 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         self.label_citation_sys = QLabel(self.tr('Citation System:'), self)
         self.combo_box_citation_sys = wl_boxes.Wl_Combo_Box(self)
         self.text_edit_citing = QTextEdit(self)
-    
+
         self.button_copy = QPushButton(self.tr('Copy'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
-    
+
         self.combo_box_citation_sys.addItems([
             self.tr('APA (7th Edition)'),
             self.tr('MLA (8th Edition)')
         ])
-    
+
         self.button_copy.setFixedWidth(100)
         self.button_close.setFixedWidth(100)
-    
+
         self.text_edit_citing.setFixedHeight(100)
         self.text_edit_citing.setReadOnly(True)
-    
+
         self.combo_box_citation_sys.currentTextChanged.connect(self.citation_sys_changed)
-    
+
         self.button_copy.clicked.connect(self.copy)
         self.button_close.clicked.connect(self.accept)
-    
+
         layout_citation_sys = wl_layouts.Wl_Layout()
         layout_citation_sys.addWidget(self.label_citation_sys, 0, 0)
         layout_citation_sys.addWidget(self.combo_box_citation_sys, 0, 1)
-    
+
         layout_citation_sys.setColumnStretch(2, 1)
-    
+
         self.wrapper_info.layout().addWidget(self.label_citing, 0, 0, 1, 2)
         self.wrapper_info.layout().addLayout(layout_citation_sys, 1, 0, 1, 2)
         self.wrapper_info.layout().addWidget(self.text_edit_citing, 2, 0, 1, 2)
-    
+
         self.wrapper_buttons.layout().addWidget(self.button_copy, 0, 0)
         self.wrapper_buttons.layout().addWidget(self.button_close, 0, 1)
 
@@ -642,8 +642,24 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = main.tr('Acknowledgments'),
-            width = 650
+            width = 700
         )
+
+        # Load acknowledgments
+        acks = []
+
+        with open(r'wl_acks.csv', 'r', encoding = 'utf_8', newline = '') as f:
+            reader = csv.reader(f)
+
+            for row in reader:
+                name = row[0]
+                home_page = row[1]
+                ver = row[2]
+                authors = row[3]
+                license = row[4]
+                license_url = row[5]
+
+                acks.append([name, home_page, ver, authors, license, license_url])
 
         self.label_acks = wl_labels.Wl_Label_Dialog(
             self.tr('''
@@ -663,55 +679,34 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
             ]
         )
 
-        self.table_acks.setFixedHeight(300)
+        self.table_acks.setFixedHeight(400)
+        self.table_acks.model().setRowCount(len(acks))
+
+        self.table_acks.disable_updates()
+
+        for i, (name, home_page, ver, authors, license, licence_url) in enumerate(acks):
+            name = f'<a href="{home_page}">{name}</a>'
+            license = f'<a href="{licence_url}">{license}</a>'
+
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 0), wl_labels.Wl_Label_Html(name, self))
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 1), wl_labels.Wl_Label_Html_Centered(ver, self))
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 2), wl_labels.Wl_Label_Html(authors, self))
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 3), wl_labels.Wl_Label_Html_Centered(license, self))
+
+        self.table_acks.enable_updates()
 
         self.wrapper_info.layout().addWidget(self.label_acks, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_acks, 1, 0)
 
         self.set_fixed_height()
 
-        # Load acknowledgments
-        acks = []
-
-        with open(r'wl_acks.csv', 'r', encoding = 'utf_8', newline = '') as f:
-            reader = csv.reader(f)
-
-            for row in reader:
-                name = row[0]
-                home_page = row[1]
-                ver = row[2]
-                authors = row[3]
-                license = row[4]
-                license_url = row[5]
-
-                acks.append([name, home_page, ver, authors, license, license_url])
-
-        self.table_acks.clear_table()
-
-        self.table_acks.blockSignals(True)
-        self.table_acks.setUpdatesEnabled(False)
-
-        self.table_acks.setRowCount(len(acks))
-
-        for i, (name, home_page, ver, authors, license, licence_url) in enumerate(acks):
-            name = f'<a href="{home_page}">{name}</a>'
-            license = f'<a href="{licence_url}">{license}</a>'
-
-            self.table_acks.setCellWidget(i, 0, wl_labels.Wl_Label_Html(name, self))
-            self.table_acks.setCellWidget(i, 1, wl_labels.Wl_Label_Html_Centered(ver, self))
-            self.table_acks.setCellWidget(i, 2, wl_labels.Wl_Label_Html(authors, self))
-            self.table_acks.setCellWidget(i, 3, wl_labels.Wl_Label_Html_Centered(license, self))
-
-        self.table_acks.blockSignals(False)
-        self.table_acks.setUpdatesEnabled(True)
-
 class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
             title = main.tr('Need Help?'),
-            width = 550,
-            height = 450
+            width = 600,
+            height = 500
         )
 
         self.label_need_help = wl_labels.Wl_Label_Dialog(
@@ -738,16 +733,20 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
             ]
         )
 
-        self.table_need_help.setFixedHeight(300)
-        self.table_need_help.setRowCount(3)
+        self.table_need_help.setFixedHeight(350)
         self.table_need_help.verticalHeader().setHidden(True)
+        self.table_need_help.model().setRowCount(3)
 
-        self.table_need_help.setCellWidget(0, 0, wl_labels.Wl_Label_Html_Centered(self.tr('Documentation'), self))
-        self.table_need_help.setCellWidget(0, 1, wl_labels.Wl_Label_Html('<a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
-        self.table_need_help.setCellWidget(1, 0, wl_labels.Wl_Label_Html_Centered(self.tr('Email'), self))
-        self.table_need_help.setCellWidget(1, 1, wl_labels.Wl_Label_Html(self.main.email_html, self))
-        self.table_need_help.setCellWidget(2, 0, wl_labels.Wl_Label_Html_Centered(self.tr('<a href="https://www.wechat.com/en/">WeChat</a><br>Official Account'), self))
-        self.table_need_help.setCellWidget(2, 1, wl_labels.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self))
+        self.table_need_help.disable_updates()
+
+        self.table_need_help.setIndexWidget(self.table_need_help.model().index(0, 0), wl_labels.Wl_Label_Html_Centered(self.tr('Documentation'), self))
+        self.table_need_help.setIndexWidget(self.table_need_help.model().index(0, 1), wl_labels.Wl_Label_Html('<a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
+        self.table_need_help.setIndexWidget(self.table_need_help.model().index(1, 0), wl_labels.Wl_Label_Html_Centered(self.tr('Email'), self))
+        self.table_need_help.setIndexWidget(self.table_need_help.model().index(1, 1), wl_labels.Wl_Label_Html(self.main.email_html, self))
+        self.table_need_help.setIndexWidget(self.table_need_help.model().index(2, 0), wl_labels.Wl_Label_Html_Centered(self.tr('<a href="https://www.wechat.com/en/">WeChat</a><br>Official Account'), self))
+        self.table_need_help.setIndexWidget(self.table_need_help.model().index(2, 1), wl_labels.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self))
+
+        self.table_need_help.enable_updates()
 
         self.wrapper_info.layout().addWidget(self.label_need_help, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
@@ -895,9 +894,11 @@ class Worker_Check_Updates(QObject):
     def is_newer_version(self, ver_new):
         ver_major_new, ver_minor_new, ver_patch_new = wl_misc.split_wl_ver(ver_new)
 
-        if (self.main.ver_major < ver_major_new or
-            self.main.ver_minor < ver_minor_new or
-            self.main.ver_patch < ver_patch_new):
+        if (
+            self.main.ver_major < ver_major_new
+            or self.main.ver_minor < ver_minor_new
+            or self.main.ver_patch < ver_patch_new
+        ):
             return True
         else:
             return False
@@ -1057,7 +1058,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
                     # Changelog section lists
                     elif line.startswith('- '):
                         line = re.sub(r'^- ', r'', line).strip()
-                        
+
                         changelog[-1]['changelog_sections'][-1]['section_list'].append(line)
         except:
             pass
@@ -1086,16 +1087,16 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
                         <li>{item}</li>
                     '''
 
-                changelog_text += f'''
+                changelog_text += '''
                         </ul>
                     </div>
                 '''
 
-            changelog_text += f'''
+            changelog_text += '''
                 </div>
             '''
 
-        changelog_text += f'''
+        changelog_text += '''
             </body>
         '''
 
@@ -1185,4 +1186,3 @@ if __name__ == '__main__':
     wl_main.showMaximized()
 
     sys.exit(wl_app.exec_())
-    
