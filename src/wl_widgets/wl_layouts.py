@@ -83,7 +83,7 @@ class Wl_Wrapper(QWidget):
         opt.initFrom(self)
         p = QPainter(self)
         self.style().drawPrimitive(QStyle.PE_Widget, opt, p, self)
-        
+
     def load_settings(self, defaults = False):
         pass
 

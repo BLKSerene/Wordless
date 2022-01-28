@@ -18,8 +18,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import re
-
 import pytest
 
 from wl_nlp import wl_word_tokenization
@@ -33,7 +31,7 @@ main = wl_test_init.Wl_Test_Main()
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
         if lang not in ['other']:
-            # Skip tests of NLTK's tokenizer for languages other than English 
+            # Skip tests of NLTK's tokenizer for languages other than English
             if not lang.startswith('eng'):
                 if not word_tokenizer.startswith('nltk_') and word_tokenizer != 'sacremoses_moses':
                     test_word_tokenizers.append((lang, word_tokenizer))
@@ -259,7 +257,7 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'bod':
         assert tokens == ['བོད་', 'ཀྱི་', 'སྐད་ཡིག་', 'ནི་', 'བོད་ཡུལ་', 'དང་', 'དེ', 'འི་', 'ཉེ་འཁོར་', 'གྱི་', 'ས་ཁུལ་', 'ཏེ', '།']
     elif lang == 'tir':
-        assert tokens ==['ትግርኛ', 'ኣብ', 'ኤርትራን', 'ኣብ', 'ሰሜናዊ', 'ኢትዮጵያን', 'ኣብ', 'ክልል', 'ትግራይ', 'ዝዝረብ', 'ሴማዊ', 'ቋንቋ', 'እዩ', '።']
+        assert tokens == ['ትግርኛ', 'ኣብ', 'ኤርትራን', 'ኣብ', 'ሰሜናዊ', 'ኢትዮጵያን', 'ኣብ', 'ክልል', 'ትግራይ', 'ዝዝረብ', 'ሴማዊ', 'ቋንቋ', 'እዩ', '።']
     elif lang == 'tsn':
         assert tokens == ['Setswana', 'ke', 'teme', 'e', 'e', 'buiwang', 'mo', 'mafatsheng', 'a', 'Aforika', 'Borwa', ',', 'Botswana', ',', 'Namibia', 'le', 'Zimbabwe', '.']
     elif lang == 'tur':

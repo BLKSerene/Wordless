@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import re
+
 import jieba.posseg
 import nltk
 import pythainlp
@@ -72,8 +74,10 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
     # Convert to Universal Tagset
     if not pos_tagger.startswith('spacy_'):
-        if (tagset == 'default' and main.settings_custom['pos_tagging']['to_universal_pos_tags'] or
-            tagset == 'universal'):
+        if (
+            tagset == 'default' and main.settings_custom['pos_tagging']['to_universal_pos_tags']
+            or tagset == 'universal'
+        ):
 
             mappings = {
                 tag: tag_universal
@@ -111,7 +115,7 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
 
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
-        
+
         if tagset == 'default':
             tokens_tagged = [(token.text, token.tag_) for token in doc]
         elif tagset == 'universal':
@@ -195,7 +199,7 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
 
         if lang != 'jpn':
             doc = spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens))
-            
+
             for pipe_name in nlp.pipe_names:
                 nlp.get_pipe(pipe_name)(doc)
         # The Japanese model do not have a tagger component and Japanese POS tags are taken directly from SudachiPy

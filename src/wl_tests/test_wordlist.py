@@ -18,8 +18,6 @@
 
 import time
 
-import pytest
-
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_file_area, wl_test_init
 
@@ -61,7 +59,7 @@ def test_wordlist():
 
 def update_gui(error_msg, tokens_freq_files, tokens_stats_files):
     assert not error_msg
-    
+
     assert tokens_freq_files
     assert tokens_stats_files
     assert len(tokens_freq_files) == len(tokens_stats_files)

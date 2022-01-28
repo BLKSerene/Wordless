@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs_misc
 from wl_settings import wl_settings
-from wl_utils import wl_conversion
+from wl_utils import wl_conversion, wl_misc
 from wl_widgets import wl_boxes, wl_layouts
 
 class Wl_Settings_General(wl_settings.Wl_Settings_Node):
@@ -289,20 +289,22 @@ class Wl_Settings_Import(wl_settings.Wl_Settings_Node):
             self.line_edit_import_stop_words_default_path.setText(settings['stop_words']['default_path'])
         else:
             self.line_edit_import_stop_words_default_path.setText(self.main.settings_default['stop_words']['default_path'])
-        
+
         self.combo_box_import_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
         self.checkbox_import_stop_words_detect_encodings.setChecked(settings['stop_words']['detect_encodings'])
 
         # Temporary Files
         self.line_edit_import_temp_files_default_path.setText(settings['temp_files']['default_path'])
-        
+
         self.detect_encodings_changed()
 
     def validate_settings(self):
-        if (self.validate_path(self.line_edit_import_files_default_path) and
-            self.validate_path(self.line_edit_import_search_terms_default_path) and
-            self.validate_path(self.line_edit_import_stop_words_default_path) and
-            self.confirm_path(self.line_edit_import_temp_files_default_path)):
+        if (
+            self.validate_path(self.line_edit_import_files_default_path)
+            and self.validate_path(self.line_edit_import_search_terms_default_path)
+            and self.validate_path(self.line_edit_import_stop_words_default_path)
+            and self.confirm_path(self.line_edit_import_temp_files_default_path)
+        ):
             return True
         else:
             return False
@@ -344,7 +346,7 @@ class Wl_Settings_Export(wl_settings.Wl_Settings_Node):
         self.label_export_tables_default_encoding = QLabel(self.tr('Default Encoding:'), self)
         self.combo_box_export_tables_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self.main)
 
-        self.combo_box_export_tables_default_type.addItems(self.main.settings_global['file_types']['export_tables'])
+        self.combo_box_export_tables_default_type.addItems(self.main.settings_global['file_types']['exp_tables'])
 
         self.button_export_tables_default_path.clicked.connect(self.browse_tables)
         self.combo_box_export_tables_default_type.currentTextChanged.connect(self.tables_default_type_changed)
@@ -457,9 +459,11 @@ class Wl_Settings_Export(wl_settings.Wl_Settings_Node):
         self.combo_box_export_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
 
     def validate_settings(self):
-        if (self.confirm_path(self.line_edit_export_tables_default_path) and
-            self.confirm_path(self.line_edit_export_search_terms_default_path) and
-            self.confirm_path(self.line_edit_export_stop_words_default_path)):
+        if (
+            self.confirm_path(self.line_edit_export_tables_default_path)
+            and self.confirm_path(self.line_edit_export_search_terms_default_path)
+            and self.confirm_path(self.line_edit_export_stop_words_default_path)
+        ):
             return True
         else:
             return False

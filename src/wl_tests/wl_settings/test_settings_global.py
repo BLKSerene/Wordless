@@ -20,7 +20,6 @@ import os
 import pkgutil
 import re
 
-import pytest
 import sacremoses
 import spacy
 import spacy_lookups_data
@@ -167,7 +166,7 @@ def test_settings_global():
     for file in os.listdir(f'{spacy_lookups_data.__path__[0]}/data/'):
         if 'lemma' in file:
             lang_code = re.search(r'^([a-z]{2,3})_', file).groups()[0]
-            
+
             # Serbian
             if lang_code == 'sr':
                 langs_supported_spacy_lemmatizers.append('sr_cyrl')

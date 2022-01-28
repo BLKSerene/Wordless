@@ -138,7 +138,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 'ita': 'italian',
                 'kaz': 'kazakh',
                 'nep': 'nepali',
-                # Norwegian 
+                # Norwegian
                 'nob': 'norwegian',
                 'nno': 'norwegian',
                 'por': 'portuguese',

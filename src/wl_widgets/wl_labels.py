@@ -25,7 +25,7 @@ from wl_utils import wl_misc
 class Wl_Label(QLabel):
     def __init__(self, text, parent):
         super().__init__(text, parent)
-        
+
         self.main = wl_misc.find_wl_main(parent)
 
 class Wl_Label_Html(Wl_Label):
