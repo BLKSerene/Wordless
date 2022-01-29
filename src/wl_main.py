@@ -894,7 +894,9 @@ class Worker_Check_Updates(QObject):
     def is_newer_version(self, ver_new):
         ver_major_new, ver_minor_new, ver_patch_new = wl_misc.split_wl_ver(ver_new)
 
-        if (
+        if self.main.ver == '?.?.?':
+            return True
+        elif (
             self.main.ver_major < ver_major_new
             or self.main.ver_minor < ver_minor_new
             or self.main.ver_patch < ver_patch_new
