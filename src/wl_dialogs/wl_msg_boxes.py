@@ -226,34 +226,6 @@ def wl_msg_box_no_search_results(main):
         ''')
     ).open()
 
-# Export
-def wl_msg_box_export_list(main, file_path):
-    Wl_Msg_Box_Info(
-        main,
-        title = main.tr('Export Completed'),
-        text = main.tr(f'''
-            <div>The list has been successfully exported to "{file_path}".</div>
-        ''')
-    ).open()
-
-def wl_msg_box_export_table_success(main, file_path):
-    Wl_Msg_Box_Info(
-        main,
-        title = main.tr('Export Completed'),
-        text = main.tr(f'''
-            <div>The table has been successfully exported to "{file_path}".</div>
-        ''')
-    ).open()
-
-def wl_msg_box_export_table_error(main, file_path):
-    Wl_Msg_Box_Info(
-        main,
-        title = main.tr('Export Error'),
-        text = main.tr(f'''
-            <div>Access to "{file_path}" is denied, please specify another location or close the file and try again.</div>
-        ''')
-    ).open()
-
 # Settings - General
 def wl_msg_box_path_not_exist(main, path):
     Wl_Msg_Box_Warning(

@@ -52,7 +52,7 @@ def wl_test_supported_langs(main):
 
     langs_sentence_tokenizers = main.settings_global['sentence_tokenizers'].keys()
     langs_word_tokenizers = main.settings_global['word_tokenizers'].keys()
-    langs_syl_tokenizers  = main.settings_global['syl_tokenizers'].keys()
+    langs_syl_tokenizers = main.settings_global['syl_tokenizers'].keys()
     langs_pos_tagging = main.settings_global['pos_taggers'].keys()
     langs_lemmatizers = main.settings_global['lemmatizers'].keys()
     langs_stop_word_lists = main.settings_global['stop_word_lists'].keys()
