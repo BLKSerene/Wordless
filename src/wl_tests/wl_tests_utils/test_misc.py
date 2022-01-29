@@ -20,6 +20,7 @@ from wl_utils import wl_misc
 
 def test_split_wl_ver():
     assert wl_misc.split_wl_ver('1.2.3') == (1, 2, 3)
+    assert wl_misc.split_wl_ver('?.?.?') == ('?', '?', '?')
 
 def test_flatten_list():
     assert list(wl_misc.flatten_list([1, 2, [3, 4, [5, 6]]])) == [1, 2, 3, 4, 5, 6]
