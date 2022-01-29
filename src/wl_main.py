@@ -1031,6 +1031,13 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
 
 class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
+        super().__init__(
+            main,
+            title = main.tr('Changelog'),
+            width = 600,
+            height = 600
+        )
+
         changelog = []
 
         try:
@@ -1060,52 +1067,45 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
                         line = re.sub(r'^- ', r'', line).strip()
 
                         changelog[-1]['changelog_sections'][-1]['section_list'].append(line)
-        except:
-            pass
 
-        changelog_text = f'''
-            {main.settings_global['styles']['style_changelog']}
-            <body>
-        '''
-
-        for release in changelog:
-            changelog_text += f'''
-                <div class="changelog">
-                    <div class="changelog-header"><a href="{release['release_link']}">{release['release_ver']}</a> - {release['release_date']}</div>
-                    <hr>
+            changelog_text = f'''
+                {main.settings_global['styles']['style_changelog']}
+                <body>
             '''
 
-            for changelog_section in release['changelog_sections']:
+            for release in changelog:
                 changelog_text += f'''
-                    <div class="changelog-section">
-                        <div class="changelog-section-header">{changelog_section['section_header']}</div>
-                        <ul>
+                    <div class="changelog">
+                        <div class="changelog-header"><a href="{release['release_link']}">{release['release_ver']}</a> - {release['release_date']}</div>
+                        <hr>
                 '''
 
-                for item in changelog_section['section_list']:
+                for changelog_section in release['changelog_sections']:
                     changelog_text += f'''
-                        <li>{item}</li>
+                        <div class="changelog-section">
+                            <div class="changelog-section-header">{changelog_section['section_header']}</div>
+                            <ul>
+                    '''
+
+                    for item in changelog_section['section_list']:
+                        changelog_text += f'''
+                            <li>{item}</li>
+                        '''
+
+                    changelog_text += '''
+                            </ul>
+                        </div>
                     '''
 
                 changelog_text += '''
-                        </ul>
                     </div>
                 '''
 
             changelog_text += '''
-                </div>
+                </body>
             '''
-
-        changelog_text += '''
-            </body>
-        '''
-
-        super().__init__(
-            main,
-            title = main.tr('Changelog'),
-            width = 480,
-            height = 420
-        )
+        except (FileNotFoundError, PermissionError):
+            changelog_text = traceback.format_exc()
 
         text_edit_changelog = wl_boxes.Wl_Text_Browser(self)
         text_edit_changelog.setHtml(changelog_text)
