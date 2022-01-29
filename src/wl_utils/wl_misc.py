@@ -39,15 +39,21 @@ def get_normalized_dir(path):
     return os.path.dirname(path)
 
 def get_wl_ver():
-    with open('VERSION', 'r', encoding = 'utf_8') as f:
-        for line in f:
-            if line.strip() and not line.startswith('#'):
-                return line.strip()
+    try:
+        with open('VERSION', 'r', encoding = 'utf_8') as f:
+            for line in f:
+                if line.strip() and not line.startswith('#'):
+                    return line.strip()
+    except (FileNotFoundError, PermissionError):
+        return '?.?.?'
 
 def split_wl_ver(ver):
     ver_major, ver_minor, ver_patch = ver.split('.')
 
-    return int(ver_major), int(ver_minor), int(ver_patch)
+    if ver_major == ver_minor == ver_patch == '?':
+        return '?', '?', '?'
+    else:
+        return int(ver_major), int(ver_minor), int(ver_patch)
 
 def find_wl_main(widget):
     if 'main' in widget.__dict__:
