@@ -1021,6 +1021,14 @@ def init_settings_default(main):
                 'font_size': 14
             },
 
+            'proxy_settings': {
+                'use_proxy': False,
+                'address': '',
+                'port': '',
+                'username': '',
+                'password': ''
+            },
+
             'update_settings': {
                 'check_updates_on_startup': True
             },

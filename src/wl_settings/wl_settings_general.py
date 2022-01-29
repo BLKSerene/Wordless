@@ -51,6 +51,36 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
 
         group_box_font_settings.layout().setColumnStretch(2, 1)
 
+        # Proxy Settings
+        group_box_proxy_settings = QGroupBox(self.tr('Proxy Settings'), self)
+
+        self.checkbox_use_proxy = QCheckBox(self.tr('Use Proxy'), self)
+        self.label_address = QLabel(self.tr('Address:'), self)
+        self.line_edit_address = QLineEdit(self)
+        self.label_port = QLabel(self.tr('Port:'), self)
+        self.line_edit_port = QLineEdit(self)
+        self.label_username = QLabel(self.tr('Username:'), self)
+        self.line_edit_username = QLineEdit(self)
+        self.label_password = QLabel(self.tr('Password:'), self)
+        self.line_edit_password = QLineEdit(self)
+
+        self.line_edit_address.setInputMask('000.000.000.000')
+        self.line_edit_port.setInputMask('00000')
+        self.line_edit_password.setEchoMode(QLineEdit.Password)
+
+        self.checkbox_use_proxy.clicked.connect(self.proxy_settings_changed)
+
+        group_box_proxy_settings.setLayout(wl_layouts.Wl_Layout())
+        group_box_proxy_settings.layout().addWidget(self.checkbox_use_proxy, 0, 0, 1, 4)
+        group_box_proxy_settings.layout().addWidget(self.label_address, 1, 0)
+        group_box_proxy_settings.layout().addWidget(self.line_edit_address, 1, 1)
+        group_box_proxy_settings.layout().addWidget(self.label_port, 1, 2)
+        group_box_proxy_settings.layout().addWidget(self.line_edit_port, 1, 3)
+        group_box_proxy_settings.layout().addWidget(self.label_username, 2, 0)
+        group_box_proxy_settings.layout().addWidget(self.line_edit_username, 2, 1)
+        group_box_proxy_settings.layout().addWidget(self.label_password, 2, 2)
+        group_box_proxy_settings.layout().addWidget(self.line_edit_password, 2, 3)
+
         # Update Settings
         group_box_update_settings = QGroupBox(self.tr('Update Settings'), self)
 
@@ -69,11 +99,24 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(group_box_font_settings, 0, 0)
-        self.layout().addWidget(group_box_update_settings, 1, 0)
-        self.layout().addWidget(group_box_misc, 2, 0)
+        self.layout().addWidget(group_box_proxy_settings, 1, 0)
+        self.layout().addWidget(group_box_update_settings, 2, 0)
+        self.layout().addWidget(group_box_misc, 3, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(3, 1)
+        self.layout().setRowStretch(4, 1)
+
+    def proxy_settings_changed(self):
+        if self.checkbox_use_proxy.isChecked():
+            self.line_edit_address.setEnabled(True)
+            self.line_edit_port.setEnabled(True)
+            self.line_edit_username.setEnabled(True)
+            self.line_edit_password.setEnabled(True)
+        else:
+            self.line_edit_address.setEnabled(False)
+            self.line_edit_port.setEnabled(False)
+            self.line_edit_username.setEnabled(False)
+            self.line_edit_password.setEnabled(False)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -81,12 +124,24 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
+        # Font Settings
         self.combo_box_font_family.setCurrentFont(QFont(settings['font_settings']['font_family']))
         self.combo_box_font_size.set_text(settings['font_settings']['font_size'])
 
+        # Proxy Settings
+        self.checkbox_use_proxy.setChecked(settings['proxy_settings']['use_proxy'])
+        self.line_edit_address.setText(settings['proxy_settings']['address'])
+        self.line_edit_port.setText(settings['proxy_settings']['port'])
+        self.line_edit_username.setText(settings['proxy_settings']['username'])
+        self.line_edit_password.setText(settings['proxy_settings']['password'])
+
+        # Update Settings
         self.checkbox_check_updates_on_startup.setChecked(settings['update_settings']['check_updates_on_startup'])
 
+        # Miscellaneous
         self.checkbox_confirm_on_exit.setChecked(settings['misc']['confirm_on_exit'])
+
+        self.proxy_settings_changed()
 
     def apply_settings(self):
         # Check font settings
@@ -112,11 +167,21 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
                 result = 'cancel'
 
         if result in ['skip', 'restart']:
+            # Font Settings
             self.settings_custom['font_settings']['font_family'] = self.combo_box_font_family.currentFont().family()
             self.settings_custom['font_settings']['font_size'] = self.combo_box_font_size.get_val()
 
+            # Proxy Settings
+            self.settings_custom['proxy_settings']['use_proxy'] = self.checkbox_use_proxy.isChecked()
+            self.settings_custom['proxy_settings']['address'] = self.line_edit_address.text()
+            self.settings_custom['proxy_settings']['port'] = self.line_edit_port.text()
+            self.settings_custom['proxy_settings']['username'] = self.line_edit_username.text()
+            self.settings_custom['proxy_settings']['password'] = self.line_edit_password.text()
+
+            # Update Settings
             self.settings_custom['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
+            # Miscellaneous
             self.settings_custom['misc']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
 
             if result == 'restart':
