@@ -1038,7 +1038,7 @@ def init_settings_default(main):
             }
         },
 
-        'import': {
+        'imp': {
             'files': {
                 'default_path': wl_misc.get_normalized_path('.')
             },
@@ -1056,24 +1056,24 @@ def init_settings_default(main):
             },
 
             'temp_files': {
-                'default_path': wl_misc.get_normalized_path('Import/'),
+                'default_path': wl_misc.get_normalized_path('imports/'),
             }
         },
 
-        'export': {
+        'exp': {
             'tables': {
-                'default_path': wl_misc.get_normalized_path('Export/'),
+                'default_path': wl_misc.get_normalized_path('exports/'),
                 'default_type': main.tr('Excel Workbook (*.xlsx)'),
                 'default_encoding': 'utf_8'
             },
 
             'search_terms': {
-                'default_path': wl_misc.get_normalized_path('Export/'),
+                'default_path': wl_misc.get_normalized_path('exports/'),
                 'default_encoding': 'utf_8'
             },
 
             'stop_words': {
-                'default_path': wl_misc.get_normalized_path('Export/'),
+                'default_path': wl_misc.get_normalized_path('exports/'),
                 'default_encoding': 'utf_8'
             }
         },
