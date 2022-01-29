@@ -941,7 +941,6 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
             len_files = len(files)
             len_tokens_total = sum([len(text.tokens_flat) for text in texts])
-            len_search_terms_total = len(search_terms_total)
 
             if settings['fig_settings']['sort_results_by'] == self.tr('File'):
                 search_terms_total = sorted(search_terms_total)
