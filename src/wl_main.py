@@ -81,7 +81,7 @@ class Wl_Loading(QSplashScreen):
         msg_font.setPixelSize(14)
 
         self.setFont(msg_font)
-        self.show_message(self.tr('Initializing Wordless ...'))
+        self.show_message(self.tr('Initializing Wordless...'))
 
     def show_message(self, message):
         self.showMessage(
@@ -126,7 +126,7 @@ class Wl_Main(QMainWindow):
         # Icon
         self.setWindowIcon(QIcon(wl_misc.get_normalized_path('imgs/wl_icon.ico')))
 
-        self.loading_window.show_message(self.tr('Loading settings ...'))
+        self.loading_window.show_message(self.tr('Loading settings...'))
 
         # Default settings
         wl_settings_default.init_settings_default(self)
@@ -151,7 +151,7 @@ class Wl_Main(QMainWindow):
         # Settings
         self.wl_settings = wl_settings.Wl_Settings(self)
 
-        self.loading_window.show_message(self.tr('Initializing main window ...'))
+        self.loading_window.show_message(self.tr('Initializing main window...'))
 
         # Menu
         self.init_menu()
@@ -175,7 +175,7 @@ class Wl_Main(QMainWindow):
         if platform.system() == 'Darwin':
             self.fix_macos_layout(self)
 
-        self.loading_window.show_message(self.tr('Starting Wordless ...'))
+        self.loading_window.show_message(self.tr('Starting Wordless...'))
 
     def fix_macos_layout(self, parent):
         for widget in parent.children():
