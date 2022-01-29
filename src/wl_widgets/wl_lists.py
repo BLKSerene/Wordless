@@ -146,7 +146,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         data = self.model().stringList()
 
-        if row == None:
+        if row is None:
             data.append(item_text)
             self.items_old.append(item_text)
         else:
@@ -155,7 +155,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         self.model().setStringList(data)
 
-        if row == None:
+        if row is None:
             self.setCurrentIndex(self.model().index(self.model().rowCount() - 1))
         else:
             self.setCurrentIndex(self.model().index(row))
@@ -167,7 +167,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         data = self.model().stringList()
         texts = [wl_checking_misc.check_new_name(text, data) for text in list(dict.fromkeys(texts))]
 
-        if row == None:
+        if row is None:
             data.extend(texts)
             self.items_old.extend(texts)
 
