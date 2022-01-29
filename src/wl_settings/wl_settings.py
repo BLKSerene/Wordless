@@ -110,10 +110,8 @@ class Wl_Settings(QDialog):
         self.tree_settings.header().setStretchLastSection(False)
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('General')))
-        self.tree_settings.model().item(0).appendRow([
-            QStandardItem(self.tr('Import')),
-            QStandardItem(self.tr('Export'))
-        ])
+        self.tree_settings.model().item(0).appendRow(QStandardItem(self.tr('Import')))
+        self.tree_settings.model().item(0).appendRow(QStandardItem(self.tr('Export')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Files')))
         self.tree_settings.model().item(1).appendRow(QStandardItem(self.tr('Tags')))
@@ -154,8 +152,8 @@ class Wl_Settings(QDialog):
 
         # General
         self.settings_general = wl_settings_general.Wl_Settings_General(self.main)
-        self.settings_import = wl_settings_general.Wl_Settings_Import(self.main)
-        self.settings_export = wl_settings_general.Wl_Settings_Export(self.main)
+        self.settings_imp = wl_settings_general.Wl_Settings_Imp(self.main)
+        self.settings_exp = wl_settings_general.Wl_Settings_Exp(self.main)
 
         # Files
         self.settings_files = wl_settings_files.Wl_Settings_Files(self.main)
@@ -183,8 +181,8 @@ class Wl_Settings(QDialog):
 
         self.settings_all = [
             self.settings_general,
-            self.settings_import,
-            self.settings_export,
+            self.settings_imp,
+            self.settings_exp,
             self.settings_files,
             self.settings_tags,
             self.settings_data,

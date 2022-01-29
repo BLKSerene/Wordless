@@ -250,10 +250,10 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
             self.button_exp.setEnabled(False)
 
     def imp_list(self):
-        if os.path.exists(self.main.settings_custom['import'][self.settings]['default_path']):
-            default_dir = self.main.settings_custom['import'][self.settings]['default_path']
+        if os.path.exists(self.main.settings_custom['imp'][self.settings]['default_path']):
+            default_dir = self.main.settings_custom['imp'][self.settings]['default_path']
         else:
-            default_dir = self.main.settings_default['import'][self.settings]['default_path']
+            default_dir = self.main.settings_default['imp'][self.settings]['default_path']
 
         file_paths = QFileDialog.getOpenFileNames(
             self.main,
@@ -264,7 +264,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
         if file_paths:
             # Modify default path
-            self.main.settings_custom['import'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
+            self.main.settings_custom['imp'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
             file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
 
@@ -298,17 +298,17 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                 self.main.statusBar().showMessage(self.tr('An error occured during import!'))
             else:
                 # Check duplicate items
-                items_to_import = []
+                items_to_imp = []
                 items_cur = self.model().stringList()
 
                 num_prev = len(items_cur)
 
                 for file_path in file_paths:
                     # Detect encodings
-                    if self.main.settings_custom['import'][self.settings]['detect_encodings']:
+                    if self.main.settings_custom['imp'][self.settings]['detect_encodings']:
                         encoding = wl_detection.detect_encoding(self.main, file_path)
                     else:
-                        encoding = self.main.settings_custom['import'][self.settings]['default_encoding']
+                        encoding = self.main.settings_custom['imp'][self.settings]['default_encoding']
 
                     with open(file_path, 'r', encoding = encoding, errors = 'replace') as f:
                         text = f.read()
@@ -317,21 +317,21 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                         line = line.strip()
 
                         if line and line not in items_cur:
-                            items_to_import.append(line)
+                            items_to_imp.append(line)
 
-                self.add_items(items_to_import)
+                self.add_items(items_to_imp)
 
-                num_imported = self.model().rowCount() - num_prev
+                num_imps = self.model().rowCount() - num_prev
 
-                if num_imported == 0:
+                if num_imps == 0:
                     self.main.statusBar().showMessage(self.tr('No items were imported into the list.'))
-                elif num_imported == 1:
+                elif num_imps == 1:
                     self.main.statusBar().showMessage(self.tr('1 item has been successfully imported into the list.'))
                 else:
-                    self.main.statusBar().showMessage(self.tr(f'{num_imported:,} items have been successfully imported into the list.'))
+                    self.main.statusBar().showMessage(self.tr(f'{num_imps:,} items have been successfully imported into the list.'))
 
     def exp_list(self):
-        default_dir = self.main.settings_custom['export'][self.settings]['default_path']
+        default_dir = self.main.settings_custom['exp'][self.settings]['default_path']
 
         file_path = QFileDialog.getSaveFileName(
             self.main,
@@ -341,16 +341,22 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         )[0]
 
         if file_path:
-            encoding = self.main.settings_custom['export'][self.settings]['default_encoding']
+            encoding = self.main.settings_custom['exp'][self.settings]['default_encoding']
 
             with open(file_path, 'w', encoding = encoding) as f:
                 for item in self.model().stringList():
                     f.write(item + '\n')
 
-            wl_msg_boxes.wl_msg_box_export_list(self.main, file_path)
+            wl_msg_boxes.Wl_Msg_Box_Info(
+                self.main,
+                title = self.tr('Export Completed'),
+                text = self.tr(f'''
+                    <div>The list has been successfully exported to "{file_path}".</div>
+                ''')
+            ).open()
 
             # Modify default path
-            self.main.settings_custom['export'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
+            self.main.settings_custom['exp'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
 
 class Wl_List_Search_Terms(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
     def __init__(self, parent):

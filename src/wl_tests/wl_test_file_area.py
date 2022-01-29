@@ -31,7 +31,7 @@ new_files_temp = []
 
 def wl_test_file_area(main):
     # Clean cached files
-    for file in glob.glob('Import/*.*'):
+    for file in glob.glob('imports/*.*'):
         os.remove(file)
 
     file_path_loaded = [os.path.basename(file['path']) for file in main.settings_custom['file_area']['files_open']]
@@ -55,7 +55,7 @@ def wl_test_file_area(main):
             main.settings_custom['file_area']['files_open'].extend(new_files_temp)
             new_file = main.settings_custom['file_area']['files_open'][-1]
 
-            assert new_file['selected'] == True
+            assert new_file['selected']
             assert new_file['tokenized'] == 'No'
             assert new_file['tagged'] == 'No'
             assert new_file['name'] == os.path.splitext(os.path.split(file_path)[-1])[0]

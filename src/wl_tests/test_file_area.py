@@ -47,7 +47,7 @@ def open_file(file_paths, update_gui):
 
 def test_file_area():
     # Clean cached files
-    for file in glob.glob('Import/*.*'):
+    for file in glob.glob('imports/*.*'):
         os.remove(file)
 
     # Disable encoding detection

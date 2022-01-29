@@ -58,7 +58,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                 new_files_temp = []
                 lines = []
 
-                default_dir = wl_checking_misc.check_dir(self.main.settings_custom['import']['temp_files']['default_path'])
+                default_dir = wl_checking_misc.check_dir(self.main.settings_custom['imp']['temp_files']['default_path'])
                 default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
 
                 file_path = wl_misc.get_normalized_path(file_path)
@@ -224,7 +224,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     new_files.append(new_file)
 
             if self.file_paths:
-                self.main.settings_custom['import']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
+                self.main.settings_custom['imp']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
         except Exception:
             err_msg = traceback.format_exc()
 
@@ -619,10 +619,10 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.main.find_menu_item(self.tr('Close Selected')).setEnabled(False)
 
     def open_files(self):
-        if os.path.exists(self.main.settings_custom['import']['files']['default_path']):
-            default_dir = self.main.settings_custom['import']['files']['default_path']
+        if os.path.exists(self.main.settings_custom['imp']['files']['default_path']):
+            default_dir = self.main.settings_custom['imp']['files']['default_path']
         else:
-            default_dir = self.main.settings_default['import']['files']['default_path']
+            default_dir = self.main.settings_default['imp']['files']['default_path']
 
         file_paths = QFileDialog.getOpenFileNames(
             self.main,
@@ -641,7 +641,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         file_dir = QFileDialog.getExistingDirectory(
             self.main,
             self.tr('Open Folder'),
-            self.main.settings_custom['import']['files']['default_path']
+            self.main.settings_custom['imp']['files']['default_path']
         )
 
         if file_dir:
