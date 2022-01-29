@@ -53,7 +53,7 @@ def detect_encoding(main, file_path):
     if encoding != 'utf_8':
         try:
             with open(file_path, 'r', encoding = encoding) as f:
-                text = f.read()
+                f.read()
         # Fall back to UTF-8 if fail
         except UnicodeDecodeError:
             encoding = 'utf_8'

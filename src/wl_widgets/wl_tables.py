@@ -240,7 +240,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                             else:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = cell_text = self.table.model().item(row_item, col).text()
+                                cell_val = self.table.model().item(row_item, col).text()
                                 cell_val = self.remove_illegal_chars(cell_val)
                                 cell.value = cell_val
 
@@ -314,7 +314,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                             else:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = cell_text = self.table.linked_tables[0].model().item(row_item, col).text()
+                                cell_val = self.table.linked_tables[0].model().item(row_item, col).text()
                                 cell_val = self.remove_illegal_chars(cell_val)
                                 cell.value = cell_val
 
@@ -369,7 +369,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                             else:
                                 cell = worksheet.cell(2 + row_cell, 1 + col)
 
-                                cell_val = cell_text = self.table.model().item(row_item, col).text()
+                                cell_val = self.table.model().item(row_item, col).text()
                                 cell_val = self.remove_illegal_chars(cell_val)
                                 cell.value = cell_val
 

@@ -727,9 +727,6 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
             headers = [
                 self.tr('Channel'),
                 self.tr('Contact Information')
-            ],
-            cols_stretch = [
-                self.tr('Contact Information')
             ]
         )
 
