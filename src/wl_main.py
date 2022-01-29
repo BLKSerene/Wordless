@@ -866,9 +866,26 @@ class Worker_Check_Updates(QObject):
 
     def run(self):
         ver_new = ''
+        proxy_settings = self.main.settings_custom['general']['proxy_settings']
 
         try:
-            r = requests.get('https://raw.githubusercontent.com/BLKSerene/Wordless/main/src/VERSION', timeout = 5)
+            timeout = 5
+
+            if proxy_settings['use_proxy']:
+                r = requests.get(
+                    'https://raw.githubusercontent.com/BLKSerene/Wordless/main/src/VERSION',
+                    timeout = timeout,
+                    proxies = {
+                        'http': f"http://{proxy_settings['address']}:{proxy_settings['port']}",
+                        'https': f"http://{proxy_settings['address']}:{proxy_settings['port']}"
+                    },
+                    auth = (proxy_settings['username'], proxy_settings['password'])
+                )
+            else:
+                r = requests.get(
+                    'https://raw.githubusercontent.com/BLKSerene/Wordless/main/src/VERSION',
+                    timeout = timeout
+                )
 
             if r.status_code == 200:
                 for line in r.text.splitlines():
@@ -913,7 +930,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = main.tr('Check for Updates'),
-            width = 480,
+            width = 500,
             no_buttons = True
         )
 
