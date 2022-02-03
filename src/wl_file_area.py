@@ -514,19 +514,19 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.clicked.connect(self.item_clicked)
 
         # Menu
-        self.main.find_menu_item(self.tr('Open File(s)...')).triggered.connect(self.open_files)
-        self.main.find_menu_item(self.tr('Open Folder...')).triggered.connect(self.open_dir)
-        self.main.find_menu_item(self.tr('Reopen Closed Files')).triggered.connect(self.reopen)
+        self.main.action_file_open_files.triggered.connect(self.open_files)
+        self.main.action_file_open_dir.triggered.connect(self.open_dir)
+        self.main.action_file_reopen.triggered.connect(self.reopen)
 
-        self.main.find_menu_item(self.tr('Reload Selected')).triggered.connect(self.reload_selected)
-        self.main.find_menu_item(self.tr('Reload All')).triggered.connect(self.reload_all)
+        self.main.action_file_reload_selected.triggered.connect(self.reload_selected)
+        self.main.action_file_reload_all.triggered.connect(self.reload_all)
 
-        self.main.find_menu_item(self.tr('Select All')).triggered.connect(self.select_all)
-        self.main.find_menu_item(self.tr('Deselect All')).triggered.connect(self.deselect_all)
-        self.main.find_menu_item(self.tr('Invert Selection')).triggered.connect(self.invert_selection)
+        self.main.action_file_select_all.triggered.connect(self.select_all)
+        self.main.action_file_deselect_all.triggered.connect(self.deselect_all)
+        self.main.action_file_invert_selection.triggered.connect(self.invert_selection)
 
-        self.main.find_menu_item(self.tr('Close Selected')).triggered.connect(self.close_selected)
-        self.main.find_menu_item(self.tr('Close All')).triggered.connect(self.close_all)
+        self.main.action_file_close_selected.triggered.connect(self.close_selected)
+        self.main.action_file_close_all.triggered.connect(self.close_all)
 
     def item_changed(self, item):
         super().item_changed(item)
@@ -582,26 +582,26 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
         # Menu
         if not self.is_empty():
-            self.main.find_menu_item(self.tr('Reload All')).setEnabled(True)
+            self.main.action_file_reload_all.setEnabled(True)
 
-            self.main.find_menu_item(self.tr('Select All')).setEnabled(True)
-            self.main.find_menu_item(self.tr('Deselect All')).setEnabled(True)
-            self.main.find_menu_item(self.tr('Invert Selection')).setEnabled(True)
+            self.main.action_file_select_all.setEnabled(True)
+            self.main.action_file_deselect_all.setEnabled(True)
+            self.main.action_file_invert_selection.setEnabled(True)
 
-            self.main.find_menu_item(self.tr('Close All')).setEnabled(True)
+            self.main.action_file_close_all.setEnabled(True)
         else:
-            self.main.find_menu_item(self.tr('Reload All')).setEnabled(False)
+            self.main.action_file_reload_all.setEnabled(False)
 
-            self.main.find_menu_item(self.tr('Select All')).setEnabled(False)
-            self.main.find_menu_item(self.tr('Deselect All')).setEnabled(False)
-            self.main.find_menu_item(self.tr('Invert Selection')).setEnabled(False)
+            self.main.action_file_select_all.setEnabled(False)
+            self.main.action_file_deselect_all.setEnabled(False)
+            self.main.action_file_invert_selection.setEnabled(False)
 
-            self.main.find_menu_item(self.tr('Close All')).setEnabled(False)
+            self.main.action_file_close_all.setEnabled(False)
 
         if self.main.settings_custom['file_area']['files_closed']:
-            self.main.find_menu_item(self.tr('Reopen Closed Files')).setEnabled(True)
+            self.main.action_file_reopen.setEnabled(True)
         else:
-            self.main.find_menu_item(self.tr('Reopen Closed Files')).setEnabled(False)
+            self.main.action_file_reopen.setEnabled(False)
 
         self.selection_changed()
 
@@ -612,11 +612,11 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
     def selection_changed(self):
         if self.get_selected_rows():
-            self.main.find_menu_item(self.tr('Reload Selected')).setEnabled(True)
-            self.main.find_menu_item(self.tr('Close Selected')).setEnabled(True)
+            self.main.action_file_reload_selected.setEnabled(True)
+            self.main.action_file_close_selected.setEnabled(True)
         else:
-            self.main.find_menu_item(self.tr('Reload Selected')).setEnabled(False)
-            self.main.find_menu_item(self.tr('Close Selected')).setEnabled(False)
+            self.main.action_file_reload_selected.setEnabled(False)
+            self.main.action_file_close_selected.setEnabled(False)
 
     def open_files(self):
         if os.path.exists(self.main.settings_custom['imp']['files']['default_path']):

@@ -200,103 +200,104 @@ class Wl_Main(QMainWindow):
             event.accept()
 
     def init_menu(self):
-        menu_file = self.menuBar().addMenu(self.tr('File'))
-        menu_prefs = self.menuBar().addMenu(self.tr('Preferences'))
-        menu_help = self.menuBar().addMenu(self.tr('Help'))
+        self.menu_file = self.menuBar().addMenu(self.tr('&File'))
+        self.menu_prefs = self.menuBar().addMenu(self.tr('&Preferences'))
+        self.menu_help = self.menuBar().addMenu(self.tr('&Help'))
 
         # File
-        menu_file_open_files = menu_file.addAction(self.tr('Open File(s)...'))
-        menu_file_open_files.setStatusTip(self.tr('Open file(s)'))
-        menu_file_open_dir = menu_file.addAction(self.tr('Open Folder...'))
-        menu_file_open_dir.setStatusTip(self.tr('Open all files in folder'))
-        menu_file_reopen = menu_file.addAction(self.tr('Reopen Closed Files'))
-        menu_file_reopen.setStatusTip(self.tr('Reopen closed files'))
+        self.action_file_open_files = self.menu_file.addAction(self.tr('&Open File(s)...'))
+        self.action_file_open_files.setShortcut(QKeySequence('Ctrl+O'))
+        self.action_file_open_files.setStatusTip(self.tr('Open file(s)'))
+        self.action_file_open_dir = self.menu_file.addAction(self.tr('Open &Folder...'))
+        self.action_file_open_dir.setStatusTip(self.tr('Open all files in folder'))
+        self.action_file_reopen = self.menu_file.addAction(self.tr('&Reopen Closed Files'))
+        self.action_file_reopen.setStatusTip(self.tr('Reopen closed files'))
 
-        menu_file.addSeparator()
+        self.menu_file.addSeparator()
 
-        menu_file_reload_selected = menu_file.addAction(self.tr('Reload Selected'))
-        menu_file_reload_selected.setStatusTip(self.tr('Reload selected files'))
-        menu_file_reload_all = menu_file.addAction(self.tr('Reload All'))
-        menu_file_reload_all.setStatusTip(self.tr('Reload all files'))
+        self.action_file_reload_selected = self.menu_file.addAction(self.tr('Reload &Selected'))
+        self.action_file_reload_selected.setStatusTip(self.tr('Reload selected files'))
+        self.action_file_reload_all = self.menu_file.addAction(self.tr('Reload &All'))
+        self.action_file_reload_all.setStatusTip(self.tr('Reload all files'))
 
-        menu_file.addSeparator()
+        self.menu_file.addSeparator()
 
-        menu_file_select_all = menu_file.addAction(self.tr('Select All'))
-        menu_file_select_all.setStatusTip(self.tr('Select all files'))
-        menu_file_deselect_all = menu_file.addAction(self.tr('Deselect All'))
-        menu_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
-        menu_file_invert_selection = menu_file.addAction(self.tr('Invert Selection'))
-        menu_file_invert_selection.setStatusTip(self.tr('Invert file selection'))
+        self.action_file_select_all = self.menu_file.addAction(self.tr('S&elect All'))
+        self.action_file_select_all.setShortcut(QKeySequence('Ctrl+A'))
+        self.action_file_select_all.setStatusTip(self.tr('Select all files'))
+        self.action_file_deselect_all = self.menu_file.addAction(self.tr('&Deselect All'))
+        self.action_file_deselect_all.setShortcut(QKeySequence('Ctrl+D'))
+        self.action_file_deselect_all.setStatusTip(self.tr('Deselect all files'))
+        self.action_file_invert_selection = self.menu_file.addAction(self.tr('&Invert Selection'))
+        self.action_file_invert_selection.setShortcut(QKeySequence('Ctrl+Shift+I'))
+        self.action_file_invert_selection.setStatusTip(self.tr('Invert file selection'))
 
-        menu_file.addSeparator()
+        self.menu_file.addSeparator()
 
-        menu_file_close_selected = menu_file.addAction(self.tr('Close Selected'))
-        menu_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
-        menu_file_close_all = menu_file.addAction(self.tr('Close All'))
-        menu_file_close_all.setStatusTip(self.tr('Close all files'))
+        self.action_file_close_selected = self.menu_file.addAction(self.tr('&Close Selected'))
+        self.action_file_close_selected.setShortcut(QKeySequence('Ctrl+W'))
+        self.action_file_close_selected.setStatusTip(self.tr('Close selected file(s)'))
+        self.action_file_close_all = self.menu_file.addAction(self.tr('C&lose All'))
+        self.action_file_close_all.setShortcut(QKeySequence('Ctrl+Shift+W'))
+        self.action_file_close_all.setStatusTip(self.tr('Close all files'))
 
-        menu_file.addSeparator()
+        self.menu_file.addSeparator()
 
-        menu_file_exit = menu_file.addAction(self.tr('Exit...'))
-        menu_file_exit.setStatusTip(self.tr('Exit the program'))
-        menu_file_exit.triggered.connect(self.close)
+        self.action_file_exit = self.menu_file.addAction(self.tr('&Exit...'))
+        self.action_file_exit.setShortcut(QKeySequence('Ctrl+Q'))
+        self.action_file_exit.setStatusTip(self.tr('Exit the program'))
+        self.action_file_exit.triggered.connect(self.close)
 
         # Preferences
-        menu_prefs_settings = menu_prefs.addAction(self.tr('Settings'))
-        menu_prefs_settings.setStatusTip(self.tr('Change settings'))
-        menu_prefs_settings.triggered.connect(self.wl_settings.load)
+        self.action_prefs_settings = self.menu_prefs.addAction(self.tr('&Settings'))
+        self.action_prefs_settings.setStatusTip(self.tr('Change settings'))
+        self.action_prefs_settings.triggered.connect(self.wl_settings.load)
+        self.action_prefs_reset_layouts = self.menu_prefs.addAction(self.tr('&Reset Layouts'))
+        self.action_prefs_reset_layouts.setStatusTip(self.tr('Reset Layouts'))
+        self.action_prefs_reset_layouts.triggered.connect(self.prefs_reset_layouts)
 
-        menu_prefs_reset_layouts = menu_prefs.addAction(self.tr('Reset Layouts'))
-        menu_prefs_reset_layouts.setStatusTip(self.tr('Reset Layouts'))
-        menu_prefs_reset_layouts.triggered.connect(self.prefs_reset_layouts)
+        self.menu_prefs.addSeparator()
 
-        menu_prefs.addSeparator()
-
-        menu_prefs_show_status_bar = menu_prefs.addAction(self.tr('Show Status Bar'))
-        menu_prefs_show_status_bar.setCheckable(True)
-        menu_prefs_show_status_bar.setStatusTip(self.tr('Show/Hide the status bar'))
-        menu_prefs_show_status_bar.triggered.connect(self.prefs_show_status_bar)
+        self.action_prefs_show_status_bar = self.menu_prefs.addAction(self.tr('&Show Status Bar'))
+        self.action_prefs_show_status_bar.setCheckable(True)
+        self.action_prefs_show_status_bar.setStatusTip(self.tr('Show/Hide the status bar'))
+        self.action_prefs_show_status_bar.triggered.connect(self.prefs_show_status_bar)
 
         # Help
-        menu_help_citing = menu_help.addAction(self.tr('Citing'))
-        menu_help_citing.setStatusTip(self.tr('Show information about citing'))
-        menu_help_citing.triggered.connect(self.help_citing)
+        self.action_help_citing = self.menu_help.addAction(self.tr('&Citing'))
+        self.action_help_citing.setStatusTip(self.tr('Show information about citing'))
+        self.action_help_citing.triggered.connect(self.help_citing)
+        self.action_help_acks = self.menu_help.addAction(self.tr('&Acknowledgments'))
+        self.action_help_acks.setStatusTip(self.tr('Show acknowldgments'))
+        self.action_help_acks.triggered.connect(self.help_acks)
 
-        menu_help_acks = menu_help.addAction(self.tr('Acknowledgments'))
-        menu_help_acks.setStatusTip(self.tr('Show acknowldgments'))
-        menu_help_acks.triggered.connect(self.help_acks)
+        self.menu_help.addSeparator()
 
-        menu_help.addSeparator()
+        self.action_help_need_help = self.menu_help.addAction(self.tr('&Need Help?'))
+        self.action_help_need_help.setStatusTip(self.tr('Show help information'))
+        self.action_help_need_help.triggered.connect(self.help_need_help)
+        self.action_help_contributing = self.menu_help.addAction(self.tr('C&ontributing'))
+        self.action_help_contributing.setStatusTip(self.tr('Show information about contributing'))
+        self.action_help_contributing.triggered.connect(self.help_contributing)
+        self.action_help_donating = self.menu_help.addAction(self.tr('&Donating'))
+        self.action_help_donating.setStatusTip(self.tr('Show information about donating'))
+        self.action_help_donating.triggered.connect(self.help_donating)
 
-        menu_help_need_help = menu_help.addAction(self.tr('Need Help?'))
-        menu_help_need_help.setStatusTip(self.tr('Show help information'))
-        menu_help_need_help.triggered.connect(self.help_need_help)
+        self.menu_help.addSeparator()
 
-        menu_help_contributing = menu_help.addAction(self.tr('Contributing'))
-        menu_help_contributing.setStatusTip(self.tr('Show information about contributing'))
-        menu_help_contributing.triggered.connect(self.help_contributing)
-
-        menu_help_donating = menu_help.addAction(self.tr('Donating'))
-        menu_help_donating.setStatusTip(self.tr('Show information about donating'))
-        menu_help_donating.triggered.connect(self.help_donating)
-
-        menu_help.addSeparator()
-
-        menu_help_check_updates = menu_help.addAction(self.tr('Check for Updates'))
-        menu_help_check_updates.setStatusTip(self.tr('Check for updates of Wordless'))
-        menu_help_check_updates.triggered.connect(self.help_check_updates)
-
-        menu_help_changelog = menu_help.addAction(self.tr('Changelog'))
-        menu_help_changelog.setStatusTip(self.tr('Show Changelog'))
-        menu_help_changelog.triggered.connect(self.help_changelog)
-
-        menu_help_about = menu_help.addAction(self.tr('About Wordless'))
-        menu_help_about.setStatusTip(self.tr('Show information about Wordless'))
-        menu_help_about.triggered.connect(self.help_about)
+        self.action_help_check_updates = self.menu_help.addAction(self.tr('Check &for Updates'))
+        self.action_help_check_updates.setStatusTip(self.tr('Check for updates of Wordless'))
+        self.action_help_check_updates.triggered.connect(self.help_check_updates)
+        self.action_help_changelog = self.menu_help.addAction(self.tr('C&hangelog'))
+        self.action_help_changelog.setStatusTip(self.tr('Show Changelog'))
+        self.action_help_changelog.triggered.connect(self.help_changelog)
+        self.action_help_about = self.menu_help.addAction(self.tr('About &Wordless'))
+        self.action_help_about.setStatusTip(self.tr('Show information about Wordless'))
+        self.action_help_about.triggered.connect(self.help_about)
 
     # Preferences - Show Status Bar
     def prefs_show_status_bar(self):
-        self.settings_custom['menu']['prefs']['show_status_bar'] = self.find_menu_item(self.tr('Show Status Bar')).isChecked()
+        self.settings_custom['menu']['prefs']['show_status_bar'] = self.action_prefs_show_status_bar.isChecked()
 
         if self.settings_custom['menu']['prefs']['show_status_bar']:
             self.statusBar().show()
@@ -505,7 +506,7 @@ class Wl_Main(QMainWindow):
         ''')
 
         # Menu
-        self.find_menu_item(self.tr('Show Status Bar')).setChecked(settings['menu']['prefs']['show_status_bar'])
+        self.action_prefs_show_status_bar.setChecked(settings['menu']['prefs']['show_status_bar'])
 
         # Layouts
         self.centralWidget().setSizes(settings['layouts']['central_widget'])
@@ -519,24 +520,6 @@ class Wl_Main(QMainWindow):
 
         with open('wl_settings.pickle', 'wb') as f:
             pickle.dump(self.settings_custom, f)
-
-    def find_menu_item(self, text, menu = None):
-        menu_item = None
-
-        if not menu:
-            menu = self.menuBar()
-
-        for action in menu.actions():
-            if menu_item:
-                break
-
-            if action.menu():
-                menu_item = self.find_menu_item(text, menu = action.menu())
-            else:
-                if action.text() == text:
-                    menu_item = action
-
-        return menu_item
 
     def restart(self):
         if getattr(sys, '_MEIPASS', False):
