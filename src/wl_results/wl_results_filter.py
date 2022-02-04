@@ -35,32 +35,32 @@ class Wl_Worker_Results_Filter_Wordlist(wl_threading.Wl_Worker):
         text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
         if self.dialog.tab == 'wordlist':
-            col_token = self.dialog.table.find_col(self.tr('Token'))
+            col_token = self.dialog.table.find_header_hor(self.tr('Token'))
         elif self.dialog.tab == 'ngram':
-            col_ngram = self.dialog.table.find_col(self.tr('N-gram'))
+            col_ngram = self.dialog.table.find_header_hor(self.tr('N-gram'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
-            col_freq = self.dialog.table.find_col(
+            col_freq = self.dialog.table.find_header_hor(
                 self.tr('Total\nFrequency')
             )
-            col_dispersion = self.dialog.table.find_col(
+            col_dispersion = self.dialog.table.find_header_hor(
                 self.tr(f'Total\n{text_dispersion}')
             )
-            col_adjusted_freq = self.dialog.table.find_col(
+            col_adjusted_freq = self.dialog.table.find_header_hor(
                 self.tr(f'Total\n{text_adjusted_freq}')
             )
         else:
-            col_freq = self.dialog.table.find_col(
+            col_freq = self.dialog.table.find_header_hor(
                 self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
             )
-            col_dispersion = self.dialog.table.find_col(
+            col_dispersion = self.dialog.table.find_header_hor(
                 self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_dispersion}")
             )
-            col_adjusted_freq = self.dialog.table.find_col(
+            col_adjusted_freq = self.dialog.table.find_header_hor(
                 self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_adjusted_freq}")
             )
 
-        col_num_files_found = self.dialog.table.find_col(self.tr('Number of\nFiles Found'))
+        col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
 
         if self.dialog.tab == 'wordlist':
             len_token_min = (
@@ -171,58 +171,58 @@ class Wl_Worker_Results_Filter_Collocation(wl_threading.Wl_Worker):
         ) = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
         text_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
 
-        col_collocate = self.dialog.table.find_col(self.tr('Collocate'))
+        col_collocate = self.dialog.table.find_header_hor(self.tr('Collocate'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
             if self.dialog.settings['freq_position'] == self.tr('Total'):
-                col_freq = self.dialog.table.find_col(
+                col_freq = self.dialog.table.find_header_hor(
                     self.tr('Total\nFrequency')
                 )
             else:
-                col_freq = self.dialog.table.find_col(
+                col_freq = self.dialog.table.find_header_hor(
                     self.tr(f'Total\n{self.dialog.settings["freq_position"]}')
                 )
 
             if text_test_stat:
-                col_test_stat = self.dialog.table.find_col(
+                col_test_stat = self.dialog.table.find_header_hor(
                     self.tr(f'Total\n{text_test_stat}')
                 )
-            col_p_value = self.dialog.table.find_col(
+            col_p_value = self.dialog.table.find_header_hor(
                 self.tr(f'Total\n{text_p_value}')
             )
             if text_bayes_factor:
-                col_bayes_factor = self.dialog.table.find_col(
+                col_bayes_factor = self.dialog.table.find_header_hor(
                     self.tr(f'Total\n{text_bayes_factor}')
                 )
-            col_effect_size = self.dialog.table.find_col(
+            col_effect_size = self.dialog.table.find_header_hor(
                 self.tr(f'Total\n{text_effect_size}')
             )
         else:
             if self.dialog.settings['freq_position'] == self.tr('Total'):
-                col_freq = self.dialog.table.find_col(
+                col_freq = self.dialog.table.find_header_hor(
                     self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
                 )
             else:
-                col_freq = self.dialog.table.find_col(
+                col_freq = self.dialog.table.find_header_hor(
                     self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.settings['freq_position']}")
                 )
 
             if text_test_stat:
-                col_test_stat = self.dialog.table.find_col(
+                col_test_stat = self.dialog.table.find_header_hor(
                     self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}")
                 )
-            col_p_value = self.dialog.table.find_col(
+            col_p_value = self.dialog.table.find_header_hor(
                 self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}")
             )
             if text_bayes_factor:
-                col_bayes_factor = self.dialog.table.find_col(
+                col_bayes_factor = self.dialog.table.find_header_hor(
                     self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}")
                 )
-            col_effect_size = self.dialog.table.find_col(
+            col_effect_size = self.dialog.table.find_header_hor(
                 self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}")
             )
 
-        col_num_files_found = self.dialog.table.find_col(self.tr('Number of\nFiles Found'))
+        col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
 
         len_collocate_min = (
             float('-inf')
@@ -342,46 +342,46 @@ class Wl_Worker_Results_Filter_Keyword(wl_threading.Wl_Worker):
         ) = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
         text_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
 
-        col_keyword = self.dialog.table.find_col(self.tr('Keyword'))
+        col_keyword = self.dialog.table.find_header_hor(self.tr('Keyword'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
-            col_freq = self.dialog.table.find_col(
+            col_freq = self.dialog.table.find_header_hor(
                 self.tr('Total\nFrequency')
             )
             if text_test_stat:
-                col_test_stat = self.dialog.table.find_col(
+                col_test_stat = self.dialog.table.find_header_hor(
                     self.tr(f'Total\n{text_test_stat}')
                 )
-            col_p_value = self.dialog.table.find_col(
+            col_p_value = self.dialog.table.find_header_hor(
                 self.tr(f'Total\n{text_p_value}')
             )
             if text_bayes_factor:
-                col_bayes_factor = self.dialog.table.find_col(
+                col_bayes_factor = self.dialog.table.find_header_hor(
                     self.tr(f'Total\n{text_bayes_factor}')
                 )
-            col_effect_size = self.dialog.table.find_col(
+            col_effect_size = self.dialog.table.find_header_hor(
                 self.tr(f'Total\n{text_effect_size}')
             )
         else:
-            col_freq = self.dialog.table.find_col(
+            col_freq = self.dialog.table.find_header_hor(
                 self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
             )
             if text_test_stat:
-                col_test_stat = self.dialog.table.find_col(
+                col_test_stat = self.dialog.table.find_header_hor(
                     self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}")
                 )
-            col_p_value = self.dialog.table.find_col(
+            col_p_value = self.dialog.table.find_header_hor(
                 self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}")
             )
             if text_bayes_factor:
-                col_bayes_factor = self.dialog.table.find_col(
+                col_bayes_factor = self.dialog.table.find_header_hor(
                     self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}")
                 )
-            col_effect_size = self.dialog.table.find_col(
+            col_effect_size = self.dialog.table.find_header_hor(
                 self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}")
             )
 
-        col_num_files_found = self.dialog.table.find_col(self.tr('Number of\nFiles Found'))
+        col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
 
         len_keyword_min = (
             float('-inf')
