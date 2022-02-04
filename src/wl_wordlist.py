@@ -506,48 +506,48 @@ def generate_table(main, table):
 
                 # Insert columns (files)
                 for file in files:
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\nFrequency'),
                         is_int = True, is_cumulative = True, is_breakdown = True
                     )
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\nFrequency %'),
                         is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\n{text_dispersion}'),
                         is_float = True, is_breakdown = True
                     )
 
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
                         is_float = True, is_breakdown = True
                     )
 
                 # Insert columns (total)
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr('Total\nFrequency'),
                     is_int = True, is_cumulative = True
                 )
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr('Total\nFrequency %'),
                     is_pct = True, is_cumulative = True
                 )
 
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr(f'Total\n{text_dispersion}'),
                     is_float = True
                 )
 
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr(f'Total\n{text_adjusted_freq}'),
                     is_float = True
@@ -555,20 +555,20 @@ def generate_table(main, table):
 
                 # Sort by frequency of the first file
                 table.horizontalHeader().setSortIndicator(
-                    table.find_col(main.tr(f'[{files[0]["name"]}]\nFrequency')),
+                    table.find_header_hor(main.tr(f'[{files[0]["name"]}]\nFrequency')),
                     Qt.DescendingOrder
                 )
 
-                cols_freq = table.find_cols(main.tr('\nFrequency'))
-                cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
+                cols_freq = table.find_headers_hor(main.tr('\nFrequency'))
+                cols_freq_pct = table.find_headers_hor(main.tr('\nFrequency %'))
 
                 for col in cols_freq_pct:
                     cols_freq.remove(col)
 
-                cols_dispersion = table.find_cols(main.tr(f'\n{text_dispersion}'))
-                cols_adjusted_freq = table.find_cols(main.tr(f'\n{text_adjusted_freq}'))
-                col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
-                col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
+                cols_dispersion = table.find_headers_hor(main.tr(f'\n{text_dispersion}'))
+                cols_adjusted_freq = table.find_headers_hor(main.tr(f'\n{text_adjusted_freq}'))
+                col_files_found = table.find_header_hor(main.tr('Number of\nFiles Found'))
+                col_files_found_pct = table.find_header_hor(main.tr('Number of\nFiles Found %'))
 
                 freq_totals = numpy.array(list(tokens_freq_files.values())).sum(axis = 0)
                 len_files = len(files)
