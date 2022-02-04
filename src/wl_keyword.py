@@ -606,88 +606,88 @@ def generate_table(main, table):
                 table.clr_table()
 
                 # Insert columns (files)
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr('[Reference Files]\nFrequency'),
                     is_int = True, is_cumulative = True
                 )
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr('[Reference Files]\nFrequency %'),
                     is_pct = True, is_cumulative = True
                 )
 
                 for file_observed in files_observed:
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file_observed["name"]}]\nFrequency'),
                         is_int = True, is_cumulative = True, is_breakdown = True
                     )
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file_observed["name"]}]\nFrequency %'),
                         is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
                     if text_test_stat:
-                        table.ins_col(
+                        table.ins_header_hor(
                             table.model().columnCount() - 2,
                             main.tr(f'[{file_observed["name"]}]\n{text_test_stat}'),
                             is_float = True, is_breakdown = True
                         )
 
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file_observed["name"]}]\n{text_p_value}'),
                         is_float = True, is_breakdown = True
                     )
 
                     if text_bayes_factor:
-                        table.ins_col(
+                        table.ins_header_hor(
                             table.model().columnCount() - 2,
                             main.tr(f'[{file_observed["name"]}]\n{text_bayes_factor}'),
                             is_float = True, is_breakdown = True
                         )
 
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file_observed["name"]}]\n{text_effect_size}'),
                         is_float = True, is_breakdown = True
                     )
 
                 # Insert columns (total)
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr('Total\nFrequency'),
                     is_int = True, is_cumulative = True
                 )
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr('Total\nFrequency %'),
                     is_pct = True, is_cumulative = True
                 )
 
                 if text_test_stat:
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'Total\n{text_test_stat}'),
                         is_float = True
                     )
 
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr(f'Total\n{text_p_value}'),
                     is_float = True
                 )
 
                 if text_bayes_factor:
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'Total\n{text_bayes_factor}'),
                         is_float = True
                     )
 
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr(f'Total\n{text_effect_size}'),
                     is_float = True
@@ -695,27 +695,27 @@ def generate_table(main, table):
 
                 # Sort by p-value of the first observed file
                 table.horizontalHeader().setSortIndicator(
-                    table.find_col(main.tr(f'[{files_observed[0]["name"]}]\n{text_p_value}')),
+                    table.find_header_hor(main.tr(f'[{files_observed[0]["name"]}]\n{text_p_value}')),
                     Qt.AscendingOrder
                 )
 
-                cols_freq = table.find_cols(main.tr('\nFrequency'))
-                cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
+                cols_freq = table.find_headers_hor(main.tr('\nFrequency'))
+                cols_freq_pct = table.find_headers_hor(main.tr('\nFrequency %'))
 
                 for col in cols_freq_pct:
                     cols_freq.remove(col)
 
                 if text_test_stat:
-                    cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
+                    cols_test_stat = table.find_headers_hor(main.tr(f'\n{text_test_stat}'))
 
-                cols_p_value = table.find_cols(main.tr('\np-value'))
+                cols_p_value = table.find_headers_hor(main.tr('\np-value'))
 
                 if text_bayes_factor:
-                    cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
+                    cols_bayes_factor = table.find_headers_hor(main.tr('\nBayes Factor'))
 
-                cols_effect_size = table.find_cols(f'\n{text_effect_size}')
-                col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
-                col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
+                cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
+                col_files_found = table.find_header_hor(main.tr('Number of\nFiles Found'))
+                col_files_found_pct = table.find_header_hor(main.tr('Number of\nFiles Found %'))
 
                 freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
                 len_files_observed = len(files_observed)

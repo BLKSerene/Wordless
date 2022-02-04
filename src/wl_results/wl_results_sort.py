@@ -27,16 +27,14 @@ from wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wl_utils import wl_misc, wl_msgs, wl_threading
 from wl_widgets import wl_boxes, wl_buttons, wl_labels, wl_layouts, wl_tables
 
-class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table):
+class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, table):
         super().__init__(
-            parent,
+            parent = parent,
             headers = [
-                parent.tr('Columns'),
+                parent.tr('Column'),
                 parent.tr('Order')
-            ],
-            editable = True,
-            drag_drop = True
+            ]
         )
 
         self.table = table
@@ -44,9 +42,9 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table):
         if self.table.tab == 'concordancer':
             self.cols_to_sort_default = [
                 self.tr('Node'),
+                self.tr('Sentiment'),
                 self.tr('Token No.'),
-                self.tr('File'),
-                self.tr('Sentiment')
+                self.tr('File')
             ]
         elif self.table.tab == 'concordancer_parallel':
             self.cols_to_sort_default = [
@@ -67,22 +65,12 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table):
             ]
         ))
 
-        self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_ins = QPushButton(self.tr('Insert'), self)
-        self.button_del = QPushButton(self.tr('Remove'), self)
-
-        self.button_add.clicked.connect(self.add_row)
-        self.button_ins.clicked.connect(self.ins_row)
-        self.button_del.clicked.connect(self.del_row)
-
-        self.model().itemChanged.connect(self.item_changed)
-        self.selectionModel().selectionChanged.connect(self.selection_changed)
+        self.button_clr.hide()
+        self.button_reset.deleteLater()
 
         self.table.model().itemChanged.connect(self.table_item_changed)
 
     def item_changed(self, item):
-        sorting_rules = []
-
         # Check for duplicates
         if item.column() == 0:
             for i in range(self.model().rowCount()):
@@ -109,11 +97,15 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table):
             item.text_old = item.text()
 
         if not self.is_empty():
-            for i in range(self.model().rowCount()):
-                sorting_rules.append([
+            sorting_rules = [
+                [
                     self.model().item(i, 0).text(),
                     self.model().item(i, 1).text()
-                ])
+                ]
+                for i in range(self.model().rowCount())
+            ]
+        else:
+            sorting_rules = []
 
         self.main.settings_custom[self.table.tab]['sort_results']['sorting_rules'] = sorting_rules
 
@@ -122,9 +114,9 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table):
         else:
             self.button_add.setEnabled(False)
 
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+        super().item_changed(item)
 
-    def selection_changed(self):
+    def selection_changed(self, selected, deselected):
         if self.selectionModel().selectedIndexes() and self.model().rowCount() < len(self.cols_to_sort):
             self.button_ins.setEnabled(True)
         else:
@@ -216,7 +208,14 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table):
 
         return max_right
 
-    def _add_row(self, row = None, sorting_col = '', sorting_order = ''):
+    def _add_row(self, row = None, texts = None):
+        if texts is None:
+            sorting_col = ''
+            sorting_order = ''
+        else:
+            sorting_col = texts[0]
+            sorting_order = texts[1]
+
         # Column
         item_sorting_col = QStandardItem()
 
@@ -273,22 +272,6 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table):
 
         self.model().itemChanged.emit(QStandardItem())
 
-    def add_row(self, sorting_col = '', sorting_order = ''):
-        self._add_row(sorting_col = sorting_col, sorting_order = sorting_order)
-        self.setCurrentIndex(self.model().index(self.model().rowCount(), 0))
-
-    def ins_row(self, row, sorting_col = '', sorting_order = ''):
-        row = self.get_selected_rows()[0]
-
-        self._add_row(row = row, sorting_col = sorting_col, sorting_order = sorting_order)
-        self.setCurrentIndex(self.model().index(row, 0))
-
-    def del_row(self):
-        for i in reversed(self.get_selected_rows()):
-            self.model().removeRow(i)
-
-        self.model().itemChanged.emit(QStandardItem())
-
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.main.settings_default[self.table.tab]['sort_results'])
@@ -298,9 +281,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table):
         self.clr_table(0)
 
         for sorting_col, sorting_order in settings['sorting_rules']:
-            self.add_row(sorting_col = sorting_col, sorting_order = sorting_order)
-
-        self.clearSelection()
+            self._add_row(texts = [sorting_col, sorting_order])
 
 class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(list)
@@ -410,12 +391,13 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.button_close.clicked.connect(self.reject)
 
         layout_table_sort = wl_layouts.Wl_Layout()
-        layout_table_sort.addWidget(self.table_sort, 0, 0, 4, 1)
+        layout_table_sort.addWidget(self.table_sort, 0, 0, 5, 1)
         layout_table_sort.addWidget(self.table_sort.button_add, 0, 1)
         layout_table_sort.addWidget(self.table_sort.button_ins, 1, 1)
         layout_table_sort.addWidget(self.table_sort.button_del, 2, 1)
+        layout_table_sort.addWidget(self.table_sort.button_clr, 3, 1)
 
-        layout_table_sort.setRowStretch(3, 1)
+        layout_table_sort.setRowStretch(4, 1)
 
         layout_buttons = wl_layouts.Wl_Layout()
         layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)

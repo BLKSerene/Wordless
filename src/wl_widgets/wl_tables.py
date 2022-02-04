@@ -146,7 +146,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
                         csv_writer = csv.writer(f)
 
-                        if self.table.header_orientation == 'horizontal':
+                        if self.table.header_orientation == 'hor':
                             # Horizontal Headers
                             csv_writer.writerow([
                                 self.table.model().horizontalHeaderItem(col).text().strip()
@@ -399,7 +399,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                     worksheet.freeze_panes = 'B2'
 
-                    if self.table.header_orientation == 'horizontal':
+                    if self.table.header_orientation == 'hor':
                         # Horizontal Headers
                         for col in range(self.table.model().columnCount()):
                             cell = worksheet.cell(1, 1 + col)
@@ -601,7 +601,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             color = 'FFFFFF'
         )
 
-        if self.table.header_orientation == 'horizontal':
+        if self.table.header_orientation == 'hor':
             cell.fill = openpyxl.styles.PatternFill(
                 fill_type = 'solid',
                 fgColor = '5C88C5'
@@ -626,7 +626,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             color = 'FFFFFF'
         )
 
-        if self.table.header_orientation == 'horizontal':
+        if self.table.header_orientation == 'hor':
             cell.fill = openpyxl.styles.PatternFill(
                 fill_type = 'solid',
                 fgColor = '888888'
@@ -727,7 +727,7 @@ class Wl_Item_Delegate_Uneditable(QStyledItemDelegate):
 class Wl_Table(QTableView):
     def __init__(
         self, parent,
-        headers, header_orientation = 'horizontal',
+        headers, header_orientation = 'hor',
         editable = False,
         drag_drop = False
     ):
@@ -745,7 +745,7 @@ class Wl_Table(QTableView):
 
         self.setModel(model)
 
-        if header_orientation == 'horizontal':
+        if header_orientation == 'hor':
             self.model().setHorizontalHeaderLabels(self.headers)
         else:
             self.model().setVerticalHeaderLabels(self.headers)
@@ -772,7 +772,7 @@ class Wl_Table(QTableView):
 
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
 
-        if self.header_orientation == 'horizontal':
+        if self.header_orientation == 'hor':
             self.setStyleSheet('''
                 QTableView {
                     outline: none;
@@ -855,6 +855,7 @@ class Wl_Table(QTableView):
             ''')
 
         self.model().itemChanged.connect(self.item_changed)
+        self.selectionModel().selectionChanged.connect(self.selection_changed)
 
     # There seems to be a bug with QAbstractItemView.InternalMove
     # See: https://bugreports.qt.io/browse/QTBUG-87057
@@ -915,45 +916,164 @@ class Wl_Table(QTableView):
         self.resizeColumnsToContents()
         self.resizeRowsToContents()
 
-    def add_row(self, label):
-        self.model().setVerticalHeaderItem(self.model().rowCount(), label)
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
-    def add_rows(self, labels):
-        headers = [self.model().headerData(row, Qt.Vertical) for row in range(self.model().rowCount())]
+    def selection_changed(self, selected, deselected):
+        pass
 
-        self.model().setVerticalHeaderLabels(headers + labels)
+    def disable_updates(self):
+        self.num_rows_old = self.model().rowCount()
+        self.num_cols_old = self.model().columnCount()
 
-    def ins_row(self, i, label):
-        headers = [self.model().headerData(row, Qt.Vertical) for row in range(self.model().rowCount())]
-        headers.insert(i, label)
+        self.setUpdatesEnabled(False)
+        self.blockSignals(True)
+        self.horizontalHeader().blockSignals(True)
+        self.verticalHeader().blockSignals(True)
+        self.model().blockSignals(True)
+        self.selectionModel().blockSignals(True)
+        self.hide()
 
-        self.model().setVerticalHeaderLabels(headers)
+    def enable_updates(self, emit_signals = True):
+        self.setUpdatesEnabled(True)
+        self.blockSignals(False)
+        self.horizontalHeader().blockSignals(False)
+        self.verticalHeader().blockSignals(False)
+        self.model().blockSignals(False)
+        self.selectionModel().blockSignals(False)
+        self.show()
 
-    def ins_rows(self, i, labels):
-        headers = [self.model().headerData(row, Qt.Vertical) for row in range(self.model().rowCount())]
+        self.horizontalHeader().sectionCountChanged.emit(self.num_cols_old, self.model().columnCount())
+        self.verticalHeader().sectionCountChanged.emit(self.num_rows_old, self.model().rowCount())
+
+        if emit_signals:
+            self.model().itemChanged.emit(QStandardItem())
+            self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+
+    def is_empty(self):
+        empty = False
+
+        if self.header_orientation == 'hor':
+            if not any([
+                    self.indexWidget(self.model().index(0, i)) or self.model().item(0, i)
+                    for i in range(self.model().columnCount())
+            ]):
+                empty = True
+        else:
+            if not any([
+                    self.indexWidget(self.model().index(i, 0)) or self.model().item(i, 0)
+                    for i in range(self.model().rowCount())
+            ]):
+                empty = True
+
+        return empty
+
+    def get_header_labels_hor(self):
+        return (self.model().headerData(row, Qt.Horizontal) for row in range(self.model().columnCount()))
+
+    def get_header_labels_vert(self):
+        return (self.model().headerData(col, Qt.Vertical) for col in range(self.model().rowCount()))
+
+    def find_header_hor(self, text):
+        return list(self.get_header_labels_hor()).index(text)
+
+    def find_header_vert(self, text):
+        return list(self.get_header_labels_vert()).index(text)
+
+    def find_headers_hor(self, text):
+        return [i for i, header in enumerate(self.get_header_labels_hor()) if text in header]
+
+    def find_headers_vert(self, text):
+        return [i for i, header in enumerate(self.get_header_labels_vert()) if text in header]
+
+    def find_header(self, text):
+        if self.header_orientation == 'hor':
+            return self.find_header_hor(text = text)
+        else:
+            return self.find_header_vert(text = text)
+
+    def find_headers(self, text):
+        if self.header_orientation == 'hor':
+            return self.find_headers_hor(text = text)
+        else:
+            return self.find_headers_vert(text = text)
+
+    def add_header_hor(self, label):
+        self.add_headers_hor([label])
+
+    def add_header_vert(self, label):
+        self.add_headers_vert([label])
+
+    def add_headers_hor(self, labels):
+        self.model().setHorizontalHeaderLabels(list(self.get_header_labels_hor()) + labels)
+
+    def add_headers_vert(self, labels):
+        self.model().setVerticalHeaderLabels(list(self.get_header_labels_vert()) + labels)
+
+    def ins_header_hor(self, i, label):
+        self.ins_headers_hor(i, [label])
+
+    def ins_header_vert(self, i, label):
+        self.ins_headers_vert(i, [label])
+
+    def ins_headers_hor(self, i, labels):
+        headers = list(self.get_header_labels_hor())
+        headers[i:i] = labels
+
+        self.model().setHorizontalHeaderLabels(headers)
+
+    def ins_headers_vert(self, i, labels):
+        headers = list(self.get_header_labels_vert())
         headers[i:i] = labels
 
         self.model().setVerticalHeaderLabels(headers)
 
-    def add_col(self, label):
-        self.model().setHorizontalHeaderItem(self.model().columnCount(), label)
+    def get_selected_rows(self):
+        return sorted({index.row() for index in self.selectionModel().selectedIndexes()})
 
-    def add_cols(self, labels):
-        headers = [self.model().headerData(col, Qt.Horizontal) for col in range(self.model().columnCount())]
+    def get_selected_cols(self):
+        return sorted({index.col() for index in self.selectionModel().selectedIndexes()})
 
-        self.model().setHorizontalHeaderLabels(headers + labels)
+    def _add_row(self, row = None, texts = None):
+        if texts is None:
+            texts = self.defaults_row
 
-    def ins_col(self, i, label):
-        headers = [self.model().headerData(col, Qt.Horizontal) for col in range(self.model().columnCount())]
-        headers.insert(i, label)
+        if self.is_empty():
+            self.clr_table(0)
 
-        self.model().setHorizontalHeaderLabels(headers)
+        if row is None:
+            self.model().appendRow([QStandardItem(text) for text in texts])
+        else:
+            self.model().insertRow(row, [QStandardItem(text) for text in texts])
 
-    def ins_cols(self, i, labels):
-        headers = [self.model().headerData(col, Qt.Horizontal) for col in range(self.model().columnCount())]
-        headers[i:i] = labels
+        self.model().itemChanged.emit(QStandardItem())
 
-        self.model().setHorizontalHeaderLabels(headers)
+    def add_row(self, texts = None):
+        self._add_row(texts = texts)
+        self.setCurrentIndex(self.model().index(self.model().rowCount() - 1, 0))
+
+    def ins_row(self, texts = None):
+        row = self.get_selected_rows()[0]
+
+        self._add_row(row = row, texts = texts)
+        self.setCurrentIndex(self.model().index(row, 0))
+
+    def del_row(self):
+        for i in reversed(self.get_selected_rows()):
+            self.model().removeRow(i)
+
+        self.model().itemChanged.emit(QStandardItem())
+
+    def clr_table(self, num_headers = 1):
+        self.model().clear()
+
+        if self.header_orientation == 'hor':
+            self.model().setHorizontalHeaderLabels(self.headers)
+            self.model().setRowCount(num_headers)
+        else:
+            self.model().setVerticalHeaderLabels(self.headers)
+            self.model().setColumnCount(num_headers)
+
+        self.model().itemChanged.emit(QStandardItem())
 
     def exp_selected(self):
         self.exp_all(rows_to_exp = self.get_selected_rows())
@@ -1034,99 +1154,56 @@ class Wl_Table(QTableView):
             thread_exp_table = wl_threading.Wl_Thread(worker_exp_table)
             thread_exp_table.start_worker()
 
-    def clr_table(self, num_headers = 1):
-        self.model().clear()
+class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
+    def __init__(self, parent, headers, defaults = None):
+        super().__init__(
+            parent = parent,
+            headers = headers,
+            editable = True,
+            drag_drop = True
+        )
 
-        if self.header_orientation == 'horizontal':
-            self.model().setHorizontalHeaderLabels(self.headers)
-            self.model().setRowCount(num_headers)
+        self.defaults = defaults or []
+
+        self.button_add = QPushButton(self.tr('Add'), self)
+        self.button_ins = QPushButton(self.tr('Insert'), self)
+        self.button_del = QPushButton(self.tr('Remove'), self)
+        self.button_clr = QPushButton(self.tr('Clear'), self)
+        self.button_reset = QPushButton(self.tr('Reset'), self)
+
+        self.button_add.clicked.connect(lambda: self.add_row())
+        self.button_ins.clicked.connect(lambda: self.ins_row())
+        self.button_del.clicked.connect(lambda: self.del_row())
+        self.button_clr.clicked.connect(lambda: self.clr_table(0))
+        self.button_reset.clicked.connect(lambda: self.reset_table())
+
+    def item_changed(self, item):
+        if self.model().rowCount():
+            self.button_del.setEnabled(True)
+            self.button_clr.setEnabled(True)
         else:
-            self.model().setVerticalHeaderLabels(self.headers)
-            self.model().setColumnCount(num_headers)
+            self.button_del.setEnabled(False)
+            self.button_clr.setEnabled(False)
 
-        self.model().itemChanged.emit(QStandardItem())
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+        super().item_changed(item)
 
-    def disable_updates(self):
-        self.hide()
-        self.blockSignals(True)
-        self.model().blockSignals(True)
-        self.selectionModel().blockSignals(True)
-        self.setUpdatesEnabled(False)
+    def selection_changed(self, selected, deselected):
+        if self.selectionModel().selectedIndexes():
+            self.button_ins.setEnabled(True)
 
-    def enable_updates(self, emit_signals = True):
-        self.show()
-        self.blockSignals(False)
-        self.model().blockSignals(False)
-        self.selectionModel().blockSignals(False)
-        self.setUpdatesEnabled(True)
-
-        if emit_signals:
-            self.model().itemChanged.emit(QStandardItem())
-            self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
-
-    def is_empty(self):
-        empty = False
-
-        if self.header_orientation == 'horizontal':
-            if (
-                not any([
-                    self.indexWidget(self.model().index(0, i)) or self.model().item(0, i)
-                    for i in range(self.model().columnCount())
-                ])
-            ):
-                empty = True
+            if self.model().rowCount():
+                self.button_del.setEnabled(True)
+            else:
+                self.button_del.setEnabled(False)
         else:
-            if (
-                not any([
-                    self.indexWidget(self.model().index(i, 0)) or self.model().item(i, 0)
-                    for i in range(self.model().rowCount())
-                ])
-            ):
-                empty = True
+            self.button_ins.setEnabled(False)
+            self.button_del.setEnabled(False)
 
-        return empty
+    def reset_table(self):
+        self.clr_table(0)
 
-    def find_row(self, inputs):
-        headers = [self.model().headerData(row, Qt.Vertical) for row in range(self.model().rowCount())]
-
-        if type(inputs) == str:
-            return headers.index(inputs)
-        else:
-            return [headers.index(text) for text in inputs]
-
-    def find_rows(self, text):
-        headers = [self.model().headerData(row, Qt.Vertical) for row in range(self.model().rowCount())]
-
-        return [i for i, header in enumerate(headers) if text in header]
-
-    def find_col(self, inputs):
-        headers = [self.model().headerData(row, Qt.Horizontal) for row in range(self.model().columnCount())]
-
-        if type(inputs) == str:
-            return headers.index(inputs)
-        else:
-            return [headers.index(text) for text in inputs]
-
-    def find_cols(self, text):
-        headers = [self.model().headerData(row, Qt.Horizontal) for row in range(self.model().columnCount())]
-
-        return [i for i, header in enumerate(headers) if text in header]
-
-    def find_header(self, inputs):
-        if self.header_orientation == 'horizontal':
-            return self.find_col(inputs)
-        else:
-            return self.find_row(inputs)
-
-    def find_headers(self, text):
-        if self.header_orientation == 'horizontal':
-            return self.find_cols(text)
-        else:
-            return self.find_rows(text)
-
-    def get_selected_rows(self):
-        return sorted({index.row() for index in self.selectionModel().selectedIndexes()})
+        for default_texts in self.defaults:
+            self._add_row(texts = default_texts)
 
 class Wl_Table_Item(QStandardItem):
     def read_data(self):
@@ -1152,7 +1229,7 @@ class Wl_Table_Item_Error(QStandardItem):
 class Wl_Table_Data(Wl_Table):
     def __init__(
         self, main, tab,
-        headers, header_orientation = 'horizontal',
+        headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cumulative = None, cols_breakdown = None,
         sorting_enabled = False,
@@ -1166,11 +1243,11 @@ class Wl_Table_Data(Wl_Table):
 
         self.tab = tab
 
-        self.headers_int_old = headers_int or []
-        self.headers_float_old = headers_float or []
-        self.headers_pct_old = headers_pct or []
-        self.headers_cumulative_old = headers_cumulative or []
-        self.cols_breakdown_old = cols_breakdown or []
+        self.headers_int_old = headers_int or {}
+        self.headers_float_old = headers_float or {}
+        self.headers_pct_old = headers_pct or {}
+        self.headers_cumulative_old = headers_cumulative or {}
+        self.cols_breakdown_old = cols_breakdown or {}
 
         self.sorting_enabled = sorting_enabled
         self.linked_tables = linked_tables or []
@@ -1178,7 +1255,7 @@ class Wl_Table_Data(Wl_Table):
         if sorting_enabled:
             self.setSortingEnabled(True)
 
-            if header_orientation == 'horizontal':
+            if header_orientation == 'hor':
                 self.horizontalHeader().sortIndicatorChanged.connect(self.sorting_changed)
             else:
                 self.verticalHeader().sortIndicatorChanged.connect(self.sorting_changed)
@@ -1229,35 +1306,95 @@ class Wl_Table_Data(Wl_Table):
             if self.show_cumulative:
                 self.toggle_cumulative()
 
-    def add_rows(self, labels):
-        headers_int = [self.model().verticalHeaderItem(row).text() for row in self.headers_int]
-        headers_float = [self.model().verticalHeaderItem(row).text() for row in self.headers_float]
-        headers_pct = [self.model().verticalHeaderItem(row).text() for row in self.headers_pct]
-        headers_cumulative = [self.model().verticalHeaderItem(row).text() for row in self.headers_cumulative]
+    def add_header_hor(
+        self, label,
+        is_int = False, is_float = False,
+        is_pct = False, is_cumulative = False, is_breakdown = False
+    ):
+        self.add_headers_hor(
+            [label],
+            is_int = is_int, is_float = is_float,
+            is_pct = is_pct, is_cumulative = is_cumulative, is_breakdown = is_breakdown
+        )
 
-        super().add_rows([label for label, _, _, _, _ in labels])
+    def add_header_vert(
+        self, label,
+        is_int = False, is_float = False,
+        is_pct = False, is_cumulative = False
+    ):
+        self.add_headers_vert(
+            [label],
+            is_int = is_int, is_float = is_float,
+            is_pct = is_pct, is_cumulative = is_cumulative
+        )
 
-        for label, is_int, is_float, is_pct, is_cumulative in labels:
-            if is_int:
-                headers_int.append(label)
-            if is_float:
-                headers_float.append(label)
-            if is_pct:
-                headers_pct.append(label)
-            if is_cumulative:
-                headers_cumulative.append(label)
+    def add_headers_hor(
+        self, labels,
+        is_int = False, is_float = False,
+        is_pct = False, is_cumulative = False, is_breakdown = False
+    ):
+        super().add_headers_hor(labels)
 
-        self.headers_int = set(self.find_row(headers_int))
-        self.headers_float = set(self.find_row(headers_float))
-        self.headers_pct = set(self.find_row(headers_pct))
-        self.headers_cumulative = set(self.find_row(headers_cumulative))
+        cols_labels = {self.find_header_hor(label) for label in labels}
 
-    def ins_col(
+        if is_int:
+            self.headers_int |= cols_labels
+        if is_float:
+            self.headers_float |= cols_labels
+        if is_pct:
+            self.headers_pct |= cols_labels
+        if is_cumulative:
+            self.headers_cumulative |= cols_labels
+        if is_breakdown:
+            self.cols_breakdown |= cols_labels
+
+    def add_headers_vert(
+        self, labels,
+        is_int = False, is_float = False,
+        is_pct = False, is_cumulative = False
+    ):
+        super().add_headers_vert(labels)
+
+        rows_labels = {self.find_header_vert(label) for label in labels}
+
+        if is_int:
+            self.headers_int |= rows_labels
+        if is_float:
+            self.headers_float |= rows_labels
+        if is_pct:
+            self.headers_pct |= rows_labels
+        if is_cumulative:
+            self.headers_cumulative |= rows_labels
+
+    def ins_header_hor(
         self, i, label,
         is_int = False, is_float = False,
         is_pct = False, is_cumulative = False, is_breakdown = False
     ):
-        if self.header_orientation == 'horizontal':
+        self.ins_headers_hor(
+            i, [label],
+            is_int = is_int, is_float = is_float,
+            is_pct = is_pct, is_cumulative = is_cumulative, is_breakdown = is_breakdown
+        )
+
+    def ins_header_vert(
+        self, i, label,
+        is_int = False, is_float = False,
+        is_pct = False, is_cumulative = False
+    ):
+        self.ins_headers_vert(
+            i, [label],
+            is_int = is_int, is_float = is_float,
+            is_pct = is_pct, is_cumulative = is_cumulative
+        )
+
+    def ins_headers_hor(
+        self, i, labels,
+        is_int = False, is_float = False,
+        is_pct = False, is_cumulative = False, is_breakdown = False
+    ):
+        # Re-calculate column indexes
+        if self.header_orientation == 'hor':
             headers_int = [self.model().horizontalHeaderItem(col).text() for col in self.headers_int]
             headers_float = [self.model().horizontalHeaderItem(col).text() for col in self.headers_float]
             headers_pct = [self.model().horizontalHeaderItem(col).text() for col in self.headers_pct]
@@ -1265,29 +1402,57 @@ class Wl_Table_Data(Wl_Table):
 
         cols_breakdown = [self.model().horizontalHeaderItem(col).text() for col in self.cols_breakdown]
 
-        super().ins_col(i, label)
+        super().ins_headers_hor(i, labels)
+
+        if self.header_orientation == 'hor':
+            if is_int:
+                headers_int.extend(labels)
+            if is_float:
+                headers_float.extend(labels)
+            if is_pct:
+                headers_pct.extend(labels)
+            if is_cumulative:
+                headers_cumulative.extend(labels)
+
+            self.headers_int = {self.find_header_hor(header) for header in headers_int}
+            self.headers_float = {self.find_header_hor(header) for header in headers_float}
+            self.headers_pct = {self.find_header_hor(header) for header in headers_pct}
+            self.headers_cumulative = {self.find_header_hor(header) for header in headers_cumulative}
+
+        if is_breakdown:
+            cols_breakdown.extend(labels)
+
+        self.cols_breakdown = {self.find_header_hor(header) for header in cols_breakdown}
+
+    def ins_headers_vert(
+        self, i, labels,
+        is_int = False, is_float = False,
+        is_pct = False, is_cumulative = False
+    ):
+        # Re-calculate row indexes
+        headers_int = [self.model().verticalHeaderItem(row).text() for row in self.headers_int]
+        headers_float = [self.model().verticalHeaderItem(row).text() for row in self.headers_float]
+        headers_pct = [self.model().verticalHeaderItem(row).text() for row in self.headers_pct]
+        headers_cumulative = [self.model().verticalHeaderItem(row).text() for row in self.headers_cumulative]
+
+        super().ins_headers_vert(i, labels)
 
         if is_int:
-            headers_int += [label]
+            headers_int.extend(labels)
         if is_float:
-            headers_float += [label]
+            headers_float.extend(labels)
         if is_pct:
-            headers_pct += [label]
+            headers_pct.extend(labels)
         if is_cumulative:
-            headers_cumulative += [label]
-        if is_breakdown:
-            cols_breakdown += [label]
+            headers_cumulative.extend(labels)
 
-        if self.header_orientation == 'horizontal':
-            self.headers_int = set(self.find_col(headers_int))
-            self.headers_float = set(self.find_col(headers_float))
-            self.headers_pct = set(self.find_col(headers_pct))
-            self.headers_cumulative = set(self.find_col(headers_cumulative))
-
-        self.cols_breakdown = set(self.find_col(cols_breakdown))
+        self.headers_int = {self.find_header_vert(header) for header in headers_int}
+        self.headers_float = {self.find_header_vert(header) for header in headers_float}
+        self.headers_pct = {self.find_header_vert(header) for header in headers_pct}
+        self.headers_cumulative = {self.find_header_vert(header) for header in headers_cumulative}
 
     def set_item_num(self, row, col, val, total = -1):
-        if self.header_orientation == 'horizontal':
+        if self.header_orientation == 'hor':
             header = col
         else:
             header = row
@@ -1326,7 +1491,7 @@ class Wl_Table_Data(Wl_Table):
         self.model().setItem(row, col, item)
 
     def set_item_num_val(self, row, col, val):
-        if self.header_orientation == 'horizontal':
+        if self.header_orientation == 'hor':
             header = col
         else:
             header = row
@@ -1369,7 +1534,7 @@ class Wl_Table_Data(Wl_Table):
         sort_section = self.horizontalHeader().sortIndicatorSection()
         sort_order = self.horizontalHeader().sortIndicatorOrder()
 
-        col_rank = self.find_col(self.tr('Rank'))
+        col_rank = self.find_header_hor(self.tr('Rank'))
 
         self.sortByColumn(sort_section, sort_order)
 
@@ -1410,7 +1575,7 @@ class Wl_Table_Data(Wl_Table):
     def toggle_pct(self):
         self.disable_updates()
 
-        if self.header_orientation == 'horizontal':
+        if self.header_orientation == 'hor':
             if self.show_pct:
                 for col in self.headers_pct:
                     self.showColumn(col)
@@ -1437,7 +1602,7 @@ class Wl_Table_Data(Wl_Table):
         self.disable_updates()
         self.setSortingEnabled(False)
 
-        if self.header_orientation == 'horizontal':
+        if self.header_orientation == 'hor':
             if self.show_cumulative:
                 for col in self.headers_cumulative:
                     val_cumulative = 0
@@ -1572,7 +1737,7 @@ class Wl_Table_Data(Wl_Table):
             for table in [self] + self.linked_tables:
                 table.model().clear()
 
-                if table.header_orientation == 'horizontal':
+                if table.header_orientation == 'hor':
                     table.horizontalHeader().blockSignals(True)
 
                     table.model().setColumnCount(len(table.headers))
@@ -1601,11 +1766,11 @@ class Wl_Table_Data(Wl_Table):
                 for i in range(table.model().columnCount()):
                     table.showColumn(i)
 
-                table.headers_int = set(table.find_header(table.headers_int_old))
-                table.headers_float = set(table.find_header(table.headers_float_old))
-                table.headers_pct = set(table.find_header(table.headers_pct_old))
-                table.headers_cumulative = set(table.find_header(table.headers_cumulative_old))
-                table.cols_breakdown = set(table.find_col(table.cols_breakdown_old))
+                table.headers_int = {table.find_header(header) for header in table.headers_int_old}
+                table.headers_float = {table.find_header(header) for header in table.headers_float_old}
+                table.headers_pct = {table.find_header(header) for header in table.headers_pct_old}
+                table.headers_cumulative = {table.find_header(header) for header in table.headers_cumulative_old}
+                table.cols_breakdown = {table.find_header_hor(col) for col in table.cols_breakdown_old}
 
                 table.results_saved = False
 
@@ -1628,7 +1793,7 @@ from wl_results import wl_results_filter, wl_results_search, wl_results_sort
 class Wl_Table_Data_Search(Wl_Table_Data):
     def __init__(
         self, main, tab,
-        headers, header_orientation = 'horizontal',
+        headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cumulative = None, cols_breakdown = None,
         sorting_enabled = False
@@ -1675,7 +1840,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
 class Wl_Table_Data_Sort_Search(Wl_Table_Data):
     def __init__(
         self, main, tab,
-        headers, header_orientation = 'horizontal',
+        headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cumulative = None, cols_breakdown = None,
         sorting_enabled = False
@@ -1739,7 +1904,7 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
 class Wl_Table_Data_Filter_Search(Wl_Table_Data):
     def __init__(
         self, main, tab,
-        headers, header_orientation = 'horizontal',
+        headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cumulative = None, cols_breakdown = None,
         sorting_enabled = False
