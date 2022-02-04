@@ -1023,23 +1023,23 @@ def generate_table(main, table):
                         settings['generation_settings']['window_right'] + 1
                     ):
                         if i < 0:
-                            table.ins_col(
+                            table.ins_header_hor(
                                 table.model().columnCount() - 2,
                                 main.tr(f'[{file["name"]}]\nL{-i}'),
                                 is_int = True, is_cumulative = True, is_breakdown = True
                             )
-                            table.ins_col(
+                            table.ins_header_hor(
                                 table.model().columnCount() - 2,
                                 main.tr(f'[{file["name"]}]\nL{-i} %'),
                                 is_pct = True, is_cumulative = True, is_breakdown = True
                             )
                         elif i > 0:
-                            table.ins_col(
+                            table.ins_header_hor(
                                 table.model().columnCount() - 2,
                                 main.tr(f'[{file["name"]}]\nR{i}'),
                                 is_int = True, is_cumulative = True, is_breakdown = True
                             )
-                            table.ins_col(
+                            table.ins_header_hor(
                                 table.model().columnCount() - 2,
                                 main.tr(f'[{file["name"]}]\nR{i} %'),
                                 is_pct = True, is_cumulative = True, is_breakdown = True
@@ -1049,38 +1049,38 @@ def generate_table(main, table):
                         table.cols_breakdown_position.add(table.model().columnCount() - 3)
                         table.cols_breakdown_position.add(table.model().columnCount() - 4)
 
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\nFrequency'),
                         is_int = True, is_cumulative = True, is_breakdown = True
                     )
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\nFrequency %'),
                         is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
                     if text_test_stat:
-                        table.ins_col(
+                        table.ins_header_hor(
                             table.model().columnCount() - 2,
                             main.tr(f'[{file["name"]}]\n{text_test_stat}'),
                             is_float = True, is_breakdown = True
                         )
 
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\n{text_p_value}'),
                         is_float = True, is_breakdown = True
                     )
 
                     if text_bayes_factor:
-                        table.ins_col(
+                        table.ins_header_hor(
                             table.model().columnCount() - 2,
                             main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
                             is_float = True, is_breakdown = True
                         )
 
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'[{file["name"]}]\n{text_effect_size}'),
                         is_float = True, is_breakdown = True
@@ -1090,23 +1090,23 @@ def generate_table(main, table):
                 for i in range(settings['generation_settings']['window_left'],
                                settings['generation_settings']['window_right'] + 1):
                     if i < 0:
-                        table.ins_col(
+                        table.ins_header_hor(
                             table.model().columnCount() - 2,
                             main.tr(f'Total\nL{-i}'),
                             is_int = True, is_cumulative = True
                         )
-                        table.ins_col(
+                        table.ins_header_hor(
                             table.model().columnCount() - 2,
                             main.tr(f'Total\nL{-i} %'),
                             is_pct = True, is_cumulative = True
                         )
                     elif i > 0:
-                        table.ins_col(
+                        table.ins_header_hor(
                             table.model().columnCount() - 2,
                             main.tr(f'Total\nR{i}'),
                             is_int = True, is_cumulative = True
                         )
-                        table.ins_col(
+                        table.ins_header_hor(
                             table.model().columnCount() - 2,
                             main.tr(f'Total\nR{i} %'),
                             is_pct = True, is_cumulative = True
@@ -1116,38 +1116,38 @@ def generate_table(main, table):
                     table.cols_breakdown_position.add(table.model().columnCount() - 3)
                     table.cols_breakdown_position.add(table.model().columnCount() - 4)
 
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr('Total\nFrequency'),
                     is_int = True, is_cumulative = True
                 )
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr('Total\nFrequency %'),
                     is_pct = True, is_cumulative = True
                 )
 
                 if text_test_stat:
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'Total\n{text_test_stat}'),
                         is_float = True
                     )
 
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr(f'Total\n{text_p_value}'),
                     is_float = True
                 )
 
                 if text_bayes_factor:
-                    table.ins_col(
+                    table.ins_header_hor(
                         table.model().columnCount() - 2,
                         main.tr(f'Total\n{text_bayes_factor}'),
                         is_float = True
                     )
 
-                table.ins_col(
+                table.ins_header_hor(
                     table.model().columnCount() - 2,
                     main.tr(f'Total\n{text_effect_size}'),
                     is_float = True
@@ -1155,40 +1155,40 @@ def generate_table(main, table):
 
                 # Sort by p-value of the first file
                 table.horizontalHeader().setSortIndicator(
-                    table.find_col(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')),
+                    table.find_header_hor(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')),
                     Qt.AscendingOrder
                 )
 
                 if settings['generation_settings']['window_left'] < 0:
                     cols_freqs_start = [
-                        table.find_col(f'[{file["name"]}]\nL{-settings["generation_settings"]["window_left"]}')
+                        table.find_header_hor(f'[{file["name"]}]\nL{-settings["generation_settings"]["window_left"]}')
                         for file in files
                     ]
-                    cols_freqs_start.append(table.find_col(f'Total\nL{-settings["generation_settings"]["window_left"]}'))
+                    cols_freqs_start.append(table.find_header_hor(f'Total\nL{-settings["generation_settings"]["window_left"]}'))
                 else:
                     cols_freqs_start = [
-                        table.find_col(f'[{file["name"]}]\nR{settings["generation_settings"]["window_left"]}')
+                        table.find_header_hor(f'[{file["name"]}]\nR{settings["generation_settings"]["window_left"]}')
                         for file in files
                     ]
-                    cols_freqs_start.append(table.find_col(f'Total\nR{settings["generation_settings"]["window_left"]}'))
+                    cols_freqs_start.append(table.find_header_hor(f'Total\nR{settings["generation_settings"]["window_left"]}'))
 
-                cols_freq = table.find_cols(main.tr('\nFrequency'))
-                cols_freq_pct = table.find_cols(main.tr('\nFrequency %'))
+                cols_freq = table.find_headers_hor(main.tr('\nFrequency'))
+                cols_freq_pct = table.find_headers_hor(main.tr('\nFrequency %'))
 
                 for col in cols_freq_pct:
                     cols_freq.remove(col)
 
                 if text_test_stat:
-                    cols_test_stat = table.find_cols(main.tr(f'\n{text_test_stat}'))
+                    cols_test_stat = table.find_headers_hor(main.tr(f'\n{text_test_stat}'))
 
-                cols_p_value = table.find_cols(main.tr('\np-value'))
+                cols_p_value = table.find_headers_hor(main.tr('\np-value'))
 
                 if text_bayes_factor:
-                    cols_bayes_factor = table.find_cols(main.tr('\nBayes Factor'))
+                    cols_bayes_factor = table.find_headers_hor(main.tr('\nBayes Factor'))
 
-                cols_effect_size = table.find_cols(f'\n{text_effect_size}')
-                col_files_found = table.find_col(main.tr('Number of\nFiles Found'))
-                col_files_found_pct = table.find_col(main.tr('Number of\nFiles Found %'))
+                cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
+                col_files_found = table.find_header_hor(main.tr('Number of\nFiles Found'))
+                col_files_found_pct = table.find_header_hor(main.tr('Number of\nFiles Found %'))
 
                 freqs_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 0)
                 freq_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 2).sum(axis = 0)

@@ -146,7 +146,6 @@ class Wl_Table_Tags(wl_tables.Wl_Table):
                 parent.tr('Closing Tag'),
                 parent.tr('Preview')
             ],
-            header_orientation = 'horizontal',
             editable = True,
             drag_drop = True
         )

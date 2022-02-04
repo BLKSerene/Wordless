@@ -154,7 +154,7 @@ class Wl_Table_Overview(wl_tables.Wl_Table_Data):
                 parent.tr('Syllable Length in Characters (Range)'),
                 parent.tr('Syllable Length in Characters (Modes)')
             ],
-            header_orientation = 'vertical',
+            header_orientation = 'vert',
             headers_int = [
                 # Counts
                 parent.tr('Count of Paragraphs'),
@@ -298,7 +298,7 @@ class Wl_Table_Overview(wl_tables.Wl_Table_Data):
         confirmed = super().clr_table(count_headers = 0, confirm = confirm)
 
         if confirmed:
-            self.ins_col(0, self.tr('Total'))
+            self.ins_header_hor(0, self.tr('Total'))
 
 class Wrapper_Overview(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -649,12 +649,10 @@ def generate_table(main, table):
 
                 # Insert column (total)
                 for i, file in enumerate(files):
-                    table.ins_col(
-                        table.find_col(main.tr('Total')), file['name'],
+                    table.ins_header_hor(
+                        table.find_header_hor(main.tr('Total')), file['name'],
                         is_breakdown = True
                     )
-
-                table.disable_updates()
 
                 count_paras_total = len(texts_stats_files[-1][1])
                 count_sentences_total = len(texts_stats_files[-1][3])
@@ -662,6 +660,8 @@ def generate_table(main, table):
                 count_types_total = len(texts_stats_files[-1][7])
                 count_syls_total = len(texts_stats_files[-1][8])
                 count_chars_total = sum(texts_stats_files[-1][5])
+
+                table.disable_updates()
 
                 for i, stats in enumerate(texts_stats_files):
                     if i < len(files):
@@ -915,19 +915,16 @@ def generate_table(main, table):
                     }
                     count_sentences_lens = sorted(count_sentences_lens_files.keys())
 
-                    header_labels = []
-
+                    # Append vertical headers
                     for count_sentences_len in count_sentences_lens:
-                        header_labels.append([
+                        table.add_header_vert(
                             main.tr(f'Count of {count_sentences_len}-length Sentences'),
-                            True, False, False, True
-                        ])
-                        header_labels.append([
+                            is_int = True, is_cumulative = True
+                        )
+                        table.add_header_vert(
                             main.tr(f'Count of {count_sentences_len}-length Sentences %'),
-                            False, False, True, True
-                        ])
-
-                    table.add_rows(header_labels)
+                            is_pct = True, is_cumulative = True
+                        )
 
                     for i, count_sentences_len in enumerate(reversed(count_sentences_lens)):
                         counts = count_sentences_lens_files[count_sentences_len]
@@ -954,19 +951,16 @@ def generate_table(main, table):
                     }
                     count_tokens_lens = sorted(count_tokens_lens_files.keys())
 
-                    header_labels = []
-
+                    # Append vertical headers
                     for count_tokens_len in count_tokens_lens:
-                        header_labels.append([
+                        table.add_header_vert(
                             main.tr(f'Count of {count_tokens_len}-Length Tokens'),
-                            True, False, False, True
-                        ])
-                        header_labels.append([
+                            is_int = True, is_cumulative = True
+                        )
+                        table.add_header_vert(
                             main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
-                            False, False, True, True
-                        ])
-
-                    table.add_rows(header_labels)
+                            is_pct = True, is_cumulative = True
+                        )
 
                     for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
                         counts = count_tokens_lens_files[count_tokens_len]
