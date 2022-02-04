@@ -46,13 +46,16 @@ def check_dir(dir_name):
 
     return dir_name
 
-def check_new_name(new_name, names):
+def check_new_name(new_name, names, separator = None):
     i = 2
     names = set(names)
 
     if new_name in names:
         while True:
-            new_name_valid = f'{new_name} ({i})'
+            if separator is None:
+                new_name_valid = f'{new_name} ({i})'
+            else:
+                new_name_valid = f'{new_name}{separator}{i}'
 
             if new_name_valid in names:
                 i += 1

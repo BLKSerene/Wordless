@@ -34,7 +34,8 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             headers = [
                 parent.tr('Column'),
                 parent.tr('Order')
-            ]
+            ],
+            col_edit = 0
         )
 
         self.table = table
@@ -89,7 +90,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
                     item.setText(item.text_old)
 
-                    self.closePersistentEditor(item.index())
+                    self.closeEditor(self.findChild(QComboBox), QAbstractItemDelegate.NoHint)
                     self.edit(item.index())
 
                     break
@@ -259,6 +260,9 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         else:
             item_sorting_order.setText(self.tr('Ascending'))
 
+        item_sorting_col.text_old = item_sorting_col.text()
+        item_sorting_order.text_old = item_sorting_order.text()
+
         if row is None:
             self.model().appendRow([
                 item_sorting_col,
@@ -280,8 +284,8 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         self.clr_table(0)
 
-        for sorting_col, sorting_order in settings['sorting_rules']:
-            self._add_row(texts = [sorting_col, sorting_order])
+        for sorting_rule in settings['sorting_rules']:
+            self._add_row(texts = sorting_rule)
 
 class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(list)

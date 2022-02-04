@@ -135,10 +135,10 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
 
         return True
 
-class Wl_Table_Tags(wl_tables.Wl_Table):
-    def __init__(self, parent, settings_tags, default_type, default_level):
+class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
+    def __init__(self, parent, settings_tags, defaults_row):
         super().__init__(
-            parent,
+            parent = parent,
             headers = [
                 parent.tr('Type'),
                 parent.tr('Level'),
@@ -146,15 +146,12 @@ class Wl_Table_Tags(wl_tables.Wl_Table):
                 parent.tr('Closing Tag'),
                 parent.tr('Preview')
             ],
-            editable = True,
-            drag_drop = True
+            defaults = parent.main.settings_default['tags'][settings_tags],
+            col_edit = 2
         )
 
-        self.settings_tags = settings_tags
-        self.default_type = default_type
-        self.default_level = default_level
+        self.defaults_row = defaults_row
 
-        self.verticalHeader().setHidden(True)
         self.setFixedHeight(125)
 
         self.setItemDelegateForColumn(0, wl_boxes.Wl_Item_Delegate_Combo_Box(
@@ -167,26 +164,9 @@ class Wl_Table_Tags(wl_tables.Wl_Table):
         self.setItemDelegateForColumn(3, wl_tables.Wl_Item_Delegate_Uneditable(self))
         self.setItemDelegateForColumn(4, wl_tables.Wl_Item_Delegate_Uneditable(self))
 
-        self.model().itemChanged.connect(self.item_changed)
-        self.selectionModel().selectionChanged.connect(self.selection_changed)
-
-        self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_ins = QPushButton(self.tr('Insert'), self)
-        self.button_del = QPushButton(self.tr('Remove'), self)
-        self.button_clr = QPushButton(self.tr('Clear'), self)
-        self.button_reset = QPushButton(self.tr('Reset'), self)
-
-        self.button_add.clicked.connect(self.add_row)
-        self.button_ins.clicked.connect(self.ins_row)
-        self.button_del.clicked.connect(self.del_row)
-        self.button_clr.clicked.connect(lambda: self.clr_table(0))
-        self.button_reset.clicked.connect(self.reset_table)
-
         self.reset_table()
 
     def item_changed(self, item):
-        super().item_changed(item)
-
         if not self.is_empty():
             for row in range(self.model().rowCount()):
                 item_opening_tag = self.model().item(row, 2)
@@ -203,7 +183,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table):
 
                     item_opening_tag.setText(item_opening_tag.text_old)
 
-                    self.closePersistentEditor(item_opening_tag.index())
+                    self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
                     self.edit(item_opening_tag.index())
 
                     return
@@ -222,7 +202,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table):
 
                         item.setText(item.text_old)
 
-                        self.closePersistentEditor(item.index())
+                        self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
                         self.edit(item.index())
 
                         break
@@ -260,35 +240,30 @@ class Wl_Table_Tags(wl_tables.Wl_Table):
 
                 self.enable_updates()
 
-        if self.model().rowCount():
-            self.button_del.setEnabled(True)
-            self.button_clr.setEnabled(True)
-        else:
-            self.button_del.setEnabled(False)
-            self.button_clr.setEnabled(False)
+        super().item_changed(item)
 
-        self.selection_changed()
+    def _add_row(self, row = None, texts = None):
+        if texts is None:
+            type_, level, opening_tag = self.defaults_row
 
-    def selection_changed(self):
-        if self.selectionModel().selectedIndexes():
-            self.button_ins.setEnabled(True)
-
-            if self.model().rowCount():
-                self.button_del.setEnabled(True)
-            else:
-                self.button_del.setEnabled(False)
-        else:
-            self.button_ins.setEnabled(False)
-            self.button_del.setEnabled(False)
-
-    def _add_row(self, row = None, type_ = '', level = '', opening_tag = ''):
-        if not type_:
-            type_ = self.default_type
-        if not level:
-            level = self.default_level
-        if not opening_tag:
             opening_tags = [self.model().item(i, 2).text() for i in range(self.model().rowCount())]
-            opening_tag = wl_checking_misc.check_new_name(self.tr('Tag'), opening_tags)
+
+            # HTML tags
+            if opening_tag.startswith('<') and opening_tag.endswith('>'):
+                opening_tags = [
+                    re.sub(r'^<|>$', r'', self.model().item(i, 2).text())
+                    for i in range(self.model().rowCount())
+                ]
+                opening_tag = f"<{wl_checking_misc.check_new_name(opening_tag[1:-1], opening_tags, separator = '')}>"
+            else:
+                opening_tags = [self.model().item(i, 2).text() for i in range(self.model().rowCount())]
+                opening_tag = wl_checking_misc.check_new_name(opening_tag, opening_tags, separator = '')
+
+            opening_tag = re.sub(r'\s\(([0-9]+)\)', r'\1', opening_tag)
+        else:
+            type_ = texts[0]
+            level = texts[1]
+            opening_tag = texts[2]
 
         item_opening_tag = QStandardItem(opening_tag)
         item_opening_tag.text_old = opening_tag
@@ -312,28 +287,6 @@ class Wl_Table_Tags(wl_tables.Wl_Table):
 
         self.model().itemChanged.emit(item_opening_tag)
 
-    def add_row(self, type_ = '', level = '', opening_tag = ''):
-        self._add_row(type_, level, opening_tag)
-        self.setCurrentIndex(self.model().index(self.model().rowCount(), 0))
-
-    def ins_row(self, type_ = '', level = '', opening_tag = ''):
-        row = self.get_selected_rows()[0]
-
-        self._add_row(row = row, type_ = type_, level = level, opening_tag = opening_tag)
-        self.setCurrentIndex(self.model().index(row, 0))
-
-    def del_row(self):
-        for i in reversed(self.get_selected_rows()):
-            self.model().removeRow(i)
-
-        self.model().itemChanged.emit(QStandardItem())
-
-    def reset_table(self):
-        self.clr_table(0)
-
-        for type_, level, opening_tag in self.main.settings_default['tags'][self.settings_tags]:
-            self._add_row(type_ = type_, level = level, opening_tag = opening_tag)
-
     def get_tags(self):
         tags = []
 
@@ -351,8 +304,11 @@ class Wl_Table_Tags_Header(Wl_Table_Tags):
         super().__init__(
             parent,
             settings_tags = 'tags_header',
-            default_type = parent.tr('Non-embedded'),
-            default_level = parent.tr('Header')
+            defaults_row = [
+                parent.tr('Non-embedded'),
+                parent.tr('Header'),
+                parent.tr('<TAG>')
+            ]
         )
 
         self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
@@ -367,8 +323,11 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
         super().__init__(
             parent,
             settings_tags = 'tags_body',
-            default_type = parent.tr('Embedded'),
-            default_level = parent.tr('Part of Speech')
+            defaults_row = [
+                parent.tr('Embedded'),
+                parent.tr('Part of Speech'),
+                parent.tr('TAG')
+            ]
         )
 
         self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
@@ -384,8 +343,11 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
         super().__init__(
             parent,
             settings_tags = 'tags_xml',
-            default_type = parent.tr('Non-embedded'),
-            default_level = parent.tr('Paragraph')
+            defaults_row = [
+                parent.tr('Non-embedded'),
+                parent.tr('Paragraph'),
+                parent.tr('<TAG>')
+            ]
         )
 
         self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
@@ -403,21 +365,27 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
             opening_tag_text = opening_tag_item.text()
 
             # Check if the XML tags are valid
-            if opening_tag_text and not re.search(r'^\<[^<>/\s]+?\>$', opening_tag_text):
+            # Reference: https://www.w3.org/TR/REC-xml/#NT-NameStartChar
+            NameStartChar = r'[A-Za-z:_\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u10000-\uEFFFF]'
+            NameChar = fr'{NameStartChar[:-1]}0-9\-.\u00B7\u0300-\u036F\u203F-\u2040]'
+
+            if not re.search(fr'^<{NameStartChar}{NameChar}*>$', opening_tag_text):
                 wl_msg_boxes.Wl_Msg_Box_Warning(
                     self.main,
                     title = self.tr('Invalid XML Tag'),
                     text = self.tr('''
                         <div>The specified XML tag is invalid!</div>
                     ''')
-                ).open()
+                ).exec_()
 
-                self.closePersistentEditor(opening_tag_item.index())
+                opening_tag_item.setText(item.text_old)
+
+                self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
                 self.edit(opening_tag_item.index())
 
                 return
 
-        super().item_changed(item = item)
+        super().item_changed(item)
 
 class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
@@ -493,14 +461,14 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         self.table_tags_body.clr_table(0)
         self.table_tags_xml.clr_table(0)
 
-        for type_, level, opening_tag in settings['tags_header']:
-            self.table_tags_header._add_row(type_ = type_, level = level, opening_tag = opening_tag)
+        for tag in settings['tags_header']:
+            self.table_tags_header._add_row(texts = tag)
 
-        for type_, level, opening_tag in settings['tags_body']:
-            self.table_tags_body._add_row(type_ = type_, level = level, opening_tag = opening_tag)
+        for tag in settings['tags_body']:
+            self.table_tags_body._add_row(texts = tag)
 
-        for type_, level, opening_tag in settings['tags_xml']:
-            self.table_tags_xml._add_row(type_ = type_, level = level, opening_tag = opening_tag)
+        for tag in settings['tags_xml']:
+            self.table_tags_xml._add_row(texts = tag)
 
     def apply_settings(self):
         self.settings_custom['tags_header'] = self.table_tags_header.get_tags()
