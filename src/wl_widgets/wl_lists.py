@@ -32,7 +32,8 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
     def __init__(
         self, parent,
         new_item_text = '',
-        editable = True, drag_drop = True
+        editable = True,
+        drag_drop = True
     ):
         super().__init__(parent)
 
@@ -121,14 +122,15 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
                             self.model().setStringList(data)
 
                             self.setCurrentIndex(topLeft)
-                            self.closePersistentEditor(topLeft)
+
+                            self.closeEditor(self.findChild(QLineEdit), QAbstractItemDelegate.NoHint)
                             self.edit(topLeft)
 
                             break
 
                     self.items_old[item_row] = self.model().stringList()[item_row]
 
-        self.selection_changed()
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def selection_changed(self):
         if self.selectionModel().selectedIndexes():
@@ -137,6 +139,9 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         else:
             self.button_ins.setEnabled(False)
             self.button_del.setEnabled(False)
+
+    def get_selected_rows(self):
+        return sorted({index.row() for index in self.selectionModel().selectedIndexes()})
 
     def _add_item(self, text = '', row = None):
         if text:
@@ -155,13 +160,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         self.model().setStringList(data)
 
-        if row is None:
-            self.setCurrentIndex(self.model().index(self.model().rowCount() - 1))
-        else:
-            self.setCurrentIndex(self.model().index(row))
-
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def _add_items(self, texts, row = None):
         data = self.model().stringList()
@@ -179,43 +178,42 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
             self.model().setStringList(data)
 
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def add_item(self, text = ''):
         self._add_item(text = text)
+        self.setCurrentIndex(self.model().index(self.model().rowCount() - 1))
 
-    def add_items(self, texts):
-        self._add_items(texts = texts)
+        self.edit(self.model().index(self.model().rowCount() - 1))
 
     def ins_item(self, text = ''):
-        self._add_item(text = text, row = self.selectionModel().selectedRows()[0].row())
+        row = self.get_selected_rows()[0]
 
-    def ins_items(self, texts):
-        self._add_items(texts = reversed(texts), row = self.selectionModel().selectedRows()[0].row())
+        self._add_item(text = text, row = row)
+        self.setCurrentIndex(self.model().index(row))
+
+        self.edit(self.model().index(row))
 
     def del_item(self):
         data = self.model().stringList()
 
-        for row in reversed(self.selectionModel().selectedRows()):
-            del data[row.row()]
-            del self.items_old[row.row()]
+        for row in reversed(self.get_selected_rows()):
+            del data[row]
+            del self.items_old[row]
 
         self.model().setStringList(data)
 
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def clr_list(self):
         self.model().setStringList([])
         self.items_old = []
 
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def load_items(self, texts):
         self.clr_list()
 
-        self.add_items(texts)
+        self._add_items(texts)
         self.scrollToTop()
 
 class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
@@ -242,12 +240,12 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         self.button_exp.clicked.connect(self.exp_list)
 
     def data_changed(self, topLeft = None, bottomRight = None):
-        super().data_changed(topLeft, bottomRight)
-
         if self.model().rowCount():
             self.button_exp.setEnabled(True)
         else:
             self.button_exp.setEnabled(False)
+
+        super().data_changed(topLeft, bottomRight)
 
     def imp_list(self):
         if os.path.exists(self.main.settings_custom['imp'][self.settings]['default_path']):
@@ -319,7 +317,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                         if line and line not in items_cur:
                             items_to_imp.append(line)
 
-                self.add_items(items_to_imp)
+                self._add_items(items_to_imp)
 
                 num_imps = self.model().rowCount() - num_prev
 
@@ -377,9 +375,9 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         )
 
     def data_changed_default(self):
-        super().data_changed()
-
         self.button_clr.setEnabled(False)
+
+        super().data_changed()
 
     def selection_changed_default(self):
         super().selection_changed()
@@ -401,7 +399,6 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def switch_to_default(self):
         self.setEditTriggers(QAbstractItemView.NoEditTriggers)
@@ -419,7 +416,6 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         self.selectionModel().selectionChanged.connect(self.selection_changed_default)
 
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
 class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
     def __init__(self, parent):
@@ -508,10 +504,4 @@ class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
 
         self.model().setStringList(data)
 
-        if row is None:
-            self.setCurrentIndex(self.model().index(self.model().rowCount() - 1))
-        else:
-            self.setCurrentIndex(self.model().index(row))
-
         self.model().dataChanged.emit(QModelIndex(), QModelIndex())
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())

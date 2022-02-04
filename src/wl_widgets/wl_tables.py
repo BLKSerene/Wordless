@@ -1155,7 +1155,7 @@ class Wl_Table(QTableView):
             thread_exp_table.start_worker()
 
 class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
-    def __init__(self, parent, headers, defaults = None):
+    def __init__(self, parent, headers, defaults = None, col_edit = None):
         super().__init__(
             parent = parent,
             headers = headers,
@@ -1164,6 +1164,7 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
         )
 
         self.defaults = defaults or []
+        self.col_edit = col_edit
 
         self.button_add = QPushButton(self.tr('Add'), self)
         self.button_ins = QPushButton(self.tr('Insert'), self)
@@ -1179,10 +1180,8 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
 
     def item_changed(self, item):
         if self.model().rowCount():
-            self.button_del.setEnabled(True)
             self.button_clr.setEnabled(True)
         else:
-            self.button_del.setEnabled(False)
             self.button_clr.setEnabled(False)
 
         super().item_changed(item)
@@ -1190,14 +1189,22 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
     def selection_changed(self, selected, deselected):
         if self.selectionModel().selectedIndexes():
             self.button_ins.setEnabled(True)
-
-            if self.model().rowCount():
-                self.button_del.setEnabled(True)
-            else:
-                self.button_del.setEnabled(False)
+            self.button_del.setEnabled(True)
         else:
             self.button_ins.setEnabled(False)
             self.button_del.setEnabled(False)
+
+    def add_row(self, texts = None):
+        super().add_row(texts = texts)
+
+        if self.col_edit is not None:
+            self.edit(self.model().index(self.model().rowCount() - 1, self.col_edit))
+
+    def ins_row(self, texts = None):
+        super().ins_row(texts = texts)
+
+        if self.col_edit is not None:
+            self.edit(self.model().index(self.get_selected_rows()[0], self.col_edit))
 
     def reset_table(self):
         self.clr_table(0)
