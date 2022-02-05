@@ -1,13 +1,13 @@
 Beautiful Soup,https://www.crummy.com/software/BeautifulSoup/,4.10.0,Leonard Richardson,MIT,https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE
 botok,https://github.com/Esukhia/botok,0.8.8,Hélios Drupchen Hildt,Apache-2.0,https://github.com/Esukhia/botok/blob/master/LICENSE
 Charset Normalizer,https://github.com/Ousret/charset_normalizer,2.0.11,TAHRI Ahmed R.,MIT,https://github.com/Ousret/charset_normalizer/blob/master/LICENSE
-CLTK,https://github.com/cltk/cltk,1.0.15,"Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly",MIT,https://github.com/cltk/cltk/blob/master/LICENSE
+CLTK,https://github.com/cltk/cltk,1.0.23,"Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly",MIT,https://github.com/cltk/cltk/blob/master/LICENSE
 extra-stopwords,https://github.com/Xangis/extra-stopwords,N/A,Jason Champion,MIT,https://github.com/Xangis/extra-stopwords/blob/master/LICENSE
 jieba,https://github.com/fxsjy/jieba,0.42.1,Sun Junyi (孙君意),MIT,https://github.com/fxsjy/jieba/blob/master/LICENSE
 langdetect,https://github.com/Mimino666/langdetect,1.0.9,"中谷秀洋, Michal Danilák",Apache-2.0,https://github.com/Mimino666/langdetect/blob/master/LICENSE
 langid.py,https://github.com/saffsd/langid.py,1.1.6,Marco Lui,BSD-2-Clause,https://github.com/saffsd/langid.py/blob/master/LICENSE
 Lemmatization Lists,https://github.com/michmech/lemmatization-lists,N/A,Michal Boleslav Měchura,ODbL-1.0,https://github.com/michmech/lemmatization-lists/blob/master/LICENCE
-Matplotlib,https://matplotlib.org/,3.4.3,Matplotlib Development Team,Matplotlib,https://matplotlib.org/stable/users/project/license.html
+Matplotlib,https://matplotlib.org/,3.5.1,Matplotlib Development Team,Matplotlib,https://matplotlib.org/stable/users/project/license.html
 nagisa,https://github.com/taishi-i/nagisa,0.2.7,Taishi Ikeda (池田大志),MIT,https://github.com/taishi-i/nagisa/blob/master/LICENSE.txt
 NetworkX,https://networkx.org/,2.6.3,"Aric Hagberg, Dan Schult, Pieter Swart",BSD-3-Clause,https://github.com/networkx/networkx/blob/main/LICENSE.txt
 NLTK,http://www.nltk.org/,3.6.7,"Steven Bird, Edward Loper, Ewan Klein",Apache-2.0,https://github.com/nltk/nltk/blob/develop/LICENSE.txt
@@ -19,7 +19,7 @@ PyInstaller,http://www.pyinstaller.org/,4.5.1,Hartmut Goebel,Bootloader-exceptio
 pymorphy2,https://github.com/kmike/pymorphy2,0.9.1,Mikhail Korobov,MIT,https://github.com/kmike/pymorphy2/#pymorphy2
 Pyphen,https://pyphen.org/,0.12.0,Guillaume Ayoub,GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1,https://github.com/Kozea/Pyphen/blob/master/LICENSE
 PyQt,https://riverbankcomputing.com/software/pyqt/,5.15.6,Riverbank Computing Limited,Commercial-Licnese/GPL-3.0-only,https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license
-PyThaiNLP,https://github.com/PyThaiNLP/pythainlp,2.3.2,Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์),Apache-2.0,https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE
+PyThaiNLP,https://github.com/PyThaiNLP/pythainlp,3.0.0,Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์),Apache-2.0,https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE
 Python,https://www.python.org/,3.8.10,"Guido van Rossum, Python Software Foundation",PSF-3.8.12,https://docs.python.org/3.8/license.html#psf-license-agreement-for-python-release
 python-docx,https://github.com/python-openxml/python-docx,0.8.11,Steve Canny,MIT,https://github.com/python-openxml/python-docx/blob/master/LICENSE
 razdel,https://github.com/natasha/razdel,0.5.0,Alexander Kukushkin,MIT,https://github.com/natasha/razdel/blob/master/LICENSE
