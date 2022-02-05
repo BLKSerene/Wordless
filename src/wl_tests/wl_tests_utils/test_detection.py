@@ -38,7 +38,7 @@ def test_detection_encoding(file_path):
     encoding_code = wl_detection.detect_encoding(main, file_path)
     encoding_code_file = re.search(r'(?<=\()[^\(\)]+?(?=\)\.txt)', file_name).group()
 
-    print(encoding_code)
+    print(f'Detected: {encoding_code}')
 
     assert encoding_code == encoding_code_file
 
@@ -56,7 +56,7 @@ def test_detection_lang(file_path):
 
     lang_code = wl_detection.detect_lang(main, file)
 
-    print(lang_code)
+    print(f'Detected: {lang_code}')
 
     assert lang_code == file_name.replace('.txt', '')
 

@@ -45,7 +45,7 @@
 - Dependencies: Add SudachiPy
 - Dependencies: Remove lemmalist-greek
 - Dependencies: Remove syntok
-- Dependencies: Upgrade Charset Normalizer to 2.0.9
+- Dependencies: Upgrade Charset Normalizer to 2.0.11
 - Dependencies: Upgrade NLTK to 3.6.7
 - Dependencies: Upgrade Pyphen to 0.12.0
 - Dependencies: Upgrade PyQt to 5.15.6
