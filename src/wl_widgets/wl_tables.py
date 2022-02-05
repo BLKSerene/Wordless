@@ -1031,7 +1031,7 @@ class Wl_Table(QTableView):
         return sorted({index.row() for index in self.selectionModel().selectedIndexes()})
 
     def get_selected_cols(self):
-        return sorted({index.col() for index in self.selectionModel().selectedIndexes()})
+        return sorted({index.column() for index in self.selectionModel().selectedIndexes()})
 
     def _add_row(self, row = None, texts = None):
         if texts is None:

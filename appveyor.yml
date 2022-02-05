@@ -21,13 +21,13 @@ version: 'Build {build}'
 environment:
   matrix:
     # Windows
-    - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2015"
+    - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
       PYTHON: "C:/Python38-x64"
     # MacOS
     - APPVEYOR_BUILD_WORKER_IMAGE: "macos-mojave"
       PYTHON: "~/venv3.8"
     # Linux
-    - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1604"
+    - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu"
       PYTHON: "$HOME/venv3.8"
 
 cache:
@@ -47,13 +47,13 @@ for:
   -
     matrix:
       only: 
-        - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2015"
+        - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       # Check Python version
       - python --version
-      # Install dependencies
-      - python -m pip install --upgrade pip setuptools
+      # Install dependencies (pin pip to 21 since pip 22 does not work)
+      - python -m pip install --upgrade pip==21.3.1 setuptools
       - pip install --requirement requirements.txt
       # Download data
       - python utils/wl_downloader_ci.py
@@ -86,14 +86,6 @@ for:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       # Check Python version
       - python --version
-      # Scikit-learn
-      - brew install libomp
-      - export CC=/usr/bin/clang
-      - export CXX=/usr/bin/clang++
-      - export CPPFLAGS="$CPPFLAGS -Xpreprocessor -fopenmp"
-      - export CFLAGS="$CFLAGS -I/usr/local/opt/libomp/include"
-      - export CXXFLAGS="$CXXFLAGS -I/usr/local/opt/libomp/include"
-      - export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/local/opt/libomp/lib -L/usr/local/opt/libomp/lib -lomp"
       # Install dependencies
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements.txt
@@ -123,7 +115,7 @@ for:
   - 
     matrix:
       only: 
-        - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1604"
+        - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu"
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       # Check Python version
