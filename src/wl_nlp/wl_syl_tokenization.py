@@ -62,7 +62,7 @@ def wl_syl_tokenize_text(main, text, lang, syl_tokenizer):
             syls_tokens.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
         # Thai
         elif syl_tokenizer == 'pythainlp_tha':
-            syls_tokens.append(pythainlp.syllable_tokenize(token))
+            syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
         elif syl_tokenizer == 'ssg_tha':
             syls_tokens.append(ssg.syllable_tokenize(token))
 
@@ -80,7 +80,7 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
             syls_tokens.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
         # Thai
         elif syl_tokenizer == 'pythainlp_tha':
-            syls_tokens.append(pythainlp.syllable_tokenize(token))
+            syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
         elif syl_tokenizer == 'ssg_tha':
             syls_tokens.append(ssg.syllable_tokenize(token))
 

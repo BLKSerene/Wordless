@@ -49,6 +49,7 @@
 - Dependencies: Upgrade NLTK to 3.6.7
 - Dependencies: Upgrade Pyphen to 0.12.0
 - Dependencies: Upgrade PyQt to 5.15.6
+- Dependencies: Upgrade PyThaiNLP to 3.0.0
 - Dependencies: Upgrade Requests to 2.27.1
 - Dependencies: Upgrade spaCy to 3.2.1
 - Dependencies: Upgrade TextBlob to 0.17.1
