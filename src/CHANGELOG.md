@@ -32,6 +32,7 @@
 ### ✨ Improvements
 - File Area: Remove temporary files when closing files
 - File Area: Show original file paths instead of modified ones
+- Utils: Update CLTK's Norse (Old) stop word list
 - Work Area: Update Work Area - Figure Settings - Sort by File
 
 ### ❌ Removals

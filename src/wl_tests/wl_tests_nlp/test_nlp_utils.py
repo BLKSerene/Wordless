@@ -21,8 +21,46 @@ from wl_tests import wl_test_init
 
 main = wl_test_init.Wl_Test_Main()
 
+settings_lang_utils = main.settings_global['lang_util_mappings']
+
 SENTENCE_SRP_CYRL = 'Српски језик припада словенској групи језика породице индоевропских језика.[12]'
 SENTENCE_SRP_LATN = 'Srpski jezik pripada slovenskoj grupi jezika porodice indoevropskih jezika.[12]'
+
+def test_to_lang_util_code():
+    for util_type in settings_lang_utils:
+        for util_text in settings_lang_utils[util_type]:
+            lang_util_code = wl_nlp_utils.to_lang_util_code(main, util_type, util_text)
+
+            assert lang_util_code == settings_lang_utils[util_type][util_text]
+
+def test_to_lang_util_codes():
+    for util_type in settings_lang_utils:
+        lang_util_codes = wl_nlp_utils.to_lang_util_codes(main, util_type, settings_lang_utils[util_type].keys())
+
+        assert list(lang_util_codes) == list(settings_lang_utils[util_type].values())
+
+def test_to_lang_util_text():
+    for util_type in settings_lang_utils:
+        TO_LANG_UTIL_TEXT = {
+            util_code: util_text
+            for util_text, util_code in settings_lang_utils[util_type].items()
+        }
+
+        for util_code in settings_lang_utils[util_type].values():
+            util_text = wl_nlp_utils.to_lang_util_text(main, util_type, util_code)
+
+            assert util_text == TO_LANG_UTIL_TEXT[util_code]
+
+def test_to_lang_util_texts():
+    for util_type in settings_lang_utils:
+        TO_LANG_UTIL_TEXT = {
+            util_code: util_text
+            for util_text, util_code in settings_lang_utils[util_type].items()
+        }
+
+        util_texts = wl_nlp_utils.to_lang_util_texts(main, util_type, settings_lang_utils[util_type].values())
+
+        assert list(util_texts) == list(TO_LANG_UTIL_TEXT.values())
 
 def test_to_sections():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -48,8 +86,27 @@ def test_srp_latn_to_cyrl():
 
     assert ' '.join(wl_nlp_utils.to_srp_cyrl(tokens_srp_latn)) == SENTENCE_SRP_CYRL
 
+def test_escape_text():
+    assert wl_nlp_utils.escape_text('<test test="test">') == '&lt;test test=&quot;test&quot;&gt;'
+
+def test_escape_tokens():
+    assert wl_nlp_utils.escape_tokens(['<test test="test">'] * 10) == ['&lt;test test=&quot;test&quot;&gt;'] * 10
+
+def test_html_to_text():
+    assert wl_nlp_utils.html_to_text('<test>&lt;test test=&quot;test&quot;&gt;</test>') == '<test test="test">'
+
 if __name__ == '__main__':
+    test_to_lang_util_code()
+    test_to_lang_util_codes()
+    test_to_lang_util_text()
+    test_to_lang_util_texts()
+
     test_to_sections()
     test_to_sections_unequal()
+
     test_srp_cyrl_to_latn()
     test_srp_latn_to_cyrl()
+
+    test_escape_text()
+    test_escape_tokens()
+    test_html_to_text()
