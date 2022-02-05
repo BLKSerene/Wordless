@@ -23,7 +23,7 @@ PyThaiNLP,https://github.com/PyThaiNLP/pythainlp,2.3.2,Wannaphong Phatthiyaphaib
 Python,https://www.python.org/,3.8.10,"Guido van Rossum, Python Software Foundation",PSF-3.8.12,https://docs.python.org/3.8/license.html#psf-license-agreement-for-python-release
 python-docx,https://github.com/python-openxml/python-docx,0.8.11,Steve Canny,MIT,https://github.com/python-openxml/python-docx/blob/master/LICENSE
 razdel,https://github.com/natasha/razdel,0.5.0,Alexander Kukushkin,MIT,https://github.com/natasha/razdel/blob/master/LICENSE
-Requests,https://github.com/psf/requests,2.26.0,Kenneth Reitz,Apache-2.0,https://github.com/psf/requests/blob/main/LICENSE
+Requests,https://github.com/psf/requests,2.27.1,Kenneth Reitz,Apache-2.0,https://github.com/psf/requests/blob/main/LICENSE
 Sacremoses,https://github.com/alvations/sacremoses,0.0.46,Liling Tan,MIT,https://github.com/alvations/sacremoses/blob/master/LICENSE
 SciPy,https://scipy.org/scipylib/,1.7.1,SciPy Developers,BSD-3-Clause,https://github.com/scipy/scipy/blob/main/LICENSE.txt
 spaCy,https://spacy.io/,3.2.1,"Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann",MIT,https://github.com/explosion/spaCy/blob/master/LICENSE
