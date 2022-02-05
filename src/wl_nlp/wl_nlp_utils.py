@@ -34,145 +34,6 @@ import sudachipy
 from wl_nlp import wl_texts
 from wl_utils import wl_conversion
 
-SRP_CYRL_TO_LATN = {
-    # Uppercase
-    'А': 'A',
-    'Б': 'B',
-    'Ц': 'C',
-    'Ч': 'Č',
-    'Ћ': 'Ć',
-    'Д': 'D',
-    'Џ': 'Dž',
-    'Ђ': 'Đ',
-    'Е': 'E',
-    'Ф': 'F',
-    'Г': 'G',
-    'Х': 'H',
-    'И': 'I',
-    'Ј': 'J',
-    'К': 'K',
-    'Л': 'L',
-    'Љ': 'Lj',
-    'М': 'M',
-    'Н': 'N',
-    'Њ': 'Nj',
-    'О': 'O',
-    'П': 'P',
-    'Р': 'R',
-    'С': 'S',
-    'Ш': 'Š',
-    'Т': 'T',
-    'У': 'U',
-    'В': 'V',
-    'З': 'Z',
-    'Ж': 'Ž',
-    # Lowercase
-    'а': 'a',
-    'б': 'b',
-    'ц': 'c',
-    'ч': 'č',
-    'ћ': 'ć',
-    'д': 'd',
-    'џ': 'dž',
-    'ђ': 'đ',
-    'е': 'e',
-    'ф': 'f',
-    'г': 'g',
-    'х': 'h',
-    'и': 'i',
-    'ј': 'j',
-    'к': 'k',
-    'л': 'l',
-    'љ': 'lj',
-    'м': 'm',
-    'н': 'n',
-    'њ': 'nj',
-    'о': 'o',
-    'п': 'p',
-    'р': 'r',
-    'с': 's',
-    'ш': 'š',
-    'т': 't',
-    'у': 'u',
-    'в': 'v',
-    'з': 'z',
-    'ж': 'ž',
-}
-
-SRP_LATN_TO_CYRL = {
-    # Uppercase
-    'A': 'А',
-    'B': 'Б',
-    'C': 'Ц',
-    'Č': 'Ч',
-    'Ć': 'Ћ',
-    'D': 'Д',
-    'Dž': 'Џ',
-    'Đ': 'Ђ',
-    'E': 'Е',
-    'F': 'Ф',
-    'G': 'Г',
-    'H': 'Х',
-    'I': 'И',
-    'J': 'Ј',
-    'K': 'К',
-    'L': 'Л',
-    'Lj': 'Љ',
-    'M': 'М',
-    'N': 'Н',
-    'Nj': 'Њ',
-    'O': 'О',
-    'P': 'П',
-    'R': 'Р',
-    'S': 'С',
-    'Š': 'Ш',
-    'T': 'Т',
-    'U': 'У',
-    'V': 'В',
-    'Z': 'З',
-    'Ž': 'Ж',
-    # Lowercase
-    'a': 'а',
-    'b': 'б',
-    'c': 'ц',
-    'č': 'ч',
-    'ć': 'ћ',
-    'd': 'д',
-    'dž': 'џ',
-    'đ': 'ђ',
-    'e': 'е',
-    'f': 'ф',
-    'g': 'г',
-    'h': 'х',
-    'i': 'и',
-    'j': 'ј',
-    'k': 'к',
-    'l': 'л',
-    'lj': 'љ',
-    'm': 'м',
-    'n': 'н',
-    'nj': 'њ',
-    'o': 'о',
-    'p': 'п',
-    'r': 'р',
-    's': 'с',
-    'š': 'ш',
-    't': 'т',
-    'u': 'у',
-    'v': 'в',
-    'z': 'з',
-    'ž': 'ж'
-}
-
-SRP_LATN_TO_CYRL_DIGRAPHS = {
-    'Dž': 'Џ',
-    'Lj': 'Љ',
-    'Nj': 'Њ',
-    'dž': 'џ',
-    'lj': 'љ',
-    'nj': 'њ'
-}
-
 def to_lang_util_code(main, util_type, util_text):
     return main.settings_global['lang_util_mappings'][util_type][util_text]
 
@@ -190,31 +51,31 @@ def to_lang_util_text(main, util_type, util_code):
 def to_lang_util_texts(main, util_type, util_codes):
     return (_to_lang_util_text(main, util_type, util_code) for util_code in util_codes)
 
+SPACY_LANGS = {
+    'cat': 'ca_core_news_sm',
+    'zho': 'zh_core_web_sm',
+    'dan': 'da_core_news_sm',
+    'nld': 'nl_core_news_sm',
+    'eng': 'en_core_web_sm',
+    'fra': 'fr_core_news_sm',
+    'deu': 'de_core_news_sm',
+    'ell': 'el_core_news_sm',
+    'ita': 'it_core_news_sm',
+    'jpn': 'ja_core_news_sm',
+    'lit': 'lt_core_news_sm',
+    'mkd': 'mk_core_news_sm',
+    'nob': 'nb_core_news_sm',
+    'pol': 'pl_core_news_sm',
+    'por': 'pt_core_news_sm',
+    'ron': 'ro_core_news_sm',
+    'rus': 'ru_core_news_sm',
+    'spa': 'es_core_news_sm',
+
+    'other': 'en_core_web_sm'
+}
+SPACY_LANGS_LEMMATIZERS = ['ben', 'cat', 'hrv', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
+
 def init_spacy_models(main, lang):
-    SPACY_LANGS = {
-        'cat': 'ca_core_news_sm',
-        'zho': 'zh_core_web_sm',
-        'dan': 'da_core_news_sm',
-        'nld': 'nl_core_news_sm',
-        'eng': 'en_core_web_sm',
-        'fra': 'fr_core_news_sm',
-        'deu': 'de_core_news_sm',
-        'ell': 'el_core_news_sm',
-        'ita': 'it_core_news_sm',
-        'jpn': 'ja_core_news_sm',
-        'lit': 'lt_core_news_sm',
-        'mkd': 'mk_core_news_sm',
-        'nob': 'nb_core_news_sm',
-        'pol': 'pl_core_news_sm',
-        'por': 'pt_core_news_sm',
-        'ron': 'ro_core_news_sm',
-        'rus': 'ru_core_news_sm',
-        'spa': 'es_core_news_sm',
-
-        'other': 'en_core_web_sm'
-    }
-    SPACY_LANGS_LEMMATIZERS = ['ben', 'cat', 'hrv', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
-
     # Chinese, English, German, Portuguese
     if not lang.startswith('srp_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -407,6 +268,143 @@ def to_sections_unequal(tokens, section_size):
         yield tokens[i : i + section_size]
 
 # Serbian
+SRP_CYRL_TO_LATN = {
+    # Uppercase
+    'А': 'A',
+    'Б': 'B',
+    'Ц': 'C',
+    'Ч': 'Č',
+    'Ћ': 'Ć',
+    'Д': 'D',
+    'Џ': 'Dž',
+    'Ђ': 'Đ',
+    'Е': 'E',
+    'Ф': 'F',
+    'Г': 'G',
+    'Х': 'H',
+    'И': 'I',
+    'Ј': 'J',
+    'К': 'K',
+    'Л': 'L',
+    'Љ': 'Lj',
+    'М': 'M',
+    'Н': 'N',
+    'Њ': 'Nj',
+    'О': 'O',
+    'П': 'P',
+    'Р': 'R',
+    'С': 'S',
+    'Ш': 'Š',
+    'Т': 'T',
+    'У': 'U',
+    'В': 'V',
+    'З': 'Z',
+    'Ж': 'Ž',
+    # Lowercase
+    'а': 'a',
+    'б': 'b',
+    'ц': 'c',
+    'ч': 'č',
+    'ћ': 'ć',
+    'д': 'd',
+    'џ': 'dž',
+    'ђ': 'đ',
+    'е': 'e',
+    'ф': 'f',
+    'г': 'g',
+    'х': 'h',
+    'и': 'i',
+    'ј': 'j',
+    'к': 'k',
+    'л': 'l',
+    'љ': 'lj',
+    'м': 'm',
+    'н': 'n',
+    'њ': 'nj',
+    'о': 'o',
+    'п': 'p',
+    'р': 'r',
+    'с': 's',
+    'ш': 'š',
+    'т': 't',
+    'у': 'u',
+    'в': 'v',
+    'з': 'z',
+    'ж': 'ž',
+}
+SRP_LATN_TO_CYRL = {
+    # Uppercase
+    'A': 'А',
+    'B': 'Б',
+    'C': 'Ц',
+    'Č': 'Ч',
+    'Ć': 'Ћ',
+    'D': 'Д',
+    'Dž': 'Џ',
+    'Đ': 'Ђ',
+    'E': 'Е',
+    'F': 'Ф',
+    'G': 'Г',
+    'H': 'Х',
+    'I': 'И',
+    'J': 'Ј',
+    'K': 'К',
+    'L': 'Л',
+    'Lj': 'Љ',
+    'M': 'М',
+    'N': 'Н',
+    'Nj': 'Њ',
+    'O': 'О',
+    'P': 'П',
+    'R': 'Р',
+    'S': 'С',
+    'Š': 'Ш',
+    'T': 'Т',
+    'U': 'У',
+    'V': 'В',
+    'Z': 'З',
+    'Ž': 'Ж',
+    # Lowercase
+    'a': 'а',
+    'b': 'б',
+    'c': 'ц',
+    'č': 'ч',
+    'ć': 'ћ',
+    'd': 'д',
+    'dž': 'џ',
+    'đ': 'ђ',
+    'e': 'е',
+    'f': 'ф',
+    'g': 'г',
+    'h': 'х',
+    'i': 'и',
+    'j': 'ј',
+    'k': 'к',
+    'l': 'л',
+    'lj': 'љ',
+    'm': 'м',
+    'n': 'н',
+    'nj': 'њ',
+    'o': 'о',
+    'p': 'п',
+    'r': 'р',
+    's': 'с',
+    'š': 'ш',
+    't': 'т',
+    'u': 'у',
+    'v': 'в',
+    'z': 'з',
+    'ž': 'ж'
+}
+SRP_LATN_TO_CYRL_DIGRAPHS = {
+    'Dž': 'Џ',
+    'Lj': 'Љ',
+    'Nj': 'Њ',
+    'dž': 'џ',
+    'lj': 'љ',
+    'nj': 'њ'
+}
+
 def to_srp_latn(tokens):
     tokens_latn = []
 
@@ -443,11 +441,11 @@ def to_srp_cyrl(tokens):
     return tokens_cyrl
 
 # HTML
-def text_escape(inputs):
-    if type(inputs) == str:
-        return html.escape(inputs).strip()
-    else:
-        return [html.escape(token).strip() for token in inputs]
+def escape_text(text):
+    return html.escape(text).strip()
+
+def escape_tokens(tokens):
+    return [html.escape(token).strip() for token in tokens]
 
 def html_to_text(text):
     # Remove tags and unescape character entities
