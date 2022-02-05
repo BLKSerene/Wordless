@@ -670,7 +670,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 ngram = text.tokens_flat[i : i + len_search_term]
 
                             node_text = ' '.join(ngram)
-                            node_text = wl_nlp_utils.text_escape(node_text)
+                            node_text = wl_nlp_utils.escape_text(node_text)
 
                             # Width Unit (Paragraph)
                             if settings['generation_settings']['width_unit'] == self.tr('Paragraph'):
@@ -808,8 +808,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                         + [context_right_last]
                                     )
 
-                            context_left = wl_nlp_utils.text_escape(context_left)
-                            context_right = wl_nlp_utils.text_escape(context_right)
+                            context_left = wl_nlp_utils.escape_tokens(context_left)
+                            context_right = wl_nlp_utils.escape_tokens(context_right)
 
                             context_left_text = ' '.join(context_left)
                             context_right_text = ' '.join(context_right)
