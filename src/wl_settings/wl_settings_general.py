@@ -341,13 +341,13 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
         if os.path.exists(settings['files']['default_path']):
             self.line_edit_imp_files_default_path.setText(settings['files']['default_path'])
         else:
-            self.line_edit_imp_files_default_path.setText(self.main.settings_default['files']['default_path'])
+            self.line_edit_imp_files_default_path.setText(self.settings_default['files']['default_path'])
 
         # Search Terms
         if os.path.exists(settings['search_terms']['default_path']):
             self.line_edit_imp_search_terms_default_path.setText(settings['search_terms']['default_path'])
         else:
-            self.line_edit_imp_search_terms_default_path.setText(self.main.settings_default['search_terms']['default_path'])
+            self.line_edit_imp_search_terms_default_path.setText(self.settings_default['search_terms']['default_path'])
 
         self.combo_box_imp_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['search_terms']['default_encoding']))
         self.checkbox_imp_search_terms_detect_encodings.setChecked(settings['search_terms']['detect_encodings'])
@@ -356,7 +356,7 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
         if os.path.exists(settings['stop_words']['default_path']):
             self.line_edit_imp_stop_words_default_path.setText(settings['stop_words']['default_path'])
         else:
-            self.line_edit_imp_stop_words_default_path.setText(self.main.settings_default['stop_words']['default_path'])
+            self.line_edit_imp_stop_words_default_path.setText(self.settings_default['stop_words']['default_path'])
 
         self.combo_box_imp_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
         self.checkbox_imp_stop_words_detect_encodings.setChecked(settings['stop_words']['detect_encodings'])

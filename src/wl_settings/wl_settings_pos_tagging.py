@@ -27,7 +27,7 @@ from wl_nlp import wl_nlp_utils, wl_pos_tagging
 from wl_settings import wl_settings
 from wl_tagsets import wl_tagset_universal
 from wl_utils import wl_conversion, wl_threading
-from wl_widgets import wl_boxes, wl_layouts, wl_tables
+from wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables
 
 class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(list)
@@ -100,7 +100,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             self.table_pos_taggers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
             self.table_pos_taggers.model().setItem(i, 1, QStandardItem())
 
-            self.table_pos_taggers.setItemDelegateForRow(i, wl_boxes.Wl_Item_Delegate_Combo_Box(
+            self.table_pos_taggers.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self.table_pos_taggers,
                 items = list(wl_nlp_utils.to_lang_util_texts(
                     self.main,
@@ -292,7 +292,9 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         # Mapping Settings
         group_box_mapping_settings = QGroupBox(self.tr('Mapping Settings'))
 
+        self.stacked_widget_num_pos_tags = wl_layouts.Wl_Stacked_Widget(self)
         self.label_tagsets_num_pos_tags = QLabel('', self)
+        self.label_tagsets_uneditable = wl_labels.Wl_Label_Hint(self.tr('* This POS tagger does not support custom mappings.'), self)
         self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)
         self.button_tagsets_reset_all = QPushButton(self.tr('Reset All'), self)
         self.table_mappings = wl_tables.Wl_Table(
@@ -306,7 +308,10 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
             editable = True
         )
 
-        self.table_mappings.setItemDelegate(wl_boxes.Wl_Item_Delegate_Combo_Box(
+        self.stacked_widget_num_pos_tags.addWidget(self.label_tagsets_num_pos_tags)
+        self.stacked_widget_num_pos_tags.addWidget(self.label_tagsets_uneditable)
+
+        self.table_mappings.setItemDelegate(wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self.table_mappings,
             items = [
                 'ADJ',
@@ -339,11 +344,12 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.button_tagsets_reset_all.clicked.connect(self.reset_all_mappings)
 
         group_box_mapping_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_mapping_settings.layout().addWidget(self.label_tagsets_num_pos_tags, 0, 0)
+        group_box_mapping_settings.layout().addWidget(self.stacked_widget_num_pos_tags, 0, 0)
         group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset, 0, 2)
         group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_all, 0, 3)
         group_box_mapping_settings.layout().addWidget(self.table_mappings, 1, 0, 1, 4)
 
+        group_box_mapping_settings.layout().setRowStretch(1, 1)
         group_box_mapping_settings.layout().setColumnStretch(1, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
@@ -411,8 +417,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
             thread_fetch_data.quit()
             thread_fetch_data.wait()
         else:
-            self.label_tagsets_num_pos_tags.setText(self.tr('* This POS tagger does not support custom mappings.'))
-            self.label_tagsets_num_pos_tags.setStyleSheet(self.main.settings_global['styles']['style_hint'])
+            self.stacked_widget_num_pos_tags.setCurrentIndex(1)
 
             self.button_tagsets_reset.setEnabled(False)
             self.button_tagsets_reset_all.setEnabled(False)
@@ -440,7 +445,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
             self.table_mappings.setEnabled(True)
 
         self.label_tagsets_num_pos_tags.setText(self.tr(f'Number of POS Tags: {self.table_mappings.model().rowCount()}'))
-        self.label_tagsets_num_pos_tags.setStyleSheet(self.main.settings_global['styles']['style_normal'])
+        self.stacked_widget_num_pos_tags.setCurrentIndex(0)
 
         self.combo_box_tagsets_lang.setEnabled(True)
         self.combo_box_tagsets_pos_tagger.setEnabled(True)
@@ -462,11 +467,25 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.settings_custom['mappings'][preview_lang][preview_pos_tagger] = mappings
 
     def reset_mappings(self):
-        if wl_msg_boxes.wl_msg_box_reset_mappings(self.main):
+        if wl_msg_boxes.wl_msg_box_question(
+            main = self.main,
+            title = self.tr('Reset Mappings'),
+            text = self.tr('''
+                <div>Do you want to reset all mappings to their default settings?</div>
+                <div><b>Note: This will only affect the mapping settings in the currently shown table.</b></div>
+            ''')
+        ):
             self.reset_currently_shown_table()
 
     def reset_all_mappings(self):
-        if wl_msg_boxes.wl_msg_box_reset_all_mappings(self.main):
+        if wl_msg_boxes.wl_msg_box_question(
+            main = self.main,
+            title = self.tr('Reset All Mappings'),
+            text = self.tr('''
+                <div>Do you want to reset all mappings to their default settings?</div>
+                <div><b>Warning: This will affect the mapping settings in all tables!</b></div>
+            ''')
+        ):
             self.settings_custom['mappings'] = copy.deepcopy(self.settings_default['mappings'])
 
             self.reset_currently_shown_table()

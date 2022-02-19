@@ -655,7 +655,7 @@ class Wl_Worker_Colligation(wl_threading.Wl_Worker):
             colligations_freqs_files_all = []
 
             settings = self.main.settings_custom['colligation']
-            files = self.main.wl_files.get_selected_files()
+            files = list(self.main.wl_file_area.get_selected_files())
 
             window_left = settings['generation_settings']['window_left']
             window_right = settings['generation_settings']['window_right']
@@ -1265,7 +1265,7 @@ def generate_table(main, table):
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['colligation']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading_colligation(main, files):
         if (
@@ -1417,7 +1417,7 @@ def generate_fig(main):
             wl_figs.show_fig()
 
     settings = main.settings_custom['colligation']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading_colligation(main, files):
         if (

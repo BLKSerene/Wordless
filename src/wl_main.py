@@ -109,22 +109,20 @@ class Wl_Main(QMainWindow):
     def __init__(self, loading_window):
         super().__init__()
 
-        self.loading_window = loading_window
-        self.threads_check_updates = []
-
-        # Email
-        self.email = 'blkserene@gmail.com'
-        self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
+        # Icon
+        self.setWindowIcon(QIcon(wl_misc.get_normalized_path('imgs/wl_icon.ico')))
+        # Title
+        self.setWindowTitle('Wordless')
 
         # Version numbers
         self.ver = wl_misc.get_wl_ver()
         self.ver_major, self.ver_minor, self.ver_patch = wl_misc.split_wl_ver(self.ver)
+        # Email
+        self.email = 'blkserene@gmail.com'
+        self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
 
-        # Title
-        self.setWindowTitle(self.tr('Wordless'))
-
-        # Icon
-        self.setWindowIcon(QIcon(wl_misc.get_normalized_path('imgs/wl_icon.ico')))
+        self.loading_window = loading_window
+        self.threads_check_updates = []
 
         self.loading_window.show_message(self.tr('Loading settings...'))
 
@@ -205,20 +203,13 @@ class Wl_Main(QMainWindow):
         self.menu_help = self.menuBar().addMenu(self.tr('&Help'))
 
         # File
-        self.action_file_open_files = self.menu_file.addAction(self.tr('&Open File(s)...'))
+        self.action_file_open_files = self.menu_file.addAction(self.tr('&Open Files...'))
         self.action_file_open_files.setShortcut(QKeySequence('Ctrl+O'))
-        self.action_file_open_files.setStatusTip(self.tr('Open file(s)'))
+        self.action_file_open_files.setStatusTip(self.tr('Open files'))
         self.action_file_open_dir = self.menu_file.addAction(self.tr('Open &Folder...'))
-        self.action_file_open_dir.setStatusTip(self.tr('Open all files in folder'))
+        self.action_file_open_dir.setStatusTip(self.tr('Open all files in the folder'))
         self.action_file_reopen = self.menu_file.addAction(self.tr('&Reopen Closed Files'))
         self.action_file_reopen.setStatusTip(self.tr('Reopen closed files'))
-
-        self.menu_file.addSeparator()
-
-        self.action_file_reload_selected = self.menu_file.addAction(self.tr('Reload &Selected'))
-        self.action_file_reload_selected.setStatusTip(self.tr('Reload selected files'))
-        self.action_file_reload_all = self.menu_file.addAction(self.tr('Reload &All'))
-        self.action_file_reload_all.setStatusTip(self.tr('Reload all files'))
 
         self.menu_file.addSeparator()
 
@@ -306,7 +297,13 @@ class Wl_Main(QMainWindow):
 
     # Preferences - Reset Layouts
     def prefs_reset_layouts(self):
-        if wl_msg_boxes.wl_msg_box_reset_layouts(self):
+        if wl_msg_boxes.wl_msg_box_question(
+            main = self,
+            title = self.tr('Reset Layouts'),
+            text = self.tr('''
+                <div>Do you want to reset all layouts to their default settings?</div>
+            ''')
+        ):
             self.centralWidget().setSizes([self.height() - 210, 210])
 
     # Help - Citing
@@ -348,7 +345,7 @@ class Wl_Main(QMainWindow):
         self.wl_file_area = wl_file_area.Wrapper_File_Area(self)
         self.init_work_area()
 
-        # Align work are and file area
+        # Align work area and file area
         wrapper_file_area = QWidget()
 
         wrapper_file_area.setLayout(wl_layouts.Wl_Layout())
@@ -1067,8 +1064,46 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
 
                         changelog[-1]['changelog_sections'][-1]['section_list'].append(line)
 
+            font_size_custom = main.settings_custom['general']['font_settings']['font_size']
+
             changelog_text = f'''
-                {main.settings_global['styles']['style_changelog']}
+                <head>
+                    <style>
+                        * {{
+                            outline: none;
+                            margin: 0;
+                            border: 0;
+                            padding: 0;
+
+                            text-align: justify;
+                        }}
+
+                        ul {{
+                            line-height: 1.2;
+                            margin-bottom: 10px;
+                        }}
+
+                        li {{
+                            margin-left: -30px;
+                        }}
+
+                        .changelog {{
+                            margin-bottom: 5px;
+                        }}
+
+                        .changelog-header {{
+                            margin-bottom: 3px;
+                            font-size: {font_size_custom + 2}px;
+                            font-weight: bold;
+                        }}
+
+                        .changelog-section-header {{
+                            margin-bottom: 5px;
+                            font-size: {font_size_custom + 1}px;
+                            font-weight: bold;
+                        }}
+                    </style>
+                </head>
                 <body>
             '''
 

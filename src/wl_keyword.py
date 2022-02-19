@@ -426,13 +426,13 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
 
             settings = self.main.settings_custom['keyword']
 
-            files_ref = self.main.wl_files.find_files_by_name(
+            files_ref = list(self.main.wl_file_area.find_files_by_name(
                 settings['generation_settings']['ref_files'],
                 selected_only = True
-            )
+            ))
             files_observed = [
                 file_observed
-                for file_observed in self.main.wl_files.get_selected_files()
+                for file_observed in self.main.wl_file_area.get_selected_files()
                 if file_observed not in files_ref
             ]
 
@@ -777,16 +777,16 @@ def generate_table(main, table):
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['keyword']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
-        files_ref = main.wl_files.find_files_by_name(
+        files_ref = list(main.wl_file_area.find_files_by_name(
             settings['generation_settings']['ref_files'],
             selected_only = True
-        )
+        ))
         files_observed = [
             file_observed
-            for file_observed in main.wl_files.get_selected_files()
+            for file_observed in main.wl_file_area.get_selected_files()
             if file_observed not in files_ref
         ]
 
@@ -884,13 +884,13 @@ def generate_fig(main):
             wl_figs.show_fig()
 
     settings = main.settings_custom['keyword']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
         files_ref = settings['generation_settings']['ref_files']
         file_names_observed = [
             file_name
-            for file_name in main.wl_files.get_selected_file_names()
+            for file_name in main.wl_file_area.get_selected_file_names()
             if file_name not in files_ref
         ]
 

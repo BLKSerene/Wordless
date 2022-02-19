@@ -82,7 +82,7 @@ class Wl_Combo_Box_File_Concordancer(wl_boxes.Wl_Combo_Box_File):
 
         self.clear()
 
-        for file in self.main.wl_files.get_selected_files():
+        for file in self.main.wl_file_area.get_selected_files():
             self.addItem(file['name'])
 
         if self.count() > 0:
@@ -483,8 +483,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
             src_file_name = settings['generation_settings']['src_file']
             tgt_file_name = settings['generation_settings']['tgt_file']
 
-            src_file = self.main.wl_files.find_file_by_name(src_file_name, selected_only = True)
-            tgt_file = self.main.wl_files.find_file_by_name(tgt_file_name, selected_only = True)
+            src_file = self.main.wl_file_area.find_file_by_name(src_file_name, selected_only = True)
+            tgt_file = self.main.wl_file_area.find_file_by_name(tgt_file_name, selected_only = True)
 
             text_src = copy.deepcopy(src_file['text'])
             text_tgt = copy.deepcopy(tgt_file['text'])
@@ -826,7 +826,7 @@ def generate_table(main, table_src, table_tgt):
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['concordancer_parallel']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
         # Check for identical source and target files

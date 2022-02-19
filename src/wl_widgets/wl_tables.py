@@ -720,10 +720,6 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             wrap_text = True
         )
 
-class Wl_Item_Delegate_Uneditable(QStyledItemDelegate):
-    def createEditor(self, parent, option, index):
-        pass
-
 class Wl_Table(QTableView):
     def __init__(
         self, parent,
@@ -1155,7 +1151,7 @@ class Wl_Table(QTableView):
             thread_exp_table.start_worker()
 
 class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
-    def __init__(self, parent, headers, defaults = None, col_edit = None):
+    def __init__(self, parent, headers, col_edit = None):
         super().__init__(
             parent = parent,
             headers = headers,
@@ -1163,23 +1159,20 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
             drag_drop = True
         )
 
-        self.defaults = defaults or []
         self.col_edit = col_edit
 
         self.button_add = QPushButton(self.tr('Add'), self)
         self.button_ins = QPushButton(self.tr('Insert'), self)
         self.button_del = QPushButton(self.tr('Remove'), self)
         self.button_clr = QPushButton(self.tr('Clear'), self)
-        self.button_reset = QPushButton(self.tr('Reset'), self)
 
         self.button_add.clicked.connect(lambda: self.add_row())
         self.button_ins.clicked.connect(lambda: self.ins_row())
         self.button_del.clicked.connect(lambda: self.del_row())
         self.button_clr.clicked.connect(lambda: self.clr_table(0))
-        self.button_reset.clicked.connect(lambda: self.reset_table())
 
     def item_changed(self, item):
-        if self.model().rowCount():
+        if not self.is_empty():
             self.button_clr.setEnabled(True)
         else:
             self.button_clr.setEnabled(False)
@@ -1205,12 +1198,6 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
 
         if self.col_edit is not None:
             self.edit(self.model().index(self.get_selected_rows()[0], self.col_edit))
-
-    def reset_table(self):
-        self.clr_table(0)
-
-        for default_texts in self.defaults:
-            self._add_row(texts = default_texts)
 
 class Wl_Table_Item(QStandardItem):
     def read_data(self):

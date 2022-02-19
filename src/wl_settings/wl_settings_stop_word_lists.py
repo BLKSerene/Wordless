@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 from wl_nlp import wl_nlp_utils, wl_stop_word_lists
 from wl_settings import wl_settings
 from wl_utils import wl_conversion
-from wl_widgets import wl_boxes, wl_layouts, wl_lists, wl_tables
+from wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_lists, wl_tables
 
 class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
@@ -55,7 +55,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         for i, lang in enumerate(self.settings_global):
             self.table_stop_word_lists.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
             self.table_stop_word_lists.model().setItem(i, 1, QStandardItem())
-            self.table_stop_word_lists.setItemDelegateForRow(i, wl_boxes.Wl_Item_Delegate_Combo_Box(
+            self.table_stop_word_lists.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self.table_stop_word_lists,
                 items = list(wl_nlp_utils.to_lang_util_texts(
                     self.main,

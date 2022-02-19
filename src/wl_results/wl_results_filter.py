@@ -501,7 +501,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.combo_box_file_to_filter = wl_boxes.Wl_Combo_Box_File_To_Filter(self, self.table)
         self.button_filter = QPushButton(self.tr('Filter'), self)
 
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
         self.button_close = QPushButton(self.tr('Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
