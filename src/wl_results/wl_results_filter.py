@@ -26,7 +26,7 @@ from wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wl_utils import wl_misc, wl_msgs, wl_threading
 from wl_widgets import wl_boxes, wl_buttons, wl_layouts, wl_widgets
 
-class Wl_Worker_Results_Filter_Wordlist(wl_threading.Wl_Worker):
+class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
     def run(self):
         text_measure_dispersion = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_dispersion']
         text_measure_adjusted_freq = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_adjusted_freq']
@@ -34,7 +34,7 @@ class Wl_Worker_Results_Filter_Wordlist(wl_threading.Wl_Worker):
         text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
         text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
-        if self.dialog.tab == 'wordlist':
+        if self.dialog.tab == 'wordlist_generator':
             col_token = self.dialog.table.find_header_hor(self.tr('Token'))
         elif self.dialog.tab == 'ngram':
             col_ngram = self.dialog.table.find_header_hor(self.tr('N-gram'))
@@ -62,7 +62,7 @@ class Wl_Worker_Results_Filter_Wordlist(wl_threading.Wl_Worker):
 
         col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
 
-        if self.dialog.tab == 'wordlist':
+        if self.dialog.tab == 'wordlist_generator':
             len_token_min = (
                 float('-inf')
                 if self.dialog.settings['len_token_min_no_limit']
@@ -131,7 +131,7 @@ class Wl_Worker_Results_Filter_Wordlist(wl_threading.Wl_Worker):
 
         self.dialog.table.row_filters = []
 
-        if self.dialog.tab == 'wordlist':
+        if self.dialog.tab == 'wordlist_generator':
             for i in range(self.dialog.table.model().rowCount()):
                 if (
                     len_token_min <= len(self.dialog.table.model().item(i, col_token).text()) <= len_token_max
@@ -550,11 +550,11 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
     def filter_results(self):
         pass
 
-class Wl_Dialog_Results_Filter_Wordlist(Wl_Dialog_Results_Filter):
+class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
         super().__init__(main, tab, table)
 
-        if self.tab == 'wordlist':
+        if self.tab == 'wordlist_generator':
             self.label_len_token = QLabel(self.tr('Token Length:'), self)
             (
                 self.label_len_token_min,
@@ -639,7 +639,7 @@ class Wl_Dialog_Results_Filter_Wordlist(Wl_Dialog_Results_Filter):
             filter_max = 100000
         )
 
-        if self.tab == 'wordlist':
+        if self.tab == 'wordlist_generator':
             self.spin_box_len_token_min.valueChanged.connect(self.filters_changed)
             self.checkbox_len_token_min_no_limit.stateChanged.connect(self.filters_changed)
             self.spin_box_len_token_max.valueChanged.connect(self.filters_changed)
@@ -672,7 +672,7 @@ class Wl_Dialog_Results_Filter_Wordlist(Wl_Dialog_Results_Filter):
 
         self.table.model().itemChanged.connect(self.table_item_changed)
 
-        if self.tab == 'wordlist':
+        if self.tab == 'wordlist_generator':
             self.layout_filters.addWidget(self.label_len_token, 0, 0, 1, 3)
             self.layout_filters.addWidget(self.label_len_token_min, 1, 0)
             self.layout_filters.addWidget(self.spin_box_len_token_min, 1, 1)
@@ -733,7 +733,7 @@ class Wl_Dialog_Results_Filter_Wordlist(Wl_Dialog_Results_Filter):
         else:
             settings = copy.deepcopy(self.settings)
 
-        if self.tab == 'wordlist':
+        if self.tab == 'wordlist_generator':
             self.spin_box_len_token_min.setValue(settings['len_token_min'])
             self.checkbox_len_token_min_no_limit.setChecked(settings['len_token_min_no_limit'])
             self.spin_box_len_token_max.setValue(settings['len_token_max'])
@@ -765,7 +765,7 @@ class Wl_Dialog_Results_Filter_Wordlist(Wl_Dialog_Results_Filter):
         self.checkbox_num_files_found_max_no_limit.setChecked(settings['num_files_found_max_no_limit'])
 
     def filters_changed(self):
-        if self.tab == 'wordlist':
+        if self.tab == 'wordlist_generator':
             self.settings['len_token_min'] = self.spin_box_len_token_min.value()
             self.settings['len_token_min_no_limit'] = self.checkbox_len_token_min_no_limit.isChecked()
             self.settings['len_token_max'] = self.spin_box_len_token_max.value()
@@ -817,7 +817,7 @@ class Wl_Dialog_Results_Filter_Wordlist(Wl_Dialog_Results_Filter):
 
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...'))
 
-        worker_search_results = Wl_Worker_Results_Filter_Wordlist(
+        worker_search_results = Wl_Worker_Results_Filter_Wordlist_Generator(
             self.main,
             dialog_progress = dialog_progress,
             update_gui = update_gui,
