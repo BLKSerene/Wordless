@@ -24,8 +24,6 @@ from wl_measures import (
 )
 
 def init_settings_global(main):
-    font_size_custom = main.settings_custom['general']['font_settings']['font_size']
-
     main.settings_global = {
         'langs': {
             main.tr('Afrikaans'):               ['afr', 'af', 'Indo-European'],
@@ -2989,59 +2987,6 @@ def init_settings_global(main):
                         }
                     </style>
                 </head>
-            ''',
-
-            'style_changelog': f'''
-                <head>
-                    <style>
-                        * {{
-                            outline: none;
-                            margin: 0;
-                            border: 0;
-                            padding: 0;
-
-                            text-align: justify;
-                        }}
-
-                        ul {{
-                            line-height: 1.2;
-                            margin-bottom: 10px;
-                        }}
-
-                        li {{
-                            margin-left: -30px;
-                        }}
-
-                        .changelog {{
-                            margin-bottom: 5px;
-                        }}
-
-                        .changelog-header {{
-                            margin-bottom: 3px;
-                            font-size: {font_size_custom + 2}px;
-                            font-weight: bold;
-                        }}
-
-                        .changelog-section-header {{
-                            margin-bottom: 5px;
-                            font-size: {font_size_custom + 1}px;
-                            font-weight: bold;
-                        }}
-                    </style>
-                </head>
-            ''',
-
-            'style_normal': '''
-                color: #000
-            ''',
-
-            'style_important': '''
-                color: #F00;
-                font-weight: bold;
-            ''',
-
-            'style_hint': '''
-                color: #777;
             '''
         }
     }

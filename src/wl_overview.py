@@ -487,7 +487,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
             texts = []
 
             settings = self.main.settings_custom['overview']
-            files = self.main.wl_files.get_selected_files()
+            files = list(self.main.wl_file_area.get_selected_files())
 
             for i, file in enumerate(files):
                 text = copy.deepcopy(file['text'])
@@ -994,7 +994,7 @@ def generate_table(main, table):
 
             wl_msgs.wl_msg_fatal_error(main)
 
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
