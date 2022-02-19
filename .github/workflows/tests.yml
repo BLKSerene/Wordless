@@ -48,8 +48,8 @@ jobs:
         cd src
         $env:PYTHONPATH += $PWD
 
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_overview.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_wordlist.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_profiler.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_wordlist_generator.py
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_ngram.py
 
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_lemmatization.py
@@ -101,8 +101,8 @@ jobs:
         cd src
         export PYTHONPATH="$PYTHONPATH;$PWD"
 
-        pytest wl_tests/wl_tests_work_area/test_overview.py
-        pytest wl_tests/wl_tests_work_area/test_wordlist.py
+        pytest wl_tests/wl_tests_work_area/test_profiler.py
+        pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
         pytest wl_tests/wl_tests_work_area/test_ngram.py
 
         pytest wl_tests/wl_tests_nlp/test_lemmatization.py

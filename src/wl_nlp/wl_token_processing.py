@@ -307,7 +307,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
     return tokens
 
-def wl_process_tokens_wordlist(main, text, token_settings):
+def wl_process_tokens_wordlist_generator(main, text, token_settings):
     text = wl_process_tokens(main, text, token_settings)
 
     return text

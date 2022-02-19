@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Wordlist
+# Wordless: Wordlist Generator
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -32,11 +32,11 @@ from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
 from wl_widgets import wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Wordlist(wl_tables.Wl_Table_Data_Filter_Search):
+class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
-            tab = 'wordlist',
+            tab = 'wordlist_generator',
             headers = [
                 parent.tr('Rank'),
                 parent.tr('Token'),
@@ -53,35 +53,33 @@ class Wl_Table_Wordlist(wl_tables.Wl_Table_Data_Filter_Search):
             sorting_enabled = True
         )
 
-        self.name = 'wordlist'
-
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
-class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
+class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
-        self.table_wordlist = Wl_Table_Wordlist(self)
+        self.table_wordlist_generator = Wl_Table_Wordlist_Generator(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_wordlist.label_number_results, 0, 0)
-        layout_results.addWidget(self.table_wordlist.button_results_filter, 0, 2)
-        layout_results.addWidget(self.table_wordlist.button_results_search, 0, 3)
+        layout_results.addWidget(self.table_wordlist_generator.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_wordlist_generator.button_results_filter, 0, 2)
+        layout_results.addWidget(self.table_wordlist_generator.button_results_search, 0, 3)
 
         layout_results.setColumnStretch(1, 1)
 
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_wordlist, 1, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_exp_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_exp_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_wordlist.button_clr, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_wordlist_generator, 1, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_wordlist_generator.button_generate_table, 2, 0)
+        self.wrapper_table.layout().addWidget(self.table_wordlist_generator.button_generate_fig, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_wordlist_generator.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_wordlist_generator.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_wordlist_generator.button_clr, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -183,7 +181,7 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
             self.checkbox_show_breakdown
         ) = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_wordlist]
+            tables = [self.table_wordlist_generator]
         )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
@@ -272,9 +270,9 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default['wordlist'])
+            settings = copy.deepcopy(self.main.settings_default['wordlist_generator'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom['wordlist'])
+            settings = copy.deepcopy(self.main.settings_custom['wordlist_generator'])
 
         # Token Settings
         self.checkbox_words.setChecked(settings['token_settings']['words'])
@@ -318,7 +316,7 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
         self.fig_settings_changed()
 
     def token_settings_changed(self):
-        settings = self.main.settings_custom['wordlist']['token_settings']
+        settings = self.main.settings_custom['wordlist_generator']['token_settings']
 
         settings['words'] = self.checkbox_words.isChecked()
         settings['lowercase'] = self.checkbox_lowercase.isChecked()
@@ -335,7 +333,7 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
     def generation_settings_changed(self):
-        settings = self.main.settings_custom['wordlist']['generation_settings']
+        settings = self.main.settings_custom['wordlist_generator']['generation_settings']
 
         settings['measure_dispersion'] = self.combo_box_measure_dispersion.currentText()
         settings['measure_adjusted_freq'] = self.combo_box_measure_adjusted_freq.currentText()
@@ -355,17 +353,17 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
         if self.combo_box_use_data.findText(use_data_old) > -1:
             self.combo_box_use_data.setCurrentText(use_data_old)
         else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['wordlist']['fig_settings']['use_data'])
+            self.combo_box_use_data.setCurrentText(self.main.settings_default['wordlist_generator']['fig_settings']['use_data'])
 
     def table_settings_changed(self):
-        settings = self.main.settings_custom['wordlist']['table_settings']
+        settings = self.main.settings_custom['wordlist_generator']['table_settings']
 
         settings['show_pct'] = self.checkbox_show_pct.isChecked()
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
     def fig_settings_changed(self):
-        settings = self.main.settings_custom['wordlist']['fig_settings']
+        settings = self.main.settings_custom['wordlist_generator']['fig_settings']
 
         settings['graph_type'] = self.combo_box_graph_type.currentText()
         settings['sort_by_file'] = self.combo_box_sort_by_file.currentText()
@@ -378,7 +376,7 @@ class Wrapper_Wordlist(wl_layouts.Wl_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
+class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
@@ -392,13 +390,13 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
         try:
             texts = []
 
-            settings = self.main.settings_custom['wordlist']
+            settings = self.main.settings_custom['wordlist_generator']
             files = list(self.main.wl_file_area.get_selected_files())
 
             # Frequency
             for file in files:
                 text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_wordlist(
+                text = wl_token_processing.wl_process_tokens_wordlist_generator(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -464,7 +462,7 @@ class Wl_Worker_Wordlist(wl_threading.Wl_Worker):
         except Exception:
             self.err_msg = traceback.format_exc()
 
-class Wl_Worker_Wordlist_Table(Wl_Worker_Wordlist):
+class Wl_Worker_Wordlist_Generator_Table(Wl_Worker_Wordlist_Generator):
     def run(self):
         super().run()
 
@@ -475,7 +473,7 @@ class Wl_Worker_Wordlist_Table(Wl_Worker_Wordlist):
             wl_misc.merge_dicts(self.tokens_stats_files)
         )
 
-class Wl_Worker_Wordlist_Fig(Wl_Worker_Wordlist):
+class Wl_Worker_Wordlist_Generator_Fig(Wl_Worker_Wordlist_Generator):
     def run(self):
         super().run()
 
@@ -614,27 +612,22 @@ def generate_table(main, table):
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-
             wl_msgs.wl_msg_fatal_error(main)
 
-    settings = main.settings_custom['wordlist']
+    settings = main.settings_custom['wordlist_generator']
     files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
-        worker_wordlist_table = Wl_Worker_Wordlist_Table(
+        worker_wordlist_generator_table = Wl_Worker_Wordlist_Generator_Table(
             main,
-            dialog_progress = dialog_progress,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
         )
 
-        thread_wordlist_table = wl_threading.Wl_Thread(worker_wordlist_table)
-        thread_wordlist_table.start_worker()
+        wl_threading.Wl_Thread(worker_wordlist_generator_table).start_worker()
     else:
         wl_msgs.wl_msg_generate_table_error(main)
 
@@ -681,11 +674,9 @@ def generate_fig(main):
                 wl_msgs.wl_msg_generate_fig_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_fig_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-
             wl_msgs.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
@@ -693,19 +684,17 @@ def generate_fig(main):
         if tokens_freq_files:
             wl_figs.show_fig()
 
-    settings = main.settings_custom['wordlist']
+    settings = main.settings_custom['wordlist_generator']
     files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
-        worker_wordlist_fig = Wl_Worker_Wordlist_Fig(
+        worker_wordlist_generator_fig = Wl_Worker_Wordlist_Generator_Fig(
             main,
             dialog_progress = dialog_progress,
             update_gui = update_gui
         )
-
-        thread_wordlist_fig = wl_threading.Wl_Thread(worker_wordlist_fig)
-        thread_wordlist_fig.start_worker()
+        wl_threading.Wl_Thread(worker_wordlist_generator_fig).start_worker()
     else:
         wl_msgs.wl_msg_generate_table_error(main)

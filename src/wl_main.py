@@ -67,7 +67,7 @@ import wl_file_area
 import wl_profiler
 import wl_concordancer
 import wl_concordancer_parallel
-import wl_wordlist
+import wl_wordlist_generator
 import wl_ngram
 import wl_collocation
 import wl_colligation
@@ -405,8 +405,8 @@ class Wl_Main(QMainWindow):
             self.tr('Concordancer')
         )
         self.wl_work_area.addTab(
-            wl_wordlist.Wrapper_Wordlist(self),
-            self.tr('Wordlist')
+            wl_wordlist_generator.Wrapper_Wordlist_Generator(self),
+            self.tr('Wordlist Generator')
         )
         self.wl_work_area.addTab(
             wl_ngram.Wrapper_Ngram(self),

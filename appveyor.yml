@@ -62,8 +62,8 @@ for:
       - set PYTHONPATH=%PYTHONPATH%;%cd%
     # Run tests
     test_script:
-      - pytest wl_tests/wl_tests_work_area/test_overview.py
-      - pytest wl_tests/wl_tests_work_area/test_wordlist.py
+      - pytest wl_tests/wl_tests_work_area/test_profiler.py
+      - pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
       - pytest wl_tests/wl_tests_work_area/test_ngram.py
 
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py
@@ -96,8 +96,8 @@ for:
       - export PYTHONPATH="$PYTHONPATH;$PWD"
     # Run tests
     test_script:
-      - pytest wl_tests/wl_tests_work_area/test_overview.py
-      - pytest wl_tests/wl_tests_work_area/test_wordlist.py
+      - pytest wl_tests/wl_tests_work_area/test_profiler.py
+      - pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
       - pytest wl_tests/wl_tests_work_area/test_ngram.py
 
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py

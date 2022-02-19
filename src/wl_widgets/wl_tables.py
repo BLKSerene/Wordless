@@ -1923,8 +1923,8 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             self
         )
 
-        if self.tab in ['wordlist', 'ngram']:
-            self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist(self.main, tab = self.tab, table = self)
+        if self.tab in ['wordlist_generator', 'ngram']:
+            self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(self.main, tab = self.tab, table = self)
         elif self.tab in ['collocation', 'colligation']:
             self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Collocation(self.main, tab = self.tab, table = self)
         elif self.tab == 'keyword':

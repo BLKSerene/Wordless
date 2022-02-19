@@ -25,7 +25,7 @@
 - 3 [Work Area](#doc-eng-3)
     - 3.1 [Profiler](#doc-eng-3-1)
     - 3.2 [Concordancer](#doc-eng-3-2)
-    - 3.3 [Wordlist](#doc-eng-3-3)
+    - 3.3 [Wordlist Generator](#doc-eng-3-3)
     - 3.4 [N-gram](#doc-eng-3-4)
     - 3.5 [Collocation](#doc-eng-3-5)
     - 3.6 [Colligation](#doc-eng-3-6)
@@ -362,8 +362,10 @@ You can generate concordance plots for all search terms. You can modify the sett
 ![Concordancer - Figure - Search Term](/doc/work_area/concordancer_fig_search_term.png)
 
 <span id="doc-eng-3-3"></span>
-### 3.3 Wordlist [[Back to Contents]](#doc-eng)
-In *Wordlist*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token.
+### 3.3 Wordlist Generator [[Back to Contents]](#doc-eng)
+**Note:** This module was originally named **Wordlist** before *Wordless* 2.2
+
+In *Wordlist Generator*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token.
 
 You can further filter the results as you see fit by clicking **Filter Results** or search in the results for the part that might be of interest to you by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
 
@@ -390,9 +392,9 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 - **3.3.7 Number of Files Found %**<br>
     The percentage of the number of files in which the token appears at least once out of the total number of files that are cureently selected.
 
-![Wordlist - Table](/doc/wordlist/wordlist_table.png)
-![Wordlist - Figure - Line Chart](/doc/wordlist/wordlist_fig_line_chart.png)
-![Wordlist - Figure - Word Cloud](/doc/wordlist/wordlist_fig_word_cloud.png)
+![Wordlist Generator - Table](/doc/work_area/wordlist_generator_table.png)
+![Wordlist Generator - Figure - Line Chart](/doc/work_area/wordlist_generator_fig_line_chart.png)
+![Wordlist Generator - Figure - Word Cloud](/doc/work_area/wordlist_generator_fig_word_cloud.png)
 
 <span id="doc-eng-3-4"></span>
 ### 3.4 N-gram [[Back to Contents]](#doc-eng)
