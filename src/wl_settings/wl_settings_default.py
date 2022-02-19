@@ -1260,7 +1260,7 @@ def init_settings_default(main):
                 'por_pt': 'spacy_por',
                 'pan': 'sacremoses_moses',
                 'ron': 'spacy_ron',
-                'rus': 'razdel_rus',
+                'rus': 'spacy_rus',
                 'san': 'spacy_san',
                 'srp_cyrl': 'spacy_srp',
                 'srp_latn': 'spacy_srp',
