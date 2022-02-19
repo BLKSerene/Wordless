@@ -167,7 +167,7 @@ def wl_process_tokens(main, text, token_settings):
 
     return text
 
-def wl_process_tokens_overview(main, text, token_settings):
+def wl_process_tokens_profiler(main, text, token_settings):
     text = wl_process_tokens(main, text, token_settings)
 
     # Remove empty tokens, sentences, and paragraphs
