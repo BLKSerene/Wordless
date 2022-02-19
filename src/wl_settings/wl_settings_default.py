@@ -417,7 +417,7 @@ def init_settings_default(main):
             }
         },
 
-        'ngram': {
+        'ngram_generator': {
             'token_settings': {
                 'words': True,
                 'lowercase': True,

@@ -64,7 +64,7 @@ jobs:
 
       pytest wl_tests/wl_tests_work_area/test_profiler.py
       pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      pytest wl_tests/wl_tests_work_area/test_ngram.py
+      pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
 
       pytest wl_tests/wl_tests_nlp/test_lemmatization.py
       pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
@@ -105,14 +105,6 @@ jobs:
 
   # Install dependencies
   - script: |
-      brew install libomp
-      export CC=/usr/bin/clang
-      export CXX=/usr/bin/clang++
-      export CPPFLAGS="$CPPFLAGS -Xpreprocessor -fopenmp"
-      export CFLAGS="$CFLAGS -I/usr/local/opt/libomp/include"
-      export CXXFLAGS="$CXXFLAGS -I/usr/local/opt/libomp/include"
-      export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/local/opt/libomp/lib -L/usr/local/opt/libomp/lib -lomp"
-
       pip3 install --upgrade pip setuptools
       pip3 install --requirement requirements.txt
     displayName: 'Install dependencies'
@@ -129,7 +121,7 @@ jobs:
 
       pytest wl_tests/wl_tests_work_area/test_profiler.py
       pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      pytest wl_tests/wl_tests_work_area/test_ngram.py
+      pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
 
       pytest wl_tests/wl_tests_nlp/test_lemmatization.py
       pytest wl_tests/wl_tests_nlp/test_nlp_utils.py

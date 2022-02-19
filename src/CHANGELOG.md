@@ -34,6 +34,7 @@
 - File Area: Show original file paths instead of modified ones
 - File Area: Update File Area
 - Utils: Update CLTK's Norse (Old) stop word list
+- Work Area: Rename N-gram to N-gram Generator
 - Work Area: Rename Overview to Profiler
 - Work Area: Rename Wordlist to Wordlist Generator
 - Work Area: Update Work Area - Figure Settings - Sort by File

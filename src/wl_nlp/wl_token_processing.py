@@ -312,7 +312,7 @@ def wl_process_tokens_wordlist_generator(main, text, token_settings):
 
     return text
 
-def wl_process_tokens_ngram(main, text, token_settings):
+def wl_process_tokens_ngram_generator(main, text, token_settings):
     text = wl_process_tokens(main, text, token_settings)
 
     return text
