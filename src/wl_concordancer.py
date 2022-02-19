@@ -1132,11 +1132,9 @@ def generate_table(main, table):
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['concordancer']
@@ -1147,19 +1145,14 @@ def generate_table(main, table):
             not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'] or
             settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
         ):
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
             worker_concordancer_table = Wl_Worker_Concordancer_Table(
                 main,
-                dialog_progress = dialog_progress,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
                 update_gui = update_gui
             )
-
-            thread_concordancer_table = wl_threading.Wl_Thread(worker_concordancer_table)
-            thread_concordancer_table.start_worker()
+            wl_threading.Wl_Thread(worker_concordancer_table).start_worker()
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms(main)
-
             wl_msgs.wl_msg_generate_table_error(main)
     else:
         wl_msgs.wl_msg_generate_table_error(main)
@@ -1209,11 +1202,9 @@ def generate_fig(main):
                 wl_msgs.wl_msg_generate_fig_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_fig_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-
             wl_msgs.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
@@ -1237,12 +1228,9 @@ def generate_fig(main):
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
-
-            thread_concordancer_fig = wl_threading.Wl_Thread(worker_concordancer_fig)
-            thread_concordancer_fig.start_worker()
+            wl_threading.Wl_Thread(worker_concordancer_fig).start_worker()
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms(main)
-
             wl_msgs.wl_msg_generate_fig_error(main)
     else:
-        wl_msgs.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_fig_error(main)

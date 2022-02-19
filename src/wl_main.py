@@ -64,7 +64,7 @@ from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables
 
 import wl_file_area
-import wl_overview
+import wl_profiler
 import wl_concordancer
 import wl_concordancer_parallel
 import wl_wordlist
@@ -393,8 +393,8 @@ class Wl_Main(QMainWindow):
         self.wl_work_area = QTabWidget(self)
 
         self.wl_work_area.addTab(
-            wl_overview.Wrapper_Overview(self),
-            self.tr('Overview')
+            wl_profiler.Wrapper_Profiler(self),
+            self.tr('Profiler')
         )
         self.wl_work_area.addTab(
             wl_concordancer.Wrapper_Concordancer(self),
