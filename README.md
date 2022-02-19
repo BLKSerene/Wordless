@@ -144,15 +144,14 @@ I would like to extend my sincere gratitude to the following open-source project
 22    |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)                   |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
 23    |[Python](https://www.python.org/)                                     |Guido van Rossum, Python Software Foundation
 24    |[python-docx](https://github.com/python-openxml/python-docx)          |Steve Canny
-25    |[razdel](https://github.com/natasha/razdel)                           |Alexander Kukushkin
-26    |[Requests](https://github.com/psf/requests)                           |Kenneth Reitz
-27    |[Sacremoses](https://github.com/alvations/sacremoses)                 |Liling Tan
-28    |[SciPy](https://scipy.org/scipylib/)                                  |SciPy Developers
-29    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
-30    |[ssg](https://github.com/ponrawee/ssg)                                |Ponrawee Prasertsom
-31    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
-32    |[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |Works Applications Co., Ltd.
-33    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
-34    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
-35    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
-36    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
+25    |[Requests](https://github.com/psf/requests)                           |Kenneth Reitz
+26    |[Sacremoses](https://github.com/alvations/sacremoses)                 |Liling Tan
+27    |[SciPy](https://scipy.org/scipylib/)                                  |SciPy Developers
+28    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
+29    |[ssg](https://github.com/ponrawee/ssg)                                |Ponrawee Prasertsom
+30    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
+31    |[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |Works Applications Co., Ltd.
+32    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
+33    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
+34    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
+35    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller

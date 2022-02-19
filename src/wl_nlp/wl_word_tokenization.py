@@ -20,7 +20,6 @@ import re
 
 import jieba
 import pythainlp
-import razdel
 import sudachipy
 import tokenizer
 import underthesea
@@ -277,12 +276,6 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                             for kind, token, val in tokenizer.tokenize(sentence)
                             if token
                         ])
-                # Russian
-                elif word_tokenizer == 'razdel_rus':
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = 'rus')
-
-                    for sentence in sentences:
-                        tokens_multilevel[-1].append([token.text for token in razdel.tokenize(sentence)])
                 # Thai
                 elif word_tokenizer.startswith('pythainlp_'):
                     # Preserve sentence boundaries

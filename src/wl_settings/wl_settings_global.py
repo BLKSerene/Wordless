@@ -325,7 +325,6 @@ def init_settings_global(main):
                 main.tr('botok - Tibetan Sentence Tokenizer'): 'botok_bod',
                 main.tr('NLTK - Punkt Sentence Tokenizer'): 'nltk_punkt',
                 main.tr('PyThaiNLP - CRFCut'): 'pythainlp_crfcut',
-                main.tr('razdel - Russian Sentenizer'): 'razdel_rus',
 
                 main.tr('spaCy - Sentence Recognizer'): 'spacy_sentence_recognizer',
                 main.tr('spaCy - Sentencizer'): 'spacy_sentencizer',
@@ -356,7 +355,6 @@ def init_settings_global(main):
                 main.tr('PyThaiNLP - Maximum Matching + TCC (Safe Mode)'): 'pythainlp_max_matching_tcc_safe_mode',
                 main.tr('PyThaiNLP - NERCut'): 'pythainlp_nercut',
 
-                main.tr('razdel - Russian Word Tokenizer'): 'razdel_rus',
                 main.tr('Sacremoses - Moses Tokenizer'): 'sacremoses_moses',
 
                 main.tr('spaCy - Afrikaans Word Tokenizer'): 'spacy_afr',
@@ -1046,7 +1044,6 @@ def init_settings_global(main):
 
             'rus': [
                 'nltk_punkt',
-                'razdel_rus',
                 'spacy_sentence_recognizer'
             ],
 
@@ -1437,7 +1434,6 @@ def init_settings_global(main):
 
             'rus': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
-                'razdel_rus',
                 'sacremoses_moses',
                 'spacy_rus'
             ],
