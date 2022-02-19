@@ -54,11 +54,16 @@ def test_detection_lang(file_path):
 
     print(f'Detecting language for file "{file_name}"... ', end = '')
 
-    lang_code = wl_detection.detect_lang_file(main, file)
+    lang_code_file = wl_detection.detect_lang_file(main, file)
 
-    print(f'Detected: {lang_code}')
+    with open(file['path'], 'r', encoding = file['encoding']) as f:
+        text = f.read()
 
-    assert lang_code == file_name.replace('.txt', '')
+    lang_code_text = wl_detection.detect_lang_text(main, text)
+
+    print(f'Detected: {lang_code_file}/{lang_code_text}')
+
+    assert lang_code_file == lang_code_text == file_name.replace('.txt', '')
 
 if __name__ == '__main__':
     for file in glob.glob('wl_tests_files/wl_utils/wl_detection/encoding/*.txt'):
