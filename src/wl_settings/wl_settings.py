@@ -205,11 +205,14 @@ class Wl_Settings(QDialog):
 
         self.scroll_area_settings.setWidget(self.stacked_widget_settings)
 
-        button_reset_settings = wl_buttons.Wl_Button_Reset_All_Settings(self)
+        button_reset_settings = wl_buttons.Wl_Button(self.tr('Reset all settings'), self)
         button_save = QPushButton(self.tr('Save'), self)
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
 
+        button_reset_settings.setFixedWidth(180)
+
+        button_reset_settings.clicked.connect(self.reset_all_settings)
         button_save.clicked.connect(self.save_settings)
         button_apply.clicked.connect(self.apply_settings)
         button_cancel.clicked.connect(self.reject)
@@ -313,6 +316,19 @@ class Wl_Settings(QDialog):
                 return False
 
         return True
+
+    def reset_all_settings(self):
+        if wl_msg_boxes.wl_msg_box_question(
+            main = self.main,
+            title = self.tr('Reset All Settings'),
+            text = self.tr('''
+                <div>Do you want to reset all settings to their defaults?</div>
+                <div><b>Warning: This will affect settings on all pages!</b></div>
+            ''')
+        ):
+            self.load_settings(defaults = True)
+
+        self.activateWindow()
 
     def save_settings(self):
         if self.apply_settings():
