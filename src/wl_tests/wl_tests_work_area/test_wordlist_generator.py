@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Wordlist
+# Wordless: Tests - Wordlist Generator
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,16 +21,16 @@ import time
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_file_area, wl_test_init
 
-import wl_wordlist
+import wl_wordlist_generator
 
 main = wl_test_init.Wl_Test_Main()
 
 wl_test_file_area.wl_test_file_area(main)
 
-def test_wordlist():
+def test_wordlist_generator():
     time_start_total = time.time()
 
-    print('Start testing Wordlist...')
+    print('Start testing module Wordlist Generator...')
 
     for i, file_test in enumerate(main.settings_custom['file_area']['files_open']):
         for file in main.settings_custom['file_area']['files_open']:
@@ -42,14 +42,11 @@ def test_wordlist():
 
         time_start = time.time()
 
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
-        worker_wordlist_table = wl_wordlist.Wl_Worker_Wordlist_Table(
+        wl_wordlist_generator.Wl_Worker_Wordlist_Generator_Table(
             main,
-            dialog_progress = dialog_progress,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
-        )
-        worker_wordlist_table.run()
+        ).run()
 
         print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
 
@@ -57,8 +54,8 @@ def test_wordlist():
 
     main.app.quit()
 
-def update_gui(error_msg, tokens_freq_files, tokens_stats_files):
-    assert not error_msg
+def update_gui(err_msg, tokens_freq_files, tokens_stats_files):
+    assert not err_msg
 
     assert tokens_freq_files
     assert tokens_stats_files
@@ -75,4 +72,4 @@ def update_gui(error_msg, tokens_freq_files, tokens_stats_files):
         assert stats_files
 
 if __name__ == '__main__':
-    test_wordlist()
+    test_wordlist_generator()

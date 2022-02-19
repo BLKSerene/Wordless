@@ -61,8 +61,8 @@ def test_profiler():
 
     main.app.quit()
 
-def update_gui(error_msg, texts_stats_files):
-    assert not error_msg
+def update_gui(err_msg, texts_stats_files):
+    assert not err_msg
 
     count_tokens_lens = []
     count_sentences_lens = []
