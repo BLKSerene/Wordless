@@ -19,7 +19,6 @@
 import botok
 import nltk
 import pythainlp
-import razdel
 import tokenizer
 import underthesea
 
@@ -125,10 +124,6 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
                 tokens = sentence.split(),
                 lang = 'isl')
             )
-
-    # Russian
-    elif sentence_tokenizer == 'razdel_rus':
-        sentences = [sentence.text for sentence in razdel.sentenize(text)]
     # Thai
     elif sentence_tokenizer == 'pythainlp_crfcut':
         sentences = pythainlp.sent_tokenize(text)
