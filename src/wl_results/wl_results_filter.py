@@ -36,7 +36,7 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
 
         if self.dialog.tab == 'wordlist_generator':
             col_token = self.dialog.table.find_header_hor(self.tr('Token'))
-        elif self.dialog.tab == 'ngram':
+        elif self.dialog.tab == 'ngram_generator':
             col_ngram = self.dialog.table.find_header_hor(self.tr('N-gram'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
@@ -73,7 +73,7 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
                 if self.dialog.settings['len_token_max_no_limit']
                 else self.dialog.settings['len_token_max']
             )
-        elif self.dialog.tab == 'ngram':
+        elif self.dialog.tab == 'ngram_generator':
             len_ngram_min = (
                 float('-inf')
                 if self.dialog.settings['len_ngram_min_no_limit']
@@ -143,7 +143,7 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
                     self.dialog.table.row_filters.append(True)
                 else:
                     self.dialog.table.row_filters.append(False)
-        elif self.dialog.tab == 'ngram':
+        elif self.dialog.tab == 'ngram_generator':
             for i in range(self.dialog.table.model().rowCount()):
                 if (
                     len_ngram_min <= len(self.dialog.table.model().item(i, col_ngram).text()) <= len_ngram_max
@@ -568,7 +568,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
                 filter_min = 1,
                 filter_max = 100
             )
-        elif self.tab == 'ngram':
+        elif self.tab == 'ngram_generator':
             self.label_len_ngram = QLabel(self.tr('N-gram Length:'), self)
             (
                 self.label_len_ngram_min,
@@ -644,7 +644,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             self.checkbox_len_token_min_no_limit.stateChanged.connect(self.filters_changed)
             self.spin_box_len_token_max.valueChanged.connect(self.filters_changed)
             self.checkbox_len_token_max_no_limit.stateChanged.connect(self.filters_changed)
-        elif self.tab == 'ngram':
+        elif self.tab == 'ngram_generator':
             self.spin_box_len_ngram_min.valueChanged.connect(self.filters_changed)
             self.checkbox_len_ngram_min_no_limit.stateChanged.connect(self.filters_changed)
             self.spin_box_len_ngram_max.valueChanged.connect(self.filters_changed)
@@ -680,7 +680,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             self.layout_filters.addWidget(self.label_len_token_max, 2, 0)
             self.layout_filters.addWidget(self.spin_box_len_token_max, 2, 1)
             self.layout_filters.addWidget(self.checkbox_len_token_max_no_limit, 2, 2)
-        elif self.tab == 'ngram':
+        elif self.tab == 'ngram_generator':
             self.layout_filters.addWidget(self.label_len_ngram, 0, 0, 1, 3)
             self.layout_filters.addWidget(self.label_len_ngram_min, 1, 0)
             self.layout_filters.addWidget(self.spin_box_len_ngram_min, 1, 1)
@@ -738,7 +738,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             self.checkbox_len_token_min_no_limit.setChecked(settings['len_token_min_no_limit'])
             self.spin_box_len_token_max.setValue(settings['len_token_max'])
             self.checkbox_len_token_max_no_limit.setChecked(settings['len_token_max_no_limit'])
-        elif self.tab == 'ngram':
+        elif self.tab == 'ngram_generator':
             self.spin_box_len_ngram_min.setValue(settings['len_ngram_min'])
             self.checkbox_len_ngram_min_no_limit.setChecked(settings['len_ngram_min_no_limit'])
             self.spin_box_len_ngram_max.setValue(settings['len_ngram_max'])
@@ -770,7 +770,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             self.settings['len_token_min_no_limit'] = self.checkbox_len_token_min_no_limit.isChecked()
             self.settings['len_token_max'] = self.spin_box_len_token_max.value()
             self.settings['len_token_max_no_limit'] = self.checkbox_len_token_max_no_limit.isChecked()
-        elif self.tab == 'ngram':
+        elif self.tab == 'ngram_generator':
             self.settings['len_ngram_min'] = self.spin_box_len_ngram_min.value()
             self.settings['len_ngram_min_no_limit'] = self.checkbox_len_ngram_min_no_limit.isChecked()
             self.settings['len_ngram_max'] = self.spin_box_len_ngram_max.value()

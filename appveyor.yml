@@ -64,7 +64,7 @@ for:
     test_script:
       - pytest wl_tests/wl_tests_work_area/test_profiler.py
       - pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      - pytest wl_tests/wl_tests_work_area/test_ngram.py
+      - pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
 
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py
       - pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
@@ -98,7 +98,7 @@ for:
     test_script:
       - pytest wl_tests/wl_tests_work_area/test_profiler.py
       - pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      - pytest wl_tests/wl_tests_work_area/test_ngram.py
+      - pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
 
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py
       - pytest wl_tests/wl_tests_nlp/test_nlp_utils.py

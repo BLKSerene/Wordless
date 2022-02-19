@@ -26,7 +26,7 @@
     - 3.1 [Profiler](#doc-eng-3-1)
     - 3.2 [Concordancer](#doc-eng-3-2)
     - 3.3 [Wordlist Generator](#doc-eng-3-3)
-    - 3.4 [N-gram](#doc-eng-3-4)
+    - 3.4 [N-gram Generator](#doc-eng-3-4)
     - 3.5 [Collocation](#doc-eng-3-5)
     - 3.6 [Colligation](#doc-eng-3-6)
     - 3.7 [Keyword](#doc-eng-3-7)
@@ -397,8 +397,10 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 ![Wordlist Generator - Figure - Word Cloud](/doc/work_area/wordlist_generator_fig_word_cloud.png)
 
 <span id="doc-eng-3-4"></span>
-### 3.4 N-gram [[Back to Contents]](#doc-eng)
-In *N-gram*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated results via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
+### 3.4 N-gram Generator [[Back to Contents]](#doc-eng)
+**Note:** This module was originally named **N-gram** before *Wordless* 2.2
+
+In *N-gram Generator*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated results via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
 
 It is possible to disable searching altogether and generate an exhausted list of n-grams/skip-grams by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be too slow.
 
@@ -427,9 +429,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 - **3.4.7 Number of Files Found %**<br>
     The percentage of the number of files in which the n-gram appears at least once out of the total number of files that are currently selected.
 
-![N-gram - Table](/doc/ngram/ngram_table.png)
-![N-gram - Figure - Line Chart](/doc/ngram/ngram_fig_line_chart.png)
-![N-gram - Figure - Word Cloud](/doc/ngram/ngram_fig_word_cloud.png)
+![N-gram Generator - Table](/doc/work_area/ngram_generator_table.png)
 
 <span id="doc-eng-3-5"></span>
 ### 3.5 Collocation [[Back to Contents]](#doc-eng)
