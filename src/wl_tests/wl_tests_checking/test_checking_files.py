@@ -26,7 +26,7 @@ def get_normalized_file_path(file_name):
 main = wl_test_init.Wl_Test_Main()
 main.settings_custom['file_area']['files_open'] = [
     {
-        'path_original': get_normalized_file_path('duplicate.txt')
+        'path_original': get_normalized_file_path('dup.txt')
     }
 ]
 
@@ -37,8 +37,10 @@ FILE_PATHS_EMPTY = [
     get_normalized_file_path('empty_txt.txt'),
     get_normalized_file_path('empty_docx.docx')
 ]
-FILE_PATHS_DUPLICATE = [
-    get_normalized_file_path('duplicate.txt')
+FILE_PATHS_DUP = [
+    get_normalized_file_path('dup.txt'),
+    get_normalized_file_path('dup.xml'),
+    get_normalized_file_path('dup.xml')
 ]
 
 def test_check_file_paths_unsupported():
@@ -52,9 +54,9 @@ def test_check_file_paths_empty():
     assert files_empty == FILE_PATHS_EMPTY
 
 def test_check_file_paths_duplicate():
-    _, files_duplicate = wl_checking_files.check_file_paths_duplicate(main, FILE_PATHS_DUPLICATE)
+    _, files_dup = wl_checking_files.check_file_paths_dup(main, FILE_PATHS_DUP)
 
-    assert files_duplicate == FILE_PATHS_DUPLICATE
+    assert files_dup == FILE_PATHS_DUP[:2]
 
 if __name__ == '__main__':
     test_check_file_paths_unsupported()

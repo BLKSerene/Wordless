@@ -46,8 +46,10 @@ class Wl_Dialog(QDialog):
         self.setFixedSize(self.sizeHint())
 
     def move_to_center(self):
-        self.move((self.main.width() - self.width()) / 2,
-                  (self.main.height() - self.height()) / 2,)
+        self.move(
+            (self.main.width() - self.width()) / 2,
+            (self.main.height() - self.height()) / 2
+        )
 
 class Wl_Dialog_Frameless(Wl_Dialog):
     def __init__(self, main, width = 0, height = 0):

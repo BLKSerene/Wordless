@@ -590,9 +590,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
         try:
             settings = self.main.settings_custom['concordancer']
-            files = self.main.wl_files.get_selected_files()
 
-            for file in files:
+            for file in self.main.wl_file_area.get_selected_files():
                 text = copy.deepcopy(file['text'])
 
                 tokens = wl_token_processing.wl_process_tokens_concordancer(
@@ -912,7 +911,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
             search_terms_labels = set()
 
             settings = self.main.settings_custom['concordancer']
-            files = sorted(self.main.wl_files.get_selected_files(), key = lambda item: item['name'])
+            files = sorted(self.main.wl_file_area.get_selected_files(), key = lambda item: item['name'])
 
             for file in files:
                 text = copy.deepcopy(file['text'])
@@ -1141,7 +1140,7 @@ def generate_table(main, table):
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['concordancer']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
         if (
@@ -1223,7 +1222,7 @@ def generate_fig(main):
             wl_figs.show_fig()
 
     settings = main.settings_custom['concordancer']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
         # Check for empty search terms

@@ -195,7 +195,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.exclusion_group_box.layout().setColumnStretch(1, 1)
         self.exclusion_group_box.layout().setColumnStretch(3, 1)
 
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
         self.button_close = QPushButton(self.tr('Close'), self)
 
         self.button_close.clicked.connect(self.accept)
@@ -827,7 +827,7 @@ class Wl_Combo_Box_File_Figure_Settings(wl_boxes.Wl_Combo_Box_File):
 
         self.clear()
 
-        for file in self.main.wl_files.get_selected_files():
+        for file in self.main.wl_file_area.get_selected_files():
             self.addItem(file['name'])
 
         self.addItem(self.tr('Total'))

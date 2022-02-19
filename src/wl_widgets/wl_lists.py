@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
-from wl_widgets import wl_boxes
+from wl_widgets import wl_boxes, wl_item_delegates
 from wl_utils import wl_detection, wl_misc
 
 class Wl_List_Add_Ins_Del_Clr(QListView):
@@ -421,10 +421,10 @@ class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.setItemDelegate(wl_boxes.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_File))
+        self.setItemDelegate(wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_File))
 
-        self.main.wl_files.table.model().itemChanged.connect(self.wl_files_changed_buttons)
-        self.main.wl_files.table.model().itemChanged.connect(self.wl_files_changed_items)
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.wl_files_changed_buttons)
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.wl_files_changed_items)
 
     def selection_changed(self):
         super().selection_changed()
@@ -432,7 +432,7 @@ class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
         self.wl_files_changed_buttons()
 
     def wl_files_changed_buttons(self):
-        if self.model().rowCount() >= len(self.main.wl_files.get_selected_files()):
+        if self.model().rowCount() >= len(list(self.main.wl_file_area.get_selected_files())):
             self.button_add.setEnabled(False)
             self.button_ins.setEnabled(False)
         else:
@@ -444,8 +444,8 @@ class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
     def wl_files_changed_items(self):
         data = self.model().stringList()
         rows_selected = [index.row() for index in self.selectionModel().selectedIndexes()]
-        file_names_old = self.main.wl_files.file_names_old
-        file_names_selected = self.main.wl_files.get_selected_file_names()
+        file_names_old = self.main.wl_file_area.file_names_old
+        file_names_selected = list(self.main.wl_file_area.get_selected_file_names())
 
         # Files renamed or reordered
         if len(file_names_selected) == len(file_names_old):
@@ -489,7 +489,7 @@ class Wl_List_Files(Wl_List_Add_Ins_Del_Clr):
         else:
             file_names = set(data)
 
-            for file_name in self.main.wl_files.get_selected_file_names():
+            for file_name in self.main.wl_file_area.get_selected_file_names():
                 if file_name not in file_names:
                     item_text = file_name
 

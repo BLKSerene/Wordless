@@ -60,7 +60,39 @@ def detect_encoding(main, file_path):
 
     return encoding
 
-def detect_lang(main, file):
+def detect_lang_text(main, text):
+    lang_code_639_1 = langid.classify(text)[0]
+
+    # Chinese (Simplified) & Chinese (Traditional)
+    if lang_code_639_1 == 'zh':
+        lang_code_639_1 = 'zh_cn'
+
+        for lang in sorted(langdetect.detect_langs(text), key = lambda item: -item.prob):
+            if lang.lang in ['zh-cn', 'zh-tw']:
+                lang_code_639_1 = lang.lang.replace('-', '_')
+
+                break
+    # English
+    elif lang_code_639_1 == 'en':
+        lang_code_639_1 = 'en_us'
+    # German
+    elif lang_code_639_1 == 'de':
+        lang_code_639_1 = 'de_de'
+    # Norwegian Bokmål
+    elif lang_code_639_1 == 'no':
+        lang_code_639_1 = 'nb'
+    # Portuguese
+    elif lang_code_639_1 == 'pt':
+        lang_code_639_1 = 'pt_pt'
+    # Serbian (Cyrillic)
+    elif lang_code_639_1 == 'sr':
+        lang_code_639_1 = 'sr_cyrl'
+
+    lang = wl_conversion.to_iso_639_3(main, lang_code_639_1)
+
+    return lang
+
+def detect_lang_file(main, file):
     text = ''
 
     try:
@@ -75,34 +107,7 @@ def detect_lang(main, file):
                     else:
                         break
 
-        lang_code_639_1 = langid.classify(text)[0]
-
-        # Chinese (Simplified) & Chinese (Traditional)
-        if lang_code_639_1 == 'zh':
-            lang_code_639_1 = 'zh_cn'
-
-            for lang in sorted(langdetect.detect_langs(text), key = lambda item: -item.prob):
-                if lang.lang in ['zh-cn', 'zh-tw']:
-                    lang_code_639_1 = lang.lang.replace('-', '_')
-
-                    break
-        # English
-        elif lang_code_639_1 == 'en':
-            lang_code_639_1 = 'en_us'
-        # German
-        elif lang_code_639_1 == 'de':
-            lang_code_639_1 = 'de_de'
-        # Norwegian Bokmål
-        elif lang_code_639_1 == 'no':
-            lang_code_639_1 = 'nb'
-        # Portuguese
-        elif lang_code_639_1 == 'pt':
-            lang_code_639_1 = 'pt_pt'
-        # Serbian (Cyrillic)
-        elif lang_code_639_1 == 'sr':
-            lang_code_639_1 = 'sr_cyrl'
-
-        lang = wl_conversion.to_iso_639_3(main, lang_code_639_1)
+        lang = detect_lang_text(main, text)
     except UnicodeDecodeError:
         lang = main.settings_custom['files']['default_settings']['lang']
 

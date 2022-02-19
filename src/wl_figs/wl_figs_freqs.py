@@ -27,7 +27,7 @@ import wordcloud
 from wl_utils import wl_misc, wl_sorting
 
 def wl_fig_freq(main, tokens_freq_files, settings, label_x):
-    file_names_selected = main.wl_files.get_selected_file_names() + [main.tr('Total')]
+    file_names_selected = [*main.wl_file_area.get_selected_file_names(), main.tr('Total')]
     col_sort_by_file = file_names_selected.index(settings['sort_by_file'])
 
     tokens_freq_files = wl_sorting.sorted_tokens_freq_files(
@@ -181,7 +181,7 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
         )
 
 def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
-    file_names_selected = [main.tr('Reference Files')] + main.wl_files.get_selected_file_names() + [main.tr('Total')]
+    file_names_selected = [main.tr('Reference Files'), *main.wl_file_area.get_selected_file_names(), main.tr('Total')]
     file_names_selected = [
         file_name
         for file_name in file_names_selected

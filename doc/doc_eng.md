@@ -58,15 +58,13 @@ The main window of *Wordless* is divided into several sections:
 
 <span id="doc-eng-2"></span>
 ## 2 File Area [[Back to Contents]](#doc-eng)
-In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File** or by clicking the buttons residing under the *File Table*.
+In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File → Open Files/Folder**.
 
-Files are loaded, cached and selected automatically after being added to the *File Table*. **Only selected files will be processed by *Wordless***. You can drag and drop files around the *File Table* to change their orders, which is reflected in the results.
+Files are loaded, cached and selected automatically after being added to the *File Table*. **Only selected files will be processed by *Wordless***. You can drag and drop files around the *File Table* to change their orders, which would be reflected in the results.
 
-By default, *Wordless* tries to detect the language and encoding of the file, you should double check and make sure that the settings of each and every file are correct. If you do not want *Wordless* to detect the settings for you and prefer changing them manually, you can modify the settings via **Auto-detection Settings** in the *Settings Area*.
+By default, *Wordless* tries to detect the encoding and language settings of all files for you, you should double check and make sure that the settings of each and every file are correct. If you prefer changing file settings manually, you could uncheck **Auto-detect encodings** and/or **Auto-detect languages** in the *Open Files* dialog. The default file settings could be modified via **Menu → Preferences → Settings → Files → Default Settings**.
 
-If you have changed the settings of any file, do not forget to reload the file by clicking **Reload Selected** or **Reload All** so that the changes made can be reflected in the results.
-
-- **2.1 Open File(s)**<br>
+- **2.1 Open Files**<br>
     Add one single file or multiple files to the *File Table*.
 
     \* You can use the **Ctrl** key (**Command** key on macOS) and/or the **Shift** key to select multiple files.
@@ -74,32 +72,26 @@ If you have changed the settings of any file, do not forget to reload the file b
 - **2.2 Open Folder**<br>
     Add all files in the folder to the *File Table*.
 
-    By default, all files in the chosen folder and the subfolders of the chosen folder (and subfolders of subfolders, and so on) are added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, you can modify the settings via **Folder Settings → Subfolders** in the *Settings Area*.
+    By default, all files in the chosen folder and the subfolders of the chosen folder (and subfolders of subfolders, and so on) are added to the *File Table*. If you do not want to add files in subfolders to the *File Table*, you could uncheck **Include files in subfolders** in the *Open Files* dialog.
 
 - **2.3 Reopen Closed Files**<br>
     Add file(s) that are closed the last time back to the *File Table*.
 
     \* The history of all closed files will be erased upon exit of *Wordless*.
 
-- **2.4 Reload Selected**<br>
-    Reload files that are currently selected in the *File Table*
-
-- **2.5 Reload All**<br>
-    Reload all files in the *File Table*.
-
-- **2.6 Select All**<br>
+- **2.4 Select All**<br>
     Select all files in the *File Table*.
 
-- **2.7 Deselect All**<br>
+- **2.5 Deselect All**<br>
     Deselect all files in the *File Table*.
 
-- **2.8 Invert Selection**<br>
+- **2.6 Invert Selection**<br>
     Select files that are not currently selected and deselect files that are currently selected in the *File Table*.
 
-- **2.9 Close Selected**<br>
+- **2.7 Close Selected**<br>
     Remove files that are currently selected from the *File Table*.
 
-- **2.10 Close All**<br>
+- **2.8 Close All**<br>
     Remove all files from the *File Table*.
 
 <span id="doc-eng-3"></span>
