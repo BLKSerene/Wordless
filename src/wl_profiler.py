@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Overview
+# Wordless: Profiler
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -33,11 +33,11 @@ from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_threading
 from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Overview(wl_tables.Wl_Table_Data):
+class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
             parent,
-            tab = 'overview',
+            tab = 'profiler',
             headers = [
                 # Readability
                 parent.tr('Automated Readability Index'),
@@ -300,18 +300,18 @@ class Wl_Table_Overview(wl_tables.Wl_Table_Data):
         if confirmed:
             self.ins_header_hor(0, self.tr('Total'))
 
-class Wrapper_Overview(wl_layouts.Wl_Wrapper):
+class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
-        self.table_overview = Wl_Table_Overview(self)
+        self.table_profiler = Wl_Table_Profiler(self)
 
-        self.wrapper_table.layout().addWidget(self.table_overview, 0, 0, 1, 4)
-        self.wrapper_table.layout().addWidget(self.table_overview.button_generate_table, 1, 0)
-        self.wrapper_table.layout().addWidget(self.table_overview.button_exp_selected, 1, 1)
-        self.wrapper_table.layout().addWidget(self.table_overview.button_exp_all, 1, 2)
-        self.wrapper_table.layout().addWidget(self.table_overview.button_clr, 1, 3)
+        self.wrapper_table.layout().addWidget(self.table_profiler, 0, 0, 1, 4)
+        self.wrapper_table.layout().addWidget(self.table_profiler.button_generate_table, 1, 0)
+        self.wrapper_table.layout().addWidget(self.table_profiler.button_exp_selected, 1, 1)
+        self.wrapper_table.layout().addWidget(self.table_profiler.button_exp_all, 1, 2)
+        self.wrapper_table.layout().addWidget(self.table_profiler.button_clr, 1, 3)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -386,7 +386,7 @@ class Wrapper_Overview(wl_layouts.Wl_Wrapper):
             self.checkbox_show_breakdown
         ) = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_overview]
+            tables = [self.table_profiler]
         )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
@@ -408,9 +408,9 @@ class Wrapper_Overview(wl_layouts.Wl_Wrapper):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default['overview'])
+            settings = copy.deepcopy(self.main.settings_default['profiler'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom['overview'])
+            settings = copy.deepcopy(self.main.settings_custom['profiler'])
 
         # Token Settings
         self.checkbox_words.setChecked(settings['token_settings']['words'])
@@ -440,7 +440,7 @@ class Wrapper_Overview(wl_layouts.Wl_Wrapper):
         self.table_settings_changed()
 
     def token_settings_changed(self):
-        settings = self.main.settings_custom['overview']['token_settings']
+        settings = self.main.settings_custom['profiler']['token_settings']
 
         settings['words'] = self.checkbox_words.isChecked()
         settings['lowercase'] = self.checkbox_lowercase.isChecked()
@@ -462,18 +462,18 @@ class Wrapper_Overview(wl_layouts.Wl_Wrapper):
             self.label_base_sttr.setText(self.tr('Base of standardized type-token ratio:'))
 
     def generation_settings_changed(self):
-        settings = self.main.settings_custom['overview']['generation_settings']
+        settings = self.main.settings_custom['profiler']['generation_settings']
 
         settings['base_sttr'] = self.spin_box_base_sttr.value()
 
     def table_settings_changed(self):
-        settings = self.main.settings_custom['overview']['table_settings']
+        settings = self.main.settings_custom['profiler']['table_settings']
 
         settings['show_pct'] = self.checkbox_show_pct.isChecked()
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
-class Wl_Worker_Overview(wl_threading.Wl_Worker):
+class Wl_Worker_Profiler(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
     def __init__(self, main, dialog_progress, update_gui):
@@ -486,12 +486,12 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
         try:
             texts = []
 
-            settings = self.main.settings_custom['overview']
+            settings = self.main.settings_custom['profiler']
             files = list(self.main.wl_file_area.get_selected_files())
 
             for i, file in enumerate(files):
                 text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_overview(
+                text = wl_token_processing.wl_process_tokens_profiler(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -628,7 +628,7 @@ class Wl_Worker_Overview(wl_threading.Wl_Worker):
         except Exception:
             self.err_msg = traceback.format_exc()
 
-class Wl_Worker_Overview_Table(Wl_Worker_Overview):
+class Wl_Worker_Profiler_Table(Wl_Worker_Profiler):
     def run(self):
         super().run()
 
@@ -987,25 +987,19 @@ def generate_table(main, table):
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-
             wl_msgs.wl_msg_fatal_error(main)
 
     files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
-        worker_overview_table = Wl_Worker_Overview_Table(
+        worker_profiler_table = Wl_Worker_Profiler_Table(
             main,
-            dialog_progress = dialog_progress,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
         )
-
-        thread_overview_table = wl_threading.Wl_Thread(worker_overview_table)
-        thread_overview_table.start_worker()
+        wl_threading.Wl_Thread(worker_profiler_table).start_worker()
     else:
         wl_msgs.wl_msg_generate_table_error(main)
