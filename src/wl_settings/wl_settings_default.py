@@ -34,7 +34,7 @@ from wl_utils import wl_misc
 def init_settings_default(main):
     main.settings_default = {
         '1st_startup': True,
-        'work_area_cur': main.tr('Overview'),
+        'work_area_cur': main.tr('Profiler'),
 
         'layouts': {
             'central_widget': [main.height() - 100 - 210, 210]
@@ -51,7 +51,7 @@ def init_settings_default(main):
             }
         },
 
-        'overview': {
+        'profiler': {
             'token_settings': {
                 'words': True,
                 'lowercase': True,

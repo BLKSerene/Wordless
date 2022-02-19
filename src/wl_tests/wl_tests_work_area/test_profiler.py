@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Overview
+# Wordless: Tests - Profiler
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -26,16 +26,16 @@ from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_file_area, wl_test_init
 from wl_utils import wl_misc
 
-import wl_overview
+import wl_profiler
 
 main = wl_test_init.Wl_Test_Main()
 
 wl_test_file_area.wl_test_file_area(main)
 
-def test_overview():
+def test_profiler():
     time_start_total = time.time()
 
-    print('Start testing Overview...')
+    print('Start testing module Profiler...')
 
     for i, file_test in enumerate(main.settings_custom['file_area']['files_open']):
         for file in main.settings_custom['file_area']['files_open']:
@@ -49,14 +49,11 @@ def test_overview():
 
         time_start = time.time()
 
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
-        worker_overview_table = wl_overview.Wl_Worker_Overview_Table(
+        wl_profiler.Wl_Worker_Profiler_Table(
             main,
-            dialog_progress = dialog_progress,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
-        )
-        worker_overview_table.run()
+        ).run()
 
         print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
 
@@ -166,4 +163,4 @@ def update_gui(error_msg, texts_stats_files):
         assert 0 not in count_sentences_lens
 
 if __name__ == '__main__':
-    test_overview()
+    test_profiler()
