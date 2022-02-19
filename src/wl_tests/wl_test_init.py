@@ -52,10 +52,11 @@ if platform.system() in ['Windows', 'Darwin']:
             wl_settings_global.init_settings_global(self)
 
             # Files
-            table = QWidget()
-            table.main = self
+            self.wl_file_area = QObject()
+            self.wl_file_area.main = self
 
-            self.wl_files = wl_file_area.Wl_Files(table)
+            self.wl_file_area.get_selected_files = lambda: wl_file_area.Wrapper_File_Area.get_selected_files(self.wl_file_area)
+            self.wl_file_area.get_selected_file_names = lambda: wl_file_area.Wrapper_File_Area.get_selected_file_names(self.wl_file_area)
 
         def height(self):
             return 768
@@ -69,12 +70,6 @@ elif platform.system() == 'Linux':
             wl_settings_default.init_settings_default(self)
             self.settings_custom = copy.deepcopy(self.settings_default)
             wl_settings_global.init_settings_global(self)
-
-            # Files
-            table = QObject()
-            table.main = self
-
-            self.wl_files = wl_file_area.Wl_Files(table)
 
         def height(self):
             return 768

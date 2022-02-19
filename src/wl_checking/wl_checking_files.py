@@ -19,15 +19,13 @@
 import os
 import re
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QStandardItem
 
 from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
 from wl_utils import wl_misc
 
 def check_file_paths_unsupported(main, file_paths):
-    file_paths_pass = []
+    file_paths_ok = []
     file_paths_unsupported = []
 
     if file_paths:
@@ -43,12 +41,12 @@ def check_file_paths_unsupported(main, file_paths):
             if os.path.splitext(file_path)[1].lower() not in file_exts:
                 file_paths_unsupported.append(file_path)
             else:
-                file_paths_pass.append(file_path)
+                file_paths_ok.append(file_path)
 
-    return file_paths_pass, file_paths_unsupported
+    return file_paths_ok, file_paths_unsupported
 
 def check_file_paths_empty(main, file_paths):
-    file_paths_pass = []
+    file_paths_ok = []
     file_paths_empty = []
 
     if file_paths:
@@ -56,48 +54,62 @@ def check_file_paths_empty(main, file_paths):
             file_path = wl_misc.get_normalized_path(file_path)
 
             if os.stat(file_path).st_size:
-                file_paths_pass.append(file_path)
+                file_paths_ok.append(file_path)
             else:
                 file_paths_empty.append(file_path)
 
-    return file_paths_pass, file_paths_empty
+    return file_paths_ok, file_paths_empty
 
-def check_file_paths_duplicate(main, file_paths):
-    file_paths_pass = []
-    file_paths_duplicate = []
+def check_file_paths_dup(main, new_file_paths, file_paths = None):
+    file_paths_ok = []
+    file_paths_dup = []
 
-    if file_paths:
-        file_paths_original = [file['path_original'] for file in main.settings_custom['file_area']['files_open']]
+    if new_file_paths:
+        if file_paths is None:
+            file_paths = [file['path_original'] for file in main.settings_custom['file_area']['files_open']]
 
-        for file_path in file_paths:
-            if file_path in file_paths_original:
-                file_paths_duplicate.append(file_path)
+        for new_file_path in new_file_paths:
+            if new_file_path in file_paths + file_paths_ok:
+                file_paths_dup.append(new_file_path)
             else:
-                file_paths_pass.append(file_path)
+                file_paths_ok.append(new_file_path)
 
-    return file_paths_pass, file_paths_duplicate
+    return file_paths_ok, file_paths_dup
 
 def check_files_on_loading(main, files):
-    loading_pass = True
+    loading_ok = True
 
     if files:
         # Check for invalid XML files
         for file in files:
             if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
                 if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                    wl_msg_boxes.wl_msg_box_invalid_xml_file(main)
+                    wl_msg_boxes.Wl_Msg_Box_Warning(
+                        main,
+                        title = main.tr('Invalid XML File'),
+                        text = main.tr('''
+                            <div>If the input is an XML file, it should be both tokenized and tagged.</div>
+                        ''')
+                    ).open()
 
-                    loading_pass = False
+                    loading_ok = False
     else:
-        wl_msg_boxes.wl_msg_box_no_files_selected(main)
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            main,
+            title = main.tr('No Files Selected'),
+            text = main.tr('''
+                <div>There are no files being currently opened and selected.</div>
+                <div>Please open files first or check your file settings.</div>
+            ''')
+        ).open()
 
-        loading_pass = False
+        loading_ok = False
 
-    return loading_pass
+    return loading_ok
 
 def check_files_on_loading_colligation(main, files):
     files_pos_tagging_unsupported = []
-    loading_pass = True
+    loading_ok = True
 
     if check_files_on_loading(main, files):
         for file in files:
@@ -111,7 +123,7 @@ def check_files_on_loading_colligation(main, files):
 
             dialog_err_files.label_err.set_text(main.tr('''
                 <div>
-                    The built-in POS taggers currently have no support for the following file(s), please check your language settings or provide copora that have already been POS-tagged.
+                    The built-in POS taggers currently have no support for the following file(s), please check your language settings or provide corpora that have already been POS-tagged.
                 </div>
             '''))
 
@@ -134,8 +146,8 @@ def check_files_on_loading_colligation(main, files):
             dialog_err_files.open()
 
         if files_pos_tagging_unsupported:
-            loading_pass = False
+            loading_ok = False
     else:
-        loading_pass = False
+        loading_ok = False
 
-    return loading_pass
+    return loading_ok

@@ -51,7 +51,7 @@ class Wl_Wrapper(QWidget):
         self.wrapper_table.layout().setContentsMargins(0, 0, 0, 0)
 
         self.scroll_area_settings = Wl_Scroll_Area(self)
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
 
         self.scroll_area_settings.setFixedWidth(400)
 
@@ -97,6 +97,8 @@ class Wl_Wrapper_File_Area(Wl_Wrapper):
                 background-color: #FFF;
             }
         ''')
+
+        self.scroll_area_settings.hide()
 
 class Wl_Splitter(QSplitter):
     def __init__(self, orientation, parent):

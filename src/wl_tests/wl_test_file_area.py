@@ -22,6 +22,8 @@ import pickle
 import re
 import time
 
+from PyQt5.QtCore import QObject
+
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_init
 
@@ -30,6 +32,16 @@ import wl_file_area
 new_files_temp = []
 
 def wl_test_file_area(main):
+    def open_file(err_msg, files_to_open):
+        assert not err_msg
+
+        wl_file_area.Wl_Worker_Open_Files(
+            main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
+            update_gui = update_gui,
+            files_to_open = files_to_open
+        ).run()
+
     # Clean cached files
     for file in glob.glob('imports/*.*'):
         os.remove(file)
@@ -42,15 +54,16 @@ def wl_test_file_area(main):
 
             print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
 
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = '')
+            table = QObject()
+            table.files_to_open = []
 
-            worker_open_files = wl_file_area.Wl_Worker_Open_Files(
+            wl_file_area.Wl_Worker_Add_Files(
                 main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui,
-                file_paths = [file_path]
-            )
-            worker_open_files.run()
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
+                update_gui = open_file,
+                file_paths = [file_path],
+                table = table
+            ).run()
 
             main.settings_custom['file_area']['files_open'].extend(new_files_temp)
             new_file = main.settings_custom['file_area']['files_open'][-1]
@@ -68,10 +81,10 @@ def wl_test_file_area(main):
     with open('wl_tests/wl_settings.pickle', 'wb') as f:
         pickle.dump(main.settings_custom, f)
 
-def update_gui(error_msg, new_files):
+def update_gui(err_msg, new_files):
     global new_files_temp
 
-    assert not error_msg
+    assert not err_msg
 
     new_files_temp = new_files
 

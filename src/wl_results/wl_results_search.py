@@ -109,7 +109,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         # Pad with spaces
         self.button_clr_hightlights = QPushButton(self.tr(' Clear Highlights '), self)
 
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
         self.button_close = QPushButton(self.tr('Close'), self)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)

@@ -73,66 +73,7 @@ def wl_msg_box_question(main, title, text):
     else:
         return False
 
-# Reset settings
-def wl_msg_box_reset_layouts(main):
-    return wl_msg_box_question(
-        main,
-        title = main.tr('Reset Layouts'),
-        text = main.tr('''
-            <div>Do you really want to reset all layouts to their default settings?</div>
-        ''')
-    )
-
-def wl_msg_box_restore_default_settings(main):
-    return wl_msg_box_question(
-        main,
-        title = main.tr('Restore default settings'),
-        text = main.tr('''
-            <div>Do you really want to reset all settings to their defaults?</div>
-        ''')
-    )
-
-def wl_msg_box_reset_all_settings(main):
-    return wl_msg_box_question(
-        main,
-        title = main.tr('Reset All Settings'),
-        text = main.tr('''
-            <div>Do you really want to reset all settings to their defaults?</div>
-            <div><b>Warning: This will affect settings on all pages!</b></div>
-        ''')
-    )
-
-def wl_msg_box_reset_mappings(main):
-    return wl_msg_box_question(
-        main,
-        title = main.tr('Reset Mappings'),
-        text = main.tr('''
-            <div>Do you really want to reset all mappings to their defaults?</div>
-            <div><b>Note: This will only affect the mapping settings in the currently shown table.</b></div>
-        ''')
-    )
-
-def wl_msg_box_reset_all_mappings(main):
-    return wl_msg_box_question(
-        main,
-        title = main.tr('Reset All Mappings'),
-        text = main.tr('''
-            <div>Do you really want to reset all mappings to their defaults?</div>
-            <div><b>Warning: This will affect the mapping settings in all tables!</b></div>
-        ''')
-    )
-
 # Files
-def wl_msg_box_no_files_selected(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('No Files Selected'),
-        text = main.tr('''
-            <div>There are no files being currently opened and selected.</div>
-            <div>Please open files first or check your file settings.</div>
-        ''')
-    ).open()
-
 def wl_msg_box_identical_src_tgt_files(main):
     Wl_Msg_Box_Warning(
         main,
@@ -157,15 +98,6 @@ def wl_msg_box_missing_observed_files(main):
         title = main.tr('Missing Observed Files'),
         text = main.tr('''
             <div>You have specified reference files, but you have not opened and selected any observed files yet.</div>
-        ''')
-    ).open()
-
-def wl_msg_box_invalid_xml_file(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Invalid XML File'),
-        text = main.tr('''
-            <div>If the input is an XML file, it must be both tokenized and tagged.</div>
         ''')
     ).open()
 

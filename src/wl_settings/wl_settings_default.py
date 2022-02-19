@@ -44,13 +44,10 @@ def init_settings_default(main):
             'files_open': [],
             'files_closed': [],
 
-            'folder_settings': {
-                'subfolders': True
-            },
-
-            'auto_detection_settings': {
-                'detect_langs': True,
-                'detect_encodings': True
+            'dialog_open_files': {
+                'auto_detect_encodings': True,
+                'auto_detect_langs': True,
+                'include_files_in_subfolders': True
             }
         },
 
@@ -1078,10 +1075,10 @@ def init_settings_default(main):
 
         'files': {
             'default_settings': {
+                'encoding': 'utf_8',
                 'lang': 'eng_us',
                 'tokenized': main.tr('No'),
-                'tagged': main.tr('No'),
-                'encoding': 'utf_8'
+                'tagged': main.tr('No')
             },
 
             'auto_detection_settings': {

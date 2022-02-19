@@ -32,11 +32,13 @@
 ### ✨ Improvements
 - File Area: Remove temporary files when closing files
 - File Area: Show original file paths instead of modified ones
+- File Area: Update File Area
 - Utils: Update CLTK's Norse (Old) stop word list
 - Work Area: Update Work Area - Figure Settings - Sort by File
 
 ### ❌ Removals
 - File Area: Remove Open File(s) / Open Folder / Reload Selected / Reload All / Close Selected / Close All
+- Menu: Remove File - Reload Selected/All
 - Menu: Remove Preferences - Settings - Word Detokenization
 - Settings: Remove Settings - Word Detokenization
 - Utils: Remove lemmalist-greek's Greek (Ancient) lemma list

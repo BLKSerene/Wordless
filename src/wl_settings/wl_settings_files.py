@@ -27,7 +27,7 @@ from wl_checking import wl_checking_misc
 from wl_dialogs import wl_msg_boxes
 from wl_settings import wl_settings
 from wl_utils import wl_conversion
-from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
+from wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables, wl_widgets
 
 class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
@@ -39,24 +39,24 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         # Default Settings
         group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
 
+        self.label_files_encoding = QLabel(self.tr('Encoding:'), self)
+        self.combo_box_files_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
         self.label_files_lang = QLabel(self.tr('Language:'), self)
         self.combo_box_files_lang = wl_boxes.Wl_Combo_Box_Lang(self)
         self.label_files_tokenized = QLabel(self.tr('Tokenized:'), self)
         self.combo_box_files_tokenized = wl_boxes.Wl_Combo_Box_Yes_No(self)
         self.label_files_tagged = QLabel(self.tr('Tagged:'), self)
         self.combo_box_files_tagged = wl_boxes.Wl_Combo_Box_Yes_No(self)
-        self.label_files_encoding = QLabel(self.tr('Encoding:'), self)
-        self.combo_box_files_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
 
         group_box_default_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_default_settings.layout().addWidget(self.label_files_lang, 0, 0)
-        group_box_default_settings.layout().addWidget(self.combo_box_files_lang, 0, 1)
-        group_box_default_settings.layout().addWidget(self.label_files_tokenized, 1, 0)
-        group_box_default_settings.layout().addWidget(self.combo_box_files_tokenized, 1, 1)
-        group_box_default_settings.layout().addWidget(self.label_files_tagged, 2, 0)
-        group_box_default_settings.layout().addWidget(self.combo_box_files_tagged, 2, 1)
-        group_box_default_settings.layout().addWidget(self.label_files_encoding, 3, 0)
-        group_box_default_settings.layout().addWidget(self.combo_box_files_encoding, 3, 1)
+        group_box_default_settings.layout().addWidget(self.label_files_encoding, 0, 0)
+        group_box_default_settings.layout().addWidget(self.combo_box_files_encoding, 0, 1)
+        group_box_default_settings.layout().addWidget(self.label_files_lang, 1, 0)
+        group_box_default_settings.layout().addWidget(self.combo_box_files_lang, 1, 1)
+        group_box_default_settings.layout().addWidget(self.label_files_tokenized, 2, 0)
+        group_box_default_settings.layout().addWidget(self.combo_box_files_tokenized, 2, 1)
+        group_box_default_settings.layout().addWidget(self.label_files_tagged, 3, 0)
+        group_box_default_settings.layout().addWidget(self.combo_box_files_tagged, 3, 1)
 
         group_box_default_settings.layout().setColumnStretch(3, 1)
 
@@ -146,23 +146,27 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 parent.tr('Closing Tag'),
                 parent.tr('Preview')
             ],
-            defaults = parent.main.settings_default['tags'][settings_tags],
             col_edit = 2
         )
 
+        self.settings_tags = settings_tags
         self.defaults_row = defaults_row
 
         self.setFixedHeight(125)
 
-        self.setItemDelegateForColumn(0, wl_boxes.Wl_Item_Delegate_Combo_Box(
+        self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
                 self.tr('Embedded'),
                 self.tr('Non-embedded')
             ]
         ))
-        self.setItemDelegateForColumn(3, wl_tables.Wl_Item_Delegate_Uneditable(self))
-        self.setItemDelegateForColumn(4, wl_tables.Wl_Item_Delegate_Uneditable(self))
+        self.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
+        self.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
+
+        self.button_reset = QPushButton(self.tr('Reset'), self)
+
+        self.button_reset.clicked.connect(lambda: self.reset_table())
 
         self.reset_table()
 
@@ -287,6 +291,12 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         self.model().itemChanged.emit(item_opening_tag)
 
+    def reset_table(self):
+        self.clr_table(0)
+
+        for defaults in self.main.settings_default['tags'][self.settings_tags]:
+            self._add_row(texts = defaults)
+
     def get_tags(self):
         tags = []
 
@@ -311,7 +321,7 @@ class Wl_Table_Tags_Header(Wl_Table_Tags):
             ]
         )
 
-        self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
+        self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
                 self.tr('Header')
@@ -330,7 +340,7 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
             ]
         )
 
-        self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
+        self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
                 self.tr('Part of Speech'),
@@ -350,7 +360,7 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
             ]
         )
 
-        self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
+        self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
                 self.tr('Paragraph'),

@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wl_utils import wl_misc, wl_msgs, wl_threading
-from wl_widgets import wl_boxes, wl_buttons, wl_labels, wl_layouts, wl_tables
+from wl_widgets import wl_buttons, wl_item_delegates, wl_labels, wl_layouts, wl_tables
 
 class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, table):
@@ -58,7 +58,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.setFixedWidth(400)
         self.setFixedHeight(200)
 
-        self.setItemDelegateForColumn(1, wl_boxes.Wl_Item_Delegate_Combo_Box(
+        self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
                 self.tr('Ascending'),
@@ -67,7 +67,6 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         ))
 
         self.button_clr.hide()
-        self.button_reset.deleteLater()
 
         self.table.model().itemChanged.connect(self.table_item_changed)
 
@@ -162,7 +161,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 self.cols_to_sort.extend([f'R{i + 1}' for i in range(width_right)])
                 self.cols_to_sort.extend([f'L{i + 1}' for i in range(width_left)])
 
-        self.setItemDelegateForColumn(0, wl_boxes.Wl_Item_Delegate_Combo_Box(
+        self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = self.cols_to_sort
         ))
@@ -383,7 +382,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.table_sort = Wl_Table_Results_Sort_Conordancer(self, table = self.tables[0])
 
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self)
+        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
         self.button_sort = QPushButton(self.tr('Sort'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 

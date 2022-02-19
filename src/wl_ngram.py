@@ -644,7 +644,7 @@ class Wl_Worker_Ngram(wl_threading.Wl_Worker):
             allow_skipped_tokens = settings['generation_settings']['allow_skipped_tokens']
             allow_skipped_tokens_num = settings['generation_settings']['allow_skipped_tokens_num']
 
-            files = self.main.wl_files.get_selected_files()
+            files = list(self.main.wl_file_area.get_selected_files())
 
             # Frequency
             for file in files:
@@ -1033,7 +1033,7 @@ def generate_table(main, table):
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['ngram']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
         if (
@@ -1124,7 +1124,7 @@ def generate_fig(main):
             wl_figs.show_fig()
 
     settings = main.settings_custom['ngram']
-    files = main.wl_files.get_selected_files()
+    files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
         if (

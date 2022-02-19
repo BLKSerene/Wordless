@@ -26,7 +26,7 @@ import wordcloud
 from wl_utils import wl_misc, wl_sorting
 
 def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
-    file_names_selected = main.wl_files.get_selected_file_names() + [main.tr('Total')]
+    file_names_selected = [*main.wl_file_area.get_selected_file_names(), main.tr('Total')]
     col_sort_by_file = file_names_selected.index(settings['sort_by_file'])
 
     if label_y == main.tr('p-value'):
@@ -183,7 +183,7 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         )
 
 def wl_fig_stat_keyword(main, keywords_stat_files, files_ref, settings, label_y):
-    file_names_selected = main.wl_files.get_selected_file_names() + [main.tr('Total')]
+    file_names_selected = [*main.wl_file_area.get_selected_file_names(), main.tr('Total')]
     file_names_selected = [
         file_name
         for file_name in file_names_selected

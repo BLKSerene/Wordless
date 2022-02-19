@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import *
 from wl_nlp import wl_nlp_utils, wl_syl_tokenization, wl_word_detokenization
 from wl_settings import wl_settings
 from wl_utils import wl_conversion, wl_threading
-from wl_widgets import wl_boxes, wl_layouts, wl_tables
+from wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
 
 class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(list)
@@ -89,7 +89,7 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
             self.table_syl_tokenizers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
             self.table_syl_tokenizers.model().setItem(i, 1, QStandardItem())
 
-            self.table_syl_tokenizers.setItemDelegateForRow(i, wl_boxes.Wl_Item_Delegate_Combo_Box(
+            self.table_syl_tokenizers.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self.table_syl_tokenizers,
                 items = list(wl_nlp_utils.to_lang_util_texts(
                     self.main,

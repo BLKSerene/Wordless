@@ -54,7 +54,7 @@ def test_detection_lang(file_path):
 
     print(f'Detecting language for file "{file_name}"... ', end = '')
 
-    lang_code = wl_detection.detect_lang(main, file)
+    lang_code = wl_detection.detect_lang_file(main, file)
 
     print(f'Detected: {lang_code}')
 

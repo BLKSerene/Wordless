@@ -20,6 +20,8 @@ import glob
 import os
 import time
 
+from PyQt5.QtCore import QObject
+
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_init
 
@@ -27,23 +29,34 @@ import wl_file_area
 
 main = wl_test_init.Wl_Test_Main()
 
-def open_file(file_paths, update_gui):
+def add_file(file_paths, update_gui):
+    def open_file(err_msg, files_to_open):
+        assert not err_msg
+
+        wl_file_area.Wl_Worker_Open_Files(
+            main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
+            update_gui = update_gui,
+            files_to_open = files_to_open
+        ).run()
+
+        print(f'Done! (In {round(time.time() - time_start, 2)} seconds)')
+
     time_start = time.time()
 
     for file_path in file_paths:
-        print(f'Loading file "{os.path.split(file_path)[1]}"...')
+        print(f'Opening file "{os.path.split(file_path)[1]}"...')
 
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = '')
+        table = QObject()
+        table.files_to_open = []
 
-        worker_open_files = wl_file_area.Wl_Worker_Open_Files(
+        wl_file_area.Wl_Worker_Add_Files(
             main,
-            dialog_progress = dialog_progress,
-            update_gui = update_gui,
-            file_paths = [file_path]
-        )
-        worker_open_files.run()
-
-    print(f'Done! (In {round(time.time() - time_start, 2)} seconds)')
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
+            update_gui = open_file,
+            file_paths = [file_path],
+            table = table
+        ).run()
 
 def test_file_area():
     # Clean cached files
@@ -51,13 +64,13 @@ def test_file_area():
         os.remove(file)
 
     # Disable encoding detection
-    main.settings_custom['file_area']['auto_detection_settings']['detect_encodings'] = False
+    main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings'] = False
 
     # File types (Non-XML)
     files_non_xml = glob.glob('wl_tests_files/wl_file_area/file_types/*.*')
     files_non_xml = [file for file in files_non_xml if not file.endswith('.xml')]
 
-    open_file(
+    add_file(
         file_paths = files_non_xml,
         update_gui = update_gui_file_types
     )
@@ -83,13 +96,13 @@ def test_file_area():
         elif i == 2:
             main.settings_custom['tags']['tags_xml'] = []
 
-        open_file(
+        add_file(
             file_paths = glob.glob('wl_tests_files/wl_file_area/file_types/*.xml'),
             update_gui = update_gui_file_types
         )
 
     # UnicodeDecodeError
-    open_file(
+    add_file(
         file_paths = glob.glob('wl_tests_files/wl_file_area/unicode_decode_error/*.*'),
         update_gui = update_gui_unicode_decode_error
     )
@@ -109,13 +122,13 @@ def test_file_area():
             main.settings_custom['files']['default_settings']['tokenized'] = 'Yes'
             main.settings_custom['files']['default_settings']['tagged'] = 'Yes'
 
-        open_file(
+        add_file(
             file_paths = [file_path],
             update_gui = update_gui_tags
         )
 
-def update_gui_file_types(error_msg, new_files):
-    assert not error_msg
+def update_gui_file_types(err_msg, new_files):
+    assert not err_msg
 
     # Non-TMX files
     if len(new_files) == 1:
@@ -198,13 +211,13 @@ def update_gui_file_types(error_msg, new_files):
         assert file_text_tgt.offsets_paras == [0]
         assert file_text_tgt.offsets_sentences == [0]
 
-def update_gui_unicode_decode_error(error_msg, new_files):
-    assert not error_msg
+def update_gui_unicode_decode_error(err_msg, new_files):
+    assert not err_msg
 
     assert new_files[0]['encoding'] == 'utf_8'
 
-def update_gui_tags(error_msg, new_files):
-    assert not error_msg
+def update_gui_tags(err_msg, new_files):
+    assert not err_msg
 
     file_name = os.path.split(new_files[0]['path'])[1]
     file_text = new_files[0]['text']
