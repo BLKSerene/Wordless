@@ -330,17 +330,17 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
         self.progress_updated.emit(self.tr('Updating table...'))
         self.worker_done.emit()
 
-class Wl_Worker_Results_Filter_Keyword(wl_threading.Wl_Worker):
+class Wl_Worker_Results_Filter_Keyword_Extractor(wl_threading.Wl_Worker):
     def run(self):
-        text_test_significance = self.dialog.table.settings['keyword']['generation_settings']['test_significance']
-        text_measure_effect_size = self.dialog.table.settings['keyword']['generation_settings']['measure_effect_size']
+        text_test_significance = self.dialog.table.settings['keyword_extractor']['generation_settings']['test_significance']
+        text_measure_effect_size = self.dialog.table.settings['keyword_extractor']['generation_settings']['measure_effect_size']
 
         (
             text_test_stat,
             text_p_value,
             text_bayes_factor
-        ) = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+        ) = self.main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
+        text_effect_size = self.main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
 
         col_keyword = self.dialog.table.find_header_hor(self.tr('Keyword'))
 
@@ -1174,7 +1174,7 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         )
         wl_threading.Wl_Thread(worker_search_results).start_worker()
 
-class Wl_Dialog_Results_Filter_Keyword(Wl_Dialog_Results_Filter):
+class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
         super().__init__(main, tab, table)
 
@@ -1448,8 +1448,8 @@ class Wl_Dialog_Results_Filter_Keyword(Wl_Dialog_Results_Filter):
             text_test_stat,
             text_p_value,
             text_bayes_factor
-        ) = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+        ) = self.main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
+        text_effect_size = self.main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
 
         if text_test_stat:
             self.label_test_stat.setText(f'{text_test_stat}:')
@@ -1496,14 +1496,10 @@ class Wl_Dialog_Results_Filter_Keyword(Wl_Dialog_Results_Filter):
 
             wl_msgs.wl_msg_results_filter_success(self.main)
 
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...'))
-
-        worker_search_results = Wl_Worker_Results_Filter_Keyword(
+        worker_search_results = Wl_Worker_Results_Filter_Keyword_Extractor(
             self.main,
-            dialog_progress = dialog_progress,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...')),
             update_gui = update_gui,
             dialog = self
         )
-
-        thread_search_results = wl_threading.Wl_Thread(worker_search_results)
-        thread_search_results.start_worker()
+        wl_threading.Wl_Thread(worker_search_results).start_worker()

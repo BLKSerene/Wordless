@@ -1927,8 +1927,8 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(self.main, tab = self.tab, table = self)
         elif self.tab in ['collocation_extractor', 'colligation_extractor']:
             self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(self.main, tab = self.tab, table = self)
-        elif self.tab == 'keyword':
-            self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Keyword(self.main, tab = self.tab, table = self)
+        elif self.tab == 'keyword_extractor':
+            self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Keyword_Extractor(self.main, tab = self.tab, table = self)
 
         self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
             self.main,

@@ -180,7 +180,7 @@ def wl_fig_freq(main, tokens_freq_files, settings, label_x):
             label_pos = 0.2
         )
 
-def wl_fig_freq_keyword(main, tokens_freq_files, files_ref, settings, label_x):
+def wl_fig_freq_keyword_extractor(main, tokens_freq_files, files_ref, settings, label_x):
     file_names_selected = [main.tr('Reference Files'), *main.wl_file_area.get_selected_file_names(), main.tr('Total')]
     file_names_selected = [
         file_name

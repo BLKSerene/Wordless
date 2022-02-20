@@ -340,7 +340,7 @@ def wl_process_tokens_colligation_extractor(main, text, token_settings):
 
     return text
 
-def wl_process_tokens_keyword(main, text, token_settings):
+def wl_process_tokens_keyword_extractor(main, text, token_settings):
     text = wl_process_tokens(main, text, token_settings)
 
     return text
