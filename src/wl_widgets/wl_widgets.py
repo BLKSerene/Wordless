@@ -835,7 +835,7 @@ class Wl_Combo_Box_File_Figure_Settings(wl_boxes.Wl_Combo_Box_File):
         if file_old and self.findText(file_old) > -1:
             self.setCurrentText(file_old)
 
-def wl_widgets_fig_settings(parent, collocation = False):
+def wl_widgets_fig_settings(parent, collocation_extractor = False):
     def graph_type_changed():
         if combo_box_graph_type.currentText() == parent.tr('Line Chart'):
             combo_box_sort_by_file.setEnabled(True)
@@ -867,8 +867,8 @@ def wl_widgets_fig_settings(parent, collocation = False):
     combo_box_graph_type.addItems([parent.tr('Line Chart'),
                                    parent.tr('Word Cloud')])
 
-    # Collocation & Colligation
-    if collocation:
+    # Collocation Extractor & Colligation Extractor
+    if collocation_extractor:
         combo_box_graph_type.addItem(parent.tr('Network Graph'))
 
     combo_box_graph_type.currentTextChanged.connect(graph_type_changed)
