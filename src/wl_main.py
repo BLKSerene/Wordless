@@ -69,7 +69,7 @@ import wl_concordancer
 import wl_concordancer_parallel
 import wl_wordlist_generator
 import wl_ngram_generator
-import wl_collocation
+import wl_collocation_extractor
 import wl_colligation
 import wl_keyword
 
@@ -413,8 +413,8 @@ class Wl_Main(QMainWindow):
             self.tr('N-gram Generator')
         )
         self.wl_work_area.addTab(
-            wl_collocation.Wrapper_Collocation(self),
-            self.tr('Collocation')
+            wl_collocation_extractor.Wrapper_Collocation_Extractor(self),
+            self.tr('Collocation Extractor')
         )
         self.wl_work_area.addTab(
             wl_colligation.Wrapper_Colligation(self),

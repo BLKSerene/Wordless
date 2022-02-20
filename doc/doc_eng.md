@@ -27,7 +27,7 @@
     - 3.2 [Concordancer](#doc-eng-3-2)
     - 3.3 [Wordlist Generator](#doc-eng-3-3)
     - 3.4 [N-gram Generator](#doc-eng-3-4)
-    - 3.5 [Collocation](#doc-eng-3-5)
+    - 3.5 [Collocation Extractor](#doc-eng-3-5)
     - 3.6 [Colligation](#doc-eng-3-6)
     - 3.7 [Keyword](#doc-eng-3-7)
 - 4 [Appendixes](#doc-eng-4)
@@ -432,8 +432,10 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ![N-gram Generator - Table](/doc/work_area/ngram_generator_table.png)
 
 <span id="doc-eng-3-5"></span>
-### 3.5 Collocation [[Back to Contents]](#doc-eng)
-In *Collocation*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**.
+### 3.5 Collocation Extractor [[Back to Contents]](#doc-eng)
+**Note:** This module was originally named **Collocation** before *Wordless* 2.2
+
+In *Collocation Extractor*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**.
 
 It is possible to disable searching altogether and generate an exhausted list of patterns of collocation by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be too slow.
 
@@ -478,10 +480,8 @@ You can further filter the results as you see fit by clicking **Filter Results**
 - **3.5.11 Number of Files Found %**<br>
     The percentage of the number of files in which the node and the collocating token co-occur at least once out of the total number of files that are currently selected.
 
-![Collocation - Table](/doc/collocation/collocation_table.png)
-![Collocation - Figure - Line Chart](/doc/collocation/collocation_fig_line_chart.png)
-![Collocation - Figure - Word Cloud](/doc/collocation/collocation_fig_word_cloud.png)
-![Collocation - Figure - Network Graph](/doc/collocation/collocation_fig_network_graph.png)
+![Collocation Extractor - Table](/doc/work_area/collocation_extractor_table.png)
+![Collocation Extractor - Figure - Network Graph](/doc/work_area/collocation_extractor_fig_network_graph.png)
 
 <span id="doc-eng-3-6"></span>
 ### 3.6 Colligation [[Back to Contents]](#doc-eng)

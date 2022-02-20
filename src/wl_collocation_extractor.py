@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Collocation
+# Wordless: Collocation Extractor
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -36,11 +36,11 @@ from wl_nlp import wl_matching, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
 from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
-class Wl_Table_Collocation(wl_tables.Wl_Table_Data_Filter_Search):
+class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
-            tab = 'collocation',
+            tab = 'collocation_extractor',
             headers = [
                 parent.tr('Rank'),
                 parent.tr('Node'),
@@ -65,7 +65,7 @@ class Wl_Table_Collocation(wl_tables.Wl_Table_Data_Filter_Search):
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
     def toggle_breakdown(self):
-        settings = self.main.settings_custom['collocation']['table_settings']
+        settings = self.main.settings_custom['collocation_extractor']['table_settings']
 
         self.setUpdatesEnabled(False)
 
@@ -94,27 +94,27 @@ class Wl_Table_Collocation(wl_tables.Wl_Table_Data_Filter_Search):
         if confirmed:
             self.cols_breakdown_position = set()
 
-class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
+class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
-        self.table_collocation = Wl_Table_Collocation(self)
+        self.table_collocation_extractor = Wl_Table_Collocation_Extractor(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_collocation.label_number_results, 0, 0)
-        layout_results.addWidget(self.table_collocation.button_results_filter, 0, 2)
-        layout_results.addWidget(self.table_collocation.button_results_search, 0, 3)
+        layout_results.addWidget(self.table_collocation_extractor.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_collocation_extractor.button_results_filter, 0, 2)
+        layout_results.addWidget(self.table_collocation_extractor.button_results_search, 0, 3)
 
         layout_results.setColumnStretch(1, 1)
 
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_collocation, 1, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_exp_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_exp_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_collocation.button_clr, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_collocation_extractor, 1, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_collocation_extractor.button_generate_table, 2, 0)
+        self.wrapper_table.layout().addWidget(self.table_collocation_extractor.button_generate_fig, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_collocation_extractor.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_collocation_extractor.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_collocation_extractor.button_clr, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -190,7 +190,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings(
             self,
-            tab = 'collocation'
+            tab = 'collocation_extractor'
         )
 
         (
@@ -198,7 +198,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
             self.button_context_settings
         ) = wl_widgets.wl_widgets_context_settings(
             self,
-            tab = 'collocation'
+            tab = 'collocation_extractor'
         )
 
         self.group_box_search_settings.setCheckable(True)
@@ -207,7 +207,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
-        self.line_edit_search_term.returnPressed.connect(self.table_collocation.button_generate_table.click)
+        self.line_edit_search_term.returnPressed.connect(self.table_collocation_extractor.button_generate_table.click)
         self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
 
         self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
@@ -280,8 +280,8 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
             self.tr('Within Paragraphs')
         ])
 
-        self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['collocation'].keys()))
-        self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['collocation'].keys()))
+        self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['collocation_extractor'].keys()))
+        self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['collocation_extractor'].keys()))
 
         self.checkbox_window_sync.stateChanged.connect(self.generation_settings_changed)
         self.spin_box_window_left.valueChanged.connect(self.generation_settings_changed)
@@ -336,7 +336,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
             self.checkbox_show_breakdown_file
         ) = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_collocation]
+            tables = [self.table_collocation_extractor]
         )
 
         self.checkbox_show_breakdown_file.setText(self.tr('Show breakdown by file'))
@@ -345,9 +345,9 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown_position.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_breakdown_position.stateChanged.connect(self.table_collocation.toggle_breakdown)
+        self.checkbox_show_breakdown_position.stateChanged.connect(self.table_collocation_extractor.toggle_breakdown)
         self.checkbox_show_breakdown_file.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_breakdown_file.stateChanged.connect(self.table_collocation.toggle_breakdown)
+        self.checkbox_show_breakdown_file.stateChanged.connect(self.table_collocation_extractor.toggle_breakdown)
 
         self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
@@ -369,7 +369,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
             self.checkbox_use_cumulative
         ) = wl_widgets.wl_widgets_fig_settings(
             self,
-            collocation = True
+            collocation_extractor = True
         )
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
@@ -436,9 +436,9 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default['collocation'])
+            settings = copy.deepcopy(self.main.settings_default['collocation_extractor'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom['collocation'])
+            settings = copy.deepcopy(self.main.settings_custom['collocation_extractor'])
 
         # Token Settings
         self.checkbox_words.setChecked(settings['token_settings']['words'])
@@ -474,7 +474,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
 
         # Context Settings
         if defaults:
-            self.main.wl_context_settings_collocation.load_settings(defaults = True)
+            self.main.wl_context_settings_collocation_extractor.load_settings(defaults = True)
 
         # Generation Settings
         self.checkbox_window_sync.setChecked(settings['generation_settings']['window_sync'])
@@ -523,7 +523,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         self.fig_settings_changed()
 
     def token_settings_changed(self):
-        settings = self.main.settings_custom['collocation']['token_settings']
+        settings = self.main.settings_custom['collocation_extractor']['token_settings']
 
         settings['words'] = self.checkbox_words.isChecked()
         settings['lowercase'] = self.checkbox_lowercase.isChecked()
@@ -549,10 +549,10 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
 
             self.group_box_search_settings.setChecked(False)
 
-        self.main.wl_context_settings_collocation.token_settings_changed()
+        self.main.wl_context_settings_collocation_extractor.token_settings_changed()
 
     def search_settings_changed(self):
-        settings = self.main.settings_custom['collocation']['search_settings']
+        settings = self.main.settings_custom['collocation_extractor']['search_settings']
 
         settings['search_settings'] = self.group_box_search_settings.isChecked()
 
@@ -569,7 +569,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
     def generation_settings_changed(self):
-        settings = self.main.settings_custom['collocation']['generation_settings']
+        settings = self.main.settings_custom['collocation_extractor']['generation_settings']
 
         settings['window_sync'] = self.checkbox_window_sync.isChecked()
 
@@ -589,7 +589,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
 
         # Use Data
-        use_data_old = self.main.settings_custom['collocation']['fig_settings']['use_data']
+        use_data_old = self.main.settings_custom['collocation_extractor']['fig_settings']['use_data']
 
         text_test_significance = settings['test_significance']
         text_measure_effect_size = settings['measure_effect_size']
@@ -605,18 +605,18 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         self.combo_box_use_data.addItem(self.tr('Frequency'))
         self.combo_box_use_data.addItems(
             [col
-             for col in self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+             for col in self.main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
              if col]
         )
-        self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col'])
+        self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col'])
 
         if self.combo_box_use_data.findText(use_data_old) > -1:
             self.combo_box_use_data.setCurrentText(use_data_old)
         else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['collocation']['fig_settings']['use_data'])
+            self.combo_box_use_data.setCurrentText(self.main.settings_default['collocation_extractor']['fig_settings']['use_data'])
 
     def table_settings_changed(self):
-        settings = self.main.settings_custom['collocation']['table_settings']
+        settings = self.main.settings_custom['collocation_extractor']['table_settings']
 
         settings['show_pct'] = self.checkbox_show_pct.isChecked()
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
@@ -624,7 +624,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         settings['show_breakdown_file'] = self.checkbox_show_breakdown_file.isChecked()
 
     def fig_settings_changed(self):
-        settings = self.main.settings_custom['collocation']['fig_settings']
+        settings = self.main.settings_custom['collocation_extractor']['fig_settings']
 
         settings['graph_type'] = self.combo_box_graph_type.currentText()
         settings['sort_by_file'] = self.combo_box_sort_by_file.currentText()
@@ -637,7 +637,7 @@ class Wrapper_Collocation(wl_layouts.Wl_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wl_Worker_Collocation(wl_threading.Wl_Worker):
+class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, dict, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
@@ -653,7 +653,7 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
             texts = []
             collocations_freqs_files_all = []
 
-            settings = self.main.settings_custom['collocation']
+            settings = self.main.settings_custom['collocation_extractor']
             files = list(self.main.wl_file_area.get_selected_files())
 
             window_left = settings['generation_settings']['window_left']
@@ -671,7 +671,7 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
                 collocations_freqs_file_all = {}
 
                 text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_collocation(
+                text = wl_token_processing.wl_process_tokens_collocation_extractor(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -911,8 +911,8 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
             text_test_significance = settings['generation_settings']['test_significance']
             text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-            test_significance = self.main.settings_global['tests_significance']['collocation'][text_test_significance]['func']
-            measure_effect_size = self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['func']
+            test_significance = self.main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['func']
+            measure_effect_size = self.main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['func']
 
             collocations_total = self.collocations_freqs_files[-1].keys()
 
@@ -964,7 +964,7 @@ class Wl_Worker_Collocation(wl_threading.Wl_Worker):
         except Exception:
             self.err_msg = traceback.format_exc()
 
-class Wl_Worker_Collocation_Table(Wl_Worker_Collocation):
+class Wl_Worker_Collocation_Extractor_Table(Wl_Worker_Collocation_Extractor):
     def run(self):
         super().run()
 
@@ -976,7 +976,7 @@ class Wl_Worker_Collocation_Table(Wl_Worker_Collocation):
             self.nodes_text
         )
 
-class Wl_Worker_Collocation_Fig(Wl_Worker_Collocation):
+class Wl_Worker_Collocation_Extractor_Fig(Wl_Worker_Collocation_Extractor):
     def run(self):
         super().run()
 
@@ -1002,8 +1002,8 @@ def generate_table(main, table):
                     text_test_stat,
                     text_p_value,
                     text_bayes_factor
-                ) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-                text_effect_size = main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+                ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
+                text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
 
                 table.clr_table()
 
@@ -1238,14 +1238,12 @@ def generate_table(main, table):
                 wl_msgs.wl_msg_generate_table_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_table_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-
             wl_msgs.wl_msg_fatal_error(main)
 
-    settings = main.settings_custom['collocation']
+    settings = main.settings_custom['collocation_extractor']
     files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
@@ -1254,19 +1252,14 @@ def generate_table(main, table):
             or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
             or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
         ):
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
-            worker_collocation_table = Wl_Worker_Collocation_Table(
+            worker_collocation_extractor_table = Wl_Worker_Collocation_Extractor_Table(
                 main,
-                dialog_progress = dialog_progress,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
                 update_gui = update_gui
             )
-
-            thread_collocation_table = wl_threading.Wl_Thread(worker_collocation_table)
-            thread_collocation_table.start_worker()
+            wl_threading.Wl_Thread(worker_collocation_extractor_table).start_worker()
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms_optional(main)
-
             wl_msgs.wl_msg_generate_table_error(main)
     else:
         wl_msgs.wl_msg_generate_table_error(main)
@@ -1281,8 +1274,8 @@ def generate_fig(main):
 
                 (text_test_stat,
                  text_p_value,
-                 text_bayes_factor) = main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
-                text_effect_size = main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col']
+                 text_bayes_factor) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
+                text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
 
                 if re.search(r'^[LR][0-9]+$', settings['fig_settings']['use_data']):
                     span_positions = (
@@ -1385,11 +1378,9 @@ def generate_fig(main):
                 wl_msgs.wl_msg_generate_fig_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_fig_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-
             wl_msgs.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
@@ -1397,7 +1388,7 @@ def generate_fig(main):
         if collocations_freqs_files:
             wl_figs.show_fig()
 
-    settings = main.settings_custom['collocation']
+    settings = main.settings_custom['collocation_extractor']
     files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
@@ -1408,17 +1399,14 @@ def generate_fig(main):
         ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
-            worker_collocation_fig = Wl_Worker_Collocation_Fig(
+            worker_collocation_extractor_fig = Wl_Worker_Collocation_Extractor_Fig(
                 main,
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
-
-            thread_collocation_fig = wl_threading.Wl_Thread(worker_collocation_fig)
-            thread_collocation_fig.start_worker()
+            wl_threading.Wl_Thread(worker_collocation_extractor_fig).start_worker()
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms_optional(main)
-
             wl_msgs.wl_msg_generate_fig_error(main)
     else:
-        wl_msgs.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_fig_error(main)
