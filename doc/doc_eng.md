@@ -28,7 +28,7 @@
     - 3.3 [Wordlist Generator](#doc-eng-3-3)
     - 3.4 [N-gram Generator](#doc-eng-3-4)
     - 3.5 [Collocation Extractor](#doc-eng-3-5)
-    - 3.6 [Colligation](#doc-eng-3-6)
+    - 3.6 [Colligation Extractor](#doc-eng-3-6)
     - 3.7 [Keyword](#doc-eng-3-7)
 - 4 [Appendixes](#doc-eng-4)
     - 4.1 [Supported Languages](#doc-eng-4-1)
@@ -484,8 +484,10 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ![Collocation Extractor - Figure - Network Graph](/doc/work_area/collocation_extractor_fig_network_graph.png)
 
 <span id="doc-eng-3-6"></span>
-### 3.6 Colligation [[Back to Contents]](#doc-eng)
-In *Colligation*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+### 3.6 Colligation Extractor [[Back to Contents]](#doc-eng)
+**Note:** This module was originally named **Colligation** before *Wordless* 2.2
+
+In *Colligation Extractor*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
 *Wordless* will automatically apply its built-in POS tagger on every file that are not POS-tagged already according to the language of each file. If POS-tagging is not supported for the given languages, the user should provide a file that has already been POS-tagged and make sure that the correct **Text Type** has been set on each file.
 
@@ -532,10 +534,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 - **3.6.11 Number of Files Found %**<br>
     The percentage of the number of files in which the node and the collocating part of speech co-occur at least once out of the total number of file that are currently selected.
 
-![Colligation - Table](/doc/colligation/colligation_table.png)
-![Colligation - Figure - Line Chart](/doc/colligation/colligation_fig_line_chart.png)
-![Colligation - Figure - Word Cloud](/doc/colligation/colligation_fig_word_cloud.png)
-![Colligation - Figure - Network Graph](/doc/colligation/colligation_fig_network_graph.png)
+![Colligation Extractor - Table](/doc/work_area/colligation_extractor_table.png)
 
 <span id="doc-eng-3-7"></span>
 ### 3.7 Keyword [[Back to Contents]](#doc-eng)

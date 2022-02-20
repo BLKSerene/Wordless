@@ -107,7 +107,7 @@ def check_files_on_loading(main, files):
 
     return loading_ok
 
-def check_files_on_loading_colligation(main, files):
+def check_files_on_loading_colligation_extractor(main, files):
     files_pos_tagging_unsupported = []
     loading_ok = True
 
