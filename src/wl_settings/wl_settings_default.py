@@ -733,7 +733,7 @@ def init_settings_default(main):
             }
         },
 
-        'colligation': {
+        'colligation_extractor': {
             'token_settings': {
                 'words': True,
                 'lowercase': True,
