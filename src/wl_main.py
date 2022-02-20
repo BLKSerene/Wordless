@@ -71,7 +71,7 @@ import wl_wordlist_generator
 import wl_ngram_generator
 import wl_collocation_extractor
 import wl_colligation_extractor
-import wl_keyword
+import wl_keyword_extractor
 
 class Wl_Loading(QSplashScreen):
     def __init__(self):
@@ -421,8 +421,8 @@ class Wl_Main(QMainWindow):
             self.tr('Colligation Extractor')
         )
         self.wl_work_area.addTab(
-            wl_keyword.Wrapper_Keyword(self),
-            self.tr('Keyword')
+            wl_keyword_extractor.Wrapper_Keyword_Extractor(self),
+            self.tr('Keyword Extractor')
         )
 
         self.wl_work_area.currentChanged.connect(self.work_area_changed)

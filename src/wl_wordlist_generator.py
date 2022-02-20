@@ -697,4 +697,4 @@ def generate_fig(main):
         )
         wl_threading.Wl_Thread(worker_wordlist_generator_fig).start_worker()
     else:
-        wl_msgs.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_fig_error(main)

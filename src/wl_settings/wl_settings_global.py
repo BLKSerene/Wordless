@@ -2801,7 +2801,7 @@ def init_settings_global(main):
                 }
             },
 
-            'keyword': {
+            'keyword_extractor': {
                 main.tr("Fisher's Exact Test"): {
                     'cols': [
                         None,
@@ -2922,7 +2922,7 @@ def init_settings_global(main):
                 }
             },
 
-            'keyword': {
+            'keyword_extractor': {
                 main.tr('%DIFF'): {
                     'col': main.tr('%DIFF'),
                     'func': wl_measures_effect_size.pct_diff

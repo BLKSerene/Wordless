@@ -36,6 +36,7 @@
 - Utils: Update CLTK's Norse (Old) stop word list
 - Work Area: Rename Colligation to Colligation Extractor
 - Work Area: Rename Collocation to Collocation Extractor
+- Work Area: Rename Keyword to Keyword Extractor
 - Work Area: Rename N-gram to N-gram Generator
 - Work Area: Rename Overview to Profiler
 - Work Area: Rename Wordlist to Wordlist Generator

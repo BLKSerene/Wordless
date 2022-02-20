@@ -29,7 +29,7 @@
     - 3.4 [N-gram Generator](#doc-eng-3-4)
     - 3.5 [Collocation Extractor](#doc-eng-3-5)
     - 3.6 [Colligation Extractor](#doc-eng-3-6)
-    - 3.7 [Keyword](#doc-eng-3-7)
+    - 3.7 [Keyword Extractor](#doc-eng-3-7)
 - 4 [Appendixes](#doc-eng-4)
     - 4.1 [Supported Languages](#doc-eng-4-1)
     - 4.2 [Supported File Types](#doc-eng-4-2)
@@ -537,8 +537,10 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ![Colligation Extractor - Table](/doc/work_area/colligation_extractor_table.png)
 
 <span id="doc-eng-3-7"></span>
-### 3.7 Keyword [[Back to Contents]](#doc-eng)
-In *Keyword*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+### 3.7 Keyword Extractor [[Back to Contents]](#doc-eng)
+**Note:** This module was originally named **Keyword** before *Wordless* 2.2
+
+In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
 You can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 
@@ -576,9 +578,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 - **3.7.10 Number of Files Found %**<br>
     The percentage of the number of files in which the keyword appears at least once out of the total number of files that are currently selected.
 
-![Keyword - Table](/doc/keyword/keyword_table.png)
-![Keyword - Figure - Line Chart](/doc/keyword/keyword_fig_line_chart.png)
-![Keyword - Figure - Word Cloud](/doc/keyword/keyword_fig_word_cloud.png)
+![Keyword Extractor - Table](/doc/work_area/keyword_extractor_table.png)
 
 <span id="doc-eng-4"></span>
 ## 4 Appendixes [[Back to Contents]](#doc-eng)
