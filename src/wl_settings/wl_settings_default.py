@@ -572,7 +572,7 @@ def init_settings_default(main):
             }
         },
 
-        'collocation': {
+        'collocation_extractor': {
             'token_settings': {
                 'words': True,
                 'lowercase': True,

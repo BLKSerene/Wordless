@@ -2739,7 +2739,7 @@ def init_settings_global(main):
         },
 
         'tests_significance': {
-            'collocation': {
+            'collocation_extractor': {
                 main.tr("Berry-Rogghe's z-score"): {
                     'cols': [
                         main.tr("Berry-Rogghe's z-score"),
@@ -2855,7 +2855,7 @@ def init_settings_global(main):
         },
 
         'measures_effect_size': {
-            'collocation': {
+            'collocation_extractor': {
                 main.tr('Cubic Association Ratio'): {
                     'col': main.tr('IM³'),
                     'func': wl_measures_effect_size.im3
