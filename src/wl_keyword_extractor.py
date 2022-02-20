@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Keyword
+# Wordless: Keyword Extractor
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -32,11 +32,11 @@ from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
 from wl_widgets import wl_layouts, wl_lists, wl_tables, wl_widgets
 
-class Wl_Table_Keyword(wl_tables.Wl_Table_Data_Filter_Search):
+class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
-            tab = 'keyword',
+            tab = 'keyword_extractor',
             headers = [
                 parent.tr('Rank'),
                 parent.tr('Keyword'),
@@ -59,27 +59,27 @@ class Wl_Table_Keyword(wl_tables.Wl_Table_Data_Filter_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
 
-class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
+class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
 
         # Table
-        self.table_keyword = Wl_Table_Keyword(self)
+        self.table_keyword_extractor = Wl_Table_Keyword_Extractor(self)
 
         layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_keyword.label_number_results, 0, 0)
-        layout_results.addWidget(self.table_keyword.button_results_filter, 0, 2)
-        layout_results.addWidget(self.table_keyword.button_results_search, 0, 3)
+        layout_results.addWidget(self.table_keyword_extractor.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_keyword_extractor.button_results_filter, 0, 2)
+        layout_results.addWidget(self.table_keyword_extractor.button_results_search, 0, 3)
 
         layout_results.setColumnStretch(1, 1)
 
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_keyword, 1, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_keyword.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_keyword.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_keyword.button_exp_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_keyword.button_exp_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_keyword.button_clr, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_keyword_extractor, 1, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_keyword_extractor.button_generate_table, 2, 0)
+        self.wrapper_table.layout().addWidget(self.table_keyword_extractor.button_generate_fig, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_keyword_extractor.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_keyword_extractor.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_keyword_extractor.button_clr, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -155,8 +155,8 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
             node = self.tr('Statistical Significance')
         )
 
-        self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keyword'].keys()))
-        self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['keyword'].keys()))
+        self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keyword_extractor'].keys()))
+        self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['keyword_extractor'].keys()))
 
         self.list_ref_files.model().dataChanged.connect(self.generation_settings_changed)
         self.combo_box_test_significance.currentTextChanged.connect(self.generation_settings_changed)
@@ -196,7 +196,7 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
             self.checkbox_show_breakdown
         ) = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_keyword]
+            tables = [self.table_keyword_extractor]
         )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
@@ -285,9 +285,9 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default['keyword'])
+            settings = copy.deepcopy(self.main.settings_default['keyword_extractor'])
         else:
-            settings = copy.deepcopy(self.main.settings_custom['keyword'])
+            settings = copy.deepcopy(self.main.settings_custom['keyword_extractor'])
 
         # Token Settings
         self.checkbox_words.setChecked(settings['token_settings']['words'])
@@ -332,7 +332,7 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
         self.fig_settings_changed()
 
     def token_settings_changed(self):
-        settings = self.main.settings_custom['keyword']['token_settings']
+        settings = self.main.settings_custom['keyword_extractor']['token_settings']
 
         settings['words'] = self.checkbox_words.isChecked()
         settings['lowercase'] = self.checkbox_lowercase.isChecked()
@@ -349,7 +349,7 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
     def generation_settings_changed(self):
-        settings = self.main.settings_custom['keyword']['generation_settings']
+        settings = self.main.settings_custom['keyword_extractor']['generation_settings']
 
         settings['ref_files'] = self.list_ref_files.model().stringList()
         settings['test_significance'] = self.combo_box_test_significance.currentText()
@@ -379,25 +379,25 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
         self.combo_box_use_data.addItem(self.tr('Frequency'))
         self.combo_box_use_data.addItems(
             [col
-             for col in self.main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
+             for col in self.main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
              if col]
         )
-        self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col'])
+        self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col'])
 
         if self.combo_box_use_data.findText(use_data_old) > -1:
             self.combo_box_use_data.setCurrentText(use_data_old)
         else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['keyword']['fig_settings']['use_data'])
+            self.combo_box_use_data.setCurrentText(self.main.settings_default['keyword_extractor']['fig_settings']['use_data'])
 
     def table_settings_changed(self):
-        settings = self.main.settings_custom['keyword']['table_settings']
+        settings = self.main.settings_custom['keyword_extractor']['table_settings']
 
         settings['show_pct'] = self.checkbox_show_pct.isChecked()
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
     def fig_settings_changed(self):
-        settings = self.main.settings_custom['keyword']['fig_settings']
+        settings = self.main.settings_custom['keyword_extractor']['fig_settings']
 
         settings['graph_type'] = self.combo_box_graph_type.currentText()
         settings['sort_by_file'] = self.combo_box_sort_by_file.currentText()
@@ -410,7 +410,7 @@ class Wrapper_Keyword(wl_layouts.Wl_Wrapper):
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
-class Wl_Worker_Keyword(wl_threading.Wl_Worker):
+class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
@@ -424,7 +424,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
         try:
             texts = []
 
-            settings = self.main.settings_custom['keyword']
+            settings = self.main.settings_custom['keyword_extractor']
 
             files_ref = list(self.main.wl_file_area.find_files_by_name(
                 settings['generation_settings']['ref_files'],
@@ -443,7 +443,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
 
             for file_ref in files_ref:
                 text = copy.deepcopy(file_ref['text'])
-                text = wl_token_processing.wl_process_tokens_keyword(
+                text = wl_token_processing.wl_process_tokens_keyword_extractor(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -459,7 +459,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
             # Frequency (Observed files)
             for file_observed in files_observed:
                 text = copy.deepcopy(file_observed['text'])
-                text = wl_token_processing.wl_process_tokens_keyword(
+                text = wl_token_processing.wl_process_tokens_keyword_extractor(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -489,8 +489,8 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
             text_test_significance = settings['generation_settings']['test_significance']
             text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-            test_significance = self.main.settings_global['tests_significance']['keyword'][text_test_significance]['func']
-            measure_effect_size = self.main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['func']
+            test_significance = self.main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['func']
+            measure_effect_size = self.main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['func']
 
             keywords_freq_file_observed = self.keywords_freq_files[-1]
             keywords_freq_file_ref = self.keywords_freq_files[0]
@@ -564,7 +564,7 @@ class Wl_Worker_Keyword(wl_threading.Wl_Worker):
         except Exception:
             self.err_msg = traceback.format_exc()
 
-class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
+class Wl_Worker_Keyword_Extractor_Table(Wl_Worker_Keyword_Extractor):
     def run(self):
         super().run()
 
@@ -575,7 +575,7 @@ class Wl_Worker_Keyword_Table(Wl_Worker_Keyword):
             wl_misc.merge_dicts(self.keywords_stats_files)
         )
 
-class Wl_Worker_Keyword_Fig(Wl_Worker_Keyword):
+class Wl_Worker_Keyword_Extractor_Fig(Wl_Worker_Keyword_Extractor):
     def run(self):
         super().run()
 
@@ -600,8 +600,8 @@ def generate_table(main, table):
                     text_test_stat,
                     text_p_value,
                     text_bayes_factor
-                ) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
-                text_effect_size = main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+                ) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
+                text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
 
                 table.clr_table()
 
@@ -776,7 +776,7 @@ def generate_table(main, table):
 
             wl_msgs.wl_msg_fatal_error(main)
 
-    settings = main.settings_custom['keyword']
+    settings = main.settings_custom['keyword_extractor']
     files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
@@ -791,16 +791,12 @@ def generate_table(main, table):
         ]
 
         if files_ref and files_observed:
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
-            worker_keyword_table = Wl_Worker_Keyword_Table(
+            worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
                 main,
-                dialog_progress = dialog_progress,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
                 update_gui = update_gui
             )
-
-            thread_keyword_table = wl_threading.Wl_Thread(worker_keyword_table)
-            thread_keyword_table.start_worker()
+            wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
         else:
             if not files_ref:
                 wl_msg_boxes.wl_msg_box_missing_ref_files(main)
@@ -821,11 +817,11 @@ def generate_fig(main):
 
                 (text_test_stat,
                  text_p_value,
-                 text_bayes_factor) = main.settings_global['tests_significance']['keyword'][text_test_significance]['cols']
-                text_effect_size = main.settings_global['measures_effect_size']['keyword'][text_measure_effect_size]['col']
+                 text_bayes_factor) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
+                text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
 
                 if settings['fig_settings']['use_data'] == main.tr('Frequency'):
-                    wl_figs_freqs.wl_fig_freq_keyword(
+                    wl_figs_freqs.wl_fig_freq_keyword_extractor(
                         main, keywords_freq_files,
                         files_ref = files_ref,
                         settings = settings['fig_settings'],
@@ -861,7 +857,7 @@ def generate_fig(main):
 
                         label_y = text_effect_size
 
-                    wl_figs_stats.wl_fig_stat_keyword(
+                    wl_figs_stats.wl_fig_stat_keyword_extractor(
                         main, keywords_stat_files,
                         files_ref = files_ref,
                         settings = settings['fig_settings'],
@@ -871,11 +867,9 @@ def generate_fig(main):
                 wl_msgs.wl_msg_generate_fig_success(main)
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_fig_error(main)
         else:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-
             wl_msgs.wl_msg_fatal_error(main)
 
         dialog_progress.accept()
@@ -883,7 +877,7 @@ def generate_fig(main):
         if keywords_freq_files:
             wl_figs.show_fig()
 
-    settings = main.settings_custom['keyword']
+    settings = main.settings_custom['keyword_extractor']
     files = list(main.wl_file_area.get_selected_files())
 
     if wl_checking_files.check_files_on_loading(main, files):
@@ -897,14 +891,12 @@ def generate_fig(main):
         if files_ref and file_names_observed:
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
-            worker_keyword_fig = Wl_Worker_Keyword_Fig(
+            worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
                 main,
                 dialog_progress = dialog_progress,
                 update_gui = update_gui
             )
-
-            thread_keyword_fig = wl_threading.Wl_Thread(worker_keyword_fig)
-            thread_keyword_fig.start_worker()
+            wl_threading.Wl_Thread(worker_keyword_extractor_fig).start_worker()
         else:
             if not files_ref:
                 wl_msg_boxes.wl_msg_box_missing_ref_files(main)
@@ -913,4 +905,4 @@ def generate_fig(main):
 
             wl_msgs.wl_msg_generate_fig_error(main)
     else:
-        wl_msgs.wl_msg_generate_table_error(main)
+        wl_msgs.wl_msg_generate_fig_error(main)
