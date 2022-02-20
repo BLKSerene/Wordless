@@ -280,8 +280,8 @@ class Wrapper_Colligation(wl_layouts.Wl_Wrapper):
             self.tr('Within Paragraphs')
         ])
 
-        self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['collocation'].keys()))
-        self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['collocation'].keys()))
+        self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['collocation_extractor'].keys()))
+        self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['collocation_extractor'].keys()))
 
         self.checkbox_window_sync.stateChanged.connect(self.generation_settings_changed)
         self.spin_box_window_left.valueChanged.connect(self.generation_settings_changed)
@@ -369,7 +369,7 @@ class Wrapper_Colligation(wl_layouts.Wl_Wrapper):
             self.checkbox_use_cumulative
         ) = wl_widgets.wl_widgets_fig_settings(
             self,
-            collocation = True
+            collocation_extractor = True
         )
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
@@ -606,10 +606,10 @@ class Wrapper_Colligation(wl_layouts.Wl_Wrapper):
 
         self.combo_box_use_data.addItems(
             [col
-             for col in self.main.settings_global['tests_significance']['collocation'][text_test_significance]['cols']
+             for col in self.main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
              if col]
         )
-        self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['collocation'][text_measure_effect_size]['col'])
+        self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col'])
 
         if self.combo_box_use_data.findText(use_data_old) > -1:
             self.combo_box_use_data.setCurrentText(use_data_old)
