@@ -70,7 +70,7 @@ import wl_concordancer_parallel
 import wl_wordlist_generator
 import wl_ngram_generator
 import wl_collocation_extractor
-import wl_colligation
+import wl_colligation_extractor
 import wl_keyword
 
 class Wl_Loading(QSplashScreen):
@@ -417,8 +417,8 @@ class Wl_Main(QMainWindow):
             self.tr('Collocation Extractor')
         )
         self.wl_work_area.addTab(
-            wl_colligation.Wrapper_Colligation(self),
-            self.tr('Colligation')
+            wl_colligation_extractor.Wrapper_Colligation_Extractor(self),
+            self.tr('Colligation Extractor')
         )
         self.wl_work_area.addTab(
             wl_keyword.Wrapper_Keyword(self),
