@@ -293,7 +293,14 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         if not self.is_empty():
             for row in range(self.model().rowCount()):
-                self.files_to_open.append(self.model().item(row, 0).file)
+                file = self.model().item(row, 0).file
+
+                file['encoding'] = wl_conversion.to_encoding_code(self.main, self.model().item(row, 1).text())
+                file['lang'] = wl_conversion.to_lang_code(self.main, self.model().item(row, 2).text())
+                file['tokenized'] = self.model().item(row, 3).text()
+                file['tagged'] = self.model().item(row, 4).text()
+
+                self.files_to_open.append(file)
 
     def del_row(self):
         for row in self.get_selected_rows():
