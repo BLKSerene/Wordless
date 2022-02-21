@@ -25,7 +25,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
@@ -58,6 +57,17 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item):
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+            self.button_generate_fig.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+            self.button_generate_fig.setEnabled(False)
 
 class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -777,34 +787,30 @@ def generate_table(main, table):
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['keyword_extractor']
-    files = list(main.wl_file_area.get_selected_files())
 
-    if wl_checking_files.check_files_on_loading(main, files):
-        files_ref = list(main.wl_file_area.find_files_by_name(
-            settings['generation_settings']['ref_files'],
-            selected_only = True
-        ))
-        files_observed = [
-            file_observed
-            for file_observed in main.wl_file_area.get_selected_files()
-            if file_observed not in files_ref
-        ]
+    files_ref = list(main.wl_file_area.find_files_by_name(
+        settings['generation_settings']['ref_files'],
+        selected_only = True
+    ))
+    files_observed = [
+        file_observed
+        for file_observed in main.wl_file_area.get_selected_files()
+        if file_observed not in files_ref
+    ]
 
-        if files_ref and files_observed:
-            worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
-                main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-                update_gui = update_gui
-            )
-            wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
-        else:
-            if not files_ref:
-                wl_msg_boxes.wl_msg_box_missing_ref_files(main)
-            elif not files_observed:
-                wl_msg_boxes.wl_msg_box_missing_observed_files(main)
-
-            wl_msgs.wl_msg_generate_table_error(main)
+    if files_ref and files_observed:
+        worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
+            main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
+            update_gui = update_gui
+        )
+        wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
     else:
+        if not files_ref:
+            wl_msg_boxes.wl_msg_box_missing_ref_files(main)
+        elif not files_observed:
+            wl_msg_boxes.wl_msg_box_missing_observed_files(main)
+
         wl_msgs.wl_msg_generate_table_error(main)
 
 @wl_misc.log_timing
@@ -878,31 +884,27 @@ def generate_fig(main):
             wl_figs.show_fig()
 
     settings = main.settings_custom['keyword_extractor']
-    files = list(main.wl_file_area.get_selected_files())
 
-    if wl_checking_files.check_files_on_loading(main, files):
-        files_ref = settings['generation_settings']['ref_files']
-        file_names_observed = [
-            file_name
-            for file_name in main.wl_file_area.get_selected_file_names()
-            if file_name not in files_ref
-        ]
+    files_ref = settings['generation_settings']['ref_files']
+    file_names_observed = [
+        file_name
+        for file_name in main.wl_file_area.get_selected_file_names()
+        if file_name not in files_ref
+    ]
 
-        if files_ref and file_names_observed:
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
+    if files_ref and file_names_observed:
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
 
-            worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
-                main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui
-            )
-            wl_threading.Wl_Thread(worker_keyword_extractor_fig).start_worker()
-        else:
-            if not files_ref:
-                wl_msg_boxes.wl_msg_box_missing_ref_files(main)
-            elif not file_names_observed:
-                wl_msg_boxes.wl_msg_box_missing_observed_files(main)
-
-            wl_msgs.wl_msg_generate_fig_error(main)
+        worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
+            main,
+            dialog_progress = dialog_progress,
+            update_gui = update_gui
+        )
+        wl_threading.Wl_Thread(worker_keyword_extractor_fig).start_worker()
     else:
+        if not files_ref:
+            wl_msg_boxes.wl_msg_box_missing_ref_files(main)
+        elif not file_names_observed:
+            wl_msg_boxes.wl_msg_box_missing_observed_files(main)
+
         wl_msgs.wl_msg_generate_fig_error(main)

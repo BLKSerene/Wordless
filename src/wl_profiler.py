@@ -26,7 +26,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_measures import wl_measures_misc, wl_measures_readability
 from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
@@ -293,11 +292,18 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
         self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item):
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
 
     def clr_table(self, count_headers = 1, confirm = False):
-        confirmed = super().clr_table(count_headers = 0, confirm = confirm)
-
-        if confirmed:
+        if super().clr_table(count_headers = 0, confirm = confirm):
             self.ins_header_hor(0, self.tr('Total'))
 
 class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
@@ -648,6 +654,8 @@ def generate_table(main, table):
                 count_sentences_lens = []
 
                 # Insert column (total)
+                files = list(main.wl_file_area.get_selected_files())
+
                 for i, file in enumerate(files):
                     table.ins_header_hor(
                         table.find_header_hor(main.tr('Total')), file['name'],
@@ -992,14 +1000,9 @@ def generate_table(main, table):
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
 
-    files = list(main.wl_file_area.get_selected_files())
-
-    if wl_checking_files.check_files_on_loading(main, files):
-        worker_profiler_table = Wl_Worker_Profiler_Table(
-            main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        )
-        wl_threading.Wl_Thread(worker_profiler_table).start_worker()
-    else:
-        wl_msgs.wl_msg_generate_table_error(main)
+    worker_profiler_table = Wl_Worker_Profiler_Table(
+        main,
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
+        update_gui = update_gui
+    )
+    wl_threading.Wl_Thread(worker_profiler_table).start_worker()

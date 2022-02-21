@@ -63,6 +63,17 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item):
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+            self.button_generate_fig.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+            self.button_generate_fig.setEnabled(False)
 
     def toggle_breakdown(self):
         settings = self.main.settings_custom['colligation_extractor']['table_settings']
