@@ -25,7 +25,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_threading
@@ -73,6 +72,26 @@ class Wl_Table_Concordancer_Parallel_Lower(wl_tables.Wl_Table_Data):
             ]
         )
 
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+
+        self.button_generate_fig.setEnabled(False)
+
+        self.button_generate_table.clicked.connect(lambda: generate_table(
+            self.main,
+            table_src = parent.table_concordancer_parallel_upper,
+            table_tgt = parent.table_concordancer_parallel_lower
+        ))
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item):
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+
 class Wl_Combo_Box_File_Concordancer(wl_boxes.Wl_Combo_Box_File):
     def wl_files_changed(self):
         if self.currentText() == self.tr('*** None ***'):
@@ -105,17 +124,6 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
 
         self.table_concordancer_parallel_lower.add_linked_table(self.table_concordancer_parallel_upper)
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
-
-        self.button_generate_fig.setEnabled(False)
-
-        self.button_generate_table.clicked.connect(lambda: generate_table(
-            self.main,
-            table_src = self.table_concordancer_parallel_upper,
-            table_tgt = self.table_concordancer_parallel_lower
-        ))
-
         # Parallel Mode
         self.checkbox_parallel_mode = QCheckBox(self.tr('Parallel Mode'))
 
@@ -132,8 +140,8 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_concordancer_parallel_upper, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_concordancer_parallel_lower, 2, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.button_generate_table, 3, 0)
-        self.wrapper_table.layout().addWidget(self.button_generate_fig, 3, 1)
+        self.wrapper_table.layout().addWidget(self.table_concordancer_parallel_lower.button_generate_table, 3, 0)
+        self.wrapper_table.layout().addWidget(self.table_concordancer_parallel_lower.button_generate_fig, 3, 1)
         self.wrapper_table.layout().addWidget(self.table_concordancer_parallel_lower.button_exp_selected, 3, 2)
         self.wrapper_table.layout().addWidget(self.table_concordancer_parallel_lower.button_exp_all, 3, 3)
         self.wrapper_table.layout().addWidget(self.table_concordancer_parallel_lower.button_clr, 3, 4)
@@ -195,7 +203,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
-        self.line_edit_search_term.returnPressed.connect(self.button_generate_table.click)
+        self.line_edit_search_term.returnPressed.connect(self.table_concordancer_parallel_lower.button_generate_table.click)
         self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
 
         self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
@@ -824,32 +832,28 @@ def generate_table(main, table_src, table_tgt):
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['concordancer_parallel']
-    files = list(main.wl_file_area.get_selected_files())
 
-    if wl_checking_files.check_files_on_loading(main, files):
-        # Check for identical source and target files
-        if settings['generation_settings']['src_file'] != settings['generation_settings']['tgt_file']:
-            # Check for empty search term
-            if (
-                not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
-                or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
-            ):
-                search_additions = True
-            else:
-                search_additions = wl_msg_boxes.wl_msg_box_missing_search_terms_concordancer_parallel(main)
-
-            # Ask for confirmation
-            if search_additions:
-                worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
-                    main,
-                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-                    update_gui = update_gui
-                )
-                wl_threading.Wl_Thread(worker_concordancer_parallel_table).start_worker()
-            else:
-                wl_msgs.wl_msg_generate_table_error(main)
+    # Check for identical source and target files
+    if settings['generation_settings']['src_file'] != settings['generation_settings']['tgt_file']:
+        # Check for empty search term
+        if (
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
+            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
+            search_additions = True
         else:
-            wl_msg_boxes.wl_msg_box_identical_src_tgt_files(main)
+            search_additions = wl_msg_boxes.wl_msg_box_missing_search_terms_concordancer_parallel(main)
+
+        # Ask for confirmation
+        if search_additions:
+            worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
+                main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
+                update_gui = update_gui
+            )
+            wl_threading.Wl_Thread(worker_concordancer_parallel_table).start_worker()
+        else:
             wl_msgs.wl_msg_generate_table_error(main)
     else:
+        wl_msg_boxes.wl_msg_box_identical_src_tgt_files(main)
         wl_msgs.wl_msg_generate_table_error(main)

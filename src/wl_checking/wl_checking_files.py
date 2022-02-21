@@ -21,7 +21,7 @@ import re
 
 from PyQt5.QtGui import QStandardItem
 
-from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
+from wl_dialogs import wl_dialogs_errs
 from wl_utils import wl_misc
 
 def check_file_paths_unsupported(main, file_paths):
@@ -76,78 +76,44 @@ def check_file_paths_dup(main, new_file_paths, file_paths = None):
 
     return file_paths_ok, file_paths_dup
 
-def check_files_on_loading(main, files):
-    loading_ok = True
-
-    if files:
-        # Check for invalid XML files
-        for file in files:
-            if re.search(r'\.xml$', file['path'], flags = re.IGNORECASE):
-                if file['tokenized'] == 'No' or file['tagged'] == 'No':
-                    wl_msg_boxes.Wl_Msg_Box_Warning(
-                        main,
-                        title = main.tr('Invalid XML File'),
-                        text = main.tr('''
-                            <div>If the input is an XML file, it should be both tokenized and tagged.</div>
-                        ''')
-                    ).open()
-
-                    loading_ok = False
-    else:
-        wl_msg_boxes.Wl_Msg_Box_Warning(
-            main,
-            title = main.tr('No Files Selected'),
-            text = main.tr('''
-                <div>There are no files being currently opened and selected.</div>
-                <div>Please open files first or check your file settings.</div>
-            ''')
-        ).open()
-
-        loading_ok = False
-
-    return loading_ok
-
 def check_files_on_loading_colligation_extractor(main, files):
     files_pos_tagging_unsupported = []
     loading_ok = True
 
-    if check_files_on_loading(main, files):
-        for file in files:
-            if file['lang'] not in main.settings_global['pos_taggers']:
-                files_pos_tagging_unsupported.append(file)
+    for file in files:
+        if file['lang'] not in main.settings_global['pos_taggers']:
+            files_pos_tagging_unsupported.append(file)
 
-        file_paths_pos_tagging_unsupported = [file['path'] for file in files_pos_tagging_unsupported]
+    file_paths_pos_tagging_unsupported = [file['path'] for file in files_pos_tagging_unsupported]
 
-        if file_paths_pos_tagging_unsupported:
-            dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = main.tr('Error Loading Files'))
+    if file_paths_pos_tagging_unsupported:
+        dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = main.tr('Error Loading Files'))
 
-            dialog_err_files.label_err.set_text(main.tr('''
-                <div>
-                    The built-in POS taggers currently have no support for the following file(s), please check your language settings or provide corpora that have already been POS-tagged.
-                </div>
-            '''))
+        dialog_err_files.label_err.set_text(main.tr('''
+            <div>
+                The built-in POS taggers currently have no support for the following file(s), please check your language settings or provide corpora that have already been POS-tagged.
+            </div>
+        '''))
 
-            dialog_err_files.table_err_files.model().setRowCount(len(file_paths_pos_tagging_unsupported))
+        dialog_err_files.table_err_files.model().setRowCount(len(file_paths_pos_tagging_unsupported))
 
-            dialog_err_files.table_err_files.disable_updates()
+        dialog_err_files.table_err_files.disable_updates()
 
-            for i, file_path in enumerate(file_paths_pos_tagging_unsupported):
-                dialog_err_files.table_err_files.model().setItem(
-                    i, 0,
-                    QStandardItem(main.tr('POS Tagging Unsupported'))
-                )
-                dialog_err_files.table_err_files.model().setItem(
-                    i, 1,
-                    QStandardItem(file_path)
-                )
+        for i, file_path in enumerate(file_paths_pos_tagging_unsupported):
+            dialog_err_files.table_err_files.model().setItem(
+                i, 0,
+                QStandardItem(main.tr('POS Tagging Unsupported'))
+            )
+            dialog_err_files.table_err_files.model().setItem(
+                i, 1,
+                QStandardItem(file_path)
+            )
 
-            dialog_err_files.table_err_files.enable_updates()
+        dialog_err_files.table_err_files.enable_updates()
 
-            dialog_err_files.open()
+        dialog_err_files.open()
 
-        if files_pos_tagging_unsupported:
-            loading_ok = False
-    else:
+    if files_pos_tagging_unsupported:
         loading_ok = False
 
     return loading_ok
