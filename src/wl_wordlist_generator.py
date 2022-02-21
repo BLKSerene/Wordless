@@ -25,7 +25,6 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
-from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
@@ -58,6 +57,17 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item):
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+            self.button_generate_fig.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+            self.button_generate_fig.setEnabled(False)
 
 class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -503,6 +513,8 @@ def generate_table(main, table):
                 table.clr_table()
 
                 # Insert columns (files)
+                files = list(main.wl_file_area.get_selected_files())
+
                 for file in files:
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
@@ -618,18 +630,14 @@ def generate_table(main, table):
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['wordlist_generator']
-    files = list(main.wl_file_area.get_selected_files())
 
-    if wl_checking_files.check_files_on_loading(main, files):
-        worker_wordlist_generator_table = Wl_Worker_Wordlist_Generator_Table(
-            main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        )
+    worker_wordlist_generator_table = Wl_Worker_Wordlist_Generator_Table(
+        main,
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
+        update_gui = update_gui
+    )
 
-        wl_threading.Wl_Thread(worker_wordlist_generator_table).start_worker()
-    else:
-        wl_msgs.wl_msg_generate_table_error(main)
+    wl_threading.Wl_Thread(worker_wordlist_generator_table).start_worker()
 
 @wl_misc.log_timing
 def generate_fig(main):
@@ -685,16 +693,11 @@ def generate_fig(main):
             wl_figs.show_fig()
 
     settings = main.settings_custom['wordlist_generator']
-    files = list(main.wl_file_area.get_selected_files())
 
-    if wl_checking_files.check_files_on_loading(main, files):
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
-        worker_wordlist_generator_fig = Wl_Worker_Wordlist_Generator_Fig(
-            main,
-            dialog_progress = dialog_progress,
-            update_gui = update_gui
-        )
-        wl_threading.Wl_Thread(worker_wordlist_generator_fig).start_worker()
-    else:
-        wl_msgs.wl_msg_generate_fig_error(main)
+    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
+    worker_wordlist_generator_fig = Wl_Worker_Wordlist_Generator_Fig(
+        main,
+        dialog_progress = dialog_progress,
+        update_gui = update_gui
+    )
+    wl_threading.Wl_Thread(worker_wordlist_generator_fig).start_worker()
