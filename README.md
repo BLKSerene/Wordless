@@ -58,6 +58,14 @@ Release|Remarks
 [Older Versions](https://github.com/BLKSerene/Wordless/releases)|Not recommended
 [Baidu Netdisk (百度网盘)](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg)|For Chinese users with slow connections to Github (**PASSWORD: wdls**)<br>中国用户若Github下载速度较慢可尝试从百度网盘下载 (**提取码: wdls**)
 
+**Note:** If your Mac says that **“Wordless” is damaged and can’t be opened**, please open **Terminal** (Launchpad → Other) and run:<br>
+**备注**：如果苹果电脑提示 **“Wordless”已损坏，无法打开**，请打开**终端**（启动台 → 其他）后运行：
+
+    xattr -rc /Applications/Wordless.app
+
+remember to replace **/Applications/Wordless.app** with the actual path of Wordless on your computer (you could drag **Wordless.app** to the **Terminal**).<br>
+记得把 **/Applications/Wordless.app** 替换为 Wordless 在电脑上的实际路径（可直接拖拽 **Wordless.app** 文件至**终端**中）。
+
 <span id="doc"></span>
 ## Documentation
 - [Documentation - English](https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md)
