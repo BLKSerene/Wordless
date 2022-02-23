@@ -357,15 +357,10 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                 self.progress_updated.emit(self.tr(f'Opening files... ({i + 1}/{len_files})'))
 
                 # Remove header tags
-                tags_header = []
-
-                for _, _, tag_opening in self.main.settings_custom['tags']['tags_header']:
-                    tags_header.append(tag_opening[1:-1])
-
                 with open(file['path'], 'w', encoding = file['encoding']) as f:
                     text = file['text']
 
-                    if file['tagged'] == 'Yes' and tags_header:
+                    if file['tagged'] == 'Yes' and re_tags_header:
                         # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
                         # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
                         text = re.sub(re_tags_header, '', text)

@@ -25,6 +25,7 @@ from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_misc
 from wl_dialogs import wl_msg_boxes
+from wl_nlp import wl_matching
 from wl_settings import wl_settings
 from wl_utils import wl_conversion
 from wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables, wl_widgets
@@ -64,8 +65,10 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         group_box_auto_detection_settings = QGroupBox(self.tr('Auto-detection Settings'), self)
 
         self.label_files_number_lines = QLabel(self.tr('Number of lines to scan in each file:'), self)
-        (self.spin_box_files_number_lines,
-         self.checkbox_files_number_lines_no_limit) = wl_widgets.wl_widgets_no_limit(self)
+        (
+            self.spin_box_files_number_lines,
+            self.checkbox_files_number_lines_no_limit
+        ) = wl_widgets.wl_widgets_no_limit(self)
 
         self.spin_box_files_number_lines.setRange(1, 1000000)
 
@@ -176,13 +179,22 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 item_opening_tag = self.model().item(row, 2)
 
                 # Opening Tag
-                if re.search(r'^\s*$', item_opening_tag.text()):
+                if self.model().item(row, 0).text() == self.tr('Embedded'):
+                    re_validation = re.search(r'^([^\w\s]|_)+\S*$', item_opening_tag.text())
+                    warning_text = self.tr('''
+                        <div>Embedded tags must begin with a punctuation mark, e.g. an underscore or a slash!</div>
+                    ''')
+                else:
+                    re_validation = re.search(r'^([^\w\s]|_)+\S*([^\w\s]|_)+$', item_opening_tag.text())
+                    warning_text = self.tr('''
+                        <div>Non-embedded tags must begin and end with a punctuation mark, e.g. brackets!</div>
+                    ''')
+
+                if re_validation is None:
                     wl_msg_boxes.Wl_Msg_Box_Warning(
                         self.main,
-                        title = self.tr('Empty Opening Tag'),
-                        text = self.tr('''
-                            <div>The opening tag should not be left empty!</div>
-                        ''')
+                        title = self.tr('Invalid Opening Tag'),
+                        text = warning_text
                     ).exec_()
 
                     item_opening_tag.setText(item_opening_tag.text_old)
@@ -222,25 +234,25 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     closing_tag = self.model().item(row, 3)
                     preview = self.model().item(row, 4)
 
-                    # Closing Tag
+                    # Closing Tag & Preview
                     if type_text == self.tr('Embedded'):
-                        closing_tag.setText(self.tr('N/A'))
+                        if wl_matching.split_tag_embedded(opening_tag_text)[1] == '*':
+                            opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
+
+                        closing_tag.setText('N/A')
+                        preview.setText(self.tr(f'token{opening_tag_text}'))
                     elif type_text == self.tr('Non-embedded'):
                         # Add a "/" before the first non-punctuation character
-                        re_non_punc = re.search(r'\w|\*', opening_tag_text)
+                        tag_start, tag_name, tag_end = wl_matching.split_tag_non_embedded(opening_tag_text)
 
-                        if re_non_punc:
-                            i_non_punc = re_non_punc.start()
+                        closing_tag.setText(f'{tag_start}/{tag_name}{tag_end}')
+
+                        if tag_name == '*':
+                            opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
+                            closing_tag_text = self.model().item(row, 3).text().replace('*', self.tr('TAG'))
+                            preview.setText(self.tr(f'{opening_tag_text}token{closing_tag_text}'))
                         else:
-                            i_non_punc = 1
-
-                        closing_tag.setText(f'{opening_tag_text[:i_non_punc]}/{opening_tag_text[i_non_punc:]}')
-
-                    # Preview
-                    if type_text == self.tr('Embedded'):
-                        preview.setText(self.tr(f'token{opening_tag_text}TAG'))
-                    elif type_text == self.tr('Non-embedded'):
-                        preview.setText(self.tr(f'{opening_tag_text}token{self.model().item(row, 3).text()}'))
+                            preview.setText(self.tr(f'{opening_tag_text}token{self.model().item(row, 3).text()}'))
 
                 self.enable_updates()
 
@@ -248,7 +260,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
     def _add_row(self, row = None, texts = None):
         if texts is None:
-            type_, level, opening_tag = self.defaults_row
+            type_, level, opening_tag, _ = self.defaults_row
 
             opening_tags = [self.model().item(i, 2).text() for i in range(self.model().rowCount())]
 
@@ -265,9 +277,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
             opening_tag = re.sub(r'\s\(([0-9]+)\)', r'\1', opening_tag)
         else:
-            type_ = texts[0]
-            level = texts[1]
-            opening_tag = texts[2]
+            type_, level, opening_tag, _ = texts
 
         item_opening_tag = QStandardItem(opening_tag)
         item_opening_tag.text_old = opening_tag
@@ -304,7 +314,8 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             tags.append([
                 self.model().item(row, 0).text(),
                 self.model().item(row, 1).text(),
-                self.model().item(row, 2).text()
+                self.model().item(row, 2).text(),
+                self.model().item(row, 3).text()
             ])
 
         return tags
@@ -317,7 +328,8 @@ class Wl_Table_Tags_Header(Wl_Table_Tags):
             defaults_row = [
                 parent.tr('Non-embedded'),
                 parent.tr('Header'),
-                parent.tr('<TAG>')
+                parent.tr('<TAG>'),
+                ''
             ]
         )
 
@@ -336,7 +348,8 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
             defaults_row = [
                 parent.tr('Embedded'),
                 parent.tr('Part of Speech'),
-                parent.tr('TAG')
+                parent.tr('TAG'),
+                ''
             ]
         )
 
@@ -356,7 +369,8 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
             defaults_row = [
                 parent.tr('Non-embedded'),
                 parent.tr('Paragraph'),
-                parent.tr('<TAG>')
+                parent.tr('<TAG>'),
+                ''
             ]
         )
 
@@ -384,7 +398,7 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
                     self.main,
                     title = self.tr('Invalid XML Tag'),
                     text = self.tr('''
-                        <div>The specified XML tag is invalid!</div>
+                        <div>The specified XML tag is invalid, please check and try again!</div>
                     ''')
                 ).exec_()
 
@@ -408,7 +422,8 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         group_box_header_tag_settings = QGroupBox(self.tr('Header Tag Settings'), self)
 
         self.table_tags_header = Wl_Table_Tags_Header(self)
-        self.label_tags_header = wl_labels.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
+        self.label_tags_header_note = wl_labels.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
+        self.label_tags_header_wildcard = wl_labels.Wl_Label_Hint(self.tr('* Use asterisk character (*) to indicate any number of characters'), self)
 
         group_box_header_tag_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 5)
@@ -417,7 +432,8 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_del, 1, 2)
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_clr, 1, 3)
         group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_reset, 1, 4)
-        group_box_header_tag_settings.layout().addWidget(self.label_tags_header, 2, 0, 1, 5)
+        group_box_header_tag_settings.layout().addWidget(self.label_tags_header_wildcard, 2, 0, 1, 5)
+        group_box_header_tag_settings.layout().addWidget(self.label_tags_header_note, 3, 0, 1, 5)
 
         group_box_header_tag_settings.layout().setRowStretch(3, 1)
 
@@ -425,7 +441,7 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         group_box_body_tag_settings = QGroupBox(self.tr('Body Tag Settings'), self)
 
         self.table_tags_body = Wl_Table_Tags_Body(self)
-        self.label_tags_body = wl_labels.Wl_Label_Hint(self.tr('Use * to indicate any number of characters'), self)
+        self.label_tags_body_wildcard = wl_labels.Wl_Label_Hint(self.tr('* Use asterisk character (*) to indicate any number of characters'), self)
 
         group_box_body_tag_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body, 0, 0, 1, 5)
@@ -434,7 +450,7 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_del, 1, 2)
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_clr, 1, 3)
         group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_reset, 1, 4)
-        group_box_body_tag_settings.layout().addWidget(self.label_tags_body, 2, 0, 1, 5)
+        group_box_body_tag_settings.layout().addWidget(self.label_tags_body_wildcard, 2, 0, 1, 5)
 
         group_box_body_tag_settings.layout().setRowStretch(3, 1)
 

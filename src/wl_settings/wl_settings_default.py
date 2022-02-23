@@ -1091,20 +1091,20 @@ def init_settings_default(main):
 
         'tags': {
             'tags_header': [
-                [main.tr('Non-embedded'), main.tr('Header'), '<teiHeader>']
+                [main.tr('Non-embedded'), main.tr('Header'), '<teiHeader>', '</teiHeader>']
             ],
 
             'tags_body': [
-                [main.tr('Embedded'), main.tr('Part of Speech'), '_'],
-                [main.tr('Embedded'), main.tr('Part of Speech'), '/'],
-                [main.tr('Non-embedded'), main.tr('Others'), '<*>']
+                [main.tr('Embedded'), main.tr('Part of Speech'), '_*', 'N/A'],
+                [main.tr('Embedded'), main.tr('Part of Speech'), '/*', 'N/A'],
+                [main.tr('Non-embedded'), main.tr('Others'), '<*>', 'N/A']
             ],
 
             'tags_xml': [
-                [main.tr('Non-embedded'), main.tr('Paragraph'), '<p>'],
-                [main.tr('Non-embedded'), main.tr('Sentence'), '<s>'],
-                [main.tr('Non-embedded'), main.tr('Word'), '<w>'],
-                [main.tr('Non-embedded'), main.tr('Word'), '<c>']
+                [main.tr('Non-embedded'), main.tr('Paragraph'), '<p>', '</p>'],
+                [main.tr('Non-embedded'), main.tr('Sentence'), '<s>', '</s>'],
+                [main.tr('Non-embedded'), main.tr('Word'), '<w>', '</w>'],
+                [main.tr('Non-embedded'), main.tr('Word'), '<c>', '</c>']
             ]
         },
 
