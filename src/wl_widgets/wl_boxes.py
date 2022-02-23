@@ -63,7 +63,7 @@ class Wl_Combo_Box_Encoding(Wl_Combo_Box):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.addItems(list(self.main.settings_global['file_encodings']))
+        self.addItems(list(self.main.settings_global['encodings']))
 
 class Wl_Combo_Box_File_To_Filter(Wl_Combo_Box):
     def __init__(self, parent, table):
