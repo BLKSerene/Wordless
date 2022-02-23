@@ -60,9 +60,9 @@ def get_lang_family(main, lang_code):
             return lang_family
 
 def to_encoding_code(main, encoding_text):
-    return main.settings_global['file_encodings'][encoding_text]
+    return main.settings_global['encodings'][encoding_text]
 
 def to_encoding_text(main, encoding_code):
-    for text, code in main.settings_global['file_encodings'].items():
+    for text, code in main.settings_global['encodings'].items():
         if encoding_code == code:
             return text
