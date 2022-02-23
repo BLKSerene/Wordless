@@ -90,6 +90,10 @@ def detect_lang_text(main, text):
 
     lang = wl_conversion.to_iso_639_3(main, lang_code_639_1)
 
+    # Other Languages
+    if lang is None:
+        lang = 'other'
+
     return lang
 
 def detect_lang_file(main, file):

@@ -22,7 +22,7 @@ from wl_utils import wl_conversion
 main = wl_test_init.Wl_Test_Main()
 
 settings_langs = main.settings_global['langs']
-settings_file_encodings = main.settings_global['file_encodings']
+settings_file_encodings = main.settings_global['encodings']
 
 TO_LANG_TEXT = {
     lang_code_639_3: lang_text
