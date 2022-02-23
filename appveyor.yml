@@ -67,6 +67,7 @@ for:
       - pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
 
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+      - pytest wl_tests/wl_tests_nlp/test_matching.py
       - pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
       - pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
       - pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
@@ -101,6 +102,7 @@ for:
       - pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
 
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+      - pytest wl_tests/wl_tests_nlp/test_matching.py
       - pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
       - pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
       - pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
@@ -132,6 +134,7 @@ for:
     # Run tests
     test_script:
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+      - pytest wl_tests/wl_tests_nlp/test_matching.py
       - pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
       - pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
       - pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
