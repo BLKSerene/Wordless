@@ -22,21 +22,56 @@ import re
 
 from wl_nlp import wl_lemmatization
 
-def get_re_tags(main):
+# Tags
+def split_tag_embedded(tag):
+    # e.g. _*
+    if (re_tag := re.search(r'^(([^\w\s]|_)+)(\*)$', tag)) is None:
+        re_tag = re.search(r'^(([^\w\s]|_)+)(\S*?)$', tag)
+
+    tag_start = re_tag.group(1)
+    tag_name = re_tag.group(3)
+
+    return tag_start, tag_name
+
+def split_tag_non_embedded(tag):
+    # e.g. <*>
+    if (re_tag := re.search(r'^(([^\w\s]|_)+)(\*)(([^\w\s]|_)+)$', tag)) is None:
+        re_tag = re.search(r'^(([^\w\s]|_)+)(.*?)(([^\w\s]|_)+)$', tag)
+
+    if (tag_name := re_tag.group(3)):
+        tag_start = re_tag.group(1)
+        tag_end = re_tag.group(4)
+    # Empty tag
+    else:
+        tag_start = tag[:len(tag) // 2]
+        tag_end = tag[len(tag) // 2:]
+
+    return tag_start, tag_name, tag_end
+
+def get_re_tags(main, tag_type):
     tags_embedded = []
     tags_non_embedded = []
 
-    for tag_type, _, tag_opening in main.settings_custom['tags']['tags_body']:
-        if tag_type == main.tr('Embedded'):
-            tag_opening = re.escape(tag_opening)
+    for type_, _, opening_tag, _ in main.settings_custom['tags'][f'tags_{tag_type}']:
+        if type_ == main.tr('Embedded'):
+            tag_start, tag_name = split_tag_embedded(opening_tag)
+            tag_start = re.escape(tag_start)
 
-            tags_embedded.append(fr'{tag_opening}[^{tag_opening}]+?(?=\s|$)')
-        elif tag_type == main.tr('Non-embedded'):
-            tags_opening = re.split(r'[\w*]+', tag_opening)
-            tag_opening_start = re.escape(tags_opening[0])
-            tag_opening_end = re.escape(tags_opening[-1])
+            # Wilcards
+            if tag_name == '*':
+                tags_embedded.append(fr'{tag_start}\S*(?=\s|$)')
+            else:
+                tags_embedded.append(fr'{tag_start}{re.escape(tag_name)}(?=\s|$)')
+        elif type_ == main.tr('Non-embedded'):
+            tag_start, tag_name, tag_end = split_tag_non_embedded(opening_tag)
+            tag_start = re.escape(tag_start)
+            tag_end = re.escape(tag_end)
 
-            tags_non_embedded.append(fr'{tag_opening_start}/?[^{tag_opening_end}]*?{tag_opening_end}')
+            # Wilcards
+            if tag_name == '*':
+                tags_non_embedded.append(fr'{tag_start}/?.*?{tag_end}')
+            else:
+                tags_non_embedded.append(fr'{tag_start}/?{re.escape(tag_name)}{tag_end}')
 
     return '|'.join(tags_embedded + tags_non_embedded)
 
@@ -44,26 +79,28 @@ def get_re_tags_with_tokens(main, tag_type):
     tags_embedded = []
     tags_non_embedded = []
 
-    for tag_type, _, tag_opening in main.settings_custom['tags'][f'tags_{tag_type}']:
-        if tag_type == main.tr('Embedded'):
-            tag_opening = re.escape(tag_opening)
+    for type_, _, opening_tag, closing_tag in main.settings_custom['tags'][f'tags_{tag_type}']:
+        if type_ == main.tr('Embedded'):
+            tag_start, tag_name = split_tag_embedded(opening_tag)
+            tag_start = re.escape(tag_start)
 
-            tags_embedded.append(fr'(?<=^|\s)[^{tag_opening}]+?{tag_opening}[^{tag_opening}]+?(?=\s|$)')
-        elif tag_type == main.tr('Non-embedded'):
-            # Closing tags
-            re_non_punc = re.search(r'\w|\*', tag_opening)
-
-            if re_non_punc:
-                i_non_punc = re_non_punc.start()
+            # Wilcards
+            if tag_name == '*':
+                tags_embedded.append(fr'\S*{tag_start}\S*(?=\s|$)')
             else:
-                i_non_punc = 1
+                tags_embedded.append(fr'\S*{tag_start}{re.escape(tag_name)}(?=\s|$)')
+        elif type_ == main.tr('Non-embedded'):
+            tag_start, tag_name, tag_end = split_tag_non_embedded(opening_tag)
+            tag_start = re.escape(tag_start)
+            tag_end = re.escape(tag_end)
+            opening_tag = re.escape(opening_tag)
+            closing_tag = re.escape(closing_tag)
 
-            tag_closing = f'{tag_opening[:i_non_punc]}/{tag_opening[i_non_punc:]}'
-
-            tag_opening = re.escape(tag_opening)
-            tag_closing = re.escape(tag_closing)
-
-            tags_non_embedded.append(fr'{tag_opening}.*?{tag_closing}')
+            # Wilcards
+            if tag_name == '*':
+                tags_non_embedded.append(fr'{tag_start}.*?{tag_end}.*?{tag_start}/.*?{tag_end}')
+            else:
+                tags_non_embedded.append(fr'{opening_tag}.*{closing_tag}')
 
     return '|'.join(tags_embedded + tags_non_embedded)
 
@@ -76,7 +113,7 @@ def match_ngrams(
     search_terms_matched = set()
 
     settings = copy.deepcopy(search_settings)
-    re_tags = get_re_tags(main)
+    re_tags = get_re_tags(main, tag_type = 'body')
 
     search_term_tokens = [
         search_term_token
