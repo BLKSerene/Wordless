@@ -80,7 +80,6 @@ def init_settings_default(main):
         },
 
         'concordancer': {
-            'parallel_mode': False,
             'token_settings': {
                 'puncs': False,
 
@@ -217,7 +216,6 @@ def init_settings_default(main):
         },
 
         'concordancer_parallel': {
-            'parallel_mode': False,
             'token_settings': {
                 'puncs': False,
 
