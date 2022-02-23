@@ -50,8 +50,8 @@ class Wl_Text():
         self.tags = []
 
         file_ext = os.path.splitext(file['path'])[1].lower()
-        re_tags = re.compile(wl_matching.get_re_tags(self.main))
-        re_tags_start = re.compile(fr'\s*({wl_matching.get_re_tags(self.main)})')
+        re_tags = re.compile(wl_matching.get_re_tags(self.main, tag_type = 'body'))
+        re_tags_start = re.compile(fr"\s*({wl_matching.get_re_tags(self.main, tag_type = 'body')})")
 
         len_sections = self.main.settings_custom['files']['misc']['read_files_in_chunks']
 
