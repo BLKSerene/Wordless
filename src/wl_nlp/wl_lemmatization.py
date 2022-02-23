@@ -159,7 +159,7 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
 
     tokens = [str(token) for token in tokens]
 
-    re_tags = wl_matching.get_re_tags(main)
+    re_tags = wl_matching.get_re_tags(main, tag_type = 'body')
 
     if tagged == 'Yes':
         tags = [''.join(re.findall(re_tags, token)) for token in tokens]

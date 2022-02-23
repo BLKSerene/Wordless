@@ -53,6 +53,7 @@ jobs:
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_ngram_generator.py
 
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_lemmatization.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_matching.py
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_nlp_utils.py
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_pos_tagging.py
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_sentence_tokenization.py
@@ -98,6 +99,7 @@ jobs:
         pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
 
         pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+        pytest wl_tests/wl_tests_nlp/test_matching.py
         pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
         pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
         pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
@@ -136,6 +138,7 @@ jobs:
         export PYTHONPATH="$PYTHONPATH;$PWD"
 
         pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+        pytest wl_tests/wl_tests_nlp/test_matching.py
         pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
         pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
         pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
