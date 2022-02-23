@@ -92,16 +92,10 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
 
         self.table_concordancer = Wl_Table_Concordancer(self)
 
-        # Parallel Mode
-        self.checkbox_parallel_mode = QCheckBox(self.tr('Parallel Mode'))
-
-        self.checkbox_parallel_mode.stateChanged.connect(self.parallel_mode_changed)
-
         layout_results = wl_layouts.Wl_Layout()
         layout_results.addWidget(self.table_concordancer.label_number_results, 0, 0)
         layout_results.addWidget(self.table_concordancer.button_results_sort, 0, 2)
         layout_results.addWidget(self.table_concordancer.button_results_search, 0, 3)
-        layout_results.addWidget(self.checkbox_parallel_mode, 0, 4)
 
         layout_results.setColumnStretch(1, 1)
 
@@ -401,17 +395,11 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
 
         self.load_settings()
 
-        # Parallel Mode
-        self.checkbox_parallel_mode.stateChanged.connect(self.main.work_area_changed)
-
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.main.settings_default['concordancer'])
         else:
             settings = copy.deepcopy(self.main.settings_custom['concordancer'])
-
-        # Parallel Mode
-        self.checkbox_parallel_mode.setChecked(settings['parallel_mode'])
 
         # Token Settings
         self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
@@ -469,18 +457,12 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.checkbox_discard_position_info.setChecked(settings['zapping_settings']['discard_position_info'])
         self.checkbox_randomize_outputs.setChecked(settings['zapping_settings']['randomize_outputs'])
 
-        self.parallel_mode_changed()
         self.token_settings_changed()
         self.search_settings_changed()
         self.generation_settings_changed()
         self.table_settings_changed()
         self.fig_settings_changed()
         self.zapping_settings_changed()
-
-    def parallel_mode_changed(self):
-        settings = self.main.settings_custom['concordancer']
-
-        settings['parallel_mode'] = self.checkbox_parallel_mode.isChecked()
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['token_settings']

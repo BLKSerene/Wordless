@@ -402,7 +402,7 @@ class Wl_Main(QMainWindow):
         )
         self.wl_work_area.addTab(
             wl_concordancer_parallel.Wrapper_Concordancer_Parallel(self),
-            self.tr('Concordancer')
+            self.tr('Parallel Concordancer')
         )
         self.wl_work_area.addTab(
             wl_wordlist_generator.Wrapper_Wordlist_Generator(self),
@@ -439,21 +439,21 @@ class Wl_Main(QMainWindow):
 
                 break
 
-        # Parallel mode
-        # * Do not use "setTabVisible" on macOS which is only available for Qt 5.15+
-        if platform.system() in ['Windows', 'Linux']:
-            if self.settings_custom['concordancer']['parallel_mode']:
-                self.wl_work_area.setTabVisible(1, False)
-            else:
-                self.wl_work_area.setTabVisible(2, False)
-        elif platform.system() == 'Darwin':
-            self.concordancer = self.wl_work_area.widget(1)
-            self.concordancer_parallel = self.wl_work_area.widget(2)
+        # # Parallel mode
+        # # * Do not use "setTabVisible" on macOS which is only available for Qt 5.15+
+        # if platform.system() in ['Windows', 'Linux']:
+        #     if self.settings_custom['concordancer']['parallel_mode']:
+        #         self.wl_work_area.setTabVisible(1, False)
+        #     else:
+        #         self.wl_work_area.setTabVisible(2, False)
+        # elif platform.system() == 'Darwin':
+        #     self.concordancer = self.wl_work_area.widget(1)
+        #     self.concordancer_parallel = self.wl_work_area.widget(2)
 
-            if self.settings_custom['concordancer']['parallel_mode']:
-                self.wl_work_area.removeTab(1)
-            else:
-                self.wl_work_area.removeTab(2)
+        #     if self.settings_custom['concordancer']['parallel_mode']:
+        #         self.wl_work_area.removeTab(1)
+        #     else:
+        #         self.wl_work_area.removeTab(2)
 
         self.work_area_changed()
 
@@ -461,37 +461,37 @@ class Wl_Main(QMainWindow):
         # Current tab
         self.settings_custom['work_area_cur'] = self.wl_work_area.tabText(self.wl_work_area.currentIndex())
 
-        # Parallel mode
-        if platform.system() in ['Windows', 'Linux']:
-            if self.wl_work_area.count() == 8:
-                if self.wl_work_area.currentIndex() == 1 and self.settings_custom['concordancer']['parallel_mode']:
-                    self.wl_work_area.widget(2).checkbox_parallel_mode.setChecked(True)
+        # # Parallel mode
+        # if platform.system() in ['Windows', 'Linux']:
+        #     if self.wl_work_area.count() == 8:
+        #         if self.wl_work_area.currentIndex() == 1 and self.settings_custom['concordancer']['parallel_mode']:
+        #             self.wl_work_area.widget(2).checkbox_parallel_mode.setChecked(True)
 
-                    self.wl_work_area.setTabVisible(1, False)
-                    self.wl_work_area.setTabVisible(2, True)
+        #             self.wl_work_area.setTabVisible(1, False)
+        #             self.wl_work_area.setTabVisible(2, True)
 
-                    self.wl_work_area.setCurrentIndex(2)
-                elif self.wl_work_area.currentIndex() == 2 and not self.settings_custom['concordancer_parallel']['parallel_mode']:
-                    self.wl_work_area.widget(1).checkbox_parallel_mode.setChecked(False)
+        #             self.wl_work_area.setCurrentIndex(2)
+        #         elif self.wl_work_area.currentIndex() == 2 and not self.settings_custom['concordancer_parallel']['parallel_mode']:
+        #             self.wl_work_area.widget(1).checkbox_parallel_mode.setChecked(False)
 
-                    self.wl_work_area.setTabVisible(1, True)
-                    self.wl_work_area.setTabVisible(2, False)
+        #             self.wl_work_area.setTabVisible(1, True)
+        #             self.wl_work_area.setTabVisible(2, False)
 
-                    self.wl_work_area.setCurrentIndex(1)
-        elif platform.system() == 'Darwin':
-            if self.wl_work_area.count() == 7 and self.wl_work_area.currentIndex() == 1:
-                if self.wl_work_area.widget(1) == self.concordancer and self.settings_custom['concordancer']['parallel_mode']:
-                    self.concordancer_parallel.checkbox_parallel_mode.setChecked(True)
+        #             self.wl_work_area.setCurrentIndex(1)
+        # elif platform.system() == 'Darwin':
+        #     if self.wl_work_area.count() == 7 and self.wl_work_area.currentIndex() == 1:
+        #         if self.wl_work_area.widget(1) == self.concordancer and self.settings_custom['concordancer']['parallel_mode']:
+        #             self.concordancer_parallel.checkbox_parallel_mode.setChecked(True)
 
-                    self.wl_work_area.removeTab(1)
-                    self.wl_work_area.insertTab(1, self.concordancer_parallel, self.tr('Concordancer'))
-                elif self.wl_work_area.widget(1) == self.concordancer_parallel and not self.settings_custom['concordancer_parallel']['parallel_mode']:
-                    self.concordancer.checkbox_parallel_mode.setChecked(False)
+        #             self.wl_work_area.removeTab(1)
+        #             self.wl_work_area.insertTab(1, self.concordancer_parallel, self.tr('Concordancer'))
+        #         elif self.wl_work_area.widget(1) == self.concordancer_parallel and not self.settings_custom['concordancer_parallel']['parallel_mode']:
+        #             self.concordancer.checkbox_parallel_mode.setChecked(False)
 
-                    self.wl_work_area.removeTab(1)
-                    self.wl_work_area.insertTab(1, self.concordancer, self.tr('Concordancer'))
+        #             self.wl_work_area.removeTab(1)
+        #             self.wl_work_area.insertTab(1, self.concordancer, self.tr('Concordancer'))
 
-                self.wl_work_area.setCurrentIndex(1)
+        #         self.wl_work_area.setCurrentIndex(1)
 
     def load_settings(self):
         settings = self.settings_custom
