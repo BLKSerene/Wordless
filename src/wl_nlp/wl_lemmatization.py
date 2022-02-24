@@ -41,21 +41,25 @@ def wl_lemmatize(main, inputs, lang, tokenized = 'No', tagged = 'No', lemmatizer
             lemmatizer = lemmatizer
         )
 
-        if type(inputs) == str:
-            # Input of SudachiPy cannot be more than 49149 bytes
-            if lang == 'jpn' and lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
-                texts = re.split(r'\n(?=.|\n)', inputs)
-            else:
-                texts = [inputs]
+        section_size = main.settings_custom['files']['misc']['read_files_in_chunks']
 
-            for text in texts:
-                lemmas.extend(wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer))
-        else:
-            # Input of SudachiPy cannot be more than 49149 bytes
-            if lang == 'jpn' and lemmatizer in ['spacy_jpn', 'sudachipy_jpn']:
-                texts = wl_nlp_utils.to_sections_unequal(inputs, 4000)
+        if type(inputs) == str:
+            # Input of SudachiPy cannot be more than 49149 BYTES
+            if lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
+                # Around 300 tokens per line 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4 / 300)
+                sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = 10)
             else:
-                texts = [inputs]
+                sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = section_size)
+
+            for section in sections:
+                lemmas.extend(wl_lemmatize_text(main, section, lang, tokenized, tagged, lemmatizer))
+        else:
+            # Input of SudachiPy cannot be more than 49149 BYTES
+            if lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and sum([len(token) for token in inputs]) > 49149 // 4:
+                # Around 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4)
+                texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = 3000)
+            else:
+                texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = section_size * 50)
 
             for tokens in texts:
                 lemmas.extend(wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer))
@@ -235,6 +239,7 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
         lemma_tokens = tokens.copy()
     # Tibetan
     elif lemmatizer == 'botok_bod':
+        lemma_tokens = []
         tokens_retokenized = main.botok_word_tokenizer.tokenize(''.join(tokens))
 
         for token in tokens_retokenized:
@@ -243,7 +248,7 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
             else:
                 lemmas.append(token.text)
 
-        lemma_tokens = tokens.copy()
+            lemma_tokens.append(token.text)
     # Lemmatization Lists
     elif 'lemmatization_lists' in lemmatizer:
         mapping_lemmas = {}
@@ -284,13 +289,15 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
         lemmas_modified = []
 
         while i_tokens < len_tokens and i_lemmas < len_lemmas:
+            # Different token
             if len(tokens[i_tokens]) != len(lemma_tokens[i_lemmas]):
                 tokens_temp = [tokens[i_tokens]]
                 tags_temp = [tags[i_tokens]]
                 lemma_tokens_temp = [lemma_tokens[i_lemmas]]
                 lemmas_temp = [lemmas[i_lemmas]]
 
-                while i_tokens < len_tokens and i_lemmas < len_lemmas:
+                # Align tokens
+                while i_tokens < len_tokens - 1 or i_lemmas < len_lemmas - 1:
                     len_tokens_temp = sum([len(token) for token in tokens_temp])
                     len_lemma_tokens_temp = sum([len(token) for token in lemma_tokens_temp])
 
