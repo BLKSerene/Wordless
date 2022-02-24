@@ -19,7 +19,6 @@
 import re
 
 import pythainlp
-import ssg
 
 from wl_checking import wl_checking_tokens
 from wl_nlp import wl_nlp_utils, wl_word_tokenization
@@ -37,10 +36,18 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
             syl_tokenizer = syl_tokenizer
         )
 
+        section_size = main.settings_custom['files']['misc']['read_files_in_chunks']
+
         if type(inputs) == str:
-            syls_tokens = wl_syl_tokenize_text(main, inputs, lang, syl_tokenizer)
+            sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = section_size)
+
+            for section in sections:
+                syls_tokens.extend(wl_syl_tokenize_text(main, section, lang, syl_tokenizer))
         else:
-            syls_tokens = wl_syl_tokenize_tokens(main, inputs, lang, syl_tokenizer)
+            texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = section_size * 50)
+
+            for tokens in texts:
+                syls_tokens.extend(wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer))
     else:
         if type(inputs) == str:
             syls_tokens = [[token] for token in wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)]
@@ -64,6 +71,10 @@ def wl_syl_tokenize_text(main, text, lang, syl_tokenizer):
         elif syl_tokenizer == 'pythainlp_tha':
             syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
         elif syl_tokenizer == 'ssg_tha':
+            # Delay import of ssg as a temporary work-around of the encoding issue of python-crfsuite
+            # See: https://github.com/scrapinghub/python-crfsuite/pull/121
+            import ssg
+
             syls_tokens.append(ssg.syllable_tokenize(token))
 
     return syls_tokens
@@ -82,6 +93,10 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
         elif syl_tokenizer == 'pythainlp_tha':
             syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
         elif syl_tokenizer == 'ssg_tha':
+            # Delay import of ssg as a temporary work-around of the encoding issue of python-crfsuite
+            # See: https://github.com/scrapinghub/python-crfsuite/pull/121
+            import ssg
+
             syls_tokens.append(ssg.syllable_tokenize(token))
 
     return syls_tokens

@@ -16,8 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import re
-
 import jieba.posseg
 import nltk
 import pythainlp
@@ -43,16 +41,19 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
         pos_tagger = pos_tagger
     )
 
+    section_size = main.settings_custom['files']['misc']['read_files_in_chunks']
+
     # Untokenized
     if type(inputs) == str:
-        # Input of SudachiPy cannot be more than 49149 bytes
-        if lang == 'jpn' and pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
-            texts = re.split(r'\n(?=.|\n)', inputs)
+        # Input of SudachiPy cannot be more than 49149 BYTES
+        if pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
+            # Around 300 tokens per line 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4 / 300)
+            sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = 10)
         else:
-            texts = [inputs]
+            sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = section_size)
 
-        for text in texts:
-            tokens_tagged.extend(wl_pos_tag_text(main, text, lang, pos_tagger, tagset))
+        for section in sections:
+            tokens_tagged.extend(wl_pos_tag_text(main, section, lang, pos_tagger, tagset))
     # Tokenized
     else:
         # Check if the first token is empty
@@ -63,11 +64,12 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
         inputs = [str(token) for token in inputs if token]
 
-        # Input of SudachiPy cannot be more than 49149 bytes
-        if lang == 'jpn' and pos_tagger in ['spacy_jpn', 'sudachipy_jpn']:
-            texts = wl_nlp_utils.to_sections_unequal(inputs, 4000)
+        # Input of SudachiPy cannot be more than 49149 BYTES
+        if pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and sum([len(token) for token in inputs]) > 49149 // 4:
+            # Around 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4)
+            texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = 3000)
         else:
-            texts = [inputs]
+            texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = section_size * 50)
 
         for tokens in texts:
             tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset))
@@ -245,13 +247,14 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
     # Tibetan
     elif pos_tagger == 'botok_bod':
-        tokens = main.botok_word_tokenizer.tokenize(''.join(tokens))
+        tokens_retokenized = main.botok_word_tokenizer.tokenize(''.join(tokens))
 
-        for token in tokens:
+        for token in tokens_retokenized:
             if token.pos:
                 tokens_tagged.append((token.text, token.pos))
             else:
                 tokens_tagged.append((token.text, token.chunk_type))
+
     # Vietnamese
     elif pos_tagger == 'underthesea_vie':
         tokens_tagged = underthesea.pos_tag(' '.join(tokens))
@@ -274,12 +277,14 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
         tokens_tagged_modified = []
 
         while i_tokens < len_tokens and i_tokens_tagged < len_tokens_tagged:
+            # Different token
             if len(tokens[i_tokens]) != len(tokens_tagged[i_tokens_tagged][0]):
                 tokens_temp = [tokens[i_tokens]]
                 tokens_tagged_temp = [tokens_tagged[i_tokens_tagged][0]]
                 tags_temp = [tokens_tagged[i_tokens_tagged][1]]
 
-                while i_tokens < len_tokens and i_tokens_tagged < len_tokens_tagged:
+                # Align tokens
+                while i_tokens < len_tokens - 1 or i_tokens_tagged < len_tokens_tagged - 1:
                     len_tokens_temp = sum([len(token) for token in tokens_temp])
                     len_tokens_tagged_temp = sum([len(token) for token in tokens_tagged_temp])
 

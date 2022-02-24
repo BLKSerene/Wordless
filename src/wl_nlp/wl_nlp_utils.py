@@ -106,9 +106,6 @@ def init_spacy_models(main, lang):
 
                 main.__dict__[f'spacy_nlp_{lang}'].initialize()
 
-        # Increase 'nlp.max_length' to avoid out of memory error (Default: 1,000,000)
-        main.__dict__[f'spacy_nlp_{lang}'].max_length = 1000 ** 3
-
 def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
     if sentence_tokenizer.startswith('spacy_'):
@@ -266,6 +263,14 @@ def to_sections_unequal(tokens, section_size):
 
     for i in range(0, len(tokens), section_size):
         yield tokens[i : i + section_size]
+
+# Read text in chunks to avoid memory error
+def split_into_chunks_text(text, section_size):
+    # Split text into paragraphs excluding the last empty one
+    paras = text.splitlines(keepends = True)
+
+    for section in to_sections_unequal(paras, section_size):
+        yield ''.join(section)
 
 # Serbian
 SRP_CYRL_TO_LATN = {

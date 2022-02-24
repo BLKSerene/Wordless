@@ -58,6 +58,19 @@ def test_syl_tokenize(lang, syl_tokenizer):
         syl_tokenizer = syl_tokenizer
     )
 
+    syls_long_text = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = ''.join([f'{i}\n' for i in range(101)]),
+        lang = lang,
+        syl_tokenizer = syl_tokenizer
+    )
+    syls_long_text_tokenized = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(50)],
+        lang = lang,
+        syl_tokenizer = syl_tokenizer
+    )
+
     print(syls)
 
     # Check for missing syllables
@@ -68,6 +81,10 @@ def test_syl_tokenize(lang, syl_tokenizer):
 
     # Tokenization should not be modified
     assert len(tokens) == len(syls_tokenized)
+
+    # Test long texts
+    assert syls_long_text == [[str(i)] for i in range(101)]
+    assert syls_long_text_tokenized == [[str(i)] for i in range(101) for j in range(50)]
 
     if lang == 'afr':
         assert syls == [['Afri', 'kaans'], ['is'], ['ti', 'po', 'lo', 'gies'], ['be', 'skou'], ["'"], ['n'], ['In', 'do'], ['', ''], ['Eu', 'ro', 'pe', 'se'], [','], ['Wes'], ['', ''], ['Ger', 'maan', 'se'], [','], ['Ne', 'derfran', 'kie', 'se'], ['taal', ',[2'], [']'], ['wat'], ['aan'], ['die'], ['suid', 'punt'], ['van'], ['Afri', 'ka'], ['on', 'der'], ['in', 'vloed'], ['van'], ['ver', 'skeie'], ['an', 'der'], ['ta', 'le'], ['en'], ['taal', 'groe', 'pe'], ['ont', 'staan'], ['het'], ['.']]

@@ -50,6 +50,13 @@ def test_word_tokenize(lang, word_tokenizer):
         lang = lang,
         word_tokenizer = word_tokenizer
     )
+    # Use 0 to 9 only since nagisa would split numerals into single numbers (except 24 and maybe some others)
+    tokens_long_text = wl_word_tokenization.wl_word_tokenize_flat(
+        main,
+        text = ''.join([f'{i % 10}\n' for i in range(101)]),
+        lang = lang,
+        word_tokenizer = word_tokenizer
+    )
 
     print(tokens)
 
@@ -57,6 +64,8 @@ def test_word_tokenize(lang, word_tokenizer):
     assert len(tokens) > 1
     # The count of tokens should be more than the length of tokens split by space
     assert len(tokens) > len(f'SENTENCE_{lang.upper()}'.split())
+    # Test long texts
+    assert tokens_long_text == [str(i % 10) for i in range(101)]
 
     if lang == 'afr':
         assert tokens == ['Afrikaans', 'is', 'tipologies', 'beskou', "'", 'n', 'Indo', '-', 'Europese', ',', 'Wes', '-', 'Germaanse', ',', 'Nederfrankiese', 'taal,[2', ']', 'wat', 'aan', 'die', 'suidpunt', 'van', 'Afrika', 'onder', 'invloed', 'van', 'verskeie', 'ander', 'tale', 'en', 'taalgroepe', 'ontstaan', 'het', '.']

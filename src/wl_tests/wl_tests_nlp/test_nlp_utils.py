@@ -76,6 +76,17 @@ def test_to_sections_unequal():
 
     assert token_sections == [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12]]
 
+def test_split_into_chunks_text():
+    text = '\n\n \n 1\n2 \n\n 3 \n \n\n'
+
+    sections_1 = list(wl_nlp_utils.split_into_chunks_text(text, section_size = 1))
+    sections_2 = list(wl_nlp_utils.split_into_chunks_text(text, section_size = 2))
+    sections_3 = list(wl_nlp_utils.split_into_chunks_text(text, section_size = 3))
+
+    assert sections_1 == ['\n', '\n', ' \n', ' 1\n', '2 \n', '\n', ' 3 \n', ' \n', '\n']
+    assert sections_2 == ['\n\n', ' \n 1\n', '2 \n\n', ' 3 \n \n', '\n']
+    assert sections_3 == ['\n\n \n', ' 1\n2 \n\n', ' 3 \n \n\n']
+
 def test_srp_cyrl_to_latn():
     tokens_srp_cyrl = SENTENCE_SRP_CYRL.split()
 
@@ -103,6 +114,7 @@ if __name__ == '__main__':
 
     test_to_sections()
     test_to_sections_unequal()
+    test_split_into_chunks_text()
 
     test_srp_cyrl_to_latn()
     test_srp_latn_to_cyrl()

@@ -26,7 +26,7 @@ from wl_nlp import wl_nlp_utils, wl_word_detokenization
 from wl_utils import wl_conversion
 
 # Reference: https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
-TERMINATORS_SENTENCE = [
+SENTENCE_TERMINATORS = [
     '!', '.', '?', '։', '؟', '۔', '܀', '܁', '܂', '߹',
     '।', '॥', '၊', '။', '።', '፧', '፨', '᙮', '᜵', '᜶', '᠃', '᠉', '᥄',
     '᥅', '᪨', '᪩', '᪪', '᪫', '᭚', '᭛', '᭞', '᭟', '᰻', '᰼', '᱾', '᱿',
@@ -54,95 +54,105 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         sentence_tokenizer = sentence_tokenizer
     )
 
-    # NLTK
-    if sentence_tokenizer == 'nltk_punkt':
-        lang_texts = {
-            'ces': 'czech',
-            'dan': 'danish',
-            'nld': 'dutch',
-            # English
-            'eng_gb': 'english',
-            'eng_us': 'english',
-            'est': 'estonian',
-            'fin': 'finnish',
-            'fra': 'french',
-            # German
-            'deu_at': 'german',
-            'deu_de': 'german',
-            'deu_ch': 'german',
-            'ell': 'greek',
-            'ita': 'italian',
-            # Norwegian
-            'nob': 'norwegian',
-            'nno': 'norwegian',
-            'pol': 'polish',
-            # Portuguese
-            'por_br': 'portuguese',
-            'por_pt': 'portuguese',
-            'rus': 'russian',
-            'slv': 'slovene',
-            'spa': 'spanish',
-            'swe': 'swedish',
-            'tur': 'turkish',
-            # Other languages
-            'other': 'english'
-        }
+    # Input of SudachiPy cannot be more than 49149 BYTES
+    if sentence_tokenizer == 'spacy_jpn' and len(text) > 49149 // 4:
+        # Around 300 tokens per line 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4 / 300)
+        sections = wl_nlp_utils.split_into_chunks_text(text, section_size = 10)
+    else:
+        sections = wl_nlp_utils.split_into_chunks_text(text, section_size = main.settings_custom['files']['misc']['read_files_in_chunks'])
 
-        sentences = nltk.sent_tokenize(text, language = lang_texts[lang])
-    # spaCy
-    elif sentence_tokenizer.startswith('spacy_'):
-        # Chinese, English, German, Portuguese
-        if not lang.startswith('srp_'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+    for section in sections:
+        # NLTK
+        if sentence_tokenizer == 'nltk_punkt':
+            lang_texts = {
+                'ces': 'czech',
+                'dan': 'danish',
+                'nld': 'dutch',
+                # English
+                'eng_gb': 'english',
+                'eng_us': 'english',
+                'est': 'estonian',
+                'fin': 'finnish',
+                'fra': 'french',
+                # German
+                'deu_at': 'german',
+                'deu_de': 'german',
+                'deu_ch': 'german',
+                'ell': 'greek',
+                'ita': 'italian',
+                # Norwegian
+                'nob': 'norwegian',
+                'nno': 'norwegian',
+                'pol': 'polish',
+                # Portuguese
+                'por_br': 'portuguese',
+                'por_pt': 'portuguese',
+                'rus': 'russian',
+                'slv': 'slovene',
+                'spa': 'spanish',
+                'swe': 'swedish',
+                'tur': 'turkish',
+                # Other languages
+                'other': 'english'
+            }
 
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
-        doc = nlp(text)
+            sentences.extend(nltk.sent_tokenize(section, language = lang_texts[lang]))
+        # spaCy
+        elif sentence_tokenizer.startswith('spacy_'):
+            # Chinese, English, German, Portuguese
+            if not lang.startswith('srp_'):
+                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-        sentences = [sentence.text for sentence in doc.sents]
-    # Chinese & Japanese
-    elif sentence_tokenizer in ['wordless_zho', 'wordless_jpn']:
-        for line in text.splitlines():
-            sentence_start = 0
+            nlp = main.__dict__[f'spacy_nlp_{lang}']
+            doc = nlp(section)
 
-            for i, char in enumerate(line):
-                if i >= sentence_start and char in ['。', '！', '？', '!', '?']:
-                    for j, char in enumerate(line):
-                        if j > i and char not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
-                            sentences.append(line[sentence_start : j])
+            sentences.extend([sentence.text for sentence in doc.sents])
+        # Chinese & Japanese
+        elif sentence_tokenizer in ['wordless_zho', 'wordless_jpn']:
+            for line in section.splitlines():
+                sentence_start = 0
 
-                            sentence_start = j
+                for i, char in enumerate(line):
+                    if i >= sentence_start and char in ['。', '！', '？', '!', '?']:
+                        for j, char in enumerate(line):
+                            if j > i and char not in ['。', '！', '？', '!', '?', '’', '”', '）', ')']:
+                                sentences.append(line[sentence_start : j])
 
-                            break
+                                sentence_start = j
 
-            if sentence_start <= len(line):
-                sentences.append(line[sentence_start:])
-    # Icelandic
-    elif sentence_tokenizer == 'tokenizer_isl':
-        for sentence in tokenizer.split_into_sentences(text):
-            sentences.append(wl_word_detokenization.wl_word_detokenize(
-                main,
-                tokens = sentence.split(),
-                lang = 'isl')
-            )
-    # Thai
-    elif sentence_tokenizer == 'pythainlp_crfcut':
-        sentences = pythainlp.sent_tokenize(text)
-    # Tibetan
-    elif sentence_tokenizer == 'botok_bod':
-        wl_nlp_utils.init_word_tokenizers(main, lang = 'bod')
+                                break
 
-        tokens = main.botok_word_tokenizer.tokenize(text)
+                if sentence_start <= len(line):
+                    sentences.append(line[sentence_start:])
+        # Icelandic
+        elif sentence_tokenizer == 'tokenizer_isl':
+            for sentence in tokenizer.split_into_sentences(section):
+                sentences.append(wl_word_detokenization.wl_word_detokenize(
+                    main,
+                    tokens = sentence.split(),
+                    lang = 'isl')
+                )
+        # Thai
+        elif sentence_tokenizer == 'pythainlp_crfcut':
+            sentences.extend(pythainlp.sent_tokenize(section))
+        # Tibetan
+        elif sentence_tokenizer == 'botok_bod':
+            wl_nlp_utils.init_word_tokenizers(main, lang = 'bod')
 
-        for sentence_tokens in botok.sentence_tokenizer(tokens):
-            sentences.append(''.join([sentence_token.text
-                                      for sentence_token in sentence_tokens['tokens']]))
-    # Vietnamese
-    elif sentence_tokenizer == 'underthesea_vie':
-        sentences = underthesea.sent_tokenize(text)
+            tokens = main.botok_word_tokenizer.tokenize(section)
+
+            for sentence_tokens in botok.sentence_tokenizer(tokens):
+                sentences.append(''.join([
+                    sentence_token.text
+                    for sentence_token in sentence_tokens['tokens']
+                ]))
+        # Vietnamese
+        elif sentence_tokenizer == 'underthesea_vie':
+            sentences.extend(underthesea.sent_tokenize(section))
 
     # Strip spaces
-    sentences = [sentence.strip() for sentence in sentences]
-
+    sentences = [sentence_non_empty for sentence in sentences if (sentence_non_empty := sentence.strip())]
+    # Record sentence boundary
     sentences = wl_nlp_utils.record_boundary_sentences(sentences, text)
 
     return sentences
@@ -155,7 +165,7 @@ def wl_sentence_split(main, text):
     len_tokens = len(tokens)
 
     for i, token in enumerate(tokens):
-        if token[-1] in TERMINATORS_SENTENCE or i == len_tokens - 1:
+        if token[-1] in SENTENCE_TERMINATORS or i == len_tokens - 1:
             sentences.append(' '.join(tokens[sentence_start : i + 1]))
 
             sentence_start = i + 1

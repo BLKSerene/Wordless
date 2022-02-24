@@ -23,17 +23,7 @@ from wl_nlp import wl_nlp_utils, wl_texts
 from wl_utils import wl_conversion
 
 def wl_word_detokenize(main, tokens, lang):
-    sentence_start = 0
-    sentences = []
     text = ''
-
-    for i, token in enumerate(tokens):
-        if type(token) == wl_texts.Wl_Token and token.sentence_ending:
-            sentences.append(tokens[sentence_start : i + 1])
-
-            sentence_start = i + 1
-        elif i == len(tokens) - 1:
-            sentences.append(tokens[sentence_start:])
 
     if lang == 'other':
         lang = 'eng_gb'
@@ -64,7 +54,8 @@ def wl_word_detokenize(main, tokens, lang):
                             or wl_checking_unicode.has_han(tokens[i + j + 1])
                         ):
                             text += wl_word_detokenize(
-                                main, tokens[non_cjk_start : i + j + 1],
+                                main,
+                                tokens = tokens[non_cjk_start : i + j + 1],
                                 lang = 'other'
                             )
 
@@ -96,7 +87,8 @@ def wl_word_detokenize(main, tokens, lang):
                         or wl_checking_unicode.has_kana(tokens[i + j + 1])
                     ):
                         text += wl_word_detokenize(
-                            main, tokens[non_cjk_start : i + j + 1],
+                            main,
+                            tokens = tokens[non_cjk_start : i + j + 1],
                             lang = 'other'
                         )
 
@@ -126,7 +118,8 @@ def wl_word_detokenize(main, tokens, lang):
                         or wl_checking_unicode.has_thai(tokens[i + j + 1])
                     ):
                         text += wl_word_detokenize(
-                            main, tokens[non_thai_start : i + j + 1],
+                            main,
+                            tokens = tokens[non_thai_start : i + j + 1],
                             lang = 'other'
                         )
 
@@ -144,8 +137,8 @@ def wl_word_detokenize(main, tokens, lang):
             if wl_checking_unicode.has_tibetan(token):
                 # Check for Tibetan Mark Shad
                 # See: https://w3c.github.io/tlreq/#section_breaks
-                if i > 0 and token[0] == '།':
-                    text += token
+                if i > 0 and text[-1] == '།' and token[0] == '།':
+                    text += ' ' + token
                 else:
                     text += token
 
@@ -158,7 +151,8 @@ def wl_word_detokenize(main, tokens, lang):
                         or wl_checking_unicode.has_tibetan(tokens[i + j + 1])
                     ):
                         text += wl_word_detokenize(
-                            main, tokens[non_tibetan_start : i + j + 1],
+                            main,
+                            tokens = tokens[non_tibetan_start : i + j + 1],
                             lang = 'other'
                         )
 
@@ -167,6 +161,17 @@ def wl_word_detokenize(main, tokens, lang):
                         break
     else:
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        sentence_start = 0
+        sentences = []
+
+        for i, token in enumerate(tokens):
+            if type(token) == wl_texts.Wl_Token and token.sentence_ending:
+                sentences.append(tokens[sentence_start : i + 1])
+
+                sentence_start = i + 1
+            elif i == len(tokens) - 1:
+                sentences.append(tokens[sentence_start:])
 
         for sentence in sentences:
             text += main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(sentence)

@@ -37,24 +37,21 @@ class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
         preview_lang = self.main.settings_custom['word_tokenization']['preview_lang']
         preview_samples = self.main.settings_custom['word_tokenization']['preview_samples']
 
-        for line in preview_samples.split('\n'):
-            line = line.strip()
+        tokens_multilevel = wl_word_tokenization.wl_word_tokenize(
+            main = self.main,
+            text = preview_samples,
+            lang = preview_lang,
+            word_tokenizer = self.word_tokenizer
+        )
 
-            if line:
-                tokens = wl_word_tokenization.wl_word_tokenize(
-                    self.main, line,
-                    lang = preview_lang,
-                    word_tokenizer = self.word_tokenizer
-                )
-                tokens = wl_misc.flatten_list(tokens)
+        for para in tokens_multilevel:
+            tokens = wl_misc.flatten_list(para)
 
-                # Vietnamese
-                if preview_lang == 'vie':
-                    tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
+            # Vietnamese
+            if preview_lang == 'vie':
+                tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
 
-                preview_results.append(' '.join(tokens))
-            else:
-                preview_results.append('')
+            preview_results.append(' '.join(tokens))
 
         self.worker_done.emit(preview_results)
 

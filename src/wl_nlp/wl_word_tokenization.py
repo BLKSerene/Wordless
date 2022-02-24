@@ -43,22 +43,25 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         word_tokenizer = word_tokenizer
     )
 
-    # spaCy
     if word_tokenizer.startswith('spacy_'):
-        # Chinese, English, German, Portuguese
-        if not lang.startswith('srp_'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
-
-        # Input of SudachiPy cannot be more than 49149 bytes
-        if lang == 'jpn':
-            texts = re.split(r'\n(?=.|\n)', text)
+        # Input of SudachiPy cannot be more than 49149 BYTES
+        if word_tokenizer == 'spacy_jpn' and len(text) > 49149 // 4:
+            # Around 300 tokens per line 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4 / 300)
+            sections = wl_nlp_utils.split_into_chunks_text(text, section_size = 10)
         else:
-            texts = [text]
+            sections = wl_nlp_utils.split_into_chunks_text(text, section_size = main.settings_custom['files']['misc']['read_files_in_chunks'])
+    else:
+        sections = wl_nlp_utils.split_into_chunks_text(text, 1)
 
-        for text in texts:
-            doc = nlp(text)
+    for section in sections:
+        # spaCy
+        if word_tokenizer.startswith('spacy_'):
+            # Chinese, English, German, Portuguese
+            if not lang.startswith('srp_'):
+                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+            nlp = main.__dict__[f'spacy_nlp_{lang}']
+            doc = nlp(section)
 
             tokens_multilevel.append([])
 
@@ -91,17 +94,13 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                 if tokens_sentence:
                     tokens_multilevel[-1].append(tokens_sentence)
-    else:
-        # Split text into paragraphs
-        text = re.split(r'\n(?=.|\n)', text)
-
-        for para in text:
+        else:
             tokens_multilevel.append([])
 
-            if para.strip():
+            if section.strip():
                 # NLTK
                 if word_tokenizer.startswith('nltk_'):
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang)
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang)
 
                     if word_tokenizer == 'nltk_nist':
                         for sentence in sentences:
@@ -121,23 +120,23 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 # Sacremoses
                 elif word_tokenizer == 'sacremoses_moses':
                     lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang)
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang)
 
                     for sentence in sentences:
                         tokens_multilevel[-1].append(main.__dict__[f'sacremoses_moses_tokenizer_{lang}'].tokenize(sentence, escape = False))
                 # Chinese
                 elif word_tokenizer == 'jieba_zho':
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = lang)
 
                     for sentence in sentences:
                         tokens_multilevel[-1].append(jieba.lcut(sentence))
                 elif word_tokenizer == 'pkuseg_zho':
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = lang)
 
                     for sentence in sentences:
                         tokens_multilevel[-1].append(main.pkuseg_word_tokenizer.cut(sentence))
                 elif word_tokenizer == 'wordless_zho_char':
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = lang)
 
                     for sentence in sentences:
                         tokens = []
@@ -182,12 +181,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 elif word_tokenizer == 'nagisa_jpn':
                     import nagisa
 
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = lang)
 
                     for sentence in sentences:
                         tokens_multilevel[-1].append(nagisa.tagging(str(sentence)).words)
                 elif word_tokenizer.startswith('sudachipy_jpn'):
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = lang)
 
                     if word_tokenizer == 'sudachipy_jpn_split_mode_a':
                         for sentence in sentences:
@@ -208,7 +207,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                 for token in main.sudachipy_word_tokenizer.tokenize(sentence, sudachipy.SplitMode.C)
                             ])
                 elif word_tokenizer == 'wordless_jpn_kanji':
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = lang)
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = lang)
 
                     for sentence in sentences:
                         tokens = []
@@ -265,7 +264,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 # Icelandic
                 elif word_tokenizer == 'tokenizer_isl':
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(
-                        main, para,
+                        main, section,
                         lang = 'isl',
                         sentence_tokenizer = 'tokenizer_isl'
                     )
@@ -279,7 +278,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 # Thai
                 elif word_tokenizer.startswith('pythainlp_'):
                     # Preserve sentence boundaries
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = 'tha')
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = 'tha')
 
                     if word_tokenizer == 'pythainlp_longest_matching':
                         for sentence in sentences:
@@ -298,7 +297,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                             tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'nercut'))
                 # Tibetan
                 elif word_tokenizer == 'botok_bod':
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, para, lang = 'bod')
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = 'bod')
 
                     for sentence in sentences:
                         tokens_multilevel[-1].append([token.text
@@ -306,7 +305,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 # Vietnamese
                 elif word_tokenizer == 'underthesea_vie':
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(
-                        main, para,
+                        main, section,
                         lang = 'vie',
                         sentence_tokenizer = 'underthesea_vie'
                     )

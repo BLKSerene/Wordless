@@ -58,6 +58,19 @@ def test_lemmatize(lang, lemmatizer):
         lemmatizer = lemmatizer
     )
 
+    lemmas_long_text = wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = ''.join([f'{i}\n' for i in range(101)]),
+        lang = lang,
+        lemmatizer = lemmatizer
+    )
+    lemmas_long_text_tokenized = wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(50)],
+        lang = lang,
+        lemmatizer = lemmatizer
+    )
+
     print(lemmas)
 
     # Check for missing lemmas
@@ -66,6 +79,13 @@ def test_lemmatize(lang, lemmatizer):
 
     # Tokenization should not be modified
     assert len(tokens) == len(lemmas_tokenized)
+
+    # Test long texts
+    if lemmatizer == 'botok_bod':
+        assert lemmas_long_text == ['\n'.join([str(i) for i in range(100)]), '100']
+    else:
+        assert lemmas_long_text == [str(i) for i in range(101)]
+    assert lemmas_long_text_tokenized == [str(i) for i in range(101) for j in range(50)]
 
     if lang == 'ast':
         assert lemmas == ["L'asturianu", 'ser', 'unu', 'llingua', 'romance', 'propiu', "d'Asturies,[1", ']', 'perteneciente', 'al', 'subgrupu', 'asturllionés', '.']
