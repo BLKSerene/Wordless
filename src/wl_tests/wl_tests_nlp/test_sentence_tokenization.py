@@ -44,12 +44,21 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         text = getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'),
         lang = lang,
         sentence_tokenizer = sentence_tokenizer)
+    sentences_long_text = wl_sentence_tokenization.wl_sentence_tokenize(
+        main,
+        text = ''.join([f'{i}\n' for i in range(101)]),
+        lang = lang,
+        sentence_tokenizer = sentence_tokenizer)
 
     print(sentences)
 
-    # The count of sentences should be more than 1
     if lang not in ['hye', 'guj', 'isl', 'srp_cyrl', 'srp_latn']:
+        # The count of sentences should be more than 1
         assert len(sentences) > 1
+        # Test long texts
+        assert len(sentences_long_text) > 1
+        assert sentences_long_text[0] != '100'
+        assert sentences_long_text[-1] == '100'
 
     if lang == 'afr':
         assert sentences == ["Afrikaans is tipologies beskou 'n Indo-Europese, Wes-Germaanse, Nederfrankiese taal,[2] wat aan die suidpunt van Afrika onder invloed van verskeie ander tale en taalgroepe ontstaan het.", "Afrikaans is op 8 Mei 1925 as 'n amptelike taal van Suid-Afrika erken en is tans die derde jongste Germaanse taal wat amptelike status geniet, naas Faroëes wat in 1948 grondwetlik erken is en Luxemburgs wat hierdie status in 1984 verkry het."]
