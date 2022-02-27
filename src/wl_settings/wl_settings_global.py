@@ -948,6 +948,7 @@ def init_settings_global(main):
             ],
 
             'jpn': [
+                'spacy_sentence_recognizer',
                 'wordless_jpn'
             ],
 
