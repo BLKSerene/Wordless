@@ -24,9 +24,9 @@ from wl_nlp import wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
 from wl_utils import wl_conversion
 
-test_word_tokenizers = []
-
 main = wl_test_init.Wl_Test_Main()
+
+test_word_tokenizers = []
 
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:

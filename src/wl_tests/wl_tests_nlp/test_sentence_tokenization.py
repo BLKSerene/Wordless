@@ -24,9 +24,9 @@ from wl_nlp import wl_sentence_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
 from wl_utils import wl_conversion
 
-test_sentence_tokenizers = []
-
 main = wl_test_init.Wl_Test_Main()
+
+test_sentence_tokenizers = []
 
 for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
     for sentence_tokenizer in sentence_tokenizers:
