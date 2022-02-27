@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - File Area
+# Wordless: Tests - File Area - File Types
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -67,11 +67,7 @@ def add_file(file_paths, update_gui):
             table = table
         ).run()
 
-def test_file_area():
-    # Clean cached files
-    for file in glob.glob('imports/*.*'):
-        os.remove(file)
-
+def test_file_area_file_types():
     # Disable encoding detection
     main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings'] = False
 
@@ -278,4 +274,8 @@ def update_gui_tags(err_msg, new_files):
     assert len(file_text.tokens_flat) == len(file_text.tags)
 
 if __name__ == '__main__':
-    test_file_area()
+    # Clean cached files
+    for file in glob.glob('imports/*.*'):
+        os.remove(file)
+
+    test_file_area_file_types()
