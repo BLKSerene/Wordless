@@ -23,14 +23,12 @@ import time
 import numpy
 
 from wl_dialogs import wl_dialogs_misc
-from wl_tests import wl_test_file_area, wl_test_init
+from wl_tests import wl_test_init
 from wl_utils import wl_misc
 
 import wl_profiler
 
 main = wl_test_init.Wl_Test_Main()
-
-wl_test_file_area.wl_test_file_area(main)
 
 def test_profiler():
     time_start_total = time.time()
@@ -69,13 +67,6 @@ def update_gui(err_msg, texts_stats_files):
 
     assert texts_stats_files
 
-    count_paras_total = len(texts_stats_files[-1][1])
-    count_sentences_total = len(texts_stats_files[-1][3])
-    count_tokens_total = len(texts_stats_files[-1][5])
-    count_types_total = len(texts_stats_files[-1][7])
-    count_syls_total = len(texts_stats_files[-1][8])
-    count_chars_total = sum(texts_stats_files[-1][5])
-
     for stats in texts_stats_files:
         readability_statistics = stats[0]
         len_paras_in_sentences = stats[1]
@@ -105,6 +96,13 @@ def update_gui(err_msg, texts_stats_files):
         assert readability_statistics
         for statistic in readability_statistics:
             assert statistic
+
+        assert count_paras
+        assert count_sentences
+        assert count_tokens
+        assert count_types
+        assert count_syls
+        assert count_chars
 
         assert len_paras_in_sentences
         assert len_paras_in_tokens
