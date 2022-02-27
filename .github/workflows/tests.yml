@@ -48,10 +48,6 @@ jobs:
         cd src
         $env:PYTHONPATH += $PWD
 
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_profiler.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_wordlist_generator.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_ngram_generator.py
-
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_lemmatization.py
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_matching.py
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_nlp_utils.py
@@ -61,8 +57,9 @@ jobs:
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_syl_tokenization.py
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_detokenization.py
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_tokenization.py
-        
-        pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_file_area
+        pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area
 
     - name: "Upload coverage to Codecov"
       uses: codecov/codecov-action@v2
@@ -94,10 +91,6 @@ jobs:
         cd src
         export PYTHONPATH="$PYTHONPATH;$PWD"
 
-        pytest wl_tests/wl_tests_work_area/test_profiler.py
-        pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-        pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
-
         pytest wl_tests/wl_tests_nlp/test_lemmatization.py
         pytest wl_tests/wl_tests_nlp/test_matching.py
         pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
@@ -107,8 +100,9 @@ jobs:
         pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
         pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
         pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-        
-        pytest --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+        pytest wl_tests/wl_tests_file_area
+        pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area
 
   build-linux:
     runs-on: ubuntu-18.04
@@ -146,5 +140,5 @@ jobs:
         pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
         pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
         pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-        
-        pytest --ignore=wl_tests/test_file_area.py --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+        pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
