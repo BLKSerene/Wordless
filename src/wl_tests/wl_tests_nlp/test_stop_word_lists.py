@@ -22,9 +22,9 @@ from wl_nlp import wl_stop_word_lists
 from wl_tests import wl_test_init
 from wl_utils import wl_conversion
 
-test_stop_word_lists = []
-
 main = wl_test_init.Wl_Test_Main()
+
+test_stop_word_lists = []
 
 for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
     if 'custom' not in stop_word_lists:

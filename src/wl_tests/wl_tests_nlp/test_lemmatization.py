@@ -22,9 +22,9 @@ from wl_nlp import wl_lemmatization, wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
 from wl_utils import wl_conversion
 
-test_lemmatizers = []
-
 main = wl_test_init.Wl_Test_Main()
+
+test_lemmatizers = []
 
 for lang, lemmatizers in main.settings_global['lemmatizers'].items():
     for lemmatizer in lemmatizers:
