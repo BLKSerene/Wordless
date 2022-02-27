@@ -62,10 +62,6 @@ for:
       - set PYTHONPATH=%PYTHONPATH%;%cd%
     # Run tests
     test_script:
-      - pytest wl_tests/wl_tests_work_area/test_profiler.py
-      - pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      - pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
-
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py
       - pytest wl_tests/wl_tests_nlp/test_matching.py
       - pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
@@ -75,8 +71,9 @@ for:
       - pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
       - pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
       - pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-      
-      - pytest --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+      - pytest wl_tests/wl_tests_file_area
+      - pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area
 
   # macOS
   -
@@ -97,10 +94,6 @@ for:
       - export PYTHONPATH="$PYTHONPATH;$PWD"
     # Run tests
     test_script:
-      - pytest wl_tests/wl_tests_work_area/test_profiler.py
-      - pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      - pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
-
       - pytest wl_tests/wl_tests_nlp/test_lemmatization.py
       - pytest wl_tests/wl_tests_nlp/test_matching.py
       - pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
@@ -110,8 +103,9 @@ for:
       - pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
       - pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
       - pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-      
-      - pytest --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+      - pytest wl_tests/wl_tests_file_area
+      - pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area
 
   # Ubuntu
   - 
@@ -142,5 +136,5 @@ for:
       - pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
       - pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
       - pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-      
-      - pytest --ignore=wl_tests/test_file_area.py --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+      - pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area

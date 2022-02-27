@@ -62,10 +62,6 @@ jobs:
       cd src
       set PYTHONPATH=%PYTHONPATH%;%cd%
 
-      pytest wl_tests/wl_tests_work_area/test_profiler.py
-      pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
-
       pytest wl_tests/wl_tests_nlp/test_lemmatization.py
       pytest wl_tests/wl_tests_nlp/test_matching.py
       pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
@@ -75,8 +71,9 @@ jobs:
       pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
       pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
       pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-      
-      pytest --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+      pytest wl_tests/wl_tests_file_area
+      pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area
     displayName: 'Run tests'
 
 # macOS
@@ -120,10 +117,6 @@ jobs:
       cd src
       export PYTHONPATH="$PYTHONPATH;$PWD"
 
-      pytest wl_tests/wl_tests_work_area/test_profiler.py
-      pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
-
       pytest wl_tests/wl_tests_nlp/test_lemmatization.py
       pytest wl_tests/wl_tests_nlp/test_matching.py
       pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
@@ -133,8 +126,9 @@ jobs:
       pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
       pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
       pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-      
-      pytest --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+      pytest wl_tests/wl_tests_file_area
+      pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area
     displayName: 'Run tests'
 
 # Linux
@@ -188,6 +182,6 @@ jobs:
       pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
       pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
       pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-      
-      pytest --ignore=wl_tests/test_file_area.py --ignore=wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_nlp
+
+      pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
     displayName: 'Run tests'

@@ -19,13 +19,11 @@
 import time
 
 from wl_dialogs import wl_dialogs_misc
-from wl_tests import wl_test_file_area, wl_test_init
+from wl_tests import wl_test_init
 
 import wl_wordlist_generator
 
 main = wl_test_init.Wl_Test_Main()
-
-wl_test_file_area.wl_test_file_area(main)
 
 def test_wordlist_generator():
     time_start_total = time.time()
