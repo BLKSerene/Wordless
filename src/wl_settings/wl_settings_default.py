@@ -1152,7 +1152,7 @@ def init_settings_default(main):
                 'ind': 'spacy_sentencizer',
                 'gle': 'spacy_sentencizer',
                 'ita': 'spacy_sentence_recognizer',
-                'jpn': 'wordless_jpn',
+                'jpn': 'spacy_sentence_recognizer',
                 'kan': 'spacy_sentencizer',
                 'kir': 'spacy_sentencizer',
                 'lav': 'spacy_sentencizer',

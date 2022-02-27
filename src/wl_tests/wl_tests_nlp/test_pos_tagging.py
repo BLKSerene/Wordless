@@ -22,9 +22,9 @@ from wl_nlp import wl_pos_tagging, wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
 from wl_utils import wl_conversion
 
-test_pos_taggers = []
-
 main = wl_test_init.Wl_Test_Main()
+
+test_pos_taggers = []
 
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
