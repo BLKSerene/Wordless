@@ -22,9 +22,9 @@ from wl_nlp import wl_syl_tokenization, wl_word_tokenization
 from wl_tests import wl_test_init, wl_test_lang_examples
 from wl_utils import wl_conversion
 
-test_syl_tokenizers = []
-
 main = wl_test_init.Wl_Test_Main()
+
+test_syl_tokenizers = []
 
 for lang, syl_tokenizers in main.settings_global['syl_tokenizers'].items():
     for syl_tokenizer in syl_tokenizers:

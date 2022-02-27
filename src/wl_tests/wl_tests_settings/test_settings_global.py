@@ -29,6 +29,11 @@ from wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main()
 
+lang_missing = False
+lang_extra = False
+lang_default_missing = False
+lang_default_extra = False
+
 def add_country_codes(lang_codes):
     lang_codes = sorted(set(lang_codes))
 
@@ -53,6 +58,9 @@ def add_country_codes(lang_codes):
     return sorted(lang_codes)
 
 def check_missing_extra_langs(langs_supported, langs_global, msg):
+    global lang_missing
+    global lang_extra
+
     for lang_code in langs_supported:
         lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
 
@@ -70,6 +78,9 @@ def check_missing_extra_langs(langs_supported, langs_global, msg):
             lang_extra = True
 
 def check_missing_extra_langs_default(langs, langs_default, msg):
+    global lang_default_missing
+    global lang_default_extra
+
     for lang_code in langs:
         if lang_code not in langs_default:
             print(f'Missing language code "{lang_code}" found in the default settings of {msg}!')
@@ -83,6 +94,11 @@ def check_missing_extra_langs_default(langs, langs_default, msg):
             lang_default_extra = True
 
 def test_settings_global():
+    global lang_missing
+    global lang_extra
+    global lang_default_missing
+    global lang_default_extra
+
     settings_global = main.settings_global
     settings_default = main.settings_default
 
@@ -136,11 +152,6 @@ def test_settings_global():
     langs_stop_word_lists_default = list(settings_stop_word_lists_default)
     langs_stop_word_lists_default_custom = list(settings_stop_word_lists_default_custom)
     langs_stop_word_lists_spacy = []
-
-    lang_missing = False
-    lang_extra = False
-    lang_default_missing = False
-    lang_default_extra = False
 
     # Loading languages supported by Sacremoses
     for file in os.listdir(os.path.split(sacremoses.__file__)[0] + '/data/nonbreaking_prefixes/'):
