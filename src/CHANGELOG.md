@@ -56,7 +56,7 @@
 - Dependencies: Remove lemmalist-greek
 - Dependencies: Remove razdel
 - Dependencies: Remove syntok
-- Dependencies: Upgrade Charset Normalizer to 2.0.11
+- Dependencies: Upgrade Charset Normalizer to 2.0.12
 - Dependencies: Upgrade Matplotlib to 3.5.1
 - Dependencies: Upgrade NLTK to 3.6.7
 - Dependencies: Upgrade Pyphen to 0.12.0
