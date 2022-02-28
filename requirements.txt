@@ -43,7 +43,7 @@ spacy-lookups-data == 1.0.3
 ssg == 0.0.8
 
 ## SudachiPy
-sudachipy == 0.6.2
+sudachipy == 0.6.3
 sudachidict_core == 20211220
 
 textblob == 0.17.1
