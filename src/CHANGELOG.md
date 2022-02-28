@@ -66,7 +66,7 @@
 - Dependencies: Upgrade Requests to 2.27.1
 - Dependencies: Upgrade Sacremoses to 0.0.47
 - Dependencies: Upgrade SciPy to 1.8.0
-- Dependencies: Upgrade spaCy to 3.2.1
+- Dependencies: Upgrade spaCy to 3.2.2
 - Dependencies: Upgrade TextBlob to 0.17.1
 - Dependencies: Upgrade Underthesea to 1.3.4
 
