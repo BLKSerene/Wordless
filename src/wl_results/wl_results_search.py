@@ -84,6 +84,8 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.settings = self.main.settings_custom[self.tab]['search_results']
         self.items_found = []
 
+        self.main.wl_work_area.currentChanged.connect(self.reject)
+
         (
             self.label_search_term,
             self.checkbox_multi_search_mode,
@@ -165,8 +167,6 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
 
         self.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
         self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
-
-        self.main.wl_work_area.currentChanged.connect(self.reject)
 
         self.load_settings()
 
