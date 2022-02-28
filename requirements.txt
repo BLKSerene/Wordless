@@ -20,7 +20,7 @@
 
 # Version-pinned
 botok == 0.8.8
-charset-normalizer == 2.0.11
+charset-normalizer == 2.0.12
 jieba == 0.42.1
 pkuseg == 0.0.25
 nagisa == 0.2.7
