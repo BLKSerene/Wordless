@@ -34,7 +34,7 @@ pymorphy2-dicts-uk == 2.4.1.1.1460299261
 
 pyphen == 0.12.0
 pythainlp == 3.0.5
-sacremoses == 0.0.46
+sacremoses == 0.0.47
 
 ## spaCy
 spacy == 3.2.1

@@ -64,6 +64,7 @@
 - Dependencies: Upgrade PyQt to 5.15.6
 - Dependencies: Upgrade PyThaiNLP to 3.0.5
 - Dependencies: Upgrade Requests to 2.27.1
+- Dependencies: Upgrade Sacremoses to 0.0.47
 - Dependencies: Upgrade spaCy to 3.2.1
 - Dependencies: Upgrade TextBlob to 0.17.1
 - Dependencies: Upgrade Underthesea to 1.3.4
