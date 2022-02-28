@@ -380,6 +380,8 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.tables = [table]
         self.settings = self.main.settings_custom[self.tables[0].tab]['sort_results']
 
+        self.main.wl_work_area.currentChanged.connect(self.reject)
+
         self.table_sort = Wl_Table_Results_Sort_Conordancer(self, table = self.tables[0])
 
         self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
