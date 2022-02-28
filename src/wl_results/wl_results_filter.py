@@ -497,6 +497,8 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.table = table
         self.settings = self.main.settings_custom[self.tab]['filter_results']
 
+        self.main.wl_work_area.currentChanged.connect(self.reject)
+
         self.label_file_to_filter = QLabel(self.tr('File to Filter:'), self)
         self.combo_box_file_to_filter = wl_boxes.Wl_Combo_Box_File_To_Filter(self, self.table)
         self.button_filter = QPushButton(self.tr('Filter'), self)
@@ -507,8 +509,6 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
         self.button_filter.clicked.connect(lambda: self.filter_results())
         self.button_close.clicked.connect(self.reject)
-
-        self.main.wl_work_area.currentChanged.connect(self.reject)
 
         layout_file_to_filter = wl_layouts.Wl_Layout()
         layout_file_to_filter.addWidget(self.label_file_to_filter, 0, 0)
