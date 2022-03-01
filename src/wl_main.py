@@ -325,7 +325,7 @@ class Wl_Main(QMainWindow):
                 <div>Do you want to reset all layouts to their default settings?</div>
             ''')
         ):
-            self.centralWidget().setSizes([self.height() - 210, 210])
+            self.centralWidget().setSizes(self.settings_default['menu']['prefs']['layouts']['central_widget'])
 
     # Preferences - Show Status Bar
     def prefs_show_status_bar(self):
@@ -491,14 +491,14 @@ class Wl_Main(QMainWindow):
         self.prefs_display_lang()
 
         # Layouts
-        self.centralWidget().setSizes(settings['layouts']['central_widget'])
+        self.centralWidget().setSizes(settings['menu']['prefs']['layouts']['central_widget'])
 
     def save_settings(self):
         # Clear history of closed files
         self.settings_custom['file_area']['files_closed'].clear()
 
         # Layouts
-        self.settings_custom['layouts']['central_widget'] = self.centralWidget().sizes()
+        self.settings_custom['menu']['prefs']['layouts']['central_widget'] = self.centralWidget().sizes()
 
         with open('wl_settings.pickle', 'wb') as f:
             pickle.dump(self.settings_custom, f)

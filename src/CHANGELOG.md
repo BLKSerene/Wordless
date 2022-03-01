@@ -21,6 +21,7 @@
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - ??/??/2022
 ### 🎉 New Features
 - File Area: Add support for .tmx files
+- Menu: Add Preferences - Display Language
 - Settings: Add Settings - General - Proxy Settings
 - Utils: Add Lemmatization Lists's Russian lemma list
 - Utils: Add spaCy's Greek (Ancient) and Irish lemmatizers

@@ -36,8 +36,24 @@ def init_settings_default(main):
         '1st_startup': True,
         'work_area_cur': main.tr('Profiler'),
 
-        'layouts': {
-            'central_widget': [main.height() - 100 - 210, 210]
+        'menu': {
+            'prefs': {
+                'display_lang': 'eng_us',
+                'layouts': {
+                    'central_widget': [main.height() - 210, 210]
+                },
+                'show_status_bar': True
+            },
+
+            'help': {
+                'citing': {
+                    'citation_sys': main.tr('APA (7th Edition)')
+                },
+
+                'donating': {
+                    'donating_via': main.tr('PayPal')
+                }
+            }
         },
 
         'file_area': {
@@ -985,23 +1001,6 @@ def init_settings_default(main):
 
                 'ignore_tags': True,
                 'match_tags': False
-            }
-        },
-
-        'menu': {
-            'prefs': {
-                'display_lang': 'eng_us',
-                'show_status_bar': True
-            },
-
-            'help': {
-                'citing': {
-                    'citation_sys': main.tr('APA (7th Edition)')
-                },
-
-                'donating': {
-                    'donating_via': main.tr('PayPal')
-                }
             }
         },
 
