@@ -157,7 +157,7 @@ class Wl_Main(QMainWindow):
         # Status Bar
         self.statusBar().showMessage(self.tr('Ready!'))
 
-        self.statusBar().setFixedHeight(22)
+        self.statusBar().setFixedHeight(30)
         self.statusBar().setStyleSheet('''
             QStatusBar {
                 background-color: #D0D0D0;
