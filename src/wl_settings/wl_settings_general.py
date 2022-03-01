@@ -158,12 +158,9 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         if font_new == font_old:
             result = 'skip'
         else:
-            dialog_restart_required = wl_dialogs_misc.Wl_Dialog_Restart_Required(self.main)
-            result = dialog_restart_required.exec_()
-
-            if result == QDialog.Accepted:
+            if wl_dialogs_misc.Wl_Dialog_Restart_Required(self.main).exec_() == QDialog.Accepted:
                 result = 'restart'
-            elif result == QDialog.Rejected:
+            else:
                 result = 'cancel'
 
         if result in ['skip', 'restart']:
