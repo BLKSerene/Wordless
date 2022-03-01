@@ -31,6 +31,9 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     if pos_tagger == 'default':
         pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
 
+    if tagset == 'default' and main.settings_custom['pos_tagging']['to_universal_pos_tags']:
+        tagset = 'universal'
+
     wl_nlp_utils.init_word_tokenizers(
         main,
         lang = lang
@@ -75,27 +78,22 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
             tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset))
 
     # Convert to Universal Tagset
-    if not pos_tagger.startswith('spacy_'):
-        if (
-            tagset == 'default' and main.settings_custom['pos_tagging']['to_universal_pos_tags']
-            or tagset == 'universal'
-        ):
+    if not pos_tagger.startswith('spacy_') and tagset == 'universal':
+        mappings = {
+            tag: tag_universal
+            for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][lang][pos_tagger]
+        }
+        tokens_tagged = list(tokens_tagged)
 
-            mappings = {
-                tag: tag_universal
-                for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][lang][pos_tagger]
-            }
-            tokens_tagged = list(tokens_tagged)
+        # Issue warnings if any tag is missing from the mapping table
+        for _, tag in tokens_tagged:
+            if tag not in mappings:
+                print(f'Warning: tag "{tag}" is missing from the {wl_conversion.to_lang_text(main, lang)} mapping table!')
 
-            # Issue warnings if any tag is missing from the mapping table
-            for _, tag in tokens_tagged:
-                if tag not in mappings:
-                    print(f'Warning: tag "{tag}" is missing from the {wl_conversion.to_lang_text(main, lang)} mapping table!')
-
-            tokens_tagged = [
-                (token, mappings.get(tag, 'X'))
-                for token, tag in tokens_tagged
-            ]
+        tokens_tagged = [
+            (token, mappings.get(tag, 'X'))
+            for token, tag in tokens_tagged
+        ]
 
     # Add the first empty token (if any)
     if type(inputs) != str and first_token_empty:
