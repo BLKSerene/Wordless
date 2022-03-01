@@ -32,13 +32,12 @@ if getattr(sys, '_MEIPASS', False):
     if platform.system() == 'Darwin':
         os.chdir(sys._MEIPASS)
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-
 import matplotlib
 import nltk
 import requests
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
 import pythainlp
 import underthesea.file_utils
 
@@ -130,10 +129,8 @@ class Wl_Main(QMainWindow):
         wl_settings_default.init_settings_default(self)
 
         # Custom settings
-        path_settings = wl_misc.get_normalized_path('wl_settings.pickle')
-
-        if os.path.exists(path_settings):
-            with open(path_settings, 'rb') as f:
+        if os.path.exists('wl_settings.pickle'):
+            with open('wl_settings.pickle', 'rb') as f:
                 settings_custom = pickle.load(f)
 
             if wl_checking_misc.check_custom_settings(settings_custom, self.settings_default):
@@ -243,8 +240,27 @@ class Wl_Main(QMainWindow):
         self.action_prefs_settings = self.menu_prefs.addAction(self.tr('&Settings'))
         self.action_prefs_settings.setStatusTip(self.tr('Change settings'))
         self.action_prefs_settings.triggered.connect(self.wl_settings.load)
+        self.menu_prefs_display_lang = self.menu_prefs.addMenu(self.tr('&Display Language'))
+        self.menu_prefs_display_lang.setStatusTip(self.tr('Change display language'))
+
+        self.action_group_prefs_display_lang = QActionGroup(self.menu_prefs_display_lang)
+        self.action_group_prefs_display_lang.setExclusive(True)
+
+        for action_lang, action_text in [
+            ['zho_cn', self.tr('中文（简体）')],
+            ['eng_us', self.tr('English (United States)')]
+        ]:
+            self.__dict__[f'action_prefs_display_lang_{action_lang}'] = self.menu_prefs_display_lang.addAction(action_text)
+            self.__dict__[f'action_prefs_display_lang_{action_lang}'].lang = action_lang
+            self.__dict__[f'action_prefs_display_lang_{action_lang}'].setCheckable(True)
+            self.__dict__[f'action_prefs_display_lang_{action_lang}'].triggered.connect(self.prefs_display_lang)
+
+            self.action_group_prefs_display_lang.addAction(self.__dict__[f'action_prefs_display_lang_{action_lang}'])
+
+        self.menu_prefs.addSeparator()
+
         self.action_prefs_reset_layouts = self.menu_prefs.addAction(self.tr('&Reset Layouts'))
-        self.action_prefs_reset_layouts.setStatusTip(self.tr('Reset Layouts'))
+        self.action_prefs_reset_layouts.setStatusTip(self.tr('Reset layouts'))
         self.action_prefs_reset_layouts.triggered.connect(self.prefs_reset_layouts)
 
         self.menu_prefs.addSeparator()
@@ -286,14 +302,19 @@ class Wl_Main(QMainWindow):
         self.action_help_about.setStatusTip(self.tr('Show information about Wordless'))
         self.action_help_about.triggered.connect(self.help_about)
 
-    # Preferences - Show Status Bar
-    def prefs_show_status_bar(self):
-        self.settings_custom['menu']['prefs']['show_status_bar'] = self.action_prefs_show_status_bar.isChecked()
+    # Preferences - Display Language
+    def prefs_display_lang(self):
+        for action in self.action_group_prefs_display_lang.actions():
+            if action.isChecked():
+                if action.lang != self.settings_custom['menu']['prefs']['display_lang']:
+                    if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec_() == QDialog.Accepted:
+                        self.settings_custom['menu']['prefs']['display_lang'] = action.lang
 
-        if self.settings_custom['menu']['prefs']['show_status_bar']:
-            self.statusBar().show()
-        else:
-            self.statusBar().hide()
+                        self.restart()
+                    else:
+                        self.__dict__[f"action_prefs_display_lang_{self.settings_custom['menu']['prefs']['display_lang']}"].setChecked(True)
+
+                break
 
     # Preferences - Reset Layouts
     def prefs_reset_layouts(self):
@@ -305,6 +326,15 @@ class Wl_Main(QMainWindow):
             ''')
         ):
             self.centralWidget().setSizes([self.height() - 210, 210])
+
+    # Preferences - Show Status Bar
+    def prefs_show_status_bar(self):
+        self.settings_custom['menu']['prefs']['show_status_bar'] = self.action_prefs_show_status_bar.isChecked()
+
+        if self.settings_custom['menu']['prefs']['show_status_bar']:
+            self.statusBar().show()
+        else:
+            self.statusBar().hide()
 
     # Help - Citing
     def help_citing(self):
@@ -439,59 +469,11 @@ class Wl_Main(QMainWindow):
 
                 break
 
-        # # Parallel mode
-        # # * Do not use "setTabVisible" on macOS which is only available for Qt 5.15+
-        # if platform.system() in ['Windows', 'Linux']:
-        #     if self.settings_custom['concordancer']['parallel_mode']:
-        #         self.wl_work_area.setTabVisible(1, False)
-        #     else:
-        #         self.wl_work_area.setTabVisible(2, False)
-        # elif platform.system() == 'Darwin':
-        #     self.concordancer = self.wl_work_area.widget(1)
-        #     self.concordancer_parallel = self.wl_work_area.widget(2)
-
-        #     if self.settings_custom['concordancer']['parallel_mode']:
-        #         self.wl_work_area.removeTab(1)
-        #     else:
-        #         self.wl_work_area.removeTab(2)
-
         self.work_area_changed()
 
     def work_area_changed(self):
         # Current tab
         self.settings_custom['work_area_cur'] = self.wl_work_area.tabText(self.wl_work_area.currentIndex())
-
-        # # Parallel mode
-        # if platform.system() in ['Windows', 'Linux']:
-        #     if self.wl_work_area.count() == 8:
-        #         if self.wl_work_area.currentIndex() == 1 and self.settings_custom['concordancer']['parallel_mode']:
-        #             self.wl_work_area.widget(2).checkbox_parallel_mode.setChecked(True)
-
-        #             self.wl_work_area.setTabVisible(1, False)
-        #             self.wl_work_area.setTabVisible(2, True)
-
-        #             self.wl_work_area.setCurrentIndex(2)
-        #         elif self.wl_work_area.currentIndex() == 2 and not self.settings_custom['concordancer_parallel']['parallel_mode']:
-        #             self.wl_work_area.widget(1).checkbox_parallel_mode.setChecked(False)
-
-        #             self.wl_work_area.setTabVisible(1, True)
-        #             self.wl_work_area.setTabVisible(2, False)
-
-        #             self.wl_work_area.setCurrentIndex(1)
-        # elif platform.system() == 'Darwin':
-        #     if self.wl_work_area.count() == 7 and self.wl_work_area.currentIndex() == 1:
-        #         if self.wl_work_area.widget(1) == self.concordancer and self.settings_custom['concordancer']['parallel_mode']:
-        #             self.concordancer_parallel.checkbox_parallel_mode.setChecked(True)
-
-        #             self.wl_work_area.removeTab(1)
-        #             self.wl_work_area.insertTab(1, self.concordancer_parallel, self.tr('Concordancer'))
-        #         elif self.wl_work_area.widget(1) == self.concordancer_parallel and not self.settings_custom['concordancer_parallel']['parallel_mode']:
-        #             self.concordancer.checkbox_parallel_mode.setChecked(False)
-
-        #             self.wl_work_area.removeTab(1)
-        #             self.wl_work_area.insertTab(1, self.concordancer, self.tr('Concordancer'))
-
-        #         self.wl_work_area.setCurrentIndex(1)
 
     def load_settings(self):
         settings = self.settings_custom
@@ -502,8 +484,11 @@ class Wl_Main(QMainWindow):
             font-size: {settings['general']['font_settings']['font_size']}px;
         ''')
 
-        # Menu
+        # Menu - Preferences
+        self.__dict__[f"action_prefs_display_lang_{settings['menu']['prefs']['display_lang']}"].setChecked(True)
         self.action_prefs_show_status_bar.setChecked(settings['menu']['prefs']['show_status_bar'])
+
+        self.prefs_display_lang()
 
         # Layouts
         self.centralWidget().setSizes(settings['layouts']['central_widget'])
@@ -1192,6 +1177,20 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
 
 if __name__ == '__main__':
     wl_app = QApplication(sys.argv)
+
+    # Translations
+    if os.path.exists('wl_settings.pickle'):
+        with open('wl_settings.pickle', 'rb') as f:
+            settings_custom = pickle.load(f)
+            display_lang = settings_custom['menu']['prefs']['display_lang']
+    else:
+        display_lang = 'eng_us'
+
+    if display_lang != 'eng_us':
+        translator = QTranslator()
+        translator.load(f'translations/{display_lang}.qm')
+
+        wl_app.installTranslator(translator)
 
     wl_loading = Wl_Loading()
 
