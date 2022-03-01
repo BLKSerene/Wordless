@@ -489,6 +489,7 @@ class Wl_Main(QMainWindow):
         self.action_prefs_show_status_bar.setChecked(settings['menu']['prefs']['show_status_bar'])
 
         self.prefs_display_lang()
+        self.prefs_show_status_bar()
 
         # Layouts
         self.centralWidget().setSizes(settings['menu']['prefs']['layouts']['central_widget'])
