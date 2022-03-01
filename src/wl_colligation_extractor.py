@@ -1022,9 +1022,11 @@ def generate_table(main, table):
                 text_test_significance = settings['generation_settings']['test_significance']
                 text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                (text_test_stat,
-                 text_p_value,
-                 text_bayes_factor) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
+                (
+                    text_test_stat,
+                    text_p_value,
+                    text_bayes_factor
+                ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
                 text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
 
                 # Insert columns (files)
