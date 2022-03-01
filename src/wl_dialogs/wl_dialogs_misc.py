@@ -99,14 +99,14 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = main.tr('Restart Wordless'),
-            width = 420,
+            width = 450,
             no_buttons = True
         )
 
         self.label_restart_exit = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
-                    Restart is required for font settings to take effect. Do you want to restart Wordless now?
+                    Restart is required for the settings to take effect. Do you want to restart Wordless now?
                 </div>
 
                 <div style="font-weight: bold;">

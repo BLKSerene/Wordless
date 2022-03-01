@@ -990,6 +990,7 @@ def init_settings_default(main):
 
         'menu': {
             'prefs': {
+                'display_lang': 'eng_us',
                 'show_status_bar': True
             },
 
