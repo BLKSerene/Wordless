@@ -346,9 +346,9 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
             parent,
             settings_tags = 'tags_body',
             defaults_row = [
-                parent.tr('Embedded'),
-                parent.tr('Part of Speech'),
-                parent.tr('TAG'),
+                parent.tr('Non-embedded'),
+                parent.tr('Others'),
+                parent.tr('<TAG>'),
                 ''
             ]
         )
@@ -374,6 +374,12 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
             ]
         )
 
+        self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
+            parent = self,
+            items = [
+                self.tr('Non-embedded')
+            ]
+        ))
         self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [

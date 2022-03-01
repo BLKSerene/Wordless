@@ -72,8 +72,8 @@ class Wl_Item_Delegate_Combo_Box(Wl_Item_Delegate):
             top_right_x = top_right.x()
             top_right_y = top_right.y()
 
+            # Arrows
             painter.setBrush(QBrush(QColor(73, 74, 76)))
-
             painter.drawLine(
                 top_right_x - 7 - 8,
                 top_right_y + math.ceil((height - 5) / 2),
