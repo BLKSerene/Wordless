@@ -59,6 +59,7 @@
 - Dependencies: Remove syntok
 - Dependencies: Upgrade Charset Normalizer to 2.0.12
 - Dependencies: Upgrade Matplotlib to 3.5.1
+- Dependencies: Upgrade NetworkX to 2.7
 - Dependencies: Upgrade NLTK to 3.7
 - Dependencies: Upgrade NumPy to 1.22.2
 - Dependencies: Upgrade Pyphen to 0.12.0
