@@ -912,6 +912,9 @@ class Wl_Table(QTableView):
         self.resizeColumnsToContents()
         self.resizeRowsToContents()
 
+        for i in range(self.model().columnCount()):
+            self.setColumnWidth(i, self.columnWidth(i) + 22)
+
         self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def selection_changed(self, selected, deselected):
