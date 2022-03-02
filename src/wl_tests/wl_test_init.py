@@ -29,6 +29,9 @@ from wl_settings import wl_settings_default, wl_settings_global
 
 import wl_file_area
 
+# Chinese (Traditional), English, French, German, Greek, Italian, Japanese, Russian, Spanish
+SEARCH_TERMS = ['是', 'be', 'être', 'sein', 'είναι', 'essere', 'は', 'быть', 'esta']
+
 if platform.system() in ['Windows', 'Darwin']:
     wl_app = QApplication(sys.argv)
 
@@ -57,6 +60,8 @@ if platform.system() in ['Windows', 'Darwin']:
 
             self.wl_file_area.get_selected_files = lambda: wl_file_area.Wrapper_File_Area.get_selected_files(self.wl_file_area)
             self.wl_file_area.get_selected_file_names = lambda: wl_file_area.Wrapper_File_Area.get_selected_file_names(self.wl_file_area)
+            self.wl_file_area.find_file_by_name = lambda file_name, selected_only = False: wl_file_area.Wrapper_File_Area.find_file_by_name(self.wl_file_area, file_name, selected_only)
+            self.wl_file_area.find_files_by_name = lambda file_names, selected_only = False: wl_file_area.Wrapper_File_Area.find_files_by_name(self.wl_file_area, file_names, selected_only)
 
         def height(self):
             return 768
