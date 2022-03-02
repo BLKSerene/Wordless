@@ -1756,7 +1756,7 @@ def init_settings_default(main):
                 },
 
                 'fishers_exact_test': {
-                    'direction': main.tr('Two-tailed')
+                    'direction': main.tr('Left-tailed')
                 },
 
                 'mann_whitney_u_test': {

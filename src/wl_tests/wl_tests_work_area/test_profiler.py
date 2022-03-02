@@ -17,8 +17,8 @@
 # ----------------------------------------------------------------------
 
 import collections
+import random
 import re
-import time
 
 import numpy
 
@@ -29,23 +29,29 @@ from wl_utils import wl_misc
 import wl_profiler
 
 main = wl_test_init.Wl_Test_Main()
+files = main.settings_custom['file_area']['files_open']
 
 def test_profiler():
-    time_start_total = time.time()
-
     print('Start testing module Profiler...')
 
-    for i, file_test in enumerate(main.settings_custom['file_area']['files_open']):
-        for file in main.settings_custom['file_area']['files_open']:
+    for i in range(2):
+        for file in files:
             file['selected'] = False
 
-        main.settings_custom['file_area']['files_open'][i]['selected'] = True
-        # Record current file name
-        main.settings_custom['file_cur'] = file_test['name']
+        # Single file
+        if i == 0:
+            random.choice(files)['selected'] = True
+        # Multiple files
+        elif i == 1:
+            for file in files:
+                file['selected'] = True
 
-        print(f'''Testing file "{file_test['name']}"... ''', end = '')
+        files_selected = [
+            re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
+            for file_name in main.wl_file_area.get_selected_file_names()
+        ]
 
-        time_start = time.time()
+        print(f"Files: {', '.join(files_selected)}\n")
 
         wl_profiler.Wl_Worker_Profiler_Table(
             main,
@@ -53,9 +59,7 @@ def test_profiler():
             update_gui = update_gui
         ).run()
 
-        print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
-
-    print(f'Testing completed! (In {round(time.time() - time_start_total, 2)} seconds)')
+    print('All pass!')
 
     main.app.quit()
 
@@ -65,9 +69,9 @@ def update_gui(err_msg, texts_stats_files):
     count_tokens_lens = []
     count_sentences_lens = []
 
-    assert texts_stats_files
+    assert len(texts_stats_files) >= 1
 
-    for stats in texts_stats_files:
+    for i, stats in enumerate(texts_stats_files):
         readability_statistics = stats[0]
         len_paras_in_sentences = stats[1]
         len_paras_in_tokens = stats[2]
@@ -91,9 +95,8 @@ def update_gui(err_msg, texts_stats_files):
         count_sentences_lens.append(collections.Counter(len_sentences))
 
         # Data validation
-        file_lang = re.search(r'\[([a-z_]+)\]', main.settings_custom['file_cur']).group(1)
 
-        assert readability_statistics
+        assert len(readability_statistics) == 12
         for statistic in readability_statistics:
             assert statistic
 
@@ -113,9 +116,12 @@ def update_gui(err_msg, texts_stats_files):
         assert len_types_in_syls
         assert len_types_in_chars
 
-        if file_lang not in main.settings_global['syl_tokenizers']:
-            assert all([len_syls == 1 for len_syls in len_tokens_in_syls])
-            assert all([len_syls == 1 for len_syls in len_types_in_syls])
+        if i < len(files):
+            lang = re.search(r'(?<=\[)[a-z_]+(?=\])', files[i]['name']).group()
+
+            if lang not in main.settings_global['syl_tokenizers']:
+                assert all([len_syls == 1 for len_syls in len_tokens_in_syls])
+                assert all([len_syls == 1 for len_syls in len_types_in_syls])
 
         assert ttr
         assert sttr
@@ -126,23 +132,6 @@ def update_gui(err_msg, texts_stats_files):
         assert numpy.mean(len_tokens_in_syls) == count_syls / count_tokens
         assert numpy.mean(len_tokens_in_chars) == count_chars / count_tokens
 
-    # Count of n-length Tokens
-    if any(count_tokens_lens):
-        count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
-        count_tokens_lens = sorted(count_tokens_lens_files.keys())
-
-        # The total of counts of n-length tokens should be equal to the count of characters
-        for i, stats in enumerate(texts_stats_files):
-            len_tokens_total = sum([
-                values[i] * key
-                for key, values in count_tokens_lens_files.items()
-            ])
-
-            assert len_tokens_total == sum(len_tokens_in_chars)
-
-        # Token length should never be zero
-        assert 0 not in count_tokens_lens
-
     # Count of n-length Sentences
     if any(count_sentences_lens):
         count_sentences_lens_files = wl_misc.merge_dicts(count_sentences_lens)
@@ -151,14 +140,31 @@ def update_gui(err_msg, texts_stats_files):
         # The total of counts of n-length sentences should be equal to the count of tokens
         for i, stats in enumerate(texts_stats_files):
             len_sentences_total = sum([
-                values[i] * key
-                for key, values in count_sentences_lens_files.items()
+                count_sentences_files[i] * len_sentence
+                for len_sentence, count_sentences_files in count_sentences_lens_files.items()
             ])
 
-            assert len_sentences_total == len(len_tokens_in_chars)
+            assert len_sentences_total == sum(stats[3])
 
         # Sentence length should never be zero
         assert 0 not in count_sentences_lens
+
+    # Count of n-length Tokens
+    if any(count_tokens_lens):
+        count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
+        count_tokens_lens = sorted(count_tokens_lens_files.keys())
+
+        # The total of counts of n-length tokens should be equal to the count of characters
+        for i, stats in enumerate(texts_stats_files):
+            len_tokens_total = sum([
+                count_tokens_files[i] * len_token
+                for len_token, count_tokens_files in count_tokens_lens_files.items()
+            ])
+
+            assert len_tokens_total == sum(stats[5])
+
+        # Token length should never be zero
+        assert 0 not in count_tokens_lens
 
 if __name__ == '__main__':
     test_profiler()

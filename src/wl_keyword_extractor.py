@@ -486,14 +486,16 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 text_total = wl_texts.Wl_Text_Blank()
                 text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
-                self.keywords_freq_files.append(sum(self.keywords_freq_files, collections.Counter()))
+                self.keywords_freq_files.append(sum(self.keywords_freq_files[1:], collections.Counter()))
 
                 texts.append(text_total)
 
             # Remove tokens that do not appear in any of the observed files
-            self.keywords_freq_files[0] = {token: freq
-                                           for token, freq in self.keywords_freq_files[0].items()
-                                           if token in self.keywords_freq_files[1]}
+            self.keywords_freq_files[0] = {
+                token: freq
+                for token, freq in self.keywords_freq_files[0].items()
+                if token in self.keywords_freq_files[-1].keys()
+            }
 
             # Keyness
             text_test_significance = settings['generation_settings']['test_significance']
@@ -502,19 +504,21 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             test_significance = self.main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['func']
             measure_effect_size = self.main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['func']
 
-            keywords_freq_file_observed = self.keywords_freq_files[-1]
             keywords_freq_file_ref = self.keywords_freq_files[0]
 
-            for text in texts:
+            for i, text in enumerate(texts):
                 keywords_stats_file = {}
 
+                keywords_freq_file_observed = self.keywords_freq_files[i + 1]
                 tokens_observed = text.tokens_flat
                 len_tokens_observed = len(tokens_observed)
 
-                if text_test_significance in [self.tr('Student\'s t-test (Two-sample)'),
-                                              self.tr('Mann-Whitney U Test')]:
+                if text_test_significance in [
+                    self.tr('Student\'s t-test (2-sample)'),
+                    self.tr('Mann-Whitney U Test')
+                ]:
                     # Test Statistic, p-value & Bayes Factor
-                    if text_test_significance == self.tr('Student\'s t-test (Two-sample)'):
+                    if text_test_significance == self.tr('Student\'s t-test (2-sample)'):
                         number_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['number_sections']
                         use_data = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
                     elif text_test_significance == self.tr('Mann-Whitney U Test'):
@@ -532,22 +536,32 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
                     if use_data == self.tr('Absolute Frequency'):
                         for token in keywords_freq_file_observed:
-                            counts_observed = [section_freq.get(token, 0) for section_freq in sections_freq_observed]
-                            counts_ref = [section_freq.get(token, 0) for section_freq in sections_freq_ref]
+                            counts_observed = [
+                                section_freq.get(token, 0)
+                                for section_freq in sections_freq_observed
+                            ]
+                            counts_ref = [
+                                section_freq.get(token, 0)
+                                for section_freq in sections_freq_ref
+                            ]
 
                             keywords_stats_file[token] = test_significance(self.main, counts_observed, counts_ref)
                     elif use_data == self.tr('Relative Frequency'):
                         for token in keywords_freq_file_observed:
-                            counts_observed = [section_freq.get(token, 0) / len_sections_observed[i]
-                                               for i, section_freq in enumerate(sections_freq_observed)]
-                            counts_ref = [section_freq.get(token, 0) / len_sections_ref[i]
-                                          for i, section_freq in enumerate(sections_freq_ref)]
+                            counts_observed = [
+                                section_freq.get(token, 0) / len_sections_observed[i]
+                                for i, section_freq in enumerate(sections_freq_observed)
+                            ]
+                            counts_ref = [
+                                section_freq.get(token, 0) / len_sections_ref[i]
+                                for i, section_freq in enumerate(sections_freq_ref)
+                            ]
 
                             keywords_stats_file[token] = test_significance(self.main, counts_observed, counts_ref)
 
                     # Effect Size
                     for token in keywords_freq_file_observed:
-                        c11 = keywords_freq_file_observed.get(token, 0)
+                        c11 = keywords_freq_file_observed[token]
                         c12 = keywords_freq_file_ref.get(token, 0)
                         c21 = len_tokens_observed - c11
                         c22 = len_tokens_ref - c12
@@ -555,7 +569,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                         keywords_stats_file[token].append(measure_effect_size(self.main, c11, c12, c21, c22))
                 else:
                     for token in keywords_freq_file_observed:
-                        c11 = keywords_freq_file_observed.get(token, 0)
+                        c11 = keywords_freq_file_observed[token]
                         c12 = keywords_freq_file_ref.get(token, 0)
                         c21 = len_tokens_observed - c11
                         c22 = len_tokens_ref - c12
