@@ -90,7 +90,7 @@ def test_ngram_generator():
 
     main.app.quit()
 
-def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files, ngrams_text):
+def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
     assert not err_msg
 
     len_files_selected = len(list(main.wl_file_area.get_selected_files()))
@@ -102,7 +102,6 @@ def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files, ngrams_text):
 
         # N-gram
         assert ngram
-        assert ngrams_text[ngram]
         # Frequency
         assert len(freq_files) == len_files_selected + 1
         # Dispersion & Adjusted Frequency

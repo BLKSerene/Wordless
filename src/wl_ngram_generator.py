@@ -633,7 +633,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
 class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, dict, dict, dict)
+    worker_done = pyqtSignal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)
@@ -641,7 +641,6 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
         self.err_msg = ''
         self.ngrams_freq_files = []
         self.ngrams_stats_files = []
-        self.ngrams_text = {}
 
     def run(self):
         try:
@@ -807,11 +806,6 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 else:
                     self.ngrams_freq_files.append(ngrams_freq_file)
 
-                # N-gram Text
-                for ngram in ngrams_freq_file:
-                    if ngram not in self.ngrams_text:
-                        self.ngrams_text[ngram] = ' '.join(ngram)
-
                 texts.append(text)
 
             # Total
@@ -892,8 +886,7 @@ class Wl_Worker_Ngram_Generator_Table(Wl_Worker_Ngram_Generator):
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.ngrams_freq_files),
-            wl_misc.merge_dicts(self.ngrams_stats_files),
-            self.ngrams_text
+            wl_misc.merge_dicts(self.ngrams_stats_files)
         )
 
 class Wl_Worker_Ngram_Generator_Fig(Wl_Worker_Ngram_Generator):
@@ -904,13 +897,12 @@ class Wl_Worker_Ngram_Generator_Fig(Wl_Worker_Ngram_Generator):
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.ngrams_freq_files),
-            wl_misc.merge_dicts(self.ngrams_stats_files),
-            self.ngrams_text
+            wl_misc.merge_dicts(self.ngrams_stats_files)
         )
 
 @wl_misc.log_timing
 def generate_table(main, table):
-    def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files, ngrams_text):
+    def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
         if not err_msg:
             if ngrams_freq_files:
                 table.settings = copy.deepcopy(main.settings_custom)
@@ -1005,7 +997,7 @@ def generate_table(main, table):
                     table.set_item_num(i, 0, -1)
 
                     # N-gram
-                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(ngrams_text[ngram]))
+                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(ngram)))
 
                     table.model().item(i, 1).text_raw = ngram
 
@@ -1061,7 +1053,7 @@ def generate_table(main, table):
 
 @wl_misc.log_timing
 def generate_fig(main):
-    def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files, ngrams_text):
+    def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
         if not err_msg:
             if ngrams_freq_files:
                 text_measure_dispersion = settings['generation_settings']['measure_dispersion']
@@ -1072,7 +1064,7 @@ def generate_fig(main):
 
                 if settings['fig_settings']['use_data'] == main.tr('Frequency'):
                     ngrams_freq_files = {
-                        ngrams_text[ngram]: freqs
+                        ' '.join(ngram): freqs
                         for ngram, freqs in ngrams_freq_files.items()
                     }
 
@@ -1083,7 +1075,7 @@ def generate_fig(main):
                     )
                 else:
                     ngrams_stats_files = {
-                        ngrams_text[ngram]: stats
+                        ' '.join(ngram): stats
                         for ngram, stats in ngrams_stats_files.items()
                     }
 
