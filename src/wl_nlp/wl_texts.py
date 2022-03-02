@@ -137,7 +137,7 @@ class Wl_Text():
 
             # Add empty tags for untagged files
             if self.tagged == self.main.tr('No'):
-                self.tags.extend([[] for i in wl_misc.flatten_list(self.tokens_multilevel)])
+                self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
         elif file_ext == '.xml':
             if self.tagged == self.main.tr('Yes'):
                 tags_para = []
@@ -196,7 +196,7 @@ class Wl_Text():
                                 self.tokens_multilevel[-1].append(sentence.split())
 
             # Add empty tags
-            self.tags.extend([[] for i in wl_misc.flatten_list(self.tokens_multilevel)])
+            self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
 
         # Paragraph and sentence offsets
         for para in self.tokens_multilevel:
@@ -220,10 +220,10 @@ class Wl_Text():
                 lang = self.lang
             )
 
-            self.tags.extend([[] for token in tokens])
+            self.tags.extend([[] for _ in tokens])
 
     def add_tags_splitting(self, text):
         if (text := text.strip()):
             tokens = text.split()
 
-            self.tags.extend([[] for token in tokens])
+            self.tags.extend([[] for _ in tokens])

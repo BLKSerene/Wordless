@@ -48,7 +48,7 @@ def wl_word_detokenize(main, tokens, lang):
                     non_cjk_start += 1
                 else:
                     # Non-Chinese
-                    for j, token in enumerate(tokens[i:]):
+                    for j, _ in enumerate(tokens[i:]):
                         if (
                             i + j + 1 == len(tokens)
                             or wl_checking_unicode.has_han(tokens[i + j + 1])
@@ -80,7 +80,7 @@ def wl_word_detokenize(main, tokens, lang):
                 non_cjk_start = i + 1
             else:
                 # Non-Japanese
-                for j, token in enumerate(tokens[i:]):
+                for j, _ in enumerate(tokens[i:]):
                     if (
                         i + j + 1 == len(tokens)
                         or wl_checking_unicode.has_han(tokens[i + j + 1])
@@ -112,7 +112,7 @@ def wl_word_detokenize(main, tokens, lang):
                 non_thai_start = i + 1
             else:
                 # Non-Thai
-                for j, token in enumerate(tokens[i:]):
+                for j, _ in enumerate(tokens[i:]):
                     if (
                         i + j + 1 == len(tokens)
                         or wl_checking_unicode.has_thai(tokens[i + j + 1])
@@ -145,7 +145,7 @@ def wl_word_detokenize(main, tokens, lang):
                 non_tibetan_start = i + 1
             else:
                 # Non-Tibetan
-                for j, token in enumerate(tokens[i:]):
+                for j, _ in enumerate(tokens[i:]):
                     if (
                         i + j + 1 == len(tokens)
                         or wl_checking_unicode.has_tibetan(tokens[i + j + 1])

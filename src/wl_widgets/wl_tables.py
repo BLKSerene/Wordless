@@ -1285,9 +1285,9 @@ class Wl_Table_Data(Wl_Table):
 
         super().item_changed(item)
 
-        self.selection_changed()
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
-    def selection_changed(self):
+    def selection_changed(self, selected, deselected):
         for table in [self] + self.linked_tables:
             if not self.is_empty() and [i for i in range(self.model().rowCount()) if not self.isRowHidden(i)] and table.selectionModel().selectedIndexes():
                 self.button_exp_selected.setEnabled(True)

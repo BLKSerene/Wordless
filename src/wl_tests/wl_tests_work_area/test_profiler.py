@@ -19,8 +19,7 @@
 import collections
 import random
 import re
-
-import numpy
+import statistics
 
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_init
@@ -126,11 +125,12 @@ def update_gui(err_msg, texts_stats_files):
         assert ttr
         assert sttr
 
-        assert numpy.mean(len_paras_in_sentences) == count_sentences / count_paras
-        assert numpy.mean(len_paras_in_tokens) == count_tokens / count_paras
-        assert numpy.mean(len_sentences) == count_tokens / count_sentences
-        assert numpy.mean(len_tokens_in_syls) == count_syls / count_tokens
-        assert numpy.mean(len_tokens_in_chars) == count_chars / count_tokens
+        # Do not use NumPy here since it causes errors in CI for macOS
+        assert statistics.mean(len_paras_in_sentences) == count_sentences / count_paras
+        assert statistics.mean(len_paras_in_tokens) == count_tokens / count_paras
+        assert statistics.mean(len_sentences) == count_tokens / count_sentences
+        assert statistics.mean(len_tokens_in_syls) == count_syls / count_tokens
+        assert statistics.mean(len_tokens_in_chars) == count_chars / count_tokens
 
     # Count of n-length Sentences
     if any(count_sentences_lens):
