@@ -47,6 +47,10 @@ def test_file_area():
 
         main.settings_custom['file_area']['files_open'].extend(new_files)
 
+    # Clean cached files
+    for file in glob.glob('imports/*.*'):
+        os.remove(file)
+
     for file_path in glob.glob('wl_tests_files/wl_file_area/*.txt'):
         time_start = time.time()
 
@@ -77,8 +81,4 @@ def test_file_area():
         print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
 
 if __name__ == '__main__':
-    # Clean cached files
-    for file in glob.glob('imports/*.*'):
-        os.remove(file)
-
     test_file_area()
