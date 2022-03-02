@@ -59,7 +59,14 @@ jobs:
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_tokenization.py
 
         pytest --cov=./ --cov-report=xml wl_tests/wl_tests_file_area
-        pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_profiler.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_wordlist_generator.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_ngram_generator.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_collocation_extractor.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_colligation_extractor.py
+        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_keyword_extractor.py
+
+        pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
 
     - name: "Upload coverage to Codecov"
       uses: codecov/codecov-action@v2
@@ -102,7 +109,14 @@ jobs:
         pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
 
         pytest wl_tests/wl_tests_file_area
-        pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area
+        pytest wl_tests/wl_tests_work_area/test_profiler.py
+        pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
+        pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
+        pytest wl_tests/wl_tests_work_area/test_collocation_extractor.py
+        pytest wl_tests/wl_tests_work_area/test_colligation_extractor.py
+        pytest wl_tests/wl_tests_work_area/test_keyword_extractor.py
+
+        pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
 
   build-linux:
     runs-on: ubuntu-18.04
