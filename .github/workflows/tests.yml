@@ -21,138 +21,151 @@ name: Tests
 on: [push, pull_request]
 
 jobs:
+  # Windows
   build-windows:
     runs-on: windows-2016
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'
-        architecture: 'x64'
-        cache: 'pip'
+      - uses: actions/checkout@v3
 
-    - name: Check Python version
-      run: python --version
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+          cache: 'pip'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip setuptools
-        pip install -r requirements.txt
-        pip install pytest-cov
-        python utils/wl_downloader_ci.py
+      # Check Python version
+      - name: Check Python version
+        run: python --version
 
-    - name: Run Tests and collect coverage
-      run: |
-        cd src
-        $env:PYTHONPATH += $PWD
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools
+          pip install -r requirements.txt
+          # For Codecov
+          pip install pytest-cov
+          # Download models and data files
+          python utils/wl_downloader_ci.py
 
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_lemmatization.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_matching.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_nlp_utils.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_pos_tagging.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_stop_word_lists.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_syl_tokenization.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_detokenization.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_tokenization.py
+      # Run tests and collect coverage
+      - name: Run Tests and collect coverage
+        run: |
+          cd src
+          # Set environmental variables
+          $env:PYTHONPATH += $PWD
 
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_file_area
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_profiler.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_wordlist_generator.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_ngram_generator.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_collocation_extractor.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_colligation_extractor.py
-        pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area/test_keyword_extractor.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_lemmatization.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_matching.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_nlp_utils.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_pos_tagging.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_detokenization.py
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_tokenization.py
 
-        pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_file_area
+          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area
 
-    - name: "Upload coverage to Codecov"
-      uses: codecov/codecov-action@v2
+          pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
 
+      # Upload coverage to Codecov
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v2
+
+  # macOS
   build-macos:
     runs-on: macos-10.15
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'
-        architecture: 'x64'
-        cache: 'pip'
+      - uses: actions/checkout@v3
 
-    - name: Check Python version
-      run: python --version
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+          cache: 'pip'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip setuptools
-        pip install numpy
-        pip install -r requirements.txt
-        python utils/wl_downloader_ci.py
+      # Check Python version
+      - name: Check Python version
+        run: python --version
 
-    - name: Run Tests
-      run: |
-        cd src
-        export PYTHONPATH="$PYTHONPATH;$PWD"
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools
+          pip install -r requirements.txt
+          # Download models and data files
+          python utils/wl_downloader_ci.py
 
-        pytest wl_tests/wl_tests_nlp/test_lemmatization.py
-        pytest wl_tests/wl_tests_nlp/test_matching.py
-        pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
-        pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
-        pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-        pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
-        pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
-        pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
-        pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
+      # Run tests
+      - name: Run Tests
+        run: |
+          cd src
+          # Set environmental variables
+          export PYTHONPATH=$PYTHONPATH:$PWD
 
-        pytest wl_tests/wl_tests_file_area
-        pytest wl_tests/wl_tests_work_area/test_profiler.py
-        pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-        pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
-        pytest wl_tests/wl_tests_work_area/test_collocation_extractor.py
-        pytest wl_tests/wl_tests_work_area/test_colligation_extractor.py
-        pytest wl_tests/wl_tests_work_area/test_keyword_extractor.py
+          pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+          pytest wl_tests/wl_tests_nlp/test_matching.py
+          pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
+          pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
+          pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
 
-        pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+          pytest wl_tests/wl_tests_file_area
+          pytest wl_tests/wl_tests_work_area
 
+          pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+
+  # Linux
   build-linux:
     runs-on: ubuntu-18.04
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.8'
-        architecture: 'x64'
-        cache: 'pip'
+      - uses: actions/checkout@v3
 
-    - name: Check Python version
-      run: python --version
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+          cache: 'pip'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip setuptools
-        pip install numpy
-        pip install -r requirements.txt
-        python utils/wl_downloader_ci.py
+      # Check Python version
+      - name: Check Python version
+        run: python --version
 
-    - name: Run Tests
-      run: |
-        cd src
-        export PYTHONPATH="$PYTHONPATH;$PWD"
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools
+          # Fix installation of pkuseg
+          pip install numpy
+          pip install -r requirements.txt
+          # Download models and data files
+          python utils/wl_downloader_ci.py
 
-        pytest wl_tests/wl_tests_nlp/test_lemmatization.py
-        pytest wl_tests/wl_tests_nlp/test_matching.py
-        pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
-        pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
-        pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-        pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
-        pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
-        pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
-        pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
+      # Run tests
+      - name: Run Tests
+        run: |
+          cd src
+          # Set environmental variables
+          export PYTHONPATH=$PYTHONPATH:$PWD
 
-        pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+          pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+          pytest wl_tests/wl_tests_nlp/test_matching.py
+          pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
+          pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
+          pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
+
+          pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
