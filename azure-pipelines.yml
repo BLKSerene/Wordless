@@ -20,182 +20,164 @@ variables:
   PIP_CACHE_DIR: $(Pipeline.Workspace)/.pip
 
 jobs:
-# Windows
-- job: "Windows"
+  # Windows
+  - job: "Windows"
 
-  pool:
-    vmImage: windows-2019
+    pool:
+      vmImage: windows-2019
 
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.8.x'
-      architecture: 'x64'
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3.8.x'
+          architecture: 'x64'
 
-  - task: Cache@2
-    inputs:
-      key: 'python | "$(Agent.OS)" | requirements.txt'
-      restoreKeys: |
-        python | "$(Agent.OS)"
-        python
-      path: $(PIP_CACHE_DIR)
-    displayName: Cache pip packages
+      - task: Cache@2
+        inputs:
+          key: 'python | "$(Agent.OS)" | requirements.txt'
+          restoreKeys: |
+            python | "$(Agent.OS)"
+            python
+          path: $(PIP_CACHE_DIR)
+        displayName: Cache pip packages
 
-  # Check Python version
-  - script: |
-      python --version
-    displayName: 'Check Python version'
+      # Check Python version
+      - script: python --version
+        displayName: 'Check Python version'
 
-  # Install dependencies
-  - script: |
-      pip install --upgrade pip setuptools
-      pip install --requirement requirements.txt
-    displayName: 'Install dependencies'
+      # Install dependencies
+      - script: |
+          pip install --upgrade pip setuptools
+          pip install --requirement requirements.txt
+          :: Download models and data files
+          python utils/wl_downloader_ci.py
+        displayName: 'Install dependencies'
 
-  # Download data
-  - script: |
-      python utils/wl_downloader_ci.py
-    displayName: 'Download data'
+      # Run tests
+      - script: |
+          cd src
+          :: Set environmental variables
+          set PYTHONPATH=%PYTHONPATH%;%cd%
 
-  # Run tests
-  - script: |
-      cd src
-      set PYTHONPATH=%PYTHONPATH%;%cd%
+          pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+          pytest wl_tests/wl_tests_nlp/test_matching.py
+          pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
+          pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
+          pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
 
-      pytest wl_tests/wl_tests_nlp/test_lemmatization.py
-      pytest wl_tests/wl_tests_nlp/test_matching.py
-      pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
-      pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
-      pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-      pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
-      pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
-      pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
-      pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
+          pytest wl_tests/wl_tests_file_area
+          pytest wl_tests/wl_tests_work_area
 
-      pytest wl_tests/wl_tests_file_area
-      pytest wl_tests/wl_tests_work_area/test_profiler.py
-      pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
-      pytest wl_tests/wl_tests_work_area/test_collocation_extractor.py
-      pytest wl_tests/wl_tests_work_area/test_colligation_extractor.py
-      pytest wl_tests/wl_tests_work_area/test_keyword_extractor.py
+          pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+        displayName: 'Run tests'
 
-      pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
-    displayName: 'Run tests'
+  # macOS
+  - job: "macOS"
 
-# macOS
-- job: "macOS"
+    pool:
+      vmImage: macOS-10.15
 
-  pool:
-    vmImage: macOS-10.15
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3.8.x'
 
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.8.x'
+      - task: Cache@2
+        inputs:
+          key: 'python | "$(Agent.OS)" | requirements.txt'
+          restoreKeys: |
+            python | "$(Agent.OS)"
+            python
+          path: $(PIP_CACHE_DIR)
+        displayName: Cache pip packages
 
-  - task: Cache@2
-    inputs:
-      key: 'python | "$(Agent.OS)" | requirements.txt'
-      restoreKeys: |
-        python | "$(Agent.OS)"
-        python
-      path: $(PIP_CACHE_DIR)
-    displayName: Cache pip packages
+      # Check Python version
+      - script: python3 --version
+        displayName: 'Check Python version'
 
-  # Check Python version
-  - script: |
-      python3 --version
-    displayName: 'Check Python version'
+      # Install dependencies
+      - script: |
+          pip3 install --upgrade pip setuptools
+          pip3 install --requirement requirements.txt
+          # Download models and data files
+          python3 utils/wl_downloader_ci.py
+        displayName: 'Install dependencies'
 
-  # Install dependencies
-  - script: |
-      pip3 install --upgrade pip setuptools
-      pip3 install --requirement requirements.txt
-    displayName: 'Install dependencies'
+      # Run tests
+      - script: |
+          cd src
+          # Set environmental variables
+          export PYTHONPATH=$PYTHONPATH:$PWD
 
-  # Download data
-  - script: |
-      python3 utils/wl_downloader_ci.py
-    displayName: 'Download data'
+          pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+          pytest wl_tests/wl_tests_nlp/test_matching.py
+          pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
+          pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
+          pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
 
-  # Run tests
-  - script: |
-      cd src
-      export PYTHONPATH="$PYTHONPATH;$PWD"
+          pytest wl_tests/wl_tests_file_area
+          pytest wl_tests/wl_tests_work_area
 
-      pytest wl_tests/wl_tests_nlp/test_lemmatization.py
-      pytest wl_tests/wl_tests_nlp/test_matching.py
-      pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
-      pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
-      pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-      pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
-      pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
-      pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
-      pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
+          pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+        displayName: 'Run tests'
 
-      pytest wl_tests/wl_tests_file_area
-      pytest wl_tests/wl_tests_work_area/test_profiler.py
-      pytest wl_tests/wl_tests_work_area/test_wordlist_generator.py
-      pytest wl_tests/wl_tests_work_area/test_ngram_generator.py
-      pytest wl_tests/wl_tests_work_area/test_collocation_extractor.py
-      pytest wl_tests/wl_tests_work_area/test_colligation_extractor.py
-      pytest wl_tests/wl_tests_work_area/test_keyword_extractor.py
+  # Linux
+  - job: "Linux"
 
-      pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
-    displayName: 'Run tests'
+    pool:
+      vmImage: ubuntu-18.04
 
-# Linux
-- job: "Linux"
+    steps:
+      - task: UsePythonVersion@0
+        inputs:
+          versionSpec: '3.8.x'
 
-  pool:
-    vmImage: ubuntu-18.04
+      - task: Cache@2
+        inputs:
+          key: 'python | "$(Agent.OS)" | requirements.txt'
+          restoreKeys: |
+            python | "$(Agent.OS)"
+            python
+          path: $(PIP_CACHE_DIR)
+        displayName: Cache pip packages
 
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.8.x'
+      # Check Python version
+      - script: python3.8 --version
+        displayName: 'Check Python version'
 
-  - task: Cache@2
-    inputs:
-      key: 'python | "$(Agent.OS)" | requirements.txt'
-      restoreKeys: |
-        python | "$(Agent.OS)"
-        python
-      path: $(PIP_CACHE_DIR)
-    displayName: Cache pip packages
+      # Install dependencies
+      - script: |
+          pip3.8 install --upgrade pip setuptools
+          # Fix installation of pkuseg
+          pip3.8 install numpy
+          pip3.8 install --requirement requirements.txt
+          # Download models and data files
+          python3.8 utils/wl_downloader_ci.py
+        displayName: 'Install dependencies'
 
-  # Check Python version
-  - script: |
-      python3.8 --version
-    displayName: 'Check Python version'
+      # Run tests
+      - script: |
+          cd src
+          # Set environmental variables
+          export PYTHONPATH=$PYTHONPATH:$PWD
 
-  # Install dependencies
-  - script: |
-      pip3.8 install --upgrade pip setuptools
-      pip3.8 install numpy
-      pip3.8 install --requirement requirements.txt
-    displayName: 'Install dependencies'
+          pytest wl_tests/wl_tests_nlp/test_lemmatization.py
+          pytest wl_tests/wl_tests_nlp/test_matching.py
+          pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
+          pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
+          pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
+          pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
 
-  # Download data
-  - script: |
-      python3.8 utils/wl_downloader_ci.py
-    displayName: 'Download data'
-
-  # Run tests
-  - script: |
-      cd src
-      export PYTHONPATH="$PYTHONPATH;$PWD"
-
-      pytest wl_tests/wl_tests_nlp/test_lemmatization.py
-      pytest wl_tests/wl_tests_nlp/test_matching.py
-      pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
-      pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
-      pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-      pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
-      pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
-      pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
-      pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-
-      pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
-    displayName: 'Run tests'
+          pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+        displayName: 'Run tests'
