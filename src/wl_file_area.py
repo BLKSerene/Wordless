@@ -697,14 +697,14 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         else:
             self.main.action_file_reopen.setEnabled(False)
 
-        self.selection_changed()
+        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
-    def item_clicked(self):
+    def item_clicked(self, index):
         if not self.is_empty():
             for row in range(self.model().rowCount()):
                 self.main.settings_custom['file_area']['files_open'][row]['selected'] = True if self.model().item(row, 0).checkState() == Qt.Checked else False
 
-    def selection_changed(self):
+    def selection_changed(self, selected, deselected):
         if self.get_selected_rows():
             self.main.action_file_close_selected.setEnabled(True)
         else:

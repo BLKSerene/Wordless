@@ -262,8 +262,6 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         if texts is None:
             type_, level, opening_tag, _ = self.defaults_row
 
-            opening_tags = [self.model().item(i, 2).text() for i in range(self.model().rowCount())]
-
             # HTML tags
             if opening_tag.startswith('<') and opening_tag.endswith('>'):
                 opening_tags = [

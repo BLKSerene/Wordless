@@ -49,6 +49,13 @@ def test_file_area():
 
         main.settings_custom['file_area']['files_open'].extend(new_files)
 
+    # Reset custom settings
+    main.settings_custom = copy.deepcopy(main.settings_default)
+
+    # Clean cached files
+    for file in glob.glob('imports/*.*'):
+        os.remove(file)
+
     for file_path in glob.glob('wl_tests_files/wl_file_area/work_area/*.txt'):
         time_start = time.time()
 
@@ -83,11 +90,4 @@ def test_file_area():
         pickle.dump(main.settings_custom, f)
 
 if __name__ == '__main__':
-    # Reset custom settings
-    main.settings_custom = copy.deepcopy(main.settings_default)
-
-    # Clean cached files
-    for file in glob.glob('imports/*.*'):
-        os.remove(file)
-
     test_file_area()

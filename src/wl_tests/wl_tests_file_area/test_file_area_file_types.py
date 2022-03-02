@@ -68,6 +68,10 @@ def add_file(file_paths, update_gui):
         ).run()
 
 def test_file_area_file_types():
+    # Clean cached files
+    for file in glob.glob('imports/*.*'):
+        os.remove(file)
+
     # Disable encoding detection
     main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings'] = False
 
@@ -274,8 +278,4 @@ def update_gui_tags(err_msg, new_files):
     assert len(file_text.tokens_flat) == len(file_text.tags)
 
 if __name__ == '__main__':
-    # Clean cached files
-    for file in glob.glob('imports/*.*'):
-        os.remove(file)
-
     test_file_area_file_types()

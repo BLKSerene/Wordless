@@ -597,7 +597,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                                 parallel_text = text_tgt.tokens_flat[offset_para_start_tgt:offset_para_end]
                             # Omission at the end of the source text
-                            elif no_seg > len_segs_tgt:
+                            else:
                                 parallel_text = []
 
                             # Search in Results (Parallel Text)
