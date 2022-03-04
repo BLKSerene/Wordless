@@ -28,15 +28,17 @@ Wordless is an integrated corpus tool with multilingual support for the study of
         <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=main" alt="Azure Pipelines"></a>
     <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ATests" alt="Github Actions">
         <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg"></a>
+    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL" alt="CodeQL">
+        <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg"></a>
+    <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield" alt="FOSSA Status">
+        <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield"></a>
 </div>
 
 <div align="center">
-    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL" alt="CodeQL">
-        <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg"></a>
+    <a href="https://lgtm.com/projects/g/BLKSerene/Wordless/context:python">
+        <img alt="Language grade: Python" src="https://img.shields.io/lgtm/grade/python/g/BLKSerene/Wordless.svg?logo=lgtm&logoWidth=18"/></a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless" alt="Codecov">
         <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G"></a>
-    <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield" alt="FOSSA Status">
-        <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield"></a>
     <a href="https://github.com/BLKSerene/Wordless/releases">
         <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release"></a>
     <a href="https://github.com/BLKSerene/Wordless#download">
@@ -44,6 +46,7 @@ Wordless is an integrated corpus tool with multilingual support for the study of
     <a href="https://github.com/BLKSerene/Wordless/blob/main/LICENSE.txt">
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
 </div>
+
 
 ## Download
 The latest version (**2.1.0**) of Wordless supports **Windows 7/8/8.1/10**, **macOS 10.11 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**.
