@@ -37,7 +37,7 @@ pythainlp == 3.0.5
 sacremoses == 0.0.47
 
 ## spaCy
-spacy == 3.2.2
+spacy == 3.2.3
 spacy-lookups-data == 1.0.3
 
 ssg == 0.0.8
