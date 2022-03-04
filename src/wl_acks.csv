@@ -25,7 +25,7 @@ python-docx,https://github.com/python-openxml/python-docx,0.8.11,Steve Canny,MIT
 Requests,https://github.com/psf/requests,2.27.1,Kenneth Reitz,Apache-2.0,https://github.com/psf/requests/blob/main/LICENSE
 Sacremoses,https://github.com/alvations/sacremoses,0.0.47,Liling Tan,MIT,https://github.com/alvations/sacremoses/blob/master/LICENSE
 SciPy,https://scipy.org/scipylib/,1.8.0,SciPy Developers,BSD-3-Clause,https://github.com/scipy/scipy/blob/main/LICENSE.txt
-spaCy,https://spacy.io/,3.2.2,"Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann",MIT,https://github.com/explosion/spaCy/blob/master/LICENSE
+spaCy,https://spacy.io/,3.2.3,"Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann",MIT,https://github.com/explosion/spaCy/blob/master/LICENSE
 ssg,https://github.com/ponrawee/ssg,0.0.8,Ponrawee Prasertsom,Apache-2.0,https://github.com/ponrawee/ssg/blob/master/LICENSE
 Stopwords ISO,https://github.com/stopwords-iso/stopwords-iso,1.0.0,Gene Diaz,MIT,https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE
 SudachiPy,https://github.com/WorksApplications/sudachi.rs,0.6.3,"Works Applications Co., Ltd.",Apache-2.0,https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE
