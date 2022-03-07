@@ -140,6 +140,7 @@ class Wl_Settings(QDialog):
 
         self.tree_settings = QTreeView(self)
         self.tree_settings.setModel(QStandardItemModel())
+        self.tree_settings.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         self.tree_settings.setHeaderHidden(True)
         self.tree_settings.header().setSectionResizeMode(QHeaderView.ResizeToContents)
@@ -268,11 +269,10 @@ class Wl_Settings(QDialog):
 
         self.tree_settings.node_selected_old = self.tree_settings.model().item(0)
 
-    def selection_changed(self):
+    def selection_changed(self, selected, deselected):
         if self.tree_settings.selectionModel().selectedIndexes():
-            i_selected = self.tree_settings.selectionModel().currentIndex()
-
             if self.validate_settings():
+                i_selected = self.tree_settings.selectionModel().currentIndex()
                 node_selected = self.tree_settings.model().itemFromIndex(i_selected)
                 node_selected_text = node_selected.text()
 
@@ -335,12 +335,12 @@ class Wl_Settings(QDialog):
 
                     self.settings_tagsets.pos_tag_mappings_loaded = True
             else:
-                self.tree_settings.blockSignals(True)
+                self.tree_settings.selectionModel().blockSignals(True)
 
                 self.tree_settings.clearSelection()
-                self.tree_settings.selectionModel().setCurrentIndex(i_selected)
+                self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], Qt.MatchRecursive)[0].index())
 
-                self.tree_settings.blockSignals(False)
+                self.tree_settings.selectionModel().blockSignals(False)
 
     def load_settings(self, defaults = False):
         for settings in self.settings_all:
@@ -388,9 +388,9 @@ class Wl_Settings(QDialog):
         self.tree_settings.clearSelection()
 
         if node:
-            self.tree_settings.selectionModel().setCurrentIndex(self.tree_settings.model().findItems(node, Qt.MatchRecursive)[0].index(), QItemSelectionModel.Select)
+            self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(node, Qt.MatchRecursive)[0].index())
         else:
-            self.tree_settings.selectionModel().setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], Qt.MatchRecursive)[0].index(), QItemSelectionModel.Select)
+            self.tree_settings.setCurrentIndex(self.tree_settings.model().findItems(self.main.settings_custom['settings']['node_cur'], Qt.MatchRecursive)[0].index())
 
         # Expand current node
         node_cur = self.tree_settings.model().itemFromIndex(self.tree_settings.selectionModel().currentIndex())
