@@ -154,7 +154,7 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
                 self.button_word_tokenization_show_preview.setEnabled(False)
                 self.text_edit_word_tokenization_preview_samples.setEnabled(False)
 
-                self.button_word_tokenization_show_preview.setText(self.tr('Processing ...'))
+                self.button_word_tokenization_show_preview.setText(self.tr('Processing...'))
 
                 word_tokenizer = wl_nlp_utils.to_lang_util_code(
                     self.main,

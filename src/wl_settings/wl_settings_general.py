@@ -217,7 +217,7 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
 
         self.label_imp_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_imp_search_terms_default_path = QLineEdit(self)
-        self.button_imp_search_terms_browse = QPushButton(self.tr('Browse'), self)
+        self.button_imp_search_terms_browse = QPushButton(self.tr('Browse...'), self)
         self.label_imp_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
         self.combo_box_imp_search_terms_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
         self.checkbox_imp_search_terms_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
@@ -238,7 +238,7 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
 
         self.label_imp_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_imp_stop_words_default_path = QLineEdit(self)
-        self.button_imp_stop_words_browse = QPushButton(self.tr('Browse'), self)
+        self.button_imp_stop_words_browse = QPushButton(self.tr('Browse...'), self)
         self.label_imp_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
         self.combo_box_imp_stop_words_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
         self.checkbox_imp_stop_words_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
@@ -405,7 +405,7 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
 
         self.label_exp_tables_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_exp_tables_default_path = QLineEdit(self)
-        self.button_exp_tables_default_path = QPushButton(self.tr('Browse'), self)
+        self.button_exp_tables_default_path = QPushButton(self.tr('Browse...'), self)
         self.label_exp_tables_default_type = QLabel(self.tr('Default Type:'), self)
         self.combo_box_exp_tables_default_type = wl_boxes.Wl_Combo_Box(self)
         self.label_exp_tables_default_encoding = QLabel(self.tr('Default Encoding:'), self)
@@ -430,7 +430,7 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
 
         self.label_exp_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_exp_search_terms_default_path = QLineEdit(self)
-        self.button_exp_search_terms_default_path = QPushButton(self.tr('Browse'), self)
+        self.button_exp_search_terms_default_path = QPushButton(self.tr('Browse...'), self)
         self.label_exp_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
         self.combo_box_exp_search_terms_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
 
@@ -448,7 +448,7 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
 
         self.label_exp_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_exp_stop_words_default_path = QLineEdit(self)
-        self.button_exp_stop_words_default_path = QPushButton(self.tr('Browse'), self)
+        self.button_exp_stop_words_default_path = QPushButton(self.tr('Browse...'), self)
         self.label_exp_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
         self.combo_box_exp_stop_words_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
 

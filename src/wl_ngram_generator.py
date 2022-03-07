@@ -33,23 +33,25 @@ from wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
 from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
+_tr = QCoreApplication.translate
+
 class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
             tab = 'ngram_generator',
             headers = [
-                parent.tr('Rank'),
-                parent.tr('N-gram'),
-                parent.tr('Number of\nFiles Found'),
-                parent.tr('Number of\nFiles Found %'),
+                _tr('Wl_Table_Ngram_Generator', 'Rank'),
+                _tr('Wl_Table_Ngram_Generator', 'N-gram'),
+                _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found'),
+                _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found %'),
             ],
             headers_int = [
-                parent.tr('Rank'),
-                parent.tr('Number of\nFiles Found')
+                _tr('Wl_Table_Ngram_Generator', 'Rank'),
+                _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found')
             ],
             headers_pct = [
-                parent.tr('Number of\nFiles Found %')
+                _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found %')
             ],
             sorting_enabled = True
         )
@@ -921,67 +923,67 @@ def generate_table(main, table):
                 for i, file in enumerate(files):
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\nFrequency'),
+                        _tr('wl_ngram_generator', '[{}]\nFrequency').format(file['name']),
                         is_int = True, is_cumulative = True, is_breakdown = True
                     )
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\nFrequency %'),
+                        _tr('wl_ngram_generator', '[{}]\nFrequency %').format(file['name']),
                         is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\n{text_dispersion}'),
+                        f'[{file["name"]}]\n{text_dispersion}',
                         is_float = True, is_breakdown = True
                     )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
+                        f'[{file["name"]}]\n{text_adjusted_freq}',
                         is_float = True, is_breakdown = True
                     )
 
                 # Insert columns (total)
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr('Total\nFrequency'),
+                    _tr('wl_ngram_generator', 'Total\nFrequency'),
                     is_int = True, is_cumulative = True
                 )
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr('Total\nFrequency %'),
+                    _tr('wl_ngram_generator', 'Total\nFrequency %'),
                     is_pct = True, is_cumulative = True
                 )
 
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr(f'Total\n{text_dispersion}'),
+                    _tr('wl_ngram_generator', 'Total\n') + text_dispersion,
                     is_float = True
                 )
 
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr(f'Total\n{text_adjusted_freq}'),
+                    _tr('wl_ngram_generator', 'Total\n') + text_adjusted_freq,
                     is_float = True
                 )
 
                 # Sort by frequency of the first file
                 table.horizontalHeader().setSortIndicator(
-                    table.find_header_hor(main.tr(f'[{files[0]["name"]}]\nFrequency')),
+                    table.find_header_hor(_tr('wl_ngram_generator', '[{}]\nFrequency').format(files[0]['name'])),
                     Qt.DescendingOrder
                 )
 
-                cols_freq = table.find_headers_hor(main.tr('\nFrequency'))
-                cols_freq_pct = table.find_headers_hor(main.tr('\nFrequency %'))
+                cols_freq = table.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency'))
+                cols_freq_pct = table.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency %'))
 
                 for col in cols_freq_pct:
                     cols_freq.remove(col)
 
-                cols_dispersion = table.find_headers_hor(main.tr(f'\n{text_dispersion}'))
-                cols_adjusted_freq = table.find_headers_hor(main.tr(f'\n{text_adjusted_freq}'))
-                col_files_found = table.find_header_hor(main.tr('Number of\nFiles Found'))
-                col_files_found_pct = table.find_header_hor(main.tr('Number of\nFiles Found %'))
+                cols_dispersion = table.find_headers_hor(f'\n{text_dispersion}')
+                cols_adjusted_freq = table.find_headers_hor(f'\n{text_adjusted_freq}')
+                col_files_found = table.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found'))
+                col_files_found_pct = table.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found %'))
 
                 freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
                 len_files = len(files)
@@ -1062,7 +1064,7 @@ def generate_fig(main):
                 text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
                 text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
-                if settings['fig_settings']['use_data'] == main.tr('Frequency'):
+                if settings['fig_settings']['use_data'] == _tr('wl_ngram_generator', 'Frequency'):
                     ngrams_freq_files = {
                         ' '.join(ngram): freqs
                         for ngram, freqs in ngrams_freq_files.items()
@@ -1071,7 +1073,7 @@ def generate_fig(main):
                     wl_figs_freqs.wl_fig_freq(
                         main, ngrams_freq_files,
                         settings = settings['fig_settings'],
-                        label_x = main.tr('N-gram')
+                        label_x = _tr('wl_ngram_generator', 'N-gram')
                     )
                 else:
                     ngrams_stats_files = {
@@ -1097,7 +1099,7 @@ def generate_fig(main):
                     wl_figs_stats.wl_fig_stat(
                         main, ngrams_stat_files,
                         settings = settings['fig_settings'],
-                        label_x = main.tr('N-gram'),
+                        label_x = _tr('wl_ngram_generator', 'N-gram'),
                         label_y = label_y
                     )
 

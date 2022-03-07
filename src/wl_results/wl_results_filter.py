@@ -23,8 +23,10 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs, wl_dialogs_misc
-from wl_utils import wl_misc, wl_msgs, wl_threading
+from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_boxes, wl_buttons, wl_layouts, wl_widgets
+
+_tr = QCoreApplication.translate
 
 class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
     def run(self):
@@ -44,20 +46,20 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
                 self.tr('Total\nFrequency')
             )
             col_dispersion = self.dialog.table.find_header_hor(
-                self.tr(f'Total\n{text_dispersion}')
+                self.tr('Total\n') + text_dispersion
             )
             col_adjusted_freq = self.dialog.table.find_header_hor(
-                self.tr(f'Total\n{text_adjusted_freq}')
+                self.tr('Total\n') + text_adjusted_freq
             )
         else:
             col_freq = self.dialog.table.find_header_hor(
-                self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
+                self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
             )
             col_dispersion = self.dialog.table.find_header_hor(
-                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_dispersion}")
+                f"[{self.dialog.settings['file_to_filter']}]\n{text_dispersion}"
             )
             col_adjusted_freq = self.dialog.table.find_header_hor(
-                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_adjusted_freq}")
+                f"[{self.dialog.settings['file_to_filter']}]\n{text_adjusted_freq}"
             )
 
         col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
@@ -180,46 +182,46 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
                 )
             else:
                 col_freq = self.dialog.table.find_header_hor(
-                    self.tr(f'Total\n{self.dialog.settings["freq_position"]}')
+                    self.tr('Total\n') + self.dialog.settings['freq_position']
                 )
 
             if text_test_stat:
                 col_test_stat = self.dialog.table.find_header_hor(
-                    self.tr(f'Total\n{text_test_stat}')
+                    self.tr('Total\n') + text_test_stat
                 )
             col_p_value = self.dialog.table.find_header_hor(
-                self.tr(f'Total\n{text_p_value}')
+                self.tr('Total\n') + text_p_value
             )
             if text_bayes_factor:
                 col_bayes_factor = self.dialog.table.find_header_hor(
-                    self.tr(f'Total\n{text_bayes_factor}')
+                    self.tr('Total\n') + text_bayes_factor
                 )
             col_effect_size = self.dialog.table.find_header_hor(
-                self.tr(f'Total\n{text_effect_size}')
+                self.tr('Total\n') + text_effect_size
             )
         else:
             if self.dialog.settings['freq_position'] == self.tr('Total'):
                 col_freq = self.dialog.table.find_header_hor(
-                    self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
+                    self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
                 )
             else:
                 col_freq = self.dialog.table.find_header_hor(
-                    self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.settings['freq_position']}")
+                    f"[{self.dialog.settings['file_to_filter']}]\n{self.dialog.settings['freq_position']}"
                 )
 
             if text_test_stat:
                 col_test_stat = self.dialog.table.find_header_hor(
-                    self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}")
+                    f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}"
                 )
             col_p_value = self.dialog.table.find_header_hor(
-                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}")
+                f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}"
             )
             if text_bayes_factor:
                 col_bayes_factor = self.dialog.table.find_header_hor(
-                    self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}")
+                    f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}"
                 )
             col_effect_size = self.dialog.table.find_header_hor(
-                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}")
+                f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}"
             )
 
         col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
@@ -350,35 +352,35 @@ class Wl_Worker_Results_Filter_Keyword_Extractor(wl_threading.Wl_Worker):
             )
             if text_test_stat:
                 col_test_stat = self.dialog.table.find_header_hor(
-                    self.tr(f'Total\n{text_test_stat}')
+                    self.tr('Total\n') + text_test_stat
                 )
             col_p_value = self.dialog.table.find_header_hor(
-                self.tr(f'Total\n{text_p_value}')
+                self.tr('Total\n') + text_p_value
             )
             if text_bayes_factor:
                 col_bayes_factor = self.dialog.table.find_header_hor(
-                    self.tr(f'Total\n{text_bayes_factor}')
+                    self.tr('Total\n') + text_bayes_factor
                 )
             col_effect_size = self.dialog.table.find_header_hor(
-                self.tr(f'Total\n{text_effect_size}')
+                self.tr('Total\n') + text_effect_size
             )
         else:
             col_freq = self.dialog.table.find_header_hor(
-                self.tr(f"[{self.dialog.settings['file_to_filter']}]\nFrequency")
+                self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
             )
             if text_test_stat:
                 col_test_stat = self.dialog.table.find_header_hor(
-                    self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}")
+                    f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}"
                 )
             col_p_value = self.dialog.table.find_header_hor(
-                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}")
+                f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}"
             )
             if text_bayes_factor:
                 col_bayes_factor = self.dialog.table.find_header_hor(
-                    self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}")
+                    f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}"
                 )
             col_effect_size = self.dialog.table.find_header_hor(
-                self.tr(f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}")
+                f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}"
             )
 
         col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))
@@ -491,7 +493,7 @@ class Wl_Worker_Results_Filter_Keyword_Extractor(wl_threading.Wl_Worker):
 
 class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
     def __init__(self, main, tab, table):
-        super().__init__(main, main.tr('Filter Results'))
+        super().__init__(main, _tr('Wl_Dialog_Results_Filter', 'Filter Results'))
 
         self.tab = tab
         self.table = table
@@ -499,12 +501,12 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
         self.main.wl_work_area.currentChanged.connect(self.reject)
 
-        self.label_file_to_filter = QLabel(self.tr('File to Filter:'), self)
+        self.label_file_to_filter = QLabel(_tr('Wl_Dialog_Results_Filter', 'File to Filter:'), self)
         self.combo_box_file_to_filter = wl_boxes.Wl_Combo_Box_File_To_Filter(self, self.table)
-        self.button_filter = QPushButton(self.tr('Filter'), self)
+        self.button_filter = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Filter'), self)
 
         self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
-        self.button_close = QPushButton(self.tr('Close'), self)
+        self.button_close = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
         self.button_filter.clicked.connect(lambda: self.filter_results())
@@ -547,8 +549,20 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
     def file_to_filter_changed(self):
         self.settings['file_to_filter'] = self.combo_box_file_to_filter.currentText()
 
-    def filter_results(self):
-        pass
+    @wl_misc.log_timing
+    def filter_results(self, Worker_Filter_Results):
+        def update_gui():
+            self.table.filter_table()
+
+            self.main.statusBar().showMessage(_tr('Wl_Dialog_Results_Filter', 'The results in the table has been successfully filtered.'))
+
+        worker_filter_results = Worker_Filter_Results(
+            self.main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('Wl_Dialog_Results_Filter', 'Filtering results...')),
+            update_gui = update_gui,
+            dialog = self
+        )
+        wl_threading.Wl_Thread(worker_filter_results).start_worker()
 
 class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
@@ -721,7 +735,7 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         self.layout_filters.addWidget(self.spin_box_num_files_found_max, 8, 1)
         self.layout_filters.addWidget(self.checkbox_num_files_found_max_no_limit, 8, 2)
 
-        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 9, 1)
+        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'vert'), 0, 3, 9, 1)
 
         self.load_settings()
 
@@ -808,20 +822,8 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         self.label_dispersion.setText(f'{text_dispersion}:')
         self.label_adjusted_freq.setText(f'{text_adjusted_freq}:')
 
-    @wl_misc.log_timing
     def filter_results(self):
-        def update_gui():
-            self.table.filter_table()
-
-            wl_msgs.wl_msg_results_filter_success(self.main)
-
-        worker_search_results = Wl_Worker_Results_Filter_Wordlist_Generator(
-            self.main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...')),
-            update_gui = update_gui,
-            dialog = self
-        )
-        wl_threading.Wl_Thread(worker_search_results).start_worker()
+        super().filter_results(Wl_Worker_Results_Filter_Wordlist_Generator)
 
 class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
@@ -1008,7 +1010,7 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.layout_filters.addWidget(self.spin_box_num_files_found_max, 11, 1)
         self.layout_filters.addWidget(self.checkbox_num_files_found_max_no_limit, 11, 2)
 
-        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 12, 1)
+        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'vert'), 0, 3, 12, 1)
 
         self.load_settings()
 
@@ -1103,9 +1105,9 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
 
         for i in range(settings['generation_settings']['window_left'], settings['generation_settings']['window_right'] + 1):
             if i < 0:
-                self.combo_box_freq_position.addItem(f'L{-i}')
+                self.combo_box_freq_position.addItem(self.tr('L') + str(-i))
             elif i > 0:
-                self.combo_box_freq_position.addItem(f'R{i}')
+                self.combo_box_freq_position.addItem(self.tr('R') + str(i))
 
         self.combo_box_freq_position.addItem(self.tr('Total'))
 
@@ -1159,20 +1161,8 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
 
         self.label_effect_size.setText(f'{text_effect_size}:')
 
-    @wl_misc.log_timing
     def filter_results(self):
-        def update_gui():
-            self.table.filter_table()
-
-            wl_msgs.wl_msg_results_filter_success(self.main)
-
-        worker_search_results = Wl_Worker_Results_Filter_Collocation_Extractor(
-            self.main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...')),
-            update_gui = update_gui,
-            dialog = self
-        )
-        wl_threading.Wl_Thread(worker_search_results).start_worker()
+        super().filter_results(Wl_Worker_Results_Filter_Collocation_Extractor)
 
 class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
@@ -1353,7 +1343,7 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
         self.layout_filters.addWidget(self.spin_box_num_files_found_max, 11, 1)
         self.layout_filters.addWidget(self.checkbox_num_files_found_max_no_limit, 11, 2)
 
-        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'Vertical'), 0, 3, 12, 1)
+        self.layout_filters.addWidget(wl_layouts.Wl_Separator(self, orientation = 'vert'), 0, 3, 12, 1)
 
         self.load_settings()
 
@@ -1489,17 +1479,5 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
         for ref_file in ref_files:
             self.combo_box_file_to_filter.removeItem(self.combo_box_file_to_filter.findText(ref_file))
 
-    @wl_misc.log_timing
     def filter_results(self):
-        def update_gui():
-            self.table.filter_table()
-
-            wl_msgs.wl_msg_results_filter_success(self.main)
-
-        worker_search_results = Wl_Worker_Results_Filter_Keyword_Extractor(
-            self.main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...')),
-            update_gui = update_gui,
-            dialog = self
-        )
-        wl_threading.Wl_Thread(worker_search_results).start_worker()
+        super().filter_results(Wl_Worker_Results_Filter_Keyword_Extractor)
