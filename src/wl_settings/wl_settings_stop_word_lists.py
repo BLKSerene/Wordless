@@ -177,7 +177,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
                 util_text = self.table_stop_word_lists.model().item(i, 1).text()
             )
 
-        if self.settings_custom['stop_word_lists'][self.settings_custom['preview_lang']] == self.tr('Custom List'):
-            self.settings_custom['custom_lists'][self.settings_custom['preview_lang']] = self.list_stop_word_list_preview_results.get_items()
+        if self.settings_custom['stop_word_lists'][self.settings_custom['preview_lang']] == 'custom':
+            self.settings_custom['custom_lists'][self.settings_custom['preview_lang']] = self.list_stop_word_list_preview_results.model().stringList()
 
         return True
