@@ -27,6 +27,9 @@ from wl_nlp import wl_nlp_utils
 from wl_utils import wl_conversion, wl_misc
 
 def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
+    if lang not in main.settings_global['stop_word_lists']:
+        lang = 'other'
+
     if stop_word_list == 'default':
         stop_word_list = main.settings_custom['stop_word_lists']['stop_word_lists'][lang]
 
@@ -190,9 +193,6 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
     return sorted(set(stop_words))
 
 def wl_filter_stop_words(main, items, lang):
-    if lang not in main.settings_global['stop_word_lists']:
-        lang == 'other'
-
     stop_word_list = wl_get_stop_word_list(main, lang)
 
     # Check if the list is empty

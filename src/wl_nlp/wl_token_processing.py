@@ -130,10 +130,12 @@ def wl_process_tokens(main, text, token_settings):
     if settings['filter_stop_words']:
         for para in text.tokens_multilevel:
             for i, sentence in enumerate(para):
-                para[i] = wl_stop_word_lists.wl_filter_stop_words(
-                    main, sentence,
-                    lang = text.lang
-                )
+                stop_words = wl_stop_word_lists.wl_get_stop_word_list(main, lang = text.lang)
+
+                para[i] = [
+                    token if token not in stop_words else ''
+                    for token in sentence
+                ]
 
     # Ignore tags
     i_token = 0
