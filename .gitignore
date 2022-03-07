@@ -127,3 +127,5 @@ src/exports/
 misc/
 # Wordless - Custom Settings
 *.pickle
+# Wordless - Translations
+*.ts

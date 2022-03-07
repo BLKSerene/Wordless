@@ -22,6 +22,8 @@ from PyQt5.QtWidgets import *
 
 from wl_utils import wl_misc
 
+_tr = QCoreApplication.translate
+
 class Wl_Dialog(QDialog):
     def __init__(self, main, title, width = 0, height = 0):
         super().__init__(main)
@@ -97,7 +99,7 @@ class Wl_Dialog_Info(Wl_Dialog):
         self.wrapper_buttons.layout().setContentsMargins(11, 0, 11, 11)
 
         if not no_buttons:
-            self.button_ok = QPushButton(self.tr('OK'), self)
+            self.button_ok = QPushButton(_tr('Wl_Dialog_Info', 'OK'), self)
 
             self.button_ok.clicked.connect(self.accept)
 

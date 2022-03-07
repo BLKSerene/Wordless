@@ -22,6 +22,8 @@ from PyQt5.QtWidgets import *
 
 from wl_checking import wl_checking_misc
 
+_tr = QCoreApplication.translate
+
 class Wl_Msg_Box(QMessageBox):
     def __init__(self, main, icon, title, text):
         super().__init__(
@@ -57,13 +59,13 @@ class Wl_Msg_Box_Warning(Wl_Msg_Box):
 def wl_msg_box_question(main, title, text):
     reply = QMessageBox.question(
         main,
-        main.tr(title),
-        main.tr(f'''
+        title,
+        f'''
             {main.settings_global['styles']['style_dialog']}
             <body>
                 {text}
             </body>
-        '''),
+        ''',
         QMessageBox.Yes | QMessageBox.No,
         QMessageBox.No
     )
@@ -73,40 +75,12 @@ def wl_msg_box_question(main, title, text):
     else:
         return False
 
-# Files
-def wl_msg_box_identical_src_tgt_files(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Identical source and target files'),
-        text = main.tr('''
-            <div>The source and target file you have specified are identical. Please check your settings and try again.</div>
-        ''')
-    ).open()
-
-def wl_msg_box_missing_ref_files(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Missing Reference Files'),
-        text = main.tr('''
-            <div>You have not specified any reference files yet.</div>
-        ''')
-    ).open()
-
-def wl_msg_box_missing_observed_files(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Missing Observed Files'),
-        text = main.tr('''
-            <div>You have specified reference files, but you have not opened and selected any observed files yet.</div>
-        ''')
-    ).open()
-
 # Search terms
 def wl_msg_box_missing_search_terms(main):
     Wl_Msg_Box_Warning(
         main,
-        title = main.tr('Missing Search Terms'),
-        text = main.tr('''
+        title = _tr('wl_msg_box_missing_search_terms', 'Missing Search Terms'),
+        text = _tr('wl_msg_box_missing_search_terms', '''
             <div>
                 You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
             </div>
@@ -116,8 +90,8 @@ def wl_msg_box_missing_search_terms(main):
 def wl_msg_box_missing_search_terms_optional(main):
     Wl_Msg_Box_Warning(
         main,
-        title = main.tr('Missing Search Terms'),
-        text = main.tr('''
+        title = _tr('wl_msg_box_missing_search_terms_optional', 'Missing Search Terms'),
+        text = _tr('wl_msg_box_missing_search_terms_optional', '''
             <div>
                 You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
             </div>
@@ -128,74 +102,13 @@ def wl_msg_box_missing_search_terms_optional(main):
         ''')
     ).open()
 
-def wl_msg_box_missing_search_terms_concordancer_parallel(main):
-    return wl_msg_box_question(
-        main,
-        title = main.tr('Empty Search Terms'),
-        text = main.tr('''
-            <div>You have not specified any search terms. Do you want to search for additions in the target file?</div>
-        ''')
-    )
-
 # Results
 def wl_msg_box_no_results(main):
     Wl_Msg_Box_Warning(
         main,
-        title = main.tr('No Results'),
-        text = main.tr('''
+        title = _tr('wl_msg_box_no_results', 'No Results'),
+        text = _tr('wl_msg_box_no_results', '''
             <div>Data processing has completed successfully, but there are no results to display.</div>
             <div>You can change your settings and try again.</div>
         ''')
     ).open()
-
-def wl_msg_box_no_search_results(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('No Search Results'),
-        text = main.tr('''
-            <div>Searching has completed successfully, but there are no results found.</div>
-            <div>You can change your settings and try again.</div>
-        ''')
-    ).open()
-
-# Settings - General
-def wl_msg_box_path_not_exist(main, path):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Invalid Path'),
-        text = main.tr(f'''
-            <div>The specified path "{path}" does not exist!</div>
-            <div>Please check your settings and try again.</div>
-        '''),
-    ).open()
-
-def wl_msg_box_path_not_dir(main, path):
-    Wl_Msg_Box_Warning(
-        main,
-        title = main.tr('Invalid Path'),
-        text = main.tr(f'''
-            <div>The specified path "{path}" should be a directory, not a file!</div>
-            <div>Please check your settings and try again.</div>
-        '''),
-    ).open()
-
-def wl_msg_box_path_not_exist_confirm(main, path):
-    reply = QMessageBox.question(
-        main,
-        main.tr('Path Not Exist'),
-        main.tr(f'''
-            {main.settings_global['styles']['style_dialog']}
-            <body>
-                <div>The specified path "{path}" does not exist.</div>
-
-                <div>Do you want to create the directory?</div>
-            </body>
-        '''),
-        QMessageBox.Yes | QMessageBox.No,
-        QMessageBox.No
-    )
-
-    if reply == QMessageBox.Yes:
-        wl_checking_misc.check_dir(path)
-
-    return reply

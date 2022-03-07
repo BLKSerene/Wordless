@@ -135,12 +135,12 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         stop_words = wl_stop_word_lists.wl_get_stop_word_list(self.main, lang, stop_word_list = list_stop_words)
 
         self.list_stop_word_list_preview_results.load_items(stop_words)
-        self.label_stop_word_list_preview_count.setText(self.tr(f'Count of Stop Words: {len(stop_words)}'))
+        self.label_stop_word_list_preview_count.setText(self.tr('Count of Stop Words: ') + str(len(stop_words)))
 
         if list_stop_words == 'custom':
             self.list_stop_word_list_preview_results.switch_to_custom()
 
-            self.list_stop_word_list_preview_results.model().dataChanged.connect(lambda: self.label_stop_word_list_preview_count.setText(self.tr(f'Count of Stop Words: {self.list_stop_word_list_preview_results.model().rowCount()}')))
+            self.list_stop_word_list_preview_results.model().dataChanged.connect(lambda: self.label_stop_word_list_preview_count.setText(self.tr('Count of Stop Words: ') + str(self.list_stop_word_list_preview_results.model().rowCount())))
         else:
             self.list_stop_word_list_preview_results.switch_to_default()
 

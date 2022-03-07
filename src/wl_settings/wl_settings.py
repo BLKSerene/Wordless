@@ -22,6 +22,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
+from wl_checking import wl_checking_misc
 from wl_dialogs import wl_msg_boxes
 from wl_widgets import wl_buttons, wl_layouts
 
@@ -31,16 +32,35 @@ class Wl_Settings_Node(QWidget):
 
         self.main = main
 
+    def wl_msg_box_path_not_dir(self, path):
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            self.main,
+            title = self.tr('Invalid Path'),
+            text = self.tr('''
+                <div>The specified path "{}" should be a directory, not a file!</div>
+                <div>Please check your settings and try again.</div>
+            ''').format(path),
+        ).open()
+
     def validate_path(self, line_edit):
-        if not os.path.exists(line_edit.text()):
-            wl_msg_boxes.wl_msg_box_path_not_exist(self.main, line_edit.text())
+        path = line_edit.text()
+
+        if not os.path.exists(path):
+            wl_msg_boxes.Wl_Msg_Box_Warning(
+                self.main,
+                title = self.tr('Invalid Path'),
+                text = self.tr('''
+                    <div>The specified path "{}" does not exist!</div>
+                    <div>Please check your settings and try again.</div>
+                ''').format(path),
+            ).open()
 
             line_edit.setFocus()
             line_edit.selectAll()
 
             return False
-        elif not os.path.isdir(line_edit.text()):
-            wl_msg_boxes.wl_msg_box_path_not_dir(self.main, line_edit.text())
+        elif not os.path.isdir(path):
+            self.wl_msg_box_path_not_dir(path)
 
             line_edit.setFocus()
             line_edit.selectAll()
@@ -50,18 +70,34 @@ class Wl_Settings_Node(QWidget):
             return True
 
     def confirm_path(self, line_edit):
-        if not os.path.exists(line_edit.text()):
-            reply = wl_msg_boxes.wl_msg_box_path_not_exist_confirm(self.main, line_edit.text())
+        path = line_edit.text()
+
+        if not os.path.exists(path):
+            reply = QMessageBox.question(
+                self.main,
+                self.tr('Path Not Exist'),
+                self.tr('''
+                    {}
+                    <body>
+                        <div>The specified path "{}" does not exist.</div>
+                        <div>Do you want to create the directory?</div>
+                    </body>
+                ''').format(self.main.settings_global['styles']['style_dialog'], path),
+                QMessageBox.Yes | QMessageBox.No,
+                QMessageBox.No
+            )
 
             if reply == QMessageBox.Yes:
+                wl_checking_misc.check_dir(path)
+
                 return True
             else:
                 line_edit.setFocus()
                 line_edit.selectAll()
 
                 return False
-        elif not os.path.isdir(line_edit.text()):
-            wl_msg_boxes.wl_msg_box_path_not_dir(self.main, line_edit.text())
+        elif not os.path.isdir(path):
+            self.wl_msg_box_path_not_dir(path)
 
             line_edit.setFocus()
             line_edit.selectAll()

@@ -16,9 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QLabel
 
 from wl_utils import wl_misc
 
@@ -68,18 +67,19 @@ class Wl_Label_Dialog(Wl_Label_Html):
                 <body>
                     {text}
                 </body>
-            ''', parent)
+            ''',
+            parent
+        )
 
         self.setWordWrap(True)
 
     def set_text(self, text):
-        super().setText(
-            f'''
-                {self.main.settings_global['styles']['style_dialog']}
-                <body>
-                    {text}
-                </body>
-            ''')
+        super().setText(f'''
+            {self.main.settings_global['styles']['style_dialog']}
+            <body>
+                {text}
+            </body>
+        ''')
 
 class Wl_Label_Dialog_No_Wrap(Wl_Label_Dialog):
     def __init__(self, text, parent):

@@ -42,7 +42,7 @@ if platform.system() in ['Windows', 'Darwin']:
             self.app = wl_app
 
             # Default settings
-            wl_settings_default.init_settings_default(self)
+            self.settings_default = wl_settings_default.init_settings_default(self)
 
             # Custom settings
             if os.path.exists('wl_tests/wl_settings.pickle'):
@@ -52,7 +52,7 @@ if platform.system() in ['Windows', 'Darwin']:
                 self.settings_custom = copy.deepcopy(self.settings_default)
 
             # Global settings
-            wl_settings_global.init_settings_global(self)
+            self.settings_global = wl_settings_global.init_settings_global()
 
             # Files
             self.wl_file_area = QObject()
@@ -72,9 +72,9 @@ elif platform.system() == 'Linux':
             super().__init__()
 
             # Settings
-            wl_settings_default.init_settings_default(self)
+            self.settings_default = wl_settings_default.init_settings_default(self)
             self.settings_custom = copy.deepcopy(self.settings_default)
-            wl_settings_global.init_settings_global(self)
+            self.settings_global = wl_settings_global.init_settings_global()
 
         def height(self):
             return 768

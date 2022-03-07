@@ -172,7 +172,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                 self.text_edit_pos_tagging_preview_samples.setEnabled(False)
                 self.checkbox_to_universal_pos_tags.setEnabled(False)
 
-                self.button_pos_tagging_show_preview.setText(self.tr('Processing ...'))
+                self.button_pos_tagging_show_preview.setText(self.tr('Processing...'))
 
                 pos_tagger = wl_nlp_utils.to_lang_util_code(
                     self.main,
@@ -444,7 +444,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         else:
             self.table_mappings.setEnabled(True)
 
-        self.label_tagsets_num_pos_tags.setText(self.tr(f'Number of POS Tags: {self.table_mappings.model().rowCount()}'))
+        self.label_tagsets_num_pos_tags.setText(self.tr('Number of POS Tags: ') + str(self.table_mappings.model().rowCount()))
         self.stacked_widget_num_pos_tags.setCurrentIndex(0)
 
         self.combo_box_tagsets_lang.setEnabled(True)

@@ -20,7 +20,11 @@ import copy
 import itertools
 import re
 
+from PyQt5.QtCore import QCoreApplication
+
 from wl_nlp import wl_lemmatization
+
+_tr = QCoreApplication.translate
 
 # Tags
 def split_tag_embedded(tag):
@@ -53,7 +57,7 @@ def get_re_tags(main, tag_type):
     tags_non_embedded = []
 
     for type_, _, opening_tag, _ in main.settings_custom['tags'][f'tags_{tag_type}']:
-        if type_ == main.tr('Embedded'):
+        if type_ == _tr('get_re_tags', 'Embedded'):
             tag_start, tag_name = split_tag_embedded(opening_tag)
             tag_start = re.escape(tag_start)
 
@@ -62,7 +66,7 @@ def get_re_tags(main, tag_type):
                 tags_embedded.append(fr'{tag_start}\S*(?=\s|$)')
             else:
                 tags_embedded.append(fr'{tag_start}{re.escape(tag_name)}(?=\s|$)')
-        elif type_ == main.tr('Non-embedded'):
+        elif type_ == _tr('get_re_tags', 'Non-embedded'):
             tag_start, tag_name, tag_end = split_tag_non_embedded(opening_tag)
             tag_start = re.escape(tag_start)
             tag_end = re.escape(tag_end)
@@ -80,7 +84,7 @@ def get_re_tags_with_tokens(main, tag_type):
     tags_non_embedded = []
 
     for type_, _, opening_tag, closing_tag in main.settings_custom['tags'][f'tags_{tag_type}']:
-        if type_ == main.tr('Embedded'):
+        if type_ == _tr('get_re_tags_with_tokens', 'Embedded'):
             tag_start, tag_name = split_tag_embedded(opening_tag)
             tag_start = re.escape(tag_start)
 
@@ -89,7 +93,7 @@ def get_re_tags_with_tokens(main, tag_type):
                 tags_embedded.append(fr'\S*{tag_start}\S*(?=\s|$)')
             else:
                 tags_embedded.append(fr'\S*{tag_start}{re.escape(tag_name)}(?=\s|$)')
-        elif type_ == main.tr('Non-embedded'):
+        elif type_ == _tr('get_re_tags_with_tokens', 'Non-embedded'):
             tag_start, tag_name, tag_end = split_tag_non_embedded(opening_tag)
             tag_start = re.escape(tag_start)
             tag_end = re.escape(tag_end)
@@ -138,16 +142,16 @@ def match_ngrams(
 
     # Match tags only & Ignore tags
     if settings['match_tags']:
-        if tagged == 'No':
+        if tagged == _tr('match_ngrams', 'No'):
             tokens_searched = []
         else:
             tokens_searched = [''.join(re.findall(re_tags, token)) for token in tokens]
     else:
         if settings['ignore_tags']:
-            if tagged == 'No':
+            if tagged == _tr('match_ngrams', 'No'):
                 tokens_searched = tokens
             else:
-                if tagged == 'Yes':
+                if tagged == _tr('match_ngrams', 'Yes'):
                     tokens_searched = [re.sub(re_tags, '', token) for token in tokens]
         else:
             tokens_searched = tokens
@@ -306,8 +310,10 @@ def match_search_terms_context(
     return search_terms_inclusion, search_terms_exclusion
 
 # Context
-def check_context(i, tokens, context_settings,
-                  search_terms_inclusion, search_terms_exclusion):
+def check_context(
+    i, tokens, context_settings,
+    search_terms_inclusion, search_terms_exclusion
+):
     if context_settings['inclusion']['inclusion'] or context_settings['exclusion']['exclusion']:
         len_tokens = len(tokens)
 
@@ -319,8 +325,10 @@ def check_context(i, tokens, context_settings,
                 if inclusion_matched:
                     break
 
-                for j in range(context_settings['inclusion']['context_window_left'],
-                               context_settings['inclusion']['context_window_right'] + 1):
+                for j in range(
+                    context_settings['inclusion']['context_window_left'],
+                    context_settings['inclusion']['context_window_right'] + 1
+                ):
                     if i + j < 0 or i + j > len_tokens - 1:
                         continue
 
@@ -340,8 +348,10 @@ def check_context(i, tokens, context_settings,
                 if not exclusion_matched:
                     break
 
-                for j in range(context_settings['exclusion']['context_window_left'],
-                               context_settings['exclusion']['context_window_right'] + 1):
+                for j in range(
+                    context_settings['exclusion']['context_window_left'],
+                    context_settings['exclusion']['context_window_right'] + 1
+                ):
                     if i + j < 0 or i + j > len_tokens - 1:
                         continue
 

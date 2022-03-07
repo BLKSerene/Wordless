@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Crawler - The Tale of Genji
+# Wordless: Utilities - Crawler - The Tale of Genji
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify

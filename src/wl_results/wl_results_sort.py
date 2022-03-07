@@ -24,16 +24,18 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs, wl_dialogs_misc
-from wl_utils import wl_misc, wl_msgs, wl_threading
+from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_buttons, wl_item_delegates, wl_labels, wl_layouts, wl_tables
+
+_tr = QCoreApplication.translate
 
 class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, table):
         super().__init__(
             parent = parent,
             headers = [
-                parent.tr('Column'),
-                parent.tr('Order')
+                _tr('Wl_Table_Results_Sort_Conordancer', 'Column'),
+                _tr('Wl_Table_Results_Sort_Conordancer', 'Order')
             ],
             col_edit = 0
         )
@@ -78,8 +80,8 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     QMessageBox.warning(
                         self.main,
                         self.tr('Column Sorted More Than Once'),
-                        self.tr(f'''
-                            {self.main.settings_global['styles']['style_dialog']}
+                        self.main.settings_global['styles']['style_dialog']
+                        + self.tr('''
                             <body>
                                 <div>Please refrain from sorting the same column more than once!</div>
                             </body>
@@ -146,8 +148,8 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                         for row in range(self.table.model().rowCount())
                     ])
 
-                self.cols_to_sort.extend([f'R{i + 1}' for i in range(width_right)])
-                self.cols_to_sort.extend([f'L{i + 1}' for i in range(width_left)])
+                self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
+                self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
             elif self.table.tab == 'concordancer_parallel':
                 width_left = max([
                     len(self.table.indexWidget(self.table.model().index(row, 0)).text_raw)
@@ -158,8 +160,8 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     for row in range(self.table.model().rowCount())
                 ])
 
-                self.cols_to_sort.extend([f'R{i + 1}' for i in range(width_right)])
-                self.cols_to_sort.extend([f'L{i + 1}' for i in range(width_left)])
+                self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
+                self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
 
         self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
@@ -185,11 +187,11 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.clearSelection()
 
     def max_left(self):
-        if 'L1' in self.cols_to_sort:
+        if self.tr('L1') in self.cols_to_sort:
             max_left = max([
                 int(col[1:])
                 for col in self.cols_to_sort
-                if re.search(r'^L[0-9]+$', col)
+                if re.search(self.tr(r'^L[0-9]+$'), col)
             ])
         else:
             max_left = 0
@@ -197,11 +199,11 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         return max_left
 
     def max_right(self):
-        if 'R1' in self.cols_to_sort:
+        if self.tr('R1') in self.cols_to_sort:
             max_right = max([
                 int(col[1:])
                 for col in self.cols_to_sort
-                if re.search(r'^R[0-9]+$', col)
+                if re.search(self.tr(r'^R[0-9]+$'), col)
             ])
         else:
             max_right = 0
@@ -225,23 +227,23 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         cols_left = sorted([
             int(self.model().item(i, 0).text()[1:])
             for i in range(self.model().rowCount())
-            if re.search(r'^L[0-9]+$', self.model().item(i, 0).text())
+            if re.search(self.tr(r'^L[0-9]+$'), self.model().item(i, 0).text())
         ])
         cols_right = sorted([
             int(self.model().item(i, 0).text()[1:])
             for i in range(self.model().rowCount())
-            if re.search(r'^R[0-9]+$', self.model().item(i, 0).text())
+            if re.search(self.tr(r'^R[0-9]+$'), self.model().item(i, 0).text())
         ])
 
         if sorting_col:
             item_sorting_col.setText(sorting_col)
         else:
             if cols_left and max(cols_left) < max_left:
-                item_sorting_col.setText(f'L{cols_left[-1] + 1}')
+                item_sorting_col.setText(self.tr('L') + str(cols_left[-1] + 1))
             elif cols_right and max(cols_right) < max_right:
-                item_sorting_col.setText(f'R{cols_right[-1] + 1}')
+                item_sorting_col.setText(self.tr('R') + str(cols_right[-1] + 1))
             elif cols_right and max(cols_right) == max_right and not cols_left:
-                item_sorting_col.setText(f'L1')
+                item_sorting_col.setText(self.tr('L1'))
             else:
                 sorting_cols = [self.model().item(i, 0).text() for i in range(self.model().rowCount())]
 
@@ -375,7 +377,7 @@ class Wl_Worker_Results_Sort_Concordancer_Parallel(wl_threading.Wl_Worker):
 
 class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
     def __init__(self, main, table):
-        super().__init__(main, main.tr('Sort Results'))
+        super().__init__(main, _tr('Wl_Dialog_Results_Sort_Concordancer', 'Sort Results'))
 
         self.tables = [table]
         self.settings = self.main.settings_custom[self.tables[0].tab]['sort_results']
@@ -491,7 +493,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                 i_highlight_color_right = 1
 
                 for sorting_col, _ in self.settings['sorting_rules']:
-                    if re.search(r'^L[0-9]+$', sorting_col) and int(sorting_col[1:]) <= len(text_left):
+                    if re.search(self.tr(r'^L[0-9]+$'), sorting_col) and int(sorting_col[1:]) <= len(text_left):
                         hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
 
                         text_left[-int(sorting_col[1:])] = f'''
@@ -501,7 +503,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                         '''
 
                         i_highlight_color_left += 1
-                    elif re.search(r'^R[0-9]+$', sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
+                    elif re.search(self.tr(r'^R[0-9]+$'), sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
                         hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
 
                         text_right[int(sorting_col[1:]) - 1] = f'''
@@ -553,7 +555,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             thread_results_sort_concordancer = wl_threading.Wl_Thread(worker_results_sort_concordancer)
             thread_results_sort_concordancer.start_worker()
 
-        wl_msgs.wl_msg_results_sort(self.main)
+        self.main.statusBar().showMessage(self.tr('The results in the table has been successfully sorted.'))
 
     @wl_misc.log_timing
     def sort_results_parallel(self):
@@ -608,9 +610,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                 else:
                     span = int(sorting_col[1:])
 
-                    if 'L' in sorting_col:
+                    if self.tr('L') in sorting_col:
                         results.sort(key = lambda item: item[0][0].text_raw[-span], reverse = reverse)
-                    elif 'R' in sorting_col:
+                    elif self.tr('R') in sorting_col:
                         results.sort(key = lambda item: item[0][2].text_raw[span - 1], reverse = reverse)
 
             self.tables[0].disable_updates()
@@ -636,7 +638,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                 i_highlight_color_right = 1
 
                 for sorting_col, _ in self.settings['sorting_rules']:
-                    if re.search(r'^L[0-9]+$', sorting_col) and int(sorting_col[1:]) <= len(text_left):
+                    if re.search(self.tr(r'^L[0-9]+$'), sorting_col) and int(sorting_col[1:]) <= len(text_left):
                         hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
 
                         text_left[-int(sorting_col[1:])] = f'''
@@ -646,7 +648,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                         '''
 
                         i_highlight_color_left += 1
-                    elif re.search(r'^R[0-9]+$', sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
+                    elif re.search(self.tr(r'^R[0-9]+$'), sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
                         hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
 
                         text_right[int(sorting_col[1:]) - 1] = f'''
@@ -696,4 +698,4 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             thread_results_sort_concordancer_parallel = wl_threading.Wl_Thread(worker_results_sort_concordancer_parallel)
             thread_results_sort_concordancer_parallel.start_worker()
 
-        wl_msgs.wl_msg_results_sort(self.main)
+        self.main.statusBar().showMessage(self.tr('The results in the table has been successfully sorted.'))

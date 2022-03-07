@@ -23,6 +23,8 @@ from PyQt5.QtWidgets import *
 from wl_dialogs import wl_dialogs
 from wl_widgets import wl_labels, wl_tables
 
+_tr = QCoreApplication.translate
+
 class Wl_Dialog_Err(wl_dialogs.Wl_Dialog_Err):
     def __init__(self, main, title, width = 0, height = 0):
         super().__init__(main, title, width = 560, height = 320, no_buttons = True)
@@ -37,12 +39,12 @@ class Wl_Dialog_Err(wl_dialogs.Wl_Dialog_Err):
 
 class Wl_Dialog_Err_Fatal(Wl_Dialog_Err):
     def __init__(self, main, err_msg):
-        super().__init__(main, main.tr('Fatal Error'))
+        super().__init__(main, _tr('Wl_Dialog_Err_Fatal', 'Fatal Error'))
 
         self.label_error_msg = wl_labels.Wl_Label_Dialog(
-            self.tr(f'''
-                <div>A fatal error has occurred, please <b>contact the author for support</b> by emailing to {self.main.email_html}!</div>
-            '''),
+            self.tr('''
+                <div>A fatal error has occurred, please <b>contact the author for support</b> by emailing to {}!</div>
+            ''').format(self.main.email_html),
             self
         )
         self.text_edit_error_msg = QTextEdit(self)

@@ -31,23 +31,25 @@ from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
 from wl_widgets import wl_layouts, wl_tables, wl_widgets
 
+_tr = QCoreApplication.translate
+
 class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
             tab = 'wordlist_generator',
             headers = [
-                parent.tr('Rank'),
-                parent.tr('Token'),
-                parent.tr('Number of\nFiles Found'),
-                parent.tr('Number of\nFiles Found %')
+                _tr('Wl_Table_Wordlist_Generator', 'Rank'),
+                _tr('Wl_Table_Wordlist_Generator', 'Token'),
+                _tr('Wl_Table_Wordlist_Generator', 'Number of\nFiles Found'),
+                _tr('Wl_Table_Wordlist_Generator', 'Number of\nFiles Found %')
             ],
             headers_int = [
-                parent.tr('Rank'),
-                parent.tr('Number of\nFiles Found')
+                _tr('Wl_Table_Wordlist_Generator', 'Rank'),
+                _tr('Wl_Table_Wordlist_Generator', 'Number of\nFiles Found')
             ],
             headers_pct = [
-                parent.tr('Number of\nFiles Found %')
+                _tr('Wl_Table_Wordlist_Generator', 'Number of\nFiles Found %')
             ],
             sorting_enabled = True
         )
@@ -508,7 +510,7 @@ def generate_table(main, table):
                 text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
                 if settings['token_settings']['use_tags']:
-                    table.horizontalHeaderItem(1).setText(main.tr('Tag'))
+                    table.horizontalHeaderItem(1).setText(_tr('wl_wordlist_generator', 'Tag'))
 
                 table.clr_table()
 
@@ -518,67 +520,67 @@ def generate_table(main, table):
                 for file in files:
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\nFrequency'),
+                        _tr('wl_wordlist_generator', '[{}]\nFrequency').format(file['name']),
                         is_int = True, is_cumulative = True, is_breakdown = True
                     )
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\nFrequency %'),
+                        _tr('wl_wordlist_generator', '[{}]\nFrequency %').format(file['name']),
                         is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\n{text_dispersion}'),
+                        f'[{file["name"]}]\n{text_dispersion}',
                         is_float = True, is_breakdown = True
                     )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\n{text_adjusted_freq}'),
+                        f'[{file["name"]}]\n{text_adjusted_freq}',
                         is_float = True, is_breakdown = True
                     )
 
                 # Insert columns (total)
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr('Total\nFrequency'),
+                    _tr('wl_wordlist_generator', 'Total\nFrequency'),
                     is_int = True, is_cumulative = True
                 )
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr('Total\nFrequency %'),
+                    _tr('wl_wordlist_generator', 'Total\nFrequency %'),
                     is_pct = True, is_cumulative = True
                 )
 
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr(f'Total\n{text_dispersion}'),
+                    _tr('wl_wordlist_generator', 'Total\n') + text_dispersion,
                     is_float = True
                 )
 
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr(f'Total\n{text_adjusted_freq}'),
+                    _tr('wl_wordlist_generator', 'Total\n') + text_adjusted_freq,
                     is_float = True
                 )
 
                 # Sort by frequency of the first file
                 table.horizontalHeader().setSortIndicator(
-                    table.find_header_hor(main.tr(f'[{files[0]["name"]}]\nFrequency')),
+                    table.find_header_hor(_tr('wl_wordlist_generator', '[{}]\nFrequency').format(files[0]['name'])),
                     Qt.DescendingOrder
                 )
 
-                cols_freq = table.find_headers_hor(main.tr('\nFrequency'))
-                cols_freq_pct = table.find_headers_hor(main.tr('\nFrequency %'))
+                cols_freq = table.find_headers_hor(_tr('wl_wordlist_generator', '\nFrequency'))
+                cols_freq_pct = table.find_headers_hor(_tr('wl_wordlist_generator', '\nFrequency %'))
 
                 for col in cols_freq_pct:
                     cols_freq.remove(col)
 
-                cols_dispersion = table.find_headers_hor(main.tr(f'\n{text_dispersion}'))
-                cols_adjusted_freq = table.find_headers_hor(main.tr(f'\n{text_adjusted_freq}'))
-                col_files_found = table.find_header_hor(main.tr('Number of\nFiles Found'))
-                col_files_found_pct = table.find_header_hor(main.tr('Number of\nFiles Found %'))
+                cols_dispersion = table.find_headers_hor(f'\n{text_dispersion}')
+                cols_adjusted_freq = table.find_headers_hor(f'\n{text_adjusted_freq}')
+                col_files_found = table.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found'))
+                col_files_found_pct = table.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found %'))
 
                 freq_totals = numpy.array(list(tokens_freq_files.values())).sum(axis = 0)
                 len_files = len(files)
@@ -650,11 +652,11 @@ def generate_fig(main):
                 col_dispersion = main.settings_global['measures_dispersion'][measure_dispersion]['col']
                 col_adjusted_freq = main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col']
 
-                if settings['fig_settings']['use_data'] == main.tr('Frequency'):
+                if settings['fig_settings']['use_data'] == _tr('wl_wordlist_generator', 'Frequency'):
                     wl_figs_freqs.wl_fig_freq(
                         main, tokens_freq_files,
                         settings = settings['fig_settings'],
-                        label_x = main.tr('Token')
+                        label_x = _tr('wl_wordlist_generator', 'Token')
                     )
                 else:
                     if settings['fig_settings']['use_data'] == col_dispersion:
@@ -675,7 +677,7 @@ def generate_fig(main):
                     wl_figs_stats.wl_fig_stat(
                         main, tokens_stat_files,
                         settings = settings['fig_settings'],
-                        label_x = main.tr('Token'),
+                        label_x = _tr('wl_wordlist_generator', 'Token'),
                         label_y = label_y
                     )
 

@@ -18,9 +18,8 @@
 
 import math
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtWidgets import QStyledItemDelegate
 
 from wl_utils import wl_misc
 from wl_widgets import wl_boxes

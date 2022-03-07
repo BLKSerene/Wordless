@@ -36,36 +36,38 @@ from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_threading
 from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
+_tr = QCoreApplication.translate
+
 class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
             tab = 'concordancer',
             headers = [
-                parent.tr('Left'),
-                parent.tr('Node'),
-                parent.tr('Right'),
-                parent.tr('Sentiment'),
-                parent.tr('Token No.'),
-                parent.tr('Token No. %'),
-                parent.tr('Sentence No.'),
-                parent.tr('Sentence No. %'),
-                parent.tr('Paragraph No.'),
-                parent.tr('Paragraph No. %'),
-                parent.tr('File')
+                _tr('Wl_Table_Concordancer', 'Left'),
+                _tr('Wl_Table_Concordancer', 'Node'),
+                _tr('Wl_Table_Concordancer', 'Right'),
+                _tr('Wl_Table_Concordancer', 'Sentiment'),
+                _tr('Wl_Table_Concordancer', 'Token No.'),
+                _tr('Wl_Table_Concordancer', 'Token No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No.'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No. %'),
+                _tr('Wl_Table_Concordancer', 'File')
             ],
             headers_int = [
-                parent.tr('Token No.'),
-                parent.tr('Sentence No.'),
-                parent.tr('Paragraph No.')
+                _tr('Wl_Table_Concordancer', 'Token No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence No.'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No.')
             ],
             headers_float = [
-                parent.tr('Sentiment')
+                _tr('Wl_Table_Concordancer', 'Sentiment')
             ],
             headers_pct = [
-                parent.tr('Token No. %'),
-                parent.tr('Sentence No. %'),
-                parent.tr('Paragraph No. %')
+                _tr('Wl_Table_Concordancer', 'Token No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No. %')
             ]
         )
 
@@ -1157,34 +1159,34 @@ def generate_fig(main):
                 y_max = labels[4]
 
             if points:
-                if settings['fig_settings']['sort_results_by'] == main.tr('File'):
+                if settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'File'):
                     matplotlib.pyplot.plot(
                         numpy.array(points)[:, 0],
                         numpy.array(points)[:, 1],
                         'b|'
                     )
 
-                    matplotlib.pyplot.xlabel(main.tr('Search Terms'))
+                    matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Search Terms'))
                     matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
 
-                    matplotlib.pyplot.ylabel(main.tr('Files'))
+                    matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Files'))
                     matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
                     matplotlib.pyplot.ylim(-1, y_max)
-                elif settings['fig_settings']['sort_results_by'] == main.tr('Search Term'):
+                elif settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'Search Term'):
                     matplotlib.pyplot.plot(
                         numpy.array(points)[:, 0],
                         numpy.array(points)[:, 1],
                         'b|'
                     )
 
-                    matplotlib.pyplot.xlabel(main.tr('Files'))
+                    matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Files'))
                     matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
 
-                    matplotlib.pyplot.ylabel(main.tr('Search Terms'))
+                    matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Search Terms'))
                     matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
                     matplotlib.pyplot.ylim(-1, y_max)
 
-                matplotlib.pyplot.title(main.tr('Dispersion Plot'))
+                matplotlib.pyplot.title(_tr('wl_concordancer', 'Dispersion Plot'))
                 matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
                 wl_msgs.wl_msg_generate_fig_success(main)

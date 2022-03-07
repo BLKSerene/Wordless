@@ -19,13 +19,16 @@
 import random
 
 import numpy
+from PyQt5.QtCore import QCoreApplication
 
 from wl_checking import wl_checking_tokens
 from wl_nlp import wl_pos_tagging, wl_syl_tokenization
 from wl_utils import wl_misc
 
-NO_SUPPORT = 'No Support'
-TEXT_TOO_SHORT = 'Text is Too Short'
+_tr = QCoreApplication.translate
+
+NO_SUPPORT = _tr('wl_measures_readability', 'No Support')
+TEXT_TOO_SHORT = _tr('wl_measures_readability', 'Text is Too Short')
 
 def get_counts(main, text):
     # Count of sentences

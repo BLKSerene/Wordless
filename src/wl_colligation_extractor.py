@@ -36,24 +36,26 @@ from wl_nlp import wl_matching, wl_pos_tagging, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
 from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
+_tr = QCoreApplication.translate
+
 class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
             tab = 'colligation_extractor',
             headers = [
-                parent.tr('Rank'),
-                parent.tr('Node'),
-                parent.tr('Collocate'),
-                parent.tr('Number of\nFiles Found'),
-                parent.tr('Number of\nFiles Found %')
+                _tr('Wl_Table_Colligation_Extractor', 'Rank'),
+                _tr('Wl_Table_Colligation_Extractor', 'Node'),
+                _tr('Wl_Table_Colligation_Extractor', 'Collocate'),
+                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found'),
+                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
             ],
             headers_int = [
-                parent.tr('Rank'),
-                parent.tr('Number of\nFiles Found')
+                _tr('Wl_Table_Colligation_Extractor', 'Rank'),
+                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found')
             ],
             headers_pct = [
-                parent.tr('Number of\nFiles Found %')
+                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
             ],
             sorting_enabled = True
         )
@@ -491,17 +493,17 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_window_sync.setChecked(settings['generation_settings']['window_sync'])
 
         if settings['generation_settings']['window_left'] < 0:
-            self.spin_box_window_left.setPrefix('L')
+            self.spin_box_window_left.setPrefix(self.tr('L'))
             self.spin_box_window_left.setValue(-settings['generation_settings']['window_left'])
         else:
-            self.spin_box_window_left.setPrefix('R')
+            self.spin_box_window_left.setPrefix(self.tr('R'))
             self.spin_box_window_left.setValue(settings['generation_settings']['window_left'])
 
         if settings['generation_settings']['window_right'] < 0:
-            self.spin_box_window_right.setPrefix('L')
+            self.spin_box_window_right.setPrefix(self.tr('L'))
             self.spin_box_window_right.setValue(-settings['generation_settings']['window_right'])
         else:
-            self.spin_box_window_right.setPrefix('R')
+            self.spin_box_window_right.setPrefix(self.tr('R'))
             self.spin_box_window_right.setValue(settings['generation_settings']['window_right'])
 
         self.combo_box_limit_searching.setCurrentText(settings['generation_settings']['limit_searching'])
@@ -584,12 +586,12 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         settings['window_sync'] = self.checkbox_window_sync.isChecked()
 
-        if self.spin_box_window_left.prefix() == 'L':
+        if self.spin_box_window_left.prefix() == self.tr('L'):
             settings['window_left'] = - self.spin_box_window_left.value()
         else:
             settings['window_left'] = self.spin_box_window_left.value()
 
-        if self.spin_box_window_right.prefix() == 'L':
+        if self.spin_box_window_right.prefix() == self.tr('L'):
             settings['window_right'] = - self.spin_box_window_right.value()
         else:
             settings['window_right'] = self.spin_box_window_right.value()
@@ -609,9 +611,9 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         for i in range(settings['window_left'], settings['window_right'] + 1):
             if i < 0:
-                self.combo_box_use_data.addItem(f'L{-i}')
+                self.combo_box_use_data.addItem(self.tr('L') + str(-i))
             elif i > 0:
-                self.combo_box_use_data.addItem(f'R{i}')
+                self.combo_box_use_data.addItem(self.tr('R') + str(i))
 
         self.combo_box_use_data.addItem(self.tr('Frequency'))
 
@@ -685,14 +687,14 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 text = copy.deepcopy(file['text'])
 
                 # Generate POS tags for files that are not POS tagged already
-                if file['tagged'] == 'No':
+                if file['tagged'] == _tr('Wl_Worker_Colligation_Extractor', 'No'):
                     tokens_tagged = wl_pos_tagging.wl_pos_tag(self.main, text.tokens_flat, text.lang)
 
                     text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
 
                 # Modify text types
-                if file['tagged'] == 'No':
-                    text.tagged = 'Yes'
+                if file['tagged'] == _tr('Wl_Worker_Colligation_Extractor', 'No'):
+                    text.tagged = _tr('Wl_Worker_Colligation_Extractor', 'Yes')
 
                 text = wl_token_processing.wl_process_tokens_colligation_extractor(
                     self.main, text,
@@ -765,10 +767,10 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
 
                         if window_left < 0 and window_right > 0:
                             # Limit Searching
-                            if settings_limit_searching == self.tr('None'):
+                            if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_left = text.tags[max(0, i + window_left) : i]
                                 tags_right = text.tags[i + ngram_size : i + ngram_size + window_right]
-                            elif settings_limit_searching == self.tr('Within Sentences'):
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), i):
                                     if i_sentence_start <= position <= i_sentence_end:
@@ -778,7 +780,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                                 for position in range(i + ngram_size, i + ngram_size + window_right):
                                     if i_sentence_start <= position <= i_sentence_end:
                                         tags_right.append(text.tags[position])
-                            elif settings_limit_searching == self.tr('Within Paragraphs'):
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), i):
                                     if i_para_start <= position <= i_para_end:
@@ -818,14 +820,14 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                                 colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left < 0 and window_right < 0:
                             # Limit Searching
-                            if settings_limit_searching == self.tr('None'):
+                            if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_left = text.tags[max(0, i + window_left) : max(0, i + window_right + 1)]
-                            elif settings_limit_searching == self.tr('Within Sentences'):
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
                                     if i_sentence_start <= position <= i_sentence_end:
                                         tags_left.append(text.tags[position])
-                            elif settings_limit_searching == self.tr('Within Paragraphs'):
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
                                     if i_para_start <= position <= i_para_end:
@@ -846,14 +848,14 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                                 colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left > 0 and window_right > 0:
                             # Limit Searching
-                            if settings_limit_searching == self.tr('None'):
+                            if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_right = text.tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
-                            elif settings_limit_searching == self.tr('Within Sentences'):
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
                                 # Span positions (Right)
                                 for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
                                     if i_sentence_start <= position <= i_sentence_end:
                                         tags_right.append(text.tags[position])
-                            elif settings_limit_searching == self.tr('Within Paragraphs'):
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
                                 # Span positions (Right)
                                 for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
                                     if i_para_start <= position <= i_para_end:
@@ -1038,23 +1040,23 @@ def generate_table(main, table):
                         if i < 0:
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                main.tr(f'[{file["name"]}]\nL{-i}'),
+                                _tr('wl_colligation_extractor', '[{}]\nL{}').format(file['name'], -i),
                                 is_int = True, is_cumulative = True, is_breakdown = True
                             )
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                main.tr(f'[{file["name"]}]\nL{-i} %'),
+                                _tr('wl_colligation_extractor', '[{}]\nL{} %').format(file['name'], -i),
                                 is_pct = True, is_cumulative = True, is_breakdown = True
                             )
                         elif i > 0:
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                main.tr(f'[{file["name"]}]\nR{i}'),
+                                _tr('wl_colligation_extractor', '[{}]\nR{}').format(file['name'], i),
                                 is_int = True, is_cumulative = True, is_breakdown = True
                             )
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                main.tr(f'[{file["name"]}]\nR{i} %'),
+                                _tr('wl_colligation_extractor', '[{}]\nR{} %').format(file['name'], i),
                                 is_pct = True, is_cumulative = True, is_breakdown = True
                             )
 
@@ -1064,64 +1066,66 @@ def generate_table(main, table):
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\nFrequency'),
+                        _tr('wl_colligation_extractor', '[{}]\nFrequency').format(file['name']),
                         is_int = True, is_cumulative = True, is_breakdown = True
                     )
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\nFrequency %'),
+                        _tr('wl_colligation_extractor', '[{}]\nFrequency %').format(file['name']),
                         is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
                     if text_test_stat:
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            main.tr(f'[{file["name"]}]\n{text_test_stat}'),
+                            f'[{file["name"]}]\n{text_test_stat}',
                             is_float = True, is_breakdown = True
                         )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\n{text_p_value}'),
+                        f'[{file["name"]}]\n{text_p_value}',
                         is_float = True, is_breakdown = True
                     )
 
                     if text_bayes_factor:
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            main.tr(f'[{file["name"]}]\n{text_bayes_factor}'),
+                            f'[{file["name"]}]\n{text_bayes_factor}',
                             is_float = True, is_breakdown = True
                         )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'[{file["name"]}]\n{text_effect_size}'),
+                        f'[{file["name"]}]\n{text_effect_size}',
                         is_float = True, is_breakdown = True
                     )
 
                 # Insert columns (total)
-                for i in range(settings['generation_settings']['window_left'],
-                               settings['generation_settings']['window_right'] + 1):
+                for i in range(
+                    settings['generation_settings']['window_left'],
+                    settings['generation_settings']['window_right'] + 1
+                ):
                     if i < 0:
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            main.tr(f'Total\nL{-i}'),
+                            _tr('wl_colligation_extractor', 'Total\nL{}').format(-i),
                             is_int = True, is_cumulative = True
                         )
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            main.tr(f'Total\nL{-i} %'),
+                            _tr('wl_colligation_extractor', 'Total\nL{} %').format(-i),
                             is_pct = True, is_cumulative = True
                         )
                     elif i > 0:
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            main.tr(f'Total\nR{i}'),
+                            _tr('wl_colligation_extractor', 'Total\nR{}').format(i),
                             is_int = True, is_cumulative = True
                         )
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            main.tr(f'Total\nR{i} %'),
+                            _tr('wl_colligation_extractor', 'Total\nR{} %').format(i),
                             is_pct = True, is_cumulative = True
                         )
 
@@ -1131,77 +1135,83 @@ def generate_table(main, table):
 
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr('Total\nFrequency'),
+                    _tr('wl_colligation_extractor', 'Total\nFrequency'),
                     is_int = True, is_cumulative = True
                 )
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr('Total\nFrequency %'),
+                    _tr('wl_colligation_extractor', 'Total\nFrequency %'),
                     is_pct = True, is_cumulative = True
                 )
 
                 if text_test_stat:
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'Total\n{text_test_stat}'),
+                        _tr('wl_colligation_extractor', 'Total\n') + text_test_stat,
                         is_float = True
                     )
 
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr(f'Total\n{text_p_value}'),
+                    _tr('wl_colligation_extractor', 'Total\n') + text_p_value,
                     is_float = True
                 )
 
                 if text_bayes_factor:
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        main.tr(f'Total\n{text_bayes_factor}'),
+                        _tr('wl_colligation_extractor', 'Total\n') + text_bayes_factor,
                         is_float = True
                     )
 
                 table.ins_header_hor(
                     table.model().columnCount() - 2,
-                    main.tr(f'Total\n{text_effect_size}'),
+                    _tr('wl_colligation_extractor', 'Total\n') + text_effect_size,
                     is_float = True
                 )
 
                 # Sort by p-value of the first file
                 table.horizontalHeader().setSortIndicator(
-                    table.find_header_hor(main.tr(f'[{files[0]["name"]}]\n{text_p_value}')),
+                    table.find_header_hor(f'[{files[0]["name"]}]\n{text_p_value}'),
                     Qt.AscendingOrder
                 )
 
                 if settings['generation_settings']['window_left'] < 0:
                     cols_freqs_start = [
-                        table.find_header_hor(f'[{file["name"]}]\nL{-settings["generation_settings"]["window_left"]}')
+                        table.find_header_hor(_tr('Wl_Table_Colligation_Extractor', '[{}]\nL{}').format(file['name'], -settings['generation_settings']['window_left']))
                         for file in files
                     ]
-                    cols_freqs_start.append(table.find_header_hor(f'Total\nL{-settings["generation_settings"]["window_left"]}'))
+                    cols_freqs_start.append(table.find_header_hor(
+                        _tr('Wl_Table_Colligation_Extractor', 'Total\nL')
+                        + str(-settings['generation_settings']['window_left'])
+                    ))
                 else:
                     cols_freqs_start = [
-                        table.find_header_hor(f'[{file["name"]}]\nR{settings["generation_settings"]["window_left"]}')
+                        table.find_header_hor(_tr('Wl_Table_Colligation_Extractor', '[{}]\nR{}').format(file['name'], settings['generation_settings']['window_left']))
                         for file in files
                     ]
-                    cols_freqs_start.append(table.find_header_hor(f'Total\nR{settings["generation_settings"]["window_left"]}'))
+                    cols_freqs_start.append(table.find_header_hor(
+                        _tr('Wl_Table_Colligation_Extractor', 'Total\nR')
+                        + str(settings['generation_settings']['window_left'])
+                    ))
 
-                cols_freq = table.find_headers_hor(main.tr('\nFrequency'))
-                cols_freq_pct = table.find_headers_hor(main.tr('\nFrequency %'))
+                cols_freq = table.find_headers_hor(_tr('wl_colligation_extractor', '\nFrequency'))
+                cols_freq_pct = table.find_headers_hor(_tr('wl_colligation_extractor', '\nFrequency %'))
 
                 for col in cols_freq_pct:
                     cols_freq.remove(col)
 
                 if text_test_stat:
-                    cols_test_stat = table.find_headers_hor(main.tr(f'\n{text_test_stat}'))
+                    cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
 
-                cols_p_value = table.find_headers_hor(main.tr('\np-value'))
+                cols_p_value = table.find_headers_hor(_tr('wl_colligation_extractor', '\np-value'))
 
                 if text_bayes_factor:
-                    cols_bayes_factor = table.find_headers_hor(main.tr('\nBayes Factor'))
+                    cols_bayes_factor = table.find_headers_hor(_tr('wl_colligation_extractor', '\nBayes Factor'))
 
                 cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
-                col_files_found = table.find_header_hor(main.tr('Number of\nFiles Found'))
-                col_files_found_pct = table.find_header_hor(main.tr('Number of\nFiles Found %'))
+                col_files_found = table.find_header_hor(_tr('wl_colligation_extractor', 'Number of\nFiles Found'))
+                col_files_found_pct = table.find_header_hor(_tr('wl_colligation_extractor', 'Number of\nFiles Found %'))
 
                 freqs_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 0)
                 freq_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 2).sum(axis = 0)
@@ -1311,19 +1321,19 @@ def generate_fig(main):
                 ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
                 text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
 
-                if re.search(r'^[LR][0-9]+$', settings['fig_settings']['use_data']):
+                if re.search(_tr('Wl_Table_Colligation_Extractor', r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
                     span_positions = (
                         list(range(settings['generation_settings']['window_left'], 0))
                         + list(range(1, settings['generation_settings']['window_right'] + 1))
                     )
 
-                    if 'L' in settings['fig_settings']['use_data']:
+                    if _tr('Wl_Table_Colligation_Extractor', 'L') in settings['fig_settings']['use_data']:
                         span_position = span_positions.index(-int(settings['fig_settings']['use_data'][1:]))
                     else:
                         span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
 
                     # Network Graph
-                    if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
+                    if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
                         collocates_freq_files = {
                             (nodes_text[node], collocate): numpy.array(freqs)[:, span_position]
                             for (node, collocate), freqs in colligations_freqs_file.items()
@@ -1338,11 +1348,11 @@ def generate_fig(main):
                     wl_figs_freqs.wl_fig_freq(
                         main, collocates_freq_files,
                         settings = settings['fig_settings'],
-                        label_x = main.tr('Colligation')
+                        label_x = _tr('wl_colligation_extractor', 'Colligation')
                     )
-                elif settings['fig_settings']['use_data'] == main.tr('Frequency'):
+                elif settings['fig_settings']['use_data'] == _tr('wl_colligation_extractor', 'Frequency'):
                     # Network Graph
-                    if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
+                    if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
                         collocates_freq_files = {
                             (nodes_text[node], collocate): numpy.array(freqs).sum(axis = 1)
                             for (node, collocate), freqs in colligations_freqs_file.items()
@@ -1357,11 +1367,11 @@ def generate_fig(main):
                     wl_figs_freqs.wl_fig_freq(
                         main, collocates_freq_files,
                         settings = settings['fig_settings'],
-                        label_x = main.tr('Colligation')
+                        label_x = _tr('wl_colligation_extractor', 'Colligation')
                     )
                 else:
                     # Network Graph
-                    if settings['fig_settings']['graph_type'] == main.tr('Network Graph'):
+                    if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
                         colligations_stats_files = {
                             (nodes_text[node], collocate): freqs
                             for (node, collocate), freqs in colligations_stats_files.items()
@@ -1405,7 +1415,7 @@ def generate_fig(main):
                     wl_figs_stats.wl_fig_stat(
                         main, collocates_stat_files,
                         settings = settings['fig_settings'],
-                        label_x = main.tr('Colligation'),
+                        label_x = _tr('wl_colligation_extractor', 'Colligation'),
                         label_y = label_y
                     )
 

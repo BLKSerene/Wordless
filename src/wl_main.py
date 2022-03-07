@@ -72,6 +72,8 @@ import wl_collocation_extractor
 import wl_colligation_extractor
 import wl_keyword_extractor
 
+_tr = QCoreApplication.translate
+
 class Wl_Loading(QSplashScreen):
     def __init__(self):
         super().__init__(QPixmap(wl_misc.get_normalized_path('imgs/wl_loading.png')))
@@ -126,7 +128,7 @@ class Wl_Main(QMainWindow):
         self.loading_window.show_message(self.tr('Loading settings...'))
 
         # Default settings
-        wl_settings_default.init_settings_default(self)
+        self.settings_default = wl_settings_default.init_settings_default(self)
 
         # Custom settings
         if os.path.exists('wl_settings.pickle'):
@@ -140,8 +142,13 @@ class Wl_Main(QMainWindow):
         else:
             self.settings_custom = copy.deepcopy(self.settings_default)
 
+        # Custom settings - Display Language
+        if os.path.exists('wl_settings_display_lang.pickle'):
+            with open('wl_settings_display_lang.pickle', 'rb') as f:
+                self.settings_custom['menu']['prefs']['display_lang'] = pickle.load(f)
+
         # Global settings
-        wl_settings_global.init_settings_global(self)
+        self.settings_global = wl_settings_global.init_settings_global()
 
         # Settings
         self.wl_settings = wl_settings.Wl_Settings(self)
@@ -247,8 +254,8 @@ class Wl_Main(QMainWindow):
         self.action_group_prefs_display_lang.setExclusive(True)
 
         for action_lang, action_text in [
-            ['zho_cn', self.tr('中文（简体）')],
-            ['eng_us', self.tr('English (United States)')]
+            ['zho_cn', '中文（简体）'],
+            ['eng_us', 'English (United States)']
         ]:
             self.__dict__[f'action_prefs_display_lang_{action_lang}'] = self.menu_prefs_display_lang.addAction(action_text)
             self.__dict__[f'action_prefs_display_lang_{action_lang}'].lang = action_lang
@@ -308,9 +315,14 @@ class Wl_Main(QMainWindow):
             if action.isChecked():
                 if action.lang != self.settings_custom['menu']['prefs']['display_lang']:
                     if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec_() == QDialog.Accepted:
-                        self.settings_custom['menu']['prefs']['display_lang'] = action.lang
+                        with open('wl_settings_display_lang.pickle', 'wb') as f:
+                            pickle.dump(action.lang, f)
 
-                        self.restart()
+                        # Delete settings file
+                        if os.path.exists('wl_settings.pickle'):
+                            os.remove('wl_settings.pickle')
+
+                        self.restart(save_settings = False)
                     else:
                         self.__dict__[f"action_prefs_display_lang_{self.settings_custom['menu']['prefs']['display_lang']}"].setChecked(True)
 
@@ -504,7 +516,7 @@ class Wl_Main(QMainWindow):
         with open('wl_settings.pickle', 'wb') as f:
             pickle.dump(self.settings_custom, f)
 
-    def restart(self):
+    def restart(self, save_settings = True):
         if getattr(sys, '_MEIPASS', False):
             if platform.system() == 'Windows':
                 subprocess.Popen([wl_misc.get_normalized_path('Wordless.exe')])
@@ -520,14 +532,16 @@ class Wl_Main(QMainWindow):
             elif platform.system() == 'Linux':
                 subprocess.Popen(['python3.8', wl_misc.get_normalized_path(__file__)])
 
-        self.save_settings()
+        if save_settings:
+            self.save_settings()
+
         sys.exit(0)
 
 class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Citing'),
+            title = _tr('Wl_Dialog_Citing', 'Citing'),
             width = 450,
             no_buttons = True
         )
@@ -607,7 +621,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Acknowledgments'),
+            title = _tr('Wl_Dialog_Acks', 'Acknowledgments'),
             width = 700
         )
 
@@ -670,7 +684,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Need Help?'),
+            title = _tr('Wl_Dialog_Need_Help', 'Need Help?'),
             width = 600,
             height = 500
         )
@@ -719,13 +733,13 @@ class Wl_Msg_Box_Help(wl_msg_boxes.Wl_Msg_Box):
         super().__init__(
             main,
             icon = QMessageBox.Information,
-            title = main.tr('Contributing'),
-            text = main.tr('''
+            title = _tr('Wl_Msg_Box_Help', 'Contributing'),
+            text = _tr('Wl_Msg_Box_Help', '''
                 <div>
                     If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by <a href="https://github.com/BLKSerene/Wordless/pulls">creating a pull request</a> on Github.
                 </div>
                 <div>
-                    Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or <a href ="https://github.com/BLKSerene/Wordless/wiki">Github Wiki</a> for Wordless, or helping me translate Wordless and its documentation to other languages.
+                    Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or <a href="https://github.com/BLKSerene/Wordless/wiki">Github Wiki</a> for Wordless, or helping me translate Wordless and its documentation to other languages.
                 </div>
             ''')
         )
@@ -737,7 +751,7 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Donating'),
+            title = _tr('Wl_Dialog_Donating', 'Donating'),
             width = 450
         )
 
@@ -892,7 +906,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main, on_startup = False):
         super().__init__(
             main,
-            title = main.tr('Check for Updates'),
+            title = _tr('Wl_Dialog_Check_Updates', 'Check for Updates'),
             width = 500,
             no_buttons = True
         )
@@ -900,7 +914,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         self.on_startup = on_startup
 
         self.label_checking_status = wl_labels.Wl_Label_Dialog('', self)
-        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr(f'Current Version: {self.main.ver}'), self)
+        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr('Current Version: ') + self.main.ver, self)
         self.label_latest_ver = wl_labels.Wl_Label_Dialog('', self)
 
         self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
@@ -966,19 +980,19 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         else:
             if status in ['updates_available', 'no_updates']:
                 if status == 'updates_available':
-                    self.label_checking_status.set_text(self.tr(f'''
+                    self.label_checking_status.set_text(self.tr('''
                         <div>
-                            Wordless {ver_new} is out, click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of Wordless.
+                            Wordless {} is out, click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of Wordless.
                         </div>
-                    '''))
-                    self.label_latest_ver.set_text(self.tr(f'Latest Version: {ver_new}'))
+                    ''').format(ver_new))
+                    self.label_latest_ver.set_text(self.tr('Latest Version: ') + ver_new)
                 elif status == 'no_updates':
                     self.label_checking_status.set_text(self.tr('''
                         <div>
                             Hooray, you are using the latest version of Wordless!
                         </div>
                     '''))
-                    self.label_latest_ver.set_text(self.tr(f'Latest Version: {self.main.ver}'))
+                    self.label_latest_ver.set_text(self.tr('Latest Version: ') + self.main.ver)
             elif status == 'network_err':
                 self.label_checking_status.set_text(self.tr('''
                     <div>
@@ -1015,7 +1029,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Changelog'),
+            title = _tr('Wl_Dialog_Changelog', 'Changelog'),
             width = 600,
             height = 600
         )
@@ -1134,7 +1148,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
 
 class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
-        super().__init__(main, title = main.tr('About Wordless'))
+        super().__init__(main, title = _tr('Wl_Dialog_About', 'About Wordless'))
 
         img_wl_icon = QPixmap('imgs/wl_icon_about.png')
         img_wl_icon = img_wl_icon.scaled(64, 64)
@@ -1143,15 +1157,15 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         label_about_icon.setPixmap(img_wl_icon)
 
         label_about_title = wl_labels.Wl_Label_Dialog_No_Wrap(
-            self.tr(f'''
+            self.tr('''
                 <div style="text-align: center;">
-                    <h2>Wordless {main.ver}</h2>
+                    <h2>Wordless {}</h2>
                     <div>
                         An Integrated Corpus Tool with Multilingual Support<br>
                         for the Study of Language, Literature, and Translation
                     </div>
                 </div>
-            '''),
+            ''').format(main.ver),
             self
         )
         label_about_copyright = wl_labels.Wl_Label_Dialog_No_Wrap(
@@ -1180,16 +1194,15 @@ if __name__ == '__main__':
     wl_app = QApplication(sys.argv)
 
     # Translations
-    if os.path.exists('wl_settings.pickle'):
-        with open('wl_settings.pickle', 'rb') as f:
-            settings_custom = pickle.load(f)
-            display_lang = settings_custom['menu']['prefs']['display_lang']
+    if os.path.exists('wl_settings_display_lang.pickle'):
+        with open('wl_settings_display_lang.pickle', 'rb') as f:
+            display_lang = pickle.load(f)
     else:
         display_lang = 'eng_us'
 
     if display_lang != 'eng_us':
         translator = QTranslator()
-        translator.load(f'translations/{display_lang}.qm')
+        translator.load(f'trans/{display_lang}.qm')
 
         wl_app.installTranslator(translator)
 

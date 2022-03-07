@@ -16,34 +16,24 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+from PyQt5.QtCore import QCoreApplication
+
+_tr = QCoreApplication.translate
+
 def wl_msg_fatal_error(main):
-    main.statusBar().showMessage(main.tr('A fatal error has occurred!'))
+    main.statusBar().showMessage(_tr('wl_msgs', 'A fatal error has occurred!'))
 
 def wl_msg_generate_table_success(main):
-    main.statusBar().showMessage(main.tr('The table has been successfully generated.'))
+    main.statusBar().showMessage(_tr('wl_msgs', 'The table has been successfully generated.'))
 
 def wl_msg_generate_table_error(main):
-    main.statusBar().showMessage(main.tr('An error occured while the table is being generated!'))
+    main.statusBar().showMessage(_tr('wl_msgs', 'An error occured while the table is being generated!'))
 
 def wl_msg_generate_fig_success(main):
-    main.statusBar().showMessage(main.tr('The figure has been successfully generated.'))
+    main.statusBar().showMessage(_tr('wl_msgs', 'The figure has been successfully generated.'))
 
 def wl_msg_generate_fig_error(main):
-    main.statusBar().showMessage(main.tr('An error occured while the figure is being generated!'))
+    main.statusBar().showMessage(_tr('wl_msgs', 'An error occured while the figure is being generated!'))
 
 def wl_msg_results_filter_success(main):
-    main.statusBar().showMessage(main.tr('The results in the table has been successfully filtered.'))
-
-def wl_msg_results_search_success(main, search_results):
-    if len(search_results) == 0:
-        main.statusBar().showMessage(main.tr('No items found.'))
-    elif len(search_results) == 1:
-        main.statusBar().showMessage(main.tr('Found 1 item.'))
-    else:
-        main.statusBar().showMessage(main.tr(f'Found {len(search_results):,} items.'))
-
-def wl_msg_results_search_error(main):
-    main.statusBar().showMessage(main.tr('An error occured during searching!'))
-
-def wl_msg_results_sort(main):
-    main.statusBar().showMessage(main.tr('The results in the table has been successfully sorted.'))
+    main.statusBar().showMessage(_tr('wl_msgs', 'The results in the table has been successfully filtered.'))

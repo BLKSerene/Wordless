@@ -30,6 +30,8 @@ from wl_settings import wl_settings
 from wl_utils import wl_conversion
 from wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables, wl_widgets
 
+_tr = QCoreApplication.translate
+
 class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -143,11 +145,11 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         super().__init__(
             parent = parent,
             headers = [
-                parent.tr('Type'),
-                parent.tr('Level'),
-                parent.tr('Opening Tag'),
-                parent.tr('Closing Tag'),
-                parent.tr('Preview')
+                _tr('Wl_Table_Tags', 'Type'),
+                _tr('Wl_Table_Tags', 'Level'),
+                _tr('Wl_Table_Tags', 'Opening Tag'),
+                _tr('Wl_Table_Tags', 'Closing Tag'),
+                _tr('Wl_Table_Tags', 'Preview')
             ],
             col_edit = 2
         )
@@ -240,7 +242,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                             opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
 
                         closing_tag.setText('N/A')
-                        preview.setText(self.tr(f'token{opening_tag_text}'))
+                        preview.setText(self.tr('token') + opening_tag_text)
                     elif type_text == self.tr('Non-embedded'):
                         # Add a "/" before the first non-punctuation character
                         tag_start, tag_name, tag_end = wl_matching.split_tag_non_embedded(opening_tag_text)
@@ -250,9 +252,9 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                         if tag_name == '*':
                             opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
                             closing_tag_text = self.model().item(row, 3).text().replace('*', self.tr('TAG'))
-                            preview.setText(self.tr(f'{opening_tag_text}token{closing_tag_text}'))
+                            preview.setText(opening_tag_text + self.tr('token') + closing_tag_text)
                         else:
-                            preview.setText(self.tr(f'{opening_tag_text}token{self.model().item(row, 3).text()}'))
+                            preview.setText(opening_tag_text + self.tr('token') + self.model().item(row, 3).text())
 
                 self.enable_updates()
 
@@ -324,9 +326,9 @@ class Wl_Table_Tags_Header(Wl_Table_Tags):
             parent,
             settings_tags = 'tags_header',
             defaults_row = [
-                parent.tr('Non-embedded'),
-                parent.tr('Header'),
-                parent.tr('<TAG>'),
+                _tr('Wl_Table_Tags_Header', 'Non-embedded'),
+                _tr('Wl_Table_Tags_Header', 'Header'),
+                _tr('Wl_Table_Tags_Header', '<TAG>'),
                 ''
             ]
         )
@@ -344,9 +346,9 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
             parent,
             settings_tags = 'tags_body',
             defaults_row = [
-                parent.tr('Non-embedded'),
-                parent.tr('Others'),
-                parent.tr('<TAG>'),
+                _tr('Wl_Table_Tags_Body', 'Non-embedded'),
+                _tr('Wl_Table_Tags_Body', 'Others'),
+                _tr('Wl_Table_Tags_Body', '<TAG>'),
                 ''
             ]
         )
@@ -365,9 +367,9 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
             parent,
             settings_tags = 'tags_xml',
             defaults_row = [
-                parent.tr('Non-embedded'),
-                parent.tr('Paragraph'),
-                parent.tr('<TAG>'),
+                _tr('Wl_Table_Tags_Xml', 'Non-embedded'),
+                _tr('Wl_Table_Tags_Xml', 'Paragraph'),
+                _tr('Wl_Table_Tags_Xml', '<TAG>'),
                 ''
             ]
         )

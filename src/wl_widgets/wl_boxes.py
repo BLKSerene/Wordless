@@ -16,9 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QComboBox, QDoubleSpinBox, QFontComboBox, QSpinBox, QTextBrowser
 
 from wl_utils import wl_misc
 
@@ -133,11 +132,11 @@ class Wl_Combo_Box_Font_Size(Wl_Combo_Box):
         super().__init__(parent)
 
         self.FONT_SIZES = {
-            'Extra Small': 10,
-            'Small': 12,
-            'Medium (Recommended)': 14,
-            'Large': 16,
-            'Extra Large': 18
+            self.tr('Extra Small'): 10,
+            self.tr('Small'): 12,
+            self.tr('Medium (Recommended)'): 14,
+            self.tr('Large'): 16,
+            self.tr('Extra Large'): 18
         }
 
         self.main = wl_misc.find_wl_main(parent)
@@ -179,7 +178,7 @@ class Wl_Double_Spin_Box(QDoubleSpinBox):
 
     def wheelEvent(self, event):
         if self.hasFocus():
-            QSpinBox.wheelEvent(self, event)
+            QDoubleSpinBox.wheelEvent(self, event)
         else:
             event.ignore()
 
@@ -192,17 +191,17 @@ class Wl_Spin_Box_Window(Wl_Spin_Box):
         self.valueChanged.connect(self.value_changed)
 
     def stepBy(self, steps):
-        if self.prefix() == 'L':
+        if self.prefix() == self.tr('L'):
             super().stepBy(-steps)
-        elif self.prefix() == 'R':
+        elif self.prefix() == self.tr('R'):
             super().stepBy(steps)
 
     def value_changed(self):
         if self.value() <= 0:
-            if self.prefix() == 'L':
-                self.setPrefix('R')
+            if self.prefix() == self.tr('L'):
+                self.setPrefix(self.tr('R'))
             else:
-                self.setPrefix('L')
+                self.setPrefix(self.tr('L'))
 
             self.setValue(-self.value() + 1)
 

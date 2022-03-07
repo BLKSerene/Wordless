@@ -25,8 +25,10 @@ from PyQt5.QtWidgets import *
 
 from wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_matching
-from wl_utils import wl_misc, wl_msgs, wl_threading
+from wl_utils import wl_misc, wl_threading
 from wl_widgets import wl_buttons, wl_layouts, wl_widgets
+
+_tr = QCoreApplication.translate
 
 class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
     def run(self):
@@ -77,7 +79,7 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
 
 class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
     def __init__(self, main, tab, table):
-        super().__init__(main, main.tr('Search in Results'))
+        super().__init__(main, _tr('Wl_Dialog_Results_Search', 'Search in Results'))
 
         self.tab = tab
         self.tables = [table]
@@ -109,7 +111,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_find_prev = QPushButton(self.tr('Find Previous'), self)
         self.button_find_all = QPushButton(self.tr('Find All'), self)
         # Pad with spaces
-        self.button_clr_hightlights = QPushButton(self.tr(' Clear Highlights '), self)
+        self.button_clr_hightlights = QPushButton(self.tr('Clear Highlights'), self)
 
         self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
         self.button_close = QPushButton(self.tr('Close'), self)
@@ -162,7 +164,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.layout().addWidget(self.checkbox_ignore_tags, 7, 0, 1, 2)
         self.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
-        self.layout().addWidget(wl_layouts.Wl_Separator(self, orientation = 'Vertical'), 0, 2, 9, 1)
+        self.layout().addWidget(wl_layouts.Wl_Separator(self, orientation = 'vert'), 0, 2, 9, 1)
         self.layout().addLayout(layout_buttons_right, 0, 3, 9, 1)
 
         self.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
@@ -322,9 +324,19 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                 for table in self.tables:
                     table.enable_updates()
             else:
-                wl_msg_boxes.wl_msg_box_no_search_results(self.main)
+                wl_msg_boxes.Wl_Msg_Box_Warning(
+                    self.main,
+                    title = self.tr('No Search Results'),
+                    text = self.tr('''
+                        <div>Searching has completed successfully, but there are no results found.</div>
+                        <div>You can change your settings and try again.</div>
+                    ''')
+                ).open()
 
-            wl_msgs.wl_msg_results_search_success(self.main, self.items_found)
+            len_items_found = len(self.items_found)
+            msg_item = self.tr('item') if len_items_found == 1 else self.tr('items')
+
+            self.main.statusBar().showMessage(self.tr('Found {} {}.').format(len_items_found, msg_item))
 
         if (
             not self.settings['multi_search_mode'] and self.settings['search_term']
@@ -346,7 +358,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         else:
             wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
 
-            wl_msgs.wl_msg_results_search_error(self.main)
+            self.main.statusBar().showMessage(self.tr('An error occured during searching!'))
 
     def clr_highlights(self):
         if self.items_found:

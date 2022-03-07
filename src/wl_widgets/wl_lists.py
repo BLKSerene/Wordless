@@ -19,14 +19,18 @@
 import os
 import re
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QCoreApplication, QItemSelection, QItemSelectionModel, QModelIndex, QStringListModel
+from PyQt5.QtWidgets import (
+    QAbstractItemDelegate, QAbstractItemView, QFileDialog, QLineEdit, QListView,
+    QPushButton
+)
 
 from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs_errs, wl_msg_boxes
 from wl_widgets import wl_boxes, wl_item_delegates
 from wl_utils import wl_detection, wl_misc
+
+_tr = QCoreApplication.translate
 
 class Wl_List_Add_Ins_Del_Clr(QListView):
     def __init__(
@@ -38,7 +42,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         super().__init__(parent)
 
         self.main = wl_misc.find_wl_main(parent)
-        self.new_item_text = new_item_text if new_item_text else self.tr('New item')
+        self.new_item_text = new_item_text if new_item_text else _tr('Wl_List_Add_Ins_Del_Clr', 'New item')
         self.items_old = []
 
         if editable:
@@ -56,10 +60,10 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
         self.model().dataChanged.connect(self.data_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_ins = QPushButton(self.tr('Insert'), self)
-        self.button_del = QPushButton(self.tr('Remove'), self)
-        self.button_clr = QPushButton(self.tr('Clear'), self)
+        self.button_add = QPushButton(_tr('Wl_List_Add_Ins_Del_Clr', 'Add'), self)
+        self.button_ins = QPushButton(_tr('Wl_List_Add_Ins_Del_Clr', 'Insert'), self)
+        self.button_del = QPushButton(_tr('Wl_List_Add_Ins_Del_Clr', 'Remove'), self)
+        self.button_clr = QPushButton(_tr('Wl_List_Add_Ins_Del_Clr', 'Clear'), self)
 
         self.button_add.clicked.connect(self.add_item)
         self.button_ins.clicked.connect(self.ins_item)
@@ -110,8 +114,8 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
                         if i != item_row and item_text == text:
                             wl_msg_boxes.Wl_Msg_Box_Warning(
                                 self.main,
-                                title = self.tr('Duplicates Found'),
-                                text = self.tr('''
+                                title = _tr('Wl_List_Add_Ins_Del_Clr', 'Duplicates Found'),
+                                text = _tr('Wl_List_Add_Ins_Del_Clr', '''
                                     <div>The item that you have just edited already exists in the list, please specify another one!</div>
                                 ''')
                             ).exec_()
@@ -233,8 +237,8 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         self.settings = settings
         self.exp_file_name = exp_file_name
 
-        self.button_imp = QPushButton(self.tr('Import'), self)
-        self.button_exp = QPushButton(self.tr('Export'), self)
+        self.button_imp = QPushButton(_tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Import'), self)
+        self.button_exp = QPushButton(_tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Export'), self)
 
         self.button_imp.clicked.connect(self.imp_list)
         self.button_exp.clicked.connect(self.exp_list)
@@ -255,9 +259,9 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
         file_paths = QFileDialog.getOpenFileNames(
             self.main,
-            self.tr('Import from Files'),
+            _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Import from Files'),
             default_dir,
-            self.tr('Text File (*.txt)')
+            _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Text File (*.txt)')
         )[0]
 
         if file_paths:
@@ -267,9 +271,9 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
             file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
 
             if file_paths_empty:
-                dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, self.tr('Import Error'))
+                dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Import Error'))
 
-                dialog_err_files.label_err.set_text(self.tr('''
+                dialog_err_files.label_err.set_text(_tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', '''
                     <div>
                         An error occurred during import, please check the following files and try again.
                     </div>
@@ -282,7 +286,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                 for i, file_path in enumerate(file_paths_empty):
                     dialog_err_files.table_err_files.model().setItem(
                         i, 0,
-                        QStandardItem(self.tr('Empty File'))
+                        QStandardItem(_tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Empty File'))
                     )
                     dialog_err_files.table_err_files.model().setItem(
                         i, 1,
@@ -293,7 +297,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
                 dialog_err_files.open()
 
-                self.main.statusBar().showMessage(self.tr('An error occured during import!'))
+                self.main.statusBar().showMessage(_tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'An error occured during import!'))
             else:
                 # Check duplicate items
                 items_to_imp = []
@@ -320,22 +324,18 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                 self._add_items(items_to_imp)
 
                 num_imps = self.model().rowCount() - num_prev
+                msg_item = _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'item') if num_imps == 1 else _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'items')
 
-                if num_imps == 0:
-                    self.main.statusBar().showMessage(self.tr('No items were imported into the list.'))
-                elif num_imps == 1:
-                    self.main.statusBar().showMessage(self.tr('1 item has been successfully imported into the list.'))
-                else:
-                    self.main.statusBar().showMessage(self.tr(f'{num_imps:,} items have been successfully imported into the list.'))
+                self.main.statusBar().showMessage(_tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', '{} {} has been successfully imported into the list.').format(num_imps, msg_item))
 
     def exp_list(self):
         default_dir = self.main.settings_custom['exp'][self.settings]['default_path']
 
         file_path = QFileDialog.getSaveFileName(
             self.main,
-            self.tr('Export to File'),
+            _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Export to File'),
             os.path.join(wl_checking_misc.check_dir(default_dir), self.exp_file_name),
-            self.tr('Text File (*.txt)')
+            _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Text File (*.txt)')
         )[0]
 
         if file_path:
@@ -347,10 +347,10 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
             wl_msg_boxes.Wl_Msg_Box_Info(
                 self.main,
-                title = self.tr('Export Completed'),
-                text = self.tr(f'''
-                    <div>The list has been successfully exported to "{file_path}".</div>
-                ''')
+                title = _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Export Completed'),
+                text = _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', '''
+                    <div>The list has been successfully exported to "{}".</div>
+                ''').format(file_path)
             ).open()
 
             # Modify default path
@@ -360,7 +360,7 @@ class Wl_List_Search_Terms(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
     def __init__(self, parent):
         super().__init__(
             parent,
-            new_item_text = parent.tr('New search term'),
+            new_item_text = _tr('Wl_List_Search_Terms', 'New search term'),
             settings = 'search_terms',
             exp_file_name = 'wordless_search_terms.txt'
         )
@@ -369,7 +369,7 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
     def __init__(self, parent):
         super().__init__(
             parent,
-            new_item_text = parent.tr('New stop word'),
+            new_item_text = _tr('Wl_List_Stop_Words', 'New stop word'),
             settings = 'stop_words',
             exp_file_name = 'wordless_stop_words.txt'
         )

@@ -22,7 +22,6 @@ import os
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-
 import wordcloud
 
 from wl_settings import wl_settings
