@@ -21,11 +21,11 @@ import copy
 import os
 import time
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-
 import numpy
+from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QMainWindow
+
+_tr = QCoreApplication.translate
 
 def get_normalized_path(path):
     path = os.path.realpath(path)
@@ -134,25 +134,19 @@ def log_timing(func):
         return_val = func(widget, *args, **kwargs)
 
         time_elapsed = time.time() - time_start
-        time_elapsed_min = int(time_elapsed // 60)
-        time_elapsed_sec = time_elapsed % 60
+        time_elapsed_mins = int(time_elapsed // 60)
+        time_elapsed_secs = time_elapsed % 60
 
-        if time_elapsed_min == 0:
-            message_timing = main.tr(f'(In {time_elapsed_sec:.2f} seconds)')
-        elif time_elapsed_min == 1:
-            message_timing = main.tr(f'(In 1 minute {time_elapsed_sec:.2f} seconds)')
-        else:
-            message_timing = main.tr(f'(In {time_elapsed_min} minutes {time_elapsed_sec:.2f} seconds)')
+        msg_min = _tr('log_timing', 'minute') if time_elapsed_mins == 1 else _tr('log_timing', 'minutes')
+        msg_time = _tr('log_timing', '(In {} {} {:.2f} seconds)').format(time_elapsed_mins, msg_min, time_elapsed_secs)
 
-        message_current = main.statusBar().currentMessage()
-
-        if message_current:
-            if message_current.find('(In') > - 1:
-                main.statusBar().showMessage(f'{message_current.split("(")[0].rstrip()} {message_timing}')
+        if (msg_cur := main.statusBar().currentMessage()):
+            if _tr('log_timing', '(In') in msg_cur:
+                main.statusBar().showMessage(f"{msg_cur.split(_tr('log_timing', '(In'))[0].rstrip()} {msg_time}")
             else:
-                main.statusBar().showMessage(f'{message_current} {message_timing}')
+                main.statusBar().showMessage(f'{msg_cur} {msg_time}')
         else:
-            main.statusBar().showMessage(f'{message_timing}')
+            main.statusBar().showMessage(msg_time)
 
         return return_val
 

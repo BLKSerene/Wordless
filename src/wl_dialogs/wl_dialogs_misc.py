@@ -27,6 +27,8 @@ from PyQt5.QtWidgets import *
 from wl_dialogs import wl_dialogs
 from wl_widgets import wl_labels, wl_layouts
 
+_tr = QCoreApplication.translate
+
 class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
     def __init__(self, main, text):
         super().__init__(main, width = 450)
@@ -36,8 +38,8 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.timer_time_elapsed = QTimer(self)
 
         self.label_progress = QLabel(text, self)
-        self.label_time_elapsed = QLabel(self.tr('Elapsed Time: 0:00:00'), self)
-        self.label_processing = wl_labels.Wl_Label_Dialog(self.tr('Please wait. It may take a few seconds to several minutes for the operation to be completed.'), self)
+        self.label_time_elapsed = QLabel(_tr('Wl_Dialog_Progress', 'Elapsed Time: 0:00:00'), self)
+        self.label_processing = wl_labels.Wl_Label_Dialog(_tr('Wl_Dialog_Progress', 'Please wait. It may take a few seconds to several minutes for the operation to be completed.'), self)
 
         self.timer_time_elapsed.timeout.connect(self.update_elapsed_time)
         self.timer_time_elapsed.start(1000)
@@ -50,22 +52,23 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.layout().setContentsMargins(20, 10, 20, 10)
 
     def update_elapsed_time(self):
-        self.label_time_elapsed.setText(self.tr(f'''
-            Elapsed Time: {datetime.timedelta(seconds = round(time.time() - self.time_start))}
-        '''))
+        self.label_time_elapsed.setText(
+            _tr('Wl_Dialog_Progress', 'Elapsed Time: ')
+            + str(datetime.timedelta(seconds = round(time.time() - self.time_start)))
+        )
 
     def update_progress(self, text):
         self.label_progress.setText(text)
 
 class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
     def __init__(self, main):
-        super().__init__(main, text = main.tr('Processing data...'))
+        super().__init__(main, text = _tr('Wl_Dialog_Progress_Process_Data', 'Processing data...'))
 
 class WL_Dialog_Clear_Table(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Clear Table'),
+            title = _tr('WL_Dialog_Clear_Table', 'Clear Table'),
             width = 420,
             no_buttons = True
         )
@@ -98,7 +101,7 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Restart Wordless'),
+            title = _tr('Wl_Dialog_Restart_Required', 'Restart Wordless'),
             width = 450,
             no_buttons = True
         )
@@ -135,7 +138,7 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Exit Wordless'),
+            title = _tr('Wl_Dialog_Confirm_Exit', 'Exit Wordless'),
             width = 420,
             no_buttons = True
         )

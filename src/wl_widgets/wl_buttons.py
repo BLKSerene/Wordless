@@ -16,12 +16,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QPushButton
 
 from wl_dialogs import wl_msg_boxes
 from wl_utils import wl_misc
+
+_tr = QCoreApplication.translate
 
 class Wl_Button(QPushButton):
     def __init__(self, text, parent):
@@ -31,7 +32,7 @@ class Wl_Button(QPushButton):
 
 class Wl_Button_Restore_Default_Settings(Wl_Button):
     def __init__(self, parent, load_settings):
-        super().__init__(parent.tr('Restore default settings'), parent)
+        super().__init__(_tr('Wl_Button_Restore_Default_Settings', 'Restore default settings'), parent)
 
         self.parent = parent
         self.load_settings = load_settings
