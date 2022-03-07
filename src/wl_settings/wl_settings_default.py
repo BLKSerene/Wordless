@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+from PyQt5.QtCore import QCoreApplication
+
 from wl_tagsets import (
     wl_tagset_universal,
     wl_tagset_eng_penn_treebank,
@@ -31,10 +33,12 @@ from wl_tagsets import (
 )
 from wl_utils import wl_misc
 
+_tr = QCoreApplication.translate
+
 def init_settings_default(main):
-    main.settings_default = {
+    return {
         '1st_startup': True,
-        'work_area_cur': main.tr('Profiler'),
+        'work_area_cur': _tr('init_settings_default', 'Profiler'),
 
         'menu': {
             'prefs': {
@@ -47,11 +51,11 @@ def init_settings_default(main):
 
             'help': {
                 'citing': {
-                    'citation_sys': main.tr('APA (7th Edition)')
+                    'citation_sys': _tr('init_settings_default', 'APA (7th Edition)')
                 },
 
                 'donating': {
-                    'donating_via': main.tr('PayPal')
+                    'donating_via': _tr('init_settings_default', 'PayPal')
                 }
             }
         },
@@ -168,9 +172,9 @@ def init_settings_default(main):
                 'width_right_sentence': 0,
                 'width_right_token': 10,
                 'width_right_char': 50,
-                'width_unit': main.tr('Token'),
+                'width_unit': _tr('init_settings_default', 'Token'),
 
-                'sampling_method': main.tr('None'),
+                'sampling_method': _tr('init_settings_default', 'None'),
                 'sample_size_first_n_lines': 100,
                 'sample_size_systematic_fixed_interval': 2,
                 'sample_size_systematic_fixed_size': 100,
@@ -182,7 +186,7 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'sort_results_by': main.tr('File')
+                'sort_results_by': _tr('init_settings_default', 'File')
             },
 
             'zapping_settings': {
@@ -196,8 +200,8 @@ def init_settings_default(main):
 
             'sort_results': {
                 'sorting_rules': [
-                    [main.tr('File'), main.tr('Ascending')],
-                    [main.tr('Token No.'), main.tr('Ascending')]
+                    [_tr('init_settings_default', 'File'), _tr('init_settings_default', 'Ascending')],
+                    [_tr('init_settings_default', 'Token No.'), _tr('init_settings_default', 'Ascending')]
                 ],
 
                 'highlight_colors': [
@@ -299,7 +303,7 @@ def init_settings_default(main):
                 'src_file': '',
                 'tgt_file': '',
 
-                'sampling_method': main.tr('None'),
+                'sampling_method': _tr('init_settings_default', 'None'),
                 'sample_size_first_n_lines': 100,
                 'sample_size_systematic_fixed_interval': 2,
                 'sample_size_systematic_fixed_size': 100,
@@ -312,7 +316,7 @@ def init_settings_default(main):
 
             'sort_results': {
                 'sorting_rules': [
-                    [main.tr('Segment No.'), main.tr('Ascending')]
+                    [_tr('init_settings_default', 'Segment No.'), _tr('init_settings_default', 'Ascending')]
                 ],
 
                 'highlight_colors': [
@@ -364,8 +368,8 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
-                'measure_dispersion': main.tr("Juilland's D"),
-                'measure_adjusted_freq': main.tr("Juilland's U")
+                'measure_dispersion': _tr('init_settings_default', "Juilland's D"),
+                'measure_adjusted_freq': _tr('init_settings_default', "Juilland's U")
             },
 
             'table_settings': {
@@ -375,9 +379,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': main.tr('Line Chart'),
-                'sort_by_file': main.tr('Total'),
-                'use_data': main.tr('Frequency'),
+                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'sort_by_file': _tr('init_settings_default', 'Total'),
+                'use_data': _tr('init_settings_default', 'Frequency'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -388,7 +392,7 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': main.tr('Total'),
+                'file_to_filter': _tr('init_settings_default', 'Total'),
 
                 'freq_min': 0,
                 'freq_min_no_limit': True,
@@ -519,8 +523,8 @@ def init_settings_default(main):
                 'allow_skipped_tokens': False,
                 'allow_skipped_tokens_num': 1,
 
-                'measure_dispersion': main.tr("Juilland's D"),
-                'measure_adjusted_freq': main.tr("Juilland's U")
+                'measure_dispersion': _tr('init_settings_default', "Juilland's D"),
+                'measure_adjusted_freq': _tr('init_settings_default', "Juilland's U")
             },
 
             'table_settings': {
@@ -530,9 +534,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': main.tr('Line Chart'),
-                'sort_by_file': main.tr('Total'),
-                'use_data': main.tr('Frequency'),
+                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'sort_by_file': _tr('init_settings_default', 'Total'),
+                'use_data': _tr('init_settings_default', 'Frequency'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -543,7 +547,7 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': main.tr('Total'),
+                'file_to_filter': _tr('init_settings_default', 'Total'),
 
                 'len_ngram_min': 1,
                 'len_ngram_min_no_limit': True,
@@ -666,10 +670,10 @@ def init_settings_default(main):
                 'window_left': -5,
                 'window_right': 5,
 
-                'limit_searching': main.tr('None'),
+                'limit_searching': _tr('init_settings_default', 'None'),
 
-                'test_significance': main.tr("Pearson's Chi-squared Test"),
-                'measure_effect_size': main.tr('Pointwise Mutual Information'),
+                'test_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
+                'measure_effect_size': _tr('init_settings_default', 'Pointwise Mutual Information'),
             },
 
             'table_settings': {
@@ -680,9 +684,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': main.tr('Line Chart'),
-                'sort_by_file': main.tr('Total'),
-                'use_data': main.tr('p-value'),
+                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'sort_by_file': _tr('init_settings_default', 'Total'),
+                'use_data': _tr('init_settings_default', 'p-value'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -693,14 +697,14 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': main.tr('Total'),
+                'file_to_filter': _tr('init_settings_default', 'Total'),
 
                 'len_collocate_min': 1,
                 'len_collocate_min_no_limit': True,
                 'len_collocate_max': 20,
                 'len_collocate_max_no_limit': True,
 
-                'freq_position': main.tr('Total'),
+                'freq_position': _tr('init_settings_default', 'Total'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -827,10 +831,10 @@ def init_settings_default(main):
                 'window_left': -5,
                 'window_right': 5,
 
-                'limit_searching': main.tr('None'),
+                'limit_searching': _tr('init_settings_default', 'None'),
 
-                'test_significance': main.tr("Pearson's Chi-squared Test"),
-                'measure_effect_size': main.tr('Pointwise Mutual Information')
+                'test_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
+                'measure_effect_size': _tr('init_settings_default', 'Pointwise Mutual Information')
             },
 
             'table_settings': {
@@ -841,9 +845,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': main.tr('Line Chart'),
-                'sort_by_file': main.tr('Total'),
-                'use_data': main.tr('p-value'),
+                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'sort_by_file': _tr('init_settings_default', 'Total'),
+                'use_data': _tr('init_settings_default', 'p-value'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -854,14 +858,14 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': main.tr('Total'),
+                'file_to_filter': _tr('init_settings_default', 'Total'),
 
                 'len_collocate_min': 1,
                 'len_collocate_min_no_limit': True,
                 'len_collocate_max': 20,
                 'len_collocate_max_no_limit': True,
 
-                'freq_position': main.tr('Total'),
+                'freq_position': _tr('init_settings_default', 'Total'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -927,8 +931,8 @@ def init_settings_default(main):
 
             'generation_settings': {
                 'ref_files': [],
-                'test_significance': main.tr('Log-likelihood Ratio Test'),
-                'measure_effect_size': main.tr("Kilgarriff's Ratio"),
+                'test_significance': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
+                'measure_effect_size': _tr('init_settings_default', "Kilgarriff's Ratio"),
             },
 
             'table_settings': {
@@ -938,9 +942,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': main.tr('Line Chart'),
-                'sort_by_file': main.tr('Total'),
-                'use_data': main.tr('p-value'),
+                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'sort_by_file': _tr('init_settings_default', 'Total'),
+                'use_data': _tr('init_settings_default', 'p-value'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -951,7 +955,7 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': main.tr('Total'),
+                'file_to_filter': _tr('init_settings_default', 'Total'),
 
                 'len_keyword_min': 1,
                 'len_keyword_min_no_limit': True,
@@ -1005,7 +1009,7 @@ def init_settings_default(main):
         },
 
         'settings': {
-            'node_cur': main.tr('General')
+            'node_cur': _tr('init_settings_default', 'General')
         },
 
         'general': {
@@ -1056,7 +1060,7 @@ def init_settings_default(main):
         'exp': {
             'tables': {
                 'default_path': wl_misc.get_normalized_path('exports/'),
-                'default_type': main.tr('Excel Workbook (*.xlsx)'),
+                'default_type': _tr('init_settings_default', 'Excel Workbook (*.xlsx)'),
                 'default_encoding': 'utf_8'
             },
 
@@ -1075,8 +1079,8 @@ def init_settings_default(main):
             'default_settings': {
                 'encoding': 'utf_8',
                 'lang': 'eng_us',
-                'tokenized': main.tr('No'),
-                'tagged': main.tr('No')
+                'tokenized': _tr('init_settings_default', 'No'),
+                'tagged': _tr('init_settings_default', 'No')
             },
 
             'auto_detection_settings': {
@@ -1091,20 +1095,20 @@ def init_settings_default(main):
 
         'tags': {
             'tags_header': [
-                [main.tr('Non-embedded'), main.tr('Header'), '<teiHeader>', '</teiHeader>']
+                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Header'), '<teiHeader>', '</teiHeader>']
             ],
 
             'tags_body': [
-                [main.tr('Embedded'), main.tr('Part of Speech'), '_*', 'N/A'],
-                [main.tr('Embedded'), main.tr('Part of Speech'), '/*', 'N/A'],
-                [main.tr('Non-embedded'), main.tr('Others'), '<*>', 'N/A']
+                [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of Speech'), '_*', 'N/A'],
+                [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of Speech'), '/*', 'N/A'],
+                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Others'), '<*>', 'N/A']
             ],
 
             'tags_xml': [
-                [main.tr('Non-embedded'), main.tr('Paragraph'), '<p>', '</p>'],
-                [main.tr('Non-embedded'), main.tr('Sentence'), '<s>', '</s>'],
-                [main.tr('Non-embedded'), main.tr('Word'), '<w>', '</w>'],
-                [main.tr('Non-embedded'), main.tr('Word'), '<c>', '</c>']
+                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Paragraph'), '<p>', '</p>'],
+                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Sentence'), '<s>', '</s>'],
+                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Word'), '<w>', '</w>'],
+                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Word'), '<c>', '</c>']
             ]
         },
 
@@ -1747,8 +1751,8 @@ def init_settings_default(main):
 
                 'students_t_test_2_sample': {
                     'number_sections': 5,
-                    'use_data': main.tr('Relative Frequency'),
-                    'variances': main.tr('Equal'),
+                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'variances': _tr('init_settings_default', 'Equal'),
                 },
 
                 'pearsons_chi_squared_test': {
@@ -1756,13 +1760,13 @@ def init_settings_default(main):
                 },
 
                 'fishers_exact_test': {
-                    'direction': main.tr('Left-tailed')
+                    'direction': _tr('init_settings_default', 'Left-tailed')
                 },
 
                 'mann_whitney_u_test': {
                     'number_sections': 5,
-                    'use_data': main.tr('Relative Frequency'),
-                    'direction': main.tr('Two-tailed'),
+                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'direction': _tr('init_settings_default', 'Two-tailed'),
                     'apply_correction': True
                 }
             },

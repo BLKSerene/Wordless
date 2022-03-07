@@ -34,21 +34,21 @@ class Wl_Settings_Dispersion(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['measures']['dispersion']
 
         # General
-        group_box_general = QGroupBox(self.tr('General'), self)
+        group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
 
         (self.label_dispersion_divide,
          self.spin_box_dispersion_number_sections,
          self.label_dispersion_sections) = wl_widgets.wl_widgets_number_sections(self)
 
-        group_box_general.setLayout(wl_layouts.Wl_Layout())
-        group_box_general.layout().addWidget(self.label_dispersion_divide, 0, 0)
-        group_box_general.layout().addWidget(self.spin_box_dispersion_number_sections, 0, 1)
-        group_box_general.layout().addWidget(self.label_dispersion_sections, 0, 2)
+        group_box_general_settings.setLayout(wl_layouts.Wl_Layout())
+        group_box_general_settings.layout().addWidget(self.label_dispersion_divide, 0, 0)
+        group_box_general_settings.layout().addWidget(self.spin_box_dispersion_number_sections, 0, 1)
+        group_box_general_settings.layout().addWidget(self.label_dispersion_sections, 0, 2)
 
-        group_box_general.layout().setColumnStretch(3, 1)
+        group_box_general_settings.layout().setColumnStretch(3, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_general, 0, 0)
+        self.layout().addWidget(group_box_general_settings, 0, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
@@ -75,25 +75,25 @@ class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['measures']['adjusted_freq']
 
         # General
-        group_box_general = QGroupBox(self.tr('General'), self)
+        group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
 
         (self.label_adjusted_freq_divide,
          self.spin_box_adjusted_freq_number_sections,
          self.label_adjusted_freq_sections) = wl_widgets.wl_widgets_number_sections(self)
-        self.checkbox_use_same_settings_dispersion = QCheckBox(self.tr('Use same settings in "Settings -> Measures -> Dispersion"'), self)
+        self.checkbox_use_same_settings_dispersion = QCheckBox(self.tr('Use same settings in "Settings → Measures → Dispersion"'), self)
 
         self.checkbox_use_same_settings_dispersion.stateChanged.connect(self.use_same_settings_changed)
 
-        group_box_general.setLayout(wl_layouts.Wl_Layout())
-        group_box_general.layout().addWidget(self.label_adjusted_freq_divide, 0, 0)
-        group_box_general.layout().addWidget(self.spin_box_adjusted_freq_number_sections, 0, 1)
-        group_box_general.layout().addWidget(self.label_adjusted_freq_sections, 0, 2)
-        group_box_general.layout().addWidget(self.checkbox_use_same_settings_dispersion, 1, 0, 1, 4)
+        group_box_general_settings.setLayout(wl_layouts.Wl_Layout())
+        group_box_general_settings.layout().addWidget(self.label_adjusted_freq_divide, 0, 0)
+        group_box_general_settings.layout().addWidget(self.spin_box_adjusted_freq_number_sections, 0, 1)
+        group_box_general_settings.layout().addWidget(self.label_adjusted_freq_sections, 0, 2)
+        group_box_general_settings.layout().addWidget(self.checkbox_use_same_settings_dispersion, 1, 0, 1, 4)
 
-        group_box_general.layout().setColumnStretch(3, 1)
+        group_box_general_settings.layout().setColumnStretch(3, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_general, 0, 0)
+        self.layout().addWidget(group_box_general_settings, 0, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
@@ -141,8 +141,8 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         group_box_z_score.layout().setColumnStretch(2, 1)
 
-        # Student's t-test (Two-sample)
-        group_box_students_t_test_2_sample = QGroupBox(self.tr('Student\'s t-test (Two-sample)'), self)
+        # Student's t-test (2-sample)
+        group_box_students_t_test_2_sample = QGroupBox(self.tr("Student's t-test (2-sample)"), self)
 
         (self.label_students_t_test_2_sample_divide,
          self.spin_box_students_t_test_2_sample_number_sections,
@@ -154,9 +154,7 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         self.combo_box_students_t_test_2_sample_variances = QComboBox(self)
         self.label_welchs_t_test = wl_labels.Wl_Label_Hint(
             self.tr('''
-                <p>
-                    * If variances are set to "Unequal", the Welch\'s t-test will be performed instead.
-                </p>
+                <p>* If variances are set to "Unequal", the Welch's t-test will be performed instead.</p>
             '''), self)
 
         self.combo_box_students_t_test_2_sample_variances.addItems([
@@ -182,15 +180,15 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         group_box_students_t_test_2_sample.layout().setColumnStretch(2, 1)
 
         # Pearson's Chi-squared Test
-        group_box_pearsons_chi_squared_test = QGroupBox(self.tr('Pearson\'s Chi-squared Test'), self)
+        group_box_pearsons_chi_squared_test = QGroupBox(self.tr("Pearson's Chi-squared Test"), self)
 
-        self.checkbox_pearsons_chi_squared_test_apply_correction = QCheckBox(self.tr('Apply Yates\'s correction for continuity'))
+        self.checkbox_pearsons_chi_squared_test_apply_correction = QCheckBox(self.tr("Apply Yates's correction for continuity"))
 
         group_box_pearsons_chi_squared_test.setLayout(wl_layouts.Wl_Layout())
         group_box_pearsons_chi_squared_test.layout().addWidget(self.checkbox_pearsons_chi_squared_test_apply_correction, 0, 0)
 
         # Fisher's Exact Test
-        group_box_fishers_exact_test = QGroupBox(self.tr('Fisher\'s Exact Test'), self)
+        group_box_fishers_exact_test = QGroupBox(self.tr("Fisher's Exact Test"), self)
 
         (self.label_fishers_exact_test_direction,
          self.combo_box_fishers_exact_test_direction) = wl_widgets.wl_widgets_direction(self)
@@ -289,7 +287,7 @@ class Wl_Settings_Effect_Size(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['measures']['effect_size']
 
         # Kilgarriff's Ratio
-        group_box_kilgarriffs_ratio = QGroupBox(self.tr('Kilgarriff\'s Ratio'), self)
+        group_box_kilgarriffs_ratio = QGroupBox(self.tr("Kilgarriff's Ratio"), self)
 
         self.label_kilgarriffs_ratio_smoothing_param = QLabel(self.tr('Smoothing Parameter:'), self)
         self.spin_box_kilgarriffs_ratio_smoothing_param = wl_boxes.Wl_Double_Spin_Box(self)

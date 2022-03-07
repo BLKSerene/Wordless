@@ -40,6 +40,8 @@ from wl_nlp import wl_matching, wl_texts
 from wl_utils import wl_conversion, wl_detection, wl_misc, wl_msgs, wl_threading
 from wl_widgets import wl_boxes, wl_buttons, wl_item_delegates, wl_layouts, wl_tables
 
+_tr = QCoreApplication.translate
+
 class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
@@ -51,7 +53,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
             len_file_paths = len(self.file_paths)
 
             for i, file_path in enumerate(self.file_paths):
-                self.progress_updated.emit(self.tr(f'Adding files... ({i + 1}/{len_file_paths})'))
+                self.progress_updated.emit(self.tr('Adding files... ({}/{})').format(i + 1, len_file_paths))
 
                 file_path = wl_misc.get_normalized_path(file_path)
                 file_name, file_ext = os.path.splitext(os.path.basename(file_path))
@@ -264,11 +266,11 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         super().__init__(
             parent = parent,
             headers = [
-                parent.tr('Path'),
-                parent.tr('Encoding'),
-                parent.tr('Language'),
-                parent.tr('Tokenized'),
-                parent.tr('Tagged')
+                _tr('Table_Open_Files', 'Path'),
+                _tr('Table_Open_Files', 'Encoding'),
+                _tr('Table_Open_Files', 'Language'),
+                _tr('Table_Open_Files', 'Tokenized'),
+                _tr('Table_Open_Files', 'Tagged')
             ],
             col_edit = 2
         )
@@ -354,7 +356,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
             re_tags_header = wl_matching.get_re_tags_with_tokens(self.main, tag_type = 'header')
 
             for i, file in enumerate(self.files_to_open):
-                self.progress_updated.emit(self.tr(f'Opening files... ({i + 1}/{len_files})'))
+                self.progress_updated.emit(self.tr('Opening files... ({}/{})').format(i + 1, len_files))
 
                 # Remove header tags
                 with open(file['path'], 'w', encoding = file['encoding']) as f:
@@ -381,7 +383,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
     def __init__(self, main):
         super().__init__(
             main,
-            title = main.tr('Open Files'),
+            title = _tr('Dialog_Open_Files', 'Open Files'),
             width = 800
         )
 
@@ -492,7 +494,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
 
                     dialog_err_files.label_err.set_text(self.tr('''
                         <div>
-                            An error occurred while adding files, so the following file(s) were not added to the table.
+                            An error occurred while adding files, so the following files were not added to the table.
                         </div>
                     '''))
                     dialog_err_files.table_err_files.model().setRowCount(len(file_paths_empty) + len(file_paths_unsupported) + len(file_paths_dup))
@@ -594,12 +596,12 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         super().__init__(
             parent,
             headers = [
-                parent.tr('Name'),
-                parent.tr('Path'),
-                parent.tr('Encoding'),
-                parent.tr('Language'),
-                parent.tr('Tokenized'),
-                parent.tr('Tagged')
+                _tr('Wl_Table_Files', 'Name'),
+                _tr('Wl_Table_Files', 'Path'),
+                _tr('Wl_Table_Files', 'Encoding'),
+                _tr('Wl_Table_Files', 'Language'),
+                _tr('Wl_Table_Files', 'Tokenized'),
+                _tr('Wl_Table_Files', 'Tagged')
             ],
             editable = True,
             drag_drop = True
@@ -749,14 +751,10 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 self.main.settings_custom['file_area']['files_open'].extend(new_files)
                 self.update_table()
 
-                len_files_new = len(self.main.settings_custom['file_area']['files_open'])
+                len_files_opened = len(self.main.settings_custom['file_area']['files_open']) - len_files_old
+                msg_file = self.tr('file') if len_files_opened == 1 else self.tr('files')
 
-                if len_files_new - len_files_old == 0:
-                    self.main.statusBar().showMessage(self.tr('No files are newly opened!'))
-                elif len_files_new - len_files_old == 1:
-                    self.main.statusBar().showMessage(self.tr('1 file has been successfully opened.'))
-                else:
-                    self.main.statusBar().showMessage(self.tr(f'{len_files_new - len_files_old} files have been successfully opened.'))
+                self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
             else:
                 wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
 

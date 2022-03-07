@@ -82,7 +82,7 @@ def check_new_path(new_path):
         new_path_valid = new_path
 
     # Placeholder for the new path
-    with open(new_path_valid, 'wb') as f:
+    with open(new_path_valid, 'wb') as _:
         pass
 
     return new_path_valid

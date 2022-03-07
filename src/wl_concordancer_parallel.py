@@ -30,23 +30,25 @@ from wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_threading
 from wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
+_tr = QCoreApplication.translate
+
 class Wl_Table_Concordancer_Parallel_Upper(wl_tables.Wl_Table_Data_Sort_Search):
     def __init__(self, parent):
         super().__init__(
             parent,
             tab = 'concordancer_parallel',
             headers = [
-                parent.tr('Left'),
-                parent.tr('Node'),
-                parent.tr('Right'),
-                parent.tr('Segment No.'),
-                parent.tr('Segment No. %')
+                _tr('Wl_Table_Concordancer_Parallel_Upper', 'Left'),
+                _tr('Wl_Table_Concordancer_Parallel_Upper', 'Node'),
+                _tr('Wl_Table_Concordancer_Parallel_Upper', 'Right'),
+                _tr('Wl_Table_Concordancer_Parallel_Upper', 'Segment No.'),
+                _tr('Wl_Table_Concordancer_Parallel_Upper', 'Segment No. %')
             ],
             headers_int = [
-                parent.tr('Segment No.')
+                _tr('Wl_Table_Concordancer_Parallel_Upper', 'Segment No.')
             ],
             headers_pct = [
-                parent.tr('Segment No. %')
+                _tr('Wl_Table_Concordancer_Parallel_Upper', 'Segment No. %')
             ]
         )
 
@@ -60,15 +62,15 @@ class Wl_Table_Concordancer_Parallel_Lower(wl_tables.Wl_Table_Data):
             parent,
             tab = 'concordancer_parallel',
             headers = [
-                parent.tr('Parallel Text'),
-                parent.tr('Segment No.'),
-                parent.tr('Segment No. %')
+                _tr('Wl_Table_Concordancer_Parallel_Lower', 'Parallel Text'),
+                _tr('Wl_Table_Concordancer_Parallel_Lower', 'Segment No.'),
+                _tr('Wl_Table_Concordancer_Parallel_Lower', 'Segment No. %')
             ],
             headers_int = [
-                parent.tr('Segment No.')
+                _tr('Wl_Table_Concordancer_Parallel_Lower', 'Segment No.')
             ],
             headers_pct = [
-                parent.tr('Segment No. %')
+                _tr('Wl_Table_Concordancer_Parallel_Lower', 'Segment No. %')
             ]
         )
 
@@ -824,7 +826,13 @@ def generate_table(main, table_src, table_tgt):
         ):
             search_additions = True
         else:
-            search_additions = wl_msg_boxes.wl_msg_box_missing_search_terms_concordancer_parallel(main)
+            search_additions = wl_msg_boxes.wl_msg_box_question(
+                main,
+                title = _tr('wl_concordancer_parallel', 'Empty Search Terms'),
+                text = _tr('wl_concordancer_parallel', '''
+                    <div>You have not specified any search terms. Do you want to search for additions in the target file?</div>
+                ''')
+            )
 
         # Ask for confirmation
         if search_additions:
@@ -837,5 +845,11 @@ def generate_table(main, table_src, table_tgt):
         else:
             wl_msgs.wl_msg_generate_table_error(main)
     else:
-        wl_msg_boxes.wl_msg_box_identical_src_tgt_files(main)
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            main,
+            title = _tr('wl_concordancer_parallel', 'Identical source and target files'),
+            text = _tr('wl_concordancer_parallel', '''
+                <div>The source and target file you have specified are identical. Please check your settings and try again.</div>
+            ''')
+        ).open()
         wl_msgs.wl_msg_generate_table_error(main)

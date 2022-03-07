@@ -32,6 +32,8 @@ from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_threading
 from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
+_tr = QCoreApplication.translate
+
 class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
         super().__init__(
@@ -39,253 +41,253 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
             tab = 'profiler',
             headers = [
                 # Readability
-                parent.tr('Automated Readability Index'),
-                parent.tr('Coleman-Liau Index'),
-                parent.tr('Dale-Chall Readability Score'),
-                parent.tr('Devereaux Readability Index'),
-                parent.tr('Flesch Reading Ease'),
-                parent.tr('Flesch Reading Ease (Simplified)'),
-                parent.tr('Flesch-Kincaid Grade Level'),
-                parent.tr('FORCAST Grade Level'),
-                parent.tr('Gunning Fog Index'),
-                parent.tr('SMOG Grade'),
-                parent.tr('Spache Grade Level'),
-                parent.tr('Write Score'),
+                _tr('Wl_Table_Profiler', 'Automated Readability Index'),
+                _tr('Wl_Table_Profiler', 'Coleman-Liau Index'),
+                _tr('Wl_Table_Profiler', 'Dale-Chall Readability Score'),
+                _tr('Wl_Table_Profiler', 'Devereaux Readability Index'),
+                _tr('Wl_Table_Profiler', 'Flesch Reading Ease'),
+                _tr('Wl_Table_Profiler', 'Flesch Reading Ease (Simplified)'),
+                _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
+                _tr('Wl_Table_Profiler', 'FORCAST Grade Level'),
+                _tr('Wl_Table_Profiler', 'Gunning Fog Index'),
+                _tr('Wl_Table_Profiler', 'SMOG Grade'),
+                _tr('Wl_Table_Profiler', 'Spache Grade Level'),
+                _tr('Wl_Table_Profiler', 'Write Score'),
                 # Counts
-                parent.tr('Count of Paragraphs'),
-                parent.tr('Count of Paragraphs %'),
-                parent.tr('Count of Sentences'),
-                parent.tr('Count of Sentences %'),
-                parent.tr('Count of Tokens'),
-                parent.tr('Count of Tokens %'),
-                parent.tr('Count of Types'),
-                parent.tr('Count of Types %'),
-                parent.tr('Count of Syllables'),
-                parent.tr('Count of Syllables %'),
-                parent.tr('Count of Characters'),
-                parent.tr('Count of Characters %'),
+                _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
+                _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
+                _tr('Wl_Table_Profiler', 'Count of Sentences'),
+                _tr('Wl_Table_Profiler', 'Count of Sentences %'),
+                _tr('Wl_Table_Profiler', 'Count of Tokens'),
+                _tr('Wl_Table_Profiler', 'Count of Tokens %'),
+                _tr('Wl_Table_Profiler', 'Count of Types'),
+                _tr('Wl_Table_Profiler', 'Count of Types %'),
+                _tr('Wl_Table_Profiler', 'Count of Syllables'),
+                _tr('Wl_Table_Profiler', 'Count of Syllables %'),
+                _tr('Wl_Table_Profiler', 'Count of Characters'),
+                _tr('Wl_Table_Profiler', 'Count of Characters %'),
                 # TTR
-                parent.tr('Type-token Ratio'),
-                parent.tr('Type-token Ratio (Standardized)'),
+                _tr('Wl_Table_Profiler', 'Type-token Ratio'),
+                _tr('Wl_Table_Profiler', 'Type-token Ratio (Standardized)'),
                 # Paragraph length
-                parent.tr('Paragraph Length in Sentences (Mean)'),
-                parent.tr('Paragraph Length in Sentences (Standard Deviation)'),
-                parent.tr('Paragraph Length in Sentences (Variance)'),
-                parent.tr('Paragraph Length in Sentences (Minimum)'),
-                parent.tr('Paragraph Length in Sentences (25th Percentile)'),
-                parent.tr('Paragraph Length in Sentences (Median)'),
-                parent.tr('Paragraph Length in Sentences (75th Percentile)'),
-                parent.tr('Paragraph Length in Sentences (Maximum)'),
-                parent.tr('Paragraph Length in Sentences (Range)'),
-                parent.tr('Paragraph Length in Sentences (Modes)'),
-                parent.tr('Paragraph Length in Tokens (Mean)'),
-                parent.tr('Paragraph Length in Tokens (Standard Deviation)'),
-                parent.tr('Paragraph Length in Tokens (Variance)'),
-                parent.tr('Paragraph Length in Tokens (Minimum)'),
-                parent.tr('Paragraph Length in Tokens (25th Percentile)'),
-                parent.tr('Paragraph Length in Tokens (Median)'),
-                parent.tr('Paragraph Length in Tokens (75th Percentile)'),
-                parent.tr('Paragraph Length in Tokens (Maximum)'),
-                parent.tr('Paragraph Length in Tokens (Range)'),
-                parent.tr('Paragraph Length in Tokens (Modes)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Mean)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Variance)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Median)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Modes)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Variance)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Median)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Modes)'),
                 # Sentence length
-                parent.tr('Sentence Length in Tokens (Mean)'),
-                parent.tr('Sentence Length in Tokens (Standard Deviation)'),
-                parent.tr('Sentence Length in Tokens (Variance)'),
-                parent.tr('Sentence Length in Tokens (Minimum)'),
-                parent.tr('Sentence Length in Tokens (25th Percentile)'),
-                parent.tr('Sentence Length in Tokens (Median)'),
-                parent.tr('Sentence Length in Tokens (75th Percentile)'),
-                parent.tr('Sentence Length in Tokens (Maximum)'),
-                parent.tr('Sentence Length in Tokens (Range)'),
-                parent.tr('Sentence Length in Tokens (Modes)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Mean)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Variance)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Median)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Range)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Modes)'),
                 # Token length
-                parent.tr('Token Length in Syllables (Mean)'),
-                parent.tr('Token Length in Syllables (Standard Deviation)'),
-                parent.tr('Token Length in Syllables (Variance)'),
-                parent.tr('Token Length in Syllables (Minimum)'),
-                parent.tr('Token Length in Syllables (25th Percentile)'),
-                parent.tr('Token Length in Syllables (Median)'),
-                parent.tr('Token Length in Syllables (75th Percentile)'),
-                parent.tr('Token Length in Syllables (Maximum)'),
-                parent.tr('Token Length in Syllables (Range)'),
-                parent.tr('Token Length in Syllables (Modes)'),
-                parent.tr('Token Length in Characters (Mean)'),
-                parent.tr('Token Length in Characters (Standard Deviation)'),
-                parent.tr('Token Length in Characters (Variance)'),
-                parent.tr('Token Length in Characters (Minimum)'),
-                parent.tr('Token Length in Characters (25th Percentile)'),
-                parent.tr('Token Length in Characters (Median)'),
-                parent.tr('Token Length in Characters (75th Percentile)'),
-                parent.tr('Token Length in Characters (Maximum)'),
-                parent.tr('Token Length in Characters (Range)'),
-                parent.tr('Token Length in Characters (Modes)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Variance)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Median)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Range)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Modes)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Mean)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Variance)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Median)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Range)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Modes)'),
                 # Type length
-                parent.tr('Type Length in Syllables (Mean)'),
-                parent.tr('Type Length in Syllables (Standard Deviation)'),
-                parent.tr('Type Length in Syllables (Variance)'),
-                parent.tr('Type Length in Syllables (Minimum)'),
-                parent.tr('Type Length in Syllables (25th Percentile)'),
-                parent.tr('Type Length in Syllables (Median)'),
-                parent.tr('Type Length in Syllables (75th Percentile)'),
-                parent.tr('Type Length in Syllables (Maximum)'),
-                parent.tr('Type Length in Syllables (Range)'),
-                parent.tr('Type Length in Syllables (Modes)'),
-                parent.tr('Type Length in Characters (Mean)'),
-                parent.tr('Type Length in Characters (Standard Deviation)'),
-                parent.tr('Type Length in Characters (Variance)'),
-                parent.tr('Type Length in Characters (Minimum)'),
-                parent.tr('Type Length in Characters (25th Percentile)'),
-                parent.tr('Type Length in Characters (Median)'),
-                parent.tr('Type Length in Characters (75th Percentile)'),
-                parent.tr('Type Length in Characters (Maximum)'),
-                parent.tr('Type Length in Characters (Range)'),
-                parent.tr('Type Length in Characters (Modes)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Mean)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Variance)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Median)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Range)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Modes)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Mean)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Variance)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Median)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Range)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Modes)'),
                 # Syllable length
-                parent.tr('Syllable Length in Characters (Mean)'),
-                parent.tr('Syllable Length in Characters (Standard Deviation)'),
-                parent.tr('Syllable Length in Characters (Variance)'),
-                parent.tr('Syllable Length in Characters (Minimum)'),
-                parent.tr('Syllable Length in Characters (25th Percentile)'),
-                parent.tr('Syllable Length in Characters (Median)'),
-                parent.tr('Syllable Length in Characters (75th Percentile)'),
-                parent.tr('Syllable Length in Characters (Maximum)'),
-                parent.tr('Syllable Length in Characters (Range)'),
-                parent.tr('Syllable Length in Characters (Modes)')
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Mean)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Variance)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Median)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Range)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Modes)')
             ],
             header_orientation = 'vert',
             headers_int = [
                 # Counts
-                parent.tr('Count of Paragraphs'),
-                parent.tr('Count of Sentences'),
-                parent.tr('Count of Tokens'),
-                parent.tr('Count of Types'),
-                parent.tr('Count of Syllables'),
-                parent.tr('Count of Characters'),
+                _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
+                _tr('Wl_Table_Profiler', 'Count of Sentences'),
+                _tr('Wl_Table_Profiler', 'Count of Tokens'),
+                _tr('Wl_Table_Profiler', 'Count of Types'),
+                _tr('Wl_Table_Profiler', 'Count of Syllables'),
+                _tr('Wl_Table_Profiler', 'Count of Characters'),
                 # Paragraph length
-                parent.tr('Paragraph Length in Sentences (Minimum)'),
-                parent.tr('Paragraph Length in Sentences (Maximum)'),
-                parent.tr('Paragraph Length in Sentences (Range)'),
-                parent.tr('Paragraph Length in Tokens (Minimum)'),
-                parent.tr('Paragraph Length in Tokens (Maximum)'),
-                parent.tr('Paragraph Length in Tokens (Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Range)'),
                 # Sentence length
-                parent.tr('Sentence Length in Tokens (Minimum)'),
-                parent.tr('Sentence Length in Tokens (Maximum)'),
-                parent.tr('Sentence Length in Tokens (Range)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Range)'),
                 # Token length
-                parent.tr('Token Length in Syllables (Minimum)'),
-                parent.tr('Token Length in Syllables (Maximum)'),
-                parent.tr('Token Length in Syllables (Range)'),
-                parent.tr('Token Length in Characters (Minimum)'),
-                parent.tr('Token Length in Characters (Maximum)'),
-                parent.tr('Token Length in Characters (Range)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Range)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Range)'),
                 # Type length
-                parent.tr('Type Length in Syllables (Minimum)'),
-                parent.tr('Type Length in Syllables (Maximum)'),
-                parent.tr('Type Length in Syllables (Range)'),
-                parent.tr('Type Length in Characters (Minimum)'),
-                parent.tr('Type Length in Characters (Maximum)'),
-                parent.tr('Type Length in Characters (Range)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Range)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Range)'),
                 # Syllable length
-                parent.tr('Syllable Length in Characters (Minimum)'),
-                parent.tr('Syllable Length in Characters (Maximum)'),
-                parent.tr('Syllable Length in Characters (Range)')
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Range)')
             ],
             headers_float = [
                 # Readability
-                parent.tr('Automated Readability Index'),
-                parent.tr('Coleman-Liau Index'),
-                parent.tr('Dale-Chall Readability Score'),
-                parent.tr('Devereaux Readability Index'),
-                parent.tr('Flesch Reading Ease'),
-                parent.tr('Flesch Reading Ease (Simplified)'),
-                parent.tr('Flesch-Kincaid Grade Level'),
-                parent.tr('FORCAST Grade Level'),
-                parent.tr('Gunning Fog Index'),
-                parent.tr('SMOG Grade'),
-                parent.tr('Spache Grade Level'),
-                parent.tr('Write Score'),
+                _tr('Wl_Table_Profiler', 'Automated Readability Index'),
+                _tr('Wl_Table_Profiler', 'Coleman-Liau Index'),
+                _tr('Wl_Table_Profiler', 'Dale-Chall Readability Score'),
+                _tr('Wl_Table_Profiler', 'Devereaux Readability Index'),
+                _tr('Wl_Table_Profiler', 'Flesch Reading Ease'),
+                _tr('Wl_Table_Profiler', 'Flesch Reading Ease (Simplified)'),
+                _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
+                _tr('Wl_Table_Profiler', 'FORCAST Grade Level'),
+                _tr('Wl_Table_Profiler', 'Gunning Fog Index'),
+                _tr('Wl_Table_Profiler', 'SMOG Grade'),
+                _tr('Wl_Table_Profiler', 'Spache Grade Level'),
+                _tr('Wl_Table_Profiler', 'Write Score'),
                 # TTR
-                parent.tr('Type-token Ratio'),
-                parent.tr('Type-token Ratio (Standardized)'),
+                _tr('Wl_Table_Profiler', 'Type-token Ratio'),
+                _tr('Wl_Table_Profiler', 'Type-token Ratio (Standardized)'),
                 # Paragraph length
-                parent.tr('Paragraph Length in Sentences (Mean)'),
-                parent.tr('Paragraph Length in Sentences (Standard Deviation)'),
-                parent.tr('Paragraph Length in Sentences (Variance)'),
-                parent.tr('Paragraph Length in Sentences (25th Percentile)'),
-                parent.tr('Paragraph Length in Sentences (Median)'),
-                parent.tr('Paragraph Length in Sentences (75th Percentile)'),
-                parent.tr('Paragraph Length in Tokens (Mean)'),
-                parent.tr('Paragraph Length in Tokens (Standard Deviation)'),
-                parent.tr('Paragraph Length in Tokens (Variance)'),
-                parent.tr('Paragraph Length in Tokens (25th Percentile)'),
-                parent.tr('Paragraph Length in Tokens (Median)'),
-                parent.tr('Paragraph Length in Tokens (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Mean)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Variance)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Median)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Variance)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Median)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (75th Percentile)'),
                 # Sentence length
-                parent.tr('Sentence Length in Tokens (Mean)'),
-                parent.tr('Sentence Length in Tokens (Standard Deviation)'),
-                parent.tr('Sentence Length in Tokens (Variance)'),
-                parent.tr('Sentence Length in Tokens (25th Percentile)'),
-                parent.tr('Sentence Length in Tokens (Median)'),
-                parent.tr('Sentence Length in Tokens (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Mean)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Variance)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Median)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (75th Percentile)'),
                 # Token length
-                parent.tr('Token Length in Syllables (Mean)'),
-                parent.tr('Token Length in Syllables (Standard Deviation)'),
-                parent.tr('Token Length in Syllables (Variance)'),
-                parent.tr('Token Length in Syllables (25th Percentile)'),
-                parent.tr('Token Length in Syllables (Median)'),
-                parent.tr('Token Length in Syllables (75th Percentile)'),
-                parent.tr('Token Length in Characters (Mean)'),
-                parent.tr('Token Length in Characters (Standard Deviation)'),
-                parent.tr('Token Length in Characters (Variance)'),
-                parent.tr('Token Length in Characters (25th Percentile)'),
-                parent.tr('Token Length in Characters (Median)'),
-                parent.tr('Token Length in Characters (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Variance)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Median)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Mean)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Variance)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Median)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (75th Percentile)'),
                 # Type length
-                parent.tr('Type Length in Syllables (Mean)'),
-                parent.tr('Type Length in Syllables (Standard Deviation)'),
-                parent.tr('Type Length in Syllables (Variance)'),
-                parent.tr('Type Length in Syllables (25th Percentile)'),
-                parent.tr('Type Length in Syllables (Median)'),
-                parent.tr('Type Length in Syllables (75th Percentile)'),
-                parent.tr('Type Length in Characters (Mean)'),
-                parent.tr('Type Length in Characters (Standard Deviation)'),
-                parent.tr('Type Length in Characters (Variance)'),
-                parent.tr('Type Length in Characters (25th Percentile)'),
-                parent.tr('Type Length in Characters (Median)'),
-                parent.tr('Type Length in Characters (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Mean)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Variance)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Median)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Mean)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Variance)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Median)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (75th Percentile)'),
                 # Syllable length
-                parent.tr('Syllable Length in Characters (Mean)'),
-                parent.tr('Syllable Length in Characters (Standard Deviation)'),
-                parent.tr('Syllable Length in Characters (Variance)'),
-                parent.tr('Syllable Length in Characters (25th Percentile)'),
-                parent.tr('Syllable Length in Characters (Median)'),
-                parent.tr('Syllable Length in Characters (75th Percentile)')
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Mean)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Variance)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Median)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (75th Percentile)')
             ],
             headers_pct = [
                 # Counts
-                parent.tr('Count of Paragraphs %'),
-                parent.tr('Count of Sentences %'),
-                parent.tr('Count of Tokens %'),
-                parent.tr('Count of Types %'),
-                parent.tr('Count of Syllables %'),
-                parent.tr('Count of Characters %')
+                _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
+                _tr('Wl_Table_Profiler', 'Count of Sentences %'),
+                _tr('Wl_Table_Profiler', 'Count of Tokens %'),
+                _tr('Wl_Table_Profiler', 'Count of Types %'),
+                _tr('Wl_Table_Profiler', 'Count of Syllables %'),
+                _tr('Wl_Table_Profiler', 'Count of Characters %')
             ],
             headers_cumulative = [
                 # Counts
-                parent.tr('Count of Paragraphs'),
-                parent.tr('Count of Paragraphs %'),
-                parent.tr('Count of Sentences'),
-                parent.tr('Count of Sentences %'),
-                parent.tr('Count of Tokens'),
-                parent.tr('Count of Tokens %'),
-                parent.tr('Count of Types'),
-                parent.tr('Count of Types %'),
-                parent.tr('Count of Syllables'),
-                parent.tr('Count of Syllables %'),
-                parent.tr('Count of Characters'),
-                parent.tr('Count of Characters %')
+                _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
+                _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
+                _tr('Wl_Table_Profiler', 'Count of Sentences'),
+                _tr('Wl_Table_Profiler', 'Count of Sentences %'),
+                _tr('Wl_Table_Profiler', 'Count of Tokens'),
+                _tr('Wl_Table_Profiler', 'Count of Tokens %'),
+                _tr('Wl_Table_Profiler', 'Count of Types'),
+                _tr('Wl_Table_Profiler', 'Count of Types %'),
+                _tr('Wl_Table_Profiler', 'Count of Syllables'),
+                _tr('Wl_Table_Profiler', 'Count of Syllables %'),
+                _tr('Wl_Table_Profiler', 'Count of Characters'),
+                _tr('Wl_Table_Profiler', 'Count of Characters %')
             ]
         )
 
@@ -658,7 +660,7 @@ def generate_table(main, table):
 
                 for i, file in enumerate(files):
                     table.ins_header_hor(
-                        table.find_header_hor(main.tr('Total')), file['name'],
+                        table.find_header_hor(_tr('wl_profiler', 'Total')), file['name'],
                         is_breakdown = True
                     )
 
@@ -740,8 +742,8 @@ def generate_table(main, table):
                         table.set_item_num(20, i, count_syls)
                         table.set_item_num(21, i, count_syls, count_syls_total)
                     else:
-                        table.set_item_error(20, i, text = main.tr('No Support'))
-                        table.set_item_error(21, i, text = main.tr('No Support'))
+                        table.set_item_error(20, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(21, i, text = _tr('wl_profiler', 'No Support'))
 
                     # Count of Characters
                     table.set_item_num(22, i, count_chars)
@@ -814,16 +816,16 @@ def generate_table(main, table):
 
                         table.model().item(65, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
-                        table.set_item_error(56, i, text = main.tr('No Support'))
-                        table.set_item_error(57, i, text = main.tr('No Support'))
-                        table.set_item_error(58, i, text = main.tr('No Support'))
-                        table.set_item_error(59, i, text = main.tr('No Support'))
-                        table.set_item_error(60, i, text = main.tr('No Support'))
-                        table.set_item_error(61, i, text = main.tr('No Support'))
-                        table.set_item_error(62, i, text = main.tr('No Support'))
-                        table.set_item_error(63, i, text = main.tr('No Support'))
-                        table.set_item_error(64, i, text = main.tr('No Support'))
-                        table.set_item_error(65, i, text = main.tr('No Support'))
+                        table.set_item_error(56, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(57, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(58, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(59, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(60, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(61, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(62, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(63, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(64, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(65, i, text = _tr('wl_profiler', 'No Support'))
 
                     table.set_item_num(66, i, numpy.mean(len_tokens_chars))
                     table.set_item_num(67, i, numpy.std(len_tokens_chars))
@@ -857,16 +859,16 @@ def generate_table(main, table):
 
                         table.model().item(85, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
-                        table.set_item_error(76, i, text = main.tr('No Support'))
-                        table.set_item_error(77, i, text = main.tr('No Support'))
-                        table.set_item_error(78, i, text = main.tr('No Support'))
-                        table.set_item_error(79, i, text = main.tr('No Support'))
-                        table.set_item_error(80, i, text = main.tr('No Support'))
-                        table.set_item_error(81, i, text = main.tr('No Support'))
-                        table.set_item_error(82, i, text = main.tr('No Support'))
-                        table.set_item_error(83, i, text = main.tr('No Support'))
-                        table.set_item_error(84, i, text = main.tr('No Support'))
-                        table.set_item_error(85, i, text = main.tr('No Support'))
+                        table.set_item_error(76, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(77, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(78, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(79, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(80, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(81, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(82, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(83, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(84, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(85, i, text = _tr('wl_profiler', 'No Support'))
 
                     table.set_item_num(86, i, numpy.mean(len_types_chars))
                     table.set_item_num(87, i, numpy.std(len_types_chars))
@@ -900,16 +902,16 @@ def generate_table(main, table):
 
                         table.model().item(105, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                     else:
-                        table.set_item_error(96, i, text = main.tr('No Support'))
-                        table.set_item_error(97, i, text = main.tr('No Support'))
-                        table.set_item_error(98, i, text = main.tr('No Support'))
-                        table.set_item_error(99, i, text = main.tr('No Support'))
-                        table.set_item_error(100, i, text = main.tr('No Support'))
-                        table.set_item_error(101, i, text = main.tr('No Support'))
-                        table.set_item_error(102, i, text = main.tr('No Support'))
-                        table.set_item_error(103, i, text = main.tr('No Support'))
-                        table.set_item_error(104, i, text = main.tr('No Support'))
-                        table.set_item_error(105, i, text = main.tr('No Support'))
+                        table.set_item_error(96, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(97, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(98, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(99, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(100, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(101, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(102, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(103, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(104, i, text = _tr('wl_profiler', 'No Support'))
+                        table.set_item_error(105, i, text = _tr('wl_profiler', 'No Support'))
 
                     count_tokens_lens.append(collections.Counter(len_tokens_chars))
                     count_sentences_lens.append(collections.Counter(len_sentences))
@@ -926,11 +928,11 @@ def generate_table(main, table):
                     # Append vertical headers
                     for count_sentences_len in count_sentences_lens:
                         table.add_header_vert(
-                            main.tr(f'Count of {count_sentences_len}-length Sentences'),
+                            _tr('wl_profiler', 'Count of {}-length Sentences').format(count_sentences_len),
                             is_int = True, is_cumulative = True
                         )
                         table.add_header_vert(
-                            main.tr(f'Count of {count_sentences_len}-length Sentences %'),
+                            _tr('wl_profiler', 'Count of {}-length Sentences %').format(count_sentences_len),
                             is_pct = True, is_cumulative = True
                         )
 
@@ -962,11 +964,11 @@ def generate_table(main, table):
                     # Append vertical headers
                     for count_tokens_len in count_tokens_lens:
                         table.add_header_vert(
-                            main.tr(f'Count of {count_tokens_len}-Length Tokens'),
+                            _tr('wl_profiler', 'Count of {}-Length Tokens').format(count_tokens_len),
                             is_int = True, is_cumulative = True
                         )
                         table.add_header_vert(
-                            main.tr(f'Count of {count_tokens_len}-Length Tokens %'),
+                            _tr('wl_profiler', 'Count of {}-Length Tokens %').format(count_tokens_len),
                             is_pct = True, is_cumulative = True
                         )
 

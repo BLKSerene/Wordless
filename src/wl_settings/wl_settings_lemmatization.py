@@ -159,7 +159,7 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
                 self.button_lemmatization_show_preview.setEnabled(False)
                 self.text_edit_lemmatization_preview_samples.setEnabled(False)
 
-                self.button_lemmatization_show_preview.setText(self.tr('Processing ...'))
+                self.button_lemmatization_show_preview.setText(self.tr('Processing...'))
 
                 lemmatizer = wl_nlp_utils.to_lang_util_code(
                     self.main,
