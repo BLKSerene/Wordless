@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Utilities - Translation - Preprocessing
+# Wordless: Utilities - Translations - Translate
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ import re
 import bs4
 
 # eng_us: [zho_cn]
-TRANS_LANGS = {
+TRS_LANGS = {
     'Afrikaans': ['南非语'],
     'Akkadian': ['阿卡德语'],
     'Albanian': ['阿尔巴尼亚语'],
@@ -161,7 +161,7 @@ TRANS_LANGS = {
     'Norwegian': ['挪威语'],
     'Serbian': ['塞尔维亚语'],
 }
-TRANS_ENCODINGS = {
+TRS_ENCODINGS = {
     # 'with/without BOM' & contained in 'BE/LE with/without BOM'
     'BE with BOM': [' 大端带签名'],
     'BE without BOM': [' 大端无签名'],
@@ -170,7 +170,7 @@ TRANS_ENCODINGS = {
     'with BOM': ['带签名'],
     'without BOM': ['无签名'],
 }
-TRANS_FILE_TYPES = {
+TRS_FILE_TYPES = {
     'CSV File (*.csv)': ['CSV 文件 (*.csv)'],
     'Excel Workbook (*.xlsx)': ['Excel 工作簿 (*.xlsx)'],
     'HTML Page (*.htm; *.html)': ['HTML 页面 (*.htm; *.html)'],
@@ -180,7 +180,7 @@ TRANS_FILE_TYPES = {
     'XML File (*.xml)': ['XML 文件 (*.xml)'],
     'All Files (*.*)': ['所有文件 (*.*)']
 }
-TRNAS_NLP_UTILS = {
+TRS_NLP_UTILS = {
     # Settings
     'Sentence Tokenizer Settings': ['分句器设置'],
     'Sentence Tokenizers': ['分句器'],
@@ -227,7 +227,7 @@ TRNAS_NLP_UTILS = {
 
     'Stop Word List': ['停用词表']
 }
-TRANS_MISC = {
+TRS_MISC = {
     # About Wordless
     '''
                 <hr>
@@ -271,83 +271,87 @@ TRANS_MISC = {
     'R': ['右']
 }
 
-with open('../src/trans/zho_cn.ts', 'r', encoding = 'utf_8') as f:
+with open('../src/trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
     soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
 
 for element_context in soup.select('context'):
     for element_message in element_context.select('message'):
-        trans_hit = False
+        tr_hit = False
 
         element_src = element_message.select_one('source')
-        element_trans = element_message.select_one('translation')
+        element_tr = element_message.select_one('translation')
 
-        if 'type' in element_trans.attrs and element_trans['type'] != 'obsolete':
-            trans = element_src.text
+        # Do not re-translate obsolete translations
+        if (
+            'type' not in element_tr.attrs
+            or ('type' in element_tr.attrs and element_tr['type'] != 'obsolete')
+        ):
+            tr = element_src.text
 
             # Languages
-            for lang in TRANS_LANGS:
-                if lang in trans:
-                    trans = trans.replace(lang, TRANS_LANGS[lang][0])
+            for lang in TRS_LANGS:
+                if lang in tr:
+                    tr = tr.replace(lang, TRS_LANGS[lang][0])
                     # Excludes cases such as Mac OS Romanian in encodings
-                    trans = trans.replace(f'(Mac OS {TRANS_LANGS[lang][0]})', f'(Mac OS {lang})')
+                    tr = tr.replace(f'(Mac OS {TRS_LANGS[lang][0]})', f'(Mac OS {lang})')
                     # Excludes cases such as PyThaiNLP in third-party NLP libraries
-                    trans = trans.replace('Py泰语NLP', 'PyThaiNLP')
+                    tr = tr.replace('Py泰语NLP', 'PyThaiNLP')
 
-                    trans_hit = True
+                    tr_hit = True
 
                     break
 
             # Encodings
-            for encoding in TRANS_ENCODINGS:
-                if encoding in trans:
-                    trans = trans.replace(encoding, TRANS_ENCODINGS[encoding][0])
+            for encoding in TRS_ENCODINGS:
+                if encoding in tr:
+                    tr = tr.replace(encoding, TRS_ENCODINGS[encoding][0])
 
-                    trans_hit = True
+                    tr_hit = True
 
                     break
 
             # File types
-            for file_type in TRANS_FILE_TYPES:
-                if trans == file_type:
-                    trans = TRANS_FILE_TYPES[trans][0]
+            for file_type in TRS_FILE_TYPES:
+                if tr == file_type:
+                    tr = TRS_FILE_TYPES[tr][0]
 
-                    trans_hit = True
+                    tr_hit = True
 
                     break
 
             # NLP utils
-            for util in TRNAS_NLP_UTILS:
-                if util in trans:
-                    trans = trans.replace(util, TRNAS_NLP_UTILS[util][0])
+            for util in TRS_NLP_UTILS:
+                if util in tr:
+                    tr = tr.replace(util, TRS_NLP_UTILS[util][0])
 
-                    trans_hit = True
+                    tr_hit = True
 
                     break
 
             # Misc
-            for item in TRANS_MISC:
-                if trans == item:
-                    trans = TRANS_MISC[trans][0]
+            for item in TRS_MISC:
+                if tr == item:
+                    tr = TRS_MISC[tr][0]
 
-                    trans_hit = True
+                    tr_hit = True
 
                     break
 
-            if trans_hit:
+            if tr_hit:
                 # Do not replace parentheses in file type filters
-                if element_src.text not in TRANS_FILE_TYPES:
+                if element_src.text not in TRS_FILE_TYPES:
                     # Parentheses
-                    trans = re.sub(r'\s*\(', r'（', trans)
-                    trans = re.sub(r'\)\s*', r'）', trans)
+                    tr = re.sub(r'\s*\(', r'（', tr)
+                    tr = re.sub(r'\)\s*', r'）', tr)
                     # Remove whitespace between Chinese characters
-                    trans = re.sub(r'(?<=[\u4E00-\u9FFF（）])\s+(?=[\u4E00-\u9FFF（）])', '', trans)
+                    tr = re.sub(r'(?<=[\u4E00-\u9FFF（）])\s+(?=[\u4E00-\u9FFF（）])', '', tr)
 
-                element_message.select_one('translation').string = trans
+                element_message.select_one('translation').string = tr
                 element_message.select_one('translation').attrs = {}
 
-                print(f'Auto-translated "{element_src.text}" into "{trans}".')
+                print(f'Auto-translated "{element_src.text}" into "{tr}".')
 
-with open('../src/trans/zho_cn.ts', 'w', encoding = 'utf_8') as f:
+with open('../src/trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
     xml = str(soup)
     # Fix format
     xml = xml.replace('<html><body><ts', '<TS')

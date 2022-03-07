@@ -254,7 +254,8 @@ class Wl_Main(QMainWindow):
         self.action_group_prefs_display_lang.setExclusive(True)
 
         for action_lang, action_text in [
-            ['zho_cn', '中文（简体）'],
+            ['zho_cn', '汉语（简体）'],
+            ['zho_tw', '汉语（繁体）'],
             ['eng_us', 'English (United States)']
         ]:
             self.__dict__[f'action_prefs_display_lang_{action_lang}'] = self.menu_prefs_display_lang.addAction(action_text)
@@ -1202,7 +1203,7 @@ if __name__ == '__main__':
 
     if display_lang != 'eng_us':
         translator = QTranslator()
-        translator.load(f'trans/{display_lang}.qm')
+        translator.load(f'trs/{display_lang}.qm')
 
         wl_app.installTranslator(translator)
 
