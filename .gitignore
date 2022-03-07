@@ -128,4 +128,4 @@ misc/
 # Wordless - Custom Settings
 *.pickle
 # Wordless - Translations
-*.ts
+*.qm
