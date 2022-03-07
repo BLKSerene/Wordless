@@ -328,6 +328,17 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
         else:
             self.combo_box_imp_stop_words_default_encoding.setEnabled(True)
 
+    def check_path(self, settings):
+        if os.path.exists(self.settings_custom[settings]['default_path']):
+            return self.settings_custom[settings]['default_path']
+        # Fall back to default settings if the path does not exist
+        else:
+            # If the default path does not exist, create it
+            if not os.path.exists(self.settings_default[settings]['default_path']):
+                os.makedirs(self.settings_default[settings]['default_path'], exist_ok = True)
+
+            return self.settings_default[settings]['default_path']
+
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.settings_default)
@@ -335,31 +346,20 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_custom)
 
         # Files
-        if os.path.exists(settings['files']['default_path']):
-            self.line_edit_imp_files_default_path.setText(settings['files']['default_path'])
-        else:
-            self.line_edit_imp_files_default_path.setText(self.settings_default['files']['default_path'])
+        self.line_edit_imp_files_default_path.setText(self.check_path(settings = 'files'))
 
         # Search Terms
-        if os.path.exists(settings['search_terms']['default_path']):
-            self.line_edit_imp_search_terms_default_path.setText(settings['search_terms']['default_path'])
-        else:
-            self.line_edit_imp_search_terms_default_path.setText(self.settings_default['search_terms']['default_path'])
-
+        self.line_edit_imp_search_terms_default_path.setText(self.check_path(settings = 'search_terms'))
         self.combo_box_imp_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['search_terms']['default_encoding']))
         self.checkbox_imp_search_terms_detect_encodings.setChecked(settings['search_terms']['detect_encodings'])
 
         # Stop Words
-        if os.path.exists(settings['stop_words']['default_path']):
-            self.line_edit_imp_stop_words_default_path.setText(settings['stop_words']['default_path'])
-        else:
-            self.line_edit_imp_stop_words_default_path.setText(self.settings_default['stop_words']['default_path'])
-
+        self.line_edit_imp_stop_words_default_path.setText(self.check_path(settings = 'stop_words'))
         self.combo_box_imp_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
         self.checkbox_imp_stop_words_detect_encodings.setChecked(settings['stop_words']['detect_encodings'])
 
         # Temporary Files
-        self.line_edit_imp_temp_files_default_path.setText(settings['temp_files']['default_path'])
+        self.line_edit_imp_temp_files_default_path.setText(self.check_path(settings = 'temp_files'))
 
         self.detect_encodings_changed()
 
@@ -507,20 +507,34 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
         if path_file:
             self.line_edit_exp_stop_words_default_path.setText(wl_misc.get_normalized_path(path_file))
 
+    def check_path(self, settings):
+        if os.path.exists(self.settings_custom[settings]['default_path']):
+            return self.settings_custom[settings]['default_path']
+        # Fall back to default settings if the path does not exist
+        else:
+            # If the default path does not exist, create it
+            if not os.path.exists(self.settings_default[settings]['default_path']):
+                os.makedirs(self.settings_default[settings]['default_path'], exist_ok = True)
+
+            return self.settings_default[settings]['default_path']
+
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.settings_default)
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        self.line_edit_exp_tables_default_path.setText(settings['tables']['default_path'])
+        # Tables
+        self.line_edit_exp_tables_default_path.setText(self.check_path(settings = 'tables'))
         self.combo_box_exp_tables_default_type.setCurrentText(settings['tables']['default_type'])
         self.combo_box_exp_tables_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['tables']['default_encoding']))
 
-        self.line_edit_exp_search_terms_default_path.setText(settings['search_terms']['default_path'])
+        # Search Terms
+        self.line_edit_exp_search_terms_default_path.setText(self.check_path(settings = 'search_terms'))
         self.combo_box_exp_search_terms_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['search_terms']['default_encoding']))
 
-        self.line_edit_exp_stop_words_default_path.setText(settings['stop_words']['default_path'])
+        # Stop Words
+        self.line_edit_exp_stop_words_default_path.setText(self.check_path(settings = 'stop_words'))
         self.combo_box_exp_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
 
     def validate_settings(self):
