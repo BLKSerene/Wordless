@@ -18,9 +18,11 @@
 
 import platform
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QPainter, QPalette
+from PyQt5.QtWidgets import (
+    QFrame, QGridLayout, QScrollArea, QSizePolicy, QSplitter,
+    QStackedWidget, QStyle, QStyleOption, QWidget
+)
 
 from wl_utils import wl_misc
 from wl_widgets import wl_buttons
@@ -131,7 +133,7 @@ class Wl_Stacked_Widget(QStackedWidget):
             self.widget(i).setSizePolicy(QSizePolicy.Ignored, QSizePolicy.Ignored)
             self.widget(i).adjustSize()
 
-        self.widget(index).setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding);
+        self.widget(index).setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.widget(index).adjustSize()
 
         self.adjustSize()
@@ -142,12 +144,12 @@ class Wl_Stacked_Widget(QStackedWidget):
         self.currentChanged.emit(self.currentIndex())
 
 class Wl_Separator(QFrame):
-    def __init__(self, parent, orientation = 'Horizontal'):
+    def __init__(self, parent, orientation = 'hor'):
         super().__init__(parent)
 
         self.main = wl_misc.find_wl_main(parent)
 
-        if orientation == 'Horizontal':
+        if orientation == 'hor':
             self.setFrameShape(QFrame.HLine)
         else:
             self.setFrameShape(QFrame.VLine)

@@ -19,10 +19,13 @@
 import os
 import re
 
+from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QStandardItem
 
 from wl_dialogs import wl_dialogs_errs
 from wl_utils import wl_misc
+
+_tr = QCoreApplication.translate
 
 def check_file_paths_unsupported(main, file_paths):
     file_paths_ok = []
@@ -87,11 +90,11 @@ def check_files_on_loading_colligation_extractor(main, files):
     file_paths_pos_tagging_unsupported = [file['path'] for file in files_pos_tagging_unsupported]
 
     if file_paths_pos_tagging_unsupported:
-        dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = main.tr('Error Loading Files'))
+        dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = _tr('check_files_on_loading_colligation_extractor', 'Error Loading Files'))
 
-        dialog_err_files.label_err.set_text(main.tr('''
+        dialog_err_files.label_err.set_text(_tr('check_files_on_loading_colligation_extractor', '''
             <div>
-                The built-in POS taggers currently have no support for the following file(s), please check your language settings or provide corpora that have already been POS-tagged.
+                The built-in POS taggers currently have no support for the following files, please check your language settings or provide corpora that have already been POS-tagged.
             </div>
         '''))
 
@@ -102,7 +105,7 @@ def check_files_on_loading_colligation_extractor(main, files):
         for i, file_path in enumerate(file_paths_pos_tagging_unsupported):
             dialog_err_files.table_err_files.model().setItem(
                 i, 0,
-                QStandardItem(main.tr('POS Tagging Unsupported'))
+                QStandardItem(_tr('check_files_on_loading_colligation_extractor', 'POS Tagging Unsupported'))
             )
             dialog_err_files.table_err_files.model().setItem(
                 i, 1,

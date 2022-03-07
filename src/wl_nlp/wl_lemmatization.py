@@ -19,12 +19,20 @@
 import re
 
 import nltk
+from PyQt5.QtCore import QCoreApplication
 import spacy
 
 from wl_nlp import wl_matching, wl_nlp_utils, wl_pos_tagging, wl_word_tokenization
 from wl_utils import wl_conversion, wl_misc
 
-def wl_lemmatize(main, inputs, lang, tokenized = 'No', tagged = 'No', lemmatizer = 'default'):
+_tr = QCoreApplication.translate
+
+def wl_lemmatize(
+    main, inputs, lang,
+    tokenized = _tr('wl_lemmatize', 'No'),
+    tagged = _tr('wl_lemmatize', 'No'),
+    lemmatizer = 'default'
+):
     if inputs and lang in main.settings_global['lemmatizers']:
         lemmas = []
 
@@ -165,7 +173,7 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
 
     re_tags = wl_matching.get_re_tags(main, tag_type = 'body')
 
-    if tagged == 'Yes':
+    if tagged == _tr('wl_lemmatize_tokens', 'Yes'):
         tags = [''.join(re.findall(re_tags, token)) for token in tokens]
         tokens = [re.sub(re_tags, '', token) for token in tokens]
     else:

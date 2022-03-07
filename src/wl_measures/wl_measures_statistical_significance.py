@@ -19,9 +19,12 @@
 import math
 
 import numpy
+from PyQt5.QtCore import QCoreApplication
 import scipy.stats
 
 from wl_measures import wl_measures_bayes_factor
+
+_tr = QCoreApplication.translate
 
 def get_marginals(c11, c12, c21, c22):
     c1x = c11 + c12
@@ -108,11 +111,11 @@ def berry_rogghes_z_score(main, c11, c12, c21, c22, span):
 def fishers_exact_test(main, c11, c12, c21, c22):
     direction = main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction']
 
-    if direction == main.tr('Two-tailed'):
+    if direction == _tr('fishers_exact_test', 'Two-tailed'):
         alternative = 'two-sided'
-    elif direction == main.tr('Left-tailed'):
+    elif direction == _tr('fishers_exact_test', 'Left-tailed'):
         alternative = 'less'
-    elif direction == main.tr('Right-tailed'):
+    elif direction == _tr('fishers_exact_test', 'Right-tailed'):
         alternative = 'greater'
 
     _, p_value = scipy.stats.fisher_exact(
@@ -167,11 +170,11 @@ def mann_whitney_u_test(main, counts_observed, counts_ref):
     direction = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['direction']
     apply_correction = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction']
 
-    if direction == main.tr('Two-tailed'):
+    if direction == _tr('mann_whitney_u_test', 'Two-tailed'):
         alternative = 'two-sided'
-    elif direction == main.tr('Left-tailed'):
+    elif direction == _tr('mann_whitney_u_test', 'Left-tailed'):
         alternative = 'less'
-    elif direction == main.tr('Right-tailed'):
+    elif direction == _tr('mann_whitney_u_test', 'Right-tailed'):
         alternative = 'greater'
 
     u_stat, p_value = mannwhitneyu(
@@ -241,9 +244,9 @@ def students_t_test_1_sample(main, c11, c12, c21, c22):
 def students_t_test_2_sample(main, counts_observed, counts_ref):
     variances = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['variances']
 
-    if variances == main.tr('Equal'):
+    if variances == _tr('students_t_test_2_sample', 'Equal'):
         t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = True)
-    elif variances == main.tr('Unequal'):
+    elif variances == _tr('students_t_test_2_sample', 'Unequal'):
         t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = False)
 
     bayes_factor = wl_measures_bayes_factor.bayes_factor_t_test(t_stat, len(counts_observed) + len(counts_ref))

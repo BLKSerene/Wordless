@@ -20,9 +20,12 @@ import os
 import re
 
 import bs4
+from PyQt5.QtCore import QCoreApplication
 
 from wl_nlp import wl_matching, wl_sentence_tokenization, wl_word_tokenization
 from wl_utils import wl_misc
+
+_tr = QCoreApplication.translate
 
 class Wl_Token(str):
     def __new__(cls, string, *args, **kwargs):
@@ -58,12 +61,12 @@ class Wl_Text():
                 text = f.read()
 
             # Untokenized & Untagged
-            if self.tokenized == self.main.tr('No') and self.tagged == self.main.tr('No'):
+            if self.tokenized == _tr('Wl_Text', 'No') and self.tagged == _tr('Wl_Text', 'No'):
                 tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
 
                 self.tokens_multilevel.extend(tokens)
             # Untokenized & Tagged
-            elif self.tokenized == self.main.tr('No') and self.tagged == self.main.tr('Yes'):
+            elif self.tokenized == _tr('Wl_Text', 'No') and self.tagged == _tr('Wl_Text', 'Yes'):
                 # Replace all tags with a whitespace to ensure no words run together
                 text_no_tags = re.sub(re_tags, ' ', text)
 
@@ -93,7 +96,7 @@ class Wl_Text():
                 if (text := text[tag_end:]):
                     self.add_tags_tokenization(text)
             # Tokenized & Untagged
-            elif self.tokenized == self.main.tr('Yes') and self.tagged == self.main.tr('No'):
+            elif self.tokenized == _tr('Wl_Text', 'Yes') and self.tagged == _tr('Wl_Text', 'No'):
                 for para in text.splitlines():
                     self.tokens_multilevel.append([])
 
@@ -101,7 +104,7 @@ class Wl_Text():
                         for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, para):
                             self.tokens_multilevel[-1].append(sentence.split())
             # Tokenized & Tagged
-            elif self.tokenized == self.main.tr('Yes') and self.tagged == self.main.tr('Yes'):
+            elif self.tokenized == _tr('Wl_Text', 'Yes') and self.tagged == _tr('Wl_Text', 'Yes'):
                 for i, para in enumerate(text.splitlines()):
                     self.tokens_multilevel.append([])
 
@@ -136,10 +139,10 @@ class Wl_Text():
                             self.add_tags_splitting(para)
 
             # Add empty tags for untagged files
-            if self.tagged == self.main.tr('No'):
+            if self.tagged == _tr('Wl_Text', 'No'):
                 self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
         elif file_ext == '.xml':
-            if self.tagged == self.main.tr('Yes'):
+            if self.tagged == _tr('Wl_Text', 'Yes'):
                 tags_para = []
                 tags_sentence = []
                 tags_word = []
@@ -177,18 +180,18 @@ class Wl_Text():
                     tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
 
                     self.tokens_multilevel.extend(tokens)
-            elif self.tagged == self.main.tr('No'):
+            elif self.tagged == _tr('Wl_Text', 'No'):
                 with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
                     text = bs4.BeautifulSoup(f.read(), features = 'lxml-xml').get_text()
 
                 if text:
                     # Untokenized & Untagged
-                    if self.tokenized == self.main.tr('No'):
+                    if self.tokenized == _tr('Wl_Text', 'No'):
                         tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
 
                         self.tokens_multilevel.extend(tokens)
                     # Tokenized & Untagged
-                    elif self.tokenized == self.main.tr('Yes'):
+                    elif self.tokenized == _tr('Wl_Text', 'Yes'):
                         for para in text.splitlines():
                             self.tokens_multilevel.append([])
 

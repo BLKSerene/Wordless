@@ -18,9 +18,7 @@
 
 import time
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QObject, Qt, QThread
 
 class Wl_Worker(QObject):
     progress_updated = pyqtSignal(str)
