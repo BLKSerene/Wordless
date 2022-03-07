@@ -23,6 +23,7 @@
 - File Area: Add support for .tmx files
 - Menu: Add Preferences - Display Language
 - Misc: Add Chinese (Simplified) translation
+- Misc: Add Chinese (Traditional) translation
 - Settings: Add Settings - General - Proxy Settings
 - Utils: Add Lemmatization Lists's Russian lemma list
 - Utils: Add spaCy's Greek (Ancient) and Irish lemmatizers
