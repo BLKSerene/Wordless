@@ -15,7 +15,7 @@ NumPy,https://www.numpy.org/,1.22.3,NumPy Developers,BSD-3-Clause,https://github
 opencc-python,https://github.com/yichen0831/opencc-python,0.1.6,"Huang Yichen, Carbo Kuo (郭家宝)",Apache-2.0,https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt
 openpyxl,https://foss.heptapod.net/openpyxl/openpyxl,3.0.9,"Eric Gazoni, Charlie Clark",MIT,https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.0/LICENCE.rst
 pkuseg,https://github.com/lancopku/pkuseg-python,0.0.25,"Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)",MIT,https://github.com/lancopku/pkuseg-python/blob/master/LICENSE
-PyInstaller,http://www.pyinstaller.org/,4.5.1,Hartmut Goebel,Bootloader-exception,https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt
+PyInstaller,http://www.pyinstaller.org/,4.10,Hartmut Goebel,Bootloader-exception,https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt
 pymorphy2,https://github.com/kmike/pymorphy2,0.9.1,Mikhail Korobov,MIT,https://github.com/kmike/pymorphy2/#pymorphy2
 Pyphen,https://pyphen.org/,0.12.0,Guillaume Ayoub,GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1,https://github.com/Kozea/Pyphen/blob/master/LICENSE
 PyQt,https://riverbankcomputing.com/software/pyqt/,5.15.6,Riverbank Computing Limited,Commercial-Licnese/GPL-3.0-only,https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license
