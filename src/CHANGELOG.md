@@ -63,7 +63,7 @@
 - Dependencies: Upgrade Matplotlib to 3.5.1
 - Dependencies: Upgrade NetworkX to 2.7.1
 - Dependencies: Upgrade NLTK to 3.7
-- Dependencies: Upgrade NumPy to 1.22.2
+- Dependencies: Upgrade NumPy to 1.22.3
 - Dependencies: Upgrade Pyphen to 0.12.0
 - Dependencies: Upgrade PyQt to 5.15.6
 - Dependencies: Upgrade PyThaiNLP to 3.0.5
