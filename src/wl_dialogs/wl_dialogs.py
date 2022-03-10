@@ -37,8 +37,9 @@ class Wl_Dialog(QDialog):
 
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon(wl_misc.get_normalized_path('imgs/wl_icon.ico')))
-        self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
-        self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
+        # Do not use setWindowFlag, which was added in Qt 5.9 (PyQt 5.8 is used on macOS for compatibility with old macOSes)
+        self.setWindowFlags(self.windowFlags() | Qt.MSWindowsFixedSizeDialogHint)
+        self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint)
 
     def set_fixed_height(self):
         self.setFixedHeight(self.heightForWidth(self.width()))
@@ -62,7 +63,7 @@ class Wl_Dialog_Frameless(Wl_Dialog):
             height = height
         )
 
-        self.setWindowFlag(Qt.FramelessWindowHint, True)
+        self.setWindowFlags(self.windowFlags() | Qt.FramelessWindowHint)
         self.setObjectName('wl-dialog-frameless')
         self.setStyleSheet('''
             QDialog#wl-dialog-frameless {
@@ -76,9 +77,6 @@ class Wl_Dialog_Info(Wl_Dialog):
         from wl_widgets import wl_layouts
 
         super().__init__(main, title, width, height)
-
-        self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
-        self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 
         self.wrapper_info = QWidget(self)
 
