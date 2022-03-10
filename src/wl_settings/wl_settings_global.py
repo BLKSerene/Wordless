@@ -2945,7 +2945,7 @@ def init_settings_global():
                             border: 0;
                             padding: 0;
 
-                            line-height: 1.2;
+                            line-height: 120%;
                             text-align: justify;
                         }
 

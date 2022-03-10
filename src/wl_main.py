@@ -1080,7 +1080,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
                         }}
 
                         ul {{
-                            line-height: 1.2;
+                            line-height: 120%;
                             margin-bottom: 10px;
                         }}
 

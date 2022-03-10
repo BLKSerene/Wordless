@@ -16,9 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import os
 import platform
-import sys
 
 import PyInstaller
 import pythainlp
@@ -39,7 +37,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('nagisa', include_py_fil
 datas.extend(PyInstaller.utils.hooks.collect_data_files('opencc'))
 # pkuseg
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pkuseg'))
-# Python-scfsuite
+# Python-crfsuite
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
 # pymorphy2
 datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy2_dicts_ru'))
@@ -66,6 +64,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('es_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('fr_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('it_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('ja_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('lt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('mk_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nb_core_news_sm'))
@@ -76,6 +75,9 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
 # ssg
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ssg'))
+# SudachiPy
+datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachipy'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachidict_core'))
 # TextBlob
 datas.extend(PyInstaller.utils.hooks.collect_data_files('textblob'))
 # Tokenizer
@@ -87,6 +89,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
 
 # Custom data files
 datas.extend([
+    # NLP utils
     ('src/lemmatization', 'lemmatization'),
     ('src/stop_word_lists', 'stop_word_lists'),
     # Measures
@@ -97,17 +100,16 @@ datas.extend([
     # Underthesea
     (underthesea.file_utils.UNDERTHESEA_FOLDER, '.underthesea'),
 
+    # Images
     ('src/imgs', 'imgs'),
-    ('src/wl_acks.xlsx', '.'),
-
+    # Translation
+    ('src/trs', 'trs'),
+    # Misc
+    ('src/wl_acks.csv', '.'),
     ('src/CHANGELOG.md', '.'),
     ('src/VERSION', '.'),
     ('LICENSE.txt', '.')
 ])
-
-# Data files for macOS
-if platform.system() == 'Darwin':
-    datas.extend(PyInstaller.utils.hooks.collect_data_files('PIL', include_py_files = True))
 
 # Hidden imports
 hiddenimports = [
@@ -125,6 +127,7 @@ hiddenimports = [
     'es_core_news_sm',
     'fr_core_news_sm',
     'it_core_news_sm',
+    'ja_core_news_sm',
     'lt_core_news_sm',
     'mk_core_news_sm',
     'nb_core_news_sm',
@@ -132,16 +135,18 @@ hiddenimports = [
     'pl_core_news_sm',
     'pt_core_news_sm',
     'ro_core_news_sm',
-    'ru_core_news_sm'
+    'ru_core_news_sm',
+
+    # SudachiPy
+    'sudachidict_core'
 ]
 
 # Exclusions
-if platform.system() in ['Windows', 'Linux']:
-    excludes = []
-elif platform.system() == 'Darwin':
-    excludes = [
-        'PIL'
-    ]
+excludes = [
+    # PySide
+    'PySide2',
+    'shiboken2'
+]
 
 # Icons
 if platform.system() in ['Windows', 'Linux']:
@@ -208,6 +213,6 @@ if platform.system() == 'Darwin':
         icon = icon,
         bundle_identifier = None,
         info_plist = {
-           'NSHighResolutionCapable': 'True'
+            'NSHighResolutionCapable': 'True'
         }
     )
