@@ -20,6 +20,7 @@ import time
 
 from PyQt5.QtCore import pyqtSignal, QObject, Qt, QThread
 
+# Workers
 class Wl_Worker(QObject):
     progress_updated = pyqtSignal(str)
     worker_done = pyqtSignal()
@@ -70,8 +71,12 @@ class Wl_Worker_No_Callback(QObject):
             self.__dict__[key] = val
 
         self.progress_updated.connect(self.dialog_progress.update_progress)
+
+        # Wait for updating of the progress label
+        self.worker_done.connect(lambda: time.sleep(.01), Qt.DirectConnection)
         self.worker_done.connect(self.dialog_progress.accept)
 
+# Threads
 class Wl_Thread(QThread):
     def __init__(self, worker):
         super().__init__()

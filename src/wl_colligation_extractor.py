@@ -1017,22 +1017,92 @@ def generate_table(main, table):
     def update_gui(err_msg, colligations_freqs_files, colligations_stats_files, nodes_text):
         if not err_msg:
             if colligations_freqs_files:
-                table.clr_table()
+                try:
+                    table.clr_table()
 
-                table.settings = copy.deepcopy(main.settings_custom)
+                    table.settings = copy.deepcopy(main.settings_custom)
 
-                text_test_significance = settings['generation_settings']['test_significance']
-                text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+                    text_test_significance = settings['generation_settings']['test_significance']
+                    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                (
-                    text_test_stat,
-                    text_p_value,
-                    text_bayes_factor
-                ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
-                text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
+                    (
+                        text_test_stat,
+                        text_p_value,
+                        text_bayes_factor
+                    ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
+                    text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
 
-                # Insert columns (files)
-                for i, file in enumerate(files):
+                    # Insert columns (files)
+                    for i, file in enumerate(files):
+                        for i in range(
+                            settings['generation_settings']['window_left'],
+                            settings['generation_settings']['window_right'] + 1
+                        ):
+                            if i < 0:
+                                table.ins_header_hor(
+                                    table.model().columnCount() - 2,
+                                    _tr('wl_colligation_extractor', '[{}]\nL{}').format(file['name'], -i),
+                                    is_int = True, is_cumulative = True, is_breakdown = True
+                                )
+                                table.ins_header_hor(
+                                    table.model().columnCount() - 2,
+                                    _tr('wl_colligation_extractor', '[{}]\nL{} %').format(file['name'], -i),
+                                    is_pct = True, is_cumulative = True, is_breakdown = True
+                                )
+                            elif i > 0:
+                                table.ins_header_hor(
+                                    table.model().columnCount() - 2,
+                                    _tr('wl_colligation_extractor', '[{}]\nR{}').format(file['name'], i),
+                                    is_int = True, is_cumulative = True, is_breakdown = True
+                                )
+                                table.ins_header_hor(
+                                    table.model().columnCount() - 2,
+                                    _tr('wl_colligation_extractor', '[{}]\nR{} %').format(file['name'], i),
+                                    is_pct = True, is_cumulative = True, is_breakdown = True
+                                )
+
+                            # Show breakdown by span position
+                            table.cols_breakdown_position.add(table.model().columnCount() - 3)
+                            table.cols_breakdown_position.add(table.model().columnCount() - 4)
+
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('wl_colligation_extractor', '[{}]\nFrequency').format(file['name']),
+                            is_int = True, is_cumulative = True, is_breakdown = True
+                        )
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('wl_colligation_extractor', '[{}]\nFrequency %').format(file['name']),
+                            is_pct = True, is_cumulative = True, is_breakdown = True
+                        )
+
+                        if text_test_stat:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                f'[{file["name"]}]\n{text_test_stat}',
+                                is_float = True, is_breakdown = True
+                            )
+
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            f'[{file["name"]}]\n{text_p_value}',
+                            is_float = True, is_breakdown = True
+                        )
+
+                        if text_bayes_factor:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                f'[{file["name"]}]\n{text_bayes_factor}',
+                                is_float = True, is_breakdown = True
+                            )
+
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            f'[{file["name"]}]\n{text_effect_size}',
+                            is_float = True, is_breakdown = True
+                        )
+
+                    # Insert columns (total)
                     for i in range(
                         settings['generation_settings']['window_left'],
                         settings['generation_settings']['window_right'] + 1
@@ -1040,24 +1110,24 @@ def generate_table(main, table):
                         if i < 0:
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                _tr('wl_colligation_extractor', '[{}]\nL{}').format(file['name'], -i),
-                                is_int = True, is_cumulative = True, is_breakdown = True
+                                _tr('wl_colligation_extractor', 'Total\nL{}').format(-i),
+                                is_int = True, is_cumulative = True
                             )
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                _tr('wl_colligation_extractor', '[{}]\nL{} %').format(file['name'], -i),
-                                is_pct = True, is_cumulative = True, is_breakdown = True
+                                _tr('wl_colligation_extractor', 'Total\nL{} %').format(-i),
+                                is_pct = True, is_cumulative = True
                             )
                         elif i > 0:
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                _tr('wl_colligation_extractor', '[{}]\nR{}').format(file['name'], i),
-                                is_int = True, is_cumulative = True, is_breakdown = True
+                                _tr('wl_colligation_extractor', 'Total\nR{}').format(i),
+                                is_int = True, is_cumulative = True
                             )
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                _tr('wl_colligation_extractor', '[{}]\nR{} %').format(file['name'], i),
-                                is_pct = True, is_cumulative = True, is_breakdown = True
+                                _tr('wl_colligation_extractor', 'Total\nR{} %').format(i),
+                                is_pct = True, is_cumulative = True
                             )
 
                         # Show breakdown by span position
@@ -1066,222 +1136,156 @@ def generate_table(main, table):
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        _tr('wl_colligation_extractor', '[{}]\nFrequency').format(file['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = True
+                        _tr('wl_colligation_extractor', 'Total\nFrequency'),
+                        is_int = True, is_cumulative = True
                     )
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        _tr('wl_colligation_extractor', '[{}]\nFrequency %').format(file['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = True
+                        _tr('wl_colligation_extractor', 'Total\nFrequency %'),
+                        is_pct = True, is_cumulative = True
                     )
 
                     if text_test_stat:
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_test_stat}',
-                            is_float = True, is_breakdown = True
+                            _tr('wl_colligation_extractor', 'Total\n') + text_test_stat,
+                            is_float = True
                         )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        f'[{file["name"]}]\n{text_p_value}',
-                        is_float = True, is_breakdown = True
+                        _tr('wl_colligation_extractor', 'Total\n') + text_p_value,
+                        is_float = True
                     )
 
                     if text_bayes_factor:
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_bayes_factor}',
-                            is_float = True, is_breakdown = True
+                            _tr('wl_colligation_extractor', 'Total\n') + text_bayes_factor,
+                            is_float = True
                         )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        f'[{file["name"]}]\n{text_effect_size}',
-                        is_float = True, is_breakdown = True
-                    )
-
-                # Insert columns (total)
-                for i in range(
-                    settings['generation_settings']['window_left'],
-                    settings['generation_settings']['window_right'] + 1
-                ):
-                    if i < 0:
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            _tr('wl_colligation_extractor', 'Total\nL{}').format(-i),
-                            is_int = True, is_cumulative = True
-                        )
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            _tr('wl_colligation_extractor', 'Total\nL{} %').format(-i),
-                            is_pct = True, is_cumulative = True
-                        )
-                    elif i > 0:
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            _tr('wl_colligation_extractor', 'Total\nR{}').format(i),
-                            is_int = True, is_cumulative = True
-                        )
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            _tr('wl_colligation_extractor', 'Total\nR{} %').format(i),
-                            is_pct = True, is_cumulative = True
-                        )
-
-                    # Show breakdown by span position
-                    table.cols_breakdown_position.add(table.model().columnCount() - 3)
-                    table.cols_breakdown_position.add(table.model().columnCount() - 4)
-
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_colligation_extractor', 'Total\nFrequency'),
-                    is_int = True, is_cumulative = True
-                )
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_colligation_extractor', 'Total\nFrequency %'),
-                    is_pct = True, is_cumulative = True
-                )
-
-                if text_test_stat:
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('wl_colligation_extractor', 'Total\n') + text_test_stat,
+                        _tr('wl_colligation_extractor', 'Total\n') + text_effect_size,
                         is_float = True
                     )
 
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_colligation_extractor', 'Total\n') + text_p_value,
-                    is_float = True
-                )
-
-                if text_bayes_factor:
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('wl_colligation_extractor', 'Total\n') + text_bayes_factor,
-                        is_float = True
+                    # Sort by p-value of the first file
+                    table.horizontalHeader().setSortIndicator(
+                        table.find_header_hor(f'[{files[0]["name"]}]\n{text_p_value}'),
+                        Qt.AscendingOrder
                     )
 
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_colligation_extractor', 'Total\n') + text_effect_size,
-                    is_float = True
-                )
+                    if settings['generation_settings']['window_left'] < 0:
+                        cols_freqs_start = [
+                            table.find_header_hor(_tr('Wl_Table_Colligation_Extractor', '[{}]\nL{}').format(file['name'], -settings['generation_settings']['window_left']))
+                            for file in files
+                        ]
+                        cols_freqs_start.append(table.find_header_hor(
+                            _tr('Wl_Table_Colligation_Extractor', 'Total\nL')
+                            + str(-settings['generation_settings']['window_left'])
+                        ))
+                    else:
+                        cols_freqs_start = [
+                            table.find_header_hor(_tr('Wl_Table_Colligation_Extractor', '[{}]\nR{}').format(file['name'], settings['generation_settings']['window_left']))
+                            for file in files
+                        ]
+                        cols_freqs_start.append(table.find_header_hor(
+                            _tr('Wl_Table_Colligation_Extractor', 'Total\nR')
+                            + str(settings['generation_settings']['window_left'])
+                        ))
 
-                # Sort by p-value of the first file
-                table.horizontalHeader().setSortIndicator(
-                    table.find_header_hor(f'[{files[0]["name"]}]\n{text_p_value}'),
-                    Qt.AscendingOrder
-                )
+                    cols_freq = table.find_headers_hor(_tr('wl_colligation_extractor', '\nFrequency'))
+                    cols_freq_pct = table.find_headers_hor(_tr('wl_colligation_extractor', '\nFrequency %'))
 
-                if settings['generation_settings']['window_left'] < 0:
-                    cols_freqs_start = [
-                        table.find_header_hor(_tr('Wl_Table_Colligation_Extractor', '[{}]\nL{}').format(file['name'], -settings['generation_settings']['window_left']))
-                        for file in files
-                    ]
-                    cols_freqs_start.append(table.find_header_hor(
-                        _tr('Wl_Table_Colligation_Extractor', 'Total\nL')
-                        + str(-settings['generation_settings']['window_left'])
-                    ))
-                else:
-                    cols_freqs_start = [
-                        table.find_header_hor(_tr('Wl_Table_Colligation_Extractor', '[{}]\nR{}').format(file['name'], settings['generation_settings']['window_left']))
-                        for file in files
-                    ]
-                    cols_freqs_start.append(table.find_header_hor(
-                        _tr('Wl_Table_Colligation_Extractor', 'Total\nR')
-                        + str(settings['generation_settings']['window_left'])
-                    ))
+                    for col in cols_freq_pct:
+                        cols_freq.remove(col)
 
-                cols_freq = table.find_headers_hor(_tr('wl_colligation_extractor', '\nFrequency'))
-                cols_freq_pct = table.find_headers_hor(_tr('wl_colligation_extractor', '\nFrequency %'))
+                    if text_test_stat:
+                        cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
 
-                for col in cols_freq_pct:
-                    cols_freq.remove(col)
+                    cols_p_value = table.find_headers_hor(_tr('wl_colligation_extractor', '\np-value'))
 
-                if text_test_stat:
-                    cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
+                    if text_bayes_factor:
+                        cols_bayes_factor = table.find_headers_hor(_tr('wl_colligation_extractor', '\nBayes Factor'))
 
-                cols_p_value = table.find_headers_hor(_tr('wl_colligation_extractor', '\np-value'))
+                    cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
+                    col_files_found = table.find_header_hor(_tr('wl_colligation_extractor', 'Number of\nFiles Found'))
+                    col_files_found_pct = table.find_header_hor(_tr('wl_colligation_extractor', 'Number of\nFiles Found %'))
 
-                if text_bayes_factor:
-                    cols_bayes_factor = table.find_headers_hor(_tr('wl_colligation_extractor', '\nBayes Factor'))
+                    freqs_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 0)
+                    freq_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 2).sum(axis = 0)
+                    len_files = len(files)
 
-                cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
-                col_files_found = table.find_header_hor(_tr('wl_colligation_extractor', 'Number of\nFiles Found'))
-                col_files_found_pct = table.find_header_hor(_tr('wl_colligation_extractor', 'Number of\nFiles Found %'))
+                    table.model().setRowCount(len(colligations_freqs_files))
 
-                freqs_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 0)
-                freq_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 2).sum(axis = 0)
-                len_files = len(files)
+                    table.disable_updates()
 
-                table.model().setRowCount(len(colligations_freqs_files))
+                    for i, ((node, collocate), stats_files) in enumerate(wl_sorting.sorted_collocations_stats_files(colligations_stats_files)):
+                        freqs_files = colligations_freqs_files[(node, collocate)]
 
-                table.disable_updates()
+                        # Rank
+                        table.set_item_num(i, 0, -1)
 
-                for i, ((node, collocate), stats_files) in enumerate(wl_sorting.sorted_collocations_stats_files(colligations_stats_files)):
-                    freqs_files = colligations_freqs_files[(node, collocate)]
+                        # Node
+                        table.model().setItem(i, 1, wl_tables.Wl_Table_Item(nodes_text[node]))
+                        # Collocate
+                        table.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
 
-                    # Rank
-                    table.set_item_num(i, 0, -1)
+                        # Frequency
+                        for j, freqs_file in enumerate(freqs_files):
+                            for k, freq in enumerate(freqs_file):
+                                table.set_item_num(i, cols_freqs_start[j] + k * 2, freq)
 
-                    # Node
-                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(nodes_text[node]))
-                    # Collocate
-                    table.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
+                                if freqs_totals[j][k]:
+                                    table.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, freq / freqs_totals[j][k])
+                                else:
+                                    table.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, 0)
 
-                    # Frequency
-                    for j, freqs_file in enumerate(freqs_files):
-                        for k, freq in enumerate(freqs_file):
-                            table.set_item_num(i, cols_freqs_start[j] + k * 2, freq)
+                            table.set_item_num(i, cols_freq[j], sum(freqs_file))
 
-                            if freqs_totals[j][k]:
-                                table.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, freq / freqs_totals[j][k])
+                            if freq_totals[j]:
+                                table.set_item_num(i, cols_freq_pct[j], sum(freqs_file) / freq_totals[j])
                             else:
-                                table.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, 0)
+                                table.set_item_num(i, cols_freq_pct[j], 0)
 
-                        table.set_item_num(i, cols_freq[j], sum(freqs_file))
+                        for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
+                            # Test Statistic
+                            if text_test_stat:
+                                table.set_item_num(i, cols_test_stat[j], test_stat)
 
-                        if freq_totals[j]:
-                            table.set_item_num(i, cols_freq_pct[j], sum(freqs_file) / freq_totals[j])
-                        else:
-                            table.set_item_num(i, cols_freq_pct[j], 0)
+                            # p-value
+                            table.set_item_num(i, cols_p_value[j], p_value)
 
-                    for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
-                        # Test Statistic
-                        if text_test_stat:
-                            table.set_item_num(i, cols_test_stat[j], test_stat)
+                            # Bayes Factor
+                            if text_bayes_factor:
+                                table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
 
-                        # p-value
-                        table.set_item_num(i, cols_p_value[j], p_value)
+                            # Effect Size
+                            table.set_item_num(i, cols_effect_size[j], effect_size)
 
-                        # Bayes Factor
-                        if text_bayes_factor:
-                            table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+                        # Number of Files Found
+                        num_files_found = len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)])
 
-                        # Effect Size
-                        table.set_item_num(i, cols_effect_size[j], effect_size)
+                        table.set_item_num(i, col_files_found, num_files_found)
+                        table.set_item_num(i, col_files_found_pct, num_files_found / len_files)
 
-                    # Number of Files Found
-                    num_files_found = len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)])
+                    table.enable_updates()
 
-                    table.set_item_num(i, col_files_found, num_files_found)
-                    table.set_item_num(i, col_files_found_pct, num_files_found / len_files)
+                    table.toggle_pct()
+                    table.toggle_cumulative()
+                    table.toggle_breakdown()
+                    table.update_ranks()
 
-                table.enable_updates()
-
-                table.toggle_pct()
-                table.toggle_cumulative()
-                table.toggle_breakdown()
-                table.update_ranks()
-
-                wl_msgs.wl_msg_generate_table_success(main)
+                    wl_msgs.wl_msg_generate_table_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
                 wl_msgs.wl_msg_generate_table_error(main)
-        else:
+
+        if err_msg:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
 
@@ -1311,126 +1315,129 @@ def generate_fig(main):
     def update_gui(err_msg, colligations_freqs_file, colligations_stats_files, nodes_text):
         if not err_msg:
             if colligations_freqs_file:
-                text_test_significance = settings['generation_settings']['test_significance']
-                text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+                try:
+                    text_test_significance = settings['generation_settings']['test_significance']
+                    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                (
-                    text_test_stat,
-                    text_p_value,
-                    text_bayes_factor
-                ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
-                text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
+                    (
+                        text_test_stat,
+                        text_p_value,
+                        text_bayes_factor
+                    ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
+                    text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
 
-                if re.search(_tr('Wl_Table_Colligation_Extractor', r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
-                    span_positions = (
-                        list(range(settings['generation_settings']['window_left'], 0))
-                        + list(range(1, settings['generation_settings']['window_right'] + 1))
-                    )
+                    if re.search(_tr('Wl_Table_Colligation_Extractor', r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
+                        span_positions = (
+                            list(range(settings['generation_settings']['window_left'], 0))
+                            + list(range(1, settings['generation_settings']['window_right'] + 1))
+                        )
 
-                    if _tr('Wl_Table_Colligation_Extractor', 'L') in settings['fig_settings']['use_data']:
-                        span_position = span_positions.index(-int(settings['fig_settings']['use_data'][1:]))
+                        if _tr('Wl_Table_Colligation_Extractor', 'L') in settings['fig_settings']['use_data']:
+                            span_position = span_positions.index(-int(settings['fig_settings']['use_data'][1:]))
+                        else:
+                            span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
+
+                        # Network Graph
+                        if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
+                            collocates_freq_files = {
+                                (nodes_text[node], collocate): numpy.array(freqs)[:, span_position]
+                                for (node, collocate), freqs in colligations_freqs_file.items()
+                            }
+                        # Line Chart & Word Cloud
+                        else:
+                            collocates_freq_files = {
+                                ', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
+                                for (node, collocate), freqs in colligations_freqs_file.items()
+                            }
+
+                        wl_figs_freqs.wl_fig_freq(
+                            main, collocates_freq_files,
+                            settings = settings['fig_settings'],
+                            label_x = _tr('wl_colligation_extractor', 'Colligation')
+                        )
+                    elif settings['fig_settings']['use_data'] == _tr('wl_colligation_extractor', 'Frequency'):
+                        # Network Graph
+                        if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
+                            collocates_freq_files = {
+                                (nodes_text[node], collocate): numpy.array(freqs).sum(axis = 1)
+                                for (node, collocate), freqs in colligations_freqs_file.items()
+                            }
+                        # Line Chart & Word Cloud
+                        else:
+                            collocates_freq_files = {
+                                ', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
+                                for (node, collocate), freqs in colligations_freqs_file.items()
+                            }
+
+                        wl_figs_freqs.wl_fig_freq(
+                            main, collocates_freq_files,
+                            settings = settings['fig_settings'],
+                            label_x = _tr('wl_colligation_extractor', 'Colligation')
+                        )
                     else:
-                        span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
+                        # Network Graph
+                        if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
+                            colligations_stats_files = {
+                                (nodes_text[node], collocate): freqs
+                                for (node, collocate), freqs in colligations_stats_files.items()
+                            }
+                        # Line Chart & Word Cloud
+                        else:
+                            colligations_stats_files = {
+                                ', '.join([nodes_text[node], collocate]): freqs
+                                for (node, collocate), freqs in colligations_stats_files.items()
+                            }
 
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
-                        collocates_freq_files = {
-                            (nodes_text[node], collocate): numpy.array(freqs)[:, span_position]
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocates_freq_files = {
-                            ', '.join([nodes_text[node], collocate]): numpy.array(freqs)[:, span_position]
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
+                        if settings['fig_settings']['use_data'] == text_test_stat:
+                            collocates_stat_files = {
+                                collocate: numpy.array(stats_files)[:, 0]
+                                for collocate, stats_files in colligations_stats_files.items()
+                            }
 
-                    wl_figs_freqs.wl_fig_freq(
-                        main, collocates_freq_files,
-                        settings = settings['fig_settings'],
-                        label_x = _tr('wl_colligation_extractor', 'Colligation')
-                    )
-                elif settings['fig_settings']['use_data'] == _tr('wl_colligation_extractor', 'Frequency'):
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
-                        collocates_freq_files = {
-                            (nodes_text[node], collocate): numpy.array(freqs).sum(axis = 1)
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocates_freq_files = {
-                            ', '.join([nodes_text[node], collocate]): numpy.array(freqs).sum(axis = 1)
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
+                            label_y = text_test_stat
+                        elif settings['fig_settings']['use_data'] == text_p_value:
+                            collocates_stat_files = {
+                                collocate: numpy.array(stats_files)[:, 1]
+                                for collocate, stats_files in colligations_stats_files.items()
+                            }
 
-                    wl_figs_freqs.wl_fig_freq(
-                        main, collocates_freq_files,
-                        settings = settings['fig_settings'],
-                        label_x = _tr('wl_colligation_extractor', 'Colligation')
-                    )
-                else:
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == _tr('wl_colligation_extractor', 'Network Graph'):
-                        colligations_stats_files = {
-                            (nodes_text[node], collocate): freqs
-                            for (node, collocate), freqs in colligations_stats_files.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        colligations_stats_files = {
-                            ', '.join([nodes_text[node], collocate]): freqs
-                            for (node, collocate), freqs in colligations_stats_files.items()
-                        }
+                            label_y = text_p_value
+                        elif settings['fig_settings']['use_data'] == text_bayes_factor:
+                            collocates_stat_files = {
+                                collocate: numpy.array(stats_files)[:, 2]
+                                for collocate, stats_files in colligations_stats_files.items()
+                            }
 
-                    if settings['fig_settings']['use_data'] == text_test_stat:
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 0]
-                            for collocate, stats_files in colligations_stats_files.items()
-                        }
+                            label_y = text_bayes_factor
+                        elif settings['fig_settings']['use_data'] == text_effect_size:
+                            collocates_stat_files = {
+                                collocate: numpy.array(stats_files)[:, 3]
+                                for collocate, stats_files in colligations_stats_files.items()
+                            }
 
-                        label_y = text_test_stat
-                    elif settings['fig_settings']['use_data'] == text_p_value:
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 1]
-                            for collocate, stats_files in colligations_stats_files.items()
-                        }
+                            label_y = text_effect_size
 
-                        label_y = text_p_value
-                    elif settings['fig_settings']['use_data'] == text_bayes_factor:
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 2]
-                            for collocate, stats_files in colligations_stats_files.items()
-                        }
+                        wl_figs_stats.wl_fig_stat(
+                            main, collocates_stat_files,
+                            settings = settings['fig_settings'],
+                            label_x = _tr('wl_colligation_extractor', 'Colligation'),
+                            label_y = label_y
+                        )
 
-                        label_y = text_bayes_factor
-                    elif settings['fig_settings']['use_data'] == text_effect_size:
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 3]
-                            for collocate, stats_files in colligations_stats_files.items()
-                        }
+                    # Hide the progress dialog early so that the main window will not obscure the generated figure
+                    worker_colligation_extractor_fig.dialog_progress.accept()
+                    wl_figs.show_fig()
 
-                        label_y = text_effect_size
-
-                    wl_figs_stats.wl_fig_stat(
-                        main, collocates_stat_files,
-                        settings = settings['fig_settings'],
-                        label_x = _tr('wl_colligation_extractor', 'Colligation'),
-                        label_y = label_y
-                    )
-
-                wl_msgs.wl_msg_generate_fig_success(main)
+                    wl_msgs.wl_msg_generate_fig_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
                 wl_msgs.wl_msg_generate_fig_error(main)
-        else:
+
+        if err_msg:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
-
-        dialog_progress.accept()
-
-        if colligations_freqs_file:
-            wl_figs.show_fig()
 
     settings = main.settings_custom['colligation_extractor']
     files = list(main.wl_file_area.get_selected_files())
@@ -1441,11 +1448,9 @@ def generate_fig(main):
             or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
             or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
         ):
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
             worker_colligation_extractor_fig = Wl_Worker_Colligation_Extractor_Fig(
                 main,
-                dialog_progress = dialog_progress,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
                 update_gui = update_gui
             )
             wl_threading.Wl_Thread(worker_colligation_extractor_fig).start_worker()

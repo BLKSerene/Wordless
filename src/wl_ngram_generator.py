@@ -907,132 +907,136 @@ def generate_table(main, table):
     def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
         if not err_msg:
             if ngrams_freq_files:
-                table.settings = copy.deepcopy(main.settings_custom)
+                try:
+                    table.settings = copy.deepcopy(main.settings_custom)
 
-                text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-                text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+                    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+                    text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-                text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+                    text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+                    text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
-                table.clr_table()
+                    table.clr_table()
 
-                # Insert columns (files)
-                files = list(main.wl_file_area.get_selected_files())
+                    # Insert columns (files)
+                    files = list(main.wl_file_area.get_selected_files())
 
-                for i, file in enumerate(files):
+                    for i, file in enumerate(files):
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('wl_ngram_generator', '[{}]\nFrequency').format(file['name']),
+                            is_int = True, is_cumulative = True, is_breakdown = True
+                        )
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('wl_ngram_generator', '[{}]\nFrequency %').format(file['name']),
+                            is_pct = True, is_cumulative = True, is_breakdown = True
+                        )
+
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            f'[{file["name"]}]\n{text_dispersion}',
+                            is_float = True, is_breakdown = True
+                        )
+
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            f'[{file["name"]}]\n{text_adjusted_freq}',
+                            is_float = True, is_breakdown = True
+                        )
+
+                    # Insert columns (total)
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        _tr('wl_ngram_generator', '[{}]\nFrequency').format(file['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = True
+                        _tr('wl_ngram_generator', 'Total\nFrequency'),
+                        is_int = True, is_cumulative = True
                     )
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        _tr('wl_ngram_generator', '[{}]\nFrequency %').format(file['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = True
+                        _tr('wl_ngram_generator', 'Total\nFrequency %'),
+                        is_pct = True, is_cumulative = True
                     )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        f'[{file["name"]}]\n{text_dispersion}',
-                        is_float = True, is_breakdown = True
+                        _tr('wl_ngram_generator', 'Total\n') + text_dispersion,
+                        is_float = True
                     )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        f'[{file["name"]}]\n{text_adjusted_freq}',
-                        is_float = True, is_breakdown = True
+                        _tr('wl_ngram_generator', 'Total\n') + text_adjusted_freq,
+                        is_float = True
                     )
 
-                # Insert columns (total)
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_ngram_generator', 'Total\nFrequency'),
-                    is_int = True, is_cumulative = True
-                )
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_ngram_generator', 'Total\nFrequency %'),
-                    is_pct = True, is_cumulative = True
-                )
+                    # Sort by frequency of the first file
+                    table.horizontalHeader().setSortIndicator(
+                        table.find_header_hor(_tr('wl_ngram_generator', '[{}]\nFrequency').format(files[0]['name'])),
+                        Qt.DescendingOrder
+                    )
 
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_ngram_generator', 'Total\n') + text_dispersion,
-                    is_float = True
-                )
+                    cols_freq = table.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency'))
+                    cols_freq_pct = table.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency %'))
 
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_ngram_generator', 'Total\n') + text_adjusted_freq,
-                    is_float = True
-                )
+                    for col in cols_freq_pct:
+                        cols_freq.remove(col)
 
-                # Sort by frequency of the first file
-                table.horizontalHeader().setSortIndicator(
-                    table.find_header_hor(_tr('wl_ngram_generator', '[{}]\nFrequency').format(files[0]['name'])),
-                    Qt.DescendingOrder
-                )
+                    cols_dispersion = table.find_headers_hor(f'\n{text_dispersion}')
+                    cols_adjusted_freq = table.find_headers_hor(f'\n{text_adjusted_freq}')
+                    col_files_found = table.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found'))
+                    col_files_found_pct = table.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found %'))
 
-                cols_freq = table.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency'))
-                cols_freq_pct = table.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency %'))
+                    freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
+                    len_files = len(files)
 
-                for col in cols_freq_pct:
-                    cols_freq.remove(col)
+                    table.model().setRowCount(len(ngrams_freq_files))
 
-                cols_dispersion = table.find_headers_hor(f'\n{text_dispersion}')
-                cols_adjusted_freq = table.find_headers_hor(f'\n{text_adjusted_freq}')
-                col_files_found = table.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found'))
-                col_files_found_pct = table.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found %'))
+                    table.disable_updates()
 
-                freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
-                len_files = len(files)
+                    for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_tokens_freq_files(ngrams_freq_files)):
+                        stats_files = ngrams_stats_files[ngram]
 
-                table.model().setRowCount(len(ngrams_freq_files))
+                        # Rank
+                        table.set_item_num(i, 0, -1)
 
-                table.disable_updates()
+                        # N-gram
+                        table.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(ngram)))
 
-                for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_tokens_freq_files(ngrams_freq_files)):
-                    stats_files = ngrams_stats_files[ngram]
+                        table.model().item(i, 1).text_raw = ngram
 
-                    # Rank
-                    table.set_item_num(i, 0, -1)
+                        # Frequency
+                        for j, freq in enumerate(freq_files):
+                            table.set_item_num(i, cols_freq[j], freq)
+                            table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
-                    # N-gram
-                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(ngram)))
+                        for j, (dispersion, adjusted_freq) in enumerate(stats_files):
+                            # Dispersion
+                            table.set_item_num(i, cols_dispersion[j], dispersion)
 
-                    table.model().item(i, 1).text_raw = ngram
+                            # Adjusted Frequency
+                            table.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
 
-                    # Frequency
-                    for j, freq in enumerate(freq_files):
-                        table.set_item_num(i, cols_freq[j], freq)
-                        table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
+                        # Number of Files Found
+                        num_files_found = len([freq for freq in freq_files[:-1] if freq])
 
-                    for j, (dispersion, adjusted_freq) in enumerate(stats_files):
-                        # Dispersion
-                        table.set_item_num(i, cols_dispersion[j], dispersion)
+                        table.set_item_num(i, col_files_found, num_files_found)
+                        table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
-                        # Adjusted Frequency
-                        table.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
+                    table.enable_updates()
 
-                    # Number of Files Found
-                    num_files_found = len([freq for freq in freq_files[:-1] if freq])
+                    table.toggle_pct()
+                    table.toggle_cumulative()
+                    table.toggle_breakdown()
+                    table.update_ranks()
 
-                    table.set_item_num(i, col_files_found, num_files_found)
-                    table.set_item_num(i, col_files_found_pct, num_files_found, len_files)
-
-                table.enable_updates()
-
-                table.toggle_pct()
-                table.toggle_cumulative()
-                table.toggle_breakdown()
-                table.update_ranks()
-
-                wl_msgs.wl_msg_generate_table_success(main)
+                    wl_msgs.wl_msg_generate_table_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
                 wl_msgs.wl_msg_generate_table_error(main)
-        else:
+
+        if err_msg:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
 
@@ -1058,63 +1062,66 @@ def generate_fig(main):
     def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
         if not err_msg:
             if ngrams_freq_files:
-                text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-                text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+                try:
+                    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+                    text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-                text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+                    text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
+                    text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
-                if settings['fig_settings']['use_data'] == _tr('wl_ngram_generator', 'Frequency'):
-                    ngrams_freq_files = {
-                        ' '.join(ngram): freqs
-                        for ngram, freqs in ngrams_freq_files.items()
-                    }
-
-                    wl_figs_freqs.wl_fig_freq(
-                        main, ngrams_freq_files,
-                        settings = settings['fig_settings'],
-                        label_x = _tr('wl_ngram_generator', 'N-gram')
-                    )
-                else:
-                    ngrams_stats_files = {
-                        ' '.join(ngram): stats
-                        for ngram, stats in ngrams_stats_files.items()
-                    }
-
-                    if settings['fig_settings']['use_data'] == text_dispersion:
-                        ngrams_stat_files = {
-                            ngram: numpy.array(stats_files)[:, 0]
-                            for ngram, stats_files in ngrams_stats_files.items()
+                    if settings['fig_settings']['use_data'] == _tr('wl_ngram_generator', 'Frequency'):
+                        ngrams_freq_files = {
+                            ' '.join(ngram): freqs
+                            for ngram, freqs in ngrams_freq_files.items()
                         }
 
-                        label_y = text_dispersion
-                    elif settings['fig_settings']['use_data'] == text_adjusted_freq:
-                        ngrams_stat_files = {
-                            ngram: numpy.array(stats_files)[:, 1]
-                            for ngram, stats_files in ngrams_stats_files.items()
+                        wl_figs_freqs.wl_fig_freq(
+                            main, ngrams_freq_files,
+                            settings = settings['fig_settings'],
+                            label_x = _tr('wl_ngram_generator', 'N-gram')
+                        )
+                    else:
+                        ngrams_stats_files = {
+                            ' '.join(ngram): stats
+                            for ngram, stats in ngrams_stats_files.items()
                         }
 
-                        label_y = text_adjusted_freq
+                        if settings['fig_settings']['use_data'] == text_dispersion:
+                            ngrams_stat_files = {
+                                ngram: numpy.array(stats_files)[:, 0]
+                                for ngram, stats_files in ngrams_stats_files.items()
+                            }
 
-                    wl_figs_stats.wl_fig_stat(
-                        main, ngrams_stat_files,
-                        settings = settings['fig_settings'],
-                        label_x = _tr('wl_ngram_generator', 'N-gram'),
-                        label_y = label_y
-                    )
+                            label_y = text_dispersion
+                        elif settings['fig_settings']['use_data'] == text_adjusted_freq:
+                            ngrams_stat_files = {
+                                ngram: numpy.array(stats_files)[:, 1]
+                                for ngram, stats_files in ngrams_stats_files.items()
+                            }
 
-                wl_msgs.wl_msg_generate_fig_success(main)
+                            label_y = text_adjusted_freq
+
+                        wl_figs_stats.wl_fig_stat(
+                            main, ngrams_stat_files,
+                            settings = settings['fig_settings'],
+                            label_x = _tr('wl_ngram_generator', 'N-gram'),
+                            label_y = label_y
+                        )
+
+                    # Hide the progress dialog early so that the main window will not obscure the generated figure
+                    worker_ngram_generator_fig.dialog_progress.accept()
+                    wl_figs.show_fig()
+
+                    wl_msgs.wl_msg_generate_fig_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
                 wl_msgs.wl_msg_generate_fig_error(main)
-        else:
+
+        if err_msg:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
-
-        dialog_progress.accept()
-
-        if ngrams_freq_files:
-            wl_figs.show_fig()
 
     settings = main.settings_custom['ngram_generator']
 
@@ -1123,11 +1130,9 @@ def generate_fig(main):
         or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
         or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
     ):
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
         worker_ngram_generator_fig = Wl_Worker_Ngram_Generator_Fig(
             main,
-            dialog_progress = dialog_progress,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
         )
         wl_threading.Wl_Thread(worker_ngram_generator_fig).start_worker()

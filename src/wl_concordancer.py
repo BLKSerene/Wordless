@@ -1041,93 +1041,95 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 def generate_table(main, table):
     def update_gui(err_msg, concordance_lines):
         if not err_msg:
-            node_color = settings['sort_results']['highlight_colors'][0]
-
             if concordance_lines:
-                table.settings = copy.deepcopy(main.settings_custom)
+                try:
+                    table.settings = copy.deepcopy(main.settings_custom)
 
-                table.clr_table(0)
-                table.model().setRowCount(len(concordance_lines))
+                    table.clr_table(0)
+                    table.model().setRowCount(len(concordance_lines))
 
-                table.disable_updates()
+                    table.disable_updates()
 
-                for i, concordance_line in enumerate(concordance_lines):
-                    left_text, left_text_raw, left_text_search = concordance_line[0]
-                    node_text, node_text_raw, node_text_search = concordance_line[1]
-                    right_text, right_text_raw, right_text_search = concordance_line[2]
+                    for i, concordance_line in enumerate(concordance_lines):
+                        left_text, left_text_raw, left_text_search = concordance_line[0]
+                        node_text, node_text_raw, node_text_search = concordance_line[1]
+                        right_text, right_text_raw, right_text_search = concordance_line[2]
 
-                    sentiment = concordance_line[3]
-                    no_token, len_tokens = concordance_line[4]
-                    no_sentence, len_sentences = concordance_line[5]
-                    no_para, len_paras = concordance_line[6]
-                    file_name = concordance_line[7]
+                        sentiment = concordance_line[3]
+                        no_token, len_tokens = concordance_line[4]
+                        no_sentence, len_sentences = concordance_line[5]
+                        no_para, len_paras = concordance_line[6]
+                        file_name = concordance_line[7]
 
-                    # Node
-                    label_node = wl_labels.Wl_Label_Html(
-                        f'''
-                            <span style="color: {node_color}; font-weight: bold;">
-                                &nbsp;{node_text}&nbsp;
-                            </span>
-                        ''',
-                        main
-                    )
+                        # Node
+                        label_node = wl_labels.Wl_Label_Html(
+                            f'''
+                                <span style="color: {settings['sort_results']['highlight_colors'][0]}; font-weight: bold;">
+                                    &nbsp;{node_text}&nbsp;
+                                </span>
+                            ''',
+                            main
+                        )
 
-                    table.setIndexWidget(table.model().index(i, 1), label_node)
+                        table.setIndexWidget(table.model().index(i, 1), label_node)
 
-                    table.indexWidget(table.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                        table.indexWidget(table.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                    table.indexWidget(table.model().index(i, 1)).text_raw = node_text_raw
-                    table.indexWidget(table.model().index(i, 1)).text_search = node_text_search
+                        table.indexWidget(table.model().index(i, 1)).text_raw = node_text_raw
+                        table.indexWidget(table.model().index(i, 1)).text_search = node_text_search
 
-                    # Left
-                    table.setIndexWidget(
-                        table.model().index(i, 0),
-                        wl_labels.Wl_Label_Html(left_text, main)
-                    )
+                        # Left
+                        table.setIndexWidget(
+                            table.model().index(i, 0),
+                            wl_labels.Wl_Label_Html(left_text, main)
+                        )
 
-                    table.indexWidget(table.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.indexWidget(table.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                    table.indexWidget(table.model().index(i, 0)).text_raw = left_text_raw
-                    table.indexWidget(table.model().index(i, 0)).text_search = left_text_search
+                        table.indexWidget(table.model().index(i, 0)).text_raw = left_text_raw
+                        table.indexWidget(table.model().index(i, 0)).text_search = left_text_search
 
-                    # Right
-                    table.setIndexWidget(
-                        table.model().index(i, 2),
-                        wl_labels.Wl_Label_Html(right_text, main)
-                    )
+                        # Right
+                        table.setIndexWidget(
+                            table.model().index(i, 2),
+                            wl_labels.Wl_Label_Html(right_text, main)
+                        )
 
-                    table.indexWidget(table.model().index(i, 2)).text_raw = right_text_raw
-                    table.indexWidget(table.model().index(i, 2)).text_search = right_text_search
+                        table.indexWidget(table.model().index(i, 2)).text_raw = right_text_raw
+                        table.indexWidget(table.model().index(i, 2)).text_search = right_text_search
 
-                    # Sentiment
-                    if not isinstance(sentiment, str):
-                        table.set_item_num(i, 3, sentiment)
-                    # No Support
-                    else:
-                        table.set_item_error(i, 3, text = sentiment)
+                        # Sentiment
+                        if not isinstance(sentiment, str):
+                            table.set_item_num(i, 3, sentiment)
+                        # No Support
+                        else:
+                            table.set_item_error(i, 3, text = sentiment)
 
-                    # Token No.
-                    table.set_item_num(i, 4, no_token)
-                    table.set_item_num(i, 5, no_token, len_tokens)
-                    # Sentence No.
-                    table.set_item_num(i, 6, no_sentence)
-                    table.set_item_num(i, 7, no_sentence, len_sentences)
-                    # Paragraph No.
-                    table.set_item_num(i, 8, no_para)
-                    table.set_item_num(i, 9, no_para, len_paras)
+                        # Token No.
+                        table.set_item_num(i, 4, no_token)
+                        table.set_item_num(i, 5, no_token, len_tokens)
+                        # Sentence No.
+                        table.set_item_num(i, 6, no_sentence)
+                        table.set_item_num(i, 7, no_sentence, len_sentences)
+                        # Paragraph No.
+                        table.set_item_num(i, 8, no_para)
+                        table.set_item_num(i, 9, no_para, len_paras)
 
-                    # File
-                    table.model().setItem(i, 10, QStandardItem(file_name))
+                        # File
+                        table.model().setItem(i, 10, QStandardItem(file_name))
 
-                table.enable_updates()
+                    table.enable_updates()
 
-                table.toggle_pct()
+                    table.toggle_pct()
 
-                wl_msgs.wl_msg_generate_table_success(main)
+                    wl_msgs.wl_msg_generate_table_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
                 wl_msgs.wl_msg_generate_table_error(main)
-        else:
+
+        if err_msg:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
 
@@ -1159,48 +1161,51 @@ def generate_fig(main):
                 y_max = labels[4]
 
             if points:
-                if settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'File'):
-                    matplotlib.pyplot.plot(
-                        numpy.array(points)[:, 0],
-                        numpy.array(points)[:, 1],
-                        'b|'
-                    )
+                try:
+                    if settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'File'):
+                        matplotlib.pyplot.plot(
+                            numpy.array(points)[:, 0],
+                            numpy.array(points)[:, 1],
+                            'b|'
+                        )
 
-                    matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Search Terms'))
-                    matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
+                        matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Search Terms'))
+                        matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
 
-                    matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Files'))
-                    matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
-                    matplotlib.pyplot.ylim(-1, y_max)
-                elif settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'Search Term'):
-                    matplotlib.pyplot.plot(
-                        numpy.array(points)[:, 0],
-                        numpy.array(points)[:, 1],
-                        'b|'
-                    )
+                        matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Files'))
+                        matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
+                        matplotlib.pyplot.ylim(-1, y_max)
+                    elif settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'Search Term'):
+                        matplotlib.pyplot.plot(
+                            numpy.array(points)[:, 0],
+                            numpy.array(points)[:, 1],
+                            'b|'
+                        )
 
-                    matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Files'))
-                    matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
+                        matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Files'))
+                        matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
 
-                    matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Search Terms'))
-                    matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
-                    matplotlib.pyplot.ylim(-1, y_max)
+                        matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Search Terms'))
+                        matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
+                        matplotlib.pyplot.ylim(-1, y_max)
 
-                matplotlib.pyplot.title(_tr('wl_concordancer', 'Dispersion Plot'))
-                matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
+                    matplotlib.pyplot.title(_tr('wl_concordancer', 'Dispersion Plot'))
+                    matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
-                wl_msgs.wl_msg_generate_fig_success(main)
+                    # Hide the progress dialog early so that the main window will not obscure the generated figure
+                    worker_concordancer_fig.dialog_progress.accept()
+                    wl_figs.show_fig()
+
+                    wl_msgs.wl_msg_generate_fig_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
                 wl_msgs.wl_msg_generate_fig_error(main)
-        else:
+
+        if err_msg:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
-
-        dialog_progress.accept()
-
-        if points:
-            wl_figs.show_fig()
 
     settings = main.settings_custom['concordancer']
 
@@ -1209,11 +1214,9 @@ def generate_fig(main):
         not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
         or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
     ):
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
         worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
             main,
-            dialog_progress = dialog_progress,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
         )
         wl_threading.Wl_Thread(worker_concordancer_fig).start_worker()

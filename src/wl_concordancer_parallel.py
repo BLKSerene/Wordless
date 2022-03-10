@@ -722,96 +722,98 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 def generate_table(main, table_src, table_tgt):
     def update_gui(err_msg, concordance_lines):
         if not err_msg:
-            node_color = settings['sort_results']['highlight_colors'][0]
-
             if concordance_lines:
-                table_src.settings = copy.deepcopy(main.settings_custom)
+                try:
+                    table_src.settings = copy.deepcopy(main.settings_custom)
 
-                table_src.clr_table(0)
-                table_tgt.clr_table(0)
+                    table_src.clr_table(0)
+                    table_tgt.clr_table(0)
 
-                table_src.model().setRowCount(len(concordance_lines))
-                table_tgt.model().setRowCount(len(concordance_lines))
+                    table_src.model().setRowCount(len(concordance_lines))
+                    table_tgt.model().setRowCount(len(concordance_lines))
 
-                table_src.disable_updates()
-                table_tgt.disable_updates()
+                    table_src.disable_updates()
+                    table_tgt.disable_updates()
 
-                for i, concordance_line in enumerate(concordance_lines):
-                    left_text, left_text_raw, left_text_search = concordance_line[0]
-                    node_text, node_text_raw, node_text_search = concordance_line[1]
-                    right_text, right_text_raw, right_text_search = concordance_line[2]
+                    for i, concordance_line in enumerate(concordance_lines):
+                        left_text, left_text_raw, left_text_search = concordance_line[0]
+                        node_text, node_text_raw, node_text_search = concordance_line[1]
+                        right_text, right_text_raw, right_text_search = concordance_line[2]
 
-                    no_seg, len_segs = concordance_line[3]
+                        no_seg, len_segs = concordance_line[3]
 
-                    parallel_text_text, parallel_text_text_raw, parallel_text_text_search = concordance_line[4]
+                        parallel_text_text, parallel_text_text_raw, parallel_text_text_search = concordance_line[4]
 
-                    # Node
-                    label_node = wl_labels.Wl_Label_Html(
-                        f'''
-                            <span style="color: {node_color}; font-weight: bold;">
-                                &nbsp;{node_text}&nbsp;
-                            </span>
-                        ''',
-                        main
-                    )
+                        # Node
+                        label_node = wl_labels.Wl_Label_Html(
+                            f'''
+                                <span style="color: {settings['sort_results']['highlight_colors'][0]}; font-weight: bold;">
+                                    &nbsp;{node_text}&nbsp;
+                                </span>
+                            ''',
+                            main
+                        )
 
-                    table_src.setIndexWidget(table_src.model().index(i, 1), label_node)
+                        table_src.setIndexWidget(table_src.model().index(i, 1), label_node)
 
-                    table_src.indexWidget(table_src.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                        table_src.indexWidget(table_src.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                    table_src.indexWidget(table_src.model().index(i, 1)).text_raw = node_text_raw
-                    table_src.indexWidget(table_src.model().index(i, 1)).text_search = node_text_search
+                        table_src.indexWidget(table_src.model().index(i, 1)).text_raw = node_text_raw
+                        table_src.indexWidget(table_src.model().index(i, 1)).text_search = node_text_search
 
-                    # Left
-                    table_src.setIndexWidget(
-                        table_src.model().index(i, 0),
-                        wl_labels.Wl_Label_Html(left_text, main)
-                    )
+                        # Left
+                        table_src.setIndexWidget(
+                            table_src.model().index(i, 0),
+                            wl_labels.Wl_Label_Html(left_text, main)
+                        )
 
-                    table_src.indexWidget(table_src.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table_src.indexWidget(table_src.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                    table_src.indexWidget(table_src.model().index(i, 0)).text_raw = left_text_raw
-                    table_src.indexWidget(table_src.model().index(i, 0)).text_search = left_text_search
+                        table_src.indexWidget(table_src.model().index(i, 0)).text_raw = left_text_raw
+                        table_src.indexWidget(table_src.model().index(i, 0)).text_search = left_text_search
 
-                    # Right
-                    table_src.setIndexWidget(
-                        table_src.model().index(i, 2),
-                        wl_labels.Wl_Label_Html(right_text, main)
-                    )
+                        # Right
+                        table_src.setIndexWidget(
+                            table_src.model().index(i, 2),
+                            wl_labels.Wl_Label_Html(right_text, main)
+                        )
 
-                    table_src.indexWidget(table_src.model().index(i, 2)).text_raw = right_text_raw
-                    table_src.indexWidget(table_src.model().index(i, 2)).text_search = right_text_search
+                        table_src.indexWidget(table_src.model().index(i, 2)).text_raw = right_text_raw
+                        table_src.indexWidget(table_src.model().index(i, 2)).text_search = right_text_search
 
-                    # Segment No. (Source File)
-                    table_src.set_item_num(i, 3, no_seg)
-                    table_src.set_item_num(i, 4, no_seg, len_segs)
+                        # Segment No. (Source File)
+                        table_src.set_item_num(i, 3, no_seg)
+                        table_src.set_item_num(i, 4, no_seg, len_segs)
 
-                    # Parallel Text
-                    table_tgt.setIndexWidget(
-                        table_tgt.model().index(i, 0),
-                        wl_labels.Wl_Label_Html(parallel_text_text, main)
-                    )
+                        # Parallel Text
+                        table_tgt.setIndexWidget(
+                            table_tgt.model().index(i, 0),
+                            wl_labels.Wl_Label_Html(parallel_text_text, main)
+                        )
 
-                    table_tgt.indexWidget(table_tgt.model().index(i, 0)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                        table_tgt.indexWidget(table_tgt.model().index(i, 0)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                    table_tgt.indexWidget(table_tgt.model().index(i, 0)).text_raw = parallel_text_text_raw
-                    table_tgt.indexWidget(table_tgt.model().index(i, 0)).text_search = parallel_text_text_search
+                        table_tgt.indexWidget(table_tgt.model().index(i, 0)).text_raw = parallel_text_text_raw
+                        table_tgt.indexWidget(table_tgt.model().index(i, 0)).text_search = parallel_text_text_search
 
-                    # Segment No. (Target File)
-                    table_tgt.set_item_num(i, 1, no_seg)
-                    table_tgt.set_item_num(i, 2, no_seg, len_segs)
+                        # Segment No. (Target File)
+                        table_tgt.set_item_num(i, 1, no_seg)
+                        table_tgt.set_item_num(i, 2, no_seg, len_segs)
 
-                table_src.enable_updates()
-                table_tgt.enable_updates()
+                    table_src.enable_updates()
+                    table_tgt.enable_updates()
 
-                table_src.toggle_pct()
-                table_tgt.toggle_pct()
+                    table_src.toggle_pct()
+                    table_tgt.toggle_pct()
 
-                wl_msgs.wl_msg_generate_table_success(main)
+                    wl_msgs.wl_msg_generate_table_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
                 wl_msgs.wl_msg_generate_table_error(main)
-        else:
+
+        if err_msg:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
 
