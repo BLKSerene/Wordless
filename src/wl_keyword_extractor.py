@@ -635,189 +635,191 @@ def generate_table(main, table):
     def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
         if not err_msg:
             if keywords_freq_files:
-                table.settings = copy.deepcopy(main.settings_custom)
+                try:
+                    table.settings = copy.deepcopy(main.settings_custom)
 
-                text_test_significance = settings['generation_settings']['test_significance']
-                text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+                    text_test_significance = settings['generation_settings']['test_significance']
+                    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                (
-                    text_test_stat,
-                    text_p_value,
-                    text_bayes_factor
-                ) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
-                text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
+                    (
+                        text_test_stat,
+                        text_p_value,
+                        text_bayes_factor
+                    ) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
+                    text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
 
-                table.clr_table()
+                    table.clr_table()
 
-                # Insert columns (files)
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_keyword_extractor', '[Reference Files]\nFrequency'),
-                    is_int = True, is_cumulative = True
-                )
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_keyword_extractor', '[Reference Files]\nFrequency %'),
-                    is_pct = True, is_cumulative = True
-                )
-
-                for file_observed in files_observed:
+                    # Insert columns (files)
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        _tr('wl_keyword_extractor', '[{}]\nFrequency').format(file_observed['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = True
+                        _tr('wl_keyword_extractor', '[Reference Files]\nFrequency'),
+                        is_int = True, is_cumulative = True
                     )
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        _tr('wl_keyword_extractor', '[{}]\nFrequency %').format(file_observed['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = True
+                        _tr('wl_keyword_extractor', '[Reference Files]\nFrequency %'),
+                        is_pct = True, is_cumulative = True
+                    )
+
+                    for file_observed in files_observed:
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('wl_keyword_extractor', '[{}]\nFrequency').format(file_observed['name']),
+                            is_int = True, is_cumulative = True, is_breakdown = True
+                        )
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('wl_keyword_extractor', '[{}]\nFrequency %').format(file_observed['name']),
+                            is_pct = True, is_cumulative = True, is_breakdown = True
+                        )
+
+                        if text_test_stat:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                f'[{file_observed["name"]}]\n{text_test_stat}',
+                                is_float = True, is_breakdown = True
+                            )
+
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            f'[{file_observed["name"]}]\n{text_p_value}',
+                            is_float = True, is_breakdown = True
+                        )
+
+                        if text_bayes_factor:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                f'[{file_observed["name"]}]\n{text_bayes_factor}',
+                                is_float = True, is_breakdown = True
+                            )
+
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            f'[{file_observed["name"]}]\n{text_effect_size}',
+                            is_float = True, is_breakdown = True
+                        )
+
+                    # Insert columns (total)
+                    table.ins_header_hor(
+                        table.model().columnCount() - 2,
+                        _tr('wl_keyword_extractor', 'Total\nFrequency'),
+                        is_int = True, is_cumulative = True
+                    )
+                    table.ins_header_hor(
+                        table.model().columnCount() - 2,
+                        _tr('wl_keyword_extractor', 'Total\nFrequency %'),
+                        is_pct = True, is_cumulative = True
                     )
 
                     if text_test_stat:
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            f'[{file_observed["name"]}]\n{text_test_stat}',
-                            is_float = True, is_breakdown = True
+                            _tr('wl_keyword_extractor', 'Total\n') + text_test_stat,
+                            is_float = True
                         )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        f'[{file_observed["name"]}]\n{text_p_value}',
-                        is_float = True, is_breakdown = True
+                        _tr('wl_keyword_extractor', 'Total\n') + text_p_value,
+                        is_float = True
                     )
 
                     if text_bayes_factor:
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            f'[{file_observed["name"]}]\n{text_bayes_factor}',
-                            is_float = True, is_breakdown = True
+                            _tr('wl_keyword_extractor', 'Total\n') + text_bayes_factor,
+                            is_float = True
                         )
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        f'[{file_observed["name"]}]\n{text_effect_size}',
-                        is_float = True, is_breakdown = True
-                    )
-
-                # Insert columns (total)
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_keyword_extractor', 'Total\nFrequency'),
-                    is_int = True, is_cumulative = True
-                )
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_keyword_extractor', 'Total\nFrequency %'),
-                    is_pct = True, is_cumulative = True
-                )
-
-                if text_test_stat:
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('wl_keyword_extractor', 'Total\n') + text_test_stat,
+                        _tr('wl_keyword_extractor', 'Total\n') + text_effect_size,
                         is_float = True
                     )
 
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_keyword_extractor', 'Total\n') + text_p_value,
-                    is_float = True
-                )
-
-                if text_bayes_factor:
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('wl_keyword_extractor', 'Total\n') + text_bayes_factor,
-                        is_float = True
+                    # Sort by p-value of the first observed file
+                    table.horizontalHeader().setSortIndicator(
+                        table.find_header_hor(f'[{files_observed[0]["name"]}]\n{text_p_value}'),
+                        Qt.AscendingOrder
                     )
 
-                table.ins_header_hor(
-                    table.model().columnCount() - 2,
-                    _tr('wl_keyword_extractor', 'Total\n') + text_effect_size,
-                    is_float = True
-                )
+                    cols_freq = table.find_headers_hor(_tr('wl_keyword_extractor', '\nFrequency'))
+                    cols_freq_pct = table.find_headers_hor(_tr('wl_keyword_extractor', '\nFrequency %'))
 
-                # Sort by p-value of the first observed file
-                table.horizontalHeader().setSortIndicator(
-                    table.find_header_hor(f'[{files_observed[0]["name"]}]\n{text_p_value}'),
-                    Qt.AscendingOrder
-                )
+                    for col in cols_freq_pct:
+                        cols_freq.remove(col)
 
-                cols_freq = table.find_headers_hor(_tr('wl_keyword_extractor', '\nFrequency'))
-                cols_freq_pct = table.find_headers_hor(_tr('wl_keyword_extractor', '\nFrequency %'))
+                    if text_test_stat:
+                        cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
 
-                for col in cols_freq_pct:
-                    cols_freq.remove(col)
+                    cols_p_value = table.find_headers_hor(_tr('wl_keyword_extractor', '\np-value'))
 
-                if text_test_stat:
-                    cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
+                    if text_bayes_factor:
+                        cols_bayes_factor = table.find_headers_hor(_tr('wl_keyword_extractor', '\nBayes Factor'))
 
-                cols_p_value = table.find_headers_hor(_tr('wl_keyword_extractor', '\np-value'))
+                    cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
+                    col_files_found = table.find_header_hor(_tr('wl_keyword_extractor', 'Number of\nFiles Found'))
+                    col_files_found_pct = table.find_header_hor(_tr('wl_keyword_extractor', 'Number of\nFiles Found %'))
 
-                if text_bayes_factor:
-                    cols_bayes_factor = table.find_headers_hor(_tr('wl_keyword_extractor', '\nBayes Factor'))
+                    freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
+                    len_files_observed = len(files_observed)
 
-                cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
-                col_files_found = table.find_header_hor(_tr('wl_keyword_extractor', 'Number of\nFiles Found'))
-                col_files_found_pct = table.find_header_hor(_tr('wl_keyword_extractor', 'Number of\nFiles Found %'))
+                    table.model().setRowCount(len(keywords_freq_files))
 
-                freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
-                len_files_observed = len(files_observed)
+                    table.disable_updates()
 
-                table.model().setRowCount(len(keywords_freq_files))
+                    for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_keywords_stats_files(keywords_stats_files)):
+                        freq_files = keywords_freq_files[keyword]
 
-                table.disable_updates()
+                        # Rank
+                        table.set_item_num(i, 0, -1)
 
-                for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_keywords_stats_files(keywords_stats_files)):
-                    freq_files = keywords_freq_files[keyword]
+                        # Keyword
+                        table.model().setItem(i, 1, wl_tables.Wl_Table_Item(keyword))
 
-                    # Rank
-                    table.set_item_num(i, 0, -1)
+                        # Frequency
+                        for j, freq in enumerate(freq_files):
+                            table.set_item_num(i, cols_freq[j], freq)
+                            table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
-                    # Keyword
-                    table.model().setItem(i, 1, wl_tables.Wl_Table_Item(keyword))
+                        for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
+                            # Test Statistic
+                            if text_test_stat:
+                                table.set_item_num(i, cols_test_stat[j], test_stat)
 
-                    # Frequency
-                    for j, freq in enumerate(freq_files):
-                        table.set_item_num(i, cols_freq[j], freq)
-                        table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
+                            # p-value
+                            table.set_item_num(i, cols_p_value[j], p_value)
 
-                    for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
-                        # Test Statistic
-                        if text_test_stat:
-                            table.set_item_num(i, cols_test_stat[j], test_stat)
+                            # Bayes Factor
+                            if text_bayes_factor:
+                                table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
 
-                        # p-value
-                        table.set_item_num(i, cols_p_value[j], p_value)
+                            # Effect Size
+                            table.set_item_num(i, cols_effect_size[j], effect_size)
 
-                        # Bayes Factor
-                        if text_bayes_factor:
-                            table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+                        # Number of Files Found
+                        num_files_found = len([freq for freq in freq_files[1:-1] if freq])
 
-                        # Effect Size
-                        table.set_item_num(i, cols_effect_size[j], effect_size)
+                        table.set_item_num(i, col_files_found, num_files_found)
+                        table.set_item_num(i, col_files_found_pct, num_files_found, len_files_observed)
 
-                    # Number of Files Found
-                    num_files_found = len([freq for freq in freq_files[1:-1] if freq])
+                    table.enable_updates()
 
-                    table.set_item_num(i, col_files_found, num_files_found)
-                    table.set_item_num(i, col_files_found_pct, num_files_found, len_files_observed)
+                    table.toggle_pct()
+                    table.toggle_cumulative()
+                    table.toggle_breakdown()
+                    table.update_ranks()
 
-                table.enable_updates()
-
-                table.toggle_pct()
-                table.toggle_cumulative()
-                table.toggle_breakdown()
-                table.update_ranks()
-
-                wl_msgs.wl_msg_generate_table_success(main)
+                    wl_msgs.wl_msg_generate_table_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
-
                 wl_msgs.wl_msg_generate_table_error(main)
-        else:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
 
+        if err_msg:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
 
     settings = main.settings_custom['keyword_extractor']
@@ -852,70 +854,73 @@ def generate_fig(main):
     def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
         if not err_msg:
             if keywords_freq_files:
-                text_test_significance = settings['generation_settings']['test_significance']
-                text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+                try:
+                    text_test_significance = settings['generation_settings']['test_significance']
+                    text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                (text_test_stat,
-                 text_p_value,
-                 text_bayes_factor) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
-                text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
+                    (text_test_stat,
+                     text_p_value,
+                     text_bayes_factor) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
+                    text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
 
-                if settings['fig_settings']['use_data'] == _tr('wl_keyword_extractor', 'Frequency'):
-                    wl_figs_freqs.wl_fig_freq_keyword_extractor(
-                        main, keywords_freq_files,
-                        files_ref = files_ref,
-                        settings = settings['fig_settings'],
-                        label_x = _tr('wl_keyword_extractor', 'Keyword')
-                    )
-                else:
-                    if settings['fig_settings']['use_data'] == text_test_stat:
-                        keywords_stat_files = {
-                            keyword: numpy.array(stats_files)[:, 0]
-                            for keyword, stats_files in keywords_stats_files.items()
-                        }
+                    if settings['fig_settings']['use_data'] == _tr('wl_keyword_extractor', 'Frequency'):
+                        wl_figs_freqs.wl_fig_freq_keyword_extractor(
+                            main, keywords_freq_files,
+                            files_ref = files_ref,
+                            settings = settings['fig_settings'],
+                            label_x = _tr('wl_keyword_extractor', 'Keyword')
+                        )
+                    else:
+                        if settings['fig_settings']['use_data'] == text_test_stat:
+                            keywords_stat_files = {
+                                keyword: numpy.array(stats_files)[:, 0]
+                                for keyword, stats_files in keywords_stats_files.items()
+                            }
 
-                        label_y = text_test_stat
-                    elif settings['fig_settings']['use_data'] == text_p_value:
-                        keywords_stat_files = {
-                            keyword: numpy.array(stats_files)[:, 1]
-                            for keyword, stats_files in keywords_stats_files.items()
-                        }
+                            label_y = text_test_stat
+                        elif settings['fig_settings']['use_data'] == text_p_value:
+                            keywords_stat_files = {
+                                keyword: numpy.array(stats_files)[:, 1]
+                                for keyword, stats_files in keywords_stats_files.items()
+                            }
 
-                        label_y = text_p_value
-                    elif settings['fig_settings']['use_data'] == text_bayes_factor:
-                        keywords_stat_files = {
-                            keyword: numpy.array(stats_files)[:, 2]
-                            for keyword, stats_files in keywords_stats_files.items()
-                        }
+                            label_y = text_p_value
+                        elif settings['fig_settings']['use_data'] == text_bayes_factor:
+                            keywords_stat_files = {
+                                keyword: numpy.array(stats_files)[:, 2]
+                                for keyword, stats_files in keywords_stats_files.items()
+                            }
 
-                        label_y = text_bayes_factor
-                    elif settings['fig_settings']['use_data'] == text_effect_size:
-                        keywords_stat_files = {
-                            keyword: numpy.array(stats_files)[:, 3]
-                            for keyword, stats_files in keywords_stats_files.items()
-                        }
+                            label_y = text_bayes_factor
+                        elif settings['fig_settings']['use_data'] == text_effect_size:
+                            keywords_stat_files = {
+                                keyword: numpy.array(stats_files)[:, 3]
+                                for keyword, stats_files in keywords_stats_files.items()
+                            }
 
-                        label_y = text_effect_size
+                            label_y = text_effect_size
 
-                    wl_figs_stats.wl_fig_stat_keyword_extractor(
-                        main, keywords_stat_files,
-                        files_ref = files_ref,
-                        settings = settings['fig_settings'],
-                        label_y = label_y
-                    )
+                        wl_figs_stats.wl_fig_stat_keyword_extractor(
+                            main, keywords_stat_files,
+                            files_ref = files_ref,
+                            settings = settings['fig_settings'],
+                            label_y = label_y
+                        )
 
-                wl_msgs.wl_msg_generate_fig_success(main)
+                    # Hide the progress dialog early so that the main window will not obscure the generated figure
+                    worker_keyword_extractor_fig.dialog_progress.accept()
+                    wl_figs.show_fig()
+
+                    wl_msgs.wl_msg_generate_fig_success(main)
+                except Exception:
+                    err_msg = traceback.format_exc()
             else:
                 wl_msg_boxes.wl_msg_box_no_results(main)
                 wl_msgs.wl_msg_generate_fig_error(main)
-        else:
+
+        if err_msg:
             wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
             wl_msgs.wl_msg_fatal_error(main)
-
-        dialog_progress.accept()
-
-        if keywords_freq_files:
-            wl_figs.show_fig()
 
     settings = main.settings_custom['keyword_extractor']
 
@@ -927,11 +932,9 @@ def generate_fig(main):
     ]
 
     if files_ref and file_names_observed:
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
-
         worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
             main,
-            dialog_progress = dialog_progress,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
         )
         wl_threading.Wl_Thread(worker_keyword_extractor_fig).start_worker()
