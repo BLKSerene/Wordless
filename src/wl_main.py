@@ -609,9 +609,9 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         settings['citation_sys'] = self.combo_box_citation_sys.currentText()
 
         if settings['citation_sys'] == self.tr('APA (7th Edition)'):
-            self.text_edit_citing.setHtml(f'Ye, L. (2021). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless')
+            self.text_edit_citing.setHtml(f'Ye, L. (2022). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless')
         elif settings['citation_sys'] == self.tr('MLA (8th Edition)'):
-            self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2021. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
+            self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
 
     def copy(self):
         self.text_edit_citing.setFocus()
