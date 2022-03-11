@@ -44,19 +44,6 @@
         <translation type="unfinished">添加文件时出错</translation>
     </message>
     <message>
-        <location filename="../wl_file_area.py" line="493"/>
-        <source>
-                        &lt;div&gt;
-                            An error occurred while adding files, so the following file(s) were not added to the table.
-                        &lt;/div&gt;
-                    </source>
-        <translation type="obsolete">
-                        &lt;div&gt;
-                            添加文件时发生了一个错误，因此下列文件未被添加至表格中。
-                        &lt;/div&gt;
-                    </translation>
-    </message>
-    <message>
         <location filename="../wl_file_area.py" line="506"/>
         <source>Empty File</source>
         <translation type="unfinished">空白文件</translation>
@@ -244,33 +231,12 @@
 <context>
     <name>Wl_Dialog_About</name>
     <message>
-        <location filename="../wl_main.py" line="1151"/>
+        <location filename="../wl_main.py" line="1152"/>
         <source>About Wordless</source>
         <translation type="unfinished">关于 Wordless</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="1157"/>
-        <source>
-                &lt;div style=&quot;text-align: center;&quot;&gt;
-                    &lt;h2&gt;Wordless {main.ver}&lt;/h2&gt;
-                    &lt;div&gt;
-                        An Integrated Corpus Tool with Multilingual Support&lt;br&gt;
-                        for the Study of Language, Literature, and Translation
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            </source>
-        <translation type="obsolete">
-                &lt;div style=&quot;text-align: center;&quot;&gt;
-                    &lt;h2&gt;Wordless {main.ver}&lt;/h2&gt;
-                    &lt;div&gt;
-                        一款&lt;br&gt;
-                        for the Study of Language, Literature, and Translation
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            </translation>
-    </message>
-    <message>
-        <location filename="../wl_main.py" line="1159"/>
+        <location filename="../wl_main.py" line="1160"/>
         <source>
                 &lt;div style=&quot;text-align: center;&quot;&gt;
                     &lt;h2&gt;Wordless {}&lt;/h2&gt;
@@ -291,7 +257,7 @@
             </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="1171"/>
+        <location filename="../wl_main.py" line="1172"/>
         <source>
                 &lt;hr&gt;
                 &lt;div style=&quot;text-align: center;&quot;&gt;
@@ -313,7 +279,7 @@
 <context>
     <name>Wl_Dialog_Acks</name>
     <message>
-        <location filename="../wl_main.py" line="644"/>
+        <location filename="../wl_main.py" line="645"/>
         <source>
                 &lt;div&gt;
                     I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
@@ -326,27 +292,27 @@
             </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="652"/>
+        <location filename="../wl_main.py" line="653"/>
         <source>Name</source>
         <translation type="unfinished">名称</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="652"/>
+        <location filename="../wl_main.py" line="653"/>
         <source>Version</source>
         <translation type="unfinished">版本</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="652"/>
+        <location filename="../wl_main.py" line="653"/>
         <source>Authors</source>
         <translation type="unfinished">作者</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="652"/>
+        <location filename="../wl_main.py" line="653"/>
         <source>License</source>
         <translation type="unfinished">协议</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="622"/>
+        <location filename="../wl_main.py" line="623"/>
         <source>Acknowledgments</source>
         <translation type="unfinished">致谢</translation>
     </message>
@@ -354,7 +320,7 @@
 <context>
     <name>Wl_Dialog_Changelog</name>
     <message>
-        <location filename="../wl_main.py" line="1030"/>
+        <location filename="../wl_main.py" line="1031"/>
         <source>Changelog</source>
         <translation type="unfinished">更新日志</translation>
     </message>
@@ -362,27 +328,22 @@
 <context>
     <name>Wl_Dialog_Check_Updates</name>
     <message>
-        <location filename="../wl_main.py" line="915"/>
-        <source>Current Version: {self.main.ver}</source>
-        <translation type="obsolete">当前版本：{self.main.ver}</translation>
-    </message>
-    <message>
-        <location filename="../wl_main.py" line="920"/>
+        <location filename="../wl_main.py" line="921"/>
         <source>Check for updates on startup</source>
         <translation type="unfinished">启动时检查更新</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="921"/>
+        <location filename="../wl_main.py" line="922"/>
         <source>Try Again</source>
         <translation type="unfinished">重试</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="977"/>
+        <location filename="../wl_main.py" line="978"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="970"/>
+        <location filename="../wl_main.py" line="971"/>
         <source>
                 &lt;div&gt;
                     Checking for updates...
@@ -395,30 +356,12 @@
             </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="975"/>
+        <location filename="../wl_main.py" line="976"/>
         <source>Latest Version: Checking...</source>
         <translation type="unfinished">最新版本：查询中...</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="981"/>
-        <source>
-                        &lt;div&gt;
-                            Wordless {ver_new} is out, click &lt;a href=&quot;https://github.com/BLKSerene/Wordless#download&quot;&gt;&lt;b&gt;HERE&lt;/b&gt;&lt;/a&gt; to download the latest version of Wordless.
-                        &lt;/div&gt;
-                    </source>
-        <translation type="obsolete">
-                        &lt;div&gt;
-                            Wordless {ver_new} 已发布，点击&lt;a href=&quot;https://github.com/BLKSerene/Wordless#download&quot;&gt;&lt;b&gt;此处&lt;/b&gt;&lt;/a&gt;下载 Wordless 的最新版。
-                        &lt;/div&gt;
-                    </translation>
-    </message>
-    <message>
-        <location filename="../wl_main.py" line="986"/>
-        <source>Latest Version: {ver_new}</source>
-        <translation type="obsolete">最新版本：{ver_new}</translation>
-    </message>
-    <message>
-        <location filename="../wl_main.py" line="990"/>
+        <location filename="../wl_main.py" line="991"/>
         <source>
                         &lt;div&gt;
                             Hooray, you are using the latest version of Wordless!
@@ -431,12 +374,7 @@
                     </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="993"/>
-        <source>Latest Version: {self.main.ver}</source>
-        <translation type="obsolete">最新版本：{self.main.ver}</translation>
-    </message>
-    <message>
-        <location filename="../wl_main.py" line="997"/>
+        <location filename="../wl_main.py" line="998"/>
         <source>
                     &lt;div&gt;
                         A network error has occurred, please check your network settings and try again or &lt;a href=&quot;https://github.com/BLKSerene/Wordless/releases&quot;&gt;check for updates manually&lt;/a&gt;.
@@ -449,27 +387,27 @@
                 </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="1002"/>
+        <location filename="../wl_main.py" line="1003"/>
         <source>Latest Version: Network error</source>
         <translation type="unfinished">最新版本：网络错误</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="1004"/>
+        <location filename="../wl_main.py" line="1005"/>
         <source>OK</source>
         <translation>确认</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="907"/>
+        <location filename="../wl_main.py" line="908"/>
         <source>Check for Updates</source>
         <translation type="unfinished">检查更新</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="917"/>
+        <location filename="../wl_main.py" line="918"/>
         <source>Current Version: </source>
         <translation type="unfinished">当前版本： </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="983"/>
+        <location filename="../wl_main.py" line="984"/>
         <source>
                         &lt;div&gt;
                             Wordless {} is out, click &lt;a href=&quot;https://github.com/BLKSerene/Wordless#download&quot;&gt;&lt;b&gt;HERE&lt;/b&gt;&lt;/a&gt; to download the latest version of Wordless.
@@ -482,7 +420,7 @@
                     </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="995"/>
+        <location filename="../wl_main.py" line="996"/>
         <source>Latest Version: </source>
         <translation type="unfinished">最新版本： </translation>
     </message>
@@ -490,7 +428,7 @@
 <context>
     <name>Wl_Dialog_Citing</name>
     <message>
-        <location filename="../wl_main.py" line="549"/>
+        <location filename="../wl_main.py" line="550"/>
         <source>
                 &lt;div&gt;
                     If you publish work that uses Wordless, please cite as follows.
@@ -503,32 +441,32 @@
             </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="558"/>
+        <location filename="../wl_main.py" line="559"/>
         <source>Citation System:</source>
         <translation type="unfinished">引用体系：</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="562"/>
+        <location filename="../wl_main.py" line="563"/>
         <source>Copy</source>
         <translation type="unfinished">复制</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="563"/>
+        <location filename="../wl_main.py" line="564"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="610"/>
+        <location filename="../wl_main.py" line="611"/>
         <source>APA (7th Edition)</source>
         <translation type="unfinished">APA（第7版）</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="612"/>
+        <location filename="../wl_main.py" line="613"/>
         <source>MLA (8th Edition)</source>
         <translation type="unfinished">MLA（第8版）</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="542"/>
+        <location filename="../wl_main.py" line="543"/>
         <source>Citing</source>
         <translation type="unfinished">引用</translation>
     </message>
@@ -616,7 +554,7 @@
 <context>
     <name>Wl_Dialog_Donating</name>
     <message>
-        <location filename="../wl_main.py" line="758"/>
+        <location filename="../wl_main.py" line="759"/>
         <source>
                 &lt;div&gt;
                     If you would like to support the development of Wordless, you may donate via &lt;a href=&quot;https://www.paypal.com/&quot;&gt;PayPal&lt;/a&gt;, &lt;a href=&quot;https://global.alipay.com/&quot;&gt;Alipay&lt;/a&gt;, or &lt;a href=&quot;https://pay.weixin.qq.com/index.php/public/wechatpay_en&quot;&gt;WeChat Pay&lt;/a&gt;.
@@ -629,27 +567,27 @@
             </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="766"/>
+        <location filename="../wl_main.py" line="767"/>
         <source>Donating via:</source>
         <translation type="unfinished">赞助途径：</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="829"/>
+        <location filename="../wl_main.py" line="830"/>
         <source>Alipay</source>
         <translation type="unfinished">支付宝</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="829"/>
+        <location filename="../wl_main.py" line="830"/>
         <source>WeChat Pay</source>
         <translation type="unfinished">微信支付</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="752"/>
+        <location filename="../wl_main.py" line="753"/>
         <source>Donating</source>
         <translation type="unfinished">赞助</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="827"/>
+        <location filename="../wl_main.py" line="828"/>
         <source>PayPal</source>
         <translation type="unfinished"></translation>
     </message>
@@ -671,15 +609,6 @@
     <name>Wl_Dialog_Err_Fatal</name>
     <message>
         <location filename="../wl_dialogs/wl_dialogs_errs.py" line="42"/>
-        <source>
-                &lt;div&gt;A fatal error has occurred, please &lt;b&gt;contact the author for support&lt;/b&gt; by emailing to {self.main.email_html}!&lt;/div&gt;
-            </source>
-        <translation type="obsolete">
-                &lt;div&gt;刚才发生了一个致命错误，请发送邮件至{self.main.email_html}以&lt;b&gt;联系作者寻求帮助&lt;/b&gt;！&lt;/div&gt;
-            </translation>
-    </message>
-    <message>
-        <location filename="../wl_dialogs/wl_dialogs_errs.py" line="42"/>
         <source>Fatal Error</source>
         <translation type="unfinished">致命错误</translation>
     </message>
@@ -688,7 +617,9 @@
         <source>
                 &lt;div&gt;A fatal error has occurred, please &lt;b&gt;contact the author for support&lt;/b&gt; by emailing to {}!&lt;/div&gt;
             </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+                &lt;div&gt;刚才发生了一个致命错误，请发送邮件至 {} 以&lt;b&gt;联系作者寻求帮助&lt;/b&gt;！&lt;/div&gt;
+            </translation>
     </message>
 </context>
 <context>
@@ -717,7 +648,7 @@
 <context>
     <name>Wl_Dialog_Info</name>
     <message>
-        <location filename="../wl_dialogs/wl_dialogs.py" line="102"/>
+        <location filename="../wl_dialogs/wl_dialogs.py" line="100"/>
         <source>OK</source>
         <translation>确认</translation>
     </message>
@@ -725,7 +656,7 @@
 <context>
     <name>Wl_Dialog_Need_Help</name>
     <message>
-        <location filename="../wl_main.py" line="692"/>
+        <location filename="../wl_main.py" line="693"/>
         <source>
                 &lt;div&gt;
                     If you encounter a problem, find a bug, or require any further information, feel free to ask questions, submit bug reports, or provide feedback by &lt;a href=&quot;https://github.com/BLKSerene/Wordless/issues/new&quot;&gt;creating an issue&lt;/a&gt; on Github if you fail to find the answer by searching &lt;a href=&quot;https://github.com/BLKSerene/Wordless/issues&quot;&gt;existing issues&lt;/a&gt; first.
@@ -746,32 +677,32 @@
             </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="705"/>
+        <location filename="../wl_main.py" line="706"/>
         <source>Channel</source>
         <translation type="unfinished">渠道</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="705"/>
+        <location filename="../wl_main.py" line="706"/>
         <source>Contact Information</source>
         <translation type="unfinished">联系信息</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="719"/>
+        <location filename="../wl_main.py" line="720"/>
         <source>Documentation</source>
         <translation type="unfinished">文档</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="721"/>
+        <location filename="../wl_main.py" line="722"/>
         <source>Email</source>
         <translation type="unfinished">电子邮箱</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="723"/>
+        <location filename="../wl_main.py" line="724"/>
         <source>&lt;a href=&quot;https://www.wechat.com/en/&quot;&gt;WeChat&lt;/a&gt;&lt;br&gt;Official Account</source>
         <translation type="unfinished">&lt;a href=&quot;https://www.wechat.com/en/&quot;&gt;微信&lt;/a&gt;&lt;br&gt;公众号</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="685"/>
+        <location filename="../wl_main.py" line="686"/>
         <source>Need Help?</source>
         <translation type="unfinished">需要帮助？</translation>
     </message>
@@ -787,15 +718,6 @@
         <location filename="../wl_dialogs/wl_dialogs_misc.py" line="42"/>
         <source>Please wait. It may take a few seconds to several minutes for the operation to be completed.</source>
         <translation type="unfinished">请稍后。本操作可能需要几秒钟至数分钟完成。</translation>
-    </message>
-    <message>
-        <location filename="../wl_dialogs/wl_dialogs_misc.py" line="53"/>
-        <source>
-            Elapsed Time: {datetime.timedelta(seconds = round(time.time() - self.time_start))}
-        </source>
-        <translation type="obsolete">
-            已用时间：{datetime.timedelta(seconds = round(time.time() - self.time_start))}
-        </translation>
     </message>
     <message>
         <location filename="../wl_dialogs/wl_dialogs_misc.py" line="55"/>
@@ -926,11 +848,6 @@
         <translation type="unfinished">总计</translation>
     </message>
     <message>
-        <location filename="../wl_results/wl_results_filter.py" line="1169"/>
-        <source>Filtering results...</source>
-        <translation type="obsolete">筛选结果中...</translation>
-    </message>
-    <message>
         <location filename="../wl_results/wl_results_filter.py" line="1108"/>
         <source>L</source>
         <translation>左</translation>
@@ -978,11 +895,6 @@
         <source>Number of Files Found:</source>
         <translation type="unfinished">查找到的文件数：</translation>
     </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="1499"/>
-        <source>Filtering results...</source>
-        <translation type="obsolete">筛选结果中...</translation>
-    </message>
 </context>
 <context>
     <name>Wl_Dialog_Results_Filter_Wordlist_Generator</name>
@@ -1016,11 +928,6 @@
         <source>Number of Files Found:</source>
         <translation type="unfinished">查找到的文件数：</translation>
     </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="818"/>
-        <source>Filtering results...</source>
-        <translation type="obsolete">筛选结果中...</translation>
-    </message>
 </context>
 <context>
     <name>Wl_Dialog_Results_Search</name>
@@ -1038,11 +945,6 @@
         <location filename="../wl_results/wl_results_search.py" line="112"/>
         <source>Find All</source>
         <translation type="unfinished">查找所有项</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_search.py" line="112"/>
-        <source> Clear Highlights </source>
-        <translation type="obsolete"> 清除高亮 </translation>
     </message>
     <message>
         <location filename="../wl_results/wl_results_search.py" line="117"/>
@@ -1074,21 +976,6 @@
         <location filename="../wl_results/wl_results_search.py" line="82"/>
         <source>Search in Results</source>
         <translation type="unfinished">在结果中查找</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_search.py" line="335"/>
-        <source>No items found.</source>
-        <translation type="obsolete">没有查找到结果。</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_search.py" line="337"/>
-        <source>Found 1 item.</source>
-        <translation type="obsolete">查找到1项。</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_search.py" line="339"/>
-        <source>Found {len_items_found:,} items.</source>
-        <translation type="obsolete">查找到 {len_items_found:,} 项。</translation>
     </message>
     <message>
         <location filename="../wl_results/wl_results_search.py" line="361"/>
@@ -1287,21 +1174,6 @@
         <translation type="unfinished">导入时发生了一个错误！</translation>
     </message>
     <message>
-        <location filename="../wl_widgets/wl_lists.py" line="325"/>
-        <source>No items were imported into the list.</source>
-        <translation type="obsolete">没有列表项被导入至列表中。</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_lists.py" line="327"/>
-        <source>1 item has been successfully imported into the list.</source>
-        <translation type="obsolete">成功添加了 1 项至列表中。</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_lists.py" line="329"/>
-        <source>{num_imps:,} items have been successfully imported into the list.</source>
-        <translation type="obsolete">成功添加了 {num_imps:,} 项至列表中。</translation>
-    </message>
-    <message>
         <location filename="../wl_widgets/wl_lists.py" line="334"/>
         <source>Export to File</source>
         <translation type="unfinished">导出至文件</translation>
@@ -1312,15 +1184,6 @@
         <translation type="unfinished">导出完成</translation>
     </message>
     <message>
-        <location filename="../wl_widgets/wl_lists.py" line="348"/>
-        <source>
-                    &lt;div&gt;The list has been successfully exported to &quot;{file_path}&quot;.&lt;/div&gt;
-                </source>
-        <translation type="obsolete">
-                    &lt;div&gt;已成功导出列表至“{file_path}”。&lt;/div&gt;
-                </translation>
-    </message>
-    <message>
         <location filename="../wl_widgets/wl_lists.py" line="327"/>
         <source>item</source>
         <translation type="unfinished">项</translation>
@@ -1329,11 +1192,6 @@
         <location filename="../wl_widgets/wl_lists.py" line="327"/>
         <source>items</source>
         <translation type="unfinished">项</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_lists.py" line="329"/>
-        <source>{num_imps} {msg_item} has been successfully imported into the list.</source>
-        <translation type="obsolete">已成功导入 {num_imps} {msg_item}至列表中。</translation>
     </message>
     <message>
         <location filename="../wl_widgets/wl_lists.py" line="329"/>
@@ -1522,112 +1380,112 @@
         <translation type="unfinished">更改显示语言</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="269"/>
+        <location filename="../wl_main.py" line="270"/>
         <source>&amp;Reset Layouts</source>
         <translation type="unfinished">重置布局</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="270"/>
+        <location filename="../wl_main.py" line="271"/>
         <source>Reset layouts</source>
         <translation type="unfinished">重置布局</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="275"/>
+        <location filename="../wl_main.py" line="276"/>
         <source>&amp;Show Status Bar</source>
         <translation type="unfinished">显示状态栏</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="277"/>
+        <location filename="../wl_main.py" line="278"/>
         <source>Show/Hide the status bar</source>
         <translation type="unfinished">显示/隐藏状态栏</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="281"/>
+        <location filename="../wl_main.py" line="282"/>
         <source>&amp;Citing</source>
         <translation type="unfinished">引用</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="282"/>
+        <location filename="../wl_main.py" line="283"/>
         <source>Show information about citing</source>
         <translation type="unfinished">显示引用信息</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="284"/>
+        <location filename="../wl_main.py" line="285"/>
         <source>&amp;Acknowledgments</source>
         <translation type="unfinished">致谢</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="285"/>
+        <location filename="../wl_main.py" line="286"/>
         <source>Show acknowldgments</source>
         <translation type="unfinished">显示致谢</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="290"/>
+        <location filename="../wl_main.py" line="291"/>
         <source>&amp;Need Help?</source>
         <translation type="unfinished">需要帮助？</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="291"/>
+        <location filename="../wl_main.py" line="292"/>
         <source>Show help information</source>
         <translation type="unfinished">显示帮助信息</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="293"/>
-        <source>C&amp;ontributing</source>
-        <translation type="unfinished">协力</translation>
-    </message>
-    <message>
         <location filename="../wl_main.py" line="294"/>
-        <source>Show information about contributing</source>
-        <translation type="unfinished">显示协力相关信息</translation>
+        <source>C&amp;ontributing</source>
+        <translation type="unfinished">助力</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="296"/>
+        <location filename="../wl_main.py" line="295"/>
+        <source>Show information about contributing</source>
+        <translation type="unfinished">显示助力相关信息</translation>
+    </message>
+    <message>
+        <location filename="../wl_main.py" line="297"/>
         <source>&amp;Donating</source>
         <translation type="unfinished">赞助</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="297"/>
+        <location filename="../wl_main.py" line="298"/>
         <source>Show information about donating</source>
         <translation type="unfinished">显示赞助相关信息</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="302"/>
+        <location filename="../wl_main.py" line="303"/>
         <source>Check &amp;for Updates</source>
         <translation type="unfinished">检查更新</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="303"/>
+        <location filename="../wl_main.py" line="304"/>
         <source>Check for updates of Wordless</source>
         <translation type="unfinished">检查 Wordless 更新</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="305"/>
+        <location filename="../wl_main.py" line="306"/>
         <source>C&amp;hangelog</source>
         <translation type="unfinished">更新日志</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="306"/>
+        <location filename="../wl_main.py" line="307"/>
         <source>Show Changelog</source>
         <translation type="unfinished">显示更新日志</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="308"/>
+        <location filename="../wl_main.py" line="309"/>
         <source>About &amp;Wordless</source>
         <translation type="unfinished">关于 Wordless</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="309"/>
+        <location filename="../wl_main.py" line="310"/>
         <source>Show information about Wordless</source>
         <translation type="unfinished">显示 Wordless 的相关信息</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="333"/>
+        <location filename="../wl_main.py" line="334"/>
         <source>Reset Layouts</source>
         <translation type="unfinished">重置布局</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="333"/>
+        <location filename="../wl_main.py" line="334"/>
         <source>
                 &lt;div&gt;Do you want to reset all layouts to their default settings?&lt;/div&gt;
             </source>
@@ -1636,42 +1494,42 @@
             </translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="437"/>
+        <location filename="../wl_main.py" line="438"/>
         <source>Profiler</source>
         <translation type="unfinished">分析工具</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="441"/>
+        <location filename="../wl_main.py" line="442"/>
         <source>Concordancer</source>
         <translation type="unfinished">索引工具</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="445"/>
+        <location filename="../wl_main.py" line="446"/>
         <source>Parallel Concordancer</source>
         <translation type="unfinished">平行索引工具</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="449"/>
+        <location filename="../wl_main.py" line="450"/>
         <source>Wordlist Generator</source>
         <translation type="unfinished">词表生成器</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="453"/>
+        <location filename="../wl_main.py" line="454"/>
         <source>N-gram Generator</source>
         <translation type="unfinished">N 元组生成器</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="457"/>
+        <location filename="../wl_main.py" line="458"/>
         <source>Collocation Extractor</source>
         <translation type="unfinished">搭配抽取器</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="461"/>
+        <location filename="../wl_main.py" line="462"/>
         <source>Colligation Extractor</source>
         <translation type="unfinished">类联接抽取器</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="465"/>
+        <location filename="../wl_main.py" line="466"/>
         <source>Keyword Extractor</source>
         <translation type="unfinished">关键词抽取器</translation>
     </message>
@@ -1679,12 +1537,12 @@
 <context>
     <name>Wl_Msg_Box_Help</name>
     <message>
-        <location filename="../wl_main.py" line="733"/>
+        <location filename="../wl_main.py" line="734"/>
         <source>Contributing</source>
-        <translation type="unfinished">协力</translation>
+        <translation type="unfinished">助力</translation>
     </message>
     <message>
-        <location filename="../wl_main.py" line="733"/>
+        <location filename="../wl_main.py" line="734"/>
         <source>
                 &lt;div&gt;
                     If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by &lt;a href=&quot;https://github.com/BLKSerene/Wordless/pulls&quot;&gt;creating a pull request&lt;/a&gt; on Github.
@@ -1776,7 +1634,7 @@
         <translation>停用词表</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings.py" line="166"/>
+        <location filename="../wl_settings/wl_settings.py" line="167"/>
         <source>Measures</source>
         <translation type="unfinished">统计方法</translation>
     </message>
@@ -1806,22 +1664,22 @@
         <translation type="unfinished">图表</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings.py" line="244"/>
+        <location filename="../wl_settings/wl_settings.py" line="245"/>
         <source>Reset all settings</source>
         <translation type="unfinished">重置所有设置</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings.py" line="245"/>
+        <location filename="../wl_settings/wl_settings.py" line="246"/>
         <source>Save</source>
         <translation type="unfinished">保存</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings.py" line="246"/>
+        <location filename="../wl_settings/wl_settings.py" line="247"/>
         <source>Apply</source>
         <translation>应用</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings.py" line="247"/>
+        <location filename="../wl_settings/wl_settings.py" line="248"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
@@ -1844,16 +1702,6 @@
 </context>
 <context>
     <name>Wl_Settings_Adjusted_Freq</name>
-    <message>
-        <location filename="../wl_settings/wl_settings_measures.py" line="78"/>
-        <source>General</source>
-        <translation type="obsolete">全局</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_measures.py" line="83"/>
-        <source>Use same settings in &quot;Settings -&gt; Measures -&gt; Dispersion&quot;</source>
-        <translation type="obsolete">使用“设置 -&gt; 统计方法 -&gt; 分布”中的相同设置</translation>
-    </message>
     <message>
         <location filename="../wl_settings/wl_settings_measures.py" line="78"/>
         <source>General Settings</source>
@@ -1902,11 +1750,6 @@
     <name>Wl_Settings_Dispersion</name>
     <message>
         <location filename="../wl_settings/wl_settings_measures.py" line="37"/>
-        <source>General</source>
-        <translation type="obsolete">全局</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_measures.py" line="37"/>
         <source>General Settings</source>
         <translation type="unfinished">全局设置</translation>
     </message>
@@ -1935,11 +1778,6 @@
         <location filename="../wl_settings/wl_settings_general.py" line="449"/>
         <source>Default Path:</source>
         <translation type="unfinished">默认路径：</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_general.py" line="451"/>
-        <source>Browse</source>
-        <translation type="obsolete">浏览</translation>
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_general.py" line="409"/>
@@ -2214,11 +2052,6 @@
         <translation type="unfinished">检索项</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings_general.py" line="241"/>
-        <source>Browse</source>
-        <translation type="obsolete">浏览</translation>
-    </message>
-    <message>
         <location filename="../wl_settings/wl_settings_general.py" line="242"/>
         <source>Default Encoding:</source>
         <translation type="unfinished">默认编码：</translation>
@@ -2278,11 +2111,6 @@
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_lemmatization.py" line="162"/>
-        <source>Processing ...</source>
-        <translation type="obsolete">处理中...</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_lemmatization.py" line="162"/>
         <source>Processing...</source>
         <translation type="unfinished">处理中...</translation>
     </message>
@@ -2295,50 +2123,9 @@
         <translation type="unfinished">无效路径</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings.py" line="51"/>
-        <source>
-                    &lt;div&gt;The specified path &quot;{path}&quot; does not exist!&lt;/div&gt;
-                    &lt;div&gt;Please check your settings and try again.&lt;/div&gt;
-                </source>
-        <translation type="obsolete">
-                    &lt;div&gt;指定的路径“{path}”不存在！&lt;/div&gt;
-                    &lt;div&gt;请检查你的设置后重试。&lt;/div&gt;
-                </translation>
-    </message>
-    <message>
         <location filename="../wl_settings/wl_settings.py" line="76"/>
         <source>Path Not Exist</source>
         <translation type="unfinished">路径不存在</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings.py" line="78"/>
-        <source>
-                    {self.main.settings_global[&apos;styles&apos;][&apos;style_dialog&apos;]}
-                    &lt;body&gt;
-                        &lt;div&gt;The specified path &quot;{path}&quot; does not exist.&lt;/div&gt;
-
-                        &lt;div&gt;Do you want to create the directory?&lt;/div&gt;
-                    &lt;/body&gt;
-                </source>
-        <translation type="obsolete">
-                    {self.main.settings_global[&apos;styles&apos;][&apos;style_dialog&apos;]}
-                    &lt;body&gt;
-                        &lt;div&gt;指定的路径“{path}”不存在！&lt;/div&gt;
-
-                        &lt;div&gt;你想要新建该目录吗？&lt;/div&gt;
-                    &lt;/body&gt;
-                </translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings.py" line="32"/>
-        <source>
-            &lt;div&gt;The specified path &quot;{path}&quot; should be a directory, not a file!&lt;/div&gt;
-            &lt;div&gt;Please check your settings and try again.&lt;/div&gt;
-        </source>
-        <translation type="obsolete">
-            &lt;div&gt;指定的路径“{path}”应是一个目录，而不是一个文件！&lt;/div&gt;
-            &lt;div&gt;请检查你的设置后重试。&lt;/div&gt;
-        </translation>
     </message>
     <message>
         <location filename="../wl_settings/wl_settings.py" line="36"/>
@@ -2419,11 +2206,6 @@
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_pos_tagging.py" line="175"/>
-        <source>Processing ...</source>
-        <translation type="obsolete">处理中...</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_pos_tagging.py" line="175"/>
         <source>Processing...</source>
         <translation type="unfinished">处理中...</translation>
     </message>
@@ -2462,11 +2244,6 @@
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_sentence_tokenization.py" line="145"/>
-        <source>Processing ...</source>
-        <translation type="obsolete">处理中...</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_sentence_tokenization.py" line="145"/>
         <source>Processing...</source>
         <translation type="unfinished">处理中...</translation>
     </message>
@@ -2479,27 +2256,9 @@
         <translation type="unfinished">z 值</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings_measures.py" line="145"/>
-        <source>Student&apos;s t-test (Two-sample)</source>
-        <translation type="obsolete">学生 t 检验（双样本）</translation>
-    </message>
-    <message>
         <location filename="../wl_settings/wl_settings_measures.py" line="153"/>
         <source>Variances:</source>
         <translation type="unfinished">方差：</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_measures.py" line="155"/>
-        <source>
-                &lt;p&gt;
-                    * If variances are set to &quot;Unequal&quot;, the Welch&apos;s t-test will be performed instead.
-                &lt;/p&gt;
-            </source>
-        <translation type="obsolete">
-                &lt;p&gt;
-                    * 若方差设置为“不齐”，则使用 Welch t 检验。
-                &lt;/p&gt;
-            </translation>
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_measures.py" line="160"/>
@@ -2579,21 +2338,6 @@
         <translation type="unfinished">选择语种：</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings_stop_word_lists.py" line="138"/>
-        <source>Count of Stop Words: {len(stop_words)}</source>
-        <translation type="obsolete">停用词数：{len(stop_words)}</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_stop_word_lists.py" line="143"/>
-        <source>Count of Stop Words: {self.list_stop_word_list_preview_results.model().rowCount()}</source>
-        <translation type="obsolete">停用词数：{self.list_stop_word_list_preview_results.model().rowCount()}</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_stop_word_lists.py" line="180"/>
-        <source>Custom List</source>
-        <translation>自定义列表</translation>
-    </message>
-    <message>
         <location filename="../wl_settings/wl_settings_stop_word_lists.py" line="143"/>
         <source>Count of Stop Words: </source>
         <translation type="unfinished">停用词数： </translation>
@@ -2630,11 +2374,6 @@
         <location filename="../wl_settings/wl_settings_syl_tokenization.py" line="182"/>
         <source>Show preview</source>
         <translation type="unfinished">显示预览</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_syl_tokenization.py" line="162"/>
-        <source>Processing ...</source>
-        <translation type="obsolete">处理中...</translation>
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_syl_tokenization.py" line="162"/>
@@ -2733,11 +2472,6 @@
         <translation type="unfinished">获取数据中...</translation>
     </message>
     <message>
-        <location filename="../wl_settings/wl_settings_pos_tagging.py" line="447"/>
-        <source>Number of POS Tags: {self.table_mappings.model().rowCount()}</source>
-        <translation type="obsolete">词性标签数：{self.table_mappings.model().rowCount()}</translation>
-    </message>
-    <message>
         <location filename="../wl_settings/wl_settings_pos_tagging.py" line="470"/>
         <source>Reset Mappings</source>
         <translation type="unfinished">重置映射</translation>
@@ -2809,11 +2543,6 @@
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_word_tokenization.py" line="157"/>
-        <source>Processing ...</source>
-        <translation type="obsolete">处理中...</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_word_tokenization.py" line="157"/>
         <source>Processing...</source>
         <translation type="unfinished">处理中...</translation>
     </message>
@@ -2839,27 +2568,9 @@
         <translation type="unfinished">导出完成</translation>
     </message>
     <message>
-        <location filename="../wl_widgets/wl_tables.py" line="1085"/>
-        <source>
-                        &lt;div&gt;The table has been successfully exported to &quot;{file_path}&quot;.&lt;/div&gt;
-                    </source>
-        <translation type="obsolete">
-                        &lt;div&gt;已成功导出表格至“{file_path}”。&lt;/div&gt;
-                    </translation>
-    </message>
-    <message>
         <location filename="../wl_widgets/wl_tables.py" line="1095"/>
         <source>Export Error</source>
         <translation type="unfinished">导出时出错</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="1093"/>
-        <source>
-                        &lt;div&gt;Access to &quot;{file_path}&quot; is denied, please specify another location or close the file and try again.&lt;/div&gt;
-                    </source>
-        <translation type="obsolete">
-                        &lt;div&gt;访问“{file_path}”被禁止，请另外指定一个位置或关闭文件后重试。&lt;/div&gt;
-                    </translation>
     </message>
     <message>
         <location filename="../wl_widgets/wl_tables.py" line="1134"/>
@@ -2960,40 +2671,40 @@ Files Found %</source>
 文件数%</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1181"/>
+        <location filename="../wl_colligation_extractor.py" line="1182"/>
         <source>[{}]
 L{}</source>
         <translation>[{}]
 左{}</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1184"/>
+        <location filename="../wl_colligation_extractor.py" line="1185"/>
         <source>Total
 L</source>
         <translation>总计
 左</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1190"/>
+        <location filename="../wl_colligation_extractor.py" line="1191"/>
         <source>[{}]
 R{}</source>
         <translation>[{}]
 右{}</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1193"/>
+        <location filename="../wl_colligation_extractor.py" line="1194"/>
         <source>Total
 R</source>
         <translation>总计
 右</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1324"/>
+        <location filename="../wl_colligation_extractor.py" line="1329"/>
         <source>^[LR][0-9]+$</source>
         <translation>^[左右][0-9]+$</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1330"/>
+        <location filename="../wl_colligation_extractor.py" line="1335"/>
         <source>L</source>
         <translation>左</translation>
     </message>
@@ -3200,11 +2911,6 @@ Files Found %</source>
         <translation type="unfinished">在结果中检索</translation>
     </message>
     <message>
-        <location filename="../wl_widgets/wl_tables.py" line="1954"/>
-        <source>Number of Results: {rows_visible}</source>
-        <translation type="obsolete">结果数：{rows_visible}</translation>
-    </message>
-    <message>
         <location filename="../wl_widgets/wl_tables.py" line="1960"/>
         <source>Number of Results: 0</source>
         <translation type="unfinished">结果数：0</translation>
@@ -3221,11 +2927,6 @@ Files Found %</source>
         <location filename="../wl_widgets/wl_tables.py" line="1811"/>
         <source>Search in Results</source>
         <translation type="unfinished">在结果中检索</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="1829"/>
-        <source>Number of Results: {rows_visible}</source>
-        <translation type="obsolete">结果数：{rows_visible}</translation>
     </message>
     <message>
         <location filename="../wl_widgets/wl_tables.py" line="1835"/>
@@ -3249,11 +2950,6 @@ Files Found %</source>
         <location filename="../wl_widgets/wl_tables.py" line="1862"/>
         <source>Sort Results</source>
         <translation type="unfinished">对结果排序</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="1887"/>
-        <source>Number of Results: {rows_visible}</source>
-        <translation type="obsolete">结果数：{rows_visible}</translation>
     </message>
     <message>
         <location filename="../wl_widgets/wl_tables.py" line="1894"/>
@@ -3283,21 +2979,6 @@ Files Found %</source>
                                 &lt;div&gt;文件区中已存在相同名称的文件。&lt;/div&gt;
                                 &lt;div&gt;请指定一个不同的文件名。&lt;/div&gt;
                             </translation>
-    </message>
-    <message>
-        <location filename="../wl_file_area.py" line="755"/>
-        <source>No files are newly opened!</source>
-        <translation type="obsolete">没有新打开文件！</translation>
-    </message>
-    <message>
-        <location filename="../wl_file_area.py" line="757"/>
-        <source>1 file has been successfully opened.</source>
-        <translation type="obsolete">成功打开 1 个文件。</translation>
-    </message>
-    <message>
-        <location filename="../wl_file_area.py" line="759"/>
-        <source>{len_files_new - len_files_old} files have been successfully opened.</source>
-        <translation type="obsolete">成功打开 {len_files_new - len_files_old} 个文件。</translation>
     </message>
     <message>
         <location filename="../wl_file_area.py" line="763"/>
@@ -4010,21 +3691,6 @@ Files Found %</source>
         <translation type="unfinished">同列排序超过一次</translation>
     </message>
     <message>
-        <location filename="../wl_results/wl_results_sort.py" line="78"/>
-        <source>
-                            {self.main.settings_global[&apos;styles&apos;][&apos;style_dialog&apos;]}
-                            &lt;body&gt;
-                                &lt;div&gt;Please refrain from sorting the same column more than once!&lt;/div&gt;
-                            &lt;/body&gt;
-                        </source>
-        <translation type="obsolete">
-                            {self.main.settings_global[&apos;styles&apos;][&apos;style_dialog&apos;]}
-                            &lt;body&gt;
-                                &lt;div&gt;请勿对同一列排序一次以上！&lt;/div&gt;
-                            &lt;/body&gt;
-                        </translation>
-    </message>
-    <message>
         <location filename="../wl_results/wl_results_sort.py" line="138"/>
         <source>Token</source>
         <translation type="unfinished">形符</translation>
@@ -4141,21 +3807,6 @@ Files Found %</source>
         <location filename="../wl_settings/wl_settings_files.py" line="254"/>
         <source>TAG</source>
         <translation type="unfinished">标签</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_files.py" line="245"/>
-        <source>token{opening_tag_text}</source>
-        <translation type="obsolete">形符{opening_tag_text}</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_files.py" line="255"/>
-        <source>{opening_tag_text}token{closing_tag_text}</source>
-        <translation type="obsolete">{opening_tag_text}形符{closing_tag_text}</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_files.py" line="257"/>
-        <source>{opening_tag_text}token{self.model().item(row, 3).text()}</source>
-        <translation type="obsolete">{opening_tag_text}形符{self.model().item(row, 3).text()}</translation>
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_files.py" line="145"/>
@@ -4323,11 +3974,6 @@ Files Found %</source>
 </context>
 <context>
     <name>Wl_Worker_Add_Files</name>
-    <message>
-        <location filename="../wl_file_area.py" line="54"/>
-        <source>Adding files... ({i + 1}/{len_file_paths})</source>
-        <translation type="obsolete">添加文件中... ({i + 1}/{len_file_paths})</translation>
-    </message>
     <message>
         <location filename="../wl_file_area.py" line="207"/>
         <source>Updating table...</source>
@@ -4529,34 +4175,9 @@ Files Found %</source>
         <translation>CSV 文件 (*.csv)</translation>
     </message>
     <message>
-        <location filename="../wl_widgets/wl_tables.py" line="542"/>
-        <source>Exporting table... ({i + 1} / {len_rows})</source>
-        <translation type="obsolete">导出表格中... ({i + 1} / {len_rows})</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="564"/>
-        <source>Exporting table... ({i + 1} / {len_rows * 2})</source>
-        <translation type="obsolete">导出表格中... ({i + 1} / {len_rows * 2})</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="577"/>
-        <source>Exporting table... ({len_rows + i + 1} / {len_rows * 2})</source>
-        <translation type="obsolete">导出表格中... ({len_rows + i + 1} / {len_rows * 2})</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="527"/>
-        <source>Exporting table ... ({i + 1} / {len_rows})</source>
-        <translation type="obsolete">导出表格中 ... ({i + 1} / {len_rows})</translation>
-    </message>
-    <message>
         <location filename="../wl_widgets/wl_tables.py" line="189"/>
         <source>Excel Workbook (*.xlsx)</source>
         <translation>Excel 工作簿 (*.xlsx)</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="468"/>
-        <source>Exporting table... ({row_cell + 1} / {len_rows})</source>
-        <translation type="obsolete">导出表格中... ({row_cell + 1} / {len_rows})</translation>
     </message>
     <message>
         <location filename="../wl_widgets/wl_tables.py" line="581"/>
@@ -4564,19 +4185,9 @@ Files Found %</source>
         <translation type="unfinished">保存文件中...</translation>
     </message>
     <message>
-        <location filename="../wl_widgets/wl_tables.py" line="330"/>
-        <source>Exporting table... ({row_cell + 1} / {len_rows * 2})</source>
-        <translation type="obsolete">导出表格中... ({row_cell + 1} / {len_rows * 2})</translation>
-    </message>
-    <message>
         <location filename="../wl_widgets/wl_tables.py" line="340"/>
         <source>Saving source file...</source>
         <translation type="unfinished">保存源文件中...</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="385"/>
-        <source>Exporting table... ({len_rows + row_cell + 1} / {len_rows * 2})</source>
-        <translation type="obsolete">导出表格中... ({len_rows + row_cell + 1} / {len_rows * 2})</translation>
     </message>
     <message>
         <location filename="../wl_widgets/wl_tables.py" line="395"/>
@@ -4584,24 +4195,9 @@ Files Found %</source>
         <translation type="unfinished">保存目的文件中...</translation>
     </message>
     <message>
-        <location filename="../wl_widgets/wl_tables.py" line="468"/>
-        <source>Exporting table ... ({row_cell + 1} / {len_rows})</source>
-        <translation type="obsolete">导出表格中... ({row_cell + 1} / {len_rows})</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="476"/>
-        <source>Saving file ...</source>
-        <translation type="obsolete">保存文件中...</translation>
-    </message>
-    <message>
         <location filename="../wl_widgets/wl_tables.py" line="481"/>
         <source>Word Document (*.docx)</source>
         <translation>Word 文档 (*.docx)</translation>
-    </message>
-    <message>
-        <location filename="../wl_widgets/wl_tables.py" line="564"/>
-        <source>Exporting table ... ({i + 1} / {len_rows * 2})</source>
-        <translation type="obsolete">导出表格中... ({i + 1} / {len_rows * 2})</translation>
     </message>
     <message>
         <location filename="../wl_widgets/wl_tables.py" line="579"/>
@@ -4675,11 +4271,6 @@ Files Found %</source>
 <context>
     <name>Wl_Worker_Open_Files</name>
     <message>
-        <location filename="../wl_file_area.py" line="357"/>
-        <source>Opening files... ({i + 1}/{len_files})</source>
-        <translation type="obsolete">打开文件中... ({i + 1}/{len_files})</translation>
-    </message>
-    <message>
         <location filename="../wl_file_area.py" line="379"/>
         <source>Updating table...</source>
         <translation type="unfinished">更新表格中...</translation>
@@ -4715,48 +4306,6 @@ Files Found %</source>
         <source>Total
 Frequency</source>
         <translation type="unfinished">总计
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="182"/>
-        <source>Total
-{self.dialog.settings[&quot;freq_position&quot;]}</source>
-        <translation type="obsolete">总计
-{self.dialog.settings[&quot;freq_position&quot;]}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="187"/>
-        <source>Total
-{text_test_stat}</source>
-        <translation type="obsolete">总计
-{text_test_stat}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="190"/>
-        <source>Total
-{text_p_value}</source>
-        <translation type="obsolete">总计
-{text_p_value}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="194"/>
-        <source>Total
-{text_bayes_factor}</source>
-        <translation type="obsolete">总计
-{text_bayes_factor}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="197"/>
-        <source>Total
-{text_effect_size}</source>
-        <translation type="obsolete">总计
-{text_effect_size}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="202"/>
-        <source>[{self.dialog.settings[&apos;file_to_filter&apos;]}]
-Frequency</source>
-        <translation type="obsolete">[{self.dialog.settings[&apos;file_to_filter&apos;]}]
 频数</translation>
     </message>
     <message>
@@ -4803,41 +4352,6 @@ Frequency</source>
         <source>Total
 Frequency</source>
         <translation type="unfinished">总计
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="352"/>
-        <source>Total
-{text_test_stat}</source>
-        <translation type="obsolete">总计
-{text_test_stat}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="355"/>
-        <source>Total
-{text_p_value}</source>
-        <translation type="obsolete">总计
-{text_p_value}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="359"/>
-        <source>Total
-{text_bayes_factor}</source>
-        <translation type="obsolete">总计
-{text_bayes_factor}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="362"/>
-        <source>Total
-{text_effect_size}</source>
-        <translation type="obsolete">总计
-{text_effect_size}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="366"/>
-        <source>[{self.dialog.settings[&apos;file_to_filter&apos;]}]
-Frequency</source>
-        <translation type="obsolete">[{self.dialog.settings[&apos;file_to_filter&apos;]}]
 频数</translation>
     </message>
     <message>
@@ -4889,27 +4403,6 @@ Frequency</source>
         <source>Total
 Frequency</source>
         <translation type="unfinished">总计
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="46"/>
-        <source>Total
-{text_dispersion}</source>
-        <translation type="obsolete">总计
-{text_dispersion}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="49"/>
-        <source>Total
-{text_adjusted_freq}</source>
-        <translation type="obsolete">总计
-{text_adjusted_freq}</translation>
-    </message>
-    <message>
-        <location filename="../wl_results/wl_results_filter.py" line="53"/>
-        <source>[{self.dialog.settings[&apos;file_to_filter&apos;]}]
-Frequency</source>
-        <translation type="obsolete">[{self.dialog.settings[&apos;file_to_filter&apos;]}]
 频数</translation>
     </message>
     <message>
@@ -5559,19 +5052,6 @@ Frequency</source>
         <location filename="../wl_checking/wl_checking_files.py" line="106"/>
         <source>POS Tagging Unsupported</source>
         <translation type="unfinished">无词性标注支持</translation>
-    </message>
-    <message>
-        <location filename="../wl_checking/wl_checking_files.py" line="93"/>
-        <source>
-            &lt;div&gt;
-                The built-in POS taggers currently have no support for the following file(s), please check your language settings or provide corpora that have already been POS-tagged.
-            &lt;/div&gt;
-        </source>
-        <translation type="obsolete">
-            &lt;div&gt;
-                目前没有对下列文件的词性标注支持，请检查你的语种设置或提供已标注的语料库。
-            &lt;/div&gt;
-        </translation>
     </message>
     <message>
         <location filename="../wl_checking/wl_checking_files.py" line="95"/>
@@ -6860,11 +6340,6 @@ Frequency</source>
         <location filename="../wl_settings/wl_settings_global.py" line="280"/>
         <source>Vietnamese (CP1258)</source>
         <translation>越南语（CP1258）</translation>
-    </message>
-    <message>
-        <location filename="../wl_settings/wl_settings_global.py" line="285"/>
-        <source>CSV File(*.csv)</source>
-        <translation type="obsolete">CSV 文件 (*.csv)</translation>
     </message>
     <message>
         <location filename="../wl_settings/wl_settings_global.py" line="302"/>
@@ -9425,36 +8900,6 @@ Frequency</source>
 <context>
     <name>log_timing</name>
     <message>
-        <location filename="../wl_utils/wl_misc.py" line="141"/>
-        <source>(In {time_elapsed_sec:.2f} seconds)</source>
-        <translation type="obsolete">（耗时{time_elapsed_sec:.2f}秒）</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_misc.py" line="143"/>
-        <source>(In 1 minute {time_elapsed_sec:.2f} seconds)</source>
-        <translation type="obsolete">（耗时1分{time_elapsed_sec:.2f}秒）</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_misc.py" line="145"/>
-        <source>(In {time_elapsed_min} minutes {time_elapsed_sec:.2f} seconds)</source>
-        <translation type="obsolete">（耗时{time_elapsed_min}分{time_elapsed_sec:.2f}秒）</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_misc.py" line="142"/>
-        <source>(In {time_elapsed_secs:.2f} seconds)</source>
-        <translation type="obsolete">（耗时{time_elapsed_secs:.2f}秒）</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_misc.py" line="144"/>
-        <source>(In 1 minute {time_elapsed_secs:.2f} seconds)</source>
-        <translation type="obsolete">（耗时1分{time_elapsed_secs:.2f}秒）</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_misc.py" line="146"/>
-        <source>(In {time_elapsed_mins} minutes {time_elapsed_secs:.2f} seconds)</source>
-        <translation type="obsolete">（耗时{time_elapsed_mins}分{time_elapsed_secs:.2f}秒）</translation>
-    </message>
-    <message>
         <location filename="../wl_utils/wl_misc.py" line="144"/>
         <source>(In</source>
         <translation type="unfinished">（耗时</translation>
@@ -9522,246 +8967,148 @@ Frequency</source>
 <context>
     <name>wl_colligation_extractor</name>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1039"/>
-        <source>[{file[&quot;name&quot;]}]
-L{-i}</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-左{-i}</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1044"/>
-        <source>[{file[&quot;name&quot;]}]
-L{-i} %</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-左{-i} %</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1050"/>
-        <source>[{file[&quot;name&quot;]}]
-R{i}</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-右{i}</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1055"/>
-        <source>[{file[&quot;name&quot;]}]
-R{i} %</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-右{i} %</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1065"/>
-        <source>[{file[&quot;name&quot;]}]
-Frequency</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1070"/>
-        <source>[{file[&quot;name&quot;]}]
-Frequency %</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1108"/>
-        <source>Total
-L{-i}</source>
-        <translation type="obsolete">总计
-左{-i}</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1113"/>
-        <source>Total
-L{-i} %</source>
-        <translation type="obsolete">总计
-左{-i} %</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1119"/>
-        <source>Total
-R{i}</source>
-        <translation type="obsolete">总计
-右{i}</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1124"/>
-        <source>Total
-R{i} %</source>
-        <translation type="obsolete">总计
-右{i} %</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1136"/>
+        <location filename="../wl_colligation_extractor.py" line="1137"/>
         <source>Total
 Frequency</source>
         <translation>总计
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1141"/>
+        <location filename="../wl_colligation_extractor.py" line="1142"/>
         <source>Total
 Frequency %</source>
         <translation>总计
 频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1146"/>
-        <source>Total
-{text_test_stat}</source>
-        <translation type="obsolete">总计
-{text_test_stat}</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1152"/>
-        <source>Total
-{text_p_value}</source>
-        <translation type="obsolete">总计
-{text_p_value}</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1159"/>
-        <source>Total
-{text_bayes_factor}</source>
-        <translation type="obsolete">总计
-{text_bayes_factor}</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1165"/>
-        <source>Total
-{text_effect_size}</source>
-        <translation type="obsolete">总计
-{text_effect_size}</translation>
-    </message>
-    <message>
-        <location filename="../wl_colligation_extractor.py" line="1198"/>
-        <source>
-Frequency</source>
-        <translation>
-频数</translation>
     </message>
     <message>
         <location filename="../wl_colligation_extractor.py" line="1199"/>
         <source>
+Frequency</source>
+        <translation>
+频数</translation>
+    </message>
+    <message>
+        <location filename="../wl_colligation_extractor.py" line="1200"/>
+        <source>
 Frequency %</source>
         <translation>
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1207"/>
+        <location filename="../wl_colligation_extractor.py" line="1208"/>
         <source>
 p-value</source>
         <translation>
 p 值</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1210"/>
+        <location filename="../wl_colligation_extractor.py" line="1211"/>
         <source>
 Bayes Factor</source>
         <translation>
 贝叶斯因子</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1213"/>
+        <location filename="../wl_colligation_extractor.py" line="1214"/>
         <source>Number of
 Files Found</source>
         <translation>查找到的
 文件数</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1214"/>
+        <location filename="../wl_colligation_extractor.py" line="1215"/>
         <source>Number of
 Files Found %</source>
         <translation>查找到的
 文件数%</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1374"/>
+        <location filename="../wl_colligation_extractor.py" line="1379"/>
         <source>Network Graph</source>
         <translation>网络图</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1415"/>
+        <location filename="../wl_colligation_extractor.py" line="1420"/>
         <source>Colligation</source>
         <translation>类联接</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1353"/>
+        <location filename="../wl_colligation_extractor.py" line="1358"/>
         <source>Frequency</source>
         <translation>频数</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1041"/>
+        <location filename="../wl_colligation_extractor.py" line="1042"/>
         <source>[{}]
 L{}</source>
         <translation>[{}]
 左{}</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1046"/>
+        <location filename="../wl_colligation_extractor.py" line="1047"/>
         <source>[{}]
 L{} %</source>
         <translation>[{}]
 左{} %</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1052"/>
+        <location filename="../wl_colligation_extractor.py" line="1053"/>
         <source>[{}]
 R{}</source>
         <translation>[{}]
 右{}</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1057"/>
+        <location filename="../wl_colligation_extractor.py" line="1058"/>
         <source>[{}]
 R{} %</source>
         <translation>[{}]
 右{} %</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1067"/>
+        <location filename="../wl_colligation_extractor.py" line="1068"/>
         <source>[{}]
 Frequency</source>
         <translation>[{}]
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1072"/>
+        <location filename="../wl_colligation_extractor.py" line="1073"/>
         <source>[{}]
 Frequency %</source>
         <translation>[{}]
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1110"/>
+        <location filename="../wl_colligation_extractor.py" line="1111"/>
         <source>Total
 L{}</source>
         <translation>总计
 左{}</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1115"/>
+        <location filename="../wl_colligation_extractor.py" line="1116"/>
         <source>Total
 L{} %</source>
         <translation>总计
 左{} %</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1121"/>
+        <location filename="../wl_colligation_extractor.py" line="1122"/>
         <source>Total
 R{}</source>
         <translation>总计
 右{}</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1126"/>
+        <location filename="../wl_colligation_extractor.py" line="1127"/>
         <source>Total
 R{} %</source>
         <translation>总计
 右{} %</translation>
     </message>
     <message>
-        <location filename="../wl_colligation_extractor.py" line="1167"/>
+        <location filename="../wl_colligation_extractor.py" line="1168"/>
         <source>Total
 </source>
         <translation>总计
@@ -9771,272 +9118,174 @@ R{} %</source>
 <context>
     <name>wl_collocation_extractor</name>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1027"/>
-        <source>[{file[&quot;name&quot;]}]
-L{-i}</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-左{-i}</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1032"/>
-        <source>[{file[&quot;name&quot;]}]
-L{-i} %</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-左{-i} %</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1038"/>
-        <source>[{file[&quot;name&quot;]}]
-R{i}</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-右{i}</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1043"/>
-        <source>[{file[&quot;name&quot;]}]
-R{i} %</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-右{i} %</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1053"/>
-        <source>[{file[&quot;name&quot;]}]
-Frequency</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1058"/>
-        <source>[{file[&quot;name&quot;]}]
-Frequency %</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1094"/>
-        <source>Total
-L{-i}</source>
-        <translation type="obsolete">总计
-左{-i}</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1099"/>
-        <source>Total
-L{-i} %</source>
-        <translation type="obsolete">总计
-左{-i} %</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1105"/>
-        <source>Total
-R{i}</source>
-        <translation type="obsolete">总计
-右{i}</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1110"/>
-        <source>Total
-R{i} %</source>
-        <translation type="obsolete">总计
-右{i} %</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1124"/>
+        <location filename="../wl_collocation_extractor.py" line="1125"/>
         <source>Total
 Frequency</source>
         <translation type="unfinished">总计
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1129"/>
+        <location filename="../wl_collocation_extractor.py" line="1130"/>
         <source>Total
 Frequency %</source>
         <translation type="unfinished">总计
 频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1132"/>
-        <source>Total
-{text_test_stat}</source>
-        <translation type="obsolete">总计
-{text_test_stat}</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1138"/>
-        <source>Total
-{text_p_value}</source>
-        <translation type="obsolete">总计
-{text_p_value}</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1145"/>
-        <source>Total
-{text_bayes_factor}</source>
-        <translation type="obsolete">总计
-{text_bayes_factor}</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1151"/>
-        <source>Total
-{text_effect_size}</source>
-        <translation type="obsolete">总计
-{text_effect_size}</translation>
-    </message>
-    <message>
-        <location filename="../wl_collocation_extractor.py" line="1186"/>
-        <source>
-Frequency</source>
-        <translation type="unfinished">
-频数</translation>
     </message>
     <message>
         <location filename="../wl_collocation_extractor.py" line="1187"/>
         <source>
+Frequency</source>
+        <translation type="unfinished">
+频数</translation>
+    </message>
+    <message>
+        <location filename="../wl_collocation_extractor.py" line="1188"/>
+        <source>
 Frequency %</source>
         <translation type="unfinished">
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1195"/>
+        <location filename="../wl_collocation_extractor.py" line="1196"/>
         <source>
 p-value</source>
         <translation type="unfinished">
 p 值</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1198"/>
+        <location filename="../wl_collocation_extractor.py" line="1199"/>
         <source>
 Bayes Factor</source>
         <translation type="unfinished">
 贝叶斯因子</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1201"/>
+        <location filename="../wl_collocation_extractor.py" line="1202"/>
         <source>Number of
 Files Found</source>
         <translation type="unfinished">查找到的
 文件数</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1202"/>
+        <location filename="../wl_collocation_extractor.py" line="1203"/>
         <source>Number of
 Files Found %</source>
         <translation type="unfinished">查找到的
 文件数%</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1348"/>
+        <location filename="../wl_collocation_extractor.py" line="1353"/>
         <source>Network Graph</source>
         <translation type="unfinished">网络图</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1389"/>
+        <location filename="../wl_collocation_extractor.py" line="1394"/>
         <source>Collocation</source>
         <translation type="unfinished">搭配</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1327"/>
+        <location filename="../wl_collocation_extractor.py" line="1332"/>
         <source>Frequency</source>
         <translation type="unfinished">频数</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1169"/>
+        <location filename="../wl_collocation_extractor.py" line="1170"/>
         <source>[{}]
 L{}</source>
         <translation type="unfinished">[{}]
 左{}</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1036"/>
+        <location filename="../wl_collocation_extractor.py" line="1037"/>
         <source>[{}]
 L{} %</source>
         <translation type="unfinished">[{}]
 左{} %</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1178"/>
+        <location filename="../wl_collocation_extractor.py" line="1179"/>
         <source>[{}]
 R{}</source>
         <translation type="unfinished">[{}]
 右{}</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1047"/>
+        <location filename="../wl_collocation_extractor.py" line="1048"/>
         <source>[{}]
 R{} %</source>
         <translation type="unfinished">[{}]
 右{} %</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1057"/>
+        <location filename="../wl_collocation_extractor.py" line="1058"/>
         <source>[{}]
 Frequency</source>
         <translation type="unfinished">[{}]
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1062"/>
+        <location filename="../wl_collocation_extractor.py" line="1063"/>
         <source>[{}]
 Frequency %</source>
         <translation type="unfinished">[{}]
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1098"/>
+        <location filename="../wl_collocation_extractor.py" line="1099"/>
         <source>Total
 L{}</source>
         <translation type="unfinished">总计
 左{}</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1103"/>
+        <location filename="../wl_collocation_extractor.py" line="1104"/>
         <source>Total
 L{} %</source>
         <translation type="unfinished">总计
 左{} %</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1109"/>
+        <location filename="../wl_collocation_extractor.py" line="1110"/>
         <source>Total
 R{}</source>
         <translation type="unfinished">总计
 右{}</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1114"/>
+        <location filename="../wl_collocation_extractor.py" line="1115"/>
         <source>Total
 R{} %</source>
         <translation type="unfinished">总计
 右{} %</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1155"/>
+        <location filename="../wl_collocation_extractor.py" line="1156"/>
         <source>Total
 </source>
         <translation type="unfinished">总计
 </translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1172"/>
+        <location filename="../wl_collocation_extractor.py" line="1173"/>
         <source>Total
 L</source>
         <translation type="unfinished">总计
 左</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1181"/>
+        <location filename="../wl_collocation_extractor.py" line="1182"/>
         <source>Total
 R</source>
         <translation type="unfinished">总计
 右</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1298"/>
+        <location filename="../wl_collocation_extractor.py" line="1303"/>
         <source>^[LR][0-9]+$</source>
         <translation type="unfinished">^[左右][0-9]+$</translation>
     </message>
     <message>
-        <location filename="../wl_collocation_extractor.py" line="1304"/>
+        <location filename="../wl_collocation_extractor.py" line="1309"/>
         <source>L</source>
         <translation>左</translation>
     </message>
@@ -10044,27 +9293,27 @@ R</source>
 <context>
     <name>wl_concordancer</name>
     <message>
-        <location filename="../wl_concordancer.py" line="1162"/>
+        <location filename="../wl_concordancer.py" line="1165"/>
         <source>File</source>
         <translation type="unfinished">文件</translation>
     </message>
     <message>
-        <location filename="../wl_concordancer.py" line="1185"/>
+        <location filename="../wl_concordancer.py" line="1188"/>
         <source>Search Terms</source>
         <translation type="unfinished">检索项</translation>
     </message>
     <message>
-        <location filename="../wl_concordancer.py" line="1182"/>
+        <location filename="../wl_concordancer.py" line="1185"/>
         <source>Files</source>
         <translation type="unfinished">文件</translation>
     </message>
     <message>
-        <location filename="../wl_concordancer.py" line="1175"/>
+        <location filename="../wl_concordancer.py" line="1178"/>
         <source>Search Term</source>
         <translation type="unfinished">检索项</translation>
     </message>
     <message>
-        <location filename="../wl_concordancer.py" line="1189"/>
+        <location filename="../wl_concordancer.py" line="1192"/>
         <source>Dispersion Plot</source>
         <translation type="unfinished">分布图</translation>
     </message>
@@ -10072,12 +9321,12 @@ R</source>
 <context>
     <name>wl_concordancer_parallel</name>
     <message>
-        <location filename="../wl_concordancer_parallel.py" line="829"/>
+        <location filename="../wl_concordancer_parallel.py" line="831"/>
         <source>Empty Search Terms</source>
         <translation type="unfinished">无检索项</translation>
     </message>
     <message>
-        <location filename="../wl_concordancer_parallel.py" line="829"/>
+        <location filename="../wl_concordancer_parallel.py" line="831"/>
         <source>
                     &lt;div&gt;You have not specified any search terms. Do you want to search for additions in the target file?&lt;/div&gt;
                 </source>
@@ -10086,12 +9335,12 @@ R</source>
                 </translation>
     </message>
     <message>
-        <location filename="../wl_concordancer_parallel.py" line="848"/>
+        <location filename="../wl_concordancer_parallel.py" line="850"/>
         <source>Identical source and target files</source>
         <translation type="unfinished">源文件与目的文件相同</translation>
     </message>
     <message>
-        <location filename="../wl_concordancer_parallel.py" line="848"/>
+        <location filename="../wl_concordancer_parallel.py" line="850"/>
         <source>
                 &lt;div&gt;The source and target file you have specified are identical. Please check your settings and try again.&lt;/div&gt;
             </source>
@@ -10315,143 +9564,101 @@ R</source>
 <context>
     <name>wl_keyword_extractor</name>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="653"/>
+        <location filename="../wl_keyword_extractor.py" line="654"/>
         <source>[Reference Files]
 Frequency</source>
         <translation type="unfinished">[参照文件]
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="658"/>
+        <location filename="../wl_keyword_extractor.py" line="659"/>
         <source>[Reference Files]
 Frequency %</source>
         <translation type="unfinished">[参照文件]
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="663"/>
-        <source>[{file_observed[&quot;name&quot;]}]
-Frequency</source>
-        <translation type="obsolete">[{file_observed[&quot;name&quot;]}]
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_keyword_extractor.py" line="668"/>
-        <source>[{file_observed[&quot;name&quot;]}]
-Frequency %</source>
-        <translation type="obsolete">[{file_observed[&quot;name&quot;]}]
-频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_keyword_extractor.py" line="703"/>
+        <location filename="../wl_keyword_extractor.py" line="704"/>
         <source>Total
 Frequency</source>
         <translation type="unfinished">总计
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="708"/>
+        <location filename="../wl_keyword_extractor.py" line="709"/>
         <source>Total
 Frequency %</source>
         <translation type="unfinished">总计
 频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_keyword_extractor.py" line="713"/>
-        <source>Total
-{text_test_stat}</source>
-        <translation type="obsolete">总计
-{text_test_stat}</translation>
-    </message>
-    <message>
-        <location filename="../wl_keyword_extractor.py" line="719"/>
-        <source>Total
-{text_p_value}</source>
-        <translation type="obsolete">总计
-{text_p_value}</translation>
-    </message>
-    <message>
-        <location filename="../wl_keyword_extractor.py" line="726"/>
-        <source>Total
-{text_bayes_factor}</source>
-        <translation type="obsolete">总计
-{text_bayes_factor}</translation>
-    </message>
-    <message>
-        <location filename="../wl_keyword_extractor.py" line="732"/>
-        <source>Total
-{text_effect_size}</source>
-        <translation type="obsolete">总计
-{text_effect_size}</translation>
-    </message>
-    <message>
-        <location filename="../wl_keyword_extractor.py" line="746"/>
-        <source>
-Frequency</source>
-        <translation type="unfinished">
-频数</translation>
     </message>
     <message>
         <location filename="../wl_keyword_extractor.py" line="747"/>
         <source>
+Frequency</source>
+        <translation type="unfinished">
+频数</translation>
+    </message>
+    <message>
+        <location filename="../wl_keyword_extractor.py" line="748"/>
+        <source>
 Frequency %</source>
         <translation type="unfinished">
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="755"/>
+        <location filename="../wl_keyword_extractor.py" line="756"/>
         <source>
 p-value</source>
         <translation type="unfinished">
 p 值</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="758"/>
+        <location filename="../wl_keyword_extractor.py" line="759"/>
         <source>
 Bayes Factor</source>
         <translation type="unfinished">
 贝叶斯因子</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="761"/>
+        <location filename="../wl_keyword_extractor.py" line="762"/>
         <source>Number of
 Files Found</source>
         <translation type="unfinished">查找到的
 文件数</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="762"/>
+        <location filename="../wl_keyword_extractor.py" line="763"/>
         <source>Number of
 Files Found %</source>
         <translation type="unfinished">查找到的
 文件数%</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="863"/>
+        <location filename="../wl_keyword_extractor.py" line="866"/>
         <source>Frequency</source>
         <translation type="unfinished">频数</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="864"/>
+        <location filename="../wl_keyword_extractor.py" line="867"/>
         <source>Keyword</source>
         <translation type="unfinished">关键词</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="665"/>
+        <location filename="../wl_keyword_extractor.py" line="666"/>
         <source>[{}]
 Frequency</source>
         <translation type="unfinished">[{}]
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="670"/>
+        <location filename="../wl_keyword_extractor.py" line="671"/>
         <source>[{}]
 Frequency %</source>
         <translation type="unfinished">[{}]
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_keyword_extractor.py" line="734"/>
+        <location filename="../wl_keyword_extractor.py" line="735"/>
         <source>Total
 </source>
         <translation type="unfinished">总计
@@ -10622,137 +9829,77 @@ Frequency %</source>
         <source>The results in the table has been successfully filtered.</source>
         <translation type="unfinished">已成功筛选表格中的结果。</translation>
     </message>
-    <message>
-        <location filename="../wl_utils/wl_msgs.py" line="41"/>
-        <source>No items found.</source>
-        <translation type="obsolete">没有查找到结果。</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_msgs.py" line="43"/>
-        <source>Found 1 item.</source>
-        <translation type="obsolete">查找到1项。</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_msgs.py" line="45"/>
-        <source>Found {len(search_results):,} items.</source>
-        <translation type="obsolete">查找到{len(search_results):,}项。</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_msgs.py" line="48"/>
-        <source>An error occured during searching!</source>
-        <translation type="obsolete">查找时发生了一个错误！</translation>
-    </message>
-    <message>
-        <location filename="../wl_utils/wl_msgs.py" line="51"/>
-        <source>The results in the table has been successfully sorted.</source>
-        <translation type="obsolete">已成功对表格中的结果排序。</translation>
-    </message>
 </context>
 <context>
     <name>wl_ngram_generator</name>
     <message>
-        <location filename="../wl_ngram_generator.py" line="922"/>
-        <source>[{file[&quot;name&quot;]}]
-Frequency</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_ngram_generator.py" line="927"/>
-        <source>[{file[&quot;name&quot;]}]
-Frequency %</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_ngram_generator.py" line="948"/>
+        <location filename="../wl_ngram_generator.py" line="949"/>
         <source>Total
 Frequency</source>
         <translation type="unfinished">总计
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_ngram_generator.py" line="953"/>
+        <location filename="../wl_ngram_generator.py" line="954"/>
         <source>Total
 Frequency %</source>
         <translation type="unfinished">总计
 频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_ngram_generator.py" line="957"/>
-        <source>Total
-{text_dispersion}</source>
-        <translation type="obsolete">总计
-{text_dispersion}</translation>
-    </message>
-    <message>
-        <location filename="../wl_ngram_generator.py" line="963"/>
-        <source>Total
-{text_adjusted_freq}</source>
-        <translation type="obsolete">总计
-{text_adjusted_freq}</translation>
-    </message>
-    <message>
-        <location filename="../wl_ngram_generator.py" line="970"/>
-        <source>[{files[0][&quot;name&quot;]}]
-Frequency</source>
-        <translation type="obsolete">[{files[0][&quot;name&quot;]}]
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_ngram_generator.py" line="977"/>
-        <source>
-Frequency</source>
-        <translation type="unfinished">
-频数</translation>
     </message>
     <message>
         <location filename="../wl_ngram_generator.py" line="978"/>
         <source>
+Frequency</source>
+        <translation type="unfinished">
+频数</translation>
+    </message>
+    <message>
+        <location filename="../wl_ngram_generator.py" line="979"/>
+        <source>
 Frequency %</source>
         <translation type="unfinished">
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_ngram_generator.py" line="985"/>
+        <location filename="../wl_ngram_generator.py" line="986"/>
         <source>Number of
 Files Found</source>
         <translation type="unfinished">查找到的
 文件数</translation>
     </message>
     <message>
-        <location filename="../wl_ngram_generator.py" line="986"/>
+        <location filename="../wl_ngram_generator.py" line="987"/>
         <source>Number of
 Files Found %</source>
         <translation type="unfinished">查找到的
 文件数%</translation>
     </message>
     <message>
-        <location filename="../wl_ngram_generator.py" line="1067"/>
+        <location filename="../wl_ngram_generator.py" line="1072"/>
         <source>Frequency</source>
         <translation type="unfinished">频数</translation>
     </message>
     <message>
-        <location filename="../wl_ngram_generator.py" line="1099"/>
+        <location filename="../wl_ngram_generator.py" line="1104"/>
         <source>N-gram</source>
         <translation type="unfinished">N 元组</translation>
     </message>
     <message>
-        <location filename="../wl_ngram_generator.py" line="972"/>
+        <location filename="../wl_ngram_generator.py" line="973"/>
         <source>[{}]
 Frequency</source>
         <translation type="unfinished">[{}]
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_ngram_generator.py" line="929"/>
+        <location filename="../wl_ngram_generator.py" line="930"/>
         <source>[{}]
 Frequency %</source>
         <translation type="unfinished">[{}]
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_ngram_generator.py" line="965"/>
+        <location filename="../wl_ngram_generator.py" line="966"/>
         <source>Total
 </source>
         <translation type="unfinished">总计
@@ -10762,52 +9909,32 @@ Frequency %</source>
 <context>
     <name>wl_profiler</name>
     <message>
-        <location filename="../wl_profiler.py" line="662"/>
+        <location filename="../wl_profiler.py" line="663"/>
         <source>Total</source>
         <translation type="unfinished">总计</translation>
     </message>
     <message>
-        <location filename="../wl_profiler.py" line="914"/>
+        <location filename="../wl_profiler.py" line="915"/>
         <source>No Support</source>
         <translation type="unfinished">不支持</translation>
     </message>
     <message>
-        <location filename="../wl_profiler.py" line="928"/>
-        <source>Count of {count_sentences_len}-length Sentences</source>
-        <translation type="obsolete">长度为{count_sentences_len}的句子数</translation>
-    </message>
-    <message>
-        <location filename="../wl_profiler.py" line="932"/>
-        <source>Count of {count_sentences_len}-length Sentences %</source>
-        <translation type="obsolete">长度为{count_sentences_len}的句子数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_profiler.py" line="964"/>
-        <source>Count of {count_tokens_len}-Length Tokens</source>
-        <translation type="obsolete">长度为{count_tokens_len}的形符数</translation>
-    </message>
-    <message>
-        <location filename="../wl_profiler.py" line="968"/>
-        <source>Count of {count_tokens_len}-Length Tokens %</source>
-        <translation type="obsolete">长度为{count_tokens_len}的形符数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_profiler.py" line="930"/>
+        <location filename="../wl_profiler.py" line="931"/>
         <source>Count of {}-length Sentences</source>
         <translation type="unfinished">长度为 {} 的句子数</translation>
     </message>
     <message>
-        <location filename="../wl_profiler.py" line="934"/>
+        <location filename="../wl_profiler.py" line="935"/>
         <source>Count of {}-length Sentences %</source>
         <translation type="unfinished">长度为 {} 的句子数%</translation>
     </message>
     <message>
-        <location filename="../wl_profiler.py" line="966"/>
+        <location filename="../wl_profiler.py" line="967"/>
         <source>Count of {}-Length Tokens</source>
         <translation type="unfinished">长度为 {} 的形符数</translation>
     </message>
     <message>
-        <location filename="../wl_profiler.py" line="970"/>
+        <location filename="../wl_profiler.py" line="971"/>
         <source>Count of {}-Length Tokens %</source>
         <translation type="unfinished">长度为 {} 的形符数%</translation>
     </message>
@@ -11264,113 +10391,78 @@ Frequency %</source>
 <context>
     <name>wl_wordlist_generator</name>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="513"/>
+        <location filename="../wl_wordlist_generator.py" line="515"/>
         <source>Tag</source>
         <translation type="unfinished">标签</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="519"/>
-        <source>[{file[&quot;name&quot;]}]
-Frequency</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_wordlist_generator.py" line="524"/>
-        <source>[{file[&quot;name&quot;]}]
-Frequency %</source>
-        <translation type="obsolete">[{file[&quot;name&quot;]}]
-频数%</translation>
-    </message>
-    <message>
-        <location filename="../wl_wordlist_generator.py" line="545"/>
+        <location filename="../wl_wordlist_generator.py" line="547"/>
         <source>Total
 Frequency</source>
         <translation type="unfinished">总计
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="550"/>
+        <location filename="../wl_wordlist_generator.py" line="552"/>
         <source>Total
 Frequency %</source>
         <translation type="unfinished">总计
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="554"/>
-        <source>Total
-{text_dispersion}</source>
-        <translation type="obsolete">总计
-{text_dispersion}</translation>
-    </message>
-    <message>
-        <location filename="../wl_wordlist_generator.py" line="560"/>
-        <source>Total
-{text_adjusted_freq}</source>
-        <translation type="obsolete">总计
-{text_adjusted_freq}</translation>
-    </message>
-    <message>
-        <location filename="../wl_wordlist_generator.py" line="567"/>
-        <source>[{files[0][&quot;name&quot;]}]
-Frequency</source>
-        <translation type="obsolete">[{files[0][&quot;name&quot;]}]
-频数</translation>
-    </message>
-    <message>
-        <location filename="../wl_wordlist_generator.py" line="574"/>
+        <location filename="../wl_wordlist_generator.py" line="576"/>
         <source>
 Frequency</source>
         <translation type="unfinished">
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="575"/>
+        <location filename="../wl_wordlist_generator.py" line="577"/>
         <source>
 Frequency %</source>
         <translation type="unfinished">
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="582"/>
+        <location filename="../wl_wordlist_generator.py" line="584"/>
         <source>Number of
 Files Found</source>
         <translation type="unfinished">查找到的
 文件数</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="583"/>
+        <location filename="../wl_wordlist_generator.py" line="585"/>
         <source>Number of
 Files Found %</source>
         <translation type="unfinished">查找到的
 文件数%</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="655"/>
+        <location filename="../wl_wordlist_generator.py" line="660"/>
         <source>Frequency</source>
         <translation type="unfinished">频数</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="677"/>
+        <location filename="../wl_wordlist_generator.py" line="682"/>
         <source>Token</source>
         <translation type="unfinished">形符</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="569"/>
+        <location filename="../wl_wordlist_generator.py" line="571"/>
         <source>[{}]
 Frequency</source>
         <translation type="unfinished">[{}]
 频数</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="526"/>
+        <location filename="../wl_wordlist_generator.py" line="528"/>
         <source>[{}]
 Frequency %</source>
         <translation type="unfinished">[{}]
 频数%</translation>
     </message>
     <message>
-        <location filename="../wl_wordlist_generator.py" line="562"/>
+        <location filename="../wl_wordlist_generator.py" line="564"/>
         <source>Total
 </source>
         <translation type="unfinished">总计
