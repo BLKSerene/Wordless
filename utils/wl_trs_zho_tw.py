@@ -19,7 +19,7 @@
 import bs4
 import opencc
 
-import wl_trs_release
+import wl_trs_utils
 
 with open('../src/trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
     soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
@@ -36,12 +36,8 @@ for element_context in soup.select('context'):
         element_trans.string = cc.convert(element_trans.text)
 
 with open('../src/trs/zho_tw.ts', 'w', encoding = 'utf_8') as f:
-    xml = str(soup)
-    # Fix format
-    xml = xml.replace('<html><body><ts', '<TS')
-    xml = xml.replace('</ts>\n</body></html>', '</TS>\n')
+    f.write(str(soup))
 
-    f.write(xml)
-
-# Release translation
-wl_trs_release.release_trs()
+# Release
+wl_trs_utils.fix_ts_format('../src/trs/zho_tw.ts')
+wl_trs_utils.release_trs()
