@@ -41,19 +41,19 @@ class Wl_Dialog_Err_Fatal(Wl_Dialog_Err):
     def __init__(self, main, err_msg):
         super().__init__(main, _tr('Wl_Dialog_Err_Fatal', 'Fatal Error'))
 
-        self.label_error_msg = wl_labels.Wl_Label_Dialog(
+        self.label_err_msg = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>A fatal error has occurred, please <b>contact the author for support</b> by emailing to {}!</div>
             ''').format(self.main.email_html),
             self
         )
-        self.text_edit_error_msg = QTextEdit(self)
+        self.text_edit_err_msg = QTextEdit(self)
 
-        self.text_edit_error_msg.setPlainText(err_msg)
-        self.text_edit_error_msg.setReadOnly(True)
+        self.text_edit_err_msg.setPlainText(err_msg)
+        self.text_edit_err_msg.setReadOnly(True)
 
-        self.wrapper_info.layout().addWidget(self.label_error_msg, 0, 0)
-        self.wrapper_info.layout().addWidget(self.text_edit_error_msg, 1, 0)
+        self.wrapper_info.layout().addWidget(self.label_err_msg, 0, 0)
+        self.wrapper_info.layout().addWidget(self.text_edit_err_msg, 1, 0)
 
         self.button_export.hide()
 
