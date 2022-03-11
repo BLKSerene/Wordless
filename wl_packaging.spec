@@ -117,6 +117,9 @@ hiddenimports = [
     'pymorphy2_dicts_ru',
     'pymorphy2_dicts_uk',
 
+    # scikit-learn
+    'sklearn.pipeline',
+
     # spaCy models
     'ca_core_news_sm',
     'zh_core_web_sm',
