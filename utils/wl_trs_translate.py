@@ -20,6 +20,8 @@ import re
 
 import bs4
 
+import wl_trs_utils
+
 # eng_us: [zho_cn]
 TRS_LANGS = {
     'Afrikaans': ['南非语'],
@@ -352,9 +354,8 @@ for element_context in soup.select('context'):
                 print(f'Auto-translated "{element_src.text}" into "{tr}".')
 
 with open('../src/trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
-    xml = str(soup)
-    # Fix format
-    xml = xml.replace('<html><body><ts', '<TS')
-    xml = xml.replace('</ts>\n</body></html>', '</TS>\n')
+    f.write(str(soup))
 
-    f.write(xml)
+# Release
+wl_trs_utils.del_obsolete_trans('../src/trs/zho_cn.ts')
+wl_trs_utils.release_trs()
