@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - ??/??/2022
+## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - 03/12/2022
 ### 🎉 New Features
 - File Area: Add support for .tmx files
 - Menu: Add Preferences - Display Language
@@ -72,6 +72,7 @@
 - Dependencies: Upgrade SciPy to 1.8.0
 - Dependencies: Upgrade spaCy to 3.2.3
 - Dependencies: Upgrade TextBlob to 0.17.1
+- Dependencies: Upgrade Tokenizer to 3.4.0
 - Dependencies: Upgrade Underthesea to 1.3.4
 
 ## [2.1.0](https://github.com/BLKSerene/Wordless/releases/tag/2.1.0) - 10/14/2021
