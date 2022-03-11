@@ -29,7 +29,7 @@
 - Utils: Add spaCy's Japanese word tokenizer, POS tagger, and lemmatizer
 - Utils: Add SudachiPy's Japanese word tokenizer, POS tagger, and lemmatizer
 - Utils: Add Underthesea's Vietnamese sentiment analyzer
-- Work Area: Add Overview - Paragraph/Sentence/Token/Type/Syllable Length (Variance / Minimum / 25th Percentile / Median / 75th Percentile / Maximum / Range / Modes)
+- Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Variance / Minimum / 25th Percentile / Median / 75th Percentile / Maximum / Range / Modes)
 
 ### ✨ Improvements
 - File Area: Remove temporary files when closing files
