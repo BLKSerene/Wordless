@@ -38,6 +38,7 @@ _tr = QCoreApplication.translate
 def init_settings_default(main):
     return {
         '1st_startup': True,
+        'file_area_cur': _tr('init_settings_default', 'Observed Files'),
         'work_area_cur': _tr('init_settings_default', 'Profiler'),
 
         'menu': {
@@ -62,7 +63,9 @@ def init_settings_default(main):
 
         'file_area': {
             'files_open': [],
+            'files_open_ref': [],
             'files_closed': [],
+            'files_closed_ref': [],
 
             'dialog_open_files': {
                 'auto_detect_encodings': True,
@@ -1079,8 +1082,8 @@ def init_settings_default(main):
             'default_settings': {
                 'encoding': 'utf_8',
                 'lang': 'eng_us',
-                'tokenized': _tr('init_settings_default', 'No'),
-                'tagged': _tr('init_settings_default', 'No')
+                'tokenized': False,
+                'tagged': False
             },
 
             'auto_detection_settings': {

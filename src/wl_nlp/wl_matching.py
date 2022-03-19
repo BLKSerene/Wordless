@@ -142,16 +142,16 @@ def match_ngrams(
 
     # Match tags only & Ignore tags
     if settings['match_tags']:
-        if tagged == _tr('match_ngrams', 'No'):
+        if not tagged:
             tokens_searched = []
         else:
             tokens_searched = [''.join(re.findall(re_tags, token)) for token in tokens]
     else:
         if settings['ignore_tags']:
-            if tagged == _tr('match_ngrams', 'No'):
+            if not tagged:
                 tokens_searched = tokens
             else:
-                if tagged == _tr('match_ngrams', 'Yes'):
+                if tagged:
                     tokens_searched = [re.sub(re_tags, '', token) for token in tokens]
         else:
             tokens_searched = tokens
