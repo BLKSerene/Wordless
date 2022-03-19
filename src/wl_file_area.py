@@ -75,8 +75,17 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
 
                 if file_ext == '.xml':
                     new_file['path'] = os.path.join(default_dir, f'{file_name}.xml')
-                    new_file['tokenized'] = 'Yes'
-                    new_file['tagged'] = 'Yes'
+
+                    # Use default settings for "Tokenized" & "Tagged" if auto-detection of encodings and languages are both disabled
+                    if (
+                        not self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings']
+                        and not self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']
+                    ):
+                        new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
+                        new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
+                    else:
+                        new_file['tokenized'] = True
+                        new_file['tagged'] = True
                 else:
                     new_file['path'] = os.path.join(default_dir, f'{file_name}.txt')
                     new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
@@ -299,8 +308,8 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
                 file['encoding'] = wl_conversion.to_encoding_code(self.main, self.model().item(row, 1).text())
                 file['lang'] = wl_conversion.to_lang_code(self.main, self.model().item(row, 2).text())
-                file['tokenized'] = self.model().item(row, 3).text()
-                file['tagged'] = self.model().item(row, 4).text()
+                file['tokenized'] = wl_conversion.to_yes_no_code(self.model().item(row, 3).text())
+                file['tagged'] = wl_conversion.to_yes_no_code(self.model().item(row, 4).text())
 
                 self.files_to_open.append(file)
 
@@ -334,8 +343,8 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 self.model().setItem(i, 0, QStandardItem(file['path_original']))
                 self.model().setItem(i, 1, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
                 self.model().setItem(i, 2, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
-                self.model().setItem(i, 3, QStandardItem(file['tokenized']))
-                self.model().setItem(i, 4, QStandardItem(file['tagged']))
+                self.model().setItem(i, 3, QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
+                self.model().setItem(i, 4, QStandardItem(wl_conversion.to_yes_no_text(file['tagged'])))
 
                 self.model().item(i, 0).file = file
 
@@ -362,7 +371,7 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                 with open(file['path'], 'w', encoding = file['encoding']) as f:
                     text = file['text']
 
-                    if file['tagged'] == 'Yes' and re_tags_header:
+                    if file['tagged'] and re_tags_header:
                         # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
                         # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
                         text = re.sub(re_tags_header, '', text)
@@ -370,7 +379,10 @@ class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
                     f.write(text)
 
                 # Process texts
-                file['text'] = wl_texts.Wl_Text(self.main, file)
+                if self.file_type == 'observed':
+                    file['text'] = wl_texts.Wl_Text(self.main, file)
+                elif self.file_type == 'ref':
+                    file['text'] = wl_texts.Wl_Text_Ref(self.main, file)
 
                 new_files.append(file)
         except Exception:
@@ -446,7 +458,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
     def accept(self):
         super().accept()
 
-        self.main.wl_file_area.table_files._open_files(files_to_open = self.table_files.files_to_open)
+        self.main.tabs_file_area.currentWidget().table_files._open_files(files_to_open = self.table_files.files_to_open)
 
     def reject(self):
         # Remove placeholders for new paths
@@ -540,7 +552,10 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
             new_file_paths = file_paths,
             file_paths = [
                 file['path_original']
-                for file in self.main.settings_custom['file_area']['files_open'] + self.table_files.files_to_open
+                for file in (
+                    self.main.settings_custom['file_area'][f'files_open{self.main.tabs_file_area.currentWidget().settings_suffix}']
+                    + self.table_files.files_to_open
+                )
             ]
         )
 
@@ -608,6 +623,8 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         )
 
         self.file_area = parent
+        self.file_type = self.file_area.file_type
+        self.settings_suffix = self.file_area.settings_suffix
 
         self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
         self.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
@@ -619,16 +636,18 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.clicked.connect(self.item_clicked)
 
         # Menu
-        self.main.action_file_open_files.triggered.connect(self.open_files)
-        self.main.action_file_open_dir.triggered.connect(self.open_dir)
-        self.main.action_file_reopen.triggered.connect(self.reopen)
+        self.main.action_file_open_files.triggered.connect(lambda: self.check_file_area(self.open_files))
+        self.main.action_file_open_dir.triggered.connect(lambda: self.check_file_area(self.open_dir))
+        self.main.action_file_reopen.triggered.connect(lambda: self.check_file_area(self.reopen))
 
-        self.main.action_file_select_all.triggered.connect(self.select_all)
-        self.main.action_file_deselect_all.triggered.connect(self.deselect_all)
-        self.main.action_file_invert_selection.triggered.connect(self.invert_selection)
+        self.main.action_file_select_all.triggered.connect(lambda: self.check_file_area(self.select_all))
+        self.main.action_file_deselect_all.triggered.connect(lambda: self.check_file_area(self.deselect_all))
+        self.main.action_file_invert_selection.triggered.connect(lambda: self.check_file_area(self.invert_selection))
 
-        self.main.action_file_close_selected.triggered.connect(self.close_selected)
-        self.main.action_file_close_all.triggered.connect(self.close_all)
+        self.main.action_file_close_selected.triggered.connect(lambda: self.check_file_area(self.close_selected))
+        self.main.action_file_close_all.triggered.connect(lambda: self.check_file_area(self.close_all))
+
+        self.main.tabs_file_area.currentChanged.connect(lambda: self.check_file_area(self.model().itemChanged.emit, self.model().item(0, 0)))
 
     def item_changed(self, item):
         super().item_changed(item)
@@ -666,7 +685,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
                     break
 
-            self.main.settings_custom['file_area']['files_open'].clear()
+            self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].clear()
 
             for row in range(self.model().rowCount()):
                 file = self.model().item(row, 0).wl_file
@@ -675,10 +694,10 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 file['name'] = file['name_old'] = self.model().item(row, 0).text()
                 file['encoding'] = wl_conversion.to_encoding_code(self.main, self.model().item(row, 2).text())
                 file['lang'] = wl_conversion.to_lang_code(self.main, self.model().item(row, 3).text())
-                file['tokenized'] = self.model().item(row, 4).text()
-                file['tagged'] = self.model().item(row, 5).text()
+                file['tokenized'] = wl_conversion.to_yes_no_code(self.model().item(row, 4).text())
+                file['tagged'] = wl_conversion.to_yes_no_code(self.model().item(row, 5).text())
 
-                self.main.settings_custom['file_area']['files_open'].append(file)
+                self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].append(file)
 
         # Menu
         if not self.is_empty():
@@ -694,7 +713,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
             self.main.action_file_close_all.setEnabled(False)
 
-        if self.main.settings_custom['file_area']['files_closed']:
+        if self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}']:
             self.main.action_file_reopen.setEnabled(True)
         else:
             self.main.action_file_reopen.setEnabled(False)
@@ -704,7 +723,10 @@ class Wl_Table_Files(wl_tables.Wl_Table):
     def item_clicked(self, index):
         if not self.is_empty():
             for row in range(self.model().rowCount()):
-                self.main.settings_custom['file_area']['files_open'][row]['selected'] = True if self.model().item(row, 0).checkState() == Qt.Checked else False
+                if self.model().item(row, 0).checkState() == Qt.Checked:
+                    self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'][row]['selected'] = True
+                else:
+                    self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'][row]['selected'] = False
 
     def selection_changed(self, selected, deselected):
         if self.get_selected_rows():
@@ -713,9 +735,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.main.action_file_close_selected.setEnabled(False)
 
     def update_table(self):
-        files = self.main.settings_custom['file_area']['files_open']
-
-        if files:
+        if (files := self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']):
             self.clr_table(len(files))
 
             self.disable_updates()
@@ -735,23 +755,35 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 self.model().setItem(i, 1, QStandardItem(file['path_original']))
                 self.model().setItem(i, 2, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
                 self.model().setItem(i, 3, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
-                self.model().setItem(i, 4, QStandardItem(file['tokenized']))
-                self.model().setItem(i, 5, QStandardItem(file['tagged']))
+                self.model().setItem(i, 4, QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
+                self.model().setItem(i, 5, QStandardItem(wl_conversion.to_yes_no_text(file['tagged'])))
 
             self.enable_updates()
         else:
             self.clr_table(1)
 
+    def check_file_area(self, op, *args, **kwargs):
+        if (
+            (
+                self.file_type == 'observed'
+                and self.main.tabs_file_area.tabText(self.main.tabs_file_area.currentIndex()) == self.tr('Observed Files')
+            ) or (
+                self.file_type == 'ref'
+                and self.main.tabs_file_area.tabText(self.main.tabs_file_area.currentIndex()) == self.tr('Reference Files')
+            )
+        ):
+            return op(*args, **kwargs)
+
     @wl_misc.log_timing
     def _open_files(self, files_to_open):
         def update_gui(err_msg, new_files):
             if not err_msg:
-                len_files_old = len(self.main.settings_custom['file_area']['files_open'])
+                len_files_old = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'])
 
-                self.main.settings_custom['file_area']['files_open'].extend(new_files)
+                self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].extend(new_files)
                 self.update_table()
 
-                len_files_opened = len(self.main.settings_custom['file_area']['files_open']) - len_files_old
+                len_files_opened = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']) - len_files_old
                 msg_file = self.tr('file') if len_files_opened == 1 else self.tr('files')
 
                 self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
@@ -766,7 +798,8 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             self.main,
             dialog_progress = dialog_progress,
             update_gui = update_gui,
-            files_to_open = files_to_open
+            files_to_open = files_to_open,
+            file_type = self.file_type
         )).start_worker()
 
     def open_files(self):
@@ -782,7 +815,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.dialog_open_files.table_files.button_add_folder.click()
 
     def reopen(self):
-        files = self.main.settings_custom['file_area']['files_closed'].pop()
+        files = self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].pop()
 
         dialog_open_files = Dialog_Open_Files(self.main)
         dialog_open_files._add_files(list(dict.fromkeys([file['path_original'] for file in files])))
@@ -810,12 +843,12 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                     self.model().item(i, 0).setCheckState(Qt.Checked)
 
     def _close_files(self, i_files):
-        self.main.settings_custom['file_area']['files_closed'].append([])
+        self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].append([])
 
         for i in reversed(i_files):
-            file_to_remove = self.main.settings_custom['file_area']['files_open'].pop(i)
+            file_to_remove = self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].pop(i)
 
-            self.main.settings_custom['file_area']['files_closed'][-1].append(file_to_remove)
+            self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'][-1].append(file_to_remove)
 
             # Remove temporary files
             if os.path.exists(file_to_remove['path']):
@@ -827,13 +860,21 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self._close_files(self.get_selected_rows())
 
     def close_all(self):
-        self._close_files(list(range(len(self.main.settings_custom['file_area']['files_open']))))
+        self._close_files(list(range(len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']))))
 
+# Observed files
 class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
-    def __init__(self, main):
+    def __init__(self, main, file_type = 'observed'):
         super().__init__(main)
 
         self.file_names_old = []
+        self.file_type = file_type
+
+        # Suffix for settings
+        if self.file_type == 'observed':
+            self.settings_suffix = ''
+        elif self.file_type == 'ref':
+            self.settings_suffix = '_ref'
 
         # Table
         self.table_files = Wl_Table_Files(self)
@@ -843,10 +884,13 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
         # Load files
         self.table_files.update_table()
 
+    def get_files(self):
+        return self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']
+
     def get_selected_files(self):
         return (
             file
-            for file in self.main.settings_custom['file_area']['files_open']
+            for file in self.get_files()
             if file['selected']
         )
 
@@ -860,7 +904,7 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
         if selected_only:
             files = self.get_selected_files()
         else:
-            files = self.main.settings_custom['file_area']['files_open']
+            files = self.get_files()
 
         for file in files:
             if file['name'] == file_name:

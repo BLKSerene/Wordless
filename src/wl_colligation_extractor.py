@@ -687,14 +687,12 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 text = copy.deepcopy(file['text'])
 
                 # Generate POS tags for files that are not POS tagged already
-                if file['tagged'] == _tr('Wl_Worker_Colligation_Extractor', 'No'):
+                if not file['tagged']:
                     tokens_tagged = wl_pos_tagging.wl_pos_tag(self.main, text.tokens_flat, text.lang)
 
                     text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
-
-                # Modify text types
-                if file['tagged'] == _tr('Wl_Worker_Colligation_Extractor', 'No'):
-                    text.tagged = _tr('Wl_Worker_Colligation_Extractor', 'Yes')
+                    # Modify text types
+                    text.tagged = True
 
                 text = wl_token_processing.wl_process_tokens_colligation_extractor(
                     self.main, text,

@@ -385,52 +385,39 @@ class Wl_Main(QMainWindow):
         Wl_Dialog_About(self).open()
 
     def init_central_widget(self):
+        self.tabs_file_area = QTabWidget(self)
         self.wl_file_area = wl_file_area.Wrapper_File_Area(self)
+        self.wl_file_area_ref = wl_file_area.Wrapper_File_Area(self, file_type = 'ref')
+
+        # File area
+        self.tabs_file_area.addTab(self.wl_file_area, self.tr('Observed Files'))
+        self.tabs_file_area.addTab(self.wl_file_area_ref, self.tr('Reference Files'))
+
+        self.tabs_file_area.currentChanged.connect(self.file_area_changed)
+
+        # Work area
         self.init_work_area()
 
-        # Align work area and file area
-        wrapper_file_area = QWidget()
-
-        wrapper_file_area.setLayout(wl_layouts.Wl_Layout())
-        wrapper_file_area.layout().addWidget(self.wl_file_area, 0, 0)
-
-        margins = self.wl_file_area.layout().contentsMargins()
-
-        if platform.system() == 'Windows':
-            wrapper_file_area.layout().setContentsMargins(0, 0, 2, 0)
-
-            margins.setLeft(margins.left() + 2)
-            margins.setRight(margins.right() + 2)
-        elif platform.system() == 'Darwin':
-            wrapper_file_area.layout().setContentsMargins(2, 0, 2, 0)
-            margins.setLeft(margins.left() + 1)
-            margins.setRight(margins.right() + 1)
-        elif platform.system() == 'Linux':
-            wrapper_file_area.layout().setContentsMargins(0, 0, 0, 0)
-
-            margins.setRight(margins.right() + 2)
-
-        self.wl_file_area.layout().setContentsMargins(margins)
-
-        splitter_central_widget = wl_layouts.Wl_Splitter(Qt.Vertical, self)
-        splitter_central_widget.addWidget(self.wl_work_area)
-        splitter_central_widget.addWidget(wrapper_file_area)
+        # Splitter
+        self.splitter_central_widget = wl_layouts.Wl_Splitter(Qt.Vertical, self)
+        self.splitter_central_widget.addWidget(self.wl_work_area)
+        self.splitter_central_widget.addWidget(self.tabs_file_area)
 
         if platform.system() in ['Windows', 'Linux']:
-            splitter_central_widget.setHandleWidth(1)
+            self.splitter_central_widget.setHandleWidth(1)
         elif platform.system() == 'Darwin':
-            splitter_central_widget.setHandleWidth(2)
+            self.splitter_central_widget.setHandleWidth(2)
 
-        splitter_central_widget.setObjectName('splitter-central-widget')
-        splitter_central_widget.setStyleSheet('''
+        self.splitter_central_widget.setObjectName('splitter-central-widget')
+        self.splitter_central_widget.setStyleSheet('''
             QSplitter#splitter-central-widget {
                 padding: 4px 6px;
             }
         ''')
 
-        splitter_central_widget.setStretchFactor(0, 1)
+        self.splitter_central_widget.setStretchFactor(0, 1)
 
-        self.setCentralWidget(splitter_central_widget)
+        self.setCentralWidget(self.splitter_central_widget)
 
     def init_work_area(self):
         self.wl_work_area = QTabWidget(self)
@@ -470,23 +457,23 @@ class Wl_Main(QMainWindow):
 
         self.wl_work_area.currentChanged.connect(self.work_area_changed)
 
-        self.load_settings_work_area()
-
-    def load_settings_work_area(self):
+    def file_area_changed(self):
         # Current tab
-        work_area_cur = self.settings_custom['work_area_cur']
-
-        for i in range(self.wl_work_area.count()):
-            if self.wl_work_area.tabText(i) == work_area_cur:
-                self.wl_work_area.setCurrentIndex(i)
-
-                break
-
-        self.work_area_changed()
+        self.settings_custom['file_area_cur'] = self.tabs_file_area.tabText(self.tabs_file_area.currentIndex())
 
     def work_area_changed(self):
         # Current tab
         self.settings_custom['work_area_cur'] = self.wl_work_area.tabText(self.wl_work_area.currentIndex())
+
+        # File area
+        if self.settings_custom['work_area_cur'] != self.tr('Keyword Extractor'):
+            self.tabs_file_area.setCurrentIndex(0)
+
+            # Hide single tab
+            self.tabs_file_area.tabBar().hide()
+        # Keyword Extractor
+        else:
+            self.tabs_file_area.tabBar().show()
 
     def load_settings(self):
         settings = self.settings_custom
@@ -507,9 +494,26 @@ class Wl_Main(QMainWindow):
         # Layouts
         self.centralWidget().setSizes(settings['menu']['prefs']['layouts']['central_widget'])
 
+        # File area
+        for i in range(self.tabs_file_area.count()):
+            if self.tabs_file_area.tabText(i) == self.settings_custom['file_area_cur']:
+                self.tabs_file_area.setCurrentIndex(i)
+
+                break
+
+        # Work area
+        for i in range(self.wl_work_area.count()):
+            if self.wl_work_area.tabText(i) == self.settings_custom['work_area_cur']:
+                self.wl_work_area.setCurrentIndex(i)
+
+                break
+
+        self.work_area_changed()
+
     def save_settings(self):
         # Clear history of closed files
         self.settings_custom['file_area']['files_closed'].clear()
+        self.settings_custom['file_area']['files_closed_ref'].clear()
 
         # Layouts
         self.settings_custom['menu']['prefs']['layouts']['central_widget'] = self.centralWidget().sizes()
