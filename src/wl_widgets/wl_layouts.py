@@ -93,13 +93,6 @@ class Wl_Wrapper_File_Area(Wl_Wrapper):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.setStyleSheet('''
-            QWidget#wl-wrapper {
-                border: 1px solid #D0D0D0;
-                background-color: #FFF;
-            }
-        ''')
-
         self.scroll_area_settings.hide()
 
 class Wl_Splitter(QSplitter):

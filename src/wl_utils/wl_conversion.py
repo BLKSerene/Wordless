@@ -16,6 +16,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+from PyQt5.QtCore import QCoreApplication
+
+_tr = QCoreApplication.translate
+
+# Languages
 def to_lang_code(main, lang_text):
     return main.settings_global['langs'][lang_text][0]
 
@@ -59,6 +64,7 @@ def get_lang_family(main, lang_code):
         if lang_code_639_3 == lang_code:
             return lang_family
 
+# Encodings
 def to_encoding_code(main, encoding_text):
     return main.settings_global['encodings'][encoding_text]
 
@@ -66,3 +72,16 @@ def to_encoding_text(main, encoding_code):
     for text, code in main.settings_global['encodings'].items():
         if encoding_code == code:
             return text
+
+# Yes/No
+def to_yes_no_code(yes_no_text):
+    if yes_no_text == _tr('wl_conversion', 'Yes'):
+        return True
+    elif yes_no_text == _tr('wl_conversion', 'No'):
+        return False
+
+def to_yes_no_text(yes_no_code):
+    if yes_no_code is True:
+        return _tr('wl_conversion', 'Yes')
+    elif yes_no_code is False:
+        return _tr('wl_conversion', 'No')

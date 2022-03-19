@@ -112,10 +112,17 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_custom)
 
         # Default Settings
-        self.combo_box_files_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['default_settings']['lang']))
-        self.combo_box_files_tokenized.setCurrentText(settings['default_settings']['tokenized'])
-        self.combo_box_files_tagged.setCurrentText(settings['default_settings']['tagged'])
         self.combo_box_files_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['default_settings']['encoding']))
+        self.combo_box_files_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['default_settings']['lang']))
+
+        if settings['default_settings']['tokenized']:
+            self.combo_box_files_tokenized.setCurrentText(self.tr('Yes'))
+        else:
+            self.combo_box_files_tokenized.setCurrentText(self.tr('No'))
+        if settings['default_settings']['tagged']:
+            self.combo_box_files_tagged.setCurrentText(self.tr('Yes'))
+        else:
+            self.combo_box_files_tagged.setCurrentText(self.tr('No'))
 
         # Auto-detection Settings
         self.spin_box_files_number_lines.setValue(settings['auto_detection_settings']['number_lines'])
@@ -126,10 +133,17 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
 
     def apply_settings(self):
         # Default Settings
-        self.settings_custom['default_settings']['lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_files_lang.currentText())
-        self.settings_custom['default_settings']['tokenized'] = self.combo_box_files_tokenized.currentText()
-        self.settings_custom['default_settings']['tagged'] = self.combo_box_files_tagged.currentText()
         self.settings_custom['default_settings']['encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_files_encoding.currentText())
+        self.settings_custom['default_settings']['lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_files_lang.currentText())
+
+        if self.combo_box_files_tokenized.currentText() == self.tr('Yes'):
+            self.settings_custom['default_settings']['tokenized'] = True
+        else:
+            self.settings_custom['default_settings']['tokenized'] = False
+        if self.combo_box_files_tagged.currentText() == self.tr('Yes'):
+            self.settings_custom['default_settings']['tagged'] = True
+        else:
+            self.settings_custom['default_settings']['tagged'] = True
 
         # Auto-detection Settings
         self.settings_custom['auto_detection_settings']['number_lines'] = self.spin_box_files_number_lines.value()

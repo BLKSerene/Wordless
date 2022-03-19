@@ -35,10 +35,10 @@ class Wl_Token(str):
         self.boundary = boundary
         self.sentence_ending = sentence_ending
 
-class Wl_Text_Blank():
+class Wl_Text_Blank:
     pass
 
-class Wl_Text():
+class Wl_Text:
     def __init__(self, main, file):
         self.main = main
         self.lang = file['lang']
@@ -56,17 +56,21 @@ class Wl_Text():
         re_tags = re.compile(wl_matching.get_re_tags(self.main, tag_type = 'body'))
         re_tags_start = re.compile(fr"\s*({wl_matching.get_re_tags(self.main, tag_type = 'body')})")
 
-        if file_ext == '.txt':
+        if (
+            file_ext == '.txt'
+            # Treat untagged XML files as untagged text files
+            or file_ext == '.xml' and not self.tagged
+        ):
             with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
                 text = f.read()
 
             # Untokenized & Untagged
-            if self.tokenized == _tr('Wl_Text', 'No') and self.tagged == _tr('Wl_Text', 'No'):
+            if not self.tokenized and not self.tagged:
                 tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
 
                 self.tokens_multilevel.extend(tokens)
             # Untokenized & Tagged
-            elif self.tokenized == _tr('Wl_Text', 'No') and self.tagged == _tr('Wl_Text', 'Yes'):
+            elif not self.tokenized and self.tagged:
                 # Replace all tags with a whitespace to ensure no words run together
                 text_no_tags = re.sub(re_tags, ' ', text)
 
@@ -96,7 +100,7 @@ class Wl_Text():
                 if (text := text[tag_end:]):
                     self.add_tags_tokenization(text)
             # Tokenized & Untagged
-            elif self.tokenized == _tr('Wl_Text', 'Yes') and self.tagged == _tr('Wl_Text', 'No'):
+            elif self.tokenized and not self.tagged:
                 for para in text.splitlines():
                     self.tokens_multilevel.append([])
 
@@ -104,7 +108,7 @@ class Wl_Text():
                         for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, para):
                             self.tokens_multilevel[-1].append(sentence.split())
             # Tokenized & Tagged
-            elif self.tokenized == _tr('Wl_Text', 'Yes') and self.tagged == _tr('Wl_Text', 'Yes'):
+            elif self.tokenized and self.tagged:
                 for i, para in enumerate(text.splitlines()):
                     self.tokens_multilevel.append([])
 
@@ -139,40 +143,41 @@ class Wl_Text():
                             self.add_tags_splitting(para)
 
             # Add empty tags for untagged files
-            if self.tagged == _tr('Wl_Text', 'No'):
+            if not self.tagged:
                 self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
         elif file_ext == '.xml':
-            if self.tagged == _tr('Wl_Text', 'Yes'):
+            # Treat untagged XML files as untagged TXT files
+            if self.tagged:
                 tags_para = []
                 tags_sentence = []
                 tags_word = []
 
                 for _, level, opening_tag, _ in self.main.settings_custom['tags']['tags_xml']:
-                    if level == 'Paragraph':
+                    if level == _tr('Wl_Text', 'Paragraph'):
                         tags_para.append(opening_tag[1:-1])
-                    elif level == 'Sentence':
+                    elif level == _tr('Wl_Text', 'Sentence'):
                         tags_sentence.append(opening_tag[1:-1])
-                    elif level == 'Word':
+                    elif level == _tr('Wl_Text', 'Word'):
                         tags_word.append(opening_tag[1:-1])
 
-                tags_para = ','.join(tags_para)
-                tags_sentence = ','.join(tags_sentence)
-                tags_word = ','.join(tags_word)
+                css_para = ','.join(tags_para)
+                css_sentence = ','.join(tags_sentence)
+                css_word = ','.join(tags_word)
 
                 with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
                     soup = bs4.BeautifulSoup(f.read(), features = 'lxml-xml')
 
                 if (
-                    (tags_para and tags_sentence and tags_word)
-                    and (soup.select(tags_para) and soup.select(tags_sentence) and soup.select(tags_word))
+                    (css_para and tags_sentence and tags_word)
+                    and (soup.select_one(css_para) and soup.select_one(css_sentence) and soup.select_one(css_word))
                 ):
-                    for para in soup.select(tags_para):
+                    for para in soup.select(css_para):
                         self.tokens_multilevel.append([])
 
-                        for sentence in para.select(tags_sentence):
+                        for sentence in para.select(css_sentence):
                             self.tokens_multilevel[-1].append([])
 
-                            for word in sentence.select(tags_word):
+                            for word in sentence.select(css_word):
                                 self.tokens_multilevel[-1][-1].append(word.get_text().strip())
                 # XML tags unfound or unspecified
                 else:
@@ -180,23 +185,6 @@ class Wl_Text():
                     tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
 
                     self.tokens_multilevel.extend(tokens)
-            elif self.tagged == _tr('Wl_Text', 'No'):
-                with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
-                    text = bs4.BeautifulSoup(f.read(), features = 'lxml-xml').get_text()
-
-                if text:
-                    # Untokenized & Untagged
-                    if self.tokenized == _tr('Wl_Text', 'No'):
-                        tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
-
-                        self.tokens_multilevel.extend(tokens)
-                    # Tokenized & Untagged
-                    elif self.tokenized == _tr('Wl_Text', 'Yes'):
-                        for para in text.splitlines():
-                            self.tokens_multilevel.append([])
-
-                            for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, para):
-                                self.tokens_multilevel[-1].append(sentence.split())
 
             # Add empty tags
             self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
@@ -230,3 +218,87 @@ class Wl_Text():
             tokens = text.split()
 
             self.tags.extend([[] for _ in tokens])
+
+class Wl_Text_Ref:
+    def __init__(self, main, file):
+        self.main = main
+        self.lang = file['lang']
+        self.tokenized = file['tokenized']
+        self.tagged = file['tagged']
+
+        self.tokens_multilevel = [[]]
+
+        file_ext = os.path.splitext(file['path'])[1].lower()
+
+        if (
+            file_ext == '.txt'
+            # Treat untagged XML files as untagged text files
+            or file_ext == '.xml' and not self.tagged
+        ):
+            with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
+                text = f.read()
+
+            re_tags = re.compile(wl_matching.get_re_tags(self.main, tag_type = 'body'))
+
+            # Untokenized & Untagged
+            if not self.tokenized and not self.tagged:
+                self.tokens_multilevel = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
+            # Untokenized & Tagged
+            elif not self.tokenized and self.tagged:
+                # Replace all tags with a whitespace to ensure no words run together
+                text_no_tags = re.sub(re_tags, ' ', text)
+
+                self.tokens_multilevel = wl_word_tokenization.wl_word_tokenize(self.main, text_no_tags, lang = self.lang)
+            # Tokenized & Untagged
+            elif self.tokenized and not self.tagged:
+                self.tokens_multilevel[0].append(text.split())
+            # Tokenized & Tagged
+            elif self.tokenized and self.tagged:
+                # Replace all tags with a whitespace to ensure no words run together
+                text_no_tags = re.sub(re_tags, ' ', text)
+
+                self.tokens_multilevel[0].append(text.split())
+        elif file_ext == '.xml':
+            if self.tagged and self.tokenized:
+                tags_word = []
+
+                for _, level, opening_tag, _ in self.main.settings_custom['tags']['tags_xml']:
+                    if level == _tr('Wl_Text', 'Word'):
+                        tags_word.append(opening_tag[1:-1])
+
+                with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
+                    soup = bs4.BeautifulSoup(f.read(), features = 'lxml-xml')
+
+                css_word = ','.join(tags_word)
+
+                if css_word:
+                    for word in soup.select(css_word):
+                        self.tokens_multilevel[0].append(word.get_text())
+
+                # XML tags unfound or unspecified
+                if not css_word or not self.tokens_multilevel[0]:
+                    text = soup.get_text()
+
+                    self.tokens_multilevel = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
+            elif self.tagged and not self.tokenized:
+                text = soup.get_text()
+
+                self.tokens_multilevel = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
+
+        # No need to calculate paragraph and sentence offsets
+        self.offsets_paras = [0]
+        self.offsets_sentences = [0]
+
+        # Remove whitespace around tokens and empty tokens
+        self.tokens_multilevel[0][0] = [
+            token_clean
+            for token in self.tokens_multilevel[0][0]
+            if (token_clean := token.strip())
+        ]
+        self.tokens_flat = list(wl_misc.flatten_list(self.tokens_multilevel))
+
+        # No need to extract tags
+        self.tags = [[] for _ in self.tokens_flat]
+
+        # Remove Wl_Main object from the text since it cannot be pickled
+        del self.main

@@ -18,6 +18,10 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - ??/??/2022
+### 🎉 New Features
+- File Area: Add Observed Files and Reference Files
+
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - 03/12/2022
 ### 🎉 New Features
 - File Area: Add support for .tmx files
@@ -34,7 +38,6 @@
 ### ✨ Improvements
 - File Area: Remove temporary files when closing files
 - File Area: Show original file paths instead of modified ones
-- File Area: Update File Area
 - Utils: Update CLTK's Norse (Old) stop word list
 - Work Area: Rename Colligation to Colligation Extractor
 - Work Area: Rename Collocation to Collocation Extractor

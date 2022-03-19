@@ -57,7 +57,10 @@ if platform.system() in ['Windows', 'Darwin']:
             # Files
             self.wl_file_area = QObject()
             self.wl_file_area.main = self
+            self.wl_file_area.file_type = 'observed'
+            self.wl_file_area.settings_suffix = ''
 
+            self.wl_file_area.get_files = lambda: wl_file_area.Wrapper_File_Area.get_files(self.wl_file_area)
             self.wl_file_area.get_selected_files = lambda: wl_file_area.Wrapper_File_Area.get_selected_files(self.wl_file_area)
             self.wl_file_area.get_selected_file_names = lambda: wl_file_area.Wrapper_File_Area.get_selected_file_names(self.wl_file_area)
             self.wl_file_area.find_file_by_name = lambda file_name, selected_only = False: wl_file_area.Wrapper_File_Area.find_file_by_name(self.wl_file_area, file_name, selected_only)

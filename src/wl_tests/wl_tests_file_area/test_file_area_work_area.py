@@ -41,7 +41,8 @@ def test_file_area():
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
             update_gui = update_gui,
-            files_to_open = files_to_open
+            files_to_open = files_to_open,
+            file_type = 'observed'
         ).run()
 
     def update_gui(err_msg, new_files):
@@ -80,8 +81,8 @@ def test_file_area():
         assert new_file['path_original'] == wl_misc.get_normalized_path(file_path)
         assert new_file['encoding'] == 'utf_8'
         assert new_file['lang'] == re.search(r'(?<=\[)[a-z_]+(?=\])', file_path).group()
-        assert new_file['tokenized'] == 'No'
-        assert new_file['tagged'] == 'No'
+        assert not new_file['tokenized']
+        assert not new_file['tagged']
 
         print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
 
