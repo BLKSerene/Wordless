@@ -23,7 +23,7 @@ on: [push, pull_request]
 jobs:
   # Windows
   build-windows:
-    runs-on: windows-2016
+    runs-on: windows-2019
 
     steps:
       - uses: actions/checkout@v3
