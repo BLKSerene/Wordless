@@ -70,15 +70,8 @@ def wl_syl_tokenize_text(main, text, lang, syl_tokenizer):
         # Thai
         elif syl_tokenizer == 'pythainlp_tha':
             syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
-        elif syl_tokenizer == 'ssg_tha':
-            # Delay import of ssg as a temporary work-around of the encoding issue of python-crfsuite
-            # See: https://github.com/scrapinghub/python-crfsuite/pull/121
-            import ssg
-
-            syls_tokens.append(ssg.syllable_tokenize(token))
 
     return syls_tokens
-
 
 def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
     syls_tokens = []
@@ -92,12 +85,6 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
         # Thai
         elif syl_tokenizer == 'pythainlp_tha':
             syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
-        elif syl_tokenizer == 'ssg_tha':
-            # Delay import of ssg as a temporary work-around of the encoding issue of python-crfsuite
-            # See: https://github.com/scrapinghub/python-crfsuite/pull/121
-            import ssg
-
-            syls_tokens.append(ssg.syllable_tokenize(token))
 
     return syls_tokens
 

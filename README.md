@@ -162,10 +162,9 @@ I would like to extend my sincere gratitude to the following open-source project
 26    |[Sacremoses](https://github.com/alvations/sacremoses)                 |Liling Tan
 27    |[SciPy](https://scipy.org/scipylib/)                                  |SciPy Developers
 28    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
-29    |[ssg](https://github.com/ponrawee/ssg)                                |Ponrawee Prasertsom
-30    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
-31    |[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |Works Applications Co., Ltd.
-32    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
-33    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
-34    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
-35    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
+29    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
+30    |[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |Works Applications Co., Ltd.
+31    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
+32    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
+33    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
+34    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller

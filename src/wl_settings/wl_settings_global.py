@@ -460,8 +460,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'Pyphen - Ukrainian Syllable Tokenizer'): 'pyphen_ukr',
                 _tr('init_settings_global', 'Pyphen - Zulu Syllable Tokenizer'): 'pyphen_zul',
 
-                _tr('init_settings_global', 'PyThaiNLP - Thai Syllable Tokenizer'): 'pythainlp_tha',
-                _tr('init_settings_global', 'ssg - Thai Syllable Tokenizer'): 'ssg_tha'
+                _tr('init_settings_global', 'PyThaiNLP - Thai Syllable Tokenizer'): 'pythainlp_tha'
             },
 
             'pos_taggers': {
@@ -1694,8 +1693,7 @@ def init_settings_global():
             ],
 
             'tha': [
-                'pythainlp_tha',
-                'ssg_tha'
+                'pythainlp_tha'
             ],
 
             'ukr': [

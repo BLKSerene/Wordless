@@ -23,7 +23,11 @@
 - File Area: Add Observed Files and Reference Files
 
 ### ❌ Removals
+- Utils: Remove ssg's Thai syllable tokenizer
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
+
+### ⏫ Dependency Changes
+- Dependencies: Remove ssg
 
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - 03/12/2022
 ### 🎉 New Features
