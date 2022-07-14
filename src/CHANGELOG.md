@@ -22,6 +22,9 @@
 ### 🎉 New Features
 - File Area: Add Observed Files and Reference Files
 
+### ❌ Removals
+- Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
+
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - 03/12/2022
 ### 🎉 New Features
 - File Area: Add support for .tmx files

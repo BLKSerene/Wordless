@@ -60,11 +60,14 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
         self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
         self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
         self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+        self.main.wl_file_area_ref.table_files.model().itemChanged.connect(self.file_changed)
 
         self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+        self.main.wl_file_area_ref.table_files.model().itemChanged.emit(QStandardItem())
 
     def file_changed(self, item):
-        if list(self.main.wl_file_area.get_selected_files()):
+        # Enable the buttons and prompt the user if there are only observed files or only reference files
+        if list(self.main.wl_file_area.get_selected_files()) or list(self.main.wl_file_area_ref.get_selected_files()):
             self.button_generate_table.setEnabled(True)
             self.button_generate_fig.setEnabled(True)
         else:
@@ -148,8 +151,6 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
 
-        self.label_ref_files = QLabel(self.tr('Reference Files:'), self)
-        self.list_ref_files = wl_lists.Wl_List_Files(self)
         (
             self.label_test_significance,
             self.combo_box_test_significance
@@ -170,34 +171,21 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.combo_box_test_significance.addItems(list(self.main.settings_global['tests_significance']['keyword_extractor'].keys()))
         self.combo_box_measure_effect_size.addItems(list(self.main.settings_global['measures_effect_size']['keyword_extractor'].keys()))
 
-        self.list_ref_files.model().dataChanged.connect(self.generation_settings_changed)
         self.combo_box_test_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_effect_size.currentTextChanged.connect(self.generation_settings_changed)
 
-        layout_ref_files = wl_layouts.Wl_Layout()
-        layout_ref_files.addWidget(self.list_ref_files, 0, 0, 4, 1)
-        layout_ref_files.addWidget(self.list_ref_files.button_add, 0, 1)
-        layout_ref_files.addWidget(self.list_ref_files.button_ins, 1, 1)
-        layout_ref_files.addWidget(self.list_ref_files.button_del, 2, 1)
-        layout_ref_files.addWidget(self.list_ref_files.button_clr, 3, 1)
-
-        layout_settings_measures = wl_layouts.Wl_Layout()
-        layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
-        layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
-
-        layout_settings_measures.setColumnStretch(1, 1)
-
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_ref_files, 0, 0)
-        self.group_box_generation_settings.layout().addLayout(layout_ref_files, 1, 0)
-        self.group_box_generation_settings.layout().addWidget(self.label_test_significance, 2, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_significance, 3, 0)
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 4, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 5, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_test_significance, 0, 0, 1, 2)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_significance, 1, 0, 1, 2)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 2, 0, 1, 2)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 3, 0, 1, 2)
 
-        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 6, 0)
+        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 4, 0, 1, 2)
 
-        self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 7, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_settings_measures, 5, 0)
+        self.group_box_generation_settings.layout().addWidget(self.button_settings_measures, 5, 1)
+
+        self.group_box_token_settings.layout().setColumnStretch(1, 1)
 
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
@@ -317,7 +305,6 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Generation Settings
-        self.list_ref_files.load_items(settings['generation_settings']['ref_files'])
         self.combo_box_test_significance.setCurrentText(settings['generation_settings']['test_significance'])
         self.combo_box_measure_effect_size.setCurrentText(settings['generation_settings']['measure_effect_size'])
 
@@ -363,22 +350,8 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
     def generation_settings_changed(self):
         settings = self.main.settings_custom['keyword_extractor']['generation_settings']
 
-        settings['ref_files'] = self.list_ref_files.model().stringList()
         settings['test_significance'] = self.combo_box_test_significance.currentText()
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
-
-        # Sort by File
-        sort_by_file_old = self.combo_box_sort_by_file.currentText()
-
-        self.combo_box_sort_by_file.wl_files_changed()
-
-        for file_name in settings['ref_files']:
-            self.combo_box_sort_by_file.removeItem(self.combo_box_sort_by_file.findText(file_name))
-
-        if self.combo_box_sort_by_file.findText(sort_by_file_old) > -1:
-            self.combo_box_sort_by_file.setCurrentText(sort_by_file_old)
-        else:
-            self.combo_box_sort_by_file.setCurrentIndex(0)
 
         # Use Data
         use_data_old = self.combo_box_use_data.currentText()
@@ -438,15 +411,8 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             settings = self.main.settings_custom['keyword_extractor']
 
-            files_ref = list(self.main.wl_file_area.find_files_by_name(
-                settings['generation_settings']['ref_files'],
-                selected_only = True
-            ))
-            files_observed = [
-                file_observed
-                for file_observed in self.main.wl_file_area.get_selected_files()
-                if file_observed not in files_ref
-            ]
+            files_observed = list(self.main.wl_file_area.get_selected_files())
+            files_ref = list(self.main.wl_file_area_ref.get_selected_files())
 
             # Frequency (Reference files)
             self.keywords_freq_files.append(collections.Counter())
@@ -612,21 +578,21 @@ class Wl_Worker_Keyword_Extractor_Fig(Wl_Worker_Keyword_Extractor):
             wl_misc.merge_dicts(self.keywords_stats_files)
         )
 
-def wl_msg_box_missing_ref_files(main):
+def wl_msg_box_missing_files_observed(main):
     wl_msg_boxes.Wl_Msg_Box_Warning(
         main,
-        title = _tr('wl_msg_box_missing_ref_files', 'Missing Reference Files'),
-        text = _tr('wl_msg_box_missing_ref_files', '''
-            <div>You have not specified any reference files yet.</div>
+        title = _tr('wl_msg_box_missing_files_observed', 'Missing Observed Files'),
+        text = _tr('wl_msg_box_missing_files_observed', '''
+            <div>You have not specified any observed files yet.</div>
         ''')
     ).open()
 
-def wl_msg_box_missing_observed_files(main):
+def wl_msg_box_missing_files_ref(main):
     wl_msg_boxes.Wl_Msg_Box_Warning(
         main,
-        title = _tr('wl_msg_box_missing_observed_files', 'Missing Observed Files'),
-        text = _tr('wl_msg_box_missing_observed_files', '''
-            <div>You have specified reference files, but you have not opened and selected any observed files yet.</div>
+        title = _tr('wl_msg_box_missing_files_ref', 'Missing Reference Files'),
+        text = _tr('wl_msg_box_missing_files_ref', '''
+            <div>You have not specified any reference files yet.</div>
         ''')
     ).open()
 
@@ -824,17 +790,10 @@ def generate_table(main, table):
 
     settings = main.settings_custom['keyword_extractor']
 
-    files_ref = list(main.wl_file_area.find_files_by_name(
-        settings['generation_settings']['ref_files'],
-        selected_only = True
-    ))
-    files_observed = [
-        file_observed
-        for file_observed in main.wl_file_area.get_selected_files()
-        if file_observed not in files_ref
-    ]
+    files_observed = list(main.wl_file_area.get_selected_files())
+    files_ref = list(main.wl_file_area_ref.get_selected_files())
 
-    if files_ref and files_observed:
+    if files_observed and files_ref:
         worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
@@ -842,10 +801,10 @@ def generate_table(main, table):
         )
         wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
     else:
-        if not files_ref:
-            wl_msg_box_missing_ref_files(main)
-        elif not files_observed:
-            wl_msg_box_missing_observed_files(main)
+        if not files_observed:
+            wl_msg_box_missing_files_observed(main)
+        elif not files_ref:
+            wl_msg_box_missing_files_ref(main)
 
         wl_msgs.wl_msg_generate_table_error(main)
 
@@ -858,9 +817,11 @@ def generate_fig(main):
                     text_test_significance = settings['generation_settings']['test_significance']
                     text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                    (text_test_stat,
-                     text_p_value,
-                     text_bayes_factor) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
+                    (
+                        text_test_stat,
+                        text_p_value,
+                        text_bayes_factor
+                    ) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
                     text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
 
                     if settings['fig_settings']['use_data'] == _tr('wl_keyword_extractor', 'Frequency'):
@@ -924,14 +885,10 @@ def generate_fig(main):
 
     settings = main.settings_custom['keyword_extractor']
 
-    files_ref = settings['generation_settings']['ref_files']
-    file_names_observed = [
-        file_name
-        for file_name in main.wl_file_area.get_selected_file_names()
-        if file_name not in files_ref
-    ]
+    files_observed = list(main.wl_file_area.get_selected_files())
+    files_ref = list(main.wl_file_area_ref.get_selected_files())
 
-    if files_ref and file_names_observed:
+    if files_observed and files_ref:
         worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
@@ -939,9 +896,9 @@ def generate_fig(main):
         )
         wl_threading.Wl_Thread(worker_keyword_extractor_fig).start_worker()
     else:
-        if not files_ref:
-            wl_msg_box_missing_ref_files(main)
-        elif not file_names_observed:
-            wl_msg_box_missing_observed_files(main)
+        if not files_observed:
+            wl_msg_box_missing_files_observed(main)
+        elif not files_ref:
+            wl_msg_box_missing_files_ref(main)
 
         wl_msgs.wl_msg_generate_fig_error(main)

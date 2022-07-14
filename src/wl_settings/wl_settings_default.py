@@ -933,7 +933,6 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
-                'ref_files': [],
                 'test_significance': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
                 'measure_effect_size': _tr('init_settings_default', "Kilgarriff's Ratio"),
             },
