@@ -145,46 +145,45 @@ class Wl_Text:
             # Add empty tags for untagged files
             if not self.tagged:
                 self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
-        elif file_ext == '.xml':
-            # Treat untagged XML files as untagged TXT files
-            if self.tagged:
-                tags_para = []
-                tags_sentence = []
-                tags_word = []
+        elif file_ext == '.xml' and self.tagged:
+            tags_para = []
+            tags_sentence = []
+            tags_word = []
 
-                for _, level, opening_tag, _ in self.main.settings_custom['tags']['tags_xml']:
-                    if level == _tr('Wl_Text', 'Paragraph'):
-                        tags_para.append(opening_tag[1:-1])
-                    elif level == _tr('Wl_Text', 'Sentence'):
-                        tags_sentence.append(opening_tag[1:-1])
-                    elif level == _tr('Wl_Text', 'Word'):
-                        tags_word.append(opening_tag[1:-1])
+            for _, level, opening_tag, _ in self.main.settings_custom['tags']['tags_xml']:
+                if level == _tr('Wl_Text', 'Paragraph'):
+                    tags_para.append(opening_tag[1:-1])
+                elif level == _tr('Wl_Text', 'Sentence'):
+                    tags_sentence.append(opening_tag[1:-1])
+                elif level == _tr('Wl_Text', 'Word'):
+                    tags_word.append(opening_tag[1:-1])
 
-                css_para = ','.join(tags_para)
-                css_sentence = ','.join(tags_sentence)
-                css_word = ','.join(tags_word)
+            css_para = ','.join(tags_para)
+            css_sentence = ','.join(tags_sentence)
+            css_word = ','.join(tags_word)
 
-                with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
-                    soup = bs4.BeautifulSoup(f.read(), features = 'lxml-xml')
+            with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
+                soup = bs4.BeautifulSoup(f.read(), features = 'lxml-xml')
 
-                if (
-                    (css_para and tags_sentence and tags_word)
-                    and (soup.select_one(css_para) and soup.select_one(css_sentence) and soup.select_one(css_word))
-                ):
-                    for para in soup.select(css_para):
-                        self.tokens_multilevel.append([])
+            if (
+                self.tokenized
+                and (css_para and css_sentence and css_word)
+                and (soup.select_one(css_para) and soup.select_one(css_sentence) and soup.select_one(css_word))
+            ):
+                for para in soup.select(css_para):
+                    self.tokens_multilevel.append([])
 
-                        for sentence in para.select(css_sentence):
-                            self.tokens_multilevel[-1].append([])
+                    for sentence in para.select(css_sentence):
+                        self.tokens_multilevel[-1].append([])
 
-                            for word in sentence.select(css_word):
-                                self.tokens_multilevel[-1][-1].append(word.get_text().strip())
-                # XML tags unfound or unspecified
-                else:
-                    text = soup.get_text()
-                    tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
+                        for word in sentence.select(css_word):
+                            self.tokens_multilevel[-1][-1].append(word.get_text().strip())
+            # XML files not tokenized or XML tags unfound or XML tags unspecified
+            else:
+                text = soup.get_text()
+                tokens = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
 
-                    self.tokens_multilevel.extend(tokens)
+                self.tokens_multilevel.extend(tokens)
 
             # Add empty tags
             self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
@@ -226,7 +225,7 @@ class Wl_Text_Ref:
         self.tokenized = file['tokenized']
         self.tagged = file['tagged']
 
-        self.tokens_multilevel = [[]]
+        self.tokens_multilevel = [[[]]]
 
         file_ext = os.path.splitext(file['path'])[1].lower()
 
@@ -242,48 +241,50 @@ class Wl_Text_Ref:
 
             # Untokenized & Untagged
             if not self.tokenized and not self.tagged:
-                self.tokens_multilevel = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
+                tokens = wl_word_tokenization.wl_word_tokenize_flat(self.main, text, lang = self.lang)
+
+                self.tokens_multilevel[0][0].extend(tokens)
             # Untokenized & Tagged
             elif not self.tokenized and self.tagged:
                 # Replace all tags with a whitespace to ensure no words run together
                 text_no_tags = re.sub(re_tags, ' ', text)
+                tokens = wl_word_tokenization.wl_word_tokenize(self.main, text_no_tags, lang = self.lang)
 
-                self.tokens_multilevel = wl_word_tokenization.wl_word_tokenize(self.main, text_no_tags, lang = self.lang)
+                self.tokens_multilevel[0][0].extend(tokens)
             # Tokenized & Untagged
             elif self.tokenized and not self.tagged:
-                self.tokens_multilevel[0].append(text.split())
+                self.tokens_multilevel[0][0].extend(text.split())
             # Tokenized & Tagged
             elif self.tokenized and self.tagged:
                 # Replace all tags with a whitespace to ensure no words run together
                 text_no_tags = re.sub(re_tags, ' ', text)
 
-                self.tokens_multilevel[0].append(text.split())
-        elif file_ext == '.xml':
-            if self.tagged and self.tokenized:
-                tags_word = []
+                self.tokens_multilevel[0][0].extend(text.split())
+        elif file_ext == '.xml' and self.tagged:
+            tags_word = []
 
-                for _, level, opening_tag, _ in self.main.settings_custom['tags']['tags_xml']:
-                    if level == _tr('Wl_Text', 'Word'):
-                        tags_word.append(opening_tag[1:-1])
+            for _, level, opening_tag, _ in self.main.settings_custom['tags']['tags_xml']:
+                if level == _tr('Wl_Text', 'Word'):
+                    tags_word.append(opening_tag[1:-1])
 
-                with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
-                    soup = bs4.BeautifulSoup(f.read(), features = 'lxml-xml')
+            css_word = ','.join(tags_word)
 
-                css_word = ','.join(tags_word)
+            with open(file['path'], 'r', encoding = file['encoding'], errors = 'replace') as f:
+                soup = bs4.BeautifulSoup(f.read(), features = 'lxml-xml')
 
-                if css_word:
-                    for word in soup.select(css_word):
-                        self.tokens_multilevel[0].append(word.get_text())
-
-                # XML tags unfound or unspecified
-                if not css_word or not self.tokens_multilevel[0]:
-                    text = soup.get_text()
-
-                    self.tokens_multilevel = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
-            elif self.tagged and not self.tokenized:
+            if (
+                self.tokenized
+                and css_word
+                and soup.select_one(css_word)
+            ):
+                for word in soup.select(css_word):
+                    self.tokens_multilevel[0][0].append(word.get_text())
+            # XML files not tokenized or XML tags unfound or XML tags unspecified
+            else:
                 text = soup.get_text()
+                tokens = wl_word_tokenization.wl_word_tokenize_flat(self.main, text, lang = self.lang)
 
-                self.tokens_multilevel = wl_word_tokenization.wl_word_tokenize(self.main, text, lang = self.lang)
+                self.tokens_multilevel[0][0].extend(tokens)
 
         # No need to calculate paragraph and sentence offsets
         self.offsets_paras = [0]
