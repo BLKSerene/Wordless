@@ -40,8 +40,6 @@ sacremoses == 0.0.47
 spacy == 3.2.3
 spacy-lookups-data == 1.0.3
 
-ssg == 0.0.8
-
 ## SudachiPy
 sudachipy == 0.6.3
 sudachidict_core == 20211220
