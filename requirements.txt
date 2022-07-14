@@ -19,7 +19,7 @@
 # ----------------------------------------------------------------------
 
 # Version-pinned
-botok == 0.8.8
+botok == 0.8.10
 charset-normalizer == 2.0.12
 jieba == 0.42.1
 pkuseg == 0.0.25
@@ -42,7 +42,7 @@ spacy-lookups-data == 1.0.3
 
 ## SudachiPy
 sudachipy == 0.6.3
-sudachidict_core == 20211220
+sudachidict_core == 20220519
 
 textblob == 0.17.1
 tokenizer == 3.4.0
