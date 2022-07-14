@@ -28,6 +28,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Remove ssg
+- Dependencies: Upgrade Beautiful Soup to 4.11.1
 
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - 03/12/2022
 ### 🎉 New Features
