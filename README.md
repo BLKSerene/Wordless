@@ -135,7 +135,7 @@ I would like to extend my sincere gratitude to the following open-source project
 &nbsp;|Name|Authors
 -----:|----|-------
 1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)      |Leonard Richardson
-2     |[botok](https://github.com/Esukhia/botok)                             |Hélios Drupchen Hildt
+2     |[Botok](https://github.com/OpenPecha/Botok)                           |Hélios Drupchen Hildt
 3     |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)    |TAHRI Ahmed R.
 4     |[CLTK](https://github.com/cltk/cltk)                                  |Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly
 5     |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
