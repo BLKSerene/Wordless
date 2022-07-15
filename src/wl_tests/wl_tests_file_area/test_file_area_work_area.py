@@ -45,10 +45,24 @@ def test_file_area():
             file_type = 'observed'
         ).run()
 
+    def open_file_ref(err_msg, files_to_open):
+        wl_file_area.Wl_Worker_Open_Files(
+            main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
+            update_gui = update_gui_ref,
+            files_to_open = files_to_open,
+            file_type = 'ref'
+        ).run()
+
     def update_gui(err_msg, new_files):
         assert not err_msg
 
         main.settings_custom['file_area']['files_open'].extend(new_files)
+
+    def update_gui_ref(err_msg, new_files):
+        assert not err_msg
+
+        main.settings_custom['file_area']['files_open_ref'].extend(new_files)
 
     # Reset custom settings
     main.settings_custom = copy.deepcopy(main.settings_default)
@@ -78,6 +92,36 @@ def test_file_area():
         assert new_file['selected']
         assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
         assert new_file['path'] == wl_misc.get_normalized_path(file_path).replace(os.path.join('wl_tests_files', 'wl_file_area', 'work_area'), 'imports')
+        assert new_file['path_original'] == wl_misc.get_normalized_path(file_path)
+        assert new_file['encoding'] == 'utf_8'
+        assert new_file['lang'] == re.search(r'(?<=\[)[a-z_]+(?=\])', file_path).group()
+        assert not new_file['tokenized']
+        assert not new_file['tagged']
+
+        print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
+
+    # Reference files
+    for file_path in glob.glob('wl_tests_files/wl_file_area/work_area/*.txt'):
+        time_start = time.time()
+
+        print(f'Loading file "{os.path.split(file_path)[1]}" as reference file... ', end = '')
+
+        table = QObject()
+        table.files_to_open = []
+
+        wl_file_area.Wl_Worker_Add_Files(
+            main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
+            update_gui = open_file_ref,
+            file_paths = [file_path],
+            table = table
+        ).run()
+
+        new_file = main.settings_custom['file_area']['files_open_ref'][-1]
+
+        assert new_file['selected']
+        assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0] + ' (2)'
+        assert new_file['path'] == wl_misc.get_normalized_path(file_path).replace(os.path.join('wl_tests_files', 'wl_file_area', 'work_area'), 'imports').replace('.txt', ' (2).txt')
         assert new_file['path_original'] == wl_misc.get_normalized_path(file_path)
         assert new_file['encoding'] == 'utf_8'
         assert new_file['lang'] == re.search(r'(?<=\[)[a-z_]+(?=\])', file_path).group()

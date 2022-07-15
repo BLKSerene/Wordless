@@ -44,7 +44,6 @@ def test_file_area():
         ).run()
 
     def update_gui(err_msg, new_files):
-        print(err_msg)
         assert not err_msg
 
         main.settings_custom['file_area']['files_open'].extend(new_files)
