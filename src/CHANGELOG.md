@@ -21,12 +21,14 @@
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - ??/??/2022
 ### 🎉 New Features
 - File Area: Add Observed Files and Reference Files
+- File Area: Add support for .pdf files
 
 ### ❌ Removals
 - Utils: Remove ssg's Thai syllable tokenizer
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
 
 ### ⏫ Dependency Changes
+- Dependencies: Add PyPDF2
 - Dependencies: Remove ssg
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
