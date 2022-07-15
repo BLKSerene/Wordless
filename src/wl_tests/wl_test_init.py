@@ -66,6 +66,15 @@ if platform.system() in ['Windows', 'Darwin']:
             self.wl_file_area.find_file_by_name = lambda file_name, selected_only = False: wl_file_area.Wrapper_File_Area.find_file_by_name(self.wl_file_area, file_name, selected_only)
             self.wl_file_area.find_files_by_name = lambda file_names, selected_only = False: wl_file_area.Wrapper_File_Area.find_files_by_name(self.wl_file_area, file_names, selected_only)
 
+            self.wl_file_area_ref = QObject()
+            self.wl_file_area_ref.main = self
+            self.wl_file_area_ref.file_type = 'ref'
+            self.wl_file_area_ref.settings_suffix = '_ref'
+
+            self.wl_file_area_ref.get_files = lambda: wl_file_area.Wrapper_File_Area.get_files(self.wl_file_area_ref)
+            self.wl_file_area_ref.get_selected_files = lambda: wl_file_area.Wrapper_File_Area.get_selected_files(self.wl_file_area_ref)
+            self.wl_file_area_ref.get_selected_file_names = lambda: wl_file_area.Wrapper_File_Area.get_selected_file_names(self.wl_file_area_ref)
+
         def height(self):
             return 768
 # Do not initialize QApplication on Linux during CI
