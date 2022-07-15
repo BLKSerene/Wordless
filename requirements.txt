@@ -57,6 +57,7 @@ matplotlib
 networkx
 numpy
 openpyxl
+pypdf2
 pyqt5
 pytest
 python-docx

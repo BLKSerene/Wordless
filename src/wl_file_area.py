@@ -30,6 +30,7 @@ from docx.oxml.text.paragraph import CT_P
 from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 import openpyxl
+import PyPDF2
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -128,7 +129,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                             soup = bs4.BeautifulSoup(f.read(), 'lxml')
 
                         new_file['text'] = soup.get_text()
-                    # Microsoft Word documents
+                    # Word documents
                     elif file_ext == '.docx':
                         lines = []
                         doc = docx.Document(file_path)
@@ -146,7 +147,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                                     lines.append('\t'.join(cells))
 
                         new_file['text'] = '\n'.join(lines)
-                    # Microsoft Excel workbooks
+                    # Excel workbooks
                     elif file_ext == '.xlsx':
                         lines = []
                         workbook = openpyxl.load_workbook(file_path, data_only = True)
@@ -163,6 +164,10 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                                 lines.append('\t'.join(cells))
 
                         new_file['text'] = '\n'.join(lines)
+                    # PDF files
+                    elif file_ext == '.pdf':
+                        reader = PyPDF2.PdfReader(file_path)
+                        new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
 
                     if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']:
                         new_file['lang'] = wl_detection.detect_lang_text(self.main, new_file['text'])

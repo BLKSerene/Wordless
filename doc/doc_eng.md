@@ -736,15 +736,17 @@ Other Languages         |⭕️ |⭕️ |✖️|✖️|✖️|✖️
 File Type               |File Extension(s)
 ------------------------|-----------------
 CSV File                |\*.csv
+Excel Workbook          |\*.xlsx
 HTML Page               |\*.htm, \*.html
-Microsoft Word Document |\*.docx
-Microsoft Excel Workbook|\*.xlsx
+PDF File                |\*.pdf
 Text File               |\*.txt
 Translation Memory File |\*.tmx
+Word Document           |\*.docx
 XML File                |\*.xml
 
 \* Microsoft 97-03 Word documents (\*.doc) and Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
+\* *Wordless* **could only extract text from text-searchable PDF files** and is not capable of converting scanned PDF files into text-searchable ones. And **it is not recommended to import PDF files**, for the accuracy of text extraction from PDF files could be quite low.
 
 <span id="doc-eng-4-3"></span>
 ### 4.3 Supported File Encodings [[Back to Contents]](#doc-eng)
