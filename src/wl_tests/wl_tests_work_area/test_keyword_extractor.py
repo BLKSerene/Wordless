@@ -38,65 +38,47 @@ def test_keyword_extractor():
     elif len(measures_effect_size) > len(tests_significance):
         tests_significance += tests_significance * (len_diff // len(tests_significance)) + tests_significance[: len_diff % len(tests_significance)]
 
-    files = main.settings_custom['file_area']['files_open']
+    files_observed = main.settings_custom['file_area']['files_open']
+    files_ref = main.settings_custom['file_area']['files_open_ref']
 
     for i, (test_significance, measure_effect_size) in enumerate(zip(tests_significance, measures_effect_size)):
-        for file in main.settings_custom['file_area']['files_open']:
+        for file in main.settings_custom['file_area']['files_open'] + main.settings_custom['file_area']['files_open_ref']:
             file['selected'] = False
 
         # Single reference file & single observed file
         if i % 4 == 0:
-            file_reference, file_observed = random.sample(files, 2)
+            random.choice(files_observed)['selected'] = True
+            random.choice(files_ref)['selected'] = True
 
-            main.settings_custom['keyword_extractor']['generation_settings']['ref_files'] = [file_reference['name']]
-
-            file_reference['selected'] = True
-            file_observed['selected'] = True
         # Single reference file & multiple observed files
         elif i % 4 == 1:
-            file_reference = random.choice(files)
-
-            main.settings_custom['keyword_extractor']['generation_settings']['ref_files'] = [file_reference['name']]
-
-            for file in files:
+            for file in files_observed:
                 file['selected'] = True
+
+            random.choice(files_ref)['selected'] = True
+
         # Multiple reference files & single observed file
         elif i % 4 == 2:
-            file_observed = random.choice(files)
+            random.choice(files_observed)['selected'] = True
 
-            main.settings_custom['keyword_extractor']['generation_settings']['ref_files'] = [
-                file['name']
-                for file in files
-                if file != file_observed
-            ]
-
-            for file in files:
+            for file in files_ref:
                 file['selected'] = True
         # Multiple reference files & multiple observed files
         elif i % 4 == 3:
-            main.settings_custom['keyword_extractor']['generation_settings']['ref_files'] = [
-                file['name']
-                for file in random.sample(files, len(files) // 2)
-            ]
-
-            for file in main.settings_custom['file_area']['files_open']:
+            for file in files_observed + files_ref:
                 file['selected'] = True
 
-        files_reference = [
+        file_names_observed = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
-            for file_name in main.settings_custom['keyword_extractor']['generation_settings']['ref_files']
+            for file_name in main.wl_file_area.get_selected_file_names()
         ]
-        files_observed = [
-            re.search(r'(?<=\[)[a-z_]+(?=\])', file['name']).group()
-            for file in files
-            if (
-                file['selected']
-                and file['name'] not in main.settings_custom['keyword_extractor']['generation_settings']['ref_files']
-            )
+        file_names_ref = [
+            re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
+            for file_name in main.wl_file_area_ref.get_selected_file_names()
         ]
 
-        print(f"Reference files: {', '.join(files_reference)}")
-        print(f"Observed files: {', '.join(files_observed)}")
+        print(f"Observed files: {', '.join(file_names_observed)}")
+        print(f"Reference files: {', '.join(file_names_ref)}")
         print(f'Test of Statistical significance: {test_significance}')
         print(f'Measure of effect size: {measure_effect_size}\n')
 
