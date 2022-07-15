@@ -375,9 +375,9 @@ class Wl_List_Stop_Words(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
         )
 
     def data_changed_default(self):
-        self.button_clr.setEnabled(False)
-
         super().data_changed()
+
+        self.button_clr.setEnabled(False)
 
     def selection_changed_default(self):
         super().selection_changed()
