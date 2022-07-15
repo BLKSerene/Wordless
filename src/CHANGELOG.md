@@ -23,6 +23,9 @@
 - File Area: Add Observed Files and Reference Files
 - File Area: Add support for .pdf files
 
+### ✨ Improvements
+- Settings: Allow resizing of Settings dialog box
+
 ### ❌ Removals
 - Utils: Remove ssg's Thai syllable tokenizer
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
