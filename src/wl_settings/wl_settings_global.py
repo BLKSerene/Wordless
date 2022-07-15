@@ -285,6 +285,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'CSV File (*.csv)'),
                 _tr('init_settings_global', 'Excel Workbook (*.xlsx)'),
                 _tr('init_settings_global', 'HTML Page (*.htm; *.html)'),
+                _tr('init_settings_global', 'PDF File (*.pdf)'),
                 _tr('init_settings_global', 'Text File (*.txt)'),
                 _tr('init_settings_global', 'Translation Memory File (*.tmx)'),
                 _tr('init_settings_global', 'Word Document (*.docx)'),
