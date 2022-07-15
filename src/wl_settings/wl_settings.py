@@ -136,7 +136,7 @@ class Wl_Settings(QDialog):
         self.main = main
 
         self.setWindowTitle(self.tr('Settings'))
-        self.setFixedSize(1024, 768)
+        self.resize(QSize(1024, 768))
 
         self.tree_settings = QTreeView(self)
         self.tree_settings.setModel(QStandardItemModel())
