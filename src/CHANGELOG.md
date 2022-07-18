@@ -26,6 +26,9 @@
 ### ✨ Improvements
 - Settings: Allow resizing of Settings dialog box
 
+### 📌 Bugfixes
+- Work Area: Fix Profiler - Table Settings - Show Cumulutive after clicking horizontal headers
+
 ### ❌ Removals
 - Utils: Remove ssg's Thai syllable tokenizer
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
