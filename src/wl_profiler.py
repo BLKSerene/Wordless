@@ -22,6 +22,7 @@ import itertools
 import traceback
 
 import numpy
+import scipy
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
@@ -79,6 +80,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Modes)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
@@ -89,6 +91,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Modes)'),
                 # Sentence length
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Mean)'),
@@ -100,6 +103,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Range)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Modes)'),
                 # Token length
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
@@ -111,6 +115,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Range)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Modes)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Mean)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Standard Deviation)'),
@@ -121,6 +126,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Range)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Modes)'),
                 # Type length
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (Mean)'),
@@ -132,6 +138,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (Range)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (Modes)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Mean)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Standard Deviation)'),
@@ -142,6 +149,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Range)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Modes)'),
                 # Syllable length
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Mean)'),
@@ -153,6 +161,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Range)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Modes)')
             ],
             header_orientation = 'vert',
@@ -218,12 +227,14 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (25th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Median)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Variance)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (25th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Median)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Interquartile Range)'),
                 # Sentence length
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Mean)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Standard Deviation)'),
@@ -231,6 +242,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (25th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Median)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Interquartile Range)'),
                 # Token length
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Standard Deviation)'),
@@ -238,12 +250,14 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (25th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Median)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Mean)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Standard Deviation)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Variance)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (25th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (Median)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Characters (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Token Length in Characters (Interquartile Range)'),
                 # Type length
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (Mean)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (Standard Deviation)'),
@@ -251,19 +265,22 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (25th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (Median)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Syllables (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Mean)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Standard Deviation)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Variance)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (25th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (Median)'),
                 _tr('Wl_Table_Profiler', 'Type Length in Characters (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Type Length in Characters (Interquartile Range)'),
                 # Syllable length
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Mean)'),
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Standard Deviation)'),
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Variance)'),
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (25th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Median)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (75th Percentile)')
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Interquartile Range)')
             ],
             headers_pct = [
                 # Counts
@@ -765,61 +782,62 @@ def generate_table(main, table):
                         table.set_item_num(32, i, numpy.percentile(len_paras_sentences, 75))
                         table.set_item_num(33, i, numpy.max(len_paras_sentences))
                         table.set_item_num(34, i, numpy.ptp(len_paras_sentences))
-                        table.model().setItem(35, i, QStandardItem(', '.join([
+                        table.set_item_num(35, i, scipy.stats.iqr(len_paras_sentences))
+                        table.model().setItem(36, i, QStandardItem(', '.join([
                             str(mode) for mode in wl_measures_misc.modes(len_paras_sentences)
                         ])))
-                        table.set_item_num(36, i, numpy.mean(len_paras_tokens))
-                        table.set_item_num(37, i, numpy.std(len_paras_tokens))
-                        table.set_item_num(38, i, numpy.var(len_paras_tokens))
-                        table.set_item_num(39, i, numpy.min(len_paras_tokens))
-                        table.set_item_num(40, i, numpy.percentile(len_paras_tokens, 25))
-                        table.set_item_num(41, i, numpy.median(len_paras_tokens))
-                        table.set_item_num(42, i, numpy.percentile(len_paras_tokens, 75))
-                        table.set_item_num(43, i, numpy.max(len_paras_tokens))
-                        table.set_item_num(44, i, numpy.ptp(len_paras_tokens))
-                        table.model().setItem(45, i, QStandardItem(', '.join([
+                        table.set_item_num(37, i, numpy.mean(len_paras_tokens))
+                        table.set_item_num(38, i, numpy.std(len_paras_tokens))
+                        table.set_item_num(39, i, numpy.var(len_paras_tokens))
+                        table.set_item_num(40, i, numpy.min(len_paras_tokens))
+                        table.set_item_num(41, i, numpy.percentile(len_paras_tokens, 25))
+                        table.set_item_num(42, i, numpy.median(len_paras_tokens))
+                        table.set_item_num(43, i, numpy.percentile(len_paras_tokens, 75))
+                        table.set_item_num(44, i, numpy.max(len_paras_tokens))
+                        table.set_item_num(45, i, numpy.ptp(len_paras_tokens))
+                        table.set_item_num(46, i, scipy.stats.iqr(len_paras_tokens))
+                        table.model().setItem(47, i, QStandardItem(', '.join([
                             str(mode) for mode in wl_measures_misc.modes(len_paras_tokens)
                         ])))
 
-                        table.model().item(35, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-                        table.model().item(45, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(36, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(47, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                         # Sentence Length
-                        table.set_item_num(46, i, numpy.mean(len_sentences))
-                        table.set_item_num(47, i, numpy.std(len_sentences))
-                        table.set_item_num(48, i, numpy.var(len_sentences))
-                        table.set_item_num(49, i, numpy.min(len_sentences))
-                        table.set_item_num(50, i, numpy.percentile(len_sentences, 25))
-                        table.set_item_num(51, i, numpy.median(len_sentences))
-                        table.set_item_num(52, i, numpy.percentile(len_sentences, 75))
-                        table.set_item_num(53, i, numpy.max(len_sentences))
-                        table.set_item_num(54, i, numpy.ptp(len_sentences))
-                        table.model().setItem(55, i, QStandardItem(', '.join([
+                        table.set_item_num(48, i, numpy.mean(len_sentences))
+                        table.set_item_num(49, i, numpy.std(len_sentences))
+                        table.set_item_num(50, i, numpy.var(len_sentences))
+                        table.set_item_num(51, i, numpy.min(len_sentences))
+                        table.set_item_num(52, i, numpy.percentile(len_sentences, 25))
+                        table.set_item_num(53, i, numpy.median(len_sentences))
+                        table.set_item_num(54, i, numpy.percentile(len_sentences, 75))
+                        table.set_item_num(55, i, numpy.max(len_sentences))
+                        table.set_item_num(56, i, numpy.ptp(len_sentences))
+                        table.set_item_num(57, i, scipy.stats.iqr(len_sentences))
+                        table.model().setItem(58, i, QStandardItem(', '.join([
                             str(mode) for mode in wl_measures_misc.modes(len_sentences)
                         ])))
 
-                        table.model().item(55, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(58, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                         # Token Length
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            table.set_item_num(56, i, numpy.mean(len_tokens_syls))
-                            table.set_item_num(57, i, numpy.std(len_tokens_syls))
-                            table.set_item_num(58, i, numpy.var(len_tokens_syls))
-                            table.set_item_num(59, i, numpy.min(len_tokens_syls))
-                            table.set_item_num(60, i, numpy.percentile(len_tokens_syls, 25))
-                            table.set_item_num(61, i, numpy.median(len_tokens_syls))
-                            table.set_item_num(62, i, numpy.percentile(len_tokens_syls, 75))
-                            table.set_item_num(63, i, numpy.max(len_tokens_syls))
-                            table.set_item_num(64, i, numpy.ptp(len_tokens_syls))
-                            table.model().setItem(65, i, QStandardItem(', '.join([
+                            table.set_item_num(59, i, numpy.mean(len_tokens_syls))
+                            table.set_item_num(60, i, numpy.std(len_tokens_syls))
+                            table.set_item_num(61, i, numpy.var(len_tokens_syls))
+                            table.set_item_num(62, i, numpy.min(len_tokens_syls))
+                            table.set_item_num(63, i, numpy.percentile(len_tokens_syls, 25))
+                            table.set_item_num(64, i, numpy.median(len_tokens_syls))
+                            table.set_item_num(65, i, numpy.percentile(len_tokens_syls, 75))
+                            table.set_item_num(66, i, numpy.max(len_tokens_syls))
+                            table.set_item_num(67, i, numpy.ptp(len_tokens_syls))
+                            table.set_item_num(68, i, scipy.stats.iqr(len_tokens_syls))
+                            table.model().setItem(69, i, QStandardItem(', '.join([
                                 str(mode) for mode in wl_measures_misc.modes(len_tokens_syls)
                             ])))
 
-                            table.model().item(65, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                            table.model().item(69, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
-                            table.set_item_error(56, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(57, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(58, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(59, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(60, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(61, i, text = _tr('wl_profiler', 'No Support'))
@@ -827,92 +845,102 @@ def generate_table(main, table):
                             table.set_item_error(63, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(64, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(65, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(66, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(67, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(68, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(69, i, text = _tr('wl_profiler', 'No Support'))
 
-                        table.set_item_num(66, i, numpy.mean(len_tokens_chars))
-                        table.set_item_num(67, i, numpy.std(len_tokens_chars))
-                        table.set_item_num(68, i, numpy.var(len_tokens_chars))
-                        table.set_item_num(69, i, numpy.min(len_tokens_chars))
-                        table.set_item_num(70, i, numpy.percentile(len_tokens_chars, 25))
-                        table.set_item_num(71, i, numpy.median(len_tokens_chars))
-                        table.set_item_num(72, i, numpy.percentile(len_tokens_chars, 75))
-                        table.set_item_num(73, i, numpy.max(len_tokens_chars))
-                        table.set_item_num(74, i, numpy.ptp(len_tokens_chars))
-                        table.model().setItem(75, i, QStandardItem(', '.join([
+                        table.set_item_num(70, i, numpy.mean(len_tokens_chars))
+                        table.set_item_num(71, i, numpy.std(len_tokens_chars))
+                        table.set_item_num(72, i, numpy.var(len_tokens_chars))
+                        table.set_item_num(73, i, numpy.min(len_tokens_chars))
+                        table.set_item_num(74, i, numpy.percentile(len_tokens_chars, 25))
+                        table.set_item_num(75, i, numpy.median(len_tokens_chars))
+                        table.set_item_num(76, i, numpy.percentile(len_tokens_chars, 75))
+                        table.set_item_num(77, i, numpy.max(len_tokens_chars))
+                        table.set_item_num(78, i, numpy.ptp(len_tokens_chars))
+                        table.set_item_num(79, i, scipy.stats.iqr(len_tokens_chars))
+                        table.model().setItem(80, i, QStandardItem(', '.join([
                             str(mode) for mode in wl_measures_misc.modes(len_tokens_chars)
                         ])))
 
-                        table.model().item(75, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(80, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                         # Type Length
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            table.set_item_num(76, i, numpy.mean(len_types_syls))
-                            table.set_item_num(77, i, numpy.std(len_types_syls))
-                            table.set_item_num(78, i, numpy.var(len_types_syls))
-                            table.set_item_num(79, i, numpy.min(len_types_syls))
-                            table.set_item_num(80, i, numpy.percentile(len_types_syls, 25))
-                            table.set_item_num(81, i, numpy.median(len_types_syls))
-                            table.set_item_num(82, i, numpy.percentile(len_types_syls, 75))
-                            table.set_item_num(83, i, numpy.max(len_types_syls))
-                            table.set_item_num(84, i, numpy.ptp(len_types_syls))
-                            table.model().setItem(85, i, QStandardItem(', '.join([
+                            table.set_item_num(81, i, numpy.mean(len_types_syls))
+                            table.set_item_num(82, i, numpy.std(len_types_syls))
+                            table.set_item_num(83, i, numpy.var(len_types_syls))
+                            table.set_item_num(84, i, numpy.min(len_types_syls))
+                            table.set_item_num(85, i, numpy.percentile(len_types_syls, 25))
+                            table.set_item_num(86, i, numpy.median(len_types_syls))
+                            table.set_item_num(87, i, numpy.percentile(len_types_syls, 75))
+                            table.set_item_num(88, i, numpy.max(len_types_syls))
+                            table.set_item_num(89, i, numpy.ptp(len_types_syls))
+                            table.set_item_num(90, i, scipy.stats.iqr(len_types_syls))
+                            table.model().setItem(91, i, QStandardItem(', '.join([
                                 str(mode) for mode in wl_measures_misc.modes(len_types_syls)
                             ])))
 
-                            table.model().item(85, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                            table.model().item(91, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
-                            table.set_item_error(76, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(77, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(78, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(79, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(80, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(81, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(82, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(83, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(84, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(85, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(86, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(87, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(88, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(89, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(90, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(91, i, text = _tr('wl_profiler', 'No Support'))
 
-                        table.set_item_num(86, i, numpy.mean(len_types_chars))
-                        table.set_item_num(87, i, numpy.std(len_types_chars))
-                        table.set_item_num(88, i, numpy.var(len_types_chars))
-                        table.set_item_num(89, i, numpy.min(len_types_chars))
-                        table.set_item_num(90, i, numpy.percentile(len_types_chars, 25))
-                        table.set_item_num(91, i, numpy.median(len_types_chars))
-                        table.set_item_num(92, i, numpy.percentile(len_types_chars, 75))
-                        table.set_item_num(93, i, numpy.max(len_types_chars))
-                        table.set_item_num(94, i, numpy.ptp(len_types_chars))
-                        table.model().setItem(95, i, QStandardItem(', '.join([
+                        table.set_item_num(92, i, numpy.mean(len_types_chars))
+                        table.set_item_num(93, i, numpy.std(len_types_chars))
+                        table.set_item_num(94, i, numpy.var(len_types_chars))
+                        table.set_item_num(95, i, numpy.min(len_types_chars))
+                        table.set_item_num(96, i, numpy.percentile(len_types_chars, 25))
+                        table.set_item_num(97, i, numpy.median(len_types_chars))
+                        table.set_item_num(98, i, numpy.percentile(len_types_chars, 75))
+                        table.set_item_num(99, i, numpy.max(len_types_chars))
+                        table.set_item_num(100, i, numpy.ptp(len_types_chars))
+                        table.set_item_num(101, i, scipy.stats.iqr(len_types_chars))
+                        table.model().setItem(102, i, QStandardItem(', '.join([
                             str(mode) for mode in wl_measures_misc.modes(len_types_chars)
                         ])))
 
-                        table.model().item(95, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(102, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                         # Syllable Length
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            table.set_item_num(96, i, numpy.mean(len_syls))
-                            table.set_item_num(97, i, numpy.std(len_syls))
-                            table.set_item_num(98, i, numpy.var(len_syls))
-                            table.set_item_num(99, i, numpy.min(len_syls))
-                            table.set_item_num(100, i, numpy.percentile(len_syls, 25))
-                            table.set_item_num(101, i, numpy.median(len_syls))
-                            table.set_item_num(102, i, numpy.percentile(len_syls, 75))
-                            table.set_item_num(103, i, numpy.max(len_syls))
-                            table.set_item_num(104, i, numpy.ptp(len_syls))
-                            table.model().setItem(105, i, QStandardItem(', '.join([
+                            table.set_item_num(103, i, numpy.mean(len_syls))
+                            table.set_item_num(104, i, numpy.std(len_syls))
+                            table.set_item_num(105, i, numpy.var(len_syls))
+                            table.set_item_num(106, i, numpy.min(len_syls))
+                            table.set_item_num(107, i, numpy.percentile(len_syls, 25))
+                            table.set_item_num(108, i, numpy.median(len_syls))
+                            table.set_item_num(109, i, numpy.percentile(len_syls, 75))
+                            table.set_item_num(110, i, numpy.max(len_syls))
+                            table.set_item_num(111, i, numpy.ptp(len_syls))
+                            table.set_item_num(112, i, scipy.stats.iqr(len_syls))
+                            table.model().setItem(113, i, QStandardItem(', '.join([
                                 str(mode) for mode in wl_measures_misc.modes(len_syls)
                             ])))
 
-                            table.model().item(105, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                            table.model().item(113, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
-                            table.set_item_error(96, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(97, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(98, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(99, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(100, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(101, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(102, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(103, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(104, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(105, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(106, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(107, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(108, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(109, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(110, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(111, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(112, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(113, i, text = _tr('wl_profiler', 'No Support'))
 
                         count_tokens_lens.append(collections.Counter(len_tokens_chars))
                         count_sentences_lens.append(collections.Counter(len_sentences))

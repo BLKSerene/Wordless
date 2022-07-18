@@ -22,6 +22,7 @@
 ### 🎉 New Features
 - File Area: Add Observed Files and Reference Files
 - File Area: Add support for .pdf files
+- Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
 
 ### ✨ Improvements
 - Settings: Allow resizing of Settings dialog box
