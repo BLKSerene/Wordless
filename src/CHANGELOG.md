@@ -38,6 +38,7 @@
 - Dependencies: Remove ssg
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
+- Dependencies: Upgrade Charset Normalizer to 2.1.0
 - Dependencies: Upgrade PyQt to 5.15.7
 - Dependencies: Upgrade Requests to 2.28.1
 - Dependencies: Upgrade WordCloud to 1.8.2.2
