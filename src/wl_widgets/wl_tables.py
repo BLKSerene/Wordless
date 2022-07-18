@@ -1596,7 +1596,8 @@ class Wl_Table_Data(Wl_Table):
         precision_pct = self.main.settings_custom['data']['precision_pct']
 
         # Boost performance
-        self.sortByColumn(self.horizontalHeader().sortIndicatorSection(), self.horizontalHeader().sortIndicatorOrder())
+        if self.sorting_enabled:
+            self.sortByColumn(self.horizontalHeader().sortIndicatorSection(), self.horizontalHeader().sortIndicatorOrder())
 
         self.disable_updates()
         self.setSortingEnabled(False)
