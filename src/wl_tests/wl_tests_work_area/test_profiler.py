@@ -21,6 +21,7 @@ import random
 import re
 
 import numpy
+import scipy
 
 from wl_dialogs import wl_dialogs_misc
 from wl_tests import wl_test_init
@@ -51,7 +52,7 @@ def test_profiler():
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
-        print(f"Files: {', '.join(files_selected)}\n")
+        print('Files: ' + ', '.join(files_selected))
 
         wl_profiler.Wl_Worker_Profiler_Table(
             main,
@@ -95,11 +96,11 @@ def update_gui(err_msg, texts_stats_files):
         count_sentences_lens.append(collections.Counter(len_sentences))
 
         # Data validation
-
         assert len(readability_statistics) == 12
         for statistic in readability_statistics:
             assert statistic
 
+        # Counts
         assert count_paras
         assert count_sentences
         assert count_tokens
@@ -107,10 +108,10 @@ def update_gui(err_msg, texts_stats_files):
         assert count_syls
         assert count_chars
 
+        # Lengths
         assert len_paras_in_sentences
         assert len_paras_in_tokens
         assert len_sentences
-
         assert len_tokens_in_syls
         assert len_tokens_in_chars
         assert len_types_in_syls
@@ -123,14 +124,21 @@ def update_gui(err_msg, texts_stats_files):
                 assert all([len_syls == 1 for len_syls in len_tokens_in_syls])
                 assert all([len_syls == 1 for len_syls in len_types_in_syls])
 
+        # TTR/STTR
         assert ttr
         assert sttr
 
+        # Average
         assert numpy.mean(len_paras_in_sentences) == count_sentences / count_paras
         assert numpy.mean(len_paras_in_tokens) == count_tokens / count_paras
         assert numpy.mean(len_sentences) == count_tokens / count_sentences
         assert numpy.mean(len_tokens_in_syls) == count_syls / count_tokens
         assert numpy.mean(len_tokens_in_chars) == count_chars / count_tokens
+
+        # Range and interquartile range
+        for lens in [len_paras_in_sentences, len_paras_in_tokens, len_sentences, len_tokens_in_syls, len_tokens_in_chars]:
+            assert numpy.ptp(lens) == max(lens) - min(lens)
+            assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)
 
     # Count of n-length Sentences
     if any(count_sentences_lens):
