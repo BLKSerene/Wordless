@@ -78,7 +78,7 @@ def wl_process_tokens(main, text, token_settings):
                 )
 
     # Treat as all lowercase
-    if settings['treat_as_lowercase']:
+    if settings['treat_as_all_lowercase']:
         for para in text.tokens_multilevel:
             for i, sentence in enumerate(para):
                 para[i] = [token.lower() for token in sentence]
@@ -91,14 +91,14 @@ def wl_process_tokens(main, text, token_settings):
     # Words
     if settings['words']:
         # Lowercase
-        if not settings['lowercase']:
+        if not settings['all_lowercase']:
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for i, token in enumerate(sentence):
                         if wl_checking_tokens.is_word_lowercase(token):
                             sentence[i] = ''
         # Uppercase
-        if not settings['uppercase']:
+        if not settings['all_uppercase']:
             for para in text.tokens_multilevel:
                 for sentence in para:
                     for i, token in enumerate(sentence):
