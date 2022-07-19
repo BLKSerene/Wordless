@@ -942,7 +942,7 @@ def wl_widgets_filter_measures(parent, filter_min = -10000, filter_max = 10000):
             spin_box_min.setValue(spin_box_max.value())
 
     def precision_changed():
-        precision = main.settings_custom['data']['precision_decimal']
+        precision = main.settings_custom['tables']['precision_settings']['precision_decimals']
 
         spin_box_min.setDecimals(precision)
         spin_box_max.setDecimals(precision)
@@ -988,7 +988,7 @@ def wl_widgets_filter_p_value(parent):
             spin_box_min.setValue(spin_box_max.value())
 
     def precision_changed():
-        precision = main.settings_custom['data']['precision_p_value']
+        precision = main.settings_custom['tables']['precision_settings']['precision_p_vals']
 
         spin_box_min.setDecimals(precision)
         spin_box_max.setDecimals(precision)

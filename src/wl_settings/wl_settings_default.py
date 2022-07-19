@@ -1014,6 +1014,7 @@ def init_settings_default(main):
             'node_cur': _tr('init_settings_default', 'General')
         },
 
+        # Settings - General
         'general': {
             'font_settings': {
                 'font_family': 'Arial',
@@ -1037,6 +1038,7 @@ def init_settings_default(main):
             }
         },
 
+        # Settings - General - Import
         'imp': {
             'files': {
                 'default_path': wl_misc.get_normalized_path('.')
@@ -1059,6 +1061,7 @@ def init_settings_default(main):
             }
         },
 
+        # Settings - General - Export
         'exp': {
             'tables': {
                 'default_path': wl_misc.get_normalized_path('exports/'),
@@ -1077,6 +1080,7 @@ def init_settings_default(main):
             }
         },
 
+        # Settings - Files
         'files': {
             'default_settings': {
                 'encoding': 'utf_8',
@@ -1095,6 +1099,7 @@ def init_settings_default(main):
             }
         },
 
+        # Settings - Files - Tags
         'tags': {
             'tags_header': [
                 [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Header'), '<teiHeader>', '</teiHeader>']
@@ -1114,14 +1119,7 @@ def init_settings_default(main):
             ]
         },
 
-        'data': {
-            'continue_numbering_after_ties': False,
-
-            'precision_decimal': 2,
-            'precision_pct': 2,
-            'precision_p_value': 5
-        },
-
+        # Settings - Sentence Tokenization
         'sentence_tokenization': {
             'sentence_tokenizers': {
                 'afr': 'spacy_sentencizer',
@@ -1207,6 +1205,7 @@ def init_settings_default(main):
             'preview_results': ''
         },
 
+        # Settings - Word Tokenization
         'word_tokenization': {
             'word_tokenizers': {
                 'afr': 'spacy_afr',
@@ -1297,6 +1296,7 @@ def init_settings_default(main):
             'preview_results': ''
         },
 
+        # Settings - Syllable Tokenization
         'syl_tokenization': {
             'syl_tokenizers': {
                 'afr': 'pyphen_afr',
@@ -1348,6 +1348,7 @@ def init_settings_default(main):
             'preview_results': ''
         },
 
+        # Settings - POS Tagging
         'pos_tagging': {
             'pos_taggers': {
                 'cat': 'spacy_cat',
@@ -1386,6 +1387,7 @@ def init_settings_default(main):
             'preview_results': ''
         },
 
+        # Settings - POS Tagging - Tagsets
         'tagsets': {
             'preview_lang': 'eng_us',
 
@@ -1464,6 +1466,7 @@ def init_settings_default(main):
             }
         },
 
+        # Settings - Lemmatization
         'lemmatization': {
             'lemmatizers': {
                 'ast': 'lemmatization_lists_ast',
@@ -1520,6 +1523,7 @@ def init_settings_default(main):
 
         },
 
+        # Settings - Stop Word Lists
         'stop_word_lists': {
             'stop_word_lists': {
                 'afr': 'spacy_afr',
@@ -1732,6 +1736,27 @@ def init_settings_default(main):
             'preview_lang': 'eng_us',
         },
 
+        # Settings - Tables
+        'tables': {
+            'rank_settings': {
+                'continue_numbering_after_ties': False
+            },
+
+            'precision_settings': {
+                'precision_decimals': 2,
+                'precision_pcts': 2,
+                'precision_p_vals': 5
+            },
+
+            # Settings - Tables - Profiler
+            'profiler': {
+                'general_settings': {
+                    'num_tokens_section_sttr': 1000
+                }
+            }
+        },
+
+        # Settings - Measures
         'measures': {
             'dispersion': {
                 'general': {
@@ -1780,6 +1805,7 @@ def init_settings_default(main):
             }
         },
 
+        # Settings - Figures
         'figs': {
             'line_chart': {
                 'font': 'Arial'
