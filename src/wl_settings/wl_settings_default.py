@@ -77,13 +77,13 @@ def init_settings_default(main):
         'profiler': {
             'token_settings': {
                 'words': True,
-                'lowercase': True,
-                'uppercase': True,
+                'all_lowercase': True,
+                'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
                 'puncs': False,
 
-                'treat_as_lowercase': True,
+                'treat_as_all_lowercase': True,
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
@@ -356,13 +356,13 @@ def init_settings_default(main):
         'wordlist_generator': {
             'token_settings': {
                 'words': True,
-                'lowercase': True,
-                'uppercase': True,
+                'all_lowercase': True,
+                'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
                 'puncs': False,
 
-                'treat_as_lowercase': True,
+                'treat_as_all_lowercase': True,
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
@@ -441,13 +441,13 @@ def init_settings_default(main):
         'ngram_generator': {
             'token_settings': {
                 'words': True,
-                'lowercase': True,
-                'uppercase': True,
+                'all_lowercase': True,
+                'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
                 'puncs': False,
 
-                'treat_as_lowercase': True,
+                'treat_as_all_lowercase': True,
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
@@ -596,13 +596,13 @@ def init_settings_default(main):
         'collocation_extractor': {
             'token_settings': {
                 'words': True,
-                'lowercase': True,
-                'uppercase': True,
+                'all_lowercase': True,
+                'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
                 'puncs': False,
 
-                'treat_as_lowercase': True,
+                'treat_as_all_lowercase': True,
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
@@ -757,13 +757,13 @@ def init_settings_default(main):
         'colligation_extractor': {
             'token_settings': {
                 'words': True,
-                'lowercase': True,
-                'uppercase': True,
+                'all_lowercase': True,
+                'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
                 'puncs': False,
 
-                'treat_as_lowercase': True,
+                'treat_as_all_lowercase': True,
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
@@ -918,13 +918,13 @@ def init_settings_default(main):
         'keyword_extractor': {
             'token_settings': {
                 'words': True,
-                'lowercase': True,
-                'uppercase': True,
+                'all_lowercase': True,
+                'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
                 'puncs': False,
 
-                'treat_as_lowercase': True,
+                'treat_as_all_lowercase': True,
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 

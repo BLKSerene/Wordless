@@ -100,13 +100,13 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         (
             self.checkbox_words,
-            self.checkbox_lowercase,
-            self.checkbox_uppercase,
+            self.checkbox_all_lowercase,
+            self.checkbox_all_uppercase,
             self.checkbox_title_case,
             self.checkbox_nums,
             self.checkbox_puncs,
 
-            self.checkbox_treat_as_lowercase,
+            self.checkbox_treat_as_all_lowercase,
             self.checkbox_lemmatize_tokens,
             self.checkbox_filter_stop_words,
 
@@ -115,13 +115,13 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         ) = wl_widgets.wl_widgets_token_settings(self)
 
         self.checkbox_words.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_lowercase.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_uppercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_all_lowercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_all_uppercase.stateChanged.connect(self.token_settings_changed)
         self.checkbox_title_case.stateChanged.connect(self.token_settings_changed)
         self.checkbox_nums.stateChanged.connect(self.token_settings_changed)
         self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
 
-        self.checkbox_treat_as_lowercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_treat_as_all_lowercase.stateChanged.connect(self.token_settings_changed)
         self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
         self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
 
@@ -130,15 +130,15 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_lowercase, 0, 1)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_uppercase, 1, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_all_lowercase, 0, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_all_uppercase, 1, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_title_case, 1, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_lowercase, 4, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_all_lowercase, 4, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
 
@@ -440,13 +440,13 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         # Token Settings
         self.checkbox_words.setChecked(settings['token_settings']['words'])
-        self.checkbox_lowercase.setChecked(settings['token_settings']['lowercase'])
-        self.checkbox_uppercase.setChecked(settings['token_settings']['uppercase'])
+        self.checkbox_all_lowercase.setChecked(settings['token_settings']['all_lowercase'])
+        self.checkbox_all_uppercase.setChecked(settings['token_settings']['all_uppercase'])
         self.checkbox_title_case.setChecked(settings['token_settings']['title_case'])
         self.checkbox_nums.setChecked(settings['token_settings']['nums'])
         self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
-        self.checkbox_treat_as_lowercase.setChecked(settings['token_settings']['treat_as_lowercase'])
+        self.checkbox_treat_as_all_lowercase.setChecked(settings['token_settings']['treat_as_all_lowercase'])
         self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
         self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
@@ -517,13 +517,13 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         settings = self.main.settings_custom['ngram_generator']['token_settings']
 
         settings['words'] = self.checkbox_words.isChecked()
-        settings['lowercase'] = self.checkbox_lowercase.isChecked()
-        settings['uppercase'] = self.checkbox_uppercase.isChecked()
+        settings['all_lowercase'] = self.checkbox_all_lowercase.isChecked()
+        settings['all_uppercase'] = self.checkbox_all_uppercase.isChecked()
         settings['title_case'] = self.checkbox_title_case.isChecked()
         settings['nums'] = self.checkbox_nums.isChecked()
         settings['puncs'] = self.checkbox_puncs.isChecked()
 
-        settings['treat_as_lowercase'] = self.checkbox_treat_as_lowercase.isChecked()
+        settings['treat_as_all_lowercase'] = self.checkbox_treat_as_all_lowercase.isChecked()
         settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()
         settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
 
