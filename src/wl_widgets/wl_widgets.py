@@ -432,12 +432,12 @@ def wl_widgets_no_limit(parent, double = False):
 def wl_widgets_token_settings(parent):
     def words_changed():
         if checkbox_words.isChecked():
-            checkbox_lowercase.setEnabled(True)
-            checkbox_uppercase.setEnabled(True)
+            checkbox_all_lowercase.setEnabled(True)
+            checkbox_all_uppercase.setEnabled(True)
             checkbox_title_case.setEnabled(True)
         else:
-            checkbox_lowercase.setEnabled(False)
-            checkbox_uppercase.setEnabled(False)
+            checkbox_all_lowercase.setEnabled(False)
+            checkbox_all_uppercase.setEnabled(False)
             checkbox_title_case.setEnabled(False)
 
     def ignore_tags_changed():
@@ -455,13 +455,13 @@ def wl_widgets_token_settings(parent):
             checkbox_ignore_tags.setEnabled(True)
 
     checkbox_words = QCheckBox(_tr('wl_widgets_token_settings', 'Words'), parent)
-    checkbox_lowercase = QCheckBox(_tr('wl_widgets_token_settings', 'Lowercase'), parent)
-    checkbox_uppercase = QCheckBox(_tr('wl_widgets_token_settings', 'Uppercase'), parent)
+    checkbox_all_lowercase = QCheckBox(_tr('wl_widgets_token_settings', 'All Lowercase'), parent)
+    checkbox_all_uppercase = QCheckBox(_tr('wl_widgets_token_settings', 'All Uppercase'), parent)
     checkbox_title_case = QCheckBox(_tr('wl_widgets_token_settings', 'Title Case'), parent)
     checkbox_nums = QCheckBox(_tr('wl_widgets_token_settings', 'Numerals'), parent)
     checkbox_puncs = QCheckBox(_tr('wl_widgets_token_settings', 'Punctuations'), parent)
 
-    checkbox_treat_as_lowercase = QCheckBox(_tr('wl_widgets_token_settings', 'Treat as all lowercase'), parent)
+    checkbox_treat_as_all_lowercase = QCheckBox(_tr('wl_widgets_token_settings', 'Treat as all lowercase'), parent)
     checkbox_lemmatize_tokens = QCheckBox(_tr('wl_widgets_token_settings', 'Lemmatize all tokens'), parent)
     checkbox_filter_stop_words = QCheckBox(_tr('wl_widgets_token_settings', 'Filter stop words'), parent)
 
@@ -478,13 +478,13 @@ def wl_widgets_token_settings(parent):
 
     return (
         checkbox_words,
-        checkbox_lowercase,
-        checkbox_uppercase,
+        checkbox_all_lowercase,
+        checkbox_all_uppercase,
         checkbox_title_case,
         checkbox_nums,
         checkbox_puncs,
 
-        checkbox_treat_as_lowercase,
+        checkbox_treat_as_all_lowercase,
         checkbox_lemmatize_tokens,
         checkbox_filter_stop_words,
 
