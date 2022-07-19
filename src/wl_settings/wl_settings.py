@@ -122,7 +122,6 @@ class Wl_Settings(QDialog):
         from wl_settings import (
             wl_settings_general,
             wl_settings_files,
-            wl_settings_data,
             wl_settings_sentence_tokenization,
             wl_settings_word_tokenization,
             wl_settings_syl_tokenization,
@@ -130,6 +129,7 @@ class Wl_Settings(QDialog):
             wl_settings_lemmatization,
             wl_settings_stop_word_lists,
             wl_settings_measures,
+            wl_settings_tables,
             wl_settings_figs
         )
 
@@ -153,22 +153,24 @@ class Wl_Settings(QDialog):
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Files')))
         self.tree_settings.model().item(1).appendRow(QStandardItem(self.tr('Tags')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('Data')))
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Sentence Tokenization')))
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Word Tokenization')))
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Syllable Tokenization')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('POS Tagging')))
-        self.tree_settings.model().item(6).appendRow(QStandardItem(self.tr('Tagsets')))
+        self.tree_settings.model().item(5).appendRow(QStandardItem(self.tr('Tagsets')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Lemmatization')))
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Stop Word Lists')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Measures')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Dispersion')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Statistical Significance')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Effect Size')))
+        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Dispersion')))
+        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
+        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Statistical Significance')))
+        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Effect Size')))
+
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Tables')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Profiler')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Figures')))
 
@@ -196,7 +198,6 @@ class Wl_Settings(QDialog):
         self.settings_files = wl_settings_files.Wl_Settings_Files(self.main)
         self.settings_tags = wl_settings_files.Wl_Settings_Tags(self.main)
 
-        self.settings_data = wl_settings_data.Wl_Settings_Data(self.main)
         self.settings_sentence_tokenization = wl_settings_sentence_tokenization.Wl_Settings_Sentence_Tokenization(self.main)
         self.settings_word_tokenization = wl_settings_word_tokenization.Wl_Settings_Word_Tokenization(self.main)
         self.settings_syl_tokenization = wl_settings_syl_tokenization.Wl_Settings_Syl_Tokenization(self.main)
@@ -214,6 +215,10 @@ class Wl_Settings(QDialog):
         self.settings_statistical_significance = wl_settings_measures.Wl_Settings_Statistical_Significance(self.main)
         self.settings_effect_size = wl_settings_measures.Wl_Settings_Effect_Size(self.main)
 
+        # Tables
+        self.settings_tables = wl_settings_tables.Wl_Settings_Tables(self.main)
+        self.settings_tables_profiler = wl_settings_tables.Wl_Settings_Tables_Profiler(self.main)
+
         self.settings_figs = wl_settings_figs.Wl_Settings_Figs(self.main)
 
         self.settings_all = [
@@ -222,7 +227,6 @@ class Wl_Settings(QDialog):
             self.settings_exp,
             self.settings_files,
             self.settings_tags,
-            self.settings_data,
             self.settings_sentence_tokenization,
             self.settings_word_tokenization,
             self.settings_syl_tokenization,
@@ -234,6 +238,8 @@ class Wl_Settings(QDialog):
             self.settings_adjusted_freq,
             self.settings_statistical_significance,
             self.settings_effect_size,
+            self.settings_tables,
+            self.settings_tables_profiler,
             self.settings_figs
         ]
 
@@ -283,45 +289,42 @@ class Wl_Settings(QDialog):
                     self.stacked_widget_settings.setCurrentIndex(1)
                 elif node_selected_text == self.tr('Export'):
                     self.stacked_widget_settings.setCurrentIndex(2)
-
                 # Files
                 elif node_selected_text == self.tr('Files'):
                     self.stacked_widget_settings.setCurrentIndex(3)
                 elif node_selected_text == self.tr('Tags'):
                     self.stacked_widget_settings.setCurrentIndex(4)
-
-                elif node_selected_text == self.tr('Data'):
-                    self.stacked_widget_settings.setCurrentIndex(5)
                 elif node_selected_text == self.tr('Sentence Tokenization'):
-                    self.stacked_widget_settings.setCurrentIndex(6)
+                    self.stacked_widget_settings.setCurrentIndex(5)
                 elif node_selected_text == self.tr('Word Tokenization'):
-                    self.stacked_widget_settings.setCurrentIndex(7)
+                    self.stacked_widget_settings.setCurrentIndex(6)
                 elif node_selected_text == self.tr('Syllable Tokenization'):
-                    self.stacked_widget_settings.setCurrentIndex(8)
-
+                    self.stacked_widget_settings.setCurrentIndex(7)
                 # POS Tagging
                 elif node_selected_text == self.tr('POS Tagging'):
-                    self.stacked_widget_settings.setCurrentIndex(9)
+                    self.stacked_widget_settings.setCurrentIndex(8)
                 elif node_selected_text == self.tr('Tagsets'):
-                    self.stacked_widget_settings.setCurrentIndex(10)
-
+                    self.stacked_widget_settings.setCurrentIndex(9)
                 elif node_selected_text == self.tr('Lemmatization'):
-                    self.stacked_widget_settings.setCurrentIndex(11)
+                    self.stacked_widget_settings.setCurrentIndex(10)
                 elif node_selected_text == self.tr('Stop Word Lists'):
-                    self.stacked_widget_settings.setCurrentIndex(12)
-
+                    self.stacked_widget_settings.setCurrentIndex(11)
                 # Measures
                 elif node_selected_text == self.tr('Dispersion'):
-                    self.stacked_widget_settings.setCurrentIndex(13)
+                    self.stacked_widget_settings.setCurrentIndex(12)
                 elif node_selected_text == self.tr('Adjusted Frequency'):
-                    self.stacked_widget_settings.setCurrentIndex(14)
+                    self.stacked_widget_settings.setCurrentIndex(13)
                 elif node_selected_text == self.tr('Statistical Significance'):
-                    self.stacked_widget_settings.setCurrentIndex(15)
+                    self.stacked_widget_settings.setCurrentIndex(14)
                 elif node_selected_text == self.tr('Effect Size'):
+                    self.stacked_widget_settings.setCurrentIndex(15)
+                # Tables
+                elif node_selected_text == self.tr('Tables'):
                     self.stacked_widget_settings.setCurrentIndex(16)
-
-                elif node_selected_text == self.tr('Figures'):
+                elif node_selected_text == self.tr('Profiler'):
                     self.stacked_widget_settings.setCurrentIndex(17)
+                elif node_selected_text == self.tr('Figures'):
+                    self.stacked_widget_settings.setCurrentIndex(18)
 
                 if node_selected.hasChildren():
                     self.tree_settings.setExpanded(i_selected, True)

@@ -1464,7 +1464,7 @@ class Wl_Table_Data(Wl_Table):
         # Floats
         elif header in self.headers_float:
             val = float(val)
-            precision = self.main.settings_custom['data']['precision_decimal']
+            precision = self.main.settings_custom['tables']['precision_settings']['precision_decimals']
 
             item = Wl_Table_Item(f'{val:.{precision}f}')
         # Percentages
@@ -1478,7 +1478,7 @@ class Wl_Table_Data(Wl_Table):
             elif total == -1:
                 val = float(val)
 
-            precision = self.main.settings_custom['data']['precision_pct']
+            precision = self.main.settings_custom['tables']['precision_settings']['precision_pcts']
 
             item = Wl_Table_Item(f'{val:.{precision}%}')
 
@@ -1503,16 +1503,27 @@ class Wl_Table_Data(Wl_Table):
         # Floats
         elif header in self.headers_float:
             val = float(val)
-            precision = self.main.settings_custom['data']['precision_decimal']
+            precision = self.main.settings_custom['tables']['precision_settings']['precision_decimals']
 
             item.setText(f'{val:.{precision}f}')
         # Percentages
         elif header in self.headers_pct:
-            precision = self.main.settings_custom['data']['precision_pct']
+            precision = self.main.settings_custom['tables']['precision_settings']['precision_pcts']
 
             item.setText(f'{val:.{precision}%}')
 
         item.val = val
+
+    def set_item_p_val(self, row, col, val):
+        precision = self.main.settings_custom['tables']['precision_settings']['precision_p_vals']
+        item = Wl_Table_Item(f'{val:.{precision}f}')
+
+        item.val = val
+
+        item.setFont(QFont('Consolas'))
+        item.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+        self.model().setItem(row, col, item)
 
     def set_item_error(self, row, col, text):
         item = Wl_Table_Item_Error(text)
@@ -1544,7 +1555,7 @@ class Wl_Table_Data(Wl_Table):
                 if not self.isRowHidden(row):
                     data_cur = self.model().item(row, sort_section).read_data()
 
-                    if self.main.settings_custom['data']['continue_numbering_after_ties']:
+                    if self.main.settings_custom['tables']['rank_settings']['continue_numbering_after_ties']:
                         if data_cur == data_prev:
                             self.model().item(row, col_rank).val = rank_prev
                             self.model().item(row, col_rank).setText(str(rank_prev))
@@ -1592,8 +1603,8 @@ class Wl_Table_Data(Wl_Table):
         self.enable_updates()
 
     def toggle_cumulative(self):
-        precision_decimal = self.main.settings_custom['data']['precision_decimal']
-        precision_pct = self.main.settings_custom['data']['precision_pct']
+        precision_decimals = self.main.settings_custom['tables']['precision_settings']['precision_decimals']
+        precision_pcts = self.main.settings_custom['tables']['precision_settings']['precision_pcts']
 
         # Boost performance
         if self.sorting_enabled:
@@ -1622,7 +1633,7 @@ class Wl_Table_Data(Wl_Table):
                                 item = self.model().item(row, col)
 
                                 val_cumulative += item.val
-                                item.setText(f'{val_cumulative:.{precision_decimal}}')
+                                item.setText(f'{val_cumulative:.{precision_decimals}}')
                     # Percentages
                     elif col in self.headers_pct:
                         for row in range(self.model().rowCount()):
@@ -1630,7 +1641,7 @@ class Wl_Table_Data(Wl_Table):
                                 item = self.model().item(row, col)
 
                                 val_cumulative += item.val
-                                item.setText(f'{val_cumulative:.{precision_pct}%}')
+                                item.setText(f'{val_cumulative:.{precision_pcts}%}')
             else:
                 for col in self.headers_cumulative:
                     # Integers
@@ -1646,14 +1657,14 @@ class Wl_Table_Data(Wl_Table):
                             if not self.isRowHidden(row):
                                 item = self.model().item(row, col)
 
-                                item.setText(f'{item.val:.{precision_decimal}}')
+                                item.setText(f'{item.val:.{precision_decimals}}')
                     # Percentages
                     elif col in self.headers_pct:
                         for row in range(self.model().rowCount()):
                             if not self.isRowHidden(row):
                                 item = self.model().item(row, col)
 
-                                item.setText(f'{item.val:.{precision_pct}%}')
+                                item.setText(f'{item.val:.{precision_pcts}%}')
         else:
             if self.show_cumulative:
                 for row in self.headers_cumulative:
@@ -1670,10 +1681,10 @@ class Wl_Table_Data(Wl_Table):
                                 item.setText(str(val_cumulative))
                             # Floats
                             elif row in self.headers_float:
-                                item.setText(f'{val_cumulative:.{precision_decimal}}')
+                                item.setText(f'{val_cumulative:.{precision_decimals}}')
                             # Percentages
                             elif row in self.headers_pct:
-                                item.setText(f'{val_cumulative:.{precision_pct}%}')
+                                item.setText(f'{val_cumulative:.{precision_pcts}%}')
             else:
                 for row in self.headers_cumulative:
                     for col in range(self.model().columnCount() - 1):
@@ -1685,10 +1696,10 @@ class Wl_Table_Data(Wl_Table):
                                 item.setText(str(item.val))
                             # Floats
                             elif row in self.headers_float:
-                                item.setText(f'{item.val:.{precision_decimal}}')
+                                item.setText(f'{item.val:.{precision_decimals}}')
                             # Percentages
                             elif row in self.headers_pct:
-                                item.setText(f'{item.val:.{precision_pct}%}')
+                                item.setText(f'{item.val:.{precision_pcts}%}')
 
         self.enable_updates()
 

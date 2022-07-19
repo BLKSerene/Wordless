@@ -609,7 +609,7 @@ def generate_table(main, table):
 
                     (
                         text_test_stat,
-                        text_p_value,
+                        text_p_val,
                         text_bayes_factor
                     ) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
                     text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
@@ -649,7 +649,7 @@ def generate_table(main, table):
 
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            f'[{file_observed["name"]}]\n{text_p_value}',
+                            f'[{file_observed["name"]}]\n{text_p_val}',
                             is_float = True, is_breakdown = True
                         )
 
@@ -687,7 +687,7 @@ def generate_table(main, table):
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        _tr('wl_keyword_extractor', 'Total\n') + text_p_value,
+                        _tr('wl_keyword_extractor', 'Total\n') + text_p_val,
                         is_float = True
                     )
 
@@ -706,7 +706,7 @@ def generate_table(main, table):
 
                     # Sort by p-value of the first observed file
                     table.horizontalHeader().setSortIndicator(
-                        table.find_header_hor(f'[{files_observed[0]["name"]}]\n{text_p_value}'),
+                        table.find_header_hor(f'[{files_observed[0]["name"]}]\n{text_p_val}'),
                         Qt.AscendingOrder
                     )
 
@@ -719,7 +719,7 @@ def generate_table(main, table):
                     if text_test_stat:
                         cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
 
-                    cols_p_value = table.find_headers_hor(_tr('wl_keyword_extractor', '\np-value'))
+                    cols_p_val = table.find_headers_hor(_tr('wl_keyword_extractor', '\np-value'))
 
                     if text_bayes_factor:
                         cols_bayes_factor = table.find_headers_hor(_tr('wl_keyword_extractor', '\nBayes Factor'))
@@ -749,13 +749,13 @@ def generate_table(main, table):
                             table.set_item_num(i, cols_freq[j], freq)
                             table.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
-                        for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
+                        for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
                             # Test Statistic
                             if text_test_stat:
                                 table.set_item_num(i, cols_test_stat[j], test_stat)
 
                             # p-value
-                            table.set_item_num(i, cols_p_value[j], p_value)
+                            table.set_item_p_val(i, cols_p_val[j], p_val)
 
                             # Bayes Factor
                             if text_bayes_factor:
@@ -819,7 +819,7 @@ def generate_fig(main):
 
                     (
                         text_test_stat,
-                        text_p_value,
+                        text_p_val,
                         text_bayes_factor
                     ) = main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
                     text_effect_size = main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
@@ -839,13 +839,13 @@ def generate_fig(main):
                             }
 
                             label_y = text_test_stat
-                        elif settings['fig_settings']['use_data'] == text_p_value:
+                        elif settings['fig_settings']['use_data'] == text_p_val:
                             keywords_stat_files = {
                                 keyword: numpy.array(stats_files)[:, 1]
                                 for keyword, stats_files in keywords_stats_files.items()
                             }
 
-                            label_y = text_p_value
+                            label_y = text_p_val
                         elif settings['fig_settings']['use_data'] == text_bayes_factor:
                             keywords_stat_files = {
                                 keyword: numpy.array(stats_files)[:, 2]
