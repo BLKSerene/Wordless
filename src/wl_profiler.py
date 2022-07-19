@@ -341,19 +341,21 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
-        (self.checkbox_words,
-         self.checkbox_lowercase,
-         self.checkbox_uppercase,
-         self.checkbox_title_case,
-         self.checkbox_nums,
-         self.checkbox_puncs,
+        (
+            self.checkbox_words,
+            self.checkbox_lowercase,
+            self.checkbox_uppercase,
+            self.checkbox_title_case,
+            self.checkbox_nums,
+            self.checkbox_puncs,
 
-         self.checkbox_treat_as_lowercase,
-         self.checkbox_lemmatize_tokens,
-         self.checkbox_filter_stop_words,
+            self.checkbox_treat_as_lowercase,
+            self.checkbox_lemmatize_tokens,
+            self.checkbox_filter_stop_words,
 
-         self.checkbox_ignore_tags,
-         self.checkbox_use_tags) = wl_widgets.wl_widgets_token_settings(self)
+            self.checkbox_ignore_tags,
+            self.checkbox_use_tags
+        ) = wl_widgets.wl_widgets_token_settings(self)
 
         self.checkbox_words.stateChanged.connect(self.token_settings_changed)
         self.checkbox_lowercase.stateChanged.connect(self.token_settings_changed)
@@ -388,20 +390,6 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
 
-        # Generation Settings
-        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
-
-        self.label_base_sttr = QLabel(self.tr('Base of standardized type-token ratio:'), self)
-        self.spin_box_base_sttr = wl_boxes.Wl_Spin_Box(self)
-
-        self.spin_box_base_sttr.setRange(100, 10000)
-
-        self.spin_box_base_sttr.valueChanged.connect(self.generation_settings_changed)
-
-        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_base_sttr, 0, 0)
-        self.group_box_generation_settings.layout().addWidget(self.spin_box_base_sttr, 1, 0)
-
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
 
@@ -424,10 +412,9 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 1, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 2, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 1, 0)
 
-        self.wrapper_settings.layout().setRowStretch(3, 1)
+        self.wrapper_settings.layout().setRowStretch(2, 1)
 
         self.load_settings()
 
@@ -452,16 +439,12 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
-        # Generation Settings
-        self.spin_box_base_sttr.setValue(settings['generation_settings']['base_sttr'])
-
         # Table Settings
         self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
         self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
         self.checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
 
         self.token_settings_changed()
-        self.generation_settings_changed()
         self.table_settings_changed()
 
     def token_settings_changed(self):
@@ -480,16 +463,6 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
-
-        if settings['use_tags']:
-            self.label_base_sttr.setText(self.tr('Base of standardized type-tag ratio:'))
-        else:
-            self.label_base_sttr.setText(self.tr('Base of standardized type-token ratio:'))
-
-    def generation_settings_changed(self):
-        settings = self.main.settings_custom['profiler']['generation_settings']
-
-        settings['base_sttr'] = self.spin_box_base_sttr.value()
 
     def table_settings_changed(self):
         settings = self.main.settings_custom['profiler']['table_settings']
@@ -561,7 +534,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
                 texts.append(text_total)
 
-            base_sttr = settings['generation_settings']['base_sttr']
+            num_tokens_section_sttr = self.main.settings_custom['tables']['profiler']['general_settings']['num_tokens_section_sttr']
 
             for text in texts:
                 texts_stats_file = []
@@ -615,13 +588,13 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     ttr = 0
 
                 # STTR
-                if count_tokens < base_sttr:
+                if count_tokens < num_tokens_section_sttr:
                     sttr = ttr
                 else:
-                    token_sections = list(wl_nlp_utils.to_sections_unequal(text.tokens_flat, base_sttr))
+                    token_sections = list(wl_nlp_utils.to_sections_unequal(text.tokens_flat, num_tokens_section_sttr))
 
                     # Discard the last section if number of tokens in it is smaller than the base of sttr
-                    if len(token_sections[-1]) < base_sttr:
+                    if len(token_sections[-1]) < num_tokens_section_sttr:
                         ttrs = [
                             len(set(token_section)) / len(token_section)
                             for token_section in token_sections[:-1]

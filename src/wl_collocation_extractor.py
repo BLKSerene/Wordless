@@ -615,11 +615,11 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
                 self.combo_box_use_data.addItem(self.tr('R') + str(i))
 
         self.combo_box_use_data.addItem(self.tr('Frequency'))
-        self.combo_box_use_data.addItems(
-            [col
-             for col in self.main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
-             if col]
-        )
+        self.combo_box_use_data.addItems([
+            col
+            for col in self.main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
+            if col
+        ])
         self.combo_box_use_data.addItem(self.main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col'])
 
         if self.combo_box_use_data.findText(use_data_old) > -1:
@@ -1015,7 +1015,7 @@ def generate_table(main, table):
 
                     (
                         text_test_stat,
-                        text_p_value,
+                        text_p_val,
                         text_bayes_factor
                     ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
                     text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
@@ -1075,7 +1075,7 @@ def generate_table(main, table):
 
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_p_value}',
+                            f'[{file["name"]}]\n{text_p_val}',
                             is_float = True, is_breakdown = True
                         )
 
@@ -1093,8 +1093,10 @@ def generate_table(main, table):
                         )
 
                     # Insert columns (total)
-                    for i in range(settings['generation_settings']['window_left'],
-                                   settings['generation_settings']['window_right'] + 1):
+                    for i in range(
+                        settings['generation_settings']['window_left'],
+                        settings['generation_settings']['window_right'] + 1
+                    ):
                         if i < 0:
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
@@ -1142,7 +1144,7 @@ def generate_table(main, table):
 
                     table.ins_header_hor(
                         table.model().columnCount() - 2,
-                        _tr('wl_collocation_extractor', 'Total\n') + text_p_value,
+                        _tr('wl_collocation_extractor', 'Total\n') + text_p_val,
                         is_float = True
                     )
 
@@ -1161,7 +1163,7 @@ def generate_table(main, table):
 
                     # Sort by p-value of the first file
                     table.horizontalHeader().setSortIndicator(
-                        table.find_header_hor(f'[{files[0]["name"]}]\n{text_p_value}'),
+                        table.find_header_hor(f'[{files[0]["name"]}]\n{text_p_val}'),
                         Qt.AscendingOrder
                     )
 
@@ -1193,7 +1195,7 @@ def generate_table(main, table):
                     if text_test_stat:
                         cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
 
-                    cols_p_value = table.find_headers_hor(_tr('wl_collocation_extractor', '\np-value'))
+                    cols_p_val = table.find_headers_hor(_tr('wl_collocation_extractor', '\np-value'))
 
                     if text_bayes_factor:
                         cols_bayes_factor = table.find_headers_hor(_tr('wl_collocation_extractor', '\nBayes Factor'))
@@ -1230,13 +1232,13 @@ def generate_table(main, table):
                             table.set_item_num(i, cols_freq[j], sum(freqs_file))
                             table.set_item_num(i, cols_freq_pct[j], sum(freqs_file), freq_totals[j])
 
-                        for j, (test_stat, p_value, bayes_factor, effect_size) in enumerate(stats_files):
+                        for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
                             # Test Statistic
                             if text_test_stat:
                                 table.set_item_num(i, cols_test_stat[j], test_stat)
 
                             # p-value
-                            table.set_item_num(i, cols_p_value[j], p_value)
+                            table.set_item_p_val(i, cols_p_val[j], p_val)
 
                             # Bayes Factor
                             if text_bayes_factor:
@@ -1295,9 +1297,11 @@ def generate_fig(main):
                     text_test_significance = settings['generation_settings']['test_significance']
                     text_measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                    (text_test_stat,
-                     text_p_value,
-                     text_bayes_factor) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
+                    (
+                        text_test_stat,
+                        text_p_val,
+                        text_bayes_factor
+                    ) = main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
                     text_effect_size = main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
 
                     if re.search(_tr('wl_collocation_extractor', r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
@@ -1369,13 +1373,13 @@ def generate_fig(main):
                             }
 
                             label_y = text_test_stat
-                        elif settings['fig_settings']['use_data'] == text_p_value:
+                        elif settings['fig_settings']['use_data'] == text_p_val:
                             collocates_stat_files = {
                                 collocate: numpy.array(stats_files)[:, 1]
                                 for collocate, stats_files in collocations_stats_files.items()
                             }
 
-                            label_y = text_p_value
+                            label_y = text_p_val
                         elif settings['fig_settings']['use_data'] == text_bayes_factor:
                             collocates_stat_files = {
                                 collocate: numpy.array(stats_files)[:, 2]

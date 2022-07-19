@@ -22,6 +22,7 @@
 ### 🎉 New Features
 - File Area: Add Observed Files and Reference Files
 - File Area: Add support for .pdf files
+- Settings: Add Settings - Tables - Profiler
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
 
 ### ✨ Improvements
@@ -33,6 +34,7 @@
 ### ❌ Removals
 - Utils: Remove ssg's Thai syllable tokenizer
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
+- Work Area: Remove Profiler - Generation Settings
 
 ### ⏫ Dependency Changes
 - Dependencies: Add PyPDF2
