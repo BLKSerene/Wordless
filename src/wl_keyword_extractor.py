@@ -29,7 +29,7 @@ from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
-from wl_widgets import wl_layouts, wl_lists, wl_tables, wl_widgets
+from wl_widgets import wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
 

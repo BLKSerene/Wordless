@@ -259,7 +259,7 @@ class Wl_Text_Ref:
                 # Replace all tags with a whitespace to ensure no words run together
                 text_no_tags = re.sub(re_tags, ' ', text)
 
-                self.tokens_multilevel[0][0].extend(text.split())
+                self.tokens_multilevel[0][0].extend(text_no_tags.split())
         elif file_ext == '.xml' and self.tagged:
             tags_word = []
 

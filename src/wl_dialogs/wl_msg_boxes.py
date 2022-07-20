@@ -16,11 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-
-from wl_checking import wl_checking_misc
+from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QMessageBox
 
 _tr = QCoreApplication.translate
 
