@@ -85,7 +85,7 @@ If you need to post sample texts or other information that cannot be shared or y
 Channel      |Contact Information
 :-----------:|-------------------
 Documentation|https://github.com/BLKSerene/Wordless#documentation
-Email        |blkserene@gmail.com
+Email        |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
 [WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/src/imgs/wechat_official_account.jpg)
 
 ## Citing
