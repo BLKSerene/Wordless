@@ -30,6 +30,7 @@
 
 ### 📌 Bugfixes
 - Work Area: Fix Profiler - Table Settings - Show Cumulutive after clicking horizontal headers
+- Work Area: Fix Profiler - Token Settings - Use tags only
 
 ### ❌ Removals
 - Utils: Remove ssg's Thai syllable tokenizer

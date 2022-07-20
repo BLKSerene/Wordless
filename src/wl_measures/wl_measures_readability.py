@@ -95,7 +95,10 @@ def get_count_difficult_words(words, num_easy_words):
 def automated_readability_index(main, text):
     get_counts(main, text)
 
-    ari = 0.5 * (text.count_words / text.count_sentences) + 4.71 * (text.count_chars_all / text.count_words) - 21.43
+    if text.count_sentences and text.count_words:
+        ari = 0.5 * (text.count_words / text.count_sentences) + 4.71 * (text.count_chars_all / text.count_words) - 21.43
+    else:
+        ari = TEXT_TOO_SHORT
 
     return ari
 
@@ -104,8 +107,11 @@ def automated_readability_index(main, text):
 def coleman_liau_index(main, text):
     get_counts(main, text)
 
-    est_cloze_pct = 141.8401 - 0.21459 * (text.count_chars_alphabetic / text.count_words * 100) + 1.079812 * (text.count_sentences / text.count_words * 100)
-    grade_level = -27.4004 * (est_cloze_pct / 100) + 23.06395
+    if text.count_words:
+        est_cloze_pct = 141.8401 - 0.21459 * (text.count_chars_alphabetic / text.count_words * 100) + 1.079812 * (text.count_sentences / text.count_words * 100)
+        grade_level = -27.4004 * (est_cloze_pct / 100) + 23.06395
+    else:
+        grade_level = TEXT_TOO_SHORT
 
     return grade_level
 
@@ -117,8 +123,11 @@ def dale_chall_readability_score(main, text):
     if text.lang.startswith('eng'):
         get_counts(main, text)
 
-        count_difficult_words = get_count_difficult_words(text.words_flat, 3000)
-        x_c50 = 0.1579 * (count_difficult_words / text.count_words) + 0.0496 * (text.count_words / text.count_sentences) + 3.6365
+        if text.count_words and text.count_sentences:
+            count_difficult_words = get_count_difficult_words(text.words_flat, 3000)
+            x_c50 = 0.1579 * (count_difficult_words / text.count_words) + 0.0496 * (text.count_words / text.count_sentences) + 3.6365
+        else:
+            x_c50 = TEXT_TOO_SHORT
     # No language support
     else:
         x_c50 = NO_SUPPORT
@@ -130,7 +139,10 @@ def dale_chall_readability_score(main, text):
 def devereux_readability_index(main, text):
     get_counts(main, text)
 
-    grade_placement = 1.56 * (text.count_chars_all / text.count_words) + 0.19 * (text.count_words / text.count_sentences) - 6.49
+    if text.count_words and text.count_sentences:
+        grade_placement = 1.56 * (text.count_chars_all / text.count_words) + 0.19 * (text.count_words / text.count_sentences) - 6.49
+    else:
+        grade_placement = TEXT_TOO_SHORT
 
     return grade_placement
 
@@ -140,7 +152,10 @@ def flesch_reading_ease(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         get_counts(main, text)
 
-        flesch_re = 206.835 - 0.846 * (text.count_syls / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences)
+        if text.count_words and text.count_sentences:
+            flesch_re = 206.835 - 0.846 * (text.count_syls / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences)
+        else:
+            flesch_re = TEXT_TOO_SHORT
     # No language support
     else:
         flesch_re = NO_SUPPORT
@@ -153,9 +168,12 @@ def flesch_reading_ease_simplified(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         get_counts(main, text)
 
-        count_words_1_syl = len([syls for syls in text.syls_words if len(syls) == 1])
+        if text.count_words and text.count_sentences:
+            count_words_1_syl = len([syls for syls in text.syls_words if len(syls) == 1])
 
-        flesch_re_simplified = 1.599 * (count_words_1_syl / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences) - 31.517
+            flesch_re_simplified = 1.599 * (count_words_1_syl / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences) - 31.517
+        else:
+            flesch_re_simplified = TEXT_TOO_SHORT
     # No language support
     else:
         flesch_re_simplified = NO_SUPPORT
@@ -168,7 +186,10 @@ def flesch_kincaid_grade_level(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         get_counts(main, text)
 
-        gl = 0.39 * (text.count_words / text.count_sentences) + 11.8 * (text.count_syls / text.count_words) - 15.59
+        if text.count_sentences and text.count_words:
+            gl = 0.39 * (text.count_words / text.count_sentences) + 11.8 * (text.count_syls / text.count_words) - 15.59
+        else:
+            gl = TEXT_TOO_SHORT
     # No language support
     else:
         gl = NO_SUPPORT
@@ -202,15 +223,18 @@ def gunning_fog_index(main, text):
     if text.lang.startswith('eng'):
         get_counts(main, text)
 
-        count_hard_words = 0
+        if text.count_sentences and text.count_words:
+            count_hard_words = 0
 
-        words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
+            words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
 
-        for syls, (_, tag) in zip(text.syls_words, words_tagged):
-            if tag != 'PROPN' and ((len(syls) == 3 and syls[-1] not in ['ed', 'es']) or len(syls) > 3):
-                count_hard_words += 1
+            for syls, (_, tag) in zip(text.syls_words, words_tagged):
+                if tag != 'PROPN' and ((len(syls) == 3 and syls[-1] not in ['ed', 'es']) or len(syls) > 3):
+                    count_hard_words += 1
 
-        fog_index = 0.4 * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
+            fog_index = 0.4 * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
+        else:
+            fog_index = TEXT_TOO_SHORT
     # No language support
     else:
         fog_index = NO_SUPPORT
