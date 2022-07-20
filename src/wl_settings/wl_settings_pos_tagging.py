@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Settings - POS Tagging
+# Wordless: Settings - Part-of-speech Tagging
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -35,8 +35,8 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
     def run(self):
         preview_results = []
 
-        preview_lang = self.main.settings_custom['pos_tagging']['preview_lang']
-        preview_samples = self.main.settings_custom['pos_tagging']['preview_samples']
+        preview_lang = self.main.settings_custom['pos_tagging']['preview']['preview_lang']
+        preview_samples = self.main.settings_custom['pos_tagging']['preview']['preview_samples']
 
         for line in preview_samples.split('\n'):
             line = line.strip()
@@ -59,16 +59,16 @@ class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(list)
 
     def run(self):
-        settings_custom = self.main.settings_custom['tagsets']
+        settings_custom = self.main.settings_custom['pos_tagging']['tagsets']
 
-        preview_lang = settings_custom['preview_lang']
-        preview_pos_tagger = settings_custom['preview_pos_tagger'][preview_lang]
-        mappings = settings_custom['mappings'][preview_lang][preview_pos_tagger]
+        preview_lang = settings_custom['preview_settings']['preview_lang']
+        preview_pos_tagger = settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
+        mappings = settings_custom['mapping_settings'][preview_lang][preview_pos_tagger]
 
         self.progress_updated.emit(self.tr('Updating table...'))
         self.worker_done.emit(mappings)
 
-# POS Tagging
+# Part-of-speech Tagging
 class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -78,18 +78,18 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['pos_tagging']
 
         # POS Tagger Settings
-        group_box_pos_tagger_settings = QGroupBox(self.tr('POS Tagger Settings'), self)
+        group_box_pos_tagger_settings = QGroupBox(self.tr('Part-of-speech Tagger Settings'), self)
 
         self.table_pos_taggers = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Language'),
-                self.tr('POS Taggers')
+                self.tr('Part-of-speech Taggers')
             ],
             editable = True
         )
 
-        self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all POS tags to universal POS tags'))
+        self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all part-of-speech tags to universal part-of-speech tags'))
 
         self.table_pos_taggers.verticalHeader().setHidden(True)
         self.table_pos_taggers.model().setRowCount(len(self.settings_global))
@@ -157,14 +157,14 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.layout().setRowStretch(1, 2)
 
     def preview_changed(self):
-        self.settings_custom['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_pos_tagging_preview_lang.currentText())
-        self.settings_custom['preview_samples'] = self.text_edit_pos_tagging_preview_samples.toPlainText()
-        self.settings_custom['preview_results'] = self.text_edit_pos_tagging_preview_results.toPlainText()
+        self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_pos_tagging_preview_lang.currentText())
+        self.settings_custom['preview']['preview_samples'] = self.text_edit_pos_tagging_preview_samples.toPlainText()
+        self.settings_custom['preview']['preview_results'] = self.text_edit_pos_tagging_preview_results.toPlainText()
 
     def preview_results_changed(self):
-        if self.settings_custom['preview_samples']:
+        if self.settings_custom['preview']['preview_samples']:
             if self.combo_box_pos_tagging_preview_lang.isEnabled():
-                row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+                row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
                 self.table_pos_taggers.itemDelegateForRow(row).set_enabled(False)
                 self.combo_box_pos_tagging_preview_lang.setEnabled(False)
@@ -183,7 +183,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                 if self.checkbox_to_universal_pos_tags.isChecked():
                     tagset = 'universal'
                 else:
-                    tagset = 'default'
+                    tagset = 'raw'
 
                 worker_preview_pos_tagger = Wl_Worker_Preview_Pos_Tagger(
                     self.main,
@@ -201,7 +201,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.button_pos_tagging_show_preview.setText(self.tr('Show preview'))
         self.text_edit_pos_tagging_preview_results.setPlainText('\n'.join(preview_results))
 
-        row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+        row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
         self.table_pos_taggers.itemDelegateForRow(row).set_enabled(True)
         self.combo_box_pos_tagging_preview_lang.setEnabled(True)
@@ -217,18 +217,18 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         self.table_pos_taggers.disable_updates()
 
-        for i, lang in enumerate(settings['pos_taggers']):
+        for i, lang in enumerate(settings['pos_tagger_settings']['pos_taggers']):
             self.table_pos_taggers.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'pos_taggers',
-                util_code = settings['pos_taggers'][lang]
+                util_code = settings['pos_tagger_settings']['pos_taggers'][lang]
             ))
 
         self.table_pos_taggers.enable_updates()
 
         self.checkbox_to_universal_pos_tags.blockSignals(True)
 
-        self.checkbox_to_universal_pos_tags.setChecked(settings['to_universal_pos_tags'])
+        self.checkbox_to_universal_pos_tags.setChecked(settings['pos_tagger_settings']['to_universal_pos_tags'])
 
         self.checkbox_to_universal_pos_tags.blockSignals(False)
 
@@ -236,33 +236,33 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             self.combo_box_pos_tagging_preview_lang.blockSignals(True)
             self.text_edit_pos_tagging_preview_samples.blockSignals(True)
 
-            self.combo_box_pos_tagging_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_lang']))
-            self.text_edit_pos_tagging_preview_samples.setText(settings['preview_samples'])
-            self.text_edit_pos_tagging_preview_results.setText(settings['preview_results'])
+            self.combo_box_pos_tagging_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
+            self.text_edit_pos_tagging_preview_samples.setText(settings['preview']['preview_samples'])
+            self.text_edit_pos_tagging_preview_results.setText(settings['preview']['preview_results'])
 
             self.combo_box_pos_tagging_preview_lang.blockSignals(False)
             self.text_edit_pos_tagging_preview_samples.blockSignals(False)
 
     def apply_settings(self):
-        for i, lang in enumerate(self.settings_custom['pos_taggers']):
-            self.settings_custom['pos_taggers'][lang] = wl_nlp_utils.to_lang_util_code(
+        for i, lang in enumerate(self.settings_custom['pos_tagger_settings']['pos_taggers']):
+            self.settings_custom['pos_tagger_settings']['pos_taggers'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'pos_taggers',
                 util_text = self.table_pos_taggers.model().item(i, 1).text()
             )
 
-        self.settings_custom['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
+        self.settings_custom['pos_tagger_settings']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
         return True
 
-# POS Tagging - Tagsets
+# Part-of-speech Tagging - Tagsets
 class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
         self.settings_global = self.main.settings_global['pos_taggers']
-        self.settings_default = self.main.settings_default['tagsets']
-        self.settings_custom = self.main.settings_custom['tagsets']
+        self.settings_default = self.main.settings_default['pos_tagging']['tagsets']
+        self.settings_custom = self.main.settings_custom['pos_tagging']['tagsets']
 
         self.pos_tag_mappings_loaded = False
 
@@ -273,7 +273,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.label_tagsets_lang = QLabel(self.tr('Language:'), self)
         self.combo_box_tagsets_lang = wl_boxes.Wl_Combo_Box(self)
-        self.label_tagsets_pos_tagger = QLabel(self.tr('POS Tagger:'), self)
+        self.label_tagsets_pos_tagger = QLabel(self.tr('Part-of-speech Tagger:'), self)
         self.combo_box_tagsets_pos_tagger = wl_boxes.Wl_Combo_Box_Adjustable(self)
 
         self.combo_box_tagsets_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
@@ -294,14 +294,14 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.stacked_widget_num_pos_tags = wl_layouts.Wl_Stacked_Widget(self)
         self.label_tagsets_num_pos_tags = QLabel('', self)
-        self.label_tagsets_uneditable = wl_labels.Wl_Label_Hint(self.tr('* This POS tagger does not support custom mappings.'), self)
+        self.label_tagsets_uneditable = wl_labels.Wl_Label_Hint(self.tr('* This part-of-speech tagger does not support custom mappings.'), self)
         self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)
         self.button_tagsets_reset_all = QPushButton(self.tr('Reset All'), self)
         self.table_mappings = wl_tables.Wl_Table(
             self,
             headers = [
-                self.tr('POS Tag'),
-                self.tr('Universal POS Tag'),
+                self.tr('Part-of-speech Tag'),
+                self.tr('Universal Part-of-speech Tag'),
                 self.tr('Description'),
                 self.tr('Examples')
             ],
@@ -360,12 +360,12 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.layout().setRowStretch(1, 1)
 
     def preview_lang_changed(self):
-        self.settings_custom['preview_lang'] = wl_conversion.to_lang_code(
+        self.settings_custom['preview_settings']['preview_lang'] = wl_conversion.to_lang_code(
             self.main,
             self.combo_box_tagsets_lang.currentText()
         )
 
-        preview_lang = self.settings_custom['preview_lang']
+        preview_lang = self.settings_custom['preview_settings']['preview_lang']
 
         self.combo_box_tagsets_pos_tagger.blockSignals(True)
 
@@ -379,7 +379,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.combo_box_tagsets_pos_tagger.setCurrentText(wl_nlp_utils.to_lang_util_text(
             self.main,
             util_type = 'pos_taggers',
-            util_code = self.settings_custom['preview_pos_tagger'][preview_lang])
+            util_code = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang])
         )
 
         self.combo_box_tagsets_pos_tagger.blockSignals(False)
@@ -387,13 +387,13 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.combo_box_tagsets_pos_tagger.currentTextChanged.emit('')
 
     def preview_pos_tagger_changed(self):
-        self.settings_custom['preview_pos_tagger'][self.settings_custom['preview_lang']] = wl_nlp_utils.to_lang_util_code(
+        self.settings_custom['preview_settings']['preview_pos_tagger'][self.settings_custom['preview_settings']['preview_lang']] = wl_nlp_utils.to_lang_util_code(
             self.main,
             util_type = 'pos_taggers',
             util_text = self.combo_box_tagsets_pos_tagger.currentText()
         )
 
-        if 'spacy' not in self.settings_custom['preview_pos_tagger'][self.settings_custom['preview_lang']]:
+        if 'spacy' not in self.settings_custom['preview_settings']['preview_pos_tagger'][self.settings_custom['preview_settings']['preview_lang']]:
             self.combo_box_tagsets_lang.setEnabled(False)
             self.combo_box_tagsets_pos_tagger.setEnabled(False)
             self.button_tagsets_reset.setEnabled(False)
@@ -444,7 +444,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         else:
             self.table_mappings.setEnabled(True)
 
-        self.label_tagsets_num_pos_tags.setText(self.tr('Number of POS Tags: ') + str(self.table_mappings.model().rowCount()))
+        self.label_tagsets_num_pos_tags.setText(self.tr('Number of Part-of-speech Tags: ') + str(self.table_mappings.model().rowCount()))
         self.stacked_widget_num_pos_tags.setCurrentIndex(0)
 
         self.combo_box_tagsets_lang.setEnabled(True)
@@ -453,9 +453,9 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.button_tagsets_reset_all.setEnabled(True)
 
     def reset_currently_shown_table(self):
-        preview_lang = self.settings_custom['preview_lang']
-        preview_pos_tagger = self.settings_custom['preview_pos_tagger'][preview_lang]
-        mappings = copy.deepcopy(self.settings_default['mappings'][preview_lang][preview_pos_tagger])
+        preview_lang = self.settings_custom['preview_settings']['preview_lang']
+        preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
+        mappings = copy.deepcopy(self.settings_default['mapping_settings'][preview_lang][preview_pos_tagger])
 
         self.table_mappings.disable_updates()
 
@@ -464,7 +464,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.table_mappings.enable_updates()
 
-        self.settings_custom['mappings'][preview_lang][preview_pos_tagger] = mappings
+        self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger] = mappings
 
     def reset_mappings(self):
         if wl_msg_boxes.wl_msg_box_question(
@@ -486,7 +486,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
                 <div><b>Warning: This will affect the mapping settings in all tables!</b></div>
             ''')
         ):
-            self.settings_custom['mappings'] = copy.deepcopy(self.settings_default['mappings'])
+            self.settings_custom['mapping_settings'] = copy.deepcopy(self.settings_default['mapping_settings'])
 
             self.reset_currently_shown_table()
 
@@ -500,11 +500,11 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
             self.combo_box_tagsets_lang.blockSignals(True)
             self.combo_box_tagsets_pos_tagger.blockSignals(True)
 
-            self.combo_box_tagsets_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_lang']))
+            self.combo_box_tagsets_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_settings']['preview_lang']))
             self.combo_box_tagsets_pos_tagger.setCurrentText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'pos_taggers',
-                util_code = settings['preview_pos_tagger'][settings['preview_lang']]
+                util_code = settings['preview_settings']['preview_pos_tagger'][settings['preview_settings']['preview_lang']]
             ))
 
             self.combo_box_tagsets_lang.blockSignals(False)
@@ -514,10 +514,10 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         if self.pos_tag_mappings_loaded:
             # Save only when tag mappings are editable
             if self.table_mappings.isEnabled():
-                preview_lang = self.settings_custom['preview_lang']
-                preview_pos_tagger = self.settings_custom['preview_pos_tagger'][preview_lang]
+                preview_lang = self.settings_custom['preview_settings']['preview_lang']
+                preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
 
                 for i in range(self.table_mappings.model().rowCount()):
-                    self.settings_custom['mappings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
+                    self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
 
         return True

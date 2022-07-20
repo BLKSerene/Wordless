@@ -112,8 +112,8 @@ def test_settings_global():
     settings_syl_tokenizers_default = settings_default['syl_tokenization']['syl_tokenizers']
 
     settings_pos_taggers = settings_global['pos_taggers']
-    settings_pos_taggers_default = settings_default['pos_tagging']['pos_taggers']
-    settings_tagsets_default = settings_default['tagsets']['preview_pos_tagger']
+    settings_pos_taggers_default = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']
+    settings_tagsets_default = settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger']
 
     settings_lemmatizers = settings_global['lemmatizers']
     settings_lemmatizers_default = settings_default['lemmatization']['lemmatizers']
