@@ -487,14 +487,14 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 ]:
                     # Test Statistic, p-value & Bayes Factor
                     if text_test_significance == _tr('Wl_Worker_Keyword_Extractor', "Student's t-test (2-sample)"):
-                        number_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['number_sections']
+                        num_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_sections']
                         use_data = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
                     elif text_test_significance == _tr('Wl_Worker_Keyword_Extractor', 'Mann-Whitney U Test'):
-                        number_sections = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['number_sections']
+                        num_sections = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_sections']
                         use_data = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
 
-                    sections_observed = wl_nlp_utils.to_sections(tokens_observed, number_sections)
-                    sections_ref = wl_nlp_utils.to_sections(tokens_ref, number_sections)
+                    sections_observed = wl_nlp_utils.to_sections(tokens_observed, num_sections)
+                    sections_ref = wl_nlp_utils.to_sections(tokens_ref, num_sections)
 
                     sections_freq_observed = [collections.Counter(section) for section in sections_observed]
                     sections_freq_ref = [collections.Counter(section) for section in sections_ref]

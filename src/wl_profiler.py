@@ -746,7 +746,7 @@ def generate_table(main, table):
                         table.set_item_num(25, i, sttr)
 
                         # Paragraph Length
-                        if len_paras_sentences:
+                        if len_paras_sentences.any():
                             table.set_item_num(26, i, numpy.mean(len_paras_sentences))
                             table.set_item_num(27, i, numpy.std(len_paras_sentences))
                             table.set_item_num(28, i, numpy.var(len_paras_sentences))
@@ -801,7 +801,7 @@ def generate_table(main, table):
                         table.model().item(47, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                         # Sentence Length
-                        if len_sentences:
+                        if len_sentences.any():
                             table.set_item_num(48, i, numpy.mean(len_sentences))
                             table.set_item_num(49, i, numpy.std(len_sentences))
                             table.set_item_num(50, i, numpy.var(len_sentences))
@@ -832,7 +832,7 @@ def generate_table(main, table):
 
                         # Token Length
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            if len_tokens_syls:
+                            if len_tokens_syls.any():
                                 table.set_item_num(59, i, numpy.mean(len_tokens_syls))
                                 table.set_item_num(60, i, numpy.std(len_tokens_syls))
                                 table.set_item_num(61, i, numpy.var(len_tokens_syls))
@@ -873,7 +873,7 @@ def generate_table(main, table):
                             table.set_item_error(68, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(69, i, text = _tr('wl_profiler', 'No Support'))
 
-                        if len_tokens_chars:
+                        if len_tokens_chars.any():
                             table.set_item_num(70, i, numpy.mean(len_tokens_chars))
                             table.set_item_num(71, i, numpy.std(len_tokens_chars))
                             table.set_item_num(72, i, numpy.var(len_tokens_chars))
@@ -904,7 +904,7 @@ def generate_table(main, table):
 
                         # Type Length
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            if len_types_syls:
+                            if len_types_syls.any():
                                 table.set_item_num(81, i, numpy.mean(len_types_syls))
                                 table.set_item_num(82, i, numpy.std(len_types_syls))
                                 table.set_item_num(83, i, numpy.var(len_types_syls))
@@ -945,7 +945,7 @@ def generate_table(main, table):
                             table.set_item_error(90, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(91, i, text = _tr('wl_profiler', 'No Support'))
 
-                        if len_types_chars:
+                        if len_types_chars.any():
                             table.set_item_num(92, i, numpy.mean(len_types_chars))
                             table.set_item_num(93, i, numpy.std(len_types_chars))
                             table.set_item_num(94, i, numpy.var(len_types_chars))
@@ -976,7 +976,7 @@ def generate_table(main, table):
 
                         # Syllable Length
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            if len_syls:
+                            if len_syls.any():
                                 table.set_item_num(103, i, numpy.mean(len_syls))
                                 table.set_item_num(104, i, numpy.std(len_syls))
                                 table.set_item_num(105, i, numpy.var(len_syls))
