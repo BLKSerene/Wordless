@@ -843,13 +843,15 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                         ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens_flat, ngram_size, allow_skipped_tokens))
 
                 # Dispersion
-                number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
+                num_sections = self.main.settings_custom['measures']['dispersion']['general_settings']['num_sections']
 
                 sections_freq_lens = {}
 
                 for ngram_size, ngram_list in ngrams_lens.items():
-                    sections_freq_lens[ngram_size] = [collections.Counter(section)
-                                                      for section in wl_nlp_utils.to_sections(ngram_list, number_sections)]
+                    sections_freq_lens[ngram_size] = [
+                        collections.Counter(section)
+                        for section in wl_nlp_utils.to_sections(ngram_list, num_sections)
+                    ]
 
                 for ngram in ngrams_total:
                     counts = [section_freq[ngram] for section_freq in sections_freq_lens[len(ngram)]]
@@ -857,14 +859,16 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                     ngrams_stats_file[ngram] = [measure_dispersion(counts)]
 
                 # Adjusted Frequency
-                if not self.main.settings_custom['measures']['adjusted_freq']['general']['use_same_settings_dispersion']:
-                    number_sections = self.main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
+                if not self.main.settings_custom['measures']['adjusted_freq']['general_settings']['use_same_settings_dispersion']:
+                    num_sections = self.main.settings_custom['measures']['adjusted_freq']['general_settings']['num_sections']
 
                     sections_freq_lens = {}
 
                     for ngram_size, ngrams in ngrams_lens.items():
-                        sections_freq_lens[ngram_size] = [collections.Counter(section)
-                                                          for section in wl_nlp_utils.to_sections(ngrams, number_sections)]
+                        sections_freq_lens[ngram_size] = [
+                            collections.Counter(section)
+                            for section in wl_nlp_utils.to_sections(ngrams, num_sections)
+                        ]
 
                 for ngram in ngrams_total:
                     counts = [section_freq[ngram] for

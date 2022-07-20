@@ -440,11 +440,11 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 tokens_stats_file = {}
 
                 # Dispersion
-                number_sections = self.main.settings_custom['measures']['dispersion']['general']['number_sections']
+                num_sections = self.main.settings_custom['measures']['dispersion']['general_settings']['num_sections']
 
                 sections_freq = [
                     collections.Counter(section)
-                    for section in wl_nlp_utils.to_sections(text.tokens_flat, number_sections)
+                    for section in wl_nlp_utils.to_sections(text.tokens_flat, num_sections)
                 ]
 
                 for token in tokens_total:
@@ -453,12 +453,12 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                     tokens_stats_file[token] = [measure_dispersion(counts)]
 
                 # Adjusted Frequency
-                if not self.main.settings_custom['measures']['adjusted_freq']['general']['use_same_settings_dispersion']:
-                    number_sections = self.main.settings_custom['measures']['adjusted_freq']['general']['number_sections']
+                if not self.main.settings_custom['measures']['adjusted_freq']['general_settings']['use_same_settings_dispersion']:
+                    num_sections = self.main.settings_custom['measures']['adjusted_freq']['general_settings']['num_sections']
 
                     sections_freq = [
                         collections.Counter(section)
-                        for section in wl_nlp_utils.to_sections(text.tokens_flat, number_sections)
+                        for section in wl_nlp_utils.to_sections(text.tokens_flat, num_sections)
                     ]
 
                 for token in tokens_total:

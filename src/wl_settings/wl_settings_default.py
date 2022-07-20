@@ -1758,26 +1758,29 @@ def init_settings_default(main):
 
         # Settings - Measures
         'measures': {
+            # Settings - Measures - Dispersion
             'dispersion': {
-                'general': {
-                    'number_sections': 5
+                'general_settings': {
+                    'num_sections': 5
                 }
             },
 
+            # Settings - Measures - Adjusted Frequency
             'adjusted_freq': {
-                'general': {
-                    'number_sections': 5,
+                'general_settings': {
+                    'num_sections': 5,
                     'use_same_settings_dispersion': True
                 }
             },
 
+            # Settings - Measures - Statistical Significance
             'statistical_significance': {
                 'z_score': {
-                    'direction': 'Two-tailed'
+                    'direction': _tr('init_settings_default', 'Two-tailed')
                 },
 
                 'students_t_test_2_sample': {
-                    'number_sections': 5,
+                    'num_sections': 5,
                     'use_data': _tr('init_settings_default', 'Relative Frequency'),
                     'variances': _tr('init_settings_default', 'Equal'),
                 },
@@ -1791,13 +1794,14 @@ def init_settings_default(main):
                 },
 
                 'mann_whitney_u_test': {
-                    'number_sections': 5,
+                    'num_sections': 5,
                     'use_data': _tr('init_settings_default', 'Relative Frequency'),
                     'direction': _tr('init_settings_default', 'Two-tailed'),
                     'apply_correction': True
                 }
             },
 
+            # Settings - Measures - Effect Size
             'effect_size': {
                 'kilgarriffs_ratio': {
                     'smoothing_param': 1.00

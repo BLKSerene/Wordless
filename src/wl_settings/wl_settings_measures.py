@@ -36,13 +36,15 @@ class Wl_Settings_Dispersion(wl_settings.Wl_Settings_Node):
         # General
         group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
 
-        (self.label_dispersion_divide,
-         self.spin_box_dispersion_number_sections,
-         self.label_dispersion_sections) = wl_widgets.wl_widgets_number_sections(self)
+        (
+            self.label_dispersion_divide,
+            self.spin_box_dispersion_num_sections,
+            self.label_dispersion_sections
+        ) = wl_widgets.wl_widgets_num_sections(self)
 
         group_box_general_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_general_settings.layout().addWidget(self.label_dispersion_divide, 0, 0)
-        group_box_general_settings.layout().addWidget(self.spin_box_dispersion_number_sections, 0, 1)
+        group_box_general_settings.layout().addWidget(self.spin_box_dispersion_num_sections, 0, 1)
         group_box_general_settings.layout().addWidget(self.label_dispersion_sections, 0, 2)
 
         group_box_general_settings.layout().setColumnStretch(3, 1)
@@ -59,10 +61,10 @@ class Wl_Settings_Dispersion(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        self.spin_box_dispersion_number_sections.setValue(settings['general']['number_sections'])
+        self.spin_box_dispersion_num_sections.setValue(settings['general_settings']['num_sections'])
 
     def apply_settings(self):
-        self.settings_custom['general']['number_sections'] = self.spin_box_dispersion_number_sections.value()
+        self.settings_custom['general_settings']['num_sections'] = self.spin_box_dispersion_num_sections.value()
 
         return True
 
@@ -77,16 +79,18 @@ class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
         # General
         group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
 
-        (self.label_adjusted_freq_divide,
-         self.spin_box_adjusted_freq_number_sections,
-         self.label_adjusted_freq_sections) = wl_widgets.wl_widgets_number_sections(self)
+        (
+            self.label_adjusted_freq_divide,
+            self.spin_box_adjusted_freq_num_sections,
+            self.label_adjusted_freq_sections
+        ) = wl_widgets.wl_widgets_num_sections(self)
         self.checkbox_use_same_settings_dispersion = QCheckBox(self.tr('Use same settings in "Settings → Measures → Dispersion"'), self)
 
         self.checkbox_use_same_settings_dispersion.stateChanged.connect(self.use_same_settings_changed)
 
         group_box_general_settings.setLayout(wl_layouts.Wl_Layout())
         group_box_general_settings.layout().addWidget(self.label_adjusted_freq_divide, 0, 0)
-        group_box_general_settings.layout().addWidget(self.spin_box_adjusted_freq_number_sections, 0, 1)
+        group_box_general_settings.layout().addWidget(self.spin_box_adjusted_freq_num_sections, 0, 1)
         group_box_general_settings.layout().addWidget(self.label_adjusted_freq_sections, 0, 2)
         group_box_general_settings.layout().addWidget(self.checkbox_use_same_settings_dispersion, 1, 0, 1, 4)
 
@@ -102,9 +106,9 @@ class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
 
     def use_same_settings_changed(self):
         if self.checkbox_use_same_settings_dispersion.isChecked():
-            self.spin_box_adjusted_freq_number_sections.setEnabled(False)
+            self.spin_box_adjusted_freq_num_sections.setEnabled(False)
         else:
-            self.spin_box_adjusted_freq_number_sections.setEnabled(True)
+            self.spin_box_adjusted_freq_num_sections.setEnabled(True)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -112,12 +116,12 @@ class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        self.spin_box_adjusted_freq_number_sections.setValue(settings['general']['number_sections'])
-        self.checkbox_use_same_settings_dispersion.setChecked(settings['general']['use_same_settings_dispersion'])
+        self.spin_box_adjusted_freq_num_sections.setValue(settings['general_settings']['num_sections'])
+        self.checkbox_use_same_settings_dispersion.setChecked(settings['general_settings']['use_same_settings_dispersion'])
 
     def apply_settings(self):
-        self.settings_custom['general']['number_sections'] = self.spin_box_adjusted_freq_number_sections.value()
-        self.settings_custom['general']['use_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
+        self.settings_custom['general_settings']['num_sections'] = self.spin_box_adjusted_freq_num_sections.value()
+        self.settings_custom['general_settings']['use_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
 
         return True
 
@@ -132,8 +136,10 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         # z-score
         group_box_z_score = QGroupBox(self.tr('z-score'), self)
 
-        (self.label_z_score_direction,
-         self.combo_box_z_score_direction) = wl_widgets.wl_widgets_direction_2(self)
+        (
+            self.label_z_score_direction,
+            self.combo_box_z_score_direction
+        ) = wl_widgets.wl_widgets_direction_2(self)
 
         group_box_z_score.setLayout(wl_layouts.Wl_Layout())
         group_box_z_score.layout().addWidget(self.label_z_score_direction, 0, 0)
@@ -144,12 +150,16 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         # Student's t-test (2-sample)
         group_box_students_t_test_2_sample = QGroupBox(self.tr("Student's t-test (2-sample)"), self)
 
-        (self.label_students_t_test_2_sample_divide,
-         self.spin_box_students_t_test_2_sample_number_sections,
-         self.label_students_t_test_2_sample_sections) = wl_widgets.wl_widgets_number_sections(self)
+        (
+            self.label_students_t_test_2_sample_divide,
+            self.spin_box_students_t_test_2_sample_num_sections,
+            self.label_students_t_test_2_sample_sections
+        ) = wl_widgets.wl_widgets_num_sections(self)
 
-        (self.label_students_t_test_2_sample_use_data,
-         self.combo_box_students_t_test_2_sample_use_data) = wl_widgets.wl_widgets_use_data_freq(self)
+        (
+            self.label_students_t_test_2_sample_use_data,
+            self.combo_box_students_t_test_2_sample_use_data
+        ) = wl_widgets.wl_widgets_use_data_freq(self)
         self.label_students_t_test_2_sample_variances = QLabel(self.tr('Variances:'), self)
         self.combo_box_students_t_test_2_sample_variances = QComboBox(self)
         self.label_welchs_t_test = wl_labels.Wl_Label_Hint(
@@ -162,15 +172,15 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
             self.tr('Unequal')
         ])
 
-        layout_students_t_test_2_sample_number_sections = wl_layouts.Wl_Layout()
-        layout_students_t_test_2_sample_number_sections.addWidget(self.label_students_t_test_2_sample_divide, 0, 0)
-        layout_students_t_test_2_sample_number_sections.addWidget(self.spin_box_students_t_test_2_sample_number_sections, 0, 1)
-        layout_students_t_test_2_sample_number_sections.addWidget(self.label_students_t_test_2_sample_sections, 0, 2)
+        layout_students_t_test_2_sample_num_sections = wl_layouts.Wl_Layout()
+        layout_students_t_test_2_sample_num_sections.addWidget(self.label_students_t_test_2_sample_divide, 0, 0)
+        layout_students_t_test_2_sample_num_sections.addWidget(self.spin_box_students_t_test_2_sample_num_sections, 0, 1)
+        layout_students_t_test_2_sample_num_sections.addWidget(self.label_students_t_test_2_sample_sections, 0, 2)
 
-        layout_students_t_test_2_sample_number_sections.setColumnStretch(3, 1)
+        layout_students_t_test_2_sample_num_sections.setColumnStretch(3, 1)
 
         group_box_students_t_test_2_sample.setLayout(wl_layouts.Wl_Layout())
-        group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_number_sections, 0, 0, 1, 3)
+        group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_num_sections, 0, 0, 1, 3)
         group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_use_data, 1, 0)
         group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_use_data, 1, 1)
         group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_variances, 2, 0)
@@ -190,8 +200,10 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         # Fisher's Exact Test
         group_box_fishers_exact_test = QGroupBox(self.tr("Fisher's Exact Test"), self)
 
-        (self.label_fishers_exact_test_direction,
-         self.combo_box_fishers_exact_test_direction) = wl_widgets.wl_widgets_direction(self)
+        (
+            self.label_fishers_exact_test_direction,
+            self.combo_box_fishers_exact_test_direction
+        ) = wl_widgets.wl_widgets_direction(self)
 
         group_box_fishers_exact_test.setLayout(wl_layouts.Wl_Layout())
         group_box_fishers_exact_test.layout().addWidget(self.label_fishers_exact_test_direction, 0, 0)
@@ -202,25 +214,31 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         # Mann-Whitney U Test
         group_box_mann_whitney_u_test = QGroupBox(self.tr('Mann-Whitney U Test'), self)
 
-        (self.label_mann_whitney_u_test_divide,
-         self.spin_box_mann_whitney_u_test_number_sections,
-         self.label_mann_whitney_u_test_sections) = wl_widgets.wl_widgets_number_sections(self)
+        (
+            self.label_mann_whitney_u_test_divide,
+            self.spin_box_mann_whitney_u_test_num_sections,
+            self.label_mann_whitney_u_test_sections
+        ) = wl_widgets.wl_widgets_num_sections(self)
 
-        (self.label_mann_whitney_u_test_use_data,
-         self.combo_box_mann_whitney_u_test_use_data) = wl_widgets.wl_widgets_use_data_freq(self)
-        (self.label_mann_whitney_u_test_direction,
-         self.combo_box_mann_whitney_u_test_direction) = wl_widgets.wl_widgets_direction(self)
+        (
+            self.label_mann_whitney_u_test_use_data,
+            self.combo_box_mann_whitney_u_test_use_data
+        ) = wl_widgets.wl_widgets_use_data_freq(self)
+        (
+            self.label_mann_whitney_u_test_direction,
+            self.combo_box_mann_whitney_u_test_direction
+        ) = wl_widgets.wl_widgets_direction(self)
         self.checkbox_mann_whitney_u_test_apply_correction = QCheckBox(self.tr('Apply continuity correction'), self)
 
-        layout_mann_whitney_u_test_number_sections = wl_layouts.Wl_Layout()
-        layout_mann_whitney_u_test_number_sections.addWidget(self.label_mann_whitney_u_test_divide, 0, 0)
-        layout_mann_whitney_u_test_number_sections.addWidget(self.spin_box_mann_whitney_u_test_number_sections, 0, 1)
-        layout_mann_whitney_u_test_number_sections.addWidget(self.label_mann_whitney_u_test_sections, 0, 2)
+        layout_mann_whitney_u_test_num_sections = wl_layouts.Wl_Layout()
+        layout_mann_whitney_u_test_num_sections.addWidget(self.label_mann_whitney_u_test_divide, 0, 0)
+        layout_mann_whitney_u_test_num_sections.addWidget(self.spin_box_mann_whitney_u_test_num_sections, 0, 1)
+        layout_mann_whitney_u_test_num_sections.addWidget(self.label_mann_whitney_u_test_sections, 0, 2)
 
-        layout_mann_whitney_u_test_number_sections.setColumnStretch(3, 1)
+        layout_mann_whitney_u_test_num_sections.setColumnStretch(3, 1)
 
         group_box_mann_whitney_u_test.setLayout(wl_layouts.Wl_Layout())
-        group_box_mann_whitney_u_test.layout().addLayout(layout_mann_whitney_u_test_number_sections, 0, 0, 1, 3)
+        group_box_mann_whitney_u_test.layout().addLayout(layout_mann_whitney_u_test_num_sections, 0, 0, 1, 3)
         group_box_mann_whitney_u_test.layout().addWidget(self.label_mann_whitney_u_test_use_data, 1, 0)
         group_box_mann_whitney_u_test.layout().addWidget(self.combo_box_mann_whitney_u_test_use_data, 1, 1)
         group_box_mann_whitney_u_test.layout().addWidget(self.label_mann_whitney_u_test_direction, 2, 0)
@@ -247,7 +265,7 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         self.combo_box_z_score_direction.setCurrentText(settings['z_score']['direction'])
 
-        self.spin_box_students_t_test_2_sample_number_sections.setValue(settings['students_t_test_2_sample']['number_sections'])
+        self.spin_box_students_t_test_2_sample_num_sections.setValue(settings['students_t_test_2_sample']['num_sections'])
         self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['students_t_test_2_sample']['use_data'])
         self.combo_box_students_t_test_2_sample_variances.setCurrentText(settings['students_t_test_2_sample']['variances'])
 
@@ -255,7 +273,7 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         self.combo_box_fishers_exact_test_direction.setCurrentText(settings['fishers_exact_test']['direction'])
 
-        self.spin_box_mann_whitney_u_test_number_sections.setValue(settings['mann_whitney_u_test']['number_sections'])
+        self.spin_box_mann_whitney_u_test_num_sections.setValue(settings['mann_whitney_u_test']['num_sections'])
         self.combo_box_mann_whitney_u_test_use_data.setCurrentText(settings['mann_whitney_u_test']['use_data'])
         self.combo_box_mann_whitney_u_test_direction.setCurrentText(settings['mann_whitney_u_test']['direction'])
         self.checkbox_mann_whitney_u_test_apply_correction.setChecked(settings['mann_whitney_u_test']['apply_correction'])
@@ -263,7 +281,7 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
     def apply_settings(self):
         self.settings_custom['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
 
-        self.settings_custom['students_t_test_2_sample']['number_sections'] = self.spin_box_students_t_test_2_sample_number_sections.value()
+        self.settings_custom['students_t_test_2_sample']['num_sections'] = self.spin_box_students_t_test_2_sample_num_sections.value()
         self.settings_custom['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
         self.settings_custom['students_t_test_2_sample']['variances'] = self.combo_box_students_t_test_2_sample_variances.currentText()
 
@@ -271,7 +289,7 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         self.settings_custom['fishers_exact_test']['direction'] = self.combo_box_fishers_exact_test_direction.currentText()
 
-        self.settings_custom['mann_whitney_u_test']['number_sections'] = self.spin_box_mann_whitney_u_test_number_sections.value()
+        self.settings_custom['mann_whitney_u_test']['num_sections'] = self.spin_box_mann_whitney_u_test_num_sections.value()
         self.settings_custom['mann_whitney_u_test']['use_data'] = self.combo_box_mann_whitney_u_test_use_data.currentText()
         self.settings_custom['mann_whitney_u_test']['direction'] = self.combo_box_mann_whitney_u_test_direction.currentText()
         self.settings_custom['mann_whitney_u_test']['apply_correction'] = self.checkbox_mann_whitney_u_test_apply_correction.isChecked()
