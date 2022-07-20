@@ -157,7 +157,7 @@ class Wl_Settings(QDialog):
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Word Tokenization')))
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Syllable Tokenization')))
 
-        self.tree_settings.model().appendRow(QStandardItem(self.tr('POS Tagging')))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Part-of-speech Tagging')))
         self.tree_settings.model().item(5).appendRow(QStandardItem(self.tr('Tagsets')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Lemmatization')))
@@ -301,7 +301,7 @@ class Wl_Settings(QDialog):
                 elif node_selected_text == self.tr('Syllable Tokenization'):
                     self.stacked_widget_settings.setCurrentIndex(7)
                 # POS Tagging
-                elif node_selected_text == self.tr('POS Tagging'):
+                elif node_selected_text == self.tr('Part-of-speech Tagging'):
                     self.stacked_widget_settings.setCurrentIndex(8)
                 elif node_selected_text == self.tr('Tagsets'):
                     self.stacked_widget_settings.setCurrentIndex(9)

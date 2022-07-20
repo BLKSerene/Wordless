@@ -29,9 +29,9 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     tokens_tagged = []
 
     if pos_tagger == 'default':
-        pos_tagger = main.settings_custom['pos_tagging']['pos_taggers'][lang]
+        pos_tagger = main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang]
 
-    if tagset == 'default' and main.settings_custom['pos_tagging']['to_universal_pos_tags']:
+    if tagset == 'default' and main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags']:
         tagset = 'universal'
 
     wl_nlp_utils.init_word_tokenizers(
@@ -81,7 +81,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     if not pos_tagger.startswith('spacy_') and tagset == 'universal':
         mappings = {
             tag: tag_universal
-            for tag, tag_universal, _, _ in main.settings_custom['tagsets']['mappings'][lang][pos_tagger]
+            for tag, tag_universal, _, _ in main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]
         }
         tokens_tagged = list(tokens_tagged)
 
@@ -116,7 +116,7 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
         nlp = main.__dict__[f'spacy_nlp_{lang}']
         doc = nlp(text)
 
-        if tagset == 'default':
+        if tagset in ['default', 'raw']:
             tokens_tagged = [(token.text, token.tag_) for token in doc]
         elif tagset == 'universal':
             tokens_tagged = [(token.text, token.pos_) for token in doc]
@@ -207,7 +207,7 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
         else:
             doc = nlp(''.join(tokens))
 
-        if tagset == 'default':
+        if tagset in ['default', 'raw']:
             tokens_tagged = [(token.text, token.tag_) for token in doc]
         elif tagset == 'universal':
             tokens_tagged = [(token.text, token.pos_) for token in doc]

@@ -532,7 +532,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 
 In *Colligation Extractor*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
-*Wordless* will automatically apply its built-in POS tagger on every file that are not POS-tagged already according to the language of each file. If POS-tagging is not supported for the given languages, the user should provide a file that has already been POS-tagged and make sure that the correct **Text Type** has been set on each file.
+*Wordless* will automatically apply its built-in part-of-speech tagger on every file that are not part-of-speech-tagged already according to the language of each file. If part-of-speech tagging is not supported for the given languages, the user should provide a file that has already been part-of-speech-tagged and make sure that the correct **Text Type** has been set on each file.
 
 It is possible to disable searching altogether and generate an exhausted list of patterns of colligation by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be to slow.
 
@@ -629,8 +629,8 @@ You can further filter the results as you see fit by clicking **Filter Results**
 <span id="doc-eng-4-1"></span>
 ### 4.1 Supported Languages [[Back to Contents]](#doc-eng)
 
-Language|Sentence Tokenization|Word Tokenization|Syllable Tokenization|POS Tagging|Lemmatization|Stop Words
-:------:|:-------------------:|:---------------:|:-------------------:|:---------:|:-----------:|:--------:
+Language|Sentence Tokenization|Word Tokenization|Syllable Tokenization|Part-of-speech Tagging|Lemmatization|Stop Words
+:------:|:-------------------:|:---------------:|:-------------------:|:--------------------:|:-----------:|:--------:
 Afrikaans               |✔|✔|✔|✖️|✖️|✔
 Akkadian                |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Albanian                |✔|✔|✔|✖️|✖️|✔

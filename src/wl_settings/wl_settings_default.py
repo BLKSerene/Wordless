@@ -1350,118 +1350,123 @@ def init_settings_default(main):
 
         # Settings - POS Tagging
         'pos_tagging': {
-            'pos_taggers': {
-                'cat': 'spacy_cat',
-                'zho_cn': 'spacy_zho',
-                'zho_tw': 'spacy_zho',
-                'dan': 'spacy_dan',
-                'nld': 'spacy_nld',
-                'eng_gb': 'spacy_eng',
-                'eng_us': 'spacy_eng',
-                'fra': 'spacy_fra',
-                'deu_at': 'spacy_deu',
-                'deu_de': 'spacy_deu',
-                'deu_ch': 'spacy_deu',
-                'ell': 'spacy_ell',
-                'ita': 'spacy_ita',
-                'jpn': 'spacy_jpn',
-                'lit': 'spacy_lit',
-                'mkd': 'spacy_mkd',
-                'nob': 'spacy_nob',
-                'pol': 'spacy_pol',
-                'por_br': 'spacy_por',
-                'por_pt': 'spacy_por',
-                'ron': 'spacy_ron',
-                'rus': 'spacy_rus',
-                'spa': 'spacy_spa',
-                'tha': 'pythainlp_perceptron_pud',
-                'bod': 'botok_bod',
-                'ukr': 'pymorphy2_morphological_analyzer',
-                'vie': 'underthesea_vie'
+            'pos_tagger_settings': {
+                'pos_taggers': {
+                    'cat': 'spacy_cat',
+                    'zho_cn': 'spacy_zho',
+                    'zho_tw': 'spacy_zho',
+                    'dan': 'spacy_dan',
+                    'nld': 'spacy_nld',
+                    'eng_gb': 'spacy_eng',
+                    'eng_us': 'spacy_eng',
+                    'fra': 'spacy_fra',
+                    'deu_at': 'spacy_deu',
+                    'deu_de': 'spacy_deu',
+                    'deu_ch': 'spacy_deu',
+                    'ell': 'spacy_ell',
+                    'ita': 'spacy_ita',
+                    'jpn': 'spacy_jpn',
+                    'lit': 'spacy_lit',
+                    'mkd': 'spacy_mkd',
+                    'nob': 'spacy_nob',
+                    'pol': 'spacy_pol',
+                    'por_br': 'spacy_por',
+                    'por_pt': 'spacy_por',
+                    'ron': 'spacy_ron',
+                    'rus': 'spacy_rus',
+                    'spa': 'spacy_spa',
+                    'tha': 'pythainlp_perceptron_pud',
+                    'bod': 'botok_bod',
+                    'ukr': 'pymorphy2_morphological_analyzer',
+                    'vie': 'underthesea_vie'
+                },
+
+                'to_universal_pos_tags': False
             },
 
-            'to_universal_pos_tags': False,
-
-            'preview_lang': 'eng_us',
-            'preview_samples': '',
-            'preview_results': ''
-        },
-
-        # Settings - POS Tagging - Tagsets
-        'tagsets': {
-            'preview_lang': 'eng_us',
-
-            'preview_pos_tagger': {
-                'cat': 'spacy_cat',
-                'zho_cn': 'spacy_zho',
-                'zho_tw': 'spacy_zho',
-                'dan': 'spacy_dan',
-                'nld': 'spacy_nld',
-                'eng_gb': 'spacy_eng',
-                'eng_us': 'spacy_eng',
-                'fra': 'spacy_fra',
-                'deu_at': 'spacy_deu',
-                'deu_de': 'spacy_deu',
-                'deu_ch': 'spacy_deu',
-                'ell': 'spacy_ell',
-                'ita': 'spacy_ita',
-                'jpn': 'spacy_jpn',
-                'lit': 'spacy_lit',
-                'mkd': 'spacy_mkd',
-                'nob': 'spacy_nob',
-                'pol': 'spacy_pol',
-                'por_br': 'spacy_por',
-                'por_pt': 'spacy_por',
-                'ron': 'spacy_ron',
-                'rus': 'spacy_rus',
-                'spa': 'spacy_spa',
-                'tha': 'pythainlp_perceptron_pud',
-                'bod': 'botok_bod',
-                'ukr': 'pymorphy2_morphological_analyzer',
-                'vie': 'underthesea_vie'
+            'preview': {
+                'preview_lang': 'eng_us',
+                'preview_samples': '',
+                'preview_results': ''
             },
 
-            'mappings': {
-                'zho_cn': {
-                    'jieba_zho': wl_tagset_zho_jieba.MAPPINGS
-                },
-                'zho_tw': {
-                    'jieba_zho': wl_tagset_zho_jieba.MAPPINGS
-                },
-
-                'eng_gb': {
-                    'nltk_perceptron': wl_tagset_eng_penn_treebank.MAPPINGS,
-                },
-                'eng_us': {
-                    'nltk_perceptron': wl_tagset_eng_penn_treebank.MAPPINGS,
-                },
-
-                'jpn': {
-                    'nagisa_jpn': wl_tagset_jpn_unidic_simplified.MAPPINGS,
-                    'sudachipy_jpn': wl_tagset_jpn_unidic.MAPPINGS
-                },
-
-                'rus': {
-                    'nltk_perceptron': wl_tagset_rus_russian_national_corpus.MAPPINGS,
-                    'pymorphy2_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
-                },
-
-                'tha': {
-                    'pythainlp_perceptron_lst20': wl_tagset_tha_lst20.MAPPINGS,
-                    'pythainlp_perceptron_orchid': wl_tagset_tha_orchid.MAPPINGS,
-                    'pythainlp_perceptron_pud': wl_tagset_universal.MAPPINGS
-                },
-
-                'bod': {
-                    'botok_bod': wl_tagset_bod_botok.MAPPINGS
-                },
-
-                'ukr': {
-                    'pymorphy2_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
+            # Settings - POS Tagging - Tagsets
+            'tagsets': {
+                'preview_settings': {
+                    'preview_lang': 'eng_us',
+                    'preview_pos_tagger': {
+                        'cat': 'spacy_cat',
+                        'zho_cn': 'spacy_zho',
+                        'zho_tw': 'spacy_zho',
+                        'dan': 'spacy_dan',
+                        'nld': 'spacy_nld',
+                        'eng_gb': 'spacy_eng',
+                        'eng_us': 'spacy_eng',
+                        'fra': 'spacy_fra',
+                        'deu_at': 'spacy_deu',
+                        'deu_de': 'spacy_deu',
+                        'deu_ch': 'spacy_deu',
+                        'ell': 'spacy_ell',
+                        'ita': 'spacy_ita',
+                        'jpn': 'spacy_jpn',
+                        'lit': 'spacy_lit',
+                        'mkd': 'spacy_mkd',
+                        'nob': 'spacy_nob',
+                        'pol': 'spacy_pol',
+                        'por_br': 'spacy_por',
+                        'por_pt': 'spacy_por',
+                        'ron': 'spacy_ron',
+                        'rus': 'spacy_rus',
+                        'spa': 'spacy_spa',
+                        'tha': 'pythainlp_perceptron_pud',
+                        'bod': 'botok_bod',
+                        'ukr': 'pymorphy2_morphological_analyzer',
+                        'vie': 'underthesea_vie'
+                    }
                 },
 
-                'vie': {
-                    'underthesea_vie': wl_tagset_vie_underthesea.MAPPINGS
+                'mapping_settings': {
+                    'zho_cn': {
+                        'jieba_zho': wl_tagset_zho_jieba.MAPPINGS
+                    },
+                    'zho_tw': {
+                        'jieba_zho': wl_tagset_zho_jieba.MAPPINGS
+                    },
+
+                    'eng_gb': {
+                        'nltk_perceptron': wl_tagset_eng_penn_treebank.MAPPINGS,
+                    },
+                    'eng_us': {
+                        'nltk_perceptron': wl_tagset_eng_penn_treebank.MAPPINGS,
+                    },
+
+                    'jpn': {
+                        'nagisa_jpn': wl_tagset_jpn_unidic_simplified.MAPPINGS,
+                        'sudachipy_jpn': wl_tagset_jpn_unidic.MAPPINGS
+                    },
+
+                    'rus': {
+                        'nltk_perceptron': wl_tagset_rus_russian_national_corpus.MAPPINGS,
+                        'pymorphy2_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
+                    },
+
+                    'tha': {
+                        'pythainlp_perceptron_lst20': wl_tagset_tha_lst20.MAPPINGS,
+                        'pythainlp_perceptron_orchid': wl_tagset_tha_orchid.MAPPINGS,
+                        'pythainlp_perceptron_pud': wl_tagset_universal.MAPPINGS
+                    },
+
+                    'bod': {
+                        'botok_bod': wl_tagset_bod_botok.MAPPINGS
+                    },
+
+                    'ukr': {
+                        'pymorphy2_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
+                    },
+
+                    'vie': {
+                        'underthesea_vie': wl_tagset_vie_underthesea.MAPPINGS
+                    }
                 }
             }
         },
