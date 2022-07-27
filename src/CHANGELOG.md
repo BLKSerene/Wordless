@@ -22,6 +22,7 @@
 ### 🎉 New Features
 - File Area: Add Observed Files and Reference Files
 - File Area: Add support for .pdf files
+- Settings: Add Settings - Figures - Word Clouds - Font Path
 - Settings: Add Settings - Tables - Profiler
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
 

@@ -1811,17 +1811,18 @@ def init_settings_default(main):
 
         # Settings - Figures
         'figs': {
-            'line_chart': {
+            'line_charts': {
                 'font': 'Arial'
             },
 
-            'word_cloud': {
-                'font': 'Code2000',
+            'word_clouds': {
+                'font': 'GNU Unifont',
+                'font_path': '',
                 'bg_color': '#FFFFFF'
             },
 
-            'network_graph': {
-                'layout': 'Spring',
+            'network_graphs': {
+                'layout': _tr('init_settings_default', 'Spring'),
                 'node_font': 'Arial',
                 'node_font_size': 10,
                 'edge_font': 'Arial',
