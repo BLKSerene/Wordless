@@ -197,7 +197,6 @@ def init_settings_default(main):
                 'replace_keywords_with': 15,
                 'placeholder': '_',
                 'add_line_nums': True,
-                'discard_position_info': True,
                 'randomize_outputs': True
             },
 
