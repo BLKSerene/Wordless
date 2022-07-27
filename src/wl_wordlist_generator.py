@@ -511,9 +511,6 @@ def generate_table(main, table):
                     text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
                     text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
 
-                    if settings['token_settings']['use_tags']:
-                        table.horizontalHeaderItem(1).setText(_tr('wl_wordlist_generator', 'Tag'))
-
                     table.clr_table()
 
                     # Insert columns (files)
