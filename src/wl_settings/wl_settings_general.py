@@ -365,9 +365,9 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
 
     def validate_settings(self):
         if (
-            self.validate_path(self.line_edit_imp_files_default_path)
-            and self.validate_path(self.line_edit_imp_search_terms_default_path)
-            and self.validate_path(self.line_edit_imp_stop_words_default_path)
+            self.validate_path_dir(self.line_edit_imp_files_default_path)
+            and self.validate_path_dir(self.line_edit_imp_search_terms_default_path)
+            and self.validate_path_dir(self.line_edit_imp_stop_words_default_path)
             and self.confirm_path(self.line_edit_imp_temp_files_default_path)
         ):
             return True
