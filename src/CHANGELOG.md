@@ -46,6 +46,7 @@
 - Dependencies: Upgrade Charset Normalizer to 2.1.0
 - Dependencies: Upgrade PyQt to 5.15.7
 - Dependencies: Upgrade Requests to 2.28.1
+- Dependencies: Upgrade Sacremoses to 0.0.53
 - Dependencies: Upgrade WordCloud to 1.8.2.2
 
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - 03/12/2022
