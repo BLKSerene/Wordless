@@ -190,7 +190,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
     # Remove empty tokens
     stop_words = [stop_word for stop_word in stop_words if stop_word.strip()]
 
-    return sorted(set(stop_words))
+    return set(stop_words)
 
 def wl_filter_stop_words(main, items, lang):
     stop_word_list = wl_get_stop_word_list(main, lang)
