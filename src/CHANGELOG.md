@@ -34,6 +34,7 @@
 
 ### ❌ Removals
 - Utils: Remove ssg's Thai syllable tokenizer
+- Work Area: Remove Concordancer - Zapping Settings - Discard position information
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
 - Work Area: Remove Profiler - Generation Settings
 

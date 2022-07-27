@@ -363,7 +363,6 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.spin_box_replace_keywords_with = wl_boxes.Wl_Spin_Box(self)
         self.line_edit_replace_keywords_with = QLineEdit('_', self)
         self.checkbox_add_line_nums = QCheckBox(self.tr('Add line numbers'), self)
-        self.checkbox_discard_position_info = QCheckBox(self.tr('Discard position information'), self)
         self.checkbox_randomize_outputs = QCheckBox(self.tr('Randomize outputs'), self)
 
         self.group_box_zapping_settings.setCheckable(True)
@@ -373,7 +372,6 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.spin_box_replace_keywords_with.valueChanged.connect(self.zapping_settings_changed)
         self.line_edit_replace_keywords_with.textChanged.connect(self.zapping_settings_changed)
         self.checkbox_add_line_nums.clicked.connect(self.zapping_settings_changed)
-        self.checkbox_discard_position_info.clicked.connect(self.zapping_settings_changed)
         self.checkbox_randomize_outputs.clicked.connect(self.zapping_settings_changed)
 
         self.group_box_zapping_settings.setLayout(wl_layouts.Wl_Layout())
@@ -381,10 +379,9 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.group_box_zapping_settings.layout().addWidget(self.spin_box_replace_keywords_with, 0, 1)
         self.group_box_zapping_settings.layout().addWidget(self.line_edit_replace_keywords_with, 0, 2)
         self.group_box_zapping_settings.layout().addWidget(self.checkbox_add_line_nums, 1, 0, 1, 3)
-        self.group_box_zapping_settings.layout().addWidget(self.checkbox_discard_position_info, 2, 0, 1, 3)
-        self.group_box_zapping_settings.layout().addWidget(self.checkbox_randomize_outputs, 3, 0, 1, 3)
+        self.group_box_zapping_settings.layout().addWidget(self.checkbox_randomize_outputs, 2, 0, 1, 3)
 
-        self.group_box_fig_settings.layout().setColumnStretch(4, 1)
+        self.group_box_fig_settings.layout().setColumnStretch(3, 1)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
@@ -456,7 +453,6 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.spin_box_replace_keywords_with.setValue(settings['zapping_settings']['replace_keywords_with'])
         self.line_edit_replace_keywords_with.setText(settings['zapping_settings']['placeholder'])
         self.checkbox_add_line_nums.setChecked(settings['zapping_settings']['add_line_nums'])
-        self.checkbox_discard_position_info.setChecked(settings['zapping_settings']['discard_position_info'])
         self.checkbox_randomize_outputs.setChecked(settings['zapping_settings']['randomize_outputs'])
 
         self.token_settings_changed()
@@ -572,7 +568,6 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         settings['replace_keywords_with'] = self.spin_box_replace_keywords_with.value()
         settings['placeholder'] = self.line_edit_replace_keywords_with.text()
         settings['add_line_nums'] = self.checkbox_add_line_nums.isChecked()
-        settings['discard_position_info'] = self.checkbox_discard_position_info.isChecked()
         settings['randomize_outputs'] = self.checkbox_randomize_outputs.isChecked()
 
 class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
@@ -602,8 +597,10 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                     search_settings = settings['search_settings']
                 )
 
-                (search_terms_inclusion,
-                 search_terms_exclusion) = wl_matching.match_search_terms_context(
+                (
+                    search_terms_inclusion,
+                    search_terms_exclusion
+                ) = wl_matching.match_search_terms_context(
                     self.main, tokens,
                     lang = text.lang,
                     tokenized = text.tokenized,

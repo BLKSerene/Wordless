@@ -490,18 +490,9 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                         # Zapping
                         if settings_concordancer['zapping']:
-                            # Discard position information
-                            if settings_concordancer['discard_position_info']:
-                                for j, col in enumerate(range(3)):
-                                    if self.table.model().item(row, col):
-                                        cell_text = self.table.model().item(row, col).text()
-                                    else:
-                                        cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                        cell_text = wl_nlp_utils.html_to_text(cell_text)
-
-                                    output.append(cell_text)
-                            else:
-                                if self.table.item(row, col):
+                            # Left & Right
+                            for j, col in enumerate([0, 2]):
+                                if self.table.model().item(row, col):
                                     cell_text = self.table.model().item(row, col).text()
                                 else:
                                     cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
@@ -509,7 +500,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 output.append(cell_text)
 
-                            output[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
+                            # Node
+                            output.insert(-1, settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with'])
 
                             if settings_concordancer['add_line_nums']:
                                 output.insert(0, f'{i + 1}. ')
@@ -522,12 +514,6 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 output.append(cell_text)
 
-                        if not settings_concordancer['zapping']:
-                            para = doc.add_paragraph(' '.join(output))
-                            para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
-
-                            self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
-
                     # Randomize outputs
                     if settings_concordancer['zapping'] and settings_concordancer['randomize_outputs']:
                         random.shuffle(outputs)
@@ -537,9 +523,9 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                             for i, _ in enumerate(outputs):
                                 outputs[i][0] = f'{i + 1}. '
 
-                        for i, para in enumerate(outputs):
-                            para = doc.add_paragraph(' '.join(para))
-                            para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
+                    for i, para in enumerate(outputs):
+                        para = doc.add_paragraph(' '.join(para))
+                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
 
                         self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
 
