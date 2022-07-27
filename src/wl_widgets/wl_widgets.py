@@ -19,9 +19,12 @@
 import copy
 import re
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QCoreApplication, QSize, Qt
+from PyQt5.QtGui import QColor
+from PyQt5.QtWidgets import (
+    QCheckBox, QColorDialog, QGroupBox, QLabel, QLineEdit,
+    QPushButton, QWidget
+)
 
 from wl_dialogs import wl_dialogs
 from wl_utils import wl_misc
@@ -541,30 +544,29 @@ def wl_widgets_search_settings(parent, tab):
     def token_settings_changed():
         token_settings = main.settings_custom[tab]['token_settings']
 
-        checkbox_ignore_tags.blockSignals(True)
-        checkbox_match_tags.blockSignals(True)
-
-        if token_settings['ignore_tags']:
+        if token_settings['ignore_tags'] or token_settings['use_tags']:
             checkbox_ignore_tags.setEnabled(False)
             checkbox_match_tags.setEnabled(False)
         else:
-            checkbox_ignore_tags.setEnabled(True)
-            checkbox_match_tags.setEnabled(True)
+            if not checkbox_match_tags.isChecked():
+                checkbox_ignore_tags.setEnabled(True)
+
+            if not checkbox_ignore_tags.isChecked():
+                checkbox_match_tags.setEnabled(True)
 
         if token_settings['use_tags']:
-            checkbox_ignore_tags.setEnabled(False)
-            checkbox_match_tags.setEnabled(False)
-        else:
-            checkbox_ignore_tags.setEnabled(True)
-            checkbox_match_tags.setEnabled(True)
+            checkbox_match_inflected_forms.setEnabled(False)
+        elif not token_settings['use_tags'] or token_settings['ignore_tags']:
+            checkbox_match_inflected_forms.setEnabled(True)
 
-        checkbox_ignore_tags.blockSignals(False)
-        checkbox_match_tags.blockSignals(False)
+        if checkbox_ignore_tags.isEnabled():
+            ignore_tags_changed()
+        if checkbox_match_tags.isEnabled():
+            match_tags_changed()
 
     def ignore_tags_changed():
         if checkbox_ignore_tags.isChecked():
             checkbox_match_tags.setEnabled(False)
-            checkbox_match_tags.setChecked(False)
         else:
             checkbox_match_tags.setEnabled(True)
 
@@ -572,7 +574,6 @@ def wl_widgets_search_settings(parent, tab):
         if checkbox_match_tags.isChecked():
             checkbox_match_inflected_forms.setEnabled(False)
             checkbox_ignore_tags.setEnabled(False)
-            checkbox_ignore_tags.setChecked(False)
         else:
             checkbox_match_inflected_forms.setEnabled(True)
             checkbox_ignore_tags.setEnabled(True)
