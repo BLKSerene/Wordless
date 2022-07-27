@@ -302,6 +302,11 @@ def init_settings_global():
                 _tr('init_settings_global', 'CSV File (*.csv)'),
                 _tr('init_settings_global', 'Excel Workbook (*.xlsx)'),
                 _tr('init_settings_global', 'Word Document (*.docx)')
+            ],
+
+            'fonts': [
+                _tr('init_settings_global', 'OpenType Font (*.otf)'),
+                _tr('init_settings_global', 'TrueType Font (*.ttf)')
             ]
         },
 

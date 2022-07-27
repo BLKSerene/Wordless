@@ -68,7 +68,6 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         matplotlib.pyplot.xticks(
             range(len(tokens)),
             labels = tokens,
-            fontproperties = main.settings_custom['figs']['line_chart']['font'],
             rotation = 90
         )
 
@@ -86,7 +85,7 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         word_cloud = wordcloud.WordCloud(
             width = QDesktopWidget().width(),
             height = QDesktopWidget().height(),
-            background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
+            background_color = main.settings_custom['figs']['word_clouds']['bg_color'],
             max_words = max_words
         )
 
@@ -121,19 +120,19 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         graph = networkx.MultiDiGraph()
         graph.add_edges_from(tokens_stat_file)
 
-        if main.settings_custom['figs']['network_graph']['layout'] == _tr('wl_fig_stat', 'Circular'):
+        if main.settings_custom['figs']['network_graphs']['layout'] == _tr('wl_fig_stat', 'Circular'):
             layout = networkx.circular_layout(graph)
-        elif main.settings_custom['figs']['network_graph']['layout'] == _tr('wl_fig_stat', 'Kamada-Kawai'):
+        elif main.settings_custom['figs']['network_graphs']['layout'] == _tr('wl_fig_stat', 'Kamada-Kawai'):
             layout = networkx.kamada_kawai_layout(graph)
-        elif main.settings_custom['figs']['network_graph']['layout'] == _tr('wl_fig_stat', 'Planar'):
+        elif main.settings_custom['figs']['network_graphs']['layout'] == _tr('wl_fig_stat', 'Planar'):
             layout = networkx.planar_layout(graph)
-        elif main.settings_custom['figs']['network_graph']['layout'] == _tr('wl_fig_stat', 'Random'):
+        elif main.settings_custom['figs']['network_graphs']['layout'] == _tr('wl_fig_stat', 'Random'):
             layout = networkx.random_layout(graph)
-        elif main.settings_custom['figs']['network_graph']['layout'] == _tr('wl_fig_stat', 'Shell'):
+        elif main.settings_custom['figs']['network_graphs']['layout'] == _tr('wl_fig_stat', 'Shell'):
             layout = networkx.shell_layout(graph)
-        elif main.settings_custom['figs']['network_graph']['layout'] == _tr('wl_fig_stat', 'Spring'):
+        elif main.settings_custom['figs']['network_graphs']['layout'] == _tr('wl_fig_stat', 'Spring'):
             layout = networkx.spring_layout(graph)
-        elif main.settings_custom['figs']['network_graph']['layout'] == _tr('wl_fig_stat', 'Spectral'):
+        elif main.settings_custom['figs']['network_graphs']['layout'] == _tr('wl_fig_stat', 'Spectral'):
             layout = networkx.spectral_layout(graph)
 
         networkx.draw_networkx_nodes(
@@ -161,7 +160,7 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
                 graph,
                 pos = layout,
                 edgelist = tokens_stat_file,
-                edge_color = main.settings_custom['figs']['network_graph']['edge_color'],
+                edge_color = main.settings_custom['figs']['network_graphs']['edge_color'],
                 width = wl_misc.normalize_nums(
                     tokens_stat_file.values(),
                     normalized_min = 1,
@@ -171,8 +170,8 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
         networkx.draw_networkx_labels(
             graph,
             pos = layout,
-            font_family = main.settings_custom['figs']['network_graph']['node_font'],
-            font_size = main.settings_custom['figs']['network_graph']['node_font_size']
+            font_family = main.settings_custom['figs']['network_graphs']['node_font'],
+            font_size = main.settings_custom['figs']['network_graphs']['node_font_size']
         )
         networkx.draw_networkx_edge_labels(
             graph,
@@ -181,8 +180,8 @@ def wl_fig_stat(main, tokens_stat_files, settings, label_x, label_y):
                 token: round(stat, 2)
                 for token, stat in tokens_stat_file.items()
             },
-            font_family = main.settings_custom['figs']['network_graph']['edge_font'],
-            font_size = main.settings_custom['figs']['network_graph']['edge_font_size'],
+            font_family = main.settings_custom['figs']['network_graphs']['edge_font'],
+            font_size = main.settings_custom['figs']['network_graphs']['edge_font_size'],
             label_pos = 0.2
         )
 
@@ -233,7 +232,6 @@ def wl_fig_stat_keyword_extractor(main, keywords_stat_files, files_ref, settings
         matplotlib.pyplot.xticks(
             range(len(keywords)),
             labels = keywords,
-            fontproperties = main.settings_custom['figs']['line_chart']['font'],
             rotation = 90
         )
 
@@ -248,7 +246,7 @@ def wl_fig_stat_keyword_extractor(main, keywords_stat_files, files_ref, settings
         word_cloud = wordcloud.WordCloud(
             width = QDesktopWidget().width(),
             height = QDesktopWidget().height(),
-            background_color = main.settings_custom['figs']['word_cloud']['bg_color'],
+            background_color = main.settings_custom['figs']['word_clouds']['bg_color'],
             max_words = max_words
         )
 
