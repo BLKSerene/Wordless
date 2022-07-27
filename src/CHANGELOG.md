@@ -30,6 +30,7 @@
 - Settings: Allow resizing of Settings dialog box
 
 ### 📌 Bugfixes
+- Work Area: Fix Collocation/Colligation - Generation Settings - Limit Searching
 - Work Area: Fix Profiler - Table Settings - Show Cumulutive after clicking horizontal headers
 - Work Area: Fix Profiler - Token Settings - Use tags only
 
