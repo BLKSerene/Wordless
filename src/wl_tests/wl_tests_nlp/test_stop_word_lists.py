@@ -45,7 +45,7 @@ def test_get_stop_word_list(lang, stop_word_list):
 
     if stop_word_list == 'custom':
         # Check if custom list is empty
-        assert stop_words == []
+        assert stop_words == set()
     else:
         # Check for missing custom lists
         assert stop_word_list != 'Missing Custom List'

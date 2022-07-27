@@ -66,18 +66,17 @@ def wl_process_tokens(main, text, token_settings):
         text.tags = [tags for tags in text.tags if tags != '']
 
         # Update offsets
-        i_sentences = 0
+        text.offsets_sentences = []
+        text.offsets_paras = []
         i_tokens = 0
 
         for i, para in enumerate(text.tokens_multilevel):
-            text.offsets_paras[i] = i_tokens
+            text.offsets_paras.append(i_tokens)
 
             for j, sentence in enumerate(para):
-                text.offsets_sentences[i_sentences + j] = i_tokens
+                text.offsets_sentences.append(i_tokens)
 
                 i_tokens += len(sentence)
-
-            i_sentences += len(para)
 
     # Lemmatize all tokens
     if settings['lemmatize_tokens']:
