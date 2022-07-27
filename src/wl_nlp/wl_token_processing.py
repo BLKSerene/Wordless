@@ -25,6 +25,17 @@ from wl_utils import wl_misc
 def wl_process_tokens(main, text, token_settings):
     settings = copy.deepcopy(token_settings)
 
+    if not settings['words']:
+        settings['all_lowercase'] = False
+        settings['all_uppercase'] = False
+        settings['title_case'] = False
+
+    if settings['ignore_tags']:
+        settings['use_tags'] = False
+    elif settings['use_tags']:
+        settings['lemmatize_tokens'] = False
+        settings['ignore_tags'] = False
+
     # Remove empty paragraphs
     text.tokens_multilevel = [
         para
@@ -69,7 +80,7 @@ def wl_process_tokens(main, text, token_settings):
             i_sentences += len(para)
 
     # Lemmatize all tokens
-    if not settings['use_tags'] and settings['lemmatize_tokens']:
+    if settings['lemmatize_tokens']:
         for para in text.tokens_multilevel:
             for i, sentence in enumerate(para):
                 para[i] = wl_lemmatization.wl_lemmatize(
@@ -310,19 +321,13 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
     return tokens
 
 def wl_process_tokens_wordlist_generator(main, text, token_settings):
-    text = wl_process_tokens(main, text, token_settings)
-
-    return text
+    return wl_process_tokens(main, text, token_settings)
 
 def wl_process_tokens_ngram_generator(main, text, token_settings):
-    text = wl_process_tokens(main, text, token_settings)
-
-    return text
+    return wl_process_tokens(main, text, token_settings)
 
 def wl_process_tokens_collocation_extractor(main, text, token_settings):
-    text = wl_process_tokens(main, text, token_settings)
-
-    return text
+    return wl_process_tokens(main, text, token_settings)
 
 def wl_process_tokens_colligation_extractor(main, text, token_settings):
     text = wl_process_tokens(main, text, token_settings)
@@ -343,6 +348,4 @@ def wl_process_tokens_colligation_extractor(main, text, token_settings):
     return text
 
 def wl_process_tokens_keyword_extractor(main, text, token_settings):
-    text = wl_process_tokens(main, text, token_settings)
-
-    return text
+    return wl_process_tokens(main, text, token_settings)

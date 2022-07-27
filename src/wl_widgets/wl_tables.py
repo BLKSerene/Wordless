@@ -23,9 +23,12 @@ import re
 
 import docx
 import openpyxl
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, Qt
+from PyQt5.QtGui import QFont, QStandardItem, QStandardItemModel
+from PyQt5.QtWidgets import (
+    QAbstractItemView, QApplication, QDialog, QFileDialog, QHeaderView,
+    QLabel, QPushButton, QTableView
+)
 
 from wl_checking import wl_checking_misc
 from wl_dialogs import wl_dialogs_misc, wl_msg_boxes
