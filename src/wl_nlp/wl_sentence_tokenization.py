@@ -56,8 +56,8 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
     # Input of SudachiPy cannot be more than 49149 BYTES
     if sentence_tokenizer == 'spacy_jpn' and len(text) > 49149 // 4:
-        # Around 300 tokens per line 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4 / 300)
-        sections = wl_nlp_utils.split_into_chunks_text(text, section_size = 10)
+        # Around 100 tokens per line 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6 / 100)
+        sections = wl_nlp_utils.split_into_chunks_text(text, section_size = 20)
     else:
         sections = wl_nlp_utils.split_into_chunks_text(text, section_size = main.settings_custom['files']['misc']['read_files_in_chunks'])
 

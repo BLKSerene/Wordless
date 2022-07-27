@@ -50,8 +50,8 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     if type(inputs) == str:
         # Input of SudachiPy cannot be more than 49149 BYTES
         if pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
-            # Around 300 tokens per line 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4 / 300)
-            sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = 10)
+            # Around 100 tokens per line 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6 / 100)
+            sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = 20)
         else:
             sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = section_size)
 
@@ -69,8 +69,8 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
         # Input of SudachiPy cannot be more than 49149 BYTES
         if pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and sum([len(token) for token in inputs]) > 49149 // 4:
-            # Around 4 characters per token and 4 bytes per character (≈ 49149 / 4 / 4)
-            texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = 3000)
+            # Around 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6)
+            texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = 2000)
         else:
             texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = section_size * 50)
 
