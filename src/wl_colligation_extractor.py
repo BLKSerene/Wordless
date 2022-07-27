@@ -710,8 +710,10 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                     search_settings = settings['search_settings']
                 )
 
-                (search_terms_inclusion,
-                 search_terms_exclusion) = wl_matching.match_search_terms_context(
+                (
+                    search_terms_inclusion,
+                    search_terms_exclusion
+                ) = wl_matching.match_search_terms_context(
                     self.main, tokens,
                     lang = text.lang,
                     tokenized = text.tokenized,

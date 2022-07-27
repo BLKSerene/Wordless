@@ -132,12 +132,18 @@ def match_ngrams(
         tokens_matched = {search_term_token: set() for search_term_token in search_term_tokens}
 
     # Search Settings
-    if settings['match_tags']:
+    if settings['ignore_tags']:
+        settings['match_tags'] = False
+    elif settings['match_tags']:
         settings['match_inflected_forms'] = False
+        settings['ignore_tags'] = False
 
     # Token Settings
     if token_settings['use_tags']:
         settings['match_inflected_forms'] = False
+
+    if token_settings['ignore_tags'] or token_settings['use_tags']:
+        settings['ignore_tags'] = False
         settings['match_tags'] = False
 
     # Match tags only & Ignore tags
