@@ -737,29 +737,30 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         colligations_freqs_file_all[ngram_size] = collections.Counter()
 
                     for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                        # Sentence span
-                        if text.offsets_sentences[-1] <= i:
-                            i_sentence_start = text.offsets_sentences[-1]
-                            i_sentence_end = len_tokens - 1
-                        else:
-                            for j, i_sentence in enumerate(text.offsets_sentences):
-                                if i_sentence > i:
-                                    i_sentence_start = text.offsets_sentences[j - 1]
-                                    i_sentence_end = i_sentence - 1
+                        if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
+                            # Sentence span
+                            if text.offsets_sentences[-1] <= i:
+                                i_sentence_start = text.offsets_sentences[-1]
+                                i_sentence_end = len_tokens - 1
+                            else:
+                                for j, i_sentence in enumerate(text.offsets_sentences):
+                                    if i_sentence > i:
+                                        i_sentence_start = text.offsets_sentences[j - 1]
+                                        i_sentence_end = i_sentence - 1
 
-                                    break
-
+                                        break
                         # Paragraph span
-                        if text.offsets_paras[-1] <= i:
-                            i_para_start = text.offsets_paras[-1]
-                            i_para_end = len_tokens - 1
-                        else:
-                            for j, i_para in enumerate(text.offsets_paras):
-                                if i_para > i:
-                                    i_para_start = text.offsets_paras[j - 1]
-                                    i_para_end = i_para - 1
+                        elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
+                            if text.offsets_paras[-1] <= i:
+                                i_para_start = text.offsets_paras[-1]
+                                i_para_end = len_tokens - 1
+                            else:
+                                for j, i_para in enumerate(text.offsets_paras):
+                                    if i_para > i:
+                                        i_para_start = text.offsets_paras[j - 1]
+                                        i_para_end = i_para - 1
 
-                                    break
+                                        break
 
                         # Extract collocates
                         tags_left = []
