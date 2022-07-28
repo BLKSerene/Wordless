@@ -19,9 +19,9 @@
 import copy
 
 import nltk
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QCoreApplication, QSize, Qt
+from PyQt5.QtGui import QBrush, QColor
+from PyQt5.QtWidgets import QPushButton
 
 from wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_matching

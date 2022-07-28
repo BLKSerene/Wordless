@@ -32,6 +32,7 @@
 
 ### 📌 Bugfixes
 - Work Area: Fix Collocation/Colligation - Generation Settings - Limit Searching
+- Work Area: Fix Concordancer / Parallel Concordancer - Exported Selected/All after sorting
 - Work Area: Fix Profiler - Table Settings - Show Cumulutive after clicking horizontal headers
 - Work Area: Fix Profiler - Token Settings - Use tags only
 

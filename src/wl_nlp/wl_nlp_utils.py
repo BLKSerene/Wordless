@@ -459,4 +459,8 @@ def escape_tokens(tokens):
 
 def html_to_text(text):
     # Remove tags and unescape character entities
-    return bs4.BeautifulSoup(text, features = 'lxml').get_text().strip()
+    text = bs4.BeautifulSoup(text, features = 'lxml').get_text()
+    text = re.sub(r'\n', ' ', text)
+    text = re.sub(r'\s+', ' ', text)
+
+    return text.strip()
