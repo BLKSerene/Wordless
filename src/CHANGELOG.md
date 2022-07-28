@@ -28,6 +28,7 @@
 
 ### ✨ Improvements
 - Settings: Allow resizing of Settings dialog box
+- Work Area: Update Profiler - Type-token Ratio (Standardized)
 
 ### 📌 Bugfixes
 - Work Area: Fix Collocation/Colligation - Generation Settings - Limit Searching
