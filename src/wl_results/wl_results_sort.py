@@ -19,9 +19,9 @@
 import copy
 import re
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QCoreApplication
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import QAbstractItemDelegate, QComboBox, QMessageBox, QPushButton
 
 from wl_dialogs import wl_dialogs, wl_dialogs_misc
 from wl_utils import wl_misc, wl_threading
