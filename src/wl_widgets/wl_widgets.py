@@ -73,24 +73,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             self.inclusion_spin_box_context_window_right
         ) = wl_widgets.wl_widgets_window(self)
 
-        self.inclusion_group_box.toggled.connect(self.inclusion_changed)
-
-        self.inclusion_checkbox_multi_search_mode.stateChanged.connect(self.inclusion_changed)
         self.inclusion_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
-        self.inclusion_line_edit_search_term.textChanged.connect(self.inclusion_changed)
-        self.inclusion_list_search_terms.model().dataChanged.connect(self.inclusion_changed)
-
-        self.inclusion_checkbox_ignore_case.stateChanged.connect(self.inclusion_changed)
-        self.inclusion_checkbox_match_inflected_forms.stateChanged.connect(self.inclusion_changed)
-        self.inclusion_checkbox_match_whole_words.stateChanged.connect(self.inclusion_changed)
-        self.inclusion_checkbox_use_regex.stateChanged.connect(self.inclusion_changed)
-
-        self.inclusion_checkbox_ignore_tags.stateChanged.connect(self.inclusion_changed)
-        self.inclusion_checkbox_match_tags.stateChanged.connect(self.inclusion_changed)
-
-        self.inclusion_checkbox_context_window_sync.stateChanged.connect(self.inclusion_changed)
-        self.inclusion_spin_box_context_window_left.valueChanged.connect(self.inclusion_changed)
-        self.inclusion_spin_box_context_window_right.valueChanged.connect(self.inclusion_changed)
 
         inclusion_layout_multi_search_mode = wl_layouts.Wl_Layout()
         inclusion_layout_multi_search_mode.addWidget(self.inclusion_label_search_term, 0, 0)
@@ -153,24 +136,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             self.exclusion_spin_box_context_window_right
         ) = wl_widgets.wl_widgets_window(self)
 
-        self.exclusion_group_box.toggled.connect(self.exclusion_changed)
-
-        self.exclusion_checkbox_multi_search_mode.stateChanged.connect(self.exclusion_changed)
         self.exclusion_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
-        self.exclusion_line_edit_search_term.textChanged.connect(self.exclusion_changed)
-        self.exclusion_list_search_terms.model().dataChanged.connect(self.exclusion_changed)
-
-        self.exclusion_checkbox_ignore_case.stateChanged.connect(self.exclusion_changed)
-        self.exclusion_checkbox_match_inflected_forms.stateChanged.connect(self.exclusion_changed)
-        self.exclusion_checkbox_match_whole_words.stateChanged.connect(self.exclusion_changed)
-        self.exclusion_checkbox_use_regex.stateChanged.connect(self.exclusion_changed)
-
-        self.exclusion_checkbox_ignore_tags.stateChanged.connect(self.exclusion_changed)
-        self.exclusion_checkbox_match_tags.stateChanged.connect(self.exclusion_changed)
-
-        self.exclusion_checkbox_context_window_sync.stateChanged.connect(self.exclusion_changed)
-        self.exclusion_spin_box_context_window_left.valueChanged.connect(self.exclusion_changed)
-        self.exclusion_spin_box_context_window_right.valueChanged.connect(self.exclusion_changed)
 
         exclusion_layout_multi_search_mode = wl_layouts.Wl_Layout()
         exclusion_layout_multi_search_mode.addWidget(self.exclusion_label_search_term, 0, 0)
@@ -201,13 +167,18 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.exclusion_group_box.layout().setColumnStretch(3, 1)
 
         self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
-        self.button_close = QPushButton(self.tr('Close'), self)
+        self.button_save = QPushButton(self.tr('Save'))
+        self.button_cancel = QPushButton(self.tr('Cancel'), self)
 
-        self.button_close.clicked.connect(self.accept)
+        self.inclusion_line_edit_search_term.returnPressed.connect(self.button_save.click)
+        self.exclusion_line_edit_search_term.returnPressed.connect(self.button_save.click)
+        self.button_save.clicked.connect(self.save_settings)
+        self.button_cancel.clicked.connect(self.reject)
 
         layout_buttons = wl_layouts.Wl_Layout()
         layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
-        layout_buttons.addWidget(self.button_close, 0, 2)
+        layout_buttons.addWidget(self.button_save, 0, 2)
+        layout_buttons.addWidget(self.button_cancel, 0, 3)
 
         layout_buttons.setColumnStretch(1, 1)
 
@@ -218,8 +189,6 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
         self.layout().setColumnStretch(0, 1)
         self.layout().setColumnStretch(1, 1)
-
-        self.load_settings()
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -260,8 +229,6 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             self.inclusion_spin_box_context_window_right.setPrefix(self.tr('R'))
             self.inclusion_spin_box_context_window_right.setValue(settings['inclusion']['context_window_right'])
 
-        self.inclusion_line_edit_search_term.returnPressed.connect(self.button_close.click)
-
         # Exclusion
         self.exclusion_group_box.setChecked(settings['exclusion']['exclusion'])
 
@@ -295,13 +262,10 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             self.exclusion_spin_box_context_window_right.setPrefix(self.tr('R'))
             self.exclusion_spin_box_context_window_right.setValue(settings['exclusion']['context_window_right'])
 
-        self.exclusion_line_edit_search_term.returnPressed.connect(self.button_close.click)
-
-        self.inclusion_changed()
-        self.exclusion_changed()
         self.token_settings_changed()
 
-    def inclusion_changed(self):
+    def save_settings(self):
+        # Inclusion
         self.settings['inclusion']['inclusion'] = self.inclusion_group_box.isChecked()
 
         self.settings['inclusion']['multi_search_mode'] = self.inclusion_checkbox_multi_search_mode.isChecked()
@@ -328,7 +292,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         else:
             self.settings['inclusion']['context_window_right'] = self.inclusion_spin_box_context_window_right.value()
 
-    def exclusion_changed(self):
+        # Exclusion
         self.settings['exclusion']['exclusion'] = self.exclusion_group_box.isChecked()
 
         self.settings['exclusion']['multi_search_mode'] = self.exclusion_checkbox_multi_search_mode.isChecked()
@@ -355,9 +319,11 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         else:
             self.settings['exclusion']['context_window_right'] = self.exclusion_spin_box_context_window_right.value()
 
+        self.accept()
+
     def multi_search_mode_changed(self):
         if 'size_multi' in self.__dict__:
-            if self.settings['inclusion']['multi_search_mode'] or self.settings['exclusion']['multi_search_mode']:
+            if self.inclusion_checkbox_multi_search_mode.isChecked() or self.exclusion_checkbox_multi_search_mode.isChecked():
                 self.setFixedSize(self.size_multi)
             else:
                 self.setFixedSize(self.size_normal)
@@ -409,6 +375,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             self.inclusion_checkbox_multi_search_mode.setChecked(inclusion_multi_search_mode)
             self.exclusion_checkbox_multi_search_mode.setChecked(exclusion_multi_search_mode)
 
+        self.load_settings()
         self.exec_()
 
 def wl_widgets_no_limit(parent, double = False):
