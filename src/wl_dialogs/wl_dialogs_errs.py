@@ -16,9 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt5.QtWidgets import QPushButton, QTextEdit
 
 from wl_dialogs import wl_dialogs
 from wl_widgets import wl_labels, wl_tables
