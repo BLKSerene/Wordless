@@ -65,16 +65,24 @@ def test_to_lang_util_texts():
 def test_to_sections():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-    token_sections = wl_nlp_utils.to_sections(tokens, num_sections = 5)
+    token_sections_5 = wl_nlp_utils.to_sections(tokens, num_sections = 5)
+    token_sections_1 = wl_nlp_utils.to_sections(tokens, num_sections = 1)
+    token_sections_1000 = wl_nlp_utils.to_sections(tokens, num_sections = 1000)
 
-    assert token_sections == [[1, 2, 3], [4, 5, 6], [7, 8], [9, 10], [11, 12]]
+    assert token_sections_5 == [[1, 2, 3], [4, 5, 6], [7, 8], [9, 10], [11, 12]]
+    assert token_sections_1 == [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]]
+    assert token_sections_1000 == [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12]]
 
 def test_to_sections_unequal():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-    token_sections = list(wl_nlp_utils.to_sections_unequal(tokens, section_size = 5))
+    token_sections_5 = list(wl_nlp_utils.to_sections_unequal(tokens, section_size = 5))
+    token_sections_1 = list(wl_nlp_utils.to_sections_unequal(tokens, section_size = 1))
+    token_sections_1000 = list(wl_nlp_utils.to_sections_unequal(tokens, section_size = 1000))
 
-    assert token_sections == [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12]]
+    assert token_sections_5 == [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12]]
+    assert token_sections_1 == [[1], [2], [3], [4], [5], [6], [7], [8], [9], [10], [11], [12]]
+    assert token_sections_1000 == [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]]
 
 def test_split_into_chunks_text():
     text = '\n\n \n 1\n2 \n\n 3 \n \n\n'
