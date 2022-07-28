@@ -25,6 +25,7 @@
 - Settings: Add Settings - Figures - Word Clouds - Font Path
 - Settings: Add Settings - Tables - Profiler
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
+- Work Area: Add Work Area - Search Settings - Context Settings - Save
 
 ### ✨ Improvements
 - Settings: Allow resizing of Settings dialog box
