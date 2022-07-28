@@ -20,9 +20,8 @@ import copy
 import datetime
 import time
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QCoreApplication, Qt, QTimer
+from PyQt5.QtWidgets import QCheckBox, QLabel, QPushButton
 
 from wl_dialogs import wl_dialogs
 from wl_widgets import wl_labels, wl_layouts
