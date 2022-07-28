@@ -149,9 +149,7 @@ In *Profiler*, you can check and compare general linguistic features of differen
     The number of token types divided by the number of tokens in each file.
 
 - **3.1.15 Type-token Ratio (Standardized)**<br>
-    Standardized type-token ratio. Each file is divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratios are calculated for each part. The standardized type-token ratio of each file is then averaged out over all sub-sections. You can change the number of tokens in each sub-section via **Menu → Preferences → Settings → Tables → Profiler → Number of tokens in each section when calculating standardized type-token ratio**.
-
-    The last section is discarded if the number of tokens in it is smaller than the base of standardized type-token ratio in order to prevent the result from being affected by outliers (extreme values).
+    Standardized type-token ratio. Each file is divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratios are calculated for each part. The standardized type-token ratio of each file is then averaged out with weights (number of tokens in each sub-section) over all sub-sections. You can change the number of tokens in each sub-section via **Menu → Preferences → Settings → Tables → Profiler → Number of tokens in each section when calculating standardized type-token ratio**.
 
 - **3.1.16 Paragraph Length in Sentences/Tokens (Mean)**<br>
     The average value of paragraph lengths expressed as the number of sentences/tokens.

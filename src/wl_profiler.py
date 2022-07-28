@@ -581,31 +581,17 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 count_tokens = len(len_tokens_chars)
                 count_types = len(len_types_chars)
 
-                # TTR
+                # TTR & STTR (weighted average)
                 if count_tokens:
                     ttr = count_types / count_tokens
+
+                    ttrs = [
+                        len(set(token_section))
+                        for token_section in wl_nlp_utils.to_sections_unequal(text.tokens_flat, num_tokens_section_sttr)
+                    ]
+                    sttr = numpy.sum(ttrs) / count_tokens
                 else:
-                    ttr = 0
-
-                # STTR
-                if count_tokens < num_tokens_section_sttr:
-                    sttr = ttr
-                else:
-                    token_sections = list(wl_nlp_utils.to_sections_unequal(text.tokens_flat, num_tokens_section_sttr))
-
-                    # Discard the last section if number of tokens in it is smaller than the base of sttr
-                    if len(token_sections[-1]) < num_tokens_section_sttr:
-                        ttrs = [
-                            len(set(token_section)) / len(token_section)
-                            for token_section in token_sections[:-1]
-                        ]
-                    else:
-                        ttrs = [
-                            len(set(token_section)) / len(token_section)
-                            for token_section in token_sections
-                        ]
-
-                    sttr = sum(ttrs) / len(ttrs)
+                    ttr = sttr = 0
 
                 texts_stats_file.append(readability_statistics)
                 texts_stats_file.append(len_paras_sentences)

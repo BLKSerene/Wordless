@@ -239,22 +239,27 @@ def record_boundary_sentences(sentences, text):
     return sentences
 
 def to_sections(tokens, num_sections):
-    sections = []
+    len_tokens = len(tokens)
 
-    section_size, remainder = divmod(len(tokens), num_sections)
+    if len_tokens >= num_sections:
+        sections = []
 
-    for i in range(num_sections):
-        if i < remainder:
-            section_start = i * section_size + i
-        else:
-            section_start = i * section_size + remainder
+        section_size, remainder = divmod(len_tokens, num_sections)
 
-        if i + 1 < remainder:
-            section_stop = (i + 1) * section_size + i + 1
-        else:
-            section_stop = (i + 1) * section_size + remainder
+        for i in range(num_sections):
+            if i < remainder:
+                section_start = i * section_size + i
+            else:
+                section_start = i * section_size + remainder
 
-        sections.append(tokens[section_start:section_stop])
+            if i + 1 < remainder:
+                section_stop = (i + 1) * section_size + i + 1
+            else:
+                section_stop = (i + 1) * section_size + remainder
+
+            sections.append(tokens[section_start:section_stop])
+    else:
+        sections = [[token] for token in tokens]
 
     return sections
 
