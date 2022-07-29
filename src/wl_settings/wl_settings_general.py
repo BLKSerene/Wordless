@@ -19,9 +19,11 @@
 import copy
 import os
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import (
+    QCheckBox, QDialog, QFileDialog, QGroupBox, QLabel,
+    QLineEdit, QPushButton
+)
 
 from wl_dialogs import wl_dialogs_misc
 from wl_settings import wl_settings
@@ -36,23 +38,23 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['general']
 
         # Font Settings
-        group_box_font_settings = QGroupBox(self.tr('Font Settings'), self)
+        self.group_box_font_settings = QGroupBox(self.tr('Font Settings'), self)
 
         self.label_font_family = QLabel(self.tr('Font Family:'), self)
         self.combo_box_font_family = wl_boxes.Wl_Combo_Box_Font_Family(self)
         self.label_font_size = QLabel(self.tr('Font Size:'), self)
         self.combo_box_font_size = wl_boxes.Wl_Combo_Box_Font_Size(self)
 
-        group_box_font_settings.setLayout(QGridLayout())
-        group_box_font_settings.layout().addWidget(self.label_font_family, 0, 0)
-        group_box_font_settings.layout().addWidget(self.combo_box_font_family, 0, 1)
-        group_box_font_settings.layout().addWidget(self.label_font_size, 1, 0)
-        group_box_font_settings.layout().addWidget(self.combo_box_font_size, 1, 1)
+        self.group_box_font_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_font_settings.layout().addWidget(self.label_font_family, 0, 0)
+        self.group_box_font_settings.layout().addWidget(self.combo_box_font_family, 0, 1)
+        self.group_box_font_settings.layout().addWidget(self.label_font_size, 1, 0)
+        self.group_box_font_settings.layout().addWidget(self.combo_box_font_size, 1, 1)
 
-        group_box_font_settings.layout().setColumnStretch(2, 1)
+        self.group_box_font_settings.layout().setColumnStretch(2, 1)
 
         # Proxy Settings
-        group_box_proxy_settings = QGroupBox(self.tr('Proxy Settings'), self)
+        self.group_box_proxy_settings = QGroupBox(self.tr('Proxy Settings'), self)
 
         self.checkbox_use_proxy = QCheckBox(self.tr('Use Proxy'), self)
         self.label_address = QLabel(self.tr('Address:'), self)
@@ -70,38 +72,38 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
 
         self.checkbox_use_proxy.clicked.connect(self.proxy_settings_changed)
 
-        group_box_proxy_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_proxy_settings.layout().addWidget(self.checkbox_use_proxy, 0, 0, 1, 4)
-        group_box_proxy_settings.layout().addWidget(self.label_address, 1, 0)
-        group_box_proxy_settings.layout().addWidget(self.line_edit_address, 1, 1)
-        group_box_proxy_settings.layout().addWidget(self.label_port, 1, 2)
-        group_box_proxy_settings.layout().addWidget(self.line_edit_port, 1, 3)
-        group_box_proxy_settings.layout().addWidget(self.label_username, 2, 0)
-        group_box_proxy_settings.layout().addWidget(self.line_edit_username, 2, 1)
-        group_box_proxy_settings.layout().addWidget(self.label_password, 2, 2)
-        group_box_proxy_settings.layout().addWidget(self.line_edit_password, 2, 3)
+        self.group_box_proxy_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_proxy_settings.layout().addWidget(self.checkbox_use_proxy, 0, 0, 1, 4)
+        self.group_box_proxy_settings.layout().addWidget(self.label_address, 1, 0)
+        self.group_box_proxy_settings.layout().addWidget(self.line_edit_address, 1, 1)
+        self.group_box_proxy_settings.layout().addWidget(self.label_port, 1, 2)
+        self.group_box_proxy_settings.layout().addWidget(self.line_edit_port, 1, 3)
+        self.group_box_proxy_settings.layout().addWidget(self.label_username, 2, 0)
+        self.group_box_proxy_settings.layout().addWidget(self.line_edit_username, 2, 1)
+        self.group_box_proxy_settings.layout().addWidget(self.label_password, 2, 2)
+        self.group_box_proxy_settings.layout().addWidget(self.line_edit_password, 2, 3)
 
         # Update Settings
-        group_box_update_settings = QGroupBox(self.tr('Update Settings'), self)
+        self.group_box_update_settings = QGroupBox(self.tr('Update Settings'), self)
 
         self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
 
-        group_box_update_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_update_settings.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
+        self.group_box_update_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_update_settings.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
 
         # Miscellaneous
-        group_box_misc = QGroupBox(self.tr('Miscellaneous'), self)
+        self.group_box_misc = QGroupBox(self.tr('Miscellaneous'), self)
 
         self.checkbox_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
 
-        group_box_misc.setLayout(wl_layouts.Wl_Layout())
-        group_box_misc.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
+        self.group_box_misc.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_misc.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_font_settings, 0, 0)
-        self.layout().addWidget(group_box_proxy_settings, 1, 0)
-        self.layout().addWidget(group_box_update_settings, 2, 0)
-        self.layout().addWidget(group_box_misc, 3, 0)
+        self.layout().addWidget(self.group_box_font_settings, 0, 0)
+        self.layout().addWidget(self.group_box_proxy_settings, 1, 0)
+        self.layout().addWidget(self.group_box_update_settings, 2, 0)
+        self.layout().addWidget(self.group_box_misc, 3, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(4, 1)
@@ -199,7 +201,7 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['imp']
 
         # Files
-        group_box_imp_files = QGroupBox(self.tr('Files'), self)
+        self.group_box_imp_files = QGroupBox(self.tr('Files'), self)
 
         self.label_imp_files_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_imp_files_default_path = QLineEdit(self)
@@ -207,13 +209,13 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
 
         self.button_imp_files_browse.clicked.connect(self.browse_files)
 
-        group_box_imp_files.setLayout(wl_layouts.Wl_Layout())
-        group_box_imp_files.layout().addWidget(self.label_imp_files_default_path, 0, 0)
-        group_box_imp_files.layout().addWidget(self.line_edit_imp_files_default_path, 0, 1)
-        group_box_imp_files.layout().addWidget(self.button_imp_files_browse, 0, 2)
+        self.group_box_imp_files.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_imp_files.layout().addWidget(self.label_imp_files_default_path, 0, 0)
+        self.group_box_imp_files.layout().addWidget(self.line_edit_imp_files_default_path, 0, 1)
+        self.group_box_imp_files.layout().addWidget(self.button_imp_files_browse, 0, 2)
 
         # Search Terms
-        group_box_imp_search_terms = QGroupBox(self.tr('Search Terms'), self)
+        self.group_box_imp_search_terms = QGroupBox(self.tr('Search Terms'), self)
 
         self.label_imp_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_imp_search_terms_default_path = QLineEdit(self)
@@ -225,16 +227,16 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
         self.button_imp_search_terms_browse.clicked.connect(self.browse_search_terms)
         self.checkbox_imp_search_terms_detect_encodings.stateChanged.connect(self.detect_encodings_changed)
 
-        group_box_imp_search_terms.setLayout(wl_layouts.Wl_Layout())
-        group_box_imp_search_terms.layout().addWidget(self.label_imp_search_terms_default_path, 0, 0)
-        group_box_imp_search_terms.layout().addWidget(self.line_edit_imp_search_terms_default_path, 0, 1)
-        group_box_imp_search_terms.layout().addWidget(self.button_imp_search_terms_browse, 0, 2)
-        group_box_imp_search_terms.layout().addWidget(self.label_imp_search_terms_default_encoding, 1, 0)
-        group_box_imp_search_terms.layout().addWidget(self.combo_box_imp_search_terms_default_encoding, 1, 1, 1, 2)
-        group_box_imp_search_terms.layout().addWidget(self.checkbox_imp_search_terms_detect_encodings, 2, 0, 1, 3)
+        self.group_box_imp_search_terms.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_imp_search_terms.layout().addWidget(self.label_imp_search_terms_default_path, 0, 0)
+        self.group_box_imp_search_terms.layout().addWidget(self.line_edit_imp_search_terms_default_path, 0, 1)
+        self.group_box_imp_search_terms.layout().addWidget(self.button_imp_search_terms_browse, 0, 2)
+        self.group_box_imp_search_terms.layout().addWidget(self.label_imp_search_terms_default_encoding, 1, 0)
+        self.group_box_imp_search_terms.layout().addWidget(self.combo_box_imp_search_terms_default_encoding, 1, 1, 1, 2)
+        self.group_box_imp_search_terms.layout().addWidget(self.checkbox_imp_search_terms_detect_encodings, 2, 0, 1, 3)
 
         # Stop Words
-        group_box_imp_stop_words = QGroupBox(self.tr('Stop Words'), self)
+        self.group_box_imp_stop_words = QGroupBox(self.tr('Stop Words'), self)
 
         self.label_imp_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_imp_stop_words_default_path = QLineEdit(self)
@@ -246,16 +248,16 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
         self.button_imp_stop_words_browse.clicked.connect(self.browse_stop_words)
         self.checkbox_imp_stop_words_detect_encodings.stateChanged.connect(self.detect_encodings_changed)
 
-        group_box_imp_stop_words.setLayout(wl_layouts.Wl_Layout())
-        group_box_imp_stop_words.layout().addWidget(self.label_imp_stop_words_default_path, 0, 0)
-        group_box_imp_stop_words.layout().addWidget(self.line_edit_imp_stop_words_default_path, 0, 1)
-        group_box_imp_stop_words.layout().addWidget(self.button_imp_stop_words_browse, 0, 2)
-        group_box_imp_stop_words.layout().addWidget(self.label_imp_stop_words_default_encoding, 1, 0)
-        group_box_imp_stop_words.layout().addWidget(self.combo_box_imp_stop_words_default_encoding, 1, 1, 1, 2)
-        group_box_imp_stop_words.layout().addWidget(self.checkbox_imp_stop_words_detect_encodings, 2, 0, 1, 3)
+        self.group_box_imp_stop_words.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_imp_stop_words.layout().addWidget(self.label_imp_stop_words_default_path, 0, 0)
+        self.group_box_imp_stop_words.layout().addWidget(self.line_edit_imp_stop_words_default_path, 0, 1)
+        self.group_box_imp_stop_words.layout().addWidget(self.button_imp_stop_words_browse, 0, 2)
+        self.group_box_imp_stop_words.layout().addWidget(self.label_imp_stop_words_default_encoding, 1, 0)
+        self.group_box_imp_stop_words.layout().addWidget(self.combo_box_imp_stop_words_default_encoding, 1, 1, 1, 2)
+        self.group_box_imp_stop_words.layout().addWidget(self.checkbox_imp_stop_words_detect_encodings, 2, 0, 1, 3)
 
         # Temporary Files
-        group_box_imp_temp_files = QGroupBox(self.tr('Temporary Files'), self)
+        self.group_box_imp_temp_files = QGroupBox(self.tr('Temporary Files'), self)
 
         self.label_imp_temp_files_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_imp_temp_files_default_path = QLineEdit(self)
@@ -263,16 +265,16 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
 
         self.button_imp_temp_files_browse.clicked.connect(self.browse_temp_files)
 
-        group_box_imp_temp_files.setLayout(wl_layouts.Wl_Layout())
-        group_box_imp_temp_files.layout().addWidget(self.label_imp_temp_files_default_path, 0, 0)
-        group_box_imp_temp_files.layout().addWidget(self.line_edit_imp_temp_files_default_path, 0, 1)
-        group_box_imp_temp_files.layout().addWidget(self.button_imp_temp_files_browse, 0, 2)
+        self.group_box_imp_temp_files.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_imp_temp_files.layout().addWidget(self.label_imp_temp_files_default_path, 0, 0)
+        self.group_box_imp_temp_files.layout().addWidget(self.line_edit_imp_temp_files_default_path, 0, 1)
+        self.group_box_imp_temp_files.layout().addWidget(self.button_imp_temp_files_browse, 0, 2)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_imp_files, 0, 0)
-        self.layout().addWidget(group_box_imp_search_terms, 1, 0)
-        self.layout().addWidget(group_box_imp_stop_words, 2, 0)
-        self.layout().addWidget(group_box_imp_temp_files, 3, 0)
+        self.layout().addWidget(self.group_box_imp_files, 0, 0)
+        self.layout().addWidget(self.group_box_imp_search_terms, 1, 0)
+        self.layout().addWidget(self.group_box_imp_stop_words, 2, 0)
+        self.layout().addWidget(self.group_box_imp_temp_files, 3, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(4, 1)
@@ -401,7 +403,7 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['exp']
 
         # Tables
-        group_box_exp_tables = QGroupBox(self.tr('Tables'), self)
+        self.group_box_exp_tables = QGroupBox(self.tr('Tables'), self)
 
         self.label_exp_tables_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_exp_tables_default_path = QLineEdit(self)
@@ -416,17 +418,17 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
         self.button_exp_tables_default_path.clicked.connect(self.browse_tables)
         self.combo_box_exp_tables_default_type.currentTextChanged.connect(self.tables_default_type_changed)
 
-        group_box_exp_tables.setLayout(wl_layouts.Wl_Layout())
-        group_box_exp_tables.layout().addWidget(self.label_exp_tables_default_path, 0, 0)
-        group_box_exp_tables.layout().addWidget(self.line_edit_exp_tables_default_path, 0, 1)
-        group_box_exp_tables.layout().addWidget(self.button_exp_tables_default_path, 0, 2)
-        group_box_exp_tables.layout().addWidget(self.label_exp_tables_default_type, 1, 0)
-        group_box_exp_tables.layout().addWidget(self.combo_box_exp_tables_default_type, 1, 1, 1, 2)
-        group_box_exp_tables.layout().addWidget(self.label_exp_tables_default_encoding, 2, 0)
-        group_box_exp_tables.layout().addWidget(self.combo_box_exp_tables_default_encoding, 2, 1, 1 ,2)
+        self.group_box_exp_tables.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_exp_tables.layout().addWidget(self.label_exp_tables_default_path, 0, 0)
+        self.group_box_exp_tables.layout().addWidget(self.line_edit_exp_tables_default_path, 0, 1)
+        self.group_box_exp_tables.layout().addWidget(self.button_exp_tables_default_path, 0, 2)
+        self.group_box_exp_tables.layout().addWidget(self.label_exp_tables_default_type, 1, 0)
+        self.group_box_exp_tables.layout().addWidget(self.combo_box_exp_tables_default_type, 1, 1, 1, 2)
+        self.group_box_exp_tables.layout().addWidget(self.label_exp_tables_default_encoding, 2, 0)
+        self.group_box_exp_tables.layout().addWidget(self.combo_box_exp_tables_default_encoding, 2, 1, 1 ,2)
 
         # Search Terms
-        group_box_exp_search_terms = QGroupBox(self.tr('Search Terms'), self)
+        self.group_box_exp_search_terms = QGroupBox(self.tr('Search Terms'), self)
 
         self.label_exp_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_exp_search_terms_default_path = QLineEdit(self)
@@ -436,15 +438,15 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
 
         self.button_exp_search_terms_default_path.clicked.connect(self.browse_search_terms)
 
-        group_box_exp_search_terms.setLayout(wl_layouts.Wl_Layout())
-        group_box_exp_search_terms.layout().addWidget(self.label_exp_search_terms_default_path, 0, 0)
-        group_box_exp_search_terms.layout().addWidget(self.line_edit_exp_search_terms_default_path, 0, 1)
-        group_box_exp_search_terms.layout().addWidget(self.button_exp_search_terms_default_path, 0, 2)
-        group_box_exp_search_terms.layout().addWidget(self.label_exp_search_terms_default_encoding, 1, 0)
-        group_box_exp_search_terms.layout().addWidget(self.combo_box_exp_search_terms_default_encoding, 1, 1, 1, 2)
+        self.group_box_exp_search_terms.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_exp_search_terms.layout().addWidget(self.label_exp_search_terms_default_path, 0, 0)
+        self.group_box_exp_search_terms.layout().addWidget(self.line_edit_exp_search_terms_default_path, 0, 1)
+        self.group_box_exp_search_terms.layout().addWidget(self.button_exp_search_terms_default_path, 0, 2)
+        self.group_box_exp_search_terms.layout().addWidget(self.label_exp_search_terms_default_encoding, 1, 0)
+        self.group_box_exp_search_terms.layout().addWidget(self.combo_box_exp_search_terms_default_encoding, 1, 1, 1, 2)
 
         # Stop Words
-        group_box_exp_stop_words = QGroupBox(self.tr('Stop Words'), self)
+        self.group_box_exp_stop_words = QGroupBox(self.tr('Stop Words'), self)
 
         self.label_exp_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
         self.line_edit_exp_stop_words_default_path = QLineEdit(self)
@@ -454,17 +456,17 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
 
         self.button_exp_stop_words_default_path.clicked.connect(self.browse_stop_words)
 
-        group_box_exp_stop_words.setLayout(wl_layouts.Wl_Layout())
-        group_box_exp_stop_words.layout().addWidget(self.label_exp_stop_words_default_path, 0, 0)
-        group_box_exp_stop_words.layout().addWidget(self.line_edit_exp_stop_words_default_path, 0, 1)
-        group_box_exp_stop_words.layout().addWidget(self.button_exp_stop_words_default_path, 0, 2)
-        group_box_exp_stop_words.layout().addWidget(self.label_exp_stop_words_default_encoding, 1, 0)
-        group_box_exp_stop_words.layout().addWidget(self.combo_box_exp_stop_words_default_encoding, 1, 1, 1, 2)
+        self.group_box_exp_stop_words.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_exp_stop_words.layout().addWidget(self.label_exp_stop_words_default_path, 0, 0)
+        self.group_box_exp_stop_words.layout().addWidget(self.line_edit_exp_stop_words_default_path, 0, 1)
+        self.group_box_exp_stop_words.layout().addWidget(self.button_exp_stop_words_default_path, 0, 2)
+        self.group_box_exp_stop_words.layout().addWidget(self.label_exp_stop_words_default_encoding, 1, 0)
+        self.group_box_exp_stop_words.layout().addWidget(self.combo_box_exp_stop_words_default_encoding, 1, 1, 1, 2)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_exp_tables, 0, 0)
-        self.layout().addWidget(group_box_exp_search_terms, 1, 0)
-        self.layout().addWidget(group_box_exp_stop_words, 2, 0)
+        self.layout().addWidget(self.group_box_exp_tables, 0, 0)
+        self.layout().addWidget(self.group_box_exp_search_terms, 1, 0)
+        self.layout().addWidget(self.group_box_exp_stop_words, 2, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(3, 1)

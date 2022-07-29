@@ -24,9 +24,9 @@ import traceback
 
 import nltk
 import numpy
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import QCheckBox, QLabel, QPushButton, QGroupBox
 
 from wl_checking import wl_checking_files
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes

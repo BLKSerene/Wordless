@@ -18,9 +18,8 @@
 
 import copy
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import QGroupBox, QLabel
 
 from wl_nlp import wl_nlp_utils, wl_stop_word_lists
 from wl_settings import wl_settings
@@ -36,7 +35,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['stop_word_lists']
 
         # Stop Word Lists Settings
-        group_box_stop_word_lists_settings = QGroupBox(self.tr('Stop Word Lists Settings'), self)
+        self.group_box_stop_word_lists_settings = QGroupBox(self.tr('Stop Word Lists Settings'), self)
 
         self.table_stop_word_lists = wl_tables.Wl_Table(
             self,
@@ -69,11 +68,11 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
 
         self.table_stop_word_lists.model().dataChanged.connect(self.stop_word_list_changed)
 
-        group_box_stop_word_lists_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_stop_word_lists_settings.layout().addWidget(self.table_stop_word_lists, 0, 0)
+        self.group_box_stop_word_lists_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_stop_word_lists_settings.layout().addWidget(self.table_stop_word_lists, 0, 0)
 
         # Preview
-        group_box_preview = QGroupBox(self.tr('Preview'), self)
+        self.group_box_preview = QGroupBox(self.tr('Preview'), self)
 
         self.label_stop_word_list_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_stop_word_list_preview_lang = wl_boxes.Wl_Combo_Box(self)
@@ -92,19 +91,19 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(wl_layouts.Wl_Layout())
-        group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 6)
-        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results, 1, 0, 1, 6)
-        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_add, 2, 0)
-        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_ins, 2, 1)
-        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_del, 2, 2)
-        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_clr, 2, 3)
-        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_imp, 2, 4)
-        group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_exp, 2, 5)
+        self.group_box_preview.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 6)
+        self.group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results, 1, 0, 1, 6)
+        self.group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_add, 2, 0)
+        self.group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_ins, 2, 1)
+        self.group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_del, 2, 2)
+        self.group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_clr, 2, 3)
+        self.group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_imp, 2, 4)
+        self.group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_exp, 2, 5)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_stop_word_lists_settings, 0, 0)
-        self.layout().addWidget(group_box_preview, 1, 0)
+        self.layout().addWidget(self.group_box_stop_word_lists_settings, 0, 0)
+        self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(0, 3)
