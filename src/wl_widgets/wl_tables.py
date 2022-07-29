@@ -63,7 +63,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
             # CSV files
             if self.file_type == _tr('Wl_Worker_Exp_Table', 'CSV File (*.csv)'):
-                encoding = self.main.settings_custom['exp']['tables']['default_encoding']
+                encoding = self.main.settings_custom['general']['exp']['tables']['default_encoding']
 
                 # Concordancer
                 if self.table.tab == 'concordancer':
@@ -571,8 +571,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                     doc.save(file_path_tgt)
 
-            self.main.settings_custom['exp']['tables']['default_path'] = wl_misc.get_normalized_dir(self.file_path)
-            self.main.settings_custom['exp']['tables']['default_type'] = self.file_type
+            self.main.settings_custom['general']['exp']['tables']['default_path'] = wl_misc.get_normalized_dir(self.file_path)
+            self.main.settings_custom['general']['exp']['tables']['default_type'] = self.file_type
 
             exp_success = True
         except PermissionError:
@@ -1089,7 +1089,7 @@ class Wl_Table(QTableView):
                     ''').format(file_path)
                 ).open()
 
-        default_dir = self.main.settings_custom['exp']['tables']['default_path']
+        default_dir = self.main.settings_custom['general']['exp']['tables']['default_path']
 
         # Search terms, stop word lists, file checking, etc.
         if self.tab == 'err':
@@ -1098,7 +1098,7 @@ class Wl_Table(QTableView):
                 _tr('Wl_Table', 'Export Table'),
                 os.path.join(wl_checking_misc.check_dir(default_dir), 'wordless_error'),
                 ';;'.join(self.main.settings_global['file_types']['exp_tables']),
-                self.main.settings_custom['exp']['tables']['default_type']
+                self.main.settings_custom['general']['exp']['tables']['default_type']
             )
         # Work Area
         else:
@@ -1117,7 +1117,7 @@ class Wl_Table(QTableView):
                         _tr('Wl_Table', 'Export Table'),
                         os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}'),
                         ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
-                        self.main.settings_custom['exp']['tables']['default_type']
+                        self.main.settings_custom['general']['exp']['tables']['default_type']
                     )
             else:
                 file_path, file_type = QFileDialog.getSaveFileName(
@@ -1125,7 +1125,7 @@ class Wl_Table(QTableView):
                     _tr('Wl_Table', 'Export Table'),
                     os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}'),
                     ';;'.join(self.main.settings_global['file_types']['exp_tables']),
-                    self.main.settings_custom['exp']['tables']['default_type']
+                    self.main.settings_custom['general']['exp']['tables']['default_type']
                 )
 
         if file_path:
