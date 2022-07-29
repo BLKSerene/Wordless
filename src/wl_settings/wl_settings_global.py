@@ -2756,7 +2756,7 @@ def init_settings_global():
                         _tr('init_settings_global', 'Bayes Factor')
                     ],
 
-                    'func': wl_measures_statistical_significance.log_likehood_ratio_test
+                    'func': wl_measures_statistical_significance.log_likelihood_ratio_test
                 },
 
                 _tr('init_settings_global', "Pearson's Chi-squared Test"): {
@@ -2808,7 +2808,7 @@ def init_settings_global():
                         _tr('init_settings_global', 'Bayes Factor')
                     ],
 
-                    'func': wl_measures_statistical_significance.log_likehood_ratio_test
+                    'func': wl_measures_statistical_significance.log_likelihood_ratio_test
                 },
 
                 _tr('init_settings_global', 'Mann-Whitney U Test'): {

@@ -72,7 +72,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                 new_file['name'] = new_file['name_old'] = wl_checking_misc.check_new_name(file_name, file_names)
 
                 # Path, Tokenized, Tagged
-                default_dir = wl_checking_misc.check_dir(self.main.settings_custom['imp']['temp_files']['default_path'])
+                default_dir = wl_checking_misc.check_dir(self.main.settings_custom['general']['imp']['temp_files']['default_path'])
 
                 if file_ext == '.xml':
                     new_file['path'] = os.path.join(default_dir, f'{file_name}.xml')
@@ -214,7 +214,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     new_files.append(new_file_tgt)
 
             if self.file_paths:
-                self.main.settings_custom['imp']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
+                self.main.settings_custom['general']['imp']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
         except Exception:
             err_msg = traceback.format_exc()
 
@@ -573,10 +573,10 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         )).start_worker()
 
     def add_files(self):
-        if os.path.exists(self.main.settings_custom['imp']['files']['default_path']):
-            default_dir = self.main.settings_custom['imp']['files']['default_path']
+        if os.path.exists(self.main.settings_custom['general']['imp']['files']['default_path']):
+            default_dir = self.main.settings_custom['general']['imp']['files']['default_path']
         else:
-            default_dir = self.main.settings_default['imp']['files']['default_path']
+            default_dir = self.main.settings_default['general']['imp']['files']['default_path']
 
         file_paths = QFileDialog.getOpenFileNames(
             parent = self.main,
@@ -595,7 +595,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         file_dir = QFileDialog.getExistingDirectory(
             parent = self.main,
             caption = self.tr('Open Folder'),
-            directory = self.main.settings_custom['imp']['files']['default_path']
+            directory = self.main.settings_custom['general']['imp']['files']['default_path']
         )
 
         if file_dir:

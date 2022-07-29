@@ -252,10 +252,10 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         super().data_changed(topLeft, bottomRight)
 
     def imp_list(self):
-        if os.path.exists(self.main.settings_custom['imp'][self.settings]['default_path']):
-            default_dir = self.main.settings_custom['imp'][self.settings]['default_path']
+        if os.path.exists(self.main.settings_custom['general']['imp'][self.settings]['default_path']):
+            default_dir = self.main.settings_custom['general']['imp'][self.settings]['default_path']
         else:
-            default_dir = self.main.settings_default['imp'][self.settings]['default_path']
+            default_dir = self.main.settings_default['general']['imp'][self.settings]['default_path']
 
         file_paths = QFileDialog.getOpenFileNames(
             self.main,
@@ -266,7 +266,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
         if file_paths:
             # Modify default path
-            self.main.settings_custom['imp'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
+            self.main.settings_custom['general']['imp'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
             file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
 
@@ -307,10 +307,10 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
                 for file_path in file_paths:
                     # Detect encodings
-                    if self.main.settings_custom['imp'][self.settings]['detect_encodings']:
+                    if self.main.settings_custom['general']['imp'][self.settings]['detect_encodings']:
                         encoding = wl_detection.detect_encoding(self.main, file_path)
                     else:
-                        encoding = self.main.settings_custom['imp'][self.settings]['default_encoding']
+                        encoding = self.main.settings_custom['general']['imp'][self.settings]['default_encoding']
 
                     with open(file_path, 'r', encoding = encoding, errors = 'replace') as f:
                         text = f.read()
@@ -329,7 +329,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
                 self.main.statusBar().showMessage(_tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', '{} {} has been successfully imported into the list.').format(num_imps, msg_item))
 
     def exp_list(self):
-        default_dir = self.main.settings_custom['exp'][self.settings]['default_path']
+        default_dir = self.main.settings_custom['general']['exp'][self.settings]['default_path']
 
         file_path = QFileDialog.getSaveFileName(
             self.main,
@@ -339,7 +339,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         )[0]
 
         if file_path:
-            encoding = self.main.settings_custom['exp'][self.settings]['default_encoding']
+            encoding = self.main.settings_custom['general']['exp'][self.settings]['default_encoding']
 
             with open(file_path, 'w', encoding = encoding) as f:
                 for item in self.model().stringList():
@@ -354,7 +354,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
             ).open()
 
             # Modify default path
-            self.main.settings_custom['exp'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
+            self.main.settings_custom['general']['exp'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_path))
 
 class Wl_List_Search_Terms(Wl_List_Add_Ins_Del_Clr_Imp_Exp):
     def __init__(self, parent):

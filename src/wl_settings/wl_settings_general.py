@@ -91,19 +91,19 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         self.group_box_update_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_update_settings.layout().addWidget(self.checkbox_check_updates_on_startup, 0, 0)
 
-        # Miscellaneous
-        self.group_box_misc = QGroupBox(self.tr('Miscellaneous'), self)
+        # Miscellaneous Settings
+        self.group_box_misc_settings = QGroupBox(self.tr('Miscellaneous Settings'), self)
 
         self.checkbox_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
 
-        self.group_box_misc.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_misc.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
+        self.group_box_misc_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_misc_settings.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_font_settings, 0, 0)
         self.layout().addWidget(self.group_box_proxy_settings, 1, 0)
         self.layout().addWidget(self.group_box_update_settings, 2, 0)
-        self.layout().addWidget(self.group_box_misc, 3, 0)
+        self.layout().addWidget(self.group_box_misc_settings, 3, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(4, 1)
@@ -140,8 +140,8 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         # Update Settings
         self.checkbox_check_updates_on_startup.setChecked(settings['update_settings']['check_updates_on_startup'])
 
-        # Miscellaneous
-        self.checkbox_confirm_on_exit.setChecked(settings['misc']['confirm_on_exit'])
+        # Miscellaneous Settings
+        self.checkbox_confirm_on_exit.setChecked(settings['misc_settings']['confirm_on_exit'])
 
         self.proxy_settings_changed()
 
@@ -180,8 +180,8 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
             # Update Settings
             self.settings_custom['update_settings']['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
 
-            # Miscellaneous
-            self.settings_custom['misc']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
+            # Miscellaneous Settings
+            self.settings_custom['misc_settings']['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
 
             if result == 'restart':
                 self.main.restart()
@@ -197,8 +197,8 @@ class Wl_Settings_Imp(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
-        self.settings_default = self.main.settings_default['imp']
-        self.settings_custom = self.main.settings_custom['imp']
+        self.settings_default = self.main.settings_default['general']['imp']
+        self.settings_custom = self.main.settings_custom['general']['imp']
 
         # Files
         self.group_box_imp_files = QGroupBox(self.tr('Files'), self)
@@ -399,8 +399,8 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
-        self.settings_default = self.main.settings_default['exp']
-        self.settings_custom = self.main.settings_custom['exp']
+        self.settings_default = self.main.settings_default['general']['exp']
+        self.settings_custom = self.main.settings_custom['general']['exp']
 
         # Tables
         self.group_box_exp_tables = QGroupBox(self.tr('Tables'), self)

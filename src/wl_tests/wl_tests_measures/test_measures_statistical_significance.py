@@ -23,6 +23,8 @@ main = wl_test_init.Wl_Test_Main()
 main.settings_custom['measures']['statistical_significance'] = {
     'fishers_exact_test': {},
 
+    'log_likelihood_ratio_test': {},
+
     'mann_whitney_u_test': {
         'direction': 'Two-tailed',
         'apply_correction': True
@@ -49,8 +51,10 @@ def test_fishers_exact_test():
     assert round(wl_measures_statistical_significance.fishers_exact_test(main, 1, 3, 3, 1)[1], 3) == 0.986
 
 # References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. (p. 72)
-def test_log_likehood_ratio_test():
-    assert round(wl_measures_statistical_significance.log_likehood_ratio_test(main, 10, 0, 3, 31764)[0], 2) == 167.23
+def test_log_likelihood_ratio_test():
+    main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']['apply_correction'] = False
+
+    assert round(wl_measures_statistical_significance.log_likelihood_ratio_test(main, 10, 0, 3, 31764)[0], 2) == 167.23
 
 # References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil (p. 238)
 def test_mann_whitney_u_test():
@@ -82,7 +86,7 @@ def test_students_t_test_1_sample():
 
 if __name__ == '__main__':
     test_fishers_exact_test()
-    test_log_likehood_ratio_test()
+    test_log_likelihood_ratio_test()
     test_mann_whitney_u_test()
     test_pearsons_chi_squared_test()
     test_students_t_test_1_sample()
