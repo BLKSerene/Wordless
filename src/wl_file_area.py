@@ -31,9 +31,9 @@ from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 import openpyxl
 import PyPDF2
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, Qt
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import QAbstractItemDelegate, QCheckBox, QFileDialog, QLineEdit, QPushButton
 
 from wl_checking import wl_checking_files, wl_checking_misc
 from wl_dialogs import wl_dialogs, wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes

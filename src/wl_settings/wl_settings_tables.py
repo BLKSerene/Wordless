@@ -18,9 +18,7 @@
 
 import copy
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
 
 from wl_settings import wl_settings
 from wl_widgets import wl_boxes, wl_layouts
