@@ -1776,7 +1776,7 @@ def init_settings_default(main):
             # Settings - Measures - Statistical Significance
             'statistical_significance': {
                 'fishers_exact_test': {
-                    'direction': _tr('init_settings_default', 'Left-tailed')
+                    'direction': _tr('init_settings_default', 'Two-tailed')
                 },
 
                 'mann_whitney_u_test': {
