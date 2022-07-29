@@ -38,8 +38,6 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
         self.group_box_rank_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_rank_settings.layout().addWidget(self.checkbox_continue_numbering_after_ties, 0, 0)
 
-        self.group_box_rank_settings.layout().setRowStretch(1, 0)
-
         # Precision Settings
         self.group_box_precision_settings = QGroupBox(self.tr('Precision Settings'), self)
 
@@ -77,15 +75,19 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
+        # Rank Settings
         self.checkbox_continue_numbering_after_ties.setChecked(settings['rank_settings']['continue_numbering_after_ties'])
 
+        # Precision Settings
         self.spin_box_precision_decimals.setValue(settings['precision_settings']['precision_decimals'])
         self.spin_box_precision_pcts.setValue(settings['precision_settings']['precision_pcts'])
         self.spin_box_precision_p_vals.setValue(settings['precision_settings']['precision_p_vals'])
 
     def apply_settings(self):
+        # Rank Settings
         self.settings_custom['rank_settings']['continue_numbering_after_ties'] = self.checkbox_continue_numbering_after_ties.isChecked()
 
+        # Precision Settings
         self.settings_custom['precision_settings']['precision_decimals'] = self.spin_box_precision_decimals.value()
         self.settings_custom['precision_settings']['precision_pcts'] = self.spin_box_precision_pcts.value()
         self.settings_custom['precision_settings']['precision_p_vals'] = self.spin_box_precision_p_vals.value()
@@ -111,7 +113,7 @@ class Wl_Settings_Tables_Profiler(wl_settings.Wl_Settings_Node):
         self.group_box_general_settings.layout().addWidget(self.label_num_tokens_section_sttr, 0, 0)
         self.group_box_general_settings.layout().addWidget(self.spin_num_tokens_section_sttr, 0, 1)
 
-        self.group_box_general_settings.layout().setRowStretch(1, 0)
+        self.group_box_general_settings.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_general_settings, 0, 0)
