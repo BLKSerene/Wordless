@@ -41,6 +41,16 @@ def get_expected(c1x, c2x, cx1, cx2, cxx):
 
     return e11, e12, e21, e22
 
+# Do not over-correct when the difference between observed and expected value is small than 0.5
+# Reference: https://github.com/scipy/scipy/issues/13875
+def yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22):
+    c11 = c11 + min(0.5, numpy.abs(e11 - c11)) if e11 > c11 else c11 - min(0.5, numpy.abs(e11 - c11))
+    c12 = c12 + min(0.5, numpy.abs(e12 - c12)) if e12 > c12 else c12 - min(0.5, numpy.abs(e12 - c12))
+    c21 = c21 + min(0.5, numpy.abs(e21 - c21)) if e21 > c21 else c21 - min(0.5, numpy.abs(e21 - c21))
+    c22 = c22 + min(0.5, numpy.abs(e22 - c22)) if e22 > c22 else c22 - min(0.5, numpy.abs(e22 - c22))
+
+    return c11, c12, c21, c22
+
 # Berry-Rogghe's z-score
 # References: Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), The computer and literary studies (pp. 103–112). Edinburgh University Press.
 def berry_rogghes_z_score(main, c11, c12, c21, c22, span):
@@ -85,9 +95,12 @@ def fishers_exact_test(main, c11, c12, c21, c22):
 
 # Log-likelihood Ratio
 # References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74.
-def log_likehood_ratio_test(main, c11, c12, c21, c22):
+def log_likelihood_ratio_test(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
+
+    if main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']['apply_correction']:
+        c11, c12, c21, c22 = yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22)
 
     log_likelihood_ratio_11 = c11 * numpy.log(c11 / e11) if c11 and e11 else 0
     log_likelihood_ratio_12 = c12 * numpy.log(c12 / e12) if c12 and e12 else 0
@@ -135,13 +148,8 @@ def pearsons_chi_squared_test(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    # Do not over-correct when the difference between observed and expected value is small than 0.5
-    # Reference: https://github.com/scipy/scipy/issues/13875
     if main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction']:
-        c11 = c11 + min(0.5, numpy.abs(e11 - c11)) if e11 > c11 else c11 - min(0.5, numpy.abs(e11 - c11))
-        c12 = c12 + min(0.5, numpy.abs(e12 - c12)) if e12 > c12 else c12 - min(0.5, numpy.abs(e12 - c12))
-        c21 = c21 + min(0.5, numpy.abs(e21 - c21)) if e21 > c21 else c21 - min(0.5, numpy.abs(e21 - c21))
-        c22 = c22 + min(0.5, numpy.abs(e22 - c22)) if e22 > c22 else c22 - min(0.5, numpy.abs(e22 - c22))
+        c11, c12, c21, c22 = yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22)
 
     chi_square_11 = (c11 - e11) ** 2 / e11 if e11 else 0
     chi_square_12 = (c12 - e12) ** 2 / e12 if e12 else 0

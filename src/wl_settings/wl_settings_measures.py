@@ -145,6 +145,14 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         self.group_box_fishers_exact_test.layout().setColumnStretch(2, 1)
 
+        # Log-likelihood Ratio Test
+        self.group_box_log_likelihood_ratio_test = QGroupBox(self.tr('Log-likelihood Ratio Test'), self)
+
+        self.checkbox_log_likelihood_ratio_test_apply_correction = QCheckBox(self.tr("Apply Yates's correction for continuity"))
+
+        self.group_box_log_likelihood_ratio_test.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_log_likelihood_ratio_test.layout().addWidget(self.checkbox_log_likelihood_ratio_test_apply_correction, 0, 0)
+
         # Mann-Whitney U Test
         self.group_box_mann_whitney_u_test = QGroupBox(self.tr('Mann-Whitney U Test'), self)
 
@@ -261,14 +269,15 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_fishers_exact_test, 0, 0)
-        self.layout().addWidget(self.group_box_mann_whitney_u_test, 1, 0)
-        self.layout().addWidget(self.group_box_pearsons_chi_squared_test, 2, 0)
-        self.layout().addWidget(self.group_box_students_t_test_2_sample, 3, 0)
-        self.layout().addWidget(self.group_box_welchs_t_test, 4, 0)
-        self.layout().addWidget(self.group_box_z_score, 5, 0)
+        self.layout().addWidget(self.group_box_log_likelihood_ratio_test, 1, 0)
+        self.layout().addWidget(self.group_box_mann_whitney_u_test, 2, 0)
+        self.layout().addWidget(self.group_box_pearsons_chi_squared_test, 3, 0)
+        self.layout().addWidget(self.group_box_students_t_test_2_sample, 4, 0)
+        self.layout().addWidget(self.group_box_welchs_t_test, 5, 0)
+        self.layout().addWidget(self.group_box_z_score, 6, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(6, 1)
+        self.layout().setRowStretch(7, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -278,6 +287,9 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         # Fisher's Exact Test
         self.combo_box_fishers_exact_test_direction.setCurrentText(settings['fishers_exact_test']['direction'])
+
+        # Log-likelihood Ratio Test
+        self.checkbox_log_likelihood_ratio_test_apply_correction.setChecked(settings['log_likelihood_ratio_test']['apply_correction'])
 
         # Mann-Whitney U Test
         self.spin_box_mann_whitney_u_test_num_sections.setValue(settings['mann_whitney_u_test']['num_sections'])
@@ -302,6 +314,9 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
     def apply_settings(self):
         # Fisher's Exact Test
         self.settings_custom['fishers_exact_test']['direction'] = self.combo_box_fishers_exact_test_direction.currentText()
+
+        # Log-likelihood Ratio Test
+        self.settings_custom['log_likelihood_ratio_test']['apply_correction'] = self.checkbox_log_likelihood_ratio_test_apply_correction.isChecked()
 
         # Mann-Whitney U Test
         self.settings_custom['mann_whitney_u_test']['num_sections'] = self.spin_box_mann_whitney_u_test_num_sections.value()
