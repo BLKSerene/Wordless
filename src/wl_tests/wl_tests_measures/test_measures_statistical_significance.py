@@ -54,13 +54,13 @@ def test_log_likehood_ratio_test():
 
 # References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil (p. 238)
 def test_mann_whitney_u_test():
-    u_stat = wl_measures_statistical_significance.mann_whitney_u_test(
+    u1 = wl_measures_statistical_significance.mann_whitney_u_test(
         main,
         [12, 15, 18, 24, 88],
         [3, 3, 13, 27, 33]
     )[0]
 
-    assert 5 * (5 + 1) / 2 + u_stat == 24
+    assert 5 * (5 + 1) / 2 + u1 == 31
 
 # References:
 #     Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. (p. 73)

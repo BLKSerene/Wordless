@@ -16,14 +16,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import math
+import numpy
 
 # Log-likelihood Ratio
 # Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
 def bayes_factor_t_test(t_statistic, num_sections):
-    return t_statistic ** 2 - math.log(num_sections, math.e)
+    return t_statistic ** 2 - numpy.log(num_sections)
 
 # Student's t-test (2-sample)
 # Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
 def bayes_factor_log_likelihood_ratio_test(log_likelihood_ratio, num_tokens):
-    return log_likelihood_ratio - math.log(num_tokens, math.e)
+    return log_likelihood_ratio - numpy.log(num_tokens)
