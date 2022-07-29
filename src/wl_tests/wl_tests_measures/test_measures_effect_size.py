@@ -61,3 +61,14 @@ def test_pmi():
 # Reference: Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.
 def test_squared_phi_coeff():
     assert round(wl_measures_effect_size.squared_phi_coeff(main, 31950, 12004, 4793, 848330), 2) == 0.62
+
+if __name__ == '__main__':
+    test_pct_diff()
+    test_dices_coeff()
+    test_diff_coeff()
+    test_kilgarriffs_ratio()
+    test_log_ratio()
+    test_min_sensitivity()
+    test_odds_ratio()
+    test_pmi()
+    test_squared_phi_coeff()

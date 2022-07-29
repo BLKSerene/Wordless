@@ -18,9 +18,9 @@
 
 import copy
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import QGroupBox, QLabel, QPushButton, QTextEdit
 
 from wl_nlp import wl_nlp_utils, wl_sentence_tokenization
 from wl_settings import wl_settings
@@ -52,7 +52,7 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['sentence_tokenization']
 
         # Sentence Tokenizer Settings
-        group_box_sentence_tokenizer_settings = QGroupBox(self.tr('Sentence Tokenizer Settings'), self)
+        self.group_box_sentence_tokenizer_settings = QGroupBox(self.tr('Sentence Tokenizer Settings'), self)
 
         self.table_sentence_tokenizers = wl_tables.Wl_Table(
             self,
@@ -84,11 +84,11 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
 
         self.table_sentence_tokenizers.enable_updates()
 
-        group_box_sentence_tokenizer_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_sentence_tokenizer_settings.layout().addWidget(self.table_sentence_tokenizers, 0, 0)
+        self.group_box_sentence_tokenizer_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_sentence_tokenizer_settings.layout().addWidget(self.table_sentence_tokenizers, 0, 0)
 
         # Preview
-        group_box_preview = QGroupBox(self.tr('Preview'), self)
+        self.group_box_preview = QGroupBox(self.tr('Preview'), self)
 
         self.label_sentence_tokenization_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_sentence_tokenization_preview_lang = wl_boxes.Wl_Combo_Box(self)
@@ -114,14 +114,14 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(wl_layouts.Wl_Layout())
-        group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
-        group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_samples, 1, 0)
-        group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_results, 1, 1)
+        self.group_box_preview.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
+        self.group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_samples, 1, 0)
+        self.group_box_preview.layout().addWidget(self.text_edit_sentence_tokenization_preview_results, 1, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_sentence_tokenizer_settings, 0, 0)
-        self.layout().addWidget(group_box_preview, 1, 0)
+        self.layout().addWidget(self.group_box_sentence_tokenizer_settings, 0, 0)
+        self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(0, 3)

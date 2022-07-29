@@ -1775,20 +1775,6 @@ def init_settings_default(main):
 
             # Settings - Measures - Statistical Significance
             'statistical_significance': {
-                'z_score': {
-                    'direction': _tr('init_settings_default', 'Two-tailed')
-                },
-
-                'students_t_test_2_sample': {
-                    'num_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
-                    'variances': _tr('init_settings_default', 'Equal'),
-                },
-
-                'pearsons_chi_squared_test': {
-                    'apply_correction': True
-                },
-
                 'fishers_exact_test': {
                     'direction': _tr('init_settings_default', 'Left-tailed')
                 },
@@ -1798,6 +1784,24 @@ def init_settings_default(main):
                     'use_data': _tr('init_settings_default', 'Relative Frequency'),
                     'direction': _tr('init_settings_default', 'Two-tailed'),
                     'apply_correction': True
+                },
+
+                'pearsons_chi_squared_test': {
+                    'apply_correction': True
+                },
+
+                'students_t_test_2_sample': {
+                    'num_sections': 5,
+                    'use_data': _tr('init_settings_default', 'Relative Frequency')
+                },
+
+                'welchs_t_test': {
+                    'num_sections': 5,
+                    'use_data': _tr('init_settings_default', 'Relative Frequency')
+                },
+
+                'z_score': {
+                    'direction': _tr('init_settings_default', 'Two-tailed')
                 }
             },
 

@@ -23,9 +23,9 @@ import traceback
 
 import numpy
 import scipy
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import QPushButton, QGroupBox
 
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_measures import wl_measures_misc, wl_measures_readability

@@ -35,9 +35,13 @@ if getattr(sys, '_MEIPASS', False):
 import matplotlib
 import nltk
 import requests
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, QObject, Qt, QTranslator
+from PyQt5.QtGui import QFont, QIcon, QKeySequence, QPixmap
+from PyQt5.QtWidgets import (
+    QActionGroup, QApplication, QCheckBox, QDialog, QLabel,
+    QMainWindow, QMessageBox, QPushButton, QSplashScreen, QTabWidget,
+    QTextEdit, QWidget
+)
 import pythainlp
 import underthesea.file_utils
 

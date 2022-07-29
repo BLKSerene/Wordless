@@ -18,9 +18,12 @@
 
 import os
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QSize, Qt
+from PyQt5.QtGui import QStandardItem, QStandardItemModel
+from PyQt5.QtWidgets import (
+    QAbstractItemView, QDialog, QHeaderView, QMessageBox, QPushButton,
+    QStackedWidget, QTreeView, QWidget
+)
 
 from wl_checking import wl_checking_misc
 from wl_dialogs import wl_msg_boxes

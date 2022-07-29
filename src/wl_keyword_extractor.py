@@ -21,9 +21,9 @@ import copy
 import traceback
 
 import numpy
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import QLabel, QPushButton, QGroupBox
 
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
@@ -483,12 +483,16 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
                 if text_test_significance in [
                     _tr('Wl_Worker_Keyword_Extractor', "Student's t-test (2-sample)"),
+                    _tr('Wl_Worker_Keyword_Extractor', "Welch's t-test"),
                     _tr('Wl_Worker_Keyword_Extractor', 'Mann-Whitney U Test')
                 ]:
                     # Test Statistic, p-value & Bayes Factor
                     if text_test_significance == _tr('Wl_Worker_Keyword_Extractor', "Student's t-test (2-sample)"):
                         num_sections = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_sections']
                         use_data = self.main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
+                    elif text_test_significance == _tr('Wl_Worker_Keyword_Extractor', "Welch's t-test"):
+                        num_sections = self.main.settings_custom['measures']['statistical_significance']['welchs_t_test']['num_sections']
+                        use_data = self.main.settings_custom['measures']['statistical_significance']['welchs_t_test']['use_data']
                     elif text_test_significance == _tr('Wl_Worker_Keyword_Extractor', 'Mann-Whitney U Test'):
                         num_sections = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_sections']
                         use_data = self.main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']

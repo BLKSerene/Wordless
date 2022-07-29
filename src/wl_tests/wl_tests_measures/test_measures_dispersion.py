@@ -48,3 +48,12 @@ def test_rosengrens_s():
 # Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 408)
 def test_zhangs_distributional_consistency():
     assert round(wl_measures_dispersion.zhangs_distributional_consistency([1, 2, 3, 4, 5]), 3) == 0.937
+
+if __name__ == '__main__':
+    test_carrolls_d2()
+    test_griess_dp()
+    test_griess_dp_norm()
+    test_juillands_d()
+    test_lynes_d3()
+    test_rosengrens_s()
+    test_zhangs_distributional_consistency()

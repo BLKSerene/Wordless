@@ -2839,6 +2839,16 @@ def init_settings_global():
                     ],
 
                     'func': wl_measures_statistical_significance.students_t_test_2_sample
+                },
+
+                _tr('init_settings_global', "Welch's t-test"): {
+                    'cols': [
+                        _tr('init_settings_global', 't-statistic'),
+                        _tr('init_settings_global', 'p-value'),
+                        None
+                    ],
+
+                    'func': wl_measures_statistical_significance.welchs_t_test
                 }
             }
         },

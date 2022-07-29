@@ -1068,9 +1068,9 @@ Rosengren's KF [[20]](#doc-eng-5-20)|![Formula](/doc/measures/adjusted_freq/rose
 <span id="doc-eng-4-4-3"></span>
 #### 4.4.3 Tests of Statistical Significance & Measures of Effect Size [[Back to Contents]](#doc-eng)
 
-To calculate the statistical significance, bayes factor and effect size (except **Student's t-test (Two-sample)** and **Mann-Whitney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
+To calculate the statistical significance, bayes factor and effect size (except **Student's t-test (2-sample)**, **Welch's t-test**, and **Mann-Whitney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
-As for collocates (in *Collocation* and *Colligation*):
+As for collocates (in *Collocation Extractor* and *Colligation Extractor*):
 
 Observed Values|Word 1                       |Not Word 1                   |Row Total
 --------------:|:---------------------------:|:---------------------------:|:---------------------------:
@@ -1088,7 +1088,7 @@ Not Word 2     |![e21](/doc/measures/e21.png)|![e22](/doc/measures/e22.png)
 ![o21](/doc/measures/o21.png): Number of occurrences of any word except Word 1 followed by Word 2<br>
 ![o22](/doc/measures/o22.png): Number of occurrences of any word except Word 1 followed by any word except Word 2
 
-As for keywords (in *Keyword*):
+As for keywords (in *Keyword Extractor*):
 
 Observed Values|Observed File                |Reference File               |Row Total
 --------------:|:---------------------------:|:---------------------------:|:---------------------------:
@@ -1106,7 +1106,7 @@ Not Word *w*   |![e21](/doc/measures/e21.png)|![e22](/doc/measures/e22.png)
 ![o21](/doc/measures/o21.png): Number of occurrences of all words except Word *w* in the observed file<br>
 ![o22](/doc/measures/o22.png): Number of occurrences of all words except Word *w* in the reference file
 
-To conduct **Student's t-test (Two-sample)** or **Mann-Whitney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![fo-bar](/doc/measures/fo_bar.png) and ![fr-bar](/doc/measures/fr_bar.png) respectively.
+To conduct **Student's t-test (2-sample)**, **Welch's t-test**, or **Mann-Whitney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![fo-bar](/doc/measures/fo_bar.png) and ![fr-bar](/doc/measures/fr_bar.png) respectively.
 
 <!--
 Berry-Rogghe's z-score:
@@ -1155,6 +1155,7 @@ Mann-Whitney U Test         [[27]](#doc-eng-5-27)|See: [Mann–Whitney U test - 
 Pearson's Chi-squared Test  [[28]](#doc-eng-5-28)[[29]](#doc-eng-5-29)|![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.png)
 Student's t-test (1-sample) [[30]](#doc-eng-5-30)|![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.png)
 Student's t-test (2-sample) [[31]](#doc-eng-5-31)|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.png)
+Welch's t-test                                   |Same as Student's t-test (2-sample), but with different degrees of freedom (hence a different p-value).
 z-score                     [[32]](#doc-eng-5-32)|![Formula](/doc/measures/statistical_significance/z_score.png)
 
 <!--
