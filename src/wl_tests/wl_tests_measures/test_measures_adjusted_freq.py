@@ -58,3 +58,10 @@ def test_engwalls_fm():
 # Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 409)
 def test_kromers_ur():
     assert round(wl_measures_adjusted_freq.kromers_ur([2, 1, 1, 1, 0]), 1) == 4.5
+
+if __name__ == '__main__':
+    test_carrolls_um()
+    test_juillands_u()
+    test_rosengres_kf()
+    test_engwalls_fm()
+    test_kromers_ur()

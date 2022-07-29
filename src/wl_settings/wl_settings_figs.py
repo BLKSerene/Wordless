@@ -20,9 +20,8 @@ import copy
 import os
 
 import matplotlib
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QFont
+from PyQt5.QtWidgets import QFileDialog, QGroupBox, QLabel, QLineEdit, QPushButton
 import wordcloud
 
 from wl_checking import wl_checking_misc

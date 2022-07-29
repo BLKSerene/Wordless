@@ -242,16 +242,15 @@ def students_t_test_1_sample(main, c11, c12, c21, c22):
 # Student's t-test (2-sample)
 # References: Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. Language and Computers, 68, 247–269.
 def students_t_test_2_sample(main, counts_observed, counts_ref):
-    variances = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['variances']
-
-    if variances == _tr('students_t_test_2_sample', 'Equal'):
-        t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = True)
-    elif variances == _tr('students_t_test_2_sample', 'Unequal'):
-        t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = False)
-
+    t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = True)
     bayes_factor = wl_measures_bayes_factor.bayes_factor_t_test(t_stat, len(counts_observed) + len(counts_ref))
 
     return [t_stat, p_value, bayes_factor]
+
+def welchs_t_test(main, counts_observed, counts_ref):
+    t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = False)
+
+    return [t_stat, p_value, None]
 
 # z-score
 # References: Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), Proceedings of the symposium on statistical association methods for mechanized documentation (pp. 61–148). National Bureau of Standards.
