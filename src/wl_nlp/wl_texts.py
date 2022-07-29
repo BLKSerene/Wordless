@@ -150,7 +150,7 @@ class Wl_Text:
             tags_sentence = []
             tags_word = []
 
-            for _, level, opening_tag, _ in self.main.settings_custom['tags']['tags_xml']:
+            for _, level, opening_tag, _ in self.main.settings_custom['files']['tags']['xml_tag_settings']:
                 if level == _tr('Wl_Text', 'Paragraph'):
                     tags_para.append(opening_tag[1:-1])
                 elif level == _tr('Wl_Text', 'Sentence'):
@@ -263,7 +263,7 @@ class Wl_Text_Ref:
         elif file_ext == '.xml' and self.tagged:
             tags_word = []
 
-            for _, level, opening_tag, _ in self.main.settings_custom['tags']['tags_xml']:
+            for _, level, opening_tag, _ in self.main.settings_custom['files']['tags']['xml_tag_settings']:
                 if level == _tr('Wl_Text', 'Word'):
                     tags_word.append(opening_tag[1:-1])
 
