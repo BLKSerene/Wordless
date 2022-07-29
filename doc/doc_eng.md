@@ -952,30 +952,30 @@ Write Score:
 
 Measure of Readability|Formula
 ----------------------|-------
-Automated Readability Index      [[1]](#doc-eng-5-1)  |![Formula](/doc/measures/readability/ari.png)
-Coleman-Liau Index               [[2]](#doc-eng-5-2)  |![Formula](/doc/measures/readability/coleman_liau_index.png)
-Dale-Chall Readibility Score     [[3]](#doc-eng-5-3)[[4]](#doc-eng-5-4)|![Formula](/doc/measures/readability/dale_chall_readability_score.png)<br>where **NumDifficultWords** is the number of words outside the Dale list of 3000 easy words [[4]](#doc-eng-5-4)<br><br>* This test applies only to **English texts**.
-Devereux Readability Index       [[5]](#doc-eng-5-5)  |![Formula](/doc/measures/readability/devereux_readability_index.png)
-Flesch Reading Ease              [[6]](#doc-eng-5-6)  |![Formula](/doc/measures/readability/re.png)<br>* This test requires **built-in syllable tokenization support**.
-Flesch Reading Ease (Simplified) [[7]](#doc-eng-5-7)  |![Formula](/doc/measures/readability/re_simplified.png)<br>where NumWords1Syl is the number of monosyllabic words<br><br>* This test requires **built-in syllable tokenization support**.
-Flesch-Kincaid Grade Level       [[8]](#doc-eng-5-8)  |![Formula](/doc/measures/readability/flesch_kincaid_grade_level.png)<br>* This test requires **built-in syllable tokenization support**.
-FORCAST Grade Level              [[9]](#doc-eng-5-9)  |![Formula](/doc/measures/readability/rgl.png)<br>where **NumWords1Syl** is the number of monosyllabic words<br><br>* This test requires **built-in syllable tokenization support**.<br>* **A sample of 150 words** is taken randomly from the text, thus the text must be at least 150 words long.
-Gunning Fog Index                [[10]](#doc-eng-5-10)|![Formula](/doc/measures/readability/fog_index.png)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables which end with *-ed* or *-es*<br><br>* This test applies only to **English texts**.
-SMOG Grade                       [[11]](#doc-eng-5-11)|![Formula](/doc/measures/readability/smog_grade.png)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables<br><br>* **A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text** is taken from the text, thus the text must be at least 30 sentences long.
-Spache Grade Level               [[12]](#doc-eng-5-12)[[13]](#doc-eng-5-13)|![Formula](/doc/measures/readability/spache_grade_level.png)<br>where **NumDifficultWords** is the number of words outside the Dale list of 769 easy words [[13]](#doc-eng-5-13)<br><br>* This test requires **built-in syllable tokenization support**.<br>* **Three samples each of 100 words** are taken randomly from the text and the mean of the three scores is calculated, thus the text must be at least 100 words long.
-Write Score                      [[14]](#doc-eng-5-14)|![Formula](/doc/measures/readability/write_score.png)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*<br><br>* This test applies only to **English texts**.<br>* **A sample of 100 words** is taken randomly from the text, thus the text must be at least 100 words long.
+Automated Readability Index      [[1]](#doc-eng-5-1)  |![Formula](/doc/measures/readability/ari.svg)
+Coleman-Liau Index               [[2]](#doc-eng-5-2)  |![Formula](/doc/measures/readability/coleman_liau_index.svg)
+Dale-Chall Readibility Score     [[3]](#doc-eng-5-3)[[4]](#doc-eng-5-4)|![Formula](/doc/measures/readability/dale_chall_readability_score.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 3000 easy words [[4]](#doc-eng-5-4)<br><br>* This test applies only to **English texts**.
+Devereux Readability Index       [[5]](#doc-eng-5-5)  |![Formula](/doc/measures/readability/devereux_readability_index.svg)
+Flesch Reading Ease              [[6]](#doc-eng-5-6)  |![Formula](/doc/measures/readability/re.svg)<br>* This test requires **built-in syllable tokenization support**.
+Flesch Reading Ease (Simplified) [[7]](#doc-eng-5-7)  |![Formula](/doc/measures/readability/re_simplified.svg)<br>where NumWords1Syl is the number of monosyllabic words<br><br>* This test requires **built-in syllable tokenization support**.
+Flesch-Kincaid Grade Level       [[8]](#doc-eng-5-8)  |![Formula](/doc/measures/readability/flesch_kincaid_grade_level.svg)<br>* This test requires **built-in syllable tokenization support**.
+FORCAST Grade Level              [[9]](#doc-eng-5-9)  |![Formula](/doc/measures/readability/rgl.svg)<br>where **NumWords1Syl** is the number of monosyllabic words<br><br>* This test requires **built-in syllable tokenization support**.<br>* **A sample of 150 words** is taken randomly from the text, thus the text must be at least 150 words long.
+Gunning Fog Index                [[10]](#doc-eng-5-10)|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables which end with *-ed* or *-es*<br><br>* This test applies only to **English texts**.
+SMOG Grade                       [[11]](#doc-eng-5-11)|![Formula](/doc/measures/readability/smog_grade.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables<br><br>* **A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text** is taken from the text, thus the text must be at least 30 sentences long.
+Spache Grade Level               [[12]](#doc-eng-5-12)[[13]](#doc-eng-5-13)|![Formula](/doc/measures/readability/spache_grade_level.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 769 easy words [[13]](#doc-eng-5-13)<br><br>* This test requires **built-in syllable tokenization support**.<br>* **Three samples each of 100 words** are taken randomly from the text and the mean of the three scores is calculated, thus the text must be at least 100 words long.
+Write Score                      [[14]](#doc-eng-5-14)|![Formula](/doc/measures/readability/write_score.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*<br><br>* This test applies only to **English texts**.<br>* **A sample of 100 words** is taken randomly from the text, thus the text must be at least 100 words long.
 
 <span id="doc-eng-4-4-2"></span>
 #### 4.4.2 Measures of Dispersion & Adjusted Frequency [[Back to Contents]](#doc-eng)
 
-The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies over all sub-sections is denoted by ![f-bar](/doc/measures/f_bar.png).
+The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by **F₁**, **F₂**, **F₃** ... **Fn**. The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies over all sub-sections is denoted by ![f_bar](/doc/measures/f_bar.svg).
 
 Then, the dispersion and adjusted frequency of the word will be calcuated as follows:
 
 <!--
 Carroll's D₂:
     \begin{align*}
-        H &= \ln F - \frac{\sum_{i = 1}^n \times \ln F_{i}}{F} \\
+        H &= \ln F - \frac{\sum_{i = 1}^n \left(F_i \times \ln F_i\right)}{F} \\
         D_2 &= \frac{H}{\ln n}
     \end{align*}
 
@@ -1017,18 +1017,18 @@ Zhang's Distributional Consistency:
 
 Measure of Dispersion|Formula
 ---------------------|-------
-Carroll's D₂                       [[15]](#doc-eng-5-15)|![Formula](/doc/measures/dispersion/carrolls_d2.png)
-Gries's DP                         [[16]](#doc-eng-5-16)|![Formula](/doc/measures/dispersion/griess_dp.png)
-Gries's DPnorm                     [[17]](#doc-eng-5-17)|![Formula](/doc/measures/dispersion/griess_dp_norm.png)
-Juilland's D                       [[18]](#doc-eng-5-18)|![Formula](/doc/measures/dispersion/juillands_d.png)
-Lyne's D₃                          [[19]](#doc-eng-5-19)|![Formula](/doc/measures/dispersion/lynes_d3.png)
-Rosengren's S                      [[20]](#doc-eng-5-20)|![Formula](/doc/measures/dispersion/rosengrens_s.png)
-Zhang's Distributional Consistency [[21]](#doc-eng-5-21)|![Formula](/doc/measures/dispersion/zhangs_distributional_consistency.png)
+Carroll's D₂                       [[15]](#doc-eng-5-15)|![Formula](/doc/measures/dispersion/carrolls_d2.svg)
+Gries's DP                         [[16]](#doc-eng-5-16)|![Formula](/doc/measures/dispersion/griess_dp.svg)
+Gries's DPnorm                     [[17]](#doc-eng-5-17)|![Formula](/doc/measures/dispersion/griess_dp_norm.svg)
+Juilland's D                       [[18]](#doc-eng-5-18)|![Formula](/doc/measures/dispersion/juillands_d.svg)
+Lyne's D₃                          [[19]](#doc-eng-5-19)|![Formula](/doc/measures/dispersion/lynes_d3.svg)
+Rosengren's S                      [[20]](#doc-eng-5-20)|![Formula](/doc/measures/dispersion/rosengrens_s.svg)
+Zhang's Distributional Consistency [[21]](#doc-eng-5-21)|![Formula](/doc/measures/dispersion/zhangs_distributional_consistency.svg)
 
 <!--
 Carroll's Um:
     \begin{align*}
-        H &= \ln F - \frac{\sum_{i = 1}^n \times \ln F_{i}}{F} \\
+        H &= \ln F - \frac{\sum_{i = 1}^n \left(F_i \times \ln F_i\right)}{F} \\
         D_2 &= \frac{H}{\ln n} \\
         U_m & = F \times D_2 + \left(1 - D_2\right) \times \frac{F}{n}
     \end{align*}
@@ -1059,11 +1059,11 @@ Rosengren's KF:
 
 Measure of Adjusted Frequency|Formula
 -----------------------------|-------
-Carroll's Um   [[15]](#doc-eng-5-15)|![Formula](/doc/measures/adjusted_freq/carrolls_um.png)
-Engwall's FM   [[22]](#doc-eng-5-22)|![Formula](/doc/measures/adjusted_freq/engwalls_fm.png)<br>where **R** is the number of sub-sections in which the word appears at least once
-Juilland's U   [[18]](#doc-eng-5-18)|![Formula](/doc/measures/adjusted_freq/juillands_u.png)
-Kromer's UR    [[23]](#doc-eng-5-23)|![Formula](/doc/measures/adjusted_freq/kromers_ur.png)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant)
-Rosengren's KF [[20]](#doc-eng-5-20)|![Formula](/doc/measures/adjusted_freq/rosengrens_kf.png)
+Carroll's Um   [[15]](#doc-eng-5-15)|![Formula](/doc/measures/adjusted_freq/carrolls_um.svg)
+Engwall's FM   [[22]](#doc-eng-5-22)|![Formula](/doc/measures/adjusted_freq/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once
+Juilland's U   [[18]](#doc-eng-5-18)|![Formula](/doc/measures/adjusted_freq/juillands_u.svg)
+Kromer's UR    [[23]](#doc-eng-5-23)|![Formula](/doc/measures/adjusted_freq/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant)
+Rosengren's KF [[20]](#doc-eng-5-20)|![Formula](/doc/measures/adjusted_freq/rosengrens_kf.svg)
 
 <span id="doc-eng-4-4-3"></span>
 #### 4.4.3 Tests of Statistical Significance & Measures of Effect Size [[Back to Contents]](#doc-eng)
@@ -1073,40 +1073,40 @@ To calculate the statistical significance, bayes factor and effect size (except 
 As for collocates (in *Collocation Extractor* and *Colligation Extractor*):
 
 Observed Values|Word 1                       |Not Word 1                   |Row Total
---------------:|:---------------------------:|:---------------------------:|:---------------------------:
-Word 2         |![o11](/doc/measures/o11.png)|![o12](/doc/measures/o12.png)|![o1x](/doc/measures/o1x.png)
-Not Word 2     |![o21](/doc/measures/o21.png)|![o22](/doc/measures/o22.png)|![o2x](/doc/measures/o2x.png)
-Column Total   |![ox1](/doc/measures/ox1.png)|![ox2](/doc/measures/ox2.png)|![oxx](/doc/measures/oxx.png)
+--------------:|:-----------------------------:|:-----------------------------:|:-----------------------------:
+Word 2         |![o_11](/doc/measures/o_11.svg)|![o_12](/doc/measures/o_12.svg)|![o_1x](/doc/measures/o_1x.svg)
+Not Word 2     |![o_21](/doc/measures/o_21.svg)|![o_22](/doc/measures/o_22.svg)|![o_2x](/doc/measures/o_2x.svg)
+Column Total   |![o_x1](/doc/measures/o_x1.svg)|![o_x2](/doc/measures/o_x2.svg)|![o_xx](/doc/measures/o_xx.svg)
 
 Expected Values|Word 1                       |Not Word 1
---------------:|:---------------------------:|:---------------------------:
-Word 2         |![e11](/doc/measures/e11.png)|![e12](/doc/measures/e12.png) 
-Not Word 2     |![e21](/doc/measures/e21.png)|![e22](/doc/measures/e22.png)
+--------------:|:-----------------------------:|:-----------------------------:
+Word 2         |![e_11](/doc/measures/e_11.svg)|![e_12](/doc/measures/e_12.svg) 
+Not Word 2     |![e_21](/doc/measures/e_21.svg)|![e_22](/doc/measures/e_22.svg)
 
-![o11](/doc/measures/o11.png): Number of occurrences of Word 1 followed by Word 2<br>
-![o12](/doc/measures/o12.png): Number of occurrences of Word 1 followed by any word except Word 2<br>
-![o21](/doc/measures/o21.png): Number of occurrences of any word except Word 1 followed by Word 2<br>
-![o22](/doc/measures/o22.png): Number of occurrences of any word except Word 1 followed by any word except Word 2
+![o_11](/doc/measures/o_11.svg): Number of occurrences of Word 1 followed by Word 2<br>
+![o_12](/doc/measures/o_12.svg): Number of occurrences of Word 1 followed by any word except Word 2<br>
+![o_21](/doc/measures/o_21.svg): Number of occurrences of any word except Word 1 followed by Word 2<br>
+![o_22](/doc/measures/o_22.svg): Number of occurrences of any word except Word 1 followed by any word except Word 2
 
 As for keywords (in *Keyword Extractor*):
 
 Observed Values|Observed File                |Reference File               |Row Total
---------------:|:---------------------------:|:---------------------------:|:---------------------------:
-Word *w*       |![o11](/doc/measures/o11.png)|![o12](/doc/measures/o12.png)|![o1x](/doc/measures/o1x.png)
-Not Word *w*   |![o21](/doc/measures/o21.png)|![o22](/doc/measures/o22.png)|![o2x](/doc/measures/o2x.png)
-Column Total   |![ox1](/doc/measures/ox1.png)|![ox2](/doc/measures/ox2.png)|![oxx](/doc/measures/oxx.png)
+--------------:|:-----------------------------:|:-----------------------------:|:-----------------------------:
+Word *w*       |![o_11](/doc/measures/o_11.svg)|![o_12](/doc/measures/o_12.svg)|![o_1x](/doc/measures/o_1x.svg)
+Not Word *w*   |![o_21](/doc/measures/o_21.svg)|![o_22](/doc/measures/o_22.svg)|![o_2x](/doc/measures/o_2x.svg)
+Column Total   |![o_x1](/doc/measures/o_x1.svg)|![o_x2](/doc/measures/o_x2.svg)|![o_xx](/doc/measures/o_xx.svg)
 
 Expected Values|Observed File                |Reference File
---------------:|:---------------------------:|:---------------------------:
-Word *w*       |![e11](/doc/measures/e11.png)|![e12](/doc/measures/e12.png) 
-Not Word *w*   |![e21](/doc/measures/e21.png)|![e22](/doc/measures/e22.png)
+--------------:|:-----------------------------:|:-----------------------------:
+Word *w*       |![e_11](/doc/measures/e_11.svg)|![e_12](/doc/measures/e_12.svg) 
+Not Word *w*   |![e_21](/doc/measures/e_21.svg)|![e_22](/doc/measures/e_22.svg)
 
-![o11](/doc/measures/o11.png): Number of occurrences of Word *w* in the observed file<br>
-![o12](/doc/measures/o12.png): Number of occurrences of Word *w* in the reference file<br>
-![o21](/doc/measures/o21.png): Number of occurrences of all words except Word *w* in the observed file<br>
-![o22](/doc/measures/o22.png): Number of occurrences of all words except Word *w* in the reference file
+![o_11](/doc/measures/o_11.svg): Number of occurrences of Word *w* in the observed file<br>
+![o_12](/doc/measures/o_12.svg): Number of occurrences of Word *w* in the reference file<br>
+![o_21](/doc/measures/o_21.svg): Number of occurrences of all words except Word *w* in the observed file<br>
+![o_22](/doc/measures/o_22.svg): Number of occurrences of all words except Word *w* in the reference file
 
-To conduct **Student's t-test (2-sample)**, **Welch's t-test**, or **Mann-Whitney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![fo-bar](/doc/measures/fo_bar.png) and ![fr-bar](/doc/measures/fr_bar.png) respectively.
+To conduct **Student's t-test (2-sample)**, **Welch's t-test**, or **Mann-Whitney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![fo_bar](/doc/measures/fo_bar.svg) and ![fr_bar](/doc/measures/fr_bar.svg) respectively.
 
 <!--
 Berry-Rogghe's z-score:
@@ -1148,15 +1148,15 @@ Then the statistical significance, bayes factor and effect size will be calculat
 
 Test of Statistical Significance|Formula
 --------------------------------|-------
-Berry-Rogghe's z-score      [[24]](#doc-eng-5-24)|![Formula](/doc/measures/statistical_significance/berry_rogghes_z_score.png)<br>where **S** is the average span size on both sides of the node word.
+Berry-Rogghe's z-score      [[24]](#doc-eng-5-24)|![Formula](/doc/measures/statistical_significance/berry_rogghes_z_score.svg)<br>where **S** is the average span size on both sides of the node word.
 Fisher's Exact Test         [[25]](#doc-eng-5-25)|See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
-Log-likelihood Ratio        [[26]](#doc-eng-5-26)|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.png)
+Log-likelihood Ratio        [[26]](#doc-eng-5-26)|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.svg)
 Mann-Whitney U Test         [[27]](#doc-eng-5-27)|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
-Pearson's Chi-squared Test  [[28]](#doc-eng-5-28)[[29]](#doc-eng-5-29)|![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.png)
-Student's t-test (1-sample) [[30]](#doc-eng-5-30)|![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.png)
-Student's t-test (2-sample) [[31]](#doc-eng-5-31)|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.png)
+Pearson's Chi-squared Test  [[28]](#doc-eng-5-28)[[29]](#doc-eng-5-29)|![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.svg)
+Student's t-test (1-sample) [[30]](#doc-eng-5-30)|![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.svg)
+Student's t-test (2-sample) [[31]](#doc-eng-5-31)|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.svg)
 Welch's t-test                                   |Same as Student's t-test (2-sample), but with different degrees of freedom (hence a different p-value).
-z-score                     [[32]](#doc-eng-5-32)|![Formula](/doc/measures/statistical_significance/z_score.png)
+z-score                     [[32]](#doc-eng-5-32)|![Formula](/doc/measures/statistical_significance/z_score.svg)
 
 <!--
 Log-likelihood Ratio:
@@ -1176,8 +1176,8 @@ Student's t-test (2-sample):
 
 Measure of Bayes Factor|Formula
 -----------------------|-------
-Log-likelihood Ratio        [[33]](#doc-eng-5-33)|![Formula](/doc/measures/bayes_factor/log_likehood_ratio_test.png)
-Student's t-test (2-sample) [[33]](#doc-eng-5-33)|![Formula](/doc/measures/bayes_factor/students_t_test_2_sample.png)
+Log-likelihood Ratio        [[33]](#doc-eng-5-33)|![Formula](/doc/measures/bayes_factor/log_likehood_ratio_test.svg)
+Student's t-test (2-sample) [[33]](#doc-eng-5-33)|![Formula](/doc/measures/bayes_factor/students_t_test_2_sample.svg)
 
 <!--
 %DIFF:
@@ -1273,24 +1273,24 @@ Squared Phi Coefficient:
 
 Measure of Effect Size|Formula
 ----------------------|-------
-%DIFF                        [[34]](#doc-eng-5-34)|![Formula](/doc/measures/effect_size/pct_diff.png)
-Cubic Association Ratio      [[35]](#doc-eng-5-35)[[36]](#doc-eng-5-36)|![Formula](/doc/measures/effect_size/im3.png)
-Dice's Coefficient           [[37]](#doc-eng-5-37)|![Formula](/doc/measures/effect_size/dices_coeff.png)
-Difference Coefficient       [[28]](#doc-eng-5-28)[[38]](#doc-eng-5-38)|![Formula](/doc/measures/effect_size/diff_coeff.png)
-Jaccard Index                [[39]](#doc-eng-5-39)|![Formula](/doc/measures/effect_size/jaccard_index.png)
-Kilgarriff's Ratio           [[40]](#doc-eng-5-40)|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.png)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
-Log Ratio                    [[41]](#doc-eng-5-41)|![Formula](/doc/measures/effect_size/log_ratio.png)
-Log-Frequency Biased MD      [[42]](#doc-eng-5-42)|![Formula](/doc/measures/effect_size/lfmd.png)
-logDice                      [[43]](#doc-eng-5-43)|![Formula](/doc/measures/effect_size/log_dice.png)
-MI.log-f                     [[39]](#doc-eng-5-39)[[44]](#doc-eng-5-44)|![Formula](/doc/measures/effect_size/mi_log_f.png)
-Minimum Sensitivity          [[45]](#doc-eng-5-45)|![Formula](/doc/measures/effect_size/min_sensitivity.png)
-Mutual Dependency            [[42]](#doc-eng-5-42)|![Formula](/doc/measures/effect_size/md.png)
-Mutual Expectation           [[46]](#doc-eng-5-46)|![Formula](/doc/measures/effect_size/me.png)
-Mutual Information           [[47]](#doc-eng-5-47)|![Formula](/doc/measures/effect_size/mi.png)
-Odds Ratio                   [[48]](#doc-eng-5-48)|![Formula](/doc/measures/effect_size/odds_ratio.png)
-Pointwise Mutual Information [[49]](#doc-eng-5-49)|![Formula](/doc/measures/effect_size/pmi.png)
-Poisson Collocation Measure  [[50]](#doc-eng-5-50)|![Formula](/doc/measures/effect_size/poisson_collocation_measure.png)
-Squared Phi Coefficient      [[51]](#doc-eng-5-51)|![Formula](/doc/measures/effect_size/squared_phi_coeff.png)
+%DIFF                        [[34]](#doc-eng-5-34)|![Formula](/doc/measures/effect_size/pct_diff.svg)
+Cubic Association Ratio      [[35]](#doc-eng-5-35)[[36]](#doc-eng-5-36)|![Formula](/doc/measures/effect_size/im3.svg)
+Dice's Coefficient           [[37]](#doc-eng-5-37)|![Formula](/doc/measures/effect_size/dices_coeff.svg)
+Difference Coefficient       [[28]](#doc-eng-5-28)[[38]](#doc-eng-5-38)|![Formula](/doc/measures/effect_size/diff_coeff.svg)
+Jaccard Index                [[39]](#doc-eng-5-39)|![Formula](/doc/measures/effect_size/jaccard_index.svg)
+Kilgarriff's Ratio           [[40]](#doc-eng-5-40)|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
+Log Ratio                    [[41]](#doc-eng-5-41)|![Formula](/doc/measures/effect_size/log_ratio.svg)
+Log-Frequency Biased MD      [[42]](#doc-eng-5-42)|![Formula](/doc/measures/effect_size/lfmd.svg)
+logDice                      [[43]](#doc-eng-5-43)|![Formula](/doc/measures/effect_size/log_dice.svg)
+MI.log-f                     [[39]](#doc-eng-5-39)[[44]](#doc-eng-5-44)|![Formula](/doc/measures/effect_size/mi_log_f.svg)
+Minimum Sensitivity          [[45]](#doc-eng-5-45)|![Formula](/doc/measures/effect_size/min_sensitivity.svg)
+Mutual Dependency            [[42]](#doc-eng-5-42)|![Formula](/doc/measures/effect_size/md.svg)
+Mutual Expectation           [[46]](#doc-eng-5-46)|![Formula](/doc/measures/effect_size/me.svg)
+Mutual Information           [[47]](#doc-eng-5-47)|![Formula](/doc/measures/effect_size/mi.svg)
+Odds Ratio                   [[48]](#doc-eng-5-48)|![Formula](/doc/measures/effect_size/odds_ratio.svg)
+Pointwise Mutual Information [[49]](#doc-eng-5-49)|![Formula](/doc/measures/effect_size/pmi.svg)
+Poisson Collocation Measure  [[50]](#doc-eng-5-50)|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)
+Squared Phi Coefficient      [[51]](#doc-eng-5-51)|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)
 
 <span id="doc-eng-5"></span>
 ## 5 References [[Back to Contents]](#doc-eng)
