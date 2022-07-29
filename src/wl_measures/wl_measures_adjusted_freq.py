@@ -16,8 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import math
-
+import numpy
 import scipy.special
 
 from wl_measures import wl_measures_dispersion
@@ -46,7 +45,7 @@ def juillands_u(freqs):
 # Juilland's U
 # Reference: Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of spanish words. Mouton.
 def rosengrens_kf(freqs):
-    return sum([math.sqrt(freq) for freq in freqs]) ** 2 / len(freqs)
+    return numpy.sum(numpy.sqrt(freqs)) ** 2 / len(freqs)
 
 # Kromer's UR
 # Reference: Kromer, V. (2003). A usage measure based on psychophysical relations. Journal of Quatitative Linguistics, 10(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718
