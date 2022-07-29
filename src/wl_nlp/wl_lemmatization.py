@@ -49,7 +49,7 @@ def wl_lemmatize(
             lemmatizer = lemmatizer
         )
 
-        section_size = main.settings_custom['files']['misc']['read_files_in_chunks']
+        section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
         if type(inputs) == str:
             # Input of SudachiPy cannot be more than 49149 BYTES

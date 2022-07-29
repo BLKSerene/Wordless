@@ -44,7 +44,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
         pos_tagger = pos_tagger
     )
 
-    section_size = main.settings_custom['files']['misc']['read_files_in_chunks']
+    section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
     # Untokenized
     if type(inputs) == str:

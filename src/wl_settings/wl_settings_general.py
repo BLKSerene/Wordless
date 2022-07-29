@@ -550,13 +550,16 @@ class Wl_Settings_Exp(wl_settings.Wl_Settings_Node):
             return False
 
     def apply_settings(self):
+        # Tables
         self.settings_custom['tables']['default_path'] = self.line_edit_exp_tables_default_path.text()
         self.settings_custom['tables']['default_type'] = self.combo_box_exp_tables_default_type.currentText()
         self.settings_custom['tables']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_exp_tables_default_encoding.currentText())
 
+        # Search Terms
         self.settings_custom['search_terms']['default_path'] = self.line_edit_exp_search_terms_default_path.text()
         self.settings_custom['search_terms']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_exp_search_terms_default_encoding.currentText())
 
+        # Stop Words
         self.settings_custom['stop_words']['default_path'] = self.line_edit_exp_stop_words_default_path.text()
         self.settings_custom['stop_words']['default_encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_exp_stop_words_default_encoding.currentText())
 

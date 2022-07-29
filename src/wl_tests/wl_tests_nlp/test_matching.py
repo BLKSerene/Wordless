@@ -23,19 +23,19 @@ from wl_tests import wl_test_init
 
 main = wl_test_init.Wl_Test_Main()
 
-main.settings_custom['tags']['tags_header'].extend([
+main.settings_custom['files']['tags']['header_tag_settings'].extend([
     ['Non-embedded', 'Header', '< tei Header >', '</ tei Header >'],
     ['Non-embedded', 'Header', '<>', '</>'],
     ['Non-embedded', 'Header', '< >', '</ >']
 ])
-main.settings_custom['tags']['tags_body'].extend([
+main.settings_custom['files']['tags']['body_tag_settings'].extend([
     ['Embedded', 'Part of Speech', '_', 'N/A'],
     ['Non-embedded', 'Others', '< * >', '</ * >'],
     ['Non-embedded', 'Others', '< T AG >', '</ T AG >'],
     ['Non-embedded', 'Others', '<>', '</>'],
     ['Non-embedded', 'Others', '< >', '</ >']
 ])
-main.settings_custom['tags']['tags_xml'].extend([
+main.settings_custom['files']['tags']['xml_tag_settings'].extend([
     ['Non-embedded', 'Paragraph', '< p p >', '</ p p >'],
     ['Non-embedded', 'Paragraph', '<>', '</>'],
     ['Non-embedded', 'Paragraph', '< >', '</ >']

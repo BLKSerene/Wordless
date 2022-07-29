@@ -49,7 +49,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
             # Around 100 tokens per line 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6 / 100)
             sections = wl_nlp_utils.split_into_chunks_text(text, section_size = 20)
         else:
-            sections = wl_nlp_utils.split_into_chunks_text(text, section_size = main.settings_custom['files']['misc']['read_files_in_chunks'])
+            sections = wl_nlp_utils.split_into_chunks_text(text, section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks'])
     else:
         sections = wl_nlp_utils.split_into_chunks_text(text, 1)
 

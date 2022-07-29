@@ -36,7 +36,7 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
             syl_tokenizer = syl_tokenizer
         )
 
-        section_size = main.settings_custom['files']['misc']['read_files_in_chunks']
+        section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
         if type(inputs) == str:
             sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = section_size)

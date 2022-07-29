@@ -36,7 +36,7 @@ import matplotlib
 import nltk
 import requests
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, QObject, Qt, QTranslator
-from PyQt5.QtGui import QFont, QIcon, QKeySequence, QPixmap
+from PyQt5.QtGui import QFont, QIcon, QKeySequence, QPixmap, QStandardItem
 from PyQt5.QtWidgets import (
     QActionGroup, QApplication, QCheckBox, QDialog, QLabel,
     QMainWindow, QMessageBox, QPushButton, QSplashScreen, QTabWidget,
@@ -556,6 +556,8 @@ class Wl_Main(QMainWindow):
                 self.tabs_file_area.setCurrentIndex(i)
 
                 break
+
+        self.tabs_file_area.currentWidget().table_files.model().itemChanged.emit(QStandardItem())
 
         # Work area
         for i in range(self.wl_work_area.count()):

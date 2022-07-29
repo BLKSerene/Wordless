@@ -56,13 +56,13 @@ def get_re_tags(main, tag_type):
     tags_embedded = []
     tags_non_embedded = []
 
-    for type_, _, opening_tag, _ in main.settings_custom['tags'][f'tags_{tag_type}']:
+    for type_, _, opening_tag, _ in main.settings_custom['files']['tags'][f'{tag_type}_tag_settings']:
         if type_ == _tr('get_re_tags', 'Embedded'):
             tag_start, tag_name = split_tag_embedded(opening_tag)
             tag_start = re.escape(tag_start)
 
             # Wilcards
-            if tag_name == '*':
+            if tag_type == 'body' and tag_name == '*':
                 tags_embedded.append(fr'{tag_start}\S*(?=\s|$)')
             else:
                 tags_embedded.append(fr'{tag_start}{re.escape(tag_name)}(?=\s|$)')
@@ -72,7 +72,7 @@ def get_re_tags(main, tag_type):
             tag_end = re.escape(tag_end)
 
             # Wilcards
-            if tag_name == '*':
+            if tag_type == 'body' and tag_name == '*':
                 tags_non_embedded.append(fr'{tag_start}/?.*?{tag_end}')
             else:
                 tags_non_embedded.append(fr'{tag_start}/?{re.escape(tag_name)}{tag_end}')
@@ -83,13 +83,13 @@ def get_re_tags_with_tokens(main, tag_type):
     tags_embedded = []
     tags_non_embedded = []
 
-    for type_, _, opening_tag, closing_tag in main.settings_custom['tags'][f'tags_{tag_type}']:
+    for type_, _, opening_tag, closing_tag in main.settings_custom['files']['tags'][f'{tag_type}_tag_settings']:
         if type_ == _tr('get_re_tags_with_tokens', 'Embedded'):
             tag_start, tag_name = split_tag_embedded(opening_tag)
             tag_start = re.escape(tag_start)
 
             # Wilcards
-            if tag_name == '*':
+            if tag_type == 'body' and tag_name == '*':
                 tags_embedded.append(fr'\S*{tag_start}\S*(?=\s|$)')
             else:
                 tags_embedded.append(fr'\S*{tag_start}{re.escape(tag_name)}(?=\s|$)')
@@ -101,7 +101,7 @@ def get_re_tags_with_tokens(main, tag_type):
             closing_tag = re.escape(closing_tag)
 
             # Wilcards
-            if tag_name == '*':
+            if tag_type == 'body' and tag_name == '*':
                 tags_non_embedded.append(fr'{tag_start}.*?{tag_end}.*?{tag_start}/.*?{tag_end}')
             else:
                 tags_non_embedded.append(fr'{opening_tag}.*{closing_tag}')

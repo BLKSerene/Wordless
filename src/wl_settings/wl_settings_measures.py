@@ -31,7 +31,7 @@ class Wl_Settings_Dispersion(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['measures']['dispersion']
         self.settings_custom = self.main.settings_custom['measures']['dispersion']
 
-        # General
+        # General Settings
         self.group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
 
         (
@@ -59,9 +59,11 @@ class Wl_Settings_Dispersion(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
+        # General Settings
         self.spin_box_dispersion_num_sections.setValue(settings['general_settings']['num_sections'])
 
     def apply_settings(self):
+        # General Settings
         self.settings_custom['general_settings']['num_sections'] = self.spin_box_dispersion_num_sections.value()
 
         return True
@@ -74,7 +76,7 @@ class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['measures']['adjusted_freq']
         self.settings_custom = self.main.settings_custom['measures']['adjusted_freq']
 
-        # General
+        # General Settings
         self.group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
 
         (
@@ -114,10 +116,12 @@ class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
+        # General Settings
         self.spin_box_adjusted_freq_num_sections.setValue(settings['general_settings']['num_sections'])
         self.checkbox_use_same_settings_dispersion.setChecked(settings['general_settings']['use_same_settings_dispersion'])
 
     def apply_settings(self):
+        # General Settings
         self.settings_custom['general_settings']['num_sections'] = self.spin_box_adjusted_freq_num_sections.value()
         self.settings_custom['general_settings']['use_same_settings_dispersion'] = self.checkbox_use_same_settings_dispersion.isChecked()
 
@@ -374,9 +378,11 @@ class Wl_Settings_Effect_Size(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
+        # Kilgarriff's Ratio
         self.spin_box_kilgarriffs_ratio_smoothing_param.setValue(settings['kilgarriffs_ratio']['smoothing_param'])
 
     def apply_settings(self):
+        # Kilgarriff's Ratio
         self.settings_custom['kilgarriffs_ratio']['smoothing_param'] = self.spin_box_kilgarriffs_ratio_smoothing_param.value()
 
         return True

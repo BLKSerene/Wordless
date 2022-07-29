@@ -88,7 +88,7 @@ def test_file_area_file_types():
     # File types (XML)
     for i in range(5):
         if i in [0, 3, 4]:
-            main.settings_custom['tags']['tags_xml'] = [
+            main.settings_custom['files']['tags']['xml_tag_settings'] = [
                 ['Non-embedded', 'Paragraph', '<p>', '</p>'],
                 ['Non-embedded', 'Paragraph', '<head>', '</head>'],
                 ['Non-embedded', 'Sentence', '<s>', '</s>'],
@@ -97,14 +97,14 @@ def test_file_area_file_types():
             ]
         # XML tags unfound
         elif i == 1:
-            main.settings_custom['tags']['tags_xml'] = [
+            main.settings_custom['files']['tags']['xml_tag_settings'] = [
                 ['Non-embedded', 'Paragraph', '<pp>', '</pp>'],
                 ['Non-embedded', 'Sentence', '<ss>', '</ss>'],
                 ['Non-embedded', 'Word', '<ww>', '</ww>'],
             ]
         # XML tags unspecified
         elif i == 2:
-            main.settings_custom['tags']['tags_xml'] = []
+            main.settings_custom['files']['tags']['xml_tag_settings'] = []
 
         add_file(
             file_paths = glob.glob('wl_tests_files/wl_file_area/file_types/*.xml'),

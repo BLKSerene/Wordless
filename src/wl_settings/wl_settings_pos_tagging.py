@@ -80,7 +80,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['pos_tagging']
         self.settings_custom = self.main.settings_custom['pos_tagging']
 
-        # POS Tagger Settings
+        # Part-of-speech Tagger Settings
         self.group_box_pos_tagger_settings = QGroupBox(self.tr('Part-of-speech Tagger Settings'), self)
 
         self.table_pos_taggers = wl_tables.Wl_Table(
@@ -218,6 +218,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
+        # Part-of-speech Tagger Settings
         self.table_pos_taggers.disable_updates()
 
         for i, lang in enumerate(settings['pos_tagger_settings']['pos_taggers']):
@@ -235,6 +236,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         self.checkbox_to_universal_pos_tags.blockSignals(False)
 
+        # Preview
         if not defaults:
             self.combo_box_pos_tagging_preview_lang.blockSignals(True)
             self.text_edit_pos_tagging_preview_samples.blockSignals(True)
@@ -247,6 +249,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             self.text_edit_pos_tagging_preview_samples.blockSignals(False)
 
     def apply_settings(self):
+        # Part-of-speech Tagger Settings
         for i, lang in enumerate(self.settings_custom['pos_tagger_settings']['pos_taggers']):
             self.settings_custom['pos_tagger_settings']['pos_taggers'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
@@ -499,6 +502,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
+        # Preview Settings
         if not defaults:
             self.combo_box_tagsets_lang.blockSignals(True)
             self.combo_box_tagsets_pos_tagger.blockSignals(True)
@@ -514,13 +518,13 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
             self.combo_box_tagsets_pos_tagger.blockSignals(False)
 
     def apply_settings(self):
-        if self.pos_tag_mappings_loaded:
-            # Save only when tag mappings are editable
-            if self.table_mappings.isEnabled():
-                preview_lang = self.settings_custom['preview_settings']['preview_lang']
-                preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
+        # Save only when tag mappings are editable
+        if self.pos_tag_mappings_loaded and self.table_mappings.isEnabled():
+            # Mapping Settings
+            preview_lang = self.settings_custom['preview_settings']['preview_lang']
+            preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
 
-                for i in range(self.table_mappings.model().rowCount()):
-                    self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
+            for i in range(self.table_mappings.model().rowCount()):
+                self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
 
         return True
