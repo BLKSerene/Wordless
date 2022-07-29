@@ -18,9 +18,12 @@
 
 import copy
 
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import pyqtSignal, Qt
+from PyQt5.QtGui import QStandardItem
+from PyQt5.QtWidgets import (
+    QCheckBox, QGroupBox, QLabel, QPushButton, QTextEdit,
+    QWidget
+)
 
 from wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wl_nlp import wl_nlp_utils, wl_pos_tagging
@@ -78,7 +81,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['pos_tagging']
 
         # POS Tagger Settings
-        group_box_pos_tagger_settings = QGroupBox(self.tr('Part-of-speech Tagger Settings'), self)
+        self.group_box_pos_tagger_settings = QGroupBox(self.tr('Part-of-speech Tagger Settings'), self)
 
         self.table_pos_taggers = wl_tables.Wl_Table(
             self,
@@ -112,12 +115,12 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         self.table_pos_taggers.enable_updates()
 
-        group_box_pos_tagger_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0)
-        group_box_pos_tagger_settings.layout().addWidget(self.checkbox_to_universal_pos_tags, 1, 0)
+        self.group_box_pos_tagger_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_pos_tagger_settings.layout().addWidget(self.table_pos_taggers, 0, 0)
+        self.group_box_pos_tagger_settings.layout().addWidget(self.checkbox_to_universal_pos_tags, 1, 0)
 
         # Preview
-        group_box_preview = QGroupBox(self.tr('Preview'), self)
+        self.group_box_preview = QGroupBox(self.tr('Preview'), self)
 
         self.label_pos_tagging_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_pos_tagging_preview_lang = wl_boxes.Wl_Combo_Box(self)
@@ -143,14 +146,14 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         layout_preview_settings.setColumnStretch(2, 1)
 
-        group_box_preview.setLayout(wl_layouts.Wl_Layout())
-        group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
-        group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_samples, 1, 0)
-        group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_results, 1, 1)
+        self.group_box_preview.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
+        self.group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_samples, 1, 0)
+        self.group_box_preview.layout().addWidget(self.text_edit_pos_tagging_preview_results, 1, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_pos_tagger_settings, 0, 0)
-        self.layout().addWidget(group_box_preview, 1, 0)
+        self.layout().addWidget(self.group_box_pos_tagger_settings, 0, 0)
+        self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(0, 3)
@@ -269,7 +272,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.settings_tagsets = QWidget(self)
 
         # Preview Settings
-        group_box_preview_settings = QGroupBox(self.tr('Preview Settings:'), self)
+        self.group_box_preview_settings = QGroupBox(self.tr('Preview Settings:'), self)
 
         self.label_tagsets_lang = QLabel(self.tr('Language:'), self)
         self.combo_box_tagsets_lang = wl_boxes.Wl_Combo_Box(self)
@@ -281,16 +284,16 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.combo_box_tagsets_lang.currentTextChanged.connect(self.preview_lang_changed)
         self.combo_box_tagsets_pos_tagger.currentTextChanged.connect(self.preview_pos_tagger_changed)
 
-        group_box_preview_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_preview_settings.layout().addWidget(self.label_tagsets_lang, 0, 0)
-        group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_lang, 0, 1, Qt.AlignLeft)
-        group_box_preview_settings.layout().addWidget(self.label_tagsets_pos_tagger, 1, 0)
-        group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_pos_tagger, 1, 1, Qt.AlignLeft)
+        self.group_box_preview_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_preview_settings.layout().addWidget(self.label_tagsets_lang, 0, 0)
+        self.group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_lang, 0, 1, Qt.AlignLeft)
+        self.group_box_preview_settings.layout().addWidget(self.label_tagsets_pos_tagger, 1, 0)
+        self.group_box_preview_settings.layout().addWidget(self.combo_box_tagsets_pos_tagger, 1, 1, Qt.AlignLeft)
 
-        group_box_preview_settings.layout().setColumnStretch(2, 1)
+        self.group_box_preview_settings.layout().setColumnStretch(2, 1)
 
         # Mapping Settings
-        group_box_mapping_settings = QGroupBox(self.tr('Mapping Settings'))
+        self.group_box_mapping_settings = QGroupBox(self.tr('Mapping Settings'))
 
         self.stacked_widget_num_pos_tags = wl_layouts.Wl_Stacked_Widget(self)
         self.label_tagsets_num_pos_tags = QLabel('', self)
@@ -343,18 +346,18 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.button_tagsets_reset.clicked.connect(self.reset_mappings)
         self.button_tagsets_reset_all.clicked.connect(self.reset_all_mappings)
 
-        group_box_mapping_settings.setLayout(wl_layouts.Wl_Layout())
-        group_box_mapping_settings.layout().addWidget(self.stacked_widget_num_pos_tags, 0, 0)
-        group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset, 0, 2)
-        group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_all, 0, 3)
-        group_box_mapping_settings.layout().addWidget(self.table_mappings, 1, 0, 1, 4)
+        self.group_box_mapping_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_mapping_settings.layout().addWidget(self.stacked_widget_num_pos_tags, 0, 0)
+        self.group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset, 0, 2)
+        self.group_box_mapping_settings.layout().addWidget(self.button_tagsets_reset_all, 0, 3)
+        self.group_box_mapping_settings.layout().addWidget(self.table_mappings, 1, 0, 1, 4)
 
-        group_box_mapping_settings.layout().setRowStretch(1, 1)
-        group_box_mapping_settings.layout().setColumnStretch(1, 1)
+        self.group_box_mapping_settings.layout().setRowStretch(1, 1)
+        self.group_box_mapping_settings.layout().setColumnStretch(1, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(group_box_preview_settings, 0, 0)
-        self.layout().addWidget(group_box_mapping_settings, 1, 0)
+        self.layout().addWidget(self.group_box_preview_settings, 0, 0)
+        self.layout().addWidget(self.group_box_mapping_settings, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)

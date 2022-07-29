@@ -21,18 +21,14 @@ from wl_measures import wl_measures_statistical_significance
 
 main = wl_test_init.Wl_Test_Main()
 main.settings_custom['measures']['statistical_significance'] = {
-    'students_t_test_2_sample': {
-        'variances': 'Equal'
-    },
-
-    'pearsons_chi_squared_test': {},
-
     'fishers_exact_test': {},
 
     'mann_whitney_u_test': {
         'direction': 'Two-tailed',
         'apply_correction': True
-    }
+    },
+
+    'pearsons_chi_squared_test': {}
 }
 
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
@@ -83,3 +79,10 @@ def test_pearsons_chi_squared_test():
 # Manning, C. D., & Schütze, H. (1999). Foundations of statistical natural language processing. MIT Press. (pp. 164-165)
 def test_students_t_test_1_sample():
     assert round(wl_measures_statistical_significance.students_t_test_1_sample(main, 8, 15828 - 8, 4675 - 8, 14307668 - 15828 - 4675 + 8)[0], 6) == 0.999932
+
+if __name__ == '__main__':
+    test_fishers_exact_test()
+    test_log_likehood_ratio_test()
+    test_mann_whitney_u_test()
+    test_pearsons_chi_squared_test()
+    test_students_t_test_1_sample()
