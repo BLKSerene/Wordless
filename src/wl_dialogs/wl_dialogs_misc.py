@@ -16,12 +16,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import copy
 import datetime
 import time
 
 from PyQt5.QtCore import QCoreApplication, Qt, QTimer
-from PyQt5.QtWidgets import QCheckBox, QLabel, QPushButton
+from PyQt5.QtWidgets import QLabel, QPushButton
 
 from wl_dialogs import wl_dialogs
 from wl_widgets import wl_labels, wl_layouts
@@ -132,54 +131,3 @@ class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_buttons.layout().setColumnStretch(0, 1)
 
         self.set_fixed_height()
-
-class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
-    def __init__(self, main):
-        super().__init__(
-            main,
-            title = _tr('Wl_Dialog_Confirm_Exit', 'Exit Wordless'),
-            width = 420,
-            no_buttons = True
-        )
-
-        self.label_confirm_exit = wl_labels.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    Are you sure you want to exit Wordless?
-                </div>
-                <div style="font-weight: bold;">
-                    Note: All unsaved data and figures will be lost.
-                </div>
-            '''),
-            self
-        )
-
-        self.checkbox_confirm_on_exit = QCheckBox(self.tr('Always confirm on exit'), self)
-        self.button_exit = QPushButton(self.tr('Exit'), self)
-        self.button_cancel = QPushButton(self.tr('Cancel'), self)
-
-        self.checkbox_confirm_on_exit.stateChanged.connect(self.confirm_on_exit_changed)
-        self.button_exit.clicked.connect(self.accept)
-        self.button_cancel.clicked.connect(self.reject)
-
-        self.wrapper_info.layout().addWidget(self.label_confirm_exit, 0, 0)
-
-        self.wrapper_buttons.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
-        self.wrapper_buttons.layout().addWidget(self.button_exit, 0, 2)
-        self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 3)
-
-        self.wrapper_buttons.layout().setColumnStretch(1, 1)
-
-        self.load_settings()
-
-        self.set_fixed_height()
-
-    def load_settings(self):
-        settings = copy.deepcopy(self.main.settings_custom['general']['misc'])
-
-        self.checkbox_confirm_on_exit.setChecked(settings['confirm_on_exit'])
-
-    def confirm_on_exit_changed(self):
-        settings = self.main.settings_custom['general']['misc']
-
-        settings['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
