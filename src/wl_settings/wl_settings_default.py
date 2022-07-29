@@ -1089,29 +1089,29 @@ def init_settings_default(main):
                 'number_lines_no_limit': False
             },
 
-            'misc': {
+            'misc_settings': {
                 'read_files_in_chunks': 100
+            },
+
+            # Settings - Files - Tags
+            'tags': {
+                'header_tag_settings': [
+                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Header'), '<teiHeader>', '</teiHeader>']
+                ],
+
+                'body_tag_settings': [
+                    [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of Speech'), '_*', 'N/A'],
+                    [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of Speech'), '/*', 'N/A'],
+                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Others'), '<*>', 'N/A']
+                ],
+
+                'xml_tag_settings': [
+                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Paragraph'), '<p>', '</p>'],
+                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Sentence'), '<s>', '</s>'],
+                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Word'), '<w>', '</w>'],
+                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Word'), '<c>', '</c>']
+                ]
             }
-        },
-
-        # Settings - Files - Tags
-        'tags': {
-            'tags_header': [
-                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Header'), '<teiHeader>', '</teiHeader>']
-            ],
-
-            'tags_body': [
-                [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of Speech'), '_*', 'N/A'],
-                [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of Speech'), '/*', 'N/A'],
-                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Others'), '<*>', 'N/A']
-            ],
-
-            'tags_xml': [
-                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Paragraph'), '<p>', '</p>'],
-                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Sentence'), '<s>', '</s>'],
-                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Word'), '<w>', '</w>'],
-                [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Word'), '<c>', '</c>']
-            ]
         },
 
         # Settings - Sentence Tokenization

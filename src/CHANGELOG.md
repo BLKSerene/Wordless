@@ -31,6 +31,7 @@
 
 ### ✨ Improvements
 - Settings: Allow resizing of Settings dialog box
+- Settings: Update Settings - Files - Tags - Header Tag Settings
 - Work Area: Update Profiler - Type-token Ratio (Standardized)
 
 ### 📌 Bugfixes

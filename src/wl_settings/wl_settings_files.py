@@ -81,8 +81,8 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
 
         self.group_box_auto_detection_settings.layout().setColumnStretch(3, 1)
 
-        # Miscellaneous
-        self.group_box_misc = QGroupBox(self.tr('Miscellaneous'), self)
+        # Miscellaneous Settings
+        self.group_box_misc_settings = QGroupBox(self.tr('Miscellaneous Settings'), self)
 
         self.label_read_files_in_chunks = QLabel(self.tr('Read files in chunks of'), self)
         self.spin_box_read_files_in_chunks = wl_boxes.Wl_Spin_Box(self)
@@ -90,17 +90,17 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
 
         self.spin_box_read_files_in_chunks.setRange(1, 10000)
 
-        self.group_box_misc.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_misc.layout().addWidget(self.label_read_files_in_chunks, 0, 0)
-        self.group_box_misc.layout().addWidget(self.spin_box_read_files_in_chunks, 0, 1)
-        self.group_box_misc.layout().addWidget(self.label_read_files_in_chunks_lines, 0, 2)
+        self.group_box_misc_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks, 0, 0)
+        self.group_box_misc_settings.layout().addWidget(self.spin_box_read_files_in_chunks, 0, 1)
+        self.group_box_misc_settings.layout().addWidget(self.label_read_files_in_chunks_lines, 0, 2)
 
-        self.group_box_auto_detection_settings.layout().setColumnStretch(3, 1)
+        self.group_box_misc_settings.layout().setColumnStretch(3, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_default_settings, 0, 0)
         self.layout().addWidget(self.group_box_auto_detection_settings, 1, 0)
-        self.layout().addWidget(self.group_box_misc, 2, 0)
+        self.layout().addWidget(self.group_box_misc_settings, 2, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(3, 1)
@@ -121,8 +121,8 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.spin_box_files_number_lines.setValue(settings['auto_detection_settings']['number_lines'])
         self.checkbox_files_number_lines_no_limit.setChecked(settings['auto_detection_settings']['number_lines_no_limit'])
 
-        # Miscellaneous
-        self.spin_box_read_files_in_chunks.setValue(settings['misc']['read_files_in_chunks'])
+        # Miscellaneous Settings
+        self.spin_box_read_files_in_chunks.setValue(settings['misc_settings']['read_files_in_chunks'])
 
     def apply_settings(self):
         # Default Settings
@@ -135,8 +135,8 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         self.settings_custom['auto_detection_settings']['number_lines'] = self.spin_box_files_number_lines.value()
         self.settings_custom['auto_detection_settings']['number_lines_no_limit'] = self.checkbox_files_number_lines_no_limit.isChecked()
 
-        # Miscellaneous
-        self.settings_custom['misc']['read_files_in_chunks'] = self.spin_box_read_files_in_chunks.value()
+        # Miscellaneous Settings
+        self.settings_custom['misc_settings']['read_files_in_chunks'] = self.spin_box_read_files_in_chunks.value()
 
         return True
 
@@ -249,7 +249,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
                         closing_tag.setText(f'{tag_start}/{tag_name}{tag_end}')
 
-                        if tag_name == '*':
+                        if self.settings_tags == 'body_tag_settings' and tag_name == '*':
                             opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
                             closing_tag_text = self.model().item(row, 3).text().replace('*', self.tr('TAG'))
                             preview.setText(opening_tag_text + self.tr('token') + closing_tag_text)
@@ -304,7 +304,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def reset_table(self):
         self.clr_table(0)
 
-        for defaults in self.main.settings_default['tags'][self.settings_tags]:
+        for defaults in self.main.settings_default['files']['tags'][self.settings_tags]:
             self._add_row(texts = defaults)
 
     def get_tags(self):
@@ -324,7 +324,7 @@ class Wl_Table_Tags_Header(Wl_Table_Tags):
     def __init__(self, parent):
         super().__init__(
             parent,
-            settings_tags = 'tags_header',
+            settings_tags = 'header_tag_settings',
             defaults_row = [
                 _tr('Wl_Table_Tags_Header', 'Non-embedded'),
                 _tr('Wl_Table_Tags_Header', 'Header'),
@@ -344,7 +344,7 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
     def __init__(self, parent):
         super().__init__(
             parent,
-            settings_tags = 'tags_body',
+            settings_tags = 'body_tag_settings',
             defaults_row = [
                 _tr('Wl_Table_Tags_Body', 'Non-embedded'),
                 _tr('Wl_Table_Tags_Body', 'Others'),
@@ -365,7 +365,7 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
     def __init__(self, parent):
         super().__init__(
             parent,
-            settings_tags = 'tags_xml',
+            settings_tags = 'xml_tag_settings',
             defaults_row = [
                 _tr('Wl_Table_Tags_Xml', 'Non-embedded'),
                 _tr('Wl_Table_Tags_Xml', 'Paragraph'),
@@ -421,15 +421,14 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
-        self.settings_default = self.main.settings_default['tags']
-        self.settings_custom = self.main.settings_custom['tags']
+        self.settings_default = self.main.settings_default['files']['tags']
+        self.settings_custom = self.main.settings_custom['files']['tags']
 
         # Header Tag Settings
         self.group_box_header_tag_settings = QGroupBox(self.tr('Header Tag Settings'), self)
 
         self.table_tags_header = Wl_Table_Tags_Header(self)
         self.label_tags_header_note = wl_labels.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
-        self.label_tags_header_wildcard = wl_labels.Wl_Label_Hint(self.tr('* Use asterisk character (*) to indicate any number of characters'), self)
 
         self.group_box_header_tag_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 5)
@@ -438,10 +437,7 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_del, 1, 2)
         self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_clr, 1, 3)
         self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_reset, 1, 4)
-        self.group_box_header_tag_settings.layout().addWidget(self.label_tags_header_wildcard, 2, 0, 1, 5)
-        self.group_box_header_tag_settings.layout().addWidget(self.label_tags_header_note, 3, 0, 1, 5)
-
-        self.group_box_header_tag_settings.layout().setRowStretch(3, 1)
+        self.group_box_header_tag_settings.layout().addWidget(self.label_tags_header_note, 2, 0, 1, 5)
 
         # Body Tag Settings
         self.group_box_body_tag_settings = QGroupBox(self.tr('Body Tag Settings'), self)
@@ -458,8 +454,6 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_reset, 1, 4)
         self.group_box_body_tag_settings.layout().addWidget(self.label_tags_body_wildcard, 2, 0, 1, 5)
 
-        self.group_box_body_tag_settings.layout().setRowStretch(3, 1)
-
         # XML Tag Settings
         self.group_box_xml_tag_settings = QGroupBox(self.tr('XML Tag Settings'), self)
 
@@ -472,8 +466,6 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_del, 1, 2)
         self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_clr, 1, 3)
         self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_reset, 1, 4)
-
-        self.group_box_xml_tag_settings.layout().setRowStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_header_tag_settings, 0, 0)
@@ -493,18 +485,18 @@ class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
         self.table_tags_body.clr_table(0)
         self.table_tags_xml.clr_table(0)
 
-        for tag in settings['tags_header']:
+        for tag in settings['header_tag_settings']:
             self.table_tags_header._add_row(texts = tag)
 
-        for tag in settings['tags_body']:
+        for tag in settings['body_tag_settings']:
             self.table_tags_body._add_row(texts = tag)
 
-        for tag in settings['tags_xml']:
+        for tag in settings['xml_tag_settings']:
             self.table_tags_xml._add_row(texts = tag)
 
     def apply_settings(self):
-        self.settings_custom['tags_header'] = self.table_tags_header.get_tags()
-        self.settings_custom['tags_body'] = self.table_tags_body.get_tags()
-        self.settings_custom['tags_xml'] = self.table_tags_xml.get_tags()
+        self.settings_custom['header_tag_settings'] = self.table_tags_header.get_tags()
+        self.settings_custom['body_tag_settings'] = self.table_tags_body.get_tags()
+        self.settings_custom['xml_tag_settings'] = self.table_tags_xml.get_tags()
 
         return True
