@@ -46,15 +46,19 @@
 The main window of *Wordless* is divided into several sections:
 
 - **1.1 Menu Bar**<br>
+    The *Menu Bar* resides at the top of the main window.
     
 - **1.2 Work Area**<br>
-    The *Work Area* is further divided into the *Resutls Area* on the left side and the *Settings Area* on the right side.<br>
-    You can click on the tabs at the top to toggle between different panels.
+    The *Work Area* resides at the upper half of the main window, just below *Menu Bar*.
+
+    The *Work Area* is further divided into the *Resutls Area* on the left side and the *Settings Area* on the right side. You can click on the tabs to toggle between different modules.
 
 - **1.3 File Area**<br>
-    The *File Area* is further divided into the *File Table* on the left side and the *Settings Area* on the right side.
+    The *File Area* resides at the lower half of the main window, just above *Status Bar*.
 
 - **1.4 Status Bar**<br>
+    The *Status Bar* resides at the bottom of the main window.
+
     You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
 
 <span id="doc-eng-2"></span>
