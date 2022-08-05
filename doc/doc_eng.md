@@ -38,7 +38,7 @@
     - 4.4 [Supported Measures](#doc-eng-4-4)
         - 4.4.1 [Measures of Readability](#doc-eng-4-4-1)
         - 4.4.2 [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-2)
-        - 4.4.3 [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3)
+        - 4.4.3 [Tests of Statistical Significance, Meaures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3)
 - 5 [References](#doc-eng-5)
 
 <span id="doc-eng-1"></span>
@@ -500,20 +500,20 @@ You can further filter the results as you see fit by clicking **Filter Results**
     The total number of co-occurrences of the node and the collocating token with the collocating token at all possible positions in each file.
 
 - **3.6.6 Test Statistic**<br>
-    The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that test statistic is not avilable for some tests of statistical significance.
 
 - **3.6.7 p-value**<br>
-    The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.6.8 Bayes Factor**<br>
-    The bayes factor of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The bayes factor the node and the collocating token in each file. You can change the measure of bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that bayes factor is not avilable for some tests of statistical significance.
 
 - **3.6.9 Effect Size**<br>
-    The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.6.10 Number of Files Found**<br>
     The number of files in which the node and the collocating token co-occur at least once.
@@ -554,20 +554,20 @@ You can further filter the results as you see fit by clicking **Filter Results**
     The total number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at all possible positions in each file.
 
 - **3.7.6 Test Statistic**<br>
-    The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that test statistic is not avilable for some tests of statistical significance.
 
 - **3.7.7 p-value**<br>
-    The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.7.8 Bayes Factor**<br>
-    The bayes factor of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The bayes factor of the node and the collocating part of speech in each file. You can change the measure of bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that bayes factor is not avilable for some tests of statistical significance.
 
 - **3.7.9 Effect Size**<br>
-    The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.7.10 Number of Files Found**<br>
     The number of files in which the node and the collocating part of speech co-occur at least once.
@@ -600,18 +600,18 @@ You can further filter the results as you see fit by clicking **Filter Results**
     The number of co-occurrences of the keywords in each observed file.
 
 - **3.8.5 Test Statistic**<br>
-    The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.8.6 p-value**<br>
-    The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.8.7 Bayes Factor**<br>
-    The bayes factor of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The bayes factor of the keyword in each file. You can change the measure of bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
     Please note that bayes factor is not avilable for some tests of statistical significance.
 
 - **3.8.8 Effect Size**<br>
-    The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance & Measures of Effect Size](#doc-eng-4-4-3) for more details.
+    The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.8.9 Number of Files Found**<br>
     The number of files in which the keyword appears at least once.
@@ -952,18 +952,18 @@ Write Score:
 
 Measure of Readability|Formula
 ----------------------|-------
-Automated Readability Index      [[1]](#doc-eng-5-1)  |![Formula](/doc/measures/readability/ari.svg)
-Coleman-Liau Index               [[2]](#doc-eng-5-2)  |![Formula](/doc/measures/readability/coleman_liau_index.svg)
-Dale-Chall Readibility Score     [[3]](#doc-eng-5-3)[[4]](#doc-eng-5-4)|![Formula](/doc/measures/readability/dale_chall_readability_score.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 3000 easy words [[4]](#doc-eng-5-4)<br><br>* This test applies only to **English texts**.
-Devereux Readability Index       [[5]](#doc-eng-5-5)  |![Formula](/doc/measures/readability/devereux_readability_index.svg)
-Flesch Reading Ease              [[6]](#doc-eng-5-6)  |![Formula](/doc/measures/readability/re.svg)<br>* This test requires **built-in syllable tokenization support**.
-Flesch Reading Ease (Simplified) [[7]](#doc-eng-5-7)  |![Formula](/doc/measures/readability/re_simplified.svg)<br>where NumWords1Syl is the number of monosyllabic words<br><br>* This test requires **built-in syllable tokenization support**.
-Flesch-Kincaid Grade Level       [[8]](#doc-eng-5-8)  |![Formula](/doc/measures/readability/flesch_kincaid_grade_level.svg)<br>* This test requires **built-in syllable tokenization support**.
-FORCAST Grade Level              [[9]](#doc-eng-5-9)  |![Formula](/doc/measures/readability/rgl.svg)<br>where **NumWords1Syl** is the number of monosyllabic words<br><br>* This test requires **built-in syllable tokenization support**.<br>* **A sample of 150 words** is taken randomly from the text, thus the text must be at least 150 words long.
-Gunning Fog Index                [[10]](#doc-eng-5-10)|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables which end with *-ed* or *-es*<br><br>* This test applies only to **English texts**.
-SMOG Grade                       [[11]](#doc-eng-5-11)|![Formula](/doc/measures/readability/smog_grade.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables<br><br>* **A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text** is taken from the text, thus the text must be at least 30 sentences long.
-Spache Grade Level               [[12]](#doc-eng-5-12)[[13]](#doc-eng-5-13)|![Formula](/doc/measures/readability/spache_grade_level.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 769 easy words [[13]](#doc-eng-5-13)<br><br>* This test requires **built-in syllable tokenization support**.<br>* **Three samples each of 100 words** are taken randomly from the text and the mean of the three scores is calculated, thus the text must be at least 100 words long.
-Write Score                      [[14]](#doc-eng-5-14)|![Formula](/doc/measures/readability/write_score.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*<br><br>* This test applies only to **English texts**.<br>* **A sample of 100 words** is taken randomly from the text, thus the text must be at least 100 words long.
+Automated Readability Index<br>([Smith & Senter, 1967](#doc-eng-5-smith-senter-1967))|![Formula](/doc/measures/readability/ari.svg)
+Coleman-Liau Index<br>([Coleman & Liau, 1975](#doc-eng-5-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)
+Dale-Chall Readibility Score<br>([Dale & Chall, 1948a](#doc-eng-5-dale-chall-1948a), [1948b](#doc-eng-5-dale-chall-1948b))|![Formula](/doc/measures/readability/dale_chall_readability_score.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 3000 easy words ([Dale & Chall, 1948b](#doc-eng-5-dale-chall-1948b)).<br><br>* This test applies only to **English texts**.
+Devereux Readability Index<br>([Smith, 1961](#doc-eng-5-smith-1961))|![Formula](/doc/measures/readability/devereux_readability_index.svg)
+Flesch Reading Ease<br>([Flesch, 1948](#doc-eng-5-flesch-1948))|![Formula](/doc/measures/readability/re.svg)<br>* This test requires **built-in syllable tokenization support**.
+Flesch Reading Ease (Simplified)<br>([Farr et al., 1951](#doc-eng-5-farr-et-al-1951))|![Formula](/doc/measures/readability/re_simplified.svg)<br>where NumWords1Syl is the number of monosyllabic words.<br><br>* This test requires **built-in syllable tokenization support**.
+Flesch-Kincaid Grade Level<br>([Kincaid et al., 1975](#doc-eng-5-kincaid-et-al-1975))|![Formula](/doc/measures/readability/flesch_kincaid_grade_level.svg)<br>* This test requires **built-in syllable tokenization support**.
+FORCAST Grade Level<br>([Caylor et al., 1973](#doc-eng-5-caylor-et-al-1973))|![Formula](/doc/measures/readability/rgl.svg)<br>where **NumWords1Syl** is the number of monosyllabic words.<br><br>* This test requires **built-in syllable tokenization support**.<br>* **A sample of 150 words** is taken randomly from the text, thus the text must be at least 150 words long.
+Gunning Fog Index<br>([Gunning, 1968](#doc-eng-5-gunning-1968))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables which end with *-ed* or *-es*.<br><br>* This test applies only to **English texts**.
+SMOG Grade<br>([McLaughlin, 1969](#doc-eng-5-mclaughlin-1969))|![Formula](/doc/measures/readability/smog_grade.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables.<br><br>* **A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text** is taken from the text, thus the text must be at least 30 sentences long.
+Spache Grade Level<br>([Dale, 1931](#doc-eng-5-dale-1931); [Spache, 1953](#doc-eng-5-spache-1953))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 769 easy words ([Spache, 1953](#doc-eng-5-spache-1953)).<br><br>* This test requires **built-in syllable tokenization support**.<br>* **Three samples each of 100 words** are taken randomly from the text and the mean of the three scores is calculated, thus the text must be at least 100 words long.
+Write Score<br>([O’Hayre, 1966](#doc-eng-5-o-hayre-1966))|![Formula](/doc/measures/readability/write_score.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*.<br><br>* This test applies only to **English texts**.<br>* **A sample of 100 words** is taken randomly from the text, thus the text must be at least 100 words long.
 
 <span id="doc-eng-4-4-2"></span>
 #### 4.4.2 Measures of Dispersion & Adjusted Frequency [[Back to Contents]](#doc-eng)
@@ -1017,13 +1017,13 @@ Zhang's Distributional Consistency:
 
 Measure of Dispersion|Formula
 ---------------------|-------
-Carroll's D₂                       [[15]](#doc-eng-5-15)|![Formula](/doc/measures/dispersion/carrolls_d2.svg)
-Gries's DP                         [[16]](#doc-eng-5-16)|![Formula](/doc/measures/dispersion/griess_dp.svg)
-Gries's DPnorm                     [[17]](#doc-eng-5-17)|![Formula](/doc/measures/dispersion/griess_dp_norm.svg)
-Juilland's D                       [[18]](#doc-eng-5-18)|![Formula](/doc/measures/dispersion/juillands_d.svg)
-Lyne's D₃                          [[19]](#doc-eng-5-19)|![Formula](/doc/measures/dispersion/lynes_d3.svg)
-Rosengren's S                      [[20]](#doc-eng-5-20)|![Formula](/doc/measures/dispersion/rosengrens_s.svg)
-Zhang's Distributional Consistency [[21]](#doc-eng-5-21)|![Formula](/doc/measures/dispersion/zhangs_distributional_consistency.svg)
+Carroll's D₂<br>([Carroll, 1970](#doc-eng-5-carroll-1970))|![Formula](/doc/measures/dispersion/carrolls_d2.svg)
+Gries's DP<br>([Gries, 2008](#doc-eng-5-gries-2008))|![Formula](/doc/measures/dispersion/griess_dp.svg)
+Gries's DPnorm<br>([Lijffijt & Gries, 2012](#doc-eng-5-lijffijt-gries-2012))|![Formula](/doc/measures/dispersion/griess_dp_norm.svg)
+Juilland's D<br>([Juilland & Chang-Rodrigues, 1964](#doc-eng-5-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion/juillands_d.svg)
+Lyne's D₃<br>([Lyne, 1985](#doc-eng-5-lyne-1985))|![Formula](/doc/measures/dispersion/lynes_d3.svg)
+Rosengren's S<br>([Rosengren, 1971](#doc-eng-5-rosengren-1971))|![Formula](/doc/measures/dispersion/rosengrens_s.svg)
+Zhang's Distributional Consistency<br>([Zhang, 2004](#doc-eng-5-zhang-2004))|![Formula](/doc/measures/dispersion/zhangs_distributional_consistency.svg)
 
 <!--
 Carroll's Um:
@@ -1059,54 +1059,58 @@ Rosengren's KF:
 
 Measure of Adjusted Frequency|Formula
 -----------------------------|-------
-Carroll's Um   [[15]](#doc-eng-5-15)|![Formula](/doc/measures/adjusted_freq/carrolls_um.svg)
-Engwall's FM   [[22]](#doc-eng-5-22)|![Formula](/doc/measures/adjusted_freq/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once
-Juilland's U   [[18]](#doc-eng-5-18)|![Formula](/doc/measures/adjusted_freq/juillands_u.svg)
-Kromer's UR    [[23]](#doc-eng-5-23)|![Formula](/doc/measures/adjusted_freq/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant)
-Rosengren's KF [[20]](#doc-eng-5-20)|![Formula](/doc/measures/adjusted_freq/rosengrens_kf.svg)
+Carroll's Um<br>([Carroll, 1970](#doc-eng-5-carroll-1970))|![Formula](/doc/measures/adjusted_freq/carrolls_um.svg)
+Engwall's FM<br>([Engwall, 1974](#doc-eng-5-engwall-1974))|![Formula](/doc/measures/adjusted_freq/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
+Juilland's U<br>([Juilland & Chang-Rodrigues, 1964](#doc-eng-5-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/adjusted_freq/juillands_u.svg)
+Kromer's UR<br>([Kromer, 2003](#doc-eng-5-kromer-2003))|![Formula](/doc/measures/adjusted_freq/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
+Rosengren's KF<br>([Rosengren, 1971](#doc-eng-5-rosengren-1971))|![Formula](/doc/measures/adjusted_freq/rosengrens_kf.svg)
 
 <span id="doc-eng-4-4-3"></span>
-#### 4.4.3 Tests of Statistical Significance & Measures of Effect Size [[Back to Contents]](#doc-eng)
+#### 4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size [[Back to Contents]](#doc-eng)
 
-To calculate the statistical significance, bayes factor and effect size (except **Student's t-test (2-sample)**, **Welch's t-test**, and **Mann-Whitney U Test**) for two words in the same file (collocates) or one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
+In order to calculate the statistical significance, bayes factor, and effect size (except **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
 As for collocates (in *Collocation Extractor* and *Colligation Extractor*):
 
-Observed Values|Word 1                       |Not Word 1                   |Row Total
+Observed Values|*Word 1*                       |Not *Word 1*                   |Row Total
 --------------:|:-----------------------------:|:-----------------------------:|:-----------------------------:
-Word 2         |![o_11](/doc/measures/o_11.svg)|![o_12](/doc/measures/o_12.svg)|![o_1x](/doc/measures/o_1x.svg)
-Not Word 2     |![o_21](/doc/measures/o_21.svg)|![o_22](/doc/measures/o_22.svg)|![o_2x](/doc/measures/o_2x.svg)
+*Word 2*       |![o_11](/doc/measures/o_11.svg)|![o_12](/doc/measures/o_12.svg)|![o_1x](/doc/measures/o_1x.svg)
+Not *Word 2*   |![o_21](/doc/measures/o_21.svg)|![o_22](/doc/measures/o_22.svg)|![o_2x](/doc/measures/o_2x.svg)
 Column Total   |![o_x1](/doc/measures/o_x1.svg)|![o_x2](/doc/measures/o_x2.svg)|![o_xx](/doc/measures/o_xx.svg)
 
-Expected Values|Word 1                       |Not Word 1
+Expected Values|*Word 1*                       |Not *Word 1*
 --------------:|:-----------------------------:|:-----------------------------:
-Word 2         |![e_11](/doc/measures/e_11.svg)|![e_12](/doc/measures/e_12.svg) 
-Not Word 2     |![e_21](/doc/measures/e_21.svg)|![e_22](/doc/measures/e_22.svg)
+*Word 2*       |![e_11](/doc/measures/e_11.svg)|![e_12](/doc/measures/e_12.svg) 
+Not *Word 2*   |![e_21](/doc/measures/e_21.svg)|![e_22](/doc/measures/e_22.svg)
 
-![o_11](/doc/measures/o_11.svg): Number of occurrences of Word 1 followed by Word 2<br>
-![o_12](/doc/measures/o_12.svg): Number of occurrences of Word 1 followed by any word except Word 2<br>
-![o_21](/doc/measures/o_21.svg): Number of occurrences of any word except Word 1 followed by Word 2<br>
-![o_22](/doc/measures/o_22.svg): Number of occurrences of any word except Word 1 followed by any word except Word 2
+![o_11](/doc/measures/o_11.svg): Number of occurrences of *Word 1* followed by *Word 2*.<br>
+![o_12](/doc/measures/o_12.svg): Number of occurrences of *Word 1* followed by any word except *Word 2*.<br>
+![o_21](/doc/measures/o_21.svg): Number of occurrences of any word except *Word 1* followed by *Word 2*.<br>
+![o_22](/doc/measures/o_22.svg): Number of occurrences of any word except *Word 1* followed by any word except *Word 2*.
 
 As for keywords (in *Keyword Extractor*):
 
-Observed Values|Observed File                |Reference File               |Row Total
+Observed Values|Observed File                  |Reference File                 |Row Total
 --------------:|:-----------------------------:|:-----------------------------:|:-----------------------------:
-Word *w*       |![o_11](/doc/measures/o_11.svg)|![o_12](/doc/measures/o_12.svg)|![o_1x](/doc/measures/o_1x.svg)
-Not Word *w*   |![o_21](/doc/measures/o_21.svg)|![o_22](/doc/measures/o_22.svg)|![o_2x](/doc/measures/o_2x.svg)
+*Word w*       |![o_11](/doc/measures/o_11.svg)|![o_12](/doc/measures/o_12.svg)|![o_1x](/doc/measures/o_1x.svg)
+*Not Word w*   |![o_21](/doc/measures/o_21.svg)|![o_22](/doc/measures/o_22.svg)|![o_2x](/doc/measures/o_2x.svg)
 Column Total   |![o_x1](/doc/measures/o_x1.svg)|![o_x2](/doc/measures/o_x2.svg)|![o_xx](/doc/measures/o_xx.svg)
 
-Expected Values|Observed File                |Reference File
+Expected Values|Observed File                  |Reference File
 --------------:|:-----------------------------:|:-----------------------------:
-Word *w*       |![e_11](/doc/measures/e_11.svg)|![e_12](/doc/measures/e_12.svg) 
-Not Word *w*   |![e_21](/doc/measures/e_21.svg)|![e_22](/doc/measures/e_22.svg)
+*Word w*       |![e_11](/doc/measures/e_11.svg)|![e_12](/doc/measures/e_12.svg) 
+*Not Word w*   |![e_21](/doc/measures/e_21.svg)|![e_22](/doc/measures/e_22.svg)
 
-![o_11](/doc/measures/o_11.svg): Number of occurrences of Word *w* in the observed file<br>
-![o_12](/doc/measures/o_12.svg): Number of occurrences of Word *w* in the reference file<br>
-![o_21](/doc/measures/o_21.svg): Number of occurrences of all words except Word *w* in the observed file<br>
-![o_22](/doc/measures/o_22.svg): Number of occurrences of all words except Word *w* in the reference file
+![o_11](/doc/measures/o_11.svg): Number of occurrences of *Word w* in the observed file.<br>
+![o_12](/doc/measures/o_12.svg): Number of occurrences of *Word w* in the reference file.<br>
+![o_21](/doc/measures/o_21.svg): Number of occurrences of all words except *Word w* in the observed file.<br>
+![o_22](/doc/measures/o_22.svg): Number of occurrences of all words except *Word w* in the reference file.
 
-To conduct **Student's t-test (2-sample)**, **Welch's t-test**, or **Mann-Whitney U Test** on a specific word, the observed file and the reference file are first divided into **n** (5 by default) sub-sections respectively. Then, the frequencies of the word in each sub-section of the observed file and the reference file are counted and denoted by **FO₁**, **FO₂**, **FO₃** ... **FOn** and **FR₁**, **FR₂**, **FR₃** ... **FRn** respectively. The total frequency of the word in the observed file and the reference file are denoted by **FO** and **FR** respectively. The mean value of the frequencies over all sub-sections of the observed file and the reference file are denoted by ![fo_bar](/doc/measures/fo_bar.svg) and ![fr_bar](/doc/measures/fr_bar.svg) respectively.
+To conduct **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test** on a specific word, each column total is first divided into **n** (5 by default) sub-sections respectively. To be more specific, in *Collocation Extractor* and *Colligation Extractor*, all collocates where Word 1 appears as node and the other collocates where Word 1 does not appear as node are divided into **n** parts respectively. And in *Keyword Extractor*, all tokens in the observed file and all tokens in the reference files are equally divided into **n** parts respectively.
+
+The frequencies of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in each sub-section of the 2 column totals are counted and denoted by ![f_11](/doc/measures/f_11.svg), ![f_21](/doc/measures/f_21.svg), ![f_31](/doc/measures/f_31.svg) ... ![f_n1](/doc/measures/f_n1.svg) and ![f_12](/doc/measures/f_12.svg), ![f_22](/doc/measures/f_22.svg), ![f_32](/doc/measures/f_32.svg) ... ![f_n2](/doc/measures/f_n2.svg) respectively. The total frequency of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in the 2 column totals are denoted by ![f_x1](/doc/measures/f_x1.svg) and ![f_x1](/doc/measures/f_x1.svg) respectively. The mean value of the frequencies over all sub-sections in the 2 column totals are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
+
+Then the test statistic, bayes factor, and effect size are calculated as follows:
 
 <!--
 Berry-Rogghe's z-score:
@@ -1133,9 +1137,9 @@ Student's t-test (1-sample):
 
 Student's t-test (2-sample):
     \begin{align*}
-        s_1 &= \frac{\sum_{i = 1}^n \left(FO_i - \overline{FO}\right)^2}{n - 1} \\
-        s_2 &= \frac{\sum_{i = 1}^n \left(FR_i - \overline{FR}\right)^2}{n - 1} \\
-        t &= \frac{\overline{FO} - \overline{FR}}{\sqrt{\frac{s_1 - s_2}{n}}}
+        s_1 &= \frac{\sum_{i = 1}^n \left(F_{i1} - \overline{F_{x1}}\right)^2}{n - 1} \\
+        s_2 &= \frac{\sum_{i = 1}^n \left(F_{i2} - \overline{F_{x2}}\right)^2}{n - 1} \\
+        t &= \frac{\overline{F_{x1}} - \overline{F_{x2}}}{\sqrt{\frac{s_1 - s_2}{n}}}
     \end{align*}
 
 z-score:
@@ -1144,19 +1148,17 @@ z-score:
     \end{align*}
 -->
 
-Then the statistical significance, bayes factor and effect size will be calculated as follows:
-
 Test of Statistical Significance|Formula
 --------------------------------|-------
-Berry-Rogghe's z-score      [[24]](#doc-eng-5-24)|![Formula](/doc/measures/statistical_significance/berry_rogghes_z_score.svg)<br>where **S** is the average span size on both sides of the node word.
-Fisher's Exact Test         [[25]](#doc-eng-5-25)|See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
-Log-likelihood Ratio        [[26]](#doc-eng-5-26)|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.svg)
-Mann-Whitney U Test         [[27]](#doc-eng-5-27)|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
-Pearson's Chi-squared Test  [[28]](#doc-eng-5-28)[[29]](#doc-eng-5-29)|![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.svg)
-Student's t-test (1-sample) [[30]](#doc-eng-5-30)|![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.svg)
-Student's t-test (2-sample) [[31]](#doc-eng-5-31)|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.svg)
-Welch's t-test                                   |Same as Student's t-test (2-sample), but with different degrees of freedom (hence a different p-value).
-z-score                     [[32]](#doc-eng-5-32)|![Formula](/doc/measures/statistical_significance/z_score.svg)
+Fisher's Exact Test<br>([Pedersen, 1996](#doc-eng-5-pedersen-1996))|See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
+Log-likelihood Ratio Test<br>([Dunning, 1993](#doc-eng-5-dunning-1993))|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.svg)
+Mann-Whitney U Test<br>([Kilgarriff, 2001](#doc-eng-5-kilgarriff-2001))|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
+Pearson's Chi-squared Test<br>([Hofland & Johanson, 1982](#doc-eng-5-hofland-johanson-1982); [Oakes, 1998](#doc-eng-5-oakes-1998))|![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.svg)
+Student's t-test (1-sample)<br>([Church et al., 1991](#doc-eng-5-church-et-al-1991))|![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.svg)
+Student's t-test (2-sample)<br>([Paquot & Bestgen, 2009](#doc-eng-5-paquot-bestgen-2009))|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.svg)
+Welch's t-test|Same as Student's t-test (2-sample), but with different degrees of freedom (hence a different p-value).
+z-score<br>([Dennis, 1964](#doc-eng-5-dennis-1964))|![Formula](/doc/measures/statistical_significance/z_score.svg)
+z-score (Berry-Rogghe)<br>([Berry-Rogghe, 1973](#doc-eng-5-berry-rogghe-1973))|![Formula](/doc/measures/statistical_significance/berry_rogghes_z_score.svg)<br>where **S** is the average span size on both sides of the node word.
 
 <!--
 Log-likelihood Ratio:
@@ -1167,17 +1169,17 @@ Log-likelihood Ratio:
 
 Student's t-test (2-sample):
     \begin{align*}
-        s_1 &= \frac{\sum_{i = 1}^n \left(FO_i - \overline{FO}\right)^2}{n - 1} \\
-        s_2 &= \frac{\sum_{i = 1}^n \left(FR_i - \overline{FR}\right)^2}{n - 1} \\
-        t &= \frac{\overline{FO} - \overline{FR}}{\sqrt{\frac{s_1 - s_2}{n}}} \\
-        BF & = t^2 \times \ln n
+        s_1 &= \frac{\sum_{i = 1}^n \left(F_{i1} - \overline{F_{x1}}\right)^2}{n - 1} \\
+        s_2 &= \frac{\sum_{i = 1}^n \left(F_{i2} - \overline{F_{x2}}\right)^2}{n - 1} \\
+        t &= \frac{\overline{F_{x1}} - \overline{F_{x2}}}{\sqrt{\frac{s_1 - s_2}{n}}} \\
+        BF &= t^2 - \ln \left(2 \times n\right)
     \end{align*}
 -->
 
 Measure of Bayes Factor|Formula
 -----------------------|-------
-Log-likelihood Ratio        [[33]](#doc-eng-5-33)|![Formula](/doc/measures/bayes_factor/log_likehood_ratio_test.svg)
-Student's t-test (2-sample) [[33]](#doc-eng-5-33)|![Formula](/doc/measures/bayes_factor/students_t_test_2_sample.svg)
+Log-likelihood Ratio Test<br>([Wilson, 2013](#doc-eng-5-wilson-2013))|![Formula](/doc/measures/bayes_factor/log_likehood_ratio_test.svg)
+Student's t-test (2-sample)<br>([Wilson, 2013](#doc-eng-5-wilson-2013))|![Formula](/doc/measures/bayes_factor/students_t_test_2_sample.svg)
 
 <!--
 %DIFF:
@@ -1273,127 +1275,127 @@ Squared Phi Coefficient:
 
 Measure of Effect Size|Formula
 ----------------------|-------
-%DIFF                        [[34]](#doc-eng-5-34)|![Formula](/doc/measures/effect_size/pct_diff.svg)
-Cubic Association Ratio      [[35]](#doc-eng-5-35)[[36]](#doc-eng-5-36)|![Formula](/doc/measures/effect_size/im3.svg)
-Dice's Coefficient           [[37]](#doc-eng-5-37)|![Formula](/doc/measures/effect_size/dices_coeff.svg)
-Difference Coefficient       [[28]](#doc-eng-5-28)[[38]](#doc-eng-5-38)|![Formula](/doc/measures/effect_size/diff_coeff.svg)
-Jaccard Index                [[39]](#doc-eng-5-39)|![Formula](/doc/measures/effect_size/jaccard_index.svg)
-Kilgarriff's Ratio           [[40]](#doc-eng-5-40)|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, which is 1 by default.<br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
-Log Ratio                    [[41]](#doc-eng-5-41)|![Formula](/doc/measures/effect_size/log_ratio.svg)
-Log-Frequency Biased MD      [[42]](#doc-eng-5-42)|![Formula](/doc/measures/effect_size/lfmd.svg)
-logDice                      [[43]](#doc-eng-5-43)|![Formula](/doc/measures/effect_size/log_dice.svg)
-MI.log-f                     [[39]](#doc-eng-5-39)[[44]](#doc-eng-5-44)|![Formula](/doc/measures/effect_size/mi_log_f.svg)
-Minimum Sensitivity          [[45]](#doc-eng-5-45)|![Formula](/doc/measures/effect_size/min_sensitivity.svg)
-Mutual Dependency            [[42]](#doc-eng-5-42)|![Formula](/doc/measures/effect_size/md.svg)
-Mutual Expectation           [[46]](#doc-eng-5-46)|![Formula](/doc/measures/effect_size/me.svg)
-Mutual Information           [[47]](#doc-eng-5-47)|![Formula](/doc/measures/effect_size/mi.svg)
-Odds Ratio                   [[48]](#doc-eng-5-48)|![Formula](/doc/measures/effect_size/odds_ratio.svg)
-Pointwise Mutual Information [[49]](#doc-eng-5-49)|![Formula](/doc/measures/effect_size/pmi.svg)
-Poisson Collocation Measure  [[50]](#doc-eng-5-50)|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)
-Squared Phi Coefficient      [[51]](#doc-eng-5-51)|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)
+%DIFF<br>([Gabrielatos & Marchi, 2012](#doc-eng-5-gabrielatos-marchi-2012))|![Formula](/doc/measures/effect_size/pct_diff.svg)
+Cubic Association Ratio<br>([Daille, 1994](#doc-eng-5-daille-1994), [1995](#doc-eng-5-daille-1995))|![Formula](/doc/measures/effect_size/im3.svg)
+Dice's Coefficient<br>([Smadja et al., 1996](#doc-eng-5-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dices_coeff.svg)
+Difference Coefficient<br>([Hofland & Johanson, 1982](#doc-eng-5-hofland-johanson-1982); [Gabrielatos, 2018](#doc-eng-5-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)
+Jaccard Index<br>([Dunning, 1998](#doc-eng-5-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)
+Kilgarriff's Ratio<br>([Kilgarriff, 2009](#doc-eng-5-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, which is 1 by default.<br><br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
+Log Ratio<br>([Hardie, 2014](#doc-eng-5-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)
+Log-Frequency Biased MD<br>([Thanopoulos et al., 2002](#doc-eng-5-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/lfmd.svg)
+logDice<br>([Rychlý, 2008](#doc-eng-5-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)
+MI.log-f<br>([Lexical Computing Ltd., 2015](#doc-eng-5-lexical-computing-ltd-2015); [Kilgarriff & Tugwell, 2002](#doc-eng-5-kilgarriff-tugwell-2002))|![Formula](/doc/measures/effect_size/mi_log_f.svg)
+Minimum Sensitivity<br>([Pedersen, 1998](#doc-eng-5-pedersen-1998))|![Formula](/doc/measures/effect_size/min_sensitivity.svg)
+Mutual Dependency<br>([Thanopoulos et al., 2002](#doc-eng-5-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/md.svg)
+Mutual Expectation<br>([Dias et al., 1999](#doc-eng-5-dias-et-al-1999))|![Formula](/doc/measures/effect_size/me.svg)
+Mutual Information<br>([Dunning, 1998](#doc-eng-5-dunning-1998))|![Formula](/doc/measures/effect_size/mi.svg)
+Odds Ratio<br>([Pojanapunya & Todd, 2016](#doc-eng-5-pojanapunya-todd-2016))|![Formula](/doc/measures/effect_size/odds_ratio.svg)
+Pointwise Mutual Information<br>([Church & Hanks, 1990](#doc-eng-5-church-hanks-1990))|![Formula](/doc/measures/effect_size/pmi.svg)
+Poisson Collocation Measure<br>([Quasthoff & Wolff, 2002](#doc-eng-5-quasthoff-wolff-2002))|![Formula](/doc/measures/effect_size/poisson_collocation_measure.svg)
+Squared Phi Coefficient<br>([Church & Gale, 1991](#doc-eng-5-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)
 
 <span id="doc-eng-5"></span>
 ## 5 References [[Back to Contents]](#doc-eng)
 
-<span id="doc-eng-5-1"></span>
-[1] Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
-<span id="doc-eng-5-2"></span>
-[2] Coleman, M., & Liau, T. L. (1975). A computer readability formula designed for machine scoring. *Journal of Applied Psychology*, *60*(2), 283–284. https://doi.org/10.1037/h0076540<br>
-<span id="doc-eng-5-3"></span>
-[3] Dale, E., & Chall, J. S. (1948). A formula for predicting readability. *Educational Research Bulletin*, *27*(1), 11–20, 28.<br>
-<span id="doc-eng-5-4"></span>
-[4] Dale, E., & Chall, J. S. (1948). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.<br>
-<span id="doc-eng-5-5"></span>
-[5] Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728<br>
-<span id="doc-eng-5-6"></span>
-[6] Flesch, R. (1948). A new readability yardstick. *Journal of Applied Psychology*, *32*(3), 221–233. https://doi.org/10.1037/h0057532<br>
-<span id="doc-eng-5-7"></span>
-[7] Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. *Journal of Applied Psychology*, *35*(5), 333–337. https://doi.org/10.1037/h0062427<br>
-<span id="doc-eng-5-8"></span>
-[8] Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf<br>
-<span id="doc-eng-5-9"></span>
-[9] Caylor, J. S., Sticht, T. G., Fox, L. C., & Ford, J. P. (1973). Methodologies for determining reading requirements of military occupational specialties. Human Resource Research Organization. https://files.eric.ed.gov/fulltext/ED074343.pdf<br>
-<span id="doc-eng-5-10"></span>
-[10] Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.<br>
-<span id="doc-eng-5-11"></span>
-[11] McLaughlin, G. H. (1969). SMOG grading: A new readability formula. *Journal of Reading*, *12*(8), pp. 639–646. <br>
-<span id="doc-eng-5-12"></span>
-[12] Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.<br>
-<span id="doc-eng-5-13"></span>
-[13] Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
-<span id="doc-eng-5-14"></span>
-[14] O’Hayre, J. (1966). Gobbledygook has gotta go. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf<br>
-<span id="doc-eng-5-15"></span>
-[15] Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x<br>
-<span id="doc-eng-5-16"></span>
-[16] Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri<br>
-<span id="doc-eng-5-17"></span>
-[17] Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. *International Journal of Corpus Linguistics*, *17*(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij<br>
-<span id="doc-eng-5-18"></span>
-[18] Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of spanish words. Mouton.<br>
-<span id="doc-eng-5-19"></span>
-[19] Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.<br>
-<span id="doc-eng-5-20"></span>
-[20] Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
-<span id="doc-eng-5-21"></span>
-[21] Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
-<span id="doc-eng-5-22"></span>
-[22] Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University.<br>
-<span id="doc-eng-5-23"></span>
-[23] Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quatitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
-<span id="doc-eng-5-24"></span>
-[24] Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.<br>
-<span id="doc-eng-5-25"></span>
-[25] Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188-200). The South–Central Regional SAS Users' Group.<br>
-<span id="doc-eng-5-26"></span>
-[26] Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.<br>
-<span id="doc-eng-5-27"></span>
+<span id="doc-eng-5-berry-rogghe-1973"></span>
+[1] Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.<br>
+<span id="doc-eng-5-carroll-1970"></span>
+[2] Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x<br>
+<span id="doc-eng-5-caylor-et-al-1973"></span>
+[3] Caylor, J. S., Sticht, T. G., Fox, L. C., & Ford, J. P. (1973). Methodologies for determining reading requirements of military occupational specialties. Human Resource Research Organization. https://files.eric.ed.gov/fulltext/ED074343.pdf<br>
+<span id="doc-eng-5-church-gale-1991"></span>
+[4] Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.<br>
+<span id="doc-eng-5-church-et-al-1991"></span>
+[5] Church, K., Gale, W., Hanks P., & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), *Lexical acquisition: Exploiting on-line resources to build a lexicon* (pp. 115–164). Psychology Press.<br>
+<span id="doc-eng-5-church-hanks-1990"></span>
+[6] Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. *Computational Linguistics*, *16*(1), 22–29.<br>
+<span id="doc-eng-5-coleman-liau-1975"></span>
+[7] Coleman, M., & Liau, T. L. (1975). A computer readability formula designed for machine scoring. *Journal of Applied Psychology*, *60*(2), 283–284. https://doi.org/10.1037/h0076540<br>
+<span id="doc-eng-5-daille-1994"></span>
+[8] Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Université Paris 7]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=<br>
+<span id="doc-eng-5-daille-1995"></span>
+[9] Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University.<br>
+<span id="doc-eng-5-dale-1931"></span>
+[10] Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.<br>
+<span id="doc-eng-5-dale-chall-1948a"></span>
+[11] Dale, E., & Chall, J. S. (1948). A formula for predicting readability. *Educational Research Bulletin*, *27*(1), 11–20, 28.<br>
+<span id="doc-eng-5-dale-chall-1948b"></span>
+[12] Dale, E., & Chall, J. S. (1948). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.<br>
+<span id="doc-eng-5-dennis-1964"></span>
+[13] Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), *Proceedings of the symposium on statistical association methods for mechanized documentation* (pp. 61–148). National Bureau of Standards.<br>
+<span id="doc-eng-5-dias-et-al-1999"></span>
+[14] Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), *TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles* (pp. 333–339). TALN.<br>
+<span id="doc-eng-5-dunning-1993"></span>
+[15] Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.<br>
+<span id="doc-eng-5-dunning-1998"></span>
+[16] Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf<br>
+<span id="doc-eng-5-engwall-1974"></span>
+[17] Engwall, G. (1974). Fréquence et distribution du vocabulaire dans un choix de romans français [Unpublished doctoral dissertation]. Stockholm University.<br>
+<span id="doc-eng-5-farr-et-al-1951"></span>
+[18] Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. *Journal of Applied Psychology*, *35*(5), 333–337. https://doi.org/10.1037/h0062427<br>
+<span id="doc-eng-5-flesch-1948"></span>
+[19] Flesch, R. (1948). A new readability yardstick. *Journal of Applied Psychology*, *32*(3), 221–233. https://doi.org/10.1037/h0057532<br>
+<span id="doc-eng-5-gabrielatos-2018"></span>
+[20] Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), *Corpus approaches to discourse: A critical review* (pp. 225–258). Routledge.<br>
+<span id="doc-eng-5-gabrielatos-marchi-2012"></span>
+[21] Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy.<br>
+<span id="doc-eng-5-gries-2008"></span>
+[22] Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri<br>
+<span id="doc-eng-5-gunning-1968"></span>
+[23] Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.<br>
+<span id="doc-eng-5-hardie-2014"></span>
+[24] Hardie, A. (2014, April 28). Log ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
+<span id="doc-eng-5-hofland-johanson-1982"></span>
+[25] Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
+<span id="doc-eng-5-juilland-chang-rodrigues-1964"></span>
+[26] Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of spanish words. Mouton.<br>
+<span id="doc-eng-5-kilgarriff-2001"></span>
 [27] Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil<br>
-<span id="doc-eng-5-28"></span>
-[28] Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
-<span id="doc-eng-5-29"></span>
-[29] Oakes, M. P. (1998). *Statistics for Corpus Linguistics*. Edinburgh University Press.<br>
-<span id="doc-eng-5-30"></span>
-[30] Church, K., Gale, W., Hanks P., & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), *Lexical acquisition: Exploiting on-line resources to build a lexicon* (pp. 115–164). Psychology Press.<br>
-<span id="doc-eng-5-31"></span>
-[31] Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. *Language and Computers*, *68*, 247–269.<br>
-<span id="doc-eng-5-32"></span>
-[32] Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), *Proceedings of the symposium on statistical association methods for mechanized documentation* (pp. 61–148). National Bureau of Standards.<br>
-<span id="doc-eng-5-33"></span>
-[33] Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
-<span id="doc-eng-5-34"></span>
-[34] Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy.<br>
-<span id="doc-eng-5-35"></span>
-[35] Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Université Paris 7]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=<br>
-<span id="doc-eng-5-36"></span>
-[36] Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University.<br>
-<span id="doc-eng-5-37"></span>
-[37] Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
-<span id="doc-eng-5-38"></span>
-[38] Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), *Corpus approaches to discourse: A critical review* (pp. 225–258). Routledge.<br>
-<span id="doc-eng-5-39"></span>
-[39] Lexical Computing Ltd. (2015, July 8). Statistics used in Sketch Engine. Retrieved November 26, 2018 from https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/<br>
-<span id="doc-eng-5-40"></span>
-[40] Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009* (p. 171). University of Liverpool.<br>
-<span id="doc-eng-5-41"></span>
-[41] Hardie, A. (2014, April 28). Log ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
-<span id="doc-eng-5-42"></span>
-[42] Thanopoulos, A., Fakotakis, N., Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
-<span id="doc-eng-5-43"></span>
-[43] Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka, & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
-<span id="doc-eng-5-44"></span>
-[44] Kilgarriff, A., & Tugwell, D. (2002). WASP-bench – an MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.<br>
-<span id="doc-eng-5-45"></span>
-[45] Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.<br>
-<span id="doc-eng-5-46"></span>
-[46] Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), *TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles* (pp. 333–339). TALN.<br>
-<span id="doc-eng-5-47"></span>
-[47] Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf<br>
-<span id="doc-eng-5-48"></span>
-[48] Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Lingustic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
-<span id="doc-eng-5-49"></span>
-[49] Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. *Computational Linguistics*, *16*(1), 22–29.<br>
-<span id="doc-eng-5-50"></span>
-[50] Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
-<span id="doc-eng-5-51"></span>
-[51] Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.<br>
+<span id="doc-eng-5-kilgarriff-2009"></span>
+[28] Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009* (p. 171). University of Liverpool.<br>
+<span id="doc-eng-5-kilgarriff-tugwell-2002"></span>
+[29] Kilgarriff, A., & Tugwell, D. (2002). WASP-bench – an MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.<br>
+<span id="doc-eng-5-kincaid-et-al-1975"></span>
+[30] Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis. 
+<span id="doc-eng-5-kromer-2003"></span>
+[31] Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quatitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
+<span id="doc-eng-5-lexical-computing-ltd-2015"></span>
+[32] Lexical Computing Ltd. (2015, July 8). Statistics used in Sketch Engine. Retrieved November 26, 2018 from https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/<br>
+<span id="doc-eng-5-lijffijt-gries-2012"></span>
+[33] Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. *International Journal of Corpus Linguistics*, *17*(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij<br>
+<span id="doc-eng-5-lyne-1985"></span>
+[34] Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.<br>
+<span id="doc-eng-5-mclaughlin-1969"></span>
+[35] McLaughlin, G. H. (1969). SMOG grading: A new readability formula. *Journal of Reading*, *12*(8), pp. 639–646.<br>
+<span id="doc-eng-5-oakes-1998"></span>
+[36] Oakes, M. P. (1998). *Statistics for Corpus Linguistics*. Edinburgh University Press.<br>
+<span id="doc-eng-5-o-hayre-1966"></span>
+[37] O’Hayre, J. (1966). Gobbledygook has gotta go. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf<br>
+<span id="doc-eng-5-paquot-bestgen-2009"></span>
+[38] Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. *Language and Computers*, *68*, 247–269.<br>
+<span id="doc-eng-5-pedersen-1996"></span>
+[39] Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188-200). The South–Central Regional SAS Users' Group.<br>
+<span id="doc-eng-5-pedersen-1998"></span>
+[40] Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.<br>
+<span id="doc-eng-5-pojanapunya-todd-2016"></span>
+[41] Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Lingustic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
+<span id="doc-eng-5-quasthoff-wolff-2002"></span>
+[42] Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
+<span id="doc-eng-5-rosengren-1971"></span>
+[43] Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
+<span id="doc-eng-5-rychly-2008"></span>
+[44] Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka, & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
+<span id="doc-eng-5-smadja-et-al-1996"></span>
+[45] Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
+<span id="doc-eng-5-smith-1961"></span>
+[46] Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728<br>https://apps.dtic.mil/sti/pdfs/ADA006655.pdf<br>
+<span id="doc-eng-5-smith-senter-1967"></span>
+[47] Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
+<span id="doc-eng-5-spache-1953"></span>
+[48] Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
+<span id="doc-eng-5-thanopoulos-et-al-2002"></span>
+[49] Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
+<span id="doc-eng-5-wilson-2013"></span>
+[50] Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
+<span id="doc-eng-5-zhang-2004"></span>
+[51] Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>

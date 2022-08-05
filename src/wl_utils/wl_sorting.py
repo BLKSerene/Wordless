@@ -19,17 +19,16 @@
 # Frequency
 def sorted_tokens_freq_files(tokens_freq_files, sort_by_col = 0, reverse = False):
     def key(item):
-        keys = []
-
-        # Frequency
-        for value in item[1]:
-            keys.append(-value)
-
-        keys.remove(-item[1][sort_by_col])
-
         if reverse:
+            # Frequency
+            keys = list(item[1])
+
+            keys.remove(item[1][sort_by_col])
             keys.insert(0, item[1][sort_by_col])
         else:
+            keys = [-freq for freq in item[1]]
+
+            keys.remove(-item[1][sort_by_col])
             keys.insert(0, -item[1][sort_by_col])
 
         # Tokens/N-grams
@@ -41,22 +40,24 @@ def sorted_tokens_freq_files(tokens_freq_files, sort_by_col = 0, reverse = False
 
 def sorted_tokens_freq_files_ref(tokens_freq_files, sort_by_col = 0, reverse = False):
     def key(item):
-        keys = []
-
-        # Frequency in observed files
-        for i, freq in enumerate(item[1]):
-            if i > 0:
-                keys.append(-freq)
-
-        keys.remove(-item[1][sort_by_col])
-
         if reverse:
+            # Frequency in observed files
+            keys = list(item[1][1:])
+
+            keys.remove(item[1][sort_by_col])
             keys.insert(0, item[1][sort_by_col])
+
+            # Frequency in reference file
+            keys.append(item[1][0])
         else:
+            # Frequency in observed files
+            keys = [-freq for freq in item[1][1:]]
+
+            keys.remove(-item[1][sort_by_col])
             keys.insert(0, -item[1][sort_by_col])
 
-        # Frequency in reference file
-        keys.append(-item[1][0])
+            # Frequency in reference file
+            keys.append(-item[1][0])
 
         # Tokens
         keys.append(item[0])
@@ -65,50 +66,26 @@ def sorted_tokens_freq_files_ref(tokens_freq_files, sort_by_col = 0, reverse = F
 
     return sorted(tokens_freq_files.items(), key = key)
 
-# Association
-def sorted_collocations_stats_files(collocations_stats_files):
+# Statistics
+def sorted_stats_files(stats_files):
     def key(item):
         keys = []
 
-        for stats_file in item[1]:
-            # p-value
-            keys.append(stats_file[1])
-            # Test Statistic
-            if stats_file[0]:
-                keys.append(-stats_file[0])
-            # Bayes Factor
-            if stats_file[2]:
-                keys.append(-stats_file[2])
-            # Effect Size
-            keys.append(-stats_file[3])
+        # p-value
+        keys.extend([stats[1] for stats in item[1]])
+
+        # Test Statistic
+        if item[1][0]:
+            keys.extend([-stats[0] for stats in item[1]])
+
+        # Bayes Factor
+        keys.extend([-stats[2] for stats in item[1]])
+        # Effect Size
+        keys.extend([-stats[3] for stats in item[1]])
 
         # Collocates
         keys.append(item[0])
 
         return keys
 
-    return sorted(collocations_stats_files.items(), key = key)
-
-# Keyness
-def sorted_keywords_stats_files(keywords_stats_files):
-    def key(item):
-        keys = []
-
-        for stats_file in item[1]:
-            # p-value
-            keys.append(stats_file[1])
-            # Test Statistic
-            if stats_file[0]:
-                keys.append(-stats_file[0])
-            # Bayes Factor
-            if stats_file[2]:
-                keys.append(-stats_file[2])
-            # Effect Size
-            keys.append(-stats_file[3])
-
-        # Keywords
-        keys.append(item[0])
-
-        return keys
-
-    return sorted(keywords_stats_files.items(), key = key)
+    return sorted(stats_files.items(), key = key)
