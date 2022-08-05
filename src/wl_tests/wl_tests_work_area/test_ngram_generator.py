@@ -25,47 +25,46 @@ from wl_tests import wl_test_init
 import wl_ngram_generator
 
 main = wl_test_init.Wl_Test_Main()
-files = main.settings_custom['file_area']['files_open']
 
 def test_ngram_generator():
     print('Start testing module N-gram Generator...')
 
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
-    len_diff = abs(len(measures_dispersion) - len(measures_adjusted_freq))
 
-    if len(measures_dispersion) > len(measures_adjusted_freq):
-        measures_adjusted_freq += measures_adjusted_freq * (len_diff // len(measures_adjusted_freq)) + measures_adjusted_freq[: len_diff % len(measures_adjusted_freq)]
-    elif len(measures_adjusted_freq) > len(measures_dispersion):
-        measures_dispersion += measures_dispersion * (len_diff // len(measures_dispersion)) + measures_dispersion[: len_diff % len(measures_dispersion)]
+    len_measures_dispersion = len(measures_dispersion)
+    len_measures_adjusted_freq = len(measures_adjusted_freq)
 
-    # Search terms
+    files = main.settings_custom['file_area']['files_open']
+
     main.settings_custom['ngram_generator']['search_settings']['multi_search_mode'] = True
     main.settings_custom['ngram_generator']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i, (measure_dispersion, measure_adjusted_freq) in enumerate(zip(measures_dispersion, measures_adjusted_freq)):
+    for i in range(max([len_measures_dispersion, len_measures_adjusted_freq])):
         for file in files:
             file['selected'] = False
 
+        random_i = random.randrange(0, 10)
+
         # Single file with search terms
-        if i % 4 == 0:
+        if random_i in [0, 3, 6, 9]:
             random.choice(files)['selected'] = True
 
             main.settings_custom['ngram_generator']['search_settings']['search_settings'] = True
         # Single file without search terms
-        elif i % 4 == 1:
+        elif random_i in [1, 4, 7]:
             random.choice(files)['selected'] = True
 
             main.settings_custom['ngram_generator']['search_settings']['search_settings'] = False
         # Multiple files with search terms
-        elif i % 4 == 2:
-            for file in files:
+        elif random_i in [2, 5]:
+            for file in random.sample(files, 2):
                 file['selected'] = True
 
             main.settings_custom['ngram_generator']['search_settings']['search_settings'] = True
         # Multiple files without search terms
-        elif i % 4 == 3:
-            for file in files:
+        elif random_i == 8:
+            for file in random.sample(files, 2):
                 file['selected'] = True
 
             main.settings_custom['ngram_generator']['search_settings']['search_settings'] = False
@@ -75,10 +74,14 @@ def test_ngram_generator():
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
+        main.settings_custom['ngram_generator']['generation_settings']['measure_dispersion'] = measures_dispersion[i % len_measures_dispersion]
+        main.settings_custom['ngram_generator']['generation_settings']['measure_adjusted_freq'] = measures_adjusted_freq[i % len_measures_adjusted_freq]
+
+        print(f'[Test Round {i + 1}]')
         print(f"Files: {', '.join(files_selected)}")
         print(f"Search settings: {main.settings_custom['ngram_generator']['search_settings']['search_settings']}")
-        print(f'Measure of dispersion: {measure_dispersion}')
-        print(f'Measure of adjusted frequency: {measure_adjusted_freq}\n')
+        print(f"Measure of dispersion: {main.settings_custom['ngram_generator']['generation_settings']['measure_dispersion']}")
+        print(f"Measure of adjusted frequency: {main.settings_custom['ngram_generator']['generation_settings']['measure_adjusted_freq']}\n")
 
         wl_ngram_generator.Wl_Worker_Ngram_Generator_Table(
             main,

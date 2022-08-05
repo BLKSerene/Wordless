@@ -657,7 +657,7 @@ def generate_fig(main):
                     if settings['fig_settings']['use_data'] == _tr('wl_wordlist_generator', 'Frequency'):
                         wl_figs_freqs.wl_fig_freq(
                             main, tokens_freq_files,
-                            settings = settings['fig_settings'],
+                            fig_settings = settings['fig_settings'],
                             label_x = _tr('wl_wordlist_generator', 'Token')
                         )
                     else:
@@ -666,21 +666,16 @@ def generate_fig(main):
                                 token: numpy.array(stats_files)[:, 0]
                                 for token, stats_files in tokens_stats_files.items()
                             }
-
-                            label_y = col_dispersion
                         elif settings['fig_settings']['use_data'] == col_adjusted_freq:
                             tokens_stat_files = {
                                 token: numpy.array(stats_files)[:, 1]
                                 for token, stats_files in tokens_stats_files.items()
                             }
 
-                            label_y = col_adjusted_freq
-
                         wl_figs_stats.wl_fig_stat(
                             main, tokens_stat_files,
-                            settings = settings['fig_settings'],
-                            label_x = _tr('wl_wordlist_generator', 'Token'),
-                            label_y = label_y
+                            fig_settings = settings['fig_settings'],
+                            label_x = _tr('wl_wordlist_generator', 'Token')
                         )
 
                     # Hide the progress dialog early so that the main window will not obscure the generated figure

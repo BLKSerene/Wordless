@@ -42,20 +42,14 @@ def im3(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    if c11 == 0 or e11 == 0:
-        return 0
-    else:
-        return numpy.log2(c11 ** 3 / e11)
+    return numpy.log2(c11 ** 3 / e11) if c11 and e11 else 0
 
 # Dice's Coefficient
 # Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), pp. 1–38.
 def dices_coeff(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
 
-    if c1x + cx1 == 0:
-        return 0
-    else:
-        return 2 * c11 / (c1x + cx1)
+    return 2 * c11 / (c1x + cx1) if c1x + cx1 else 0
 
 # Difference Coefficient
 # References:
@@ -64,30 +58,20 @@ def dices_coeff(main, c11, c12, c21, c22):
 def diff_coeff(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
 
-    return (c11 / cx1 - c12 / cx2) / (c11 / cx1 + c12 / cx2)
+    return (c11 / cx1 - c12 / cx2) / (c11 / cx1 + c12 / cx2) if cx1 and cx2 else 0
 
 # Jaccard Index
-# Reference: Lexical Computing Ltd. (2015, July 8). Statistics used in Sketch Engine. Retrieved November 26, 2018 from https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/
+# Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf
 def jaccard_index(main, c11, c12, c21, c22):
-    if c11 + c12 + c21 == 0:
-        return 0
-    else:
-        return c11 / (c11 + c12 + c21)
+    return c11 / (c11 + c12 + c21) if c11 + c12 + c21 else 0
 
 # Kilgarriff's Ratio
 # Reference: Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), Proceedings of the Corpus Linguistics Conference 2009 (p. 171). University of Liverpool.
 def kilgarriffs_ratio(main, c11, c12, c21, c22):
     smoothing_param = main.settings_custom['measures']['effect_size']['kilgarriffs_ratio']['smoothing_param']
 
-    if c11 + c21 == 0:
-        relative_freq_observed = 0
-    else:
-        relative_freq_observed = c11 / (c11 + c21) * 1000000
-
-    if c12 + c22 == 0:
-        relative_freq_ref = 0
-    else:
-        relative_freq_ref = c12 / (c12 + c22) * 1000000
+    relative_freq_observed = c11 / (c11 + c21) * 1000000 if c11 + c21 else 0
+    relative_freq_ref = c12 / (c12 + c22) * 1000000 if c12 + c22 else 0
 
     return (relative_freq_observed + smoothing_param) / (relative_freq_ref + smoothing_param)
 
@@ -106,7 +90,7 @@ def log_ratio(main, c11, c12, c21, c22):
         return numpy.log2((c11 / cx1) / (c12 / cx2))
 
 # Log-Frequency Biased MD
-# Reference: Thanopoulos, A., Fakotakis, N., Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
+# Reference: Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
 def lfmd(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_expected(c1x, c2x, cx1, cx2, cxx)
@@ -136,48 +120,32 @@ def mi_log_f(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    if c11 == 0 or e11 == 0:
-        return 0
-    else:
-        return numpy.log2(c11 ** 2 / e11) * numpy.log(c11 + 1)
+    return numpy.log2(c11 ** 2 / e11) * numpy.log(c11 + 1) if c11 and e11 else 0
 
 # Minimum Sensitivity
 # Reference: Pedersen, T. (1998). Dependent bigram identification. In Proceedings of the Fifteenth National Conference on Artificial Intelligence (p. 1197). AAAI Press.
 def min_sensitivity(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
 
-    if c1x == 0:
-        s1 = 0
-    else:
-        s1 = c11 / c1x
-
-    if cx1 == 0:
-        s2 = 0
-    else:
-        s2 = c11 / cx1
+    s1 = c11 / c1x if c1x else 0
+    s2 = c11 / cx1 if cx1 else 0
 
     return min(s1, s2)
 
 # Mutual Dependency
-# Reference: Thanopoulos, A, Fakotakis, N., Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
+# Reference: Thanopoulos, A, Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
 def md(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    if c11 == 0 or e11 == 0:
-        return 0
-    else:
-        return numpy.log2(c11 ** 2 / e11)
+    return numpy.log2(c11 ** 2 / e11) if c11 and e11 else 0
 
 # Mutual Extation
 # Reference: Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles (pp. 333–339). TALN.
 def me(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
 
-    if cx1 + c1x == 0:
-        return 0
-    else:
-        return c11 * (2 * c11 / (c1x + cx1))
+    return c11 * (2 * c11 / (c1x + cx1)) if cx1 + c1x else 0
 
 # Mutual Information
 # Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf
@@ -185,25 +153,10 @@ def mi(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    if c11 == 0 or e11 == 0:
-        mi11 = 0
-    else:
-        mi11 = (c11 / cxx) * numpy.log2(c11 / e11)
-
-    if c12 == 0 or e12 == 0:
-        mi12 = 0
-    else:
-        mi12 = (c12 / cxx) * numpy.log2(c12 / e12)
-
-    if c21 == 0 or e21 == 0:
-        mi21 = 0
-    else:
-        mi21 = (c21 / cxx) * numpy.log2(c21 / e21)
-
-    if c22 == 0 or e22 == 0:
-        mi22 = 0
-    else:
-        mi22 = (c22 / cxx) * numpy.log2(c22 / e22)
+    mi11 = (c11 / cxx) * numpy.log2(c11 / e11) if c11 and e11 else 0
+    mi12 = (c12 / cxx) * numpy.log2(c12 / e12) if c12 and e12 else 0
+    mi21 = (c21 / cxx) * numpy.log2(c21 / e21) if c21 and e21 else 0
+    mi22 = (c22 / cxx) * numpy.log2(c22 / e22) if c22 and e22 else 0
 
     return mi11 + mi12 + mi21 + mi22
 
@@ -225,10 +178,7 @@ def pmi(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    if c11 == 0 or e11 == 0:
-        return 0
-    else:
-        return numpy.log2(c11 / e11)
+    return numpy.log2(c11 / e11) if c11 and e11 else 0
 
 # Poisson Collocation Measure
 # Reference: Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. Proceedings of 2nd International Workshop on Computational Approaches to Collocations. IEEE.
@@ -236,15 +186,8 @@ def poisson_collocation_measure(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    if c11 == 0:
-        log_c11 = 0
-    else:
-        log_c11 = numpy.log(c11)
-
-    if e11 == 0:
-        log_e11 = 0
-    else:
-        log_e11 = numpy.log(e11)
+    log_c11 = numpy.log(c11) if c11 else 0
+    log_e11 = numpy.log(e11) if e11 else 0
 
     return (c11 * (log_c11 - log_e11 - 1)) / numpy.log(cxx)
 
@@ -253,7 +196,4 @@ def poisson_collocation_measure(main, c11, c12, c21, c22):
 def squared_phi_coeff(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = wl_measures_statistical_significance.get_marginals(c11, c12, c21, c22)
 
-    if c1x == 0 or cx1 == 0:
-        return 0
-    else:
-        return (c11 * c22 - c12 * c21) ** 2 / (c1x * c2x * cx1 * cx2)
+    return (c11 * c22 - c12 * c21) ** 2 / (c1x * c2x * cx1 * cx2) if c1x and cx1 else 0

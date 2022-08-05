@@ -29,43 +29,53 @@ main = wl_test_init.Wl_Test_Main()
 def test_collocation_extractor():
     print('Start testing module Collocation Extractor...')
 
-    tests_significance = list(main.settings_global['tests_significance']['collocation_extractor'].keys())
-    measures_effect_size = list(main.settings_global['measures_effect_size']['collocation_extractor'].keys())
-    len_diff = abs(len(tests_significance) - len(measures_effect_size))
+    # Do not test Fisher's exact test since it is too computationally expensive
+    tests_statistical_significance = [
+        test_statistical_significance
+        for test_statistical_significance, vals in main.settings_global['tests_statistical_significance'].items()
+        if vals['collocation_extractor'] and test_statistical_significance != "Fisher's Exact Test"
+    ]
+    measures_bayes_factor = [
+        measure_bayes_factor
+        for measure_bayes_factor, vals in main.settings_global['measures_bayes_factor'].items()
+        if vals['collocation_extractor']
+    ]
+    measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    if len(tests_significance) > len(measures_effect_size):
-        measures_effect_size += measures_effect_size * (len_diff // len(measures_effect_size)) + measures_effect_size[: len_diff % len(measures_effect_size)]
-    elif len(measures_effect_size) > len(tests_significance):
-        tests_significance += tests_significance * (len_diff // len(tests_significance)) + tests_significance[: len_diff % len(tests_significance)]
+    len_tests_statistical_significance = len(tests_statistical_significance)
+    len_measures_bayes_factor = len(measures_bayes_factor)
+    len_measures_effect_size = len(measures_effect_size)
 
     files = main.settings_custom['file_area']['files_open']
 
-    for i, (test_significance, measure_effect_size) in enumerate(zip(tests_significance, measures_effect_size)):
+    main.settings_custom['collocation_extractor']['search_settings']['multi_search_mode'] = True
+    main.settings_custom['collocation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+
+    for i in range(max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])):
         for file in main.settings_custom['file_area']['files_open']:
             file['selected'] = False
 
-        main.settings_custom['collocation_extractor']['search_settings']['multi_search_mode'] = True
-        main.settings_custom['collocation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+        random_i = random.randrange(0, 10)
 
         # Single file with search terms
-        if i % 4 == 0:
+        if random_i in [0, 3, 6, 9]:
             random.choice(files)['selected'] = True
 
             main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = True
         # Single file without search terms
-        elif i % 4 == 1:
+        elif random_i in [1, 4, 7]:
             random.choice(files)['selected'] = True
 
             main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = False
         # Multiple files with search terms
-        elif i % 4 == 2:
-            for file in files:
+        elif random_i in [2, 5]:
+            for file in random.sample(files, 2):
                 file['selected'] = True
 
             main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = True
         # Multiple files without search terms
-        elif i % 4 == 3:
-            for file in random.sample(files, 3):
+        elif random_i == 8:
+            for file in random.sample(files, 2):
                 file['selected'] = True
 
             main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = False
@@ -76,10 +86,16 @@ def test_collocation_extractor():
             if file['selected']
         ]
 
+        main.settings_custom['collocation_extractor']['generation_settings']['test_statistical_significance'] = tests_statistical_significance[i % len_tests_statistical_significance]
+        main.settings_custom['collocation_extractor']['generation_settings']['measure_bayes_factor'] = measures_bayes_factor[i % len_measures_bayes_factor]
+        main.settings_custom['collocation_extractor']['generation_settings']['measure_effect_size'] = measures_effect_size[i % len_measures_effect_size]
+
+        print(f'[Test Round {i + 1}]')
         print(f"Files: {', '.join(files_selected)}")
         print(f"Search settings: {main.settings_custom['collocation_extractor']['search_settings']['search_settings']}")
-        print(f'Test of Statistical significance: {test_significance}')
-        print(f'Measure of effect size: {measure_effect_size}\n')
+        print(f"Test of Statistical significance: {main.settings_custom['collocation_extractor']['generation_settings']['test_statistical_significance']}")
+        print(f"Measure of bayes factor: {main.settings_custom['collocation_extractor']['generation_settings']['measure_bayes_factor']}")
+        print(f"Measure of effect size: {main.settings_custom['collocation_extractor']['generation_settings']['measure_effect_size']}\n")
 
         wl_collocation_extractor.Wl_Worker_Collocation_Extractor_Table(
             main,
@@ -91,12 +107,12 @@ def test_collocation_extractor():
 
     print('pass!')
 
-def update_gui(err_msg, collocations_freqs_files, collocations_stats_files, nodes_text):
+def update_gui(err_msg, collocations_freqs_files, collocations_stats_files):
+    print(err_msg)
     assert not err_msg
 
     assert collocations_freqs_files
     assert collocations_stats_files
-    assert nodes_text
     assert len(collocations_freqs_files) == len(collocations_stats_files)
 
     for (node, collocate), stats_files in collocations_stats_files.items():
@@ -106,7 +122,6 @@ def update_gui(err_msg, collocations_freqs_files, collocations_stats_files, node
 
         # Node
         assert node
-        assert nodes_text[node]
         # Collocate
         assert collocate
         # Frequency (span positions)

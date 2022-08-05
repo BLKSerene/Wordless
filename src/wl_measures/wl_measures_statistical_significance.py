@@ -16,11 +16,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import collections
+
 import numpy
 from PyQt5.QtCore import QCoreApplication
 import scipy.stats
 
-from wl_measures import wl_measures_bayes_factor
+from wl_nlp import wl_nlp_utils
 
 _tr = QCoreApplication.translate
 
@@ -51,47 +53,70 @@ def yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22):
 
     return c11, c12, c21, c22
 
-# Berry-Rogghe's z-score
-# References: Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), The computer and literary studies (pp. 103–112). Edinburgh University Press.
-def berry_rogghes_z_score(main, c11, c12, c21, c22, span):
-    c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
+def to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, test_statistical_significance):
+    freqs_sections_tokens = {}
 
-    z = cxx
-    fn = c1x
-    fc = cx1
-    k = c11
-    s = span
+    if test_statistical_significance == _tr('wl_measures_statistical_significance', 'Mann-Whitney U Test'):
+        num_sections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_sections']
+        use_data = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
+    elif test_statistical_significance == _tr('wl_measures_statistical_significance', "Student's t-test (2-sample)"):
+        num_sections = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_sections']
+        use_data = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
+    elif test_statistical_significance == _tr('wl_measures_statistical_significance', "Welch's t-test"):
+        num_sections = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['num_sections']
+        use_data = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['use_data']
 
-    p = fc / (z - fn)
-    e = p * fn * s
+    sections_x1 = wl_nlp_utils.to_sections(tokens_x1, num_sections)
+    sections_x2 = wl_nlp_utils.to_sections(tokens_x2, num_sections)
 
-    if e == 0 or 1 - p == 0:
-        z_score = 0
-    else:
-        z_score = (k - e) / numpy.sqrt(e * (1 - p))
+    sections_freqs_x1 = [collections.Counter(section) for section in sections_x1]
+    sections_freqs_x2 = [collections.Counter(section) for section in sections_x2]
 
-    p_value = scipy.stats.distributions.norm.sf(z_score)
+    if use_data == _tr('wl_measures_statistical_significance', 'Absolute Frequency'):
+        for token in tokens:
+            freqs_x1 = [
+                section_freqs.get(token, 0)
+                for section_freqs in sections_freqs_x1
+            ]
+            freqs_x2 = [
+                section_freqs.get(token, 0)
+                for section_freqs in sections_freqs_x2
+            ]
 
-    return [z_score, p_value, None]
+            freqs_sections_tokens[token] = (freqs_x1, freqs_x2)
+    elif use_data == _tr('wl_measures_statistical_significance', 'Relative Frequency'):
+        len_sections_x1 = [len(section) for section in sections_x1]
+        len_sections_x2 = [len(section) for section in sections_x2]
+
+        for token in tokens:
+            freqs_x1 = [
+                section_freqs.get(token, 0) / len_section
+                for section_freqs, len_section in zip(sections_freqs_x1, len_sections_x1)
+            ]
+            freqs_x2 = [
+                section_freqs.get(token, 0) / len_section
+                for section_freqs, len_section in zip(sections_freqs_x2, len_sections_x2)
+            ]
+
+            freqs_sections_tokens[token] = (freqs_x1, freqs_x2)
+
+    return freqs_sections_tokens
 
 # Fisher's Exact Test
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group.
 def fishers_exact_test(main, c11, c12, c21, c22):
     direction = main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction']
 
-    if direction == _tr('fishers_exact_test', 'Two-tailed'):
+    if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
         alternative = 'two-sided'
-    elif direction == _tr('fishers_exact_test', 'Left-tailed'):
+    elif direction == _tr('wl_measures_statistical_significance', 'Left-tailed'):
         alternative = 'less'
-    elif direction == _tr('fishers_exact_test', 'Right-tailed'):
+    elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
         alternative = 'greater'
 
-    _, p_value = scipy.stats.fisher_exact(
-        [[c11, c12], [c21, c22]],
-        alternative = alternative
-    )
+    p_val = scipy.stats.fisher_exact([[c11, c12], [c21, c22]], alternative = alternative)[1]
 
-    return [None, p_value, None]
+    return None, p_val
 
 # Log-likelihood Ratio
 # References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74.
@@ -113,32 +138,30 @@ def log_likelihood_ratio_test(main, c11, c12, c21, c22):
         + log_likelihood_ratio_21
         + log_likelihood_ratio_22
     )
-    p_value = scipy.stats.distributions.chi2.sf(log_likelihood_ratio, 1)
+    p_val = scipy.stats.distributions.chi2.sf(log_likelihood_ratio, 1)
 
-    bayes_factor = wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test(log_likelihood_ratio, cxx)
-
-    return [log_likelihood_ratio, p_value, bayes_factor]
+    return log_likelihood_ratio, p_val
 
 # Mann-Whitney U Test
 # References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
-def mann_whitney_u_test(main, counts_observed, counts_ref):
+def mann_whitney_u_test(main, freqs_x1, freqs_x2):
     direction = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['direction']
     apply_correction = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction']
 
-    if direction == _tr('mann_whitney_u_test', 'Two-tailed'):
+    if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
         alternative = 'two-sided'
-    elif direction == _tr('mann_whitney_u_test', 'Left-tailed'):
+    elif direction == _tr('wl_measures_statistical_significance', 'Left-tailed'):
         alternative = 'less'
-    elif direction == _tr('mann_whitney_u_test', 'Right-tailed'):
+    elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
         alternative = 'greater'
 
     u1, p = scipy.stats.mannwhitneyu(
-        counts_observed, counts_ref,
+        freqs_x1, freqs_x2,
         use_continuity = apply_correction,
         alternative = alternative
     )
 
-    return [u1, p, None]
+    return u1, p
 
 # Pearson's Chi-squared Test
 # References:
@@ -157,9 +180,9 @@ def pearsons_chi_squared_test(main, c11, c12, c21, c22):
     chi_square_22 = (c22 - e22) ** 2 / e22 if e22 else 0
 
     chi_square = chi_square_11 + chi_square_12 + chi_square_21 + chi_square_22
-    p_value = scipy.stats.distributions.chi2.sf(chi_square, 1)
+    p_val = scipy.stats.distributions.chi2.sf(chi_square, 1)
 
-    return [chi_square, p_value, None]
+    return chi_square, p_val
 
 # Student's t-test (1-sample)
 # References: Church, K., Gale, W., Hanks P., & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
@@ -167,27 +190,22 @@ def students_t_test_1_sample(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    if c11 == 0:
-        t_stat = 0
-    else:
-        t_stat = (c11 - e11) / numpy.sqrt(c11 * (1 - c11 / cxx))
+    t_stat = (c11 - e11) / numpy.sqrt(c11 * (1 - c11 / cxx)) if c11 else 0
+    p_val = scipy.stats.distributions.t.sf(numpy.abs(t_stat), cxx - 1) * 2
 
-    p_value = scipy.stats.distributions.t.sf(numpy.abs(t_stat), cxx - 1) * 2
-
-    return [t_stat, p_value, None]
+    return t_stat, p_val
 
 # Student's t-test (2-sample)
 # References: Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. Language and Computers, 68, 247–269.
-def students_t_test_2_sample(main, counts_observed, counts_ref):
-    t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = True)
-    bayes_factor = wl_measures_bayes_factor.bayes_factor_t_test(t_stat, len(counts_observed) + len(counts_ref))
+def students_t_test_2_sample(main, freqs_x1, freqs_x2):
+    t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = True)
 
-    return [t_stat, p_value, bayes_factor]
+    return t_stat, p_val
 
-def welchs_t_test(main, counts_observed, counts_ref):
-    t_stat, p_value = scipy.stats.ttest_ind(counts_observed, counts_ref, equal_var = False)
+def welchs_t_test(main, freqs_x1, freqs_x2):
+    t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = False)
 
-    return [t_stat, p_value, None]
+    return t_stat, p_val
 
 # z-score
 # References: Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), Proceedings of the symposium on statistical association methods for mechanized documentation (pp. 61–148). National Bureau of Standards.
@@ -197,14 +215,30 @@ def z_score(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
     e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
 
-    if e11 == 0:
-        z_score = 0
-    else:
-        z_score = (c11 - e11) / numpy.sqrt(e11 * (1 - e11 / cxx))
+    z_score = (c11 - e11) / numpy.sqrt(e11 * (1 - e11 / cxx)) if e11 else 0
 
-    if direction == 'Two-tailed':
-        p_value = 2 * scipy.stats.distributions.norm.sf(numpy.abs(z_score))
-    elif direction == 'One-tailed':
-        p_value = scipy.stats.distributions.norm.sf(z_score)
+    if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
+        p_val = 2 * scipy.stats.distributions.norm.sf(numpy.abs(z_score))
+    elif direction == _tr('wl_measures_statistical_significance', 'One-tailed'):
+        p_val = scipy.stats.distributions.norm.sf(z_score)
 
-    return [z_score, p_value, None]
+    return z_score, p_val
+
+# z-score (Berry-Rogghe)
+# References: Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), The computer and literary studies (pp. 103–112). Edinburgh University Press.
+def z_score_berry_rogghe(main, c11, c12, c21, c22, span):
+    c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
+
+    z = cxx
+    fn = c1x
+    fc = cx1
+    k = c11
+    s = span
+
+    p = fc / (z - fn)
+    e = p * fn * s
+
+    z_score = (k - e) / numpy.sqrt(e * (1 - p)) if e and 1 - p else 0
+    p_val = scipy.stats.distributions.norm.sf(z_score)
+
+    return z_score, p_val

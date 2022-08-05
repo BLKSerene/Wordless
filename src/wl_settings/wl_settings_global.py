@@ -20,6 +20,7 @@ from PyQt5.QtCore import QCoreApplication
 
 from wl_measures import (
     wl_measures_adjusted_freq,
+    wl_measures_bayes_factor,
     wl_measures_dispersion,
     wl_measures_effect_size,
     wl_measures_statistical_significance
@@ -2727,225 +2728,186 @@ def init_settings_global():
             }
         },
 
-        'tests_significance': {
-            'collocation_extractor': {
-                _tr('init_settings_global', "Berry-Rogghe's z-score"): {
-                    'cols': [
-                        _tr('init_settings_global', "Berry-Rogghe's z-score"),
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.berry_rogghes_z_score
-                },
-
-                _tr('init_settings_global', "Fisher's Exact Test"): {
-                    'cols': [
-                        None,
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.fishers_exact_test
-                },
-
-                _tr('init_settings_global', 'Log-likelihood Ratio Test'): {
-                    'cols': [
-                        _tr('init_settings_global', 'Log-likelihood Ratio'),
-                        _tr('init_settings_global', 'p-value'),
-                        _tr('init_settings_global', 'Bayes Factor')
-                    ],
-
-                    'func': wl_measures_statistical_significance.log_likelihood_ratio_test
-                },
-
-                _tr('init_settings_global', "Pearson's Chi-squared Test"): {
-                    'cols': [
-                        _tr('init_settings_global', 'χ2'),
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.pearsons_chi_squared_test
-                },
-
-                _tr('init_settings_global', "Student's t-test (1-sample)"): {
-                    'cols': [
-                        _tr('init_settings_global', 't-statistic'),
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.students_t_test_1_sample
-                },
-
-                _tr('init_settings_global', 'z-score'): {
-                    'cols': [
-                        _tr('init_settings_global', 'z-score'),
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.z_score
-                }
+        'tests_statistical_significance': {
+            _tr('init_settings_global', "Fisher's Exact Test"): {
+                # There is no test statistic for Fisher's exact test
+                'col_text': None,
+                'func': wl_measures_statistical_significance.fishers_exact_test,
+                'to_sections': False,
+                'collocation_extractor': True,
+                'keyword_extractor': True
             },
 
-            'keyword_extractor': {
-                _tr('init_settings_global', "Fisher's Exact Test"): {
-                    'cols': [
-                        None,
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
+            _tr('init_settings_global', 'Log-likelihood Ratio Test'): {
+                'col_text': _tr('init_settings_global', 'Log-likelihood Ratio'),
+                'func': wl_measures_statistical_significance.log_likelihood_ratio_test,
+                'to_sections': False,
+                'collocation_extractor': True,
+                'keyword_extractor': True
+            },
 
-                    'func': wl_measures_statistical_significance.fishers_exact_test
-                },
+            _tr('init_settings_global', 'Mann-Whitney U Test'): {
+                'col_text': _tr('init_settings_global', 'U1'),
+                'func': wl_measures_statistical_significance.mann_whitney_u_test,
+                'to_sections': True,
+                'collocation_extractor': False,
+                'keyword_extractor': True
+            },
 
-                _tr('init_settings_global', 'Log-likelihood Ratio Test'): {
-                    'cols': [
-                        _tr('init_settings_global', 'Log-likelihood Ratio'),
-                        _tr('init_settings_global', 'p-value'),
-                        _tr('init_settings_global', 'Bayes Factor')
-                    ],
+            _tr('init_settings_global', "Pearson's Chi-squared Test"): {
+                'col_text': _tr('init_settings_global', 'χ2'),
+                'func': wl_measures_statistical_significance.pearsons_chi_squared_test,
+                'to_sections': False,
+                'collocation_extractor': True,
+                'keyword_extractor': True
+            },
 
-                    'func': wl_measures_statistical_significance.log_likelihood_ratio_test
-                },
+            _tr('init_settings_global', "Student's t-test (1-sample)"): {
+                'col_text': _tr('init_settings_global', 't-statistic'),
+                'func': wl_measures_statistical_significance.students_t_test_1_sample,
+                'to_sections': False,
+                'collocation_extractor': True,
+                'keyword_extractor': True
+            },
 
-                _tr('init_settings_global', 'Mann-Whitney U Test'): {
-                    'cols': [
-                        _tr('init_settings_global', 'U Statistic'),
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
+            _tr('init_settings_global', "Student's t-test (2-sample)"): {
+                'col_text': _tr('init_settings_global', 't-statistic'),
+                'func': wl_measures_statistical_significance.students_t_test_2_sample,
+                'to_sections': True,
+                'collocation_extractor': False,
+                'keyword_extractor': True
+            },
 
-                    'func': wl_measures_statistical_significance.mann_whitney_u_test
-                },
+            _tr('init_settings_global', "Welch's t-test"): {
+                'col_text': _tr('init_settings_global', 't-statistic'),
+                'func': wl_measures_statistical_significance.welchs_t_test,
+                'to_sections': True,
+                'collocation_extractor': False,
+                'keyword_extractor': True
+            },
 
-                _tr('init_settings_global', "Pearson's Chi-squared Test"): {
-                    'cols': [
-                        _tr('init_settings_global', 'χ2'),
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
+            _tr('init_settings_global', 'z-score'): {
+                'col_text': _tr('init_settings_global', 'z-score'),
+                'func': wl_measures_statistical_significance.z_score,
+                'to_sections': False,
+                'collocation_extractor': True,
+                'keyword_extractor': True
+            },
 
-                    'func': wl_measures_statistical_significance.pearsons_chi_squared_test
-                },
-
-                _tr('init_settings_global', "Student's t-test (2-sample)"): {
-                    'cols': [
-                        _tr('init_settings_global', 't-statistic'),
-                        _tr('init_settings_global', 'p-value'),
-                        _tr('init_settings_global', 'Bayes Factor')
-                    ],
-
-                    'func': wl_measures_statistical_significance.students_t_test_2_sample
-                },
-
-                _tr('init_settings_global', "Welch's t-test"): {
-                    'cols': [
-                        _tr('init_settings_global', 't-statistic'),
-                        _tr('init_settings_global', 'p-value'),
-                        None
-                    ],
-
-                    'func': wl_measures_statistical_significance.welchs_t_test
-                }
+            _tr('init_settings_global', 'z-score (Berry-Rogghe)'): {
+                'col_text': _tr('init_settings_global', 'z-score'),
+                'func': wl_measures_statistical_significance.z_score_berry_rogghe,
+                'to_sections': False,
+                'collocation_extractor': True,
+                'keyword_extractor': False
             }
         },
 
-        'measures_effect_size': {
-            'collocation_extractor': {
-                _tr('init_settings_global', 'Cubic Association Ratio'): {
-                    'col': _tr('init_settings_global', 'IM³'),
-                    'func': wl_measures_effect_size.im3
-                },
-
-                _tr('init_settings_global', "Dice's Coefficient"): {
-                    'col': _tr('init_settings_global', "Dice's Coefficient"),
-                    'func': wl_measures_effect_size.dices_coeff
-                },
-
-                _tr('init_settings_global', 'Jaccard Index'): {
-                    'col': _tr('init_settings_global', 'Jaccard Index'),
-                    'func': wl_measures_effect_size.jaccard_index
-                },
-
-                _tr('init_settings_global', 'Log-Frequency Biased MD'): {
-                    'col': _tr('init_settings_global', 'LFMD'),
-                    'func': wl_measures_effect_size.lfmd
-                },
-
-                _tr('init_settings_global', 'logDice'): {
-                    'col': _tr('init_settings_global', 'logDice'),
-                    'func': wl_measures_effect_size.log_dice
-                },
-
-                _tr('init_settings_global', 'MI.log-f'): {
-                    'col': _tr('init_settings_global', 'MI.log-f'),
-                    'func': wl_measures_effect_size.mi_log_f
-                },
-
-                _tr('init_settings_global', 'Minimum Sensitivity'): {
-                    'col': _tr('init_settings_global', 'Minimum Sensitivity'),
-                    'func': wl_measures_effect_size.min_sensitivity
-                },
-
-                _tr('init_settings_global', 'Mutual Dependency'): {
-                    'col': _tr('init_settings_global', 'MD'),
-                    'func': wl_measures_effect_size.md
-                },
-
-                _tr('init_settings_global', 'Mutual Expectation'): {
-                    'col': _tr('init_settings_global', 'ME'),
-                    'func': wl_measures_effect_size.me
-                },
-
-                _tr('init_settings_global', 'Mutual Information'): {
-                    'col': _tr('init_settings_global', 'MI'),
-                    'func': wl_measures_effect_size.mi
-                },
-
-                _tr('init_settings_global', 'Pointwise Mutual Information'): {
-                    'col': _tr('init_settings_global', 'PMI'),
-                    'func': wl_measures_effect_size.pmi
-                },
-
-                _tr('init_settings_global', 'Poisson Collocation Measure'): {
-                    'col': _tr('init_settings_global', 'Poisson Collocation Measure'),
-                    'func': wl_measures_effect_size.poisson_collocation_measure
-                },
-
-                _tr('init_settings_global', 'Squared Phi Coefficient'): {
-                    'col': _tr('init_settings_global', 'φ2'),
-                    'func': wl_measures_effect_size.squared_phi_coeff
-                }
+        'measures_bayes_factor': {
+            _tr('init_settings_global', 'Log-likelihood Ratio Test'): {
+                'func': wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test,
+                'to_sections': False,
+                'collocation_extractor': True,
+                'keyword_extractor': True
             },
 
-            'keyword_extractor': {
-                _tr('init_settings_global', '%DIFF'): {
-                    'col': _tr('init_settings_global', '%DIFF'),
-                    'func': wl_measures_effect_size.pct_diff
-                },
+            _tr('init_settings_global', "Student's t-test (2-sample)"): {
+                'func': wl_measures_bayes_factor.bayes_factor_students_t_test_2_sample,
+                'to_sections': True,
+                'collocation_extractor': False,
+                'keyword_extractor': True
+            },
+        },
 
-                _tr('init_settings_global', 'Difference Coefficient'): {
-                    'col': _tr('init_settings_global', 'Difference Coefficient'),
-                    'func': wl_measures_effect_size.diff_coeff
-                },
+        'measures_effect_size': {
+            _tr('init_settings_global', '%DIFF'): {
+                'col_text': _tr('init_settings_global', '%DIFF'),
+                'func': wl_measures_effect_size.pct_diff
+            },
 
-                _tr('init_settings_global', "Kilgarriff's Ratio"): {
-                    'col': _tr('init_settings_global', "Kilgarriff's Ratio"),
-                    'func': wl_measures_effect_size.kilgarriffs_ratio
-                },
+            _tr('init_settings_global', 'Cubic Association Ratio'): {
+                'col_text': _tr('init_settings_global', 'IM³'),
+                'func': wl_measures_effect_size.im3
+            },
 
-                _tr('init_settings_global', 'Log Ratio'): {
-                    'col': _tr('init_settings_global', 'Log Ratio'),
-                    'func': wl_measures_effect_size.log_ratio
-                },
+            _tr('init_settings_global', "Dice's Coefficient"): {
+                'col_text': _tr('init_settings_global', "Dice's Coefficient"),
+                'func': wl_measures_effect_size.dices_coeff
+            },
 
-                _tr('init_settings_global', 'Odds Ratio'): {
-                    'col': _tr('init_settings_global', 'Odds Ratio'),
-                    'func': wl_measures_effect_size.odds_ratio
-                }
+            _tr('init_settings_global', 'Difference Coefficient'): {
+                'col_text': _tr('init_settings_global', 'Difference Coefficient'),
+                'func': wl_measures_effect_size.diff_coeff
+            },
+
+            _tr('init_settings_global', 'Jaccard Index'): {
+                'col_text': _tr('init_settings_global', 'Jaccard Index'),
+                'func': wl_measures_effect_size.jaccard_index
+            },
+
+            _tr('init_settings_global', 'Log-Frequency Biased MD'): {
+                'col_text': _tr('init_settings_global', 'LFMD'),
+                'func': wl_measures_effect_size.lfmd
+            },
+
+            _tr('init_settings_global', "Kilgarriff's Ratio"): {
+                'col_text': _tr('init_settings_global', "Kilgarriff's Ratio"),
+                'func': wl_measures_effect_size.kilgarriffs_ratio
+            },
+
+            _tr('init_settings_global', 'logDice'): {
+                'col_text': _tr('init_settings_global', 'logDice'),
+                'func': wl_measures_effect_size.log_dice
+            },
+
+            _tr('init_settings_global', 'Log Ratio'): {
+                'col_text': _tr('init_settings_global', 'Log Ratio'),
+                'func': wl_measures_effect_size.log_ratio
+            },
+
+            _tr('init_settings_global', 'MI.log-f'): {
+                'col_text': _tr('init_settings_global', 'MI.log-f'),
+                'func': wl_measures_effect_size.mi_log_f
+            },
+
+            _tr('init_settings_global', 'Minimum Sensitivity'): {
+                'col_text': _tr('init_settings_global', 'Minimum Sensitivity'),
+                'func': wl_measures_effect_size.min_sensitivity
+            },
+
+            _tr('init_settings_global', 'Mutual Dependency'): {
+                'col_text': _tr('init_settings_global', 'MD'),
+                'func': wl_measures_effect_size.md
+            },
+
+            _tr('init_settings_global', 'Mutual Expectation'): {
+                'col_text': _tr('init_settings_global', 'ME'),
+                'func': wl_measures_effect_size.me
+            },
+
+            _tr('init_settings_global', 'Mutual Information'): {
+                'col_text': _tr('init_settings_global', 'MI'),
+                'func': wl_measures_effect_size.mi
+            },
+
+            _tr('init_settings_global', 'Odds Ratio'): {
+                'col_text': _tr('init_settings_global', 'Odds Ratio'),
+                'func': wl_measures_effect_size.odds_ratio
+            },
+
+            _tr('init_settings_global', 'Pointwise Mutual Information'): {
+                'col_text': _tr('init_settings_global', 'PMI'),
+                'func': wl_measures_effect_size.pmi
+            },
+
+            _tr('init_settings_global', 'Poisson Collocation Measure'): {
+                'col_text': _tr('init_settings_global', 'Poisson Collocation Measure'),
+                'func': wl_measures_effect_size.poisson_collocation_measure
+            },
+
+            _tr('init_settings_global', 'Squared Phi Coefficient'): {
+                'col_text': _tr('init_settings_global', 'φ2'),
+                'func': wl_measures_effect_size.squared_phi_coeff
             }
         },
 

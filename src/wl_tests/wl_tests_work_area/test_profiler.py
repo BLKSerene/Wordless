@@ -30,10 +30,11 @@ from wl_utils import wl_misc
 import wl_profiler
 
 main = wl_test_init.Wl_Test_Main()
-files = main.settings_custom['file_area']['files_open']
 
 def test_profiler():
     print('Start testing module Profiler...')
+
+    files = main.settings_custom['file_area']['files_open']
 
     for i in range(2):
         for file in files:
@@ -44,7 +45,7 @@ def test_profiler():
             random.choice(files)['selected'] = True
         # Multiple files
         elif i == 1:
-            for file in files:
+            for file in random.sample(files, 2):
                 file['selected'] = True
 
         files_selected = [
@@ -52,7 +53,8 @@ def test_profiler():
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
-        print('Files: ' + ', '.join(files_selected))
+        print(f'[Test Round {i + 1}]')
+        print(f"Files: {', '.join(files_selected)}\n")
 
         wl_profiler.Wl_Worker_Profiler_Table(
             main,
@@ -67,10 +69,12 @@ def test_profiler():
 def update_gui(err_msg, texts_stats_files):
     assert not err_msg
 
+    assert len(texts_stats_files) >= 1
+
     count_tokens_lens = []
     count_sentences_lens = []
 
-    assert len(texts_stats_files) >= 1
+    files = main.settings_custom['file_area']['files_open']
 
     for i, stats in enumerate(texts_stats_files):
         readability_statistics = stats[0]

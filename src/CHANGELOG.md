@@ -28,6 +28,7 @@
 - Settings: Add Settings - Tables - Profiler
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
 - Work Area: Add Work Area - Search Settings - Context Settings - Save
+- Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 
 ### ✨ Improvements
 - Settings: Allow resizing of Settings dialog box
@@ -35,7 +36,7 @@
 - Work Area: Update Profiler - Type-token Ratio (Standardized)
 
 ### 📌 Bugfixes
-- Work Area: Fix Collocation/Colligation - Generation Settings - Limit Searching
+- Work Area: Fix Collocation/Colligation Extractor - Generation Settings - Limit Searching
 - Work Area: Fix Concordancer / Parallel Concordancer - Exported Selected/All after sorting
 - Work Area: Fix Profiler - Table Settings - Show Cumulutive after clicking horizontal headers
 - Work Area: Fix Profiler - Token Settings - Use tags only

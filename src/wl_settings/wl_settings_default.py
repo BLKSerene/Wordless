@@ -670,8 +670,9 @@ def init_settings_default(main):
 
                 'limit_searching': _tr('init_settings_default', 'None'),
 
-                'test_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
-                'measure_effect_size': _tr('init_settings_default', 'Pointwise Mutual Information'),
+                'test_statistical_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
+                'measure_bayes_factor': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
+                'measure_effect_size': _tr('init_settings_default', 'Pointwise Mutual Information')
             },
 
             'table_settings': {
@@ -713,10 +714,10 @@ def init_settings_default(main):
                 'test_stat_max': 100,
                 'test_stat_max_no_limit': True,
 
-                'p_value_min': 0,
-                'p_value_min_no_limit': True,
-                'p_value_max': 0.05,
-                'p_value_max_no_limit': True,
+                'p_val_min': 0,
+                'p_val_min_no_limit': True,
+                'p_val_max': 0.05,
+                'p_val_max_no_limit': True,
 
                 'bayes_factor_min': -100,
                 'bayes_factor_min_no_limit': True,
@@ -831,7 +832,8 @@ def init_settings_default(main):
 
                 'limit_searching': _tr('init_settings_default', 'None'),
 
-                'test_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
+                'test_statistical_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
+                'measure_bayes_factor': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
                 'measure_effect_size': _tr('init_settings_default', 'Pointwise Mutual Information')
             },
 
@@ -874,10 +876,10 @@ def init_settings_default(main):
                 'test_stat_max': 100,
                 'test_stat_max_no_limit': True,
 
-                'p_value_min': 0,
-                'p_value_min_no_limit': True,
-                'p_value_max': 0.05,
-                'p_value_max_no_limit': True,
+                'p_val_min': 0,
+                'p_val_min_no_limit': True,
+                'p_val_max': 0.05,
+                'p_val_max_no_limit': True,
 
                 'bayes_factor_min': -100,
                 'bayes_factor_min_no_limit': True,
@@ -928,8 +930,9 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
-                'test_significance': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
-                'measure_effect_size': _tr('init_settings_default', "Kilgarriff's Ratio"),
+                'test_statistical_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
+                'measure_bayes_factor': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
+                'measure_effect_size': _tr('init_settings_default', 'Odds Ratio'),
             },
 
             'table_settings': {
@@ -969,10 +972,10 @@ def init_settings_default(main):
                 'test_stat_max': 100,
                 'test_stat_max_no_limit': True,
 
-                'p_value_min': 0,
-                'p_value_min_no_limit': True,
-                'p_value_max': 0.05,
-                'p_value_max_no_limit': True,
+                'p_val_min': 0,
+                'p_val_min_no_limit': True,
+                'p_val_max': 0.05,
+                'p_val_max_no_limit': True,
 
                 'bayes_factor_min': -100,
                 'bayes_factor_min_no_limit': True,
@@ -1743,8 +1746,8 @@ def init_settings_default(main):
             },
 
             'precision_settings': {
-                'precision_decimals': 2,
-                'precision_pcts': 2,
+                'precision_decimals': 3,
+                'precision_pcts': 3,
                 'precision_p_vals': 5
             },
 
@@ -1807,6 +1810,14 @@ def init_settings_default(main):
                 'z_score': {
                     'direction': _tr('init_settings_default', 'Two-tailed')
                 }
+            },
+
+            # Settings - Measures - Bayes Factor
+            'bayes_factor': {
+                'students_t_test_2_sample': {
+                    'num_sections': 5,
+                    'use_data': _tr('init_settings_default', 'Relative Frequency')
+                },
             },
 
             # Settings - Measures - Effect Size

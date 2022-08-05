@@ -1166,10 +1166,10 @@ def generate_fig(main):
                             'b|'
                         )
 
-                        matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Search Terms'))
+                        matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Search Term'))
                         matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
 
-                        matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Files'))
+                        matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'File'))
                         matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
                         matplotlib.pyplot.ylim(-1, y_max)
                     elif settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'Search Term'):
@@ -1179,10 +1179,10 @@ def generate_fig(main):
                             'b|'
                         )
 
-                        matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Files'))
+                        matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'File'))
                         matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
 
-                        matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Search Terms'))
+                        matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Search Term'))
                         matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
                         matplotlib.pyplot.ylim(-1, y_max)
 
