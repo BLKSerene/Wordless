@@ -727,8 +727,10 @@ def wl_widgets_measure_dispersion(parent):
 
     combo_box_measure_dispersion.addItems(list(main.settings_global['measures_dispersion'].keys()))
 
-    return (label_measure_dispersion,
-            combo_box_measure_dispersion)
+    return (
+        label_measure_dispersion,
+        combo_box_measure_dispersion
+    )
 
 def wl_widgets_measure_adjusted_freq(parent):
     main = wl_misc.find_wl_main(parent)
@@ -738,22 +740,70 @@ def wl_widgets_measure_adjusted_freq(parent):
 
     combo_box_measure_adjusted_freq.addItems(list(main.settings_global['measures_adjusted_freq'].keys()))
 
-    return (label_measure_adjusted_freq,
-            combo_box_measure_adjusted_freq)
+    return (
+        label_measure_adjusted_freq,
+        combo_box_measure_adjusted_freq
+    )
 
-def wl_widgets_test_significance(parent):
-    label_test_significance = QLabel(_tr('wl_widgets_test_significance', 'Test of Statistical Significance:'), parent)
-    combo_box_test_significance = wl_boxes.Wl_Combo_Box(parent)
+def wl_widgets_test_statistical_significance(parent, tab):
+    label_test_statistical_significance = QLabel(_tr('wl_widgets_test_significance', 'Test of Statistical Significance:'), parent)
+    combo_box_test_statistical_significance = wl_boxes.Wl_Combo_Box(parent)
 
-    return (label_test_significance,
-            combo_box_test_significance)
+    for measure, vals in parent.main.settings_global['tests_statistical_significance'].items():
+        if vals[tab]:
+            combo_box_test_statistical_significance.addItem(measure)
+
+    return (
+        label_test_statistical_significance,
+        combo_box_test_statistical_significance
+    )
+
+def wl_widgets_measure_bayes_factor(parent, tab):
+    label_measure_bayes_factor = QLabel(_tr('wl_widgets_measure_bayes_factor', 'Measure of Bayes Factor:'), parent)
+    combo_box_measure_bayes_factor = wl_boxes.Wl_Combo_Box(parent)
+
+    for measure, vals in parent.main.settings_global['measures_bayes_factor'].items():
+        if vals[tab]:
+            combo_box_measure_bayes_factor.addItem(measure)
+
+    return (
+        label_measure_bayes_factor,
+        combo_box_measure_bayes_factor
+    )
 
 def wl_widgets_measure_effect_size(parent):
     label_measure_effect_size = QLabel(_tr('wl_widgets_measure_effect_size', 'Measure of Effect Size:'), parent)
     combo_box_measure_effect_size = wl_boxes.Wl_Combo_Box(parent)
 
-    return (label_measure_effect_size,
-            combo_box_measure_effect_size)
+    combo_box_measure_effect_size.addItems(list(parent.main.settings_global['measures_effect_size'].keys()))
+
+    return (
+        label_measure_effect_size,
+        combo_box_measure_effect_size
+    )
+
+def wl_widgets_measures(parent, tab):
+    (
+        label_test_statistical_significance,
+        combo_box_test_statistical_significance
+    ) = wl_widgets_test_statistical_significance(parent, tab)
+    (
+        label_measure_bayes_factor,
+        combo_box_measure_bayes_factor
+    ) = wl_widgets_measure_bayes_factor(parent, tab)
+    (
+        label_measure_effect_size,
+        combo_box_measure_effect_size
+    ) = wl_widgets_measure_effect_size(parent)
+
+    return (
+        label_test_statistical_significance,
+        combo_box_test_statistical_significance,
+        label_measure_bayes_factor,
+        combo_box_measure_bayes_factor,
+        label_measure_effect_size,
+        combo_box_measure_effect_size
+    )
 
 def wl_widgets_settings_measures(parent, node):
     main = wl_misc.find_wl_main(parent)
@@ -946,7 +996,7 @@ def wl_widgets_filter_measures(parent, filter_min = -10000, filter_max = 10000):
         label_max, spin_box_max, checkbox_max_no_limit
     )
 
-def wl_widgets_filter_p_value(parent):
+def wl_widgets_filter_p_val(parent):
     def min_changed():
         if spin_box_min.value() > spin_box_max.value():
             spin_box_max.setValue(spin_box_min.value())
@@ -966,13 +1016,17 @@ def wl_widgets_filter_p_value(parent):
 
     main = wl_misc.find_wl_main(parent)
 
-    label_min = QLabel(_tr('wl_widgets_filter_p_value', 'From'), parent)
-    (spin_box_min,
-     checkbox_min_no_limit) = wl_widgets_no_limit(parent, double = True)
+    label_min = QLabel(_tr('wl_widgets_filter_p_val', 'From'), parent)
+    (
+        spin_box_min,
+        checkbox_min_no_limit
+    ) = wl_widgets_no_limit(parent, double = True)
 
-    label_max = QLabel(_tr('wl_widgets_filter_p_value', 'To'), parent)
-    (spin_box_max,
-     checkbox_max_no_limit) = wl_widgets_no_limit(parent, double = True)
+    label_max = QLabel(_tr('wl_widgets_filter_p_val', 'To'), parent)
+    (
+        spin_box_max,
+        checkbox_max_no_limit
+    ) = wl_widgets_no_limit(parent, double = True)
 
     spin_box_min.setRange(0, 1)
     spin_box_max.setRange(0, 1)
@@ -984,7 +1038,6 @@ def wl_widgets_filter_p_value(parent):
 
     min_changed()
     max_changed()
-
     precision_changed()
 
     return (

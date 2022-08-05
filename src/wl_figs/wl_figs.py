@@ -18,8 +18,190 @@
 
 import platform
 
+from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QDesktopWidget
 import matplotlib
 import matplotlib.pyplot
+import networkx
+import numpy
+import wordcloud
+
+from wl_utils import wl_misc
+
+_tr = QCoreApplication.translate
+
+def get_data_ranks(tokens_data_files, fig_settings):
+    if fig_settings['rank_min_no_limit']:
+        rank_min = 1
+    else:
+        rank_min = fig_settings['rank_min']
+
+    if fig_settings['rank_max_no_limit']:
+        rank_max = None
+    else:
+        rank_max = fig_settings['rank_max']
+
+    return tokens_data_files[rank_min - 1 : rank_max]
+
+def generate_line_chart(
+    main,
+    tokens_data_files, fig_settings,
+    freq_data, file_names_selected, label_x
+):
+    tokens_data_files = get_data_ranks(tokens_data_files, fig_settings)
+
+    tokens = [token for token, vals in tokens_data_files]
+    vals = numpy.array([vals for token, vals in tokens_data_files])
+
+    # Frequency data
+    if freq_data:
+        if fig_settings['use_cumulative']:
+            vals = numpy.cumsum(vals, axis = 0)
+
+        if fig_settings['use_pct']:
+            total_freqs = numpy.array([vals for token, vals in tokens_data_files]).sum(axis = 0)
+
+            for i, (file_name, total_freq) in enumerate(zip(file_names_selected, total_freqs)):
+                matplotlib.pyplot.plot(vals[:, i] / total_freq * 100, label = file_name)
+        else:
+            for i, file_name in enumerate(file_names_selected):
+                matplotlib.pyplot.plot(vals[:, i], label = file_name)
+
+        if fig_settings['use_cumulative']:
+            if fig_settings['use_pct']:
+                matplotlib.pyplot.ylabel(_tr('wl_figs', 'Cumulative Percentage Frequency'))
+            else:
+                matplotlib.pyplot.ylabel(_tr('wl_figs', 'Cumulative Frequency'))
+        else:
+            if fig_settings['use_pct']:
+                matplotlib.pyplot.ylabel(_tr('wl_figs', 'Percentage Frequency'))
+            else:
+                matplotlib.pyplot.ylabel(_tr('wl_figs', 'Frequency'))
+    # Non-frenquency data
+    else:
+        for i, file_name in enumerate(file_names_selected):
+            matplotlib.pyplot.plot(vals[:, i], label = file_name)
+
+        matplotlib.pyplot.ylabel(fig_settings['use_data'])
+
+    matplotlib.pyplot.xlabel(label_x)
+    matplotlib.pyplot.xticks(
+        range(len(tokens)),
+        labels = tokens,
+        rotation = 90
+    )
+
+    matplotlib.pyplot.grid(True, color = 'silver')
+    matplotlib.pyplot.legend()
+
+def generate_word_cloud(main, tokens_data_file, fig_settings):
+    tokens_data_file = get_data_ranks(tokens_data_file, fig_settings)
+
+    tokens = [token for token, val in tokens_data_file]
+    # Convert to numpy.float64 to fix zeros
+    vals = numpy.array([val for token, val in tokens_data_file], dtype = numpy.float64)
+
+    val_min = numpy.min(vals[vals != -numpy.inf]) if vals[vals != -numpy.inf].size > 0 else -10
+    val_max = numpy.max(vals[vals != numpy.inf]) if vals[vals != numpy.inf].size > 0 else 10
+
+    # Fix +/-inf
+    vals = numpy.where(vals != numpy.inf, vals, val_max * 10)
+    vals = numpy.where(vals != -numpy.inf, vals, val_min * 10)
+
+    # Fix negative data
+    if vals[vals < 0].size > 0:
+        vals += (-numpy.min(vals)) + 1e-15
+
+    # Fix zeros
+    if vals[vals == 0].size > 0:
+        vals += 1e-15
+
+    # WordCloud always displays data descendingly
+    if fig_settings['use_data'] == _tr('wl_figs', 'p-value'):
+        vals = 1 - vals
+
+    desktop_widget = QDesktopWidget()
+
+    word_cloud = wordcloud.WordCloud(
+        width = desktop_widget.width(),
+        height = desktop_widget.height(),
+        background_color = main.settings_custom['figs']['word_clouds']['bg_color'],
+    )
+    word_cloud.generate_from_frequencies({
+        token: val
+        for token, val in zip(tokens, vals)
+    })
+
+    matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
+    matplotlib.pyplot.axis('off')
+
+def generate_network_graph(main, tokens_data_file, fig_settings):
+    tokens_data_file = dict(get_data_ranks(tokens_data_file, fig_settings))
+
+    graph = networkx.MultiDiGraph()
+    graph.add_edges_from(tokens_data_file)
+
+    graph_layout = main.settings_custom['figs']['network_graphs']['layout']
+
+    if graph_layout == _tr('wl_figs', 'Circular'):
+        layout = networkx.circular_layout(graph)
+    elif graph_layout == _tr('wl_figs', 'Kamada-Kawai'):
+        layout = networkx.kamada_kawai_layout(graph)
+    elif graph_layout == _tr('wl_figs', 'Planar'):
+        layout = networkx.planar_layout(graph)
+    elif graph_layout == _tr('wl_figs', 'Random'):
+        layout = networkx.random_layout(graph)
+    elif graph_layout == _tr('wl_figs', 'Shell'):
+        layout = networkx.shell_layout(graph)
+    elif graph_layout == _tr('wl_figs', 'Spring'):
+        layout = networkx.spring_layout(graph)
+    elif graph_layout == _tr('wl_figs', 'Spectral'):
+        layout = networkx.spectral_layout(graph)
+
+    networkx.draw_networkx_nodes(
+        graph,
+        pos = layout,
+        node_size = 800,
+        node_color = '#FFFFFF',
+        alpha = 0.4
+    )
+
+    if fig_settings['use_data'] == _tr('wl_figs', 'p-value'):
+        precision = main.settings_custom['tables']['precision_settings']['precision_p_vals']
+        reverse = True
+    else:
+        precision = main.settings_custom['tables']['precision_settings']['precision_decimals']
+        reverse = False
+
+    tokens_data_file = {token: round(val, precision) for token, val in tokens_data_file.items()}
+
+    networkx.draw_networkx_edges(
+        graph,
+        pos = layout,
+        edgelist = tokens_data_file,
+        edge_color = main.settings_custom['figs']['network_graphs']['edge_color'],
+        width = wl_misc.normalize_nums(
+            tokens_data_file.values(),
+            normalized_min = 1,
+            normalized_max = 5,
+            reverse = reverse
+        )
+    )
+
+    networkx.draw_networkx_labels(
+        graph,
+        pos = layout,
+        font_family = main.settings_custom['figs']['network_graphs']['node_font'],
+        font_size = main.settings_custom['figs']['network_graphs']['node_font_size']
+    )
+    networkx.draw_networkx_edge_labels(
+        graph,
+        pos = layout,
+        edge_labels = tokens_data_file,
+        label_pos = 0.2,
+        font_family = main.settings_custom['figs']['network_graphs']['edge_font'],
+        font_size = main.settings_custom['figs']['network_graphs']['edge_font_size']
+    )
 
 def show_fig():
     if platform.system() in ['Windows', 'Linux']:
