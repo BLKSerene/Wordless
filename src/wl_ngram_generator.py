@@ -274,12 +274,10 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         (
             self.label_measure_dispersion,
-            self.combo_box_measure_dispersion
-        ) = wl_widgets.wl_widgets_measure_dispersion(self)
-        (
+            self.combo_box_measure_dispersion,
             self.label_measure_adjusted_freq,
             self.combo_box_measure_adjusted_freq
-        ) = wl_widgets.wl_widgets_measure_adjusted_freq(self)
+        ) = wl_widgets.wl_widgets_measures_wordlist_generator(self)
 
         self.spin_box_allow_skipped_tokens.setRange(1, 20)
 

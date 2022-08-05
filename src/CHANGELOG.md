@@ -20,7 +20,7 @@
 
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - ??/??/2022
 ### 🎉 New Features
-- File Area: Add Observed Files and Reference Files
+- File Area: Add Observed/Reference Files
 - File Area: Add support for .pdf files
 - Settings: Add Settings - Figures - Word Clouds - Font Path
 - Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test
@@ -274,7 +274,7 @@
 - Work Area: Add Concordancer - Zapping Settings
 
 ### ✨ Improvements
-- File Area: Update File Table - Tokenized/Tagged
+- File Area: Update Tokenized/Tagged
 - File Area: Update support for XML files
 - Menu: Disable editing of POS tag mappings for spaCy's POS taggers
 - Settings: Update Settings - Files - Tags
