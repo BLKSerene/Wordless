@@ -157,32 +157,14 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_measure_adjusted_freq
         ) = wl_widgets.wl_widgets_measure_adjusted_freq(self)
 
-        (
-            self.label_settings_measures,
-            self.button_settings_measures
-        ) = wl_widgets.wl_widgets_settings_measures(
-            self,
-            node = self.tr('Dispersion')
-        )
-
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_adjusted_freq.currentTextChanged.connect(self.generation_settings_changed)
-
-        layout_settings_measures = wl_layouts.Wl_Layout()
-        layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
-        layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
-
-        layout_settings_measures.setColumnStretch(1, 1)
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_measure_dispersion, 0, 0)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_dispersion, 1, 0)
         self.group_box_generation_settings.layout().addWidget(self.label_measure_adjusted_freq, 2, 0)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_adjusted_freq, 3, 0)
-
-        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 4, 0)
-
-        self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 5, 0)
 
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))

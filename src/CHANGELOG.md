@@ -26,9 +26,9 @@
 - Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test
 - Settings: Add Settings - Measures - Statistical Significance - Welch's t-test
 - Settings: Add Settings - Tables - Profiler
+- Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
 - Work Area: Add Work Area - Search Settings - Context Settings - Save
-- Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 
 ### ✨ Improvements
 - Settings: Allow resizing of Settings dialog box
@@ -46,6 +46,7 @@
 - Work Area: Remove Concordancer - Zapping Settings - Discard position information
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
 - Work Area: Remove Profiler - Generation Settings
+- Work Area: Remove Wordlist Generator / N-gram Generator / Collocation Extractpr / Colligation Extractor / Keyword Extractor - Generation Settings - Advanced Settings
 
 ### ⏫ Dependency Changes
 - Dependencies: Add PyPDF2

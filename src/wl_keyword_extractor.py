@@ -160,32 +160,18 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
             self.label_measure_effect_size,
             self.combo_box_measure_effect_size
         ) = wl_widgets.wl_widgets_measures(self, tab = 'keyword_extractor')
-        (
-            self.label_settings_measures,
-            self.button_settings_measures
-        ) = wl_widgets.wl_widgets_settings_measures(
-            self,
-            node = self.tr('Statistical Significance')
-        )
 
         self.combo_box_test_statistical_significance.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_bayes_factor.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_effect_size.currentTextChanged.connect(self.generation_settings_changed)
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_test_statistical_significance, 0, 0, 1, 2)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_statistical_significance, 1, 0, 1, 2)
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_bayes_factor, 2, 0, 1, 2)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_bayes_factor, 3, 0, 1, 2)
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 4, 0, 1, 2)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 5, 0, 1, 2)
-
-        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 6, 0, 1, 2)
-
-        self.group_box_generation_settings.layout().addWidget(self.label_settings_measures, 7, 0)
-        self.group_box_generation_settings.layout().addWidget(self.button_settings_measures, 7, 1)
-
-        self.group_box_token_settings.layout().setColumnStretch(1, 1)
+        self.group_box_generation_settings.layout().addWidget(self.label_test_statistical_significance, 0, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_test_statistical_significance, 1, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_bayes_factor, 2, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_bayes_factor, 3, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 4, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 5, 0)
 
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))

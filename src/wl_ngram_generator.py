@@ -281,14 +281,6 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_measure_adjusted_freq
         ) = wl_widgets.wl_widgets_measure_adjusted_freq(self)
 
-        (
-            self.label_settings_measures,
-            self.button_settings_measures
-        ) = wl_widgets.wl_widgets_settings_measures(
-            self,
-            node = self.tr('Dispersion')
-        )
-
         self.spin_box_allow_skipped_tokens.setRange(1, 20)
 
         self.checkbox_ngram_size_sync.stateChanged.connect(self.generation_settings_changed)
@@ -306,12 +298,6 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
 
         layout_allow_skipped_tokens.setColumnStretch(2, 1)
 
-        layout_settings_measures = wl_layouts.Wl_Layout()
-        layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
-        layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
-
-        layout_settings_measures.setColumnStretch(1, 1)
-
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_ngram_size, 0, 0, 1, 3)
         self.group_box_generation_settings.layout().addWidget(self.checkbox_ngram_size_sync, 0, 3, Qt.AlignRight)
@@ -327,10 +313,6 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_dispersion, 5, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.label_measure_adjusted_freq, 6, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_adjusted_freq, 7, 0, 1, 4)
-
-        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 8, 0, 1, 4)
-
-        self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 9, 0, 1, 4)
 
         self.group_box_generation_settings.layout().setColumnStretch(1, 1)
         self.group_box_generation_settings.layout().setColumnStretch(3, 1)
