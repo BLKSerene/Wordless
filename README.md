@@ -144,28 +144,27 @@ I would like to extend my sincere gratitude to the following open-source project
 8     |[langid.py](https://github.com/saffsd/langid.py)                      |Marco Lui
 9     |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|Michal Boleslav Měchura
 10    |[Matplotlib](https://matplotlib.org/)                                 |Matplotlib Development Team
-11    |[nagisa](https://github.com/taishi-i/nagisa)                          |Taishi Ikeda (池田大志)
-12    |[NetworkX](https://networkx.org/)                                     |Aric Hagberg, Dan Schult, Pieter Swart
-13    |[NLTK](http://www.nltk.org/)                                          |Steven Bird, Edward Loper, Ewan Klein
-14    |[NumPy](https://www.numpy.org/)                                       |NumPy Developers
-15    |[opencc-python](https://github.com/yichen0831/opencc-python)          |Huang Yichen, Carbo Kuo (郭家宝)
-16    |[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)               |Eric Gazoni, Charlie Clark
-17    |[pkuseg](https://github.com/lancopku/pkuseg-python)                   |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)
-18    |[PyInstaller](http://www.pyinstaller.org/)                            |Hartmut Goebel
-19    |[pymorphy2](https://github.com/kmike/pymorphy2)                       |Mikhail Korobov
-20    |[PyPDF2](https://github.com/py-pdf/PyPDF2)                            |Martin Thoma, Matthew Stamy, Matthew Peveler
-21    |[Pyphen](https://pyphen.org/)                                         |Guillaume Ayoub
-22    |[PyQt](https://riverbankcomputing.com/software/pyqt/)                 |Riverbank Computing Limited
-23    |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)                   |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
-24    |[Python](https://www.python.org/)                                     |Guido van Rossum, Python Software Foundation
-25    |[python-docx](https://github.com/python-openxml/python-docx)          |Steve Canny
-26    |[Requests](https://github.com/psf/requests)                           |Kenneth Reitz
-27    |[Sacremoses](https://github.com/alvations/sacremoses)                 |Liling Tan
-28    |[SciPy](https://scipy.org/scipylib/)                                  |SciPy Developers
-29    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
-30    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
-31    |[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |Works Applications Co., Ltd.
-32    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
-33    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
-34    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
-35    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
+11    |[NetworkX](https://networkx.org/)                                     |Aric Hagberg, Dan Schult, Pieter Swart
+12    |[NLTK](http://www.nltk.org/)                                          |Steven Bird, Edward Loper, Ewan Klein
+13    |[NumPy](https://www.numpy.org/)                                       |NumPy Developers
+14    |[opencc-python](https://github.com/yichen0831/opencc-python)          |Huang Yichen, Carbo Kuo (郭家宝)
+15    |[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)               |Eric Gazoni, Charlie Clark
+16    |[pkuseg](https://github.com/lancopku/pkuseg-python)                   |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)
+17    |[PyInstaller](http://www.pyinstaller.org/)                            |Hartmut Goebel
+18    |[pymorphy2](https://github.com/kmike/pymorphy2)                       |Mikhail Korobov
+19    |[PyPDF2](https://github.com/py-pdf/PyPDF2)                            |Martin Thoma, Matthew Stamy, Matthew Peveler
+20    |[Pyphen](https://pyphen.org/)                                         |Guillaume Ayoub
+21    |[PyQt](https://riverbankcomputing.com/software/pyqt/)                 |Riverbank Computing Limited
+22    |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)                   |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
+23    |[Python](https://www.python.org/)                                     |Guido van Rossum, Python Software Foundation
+24    |[python-docx](https://github.com/python-openxml/python-docx)          |Steve Canny
+25    |[Requests](https://github.com/psf/requests)                           |Kenneth Reitz
+26    |[Sacremoses](https://github.com/alvations/sacremoses)                 |Liling Tan
+27    |[SciPy](https://scipy.org/scipylib/)                                  |SciPy Developers
+28    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
+29    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
+30    |[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |Works Applications Co., Ltd.
+31    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
+32    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
+33    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
+34    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
