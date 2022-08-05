@@ -162,15 +162,11 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
 
 class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
     def run(self):
-        text_test_significance = self.dialog.table.settings['collocation_extractor']['generation_settings']['test_significance']
-        text_measure_effect_size = self.dialog.table.settings['collocation_extractor']['generation_settings']['measure_effect_size']
+        test_statistical_significance = self.dialog.table.settings[self.dialog.tab]['generation_settings']['test_statistical_significance']
+        measure_effect_size = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_effect_size']
 
-        (
-            text_test_stat,
-            text_p_value,
-            text_bayes_factor
-        ) = self.main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
+        text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+        text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
         col_collocate = self.dialog.table.find_header_hor(self.tr('Collocate'))
 
@@ -185,19 +181,11 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
                 )
 
             if text_test_stat:
-                col_test_stat = self.dialog.table.find_header_hor(
-                    self.tr('Total\n') + text_test_stat
-                )
-            col_p_value = self.dialog.table.find_header_hor(
-                self.tr('Total\n') + text_p_value
-            )
-            if text_bayes_factor:
-                col_bayes_factor = self.dialog.table.find_header_hor(
-                    self.tr('Total\n') + text_bayes_factor
-                )
-            col_effect_size = self.dialog.table.find_header_hor(
-                self.tr('Total\n') + text_effect_size
-            )
+                col_test_stat = self.dialog.table.find_header_hor(self.tr('Total\n') + text_test_stat)
+
+            col_p_value = self.dialog.table.find_header_hor(self.tr('Total\np-value'))
+            col_bayes_factor = self.dialog.table.find_header_hor(self.tr('Total\nBayes Factor'))
+            col_effect_size = self.dialog.table.find_header_hor(self.tr('Total\n') + text_effect_size)
         else:
             if self.dialog.settings['freq_position'] == self.tr('Total'):
                 col_freq = self.dialog.table.find_header_hor(
@@ -212,13 +200,13 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
                 col_test_stat = self.dialog.table.find_header_hor(
                     f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}"
                 )
+
             col_p_value = self.dialog.table.find_header_hor(
-                f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}"
+                self.tr('[{}]\np-value').format(self.dialog.settings['file_to_filter'])
             )
-            if text_bayes_factor:
-                col_bayes_factor = self.dialog.table.find_header_hor(
-                    f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}"
-                )
+            col_bayes_factor = self.dialog.table.find_header_hor(
+                self.tr('[{}]\nBayes Factor').format(self.dialog.settings['file_to_filter'])
+            )
             col_effect_size = self.dialog.table.find_header_hor(
                 f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}"
             )
@@ -258,15 +246,15 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
             else self.dialog.settings['test_stat_max']
         )
 
-        p_value_min = (
+        p_val_min = (
             float('-inf')
-            if self.dialog.settings['p_value_min_no_limit']
-            else self.dialog.settings['p_value_min']
+            if self.dialog.settings['p_val_min_no_limit']
+            else self.dialog.settings['p_val_min']
         )
-        p_value_max = (
+        p_val_max = (
             float('inf')
-            if self.dialog.settings['p_value_max_no_limit']
-            else self.dialog.settings['p_value_max']
+            if self.dialog.settings['p_val_max_no_limit']
+            else self.dialog.settings['p_val_max']
         )
 
         bayes_factor_min = (
@@ -310,17 +298,12 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
             else:
                 filter_test_stat = True
 
-            if text_bayes_factor:
-                filter_bayes_factor = bayes_factor_min <= self.dialog.table.model().item(i, col_bayes_factor).val <= bayes_factor_max
-            else:
-                filter_bayes_factor = True
-
             if (
                 len_collocate_min <= len(self.dialog.table.model().item(i, col_collocate).text()) <= len_collocate_max
                 and freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max
                 and filter_test_stat
-                and p_value_min <= self.dialog.table.model().item(i, col_p_value).val <= p_value_max
-                and filter_bayes_factor
+                and p_val_min <= self.dialog.table.model().item(i, col_p_value).val <= p_val_max
+                and bayes_factor_min <= self.dialog.table.model().item(i, col_bayes_factor).val <= bayes_factor_max
                 and effect_size_min <= self.dialog.table.model().item(i, col_effect_size).val <= effect_size_max
                 and num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
             ):
@@ -333,51 +316,39 @@ class Wl_Worker_Results_Filter_Collocation_Extractor(wl_threading.Wl_Worker):
 
 class Wl_Worker_Results_Filter_Keyword_Extractor(wl_threading.Wl_Worker):
     def run(self):
-        text_test_significance = self.dialog.table.settings['keyword_extractor']['generation_settings']['test_significance']
-        text_measure_effect_size = self.dialog.table.settings['keyword_extractor']['generation_settings']['measure_effect_size']
+        test_statistical_significance = self.dialog.table.settings['keyword_extractor']['generation_settings']['test_statistical_significance']
+        measure_effect_size = self.dialog.table.settings['keyword_extractor']['generation_settings']['measure_effect_size']
 
-        (
-            text_test_stat,
-            text_p_value,
-            text_bayes_factor
-        ) = self.main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
+        text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+        text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
         col_keyword = self.dialog.table.find_header_hor(self.tr('Keyword'))
 
         if self.dialog.settings['file_to_filter'] == self.tr('Total'):
-            col_freq = self.dialog.table.find_header_hor(
-                self.tr('Total\nFrequency')
-            )
+            col_freq = self.dialog.table.find_header_hor(self.tr('Total\nFrequency'))
+
             if text_test_stat:
-                col_test_stat = self.dialog.table.find_header_hor(
-                    self.tr('Total\n') + text_test_stat
-                )
-            col_p_value = self.dialog.table.find_header_hor(
-                self.tr('Total\n') + text_p_value
-            )
-            if text_bayes_factor:
-                col_bayes_factor = self.dialog.table.find_header_hor(
-                    self.tr('Total\n') + text_bayes_factor
-                )
-            col_effect_size = self.dialog.table.find_header_hor(
-                self.tr('Total\n') + text_effect_size
-            )
+                col_test_stat = self.dialog.table.find_header_hor(self.tr('Total\n') + text_test_stat)
+
+            col_p_val = self.dialog.table.find_header_hor(self.tr('Total\np-value'))
+            col_bayes_factor = self.dialog.table.find_header_hor(self.tr('Total\nBayes Factor'))
+            col_effect_size = self.dialog.table.find_header_hor(self.tr('Total\n') + text_effect_size)
         else:
             col_freq = self.dialog.table.find_header_hor(
                 self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
             )
+
             if text_test_stat:
                 col_test_stat = self.dialog.table.find_header_hor(
                     f"[{self.dialog.settings['file_to_filter']}]\n{text_test_stat}"
                 )
-            col_p_value = self.dialog.table.find_header_hor(
-                f"[{self.dialog.settings['file_to_filter']}]\n{text_p_value}"
+
+            col_p_val = self.dialog.table.find_header_hor(
+                self.tr('[{}]\np-value').format(self.dialog.settings['file_to_filter'])
             )
-            if text_bayes_factor:
-                col_bayes_factor = self.dialog.table.find_header_hor(
-                    f"[{self.dialog.settings['file_to_filter']}]\n{text_bayes_factor}"
-                )
+            col_bayes_factor = self.dialog.table.find_header_hor(
+                self.tr('[{}]\nBayes Factor').format(self.dialog.settings['file_to_filter'])
+            )
             col_effect_size = self.dialog.table.find_header_hor(
                 f"[{self.dialog.settings['file_to_filter']}]\n{text_effect_size}"
             )
@@ -417,15 +388,15 @@ class Wl_Worker_Results_Filter_Keyword_Extractor(wl_threading.Wl_Worker):
             else self.dialog.settings['test_stat_max']
         )
 
-        p_value_min = (
+        p_val_min = (
             float('-inf')
-            if self.dialog.settings['p_value_min_no_limit']
-            else self.dialog.settings['p_value_min']
+            if self.dialog.settings['p_val_min_no_limit']
+            else self.dialog.settings['p_val_min']
         )
-        p_value_max = (
+        p_val_max = (
             float('inf')
-            if self.dialog.settings['p_value_max_no_limit']
-            else self.dialog.settings['p_value_max']
+            if self.dialog.settings['p_val_max_no_limit']
+            else self.dialog.settings['p_val_max']
         )
 
         bayes_factor_min = (
@@ -469,17 +440,12 @@ class Wl_Worker_Results_Filter_Keyword_Extractor(wl_threading.Wl_Worker):
             else:
                 filter_test_stat = True
 
-            if text_bayes_factor:
-                filter_bayes_factor = bayes_factor_min <= self.dialog.table.model().item(i, col_bayes_factor).val <= bayes_factor_max
-            else:
-                filter_bayes_factor = True
-
             if (
                 len_keyword_min <= len(self.dialog.table.model().item(i, col_keyword).text()) <= len_keyword_max
                 and freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max
                 and filter_test_stat
-                and p_value_min <= self.dialog.table.model().item(i, col_p_value).val <= p_value_max
-                and filter_bayes_factor
+                and p_val_min <= self.dialog.table.model().item(i, col_p_val).val <= p_val_max
+                and bayes_factor_min <= self.dialog.table.model().item(i, col_bayes_factor).val <= bayes_factor_max
                 and effect_size_min <= self.dialog.table.model().item(i, col_effect_size).val <= effect_size_max
                 and num_files_found_min <= self.dialog.table.model().item(i, col_num_files_found).val <= num_files_found_max
             ):
@@ -867,15 +833,15 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
             self.checkbox_test_stat_max_no_limit
         ) = wl_widgets.wl_widgets_filter_measures(self)
 
-        self.label_p_value = QLabel(self.tr('p-value:'), self)
+        self.label_p_val = QLabel(self.tr('p-value:'), self)
         (
-            self.label_p_value_min,
-            self.spin_box_p_value_min,
-            self.checkbox_p_value_min_no_limit,
-            self.label_p_value_max,
-            self.spin_box_p_value_max,
-            self.checkbox_p_value_max_no_limit
-        ) = wl_widgets.wl_widgets_filter_p_value(self)
+            self.label_p_val_min,
+            self.spin_box_p_val_min,
+            self.checkbox_p_val_min_no_limit,
+            self.label_p_val_max,
+            self.spin_box_p_val_max,
+            self.checkbox_p_val_max_no_limit
+        ) = wl_widgets.wl_widgets_filter_p_val(self)
 
         self.label_bayes_factor = QLabel(self.tr('Bayes Factor:'), self)
         (
@@ -927,10 +893,10 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.spin_box_test_stat_max.valueChanged.connect(self.filters_changed)
         self.checkbox_test_stat_max_no_limit.stateChanged.connect(self.filters_changed)
 
-        self.spin_box_p_value_min.valueChanged.connect(self.filters_changed)
-        self.checkbox_p_value_min_no_limit.stateChanged.connect(self.filters_changed)
-        self.spin_box_p_value_max.valueChanged.connect(self.filters_changed)
-        self.checkbox_p_value_max_no_limit.stateChanged.connect(self.filters_changed)
+        self.spin_box_p_val_min.valueChanged.connect(self.filters_changed)
+        self.checkbox_p_val_min_no_limit.stateChanged.connect(self.filters_changed)
+        self.spin_box_p_val_max.valueChanged.connect(self.filters_changed)
+        self.checkbox_p_val_max_no_limit.stateChanged.connect(self.filters_changed)
 
         self.spin_box_bayes_factor_min.valueChanged.connect(self.filters_changed)
         self.checkbox_bayes_factor_min_no_limit.stateChanged.connect(self.filters_changed)
@@ -977,13 +943,13 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.layout_filters.addWidget(self.spin_box_test_stat_max, 5, 1)
         self.layout_filters.addWidget(self.checkbox_test_stat_max_no_limit, 5, 2)
 
-        self.layout_filters.addWidget(self.label_p_value, 3, 4, 1, 3)
-        self.layout_filters.addWidget(self.label_p_value_min, 4, 4)
-        self.layout_filters.addWidget(self.spin_box_p_value_min, 4, 5)
-        self.layout_filters.addWidget(self.checkbox_p_value_min_no_limit, 4, 6)
-        self.layout_filters.addWidget(self.label_p_value_max, 5, 4)
-        self.layout_filters.addWidget(self.spin_box_p_value_max, 5, 5)
-        self.layout_filters.addWidget(self.checkbox_p_value_max_no_limit, 5, 6)
+        self.layout_filters.addWidget(self.label_p_val, 3, 4, 1, 3)
+        self.layout_filters.addWidget(self.label_p_val_min, 4, 4)
+        self.layout_filters.addWidget(self.spin_box_p_val_min, 4, 5)
+        self.layout_filters.addWidget(self.checkbox_p_val_min_no_limit, 4, 6)
+        self.layout_filters.addWidget(self.label_p_val_max, 5, 4)
+        self.layout_filters.addWidget(self.spin_box_p_val_max, 5, 5)
+        self.layout_filters.addWidget(self.checkbox_p_val_max_no_limit, 5, 6)
 
         self.layout_filters.addWidget(self.label_bayes_factor, 6, 0, 1, 3)
         self.layout_filters.addWidget(self.label_bayes_factor_min, 7, 0)
@@ -1037,10 +1003,10 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.spin_box_test_stat_max.setValue(settings['test_stat_max'])
         self.checkbox_test_stat_max_no_limit.setChecked(settings['test_stat_max_no_limit'])
 
-        self.spin_box_p_value_min.setValue(settings['p_value_min'])
-        self.checkbox_p_value_min_no_limit.setChecked(settings['p_value_min_no_limit'])
-        self.spin_box_p_value_max.setValue(settings['p_value_max'])
-        self.checkbox_p_value_max_no_limit.setChecked(settings['p_value_max_no_limit'])
+        self.spin_box_p_val_min.setValue(settings['p_val_min'])
+        self.checkbox_p_val_min_no_limit.setChecked(settings['p_val_min_no_limit'])
+        self.spin_box_p_val_max.setValue(settings['p_val_max'])
+        self.checkbox_p_val_max_no_limit.setChecked(settings['p_val_max_no_limit'])
 
         self.spin_box_bayes_factor_min.setValue(settings['bayes_factor_min'])
         self.checkbox_bayes_factor_min_no_limit.setChecked(settings['bayes_factor_min_no_limit'])
@@ -1074,10 +1040,10 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         self.settings['test_stat_max'] = self.spin_box_test_stat_max.value()
         self.settings['test_stat_max_no_limit'] = self.checkbox_test_stat_max_no_limit.isChecked()
 
-        self.settings['p_value_min'] = self.spin_box_p_value_min.value()
-        self.settings['p_value_min_no_limit'] = self.checkbox_p_value_min_no_limit.isChecked()
-        self.settings['p_value_max'] = self.spin_box_p_value_max.value()
-        self.settings['p_value_max_no_limit'] = self.checkbox_p_value_max_no_limit.isChecked()
+        self.settings['p_val_min'] = self.spin_box_p_val_min.value()
+        self.settings['p_val_min_no_limit'] = self.checkbox_p_val_min_no_limit.isChecked()
+        self.settings['p_val_max'] = self.spin_box_p_val_max.value()
+        self.settings['p_val_max_no_limit'] = self.checkbox_p_val_max_no_limit.isChecked()
 
         self.settings['bayes_factor_min'] = self.spin_box_bayes_factor_min.value()
         self.settings['bayes_factor_min_no_limit'] = self.checkbox_bayes_factor_min_no_limit.isChecked()
@@ -1098,7 +1064,7 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         settings = self.table.settings[self.tab]
 
         # Frequency
-        freq_position_old = settings['filter_results']['freq_position']
+        freq_position_old = self.settings['freq_position']
 
         self.combo_box_freq_position.clear()
 
@@ -1113,18 +1079,14 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
         if self.combo_box_freq_position.findText(freq_position_old) > -1:
             self.combo_box_freq_position.setCurrentText(freq_position_old)
         else:
-            self.combo_box_freq_position.setCurrentText(self.main.settings_default['collocation_extractor']['filter_results']['freq_position'])
+            self.combo_box_freq_position.setCurrentText(self.main.settings_default[self.tab]['filter_results']['freq_position'])
 
         # Filters
-        text_test_significance = settings['generation_settings']['test_significance']
-        text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+        test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+        measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-        (
-            text_test_stat,
-            text_p_value,
-            text_bayes_factor
-        ) = self.main.settings_global['tests_significance']['collocation_extractor'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['collocation_extractor'][text_measure_effect_size]['col']
+        text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+        text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
         if text_test_stat:
             self.label_test_stat.setText(f'{text_test_stat}:')
@@ -1143,20 +1105,6 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
             self.checkbox_test_stat_min_no_limit.setEnabled(False)
             self.spin_box_test_stat_max.setEnabled(False)
             self.checkbox_test_stat_max_no_limit.setEnabled(False)
-
-        if text_bayes_factor:
-            if not self.checkbox_bayes_factor_min_no_limit.isChecked():
-                self.spin_box_bayes_factor_min.setEnabled(True)
-            if not self.checkbox_bayes_factor_max_no_limit.isChecked():
-                self.spin_box_bayes_factor_max.setEnabled(True)
-
-            self.checkbox_bayes_factor_min_no_limit.setEnabled(True)
-            self.checkbox_bayes_factor_max_no_limit.setEnabled(True)
-        else:
-            self.spin_box_bayes_factor_min.setEnabled(False)
-            self.checkbox_bayes_factor_min_no_limit.setEnabled(False)
-            self.spin_box_bayes_factor_max.setEnabled(False)
-            self.checkbox_bayes_factor_max_no_limit.setEnabled(False)
 
         self.label_effect_size.setText(f'{text_effect_size}:')
 
@@ -1205,15 +1153,15 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
             self.checkbox_test_stat_max_no_limit
         ) = wl_widgets.wl_widgets_filter_measures(self)
 
-        self.label_p_value = QLabel(self.tr('p-value:'), self)
+        self.label_p_val = QLabel(self.tr('p-value:'), self)
         (
-            self.label_p_value_min,
-            self.spin_box_p_value_min,
-            self.checkbox_p_value_min_no_limit,
-            self.label_p_value_max,
-            self.spin_box_p_value_max,
-            self.checkbox_p_value_max_no_limit
-        ) = wl_widgets.wl_widgets_filter_p_value(self)
+            self.label_p_val_min,
+            self.spin_box_p_val_min,
+            self.checkbox_p_val_min_no_limit,
+            self.label_p_val_max,
+            self.spin_box_p_val_max,
+            self.checkbox_p_val_max_no_limit
+        ) = wl_widgets.wl_widgets_filter_p_val(self)
 
         self.label_bayes_factor = QLabel(self.tr('Bayes Factor:'), self)
         (
@@ -1264,10 +1212,10 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
         self.spin_box_test_stat_max.valueChanged.connect(self.filters_changed)
         self.checkbox_test_stat_max_no_limit.stateChanged.connect(self.filters_changed)
 
-        self.spin_box_p_value_min.valueChanged.connect(self.filters_changed)
-        self.checkbox_p_value_min_no_limit.stateChanged.connect(self.filters_changed)
-        self.spin_box_p_value_max.valueChanged.connect(self.filters_changed)
-        self.checkbox_p_value_max_no_limit.stateChanged.connect(self.filters_changed)
+        self.spin_box_p_val_min.valueChanged.connect(self.filters_changed)
+        self.checkbox_p_val_min_no_limit.stateChanged.connect(self.filters_changed)
+        self.spin_box_p_val_max.valueChanged.connect(self.filters_changed)
+        self.checkbox_p_val_max_no_limit.stateChanged.connect(self.filters_changed)
 
         self.spin_box_bayes_factor_min.valueChanged.connect(self.filters_changed)
         self.checkbox_bayes_factor_min_no_limit.stateChanged.connect(self.filters_changed)
@@ -1310,13 +1258,13 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
         self.layout_filters.addWidget(self.spin_box_test_stat_max, 5, 1)
         self.layout_filters.addWidget(self.checkbox_test_stat_max_no_limit, 5, 2)
 
-        self.layout_filters.addWidget(self.label_p_value, 3, 4, 1, 3)
-        self.layout_filters.addWidget(self.label_p_value_min, 4, 4)
-        self.layout_filters.addWidget(self.spin_box_p_value_min, 4, 5)
-        self.layout_filters.addWidget(self.checkbox_p_value_min_no_limit, 4, 6)
-        self.layout_filters.addWidget(self.label_p_value_max, 5, 4)
-        self.layout_filters.addWidget(self.spin_box_p_value_max, 5, 5)
-        self.layout_filters.addWidget(self.checkbox_p_value_max_no_limit, 5, 6)
+        self.layout_filters.addWidget(self.label_p_val, 3, 4, 1, 3)
+        self.layout_filters.addWidget(self.label_p_val_min, 4, 4)
+        self.layout_filters.addWidget(self.spin_box_p_val_min, 4, 5)
+        self.layout_filters.addWidget(self.checkbox_p_val_min_no_limit, 4, 6)
+        self.layout_filters.addWidget(self.label_p_val_max, 5, 4)
+        self.layout_filters.addWidget(self.spin_box_p_val_max, 5, 5)
+        self.layout_filters.addWidget(self.checkbox_p_val_max_no_limit, 5, 6)
 
         self.layout_filters.addWidget(self.label_bayes_factor, 6, 0, 1, 3)
         self.layout_filters.addWidget(self.label_bayes_factor_min, 7, 0)
@@ -1369,10 +1317,10 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
         self.spin_box_test_stat_max.setValue(settings['test_stat_max'])
         self.checkbox_test_stat_max_no_limit.setChecked(settings['test_stat_max_no_limit'])
 
-        self.spin_box_p_value_min.setValue(settings['p_value_min'])
-        self.checkbox_p_value_min_no_limit.setChecked(settings['p_value_min_no_limit'])
-        self.spin_box_p_value_max.setValue(settings['p_value_max'])
-        self.checkbox_p_value_max_no_limit.setChecked(settings['p_value_max_no_limit'])
+        self.spin_box_p_val_min.setValue(settings['p_val_min'])
+        self.checkbox_p_val_min_no_limit.setChecked(settings['p_val_min_no_limit'])
+        self.spin_box_p_val_max.setValue(settings['p_val_max'])
+        self.checkbox_p_val_max_no_limit.setChecked(settings['p_val_max_no_limit'])
 
         self.spin_box_bayes_factor_min.setValue(settings['bayes_factor_min'])
         self.checkbox_bayes_factor_min_no_limit.setChecked(settings['bayes_factor_min_no_limit'])
@@ -1405,10 +1353,10 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
         self.settings['test_stat_max'] = self.spin_box_test_stat_max.value()
         self.settings['test_stat_max_no_limit'] = self.checkbox_test_stat_max_no_limit.isChecked()
 
-        self.settings['p_value_min'] = self.spin_box_p_value_min.value()
-        self.settings['p_value_min_no_limit'] = self.checkbox_p_value_min_no_limit.isChecked()
-        self.settings['p_value_max'] = self.spin_box_p_value_max.value()
-        self.settings['p_value_max_no_limit'] = self.checkbox_p_value_max_no_limit.isChecked()
+        self.settings['p_val_min'] = self.spin_box_p_val_min.value()
+        self.settings['p_val_min_no_limit'] = self.checkbox_p_val_min_no_limit.isChecked()
+        self.settings['p_val_max'] = self.spin_box_p_val_max.value()
+        self.settings['p_val_max_no_limit'] = self.checkbox_p_val_max_no_limit.isChecked()
 
         self.settings['bayes_factor_min'] = self.spin_box_bayes_factor_min.value()
         self.settings['bayes_factor_min_no_limit'] = self.checkbox_bayes_factor_min_no_limit.isChecked()
@@ -1428,15 +1376,11 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
     def table_item_changed(self):
         settings = self.table.settings[self.tab]
 
-        text_test_significance = settings['generation_settings']['test_significance']
-        text_measure_effect_size = settings['generation_settings']['measure_effect_size']
+        test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+        measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-        (
-            text_test_stat,
-            text_p_value,
-            text_bayes_factor
-        ) = self.main.settings_global['tests_significance']['keyword_extractor'][text_test_significance]['cols']
-        text_effect_size = self.main.settings_global['measures_effect_size']['keyword_extractor'][text_measure_effect_size]['col']
+        text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+        text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
         if text_test_stat:
             self.label_test_stat.setText(f'{text_test_stat}:')
@@ -1455,20 +1399,6 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
             self.checkbox_test_stat_min_no_limit.setEnabled(False)
             self.spin_box_test_stat_max.setEnabled(False)
             self.checkbox_test_stat_max_no_limit.setEnabled(False)
-
-        if text_bayes_factor:
-            if not self.checkbox_bayes_factor_min_no_limit.isChecked():
-                self.spin_box_bayes_factor_min.setEnabled(True)
-            if not self.checkbox_bayes_factor_max_no_limit.isChecked():
-                self.spin_box_bayes_factor_max.setEnabled(True)
-
-            self.checkbox_bayes_factor_min_no_limit.setEnabled(True)
-            self.checkbox_bayes_factor_max_no_limit.setEnabled(True)
-        else:
-            self.spin_box_bayes_factor_min.setEnabled(False)
-            self.checkbox_bayes_factor_min_no_limit.setEnabled(False)
-            self.spin_box_bayes_factor_max.setEnabled(False)
-            self.checkbox_bayes_factor_max_no_limit.setEnabled(False)
 
         self.label_effect_size.setText(f'{text_effect_size}:')
 

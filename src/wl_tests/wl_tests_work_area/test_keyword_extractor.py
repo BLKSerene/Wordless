@@ -29,43 +29,56 @@ main = wl_test_init.Wl_Test_Main()
 def test_keyword_extractor():
     print('Start testing module Keyword Extractor... ')
 
-    tests_significance = list(main.settings_global['tests_significance']['keyword_extractor'].keys())
-    measures_effect_size = list(main.settings_global['measures_effect_size']['keyword_extractor'].keys())
-    len_diff = abs(len(tests_significance) - len(measures_effect_size))
+    # Do not test Fisher's exact test since it is too computationally expensive
+    tests_statistical_significance = [
+        test_statistical_significance
+        for test_statistical_significance, vals in main.settings_global['tests_statistical_significance'].items()
+        if vals['keyword_extractor'] and test_statistical_significance != "Fisher's Exact Test"
+    ]
+    measures_bayes_factor = [
+        measure_bayes_factor
+        for measure_bayes_factor, vals in main.settings_global['measures_bayes_factor'].items()
+        if vals['keyword_extractor']
+    ]
+    measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    if len(tests_significance) > len(measures_effect_size):
-        measures_effect_size += measures_effect_size * (len_diff // len(measures_effect_size)) + measures_effect_size[: len_diff % len(measures_effect_size)]
-    elif len(measures_effect_size) > len(tests_significance):
-        tests_significance += tests_significance * (len_diff // len(tests_significance)) + tests_significance[: len_diff % len(tests_significance)]
+    len_tests_statistical_significance = len(tests_statistical_significance)
+    len_measures_bayes_factor = len(measures_bayes_factor)
+    len_measures_effect_size = len(measures_effect_size)
 
     files_observed = main.settings_custom['file_area']['files_open']
     files_ref = main.settings_custom['file_area']['files_open_ref']
 
-    for i, (test_significance, measure_effect_size) in enumerate(zip(tests_significance, measures_effect_size)):
+    for i in range(max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])):
         for file in main.settings_custom['file_area']['files_open'] + main.settings_custom['file_area']['files_open_ref']:
             file['selected'] = False
 
+        random_i = random.randrange(0, 10)
+
         # Single reference file & single observed file
-        if i % 4 == 0:
+        if random_i in [0, 3, 6, 9]:
             random.choice(files_observed)['selected'] = True
             random.choice(files_ref)['selected'] = True
 
         # Single reference file & multiple observed files
-        elif i % 4 == 1:
-            for file in files_observed:
+        elif random_i in [1, 4, 7]:
+            for file in random.sample(files_observed, 2):
                 file['selected'] = True
 
             random.choice(files_ref)['selected'] = True
 
         # Multiple reference files & single observed file
-        elif i % 4 == 2:
+        elif random_i in [2, 5]:
             random.choice(files_observed)['selected'] = True
 
             for file in files_ref:
                 file['selected'] = True
         # Multiple reference files & multiple observed files
-        elif i % 4 == 3:
-            for file in files_observed + files_ref:
+        elif random_i == 8:
+            for file in random.sample(files_observed, 2):
+                file['selected'] = True
+
+            for file in random.sample(files_ref, 2):
                 file['selected'] = True
 
         file_names_observed = [
@@ -77,10 +90,16 @@ def test_keyword_extractor():
             for file_name in main.wl_file_area_ref.get_selected_file_names()
         ]
 
+        main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance'] = tests_statistical_significance[i % len_tests_statistical_significance]
+        main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor'] = measures_bayes_factor[i % len_measures_bayes_factor]
+        main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size'] = measures_effect_size[i % len_measures_effect_size]
+
+        print(f'[Test Round {i + 1}]')
         print(f"Observed files: {', '.join(file_names_observed)}")
         print(f"Reference files: {', '.join(file_names_ref)}")
-        print(f'Test of Statistical significance: {test_significance}')
-        print(f'Measure of effect size: {measure_effect_size}\n')
+        print(f"Test of Statistical significance: {main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance']}")
+        print(f"Measure of bayes factor: {main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor']}")
+        print(f"Measure of effect size: {main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size']}\n")
 
         wl_keyword_extractor.Wl_Worker_Keyword_Extractor_Table(
             main,

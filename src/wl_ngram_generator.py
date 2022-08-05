@@ -1081,7 +1081,7 @@ def generate_fig(main):
 
                         wl_figs_freqs.wl_fig_freq(
                             main, ngrams_freq_files,
-                            settings = settings['fig_settings'],
+                            fig_settings = settings['fig_settings'],
                             label_x = _tr('wl_ngram_generator', 'N-gram')
                         )
                     else:
@@ -1095,21 +1095,16 @@ def generate_fig(main):
                                 ngram: numpy.array(stats_files)[:, 0]
                                 for ngram, stats_files in ngrams_stats_files.items()
                             }
-
-                            label_y = text_dispersion
                         elif settings['fig_settings']['use_data'] == text_adjusted_freq:
                             ngrams_stat_files = {
                                 ngram: numpy.array(stats_files)[:, 1]
                                 for ngram, stats_files in ngrams_stats_files.items()
                             }
 
-                            label_y = text_adjusted_freq
-
                         wl_figs_stats.wl_fig_stat(
                             main, ngrams_stat_files,
-                            settings = settings['fig_settings'],
-                            label_x = _tr('wl_ngram_generator', 'N-gram'),
-                            label_y = label_y
+                            fig_settings = settings['fig_settings'],
+                            label_x = _tr('wl_ngram_generator', 'N-gram')
                         )
 
                     # Hide the progress dialog early so that the main window will not obscure the generated figure
