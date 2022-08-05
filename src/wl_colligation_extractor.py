@@ -278,13 +278,6 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.label_measure_effect_size,
             self.combo_box_measure_effect_size
         ) = wl_widgets.wl_widgets_measures(self, tab = 'collocation_extractor')
-        (
-            self.label_settings_measures,
-            self.button_settings_measures
-        ) = wl_widgets.wl_widgets_settings_measures(
-            self,
-            node = self.tr('Statistical Significance')
-        )
 
         self.combo_box_limit_searching.addItems([
             self.tr('None'),
@@ -308,12 +301,6 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         layout_settings_limit_searching.setColumnStretch(1, 1)
 
-        layout_settings_measures = wl_layouts.Wl_Layout()
-        layout_settings_measures.addWidget(self.label_settings_measures, 0, 0)
-        layout_settings_measures.addWidget(self.button_settings_measures, 0, 1)
-
-        layout_settings_measures.setColumnStretch(1, 1)
-
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_generation_settings.layout().addWidget(self.label_window, 0, 0, 1, 3)
         self.group_box_generation_settings.layout().addWidget(self.checkbox_window_sync, 0, 3, Qt.AlignRight)
@@ -331,10 +318,6 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_bayes_factor, 7, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.label_measure_effect_size, 8, 0, 1, 4)
         self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_effect_size, 9, 0, 1, 4)
-
-        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 10, 0, 1, 4)
-
-        self.group_box_generation_settings.layout().addLayout(layout_settings_measures, 11, 0, 1, 4)
 
         self.group_box_generation_settings.layout().setColumnStretch(1, 1)
         self.group_box_generation_settings.layout().setColumnStretch(3, 1)
