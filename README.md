@@ -49,7 +49,7 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 
 
 ## Download
-The latest version (**2.2.0**) of Wordless supports **Windows 7/8/8.1/10**, **macOS 10.9 or later**, and **Ubuntu 14.04 or later**, all **64-bit only**.
+The latest version (**2.2.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.9 or later**, and **Ubuntu 14.04 or later**, all **64-bit only**.
 
 For detailed changelog, please see [CHANGELOG.md](https://github.com/BLKSerene/Wordless/blob/main/src/CHANGELOG.md).
 
@@ -61,8 +61,8 @@ Release|Remarks
 [Older Versions](https://github.com/BLKSerene/Wordless/releases)|Not recommended
 [Baidu Netdisk (百度网盘)](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg)|For Chinese users with slow connections to Github (**PASSWORD: wdls**)<br>中国用户若 Github 下载速度较慢可尝试从百度网盘下载 (**提取码: wdls**)
 
-**Note 1:** The path to Wordless **should not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**, unless you do not need to process Thai and Vietnamese files.<br>
-**备注 1**：Wordless 的路径中**不可包含任何非 ASCII 字符，如汉字和带变音记号的字母等**，除非你不需要处理泰语和越南语文件。
+**Note 1:** It is recommended that the path to Wordless **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.<br>
+**备注 1**：Wordless 的路径中**不建议包含任何非 ASCII 字符，如汉字和带变音记号的字母等**。
 
 **Note 2:** If your Mac says that **“Wordless” is damaged and can’t be opened**, please open **Terminal** (Launchpad → Other) and run:<br>
 **备注 2**：如果苹果电脑提示 **“Wordless”已损坏，无法打开**，请打开**终端**（启动台 → 其他）后运行：
