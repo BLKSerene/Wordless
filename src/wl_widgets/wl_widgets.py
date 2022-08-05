@@ -745,6 +745,23 @@ def wl_widgets_measure_adjusted_freq(parent):
         combo_box_measure_adjusted_freq
     )
 
+def wl_widgets_measures_wordlist_generator(parent):
+    (
+        label_measure_dispersion,
+        combo_box_measure_dispersion
+    ) = wl_widgets_measure_dispersion(parent)
+    (
+        label_measure_adjusted_freq,
+        combo_box_measure_adjusted_freq
+    ) = wl_widgets_measure_adjusted_freq(parent)
+
+    return (
+        label_measure_dispersion,
+        combo_box_measure_dispersion,
+        label_measure_adjusted_freq,
+        combo_box_measure_adjusted_freq
+    )
+
 def wl_widgets_test_statistical_significance(parent, tab):
     label_test_statistical_significance = QLabel(_tr('wl_widgets_test_significance', 'Test of Statistical Significance:'), parent)
     combo_box_test_statistical_significance = wl_boxes.Wl_Combo_Box(parent)
@@ -782,7 +799,7 @@ def wl_widgets_measure_effect_size(parent):
         combo_box_measure_effect_size
     )
 
-def wl_widgets_measures(parent, tab):
+def wl_widgets_measures_collocation_extractor(parent, tab):
     (
         label_test_statistical_significance,
         combo_box_test_statistical_significance
