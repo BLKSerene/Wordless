@@ -22,7 +22,6 @@ from wl_tagsets import (
     wl_tagset_universal,
     wl_tagset_eng_penn_treebank,
     wl_tagset_jpn_unidic,
-    wl_tagset_jpn_unidic_simplified,
     wl_tagset_rus_open_corpora,
     wl_tagset_rus_russian_national_corpus,
     wl_tagset_tha_lst20,
@@ -1439,7 +1438,6 @@ def init_settings_default(main):
                     },
 
                     'jpn': {
-                        'nagisa_jpn': wl_tagset_jpn_unidic_simplified.MAPPINGS,
                         'sudachipy_jpn': wl_tagset_jpn_unidic.MAPPINGS
                     },
 

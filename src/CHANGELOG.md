@@ -42,6 +42,7 @@
 - Work Area: Fix Profiler - Token Settings - Use tags only
 
 ### ❌ Removals
+- Utils: Remove nagisa's Japanese word tokenizer and part-of-speech tagger
 - Utils: Remove ssg's Thai syllable tokenizer
 - Work Area: Remove Concordancer - Zapping Settings - Discard position information
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
@@ -50,6 +51,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Add PyPDF2
+- Dependencies: Remove nagisa
 - Dependencies: Remove ssg
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
@@ -69,8 +71,8 @@
 - Settings: Add Settings - General - Proxy Settings
 - Utils: Add Lemmatization Lists's Russian lemma list
 - Utils: Add spaCy's Greek (Ancient) and Irish lemmatizers
-- Utils: Add spaCy's Japanese word tokenizer, POS tagger, and lemmatizer
-- Utils: Add SudachiPy's Japanese word tokenizer, POS tagger, and lemmatizer
+- Utils: Add spaCy's Japanese word tokenizer, part-of-speech tagger, and lemmatizer
+- Utils: Add SudachiPy's Japanese word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Add Underthesea's Vietnamese sentiment analyzer
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Variance / Minimum / 25th Percentile / Median / 75th Percentile / Maximum / Range / Modes)
 
@@ -170,10 +172,10 @@
 - Utils: Add spaCy's Amharic, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana word tokenizers
 - Utils: Add spaCy's Amharic, Korean, Kyrgyz, Macedonian, Sanskrit, Tigrinya, and Tswana stop word lists
 - Utils: Add spaCy's Bengali, Croatian, Czech, Hungarian, Indonesian, Luxembourgish, Persian, Serbian (Cyrillic), Swedish, Tagalog, Turkish, and Urdu lemmatizers
-- Utils: Add spaCy's Catalan POS tagger and lemmatizer
-- Utils: Add spaCy's Chinese word tokenizer and POS tagger
-- Utils: Add spaCy's Macedonian POS tagger and lemmatizer
-- Utils: Add spaCy's Russian POS tagger and lemmatizer
+- Utils: Add spaCy's Catalan part-of-speech tagger and lemmatizer
+- Utils: Add spaCy's Chinese word tokenizer and part-of-speech tagger
+- Utils: Add spaCy's Macedonian part-of-speech tagger and lemmatizer
+- Utils: Add spaCy's Russian part-of-speech tagger and lemmatizer
 - Utils: Add spaCy's sentence recognizer
 - Work Area: Add Collocation/Colligation - Generation Settings - Limit Searching
 - Work Area: Add Concordancer (Parallel Mode)
@@ -182,7 +184,7 @@
 - File Area: Cache loaded files
 - Utils: Update encoding detection
 - Utils: Update NLTK's word tokenizers
-- Utils: Update spaCy's sentencizer, word tokenizers, POS taggers, and lemmatizers
+- Utils: Update spaCy's sentencizer, word tokenizers, part-of-speech taggers, and lemmatizers
 
 ### 📌 Bugfixes
 - Utils: Fix Sacremoses's Moses tokenizer and Moses detokenizer
@@ -267,23 +269,23 @@
 - Utils: Add PyThaiNLP's maximum matching + TCC (safe mode)
 - Utils: Add spaCy's Armenian, Basque, Estonian, Gujarati, Latvian, Ligurian, Malayalam, Nepali, and Yoruba word tokenizers
 - Utils: Add spaCy's Armenian, Basque, Gujarati, Ligurian, Luxembourgish, Malayalam, Nepali, Slovak, Slovenian, and Yoruba stop word lists
-- Utils: Add spaCy's Danish POS tagger and lemmatizer
-- Utils: Add spaCy's Polish POS tagger and lemmatizer
-- Utils: Add spaCy's Romanian POS tagger and lemmatizer
+- Utils: Add spaCy's Danish part-of-speech tagger and lemmatizer
+- Utils: Add spaCy's Polish part-of-speech tagger and lemmatizer
+- Utils: Add spaCy's Romanian part-of-speech tagger and lemmatizer
 - Utils: Add Stopwords ISO's Gujarati and Lithuanian stop word lists
 - Work Area: Add Concordancer - Zapping Settings
 
 ### ✨ Improvements
 - File Area: Update Tokenized/Tagged
 - File Area: Update support for XML files
-- Menu: Disable editing of POS tag mappings for spaCy's POS taggers
+- Menu: Disable editing of part-of-speech tag mappings for spaCy's part-of-speech taggers
 - Settings: Update Settings - Files - Tags
-- Utils: Update botok's Tibetan word tokenizer, POS tagger, and lemmatizer
+- Utils: Update botok's Tibetan word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Update Chinese (Traditional) stop word lists
 - Utils: Update NLTK's word tokenizers
-- Utils: Update POS tag mappings for spaCy's POS taggers
+- Utils: Update part-of-speech tag mappings for spaCy's part-of-speech taggers
 - Utils: Update PyThaiNLP's CRFCut
-- Utils: Update PyThaiNLP's POS taggers
+- Utils: Update PyThaiNLP's part-of-speech taggers
 - Utils: Update PyThaiNLP's Thai word tokenizers
 - Utils: Update Sacremoses's Moses tokenizer
 - Utils: Update Stopwords ISO's Greek and Norwegian stop word lists
@@ -329,9 +331,9 @@
 
 ### 🎉 New Features
 - Utils: Add razdel's Russian sentenizer and word tokenizer
-- Utils: Add spaCy's Lithuanian word tokenizer, POS tagger, and lemmatizer
+- Utils: Add spaCy's Lithuanian word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Add spaCy's Luxembourgish word tokenizer
-- Utils: Add spaCy's Norwegian Bokmål word tokenizer, POS tagger, and lemmatizer
+- Utils: Add spaCy's Norwegian Bokmål word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Add syntok's sentence segmenter and word tokenizer
 - Utils: Add Wordless's sentence and sentence segment splitters
 - Work Area: Add Concordancer - Generation Settings - Sampling Method
@@ -342,7 +344,7 @@
 - Utils: Force consistent results for language detection
 - Utils: Update Sacremoses's Moses tokenizer and detokenizer
 - Utils: Update Wordless's sentence segment tokenizer
-- Utils: Update spaCy's sentencizer, word tokenizers, POS taggers, and lemmatizers
+- Utils: Update spaCy's sentencizer, word tokenizers, part-of-speech taggers, and lemmatizers
 - Work Area: Display numbers and percentages in different columns
 - Work Area: Do not add borders to exported Excel workbooks due to performance issues
 - Work Area: Remove illegal characters when exporting tables to Excel workbooks
@@ -392,8 +394,8 @@
 
 ### ✨ Improvements
 - Main Window: Check file permissions when exporting tables
-- Utils: Update POS tag mappings for pybo's Tibetan POS tagger
-- Utils: Update pybo's Tibetan tokenizers, POS tagger, and lemmatizer
+- Utils: Update part-of-speech tag mappings for pybo's Tibetan part-of-speech tagger
+- Utils: Update pybo's Tibetan tokenizers, part-of-speech tagger, and lemmatizer
 - Utils: Update PyThaiNLP's Thai stop word list
 - Utils: Update Sacremoses's tokenizers and detokenizer
 
@@ -434,7 +436,7 @@
 ### ✨ Improvements
 - Main Window: Disable mouse wheel for combo boxes and spin boxes when they are not focused
 - Utils: Update spaCy's sentencizer
-- Utils: Update POS tag mappings for spaCy's English POS tagger
+- Utils: Update part-of-speech tag mappings for spaCy's English part-of-speech tagger
 
 ### 📌 Bugfixes
 - File Area: Fix Open Folder

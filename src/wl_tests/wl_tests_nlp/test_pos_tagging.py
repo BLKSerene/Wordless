@@ -28,7 +28,7 @@ test_pos_taggers = []
 
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
-        if lang not in ['other']:
+        if lang  in ['vie']:
             test_pos_taggers.append((lang, pos_tagger))
 
 @pytest.mark.parametrize('lang, pos_tagger', test_pos_taggers)
@@ -72,16 +72,15 @@ def test_pos_tag(lang, pos_tagger):
         tagset = 'universal'
     )
 
-    # Use 0 to 9 only since nagisa would split numerals into single numbers (except 24 and maybe some others)
     tokens_tagged_long_text = wl_pos_tagging.wl_pos_tag(
         main,
-        inputs = ''.join([f'{i % 10}\n' for i in range(101)]),
+        inputs = ''.join([f'{i}\n' for i in range(101)]),
         lang = lang,
         pos_tagger = pos_tagger
     )
     tokens_tagged_long_text_tokenized = wl_pos_tagging.wl_pos_tag(
         main,
-        inputs = [str(i % 10) for i in range(101) for j in range(50)],
+        inputs = [str(i) for i in range(101) for j in range(50)],
         lang = lang,
         pos_tagger = pos_tagger
     )
@@ -103,10 +102,13 @@ def test_pos_tag(lang, pos_tagger):
 
     # Test long texts
     if pos_tagger == 'botok_bod':
-        assert [token[0] for token in tokens_tagged_long_text] == ['\n'.join([str(i % 10) for i in range(100)]), '0']
+        assert [token[0] for token in tokens_tagged_long_text] == ['\n'.join([str(i) for i in range(100)]), '100']
+    elif pos_tagger == 'underthesea_vie':
+        assert [token[0] for token in tokens_tagged_long_text] == ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36 37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70', '71', '72', '73', '74', '75', '76', '77', '78', '79', '80', '81', '82', '83 84 85', '86', '87', '88', '89', '90', '91', '92', '93', '94', '95', '96', '97', '98', '99', '100']
     else:
-        assert [token[0] for token in tokens_tagged_long_text] == [str(i % 10) for i in range(101)]
-    assert [token[0] for token in tokens_tagged_long_text_tokenized] == [str(i % 10) for i in range(101) for j in range(50)]
+        assert [token[0] for token in tokens_tagged_long_text] == [str(i) for i in range(101)]
+
+    assert [token[0] for token in tokens_tagged_long_text_tokenized] == [str(i) for i in range(101) for j in range(50)]
 
     if lang == 'cat':
         assert tokens_tagged == tokens_tagged_universal == [('El', 'DET'), ('català', 'NOUN'), ('(', 'PUNCT'), ('denominació', 'NOUN'), ('oficial', 'ADJ'), ('a', 'ADP'), ('Catalunya', 'PROPN'), (',', 'PUNCT'), ('a', 'ADP'), ('les', 'DET'), ('Illes', 'PROPN'), ('Balears', 'PROPN'), (',', 'PUNCT'), ('a', 'ADP'), ('Andorra', 'PROPN'), (',', 'PUNCT'), ('a', 'ADP'), ('la', 'DET'), ('ciutat', 'NOUN'), ('de', 'ADP'), ("l'", 'DET'), ('Alguer', 'PROPN'), ('i', 'CCONJ'), ('tradicional', 'ADJ'), ('a', 'ADP'), ('Catalunya', 'PROPN'), ('Nord', 'PROPN'), (')', 'PUNCT'), ('o', 'CCONJ'), ('valencià', 'PROPN'), ('(', 'PUNCT'), ('denominació', 'NOUN'), ('oficial', 'ADJ'), ('a', 'ADP'), ('l', 'DET'), ('País', 'PROPN'), ('Valencià', 'PROPN'), ('i', 'CCONJ'), ('tradicional', 'ADJ'), ('a', 'ADP'), ('l', 'DET'), ('Carxe', 'PROPN'), (')', 'PUNCT'), ('és', 'AUX'), ('una', 'DET'), ('llengua', 'NOUN'), ('romànica', 'ADJ'), ('parlada', 'ADJ'), ('a', 'ADP'), ('Catalunya', 'PROPN'), (',', 'PUNCT'), ('el', 'DET'), ('País', 'PROPN'), ('Valencià', 'PROPN'), ('(', 'PUNCT'), ('tret', 'NOUN'), ("d'", 'ADP'), ('algunes', 'DET'), ('comarques', 'NOUN'), ('i', 'CCONJ'), ('localitats', 'NOUN'), ('de', 'ADP'), ("l'", 'DET'), ('interior', 'NOUN'), (')', 'PUNCT'), (',', 'PUNCT'), ('les', 'DET'), ('Illes', 'PROPN'), ('Balears', 'PROPN'), (',', 'PUNCT'), ('Andorra', 'PROPN'), (',', 'PUNCT'), ('la', 'DET'), ('Franja', 'PROPN'), ('de', 'ADP'), ('Ponent', 'PROPN'), ('(', 'PUNCT'), ('a', 'ADP'), ("l'", 'DET'), ('Aragó', 'PROPN'), (')', 'PUNCT'), (',', 'PUNCT'), ('la', 'DET'), ('ciutat', 'NOUN'), ('de', 'ADP'), ("l'", 'DET'), ('Alguer', 'PROPN'), ('(', 'PUNCT'), ('a', 'ADP'), ("l'", 'DET'), ('illa', 'NOUN'), ('de', 'ADP'), ('Sardenya', 'PROPN'), (')', 'PUNCT'), (',', 'PUNCT'), ('la', 'DET'), ('Catalunya', 'PROPN'), ('d', 'ADP'), ('el', 'DET'), ('Nord,[8', 'PROPN'), (']', 'PUNCT'), ('el', 'DET'), ('Carxe', 'PROPN'), ('(', 'PUNCT'), ('un', 'DET'), ('petit', 'ADJ'), ('territori', 'NOUN'), ('de', 'ADP'), ('Múrcia', 'PROPN'), ('poblat', 'ADJ'), ('per', 'ADP'), ('immigrats', 'NOUN'), ('valencians),[9][10', 'ADJ'), (']', 'PUNCT'), ('i', 'CCONJ'), ('en', 'ADP'), ('comunitats', 'NOUN'), ('arreu', 'ADV'), ('d', 'ADP'), ('el', 'DET'), ('món', 'NOUN'), ('(', 'PUNCT'), ('entre', 'ADP'), ('les', 'DET'), ('quals', 'PRON'), ('destaca', 'VERB'), ('la', 'DET'), ('de', 'ADP'), ("l'", 'DET'), ('Argentina', 'PROPN'), (',', 'PUNCT'), ('amb', 'ADP'), ('198.000', 'NUM'), ('parlants).[11', 'PROPN'), (']', 'PUNCT')]
@@ -155,10 +157,7 @@ def test_pos_tag(lang, pos_tagger):
         assert tokens_tagged == [("L'", 'RD'), ('italiano', 'S'), ('(', 'FB'), ('[', 'FB'), ('itaˈljaːno][Nota', 'S'), ('1', 'N'), (']', 'FB'), ('ascolta[?·info', 'SP'), (']', 'FB'), (')', 'FB'), ('è', 'V'), ('una', 'RI'), ('lingua', 'S'), ('romanza', 'S'), ('parlata', 'V'), ('principalmente', 'B'), ('in', 'E'), ('Italia', 'SP'), ('.', 'FS')]
         assert tokens_tagged_universal == [("L'", 'DET'), ('italiano', 'NOUN'), ('(', 'PUNCT'), ('[', 'PUNCT'), ('itaˈljaːno][Nota', 'VERB'), ('1', 'NUM'), (']', 'PUNCT'), ('ascolta[?·info', 'PROPN'), (']', 'PUNCT'), (')', 'PUNCT'), ('è', 'AUX'), ('una', 'DET'), ('lingua', 'NOUN'), ('romanza', 'NOUN'), ('parlata', 'VERB'), ('principalmente', 'ADV'), ('in', 'ADP'), ('Italia', 'PROPN'), ('.', 'PUNCT')]
     elif lang == 'jpn':
-        if pos_tagger == 'nagisa_jpn':
-            assert tokens_tagged == [('日本', '名詞'), ('語', '名詞'), ('(', '補助記号'), ('にほんご', '名詞'), ('、', '補助記号'), ('にっぽん', '名詞'), ('ご', '接尾辞'), ('[', '補助記号'), ('注', '名詞'), ('2', '名詞'), (']', '補助記号'), ('、', '補助記号'), ('英', '名詞'), (':', '補助記号'), ('Japanese', '名詞'), (')', '補助記号'), ('は', '助詞'), ('、', '補助記号'), ('日本', '名詞'), ('国', '接尾辞'), ('内', '接尾辞'), ('や', '助詞'), ('、', '補助記号'), ('かつて', '副詞'), ('の', '助詞'), ('日本', '名詞'), ('領', '接尾辞'), ('だっ', '助動詞'), ('た', '助動詞'), ('国', '名詞'), ('、', '補助記号'), ('そして', '接続詞'), ('日本', '名詞'), ('人', '接尾辞'), ('同士', '接尾辞'), ('の', '助詞'), ('間', '名詞'), ('で', '助詞'), ('使用', '名詞'), ('さ', '動詞'), ('れ', '助動詞'), ('て', '助詞'), ('いる', '動詞'), ('言語', '名詞'), ('。', '補助記号')]
-            assert tokens_tagged_universal == [('日本', 'NOUN'), ('語', 'NOUN'), ('(', 'PUNCT/SYM'), ('にほんご', 'NOUN'), ('、', 'PUNCT/SYM'), ('にっぽん', 'NOUN'), ('ご', 'PART'), ('[', 'PUNCT/SYM'), ('注', 'NOUN'), ('2', 'NOUN'), (']', 'PUNCT/SYM'), ('、', 'PUNCT/SYM'), ('英', 'NOUN'), (':', 'PUNCT/SYM'), ('Japanese', 'NOUN'), (')', 'PUNCT/SYM'), ('は', 'PART'), ('、', 'PUNCT/SYM'), ('日本', 'NOUN'), ('国', 'PART'), ('内', 'PART'), ('や', 'PART'), ('、', 'PUNCT/SYM'), ('かつて', 'ADV'), ('の', 'PART'), ('日本', 'NOUN'), ('領', 'PART'), ('だっ', 'AUX'), ('た', 'AUX'), ('国', 'NOUN'), ('、', 'PUNCT/SYM'), ('そして', 'CONJ'), ('日本', 'NOUN'), ('人', 'PART'), ('同士', 'PART'), ('の', 'PART'), ('間', 'NOUN'), ('で', 'PART'), ('使用', 'NOUN'), ('さ', 'VERB'), ('れ', 'AUX'), ('て', 'PART'), ('いる', 'VERB'), ('言語', 'NOUN'), ('。', 'PUNCT/SYM')]
-        elif pos_tagger == 'spacy_jpn':
+        if pos_tagger == 'spacy_jpn':
             assert tokens_tagged == [('日本', '名詞-固有名詞-地名-国'), ('語', '名詞-普通名詞-一般'), ('（', '補助記号-括弧開'), ('にほん', '名詞-固有名詞-地名-国'), ('ご', '接尾辞-名詞的-一般'), ('、', '補助記号-読点'), ('にっぽん', '名詞-固有名詞-地名-国'), ('ご', '接尾辞-名詞的-一般'), ('[', '補助記号-括弧開'), ('注', '名詞-普通名詞-一般'), ('2', '名詞-数詞'), (']', '補助記号-括弧閉'), ('、', '補助記号-読点'), ('英', '名詞-普通名詞-一般'), (':', '補助記号-一般'), ('Japanese', '名詞-普通名詞-一般'), ('）', '補助記号-括弧閉'), ('は', '助詞-係助詞'), ('、', '補助記号-読点'), ('日本', '名詞-固有名詞-地名-国'), ('国', '接尾辞-名詞的-一般'), ('内', '接尾辞-名詞的-一般'), ('や', '助詞-副助詞'), ('、', '補助記号-読点'), ('かつて', '副詞'), ('の', '助詞-格助詞'), ('日本', '名詞-固有名詞-地名-国'), ('領', '接尾辞-名詞的-一般'), ('だっ', '助動詞'), ('た', '助動詞'), ('国', '名詞-普通名詞-一般'), ('、', '補助記号-読点'), ('そして', '接続詞'), ('日本', '名詞-固有名詞-地名-国'), ('人', '接尾辞-名詞的-一般'), ('同士', '接尾辞-名詞的-一般'), ('の', '助詞-格助詞'), ('間', '名詞-普通名詞-副詞可能'), ('で', '助詞-格助詞'), ('使用', '名詞-普通名詞-サ変可能'), ('さ', '動詞-非自立可能'), ('れ', '助動詞'), ('て', '助詞-接続助詞'), ('いる', '動詞-非自立可能'), ('言語', '名詞-普通名詞-一般'), ('。', '補助記号-句点')]
             assert tokens_tagged_universal == [('日本', 'PROPN'), ('語', 'NOUN'), ('（', 'NOUN'), ('にほん', 'PROPN'), ('ご', 'NOUN'), ('、', 'PUNCT'), ('にっぽん', 'PROPN'), ('ご', 'NOUN'), ('[', 'NOUN'), ('注', 'NOUN'), ('2', 'NUM'), (']', 'PUNCT'), ('、', 'PUNCT'), ('英', 'NOUN'), (':', 'SYM'), ('Japanese', 'PROPN'), ('）', 'PROPN'), ('は', 'ADP'), ('、', 'PUNCT'), ('日本', 'PROPN'), ('国', 'NOUN'), ('内', 'NOUN'), ('や', 'ADP'), ('、', 'PUNCT'), ('かつて', 'ADV'), ('の', 'ADP'), ('日本', 'PROPN'), ('領', 'NOUN'), ('だっ', 'AUX'), ('た', 'AUX'), ('国', 'NOUN'), ('、', 'PUNCT'), ('そして', 'CCONJ'), ('日本', 'PROPN'), ('人', 'NOUN'), ('同士', 'NOUN'), ('の', 'ADP'), ('間', 'NOUN'), ('で', 'ADP'), ('使用', 'VERB'), ('さ', 'AUX'), ('れ', 'AUX'), ('て', 'SCONJ'), ('いる', 'VERB'), ('言語', 'NOUN'), ('。', 'PUNCT')]
         elif pos_tagger == 'sudachipy_jpn':

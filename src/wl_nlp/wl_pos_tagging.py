@@ -104,10 +104,6 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
     tokens_tagged = []
 
-    if pos_tagger == 'nagisa_jpn':
-        # Defer import to save loading time
-        import nagisa
-
     # spaCy
     if pos_tagger.startswith('spacy_'):
         if not lang.startswith('srp_'):
@@ -130,9 +126,6 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
         tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
         tokens_tagged = nltk.pos_tag(tokens, lang = lang)
     # Japanese
-    elif pos_tagger == 'nagisa_jpn':
-        tokens_tagged = nagisa.tagging(text)
-        tokens_tagged = zip(tokens_tagged.words, tokens_tagged.postags)
     elif pos_tagger == 'sudachipy_jpn':
         tokens_tagged = [
             (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
@@ -184,10 +177,6 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
 def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
     tokens_tagged = []
 
-    if pos_tagger == 'nagisa_jpn':
-        # Defer import to save loading time
-        import nagisa
-
     lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
     # spaCy
@@ -220,8 +209,6 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
 
         tokens_tagged = nltk.pos_tag(tokens, lang = lang)
     # Japanese
-    elif pos_tagger == 'nagisa_jpn':
-        tokens_tagged = zip(tokens, nagisa.postagging(tokens))
     elif pos_tagger == 'sudachipy_jpn':
         tokens_tagged = [
             (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
@@ -283,8 +270,9 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
 
                 # Align tokens
                 while i_tokens < len_tokens - 1 or i_tokens_tagged < len_tokens_tagged - 1:
-                    len_tokens_temp = sum([len(token) for token in tokens_temp])
-                    len_tokens_tagged_temp = sum([len(token) for token in tokens_tagged_temp])
+                    # Compare length in characters with whitespace
+                    len_tokens_temp = len(' '.join(tokens_temp))
+                    len_tokens_tagged_temp = len(' '.join(tokens_tagged_temp))
 
                     if len_tokens_temp > len_tokens_tagged_temp:
                         tokens_tagged_temp.append(tokens_tagged[i_tokens_tagged + 1][0])
@@ -296,18 +284,18 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
 
                         i_tokens += 1
                     else:
-                        if len(tokens_temp) == len(tokens_tagged_temp):
-                            tokens_tagged_modified.extend([
-                                (token, tag)
-                                for token, tag in zip(tokens_temp, tags_temp)
-                            ])
-                        elif len(tokens_temp) > len(tokens_tagged_temp):
-                            tokens_tagged_modified.extend([
-                                (token, tags_temp[0])
-                                for token in tokens_temp
-                            ])
-                        else:
-                            tokens_tagged_modified.append((tokens_temp[0], tags_temp[0]))
+                        len_tokens_temp_tokens = len(tokens_temp)
+                        len_tokens_tagged_temp_tokens = len(tokens_tagged_temp)
+
+                        if len_tokens_temp_tokens > len_tokens_tagged_temp_tokens:
+                            tags_temp.extend([tags_temp[-1]] * (len_tokens_temp_tokens - len_tokens_tagged_temp_tokens))
+                        elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
+                            tags_temp = tags_temp[:len_tokens_temp_tokens]
+
+                        tokens_tagged_modified.extend([
+                            (token, tag)
+                            for token, tag in zip(tokens_temp, tags_temp)
+                        ])
 
                         tokens_temp = []
                         tokens_tagged_temp = []
@@ -316,18 +304,18 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
                         break
 
                 if tokens_temp:
-                    if len(tokens_temp) == len(tokens_tagged_temp):
-                        tokens_tagged_modified.extend([
-                            (token, tag)
-                            for token, tag in zip(tokens_temp, tags_temp)
-                        ])
-                    elif len(tokens_temp) > len(tokens_tagged_temp):
-                        tokens_tagged_modified.extend([
-                            (token, tags_temp[0])
-                            for token in tokens_temp
-                        ])
-                    else:
-                        tokens_tagged_modified.append((tokens_temp[0], tags_temp[0]))
+                    len_tokens_temp_tokens = len(tokens_temp)
+                    len_tokens_tagged_temp_tokens = len(tokens_tagged_temp)
+
+                    if len_tokens_temp_tokens > len_tokens_tagged_temp_tokens:
+                        tags_temp.extend([tags_temp[-1]] * (len_tokens_temp_tokens - len_tokens_tagged_temp_tokens))
+                    elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
+                        tags_temp = tags_temp[:len_tokens_temp_tokens]
+
+                    tokens_tagged_modified.extend([
+                        (token, tag)
+                        for token, tag in zip(tokens_temp, tags_temp)
+                    ])
             else:
                 tokens_tagged_modified.append((tokens[i_tokens], tokens_tagged[i_tokens_tagged][1]))
 
@@ -343,6 +331,6 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
         else:
             tokens_tagged = tokens_tagged_modified.copy()
     else:
-        tokens_tagged = [(tokens[i], tokens_tagged[i][1]) for i in range(len(tokens))]
+        tokens_tagged = [(token, token_tagged[1]) for token, token_tagged in zip(tokens, tokens_tagged)]
 
     return tokens_tagged

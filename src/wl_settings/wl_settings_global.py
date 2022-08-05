@@ -330,7 +330,6 @@ def init_settings_global():
             'word_tokenizers': {
                 _tr('init_settings_global', 'botok - Tibetan Word Tokenizer'): 'botok_bod',
                 _tr('init_settings_global', 'jieba - Chinese Word Tokenizer'): 'jieba_zho',
-                _tr('init_settings_global', 'nagisa - Japanese Word Tokenizer'): 'nagisa_jpn',
 
                 _tr('init_settings_global', 'NLTK - NIST Tokenizer'): 'nltk_nist',
                 _tr('init_settings_global', 'NLTK - NLTK Tokenizer'): 'nltk_nltk',
@@ -473,7 +472,6 @@ def init_settings_global():
             'pos_taggers': {
                 _tr('init_settings_global', 'botok - Tibetan POS Tagger'): 'botok_bod',
                 _tr('init_settings_global', 'jieba - Chinese POS Tagger'): 'jieba_zho',
-                _tr('init_settings_global', 'nagisa - Japanese POS Tagger'): 'nagisa_jpn',
                 _tr('init_settings_global', 'NLTK - Perceptron POS Tagger'): 'nltk_perceptron',
                 _tr('init_settings_global', 'pymorphy2 - Morphological Analyzer'): 'pymorphy2_morphological_analyzer',
 
@@ -1317,7 +1315,6 @@ def init_settings_global():
             ],
 
             'jpn': [
-                'nagisa_jpn',
                 'spacy_jpn',
                 'sudachipy_jpn_split_mode_a',
                 'sudachipy_jpn_split_mode_b',
@@ -1766,7 +1763,6 @@ def init_settings_global():
             ],
 
             'jpn': [
-                'nagisa_jpn',
                 'spacy_jpn',
                 'sudachipy_jpn'
             ],

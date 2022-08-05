@@ -178,13 +178,6 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                         tokens_multilevel[-1].append(tokens)
                 # Japanese
-                elif word_tokenizer == 'nagisa_jpn':
-                    import nagisa
-
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = lang)
-
-                    for sentence in sentences:
-                        tokens_multilevel[-1].append(nagisa.tagging(str(sentence)).words)
                 elif word_tokenizer.startswith('sudachipy_jpn'):
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, section, lang = lang)
 
