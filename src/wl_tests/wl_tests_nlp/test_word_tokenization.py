@@ -50,10 +50,9 @@ def test_word_tokenize(lang, word_tokenizer):
         lang = lang,
         word_tokenizer = word_tokenizer
     )
-    # Use 0 to 9 only since nagisa would split numerals into single numbers (except 24 and maybe some others)
     tokens_long_text = wl_word_tokenization.wl_word_tokenize_flat(
         main,
-        text = ''.join([f'{i % 10}\n' for i in range(101)]),
+        text = ''.join([f'{i}\n' for i in range(101)]),
         lang = lang,
         word_tokenizer = word_tokenizer
     )
@@ -65,7 +64,7 @@ def test_word_tokenize(lang, word_tokenizer):
     # The count of tokens should be more than the length of tokens split by space
     assert len(tokens) > len(f'SENTENCE_{lang.upper()}'.split())
     # Test long texts
-    assert tokens_long_text == [str(i % 10) for i in range(101)]
+    assert tokens_long_text == [str(i) for i in range(101)]
 
     if lang == 'afr':
         assert tokens == ['Afrikaans', 'is', 'tipologies', 'beskou', "'", 'n', 'Indo', '-', 'Europese', ',', 'Wes', '-', 'Germaanse', ',', 'Nederfrankiese', 'taal,[2', ']', 'wat', 'aan', 'die', 'suidpunt', 'van', 'Afrika', 'onder', 'invloed', 'van', 'verskeie', 'ander', 'tale', 'en', 'taalgroepe', 'ontstaan', 'het', '.']
@@ -164,9 +163,7 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'ita':
         assert tokens == ["L'", 'italiano', '(', '[', 'itaˈljaːno][Nota', '1', ']', 'ascolta[?·info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
     elif lang == 'jpn':
-        if word_tokenizer == 'nagisa_jpn':
-            assert tokens == ['日本', '語', '(', 'にほんご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', '、', '英', ':', 'Japanese', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だっ', 'た', '国', '、', 'そして', '日本', '人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
-        elif word_tokenizer in [
+        if word_tokenizer in [
             'spacy_jpn',
             'sudachipy_jpn_split_mode_a'
         ]:

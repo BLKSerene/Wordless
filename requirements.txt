@@ -23,7 +23,6 @@ botok == 0.8.10
 charset-normalizer == 2.1.0
 jieba == 0.42.1
 pkuseg == 0.0.25
-nagisa == 0.2.7
 nltk == 3.7
 opencc-python-reimplemented == 0.1.6
 
@@ -42,7 +41,7 @@ spacy-lookups-data == 1.0.3
 
 ## SudachiPy
 sudachipy == 0.6.6
-sudachidict_core == 20220519
+sudachidict_core == 20220729
 
 textblob == 0.17.1
 tokenizer == 3.4.1
