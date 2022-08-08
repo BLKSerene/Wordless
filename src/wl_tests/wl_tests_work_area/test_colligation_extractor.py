@@ -58,23 +58,23 @@ def test_colligation_extractor():
         random_i = random.randrange(0, 10)
 
         # Single file with search terms
-        if random_i in [0, 3, 6, 9]:
+        if random_i in [0, 2, 4, 6]:
             random.choice(files)['selected'] = True
 
             main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = True
         # Single file without search terms
-        elif random_i in [1, 4, 7]:
+        elif random_i == 8:
             random.choice(files)['selected'] = True
 
             main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = False
         # Multiple files with search terms
-        elif random_i in [2, 5]:
+        elif random_i in [1, 3, 5, 7]:
             for file in random.sample(files, 2):
                 file['selected'] = True
 
             main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = True
         # Multiple files without search terms
-        elif random_i == 8:
+        elif random_i == 9:
             for file in random.sample(files, 2):
                 file['selected'] = True
 
