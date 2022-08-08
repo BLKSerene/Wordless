@@ -45,38 +45,38 @@ def test_keyword_extractor():
     len_tests_statistical_significance = len(tests_statistical_significance)
     len_measures_bayes_factor = len(measures_bayes_factor)
     len_measures_effect_size = len(measures_effect_size)
+    len_max_measures = max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])
 
     files_observed = main.settings_custom['file_area']['files_open']
     files_ref = main.settings_custom['file_area']['files_open_ref']
 
-    for i in range(max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])):
+    i_multi_observed, i_multi_observed_ref = random.sample(range(len_max_measures), 2)
+
+    for i in range(len_max_measures):
         for file in main.settings_custom['file_area']['files_open'] + main.settings_custom['file_area']['files_open_ref']:
             file['selected'] = False
 
-        random_i = random.randrange(0, 10)
-
-        # Single reference file & single observed file
-        if random_i in [0, 2, 4, 6]:
-            random.choice(files_observed)['selected'] = True
-            random.choice(files_ref)['selected'] = True
-
         # Single reference file & multiple observed files
-        elif random_i == 8:
+        if i == i_multi_observed:
             for file in random.sample(files_observed, 2):
                 file['selected'] = True
 
             random.choice(files_ref)['selected'] = True
-
-        # Multiple reference files & single observed file
-        elif random_i in [1, 3, 5, 7]:
-            random.choice(files_observed)['selected'] = True
+        # Multiple reference files & multiple observed files
+        elif i == i_multi_observed_ref:
+            for file in random.sample(files_observed, 2):
+                file['selected'] = True
 
             for file in random.sample(files_ref, 2):
                 file['selected'] = True
-        # Multiple reference files & multiple observed files
-        elif random_i == 9:
-            for file in random.sample(files_observed, 2):
-                file['selected'] = True
+        # Single reference file & single observed file
+        elif i % 2 == 0:
+            random.choice(files_observed)['selected'] = True
+            random.choice(files_ref)['selected'] = True
+
+        # Multiple reference files & single observed file
+        elif i % 2 == 1:
+            random.choice(files_observed)['selected'] = True
 
             for file in random.sample(files_ref, 2):
                 file['selected'] = True

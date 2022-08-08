@@ -23,8 +23,7 @@
 - File Area: Add Observed/Reference Files
 - File Area: Add support for .pdf files
 - Settings: Add Settings - Figures - Word Clouds - Font Path
-- Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test
-- Settings: Add Settings - Measures - Statistical Significance - Welch's t-test
+- Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test / Welch's t-test / z-score (Berry-Rogghe)
 - Settings: Add Settings - Tables - Profiler
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
