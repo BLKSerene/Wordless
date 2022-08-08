@@ -56,25 +56,25 @@ def test_keyword_extractor():
         random_i = random.randrange(0, 10)
 
         # Single reference file & single observed file
-        if random_i in [0, 3, 6, 9]:
+        if random_i in [0, 2, 4, 6]:
             random.choice(files_observed)['selected'] = True
             random.choice(files_ref)['selected'] = True
 
         # Single reference file & multiple observed files
-        elif random_i in [1, 4, 7]:
+        elif random_i == 8:
             for file in random.sample(files_observed, 2):
                 file['selected'] = True
 
             random.choice(files_ref)['selected'] = True
 
         # Multiple reference files & single observed file
-        elif random_i in [2, 5]:
+        elif random_i in [1, 3, 5, 7]:
             random.choice(files_observed)['selected'] = True
 
-            for file in files_ref:
+            for file in random.sample(files_ref, 2):
                 file['selected'] = True
         # Multiple reference files & multiple observed files
-        elif random_i == 8:
+        elif random_i == 9:
             for file in random.sample(files_observed, 2):
                 file['selected'] = True
 

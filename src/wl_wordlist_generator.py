@@ -27,7 +27,8 @@ from PyQt5.QtWidgets import QLabel, QPushButton, QGroupBox
 
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
-from wl_nlp import wl_nlp_utils, wl_texts, wl_token_processing
+from wl_measures import wl_measures_adjusted_freq, wl_measures_dispersion
+from wl_nlp import wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
 from wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -414,37 +415,22 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
             measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
             measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
-            tokens_total = self.tokens_freq_files[-1].keys()
+            tokens_total = list(self.tokens_freq_files[-1].keys())
 
             for text in texts:
                 tokens_stats_file = {}
 
                 # Dispersion
-                num_sections = self.main.settings_custom['measures']['dispersion']['general_settings']['num_sections']
+                freqs_sections_tokens = wl_measures_dispersion.to_freqs_sections_tokens(self.main, tokens_total, text.tokens_flat)
 
-                sections_freq = [
-                    collections.Counter(section)
-                    for section in wl_nlp_utils.to_sections(text.tokens_flat, num_sections)
-                ]
-
-                for token in tokens_total:
-                    counts = [section_freq[token] for section_freq in sections_freq]
-
-                    tokens_stats_file[token] = [measure_dispersion(counts)]
+                for token, freqs in freqs_sections_tokens.items():
+                    tokens_stats_file[token] = [measure_dispersion(freqs)]
 
                 # Adjusted Frequency
-                if not self.main.settings_custom['measures']['adjusted_freq']['general_settings']['use_same_settings_dispersion']:
-                    num_sections = self.main.settings_custom['measures']['adjusted_freq']['general_settings']['num_sections']
+                freqs_sections_tokens = wl_measures_adjusted_freq.to_freqs_sections_tokens(self.main, tokens_total, text.tokens_flat)
 
-                    sections_freq = [
-                        collections.Counter(section)
-                        for section in wl_nlp_utils.to_sections(text.tokens_flat, num_sections)
-                    ]
-
-                for token in tokens_total:
-                    counts = [section_freq[token] for section_freq in sections_freq]
-
-                    tokens_stats_file[token].append(measure_adjusted_freq(counts))
+                for token, freqs in freqs_sections_tokens.items():
+                    tokens_stats_file[token] = [measure_adjusted_freq(freqs)]
 
                 self.tokens_stats_files.append(tokens_stats_file)
 
