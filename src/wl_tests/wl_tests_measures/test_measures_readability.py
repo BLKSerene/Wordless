@@ -18,8 +18,8 @@
 
 import numpy
 
-from wl_tests import wl_test_init
 from wl_measures import wl_measures_readability
+from wl_tests import wl_test_init
 
 main = wl_test_init.Wl_Test_Main()
 

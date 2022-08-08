@@ -42,6 +42,7 @@
 - Work Area: Fix Profiler - Token Settings - Use tags only
 
 ### ❌ Removals
+- Settings: Remove Settings - Measures - Adjusted Frequency - Use same settings in "Settings → Measures → Dispersion"
 - Utils: Remove nagisa's Japanese word tokenizer and part-of-speech tagger
 - Utils: Remove ssg's Thai syllable tokenizer
 - Work Area: Remove Concordancer - Zapping Settings - Discard position information

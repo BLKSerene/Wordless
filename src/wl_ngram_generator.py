@@ -29,7 +29,8 @@ from PyQt5.QtWidgets import QCheckBox, QLabel, QPushButton, QGroupBox
 
 from wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
-from wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing
+from wl_measures import wl_measures_adjusted_freq, wl_measures_dispersion
+from wl_nlp import wl_matching, wl_texts, wl_token_processing
 from wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
 from wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
@@ -795,11 +796,10 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 text_total = wl_texts.Wl_Text_Blank()
                 text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
 
-                self.ngrams_freq_files.append(
-                    sum([collections.Counter(ngrams_freq_file)
-                         for ngrams_freq_file in self.ngrams_freq_files],
-                        collections.Counter())
-                )
+                self.ngrams_freq_files.append(sum([
+                    collections.Counter(ngrams_freq_file)
+                    for ngrams_freq_file in self.ngrams_freq_files
+                ], collections.Counter()))
                 texts.append(text_total)
 
             # Dispersion & Adjusted Frequency
@@ -809,7 +809,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
             measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
             measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
-            ngrams_total = self.ngrams_freq_files[-1].keys()
+            ngrams_total = list(self.ngrams_freq_files[-1].keys())
 
             for text in texts:
                 ngrams_lens = {}
@@ -823,38 +823,26 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                         ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens_flat, ngram_size, allow_skipped_tokens))
 
                 # Dispersion
-                num_sections = self.main.settings_custom['measures']['dispersion']['general_settings']['num_sections']
-
-                sections_freq_lens = {}
+                freqs_sections_ngrams = {}
 
                 for ngram_size, ngram_list in ngrams_lens.items():
-                    sections_freq_lens[ngram_size] = [
-                        collections.Counter(section)
-                        for section in wl_nlp_utils.to_sections(ngram_list, num_sections)
-                    ]
+                    ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
 
-                for ngram in ngrams_total:
-                    counts = [section_freq[ngram] for section_freq in sections_freq_lens[len(ngram)]]
+                    freqs_sections_ngrams.update(wl_measures_dispersion.to_freqs_sections_tokens(self.main, ngrams_total_len, ngram_list))
 
-                    ngrams_stats_file[ngram] = [measure_dispersion(counts)]
+                for ngram, freqs in freqs_sections_ngrams.items():
+                    ngrams_stats_file[ngram] = [measure_dispersion(freqs)]
 
                 # Adjusted Frequency
-                if not self.main.settings_custom['measures']['adjusted_freq']['general_settings']['use_same_settings_dispersion']:
-                    num_sections = self.main.settings_custom['measures']['adjusted_freq']['general_settings']['num_sections']
+                freqs_sections_ngrams = {}
 
-                    sections_freq_lens = {}
+                for ngram_size, ngram_list in ngrams_lens.items():
+                    ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
 
-                    for ngram_size, ngrams in ngrams_lens.items():
-                        sections_freq_lens[ngram_size] = [
-                            collections.Counter(section)
-                            for section in wl_nlp_utils.to_sections(ngrams, num_sections)
-                        ]
+                    freqs_sections_ngrams.update(wl_measures_adjusted_freq.to_freqs_sections_tokens(self.main, ngrams_total_len, ngram_list))
 
-                for ngram in ngrams_total:
-                    counts = [section_freq[ngram] for
-                              section_freq in sections_freq_lens[len(ngram)]]
-
-                    ngrams_stats_file[ngram].append(measure_adjusted_freq(counts))
+                for ngram, freqs in freqs_sections_ngrams.items():
+                    ngrams_stats_file[ngram] = [measure_adjusted_freq(freqs)]
 
                 self.ngrams_stats_files.append(ngrams_stats_file)
 

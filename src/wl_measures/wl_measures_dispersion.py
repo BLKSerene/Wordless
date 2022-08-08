@@ -16,10 +16,31 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import collections
+
 import numpy
 import scipy.stats
 
 from wl_measures import wl_measures_adjusted_freq
+from wl_nlp import wl_nlp_utils
+
+def to_freqs_sections_tokens(main, tokens, tokens_all):
+    freqs_sections_tokens = {}
+
+    num_sub_sections = main.settings_custom['measures']['dispersion']['general_settings']['num_sub_sections']
+
+    freqs_sections = [
+        collections.Counter(section)
+        for section in wl_nlp_utils.to_sections(tokens_all, num_sub_sections)
+    ]
+
+    for token in tokens:
+        freqs_sections_tokens[token] = [
+            freqs_section.get(token, 0)
+            for freqs_section in freqs_sections
+        ]
+
+    return freqs_sections_tokens
 
 # Carroll's D₂
 # Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x

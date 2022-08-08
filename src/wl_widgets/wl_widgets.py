@@ -1084,14 +1084,14 @@ def wl_widgets_filter_results(parent, table):
             button_filter_results)
 
 # Settings -> Measures
-def wl_widgets_num_sections(parent):
-    label_divide = QLabel(_tr('wl_widgets_num_sections', 'Divide each text into'), parent)
-    spin_box_num_sections = wl_boxes.Wl_Spin_Box(parent)
-    label_sections = QLabel(_tr('wl_widgets_num_sections', 'sections'), parent)
+def wl_widgets_num_sub_sections(parent):
+    label_divide_each_file_into = QLabel(_tr('wl_widgets_num_sub_sections', 'Divide each file into'), parent)
+    spin_box_num_sub_sections = wl_boxes.Wl_Spin_Box(parent)
+    label_sub_sections = QLabel(_tr('wl_widgets_num_sub_sections', 'sub-sections'), parent)
 
-    spin_box_num_sections.setRange(2, 1000)
+    spin_box_num_sub_sections.setRange(2, 1000)
 
-    return label_divide, spin_box_num_sections, label_sections
+    return label_divide_each_file_into, spin_box_num_sub_sections, label_sub_sections
 
 def wl_widgets_use_data_freq(parent):
     label_use_data = QLabel(_tr('wl_widgets_use_data_freq', 'Use Data:'), parent)

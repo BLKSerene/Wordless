@@ -16,17 +16,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from wl_tests import wl_test_init
 from wl_measures import wl_measures_misc
+from wl_tests import wl_test_init
 
 main = wl_test_init.Wl_Test_Main()
 
 def test_modes():
-    modes = wl_measures_misc.modes([1, 3, 3, 3, 2, 2, 1, 2, 5, 4])
+    nums = [1, 3, 3, 3, 2, 2, 1, 2, 5, 4]
 
-    print(f'Modes: {modes}')
-
-    assert modes == [2, 3]
+    assert wl_measures_misc.modes(nums) == [2, 3]
 
 if __name__ == '__main__':
     test_modes()
