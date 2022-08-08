@@ -26,20 +26,29 @@ from wl_nlp import wl_nlp_utils
 
 _tr = QCoreApplication.translate
 
-def get_marginals(c11, c12, c21, c22):
-    c1x = c11 + c12
-    c2x = c21 + c22
-    cx1 = c11 + c21
-    cx2 = c12 + c22
-    cxx = c1x + c2x
+def get_freqs_marginal(c11, c12, c21, c22):
+    freqs = numpy.array([[c11, c12], [c21, c22]], dtype = numpy.int64)
+    m1, m2 = scipy.stats.contingency.margins(freqs)
 
-    return c1x, c2x, cx1, cx2, cxx
+    c1x = int(m1[0][0])
+    c2x = int(m1[1][0])
+    cx1 = int(m2[0][0])
+    cx2 = int(m2[0][1])
 
-def get_expected(c1x, c2x, cx1, cx2, cxx):
-    e11 = c1x * cx1 / cxx
-    e12 = c1x * cx2 / cxx
-    e21 = c2x * cx1 / cxx
-    e22 = c2x * cx2 / cxx
+    return c1x, c2x, cx1, cx2
+
+def get_freqs_expected(c11, c12, c21, c22):
+    freqs = numpy.array([[c11, c12], [c21, c22]], dtype = numpy.int64)
+
+    if numpy.sum(freqs) > 0:
+        freqs_expected = scipy.stats.contingency.expected_freq(freqs)
+    else:
+        freqs_expected = [[0, 0], [0, 0]]
+
+    e11 = float(freqs_expected[0][0])
+    e12 = float(freqs_expected[0][1])
+    e21 = float(freqs_expected[1][0])
+    e22 = float(freqs_expected[1][1])
 
     return e11, e12, e21, e22
 
@@ -57,30 +66,30 @@ def to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, test_statistica
     freqs_sections_tokens = {}
 
     if test_statistical_significance == _tr('wl_measures_statistical_significance', 'Mann-Whitney U Test'):
-        num_sections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_sections']
+        num_sub_sections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_sub_sections']
         use_data = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
     elif test_statistical_significance == _tr('wl_measures_statistical_significance', "Student's t-test (2-sample)"):
-        num_sections = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_sections']
+        num_sub_sections = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_sub_sections']
         use_data = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
     elif test_statistical_significance == _tr('wl_measures_statistical_significance', "Welch's t-test"):
-        num_sections = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['num_sections']
+        num_sub_sections = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['num_sub_sections']
         use_data = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['use_data']
 
-    sections_x1 = wl_nlp_utils.to_sections(tokens_x1, num_sections)
-    sections_x2 = wl_nlp_utils.to_sections(tokens_x2, num_sections)
+    sections_x1 = wl_nlp_utils.to_sections(tokens_x1, num_sub_sections)
+    sections_x2 = wl_nlp_utils.to_sections(tokens_x2, num_sub_sections)
 
-    sections_freqs_x1 = [collections.Counter(section) for section in sections_x1]
-    sections_freqs_x2 = [collections.Counter(section) for section in sections_x2]
+    freqs_sections_x1 = [collections.Counter(section) for section in sections_x1]
+    freqs_sections_x2 = [collections.Counter(section) for section in sections_x2]
 
     if use_data == _tr('wl_measures_statistical_significance', 'Absolute Frequency'):
         for token in tokens:
             freqs_x1 = [
-                section_freqs.get(token, 0)
-                for section_freqs in sections_freqs_x1
+                freqs_section.get(token, 0)
+                for freqs_section in freqs_sections_x1
             ]
             freqs_x2 = [
-                section_freqs.get(token, 0)
-                for section_freqs in sections_freqs_x2
+                freqs_section.get(token, 0)
+                for freqs_section in freqs_sections_x2
             ]
 
             freqs_sections_tokens[token] = (freqs_x1, freqs_x2)
@@ -90,12 +99,12 @@ def to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, test_statistica
 
         for token in tokens:
             freqs_x1 = [
-                section_freqs.get(token, 0) / len_section
-                for section_freqs, len_section in zip(sections_freqs_x1, len_sections_x1)
+                freqs_section.get(token, 0) / len_section
+                for freqs_section, len_section in zip(freqs_sections_x1, len_sections_x1)
             ]
             freqs_x2 = [
-                section_freqs.get(token, 0) / len_section
-                for section_freqs, len_section in zip(sections_freqs_x2, len_sections_x2)
+                freqs_section.get(token, 0) / len_section
+                for freqs_section, len_section in zip(freqs_sections_x2, len_sections_x2)
             ]
 
             freqs_sections_tokens[token] = (freqs_x1, freqs_x2)
@@ -121,24 +130,32 @@ def fishers_exact_test(main, c11, c12, c21, c22):
 # Log-likelihood Ratio
 # References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74.
 def log_likelihood_ratio_test(main, c11, c12, c21, c22):
-    c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
-    e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
+    apply_correction = main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']['apply_correction']
 
-    if main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']['apply_correction']:
-        c11, c12, c21, c22 = yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22)
+    if c11 and c12 and c21 and c22:
+        log_likelihood_ratio, p_val, _, _ = scipy.stats.chi2_contingency(
+            [[c11, c12], [c21, c22]],
+            correction = apply_correction,
+            lambda_='log-likelihood'
+        )
+    else:
+        e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
 
-    log_likelihood_ratio_11 = c11 * numpy.log(c11 / e11) if c11 and e11 else 0
-    log_likelihood_ratio_12 = c12 * numpy.log(c12 / e12) if c12 and e12 else 0
-    log_likelihood_ratio_21 = c21 * numpy.log(c21 / e21) if c21 and e21 else 0
-    log_likelihood_ratio_22 = c22 * numpy.log(c22 / e22) if c22 and e22 else 0
+        if apply_correction:
+            c11, c12, c21, c22 = yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22)
 
-    log_likelihood_ratio = 2 * (
-        log_likelihood_ratio_11
-        + log_likelihood_ratio_12
-        + log_likelihood_ratio_21
-        + log_likelihood_ratio_22
-    )
-    p_val = scipy.stats.distributions.chi2.sf(log_likelihood_ratio, 1)
+        log_likelihood_ratio_11 = c11 * numpy.log(c11 / e11) if c11 else 0
+        log_likelihood_ratio_12 = c12 * numpy.log(c12 / e12) if c12 else 0
+        log_likelihood_ratio_21 = c21 * numpy.log(c21 / e21) if c21 else 0
+        log_likelihood_ratio_22 = c22 * numpy.log(c22 / e22) if c22 else 0
+
+        log_likelihood_ratio = 2 * (
+            log_likelihood_ratio_11
+            + log_likelihood_ratio_12
+            + log_likelihood_ratio_21
+            + log_likelihood_ratio_22
+        )
+        p_val = scipy.stats.distributions.chi2.sf(log_likelihood_ratio, 1)
 
     return log_likelihood_ratio, p_val
 
@@ -168,42 +185,57 @@ def mann_whitney_u_test(main, freqs_x1, freqs_x2):
 #     Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities.
 #     Oakes, M. P. (1998). Statistics for Corpus Linguistics. Edinburgh University Press.
 def pearsons_chi_squared_test(main, c11, c12, c21, c22):
-    c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
-    e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
+    apply_correction = main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction']
 
-    if main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction']:
-        c11, c12, c21, c22 = yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22)
+    if c11 and c12 and c21 and c22:
+        chi_squared, p_val, _, _ = scipy.stats.chi2_contingency(
+            [[c11, c12], [c21, c22]],
+            correction = apply_correction
+        )
+    else:
+        e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
 
-    chi_square_11 = (c11 - e11) ** 2 / e11 if e11 else 0
-    chi_square_12 = (c12 - e12) ** 2 / e12 if e12 else 0
-    chi_square_21 = (c21 - e21) ** 2 / e21 if e21 else 0
-    chi_square_22 = (c22 - e22) ** 2 / e22 if e22 else 0
+        if apply_correction:
+            c11, c12, c21, c22 = yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22)
 
-    chi_square = chi_square_11 + chi_square_12 + chi_square_21 + chi_square_22
-    p_val = scipy.stats.distributions.chi2.sf(chi_square, 1)
+        chi_squared_11 = (c11 - e11) ** 2 / e11 if e11 else 0
+        chi_squared_12 = (c12 - e12) ** 2 / e12 if e12 else 0
+        chi_squared_21 = (c21 - e21) ** 2 / e21 if e21 else 0
+        chi_squared_22 = (c22 - e22) ** 2 / e22 if e22 else 0
 
-    return chi_square, p_val
+        chi_squared = chi_squared_11 + chi_squared_12 + chi_squared_21 + chi_squared_22
+        p_val = scipy.stats.distributions.chi2.sf(chi_squared, 1)
+
+    return chi_squared, p_val
 
 # Student's t-test (1-sample)
 # References: Church, K., Gale, W., Hanks P., & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
 def students_t_test_1_sample(main, c11, c12, c21, c22):
-    c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
-    e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
+    cxx = c11 + c12 + c21 + c22
+    e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
 
     t_stat = (c11 - e11) / numpy.sqrt(c11 * (1 - c11 / cxx)) if c11 else 0
-    p_val = scipy.stats.distributions.t.sf(numpy.abs(t_stat), cxx - 1) * 2
+    p_val = scipy.stats.distributions.t.sf(numpy.abs(t_stat), cxx - 1) * 2 if cxx > 0 else 1
 
     return t_stat, p_val
 
 # Student's t-test (2-sample)
 # References: Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. Language and Computers, 68, 247–269.
 def students_t_test_2_sample(main, freqs_x1, freqs_x2):
-    t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = True)
+    if any(freqs_x1) or any(freqs_x2):
+        t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = True)
+    else:
+        t_stat = 0
+        p_val = 1
 
     return t_stat, p_val
 
 def welchs_t_test(main, freqs_x1, freqs_x2):
-    t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = False)
+    if any(freqs_x1) or any(freqs_x2):
+        t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = False)
+    else:
+        t_stat = 0
+        p_val = 1
 
     return t_stat, p_val
 
@@ -212,13 +244,13 @@ def welchs_t_test(main, freqs_x1, freqs_x2):
 def z_score(main, c11, c12, c21, c22):
     direction = main.settings_custom['measures']['statistical_significance']['z_score']['direction']
 
-    c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
-    e11, e12, e21, e22 = get_expected(c1x, c2x, cx1, cx2, cxx)
+    cxx = c11 + c12 + c21 + c22
+    e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
 
-    z_score = (c11 - e11) / numpy.sqrt(e11 * (1 - e11 / cxx)) if e11 else 0
+    z_score = (c11 - e11) / numpy.sqrt(e11 * (1 - e11 / cxx)) if cxx and e11 and 1 - e11 / cxx else 0
 
     if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
-        p_val = 2 * scipy.stats.distributions.norm.sf(numpy.abs(z_score))
+        p_val = scipy.stats.distributions.norm.sf(numpy.abs(z_score)) * 2
     elif direction == _tr('wl_measures_statistical_significance', 'One-tailed'):
         p_val = scipy.stats.distributions.norm.sf(z_score)
 
@@ -227,18 +259,18 @@ def z_score(main, c11, c12, c21, c22):
 # z-score (Berry-Rogghe)
 # References: Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), The computer and literary studies (pp. 103–112). Edinburgh University Press.
 def z_score_berry_rogghe(main, c11, c12, c21, c22, span):
-    c1x, c2x, cx1, cx2, cxx = get_marginals(c11, c12, c21, c22)
+    c1x, c2x, cx1, cx2 = get_freqs_marginal(c11, c12, c21, c22)
 
-    z = cxx
+    z = c1x + c2x
     fn = c1x
     fc = cx1
     k = c11
     s = span
 
-    p = fc / (z - fn)
+    p = fc / (z - fn) if z - fn else 1
     e = p * fn * s
 
     z_score = (k - e) / numpy.sqrt(e * (1 - p)) if e and 1 - p else 0
-    p_val = scipy.stats.distributions.norm.sf(z_score)
+    p_val = scipy.stats.distributions.norm.sf(numpy.abs(z_score)) * 2
 
     return z_score, p_val
