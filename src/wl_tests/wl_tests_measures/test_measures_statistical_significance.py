@@ -114,6 +114,9 @@ def test_students_t_test_2_sample():
 def test_welchs_t_test():
     assert wl_measures_statistical_significance.welchs_t_test(main, [0] * 5, [0] * 5) == (0, 1)
 
+def test_z_test():
+    assert wl_measures_statistical_significance.z_test(0, 'Two-tailed') == 1
+
 def test_z_score():
     assert wl_measures_statistical_significance.z_score(main, 0, 0, 0, 0) == (0, 1)
 
@@ -131,5 +134,6 @@ if __name__ == '__main__':
     test_pearsons_chi_squared_test()
     test_students_t_test_1_sample()
     test_students_t_test_2_sample()
+    test_z_test()
     test_z_score()
     test_z_score_berry_rogghe()

@@ -41,13 +41,11 @@ def test_wordlist_generator():
         for file in files:
             file['selected'] = False
 
-        random_i = random.randrange(0, 10)
-
         # Single file
-        if random_i in [0, 2, 4, 6, 8]:
+        if i % 2 == 0:
             random.choice(files)['selected'] = True
         # Multiple files
-        elif random_i in [1, 3, 5, 7, 9]:
+        elif i % 2 == 1:
             for file in random.sample(files, 2):
                 file['selected'] = True
 

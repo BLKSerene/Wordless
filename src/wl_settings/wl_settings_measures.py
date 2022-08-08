@@ -249,13 +249,27 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         (
             self.label_z_score_direction,
             self.combo_box_z_score_direction
-        ) = wl_widgets.wl_widgets_direction_2(self)
+        ) = wl_widgets.wl_widgets_direction(self)
 
         self.group_box_z_score.setLayout(wl_layouts.Wl_Layout())
         self.group_box_z_score.layout().addWidget(self.label_z_score_direction, 0, 0)
         self.group_box_z_score.layout().addWidget(self.combo_box_z_score_direction, 0, 1)
 
         self.group_box_z_score.layout().setColumnStretch(2, 1)
+
+        # z-score (Berry-Rogghe)
+        self.group_box_z_score_berry_rogghe = QGroupBox(self.tr('z-score (Berry-Rogghe)'), self)
+
+        (
+            self.label_z_score_berry_rogghe_direction,
+            self.combo_box_z_score_berry_rogghe_direction
+        ) = wl_widgets.wl_widgets_direction(self)
+
+        self.group_box_z_score_berry_rogghe.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_z_score_berry_rogghe.layout().addWidget(self.label_z_score_berry_rogghe_direction, 0, 0)
+        self.group_box_z_score_berry_rogghe.layout().addWidget(self.combo_box_z_score_berry_rogghe_direction, 0, 1)
+
+        self.group_box_z_score_berry_rogghe.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_fishers_exact_test, 0, 0)
@@ -265,9 +279,10 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_students_t_test_2_sample, 4, 0)
         self.layout().addWidget(self.group_box_welchs_t_test, 5, 0)
         self.layout().addWidget(self.group_box_z_score, 6, 0)
+        self.layout().addWidget(self.group_box_z_score_berry_rogghe, 7, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(7, 1)
+        self.layout().setRowStretch(8, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -301,6 +316,9 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         # z-score
         self.combo_box_z_score_direction.setCurrentText(settings['z_score']['direction'])
 
+        # z-score (Berry-Rogghe)
+        self.combo_box_z_score_berry_rogghe_direction.setCurrentText(settings['z_score_berry_rogghe']['direction'])
+
     def apply_settings(self):
         # Fisher's Exact Test
         self.settings_custom['fishers_exact_test']['direction'] = self.combo_box_fishers_exact_test_direction.currentText()
@@ -327,6 +345,9 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         # z-score
         self.settings_custom['z_score']['direction'] = self.combo_box_z_score_direction.currentText()
+
+        # z-score (Berry-Rogghe)
+        self.settings_custom['z_score_berry_rogghe']['direction'] = self.combo_box_z_score_berry_rogghe_direction.currentText()
 
         return True
 

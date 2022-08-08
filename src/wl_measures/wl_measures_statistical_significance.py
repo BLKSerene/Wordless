@@ -239,6 +239,16 @@ def welchs_t_test(main, freqs_x1, freqs_x2):
 
     return t_stat, p_val
 
+def z_test(z_score, direction):
+    if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
+        p_val = scipy.stats.distributions.norm.sf(numpy.abs(z_score)) * 2
+    elif direction == _tr('wl_measures_statistical_significance', 'Left-tailed'):
+        p_val = scipy.stats.distributions.norm.cdf(z_score)
+    elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
+        p_val = scipy.stats.distributions.norm.sf(z_score)
+
+    return p_val
+
 # z-score
 # References: Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), Proceedings of the symposium on statistical association methods for mechanized documentation (pp. 61–148). National Bureau of Standards.
 def z_score(main, c11, c12, c21, c22):
@@ -248,17 +258,15 @@ def z_score(main, c11, c12, c21, c22):
     e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
 
     z_score = (c11 - e11) / numpy.sqrt(e11 * (1 - e11 / cxx)) if cxx and e11 and 1 - e11 / cxx else 0
-
-    if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
-        p_val = scipy.stats.distributions.norm.sf(numpy.abs(z_score)) * 2
-    elif direction == _tr('wl_measures_statistical_significance', 'One-tailed'):
-        p_val = scipy.stats.distributions.norm.sf(z_score)
+    p_val = z_test(z_score, direction)
 
     return z_score, p_val
 
 # z-score (Berry-Rogghe)
 # References: Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), The computer and literary studies (pp. 103–112). Edinburgh University Press.
 def z_score_berry_rogghe(main, c11, c12, c21, c22, span):
+    direction = main.settings_custom['measures']['statistical_significance']['z_score_berry_rogghe']['direction']
+
     c1x, c2x, cx1, cx2 = get_freqs_marginal(c11, c12, c21, c22)
 
     z = c1x + c2x
@@ -271,6 +279,6 @@ def z_score_berry_rogghe(main, c11, c12, c21, c22, span):
     e = p * fn * s
 
     z_score = (k - e) / numpy.sqrt(e * (1 - p)) if e and 1 - p else 0
-    p_val = scipy.stats.distributions.norm.sf(numpy.abs(z_score)) * 2
+    p_val = z_test(z_score, direction)
 
     return z_score, p_val

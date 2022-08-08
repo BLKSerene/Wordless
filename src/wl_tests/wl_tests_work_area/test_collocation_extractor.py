@@ -45,40 +45,41 @@ def test_collocation_extractor():
     len_tests_statistical_significance = len(tests_statistical_significance)
     len_measures_bayes_factor = len(measures_bayes_factor)
     len_measures_effect_size = len(measures_effect_size)
+    len_max_measures = max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])
 
     files = main.settings_custom['file_area']['files_open']
 
     main.settings_custom['collocation_extractor']['search_settings']['multi_search_mode'] = True
     main.settings_custom['collocation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i in range(max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])):
+    i_search_sing, i_search_multi = random.sample(range(len_max_measures), 2)
+
+    for i in range(len_max_measures):
         for file in main.settings_custom['file_area']['files_open']:
             file['selected'] = False
 
-        random_i = random.randrange(0, 10)
-
-        # Single file with search terms
-        if random_i in [0, 2, 4, 6]:
-            random.choice(files)['selected'] = True
-
-            main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = True
         # Single file without search terms
-        elif random_i == 8:
+        if i == i_search_sing:
             random.choice(files)['selected'] = True
 
             main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = False
+        # Multiple files without search terms
+        elif i == i_search_multi:
+            for file in random.sample(files, 2):
+                file['selected'] = True
+
+            main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = False
+        # Single file with search terms
+        elif i % 2 == 0:
+            random.choice(files)['selected'] = True
+
+            main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = True
         # Multiple files with search terms
-        elif random_i in [1, 3, 5, 7]:
+        elif i % 2 == 1:
             for file in random.sample(files, 2):
                 file['selected'] = True
 
             main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = True
-        # Multiple files without search terms
-        elif random_i == 9:
-            for file in random.sample(files, 2):
-                file['selected'] = True
-
-            main.settings_custom['collocation_extractor']['search_settings']['search_settings'] = False
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file['name']).group()

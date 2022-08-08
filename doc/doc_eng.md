@@ -1003,7 +1003,7 @@ Juilland's D:
 
 Lyne's D₃:
     \begin{align*}
-        \chi^2 &= \sum_{i = 1}^n \frac{\left(F_i - \frac{F}{i}\right)^2}{\frac{F}{i}} \\
+        \chi^2 &= \sum_{i = 1}^n \frac{\left(F_i - \overline{F}\right)^2}{\overline{F}} \\
         D_3 &= \frac{1 - \chi^2}{4 \times F}
     \end{align*}
 
