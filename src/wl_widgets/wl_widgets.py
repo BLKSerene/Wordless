@@ -1116,17 +1116,6 @@ def wl_widgets_direction(parent):
 
     return label_direction, combo_box_direction
 
-def wl_widgets_direction_2(parent):
-    label_direction = QLabel(_tr('wl_widgets_direction_2', 'Direction:'), parent)
-    combo_box_direction = wl_boxes.Wl_Combo_Box(parent)
-
-    combo_box_direction.addItems([
-        _tr('wl_widgets_direction_2', 'Two-tailed'),
-        _tr('wl_widgets_direction_2', 'One-tailed')
-    ])
-
-    return label_direction, combo_box_direction
-
 # Settings -> Figures
 def wl_widgets_pick_color(parent):
     def get_color():

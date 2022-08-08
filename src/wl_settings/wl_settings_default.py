@@ -1806,6 +1806,10 @@ def init_settings_default(main):
 
                 'z_score': {
                     'direction': _tr('init_settings_default', 'Two-tailed')
+                },
+
+                'z_score_berry_rogghe': {
+                    'direction': _tr('init_settings_default', 'Two-tailed')
                 }
             },
 
