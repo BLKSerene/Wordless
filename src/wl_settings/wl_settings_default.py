@@ -1762,15 +1762,14 @@ def init_settings_default(main):
             # Settings - Measures - Dispersion
             'dispersion': {
                 'general_settings': {
-                    'num_sections': 5
+                    'num_sub_sections': 5
                 }
             },
 
             # Settings - Measures - Adjusted Frequency
             'adjusted_freq': {
                 'general_settings': {
-                    'num_sections': 5,
-                    'use_same_settings_dispersion': True
+                    'num_sub_sections': 5
                 }
             },
 
@@ -1781,27 +1780,27 @@ def init_settings_default(main):
                 },
 
                 'log_likelihood_ratio_test': {
-                    'apply_correction': True
+                    'apply_correction': False
                 },
 
                 'mann_whitney_u_test': {
-                    'num_sections': 5,
+                    'num_sub_sections': 5,
                     'use_data': _tr('init_settings_default', 'Relative Frequency'),
                     'direction': _tr('init_settings_default', 'Two-tailed'),
                     'apply_correction': True
                 },
 
                 'pearsons_chi_squared_test': {
-                    'apply_correction': True
+                    'apply_correction': False
                 },
 
                 'students_t_test_2_sample': {
-                    'num_sections': 5,
+                    'num_sub_sections': 5,
                     'use_data': _tr('init_settings_default', 'Relative Frequency')
                 },
 
                 'welchs_t_test': {
-                    'num_sections': 5,
+                    'num_sub_sections': 5,
                     'use_data': _tr('init_settings_default', 'Relative Frequency')
                 },
 
@@ -1813,7 +1812,7 @@ def init_settings_default(main):
             # Settings - Measures - Bayes Factor
             'bayes_factor': {
                 'students_t_test_2_sample': {
-                    'num_sections': 5,
+                    'num_sub_sections': 5,
                     'use_data': _tr('init_settings_default', 'Relative Frequency')
                 },
             },
