@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Utilities - Translations - Chinese (Traditional)
+# Utilities: Translations - Chinese (Traditional)
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,7 @@ import opencc
 
 import wl_trs_utils
 
-with open('../src/trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
+with open('../trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
     soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
 
 cc = opencc.OpenCC('s2twp')
@@ -35,9 +35,9 @@ for element_context in soup.select('context'):
 
         element_trans.string = cc.convert(element_trans.text)
 
-with open('../src/trs/zho_tw.ts', 'w', encoding = 'utf_8') as f:
+with open('../trs/zho_tw.ts', 'w', encoding = 'utf_8') as f:
     f.write(str(soup))
 
 # Release
-wl_trs_utils.fix_ts_format('../src/trs/zho_tw.ts')
+wl_trs_utils.fix_ts_format('../trs/zho_tw.ts')
 wl_trs_utils.release_trs()

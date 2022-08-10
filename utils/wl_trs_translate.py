@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Utilities - Translations - Translate
+# Utilities: Translations - Translate
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -273,7 +273,7 @@ TRS_MISC = {
     'R': ['右']
 }
 
-with open('../src/trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
+with open('../trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
     soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
 
 for element_context in soup.select('context'):
@@ -353,9 +353,9 @@ for element_context in soup.select('context'):
 
                 print(f'Auto-translated "{element_src.text}" into "{tr}".')
 
-with open('../src/trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
+with open('../trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
     f.write(str(soup))
 
 # Release
-wl_trs_utils.del_obsolete_trans('../src/trs/zho_cn.ts')
+wl_trs_utils.del_obsolete_trans('../trs/zho_cn.ts')
 wl_trs_utils.release_trs()

@@ -52,24 +52,20 @@ jobs:
       # Run tests and collect coverage
       - name: Run Tests and collect coverage
         run: |
-          cd src
-          # Set environmental variables
-          $env:PYTHONPATH += $PWD
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_lemmatization.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_matching.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_nlp_utils.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_pos_tagging.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_word_detokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_word_tokenization.py
 
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_lemmatization.py
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_matching.py
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_nlp_utils.py
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_pos_tagging.py
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_stop_word_lists.py
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_syl_tokenization.py
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_word_detokenization.py
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_word_tokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_file_area
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_work_area
 
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_file_area
-          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_work_area
-
-          pytest --cov=./ --cov-report=xml --cov-append --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+          pytest --cov=./ --cov-report=xml --cov-append --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area
 
       # Upload coverage to Codecov
       - name: "Upload coverage to Codecov"
@@ -104,25 +100,21 @@ jobs:
       # Run tests
       - name: Run Tests
         run: |
-          cd src
-          # Set environmental variables
-          export PYTHONPATH=$PYTHONPATH:$PWD
+          pytest tests/wl_tests_nlp/test_lemmatization.py
+          pytest tests/wl_tests_nlp/test_matching.py
+          pytest tests/wl_tests_nlp/test_nlp_utils.py
+          pytest tests/wl_tests_nlp/test_pos_tagging.py
+          pytest tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest tests/wl_tests_nlp/test_word_detokenization.py
+          pytest tests/wl_tests_nlp/test_word_tokenization.py
 
-          pytest wl_tests/wl_tests_nlp/test_lemmatization.py
-          pytest wl_tests/wl_tests_nlp/test_matching.py
-          pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
-          pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
-          pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-          pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
-          pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
-          pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
-          pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-
-          pytest wl_tests/wl_tests_file_area
+          pytest tests/wl_tests_file_area
           # Ignore tests of Profiler due to unknown errors
-          pytest wl_tests/wl_tests_work_area --ignore=wl_tests/wl_tests_work_area/test_profiler.py
+          pytest tests/wl_tests_work_area --ignore=tests/wl_tests_work_area/test_profiler.py
 
-          pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area
 
   # Linux
   build-linux:
@@ -155,18 +147,14 @@ jobs:
       # Run tests
       - name: Run Tests
         run: |
-          cd src
-          # Set environmental variables
-          export PYTHONPATH=$PYTHONPATH:$PWD
+          pytest tests/wl_tests_nlp/test_lemmatization.py
+          pytest tests/wl_tests_nlp/test_matching.py
+          pytest tests/wl_tests_nlp/test_nlp_utils.py
+          pytest tests/wl_tests_nlp/test_pos_tagging.py
+          pytest tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest tests/wl_tests_nlp/test_word_detokenization.py
+          pytest tests/wl_tests_nlp/test_word_tokenization.py
 
-          pytest wl_tests/wl_tests_nlp/test_lemmatization.py
-          pytest wl_tests/wl_tests_nlp/test_matching.py
-          pytest wl_tests/wl_tests_nlp/test_nlp_utils.py
-          pytest wl_tests/wl_tests_nlp/test_pos_tagging.py
-          pytest wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-          pytest wl_tests/wl_tests_nlp/test_stop_word_lists.py
-          pytest wl_tests/wl_tests_nlp/test_syl_tokenization.py
-          pytest wl_tests/wl_tests_nlp/test_word_detokenization.py
-          pytest wl_tests/wl_tests_nlp/test_word_tokenization.py
-
-          pytest --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area
