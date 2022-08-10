@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.8'
           architecture: 'x64'
@@ -56,24 +56,24 @@ jobs:
           # Set environmental variables
           $env:PYTHONPATH += $PWD
 
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_lemmatization.py
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_matching.py
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_nlp_utils.py
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_pos_tagging.py
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_sentence_tokenization.py
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_stop_word_lists.py
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_syl_tokenization.py
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_detokenization.py
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_nlp/test_word_tokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_lemmatization.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_matching.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_nlp_utils.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_pos_tagging.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_sentence_tokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_stop_word_lists.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_word_detokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_nlp/test_word_tokenization.py
 
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_file_area
-          pytest --cov=./ --cov-report=xml wl_tests/wl_tests_work_area
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_file_area
+          pytest --cov=./ --cov-report=xml --cov-append wl_tests/wl_tests_work_area
 
-          pytest --cov=./ --cov-report=xml --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
+          pytest --cov=./ --cov-report=xml --cov-append --ignore=wl_tests/wl_tests_nlp --ignore=wl_tests/wl_tests_file_area --ignore=wl_tests/wl_tests_work_area
 
       # Upload coverage to Codecov
       - name: "Upload coverage to Codecov"
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
 
   # macOS
   build-macos:
@@ -83,7 +83,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.8'
           architecture: 'x64'
@@ -132,7 +132,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.8'
           architecture: 'x64'
