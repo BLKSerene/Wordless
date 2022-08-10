@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Measures - Miscellaneous
+# Wordless: Tests - Settings - Default Settings
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,17 +16,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import numpy
 
-def modes(inputs):
-    inputs_modes = []
+from wl_settings import wl_settings_default
+from wl_tests import wl_test_init
 
-    if inputs:
-        unique, unique_counts = numpy.unique(inputs, return_counts = True)
-        unique_counts_max = numpy.max(unique_counts)
+main = wl_test_init.Wl_Test_Main()
 
-        for val, freq in zip(unique, unique_counts):
-            if freq == unique_counts_max:
-                inputs_modes.append(val)
+def test_settings_default():
+    assert wl_settings_default.init_settings_default(main)
 
-    return inputs_modes
+if __name__ == '__main__':
+    test_settings_default()
