@@ -57,7 +57,7 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 ## Download
 The latest version (**2.2.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.9 or later**, and **Ubuntu 14.04 or later**, all **64-bit only**.
 
-For detailed changelog, please see [CHANGELOG.md](https://github.com/BLKSerene/Wordless/blob/main/src/CHANGELOG.md).
+For detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
 Release|Remarks
 -------|------------
@@ -80,7 +80,7 @@ remember to replace **/Applications/Wordless.app** with the actual path of Wordl
 
 <span id="doc"></span>
 ## Documentation
-- [Documentation - English](https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md)
+- [Documentation - English](/doc/doc_eng.md)
 - 文档 - 汉语（待添加）
 
 ## Need Help?
@@ -92,7 +92,7 @@ Channel      |Contact Information
 :-----------:|-------------------
 Documentation|https://github.com/BLKSerene/Wordless#documentation
 Email        |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
-[WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/src/imgs/wechat_official_account.jpg)
+[WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/imgs/wechat_official_account.jpg)
 
 ## Citing
 If you publish work that uses Wordless, please cite as follows.
@@ -131,44 +131,7 @@ If you would like to support the development of Wordless, you may donate via [Pa
 
 PayPal|Alipay|WeChat Pay
 ------|------|----------
-[![PayPal](/src/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/src/imgs/donating_alipay.png)|![WeChat Pay](/src/imgs/donating_wechat_pay.png)
+[![PayPal](/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/imgs/donating_alipay.png)|![WeChat Pay](/imgs/donating_wechat_pay.png)
 
 ## Acknowledgments
-I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
-
-&nbsp;|Name|Authors
------:|----|-------
-1     |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)      |Leonard Richardson
-2     |[Botok](https://github.com/OpenPecha/Botok)                           |Hélios Drupchen Hildt
-3     |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)    |TAHRI Ahmed R.
-4     |[CLTK](https://github.com/cltk/cltk)                                  |Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly
-5     |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |Jason Champion
-6     |[jieba](https://github.com/fxsjy/jieba)                               |Sun Junyi (孙君意)
-7     |[langdetect](https://github.com/Mimino666/langdetect)                 |中谷秀洋, Michal Danilák
-8     |[langid.py](https://github.com/saffsd/langid.py)                      |Marco Lui
-9     |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|Michal Boleslav Měchura
-10    |[Matplotlib](https://matplotlib.org/)                                 |Matplotlib Development Team
-11    |[NetworkX](https://networkx.org/)                                     |Aric Hagberg, Dan Schult, Pieter Swart
-12    |[NLTK](http://www.nltk.org/)                                          |Steven Bird, Edward Loper, Ewan Klein
-13    |[NumPy](https://www.numpy.org/)                                       |NumPy Developers
-14    |[opencc-python](https://github.com/yichen0831/opencc-python)          |Huang Yichen, Carbo Kuo (郭家宝)
-15    |[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)               |Eric Gazoni, Charlie Clark
-16    |[pkuseg](https://github.com/lancopku/pkuseg-python)                   |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)
-17    |[PyInstaller](http://www.pyinstaller.org/)                            |Hartmut Goebel
-18    |[pymorphy2](https://github.com/kmike/pymorphy2)                       |Mikhail Korobov
-19    |[PyPDF2](https://github.com/py-pdf/PyPDF2)                            |Martin Thoma, Matthew Stamy, Matthew Peveler
-20    |[Pyphen](https://pyphen.org/)                                         |Guillaume Ayoub
-21    |[PyQt](https://riverbankcomputing.com/software/pyqt/)                 |Riverbank Computing Limited
-22    |[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)                   |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)
-23    |[Python](https://www.python.org/)                                     |Guido van Rossum, Python Software Foundation
-24    |[python-docx](https://github.com/python-openxml/python-docx)          |Steve Canny
-25    |[Requests](https://github.com/psf/requests)                           |Kenneth Reitz
-26    |[Sacremoses](https://github.com/alvations/sacremoses)                 |Liling Tan
-27    |[SciPy](https://scipy.org/scipylib/)                                  |SciPy Developers
-28    |[spaCy](https://spacy.io/)                                            |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann
-29    |[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |Gene Diaz
-30    |[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |Works Applications Co., Ltd.
-31    |[TextBlob](https://github.com/sloria/TextBlob)                        |Steven Loria
-32    |[Tokenizer](https://github.com/mideind/Tokenizer)                     |Vilhjálmur Þorsteinsson
-33    |[Underthesea](https://github.com/undertheseanlp/underthesea)          |Vu Anh
-34    |[WordCloud](https://github.com/amueller/word_cloud)                   |Andreas Christian Mueller
+See [ACKNOWLEDGMENTS.md](/ACKNOWLEDGMENTS.md) for details.

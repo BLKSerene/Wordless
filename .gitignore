@@ -122,8 +122,8 @@ venv.bak/
 .mypy_cache/
 
 # Wordless
-src/imports/
-src/exports/
+imports/
+exports/
 misc/
 # Wordless - Custom Settings
 *.pickle
