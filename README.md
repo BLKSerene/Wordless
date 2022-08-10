@@ -26,19 +26,19 @@ Wordless is an integrated corpus tool with multilingual support for the study of
         <img src="https://ci.appveyor.com/api/projects/status/github/BLKSerene/Wordless?svg=true" alt="AppVeyor"></a>
     <a href="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_build/latest?definitionId=1&branchName=main">
         <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=main" alt="Azure Pipelines"></a>
-    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ATests" alt="Github Actions">
-        <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg"></a>
-    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL" alt="CodeQL">
-        <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg"></a>
-    <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield" alt="FOSSA Status">
-        <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield"></a>
+    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ATests">
+        <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg" alt="Github Actions"></a>
+    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL">
+        <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg" alt="CodeQL"></a>
+    <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield">
+        <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield" alt="FOSSA Status"></a>
 </div>
 
 <div align="center">
     <a href="https://lgtm.com/projects/g/BLKSerene/Wordless/context:python">
-        <img alt="Language grade: Python" src="https://img.shields.io/lgtm/grade/python/g/BLKSerene/Wordless.svg?logo=lgtm&logoWidth=18"/></a>
-    <a href="https://codecov.io/gh/BLKSerene/Wordless" alt="Codecov">
-        <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G"></a>
+        <img src="https://img.shields.io/lgtm/grade/python/g/BLKSerene/Wordless.svg?logo=lgtm&logoWidth=18" alt="Language grade: Python"></a>
+    <a href="https://codecov.io/gh/BLKSerene/Wordless">
+        <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G" alt="Codecov"></a>
     <a href="https://github.com/BLKSerene/Wordless/releases">
         <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release"></a>
     <a href="https://github.com/BLKSerene/Wordless#download">
@@ -47,6 +47,12 @@ Wordless is an integrated corpus tool with multilingual support for the study of
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
 </div>
 
+<div align="center">
+    <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large">
+        <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large" alt="FOSSA Status"></a>
+    <a href="https://app.codecov.io/gh/BLKSerene/Wordless">
+        <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graphs/tree.svg?token=ED6TW92A7G" alt="Codecov Graph"></a>
+</div>
 
 ## Download
 The latest version (**2.2.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.9 or later**, and **Ubuntu 14.04 or later**, all **64-bit only**.
@@ -114,8 +120,6 @@ MLA (8th Edition):
     
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
 ## Contributing
 If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
