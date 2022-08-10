@@ -187,6 +187,20 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         self.group_box_pearsons_chi_squared_test.setLayout(wl_layouts.Wl_Layout())
         self.group_box_pearsons_chi_squared_test.layout().addWidget(self.checkbox_pearsons_chi_squared_test_apply_correction, 0, 0)
 
+        # Student's t-test (1-sample)
+        self.group_box_students_t_test_1_sample = QGroupBox(self.tr("Student's t-test (1-sample)"), self)
+
+        (
+            self.label_students_t_test_1_sample_direction,
+            self.combo_box_students_t_test_1_sample_direction
+        ) = wl_widgets.wl_widgets_direction(self)
+
+        self.group_box_students_t_test_1_sample.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_students_t_test_1_sample.layout().addWidget(self.label_students_t_test_1_sample_direction, 0, 0)
+        self.group_box_students_t_test_1_sample.layout().addWidget(self.combo_box_students_t_test_1_sample_direction, 0, 1)
+
+        self.group_box_students_t_test_1_sample.layout().setColumnStretch(2, 1)
+
         # Student's t-test (2-sample)
         self.group_box_students_t_test_2_sample = QGroupBox(self.tr("Student's t-test (2-sample)"), self)
 
@@ -195,11 +209,14 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
             self.spin_box_students_t_test_2_sample_num_sub_sections,
             self.label_students_t_test_2_sample_sub_sections
         ) = wl_widgets.wl_widgets_num_sub_sections(self)
-
         (
             self.label_students_t_test_2_sample_use_data,
             self.combo_box_students_t_test_2_sample_use_data
         ) = wl_widgets.wl_widgets_use_data_freq(self)
+        (
+            self.label_students_t_test_2_sample_direction,
+            self.combo_box_students_t_test_2_sample_direction
+        ) = wl_widgets.wl_widgets_direction(self)
 
         layout_students_t_test_2_sample_num_sub_sections = wl_layouts.Wl_Layout()
         layout_students_t_test_2_sample_num_sub_sections.addWidget(self.label_students_t_test_2_sample_divide_each_file_into, 0, 0)
@@ -212,6 +229,8 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         self.group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_num_sub_sections, 0, 0, 1, 3)
         self.group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_use_data, 1, 0)
         self.group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_use_data, 1, 1)
+        self.group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_direction, 2, 0)
+        self.group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_direction, 2, 1)
 
         self.group_box_students_t_test_2_sample.layout().setColumnStretch(2, 1)
 
@@ -223,11 +242,14 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
             self.spin_box_welchs_t_test_num_sub_sections,
             self.label_welchs_t_test_sub_sections
         ) = wl_widgets.wl_widgets_num_sub_sections(self)
-
         (
             self.label_welchs_t_test_use_data,
             self.combo_box_welchs_t_test_use_data
         ) = wl_widgets.wl_widgets_use_data_freq(self)
+        (
+            self.label_welchs_t_test_direction,
+            self.combo_box_welchs_t_test_direction
+        ) = wl_widgets.wl_widgets_direction(self)
 
         layout_welchs_t_test_num_sub_sections = wl_layouts.Wl_Layout()
         layout_welchs_t_test_num_sub_sections.addWidget(self.label_welchs_t_test_divide_each_file_into, 0, 0)
@@ -240,6 +262,8 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         self.group_box_welchs_t_test.layout().addLayout(layout_welchs_t_test_num_sub_sections, 0, 0, 1, 3)
         self.group_box_welchs_t_test.layout().addWidget(self.label_welchs_t_test_use_data, 1, 0)
         self.group_box_welchs_t_test.layout().addWidget(self.combo_box_welchs_t_test_use_data, 1, 1)
+        self.group_box_welchs_t_test.layout().addWidget(self.label_welchs_t_test_direction, 2, 0)
+        self.group_box_welchs_t_test.layout().addWidget(self.combo_box_welchs_t_test_direction, 2, 1)
 
         self.group_box_welchs_t_test.layout().setColumnStretch(2, 1)
 
@@ -276,13 +300,14 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_log_likelihood_ratio_test, 1, 0)
         self.layout().addWidget(self.group_box_mann_whitney_u_test, 2, 0)
         self.layout().addWidget(self.group_box_pearsons_chi_squared_test, 3, 0)
-        self.layout().addWidget(self.group_box_students_t_test_2_sample, 4, 0)
-        self.layout().addWidget(self.group_box_welchs_t_test, 5, 0)
-        self.layout().addWidget(self.group_box_z_score, 6, 0)
-        self.layout().addWidget(self.group_box_z_score_berry_rogghe, 7, 0)
+        self.layout().addWidget(self.group_box_students_t_test_1_sample, 4, 0)
+        self.layout().addWidget(self.group_box_students_t_test_2_sample, 5, 0)
+        self.layout().addWidget(self.group_box_welchs_t_test, 6, 0)
+        self.layout().addWidget(self.group_box_z_score, 7, 0)
+        self.layout().addWidget(self.group_box_z_score_berry_rogghe, 8, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(8, 1)
+        self.layout().setRowStretch(9, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -305,13 +330,18 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         # Pearson's Chi-squared Test
         self.checkbox_pearsons_chi_squared_test_apply_correction.setChecked(settings['pearsons_chi_squared_test']['apply_correction'])
 
+        # Student's t-test (1-sample)
+        self.combo_box_students_t_test_1_sample_direction.setCurrentText(settings['students_t_test_1_sample']['direction'])
+
         # Student's t-test (2-sample)
         self.spin_box_students_t_test_2_sample_num_sub_sections.setValue(settings['students_t_test_2_sample']['num_sub_sections'])
         self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['students_t_test_2_sample']['use_data'])
+        self.combo_box_students_t_test_2_sample_direction.setCurrentText(settings['students_t_test_2_sample']['direction'])
 
         # Welch's t-test
         self.spin_box_welchs_t_test_num_sub_sections.setValue(settings['welchs_t_test']['num_sub_sections'])
         self.combo_box_welchs_t_test_use_data.setCurrentText(settings['welchs_t_test']['use_data'])
+        self.combo_box_welchs_t_test_direction.setCurrentText(settings['welchs_t_test']['direction'])
 
         # z-score
         self.combo_box_z_score_direction.setCurrentText(settings['z_score']['direction'])
@@ -335,13 +365,18 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         # Pearson's Chi-squared Test
         self.settings_custom['pearsons_chi_squared_test']['apply_correction'] = self.checkbox_pearsons_chi_squared_test_apply_correction.isChecked()
 
+        # Student's t-test (1-sample)
+        self.setText['students_t_test_1_sample']['direction'] = self.combo_box_students_t_test_1_sample_direction.currentText()
+
         # Student's t-test (2-sample)
         self.settings_custom['students_t_test_2_sample']['num_sub_sections'] = self.spin_box_students_t_test_2_sample_num_sub_sections.value()
         self.settings_custom['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
+        self.settings_custom['students_t_test_2_sample']['direction'] = self.combo_box_students_t_test_2_sample_direction.currentText()
 
         # Welch's t-test
         self.settings_custom['welchs_t_test']['num_sub_sections'] = self.spin_box_welchs_t_test_num_sub_sections.value()
         self.settings_custom['welchs_t_test']['use_data'] = self.combo_box_welchs_t_test_use_data.currentText()
+        self.settings_custom['welchs_t_test']['direction'] = self.combo_box_welchs_t_test_direction.currentText()
 
         # z-score
         self.settings_custom['z_score']['direction'] = self.combo_box_z_score_direction.currentText()

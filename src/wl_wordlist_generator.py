@@ -421,16 +421,24 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 tokens_stats_file = {}
 
                 # Dispersion
-                freqs_sections_tokens = wl_measures_dispersion.to_freqs_sections_tokens(self.main, tokens_total, text.tokens_flat)
+                freqs_sections_tokens = wl_measures_dispersion.to_freq_sections_items(
+                    self.main,
+                    items_search = tokens_total,
+                    items = text.tokens_flat
+                )
 
                 for token, freqs in freqs_sections_tokens.items():
                     tokens_stats_file[token] = [measure_dispersion(freqs)]
 
                 # Adjusted Frequency
-                freqs_sections_tokens = wl_measures_adjusted_freq.to_freqs_sections_tokens(self.main, tokens_total, text.tokens_flat)
+                freqs_sections_tokens = wl_measures_adjusted_freq.to_freq_sections_items(
+                    self.main,
+                    items_search = tokens_total,
+                    items = text.tokens_flat
+                )
 
                 for token, freqs in freqs_sections_tokens.items():
-                    tokens_stats_file[token] = [measure_adjusted_freq(freqs)]
+                    tokens_stats_file[token].append(measure_adjusted_freq(freqs))
 
                 self.tokens_stats_files.append(tokens_stats_file)
 
@@ -554,7 +562,7 @@ def generate_table(main, table):
 
                     table.disable_updates()
 
-                    for i, (token, freq_files) in enumerate(wl_sorting.sorted_tokens_freq_files(tokens_freq_files)):
+                    for i, (token, freq_files) in enumerate(wl_sorting.sorted_freq_files_items(tokens_freq_files)):
                         stats_files = tokens_stats_files[token]
 
                         # Rank
@@ -621,7 +629,7 @@ def generate_fig(main):
                     col_adjusted_freq = main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col']
 
                     if settings['fig_settings']['use_data'] == _tr('wl_wordlist_generator', 'Frequency'):
-                        wl_figs_freqs.wl_fig_freq(
+                        wl_figs_freqs.wl_fig_freqs(
                             main, tokens_freq_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('wl_wordlist_generator', 'Token')
@@ -638,7 +646,7 @@ def generate_fig(main):
                                 for token, stats_files in tokens_stats_files.items()
                             }
 
-                        wl_figs_stats.wl_fig_stat(
+                        wl_figs_stats.wl_fig_stats(
                             main, tokens_stat_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('wl_wordlist_generator', 'Token')

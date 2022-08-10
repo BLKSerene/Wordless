@@ -1794,14 +1794,20 @@ def init_settings_default(main):
                     'apply_correction': False
                 },
 
+                'students_t_test_1_sample': {
+                    'direction': _tr('init_settings_default', 'Two-tailed')
+                },
+
                 'students_t_test_2_sample': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative Frequency')
+                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'direction': _tr('init_settings_default', 'Two-tailed')
                 },
 
                 'welchs_t_test': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative Frequency')
+                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'direction': _tr('init_settings_default', 'Two-tailed')
                 },
 
                 'z_score': {

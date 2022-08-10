@@ -63,17 +63,17 @@ def test_to_lang_texts():
 
     assert list(lang_texts) == [TO_LANG_TEXT[lang_code] for lang_code in TO_LANG_TEXT.keys()]
 
-def test_to_iso_639_1():
-    for lang_code in TO_ISO_639_1.keys():
-        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
-
-        assert lang_code_639_1 == TO_ISO_639_1[lang_code]
-
 def test_to_iso_639_3():
     for lang_code in TO_ISO_639_3.keys():
         lang_code_639_3 = wl_conversion.to_iso_639_3(main, lang_code)
 
         assert lang_code_639_3 == TO_ISO_639_3[lang_code]
+
+def test_to_iso_639_1():
+    for lang_code in TO_ISO_639_1.keys():
+        lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
+
+        assert lang_code_639_1 == TO_ISO_639_1[lang_code]
 
 def test_remove_lang_code_suffixes():
     for lang_code_639_3, lang_code_639_1 in TO_ISO_639_1.items():
@@ -108,17 +108,28 @@ def test_to_encoding_text():
             for encoding_text, encoding_code in settings_file_encodings.items()
         }[encoding_code]
 
+def test_to_yes_no_code():
+    assert wl_conversion.to_yes_no_code('Yes') is True
+    assert wl_conversion.to_yes_no_code('No') is False
+
+def test_to_yes_no_text():
+    assert wl_conversion.to_yes_no_text(True) == 'Yes'
+    assert wl_conversion.to_yes_no_text(False) == 'No'
+
 if __name__ == '__main__':
     test_to_lang_code()
     test_to_lang_codes()
     test_to_lang_text()
     test_to_lang_texts()
 
-    test_to_iso_639_1()
     test_to_iso_639_3()
+    test_to_iso_639_1()
 
     test_remove_lang_code_suffixes()
     test_get_lang_family()
 
     test_to_encoding_code()
     test_to_encoding_text()
+
+    test_to_yes_no_code()
+    test_to_yes_no_text()
