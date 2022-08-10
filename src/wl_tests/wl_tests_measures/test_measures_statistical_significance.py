@@ -31,19 +31,19 @@ def test_get_freqs_expected():
     assert wl_measures_statistical_significance.get_freqs_expected(0, 0, 1, 2) == (0, 0, 1, 2)
     assert wl_measures_statistical_significance.get_freqs_expected(0, 0, 0, 0) == (0, 0, 0, 0)
 
-def test_to_freqs_sections_tokens():
-    tokens = ['w1', 'w2']
-    tokens_x1 = ['w1'] * 7 + ['w2'] * 3
-    tokens_x2 = ['w1'] * 6 + ['w2'] * 4
+def test_to_freq_sections_items():
+    items_search = ['w1', 'w2']
+    items_x1 = ['w1'] * 7 + ['w2'] * 3
+    items_x2 = ['w1'] * 6 + ['w2'] * 4
 
-    freqs_sections_tokens = {
+    freq_sections_items = {
         'w1': ([1, 1, 1, .5, 0], [1, 1, 1, 0, 0]),
         'w2': ([0, 0, 0, .5, 1], [0, 0, 0, 1, 1])
     }
 
-    assert wl_measures_statistical_significance.to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, test_statistical_significance = 'Mann-Whitney U Test') == freqs_sections_tokens
-    assert wl_measures_statistical_significance.to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, test_statistical_significance = "Student's t-test (2-sample)") == freqs_sections_tokens
-    assert wl_measures_statistical_significance.to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, test_statistical_significance = "Welch's t-test") == freqs_sections_tokens
+    assert wl_measures_statistical_significance.to_freq_sections_items(main, items_search, items_x1, items_x2, test_statistical_significance = 'Mann-Whitney U Test') == freq_sections_items
+    assert wl_measures_statistical_significance.to_freq_sections_items(main, items_search, items_x1, items_x2, test_statistical_significance = "Student's t-test (2-sample)") == freq_sections_items
+    assert wl_measures_statistical_significance.to_freq_sections_items(main, items_search, items_x1, items_x2, test_statistical_significance = "Welch's t-test") == freq_sections_items
 
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
 def test_fishers_exact_test():
@@ -108,14 +108,19 @@ def test_students_t_test_1_sample():
     assert wl_measures_statistical_significance.students_t_test_1_sample(main, 0, 1, 1, 2) == (0, 1)
     assert wl_measures_statistical_significance.students_t_test_1_sample(main, 0, 0, 0, 0) == (0, 1)
 
+def test__students_t_test_2_sample_alt():
+    assert wl_measures_statistical_significance._students_t_test_2_sample_alt('Two-tailed') == 'two-sided'
+    assert wl_measures_statistical_significance._students_t_test_2_sample_alt('Left-tailed') == 'less'
+    assert wl_measures_statistical_significance._students_t_test_2_sample_alt('Right-tailed') == 'greater'
+
 def test_students_t_test_2_sample():
     assert wl_measures_statistical_significance.students_t_test_2_sample(main, [0] * 5, [0] * 5) == (0, 1)
 
 def test_welchs_t_test():
     assert wl_measures_statistical_significance.welchs_t_test(main, [0] * 5, [0] * 5) == (0, 1)
 
-def test_z_test():
-    assert wl_measures_statistical_significance.z_test(0, 'Two-tailed') == 1
+def test__z_score_p_val():
+    assert wl_measures_statistical_significance._z_score_p_val(0, 'Two-tailed') == 1
 
 def test_z_score():
     assert wl_measures_statistical_significance.z_score(main, 0, 0, 0, 0) == (0, 1)
@@ -126,14 +131,15 @@ def test_z_score_berry_rogghe():
 if __name__ == '__main__':
     test_get_freqs_marginal()
     test_get_freqs_expected()
-    test_to_freqs_sections_tokens()
+    test_to_freq_sections_items()
 
     test_fishers_exact_test()
     test_log_likelihood_ratio_test()
     test_mann_whitney_u_test()
     test_pearsons_chi_squared_test()
     test_students_t_test_1_sample()
+    test__students_t_test_2_sample_alt()
     test_students_t_test_2_sample()
-    test_z_test()
+    test__z_score_p_val()
     test_z_score()
     test_z_score_berry_rogghe()

@@ -24,6 +24,7 @@ import sacremoses
 import spacy
 import spacy_lookups_data
 
+from wl_settings import wl_settings_global
 from wl_tests import wl_test_init
 from wl_utils import wl_conversion
 
@@ -94,6 +95,8 @@ def check_missing_extra_langs_default(langs, langs_default, msg):
             lang_default_extra = True
 
 def test_settings_global():
+    assert wl_settings_global.init_settings_global()
+
     global lang_missing
     global lang_extra
     global lang_default_missing

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Measures - Miscellaneous
+# Wordless: Tests - Figures - Figures
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,17 +16,18 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import numpy
+from wl_figs import wl_figs
 
-def modes(inputs):
-    inputs_modes = []
+def test_get_data_ranks():
+    data_files_items = [(str(i), i) for i in range(100)]
+    fig_settings = {
+        'rank_min_no_limit': True,
+        'rank_max_no_limit': False,
+        'rank_min': 1,
+        'rank_max': 50
+    }
 
-    if inputs:
-        unique, unique_counts = numpy.unique(inputs, return_counts = True)
-        unique_counts_max = numpy.max(unique_counts)
+    assert wl_figs.get_data_ranks(data_files_items, fig_settings) == [(str(i), i) for i in range(50)]
 
-        for val, freq in zip(unique, unique_counts):
-            if freq == unique_counts_max:
-                inputs_modes.append(val)
-
-    return inputs_modes
+if __name__ == '__main__':
+    test_get_data_ranks()

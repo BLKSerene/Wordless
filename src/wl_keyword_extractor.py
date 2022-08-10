@@ -474,20 +474,20 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 len_tokens_observed = len(tokens_observed)
 
                 if self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['to_sections']:
-                    freqs_sections_tokens_statistical_significance = wl_measures_statistical_significance.to_freqs_sections_tokens(
+                    freqs_sections_tokens_statistical_significance = wl_measures_statistical_significance.to_freq_sections_items(
                         self.main,
-                        tokens = keywords_freq_file_observed.keys(),
-                        tokens_x1 = tokens_observed,
-                        tokens_x2 = tokens_ref,
+                        items_search = keywords_freq_file_observed.keys(),
+                        items_x1 = tokens_observed,
+                        items_x2 = tokens_ref,
                         test_statistical_significance = test_statistical_significance
                     )
 
                 if self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['to_sections']:
-                    freqs_sections_tokens_bayes_factor = wl_measures_bayes_factor.to_freqs_sections_tokens(
+                    freqs_sections_tokens_bayes_factor = wl_measures_bayes_factor.to_freq_sections_items(
                         self.main,
-                        tokens = keywords_freq_file_observed.keys(),
-                        tokens_x1 = tokens_observed,
-                        tokens_x2 = tokens_ref,
+                        items_search = keywords_freq_file_observed.keys(),
+                        items_x1 = tokens_observed,
+                        items_x2 = tokens_ref,
                         measure_bayes_factor = measure_bayes_factor
                     )
 
@@ -689,7 +689,7 @@ def generate_table(main, table):
 
                     table.disable_updates()
 
-                    for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_stats_files(keywords_stats_files)):
+                    for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_stats_files_items(keywords_stats_files)):
                         freq_files = keywords_freq_files[keyword]
 
                         # Rank
@@ -772,7 +772,7 @@ def generate_fig(main):
                     text_effect_size = main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
                     if settings['fig_settings']['use_data'] == _tr('Wl_Table_Keyword_Extractor', 'Frequency'):
-                        wl_figs_freqs.wl_fig_freq_keyword_extractor(
+                        wl_figs_freqs.wl_fig_freqs_keyword_extractor(
                             main, keywords_freq_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('Wl_Table_Keyword_Extractor', 'Keyword')
@@ -799,7 +799,7 @@ def generate_fig(main):
                                 for keyword, stats_files in keywords_stats_files.items()
                             }
 
-                        wl_figs_stats.wl_fig_stat_keyword_extractor(
+                        wl_figs_stats.wl_fig_stats_keyword_extractor(
                             main, keywords_stat_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('Wl_Table_Keyword_Extractor', 'Keyword')

@@ -21,16 +21,16 @@ from wl_tests import wl_test_init
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_to_freqs_sections_tokens():
-    tokens = ['w1', 'w2']
-    tokens_all = ['w1'] * 7 + ['w2'] * 3
+def test_to_freq_sections_items():
+    items_search = ['w1', 'w2']
+    items = ['w1'] * 7 + ['w2'] * 3
 
-    freqs_sections_tokens = {
+    freq_sections_items = {
         'w1': [2, 2, 2, 1, 0],
         'w2': [0, 0, 0, 1, 2]
     }
 
-    assert wl_measures_dispersion.to_freqs_sections_tokens(main, tokens, tokens_all) == freqs_sections_tokens
+    assert wl_measures_dispersion.to_freq_sections_items(main, items_search, items) == freq_sections_items
 
 # Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 def test_carrolls_d2():
@@ -75,7 +75,7 @@ def test_zhangs_distributional_consistency():
     assert wl_measures_dispersion.zhangs_distributional_consistency([0, 0, 0, 0]) == 0
 
 if __name__ == '__main__':
-    test_to_freqs_sections_tokens()
+    test_to_freq_sections_items()
 
     test_carrolls_d2()
     test_griess_dp()

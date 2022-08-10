@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Measures - Miscellaneous
+# Wordless: Tests - Figures
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -15,18 +15,3 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
-
-import numpy
-
-def modes(inputs):
-    inputs_modes = []
-
-    if inputs:
-        unique, unique_counts = numpy.unique(inputs, return_counts = True)
-        unique_counts_max = numpy.max(unique_counts)
-
-        for val, freq in zip(unique, unique_counts):
-            if freq == unique_counts_max:
-                inputs_modes.append(val)
-
-    return inputs_modes

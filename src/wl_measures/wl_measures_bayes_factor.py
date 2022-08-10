@@ -16,58 +16,19 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import collections
-
 import numpy
 from PyQt5.QtCore import QCoreApplication
 
 from wl_measures import wl_measures_statistical_significance
-from wl_nlp import wl_nlp_utils
 
 _tr = QCoreApplication.translate
 
-def to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, measure_bayes_factor):
-    freqs_sections_tokens = {}
-
+def to_freq_sections_items(main, items_search, items_x1, items_x2, measure_bayes_factor):
     if measure_bayes_factor == _tr('wl_measures_bayes_factor', "Student's t-test (2-sample)"):
         num_sub_sections = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['num_sub_sections']
         use_data = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['use_data']
 
-    sections_x1 = wl_nlp_utils.to_sections(tokens_x1, num_sub_sections)
-    sections_x2 = wl_nlp_utils.to_sections(tokens_x2, num_sub_sections)
-
-    freqs_sections_x1 = [collections.Counter(section) for section in sections_x1]
-    freqs_sections_x2 = [collections.Counter(section) for section in sections_x2]
-
-    if use_data == _tr('wl_measures_bayes_factor', 'Absolute Frequency'):
-        for token in tokens:
-            freqs_x1 = [
-                freqs_section.get(token, 0)
-                for freqs_section in freqs_sections_x1
-            ]
-            freqs_x2 = [
-                freqs_section.get(token, 0)
-                for freqs_section in freqs_sections_x2
-            ]
-
-            freqs_sections_tokens[token] = (freqs_x1, freqs_x2)
-    elif use_data == _tr('wl_measures_bayes_factor', 'Relative Frequency'):
-        len_sections_x1 = [len(section) for section in sections_x1]
-        len_sections_x2 = [len(section) for section in sections_x2]
-
-        for token in tokens:
-            freqs_x1 = [
-                freqs_section.get(token, 0) / len_section
-                for freqs_section, len_section in zip(freqs_sections_x1, len_sections_x1)
-            ]
-            freqs_x2 = [
-                freqs_section.get(token, 0) / len_section
-                for freqs_section, len_section in zip(freqs_sections_x2, len_sections_x2)
-            ]
-
-            freqs_sections_tokens[token] = (freqs_x1, freqs_x2)
-
-    return freqs_sections_tokens
+    return wl_measures_statistical_significance._to_freq_sections_items(main, items_search, items_x1, items_x2, num_sub_sections, use_data)
 
 # Log-likelihood Ratio
 # Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.

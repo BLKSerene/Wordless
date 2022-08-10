@@ -17,7 +17,7 @@
 # ----------------------------------------------------------------------
 
 # Frequency
-def sorted_tokens_freq_files(tokens_freq_files, sort_by_col = 0, reverse = False):
+def sorted_freq_files_items(freq_files_items, sort_by_col = 0, reverse = False):
     def key(item):
         if reverse:
             # Frequency
@@ -36,9 +36,9 @@ def sorted_tokens_freq_files(tokens_freq_files, sort_by_col = 0, reverse = False
 
         return keys
 
-    return sorted(tokens_freq_files.items(), key = key)
+    return sorted(freq_files_items.items(), key = key)
 
-def sorted_tokens_freq_files_ref(tokens_freq_files, sort_by_col = 0, reverse = False):
+def sorted_freq_files_items_keyword_extractor(freq_files_items, sort_by_col = 0, reverse = False):
     def key(item):
         if reverse:
             # Frequency in observed files
@@ -59,15 +59,15 @@ def sorted_tokens_freq_files_ref(tokens_freq_files, sort_by_col = 0, reverse = F
             # Frequency in reference file
             keys.append(-item[1][0])
 
-        # Tokens
+        # Keywords
         keys.append(item[0])
 
         return keys
 
-    return sorted(tokens_freq_files.items(), key = key)
+    return sorted(freq_files_items.items(), key = key)
 
 # Statistics
-def sorted_stats_files(stats_files):
+def sorted_stats_files_items(stats_files_items):
     def key(item):
         keys = []
 
@@ -83,9 +83,9 @@ def sorted_stats_files(stats_files):
         # Effect Size
         keys.extend([-stats[3] for stats in item[1]])
 
-        # Collocates
+        # Collocates/Keywords
         keys.append(item[0])
 
         return keys
 
-    return sorted(stats_files.items(), key = key)
+    return sorted(stats_files_items.items(), key = key)

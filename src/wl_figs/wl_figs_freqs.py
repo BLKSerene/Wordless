@@ -23,61 +23,61 @@ from wl_utils import wl_sorting
 
 _tr = QCoreApplication.translate
 
-def wl_fig_freq(main, tokens_freq_files, fig_settings, label_x):
-    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_freq', 'Total')]
+def wl_fig_freqs(main, freq_files_items, fig_settings, label_x):
+    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_freqs', 'Total')]
     col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
 
-    tokens_freq_files = wl_sorting.sorted_tokens_freq_files(
-        tokens_freq_files,
+    freq_files_items = wl_sorting.sorted_freq_files_items(
+        freq_files_items,
         sort_by_col = col_sort_by_file
     )
 
     # Line Chart
-    if fig_settings['graph_type'] == _tr('wl_fig_freq', 'Line Chart'):
+    if fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Line Chart'):
         wl_figs.generate_line_chart(
-            main, tokens_freq_files,
+            main, freq_files_items,
             fig_settings = fig_settings,
             freq_data = True,
             file_names_selected = file_names_selected,
             label_x = label_x
         )
     else:
-        tokens_freq_file = [
-            (token, freqs[col_sort_by_file])
-            for token, freqs in tokens_freq_files
+        items_freq_file = [
+            (item, freqs[col_sort_by_file])
+            for item, freqs in freq_files_items
         ]
 
         # Word Cloud
-        if fig_settings['graph_type'] == _tr('wl_fig_freq', 'Word Cloud'):
-            wl_figs.generate_word_cloud(main, tokens_freq_file, fig_settings = fig_settings)
+        if fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Word Cloud'):
+            wl_figs.generate_word_cloud(main, items_freq_file, fig_settings = fig_settings)
 
         # Network Graph
-        elif fig_settings['graph_type'] == _tr('wl_fig_freq', 'Network Graph'):
-            wl_figs.generate_network_graph(main, tokens_freq_file, fig_settings = fig_settings)
+        elif fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Network Graph'):
+            wl_figs.generate_network_graph(main, items_freq_file, fig_settings = fig_settings)
 
-def wl_fig_freq_keyword_extractor(main, tokens_freq_files, fig_settings, label_x):
-    file_names_selected = [_tr('wl_fig_freq_keyword_extractor', 'Reference Files'), *main.wl_file_area.get_selected_file_names(), _tr('wl_fig_freq_keyword_extractor', 'Total')]
+def wl_fig_freqs_keyword_extractor(main, freq_files_items, fig_settings, label_x):
+    file_names_selected = [_tr('wl_fig_freqs', 'Reference Files'), *main.wl_file_area.get_selected_file_names(), _tr('wl_fig_freqs', 'Total')]
     col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
 
-    tokens_freq_files = wl_sorting.sorted_tokens_freq_files_ref(
-        tokens_freq_files,
+    freq_files_items = wl_sorting.sorted_freq_files_items_keyword_extractor(
+        freq_files_items,
         sort_by_col = col_sort_by_file
     )
 
     # Line Chart
-    if fig_settings['graph_type'] == _tr('wl_fig_freq_keyword_extractor', 'Line Chart'):
+    if fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Line Chart'):
         wl_figs.generate_line_chart(
-            main, tokens_freq_files,
+            main, freq_files_items,
             fig_settings = fig_settings,
             freq_data = True,
             file_names_selected = file_names_selected,
             label_x = label_x
         )
     # Word Cloud
-    elif fig_settings['graph_type'] == _tr('wl_fig_freq_keyword_extractor', 'Word Cloud'):
-        tokens_freq_file = [
-            (token, freq_files[col_sort_by_file])
-            for token, freq_files in tokens_freq_files
+    elif fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Word Cloud'):
+        items_freq_file = [
+            (item, freq_files[col_sort_by_file])
+            for item, freq_files in freq_files_items
         ]
 
-        wl_figs.generate_word_cloud(main, tokens_freq_file, fig_settings = fig_settings)
+        wl_figs.generate_word_cloud(main, items_freq_file, fig_settings = fig_settings)

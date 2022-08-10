@@ -23,72 +23,72 @@ from wl_utils import wl_sorting
 
 _tr = QCoreApplication.translate
 
-def wl_fig_stat(main, tokens_stat_files, fig_settings, label_x):
-    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_stat', 'Total')]
+def wl_fig_stats(main, stat_files_items, fig_settings, label_x):
+    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_stats', 'Total')]
     col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
 
-    if fig_settings['use_data'] == _tr('wl_fig_stat', 'p-value'):
-        tokens_stat_files = wl_sorting.sorted_tokens_freq_files(
-            tokens_stat_files,
+    if fig_settings['use_data'] == _tr('wl_fig_stats', 'p-value'):
+        stat_files_items = wl_sorting.sorted_freq_files_items(
+            stat_files_items,
             sort_by_col = col_sort_by_file,
             reverse = True
         )
     else:
-        tokens_stat_files = wl_sorting.sorted_tokens_freq_files(
-            tokens_stat_files,
+        stat_files_items = wl_sorting.sorted_freq_files_items(
+            stat_files_items,
             sort_by_col = col_sort_by_file
         )
 
     # Line Chart
-    if fig_settings['graph_type'] == _tr('wl_fig_stat', 'Line Chart'):
+    if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Line Chart'):
         wl_figs.generate_line_chart(
-            main, tokens_stat_files,
+            main, stat_files_items,
             fig_settings = fig_settings,
             freq_data = False,
             file_names_selected = file_names_selected,
             label_x = label_x
         )
     else:
-        tokens_stat_file = [
-            (token, stat_files[col_sort_by_file])
-            for token, stat_files in tokens_stat_files
+        stat_file_items = [
+            (item, stat_files[col_sort_by_file])
+            for item, stat_files in stat_files_items
         ]
 
         # Word Cloud
-        if fig_settings['graph_type'] == _tr('wl_fig_stat', 'Word Cloud'):
-            wl_figs.generate_word_cloud(main, tokens_stat_file, fig_settings = fig_settings)
+        if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Word Cloud'):
+            wl_figs.generate_word_cloud(main, stat_file_items, fig_settings = fig_settings)
         # Network Graph
-        elif fig_settings['graph_type'] == _tr('wl_fig_stat', 'Network Graph'):
-            wl_figs.generate_network_graph(main, tokens_stat_file, fig_settings = fig_settings)
+        elif fig_settings['graph_type'] == _tr('wl_fig_stats', 'Network Graph'):
+            wl_figs.generate_network_graph(main, stat_file_items, fig_settings = fig_settings)
 
-def wl_fig_stat_keyword_extractor(main, keywords_stat_files, fig_settings, label_x):
-    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_stat_keyword_extractor', 'Total')]
+def wl_fig_stats_keyword_extractor(main, stat_files_items, fig_settings, label_x):
+    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_stats', 'Total')]
     col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
 
-    if fig_settings['use_data'] == _tr('wl_fig_stat_keyword_extractor', 'p-value'):
-        keywords_stat_files = wl_sorting.sorted_tokens_freq_files(
-            keywords_stat_files,
+    if fig_settings['use_data'] == _tr('wl_fig_stats', 'p-value'):
+        stat_files_items = wl_sorting.sorted_freq_files_items(
+            stat_files_items,
             sort_by_col = col_sort_by_file,
             reverse = True
         )
     else:
-        keywords_stat_files = wl_sorting.sorted_tokens_freq_files(
-            keywords_stat_files,
+        stat_files_items = wl_sorting.sorted_freq_files_items(
+            stat_files_items,
             sort_by_col = col_sort_by_file
         )
 
-    if fig_settings['graph_type'] == _tr('wl_fig_stat_keyword_extractor', 'Line Chart'):
+    if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Line Chart'):
         wl_figs.generate_line_chart(
-            main, keywords_stat_files,
+            main, stat_files_items,
             fig_settings = fig_settings,
             freq_data = False,
             file_names_selected = file_names_selected,
             label_x = label_x
         )
-    elif fig_settings['graph_type'] == _tr('wl_fig_stat_keyword_extractor', 'Word Cloud'):
-        keywords_stat_file = [
-            (keyword, stat_files[col_sort_by_file])
-            for keyword, stat_files in keywords_stat_files
+    elif fig_settings['graph_type'] == _tr('wl_fig_stats', 'Word Cloud'):
+        stat_file_items = [
+            (item, stat_files[col_sort_by_file])
+            for item, stat_files in stat_files_items
         ]
 
-        wl_figs.generate_word_cloud(main, keywords_stat_file, fig_settings = fig_settings)
+        wl_figs.generate_word_cloud(main, stat_file_items, fig_settings = fig_settings)

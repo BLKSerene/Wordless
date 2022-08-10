@@ -62,9 +62,46 @@ def yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22):
 
     return c11, c12, c21, c22
 
-def to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, test_statistical_significance):
-    freqs_sections_tokens = {}
+def _to_freq_sections_items(main, items_search, items_x1, items_x2, num_sub_sections, use_data):
+    freq_sections_items = {}
 
+    sections_x1 = wl_nlp_utils.to_sections(items_x1, num_sub_sections)
+    sections_x2 = wl_nlp_utils.to_sections(items_x2, num_sub_sections)
+
+    freq_items_sections_x1 = [collections.Counter(section) for section in sections_x1]
+    freq_items_sections_x2 = [collections.Counter(section) for section in sections_x2]
+
+    if use_data == _tr('wl_measures_statistical_significance', 'Absolute Frequency'):
+        for item in items_search:
+            freqs_x1 = [
+                freq_items.get(item, 0)
+                for freq_items in freq_items_sections_x1
+            ]
+            freqs_x2 = [
+                freq_items.get(item, 0)
+                for freq_items in freq_items_sections_x2
+            ]
+
+            freq_sections_items[item] = (freqs_x1, freqs_x2)
+    elif use_data == _tr('wl_measures_statistical_significance', 'Relative Frequency'):
+        len_sections_x1 = [len(section) for section in sections_x1]
+        len_sections_x2 = [len(section) for section in sections_x2]
+
+        for item in items_search:
+            freqs_x1 = [
+                freq_items.get(item, 0) / len_section
+                for freq_items, len_section in zip(freq_items_sections_x1, len_sections_x1)
+            ]
+            freqs_x2 = [
+                freq_items.get(item, 0) / len_section
+                for freq_items, len_section in zip(freq_items_sections_x2, len_sections_x2)
+            ]
+
+            freq_sections_items[item] = (freqs_x1, freqs_x2)
+
+    return freq_sections_items
+
+def to_freq_sections_items(main, items_search, items_x1, items_x2, test_statistical_significance):
     if test_statistical_significance == _tr('wl_measures_statistical_significance', 'Mann-Whitney U Test'):
         num_sub_sections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_sub_sections']
         use_data = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
@@ -75,41 +112,7 @@ def to_freqs_sections_tokens(main, tokens, tokens_x1, tokens_x2, test_statistica
         num_sub_sections = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['num_sub_sections']
         use_data = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['use_data']
 
-    sections_x1 = wl_nlp_utils.to_sections(tokens_x1, num_sub_sections)
-    sections_x2 = wl_nlp_utils.to_sections(tokens_x2, num_sub_sections)
-
-    freqs_sections_x1 = [collections.Counter(section) for section in sections_x1]
-    freqs_sections_x2 = [collections.Counter(section) for section in sections_x2]
-
-    if use_data == _tr('wl_measures_statistical_significance', 'Absolute Frequency'):
-        for token in tokens:
-            freqs_x1 = [
-                freqs_section.get(token, 0)
-                for freqs_section in freqs_sections_x1
-            ]
-            freqs_x2 = [
-                freqs_section.get(token, 0)
-                for freqs_section in freqs_sections_x2
-            ]
-
-            freqs_sections_tokens[token] = (freqs_x1, freqs_x2)
-    elif use_data == _tr('wl_measures_statistical_significance', 'Relative Frequency'):
-        len_sections_x1 = [len(section) for section in sections_x1]
-        len_sections_x2 = [len(section) for section in sections_x2]
-
-        for token in tokens:
-            freqs_x1 = [
-                freqs_section.get(token, 0) / len_section
-                for freqs_section, len_section in zip(freqs_sections_x1, len_sections_x1)
-            ]
-            freqs_x2 = [
-                freqs_section.get(token, 0) / len_section
-                for freqs_section, len_section in zip(freqs_sections_x2, len_sections_x2)
-            ]
-
-            freqs_sections_tokens[token] = (freqs_x1, freqs_x2)
-
-    return freqs_sections_tokens
+    return _to_freq_sections_items(main, items_search, items_x1, items_x2, num_sub_sections, use_data)
 
 # Fisher's Exact Test
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group.
@@ -211,19 +214,40 @@ def pearsons_chi_squared_test(main, c11, c12, c21, c22):
 # Student's t-test (1-sample)
 # References: Church, K., Gale, W., Hanks P., & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
 def students_t_test_1_sample(main, c11, c12, c21, c22):
+    direction = main.settings_custom['measures']['statistical_significance']['students_t_test_1_sample']['direction']
+
     cxx = c11 + c12 + c21 + c22
     e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
 
     t_stat = (c11 - e11) / numpy.sqrt(c11 * (1 - c11 / cxx)) if c11 else 0
-    p_val = scipy.stats.distributions.t.sf(numpy.abs(t_stat), cxx - 1) * 2 if cxx > 0 else 1
+
+    if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
+        p_val = scipy.stats.distributions.t.sf(numpy.abs(t_stat), cxx - 1) * 2 if cxx > 1 else 1
+    elif direction == _tr('wl_measures_statistical_significance', 'Left-tailed'):
+        p_val = scipy.stats.distributions.t.cdf(t_stat, cxx - 1) if cxx > 1 else 1
+    elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
+        p_val = scipy.stats.distributions.t.sf(t_stat, cxx - 1) if cxx > 1 else 1
 
     return t_stat, p_val
+
+def _students_t_test_2_sample_alt(direction):
+    if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
+        alt = 'two-sided'
+    elif direction == _tr('wl_measures_statistical_significance', 'Left-tailed'):
+        alt = 'less'
+    elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
+        alt = 'greater'
+
+    return alt
 
 # Student's t-test (2-sample)
 # References: Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. Language and Computers, 68, 247–269.
 def students_t_test_2_sample(main, freqs_x1, freqs_x2):
+    direction = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['direction']
+    alt = _students_t_test_2_sample_alt(direction)
+
     if any(freqs_x1) or any(freqs_x2):
-        t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = True)
+        t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = True, alternative = alt)
     else:
         t_stat = 0
         p_val = 1
@@ -231,15 +255,18 @@ def students_t_test_2_sample(main, freqs_x1, freqs_x2):
     return t_stat, p_val
 
 def welchs_t_test(main, freqs_x1, freqs_x2):
+    direction = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['direction']
+    alt = _students_t_test_2_sample_alt(direction)
+
     if any(freqs_x1) or any(freqs_x2):
-        t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = False)
+        t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = False, alternative = alt)
     else:
         t_stat = 0
         p_val = 1
 
     return t_stat, p_val
 
-def z_test(z_score, direction):
+def _z_score_p_val(z_score, direction):
     if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
         p_val = scipy.stats.distributions.norm.sf(numpy.abs(z_score)) * 2
     elif direction == _tr('wl_measures_statistical_significance', 'Left-tailed'):
@@ -258,7 +285,7 @@ def z_score(main, c11, c12, c21, c22):
     e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
 
     z_score = (c11 - e11) / numpy.sqrt(e11 * (1 - e11 / cxx)) if cxx and e11 and 1 - e11 / cxx else 0
-    p_val = z_test(z_score, direction)
+    p_val = _z_score_p_val(z_score, direction)
 
     return z_score, p_val
 
@@ -279,6 +306,6 @@ def z_score_berry_rogghe(main, c11, c12, c21, c22, span):
     e = p * fn * s
 
     z_score = (k - e) / numpy.sqrt(e * (1 - p)) if e and 1 - p else 0
-    p_val = z_test(z_score, direction)
+    p_val = _z_score_p_val(z_score, direction)
 
     return z_score, p_val

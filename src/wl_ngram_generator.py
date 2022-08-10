@@ -828,7 +828,11 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 for ngram_size, ngram_list in ngrams_lens.items():
                     ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
 
-                    freqs_sections_ngrams.update(wl_measures_dispersion.to_freqs_sections_tokens(self.main, ngrams_total_len, ngram_list))
+                    freqs_sections_ngrams.update(wl_measures_dispersion.to_freq_sections_items(
+                        self.main,
+                        items_search = ngrams_total_len,
+                        items = ngram_list
+                    ))
 
                 for ngram, freqs in freqs_sections_ngrams.items():
                     ngrams_stats_file[ngram] = [measure_dispersion(freqs)]
@@ -839,10 +843,14 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 for ngram_size, ngram_list in ngrams_lens.items():
                     ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
 
-                    freqs_sections_ngrams.update(wl_measures_adjusted_freq.to_freqs_sections_tokens(self.main, ngrams_total_len, ngram_list))
+                    freqs_sections_ngrams.update(wl_measures_adjusted_freq.to_freq_sections_items(
+                        self.main,
+                        items_search = ngrams_total_len,
+                        items = ngram_list
+                    ))
 
                 for ngram, freqs in freqs_sections_ngrams.items():
-                    ngrams_stats_file[ngram] = [measure_adjusted_freq(freqs)]
+                    ngrams_stats_file[ngram].append(measure_adjusted_freq(freqs))
 
                 self.ngrams_stats_files.append(ngrams_stats_file)
 
@@ -965,7 +973,7 @@ def generate_table(main, table):
 
                     table.disable_updates()
 
-                    for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_tokens_freq_files(ngrams_freq_files)):
+                    for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_freq_files_items(ngrams_freq_files)):
                         stats_files = ngrams_stats_files[ngram]
 
                         # Rank
@@ -1047,7 +1055,7 @@ def generate_fig(main):
                             for ngram, freqs in ngrams_freq_files.items()
                         }
 
-                        wl_figs_freqs.wl_fig_freq(
+                        wl_figs_freqs.wl_fig_freqs(
                             main, ngrams_freq_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('wl_ngram_generator', 'N-gram')
@@ -1069,7 +1077,7 @@ def generate_fig(main):
                                 for ngram, stats_files in ngrams_stats_files.items()
                             }
 
-                        wl_figs_stats.wl_fig_stat(
+                        wl_figs_stats.wl_fig_stats(
                             main, ngrams_stat_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('wl_ngram_generator', 'N-gram')

@@ -24,23 +24,26 @@ import scipy.stats
 from wl_measures import wl_measures_adjusted_freq
 from wl_nlp import wl_nlp_utils
 
-def to_freqs_sections_tokens(main, tokens, tokens_all):
-    freqs_sections_tokens = {}
+def _to_freq_sections_items(main, items_search, items, num_sub_sections):
+    freq_sections_items = {}
 
-    num_sub_sections = main.settings_custom['measures']['dispersion']['general_settings']['num_sub_sections']
-
-    freqs_sections = [
+    freq_items_sections = [
         collections.Counter(section)
-        for section in wl_nlp_utils.to_sections(tokens_all, num_sub_sections)
+        for section in wl_nlp_utils.to_sections(items, num_sub_sections)
     ]
 
-    for token in tokens:
-        freqs_sections_tokens[token] = [
-            freqs_section.get(token, 0)
-            for freqs_section in freqs_sections
+    for item_search in items_search:
+        freq_sections_items[item_search] = [
+            freq_tokens.get(item_search, 0)
+            for freq_tokens in freq_items_sections
         ]
 
-    return freqs_sections_tokens
+    return freq_sections_items
+
+def to_freq_sections_items(main, items_search, items):
+    num_sub_sections = main.settings_custom['measures']['dispersion']['general_settings']['num_sub_sections']
+
+    return _to_freq_sections_items(main, items_search, items, num_sub_sections)
 
 # Carroll's D₂
 # Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
