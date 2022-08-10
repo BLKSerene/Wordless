@@ -1,0 +1,10 @@
+[run]
+omit =
+    # Tests
+    tests/*
+    # Data
+    fonts/*
+    imgs/*
+    trs/*
+    # Misc
+    utils/*

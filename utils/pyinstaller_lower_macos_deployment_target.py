@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Utilities - Lower MACOS_DEPLOYMENT_TARGET of PyInstaller
+# Utilities: Lower MACOS_DEPLOYMENT_TARGET of PyInstaller
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
