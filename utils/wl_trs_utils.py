@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Utilities - Translations - Utilities
+# Utilities: Translations - Utilities
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -55,7 +55,7 @@ def del_obsolete_trans(ts_file):
     fix_ts_format(ts_file)
 
 def release_trs():
-    for ts_file in glob.glob('../src/trs/*.ts'):
+    for ts_file in glob.glob('../trs/*.ts'):
         subprocess.call(fr'lrelease {ts_file}', shell = True)
 
 if __name__ == '__main__':
