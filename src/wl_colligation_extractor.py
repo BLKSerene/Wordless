@@ -1195,7 +1195,7 @@ def generate_table(main, table):
 
                     table.disable_updates()
 
-                    for i, ((node, collocate), stats_files) in enumerate(wl_sorting.sorted_stats_files(colligations_stats_files)):
+                    for i, ((node, collocate), stats_files) in enumerate(wl_sorting.sorted_stats_files_items(colligations_stats_files)):
                         freqs_files = colligations_freqs_files[(node, collocate)]
 
                         # Rank
@@ -1316,7 +1316,7 @@ def generate_fig(main):
                                 for (node, collocate), freqs in colligations_freqs_file.items()
                             }
 
-                        wl_figs_freqs.wl_fig_freq(
+                        wl_figs_freqs.wl_fig_freqs(
                             main, collocates_freq_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('Wl_Table_Colligation_Extractor', 'Collocate')
@@ -1335,7 +1335,7 @@ def generate_fig(main):
                                 for (node, collocate), freqs in colligations_freqs_file.items()
                             }
 
-                        wl_figs_freqs.wl_fig_freq(
+                        wl_figs_freqs.wl_fig_freqs(
                             main, collocates_freq_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('Wl_Table_Colligation_Extractor', 'Collocate')
@@ -1375,7 +1375,7 @@ def generate_fig(main):
                                 for collocate, stats_files in colligations_stats_files.items()
                             }
 
-                        wl_figs_stats.wl_fig_stat(
+                        wl_figs_stats.wl_fig_stats(
                             main, collocates_stat_files,
                             fig_settings = settings['fig_settings'],
                             label_x = _tr('Wl_Table_Colligation_Extractor', 'Collocate'),

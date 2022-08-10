@@ -16,7 +16,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import re
+
 from wl_utils import wl_misc
+
+def test_get_wl_ver():
+    assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', wl_misc.get_wl_ver())
 
 def test_split_wl_ver():
     assert wl_misc.split_wl_ver('1.2.3') == (1, 2, 3)
@@ -34,6 +39,7 @@ def test_merge_dicts():
     assert wl_misc.merge_dicts([{1: [10, 20]}, {1: [30, 40], 2: [50, 60]}]) == {1: [[10, 20], [30, 40]], 2: [[0, 0], [50, 60]]}
 
 if __name__ == '__main__':
+    test_get_wl_ver()
     test_split_wl_ver()
     test_flatten_list()
     test_normalize_nums()
