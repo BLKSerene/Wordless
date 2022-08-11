@@ -222,6 +222,7 @@ class Wl_Settings(QDialog):
         self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Dispersion')))
         self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
         self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Statistical Significance')))
+        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Bayes Factor')))
         self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Effect Size')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Tables')))
@@ -241,17 +242,16 @@ class Wl_Settings(QDialog):
         self.tree_settings.selectionModel().selectionChanged.connect(self.selection_changed)
 
         self.scroll_area_settings = wl_layouts.Wl_Scroll_Area(self)
-
         self.stacked_widget_settings = QStackedWidget(self)
 
         # General
         self.settings_general = wl_settings_general.Wl_Settings_General(self.main)
-        self.settings_imp = wl_settings_general.Wl_Settings_Imp(self.main)
-        self.settings_exp = wl_settings_general.Wl_Settings_Exp(self.main)
+        self.settings_general_imp = wl_settings_general.Wl_Settings_General_Imp(self.main)
+        self.settings_general_exp = wl_settings_general.Wl_Settings_General_Exp(self.main)
 
         # Files
         self.settings_files = wl_settings_files.Wl_Settings_Files(self.main)
-        self.settings_tags = wl_settings_files.Wl_Settings_Tags(self.main)
+        self.settings_files_tags = wl_settings_files.Wl_Settings_Files_Tags(self.main)
 
         self.settings_sentence_tokenization = wl_settings_sentence_tokenization.Wl_Settings_Sentence_Tokenization(self.main)
         self.settings_word_tokenization = wl_settings_word_tokenization.Wl_Settings_Word_Tokenization(self.main)
@@ -259,16 +259,17 @@ class Wl_Settings(QDialog):
 
         # POS Tagging
         self.settings_pos_tagging = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging(self.main)
-        self.settings_tagsets = wl_settings_pos_tagging.Wl_Settings_Tagsets(self.main)
+        self.settings_pos_tagging_tagsets = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging_Tagsets(self.main, self.scroll_area_settings)
 
         self.settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(self.main)
         self.settings_stop_words = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(self.main)
 
         # Measures
-        self.settings_dispersion = wl_settings_measures.Wl_Settings_Dispersion(self.main)
-        self.settings_adjusted_freq = wl_settings_measures.Wl_Settings_Adjusted_Freq(self.main)
-        self.settings_statistical_significance = wl_settings_measures.Wl_Settings_Statistical_Significance(self.main)
-        self.settings_effect_size = wl_settings_measures.Wl_Settings_Effect_Size(self.main)
+        self.settings_measures_dispersion = wl_settings_measures.Wl_Settings_Measures_Dispersion(self.main)
+        self.settings_measures_adjusted_freq = wl_settings_measures.Wl_Settings_Measures_Adjusted_Freq(self.main)
+        self.settings_measures_statistical_significance = wl_settings_measures.Wl_Settings_Measures_Statistical_Significance(self.main)
+        self.settings_measures_bayes_factor = wl_settings_measures.Wl_Settings_Measures_Bayes_Factor(self.main)
+        self.settings_measures_effect_size = wl_settings_measures.Wl_Settings_Measures_Effect_Size(self.main)
 
         # Tables
         self.settings_tables = wl_settings_tables.Wl_Settings_Tables(self.main)
@@ -278,21 +279,22 @@ class Wl_Settings(QDialog):
 
         self.settings_all = [
             self.settings_general,
-            self.settings_imp,
-            self.settings_exp,
+            self.settings_general_imp,
+            self.settings_general_exp,
             self.settings_files,
-            self.settings_tags,
+            self.settings_files_tags,
             self.settings_sentence_tokenization,
             self.settings_word_tokenization,
             self.settings_syl_tokenization,
             self.settings_pos_tagging,
-            self.settings_tagsets,
+            self.settings_pos_tagging_tagsets,
             self.settings_lemmatization,
             self.settings_stop_words,
-            self.settings_dispersion,
-            self.settings_adjusted_freq,
-            self.settings_statistical_significance,
-            self.settings_effect_size,
+            self.settings_measures_dispersion,
+            self.settings_measures_adjusted_freq,
+            self.settings_measures_statistical_significance,
+            self.settings_measures_bayes_factor,
+            self.settings_measures_effect_size,
             self.settings_tables,
             self.settings_tables_profiler,
             self.settings_figs
@@ -371,15 +373,17 @@ class Wl_Settings(QDialog):
                     self.stacked_widget_settings.setCurrentIndex(13)
                 elif node_selected_text == self.tr('Statistical Significance'):
                     self.stacked_widget_settings.setCurrentIndex(14)
-                elif node_selected_text == self.tr('Effect Size'):
+                elif node_selected_text == self.tr('Bayes Factor'):
                     self.stacked_widget_settings.setCurrentIndex(15)
+                elif node_selected_text == self.tr('Effect Size'):
+                    self.stacked_widget_settings.setCurrentIndex(16)
                 # Tables
                 elif node_selected_text == self.tr('Tables'):
-                    self.stacked_widget_settings.setCurrentIndex(16)
-                elif node_selected_text == self.tr('Profiler'):
                     self.stacked_widget_settings.setCurrentIndex(17)
-                elif node_selected_text == self.tr('Figures'):
+                elif node_selected_text == self.tr('Profiler'):
                     self.stacked_widget_settings.setCurrentIndex(18)
+                elif node_selected_text == self.tr('Figures'):
+                    self.stacked_widget_settings.setCurrentIndex(19)
 
                 if node_selected.hasChildren():
                     self.tree_settings.setExpanded(i_selected, True)
@@ -388,10 +392,10 @@ class Wl_Settings(QDialog):
                 self.main.settings_custom['settings']['node_cur'] = node_selected_text
 
                 # Delay loading of POS tag mappings
-                if node_selected_text == self.tr('Tagsets') and not self.settings_tagsets.pos_tag_mappings_loaded:
-                    self.settings_tagsets.combo_box_tagsets_lang.currentTextChanged.emit(self.settings_tagsets.combo_box_tagsets_lang.currentText())
+                if node_selected_text == self.tr('Tagsets') and not self.settings_pos_tagging_tagsets.pos_tag_mappings_loaded:
+                    self.settings_pos_tagging_tagsets.combo_box_tagsets_lang.currentTextChanged.emit(self.settings_pos_tagging_tagsets.combo_box_tagsets_lang.currentText())
 
-                    self.settings_tagsets.pos_tag_mappings_loaded = True
+                    self.settings_pos_tagging_tagsets.pos_tag_mappings_loaded = True
             else:
                 self.tree_settings.selectionModel().blockSignals(True)
 
