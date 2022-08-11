@@ -1318,8 +1318,7 @@ def generate_fig(main):
 
                         wl_figs_freqs.wl_fig_freqs(
                             main, collocates_freq_files,
-                            fig_settings = settings['fig_settings'],
-                            label_x = _tr('Wl_Table_Colligation_Extractor', 'Collocate')
+                            tab = 'colligation_extractor'
                         )
                     elif settings['fig_settings']['use_data'] == _tr('Wl_Table_Colligation_Extractor', 'Frequency'):
                         # Network Graph
@@ -1337,8 +1336,7 @@ def generate_fig(main):
 
                         wl_figs_freqs.wl_fig_freqs(
                             main, collocates_freq_files,
-                            fig_settings = settings['fig_settings'],
-                            label_x = _tr('Wl_Table_Colligation_Extractor', 'Collocate')
+                            tab = 'colligation_extractor'
                         )
                     else:
                         # Network Graph
@@ -1377,8 +1375,7 @@ def generate_fig(main):
 
                         wl_figs_stats.wl_fig_stats(
                             main, collocates_stat_files,
-                            fig_settings = settings['fig_settings'],
-                            label_x = _tr('Wl_Table_Colligation_Extractor', 'Collocate'),
+                            tab = 'colligation_extractor'
                         )
 
                     # Hide the progress dialog early so that the main window will not obscure the generated figure
