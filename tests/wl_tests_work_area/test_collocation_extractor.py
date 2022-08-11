@@ -108,7 +108,6 @@ def test_collocation_extractor():
     print('pass!')
 
 def update_gui(err_msg, collocations_freqs_files, collocations_stats_files):
-    print(err_msg)
     assert not err_msg
 
     assert collocations_freqs_files
