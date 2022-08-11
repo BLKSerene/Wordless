@@ -129,9 +129,9 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
-        self.button_find_next.clicked.connect(lambda: self.find_next())
-        self.button_find_prev.clicked.connect(lambda: self.find_prev())
-        self.button_find_all.clicked.connect(lambda: self.find_all())
+        self.button_find_next.clicked.connect(lambda: self.find_next()) # pylint: disable=unnecessary-lambda
+        self.button_find_prev.clicked.connect(lambda: self.find_prev()) # pylint: disable=unnecessary-lambda
+        self.button_find_all.clicked.connect(lambda: self.find_all()) # pylint: disable=unnecessary-lambda
         self.button_clr_hightlights.clicked.connect(self.clr_highlights)
 
         self.button_close.clicked.connect(self.reject)
@@ -248,7 +248,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                         break
 
                 # Scroll to top if this is the last item
-                if not any([table.selectedIndexes() for table in self.tables]):
+                if not any((table.selectedIndexes() for table in self.tables)):
                     self.tables[0].scrollTo(table.model().index(self.items_found[0][1], 0))
                     self.tables[0].selectRow(self.items_found[0][1])
             else:
@@ -295,7 +295,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                         break
 
                 # Scroll to bottom if this is the first item
-                if not any([table.selectedIndexes() for table in self.tables]):
+                if not any((table.selectedIndexes() for table in self.tables)):
                     self.tables[-1].scrollTo(table.model().index(self.items_found[-1][1], 0))
                     self.tables[-1].selectRow(self.items_found[-1][1])
             else:

@@ -80,7 +80,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
 
         self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
 
-    def file_changed(self, item):
+    def file_changed(self, item): # pylint: disable=unused-argument
         if list(self.main.wl_file_area.get_selected_files()):
             self.button_generate_table.setEnabled(True)
             self.button_generate_fig.setEnabled(True)
@@ -610,8 +610,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 )
 
                 if search_terms:
-                    len_search_term_min = min([len(search_term) for search_term in search_terms])
-                    len_search_term_max = max([len(search_term) for search_term in search_terms])
+                    len_search_term_min = min((len(search_term) for search_term in search_terms))
+                    len_search_term_max = max((len(search_term) for search_term in search_terms))
                 else:
                     len_search_term_min = 0
                     len_search_term_max = 0
@@ -930,7 +930,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                 texts.append(text)
 
             len_files = len(files)
-            len_tokens_total = sum([len(text.tokens_flat) for text in texts])
+            len_tokens_total = sum((len(text.tokens_flat) for text in texts))
 
             if settings['fig_settings']['sort_results_by'] == self.tr('File'):
                 search_terms_total = sorted(search_terms_total)
@@ -944,11 +944,11 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
                     for j, text in enumerate(texts):
                         if search_term in search_terms_files[j]:
-                            x_start_total = x_start + sum([
+                            x_start_total = x_start + sum((
                                 len(text.tokens_flat)
                                 for k, text in enumerate(texts)
                                 if k < j
-                            ])
+                            ))
                             len_tokens = len(text.tokens_flat)
 
                             for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
@@ -965,11 +965,11 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
                     for j, text in enumerate(texts):
                         if search_term in search_terms_files[j]:
-                            x_start = sum([
+                            x_start = sum((
                                 len(text.tokens_flat)
                                 for k, text in enumerate(texts)
                                 if k < j
-                            ]) + j + 2
+                            )) + j + 2
 
                             for k, ngram in enumerate(nltk.ngrams(text.tokens_flat, len_search_term)):
                                 if ngram == search_term:
@@ -980,7 +980,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                 x_tick_labels = ['']
 
                 if settings['fig_settings']['sort_results_by'] == self.tr('File'):
-                    len_tokens_total = sum([len(text.tokens_flat) for text in texts])
+                    len_tokens_total = sum((len(text.tokens_flat) for text in texts))
 
                     for i, search_term in enumerate(search_terms_total):
                         x_tick_start = len_tokens_total * i + i + 1
@@ -1006,11 +1006,11 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     len_search_terms_total = len(search_terms_total)
 
                     for i, text in enumerate(texts):
-                        x_tick_start = sum([
+                        x_tick_start = sum((
                             len(text.tokens_flat)
                             for j, text in enumerate(texts)
                             if j < i
-                        ]) + j + 1
+                        )) + j + 1
 
                         # 1/2
                         x_ticks.append(x_tick_start + len(text.tokens_flat) / 2)

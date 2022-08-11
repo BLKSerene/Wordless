@@ -67,10 +67,7 @@ def wl_msg_box_question(main, title, text):
         QMessageBox.No
     )
 
-    if reply == QMessageBox.Yes:
-        return True
-    else:
-        return False
+    return bool(reply == QMessageBox.Yes)
 
 # Search terms
 def wl_msg_box_missing_search_terms(main):

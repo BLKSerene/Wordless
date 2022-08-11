@@ -474,7 +474,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.button_close = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
-        self.button_filter.clicked.connect(lambda: self.filter_results())
+        self.button_filter.clicked.connect(lambda: self.filter_results()) # pylint: disable=unnecessary-lambda
         self.button_close.clicked.connect(self.reject)
 
         layout_file_to_filter = wl_layouts.Wl_Layout()
@@ -515,13 +515,13 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.settings['file_to_filter'] = self.combo_box_file_to_filter.currentText()
 
     @wl_misc.log_timing
-    def filter_results(self, Worker_Filter_Results):
+    def filter_results(self):
         def update_gui():
             self.table.filter_table()
 
             self.main.statusBar().showMessage(_tr('Wl_Dialog_Results_Filter', 'The results in the table has been successfully filtered.'))
 
-        worker_filter_results = Worker_Filter_Results(
+        worker_filter_results = self.Worker_Filter_Results(
             self.main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('Wl_Dialog_Results_Filter', 'Filtering results...')),
             update_gui = update_gui,
@@ -532,6 +532,8 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
         super().__init__(main, tab, table)
+
+        self.Worker_Filter_Results = Wl_Worker_Results_Filter_Wordlist_Generator
 
         if self.tab == 'wordlist_generator':
             self.label_len_token = QLabel(self.tr('Token Length:'), self)
@@ -787,12 +789,11 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         self.label_dispersion.setText(f'{text_dispersion}:')
         self.label_adjusted_freq.setText(f'{text_adjusted_freq}:')
 
-    def filter_results(self):
-        super().filter_results(Wl_Worker_Results_Filter_Wordlist_Generator)
-
 class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
         super().__init__(main, tab, table)
+
+        self.Worker_Filter_Results = Wl_Worker_Results_Filter_Collocation_Extractor
 
         self.label_len_collocate = QLabel(self.tr('Collocate Length:'), self)
         (
@@ -1108,12 +1109,11 @@ class Wl_Dialog_Results_Filter_Collocation_Extractor(Wl_Dialog_Results_Filter):
 
         self.label_effect_size.setText(f'{text_effect_size}:')
 
-    def filter_results(self):
-        super().filter_results(Wl_Worker_Results_Filter_Collocation_Extractor)
-
 class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
         super().__init__(main, tab, table)
+
+        self.Worker_Filter_Results = Wl_Worker_Results_Filter_Keyword_Extractor
 
         self.label_len_keyword = QLabel(self.tr('Keyword Length:'), self)
         (
@@ -1401,6 +1401,3 @@ class Wl_Dialog_Results_Filter_Keyword_Extractor(Wl_Dialog_Results_Filter):
             self.checkbox_test_stat_max_no_limit.setEnabled(False)
 
         self.label_effect_size.setText(f'{text_effect_size}:')
-
-    def filter_results(self):
-        super().filter_results(Wl_Worker_Results_Filter_Keyword_Extractor)

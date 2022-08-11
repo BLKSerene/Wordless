@@ -104,7 +104,7 @@ def wl_word_detokenize(main, tokens, lang):
                 continue
 
             if wl_checking_unicode.has_thai(token):
-                if type(token) == wl_texts.Wl_Token:
+                if isinstance(token, wl_texts.Wl_Token):
                     text += token + token.boundary
                 else:
                     text += token
@@ -166,7 +166,7 @@ def wl_word_detokenize(main, tokens, lang):
         sentences = []
 
         for i, token in enumerate(tokens):
-            if type(token) == wl_texts.Wl_Token and token.sentence_ending:
+            if isinstance(token, wl_texts.Wl_Token) and token.sentence_ending:
                 sentences.append(tokens[sentence_start : i + 1])
 
                 sentence_start = i + 1

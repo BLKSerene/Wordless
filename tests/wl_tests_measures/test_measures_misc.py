@@ -27,7 +27,7 @@ def test_modes():
     assert wl_measures_misc.modes(nums) == [2, 3]
     assert wl_measures_misc.modes([0] * 10) == [0]
     assert wl_measures_misc.modes([*range(10)]) == [*range(10)]
-    assert wl_measures_misc.modes([]) == []
+    assert not wl_measures_misc.modes([])
 
 if __name__ == '__main__':
     test_modes()

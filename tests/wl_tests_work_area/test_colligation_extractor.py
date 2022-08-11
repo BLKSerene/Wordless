@@ -65,7 +65,7 @@ def test_colligation_extractor():
         # Multiple files without search terms
         elif i == i_search_multi:
             for file in random.sample(files, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
             main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = False
         # Single file with search terms
@@ -76,7 +76,7 @@ def test_colligation_extractor():
         # Multiple files with search terms
         elif i % 2 == 1:
             for file in random.sample(files, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
             main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = True
 
@@ -127,7 +127,7 @@ def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
         for freqs_file in freqs_files:
             assert len(freqs_file) == 10
         # Frequency (total)
-        assert sum([sum(freqs_file) for freqs_file in freqs_files]) >= 0
+        assert sum((sum(freqs_file) for freqs_file in freqs_files)) >= 0
         # p-value
         for _, p_value, _, _ in stats_files:
             assert 0 <= p_value <= 1

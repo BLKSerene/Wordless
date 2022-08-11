@@ -33,7 +33,7 @@ def wl_test_supported_langs(main):
     langs_lemmatizers = main.settings_global['lemmatizers'].keys()
     langs_stop_word_lists = main.settings_global['stop_word_lists'].keys()
 
-    len_max_langs = max([len(lang_name) for lang_name, lang_code_639_3 in langs_supported])
+    len_max_langs = max((len(lang_name) for lang_name, lang_code_639_3 in langs_supported))
 
     for lang_name, lang_code_639_3 in langs_supported:
         if (
@@ -87,13 +87,13 @@ def wl_test_supported_encodings(main):
 
     for encoding in main.settings_global['encodings']:
         lang = re.search(r'^.+(?= \()', encoding).group()
-        encoding = encoding.replace(lang, r'').replace(r' (', '').replace(r')', '')
+        encoding = encoding.replace(lang, r'').replace(r' (', '').replace(')', '')
 
         langs.append(lang)
         encodings.append(encoding)
 
-    len_max_langs = max([len(lang) for lang in langs])
-    len_max_encodings = max([len(encoding) for encoding in encodings])
+    len_max_langs = max((len(lang) for lang in langs))
+    len_max_encodings = max((len(encoding) for encoding in encodings))
 
     for lang, encoding in zip(langs, encodings):
         print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✔')

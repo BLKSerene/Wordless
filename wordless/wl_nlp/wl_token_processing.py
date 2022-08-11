@@ -73,7 +73,7 @@ def wl_process_tokens(main, text, token_settings):
         for i, para in enumerate(text.tokens_multilevel):
             text.offsets_paras.append(i_tokens)
 
-            for j, sentence in enumerate(para):
+            for sentence in para:
                 text.offsets_sentences.append(i_tokens)
 
                 i_tokens += len(sentence)
@@ -288,14 +288,8 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
             for token in text.tokens_flat
         ]
     else:
-        tokens = [
-            (token, tags)
-            for token, tags in zip(tokens, text.tags)
-        ]
-        text.tokens_flat = [
-            (token, tags)
-            for token, tags in zip(text.tokens_flat, text.tags)
-        ]
+        tokens = list(zip(tokens, text.tags))
+        text.tokens_flat = list(zip(text.tokens_flat, text.tags))
 
     # Use tags only
     if settings['use_tags']:
