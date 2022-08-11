@@ -3,6 +3,7 @@ omit =
     # Tests
     tests/*
     # Data
+    data/*
     fonts/*
     imgs/*
     trs/*
