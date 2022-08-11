@@ -1057,8 +1057,7 @@ def generate_fig(main):
 
                         wl_figs_freqs.wl_fig_freqs(
                             main, ngrams_freq_files,
-                            fig_settings = settings['fig_settings'],
-                            label_x = _tr('wl_ngram_generator', 'N-gram')
+                            tab = 'ngram_generator'
                         )
                     else:
                         ngrams_stats_files = {
@@ -1079,8 +1078,7 @@ def generate_fig(main):
 
                         wl_figs_stats.wl_fig_stats(
                             main, ngrams_stat_files,
-                            fig_settings = settings['fig_settings'],
-                            label_x = _tr('wl_ngram_generator', 'N-gram')
+                            tab = 'ngram_generator'
                         )
 
                     # Hide the progress dialog early so that the main window will not obscure the generated figure
