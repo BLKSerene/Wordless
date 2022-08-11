@@ -66,7 +66,7 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
 
-    def file_changed(self, item):
+    def file_changed(self, item): # pylint: disable=unused-argument
         if list(self.main.wl_file_area.get_selected_files()):
             self.button_generate_table.setEnabled(True)
             self.button_generate_fig.setEnabled(True)
@@ -699,13 +699,13 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                                                     for skip_tail in itertools.combinations(tail, ngram_size - len_search_term):
                                                         ngram_matched = []
 
-                                                        if type(head) == list:
+                                                        if isinstance(head, list):
                                                             ngram_matched.extend(head)
                                                         else:
                                                             ngram_matched.append(head)
 
                                                         for item in skip_tail:
-                                                            if type(item) == list:
+                                                            if isinstance(item, list):
                                                                 ngram_matched.extend(item)
                                                             else:
                                                                 ngram_matched.append(item)

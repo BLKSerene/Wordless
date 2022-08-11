@@ -66,7 +66,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
         self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
         self.main.wl_file_area_ref.table_files.model().itemChanged.emit(QStandardItem())
 
-    def file_changed(self, item):
+    def file_changed(self, item): # pylint: disable=unused-argument
         # Enable the buttons and prompt the user if there are only observed files or only reference files
         if list(self.main.wl_file_area.get_selected_files()) or list(self.main.wl_file_area_ref.get_selected_files()):
             self.button_generate_table.setEnabled(True)

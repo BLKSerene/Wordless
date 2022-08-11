@@ -50,9 +50,9 @@ def test_get_stop_word_list(lang, stop_word_list):
         # Check for missing custom lists
         assert stop_word_list != 'Missing Custom List'
         # Check if the list is empty
-        assert len(stop_words)
+        assert stop_words
         # Check if there are empty tokens in the list
-        assert all([stop_word for stop_word in stop_words])
+        assert all((stop_word.strip() for stop_word in stop_words))
 
 if __name__ == '__main__':
     for lang, stop_word_list in test_stop_word_lists:

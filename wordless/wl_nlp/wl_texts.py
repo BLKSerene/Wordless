@@ -28,12 +28,13 @@ from wordless.wl_utils import wl_misc
 _tr = QCoreApplication.translate
 
 class Wl_Token(str):
-    def __new__(cls, string, *args, **kwargs):
-        return super().__new__(cls, string)
+    def __new__(cls, string, boundary = '', sentence_ending = False):
+        wl_token = str.__new__(cls, string)
 
-    def __init__(self, string, boundary = '', sentence_ending = False):
-        self.boundary = boundary
-        self.sentence_ending = sentence_ending
+        wl_token.boundary = boundary
+        wl_token.sentence_ending = sentence_ending
+
+        return wl_token
 
 class Wl_Text_Blank:
     pass

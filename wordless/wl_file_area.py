@@ -135,9 +135,9 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                         doc = docx.Document(file_path)
 
                         for block in self.iter_block_items(doc):
-                            if type(block) == docx.text.paragraph.Paragraph:
+                            if isinstance(block, docx.text.paragraph.Paragraph):
                                 lines.append(block.text)
-                            elif type(block) == docx.table.Table:
+                            elif isinstance(block, docx.table.Table):
                                 for row in self.iter_visual_cells(block):
                                     cells = []
 
@@ -486,7 +486,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         self.table_files.model().itemChanged.emit(QStandardItem())
         self.settings_changed()
 
-    def table_files_changed(self, item):
+    def table_files_changed(self, item): # pylint: disable=unused-argument
         if self.table_files.is_empty():
             self.button_open.setEnabled(False)
         else:
@@ -600,7 +600,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
 
         if file_dir:
             if self.main.settings_custom['file_area']['dialog_open_files']['include_files_in_subfolders']:
-                for dir_path, dir_names, file_names in os.walk(file_dir):
+                for dir_path, _, file_names in os.walk(file_dir):
                     for file_name in file_names:
                         file_paths.append(os.path.join(dir_path, file_name))
             else:
@@ -695,7 +695,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             for row in range(self.model().rowCount()):
                 file = self.model().item(row, 0).wl_file
 
-                file['selected'] = True if self.model().item(row, 0).checkState() == Qt.Checked else False
+                file['selected'] = (self.model().item(row, 0).checkState() == Qt.Checked)
                 file['name'] = file['name_old'] = self.model().item(row, 0).text()
                 file['encoding'] = wl_conversion.to_encoding_code(self.main, self.model().item(row, 2).text())
                 file['lang'] = wl_conversion.to_lang_code(self.main, self.model().item(row, 3).text())
@@ -725,7 +725,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
         self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
-    def item_clicked(self, index):
+    def item_clicked(self, index): # pylint: disable=unused-argument
         if not self.is_empty():
             for row in range(self.model().rowCount()):
                 if self.model().item(row, 0).checkState() == Qt.Checked:
@@ -778,6 +778,8 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             )
         ):
             return op(*args, **kwargs)
+
+        return None
 
     @wl_misc.log_timing
     def _open_files(self, files_to_open):

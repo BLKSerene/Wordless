@@ -32,6 +32,8 @@ def _to_lang_text(main, lang_code):
         if lang_code_639_3 == lang_code:
             return lang_text
 
+    return None
+
 def to_lang_text(main, lang_code):
     return _to_lang_text(main, lang_code)
 
@@ -48,12 +50,16 @@ def to_iso_639_3(main, lang_code):
         if lang_code_639_1.startswith(f'{lang_code}_'):
             return lang_code_639_3
 
+    return None
+
 def to_iso_639_1(main, lang_code):
     for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
         if lang_code_639_3 == lang_code:
             return lang_code_639_1
 
-def remove_lang_code_suffixes(main, lang_code):
+    return None
+
+def remove_lang_code_suffixes(main, lang_code): # pylint: disable=unused-argument
     if '_' in lang_code:
         return lang_code.split('_')[0]
     else:
@@ -64,6 +70,8 @@ def get_lang_family(main, lang_code):
         if lang_code_639_3 == lang_code:
             return lang_family
 
+    return None
+
 # Encodings
 def to_encoding_code(main, encoding_text):
     return main.settings_global['encodings'][encoding_text]
@@ -73,15 +81,21 @@ def to_encoding_text(main, encoding_code):
         if encoding_code == code:
             return text
 
+    return None
+
 # Yes/No
 def to_yes_no_code(yes_no_text):
     if yes_no_text == _tr('wl_conversion', 'Yes'):
         return True
     elif yes_no_text == _tr('wl_conversion', 'No'):
         return False
+    else:
+        return None
 
 def to_yes_no_text(yes_no_code):
     if yes_no_code is True:
         return _tr('wl_conversion', 'Yes')
     elif yes_no_code is False:
         return _tr('wl_conversion', 'No')
+    else:
+        return None
