@@ -24,7 +24,7 @@ import scipy.stats
 from wordless.wl_measures import wl_measures_adjusted_freq
 from wordless.wl_nlp import wl_nlp_utils
 
-def _to_freq_sections_items(main, items_search, items, num_sub_sections):
+def _to_freq_sections_items(main, items_search, items, num_sub_sections): # pylint: disable=unused-argument
     freq_sections_items = {}
 
     freq_items_sections = [

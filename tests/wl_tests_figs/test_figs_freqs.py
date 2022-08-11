@@ -81,7 +81,7 @@ def test_wl_fig_freqs():
                 file['selected'] = False
 
             for file in random.sample(files, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
             fig_settings = main.settings_custom[tab]['fig_settings']
             fig_settings['graph_type'] = graph_type

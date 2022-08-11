@@ -27,38 +27,38 @@ SENTENCE_SRP_CYRL = 'Српски језик припада словенској
 SENTENCE_SRP_LATN = 'Srpski jezik pripada slovenskoj grupi jezika porodice indoevropskih jezika.[12]'
 
 def test_to_lang_util_code():
-    for util_type in settings_lang_utils:
-        for util_text in settings_lang_utils[util_type]:
+    for util_type, utils in settings_lang_utils.items():
+        for util_text, util_code in utils.items():
             lang_util_code = wl_nlp_utils.to_lang_util_code(main, util_type, util_text)
 
-            assert lang_util_code == settings_lang_utils[util_type][util_text]
+            assert lang_util_code == util_code
 
 def test_to_lang_util_codes():
-    for util_type in settings_lang_utils:
-        lang_util_codes = wl_nlp_utils.to_lang_util_codes(main, util_type, settings_lang_utils[util_type].keys())
+    for util_type, utils in settings_lang_utils.items():
+        lang_util_codes = wl_nlp_utils.to_lang_util_codes(main, util_type, utils.keys())
 
-        assert list(lang_util_codes) == list(settings_lang_utils[util_type].values())
+        assert list(lang_util_codes) == list(utils.values())
 
 def test_to_lang_util_text():
-    for util_type in settings_lang_utils:
+    for util_type, utils in settings_lang_utils.items():
         TO_LANG_UTIL_TEXT = {
             util_code: util_text
-            for util_text, util_code in settings_lang_utils[util_type].items()
+            for util_text, util_code in utils.items()
         }
 
-        for util_code in settings_lang_utils[util_type].values():
-            util_text = wl_nlp_utils.to_lang_util_text(main, util_type, util_code)
+        for util_code in utils.values():
+            lang_util_text = wl_nlp_utils.to_lang_util_text(main, util_type, util_code)
 
-            assert util_text == TO_LANG_UTIL_TEXT[util_code]
+            assert lang_util_text == TO_LANG_UTIL_TEXT[util_code]
 
 def test_to_lang_util_texts():
-    for util_type in settings_lang_utils:
+    for util_type, utils in settings_lang_utils.items():
         TO_LANG_UTIL_TEXT = {
             util_code: util_text
-            for util_text, util_code in settings_lang_utils[util_type].items()
+            for util_text, util_code in utils.items()
         }
 
-        util_texts = wl_nlp_utils.to_lang_util_texts(main, util_type, settings_lang_utils[util_type].values())
+        util_texts = wl_nlp_utils.to_lang_util_texts(main, util_type, utils.values())
 
         assert list(util_texts) == list(TO_LANG_UTIL_TEXT.values())
 

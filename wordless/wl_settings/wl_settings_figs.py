@@ -202,10 +202,7 @@ class Wl_Settings_Figs(wl_settings.Wl_Settings_Node):
 
     def validate_settings(self):
         if self.combo_box_figs_word_clouds_font.currentText() == self.tr('Custom'):
-            if self.validate_path_file(self.line_edit_figs_word_clouds_font_path):
-                return True
-            else:
-                return False
+            return bool(self.validate_path_file(self.line_edit_figs_word_clouds_font_path))
         else:
             return True
 

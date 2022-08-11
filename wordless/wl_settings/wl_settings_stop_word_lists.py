@@ -112,7 +112,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.load_settings()
         self.preview_results_changed()
 
-    def stop_word_list_changed(self, topLeft = None, bottomRight = None):
+    def stop_word_list_changed(self, topLeft = None, bottomRight = None): # pylint: disable=unused-argument
         if topLeft:
             lang = wl_conversion.to_lang_code(self.main, self.table_stop_word_lists.model().item(topLeft.row(), 0).text())
 

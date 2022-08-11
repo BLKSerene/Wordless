@@ -20,6 +20,7 @@ import os
 import re
 
 from PyQt5.QtCore import QCoreApplication, QItemSelection, QItemSelectionModel, QModelIndex, QStringListModel
+from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import (
     QAbstractItemDelegate, QAbstractItemView, QFileDialog, QLineEdit, QListView,
     QPushButton
@@ -94,7 +95,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
         event.accept()
 
-    def data_changed(self, topLeft = None, bottomRight = None):
+    def data_changed(self, topLeft = None, bottomRight = None): # pylint: disable=unused-argument
         if self.model().rowCount():
             self.button_clr.setEnabled(True)
         else:

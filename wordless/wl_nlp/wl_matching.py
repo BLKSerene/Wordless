@@ -367,9 +367,6 @@ def check_context(
 
                             break
 
-        if inclusion_matched and exclusion_matched:
-            return True
-        else:
-            return False
+        return bool(inclusion_matched and exclusion_matched)
     else:
         return True

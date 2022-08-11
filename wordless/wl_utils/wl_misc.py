@@ -44,6 +44,8 @@ def get_wl_ver():
             for line in f:
                 if line.strip() and not line.startswith('#'):
                     return line.strip()
+
+        return '?.?.?'
     except (FileNotFoundError, PermissionError):
         return '?.?.?'
 
@@ -101,7 +103,7 @@ def merge_dicts(dicts_to_merge):
             if dict_to_merge:
                 i_dict = i
 
-                values_2d = type(list(dict_to_merge.values())[0]) == list
+                values_2d = isinstance((list(dict_to_merge.values())[0]), list)
 
                 break
 

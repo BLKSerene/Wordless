@@ -45,7 +45,7 @@ def test_profiler():
         # Multiple files
         elif i == 1:
             for file in random.sample(files, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
@@ -124,8 +124,8 @@ def update_gui(err_msg, texts_stats_files):
             lang = re.search(r'(?<=\[)[a-z_]+(?=\])', files[i]['name']).group()
 
             if lang not in main.settings_global['syl_tokenizers']:
-                assert all([len_syls == 1 for len_syls in len_tokens_in_syls])
-                assert all([len_syls == 1 for len_syls in len_types_in_syls])
+                assert all((len_syls == 1 for len_syls in len_tokens_in_syls))
+                assert all((len_syls == 1 for len_syls in len_types_in_syls))
 
         # TTR/STTR
         assert ttr
@@ -150,10 +150,10 @@ def update_gui(err_msg, texts_stats_files):
 
         # The total of counts of n-length sentences should be equal to the count of tokens
         for i, stats in enumerate(texts_stats_files):
-            len_sentences_total = sum([
+            len_sentences_total = sum((
                 count_sentences_files[i] * len_sentence
                 for len_sentence, count_sentences_files in count_sentences_lens_files.items()
-            ])
+            ))
 
             assert len_sentences_total == sum(stats[3])
 
@@ -167,10 +167,10 @@ def update_gui(err_msg, texts_stats_files):
 
         # The total of counts of n-length tokens should be equal to the count of characters
         for i, stats in enumerate(texts_stats_files):
-            len_tokens_total = sum([
+            len_tokens_total = sum((
                 count_tokens_files[i] * len_token
                 for len_token, count_tokens_files in count_tokens_lens_files.items()
-            ])
+            ))
 
             assert len_tokens_total == sum(stats[5])
 

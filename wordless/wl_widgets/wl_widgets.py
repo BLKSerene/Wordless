@@ -28,7 +28,7 @@ from PyQt5.QtWidgets import (
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_utils import wl_misc
-from wordless.wl_widgets import wl_boxes, wl_buttons, wl_labels, wl_layouts, wl_lists, wl_widgets
+from wordless.wl_widgets import wl_boxes, wl_buttons, wl_labels, wl_layouts, wl_lists
 
 _tr = QCoreApplication.translate
 
@@ -62,7 +62,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
             self.inclusion_checkbox_ignore_tags,
             self.inclusion_checkbox_match_tags
-        ) = wl_widgets.wl_widgets_search_settings(self, tab = tab)
+        ) = wl_widgets_search_settings(self, tab = tab)
 
         self.inclusion_label_context_window = QLabel(self.tr('Context Window:'), self)
         (
@@ -71,7 +71,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             self.inclusion_spin_box_context_window_left,
             self.inclusion_label_context_window_right,
             self.inclusion_spin_box_context_window_right
-        ) = wl_widgets.wl_widgets_window(self)
+        ) = wl_widgets_window(self)
 
         self.inclusion_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
 
@@ -125,7 +125,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
             self.exclusion_checkbox_ignore_tags,
             self.exclusion_checkbox_match_tags
-        ) = wl_widgets.wl_widgets_search_settings(self, tab = tab)
+        ) = wl_widgets_search_settings(self, tab = tab)
 
         self.exclusion_label_context_window = QLabel(self.tr('Context Window:'), self)
         (
@@ -134,7 +134,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             self.exclusion_spin_box_context_window_left,
             self.exclusion_label_context_window_right,
             self.exclusion_spin_box_context_window_right
-        ) = wl_widgets.wl_widgets_window(self)
+        ) = wl_widgets_window(self)
 
         self.exclusion_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
 
@@ -617,7 +617,7 @@ def wl_widgets_context_settings(parent, tab):
     dialog_context_settings = Wl_Dialog_Context_Settings(main, tab = tab)
     main.__dict__[f'wl_context_settings_{tab}'] = dialog_context_settings
 
-    button_context_settings.clicked.connect(lambda: main.__dict__[f'wl_context_settings_{tab}'].load())
+    button_context_settings.clicked.connect(lambda: main.__dict__[f'wl_context_settings_{tab}'].load()) # pylint: disable=unnecessary-lambda
 
     return label_context_settings, button_context_settings
 
@@ -828,14 +828,14 @@ def wl_widgets_table_settings(parent, tables):
         for table in tables:
             table.show_pct = checkbox_show_pct.isChecked()
 
-            if any([table.model().item(0, i) for i in range(table.model().columnCount())]):
+            if any((table.model().item(0, i) for i in range(table.model().columnCount()))):
                 table.toggle_pct()
 
     def show_cumulative_changed():
         for table in tables:
             table.show_cumulative = checkbox_show_cumulative.isChecked()
 
-            if any([table.model().item(0, i) for i in range(table.model().columnCount())]):
+            if any((table.model().item(0, i) for i in range(table.model().columnCount()))):
                 table.toggle_cumulative()
 
     def show_breakdown_changed():
@@ -1074,7 +1074,7 @@ def wl_widgets_filter_results(parent, table):
     combo_box_filter_file = wl_boxes.Wl_Combo_Box(parent)
     button_filter_results = QPushButton(_tr('wl_widgets_filter_results', 'Filter Results in Table'), parent)
 
-    button_filter_results.clicked.connect(lambda: table.update_filters())
+    button_filter_results.clicked.connect(lambda: table.update_filters()) # pylint: disable=unnecessary-lambda
 
     table.itemChanged.connect(table_item_changed)
 

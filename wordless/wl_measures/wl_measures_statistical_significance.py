@@ -26,9 +26,11 @@ from wordless.wl_nlp import wl_nlp_utils
 
 _tr = QCoreApplication.translate
 
+# pylint: disable-next=unused-variable, unused-argument
+
 def get_freqs_marginal(c11, c12, c21, c22):
     freqs = numpy.array([[c11, c12], [c21, c22]], dtype = numpy.int64)
-    m1, m2 = scipy.stats.contingency.margins(freqs)
+    m1, m2 = scipy.stats.contingency.margins(freqs) # pylint: disable=unbalanced-tuple-unpacking
 
     c1x = int(m1[0][0])
     c2x = int(m1[1][0])

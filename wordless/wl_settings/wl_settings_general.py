@@ -193,6 +193,8 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
 
             return False
 
+        return None
+
 class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -366,15 +368,12 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         self.detect_encodings_changed()
 
     def validate_settings(self):
-        if (
+        return bool(
             self.validate_path_dir(self.line_edit_files_default_path)
             and self.validate_path_dir(self.line_edit_search_terms_default_path)
             and self.validate_path_dir(self.line_edit_stop_words_default_path)
             and self.confirm_path(self.line_edit_temp_files_default_path)
-        ):
-            return True
-        else:
-            return False
+        )
 
     def apply_settings(self):
         # Files
@@ -540,14 +539,11 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         self.combo_box_stop_words_default_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['stop_words']['default_encoding']))
 
     def validate_settings(self):
-        if (
+        return bool(
             self.confirm_path(self.line_edit_tables_default_path)
             and self.confirm_path(self.line_edit_search_terms_default_path)
             and self.confirm_path(self.line_edit_stop_words_default_path)
-        ):
-            return True
-        else:
-            return False
+        )
 
     def apply_settings(self):
         # Tables

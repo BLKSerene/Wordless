@@ -315,14 +315,14 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 
         self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
 
-    def file_changed(self, item):
+    def file_changed(self, item): # pylint: disable=unused-argument
         if list(self.main.wl_file_area.get_selected_files()):
             self.button_generate_table.setEnabled(True)
         else:
             self.button_generate_table.setEnabled(False)
 
-    def clr_table(self, count_headers = 1, confirm = False):
-        if super().clr_table(count_headers = 0, confirm = confirm):
+    def clr_table(self, num_headers = 1, confirm = False):
+        if super().clr_table(num_headers = 0, confirm = confirm):
             self.ins_header_hor(0, self.tr('Total'))
 
 class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
@@ -487,7 +487,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
             settings = self.main.settings_custom['profiler']
             files = list(self.main.wl_file_area.get_selected_files())
 
-            for i, file in enumerate(files):
+            for file in files:
                 text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_profiler(
                     self.main, text,
@@ -501,7 +501,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 text_total = wl_texts.Wl_Text_Blank()
 
                 # Set language for the combined text only if all texts are in the same language
-                if len(set([text.lang for text in texts])) == 1:
+                if len({text.lang for text in texts}) == 1:
                     text_total.lang = texts[0].lang
                 else:
                     text_total.lang = 'other'
@@ -558,7 +558,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 # Paragraph length
                 len_paras_sentences = [len(para) for para in text.tokens_multilevel]
                 len_paras_tokens = [
-                    sum([len(sentence) for sentence in para])
+                    sum((len(sentence) for sentence in para))
                     for para in text.tokens_multilevel
                 ]
 
@@ -573,7 +573,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 len_tokens_syls = [len(syls) for syls in text.syls_tokens]
                 len_tokens_chars = [len(token) for token in text.tokens_flat]
                 # Type length
-                len_types_syls = [len(syls) for syls in set([tuple(syls) for syls in text.syls_tokens])]
+                len_types_syls = [len(syls) for syls in {tuple(syls) for syls in text.syls_tokens}]
                 len_types_chars = [len(token_type) for token_type in set(text.tokens_flat)]
                 # Syllable length
                 len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
@@ -655,7 +655,7 @@ def generate_table(main, table):
                             file_lang = files[i]['lang']
                         # Total
                         else:
-                            if len(set([file['lang'] for file in files])) == 1:
+                            if len({file['lang'] for file in files}) == 1:
                                 file_lang = files[0]['lang']
                             else:
                                 file_lang = 'other'

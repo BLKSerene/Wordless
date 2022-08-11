@@ -45,6 +45,8 @@ def test_file_area():
         ).run()
 
     def open_file_ref(err_msg, files_to_open):
+        assert not err_msg
+
         wl_file_area.Wl_Worker_Open_Files(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),

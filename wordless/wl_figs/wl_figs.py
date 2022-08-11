@@ -48,7 +48,7 @@ def generate_line_chart(
     main,
     data_files_items, fig_settings,
     file_names_selected, label_x
-):
+): # pylint: disable=unused-argument
     data_files_items = get_data_ranks(data_files_items, fig_settings)
 
     items = [item for item, vals in data_files_items]
@@ -128,10 +128,7 @@ def generate_word_cloud(main, data_file_items, fig_settings):
         height = desktop_widget.height(),
         background_color = main.settings_custom['figs']['word_clouds']['bg_color'],
     )
-    word_cloud.generate_from_frequencies({
-        item: val
-        for item, val in zip(items, vals)
-    })
+    word_cloud.generate_from_frequencies(dict(zip(items, vals)))
 
     matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
     matplotlib.pyplot.axis('off')

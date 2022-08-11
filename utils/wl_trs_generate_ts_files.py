@@ -24,10 +24,10 @@ import subprocess
 files = []
 
 for file in pathlib.Path('../wordless').rglob('*.py'):
-    if all([
+    if all((
         os.path.sep + folder + os.path.sep not in str(file)
         for folder in ['build', 'dist', 'wl_tests', 'lemmatization', 'stop_word_lists']
-    ]):
+    )):
         files.append(str(file))
 
     # Use "_tr" as a shortcut of QCoreApplication.translate

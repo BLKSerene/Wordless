@@ -42,15 +42,13 @@ GET_LANG_FAMILY = {
 }
 
 def test_to_lang_code():
-    for lang_text in settings_langs.keys():
-        lang_code = wl_conversion.to_lang_code(main, lang_text)
-
-        assert lang_code == settings_langs[lang_text][0]
+    for lang_text, lang_code in settings_langs.items():
+        assert wl_conversion.to_lang_code(main, lang_text) == lang_code[0]
 
 def test_to_lang_codes():
     lang_codes = wl_conversion.to_lang_codes(main, settings_langs.keys())
 
-    assert list(lang_codes) == [settings_langs[lang_text][0] for lang_text in settings_langs.keys()]
+    assert list(lang_codes) == [lang_vals[0] for lang_vals in settings_langs.values()]
 
 def test_to_lang_text():
     for lang_code in TO_LANG_TEXT.keys():
@@ -94,10 +92,8 @@ def test_get_lang_family():
         assert lang_family == GET_LANG_FAMILY[lang_code]
 
 def test_to_encoding_code():
-    for encoding_text in settings_file_encodings.keys():
-        encoding_code = wl_conversion.to_encoding_code(main, encoding_text)
-
-        assert encoding_code == settings_file_encodings[encoding_text]
+    for encoding_text, encoding_code in settings_file_encodings.items():
+        assert wl_conversion.to_encoding_code(main, encoding_text) == encoding_code
 
 def test_to_encoding_text():
     for encoding_code in settings_file_encodings.values():

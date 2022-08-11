@@ -38,7 +38,7 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
 
         section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
-        if type(inputs) == str:
+        if isinstance(inputs, str):
             sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = section_size)
 
             for section in sections:
@@ -49,7 +49,7 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
             for tokens in texts:
                 syls_tokens.extend(wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer))
     else:
-        if type(inputs) == str:
+        if isinstance(inputs, str):
             syls_tokens = [[token] for token in wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)]
         else:
             syls_tokens = [[token] for token in inputs]

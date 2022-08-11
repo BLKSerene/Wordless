@@ -69,7 +69,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
 
-    def file_changed(self, item):
+    def file_changed(self, item): # pylint: disable=unused-argument
         if list(self.main.wl_file_area.get_selected_files()):
             self.button_generate_table.setEnabled(True)
             self.button_generate_fig.setEnabled(True)
@@ -101,8 +101,8 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
         self.setUpdatesEnabled(True)
 
-    def clr_table(self, count_headers = 1, confirm = False):
-        confirmed = super().clr_table(count_headers = count_headers, confirm = confirm)
+    def clr_table(self, num_headers = 1, confirm = False):
+        confirmed = super().clr_table(num_headers = num_headers, confirm = confirm)
 
         if confirmed:
             self.cols_breakdown_position = set()
@@ -658,7 +658,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
             window_right = settings['generation_settings']['window_right']
 
             # Calculate window size
-            if window_left < 0 and window_right > 0:
+            if window_left < 0 < window_right:
                 window_size = window_right - window_left
             else:
                 window_size = window_right - window_left + 1
@@ -707,8 +707,8 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 )
 
                 if search_terms:
-                    len_search_term_min = min([len(search_term) for search_term in search_terms])
-                    len_search_term_max = max([len(search_term) for search_term in search_terms])
+                    len_search_term_min = min((len(search_term) for search_term in search_terms))
+                    len_search_term_max = max((len(search_term) for search_term in search_terms))
                 else:
                     len_search_term_min = 1
                     len_search_term_max = 1
@@ -749,7 +749,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         tags_left = []
                         tags_right = []
 
-                        if window_left < 0 and window_right > 0:
+                        if window_left < 0 < window_right:
                             # Limit Searching
                             if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_left = text.tags[max(0, i + window_left) : i]
@@ -954,7 +954,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                     c22 = cxxs[len_node] - c11 - c12 - c21
 
                     # Test Statistic & p-value
-                    if func_statistical_significance == wl_measures_statistical_significance.z_score_berry_rogghe:
+                    if func_statistical_significance is wl_measures_statistical_significance.z_score_berry_rogghe:
                         colligations_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22, span))
                     else:
                         colligations_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22))

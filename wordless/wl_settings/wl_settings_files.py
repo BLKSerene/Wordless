@@ -171,7 +171,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         self.button_reset = QPushButton(self.tr('Reset'), self)
 
-        self.button_reset.clicked.connect(lambda: self.reset_table())
+        self.button_reset.clicked.connect(lambda: self.reset_table()) # pylint: disable=unnecessary-lambda
 
         self.reset_table()
 

@@ -41,7 +41,7 @@ def test_generate_line_chart():
         file['selected'] = False
 
     for file in random.sample(files, 2):
-        file['selected'] = True
+        file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
     wl_figs.generate_line_chart(
         main,

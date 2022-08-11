@@ -29,8 +29,8 @@ _tr = QCoreApplication.translate
 
 def wl_lemmatize(
     main, inputs, lang,
-    tokenized = _tr('wl_lemmatize', 'No'),
-    tagged = _tr('wl_lemmatize', 'No'),
+    tokenized = False,
+    tagged = False,
     lemmatizer = 'default'
 ):
     if inputs and lang in main.settings_global['lemmatizers']:
@@ -51,7 +51,7 @@ def wl_lemmatize(
 
         section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
-        if type(inputs) == str:
+        if isinstance(inputs, str):
             # Input of SudachiPy cannot be more than 49149 BYTES
             if lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
                 # Around 100 tokens per line 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6 / 100)
@@ -63,7 +63,7 @@ def wl_lemmatize(
                 lemmas.extend(wl_lemmatize_text(main, section, lang, tokenized, tagged, lemmatizer))
         else:
             # Input of SudachiPy cannot be more than 49149 BYTES
-            if lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and sum([len(token) for token in inputs]) > 49149 // 4:
+            if lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and sum((len(token) for token in inputs)) > 49149 // 4:
                 # Around 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6)
                 texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = 2000)
             else:
@@ -72,14 +72,14 @@ def wl_lemmatize(
             for tokens in texts:
                 lemmas.extend(wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer))
     else:
-        if type(inputs) == str:
+        if isinstance(inputs, str):
             lemmas = wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)
         else:
             lemmas = inputs.copy()
 
     return lemmas
 
-def wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer):
+def wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer): # pylint: disable=unused-argument
     lemmas = []
 
     # spaCy
@@ -158,14 +158,14 @@ def wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer):
 
     # Remove empty lemmas and strip whitespace in tokens
     lemmas = [
-        str(lemma).strip()
+        lemma_clean
         for lemma in lemmas
-        if str(lemma).strip()
+        if (lemma_clean := str(lemma).strip())
     ]
 
     return lemmas
 
-def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
+def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer): # pylint: disable=unused-argument
     empty_offsets = []
     lemmas = []
 
@@ -173,7 +173,7 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
 
     re_tags = wl_matching.get_re_tags(main, tag_type = 'body')
 
-    if tagged == _tr('wl_lemmatize_tokens', 'Yes'):
+    if tagged:
         tags = [''.join(re.findall(re_tags, token)) for token in tokens]
         tokens = [re.sub(re_tags, '', token) for token in tokens]
     else:
@@ -307,8 +307,8 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer):
                 # Align tokens
                 while i_tokens < len_tokens - 1 or i_lemmas < len_lemmas - 1:
                     if lang in ['zho', 'jpn', 'tha', 'bod']:
-                        len_tokens_temp = sum([len(token) for token in tokens_temp])
-                        len_lemma_tokens_temp = sum([len(token) for token in lemma_tokens_temp])
+                        len_tokens_temp = sum((len(token) for token in tokens_temp))
+                        len_lemma_tokens_temp = sum((len(token) for token in lemma_tokens_temp))
                     else:
                         # Compare length in characters with whitespace
                         len_tokens_temp = len(' '.join(tokens_temp))

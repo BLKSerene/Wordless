@@ -39,7 +39,7 @@ class Wl_Item_Delegate(QStyledItemDelegate):
         self.col = col
         self.enabled = True
 
-    def createEditor(self, parent, option, index):
+    def createEditor(self, parent, option, index): # pylint: disable=unused-argument
         if self.widget:
             widget = self.widget(parent)
 
@@ -48,15 +48,21 @@ class Wl_Item_Delegate(QStyledItemDelegate):
 
             return widget
 
+        return None
+
     def set_enabled(self, enabled):
         self.enabled = enabled
 
 # Combo boxes
 class Wl_Item_Delegate_Combo_Box(Wl_Item_Delegate):
-    def __init__(self, parent, items = [], row = None, col = None, editable = False):
+    def __init__(self, parent, items = None, row = None, col = None, editable = False):
         super().__init__(parent, row = row, col = col)
 
-        self.items = items
+        if items is None:
+            self.items = []
+        else:
+            self.items = items
+
         self.editable = editable
 
     def paint(self, painter, option, index):
@@ -99,6 +105,8 @@ class Wl_Item_Delegate_Combo_Box(Wl_Item_Delegate):
                 combo_box.setEnabled(False)
 
             return combo_box
+        else:
+            return None
 
     def is_editable(self, index):
         rows_editable = cols_editable = False
@@ -124,3 +132,5 @@ class Wl_Item_Delegate_Combo_Box_Custom(Wl_Item_Delegate_Combo_Box):
                 combo_box.setEnabled(False)
 
             return combo_box
+        else:
+            return None

@@ -1,0 +1,70 @@
+# ----------------------------------------------------------------------
+# Wordless: CI - Pylint - Configuration File
+# Copyright (C) 2018-2022  Ye Lei (叶磊)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# ----------------------------------------------------------------------
+
+[MASTER]
+
+extension-pkg-whitelist=
+    PyQt5
+
+[MESSAGES CONTROL]
+
+disable=
+    # C103, C114, C115, C116
+    invalid-name,
+    missing-module-docstring,
+    missing-class-docstring,
+    missing-function-docstring,
+    # C301, C302
+    line-too-long,
+    too-many-lines,
+    # C413, C415
+    wrong-import-position,
+    import-outside-toplevel,
+
+    # R401
+    cyclic-import,
+    # R801
+    duplicate-code,
+    # R901, R902, R903, R904, R912, R913, R914, R915, R916
+    too-many-ancestors,
+    too-many-instance-attributes,
+    too-few-public-methods,
+    too-many-public-methods,
+    too-many-boolean-expressions,
+    too-many-arguments,
+    too-many-locals,
+    too-many-statements,
+    too-many-branches,
+    # R1702, R1705, R1723, R1724
+    too-many-nested-blocks,
+    no-else-return,
+    no-else-break,
+    no-else-continue,
+
+    # W201, W212
+    attribute-defined-outside-init,
+    protected-access,
+    # W511
+    fixme,
+    # W621
+    redefined-outer-name,
+    # W703
+    broad-except,
+
+    # E401
+    import-error

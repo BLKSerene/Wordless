@@ -58,16 +58,16 @@ def test_keyword_extractor():
         # Single reference file & multiple observed files
         if i == i_multi_observed:
             for file in random.sample(files_observed, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
             random.choice(files_ref)['selected'] = True
         # Multiple reference files & multiple observed files
         elif i == i_multi_observed_ref:
             for file in random.sample(files_observed, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
             for file in random.sample(files_ref, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
         # Single reference file & single observed file
         elif i % 2 == 0:
             random.choice(files_observed)['selected'] = True
@@ -78,7 +78,7 @@ def test_keyword_extractor():
             random.choice(files_observed)['selected'] = True
 
             for file in random.sample(files_ref, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
         file_names_observed = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
@@ -125,7 +125,7 @@ def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
         # Keyword
         assert keyword
         # Frequency (observed files)
-        assert any([freq_file for freq_file in freq_files[1:-1]])
+        assert any((freq_file for freq_file in freq_files[1:-1]))
         # Frequency (total)
         assert freq_files[-1]
         assert freq_files[-1] == sum(freq_files[1:-1])

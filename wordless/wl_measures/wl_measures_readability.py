@@ -52,7 +52,7 @@ def get_counts(main, text):
     # Count of syllables
     if 'count_syls' not in text.__dict__:
         text.syls_words = wl_syl_tokenization.wl_syl_tokenize(main, text.words_flat, lang = text.lang)
-        text.count_syls = sum([len(syls) for syls in text.syls_words])
+        text.count_syls = sum((len(syls) for syls in text.syls_words))
 
     # Count of characters
     if 'count_chars_all' not in text.__dict__:
@@ -282,7 +282,7 @@ def spache_grade_level(main, text):
             grade_levels = []
 
             # Calculate the average grade level of 3 samples
-            for i in range(3):
+            for _ in range(3):
                 samples = []
                 i_word = 0
                 count_sentences_samples = 0

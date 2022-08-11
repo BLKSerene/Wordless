@@ -291,11 +291,11 @@ for element_context in soup.select('context'):
             tr = element_src.text
 
             # Languages
-            for lang in TRS_LANGS:
+            for lang, trs in TRS_LANGS.items():
                 if lang in tr:
-                    tr = tr.replace(lang, TRS_LANGS[lang][0])
+                    tr = tr.replace(lang, trs[0])
                     # Excludes cases such as Mac OS Romanian in encodings
-                    tr = tr.replace(f'(Mac OS {TRS_LANGS[lang][0]})', f'(Mac OS {lang})')
+                    tr = tr.replace(f'(Mac OS {trs[0]})', f'(Mac OS {lang})')
                     # Excludes cases such as PyThaiNLP in third-party NLP libraries
                     tr = tr.replace('Py泰语NLP', 'PyThaiNLP')
 
@@ -304,36 +304,36 @@ for element_context in soup.select('context'):
                     break
 
             # Encodings
-            for encoding in TRS_ENCODINGS:
+            for encoding, trs in TRS_ENCODINGS.items():
                 if encoding in tr:
-                    tr = tr.replace(encoding, TRS_ENCODINGS[encoding][0])
+                    tr = tr.replace(encoding, trs[0])
 
                     tr_hit = True
 
                     break
 
             # File types
-            for file_type in TRS_FILE_TYPES:
+            for file_type, trs in TRS_FILE_TYPES.items():
                 if tr == file_type:
-                    tr = TRS_FILE_TYPES[tr][0]
+                    tr = trs[0]
 
                     tr_hit = True
 
                     break
 
             # NLP utils
-            for util in TRS_NLP_UTILS:
+            for util, trs in TRS_NLP_UTILS.items():
                 if util in tr:
-                    tr = tr.replace(util, TRS_NLP_UTILS[util][0])
+                    tr = tr.replace(util, trs[0])
 
                     tr_hit = True
 
                     break
 
             # Misc
-            for item in TRS_MISC:
+            for item, trs in TRS_MISC.items():
                 if tr == item:
-                    tr = TRS_MISC[tr][0]
+                    tr = trs[0]
 
                     tr_hit = True
 

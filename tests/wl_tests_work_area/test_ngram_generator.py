@@ -54,7 +54,7 @@ def test_ngram_generator():
         # Multiple files without search terms
         elif i == i_search_multi:
             for file in random.sample(files, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
             main.settings_custom['ngram_generator']['search_settings']['search_settings'] = False
         # Single file with search terms
@@ -65,7 +65,7 @@ def test_ngram_generator():
         # Multiple files with search terms
         elif i % 2 == 1:
             for file in random.sample(files, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
             main.settings_custom['ngram_generator']['search_settings']['search_settings'] = True
 

@@ -332,7 +332,7 @@ class Wl_Settings(QDialog):
 
         self.tree_settings.node_selected_old = self.tree_settings.model().item(0)
 
-    def selection_changed(self, selected, deselected):
+    def selection_changed(self, selected, deselected): # pylint: disable=unused-argument
         if self.tree_settings.selectionModel().selectedIndexes():
             if self.validate_settings():
                 i_selected = self.tree_settings.selectionModel().currentIndex()

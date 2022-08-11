@@ -48,12 +48,12 @@ def check_file_paths_unsupported(main, file_paths):
 
     return file_paths_ok, file_paths_unsupported
 
-def check_file_paths_empty(main, file_paths):
+def check_file_paths_empty(main, file_paths): # pylint: disable=unused-argument
     file_paths_ok = []
     file_paths_empty = []
 
     if file_paths:
-        for i, file_path in enumerate(file_paths):
+        for file_path in file_paths:
             file_path = wl_misc.get_normalized_path(file_path)
 
             if os.stat(file_path).st_size:

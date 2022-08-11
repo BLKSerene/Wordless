@@ -582,18 +582,18 @@ class Wl_Main(QMainWindow):
     def restart(self, save_settings = True):
         if getattr(sys, '_MEIPASS', False):
             if platform.system() == 'Windows':
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless.exe')])
+                subprocess.Popen([wl_misc.get_normalized_path('Wordless.exe')]) # pylint: disable=consider-using-with
             elif platform.system() == 'Darwin':
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless')])
+                subprocess.Popen([wl_misc.get_normalized_path('Wordless')]) # pylint: disable=consider-using-with
             elif platform.system() == 'Linux':
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless')])
+                subprocess.Popen([wl_misc.get_normalized_path('Wordless')]) # pylint: disable=consider-using-with
         else:
             if platform.system() == 'Windows':
-                subprocess.Popen(['python', wl_misc.get_normalized_path(__file__)])
+                subprocess.Popen(['python', wl_misc.get_normalized_path(__file__)]) # pylint: disable=consider-using-with
             elif platform.system() == 'Darwin':
-                subprocess.Popen(['python3', wl_misc.get_normalized_path(__file__)])
+                subprocess.Popen(['python3', wl_misc.get_normalized_path(__file__)]) # pylint: disable=consider-using-with
             elif platform.system() == 'Linux':
-                subprocess.Popen(['python3.8', wl_misc.get_normalized_path(__file__)])
+                subprocess.Popen(['python3.8', wl_misc.get_normalized_path(__file__)]) # pylint: disable=consider-using-with
 
         if save_settings:
             self.save_settings()
@@ -694,14 +694,14 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         with open('ACKNOWLEDGMENTS.md', 'r', encoding = 'utf_8') as f:
             for line in f:
                 if re.search(r'^[0-9]+\s*\|', line):
-                    _, name, ver, authors, license = line.split('|')
+                    _, name, ver, authors, proj_license = line.split('|')
 
                     name = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', name.strip())
                     ver = ver.strip()
                     authors = authors.strip()
-                    license = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', license.strip())
+                    proj_license = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', proj_license.strip())
 
-                    acks.append([name, ver, authors, license])
+                    acks.append([name, ver, authors, proj_license])
 
         self.label_acks = wl_labels.Wl_Label_Dialog(
             self.tr('''
@@ -726,11 +726,11 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
 
         self.table_acks.disable_updates()
 
-        for i, (name, ver, authors, license) in enumerate(acks):
+        for i, (name, ver, authors, proj_license) in enumerate(acks):
             self.table_acks.setIndexWidget(self.table_acks.model().index(i, 0), wl_labels.Wl_Label_Html(name, self))
             self.table_acks.setIndexWidget(self.table_acks.model().index(i, 1), wl_labels.Wl_Label_Html_Centered(ver, self))
             self.table_acks.setIndexWidget(self.table_acks.model().index(i, 2), wl_labels.Wl_Label_Html(authors, self))
-            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 3), wl_labels.Wl_Label_Html_Centered(license, self))
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 3), wl_labels.Wl_Label_Html_Centered(proj_license, self))
 
         self.table_acks.enable_updates()
 
@@ -940,7 +940,7 @@ class Worker_Check_Updates(QObject):
             updates_status = 'network_err'
 
         if self.stopped:
-            updates_status == ''
+            updates_status = ''
 
         self.worker_done.emit(updates_status, ver_new)
 
@@ -1279,7 +1279,7 @@ if __name__ == '__main__':
 
     # Check for updates on startup
     if wl_main.settings_custom['general']['update_settings']['check_updates_on_startup']:
-        wl_main.dialog_check_updates = wl_main.help_check_updates(on_startup = True)
+        wl_main.help_check_updates(on_startup = True)
 
     # Show changelog on first startup
     # * Do not do this on macOS since the popped-up changelog window cannot be closed sometimes

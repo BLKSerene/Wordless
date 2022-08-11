@@ -108,10 +108,10 @@ def is_han(char):
         (0x2F800, 0x2FA1F)
     ]
 
-    return any([
+    return any((
         unicode_start <= ord(char) <= unicode_end
         for unicode_start, unicode_end in unicode_han
-    ])
+    ))
 
 def is_eng(char):
     # Basic Latin:
@@ -150,10 +150,10 @@ def is_kana(char):
         (0x1B100, 0x1B12F)
     ]
 
-    return any([
+    return any((
         unicode_start <= ord(char) <= unicode_end
         for unicode_start, unicode_end in unicode_kana
-    ])
+    ))
 
 def is_thai(char):
     # Thai:
@@ -166,16 +166,16 @@ def is_tibetan(char):
     return 0x0F00 <= ord(char) <= 0x0FFF
 
 def has_han(token):
-    return any([is_han(char) for char in token])
+    return any((is_han(char) for char in token))
 
 def is_eng_token(token):
-    return all([is_eng(char) for char in token])
+    return all((is_eng(char) for char in token))
 
 def has_kana(token):
-    return any([is_kana(char) for char in token])
+    return any((is_kana(char) for char in token))
 
 def has_thai(token):
-    return any([is_thai(char) for char in token])
+    return any((is_thai(char) for char in token))
 
 def has_tibetan(token):
-    return any([is_tibetan(char) for char in token])
+    return any((is_tibetan(char) for char in token))

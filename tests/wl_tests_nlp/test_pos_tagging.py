@@ -89,13 +89,13 @@ def test_pos_tag(lang, pos_tagger):
     print(tokens_tagged_universal)
 
     # Check for missing tags
-    assert all([tag for token, tag in tokens_tagged])
-    assert all([tag for token, tag in tokens_tagged_universal])
-    assert all([tag for token, tag in tokens_tagged_tokenized])
-    assert all([tag for token, tag in tokens_tagged_universal_tokenized])
+    assert all((tag for token, tag in tokens_tagged))
+    assert all((tag for token, tag in tokens_tagged_universal))
+    assert all((tag for token, tag in tokens_tagged_tokenized))
+    assert all((tag for token, tag in tokens_tagged_universal_tokenized))
     # Universal tags should not all be "X"
-    assert any([tag for token, tag in tokens_tagged_universal if tag != 'X'])
-    assert any([tag for token, tag in tokens_tagged_universal_tokenized if tag != 'X'])
+    assert any((tag for token, tag in tokens_tagged_universal if tag != 'X'))
+    assert any((tag for token, tag in tokens_tagged_universal_tokenized if tag != 'X'))
 
     # Tokenization should not be modified
     assert len(tokens) == len(tokens_tagged_tokenized) == len(tokens_tagged_universal_tokenized)

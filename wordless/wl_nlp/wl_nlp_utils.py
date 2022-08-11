@@ -45,6 +45,8 @@ def _to_lang_util_text(main, util_type, util_code):
         if code == util_code:
             return text
 
+    return None
+
 def to_lang_util_text(main, util_type, util_code):
     return _to_lang_util_text(main, util_type, util_code)
 
