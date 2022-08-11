@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import platform
+import re
 
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QDesktopWidget
@@ -46,7 +47,7 @@ def get_data_ranks(data_files_items, fig_settings):
 def generate_line_chart(
     main,
     data_files_items, fig_settings,
-    freq_data, file_names_selected, label_x
+    file_names_selected, label_x
 ):
     data_files_items = get_data_ranks(data_files_items, fig_settings)
 
@@ -54,7 +55,7 @@ def generate_line_chart(
     vals = numpy.array([vals for item, vals in data_files_items])
 
     # Frequency data
-    if freq_data:
+    if fig_settings['use_data'] == _tr('wl_figs', 'Frequency') or re.search(_tr('wl_figs', r'^[LR][1-9][0-9]*$'), fig_settings['use_data']):
         if fig_settings['use_cumulative']:
             vals = numpy.cumsum(vals, axis = 0)
 

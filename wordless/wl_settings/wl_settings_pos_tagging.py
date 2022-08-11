@@ -262,8 +262,8 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         return True
 
 # Part-of-speech Tagging - Tagsets
-class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
-    def __init__(self, main):
+class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
+    def __init__(self, main, scroll_area_settings):
         super().__init__(main)
 
         self.settings_global = self.main.settings_global['pos_taggers']
@@ -272,6 +272,7 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.pos_tag_mappings_loaded = False
 
+        self.scroll_area_settings = scroll_area_settings
         self.settings_tagsets = QWidget(self)
 
         # Preview Settings
@@ -363,7 +364,6 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_mapping_settings, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(1, 1)
 
     def preview_lang_changed(self):
         self.settings_custom['preview_settings']['preview_lang'] = wl_conversion.to_lang_code(
@@ -430,6 +430,9 @@ class Wl_Settings_Tagsets(wl_settings.Wl_Settings_Node):
 
             self.table_mappings.clr_table()
             self.table_mappings.setEnabled(False)
+
+        # Scroll to top
+        self.scroll_area_settings.verticalScrollBar().setValue(0)
 
     def update_gui(self, mappings):
         self.table_mappings.clr_table(len(mappings))

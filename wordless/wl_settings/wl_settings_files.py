@@ -42,42 +42,42 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         # Default Settings
         self.group_box_default_settings = QGroupBox(self.tr('Default Settings'), self)
 
-        self.label_files_encoding = QLabel(self.tr('Encoding:'), self)
-        self.combo_box_files_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
-        self.label_files_lang = QLabel(self.tr('Language:'), self)
-        self.combo_box_files_lang = wl_boxes.Wl_Combo_Box_Lang(self)
-        self.label_files_tokenized = QLabel(self.tr('Tokenized:'), self)
-        self.combo_box_files_tokenized = wl_boxes.Wl_Combo_Box_Yes_No(self)
-        self.label_files_tagged = QLabel(self.tr('Tagged:'), self)
-        self.combo_box_files_tagged = wl_boxes.Wl_Combo_Box_Yes_No(self)
+        self.label_encoding = QLabel(self.tr('Encoding:'), self)
+        self.combo_box_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
+        self.label_lang = QLabel(self.tr('Language:'), self)
+        self.combo_box_lang = wl_boxes.Wl_Combo_Box_Lang(self)
+        self.label_tokenized = QLabel(self.tr('Tokenized:'), self)
+        self.combo_box_tokenized = wl_boxes.Wl_Combo_Box_Yes_No(self)
+        self.label_tagged = QLabel(self.tr('Tagged:'), self)
+        self.combo_box_tagged = wl_boxes.Wl_Combo_Box_Yes_No(self)
 
         self.group_box_default_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_default_settings.layout().addWidget(self.label_files_encoding, 0, 0)
-        self.group_box_default_settings.layout().addWidget(self.combo_box_files_encoding, 0, 1)
-        self.group_box_default_settings.layout().addWidget(self.label_files_lang, 1, 0)
-        self.group_box_default_settings.layout().addWidget(self.combo_box_files_lang, 1, 1)
-        self.group_box_default_settings.layout().addWidget(self.label_files_tokenized, 2, 0)
-        self.group_box_default_settings.layout().addWidget(self.combo_box_files_tokenized, 2, 1)
-        self.group_box_default_settings.layout().addWidget(self.label_files_tagged, 3, 0)
-        self.group_box_default_settings.layout().addWidget(self.combo_box_files_tagged, 3, 1)
+        self.group_box_default_settings.layout().addWidget(self.label_encoding, 0, 0)
+        self.group_box_default_settings.layout().addWidget(self.combo_box_encoding, 0, 1)
+        self.group_box_default_settings.layout().addWidget(self.label_lang, 1, 0)
+        self.group_box_default_settings.layout().addWidget(self.combo_box_lang, 1, 1)
+        self.group_box_default_settings.layout().addWidget(self.label_tokenized, 2, 0)
+        self.group_box_default_settings.layout().addWidget(self.combo_box_tokenized, 2, 1)
+        self.group_box_default_settings.layout().addWidget(self.label_tagged, 3, 0)
+        self.group_box_default_settings.layout().addWidget(self.combo_box_tagged, 3, 1)
 
         self.group_box_default_settings.layout().setColumnStretch(3, 1)
 
         # Detection Settings
         self.group_box_auto_detection_settings = QGroupBox(self.tr('Auto-detection Settings'), self)
 
-        self.label_files_number_lines = QLabel(self.tr('Number of lines to scan in each file:'), self)
+        self.label_num_lines = QLabel(self.tr('Number of lines to scan in each file:'), self)
         (
-            self.spin_box_files_number_lines,
-            self.checkbox_files_number_lines_no_limit
+            self.spin_box_num_lines,
+            self.checkbox_num_lines_no_limit
         ) = wl_widgets.wl_widgets_no_limit(self)
 
-        self.spin_box_files_number_lines.setRange(1, 1000000)
+        self.spin_box_num_lines.setRange(1, 1000000)
 
         self.group_box_auto_detection_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_auto_detection_settings.layout().addWidget(self.label_files_number_lines, 0, 0)
-        self.group_box_auto_detection_settings.layout().addWidget(self.spin_box_files_number_lines, 0, 1)
-        self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_files_number_lines_no_limit, 0, 2)
+        self.group_box_auto_detection_settings.layout().addWidget(self.label_num_lines, 0, 0)
+        self.group_box_auto_detection_settings.layout().addWidget(self.spin_box_num_lines, 0, 1)
+        self.group_box_auto_detection_settings.layout().addWidget(self.checkbox_num_lines_no_limit, 0, 2)
 
         self.group_box_auto_detection_settings.layout().setColumnStretch(3, 1)
 
@@ -112,28 +112,28 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_custom)
 
         # Default Settings
-        self.combo_box_files_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['default_settings']['encoding']))
-        self.combo_box_files_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['default_settings']['lang']))
-        self.combo_box_files_tokenized.setCurrentText(wl_conversion.to_yes_no_text(settings['default_settings']['tokenized']))
-        self.combo_box_files_tagged.setCurrentText(wl_conversion.to_yes_no_text(settings['default_settings']['tagged']))
+        self.combo_box_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['default_settings']['encoding']))
+        self.combo_box_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['default_settings']['lang']))
+        self.combo_box_tokenized.setCurrentText(wl_conversion.to_yes_no_text(settings['default_settings']['tokenized']))
+        self.combo_box_tagged.setCurrentText(wl_conversion.to_yes_no_text(settings['default_settings']['tagged']))
 
         # Auto-detection Settings
-        self.spin_box_files_number_lines.setValue(settings['auto_detection_settings']['number_lines'])
-        self.checkbox_files_number_lines_no_limit.setChecked(settings['auto_detection_settings']['number_lines_no_limit'])
+        self.spin_box_num_lines.setValue(settings['auto_detection_settings']['num_lines'])
+        self.checkbox_num_lines_no_limit.setChecked(settings['auto_detection_settings']['num_lines_no_limit'])
 
         # Miscellaneous Settings
         self.spin_box_read_files_in_chunks.setValue(settings['misc_settings']['read_files_in_chunks'])
 
     def apply_settings(self):
         # Default Settings
-        self.settings_custom['default_settings']['encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_files_encoding.currentText())
-        self.settings_custom['default_settings']['lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_files_lang.currentText())
-        self.settings_custom['default_settings']['tokenized'] = wl_conversion.to_yes_no_code(self.combo_box_files_tokenized.currentText())
-        self.settings_custom['default_settings']['tagged'] = wl_conversion.to_yes_no_code(self.combo_box_files_tagged.currentText())
+        self.settings_custom['default_settings']['encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_encoding.currentText())
+        self.settings_custom['default_settings']['lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_lang.currentText())
+        self.settings_custom['default_settings']['tokenized'] = wl_conversion.to_yes_no_code(self.combo_box_tokenized.currentText())
+        self.settings_custom['default_settings']['tagged'] = wl_conversion.to_yes_no_code(self.combo_box_tagged.currentText())
 
         # Auto-detection Settings
-        self.settings_custom['auto_detection_settings']['number_lines'] = self.spin_box_files_number_lines.value()
-        self.settings_custom['auto_detection_settings']['number_lines_no_limit'] = self.checkbox_files_number_lines_no_limit.isChecked()
+        self.settings_custom['auto_detection_settings']['num_lines'] = self.spin_box_num_lines.value()
+        self.settings_custom['auto_detection_settings']['num_lines_no_limit'] = self.checkbox_num_lines_no_limit.isChecked()
 
         # Miscellaneous Settings
         self.settings_custom['misc_settings']['read_files_in_chunks'] = self.spin_box_read_files_in_chunks.value()
@@ -417,7 +417,7 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
 
         super().item_changed(item)
 
-class Wl_Settings_Tags(wl_settings.Wl_Settings_Node):
+class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 

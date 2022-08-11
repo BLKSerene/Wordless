@@ -1087,8 +1087,8 @@ def init_settings_default(main):
             },
 
             'auto_detection_settings': {
-                'number_lines': 100,
-                'number_lines_no_limit': False
+                'num_lines': 100,
+                'num_lines_no_limit': False
             },
 
             'misc_settings': {
@@ -1821,10 +1821,15 @@ def init_settings_default(main):
 
             # Settings - Measures - Bayes Factor
             'bayes_factor': {
+                'log_likelihood_ratio_test': {
+                    'apply_correction': False
+                },
+
                 'students_t_test_2_sample': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative Frequency')
-                },
+                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'direction': _tr('init_settings_default', 'Two-tailed')
+                }
             },
 
             # Settings - Measures - Effect Size

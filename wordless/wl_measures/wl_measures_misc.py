@@ -21,7 +21,9 @@ import numpy
 def modes(inputs):
     inputs_modes = []
 
-    if inputs:
+    inputs = numpy.array(inputs)
+
+    if inputs.size > 0:
         unique, unique_counts = numpy.unique(inputs, return_counts = True)
         unique_counts_max = numpy.max(unique_counts)
 

@@ -772,10 +772,9 @@ def generate_fig(main):
                     text_effect_size = main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
                     if settings['fig_settings']['use_data'] == _tr('Wl_Table_Keyword_Extractor', 'Frequency'):
-                        wl_figs_freqs.wl_fig_freqs_keyword_extractor(
+                        wl_figs_freqs.wl_fig_freqs(
                             main, keywords_freq_files,
-                            fig_settings = settings['fig_settings'],
-                            label_x = _tr('Wl_Table_Keyword_Extractor', 'Keyword')
+                            tab = 'keyword_extractor'
                         )
                     else:
                         if settings['fig_settings']['use_data'] == text_test_stat:
@@ -799,10 +798,9 @@ def generate_fig(main):
                                 for keyword, stats_files in keywords_stats_files.items()
                             }
 
-                        wl_figs_stats.wl_fig_stats_keyword_extractor(
+                        wl_figs_stats.wl_fig_stats(
                             main, keywords_stat_files,
-                            fig_settings = settings['fig_settings'],
-                            label_x = _tr('Wl_Table_Keyword_Extractor', 'Keyword')
+                            tab = 'keyword_extractor'
                         )
 
                     # Hide the progress dialog early so that the main window will not obscure the generated figure

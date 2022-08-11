@@ -23,21 +23,40 @@ from wordless.wl_utils import wl_sorting
 
 _tr = QCoreApplication.translate
 
-def wl_fig_freqs(main, freq_files_items, fig_settings, label_x):
-    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_freqs', 'Total')]
+def wl_fig_freqs(main, freq_files_items, tab):
+    if tab == 'keyword_extractor':
+        file_names_selected = [_tr('wl_fig_freqs', 'Reference Files'), *main.wl_file_area.get_selected_file_names(), _tr('wl_fig_freqs', 'Total')]
+    else:
+        file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_freqs', 'Total')]
+
+    fig_settings = main.settings_custom[tab]['fig_settings']
     col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
 
-    freq_files_items = wl_sorting.sorted_freq_files_items(
-        freq_files_items,
-        sort_by_col = col_sort_by_file
-    )
+    if tab == 'keyword_extractor':
+        freq_files_items = wl_sorting.sorted_freq_files_items_keyword_extractor(
+            freq_files_items,
+            sort_by_col = col_sort_by_file
+        )
+    else:
+        freq_files_items = wl_sorting.sorted_freq_files_items(
+            freq_files_items,
+            sort_by_col = col_sort_by_file
+        )
 
     # Line Chart
     if fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Line Chart'):
+        if tab == 'wordlist_generator':
+            label_x = _tr('wl_fig_freqs', 'Token')
+        elif tab == 'ngram_generator':
+            label_x = _tr('wl_fig_freqs', 'N-gram')
+        elif tab in ['collocation_extractor', 'colligation_extractor']:
+            label_x = _tr('wl_fig_freqs', 'Collocate')
+        elif tab == 'keyword_extractor':
+            label_x = _tr('wl_fig_freqs', 'Keyword')
+
         wl_figs.generate_line_chart(
             main, freq_files_items,
             fig_settings = fig_settings,
-            freq_data = True,
             file_names_selected = file_names_selected,
             label_x = label_x
         )
@@ -54,30 +73,3 @@ def wl_fig_freqs(main, freq_files_items, fig_settings, label_x):
         # Network Graph
         elif fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Network Graph'):
             wl_figs.generate_network_graph(main, items_freq_file, fig_settings = fig_settings)
-
-def wl_fig_freqs_keyword_extractor(main, freq_files_items, fig_settings, label_x):
-    file_names_selected = [_tr('wl_fig_freqs', 'Reference Files'), *main.wl_file_area.get_selected_file_names(), _tr('wl_fig_freqs', 'Total')]
-    col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
-
-    freq_files_items = wl_sorting.sorted_freq_files_items_keyword_extractor(
-        freq_files_items,
-        sort_by_col = col_sort_by_file
-    )
-
-    # Line Chart
-    if fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Line Chart'):
-        wl_figs.generate_line_chart(
-            main, freq_files_items,
-            fig_settings = fig_settings,
-            freq_data = True,
-            file_names_selected = file_names_selected,
-            label_x = label_x
-        )
-    # Word Cloud
-    elif fig_settings['graph_type'] == _tr('wl_fig_freqs', 'Word Cloud'):
-        items_freq_file = [
-            (item, freq_files[col_sort_by_file])
-            for item, freq_files in freq_files_items
-        ]
-
-        wl_figs.generate_word_cloud(main, items_freq_file, fig_settings = fig_settings)

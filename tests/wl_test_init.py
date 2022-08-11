@@ -26,6 +26,7 @@ from PyQt5.QtCore import QObject
 from PyQt5.QtWidgets import QApplication, QWidget
 
 from wordless import wl_file_area
+from wordless.wl_checking import wl_checking_misc
 from wordless.wl_settings import wl_settings_default, wl_settings_global
 
 # Chinese (Traditional), English, French, German, Greek, Italian, Japanese, Russian, Spanish
@@ -46,7 +47,12 @@ if platform.system() in ['Windows', 'Darwin']:
             # Custom settings
             if os.path.exists('tests/wl_settings.pickle'):
                 with open('tests/wl_settings.pickle', 'rb') as f:
-                    self.settings_custom = pickle.load(f)
+                    settings_custom = pickle.load(f)
+
+                if wl_checking_misc.check_custom_settings(settings_custom, self.settings_default):
+                    self.settings_custom = settings_custom
+                else:
+                    self.settings_custom = copy.deepcopy(self.settings_default)
             else:
                 self.settings_custom = copy.deepcopy(self.settings_default)
 

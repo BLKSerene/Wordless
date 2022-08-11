@@ -35,8 +35,15 @@ def to_freq_sections_items(main, items_search, items_x1, items_x2, measure_bayes
 def bayes_factor_log_likelihood_ratio_test(main, c11, c12, c21, c22):
     cxx = c11 + c12 + c21 + c22
 
+    # Modify settings temporarily
+    settings_backup = main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test'].copy()
+    main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test'] = main.settings_custom['measures']['bayes_factor']['log_likelihood_ratio_test'].copy()
+
     log_likelihood_ratio = wl_measures_statistical_significance.log_likelihood_ratio_test(main, c11, c12, c21, c22)[0]
     bic = log_likelihood_ratio - numpy.log(cxx) if cxx else 0
+
+    # Restore settings
+    main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test'] = settings_backup.copy()
 
     return bic
 
@@ -44,8 +51,15 @@ def bayes_factor_log_likelihood_ratio_test(main, c11, c12, c21, c22):
 # Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
 def bayes_factor_students_t_test_2_sample(main, freqs_x1, freqs_x2):
     if any(freqs_x1) or any(freqs_x2):
+        # Modify settings temporarily
+        settings_backup = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample'].copy()
+        main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample'] = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample'].copy()
+
         t_stat = wl_measures_statistical_significance.students_t_test_2_sample(main, freqs_x1, freqs_x2)[0]
         bic = t_stat ** 2 - numpy.log(2 * main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['num_sub_sections'])
+
+        # Restore settings
+        main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample'] = settings_backup.copy()
     else:
         bic = 0
 

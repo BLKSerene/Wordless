@@ -24,7 +24,7 @@ from wordless.wl_settings import wl_settings
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_widgets
 
 # Measures - Dispersion
-class Wl_Settings_Dispersion(wl_settings.Wl_Settings_Node):
+class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -69,7 +69,7 @@ class Wl_Settings_Dispersion(wl_settings.Wl_Settings_Node):
         return True
 
 # Measures - Adjusted Frequency
-class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
+class Wl_Settings_Measures_Adjusted_Freq(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -114,7 +114,7 @@ class Wl_Settings_Adjusted_Freq(wl_settings.Wl_Settings_Node):
         return True
 
 # Measures - Statistical Significance
-class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
+class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
@@ -366,7 +366,7 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
         self.settings_custom['pearsons_chi_squared_test']['apply_correction'] = self.checkbox_pearsons_chi_squared_test_apply_correction.isChecked()
 
         # Student's t-test (1-sample)
-        self.setText['students_t_test_1_sample']['direction'] = self.combo_box_students_t_test_1_sample_direction.currentText()
+        self.settings_custom['students_t_test_1_sample']['direction'] = self.combo_box_students_t_test_1_sample_direction.currentText()
 
         # Student's t-test (2-sample)
         self.settings_custom['students_t_test_2_sample']['num_sub_sections'] = self.spin_box_students_t_test_2_sample_num_sub_sections.value()
@@ -386,8 +386,89 @@ class Wl_Settings_Statistical_Significance(wl_settings.Wl_Settings_Node):
 
         return True
 
+# Measures - Bayes Factor
+class Wl_Settings_Measures_Bayes_Factor(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['measures']['bayes_factor']
+        self.settings_custom = self.main.settings_custom['measures']['bayes_factor']
+
+        # Log-likelihood Ratio Test
+        self.group_box_log_likelihood_ratio_test = QGroupBox(self.tr('Log-likelihood Ratio Test'), self)
+
+        self.checkbox_log_likelihood_ratio_test_apply_correction = QCheckBox(self.tr("Apply Yates's correction for continuity"))
+
+        self.group_box_log_likelihood_ratio_test.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_log_likelihood_ratio_test.layout().addWidget(self.checkbox_log_likelihood_ratio_test_apply_correction, 0, 0)
+
+        # Student's t-test (2-sample)
+        self.group_box_students_t_test_2_sample = QGroupBox(self.tr("Student's t-test (2-sample)"), self)
+
+        (
+            self.label_students_t_test_2_sample_divide_each_file_into,
+            self.spin_box_students_t_test_2_sample_num_sub_sections,
+            self.label_students_t_test_2_sample_sub_sections
+        ) = wl_widgets.wl_widgets_num_sub_sections(self)
+        (
+            self.label_students_t_test_2_sample_use_data,
+            self.combo_box_students_t_test_2_sample_use_data
+        ) = wl_widgets.wl_widgets_use_data_freq(self)
+        (
+            self.label_students_t_test_2_sample_direction,
+            self.combo_box_students_t_test_2_sample_direction
+        ) = wl_widgets.wl_widgets_direction(self)
+
+        layout_students_t_test_2_sample_num_sub_sections = wl_layouts.Wl_Layout()
+        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.label_students_t_test_2_sample_divide_each_file_into, 0, 0)
+        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.spin_box_students_t_test_2_sample_num_sub_sections, 0, 1)
+        layout_students_t_test_2_sample_num_sub_sections.addWidget(self.label_students_t_test_2_sample_sub_sections, 0, 2)
+
+        layout_students_t_test_2_sample_num_sub_sections.setColumnStretch(3, 1)
+
+        self.group_box_students_t_test_2_sample.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_students_t_test_2_sample.layout().addLayout(layout_students_t_test_2_sample_num_sub_sections, 0, 0, 1, 3)
+        self.group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_use_data, 1, 0)
+        self.group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_use_data, 1, 1)
+        self.group_box_students_t_test_2_sample.layout().addWidget(self.label_students_t_test_2_sample_direction, 2, 0)
+        self.group_box_students_t_test_2_sample.layout().addWidget(self.combo_box_students_t_test_2_sample_direction, 2, 1)
+
+        self.group_box_students_t_test_2_sample.layout().setColumnStretch(2, 1)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addWidget(self.group_box_log_likelihood_ratio_test, 0, 0)
+        self.layout().addWidget(self.group_box_students_t_test_2_sample, 1, 0)
+
+        self.layout().setContentsMargins(6, 4, 6, 4)
+        self.layout().setRowStretch(2, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Log-likelihood Ratio Test
+        self.checkbox_log_likelihood_ratio_test_apply_correction.setChecked(settings['log_likelihood_ratio_test']['apply_correction'])
+
+        # Student's t-test (2-sample)
+        self.spin_box_students_t_test_2_sample_num_sub_sections.setValue(settings['students_t_test_2_sample']['num_sub_sections'])
+        self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['students_t_test_2_sample']['use_data'])
+        self.combo_box_students_t_test_2_sample_direction.setCurrentText(settings['students_t_test_2_sample']['direction'])
+
+    def apply_settings(self):
+        # Log-likelihood Ratio Test
+        self.settings_custom['log_likelihood_ratio_test']['apply_correction'] = self.checkbox_log_likelihood_ratio_test_apply_correction.isChecked()
+
+        # Student's t-test (2-sample)
+        self.settings_custom['students_t_test_2_sample']['num_sub_sections'] = self.spin_box_students_t_test_2_sample_num_sub_sections.value()
+        self.settings_custom['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
+        self.settings_custom['students_t_test_2_sample']['direction'] = self.combo_box_students_t_test_2_sample_direction.currentText()
+
+        return True
+
 # Measures - Effect Size
-class Wl_Settings_Effect_Size(wl_settings.Wl_Settings_Node):
+class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 

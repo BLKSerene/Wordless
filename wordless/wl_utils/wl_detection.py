@@ -29,11 +29,11 @@ def detect_encoding(main, file_path):
     text = b''
 
     with open(file_path, 'rb') as f:
-        if main.settings_custom['files']['auto_detection_settings']['number_lines_no_limit']:
+        if main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit']:
             text = f.read()
         else:
             for i, line in enumerate(f):
-                if i < main.settings_custom['files']['auto_detection_settings']['number_lines']:
+                if i < main.settings_custom['files']['auto_detection_settings']['num_lines']:
                     text += line
                 else:
                     break
@@ -97,12 +97,12 @@ def detect_lang_file(main, file):
 
     try:
         with open(file['path'], 'r', encoding = file['encoding']) as f:
-            if main.settings_custom['files']['auto_detection_settings']['number_lines_no_limit']:
+            if main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit']:
                 for line in f:
                     text += line
             else:
                 for i, line in enumerate(f):
-                    if i < main.settings_custom['files']['auto_detection_settings']['number_lines']:
+                    if i < main.settings_custom['files']['auto_detection_settings']['num_lines']:
                         text += line
                     else:
                         break
