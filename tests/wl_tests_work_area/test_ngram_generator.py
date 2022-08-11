@@ -94,7 +94,6 @@ def test_ngram_generator():
     main.app.quit()
 
 def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
-    print(err_msg)
     assert not err_msg
 
     len_files_selected = len(list(main.wl_file_area.get_selected_files()))
