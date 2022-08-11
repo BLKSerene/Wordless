@@ -77,7 +77,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
     assert all(True for syls_token in syls if all(syls_token))
 
     # The count of syllables should be more than 1
-    assert sum([len(syls_token) for syls_token in syls]) > 1
+    assert sum((len(syls_token) for syls_token in syls)) > 1
 
     # Tokenization should not be modified
     assert len(tokens) == len(syls_tokenized)

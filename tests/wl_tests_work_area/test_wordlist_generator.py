@@ -46,7 +46,7 @@ def test_wordlist_generator():
         # Multiple files
         elif i % 2 == 1:
             for file in random.sample(files, 2):
-                file['selected'] = True
+                file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()

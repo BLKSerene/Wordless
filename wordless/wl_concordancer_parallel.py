@@ -88,7 +88,7 @@ class Wl_Table_Concordancer_Parallel_Lower(wl_tables.Wl_Table_Data):
 
         self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
 
-    def file_changed(self, item):
+    def file_changed(self, item): # pylint: disable=unused-argument
         if list(self.main.wl_file_area.get_selected_files()):
             self.button_generate_table.setEnabled(True)
         else:
@@ -520,8 +520,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 )
 
                 if search_terms:
-                    len_search_term_min = min([len(search_term) for search_term in search_terms])
-                    len_search_term_max = max([len(search_term) for search_term in search_terms])
+                    len_search_term_min = min((len(search_term) for search_term in search_terms))
+                    len_search_term_max = max((len(search_term) for search_term in search_terms))
                 else:
                     len_search_term_min = 0
                     len_search_term_max = 0

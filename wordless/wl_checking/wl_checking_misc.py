@@ -24,7 +24,7 @@ def check_custom_settings(settings_custom, settings_default):
         for key, value in settings.items():
             keys.append(key)
 
-            if type(value) == dict:
+            if isinstance(value, dict):
                 get_keys(value, keys)
 
         return keys
@@ -35,10 +35,7 @@ def check_custom_settings(settings_custom, settings_default):
     keys_custom = get_keys(settings_custom, keys_custom)
     keys_default = get_keys(settings_default, keys_default)
 
-    if keys_custom == keys_default:
-        return True
-    else:
-        return False
+    return bool(keys_custom == keys_default)
 
 def check_dir(dir_name):
     if not os.path.exists(dir_name):

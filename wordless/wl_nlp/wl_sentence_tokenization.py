@@ -151,13 +151,13 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             sentences.extend(underthesea.sent_tokenize(section))
 
     # Strip spaces
-    sentences = [sentence_non_empty for sentence in sentences if (sentence_non_empty := sentence.strip())]
+    sentences = [sentence_non_empty for sentence in sentences if (sentence_non_empty := sentence.strip())] # pylint: disable=undefined-loop-variable
     # Record sentence boundary
     sentences = wl_nlp_utils.record_boundary_sentences(sentences, text)
 
     return sentences
 
-def wl_sentence_split(main, text):
+def wl_sentence_split(main, text): # pylint: disable=unused-argument
     sentences = []
     sentence_start = 0
 

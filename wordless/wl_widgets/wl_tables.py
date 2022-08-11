@@ -53,9 +53,6 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
         # Check file permissions
         try:
-            if not self.rows_to_exp:
-                self.rows_to_exp = list(range(self.table.model().rowCount()))
-
             file_path_src = re.sub(r'\.([a-z]+?)$', r'_source.\1', self.file_path)
             file_path_tgt = re.sub(r'\.([a-z]+?)$', r'_target.\1', self.file_path)
 
@@ -494,7 +491,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                         # Zapping
                         if settings_concordancer['zapping']:
                             # Left & Right
-                            for j, col in enumerate([0, 2]):
+                            for col in [0, 2]:
                                 if self.table.model().item(row, col):
                                     cell_text = self.table.model().item(row, col).text()
                                 else:
@@ -508,14 +505,14 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                             if settings_concordancer['add_line_nums']:
                                 output.insert(0, f'{i + 1}. ')
-
-                            outputs.append(output)
                         else:
-                            for j, col in enumerate(range(3)):
+                            for col in range(3):
                                 cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
                                 cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                                 output.append(cell_text)
+
+                        outputs.append(output)
 
                     # Randomize outputs
                     if settings_concordancer['zapping'] and settings_concordancer['randomize_outputs']:
@@ -528,7 +525,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                     for i, para in enumerate(outputs):
                         para = doc.add_paragraph(' '.join(para))
-                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
+                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
 
                         self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
 
@@ -543,14 +540,14 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     for i, row in enumerate(self.rows_to_exp):
                         output = []
 
-                        for j, col in enumerate(range(3)):
+                        for col in range(3):
                             cell_text = self.table.linked_tables[0].indexWidget(self.table.linked_tables[0].model().index(row, col)).text()
                             cell_text = wl_nlp_utils.html_to_text(cell_text)
 
                             output.append(cell_text)
 
                         para = doc.add_paragraph(' '.join(output))
-                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
+                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
 
                         self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows * 2))
 
@@ -563,7 +560,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                         output = self.table.indexWidget(self.table.model().index(row, 0)).text()
 
                         para = doc.add_paragraph(output)
-                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY
+                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
 
                         self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(len_rows + i + 1, len_rows * 2))
 
@@ -885,7 +882,7 @@ class Wl_Table(QTableView):
 
         for i, row in enumerate(data):
             for j, item in enumerate(row):
-                if type(item) == QStandardItem:
+                if isinstance(item, QStandardItem):
                     self.model().setItem(i, j, item)
                 else:
                     self.setIndexWidget(self.model().index(i, j), item)
@@ -894,7 +891,7 @@ class Wl_Table(QTableView):
 
         event.accept()
 
-    def item_changed(self, item):
+    def item_changed(self, item): # pylint: disable=unused-argument
         if self.is_empty():
             self.setEnabled(False)
         else:
@@ -943,16 +940,16 @@ class Wl_Table(QTableView):
         empty = False
 
         if self.header_orientation == 'hor':
-            if not any([
+            if not any((
                     self.indexWidget(self.model().index(0, i)) or self.model().item(0, i)
                     for i in range(self.model().columnCount())
-            ]):
+            )):
                 empty = True
         else:
-            if not any([
+            if not any((
                     self.indexWidget(self.model().index(i, 0)) or self.model().item(i, 0)
                     for i in range(self.model().rowCount())
-            ]):
+            )):
                 empty = True
 
         return empty
@@ -1138,7 +1135,7 @@ class Wl_Table(QTableView):
                 table = self,
                 file_path = file_path,
                 file_type = file_type,
-                rows_to_exp = rows_to_exp or []
+                rows_to_exp = rows_to_exp or list(range(self.model().rowCount()))
             )
 
             thread_exp_table = wl_threading.Wl_Thread(worker_exp_table)
@@ -1160,9 +1157,9 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
         self.button_del = QPushButton(_tr('Wl_Table_Add_Ins_Del_Clr', 'Remove'), self)
         self.button_clr = QPushButton(_tr('Wl_Table_Add_Ins_Del_Clr', 'Clear'), self)
 
-        self.button_add.clicked.connect(lambda: self.add_row())
-        self.button_ins.clicked.connect(lambda: self.ins_row())
-        self.button_del.clicked.connect(lambda: self.del_row())
+        self.button_add.clicked.connect(lambda: self.add_row()) # pylint: disable=unnecessary-lambda
+        self.button_ins.clicked.connect(lambda: self.ins_row()) # pylint: disable=unnecessary-lambda
+        self.button_del.clicked.connect(lambda: self.del_row()) # pylint: disable=unnecessary-lambda
         self.button_clr.clicked.connect(lambda: self.clr_table(0))
 
     def item_changed(self, item):
@@ -1287,7 +1284,7 @@ class Wl_Table_Data(Wl_Table):
             else:
                 self.button_exp_selected.setEnabled(False)
 
-    def sorting_changed(self, logicalIndex, order):
+    def sorting_changed(self, logicalIndex, order): # pylint: disable=unused-argument
         if not self.is_empty():
             self.update_ranks()
 
@@ -1721,7 +1718,7 @@ class Wl_Table_Data(Wl_Table):
         self.toggle_cumulative()
         self.update_ranks()
 
-    def clr_table(self, count_headers = 1, confirm = False):
+    def clr_table(self, num_headers = 1, confirm = False):
         confirmed = True
 
         # Ask for confirmation if results have not been exported
@@ -1741,24 +1738,24 @@ class Wl_Table_Data(Wl_Table):
                     table.horizontalHeader().blockSignals(True)
 
                     table.model().setColumnCount(len(table.headers))
-                    table.model().setRowCount(count_headers)
+                    table.model().setRowCount(num_headers)
 
                     table.model().setHorizontalHeaderLabels(table.headers)
 
                     table.horizontalHeader().blockSignals(False)
 
-                    table.horizontalHeader().sectionCountChanged.emit(0, count_headers)
+                    table.horizontalHeader().sectionCountChanged.emit(0, num_headers)
                 else:
                     table.verticalHeader().blockSignals(True)
 
                     table.model().setRowCount(len(table.headers))
-                    table.model().setColumnCount(count_headers)
+                    table.model().setColumnCount(num_headers)
 
                     table.model().setVerticalHeaderLabels(table.headers)
 
                     table.verticalHeader().blockSignals(False)
 
-                    table.verticalHeader().sectionCountChanged.emit(0, count_headers)
+                    table.verticalHeader().sectionCountChanged.emit(0, num_headers)
 
                 for i in range(table.model().rowCount()):
                     table.showRow(i)

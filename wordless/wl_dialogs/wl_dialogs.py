@@ -109,9 +109,6 @@ class Wl_Dialog_Info(Wl_Dialog):
         self.layout().setContentsMargins(0, 0, 0, 0)
 
 class Wl_Dialog_Err(Wl_Dialog_Info):
-    def __init__(self, main, title, width = 0, height = 0, no_buttons = False):
-        super().__init__(main, title, width, height, no_buttons)
-
     def exec_(self):
         super().exec_()
 

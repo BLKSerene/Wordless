@@ -18,11 +18,11 @@
 
 # At least one letter
 def is_word_alphabetic(token):
-    return any([char for char in token if char.isalpha()])
+    return any((char for char in token if char.isalpha()))
 
 # At least one letter or numeral
 def is_word_alphanumeric(token):
-    return any([char for char in token if char.isalnum()])
+    return any((char for char in token if char.isalnum()))
 
 def is_word_lowercase(token):
     return token.islower()
