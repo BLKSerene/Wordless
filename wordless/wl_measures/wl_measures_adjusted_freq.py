@@ -60,4 +60,4 @@ def engwalls_fm(freqs):
 # Rosengren's KF
 # Reference: Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. Études de linguistique appliquée, 1, 103–127.
 def kromers_ur(freqs):
-    return sum([scipy.special.digamma(freq + 1) + C for freq in freqs])
+    return sum((scipy.special.digamma(freq + 1) + C for freq in freqs))

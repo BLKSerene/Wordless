@@ -20,6 +20,8 @@ import numpy
 
 from wordless.wl_measures import wl_measures_statistical_significance
 
+# pylint: disable-next=unused-variable, unused-argument
+
 # %DIFF
 # Reference: Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy.
 def pct_diff(main, c11, c12, c21, c22):

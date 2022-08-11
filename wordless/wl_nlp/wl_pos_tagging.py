@@ -47,7 +47,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
     # Untokenized
-    if type(inputs) == str:
+    if isinstance(inputs, str):
         # Input of SudachiPy cannot be more than 49149 BYTES
         if pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
             # Around 100 tokens per line 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6 / 100)
@@ -60,15 +60,12 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     # Tokenized
     else:
         # Check if the first token is empty
-        if inputs and inputs[0] == '':
-            first_token_empty = True
-        else:
-            first_token_empty = False
+        first_token_empty = bool(inputs and inputs[0] == '')
 
         inputs = [str(token) for token in inputs if token]
 
         # Input of SudachiPy cannot be more than 49149 BYTES
-        if pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and sum([len(token) for token in inputs]) > 49149 // 4:
+        if pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and sum((len(token) for token in inputs)) > 49149 // 4:
             # Around 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6)
             texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = 2000)
         else:
@@ -96,7 +93,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
         ]
 
     # Add the first empty token (if any)
-    if type(inputs) != str and first_token_empty:
+    if not isinstance(inputs, str) and first_token_empty:
         tokens_tagged.insert(0, ('', ''))
 
     return tokens_tagged
@@ -271,8 +268,8 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
                 # Align tokens
                 while i_tokens < len_tokens - 1 or i_tokens_tagged < len_tokens_tagged - 1:
                     if lang in ['zho', 'jpn', 'tha', 'bod']:
-                        len_tokens_temp = sum([len(token) for token in tokens_temp])
-                        len_tokens_tagged_temp = sum([len(token) for token in tokens_tagged_temp])
+                        len_tokens_temp = sum((len(token) for token in tokens_temp))
+                        len_tokens_tagged_temp = sum((len(token) for token in tokens_tagged_temp))
                     else:
                         # Compare length in characters with whitespace
                         len_tokens_temp = len(' '.join(tokens_temp))
@@ -296,10 +293,7 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
                         elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
                             tags_temp = tags_temp[:len_tokens_temp_tokens]
 
-                        tokens_tagged_modified.extend([
-                            (token, tag)
-                            for token, tag in zip(tokens_temp, tags_temp)
-                        ])
+                        tokens_tagged_modified.extend(list(zip(tokens_temp, tags_temp)))
 
                         tokens_temp = []
                         tokens_tagged_temp = []
@@ -316,10 +310,7 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
                     elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
                         tags_temp = tags_temp[:len_tokens_temp_tokens]
 
-                    tokens_tagged_modified.extend([
-                        (token, tag)
-                        for token, tag in zip(tokens_temp, tags_temp)
-                    ])
+                    tokens_tagged_modified.extend(list(zip(tokens_temp, tags_temp)))
             else:
                 tokens_tagged_modified.append((tokens[i_tokens], tokens_tagged[i_tokens_tagged][1]))
 

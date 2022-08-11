@@ -139,26 +139,26 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     width_left = self.table.settings['concordancer']['generation_settings']['width_left_token']
                     width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
                 else:
-                    width_left = max([
+                    width_left = max((
                         len(self.table.indexWidget(self.table.model().index(row, 0)).text_raw)
                         for row in range(self.table.model().rowCount())
-                    ])
-                    width_right = max([
+                    ))
+                    width_right = max((
                         len(self.table.indexWidget(self.table.model().index(row, 2)).text_raw)
                         for row in range(self.table.model().rowCount())
-                    ])
+                    ))
 
                 self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
                 self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
             elif self.table.tab == 'concordancer_parallel':
-                width_left = max([
+                width_left = max((
                     len(self.table.indexWidget(self.table.model().index(row, 0)).text_raw)
                     for row in range(self.table.model().rowCount())
-                ])
-                width_right = max([
+                ))
+                width_right = max((
                     len(self.table.indexWidget(self.table.model().index(row, 2)).text_raw)
                     for row in range(self.table.model().rowCount())
-                ])
+                ))
 
                 self.cols_to_sort.extend([self.tr('R') + str(i + 1) for i in range(width_right)])
                 self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
@@ -188,11 +188,11 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
     def max_left(self):
         if self.tr('L1') in self.cols_to_sort:
-            max_left = max([
+            max_left = max((
                 int(col[1:])
                 for col in self.cols_to_sort
                 if re.search(self.tr(r'^L[0-9]+$'), col)
-            ])
+            ))
         else:
             max_left = 0
 
@@ -200,11 +200,11 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
     def max_right(self):
         if self.tr('R1') in self.cols_to_sort:
-            max_right = max([
+            max_right = max((
                 int(col[1:])
                 for col in self.cols_to_sort
                 if re.search(self.tr(r'^R[0-9]+$'), col)
-            ])
+            ))
         else:
             max_right = 0
 
@@ -391,9 +391,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
         self.button_close = QPushButton(self.tr('Close'), self)
 
         if self.tables[0].tab == 'concordancer':
-            self.button_sort.clicked.connect(lambda: self.sort_results())
+            self.button_sort.clicked.connect(lambda: self.sort_results()) # pylint: disable=unnecessary-lambda
         elif self.tables[0].tab == 'concordancer_parallel':
-            self.button_sort.clicked.connect(lambda: self.sort_results_parallel())
+            self.button_sort.clicked.connect(lambda: self.sort_results_parallel()) # pylint: disable=unnecessary-lambda
 
         self.button_close.clicked.connect(self.reject)
 
@@ -469,9 +469,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                     span = int(sorting_col[1:])
 
                     if re.search(r'^L[0-9]+$', sorting_col):
-                        results.sort(key = lambda item: item[0].text_raw[-span], reverse = reverse)
+                        results.sort(key = lambda item, span = span: item[0].text_raw[-span], reverse = reverse)
                     elif re.search(r'^R[0-9]+$', sorting_col):
-                        results.sort(key = lambda item: item[2].text_raw[span - 1], reverse = reverse)
+                        results.sort(key = lambda item, span = span: item[2].text_raw[span - 1], reverse = reverse)
 
             self.tables[0].disable_updates()
 
@@ -611,9 +611,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                     span = int(sorting_col[1:])
 
                     if self.tr('L') in sorting_col:
-                        results.sort(key = lambda item: item[0][0].text_raw[-span], reverse = reverse)
+                        results.sort(key = lambda item, span = span: item[0][0].text_raw[-span], reverse = reverse)
                     elif self.tr('R') in sorting_col:
-                        results.sort(key = lambda item: item[0][2].text_raw[span - 1], reverse = reverse)
+                        results.sort(key = lambda item, span = span: item[0][2].text_raw[span - 1], reverse = reverse)
 
             self.tables[0].disable_updates()
             self.tables[1].disable_updates()
