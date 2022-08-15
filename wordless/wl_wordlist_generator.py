@@ -198,7 +198,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_use_data,
             self.checkbox_use_pct,
             self.checkbox_use_cumulative
-        ) = wl_widgets.wl_widgets_fig_settings(self)
+        ) = wl_widgets.wl_widgets_fig_settings(self, tab = 'wordlist_generator')
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (
@@ -332,21 +332,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         settings['measure_adjusted_freq'] = self.combo_box_measure_adjusted_freq.currentText()
 
         # Use Data
-        use_data_old = self.combo_box_use_data.currentText()
-
-        text_measure_dispersion = settings['measure_dispersion']
-        text_measure_adjusted_freq = settings['measure_adjusted_freq']
-
-        self.combo_box_use_data.clear()
-
-        self.combo_box_use_data.addItem(self.tr('Frequency'))
-        self.combo_box_use_data.addItem(self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col'])
-        self.combo_box_use_data.addItem(self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col'])
-
-        if self.combo_box_use_data.findText(use_data_old) > -1:
-            self.combo_box_use_data.setCurrentText(use_data_old)
-        else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['wordlist_generator']['fig_settings']['use_data'])
+        self.combo_box_use_data.measures_changed()
 
     def table_settings_changed(self):
         settings = self.main.settings_custom['wordlist_generator']['table_settings']
@@ -421,24 +407,30 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 tokens_stats_file = {}
 
                 # Dispersion
-                freqs_sections_tokens = wl_measures_dispersion.to_freq_sections_items(
-                    self.main,
-                    items_search = tokens_total,
-                    items = text.tokens_flat
-                )
+                if measure_dispersion is None:
+                    tokens_stats_file = {token: [None] for token in tokens_total}
+                else:
+                    freqs_sections_tokens = wl_measures_dispersion.to_freq_sections_items(
+                        self.main,
+                        items_search = tokens_total,
+                        items = text.tokens_flat
+                    )
 
-                for token, freqs in freqs_sections_tokens.items():
-                    tokens_stats_file[token] = [measure_dispersion(freqs)]
+                    for token, freqs in freqs_sections_tokens.items():
+                        tokens_stats_file[token] = [measure_dispersion(freqs)]
 
                 # Adjusted Frequency
-                freqs_sections_tokens = wl_measures_adjusted_freq.to_freq_sections_items(
-                    self.main,
-                    items_search = tokens_total,
-                    items = text.tokens_flat
-                )
+                if measure_adjusted_freq is None:
+                    tokens_stats_file = {token: stats + [None] for token, stats in tokens_stats_file.items()}
+                else:
+                    freqs_sections_tokens = wl_measures_adjusted_freq.to_freq_sections_items(
+                        self.main,
+                        items_search = tokens_total,
+                        items = text.tokens_flat
+                    )
 
-                for token, freqs in freqs_sections_tokens.items():
-                    tokens_stats_file[token].append(measure_adjusted_freq(freqs))
+                    for token, freqs in freqs_sections_tokens.items():
+                        tokens_stats_file[token].append(measure_adjusted_freq(freqs))
 
                 self.tokens_stats_files.append(tokens_stats_file)
 
@@ -502,17 +494,19 @@ def generate_table(main, table):
                             is_pct = True, is_cumulative = True, is_breakdown = True
                         )
 
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_dispersion}',
-                            is_float = True, is_breakdown = True
-                        )
+                        if text_dispersion is not None:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                f'[{file["name"]}]\n{text_dispersion}',
+                                is_float = True, is_breakdown = True
+                            )
 
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_adjusted_freq}',
-                            is_float = True, is_breakdown = True
-                        )
+                        if text_adjusted_freq is not None:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                f'[{file["name"]}]\n{text_adjusted_freq}',
+                                is_float = True, is_breakdown = True
+                            )
 
                     # Insert columns (total)
                     table.ins_header_hor(
@@ -526,17 +520,19 @@ def generate_table(main, table):
                         is_pct = True, is_cumulative = True
                     )
 
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('wl_wordlist_generator', 'Total\n') + text_dispersion,
-                        is_float = True
-                    )
+                    if text_dispersion is not None:
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('wl_wordlist_generator', 'Total\n') + text_dispersion,
+                            is_float = True
+                        )
 
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('wl_wordlist_generator', 'Total\n') + text_adjusted_freq,
-                        is_float = True
-                    )
+                    if text_adjusted_freq is not None:
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('wl_wordlist_generator', 'Total\n') + text_adjusted_freq,
+                            is_float = True
+                        )
 
                     # Sort by frequency of the first file
                     table.horizontalHeader().setSortIndicator(
@@ -550,8 +546,8 @@ def generate_table(main, table):
                     for col in cols_freq_pct:
                         cols_freq.remove(col)
 
-                    cols_dispersion = table.find_headers_hor(f'\n{text_dispersion}')
-                    cols_adjusted_freq = table.find_headers_hor(f'\n{text_adjusted_freq}')
+                    cols_dispersion = table.find_headers_hor(f'\n{text_dispersion}') if text_measure_dispersion else None
+                    cols_adjusted_freq = table.find_headers_hor(f'\n{text_adjusted_freq}') if text_measure_adjusted_freq else None
                     col_files_found = table.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found'))
                     col_files_found_pct = table.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found %'))
 
@@ -578,10 +574,12 @@ def generate_table(main, table):
 
                         for j, (dispersion, adjusted_freq) in enumerate(stats_files):
                             # Dispersion
-                            table.set_item_num(i, cols_dispersion[j], dispersion)
+                            if dispersion is not None:
+                                table.set_item_num(i, cols_dispersion[j], dispersion)
 
                             # Adjusted Frequency
-                            table.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
+                            if adjusted_freq is not None:
+                                table.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
 
                         # Number of Files Found
                         num_files_found = len([freq for freq in freq_files[:-1] if freq])
