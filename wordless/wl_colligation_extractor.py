@@ -362,10 +362,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.combo_box_use_data,
             self.checkbox_use_pct,
             self.checkbox_use_cumulative
-        ) = wl_widgets.wl_widgets_fig_settings(
-            self,
-            collocation_extractor = True
-        )
+        ) = wl_widgets.wl_widgets_fig_settings(self, tab = 'colligation_extractor')
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (
