@@ -719,41 +719,16 @@ def wl_widgets_window(parent):
 
     return checkbox_window_sync, label_window_left, spin_box_window_left, label_window_right, spin_box_window_right
 
-def wl_widgets_measure_dispersion(parent):
+def wl_widgets_measures_wordlist_generator(parent):
     main = wl_misc.find_wl_main(parent)
 
-    label_measure_dispersion = QLabel(_tr('wl_widgets_measure_dispersion', 'Measure of Dispersion:'), parent)
+    label_measure_dispersion = QLabel(_tr('wl_widgets_measures_wordlist_generator', 'Measure of Dispersion:'), parent)
     combo_box_measure_dispersion = wl_boxes.Wl_Combo_Box(parent)
-
-    combo_box_measure_dispersion.addItems(list(main.settings_global['measures_dispersion'].keys()))
-
-    return (
-        label_measure_dispersion,
-        combo_box_measure_dispersion
-    )
-
-def wl_widgets_measure_adjusted_freq(parent):
-    main = wl_misc.find_wl_main(parent)
-
-    label_measure_adjusted_freq = QLabel(_tr('wl_widgets_measure_adjusted_freq', 'Measure of Adjusted Frequency:'), parent)
+    label_measure_adjusted_freq = QLabel(_tr('wl_widgets_measures_wordlist_generator', 'Measure of Adjusted Frequency:'), parent)
     combo_box_measure_adjusted_freq = wl_boxes.Wl_Combo_Box(parent)
 
+    combo_box_measure_dispersion.addItems(list(main.settings_global['measures_dispersion'].keys()))
     combo_box_measure_adjusted_freq.addItems(list(main.settings_global['measures_adjusted_freq'].keys()))
-
-    return (
-        label_measure_adjusted_freq,
-        combo_box_measure_adjusted_freq
-    )
-
-def wl_widgets_measures_wordlist_generator(parent):
-    (
-        label_measure_dispersion,
-        combo_box_measure_dispersion
-    ) = wl_widgets_measure_dispersion(parent)
-    (
-        label_measure_adjusted_freq,
-        combo_box_measure_adjusted_freq
-    ) = wl_widgets_measure_adjusted_freq(parent)
 
     return (
         label_measure_dispersion,
@@ -876,7 +851,7 @@ class Wl_Combo_Box_File_Figure_Settings(wl_boxes.Wl_Combo_Box_File):
         if file_old and self.findText(file_old) > -1:
             self.setCurrentText(file_old)
 
-def wl_widgets_fig_settings(parent, collocation_extractor = False):
+def wl_widgets_fig_settings(parent, tab):
     def graph_type_changed():
         if combo_box_graph_type.currentText() == _tr('wl_widgets_fig_settings', 'Line Chart'):
             combo_box_sort_by_file.setEnabled(True)
@@ -896,6 +871,30 @@ def wl_widgets_fig_settings(parent, collocation_extractor = False):
                 checkbox_use_pct.setEnabled(False)
                 checkbox_use_cumulative.setEnabled(False)
 
+    def measures_changed():
+        settings_global = parent.main.settings_global
+        settings_default = parent.main.settings_default[tab]
+        settings_custom = parent.main.settings_custom[tab]
+
+        use_data_old = settings_custom['fig_settings']['use_data']
+
+        text_measure_dispersion = settings_custom['generation_settings']['measure_dispersion']
+        text_measure_adjusted_freq = settings_custom['generation_settings']['measure_adjusted_freq']
+
+        combo_box_use_data.clear()
+
+        combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'Frequency'))
+
+        if settings_global['measures_dispersion'][text_measure_dispersion]['col'] is not None:
+            combo_box_use_data.addItem(settings_global['measures_dispersion'][text_measure_dispersion]['col'])
+        if settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col'] is not None:
+            combo_box_use_data.addItem(settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col'])
+
+        if combo_box_use_data.findText(use_data_old) > -1:
+            combo_box_use_data.setCurrentText(use_data_old)
+        else:
+            combo_box_use_data.setCurrentText(settings_default['fig_settings']['use_data'])
+
     label_graph_type = QLabel(_tr('wl_widgets_fig_settings', 'Graph Type:'), parent)
     combo_box_graph_type = wl_boxes.Wl_Combo_Box(parent)
     label_sort_by_file = QLabel(_tr('wl_widgets_fig_settings', 'Sort by File:'), parent)
@@ -910,9 +909,11 @@ def wl_widgets_fig_settings(parent, collocation_extractor = False):
         _tr('wl_widgets_fig_settings', 'Word Cloud')
     ])
 
-    # Collocation Extractor & Colligation Extractor
-    if collocation_extractor:
+    # Network Graph
+    if tab in ['collocation_extractor', 'colligation_extractor']:
         combo_box_graph_type.addItem(_tr('wl_widgets_fig_settings', 'Network Graph'))
+
+    combo_box_use_data.measures_changed = measures_changed
 
     combo_box_graph_type.currentTextChanged.connect(graph_type_changed)
     combo_box_use_data.currentTextChanged.connect(use_data_changed)
