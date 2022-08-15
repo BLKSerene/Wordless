@@ -467,8 +467,7 @@ def init_settings_default(main):
                 'search_term_position_min': 1,
                 'search_term_position_min_no_limit': True,
                 'search_term_position_max': 2,
-                'search_term_position_max_no_limit': True,
-                'allow_skipped_tokens_within_search_terms': True
+                'search_term_position_max_no_limit': True
             },
 
             'context_settings': {
