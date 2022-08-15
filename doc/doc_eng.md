@@ -480,7 +480,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ### 3.6 Collocation Extractor [[Back to Contents]](#doc-eng)
 **Note:** This module was originally named **Collocation** before *Wordless* 2.2
 
-In *Collocation Extractor*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**.
+In *Collocation Extractor*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**.
 
 It is possible to disable searching altogether and generate an exhausted list of patterns of collocation by unchecking **Search Settings** for each file, but it is not recommended to do so, since the processing speed might be too slow.
 
@@ -532,7 +532,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ### 3.7 Colligation Extractor [[Back to Contents]](#doc-eng)
 **Note:** This module was originally named **Colligation** before *Wordless* 2.2
 
-In *Colligation Extractor*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+In *Colligation Extractor*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
 *Wordless* will automatically apply its built-in part-of-speech tagger on every file that are not part-of-speech-tagged already according to the language of each file. If part-of-speech tagging is not supported for the given languages, the user should provide a file that has already been part-of-speech-tagged and make sure that the correct **Text Type** has been set on each file.
 
@@ -585,7 +585,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ### 3.8 Keyword Extractor [[Back to Contents]](#doc-eng)
 **Note:** This module was originally named **Keyword** before *Wordless* 2.2
 
-In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
+In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the bayes factor and effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
 You can generate line charts or word clouds for keywords using any statistics. You can modify the settings for the generated figure via **Figure Settings**.
 

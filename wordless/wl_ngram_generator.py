@@ -186,7 +186,6 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             filter_min = 1,
             filter_max = 100
         )
-        self.checkbox_allow_skipped_tokens_within_search_terms = QCheckBox(self.tr('Allow skipped tokens within search terms'), self)
 
         (
             self.label_context_settings,
@@ -217,7 +216,6 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.checkbox_search_term_position_min_no_limit.stateChanged.connect(self.search_settings_changed)
         self.spin_box_search_term_position_max.valueChanged.connect(self.search_settings_changed)
         self.checkbox_search_term_position_max_no_limit.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_allow_skipped_tokens_within_search_terms.stateChanged.connect(self.search_settings_changed)
 
         layout_search_term_position = wl_layouts.Wl_Layout()
         layout_search_term_position.addWidget(self.label_search_term_position, 0, 0, 1, 3)
@@ -253,7 +251,6 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
 
         self.group_box_search_settings.layout().addLayout(layout_search_term_position, 10, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_allow_skipped_tokens_within_search_terms, 11, 0, 1, 2)
 
         self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 12, 0, 1, 2)
 
@@ -455,7 +452,6 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.checkbox_search_term_position_min_no_limit.setChecked(settings['search_settings']['search_term_position_min_no_limit'])
         self.spin_box_search_term_position_max.setValue(settings['search_settings']['search_term_position_max'])
         self.checkbox_search_term_position_max_no_limit.setChecked(settings['search_settings']['search_term_position_max_no_limit'])
-        self.checkbox_allow_skipped_tokens_within_search_terms.setChecked(settings['search_settings']['allow_skipped_tokens_within_search_terms'])
 
         # Context Settings
         if defaults:
@@ -544,7 +540,6 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         settings['search_term_position_min_no_limit'] = self.checkbox_search_term_position_min_no_limit.isChecked()
         settings['search_term_position_max'] = self.spin_box_search_term_position_max.value()
         settings['search_term_position_max_no_limit'] = self.checkbox_search_term_position_max_no_limit.isChecked()
-        settings['allow_skipped_tokens_within_search_terms'] = self.checkbox_allow_skipped_tokens_within_search_terms.isChecked()
 
     def generation_settings_changed(self):
         settings = self.main.settings_custom['ngram_generator']['generation_settings']
@@ -568,15 +563,11 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.spin_box_search_term_position_min.setMaximum(settings['ngram_size_max'])
             self.spin_box_search_term_position_max.setMaximum(settings['ngram_size_max'])
 
-        # Allow skipped tokens within search terms
+        # Allow skipped tokens
         if settings['allow_skipped_tokens']:
             self.spin_box_allow_skipped_tokens.setEnabled(True)
-
-            if self.main.settings_custom['ngram_generator']['search_settings']['search_settings']:
-                self.checkbox_allow_skipped_tokens_within_search_terms.setEnabled(True)
         else:
             self.spin_box_allow_skipped_tokens.setEnabled(False)
-            self.checkbox_allow_skipped_tokens_within_search_terms.setEnabled(False)
 
         # Use Data
         use_data_old = self.combo_box_use_data.currentText()
@@ -640,7 +631,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
             # Frequency
             for file in files:
-                ngrams = []
+                ngrams_is = []
 
                 text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_ngram_generator(
@@ -650,122 +641,52 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
                 tokens = text.tokens_flat
 
-                search_terms = wl_matching.match_search_terms(
-                    self.main, tokens,
-                    lang = text.lang,
-                    tokenized = text.tokenized,
-                    tagged = text.tagged,
-                    token_settings = settings['token_settings'],
-                    search_settings = settings['search_settings']
-                )
-
-                (search_terms_inclusion,
-                 search_terms_exclusion) = wl_matching.match_search_terms_context(
-                    self.main, tokens,
-                    lang = text.lang,
-                    tokenized = text.tokenized,
-                    tagged = text.tagged,
-                    token_settings = settings['token_settings'],
-                    context_settings = settings['context_settings']
-                )
-
+                # Generate all possible n-grams/skip-grams with the index of their first token
                 if allow_skipped_tokens:
-                    SENTINEL = object()
-
-                    if settings['search_settings']['search_settings']:
-                        if settings['search_settings']['allow_skipped_tokens_within_search_terms']:
-                            for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                                ngrams.extend(nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens_num))
-                        else:
-                            for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                                for search_term in search_terms:
-                                    len_search_term = len(search_term)
-
-                                    if len_search_term < ngram_size:
-                                        for i, ngram in enumerate(nltk.ngrams(
-                                            tokens,
-                                            ngram_size + allow_skipped_tokens_num,
-                                            pad_right = True,
-                                            right_pad_symbol = SENTINEL
-                                        )):
-                                            for j in range(ngram_size + allow_skipped_tokens_num - len_search_term + 1):
-                                                if ngram[j : j + len_search_term] == search_term:
-                                                    ngram_cur = list(ngram)
-                                                    ngram_cur[j : j + len_search_term] = [ngram_cur[j : j + len_search_term]]
-
-                                                    head = ngram_cur[0]
-                                                    tail = ngram_cur[1:]
-
-                                                    for skip_tail in itertools.combinations(tail, ngram_size - len_search_term):
-                                                        ngram_matched = []
-
-                                                        if isinstance(head, list):
-                                                            ngram_matched.extend(head)
-                                                        else:
-                                                            ngram_matched.append(head)
-
-                                                        for item in skip_tail:
-                                                            if isinstance(item, list):
-                                                                ngram_matched.extend(item)
-                                                            else:
-                                                                ngram_matched.append(item)
-
-                                                        if skip_tail and skip_tail[-1] != SENTINEL and len(ngram_matched) == ngram_size:
-                                                            if wl_matching.check_context(
-                                                                i + j, tokens,
-                                                                context_settings = settings['context_settings'],
-                                                                search_terms_inclusion = search_terms_inclusion,
-                                                                search_terms_exclusion = search_terms_exclusion
-                                                            ):
-                                                                ngrams.append(tuple(ngram_matched))
-                                    elif len_search_term == ngram_size:
-                                        for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                                            if ngram == search_term:
-                                                if wl_matching.check_context(
-                                                    i, tokens,
-                                                    context_settings = settings['context_settings'],
-                                                    search_terms_inclusion = search_terms_inclusion,
-                                                    search_terms_exclusion = search_terms_exclusion
-                                                ):
-                                                    ngrams.append(ngram)
-                    else:
-                        for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                            for i, ngram in enumerate(nltk.ngrams(
-                                tokens,
-                                ngram_size + allow_skipped_tokens_num,
-                                pad_right = True,
-                                right_pad_symbol = SENTINEL
-                            )):
-                                for j in range(ngram_size + allow_skipped_tokens_num):
-                                    head = ngram[0]
-                                    tail = ngram[1:]
-
-                                    for skip_tail in tail:
-                                        if skip_tail != SENTINEL:
-                                            if wl_matching.check_context(
-                                                i + j, tokens,
-                                                context_settings = settings['context_settings'],
-                                                search_terms_inclusion = search_terms_inclusion,
-                                                search_terms_exclusion = search_terms_exclusion
-                                            ):
-                                                ngrams.append((head, skip_tail))
-                else:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                            if wl_matching.check_context(
-                                i, tokens,
-                                context_settings = settings['context_settings'],
-                                search_terms_inclusion = search_terms_inclusion,
-                                search_terms_exclusion = search_terms_exclusion
-                            ):
-                                ngrams.append(ngram)
+                        if ngram_size == 1:
+                            ngrams = nltk.ngrams(tokens, 1)
+                        else:
+                            ngrams = nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens_num)
+
+                        ngrams_is.extend(self.get_ngrams_is(ngrams, tokens))
+
+                else:
+                    ngrams = nltk.everygrams(tokens, ngram_size_min, ngram_size_max)
+
+                    ngrams_is.extend(self.get_ngrams_is(ngrams, tokens))
 
                 # Remove n-grams with at least 1 empty token
-                ngrams_freq_file = collections.Counter([ngram for ngram in ngrams if all(ngram)])
+                ngrams_is = [
+                    (ngram, ngram_i)
+                    for ngram, ngram_i in ngrams_is
+                    if all(ngram)
+                ]
 
                 # Filter search terms & search term positions
                 if settings['search_settings']['search_settings']:
-                    ngrams_freq_file_filtered = {}
+                    ngrams_is_filtered = []
+
+                    search_terms = wl_matching.match_search_terms(
+                        self.main, tokens,
+                        lang = text.lang,
+                        tokenized = text.tokenized,
+                        tagged = text.tagged,
+                        token_settings = settings['token_settings'],
+                        search_settings = settings['search_settings']
+                    )
+
+                    (
+                        search_terms_inclusion,
+                        search_terms_exclusion
+                    ) = wl_matching.match_search_terms_context(
+                        self.main, tokens,
+                        lang = text.lang,
+                        tokenized = text.tokenized,
+                        tagged = text.tagged,
+                        token_settings = settings['token_settings'],
+                        context_settings = settings['context_settings']
+                    )
 
                     if settings['search_settings']['search_term_position_min_no_limit']:
                         search_term_position_min = 0
@@ -773,21 +694,34 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                         search_term_position_min = settings['search_settings']['search_term_position_min'] - 1
 
                     if settings['search_settings']['search_term_position_max_no_limit']:
-                        search_term_position_max = ngram_size_max
+                        search_term_position_max = ngram_size_max - 1
                     else:
                         search_term_position_max = settings['search_settings']['search_term_position_max'] - 1
 
                     for search_term in search_terms:
                         len_search_term = len(search_term)
 
-                        for ngram, freq in ngrams_freq_file.items():
+                        for ngram, ngram_i in ngrams_is:
                             for i in range(search_term_position_min, search_term_position_max + 1):
                                 if ngram[i : i + len_search_term] == search_term:
-                                    ngrams_freq_file_filtered[ngram] = freq
+                                    ngrams_is_filtered.append((ngram, ngram_i))
 
-                    self.ngrams_freq_files.append(ngrams_freq_file_filtered)
-                else:
-                    self.ngrams_freq_files.append(ngrams_freq_file)
+                    # Check context settings
+                    ngrams_is = (
+                        (ngram, ngram_i)
+                        for ngram, ngram_i in ngrams_is_filtered
+                        if wl_matching.check_context(
+                            ngram_i, tokens,
+                            context_settings = settings['context_settings'],
+                            search_terms_inclusion = search_terms_inclusion,
+                            search_terms_exclusion = search_terms_exclusion
+                        )
+                    )
+
+                self.ngrams_freq_files.append(collections.Counter((
+                    ngram
+                    for ngram, ngram_i in ngrams_is
+                )))
 
                 texts.append(text)
 
@@ -800,6 +734,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                     collections.Counter(ngrams_freq_file)
                     for ngrams_freq_file in self.ngrams_freq_files
                 ], collections.Counter()))
+
                 texts.append(text_total)
 
             # Dispersion & Adjusted Frequency
@@ -815,12 +750,15 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 ngrams_lens = {}
                 ngrams_stats_file = {}
 
-                if allow_skipped_tokens == 0:
+                if allow_skipped_tokens:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens_flat, ngram_size))
+                        if ngram_size == 1:
+                            ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens_flat, ngram_size))
+                        else:
+                            ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens_flat, ngram_size, allow_skipped_tokens_num))
                 else:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens_flat, ngram_size, allow_skipped_tokens))
+                        ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens_flat, ngram_size))
 
                 # Dispersion
                 freqs_sections_ngrams = {}
@@ -859,6 +797,18 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 self.ngrams_stats_files *= 2
         except Exception:
             self.err_msg = traceback.format_exc()
+
+    def get_ngrams_is(self, ngrams, tokens):
+        ngrams_is = []
+        i = 0
+
+        for ngram in ngrams:
+            if ngram[0] != tokens[i]:
+                i += 1
+
+            ngrams_is.append((ngram, i))
+
+        return ngrams_is
 
 class Wl_Worker_Ngram_Generator_Table(Wl_Worker_Ngram_Generator):
     def run(self):
