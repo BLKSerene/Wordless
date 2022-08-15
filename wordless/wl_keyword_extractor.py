@@ -206,7 +206,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
             self.combo_box_use_data,
             self.checkbox_use_pct,
             self.checkbox_use_cumulative
-        ) = wl_widgets.wl_widgets_fig_settings(self)
+        ) = wl_widgets.wl_widgets_fig_settings(self, tab = 'keyword_extractor')
 
         self.label_rank = QLabel(self.tr('Rank:'), self)
         (

@@ -2661,6 +2661,11 @@ def init_settings_global():
         },
 
         'measures_dispersion': {
+            _tr('init_settings_global', 'None'): {
+                'col': None,
+                'func': None
+            },
+
             _tr('init_settings_global', "Carroll's D₂"): {
                 'col': _tr('init_settings_global', "Carroll's D₂"),
                 'func': wl_measures_dispersion.carrolls_d2
@@ -2698,6 +2703,11 @@ def init_settings_global():
         },
 
         'measures_adjusted_freq': {
+            _tr('init_settings_global', 'None'): {
+                'col': None,
+                'func': None
+            },
+
             _tr('init_settings_global', "Carroll's Um"): {
                 'col': _tr('init_settings_global', "Carroll's Um"),
                 'func': wl_measures_adjusted_freq.carrolls_um
