@@ -34,7 +34,7 @@ I would like to extend my sincere gratitude to the following open-source project
 10|[Matplotlib](https://matplotlib.org/)                                 |3.5.3  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 11|[NetworkX](https://networkx.org/)                                     |2.8.5  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 12|[NLTK](http://www.nltk.org/)                                          |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
-13|[NumPy](https://www.numpy.org/)                                       |1.22.3 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
+13|[NumPy](https://www.numpy.org/)                                       |1.23.2 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 14|[opencc-python](https://github.com/yichen0831/opencc-python)          |0.1.6  |Huang Yichen, Carbo Kuo (郭家宝)|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
 15|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)               |3.0.9  |Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.0/LICENCE.rst)
 16|[pkuseg](https://github.com/lancopku/pkuseg-python)                   |0.0.25 |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶), Xuancheng Ren (任宣丞),<br>Yi Zhang (张艺), Bingzhen Wei (位冰镇), Xu Sun (孙栩)|[MIT](https://github.com/lancopku/pkuseg-python/blob/master/LICENSE)
