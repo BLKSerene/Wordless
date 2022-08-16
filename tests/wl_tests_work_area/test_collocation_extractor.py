@@ -130,7 +130,7 @@ def update_gui(err_msg, collocations_freqs_files, collocations_stats_files):
         assert sum((sum(freqs_file) for freqs_file in freqs_files)) >= 0
         # p-value
         for _, p_value, _, _ in stats_files:
-            assert 0 <= p_value <= 1
+            assert p_value is None or 0 <= p_value <= 1
         # Number of Files Found
         assert len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)]) >= 1
 

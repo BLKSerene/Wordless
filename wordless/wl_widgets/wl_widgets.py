@@ -737,56 +737,23 @@ def wl_widgets_measures_wordlist_generator(parent):
         combo_box_measure_adjusted_freq
     )
 
-def wl_widgets_test_statistical_significance(parent, tab):
+def wl_widgets_measures_collocation_extractor(parent, tab):
     label_test_statistical_significance = QLabel(_tr('wl_widgets_test_significance', 'Test of Statistical Significance:'), parent)
     combo_box_test_statistical_significance = wl_boxes.Wl_Combo_Box(parent)
+    label_measure_bayes_factor = QLabel(_tr('wl_widgets_measure_bayes_factor', 'Measure of Bayes Factor:'), parent)
+    combo_box_measure_bayes_factor = wl_boxes.Wl_Combo_Box(parent)
+    label_measure_effect_size = QLabel(_tr('wl_widgets_measure_effect_size', 'Measure of Effect Size:'), parent)
+    combo_box_measure_effect_size = wl_boxes.Wl_Combo_Box(parent)
 
     for measure, vals in parent.main.settings_global['tests_statistical_significance'].items():
         if vals[tab]:
             combo_box_test_statistical_significance.addItem(measure)
 
-    return (
-        label_test_statistical_significance,
-        combo_box_test_statistical_significance
-    )
-
-def wl_widgets_measure_bayes_factor(parent, tab):
-    label_measure_bayes_factor = QLabel(_tr('wl_widgets_measure_bayes_factor', 'Measure of Bayes Factor:'), parent)
-    combo_box_measure_bayes_factor = wl_boxes.Wl_Combo_Box(parent)
-
     for measure, vals in parent.main.settings_global['measures_bayes_factor'].items():
         if vals[tab]:
             combo_box_measure_bayes_factor.addItem(measure)
 
-    return (
-        label_measure_bayes_factor,
-        combo_box_measure_bayes_factor
-    )
-
-def wl_widgets_measure_effect_size(parent):
-    label_measure_effect_size = QLabel(_tr('wl_widgets_measure_effect_size', 'Measure of Effect Size:'), parent)
-    combo_box_measure_effect_size = wl_boxes.Wl_Combo_Box(parent)
-
     combo_box_measure_effect_size.addItems(list(parent.main.settings_global['measures_effect_size'].keys()))
-
-    return (
-        label_measure_effect_size,
-        combo_box_measure_effect_size
-    )
-
-def wl_widgets_measures_collocation_extractor(parent, tab):
-    (
-        label_test_statistical_significance,
-        combo_box_test_statistical_significance
-    ) = wl_widgets_test_statistical_significance(parent, tab)
-    (
-        label_measure_bayes_factor,
-        combo_box_measure_bayes_factor
-    ) = wl_widgets_measure_bayes_factor(parent, tab)
-    (
-        label_measure_effect_size,
-        combo_box_measure_effect_size
-    ) = wl_widgets_measure_effect_size(parent)
 
     return (
         label_test_statistical_significance,
@@ -871,24 +838,105 @@ def wl_widgets_fig_settings(parent, tab):
                 checkbox_use_pct.setEnabled(False)
                 checkbox_use_cumulative.setEnabled(False)
 
-    def measures_changed():
+    def measures_changed_wordlist_generator():
         settings_global = parent.main.settings_global
         settings_default = parent.main.settings_default[tab]
         settings_custom = parent.main.settings_custom[tab]
 
         use_data_old = settings_custom['fig_settings']['use_data']
 
+        combo_box_use_data.clear()
+
+        combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'Frequency'))
+
         text_measure_dispersion = settings_custom['generation_settings']['measure_dispersion']
         text_measure_adjusted_freq = settings_custom['generation_settings']['measure_adjusted_freq']
+
+        measure_dispersion = settings_global['measures_dispersion'][text_measure_dispersion]
+        measure_adjusted_freq = settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]
+
+        if measure_dispersion['col_text'] is not None:
+            combo_box_use_data.addItem(measure_dispersion['col_text'])
+        if measure_adjusted_freq['col_text'] is not None:
+            combo_box_use_data.addItem(measure_adjusted_freq['col_text'])
+
+        if combo_box_use_data.findText(use_data_old) > -1:
+            combo_box_use_data.setCurrentText(use_data_old)
+        else:
+            combo_box_use_data.setCurrentText(settings_default['fig_settings']['use_data'])
+
+    def measures_changed_collocation_extractor():
+        settings_global = parent.main.settings_global
+        settings_default = parent.main.settings_default[tab]
+        settings_custom = parent.main.settings_custom[tab]
+
+        use_data_old = settings_custom['fig_settings']['use_data']
+
+        combo_box_use_data.clear()
+
+        for i in range(settings_custom['generation_settings']['window_left'], settings_custom['generation_settings']['window_right'] + 1):
+            if i < 0:
+                combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'L') + str(-i))
+            elif i > 0:
+                combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'R') + str(i))
+
+        combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'Frequency'))
+
+        text_test_statistical_significance = settings_custom['generation_settings']['test_statistical_significance']
+        text_measure_bayes_factor = settings_custom['generation_settings']['measure_bayes_factor']
+        text_measure_effect_size = settings_custom['generation_settings']['measure_effect_size']
+
+        test_statistical_significance = settings_global['tests_statistical_significance'][text_test_statistical_significance]
+        measure_bayes_factor = settings_global['measures_bayes_factor'][text_measure_bayes_factor]
+        measure_effect_size = settings_global['measures_effect_size'][text_measure_effect_size]
+
+        if test_statistical_significance['func']:
+            if test_statistical_significance['col_text']:
+                combo_box_use_data.addItem(test_statistical_significance['col_text'])
+
+            combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'p-value'))
+
+        if measure_bayes_factor['func']:
+            combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'Bayes Factor'))
+
+        if measure_effect_size['func']:
+            combo_box_use_data.addItem(measure_effect_size['col_text'])
+
+        if combo_box_use_data.findText(use_data_old) > -1:
+            combo_box_use_data.setCurrentText(use_data_old)
+        else:
+            combo_box_use_data.setCurrentText(settings_default['fig_settings']['use_data'])
+
+    def measures_changed_keyword_extractor():
+        settings_global = parent.main.settings_global
+        settings_default = parent.main.settings_default[tab]
+        settings_custom = parent.main.settings_custom[tab]
+
+        use_data_old = settings_custom['fig_settings']['use_data']
 
         combo_box_use_data.clear()
 
         combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'Frequency'))
 
-        if settings_global['measures_dispersion'][text_measure_dispersion]['col'] is not None:
-            combo_box_use_data.addItem(settings_global['measures_dispersion'][text_measure_dispersion]['col'])
-        if settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col'] is not None:
-            combo_box_use_data.addItem(settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col'])
+        text_test_statistical_significance = settings_custom['generation_settings']['test_statistical_significance']
+        text_measure_bayes_factor = settings_custom['generation_settings']['measure_bayes_factor']
+        text_measure_effect_size = settings_custom['generation_settings']['measure_effect_size']
+
+        test_statistical_significance = settings_global['tests_statistical_significance'][text_test_statistical_significance]
+        measure_bayes_factor = settings_global['measures_bayes_factor'][text_measure_bayes_factor]
+        measure_effect_size = settings_global['measures_effect_size'][text_measure_effect_size]
+
+        if test_statistical_significance['func']:
+            if test_statistical_significance['col_text']:
+                combo_box_use_data.addItem(test_statistical_significance['col_text'])
+
+            combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'p-value'))
+
+        if measure_bayes_factor['func']:
+            combo_box_use_data.addItem(_tr('wl_widgets_fig_settings', 'Bayes Factor'))
+
+        if measure_effect_size['func']:
+            combo_box_use_data.addItem(measure_effect_size['col_text'])
 
         if combo_box_use_data.findText(use_data_old) > -1:
             combo_box_use_data.setCurrentText(use_data_old)
@@ -913,7 +961,15 @@ def wl_widgets_fig_settings(parent, tab):
     if tab in ['collocation_extractor', 'colligation_extractor']:
         combo_box_graph_type.addItem(_tr('wl_widgets_fig_settings', 'Network Graph'))
 
-    combo_box_use_data.measures_changed = measures_changed
+    if tab in ['wordlist_generator', 'ngram_generator', 'collocation_extractor', 'colligation_extractor', 'keyword_extractor']:
+        if tab in ['wordlist_generator', 'ngram_generator']:
+            combo_box_use_data.measures_changed = measures_changed_wordlist_generator
+        elif tab in ['collocation_extractor', 'colligation_extractor']:
+            combo_box_use_data.measures_changed = measures_changed_collocation_extractor
+        elif tab == 'keyword_extractor':
+            combo_box_use_data.measures_changed = measures_changed_keyword_extractor
+
+        combo_box_use_data.measures_changed()
 
     combo_box_graph_type.currentTextChanged.connect(graph_type_changed)
     combo_box_use_data.currentTextChanged.connect(use_data_changed)

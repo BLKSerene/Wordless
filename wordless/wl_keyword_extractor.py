@@ -342,27 +342,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
 
         # Use Data
-        use_data_old = self.combo_box_use_data.currentText()
-
-        self.combo_box_use_data.clear()
-
-        self.combo_box_use_data.addItem(self.tr('Frequency'))
-
-        if self.main.settings_global['tests_statistical_significance'][settings['test_statistical_significance']]['col_text']:
-            self.combo_box_use_data.addItem(
-                self.main.settings_global['tests_statistical_significance'][settings['test_statistical_significance']]['col_text']
-            )
-
-        self.combo_box_use_data.addItems([
-            self.tr('p-value'),
-            self.tr('Bayes Factor'),
-            self.main.settings_global['measures_effect_size'][settings['measure_effect_size']]['col_text']
-        ])
-
-        if self.combo_box_use_data.findText(use_data_old) > -1:
-            self.combo_box_use_data.setCurrentText(use_data_old)
-        else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['keyword_extractor']['fig_settings']['use_data'])
+        self.combo_box_use_data.measures_changed()
 
     def table_settings_changed(self):
         settings = self.main.settings_custom['keyword_extractor']['table_settings']
@@ -465,51 +445,68 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
 
             keywords_freq_file_ref = self.keywords_freq_files[0]
+            keywords_all = self.keywords_freq_files[-1].keys()
 
             for i, text in enumerate(texts):
-                keywords_stats_file = {}
+                if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
+                    keywords_stats_file = {}
 
-                keywords_freq_file_observed = self.keywords_freq_files[i + 1]
-                tokens_observed = text.tokens_flat
-                len_tokens_observed = len(tokens_observed)
+                    keywords_freq_file_observed = self.keywords_freq_files[i + 1]
+                    tokens_observed = text.tokens_flat
+                    len_tokens_observed = len(tokens_observed)
 
-                if self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['to_sections']:
-                    freqs_sections_tokens_statistical_significance = wl_measures_statistical_significance.to_freq_sections_items(
-                        self.main,
-                        items_search = keywords_freq_file_observed.keys(),
-                        items_x1 = tokens_observed,
-                        items_x2 = tokens_ref,
-                        test_statistical_significance = test_statistical_significance
-                    )
-
-                if self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['to_sections']:
-                    freqs_sections_tokens_bayes_factor = wl_measures_bayes_factor.to_freq_sections_items(
-                        self.main,
-                        items_search = keywords_freq_file_observed.keys(),
-                        items_x1 = tokens_observed,
-                        items_x2 = tokens_ref,
-                        measure_bayes_factor = measure_bayes_factor
-                    )
-
-                for token, freq in keywords_freq_file_observed.items():
-                    c11 = freq
-                    c12 = keywords_freq_file_ref.get(token, 0)
-                    c21 = len_tokens_observed - c11
-                    c22 = len_tokens_ref - c12
-
-                    # Test Statistic & p-value
                     if self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['to_sections']:
-                        keywords_stats_file[token] = list(func_statistical_significance(self.main, *freqs_sections_tokens_statistical_significance[token]))
-                    else:
-                        keywords_stats_file[token] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+                        freqs_sections_tokens_statistical_significance = wl_measures_statistical_significance.to_freq_sections_items(
+                            self.main,
+                            items_search = keywords_all,
+                            items_x1 = tokens_observed,
+                            items_x2 = tokens_ref,
+                            test_statistical_significance = test_statistical_significance
+                        )
 
-                    # Bayes Factor
                     if self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['to_sections']:
-                        keywords_stats_file[token].append(func_bayes_factor(self.main, *freqs_sections_tokens_bayes_factor[token]))
-                    else:
-                        keywords_stats_file[token].append(func_bayes_factor(self.main, c11, c12, c21, c22))
+                        freqs_sections_tokens_bayes_factor = wl_measures_bayes_factor.to_freq_sections_items(
+                            self.main,
+                            items_search = keywords_all,
+                            items_x1 = tokens_observed,
+                            items_x2 = tokens_ref,
+                            measure_bayes_factor = measure_bayes_factor
+                        )
 
-                    keywords_stats_file[token].append(func_effect_size(self.main, c11, c12, c21, c22))
+                    for token in keywords_all:
+                        c11 = keywords_freq_file_observed.get(token, 0)
+                        c12 = keywords_freq_file_ref.get(token, 0)
+                        c21 = len_tokens_observed - c11
+                        c22 = len_tokens_ref - c12
+
+                        # Test Statistic & p-value
+                        if func_statistical_significance is None:
+                            keywords_stats_file[token] = [None, None]
+                        else:
+                            if self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['to_sections']:
+                                keywords_stats_file[token] = list(func_statistical_significance(self.main, *freqs_sections_tokens_statistical_significance[token]))
+                            else:
+                                keywords_stats_file[token] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+
+                        # Bayes Factor
+                        if func_bayes_factor is None:
+                            keywords_stats_file[token].append(None)
+                        else:
+                            if self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['to_sections']:
+                                keywords_stats_file[token].append(func_bayes_factor(self.main, *freqs_sections_tokens_bayes_factor[token]))
+                            else:
+                                keywords_stats_file[token].append(func_bayes_factor(self.main, c11, c12, c21, c22))
+
+                        # Effect Size
+                        if func_effect_size is None:
+                            keywords_stats_file[token].append(None)
+                        else:
+                            keywords_stats_file[token].append(func_effect_size(self.main, c11, c12, c21, c22))
+                else:
+                    keywords_stats_file = {
+                        token: [None, None, None, None]
+                        for token in keywords_all
+                    }
 
                 self.keywords_stats_files.append(keywords_stats_file)
 
@@ -568,7 +565,12 @@ def generate_table(main, table):
                     table.settings = copy.deepcopy(main.settings_custom)
 
                     test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+                    measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
                     measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+                    func_statistical_significance = main.settings_global['tests_statistical_significance'][test_statistical_significance]['func']
+                    func_bayes_factor = main.settings_global['measures_bayes_factor'][measure_bayes_factor]['func']
+                    func_effect_size = main.settings_global['measures_effect_size'][measure_effect_size]['func']
 
                     text_test_stat = main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
                     text_effect_size = main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
@@ -599,30 +601,33 @@ def generate_table(main, table):
                             is_pct = True, is_cumulative = True, is_breakdown = True
                         )
 
-                        if text_test_stat:
+                        if func_statistical_significance is not None:
+                            if text_test_stat is not None:
+                                table.ins_header_hor(
+                                    table.model().columnCount() - 2,
+                                    f"[{file_observed['name']}]\n{text_test_stat}",
+                                    is_float = True, is_breakdown = True
+                                )
+
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                f"[{file_observed['name']}]\n{text_test_stat}",
+                                _tr('Wl_Table_Keyword_Extractor', '[{}]\np-value').format(file_observed['name']),
                                 is_float = True, is_breakdown = True
                             )
 
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            _tr('Wl_Table_Keyword_Extractor', '[{}]\np-value').format(file_observed['name']),
-                            is_float = True, is_breakdown = True
-                        )
+                        if func_bayes_factor is not None:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                _tr('Wl_Table_Keyword_Extractor', '[{}]\nBayes Factor').format(file_observed['name']),
+                                is_float = True, is_breakdown = True
+                            )
 
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            _tr('Wl_Table_Keyword_Extractor', '[{}]\nBayes Factor').format(file_observed['name']),
-                            is_float = True, is_breakdown = True
-                        )
-
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            f"[{file_observed['name']}]\n{text_effect_size}",
-                            is_float = True, is_breakdown = True
-                        )
+                        if func_effect_size is not None:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                f"[{file_observed['name']}]\n{text_effect_size}",
+                                is_float = True, is_breakdown = True
+                            )
 
                     # Insert columns (total)
                     table.ins_header_hor(
@@ -636,36 +641,58 @@ def generate_table(main, table):
                         is_pct = True, is_cumulative = True
                     )
 
-                    if text_test_stat:
+                    if func_statistical_significance is not None:
+                        if text_test_stat is not None:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                _tr('Wl_Table_Keyword_Extractor', 'Total\n{}').format(text_test_stat),
+                                is_float = True
+                            )
+
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            _tr('Wl_Table_Keyword_Extractor', 'Total\n{}').format(text_test_stat),
+                            _tr('Wl_Table_Keyword_Extractor', 'Total\np-value'),
                             is_float = True
                         )
 
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('Wl_Table_Keyword_Extractor', 'Total\np-value'),
-                        is_float = True
-                    )
+                    if func_bayes_factor is not None:
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('Wl_Table_Keyword_Extractor', 'Total\nBayes Factor'),
+                            is_float = True
+                        )
 
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('Wl_Table_Keyword_Extractor', 'Total\nBayes Factor'),
-                        is_float = True
-                    )
-
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('Wl_Table_Keyword_Extractor', 'Total\n{}').format(text_effect_size),
-                        is_float = True
-                    )
+                    if func_effect_size is not None:
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('Wl_Table_Keyword_Extractor', 'Total\n{}').format(text_effect_size),
+                            is_float = True
+                        )
 
                     # Sort by p-value of the first observed file
-                    table.horizontalHeader().setSortIndicator(
-                        table.find_header_hor(_tr('Wl_Table_Keyword_Extractor', '[{}]\np-value').format(files_observed[0]['name'])),
-                        Qt.AscendingOrder
-                    )
+                    if func_statistical_significance is not None:
+                        table.horizontalHeader().setSortIndicator(
+                            table.find_header_hor(_tr('Wl_Table_Keyword_Extractor', '[{}]\np-value').format(files_observed[0]['name'])),
+                            Qt.AscendingOrder
+                        )
+                    # Sort by bayes factor of the first observed file
+                    elif func_bayes_factor is not None:
+                        table.horizontalHeader().setSortIndicator(
+                            table.find_header_hor(_tr('Wl_Table_Keyword_Extractor', '[{}]\nBayes Factor').format(files_observed[0]['name'])),
+                            Qt.DescendingOrder
+                        )
+                    # Sort by effect size of the first observed file
+                    elif func_effect_size is not None:
+                        table.horizontalHeader().setSortIndicator(
+                            table.find_header_hor(f"[{files_observed[0]['name']}]\n{text_effect_size}"),
+                            Qt.DescendingOrder
+                        )
+                    # Otherwise sort by frequency of the first observed file
+                    else:
+                        table.horizontalHeader().setSortIndicator(
+                            table.find_header_hor(_tr('Wl_Table_Keyword_Extractor', '[{}]\nFrequency').format(files_observed[0]['name'])),
+                            Qt.DescendingOrder
+                        )
 
                     cols_freq = table.find_headers_hor(_tr('Wl_Table_Keyword_Extractor', '\nFrequency'))
                     cols_freq_pct = table.find_headers_hor(_tr('Wl_Table_Keyword_Extractor', '\nFrequency %'))
@@ -673,9 +700,7 @@ def generate_table(main, table):
                     for col in cols_freq_pct:
                         cols_freq.remove(col)
 
-                    if text_test_stat:
-                        cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
-
+                    cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
                     cols_p_val = table.find_headers_hor(_tr('Wl_Table_Keyword_Extractor', '\np-value'))
                     cols_bayes_factor = table.find_headers_hor(_tr('Wl_Table_Keyword_Extractor', '\nBayes Factor'))
                     cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
@@ -705,15 +730,20 @@ def generate_table(main, table):
 
                         for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
                             # Test Statistic
-                            if text_test_stat:
+                            if text_test_stat is not None:
                                 table.set_item_num(i, cols_test_stat[j], test_stat)
 
                             # p-value
-                            table.set_item_p_val(i, cols_p_val[j], p_val)
+                            if func_statistical_significance is not None:
+                                table.set_item_p_val(i, cols_p_val[j], p_val)
+
                             # Bayes Factor
-                            table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+                            if func_bayes_factor is not None:
+                                table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+
                             # Effect Size
-                            table.set_item_num(i, cols_effect_size[j], effect_size)
+                            if func_effect_size is not None:
+                                table.set_item_num(i, cols_effect_size[j], effect_size)
 
                         # Number of Files Found
                         num_files_found = len([freq for freq in freq_files[1:-1] if freq])
