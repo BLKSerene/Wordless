@@ -72,16 +72,16 @@ def sorted_stats_files_items(stats_files_items):
         keys = []
 
         # p-value
-        keys.extend([stats[1] for stats in item[1]])
+        keys.extend([stats[1] for stats in item[1] if stats[1] is not None])
 
         # Test Statistic
         if item[1][0]:
-            keys.extend([-stats[0] for stats in item[1]])
+            keys.extend([-stats[0] for stats in item[1] if stats[0] is not None])
 
         # Bayes Factor
-        keys.extend([-stats[2] for stats in item[1]])
+        keys.extend([-stats[2] for stats in item[1] if stats[2] is not None])
         # Effect Size
-        keys.extend([-stats[3] for stats in item[1]])
+        keys.extend([-stats[3] for stats in item[1] if stats[3] is not None])
 
         # Collocates/Keywords
         keys.append(item[0])
