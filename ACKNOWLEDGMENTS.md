@@ -31,7 +31,7 @@ I would like to extend my sincere gratitude to the following open-source project
 7 |[langdetect](https://github.com/Mimino666/langdetect)                 |1.0.9  |中谷秀洋 (Michal Danilák)|[Apache-2.0](https://github.com/Mimino666/langdetect/blob/master/LICENSE)
 8 |[langid.py](https://github.com/saffsd/langid.py)                      |1.1.6  |Marco Lui|[BSD-2-Clause](https://github.com/saffsd/langid.py/blob/master/LICENSE)
 9 |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|N/A    |Michal Boleslav Měchura|[ODbL-1.0](https://github.com/michmech/lemmatization-lists/blob/master/LICENCE)
-10|[Matplotlib](https://matplotlib.org/)                                 |3.5.1  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
+10|[Matplotlib](https://matplotlib.org/)                                 |3.5.3  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 11|[NetworkX](https://networkx.org/)                                     |2.7.1  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 12|[NLTK](http://www.nltk.org/)                                          |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 13|[NumPy](https://www.numpy.org/)                                       |1.22.3 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
