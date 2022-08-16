@@ -32,8 +32,8 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
         text_measure_dispersion = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_dispersion']
         text_measure_adjusted_freq = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_adjusted_freq']
 
-        text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-        text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+        text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
+        text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
 
         if self.dialog.tab == 'wordlist_generator':
             col_token = self.dialog.table.find_header_hor(self.tr('Token'))
@@ -783,8 +783,8 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         text_measure_dispersion = settings['generation_settings']['measure_dispersion']
         text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-        text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-        text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+        text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
+        text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
 
         self.label_dispersion.setText(f'{text_dispersion}:')
         self.label_adjusted_freq.setText(f'{text_adjusted_freq}:')

@@ -131,7 +131,7 @@ def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
         assert freq_files[-1] == sum(freq_files[1:-1])
         # p-value
         for _, p_value, _, _ in stats_files:
-            assert 0 <= p_value <= 1
+            assert p_value is None or 0 <= p_value <= 1
         # Number of Files Found
         assert len([freq for freq in freq_files[1:-1] if freq]) >= 1
 

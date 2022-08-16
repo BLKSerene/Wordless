@@ -28,6 +28,7 @@
 - Settings: Add Settings - Measures - Statistical Significance - Student's t-test (1-sample) / Student's t-test (2-sample) / Welch's t-test - Direction
 - Settings: Add Settings - Tables - Profiler
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
+- Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance / Measure of Effect Size - None
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)
 - Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion / Adjusted Frequency - None
 - Work Area: Add Work Area - Search Settings - Context Settings - Save

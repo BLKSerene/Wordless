@@ -97,6 +97,7 @@ def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
 
 def merge_dicts(dicts_to_merge):
     dict_merged = {}
+    len_dicts = len(dicts_to_merge)
 
     if any(dicts_to_merge):
         for i, dict_to_merge in enumerate(dicts_to_merge):
@@ -108,17 +109,17 @@ def merge_dicts(dicts_to_merge):
                 break
 
         if values_2d:
-            value_2d = [[0] * len(list(dicts_to_merge[i_dict].values())[0]) for i in range(len(dicts_to_merge))]
+            defaults_2d = [[0] * len(list(dicts_to_merge[i_dict].values())[0]) for _ in range(len_dicts)]
         else:
-            value_1d = [0] * len(dicts_to_merge)
+            defaults_1d = [0] * len_dicts
 
         for i, dict_to_merge in enumerate(dicts_to_merge):
             for key, values in dict_to_merge.items():
                 if key not in dict_merged:
                     if values_2d:
-                        dict_merged[key] = copy.deepcopy(value_2d)
+                        dict_merged[key] = copy.deepcopy(defaults_2d)
                     else:
-                        dict_merged[key] = copy.copy(value_1d)
+                        dict_merged[key] = copy.copy(defaults_1d)
 
                 dict_merged[key][i] = values
 

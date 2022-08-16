@@ -582,33 +582,7 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
 
         # Use Data
-        use_data_old = self.main.settings_custom['collocation_extractor']['fig_settings']['use_data']
-
-        self.combo_box_use_data.clear()
-
-        for i in range(settings['window_left'], settings['window_right'] + 1):
-            if i < 0:
-                self.combo_box_use_data.addItem(self.tr('L') + str(-i))
-            elif i > 0:
-                self.combo_box_use_data.addItem(self.tr('R') + str(i))
-
-        self.combo_box_use_data.addItem(self.tr('Frequency'))
-
-        if self.main.settings_global['tests_statistical_significance'][settings['test_statistical_significance']]['col_text']:
-            self.combo_box_use_data.addItem(
-                self.main.settings_global['tests_statistical_significance'][settings['test_statistical_significance']]['col_text']
-            )
-
-        self.combo_box_use_data.addItems([
-            self.tr('p-value'),
-            self.tr('Bayes Factor'),
-            self.main.settings_global['measures_effect_size'][settings['measure_effect_size']]['col_text']
-        ])
-
-        if self.combo_box_use_data.findText(use_data_old) > -1:
-            self.combo_box_use_data.setCurrentText(use_data_old)
-        else:
-            self.combo_box_use_data.setCurrentText(self.main.settings_default['collocation_extractor']['fig_settings']['use_data'])
+        self.combo_box_use_data.measures_changed()
 
     def table_settings_changed(self):
         settings = self.main.settings_custom['collocation_extractor']['table_settings']
@@ -907,7 +881,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
             func_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['func']
             func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
 
-            collocations_total = self.collocations_freqs_files[-1].keys()
+            collocations_all = self.collocations_freqs_files[-1].keys()
             # Used for z-score (Berry-Rogghe)
             span = (abs(window_left) + abs(window_right)) / 2
 
@@ -917,40 +891,57 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 collocations_freqs_files_all
             ):
                 collocates_stats_file = {}
-                c1xs = {}
-                cx1s = {}
-                cxxs = {}
 
-                for ngram_size, collocations_freqs in collocations_freqs_file_all.items():
-                    c1xs[ngram_size] = collections.Counter()
-                    cx1s[ngram_size] = collections.Counter()
+                if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
+                    c1xs = {}
+                    cx1s = {}
+                    cxxs = {}
 
-                    # C1x & Cx1
-                    for (node, collocate), freq in collocations_freqs.items():
-                        c1xs[ngram_size][collocate] += freq
-                        cx1s[ngram_size][node] += freq
+                    for ngram_size, collocations_freqs in collocations_freqs_file_all.items():
+                        c1xs[ngram_size] = collections.Counter()
+                        cx1s[ngram_size] = collections.Counter()
 
-                    # Cxx
-                    cxxs[ngram_size] = sum(collocations_freqs.values())
+                        # C1x & Cx1
+                        for (node, collocate), freq in collocations_freqs.items():
+                            c1xs[ngram_size][collocate] += freq
+                            cx1s[ngram_size][node] += freq
 
-                for node, collocate in collocations_total:
-                    len_node = len(node)
+                        # Cxx
+                        cxxs[ngram_size] = sum(collocations_freqs.values())
 
-                    c11 = sum(collocations_freqs_file.get((node, collocate), [0]))
-                    c12 = c1xs[len_node][collocate] - c11
-                    c21 = cx1s[len_node][node] - c11
-                    c22 = cxxs[len_node] - c11 - c12 - c21
+                    for node, collocate in collocations_all:
+                        len_node = len(node)
 
-                    # Test Statistic & p-value
-                    if func_statistical_significance is wl_measures_statistical_significance.z_score_berry_rogghe:
-                        collocates_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22, span))
-                    else:
-                        collocates_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+                        c11 = sum(collocations_freqs_file.get((node, collocate), [0]))
+                        c12 = c1xs[len_node][collocate] - c11
+                        c21 = cx1s[len_node][node] - c11
+                        c22 = cxxs[len_node] - c11 - c12 - c21
 
-                    # Bayes Factor
-                    collocates_stats_file[(node, collocate)].append(func_bayes_factor(self.main, c11, c12, c21, c22))
-                    # Effect Size
-                    collocates_stats_file[(node, collocate)].append(func_effect_size(self.main, c11, c12, c21, c22))
+                        # Test Statistic & p-value
+                        if func_statistical_significance is None:
+                            collocates_stats_file[(node, collocate)] = [None, None]
+                        else:
+                            if func_statistical_significance is wl_measures_statistical_significance.z_score_berry_rogghe:
+                                collocates_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22, span))
+                            else:
+                                collocates_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+
+                        # Bayes Factor
+                        if func_bayes_factor is None:
+                            collocates_stats_file[(node, collocate)].append(None)
+                        else:
+                            collocates_stats_file[(node, collocate)].append(func_bayes_factor(self.main, c11, c12, c21, c22))
+
+                        # Effect Size
+                        if func_effect_size is None:
+                            collocates_stats_file[(node, collocate)].append(None)
+                        else:
+                            collocates_stats_file[(node, collocate)].append(func_effect_size(self.main, c11, c12, c21, c22))
+                else:
+                    collocates_stats_file = {
+                        (node, collocate): [None, None, None, None]
+                        for node, collocate in collocations_all
+                    }
 
                 self.collocations_stats_files.append(collocates_stats_file)
 
@@ -991,7 +982,12 @@ def generate_table(main, table):
                     table.settings = copy.deepcopy(main.settings_custom)
 
                     test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+                    measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
                     measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+                    func_statistical_significance = main.settings_global['tests_statistical_significance'][test_statistical_significance]['func']
+                    func_bayes_factor = main.settings_global['measures_bayes_factor'][measure_bayes_factor]['func']
+                    func_effect_size = main.settings_global['measures_effect_size'][measure_effect_size]['func']
 
                     text_test_stat = main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
                     text_effect_size = main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
@@ -1042,30 +1038,33 @@ def generate_table(main, table):
                             is_pct = True, is_cumulative = True, is_breakdown = True
                         )
 
-                        if text_test_stat:
+                        if func_statistical_significance is not None:
+                            if text_test_stat:
+                                table.ins_header_hor(
+                                    table.model().columnCount() - 2,
+                                    f'[{file["name"]}]\n{text_test_stat}',
+                                    is_float = True, is_breakdown = True
+                                )
+
                             table.ins_header_hor(
                                 table.model().columnCount() - 2,
-                                f'[{file["name"]}]\n{text_test_stat}',
+                                _tr('Wl_Table_Collocation_Extractor', '[{}]\np-value').format(file['name']),
                                 is_float = True, is_breakdown = True
                             )
 
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', '[{}]\np-value').format(file['name']),
-                            is_float = True, is_breakdown = True
-                        )
+                        if func_bayes_factor is not None:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                _tr('Wl_Table_Collocation_Extractor', '[{}]\nBayes Factor').format(file['name']),
+                                is_float = True, is_breakdown = True
+                            )
 
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', '[{}]\nBayes Factor').format(file['name']),
-                            is_float = True, is_breakdown = True
-                        )
-
-                        table.ins_header_hor(
-                            table.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_effect_size}',
-                            is_float = True, is_breakdown = True
-                        )
+                        if func_effect_size is not None:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                f'[{file["name"]}]\n{text_effect_size}',
+                                is_float = True, is_breakdown = True
+                            )
 
                     # Insert columns (total)
                     for i in range(
@@ -1110,36 +1109,58 @@ def generate_table(main, table):
                         is_pct = True, is_cumulative = True
                     )
 
-                    if text_test_stat:
+                    if func_statistical_significance is not None:
+                        if text_test_stat:
+                            table.ins_header_hor(
+                                table.model().columnCount() - 2,
+                                _tr('Wl_Table_Collocation_Extractor', 'Total\n') + text_test_stat,
+                                is_float = True
+                            )
+
                         table.ins_header_hor(
                             table.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', 'Total\n') + text_test_stat,
+                            _tr('Wl_Table_Collocation_Extractor', 'Total\np-value'),
                             is_float = True
                         )
 
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('Wl_Table_Collocation_Extractor', 'Total\np-value'),
-                        is_float = True
-                    )
+                    if func_bayes_factor is not None:
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('Wl_Table_Collocation_Extractor', 'Total\nBayes Factor'),
+                            is_float = True
+                        )
 
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('Wl_Table_Collocation_Extractor', 'Total\nBayes Factor'),
-                        is_float = True
-                    )
-
-                    table.ins_header_hor(
-                        table.model().columnCount() - 2,
-                        _tr('Wl_Table_Collocation_Extractor', 'Total\n') + text_effect_size,
-                        is_float = True
-                    )
+                    if func_effect_size is not None:
+                        table.ins_header_hor(
+                            table.model().columnCount() - 2,
+                            _tr('Wl_Table_Collocation_Extractor', 'Total\n') + text_effect_size,
+                            is_float = True
+                        )
 
                     # Sort by p-value of the first file
-                    table.horizontalHeader().setSortIndicator(
-                        table.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\np-value').format(files[0]['name'])),
-                        Qt.AscendingOrder
-                    )
+                    if func_statistical_significance is not None:
+                        table.horizontalHeader().setSortIndicator(
+                            table.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\np-value').format(files[0]['name'])),
+                            Qt.AscendingOrder
+                        )
+                    # Sort by bayes factor of the first file
+                    elif func_bayes_factor is not None:
+                        table.horizontalHeader().setSortIndicator(
+                            table.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\nBayes Factor').format(files[0]['name'])),
+                            Qt.DescendingOrder
+                        )
+                    # Sort by effect size of the first file
+                    elif func_effect_size is not None:
+                        table.horizontalHeader().setSortIndicator(
+                            table.find_header_hor(f"[{files[0]['name']}]\n{text_effect_size}"),
+                            Qt.DescendingOrder
+                        )
+                    # Otherwise sort by frequency of the first file
+                    else:
+                        table.horizontalHeader().setSortIndicator(
+                            table.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\nFrequency').format(files[0]['name'])),
+                            Qt.DescendingOrder
+                        )
 
                     if settings['generation_settings']['window_left'] < 0:
                         cols_freqs_start = [
@@ -1166,9 +1187,7 @@ def generate_table(main, table):
                     for col in cols_freq_pct:
                         cols_freq.remove(col)
 
-                    if text_test_stat:
-                        cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
-
+                    cols_test_stat = table.find_headers_hor(f'\n{text_test_stat}')
                     cols_p_val = table.find_headers_hor(_tr('Wl_Table_Collocation_Extractor', '\np-value'))
                     cols_bayes_factor = table.find_headers_hor(_tr('Wl_Table_Collocation_Extractor', '\nBayes Factor'))
                     cols_effect_size = table.find_headers_hor(f'\n{text_effect_size}')
@@ -1205,15 +1224,20 @@ def generate_table(main, table):
 
                         for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
                             # Test Statistic
-                            if text_test_stat:
+                            if text_test_stat is not None:
                                 table.set_item_num(i, cols_test_stat[j], test_stat)
 
                             # p-value
-                            table.set_item_p_val(i, cols_p_val[j], p_val)
+                            if func_statistical_significance is not None:
+                                table.set_item_p_val(i, cols_p_val[j], p_val)
+
                             # Bayes Factor
-                            table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+                            if func_bayes_factor is not None:
+                                table.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+
                             # Effect Size
-                            table.set_item_num(i, cols_effect_size[j], effect_size)
+                            if func_effect_size is not None:
+                                table.set_item_num(i, cols_effect_size[j], effect_size)
 
                         # Number of Files Found
                         num_files_found = len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)])

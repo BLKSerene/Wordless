@@ -474,8 +474,8 @@ def generate_table(main, table):
                     text_measure_dispersion = settings['generation_settings']['measure_dispersion']
                     text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                    text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col']
-                    text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col']
+                    text_dispersion = main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
+                    text_adjusted_freq = main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
 
                     table.clr_table()
 
@@ -546,8 +546,8 @@ def generate_table(main, table):
                     for col in cols_freq_pct:
                         cols_freq.remove(col)
 
-                    cols_dispersion = table.find_headers_hor(f'\n{text_dispersion}') if text_measure_dispersion else None
-                    cols_adjusted_freq = table.find_headers_hor(f'\n{text_adjusted_freq}') if text_measure_adjusted_freq else None
+                    cols_dispersion = table.find_headers_hor(f'\n{text_dispersion}')
+                    cols_adjusted_freq = table.find_headers_hor(f'\n{text_adjusted_freq}')
                     col_files_found = table.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found'))
                     col_files_found_pct = table.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found %'))
 
@@ -623,8 +623,8 @@ def generate_fig(main):
                     measure_dispersion = settings['generation_settings']['measure_dispersion']
                     measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                    col_dispersion = main.settings_global['measures_dispersion'][measure_dispersion]['col']
-                    col_adjusted_freq = main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col']
+                    col_dispersion = main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
+                    col_adjusted_freq = main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
 
                     if settings['fig_settings']['use_data'] == _tr('wl_wordlist_generator', 'Frequency'):
                         wl_figs_freqs.wl_fig_freqs(
