@@ -2662,79 +2662,87 @@ def init_settings_global():
 
         'measures_dispersion': {
             _tr('init_settings_global', 'None'): {
-                'col': None,
+                'col_text': None,
                 'func': None
             },
 
             _tr('init_settings_global', "Carroll's D₂"): {
-                'col': _tr('init_settings_global', "Carroll's D₂"),
+                'col_text': _tr('init_settings_global', "Carroll's D₂"),
                 'func': wl_measures_dispersion.carrolls_d2
             },
 
             _tr('init_settings_global', "Gries's DP"): {
-                'col': _tr('init_settings_global', "Gries's DP"),
+                'col_text': _tr('init_settings_global', "Gries's DP"),
                 'func': wl_measures_dispersion.griess_dp
             },
 
             _tr('init_settings_global', "Gries's DPnorm"): {
-                'col': _tr('init_settings_global', "Gries's DPnorm"),
+                'col_text': _tr('init_settings_global', "Gries's DPnorm"),
                 'func': wl_measures_dispersion.griess_dp_norm
             },
 
             _tr('init_settings_global', "Juilland's D"): {
-                'col': _tr('init_settings_global', "Juilland's D"),
+                'col_text': _tr('init_settings_global', "Juilland's D"),
                 'func': wl_measures_dispersion.juillands_d
             },
 
             _tr('init_settings_global', "Lyne's D₃"): {
-                'col': _tr('init_settings_global', "Lyne's D₃"),
+                'col_text': _tr('init_settings_global', "Lyne's D₃"),
                 'func': wl_measures_dispersion.lynes_d3
             },
 
             _tr('init_settings_global', "Rosengren's S"): {
-                'col': _tr('init_settings_global', "Rosengren's S"),
+                'col_text': _tr('init_settings_global', "Rosengren's S"),
                 'func': wl_measures_dispersion.rosengrens_s
             },
 
             _tr('init_settings_global', "Zhang's Distributional Consistency"): {
-                'col': _tr('init_settings_global', "Zhang's DC"),
+                'col_text': _tr('init_settings_global', "Zhang's DC"),
                 'func': wl_measures_dispersion.zhangs_distributional_consistency
             }
         },
 
         'measures_adjusted_freq': {
             _tr('init_settings_global', 'None'): {
-                'col': None,
+                'col_text': None,
                 'func': None
             },
 
             _tr('init_settings_global', "Carroll's Um"): {
-                'col': _tr('init_settings_global', "Carroll's Um"),
+                'col_text': _tr('init_settings_global', "Carroll's Um"),
                 'func': wl_measures_adjusted_freq.carrolls_um
             },
 
             _tr('init_settings_global', "Engwall's FM"): {
-                'col': _tr('init_settings_global', "Engwall's FM"),
+                'col_text': _tr('init_settings_global', "Engwall's FM"),
                 'func': wl_measures_adjusted_freq.engwalls_fm
             },
 
             _tr('init_settings_global', "Juilland's U"): {
-                'col': _tr('init_settings_global', "Juilland's U"),
+                'col_text': _tr('init_settings_global', "Juilland's U"),
                 'func': wl_measures_adjusted_freq.juillands_u
             },
 
             _tr('init_settings_global', "Kromer's UR"): {
-                'col': _tr('init_settings_global', "Kromer's UR"),
+                'col_text': _tr('init_settings_global', "Kromer's UR"),
                 'func': wl_measures_adjusted_freq.kromers_ur
             },
 
             _tr('init_settings_global', "Rosengren's KF"): {
-                'col': _tr('init_settings_global', "Rosengren's KF"),
+                'col_text': _tr('init_settings_global', "Rosengren's KF"),
                 'func': wl_measures_adjusted_freq.rosengrens_kf
             }
         },
 
         'tests_statistical_significance': {
+            _tr('init_settings_global', 'None'): {
+                'col_text': None,
+                'func': None,
+                'to_sections': None,
+                'collocation_extractor': True,
+                'keyword_extractor': True
+            },
+
             _tr('init_settings_global', "Fisher's Exact Test"): {
                 # There is no test statistic for Fisher's exact test
                 'col_text': None,
@@ -2810,6 +2818,13 @@ def init_settings_global():
         },
 
         'measures_bayes_factor': {
+            _tr('init_settings_global', 'None'): {
+                'func': None,
+                'to_sections': None,
+                'collocation_extractor': True,
+                'keyword_extractor': True
+            },
+
             _tr('init_settings_global', 'Log-likelihood Ratio Test'): {
                 'func': wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test,
                 'to_sections': False,
@@ -2826,6 +2841,11 @@ def init_settings_global():
         },
 
         'measures_effect_size': {
+            _tr('init_settings_global', 'None'): {
+                'col_text': None,
+                'func': None
+            },
+
             _tr('init_settings_global', '%DIFF'): {
                 'col_text': _tr('init_settings_global', '%DIFF'),
                 'func': wl_measures_effect_size.pct_diff
