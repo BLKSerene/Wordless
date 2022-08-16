@@ -48,7 +48,7 @@ I would like to extend my sincere gratitude to the following open-source project
 24|[python-docx](https://github.com/python-openxml/python-docx)          |0.8.11 |Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
 25|[Requests](https://github.com/psf/requests)                           |2.28.1 |Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 26|[Sacremoses](https://github.com/alvations/sacremoses)                 |0.0.53 |Liling Tan|[MIT](https://github.com/alvations/sacremoses/blob/master/LICENSE)
-27|[SciPy](https://scipy.org/scipylib/)                                  |1.8.0  |SciPy Developers|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
+27|[SciPy](https://scipy.org/scipylib/)                                  |1.9.0  |SciPy Developers|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 28|[spaCy](https://spacy.io/)                                            |3.2.3  |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 29|[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |1.0.0  |Gene Diaz|[MIT](https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE)
 30|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |0.6.6  |Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
