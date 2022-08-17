@@ -24,7 +24,7 @@ charset-normalizer == 2.1.0
 jieba == 0.42.1
 pkuseg == 0.0.25
 nltk == 3.7
-opencc-python-reimplemented == 0.1.6
+opencc == 1.1.1
 
 ## pymorphy2
 pymorphy2 == 0.9.1
