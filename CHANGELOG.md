@@ -55,9 +55,8 @@
 - Work Area: Remove Wordlist Generator / N-gram Generator / Collocation Extractpr / Colligation Extractor / Keyword Extractor - Generation Settings - Advanced Settings
 
 ### ⏫ Dependency Changes
-- Dependencies: Add PyPDF2
-- Dependencies: Remove nagisa
-- Dependencies: Remove ssg
+- Dependencies: Add OpenCC and PyPDF2
+- Dependencies: Remove opencc-python, nagisa, and ssg
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
 - Dependencies: Upgrade Charset Normalizer to 2.1.0
@@ -109,9 +108,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Add SudachiPy
-- Dependencies: Remove lemmalist-greek
-- Dependencies: Remove razdel
-- Dependencies: Remove syntok
+- Dependencies: Remove lemmalist-greek, razdel, and syntok
 - Dependencies: Upgrade Charset Normalizer to 2.0.12
 - Dependencies: Upgrade Matplotlib to 3.5.1
 - Dependencies: Upgrade NetworkX to 2.7.1
@@ -155,8 +152,7 @@
 - File Area: Remove support for .tmx files
 
 ### ⏫ Dependency Changes
-- Dependencies: Add Pyphen
-- Dependencies: Add ssg
+- Dependencies: Add Pyphen and ssg
 - Dependencies: Upgrade Beautiful Soup to 4.10.0
 - Dependencies: Upgrade botok to 0.8.8
 - Dependencies: Upgrade Charset Normalizer to 2.0.7
@@ -204,11 +200,8 @@
 - Utils: Remove AttaCut's Thai word tokenizer
 
 ### ⏫ Dependency Changes
-- Dependencies: Add Charset Normalizer
-- Dependencies: Add CLTK
-- Dependencies: Remove AttaCut
-- Dependencies: Remove cChardet
-- Dependencies: Remove chardet
+- Dependencies: Add Charset Normalizer and CLTK
+- Dependencies: Remove AttaCut, cChardet, and chardet
 - Dependencies: Upgrade botok to 0.8.7
 - Dependencies: Upgrade langdetect to 1.0.9
 - Dependencies: Upgrade Matplotlib to 3.4.2
@@ -249,16 +242,12 @@
 - Work Area: Fix Concordancer - Generate Figure
 
 ### ❌ Removals
-- File Area: Remove support for .lrc files
-- File Area: Remove support for .xls files
+- File Area: Remove support for .lrc and .xls files
 - Work Area: Remove Concordancer - Sentence Segment No.
 - Work Area: Remove Overview - Count of Sentence Segments / Paragraph Length in Sentence Segment / Sentence Segment Length in Token
 
 ### ⏫ Dependency Changes
-- Dependencies: Add AttaCut
-- Dependencies: Add pkuseg
-- Dependencies: Add TextBlob
-- Dependencies: Add Tokenizer
+- Dependencies: Add AttaCut, pkuseg, TextBlob, and Tokenizer
 - Dependencies: Remove xlrd
 - Dependencies: Upgrade chardet to 4.0.0
 - Dependencies: Upgrade NumPy to 1.19.5
@@ -370,8 +359,7 @@
 - Utils: Remove Sacremoses's Penn Treebank tokenizer
 
 ### ⏫ Dependency Changes
-- Dependencies: Add razdel
-- Dependencies: Add syntok
+- Dependencies: Add razdel and syntok
 - Dependencies: Upgrade Beautiful Soup to 4.8.1
 - Dependencies: Upgrade botok (originally named pybo) to 0.6.18
 - Dependencies: Upgrade cChardet to 2.1.5
@@ -418,8 +406,7 @@
 - Work Area: Fix Work Area - Search Settings / Search in Results
 
 ### ⏫ Dependency Changes
-- Dependencies: Add extra-stopwords
-- Dependencies: Add NetworkX
+- Dependencies: Add extra-stopwords and NetworkX
 - Dependencies: Upgrade Beautiful Soup to 4.8.0
 - Dependencies: Upgrade Matplotlib to 3.1.1
 - Dependencies: Upgrade nagisa to 0.2.4

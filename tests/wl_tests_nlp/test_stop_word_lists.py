@@ -54,6 +54,12 @@ def test_get_stop_word_list(lang, stop_word_list):
         # Check if there are empty tokens in the list
         assert all((stop_word.strip() for stop_word in stop_words))
 
+def test_filter_stop_words():
+    assert wl_stop_word_lists.wl_filter_stop_words(main, items = ['a'], lang = 'eng_us') == []
+    assert wl_stop_word_lists.wl_filter_stop_words(main, items = [], lang = 'eng_us') == []
+
 if __name__ == '__main__':
     for lang, stop_word_list in test_stop_word_lists:
         test_get_stop_word_list(lang, stop_word_list)
+
+    test_filter_stop_words()
