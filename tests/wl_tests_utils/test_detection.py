@@ -26,7 +26,7 @@ from tests import wl_test_init
 from wordless.wl_utils import wl_detection
 
 main = wl_test_init.Wl_Test_Main()
-main.settings_custom['files']['auto_detection_settings']['number_lines_no_limit'] = True
+main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit'] = True
 
 # Encoding detection
 @pytest.mark.parametrize('file_path', glob.glob('tests/files/wl_utils/wl_detection/encoding/*.txt'))

@@ -17,13 +17,10 @@
 # ----------------------------------------------------------------------
 
 import charset_normalizer
-import langdetect
 import langid
+import opencc
 
 from wordless.wl_utils import wl_conversion
-
-# Force consistent results for language detection
-langdetect.DetectorFactory.seed = 0
 
 def detect_encoding(main, file_path):
     text = b''
@@ -61,13 +58,12 @@ def detect_lang_text(main, text):
 
     # Chinese (Simplified) & Chinese (Traditional)
     if lang_code_639_1 == 'zh':
-        lang_code_639_1 = 'zh_cn'
+        converter = opencc.OpenCC('t2s.json')
 
-        for lang in sorted(langdetect.detect_langs(text), key = lambda item: -item.prob):
-            if lang.lang in ['zh-cn', 'zh-tw']:
-                lang_code_639_1 = lang.lang.replace('-', '_')
-
-                break
+        if converter.convert(text) == text:
+            lang_code_639_1 = 'zh_cn'
+        else:
+            lang_code_639_1 = 'zh_tw'
     # English
     elif lang_code_639_1 == 'en':
         lang_code_639_1 = 'en_us'

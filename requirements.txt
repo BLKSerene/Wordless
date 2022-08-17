@@ -49,7 +49,6 @@ underthesea == 1.3.4
 
 # Not version-pinned
 beautifulsoup4
-langdetect
 langid
 lxml
 matplotlib

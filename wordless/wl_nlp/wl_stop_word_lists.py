@@ -47,13 +47,14 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
 
         # Chinese (Traditional)
         if lang_639_1 == 'zh_tw':
-            cc = opencc.OpenCC('s2twp')
+            converter = opencc.OpenCC('s2twp')
 
             stop_words_zho_cn = wl_get_stop_word_list(
                 main,
                 lang = 'zho_cn',
-                stop_word_list = stop_word_list.replace('zho_tw', 'zho_cn'))
-            stop_words = [cc.convert(stop_word) for stop_word in stop_words_zho_cn]
+                stop_word_list = stop_word_list.replace('zho_tw', 'zho_cn')
+            )
+            stop_words = [converter.convert(stop_word) for stop_word in stop_words_zho_cn]
         elif stop_word_list.startswith('cltk_'):
             stop_words = importlib.import_module(f'data.cltk.{lang}').STOPS
         # extra-stopwords
