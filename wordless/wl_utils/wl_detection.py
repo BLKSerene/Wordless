@@ -17,10 +17,8 @@
 # ----------------------------------------------------------------------
 
 import charset_normalizer
-import langid
+import lingua
 import opencc
-
-from wordless.wl_utils import wl_conversion
 
 def detect_encoding(main, file_path):
     text = b''
@@ -53,40 +51,45 @@ def detect_encoding(main, file_path):
 
     return encoding
 
-def detect_lang_text(main, text):
-    lang_code_639_1 = langid.classify(text)[0]
+def detect_lang_text(main, text): # pylint: disable=unused-argument
+    detector = lingua.LanguageDetectorBuilder.from_all_languages_without(
+        lingua.Language.BOSNIAN,
+        lingua.Language.GANDA,
+        lingua.Language.GEORGIAN,
+        lingua.Language.MAORI,
+        lingua.Language.SHONA,
+        lingua.Language.TSONGA,
+        lingua.Language.XHOSA
+    ).build()
+    lang = detector.detect_language_of(text)
 
-    # Chinese (Simplified) & Chinese (Traditional)
-    if lang_code_639_1 == 'zh':
+    # Chinese
+    if lang is lingua.Language.CHINESE:
         converter = opencc.OpenCC('t2s.json')
 
         if converter.convert(text) == text:
-            lang_code_639_1 = 'zh_cn'
+            lang_code = 'zho_cn'
         else:
-            lang_code_639_1 = 'zh_tw'
+            lang_code = 'zho_tw'
     # English
-    elif lang_code_639_1 == 'en':
-        lang_code_639_1 = 'en_us'
+    elif lang is lingua.Language.ENGLISH:
+        lang_code = 'eng_us'
     # German
-    elif lang_code_639_1 == 'de':
-        lang_code_639_1 = 'de_de'
-    # Norwegian Bokmål
-    elif lang_code_639_1 == 'no':
-        lang_code_639_1 = 'nb'
+    elif lang is lingua.Language.GERMAN:
+        lang_code = 'deu_de'
     # Portuguese
-    elif lang_code_639_1 == 'pt':
-        lang_code_639_1 = 'pt_pt'
-    # Serbian (Cyrillic)
-    elif lang_code_639_1 == 'sr':
-        lang_code_639_1 = 'sr_cyrl'
+    elif lang is lingua.Language.PORTUGUESE:
+        lang_code = 'por_pt'
+    # Serbian
+    elif lang is lingua.Language.SERBIAN:
+        lang_code = 'srp_cyrl'
+    # No results
+    elif lang is None:
+        lang_code = 'other'
+    else:
+        lang_code = lang.iso_code_639_3.name.lower()
 
-    lang = wl_conversion.to_iso_639_3(main, lang_code_639_1)
-
-    # Other Languages
-    if lang is None:
-        lang = 'other'
-
-    return lang
+    return lang_code
 
 def detect_lang_file(main, file):
     text = ''

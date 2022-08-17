@@ -36,6 +36,7 @@
 ### ✨ Improvements
 - Settings: Allow resizing of Settings dialog box
 - Settings: Update Settings - Files - Tags - Header Tag Settings
+- Utils: Update language detection
 - Work Area: Update Profiler - Type-token Ratio (Standardized)
 
 ### 📌 Bugfixes
@@ -55,8 +56,8 @@
 - Work Area: Remove Wordlist Generator / N-gram Generator / Collocation Extractpr / Colligation Extractor / Keyword Extractor - Generation Settings - Advanced Settings
 
 ### ⏫ Dependency Changes
-- Dependencies: Add OpenCC and PyPDF2
-- Dependencies: Remove langdetect, nagisa, opencc-python, and ssg
+- Dependencies: Add Lingua, OpenCC, and PyPDF2
+- Dependencies: Remove langdetect, langid.py, nagisa, opencc-python, and ssg
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
 - Dependencies: Upgrade Charset Normalizer to 2.1.0
