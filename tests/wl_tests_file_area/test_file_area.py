@@ -74,8 +74,6 @@ def test_file_area():
         assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
         assert new_file['path'] == wl_misc.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area'), 'imports')
         assert new_file['path_original'] == wl_misc.get_normalized_path(file_path)
-        assert new_file['encoding'] == 'utf_8'
-        assert new_file['lang'] == re.search(r'(?<=\[)[a-z_]+(?=\])', file_path).group()
         assert not new_file['tokenized']
         assert not new_file['tagged']
 
