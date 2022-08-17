@@ -195,6 +195,8 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
 def wl_filter_stop_words(main, items, lang):
     stop_word_list = wl_get_stop_word_list(main, lang)
 
+    print(stop_word_list)
+
     # Check if the list is empty
     if items:
         items_filtered = [token for token in items if token not in stop_word_list]
