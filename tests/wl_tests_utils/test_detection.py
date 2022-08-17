@@ -20,13 +20,29 @@ import glob
 import os
 import re
 
+import lingua
 import pytest
 
 from tests import wl_test_init
 from wordless.wl_utils import wl_detection
 
 main = wl_test_init.Wl_Test_Main()
-main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit'] = True
+
+def test_lingua():
+    langs = {
+        re.search(r'^[^\(\)]+', lang.lower()).group().strip()
+        for lang in main.settings_global['langs']
+    }
+    langs_exceptions = {'bokmal', 'nynorsk', 'slovene'}
+    langs_extra = []
+
+    for lang in dir(lingua.Language):
+        if not lang.startswith('__') and lang.lower() not in langs | langs_exceptions:
+            langs_extra.append(lang)
+
+    print(f"Extra languages: {', '.join(langs_extra)}\n")
+
+    assert langs_extra == ['BOSNIAN', 'GANDA', 'GEORGIAN', 'MAORI', 'SHONA', 'TSONGA', 'XHOSA']
 
 # Encoding detection
 @pytest.mark.parametrize('file_path', glob.glob('tests/files/wl_utils/wl_detection/encoding/*.txt'))
@@ -66,6 +82,8 @@ def test_detection_lang(file_path):
     assert lang_code_file == lang_code_text == file_name.replace('.txt', '')
 
 if __name__ == '__main__':
+    test_lingua()
+
     for file in glob.glob('tests/files/wl_utils/wl_detection/encoding/*.txt'):
         test_detection_encoding(file)
 
