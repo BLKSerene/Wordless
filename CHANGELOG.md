@@ -56,7 +56,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Add OpenCC and PyPDF2
-- Dependencies: Remove opencc-python, nagisa, and ssg
+- Dependencies: Remove langdetect, nagisa, opencc-python, and ssg
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
 - Dependencies: Upgrade Charset Normalizer to 2.1.0
