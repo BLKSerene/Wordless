@@ -41,6 +41,10 @@ GET_LANG_FAMILY = {
     for lang_code_639_3, _, lang_family in settings_langs.values()
 }
 
+def test_normalize_lang_code():
+    for lang_code in settings_langs.values():
+        assert wl_conversion.normalize_lang_code(lang_code[0].replace('_', '-').upper()) == lang_code[0]
+
 def test_to_lang_code():
     for lang_text, lang_code in settings_langs.items():
         assert wl_conversion.to_lang_code(main, lang_text) == lang_code[0]
@@ -113,6 +117,7 @@ def test_to_yes_no_text():
     assert wl_conversion.to_yes_no_text(False) == 'No'
 
 if __name__ == '__main__':
+    test_normalize_lang_code()
     test_to_lang_code()
     test_to_lang_codes()
     test_to_lang_text()

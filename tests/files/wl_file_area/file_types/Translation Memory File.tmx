@@ -6,7 +6,7 @@
     o-tmf="ABCTransMem"/>
   <body>
     <tu>
-      <tuv xml:lang="en">
+      <tuv xml:lang="en-US">
         <seg>Hello world!</seg>
       </tuv>
       <tuv xml:lang="fr">
