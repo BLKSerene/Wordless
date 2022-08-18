@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Colligation Extractor
+# Wordless: Tests - Work Area - Colligation Extractor
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,9 @@ from wordless.wl_dialogs import wl_dialogs_misc
 
 main = wl_test_init.Wl_Test_Main()
 
+main.settings_custom['colligation_extractor']['search_settings']['multi_search_mode'] = True
+main.settings_custom['colligation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+
 def test_colligation_extractor():
     print('Start testing module Colligation Extractor... ')
 
@@ -47,10 +50,6 @@ def test_colligation_extractor():
     len_max_measures = max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])
 
     files = main.settings_custom['file_area']['files_open']
-
-    main.settings_custom['colligation_extractor']['search_settings']['multi_search_mode'] = True
-    main.settings_custom['colligation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
-
     i_search_sing, i_search_multi = random.sample(range(len_max_measures), 2)
 
     for i in range(len_max_measures):
