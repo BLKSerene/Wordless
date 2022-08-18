@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - N-gram Generator
+# Wordless: Tests - Work Area - N-gram Generator
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -25,6 +25,9 @@ from wordless.wl_dialogs import wl_dialogs_misc
 
 main = wl_test_init.Wl_Test_Main()
 
+main.settings_custom['ngram_generator']['search_settings']['multi_search_mode'] = True
+main.settings_custom['ngram_generator']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+
 def test_ngram_generator():
     print('Start testing module N-gram Generator...')
 
@@ -36,10 +39,6 @@ def test_ngram_generator():
     len_max_measures = max([len_measures_dispersion, len_measures_adjusted_freq])
 
     files = main.settings_custom['file_area']['files_open']
-
-    main.settings_custom['ngram_generator']['search_settings']['multi_search_mode'] = True
-    main.settings_custom['ngram_generator']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
-
     i_search_sing, i_search_multi = random.sample(range(len_max_measures), 2)
 
     for i in range(len_max_measures):

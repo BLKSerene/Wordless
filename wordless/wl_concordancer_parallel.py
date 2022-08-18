@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 import copy
-import random
 import traceback
 
 import nltk
@@ -245,61 +244,11 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.combo_box_src_file.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_tgt_file.currentTextChanged.connect(self.generation_settings_changed)
 
-        self.label_sampling_method = QLabel(self.tr('Sampling Method:'), self)
-        self.combo_box_sampling_method = wl_boxes.Wl_Combo_Box(self)
-        self.stacked_widget_sample_size_text = wl_layouts.Wl_Stacked_Widget(self)
-        self.label_sample_size_first_n_lines = QLabel(self.tr('Sample Size:'), self)
-        self.label_sample_size_systematic_fixed_interval = QLabel(self.tr('Sampling Interval:'), self)
-        self.label_sample_size_systematic_fixed_size = QLabel(self.tr('Sample Size:'), self)
-        self.label_sample_size_random = QLabel(self.tr('Sample Size:'), self)
-        self.stacked_widget_sample_size_val = wl_layouts.Wl_Stacked_Widget(self)
-        self.spin_box_sample_size_first_n_lines = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_sample_size_systematic_fixed_interval = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_sample_size_systematic_fixed_size = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_sample_size_random = wl_boxes.Wl_Spin_Box(self)
-
-        self.stacked_widget_sample_size_text.addWidget(self.label_sample_size_first_n_lines)
-        self.stacked_widget_sample_size_text.addWidget(self.label_sample_size_systematic_fixed_interval)
-        self.stacked_widget_sample_size_text.addWidget(self.label_sample_size_systematic_fixed_size)
-        self.stacked_widget_sample_size_text.addWidget(self.label_sample_size_random)
-        self.stacked_widget_sample_size_val.addWidget(self.spin_box_sample_size_first_n_lines)
-        self.stacked_widget_sample_size_val.addWidget(self.spin_box_sample_size_systematic_fixed_interval)
-        self.stacked_widget_sample_size_val.addWidget(self.spin_box_sample_size_systematic_fixed_size)
-        self.stacked_widget_sample_size_val.addWidget(self.spin_box_sample_size_random)
-
-        self.combo_box_sampling_method.addItems([
-            self.tr('None'),
-            self.tr('First n Lines'),
-            self.tr('Systematic (Fixed Interval)'),
-            self.tr('Systematic (Fixed Size)'),
-            self.tr('Random')
-        ])
-
-        self.spin_box_sample_size_first_n_lines.setRange(1, 1000000)
-        self.spin_box_sample_size_systematic_fixed_interval.setRange(2, 10000)
-        self.spin_box_sample_size_systematic_fixed_size.setRange(1, 10000)
-        self.spin_box_sample_size_random.setRange(1, 1000000)
-
-        self.combo_box_sampling_method.currentTextChanged.connect(self.generation_settings_changed)
-        self.spin_box_sample_size_first_n_lines.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_sample_size_systematic_fixed_interval.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_sample_size_systematic_fixed_size.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_sample_size_random.valueChanged.connect(self.generation_settings_changed)
-
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_src_file, 0, 0, 1, 2)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_src_file, 1, 0, 1, 2)
-        self.group_box_generation_settings.layout().addWidget(self.label_tgt_file, 2, 0, 1, 2)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_tgt_file, 3, 0, 1, 2)
-
-        self.group_box_generation_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 4, 0, 1, 2)
-
-        self.group_box_generation_settings.layout().addWidget(self.label_sampling_method, 5, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_sampling_method, 5, 1)
-        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_sample_size_text, 6, 0)
-        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_sample_size_val, 6, 1)
-
-        self.group_box_generation_settings.layout().setColumnStretch(1, 1)
+        self.group_box_generation_settings.layout().addWidget(self.label_src_file, 0, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_src_file, 1, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_tgt_file, 2, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_tgt_file, 3, 0)
 
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
@@ -368,12 +317,6 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.combo_box_src_file.setCurrentText(settings['generation_settings']['src_file'])
         self.combo_box_tgt_file.setCurrentText(settings['generation_settings']['tgt_file'])
 
-        self.combo_box_sampling_method.setCurrentText(settings['generation_settings']['sampling_method'])
-        self.spin_box_sample_size_first_n_lines.setValue(settings['generation_settings']['sample_size_first_n_lines'])
-        self.spin_box_sample_size_systematic_fixed_interval.setValue(settings['generation_settings']['sample_size_systematic_fixed_interval'])
-        self.spin_box_sample_size_systematic_fixed_size.setValue(settings['generation_settings']['sample_size_systematic_fixed_size'])
-        self.spin_box_sample_size_random.setValue(settings['generation_settings']['sample_size_random'])
-
         # Table Settings
         self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
 
@@ -430,33 +373,6 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         else:
             settings['tgt_file'] = self.combo_box_tgt_file.currentText()
 
-        settings['sampling_method'] = self.combo_box_sampling_method.currentText()
-        settings['sample_size_first_n_lines'] = self.spin_box_sample_size_first_n_lines.value()
-        settings['sample_size_systematic_fixed_interval'] = self.spin_box_sample_size_systematic_fixed_interval.value()
-        settings['sample_size_systematic_fixed_size'] = self.spin_box_sample_size_systematic_fixed_size.value()
-        settings['sample_size_random'] = self.spin_box_sample_size_random.value()
-
-        # Sampling Method
-        if settings['sampling_method'] == self.tr('None'):
-            self.stacked_widget_sample_size_text.hide()
-            self.stacked_widget_sample_size_val.hide()
-        else:
-            self.stacked_widget_sample_size_text.show()
-            self.stacked_widget_sample_size_val.show()
-
-            if settings['sampling_method'] == self.tr('First n Lines'):
-                self.stacked_widget_sample_size_text.setCurrentIndex(0)
-                self.stacked_widget_sample_size_val.setCurrentIndex(0)
-            elif settings['sampling_method'] == self.tr('Systematic (Fixed Interval)'):
-                self.stacked_widget_sample_size_text.setCurrentIndex(1)
-                self.stacked_widget_sample_size_val.setCurrentIndex(1)
-            elif settings['sampling_method'] == self.tr('Systematic (Fixed Size)'):
-                self.stacked_widget_sample_size_text.setCurrentIndex(2)
-                self.stacked_widget_sample_size_val.setCurrentIndex(2)
-            elif settings['sampling_method'] == self.tr('Random'):
-                self.stacked_widget_sample_size_text.setCurrentIndex(3)
-                self.stacked_widget_sample_size_val.setCurrentIndex(3)
-
     def table_settings_changed(self):
         settings = self.main.settings_custom['concordancer_parallel']['table_settings']
 
@@ -509,8 +425,10 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     search_settings = settings['search_settings']
                 )
 
-                (search_terms_inclusion,
-                 search_terms_exclusion) = wl_matching.match_search_terms_context(
+                (
+                    search_terms_inclusion,
+                    search_terms_exclusion
+                ) = wl_matching.match_search_terms_context(
                     self.main, tokens_src,
                     lang = text_src.lang,
                     tokenized = text_src.tokenized,
@@ -671,47 +589,6 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                         concordance_line.append([parallel_text_text, parallel_text, text_search_parallel_text])
 
                         concordance_lines.append(concordance_line)
-
-            # Sampling - First n Lines
-            if settings['generation_settings']['sampling_method'] == self.tr('First n Lines'):
-                sample_size = settings['generation_settings']['sample_size_first_n_lines']
-
-                concordance_lines = concordance_lines[:sample_size]
-            # Sampling - Systematic (Fixed Interval)
-            elif settings['generation_settings']['sampling_method'] == self.tr('Systematic (Fixed Interval)'):
-                sampling_interval = settings['generation_settings']['sample_size_systematic_fixed_interval']
-
-                concordance_lines = [line
-                                     for i, line in enumerate(concordance_lines)
-                                     if i % sampling_interval == 0]
-            # Sampling - Systematic (Fixed Size)
-            elif settings['generation_settings']['sampling_method'] == self.tr('Systematic (Fixed Size)'):
-                sample_size = settings['generation_settings']['sample_size_systematic_fixed_size']
-                sampling_interval = len(concordance_lines) // sample_size
-
-                if sampling_interval > 0:
-                    concordance_lines_sampled = []
-
-                    for i, line in enumerate(concordance_lines):
-                        if i % sampling_interval == 0:
-                            concordance_lines_sampled.append(line)
-
-                        if len(concordance_lines_sampled) >= sample_size:
-                            break
-
-                    concordance_lines = concordance_lines_sampled
-            # Sampling - Random
-            elif settings['generation_settings']['sampling_method'] == self.tr('Random'):
-                sample_size = settings['generation_settings']['sample_size_random']
-
-                if sample_size < len(concordance_lines):
-                    concordance_lines_sampled = random.sample(concordance_lines, k = sample_size)
-
-                    concordance_lines = [
-                        line
-                        for line in concordance_lines
-                        if line in concordance_lines_sampled
-                    ]
         except Exception:
             err_msg = traceback.format_exc()
 

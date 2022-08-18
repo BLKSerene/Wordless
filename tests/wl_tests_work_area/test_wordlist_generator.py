@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Wordlist Generator
+# Wordless: Tests - Work Area - Wordlist Generator
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify

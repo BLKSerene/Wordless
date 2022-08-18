@@ -170,13 +170,7 @@ def init_settings_default(main):
                 'width_right_sentence': 0,
                 'width_right_token': 10,
                 'width_right_char': 50,
-                'width_unit': _tr('init_settings_default', 'Token'),
-
-                'sampling_method': _tr('init_settings_default', 'None'),
-                'sample_size_first_n_lines': 100,
-                'sample_size_systematic_fixed_interval': 2,
-                'sample_size_systematic_fixed_size': 100,
-                'sample_size_random': 100
+                'width_unit': _tr('init_settings_default', 'Token')
             },
 
             'table_settings': {
@@ -298,13 +292,7 @@ def init_settings_default(main):
 
             'generation_settings': {
                 'src_file': '',
-                'tgt_file': '',
-
-                'sampling_method': _tr('init_settings_default', 'None'),
-                'sample_size_first_n_lines': 100,
-                'sample_size_systematic_fixed_interval': 2,
-                'sample_size_systematic_fixed_size': 100,
-                'sample_size_random': 100
+                'tgt_file': ''
             },
 
             'table_settings': {
