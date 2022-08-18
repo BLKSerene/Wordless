@@ -195,6 +195,11 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     if len(elements_tuv) == 2:
                         new_file_src['lang'] = wl_conversion.to_iso_639_3(self.main, elements_tuv[0]['xml:lang'])
                         new_file_tgt['lang'] = wl_conversion.to_iso_639_3(self.main, elements_tuv[1]['xml:lang'])
+
+                        if new_file_src['lang'] is None:
+                            new_file_src['lang'] = 'other'
+                        if new_file_tgt['lang'] is None:
+                            new_file_tgt['lang'] = 'other'
                     else:
                         new_file_src['lang'] = new_file_tgt['lang'] = self.main.settings_custom['files']['default_settings']['lang']
 

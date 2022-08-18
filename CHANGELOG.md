@@ -40,6 +40,7 @@
 - Work Area: Update Profiler - Type-token Ratio (Standardized)
 
 ### 📌 Bugfixes
+- File Area: Fix support for .tmx files
 - Work Area: Fix Collocation/Colligation Extractor - Generation Settings - Limit Searching
 - Work Area: Fix Concordancer / Parallel Concordancer - Exported Selected/All after sorting
 - Work Area: Fix Profiler - Table Settings - Show Cumulutive after clicking horizontal headers

@@ -19,7 +19,6 @@
 import glob
 import os
 import random
-import re
 import time
 
 from PyQt5.QtCore import QObject

@@ -21,6 +21,9 @@ from PyQt5.QtCore import QCoreApplication
 _tr = QCoreApplication.translate
 
 # Languages
+def normalize_lang_code(lang_code):
+    return lang_code.replace('-', '_').lower()
+
 def to_lang_code(main, lang_text):
     return main.settings_global['langs'][lang_text][0]
 
@@ -28,6 +31,8 @@ def to_lang_codes(main, lang_texts):
     return (main.settings_global['langs'][lang_text][0] for lang_text in lang_texts)
 
 def _to_lang_text(main, lang_code):
+    lang_code = normalize_lang_code(lang_code)
+
     for lang_text, (lang_code_639_3, _, _) in main.settings_global['langs'].items():
         if lang_code_639_3 == lang_code:
             return lang_text
@@ -41,6 +46,8 @@ def to_lang_texts(main, lang_codes):
     return (_to_lang_text(main, lang_code) for lang_code in lang_codes)
 
 def to_iso_639_3(main, lang_code):
+    lang_code = normalize_lang_code(lang_code)
+
     for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
         if lang_code_639_1 == lang_code:
             return lang_code_639_3
@@ -53,6 +60,8 @@ def to_iso_639_3(main, lang_code):
     return None
 
 def to_iso_639_1(main, lang_code):
+    lang_code = normalize_lang_code(lang_code)
+
     for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
         if lang_code_639_3 == lang_code:
             return lang_code_639_1
@@ -60,12 +69,16 @@ def to_iso_639_1(main, lang_code):
     return None
 
 def remove_lang_code_suffixes(main, lang_code): # pylint: disable=unused-argument
+    lang_code = normalize_lang_code(lang_code)
+
     if '_' in lang_code:
         return lang_code.split('_')[0]
     else:
         return lang_code
 
 def get_lang_family(main, lang_code):
+    lang_code = normalize_lang_code(lang_code)
+
     for lang_code_639_3, _, lang_family in main.settings_global['langs'].values():
         if lang_code_639_3 == lang_code:
             return lang_family
