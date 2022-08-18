@@ -219,7 +219,7 @@ def update_gui_file_types(err_msg, new_files):
         print(file_text_src.offsets_paras)
         print(file_text_src.offsets_sentences)
 
-        assert file_text_src.lang == 'eng_gb'
+        assert file_text_src.lang == 'eng_us'
         assert file_text_src.tokens_multilevel == [[['Hello', 'world', '!']]]
         assert file_text_src.tokens_flat == ['Hello', 'world', '!']
         assert file_text_src.offsets_paras == [0]
