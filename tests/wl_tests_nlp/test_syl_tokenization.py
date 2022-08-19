@@ -121,7 +121,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
     elif lang == 'hun':
         assert syls == [['A'], ['ma', 'gyar'], ['nyelv'], ['az'], ['urá', 'li'], ['nyelv', 'csa', 'lád'], ['tag', 'ja'], [','], ['a'], ['finn', 'ugor'], ['nyel', 'vek'], ['kö', 'zé'], ['tar', 'to', 'zó'], ['ugor'], ['nyel', 'vek'], ['egyi', 'ke'], ['.']]
     elif lang == 'isl':
-        assert syls == [['Ís', 'lenska'], ['er'], ['vest', 'ur', 'nor', 'rænt'], [','], ['germ', 'anskt'], ['og'], ['indó', 'evr', 'ópskt'], ['tungu', 'mál'], ['sem'], ['er'], ['eink', 'um'], ['tal', 'að'], ['og'], ['rit', 'að'], ['á'], ['Ís', 'landi'], ['og'], ['er'], ['móð', 'ur', 'mál'], ['lang', 'flestra'], ['Ís', 'lend', 'inga'], ['.'], ['['], ['4'], [']']]
+        assert syls == [['Ís', 'lenska'], ['er'], ['vest', 'ur', 'nor', 'rænt'], [','], ['germ', 'anskt'], ['og'], ['indó', 'evr', 'ópskt'], ['tungu', 'mál'], ['sem'], ['er'], ['eink', 'um'], ['tal', 'að'], ['og'], ['rit', 'að'], ['á'], ['Ís', 'landi'], ['og'], ['er'], ['móð', 'ur', 'mál'], ['lang', 'flestra'], ['Ís', 'lend', 'inga.[4'], [']']]
     elif lang == 'ind':
         assert syls == [['Ba', 'ha', 'sa'], ['In', 'do', 'ne', 'sia'], ['ada', 'lah'], ['ba', 'ha', 'sa'], ['Me', 'la', 'yu'], ['ba', 'ku'], ['yang'], ['di', 'ja', 'di', 'kan'], ['se', 'ba', 'gai'], ['ba', 'ha', 'sa'], ['res', 'mi'], ['Re', 'pub', 'lik'], ['In', 'do', 'ne', 'si', 'a[1'], [']'], ['dan'], ['ba', 'ha', 'sa'], ['per', 'sa', 'tu', 'an'], ['bang', 'sa'], ['In', 'do', 'ne', 'si', 'a.[2'], [']']]
     elif lang == 'ita':

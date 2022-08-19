@@ -21,7 +21,6 @@ import re
 import jieba
 import pythainlp
 import sudachipy
-import tokenizer
 import underthesea
 
 from wordless.wl_checking import wl_checking_unicode
@@ -254,20 +253,6 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                                 break
 
                         tokens_multilevel[-1].append(tokens)
-                # Icelandic
-                elif word_tokenizer == 'tokenizer_isl':
-                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(
-                        main, section,
-                        lang = 'isl',
-                        sentence_tokenizer = 'tokenizer_isl'
-                    )
-
-                    for sentence in sentences:
-                        tokens_multilevel[-1].append([
-                            token
-                            for kind, token, val in tokenizer.tokenize(sentence)
-                            if token
-                        ])
                 # Thai
                 elif word_tokenizer.startswith('pythainlp_'):
                     # Preserve sentence boundaries

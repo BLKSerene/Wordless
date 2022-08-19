@@ -19,10 +19,9 @@
 import botok
 import nltk
 import pythainlp
-import tokenizer
 import underthesea
 
-from wordless.wl_nlp import wl_nlp_utils, wl_word_detokenization
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
 
 # Reference: https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
@@ -124,14 +123,6 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
                 if sentence_start <= len(line):
                     sentences.append(line[sentence_start:])
-        # Icelandic
-        elif sentence_tokenizer == 'tokenizer_isl':
-            for sentence in tokenizer.split_into_sentences(section):
-                sentences.append(wl_word_detokenization.wl_word_detokenize(
-                    main,
-                    tokens = sentence.split(),
-                    lang = 'isl')
-                )
         # Thai
         elif sentence_tokenizer == 'pythainlp_crfcut':
             sentences.extend(pythainlp.sent_tokenize(section))

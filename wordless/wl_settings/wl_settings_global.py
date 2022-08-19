@@ -320,7 +320,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Sentence Recognizer'): 'spacy_sentence_recognizer',
                 _tr('init_settings_global', 'spaCy - Sentencizer'): 'spacy_sentencizer',
 
-                _tr('init_settings_global', 'Tokenizer - Icelandic Sentence Tokenizer'): 'tokenizer_isl',
                 _tr('init_settings_global', 'Underthesea - Vietnamese Sentence Tokenizer'): 'underthesea_vie',
 
                 _tr('init_settings_global', 'Wordless - Chinese Sentence Tokenizer'): 'wordless_zho',
@@ -416,7 +415,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'SudachiPy - Japanese Word Tokenizer (Split Mode B)'): 'sudachipy_jpn_split_mode_b',
                 _tr('init_settings_global', 'SudachiPy - Japanese Word Tokenizer (Split Mode C)'): 'sudachipy_jpn_split_mode_c',
 
-                _tr('init_settings_global', 'Tokenizer - Icelandic Word Tokenizer'): 'tokenizer_isl',
                 _tr('init_settings_global', 'Underthesea - Vietnamese Word Tokenizer'): 'underthesea_vie',
 
                 _tr('init_settings_global', 'Wordless - Chinese Character Tokenizer'): 'wordless_zho_char',
@@ -938,8 +936,7 @@ def init_settings_global():
             ],
 
             'isl': [
-                'spacy_sentencizer',
-                'tokenizer_isl'
+                'spacy_sentencizer'
             ],
 
             'ind': [
@@ -1294,8 +1291,7 @@ def init_settings_global():
             'isl': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
                 'sacremoses_moses',
-                'spacy_isl',
-                'tokenizer_isl'
+                'spacy_isl'
             ],
 
             'ind': [

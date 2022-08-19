@@ -50,6 +50,7 @@
 - Settings: Remove Settings - Measures - Adjusted Frequency - Use same settings in "Settings → Measures → Dispersion"
 - Utils: Remove nagisa's Japanese word tokenizer and part-of-speech tagger
 - Utils: Remove ssg's Thai syllable tokenizer
+- Utils: Remove Tokenizer's Icelandic sentence tokenizer and word tokenizer
 - Work Area: Remove Concordancer - Zapping Settings - Discard position information
 - Work Area: Remove Concordancer / Parallel Concordancer - Generation Settings - Sampling Method
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
@@ -59,7 +60,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Add Lingua, OpenCC, and PyPDF2
-- Dependencies: Remove langdetect, langid.py, nagisa, opencc-python, and ssg
+- Dependencies: Remove langdetect, langid.py, nagisa, opencc-python, ssg, and Tokenizer
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
 - Dependencies: Upgrade Charset Normalizer to 2.1.0
@@ -72,7 +73,6 @@
 - Dependencies: Upgrade Sacremoses to 0.0.53
 - Dependencies: Upgrade SciPy to 1.9.0
 - Dependencies: Upgrade SudachiPy to 0.6.6
-- Dependencies: Upgrade Tokenizer to 3.4.1
 - Dependencies: Upgrade WordCloud to 1.8.2.2
 
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - 03/12/2022

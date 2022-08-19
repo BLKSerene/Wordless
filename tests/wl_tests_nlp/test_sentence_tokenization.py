@@ -145,12 +145,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'hun':
         assert sentences == ['A magyar nyelv az uráli nyelvcsalád tagja, a finnugor nyelvek közé tartozó ugor nyelvek egyike.', 'Legközelebbi rokonai a manysi és a hanti nyelv, majd utánuk az udmurt, a komi, a mari és a mordvin nyelvek.', 'Vannak olyan vélemények, melyek szerint a moldvai csángó önálló nyelv – különösen annak északi, középkori változata –, így ez volna a magyar legközelebbi rokonnyelve.[1]']
     elif lang == 'isl':
-        if sentence_tokenizer == 'spacy_sentencizer':
-            assert sentences == ['Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[5] Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál[5] og er skyldara norsku og færeysku en sænsku og dönsku.[2][3]']
-        elif sentence_tokenizer == 'tokenizer_isl':
-            assert sentences == ['Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.', '[5] Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál [5] og er skyldara norsku og færeysku en sænsku og dönsku.', '[2] [3]']
-        else:
-            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
+        assert sentences == ['Íslenska er vesturnorrænt, germanskt og indóevrópskt tungumál sem er einkum talað og ritað á Íslandi og er móðurmál langflestra Íslendinga.[5] Það hefur tekið minni breytingum frá fornnorrænu en önnur norræn mál[5] og er skyldara norsku og færeysku en sænsku og dönsku.[2][3]']
     elif lang == 'ind':
         assert sentences == ['Bahasa Indonesia adalah bahasa resmi Republik Indonesia dan bahasa persatuan bangsa Indonesia.[8][9] Bahasa Indonesia adalah salah satu dari banyak varietas bahasa Melayu.[10] Bahasa Indonesia diresmikan penggunaannya setelah Proklamasi Kemerdekaan Indonesia, tepatnya sehari sesudahnya, bersamaan dengan mulai berlakunya konstitusi.', 'Di Timor Leste, bahasa Indonesia berstatus sebagai bahasa kerja.']
     elif lang == 'gle':
