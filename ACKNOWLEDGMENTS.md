@@ -52,6 +52,5 @@ I would like to extend my sincere gratitude to the following open-source project
 28|[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |1.0.0  |Gene Diaz|[MIT](https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE)
 29|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |0.6.6  |Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 30|[TextBlob](https://github.com/sloria/TextBlob)                        |0.17.1 |Steven Loria|[MIT](https://github.com/sloria/TextBlob/blob/dev/LICENSE)
-31|[Tokenizer](https://github.com/mideind/Tokenizer)                     |3.4.1  |Vilhjálmur Þorsteinsson|[MIT](https://github.com/mideind/Tokenizer/blob/master/LICENSE)
-32|[Underthesea](https://github.com/undertheseanlp/underthesea)          |1.3.4  |Vu Anh|[GPL-3.0-only](https://github.com/undertheseanlp/underthesea/blob/master/LICENSE)
-33|[WordCloud](https://github.com/amueller/word_cloud)                   |1.8.2.2|Andreas Christian Mueller|[MIT](https://github.com/amueller/word_cloud/blob/master/LICENSE)
+31|[Underthesea](https://github.com/undertheseanlp/underthesea)          |1.3.4  |Vu Anh|[GPL-3.0-only](https://github.com/undertheseanlp/underthesea/blob/master/LICENSE)
+32|[WordCloud](https://github.com/amueller/word_cloud)                   |1.8.2.2|Andreas Christian Mueller|[MIT](https://github.com/amueller/word_cloud/blob/master/LICENSE)
