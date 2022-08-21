@@ -36,9 +36,6 @@ class Wl_Token(str):
 
         return wl_token
 
-class Wl_Text_Blank:
-    pass
-
 class Wl_Text:
     def __init__(self, main, file):
         self.main = main
@@ -46,11 +43,7 @@ class Wl_Text:
         self.tokenized = file['tokenized']
         self.tagged = file['tagged']
 
-        self.offsets_paras = []
-        self.offsets_sentences = []
-
         self.tokens_multilevel = []
-        self.tokens_flat = []
         self.tags = []
 
         file_ext = os.path.splitext(file['path'])[1].lower()
@@ -83,9 +76,9 @@ class Wl_Text:
                 if re.match(re_tags_start, text):
                     # Check if the first paragraph is empty
                     if not self.tokens_multilevel[0]:
-                        self.tokens_multilevel[0].append([])
+                        self.tokens_multilevel[0].append([[]])
 
-                    self.tokens_multilevel[0][0].insert(0, '')
+                    self.tokens_multilevel[0][0][0].insert(0, '')
                     self.tags.append([])
 
                 # Extract tags
@@ -107,7 +100,10 @@ class Wl_Text:
 
                     if para:
                         for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, para):
-                            self.tokens_multilevel[-1].append(sentence.split())
+                            self.tokens_multilevel[-1].append([])
+
+                            for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_split(self.main, sentence):
+                                self.tokens_multilevel[-1][-1].append(sentence_seg.split())
             # Tokenized & Tagged
             elif self.tokenized and self.tagged:
                 for i, para in enumerate(text.splitlines()):
@@ -118,15 +114,18 @@ class Wl_Text:
                         text_no_tags = re.sub(re_tags, ' ', para)
 
                         for sentence in wl_sentence_tokenization.wl_sentence_split(self.main, text_no_tags):
-                            self.tokens_multilevel[-1].append(sentence.split())
+                            self.tokens_multilevel[-1].append([])
+
+                            for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_split(self.main, sentence):
+                                self.tokens_multilevel[-1][-1].append(sentence.split())
 
                         # Check if the first token in the text is a tag
                         if i == 0 and re.match(re_tags_start, para):
                             # Check if the first paragraph is empty
                             if not self.tokens_multilevel[0]:
-                                self.tokens_multilevel[0].append([])
+                                self.tokens_multilevel[0].append([[]])
 
-                            self.tokens_multilevel[0][0].insert(0, '')
+                            self.tokens_multilevel[0][0][0].insert(0, '')
 
                             self.tags.append([])
 
@@ -175,10 +174,13 @@ class Wl_Text:
                     self.tokens_multilevel.append([])
 
                     for sentence in para.select(css_sentence):
-                        self.tokens_multilevel[-1].append([])
+                        tokens = [
+                            word_clean
+                            for word in sentence.select(css_word)
+                            if (word_clean := word.get_text().strip())
+                        ]
 
-                        for word in sentence.select(css_word):
-                            self.tokens_multilevel[-1][-1].append(word.get_text().strip())
+                        self.tokens_multilevel[-1].append(wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(self.main, tokens))
             # XML files not tokenized or XML tags unfound or XML tags unspecified
             else:
                 text = soup.get_text()
@@ -189,17 +191,11 @@ class Wl_Text:
             # Add empty tags
             self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
 
-        # Paragraph and sentence offsets
-        for para in self.tokens_multilevel:
-            self.offsets_paras.append(len(self.tokens_flat))
-
-            for sentence in para:
-                self.offsets_sentences.append(len(self.tokens_flat))
-
-                self.tokens_flat.extend(sentence)
-
         # Remove whitespace around all tags
-        self.tags = [[tag.strip() for tag in tags] for tags in self.tags]
+        self.tags = [
+            [tag_clean for tag in tags if (tag_clean := tag.strip())]
+            for tags in self.tags
+        ]
 
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
@@ -219,14 +215,39 @@ class Wl_Text:
 
             self.tags.extend([[] for _ in tokens])
 
-class Wl_Text_Ref:
+    def get_tokens_flat(self):
+        return list(wl_misc.flatten_list(self.tokens_multilevel))
+
+    def get_offsets(self):
+        offsets_paras = []
+        offsets_sentences = []
+        offsets_sentence_segs = []
+        num_tokens = 0
+
+        for para in self.tokens_multilevel:
+            offsets_paras.append(num_tokens)
+
+            for sentence in para:
+                offsets_sentences.append(num_tokens)
+
+                for sentence_seg in sentence:
+                    offsets_sentence_segs.append(num_tokens)
+
+                    num_tokens += len(sentence_seg)
+
+        return offsets_paras, offsets_sentences, offsets_sentence_segs
+
+class Wl_Text_Ref():
+    get_tokens_flat = Wl_Text.get_tokens_flat
+    get_offsets = Wl_Text.get_offsets
+
     def __init__(self, main, file):
         self.main = main
         self.lang = file['lang']
         self.tokenized = file['tokenized']
         self.tagged = file['tagged']
 
-        self.tokens_multilevel = [[[]]]
+        self.tokens_multilevel = [[[[]]]]
 
         file_ext = os.path.splitext(file['path'])[1].lower()
 
@@ -244,23 +265,23 @@ class Wl_Text_Ref:
             if not self.tokenized and not self.tagged:
                 tokens = wl_word_tokenization.wl_word_tokenize_flat(self.main, text, lang = self.lang)
 
-                self.tokens_multilevel[0][0].extend(tokens)
+                self.tokens_multilevel[0][0][0].extend(tokens)
             # Untokenized & Tagged
             elif not self.tokenized and self.tagged:
                 # Replace all tags with a whitespace to ensure no words run together
                 text_no_tags = re.sub(re_tags, ' ', text)
-                tokens = wl_word_tokenization.wl_word_tokenize(self.main, text_no_tags, lang = self.lang)
+                tokens = wl_word_tokenization.wl_word_tokenize_flat(self.main, text_no_tags, lang = self.lang)
 
-                self.tokens_multilevel[0][0].extend(tokens)
+                self.tokens_multilevel[0][0][0].extend(tokens)
             # Tokenized & Untagged
             elif self.tokenized and not self.tagged:
-                self.tokens_multilevel[0][0].extend(text.split())
+                self.tokens_multilevel[0][0][0].extend(text.split())
             # Tokenized & Tagged
             elif self.tokenized and self.tagged:
                 # Replace all tags with a whitespace to ensure no words run together
                 text_no_tags = re.sub(re_tags, ' ', text)
 
-                self.tokens_multilevel[0][0].extend(text_no_tags.split())
+                self.tokens_multilevel[0][0][0].extend(text_no_tags.split())
         elif file_ext == '.xml' and self.tagged:
             tags_word = []
 
@@ -279,28 +300,27 @@ class Wl_Text_Ref:
                 and soup.select_one(css_word)
             ):
                 for word in soup.select(css_word):
-                    self.tokens_multilevel[0][0].append(word.get_text())
+                    self.tokens_multilevel[0][0][0].append(word.get_text())
             # XML files not tokenized or XML tags unfound or XML tags unspecified
             else:
                 text = soup.get_text()
                 tokens = wl_word_tokenization.wl_word_tokenize_flat(self.main, text, lang = self.lang)
 
-                self.tokens_multilevel[0][0].extend(tokens)
-
-        # No need to calculate paragraph and sentence offsets
-        self.offsets_paras = [0]
-        self.offsets_sentences = [0]
+                self.tokens_multilevel[0][0][0].extend(tokens)
 
         # Remove whitespace around tokens and empty tokens
-        self.tokens_multilevel[0][0] = [
+        self.tokens_multilevel[0][0][0] = [
             token_clean
-            for token in self.tokens_multilevel[0][0]
+            for token in self.tokens_multilevel[0][0][0]
             if (token_clean := token.strip())
         ]
-        self.tokens_flat = list(wl_misc.flatten_list(self.tokens_multilevel))
 
         # No need to extract tags
-        self.tags = [[] for _ in self.tokens_flat]
+        self.tags = [[] for _ in self.tokens_multilevel[0][0][0]]
 
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
+
+class Wl_Text_Blank():
+    get_tokens_flat = Wl_Text.get_tokens_flat
+    get_offsets = Wl_Text.get_offsets
