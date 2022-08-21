@@ -27,6 +27,7 @@
 - Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test / Welch's t-test / z-score (Berry-Rogghe)
 - Settings: Add Settings - Measures - Statistical Significance - Student's t-test (1-sample) / Student's t-test (2-sample) / Welch's t-test - Direction
 - Settings: Add Settings - Tables - Profiler
+- Work Area: Add Collocation/Colligation Extractor - Generation Settings - Limit Searching - Within Sentence Segments
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance / Measure of Effect Size - None
 - Work Area: Add Concordancer - Generation Settings - Width Unit - Sentence Segment
