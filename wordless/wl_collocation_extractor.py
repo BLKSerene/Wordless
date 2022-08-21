@@ -644,7 +644,12 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                     token_settings = settings['token_settings']
                 )
 
-                tokens = text.tokens_flat
+                tokens = text.get_tokens_flat()
+                (
+                    offsets_paras,
+                    offsets_sentences,
+                    _
+                ) = text.get_offsets()
 
                 search_terms = wl_matching.match_search_terms(
                     self.main, tokens,
@@ -683,25 +688,25 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                     for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
                         # Sentence span
                         if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'Within Sentences'):
-                            if text.offsets_sentences[-1] <= i:
-                                i_sentence_start = text.offsets_sentences[-1]
+                            if offsets_sentences[-1] <= i:
+                                i_sentence_start = offsets_sentences[-1]
                                 i_sentence_end = len_tokens - 1
                             else:
-                                for j, i_sentence in enumerate(text.offsets_sentences):
+                                for j, i_sentence in enumerate(offsets_sentences):
                                     if i_sentence > i:
-                                        i_sentence_start = text.offsets_sentences[j - 1]
+                                        i_sentence_start = offsets_sentences[j - 1]
                                         i_sentence_end = i_sentence - 1
 
                                         break
                         # Paragraph span
                         elif settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'Within Paragraphs'):
-                            if text.offsets_paras[-1] <= i:
-                                i_para_start = text.offsets_paras[-1]
+                            if offsets_paras[-1] <= i:
+                                i_para_start = offsets_paras[-1]
                                 i_para_end = len_tokens - 1
                             else:
-                                for j, i_para in enumerate(text.offsets_paras):
+                                for j, i_para in enumerate(offsets_paras):
                                     if i_para > i:
-                                        i_para_start = text.offsets_paras[j - 1]
+                                        i_para_start = offsets_paras[j - 1]
                                         i_para_end = i_para - 1
 
                                         break
