@@ -624,8 +624,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
-
-                tokens = text.tokens_flat
+                tokens = text.get_tokens_flat()
 
                 # Generate all possible n-grams/skip-grams with the index of their first token
                 if allow_skipped_tokens:
@@ -714,7 +713,11 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
             # Total
             if len(files) > 1:
                 text_total = wl_texts.Wl_Text_Blank()
-                text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
+                text_total.tokens_multilevel = [
+                    copy.deepcopy(para)
+                    for text in texts
+                    for para in text.tokens_multilevel
+                ]
 
                 self.ngrams_freq_files.append(sum([
                     collections.Counter(ngrams_freq_file)
@@ -736,15 +739,17 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 ngrams_lens = {}
                 ngrams_stats_file = {}
 
+                tokens = text.get_tokens_flat()
+
                 if allow_skipped_tokens:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
                         if ngram_size == 1:
-                            ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens_flat, ngram_size))
+                            ngrams_lens[ngram_size] = list(nltk.ngrams(tokens, ngram_size))
                         else:
-                            ngrams_lens[ngram_size] = list(nltk.skipgrams(text.tokens_flat, ngram_size, allow_skipped_tokens_num))
+                            ngrams_lens[ngram_size] = list(nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens_num))
                 else:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        ngrams_lens[ngram_size] = list(nltk.ngrams(text.tokens_flat, ngram_size))
+                        ngrams_lens[ngram_size] = list(nltk.ngrams(tokens, ngram_size))
 
                 # Dispersion
                 if measure_dispersion is None:
