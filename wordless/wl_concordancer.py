@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import bisect
 import copy
 import traceback
 
@@ -49,6 +50,8 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 _tr('Wl_Table_Concordancer', 'Sentiment'),
                 _tr('Wl_Table_Concordancer', 'Token No.'),
                 _tr('Wl_Table_Concordancer', 'Token No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
                 _tr('Wl_Table_Concordancer', 'Sentence No.'),
                 _tr('Wl_Table_Concordancer', 'Sentence No. %'),
                 _tr('Wl_Table_Concordancer', 'Paragraph No.'),
@@ -57,6 +60,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             ],
             headers_int = [
                 _tr('Wl_Table_Concordancer', 'Token No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
                 _tr('Wl_Table_Concordancer', 'Sentence No.'),
                 _tr('Wl_Table_Concordancer', 'Paragraph No.')
             ],
@@ -65,6 +69,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             ],
             headers_pct = [
                 _tr('Wl_Table_Concordancer', 'Token No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
                 _tr('Wl_Table_Concordancer', 'Sentence No. %'),
                 _tr('Wl_Table_Concordancer', 'Paragraph No. %')
             ]
@@ -501,7 +506,11 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 )
 
                 tokens = text.get_tokens_flat()
-                offsets_paras, offsets_sentences, _ = text.get_offsets()
+                (
+                    offsets_paras,
+                    offsets_sentences,
+                    offsets_sentence_segs
+                ) = text.get_offsets()
 
                 search_terms = wl_matching.match_search_terms(
                     self.main, tokens,
@@ -533,6 +542,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                 len_paras = len(offsets_paras)
                 len_sentences = len(offsets_sentences)
+                len_sentence_segs = len(offsets_sentence_segs)
                 len_tokens = len(tokens)
 
                 for len_search_term in range(len_search_term_min, len_search_term_max + 1):
@@ -548,25 +558,10 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                         ):
                             concordance_line = []
 
-                            # Sentence No.
-                            if offsets_sentences[-1] <= i:
-                                no_sentence = len_sentences
-                            else:
-                                for j, i_sentence in enumerate(offsets_sentences):
-                                    if i_sentence > i:
-                                        no_sentence = j
-
-                                        break
-
-                            # Paragraph No.
-                            if offsets_paras[-1] <= i:
-                                no_para = len_paras
-                            else:
-                                for j, i_para in enumerate(offsets_paras):
-                                    if i_para > i:
-                                        no_para = j
-
-                                        break
+                            # Nos.
+                            no_sentence_seg = bisect.bisect(offsets_sentence_segs, i)
+                            no_sentence = bisect.bisect(offsets_sentences, i)
+                            no_para = bisect.bisect(offsets_paras, i)
 
                             # Search in Results (Node)
                             text_search_node = list(ngram)
@@ -745,6 +740,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                             # Token No.
                             concordance_line.append([i + 1, len_tokens])
+                            # Sentence Segment No.
+                            concordance_line.append([no_sentence_seg, len_sentence_segs])
                             # Sentence No.
                             concordance_line.append([no_sentence, len_sentences])
                             # Paragraph No.
@@ -929,9 +926,10 @@ def generate_table(main, table):
 
                         sentiment = concordance_line[3]
                         no_token, len_tokens = concordance_line[4]
-                        no_sentence, len_sentences = concordance_line[5]
-                        no_para, len_paras = concordance_line[6]
-                        file_name = concordance_line[7]
+                        no_sentence_seg, len_sentence_segs = concordance_line[5]
+                        no_sentence, len_sentences = concordance_line[6]
+                        no_para, len_paras = concordance_line[7]
+                        file_name = concordance_line[8]
 
                         # Node
                         label_node = wl_labels.Wl_Label_Html(
@@ -980,15 +978,18 @@ def generate_table(main, table):
                         # Token No.
                         table.set_item_num(i, 4, no_token)
                         table.set_item_num(i, 5, no_token, len_tokens)
+                        # Sentence Segment No.
+                        table.set_item_num(i, 6, no_sentence_seg)
+                        table.set_item_num(i, 7, no_sentence_seg, len_sentence_segs)
                         # Sentence No.
-                        table.set_item_num(i, 6, no_sentence)
-                        table.set_item_num(i, 7, no_sentence, len_sentences)
+                        table.set_item_num(i, 8, no_sentence)
+                        table.set_item_num(i, 9, no_sentence, len_sentences)
                         # Paragraph No.
-                        table.set_item_num(i, 8, no_para)
-                        table.set_item_num(i, 9, no_para, len_paras)
+                        table.set_item_num(i, 10, no_para)
+                        table.set_item_num(i, 11, no_para, len_paras)
 
                         # File
-                        table.model().setItem(i, 10, QStandardItem(file_name))
+                        table.model().setItem(i, 12, QStandardItem(file_name))
 
                     table.enable_updates()
 

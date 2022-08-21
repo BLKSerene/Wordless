@@ -81,9 +81,10 @@ def update_gui_table(err_msg, concordance_lines):
 
         sentiment = concordance_line[3]
         no_token, len_tokens = concordance_line[4]
-        no_sentence, len_sentences = concordance_line[5]
-        no_para, len_paras = concordance_line[6]
-        file_name = concordance_line[7]
+        no_sentence_seg, len_sentence_segs = concordance_line[5]
+        no_sentence, len_sentences = concordance_line[6]
+        no_para, len_paras = concordance_line[7]
+        file_name = concordance_line[8]
 
         # Left
         assert left_text
@@ -103,6 +104,9 @@ def update_gui_table(err_msg, concordance_lines):
         # Token No.
         assert no_token >= 0
         assert len_tokens >= 1
+        # Sentence Segment No.
+        assert no_sentence_seg >= 0
+        assert len_sentence_segs >= 1
         # Sentence No.
         assert no_sentence >= 0
         assert len_sentences >= 1
