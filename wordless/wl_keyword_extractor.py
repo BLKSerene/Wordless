@@ -397,11 +397,12 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 )
 
                 # Remove empty tokens
-                tokens = [token for token in text.tokens_flat if token]
+                tokens_flat = text.get_tokens_flat()
+                tokens = [token for token in tokens_flat if token]
 
                 self.keywords_freq_files[0] += collections.Counter(tokens)
 
-                tokens_ref.extend(text.tokens_flat)
+                tokens_ref.extend(tokens_flat)
                 len_tokens_ref += len(tokens_ref)
 
             # Frequency (Observed files)
@@ -413,7 +414,8 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                 )
 
                 # Remove empty tokens
-                tokens = [token for token in text.tokens_flat if token]
+                tokens_flat = text.get_tokens_flat()
+                tokens = [token for token in tokens_flat if token]
 
                 self.keywords_freq_files.append(collections.Counter(tokens))
 
@@ -422,7 +424,11 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             # Total
             if len(files_observed) > 1:
                 text_total = wl_texts.Wl_Text_Blank()
-                text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
+                text_total.tokens_multilevel = [
+                    copy.deepcopy(para)
+                    for text in texts
+                    for para in text.tokens_multilevel
+                ]
 
                 self.keywords_freq_files.append(sum(self.keywords_freq_files[1:], collections.Counter()))
 
@@ -452,7 +458,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                     keywords_stats_file = {}
 
                     keywords_freq_file_observed = self.keywords_freq_files[i + 1]
-                    tokens_observed = text.tokens_flat
+                    tokens_observed = text.get_tokens_flat()
                     len_tokens_observed = len(tokens_observed)
 
                     if self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['to_sections']:

@@ -39,10 +39,8 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
         section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
         if isinstance(inputs, str):
-            sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = section_size)
-
-            for section in sections:
-                syls_tokens.extend(wl_syl_tokenize_text(main, section, lang, syl_tokenizer))
+            for line in inputs.splitlines():
+                syls_tokens.extend(wl_syl_tokenize_text(main, line, lang, syl_tokenizer))
         else:
             texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = section_size * 50)
 
@@ -53,6 +51,13 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
             syls_tokens = [[token] for token in wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)]
         else:
             syls_tokens = [[token] for token in inputs]
+
+    # Remove emtpy syllables and whitespace around syllables
+    syls_tokens = [
+        [syl_clean for syl in syls if (syl_clean := syl.strip())]
+        for syls in syls_tokens
+        if any(syls)
+    ]
 
     return syls_tokens
 
@@ -65,8 +70,12 @@ def wl_syl_tokenize_text(main, text, lang, syl_tokenizer):
         # Pyphen
         if syl_tokenizer.startswith('pyphen_'):
             pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
+            syls = re.split(r'\-+', pyphen_syl_tokenizer.inserted(token))
 
-            syls_tokens.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
+            if any(syls):
+                syls_tokens.append(syls)
+            else:
+                syls_tokens.append([token])
         # Thai
         elif syl_tokenizer == 'pythainlp_tha':
             syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
@@ -80,8 +89,12 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
         # Pyphen
         if syl_tokenizer.startswith('pyphen_'):
             pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
+            syls = re.split(r'\-+', pyphen_syl_tokenizer.inserted(token))
 
-            syls_tokens.append(re.split(r'\-+', pyphen_syl_tokenizer.inserted(token)))
+            if any(syls):
+                syls_tokens.append(syls)
+            else:
+                syls_tokens.append([token])
         # Thai
         elif syl_tokenizer == 'pythainlp_tha':
             syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
@@ -89,7 +102,7 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
     return syls_tokens
 
 # Excluding punctuations
-def wl_syl_tokenize_no_puncs(main, tokens, lang, syl_tokenizer = 'default'):
+def wl_syl_tokenize_tokens_no_puncs(main, tokens, lang, syl_tokenizer = 'default'):
     syls_tokens = wl_syl_tokenize(main, tokens, lang, syl_tokenizer = syl_tokenizer)
 
     for i, syls in reversed(list(enumerate(syls_tokens))):

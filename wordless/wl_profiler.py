@@ -59,6 +59,8 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
                 _tr('Wl_Table_Profiler', 'Count of Sentences'),
                 _tr('Wl_Table_Profiler', 'Count of Sentences %'),
+                _tr('Wl_Table_Profiler', 'Count of Sentence Segments'),
+                _tr('Wl_Table_Profiler', 'Count of Sentence Segments %'),
                 _tr('Wl_Table_Profiler', 'Count of Tokens'),
                 _tr('Wl_Table_Profiler', 'Count of Tokens %'),
                 _tr('Wl_Table_Profiler', 'Count of Types'),
@@ -82,6 +84,17 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Range)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Modes)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Mean)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Variance)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Median)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Interquartile Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Modes)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Variance)'),
@@ -105,6 +118,18 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Range)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Modes)'),
+                # Sentence segment length
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Mean)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Variance)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Median)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Range)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Interquartile Range)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Modes)'),
                 # Token length
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Standard Deviation)'),
@@ -169,6 +194,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 # Counts
                 _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
                 _tr('Wl_Table_Profiler', 'Count of Sentences'),
+                _tr('Wl_Table_Profiler', 'Count of Sentence Segments'),
                 _tr('Wl_Table_Profiler', 'Count of Tokens'),
                 _tr('Wl_Table_Profiler', 'Count of Types'),
                 _tr('Wl_Table_Profiler', 'Count of Syllables'),
@@ -177,6 +203,9 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Minimum)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Range)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Minimum)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Range)'),
@@ -184,6 +213,10 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Minimum)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Maximum)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Range)'),
+                # Sentence segment length
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Minimum)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Maximum)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Range)'),
                 # Token length
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Minimum)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Maximum)'),
@@ -228,6 +261,13 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Median)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Interquartile Range)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Mean)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Variance)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Median)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Interquartile Range)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
                 _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Variance)'),
@@ -243,6 +283,14 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Median)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (75th Percentile)'),
                 _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Interquartile Range)'),
+                # Sentence segment length
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Mean)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Standard Deviation)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Variance)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (25th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Median)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (75th Percentile)'),
+                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Interquartile Range)'),
                 # Token length
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
                 _tr('Wl_Table_Profiler', 'Token Length in Syllables (Standard Deviation)'),
@@ -286,6 +334,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 # Counts
                 _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
                 _tr('Wl_Table_Profiler', 'Count of Sentences %'),
+                _tr('Wl_Table_Profiler', 'Count of Sentence Segments %'),
                 _tr('Wl_Table_Profiler', 'Count of Tokens %'),
                 _tr('Wl_Table_Profiler', 'Count of Types %'),
                 _tr('Wl_Table_Profiler', 'Count of Syllables %'),
@@ -297,6 +346,8 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
                 _tr('Wl_Table_Profiler', 'Count of Sentences'),
                 _tr('Wl_Table_Profiler', 'Count of Sentences %'),
+                _tr('Wl_Table_Profiler', 'Count of Sentence Segments'),
+                _tr('Wl_Table_Profiler', 'Count of Sentence Segments %'),
                 _tr('Wl_Table_Profiler', 'Count of Tokens'),
                 _tr('Wl_Table_Profiler', 'Count of Tokens %'),
                 _tr('Wl_Table_Profiler', 'Count of Types'),
@@ -506,25 +557,10 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 else:
                     text_total.lang = 'other'
 
-                text_total.offsets_paras = [
-                    offset
-                    for text in texts
-                    for offset in text.offsets_paras
-                ]
-                text_total.offsets_sentences = [
-                    offset
-                    for text in texts
-                    for offset in text.offsets_sentences
-                ]
                 text_total.tokens_multilevel = [
-                    para
+                    copy.deepcopy(para)
                     for text in texts
                     for para in text.tokens_multilevel
-                ]
-                text_total.tokens_flat = [
-                    token
-                    for text in texts
-                    for token in text.tokens_flat
                 ]
                 text_total.syls_tokens = [
                     syls
@@ -537,7 +573,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
             num_tokens_section_sttr = self.main.settings_custom['tables']['profiler']['general_settings']['num_tokens_section_sttr']
 
             for text in texts:
-                texts_stats_file = []
+                tokens = text.get_tokens_flat()
 
                 # Readability
                 readability_statistics = [
@@ -556,25 +592,38 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 ]
 
                 # Paragraph length
-                len_paras_sentences = [len(para) for para in text.tokens_multilevel]
-                len_paras_tokens = [
+                len_paras_sentences = [
+                    len(para)
+                    for para in text.tokens_multilevel
+                ]
+                len_paras_sentence_segs = [
                     sum((len(sentence) for sentence in para))
+                    for para in text.tokens_multilevel
+                ]
+                len_paras_tokens = [
+                    sum((len(sentence_seg) for sentence in para for sentence_seg in sentence))
                     for para in text.tokens_multilevel
                 ]
 
                 # Sentence length
                 len_sentences = [
-                    len(sentence)
+                    sum((len(sentence_seg) for sentence_seg in sentence))
                     for para in text.tokens_multilevel
                     for sentence in para
+                ]
+                len_sentence_segs = [
+                    len(sentence_seg)
+                    for para in text.tokens_multilevel
+                    for sentence in para
+                    for sentence_seg in sentence
                 ]
 
                 # Token length
                 len_tokens_syls = [len(syls) for syls in text.syls_tokens]
-                len_tokens_chars = [len(token) for token in text.tokens_flat]
+                len_tokens_chars = [len(token) for token in tokens]
                 # Type length
                 len_types_syls = [len(syls) for syls in {tuple(syls) for syls in text.syls_tokens}]
-                len_types_chars = [len(token_type) for token_type in set(text.tokens_flat)]
+                len_types_chars = [len(token_type) for token_type in set(tokens)]
                 # Syllable length
                 len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
 
@@ -587,25 +636,27 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
                     ttrs = [
                         len(set(token_section))
-                        for token_section in wl_nlp_utils.to_sections_unequal(text.tokens_flat, num_tokens_section_sttr)
+                        for token_section in wl_nlp_utils.to_sections_unequal(tokens, num_tokens_section_sttr)
                     ]
                     sttr = numpy.sum(ttrs) / count_tokens
                 else:
                     ttr = sttr = 0
 
-                texts_stats_file.append(readability_statistics)
-                texts_stats_file.append(len_paras_sentences)
-                texts_stats_file.append(len_paras_tokens)
-                texts_stats_file.append(len_sentences)
-                texts_stats_file.append(len_tokens_syls)
-                texts_stats_file.append(len_tokens_chars)
-                texts_stats_file.append(len_types_syls)
-                texts_stats_file.append(len_types_chars)
-                texts_stats_file.append(len_syls)
-                texts_stats_file.append(ttr)
-                texts_stats_file.append(sttr)
-
-                self.texts_stats_files.append(texts_stats_file)
+                self.texts_stats_files.append([
+                    readability_statistics,
+                    len_paras_sentences,
+                    len_paras_sentence_segs,
+                    len_paras_tokens,
+                    len_sentences,
+                    len_sentence_segs,
+                    len_tokens_syls,
+                    len_tokens_chars,
+                    len_types_syls,
+                    len_types_chars,
+                    len_syls,
+                    ttr,
+                    sttr
+                ])
 
             if len(files) == 1:
                 self.texts_stats_files *= 2
@@ -631,6 +682,7 @@ def generate_table(main, table):
 
                     count_tokens_lens = []
                     count_sentences_lens = []
+                    count_sentence_segs_lens = []
 
                     # Insert column (total)
                     files = list(main.wl_file_area.get_selected_files())
@@ -642,11 +694,12 @@ def generate_table(main, table):
                         )
 
                     count_paras_total = len(texts_stats_files[-1][1])
-                    count_sentences_total = len(texts_stats_files[-1][3])
-                    count_tokens_total = len(texts_stats_files[-1][5])
-                    count_types_total = len(texts_stats_files[-1][7])
-                    count_syls_total = len(texts_stats_files[-1][8])
-                    count_chars_total = sum(texts_stats_files[-1][5])
+                    count_sentences_total = len(texts_stats_files[-1][4])
+                    count_sentence_segs_total = len(texts_stats_files[-1][5])
+                    count_tokens_total = len(texts_stats_files[-1][7])
+                    count_types_total = len(texts_stats_files[-1][9])
+                    count_syls_total = len(texts_stats_files[-1][10])
+                    count_chars_total = sum(texts_stats_files[-1][7])
 
                     table.disable_updates()
 
@@ -661,28 +714,22 @@ def generate_table(main, table):
                                 file_lang = 'other'
 
                         readability_statistics = stats[0]
-                        len_paras_sentences = stats[1]
-                        len_paras_tokens = stats[2]
-                        len_sentences = stats[3]
-                        len_tokens_syls = stats[4]
-                        len_tokens_chars = stats[5]
-                        len_types_syls = stats[6]
-                        len_types_chars = stats[7]
-                        len_syls = stats[8]
-                        ttr = stats[9]
-                        sttr = stats[10]
-
-                        len_paras_sentences = numpy.array(len_paras_sentences)
-                        len_paras_tokens = numpy.array(len_paras_tokens)
-                        len_sentences = numpy.array(len_sentences)
-                        len_tokens_syls = numpy.array(len_tokens_syls)
-                        len_tokens_chars = numpy.array(len_tokens_chars)
-                        len_types_syls = numpy.array(len_types_syls)
-                        len_types_chars = numpy.array(len_types_chars)
-                        len_syls = numpy.array(len_syls)
+                        len_paras_sentences = numpy.array(stats[1])
+                        len_paras_sentence_segs = numpy.array(stats[2])
+                        len_paras_tokens = numpy.array(stats[3])
+                        len_sentences = numpy.array(stats[4])
+                        len_sentence_segs = numpy.array(stats[5])
+                        len_tokens_syls = numpy.array(stats[6])
+                        len_tokens_chars = numpy.array(stats[7])
+                        len_types_syls = numpy.array(stats[8])
+                        len_types_chars = numpy.array(stats[9])
+                        len_syls = numpy.array(stats[10])
+                        ttr = stats[11]
+                        sttr = stats[12]
 
                         count_paras = len(len_paras_sentences)
                         count_sentences = len(len_sentences)
+                        count_sentence_segs = len(len_sentence_segs)
                         count_tokens = len(len_tokens_chars)
                         count_types = len(len_types_chars)
                         count_syls = len(len_syls)
@@ -706,176 +753,115 @@ def generate_table(main, table):
                         table.set_item_num(14, i, count_sentences)
                         table.set_item_num(15, i, count_sentences, count_sentences_total)
 
+                        # Count of Sentence Segments
+                        table.set_item_num(16, i, count_sentence_segs)
+                        table.set_item_num(17, i, count_sentence_segs, count_sentence_segs_total)
+
                         # Count of Tokens
-                        table.set_item_num(16, i, count_tokens)
-                        table.set_item_num(17, i, count_tokens, count_tokens_total)
+                        table.set_item_num(18, i, count_tokens)
+                        table.set_item_num(19, i, count_tokens, count_tokens_total)
 
                         # Count of Types
-                        table.set_item_num(18, i, count_types)
-                        table.set_item_num(19, i, count_types, count_types_total)
+                        table.set_item_num(20, i, count_types)
+                        table.set_item_num(21, i, count_types, count_types_total)
 
                         # Count of Syllables
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            table.set_item_num(20, i, count_syls)
-                            table.set_item_num(21, i, count_syls, count_syls_total)
+                            table.set_item_num(22, i, count_syls)
+                            table.set_item_num(23, i, count_syls, count_syls_total)
                         else:
-                            table.set_item_error(20, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(21, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(22, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(23, i, text = _tr('wl_profiler', 'No Support'))
 
                         # Count of Characters
-                        table.set_item_num(22, i, count_chars)
-                        table.set_item_num(23, i, count_chars, count_chars_total)
+                        table.set_item_num(24, i, count_chars)
+                        table.set_item_num(25, i, count_chars, count_chars_total)
 
                         # Type-token Ratio
-                        table.set_item_num(24, i, ttr)
+                        table.set_item_num(26, i, ttr)
                         # Type-token Ratio (Standardized)
-                        table.set_item_num(25, i, sttr)
+                        table.set_item_num(27, i, sttr)
 
                         # Paragraph Length
-                        if len_paras_sentences.any():
-                            table.set_item_num(26, i, numpy.mean(len_paras_sentences))
-                            table.set_item_num(27, i, numpy.std(len_paras_sentences))
-                            table.set_item_num(28, i, numpy.var(len_paras_sentences))
-                            table.set_item_num(29, i, numpy.min(len_paras_sentences))
-                            table.set_item_num(30, i, numpy.percentile(len_paras_sentences, 25))
-                            table.set_item_num(31, i, numpy.median(len_paras_sentences))
-                            table.set_item_num(32, i, numpy.percentile(len_paras_sentences, 75))
-                            table.set_item_num(33, i, numpy.max(len_paras_sentences))
-                            table.set_item_num(34, i, numpy.ptp(len_paras_sentences))
-                            table.set_item_num(35, i, scipy.stats.iqr(len_paras_sentences))
-                            table.model().setItem(36, i, QStandardItem(', '.join([
-                                str(mode) for mode in wl_measures_misc.modes(len_paras_sentences)
-                            ])))
-                            table.set_item_num(37, i, numpy.mean(len_paras_tokens))
-                            table.set_item_num(38, i, numpy.std(len_paras_tokens))
-                            table.set_item_num(39, i, numpy.var(len_paras_tokens))
-                            table.set_item_num(40, i, numpy.min(len_paras_tokens))
-                            table.set_item_num(41, i, numpy.percentile(len_paras_tokens, 25))
-                            table.set_item_num(42, i, numpy.median(len_paras_tokens))
-                            table.set_item_num(43, i, numpy.percentile(len_paras_tokens, 75))
-                            table.set_item_num(44, i, numpy.max(len_paras_tokens))
-                            table.set_item_num(45, i, numpy.ptp(len_paras_tokens))
-                            table.set_item_num(46, i, scipy.stats.iqr(len_paras_tokens))
-                            table.model().setItem(47, i, QStandardItem(', '.join([
-                                str(mode) for mode in wl_measures_misc.modes(len_paras_tokens)
-                            ])))
-                        else:
-                            table.set_item_num(26, i, 0)
-                            table.set_item_num(27, i, 0)
-                            table.set_item_num(28, i, 0)
-                            table.set_item_num(29, i, 0)
-                            table.set_item_num(30, i, 0)
-                            table.set_item_num(31, i, 0)
-                            table.set_item_num(32, i, 0)
-                            table.set_item_num(33, i, 0)
-                            table.set_item_num(34, i, 0)
-                            table.set_item_num(35, i, 0)
-                            table.model().setItem(36, i, QStandardItem('0'))
-                            table.set_item_num(37, i, 0)
-                            table.set_item_num(38, i, 0)
-                            table.set_item_num(39, i, 0)
-                            table.set_item_num(40, i, 0)
-                            table.set_item_num(41, i, 0)
-                            table.set_item_num(42, i, 0)
-                            table.set_item_num(43, i, 0)
-                            table.set_item_num(44, i, 0)
-                            table.set_item_num(45, i, 0)
-                            table.set_item_num(46, i, 0)
-                            table.model().setItem(47, i, QStandardItem('0'))
+                        for row, lens in zip(
+                            [28, 39, 50],
+                            [len_paras_sentences, len_paras_sentence_segs, len_paras_tokens]
+                        ):
+                            if len_paras_sentences.any():
+                                table.set_item_num(row, i, numpy.mean(lens))
+                                table.set_item_num(row + 1, i, numpy.std(lens))
+                                table.set_item_num(row + 2, i, numpy.var(lens))
+                                table.set_item_num(row + 3, i, numpy.min(lens))
+                                table.set_item_num(row + 4, i, numpy.percentile(lens, 25))
+                                table.set_item_num(row + 5, i, numpy.median(lens))
+                                table.set_item_num(row + 6, i, numpy.percentile(lens, 75))
+                                table.set_item_num(row + 7, i, numpy.max(lens))
+                                table.set_item_num(row + 8, i, numpy.ptp(lens))
+                                table.set_item_num(row + 9, i, scipy.stats.iqr(lens))
+                                table.model().setItem(row + 10, i, QStandardItem(', '.join([
+                                    str(mode) for mode in wl_measures_misc.modes(lens)
+                                ])))
+                            else:
+                                table.set_item_num(row, i, 0)
+                                table.set_item_num(row + 1, i, 0)
+                                table.set_item_num(row + 2, i, 0)
+                                table.set_item_num(row + 3, i, 0)
+                                table.set_item_num(row + 4, i, 0)
+                                table.set_item_num(row + 5, i, 0)
+                                table.set_item_num(row + 6, i, 0)
+                                table.set_item_num(row + 7, i, 0)
+                                table.set_item_num(row + 8, i, 0)
+                                table.set_item_num(row + 9, i, 0)
+                                table.model().setItem(row + 10, i, QStandardItem('0'))
 
-                        table.model().item(36, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-                        table.model().item(47, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                            table.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
                         # Sentence Length
                         if len_sentences.any():
-                            table.set_item_num(48, i, numpy.mean(len_sentences))
-                            table.set_item_num(49, i, numpy.std(len_sentences))
-                            table.set_item_num(50, i, numpy.var(len_sentences))
-                            table.set_item_num(51, i, numpy.min(len_sentences))
-                            table.set_item_num(52, i, numpy.percentile(len_sentences, 25))
-                            table.set_item_num(53, i, numpy.median(len_sentences))
-                            table.set_item_num(54, i, numpy.percentile(len_sentences, 75))
-                            table.set_item_num(55, i, numpy.max(len_sentences))
-                            table.set_item_num(56, i, numpy.ptp(len_sentences))
-                            table.set_item_num(57, i, scipy.stats.iqr(len_sentences))
-                            table.model().setItem(58, i, QStandardItem(', '.join([
+                            table.set_item_num(61, i, numpy.mean(len_sentences))
+                            table.set_item_num(62, i, numpy.std(len_sentences))
+                            table.set_item_num(63, i, numpy.var(len_sentences))
+                            table.set_item_num(64, i, numpy.min(len_sentences))
+                            table.set_item_num(65, i, numpy.percentile(len_sentences, 25))
+                            table.set_item_num(66, i, numpy.median(len_sentences))
+                            table.set_item_num(67, i, numpy.percentile(len_sentences, 75))
+                            table.set_item_num(68, i, numpy.max(len_sentences))
+                            table.set_item_num(69, i, numpy.ptp(len_sentences))
+                            table.set_item_num(70, i, scipy.stats.iqr(len_sentences))
+                            table.model().setItem(71, i, QStandardItem(', '.join([
                                 str(mode) for mode in wl_measures_misc.modes(len_sentences)
                             ])))
                         else:
-                            table.set_item_num(48, i, 0)
-                            table.set_item_num(49, i, 0)
-                            table.set_item_num(50, i, 0)
-                            table.set_item_num(51, i, 0)
-                            table.set_item_num(52, i, 0)
-                            table.set_item_num(53, i, 0)
-                            table.set_item_num(54, i, 0)
-                            table.set_item_num(55, i, 0)
-                            table.set_item_num(56, i, 0)
-                            table.set_item_num(57, i, 0)
-                            table.model().setItem(58, i, QStandardItem('0'))
+                            table.set_item_num(61, i, 0)
+                            table.set_item_num(62, i, 0)
+                            table.set_item_num(63, i, 0)
+                            table.set_item_num(64, i, 0)
+                            table.set_item_num(65, i, 0)
+                            table.set_item_num(66, i, 0)
+                            table.set_item_num(67, i, 0)
+                            table.set_item_num(68, i, 0)
+                            table.set_item_num(69, i, 0)
+                            table.set_item_num(70, i, 0)
+                            table.model().setItem(71, i, QStandardItem('0'))
 
-                        table.model().item(58, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(71, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                        # Token Length
-                        if file_lang in main.settings_global['syl_tokenizers']:
-                            if len_tokens_syls.any():
-                                table.set_item_num(59, i, numpy.mean(len_tokens_syls))
-                                table.set_item_num(60, i, numpy.std(len_tokens_syls))
-                                table.set_item_num(61, i, numpy.var(len_tokens_syls))
-                                table.set_item_num(62, i, numpy.min(len_tokens_syls))
-                                table.set_item_num(63, i, numpy.percentile(len_tokens_syls, 25))
-                                table.set_item_num(64, i, numpy.median(len_tokens_syls))
-                                table.set_item_num(65, i, numpy.percentile(len_tokens_syls, 75))
-                                table.set_item_num(66, i, numpy.max(len_tokens_syls))
-                                table.set_item_num(67, i, numpy.ptp(len_tokens_syls))
-                                table.set_item_num(68, i, scipy.stats.iqr(len_tokens_syls))
-                                table.model().setItem(69, i, QStandardItem(', '.join([
-                                    str(mode) for mode in wl_measures_misc.modes(len_tokens_syls)
-                                ])))
-                            else:
-                                table.set_item_num(59, i, 0)
-                                table.set_item_num(60, i, 0)
-                                table.set_item_num(61, i, 0)
-                                table.set_item_num(62, i, 0)
-                                table.set_item_num(63, i, 0)
-                                table.set_item_num(64, i, 0)
-                                table.set_item_num(65, i, 0)
-                                table.set_item_num(66, i, 0)
-                                table.set_item_num(67, i, 0)
-                                table.set_item_num(68, i, 0)
-                                table.model().setItem(69, i, QStandardItem('0'))
-
-                            table.model().item(69, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-                        else:
-                            table.set_item_error(59, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(60, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(61, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(62, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(63, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(64, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(65, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(66, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(67, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(68, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(69, i, text = _tr('wl_profiler', 'No Support'))
-
-                        if len_tokens_chars.any():
-                            table.set_item_num(70, i, numpy.mean(len_tokens_chars))
-                            table.set_item_num(71, i, numpy.std(len_tokens_chars))
-                            table.set_item_num(72, i, numpy.var(len_tokens_chars))
-                            table.set_item_num(73, i, numpy.min(len_tokens_chars))
-                            table.set_item_num(74, i, numpy.percentile(len_tokens_chars, 25))
-                            table.set_item_num(75, i, numpy.median(len_tokens_chars))
-                            table.set_item_num(76, i, numpy.percentile(len_tokens_chars, 75))
-                            table.set_item_num(77, i, numpy.max(len_tokens_chars))
-                            table.set_item_num(78, i, numpy.ptp(len_tokens_chars))
-                            table.set_item_num(79, i, scipy.stats.iqr(len_tokens_chars))
-                            table.model().setItem(80, i, QStandardItem(', '.join([
-                                str(mode) for mode in wl_measures_misc.modes(len_tokens_chars)
+                        # Sentence Segment Length
+                        if len_sentence_segs.any():
+                            table.set_item_num(72, i, numpy.mean(len_sentence_segs))
+                            table.set_item_num(73, i, numpy.std(len_sentence_segs))
+                            table.set_item_num(74, i, numpy.var(len_sentence_segs))
+                            table.set_item_num(75, i, numpy.min(len_sentence_segs))
+                            table.set_item_num(76, i, numpy.percentile(len_sentence_segs, 25))
+                            table.set_item_num(77, i, numpy.median(len_sentence_segs))
+                            table.set_item_num(78, i, numpy.percentile(len_sentence_segs, 75))
+                            table.set_item_num(79, i, numpy.max(len_sentence_segs))
+                            table.set_item_num(80, i, numpy.ptp(len_sentence_segs))
+                            table.set_item_num(81, i, scipy.stats.iqr(len_sentence_segs))
+                            table.model().setItem(82, i, QStandardItem(', '.join([
+                                str(mode) for mode in wl_measures_misc.modes(len_sentence_segs)
                             ])))
                         else:
-                            table.set_item_num(70, i, 0)
-                            table.set_item_num(71, i, 0)
                             table.set_item_num(72, i, 0)
                             table.set_item_num(73, i, 0)
                             table.set_item_num(74, i, 0)
@@ -884,29 +870,29 @@ def generate_table(main, table):
                             table.set_item_num(77, i, 0)
                             table.set_item_num(78, i, 0)
                             table.set_item_num(79, i, 0)
-                            table.model().setItem(80, i, QStandardItem('0'))
+                            table.set_item_num(80, i, 0)
+                            table.set_item_num(81, i, 0)
+                            table.model().setItem(82, i, QStandardItem('0'))
 
-                        table.model().item(80, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(82, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                        # Type Length
+                        # Token Length
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            if len_types_syls.any():
-                                table.set_item_num(81, i, numpy.mean(len_types_syls))
-                                table.set_item_num(82, i, numpy.std(len_types_syls))
-                                table.set_item_num(83, i, numpy.var(len_types_syls))
-                                table.set_item_num(84, i, numpy.min(len_types_syls))
-                                table.set_item_num(85, i, numpy.percentile(len_types_syls, 25))
-                                table.set_item_num(86, i, numpy.median(len_types_syls))
-                                table.set_item_num(87, i, numpy.percentile(len_types_syls, 75))
-                                table.set_item_num(88, i, numpy.max(len_types_syls))
-                                table.set_item_num(89, i, numpy.ptp(len_types_syls))
-                                table.set_item_num(90, i, scipy.stats.iqr(len_types_syls))
-                                table.model().setItem(91, i, QStandardItem(', '.join([
-                                    str(mode) for mode in wl_measures_misc.modes(len_types_syls)
+                            if len_tokens_syls.any():
+                                table.set_item_num(83, i, numpy.mean(len_tokens_syls))
+                                table.set_item_num(84, i, numpy.std(len_tokens_syls))
+                                table.set_item_num(85, i, numpy.var(len_tokens_syls))
+                                table.set_item_num(86, i, numpy.min(len_tokens_syls))
+                                table.set_item_num(87, i, numpy.percentile(len_tokens_syls, 25))
+                                table.set_item_num(88, i, numpy.median(len_tokens_syls))
+                                table.set_item_num(89, i, numpy.percentile(len_tokens_syls, 75))
+                                table.set_item_num(90, i, numpy.max(len_tokens_syls))
+                                table.set_item_num(91, i, numpy.ptp(len_tokens_syls))
+                                table.set_item_num(92, i, scipy.stats.iqr(len_tokens_syls))
+                                table.model().setItem(93, i, QStandardItem(', '.join([
+                                    str(mode) for mode in wl_measures_misc.modes(len_tokens_syls)
                                 ])))
                             else:
-                                table.set_item_num(81, i, 0)
-                                table.set_item_num(82, i, 0)
                                 table.set_item_num(83, i, 0)
                                 table.set_item_num(84, i, 0)
                                 table.set_item_num(85, i, 0)
@@ -915,12 +901,12 @@ def generate_table(main, table):
                                 table.set_item_num(88, i, 0)
                                 table.set_item_num(89, i, 0)
                                 table.set_item_num(90, i, 0)
-                                table.model().setItem(91, i, QStandardItem('0'))
+                                table.set_item_num(91, i, 0)
+                                table.set_item_num(92, i, 0)
+                                table.model().setItem(93, i, QStandardItem('0'))
 
-                            table.model().item(91, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                            table.model().item(93, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
-                            table.set_item_error(81, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(82, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(83, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(84, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(85, i, text = _tr('wl_profiler', 'No Support'))
@@ -930,24 +916,24 @@ def generate_table(main, table):
                             table.set_item_error(89, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(90, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(91, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(92, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(93, i, text = _tr('wl_profiler', 'No Support'))
 
-                        if len_types_chars.any():
-                            table.set_item_num(92, i, numpy.mean(len_types_chars))
-                            table.set_item_num(93, i, numpy.std(len_types_chars))
-                            table.set_item_num(94, i, numpy.var(len_types_chars))
-                            table.set_item_num(95, i, numpy.min(len_types_chars))
-                            table.set_item_num(96, i, numpy.percentile(len_types_chars, 25))
-                            table.set_item_num(97, i, numpy.median(len_types_chars))
-                            table.set_item_num(98, i, numpy.percentile(len_types_chars, 75))
-                            table.set_item_num(99, i, numpy.max(len_types_chars))
-                            table.set_item_num(100, i, numpy.ptp(len_types_chars))
-                            table.set_item_num(101, i, scipy.stats.iqr(len_types_chars))
-                            table.model().setItem(102, i, QStandardItem(', '.join([
-                                str(mode) for mode in wl_measures_misc.modes(len_types_chars)
+                        if len_tokens_chars.any():
+                            table.set_item_num(94, i, numpy.mean(len_tokens_chars))
+                            table.set_item_num(95, i, numpy.std(len_tokens_chars))
+                            table.set_item_num(96, i, numpy.var(len_tokens_chars))
+                            table.set_item_num(97, i, numpy.min(len_tokens_chars))
+                            table.set_item_num(98, i, numpy.percentile(len_tokens_chars, 25))
+                            table.set_item_num(99, i, numpy.median(len_tokens_chars))
+                            table.set_item_num(100, i, numpy.percentile(len_tokens_chars, 75))
+                            table.set_item_num(101, i, numpy.max(len_tokens_chars))
+                            table.set_item_num(102, i, numpy.ptp(len_tokens_chars))
+                            table.set_item_num(103, i, scipy.stats.iqr(len_tokens_chars))
+                            table.model().setItem(104, i, QStandardItem(', '.join([
+                                str(mode) for mode in wl_measures_misc.modes(len_tokens_chars)
                             ])))
                         else:
-                            table.set_item_num(92, i, 0)
-                            table.set_item_num(93, i, 0)
                             table.set_item_num(94, i, 0)
                             table.set_item_num(95, i, 0)
                             table.set_item_num(96, i, 0)
@@ -956,29 +942,29 @@ def generate_table(main, table):
                             table.set_item_num(99, i, 0)
                             table.set_item_num(100, i, 0)
                             table.set_item_num(101, i, 0)
-                            table.model().setItem(102, i, QStandardItem('0'))
+                            table.set_item_num(102, i, 0)
+                            table.set_item_num(103, i, 0)
+                            table.model().setItem(104, i, QStandardItem('0'))
 
-                        table.model().item(102, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        table.model().item(104, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                        # Syllable Length
+                        # Type Length
                         if file_lang in main.settings_global['syl_tokenizers']:
-                            if len_syls.any():
-                                table.set_item_num(103, i, numpy.mean(len_syls))
-                                table.set_item_num(104, i, numpy.std(len_syls))
-                                table.set_item_num(105, i, numpy.var(len_syls))
-                                table.set_item_num(106, i, numpy.min(len_syls))
-                                table.set_item_num(107, i, numpy.percentile(len_syls, 25))
-                                table.set_item_num(108, i, numpy.median(len_syls))
-                                table.set_item_num(109, i, numpy.percentile(len_syls, 75))
-                                table.set_item_num(110, i, numpy.max(len_syls))
-                                table.set_item_num(111, i, numpy.ptp(len_syls))
-                                table.set_item_num(112, i, scipy.stats.iqr(len_syls))
-                                table.model().setItem(113, i, QStandardItem(', '.join([
-                                    str(mode) for mode in wl_measures_misc.modes(len_syls)
+                            if len_types_syls.any():
+                                table.set_item_num(105, i, numpy.mean(len_types_syls))
+                                table.set_item_num(106, i, numpy.std(len_types_syls))
+                                table.set_item_num(107, i, numpy.var(len_types_syls))
+                                table.set_item_num(108, i, numpy.min(len_types_syls))
+                                table.set_item_num(109, i, numpy.percentile(len_types_syls, 25))
+                                table.set_item_num(110, i, numpy.median(len_types_syls))
+                                table.set_item_num(111, i, numpy.percentile(len_types_syls, 75))
+                                table.set_item_num(112, i, numpy.max(len_types_syls))
+                                table.set_item_num(113, i, numpy.ptp(len_types_syls))
+                                table.set_item_num(114, i, scipy.stats.iqr(len_types_syls))
+                                table.model().setItem(115, i, QStandardItem(', '.join([
+                                    str(mode) for mode in wl_measures_misc.modes(len_types_syls)
                                 ])))
                             else:
-                                table.set_item_num(103, i, 0)
-                                table.set_item_num(104, i, 0)
                                 table.set_item_num(105, i, 0)
                                 table.set_item_num(106, i, 0)
                                 table.set_item_num(107, i, 0)
@@ -987,12 +973,12 @@ def generate_table(main, table):
                                 table.set_item_num(110, i, 0)
                                 table.set_item_num(111, i, 0)
                                 table.set_item_num(112, i, 0)
-                                table.model().setItem(113, i, QStandardItem('0'))
+                                table.set_item_num(113, i, 0)
+                                table.set_item_num(114, i, 0)
+                                table.model().setItem(115, i, QStandardItem('0'))
 
-                            table.model().item(113, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                            table.model().item(115, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
-                            table.set_item_error(103, i, text = _tr('wl_profiler', 'No Support'))
-                            table.set_item_error(104, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(105, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(106, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(107, i, text = _tr('wl_profiler', 'No Support'))
@@ -1002,8 +988,83 @@ def generate_table(main, table):
                             table.set_item_error(111, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(112, i, text = _tr('wl_profiler', 'No Support'))
                             table.set_item_error(113, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(114, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(115, i, text = _tr('wl_profiler', 'No Support'))
+
+                        if len_types_chars.any():
+                            table.set_item_num(116, i, numpy.mean(len_types_chars))
+                            table.set_item_num(117, i, numpy.std(len_types_chars))
+                            table.set_item_num(118, i, numpy.var(len_types_chars))
+                            table.set_item_num(119, i, numpy.min(len_types_chars))
+                            table.set_item_num(120, i, numpy.percentile(len_types_chars, 25))
+                            table.set_item_num(121, i, numpy.median(len_types_chars))
+                            table.set_item_num(122, i, numpy.percentile(len_types_chars, 75))
+                            table.set_item_num(123, i, numpy.max(len_types_chars))
+                            table.set_item_num(124, i, numpy.ptp(len_types_chars))
+                            table.set_item_num(125, i, scipy.stats.iqr(len_types_chars))
+                            table.model().setItem(126, i, QStandardItem(', '.join([
+                                str(mode) for mode in wl_measures_misc.modes(len_types_chars)
+                            ])))
+                        else:
+                            table.set_item_num(116, i, 0)
+                            table.set_item_num(117, i, 0)
+                            table.set_item_num(118, i, 0)
+                            table.set_item_num(119, i, 0)
+                            table.set_item_num(120, i, 0)
+                            table.set_item_num(121, i, 0)
+                            table.set_item_num(122, i, 0)
+                            table.set_item_num(123, i, 0)
+                            table.set_item_num(124, i, 0)
+                            table.set_item_num(125, i, 0)
+                            table.model().setItem(126, i, QStandardItem('0'))
+
+                        table.model().item(126, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+                        # Syllable Length
+                        if file_lang in main.settings_global['syl_tokenizers']:
+                            if len_syls.any():
+                                table.set_item_num(127, i, numpy.mean(len_syls))
+                                table.set_item_num(128, i, numpy.std(len_syls))
+                                table.set_item_num(129, i, numpy.var(len_syls))
+                                table.set_item_num(130, i, numpy.min(len_syls))
+                                table.set_item_num(131, i, numpy.percentile(len_syls, 25))
+                                table.set_item_num(132, i, numpy.median(len_syls))
+                                table.set_item_num(133, i, numpy.percentile(len_syls, 75))
+                                table.set_item_num(134, i, numpy.max(len_syls))
+                                table.set_item_num(135, i, numpy.ptp(len_syls))
+                                table.set_item_num(136, i, scipy.stats.iqr(len_syls))
+                                table.model().setItem(137, i, QStandardItem(', '.join([
+                                    str(mode) for mode in wl_measures_misc.modes(len_syls)
+                                ])))
+                            else:
+                                table.set_item_num(127, i, 0)
+                                table.set_item_num(128, i, 0)
+                                table.set_item_num(129, i, 0)
+                                table.set_item_num(130, i, 0)
+                                table.set_item_num(131, i, 0)
+                                table.set_item_num(132, i, 0)
+                                table.set_item_num(133, i, 0)
+                                table.set_item_num(134, i, 0)
+                                table.set_item_num(135, i, 0)
+                                table.set_item_num(136, i, 0)
+                                table.model().setItem(137, i, QStandardItem('0'))
+
+                            table.model().item(137, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        else:
+                            table.set_item_error(127, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(128, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(129, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(130, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(131, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(132, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(133, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(134, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(135, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(136, i, text = _tr('wl_profiler', 'No Support'))
+                            table.set_item_error(137, i, text = _tr('wl_profiler', 'No Support'))
 
                         count_tokens_lens.append(collections.Counter(len_tokens_chars))
+                        count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
                         count_sentences_lens.append(collections.Counter(len_sentences))
 
                     # Count of n-length Sentences
@@ -1040,6 +1101,42 @@ def generate_table(main, table):
                                     col = j,
                                     val = count,
                                     total = count_sentences_lens_total[count_sentences_len]
+                                )
+
+                    # Count of n-length Sentence Segments
+                    if any(count_sentence_segs_lens):
+                        count_sentence_segs_lens_files = wl_misc.merge_dicts(count_sentence_segs_lens)
+                        count_sentence_segs_lens_total = {
+                            len_sentence_seg: count_sentence_segs_files[-1]
+                            for len_sentence_seg, count_sentence_segs_files in count_sentence_segs_lens_files.items()
+                        }
+                        count_sentence_segs_lens = sorted(count_sentence_segs_lens_files.keys())
+
+                        # Append vertical headers
+                        for count_sentence_segs_len in count_sentence_segs_lens:
+                            table.add_header_vert(
+                                _tr('wl_profiler', 'Count of {}-length Sentence Segment').format(count_sentence_segs_len),
+                                is_int = True, is_cumulative = True
+                            )
+                            table.add_header_vert(
+                                _tr('wl_profiler', 'Count of {}-length Sentence Segment %').format(count_sentence_segs_len),
+                                is_pct = True, is_cumulative = True
+                            )
+
+                        for i, count_sentence_segs_len in enumerate(reversed(count_sentence_segs_lens)):
+                            counts = count_sentence_segs_lens_files[count_sentence_segs_len]
+
+                            for j, count in enumerate(counts):
+                                table.set_item_num(
+                                    row = table.model().rowCount() - 2 - i * 2,
+                                    col = j,
+                                    val = count
+                                )
+                                table.set_item_num(
+                                    row = table.model().rowCount() - 1 - i * 2,
+                                    col = j,
+                                    val = count,
+                                    total = count_sentence_segs_lens_total[count_sentence_segs_len]
                                 )
 
                     # Count of n-length Tokens
