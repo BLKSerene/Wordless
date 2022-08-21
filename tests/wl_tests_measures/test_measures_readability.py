@@ -24,11 +24,11 @@ from wordless.wl_measures import wl_measures_readability
 main = wl_test_init.Wl_Test_Main()
 
 TOKENS_MULTILEVEL_0 = []
-TOKENS_MULTILEVEL_12 = [[['This', 'is', 'a', 'sentence', '.'], ['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sen-tence0', '.']]]
-TOKENS_MULTILEVEL_12_PROPN = [[['This', 'is', 'a', 'sentence', '.'], ['This', 'is', 'a', 'sentence', '.']], [['Louisiana', 'metropolis', 'boxes', 'created', '.']]]
-TOKENS_MULTILEVEL_100 = [[['This', 'is', 'a', 'sentence', '.'], ['This', 'is', 'a', 'sentence', '.']]] * 12 + [[['This', 'is', 'a', 'sen-tence0', '.']]]
-TOKENS_MULTILEVEL_120 = [[['This', 'is', 'a', 'sentence', '.'], ['This', 'is', 'a', 'metropolis', '.']]] * 15
-TOKENS_MULTILEVEL_150 = [[['This', 'is', 'a', 'sentence', '.'], ['This', 'is', 'a', 'sentence', '.']]] * 18 + [[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]
+TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
+TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'metropolis', 'boxes', 'created', '.']]]]
+TOKENS_MULTILEVEL_100 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'a', 'sen-tence0', '.']]]]
+TOKENS_MULTILEVEL_120 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'metropolis', '.']]]] * 15
+TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 18 + [[[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]]
 
 class Wl_Test_Text():
     def __init__(self, tokens_multilevel = TOKENS_MULTILEVEL_12.copy(), lang = 'eng_us'):

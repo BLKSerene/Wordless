@@ -397,20 +397,26 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
             text_src = copy.deepcopy(src_file['text'])
             text_tgt = copy.deepcopy(tgt_file['text'])
 
-            len_segs_src = len(text_src.offsets_paras)
-            len_segs_tgt = len(text_tgt.offsets_paras)
-            len_segs = max([len_segs_src, len_segs_tgt])
-
-            tokens_src = wl_token_processing.wl_process_tokens_concordancer(
+            text_src = wl_token_processing.wl_process_tokens_concordancer(
                 self.main, text_src,
                 token_settings = settings['token_settings'],
                 preserve_blank_lines = True
             )
-            tokens_tgt = wl_token_processing.wl_process_tokens_concordancer(
+            text_tgt = wl_token_processing.wl_process_tokens_concordancer(
                 self.main, text_tgt,
                 token_settings = settings['token_settings'],
                 preserve_blank_lines = True
             )
+
+            tokens_src = text_src.get_tokens_flat()
+            tokens_tgt = text_tgt.get_tokens_flat()
+
+            offsets_paras_src, _, _ = text_src.get_offsets()
+            offsets_paras_tgt, _, _ = text_tgt.get_offsets()
+
+            len_segs_src = len(offsets_paras_src)
+            len_segs_tgt = len(offsets_paras_tgt)
+            len_segs = max([len_segs_src, len_segs_tgt])
 
             if (
                 not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
@@ -458,10 +464,10 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             concordance_line = []
 
                             # Segment No.
-                            if text_src.offsets_paras[-1] <= i:
+                            if offsets_paras_src[-1] <= i:
                                 no_seg = len_segs_src
                             else:
-                                for j, i_para in enumerate(text_src.offsets_paras):
+                                for j, i_para in enumerate(offsets_paras_src):
                                     if i_para > i:
                                         no_seg = j
 
@@ -471,14 +477,14 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             text_search_node = list(ngram)
 
                             if not settings['token_settings']['puncs']:
-                                ngram = text_src.tokens_flat[i : i + len_search_term]
+                                ngram = text_src.tokens_flat_puncs_merged[i : i + len_search_term]
 
                             node_text = ' '.join(ngram)
                             node_text = wl_nlp_utils.escape_text(node_text)
 
-                            offset_para_start_src = text_src.offsets_paras[max(0, no_seg - 1)]
+                            offset_para_start_src = offsets_paras_src[max(0, no_seg - 1)]
                             if no_seg <= len_segs_tgt:
-                                offset_para_start_tgt = text_tgt.offsets_paras[max(0, no_seg - 1)]
+                                offset_para_start_tgt = offsets_paras_tgt[max(0, no_seg - 1)]
                             # Omission at the end of the source text
                             else:
                                 offset_para_start_tgt = None
@@ -488,10 +494,10 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             if no_seg >= len_segs_src:
                                 offset_para_end = None
                             else:
-                                offset_para_end = text_src.offsets_paras[min(no_seg, len_segs_src - 1)]
+                                offset_para_end = offsets_paras_src[min(no_seg, len_segs_src - 1)]
 
-                            context_left = text_src.tokens_flat[offset_para_start_src:i]
-                            context_right = text_src.tokens_flat[i + len_search_term : offset_para_end]
+                            context_left = text_src.tokens_flat_puncs_merged[offset_para_start_src:i]
+                            context_right = text_src.tokens_flat_puncs_merged[i + len_search_term : offset_para_end]
 
                             # Search in Results (Left & Right)
                             if settings['token_settings']['puncs']:
@@ -513,9 +519,9 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                 if no_seg == len_segs_tgt:
                                     offset_para_end = None
                                 else:
-                                    offset_para_end = text_tgt.offsets_paras[min(no_seg, len_segs_tgt - 1)]
+                                    offset_para_end = offsets_paras_tgt[min(no_seg, len_segs_tgt - 1)]
 
-                                parallel_text = text_tgt.tokens_flat[offset_para_start_tgt:offset_para_end]
+                                parallel_text = text_tgt.tokens_flat_puncs_merged[offset_para_start_tgt:offset_para_end]
                             # Omission at the end of the source text
                             else:
                                 parallel_text = []
@@ -556,13 +562,13 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                         concordance_line = []
                         no_seg = i + 1
 
-                        offset_para_start_tgt = text_tgt.offsets_paras[max(0, no_seg - 1)]
+                        offset_para_start_tgt = offsets_paras_tgt[max(0, no_seg - 1)]
 
                         # Parallel Text
                         if no_seg == len_segs_tgt:
                             offset_para_end = None
                         else:
-                            offset_para_end = text_tgt.offsets_paras[min(no_seg, len_segs_tgt - 1)]
+                            offset_para_end = offsets_paras_tgt[min(no_seg, len_segs_tgt - 1)]
 
                         parallel_text = text_tgt.tokens_flat[offset_para_start_tgt:offset_para_end]
 

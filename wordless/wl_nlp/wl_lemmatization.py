@@ -52,15 +52,8 @@ def wl_lemmatize(
         section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
 
         if isinstance(inputs, str):
-            # Input of SudachiPy cannot be more than 49149 BYTES
-            if lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and len(inputs) > 49149 // 4:
-                # Around 100 tokens per line 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6 / 100)
-                sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = 20)
-            else:
-                sections = wl_nlp_utils.split_into_chunks_text(inputs, section_size = section_size)
-
-            for section in sections:
-                lemmas.extend(wl_lemmatize_text(main, section, lang, tokenized, tagged, lemmatizer))
+            for line in inputs.splitlines():
+                lemmas.extend(wl_lemmatize_text(main, line, lang, tokenized, tagged, lemmatizer))
         else:
             # Input of SudachiPy cannot be more than 49149 BYTES
             if lemmatizer in ['spacy_jpn', 'sudachipy_jpn'] and sum((len(token) for token in inputs)) > 49149 // 4:

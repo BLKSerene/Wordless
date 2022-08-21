@@ -170,10 +170,12 @@ def init_syl_tokenizers(main, lang, syl_tokenizer):
         if f'pyphen_syl_tokenizer_{lang}' not in main.__dict__:
             lang_pyphen = wl_conversion.to_iso_639_1(main, lang)
 
-            if lang.find('_') > -1:
+            # With script codes (eg. sr_Latn)
+            if len(lang_pyphen) == 7:
+                lang_pyphen = f"{lang_pyphen.split('_')[0]}_{lang_pyphen.split('_')[1].title()}"
+            # With country codes (eg. en_US)
+            elif lang_pyphen.find('_') > -1:
                 lang_pyphen = f"{lang_pyphen.split('_')[0]}_{lang_pyphen.split('_')[1].upper()}"
-            else:
-                lang_pyphen = wl_conversion.to_iso_639_1(main, lang)
 
             main.__dict__[f'pyphen_syl_tokenizer_{lang}'] = pyphen.Pyphen(lang = lang_pyphen)
 

@@ -39,9 +39,20 @@ def get_counts(main, text):
             text.words_multilevel.append([])
 
             for sentence in para:
-                text.words_multilevel[-1].append([token for token in sentence if wl_checking_tokens.is_word_alphanumeric(token)])
+                text.words_multilevel[-1].append([])
 
-        text.sentences = [sentence for para in text.words_multilevel for sentence in para]
+                for sentence_seg in sentence:
+                    text.words_multilevel[-1][-1].append([
+                        token
+                        for token in sentence_seg
+                        if wl_checking_tokens.is_word_alphanumeric(token)
+                    ])
+
+        text.sentences = [
+            list(wl_misc.flatten_list(sentence))
+            for para in text.words_multilevel
+            for sentence in para
+        ]
         text.count_sentences = len(text.sentences)
 
     # Count of words with at least one letter or numeral

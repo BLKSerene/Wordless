@@ -72,6 +72,7 @@ def test_wordlist_generator():
     main.app.quit()
 
 def update_gui(err_msg, tokens_freq_files, tokens_stats_files):
+    print(err_msg)
     assert not err_msg
 
     len_files_selected = len(list(main.wl_file_area.get_selected_files()))

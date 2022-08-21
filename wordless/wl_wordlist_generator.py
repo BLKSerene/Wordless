@@ -381,7 +381,8 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 )
 
                 # Remove empty tokens
-                tokens = [token for token in text.tokens_flat if token]
+                tokens_flat = text.get_tokens_flat()
+                tokens = [token for token in tokens_flat if token]
 
                 self.tokens_freq_files.append(collections.Counter(tokens))
                 texts.append(text)
@@ -389,7 +390,11 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
             # Total
             if len(files) > 1:
                 text_total = wl_texts.Wl_Text_Blank()
-                text_total.tokens_flat = [token for text in texts for token in text.tokens_flat]
+                text_total.tokens_multilevel = [
+                    copy.deepcopy(para)
+                    for text in texts
+                    for para in text.tokens_multilevel
+                ]
 
                 self.tokens_freq_files.append(sum(self.tokens_freq_files, collections.Counter()))
                 texts.append(text_total)
@@ -406,6 +411,8 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
             for text in texts:
                 tokens_stats_file = {}
 
+                tokens = text.get_tokens_flat()
+
                 # Dispersion
                 if measure_dispersion is None:
                     tokens_stats_file = {token: [None] for token in tokens_total}
@@ -413,7 +420,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                     freqs_sections_tokens = wl_measures_dispersion.to_freq_sections_items(
                         self.main,
                         items_search = tokens_total,
-                        items = text.tokens_flat
+                        items = tokens
                     )
 
                     for token, freqs in freqs_sections_tokens.items():
@@ -426,7 +433,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                     freqs_sections_tokens = wl_measures_adjusted_freq.to_freq_sections_items(
                         self.main,
                         items_search = tokens_total,
-                        items = text.tokens_flat
+                        items = tokens
                     )
 
                     for token, freqs in freqs_sections_tokens.items():
