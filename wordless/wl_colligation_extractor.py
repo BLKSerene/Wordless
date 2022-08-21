@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import bisect
 import collections
 import copy
 import operator
@@ -281,6 +282,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         self.combo_box_limit_searching.addItems([
             self.tr('None'),
+            self.tr('Within Sentence Segments'),
             self.tr('Within Sentences'),
             self.tr('Within Paragraphs')
         ])
@@ -662,7 +664,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 (
                     offsets_paras,
                     offsets_sentences,
-                    _
+                    offsets_sentence_segs
                 ) = text.get_offsets()
 
                 search_terms = wl_matching.match_search_terms(
@@ -693,37 +695,33 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                     len_search_term_min = 1
                     len_search_term_max = 1
 
+                len_paras = len(offsets_paras)
+                len_sentences = len(offsets_sentences)
+                len_sentence_segs = len(offsets_sentence_segs)
                 len_tokens = len(tokens)
+
                 settings_limit_searching = settings['generation_settings']['limit_searching']
 
                 for ngram_size in range(len_search_term_min, len_search_term_max + 1):
                     colligations_freqs_file_all[ngram_size] = collections.Counter()
 
                     for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
-                        if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
-                            # Sentence span
-                            if offsets_sentences[-1] <= i:
-                                i_sentence_start = offsets_sentences[-1]
-                                i_sentence_end = len_tokens - 1
-                            else:
-                                for j, i_sentence in enumerate(offsets_sentences):
-                                    if i_sentence > i:
-                                        i_sentence_start = offsets_sentences[j - 1]
-                                        i_sentence_end = i_sentence - 1
+                        # Limit Searching
+                        if settings_limit_searching != _tr('Wl_Worker_Colligation_Extractor', 'None'):
+                            if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentence Segments'):
+                                offsets_unit = offsets_sentence_segs
+                                len_unit = len_sentence_segs
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
+                                offsets_unit = offsets_sentences
+                                len_unit = len_sentences
+                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
+                                offsets_unit = offsets_paras
+                                len_unit = len_paras
 
-                                        break
-                        # Paragraph span
-                        elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
-                            if offsets_paras[-1] <= i:
-                                i_para_start = offsets_paras[-1]
-                                i_para_end = len_tokens - 1
-                            else:
-                                for j, i_para in enumerate(offsets_paras):
-                                    if i_para > i:
-                                        i_para_start = offsets_paras[j - 1]
-                                        i_para_end = i_para - 1
+                            i_unit = bisect.bisect(offsets_unit, i) - 1
 
-                                        break
+                            i_unit_start = offsets_unit[i_unit]
+                            i_unit_end = offsets_unit[i_unit + 1] - 1 if i_unit < len_unit - 1 else len_tokens - 1
 
                         # Extract collocates
                         tags_left = []
@@ -734,25 +732,15 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                             if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_left = text.tags[max(0, i + window_left) : i]
                                 tags_right = text.tags[i + ngram_size : i + ngram_size + window_right]
-                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
+                            else:
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), i):
-                                    if i_sentence_start <= position <= i_sentence_end:
+                                    if i_unit_start <= position <= i_unit_end:
                                         tags_left.append(text.tags[position])
 
                                 # Span positions (Right)
                                 for position in range(i + ngram_size, i + ngram_size + window_right):
-                                    if i_sentence_start <= position <= i_sentence_end:
-                                        tags_right.append(text.tags[position])
-                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
-                                # Span positions (Left)
-                                for position in range(max(0, i + window_left), i):
-                                    if i_para_start <= position <= i_para_end:
-                                        tags_left.append(text.tags[position])
-
-                                # Span positions (Right)
-                                for position in range(i + ngram_size, i + ngram_size + window_right):
-                                    if i_para_start <= position <= i_para_end:
+                                    if i_unit_start <= position <= i_unit_end:
                                         tags_right.append(text.tags[position])
 
                             for j, collocate in enumerate(reversed(tags_left)):
@@ -786,15 +774,10 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                             # Limit Searching
                             if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_left = text.tags[max(0, i + window_left) : max(0, i + window_right + 1)]
-                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
+                            else:
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
-                                    if i_sentence_start <= position <= i_sentence_end:
-                                        tags_left.append(text.tags[position])
-                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
-                                # Span positions (Left)
-                                for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
-                                    if i_para_start <= position <= i_para_end:
+                                    if i_unit_start <= position <= i_unit_end:
                                         tags_left.append(text.tags[position])
 
                             for j, collocate in enumerate(reversed(tags_left)):
@@ -814,15 +797,10 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                             # Limit Searching
                             if settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'None'):
                                 tags_right = text.tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
-                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Sentences'):
+                            else:
                                 # Span positions (Right)
                                 for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
-                                    if i_sentence_start <= position <= i_sentence_end:
-                                        tags_right.append(text.tags[position])
-                            elif settings_limit_searching == _tr('Wl_Worker_Colligation_Extractor', 'Within Paragraphs'):
-                                # Span positions (Right)
-                                for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
-                                    if i_para_start <= position <= i_para_end:
+                                    if i_unit_start <= position <= i_unit_end:
                                         tags_right.append(text.tags[position])
 
                             for j, collocate in enumerate(tags_right):
