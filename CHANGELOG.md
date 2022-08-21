@@ -29,6 +29,7 @@
 - Settings: Add Settings - Tables - Profiler
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance / Measure of Effect Size - None
+- Work Area: Add Concordancer - Generation Settings - Width Unit - Sentence Segment
 - Work Area: Add Concordancer - Sentence Segment No.
 - Work Area: Add Profiler - Count of Sentence Segments / Paragraph Length in Sentence Segments / Sentence Segment Length in Tokens / Count of n-length Sentence Segments
 - Work Area: Add Profiler - Paragraph/Sentence/Token/Type/Syllable Length (Interquartile Range)

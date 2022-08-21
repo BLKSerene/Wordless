@@ -210,52 +210,61 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
 
         self.label_width_left = QLabel(self.tr('Width (Left):'), self)
         self.stacked_widget_width_left = wl_layouts.Wl_Stacked_Widget(self)
-        self.spin_box_width_left_para = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_left_sentence = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_left_token = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_char = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_token = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_sentence_seg = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_sentence = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_para = wl_boxes.Wl_Spin_Box(self)
         self.label_width_right = QLabel(self.tr('Width (Right):'), self)
         self.stacked_widget_width_right = wl_layouts.Wl_Stacked_Widget(self)
-        self.spin_box_width_right_para = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_right_sentence = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_right_token = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_right_char = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_token = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_sentence_seg = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_sentence = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_para = wl_boxes.Wl_Spin_Box(self)
         self.label_width_unit = QLabel(self.tr('Width Unit:'), self)
         self.combo_box_width_unit = wl_boxes.Wl_Combo_Box(self)
 
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_para)
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence)
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_token)
         self.stacked_widget_width_left.addWidget(self.spin_box_width_left_char)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_para)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_token)
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_token)
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence_seg)
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence)
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_para)
         self.stacked_widget_width_right.addWidget(self.spin_box_width_right_char)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_token)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence_seg)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_para)
 
         self.combo_box_width_unit.addItems([
-            self.tr('Paragraph'),
-            self.tr('Sentence'),
+            self.tr('Character'),
             self.tr('Token'),
-            self.tr('Character')
+            self.tr('Sentence Segment'),
+            self.tr('Sentence'),
+            self.tr('Paragraph')
         ])
 
+        self.spin_box_width_left_char.setRange(0, 3000)
+        self.spin_box_width_left_token.setRange(0, 500)
+        self.spin_box_width_left_sentence_seg.setRange(0, 100)
+        self.spin_box_width_left_sentence.setRange(0, 30)
         self.spin_box_width_left_para.setRange(0, 10)
-        self.spin_box_width_left_sentence.setRange(0, 20)
-        self.spin_box_width_left_token.setRange(0, 100)
-        self.spin_box_width_left_char.setRange(0, 1000)
+        self.spin_box_width_right_char.setRange(0, 3000)
+        self.spin_box_width_right_token.setRange(0, 500)
+        self.spin_box_width_right_sentence_seg.setRange(0, 100)
+        self.spin_box_width_right_sentence.setRange(0, 30)
         self.spin_box_width_right_para.setRange(0, 10)
-        self.spin_box_width_right_sentence.setRange(0, 20)
-        self.spin_box_width_right_token.setRange(0, 100)
-        self.spin_box_width_right_char.setRange(0, 1000)
 
-        self.spin_box_width_left_para.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_left_sentence.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_left_token.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_left_char.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_para.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_sentence.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_token.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_token.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_sentence_seg.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_sentence.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_para.valueChanged.connect(self.generation_settings_changed)
         self.spin_box_width_right_char.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_token.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_sentence_seg.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_sentence.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_para.valueChanged.connect(self.generation_settings_changed)
         self.combo_box_width_unit.currentTextChanged.connect(self.generation_settings_changed)
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
@@ -377,14 +386,16 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
             self.main.wl_context_settings_concordancer.load_settings(defaults = True)
 
         # Generation Settings
-        self.spin_box_width_left_para.setValue(settings['generation_settings']['width_left_para'])
-        self.spin_box_width_left_sentence.setValue(settings['generation_settings']['width_left_sentence'])
-        self.spin_box_width_left_token.setValue(settings['generation_settings']['width_left_token'])
         self.spin_box_width_left_char.setValue(settings['generation_settings']['width_left_char'])
-        self.spin_box_width_right_para.setValue(settings['generation_settings']['width_right_para'])
-        self.spin_box_width_right_sentence.setValue(settings['generation_settings']['width_right_sentence'])
-        self.spin_box_width_right_token.setValue(settings['generation_settings']['width_right_token'])
+        self.spin_box_width_left_token.setValue(settings['generation_settings']['width_left_token'])
+        self.spin_box_width_left_sentence_seg.setValue(settings['generation_settings']['width_left_sentence_seg'])
+        self.spin_box_width_left_sentence.setValue(settings['generation_settings']['width_left_sentence'])
+        self.spin_box_width_left_para.setValue(settings['generation_settings']['width_left_para'])
         self.spin_box_width_right_char.setValue(settings['generation_settings']['width_right_char'])
+        self.spin_box_width_right_token.setValue(settings['generation_settings']['width_right_token'])
+        self.spin_box_width_right_sentence_seg.setValue(settings['generation_settings']['width_right_sentence_seg'])
+        self.spin_box_width_right_sentence.setValue(settings['generation_settings']['width_right_sentence'])
+        self.spin_box_width_right_para.setValue(settings['generation_settings']['width_right_para'])
         self.combo_box_width_unit.setCurrentText(settings['generation_settings']['width_unit'])
 
         # Table Settings
@@ -445,29 +456,34 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
     def generation_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['generation_settings']
 
-        settings['width_left_para'] = self.spin_box_width_left_para.value()
-        settings['width_left_sentence'] = self.spin_box_width_left_sentence.value()
-        settings['width_left_token'] = self.spin_box_width_left_token.value()
         settings['width_left_char'] = self.spin_box_width_left_char.value()
-        settings['width_right_para'] = self.spin_box_width_right_para.value()
-        settings['width_right_sentence'] = self.spin_box_width_right_sentence.value()
-        settings['width_right_token'] = self.spin_box_width_right_token.value()
+        settings['width_left_token'] = self.spin_box_width_left_token.value()
+        settings['width_left_sentence_seg'] = self.spin_box_width_left_sentence_seg.value()
+        settings['width_left_sentence'] = self.spin_box_width_left_sentence.value()
+        settings['width_left_para'] = self.spin_box_width_left_para.value()
         settings['width_right_char'] = self.spin_box_width_right_char.value()
+        settings['width_right_token'] = self.spin_box_width_right_token.value()
+        settings['width_right_sentence_seg'] = self.spin_box_width_right_sentence_seg.value()
+        settings['width_right_sentence'] = self.spin_box_width_right_sentence.value()
+        settings['width_right_para'] = self.spin_box_width_right_para.value()
         settings['width_unit'] = self.combo_box_width_unit.currentText()
 
         # Width Unit
-        if settings['width_unit'] == self.tr('Paragraph'):
+        if settings['width_unit'] == self.tr('Character'):
             self.stacked_widget_width_left.setCurrentIndex(0)
             self.stacked_widget_width_right.setCurrentIndex(0)
-        elif settings['width_unit'] == self.tr('Sentence'):
+        elif settings['width_unit'] == self.tr('Token'):
             self.stacked_widget_width_left.setCurrentIndex(1)
             self.stacked_widget_width_right.setCurrentIndex(1)
-        elif settings['width_unit'] == self.tr('Token'):
+        elif settings['width_unit'] == self.tr('Sentence Segment'):
             self.stacked_widget_width_left.setCurrentIndex(2)
             self.stacked_widget_width_right.setCurrentIndex(2)
-        elif settings['width_unit'] == self.tr('Character'):
+        elif settings['width_unit'] == self.tr('Sentence'):
             self.stacked_widget_width_left.setCurrentIndex(3)
             self.stacked_widget_width_right.setCurrentIndex(3)
+        elif settings['width_unit'] == self.tr('Paragraph'):
+            self.stacked_widget_width_left.setCurrentIndex(4)
+            self.stacked_widget_width_right.setCurrentIndex(4)
 
     def table_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['table_settings']
@@ -558,7 +574,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                         ):
                             concordance_line = []
 
-                            # Nos.
+                            # No.
                             no_sentence_seg = bisect.bisect(offsets_sentence_segs, i)
                             no_sentence = bisect.bisect(offsets_sentences, i)
                             no_para = bisect.bisect(offsets_paras, i)
@@ -572,67 +588,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             node_text = ' '.join(ngram)
                             node_text = wl_nlp_utils.escape_text(node_text)
 
-                            # Width Unit (Paragraph)
-                            if settings['generation_settings']['width_unit'] == self.tr('Paragraph'):
-                                width_left_para = settings['generation_settings']['width_left_para']
-                                width_right_para = settings['generation_settings']['width_right_para']
-
-                                offset_para_start = offsets_paras[max(0, no_para - 1 - width_left_para)]
-
-                                if no_para + width_right_para >= len_paras:
-                                    offset_para_end = None
-                                else:
-                                    offset_para_end = offsets_paras[min(no_para + width_right_para, len_paras - 1)]
-
-                                context_left = text.tokens_flat_puncs_merged[offset_para_start:i]
-                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : offset_para_end]
-
-                                # Search in Results (Left & Right)
-                                if settings['token_settings']['puncs']:
-                                    text_search_left = copy.deepcopy(context_left)
-                                    text_search_right = copy.deepcopy(context_right)
-                                else:
-                                    text_search_left = tokens[offset_para_start:i]
-                                    text_search_right = tokens[i + len_search_term : offset_para_end]
-                            # Width Unit (Sentence)
-                            elif settings['generation_settings']['width_unit'] == self.tr('Sentence'):
-                                width_left_sentence = settings['generation_settings']['width_left_sentence']
-                                width_right_sentence = settings['generation_settings']['width_right_sentence']
-
-                                offset_sentence_start = offsets_sentences[max(0, no_sentence - 1 - width_left_sentence)]
-
-                                if no_sentence + width_right_sentence >= len_sentences:
-                                    offset_sentence_end = None
-                                else:
-                                    offset_sentence_end = offsets_sentences[min(no_sentence + width_right_sentence, len_sentences - 1)]
-
-                                context_left = text.tokens_flat_puncs_merged[offset_sentence_start:i]
-                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : offset_sentence_end]
-
-                                # Search in Results (Left & Right)
-                                if settings['token_settings']['puncs']:
-                                    text_search_left = copy.deepcopy(context_left)
-                                    text_search_right = copy.deepcopy(context_right)
-                                else:
-                                    text_search_left = tokens[offset_sentence_start:i]
-                                    text_search_right = tokens[i + len_search_term : offset_sentence_end]
-                            # Width Unit (Token)
-                            elif settings['generation_settings']['width_unit'] == self.tr('Token'):
-                                width_left_token = settings['generation_settings']['width_left_token']
-                                width_right_token = settings['generation_settings']['width_right_token']
-
-                                context_left = text.tokens_flat_puncs_merged[max(0, i - width_left_token) : i]
-                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + width_right_token]
-
-                                # Search in Results (Left & Right)
-                                if settings['token_settings']['puncs']:
-                                    text_search_left = copy.deepcopy(context_left)
-                                    text_search_right = copy.deepcopy(context_right)
-                                else:
-                                    text_search_left = tokens[max(0, i - width_left_token) : i]
-                                    text_search_right = tokens[i + len_search_term : i + len_search_term + width_right_token]
-                            # Width Unit (Character)
-                            elif settings['generation_settings']['width_unit'] == self.tr('Character'):
+                            # Width Unit
+                            if settings['generation_settings']['width_unit'] == self.tr('Character'):
                                 len_context_left = 0
                                 len_context_right = 0
 
@@ -707,6 +664,53 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                         text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + len(context_right) - 1]
                                         + [context_right_last]
                                     )
+                            elif settings['generation_settings']['width_unit'] == self.tr('Token'):
+                                width_left_token = settings['generation_settings']['width_left_token']
+                                width_right_token = settings['generation_settings']['width_right_token']
+
+                                context_left = text.tokens_flat_puncs_merged[max(0, i - width_left_token) : i]
+                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + width_right_token]
+
+                                # Search in Results (Left & Right)
+                                if settings['token_settings']['puncs']:
+                                    text_search_left = copy.deepcopy(context_left)
+                                    text_search_right = copy.deepcopy(context_right)
+                                else:
+                                    text_search_left = tokens[max(0, i - width_left_token) : i]
+                                    text_search_right = tokens[i + len_search_term : i + len_search_term + width_right_token]
+                            else:
+                                if settings['generation_settings']['width_unit'] == self.tr('Sentence Segment'):
+                                    width_settings = 'sentence_seg'
+                                    offsets_unit = offsets_sentence_segs
+                                    no_unit = no_sentence_seg
+                                    len_unit = len_sentence_segs
+                                elif settings['generation_settings']['width_unit'] == self.tr('Sentence'):
+                                    width_settings = 'sentence'
+                                    offsets_unit = offsets_sentences
+                                    no_unit = no_sentence
+                                    len_unit = len_sentences
+                                elif settings['generation_settings']['width_unit'] == self.tr('Paragraph'):
+                                    width_settings = 'para'
+                                    offsets_unit = offsets_paras
+                                    no_unit = no_para
+                                    len_unit = len_paras
+
+                                width_left = settings['generation_settings'][f'width_left_{width_settings}']
+                                width_right = settings['generation_settings'][f'width_right_{width_settings}']
+
+                                offset_start = offsets_unit[max(0, no_unit - 1 - width_left)]
+                                offset_end = offsets_unit[min(no_unit + width_right, len_unit - 1)]
+
+                                context_left = text.tokens_flat_puncs_merged[offset_start:i]
+                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : offset_end]
+
+                                # Search in Results (Left & Right)
+                                if settings['token_settings']['puncs']:
+                                    text_search_left = copy.deepcopy(context_left)
+                                    text_search_right = copy.deepcopy(context_right)
+                                else:
+                                    text_search_left = tokens[offset_start:i]
+                                    text_search_right = tokens[i + len_search_term : offset_end]
 
                             context_left = wl_nlp_utils.escape_tokens(context_left)
                             context_right = wl_nlp_utils.escape_tokens(context_right)
