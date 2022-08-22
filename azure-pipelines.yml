@@ -149,8 +149,6 @@ jobs:
       # Install dependencies
       - script: |
           pip3.8 install --upgrade pip setuptools
-          # Fix installation of pkuseg
-          pip3.8 install numpy
           pip3.8 install --requirement requirements.txt
           # Download models and data files
           python3.8 utils/wl_downloader_ci.py
