@@ -24,11 +24,11 @@ import botok
 import bs4
 import nltk
 import nltk.tokenize.nist
-import pkuseg
 import pymorphy2
 import pyphen
 import sacremoses
 import spacy
+import spacy_pkuseg
 import sudachipy
 
 from wordless.wl_nlp import wl_texts
@@ -150,7 +150,7 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
     # Chinese
     elif word_tokenizer == 'pkuseg_zho':
         if 'pkuseg_word_tokenizer' not in main.__dict__:
-            main.pkuseg_word_tokenizer = pkuseg.pkuseg()
+            main.pkuseg_word_tokenizer = spacy_pkuseg.pkuseg(model_name = 'mixed')
     # Chinese & Japanese
     elif word_tokenizer.startswith('wordless_'):
         init_spacy_models(main, 'eng_us')
