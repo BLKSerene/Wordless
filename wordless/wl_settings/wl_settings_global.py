@@ -341,7 +341,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'PyThaiNLP - Longest Matching'): 'pythainlp_longest_matching',
                 _tr('init_settings_global', 'PyThaiNLP - Maximum Matching'): 'pythainlp_max_matching',
                 _tr('init_settings_global', 'PyThaiNLP - Maximum Matching + TCC'): 'pythainlp_max_matching_tcc',
-                _tr('init_settings_global', 'PyThaiNLP - Maximum Matching + TCC (Safe Mode)'): 'pythainlp_max_matching_tcc_safe_mode',
                 _tr('init_settings_global', 'PyThaiNLP - NERCut'): 'pythainlp_nercut',
 
                 _tr('init_settings_global', 'Sacremoses - Moses Tokenizer'): 'sacremoses_moses',
@@ -1495,7 +1494,6 @@ def init_settings_global():
                 'pythainlp_longest_matching',
                 'pythainlp_max_matching',
                 'pythainlp_max_matching_tcc',
-                'pythainlp_max_matching_tcc_safe_mode',
                 'pythainlp_nercut'
             ],
 

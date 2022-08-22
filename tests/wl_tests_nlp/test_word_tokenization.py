@@ -233,8 +233,7 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'tha':
         if word_tokenizer in [
             'pythainlp_longest_matching',
-            'pythainlp_max_matching_tcc',
-            'pythainlp_max_matching_tcc_safe_mode'
+            'pythainlp_max_matching_tcc'
         ]:
             assert tokens == ['ภาษาไทย', 'หรือ', 'ภาษาไทย', 'กลาง', 'เป็น', 'ภาษา', 'ใน', 'กลุ่ม', 'ภาษา', 'ไท', 'ซึ่ง', 'เป็น', 'กลุ่มย่อย', 'ของ', 'ตระกูล', 'ภาษา', 'ข', 'ร้า', '-', 'ไท', 'และ', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศ', 'ไทย', '[', '3', '][', '4', ']']
         elif word_tokenizer == 'pythainlp_max_matching':

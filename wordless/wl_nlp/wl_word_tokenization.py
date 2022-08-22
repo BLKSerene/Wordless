@@ -221,9 +221,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                         tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'mm'))
                 elif word_tokenizer == 'pythainlp_max_matching_tcc':
                     for sentence in sentences:
-                        tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'newmm'))
-                elif word_tokenizer == 'pythainlp_max_matching_tcc_safe_mode':
-                    for sentence in sentences:
+                        # Use safe mode by default
                         tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'newmm-safe'))
                 elif word_tokenizer == 'pythainlp_nercut':
                     for sentence in sentences:
