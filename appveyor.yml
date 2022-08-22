@@ -53,8 +53,7 @@ for:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       # Check Python version
       - python --version
-      # Install dependencies (pip 22 does not work here)
-      - python -m pip install --upgrade pip==21.3.1 setuptools
+      - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements.txt
       # Download models and data files
       - python utils/wl_downloader_ci.py
@@ -122,8 +121,6 @@ for:
       - python --version
       # Install dependencies
       - python -m pip install --upgrade pip setuptools
-      # Fix installation of pkuseg
-      - pip install numpy
       - pip install --requirement requirements.txt
       # Download models and data files
       - python utils/wl_downloader_ci.py
