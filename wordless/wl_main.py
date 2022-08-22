@@ -42,21 +42,22 @@ from PyQt5.QtWidgets import (
     QTextEdit, QWidget
 )
 import pythainlp
+import spacy_pkuseg
 import underthesea.file_utils
 
 # Use Qt backend for Matplotlib
 matplotlib.use('Qt5Agg')
 
+# Modify paths of data files after the program is packaged
 if getattr(sys, '_MEIPASS', False):
-    # Modify path of NLTK's data files
     nltk.data.path = [os.path.join(os.getcwd(), 'nltk_data')]
 
-    # Modify path of PyThaiNLP's data files
     PYTHAINLP_DEFAULT_DATA_DIR = os.path.realpath(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR)
     pythainlp.corpus._CORPUS_DB_PATH = os.path.join(PYTHAINLP_DEFAULT_DATA_DIR, pythainlp.corpus._CORPUS_DB_FILENAME)
     pythainlp.tools.path.get_pythainlp_data_path = lambda: PYTHAINLP_DEFAULT_DATA_DIR
 
-    # Modify path of Underthesea's data files
+    spacy_pkuseg.config.pkuseg_home = '.pkuseg'
+
     underthesea.file_utils.UNDERTHESEA_FOLDER = '.underthesea'
 
 from wordless import (

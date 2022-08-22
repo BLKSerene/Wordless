@@ -20,6 +20,7 @@ import platform
 
 import PyInstaller
 import pythainlp
+import spacy_pkuseg
 import underthesea.file_utils
 
 block_cipher = None
@@ -29,14 +30,10 @@ datas = []
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # jieba
 datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
-# langdetect
-datas.extend(PyInstaller.utils.hooks.collect_data_files('langdetect'))
-# nagisa
-datas.extend(PyInstaller.utils.hooks.collect_data_files('nagisa', include_py_files = True))
+# Lingua
+datas.extend(PyInstaller.utils.hooks.collect_data_files('lingua'))
 # OpenCC
 datas.extend(PyInstaller.utils.hooks.collect_data_files('opencc'))
-# pkuseg
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pkuseg'))
 # Python-crfsuite
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
 # pymorphy2
@@ -73,15 +70,11 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
-# ssg
-datas.extend(PyInstaller.utils.hooks.collect_data_files('ssg'))
 # SudachiPy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachipy'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachidict_core'))
 # TextBlob
 datas.extend(PyInstaller.utils.hooks.collect_data_files('textblob'))
-# Tokenizer
-datas.extend(PyInstaller.utils.hooks.collect_data_files('tokenizer'))
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
 # wordcloud
@@ -89,26 +82,26 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
 
 # Custom data files
 datas.extend([
-    # NLP utils
-    ('src/lemmatization', 'lemmatization'),
-    ('src/stop_word_lists', 'stop_word_lists'),
-    # Measures
-    ('src/wl_measures/dale_list_easy_words_769.txt', 'wl_measures'),
-    ('src/wl_measures/dale_list_easy_words_3000.txt', 'wl_measures'),
     # PyThaiNLP
     (pythainlp.tools.get_pythainlp_data_path(), 'pythainlp-data'),
+    # spaCy-pkuseg
+    (spacy_pkuseg.config.pkuseg_home, '.pkuseg'),
     # Underthesea
     (underthesea.file_utils.UNDERTHESEA_FOLDER, '.underthesea'),
 
+    # Data
+    ('../data', 'data')
+    # Fonts
+    ('../fonts', 'fonts'),
     # Images
-    ('src/imgs', 'imgs'),
+    ('../imgs', 'imgs'),
     # Translation
-    ('src/trs', 'trs'),
+    ('../trs', 'trs'),
     # Misc
-    ('src/wl_acks.csv', '.'),
-    ('src/CHANGELOG.md', '.'),
-    ('src/VERSION', '.'),
-    ('LICENSE.txt', '.')
+    ('../ACKNOWLEDGMENTS.md', '.'),
+    ('../CHANGELOG.md', '.'),
+    ('../LICENSE.txt', '.'),
+    ('../VERSION', '.')
 ])
 
 # Hidden imports
@@ -153,12 +146,12 @@ excludes = [
 
 # Icons
 if platform.system() in ['Windows', 'Linux']:
-    icon = 'src/imgs/wl_icon.ico'
+    icon = '../imgs/wl_icon.ico'
 elif platform.system() == 'Darwin':
-    icon = 'src/imgs/wl_icon.icns'
+    icon = '../imgs/wl_icon.icns'
 
 a = Analysis(
-    ['src/wl_main.py'],
+    ['../wordless/wl_main.py'],
     pathex = [],
     binaries = [],
     datas = datas,

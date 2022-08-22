@@ -64,8 +64,8 @@
 - Work Area: Remove Wordlist Generator / N-gram Generator / Collocation Extractpr / Colligation Extractor / Keyword Extractor - Generation Settings - Advanced Settings
 
 ### ⏫ Dependency Changes
-- Dependencies: Add Lingua, OpenCC, and PyPDF2
-- Dependencies: Remove langdetect, langid.py, nagisa, opencc-python, ssg, and Tokenizer
+- Dependencies: Add Lingua, OpenCC, PyPDF2, spacy-pkuseg
+- Dependencies: Remove langdetect, langid.py, nagisa, opencc-python, pkuseg, ssg, and Tokenizer
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
 - Dependencies: Upgrade Charset Normalizer to 2.1.0
