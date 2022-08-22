@@ -53,6 +53,7 @@
 ### ❌ Removals
 - Settings: Remove Settings - Measures - Adjusted Frequency - Use same settings in "Settings → Measures → Dispersion"
 - Utils: Remove nagisa's Japanese word tokenizer and part-of-speech tagger
+- Utils: Remove PyThaiNLP's maximum matching + TCC (safe mode)
 - Utils: Remove ssg's Thai syllable tokenizer
 - Utils: Remove Tokenizer's Icelandic sentence tokenizer and word tokenizer
 - Work Area: Remove Concordancer - Zapping Settings - Discard position information
