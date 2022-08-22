@@ -24,7 +24,6 @@ charset-normalizer == 2.1.0
 jieba == 0.42.1
 lingua-language-detector == 1.0.1
 nltk == 3.7
-pkuseg == 0.0.25
 
 ## pymorphy2
 pymorphy2 == 0.9.1
@@ -38,6 +37,7 @@ sacremoses == 0.0.53
 ## spaCy
 spacy == 3.2.3
 spacy-lookups-data == 1.0.3
+spacy-pkuseg == 0.0.31
 
 ## SudachiPy
 sudachipy == 0.6.6
