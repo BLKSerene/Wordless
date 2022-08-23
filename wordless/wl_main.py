@@ -336,24 +336,25 @@ class Wl_Main(QMainWindow):
         self.action_prefs_show_status_bar.triggered.connect(self.prefs_show_status_bar)
 
         # Help
+        self.action_help_need_help = self.menu_help.addAction(self.tr('&Need Help?'))
+        self.action_help_need_help.setShortcut(QKeySequence('F1'))
+        self.action_help_need_help.setStatusTip(self.tr('Show help information'))
+        self.action_help_need_help.triggered.connect(self.help_need_help)
         self.action_help_citing = self.menu_help.addAction(self.tr('&Citing'))
         self.action_help_citing.setStatusTip(self.tr('Show information about citing'))
         self.action_help_citing.triggered.connect(self.help_citing)
-        self.action_help_acks = self.menu_help.addAction(self.tr('&Acknowledgments'))
-        self.action_help_acks.setStatusTip(self.tr('Show acknowldgments'))
-        self.action_help_acks.triggered.connect(self.help_acks)
 
         self.menu_help.addSeparator()
 
-        self.action_help_need_help = self.menu_help.addAction(self.tr('&Need Help?'))
-        self.action_help_need_help.setStatusTip(self.tr('Show help information'))
-        self.action_help_need_help.triggered.connect(self.help_need_help)
         self.action_help_contributing = self.menu_help.addAction(self.tr('C&ontributing'))
         self.action_help_contributing.setStatusTip(self.tr('Show information about contributing'))
         self.action_help_contributing.triggered.connect(self.help_contributing)
         self.action_help_donating = self.menu_help.addAction(self.tr('&Donating'))
         self.action_help_donating.setStatusTip(self.tr('Show information about donating'))
         self.action_help_donating.triggered.connect(self.help_donating)
+        self.action_help_acks = self.menu_help.addAction(self.tr('&Acknowledgments'))
+        self.action_help_acks.setStatusTip(self.tr('Show acknowldgments'))
+        self.action_help_acks.triggered.connect(self.help_acks)
 
         self.menu_help.addSeparator()
 
@@ -406,17 +407,13 @@ class Wl_Main(QMainWindow):
         else:
             self.statusBar().hide()
 
-    # Help - Citing
-    def help_citing(self):
-        Wl_Dialog_Citing(self).open()
-
-    # Help - Acknowledgments
-    def help_acks(self):
-        Wl_Dialog_Acks(self).open()
-
     # Help - Need Help?
     def help_need_help(self):
         Wl_Dialog_Need_Help(self).open()
+
+    # Help - Citing
+    def help_citing(self):
+        Wl_Dialog_Citing(self).open()
 
     # Help - Contributing
     def help_contributing(self):
@@ -425,6 +422,10 @@ class Wl_Main(QMainWindow):
     # Help - Donating
     def help_donating(self):
         Wl_Dialog_Donating(self).open()
+
+    # Help - Acknowledgments
+    def help_acks(self):
+        Wl_Dialog_Acks(self).open()
 
     # Help - Check for Updates
     def help_check_updates(self, on_startup = False):
@@ -601,6 +602,91 @@ class Wl_Main(QMainWindow):
 
         sys.exit(0)
 
+class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
+    def __init__(self, main):
+        super().__init__(
+            main,
+            title = _tr('Wl_Dialog_Need_Help', 'Need Help?'),
+            width = 600,
+            height = 550
+        )
+
+        self.label_need_help = wl_labels.Wl_Label_Dialog(
+            self.tr('''
+                <div>
+                    If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.
+                </div>
+            '''),
+            self
+        )
+
+        self.table_need_help = wl_tables.Wl_Table(
+            self,
+            headers = [
+                self.tr('Support Channel'),
+                self.tr('Information')
+            ]
+        )
+
+        self.table_need_help.verticalHeader().setHidden(True)
+        self.table_need_help.model().setRowCount(6)
+
+        self.table_need_help.disable_updates()
+
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(0, 0),
+            wl_labels.Wl_Label_Html(self.tr('Official Documentation'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(0, 1),
+            wl_labels.Wl_Label_Html(self.tr('<a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md">Documentation</a>'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(1, 0),
+            wl_labels.Wl_Label_Html(self.tr('Tutorial Videos'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(1, 1),
+            wl_labels.Wl_Label_Html(self.tr('<a href="https://space.bilibili.com/34963752/video">bilibili</a>'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(2, 0),
+            wl_labels.Wl_Label_Html(self.tr('Bug Reports'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(2, 1),
+            wl_labels.Wl_Label_Html(self.tr('<a href="https://github.com/BLKSerene/Wordless/issues">Gihub Issues</a>'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(3, 0),
+            wl_labels.Wl_Label_Html(self.tr('Usage Questions'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(3, 1),
+            wl_labels.Wl_Label_Html(self.tr('<a href="https://github.com/BLKSerene/Wordless/discussions">Gihub Discussions</a>'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(4, 0),
+            wl_labels.Wl_Label_Html(self.tr('Email Support'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(4, 1),
+            wl_labels.Wl_Label_Html(self.main.email_html, self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(5, 0),
+            wl_labels.Wl_Label_Html(self.tr('<a href="https://www.wechat.com/en/">WeChat</a> Official Account'), self)
+        )
+        self.table_need_help.setIndexWidget(
+            self.table_need_help.model().index(5, 1),
+            wl_labels.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self)
+        )
+
+        self.table_need_help.enable_updates()
+
+        self.wrapper_info.layout().addWidget(self.label_need_help, 0, 0)
+        self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
+
 class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
@@ -681,113 +767,6 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         self.text_edit_citing.selectAll()
         self.text_edit_citing.copy()
 
-class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
-    def __init__(self, main):
-        super().__init__(
-            main,
-            title = _tr('Wl_Dialog_Acks', 'Acknowledgments'),
-            width = 700
-        )
-
-        # Load acknowledgments
-        acks = []
-
-        with open('ACKNOWLEDGMENTS.md', 'r', encoding = 'utf_8') as f:
-            for line in f:
-                if re.search(r'^[0-9]+\s*\|', line):
-                    _, name, ver, authors, proj_license = line.split('|')
-
-                    name = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', name.strip())
-                    ver = ver.strip()
-                    authors = authors.strip()
-                    proj_license = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', proj_license.strip())
-
-                    acks.append([name, ver, authors, proj_license])
-
-        self.label_acks = wl_labels.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
-                </div>
-            '''),
-            self
-        )
-        self.table_acks = wl_tables.Wl_Table(
-            self,
-            headers = [
-                self.tr('Name'),
-                self.tr('Version'),
-                self.tr('Authors'),
-                self.tr('License')
-            ]
-        )
-
-        self.table_acks.setFixedHeight(400)
-        self.table_acks.model().setRowCount(len(acks))
-
-        self.table_acks.disable_updates()
-
-        for i, (name, ver, authors, proj_license) in enumerate(acks):
-            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 0), wl_labels.Wl_Label_Html(name, self))
-            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 1), wl_labels.Wl_Label_Html_Centered(ver, self))
-            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 2), wl_labels.Wl_Label_Html(authors, self))
-            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 3), wl_labels.Wl_Label_Html_Centered(proj_license, self))
-
-        self.table_acks.enable_updates()
-
-        self.wrapper_info.layout().addWidget(self.label_acks, 0, 0)
-        self.wrapper_info.layout().addWidget(self.table_acks, 1, 0)
-
-        self.set_fixed_height()
-
-class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
-    def __init__(self, main):
-        super().__init__(
-            main,
-            title = _tr('Wl_Dialog_Need_Help', 'Need Help?'),
-            width = 600,
-            height = 500
-        )
-
-        self.label_need_help = wl_labels.Wl_Label_Dialog(
-            self.tr('''
-                <div>
-                    If you encounter a problem, find a bug, or require any further information, feel free to ask questions, submit bug reports, or provide feedback by <a href="https://github.com/BLKSerene/Wordless/issues/new">creating an issue</a> on Github if you fail to find the answer by searching <a href="https://github.com/BLKSerene/Wordless/issues">existing issues</a> first.
-                </div>
-
-                <div>
-                    If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may send me an email.
-                </div>
-            '''),
-            self
-        )
-
-        self.table_need_help = wl_tables.Wl_Table(
-            self,
-            headers = [
-                self.tr('Channel'),
-                self.tr('Contact Information')
-            ]
-        )
-
-        self.table_need_help.setFixedHeight(350)
-        self.table_need_help.verticalHeader().setHidden(True)
-        self.table_need_help.model().setRowCount(3)
-
-        self.table_need_help.disable_updates()
-
-        self.table_need_help.setIndexWidget(self.table_need_help.model().index(0, 0), wl_labels.Wl_Label_Html_Centered(self.tr('Documentation'), self))
-        self.table_need_help.setIndexWidget(self.table_need_help.model().index(0, 1), wl_labels.Wl_Label_Html('<a href="https://github.com/BLKSerene/Wordless#documentation">https://github.com/BLKSerene/Wordless#documentation</a>', self))
-        self.table_need_help.setIndexWidget(self.table_need_help.model().index(1, 0), wl_labels.Wl_Label_Html_Centered(self.tr('Email'), self))
-        self.table_need_help.setIndexWidget(self.table_need_help.model().index(1, 1), wl_labels.Wl_Label_Html(self.main.email_html, self))
-        self.table_need_help.setIndexWidget(self.table_need_help.model().index(2, 0), wl_labels.Wl_Label_Html_Centered(self.tr('<a href="https://www.wechat.com/en/">WeChat</a><br>Official Account'), self))
-        self.table_need_help.setIndexWidget(self.table_need_help.model().index(2, 1), wl_labels.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self))
-
-        self.table_need_help.enable_updates()
-
-        self.wrapper_info.layout().addWidget(self.label_need_help, 0, 0)
-        self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
-
 class Wl_Msg_Box_Help(wl_msg_boxes.Wl_Msg_Box):
     def __init__(self, main):
         super().__init__(
@@ -796,7 +775,7 @@ class Wl_Msg_Box_Help(wl_msg_boxes.Wl_Msg_Box):
             title = _tr('Wl_Msg_Box_Help', 'Contributing'),
             text = _tr('Wl_Msg_Box_Help', '''
                 <div>
-                    If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new feature by submitting <a href="https://github.com/BLKSerene/Wordless/pulls">pull requests</a> on Github.
+                    If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new features by submitting <a href="https://github.com/BLKSerene/Wordless/pulls">pull requests</a> on Github.
                 </div>
                 <div>
                     Besides, you may contribute by writing <a href="https://github.com/BLKSerene/Wordless/wiki">wikis</a> on Github, making tutorial videos, or helping with the translation of the user interface and <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md">documentation</a> into other languages.
@@ -891,6 +870,65 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
 
         if platform.system() in ['Windows', 'Linux']:
             self.move_to_center()
+
+class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
+    def __init__(self, main):
+        super().__init__(
+            main,
+            title = _tr('Wl_Dialog_Acks', 'Acknowledgments'),
+            width = 700
+        )
+
+        # Load acknowledgments
+        acks = []
+
+        with open('ACKNOWLEDGMENTS.md', 'r', encoding = 'utf_8') as f:
+            for line in f:
+                if re.search(r'^[0-9]+\s*\|', line):
+                    _, name, ver, authors, proj_license = line.split('|')
+
+                    name = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', name.strip())
+                    ver = ver.strip()
+                    authors = authors.strip()
+                    proj_license = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', proj_license.strip())
+
+                    acks.append([name, ver, authors, proj_license])
+
+        self.label_acks = wl_labels.Wl_Label_Dialog(
+            self.tr('''
+                <div>
+                    I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
+                </div>
+            '''),
+            self
+        )
+        self.table_acks = wl_tables.Wl_Table(
+            self,
+            headers = [
+                self.tr('Name'),
+                self.tr('Version'),
+                self.tr('Authors'),
+                self.tr('License')
+            ]
+        )
+
+        self.table_acks.setFixedHeight(400)
+        self.table_acks.model().setRowCount(len(acks))
+
+        self.table_acks.disable_updates()
+
+        for i, (name, ver, authors, proj_license) in enumerate(acks):
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 0), wl_labels.Wl_Label_Html(name, self))
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 1), wl_labels.Wl_Label_Html_Centered(ver, self))
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 2), wl_labels.Wl_Label_Html(authors, self))
+            self.table_acks.setIndexWidget(self.table_acks.model().index(i, 3), wl_labels.Wl_Label_Html_Centered(proj_license, self))
+
+        self.table_acks.enable_updates()
+
+        self.wrapper_info.layout().addWidget(self.label_acks, 0, 0)
+        self.wrapper_info.layout().addWidget(self.table_acks, 1, 0)
+
+        self.set_fixed_height()
 
 class Worker_Check_Updates(QObject):
     worker_done = pyqtSignal(str, str)
