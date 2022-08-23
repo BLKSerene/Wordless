@@ -94,7 +94,7 @@ def test_collocation_extractor():
         print(f"Search settings: {main.settings_custom['collocation_extractor']['search_settings']['search_settings']}")
         print(f"Test of Statistical significance: {main.settings_custom['collocation_extractor']['generation_settings']['test_statistical_significance']}")
         print(f"Measure of bayes factor: {main.settings_custom['collocation_extractor']['generation_settings']['measure_bayes_factor']}")
-        print(f"Measure of effect size: {main.settings_custom['collocation_extractor']['generation_settings']['measure_effect_size']}\n")
+        print(f"Measure of effect size: {main.settings_custom['collocation_extractor']['generation_settings']['measure_effect_size']}")
 
         wl_collocation_extractor.Wl_Worker_Collocation_Extractor_Table(
             main,
@@ -107,6 +107,7 @@ def test_collocation_extractor():
     print('pass!')
 
 def update_gui(err_msg, collocations_freqs_files, collocations_stats_files):
+    print(err_msg)
     assert not err_msg
 
     assert collocations_freqs_files

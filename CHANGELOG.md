@@ -27,6 +27,7 @@
 - Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test / Welch's t-test / z-score (Berry-Rogghe)
 - Settings: Add Settings - Measures - Statistical Significance - Student's t-test (1-sample) / Student's t-test (2-sample) / Welch's t-test - Direction
 - Settings: Add Settings - Tables - Profiler
+- Utils: Add NLTK's regular-expression tokenizer
 - Work Area: Add Collocation/Colligation Extractor - Generation Settings - Limit Searching - Within Sentence Segments
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance / Measure of Effect Size - None
@@ -247,7 +248,7 @@
 
 ### 📌 Bugfixes
 - Settings: Fix Settings - Word Tokenization - Preview - Select language - Vietnamese
-- Utils: Fix NLTK's Penn Treebank Detokenizer
+- Utils: Fix NLTK's Penn Treebank detokenizer
 - Work Area: Fix Concordancer - Generate Figure
 
 ### ❌ Removals
@@ -390,7 +391,7 @@
 - File Area: Add support for .xml files
 - Settings: Add Settings - Figures - Line Chart / Word Cloud / Network Graph
 - Utils: Add extra-stopwords's stop word lists
-- Utils: Add NLTK's Punkt Sentence Tokenizer for Russian
+- Utils: Add NLTK's Russian Punkt sentence tokenizer
 - Utils: Add NLTK's Slovenian and Tajik stop word lists
 - Utils: Add spaCy's Marathi word tokenizer and stop word list
 - Utils: Add spaCy's Serbian word tokenizer and stop word list

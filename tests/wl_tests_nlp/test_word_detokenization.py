@@ -23,13 +23,13 @@ from wordless.wl_nlp import wl_word_detokenization, wl_word_tokenization
 
 main = wl_test_init.Wl_Test_Main()
 
-LANGS_DETOKENIZATION = ['zho_cn', 'zho_tw', 'eng_gb', 'jpn', 'tha', 'bod', 'other']
+LANGS_DETOKENIZATION = ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha', 'bod', 'other']
 
 @pytest.mark.parametrize('lang', LANGS_DETOKENIZATION)
 def test_word_detokenize(lang):
     tokens = wl_word_tokenization.wl_word_tokenize_flat(
         main,
-        text = getattr(wl_test_lang_examples, f"SENTENCE_{lang.upper() if lang != 'other' else 'ENG_GB'}"),
+        text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang
     )
     text = wl_word_detokenization.wl_word_detokenize(
@@ -45,7 +45,7 @@ def test_word_detokenize(lang):
         assert text == '汉语又称华语[3]、唐话[4] ，概指由上古汉语（先秦雅言）发展而来、书面使用汉字的分析语，为汉藏语系最大的一支语族。'
     elif lang == 'zho_tw':
         assert text == '漢語又稱華語[3]、唐話[4] ，概指由上古漢語（先秦雅言）發展而來、書面使用漢字的分析語，為漢藏語系最大的一支語族。'
-    elif lang == 'eng_gb':
+    elif lang in ['eng_us', 'other']:
         assert text == 'English is a West Germanic language of the Indo - European language family, originally spoken by the inhabitants of early medieval England.[3][4][5]'
     elif lang == 'jpn':
         assert text == '日本語（にほんご、にっぽんご[注2] ）は、日本国内や、かつての日本領だった国、そして日本人同士の間で使用されている言語。'
@@ -53,8 +53,6 @@ def test_word_detokenize(lang):
         assert text == 'ภาษาไทยหรือภาษาไทยกลางเป็นภาษาในกลุ่มภาษาไทซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไทและเป็นภาษาราชการและภาษาประจำชาติของประเทศไทย[3 ][ 4]'
     elif lang == 'bod':
         assert text == 'བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་དེའི་ཉེ་འཁོར་གྱི་ས་ཁུལ་ཏེ།'
-    elif lang == 'other':
-        assert text == 'English is a West Germanic language of the Indo - European language family, originally spoken by the inhabitants of early medieval England.[3][4][5]'
     else:
         raise Exception(f'Error: Tests for language "{lang}" is skipped!')
 

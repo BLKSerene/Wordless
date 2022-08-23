@@ -16,15 +16,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from tests import wl_test_init
+from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_nlp_utils
 
 main = wl_test_init.Wl_Test_Main()
 
 settings_lang_utils = main.settings_global['lang_util_mappings']
-
-SENTENCE_SRP_CYRL = 'Српски језик припада словенској групи језика породице индоевропских језика.[12]'
-SENTENCE_SRP_LATN = 'Srpski jezik pripada slovenskoj grupi jezika porodice indoevropskih jezika.[12]'
 
 def test_to_lang_util_code():
     for util_type, utils in settings_lang_utils.items():
@@ -96,14 +93,14 @@ def test_split_into_chunks_text():
     assert sections_3 == ['\n\n \n', ' 1\n2 \n\n', ' 3 \n \n\n']
 
 def test_srp_cyrl_to_latn():
-    tokens_srp_cyrl = SENTENCE_SRP_CYRL.split()
+    tokens_srp_cyrl = wl_test_lang_examples.SENTENCE_SRP_CYRL.split()
 
-    assert ' '.join(wl_nlp_utils.to_srp_latn(tokens_srp_cyrl)) == SENTENCE_SRP_LATN
+    assert ' '.join(wl_nlp_utils.to_srp_latn(tokens_srp_cyrl)) == wl_test_lang_examples.SENTENCE_SRP_LATN
 
 def test_srp_latn_to_cyrl():
-    tokens_srp_latn = SENTENCE_SRP_LATN.split()
+    tokens_srp_latn = wl_test_lang_examples.SENTENCE_SRP_LATN.split()
 
-    assert ' '.join(wl_nlp_utils.to_srp_cyrl(tokens_srp_latn)) == SENTENCE_SRP_CYRL
+    assert ' '.join(wl_nlp_utils.to_srp_cyrl(tokens_srp_latn)) == wl_test_lang_examples.SENTENCE_SRP_CYRL
 
 def test_escape_text():
     assert wl_nlp_utils.escape_text('<test test="test">') == '&lt;test test=&quot;test&quot;&gt;'

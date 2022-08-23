@@ -27,8 +27,7 @@ test_pos_taggers = []
 
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
-        if lang not in ['other']:
-            test_pos_taggers.append((lang, pos_tagger))
+        test_pos_taggers.append((lang, pos_tagger))
 
 @pytest.mark.parametrize('lang, pos_tagger', test_pos_taggers)
 def test_pos_tag(lang, pos_tagger):

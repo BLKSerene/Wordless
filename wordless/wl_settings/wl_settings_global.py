@@ -333,6 +333,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'NLTK - NIST Tokenizer'): 'nltk_nist',
                 _tr('init_settings_global', 'NLTK - NLTK Tokenizer'): 'nltk_nltk',
                 _tr('init_settings_global', 'NLTK - Penn Treebank Tokenizer'): 'nltk_penn_treebank',
+                _tr('init_settings_global', 'NLTK - Regular-Expression Tokenizer'): 'nltk_regex',
                 _tr('init_settings_global', 'NLTK - Tok-tok Tokenizer'): 'nltk_tok_tok',
                 _tr('init_settings_global', 'NLTK - Twitter Tokenizer'): 'nltk_twitter',
 
@@ -1127,12 +1128,12 @@ def init_settings_global():
 
         'word_tokenizers': {
             'afr': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_afr'
             ],
 
             'sqi': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_sqi'
             ],
 
@@ -1145,12 +1146,12 @@ def init_settings_global():
             ],
 
             'hye': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_hye'
             ],
 
             'asm': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
             ],
 
@@ -1163,18 +1164,18 @@ def init_settings_global():
             ],
 
             'ben': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ben'
             ],
 
             'bul': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_bul'
             ],
 
             'cat': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_cat'
             ],
@@ -1193,34 +1194,34 @@ def init_settings_global():
             ],
 
             'hrv': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_hrv'
             ],
 
             'ces': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ces'
             ],
 
             'dan': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_dan'
             ],
 
             'nld': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_nld'
             ],
 
             'eng_gb': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_eng'
             ],
             'eng_us': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_eng'
             ],
@@ -1236,23 +1237,23 @@ def init_settings_global():
             ],
 
             'fra': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_fra'
             ],
 
             'deu_at': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_deu'
             ],
             'deu_de': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_deu'
             ],
             'deu_ch': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_deu'
             ],
@@ -1261,13 +1262,13 @@ def init_settings_global():
                 'spacy_grc'
             ],
             'ell': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ell'
             ],
 
             'guj': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_guj'
             ],
@@ -1277,7 +1278,7 @@ def init_settings_global():
             ],
 
             'hin': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_hin'
             ],
@@ -1288,7 +1289,7 @@ def init_settings_global():
             ],
 
             'isl': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_isl'
             ],
@@ -1298,22 +1299,20 @@ def init_settings_global():
             ],
 
             'gle': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_gle'
             ],
 
             'ita': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ita'
             ],
 
             'jpn': [
                 'spacy_jpn',
-                'sudachipy_jpn_split_mode_a',
-                'sudachipy_jpn_split_mode_b',
-                'sudachipy_jpn_split_mode_c',
+                'sudachipy_jpn_split_mode_a', 'sudachipy_jpn_split_mode_b', 'sudachipy_jpn_split_mode_c',
                 'wordless_jpn_kanji'
             ],
 
@@ -1327,7 +1326,7 @@ def init_settings_global():
             ],
 
             'lav': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_lav'
             ],
@@ -1337,18 +1336,18 @@ def init_settings_global():
             ],
 
             'lit': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_lit'
             ],
 
             'ltz': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ltz'
             ],
 
             'mkd': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_mkd'
             ],
 
@@ -1358,7 +1357,7 @@ def init_settings_global():
             ],
 
             'mar': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_mar'
             ],
@@ -1368,98 +1367,98 @@ def init_settings_global():
             ],
 
             'nep': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_nep'
             ],
 
             'nob': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_nob'
             ],
 
             'ori': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
             ],
 
             'fas': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'spacy_fas'
             ],
 
             'pol': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_pol'
             ],
 
             'por_br': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_por'
             ],
             'por_pt': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_por'
             ],
 
             'pan': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
             ],
 
             'ron': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_ron'
             ],
 
             'rus': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_rus'
             ],
 
             'san': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_san'
             ],
 
             'srp_cyrl': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_srp'
             ],
             'srp_latn': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_srp'
             ],
 
             'sin': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_sin'
             ],
 
             'slk': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_slk'
             ],
 
             'slv': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_slv'
             ],
 
             'spa': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_spa'
             ],
 
             'swe': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_swe'
             ],
@@ -1469,7 +1468,7 @@ def init_settings_global():
             ],
 
             'tgk': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
             ],
 
             'tam': [
@@ -1514,12 +1513,12 @@ def init_settings_global():
             ],
 
             'ukr': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ukr'
             ],
 
             'urd': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_urd'
             ],
 
@@ -1533,7 +1532,7 @@ def init_settings_global():
             ],
 
             'other': [
-                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter',
+                'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_eng'
             ]

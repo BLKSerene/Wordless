@@ -94,7 +94,7 @@ def test_colligation_extractor():
         print(f"Search settings: {main.settings_custom['colligation_extractor']['search_settings']['search_settings']}")
         print(f"Test of Statistical significance: {main.settings_custom['colligation_extractor']['generation_settings']['test_statistical_significance']}")
         print(f"Measure of bayes factor: {main.settings_custom['colligation_extractor']['generation_settings']['measure_bayes_factor']}")
-        print(f"Measure of effect size: {main.settings_custom['colligation_extractor']['generation_settings']['measure_effect_size']}\n")
+        print(f"Measure of effect size: {main.settings_custom['colligation_extractor']['generation_settings']['measure_effect_size']}")
 
         wl_colligation_extractor.Wl_Worker_Colligation_Extractor_Table(
             main,
@@ -107,6 +107,7 @@ def test_colligation_extractor():
     print('pass!')
 
 def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
+    print(err_msg)
     assert not err_msg
 
     assert colligations_freqs_files

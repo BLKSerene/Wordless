@@ -53,7 +53,7 @@ def test_profiler():
         ]
 
         print(f'[Test Round {i + 1}]')
-        print(f"Files: {', '.join(files_selected)}\n")
+        print(f"Files: {', '.join(files_selected)}")
 
         wl_profiler.Wl_Worker_Profiler_Table(
             main,
@@ -66,6 +66,7 @@ def test_profiler():
     main.app.quit()
 
 def update_gui(err_msg, texts_stats_files):
+    print(err_msg)
     assert not err_msg
 
     assert len(texts_stats_files) >= 1

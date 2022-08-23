@@ -51,7 +51,7 @@ def test_concordancer_parallel():
         ]
 
         print(f'[Test Round {i + 1}]')
-        print(f"Files: {', '.join(files_selected)}\n")
+        print(f"Files: {', '.join(files_selected)}")
 
         wl_concordancer_parallel.Wl_Worker_Concordancer_Parallel_Table(
             main,
@@ -64,6 +64,7 @@ def test_concordancer_parallel():
     main.app.quit()
 
 def update_gui(err_msg, concordance_lines):
+    print(err_msg)
     assert not err_msg
     assert concordance_lines
 
