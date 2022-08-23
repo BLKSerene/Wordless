@@ -44,7 +44,7 @@
         <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release"></a>
     <a href="https://github.com/BLKSerene/Wordless#download">
         <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=Downloads" alt="Downloads"></a>
-    <a href="https://github.com/BLKSerene/Wordless/blob/main/LICENSE.txt">
+    <a href="/LICENSE.txt">
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
 </div>
 
@@ -76,20 +76,16 @@ Release|Remarks
 remember to replace **/Applications/Wordless.app** with the actual path of Wordless on your computer (you could drag **Wordless.app** to the **Terminal**). Then, **run Wordless again** (the warning prompted in Terminal could be ignored if the program could be successfully opened).<br>
 记得把 **/Applications/Wordless.app** 替换为 Wordless 在电脑上的实际路径（可直接拖拽 **Wordless.app** 文件至**终端**中）。然后，**再次运行 Wordless**（如果程序可成功打开，终端中提示的警告可忽略）。
 
-<span id="doc"></span>
-## Documentation
-- [Documentation - English](/doc/doc_eng.md)
-- 文档 - 汉语（待添加）
-
 ## Need Help?
-If you encounter a problem, find a bug, or require any further information, feel free to ask questions, submit bug reports, or provide feedback by [creating an issue](https://github.com/BLKSerene/Wordless/issues/new) on Github if you fail to find the answer by searching [existing issues](https://github.com/BLKSerene/Wordless/issues) first.
+If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.
 
-If you need to post sample texts or other information that cannot be shared or you do not want to share publicly, you may send me an email.
-
-Channel      |Contact Information
-:-----------:|-------------------
-Documentation|https://github.com/BLKSerene/Wordless#documentation
-Email        |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
+Support Channel       |Information
+----------------------|-------------------
+Official Documentation|[Documentation](/doc/doc_eng.md)
+Tutorial Videos       |[bilibili](https://space.bilibili.com/34963752/video)
+Bug Reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
+Usage Questions       |[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
+Email Support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
 [WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/imgs/wechat_official_account.jpg)
 
 ## Citing
@@ -122,7 +118,7 @@ MLA (8th Edition):
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
 ## Contributing
-If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new feature by submitting [pull requests](https://github.com/BLKSerene/Wordless/pulls) on Github.
+If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new features by submitting [pull requests](https://github.com/BLKSerene/Wordless/pulls) on Github.
 
 Besides, you may contribute by writing [wikis](https://github.com/BLKSerene/Wordless/wiki) on Github, making tutorial videos, or helping with the translation of the user interface and [documentation](/doc/doc_eng.md) into other languages.
 
