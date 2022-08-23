@@ -18,8 +18,7 @@
 
 <div align="center"><img src="/doc/wl_logo.png" alt="logo"></div>
 
----
-Wordless is an integrated corpus tool with multilingual support for the study of language, literature, and translation designed and developed by Ye Lei (叶磊), then MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
+###
 
 <div align="center">
     <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
@@ -49,12 +48,9 @@ Wordless is an integrated corpus tool with multilingual support for the study of
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
 </div>
 
-<div align="center">
-    <a href="https://app.codecov.io/gh/BLKSerene/Wordless">
-        <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graphs/tree.svg?token=ED6TW92A7G" alt="Codecov Graph"></a>
-    <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large">
-        <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large" alt="FOSSA Status"></a>
-</div>
+###
+
+Wordless is an integrated corpus tool with multilingual support for the study of language, literature, and translation designed and developed by Ye Lei (叶磊), then MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
 ## Download
 The latest version (**2.2.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.9 or later**, and **Ubuntu 14.04 or later**, all **64-bit only**.
@@ -122,6 +118,8 @@ MLA (8th Edition):
     
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
 ## Contributing
 If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
