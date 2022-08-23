@@ -122,9 +122,9 @@ MLA (8th Edition):
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
 ## Contributing
-If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by [creating a pull request](https://github.com/BLKSerene/Wordless/pulls) on Github.
+If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new feature by submitting [pull requests](https://github.com/BLKSerene/Wordless/pulls) on Github.
 
-Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or [Github Wiki](https://github.com/BLKSerene/Wordless/wiki) for Wordless, or helping me translate Wordless and its documentation to other languages.
+Besides, you may contribute by writing [wikis](https://github.com/BLKSerene/Wordless/wiki) on Github, making tutorial videos, or helping with the translation of the user interface and [documentation](/doc/doc_eng.md) into other languages.
 
 ## Donating
 If you would like to support the development of Wordless, you may donate via [PayPal](https://www.paypal.com/), [Alipay](https://global.alipay.com/), or [WeChat Pay](https://pay.weixin.qq.com/index.php/public/wechatpay_en).
