@@ -131,6 +131,9 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
         elif word_tokenizer == 'nltk_penn_treebank':
             if 'nltk_treebank_tokenizer' not in main.__dict__:
                 main.nltk_treebank_tokenizer = nltk.TreebankWordTokenizer()
+        elif word_tokenizer == 'nltk_regex':
+            if 'nltk_regex_tokenizer' not in main.__dict__:
+                main.nltk_regex_tokenizer = nltk.WordPunctTokenizer()
         elif word_tokenizer == 'nltk_tok_tok':
             if 'nltk_toktok_tokenizer' not in main.__dict__:
                 main.nltk_toktok_tokenizer = nltk.ToktokTokenizer()

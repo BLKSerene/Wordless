@@ -29,18 +29,17 @@ test_sentence_tokenizers = []
 
 for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
     for sentence_tokenizer in sentence_tokenizers:
-        if lang not in ['other']:
-            if (
-                lang.startswith('eng')
-                # Skip tests of spaCy's sentencizer
-                or (
-                    not lang.startswith('eng')
-                    and sentence_tokenizer != 'spacy_sentencizer'
-                )
-            ):
-                test_sentence_tokenizers.append((lang, sentence_tokenizer))
+        if (
+            lang.startswith('eng')
+            # Skip tests of spaCy's sentencizer
+            or (
+                not lang.startswith('eng')
+                and sentence_tokenizer != 'spacy_sentencizer'
+            )
+        ):
+            test_sentence_tokenizers.append((lang, sentence_tokenizer))
 
-test_langs = [lang for lang, _ in test_sentence_tokenizers]
+test_langs = list(dict.fromkeys([lang for lang, _ in test_sentence_tokenizers]))
 
 @pytest.mark.parametrize('lang, sentence_tokenizer', test_sentence_tokenizers)
 def test_sentence_tokenize(lang, sentence_tokenizer):
@@ -72,7 +71,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
             raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'nld':
         assert sentences == ['Het Nederlands is een West-Germaanse taal en de officiële taal van Nederland, Suriname en een van de drie officiële talen van België.', 'Binnen het Koninkrijk der Nederlanden is het Nederlands ook een officiële taal van Aruba, Curaçao en Sint-Maarten.', 'Het Nederlands is de op twee na meest gesproken Germaanse taal.']
-    elif lang.startswith('eng_'):
+    elif lang.startswith('eng_') or lang == 'other':
         if sentence_tokenizer == 'nltk_punkt':
             assert sentences == ['English is a West Germanic language of the Indo-European language family, originally spoken by the inhabitants of early medieval England.', '[3][4][5] It is named after the Angles, one of the ancient Germanic peoples that migrated from Anglia, a peninsula on the Baltic Sea (not to be confused with East Anglia in England), to the area of Great Britain later named after them: England.', 'The closest living relatives of English include Scots, followed by the Low Saxon and Frisian languages.', 'While English is genealogically West Germanic, its vocabulary is also distinctively influenced by dialects of French (about 29% of modern English words) and Latin (also about 29%), as well as by Old Norse (a North Germanic language).', '[6][7][8] Speakers of English are called Anglophones.']
         elif sentence_tokenizer == 'spacy_sentence_recognizer':
@@ -184,7 +183,7 @@ def test_sentence_seg_tokenize(lang):
         assert sentence_segs == ['Dansk er et østnordisk sprog indenfor den germanske gren af den indoeuropæiske sprogfamilie.', 'Det danske sprog tales af ca.', 'seks millioner mennesker,', 'hovedsageligt i Danmark,', 'men også i Sydslesvig (i Flensborg ca.', '20 %),', 'på Færøerne og Grønland.', '[1] Dansk er tæt forbundet med norsk og svensk,', 'og sproghistorisk har dansk været stærkt påvirket af plattysk.']
     elif lang == 'nld':
         assert sentence_segs == ['Het Nederlands is een West-Germaanse taal en de officiële taal van Nederland,', 'Suriname en een van de drie officiële talen van België.', 'Binnen het Koninkrijk der Nederlanden is het Nederlands ook een officiële taal van Aruba,', 'Curaçao en Sint-Maarten.', 'Het Nederlands is de op twee na meest gesproken Germaanse taal.']
-    elif lang.startswith('eng_'):
+    elif lang.startswith('eng_') or lang == 'other':
         assert sentence_segs == ['English is a West Germanic language of the Indo-European language family,', 'originally spoken by the inhabitants of early medieval England.', '[3][4][5] It is named after the Angles,', 'one of the ancient Germanic peoples that migrated from Anglia,', 'a peninsula on the Baltic Sea (not to be confused with East Anglia in England),', 'to the area of Great Britain later named after them:', 'England.', 'The closest living relatives of English include Scots,', 'followed by the Low Saxon and Frisian languages.', 'While English is genealogically West Germanic,', 'its vocabulary is also distinctively influenced by dialects of French (about 29% of modern English words) and Latin (also about 29%),', 'as well as by Old Norse (a North Germanic language).', '[6][7][8] Speakers of English are called Anglophones.']
     elif lang == 'est':
         assert sentence_segs == ['Eesti keel (varasem nimetus maakeel) on läänemeresoome lõunarühma kuuluv keel.', 'Eesti keel on Eesti riigikeel ja 2004.', 'aastast ka üks Euroopa Liidu ametlikke keeli.']

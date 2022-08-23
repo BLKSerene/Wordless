@@ -27,8 +27,7 @@ test_lemmatizers = []
 
 for lang, lemmatizers in main.settings_global['lemmatizers'].items():
     for lemmatizer in lemmatizers:
-        if lang not in ['other']:
-            test_lemmatizers.append((lang, lemmatizer))
+        test_lemmatizers.append((lang, lemmatizer))
 
 @pytest.mark.parametrize('lang, lemmatizer', test_lemmatizers)
 def test_lemmatize(lang, lemmatizer):
