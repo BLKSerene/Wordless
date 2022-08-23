@@ -59,7 +59,7 @@ def test_wordlist_generator():
         print(f'[Test Round {i + 1}]')
         print(f"Files: {', '.join(files_selected)}")
         print(f"Measure of dispersion: {main.settings_custom['wordlist_generator']['generation_settings']['measure_dispersion']}")
-        print(f"Measure of adjusted frequency: {main.settings_custom['wordlist_generator']['generation_settings']['measure_adjusted_freq']}\n")
+        print(f"Measure of adjusted frequency: {main.settings_custom['wordlist_generator']['generation_settings']['measure_adjusted_freq']}")
 
         wl_wordlist_generator.Wl_Worker_Wordlist_Generator_Table(
             main,

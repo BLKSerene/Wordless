@@ -51,7 +51,7 @@ def test_concordancer():
         ]
 
         print(f'[Test Round {i + 1}]')
-        print(f"Files: {', '.join(files_selected)}\n")
+        print(f"Files: {', '.join(files_selected)}")
 
         wl_concordancer.Wl_Worker_Concordancer_Table(
             main,
@@ -69,6 +69,7 @@ def test_concordancer():
     main.app.quit()
 
 def update_gui_table(err_msg, concordance_lines):
+    print(err_msg)
     assert not err_msg
     assert concordance_lines
 
