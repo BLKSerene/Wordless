@@ -796,10 +796,10 @@ class Wl_Msg_Box_Help(wl_msg_boxes.Wl_Msg_Box):
             title = _tr('Wl_Msg_Box_Help', 'Contributing'),
             text = _tr('Wl_Msg_Box_Help', '''
                 <div>
-                    If you have an interest in helping the development of Wordless, you may contribute bug fixes, enhancements, or new features by <a href="https://github.com/BLKSerene/Wordless/pulls">creating a pull request</a> on Github.
+                    If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new feature by submitting <a href="https://github.com/BLKSerene/Wordless/pulls">pull requests</a> on Github.
                 </div>
                 <div>
-                    Besides, you may contribute by submitting enhancement proposals or feature requests, write tutorials or <a href="https://github.com/BLKSerene/Wordless/wiki">Github Wiki</a> for Wordless, or helping me translate Wordless and its documentation to other languages.
+                    Besides, you may contribute by writing <a href="https://github.com/BLKSerene/Wordless/wiki">wikis</a> on Github, making tutorial videos, or helping with the translation of the user interface and <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md">documentation</a> into other languages.
                 </div>
             ''')
         )
