@@ -98,7 +98,7 @@ def test_keyword_extractor():
         print(f"Reference files: {', '.join(file_names_ref)}")
         print(f"Test of Statistical significance: {main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance']}")
         print(f"Measure of bayes factor: {main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor']}")
-        print(f"Measure of effect size: {main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size']}\n")
+        print(f"Measure of effect size: {main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size']}")
 
         wl_keyword_extractor.Wl_Worker_Keyword_Extractor_Table(
             main,
@@ -111,6 +111,7 @@ def test_keyword_extractor():
     print('All pass!')
 
 def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
+    print(err_msg)
     assert not err_msg
 
     assert keywords_freq_files

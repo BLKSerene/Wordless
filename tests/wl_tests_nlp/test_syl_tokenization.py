@@ -28,8 +28,7 @@ test_syl_tokenizers = []
 
 for lang, syl_tokenizers in main.settings_global['syl_tokenizers'].items():
     for syl_tokenizer in syl_tokenizers:
-        if lang not in ['other']:
-            test_syl_tokenizers.append((lang, syl_tokenizer))
+        test_syl_tokenizers.append((lang, syl_tokenizer))
 
 @pytest.mark.parametrize('lang, syl_tokenizer', test_syl_tokenizers)
 def test_syl_tokenize(lang, syl_tokenizer):
@@ -113,7 +112,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
     elif lang == 'hun':
         assert syls == [['A'], ['ma', 'gyar'], ['nyelv'], ['az'], ['urá', 'li'], ['nyelv', 'csa', 'lád'], ['tag', 'ja'], [','], ['a'], ['finn', 'ugor'], ['nyel', 'vek'], ['kö', 'zé'], ['tar', 'to', 'zó'], ['ugor'], ['nyel', 'vek'], ['egyi', 'ke'], ['.']]
     elif lang == 'isl':
-        assert syls == [['Ís', 'lenska'], ['er'], ['vest', 'ur', 'nor', 'rænt'], [','], ['germ', 'anskt'], ['og'], ['indó', 'evr', 'ópskt'], ['tungu', 'mál'], ['sem'], ['er'], ['eink', 'um'], ['tal', 'að'], ['og'], ['rit', 'að'], ['á'], ['Ís', 'landi'], ['og'], ['er'], ['móð', 'ur', 'mál'], ['lang', 'flestra'], ['Ís', 'lend', 'inga.[4'], [']']]
+        assert syls == [['Ís', 'lenska'], ['er'], ['vest', 'ur', 'nor', 'rænt'], [','], ['germ', 'anskt'], ['og'], ['indó', 'evr', 'ópskt'], ['tungu', 'mál'], ['sem'], ['er'], ['eink', 'um'], ['tal', 'að'], ['og'], ['rit', 'að'], ['á'], ['Ís', 'landi'], ['og'], ['er'], ['móð', 'ur', 'mál'], ['lang', 'flestra'], ['Ís', 'lend', 'inga'], ['.'], ['['], ['4'], [']']]
     elif lang == 'ind':
         assert syls == [['Ba', 'ha', 'sa'], ['In', 'do', 'ne', 'sia'], ['ada', 'lah'], ['ba', 'ha', 'sa'], ['na', 'si', 'o', 'nal'], ['dan'], ['res', 'mi'], ['di'], ['se', 'lu', 'r', 'uh'], ['In', 'do', 'ne', 'sia'], ['.']]
     elif lang == 'ita':
@@ -121,9 +120,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
     elif lang == 'lit':
         assert syls == [['Lie', 'tu', 'vių'], ['kal', 'ba'], ['–'], ['iš'], ['bal', 'tų'], ['pro', 'kal', 'bės'], ['ki', 'lu', 'si'], ['lie', 'tu', 'vių'], ['tau', 'tos'], ['kal', 'ba'], [','], ['ku', 'ri'], ['Lie', 'tu', 'vo', 'je'], ['yra'], ['vals', 'ty', 'bi', 'nė'], [','], ['o'], ['Eu', 'ro', 'pos'], ['Są', 'jun', 'go', 'je'], ['–'], ['vie', 'na'], ['iš'], ['ofi', 'cia', 'lių', 'jų'], ['kal', 'bų'], ['.']]
     elif lang == 'lav':
-        assert syls == [['Lat', 'vie', 'šu'], ['va', 'lo', 'da'], ['ir'], ['dzim', 'tā'], ['va', 'lo', 'da'], ['ap', 'mē', 'ram'], ['1,7'], ['mil', 'jo', 'niem'], ['cil', 'vē', 'ku'], [','], ['gal', 've', 'no', 'kārt'], ['Lat', 'vi', 'jā'], [','], ['kur'], ['tā'], ['ir'], ['vien', 'ī', 'gā'], ['valsts'], ['va', 'lo', 'da.[3'], [']']]
-    elif lang == 'lav':
-        assert syls == [['Lat', 'vie', 'šu'], ['va', 'lo', 'da'], ['ir'], ['dzim', 'tā'], ['va', 'lo', 'da'], ['ap', 'mē', 'ram'], ['1,7'], ['mil', 'jo', 'niem'], ['cil', 'vē', 'ku'], [','], ['gal', 've', 'no', 'kārt'], ['Lat', 'vi', 'jā'], [','], ['kur'], ['tā'], ['ir'], ['vien', 'ī', 'gā'], ['valsts'], ['va', 'lo', 'da.[3'], [']']]
+        assert syls == [['Lat', 'vie', 'šu'], ['va', 'lo', 'da'], ['ir'], ['dzim', 'tā'], ['va', 'lo', 'da'], ['ap', 'mē', 'ram'], ['1,7'], ['mil', 'jo', 'niem'], ['cil', 'vē', 'ku'], [','], ['gal', 've', 'no', 'kārt'], ['Lat', 'vi', 'jā'], [','], ['kur'], ['tā'], ['ir'], ['vien', 'ī', 'gā'], ['valsts'], ['va', 'lo', 'da'], ['.'], ['['], ['3'], [']']]
     elif lang == 'mon':
         assert syls == [['Мон', 'гол'], ['хэл'], ['нь'], ['Мон', 'гол'], ['ул', 'сын'], ['ал', 'бан'], ['ёс', 'ны'], ['хэл'], ['юм'], ['.']]
     elif lang == 'nob':
