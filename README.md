@@ -1,5 +1,5 @@
 <!--
-# Wordless: README
+# Wordless: README - English
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div align="center"><img src="/doc/wl_logo.png" alt="logo"></div>
+<div align="center"><img src="/doc/wl_logo.png" alt="Wordless: An Integrated Corpus Tool With Multilingual Support for the Study of Language, Literature, and Translation"></div>
 
 ###
 
@@ -50,6 +50,12 @@
 
 ###
 
+<div align="center">
+    <a href="/README_zho_cn.md">中文 (简体)</a> | <a href="/README_zho_tw.md">中文 (繁体)</a> | <b>English</b>    
+</div>
+
+###
+
 Wordless is an integrated corpus tool with multilingual support for the study of language, literature, and translation designed and developed by Ye Lei (叶磊), then MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
 ## Download
@@ -59,22 +65,19 @@ For detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
 Release|Remarks
 -------|------------
-[Latest Version for Windows](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_windows.zip)|1. Unzip the file<br>2. Double-click **Wordless/Wordless.exe** to run
-[Latest Version for macOS](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_macos.zip)|1. Unzip the file<br>2. Double-click **Wordless.app** to run
-[Latest Version for Linux](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_linux.tar.gz)|1. Unzip the file<br>2. Double-click **Wordless/Wordless** to run
-[Older Versions](https://github.com/BLKSerene/Wordless/releases)|Not recommended
-[Baidu Netdisk (百度网盘)](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg)|For Chinese users with slow connections to Github (**PASSWORD: wdls**)<br>中国用户若 Github 下载速度较慢可尝试从百度网盘下载 (**提取码: wdls**)
+[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_windows.zip)|1. Unzip the file<br>2. Double-click **Wordless/Wordless.exe** to run
+[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_macos.zip)|1. Unzip the file<br>2. Double-click **Wordless.app** to run
+[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_linux.tar.gz)|1. Unzip the file<br>2. Double-click **Wordless/Wordless** to run
+[Past Releases](https://github.com/BLKSerene/Wordless/releases)|Not recommended
+[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
 
 **Note 1:** It is recommended that the path to Wordless **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.<br>
-**备注 1**：Wordless 的路径中**不建议包含任何非 ASCII 字符，如汉字和带变音记号的字母等**。
 
 **Note 2:** If your Mac says that **“Wordless” is damaged and can’t be opened**, please open **Terminal** (Launchpad → Other) and run:<br>
-**备注 2**：如果苹果电脑提示 **“Wordless”已损坏，无法打开**，请打开**终端**（启动台 → 其他）后运行：
 
     xattr -rc /Applications/Wordless.app
 
 remember to replace **/Applications/Wordless.app** with the actual path of Wordless on your computer (you could drag **Wordless.app** to the **Terminal**). Then, **run Wordless again** (the warning prompted in Terminal could be ignored if the program could be successfully opened).<br>
-记得把 **/Applications/Wordless.app** 替换为 Wordless 在电脑上的实际路径（可直接拖拽 **Wordless.app** 文件至**终端**中）。然后，**再次运行 Wordless**（如果程序可成功打开，终端中提示的警告可忽略）。
 
 ## Need Help?
 If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.
