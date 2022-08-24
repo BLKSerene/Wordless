@@ -51,7 +51,7 @@
 ###
 
 <div align="center">
-    <a href="/README_zho_cn.md">中文 (简体)</a> | <b>中文 (繁體)</b> | <a href="https://github.com/BLKSerene/Wordless#readme">English</a>    
+    <a href="/README_zho_cn.md">中文（简体）</a> | <b>中文（繁體）</b> | <a href="https://github.com/BLKSerene/Wordless#readme">English</a>    
 </div>
 
 ###
@@ -124,4 +124,4 @@ PayPal|支付寶|微信支付
 [![PayPal](/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![支付寶](/imgs/donating_alipay.png)|![微信支付](/imgs/donating_wechat_pay.png)
 
 ## 致謝
-詳情請參閱 [ACKNOWLEDGMENTS.md](/ACKNOWLEDGMENTS.md)（待翻譯）。
+詳情請參閱 [ACKNOWLEDGMENTS_zho_tw.md](/ACKNOWLEDGMENTS_zho_tw.md)。
