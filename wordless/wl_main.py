@@ -882,7 +882,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         # Load acknowledgments
         acks = []
 
-        with open('ACKNOWLEDGMENTS.md', 'r', encoding = 'utf_8') as f:
+        with open(self.tr('ACKNOWLEDGMENTS.md'), 'r', encoding = 'utf_8') as f:
             for line in f:
                 if re.search(r'^[0-9]+\s*\|', line):
                     _, name, ver, authors, proj_license = line.split('|')
@@ -897,7 +897,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         self.label_acks = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
-                    I would like to extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
+                    As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
                 </div>
             '''),
             self
