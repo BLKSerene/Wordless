@@ -1,5 +1,5 @@
 <!--
-# Wordless: Acknowledgments - English
+# Wordless: Acknowledgments - Chinese (Traditional)
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,25 +16,25 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<div align="center"><h1>Acknowledgments</h1></div>
+<div align="center"><h1>致謝</h1></div>
 
-As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
+鑑於 Wordless 立於巨人的肩膀之上，我謹在此向下列開源專案致以本人誠摯的感謝，若沒有它們，本專案將無法完成：
 
-&nbsp;|Name|Version|Authors|License
------:|----|:-----:|-------|:-----:
+&nbsp;|名稱|版本|作者|許可
+-----:|----|:--:|---|:--:
 1 |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)      |4.11.1 |Leonard Richardson|[MIT](https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE)
 2 |[Botok](https://github.com/OpenPecha/Botok)                           |0.8.10 |Hélios Drupchen Hildt|[Apache-2.0](https://github.com/OpenPecha/Botok/blob/master/LICENSE)
 3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)    |2.1.0  |TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
 4 |[CLTK](https://github.com/cltk/cltk)                                  |1.0.23 |Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly|[MIT](https://github.com/cltk/cltk/blob/master/LICENSE)
 5 |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |N/A    |Jason Champion|[MIT](https://github.com/Xangis/extra-stopwords/blob/master/LICENSE)
-6 |[jieba](https://github.com/fxsjy/jieba)                               |0.42.1 |Sun Junyi (孙君意)|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
+6 |[jieba](https://github.com/fxsjy/jieba)                               |0.42.1 |孫君意|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
 7 |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|N/A    |Michal Boleslav Měchura|[ODbL-1.0](https://github.com/michmech/lemmatization-lists/blob/master/LICENCE)
 8 |[Lingua](https://github.com/pemistahl/lingua-py)                      |1.0.1  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 9 |[Matplotlib](https://matplotlib.org/)                                 |3.5.3  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 10|[NetworkX](https://networkx.org/)                                     |2.8.5  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 11|[NLTK](http://www.nltk.org/)                                          |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 12|[NumPy](https://www.numpy.org/)                                       |1.23.2 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
-13|[OpenCC](https://github.com/BYVoid/OpenCC)                            |1.1.1  |Carbo Kuo (郭家宝)|[Apache-2.0](https://github.com/BYVoid/OpenCC/blob/master/LICENSE)
+13|[OpenCC](https://github.com/BYVoid/OpenCC)                            |1.1.1  |郭家寶|[Apache-2.0](https://github.com/BYVoid/OpenCC/blob/master/LICENSE)
 14|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)               |3.0.10 |Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.0/LICENCE.rst)
 15|[PyInstaller](http://www.pyinstaller.org/)                            |4.10   |Hartmut Goebel|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
 16|[pymorphy2](https://github.com/kmike/pymorphy2)                       |0.9.1  |Mikhail Korobov|[MIT](https://github.com/kmike/pymorphy2/#pymorphy2)
@@ -48,7 +48,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 24|[Sacremoses](https://github.com/alvations/sacremoses)                 |0.0.53 |Liling Tan|[MIT](https://github.com/alvations/sacremoses/blob/master/LICENSE)
 25|[SciPy](https://scipy.org/scipylib/)                                  |1.9.0  |SciPy Developers|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 26|[spaCy](https://spacy.io/)                                            |3.2.3  |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
-27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)             |0.0.31 |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩)|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
+27|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)             |0.0.31 |羅睿軒, 許晶晶, 任宣丞, 張藝, 張之遠, 位冰鎮, 孫栩|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
 28|[Stopwords ISO](https://github.com/stopwords-iso/stopwords-iso)       |1.0.0  |Gene Diaz|[MIT](https://github.com/stopwords-iso/stopwords-iso/blob/master/LICENSE)
 29|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)          |0.6.6  |Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 30|[TextBlob](https://github.com/sloria/TextBlob)                        |0.17.1 |Steven Loria|[MIT](https://github.com/sloria/TextBlob/blob/dev/LICENSE)
