@@ -51,7 +51,7 @@
 ###
 
 <div align="center">
-    <a href="/README_zho_cn.md">中文 (简体)</a> | <a href="/README_zho_tw.md">中文 (繁体)</a> | <b>English</b>    
+    <a href="/README_zho_cn.md">中文 (简体)</a> | <a href="/README_zho_tw.md">中文 (繁體)</a> | <b>English</b>    
 </div>
 
 ###
