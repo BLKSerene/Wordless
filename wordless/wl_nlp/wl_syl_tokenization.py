@@ -62,32 +62,25 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
     return syls_tokens
 
 def wl_syl_tokenize_text(main, text, lang, syl_tokenizer):
-    syls_tokens = []
-
     tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
 
-    for token in tokens:
-        # Pyphen
-        if syl_tokenizer.startswith('pyphen_'):
-            pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
-            syls = re.split(r'\-+', pyphen_syl_tokenizer.inserted(token))
-
-            if any(syls):
-                syls_tokens.append(syls)
-            else:
-                syls_tokens.append([token])
-        # Thai
-        elif syl_tokenizer == 'pythainlp_tha':
-            syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
-
-    return syls_tokens
+    return wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer)
 
 def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
     syls_tokens = []
 
     for token in tokens:
+        # NLTK
+        if syl_tokenizer == 'nltk_legality':
+            nltk_syl_tokenizer_legality = main.__dict__['nltk_syl_tokenizer_legality']
+
+            syls_tokens.append(nltk_syl_tokenizer_legality.tokenize(token))
+        elif syl_tokenizer == 'nltk_sonority_sequencing':
+            nltk_syl_tokenizer_sonority_sequencing = main.__dict__['nltk_syl_tokenizer_sonority_sequencing']
+
+            syls_tokens.append(nltk_syl_tokenizer_sonority_sequencing.tokenize(token))
         # Pyphen
-        if syl_tokenizer.startswith('pyphen_'):
+        elif syl_tokenizer.startswith('pyphen_'):
             pyphen_syl_tokenizer = main.__dict__[f'pyphen_syl_tokenizer_{lang}']
             syls = re.split(r'\-+', pyphen_syl_tokenizer.inserted(token))
 
