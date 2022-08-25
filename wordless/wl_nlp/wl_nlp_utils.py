@@ -168,8 +168,15 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
             main.botok_word_tokenizer = botok.WordTokenizer()
 
 def init_syl_tokenizers(main, lang, syl_tokenizer):
+    # NLTK
+    if syl_tokenizer == 'nltk_legality':
+        if 'nltk_syl_tokenizer_legality' not in main.__dict__:
+            main.nltk_syl_tokenizer_legality = nltk.tokenize.LegalitySyllableTokenizer(nltk.corpus.words.words())
+    elif syl_tokenizer == 'nltk_sonority_sequencing':
+        if 'nltk_syl_tokenizer_sonority_sequencing' not in main.__dict__:
+            main.nltk_syl_tokenizer_sonority_sequencing = nltk.tokenize.SyllableTokenizer()
     # Pyphen
-    if syl_tokenizer.startswith('pyphen_'):
+    elif syl_tokenizer.startswith('pyphen_'):
         if f'pyphen_syl_tokenizer_{lang}' not in main.__dict__:
             lang_pyphen = wl_conversion.to_iso_639_1(main, lang)
 

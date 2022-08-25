@@ -422,6 +422,9 @@ def init_settings_global():
             },
 
             'syl_tokenizers': {
+                _tr('init_settings_global', 'NLTK - Legality Syllable Tokenizer'): 'nltk_legality',
+                _tr('init_settings_global', 'NLTK - Sonority Sequencing Syllable Tokenizer'): 'nltk_sonority_sequencing',
+
                 _tr('init_settings_global', 'Pyphen - Afrikaans Syllable Tokenizer'): 'pyphen_afr',
                 _tr('init_settings_global', 'Pyphen - Albanian Syllable Tokenizer'): 'pyphen_sqi',
                 _tr('init_settings_global', 'Pyphen - Belarusian Syllable Tokenizer'): 'pyphen_bel',
@@ -1572,9 +1575,13 @@ def init_settings_global():
             ],
 
             'eng_gb': [
+                'nltk_legality',
+                'nltk_sonority_sequencing',
                 'pyphen_eng_gb'
             ],
             'eng_us': [
+                'nltk_legality',
+                'nltk_sonority_sequencing',
                 'pyphen_eng_us'
             ],
 
