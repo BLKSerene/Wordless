@@ -99,8 +99,12 @@ datas.extend([
     ('../trs', 'trs'),
     # Misc
     ('../ACKNOWLEDGMENTS.md', '.'),
+    ('../ACKNOWLEDGMENTS_zho_cn.md', '.'),
+    ('../ACKNOWLEDGMENTS_zho_tw.md', '.'),
     ('../CHANGELOG.md', '.'),
     ('../LICENSE.txt', '.'),
+    ('../LICENSE_zho_cn.txt', '.'),
+    ('../LICENSE_zho_tw.txt', '.'),
     ('../VERSION', '.')
 ])
 

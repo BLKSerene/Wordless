@@ -53,8 +53,8 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
         # Check file permissions
         try:
-            file_path_src = re.sub(r'\.([a-z]+?)$', r'_source.\1', self.file_path)
-            file_path_tgt = re.sub(r'\.([a-z]+?)$', r'_target.\1', self.file_path)
+            file_path_src = re.sub(r'\.([a-z]+)$', r'_source.\1', self.file_path)
+            file_path_tgt = re.sub(r'\.([a-z]+)$', r'_target.\1', self.file_path)
 
             len_rows = len(self.rows_to_exp)
 
@@ -673,28 +673,10 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         )
 
     def style_cell_concordancer_left(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['font_settings']['font_size'] - 5,
-            color = '292929'
-        )
-        cell.alignment = openpyxl.styles.Alignment(
-            horizontal = 'right',
-            vertical = 'center',
-            wrap_text = True
-        )
+        self.style_cell_num(cell, item)
 
     def style_cell_concordancer_right(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['font_settings']['font_size'] - 5,
-            color = '292929'
-        )
-        cell.alignment = openpyxl.styles.Alignment(
-            horizontal = 'left',
-            vertical = 'center',
-            wrap_text = True
-        )
+        self.style_cell_text(cell, item)
 
     def style_cell_concordancer_parallel_node(self, cell, item):
         cell.font = openpyxl.styles.Font(

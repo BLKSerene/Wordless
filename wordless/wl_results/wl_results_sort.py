@@ -468,9 +468,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                 else:
                     span = int(sorting_col[1:])
 
-                    if re.search(r'^L[0-9]+$', sorting_col):
+                    if re.search(r'^L\d+$', sorting_col):
                         results.sort(key = lambda item, span = span: item[0].text_raw[-span], reverse = reverse)
-                    elif re.search(r'^R[0-9]+$', sorting_col):
+                    elif re.search(r'^R\d+$', sorting_col):
                         results.sort(key = lambda item, span = span: item[2].text_raw[span - 1], reverse = reverse)
 
             self.tables[0].disable_updates()

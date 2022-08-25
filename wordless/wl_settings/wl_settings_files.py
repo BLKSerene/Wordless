@@ -267,7 +267,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
             # HTML tags
             if opening_tag.startswith('<') and opening_tag.endswith('>'):
                 opening_tags = [
-                    re.sub(r'^<|>$', r'', self.model().item(i, 2).text())
+                    re.sub(r'(^<)|(>$)', r'', self.model().item(i, 2).text())
                     for i in range(self.model().rowCount())
                 ]
                 opening_tag = f"<{wl_checking_misc.check_new_name(opening_tag[1:-1], opening_tags, separator = '')}>"
@@ -275,7 +275,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 opening_tags = [self.model().item(i, 2).text() for i in range(self.model().rowCount())]
                 opening_tag = wl_checking_misc.check_new_name(opening_tag, opening_tags, separator = '')
 
-            opening_tag = re.sub(r'\s\(([0-9]+)\)', r'\1', opening_tag)
+            opening_tag = re.sub(r'\s\((\d+)\)', r'\1', opening_tag)
         else:
             type_, level, opening_tag, _ = texts
 
