@@ -29,13 +29,11 @@
         <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg" alt="Github Actions"></a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless">
         <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G" alt="Codecov"></a>
-    <a href="https://github.com/PyCQA/pylint">
-        <img src="https://img.shields.io/badge/linting-pylint-yellowgreen" alt="linting: pylint"></a>
 </div>
 
 <div align="center">
-    <a href="https://lgtm.com/projects/g/BLKSerene/Wordless/context:python">
-        <img src="https://img.shields.io/lgtm/grade/python/g/BLKSerene/Wordless.svg?logo=lgtm&logoWidth=18" alt="Language grade: Python"></a>
+    <a href="https://github.com/PyCQA/pylint">
+        <img src="https://img.shields.io/badge/linting-pylint-yellowgreen" alt="linting: pylint"></a>
     <a href="https://sonarcloud.io/summary/new_code?id=BLKSerene_Wordless">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=BLKSerene_Wordless&metric=alert_status" alt="Quality Gate Status"></a>
     <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL">
