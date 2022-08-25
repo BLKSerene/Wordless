@@ -27,6 +27,7 @@
 - Settings: Add Settings - Measures - Statistical Significance - Log-likelihood Ratio Test / Welch's t-test / z-score (Berry-Rogghe)
 - Settings: Add Settings - Measures - Statistical Significance - Student's t-test (1-sample) / Student's t-test (2-sample) / Welch's t-test - Direction
 - Settings: Add Settings - Tables - Profiler
+- Utils: Add NLTK's legality syllable tokenizer and sonority sequencing syllable tokenizer
 - Utils: Add NLTK's regular-expression tokenizer
 - Work Area: Add Collocation/Colligation Extractor - Generation Settings - Limit Searching - Within Sentence Segments
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
