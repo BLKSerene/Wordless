@@ -661,31 +661,30 @@ def wl_widgets_window(parent):
             spin_box_window_left.setValue(spin_box_window_right.value())
 
     def window_left_changed():
-        if checkbox_window_sync.isChecked():
+        if (
+            checkbox_window_sync.isChecked()
+
+            or (
+                spin_box_window_left.prefix() == _tr('wl_widgets_window', 'L')
+                and spin_box_window_right.prefix() == _tr('wl_widgets_window', 'L')
+                and spin_box_window_left.value() < spin_box_window_right.value()
+            ) or (
+                spin_box_window_left.prefix() == _tr('wl_widgets_window', 'R')
+                and spin_box_window_right.prefix() == _tr('wl_widgets_window', 'R')
+                and spin_box_window_left.value() > spin_box_window_right.value()
+            ) or (
+                spin_box_window_left.prefix() == _tr('wl_widgets_window', 'R')
+                and spin_box_window_right.prefix() == _tr('wl_widgets_window', 'L')
+            )
+        ):
             spin_box_window_right.setPrefix(spin_box_window_left.prefix())
             spin_box_window_right.setValue(spin_box_window_left.value())
-        else:
-            if (
-                spin_box_window_left.prefix() == _tr('wl_widgets_window', 'L')
-                and spin_box_window_right.prefix() == _tr('wl_widgets_window', 'L')
-                and spin_box_window_left.value() < spin_box_window_right.value()
-            ) or (
-                spin_box_window_left.prefix() == _tr('wl_widgets_window', 'R')
-                and spin_box_window_right.prefix() == _tr('wl_widgets_window', 'R')
-                and spin_box_window_left.value() > spin_box_window_right.value()
-            ) or (
-                spin_box_window_left.prefix() == _tr('wl_widgets_window', 'R')
-                and spin_box_window_right.prefix() == _tr('wl_widgets_window', 'L')
-            ):
-                spin_box_window_right.setPrefix(spin_box_window_left.prefix())
-                spin_box_window_right.setValue(spin_box_window_left.value())
 
     def window_right_changed():
-        if checkbox_window_sync.isChecked():
-            spin_box_window_left.setPrefix(spin_box_window_right.prefix())
-            spin_box_window_left.setValue(spin_box_window_right.value())
-        else:
-            if (
+        if (
+            checkbox_window_sync.isChecked()
+
+            or (
                 spin_box_window_left.prefix() == _tr('wl_widgets_window', 'L')
                 and spin_box_window_right.prefix() == _tr('wl_widgets_window', 'L')
                 and spin_box_window_left.value() < spin_box_window_right.value()
@@ -696,9 +695,10 @@ def wl_widgets_window(parent):
             ) or (
                 spin_box_window_left.prefix() == _tr('wl_widgets_window', 'R')
                 and spin_box_window_right.prefix() == _tr('wl_widgets_window', 'L')
-            ):
-                spin_box_window_left.setPrefix(spin_box_window_right.prefix())
-                spin_box_window_left.setValue(spin_box_window_right.value())
+            )
+        ):
+            spin_box_window_left.setPrefix(spin_box_window_right.prefix())
+            spin_box_window_left.setValue(spin_box_window_right.value())
 
     checkbox_window_sync = QCheckBox(_tr('wl_widgets_window', 'Sync'), parent)
     label_window_left = QLabel(_tr('wl_widgets_window', 'From'), parent)
