@@ -53,12 +53,14 @@ def test_syl_tokenize(lang, syl_tokenizer):
         syl_tokenizer = syl_tokenizer
     )
 
-    syls_long_text_tokenized = wl_syl_tokenization.wl_syl_tokenize(
-        main,
-        inputs = [str(i) for i in range(101) for j in range(50)],
-        lang = lang,
-        syl_tokenizer = syl_tokenizer
-    )
+    # Sonority sequencing syllable tokenizer performs extremely slow on numbers
+    if syl_tokenizer != 'nltk_sonority_sequencing':
+        syls_long_text_tokenized = wl_syl_tokenization.wl_syl_tokenize(
+            main,
+            inputs = [str(i) for i in range(101) for j in range(50)],
+            lang = lang,
+            syl_tokenizer = syl_tokenizer
+        )
 
     print(f'{lang} / {syl_tokenizer}:')
     print(f'{syls}\n')
@@ -75,7 +77,8 @@ def test_syl_tokenize(lang, syl_tokenizer):
     assert len(syls_tokenized) == len(tokens)
 
     # Test long texts
-    assert syls_long_text_tokenized == [[str(i)] for i in range(101) for j in range(50)]
+    if syl_tokenizer != 'nltk_sonority_sequencing':
+        assert syls_long_text_tokenized == [[str(i)] for i in range(101) for j in range(50)]
 
     if lang == 'afr':
         assert syls == [['Afri', 'kaans'], ['is'], ['ti', 'po', 'lo', 'gies'], ['be', 'skou'], ["'"], ['n'], ['In', 'do'], ['-'], ['Eu', 'ro', 'pe', 'se'], [','], ['Wes'], ['-'], ['Ger', 'maan', 'se'], [','], ['Ne', 'derfran', 'kie', 'se'], ['taal', ',[2'], [']'], ['wat'], ['aan'], ['die'], ['suid', 'punt'], ['van'], ['Afri', 'ka'], ['on', 'der'], ['in', 'vloed'], ['van'], ['ver', 'skeie'], ['an', 'der'], ['ta', 'le'], ['en'], ['taal', 'groe', 'pe'], ['ont', 'staan'], ['het'], ['.']]
@@ -93,10 +96,17 @@ def test_syl_tokenize(lang, syl_tokenizer):
         assert syls == [['Dansk'], ['er'], ['et'], ['øst', 'n', 'or', 'disk'], ['sprog'], ['in', 'den', 'for'], ['den'], ['ger', 'man', 'ske'], ['gren'], ['af'], ['den'], ['in', 'do', 'eu', 'ro', 'pæ', 'i', 'ske'], ['sprog', 'fa', 'mi', 'lie'], ['.']]
     elif lang == 'nld':
         assert syls == [['Het'], ['Ne', 'der', 'lands'], ['is'], ['een'], ['Wes', 't', 'Ger', 'maan', 'se'], ['taal'], ['en'], ['de'], ['of', 'fi', 'ci', 'ë', 'le'], ['taal'], ['van'], ['Ne', 'der', 'land'], [','], ['Su', 'ri', 'na', 'me'], ['en'], ['een'], ['van'], ['de'], ['drie'], ['of', 'fi', 'ci', 'ë', 'le'], ['ta', 'len'], ['van'], ['Bel', 'gië'], ['.']]
-    elif lang == 'eng_gb':
-        assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['of'], ['the'], ['Indo'], ['-'], ['European'], ['lan', 'guage'], ['fam', 'ily'], [','], ['ori', 'gin', 'ally'], ['spoken'], ['by'], ['the'], ['in', 'hab', 'it', 'ants'], ['of'], ['early'], ['me', 'di', 'ev', 'al'], ['Eng', 'land.[3][4][5'], [']']]
-    elif lang == 'eng_us':
-        assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['of'], ['the'], ['In', 'do'], ['-'], ['Eu', 'ro', 'pean'], ['lan', 'guage'], ['fam', 'i', 'ly'], [','], ['orig', 'i', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'hab', 'i', 'tants'], ['of'], ['ear', 'ly'], ['me', 'dieval'], ['Eng', 'land.[3][4][5'], [']']]
+    elif lang.startswith('eng_'):
+        if syl_tokenizer == 'nltk_legality':
+            assert syls == [['En', 'glish'], ['is'], ['a'], ['West'], ['Ger', 'ma', 'nic'], ['lan', 'gu', 'a', 'ge'], ['of'], ['the'], ['In', 'do'], ['-'], ['E', 'u', 'rop', 'ean'], ['lan', 'gu', 'a', 'ge'], ['fa', 'mi', 'ly'], [','], ['o', 'ri', 'gi', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'ha', 'bi', 'tants'], ['of'], ['e', 'ar', 'ly'], ['me', 'di', 'e', 'val'], ['En', 'gland.[3][4][5'], [']']]
+        elif syl_tokenizer == 'nltk_sonority_sequencing':
+            assert syls == [['English'], ['is'], ['a'], ['West'], ['Ger', 'ma', 'nic'], ['lan', 'gua', 'ge'], ['of'], ['the'], ['Indo'], ['-'], ['Eu', 'ro', 'pean'], ['lan', 'gua', 'ge'], ['fa', 'mi', 'ly'], [','], ['o', 'ri', 'gi', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'ha', 'bi', 'tants'], ['of'], ['ear', 'ly'], ['me', 'die', 'val'], ['England', '.', '[', '3', ']', '[', '4', ']', '[', '5'], [']']]
+        elif syl_tokenizer == 'pyphen_eng_gb':
+            assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['of'], ['the'], ['Indo'], ['-'], ['European'], ['lan', 'guage'], ['fam', 'ily'], [','], ['ori', 'gin', 'ally'], ['spoken'], ['by'], ['the'], ['in', 'hab', 'it', 'ants'], ['of'], ['early'], ['me', 'di', 'ev', 'al'], ['Eng', 'land.[3][4][5'], [']']]
+        elif syl_tokenizer == 'pyphen_eng_us':
+            assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['of'], ['the'], ['In', 'do'], ['-'], ['Eu', 'ro', 'pean'], ['lan', 'guage'], ['fam', 'i', 'ly'], [','], ['orig', 'i', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'hab', 'i', 'tants'], ['of'], ['ear', 'ly'], ['me', 'dieval'], ['Eng', 'land.[3][4][5'], [']']]
+        else:
+            raise Exception(f'Error: Tests for syllable tokenizer "{syl_tokenizer}" is skipped!')
     elif lang == 'epo':
         assert syls == [['Es', 'pe', 'r', 'anto'], [','], ['ori', 'gi', 'ne'], ['la'], ['Lin', 'g', 'vo'], ['In', 'ter', 'na', 'ci', 'a', ',[4'], [']'], ['es', 'tas'], ['la'], ['plej'], ['dis', 'vas', 't', 'iĝ', 'inta'], ['in', 'ter', 'na', 'cia'], ['plan', 'lin', 'g', 'vo', '.[5'], [']']]
     elif lang == 'est':

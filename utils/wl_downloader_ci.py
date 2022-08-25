@@ -41,9 +41,10 @@ spacy.cli.download('es_core_news_sm')
 
 # Download NLTK data
 # Corpora
+nltk.download('omw-1.4')
 nltk.download('stopwords')
 nltk.download('wordnet')
-nltk.download('omw-1.4')
+nltk.download('words')
 # Taggers
 nltk.download('averaged_perceptron_tagger')
 nltk.download('averaged_perceptron_tagger_ru')
