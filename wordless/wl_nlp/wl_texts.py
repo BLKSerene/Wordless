@@ -117,7 +117,7 @@ class Wl_Text:
                             self.tokens_multilevel[-1].append([])
 
                             for sentence_seg in wl_sentence_tokenization.wl_sentence_seg_split(self.main, sentence):
-                                self.tokens_multilevel[-1][-1].append(sentence.split())
+                                self.tokens_multilevel[-1][-1].append(sentence_seg.split())
 
                         # Check if the first token in the text is a tag
                         if i == 0 and re.match(re_tags_start, para):
