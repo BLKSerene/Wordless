@@ -29,20 +29,25 @@
         <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg" alt="Github Actions"></a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless">
         <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G" alt="Codecov"></a>
+    <a href="https://github.com/PyCQA/pylint">
+        <img src="https://img.shields.io/badge/linting-pylint-yellowgreen" alt="linting: pylint"></a>
+</div>
+
+<div align="center">
+    <a href="https://lgtm.com/projects/g/BLKSerene/Wordless/context:python">
+        <img src="https://img.shields.io/lgtm/grade/python/g/BLKSerene/Wordless.svg?logo=lgtm&logoWidth=18" alt="Language grade: Python"></a>
+    <a href="https://sonarcloud.io/summary/new_code?id=BLKSerene_Wordless">
+        <img src="https://sonarcloud.io/api/project_badges/measure?project=BLKSerene_Wordless&metric=alert_status" alt="Quality Gate Status"></a>
+    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL">
+        <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg" alt="CodeQL"></a>
     <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield">
         <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield" alt="FOSSA Status"></a>
 </div>
 
 <div align="center">
-    <a href="https://github.com/PyCQA/pylint">
-        <img src="https://img.shields.io/badge/linting-pylint-yellowgreen" alt="linting: pylint"></a>
-    <a href="https://lgtm.com/projects/g/BLKSerene/Wordless/context:python">
-        <img src="https://img.shields.io/lgtm/grade/python/g/BLKSerene/Wordless.svg?logo=lgtm&logoWidth=18" alt="Language grade: Python"></a>
-    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL">
-        <img src="https://github.com/BLKSerene/Wordless/workflows/CodeQL/badge.svg" alt="CodeQL"></a>
     <a href="https://github.com/BLKSerene/Wordless/releases">
         <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release"></a>
-    <a href="https://github.com/BLKSerene/Wordless#download">
+    <a href="#download">
         <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=Downloads" alt="Downloads"></a>
     <a href="/LICENSE.txt">
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
