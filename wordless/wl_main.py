@@ -884,7 +884,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
 
         with open(self.tr('ACKNOWLEDGMENTS.md'), 'r', encoding = 'utf_8') as f:
             for line in f:
-                if re.search(r'^[0-9]+\s*\|', line):
+                if re.search(r'^[1-9]\d*\s*\|', line):
                     _, name, ver, authors, proj_license = line.split('|')
 
                     name = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', name.strip())

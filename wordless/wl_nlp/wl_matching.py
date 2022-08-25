@@ -30,7 +30,7 @@ _tr = QCoreApplication.translate
 def split_tag_embedded(tag):
     # e.g. _*
     if (re_tag := re.search(r'^(([^\w\s]|_)+)(\*)$', tag)) is None:
-        re_tag = re.search(r'^(([^\w\s]|_)+)(\S*?)$', tag)
+        re_tag = re.search(r'^(([^\w\s]|_)+)(\S*)$', tag)
 
     tag_start = re_tag.group(1)
     tag_name = re_tag.group(3)
