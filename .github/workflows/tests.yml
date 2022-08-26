@@ -155,4 +155,4 @@ jobs:
           pytest tests/wl_tests_nlp/test_word_detokenization.py
           pytest tests/wl_tests_nlp/test_word_tokenization.py
 
-          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area --ignore=tests/wl_tests_figs
+          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area --ignore=tests/wl_tests_dialogs --ignore=tests/wl_tests_figs
