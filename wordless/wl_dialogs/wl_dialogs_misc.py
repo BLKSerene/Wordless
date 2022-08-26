@@ -62,7 +62,7 @@ class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main, text = _tr('Wl_Dialog_Progress_Process_Data', 'Processing data...'))
 
-class WL_Dialog_Clear_Table(wl_dialogs.Wl_Dialog_Info):
+class WL_Dialog_Clr_Table(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
@@ -71,7 +71,7 @@ class WL_Dialog_Clear_Table(wl_dialogs.Wl_Dialog_Info):
             no_buttons = True
         )
 
-        self.label_confirm_clear = wl_labels.Wl_Label_Dialog(
+        self.label_confirm_clr = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
                     The results in the table have yet been exported. Do you really want to clear the table?
@@ -86,7 +86,7 @@ class WL_Dialog_Clear_Table(wl_dialogs.Wl_Dialog_Info):
         self.button_yes.clicked.connect(self.accept)
         self.button_no.clicked.connect(self.reject)
 
-        self.wrapper_info.layout().addWidget(self.label_confirm_clear, 0, 0)
+        self.wrapper_info.layout().addWidget(self.label_confirm_clr, 0, 0)
 
         self.wrapper_buttons.layout().addWidget(self.button_yes, 0, 1)
         self.wrapper_buttons.layout().addWidget(self.button_no, 0, 2)

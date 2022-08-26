@@ -41,6 +41,10 @@ if platform.system() in ['Windows', 'Darwin']:
 
             self.app = wl_app
 
+            # Email
+            self.email = 'blkserene@gmail.com'
+            self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
+
             # Default settings
             self.settings_default = wl_settings_default.init_settings_default(self)
 

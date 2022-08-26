@@ -1706,8 +1706,8 @@ class Wl_Table_Data(Wl_Table):
         # Ask for confirmation if results have not been exported
         if confirm:
             if not self.is_empty() and not self.results_saved:
-                dialog_clear_table = wl_dialogs_misc.WL_Dialog_Clear_Table(self.main)
-                result = dialog_clear_table.exec_()
+                dialog_clr_table = wl_dialogs_misc.WL_Dialog_Clr_Table(self.main)
+                result = dialog_clr_table.exec_()
 
                 if result == QDialog.Rejected:
                     confirmed = False
