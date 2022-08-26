@@ -31,7 +31,7 @@ TOKENS_MULTILEVEL_120 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is'
 TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 18 + [[[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]]
 
 class Wl_Test_Text():
-    def __init__(self, tokens_multilevel = TOKENS_MULTILEVEL_12.copy(), lang = 'eng_us'):
+    def __init__(self, tokens_multilevel, lang = 'eng_us'):
         super().__init__()
 
         self.main = main
@@ -44,10 +44,10 @@ test_text_eng_12_propn = Wl_Test_Text(TOKENS_MULTILEVEL_12_PROPN)
 test_text_eng_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100)
 test_text_eng_120 = Wl_Test_Text(TOKENS_MULTILEVEL_120)
 test_text_eng_150 = Wl_Test_Text(TOKENS_MULTILEVEL_150)
-test_text_spa_12 = Wl_Test_Text(lang = 'spa')
+test_text_spa_12 = Wl_Test_Text(tokens_multilevel = TOKENS_MULTILEVEL_12, lang = 'spa')
 test_text_spa_120 = Wl_Test_Text(tokens_multilevel = TOKENS_MULTILEVEL_120, lang = 'spa')
 test_text_spa_150 = Wl_Test_Text(tokens_multilevel = TOKENS_MULTILEVEL_150, lang = 'spa')
-test_text_other_12 = Wl_Test_Text(lang = 'other')
+test_text_other_12 = Wl_Test_Text(tokens_multilevel = TOKENS_MULTILEVEL_12, lang = 'other')
 
 def test_automated_readability_index():
     ari_0 = wl_measures_readability.automated_readability_index(main, test_text_0)
