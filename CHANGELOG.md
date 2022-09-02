@@ -75,6 +75,7 @@
 - Dependencies: Upgrade NetworkX to 2.8.5
 - Dependencies: Upgrade NumPy to 1.23.2
 - Dependencies: Upgrade openpyxl to 3.0.10
+- Dependencies: Upgrade Pyphen to 0.13.0
 - Dependencies: Upgrade PyQt to 5.15.7
 - Dependencies: Upgrade PyThaiNLP to 3.0.8
 - Dependencies: Upgrade Requests to 2.28.1
