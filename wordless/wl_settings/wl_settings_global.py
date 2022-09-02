@@ -429,6 +429,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'Pyphen - Albanian Syllable Tokenizer'): 'pyphen_sqi',
                 _tr('init_settings_global', 'Pyphen - Belarusian Syllable Tokenizer'): 'pyphen_bel',
                 _tr('init_settings_global', 'Pyphen - Bulgarian Syllable Tokenizer'): 'pyphen_bul',
+                _tr('init_settings_global', 'Pyphen - Catalan Syllable Tokenizer'): 'pyphen_cat',
                 _tr('init_settings_global', 'Pyphen - Croatian Syllable Tokenizer'): 'pyphen_hrv',
                 _tr('init_settings_global', 'Pyphen - Czech Syllable Tokenizer'): 'pyphen_ces',
                 _tr('init_settings_global', 'Pyphen - Danish Syllable Tokenizer'): 'pyphen_dan',
@@ -1552,6 +1553,10 @@ def init_settings_global():
 
             'bel': [
                 'pyphen_bel'
+            ],
+
+            'cat': [
+                'pyphen_cat'
             ],
 
             'bul': [

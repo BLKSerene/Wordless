@@ -1289,6 +1289,7 @@ def init_settings_default(main):
                 'sqi': 'pyphen_sqi',
                 'bel': 'pyphen_bel',
                 'bul': 'pyphen_bul',
+                'cat': 'pyphen_cat',
                 'hrv': 'pyphen_hrv',
                 'ces': 'pyphen_ces',
                 'dan': 'pyphen_dan',
