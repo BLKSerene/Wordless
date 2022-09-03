@@ -625,7 +625,7 @@ Catalan                 |⭕️ |✔|✔|✔|✔|✔
 Chinese (Simplified)    |✔|✔|✖️|✔|✖️|✔
 Chinese (Traditional)   |✔|✔|✖️|✔|✖️|✔
 Coptic                  |⭕️ |⭕️ |✖️|✖️|✖️|✔
-Croatian                |⭕️ |✔|✔|✖️|✔|✔
+Croatian                |⭕️ |✔|✔|✔|✔|✔
 Czech                   |✔|✔|✔|✖️|✔|✔
 Danish                  |✔|✔|✔|✔|✔|✔
 Dutch                   |✔|✔|✔|✔|✔|✔
@@ -698,7 +698,7 @@ Sorbian (Upper)         |⭕️ |✔|✖️|✖️|✖️|✔
 Sotho (Southern)        |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Spanish                 |✔|✔|✔|✔|✔|✔
 Swahili                 |⭕️ |⭕️ |✖️|✖️|✖️|✔
-Swedish                 |✔|✔|✔|✖️|✔|✔
+Swedish                 |✔|✔|✔|✔|✔|✔
 Tagalog                 |⭕️ |✔|✖️|✖️|✔|✔
 Tajik                   |⭕️ |✔|✖️|✖️|✖️|✔
 Tamil                   |⭕️ |✔|✖️|✖️|✖️|✔

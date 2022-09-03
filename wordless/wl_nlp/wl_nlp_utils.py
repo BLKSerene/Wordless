@@ -56,6 +56,7 @@ def to_lang_util_texts(main, util_type, util_codes):
 SPACY_LANGS = {
     'cat': 'ca_core_news_sm',
     'zho': 'zh_core_web_sm',
+    'hrv': 'hr_core_news_sm',
     'dan': 'da_core_news_sm',
     'nld': 'nl_core_news_sm',
     'eng': 'en_core_web_sm',
@@ -72,10 +73,11 @@ SPACY_LANGS = {
     'ron': 'ro_core_news_sm',
     'rus': 'ru_core_news_sm',
     'spa': 'es_core_news_sm',
+    'swe': 'sv_core_news_sm',
 
     'other': 'en_core_web_sm'
 }
-SPACY_LANGS_LEMMATIZERS = ['ben', 'cat', 'hrv', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'swe', 'tgl', 'tur', 'urd']
+SPACY_LANGS_LEMMATIZERS = ['ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'tgl', 'tur', 'urd']
 
 def init_spacy_models(main, lang):
     # Chinese, English, German, Portuguese

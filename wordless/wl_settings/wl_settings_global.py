@@ -487,6 +487,7 @@ def init_settings_global():
 
                 _tr('init_settings_global', 'spaCy - Catalan POS Tagger'): 'spacy_cat',
                 _tr('init_settings_global', 'spaCy - Chinese POS Tagger'): 'spacy_zho',
+                _tr('init_settings_global', 'spaCy - Croatian POS Tagger'): 'spacy_hrv',
                 _tr('init_settings_global', 'spaCy - Danish POS Tagger'): 'spacy_dan',
                 _tr('init_settings_global', 'spaCy - Dutch POS Tagger'): 'spacy_nld',
                 _tr('init_settings_global', 'spaCy - English POS Tagger'): 'spacy_eng',
@@ -503,6 +504,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Romanian POS Tagger'): 'spacy_ron',
                 _tr('init_settings_global', 'spaCy - Russian POS Tagger'): 'spacy_rus',
                 _tr('init_settings_global', 'spaCy - Spanish POS Tagger'): 'spacy_spa',
+                _tr('init_settings_global', 'spaCy - Swedish POS Tagger'): 'spacy_swe',
 
                 _tr('init_settings_global', 'SudachiPy - Japanese POS Tagger'): 'sudachipy_jpn',
 
@@ -1574,6 +1576,10 @@ def init_settings_global():
                 'spacy_zho'
             ],
 
+            'hrv': [
+                'spacy_hrv'
+            ],
+
             'dan': [
                 'spacy_dan',
             ],
@@ -1653,6 +1659,10 @@ def init_settings_global():
 
             'spa': [
                 'spacy_spa'
+            ],
+
+            'swe': [
+                'spacy_swe'
             ],
 
             'tha': [
