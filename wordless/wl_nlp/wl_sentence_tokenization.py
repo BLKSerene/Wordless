@@ -33,7 +33,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         lang = 'other'
 
     if sentence_tokenizer == 'default':
-        sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizers'][lang]
+        sentence_tokenizer = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang]
 
     wl_nlp_utils.init_sentence_tokenizers(
         main,
@@ -148,10 +148,16 @@ SENTENCE_SEG_TERMINATORS = {
 RE_SENTENCE_SEG_TERMINATORS = ''.join(SENTENCE_SEG_TERMINATORS)
 
 def wl_sentence_seg_tokenize(main, text): # pylint: disable=unused-argument
-    return [sentence.strip() for sentence in re.findall(fr'.+?[{RE_SENTENCE_SEG_TERMINATORS}]+|.+?$', text.strip())]
+    return [
+        sentence.strip()
+        for sentence in re.findall(fr'.+?[{RE_SENTENCE_SEG_TERMINATORS}]+|.+?$', text.strip())
+    ]
 
 def wl_sentence_seg_split(main, text): # pylint: disable=unused-argument
-    return [sentence.strip() for sentence in re.findall(fr'.+?[{RE_SENTENCE_SEG_TERMINATORS}]+\s+|.+?$', text.strip())]
+    return [
+        sentence.strip()
+        for sentence in re.findall(fr'.+?[{RE_SENTENCE_SEG_TERMINATORS}]+\s+|.+?$', text.strip())
+    ]
 
 REPLACEMENT_CHAR = '\uFFFF'
 
