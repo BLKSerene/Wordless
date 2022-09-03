@@ -82,6 +82,7 @@
 - Dependencies: Upgrade Requests to 2.28.1
 - Dependencies: Upgrade Sacremoses to 0.0.53
 - Dependencies: Upgrade SciPy to 1.9.0
+- Dependencies: Upgrade spaCy to 3.4.1
 - Dependencies: Upgrade SudachiPy to 0.6.6
 - Dependencies: Upgrade WordCloud to 1.8.2.2
 
