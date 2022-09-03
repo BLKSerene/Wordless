@@ -86,7 +86,7 @@ def test_lemmatize(lang, lemmatizer):
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'hrv':
-        assert lemmas == ['Hrvatski', 'jezik', '(', 'ISO', '639', '-', '3', ':', 'hrv', 'Inačica', 'izvoran', 'stranica', 'arhivirati', '18', '.', 'rujan', '2012', '.', ')', 'skupni', 'biti', 'naziv', 'za', 'nacionalan', 'standardan', 'jezik', 'Hrvata', ',', 'te', 'za', 'skup', 'narječje', 'i', 'govor', 'koji', 'govoriti', 'ili', 'biti', 'nekada', 'govoriti', 'Hrvati', '.']
+        assert lemmas == ['hrvatski', 'jezik', '(', 'ISO', '639', '-', '3', ':', 'hrv', 'Inačica', 'izvoran', 'stranica', 'arhiviran', '18', '.', 'rujan', '2012', '.', ')', 'skupni', 'biti', 'naziv', 'za', 'nacionalan', 'standardan', 'jezik', 'Hrvat', ',', 'te', 'za', 'skup', 'narječje', 'i', 'govor', 'koji', 'govoriti', 'ili', 'biti', 'nekada', 'govoriti', 'Hrvati', '.']
     elif lang == 'ces':
         assert lemmas == ['Čeština', 'neboli', 'český', 'jazyk', 'on', 'západoslovanský', 'jazyk', ',', 'blízký', 'slovenštině', ',', 'poté', 'lužické', 'srbštině', 'a', 'polštině', '.']
     elif lang == 'dan':
@@ -206,7 +206,7 @@ def test_lemmatize(lang, lemmatizer):
         if lemmatizer == 'lemmatization_lists_swe':
             assert lemmas == ['Svenska', '(', 'svensk', '(', 'info', ')', ')', 'vara', 'en', 'östnordiskt', 'språka', 'som', 'tala', 'av', 'ungefär', 'tio', 'miljon', 'person', 'främst', 'i', 'Sverige', 'där', 'språk', 'hare', 'man', 'dominant', 'ställning', 'som', 'huvudspråk', ',', 'mena', 'även', 'som', 'en', 'en', 'nationalspråk', 'i', 'Finland', 'och', 'som', 'enda', 'officiell', 'språka', 'på', 'Åland', '.']
         elif lemmatizer == 'spacy_swe':
-            assert lemmas == ['svenska', '(', 'svenska', '(', 'info', ')', ')', 'är', 'ett', 'östnordiskt', 'språk', 'som', 'talas', 'av', 'ungefär', 'tio', 'miljoner', 'personer', 'främst', 'i', 'sverige', 'där', 'språket', 'har', 'en', 'dominant', 'ställning', 'som', 'huvudspråk', ',', 'men', 'även', 'som', 'det', 'ena', 'nationalspråket', 'i', 'finland', 'och', 'som', 'enda', 'officiella', 'språk', 'på', 'åland', '.']
+            assert lemmas == ['Svenska', '(', 'svensk', '(', 'info', ')', ')', 'vara', 'en', 'östnordisk', 'språk', 'som', 'tala', 'av', 'ungefär', 'tio', 'miljon', 'person', 'främst', 'i', 'Sverige', 'där', 'språket', 'ha', 'en', 'dominant', 'ställning', 'som', 'huvudspråk', ',', 'men', 'även', 'som', 'en', 'ena', 'nationalspråk', 'i', 'Finland', 'och', 'som', 'enda', 'officiell', 'språk', 'på', 'Åland', '.']
         else:
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'tgl':

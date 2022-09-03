@@ -30,6 +30,7 @@
 - Utils: Add NLTK's legality syllable tokenizer and sonority sequencing syllable tokenizer
 - Utils: Add NLTK's regular-expression tokenizer
 - Utils: Add Pyphen's Catalan syllable tokenizer
+- Utils: Add spaCy's Croatian and Swedish part-of-speech tagger
 - Utils: Add spaCy's Sorbian (Lower) word tokenizer and stop word list
 - Utils: Add spaCy's Sorbian (Upper) word tokenizer and stop word list
 - Work Area: Add Collocation/Colligation Extractor - Generation Settings - Limit Searching - Within Sentence Segments
