@@ -275,6 +275,10 @@ def test_word_tokenize(lang, word_tokenizer):
         assert tokens == ['Slovenčina', 'patrí', 'do', 'skupiny', 'západoslovanských', 'jazykov', '(', 'spolu', 's', 'češtinou', ',', 'poľštinou', ',', 'hornou', 'a', 'dolnou', 'lužickou', 'srbčinou', 'a', 'kašubčinou', ')', '.']
     elif lang == 'slv':
         assert tokens == ['Slovenščina', '[', 'sloˈʋenʃtʃina', ']', 'je', 'združeni', 'naziv', 'za', 'uradni', 'knjižni', 'jezik', 'Slovencev', 'in', 'skupno', 'ime', 'za', 'narečja', 'in', 'govore', ',', 'ki', 'jih', 'govorijo', 'ali', 'so', 'jih', 'nekoč', 'govorili', 'Slovenci', '.']
+    elif lang == 'dsb':
+        assert tokens == ['Dolnoserbšćina', ',', 'dolnoserbska', 'rěc', '(', 'nimski', 'Niedersorbisch', 'abo', 'teke', 'Wendisch', ',', 'pólski', 'język', 'dolnołużycki', ',', 'česki', 'dolnolužická', 'srbština', ')', 'jo', 'jadna', 'z', 'dweju', 'rěcowu', 'Serbow', ',', 'kotaraž', 'se', 'wužywa', 'w', 'Dolnej', 'Łužycy', ',', 'w', 'pódpołdnjowej', 'Bramborskej', ',', 'na', 'pódzajtšu', 'Nimskej', '.']
+    elif lang == 'hsb':
+        assert tokens == ['Hornjoserbšćina', 'je', 'zapadosłowjanska', 'rěč', ',', 'kotraž', 'so', 'w', 'Hornjej', 'Łužicy', 'wokoło', 'městow', 'Budyšin', ',', 'Kamjenc', 'a', 'Wojerecy', 'rěči', '.']
     elif lang == 'spa':
         assert tokens == ['El', 'español', 'o', 'castellano', 'es', 'una', 'lengua', 'romance', 'procedente', 'del', 'latín', 'hablado', ',', 'perteneciente', 'a', 'la', 'familia', 'de', 'lenguas', 'indoeuropeas', '.']
     elif lang == 'swe':

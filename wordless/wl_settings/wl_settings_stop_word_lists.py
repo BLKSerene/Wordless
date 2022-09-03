@@ -35,7 +35,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.settings_custom = self.main.settings_custom['stop_word_lists']
 
         # Stop Word Lists Settings
-        self.group_box_stop_word_lists_settings = QGroupBox(self.tr('Stop Word Lists Settings'), self)
+        self.group_box_stop_word_list_settings = QGroupBox(self.tr('Stop Word List Settings'), self)
 
         self.table_stop_word_lists = wl_tables.Wl_Table(
             self,
@@ -49,11 +49,14 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.table_stop_word_lists.verticalHeader().setHidden(True)
         self.table_stop_word_lists.model().setRowCount(len(self.settings_global))
 
+        self.table_stop_word_lists.model().dataChanged.connect(self.stop_word_list_changed)
+
         self.table_stop_word_lists.disable_updates()
 
         for i, lang in enumerate(self.settings_global):
             self.table_stop_word_lists.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
             self.table_stop_word_lists.model().setItem(i, 1, QStandardItem())
+
             self.table_stop_word_lists.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
                 parent = self.table_stop_word_lists,
                 items = list(wl_nlp_utils.to_lang_util_texts(
@@ -66,10 +69,8 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
 
         self.table_stop_word_lists.enable_updates()
 
-        self.table_stop_word_lists.model().dataChanged.connect(self.stop_word_list_changed)
-
-        self.group_box_stop_word_lists_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_stop_word_lists_settings.layout().addWidget(self.table_stop_word_lists, 0, 0)
+        self.group_box_stop_word_list_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_stop_word_list_settings.layout().addWidget(self.table_stop_word_lists, 0, 0)
 
         # Preview
         self.group_box_preview = QGroupBox(self.tr('Preview'), self)
@@ -102,7 +103,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.group_box_preview.layout().addWidget(self.list_stop_word_list_preview_results.button_exp, 2, 5)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_stop_word_lists_settings, 0, 0)
+        self.layout().addWidget(self.group_box_stop_word_list_settings, 0, 0)
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
@@ -116,14 +117,14 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         if topLeft:
             lang = wl_conversion.to_lang_code(self.main, self.table_stop_word_lists.model().item(topLeft.row(), 0).text())
 
-            if lang == self.settings_custom['preview_lang']:
+            if lang == self.settings_custom['preview']['preview_lang']:
                 self.preview_results_changed()
 
     def preview_settings_changed(self):
-        self.settings_custom['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_stop_word_list_preview_lang.currentText())
+        self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_stop_word_list_preview_lang.currentText())
 
     def preview_results_changed(self):
-        row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+        row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
         lang = wl_conversion.to_lang_code(self.main, self.combo_box_stop_word_list_preview_lang.currentText())
         list_stop_words = wl_nlp_utils.to_lang_util_code(
             self.main,
@@ -151,17 +152,17 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
 
         self.table_stop_word_lists.disable_updates()
 
-        for i, lang in enumerate(settings['stop_word_lists']):
+        for i, lang in enumerate(settings['stop_word_list_settings']):
             self.table_stop_word_lists.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'stop_word_lists',
-                util_code = settings['stop_word_lists'][lang]
+                util_code = settings['stop_word_list_settings'][lang]
             ))
 
-        self.table_stop_word_lists.enable_updates(emit_signals = False)
+        self.table_stop_word_lists.enable_updates()
 
         if not defaults:
-            self.combo_box_stop_word_list_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_lang']))
+            self.combo_box_stop_word_list_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
 
         if defaults:
             self.settings_custom['custom_lists'] = copy.deepcopy(self.settings_default['custom_lists'])
@@ -169,14 +170,14 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.combo_box_stop_word_list_preview_lang.currentTextChanged.emit(self.combo_box_stop_word_list_preview_lang.currentText())
 
     def apply_settings(self):
-        for i, lang in enumerate(self.settings_custom['stop_word_lists']):
-            self.settings_custom['stop_word_lists'][lang] = wl_nlp_utils.to_lang_util_code(
+        for i, lang in enumerate(self.settings_custom['stop_word_list_settings']):
+            self.settings_custom['stop_word_list_settings'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'stop_word_lists',
                 util_text = self.table_stop_word_lists.model().item(i, 1).text()
             )
 
-        if self.settings_custom['stop_word_lists'][self.settings_custom['preview_lang']] == 'custom':
-            self.settings_custom['custom_lists'][self.settings_custom['preview_lang']] = self.list_stop_word_list_preview_results.model().stringList()
+        if self.settings_custom['stop_word_list_settings'][self.settings_custom['preview']['preview_lang']] == 'custom':
+            self.settings_custom['custom_lists'][self.settings_custom['preview']['preview_lang']] = self.list_stop_word_list_preview_results.model().stringList()
 
         return True

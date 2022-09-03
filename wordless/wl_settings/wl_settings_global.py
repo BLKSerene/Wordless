@@ -118,6 +118,8 @@ def init_settings_global():
             _tr('init_settings_global', 'Slovak'): ['slk', 'sk', 'Indo-European'],
             _tr('init_settings_global', 'Slovenian'): ['slv', 'sl', 'Indo-European'],
             _tr('init_settings_global', 'Somali'): ['som', 'so', 'Afro-Asiatic'],
+            _tr('init_settings_global', 'Sorbian (Lower)'): ['dsb', 'dsb', 'Indo-European'],
+            _tr('init_settings_global', 'Sorbian (Upper)'): ['hsb', 'hsb', 'Indo-European'],
             _tr('init_settings_global', 'Sotho (Southern)'): ['sot', 'st', 'Niger-Congo'],
             _tr('init_settings_global', 'Spanish'): ['spa', 'es', 'Indo-European'],
             _tr('init_settings_global', 'Swahili'): ['swa', 'sw', 'Niger-Congo'],
@@ -398,6 +400,8 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Sinhala Word Tokenizer'): 'spacy_sin',
                 _tr('init_settings_global', 'spaCy - Slovak Word Tokenizer'): 'spacy_slk',
                 _tr('init_settings_global', 'spaCy - Slovenian Word Tokenizer'): 'spacy_slv',
+                _tr('init_settings_global', 'spaCy - Sorbian (Lower) Word Tokenizer'): 'spacy_dsb',
+                _tr('init_settings_global', 'spaCy - Sorbian (Upper) Word Tokenizer'): 'spacy_hsb',
                 _tr('init_settings_global', 'spaCy - Spanish Word Tokenizer'): 'spacy_spa',
                 _tr('init_settings_global', 'spaCy - Swedish Word Tokenizer'): 'spacy_swe',
                 _tr('init_settings_global', 'spaCy - Tagalog Word Tokenizer'): 'spacy_tgl',
@@ -731,6 +735,8 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Sinhala Stop Word List'): 'spacy_sin',
                 _tr('init_settings_global', 'spaCy - Slovak Stop Word List'): 'spacy_slk',
                 _tr('init_settings_global', 'spaCy - Slovenian Stop Word List'): 'spacy_slv',
+                _tr('init_settings_global', 'spaCy - Sorbian (Lower) Stop Word List'): 'spacy_dsb',
+                _tr('init_settings_global', 'spaCy - Sorbian (Upper) Stop Word List'): 'spacy_hsb',
                 _tr('init_settings_global', 'spaCy - Spanish Stop Word List'): 'spacy_spa',
                 _tr('init_settings_global', 'spaCy - Swedish Stop Word List'): 'spacy_swe',
                 _tr('init_settings_global', 'spaCy - Tagalog Stop Word List'): 'spacy_tgl',
@@ -810,46 +816,6 @@ def init_settings_global():
         },
 
         'sentence_tokenizers': {
-            'afr': [
-                'spacy_sentencizer'
-            ],
-
-            'sqi': [
-                'spacy_sentencizer'
-            ],
-
-            'amh': [
-                'spacy_sentencizer'
-            ],
-
-            'ara': [
-                'spacy_sentencizer'
-            ],
-
-            'hye': [
-                'spacy_sentencizer'
-            ],
-
-            'aze': [
-                'spacy_sentencizer'
-            ],
-
-            'eus': [
-                'spacy_sentencizer'
-            ],
-
-            'ben': [
-                'spacy_sentencizer'
-            ],
-
-            'bul': [
-                'spacy_sentencizer'
-            ],
-
-            'cat': [
-                'spacy_sentencizer'
-            ],
-
             'zho_cn': [
                 'spacy_sentence_recognizer',
                 'wordless_zho'
@@ -857,10 +823,6 @@ def init_settings_global():
             'zho_tw': [
                 'spacy_sentence_recognizer',
                 'wordless_zho'
-            ],
-
-            'hrv': [
-                'spacy_sentencizer'
             ],
 
             'ces': [
@@ -915,40 +877,9 @@ def init_settings_global():
                 'spacy_sentence_recognizer'
             ],
 
-            'grc': [
-                'spacy_sentencizer'
-            ],
             'ell': [
                 'nltk_punkt',
                 'spacy_sentence_recognizer'
-            ],
-
-            'guj': [
-                'spacy_sentencizer'
-            ],
-
-            'heb': [
-                'spacy_sentencizer'
-            ],
-
-            'hin': [
-                'spacy_sentencizer'
-            ],
-
-            'hun': [
-                'spacy_sentencizer'
-            ],
-
-            'isl': [
-                'spacy_sentencizer'
-            ],
-
-            'ind': [
-                'spacy_sentencizer'
-            ],
-
-            'gle': [
-                'spacy_sentencizer'
             ],
 
             'ita': [
@@ -961,44 +892,8 @@ def init_settings_global():
                 'wordless_jpn'
             ],
 
-            'kan': [
-                'spacy_sentencizer'
-            ],
-
-            'kir': [
-                'spacy_sentencizer'
-            ],
-
-            'lav': [
-                'spacy_sentencizer'
-            ],
-
-            'lij': [
-                'spacy_sentencizer'
-            ],
-
             'lit': [
                 'spacy_sentence_recognizer'
-            ],
-
-            'ltz': [
-                'spacy_sentencizer'
-            ],
-
-            'mkd': [
-                'spacy_sentencizer'
-            ],
-
-            'mal': [
-                'spacy_sentencizer'
-            ],
-
-            'mar': [
-                'spacy_sentencizer'
-            ],
-
-            'nep': [
-                'spacy_sentencizer'
             ],
 
             'nob': [
@@ -1007,10 +902,7 @@ def init_settings_global():
             ],
 
             'nno': [
-                'nltk_punkt'
-            ],
-
-            'fas': [
+                'nltk_punkt',
                 'spacy_sentencizer'
             ],
 
@@ -1037,25 +929,6 @@ def init_settings_global():
                 'spacy_sentence_recognizer'
             ],
 
-            'san': [
-                'spacy_sentencizer'
-            ],
-
-            'srp_cyrl': [
-                'spacy_sentencizer'
-            ],
-            'srp_latn': [
-                'spacy_sentencizer'
-            ],
-
-            'sin': [
-                'spacy_sentencizer'
-            ],
-
-            'slk': [
-                'spacy_sentencizer'
-            ],
-
             'slv': [
                 'nltk_punkt',
                 'spacy_sentencizer'
@@ -1071,22 +944,6 @@ def init_settings_global():
                 'spacy_sentencizer'
             ],
 
-            'tgl': [
-                'spacy_sentencizer'
-            ],
-
-            'tam': [
-                'spacy_sentencizer'
-            ],
-
-            'tat': [
-                'spacy_sentencizer'
-            ],
-
-            'tel': [
-                'spacy_sentencizer'
-            ],
-
             'tha': [
                 'pythainlp_crfcut'
             ],
@@ -1095,24 +952,8 @@ def init_settings_global():
                 'botok_bod'
             ],
 
-            'tir': [
-                'spacy_sentencizer'
-            ],
-
-            'tsn': [
-                'spacy_sentencizer'
-            ],
-
             'tur': [
                 'nltk_punkt',
-                'spacy_sentencizer'
-            ],
-
-            'ukr': [
-                'spacy_sentencizer'
-            ],
-
-            'urd': [
                 'spacy_sentencizer'
             ],
 
@@ -1120,13 +961,9 @@ def init_settings_global():
                 'underthesea_vie'
             ],
 
-            'yor': [
-                'spacy_sentencizer'
-            ],
-
             'other': [
                 'nltk_punkt',
-                'spacy_sentence_recognizer'
+                'spacy_sentencizer'
             ]
         },
 
@@ -1453,6 +1290,15 @@ def init_settings_global():
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_slv'
+            ],
+
+            'dsb': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_dsb'
+            ],
+            'hsb': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_dsb'
             ],
 
             'spa': [
@@ -2543,6 +2389,15 @@ def init_settings_global():
 
             'som': [
                 'stopwords_iso_som',
+                'custom'
+            ],
+
+            'dsb': [
+                'spacy_dsb',
+                'custom'
+            ],
+            'hsb': [
+                'spacy_hsb',
                 'custom'
             ],
 

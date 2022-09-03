@@ -96,10 +96,10 @@ class Check_Settings_Global():
         settings_default = main.settings_default
 
         settings_sentence_tokenizers = settings_global['sentence_tokenizers']
-        settings_sentence_tokenizers_default = settings_default['sentence_tokenization']['sentence_tokenizers']
+        settings_sentence_tokenizers_default = settings_default['sentence_tokenization']['sentence_tokenizer_settings']
 
         settings_word_tokenizers = settings_global['word_tokenizers']
-        settings_word_tokenizers_default = settings_default['word_tokenization']['word_tokenizers']
+        settings_word_tokenizers_default = settings_default['word_tokenization']['word_tokenizer_settings']
 
         settings_syl_tokenizers = settings_global['syl_tokenizers']
         settings_syl_tokenizers_default = settings_default['syl_tokenization']['syl_tokenizers']
@@ -112,7 +112,7 @@ class Check_Settings_Global():
         settings_lemmatizers_default = settings_default['lemmatization']['lemmatizers']
 
         settings_stop_word_lists = settings_global['stop_word_lists']
-        settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_lists']
+        settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_list_settings']
         settings_stop_word_lists_default_custom = settings_default['stop_word_lists']['custom_lists']
 
         langs_supported_sacremoses = []
@@ -122,7 +122,6 @@ class Check_Settings_Global():
 
         langs_sentence_tokenizers = list(settings_sentence_tokenizers)
         langs_sentence_tokenizers_default = list(settings_sentence_tokenizers_default)
-        langs_sentence_tokenizers_spacy = []
 
         langs_word_tokenizers = list(settings_word_tokenizers)
         langs_word_tokenizers_default = list(settings_word_tokenizers_default)
@@ -195,12 +194,17 @@ class Check_Settings_Global():
 
         langs_supported_spacy_stop_words = add_country_codes(langs_supported_spacy_stop_words)
 
-        # Check for missing and extra languages for spaCy's sentencizer
+        # Check for missing and extra languages for spaCy's sentence recognizer / sentencizer
         for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
-            if lang_code != 'other' and any(('spacy' in sentence_tokenizer for sentence_tokenizer in sentence_tokenizers)):
-                langs_sentence_tokenizers_spacy.append(lang_code)
+            if (
+                lang_code not in ['tha', 'bod', 'vie']
+                and not any((sentence_tokenizer.startswith('spacy_') for sentence_tokenizer in sentence_tokenizers))
+            ):
+                lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
 
-        self.check_missing_extra_langs(langs_supported_spacy, langs_sentence_tokenizers_spacy, "spaCy's sentencizer")
+                print(f'''Missing language code "{lang_code}/{lang_code_639_1}" found for spaCy's sentence recognizer / sentencizer!''')
+
+                self.lang_missing = True
 
         # Check for missing and extra languages for NLTK's word tokenizers
         for lang_code, word_tokenizers in settings_word_tokenizers.items():

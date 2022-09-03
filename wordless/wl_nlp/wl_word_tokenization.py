@@ -32,7 +32,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
         lang = 'other'
 
     if word_tokenizer == 'default':
-        word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizers'][lang]
+        word_tokenizer = main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang]
 
     wl_nlp_utils.init_word_tokenizers(
         main,
