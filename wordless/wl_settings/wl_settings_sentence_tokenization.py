@@ -31,8 +31,8 @@ class Wl_Worker_Preview_Sentence_Tokenizer(wl_threading.Wl_Worker_No_Progress):
     worker_done = pyqtSignal(list)
 
     def run(self):
-        preview_lang = self.main.settings_custom['sentence_tokenization']['preview_lang']
-        preview_samples = self.main.settings_custom['sentence_tokenization']['preview_samples']
+        preview_lang = self.main.settings_custom['sentence_tokenization']['preview']['preview_lang']
+        preview_samples = self.main.settings_custom['sentence_tokenization']['preview']['preview_samples']
 
         preview_results = wl_sentence_tokenization.wl_sentence_tokenize(
             self.main,
@@ -128,14 +128,14 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
         self.layout().setRowStretch(1, 2)
 
     def preview_changed(self):
-        self.settings_custom['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_sentence_tokenization_preview_lang.currentText())
-        self.settings_custom['preview_samples'] = self.text_edit_sentence_tokenization_preview_samples.toPlainText()
-        self.settings_custom['preview_results'] = self.text_edit_sentence_tokenization_preview_results.toPlainText()
+        self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_sentence_tokenization_preview_lang.currentText())
+        self.settings_custom['preview']['preview_samples'] = self.text_edit_sentence_tokenization_preview_samples.toPlainText()
+        self.settings_custom['preview']['preview_results'] = self.text_edit_sentence_tokenization_preview_results.toPlainText()
 
     def preview_results_changed(self):
-        if self.settings_custom['preview_samples']:
+        if self.settings_custom['preview']['preview_samples']:
             if self.combo_box_sentence_tokenization_preview_lang.isEnabled():
-                row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+                row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
                 self.table_sentence_tokenizers.itemDelegateForRow(row).set_enabled(False)
                 self.combo_box_sentence_tokenization_preview_lang.setEnabled(False)
@@ -165,7 +165,7 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
         self.button_sentence_tokenization_show_preview.setText(self.tr('Show preview'))
         self.text_edit_sentence_tokenization_preview_results.setPlainText('\n'.join(preview_results))
 
-        row = list(self.settings_global.keys()).index(self.settings_custom['preview_lang'])
+        row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
         self.table_sentence_tokenizers.itemDelegateForRow(row).set_enabled(True)
         self.combo_box_sentence_tokenization_preview_lang.setEnabled(True)
@@ -180,11 +180,11 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
 
         self.table_sentence_tokenizers.disable_updates()
 
-        for i, lang in enumerate(settings['sentence_tokenizers']):
+        for i, lang in enumerate(settings['sentence_tokenizer_settings']):
             self.table_sentence_tokenizers.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'sentence_tokenizers',
-                util_code = settings['sentence_tokenizers'][lang]
+                util_code = settings['sentence_tokenizer_settings'][lang]
             ))
 
         self.table_sentence_tokenizers.enable_updates()
@@ -193,16 +193,16 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
             self.combo_box_sentence_tokenization_preview_lang.blockSignals(True)
             self.text_edit_sentence_tokenization_preview_samples.blockSignals(True)
 
-            self.combo_box_sentence_tokenization_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview_lang']))
-            self.text_edit_sentence_tokenization_preview_samples.setText(settings['preview_samples'])
-            self.text_edit_sentence_tokenization_preview_results.setText(settings['preview_results'])
+            self.combo_box_sentence_tokenization_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
+            self.text_edit_sentence_tokenization_preview_samples.setText(settings['preview']['preview_samples'])
+            self.text_edit_sentence_tokenization_preview_results.setText(settings['preview']['preview_results'])
 
             self.combo_box_sentence_tokenization_preview_lang.blockSignals(False)
             self.text_edit_sentence_tokenization_preview_samples.blockSignals(False)
 
     def apply_settings(self):
-        for i, lang in enumerate(self.settings_custom['sentence_tokenizers']):
-            self.settings_custom['sentence_tokenizers'][lang] = wl_nlp_utils.to_lang_util_code(
+        for i, lang in enumerate(self.settings_custom['sentence_tokenizer_settings']):
+            self.settings_custom['sentence_tokenizer_settings'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'sentence_tokenizers',
                 util_text = self.table_sentence_tokenizers.model().item(i, 1).text()
