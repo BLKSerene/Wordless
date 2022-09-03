@@ -22,6 +22,7 @@ import spacy
 # Download spaCy models
 spacy.cli.download('ca_core_news_sm')
 spacy.cli.download('zh_core_web_sm')
+spacy.cli.download('hr_core_news_sm')
 spacy.cli.download('da_core_news_sm')
 spacy.cli.download('nl_core_news_sm')
 spacy.cli.download('en_core_web_sm')
@@ -38,6 +39,7 @@ spacy.cli.download('pt_core_news_sm')
 spacy.cli.download('ro_core_news_sm')
 spacy.cli.download('ru_core_news_sm')
 spacy.cli.download('es_core_news_sm')
+spacy.cli.download('sv_core_news_sm')
 
 # Download NLTK data
 # Corpora

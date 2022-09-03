@@ -23,6 +23,7 @@ import subprocess
 langs = [
     ['Catalan'         , 'cat', 'ca'],
     ['Chinese'         , 'zho', 'zh'],
+    ['Croatian'        , 'hrv', 'hr'],
     ['Danish'          , 'dan', 'da'],
     ['Dutch'           , 'nld', 'nl'],
     ['English'         , 'eng', 'en'],
@@ -38,46 +39,20 @@ langs = [
     ['Portuguese'      , 'por', 'pt'],
     ['Romanian'        , 'ron', 'ro'],
     ['Russian'         , 'rus', 'ru'],
-    ['Spanish'         , 'spa', 'es']
+    ['Spanish'         , 'spa', 'es'],
+    ['Swedish'         , 'swe', 'sv']
 ]
 
-model_name_cat = 'core_news_sm'
-model_name_zho = 'core_web_sm'
-model_name_dan = 'core_news_sm'
-model_name_nld = 'core_news_sm'
-model_name_eng = 'core_web_sm'
-model_name_fra = 'core_news_sm'
-model_name_deu = 'core_news_sm'
-model_name_ell = 'core_news_sm'
-model_name_ita = 'core_news_sm'
-model_name_jpn = 'core_news_sm'
-model_name_lit = 'core_news_sm'
-model_name_mkd = 'core_news_sm'
-model_name_nob = 'core_news_sm'
-model_name_pol = 'core_news_sm'
-model_name_por = 'core_news_sm'
-model_name_ron = 'core_news_sm'
-model_name_rus = 'core_news_sm'
-model_name_spa = 'core_news_sm'
+model_name_zho = model_name_eng = 'core_web_sm'
+model_name_cat = model_name_hrv = model_name_dan = model_name_nld = model_name_fra = \
+model_name_deu = model_name_ell = model_name_ita = model_name_jpn = model_name_lit = \
+model_name_mkd = model_name_nob = model_name_pol = model_name_por = model_name_ron = \
+model_name_rus = model_name_spa = model_name_swe = 'core_news_sm'
 
-model_ver_cat = '3.4.0'
-model_ver_zho = '3.4.0'
-model_ver_dan = '3.4.0'
-model_ver_nld = '3.4.0'
-model_ver_eng = '3.4.0'
-model_ver_fra = '3.4.0'
-model_ver_deu = '3.4.0'
-model_ver_ell = '3.4.0'
-model_ver_ita = '3.4.0'
-model_ver_jpn = '3.4.0'
-model_ver_lit = '3.4.0'
-model_ver_mkd = '3.4.0'
-model_ver_nob = '3.4.0'
-model_ver_pol = '3.4.0'
-model_ver_por = '3.4.0'
-model_ver_ron = '3.4.0'
-model_ver_rus = '3.4.0'
-model_ver_spa = '3.4.0'
+model_ver_cat = model_ver_zho = model_ver_hrv = model_ver_dan = model_ver_nld = \
+model_ver_eng = model_ver_fra = model_ver_deu = model_ver_ell = model_ver_ita = \
+model_ver_jpn = model_ver_lit = model_ver_mkd = model_ver_nob = model_ver_pol = \
+model_ver_por = model_ver_ron = model_ver_rus = model_ver_spa = model_ver_swe = '3.4.0'
 
 # Check updates
 for lang_text, lang_code_639_3, lang_code_639_1 in langs:
