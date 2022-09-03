@@ -1107,20 +1107,9 @@ def init_settings_default(main):
 
         # Settings - Sentence Tokenization
         'sentence_tokenization': {
-            'sentence_tokenizers': {
-                'afr': 'spacy_sentencizer',
-                'sqi': 'spacy_sentencizer',
-                'amh': 'spacy_sentencizer',
-                'ara': 'spacy_sentencizer',
-                'hye': 'spacy_sentencizer',
-                'aze': 'spacy_sentencizer',
-                'eus': 'spacy_sentencizer',
-                'ben': 'spacy_sentencizer',
-                'bul': 'spacy_sentencizer',
-                'cat': 'spacy_sentencizer',
+            'sentence_tokenizer_settings': {
                 'zho_cn': 'spacy_sentence_recognizer',
                 'zho_tw': 'spacy_sentence_recognizer',
-                'hrv': 'spacy_sentencizer',
                 'ces': 'nltk_punkt',
                 'dan': 'spacy_sentence_recognizer',
                 'nld': 'spacy_sentence_recognizer',
@@ -1132,68 +1121,38 @@ def init_settings_default(main):
                 'deu_at': 'spacy_sentence_recognizer',
                 'deu_de': 'spacy_sentence_recognizer',
                 'deu_ch': 'spacy_sentence_recognizer',
-                'grc': 'spacy_sentencizer',
                 'ell': 'spacy_sentence_recognizer',
-                'guj': 'spacy_sentencizer',
-                'heb': 'spacy_sentencizer',
-                'hin': 'spacy_sentencizer',
-                'hun': 'spacy_sentencizer',
-                'isl': 'spacy_sentencizer',
-                'ind': 'spacy_sentencizer',
-                'gle': 'spacy_sentencizer',
                 'ita': 'spacy_sentence_recognizer',
                 'jpn': 'spacy_sentence_recognizer',
-                'kan': 'spacy_sentencizer',
-                'kir': 'spacy_sentencizer',
-                'lav': 'spacy_sentencizer',
-                'lij': 'spacy_sentence_recognizer',
-                'lit': 'spacy_sentencizer',
-                'ltz': 'spacy_sentencizer',
-                'mkd': 'spacy_sentencizer',
-                'mal': 'spacy_sentencizer',
-                'mar': 'spacy_sentencizer',
-                'nep': 'spacy_sentencizer',
+                'lit': 'spacy_sentence_recognizer',
                 'nob': 'spacy_sentence_recognizer',
                 'nno': 'nltk_punkt',
-                'fas': 'spacy_sentencizer',
                 'pol': 'spacy_sentence_recognizer',
                 'por_br': 'spacy_sentence_recognizer',
                 'por_pt': 'spacy_sentence_recognizer',
                 'ron': 'spacy_sentence_recognizer',
                 'rus': 'spacy_sentence_recognizer',
-                'san': 'spacy_sentencizer',
-                'srp_cyrl': 'spacy_sentencizer',
-                'srp_latn': 'spacy_sentencizer',
-                'sin': 'spacy_sentencizer',
-                'slk': 'spacy_sentencizer',
                 'slv': 'nltk_punkt',
                 'spa': 'spacy_sentence_recognizer',
                 'swe': 'nltk_punkt',
-                'tgl': 'spacy_sentencizer',
-                'tam': 'spacy_sentencizer',
-                'tat': 'spacy_sentencizer',
-                'tel': 'spacy_sentencizer',
                 'tha': 'pythainlp_crfcut',
                 'bod': 'botok_bod',
-                'tir': 'spacy_sentencizer',
-                'tsn': 'spacy_sentencizer',
                 'tur': 'nltk_punkt',
-                'ukr': 'spacy_sentencizer',
-                'urd': 'spacy_sentencizer',
                 'vie': 'underthesea_vie',
-                'yor': 'spacy_sentencizer',
 
-                'other': 'spacy_sentence_recognizer'
+                'other': 'spacy_sentencizer'
             },
 
-            'preview_lang': 'eng_us',
-            'preview_samples': '',
-            'preview_results': ''
+            'preview': {
+                'preview_lang': 'eng_us',
+                'preview_samples': '',
+                'preview_results': ''
+            }
         },
 
         # Settings - Word Tokenization
         'word_tokenization': {
-            'word_tokenizers': {
+            'word_tokenizer_settings': {
                 'afr': 'spacy_afr',
                 'sqi': 'spacy_sqi',
                 'amh': 'spacy_amh',
@@ -1256,6 +1215,8 @@ def init_settings_default(main):
                 'sin': 'spacy_sin',
                 'slk': 'sacremoses_moses',
                 'slv': 'sacremoses_moses',
+                'dsb': 'spacy_dsb',
+                'hsb': 'spacy_hsb',
                 'spa': 'spacy_spa',
                 'swe': 'spacy_swe',
                 'tgl': 'spacy_tgl',
@@ -1277,9 +1238,11 @@ def init_settings_default(main):
                 'other': 'spacy_eng'
             },
 
-            'preview_lang': 'eng_us',
-            'preview_samples': '',
-            'preview_results': ''
+            'preview': {
+                'preview_lang': 'eng_us',
+                'preview_samples': '',
+                'preview_results': ''
+            }
         },
 
         # Settings - Syllable Tokenization
@@ -1516,7 +1479,7 @@ def init_settings_default(main):
 
         # Settings - Stop Word Lists
         'stop_word_lists': {
-            'stop_word_lists': {
+            'stop_word_list_settings': {
                 'afr': 'spacy_afr',
                 'akk': 'cltk_akk',
                 'sqi': 'spacy_sqi',
@@ -1598,6 +1561,8 @@ def init_settings_default(main):
                 'slk': 'spacy_slk',
                 'slv': 'spacy_slv',
                 'som': 'stopwords_iso_som',
+                'dsb': 'spacy_dsb',
+                'hsb': 'spacy_hsb',
                 'sot': 'stopwords_iso_sot',
                 'spa': 'spacy_spa',
                 'swa': 'stopwords_iso_swa',
@@ -1702,6 +1667,8 @@ def init_settings_default(main):
                 'slk': [],
                 'slv': [],
                 'som': [],
+                'dsb': [],
+                'hsb': [],
                 'sot': [],
                 'spa': [],
                 'swa': [],
@@ -1724,7 +1691,9 @@ def init_settings_default(main):
                 'other': []
             },
 
-            'preview_lang': 'eng_us',
+            'preview': {
+                'preview_lang': 'eng_us'
+            }
         },
 
         # Settings - Tables

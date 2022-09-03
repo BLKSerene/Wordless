@@ -31,7 +31,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
         lang = 'other'
 
     if stop_word_list == 'default':
-        stop_word_list = main.settings_custom['stop_word_lists']['stop_word_lists'][lang]
+        stop_word_list = main.settings_custom['stop_word_lists']['stop_word_list_settings'][lang]
 
     stop_words = []
 
@@ -174,10 +174,6 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 stop_words = spacy_lang.STOP_WORDS
         # Stopwords ISO
         elif stop_word_list.startswith('stopwords_iso_'):
-            # Greek (Ancient)
-            if lang_639_1 == 'grc':
-                lang_639_1 = 'el'
-
             # Norwegian
             if lang_639_1 in ['nb', 'nn']:
                 lang_639_1 = 'no'
@@ -195,8 +191,6 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
 
 def wl_filter_stop_words(main, items, lang):
     stop_word_list = wl_get_stop_word_list(main, lang)
-
-    print(stop_word_list)
 
     # Check if the list is empty
     if items:
