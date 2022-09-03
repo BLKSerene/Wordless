@@ -59,7 +59,12 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     if lang == 'zho_cn':
         assert sentences == ['汉语又称华语[3]、唐话[4]，概指由上古汉语（先秦雅言）发展而来、书面使用汉字的分析语，为汉藏语系最大的一支语族。', '如把整个汉语族视为单一语言，则汉语为世界使用人数最多的语言，目前全世界有五分之一人口将汉语做为母语或第二语言。']
     elif lang == 'zho_tw':
-        assert sentences == ['漢語又稱華語[3]、唐話[4]，概指由上古漢語（先秦雅言）發展而來、書面使用漢字的分析語，為漢藏語系最大的一支語族。', '如把整個漢語族視為單一語言，則漢語為世界使用人數最多的語言，目前全世界有五分之一人口將漢語做為母語或第二語言。']
+        if sentence_tokenizer == 'spacy_sentence_recognizer':
+            assert sentences == ['漢語又稱華語[3]、唐話[4]，概指由上古漢語（先秦雅言）', '發展而來、書面使用漢字的分析語，為漢藏語系最大的一支語族。', '如把整個漢語族視為單一語言，則漢語為世界使用人數最多的語言，目前全世界有五分之一人口將漢語做為母語或第二語言。']
+        elif sentence_tokenizer == 'wordless_zho':
+            assert sentences == ['漢語又稱華語[3]、唐話[4]，概指由上古漢語（先秦雅言）發展而來、書面使用漢字的分析語，為漢藏語系最大的一支語族。', '如把整個漢語族視為單一語言，則漢語為世界使用人數最多的語言，目前全世界有五分之一人口將漢語做為母語或第二語言。']
+        else:
+            raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
     elif lang == 'ces':
         assert sentences == ['Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.', 'Patří mezi slovanské jazyky, do rodiny jazyků indoevropských.', 'Čeština se vyvinula ze západních nářečí praslovanštiny na konci 10. století.', 'Je částečně ovlivněná latinou a němčinou.', 'Česky psaná literatura se objevuje od 14. století.', 'První písemné památky jsou však již z 12. století.']
     elif lang == 'dan':
