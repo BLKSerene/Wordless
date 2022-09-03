@@ -25,7 +25,7 @@ main = wl_test_init.Wl_Test_Main()
 
 TOKENS_MULTILEVEL_0 = []
 TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
-TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'metropolis', 'boxes', 'created', '.']]]]
+TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'readability', 'boxes', 'created', '.']]]]
 TOKENS_MULTILEVEL_100 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'a', 'sen-tence0', '.']]]]
 TOKENS_MULTILEVEL_120 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'metropolis', '.']]]] * 15
 TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 18 + [[[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]]
