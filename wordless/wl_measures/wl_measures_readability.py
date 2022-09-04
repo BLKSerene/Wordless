@@ -81,12 +81,12 @@ def get_counts(main, text):
                 elif char.isalnum():
                     text.count_chars_alphanumeric += 1
 
-# Calculate the number of words outside the Dale list of 3000 easy words
+# Calculate the number of words outside Dale's lists of easy words
 def get_count_difficult_words(words, num_easy_words):
     dale_list_easy_words = set()
     count_difficult_words = 0
 
-    # Load Dale list of easy words [769, 3000]
+    # Load Dale's lists of easy words (769/3000)
     with open(f'data/dale_list_easy_words_{num_easy_words}.txt', 'r', encoding = 'utf_8') as f:
         for line in f:
             word = line.strip()

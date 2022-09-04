@@ -27,6 +27,7 @@ langs = [
     ['Danish'          , 'dan', 'da'],
     ['Dutch'           , 'nld', 'nl'],
     ['English'         , 'eng', 'en'],
+    ['Finnish'         , 'fin', 'fi'],
     ['French'          , 'fra', 'fr'],
     ['German'          , 'deu', 'de'],
     ['Greek'           , 'ell', 'el'],
@@ -44,15 +45,16 @@ langs = [
 ]
 
 model_name_zho = model_name_eng = 'core_web_sm'
-model_name_cat = model_name_hrv = model_name_dan = model_name_nld = model_name_fra = \
-model_name_deu = model_name_ell = model_name_ita = model_name_jpn = model_name_lit = \
-model_name_mkd = model_name_nob = model_name_pol = model_name_por = model_name_ron = \
-model_name_rus = model_name_spa = model_name_swe = 'core_news_sm'
+model_name_cat = model_name_hrv = model_name_dan = model_name_nld = model_name_fin = \
+model_name_fra = model_name_deu = model_name_ell = model_name_ita = model_name_jpn = \
+model_name_lit = model_name_mkd = model_name_nob = model_name_pol = model_name_por = \
+model_name_ron = model_name_rus = model_name_spa = model_name_swe = 'core_news_sm'
 
 model_ver_cat = model_ver_zho = model_ver_hrv = model_ver_dan = model_ver_nld = \
-model_ver_eng = model_ver_fra = model_ver_deu = model_ver_ell = model_ver_ita = \
-model_ver_jpn = model_ver_lit = model_ver_mkd = model_ver_nob = model_ver_pol = \
-model_ver_por = model_ver_ron = model_ver_rus = model_ver_spa = model_ver_swe = '3.4.0'
+model_ver_eng = model_ver_fin = model_ver_fra = model_ver_deu = model_ver_ell = \
+model_ver_ita = model_ver_jpn = model_ver_lit = model_ver_mkd = model_ver_nob = \
+model_ver_pol = model_ver_por = model_ver_ron = model_ver_rus = model_ver_spa = \
+model_ver_swe = '3.4.0'
 
 # Check updates
 for lang_text, lang_code_639_3, lang_code_639_1 in langs:

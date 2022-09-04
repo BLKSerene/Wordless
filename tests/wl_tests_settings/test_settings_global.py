@@ -176,7 +176,9 @@ class Check_Settings_Global():
                 else:
                     langs_supported_spacy_lemmatizers.append(lang_code)
 
-        # The Japanese model takes POS tags directly from SudachiPy
+        # Languages without data files
+        langs_supported_spacy_lemmatizers.extend(['fi'])
+        # Japanese model takes POS tags directly from SudachiPy
         langs_supported_spacy_lemmatizers = add_country_codes(langs_supported_spacy_lemmatizers) + ['ja']
 
         # Stop word lists

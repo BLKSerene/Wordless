@@ -102,6 +102,8 @@ def test_lemmatize(lang, lemmatizer):
             raise Exception(f'Error: Tests for lemmatizer "{lemmatizer}" is skipped!')
     elif lang == 'est':
         assert lemmas == ['Eesti', 'kee', '(', 'varasem', 'nimetu', 'maakeel', ')', 'olema', 'läänemeresoome', 'lõunarühma', 'kuuluma', 'kee', '.']
+    elif lang == 'fin':
+        assert lemmas == ['Suomi', 'kieli', '(', 'suomi', ')', 'olla', 'uralilainen', 'kieli', 'itämerensuomalainen', 'ryhmä', 'kuulua', 'kieli', ',', 'joka', 'puhua', 'pääosin', 'suomalainen', '.']
     elif lang == 'fra':
         if lemmatizer == 'lemmatization_lists_fra':
             assert lemmas == ['Le', 'français', 'être', 'un', 'langue', 'indo', '-', 'européen', 'de', 'le', 'famille', 'un', 'langue', 'roman', 'do', 'nt', 'le', 'locuteurs', 'être', 'appeler', 'francophone', ',', 'également', 'surnommer', 'le', 'langue', 'de', 'Molière', '.']

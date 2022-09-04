@@ -37,7 +37,7 @@ def wl_lemmatize(
         lemmas = []
 
         if lemmatizer == 'default':
-            lemmatizer = main.settings_custom['lemmatization']['lemmatizers'][lang]
+            lemmatizer = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
 
         wl_nlp_utils.init_word_tokenizers(
             main,
