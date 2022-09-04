@@ -28,7 +28,7 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
         syls_tokens = []
 
         if syl_tokenizer == 'default':
-            syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizers'][lang]
+            syl_tokenizer = main.settings_custom['syl_tokenization']['syl_tokenizer_settings'][lang]
 
         wl_nlp_utils.init_syl_tokenizers(
             main,

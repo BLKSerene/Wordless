@@ -60,6 +60,7 @@ SPACY_LANGS = {
     'dan': 'da_core_news_sm',
     'nld': 'nl_core_news_sm',
     'eng': 'en_core_web_sm',
+    'fin': 'fi_core_news_sm',
     'fra': 'fr_core_news_sm',
     'deu': 'de_core_news_sm',
     'ell': 'el_core_news_sm',
