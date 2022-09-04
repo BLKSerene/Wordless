@@ -36,8 +36,7 @@ for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
 def test_get_stop_word_list(lang, stop_word_list):
     stop_words = wl_stop_word_lists.wl_get_stop_word_list(main, lang, stop_word_list = stop_word_list)
 
-    print(f'{lang} / {stop_word_list}:')
-    print(f'{stop_words}\n')
+    print(f'Number of stop words ({lang} / {stop_word_list}): {len(stop_words)}')
 
     if stop_word_list == 'custom':
         # Check if custom list is empty
