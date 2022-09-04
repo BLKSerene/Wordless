@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 # ----------------------------------------------------------------------
 # Wordless: Tests - NLP - Word Tokenization
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
