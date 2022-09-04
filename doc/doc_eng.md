@@ -635,7 +635,7 @@ English (United Kingdom)|✔|✔|✔|✔|✔|✔
 English (United States) |✔|✔|✔|✔|✔|✔
 Esperanto               |⭕️ |⭕️ |✔|✖️|✖️|✔
 Estonian                |✔|✔|✔|✖️|✔|✔
-Finnish                 |✔|✔|✖️|✖️|✖️|✔
+Finnish                 |✔|✔|✖️|✔|✔|✔
 French                  |✔|✔|✔|✔|✔|✔
 French (Old)            |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Galician                |⭕️ |⭕️ |✔|✖️|✔|✔

@@ -491,6 +491,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Danish POS Tagger'): 'spacy_dan',
                 _tr('init_settings_global', 'spaCy - Dutch POS Tagger'): 'spacy_nld',
                 _tr('init_settings_global', 'spaCy - English POS Tagger'): 'spacy_eng',
+                _tr('init_settings_global', 'spaCy - Finnish POS Tagger'): 'spacy_fin',
                 _tr('init_settings_global', 'spaCy - French POS Tagger'): 'spacy_fra',
                 _tr('init_settings_global', 'spaCy - German POS Tagger'): 'spacy_deu',
                 _tr('init_settings_global', 'spaCy - Greek (Modern) POS Tagger'): 'spacy_ell',
@@ -549,6 +550,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Danish Lemmatizer'): 'spacy_dan',
                 _tr('init_settings_global', 'spaCy - Dutch Lemmatizer'): 'spacy_nld',
                 _tr('init_settings_global', 'spaCy - English Lemmatizer'): 'spacy_eng',
+                _tr('init_settings_global', 'spaCy - Finnish Lemmatizer'): 'spacy_fin',
                 _tr('init_settings_global', 'spaCy - French Lemmatizer'): 'spacy_fra',
                 _tr('init_settings_global', 'spaCy - German Lemmatizer'): 'spacy_deu',
                 _tr('init_settings_global', 'spaCy - Greek (Ancient) Lemmatizer'): 'spacy_grc',
@@ -579,6 +581,7 @@ def init_settings_global():
 
             'stop_word_lists': {
                 _tr('init_settings_global', 'Custom List'): 'custom',
+
                 _tr('init_settings_global', 'CLTK - Akkadian Stop Word List'): 'cltk_akk',
                 _tr('init_settings_global', 'CLTK - Arabic (Standard) Stop Word List'): 'cltk_arb',
                 _tr('init_settings_global', 'CLTK - Coptic Stop Word List'): 'cltk_cop',
@@ -1597,6 +1600,10 @@ def init_settings_global():
                 'spacy_eng'
             ],
 
+            'fin': [
+                'spacy_fin'
+            ],
+
             'fra': [
                 'spacy_fra'
             ],
@@ -1732,6 +1739,10 @@ def init_settings_global():
 
             'est': [
                 'lemmatization_lists_est'
+            ],
+
+            'fin': [
+                'spacy_fin'
             ],
 
             'fra': [
