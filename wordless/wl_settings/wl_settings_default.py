@@ -1247,7 +1247,7 @@ def init_settings_default(main):
 
         # Settings - Syllable Tokenization
         'syl_tokenization': {
-            'syl_tokenizers': {
+            'syl_tokenizer_settings': {
                 'afr': 'pyphen_afr',
                 'sqi': 'pyphen_sqi',
                 'bel': 'pyphen_bel',
@@ -1293,9 +1293,11 @@ def init_settings_default(main):
                 'zul': 'pyphen_zul'
             },
 
-            'preview_lang': 'eng_us',
-            'preview_samples': '',
-            'preview_results': ''
+            'preview': {
+                'preview_lang': 'eng_us',
+                'preview_samples': '',
+                'preview_results': ''
+            }
         },
 
         # Settings - POS Tagging
@@ -1310,6 +1312,7 @@ def init_settings_default(main):
                     'nld': 'spacy_nld',
                     'eng_gb': 'spacy_eng',
                     'eng_us': 'spacy_eng',
+                    'fin': 'spacy_fin',
                     'fra': 'spacy_fra',
                     'deu_at': 'spacy_deu',
                     'deu_de': 'spacy_deu',
@@ -1355,6 +1358,7 @@ def init_settings_default(main):
                         'nld': 'spacy_nld',
                         'eng_gb': 'spacy_eng',
                         'eng_us': 'spacy_eng',
+                        'fin': 'spacy_fin',
                         'fra': 'spacy_fra',
                         'deu_at': 'spacy_deu',
                         'deu_de': 'spacy_deu',
@@ -1426,7 +1430,7 @@ def init_settings_default(main):
 
         # Settings - Lemmatization
         'lemmatization': {
-            'lemmatizers': {
+            'lemmatizer_settings': {
                 'ast': 'lemmatization_lists_ast',
                 'ben': 'spacy_ben',
                 'bul': 'lemmatization_lists_bul',
@@ -1438,6 +1442,7 @@ def init_settings_default(main):
                 'eng_gb': 'spacy_eng',
                 'eng_us': 'spacy_eng',
                 'est': 'lemmatization_lists_est',
+                'fin': 'spacy_fin',
                 'fra': 'spacy_fra',
                 'glg': 'lemmatization_lists_glg',
                 'deu_at': 'spacy_deu',
@@ -1475,10 +1480,11 @@ def init_settings_default(main):
                 'cym': 'lemmatization_lists_cym'
             },
 
-            'preview_lang': 'eng_us',
-            'preview_samples': '',
-            'preview_results': ''
-
+            'preview': {
+                'preview_lang': 'eng_us',
+                'preview_samples': '',
+                'preview_results': ''
+            }
         },
 
         # Settings - Stop Word Lists
