@@ -53,7 +53,6 @@ def add_country_codes(lang_codes):
 
     return sorted(lang_codes)
 
-
 class Check_Settings_Global():
     def __init__(self):
         self.lang_missing = False
@@ -102,14 +101,14 @@ class Check_Settings_Global():
         settings_word_tokenizers_default = settings_default['word_tokenization']['word_tokenizer_settings']
 
         settings_syl_tokenizers = settings_global['syl_tokenizers']
-        settings_syl_tokenizers_default = settings_default['syl_tokenization']['syl_tokenizers']
+        settings_syl_tokenizers_default = settings_default['syl_tokenization']['syl_tokenizer_settings']
 
         settings_pos_taggers = settings_global['pos_taggers']
         settings_pos_taggers_default = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']
         settings_tagsets_default = settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger']
 
         settings_lemmatizers = settings_global['lemmatizers']
-        settings_lemmatizers_default = settings_default['lemmatization']['lemmatizers']
+        settings_lemmatizers_default = settings_default['lemmatization']['lemmatizer_settings']
 
         settings_stop_word_lists = settings_global['stop_word_lists']
         settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_list_settings']
