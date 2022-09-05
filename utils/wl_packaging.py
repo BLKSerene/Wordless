@@ -26,7 +26,7 @@ def print_with_elapsed_time(message):
     print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] {message}')
 
 # Version number
-with open('src/VERSION', 'r', encoding = 'utf_8') as f:
+with open('../VERSION', 'r', encoding = 'utf_8') as f:
     for line in f:
         if line.strip() and not line.startswith('#'):
             wl_ver = line.strip()
