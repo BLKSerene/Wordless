@@ -54,11 +54,12 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data', in
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ca_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('zh_core_web_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('hr_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('da_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('de_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('el_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('es_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('fi_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('fr_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('it_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ja_core_news_sm'))
@@ -70,6 +71,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('es_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('sv_core_news_sm'))
 # SudachiPy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachipy'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachidict_core'))
@@ -90,7 +93,7 @@ datas.extend([
     (underthesea.file_utils.UNDERTHESEA_FOLDER, '.underthesea'),
 
     # Data
-    ('../data', 'data')
+    ('../data', 'data'),
     # Fonts
     ('../fonts', 'fonts'),
     # Images
@@ -120,11 +123,12 @@ hiddenimports = [
     # spaCy models
     'ca_core_news_sm',
     'zh_core_web_sm',
+    'hr_core_news_sm',
     'da_core_news_sm',
     'de_core_news_sm',
     'el_core_news_sm',
     'en_core_web_sm',
-    'es_core_news_sm',
+    'fi_core_news_sm',
     'fr_core_news_sm',
     'it_core_news_sm',
     'ja_core_news_sm',
@@ -136,17 +140,15 @@ hiddenimports = [
     'pt_core_news_sm',
     'ro_core_news_sm',
     'ru_core_news_sm',
+    'es_core_news_sm',
+    'sv_core_news_sm',
 
     # SudachiPy
     'sudachidict_core'
 ]
 
 # Exclusions
-excludes = [
-    # PySide
-    'PySide2',
-    'shiboken2'
-]
+excludes = []
 
 # Icons
 if platform.system() in ['Windows', 'Linux']:
