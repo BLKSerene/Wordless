@@ -48,6 +48,7 @@
 - Settings: Allow resizing of Settings dialog box
 - Settings: Update Settings - Files - Tags - Header Tag Settings
 - Utils: Update language detection
+- Work Area: Allow one-to-many parallel concordancing in Parallel Concordancer
 - Work Area: Update Profiler - Type-token Ratio (Standardized)
 
 ### 📌 Bugfixes
@@ -67,6 +68,7 @@
 - Work Area: Remove Concordancer / Parallel Concordancer - Generation Settings - Sampling Method
 - Work Area: Remove Keyword Extractor - Generation Settings - Reference Files
 - Work Area: Remove N-gram Generator - Search Settings - Allow skipped tokens within search terms
+- Work Area: Remove Parallel Concordancer - Sort Results / Generation Settings
 - Work Area: Remove Profiler - Generation Settings
 - Work Area: Remove Wordlist Generator / N-gram Generator / Collocation Extractpr / Colligation Extractor / Keyword Extractor - Generation Settings - Advanced Settings
 

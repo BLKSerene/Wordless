@@ -614,7 +614,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                     len_context_left += len_token_next
 
                                 while len_context_right < width_right_char:
-                                    if i + 1 + len(context_right) > len(text.tokens_flat_puncs_merged) - 1:
+                                    if i + len_search_term + len(context_right) > len(text.tokens_flat_puncs_merged) - 1:
                                         break
                                     else:
                                         token_next = tokens[i + len_search_term + len(context_right)]
@@ -632,38 +632,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 text_search_right = copy.deepcopy(context_right)
 
                                 if not settings['token_settings']['puncs']:
-                                    context_left_first_puncs = text.tokens_flat_puncs_merged[i - len(context_left)]
-                                    context_right_last_puncs = text.tokens_flat_puncs_merged[i + len_search_term + len(context_right) - 1]
-                                    context_left_first = ''
-                                    context_right_last = ''
-
-                                    len_context_left_first = 0
-                                    len_context_right_last = 0
-
-                                    while len_context_left_first < len(context_left[0]):
-                                        char_next = context_left_first_puncs[-(len(context_left_first) + 1)]
-
-                                        context_left_first = char_next + context_left_first
-
-                                        if char_next.isalnum():
-                                            len_context_left_first += 1
-
-                                    while len_context_right_last < len(context_right[-1]):
-                                        char_next = context_right_last_puncs[len(context_right_last)]
-
-                                        context_right_last += char_next
-
-                                        if char_next.isalnum():
-                                            len_context_right_last += 1
-
-                                    context_left = (
-                                        [context_left_first]
-                                        + text.tokens_flat_puncs_merged[i - len(context_left) + 1: i]
-                                    )
-                                    context_right = (
-                                        text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + len(context_right) - 1]
-                                        + [context_right_last]
-                                    )
+                                    context_left = text.tokens_flat_puncs_merged[i - len(context_left): i]
+                                    context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + len(context_right)]
                             elif settings['generation_settings']['width_unit'] == self.tr('Token'):
                                 width_left_token = settings['generation_settings']['width_left_token']
                                 width_right_token = settings['generation_settings']['width_right_token']
@@ -699,7 +669,11 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 width_right = settings['generation_settings'][f'width_right_{width_settings}']
 
                                 offset_start = offsets_unit[max(0, no_unit - 1 - width_left)]
-                                offset_end = offsets_unit[min(no_unit + width_right, len_unit - 1)]
+
+                                if no_unit + width_right > len_unit - 1:
+                                    offset_end = None
+                                else:
+                                    offset_end = offsets_unit[no_unit + width_right]
 
                                 context_left = text.tokens_flat_puncs_merged[offset_start:i]
                                 context_right = text.tokens_flat_puncs_merged[i + len_search_term : offset_end]
