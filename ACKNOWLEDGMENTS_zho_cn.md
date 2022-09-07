@@ -29,7 +29,7 @@
 5 |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |N/A    |Jason Champion|[MIT](https://github.com/Xangis/extra-stopwords/blob/master/LICENSE)
 6 |[jieba](https://github.com/fxsjy/jieba)                               |0.42.1 |孙君意|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
 7 |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|N/A    |Michal Boleslav Měchura|[ODbL-1.0](https://github.com/michmech/lemmatization-lists/blob/master/LICENCE)
-8 |[Lingua](https://github.com/pemistahl/lingua-py)                      |1.0.1  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
+8 |[Lingua](https://github.com/pemistahl/lingua-py)                      |1.1.2  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 9 |[Matplotlib](https://matplotlib.org/)                                 |3.5.3  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 10|[NetworkX](https://networkx.org/)                                     |2.8.5  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 11|[NLTK](http://www.nltk.org/)                                          |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
