@@ -355,27 +355,18 @@ You can generate concordance plots for all search terms. You can modify the sett
 <span id="doc-eng-3-3"></span>
 ### 3.3 Parallel Concordancer [[Back to Contents]](#doc-eng)
 
-In *Parallel Concordancer*, you can search for tokens in parallel corpora and generate parallel concordance lines. You can specify the source and target file and other settings for data generation via **Generation Settings**.
+In *Parallel Concordancer*, you can search for tokens in parallel corpora and generate parallel concordance lines. You may leave **Search Settings → Search Term** blank so as to search for instances of additions and deletions.
 
-After the parallel concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
+After the parallel concordance lines are generated and displayed in the table, you can search in results by clicking **Search in Results** which resides at the right corner of the *Results Area*.
 
-- **3.3.1 Left**<br>
-    The tokens before each search term within the sentence where the search term is found in the source text.
+- **3.3.1 Parallel Unit No.**<br>
+    The position of the alignment unit (paragraph) where the the search term is found.
 
-- **3.3.2 Node**<br>
-    The search term(s) specified in **Search Settings → Search Term**.
+- **3.3.2 Parallel Unit No. %**<br>
+    The percentage of the position of the alignment unit (paragraph) where the the search term is found.
 
-- **3.3.3 Right**<br>
-    The tokens after each search term within the sentence where the search term is found in the source text.
-
-- **3.3.4 Segment No.**<br>
-    The position of the alignment unit (paragraph) where the **Node** is found in the source text.
-
-- **3.3.5 Segment No. %**<br>
-    The percentage of the position of the alignment unit (paragraph) where the **Node** is found in the source text.
-
-- **3.3.6 Parallel Text**<br>
-    The alignment unit (paragraph) where a translated version of the search term is found in the target text.
+- **3.3.3 Parallel Units**<br>
+    The parallel unit (paragraph) where the search term is found in each file.
 
 ![Parallel Concordancer - Table](/doc/work_area/concordancer_parallel_table.png)
 

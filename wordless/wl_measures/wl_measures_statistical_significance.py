@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=unused-variable, unused-argument
+
 import collections
 
 import numpy
@@ -25,8 +27,6 @@ import scipy.stats
 from wordless.wl_nlp import wl_nlp_utils
 
 _tr = QCoreApplication.translate
-
-# pylint: disable-next=unused-variable, unused-argument
 
 def get_freqs_marginal(c11, c12, c21, c22):
     freqs = numpy.array([[c11, c12], [c21, c22]], dtype = numpy.int64)

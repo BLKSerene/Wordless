@@ -395,6 +395,3 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             self.checkbox_multi_search_mode.setChecked(multi_search_mode)
 
         self.show()
-
-    def add_tables(self, tables):
-        self.tables.extend(tables)

@@ -16,11 +16,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=unused-variable, unused-argument
+
 import numpy
 
 from wordless.wl_measures import wl_measures_statistical_significance
-
-# pylint: disable-next=unused-variable, unused-argument
 
 # %DIFF
 # Reference: Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy.

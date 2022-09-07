@@ -37,13 +37,8 @@ def test_concordancer_parallel():
         for file in files:
             file['selected'] = False
 
-        files_parallel = random.sample(files, 2)
-
-        for file in files_parallel:
+        for file in random.sample(files, 3):
             file['selected'] = True # pylint: disable=unsupported-assignment-operation
-
-        main.settings_custom['concordancer_parallel']['generation_settings']['src_file'] = files_parallel[0]['name'] # pylint: disable=unsubscriptable-object
-        main.settings_custom['concordancer_parallel']['generation_settings']['tgt_file'] = files_parallel[1]['name'] # pylint: disable=unsubscriptable-object
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
@@ -69,18 +64,15 @@ def update_gui(err_msg, concordance_lines):
     assert concordance_lines
 
     for concordance_line in concordance_lines:
-        node_text, node_text_raw, node_text_search = concordance_line[1]
+        parallel_unit_no, len_parallel_units = concordance_line[0]
 
-        no_seg, len_segs = concordance_line[3]
+        # Parallel Unit No.
+        assert parallel_unit_no >= 0
+        assert len_parallel_units >= 1
 
-        # Node
-        assert node_text
-        assert node_text_raw
-        assert node_text_search
-
-        # Segment No.
-        assert no_seg >= 0
-        assert len_segs >= 1
+        # Parallel Units
+        for parallel_unit in concordance_line[1]:
+            assert len(parallel_unit) == 2
 
 if __name__ == '__main__':
     test_concordancer_parallel()

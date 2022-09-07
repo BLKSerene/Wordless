@@ -292,34 +292,8 @@ def init_settings_default(main):
                 }
             },
 
-            'generation_settings': {
-                'src_file': '',
-                'tgt_file': ''
-            },
-
             'table_settings': {
                 'show_pct': True
-            },
-
-            'sort_results': {
-                'sorting_rules': [
-                    [_tr('init_settings_default', 'Segment No.'), _tr('init_settings_default', 'Ascending')]
-                ],
-
-                'highlight_colors': [
-                    # Red
-                    '#F00',
-                    # Orange
-                    '#C2691D',
-                    # Yellow
-                    '#CBBE00',
-                    # Green
-                    '#3F864C',
-                    # Blue
-                    '#264E8C',
-                    # Purple
-                    '#491D76'
-                ]
             },
 
             'search_results': {
