@@ -77,7 +77,7 @@
 - Dependencies: Remove langdetect, langid.py, nagisa, opencc-python, pkuseg, ssg, and Tokenizer
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
-- Dependencies: Upgrade Charset Normalizer to 2.1.0
+- Dependencies: Upgrade Charset Normalizer to 2.1.1
 - Dependencies: Upgrade Matplotlib to 3.5.3
 - Dependencies: Upgrade NetworkX to 2.8.5
 - Dependencies: Upgrade NumPy to 1.23.2

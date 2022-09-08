@@ -24,7 +24,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 -----:|----|:-----:|-------|:-----:
 1 |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)      |4.11.1 |Leonard Richardson|[MIT](https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE)
 2 |[Botok](https://github.com/OpenPecha/Botok)                           |0.8.10 |Hélios Drupchen Hildt|[Apache-2.0](https://github.com/OpenPecha/Botok/blob/master/LICENSE)
-3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)    |2.1.0  |TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
+3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)    |2.1.1  |TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
 4 |[CLTK](https://github.com/cltk/cltk)                                  |1.0.23 |Kyle P. Johnson, Patrick J. Burns, John Stewart,<br>Todd Cook, Clément Besnier, William J. B. Mattingly|[MIT](https://github.com/cltk/cltk/blob/master/LICENSE)
 5 |[extra-stopwords](https://github.com/Xangis/extra-stopwords)          |N/A    |Jason Champion|[MIT](https://github.com/Xangis/extra-stopwords/blob/master/LICENSE)
 6 |[jieba](https://github.com/fxsjy/jieba)                               |0.42.1 |Sun Junyi (孙君意)|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)

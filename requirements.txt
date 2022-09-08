@@ -20,7 +20,7 @@
 
 # Version-pinned
 botok == 0.8.10
-charset-normalizer == 2.1.0
+charset-normalizer == 2.1.1
 jieba == 0.42.1
 lingua-language-detector == 1.1.2
 nltk == 3.7
