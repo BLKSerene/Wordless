@@ -80,7 +80,7 @@
 - Dependencies: Upgrade Charset Normalizer to 2.1.1
 - Dependencies: Upgrade Matplotlib to 3.5.3
 - Dependencies: Upgrade NetworkX to 2.8.6
-- Dependencies: Upgrade NumPy to 1.23.2
+- Dependencies: Upgrade NumPy to 1.23.3
 - Dependencies: Upgrade openpyxl to 3.0.10
 - Dependencies: Upgrade Pyphen to 0.13.0
 - Dependencies: Upgrade PyQt to 5.15.7
