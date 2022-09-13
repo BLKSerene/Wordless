@@ -18,7 +18,7 @@
 
 <div align="center"><img src="/doc/wl_logo.png" alt="Wordless: An Integrated Corpus Tool With Multilingual Support for the Study of Language, Literature, and Translation"></div>
 
-###
+<br>
 
 <div align="center">
     <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
@@ -51,23 +51,24 @@
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
 </div>
 
-###
+<br>
 
 <div align="center">
-    <a href="/README_zho_cn.md">中文 (简体)</a> | <a href="/README_zho_tw.md">中文 (繁體)</a> | <b>English</b>    
+    <a href="/README_zho_cn.md">中文 (简体)</a> | <a href="/README_zho_tw.md">中文 (繁體)</a> | <b>English</b>
 </div>
 
-###
+<br>
 
 Wordless is an integrated corpus tool with multilingual support for the study of language, literature, and translation designed and developed by Ye Lei (叶磊), then MA student in interpreting studies at Shanghai International Studies University (上海外国语大学).
 
 ## Download
+
 The latest version (**2.2.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.9 or later**, and **Ubuntu 14.04 or later**, all **64-bit only**.
 
 For detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
 Release|Remarks
--------|------------
+-------|-------
 [Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_windows.zip)|1. Unzip the file<br>2. Double-click **Wordless/Wordless.exe** to run
 [Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_macos.zip)|1. Unzip the file<br>2. Double-click **Wordless.app** to run
 [Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_linux.tar.gz)|1. Unzip the file<br>2. Double-click **Wordless/Wordless** to run
@@ -83,10 +84,11 @@ Release|Remarks
 remember to replace **/Applications/Wordless.app** with the actual path of Wordless on your computer (you could drag **Wordless.app** to the **Terminal**). Then, **run Wordless again** (the warning prompted in Terminal could be ignored if the program could be successfully opened).<br>
 
 ## Need Help?
+
 If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.
 
 Support Channel       |Information
-----------------------|-------------------
+----------------------|-----------
 Official Documentation|[Documentation](/doc/doc_eng.md)
 Tutorial Videos       |[bilibili](https://space.bilibili.com/34963752/video)
 Bug Reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
@@ -95,6 +97,7 @@ Email Support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmai
 [WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/imgs/wechat_official_account.jpg)
 
 ## Citing
+
 If you publish work that uses Wordless, please cite as follows.
 
 APA (7th Edition):
@@ -106,6 +109,7 @@ MLA (8th Edition):
 <pre><code>Ye Lei. <i>Wordless</i>, version 2.2.0, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## License
+
     Copyright (C) 2018-2022  Ye Lei (叶磊)
     
     This program is free software: you can redistribute it and/or modify
@@ -124,11 +128,13 @@ MLA (8th Edition):
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
 ## Contributing
+
 If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new features by submitting [pull requests](https://github.com/BLKSerene/Wordless/pulls) on Github.
 
 Besides, you may contribute by writing [wikis](https://github.com/BLKSerene/Wordless/wiki) on Github, making tutorial videos, or helping with the translation of the user interface and [documentation](/doc/doc_eng.md) into other languages.
 
 ## Donating
+
 If you would like to support the development of Wordless, you may donate via [PayPal](https://www.paypal.com/), [Alipay](https://global.alipay.com/), or [WeChat Pay](https://pay.weixin.qq.com/index.php/public/wechatpay_en).
 
 PayPal|Alipay|WeChat Pay
@@ -136,4 +142,5 @@ PayPal|Alipay|WeChat Pay
 [![PayPal](/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![Alipay](/imgs/donating_alipay.png)|![WeChat Pay](/imgs/donating_wechat_pay.png)
 
 ## Acknowledgments
+
 See [ACKNOWLEDGMENTS.md](/ACKNOWLEDGMENTS.md) for details.

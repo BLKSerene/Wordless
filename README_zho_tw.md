@@ -18,7 +18,7 @@
 
 <div align="center"><img src="/doc/wl_logo.png" alt="Wordless：一款擁有多語種支援的語料庫整合工具，可用於語言學、文學及翻譯研究"></div>
 
-###
+<br>
 
 <div align="center">
     <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
@@ -51,17 +51,18 @@
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=%E8%A8%B1%E5%8F%AF" alt="許可"></a>
 </div>
 
-###
+<br>
 
 <div align="center">
-    <a href="/README_zho_cn.md">中文（简体）</a> | <b>中文（繁體）</b> | <a href="https://github.com/BLKSerene/Wordless#readme">English</a>    
+    <a href="/README_zho_cn.md">中文（简体）</a> | <b>中文（繁體）</b> | <a href="https://github.com/BLKSerene/Wordless#readme">English</a>
 </div>
 
-###
+<br>
 
 Wordless 是一款擁有多語種支援的語料庫整合工具，其可用於語言學、文學及翻譯研究，由當時就讀於上海外國語大學口譯研究專業的碩士研究生葉磊設計並開發。
 
 ## 下載
+
 Wordless 最新版（**2.2.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.9 或更高版本**、**Ubuntu 14.04 或更高版本**，均僅支援**64位作業系統**。
 
 如需完整的更新日誌，請參閱 [CHANGELOG.md](/CHANGELOG.md)（待翻譯）。
@@ -83,6 +84,7 @@ Wordless 最新版（**2.2.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.9
 請注意將 **/Applications/Wordless.app** 替換為 Wordless 在電腦上的實際存放路徑（可直接拖拽 **Wordless.app** 檔案至**終端**中）。然後，**再次執行 Wordless**（若程式可成功執行，終端中提示的警告可忽略）。
 
 ## 需要幫助？
+
 如果你有任何問題、發現了軟體錯誤、需要提供反饋資訊或想要提交功能需求，你可以透過下方所列的任一支援渠道來獲取開源社群的支援或直接與我聯絡。
 
 支援渠道|資訊
@@ -95,6 +97,7 @@ Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 [微信](https://weixin.qq.com/)公眾號|![微信公眾號](/imgs/wechat_official_account.jpg)
 
 ## 引用
+
 如果你在發表的成果中使用了 Wordless，請按如下格式進行引用。
 
 APA（第7版）：
@@ -115,11 +118,13 @@ MLA（第8版）：
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
 ## 助力
+
 如果你想要助力 Wordless 的開發工作，你可以在 Github 上提交 [pull requests](https://github.com/BLKSerene/Wordless/pulls) 來幫助修復程式錯誤、改善效能或實現新功能。
 
 此外，你還可以在 Github 上撰寫[百科](https://github.com/BLKSerene/Wordless/wiki)、製作影片教程、或幫助將使用者介面及[文檔](/doc/doc_eng.md)翻譯為其他語言。
 
 ## 贊助
+
 如果你願意支援 Wordless 的開發工作，你可以透過 [PayPal](https://www.paypal.com/)、[支付寶](https://www.alipay.com/)或[微信支付](https://pay.weixin.qq.com/)進行贊助。
 
 PayPal|支付寶|微信支付
@@ -127,4 +132,5 @@ PayPal|支付寶|微信支付
 [![PayPal](/imgs/donating_paypal.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32)|![支付寶](/imgs/donating_alipay.png)|![微信支付](/imgs/donating_wechat_pay.png)
 
 ## 致謝
+
 詳情請參閱 [ACKNOWLEDGMENTS_zho_tw.md](/ACKNOWLEDGMENTS_zho_tw.md)。
