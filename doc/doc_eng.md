@@ -473,14 +473,14 @@ You can further filter the results as you see fit by clicking **Filter Results**
 
 - **3.6.6 Test Statistic**<br>
   The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
-   Please note that test statistic is not avilable for some tests of statistical significance.
+
+  Please note that test statistic is not avilable for some tests of statistical significance.
 
 - **3.6.7 p-value**<br>
   The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
 
 - **3.6.8 Bayes Factor**<br>
   The bayes factor the node and the collocating token in each file. You can change the measure of bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
-   Please note that bayes factor is not avilable for some tests of statistical significance.
 
 - **3.6.9 Effect Size**<br>
   The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3) for more details.
