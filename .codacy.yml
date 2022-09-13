@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: CI - Codecov
+# Wordless: CI - Codacy
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,14 +16,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-[run]
-omit =
-    # Tests
-    tests/*
-    # Data
-    data/*
-    fonts/*
-    imgs/*
-    trs/*
-    # Misc
-    utils/*
+---
+exclude_paths:
+  - "data/**"
+  - "fonts/**"
+  - "imgs/**"
+  - "tests/files/**"
+  - "trs/**"
