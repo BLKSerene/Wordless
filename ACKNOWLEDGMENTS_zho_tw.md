@@ -31,7 +31,7 @@
 7 |[Lemmatization Lists](https://github.com/michmech/lemmatization-lists)|N/A    |Michal Boleslav Měchura|[ODbL-1.0](https://github.com/michmech/lemmatization-lists/blob/master/LICENCE)
 8 |[Lingua](https://github.com/pemistahl/lingua-py)                      |1.1.2  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 9 |[Matplotlib](https://matplotlib.org/)                                 |3.5.3  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
-10|[NetworkX](https://networkx.org/)                                     |2.8.5  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
+10|[NetworkX](https://networkx.org/)                                     |2.8.6  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 11|[NLTK](http://www.nltk.org/)                                          |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 12|[NumPy](https://www.numpy.org/)                                       |1.23.2 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 13|[OpenCC](https://github.com/BYVoid/OpenCC)                            |1.1.1  |郭家寶|[Apache-2.0](https://github.com/BYVoid/OpenCC/blob/master/LICENSE)
