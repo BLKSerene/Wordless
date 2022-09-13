@@ -125,6 +125,7 @@ MLA (8th Edition):
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e3ab59f94ffe4c78b8bf3b024fabc136)](https://app.codacy.com/gh/BLKSerene/Wordless?utm_source=github.com&utm_medium=referral&utm_content=BLKSerene/Wordless&utm_campaign=Badge_Grade_Settings)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
 ## Contributing
