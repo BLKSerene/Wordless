@@ -189,7 +189,6 @@
 - Dependencies: Upgrade Tokenizer to 3.3.2
 
 ## [2.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.0.0) - 07/21/2021
-
 ### 🎉 New Features
 - Settings: Add Settings - Files - Default Settings - Tokenized/Tagged
 - Utils: Add CLTK's Akkadian, Arabic (Standard), Coptic, English (Middle), English (Old), French (Old), German (Middle High), Greek (Ancient), Hindi, Latin, Marathi (Old), Norse (Old), Punjabi, and Sanskrit stop word lists
@@ -240,9 +239,7 @@
 - Dependencies: Upgrade spaCy to 3.1.0
 - Dependencies: Upgrade Tokenizer to 3.1.2
 
-
 ## [1.5.0](https://github.com/BLKSerene/Wordless/releases/tag/1.5.0) - 01/15/2021
-
 ### 🎉 New Features
 - Utils: Add AttaCut's Thai word tokenizer
 - Utils: Add pkuseg's Chinese word tokenizer
@@ -277,9 +274,7 @@
 - Dependencies: Upgrade SciPy to 1.6.0
 - Dependencies: Upgrade spaCy to 2.3.5
 
-
 ## [1.4.0](https://github.com/BLKSerene/Wordless/releases/tag/1.4.0) - 12/11/2020
-
 ### 🎉 New Features
 - Settings: Add Settings - File - Tags - Header Tag Settings
 - Settings: Add Settings - Data - Continue numbering after ties
@@ -345,9 +340,7 @@
 - Dependencies: Upgrade Underthesea to 1.2.2
 - Dependencies: Upgrade WordCloud to 1.8.1
 
-
 ## [1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/1.3.0) - 11/30/2019
-
 ### 🎉 New Features
 - Utils: Add razdel's Russian sentenizer and word tokenizer
 - Utils: Add spaCy's Lithuanian word tokenizer, part-of-speech tagger, and lemmatizer
@@ -394,9 +387,7 @@
 - Dependencies: Upgrade underthesea to 1.1.17
 - Dependencies: Upgrade WordCloud to 1.6.0
 
-
 ## [1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/1.2.0) - 08/27/2019
-
 ### 🎉 New Features
 - File Area: Add support for .xml files
 - Settings: Add Settings - Figures - Line Chart / Word Cloud / Network Graph
@@ -444,9 +435,7 @@
 - Dependencies: Upgrade spaCy to 2.1.8
 - Dependencies: Upgrade Underthesea to 1.1.16
 
-
 ## [1.1.0](https://github.com/BLKSerene/Wordless/releases/tag/1.1.0) - 03/31/2019
-
 ### 🎉 New Features
 - Settings: Add Settings - General - Font Settings
 
@@ -469,8 +458,6 @@
 - Dependencies: Upgrade Sacremoses to 0.0.13
 - Dependencies: Upgrade spaCy to 2.1.3
 
-
 ## [1.0.0](https://github.com/BLKSerene/Wordless/releases/tag/1.0.0) - 03/20/2019
-
 ### 🎉 New Features
 - Release Wordless 1.0.0
