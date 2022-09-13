@@ -34,6 +34,8 @@
 <div align="center">
     <a href="https://github.com/PyCQA/pylint">
         <img src="https://img.shields.io/badge/linting-pylint-yellowgreen" alt="linting: pylint"></a>
+    <a href="https://www.codacy.com/gh/BLKSerene/Wordless/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=BLKSerene/Wordless&amp;utm_campaign=Badge_Grade">
+        <img src="https://app.codacy.com/project/badge/Grade/8226d15d1c4b4268beee760f9b59b3db" alt="Codacy"></a>
     <a href="https://sonarcloud.io/summary/new_code?id=BLKSerene_Wordless">
         <img src="https://sonarcloud.io/api/project_badges/measure?project=BLKSerene_Wordless&metric=alert_status" alt="Quality Gate Status"></a>
     <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ACodeQL">
