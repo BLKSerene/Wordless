@@ -72,7 +72,7 @@ def wl_process_tokens(main, text, token_settings):
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, sentence_seg in enumerate(sentence):
-                    para[i] = wl_lemmatization.wl_lemmatize(
+                    sentence[i] = wl_lemmatization.wl_lemmatize(
                         main, sentence_seg,
                         lang = text.lang
                     )
@@ -82,7 +82,7 @@ def wl_process_tokens(main, text, token_settings):
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, sentence_seg in enumerate(sentence):
-                    para[i] = [token.lower() for token in sentence_seg]
+                    sentence[i] = [token.lower() for token in sentence_seg]
 
         text.tags = [
             [tag.lower() for tag in tags]
@@ -335,15 +335,6 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
     return text
 
-def wl_process_tokens_wordlist_generator(main, text, token_settings):
-    return wl_process_tokens(main, text, token_settings)
-
-def wl_process_tokens_ngram_generator(main, text, token_settings):
-    return wl_process_tokens(main, text, token_settings)
-
-def wl_process_tokens_collocation_extractor(main, text, token_settings):
-    return wl_process_tokens(main, text, token_settings)
-
 def wl_process_tokens_colligation_extractor(main, text, token_settings):
     text = wl_process_tokens(main, text, token_settings)
 
@@ -361,6 +352,3 @@ def wl_process_tokens_colligation_extractor(main, text, token_settings):
         ]
 
     return text
-
-def wl_process_tokens_keyword_extractor(main, text, token_settings):
-    return wl_process_tokens(main, text, token_settings)

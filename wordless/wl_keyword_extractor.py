@@ -391,7 +391,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             for file_ref in files_ref:
                 text = copy.deepcopy(file_ref['text'])
-                text = wl_token_processing.wl_process_tokens_keyword_extractor(
+                text = wl_token_processing.wl_process_tokens(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -408,7 +408,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             # Frequency (Observed files)
             for file_observed in files_observed:
                 text = copy.deepcopy(file_observed['text'])
-                text = wl_token_processing.wl_process_tokens_keyword_extractor(
+                text = wl_token_processing.wl_process_tokens(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )

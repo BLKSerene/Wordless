@@ -620,7 +620,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 ngrams_is = []
 
                 text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_ngram_generator(
+                text = wl_token_processing.wl_process_tokens(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
