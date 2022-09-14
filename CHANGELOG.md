@@ -82,6 +82,7 @@
 - Dependencies: Upgrade NetworkX to 2.8.6
 - Dependencies: Upgrade NumPy to 1.23.3
 - Dependencies: Upgrade openpyxl to 3.0.10
+- Dependencies: Upgrade PyInstaller to 5.4.1
 - Dependencies: Upgrade Pyphen to 0.13.0
 - Dependencies: Upgrade PyQt to 5.15.7
 - Dependencies: Upgrade PyThaiNLP to 3.0.8
