@@ -41,12 +41,8 @@ datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy2_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy2_dicts_uk'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_uk'))
-# Pyphen
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pyphen'))
 # PyThaiNLP
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
-# Sacremoses
-datas.extend(PyInstaller.utils.hooks.collect_data_files('sacremoses'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
@@ -117,9 +113,6 @@ hiddenimports = [
     'pymorphy2_dicts_ru',
     'pymorphy2_dicts_uk',
 
-    # scikit-learn
-    'sklearn.pipeline',
-
     # spaCy models
     'ca_core_news_sm',
     'zh_core_web_sm',
@@ -163,6 +156,7 @@ a = Analysis(
     datas = datas,
     hiddenimports = hiddenimports,
     hookspath = [],
+    hooksconfig = {},
     runtime_hooks = [],
     excludes = excludes,
     win_no_prefer_redirects = False,
@@ -170,12 +164,7 @@ a = Analysis(
     cipher = block_cipher,
     noarchive = False
 )
-
-pyz = PYZ(
-    a.pure,
-    a.zipped_data,
-    cipher = block_cipher
-)
+pyz = PYZ(a.pure, a.zipped_data, cipher = block_cipher)
 
 exe = EXE(
     pyz,
@@ -189,12 +178,12 @@ exe = EXE(
     upx = True,
     console = False,
     disable_windowed_traceback = False,
+    argv_emulation = False,
     target_arch = None,
     codesign_identity = None,
     entitlements_file = None,
     icon = icon
 )
-
 # Collect data files
 coll = COLLECT(
     exe,
