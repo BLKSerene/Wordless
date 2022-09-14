@@ -31,9 +31,14 @@ soup.ts['language'] = 'zh_TW'
 # Translate Simplified Chinese into Traditional Chinese
 for element_context in soup.select('context'):
     for element_message in element_context.select('message'):
+        element_src = element_message.select_one('source')
         element_trans = element_message.select_one('translation')
 
-        element_trans.string = cc.convert(element_trans.text)
+        # Language-specific files
+        if element_src.text == 'ACKNOWLEDGMENTS.md':
+            element_trans.string = 'ACKNOWLEDGMENTS_zho_tw.md'
+        else:
+            element_trans.string = cc.convert(element_trans.text)
 
 with open('../trs/zho_tw.ts', 'w', encoding = 'utf_8') as f:
     f.write(str(soup))

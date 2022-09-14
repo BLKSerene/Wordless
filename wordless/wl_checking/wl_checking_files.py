@@ -94,7 +94,7 @@ def check_files_on_loading_colligation_extractor(main, files):
 
         dialog_err_files.label_err.set_text(_tr('check_files_on_loading_colligation_extractor', '''
             <div>
-                The built-in POS taggers currently have no support for the following files, please check your language settings or provide corpora that have already been POS-tagged.
+                The built-in part-of-speech taggers currently have no support for the following files, please check your language settings or provide corpora that have already been part-of-speech tagged.
             </div>
         '''))
 
@@ -105,7 +105,7 @@ def check_files_on_loading_colligation_extractor(main, files):
         for i, file_path in enumerate(file_paths_pos_tagging_unsupported):
             dialog_err_files.table_err_files.model().setItem(
                 i, 0,
-                QStandardItem(_tr('check_files_on_loading_colligation_extractor', 'POS Tagging Unsupported'))
+                QStandardItem(_tr('check_files_on_loading_colligation_extractor', 'Part-of-speech Tagging Unsupported'))
             )
             dialog_err_files.table_err_files.model().setItem(
                 i, 1,
