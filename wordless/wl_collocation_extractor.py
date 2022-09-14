@@ -641,7 +641,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 collocations_freqs_file_all = {}
 
                 text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_collocation_extractor(
+                text = wl_token_processing.wl_process_tokens(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
