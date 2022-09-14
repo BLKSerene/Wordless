@@ -25,11 +25,8 @@ import wl_trs_utils
 # eng_us: [zho_cn]
 TRS_LANGS = {
     'Afrikaans': ['南非语'],
-    'Akkadian': ['阿卡德语'],
     'Albanian': ['阿尔巴尼亚语'],
     'Amharic': ['阿姆哈拉语'],
-    # 'Arabic' contained in 'Arabic (Standard)'
-    'Arabic (Standard)': ['阿拉伯语（标准）'],
     'Arabic': ['阿拉伯语'],
     'Armenian': ['亚美尼亚语'],
     'Assamese': ['阿萨姆语'],
@@ -43,25 +40,19 @@ TRS_LANGS = {
     'Catalan': ['加泰罗尼亚语'],
     'Chinese (Simplified)': ['汉语（简体）'],
     'Chinese (Traditional)': ['汉语（繁体）'],
-    'Coptic': ['科普特语'],
     'Croatian': ['克罗地亚语'],
     'Czech': ['捷克语'],
     'Danish': ['丹麦语'],
     'Dutch': ['荷兰语'],
-    'English (Middle)': ['英语（中古）'],
-    'English (Old)': ['英语（古）'],
     'English (United Kingdom)': ['英语（英国）'],
     'English (United States)': ['英语（美国）'],
     'Esperanto': ['世界语'],
     'Estonian': ['爱沙尼亚语'],
     'Finnish': ['芬兰语'],
-    # 'French' contained in 'French (Old)'
-    'French (Old)': ['法语（古）'],
     'French': ['法语'],
     'Galician': ['加里西亚语'],
     'German (Austria)': ['德语（奥地利）'],
     'German (Germany)': ['德语（德国）'],
-    'German (Middle High)': ['德语（中古高地）'],
     'German (Switzerland)': ['德语（瑞士）'],
     'Greek (Ancient)': ['希腊语（古）'],
     'Greek (Modern)': ['希腊语（现代）'],
@@ -92,13 +83,10 @@ TRS_LANGS = {
     'Malayalam': ['马拉雅拉姆语'],
     'Malay': ['马来语'],
     'Manx': ['马恩语'],
-    # 'Marathi' contained in 'Marathi (Old)'
-    'Marathi (Old)': ['马拉地语（古）'],
     'Marathi': ['马拉地语'],
     'Meitei': ['曼尼普尔语'],
     'Mongolian': ['蒙古语'],
     'Nepali': ['尼泊尔语'],
-    'Norse (Old)': ['诺斯语（古）'],
     'Norwegian Bokmål': ['书面挪威语'],
     'Norwegian Nynorsk': ['新挪威语'],
     'Oriya': ['奥里亚语'],
@@ -116,6 +104,8 @@ TRS_LANGS = {
     'Slovak': ['斯洛伐克语'],
     'Slovenian': ['斯洛文尼亚语'],
     'Somali': ['索马里语'],
+    'Sorbian (Lower)': ['索布语（下）'],
+    'Sorbian (Upper)': ['索布语（上）'],
     'Sotho (Southern)': ['塞索托语'],
     'Spanish': ['西班牙语'],
     'Swahili': ['斯瓦西里语'],
@@ -176,6 +166,7 @@ TRS_FILE_TYPES = {
     'CSV File (*.csv)': ['CSV 文件 (*.csv)'],
     'Excel Workbook (*.xlsx)': ['Excel 工作簿 (*.xlsx)'],
     'HTML Page (*.htm; *.html)': ['HTML 页面 (*.htm; *.html)'],
+    'PDF File (*.pdf)': ['PDF 文件 (*.pdf)'],
     'Text File (*.txt)': ['文本文件 (*.txt)'],
     'Translation Memory File (*.tmx)': ['翻译记忆库文件 (*.tmx)'],
     'Word Document (*.docx)': ['Word 文档 (*.docx)'],
@@ -188,14 +179,13 @@ TRS_NLP_UTILS = {
     'Sentence Tokenizers': ['分句器'],
     'Word Tokenizer Settings': ['分词器设置'],
     'Word Tokenizers': ['分词器'],
-    'Syllable Tokenizer Settings': ['分音器设置'],
-    'Syllable Tokenizers': ['分音器'],
-    'POS Tagger Settings': ['词性标注器设置'],
-    'POS Taggers': ['词性标注器'],
+    'Syllable Tokenizer Settings': ['分音节器设置'],
+    'Syllable Tokenizers': ['分音节器'],
+    'Part-of-speech Tagger Settings': ['词性标注器设置'],
+    'Part-of-speech Taggers': ['词性标注器'],
     'Lemmatizer Settings': ['词形还原器设置'],
     'Lemmatizers': ['词形还原器'],
-    # 'Stop Word Lists' contained in 'Stop Word Lists Settings'
-    'Stop Word Lists Settings': ['停用词表设置'],
+    'Stop Word List Settings': ['停用词表设置'],
     'Stop Word Lists': ['停用词表'],
 
     'Sentence Tokenizer': ['分句器'],
@@ -203,24 +193,25 @@ TRS_NLP_UTILS = {
     'Sentencizer': ['分句器'],
 
     # 'Tokenizer' contained in 'Word Tokenizer', 'Syllable Tokenizer', and others
-    'Syllable Tokenizer': ['分音器'],
+    'Legality Syllable Tokenizer': ['合法性分音节器'],
+    'Sonority Sequencing Syllable Tokenizer': ['响度顺序分音节器'],
+    'Syllable Tokenizer': ['分音节器'],
 
     # 'Word Tokenizer' contained in 'Word Tokenizer (Split Mode'
     'Word Tokenizer (Split Mode': ['分词器（切分模式'],
     'Word Tokenizer': ['分词器'],
     'Penn Treebank Tokenizer': ['宾州树库分词器'],
     'Twitter Tokenizer': ['推特分词器'],
+    'Regular-Expression Tokenizer': ['正则表达式分词器'],
     'Character Tokenizer': ['分字器'],
     'Kanji Tokenizer': ['分字器'],
     'Tokenizer': ['分词器'],
     'Longest Matching': ['最长匹配'],
-    # 'Maximum Matching' contained in 'Maximum Matching + TCC (Safe Mode)'
-    'Maximum Matching + TCC (Safe Mode)': ['最大匹配 + TCC（安全模式）'],
     'Maximum Matching': ['最大匹配'],
 
-    # 'POS Tagger' contained in 'Perceptron POS Tagger'
-    'Perceptron POS Tagger': ['感知机词性标注器'],
-    'POS Tagger': ['词性标注器'],
+    # 'Part-of-speech Tagger' contained in 'Perceptron Part-of-speech Tagger'
+    'Perceptron Part-of-speech Tagger': ['感知机词性标注器'],
+    'Part-of-speech Tagger': ['词性标注器'],
     'Morphological Analyzer': ['形态分析器'],
 
     'Lemmatizer': ['词形还原器'],
@@ -230,7 +221,57 @@ TRS_NLP_UTILS = {
     'Stop Word List': ['停用词表']
 }
 TRS_MISC = {
-    # About Wordless
+    # Lists
+    'Add': ['添加'],
+    'Insert': ['插入'],
+    'Remove': ['移除'],
+    'Clear': ['清空'],
+    'Import': ['导入'],
+    'Export': ['导出'],
+
+    # Dialogs
+    'Yes': ['是'],
+    'No': ['否'],
+    'OK': ['确认'],
+    'Apply': ['应用'],
+    'Save': ['保存'],
+    'Open': ['打开'],
+    'Cancel': ['取消'],
+    'Close': ['关闭'],
+
+    # Statistics
+    'None': ['无'],
+    'L': ['左'],
+    'R': ['右'],
+    'Sync': ['同步'],
+    'From': ['从'],
+    'To': ['至'],
+    'No Limit': ['无限制'],
+    'Two-tailed': ['双尾'],
+    'Left-tailed': ['左尾'],
+    'Right-tailed': ['右尾'],
+
+    # File Area
+    'Name': ['名称'],
+    'Path': ['路径'],
+    'Encoding': ['编码'],
+    'Language': ['语种'],
+
+    # Work Area
+    'Total': ['合计'],
+
+    'Generate Table': ['生成表格'],
+    'Generate Figure': ['生成图表'],
+    'Clear Table': ['清空表格'],
+
+    'Token Settings': ['形符设置'],
+    'Search Settings': ['搜索设置'],
+    'Context Settings': ['上下文设置'],
+    'Generation Settings': ['生成设置'],
+    'Table Settings': ['表格设置'],
+    'Figure Settings': ['图表设置'],
+
+    # Misc
     '''
                 <hr>
                 <div style="text-align: center;">
@@ -248,29 +289,9 @@ TRS_MISC = {
                 </div>
             '''
     ],
-    # Settings - Measure - Adjusted Frequency
-    'Use same settings in "Settings → Measures → Dispersion"': [
-        '使用“设置 → 统计方法 → 分布”中的相同设置'
-    ],
 
-    # Misc
-    'Add': ['添加'],
-    'Insert': ['插入'],
-    'Remove': ['移除'],
-    'Clear': ['清空'],
-    'Import': ['导入'],
-    'Export': ['导出'],
-    'Yes': ['是'],
-    'No': ['否'],
-    'OK': ['确认'],
-    'Apply': ['应用'],
-    'Cancel': ['取消'],
-    'Close': ['关闭'],
-    '*** None ***': ['*** 无 ***'],
-    # 'None' contained in '*** None ***'
-    'None': ['无'],
-    'L': ['左'],
-    'R': ['右']
+    # Language-specific files
+    'ACKNOWLEDGMENTS.md': ['ACKNOWLEDGMENTS_zho_cn.md']
 }
 
 with open('../trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:

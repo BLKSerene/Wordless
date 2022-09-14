@@ -582,20 +582,21 @@ class Wl_Main(QMainWindow):
             pickle.dump(self.settings_custom, f)
 
     def restart(self, save_settings = True):
+        # pylint: disable=consider-using-with
         if getattr(sys, '_MEIPASS', False):
             if platform.system() == 'Windows':
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless.exe')]) # pylint: disable=consider-using-with
+                subprocess.Popen([wl_misc.get_normalized_path('Wordless.exe')])
             elif platform.system() == 'Darwin':
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless')]) # pylint: disable=consider-using-with
+                subprocess.Popen([wl_misc.get_normalized_path('Wordless')])
             elif platform.system() == 'Linux':
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless')]) # pylint: disable=consider-using-with
+                subprocess.Popen([wl_misc.get_normalized_path('Wordless')])
         else:
             if platform.system() == 'Windows':
-                subprocess.Popen(['python', wl_misc.get_normalized_path(__file__)]) # pylint: disable=consider-using-with
+                subprocess.Popen(['python', '-m', 'wordless.wl_main'])
             elif platform.system() == 'Darwin':
-                subprocess.Popen(['python3', wl_misc.get_normalized_path(__file__)]) # pylint: disable=consider-using-with
+                subprocess.Popen(['python3', '-m', 'wordless.wl_main'])
             elif platform.system() == 'Linux':
-                subprocess.Popen(['python3.8', wl_misc.get_normalized_path(__file__)]) # pylint: disable=consider-using-with
+                subprocess.Popen(['python3.8', '-m', 'wordless.wl_main'])
 
         if save_settings:
             self.save_settings()
