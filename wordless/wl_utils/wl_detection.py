@@ -51,17 +51,22 @@ def detect_encoding(main, file_path):
 
     return encoding
 
-def detect_lang_text(main, text): # pylint: disable=unused-argument
-    detector = lingua.LanguageDetectorBuilder.from_all_languages_without(
-        lingua.Language.BOSNIAN,
-        lingua.Language.GANDA,
-        lingua.Language.GEORGIAN,
-        lingua.Language.MAORI,
-        lingua.Language.SHONA,
-        lingua.Language.TSONGA,
-        lingua.Language.XHOSA
-    ).build()
-    lang = detector.detect_language_of(text)
+lingua_detector = lingua.LanguageDetectorBuilder.from_all_languages_without(
+    lingua.Language.BOSNIAN,
+    lingua.Language.GANDA,
+    lingua.Language.GEORGIAN,
+    lingua.Language.MAORI,
+    lingua.Language.SHONA,
+    lingua.Language.TSONGA,
+    lingua.Language.XHOSA
+).build()
+
+def detect_lang_text(main, text):
+    if not main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit']:
+        lines = text.splitlines()
+        text = '\n'.join(lines[:main.settings_custom['files']['auto_detection_settings']['num_lines']])
+
+    lang = lingua_detector.detect_language_of(text)
 
     # Chinese
     if lang is lingua.Language.CHINESE:
@@ -96,15 +101,7 @@ def detect_lang_file(main, file):
 
     try:
         with open(file['path'], 'r', encoding = file['encoding']) as f:
-            if main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit']:
-                for line in f:
-                    text += line
-            else:
-                for i, line in enumerate(f):
-                    if i < main.settings_custom['files']['auto_detection_settings']['num_lines']:
-                        text += line
-                    else:
-                        break
+            text = f.read()
 
         lang = detect_lang_text(main, text)
     except UnicodeDecodeError:
