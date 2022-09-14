@@ -64,7 +64,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
 
                 # Check for duplicate file names
                 file_names = [
-                    *self.main.wl_file_area.get_selected_file_names(),
+                    *self.main.wl_file_area.get_file_names(),
                     *[file['name'] for file in self.table.files_to_open],
                     *[new_file['name'] for new_file in new_files]
                 ]
@@ -898,6 +898,12 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
 
     def get_files(self):
         return self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']
+
+    def get_file_names(self):
+        return (
+            file['name']
+            for file in self.get_files()
+        )
 
     def get_selected_files(self):
         return (
