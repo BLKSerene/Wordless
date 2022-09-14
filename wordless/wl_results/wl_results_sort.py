@@ -42,18 +42,12 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         self.table = table
 
-        if self.table.tab == 'concordancer':
-            self.cols_to_sort_default = [
-                self.tr('Node'),
-                self.tr('Sentiment'),
-                self.tr('Token No.'),
-                self.tr('File')
-            ]
-        elif self.table.tab == 'concordancer_parallel':
-            self.cols_to_sort_default = [
-                self.tr('Node'),
-                self.tr('Segment No.')
-            ]
+        self.cols_to_sort_default = [
+            self.tr('Node'),
+            self.tr('Sentiment'),
+            self.tr('Token No.'),
+            self.tr('File')
+        ]
 
         self.cols_to_sort = self.cols_to_sort_default.copy()
 
