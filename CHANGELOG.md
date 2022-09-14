@@ -60,6 +60,7 @@
 
 ### ❌ Removals
 - Settings: Remove Settings - Measures - Adjusted Frequency - Use same settings in "Settings → Measures → Dispersion"
+- Utils: Remove CLTK's stop word lists
 - Utils: Remove nagisa's Japanese word tokenizer and part-of-speech tagger
 - Utils: Remove PyThaiNLP's maximum matching + TCC (safe mode)
 - Utils: Remove ssg's Thai syllable tokenizer
@@ -74,7 +75,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Add Lingua, OpenCC, PyPDF2, spacy-pkuseg
-- Dependencies: Remove langdetect, langid.py, nagisa, opencc-python, pkuseg, ssg, and Tokenizer
+- Dependencies: Remove CLTK, langdetect, langid.py, nagisa, opencc-python, pkuseg, ssg, and Tokenizer
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
 - Dependencies: Upgrade Charset Normalizer to 2.1.1

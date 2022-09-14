@@ -32,11 +32,9 @@ def init_settings_global():
     return {
         'langs': {
             _tr('init_settings_global', 'Afrikaans'): ['afr', 'af', 'Indo-European'],
-            _tr('init_settings_global', 'Akkadian'): ['akk', 'akk', 'Afro-Asiatic'],
             _tr('init_settings_global', 'Albanian'): ['sqi', 'sq', 'Indo-European'],
             _tr('init_settings_global', 'Amharic'): ['amh', 'am', 'Afro-Asiatic'],
             _tr('init_settings_global', 'Arabic'): ['ara', 'ar', 'Afro-Asiatic'],
-            _tr('init_settings_global', 'Arabic (Standard)'): ['arb', 'arb', 'Afro-Asiatic'],
             _tr('init_settings_global', 'Armenian'): ['hye', 'hy', 'Indo-European'],
             _tr('init_settings_global', 'Assamese'): ['asm', 'as', 'Indo-European'],
             _tr('init_settings_global', 'Asturian'): ['ast', 'ast', 'Indo-European'],
@@ -49,24 +47,19 @@ def init_settings_global():
             _tr('init_settings_global', 'Catalan'): ['cat', 'ca', 'Indo-European'],
             _tr('init_settings_global', 'Chinese (Simplified)'): ['zho_cn', 'zh_cn', 'Sino-Tibetan'],
             _tr('init_settings_global', 'Chinese (Traditional)'): ['zho_tw', 'zh_tw', 'Sino-Tibetan'],
-            _tr('init_settings_global', 'Coptic'): ['cop', 'cop', 'Unclassified'],
             _tr('init_settings_global', 'Croatian'): ['hrv', 'hr', 'Indo-European'],
             _tr('init_settings_global', 'Czech'): ['ces', 'cs', 'Indo-European'],
             _tr('init_settings_global', 'Danish'): ['dan', 'da', 'Indo-European'],
             _tr('init_settings_global', 'Dutch'): ['nld', 'nl', 'Indo-European'],
-            _tr('init_settings_global', 'English (Middle)'): ['enm', 'enm', 'Indo-European'],
-            _tr('init_settings_global', 'English (Old)'): ['ang', 'ang', 'Indo-European'],
             _tr('init_settings_global', 'English (United Kingdom)'): ['eng_gb', 'en_gb', 'Indo-European'],
             _tr('init_settings_global', 'English (United States)'): ['eng_us', 'en_us', 'Indo-European'],
             _tr('init_settings_global', 'Esperanto'): ['epo', 'eo', 'Constructed'],
             _tr('init_settings_global', 'Estonian'): ['est', 'et', 'Uralic'],
             _tr('init_settings_global', 'Finnish'): ['fin', 'fi', 'Uralic'],
             _tr('init_settings_global', 'French'): ['fra', 'fr', 'Indo-European'],
-            _tr('init_settings_global', 'French (Old)'): ['fro', 'fro', 'Indo-European'],
             _tr('init_settings_global', 'Galician'): ['glg', 'gl', 'Indo-European'],
             _tr('init_settings_global', 'German (Austria)'): ['deu_at', 'de_at', 'Indo-European'],
             _tr('init_settings_global', 'German (Germany)'): ['deu_de', 'de_de', 'Indo-European'],
-            _tr('init_settings_global', 'German (Middle High)'): ['gmh', 'gmh', 'Unclassified'],
             _tr('init_settings_global', 'German (Switzerland)'): ['deu_ch', 'de_ch', 'Indo-European'],
             _tr('init_settings_global', 'Greek (Ancient)'): ['grc', 'grc', 'Unclassified'],
             _tr('init_settings_global', 'Greek (Modern)'): ['ell', 'el', 'Indo-European'],
@@ -95,11 +88,9 @@ def init_settings_global():
             _tr('init_settings_global', 'Malayalam'): ['mal', 'ml', 'Dravidian'],
             _tr('init_settings_global', 'Manx'): ['glv', 'gv', 'Indo-European'],
             _tr('init_settings_global', 'Marathi'): ['mar', 'mr', 'Indo-European'],
-            _tr('init_settings_global', 'Marathi (Old)'): ['omr', 'omr', 'Unclassified'],
             _tr('init_settings_global', 'Meitei'): ['mni', 'mni', 'Sino-Tibetan'],
             _tr('init_settings_global', 'Mongolian'): ['mon', 'mn', 'Mongolic'],
             _tr('init_settings_global', 'Nepali'): ['nep', 'ne', 'Indo-European'],
-            _tr('init_settings_global', 'Norse (Old)'): ['non', 'non', 'Indo-European'],
             _tr('init_settings_global', 'Norwegian Bokmål'): ['nob', 'nb', 'Indo-European'],
             _tr('init_settings_global', 'Norwegian Nynorsk'): ['nno', 'nn', 'Indo-European'],
             _tr('init_settings_global', 'Oriya'): ['ori', 'or', 'Indo-European'],
@@ -581,21 +572,6 @@ def init_settings_global():
 
             'stop_word_lists': {
                 _tr('init_settings_global', 'Custom List'): 'custom',
-
-                _tr('init_settings_global', 'CLTK - Akkadian Stop Word List'): 'cltk_akk',
-                _tr('init_settings_global', 'CLTK - Arabic (Standard) Stop Word List'): 'cltk_arb',
-                _tr('init_settings_global', 'CLTK - Coptic Stop Word List'): 'cltk_cop',
-                _tr('init_settings_global', 'CLTK - English (Middle) Stop Word List'): 'cltk_enm',
-                _tr('init_settings_global', 'CLTK - English (Old) Stop Word List'): 'cltk_ang',
-                _tr('init_settings_global', 'CLTK - French (Old) Stop Word List'): 'cltk_fro',
-                _tr('init_settings_global', 'CLTK - German (Middle High) Stop Word List'): 'cltk_gmh',
-                _tr('init_settings_global', 'CLTK - Greek (Ancient) Stop Word List'): 'cltk_grc',
-                _tr('init_settings_global', 'CLTK - Hindi Stop Word List'): 'cltk_hin',
-                _tr('init_settings_global', 'CLTK - Latin Stop Word List'): 'cltk_lat',
-                _tr('init_settings_global', 'CLTK - Marathi (Old) Stop Word List'): 'cltk_omr',
-                _tr('init_settings_global', 'CLTK - Norse (Old) Stop Word List'): 'cltk_non',
-                _tr('init_settings_global', 'CLTK - Punjabi Stop Word List'): 'cltk_pan',
-                _tr('init_settings_global', 'CLTK - Sanskrit Stop Word List'): 'cltk_san',
 
                 _tr('init_settings_global', 'extra-stopwords - Albanian Stop Word List'): 'extra_stopwords_sqi',
                 _tr('init_settings_global', 'extra-stopwords - Arabic Stop Word List'): 'extra_stopwords_ara',
@@ -1906,11 +1882,6 @@ def init_settings_global():
                 'custom'
             ],
 
-            'akk': [
-                'cltk_akk',
-                'custom'
-            ],
-
             'sqi': [
                 'extra_stopwords_sqi',
                 'spacy_sqi',
@@ -1927,11 +1898,6 @@ def init_settings_global():
                 'nltk_ara',
                 'spacy_ara',
                 'stopwords_iso_ara',
-                'custom'
-            ],
-
-            'arb': [
-                'cltk_arb',
                 'custom'
             ],
 
@@ -1999,11 +1965,6 @@ def init_settings_global():
                 'custom'
             ],
 
-            'cop': [
-                'cltk_cop',
-                'custom'
-            ],
-
             'hrv': [
                 'extra_stopwords_hrv',
                 'spacy_hrv',
@@ -2034,14 +1995,6 @@ def init_settings_global():
                 'custom'
             ],
 
-            'enm': [
-                'cltk_enm',
-                'custom'
-            ],
-            'ang': [
-                'cltk_ang',
-                'custom'
-            ],
             'eng_gb': [
                 'extra_stopwords_eng',
                 'nltk_eng',
@@ -2084,10 +2037,6 @@ def init_settings_global():
                 'stopwords_iso_fra',
                 'custom'
             ],
-            'fro': [
-                'cltk_fro',
-                'custom'
-            ],
 
             'glg': [
                 'extra_stopwords_glg',
@@ -2109,10 +2058,6 @@ def init_settings_global():
                 'stopwords_iso_deu',
                 'custom'
             ],
-            'gmh': [
-                'cltk_gmh',
-                'custom'
-            ],
             'deu_ch': [
                 'extra_stopwords_deu',
                 'nltk_deu',
@@ -2122,7 +2067,6 @@ def init_settings_global():
             ],
 
             'grc': [
-                'cltk_grc',
                 'spacy_grc',
                 'custom'
             ],
@@ -2154,7 +2098,6 @@ def init_settings_global():
             ],
 
             'hin': [
-                'cltk_hin',
                 'extra_stopwords_hin',
                 'spacy_hin',
                 'stopwords_iso_hin',
@@ -2234,7 +2177,6 @@ def init_settings_global():
             ],
 
             'lat': [
-                'cltk_lat',
                 'stopwords_iso_lat',
                 'custom'
             ],
@@ -2286,11 +2228,6 @@ def init_settings_global():
                 'custom'
             ],
 
-            'omr': [
-                'cltk_omr',
-                'custom'
-            ],
-
             'mon': [
                 'extra_stopwords_mon',
                 'custom'
@@ -2303,10 +2240,6 @@ def init_settings_global():
                 'custom'
             ],
 
-            'non': [
-                'cltk_non',
-                'custom'
-            ],
             'nob': [
                 'extra_stopwords_nob',
                 'nltk_nob',
@@ -2350,11 +2283,6 @@ def init_settings_global():
                 'custom'
             ],
 
-            'pan': [
-                'cltk_pan',
-                'custom'
-            ],
-
             'ron': [
                 'extra_stopwords_ron',
                 'nltk_ron',
@@ -2372,7 +2300,6 @@ def init_settings_global():
             ],
 
             'san': [
-                'cltk_san',
                 'spacy_san',
                 'custom'
             ],

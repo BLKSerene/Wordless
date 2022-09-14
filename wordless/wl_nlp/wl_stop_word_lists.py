@@ -55,8 +55,6 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 stop_word_list = stop_word_list.replace('zho_tw', 'zho_cn')
             )
             stop_words = [converter.convert(stop_word) for stop_word in stop_words_zho_cn]
-        elif stop_word_list.startswith('cltk_'):
-            stop_words = importlib.import_module(f'data.cltk.{lang}').STOPS
         # extra-stopwords
         elif stop_word_list.startswith('extra_stopwords_'):
             LANG_TEXTS = {
