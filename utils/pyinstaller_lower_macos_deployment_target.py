@@ -23,11 +23,22 @@ import zipfile
 
 import PyInstaller.building.api
 import PyInstaller.building.utils
+import requests
 
-PYINSTALLER_PACKAGE_NAME = 'pyinstaller-4.10'
+PYINSTALLER_VER = '5.4.1'
+PROXIES = {'http': '', 'https': ''}
 
-# Unzip the package
-with zipfile.ZipFile(f'{PYINSTALLER_PACKAGE_NAME}.zip', 'r') as zip_file:
+# Fetch codes
+print(f'Downloading PyInstaller {PYINSTALLER_VER}... ', end = '')
+
+r = requests.get(f'https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v{PYINSTALLER_VER}.zip', proxies = PROXIES)
+
+with open(f'pyinstaller-{PYINSTALLER_VER}.zip', 'wb') as f:
+    f.write(r.content)
+
+print('done!')
+
+with zipfile.ZipFile(f'pyinstaller-{PYINSTALLER_VER}.zip', 'r') as zip_file:
     for file_name in zip_file.namelist():
         zip_file.extract(file_name, '.')
 
@@ -36,26 +47,24 @@ with zipfile.ZipFile(f'{PYINSTALLER_PACKAGE_NAME}.zip', 'r') as zip_file:
 os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.9'
 
 # Recompile the macOS bootloader
-os.chdir(f'{PYINSTALLER_PACKAGE_NAME}/bootloader')
+os.chdir(f'pyinstaller-{PYINSTALLER_VER}/bootloader')
 subprocess.call('python3 waf all', shell = True)
 
 # Compress files back into package
 os.chdir('../..')
-with zipfile.ZipFile(f'{PYINSTALLER_PACKAGE_NAME}_modified.zip', 'w') as zip_file:
-    for root, dirs, files in os.walk(PYINSTALLER_PACKAGE_NAME):
+with zipfile.ZipFile(f'pyinstaller-{PYINSTALLER_VER}_modified.zip', 'w') as zip_file:
+    for root, dirs, files in os.walk(f'pyinstaller-{PYINSTALLER_VER}'):
         for file in files:
             zip_file.write(os.path.join(root, file))
 
-# Remove unzipped files
-shutil.rmtree(PYINSTALLER_PACKAGE_NAME)
-
 # Install PyInstaller
-subprocess.call(f'pip3 install {PYINSTALLER_PACKAGE_NAME}_modified.zip', shell = True)
+subprocess.call(f'pip3 install pyinstaller-{PYINSTALLER_VER}_modified.zip', shell = True)
 
-# Remove the modified package
-os.remove(f'{PYINSTALLER_PACKAGE_NAME}_modified.zip')
+# Clean files
+shutil.rmtree(f'pyinstaller-{PYINSTALLER_VER}')
+os.remove(f'pyinstaller-{PYINSTALLER_VER}_modified.zip')
 
-# Modify signature-related commands in PyInstaller source files as they are not supported on OS X 10.9
+# Modify signature-related codes in PyInstaller's source files as they are not supported on OS X 10.9
 with open(PyInstaller.building.api.__file__, 'r', encoding = 'utf_8') as f:
     pyinstaller_building_api = f.read()
 
