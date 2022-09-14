@@ -597,11 +597,9 @@ You can further filter the results as you see fit by clicking **Filter Results**
 Language|Sentence Tokenization|Word Tokenization|Syllable Tokenization|Part-of-speech Tagging|Lemmatization|Stop Word List
 :------:|:-------------------:|:---------------:|:-------------------:|:--------------------:|:-----------:|:------------:
 Afrikaans               |⭕️ |✔|✔|✖️|✖️|✔
-Akkadian                |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Albanian                |⭕️ |✔|✔|✖️|✖️|✔
 Amharic                 |⭕️ |✔|✖️|✖️|✖️|✔
 Arabic                  |⭕️ |✔|✖️|✖️|✖️|✔
-Arabic (Standard)       |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Armenian                |⭕️ |✔|✖️|✖️|✖️|✔
 Assamese                |⭕️ |✔|✖️|✖️|✖️|✖️
 Asturian                |⭕️ |⭕️ |✖️|✖️|✔|✖️
@@ -614,24 +612,19 @@ Bulgarian               |⭕️ |✔|✔|✖️|✔|✔
 Catalan                 |⭕️ |✔|✔|✔|✔|✔
 Chinese (Simplified)    |✔|✔|✖️|✔|✖️|✔
 Chinese (Traditional)   |✔|✔|✖️|✔|✖️|✔
-Coptic                  |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Croatian                |⭕️ |✔|✔|✔|✔|✔
 Czech                   |✔|✔|✔|✖️|✔|✔
 Danish                  |✔|✔|✔|✔|✔|✔
 Dutch                   |✔|✔|✔|✔|✔|✔
-English (Middle)        |⭕️ |⭕️ |✖️|✖️|✖️|✔
-English (Old)           |⭕️ |⭕️ |✖️|✖️|✖️|✔
 English (United Kingdom)|✔|✔|✔|✔|✔|✔
 English (United States) |✔|✔|✔|✔|✔|✔
 Esperanto               |⭕️ |⭕️ |✔|✖️|✖️|✔
 Estonian                |✔|✔|✔|✖️|✔|✔
 Finnish                 |✔|✔|✖️|✔|✔|✔
 French                  |✔|✔|✔|✔|✔|✔
-French (Old)            |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Galician                |⭕️ |⭕️ |✔|✖️|✔|✔
 German (Austria)        |✔|✔|✔|✔|✔|✔
 German (Germany)        |✔|✔|✔|✔|✔|✔
-German (Middle High)    |⭕️ |⭕️ |✖️|✖️|✖️|✔
 German (Switzerland)    |✔|✔|✔|✔|✔|✔
 Greek (Ancient)         |⭕️ |✔|✖️|✖️|✔|✔
 Greek (Modern)          |✔|✔|✔|✔|✔|✔
@@ -660,11 +653,9 @@ Malay                   |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Malayalam               |⭕️ |✔|✖️|✖️|✖️|✔
 Manx                    |⭕️ |⭕️ |✖️|✖️|✔|✖️
 Marathi                 |⭕️ |✔|✖️|✖️|✖️|✔
-Marathi (Old)           |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Meitei                  |⭕️ |✔|✖️|✖️|✖️|✖️
 Mongolian               |⭕️ |⭕️ |✔|✖️|✖️|✔
 Nepali                  |⭕️ |✔|✖️|✖️|✖️|✔
-Norse (Old)             |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Norwegian Bokmål        |✔|✔|✔|✔|✔|✔
 Norwegian Nynorsk       |✔|⭕️ |✔|✖️|✖️|✔
 Oriya                   |⭕️ |✔|✖️|✖️|✖️|✖️
@@ -672,7 +663,7 @@ Persian                 |⭕️ |✔|✖️|✖️|✔|✔
 Polish                  |✔|✔|✔|✔|✔|✔
 Portuguese (Brazil)     |✔|✔|✔|✔|✔|✔
 Portuguese (Portugal)   |✔|✔|✔|✔|✔|✔
-Punjabi                 |⭕️ |✔|✖️|✖️|✖️|✔
+Punjabi                 |⭕️ |✔|✖️|✖️|✖️|✖️
 Romanian                |✔|✔|✔|✔|✔|✔
 Russian                 |✔|✔|✔|✔|✔|✔
 Sanskrit                |⭕️ |✔|✖️|✖️|✖️|✔
