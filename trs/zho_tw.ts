@@ -7513,1392 +7513,1392 @@ Frequency</source>
 <translation>PyThaiNLP - 泰語分音節器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="535"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="536"></location>
 <source>pymorphy2 - Morphological Analyzer</source>
 <translation>pymorphy2 - 形態分析器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="507"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="508"></location>
 <source>botok - Tibetan Lemmatizer</source>
 <translation>botok - 藏語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="509"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="510"></location>
 <source>Lemmatization Lists - Asturian Lemma List</source>
 <translation>Lemmatization Lists - 阿斯圖里亞斯語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="510"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="511"></location>
 <source>Lemmatization Lists - Bulgarian Lemma List</source>
 <translation>Lemmatization Lists - 保加利亞語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="511"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="512"></location>
 <source>Lemmatization Lists - Catalan Lemma List</source>
 <translation>Lemmatization Lists - 加泰羅尼亞語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="512"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="513"></location>
 <source>Lemmatization Lists - Czech Lemma List</source>
 <translation>Lemmatization Lists - 捷克語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="513"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="514"></location>
 <source>Lemmatization Lists - English Lemma List</source>
 <translation>Lemmatization Lists - 英語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="514"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="515"></location>
 <source>Lemmatization Lists - Estonian Lemma List</source>
 <translation>Lemmatization Lists - 愛沙尼亞語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="515"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="516"></location>
 <source>Lemmatization Lists - French Lemma List</source>
 <translation>Lemmatization Lists - 法語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="516"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="517"></location>
 <source>Lemmatization Lists - Galician Lemma List</source>
 <translation>Lemmatization Lists - 加里西亞語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="517"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="518"></location>
 <source>Lemmatization Lists - German Lemma List</source>
 <translation>Lemmatization Lists - 德語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="518"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="519"></location>
 <source>Lemmatization Lists - Hungarian Lemma List</source>
 <translation>Lemmatization Lists - 匈牙利語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="519"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="520"></location>
 <source>Lemmatization Lists - Irish Lemma List</source>
 <translation>Lemmatization Lists - 愛爾蘭語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="520"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="521"></location>
 <source>Lemmatization Lists - Italian Lemma List</source>
 <translation>Lemmatization Lists - 義大利語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="521"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="522"></location>
 <source>Lemmatization Lists - Manx Lemma List</source>
 <translation>Lemmatization Lists - 馬恩語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="522"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="523"></location>
 <source>Lemmatization Lists - Persian Lemma List</source>
 <translation>Lemmatization Lists - 波斯語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="523"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="524"></location>
 <source>Lemmatization Lists - Portuguese Lemma List</source>
 <translation>Lemmatization Lists - 葡萄牙語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="524"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="525"></location>
 <source>Lemmatization Lists - Romanian Lemma List</source>
 <translation>Lemmatization Lists - 羅馬尼亞語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="525"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="526"></location>
 <source>Lemmatization Lists - Russian Lemma List</source>
 <translation>Lemmatization Lists - 俄語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="526"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="527"></location>
 <source>Lemmatization Lists - Scottish Gaelic Lemma List</source>
 <translation>Lemmatization Lists - 蘇格蘭蓋爾語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="527"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="528"></location>
 <source>Lemmatization Lists - Slovak Lemma List</source>
 <translation>Lemmatization Lists - 斯洛伐克語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="528"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="529"></location>
 <source>Lemmatization Lists - Slovenian Lemma List</source>
 <translation>Lemmatization Lists - 斯洛維尼亞語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="529"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="530"></location>
 <source>Lemmatization Lists - Spanish Lemma List</source>
 <translation>Lemmatization Lists - 西班牙語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="530"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="531"></location>
 <source>Lemmatization Lists - Swedish Lemma List</source>
 <translation>Lemmatization Lists - 瑞典語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="531"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="532"></location>
 <source>Lemmatization Lists - Ukrainian Lemma List</source>
 <translation>Lemmatization Lists - 烏克蘭語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="532"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="533"></location>
 <source>Lemmatization Lists - Welsh Lemma List</source>
 <translation>Lemmatization Lists - 威爾士語詞根表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="534"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="535"></location>
 <source>NLTK - WordNet Lemmatizer</source>
 <translation>NLTK - WordNet 詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="537"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="538"></location>
 <source>spaCy - Bengali Lemmatizer</source>
 <translation>spaCy - 孟加拉語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="538"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="539"></location>
 <source>spaCy - Catalan Lemmatizer</source>
 <translation>spaCy - 加泰羅尼亞語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="539"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="540"></location>
 <source>spaCy - Croatian Lemmatizer</source>
 <translation>spaCy - 克羅埃西亞語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="540"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="541"></location>
 <source>spaCy - Czech Lemmatizer</source>
 <translation>spaCy - 捷克語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="541"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="542"></location>
 <source>spaCy - Danish Lemmatizer</source>
 <translation>spaCy - 丹麥語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="542"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="543"></location>
 <source>spaCy - Dutch Lemmatizer</source>
 <translation>spaCy - 荷蘭語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="543"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="544"></location>
 <source>spaCy - English Lemmatizer</source>
 <translation>spaCy - 英語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="545"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="546"></location>
 <source>spaCy - French Lemmatizer</source>
 <translation>spaCy - 法語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="546"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="547"></location>
 <source>spaCy - German Lemmatizer</source>
 <translation>spaCy - 德語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="547"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="548"></location>
 <source>spaCy - Greek (Ancient) Lemmatizer</source>
 <translation>spaCy - 希臘語（古）詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="548"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="549"></location>
 <source>spaCy - Greek (Modern) Lemmatizer</source>
 <translation>spaCy - 希臘語（現代）詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="549"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="550"></location>
 <source>spaCy - Hungarian Lemmatizer</source>
 <translation>spaCy - 匈牙利語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="550"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="551"></location>
 <source>spaCy - Indonesian Lemmatizer</source>
 <translation>spaCy - 印度尼西亞語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="551"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="552"></location>
 <source>spaCy - Irish Lemmatizer</source>
 <translation>spaCy - 愛爾蘭語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="552"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="553"></location>
 <source>spaCy - Italian Lemmatizer</source>
 <translation>spaCy - 義大利語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="553"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="554"></location>
 <source>spaCy - Japanese Lemmatizer</source>
 <translation>spaCy - 日語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="554"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="555"></location>
 <source>spaCy - Lithuanian Lemmatizer</source>
 <translation>spaCy - 立陶宛語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="555"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="556"></location>
 <source>spaCy - Luxembourgish Lemmatizer</source>
 <translation>spaCy - 盧森堡語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="556"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="557"></location>
 <source>spaCy - Macedonian Lemmatizer</source>
 <translation>spaCy - 馬其頓語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="557"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="558"></location>
 <source>spaCy - Norwegian Bokmål Lemmatizer</source>
 <translation>spaCy - 書面挪威語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="558"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="559"></location>
 <source>spaCy - Persian Lemmatizer</source>
 <translation>spaCy - 波斯語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="559"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="560"></location>
 <source>spaCy - Polish Lemmatizer</source>
 <translation>spaCy - 波蘭語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="560"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="561"></location>
 <source>spaCy - Portuguese Lemmatizer</source>
 <translation>spaCy - 葡萄牙語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="561"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="562"></location>
 <source>spaCy - Romanian Lemmatizer</source>
 <translation>spaCy - 羅馬尼亞語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="562"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="563"></location>
 <source>spaCy - Russian Lemmatizer</source>
 <translation>spaCy - 俄語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="563"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="564"></location>
 <source>spaCy - Serbian (Cyrillic) Lemmatizer</source>
 <translation>spaCy - 塞爾維亞語（西里爾）詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="564"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="565"></location>
 <source>spaCy - Spanish Lemmatizer</source>
 <translation>spaCy - 西班牙語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="565"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="566"></location>
 <source>spaCy - Swedish Lemmatizer</source>
 <translation>spaCy - 瑞典語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="566"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="567"></location>
 <source>spaCy - Tagalog Lemmatizer</source>
 <translation>spaCy - 他加祿語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="567"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="568"></location>
 <source>spaCy - Turkish Lemmatizer</source>
 <translation>spaCy - 土耳其語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="568"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="570"></location>
 <source>spaCy - Urdu Lemmatizer</source>
 <translation>spaCy - 烏爾都語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="570"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="572"></location>
 <source>SudachiPy - Japanese Lemmatizer</source>
 <translation>SudachiPy - 日語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="574"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="576"></location>
 <source>Custom List</source>
 <translation>自定義列表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="576"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="578"></location>
 <source>extra-stopwords - Albanian Stop Word List</source>
 <translation>extra-stopwords - 阿爾巴尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="577"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="579"></location>
 <source>extra-stopwords - Arabic Stop Word List</source>
 <translation>extra-stopwords - 阿拉伯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="578"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="580"></location>
 <source>extra-stopwords - Armenian Stop Word List</source>
 <translation>extra-stopwords - 亞美尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="579"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="581"></location>
 <source>extra-stopwords - Basque Stop Word List</source>
 <translation>extra-stopwords - 巴斯克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="580"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="582"></location>
 <source>extra-stopwords - Belarusian Stop Word List</source>
 <translation>extra-stopwords - 白俄羅斯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="581"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="583"></location>
 <source>extra-stopwords - Bengali Stop Word List</source>
 <translation>extra-stopwords - 孟加拉語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="582"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="584"></location>
 <source>extra-stopwords - Bulgarian Stop Word List</source>
 <translation>extra-stopwords - 保加利亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="583"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="585"></location>
 <source>extra-stopwords - Catalan Stop Word List</source>
 <translation>extra-stopwords - 加泰羅尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="584"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="586"></location>
 <source>extra-stopwords - Chinese (Simplified) Stop Word List</source>
 <translation>extra-stopwords - 漢語（簡體）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="585"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="587"></location>
 <source>extra-stopwords - Chinese (Traditional) Stop Word List</source>
 <translation>extra-stopwords - 漢語（繁體）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="586"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="588"></location>
 <source>extra-stopwords - Croatian Stop Word List</source>
 <translation>extra-stopwords - 克羅埃西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="587"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="589"></location>
 <source>extra-stopwords - Czech Stop Word List</source>
 <translation>extra-stopwords - 捷克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="588"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="590"></location>
 <source>extra-stopwords - Danish Stop Word List</source>
 <translation>extra-stopwords - 丹麥語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="589"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="591"></location>
 <source>extra-stopwords - Dutch Stop Word List</source>
 <translation>extra-stopwords - 荷蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="590"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="592"></location>
 <source>extra-stopwords - English Stop Word List</source>
 <translation>extra-stopwords - 英語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="591"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="593"></location>
 <source>extra-stopwords - Estonian Stop Word List</source>
 <translation>extra-stopwords - 愛沙尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="592"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="594"></location>
 <source>extra-stopwords - Finnish Stop Word List</source>
 <translation>extra-stopwords - 芬蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="593"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="595"></location>
 <source>extra-stopwords - French Stop Word List</source>
 <translation>extra-stopwords - 法語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="594"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="596"></location>
 <source>extra-stopwords - Galician Stop Word List</source>
 <translation>extra-stopwords - 加里西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="595"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="597"></location>
 <source>extra-stopwords - German Stop Word List</source>
 <translation>extra-stopwords - 德語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="596"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="598"></location>
 <source>extra-stopwords - Greek (Modern) Stop Word List</source>
 <translation>extra-stopwords - 希臘語（現代）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="597"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="599"></location>
 <source>extra-stopwords - Hausa Stop Word List</source>
 <translation>extra-stopwords - 豪薩語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="598"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="600"></location>
 <source>extra-stopwords - Hebrew Stop Word List</source>
 <translation>extra-stopwords - 希伯來語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="599"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="601"></location>
 <source>extra-stopwords - Hindi Stop Word List</source>
 <translation>extra-stopwords - 印地語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="600"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="602"></location>
 <source>extra-stopwords - Hungarian Stop Word List</source>
 <translation>extra-stopwords - 匈牙利語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="601"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="603"></location>
 <source>extra-stopwords - Icelandic Stop Word List</source>
 <translation>extra-stopwords - 冰島語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="602"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="604"></location>
 <source>extra-stopwords - Indonesian Stop Word List</source>
 <translation>extra-stopwords - 印度尼西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="603"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="605"></location>
 <source>extra-stopwords - Irish Stop Word List</source>
 <translation>extra-stopwords - 愛爾蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="604"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="606"></location>
 <source>extra-stopwords - Italian Stop Word List</source>
 <translation>extra-stopwords - 義大利語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="605"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="607"></location>
 <source>extra-stopwords - Japanese Stop Word List</source>
 <translation>extra-stopwords - 日語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="606"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="608"></location>
 <source>extra-stopwords - Korean Stop Word List</source>
 <translation>extra-stopwords - 韓語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="607"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="609"></location>
 <source>extra-stopwords - Kurdish Stop Word List</source>
 <translation>extra-stopwords - 庫爾德語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="608"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="610"></location>
 <source>extra-stopwords - Latvian Stop Word List</source>
 <translation>extra-stopwords - 拉脫維亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="609"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="611"></location>
 <source>extra-stopwords - Lithuanian Stop Word List</source>
 <translation>extra-stopwords - 立陶宛語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="610"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="612"></location>
 <source>extra-stopwords - Malay Stop Word List</source>
 <translation>extra-stopwords - 馬來語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="611"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="613"></location>
 <source>extra-stopwords - Marathi Stop Word List</source>
 <translation>extra-stopwords - 馬拉地語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="612"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="614"></location>
 <source>extra-stopwords - Mongolian Stop Word List</source>
 <translation>extra-stopwords - 蒙古語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="613"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="615"></location>
 <source>extra-stopwords - Nepali Stop Word List</source>
 <translation>extra-stopwords - 尼泊爾語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="615"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="617"></location>
 <source>extra-stopwords - Norwegian Bokmål Stop Word List</source>
 <translation>extra-stopwords - 書面挪威語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="616"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="618"></location>
 <source>extra-stopwords - Persian Stop Word List</source>
 <translation>extra-stopwords - 波斯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="617"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="619"></location>
 <source>extra-stopwords - Polish Stop Word List</source>
 <translation>extra-stopwords - 波蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="618"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="620"></location>
 <source>extra-stopwords - Portuguese Stop Word List</source>
 <translation>extra-stopwords - 葡萄牙語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="619"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="621"></location>
 <source>extra-stopwords - Romanian Stop Word List</source>
 <translation>extra-stopwords - 羅馬尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="620"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="622"></location>
 <source>extra-stopwords - Russian Stop Word List</source>
 <translation>extra-stopwords - 俄語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="621"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="623"></location>
 <source>extra-stopwords - Serbian (Cyrillic) Stop Word List</source>
 <translation>extra-stopwords - 塞爾維亞語（西里爾）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="622"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="624"></location>
 <source>extra-stopwords - Serbian (Latin) Stop Word List</source>
 <translation>extra-stopwords - 塞爾維亞語（拉丁）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="623"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="625"></location>
 <source>extra-stopwords - Slovak Stop Word List</source>
 <translation>extra-stopwords - 斯洛伐克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="624"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="626"></location>
 <source>extra-stopwords - Slovenian Stop Word List</source>
 <translation>extra-stopwords - 斯洛維尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="625"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="627"></location>
 <source>extra-stopwords - Spanish Stop Word List</source>
 <translation>extra-stopwords - 西班牙語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="626"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="628"></location>
 <source>extra-stopwords - Swahili Stop Word List</source>
 <translation>extra-stopwords - 斯瓦西里語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="627"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="629"></location>
 <source>extra-stopwords - Swedish Stop Word List</source>
 <translation>extra-stopwords - 瑞典語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="628"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="630"></location>
 <source>extra-stopwords - Tagalog Stop Word List</source>
 <translation>extra-stopwords - 他加祿語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="629"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="631"></location>
 <source>extra-stopwords - Telugu Stop Word List</source>
 <translation>extra-stopwords - 泰盧固語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="630"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="632"></location>
 <source>extra-stopwords - Thai Stop Word List</source>
 <translation>extra-stopwords - 泰語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="631"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="633"></location>
 <source>extra-stopwords - Turkish Stop Word List</source>
 <translation>extra-stopwords - 土耳其語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="632"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="634"></location>
 <source>extra-stopwords - Ukrainian Stop Word List</source>
 <translation>extra-stopwords - 烏克蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="633"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="635"></location>
 <source>extra-stopwords - Urdu Stop Word List</source>
 <translation>extra-stopwords - 烏爾都語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="634"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="636"></location>
 <source>extra-stopwords - Vietnamese Stop Word List</source>
 <translation>extra-stopwords - 越南語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="635"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="637"></location>
 <source>extra-stopwords - Yoruba Stop Word List</source>
 <translation>extra-stopwords - 約魯巴語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="637"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="639"></location>
 <source>NLTK - Arabic Stop Word List</source>
 <translation>NLTK - 阿拉伯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="638"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="640"></location>
 <source>NLTK - Azerbaijani Stop Word List</source>
 <translation>NLTK - 亞塞拜然語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="639"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="641"></location>
 <source>NLTK - Danish Stop Word List</source>
 <translation>NLTK - 丹麥語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="640"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="642"></location>
 <source>NLTK - Dutch Stop Word List</source>
 <translation>NLTK - 荷蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="641"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="643"></location>
 <source>NLTK - English Stop Word List</source>
 <translation>NLTK - 英語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="642"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="644"></location>
 <source>NLTK - Finnish Stop Word List</source>
 <translation>NLTK - 芬蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="643"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="645"></location>
 <source>NLTK - French Stop Word List</source>
 <translation>NLTK - 法語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="644"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="646"></location>
 <source>NLTK - German Stop Word List</source>
 <translation>NLTK - 德語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="645"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="647"></location>
 <source>NLTK - Greek (Modern) Stop Word List</source>
 <translation>NLTK - 希臘語（現代）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="646"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="648"></location>
 <source>NLTK - Hungarian Stop Word List</source>
 <translation>NLTK - 匈牙利語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="647"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="649"></location>
 <source>NLTK - Indonesian Stop Word List</source>
 <translation>NLTK - 印度尼西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="648"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="650"></location>
 <source>NLTK - Italian Stop Word List</source>
 <translation>NLTK - 義大利語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="649"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="651"></location>
 <source>NLTK - Kazakh Stop Word List</source>
 <translation>NLTK - 哈薩克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="650"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="652"></location>
 <source>NLTK - Nepali Stop Word List</source>
 <translation>NLTK - 尼泊爾語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="651"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="653"></location>
 <source>NLTK - Norwegian Bokmål Stop Word List</source>
 <translation>NLTK - 書面挪威語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="652"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="654"></location>
 <source>NLTK - Norwegian Nynorsk Stop Word List</source>
 <translation>NLTK - 新挪威語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="653"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="655"></location>
 <source>NLTK - Portuguese Stop Word List</source>
 <translation>NLTK - 葡萄牙語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="654"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="656"></location>
 <source>NLTK - Romanian Stop Word List</source>
 <translation>NLTK - 羅馬尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="655"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="657"></location>
 <source>NLTK - Russian Stop Word List</source>
 <translation>NLTK - 俄語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="656"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="658"></location>
 <source>NLTK - Slovenian Stop Word List</source>
 <translation>NLTK - 斯洛維尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="657"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="659"></location>
 <source>NLTK - Spanish Stop Word List</source>
 <translation>NLTK - 西班牙語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="658"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="660"></location>
 <source>NLTK - Swedish Stop Word List</source>
 <translation>NLTK - 瑞典語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="659"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="661"></location>
 <source>NLTK - Tajik Stop Word List</source>
 <translation>NLTK - 塔吉克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="660"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="662"></location>
 <source>NLTK - Turkish Stop Word List</source>
 <translation>NLTK - 土耳其語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="662"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="664"></location>
 <source>PyThaiNLP - Thai Stop Word List</source>
 <translation>PyThaiNLP - 泰語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="664"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="666"></location>
 <source>spaCy - Afrikaans Stop Word List</source>
 <translation>spaCy - 南非語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="665"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="667"></location>
 <source>spaCy - Albanian Stop Word List</source>
 <translation>spaCy - 阿爾巴尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="666"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="668"></location>
 <source>spaCy - Amharic Stop Word List</source>
 <translation>spaCy - 阿姆哈拉語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="667"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="669"></location>
 <source>spaCy - Arabic Stop Word List</source>
 <translation>spaCy - 阿拉伯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="668"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="670"></location>
 <source>spaCy - Armenian Stop Word List</source>
 <translation>spaCy - 亞美尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="669"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="671"></location>
 <source>spaCy - Azerbaijani Stop Word List</source>
 <translation>spaCy - 亞塞拜然語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="670"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="672"></location>
 <source>spaCy - Basque Stop Word List</source>
 <translation>spaCy - 巴斯克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="671"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="673"></location>
 <source>spaCy - Bengali Stop Word List</source>
 <translation>spaCy - 孟加拉語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="672"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="674"></location>
 <source>spaCy - Bulgarian Stop Word List</source>
 <translation>spaCy - 保加利亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="673"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="675"></location>
 <source>spaCy - Catalan Stop Word List</source>
 <translation>spaCy - 加泰羅尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="674"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="676"></location>
 <source>spaCy - Chinese (Simplified) Stop Word List</source>
 <translation>spaCy - 漢語（簡體）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="675"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="677"></location>
 <source>spaCy - Chinese (Traditional) Stop Word List</source>
 <translation>spaCy - 漢語（繁體）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="676"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="678"></location>
 <source>spaCy - Croatian Stop Word List</source>
 <translation>spaCy - 克羅埃西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="677"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="679"></location>
 <source>spaCy - Czech Stop Word List</source>
 <translation>spaCy - 捷克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="678"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="680"></location>
 <source>spaCy - Danish Stop Word List</source>
 <translation>spaCy - 丹麥語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="679"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="681"></location>
 <source>spaCy - Dutch Stop Word List</source>
 <translation>spaCy - 荷蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="680"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="682"></location>
 <source>spaCy - English Stop Word List</source>
 <translation>spaCy - 英語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="681"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="683"></location>
 <source>spaCy - Estonian Stop Word List</source>
 <translation>spaCy - 愛沙尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="682"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="684"></location>
 <source>spaCy - Finnish Stop Word List</source>
 <translation>spaCy - 芬蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="683"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="685"></location>
 <source>spaCy - French Stop Word List</source>
 <translation>spaCy - 法語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="684"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="686"></location>
 <source>spaCy - German Stop Word List</source>
 <translation>spaCy - 德語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="685"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="687"></location>
 <source>spaCy - Greek (Ancient) Stop Word List</source>
 <translation>spaCy - 希臘語（古）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="686"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="688"></location>
 <source>spaCy - Greek (Modern) Stop Word List</source>
 <translation>spaCy - 希臘語（現代）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="687"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="689"></location>
 <source>spaCy - Gujarati Stop Word List</source>
 <translation>spaCy - 古吉拉特語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="688"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="690"></location>
 <source>spaCy - Hebrew Stop Word List</source>
 <translation>spaCy - 希伯來語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="689"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="691"></location>
 <source>spaCy - Hindi Stop Word List</source>
 <translation>spaCy - 印地語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="690"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="692"></location>
 <source>spaCy - Hungarian Stop Word List</source>
 <translation>spaCy - 匈牙利語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="691"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="693"></location>
 <source>spaCy - Icelandic Stop Word List</source>
 <translation>spaCy - 冰島語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="692"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="694"></location>
 <source>spaCy - Indonesian Stop Word List</source>
 <translation>spaCy - 印度尼西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="693"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="695"></location>
 <source>spaCy - Irish Stop Word List</source>
 <translation>spaCy - 愛爾蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="694"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="696"></location>
 <source>spaCy - Italian Stop Word List</source>
 <translation>spaCy - 義大利語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="695"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="697"></location>
 <source>spaCy - Japanese Stop Word List</source>
 <translation>spaCy - 日語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="696"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="698"></location>
 <source>spaCy - Kannada Stop Word List</source>
 <translation>spaCy - 卡納達語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="697"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="699"></location>
 <source>spaCy - Korean Stop Word List</source>
 <translation>spaCy - 韓語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="698"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="700"></location>
 <source>spaCy - Kyrgyz Stop Word List</source>
 <translation>spaCy - 吉爾吉斯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="699"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="701"></location>
 <source>spaCy - Latvian Stop Word List</source>
 <translation>spaCy - 拉脫維亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="700"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="702"></location>
 <source>spaCy - Ligurian Stop Word List</source>
 <translation>spaCy - 利古里亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="701"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="703"></location>
 <source>spaCy - Lithuanian Stop Word List</source>
 <translation>spaCy - 立陶宛語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="702"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="704"></location>
 <source>spaCy - Luxembourgish Stop Word List</source>
 <translation>spaCy - 盧森堡語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="703"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="705"></location>
 <source>spaCy - Macedonian Stop Word List</source>
 <translation>spaCy - 馬其頓語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="704"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="706"></location>
 <source>spaCy - Malayalam Stop Word List</source>
 <translation>spaCy - 馬拉雅拉姆語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="705"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="707"></location>
 <source>spaCy - Marathi Stop Word List</source>
 <translation>spaCy - 馬拉地語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="706"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="708"></location>
 <source>spaCy - Nepali Stop Word List</source>
 <translation>spaCy - 尼泊爾語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="707"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="709"></location>
 <source>spaCy - Norwegian Bokmål Stop Word List</source>
 <translation>spaCy - 書面挪威語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="708"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="710"></location>
 <source>spaCy - Persian Stop Word List</source>
 <translation>spaCy - 波斯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="709"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="711"></location>
 <source>spaCy - Polish Stop Word List</source>
 <translation>spaCy - 波蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="710"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="712"></location>
 <source>spaCy - Portuguese Stop Word List</source>
 <translation>spaCy - 葡萄牙語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="711"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="713"></location>
 <source>spaCy - Romanian Stop Word List</source>
 <translation>spaCy - 羅馬尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="712"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="714"></location>
 <source>spaCy - Russian Stop Word List</source>
 <translation>spaCy - 俄語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="713"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="715"></location>
 <source>spaCy - Sanskrit Stop Word List</source>
 <translation>spaCy - 梵語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="714"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="716"></location>
 <source>spaCy - Serbian (Cyrillic) Stop Word List</source>
 <translation>spaCy - 塞爾維亞語（西里爾）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="715"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="717"></location>
 <source>spaCy - Serbian (Latin) Stop Word List</source>
 <translation>spaCy - 塞爾維亞語（拉丁）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="716"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="718"></location>
 <source>spaCy - Sinhala Stop Word List</source>
 <translation>spaCy - 僧伽羅語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="717"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="719"></location>
 <source>spaCy - Slovak Stop Word List</source>
 <translation>spaCy - 斯洛伐克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="718"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="720"></location>
 <source>spaCy - Slovenian Stop Word List</source>
 <translation>spaCy - 斯洛維尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="721"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="723"></location>
 <source>spaCy - Spanish Stop Word List</source>
 <translation>spaCy - 西班牙語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="722"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="724"></location>
 <source>spaCy - Swedish Stop Word List</source>
 <translation>spaCy - 瑞典語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="723"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="725"></location>
 <source>spaCy - Tagalog Stop Word List</source>
 <translation>spaCy - 他加祿語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="724"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="726"></location>
 <source>spaCy - Tamil Stop Word List</source>
 <translation>spaCy - 泰米爾語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="725"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="727"></location>
 <source>spaCy - Tatar Stop Word List</source>
 <translation>spaCy - 韃靼語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="726"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="728"></location>
 <source>spaCy - Telugu Stop Word List</source>
 <translation>spaCy - 泰盧固語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="727"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="729"></location>
 <source>spaCy - Thai Stop Word List</source>
 <translation>spaCy - 泰語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="728"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="730"></location>
 <source>spaCy - Tigrinya Stop Word List</source>
 <translation>spaCy - 提格雷尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="729"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="731"></location>
 <source>spaCy - Tswana Stop Word List</source>
 <translation>spaCy - 茨瓦納語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="730"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="732"></location>
 <source>spaCy - Turkish Stop Word List</source>
 <translation>spaCy - 土耳其語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="731"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="733"></location>
 <source>spaCy - Ukrainian Stop Word List</source>
 <translation>spaCy - 烏克蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="732"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="734"></location>
 <source>spaCy - Urdu Stop Word List</source>
 <translation>spaCy - 烏爾都語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="733"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="735"></location>
 <source>spaCy - Vietnamese Stop Word List</source>
 <translation>spaCy - 越南語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="734"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="736"></location>
 <source>spaCy - Yoruba Stop Word List</source>
 <translation>spaCy - 約魯巴語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="736"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="738"></location>
 <source>Stopwords ISO - Afrikaans Stop Word List</source>
 <translation>Stopwords ISO - 南非語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="737"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="739"></location>
 <source>Stopwords ISO - Arabic Stop Word List</source>
 <translation>Stopwords ISO - 阿拉伯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="738"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="740"></location>
 <source>Stopwords ISO - Armenian Stop Word List</source>
 <translation>Stopwords ISO - 亞美尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="739"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="741"></location>
 <source>Stopwords ISO - Basque Stop Word List</source>
 <translation>Stopwords ISO - 巴斯克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="740"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="742"></location>
 <source>Stopwords ISO - Bengali Stop Word List</source>
 <translation>Stopwords ISO - 孟加拉語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="741"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="743"></location>
 <source>Stopwords ISO - Breton Stop Word List</source>
 <translation>Stopwords ISO - 布列塔尼語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="742"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="744"></location>
 <source>Stopwords ISO - Bulgarian Stop Word List</source>
 <translation>Stopwords ISO - 保加利亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="743"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="745"></location>
 <source>Stopwords ISO - Catalan Stop Word List</source>
 <translation>Stopwords ISO - 加泰羅尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="744"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="746"></location>
 <source>Stopwords ISO - Chinese (Simplified) Stop Word List</source>
 <translation>Stopwords ISO - 漢語（簡體）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="745"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="747"></location>
 <source>Stopwords ISO - Chinese (Traditional) Stop Word List</source>
 <translation>Stopwords ISO - 漢語（繁體）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="746"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="748"></location>
 <source>Stopwords ISO - Croatian Stop Word List</source>
 <translation>Stopwords ISO - 克羅埃西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="747"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="749"></location>
 <source>Stopwords ISO - Czech Stop Word List</source>
 <translation>Stopwords ISO - 捷克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="748"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="750"></location>
 <source>Stopwords ISO - Danish Stop Word List</source>
 <translation>Stopwords ISO - 丹麥語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="749"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="751"></location>
 <source>Stopwords ISO - Dutch Stop Word List</source>
 <translation>Stopwords ISO - 荷蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="750"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="752"></location>
 <source>Stopwords ISO - English Stop Word List</source>
 <translation>Stopwords ISO - 英語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="751"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="753"></location>
 <source>Stopwords ISO - Esperanto Stop Word List</source>
 <translation>Stopwords ISO - 世界語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="752"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="754"></location>
 <source>Stopwords ISO - Estonian Stop Word List</source>
 <translation>Stopwords ISO - 愛沙尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="753"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="755"></location>
 <source>Stopwords ISO - Finnish Stop Word List</source>
 <translation>Stopwords ISO - 芬蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="754"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="756"></location>
 <source>Stopwords ISO - French Stop Word List</source>
 <translation>Stopwords ISO - 法語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="755"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="757"></location>
 <source>Stopwords ISO - Galician Stop Word List</source>
 <translation>Stopwords ISO - 加里西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="756"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="758"></location>
 <source>Stopwords ISO - German Stop Word List</source>
 <translation>Stopwords ISO - 德語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="757"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="759"></location>
 <source>Stopwords ISO - Greek (Modern) Stop Word List</source>
 <translation>Stopwords ISO - 希臘語（現代）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="758"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="760"></location>
 <source>Stopwords ISO - Gujarati Stop Word List</source>
 <translation>Stopwords ISO - 古吉拉特語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="759"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="761"></location>
 <source>Stopwords ISO - Hausa Stop Word List</source>
 <translation>Stopwords ISO - 豪薩語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="760"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="762"></location>
 <source>Stopwords ISO - Hebrew Stop Word List</source>
 <translation>Stopwords ISO - 希伯來語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="761"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="763"></location>
 <source>Stopwords ISO - Hindi Stop Word List</source>
 <translation>Stopwords ISO - 印地語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="762"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="764"></location>
 <source>Stopwords ISO - Hungarian Stop Word List</source>
 <translation>Stopwords ISO - 匈牙利語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="763"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="765"></location>
 <source>Stopwords ISO - Indonesian Stop Word List</source>
 <translation>Stopwords ISO - 印度尼西亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="764"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="766"></location>
 <source>Stopwords ISO - Irish Stop Word List</source>
 <translation>Stopwords ISO - 愛爾蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="765"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="767"></location>
 <source>Stopwords ISO - Italian Stop Word List</source>
 <translation>Stopwords ISO - 義大利語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="766"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="768"></location>
 <source>Stopwords ISO - Japanese Stop Word List</source>
 <translation>Stopwords ISO - 日語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="767"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="769"></location>
 <source>Stopwords ISO - Korean Stop Word List</source>
 <translation>Stopwords ISO - 韓語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="768"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="770"></location>
 <source>Stopwords ISO - Kurdish Stop Word List</source>
 <translation>Stopwords ISO - 庫爾德語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="769"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="771"></location>
 <source>Stopwords ISO - Latin Stop Word List</source>
 <translation>Stopwords ISO - 拉丁語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="770"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="772"></location>
 <source>Stopwords ISO - Latvian Stop Word List</source>
 <translation>Stopwords ISO - 拉脫維亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="771"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="773"></location>
 <source>Stopwords ISO - Lithuanian Stop Word List</source>
 <translation>Stopwords ISO - 立陶宛語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="772"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="774"></location>
 <source>Stopwords ISO - Malay Stop Word List</source>
 <translation>Stopwords ISO - 馬來語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="773"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="775"></location>
 <source>Stopwords ISO - Marathi Stop Word List</source>
 <translation>Stopwords ISO - 馬拉地語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="775"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="777"></location>
 <source>Stopwords ISO - Norwegian Stop Word List</source>
 <translation>Stopwords ISO - 挪威語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="776"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="778"></location>
 <source>Stopwords ISO - Persian Stop Word List</source>
 <translation>Stopwords ISO - 波斯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="777"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="779"></location>
 <source>Stopwords ISO - Polish Stop Word List</source>
 <translation>Stopwords ISO - 波蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="778"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="780"></location>
 <source>Stopwords ISO - Portuguese Stop Word List</source>
 <translation>Stopwords ISO - 葡萄牙語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="779"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="781"></location>
 <source>Stopwords ISO - Romanian Stop Word List</source>
 <translation>Stopwords ISO - 羅馬尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="780"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="782"></location>
 <source>Stopwords ISO - Russian Stop Word List</source>
 <translation>Stopwords ISO - 俄語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="781"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="783"></location>
 <source>Stopwords ISO - Slovak Stop Word List</source>
 <translation>Stopwords ISO - 斯洛伐克語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="782"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="784"></location>
 <source>Stopwords ISO - Slovenian Stop Word List</source>
 <translation>Stopwords ISO - 斯洛維尼亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="783"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="785"></location>
 <source>Stopwords ISO - Somali Stop Word List</source>
 <translation>Stopwords ISO - 索馬利亞語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="784"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="786"></location>
 <source>Stopwords ISO - Sotho (Southern) Stop Word List</source>
 <translation>Stopwords ISO - 塞索托語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="785"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="787"></location>
 <source>Stopwords ISO - Spanish Stop Word List</source>
 <translation>Stopwords ISO - 西班牙語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="786"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="788"></location>
 <source>Stopwords ISO - Swahili Stop Word List</source>
 <translation>Stopwords ISO - 斯瓦西里語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="787"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="789"></location>
 <source>Stopwords ISO - Swedish Stop Word List</source>
 <translation>Stopwords ISO - 瑞典語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="788"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="790"></location>
 <source>Stopwords ISO - Tagalog Stop Word List</source>
 <translation>Stopwords ISO - 他加祿語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="789"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="791"></location>
 <source>Stopwords ISO - Thai Stop Word List</source>
 <translation>Stopwords ISO - 泰語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="790"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="792"></location>
 <source>Stopwords ISO - Turkish Stop Word List</source>
 <translation>Stopwords ISO - 土耳其語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="791"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="793"></location>
 <source>Stopwords ISO - Ukrainian Stop Word List</source>
 <translation>Stopwords ISO - 烏克蘭語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="792"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="794"></location>
 <source>Stopwords ISO - Urdu Stop Word List</source>
 <translation>Stopwords ISO - 烏爾都語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="793"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="795"></location>
 <source>Stopwords ISO - Vietnamese Stop Word List</source>
 <translation>Stopwords ISO - 越南語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="794"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="796"></location>
 <source>Stopwords ISO - Yoruba Stop Word List</source>
 <translation>Stopwords ISO - 約魯巴語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="795"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="797"></location>
 <source>Stopwords ISO - Zulu Stop Word List</source>
 <translation>Stopwords ISO - 祖魯語停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2554"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2558"></location>
 <source>Fisher's Exact Test</source>
 <translation>費希爾精確檢驗</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2579"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2583"></location>
 <source>Pearson's Chi-squared Test</source>
 <translation>皮爾森卡方檢驗</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2587"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2591"></location>
 <source>Student's t-test (1-sample)</source>
 <translation>學生 t 檢驗（單樣本）</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2620"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2624"></location>
 <source>z-score</source>
 <translation>z 值</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2571"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2575"></location>
 <source>Mann-Whitney U Test</source>
 <translation>曼惠特尼 U 檢驗</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2643"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2647"></location>
 <source>Student's t-test (2-sample)</source>
 <translation>學生 t 檢驗（雙樣本）</translation>
 </message>
@@ -8908,47 +8908,47 @@ Frequency</source>
 <translation>Pyphen - 世界語分音節器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2636"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2640"></location>
 <source>Log-likelihood Ratio Test</source>
 <translation>對數似然比檢驗</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2564"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2568"></location>
 <source>Log-likelihood Ratio</source>
 <translation>對數似然比</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2604"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2608"></location>
 <source>t-statistic</source>
 <translation>t 值</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2668"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2672"></location>
 <source>Dice's Coefficient</source>
 <translation>Dice 係數</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2678"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2682"></location>
 <source>Jaccard Index</source>
 <translation>雅卡爾指數</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2722"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2726"></location>
 <source>Mutual Information</source>
 <translation>互資訊</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2732"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2736"></location>
 <source>Pointwise Mutual Information</source>
 <translation>點互資訊</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2742"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2746"></location>
 <source>Squared Phi Coefficient</source>
 <translation>Phi 係數的平方</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2728"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2732"></location>
 <source>Odds Ratio</source>
 <translation>比值比</translation>
 </message>
@@ -9008,32 +9008,32 @@ Frequency</source>
 <translation>Pyphen - 加泰羅尼亞語分音節器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="544"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="545"></location>
 <source>spaCy - Finnish Lemmatizer</source>
 <translation>spaCy - 芬蘭語詞形還原器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="719"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="721"></location>
 <source>spaCy - Sorbian (Lower) Stop Word List</source>
 <translation>spaCy - 索布語（下）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="720"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="722"></location>
 <source>spaCy - Sorbian (Upper) Stop Word List</source>
 <translation>spaCy - 索布語（上）停用詞表</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2652"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2656"></location>
 <source>None</source>
 <translation>無</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2603"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2607"></location>
 <source>Welch's t-test</source>
 <translation>Welch t 檢驗</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2619"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2623"></location>
 <source>z-score (Berry-Rogghe)</source>
 <translation>z 值（Berry-Rogghe）</translation>
 </message>
@@ -9173,184 +9173,194 @@ Frequency</source>
 <translation>spaCy - 瑞典語詞性標註器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="501"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="502"></location>
 <source>SudachiPy - Japanese Part-of-speech Tagger</source>
 <translation>SudachiPy - 日語詞性標註器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="503"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="504"></location>
 <source>Underthesea - Vietnamese Part-of-speech Tagger</source>
 <translation>Underthesea - 越南語詞性標註器</translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2478"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2482"></location>
 <source>Carroll's D₂</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2483"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2487"></location>
 <source>Gries's DP</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2488"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2492"></location>
 <source>Gries's DPnorm</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2493"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2497"></location>
 <source>Juilland's D</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2498"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2502"></location>
 <source>Lyne's D₃</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2503"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2507"></location>
 <source>Rosengren's S</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2507"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2511"></location>
 <source>Zhang's Distributional Consistency</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2508"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2512"></location>
 <source>Zhang's DC</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2520"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2524"></location>
 <source>Carroll's Um</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2525"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2529"></location>
 <source>Engwall's FM</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2530"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2534"></location>
 <source>Juilland's U</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2535"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2539"></location>
 <source>Kromer's UR</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2540"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2544"></location>
 <source>Rosengren's KF</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2572"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2576"></location>
 <source>U1</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2580"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2584"></location>
 <source>χ2</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2658"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2662"></location>
 <source>%DIFF</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2662"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2666"></location>
 <source>Cubic Association Ratio</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2663"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2667"></location>
 <source>IM³</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2673"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2677"></location>
 <source>Difference Coefficient</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2682"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2686"></location>
 <source>Log-Frequency Biased MD</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2683"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2687"></location>
 <source>LFMD</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2688"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2692"></location>
 <source>Kilgarriff's Ratio</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2693"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2697"></location>
 <source>logDice</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2698"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2702"></location>
 <source>Log Ratio</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2703"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2707"></location>
 <source>MI.log-f</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2708"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2712"></location>
 <source>Minimum Sensitivity</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2712"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2716"></location>
 <source>Mutual Dependency</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2713"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2717"></location>
 <source>MD</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2717"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2721"></location>
 <source>Mutual Expectation</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2718"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2722"></location>
 <source>ME</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2723"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2727"></location>
 <source>MI</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2733"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2737"></location>
 <source>PMI</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2738"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2742"></location>
 <source>Poisson Collocation Measure</source>
 <translation type="unfinished"></translation>
 </message>
 <message>
-<location filename="../wordless/wl_settings/wl_settings_global.py" line="2743"></location>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="2747"></location>
 <source>φ2</source>
 <translation type="unfinished"></translation>
+</message>
+<message>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="500"></location>
+<source>spaCy - Ukrainian Part-of-speech Tagger</source>
+<translation>spaCy - 烏克蘭語詞性標註器</translation>
+</message>
+<message>
+<location filename="../wordless/wl_settings/wl_settings_global.py" line="569"></location>
+<source>spaCy - Ukrainian Lemmatizer</source>
+<translation>spaCy - 烏克蘭語詞形還原器</translation>
 </message>
 </context>
 <context>
