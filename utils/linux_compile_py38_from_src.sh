@@ -1,6 +1,6 @@
 #!/bin/bash
 # ----------------------------------------------------------------------
-# Utilities: Compile Python 3.8 from Source on Ubuntu 16.04
+# Utilities: Linux - Compile Python 3.8 from Source
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify

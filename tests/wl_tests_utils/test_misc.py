@@ -16,9 +16,20 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import platform
 import re
 
 from wordless.wl_utils import wl_misc
+
+def test_check_os():
+    is_windows, is_macos, is_linux = wl_misc.check_os()
+
+    if platform.system() == 'Windows':
+        assert is_windows and not is_macos and not is_linux
+    elif platform.system() == 'Darwin':
+        assert not is_windows and is_macos and not is_linux
+    elif platform.system() == 'Linux':
+        assert not is_windows and not is_macos and is_linux
 
 def test_get_wl_ver():
     assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', wl_misc.get_wl_ver())
@@ -39,6 +50,7 @@ def test_merge_dicts():
     assert wl_misc.merge_dicts([{1: [10, 20]}, {1: [30, 40], 2: [50, 60]}]) == {1: [[10, 20], [30, 40]], 2: [[0, 0], [50, 60]]}
 
 if __name__ == '__main__':
+    test_check_os()
     test_get_wl_ver()
     test_split_wl_ver()
     test_flatten_list()

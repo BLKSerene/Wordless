@@ -34,6 +34,7 @@
 - Utils: Add spaCy's Finnish part-of-speech tagger and lemmatizer
 - Utils: Add spaCy's Sorbian (Lower) word tokenizer and stop word list
 - Utils: Add spaCy's Sorbian (Upper) word tokenizer and stop word list
+- Utils: Add spaCy's Ukrainian part-of-speech tagger and lemmatizer
 - Work Area: Add Collocation/Colligation Extractor - Generation Settings - Limit Searching - Within Sentence Segments
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Measure of Bayes Factor
 - Work Area: Add Collocation/Colligation/Keyword Extractor - Generation Settings - Test of Statistical Significance / Measure of Effect Size - None
