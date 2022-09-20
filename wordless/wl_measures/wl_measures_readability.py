@@ -19,16 +19,9 @@
 import random
 
 import numpy
-from PyQt5.QtCore import QCoreApplication
-
 from wordless.wl_checking import wl_checking_tokens
 from wordless.wl_nlp import wl_pos_tagging, wl_syl_tokenization
 from wordless.wl_utils import wl_misc
-
-_tr = QCoreApplication.translate
-
-NO_SUPPORT = _tr('wl_measures_readability', 'No Support')
-TEXT_TOO_SHORT = _tr('wl_measures_readability', 'Text is Too Short')
 
 def get_counts(main, text):
     # Count of sentences
@@ -109,7 +102,7 @@ def automated_readability_index(main, text):
     if text.count_sentences and text.count_words:
         ari = 0.5 * (text.count_words / text.count_sentences) + 4.71 * (text.count_chars_all / text.count_words) - 21.43
     else:
-        ari = TEXT_TOO_SHORT
+        ari = 'text_too_short'
 
     return ari
 
@@ -122,7 +115,7 @@ def coleman_liau_index(main, text):
         est_cloze_pct = 141.8401 - 0.21459 * (text.count_chars_alphabetic / text.count_words * 100) + 1.079812 * (text.count_sentences / text.count_words * 100)
         grade_level = -27.4004 * (est_cloze_pct / 100) + 23.06395
     else:
-        grade_level = TEXT_TOO_SHORT
+        grade_level = 'text_too_short'
 
     return grade_level
 
@@ -138,10 +131,10 @@ def dale_chall_readability_score(main, text):
             count_difficult_words = get_count_difficult_words(text.words_flat, 3000)
             x_c50 = 0.1579 * (count_difficult_words / text.count_words) + 0.0496 * (text.count_words / text.count_sentences) + 3.6365
         else:
-            x_c50 = TEXT_TOO_SHORT
+            x_c50 = 'text_too_short'
     # No language support
     else:
-        x_c50 = NO_SUPPORT
+        x_c50 = 'no_support'
 
     return x_c50
 
@@ -153,7 +146,7 @@ def devereux_readability_index(main, text):
     if text.count_words and text.count_sentences:
         grade_placement = 1.56 * (text.count_chars_all / text.count_words) + 0.19 * (text.count_words / text.count_sentences) - 6.49
     else:
-        grade_placement = TEXT_TOO_SHORT
+        grade_placement = 'text_too_short'
 
     return grade_placement
 
@@ -166,10 +159,10 @@ def flesch_reading_ease(main, text):
         if text.count_words and text.count_sentences:
             flesch_re = 206.835 - 0.846 * (text.count_syls / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences)
         else:
-            flesch_re = TEXT_TOO_SHORT
+            flesch_re = 'text_too_short'
     # No language support
     else:
-        flesch_re = NO_SUPPORT
+        flesch_re = 'no_support'
 
     return flesch_re
 
@@ -184,10 +177,10 @@ def flesch_reading_ease_simplified(main, text):
 
             flesch_re_simplified = 1.599 * (count_words_1_syl / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences) - 31.517
         else:
-            flesch_re_simplified = TEXT_TOO_SHORT
+            flesch_re_simplified = 'text_too_short'
     # No language support
     else:
-        flesch_re_simplified = NO_SUPPORT
+        flesch_re_simplified = 'no_support'
 
     return flesch_re_simplified
 
@@ -200,10 +193,10 @@ def flesch_kincaid_grade_level(main, text):
         if text.count_sentences and text.count_words:
             gl = 0.39 * (text.count_words / text.count_sentences) + 11.8 * (text.count_syls / text.count_words) - 15.59
         else:
-            gl = TEXT_TOO_SHORT
+            gl = 'text_too_short'
     # No language support
     else:
-        gl = NO_SUPPORT
+        gl = 'no_support'
 
     return gl
 
@@ -221,10 +214,10 @@ def forcast_grade_level(main, text):
             rgl = 20.43 - 0.11 * count_words_1_syl
         # Text is too short
         else:
-            rgl = TEXT_TOO_SHORT
+            rgl = 'text_too_short'
     # No language support
     else:
-        rgl = NO_SUPPORT
+        rgl = 'no_support'
 
     return rgl
 
@@ -245,10 +238,10 @@ def gunning_fog_index(main, text):
 
             fog_index = 0.4 * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
         else:
-            fog_index = TEXT_TOO_SHORT
+            fog_index = 'text_too_short'
     # No language support
     else:
-        fog_index = NO_SUPPORT
+        fog_index = 'no_support'
 
     return fog_index
 
@@ -274,10 +267,10 @@ def smog_grade(main, text):
             g = 3.1291 + 1.043 * (count_words_polysyllabic ** 0.5)
         # Text is too short
         else:
-            g = TEXT_TOO_SHORT
+            g = 'text_too_short'
     # No language support
     else:
-        g = NO_SUPPORT
+        g = 'no_support'
 
     return g
 
@@ -321,10 +314,10 @@ def spache_grade_level(main, text):
             grade_level = numpy.mean(grade_levels)
         # Text is too short
         else:
-            grade_level = TEXT_TOO_SHORT
+            grade_level = 'text_too_short'
     # No language support
     else:
-        grade_level = NO_SUPPORT
+        grade_level = 'no_support'
 
     return grade_level
 
@@ -367,9 +360,9 @@ def write_score(main, text):
             score = count_words_1_syl + 3 * count_sentences_samples
         # Text is too short
         else:
-            score = TEXT_TOO_SHORT
+            score = 'text_too_short'
     # No language support
     else:
-        score = NO_SUPPORT
+        score = 'no_support'
 
     return score
