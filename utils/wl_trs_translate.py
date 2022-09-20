@@ -271,25 +271,6 @@ TRS_MISC = {
     'Table Settings': ['表格设置'],
     'Figure Settings': ['图表设置'],
 
-    # Misc
-    '''
-                <hr>
-                <div style="text-align: center;">
-                    Copyright (C) 2018-2022&nbsp;&nbsp;Ye Lei (<span style="font-family: simsun">叶磊</span>)<br>
-                    Licensed Under GNU GPLv3<br>
-                    All Other Rights Reserved
-                </div>
-            ''': [
-        '''
-                <hr>
-                <div style="text-align: center;">
-                    版权所有（C）2018-2022&nbsp;&nbsp;<span style="font-family: simsun">叶磊</span><br>
-                    遵循 GNU GPLv3 协议<br>
-                    保留其他所有权利
-                </div>
-            '''
-    ],
-
     # Language-specific files
     'ACKNOWLEDGMENTS.md': ['ACKNOWLEDGMENTS_zho_cn.md']
 }

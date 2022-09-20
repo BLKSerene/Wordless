@@ -5,27 +5,27 @@
 <message>
 <location filename="../wordless/wl_file_area.py" line="419"></location>
 <source>Add files...</source>
-<translation type="unfinished">新增檔案...</translation>
+<translation>新增檔案...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="420"></location>
 <source>Add folder...</source>
-<translation type="unfinished">新增資料夾...</translation>
+<translation>新增資料夾...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="434"></location>
 <source>Auto-detect encodings</source>
-<translation type="unfinished">自動檢測編碼</translation>
+<translation>自動檢測編碼</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="435"></location>
 <source>Auto-detect languages</source>
-<translation type="unfinished">自動檢測語種</translation>
+<translation>自動檢測語種</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="436"></location>
 <source>Include files in subfolders</source>
-<translation type="unfinished">包含子資料夾下檔案</translation>
+<translation>包含子資料夾下檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="448"></location>
@@ -40,37 +40,37 @@
 <message>
 <location filename="../wordless/wl_file_area.py" line="515"></location>
 <source>Error Adding Files</source>
-<translation type="unfinished">新增檔案時出錯</translation>
+<translation>新增檔案時出錯</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="528"></location>
 <source>Empty File</source>
-<translation type="unfinished">空檔案</translation>
+<translation>空檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="533"></location>
 <source>Unsupported File Type</source>
-<translation type="unfinished">檔案型別不支援</translation>
+<translation>檔案型別不支援</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="538"></location>
 <source>Duplicate File</source>
-<translation type="unfinished">重複檔案</translation>
+<translation>重複檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="556"></location>
 <source>Checking files...</source>
-<translation type="unfinished">檢查檔案中...</translation>
+<translation>檢查檔案中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="586"></location>
 <source>Open Files</source>
-<translation type="unfinished">開啟檔案</translation>
+<translation>開啟檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="600"></location>
 <source>Open Folder</source>
-<translation type="unfinished">開啟資料夾</translation>
+<translation>開啟資料夾</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="517"></location>
@@ -79,7 +79,7 @@
                             An error occurred while adding files, so the following files were not added to the table.
                         &lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;
                             新增檔案時發生了一個錯誤，因此下列檔案未被新增至表格中。
                         &lt;/div&gt;
@@ -106,12 +106,12 @@
 <message>
 <location filename="../wordless/wl_file_area.py" line="285"></location>
 <source>Tokenized</source>
-<translation type="unfinished">已分詞</translation>
+<translation>已分詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="285"></location>
 <source>Tagged</source>
-<translation type="unfinished">已標註</translation>
+<translation>已標註</translation>
 </message>
 </context>
 <context>
@@ -131,7 +131,7 @@
                     The results in the table have yet been exported. Do you really want to clear the table?
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     表格中的結果尚未匯出。你確定要清空表格嗎？
                 &lt;/div&gt;
@@ -153,14 +153,14 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_buttons.py" line="45"></location>
 <source>Restore default settings</source>
-<translation type="unfinished">恢復預設設定</translation>
+<translation>恢復預設設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_buttons.py" line="45"></location>
 <source>
                 &lt;div&gt;Do you want to reset all settings to their defaults?&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;你想要將所有設定重置為預設值嗎？&lt;/div&gt;
             </translation>
 </message>
@@ -186,27 +186,27 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_boxes.py" line="135"></location>
 <source>Extra Small</source>
-<translation type="unfinished">特小</translation>
+<translation>特小</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_boxes.py" line="136"></location>
 <source>Small</source>
-<translation type="unfinished">小</translation>
+<translation>小</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_boxes.py" line="137"></location>
 <source>Medium (Recommended)</source>
-<translation type="unfinished">中等（推薦）</translation>
+<translation>中等（推薦）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_boxes.py" line="138"></location>
 <source>Large</source>
-<translation type="unfinished">大</translation>
+<translation>大</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_boxes.py" line="139"></location>
 <source>Extra Large</source>
-<translation type="unfinished">特大</translation>
+<translation>特大</translation>
 </message>
 </context>
 <context>
@@ -225,12 +225,12 @@
 <context>
 <name>Wl_Dialog_About</name>
 <message>
-<location filename="../wordless/wl_main.py" line="1251"></location>
+<location filename="../wordless/wl_main.py" line="1249"></location>
 <source>About Wordless</source>
-<translation type="unfinished">關於 Wordless</translation>
+<translation>關於 Wordless</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1259"></location>
+<location filename="../wordless/wl_main.py" line="1257"></location>
 <source>
                 &lt;div style="text-align: center;"&gt;
                     &lt;h2&gt;Wordless {}&lt;/h2&gt;
@@ -240,7 +240,7 @@
                     &lt;/div&gt;
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div style="text-align: center;"&gt;
                     &lt;h2&gt;Wordless {}&lt;/h2&gt;
                     &lt;div&gt;
@@ -251,11 +251,11 @@
             </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1271"></location>
+<location filename="../wordless/wl_main.py" line="1269"></location>
 <source>
                 &lt;hr&gt;
                 &lt;div style="text-align: center;"&gt;
-                    Copyright (C) 2018-2022&amp;nbsp;&amp;nbsp;Ye Lei (&lt;span style="font-family: simsun"&gt;叶磊&lt;/span&gt;)&lt;br&gt;
+                    Copyright (C) 2018-2022&amp;nbsp;&amp;nbsp;Ye Lei (叶磊)&lt;br&gt;
                     Licensed Under GNU GPLv3&lt;br&gt;
                     All Other Rights Reserved
                 &lt;/div&gt;
@@ -263,7 +263,7 @@
 <translation>
                 &lt;hr&gt;
                 &lt;div style="text-align: center;"&gt;
-                    版權所有（C）2018-2022&amp;nbsp;&amp;nbsp;&lt;span style="font-family: simsun"&gt;葉磊&lt;/span&gt;&lt;br&gt;
+                    版權所有（C）2018-2022&amp;nbsp;&amp;nbsp;葉磊&lt;br&gt;
                     遵循 GNU GPLv3 協議&lt;br&gt;
                     保留其他所有權利
                 &lt;/div&gt;
@@ -273,43 +273,43 @@
 <context>
 <name>Wl_Dialog_Acks</name>
 <message>
-<location filename="../wordless/wl_main.py" line="907"></location>
+<location filename="../wordless/wl_main.py" line="905"></location>
 <source>Name</source>
 <translation>名稱</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="907"></location>
+<location filename="../wordless/wl_main.py" line="905"></location>
 <source>Version</source>
-<translation type="unfinished">版本</translation>
+<translation>版本</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="907"></location>
+<location filename="../wordless/wl_main.py" line="905"></location>
 <source>Authors</source>
-<translation type="unfinished">作者</translation>
+<translation>作者</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="907"></location>
+<location filename="../wordless/wl_main.py" line="905"></location>
 <source>License</source>
-<translation type="unfinished">許可</translation>
+<translation>許可</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="878"></location>
+<location filename="../wordless/wl_main.py" line="876"></location>
 <source>Acknowledgments</source>
-<translation type="unfinished">致謝</translation>
+<translation>致謝</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="887"></location>
+<location filename="../wordless/wl_main.py" line="885"></location>
 <source>ACKNOWLEDGMENTS.md</source>
 <translation>ACKNOWLEDGMENTS_zho_tw.md</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="899"></location>
+<location filename="../wordless/wl_main.py" line="897"></location>
 <source>
                 &lt;div&gt;
                     As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     鑑於 Wordless 立於巨人的肩膀之上，我謹在此向下列開源專案致以本人誠摯的感謝，若沒有它們，本專案將無法完成：
                 &lt;/div&gt;
@@ -319,155 +319,155 @@
 <context>
 <name>Wl_Dialog_Changelog</name>
 <message>
-<location filename="../wordless/wl_main.py" line="1130"></location>
+<location filename="../wordless/wl_main.py" line="1128"></location>
 <source>Changelog</source>
-<translation type="unfinished">更新日誌</translation>
+<translation>更新日誌</translation>
 </message>
 </context>
 <context>
 <name>Wl_Dialog_Check_Updates</name>
 <message>
-<location filename="../wordless/wl_main.py" line="1020"></location>
+<location filename="../wordless/wl_main.py" line="1018"></location>
 <source>Check for updates on startup</source>
-<translation type="unfinished">啟動時檢查更新</translation>
+<translation>啟動時檢查更新</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1021"></location>
+<location filename="../wordless/wl_main.py" line="1019"></location>
 <source>Try Again</source>
-<translation type="unfinished">重試</translation>
+<translation>重試</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1077"></location>
+<location filename="../wordless/wl_main.py" line="1075"></location>
 <source>Cancel</source>
 <translation>取消</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1070"></location>
+<location filename="../wordless/wl_main.py" line="1068"></location>
 <source>
                 &lt;div&gt;
                     Checking for updates...
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     檢查更新中...
                 &lt;/div&gt;
             </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1075"></location>
+<location filename="../wordless/wl_main.py" line="1073"></location>
 <source>Latest Version: Checking...</source>
-<translation type="unfinished">最新版本：查詢中...</translation>
+<translation>最新版本：查詢中...</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1090"></location>
+<location filename="../wordless/wl_main.py" line="1088"></location>
 <source>
                         &lt;div&gt;
                             Hooray, you are using the latest version of Wordless!
                         &lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;
                             好耶，你使用的是 Wordless 的最新版！
                         &lt;/div&gt;
                     </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1097"></location>
+<location filename="../wordless/wl_main.py" line="1095"></location>
 <source>
                     &lt;div&gt;
                         A network error has occurred, please check your network settings and try again or &lt;a href="https://github.com/BLKSerene/Wordless/releases"&gt;check for updates manually&lt;/a&gt;.
                     &lt;/div&gt;
                 </source>
-<translation type="unfinished">
+<translation>
                     &lt;div&gt;
                         剛才發生了一個網路錯誤，請檢查你的網路設定並重試或&lt;a href="https://github.com/BLKSerene/Wordless/releases"&gt;手動檢查更新&lt;/a&gt;。
                     &lt;/div&gt;
                 </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1102"></location>
+<location filename="../wordless/wl_main.py" line="1100"></location>
 <source>Latest Version: Network error</source>
-<translation type="unfinished">最新版本：網路錯誤</translation>
+<translation>最新版本：網路錯誤</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1104"></location>
+<location filename="../wordless/wl_main.py" line="1102"></location>
 <source>OK</source>
 <translation>確認</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1007"></location>
+<location filename="../wordless/wl_main.py" line="1005"></location>
 <source>Check for Updates</source>
-<translation type="unfinished">檢查更新</translation>
+<translation>檢查更新</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1017"></location>
+<location filename="../wordless/wl_main.py" line="1015"></location>
 <source>Current Version: </source>
-<translation type="unfinished">當前版本： </translation>
+<translation>當前版本： </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1083"></location>
+<location filename="../wordless/wl_main.py" line="1081"></location>
 <source>
                         &lt;div&gt;
                             Wordless {} is out, click &lt;a href="https://github.com/BLKSerene/Wordless#download"&gt;&lt;b&gt;HERE&lt;/b&gt;&lt;/a&gt; to download the latest version of Wordless.
                         &lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;
                             Wordless {} 已釋出，點選&lt;a href="https://github.com/BLKSerene/Wordless#download"&gt;&lt;b&gt;此處&lt;/b&gt;&lt;/a&gt;下載 Wordless 的最新版。
                         &lt;/div&gt;
                     </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="1095"></location>
+<location filename="../wordless/wl_main.py" line="1093"></location>
 <source>Latest Version: </source>
-<translation type="unfinished">最新版本： </translation>
+<translation>最新版本： </translation>
 </message>
 </context>
 <context>
 <name>Wl_Dialog_Citing</name>
 <message>
-<location filename="../wordless/wl_main.py" line="701"></location>
+<location filename="../wordless/wl_main.py" line="699"></location>
 <source>
                 &lt;div&gt;
                     If you publish work that uses Wordless, please cite as follows.
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     如果你在發表的成果中使用了 Wordless，請按如下格式進行引用。
                 &lt;/div&gt;
             </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="710"></location>
+<location filename="../wordless/wl_main.py" line="708"></location>
 <source>Citation System:</source>
-<translation type="unfinished">引用體系：</translation>
+<translation>引用體系：</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="714"></location>
+<location filename="../wordless/wl_main.py" line="712"></location>
 <source>Copy</source>
-<translation type="unfinished">複製</translation>
+<translation>複製</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="715"></location>
+<location filename="../wordless/wl_main.py" line="713"></location>
 <source>Close</source>
 <translation>關閉</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="762"></location>
+<location filename="../wordless/wl_main.py" line="760"></location>
 <source>APA (7th Edition)</source>
-<translation type="unfinished">APA（第7版）</translation>
+<translation>APA（第7版）</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="764"></location>
+<location filename="../wordless/wl_main.py" line="762"></location>
 <source>MLA (8th Edition)</source>
-<translation type="unfinished">MLA（第8版）</translation>
+<translation>MLA（第8版）</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="694"></location>
+<location filename="../wordless/wl_main.py" line="692"></location>
 <source>Citing</source>
-<translation type="unfinished">引用</translation>
+<translation>引用</translation>
 </message>
 </context>
 <context>
@@ -482,7 +482,7 @@
                     Note: All unsaved data and figures will be lost.
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     你確認你要退出 Wordless 嗎？
                 &lt;/div&gt;
@@ -494,12 +494,12 @@
 <message>
 <location filename="../wordless/wl_main.py" line="136"></location>
 <source>Always confirm on exit</source>
-<translation type="unfinished">關閉時總是提示確認</translation>
+<translation>關閉時總是提示確認</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="137"></location>
 <source>Exit</source>
-<translation type="unfinished">退出</translation>
+<translation>退出</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="138"></location>
@@ -509,7 +509,7 @@
 <message>
 <location filename="../wordless/wl_main.py" line="117"></location>
 <source>Exit Wordless</source>
-<translation type="unfinished">退出 Wordless</translation>
+<translation>退出 Wordless</translation>
 </message>
 </context>
 <context>
@@ -517,17 +517,17 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="44"></location>
 <source>Inclusion</source>
-<translation type="unfinished">包含</translation>
+<translation>包含</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="130"></location>
 <source>Context Window:</source>
-<translation type="unfinished">上下文檢索範圍：</translation>
+<translation>上下文檢索範圍：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="107"></location>
 <source>Exclusion</source>
-<translation type="unfinished">排除</translation>
+<translation>排除</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="37"></location>
@@ -558,42 +558,42 @@
 <context>
 <name>Wl_Dialog_Donating</name>
 <message>
-<location filename="../wordless/wl_main.py" line="799"></location>
+<location filename="../wordless/wl_main.py" line="797"></location>
 <source>
                 &lt;div&gt;
                     If you would like to support the development of Wordless, you may donate via &lt;a href="https://www.paypal.com/"&gt;PayPal&lt;/a&gt;, &lt;a href="https://global.alipay.com/"&gt;Alipay&lt;/a&gt;, or &lt;a href="https://pay.weixin.qq.com/index.php/public/wechatpay_en"&gt;WeChat Pay&lt;/a&gt;.
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     如果你願意支援 Wordless 的開發工作，你可以透過&lt;a href="https://www.paypal.com/"&gt;PayPal&lt;/a&gt;、&lt;a href="https://global.alipay.com/"&gt;支付寶&lt;/a&gt;或&lt;a href="https://pay.weixin.qq.com/index.php/public/wechatpay_en"&gt;微信支付&lt;/a&gt;進行贊助。
                 &lt;/div&gt;
             </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="807"></location>
+<location filename="../wordless/wl_main.py" line="805"></location>
 <source>Donating via:</source>
-<translation type="unfinished">贊助途徑：</translation>
-</message>
-<message>
-<location filename="../wordless/wl_main.py" line="870"></location>
-<source>Alipay</source>
-<translation type="unfinished">支付寶</translation>
-</message>
-<message>
-<location filename="../wordless/wl_main.py" line="870"></location>
-<source>WeChat Pay</source>
-<translation type="unfinished">微信支付</translation>
-</message>
-<message>
-<location filename="../wordless/wl_main.py" line="793"></location>
-<source>Donating</source>
-<translation type="unfinished">贊助</translation>
+<translation>贊助途徑：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="868"></location>
+<source>Alipay</source>
+<translation>支付寶</translation>
+</message>
+<message>
+<location filename="../wordless/wl_main.py" line="868"></location>
+<source>WeChat Pay</source>
+<translation>微信支付</translation>
+</message>
+<message>
+<location filename="../wordless/wl_main.py" line="791"></location>
+<source>Donating</source>
+<translation>贊助</translation>
+</message>
+<message>
+<location filename="../wordless/wl_main.py" line="866"></location>
 <source>PayPal</source>
-<translation type="unfinished"></translation>
+<translation></translation>
 </message>
 </context>
 <context>
@@ -614,14 +614,14 @@
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_errs.py" line="41"></location>
 <source>Fatal Error</source>
-<translation type="unfinished">致命錯誤</translation>
+<translation>致命錯誤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_errs.py" line="43"></location>
 <source>
                 &lt;div&gt;A fatal error has occurred, please &lt;b&gt;contact the author for support&lt;/b&gt; by emailing to {}!&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;剛才發生了一個致命錯誤，請傳送郵件至 {} 以&lt;b&gt;聯絡作者尋求幫助&lt;/b&gt;！&lt;/div&gt;
             </translation>
 </message>
@@ -631,12 +631,12 @@
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_errs.py" line="64"></location>
 <source>Error Type</source>
-<translation type="unfinished">錯誤型別</translation>
+<translation>錯誤型別</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_errs.py" line="64"></location>
 <source>File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_errs.py" line="77"></location>
@@ -660,82 +660,82 @@
 <context>
 <name>Wl_Dialog_Need_Help</name>
 <message>
-<location filename="../wordless/wl_main.py" line="609"></location>
+<location filename="../wordless/wl_main.py" line="607"></location>
 <source>Need Help?</source>
-<translation type="unfinished">需要幫助？</translation>
+<translation>需要幫助？</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="616"></location>
+<location filename="../wordless/wl_main.py" line="614"></location>
 <source>
                 &lt;div&gt;
                     If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     如果你有任何問題、發現了軟體錯誤、需要提供反饋資訊或想要提交功能需求，你可以透過下方所列的任一支援渠道來獲取開源社群的支援或直接與我聯絡。
                 &lt;/div&gt;
             </translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="625"></location>
+<location filename="../wordless/wl_main.py" line="623"></location>
 <source>Support Channel</source>
-<translation type="unfinished">支援渠道</translation>
+<translation>支援渠道</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="625"></location>
+<location filename="../wordless/wl_main.py" line="623"></location>
 <source>Information</source>
-<translation type="unfinished">資訊</translation>
+<translation>資訊</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="638"></location>
+<location filename="../wordless/wl_main.py" line="636"></location>
 <source>Official Documentation</source>
-<translation type="unfinished">官方文件</translation>
+<translation>官方文件</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="642"></location>
+<location filename="../wordless/wl_main.py" line="640"></location>
 <source>&lt;a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md"&gt;Documentation&lt;/a&gt;</source>
-<translation type="unfinished">&lt;a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md"&gt;文件&lt;/a&gt;</translation>
+<translation>&lt;a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md"&gt;文件&lt;/a&gt;</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="646"></location>
+<location filename="../wordless/wl_main.py" line="644"></location>
 <source>Tutorial Videos</source>
-<translation type="unfinished">影片教程</translation>
+<translation>影片教程</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="650"></location>
+<location filename="../wordless/wl_main.py" line="648"></location>
 <source>&lt;a href="https://space.bilibili.com/34963752/video"&gt;bilibili&lt;/a&gt;</source>
-<translation type="unfinished">&lt;a href="https://space.bilibili.com/34963752/video"&gt;B站&lt;/a&gt;</translation>
+<translation>&lt;a href="https://space.bilibili.com/34963752/video"&gt;B站&lt;/a&gt;</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="654"></location>
+<location filename="../wordless/wl_main.py" line="652"></location>
 <source>Bug Reports</source>
-<translation type="unfinished">Bug 提交</translation>
+<translation>Bug 提交</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="662"></location>
+<location filename="../wordless/wl_main.py" line="660"></location>
 <source>Usage Questions</source>
-<translation type="unfinished">使用疑問</translation>
+<translation>使用疑問</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="670"></location>
+<location filename="../wordless/wl_main.py" line="668"></location>
 <source>Email Support</source>
-<translation type="unfinished">郵件諮詢</translation>
+<translation>郵件諮詢</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="678"></location>
+<location filename="../wordless/wl_main.py" line="676"></location>
 <source>&lt;a href="https://www.wechat.com/en/"&gt;WeChat&lt;/a&gt; Official Account</source>
-<translation type="unfinished">&lt;a href="https://weixin.qq.com/"&gt;微信&lt;/a&gt;公眾號</translation>
+<translation>&lt;a href="https://weixin.qq.com/"&gt;微信&lt;/a&gt;公眾號</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="658"></location>
+<location filename="../wordless/wl_main.py" line="656"></location>
 <source>&lt;a href="https://github.com/BLKSerene/Wordless/issues"&gt;Gihub Issues&lt;/a&gt;</source>
-<translation type="unfinished"></translation>
+<translation></translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="666"></location>
+<location filename="../wordless/wl_main.py" line="664"></location>
 <source>&lt;a href="https://github.com/BLKSerene/Wordless/discussions"&gt;Gihub Discussions&lt;/a&gt;</source>
-<translation type="unfinished"></translation>
+<translation></translation>
 </message>
 </context>
 <context>
@@ -743,17 +743,17 @@
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_misc.py" line="39"></location>
 <source>Elapsed Time: 0:00:00</source>
-<translation type="unfinished">已用時間：0:00:00</translation>
+<translation>已用時間：0:00:00</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_misc.py" line="40"></location>
 <source>Please wait. It may take a few seconds to several minutes for the operation to be completed.</source>
-<translation type="unfinished">請稍後。本操作可能需要幾秒鐘至數分鐘完成。</translation>
+<translation>請稍後。本操作可能需要幾秒鐘至數分鐘完成。</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_misc.py" line="53"></location>
 <source>Elapsed Time: </source>
-<translation type="unfinished">已用時間： </translation>
+<translation>已用時間： </translation>
 </message>
 </context>
 <context>
@@ -761,7 +761,7 @@
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_misc.py" line="63"></location>
 <source>Processing data...</source>
-<translation type="unfinished">處理資料中...</translation>
+<translation>處理資料中...</translation>
 </message>
 </context>
 <context>
@@ -777,7 +777,7 @@
                     Note: All unsaved data and figures will be lost.
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     需要重啟本程式使設定生效。你想要現在重啟 Wordless 嗎？
                 &lt;/div&gt;
@@ -790,7 +790,7 @@
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_misc.py" line="120"></location>
 <source>Restart</source>
-<translation type="unfinished">重啟</translation>
+<translation>重啟</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_misc.py" line="121"></location>
@@ -800,7 +800,7 @@
 <message>
 <location filename="../wordless/wl_dialogs/wl_dialogs_misc.py" line="100"></location>
 <source>Restart Wordless</source>
-<translation type="unfinished">重啟 Wordless</translation>
+<translation>重啟 Wordless</translation>
 </message>
 </context>
 <context>
@@ -808,12 +808,12 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="469"></location>
 <source>File to Filter:</source>
-<translation type="unfinished">待篩選檔案：</translation>
+<translation>待篩選檔案：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="471"></location>
 <source>Filter</source>
-<translation type="unfinished">篩選</translation>
+<translation>篩選</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="474"></location>
@@ -823,17 +823,17 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="461"></location>
 <source>Filter Results</source>
-<translation type="unfinished">篩選結果</translation>
+<translation>篩選結果</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="522"></location>
 <source>The results in the table has been successfully filtered.</source>
-<translation type="unfinished">已成功篩選表格中的結果。</translation>
+<translation>已成功篩選表格中的結果。</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="524"></location>
 <source>Filtering results...</source>
-<translation type="unfinished">篩選結果中...</translation>
+<translation>篩選結果中...</translation>
 </message>
 </context>
 <context>
@@ -841,37 +841,37 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="798"></location>
 <source>Collocate Length:</source>
-<translation type="unfinished">搭配詞長度：</translation>
+<translation>搭配詞長度：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="812"></location>
 <source>Frequency:</source>
-<translation type="unfinished">頻數：</translation>
+<translation>頻數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1103"></location>
 <source>Test Statistic:</source>
-<translation type="unfinished">檢驗統計量：</translation>
+<translation>檢驗統計量：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="837"></location>
 <source>p-value:</source>
-<translation type="unfinished">p 值：</translation>
+<translation>p 值：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="847"></location>
 <source>Bayes Factor:</source>
-<translation type="unfinished">貝葉斯因子：</translation>
+<translation>貝葉斯因子：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="857"></location>
 <source>Effect Size:</source>
-<translation type="unfinished">效應量：</translation>
+<translation>效應量：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="867"></location>
 <source>Number of Files Found:</source>
-<translation type="unfinished">查詢到的檔案數：</translation>
+<translation>查詢到的檔案數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1078"></location>
@@ -894,37 +894,37 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1118"></location>
 <source>Keyword Length:</source>
-<translation type="unfinished">關鍵詞長度：</translation>
+<translation>關鍵詞長度：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1132"></location>
 <source>Frequency:</source>
-<translation type="unfinished">頻數：</translation>
+<translation>頻數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1396"></location>
 <source>Test Statistic:</source>
-<translation type="unfinished">檢驗統計量：</translation>
+<translation>檢驗統計量：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1156"></location>
 <source>p-value:</source>
-<translation type="unfinished">p 值：</translation>
+<translation>p 值：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1166"></location>
 <source>Bayes Factor:</source>
-<translation type="unfinished">貝葉斯因子：</translation>
+<translation>貝葉斯因子：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1176"></location>
 <source>Effect Size:</source>
-<translation type="unfinished">效應量：</translation>
+<translation>效應量：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="1186"></location>
 <source>Number of Files Found:</source>
-<translation type="unfinished">查詢到的檔案數：</translation>
+<translation>查詢到的檔案數：</translation>
 </message>
 </context>
 <context>
@@ -932,32 +932,32 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="539"></location>
 <source>Token Length:</source>
-<translation type="unfinished">形符長度：</translation>
+<translation>形符長度：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="553"></location>
 <source>N-gram Length:</source>
-<translation type="unfinished">N 元組長度：</translation>
+<translation>N 元組長度：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="567"></location>
 <source>Frequency:</source>
-<translation type="unfinished">頻數：</translation>
+<translation>頻數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="581"></location>
 <source>Dispersion:</source>
-<translation type="unfinished">分佈：</translation>
+<translation>分佈：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="595"></location>
 <source>Adjusted Frequency:</source>
-<translation type="unfinished">調整頻數：</translation>
+<translation>調整頻數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="609"></location>
 <source>Number of Files Found:</source>
-<translation type="unfinished">查詢到的檔案數：</translation>
+<translation>查詢到的檔案數：</translation>
 </message>
 </context>
 <context>
@@ -965,17 +965,17 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="110"></location>
 <source>Find Next</source>
-<translation type="unfinished">查詢下一個</translation>
+<translation>查詢下一個</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="111"></location>
 <source>Find Previous</source>
-<translation type="unfinished">查詢上一個</translation>
+<translation>查詢上一個</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="112"></location>
 <source>Find All</source>
-<translation type="unfinished">查詢所有項</translation>
+<translation>查詢所有項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="117"></location>
@@ -985,12 +985,12 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="347"></location>
 <source>Searching in results...</source>
-<translation type="unfinished">查詢結果中...</translation>
+<translation>查詢結果中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="327"></location>
 <source>No Search Results</source>
-<translation type="unfinished">無查詢結果</translation>
+<translation>無查詢結果</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="327"></location>
@@ -998,7 +998,7 @@
                         &lt;div&gt;Searching has completed successfully, but there are no results found.&lt;/div&gt;
                         &lt;div&gt;You can change your settings and try again.&lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;查詢操作已完成，但沒有找到任何結果。&lt;/div&gt;
                         &lt;div&gt;你可以更改你的設定後重試。&lt;/div&gt;
                     </translation>
@@ -1006,32 +1006,32 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="82"></location>
 <source>Search in Results</source>
-<translation type="unfinished">在結果中查詢</translation>
+<translation>在結果中查詢</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="361"></location>
 <source>An error occured during searching!</source>
-<translation type="unfinished">查詢時發生了一個錯誤！</translation>
+<translation>查詢時發生了一個錯誤！</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="114"></location>
 <source>Clear Highlights</source>
-<translation type="unfinished">清除高亮</translation>
+<translation>清除高亮</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="337"></location>
 <source>item</source>
-<translation type="unfinished">項</translation>
+<translation>項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="337"></location>
 <source>items</source>
-<translation type="unfinished">項</translation>
+<translation>項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="339"></location>
 <source>Found {} {}.</source>
-<translation type="unfinished">查詢到 {} {}。</translation>
+<translation>查詢到 {} {}。</translation>
 </message>
 </context>
 <context>
@@ -1039,7 +1039,7 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="337"></location>
 <source>Sort</source>
-<translation type="unfinished">排序</translation>
+<translation>排序</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="338"></location>
@@ -1049,52 +1049,52 @@
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="399"></location>
 <source>Ascending</source>
-<translation type="unfinished">升序</translation>
+<translation>升序</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="401"></location>
 <source>Node</source>
-<translation type="unfinished">節點詞</translation>
+<translation>節點詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="404"></location>
 <source>Sentiment</source>
-<translation type="unfinished">情感</translation>
+<translation>情感</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="406"></location>
 <source>Token No.</source>
-<translation type="unfinished">形符序號</translation>
+<translation>形符序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="408"></location>
 <source>File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="488"></location>
 <source>Sorting results...</source>
-<translation type="unfinished">對結果進行排序中...</translation>
+<translation>對結果進行排序中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="327"></location>
 <source>Sort Results</source>
-<translation type="unfinished">對結果排序</translation>
+<translation>對結果排序</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="500"></location>
 <source>The results in the table has been successfully sorted.</source>
-<translation type="unfinished">已成功對錶格中的結果進行排序。</translation>
+<translation>已成功對錶格中的結果進行排序。</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="438"></location>
 <source>^L[0-9]+$</source>
-<translation type="unfinished">^左[0-9]+$</translation>
+<translation>^左[0-9]+$</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="448"></location>
 <source>^R[0-9]+$</source>
-<translation type="unfinished">^右[0-9]+$</translation>
+<translation>^右[0-9]+$</translation>
 </message>
 </context>
 <context>
@@ -1102,7 +1102,7 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="46"></location>
 <source>New item</source>
-<translation type="unfinished">新列表項</translation>
+<translation>新列表項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="64"></location>
@@ -1127,14 +1127,14 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="116"></location>
 <source>Duplicates Found</source>
-<translation type="unfinished">發現重複項</translation>
+<translation>發現重複項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="116"></location>
 <source>
                                     &lt;div&gt;The item that you have just edited already exists in the list, please specify another one!&lt;/div&gt;
                                 </source>
-<translation type="unfinished">
+<translation>
                                     &lt;div&gt;你剛才編輯的列表項已存在於列表中，請另外指定一項！&lt;/div&gt;
                                 </translation>
 </message>
@@ -1154,7 +1154,7 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="261"></location>
 <source>Import from Files</source>
-<translation type="unfinished">從檔案匯入</translation>
+<translation>從檔案匯入</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="335"></location>
@@ -1164,7 +1164,7 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="275"></location>
 <source>Import Error</source>
-<translation type="unfinished">匯入時出錯</translation>
+<translation>匯入時出錯</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="277"></location>
@@ -1173,7 +1173,7 @@
                         An error occurred during import, please check the following files and try again.
                     &lt;/div&gt;
                 </source>
-<translation type="unfinished">
+<translation>
                     &lt;div&gt;
                         匯入時發生了一個錯誤，請檢查下列檔案後重試。
                     &lt;/div&gt;
@@ -1182,44 +1182,44 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="288"></location>
 <source>Empty File</source>
-<translation type="unfinished">空檔案</translation>
+<translation>空檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="301"></location>
 <source>An error occured during import!</source>
-<translation type="unfinished">匯入時發生了一個錯誤！</translation>
+<translation>匯入時發生了一個錯誤！</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="335"></location>
 <source>Export to File</source>
-<translation type="unfinished">匯出至檔案</translation>
+<translation>匯出至檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="349"></location>
 <source>Export Completed</source>
-<translation type="unfinished">匯出完成</translation>
+<translation>匯出完成</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="328"></location>
 <source>item</source>
-<translation type="unfinished">項</translation>
+<translation>項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="328"></location>
 <source>items</source>
-<translation type="unfinished">項</translation>
+<translation>項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="330"></location>
 <source>{} {} has been successfully imported into the list.</source>
-<translation type="unfinished">已成功匯入 {} {}至列表中。</translation>
+<translation>已成功匯入 {} {}至列表中。</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="349"></location>
 <source>
                     &lt;div&gt;The list has been successfully exported to "{}".&lt;/div&gt;
                 </source>
-<translation type="unfinished">
+<translation>
                     &lt;div&gt;已成功匯出列表至“{}”。&lt;/div&gt;
                 </translation>
 </message>
@@ -1229,7 +1229,7 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="362"></location>
 <source>New search term</source>
-<translation type="unfinished">新檢索項</translation>
+<translation>新檢索項</translation>
 </message>
 </context>
 <context>
@@ -1237,7 +1237,7 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_lists.py" line="371"></location>
 <source>New stop word</source>
-<translation type="unfinished">新停用詞</translation>
+<translation>新停用詞</translation>
 </message>
 </context>
 <context>
@@ -1245,7 +1245,7 @@
 <message>
 <location filename="../wordless/wl_main.py" line="91"></location>
 <source>Initializing Wordless...</source>
-<translation type="unfinished">初始化 Wordless...</translation>
+<translation>初始化 Wordless...</translation>
 </message>
 </context>
 <context>
@@ -1253,322 +1253,322 @@
 <message>
 <location filename="../wordless/wl_main.py" line="185"></location>
 <source>Loading settings...</source>
-<translation type="unfinished">載入設定...</translation>
+<translation>載入設定...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="213"></location>
 <source>Initializing main window...</source>
-<translation type="unfinished">初始化主窗體...</translation>
+<translation>初始化主窗體...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="222"></location>
 <source>Ready!</source>
-<translation type="unfinished">就緒！</translation>
+<translation>就緒！</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="237"></location>
 <source>Starting Wordless...</source>
-<translation type="unfinished">啟動 Wordless...</translation>
+<translation>啟動 Wordless...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="263"></location>
 <source>&amp;File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="264"></location>
 <source>&amp;Preferences</source>
-<translation type="unfinished">偏好</translation>
+<translation>偏好</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="265"></location>
 <source>&amp;Help</source>
-<translation type="unfinished">幫助</translation>
+<translation>幫助</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="268"></location>
 <source>&amp;Open Files...</source>
-<translation type="unfinished">開啟檔案...</translation>
+<translation>開啟檔案...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="270"></location>
 <source>Open files</source>
-<translation type="unfinished">開啟檔案</translation>
+<translation>開啟檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="271"></location>
 <source>Open &amp;Folder...</source>
-<translation type="unfinished">開啟資料夾...</translation>
+<translation>開啟資料夾...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="272"></location>
 <source>Open all files in the folder</source>
-<translation type="unfinished">開啟資料夾下的所有檔案</translation>
+<translation>開啟資料夾下的所有檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="273"></location>
 <source>&amp;Reopen Closed Files</source>
-<translation type="unfinished">重新開啟已關閉檔案</translation>
+<translation>重新開啟已關閉檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="274"></location>
 <source>Reopen closed files</source>
-<translation type="unfinished">重新開啟已經關閉的檔案</translation>
+<translation>重新開啟已經關閉的檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="278"></location>
 <source>S&amp;elect All</source>
-<translation type="unfinished">全選</translation>
+<translation>全選</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="280"></location>
 <source>Select all files</source>
-<translation type="unfinished">勾選所有檔案</translation>
+<translation>勾選所有檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="281"></location>
 <source>&amp;Deselect All</source>
-<translation type="unfinished">取消全選</translation>
+<translation>取消全選</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="283"></location>
 <source>Deselect all files</source>
-<translation type="unfinished">取消勾選所有檔案</translation>
+<translation>取消勾選所有檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="284"></location>
 <source>&amp;Invert Selection</source>
-<translation type="unfinished">反選</translation>
+<translation>反選</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="286"></location>
 <source>Invert file selection</source>
-<translation type="unfinished">反向勾選檔案</translation>
+<translation>反向勾選檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="290"></location>
 <source>&amp;Close Selected</source>
-<translation type="unfinished">關閉選中</translation>
+<translation>關閉選中</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="292"></location>
 <source>Close selected file(s)</source>
-<translation type="unfinished">關閉已選中的檔案</translation>
+<translation>關閉已選中的檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="293"></location>
 <source>C&amp;lose All</source>
-<translation type="unfinished">關閉所有</translation>
+<translation>關閉所有</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="295"></location>
 <source>Close all files</source>
-<translation type="unfinished">關閉所有檔案</translation>
+<translation>關閉所有檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="299"></location>
 <source>&amp;Exit...</source>
-<translation type="unfinished">退出...</translation>
+<translation>退出...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="301"></location>
 <source>Exit the program</source>
-<translation type="unfinished">退出程式</translation>
+<translation>退出程式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="305"></location>
 <source>&amp;Settings</source>
-<translation type="unfinished">設定</translation>
+<translation>設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="306"></location>
 <source>Change settings</source>
-<translation type="unfinished">更改設定</translation>
+<translation>更改設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="308"></location>
 <source>&amp;Display Language</source>
-<translation type="unfinished">顯示語言</translation>
+<translation>顯示語言</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="309"></location>
 <source>Change display language</source>
-<translation type="unfinished">更改顯示語言</translation>
+<translation>更改顯示語言</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="328"></location>
 <source>&amp;Reset Layouts</source>
-<translation type="unfinished">重置佈局</translation>
+<translation>重置佈局</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="329"></location>
 <source>Reset layouts</source>
-<translation type="unfinished">重置佈局</translation>
+<translation>重置佈局</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="334"></location>
 <source>&amp;Show Status Bar</source>
-<translation type="unfinished">顯示狀態列</translation>
+<translation>顯示狀態列</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="336"></location>
 <source>Show/Hide the status bar</source>
-<translation type="unfinished">顯示/隱藏狀態列</translation>
+<translation>顯示/隱藏狀態列</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="344"></location>
 <source>&amp;Citing</source>
-<translation type="unfinished">引用</translation>
+<translation>引用</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="345"></location>
 <source>Show information about citing</source>
-<translation type="unfinished">顯示引用資訊</translation>
+<translation>顯示引用資訊</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="356"></location>
 <source>&amp;Acknowledgments</source>
-<translation type="unfinished">致謝</translation>
+<translation>致謝</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="357"></location>
 <source>Show acknowldgments</source>
-<translation type="unfinished">顯示致謝</translation>
+<translation>顯示致謝</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="340"></location>
 <source>&amp;Need Help?</source>
-<translation type="unfinished">需要幫助？</translation>
+<translation>需要幫助？</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="342"></location>
 <source>Show help information</source>
-<translation type="unfinished">顯示幫助資訊</translation>
+<translation>顯示幫助資訊</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="350"></location>
 <source>C&amp;ontributing</source>
-<translation type="unfinished">助力</translation>
+<translation>助力</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="351"></location>
 <source>Show information about contributing</source>
-<translation type="unfinished">顯示助力相關資訊</translation>
+<translation>顯示助力相關資訊</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="353"></location>
 <source>&amp;Donating</source>
-<translation type="unfinished">贊助</translation>
+<translation>贊助</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="354"></location>
 <source>Show information about donating</source>
-<translation type="unfinished">顯示贊助相關資訊</translation>
+<translation>顯示贊助相關資訊</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="362"></location>
 <source>Check &amp;for Updates</source>
-<translation type="unfinished">檢查更新</translation>
+<translation>檢查更新</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="363"></location>
 <source>Check for updates of Wordless</source>
-<translation type="unfinished">檢查 Wordless 更新</translation>
+<translation>檢查 Wordless 更新</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="365"></location>
 <source>C&amp;hangelog</source>
-<translation type="unfinished">更新日誌</translation>
+<translation>更新日誌</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="366"></location>
 <source>Show Changelog</source>
-<translation type="unfinished">顯示更新日誌</translation>
+<translation>顯示更新日誌</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="368"></location>
 <source>About &amp;Wordless</source>
-<translation type="unfinished">關於 Wordless</translation>
+<translation>關於 Wordless</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="369"></location>
 <source>Show information about Wordless</source>
-<translation type="unfinished">顯示 Wordless 的相關資訊</translation>
+<translation>顯示 Wordless 的相關資訊</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="393"></location>
 <source>Reset Layouts</source>
-<translation type="unfinished">重置佈局</translation>
+<translation>重置佈局</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="393"></location>
 <source>
                 &lt;div&gt;Do you want to reset all layouts to their default settings?&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;你想要將所有佈局重置為預設值嗎？&lt;/div&gt;
             </translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="484"></location>
 <source>Profiler</source>
-<translation type="unfinished">分析工具</translation>
+<translation>分析工具</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="488"></location>
 <source>Concordancer</source>
-<translation type="unfinished">索引工具</translation>
+<translation>索引工具</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="492"></location>
 <source>Parallel Concordancer</source>
-<translation type="unfinished">平行索引工具</translation>
+<translation>平行索引工具</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="496"></location>
 <source>Wordlist Generator</source>
-<translation type="unfinished">詞表生成器</translation>
+<translation>詞表生成器</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="500"></location>
 <source>N-gram Generator</source>
-<translation type="unfinished">N 元組生成器</translation>
+<translation>N 元組生成器</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="504"></location>
 <source>Collocation Extractor</source>
-<translation type="unfinished">搭配抽取器</translation>
+<translation>搭配抽取器</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="508"></location>
 <source>Colligation Extractor</source>
-<translation type="unfinished">類聯接抽取器</translation>
+<translation>類聯接抽取器</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="528"></location>
 <source>Keyword Extractor</source>
-<translation type="unfinished">關鍵詞抽取器</translation>
+<translation>關鍵詞抽取器</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="452"></location>
 <source>Observed Files</source>
-<translation type="unfinished">觀察檔案</translation>
+<translation>觀察檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_main.py" line="453"></location>
 <source>Reference Files</source>
-<translation type="unfinished">參照檔案</translation>
+<translation>參照檔案</translation>
 </message>
 </context>
 <context>
 <name>Wl_Msg_Box_Help</name>
 <message>
-<location filename="../wordless/wl_main.py" line="774"></location>
+<location filename="../wordless/wl_main.py" line="772"></location>
 <source>Contributing</source>
-<translation type="unfinished">助力</translation>
+<translation>助力</translation>
 </message>
 <message>
-<location filename="../wordless/wl_main.py" line="774"></location>
+<location filename="../wordless/wl_main.py" line="772"></location>
 <source>
                 &lt;div&gt;
                     If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new features by submitting &lt;a href="https://github.com/BLKSerene/Wordless/pulls"&gt;pull requests&lt;/a&gt; on Github.
@@ -1577,7 +1577,7 @@
                     Besides, you may contribute by writing &lt;a href="https://github.com/BLKSerene/Wordless/wiki"&gt;wikis&lt;/a&gt; on Github, making tutorial videos, or helping with the translation of the user interface and &lt;a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md"&gt;documentation&lt;/a&gt; into other languages.
                 &lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;
                     如果你想要助力 Wordless 的開發工作，你可以在 Github 上提交 &lt;a href="https://github.com/BLKSerene/Wordless/pulls"&gt;pull requests&lt;/a&gt; 來幫助修復程式錯誤、改善效能或實現新功能。
                 &lt;/div&gt;
@@ -1592,12 +1592,12 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="193"></location>
 <source>Settings</source>
-<translation type="unfinished">設定</translation>
+<translation>設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="343"></location>
 <source>General</source>
-<translation type="unfinished">全域性</translation>
+<translation>全域性</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="345"></location>
@@ -1612,37 +1612,37 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="350"></location>
 <source>Files</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="352"></location>
 <source>Tags</source>
-<translation type="unfinished">標籤</translation>
+<translation>標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="354"></location>
 <source>Sentence Tokenization</source>
-<translation type="unfinished">分句</translation>
+<translation>分句</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="356"></location>
 <source>Word Tokenization</source>
-<translation type="unfinished">分詞</translation>
+<translation>分詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="358"></location>
 <source>Syllable Tokenization</source>
-<translation type="unfinished">分音節</translation>
+<translation>分音節</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="395"></location>
 <source>Tagsets</source>
-<translation type="unfinished">標籤集</translation>
+<translation>標籤集</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="365"></location>
 <source>Lemmatization</source>
-<translation type="unfinished">詞形還原</translation>
+<translation>詞形還原</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="367"></location>
@@ -1652,37 +1652,37 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="221"></location>
 <source>Measures</source>
-<translation type="unfinished">統計方法</translation>
+<translation>統計方法</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="370"></location>
 <source>Dispersion</source>
-<translation type="unfinished">分佈</translation>
+<translation>分佈</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="372"></location>
 <source>Adjusted Frequency</source>
-<translation type="unfinished">調整頻數</translation>
+<translation>調整頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="374"></location>
 <source>Statistical Significance</source>
-<translation type="unfinished">統計顯著性</translation>
+<translation>統計顯著性</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="378"></location>
 <source>Effect Size</source>
-<translation type="unfinished">效應量</translation>
+<translation>效應量</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="385"></location>
 <source>Figures</source>
-<translation type="unfinished">圖表</translation>
+<translation>圖表</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="308"></location>
 <source>Reset all settings</source>
-<translation type="unfinished">重置所有設定</translation>
+<translation>重置所有設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="309"></location>
@@ -1702,7 +1702,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="419"></location>
 <source>Reset All Settings</source>
-<translation type="unfinished">重置所有設定</translation>
+<translation>重置所有設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="419"></location>
@@ -1710,7 +1710,7 @@
                 &lt;div&gt;Do you want to reset all settings to their defaults?&lt;/div&gt;
                 &lt;div&gt;&lt;b&gt;Warning: This will affect settings on all pages!&lt;/b&gt;&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;你想要將所有設定重置為預設值嗎？&lt;/div&gt;
                 &lt;div&gt;&lt;b&gt;警告：本操作將影響所有頁面上的設定選項！&lt;/b&gt;&lt;/div&gt;
             </translation>
@@ -1718,22 +1718,22 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="361"></location>
 <source>Part-of-speech Tagging</source>
-<translation type="unfinished">詞性標註</translation>
+<translation>詞性標註</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="376"></location>
 <source>Bayes Factor</source>
-<translation type="unfinished">貝葉斯因子</translation>
+<translation>貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="381"></location>
 <source>Tables</source>
-<translation type="unfinished">表格</translation>
+<translation>表格</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="383"></location>
 <source>Profiler</source>
-<translation type="unfinished">分析工具</translation>
+<translation>分析工具</translation>
 </message>
 </context>
 <context>
@@ -1741,112 +1741,112 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="54"></location>
 <source>Font:</source>
-<translation type="unfinished">字型：</translation>
+<translation>字型：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="59"></location>
 <source>Background Color:</source>
-<translation type="unfinished">背景顏色：</translation>
+<translation>背景顏色：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="93"></location>
 <source>Layout:</source>
-<translation type="unfinished">佈局：</translation>
+<translation>佈局：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="95"></location>
 <source>Node Font:</source>
-<translation type="unfinished">節點的字型：</translation>
+<translation>節點的字型：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="97"></location>
 <source>Node Font Size:</source>
-<translation type="unfinished">節點的字型大小：</translation>
+<translation>節點的字型大小：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="99"></location>
 <source>Edge Font:</source>
-<translation type="unfinished">邊的字型：</translation>
+<translation>邊的字型：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="101"></location>
 <source>Edge Font Size:</source>
-<translation type="unfinished">邊的字型大小：</translation>
+<translation>邊的字型大小：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="103"></location>
 <source>Edge Color:</source>
-<translation type="unfinished">邊的顏色：</translation>
+<translation>邊的顏色：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="109"></location>
 <source>Circular</source>
-<translation type="unfinished">環形</translation>
+<translation>環形</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="109"></location>
 <source>Planar</source>
-<translation type="unfinished">平行</translation>
+<translation>平行</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="109"></location>
 <source>Random</source>
-<translation type="unfinished">隨機</translation>
+<translation>隨機</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="109"></location>
 <source>Shell</source>
-<translation type="unfinished">同心</translation>
+<translation>同心</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="109"></location>
 <source>Spring</source>
-<translation type="unfinished">彈性</translation>
+<translation>彈性</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="109"></location>
 <source>Spectral</source>
-<translation type="unfinished">頻譜</translation>
+<translation>頻譜</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="40"></location>
 <source>Line Charts</source>
-<translation type="unfinished">折線圖</translation>
+<translation>折線圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="52"></location>
 <source>Word Clouds</source>
-<translation type="unfinished">詞雲圖</translation>
+<translation>詞雲圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="56"></location>
 <source>Font Path:</source>
-<translation type="unfinished">字型路徑：</translation>
+<translation>字型路徑：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="58"></location>
 <source>Browse...</source>
-<translation type="unfinished">瀏覽...</translation>
+<translation>瀏覽...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="215"></location>
 <source>Custom</source>
-<translation type="unfinished">自定義</translation>
+<translation>自定義</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="91"></location>
 <source>Network Graphs</source>
-<translation type="unfinished">網路圖</translation>
+<translation>網路圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="145"></location>
 <source>Select Font File</source>
-<translation type="unfinished">選擇字型檔案</translation>
+<translation>選擇字型檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_figs.py" line="109"></location>
 <source>Kamada-Kawai</source>
-<translation type="unfinished"></translation>
+<translation></translation>
 </message>
 </context>
 <context>
@@ -1854,52 +1854,52 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="43"></location>
 <source>Default Settings</source>
-<translation type="unfinished">預設設定</translation>
+<translation>預設設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="45"></location>
 <source>Encoding:</source>
-<translation type="unfinished">編碼：</translation>
+<translation>編碼：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="47"></location>
 <source>Language:</source>
-<translation type="unfinished">語種：</translation>
+<translation>語種：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="49"></location>
 <source>Tokenized:</source>
-<translation type="unfinished">已分詞：</translation>
+<translation>已分詞：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="51"></location>
 <source>Tagged:</source>
-<translation type="unfinished">已標註：</translation>
+<translation>已標註：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="67"></location>
 <source>Auto-detection Settings</source>
-<translation type="unfinished">自動檢測設定</translation>
+<translation>自動檢測設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="69"></location>
 <source>Number of lines to scan in each file:</source>
-<translation type="unfinished">檔案掃描行數：</translation>
+<translation>檔案掃描行數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="87"></location>
 <source>Read files in chunks of</source>
-<translation type="unfinished">讀取檔案時每</translation>
+<translation>讀取檔案時每</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="89"></location>
 <source>lines</source>
-<translation type="unfinished">行為一段</translation>
+<translation>行為一段</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="85"></location>
 <source>Miscellaneous Settings</source>
-<translation type="unfinished">其他設定</translation>
+<translation>其他設定</translation>
 </message>
 </context>
 <context>
@@ -1907,27 +1907,27 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="428"></location>
 <source>Header Tag Settings</source>
-<translation type="unfinished">頭標籤設定</translation>
+<translation>頭標籤設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="431"></location>
 <source>Note: All contents surrounded by header tags will be discarded during text processing!</source>
-<translation type="unfinished">注意：所有被頭標籤括起來的文字在文字處理時都將被忽略！</translation>
+<translation>注意：所有被頭標籤括起來的文字在文字處理時都將被忽略！</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="443"></location>
 <source>Body Tag Settings</source>
-<translation type="unfinished">正文標籤設定</translation>
+<translation>正文標籤設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="446"></location>
 <source>* Use asterisk character (*) to indicate any number of characters</source>
-<translation type="unfinished">* 使用星號（*）來表示任意數量的字元</translation>
+<translation>* 使用星號（*）來表示任意數量的字元</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="458"></location>
 <source>XML Tag Settings</source>
-<translation type="unfinished">XML 標籤設定</translation>
+<translation>XML 標籤設定</translation>
 </message>
 </context>
 <context>
@@ -1935,67 +1935,67 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="41"></location>
 <source>Font Settings</source>
-<translation type="unfinished">字型設定</translation>
+<translation>字型設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="43"></location>
 <source>Font Family:</source>
-<translation type="unfinished">字型集：</translation>
+<translation>字型集：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="45"></location>
 <source>Font Size:</source>
-<translation type="unfinished">字型大小：</translation>
+<translation>字型大小：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="57"></location>
 <source>Proxy Settings</source>
-<translation type="unfinished">代理設定</translation>
+<translation>代理設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="59"></location>
 <source>Use Proxy</source>
-<translation type="unfinished">使用代理</translation>
+<translation>使用代理</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="60"></location>
 <source>Address:</source>
-<translation type="unfinished">地址：</translation>
+<translation>地址：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="62"></location>
 <source>Port:</source>
-<translation type="unfinished">埠：</translation>
+<translation>埠：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="64"></location>
 <source>Username:</source>
-<translation type="unfinished">使用者名稱：</translation>
+<translation>使用者名稱：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="66"></location>
 <source>Password:</source>
-<translation type="unfinished">密碼：</translation>
+<translation>密碼：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="87"></location>
 <source>Update Settings</source>
-<translation type="unfinished">更新設定</translation>
+<translation>更新設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="89"></location>
 <source>Check for updates on startup</source>
-<translation type="unfinished">啟動時檢查更新</translation>
+<translation>啟動時檢查更新</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="97"></location>
 <source>Always confirm on exit</source>
-<translation type="unfinished">退出時總是提示確認</translation>
+<translation>退出時總是提示確認</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="95"></location>
 <source>Miscellaneous Settings</source>
-<translation type="unfinished">其他設定</translation>
+<translation>其他設定</translation>
 </message>
 </context>
 <context>
@@ -2003,37 +2003,37 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="405"></location>
 <source>Tables</source>
-<translation type="unfinished">表格</translation>
+<translation>表格</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="450"></location>
 <source>Default Path:</source>
-<translation type="unfinished">預設路徑：</translation>
+<translation>預設路徑：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="452"></location>
 <source>Browse...</source>
-<translation type="unfinished">瀏覽...</translation>
+<translation>瀏覽...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="410"></location>
 <source>Default Type:</source>
-<translation type="unfinished">預設型別：</translation>
+<translation>預設型別：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="453"></location>
 <source>Default Encoding:</source>
-<translation type="unfinished">預設編碼：</translation>
+<translation>預設編碼：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="430"></location>
 <source>Search Terms</source>
-<translation type="unfinished">檢索項</translation>
+<translation>檢索項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="448"></location>
 <source>Stop Words</source>
-<translation type="unfinished">停用詞</translation>
+<translation>停用詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="476"></location>
@@ -2043,7 +2043,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="502"></location>
 <source>Select Folder</source>
-<translation type="unfinished">選擇資料夾</translation>
+<translation>選擇資料夾</translation>
 </message>
 </context>
 <context>
@@ -2051,47 +2051,47 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="206"></location>
 <source>Files</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="264"></location>
 <source>Default Path:</source>
-<translation type="unfinished">預設路徑：</translation>
+<translation>預設路徑：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="266"></location>
 <source>Browse...</source>
-<translation type="unfinished">瀏覽...</translation>
+<translation>瀏覽...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="220"></location>
 <source>Search Terms</source>
-<translation type="unfinished">檢索項</translation>
+<translation>檢索項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="246"></location>
 <source>Default Encoding:</source>
-<translation type="unfinished">預設編碼：</translation>
+<translation>預設編碼：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="248"></location>
 <source>Auto-detect encodings</source>
-<translation type="unfinished">自動檢測編碼</translation>
+<translation>自動檢測編碼</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="241"></location>
 <source>Stop Words</source>
-<translation type="unfinished">停用詞</translation>
+<translation>停用詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="262"></location>
 <source>Temporary Files</source>
-<translation type="unfinished">臨時檔案</translation>
+<translation>臨時檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_general.py" line="315"></location>
 <source>Select Folder</source>
-<translation type="unfinished">選擇資料夾</translation>
+<translation>選擇資料夾</translation>
 </message>
 </context>
 <context>
@@ -2114,22 +2114,22 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_lemmatization.py" line="104"></location>
 <source>Preview</source>
-<translation type="unfinished">預覽</translation>
+<translation>預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_lemmatization.py" line="106"></location>
 <source>Select language:</source>
-<translation type="unfinished">選擇語種：</translation>
+<translation>選擇語種：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_lemmatization.py" line="182"></location>
 <source>Show preview</source>
-<translation type="unfinished">顯示預覽</translation>
+<translation>顯示預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_lemmatization.py" line="162"></location>
 <source>Processing...</source>
-<translation type="unfinished">處理中...</translation>
+<translation>處理中...</translation>
 </message>
 </context>
 <context>
@@ -2137,7 +2137,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="80"></location>
 <source>General Settings</source>
-<translation type="unfinished">全域性設定</translation>
+<translation>全域性設定</translation>
 </message>
 </context>
 <context>
@@ -2145,17 +2145,17 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="398"></location>
 <source>Log-likelihood Ratio Test</source>
-<translation type="unfinished">對數似然比檢驗</translation>
+<translation>對數似然比檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="400"></location>
 <source>Apply Yates's correction for continuity</source>
-<translation type="unfinished">應用耶茨連續性校正</translation>
+<translation>應用耶茨連續性校正</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="406"></location>
 <source>Student's t-test (2-sample)</source>
-<translation type="unfinished">學生 t 檢驗（雙樣本）</translation>
+<translation>學生 t 檢驗（雙樣本）</translation>
 </message>
 </context>
 <context>
@@ -2163,7 +2163,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="35"></location>
 <source>General Settings</source>
-<translation type="unfinished">全域性設定</translation>
+<translation>全域性設定</translation>
 </message>
 </context>
 <context>
@@ -2171,12 +2171,12 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="481"></location>
 <source>Smoothing Parameter:</source>
-<translation type="unfinished">平滑係數：</translation>
+<translation>平滑係數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="479"></location>
 <source>Kilgarriff's Ratio</source>
-<translation type="unfinished"></translation>
+<translation></translation>
 </message>
 </context>
 <context>
@@ -2184,57 +2184,57 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="125"></location>
 <source>Fisher's Exact Test</source>
-<translation type="unfinished">費希爾精確檢驗</translation>
+<translation>費希爾精確檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="139"></location>
 <source>Log-likelihood Ratio Test</source>
-<translation type="unfinished">對數似然比檢驗</translation>
+<translation>對數似然比檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="185"></location>
 <source>Apply Yates's correction for continuity</source>
-<translation type="unfinished">應用耶茨連續性校正</translation>
+<translation>應用耶茨連續性校正</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="147"></location>
 <source>Mann-Whitney U Test</source>
-<translation type="unfinished">曼惠特尼 U 檢驗</translation>
+<translation>曼惠特尼 U 檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="163"></location>
 <source>Apply continuity correction</source>
-<translation type="unfinished">應用連續性校正</translation>
+<translation>應用連續性校正</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="183"></location>
 <source>Pearson's Chi-squared Test</source>
-<translation type="unfinished">皮爾森卡方檢驗</translation>
+<translation>皮爾森卡方檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="191"></location>
 <source>Student's t-test (1-sample)</source>
-<translation type="unfinished">學生 t 檢驗（單樣本）</translation>
+<translation>學生 t 檢驗（單樣本）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="205"></location>
 <source>Student's t-test (2-sample)</source>
-<translation type="unfinished">學生 t 檢驗（雙樣本）</translation>
+<translation>學生 t 檢驗（雙樣本）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="238"></location>
 <source>Welch's t-test</source>
-<translation type="unfinished">Welch t 檢驗</translation>
+<translation>Welch t 檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="271"></location>
 <source>z-score</source>
-<translation type="unfinished">z 值</translation>
+<translation>z 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_measures.py" line="285"></location>
 <source>z-score (Berry-Rogghe)</source>
-<translation type="unfinished">z 值（Berry-Rogghe）</translation>
+<translation>z 值（Berry-Rogghe）</translation>
 </message>
 </context>
 <context>
@@ -2242,7 +2242,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="131"></location>
 <source>Path Not Exist</source>
-<translation type="unfinished">路徑不存在</translation>
+<translation>路徑不存在</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="68"></location>
@@ -2250,7 +2250,7 @@
                 &lt;div&gt;The specified path "{}" should be a directory, not a file!&lt;/div&gt;
                 &lt;div&gt;Please check your settings and try again.&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;指定的路徑“{}”應是一個目錄，而不是檔案！&lt;/div&gt;
                 &lt;div&gt;請檢查你的設定後重試。&lt;/div&gt;
             </translation>
@@ -2258,21 +2258,21 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="39"></location>
 <source>Empty Path</source>
-<translation type="unfinished">空路徑</translation>
+<translation>空路徑</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="39"></location>
 <source>
                 &lt;div&gt;The path should not be left empty!&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;路徑不可留空！&lt;/div&gt;
             </translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="48"></location>
 <source>Path not Found</source>
-<translation type="unfinished">未找到路徑</translation>
+<translation>未找到路徑</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="48"></location>
@@ -2280,7 +2280,7 @@
                 &lt;div&gt;The specified path "{}" could not be found!&lt;/div&gt;
                 &lt;div&gt;Please check your settings and try again.&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;未找到“{}”指定的路徑！&lt;/div&gt;
                 &lt;div&gt;請檢查你的設定後重試。&lt;/div&gt;
             </translation>
@@ -2288,7 +2288,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="58"></location>
 <source>Invalid File Path</source>
-<translation type="unfinished">無效檔案路徑</translation>
+<translation>無效檔案路徑</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="58"></location>
@@ -2296,7 +2296,7 @@
                 &lt;div&gt;The specified path "{}" should be a file, not a directory!&lt;/div&gt;
                 &lt;div&gt;Please check your settings and try again.&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;指定的路徑“{}”應是一個檔案，而不是目錄！&lt;/div&gt;
                 &lt;div&gt;請檢查你的設定後重試。&lt;/div&gt;
             </translation>
@@ -2304,7 +2304,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="68"></location>
 <source>Invalid Directory Path</source>
-<translation type="unfinished">無效資料夾路徑</translation>
+<translation>無效資料夾路徑</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings.py" line="131"></location>
@@ -2315,7 +2315,7 @@
                             &lt;div&gt;Do you want to create the directory?&lt;/div&gt;
                         &lt;/body&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         {}
                         &lt;body&gt;
                             &lt;div&gt;指定的路徑“{}”不存在。&lt;/div&gt;
@@ -9356,22 +9356,22 @@ Frequency</source>
 <context>
 <name>log_timing</name>
 <message>
-<location filename="../wordless/wl_utils/wl_misc.py" line="147"></location>
+<location filename="../wordless/wl_utils/wl_misc.py" line="162"></location>
 <source>(In</source>
 <translation type="unfinished">（耗時</translation>
 </message>
 <message>
-<location filename="../wordless/wl_utils/wl_misc.py" line="143"></location>
+<location filename="../wordless/wl_utils/wl_misc.py" line="158"></location>
 <source>minute</source>
 <translation type="unfinished">分</translation>
 </message>
 <message>
-<location filename="../wordless/wl_utils/wl_misc.py" line="143"></location>
+<location filename="../wordless/wl_utils/wl_misc.py" line="158"></location>
 <source>minutes</source>
 <translation type="unfinished">分</translation>
 </message>
 <message>
-<location filename="../wordless/wl_utils/wl_misc.py" line="144"></location>
+<location filename="../wordless/wl_utils/wl_misc.py" line="159"></location>
 <source>(In {} {} {:.2f} seconds)</source>
 <translation type="unfinished">（耗時 {} {} {:.2f} 秒）</translation>
 </message>
