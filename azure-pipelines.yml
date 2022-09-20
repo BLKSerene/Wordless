@@ -34,10 +34,9 @@ jobs:
 
       - task: Cache@2
         inputs:
-          key: 'python | "$(Agent.OS)" | requirements_tests.txt'
+          key: 'pip | "$(Agent.OS)" | requirements_tests.txt'
           restoreKeys: |
-            python | "$(Agent.OS)"
-            python
+            pip | "$(Agent.OS)"
           path: $(PIP_CACHE_DIR)
         displayName: Cache pip packages
 
@@ -84,10 +83,9 @@ jobs:
 
       - task: Cache@2
         inputs:
-          key: 'python | "$(Agent.OS)" | requirements_tests.txt'
+          key: 'pip | "$(Agent.OS)" | requirements_tests.txt'
           restoreKeys: |
-            python | "$(Agent.OS)"
-            python
+            pip | "$(Agent.OS)"
           path: $(PIP_CACHE_DIR)
         displayName: Cache pip packages
 
@@ -135,10 +133,9 @@ jobs:
 
       - task: Cache@2
         inputs:
-          key: 'python | "$(Agent.OS)" | requirements_tests.txt'
+          key: 'pip | "$(Agent.OS)" | requirements_tests.txt'
           restoreKeys: |
-            python | "$(Agent.OS)"
-            python
+            pip | "$(Agent.OS)"
           path: $(PIP_CACHE_DIR)
         displayName: Cache pip packages
 

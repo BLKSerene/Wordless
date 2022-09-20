@@ -75,6 +75,7 @@ SPACY_LANGS = {
     'rus': 'ru_core_news_sm',
     'spa': 'es_core_news_sm',
     'swe': 'sv_core_news_sm',
+    'ukr': 'uk_core_news_sm',
 
     'other': 'en_core_web_sm'
 }

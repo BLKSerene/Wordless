@@ -1306,7 +1306,7 @@ def init_settings_default(main):
                     'swe': 'spacy_swe',
                     'tha': 'pythainlp_perceptron_pud',
                     'bod': 'botok_bod',
-                    'ukr': 'pymorphy2_morphological_analyzer',
+                    'ukr': 'spacy_ukr',
                     'vie': 'underthesea_vie'
                 },
 
@@ -1352,7 +1352,7 @@ def init_settings_default(main):
                         'swe': 'spacy_swe',
                         'tha': 'pythainlp_perceptron_pud',
                         'bod': 'botok_bod',
-                        'ukr': 'pymorphy2_morphological_analyzer',
+                        'ukr': 'spacy_ukr',
                         'vie': 'underthesea_vie'
                     }
                 },
@@ -1449,7 +1449,7 @@ def init_settings_default(main):
                 'tgl': 'spacy_tgl',
                 'bod': 'botok_bod',
                 'tur': 'spacy_tur',
-                'ukr': 'pymorphy2_morphological_analyzer',
+                'ukr': 'spacy_ukr',
                 'urd': 'spacy_urd',
                 'cym': 'lemmatization_lists_cym'
             },

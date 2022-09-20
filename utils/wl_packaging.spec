@@ -80,6 +80,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('es_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sv_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('uk_core_news_sm'))
 # SudachiPy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachipy'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachidict_core'))
@@ -146,6 +147,7 @@ hiddenimports = [
     'ru_core_news_sm',
     'es_core_news_sm',
     'sv_core_news_sm',
+    'uk_core_news_sm',
 
     # SudachiPy
     'sudachidict_core'

@@ -41,6 +41,7 @@ spacy.cli.download('ro_core_news_sm')
 spacy.cli.download('ru_core_news_sm')
 spacy.cli.download('es_core_news_sm')
 spacy.cli.download('sv_core_news_sm')
+spacy.cli.download('uk_core_news_sm')
 
 # Download NLTK data
 # Corpora

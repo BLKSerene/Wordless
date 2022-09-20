@@ -497,6 +497,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Russian Part-of-speech Tagger'): 'spacy_rus',
                 _tr('init_settings_global', 'spaCy - Spanish Part-of-speech Tagger'): 'spacy_spa',
                 _tr('init_settings_global', 'spaCy - Swedish Part-of-speech Tagger'): 'spacy_swe',
+                _tr('init_settings_global', 'spaCy - Ukrainian Part-of-speech Tagger'): 'spacy_ukr',
 
                 _tr('init_settings_global', 'SudachiPy - Japanese Part-of-speech Tagger'): 'sudachipy_jpn',
 
@@ -565,6 +566,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Swedish Lemmatizer'): 'spacy_swe',
                 _tr('init_settings_global', 'spaCy - Tagalog Lemmatizer'): 'spacy_tgl',
                 _tr('init_settings_global', 'spaCy - Turkish Lemmatizer'): 'spacy_tur',
+                _tr('init_settings_global', 'spaCy - Ukrainian Lemmatizer'): 'spacy_ukr',
                 _tr('init_settings_global', 'spaCy - Urdu Lemmatizer'): 'spacy_urd',
 
                 _tr('init_settings_global', 'SudachiPy - Japanese Lemmatizer'): 'sudachipy_jpn'
@@ -1659,7 +1661,8 @@ def init_settings_global():
             ],
 
             'ukr': [
-                'pymorphy2_morphological_analyzer'
+                'pymorphy2_morphological_analyzer',
+                'spacy_ukr'
             ],
 
             'vie': [
@@ -1863,7 +1866,8 @@ def init_settings_global():
 
             'ukr': [
                 'lemmatization_lists_ukr',
-                'pymorphy2_morphological_analyzer'
+                'pymorphy2_morphological_analyzer',
+                'spacy_ukr'
             ],
 
             'urd': [

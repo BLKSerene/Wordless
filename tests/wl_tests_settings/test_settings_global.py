@@ -176,9 +176,8 @@ class Check_Settings_Global():
                     langs_supported_spacy_lemmatizers.append(lang_code)
 
         # Languages without data files
-        langs_supported_spacy_lemmatizers.extend(['fi'])
-        # Japanese model takes POS tags directly from SudachiPy
-        langs_supported_spacy_lemmatizers = add_country_codes(langs_supported_spacy_lemmatizers) + ['ja']
+        langs_supported_spacy_lemmatizers.extend(['fi', 'ja', 'uk'])
+        langs_supported_spacy_lemmatizers = add_country_codes(langs_supported_spacy_lemmatizers)
 
         # Stop word lists
         for lang in pkgutil.iter_modules(spacy.lang.__path__):
