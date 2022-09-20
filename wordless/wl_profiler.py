@@ -737,13 +737,12 @@ def generate_table(main, table):
 
                         # Readibility
                         for j, statistic in enumerate(readability_statistics):
-                            if statistic not in [
-                                wl_measures_readability.TEXT_TOO_SHORT,
-                                wl_measures_readability.NO_SUPPORT
-                            ]:
-                                table.set_item_num(j, i, statistic)
+                            if statistic == 'no_support':
+                                table.set_item_error(j, i, _tr('wl_profiler', 'No Support'))
+                            elif statistic == 'text_too_short':
+                                table.set_item_error(j, i, _tr('wl_profiler', 'Text is Too Short'))
                             else:
-                                table.set_item_error(j, i, statistic)
+                                table.set_item_num(j, i, statistic)
 
                         # Count of Paragraphs
                         table.set_item_num(12, i, count_paras)

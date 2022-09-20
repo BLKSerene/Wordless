@@ -2334,22 +2334,22 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="123"></location>
 <source>Preview</source>
-<translation type="unfinished">預覽</translation>
+<translation>預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="125"></location>
 <source>Select language:</source>
-<translation type="unfinished">選擇語種：</translation>
+<translation>選擇語種：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="204"></location>
 <source>Show preview</source>
-<translation type="unfinished">顯示預覽</translation>
+<translation>顯示預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="178"></location>
 <source>Processing...</source>
-<translation type="unfinished">處理中...</translation>
+<translation>處理中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="84"></location>
@@ -2364,7 +2364,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="95"></location>
 <source>Convert all part-of-speech tags to universal part-of-speech tags</source>
-<translation type="unfinished">將所有詞性標籤轉換為通用詞性標籤</translation>
+<translation>將所有詞性標籤轉換為通用詞性標籤</translation>
 </message>
 </context>
 <context>
@@ -2372,12 +2372,12 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="279"></location>
 <source>Preview Settings:</source>
-<translation type="unfinished">預覽設定：</translation>
+<translation>預覽設定：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="281"></location>
 <source>Language:</source>
-<translation type="unfinished">語種：</translation>
+<translation>語種：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="283"></location>
@@ -2387,57 +2387,57 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="300"></location>
 <source>Mapping Settings</source>
-<translation type="unfinished">對映設定</translation>
+<translation>對映設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="304"></location>
 <source>* This part-of-speech tagger does not support custom mappings.</source>
-<translation type="unfinished">* 該詞性標註器不支援自定義對映。</translation>
+<translation>* 該詞性標註器不支援自定義對映。</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="305"></location>
 <source>Reset</source>
-<translation type="unfinished">重置</translation>
+<translation>重置</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="306"></location>
 <source>Reset All</source>
-<translation type="unfinished">重置所有</translation>
+<translation>重置所有</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="307"></location>
 <source>Part-of-speech Tag</source>
-<translation type="unfinished">詞性標籤</translation>
+<translation>詞性標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="307"></location>
 <source>Universal Part-of-speech Tag</source>
-<translation type="unfinished">通用詞性標籤</translation>
+<translation>通用詞性標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="307"></location>
 <source>Description</source>
-<translation type="unfinished">描述</translation>
+<translation>描述</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="307"></location>
 <source>Examples</source>
-<translation type="unfinished">示例</translation>
+<translation>示例</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="409"></location>
 <source>Fetching data...</source>
-<translation type="unfinished">獲取資料中...</translation>
+<translation>獲取資料中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="456"></location>
 <source>Number of Part-of-speech Tags: </source>
-<translation type="unfinished">詞性標籤數： </translation>
+<translation>詞性標籤數： </translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="479"></location>
 <source>Reset Mappings</source>
-<translation type="unfinished">重置對映</translation>
+<translation>重置對映</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="479"></location>
@@ -2445,7 +2445,7 @@
                 &lt;div&gt;Do you want to reset all mappings to their default settings?&lt;/div&gt;
                 &lt;div&gt;&lt;b&gt;Note: This will only affect the mapping settings in the currently shown table.&lt;/b&gt;&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;你想要將所有對映都重置為預設設定嗎？&lt;/div&gt;
                 &lt;div&gt;&lt;b&gt;注：這隻會影響當前所顯示錶格中的對映設定。&lt;/b&gt;&lt;/div&gt;
             </translation>
@@ -2453,7 +2453,7 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="490"></location>
 <source>Reset All Mappings</source>
-<translation type="unfinished">重置所有對映</translation>
+<translation>重置所有對映</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="490"></location>
@@ -2461,7 +2461,7 @@
                 &lt;div&gt;Do you want to reset all mappings to their default settings?&lt;/div&gt;
                 &lt;div&gt;&lt;b&gt;Warning: This will affect the mapping settings in all tables!&lt;/b&gt;&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;你想要將所有對映重置為預設值嗎？&lt;/div&gt;
                 &lt;div&gt;&lt;b&gt;警告：本操作將影響所有表格中的對映設定！&lt;/b&gt;&lt;/div&gt;
             </translation>
@@ -2487,22 +2487,22 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_sentence_tokenization.py" line="91"></location>
 <source>Preview</source>
-<translation type="unfinished">預覽</translation>
+<translation>預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_sentence_tokenization.py" line="93"></location>
 <source>Select language:</source>
-<translation type="unfinished">選擇語種：</translation>
+<translation>選擇語種：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_sentence_tokenization.py" line="165"></location>
 <source>Show preview</source>
-<translation type="unfinished">顯示預覽</translation>
+<translation>顯示預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_sentence_tokenization.py" line="145"></location>
 <source>Processing...</source>
-<translation type="unfinished">處理中...</translation>
+<translation>處理中...</translation>
 </message>
 </context>
 <context>
@@ -2520,17 +2520,17 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_stop_word_lists.py" line="76"></location>
 <source>Preview</source>
-<translation type="unfinished">預覽</translation>
+<translation>預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_stop_word_lists.py" line="78"></location>
 <source>Select language:</source>
-<translation type="unfinished">選擇語種：</translation>
+<translation>選擇語種：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_stop_word_lists.py" line="143"></location>
 <source>Count of Stop Words: </source>
-<translation type="unfinished">停用詞數： </translation>
+<translation>停用詞數： </translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_stop_word_lists.py" line="38"></location>
@@ -2558,22 +2558,22 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_syl_tokenization.py" line="108"></location>
 <source>Preview</source>
-<translation type="unfinished">預覽</translation>
+<translation>預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_syl_tokenization.py" line="110"></location>
 <source>Select language:</source>
-<translation type="unfinished">選擇語種：</translation>
+<translation>選擇語種：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_syl_tokenization.py" line="182"></location>
 <source>Show preview</source>
-<translation type="unfinished">顯示預覽</translation>
+<translation>顯示預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_syl_tokenization.py" line="162"></location>
 <source>Processing...</source>
-<translation type="unfinished">處理中...</translation>
+<translation>處理中...</translation>
 </message>
 </context>
 <context>
@@ -2581,32 +2581,32 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_tables.py" line="34"></location>
 <source>Rank Settings</source>
-<translation type="unfinished">序號設定</translation>
+<translation>序號設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_tables.py" line="36"></location>
 <source>Continue numbering after ties</source>
-<translation type="unfinished">相同序號後使用連續計數</translation>
+<translation>相同序號後使用連續計數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_tables.py" line="42"></location>
 <source>Precision Settings</source>
-<translation type="unfinished">精度設定</translation>
+<translation>精度設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_tables.py" line="44"></location>
 <source>Decimals:</source>
-<translation type="unfinished">小數：</translation>
+<translation>小數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_tables.py" line="46"></location>
 <source>Percentages:</source>
-<translation type="unfinished">分數：</translation>
+<translation>分數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_tables.py" line="48"></location>
 <source>p-values:</source>
-<translation type="unfinished">p 值：</translation>
+<translation>p 值：</translation>
 </message>
 </context>
 <context>
@@ -2614,12 +2614,12 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_tables.py" line="105"></location>
 <source>General Settings</source>
-<translation type="unfinished">全域性設定</translation>
+<translation>全域性設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_tables.py" line="107"></location>
 <source>Number of tokens in each section when calculating standardized type-token ratio:</source>
-<translation type="unfinished">計算標準化類符形符比時各部分中的形符數：</translation>
+<translation>計算標準化類符形符比時各部分中的形符數：</translation>
 </message>
 </context>
 <context>
@@ -2642,22 +2642,22 @@
 <message>
 <location filename="../wordless/wl_settings/wl_settings_word_tokenization.py" line="103"></location>
 <source>Preview</source>
-<translation type="unfinished">預覽</translation>
+<translation>預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_word_tokenization.py" line="105"></location>
 <source>Select language:</source>
-<translation type="unfinished">選擇語種：</translation>
+<translation>選擇語種：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_word_tokenization.py" line="177"></location>
 <source>Show preview</source>
-<translation type="unfinished">顯示預覽</translation>
+<translation>顯示預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_word_tokenization.py" line="157"></location>
 <source>Processing...</source>
-<translation type="unfinished">處理中...</translation>
+<translation>處理中...</translation>
 </message>
 </context>
 <context>
@@ -2678,17 +2678,17 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="907"></location>
 <source>Export Completed</source>
-<translation type="unfinished">匯出完成</translation>
+<translation>匯出完成</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="915"></location>
 <source>Export Error</source>
-<translation type="unfinished">匯出時出錯</translation>
+<translation>匯出時出錯</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="954"></location>
 <source>Export Table</source>
-<translation type="unfinished">匯出表格</translation>
+<translation>匯出表格</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="939"></location>
@@ -2698,14 +2698,14 @@
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="963"></location>
 <source>Exporting table...</source>
-<translation type="unfinished">匯出表格中...</translation>
+<translation>匯出表格中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="907"></location>
 <source>
                         &lt;div&gt;The table has been successfully exported to "{}".&lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;已成功匯出表格至“{}”。&lt;/div&gt;
                     </translation>
 </message>
@@ -2714,7 +2714,7 @@
 <source>
                         &lt;div&gt;Access to "{}" is denied, please specify another location or close the file and try again.&lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;無法訪問“{}”，請指定一個其他位置或關閉檔案後重試。&lt;/div&gt;
                     </translation>
 </message>
@@ -2990,197 +2990,197 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="43"></location>
 <source>Rank</source>
-<translation type="unfinished">序號</translation>
+<translation>序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="43"></location>
 <source>Node</source>
-<translation type="unfinished">節點詞</translation>
+<translation>節點詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="43"></location>
 <source>Collocate</source>
-<translation type="unfinished">搭配詞</translation>
+<translation>搭配詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1177"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1178"></location>
 <source>Number of
 Files Found %</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1150"></location>
 <source>[{}]
 L{}</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 左{}</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="992"></location>
 <source>[{}]
 L{} %</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 左{} %</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1159"></location>
 <source>[{}]
 R{}</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 右{}</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1003"></location>
 <source>[{}]
 R{} %</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 右{} %</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1143"></location>
 <source>[{}]
 Frequency</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1018"></location>
 <source>[{}]
 Frequency %</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1125"></location>
 <source>[{}]
 p-value</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1131"></location>
 <source>[{}]
 Bayes Factor</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1058"></location>
 <source>Total
 L{}</source>
-<translation type="unfinished">合計
+<translation>合計
 左{}</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1063"></location>
 <source>Total
 L{} %</source>
-<translation type="unfinished">合計
+<translation>合計
 左{} %</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1069"></location>
 <source>Total
 R{}</source>
-<translation type="unfinished">合計
+<translation>合計
 右{}</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1074"></location>
 <source>Total
 R{} %</source>
-<translation type="unfinished">合計
+<translation>合計
 右{} %</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1084"></location>
 <source>Total
 Frequency</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1089"></location>
 <source>Total
 Frequency %</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1117"></location>
 <source>Total
 </source>
-<translation type="unfinished">合計
+<translation>合計
 </translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1103"></location>
 <source>Total
 p-value</source>
-<translation type="unfinished">合計
+<translation>合計
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1110"></location>
 <source>Total
 Bayes Factor</source>
-<translation type="unfinished">合計
+<translation>合計
 貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1153"></location>
 <source>Total
 L</source>
-<translation type="unfinished">合計
+<translation>合計
 左</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1162"></location>
 <source>Total
 R</source>
-<translation type="unfinished">合計
+<translation>合計
 右</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1167"></location>
 <source>
 Frequency</source>
-<translation type="unfinished">
+<translation>
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1168"></location>
 <source>
 Frequency %</source>
-<translation type="unfinished">
+<translation>
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1174"></location>
 <source>
 p-value</source>
-<translation type="unfinished">
+<translation>
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1175"></location>
 <source>
 Bayes Factor</source>
-<translation type="unfinished">
+<translation>
 貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1278"></location>
 <source>^[LR][0-9]+$</source>
-<translation type="unfinished">^[左右][0-9]+$</translation>
+<translation>^[左右][0-9]+$</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1284"></location>
@@ -3190,22 +3190,22 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1326"></location>
 <source>Network Graph</source>
-<translation type="unfinished">網路圖</translation>
+<translation>網路圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1306"></location>
 <source>Frequency</source>
-<translation type="unfinished">頻數</translation>
+<translation>頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1343"></location>
 <source>p-value</source>
-<translation type="unfinished">p 值</translation>
+<translation>p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="1348"></location>
 <source>Bayes Factor</source>
-<translation type="unfinished">貝葉斯因子</translation>
+<translation>貝葉斯因子</translation>
 </message>
 </context>
 <context>
@@ -3223,67 +3223,67 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Left</source>
-<translation type="unfinished">左</translation>
+<translation>左</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Node</source>
-<translation type="unfinished">節點詞</translation>
+<translation>節點詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Right</source>
-<translation type="unfinished">右</translation>
+<translation>右</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Sentiment</source>
-<translation type="unfinished">情感</translation>
+<translation>情感</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Token No.</source>
-<translation type="unfinished">形符序號</translation>
+<translation>形符序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Token No. %</source>
-<translation type="unfinished">形符序號%</translation>
+<translation>形符序號%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Sentence No.</source>
-<translation type="unfinished">句子序號</translation>
+<translation>句子序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Sentence No. %</source>
-<translation type="unfinished">句子序號%</translation>
+<translation>句子序號%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Paragraph No.</source>
-<translation type="unfinished">段落序號</translation>
+<translation>段落序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Paragraph No. %</source>
-<translation type="unfinished">段落序號%</translation>
+<translation>段落序號%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Sentence Segment No.</source>
-<translation type="unfinished">句段序號</translation>
+<translation>句段序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="43"></location>
 <source>Sentence Segment No. %</source>
-<translation type="unfinished">句段序號%</translation>
+<translation>句段序號%</translation>
 </message>
 </context>
 <context>
@@ -3291,12 +3291,12 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_concordancer_parallel.py" line="37"></location>
 <source>Parallel Unit No.</source>
-<translation type="unfinished">平行單位序號</translation>
+<translation>平行單位序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer_parallel.py" line="37"></location>
 <source>Parallel Unit No. %</source>
-<translation type="unfinished">平行單位序號%</translation>
+<translation>平行單位序號%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer_parallel.py" line="52"></location>
@@ -3314,12 +3314,12 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1083"></location>
 <source>Export Selected...</source>
-<translation type="unfinished">匯出選中...</translation>
+<translation>匯出選中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1084"></location>
 <source>Export All...</source>
-<translation type="unfinished">匯出所有...</translation>
+<translation>匯出所有...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1085"></location>
@@ -3329,7 +3329,7 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1362"></location>
 <source>Rank</source>
-<translation type="unfinished">序號</translation>
+<translation>序號</translation>
 </message>
 </context>
 <context>
@@ -3337,22 +3337,22 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1735"></location>
 <source>Filter Results</source>
-<translation type="unfinished">篩選結果</translation>
+<translation>篩選結果</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1739"></location>
 <source>Search in Results</source>
-<translation type="unfinished">在結果中檢索</translation>
+<translation>在結果中檢索</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1773"></location>
 <source>Number of Results: 0</source>
-<translation type="unfinished">結果數：0</translation>
+<translation>結果數：0</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1769"></location>
 <source>Number of Results: </source>
-<translation type="unfinished">結果數： </translation>
+<translation>結果數： </translation>
 </message>
 </context>
 <context>
@@ -3360,17 +3360,17 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1628"></location>
 <source>Search in Results</source>
-<translation type="unfinished">在結果中檢索</translation>
+<translation>在結果中檢索</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1652"></location>
 <source>Number of Results: 0</source>
-<translation type="unfinished">結果數：0</translation>
+<translation>結果數：0</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1648"></location>
 <source>Number of Results: </source>
-<translation type="unfinished">結果數： </translation>
+<translation>結果數： </translation>
 </message>
 </context>
 <context>
@@ -3378,22 +3378,22 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1675"></location>
 <source>Search in Results</source>
-<translation type="unfinished">在結果中檢索</translation>
+<translation>在結果中檢索</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1679"></location>
 <source>Sort Results</source>
-<translation type="unfinished">對結果進行排序</translation>
+<translation>對結果進行排序</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1711"></location>
 <source>Number of Results: 0</source>
-<translation type="unfinished">結果數：0</translation>
+<translation>結果數：0</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="1706"></location>
 <source>Number of Results: </source>
-<translation type="unfinished">結果數： </translation>
+<translation>結果數： </translation>
 </message>
 </context>
 <context>
@@ -3401,7 +3401,7 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_file_area.py" line="682"></location>
 <source>Duplicate File Names Found</source>
-<translation type="unfinished">發現重複檔名</translation>
+<translation>發現重複檔名</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="682"></location>
@@ -3409,7 +3409,7 @@ Bayes Factor</source>
                                 &lt;div&gt;There is already a file with the same name in the file area.&lt;/div&gt;
                                 &lt;div&gt;Please specify a different file name.&lt;/div&gt;
                             </source>
-<translation type="unfinished">
+<translation>
                                 &lt;div&gt;檔案區中已存在相同名稱的檔案。&lt;/div&gt;
                                 &lt;div&gt;請指定一個不同的檔名。&lt;/div&gt;
                             </translation>
@@ -3417,7 +3417,7 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_file_area.py" line="807"></location>
 <source>Checking files...</source>
-<translation type="unfinished">檢查檔案中...</translation>
+<translation>檢查檔案中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="621"></location>
@@ -3442,37 +3442,37 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_file_area.py" line="621"></location>
 <source>Tokenized</source>
-<translation type="unfinished">已分詞</translation>
+<translation>已分詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="621"></location>
 <source>Tagged</source>
-<translation type="unfinished">已標註</translation>
+<translation>已標註</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="799"></location>
 <source>file</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="799"></location>
 <source>files</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="801"></location>
 <source>{} {} has been successfully opened.</source>
-<translation type="unfinished">已成功開啟 {} 個{}。</translation>
+<translation>已成功開啟 {} 個{}。</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="776"></location>
 <source>Observed Files</source>
-<translation type="unfinished">觀察檔案</translation>
+<translation>觀察檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="776"></location>
 <source>Reference Files</source>
-<translation type="unfinished">參照檔案</translation>
+<translation>參照檔案</translation>
 </message>
 </context>
 <context>
@@ -3490,146 +3490,146 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="39"></location>
 <source>Rank</source>
-<translation type="unfinished">序號</translation>
+<translation>序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="39"></location>
 <source>Keyword</source>
-<translation type="unfinished">關鍵詞</translation>
+<translation>關鍵詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="713"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="714"></location>
 <source>Number of
 Files Found %</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="587"></location>
 <source>[Reference Files]
 Frequency</source>
-<translation type="unfinished">[參照檔案]
+<translation>[參照檔案]
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="592"></location>
 <source>[Reference Files]
 Frequency %</source>
-<translation type="unfinished">[參照檔案]
+<translation>[參照檔案]
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="698"></location>
 <source>[{}]
 Frequency</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="604"></location>
 <source>[{}]
 Frequency %</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="680"></location>
 <source>[{}]
 p-value</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="686"></location>
 <source>[{}]
 Bayes Factor</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="639"></location>
 <source>Total
 Frequency</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="644"></location>
 <source>Total
 Frequency %</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="672"></location>
 <source>Total
 {}</source>
-<translation type="unfinished">合計
+<translation>合計
 {}</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="658"></location>
 <source>Total
 p-value</source>
-<translation type="unfinished">合計
+<translation>合計
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="665"></location>
 <source>Total
 Bayes Factor</source>
-<translation type="unfinished">合計
+<translation>合計
 貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="703"></location>
 <source>
 Frequency</source>
-<translation type="unfinished">
+<translation>
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="704"></location>
 <source>
 Frequency %</source>
-<translation type="unfinished">
+<translation>
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="710"></location>
 <source>
 p-value</source>
-<translation type="unfinished">
+<translation>
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="711"></location>
 <source>
 Bayes Factor</source>
-<translation type="unfinished">
+<translation>
 貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="810"></location>
 <source>Frequency</source>
-<translation type="unfinished">頻數</translation>
+<translation>頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="821"></location>
 <source>p-value</source>
-<translation type="unfinished">p 值</translation>
+<translation>p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="826"></location>
 <source>Bayes Factor</source>
-<translation type="unfinished">貝葉斯因子</translation>
+<translation>貝葉斯因子</translation>
 </message>
 </context>
 <context>
@@ -3647,25 +3647,25 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="40"></location>
 <source>Rank</source>
-<translation type="unfinished">序號</translation>
+<translation>序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="40"></location>
 <source>N-gram</source>
-<translation type="unfinished">N 元組</translation>
+<translation>N 元組</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="40"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="40"></location>
 <source>Number of
 Files Found %</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數%</translation>
 </message>
 </context>
@@ -3684,632 +3684,632 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Paragraphs</source>
-<translation type="unfinished">段落數</translation>
+<translation>段落數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Paragraphs %</source>
-<translation type="unfinished">段落數%</translation>
+<translation>段落數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Sentences</source>
-<translation type="unfinished">句子數</translation>
+<translation>句子數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Sentences %</source>
-<translation type="unfinished">句子數%</translation>
+<translation>句子數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Tokens</source>
-<translation type="unfinished">形符數</translation>
+<translation>形符數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Tokens %</source>
-<translation type="unfinished">形符數%</translation>
+<translation>形符數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Types</source>
-<translation type="unfinished">類符數</translation>
+<translation>類符數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Types %</source>
-<translation type="unfinished">類符數%</translation>
+<translation>類符數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Syllables</source>
-<translation type="unfinished">音節數</translation>
+<translation>音節數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Syllables %</source>
-<translation type="unfinished">音節數%</translation>
+<translation>音節數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Characters</source>
-<translation type="unfinished">字元數</translation>
+<translation>字元數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Characters %</source>
-<translation type="unfinished">字元數%</translation>
+<translation>字元數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type-token Ratio</source>
-<translation type="unfinished">類符形符比</translation>
+<translation>類符形符比</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type-token Ratio (Standardized)</source>
-<translation type="unfinished">類符形符比（標準化）</translation>
+<translation>類符形符比（標準化）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Mean)</source>
-<translation type="unfinished">段落長（單位：句子）（均值）</translation>
+<translation>段落長（單位：句子）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Standard Deviation)</source>
-<translation type="unfinished">段落長（單位：句子）（標準差）</translation>
+<translation>段落長（單位：句子）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Variance)</source>
-<translation type="unfinished">段落長（單位：句子）（方差）</translation>
+<translation>段落長（單位：句子）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Minimum)</source>
-<translation type="unfinished">段落長（單位：句子）（最小值）</translation>
+<translation>段落長（單位：句子）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (25th Percentile)</source>
-<translation type="unfinished">段落長（單位：句子）（25分位數）</translation>
+<translation>段落長（單位：句子）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Median)</source>
-<translation type="unfinished">段落長（單位：句子）（中位數）</translation>
+<translation>段落長（單位：句子）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (75th Percentile)</source>
-<translation type="unfinished">段落長（單位：句子）（75分位數）</translation>
+<translation>段落長（單位：句子）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Maximum)</source>
-<translation type="unfinished">段落長（單位：句子）（最大值）</translation>
+<translation>段落長（單位：句子）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Range)</source>
-<translation type="unfinished">段落長（單位：句子）（極差）</translation>
+<translation>段落長（單位：句子）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Modes)</source>
-<translation type="unfinished">段落長（單位：句子）（眾數）</translation>
+<translation>段落長（單位：句子）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Mean)</source>
-<translation type="unfinished">段落長（單位：形符）（均值）</translation>
+<translation>段落長（單位：形符）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Standard Deviation)</source>
-<translation type="unfinished">段落長（單位：形符）（標準差）</translation>
+<translation>段落長（單位：形符）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Variance)</source>
-<translation type="unfinished">段落長（單位：形符）（方差）</translation>
+<translation>段落長（單位：形符）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Minimum)</source>
-<translation type="unfinished">段落長（單位：形符）（最小值）</translation>
+<translation>段落長（單位：形符）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (25th Percentile)</source>
-<translation type="unfinished">段落長（單位：形符）（25分位數）</translation>
+<translation>段落長（單位：形符）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Median)</source>
-<translation type="unfinished">段落長（單位：形符）（中位數）</translation>
+<translation>段落長（單位：形符）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (75th Percentile)</source>
-<translation type="unfinished">段落長（單位：形符）（75分位數）</translation>
+<translation>段落長（單位：形符）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Maximum)</source>
-<translation type="unfinished">段落長（單位：形符）（最大值）</translation>
+<translation>段落長（單位：形符）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Range)</source>
-<translation type="unfinished">段落長（單位：形符）（極差）</translation>
+<translation>段落長（單位：形符）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Modes)</source>
-<translation type="unfinished">段落長（單位：形符）（眾數）</translation>
+<translation>段落長（單位：形符）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Mean)</source>
-<translation type="unfinished">句長（單位：形符）（均值）</translation>
+<translation>句長（單位：形符）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Standard Deviation)</source>
-<translation type="unfinished">句長（單位：形符）（標準差）</translation>
+<translation>句長（單位：形符）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Variance)</source>
-<translation type="unfinished">句長（單位：形符）（方差）</translation>
+<translation>句長（單位：形符）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Minimum)</source>
-<translation type="unfinished">句長（單位：形符）（最小值）</translation>
+<translation>句長（單位：形符）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (25th Percentile)</source>
-<translation type="unfinished">句長（單位：形符）（25分位數）</translation>
+<translation>句長（單位：形符）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Median)</source>
-<translation type="unfinished">句長（單位：形符）（中位數）</translation>
+<translation>句長（單位：形符）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (75th Percentile)</source>
-<translation type="unfinished">句長（單位：形符）（75分位數）</translation>
+<translation>句長（單位：形符）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Maximum)</source>
-<translation type="unfinished">句長（單位：形符）（最大值）</translation>
+<translation>句長（單位：形符）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Range)</source>
-<translation type="unfinished">句長（單位：形符）（極差）</translation>
+<translation>句長（單位：形符）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Modes)</source>
-<translation type="unfinished">句長（單位：形符）（眾數）</translation>
+<translation>句長（單位：形符）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Mean)</source>
-<translation type="unfinished">形符長（單位：音節）（均值）</translation>
+<translation>形符長（單位：音節）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Standard Deviation)</source>
-<translation type="unfinished">形符長（單位：音節）（標準差）</translation>
+<translation>形符長（單位：音節）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Variance)</source>
-<translation type="unfinished">形符長（單位：音節）（方差）</translation>
+<translation>形符長（單位：音節）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Minimum)</source>
-<translation type="unfinished">形符長（單位：音節）（最小值）</translation>
+<translation>形符長（單位：音節）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (25th Percentile)</source>
-<translation type="unfinished">形符長（單位：音節）（25分位數）</translation>
+<translation>形符長（單位：音節）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Median)</source>
-<translation type="unfinished">形符長（單位：音節）（中位數）</translation>
+<translation>形符長（單位：音節）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (75th Percentile)</source>
-<translation type="unfinished">形符長（單位：音節）（75分位數）</translation>
+<translation>形符長（單位：音節）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Maximum)</source>
-<translation type="unfinished">形符長（單位：音節）（最大值）</translation>
+<translation>形符長（單位：音節）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Range)</source>
-<translation type="unfinished">形符長（單位：音節）（極差）</translation>
+<translation>形符長（單位：音節）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Modes)</source>
-<translation type="unfinished">形符長（單位：音節）（眾數）</translation>
+<translation>形符長（單位：音節）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Mean)</source>
-<translation type="unfinished">形符長（單位：字元）（均值）</translation>
+<translation>形符長（單位：字元）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Standard Deviation)</source>
-<translation type="unfinished">形符長（單位：字元）（標準差）</translation>
+<translation>形符長（單位：字元）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Variance)</source>
-<translation type="unfinished">形符長（單位：字元）（方差）</translation>
+<translation>形符長（單位：字元）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Minimum)</source>
-<translation type="unfinished">形符長（單位：字元）（最小值）</translation>
+<translation>形符長（單位：字元）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (25th Percentile)</source>
-<translation type="unfinished">形符長（單位：字元）（25分位值）</translation>
+<translation>形符長（單位：字元）（25分位值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Median)</source>
-<translation type="unfinished">形符長（單位：字元）（中位數）</translation>
+<translation>形符長（單位：字元）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (75th Percentile)</source>
-<translation type="unfinished">形符長（單位：字元）（75分位數）</translation>
+<translation>形符長（單位：字元）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Maximum)</source>
-<translation type="unfinished">形符長（單位：字元）（最大值）</translation>
+<translation>形符長（單位：字元）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Range)</source>
-<translation type="unfinished">形符長（單位：字元）（極差）</translation>
+<translation>形符長（單位：字元）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Modes)</source>
-<translation type="unfinished">形符長（單位：字元）（眾數）</translation>
+<translation>形符長（單位：字元）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Mean)</source>
-<translation type="unfinished">類符長（單位：音節）（均值）</translation>
+<translation>類符長（單位：音節）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Standard Deviation)</source>
-<translation type="unfinished">類符長（單位：音節）（標準差）</translation>
+<translation>類符長（單位：音節）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Variance)</source>
-<translation type="unfinished">類符長（單位：音節）（方差）</translation>
+<translation>類符長（單位：音節）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Minimum)</source>
-<translation type="unfinished">類符長（單位：音節）（最小值）</translation>
+<translation>類符長（單位：音節）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (25th Percentile)</source>
-<translation type="unfinished">類符長（單位：音節）（25分位數）</translation>
+<translation>類符長（單位：音節）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Median)</source>
-<translation type="unfinished">類符長（單位：音節）（中位數）</translation>
+<translation>類符長（單位：音節）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (75th Percentile)</source>
-<translation type="unfinished">類符長（單位：音節）（75分位數）</translation>
+<translation>類符長（單位：音節）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Maximum)</source>
-<translation type="unfinished">類符長（單位：音節）（最大值）</translation>
+<translation>類符長（單位：音節）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Range)</source>
-<translation type="unfinished">類符長（單位：音節）（極差）</translation>
+<translation>類符長（單位：音節）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Modes)</source>
-<translation type="unfinished">類符長（單位：音節）（眾數）</translation>
+<translation>類符長（單位：音節）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Mean)</source>
-<translation type="unfinished">類符長（單位：字元）（均值）</translation>
+<translation>類符長（單位：字元）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Standard Deviation)</source>
-<translation type="unfinished">類符長（單位：字元）（標準差）</translation>
+<translation>類符長（單位：字元）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Variance)</source>
-<translation type="unfinished">類符長（單位：字元）（方差）</translation>
+<translation>類符長（單位：字元）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Minimum)</source>
-<translation type="unfinished">類符長（單位：字元）（最小值）</translation>
+<translation>類符長（單位：字元）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (25th Percentile)</source>
-<translation type="unfinished">類符長（單位：字元）（25分位數）</translation>
+<translation>類符長（單位：字元）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Median)</source>
-<translation type="unfinished">類符長（單位：字元）（中位數）</translation>
+<translation>類符長（單位：字元）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (75th Percentile)</source>
-<translation type="unfinished">類符長（單位：字元）（75分位數）</translation>
+<translation>類符長（單位：字元）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Maximum)</source>
-<translation type="unfinished">類符長（單位：字元）（最大值）</translation>
+<translation>類符長（單位：字元）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Range)</source>
-<translation type="unfinished">類符長（單位：字元）（極差）</translation>
+<translation>類符長（單位：字元）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Modes)</source>
-<translation type="unfinished">類符長（單位：字元）（眾數）</translation>
+<translation>類符長（單位：字元）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Mean)</source>
-<translation type="unfinished">音節長（單位：字元）（均值）</translation>
+<translation>音節長（單位：字元）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Standard Deviation)</source>
-<translation type="unfinished">音節長（單位：字元）（標準差）</translation>
+<translation>音節長（單位：字元）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Variance)</source>
-<translation type="unfinished">音節長（單位：字元）（方差）</translation>
+<translation>音節長（單位：字元）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Minimum)</source>
-<translation type="unfinished">音節長（單位：字元）（最小值）</translation>
+<translation>音節長（單位：字元）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (25th Percentile)</source>
-<translation type="unfinished">音節長（單位：字元）（25分位數）</translation>
+<translation>音節長（單位：字元）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Median)</source>
-<translation type="unfinished">音節長（單位：字元）（中位數）</translation>
+<translation>音節長（單位：字元）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (75th Percentile)</source>
-<translation type="unfinished">音節長（單位：字元）（75分位數）</translation>
+<translation>音節長（單位：字元）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Maximum)</source>
-<translation type="unfinished">音節長（單位：字元）（最大值）</translation>
+<translation>音節長（單位：字元）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Range)</source>
-<translation type="unfinished">音節長（單位：字元）（極差）</translation>
+<translation>音節長（單位：字元）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Modes)</source>
-<translation type="unfinished">音節長（單位：字元）（眾數）</translation>
+<translation>音節長（單位：字元）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Sentence Segments</source>
-<translation type="unfinished">句段數</translation>
+<translation>句段數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Count of Sentence Segments %</source>
-<translation type="unfinished">句段數%</translation>
+<translation>句段數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentences (Interquartile Range)</source>
-<translation type="unfinished">段落長（單位：句子）（四分位差）</translation>
+<translation>段落長（單位：句子）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Mean)</source>
-<translation type="unfinished">段落長（單位：句段）（均值）</translation>
+<translation>段落長（單位：句段）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Standard Deviation)</source>
-<translation type="unfinished">段落長（單位：句段）（標準差）</translation>
+<translation>段落長（單位：句段）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Variance)</source>
-<translation type="unfinished">段落長（單位：句段）（方差）</translation>
+<translation>段落長（單位：句段）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Minimum)</source>
-<translation type="unfinished">段落長（單位：句段）（最小值）</translation>
+<translation>段落長（單位：句段）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (25th Percentile)</source>
-<translation type="unfinished">段落長（單位：句段）（25分位數）</translation>
+<translation>段落長（單位：句段）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Median)</source>
-<translation type="unfinished">段落長（單位：句段）（中位數）</translation>
+<translation>段落長（單位：句段）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (75th Percentile)</source>
-<translation type="unfinished">段落長（單位：句段）（75分位數）</translation>
+<translation>段落長（單位：句段）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Maximum)</source>
-<translation type="unfinished">段落長（單位：句段）（最大值）</translation>
+<translation>段落長（單位：句段）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Range)</source>
-<translation type="unfinished">段落長（單位：句段）（極差）</translation>
+<translation>段落長（單位：句段）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Interquartile Range)</source>
-<translation type="unfinished">段落長（單位：句段）（四分位差）</translation>
+<translation>段落長（單位：句段）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Sentence Segments (Modes)</source>
-<translation type="unfinished">段落長（單位：句段）（眾數）</translation>
+<translation>段落長（單位：句段）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Paragraph Length in Tokens (Interquartile Range)</source>
-<translation type="unfinished">段落長（單位：形符）（四分位差）</translation>
+<translation>段落長（單位：形符）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Length in Tokens (Interquartile Range)</source>
-<translation type="unfinished">句長（單位：形符）（四分位差）</translation>
+<translation>句長（單位：形符）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Mean)</source>
-<translation type="unfinished">句段長（單位：形符）（均值）</translation>
+<translation>句段長（單位：形符）（均值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Standard Deviation)</source>
-<translation type="unfinished">句段長（單位：形符）（標準差）</translation>
+<translation>句段長（單位：形符）（標準差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Variance)</source>
-<translation type="unfinished">句段長（單位：形符）（方差）</translation>
+<translation>句段長（單位：形符）（方差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Minimum)</source>
-<translation type="unfinished">句段長（單位：形符）（最小值）</translation>
+<translation>句段長（單位：形符）（最小值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (25th Percentile)</source>
-<translation type="unfinished">句段長（單位：形符）（25分位數）</translation>
+<translation>句段長（單位：形符）（25分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Median)</source>
-<translation type="unfinished">句段長（單位：形符）（中位數）</translation>
+<translation>句段長（單位：形符）（中位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (75th Percentile)</source>
-<translation type="unfinished">句段長（單位：形符）（75分位數）</translation>
+<translation>句段長（單位：形符）（75分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Maximum)</source>
-<translation type="unfinished">句段長（單位：形符）（最大值）</translation>
+<translation>句段長（單位：形符）（最大值）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Range)</source>
-<translation type="unfinished">句段長（單位：形符）（極差）</translation>
+<translation>句段長（單位：形符）（極差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Interquartile Range)</source>
-<translation type="unfinished">句段長（單位：形符）（四分位數）</translation>
+<translation>句段長（單位：形符）（四分位數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Sentence Segment Length in Tokens (Modes)</source>
-<translation type="unfinished">句段長（單位：形符）（眾數）</translation>
+<translation>句段長（單位：形符）（眾數）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Syllables (Interquartile Range)</source>
-<translation type="unfinished">形符長（單位：音節）（四分位差）</translation>
+<translation>形符長（單位：音節）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Token Length in Characters (Interquartile Range)</source>
-<translation type="unfinished">形符長（單位：字元）（四分位差）</translation>
+<translation>形符長（單位：字元）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Syllables (Interquartile Range)</source>
-<translation type="unfinished">類符長（單位：音節）（四分位差）</translation>
+<translation>類符長（單位：音節）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Type Length in Characters (Interquartile Range)</source>
-<translation type="unfinished">類符長（單位：字元）（四分位差）</translation>
+<translation>類符長（單位：字元）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
 <source>Syllable Length in Characters (Interquartile Range)</source>
-<translation type="unfinished">音節長（單位：字元）（四分位差）</translation>
+<translation>音節長（單位：字元）（四分位差）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_profiler.py" line="40"></location>
@@ -4377,52 +4377,52 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="46"></location>
 <source>Node</source>
-<translation type="unfinished">節點詞</translation>
+<translation>節點詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="47"></location>
 <source>Sentiment</source>
-<translation type="unfinished">情感</translation>
+<translation>情感</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="48"></location>
 <source>Token No.</source>
-<translation type="unfinished">形符序號</translation>
+<translation>形符序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="49"></location>
 <source>File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="256"></location>
 <source>Ascending</source>
-<translation type="unfinished">升序</translation>
+<translation>升序</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="57"></location>
 <source>Descending</source>
-<translation type="unfinished">降序</translation>
+<translation>降序</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="74"></location>
 <source>Column Sorted More Than Once</source>
-<translation type="unfinished">同列排序超過一次</translation>
+<translation>同列排序超過一次</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="132"></location>
 <source>Token</source>
-<translation type="unfinished">形符</translation>
+<translation>形符</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="34"></location>
 <source>Column</source>
-<translation type="unfinished">列</translation>
+<translation>列</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="34"></location>
 <source>Order</source>
-<translation type="unfinished">順序</translation>
+<translation>順序</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="74"></location>
@@ -4431,7 +4431,7 @@ Files Found %</source>
                                 &lt;div&gt;Please refrain from sorting the same column more than once!&lt;/div&gt;
                             &lt;/body&gt;
                         </source>
-<translation type="unfinished">
+<translation>
                             &lt;body&gt;
                                 &lt;div&gt;請勿對同一列排序一次以上！&lt;/div&gt;
                             &lt;/body&gt;
@@ -4450,22 +4450,22 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="240"></location>
 <source>L1</source>
-<translation type="unfinished">左1</translation>
+<translation>左1</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="221"></location>
 <source>^L[0-9]+$</source>
-<translation type="unfinished">^左[0-9]+$</translation>
+<translation>^左[0-9]+$</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="196"></location>
 <source>R1</source>
-<translation type="unfinished">右1</translation>
+<translation>右1</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="226"></location>
 <source>^R[0-9]+$</source>
-<translation type="unfinished">^右[0-9]+$</translation>
+<translation>^右[0-9]+$</translation>
 </message>
 </context>
 <context>
@@ -4473,24 +4473,24 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="240"></location>
 <source>Embedded</source>
-<translation type="unfinished">嵌入式</translation>
+<translation>嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="246"></location>
 <source>Non-embedded</source>
-<translation type="unfinished">非嵌入式</translation>
+<translation>非嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="172"></location>
 <source>Reset</source>
-<translation type="unfinished">重置</translation>
+<translation>重置</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="186"></location>
 <source>
                         &lt;div&gt;Embedded tags must begin with a punctuation mark, e.g. an underscore or a slash!&lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;嵌入式標籤必須以一個標點符號，如下劃線或斜槓，開頭！&lt;/div&gt;
                     </translation>
 </message>
@@ -4499,63 +4499,63 @@ Files Found %</source>
 <source>
                         &lt;div&gt;Non-embedded tags must begin and end with a punctuation mark, e.g. brackets!&lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;非嵌入式標籤必須以一個標點，如括號，開頭和結尾！&lt;/div&gt;
                     </translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="196"></location>
 <source>Invalid Opening Tag</source>
-<translation type="unfinished">無效開始標籤</translation>
+<translation>無效開始標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="213"></location>
 <source>Duplicate Tags</source>
-<translation type="unfinished">重複標籤</translation>
+<translation>重複標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="213"></location>
 <source>
                                 &lt;div&gt;The tag that you have specified already exists in the table!&lt;/div&gt;
                             </source>
-<translation type="unfinished">
+<translation>
                                 &lt;div&gt;你指定的標籤已存在於表格中！&lt;/div&gt;
                             </translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="254"></location>
 <source>TAG</source>
-<translation type="unfinished">標籤</translation>
+<translation>標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="145"></location>
 <source>Type</source>
-<translation type="unfinished">型別</translation>
+<translation>型別</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="145"></location>
 <source>Level</source>
-<translation type="unfinished">層級</translation>
+<translation>層級</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="145"></location>
 <source>Opening Tag</source>
-<translation type="unfinished">開始標籤</translation>
+<translation>開始標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="145"></location>
 <source>Closing Tag</source>
-<translation type="unfinished">結束標籤</translation>
+<translation>結束標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="145"></location>
 <source>Preview</source>
-<translation type="unfinished">預覽</translation>
+<translation>預覽</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="257"></location>
 <source>token</source>
-<translation type="unfinished">形符</translation>
+<translation>形符</translation>
 </message>
 </context>
 <context>
@@ -4563,22 +4563,22 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="356"></location>
 <source>Part of Speech</source>
-<translation type="unfinished">詞性</translation>
+<translation>詞性</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="356"></location>
 <source>Others</source>
-<translation type="unfinished">其他</translation>
+<translation>其他</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="345"></location>
 <source>Non-embedded</source>
-<translation type="unfinished">非嵌入式</translation>
+<translation>非嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="345"></location>
 <source>&lt;TAG&gt;</source>
-<translation type="unfinished">&lt;標籤&gt;</translation>
+<translation>&lt;標籤&gt;</translation>
 </message>
 </context>
 <context>
@@ -4586,17 +4586,17 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="336"></location>
 <source>Header</source>
-<translation type="unfinished">頭</translation>
+<translation>頭</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="325"></location>
 <source>Non-embedded</source>
-<translation type="unfinished">非嵌入式</translation>
+<translation>非嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="325"></location>
 <source>&lt;TAG&gt;</source>
-<translation type="unfinished">&lt;標籤&gt;</translation>
+<translation>&lt;標籤&gt;</translation>
 </message>
 </context>
 <context>
@@ -4604,41 +4604,41 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="377"></location>
 <source>Non-embedded</source>
-<translation type="unfinished">非嵌入式</translation>
+<translation>非嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="383"></location>
 <source>Paragraph</source>
-<translation type="unfinished">段落</translation>
+<translation>段落</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="383"></location>
 <source>Sentence</source>
-<translation type="unfinished">句子</translation>
+<translation>句子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="383"></location>
 <source>Word</source>
-<translation type="unfinished">單詞</translation>
+<translation>單詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="403"></location>
 <source>Invalid XML Tag</source>
-<translation type="unfinished">無效 XML 標籤</translation>
+<translation>無效 XML 標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="403"></location>
 <source>
                         &lt;div&gt;The specified XML tag is invalid, please check and try again!&lt;/div&gt;
                     </source>
-<translation type="unfinished">
+<translation>
                         &lt;div&gt;指定的 XML 標籤無效，請檢查後重試！&lt;/div&gt;
                     </translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_files.py" line="366"></location>
 <source>&lt;TAG&gt;</source>
-<translation type="unfinished">&lt;標籤&gt;</translation>
+<translation>&lt;標籤&gt;</translation>
 </message>
 </context>
 <context>
@@ -4656,25 +4656,25 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="39"></location>
 <source>Rank</source>
-<translation type="unfinished">序號</translation>
+<translation>序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="39"></location>
 <source>Token</source>
-<translation type="unfinished">形符</translation>
+<translation>形符</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="39"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="39"></location>
 <source>Number of
 Files Found %</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數%</translation>
 </message>
 </context>
@@ -4683,17 +4683,17 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_nlp/wl_texts.py" line="154"></location>
 <source>Paragraph</source>
-<translation type="unfinished">段落</translation>
+<translation>段落</translation>
 </message>
 <message>
 <location filename="../wordless/wl_nlp/wl_texts.py" line="156"></location>
 <source>Sentence</source>
-<translation type="unfinished">句子</translation>
+<translation>句子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_nlp/wl_texts.py" line="289"></location>
 <source>Word</source>
-<translation type="unfinished">單詞</translation>
+<translation>單詞</translation>
 </message>
 </context>
 <context>
@@ -4701,12 +4701,12 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_file_area.py" line="226"></location>
 <source>Updating table...</source>
-<translation type="unfinished">更新表格中...</translation>
+<translation>更新表格中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="57"></location>
 <source>Adding files... ({}/{})</source>
-<translation type="unfinished">新增檔案中...（{}/{}）</translation>
+<translation>新增檔案中...（{}/{}）</translation>
 </message>
 </context>
 <context>
@@ -4758,17 +4758,17 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="700"></location>
 <source>Within Sentences</source>
-<translation type="unfinished">句子內</translation>
+<translation>句子內</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="703"></location>
 <source>Within Paragraphs</source>
-<translation type="unfinished">段落內</translation>
+<translation>段落內</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="697"></location>
 <source>Within Sentence Segments</source>
-<translation type="unfinished">句段內</translation>
+<translation>句段內</translation>
 </message>
 </context>
 <context>
@@ -4776,7 +4776,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="952"></location>
 <source>Rendering figure...</source>
-<translation type="unfinished">渲染圖表中...</translation>
+<translation>渲染圖表中...</translation>
 </message>
 </context>
 <context>
@@ -4784,7 +4784,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="941"></location>
 <source>Rendering table...</source>
-<translation type="unfinished">渲染表格中...</translation>
+<translation>渲染表格中...</translation>
 </message>
 </context>
 <context>
@@ -4792,12 +4792,12 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="830"></location>
 <source>File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="853"></location>
 <source>Search Term</source>
-<translation type="unfinished">檢索項</translation>
+<translation>檢索項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="850"></location>
@@ -4807,7 +4807,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="884"></location>
 <source>Rendering figure...</source>
-<translation type="unfinished">渲染圖表中...</translation>
+<translation>渲染圖表中...</translation>
 </message>
 </context>
 <context>
@@ -4815,7 +4815,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_concordancer_parallel.py" line="434"></location>
 <source>Rendering table...</source>
-<translation type="unfinished">渲染表格中...</translation>
+<translation>渲染表格中...</translation>
 </message>
 </context>
 <context>
@@ -4823,37 +4823,37 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="662"></location>
 <source>Paragraph</source>
-<translation type="unfinished">段落</translation>
+<translation>段落</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="657"></location>
 <source>Sentence</source>
-<translation type="unfinished">句子</translation>
+<translation>句子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="637"></location>
 <source>Token</source>
-<translation type="unfinished">形符</translation>
+<translation>形符</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="592"></location>
 <source>Character</source>
-<translation type="unfinished">字元</translation>
+<translation>字元</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="717"></location>
 <source>No Support</source>
-<translation type="unfinished">不支援</translation>
+<translation>不支援</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="734"></location>
 <source>Rendering table...</source>
-<translation type="unfinished">渲染表格中...</translation>
+<translation>渲染表格中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="652"></location>
 <source>Sentence Segment</source>
-<translation type="unfinished">句段</translation>
+<translation>句段</translation>
 </message>
 </context>
 <context>
@@ -4871,12 +4871,12 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="413"></location>
 <source>Saving file...</source>
-<translation type="unfinished">儲存檔案中...</translation>
+<translation>儲存檔案中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="281"></location>
 <source>Saving target file...</source>
-<translation type="unfinished">儲存目的檔案中...</translation>
+<translation>儲存目的檔案中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="362"></location>
@@ -4886,7 +4886,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_tables.py" line="426"></location>
 <source>Exporting table... ({} / {})</source>
-<translation type="unfinished">匯出表格中...（{} / {}）</translation>
+<translation>匯出表格中...（{} / {}）</translation>
 </message>
 </context>
 <context>
@@ -4894,7 +4894,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="71"></location>
 <source>Updating table...</source>
-<translation type="unfinished">更新表格中...</translation>
+<translation>更新表格中...</translation>
 </message>
 </context>
 <context>
@@ -4902,7 +4902,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="540"></location>
 <source>Rendering figure...</source>
-<translation type="unfinished">渲染圖表中...</translation>
+<translation>渲染圖表中...</translation>
 </message>
 </context>
 <context>
@@ -4910,7 +4910,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="529"></location>
 <source>Rendering table...</source>
-<translation type="unfinished">渲染表格中...</translation>
+<translation>渲染表格中...</translation>
 </message>
 </context>
 <context>
@@ -4918,7 +4918,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="825"></location>
 <source>Rendering figure...</source>
-<translation type="unfinished">渲染圖表中...</translation>
+<translation>渲染圖表中...</translation>
 </message>
 </context>
 <context>
@@ -4926,7 +4926,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="814"></location>
 <source>Rendering table...</source>
-<translation type="unfinished">渲染表格中...</translation>
+<translation>渲染表格中...</translation>
 </message>
 </context>
 <context>
@@ -4934,12 +4934,12 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_file_area.py" line="401"></location>
 <source>Updating table...</source>
-<translation type="unfinished">更新表格中...</translation>
+<translation>更新表格中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_file_area.py" line="378"></location>
 <source>Opening files... ({}/{})</source>
-<translation type="unfinished">開啟檔案中...（{}/{}）</translation>
+<translation>開啟檔案中...（{}/{}）</translation>
 </message>
 </context>
 <context>
@@ -4947,7 +4947,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_profiler.py" line="670"></location>
 <source>Rendering table...</source>
-<translation type="unfinished">渲染表格中...</translation>
+<translation>渲染表格中...</translation>
 </message>
 </context>
 <context>
@@ -4955,7 +4955,7 @@ Files Found %</source>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="171"></location>
 <source>Collocate</source>
-<translation type="unfinished">搭配詞</translation>
+<translation>搭配詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="190"></location>
@@ -4966,61 +4966,61 @@ Files Found %</source>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="175"></location>
 <source>Total
 Frequency</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="214"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="314"></location>
 <source>Updating table...</source>
-<translation type="unfinished">更新表格中...</translation>
+<translation>更新表格中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="188"></location>
 <source>Total
 </source>
-<translation type="unfinished">合計
+<translation>合計
 </translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="191"></location>
 <source>[{}]
 Frequency</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="186"></location>
 <source>Total
 p-value</source>
-<translation type="unfinished">合計
+<translation>合計
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="187"></location>
 <source>Total
 Bayes Factor</source>
-<translation type="unfinished">合計
+<translation>合計
 貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="204"></location>
 <source>[{}]
 p-value</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="207"></location>
 <source>[{}]
 Bayes Factor</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 貝葉斯因子</translation>
 </message>
 </context>
@@ -5029,7 +5029,7 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="325"></location>
 <source>Keyword</source>
-<translation type="unfinished">關鍵詞</translation>
+<translation>關鍵詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="327"></location>
@@ -5040,61 +5040,61 @@ Bayes Factor</source>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="328"></location>
 <source>Total
 Frequency</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="356"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="456"></location>
 <source>Updating table...</source>
-<translation type="unfinished">更新表格中...</translation>
+<translation>更新表格中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="335"></location>
 <source>Total
 </source>
-<translation type="unfinished">合計
+<translation>合計
 </translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="337"></location>
 <source>[{}]
 Frequency</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="333"></location>
 <source>Total
 p-value</source>
-<translation type="unfinished">合計
+<translation>合計
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="334"></location>
 <source>Total
 Bayes Factor</source>
-<translation type="unfinished">合計
+<translation>合計
 貝葉斯因子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="346"></location>
 <source>[{}]
 p-value</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="349"></location>
 <source>[{}]
 Bayes Factor</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 貝葉斯因子</translation>
 </message>
 </context>
@@ -5103,12 +5103,12 @@ Bayes Factor</source>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="39"></location>
 <source>Token</source>
-<translation type="unfinished">形符</translation>
+<translation>形符</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="41"></location>
 <source>N-gram</source>
-<translation type="unfinished">N 元組</translation>
+<translation>N 元組</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="43"></location>
@@ -5119,33 +5119,33 @@ Bayes Factor</source>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="44"></location>
 <source>Total
 Frequency</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="64"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="160"></location>
 <source>Updating table...</source>
-<translation type="unfinished">更新表格中...</translation>
+<translation>更新表格中...</translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="50"></location>
 <source>Total
 </source>
-<translation type="unfinished">合計
+<translation>合計
 </translation>
 </message>
 <message>
 <location filename="../wordless/wl_results/wl_results_filter.py" line="54"></location>
 <source>[{}]
 Frequency</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數</translation>
 </message>
 </context>
@@ -5154,7 +5154,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_results/wl_results_search.py" line="77"></location>
 <source>Highlighting found items...</source>
-<translation type="unfinished">高亮查得項中...</translation>
+<translation>高亮查得項中...</translation>
 </message>
 </context>
 <context>
@@ -5162,7 +5162,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_results/wl_results_sort.py" line="322"></location>
 <source>Updating table...</source>
-<translation type="unfinished">更新表格中...</translation>
+<translation>更新表格中...</translation>
 </message>
 </context>
 <context>
@@ -5170,7 +5170,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="465"></location>
 <source>Rendering figure...</source>
-<translation type="unfinished">渲染圖表中...</translation>
+<translation>渲染圖表中...</translation>
 </message>
 </context>
 <context>
@@ -5178,7 +5178,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="454"></location>
 <source>Rendering table...</source>
-<translation type="unfinished">渲染表格中...</translation>
+<translation>渲染表格中...</translation>
 </message>
 </context>
 <context>
@@ -5284,12 +5284,12 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="261"></location>
 <source>Collocational Window:</source>
-<translation type="unfinished">搭配檢索範圍：</translation>
+<translation>搭配檢索範圍：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="270"></location>
 <source>Limit Searching:</source>
-<translation type="unfinished">限制檢索範圍：</translation>
+<translation>限制檢索範圍：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="282"></location>
@@ -5299,12 +5299,12 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="282"></location>
 <source>Within Sentences</source>
-<translation type="unfinished">句子內</translation>
+<translation>句子內</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="282"></location>
 <source>Within Paragraphs</source>
-<translation type="unfinished">段落內</translation>
+<translation>段落內</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="327"></location>
@@ -5314,12 +5314,12 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="338"></location>
 <source>Show breakdown by file</source>
-<translation type="unfinished">顯示各檔案明細</translation>
+<translation>顯示各檔案明細</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="339"></location>
 <source>Show breakdown by span position</source>
-<translation type="unfinished">顯示各距位明細</translation>
+<translation>顯示各距位明細</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="355"></location>
@@ -5329,7 +5329,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="368"></location>
 <source>Rank:</source>
-<translation type="unfinished">序號：</translation>
+<translation>序號：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="575"></location>
@@ -5344,7 +5344,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_collocation_extractor.py" line="282"></location>
 <source>Within Sentence Segments</source>
-<translation type="unfinished">句段內</translation>
+<translation>句段內</translation>
 </message>
 </context>
 <context>
@@ -5367,37 +5367,37 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="211"></location>
 <source>Width (Left):</source>
-<translation type="unfinished">長度（左）：</translation>
+<translation>長度（左）：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="218"></location>
 <source>Width (Right):</source>
-<translation type="unfinished">長度（右）：</translation>
+<translation>長度（右）：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="225"></location>
 <source>Width Unit:</source>
-<translation type="unfinished">長度單位：</translation>
+<translation>長度單位：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="484"></location>
 <source>Paragraph</source>
-<translation type="unfinished">段落</translation>
+<translation>段落</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="481"></location>
 <source>Sentence</source>
-<translation type="unfinished">句子</translation>
+<translation>句子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="475"></location>
 <source>Token</source>
-<translation type="unfinished">形符</translation>
+<translation>形符</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="472"></location>
 <source>Character</source>
-<translation type="unfinished">字元</translation>
+<translation>字元</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="281"></location>
@@ -5412,42 +5412,42 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="303"></location>
 <source>Sort results by:</source>
-<translation type="unfinished">結果排序依據：</translation>
+<translation>結果排序依據：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="306"></location>
 <source>File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="306"></location>
 <source>Search Term</source>
-<translation type="unfinished">檢索項</translation>
+<translation>檢索項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="320"></location>
 <source>Zapping Settings</source>
-<translation type="unfinished">檢索詞遮蔽設定</translation>
+<translation>檢索詞遮蔽設定</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="322"></location>
 <source>Replace keywords with</source>
-<translation type="unfinished">將關鍵詞替換為</translation>
+<translation>將關鍵詞替換為</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="325"></location>
 <source>Add line numbers</source>
-<translation type="unfinished">新增行號</translation>
+<translation>新增行號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="326"></location>
 <source>Randomize outputs</source>
-<translation type="unfinished">隨機化輸出</translation>
+<translation>隨機化輸出</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="478"></location>
 <source>Sentence Segment</source>
-<translation type="unfinished">句段</translation>
+<translation>句段</translation>
 </message>
 </context>
 <context>
@@ -5493,7 +5493,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="211"></location>
 <source>Rank:</source>
-<translation type="unfinished">序號：</translation>
+<translation>序號：</translation>
 </message>
 </context>
 <context>
@@ -5511,7 +5511,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="175"></location>
 <source>Search Term Position:</source>
-<translation type="unfinished">檢索項位置：</translation>
+<translation>檢索項位置：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="259"></location>
@@ -5521,12 +5521,12 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="261"></location>
 <source>N-gram Size:</source>
-<translation type="unfinished">N 元組長度：</translation>
+<translation>N 元組長度：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="269"></location>
 <source>Allow skipped tokens:</source>
-<translation type="unfinished">允許跳過形符數：</translation>
+<translation>允許跳過形符數：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="316"></location>
@@ -5541,7 +5541,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="350"></location>
 <source>Rank:</source>
-<translation type="unfinished">序號：</translation>
+<translation>序號：</translation>
 </message>
 </context>
 <context>
@@ -5582,7 +5582,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="203"></location>
 <source>Rank:</source>
-<translation type="unfinished">序號：</translation>
+<translation>序號：</translation>
 </message>
 </context>
 <context>
@@ -5590,7 +5590,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_checking/wl_checking_files.py" line="93"></location>
 <source>Error Loading Files</source>
-<translation type="unfinished">載入檔案時出錯</translation>
+<translation>載入檔案時出錯</translation>
 </message>
 <message>
 <location filename="../wordless/wl_checking/wl_checking_files.py" line="95"></location>
@@ -5599,7 +5599,7 @@ Frequency</source>
                 The built-in part-of-speech taggers currently have no support for the following files, please check your language settings or provide corpora that have already been part-of-speech tagged.
             &lt;/div&gt;
         </source>
-<translation type="unfinished">
+<translation>
             &lt;div&gt;
                 內建的詞性標註器目前不支援下列檔案，請檢查你的語種設定或提供已詞性標註的語料庫。
             &lt;/div&gt;
@@ -5608,7 +5608,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_checking/wl_checking_files.py" line="106"></location>
 <source>Part-of-speech Tagging Unsupported</source>
-<translation type="unfinished">無詞性標註支援</translation>
+<translation>無詞性標註支援</translation>
 </message>
 </context>
 <context>
@@ -5616,12 +5616,12 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_nlp/wl_matching.py" line="60"></location>
 <source>Embedded</source>
-<translation type="unfinished">嵌入式</translation>
+<translation>嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_nlp/wl_matching.py" line="69"></location>
 <source>Non-embedded</source>
-<translation type="unfinished">非嵌入式</translation>
+<translation>非嵌入式</translation>
 </message>
 </context>
 <context>
@@ -5629,12 +5629,12 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_nlp/wl_matching.py" line="87"></location>
 <source>Embedded</source>
-<translation type="unfinished">嵌入式</translation>
+<translation>嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_nlp/wl_matching.py" line="96"></location>
 <source>Non-embedded</source>
-<translation type="unfinished">非嵌入式</translation>
+<translation>非嵌入式</translation>
 </message>
 </context>
 <context>
@@ -5647,7 +5647,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="907"></location>
 <source>Line Chart</source>
-<translation type="unfinished">折線圖</translation>
+<translation>折線圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="920"></location>
@@ -5657,17 +5657,17 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="499"></location>
 <source>Frequency</source>
-<translation type="unfinished">頻數</translation>
+<translation>頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="895"></location>
 <source>Pearson's Chi-squared Test</source>
-<translation type="unfinished">皮爾森卡方檢驗</translation>
+<translation>皮爾森卡方檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="974"></location>
 <source>General</source>
-<translation type="unfinished">全域性</translation>
+<translation>全域性</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1027"></location>
@@ -5677,92 +5677,92 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1077"></location>
 <source>Non-embedded</source>
-<translation type="unfinished">非嵌入式</translation>
+<translation>非嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1064"></location>
 <source>Header</source>
-<translation type="unfinished">頭</translation>
+<translation>頭</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1069"></location>
 <source>Embedded</source>
-<translation type="unfinished">嵌入式</translation>
+<translation>嵌入式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1069"></location>
 <source>Part of Speech</source>
-<translation type="unfinished">詞性</translation>
+<translation>詞性</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1070"></location>
 <source>Others</source>
-<translation type="unfinished">其他</translation>
+<translation>其他</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1074"></location>
 <source>Paragraph</source>
-<translation type="unfinished">段落</translation>
+<translation>段落</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1075"></location>
 <source>Sentence</source>
-<translation type="unfinished">句子</translation>
+<translation>句子</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1077"></location>
 <source>Word</source>
-<translation type="unfinished">單詞</translation>
+<translation>單詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="41"></location>
 <source>Profiler</source>
-<translation type="unfinished">分析工具</translation>
+<translation>分析工具</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="54"></location>
 <source>APA (7th Edition)</source>
-<translation type="unfinished">APA（第7版）</translation>
+<translation>APA（第7版）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="175"></location>
 <source>Token</source>
-<translation type="unfinished">形符</translation>
+<translation>形符</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="196"></location>
 <source>File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="197"></location>
 <source>Ascending</source>
-<translation type="unfinished">升序</translation>
+<translation>升序</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="197"></location>
 <source>Token No.</source>
-<translation type="unfinished">形符序號</translation>
+<translation>形符序號</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="799"></location>
 <source>Pointwise Mutual Information</source>
-<translation type="unfinished">點互資訊</translation>
+<translation>點互資訊</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="909"></location>
 <source>p-value</source>
-<translation type="unfinished">p 值</translation>
+<translation>p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="896"></location>
 <source>Log-likelihood Ratio Test</source>
-<translation type="unfinished">對數似然比檢驗</translation>
+<translation>對數似然比檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1753"></location>
 <source>Relative Frequency</source>
-<translation type="unfinished">相對頻數</translation>
+<translation>相對頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1754"></location>
@@ -5772,17 +5772,17 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="40"></location>
 <source>Observed Files</source>
-<translation type="unfinished">觀察檔案</translation>
+<translation>觀察檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="897"></location>
 <source>Odds Ratio</source>
-<translation type="unfinished">比值比</translation>
+<translation>比值比</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="1779"></location>
 <source>Spring</source>
-<translation type="unfinished">彈性</translation>
+<translation>彈性</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_default.py" line="58"></location>
@@ -8875,32 +8875,32 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2554"></location>
 <source>Fisher's Exact Test</source>
-<translation type="unfinished">費希爾精確檢驗</translation>
+<translation>費希爾精確檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2579"></location>
 <source>Pearson's Chi-squared Test</source>
-<translation type="unfinished">皮爾森卡方檢驗</translation>
+<translation>皮爾森卡方檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2587"></location>
 <source>Student's t-test (1-sample)</source>
-<translation type="unfinished">學生 t 檢驗（單樣本）</translation>
+<translation>學生 t 檢驗（單樣本）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2620"></location>
 <source>z-score</source>
-<translation type="unfinished">z 值</translation>
+<translation>z 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2571"></location>
 <source>Mann-Whitney U Test</source>
-<translation type="unfinished">曼惠特尼 U 檢驗</translation>
+<translation>曼惠特尼 U 檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2643"></location>
 <source>Student's t-test (2-sample)</source>
-<translation type="unfinished">學生 t 檢驗（雙樣本）</translation>
+<translation>學生 t 檢驗（雙樣本）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="434"></location>
@@ -8910,47 +8910,47 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2636"></location>
 <source>Log-likelihood Ratio Test</source>
-<translation type="unfinished">對數似然比檢驗</translation>
+<translation>對數似然比檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2564"></location>
 <source>Log-likelihood Ratio</source>
-<translation type="unfinished">對數似然比</translation>
+<translation>對數似然比</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2604"></location>
 <source>t-statistic</source>
-<translation type="unfinished">t 值</translation>
+<translation>t 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2668"></location>
 <source>Dice's Coefficient</source>
-<translation type="unfinished">Dice 係數</translation>
+<translation>Dice 係數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2678"></location>
 <source>Jaccard Index</source>
-<translation type="unfinished">雅卡爾指數</translation>
+<translation>雅卡爾指數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2722"></location>
 <source>Mutual Information</source>
-<translation type="unfinished">互資訊</translation>
+<translation>互資訊</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2732"></location>
 <source>Pointwise Mutual Information</source>
-<translation type="unfinished">點互資訊</translation>
+<translation>點互資訊</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2742"></location>
 <source>Squared Phi Coefficient</source>
-<translation type="unfinished">Phi 係數的平方</translation>
+<translation>Phi 係數的平方</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2728"></location>
 <source>Odds Ratio</source>
-<translation type="unfinished">比值比</translation>
+<translation>比值比</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="112"></location>
@@ -8970,12 +8970,12 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="302"></location>
 <source>OpenType Font (*.otf)</source>
-<translation type="unfinished">OpenType 字型 (*.otf)</translation>
+<translation>OpenType 字型 (*.otf)</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="303"></location>
 <source>TrueType Font (*.ttf)</source>
-<translation type="unfinished">TrueType 字型 (*.ttf)</translation>
+<translation>TrueType 字型 (*.ttf)</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="329"></location>
@@ -9030,12 +9030,12 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2603"></location>
 <source>Welch's t-test</source>
-<translation type="unfinished">Welch t 檢驗</translation>
+<translation>Welch t 檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="2619"></location>
 <source>z-score (Berry-Rogghe)</source>
-<translation type="unfinished">z 值（Berry-Rogghe）</translation>
+<translation>z 值（Berry-Rogghe）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_settings/wl_settings_global.py" line="470"></location>
@@ -9358,22 +9358,22 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_utils/wl_misc.py" line="162"></location>
 <source>(In</source>
-<translation type="unfinished">（耗時</translation>
+<translation>（耗時</translation>
 </message>
 <message>
 <location filename="../wordless/wl_utils/wl_misc.py" line="158"></location>
 <source>minute</source>
-<translation type="unfinished">分</translation>
+<translation>分</translation>
 </message>
 <message>
 <location filename="../wordless/wl_utils/wl_misc.py" line="158"></location>
 <source>minutes</source>
-<translation type="unfinished">分</translation>
+<translation>分</translation>
 </message>
 <message>
 <location filename="../wordless/wl_utils/wl_misc.py" line="159"></location>
 <source>(In {} {} {:.2f} seconds)</source>
-<translation type="unfinished">（耗時 {} {} {:.2f} 秒）</translation>
+<translation>（耗時 {} {} {:.2f} 秒）</translation>
 </message>
 </context>
 <context>
@@ -9381,17 +9381,17 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="1037"></location>
 <source>File</source>
-<translation type="unfinished">檔案</translation>
+<translation>檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="1040"></location>
 <source>Search Term</source>
-<translation type="unfinished">檢索項</translation>
+<translation>檢索項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer.py" line="1044"></location>
 <source>Dispersion Plot</source>
-<translation type="unfinished">分佈圖</translation>
+<translation>分佈圖</translation>
 </message>
 </context>
 <context>
@@ -9399,14 +9399,14 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_concordancer_parallel.py" line="493"></location>
 <source>Empty Search Terms</source>
-<translation type="unfinished">無檢索項</translation>
+<translation>無檢索項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_concordancer_parallel.py" line="493"></location>
 <source>
                 &lt;div&gt;You have not specified any search terms. Do you want to search for additions and deletions?&lt;/div&gt;
             </source>
-<translation type="unfinished">
+<translation>
                 &lt;div&gt;你沒有指定任何檢索項。你想要搜尋增譯和減譯嗎？&lt;/div&gt;
             </translation>
 </message>
@@ -9429,7 +9429,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_freqs.py" line="28"></location>
 <source>Reference Files</source>
-<translation type="unfinished">參照檔案</translation>
+<translation>參照檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_freqs.py" line="30"></location>
@@ -9439,37 +9439,37 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_freqs.py" line="47"></location>
 <source>Line Chart</source>
-<translation type="unfinished">折線圖</translation>
+<translation>折線圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_stats.py" line="46"></location>
 <source>Token</source>
-<translation type="unfinished">形符</translation>
+<translation>形符</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_stats.py" line="48"></location>
 <source>N-gram</source>
-<translation type="unfinished">N 元組</translation>
+<translation>N 元組</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_stats.py" line="50"></location>
 <source>Collocate</source>
-<translation type="unfinished">搭配詞</translation>
+<translation>搭配詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_stats.py" line="52"></location>
 <source>Keyword</source>
-<translation type="unfinished">關鍵詞</translation>
+<translation>關鍵詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_freqs.py" line="70"></location>
 <source>Word Cloud</source>
-<translation type="unfinished">詞雲圖</translation>
+<translation>詞雲圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_freqs.py" line="74"></location>
 <source>Network Graph</source>
-<translation type="unfinished">網路圖</translation>
+<translation>網路圖</translation>
 </message>
 </context>
 <context>
@@ -9482,22 +9482,22 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_stats.py" line="31"></location>
 <source>p-value</source>
-<translation type="unfinished">p 值</translation>
+<translation>p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_stats.py" line="44"></location>
 <source>Line Chart</source>
-<translation type="unfinished">折線圖</translation>
+<translation>折線圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_stats.py" line="67"></location>
 <source>Word Cloud</source>
-<translation type="unfinished">詞雲圖</translation>
+<translation>詞雲圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs_stats.py" line="70"></location>
 <source>Network Graph</source>
-<translation type="unfinished">網路圖</translation>
+<translation>網路圖</translation>
 </message>
 </context>
 <context>
@@ -9505,62 +9505,62 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="80"></location>
 <source>Frequency</source>
-<translation type="unfinished">頻數</translation>
+<translation>頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="58"></location>
 <source>^[LR][1-9][0-9]*$</source>
-<translation type="unfinished">^[左右][1-9][0-9]*$</translation>
+<translation>^[左右][1-9][0-9]*$</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="73"></location>
 <source>Cumulative Percentage Frequency</source>
-<translation type="unfinished">累計百分比頻數</translation>
+<translation>累計百分比頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="75"></location>
 <source>Cumulative Frequency</source>
-<translation type="unfinished">累計頻數</translation>
+<translation>累計頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="78"></location>
 <source>Percentage Frequency</source>
-<translation type="unfinished">百分比頻數</translation>
+<translation>百分比頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="167"></location>
 <source>p-value</source>
-<translation type="unfinished">p 值</translation>
+<translation>p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="144"></location>
 <source>Circular</source>
-<translation type="unfinished">環形</translation>
+<translation>環形</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="148"></location>
 <source>Planar</source>
-<translation type="unfinished">平行</translation>
+<translation>平行</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="150"></location>
 <source>Random</source>
-<translation type="unfinished">隨機</translation>
+<translation>隨機</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="152"></location>
 <source>Shell</source>
-<translation type="unfinished">同心</translation>
+<translation>同心</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="154"></location>
 <source>Spring</source>
-<translation type="unfinished">彈性</translation>
+<translation>彈性</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="156"></location>
 <source>Spectral</source>
-<translation type="unfinished">頻譜</translation>
+<translation>頻譜</translation>
 </message>
 <message>
 <location filename="../wordless/wl_figs/wl_figs.py" line="146"></location>
@@ -9573,20 +9573,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_measures/wl_measures_bayes_factor.py" line="27"></location>
 <source>Student's t-test (2-sample)</source>
-<translation type="unfinished">學生 t 檢驗（雙樣本）</translation>
-</message>
-</context>
-<context>
-<name>wl_measures_readability</name>
-<message>
-<location filename="../wordless/wl_measures/wl_measures_readability.py" line="30"></location>
-<source>No Support</source>
-<translation type="unfinished">不支援</translation>
-</message>
-<message>
-<location filename="../wordless/wl_measures/wl_measures_readability.py" line="31"></location>
-<source>Text is Too Short</source>
-<translation type="unfinished">文字過短</translation>
+<translation>學生 t 檢驗（雙樣本）</translation>
 </message>
 </context>
 <context>
@@ -9594,27 +9581,27 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="76"></location>
 <source>Absolute Frequency</source>
-<translation type="unfinished">絕對頻數</translation>
+<translation>絕對頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="88"></location>
 <source>Relative Frequency</source>
-<translation type="unfinished">相對頻數</translation>
+<translation>相對頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="107"></location>
 <source>Mann-Whitney U Test</source>
-<translation type="unfinished">曼惠特尼 U 檢驗</translation>
+<translation>曼惠特尼 U 檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="110"></location>
 <source>Student's t-test (2-sample)</source>
-<translation type="unfinished">學生 t 檢驗（雙樣本）</translation>
+<translation>學生 t 檢驗（雙樣本）</translation>
 </message>
 <message>
 <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="113"></location>
 <source>Welch's t-test</source>
-<translation type="unfinished">Welch t 檢驗</translation>
+<translation>Welch t 檢驗</translation>
 </message>
 <message>
 <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="272"></location>
@@ -9637,14 +9624,14 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="548"></location>
 <source>Missing Observed Files</source>
-<translation type="unfinished">缺少觀察檔案</translation>
+<translation>缺少觀察檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="548"></location>
 <source>
             &lt;div&gt;You have not specified any observed files yet.&lt;/div&gt;
         </source>
-<translation type="unfinished">
+<translation>
             &lt;div&gt;你還沒有指定任何觀察檔案。&lt;/div&gt;
         </translation>
 </message>
@@ -9654,14 +9641,14 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="557"></location>
 <source>Missing Reference Files</source>
-<translation type="unfinished">缺少參照檔案</translation>
+<translation>缺少參照檔案</translation>
 </message>
 <message>
 <location filename="../wordless/wl_keyword_extractor.py" line="557"></location>
 <source>
             &lt;div&gt;You have not specified any reference files yet.&lt;/div&gt;
         </source>
-<translation type="unfinished">
+<translation>
             &lt;div&gt;你還沒有指定任何參照檔案。&lt;/div&gt;
         </translation>
 </message>
@@ -9671,7 +9658,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_dialogs/wl_msg_boxes.py" line="74"></location>
 <source>Missing Search Terms</source>
-<translation type="unfinished">缺少檢索項</translation>
+<translation>缺少檢索項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_msg_boxes.py" line="74"></location>
@@ -9680,7 +9667,7 @@ Frequency</source>
                 You have not specified any search terms yet, please enter one in the input box under "&lt;span style="color: #F00; font-weight: bold;"&gt;Search Term&lt;/span&gt;" first.
             &lt;/div&gt;
         </source>
-<translation type="unfinished">
+<translation>
             &lt;div&gt;
                 你還沒有指定任何檢索項，請先在“&lt;span style="color: #F00; font-weight: bold;"&gt;檢索項&lt;/span&gt;”下的輸入框中指定一項。
             &lt;/div&gt;
@@ -9692,7 +9679,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_dialogs/wl_msg_boxes.py" line="85"></location>
 <source>Missing Search Terms</source>
-<translation type="unfinished">缺少檢索項</translation>
+<translation>缺少檢索項</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_msg_boxes.py" line="85"></location>
@@ -9705,7 +9692,7 @@ Frequency</source>
                 Or, you can disable searching altogether by unchecking "&lt;span style="color: #F00; font-weight: bold;"&gt;Search Settings&lt;/span&gt;", which will then generate all possible results, but it is not recommended to do so since the processing speed might be too slow.
             &lt;/div&gt;
         </source>
-<translation type="unfinished">
+<translation>
             &lt;div&gt;
                 你還沒有指定任何檢索項，請先在“&lt;span style="color: #F00; font-weight: bold;"&gt;檢索項&lt;/span&gt;”下的輸入框中指定一項。
             &lt;/div&gt;
@@ -9721,7 +9708,7 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_dialogs/wl_msg_boxes.py" line="101"></location>
 <source>No Results</source>
-<translation type="unfinished">無結果</translation>
+<translation>無結果</translation>
 </message>
 <message>
 <location filename="../wordless/wl_dialogs/wl_msg_boxes.py" line="101"></location>
@@ -9729,7 +9716,7 @@ Frequency</source>
             &lt;div&gt;Data processing has completed successfully, but there are no results to display.&lt;/div&gt;
             &lt;div&gt;You can change your settings and try again.&lt;/div&gt;
         </source>
-<translation type="unfinished">
+<translation>
             &lt;div&gt;資料處理操作已完成，但沒有可顯示的結果。&lt;/div&gt;
             &lt;div&gt;你可以更改你的設定後重試。&lt;/div&gt;
         </translation>
@@ -9740,32 +9727,32 @@ Frequency</source>
 <message>
 <location filename="../wordless/wl_utils/wl_msgs.py" line="24"></location>
 <source>A fatal error has occurred!</source>
-<translation type="unfinished">剛才發生了一個致命錯誤！</translation>
+<translation>剛才發生了一個致命錯誤！</translation>
 </message>
 <message>
 <location filename="../wordless/wl_utils/wl_msgs.py" line="27"></location>
 <source>The table has been successfully generated.</source>
-<translation type="unfinished">已成功生成表格。</translation>
+<translation>已成功生成表格。</translation>
 </message>
 <message>
 <location filename="../wordless/wl_utils/wl_msgs.py" line="30"></location>
 <source>An error occured while the table is being generated!</source>
-<translation type="unfinished">生成表格時發生了一個錯誤！</translation>
+<translation>生成表格時發生了一個錯誤！</translation>
 </message>
 <message>
 <location filename="../wordless/wl_utils/wl_msgs.py" line="33"></location>
 <source>The figure has been successfully generated.</source>
-<translation type="unfinished">已成功生成圖表。</translation>
+<translation>已成功生成圖表。</translation>
 </message>
 <message>
 <location filename="../wordless/wl_utils/wl_msgs.py" line="36"></location>
 <source>An error occured while the figure is being generated!</source>
-<translation type="unfinished">生成圖表時發生了一個錯誤！</translation>
+<translation>生成圖表時發生了一個錯誤！</translation>
 </message>
 <message>
 <location filename="../wordless/wl_utils/wl_msgs.py" line="39"></location>
 <source>The results in the table has been successfully filtered.</source>
-<translation type="unfinished">已成功篩選表格中的結果。</translation>
+<translation>已成功篩選表格中的結果。</translation>
 </message>
 </context>
 <context>
@@ -9774,68 +9761,68 @@ Frequency</source>
 <location filename="../wordless/wl_ngram_generator.py" line="878"></location>
 <source>Total
 Frequency</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="883"></location>
 <source>Total
 Frequency %</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="909"></location>
 <source>
 Frequency</source>
-<translation type="unfinished">
+<translation>
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="910"></location>
 <source>
 Frequency %</source>
-<translation type="unfinished">
+<translation>
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="917"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="918"></location>
 <source>Number of
 Files Found %</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="1005"></location>
 <source>Frequency</source>
-<translation type="unfinished">頻數</translation>
+<translation>頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="904"></location>
 <source>[{}]
 Frequency</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="857"></location>
 <source>[{}]
 Frequency %</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_ngram_generator.py" line="897"></location>
 <source>Total
 </source>
-<translation type="unfinished">合計
+<translation>合計
 </translation>
 </message>
 </context>
@@ -9847,39 +9834,44 @@ Frequency %</source>
 <translation>合計</translation>
 </message>
 <message>
-<location filename="../wordless/wl_profiler.py" line="1064"></location>
-<source>No Support</source>
-<translation type="unfinished">不支援</translation>
-</message>
-<message>
-<location filename="../wordless/wl_profiler.py" line="1081"></location>
+<location filename="../wordless/wl_profiler.py" line="1080"></location>
 <source>Count of {}-length Sentences</source>
-<translation type="unfinished">長度為 {} 的句子數</translation>
+<translation>長度為 {} 的句子數</translation>
 </message>
 <message>
-<location filename="../wordless/wl_profiler.py" line="1085"></location>
+<location filename="../wordless/wl_profiler.py" line="1084"></location>
 <source>Count of {}-length Sentences %</source>
-<translation type="unfinished">長度為 {} 的句子數%</translation>
+<translation>長度為 {} 的句子數%</translation>
 </message>
 <message>
-<location filename="../wordless/wl_profiler.py" line="1153"></location>
+<location filename="../wordless/wl_profiler.py" line="1152"></location>
 <source>Count of {}-Length Tokens</source>
-<translation type="unfinished">長度為 {} 的形符數</translation>
+<translation>長度為 {} 的形符數</translation>
 </message>
 <message>
-<location filename="../wordless/wl_profiler.py" line="1157"></location>
+<location filename="../wordless/wl_profiler.py" line="1156"></location>
 <source>Count of {}-Length Tokens %</source>
-<translation type="unfinished">長度為 {} 的形符數%</translation>
+<translation>長度為 {} 的形符數%</translation>
 </message>
 <message>
-<location filename="../wordless/wl_profiler.py" line="1117"></location>
+<location filename="../wordless/wl_profiler.py" line="1116"></location>
 <source>Count of {}-length Sentence Segment</source>
-<translation type="unfinished">長度為 {} 的句段數</translation>
+<translation>長度為 {} 的句段數</translation>
 </message>
 <message>
-<location filename="../wordless/wl_profiler.py" line="1121"></location>
+<location filename="../wordless/wl_profiler.py" line="1120"></location>
 <source>Count of {}-length Sentence Segment %</source>
-<translation type="unfinished">長度為 {} 的句段數%</translation>
+<translation>長度為 {} 的句段數%</translation>
+</message>
+<message>
+<location filename="../wordless/wl_profiler.py" line="1063"></location>
+<source>No Support</source>
+<translation>不支援</translation>
+</message>
+<message>
+<location filename="../wordless/wl_profiler.py" line="743"></location>
+<source>Text is Too Short</source>
+<translation>文字過短</translation>
 </message>
 </context>
 <context>
@@ -9887,12 +9879,12 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="614"></location>
 <source>Context Settings:</source>
-<translation type="unfinished">上下文設定：</translation>
+<translation>上下文設定：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="615"></location>
 <source>Settings...</source>
-<translation type="unfinished">設定...</translation>
+<translation>設定...</translation>
 </message>
 </context>
 <context>
@@ -9900,7 +9892,7 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1165"></location>
 <source>Direction:</source>
-<translation type="unfinished">方向：</translation>
+<translation>方向：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1168"></location>
@@ -9923,47 +9915,47 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="955"></location>
 <source>Line Chart</source>
-<translation type="unfinished">折線圖</translation>
+<translation>折線圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="919"></location>
 <source>Frequency</source>
-<translation type="unfinished">頻數</translation>
+<translation>頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="946"></location>
 <source>Graph Type:</source>
-<translation type="unfinished">圖表型別：</translation>
+<translation>圖表型別：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="948"></location>
 <source>Sort by File:</source>
-<translation type="unfinished">檔案排序依據：</translation>
+<translation>檔案排序依據：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="950"></location>
 <source>Use Data:</source>
-<translation type="unfinished">使用資料：</translation>
+<translation>使用資料：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="952"></location>
 <source>Use percentage data</source>
-<translation type="unfinished">使用百分比資料</translation>
+<translation>使用百分比資料</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="953"></location>
 <source>Use cumulative data</source>
-<translation type="unfinished">使用累計資料</translation>
+<translation>使用累計資料</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="955"></location>
 <source>Word Cloud</source>
-<translation type="unfinished">詞雲圖</translation>
+<translation>詞雲圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="962"></location>
 <source>Network Graph</source>
-<translation type="unfinished">網路圖</translation>
+<translation>網路圖</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="879"></location>
@@ -9978,12 +9970,12 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="933"></location>
 <source>p-value</source>
-<translation type="unfinished">p 值</translation>
+<translation>p 值</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="936"></location>
 <source>Bayes Factor</source>
-<translation type="unfinished">貝葉斯因子</translation>
+<translation>貝葉斯因子</translation>
 </message>
 </context>
 <context>
@@ -10035,12 +10027,12 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1130"></location>
 <source>Filter File:</source>
-<translation type="unfinished">篩選檔案：</translation>
+<translation>篩選檔案：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1132"></location>
 <source>Filter Results in Table</source>
-<translation type="unfinished">篩選表格中結果</translation>
+<translation>篩選表格中結果</translation>
 </message>
 </context>
 <context>
@@ -10048,7 +10040,7 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="743"></location>
 <source>Measure of Bayes Factor:</source>
-<translation type="unfinished">貝葉斯因子演算法：</translation>
+<translation>貝葉斯因子演算法：</translation>
 </message>
 </context>
 <context>
@@ -10056,7 +10048,7 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="745"></location>
 <source>Measure of Effect Size:</source>
-<translation type="unfinished">效應量演算法：</translation>
+<translation>效應量演算法：</translation>
 </message>
 </context>
 <context>
@@ -10064,12 +10056,12 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="725"></location>
 <source>Measure of Dispersion:</source>
-<translation type="unfinished">分佈演算法：</translation>
+<translation>分佈演算法：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="727"></location>
 <source>Measure of Adjusted Frequency:</source>
-<translation type="unfinished">調整頻數演算法：</translation>
+<translation>調整頻數演算法：</translation>
 </message>
 </context>
 <context>
@@ -10085,12 +10077,12 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1145"></location>
 <source>Divide each file into</source>
-<translation type="unfinished">將每個檔案分為</translation>
+<translation>將每個檔案分為</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1147"></location>
 <source>sub-sections</source>
-<translation type="unfinished">等份</translation>
+<translation>等份</translation>
 </message>
 </context>
 <context>
@@ -10098,12 +10090,12 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1185"></location>
 <source>Pick Color</source>
-<translation type="unfinished">選擇顏色</translation>
+<translation>選擇顏色</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1191"></location>
 <source>Pick Color...</source>
-<translation type="unfinished">選擇顏色...</translation>
+<translation>選擇顏色...</translation>
 </message>
 </context>
 <context>
@@ -10111,52 +10103,52 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="500"></location>
 <source>Search Terms:</source>
-<translation type="unfinished">檢索項：</translation>
+<translation>檢索項：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="550"></location>
 <source>Search Term:</source>
-<translation type="unfinished">檢索項：</translation>
+<translation>檢索項：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="551"></location>
 <source>Multi-search Mode</source>
-<translation type="unfinished">多重檢索模式</translation>
+<translation>多重檢索模式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="554"></location>
 <source>* Use space to separate multiple tokens</source>
-<translation type="unfinished">* 使用空格來分隔多個形符</translation>
+<translation>* 使用空格來分隔多個形符</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="556"></location>
 <source>Ignore case</source>
-<translation type="unfinished">忽略大小寫</translation>
+<translation>忽略大小寫</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="557"></location>
 <source>Match all inflected forms</source>
-<translation type="unfinished">匹配屈折變化形式</translation>
+<translation>匹配屈折變化形式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="558"></location>
 <source>Match whole words only</source>
-<translation type="unfinished">全字匹配</translation>
+<translation>全字匹配</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="559"></location>
 <source>Use regular expression</source>
-<translation type="unfinished">使用正則表示式</translation>
+<translation>使用正則表示式</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="561"></location>
 <source>Ignore tags</source>
-<translation type="unfinished">忽略標籤</translation>
+<translation>忽略標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="562"></location>
 <source>Match tags only</source>
-<translation type="unfinished">僅匹配標籤</translation>
+<translation>僅匹配標籤</translation>
 </message>
 </context>
 <context>
@@ -10182,17 +10174,17 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="789"></location>
 <source>Show percentage data</source>
-<translation type="unfinished">顯示百分比資料</translation>
+<translation>顯示百分比資料</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="790"></location>
 <source>Show cumulative data</source>
-<translation type="unfinished">顯示累計資料</translation>
+<translation>顯示累計資料</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="791"></location>
 <source>Show breakdown by file</source>
-<translation type="unfinished">顯示各檔案明細</translation>
+<translation>顯示各檔案明細</translation>
 </message>
 </context>
 <context>
@@ -10200,7 +10192,7 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="741"></location>
 <source>Test of Statistical Significance:</source>
-<translation type="unfinished">統計顯著性檢驗：</translation>
+<translation>統計顯著性檢驗：</translation>
 </message>
 </context>
 <context>
@@ -10208,57 +10200,57 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="427"></location>
 <source>Words</source>
-<translation type="unfinished">單詞</translation>
+<translation>單詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="430"></location>
 <source>Title Case</source>
-<translation type="unfinished">首字母大寫</translation>
+<translation>首字母大寫</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="431"></location>
 <source>Numerals</source>
-<translation type="unfinished">數詞</translation>
+<translation>數詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="432"></location>
 <source>Punctuations</source>
-<translation type="unfinished">標點</translation>
+<translation>標點</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="434"></location>
 <source>Treat as all lowercase</source>
-<translation type="unfinished">視為全小寫</translation>
+<translation>視為全小寫</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="435"></location>
 <source>Lemmatize all tokens</source>
-<translation type="unfinished">對所有形符應用詞形還原</translation>
+<translation>對所有形符應用詞形還原</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="436"></location>
 <source>Filter stop words</source>
-<translation type="unfinished">過濾停用詞</translation>
+<translation>過濾停用詞</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="438"></location>
 <source>Ignore tags</source>
-<translation type="unfinished">忽略標籤</translation>
+<translation>忽略標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="439"></location>
 <source>Use tags only</source>
-<translation type="unfinished">僅使用標籤</translation>
+<translation>僅使用標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="428"></location>
 <source>All Lowercase</source>
-<translation type="unfinished">全小寫</translation>
+<translation>全小寫</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="429"></location>
 <source>All Uppercase</source>
-<translation type="unfinished">全大寫</translation>
+<translation>全大寫</translation>
 </message>
 </context>
 <context>
@@ -10266,17 +10258,17 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="478"></location>
 <source>Punctuations</source>
-<translation type="unfinished">標點</translation>
+<translation>標點</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="480"></location>
 <source>Ignore tags</source>
-<translation type="unfinished">忽略標籤</translation>
+<translation>忽略標籤</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="481"></location>
 <source>Use tags only</source>
-<translation type="unfinished">僅使用標籤</translation>
+<translation>僅使用標籤</translation>
 </message>
 </context>
 <context>
@@ -10284,17 +10276,17 @@ Frequency %</source>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1154"></location>
 <source>Use Data:</source>
-<translation type="unfinished">使用資料：</translation>
+<translation>使用資料：</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1157"></location>
 <source>Absolute Frequency</source>
-<translation type="unfinished">絕對頻數</translation>
+<translation>絕對頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_widgets/wl_widgets.py" line="1157"></location>
 <source>Relative Frequency</source>
-<translation type="unfinished">相對頻數</translation>
+<translation>相對頻數</translation>
 </message>
 </context>
 <context>
@@ -10331,68 +10323,68 @@ Frequency %</source>
 <location filename="../wordless/wl_wordlist_generator.py" line="519"></location>
 <source>Total
 Frequency</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="524"></location>
 <source>Total
 Frequency %</source>
-<translation type="unfinished">合計
+<translation>合計
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="550"></location>
 <source>
 Frequency</source>
-<translation type="unfinished">
+<translation>
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="551"></location>
 <source>
 Frequency %</source>
-<translation type="unfinished">
+<translation>
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="558"></location>
 <source>Number of
 Files Found</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="559"></location>
 <source>Number of
 Files Found %</source>
-<translation type="unfinished">查詢到的
+<translation>查詢到的
 檔案數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="636"></location>
 <source>Frequency</source>
-<translation type="unfinished">頻數</translation>
+<translation>頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="545"></location>
 <source>[{}]
 Frequency</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="498"></location>
 <source>[{}]
 Frequency %</source>
-<translation type="unfinished">[{}]
+<translation>[{}]
 頻數%</translation>
 </message>
 <message>
 <location filename="../wordless/wl_wordlist_generator.py" line="538"></location>
 <source>Total
 </source>
-<translation type="unfinished">合計
+<translation>合計
 </translation>
 </message>
 </context>
