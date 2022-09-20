@@ -61,7 +61,7 @@ def test_automated_readability_index():
     print(f'\t{ari_spa_12} (spa/12)')
     print(f'\t{ari_other_12} (other/12)')
 
-    assert ari_0 == wl_measures_readability.TEXT_TOO_SHORT
+    assert ari_0 == 'text_too_short'
     assert ari_eng_12 == ari_spa_12 == ari_other_12 == 0.5 * (12 / 3) + 4.71 * (47 / 12) - 21.43
 
 def test_coleman_liau_index():
@@ -78,7 +78,7 @@ def test_coleman_liau_index():
 
     est_cloze_pct = 141.8401 - 0.21459 * (45 / 12 * 100) + 1.079812 * (3 / 12 * 100)
 
-    assert grade_level_0 == wl_measures_readability.TEXT_TOO_SHORT
+    assert grade_level_0 == 'text_too_short'
     assert grade_level_eng_12 == grade_level_spa_12 == grade_level_other_12 == -27.4004 * (est_cloze_pct / 100) + 23.06395
 
 def test_dale_chall_readability_score():
@@ -93,9 +93,9 @@ def test_dale_chall_readability_score():
     print(f'\t{x_c50_spa_12} (spa/12)')
     print(f'\t{x_c50_other_12} (other/12)')
 
-    assert x_c50_0 == wl_measures_readability.TEXT_TOO_SHORT
+    assert x_c50_0 == 'text_too_short'
     assert x_c50_eng_12 == 0.1579 * (1 / 12) + 0.0496 * (12 / 3) + 3.6365
-    assert x_c50_spa_12 == x_c50_other_12 == wl_measures_readability.NO_SUPPORT
+    assert x_c50_spa_12 == x_c50_other_12 == 'no_support'
 
 def test_devereux_readability_index():
     grade_placement_0 = wl_measures_readability.devereux_readability_index(main, test_text_0)
@@ -109,7 +109,7 @@ def test_devereux_readability_index():
     print(f'\t{grade_placement_spa_12} (spa/12)')
     print(f'\t{grade_placement_other_12} (other/12)')
 
-    assert grade_placement_0 == wl_measures_readability.TEXT_TOO_SHORT
+    assert grade_placement_0 == 'text_too_short'
     assert grade_placement_eng_12 == grade_placement_spa_12 == grade_placement_other_12 == 1.56 * (47 / 12) + 0.19 * (12 / 3) - 6.49
 
 def test_flesch_reading_ease():
@@ -124,10 +124,10 @@ def test_flesch_reading_ease():
     print(f'\t{flesch_re_spa_12} (spa/12)')
     print(f'\t{flesch_re_other_12} (other/12)')
 
-    assert flesch_re_0 == wl_measures_readability.TEXT_TOO_SHORT
+    assert flesch_re_0 == 'text_too_short'
     assert flesch_re_eng_12 == 206.835 - 0.846 * (15 / 12 * 100) - 1.015 * (12 / 3)
-    assert flesch_re_spa_12 != wl_measures_readability.NO_SUPPORT
-    assert flesch_re_other_12 == wl_measures_readability.NO_SUPPORT
+    assert flesch_re_spa_12 != 'no_support'
+    assert flesch_re_other_12 == 'no_support'
 
 def test_flesch_reading_ease_simplified():
     flesch_re_simplified_0 = wl_measures_readability.flesch_reading_ease_simplified(main, test_text_0)
@@ -141,10 +141,10 @@ def test_flesch_reading_ease_simplified():
     print(f'\t{flesch_re_simplified_spa_12} (spa/12)')
     print(f'\t{flesch_re_simplified_other_12} (other/12)')
 
-    assert flesch_re_simplified_0 == wl_measures_readability.TEXT_TOO_SHORT
+    assert flesch_re_simplified_0 == 'text_too_short'
     assert flesch_re_simplified_eng_12 == 1.599 * (9 / 12 * 100) - 1.015 * (12 / 3) - 31.517
-    assert flesch_re_simplified_spa_12 != wl_measures_readability.NO_SUPPORT
-    assert flesch_re_simplified_other_12 == wl_measures_readability.NO_SUPPORT
+    assert flesch_re_simplified_spa_12 != 'no_support'
+    assert flesch_re_simplified_other_12 == 'no_support'
 
 def test_flesch_kincaid_grade_level():
     gl_0 = wl_measures_readability.flesch_kincaid_grade_level(main, test_text_0)
@@ -158,10 +158,10 @@ def test_flesch_kincaid_grade_level():
     print(f'\t{gl_spa_12} (spa/12)')
     print(f'\t{gl_other_12} (other/12)')
 
-    assert gl_0 == wl_measures_readability.TEXT_TOO_SHORT
+    assert gl_0 == 'text_too_short'
     assert gl_eng_12 == 0.39 * (12 / 3) + 11.8 * (15 / 12) - 15.59
-    assert gl_spa_12 != wl_measures_readability.NO_SUPPORT
-    assert gl_other_12 == wl_measures_readability.NO_SUPPORT
+    assert gl_spa_12 != 'no_support'
+    assert gl_other_12 == 'no_support'
 
 def test_forcast_grade_level():
     rgl_eng_12 = wl_measures_readability.forcast_grade_level(main, test_text_eng_12)
@@ -175,10 +175,10 @@ def test_forcast_grade_level():
     print(f'\t{rgl_spa_150} (spa/150)')
     print(f'\t{rgl_other_12} (other/12)')
 
-    assert rgl_eng_12 == wl_measures_readability.TEXT_TOO_SHORT
+    assert rgl_eng_12 == 'text_too_short'
     assert rgl_eng_150 == 20.43 - 0.11 * (6 * 18 + 4)
-    assert rgl_spa_150 != wl_measures_readability.NO_SUPPORT
-    assert rgl_other_12 == wl_measures_readability.NO_SUPPORT
+    assert rgl_spa_150 != 'no_support'
+    assert rgl_other_12 == 'no_support'
 
 def test_gunning_fog_index():
     fog_index_0 = wl_measures_readability.gunning_fog_index(main, test_text_0)
@@ -192,9 +192,9 @@ def test_gunning_fog_index():
     print(f'\t{fog_index_spa_12} (spa/12)')
     print(f'\t{fog_index_other_12} (other/12)')
 
-    assert fog_index_0 == wl_measures_readability.TEXT_TOO_SHORT
+    assert fog_index_0 == 'text_too_short'
     assert fog_index_eng_12_propn == 0.4 * (12 / 3 + 1 / 12 * 100)
-    assert fog_index_spa_12 == fog_index_other_12 == wl_measures_readability.NO_SUPPORT
+    assert fog_index_spa_12 == fog_index_other_12 == 'no_support'
 
 def test_smog_grade():
     g_eng_12 = wl_measures_readability.smog_grade(main, test_text_eng_12)
@@ -208,10 +208,10 @@ def test_smog_grade():
     print(f'\t{g_spa_120} (spa/120)')
     print(f'\t{g_other_12} (other/12)')
 
-    assert g_eng_12 == wl_measures_readability.TEXT_TOO_SHORT
+    assert g_eng_12 == 'text_too_short'
     assert g_eng_120 == 3.1291 + 1.043 * (15 ** 0.5)
-    assert g_spa_120 != wl_measures_readability.NO_SUPPORT
-    assert g_other_12 == wl_measures_readability.NO_SUPPORT
+    assert g_spa_120 != 'no_support'
+    assert g_other_12 == 'no_support'
 
 def test_spache_grade_level():
     grade_level_eng_12 = wl_measures_readability.spache_grade_level(main, test_text_eng_12)
@@ -225,9 +225,9 @@ def test_spache_grade_level():
     print(f'\t{grade_level_spa_12} (spa/12)')
     print(f'\t{grade_level_other_12} (other/12)')
 
-    assert grade_level_eng_12 == wl_measures_readability.TEXT_TOO_SHORT
+    assert grade_level_eng_12 == 'text_too_short'
     assert grade_level_eng_100 == numpy.mean([0.141 * (100 / 25) + 0.086 * (25 / 100 * 100) + 0.839] * 3)
-    assert grade_level_spa_12 == grade_level_other_12 == wl_measures_readability.NO_SUPPORT
+    assert grade_level_spa_12 == grade_level_other_12 == 'no_support'
 
 def test_write_score():
     score_eng_12 = wl_measures_readability.write_score(main, test_text_eng_12)
@@ -241,10 +241,10 @@ def test_write_score():
     print(f'\t{score_spa_12} (spa/12)')
     print(f'\t{score_other_12} (other/12)')
 
-    assert score_eng_12 == wl_measures_readability.TEXT_TOO_SHORT
+    assert score_eng_12 == 'text_too_short'
     assert score_eng_100 == 50 + 3 * 25
-    assert score_spa_12 != wl_measures_readability.NO_SUPPORT
-    assert score_other_12 == wl_measures_readability.NO_SUPPORT
+    assert score_spa_12 != 'no_support'
+    assert score_other_12 == 'no_support'
 
 if __name__ == '__main__':
     test_automated_readability_index()
