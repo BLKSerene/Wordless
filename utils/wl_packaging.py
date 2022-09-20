@@ -19,8 +19,20 @@
 import datetime
 import os
 import platform
+import shutil
 import subprocess
 import time
+
+is_windows = False
+is_macos = False
+is_linux = False
+
+if platform.system() == 'Windows':
+    is_windows = True
+elif platform.system() == 'Darwin':
+    is_macos = True
+elif platform.system() == 'Linux':
+    is_linux = True
 
 def print_with_elapsed_time(message):
     print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] {message}')
@@ -36,68 +48,81 @@ time_start = time.time()
 # Package
 print_with_elapsed_time('Start packaging...')
 
-if platform.system() == 'Windows':
-    return_val_packaging = subprocess.call('pyinstaller --noconfirm --clean wl_packaging.spec', shell = True)
-elif platform.system() == 'Darwin':
-    return_val_packaging = subprocess.call('python3 -m PyInstaller --noconfirm --clean wl_packaging.spec', shell = True)
-elif platform.system() == 'Linux':
-    return_val_packaging = subprocess.call('python3.8 -m PyInstaller --noconfirm --clean wl_packaging.spec', shell = True)
+if is_windows:
+    subprocess.run(['python', '-m', 'PyInstaller', '--clean', '--noconfirm', 'wl_packaging.spec'], check = True)
+elif is_macos:
+    subprocess.run(['python3', '-m', 'PyInstaller', '--clean', '--noconfirm', 'wl_packaging.spec'], check = True)
+elif is_linux:
+    subprocess.run(['python3.8', '-m', 'PyInstaller', '--clean', '--noconfirm', 'wl_packaging.spec'], check = True)
 
-if return_val_packaging == 0:
-    print_with_elapsed_time('Packaging done!')
+# Create folders
+if is_windows or is_linux:
+    os.makedirs('dist/Wordless/imports')
+    os.makedirs('dist/Wordless/exports')
+elif is_macos:
+    os.makedirs('dist/Wordless.app/Contents/Macos/imports')
+    os.makedirs('dist/Wordless.app/Contents/Macos/exports')
 
-    # Create folders
-    if platform.system() in ['Windows', 'Linux']:
-        os.makedirs('dist/Wordless/imports')
-        os.makedirs('dist/Wordless/exports')
-    elif platform.system() == 'Darwin':
-        os.makedirs('dist/Wordless.app/Contents/Macos/imports')
-        os.makedirs('dist/Wordless.app/Contents/Macos/exports')
+# Running on Linux requires sudo
+if is_linux:
+    with open('dist/Wordless/Wordless.sh', 'w', encoding = 'utf_8') as f:
+        f.write('#!/bin/bash\n')
+        # Fix libGL error on Linux
+        f.write('sudo LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 ./Wordless\n')
 
-    # Compress files
-    print_with_elapsed_time('Compressing files... ')
+    # Allow excuting file as program
+    subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless.sh'], check = True)
 
+    # Create .desktop file
+    subprocess.run(['python3.8', '-m', 'PyInstaller', '--clean', '--noconfirm', 'linux_create_shortcut.py'], check = True)
+    shutil.copyfile('dist/linux_create_shortcut/linux_create_shortcut', 'dist/Wordless/Wordless - Create Shortcut')
+    subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless - Create Shortcut'], check = True)
+
+print_with_elapsed_time('Packaging done!')
+
+# Test Wordless
+print_with_elapsed_time('Testing Wordless... ')
+
+if is_windows or is_linux:
+    os.chdir('dist/Wordless')
+elif is_macos:
     os.chdir('dist')
 
-    if platform.system() == 'Windows':
-        # "7z.exe" and "7z.dll" should be put under "C:\Windows\System32" first
-        subprocess.call(f'7z a -tzip -mx9 wordless_{wl_ver}_windows.zip Wordless/', shell = True)
-    elif platform.system() == 'Darwin':
-        subprocess.call(f'ditto -c -k --sequesterRsrc --keepParent Wordless.app/ wordless_{wl_ver}_macos.zip', shell = True)
-    elif platform.system() == 'Linux':
-        subprocess.call(f'tar -czvf wordless_{wl_ver}_linux.tar.gz Wordless/', shell = True)
+if is_windows:
+    subprocess.run([os.path.join(os.getcwd(), 'Wordless.exe')], check = True)
+elif is_macos:
+    subprocess.run([os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Wordless')], check = True)
+elif is_linux:
+    subprocess.run(['./Wordless'], check = True)
 
-    print_with_elapsed_time('Compressing done!')
+if is_windows or is_linux:
+    os.chdir('..')
 
-    # Test Wordless
-    print_with_elapsed_time('Testing Wordless... ')
+# Remove custom settings file
+if is_windows or is_linux:
+    if os.path.exists('wl_settings.pickle'):
+        os.remove('wl_settings.pickle')
 
-    if platform.system() == 'Windows':
-        os.chdir('Wordless')
-        return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.exe'), shell = True)
-    elif platform.system() == 'Darwin':
-        return_val_test = subprocess.call(os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Wordless'), shell = True)
-    elif platform.system() == 'Linux':
-        os.chdir('Wordless')
-        return_val_test = subprocess.call('./Wordless', shell = True)
+    if os.path.exists('wl_settings_display_lang.pickle'):
+        os.remove('wl_settings_display_lang.pickle')
+elif is_macos:
+    if os.path.exists('Wordless.app/Contents/Macos/wl_settings.pickle'):
+        os.remove('Wordless.app/Contents/Macos/wl_settings.pickle')
 
-    # Remove custom settings file
-    if platform.system() in ['Windows', 'Linux']:
-        if os.path.exists('wl_settings.pickle'):
-            os.remove('wl_settings.pickle')
+    if os.path.exists('Wordless.app/Contents/Macos/wl_settings_display_lang.pickle'):
+        os.remove('Wordless.app/Contents/Macos/wl_settings_display_lang.pickle')
 
-        if os.path.exists('wl_settings_display_lang.pickle'):
-            os.remove('wl_settings_display_lang.pickle')
-    elif platform.system() == 'Darwin':
-        if os.path.exists('Wordless.app/Contents/Macos/wl_settings.pickle'):
-            os.remove('Wordless.app/Contents/Macos/wl_settings.pickle')
+print_with_elapsed_time('Tests passed!')
 
-        if os.path.exists('Wordless.app/Contents/Macos/wl_settings_display_lang.pickle'):
-            os.remove('Wordless.app/Contents/Macos/wl_settings_display_lang.pickle')
+# Compress files
+print_with_elapsed_time('Compressing files... ')
 
-    if return_val_test == 0:
-        print_with_elapsed_time('Testing passed!')
-    else:
-        print_with_elapsed_time('Testing failed!')
-else:
-    print_with_elapsed_time('Packaging failed!')
+if is_windows:
+    # "7z.exe" and "7z.dll" should be put under "C:/Windows/System32" first
+    subprocess.run(['7z', 'a', '-tzip', '-mx9', f'wordless_{wl_ver}_windows.zip', 'Wordless/'], check = True)
+elif is_macos:
+    subprocess.run(['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', 'Wordless.app/', 'wordless_{wl_ver}_macos.zip'], check = True)
+elif is_linux:
+    subprocess.run(['tar', '-czvf', f'wordless_{wl_ver}_linux.tar.gz', 'Wordless/'], check = True)
+
+print_with_elapsed_time('Compressing done!')

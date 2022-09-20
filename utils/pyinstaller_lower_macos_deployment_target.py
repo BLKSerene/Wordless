@@ -48,7 +48,7 @@ os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.9'
 
 # Recompile the macOS bootloader
 os.chdir(f'pyinstaller-{PYINSTALLER_VER}/bootloader')
-subprocess.call('python3 waf all', shell = True)
+subprocess.run(['python3', 'waf', 'all'], check = True)
 
 # Compress files back into package
 os.chdir('../..')
@@ -58,7 +58,7 @@ with zipfile.ZipFile(f'pyinstaller-{PYINSTALLER_VER}_modified.zip', 'w') as zip_
             zip_file.write(os.path.join(root, file))
 
 # Install PyInstaller
-subprocess.call(f'pip3 install pyinstaller-{PYINSTALLER_VER}_modified.zip', shell = True)
+subprocess.run(['pip3', 'install', f'pyinstaller-{PYINSTALLER_VER}_modified.zip'], check = True)
 
 # Clean files
 shutil.rmtree(f'pyinstaller-{PYINSTALLER_VER}')

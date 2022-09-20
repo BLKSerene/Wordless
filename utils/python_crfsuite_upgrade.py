@@ -93,11 +93,11 @@ print('Upgrading python-crfsuite...')
 shutil.make_archive('python_crfsuite_latest', 'zip', 'python_crfsuite_temp/python-crfsuite-master')
 
 if platform.system() == 'Windows':
-    subprocess.call('pip install python_crfsuite_latest.zip', shell = True)
+    subprocess.run(['pip', 'install', 'python_crfsuite_latest.zip'], check = True)
 elif platform.system() == 'Darwin':
-    subprocess.call('pip3 install python_crfsuite_latest.zip', shell = True)
+    subprocess.run(['pip3', 'install', 'python_crfsuite_latest.zip'], check = True)
 elif platform.system() == 'Linux':
-    subprocess.call('pip3.8 install python_crfsuite_latest.zip', shell = True)
+    subprocess.run(['pip3.8', 'install', 'python_crfsuite_latest.zip'], check = True)
 
 # Clean files
 print('Cleaning files... ', end = '')

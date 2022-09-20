@@ -34,6 +34,7 @@ jobs:
           python-version: '3.8'
           architecture: 'x64'
           cache: 'pip'
+          cache-dependency-path: 'requirements_tests.txt'
 
       # Check Python version
       - name: Check Python version
@@ -43,7 +44,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools
-          pip install -r requirements.txt
+          pip install -r requirements_tests.txt
           # For Codecov
           pip install pytest-cov
           # Download models and data files
@@ -84,6 +85,7 @@ jobs:
           python-version: '3.8'
           architecture: 'x64'
           cache: 'pip'
+          cache-dependency-path: 'requirements_tests.txt'
 
       # Check Python version
       - name: Check Python version
@@ -93,7 +95,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools
-          pip install -r requirements.txt
+          pip install -r requirements_tests.txt
           # Download models and data files
           python utils/wl_downloader_ci.py
 
@@ -118,7 +120,7 @@ jobs:
 
   # Linux
   build-linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v3
@@ -129,6 +131,7 @@ jobs:
           python-version: '3.8'
           architecture: 'x64'
           cache: 'pip'
+          cache-dependency-path: 'requirements_tests.txt'
 
       # Check Python version
       - name: Check Python version
@@ -138,7 +141,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools
-          pip install -r requirements.txt
+          pip install -r requirements_tests.txt
           # Download models and data files
           python utils/wl_downloader_ci.py
 
