@@ -19,6 +19,7 @@
 import collections
 import copy
 import os
+import platform
 import time
 
 import numpy
@@ -26,6 +27,20 @@ from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QMainWindow
 
 _tr = QCoreApplication.translate
+
+def check_os():
+    is_windows = False
+    is_macos = False
+    is_linux = False
+
+    if platform.system() == 'Windows':
+        is_windows = True
+    elif platform.system() == 'Darwin':
+        is_macos = True
+    elif platform.system() == 'Linux':
+        is_linux = True
+
+    return is_windows, is_macos, is_linux
 
 def get_normalized_path(path):
     path = os.path.realpath(path)

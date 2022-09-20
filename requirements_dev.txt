@@ -1,0 +1,85 @@
+# ----------------------------------------------------------------------
+# Wordless: CI - Requirements File - Development
+# Copyright (C) 2018-2022  Ye Lei (叶磊)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# ----------------------------------------------------------------------
+
+botok
+charset-normalizer
+jieba
+lingua-language-detector
+nltk
+pyphen
+pythainlp
+sacremoses
+textblob
+underthesea
+
+## pymorphy2
+pymorphy2
+pymorphy2-dicts-ru
+pymorphy2-dicts-uk
+
+## spaCy
+spacy
+spacy-lookups-data
+spacy-pkuseg
+
+## SudachiPy
+sudachipy
+sudachidict_core
+
+# Not version-pinned
+beautifulsoup4
+lxml
+matplotlib
+networkx
+numpy
+opencc
+openpyxl
+pyinstaller
+pypdf2
+pyqt5
+python-docx
+requests
+scipy
+wordcloud
+
+# python-crfsuite
+python_crfsuite_latest.zip
+
+# spaCy models
+spacy_models/ca_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/da_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/de_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/el_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/en_core_web_sm-3.4.0-py3-none-any.whl
+spacy_models/es_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/fi_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/fr_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/hr_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/it_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/ja_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/lt_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/mk_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/nb_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/nl_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/pl_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/pt_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/ro_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/ru_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/sv_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/uk_core_news_sm-3.4.0-py3-none-any.whl
+spacy_models/zh_core_web_sm-3.4.0-py3-none-any.whl

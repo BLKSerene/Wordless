@@ -27,9 +27,8 @@ import time
 import traceback
 
 # Fix working directory on macOS
-if getattr(sys, '_MEIPASS', False):
-    if platform.system() == 'Darwin':
-        os.chdir(sys._MEIPASS)
+if getattr(sys, '_MEIPASS', False) and platform.system() == 'Darwin':
+    os.chdir(sys._MEIPASS) # pylint: disable=no-member
 
 import matplotlib
 import nltk
@@ -78,6 +77,8 @@ from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
+
+is_windows, is_macos, is_linux = wl_misc.check_os()
 
 class Wl_Loading(QSplashScreen):
     def __init__(self):
@@ -230,7 +231,7 @@ class Wl_Main(QMainWindow):
         self.load_settings()
 
         # Fix layout on macOS
-        if platform.system() == 'Darwin':
+        if is_macos:
             self.fix_macos_layout(self)
 
         self.loading_window.show_message(self.tr('Starting Wordless...'))
@@ -461,9 +462,9 @@ class Wl_Main(QMainWindow):
         self.splitter_central_widget.addWidget(self.wl_work_area)
         self.splitter_central_widget.addWidget(self.tabs_file_area)
 
-        if platform.system() in ['Windows', 'Linux']:
+        if is_windows or is_linux:
             self.splitter_central_widget.setHandleWidth(1)
-        elif platform.system() == 'Darwin':
+        elif is_macos:
             self.splitter_central_widget.setHandleWidth(2)
 
         self.splitter_central_widget.setObjectName('splitter-central-widget')
@@ -584,18 +585,16 @@ class Wl_Main(QMainWindow):
     def restart(self, save_settings = True):
         # pylint: disable=consider-using-with
         if getattr(sys, '_MEIPASS', False):
-            if platform.system() == 'Windows':
+            if is_windows:
                 subprocess.Popen([wl_misc.get_normalized_path('Wordless.exe')])
-            elif platform.system() == 'Darwin':
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless')])
-            elif platform.system() == 'Linux':
+            elif is_macos or is_linux:
                 subprocess.Popen([wl_misc.get_normalized_path('Wordless')])
         else:
-            if platform.system() == 'Windows':
+            if is_windows:
                 subprocess.Popen(['python', '-m', 'wordless.wl_main'])
-            elif platform.system() == 'Darwin':
+            elif is_macos:
                 subprocess.Popen(['python3', '-m', 'wordless.wl_main'])
-            elif platform.system() == 'Linux':
+            elif is_linux:
                 subprocess.Popen(['python3.8', '-m', 'wordless.wl_main'])
 
         if save_settings:
@@ -869,7 +868,7 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
             elif settings['donating_via'] in [self.tr('Alipay'), self.tr('WeChat Pay')]:
                 self.setFixedHeight(self.height_alipay)
 
-        if platform.system() in ['Windows', 'Linux']:
+        if is_windows or is_linux:
             self.move_to_center()
 
 class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
@@ -1323,7 +1322,7 @@ if __name__ == '__main__':
 
     # Show changelog on first startup
     # * Do not do this on macOS since the popped-up changelog window cannot be closed sometimes
-    if platform.system() in ['Windows', 'Linux']:
+    if is_windows or is_linux:
         if wl_main.settings_custom['1st_startup']:
             wl_main.help_changelog()
 

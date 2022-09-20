@@ -73,13 +73,14 @@ for lang_text, lang_code_639_3, lang_code_639_1 in langs:
 for lang_text, lang_code_639_3, lang_code_639_1 in langs:
     model_name = globals()[f'model_name_{lang_code_639_3}']
     model_ver = globals()[f'model_ver_{lang_code_639_3}']
+    model_url = f'https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}-py3-none-any.whl'
 
     if globals()[f'updates_available_{lang_code_639_3}']:
         if platform.system() == 'Windows':
-            subprocess.call(f'pip install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}-py3-none-any.whl', shell = True)
+            subprocess.run(['pip', 'install', model_url], check = True)
         elif platform.system() == 'Darwin':
-            subprocess.call(f'sudo pip3 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}-py3-none-any.whl', shell = True)
+            subprocess.run(['pip3', 'install', model_url], check = True)
         elif platform.system() == 'Linux':
-            subprocess.call(f'sudo pip3.8 install https://github.com/explosion/spacy-models/releases/download/{lang_code_639_1}_{model_name}-{model_ver}/{lang_code_639_1}_{model_name}-{model_ver}-py3-none-any.whl', shell = True)
+            subprocess.run(['pip3.8', 'install', model_url], check = True)
     else:
         print(f"The latest version of spaCy's {lang_text} model ({model_ver}) has already been installed!")

@@ -26,6 +26,17 @@ import underthesea.file_utils
 block_cipher = None
 datas = []
 
+is_windows = False
+is_macos = False
+is_linux = False
+
+if platform.system() == 'Windows':
+    is_windows = True
+elif platform.system() == 'Darwin':
+    is_macos = True
+elif platform.system() == 'Linux':
+    is_linux = True
+
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # jieba
@@ -144,9 +155,9 @@ hiddenimports = [
 excludes = []
 
 # Icons
-if platform.system() in ['Windows', 'Linux']:
+if is_windows or is_linux:
     icon = '../imgs/wl_icon.ico'
-elif platform.system() == 'Darwin':
+elif is_macos:
     icon = '../imgs/wl_icon.icns'
 
 a = Analysis(
@@ -164,6 +175,12 @@ a = Analysis(
     cipher = block_cipher,
     noarchive = False
 )
+
+# Fix Fontconfig error when the frozen application is running on Ubuntu
+# See: https://github.com/pyinstaller/pyinstaller/issues/3438#issuecomment-883161995
+if is_linux:
+    a.binaries = [x for x in a.binaries if not os.path.basename(x[1]).startswith(("libfontconfig", "libuuid"))]
+
 pyz = PYZ(a.pure, a.zipped_data, cipher = block_cipher)
 
 exe = EXE(
@@ -184,6 +201,7 @@ exe = EXE(
     entitlements_file = None,
     icon = icon
 )
+
 # Collect data files
 coll = COLLECT(
     exe,
@@ -197,7 +215,7 @@ coll = COLLECT(
 )
 
 # Bundle application on macOS
-if platform.system() == 'Darwin':
+if is_macos:
     app = BUNDLE(
         coll,
         name = 'Wordless.app',
