@@ -24,7 +24,6 @@ import zipfile
 
 import requests
 
-PROXIES = {'http': '', 'https': ''}
 URLS = [
     'https://github.com/scrapinghub/python-crfsuite/archive/refs/heads/master.zip',
     'https://github.com/chokkan/crfsuite/archive/refs/heads/master.zip',
@@ -35,26 +34,22 @@ FILE_NAMES = [
     'crfsuite.zip',
     'liblbfgs.zip'
 ]
+TEMP_FOLDER = 'python_crfsuite_temp'
 
 # Fetch latest codes
+if not os.path.exists(TEMP_FOLDER):
+    os.mkdir(TEMP_FOLDER)
+
 for url, file_name in zip(URLS, FILE_NAMES):
     print(f'Downloading from "{url}"... ', end = '')
 
-    r = requests.get(url, proxies = PROXIES)
+    r = requests.get(url)
 
-    with open(file_name, 'wb') as f:
+    with open(f'{TEMP_FOLDER}/{file_name}', 'wb') as f:
         f.write(r.content)
 
-    print('done!')
-
-if not os.path.exists('python_crfsuite_temp'):
-    os.mkdir('python_crfsuite_temp')
-
-for file_name in FILE_NAMES:
-    print(f'Extracting "{file_name}"... ', end = '')
-
-    with zipfile.ZipFile(file_name) as zip_file:
-        zip_file.extractall('python_crfsuite_temp')
+    with zipfile.ZipFile(f'{TEMP_FOLDER}/{file_name}') as zip_file:
+        zip_file.extractall(TEMP_FOLDER)
 
     print('done!')
 
@@ -63,19 +58,19 @@ print('Modifying files... ', end = '')
 
 for module in ['crfsuite', 'liblbfgs']:
     shutil.copytree(
-        f'python_crfsuite_temp/{module}-master',
-        f'python_crfsuite_temp/python-crfsuite-master/{module}',
+        f'{TEMP_FOLDER}/{module}-master',
+        f'{TEMP_FOLDER}/python-crfsuite-master/{module}',
         dirs_exist_ok = True
     )
 
-with open(r'python_crfsuite_temp/python-crfsuite-master/pycrfsuite/_pycrfsuite.pyx', 'r+', encoding = 'utf_8') as f:
+with open(f'{TEMP_FOLDER}/python-crfsuite-master/pycrfsuite/_pycrfsuite.pyx', 'r+', encoding = 'utf_8') as f:
     text = f.read()
     text = text.replace('# cython: c_string_encoding=ascii', '# cython: c_string_encoding=utf-8')
 
     f.seek(0)
     f.write(text)
 
-with open(r'python_crfsuite_temp/python-crfsuite-master/pycrfsuite/_pycrfsuite.cpp', 'r+', encoding = 'utf_8') as f:
+with open(f'{TEMP_FOLDER}/python-crfsuite-master/pycrfsuite/_pycrfsuite.cpp', 'r+', encoding = 'utf_8') as f:
     text = f.read()
     text = text.replace('#define __PYX_DEFAULT_STRING_ENCODING_IS_ASCII 1', '#define __PYX_DEFAULT_STRING_ENCODING_IS_ASCII 0')
     text = text.replace('#define __PYX_DEFAULT_STRING_ENCODING_IS_UTF8 0', '#define __PYX_DEFAULT_STRING_ENCODING_IS_UTF8 1')
@@ -90,7 +85,7 @@ print('done!')
 # Upgrade python-crfsuite
 print('Upgrading python-crfsuite...')
 
-shutil.make_archive('python_crfsuite_latest', 'zip', 'python_crfsuite_temp/python-crfsuite-master')
+shutil.make_archive('python_crfsuite_latest', 'zip', f'{TEMP_FOLDER}/python-crfsuite-master')
 
 if platform.system() == 'Windows':
     subprocess.run(['pip', 'install', 'python_crfsuite_latest.zip'], check = True)
@@ -102,10 +97,7 @@ elif platform.system() == 'Linux':
 # Clean files
 print('Cleaning files... ', end = '')
 
-for file_name in FILE_NAMES:
-    os.remove(file_name)
-
-shutil.rmtree('python_crfsuite_temp')
+shutil.rmtree(TEMP_FOLDER)
 os.remove('python_crfsuite_latest.zip')
 
 print('done!')

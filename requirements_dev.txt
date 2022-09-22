@@ -47,7 +47,6 @@ lxml
 matplotlib
 networkx
 numpy
-opencc
 openpyxl
 pyinstaller
 pypdf2
@@ -57,7 +56,8 @@ requests
 scipy
 wordcloud
 
-# python-crfsuite
+# Miscellaneous
+opencc_python_latest.zip
 python_crfsuite_latest.zip
 
 # spaCy models
