@@ -56,6 +56,9 @@ python3.8 -m pip install --upgrade pip setuptools
 pip3.8 install -r requirements_dev.txt
 pip3.8 cache purge
 
+# Fix libxcb-xinerama.so
+sudo apt-get install libxcb-xinerama0
+
 # Clean files
 sudo rm $PY_PACKAGE
 sudo rm -r $PY_FOLDER
