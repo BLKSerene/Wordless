@@ -52,7 +52,7 @@ lxml
 matplotlib
 networkx
 numpy
-opencc
+opencc-python-reimplemented
 openpyxl
 pypdf2
 pyqt5
