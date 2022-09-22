@@ -70,7 +70,7 @@ def detect_lang_text(main, text):
 
     # Chinese
     if lang is lingua.Language.CHINESE:
-        converter = opencc.OpenCC('t2s.json')
+        converter = opencc.OpenCC('t2s')
 
         if converter.convert(text) == text:
             lang_code = 'zho_cn'
