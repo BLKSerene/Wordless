@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Utilities: Linux - Create Shortcut
+# Utilities: Utilities
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,30 +16,34 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import os
-import subprocess
+import platform
 
-import wl_utils
+def check_os():
+    is_windows = False
+    is_macos = False
+    is_linux = False
 
-wl_ver = wl_utils.get_wl_ver()
+    if platform.system() == 'Windows':
+        is_windows = True
+    elif platform.system() == 'Darwin':
+        is_macos = True
+    elif platform.system() == 'Linux':
+        is_linux = True
 
-path_wl = os.path.split(globals()['__file__'])[0]
-path_icon = os.path.join(path_wl, 'imgs', 'wl_icon.ico')
-path_desktop = os.path.expanduser('~/.local/share/applications/Wordless.desktop')
+    return is_windows, is_macos, is_linux
 
-# Reference: https://askubuntu.com/a/680699
-with open(path_desktop, 'w', encoding = 'utf_8') as f:
-    f.write(f'''
-        [Desktop Entry]
-        Type=Application
-        Name=Wordless
-        Version={wl_ver}
-        Encoding=UTF-8
-        Path={path_wl}
-        Exec=bash -c "./Wordless.sh; $SHELL"
-        Icon={path_icon}
-        Terminal=true
-    ''')
+def get_wl_ver():
+    wl_ver = '1.0.0'
 
-# Allow excuting file as program
-subprocess.run(['chmod', '+x', path_desktop], check = True)
+    try:
+        # Version file is generated on Windows
+        with open('../VERSION', 'r', encoding = 'utf_8', newline = '\r\n') as f:
+            for line in f:
+                if line.strip() and not line.startswith('#'):
+                    wl_ver = line.strip()
+
+                    break
+    except (FileNotFoundError, PermissionError):
+        pass
+
+    return wl_ver

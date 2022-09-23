@@ -16,26 +16,17 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import platform
-
 import PyInstaller
 import pythainlp
 import spacy_pkuseg
 import underthesea.file_utils
 
+import wl_utils
+
 block_cipher = None
+
 datas = []
-
-is_windows = False
-is_macos = False
-is_linux = False
-
-if platform.system() == 'Windows':
-    is_windows = True
-elif platform.system() == 'Darwin':
-    is_macos = True
-elif platform.system() == 'Linux':
-    is_linux = True
+is_windows, is_macos, is_linux = wl_utils.check_os()
 
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
@@ -43,9 +34,9 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
 # Lingua
 datas.extend(PyInstaller.utils.hooks.collect_data_files('lingua'))
-# OpenCC
+# opencc-python
 datas.extend(PyInstaller.utils.hooks.collect_data_files('opencc'))
-# Python-crfsuite
+# python-crfsuite
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
 # pymorphy2
 datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy2_dicts_ru'))
@@ -82,7 +73,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('es_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sv_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('uk_core_news_sm'))
 # SudachiPy
-datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachipy'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachipy', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachidict_core'))
 # TextBlob
 datas.extend(PyInstaller.utils.hooks.collect_data_files('textblob'))
@@ -153,6 +144,10 @@ hiddenimports = [
     'sudachidict_core'
 ]
 
+# SudachiPy 0.5.4 is used on OS X 10.9
+if is_macos:
+    hiddenimports.append('sudachipy.lattice')
+
 # Exclusions
 excludes = []
 
@@ -217,13 +212,30 @@ coll = COLLECT(
 )
 
 # Bundle application on macOS
+# Reference: https://pyinstaller.org/en/stable/spec-files.html#spec-file-options-for-a-macos-bundle
 if is_macos:
     app = BUNDLE(
         coll,
         name = 'Wordless.app',
         icon = icon,
         bundle_identifier = None,
+        # References:
+        #     https://developer.apple.com/library/archive/documentation/CoreFoundation/Conceptual/CFBundles/BundleTypes/BundleTypes.html
+        #     https://developer.apple.com/documentation/bundleresources/information_property_list
         info_plist = {
-            'NSHighResolutionCapable': 'True'
+            'CFBundleName': 'Wordless',
+            'CFBundleDisplayName': 'Wordless',
+            'CFBundleExecutable': 'Wordless',
+            'CFBundlePackageType': 'APPL',
+            'CFBundleVersion': wl_utils.get_wl_ver(),
+            'CFBundleShortVersionString': wl_utils.get_wl_ver(),
+            'CFBundleInfoDictionaryVersion': wl_utils.get_wl_ver(),
+            # Required by Retina displays on macOS
+            # References:
+            #     https://developer.apple.com/documentation/bundleresources/information_property_list/nshighresolutioncapable
+            #     https://pyinstaller.org/en/stable/spec-files.html#spec-file-options-for-a-macos-bundle
+            #     https://doc.qt.io/qt-5/highdpi.html#macos-and-ios
+            'NSHighResolutionCapable': True,
+            'NSPrincipalClass': 'NSApplication'
         }
     )
