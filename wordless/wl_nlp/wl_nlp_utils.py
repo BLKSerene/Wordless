@@ -32,7 +32,9 @@ import spacy_pkuseg
 import sudachipy
 
 from wordless.wl_nlp import wl_texts
-from wordless.wl_utils import wl_conversion
+from wordless.wl_utils import wl_conversion, wl_misc
+
+is_windows, is_macos, is_linux = wl_misc.check_os()
 
 def to_lang_util_code(main, util_type, util_text):
     return main.settings_global['lang_util_mappings'][util_type][util_text]
@@ -112,6 +114,15 @@ def init_spacy_models(main, lang):
 
                 main.__dict__[f'spacy_nlp_{lang}'].initialize()
 
+def init_sudachipy_word_tokenizer(main):
+    if 'sudachipy_word_tokenizer' not in main.__dict__:
+        # SudachiPy 0.5.4 is used on macOS for backward compatiblity
+        if is_macos:
+            main.sudachipy_word_tokenizer = sudachipy.dictionary.Dictionary().create()
+        # Latest version of Python bindings of Sudachi.rs is used on Windows and Linux
+        elif is_windows or is_linux:
+            main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
+
 def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
     if sentence_tokenizer.startswith('spacy_'):
@@ -164,8 +175,7 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
         init_spacy_models(main, 'other')
     # Japanese
     elif word_tokenizer.startswith('sudachipy_jpn'):
-        if 'sudachipy_word_tokenizer' not in main.__dict__:
-            main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
+        init_sudachipy_word_tokenizer(main)
     # Tibetan
     elif word_tokenizer == 'botok_bod':
         if 'botok_word_tokenizer' not in main.__dict__:
@@ -209,8 +219,7 @@ def init_pos_taggers(main, lang, pos_tagger):
                 main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
     # Japanese
     elif pos_tagger == 'sudachipy_jpn':
-        if 'sudachipy_word_tokenizer' not in main.__dict__:
-            main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
+        init_sudachipy_word_tokenizer(main)
 
 def init_lemmatizers(main, lang, lemmatizer):
     # spaCy
@@ -226,8 +235,7 @@ def init_lemmatizers(main, lang, lemmatizer):
                 main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
     # Japanese
     elif lemmatizer == 'sudachipy_jpn':
-        if 'sudachipy_word_tokenizer' not in main.__dict__:
-            main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
+        init_sudachipy_word_tokenizer(main)
 
 def record_boundary_sentences(sentences, text):
     sentence_start = 0
@@ -287,6 +295,19 @@ def split_into_chunks_text(text, section_size):
 
     for section in to_sections_unequal(paras, section_size):
         yield ''.join(section)
+
+# Split long list of tokens
+def split_token_list(main, inputs, nlp_util):
+    section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
+
+    # Split tokens into sub-lists as inputs of SudachiPy cannot be more than 49149 BYTES
+    if nlp_util in ['spacy_jpn', 'sudachipy_jpn'] and sum((len(token) for token in inputs)) > 49149 // 4:
+        # Around 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6)
+        texts = to_sections_unequal(inputs, section_size = 2000)
+    else:
+        texts = to_sections_unequal(inputs, section_size = section_size * 50)
+
+    return texts
 
 # Serbian
 SRP_CYRL_TO_LATN = {

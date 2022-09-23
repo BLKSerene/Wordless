@@ -54,15 +54,20 @@ def get_normalized_dir(path):
     return os.path.dirname(path)
 
 def get_wl_ver():
+    wl_ver = '1.0.0'
+
     try:
-        with open('VERSION', 'r', encoding = 'utf_8') as f:
+        # Version file is generated on Windows
+        with open('VERSION', 'r', encoding = 'utf_8', newline = '\r\n') as f:
             for line in f:
                 if line.strip() and not line.startswith('#'):
-                    return line.strip()
+                    wl_ver = line.strip()
 
-        return '?.?.?'
+                    break
     except (FileNotFoundError, PermissionError):
-        return '?.?.?'
+        pass
+
+    return wl_ver
 
 def split_wl_ver(ver):
     ver_major, ver_minor, ver_patch = ver.split('.')

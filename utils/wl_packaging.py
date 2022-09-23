@@ -18,31 +18,17 @@
 
 import datetime
 import os
-import platform
 import shutil
 import subprocess
 import time
 
-is_windows = False
-is_macos = False
-is_linux = False
-
-if platform.system() == 'Windows':
-    is_windows = True
-elif platform.system() == 'Darwin':
-    is_macos = True
-elif platform.system() == 'Linux':
-    is_linux = True
+import wl_utils
 
 def print_with_elapsed_time(message):
     print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] {message}')
 
-# Version number
-with open('../VERSION', 'r', encoding = 'utf_8') as f:
-    for line in f:
-        if line.strip() and not line.startswith('#'):
-            wl_ver = line.strip()
-
+is_windows, is_macos, is_linux = wl_utils.check_os()
+wl_ver = wl_utils.check_os()
 time_start = time.time()
 
 # Package
@@ -121,7 +107,7 @@ if is_windows:
     # "7z.exe" and "7z.dll" should be put under "C:/Windows/System32" first
     subprocess.run(['7z', 'a', '-tzip', '-mx9', f'wordless_{wl_ver}_windows.zip', 'Wordless/'], check = True)
 elif is_macos:
-    subprocess.run(['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', 'Wordless.app/', 'wordless_{wl_ver}_macos.zip'], check = True)
+    subprocess.run(['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', 'Wordless.app/', f'wordless_{wl_ver}_macos.zip'], check = True)
 elif is_linux:
     subprocess.run(['tar', '-czvf', f'wordless_{wl_ver}_linux.tar.gz', 'Wordless/'], check = True)
 

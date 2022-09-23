@@ -25,7 +25,7 @@ import traceback
 
 import nltk
 import numpy
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
+from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QCheckBox, QLabel, QPushButton, QGroupBox
 
@@ -610,7 +610,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
 
 class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, dict, dict)
+    worker_done = wl_threading.wl_pyqt_signal(str, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)

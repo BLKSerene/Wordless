@@ -20,6 +20,22 @@ import time
 
 from PyQt5.QtCore import pyqtSignal, QObject, Qt, QThread
 
+from wordless.wl_utils import wl_misc
+
+# Dict can only have strings as keys when emitting signals in PyQt 5.8.2 used on OS X 10.9 for backward compatibility
+# This bug has been fixed in PyQt 5.9
+# See: https://stackoverflow.com/a/43977161
+def wl_pyqt_signal(*signal_args):
+    _, is_macos, _ = wl_misc.check_os()
+
+    if is_macos:
+        signal_args = [
+            object if arg is dict else arg
+            for arg in signal_args
+        ]
+
+    return pyqtSignal(*signal_args)
+
 # Workers
 class Wl_Worker(QObject):
     progress_updated = pyqtSignal(str)
