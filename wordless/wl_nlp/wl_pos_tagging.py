@@ -44,8 +44,6 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
         pos_tagger = pos_tagger
     )
 
-    section_size = main.settings_custom['files']['misc_settings']['read_files_in_chunks']
-
     # Untokenized
     if isinstance(inputs, str):
         for line in inputs.splitlines():
@@ -57,14 +55,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
         inputs = [str(token) for token in inputs if token]
 
-        # Input of SudachiPy cannot be more than 49149 BYTES
-        if pos_tagger in ['spacy_jpn', 'sudachipy_jpn'] and sum((len(token) for token in inputs)) > 49149 // 4:
-            # Around 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6)
-            texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = 2000)
-        else:
-            texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = section_size * 50)
-
-        for tokens in texts:
+        for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger):
             tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset))
 
     # Convert to Universal Tagset

@@ -25,6 +25,8 @@ from wordless.wl_checking import wl_checking_unicode
 from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization, wl_texts
 from wordless.wl_utils import wl_conversion, wl_misc
 
+is_windows, is_macos, is_linux = wl_misc.check_os()
+
 def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     tokens_multilevel = []
 
@@ -129,12 +131,22 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                         tokens_multilevel[-1].append(tokens)
             # Japanese
             elif word_tokenizer.startswith('sudachipy_jpn'):
-                if word_tokenizer == 'sudachipy_jpn_split_mode_a':
-                    mode = sudachipy.SplitMode.A
-                elif word_tokenizer == 'sudachipy_jpn_split_mode_b':
-                    mode = sudachipy.SplitMode.B
-                elif word_tokenizer == 'sudachipy_jpn_split_mode_c':
-                    mode = sudachipy.SplitMode.C
+                # SudachiPy 0.5.4 is used on macOS for backward compatiblity
+                if is_macos:
+                    if word_tokenizer == 'sudachipy_jpn_split_mode_a':
+                        mode = sudachipy.tokenizer.Tokenizer.SplitMode.A
+                    elif word_tokenizer == 'sudachipy_jpn_split_mode_b':
+                        mode = sudachipy.tokenizer.Tokenizer.SplitMode.B
+                    elif word_tokenizer == 'sudachipy_jpn_split_mode_c':
+                        mode = sudachipy.tokenizer.Tokenizer.SplitMode.C
+                # Latest version of Python bindings of Sudachi.rs is used on Windows and Linux
+                elif is_windows or is_linux:
+                    if word_tokenizer == 'sudachipy_jpn_split_mode_a':
+                        mode = sudachipy.SplitMode.A
+                    elif word_tokenizer == 'sudachipy_jpn_split_mode_b':
+                        mode = sudachipy.SplitMode.B
+                    elif word_tokenizer == 'sudachipy_jpn_split_mode_c':
+                        mode = sudachipy.SplitMode.C
 
                 sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = lang)
 
