@@ -108,17 +108,17 @@ def generate_word_cloud(main, data_file_items, fig_settings):
     vals = numpy.where(vals != numpy.inf, vals, val_max * 10)
     vals = numpy.where(vals != -numpy.inf, vals, val_min * 10)
 
-    # Fix negative data
+    # WordCloud always displays data descendingly
+    if fig_settings['use_data'] == _tr('wl_figs', 'p-value'):
+        vals = 1 - vals
+
+    # Fix negative numbers
     if vals[vals < 0].size > 0:
         vals += (-numpy.min(vals)) + 1e-15
 
     # Fix zeros
     if vals[vals == 0].size > 0:
         vals += 1e-15
-
-    # WordCloud always displays data descendingly
-    if fig_settings['use_data'] == _tr('wl_figs', 'p-value'):
-        vals = 1 - vals
 
     desktop_widget = QDesktopWidget()
 
@@ -127,6 +127,7 @@ def generate_word_cloud(main, data_file_items, fig_settings):
         height = desktop_widget.height(),
         background_color = main.settings_custom['figs']['word_clouds']['bg_color'],
     )
+
     word_cloud.generate_from_frequencies(dict(zip(items, vals)))
 
     matplotlib.pyplot.imshow(word_cloud, interpolation = 'bilinear')
