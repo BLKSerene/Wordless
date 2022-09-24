@@ -20,33 +20,29 @@
 
 <span id="doc-eng"></span>
 ## Table of Contents
-- 1 [Main Window](#doc-eng-1)
-
-- 2 [File Area](#doc-eng-2)
-
-- 3 [Work Area](#doc-eng-3)
-  - 3.1 [Profiler](#doc-eng-3-1)
-  - 3.2 [Concordancer](#doc-eng-3-2)
-  - 3.3 [Parallel Concordancer](#doc-eng-3-3)
-  - 3.4 [Wordlist Generator](#doc-eng-3-4)
-  - 3.5 [N-gram Generator](#doc-eng-3-5)
-  - 3.6 [Collocation Extractor](#doc-eng-3-6)
-  - 3.7 [Colligation Extractor](#doc-eng-3-7)
-  - 3.8 [Keyword Extractor](#doc-eng-3-8)
-
-- 4 [Appendixes](#doc-eng-4)
-  - 4.1 [Supported Languages](#doc-eng-4-1)
-  - 4.2 [Supported File Types](#doc-eng-4-2)
-  - 4.3 [Supported File Encodings](#doc-eng-4-3)
-  - 4.4 [Supported Measures](#doc-eng-4-4)
-    - 4.4.1 [Measures of Readability](#doc-eng-4-4-1)
-    - 4.4.2 [Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-2)
-    - 4.4.3 [Tests of Statistical Significance, Meaures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3)
-
-- 5 [References](#doc-eng-5)
+- [1 Main Window](#doc-eng-1)
+- [2 File Area](#doc-eng-2)
+- [3 Work Area](#doc-eng-3)
+  - [3.1 Profiler](#doc-eng-3-1)
+  - [3.2 Concordancer](#doc-eng-3-2)
+  - [3.3 Parallel Concordancer](#doc-eng-3-3)
+  - [3.4 Wordlist Generator](#doc-eng-3-4)
+  - [3.5 N-gram Generator](#doc-eng-3-5)
+  - [3.6 Collocation Extractor](#doc-eng-3-6)
+  - [3.7 Colligation Extractor](#doc-eng-3-7)
+  - [3.8 Keyword Extractor](#doc-eng-3-8)
+- [4 Appendixes](#doc-eng-4)
+  - [4.1 Supported Languages](#doc-eng-4-1)
+  - [4.2 Supported File Types](#doc-eng-4-2)
+  - [4.3 Supported File Encodings](#doc-eng-4-3)
+  - [4.4 Supported Measures](#doc-eng-4-4)
+    - [4.4.1 Measures of Readability](#doc-eng-4-4-1)
+    - [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-eng-4-4-2)
+    - [4.4.3 Tests of Statistical Significance, Meaures of Bayes Factor, & Measures of Effect Size](#doc-eng-4-4-3)
+- [5 References](#doc-eng-5)
 
 <span id="doc-eng-1"></span>
-## 1 Main Window [[Back to Contents]](#doc-eng)
+## [1 Main Window](#doc-eng)
 The main window of *Wordless* is divided into several sections:
 
 - **1.1 Menu Bar**<br>
@@ -65,8 +61,10 @@ The main window of *Wordless* is divided into several sections:
 
   You can show/hide the *Status Bar* by checking/unchecking **Menu → Preferences → Show Status Bar**
 
+You can modify the global scaling factor and font settings of the user interface via **Menu → Preferences → General → User Interface Settings**.
+
 <span id="doc-eng-2"></span>
-## 2 File Area [[Back to Contents]](#doc-eng)
+## [2 File Area](#doc-eng)
 In most cases, the first thing to do in *Wordless* is open and select your files to be processed via **Menu → File → Open Files/Folder**.
 
 Files are loaded, cached and selected automatically after being added to the *File Table*. **Only selected files will be processed by *Wordless***. You can drag and drop files around the *File Table* to change their orders, which would be reflected in the results.
@@ -104,10 +102,10 @@ By default, *Wordless* tries to detect the encoding and language settings of all
   Remove all files from the *File Table*.
 
 <span id="doc-eng-3"></span>
-## 3 Work Area [[Back to Contents]](#doc-eng)
+## [3 Work Area](#doc-eng)
 
 <span id="doc-eng-3-1"></span>
-### 3.1 Profiler [[Back to Contents]](#doc-eng)
+### [3.1 Profiler](#doc-eng)
 **Note:** This module was originally named **Overview** before *Wordless* 2.2
 
 In *Profiler*, you can check and compare general linguistic features of different files.
@@ -306,7 +304,7 @@ In *Profiler*, you can check and compare general linguistic features of differen
 ![Profiler - Table](/doc/work_area/profiler_table.png)
 
 <span id="doc-eng-3-2"></span>
-### 3.2 Concordancer [[Back to Contents]](#doc-eng)
+### [3.2 Concordancer](#doc-eng)
 In *Concordancer*, you can search for tokens in different files and generate concordance lines. You can adjust settings for data generation via **Generation Settings**.
 
 After the concordance lines are generated and displayed in the table, you can sort the results by clicking **Sort Results** or search in results by clicking **Search in Results**, both buttons residing at the right corner of the *Results Area*.
@@ -357,7 +355,7 @@ You can generate concordance plots for all search terms. You can modify the sett
 ![Concordancer - Figure - Search Term](/doc/work_area/concordancer_fig_search_term.png)
 
 <span id="doc-eng-3-3"></span>
-### 3.3 Parallel Concordancer [[Back to Contents]](#doc-eng)
+### [3.3 Parallel Concordancer](#doc-eng)
 
 In *Parallel Concordancer*, you can search for tokens in parallel corpora and generate parallel concordance lines. You may leave **Search Settings → Search Term** blank so as to search for instances of additions and deletions.
 
@@ -375,7 +373,7 @@ After the parallel concordance lines are generated and displayed in the table, y
 ![Parallel Concordancer - Table](/doc/work_area/concordancer_parallel_table.png)
 
 <span id="doc-eng-3-4"></span>
-### 3.4 Wordlist Generator [[Back to Contents]](#doc-eng)
+### [3.4 Wordlist Generator](#doc-eng)
 **Note:** This module was originally named **Wordlist** before *Wordless* 2.2
 
 In *Wordlist Generator*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token.
@@ -410,7 +408,7 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 ![Wordlist Generator - Figure - Word Cloud](/doc/work_area/wordlist_generator_fig_word_cloud.png)
 
 <span id="doc-eng-3-5"></span>
-### 3.5 N-gram Generator [[Back to Contents]](#doc-eng)
+### [3.5 N-gram Generator](#doc-eng)
 **Note:** This module was originally named **N-gram** before *Wordless* 2.2
 
 In *N-gram Generator*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated results via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
@@ -445,7 +443,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ![N-gram Generator - Table](/doc/work_area/ngram_generator_table.png)
 
 <span id="doc-eng-3-6"></span>
-### 3.6 Collocation Extractor [[Back to Contents]](#doc-eng)
+### [3.6 Collocation Extractor](#doc-eng)
 **Note:** This module was originally named **Collocation** before *Wordless* 2.2
 
 In *Collocation Extractor*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**.
@@ -495,7 +493,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ![Collocation Extractor - Figure - Network Graph](/doc/work_area/collocation_extractor_fig_network_graph.png)
 
 <span id="doc-eng-3-7"></span>
-### 3.7 Colligation Extractor [[Back to Contents]](#doc-eng)
+### [3.7 Colligation Extractor](#doc-eng)
 **Note:** This module was originally named **Colligation** before *Wordless* 2.2
 
 In *Colligation Extractor*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
@@ -546,7 +544,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ![Colligation Extractor - Table](/doc/work_area/colligation_extractor_table.png)
 
 <span id="doc-eng-3-8"></span>
-### 3.8 Keyword Extractor [[Back to Contents]](#doc-eng)
+### [3.8 Keyword Extractor](#doc-eng)
 **Note:** This module was originally named **Keyword** before *Wordless* 2.2
 
 In *Keyword Extractor*, you can search for candidates of potential keywords (tokens that have far more or far less frequency in the observed file than in the reference file) in different files given a reference corpus, conduct different tests of statistical significance on each keyword and calculate the bayes factor and effect size for each keyword using different measures. You can adjust the settings for the generated data via **Generation Settings**.
@@ -589,10 +587,10 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ![Keyword Extractor - Table](/doc/work_area/keyword_extractor_table.png)
 
 <span id="doc-eng-4"></span>
-## 4 Appendixes [[Back to Contents]](#doc-eng)
+## [4 Appendixes](#doc-eng)
 
 <span id="doc-eng-4-1"></span>
-### 4.1 Supported Languages [[Back to Contents]](#doc-eng)
+### [4.1 Supported Languages](#doc-eng)
 
 Language|Sentence Tokenization|Word Tokenization|Syllable Tokenization|Part-of-speech Tagging|Lemmatization|Stop Word List
 :------:|:-------------------:|:---------------:|:-------------------:|:--------------------:|:-----------:|:------------:
@@ -704,7 +702,7 @@ Other Languages         |⭕️ |⭕️ |✖️|✖️|✖️|✖️
 ✖️: Not supported
 
 <span id="doc-eng-4-2"></span>
-### 4.2 Supported File Types [[Back to Contents]](#doc-eng)
+### [4.2 Supported File Types](#doc-eng)
 
 File Type               |File Extension(s)
 ------------------------|-----------------
@@ -718,11 +716,11 @@ Word Document           |\*.docx
 XML File                |\*.xml
 
 \* Microsoft 97-03 Word documents (\*.doc) and Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.<br>
-\* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **Import** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/Import/**). You can change this location via **Menu → Preferences → Settings → Import → Temporary Files → Default Path**.
+\* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **imports** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/imports/**). You can change this location via **Menu → Preferences → Settings → General → Import → Temporary Files → Default Path**.
 \* *Wordless* **could only extract text from text-searchable PDF files** and is not capable of converting scanned PDF files into text-searchable ones. And **it is not recommended to import PDF files**, for the accuracy of text extraction from PDF files could be quite low.
 
 <span id="doc-eng-4-3"></span>
-### 4.3 Supported File Encodings [[Back to Contents]](#doc-eng)
+### [4.3 Supported File Encodings](#doc-eng)
 
 Language|File Encoding|Auto-detection
 --------|-------------|:------------:
@@ -830,10 +828,10 @@ Urdu                    |CP1006                 |✔
 Vietnamese              |CP1258                 |✔
 
 <span id="doc-eng-4-4"></span>
-### 4.4 Supported Measures [[Back to Contents]](#doc-eng)
+### [4.4 Supported Measures](#doc-eng)
 
 <span id="doc-eng-4-4-1"></span>
-#### 4.4.1 Measures of Readability [[Back to Contents]](#doc-eng)
+#### [4.4.1 Measures of Readability](#doc-eng)
 
 The readability of a text depends on several variables including the average sentence length, average word length in characters, average word length in syllables, number of monosyllabic words, number of polysyllabic words, number of difficult words, etc.
 
@@ -926,7 +924,7 @@ Spache Grade Level<br>([Dale, 1931](#doc-eng-5-dale-1931); [Spache, 1953](#doc-e
 Write Score<br>([O’Hayre, 1966](#doc-eng-5-o-hayre-1966))|![Formula](/doc/measures/readability/write_score.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*.<br><br>* This test applies only to **English texts**.<br>* **A sample of 100 words** is taken randomly from the text, thus the text must be at least 100 words long.
 
 <span id="doc-eng-4-4-2"></span>
-#### 4.4.2 Measures of Dispersion & Adjusted Frequency [[Back to Contents]](#doc-eng)
+#### [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-eng)
 
 The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by ![f_1](/doc/measures/f_1.svg), ![f_2](/doc/measures/f_2.svg), ![f_3](/doc/measures/f_3.svg) ,... ,![f_n](/doc/measures/f_n.svg). The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies over all sub-sections is denoted by ![f_bar](/doc/measures/f_bar.svg).
 
@@ -1026,7 +1024,7 @@ Kromer's UR<br>([Kromer, 2003](#doc-eng-5-kromer-2003))|![Formula](/doc/measures
 Rosengren's KF<br>([Rosengren, 1971](#doc-eng-5-rosengren-1971))|![Formula](/doc/measures/adjusted_freq/rosengrens_kf.svg)
 
 <span id="doc-eng-4-4-3"></span>
-#### 4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size [[Back to Contents]](#doc-eng)
+#### [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-eng)
 
 In order to calculate the statistical significance, bayes factor, and effect size (except **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
@@ -1255,7 +1253,7 @@ Poisson Collocation Measure<br>([Quasthoff & Wolff, 2002](#doc-eng-5-quasthoff-w
 Squared Phi Coefficient<br>([Church & Gale, 1991](#doc-eng-5-church-gale-1991))|![Formula](/doc/measures/effect_size/squared_phi_coeff.svg)
 
 <span id="doc-eng-5"></span>
-## 5 References [[Back to Contents]](#doc-eng)
+## [5 References](#doc-eng)
 
 <span id="doc-eng-5-berry-rogghe-1973"></span>
 [1] Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.<br>
