@@ -31,12 +31,21 @@ def test_check_os():
     elif platform.system() == 'Linux':
         assert not is_windows and not is_macos and is_linux
 
+def test_get_macos_ver():
+    is_windows, is_macos, is_linux = wl_misc.check_os()
+
+    if is_windows or is_linux:
+        assert not wl_misc.get_macos_ver()
+    elif is_macos:
+        assert wl_misc.get_macos_ver()
+
 def test_get_wl_ver():
     assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', wl_misc.get_wl_ver())
 
-def test_split_wl_ver():
-    assert wl_misc.split_wl_ver('1.2.3') == (1, 2, 3)
-    assert wl_misc.split_wl_ver('?.?.?') == ('?', '?', '?')
+def test_split_ver():
+    assert wl_misc.split_ver('1.2.3') == (1, 2, 3)
+    assert wl_misc.split_ver('0.0.0') == (0, 0, 0)
+    assert wl_misc.split_ver('10.100.1000') == (10, 100, 1000)
 
 def test_flatten_list():
     assert list(wl_misc.flatten_list([1, 2, [3, 4, [5, 6]]])) == [1, 2, 3, 4, 5, 6]
@@ -51,8 +60,9 @@ def test_merge_dicts():
 
 if __name__ == '__main__':
     test_check_os()
+    test_get_macos_ver()
     test_get_wl_ver()
-    test_split_wl_ver()
+    test_split_ver()
     test_flatten_list()
     test_normalize_nums()
     test_merge_dicts()

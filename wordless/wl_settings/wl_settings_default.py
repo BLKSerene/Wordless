@@ -35,7 +35,9 @@ from wordless.wl_utils import wl_misc
 _tr = QCoreApplication.translate
 
 def init_settings_default(main):
-    return {
+    is_windows, is_macos, is_linux = wl_misc.check_os()
+
+    settings_default = {
         '1st_startup': True,
         'file_area_cur': _tr('init_settings_default', 'Observed Files'),
         'work_area_cur': _tr('init_settings_default', 'Profiler'),
@@ -978,8 +980,8 @@ def init_settings_default(main):
         'general': {
             'ui_settings': {
                 'interface_scaling': '100%',
-                'font_family': 'Arial',
-                'font_size': 14
+                'font_family': '',
+                'font_size': 9
             },
 
             'proxy_settings': {
@@ -1767,7 +1769,7 @@ def init_settings_default(main):
         # Settings - Figures
         'figs': {
             'line_charts': {
-                'font': 'Arial'
+                'font': ''
             },
 
             'word_clouds': {
@@ -1778,11 +1780,33 @@ def init_settings_default(main):
 
             'network_graphs': {
                 'layout': _tr('init_settings_default', 'Spring'),
-                'node_font': 'Arial',
-                'node_font_size': 10,
-                'edge_font': 'Arial',
-                'edge_font_size': 8,
+                'node_font': '',
+                'node_font_size': 12,
+                'edge_font': '',
+                'edge_font_size': 10,
                 'edge_color': '#5C88C5'
             }
         }
     }
+
+    # Default fonts
+    if is_windows:
+        settings_default['general']['ui_settings']['font_family'] = 'Arial'
+    elif is_macos:
+        macos_ver = wl_misc.get_macos_ver()
+        macos_ver_major, macos_ver_minor, _ = wl_misc.split_ver(macos_ver)
+
+        if macos_ver_major == 10 and macos_ver_minor <= 9:
+            settings_default['general']['ui_settings']['font_family'] = 'Lucida Grande'
+        elif macos_ver_major == 10 and macos_ver_minor == 10:
+            settings_default['general']['ui_settings']['font_family'] = 'Helvetica Neue'
+        else:
+            settings_default['general']['ui_settings']['font_family'] = 'San Francisco'
+    elif is_linux:
+        settings_default['general']['ui_settings']['font_family'] = 'Liberation Sans'
+
+    settings_default['figs']['line_charts']['font'] = settings_default['general']['ui_settings']['font_family']
+    settings_default['figs']['network_graphs']['node_font'] = settings_default['general']['ui_settings']['font_family']
+    settings_default['figs']['network_graphs']['edge_font'] = settings_default['general']['ui_settings']['font_family']
+
+    return settings_default

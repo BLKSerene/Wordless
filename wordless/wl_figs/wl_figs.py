@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import platform
 import re
 
 from PyQt5.QtCore import QCoreApplication
@@ -205,8 +204,4 @@ def generate_network_graph(main, data_file_items, fig_settings):
     )
 
 def show_fig():
-    if platform.system() in ['Windows', 'Linux']:
-        matplotlib.pyplot.get_current_fig_manager().window.showMaximized()
-    # Do not maximize the window to avoid segfault on macOS
-    elif platform.system() == 'Darwin':
-        matplotlib.pyplot.show()
+    matplotlib.pyplot.get_current_fig_manager().window.showMaximized()

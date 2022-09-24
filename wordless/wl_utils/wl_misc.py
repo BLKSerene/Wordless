@@ -42,6 +42,9 @@ def check_os():
 
     return is_windows, is_macos, is_linux
 
+def get_macos_ver():
+    return platform.mac_ver()[0]
+
 def get_normalized_path(path):
     path = os.path.realpath(path)
     path = os.path.normpath(path)
@@ -69,13 +72,19 @@ def get_wl_ver():
 
     return wl_ver
 
-def split_wl_ver(ver):
-    ver_major, ver_minor, ver_patch = ver.split('.')
+def split_ver(ver):
+    vers = ver.split('.')
 
-    if ver_major == ver_minor == ver_patch == '?':
-        return '?', '?', '?'
-    else:
-        return int(ver_major), int(ver_minor), int(ver_patch)
+    if len(vers) == 3:
+        ver_major, ver_minor, ver_patch = vers
+    elif len(vers) == 2:
+        ver_major, ver_minor = vers
+        ver_patch = '0'
+    elif len(vers) == 1:
+        ver_major = vers[0]
+        ver_minor = ver_patch = '0'
+
+    return int(ver_major), int(ver_minor), int(ver_patch)
 
 def find_wl_main(widget):
     if 'main' in widget.__dict__:
