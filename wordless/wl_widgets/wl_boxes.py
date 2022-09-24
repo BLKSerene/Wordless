@@ -17,7 +17,10 @@
 # ----------------------------------------------------------------------
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QComboBox, QDoubleSpinBox, QFontComboBox, QSpinBox, QTextBrowser
+from PyQt5.QtWidgets import (
+    QComboBox, QDoubleSpinBox, QFontComboBox, QSlider, QSpinBox,
+    QTextBrowser
+)
 
 from wordless.wl_utils import wl_misc
 
