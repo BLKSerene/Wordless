@@ -40,7 +40,7 @@
 16|[PyPDF2](https://github.com/py-pdf/PyPDF2)                            |2.10.9 |Martin Thoma, Matthew Stamy, Matthew Peveler|[BSD-3-Clause](https://github.com/py-pdf/PyPDF2/blob/main/LICENSE)
 17|[Pyphen](https://pyphen.org/)                                         |0.13.0 |Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/master/LICENSE)
 18|[PyQt](https://riverbankcomputing.com/software/pyqt/)                 |5.15.7 |Riverbank Computing Limited|[Commercial-Licnese/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
-19|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)                   |3.0.10 |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
+19|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)                   |3.1.0  |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
 20|[Python](https://www.python.org/)                                     |3.8.10 |Guido van Rossum, Python Software Foundation|[PSF-3.8.12](https://docs.python.org/3.8/license.html#psf-license-agreement-for-python-release)
 21|[python-docx](https://github.com/python-openxml/python-docx)          |0.8.11 |Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
 22|[Requests](https://github.com/psf/requests)                           |2.28.1 |Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
