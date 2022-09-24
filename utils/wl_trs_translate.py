@@ -300,6 +300,7 @@ for element_context in soup.select('context'):
                     tr = tr.replace(f'(Mac OS {trs[0]})', f'(Mac OS {lang})')
                     # Excludes cases such as PyThaiNLP in third-party NLP libraries
                     tr = tr.replace('Py泰语NLP', 'PyThaiNLP')
+                    tr = tr.replace('泰语SumCut', 'ThaiSumCut')
 
                     tr_hit = True
 

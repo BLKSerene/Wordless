@@ -107,7 +107,9 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
                 sentences.append(line[sentence_start:])
         # Thai
         elif sentence_tokenizer == 'pythainlp_crfcut':
-            sentences.extend(pythainlp.sent_tokenize(line))
+            sentences.extend(pythainlp.sent_tokenize(line, engine = 'crfcut'))
+        elif sentence_tokenizer == 'pythainlp_thaisumcut':
+            sentences.extend(pythainlp.sent_tokenize(line, engine = 'thaisum'))
         # Tibetan
         elif sentence_tokenizer == 'botok_bod':
             wl_nlp_utils.init_word_tokenizers(main, lang = 'bod')
