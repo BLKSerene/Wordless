@@ -78,6 +78,10 @@ from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
 
+class Wl_Main_Blank:
+    def height(self):
+        return 0
+
 class Wl_Loading(QSplashScreen):
     def __init__(self):
         super().__init__(QPixmap('imgs/wl_loading.png'))
@@ -1286,10 +1290,10 @@ if __name__ == '__main__':
     if os.path.exists('wl_settings.pickle'):
         with open('wl_settings.pickle', 'rb') as f:
             settings_custom = pickle.load(f)
-
-        os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', settings_custom['general']['ui_settings']['interface_scaling'])
     else:
-        os.environ['QT_SCALE_FACTOR'] = '1'
+        settings_custom = wl_settings_default.init_settings_default(Wl_Main_Blank())
+
+    os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', settings_custom['general']['ui_settings']['interface_scaling'])
 
     wl_app = QApplication(sys.argv)
 
