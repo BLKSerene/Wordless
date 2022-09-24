@@ -88,7 +88,7 @@
 - Dependencies: Upgrade PyInstaller to 5.4.1
 - Dependencies: Upgrade Pyphen to 0.13.0
 - Dependencies: Upgrade PyQt to 5.15.7
-- Dependencies: Upgrade PyThaiNLP to 3.0.8
+- Dependencies: Upgrade PyThaiNLP to 3.0.10
 - Dependencies: Upgrade Requests to 2.28.1
 - Dependencies: Upgrade Sacremoses to 0.0.53
 - Dependencies: Upgrade SciPy to 1.9.1
