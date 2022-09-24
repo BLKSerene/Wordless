@@ -539,8 +539,8 @@ class Wl_Main(QMainWindow):
 
         # Fonts
         self.setStyleSheet(f'''
-            font-family: {settings['general']['font_settings']['font_family']};
-            font-size: {settings['general']['font_settings']['font_size']}px;
+            font-family: {settings['general']['ui_settings']['font_family']};
+            font-size: {settings['general']['ui_settings']['font_size']}px;
         ''')
 
         # Menu - Preferences
@@ -584,6 +584,10 @@ class Wl_Main(QMainWindow):
 
     def restart(self, save_settings = True):
         # pylint: disable=consider-using-with
+        # Save settings before restarting
+        if save_settings:
+            self.save_settings()
+
         if getattr(sys, '_MEIPASS', False):
             if is_windows:
                 subprocess.Popen([wl_misc.get_normalized_path('Wordless.exe')])
@@ -596,9 +600,6 @@ class Wl_Main(QMainWindow):
                 subprocess.Popen(['python3', '-m', 'wordless.wl_main'])
             elif is_linux:
                 subprocess.Popen(['python3.8', '-m', 'wordless.wl_main'])
-
-        if save_settings:
-            self.save_settings()
 
         sys.exit(0)
 
@@ -1162,7 +1163,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
 
                         changelog[-1]['changelog_sections'][-1]['section_list'].append(line)
 
-            font_size_custom = main.settings_custom['general']['font_settings']['font_size']
+            font_size_custom = main.settings_custom['general']['ui_settings']['font_size']
 
             changelog_text = f'''
                 <head>
@@ -1289,6 +1290,15 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         self.setFixedWidth(self.width() + 10)
 
 if __name__ == '__main__':
+    # UI scaling
+    if os.path.exists('wl_settings.pickle'):
+        with open('wl_settings.pickle', 'rb') as f:
+            settings_custom = pickle.load(f)
+
+        os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', settings_custom['general']['ui_settings']['interface_scaling'])
+    else:
+        os.environ['QT_SCALE_FACTOR'] = '1'
+
     wl_app = QApplication(sys.argv)
 
     # Translations

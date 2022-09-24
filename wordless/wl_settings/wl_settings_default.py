@@ -976,7 +976,8 @@ def init_settings_default(main):
 
         # Settings - General
         'general': {
-            'font_settings': {
+            'ui_settings': {
+                'interface_scaling': '100%',
                 'font_family': 'Arial',
                 'font_size': 14
             },
