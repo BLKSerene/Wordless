@@ -17,10 +17,7 @@
 # ----------------------------------------------------------------------
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import (
-    QComboBox, QDoubleSpinBox, QFontComboBox, QSlider, QSpinBox,
-    QTextBrowser
-)
+from PyQt5.QtWidgets import QComboBox, QDoubleSpinBox, QFontComboBox, QSpinBox, QTextBrowser
 
 from wordless.wl_utils import wl_misc
 
@@ -130,32 +127,6 @@ class Wl_Combo_Box_Font_Family(QFontComboBox):
         else:
             event.ignore()
 
-class Wl_Combo_Box_Font_Size(Wl_Combo_Box):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.FONT_SIZES = {
-            self.tr('Extra Small'): 10,
-            self.tr('Small'): 12,
-            self.tr('Medium (Recommended)'): 14,
-            self.tr('Large'): 16,
-            self.tr('Extra Large'): 18
-        }
-
-        self.main = wl_misc.find_wl_main(parent)
-
-        self.addItems(list(self.FONT_SIZES))
-
-    def set_text(self, font_size):
-        for text, val in self.FONT_SIZES.items():
-            if val == font_size:
-                self.setCurrentText(text)
-
-                break
-
-    def get_val(self):
-        return self.FONT_SIZES[self.currentText()]
-
 # Spin boxes
 class Wl_Spin_Box(QSpinBox):
     def __init__(self, parent):
@@ -212,7 +183,7 @@ class Wl_Spin_Box_Font_Size(Wl_Spin_Box):
     def __init__(self, parent):
         super().__init__(parent)
 
-        self.setRange(8, 72)
+        self.setRange(6, 20)
 
 # Text browsers
 class Wl_Text_Browser(QTextBrowser):
@@ -223,3 +194,4 @@ class Wl_Text_Browser(QTextBrowser):
 
         self.setOpenExternalLinks(True)
         self.setContentsMargins(3, 3, 3, 3)
+ 
