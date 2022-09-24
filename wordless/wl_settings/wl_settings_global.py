@@ -291,10 +291,12 @@ def init_settings_global():
                 _tr('init_settings_global', 'CSV File (*.csv)'),
                 _tr('init_settings_global', 'Excel Workbook (*.xlsx)')
             ],
-
             'exp_tables_concordancer': [
                 _tr('init_settings_global', 'CSV File (*.csv)'),
                 _tr('init_settings_global', 'Excel Workbook (*.xlsx)'),
+                _tr('init_settings_global', 'Word Document (*.docx)')
+            ],
+            'exp_tables_concordancer_zapping': [
                 _tr('init_settings_global', 'Word Document (*.docx)')
             ],
 
