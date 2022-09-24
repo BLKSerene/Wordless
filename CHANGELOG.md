@@ -81,7 +81,7 @@
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
 - Dependencies: Upgrade Charset Normalizer to 2.1.1
-- Dependencies: Upgrade Matplotlib to 3.5.3
+- Dependencies: Upgrade Matplotlib to 3.6.0
 - Dependencies: Upgrade NetworkX to 2.8.6
 - Dependencies: Upgrade NumPy to 1.23.3
 - Dependencies: Upgrade openpyxl to 3.0.10
