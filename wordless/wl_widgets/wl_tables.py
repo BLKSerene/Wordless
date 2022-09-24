@@ -443,7 +443,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def style_header_horizontal(self, cell, item):
         cell.font = openpyxl.styles.Font(
             name = item.font().family(),
-            size = self.main.settings_custom['general']['font_settings']['font_size'] - 5,
+            size = self.main.settings_custom['general']['ui_settings']['font_size'],
             bold = True,
             color = 'FFFFFF'
         )
@@ -468,7 +468,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def style_header_vertical(self, cell, item):
         cell.font = openpyxl.styles.Font(
             name = item.font().family(),
-            size = self.main.settings_custom['general']['font_settings']['font_size'] - 5,
+            size = self.main.settings_custom['general']['ui_settings']['font_size'],
             bold = True,
             color = 'FFFFFF'
         )
@@ -497,7 +497,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def style_cell_text(self, cell, item):
         cell.font = openpyxl.styles.Font(
             name = item.font().family(),
-            size = self.main.settings_custom['general']['font_settings']['font_size'] - 5,
+            size = self.main.settings_custom['general']['ui_settings']['font_size'],
             color = '292929'
         )
         cell.alignment = openpyxl.styles.Alignment(
@@ -509,7 +509,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def style_cell_num(self, cell, item):
         cell.font = openpyxl.styles.Font(
             name = item.font().family(),
-            size = self.main.settings_custom['general']['font_settings']['font_size'] - 5,
+            size = self.main.settings_custom['general']['ui_settings']['font_size'],
             color = '292929'
         )
         cell.alignment = openpyxl.styles.Alignment(
@@ -521,7 +521,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def style_cell_concordancer_node(self, cell, item):
         cell.font = openpyxl.styles.Font(
             name = item.font().family(),
-            size = self.main.settings_custom['general']['font_settings']['font_size'] - 5,
+            size = self.main.settings_custom['general']['ui_settings']['font_size'],
             bold = True,
             color = 'FF0000'
         )
@@ -534,7 +534,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
     def style_cell_concordancer_parallel_node(self, cell, item):
         cell.font = openpyxl.styles.Font(
             name = item.font().family(),
-            size = self.main.settings_custom['general']['font_settings']['font_size'] - 5
+            size = self.main.settings_custom['general']['ui_settings']['font_size']
         )
         cell.alignment = openpyxl.styles.Alignment(
             horizontal = 'center',
@@ -920,44 +920,46 @@ class Wl_Table(QTableView):
                     ''').format(file_path)
                 ).open()
 
+        caption = _tr('Wl_Table', 'Export Table')
         default_dir = self.main.settings_custom['general']['exp']['tables']['default_path']
+        default_type = self.main.settings_custom['general']['exp']['tables']['default_type']
+        default_ext = re.search(r'(?<=\(\*\.)[a-zA-Z0-9]+(?=[;\)])', default_type).group()
 
-        # Search terms, stop word lists, file checking, etc.
+        # Errors (Search terms, stop word lists, file checking, etc.)
         if self.tab == 'err':
             file_path, file_type = QFileDialog.getSaveFileName(
                 self,
-                _tr('Wl_Table', 'Export Table'),
-                os.path.join(wl_checking_misc.check_dir(default_dir), 'wordless_error'),
-                ';;'.join(self.main.settings_global['file_types']['exp_tables']),
-                self.main.settings_custom['general']['exp']['tables']['default_type']
+                caption = caption,
+                directory = os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_error.{default_ext}'),
+                filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
+                initialFilter = default_type
             )
-        # Work Area
+        # Concordancer (with zapping)
+        elif self.tab == 'concordancer' and self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
+            file_path, file_type = QFileDialog.getSaveFileName(
+                self,
+                caption = caption,
+                directory = os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}.docx'),
+                filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer_zapping']),
+            )
+        # Concordancer (without zapping) & Parallel Concordancer
+        elif self.tab in ['concordancer', 'concordancer_parallel']:
+            file_path, file_type = QFileDialog.getSaveFileName(
+                self,
+                caption = caption,
+                directory = os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
+                filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
+                initialFilter = default_type
+            )
+        # Other modules
         else:
-            # Concordancer
-            if self.tab in ['concordancer', 'concordancer_parallel']:
-                if self.tab == 'concordancer' and self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
-                    file_path, file_type = QFileDialog.getSaveFileName(
-                        self,
-                        _tr('Wl_Table', 'Export Table'),
-                        os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}'),
-                        _tr('Wl_Table', 'Word Document (*.docx)')
-                    )
-                else:
-                    file_path, file_type = QFileDialog.getSaveFileName(
-                        self,
-                        _tr('Wl_Table', 'Export Table'),
-                        os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}'),
-                        ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
-                        self.main.settings_custom['general']['exp']['tables']['default_type']
-                    )
-            else:
-                file_path, file_type = QFileDialog.getSaveFileName(
-                    self,
-                    _tr('Wl_Table', 'Export Table'),
-                    os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}'),
-                    ';;'.join(self.main.settings_global['file_types']['exp_tables']),
-                    self.main.settings_custom['general']['exp']['tables']['default_type']
-                )
+            file_path, file_type = QFileDialog.getSaveFileName(
+                self,
+                caption = caption,
+                directory = os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
+                filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
+                initialFilter = default_type
+            )
 
         if file_path:
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('Wl_Table', 'Exporting table...'))
