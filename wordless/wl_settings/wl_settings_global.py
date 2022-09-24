@@ -310,7 +310,9 @@ def init_settings_global():
             'sentence_tokenizers': {
                 _tr('init_settings_global', 'botok - Tibetan Sentence Tokenizer'): 'botok_bod',
                 _tr('init_settings_global', 'NLTK - Punkt Sentence Tokenizer'): 'nltk_punkt',
+
                 _tr('init_settings_global', 'PyThaiNLP - CRFCut'): 'pythainlp_crfcut',
+                _tr('init_settings_global', 'PyThaiNLP - ThaiSumCut'): 'pythainlp_thaisumcut',
 
                 _tr('init_settings_global', 'spaCy - Sentence Recognizer'): 'spacy_sentence_recognizer',
                 _tr('init_settings_global', 'spaCy - Sentencizer'): 'spacy_sentencizer',
@@ -930,7 +932,8 @@ def init_settings_global():
             ],
 
             'tha': [
-                'pythainlp_crfcut'
+                'pythainlp_crfcut',
+                'pythainlp_thaisumcut'
             ],
 
             'bod': [
