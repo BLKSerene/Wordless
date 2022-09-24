@@ -28,7 +28,7 @@ def print_with_elapsed_time(message):
     print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] {message}')
 
 is_windows, is_macos, is_linux = wl_utils.check_os()
-wl_ver = wl_utils.check_os()
+wl_ver = wl_utils.get_wl_ver()
 time_start = time.time()
 
 # Package
@@ -81,9 +81,6 @@ elif is_macos:
 elif is_linux:
     subprocess.run(['./Wordless'], check = True)
 
-if is_windows or is_linux:
-    os.chdir('..')
-
 # Remove custom settings file
 if is_windows or is_linux:
     if os.path.exists('wl_settings.pickle'):
@@ -102,6 +99,9 @@ print_with_elapsed_time('Tests passed!')
 
 # Compress files
 print_with_elapsed_time('Compressing files... ')
+
+if is_windows or is_linux:
+    os.chdir('..')
 
 if is_windows:
     # "7z.exe" and "7z.dll" should be put under "C:/Windows/System32" first
