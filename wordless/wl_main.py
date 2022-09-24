@@ -78,16 +78,14 @@ from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
 
-is_windows, is_macos, is_linux = wl_misc.check_os()
-
 class Wl_Loading(QSplashScreen):
     def __init__(self):
         super().__init__(QPixmap('imgs/wl_loading.png'))
 
-        msg_font = QFont('Times New Roman')
-        msg_font.setPixelSize(14)
-
-        self.setFont(msg_font)
+        self.setFont(
+            QFont(settings_custom['general']['ui_settings']['font_family'],
+            pointSize = settings_custom['general']['ui_settings']['font_size'] - 1)
+        )
         self.show_message(self.tr('Initializing Wordless...'))
 
     def show_message(self, message):
@@ -167,20 +165,19 @@ class Wl_Main(QMainWindow):
     def __init__(self, loading_window):
         super().__init__()
 
-        # Icon
-        self.setWindowIcon(QIcon('imgs/wl_icon.ico'))
-        # Title
-        self.setWindowTitle('Wordless')
-
+        self.loading_window = loading_window
+        self.threads_check_updates = []
         # Version numbers
         self.ver = wl_misc.get_wl_ver()
-        self.ver_major, self.ver_minor, self.ver_patch = wl_misc.split_wl_ver(self.ver)
+        self.ver_major, self.ver_minor, self.ver_patch = wl_misc.split_ver(self.ver)
         # Email
         self.email = 'blkserene@gmail.com'
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
 
-        self.loading_window = loading_window
-        self.threads_check_updates = []
+        # Icon
+        self.setWindowIcon(QIcon('imgs/wl_icon.ico'))
+        # Title
+        self.setWindowTitle('Wordless')
 
         self.loading_window.show_message(self.tr('Loading settings...'))
 
@@ -199,7 +196,6 @@ class Wl_Main(QMainWindow):
         else:
             self.settings_custom = copy.deepcopy(self.settings_default)
 
-        # Custom settings - Display Language
         if os.path.exists('wl_settings_display_lang.pickle'):
             with open('wl_settings_display_lang.pickle', 'rb') as f:
                 self.settings_custom['menu']['prefs']['display_lang'] = pickle.load(f)
@@ -207,11 +203,16 @@ class Wl_Main(QMainWindow):
         # Global settings
         self.settings_global = wl_settings_global.init_settings_global()
 
-        # Settings
-        self.wl_settings = wl_settings.Wl_Settings(self)
-
         self.loading_window.show_message(self.tr('Initializing main window...'))
 
+        # Font
+        self.setStyleSheet(f'''
+            font-family: {self.settings_custom['general']['ui_settings']['font_family']};
+            font-size: {self.settings_custom['general']['ui_settings']['font_size']}pt;
+        ''')
+
+        # Menu - Preferences - Settings
+        self.wl_settings = wl_settings.Wl_Settings(self)
         # Menu
         self.init_menu()
 
@@ -228,13 +229,13 @@ class Wl_Main(QMainWindow):
             }
         ''')
 
-        self.load_settings()
-
         # Fix layout on macOS
         if is_macos:
             self.fix_macos_layout(self)
 
         self.loading_window.show_message(self.tr('Starting Wordless...'))
+
+        self.load_settings()
 
     def fix_macos_layout(self, parent):
         for widget in parent.children():
@@ -536,12 +537,6 @@ class Wl_Main(QMainWindow):
 
     def load_settings(self):
         settings = self.settings_custom
-
-        # Fonts
-        self.setStyleSheet(f'''
-            font-family: {settings['general']['ui_settings']['font_family']};
-            font-size: {settings['general']['ui_settings']['font_size']}px;
-        ''')
 
         # Menu - Preferences
         self.__dict__[f"action_prefs_display_lang_{settings['menu']['prefs']['display_lang']}"].setChecked(True)
@@ -985,18 +980,13 @@ class Worker_Check_Updates(QObject):
         self.worker_done.emit(updates_status, ver_new)
 
     def is_newer_version(self, ver_new):
-        ver_major_new, ver_minor_new, ver_patch_new = wl_misc.split_wl_ver(ver_new)
+        ver_major_new, ver_minor_new, ver_patch_new = wl_misc.split_ver(ver_new)
 
-        if self.main.ver == '?.?.?':
-            return True
-        elif (
+        return bool(
             self.main.ver_major < ver_major_new
             or self.main.ver_minor < ver_minor_new
             or self.main.ver_patch < ver_patch_new
-        ):
-            return True
-        else:
-            return False
+        )
 
     def stop(self):
         self.stopped = True
@@ -1192,13 +1182,13 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
 
                         .changelog-header {{
                             margin-bottom: 3px;
-                            font-size: {font_size_custom + 2}px;
+                            font-size: {font_size_custom}pt;
                             font-weight: bold;
                         }}
 
                         .changelog-section-header {{
                             margin-bottom: 5px;
-                            font-size: {font_size_custom + 1}px;
+                            font-size: {font_size_custom}pt;
                             font-weight: bold;
                         }}
                     </style>
@@ -1290,6 +1280,8 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         self.setFixedWidth(self.width() + 10)
 
 if __name__ == '__main__':
+    is_windows, is_macos, is_linux = wl_misc.check_os()
+
     # UI scaling
     if os.path.exists('wl_settings.pickle'):
         with open('wl_settings.pickle', 'rb') as f:
