@@ -37,21 +37,30 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['general']
         self.settings_custom = self.main.settings_custom['general']
 
-        # Font Settings
-        self.group_box_font_settings = QGroupBox(self.tr('Font Settings'), self)
+        # UI Settings
+        self.group_box_ui_settings = QGroupBox(self.tr('User Interface Settings'), self)
 
+        self.label_interface_scaling = QLabel(self.tr('Interface Scaling:'), self)
+        self.combo_box_interface_scaling = wl_boxes.Wl_Combo_Box(self)
         self.label_font_family = QLabel(self.tr('Font Family:'), self)
         self.combo_box_font_family = wl_boxes.Wl_Combo_Box_Font_Family(self)
         self.label_font_size = QLabel(self.tr('Font Size:'), self)
         self.combo_box_font_size = wl_boxes.Wl_Combo_Box_Font_Size(self)
 
-        self.group_box_font_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_font_settings.layout().addWidget(self.label_font_family, 0, 0)
-        self.group_box_font_settings.layout().addWidget(self.combo_box_font_family, 0, 1)
-        self.group_box_font_settings.layout().addWidget(self.label_font_size, 1, 0)
-        self.group_box_font_settings.layout().addWidget(self.combo_box_font_size, 1, 1)
+        self.combo_box_interface_scaling.addItems([
+            f'{scaling_factor}%'
+            for scaling_factor in range(100, 301, 25)
+        ])
 
-        self.group_box_font_settings.layout().setColumnStretch(2, 1)
+        self.group_box_ui_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_ui_settings.layout().addWidget(self.label_interface_scaling, 0, 0)
+        self.group_box_ui_settings.layout().addWidget(self.combo_box_interface_scaling, 0, 1)
+        self.group_box_ui_settings.layout().addWidget(self.label_font_family, 1, 0)
+        self.group_box_ui_settings.layout().addWidget(self.combo_box_font_family, 1, 1)
+        self.group_box_ui_settings.layout().addWidget(self.label_font_size, 2, 0)
+        self.group_box_ui_settings.layout().addWidget(self.combo_box_font_size, 2, 1)
+
+        self.group_box_ui_settings.layout().setColumnStretch(2, 1)
 
         # Proxy Settings
         self.group_box_proxy_settings = QGroupBox(self.tr('Proxy Settings'), self)
@@ -100,7 +109,7 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         self.group_box_misc_settings.layout().addWidget(self.checkbox_confirm_on_exit, 0, 0)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_font_settings, 0, 0)
+        self.layout().addWidget(self.group_box_ui_settings, 0, 0)
         self.layout().addWidget(self.group_box_proxy_settings, 1, 0)
         self.layout().addWidget(self.group_box_update_settings, 2, 0)
         self.layout().addWidget(self.group_box_misc_settings, 3, 0)
@@ -126,9 +135,10 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        # Font Settings
-        self.combo_box_font_family.setCurrentFont(QFont(settings['font_settings']['font_family']))
-        self.combo_box_font_size.set_text(settings['font_settings']['font_size'])
+        # UI Settings
+        self.combo_box_interface_scaling.setCurrentText(settings['ui_settings']['interface_scaling'])
+        self.combo_box_font_family.setCurrentFont(QFont(settings['ui_settings']['font_family']))
+        self.combo_box_font_size.set_text(settings['ui_settings']['font_size'])
 
         # Proxy Settings
         self.checkbox_use_proxy.setChecked(settings['proxy_settings']['use_proxy'])
@@ -146,18 +156,20 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         self.proxy_settings_changed()
 
     def apply_settings(self):
-        # Check font settings
-        font_old = [
-            self.settings_custom['font_settings']['font_family'],
-            self.settings_custom['font_settings']['font_size']
+        # Check UI settings
+        ui_settings_old = [
+            self.settings_custom['ui_settings']['interface_scaling'],
+            self.settings_custom['ui_settings']['font_family'],
+            self.settings_custom['ui_settings']['font_size']
         ]
 
-        font_new = [
+        ui_settings_new = [
+            self.combo_box_interface_scaling.currentText(),
             self.combo_box_font_family.currentFont().family(),
             self.combo_box_font_size.get_val()
         ]
 
-        if font_new == font_old:
+        if ui_settings_new == ui_settings_old:
             result = 'skip'
         else:
             if wl_dialogs_misc.Wl_Dialog_Restart_Required(self.main).exec_() == QDialog.Accepted:
@@ -167,8 +179,9 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
 
         if result in ['skip', 'restart']:
             # Font Settings
-            self.settings_custom['font_settings']['font_family'] = self.combo_box_font_family.currentFont().family()
-            self.settings_custom['font_settings']['font_size'] = self.combo_box_font_size.get_val()
+            self.settings_custom['ui_settings']['interface_scaling'] = self.combo_box_interface_scaling.currentText()
+            self.settings_custom['ui_settings']['font_family'] = self.combo_box_font_family.currentFont().family()
+            self.settings_custom['ui_settings']['font_size'] = self.combo_box_font_size.get_val()
 
             # Proxy Settings
             self.settings_custom['proxy_settings']['use_proxy'] = self.checkbox_use_proxy.isChecked()
@@ -188,8 +201,9 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
 
             return True
         elif result == 'cancel':
-            self.combo_box_font_family.setCurrentFont(QFont(font_old[0]))
-            self.combo_box_font_size.set_text(font_old[1])
+            self.combo_box_interface_scaling.setCurrentText(ui_settings_old[0])
+            self.combo_box_font_family.setCurrentFont(QFont(ui_settings_old[1]))
+            self.combo_box_font_size.set_text(ui_settings_old[2])
 
             return False
 
