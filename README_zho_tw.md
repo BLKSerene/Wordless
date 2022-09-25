@@ -65,15 +65,15 @@ Wordless 是一款擁有多語種支援的語料庫整合工具，其可用於�
 
 ## 下載
 
-Wordless 最新版（**2.2.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.9 或更高版本**、**Ubuntu 14.04 或更高版本**，均僅支援**64位作業系統**。
+Wordless 最新版（**2.3.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.9 或更高版本**、**Ubuntu 16.04 或更高版本**，均僅支援**64位作業系統**。Intel 和 M1 處理器的 MacBook 均支援。
 
 如需完整的更新日誌，請參閱 [CHANGELOG.md](/CHANGELOG.md)（待翻譯）。
 
 版本|備註
 ----|---
-[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_windows.zip)|1. 解壓縮檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
-[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_macos.zip)|1. 解壓縮檔案<br>2. 雙擊執行 **Wordless.app**
-[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_linux.tar.gz)|1. 解壓縮檔案<br>2. 雙擊執行 **Wordless/Wordless**
+[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_windows.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
+[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_macos.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless.app**
+[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 右鍵單擊 **Wordless/Wordless.sh** 並選擇**作為程式執行**或在**終端**中執行該 shell 指令碼<br>3. 在彈出的視窗中輸入你的 sudo 密碼後回車<br>4. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
 [歷史版本](https://github.com/BLKSerene/Wordless/releases)|不推薦
 [百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg)|中國使用者若 Github 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
 
