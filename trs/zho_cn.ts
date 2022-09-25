@@ -198,12 +198,12 @@
 <context>
     <name>Wl_Dialog_About</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="1244"/>
+        <location filename="../wordless/wl_main.py" line="1248"/>
         <source>About Wordless</source>
         <translation>关于 Wordless</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1252"/>
+        <location filename="../wordless/wl_main.py" line="1256"/>
         <source>
                 &lt;div style=&quot;text-align: center;&quot;&gt;
                     &lt;h2&gt;Wordless {}&lt;/h2&gt;
@@ -224,7 +224,7 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1264"/>
+        <location filename="../wordless/wl_main.py" line="1268"/>
         <source>
                 &lt;hr&gt;
                 &lt;div style=&quot;text-align: center;&quot;&gt;
@@ -246,37 +246,37 @@
 <context>
     <name>Wl_Dialog_Acks</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="905"/>
+        <location filename="../wordless/wl_main.py" line="909"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="905"/>
+        <location filename="../wordless/wl_main.py" line="909"/>
         <source>Version</source>
         <translation>版本</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="905"/>
+        <location filename="../wordless/wl_main.py" line="909"/>
         <source>Authors</source>
         <translation>作者</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="905"/>
+        <location filename="../wordless/wl_main.py" line="909"/>
         <source>License</source>
         <translation>许可</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="876"/>
+        <location filename="../wordless/wl_main.py" line="880"/>
         <source>Acknowledgments</source>
         <translation>致谢</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="885"/>
+        <location filename="../wordless/wl_main.py" line="889"/>
         <source>ACKNOWLEDGMENTS.md</source>
         <translation>ACKNOWLEDGMENTS_zho_cn.md</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="897"/>
+        <location filename="../wordless/wl_main.py" line="901"/>
         <source>
                 &lt;div&gt;
                     As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
@@ -292,7 +292,7 @@
 <context>
     <name>Wl_Dialog_Changelog</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="1123"/>
+        <location filename="../wordless/wl_main.py" line="1127"/>
         <source>Changelog</source>
         <translation>更新日志</translation>
     </message>
@@ -300,22 +300,22 @@
 <context>
     <name>Wl_Dialog_Check_Updates</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="1013"/>
+        <location filename="../wordless/wl_main.py" line="1017"/>
         <source>Check for updates on startup</source>
         <translation>启动时检查更新</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1014"/>
+        <location filename="../wordless/wl_main.py" line="1018"/>
         <source>Try Again</source>
         <translation>重试</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1070"/>
+        <location filename="../wordless/wl_main.py" line="1074"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1063"/>
+        <location filename="../wordless/wl_main.py" line="1067"/>
         <source>
                 &lt;div&gt;
                     Checking for updates...
@@ -328,12 +328,12 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1068"/>
+        <location filename="../wordless/wl_main.py" line="1072"/>
         <source>Latest Version: Checking...</source>
         <translation>最新版本：查询中...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1083"/>
+        <location filename="../wordless/wl_main.py" line="1087"/>
         <source>
                         &lt;div&gt;
                             Hooray, you are using the latest version of Wordless!
@@ -346,7 +346,7 @@
                     </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1090"/>
+        <location filename="../wordless/wl_main.py" line="1094"/>
         <source>
                     &lt;div&gt;
                         A network error has occurred, please check your network settings and try again or &lt;a href=&quot;https://github.com/BLKSerene/Wordless/releases&quot;&gt;check for updates manually&lt;/a&gt;.
@@ -359,27 +359,27 @@
                 </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1095"/>
+        <location filename="../wordless/wl_main.py" line="1099"/>
         <source>Latest Version: Network error</source>
         <translation>最新版本：网络错误</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1097"/>
+        <location filename="../wordless/wl_main.py" line="1101"/>
         <source>OK</source>
         <translation>确认</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1000"/>
+        <location filename="../wordless/wl_main.py" line="1004"/>
         <source>Check for Updates</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1010"/>
+        <location filename="../wordless/wl_main.py" line="1014"/>
         <source>Current Version: </source>
         <translation>当前版本： </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1076"/>
+        <location filename="../wordless/wl_main.py" line="1080"/>
         <source>
                         &lt;div&gt;
                             Wordless {} is out, click &lt;a href=&quot;https://github.com/BLKSerene/Wordless#download&quot;&gt;&lt;b&gt;HERE&lt;/b&gt;&lt;/a&gt; to download the latest version of Wordless.
@@ -392,7 +392,7 @@
                     </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1088"/>
+        <location filename="../wordless/wl_main.py" line="1092"/>
         <source>Latest Version: </source>
         <translation>最新版本： </translation>
     </message>
@@ -400,7 +400,7 @@
 <context>
     <name>Wl_Dialog_Citing</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="699"/>
+        <location filename="../wordless/wl_main.py" line="703"/>
         <source>
                 &lt;div&gt;
                     If you publish work that uses Wordless, please cite as follows.
@@ -413,32 +413,32 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="708"/>
+        <location filename="../wordless/wl_main.py" line="712"/>
         <source>Citation System:</source>
         <translation>引用体系：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="712"/>
+        <location filename="../wordless/wl_main.py" line="716"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="713"/>
+        <location filename="../wordless/wl_main.py" line="717"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="760"/>
+        <location filename="../wordless/wl_main.py" line="764"/>
         <source>APA (7th Edition)</source>
         <translation>APA（第7版）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="762"/>
+        <location filename="../wordless/wl_main.py" line="766"/>
         <source>MLA (8th Edition)</source>
         <translation>MLA（第8版）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="692"/>
+        <location filename="../wordless/wl_main.py" line="696"/>
         <source>Citing</source>
         <translation>引用</translation>
     </message>
@@ -446,7 +446,7 @@
 <context>
     <name>Wl_Dialog_Confirm_Exit</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="126"/>
+        <location filename="../wordless/wl_main.py" line="130"/>
         <source>
                 &lt;div&gt;
                     Are you sure you want to exit Wordless?
@@ -465,22 +465,22 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="138"/>
+        <location filename="../wordless/wl_main.py" line="142"/>
         <source>Always confirm on exit</source>
         <translation>关闭时总是提示确认</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="139"/>
+        <location filename="../wordless/wl_main.py" line="143"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="140"/>
+        <location filename="../wordless/wl_main.py" line="144"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="119"/>
+        <location filename="../wordless/wl_main.py" line="123"/>
         <source>Exit Wordless</source>
         <translation>退出 Wordless</translation>
     </message>
@@ -531,7 +531,7 @@
 <context>
     <name>Wl_Dialog_Donating</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="797"/>
+        <location filename="../wordless/wl_main.py" line="801"/>
         <source>
                 &lt;div&gt;
                     If you would like to support the development of Wordless, you may donate via &lt;a href=&quot;https://www.paypal.com/&quot;&gt;PayPal&lt;/a&gt;, &lt;a href=&quot;https://global.alipay.com/&quot;&gt;Alipay&lt;/a&gt;, or &lt;a href=&quot;https://pay.weixin.qq.com/index.php/public/wechatpay_en&quot;&gt;WeChat Pay&lt;/a&gt;.
@@ -544,27 +544,27 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="805"/>
+        <location filename="../wordless/wl_main.py" line="809"/>
         <source>Donating via:</source>
         <translation>赞助途径：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="868"/>
+        <location filename="../wordless/wl_main.py" line="872"/>
         <source>Alipay</source>
         <translation>支付宝</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="868"/>
+        <location filename="../wordless/wl_main.py" line="872"/>
         <source>WeChat Pay</source>
         <translation>微信支付</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="791"/>
+        <location filename="../wordless/wl_main.py" line="795"/>
         <source>Donating</source>
         <translation>赞助</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="866"/>
+        <location filename="../wordless/wl_main.py" line="870"/>
         <source>PayPal</source>
         <translation></translation>
     </message>
@@ -633,12 +633,12 @@
 <context>
     <name>Wl_Dialog_Need_Help</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="607"/>
+        <location filename="../wordless/wl_main.py" line="611"/>
         <source>Need Help?</source>
         <translation>需要帮助？</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="614"/>
+        <location filename="../wordless/wl_main.py" line="618"/>
         <source>
                 &lt;div&gt;
                     If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.
@@ -651,62 +651,62 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="623"/>
+        <location filename="../wordless/wl_main.py" line="627"/>
         <source>Support Channel</source>
         <translation>支持渠道</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="623"/>
+        <location filename="../wordless/wl_main.py" line="627"/>
         <source>Information</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="636"/>
+        <location filename="../wordless/wl_main.py" line="640"/>
         <source>Official Documentation</source>
         <translation>官方文档</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="640"/>
+        <location filename="../wordless/wl_main.py" line="644"/>
         <source>&lt;a href=&quot;https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md&quot;&gt;Documentation&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md&quot;&gt;文档&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="644"/>
+        <location filename="../wordless/wl_main.py" line="648"/>
         <source>Tutorial Videos</source>
         <translation>视频教程</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="648"/>
+        <location filename="../wordless/wl_main.py" line="652"/>
         <source>&lt;a href=&quot;https://space.bilibili.com/34963752/video&quot;&gt;bilibili&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://space.bilibili.com/34963752/video&quot;&gt;B站&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="652"/>
+        <location filename="../wordless/wl_main.py" line="656"/>
         <source>Bug Reports</source>
         <translation>Bug 提交</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="660"/>
+        <location filename="../wordless/wl_main.py" line="664"/>
         <source>Usage Questions</source>
         <translation>使用疑问</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="668"/>
+        <location filename="../wordless/wl_main.py" line="672"/>
         <source>Email Support</source>
         <translation>邮件咨询</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="676"/>
+        <location filename="../wordless/wl_main.py" line="680"/>
         <source>&lt;a href=&quot;https://www.wechat.com/en/&quot;&gt;WeChat&lt;/a&gt; Official Account</source>
         <translation>&lt;a href=&quot;https://weixin.qq.com/&quot;&gt;微信&lt;/a&gt;公众号</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="656"/>
+        <location filename="../wordless/wl_main.py" line="660"/>
         <source>&lt;a href=&quot;https://github.com/BLKSerene/Wordless/issues&quot;&gt;Gihub Issues&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="664"/>
+        <location filename="../wordless/wl_main.py" line="668"/>
         <source>&lt;a href=&quot;https://github.com/BLKSerene/Wordless/discussions&quot;&gt;Gihub Discussions&lt;/a&gt;</source>
         <translation></translation>
     </message>
@@ -1216,7 +1216,7 @@
 <context>
     <name>Wl_Loading</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="93"/>
+        <location filename="../wordless/wl_main.py" line="97"/>
         <source>Initializing Wordless...</source>
         <translation>初始化 Wordless...</translation>
     </message>
@@ -1224,257 +1224,257 @@
 <context>
     <name>Wl_Main</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="186"/>
+        <location filename="../wordless/wl_main.py" line="190"/>
         <source>Loading settings...</source>
         <translation>载入设置...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="210"/>
+        <location filename="../wordless/wl_main.py" line="214"/>
         <source>Initializing main window...</source>
         <translation>初始化主窗体...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="227"/>
+        <location filename="../wordless/wl_main.py" line="231"/>
         <source>Ready!</source>
         <translation>就绪！</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="240"/>
+        <location filename="../wordless/wl_main.py" line="244"/>
         <source>Starting Wordless...</source>
         <translation>启动 Wordless...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="268"/>
+        <location filename="../wordless/wl_main.py" line="272"/>
         <source>&amp;File</source>
         <translation>文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="269"/>
+        <location filename="../wordless/wl_main.py" line="273"/>
         <source>&amp;Preferences</source>
         <translation>偏好</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="270"/>
+        <location filename="../wordless/wl_main.py" line="274"/>
         <source>&amp;Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="273"/>
+        <location filename="../wordless/wl_main.py" line="277"/>
         <source>&amp;Open Files...</source>
         <translation>打开文件...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="275"/>
+        <location filename="../wordless/wl_main.py" line="279"/>
         <source>Open files</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="276"/>
+        <location filename="../wordless/wl_main.py" line="280"/>
         <source>Open &amp;Folder...</source>
         <translation>打开文件夹...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="277"/>
+        <location filename="../wordless/wl_main.py" line="281"/>
         <source>Open all files in the folder</source>
         <translation>打开文件夹下的所有文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="278"/>
+        <location filename="../wordless/wl_main.py" line="282"/>
         <source>&amp;Reopen Closed Files</source>
         <translation>重新打开已关闭文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="279"/>
+        <location filename="../wordless/wl_main.py" line="283"/>
         <source>Reopen closed files</source>
         <translation>重新打开已经关闭的文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="283"/>
+        <location filename="../wordless/wl_main.py" line="287"/>
         <source>S&amp;elect All</source>
         <translation>全选</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="285"/>
+        <location filename="../wordless/wl_main.py" line="289"/>
         <source>Select all files</source>
         <translation>勾选所有文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="286"/>
+        <location filename="../wordless/wl_main.py" line="290"/>
         <source>&amp;Deselect All</source>
         <translation>取消全选</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="288"/>
+        <location filename="../wordless/wl_main.py" line="292"/>
         <source>Deselect all files</source>
         <translation>取消勾选所有文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="289"/>
+        <location filename="../wordless/wl_main.py" line="293"/>
         <source>&amp;Invert Selection</source>
         <translation>反选</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="291"/>
+        <location filename="../wordless/wl_main.py" line="295"/>
         <source>Invert file selection</source>
         <translation>反向勾选文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="295"/>
+        <location filename="../wordless/wl_main.py" line="299"/>
         <source>&amp;Close Selected</source>
         <translation>关闭选中</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="297"/>
+        <location filename="../wordless/wl_main.py" line="301"/>
         <source>Close selected file(s)</source>
         <translation>关闭已选中的文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="298"/>
+        <location filename="../wordless/wl_main.py" line="302"/>
         <source>C&amp;lose All</source>
         <translation>关闭所有</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="300"/>
+        <location filename="../wordless/wl_main.py" line="304"/>
         <source>Close all files</source>
         <translation>关闭所有文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="304"/>
+        <location filename="../wordless/wl_main.py" line="308"/>
         <source>&amp;Exit...</source>
         <translation>退出...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="306"/>
+        <location filename="../wordless/wl_main.py" line="310"/>
         <source>Exit the program</source>
         <translation>退出程序</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="310"/>
+        <location filename="../wordless/wl_main.py" line="314"/>
         <source>&amp;Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="311"/>
+        <location filename="../wordless/wl_main.py" line="315"/>
         <source>Change settings</source>
         <translation>更改设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="313"/>
+        <location filename="../wordless/wl_main.py" line="317"/>
         <source>&amp;Display Language</source>
         <translation>显示语言</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="314"/>
+        <location filename="../wordless/wl_main.py" line="318"/>
         <source>Change display language</source>
         <translation>更改显示语言</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="333"/>
+        <location filename="../wordless/wl_main.py" line="337"/>
         <source>&amp;Reset Layouts</source>
         <translation>重置布局</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="334"/>
+        <location filename="../wordless/wl_main.py" line="338"/>
         <source>Reset layouts</source>
         <translation>重置布局</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="339"/>
+        <location filename="../wordless/wl_main.py" line="343"/>
         <source>&amp;Show Status Bar</source>
         <translation>显示状态栏</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="341"/>
+        <location filename="../wordless/wl_main.py" line="345"/>
         <source>Show/Hide the status bar</source>
         <translation>显示/隐藏状态栏</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="349"/>
+        <location filename="../wordless/wl_main.py" line="353"/>
         <source>&amp;Citing</source>
         <translation>引用</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="350"/>
+        <location filename="../wordless/wl_main.py" line="354"/>
         <source>Show information about citing</source>
         <translation>显示引用信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="361"/>
+        <location filename="../wordless/wl_main.py" line="365"/>
         <source>&amp;Acknowledgments</source>
         <translation>致谢</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="362"/>
+        <location filename="../wordless/wl_main.py" line="366"/>
         <source>Show acknowldgments</source>
         <translation>显示致谢</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="345"/>
+        <location filename="../wordless/wl_main.py" line="349"/>
         <source>&amp;Need Help?</source>
         <translation>需要帮助？</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="347"/>
+        <location filename="../wordless/wl_main.py" line="351"/>
         <source>Show help information</source>
         <translation>显示帮助信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="355"/>
+        <location filename="../wordless/wl_main.py" line="359"/>
         <source>C&amp;ontributing</source>
         <translation>助力</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="356"/>
+        <location filename="../wordless/wl_main.py" line="360"/>
         <source>Show information about contributing</source>
         <translation>显示助力相关信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="358"/>
+        <location filename="../wordless/wl_main.py" line="362"/>
         <source>&amp;Donating</source>
         <translation>赞助</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="359"/>
+        <location filename="../wordless/wl_main.py" line="363"/>
         <source>Show information about donating</source>
         <translation>显示赞助相关信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="367"/>
+        <location filename="../wordless/wl_main.py" line="371"/>
         <source>Check &amp;for Updates</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="368"/>
+        <location filename="../wordless/wl_main.py" line="372"/>
         <source>Check for updates of Wordless</source>
         <translation>检查 Wordless 更新</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="370"/>
+        <location filename="../wordless/wl_main.py" line="374"/>
         <source>C&amp;hangelog</source>
         <translation>更新日志</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="371"/>
+        <location filename="../wordless/wl_main.py" line="375"/>
         <source>Show Changelog</source>
         <translation>显示更新日志</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="373"/>
+        <location filename="../wordless/wl_main.py" line="377"/>
         <source>About &amp;Wordless</source>
         <translation>关于 Wordless</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="374"/>
+        <location filename="../wordless/wl_main.py" line="378"/>
         <source>Show information about Wordless</source>
         <translation>显示 Wordless 的相关信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="398"/>
+        <location filename="../wordless/wl_main.py" line="402"/>
         <source>Reset Layouts</source>
         <translation>重置布局</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="398"/>
+        <location filename="../wordless/wl_main.py" line="402"/>
         <source>
                 &lt;div&gt;Do you want to reset all layouts to their default settings?&lt;/div&gt;
             </source>
@@ -1483,52 +1483,52 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="489"/>
+        <location filename="../wordless/wl_main.py" line="493"/>
         <source>Profiler</source>
         <translation>分析工具</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="493"/>
+        <location filename="../wordless/wl_main.py" line="497"/>
         <source>Concordancer</source>
         <translation>索引工具</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="497"/>
+        <location filename="../wordless/wl_main.py" line="501"/>
         <source>Parallel Concordancer</source>
         <translation>平行索引工具</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="501"/>
+        <location filename="../wordless/wl_main.py" line="505"/>
         <source>Wordlist Generator</source>
         <translation>词表生成器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="505"/>
+        <location filename="../wordless/wl_main.py" line="509"/>
         <source>N-gram Generator</source>
         <translation>N 元组生成器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="509"/>
+        <location filename="../wordless/wl_main.py" line="513"/>
         <source>Collocation Extractor</source>
         <translation>搭配抽取器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="513"/>
+        <location filename="../wordless/wl_main.py" line="517"/>
         <source>Colligation Extractor</source>
         <translation>类联接抽取器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="533"/>
+        <location filename="../wordless/wl_main.py" line="537"/>
         <source>Keyword Extractor</source>
         <translation>关键词抽取器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="457"/>
+        <location filename="../wordless/wl_main.py" line="461"/>
         <source>Observed Files</source>
         <translation>观察文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="458"/>
+        <location filename="../wordless/wl_main.py" line="462"/>
         <source>Reference Files</source>
         <translation>参照文件</translation>
     </message>
@@ -1536,12 +1536,12 @@
 <context>
     <name>Wl_Msg_Box_Help</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="772"/>
+        <location filename="../wordless/wl_main.py" line="776"/>
         <source>Contributing</source>
         <translation>助力</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="772"/>
+        <location filename="../wordless/wl_main.py" line="776"/>
         <source>
                 &lt;div&gt;
                     If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new features by submitting &lt;a href=&quot;https://github.com/BLKSerene/Wordless/pulls&quot;&gt;pull requests&lt;/a&gt; on Github.

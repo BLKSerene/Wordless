@@ -30,6 +30,7 @@ import traceback
 if getattr(sys, '_MEIPASS', False) and platform.system() == 'Darwin':
     os.chdir(sys._MEIPASS) # pylint: disable=no-member
 
+import botok
 import matplotlib
 import nltk
 import requests
@@ -49,14 +50,17 @@ matplotlib.use('Qt5Agg')
 
 # Modify paths of data files after the program is packaged
 if getattr(sys, '_MEIPASS', False):
-    nltk.data.path = [os.path.join(os.getcwd(), 'nltk_data')]
-
+    # botok
+    botok.config.DEFAULT_BASE_PATH = os.path.join('pybo', 'dialect_packs')
+    # NLTK
+    nltk.data.path = ['nltk_data']
+    # PyThaiNLP
     PYTHAINLP_DEFAULT_DATA_DIR = os.path.realpath(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR)
-    pythainlp.corpus._CORPUS_DB_PATH = os.path.join(PYTHAINLP_DEFAULT_DATA_DIR, pythainlp.corpus._CORPUS_DB_FILENAME)
+    pythainlp.corpus._CORPUS_DB_PATH = os.path.join(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR, pythainlp.corpus._CORPUS_DB_FILENAME)
     pythainlp.tools.path.get_pythainlp_data_path = lambda: PYTHAINLP_DEFAULT_DATA_DIR
-
+    # spaCy-pkuseg
     spacy_pkuseg.config.pkuseg_home = '.pkuseg'
-
+    # Underthesea
     underthesea.file_utils.UNDERTHESEA_FOLDER = '.underthesea'
 
 from wordless import (
