@@ -65,15 +65,15 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 
 ## Download
 
-The latest version (**2.2.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.9 or later**, and **Ubuntu 14.04 or later**, all **64-bit only**.
+The latest version (**2.3.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.9 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**. Both Intel-based and M1-based MacBooks are supported.
 
-For detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
+For a detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
 Release|Remarks
 -------|-------
-[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_windows.zip)|1. Unzip the file<br>2. Double-click **Wordless/Wordless.exe** to run
-[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_macos.zip)|1. Unzip the file<br>2. Double-click **Wordless.app** to run
-[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/2.2.0/wordless_2.2.0_linux.tar.gz)|1. Unzip the file<br>2. Double-click **Wordless/Wordless** to run
+[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
+[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
+[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_linux.tar.gz)|1. Extract all files<br>2. Right-click **Wordless/Wordless.sh** and select **Run as a program** or run the shell script from **Terminal**<br>3. Type your sudo password in the prompted window and press Enter<br>4. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
 [Past Releases](https://github.com/BLKSerene/Wordless/releases)|Not recommended
 [Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
 
