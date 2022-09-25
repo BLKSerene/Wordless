@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import botok
 import PyInstaller
 import pythainlp
 import spacy_pkuseg
@@ -84,6 +85,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
 
 # Custom data files
 datas.extend([
+    # botok
+    (botok.config.DEFAULT_BASE_PATH, 'pybo/dialect_packs'),
     # PyThaiNLP
     (pythainlp.tools.get_pythainlp_data_path(), 'pythainlp-data'),
     # spaCy-pkuseg
