@@ -1486,7 +1486,6 @@ def init_settings_default(main):
                 'hye': 'spacy_hye',
                 'aze': 'spacy_aze',
                 'eus': 'spacy_eus',
-                'bel': 'extra_stopwords_bel',
                 'ben': 'spacy_ben',
                 'bre': 'stopwords_iso_bre',
                 'bul': 'spacy_bul',
@@ -1533,7 +1532,6 @@ def init_settings_default(main):
                 'msa': 'stopwords_iso_msa',
                 'mal': 'spacy_mal',
                 'mar': 'spacy_mar',
-                'mon': 'extra_stopwords_mon',
                 'nep': 'spacy_nep',
                 'nob': 'spacy_nob',
                 'nno': 'nltk_nno',
@@ -1574,101 +1572,7 @@ def init_settings_default(main):
                 'other': 'custom'
             },
 
-            'custom_lists': {
-                'afr': [],
-                'sqi': [],
-                'amh': [],
-                'ara': [],
-                'hye': [],
-                'aze': [],
-                'eus': [],
-                'bel': [],
-                'ben': [],
-                'bre': [],
-                'bul': [],
-                'cat': [],
-                'zho_cn': [],
-                'zho_tw': [],
-                'hrv': [],
-                'ces': [],
-                'dan': [],
-                'nld': [],
-                'eng_gb': [],
-                'eng_us': [],
-                'epo': [],
-                'est': [],
-                'fin': [],
-                'fra': [],
-                'glg': [],
-                'deu_at': [],
-                'deu_de': [],
-                'deu_ch': [],
-                'grc': [],
-                'ell': [],
-                'guj': [],
-                'hau': [],
-                'heb': [],
-                'hin': [],
-                'hun': [],
-                'isl': [],
-                'ind': [],
-                'gle': [],
-                'ita': [],
-                'jpn': [],
-                'kan': [],
-                'kaz': [],
-                'kor': [],
-                'kur': [],
-                'kir': [],
-                'lat': [],
-                'lav': [],
-                'lij': [],
-                'lit': [],
-                'ltz': [],
-                'mkd': [],
-                'msa': [],
-                'mal': [],
-                'mar': [],
-                'mon': [],
-                'nep': [],
-                'nob': [],
-                'nno': [],
-                'fas': [],
-                'pol': [],
-                'por_br': [],
-                'por_pt': [],
-                'ron': [],
-                'rus': [],
-                'san': [],
-                'srp_cyrl': [],
-                'srp_latn': [],
-                'sin': [],
-                'slk': [],
-                'slv': [],
-                'som': [],
-                'dsb': [],
-                'hsb': [],
-                'sot': [],
-                'spa': [],
-                'swa': [],
-                'swe': [],
-                'tgl': [],
-                'tgk': [],
-                'tam': [],
-                'tat': [],
-                'tel': [],
-                'tha': [],
-                'tir': [],
-                'tsn': [],
-                'tur': [],
-                'ukr': [],
-                'urd': [],
-                'vie': [],
-                'yor': [],
-                'zul': [],
-
-                'other': []
-            },
+            'custom_lists': {},
 
             'preview': {
                 'preview_lang': 'eng_us'
@@ -1801,7 +1705,7 @@ def init_settings_default(main):
         }
     }
 
-    # Default fonts
+    # Fonts
     if is_windows:
         settings_default['general']['ui_settings']['font_family'] = 'Arial'
     elif is_macos:
@@ -1820,5 +1724,9 @@ def init_settings_default(main):
     settings_default['figs']['line_charts']['font'] = settings_default['general']['ui_settings']['font_family']
     settings_default['figs']['network_graphs']['node_font'] = settings_default['general']['ui_settings']['font_family']
     settings_default['figs']['network_graphs']['edge_font'] = settings_default['general']['ui_settings']['font_family']
+
+    # Custom stop word lists
+    for lang in settings_default['stop_word_lists']['stop_word_list_settings']:
+        settings_default['stop_word_lists']['custom_lists'][lang] = []
 
     return settings_default
