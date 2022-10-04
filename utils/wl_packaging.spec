@@ -46,6 +46,8 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_uk'))
 # PyThaiNLP
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
+# simplemma
+datas.extend(PyInstaller.utils.hooks.collect_data_files('simplemma'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
