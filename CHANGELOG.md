@@ -18,6 +18,13 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [2.4.0](https://github.com/BLKSerene/Wordless/releases/tag/2.4.0) - ??/??/2022
+### ❌ Removals
+- Utils: Remove Lemmatization Lists's lemma lists
+
+### ⏫ Dependency Changes
+- Dependencies: Remove Lemmatization Lists
+
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - 09/25/2022
 ### 🎉 New Features
 - File Area: Add Observed/Reference Files

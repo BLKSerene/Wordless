@@ -1408,7 +1408,6 @@ def init_settings_default(main):
         # Settings - Lemmatization
         'lemmatization': {
             'lemmatizer_settings': {
-                'ast': 'lemmatization_lists_ast',
                 'ben': 'spacy_ben',
                 'bul': 'lemmatization_lists_bul',
                 'cat': 'spacy_cat',
