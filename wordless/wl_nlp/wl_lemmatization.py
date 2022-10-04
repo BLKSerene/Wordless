@@ -20,10 +20,11 @@ import re
 
 import nltk
 from PyQt5.QtCore import QCoreApplication
+import simplemma
 import spacy
 
 from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_pos_tagging, wl_word_tokenization
-from wordless.wl_utils import wl_conversion, wl_misc
+from wordless.wl_utils import wl_conversion
 
 _tr = QCoreApplication.translate
 
@@ -66,8 +67,19 @@ def wl_lemmatize(
 def wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer): # pylint: disable=unused-argument
     lemmas = []
 
+    # simplemma
+    if lemmatizer.startswith('simplemma_'):
+        tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+
+        if lang in ['hrv', 'srp_latn']:
+            lang = 'hbs'
+        else:
+            lang = wl_conversion.to_iso_639_1(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        lemmas = [simplemma.lemmatize(token, lang = lang) for token in tokens]
     # spaCy
-    if lemmatizer.startswith('spacy_'):
+    elif lemmatizer.startswith('spacy_'):
         if not lang.startswith('srp_'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
@@ -153,8 +165,18 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer): # py
             del tokens[i]
             del tags[i]
 
+    # simplemma
+    if lemmatizer.startswith('simplemma_'):
+        if lang in ['hrv', 'srp_latn']:
+            lang = 'hbs'
+        else:
+            lang = wl_conversion.to_iso_639_1(main, lang)
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        lemma_tokens = tokens.copy()
+        lemmas = [simplemma.lemmatize(token, lang = lang) for token in tokens]
     # spaCy
-    if 'spacy' in lemmatizer:
+    elif 'spacy' in lemmatizer:
         if not lang.startswith('srp_'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
@@ -223,24 +245,6 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer): # py
                 lemmas.append(token.text)
 
             lemma_tokens.append(token.text)
-    # Lemmatization Lists
-    elif 'lemmatization_lists' in lemmatizer:
-        mapping_lemmas = {}
-
-        lang = wl_conversion.to_iso_639_1(main, lang)
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
-        with open(wl_misc.get_normalized_path(f'data/Lemmatization Lists/lemmatization-{lang}.txt'), 'r', encoding = 'utf_8_sig') as f:
-            for line in f:
-                try:
-                    lemma, word = line.rstrip().split('\t')
-
-                    mapping_lemmas[word] = lemma
-                except ValueError:
-                    pass
-
-        lemma_tokens = tokens.copy()
-        lemmas = [mapping_lemmas.get(token, token) for token in tokens]
 
     # Remove empty lemmas and strip whitespace in tokens
     for i, lemma in reversed(list(enumerate(lemmas))):

@@ -42,7 +42,7 @@ def test_lingua():
 
     print(f"Extra languages: {', '.join(langs_extra)}\n")
 
-    assert langs_extra == ['BOSNIAN', 'GANDA', 'GEORGIAN', 'MAORI', 'SHONA', 'TSONGA', 'XHOSA']
+    assert langs_extra == ['BOSNIAN', 'GANDA', 'MAORI', 'SHONA', 'TSONGA', 'XHOSA']
 
 # Encoding detection
 @pytest.mark.parametrize('file_path', glob.glob('tests/files/wl_utils/wl_detection/encoding/*.txt'))

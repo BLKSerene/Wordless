@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# NLP
 botok
 charset-normalizer
 jieba
@@ -24,6 +25,7 @@ nltk
 pyphen
 pythainlp
 sacremoses
+simplemma
 textblob
 underthesea
 
@@ -41,7 +43,7 @@ spacy-pkuseg
 sudachipy
 sudachidict_core
 
-# Not version-pinned
+# Micellaneous
 beautifulsoup4
 lxml
 matplotlib
@@ -56,7 +58,7 @@ requests
 scipy
 wordcloud
 
-# Miscellaneous
+# Customized
 opencc_python_latest.zip
 
 # spaCy models

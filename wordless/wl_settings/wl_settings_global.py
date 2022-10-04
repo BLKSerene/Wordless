@@ -51,6 +51,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Czech'): ['ces', 'cs', 'Indo-European'],
             _tr('init_settings_global', 'Danish'): ['dan', 'da', 'Indo-European'],
             _tr('init_settings_global', 'Dutch'): ['nld', 'nl', 'Indo-European'],
+            _tr('init_settings_global', 'English (Middle)'): ['enm', 'enm', 'Indo-European'],
             _tr('init_settings_global', 'English (United Kingdom)'): ['eng_gb', 'en_gb', 'Indo-European'],
             _tr('init_settings_global', 'English (United States)'): ['eng_us', 'en_us', 'Indo-European'],
             _tr('init_settings_global', 'Esperanto'): ['epo', 'eo', 'Constructed'],
@@ -58,6 +59,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Finnish'): ['fin', 'fi', 'Uralic'],
             _tr('init_settings_global', 'French'): ['fra', 'fr', 'Indo-European'],
             _tr('init_settings_global', 'Galician'): ['glg', 'gl', 'Indo-European'],
+            _tr('init_settings_global', 'Georgian'): ['kat', 'ka', 'Kartvelian'],
             _tr('init_settings_global', 'German (Austria)'): ['deu_at', 'de_at', 'Indo-European'],
             _tr('init_settings_global', 'German (Germany)'): ['deu_de', 'de_de', 'Indo-European'],
             _tr('init_settings_global', 'German (Switzerland)'): ['deu_ch', 'de_ch', 'Indo-European'],
@@ -101,6 +103,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Punjabi'): ['pan', 'pa', 'Indo-European'],
             _tr('init_settings_global', 'Romanian'): ['ron', 'ro', 'Indo-European'],
             _tr('init_settings_global', 'Russian'): ['rus', 'ru', 'Indo-European'],
+            _tr('init_settings_global', 'Sámi (Northern)'): ['sme', 'se', 'Uralic'],
             _tr('init_settings_global', 'Sanskrit'): ['san', 'sa', 'Indo-European'],
             _tr('init_settings_global', 'Scottish Gaelic'): ['gla', 'gd', 'Indo-European'],
             _tr('init_settings_global', 'Serbian (Cyrillic)'): ['srp_cyrl', 'sr_cyrl', 'Indo-European'],
@@ -514,6 +517,55 @@ def init_settings_global():
                 _tr('init_settings_global', 'NLTK - WordNet Lemmatizer'): 'nltk_wordnet',
                 _tr('init_settings_global', 'pymorphy2 - Morphological Analyzer'): 'pymorphy2_morphological_analyzer',
 
+                _tr('init_settings_global', 'simplemma - Albanian Lemmatizer'): 'simplemma_sqi',
+                _tr('init_settings_global', 'simplemma - Armenian Lemmatizer'): 'simplemma_hye',
+                _tr('init_settings_global', 'simplemma - Bulgarian Lemmatizer'): 'simplemma_bul',
+                _tr('init_settings_global', 'simplemma - Catalan Lemmatizer'): 'simplemma_cat',
+                _tr('init_settings_global', 'simplemma - Czech Lemmatizer'): 'simplemma_ces',
+                _tr('init_settings_global', 'simplemma - Danish Lemmatizer'): 'simplemma_dan',
+                _tr('init_settings_global', 'simplemma - Dutch Lemmatizer'): 'simplemma_nld',
+                _tr('init_settings_global', 'simplemma - English Lemmatizer'): 'simplemma_eng',
+                _tr('init_settings_global', 'simplemma - English (Middle) Lemmatizer'): 'simplemma_enm',
+                _tr('init_settings_global', 'simplemma - Estonian Lemmatizer'): 'simplemma_est',
+                _tr('init_settings_global', 'simplemma - Finnish Lemmatizer'): 'simplemma_fin',
+                _tr('init_settings_global', 'simplemma - French Lemmatizer'): 'simplemma_fra',
+                _tr('init_settings_global', 'simplemma - Galician Lemmatizer'): 'simplemma_glg',
+                _tr('init_settings_global', 'simplemma - Georgian Lemmatizer'): 'simplemma_kat',
+                _tr('init_settings_global', 'simplemma - German Lemmatizer'): 'simplemma_deu',
+                _tr('init_settings_global', 'simplemma - Greek (Modern) Lemmatizer'): 'simplemma_ell',
+                _tr('init_settings_global', 'simplemma - Hindi Lemmatizer'): 'simplemma_hin',
+                _tr('init_settings_global', 'simplemma - Hungarian Lemmatizer'): 'simplemma_hun',
+                _tr('init_settings_global', 'simplemma - Icelandic Lemmatizer'): 'simplemma_isl',
+                _tr('init_settings_global', 'simplemma - Indonesian Lemmatizer'): 'simplemma_ind',
+                _tr('init_settings_global', 'simplemma - Irish Lemmatizer'): 'simplemma_gle',
+                _tr('init_settings_global', 'simplemma - Italian Lemmatizer'): 'simplemma_ita',
+                _tr('init_settings_global', 'simplemma - Latin Lemmatizer'): 'simplemma_lat',
+                _tr('init_settings_global', 'simplemma - Latvian Lemmatizer'): 'simplemma_lav',
+                _tr('init_settings_global', 'simplemma - Lithuanian Lemmatizer'): 'simplemma_lit',
+                _tr('init_settings_global', 'simplemma - Luxembourgish Lemmatizer'): 'simplemma_ltz',
+                _tr('init_settings_global', 'simplemma - Macedonian Lemmatizer'): 'simplemma_mkd',
+                _tr('init_settings_global', 'simplemma - Malay Lemmatizer'): 'simplemma_msa',
+                _tr('init_settings_global', 'simplemma - Manx Lemmatizer'): 'simplemma_glv',
+                _tr('init_settings_global', 'simplemma - Norwegian Bokmål Lemmatizer'): 'simplemma_nob',
+                _tr('init_settings_global', 'simplemma - Norwegian Nynorsk Lemmatizer'): 'simplemma_nno',
+                _tr('init_settings_global', 'simplemma - Persian Lemmatizer'): 'simplemma_fas',
+                _tr('init_settings_global', 'simplemma - Polish Lemmatizer'): 'simplemma_pol',
+                _tr('init_settings_global', 'simplemma - Portuguese Lemmatizer'): 'simplemma_por',
+                _tr('init_settings_global', 'simplemma - Romanian Lemmatizer'): 'simplemma_ron',
+                _tr('init_settings_global', 'simplemma - Russian Lemmatizer'): 'simplemma_rus',
+                _tr('init_settings_global', 'simplemma - Sámi (Northern) Lemmatizer'): 'simplemma_sme',
+                _tr('init_settings_global', 'simplemma - Scottish Gaelic Lemmatizer'): 'simplemma_gla',
+                _tr('init_settings_global', 'simplemma - Serbo-Croatian Lemmatizer'): 'simplemma_srp_latn',
+                _tr('init_settings_global', 'simplemma - Slovak Lemmatizer'): 'simplemma_slk',
+                _tr('init_settings_global', 'simplemma - Slovenian Lemmatizer'): 'simplemma_slv',
+                _tr('init_settings_global', 'simplemma - Spanish Lemmatizer'): 'simplemma_spa',
+                _tr('init_settings_global', 'simplemma - Swahili Lemmatizer'): 'simplemma_swa',
+                _tr('init_settings_global', 'simplemma - Swedish Lemmatizer'): 'simplemma_swe',
+                _tr('init_settings_global', 'simplemma - Tagalog Lemmatizer'): 'simplemma_tgl',
+                _tr('init_settings_global', 'simplemma - Turkish Lemmatizer'): 'simplemma_tur',
+                _tr('init_settings_global', 'simplemma - Ukrainian Lemmatizer'): 'simplemma_ukr',
+                _tr('init_settings_global', 'simplemma - Welsh Lemmatizer'): 'simplemma_cym',
+
                 _tr('init_settings_global', 'spaCy - Bengali Lemmatizer'): 'spacy_ben',
                 _tr('init_settings_global', 'spaCy - Catalan Lemmatizer'): 'spacy_cat',
                 _tr('init_settings_global', 'spaCy - Croatian Lemmatizer'): 'spacy_hrv',
@@ -593,7 +645,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'extra-stopwords - Mongolian Stop Word List'): 'extra_stopwords_mon',
                 _tr('init_settings_global', 'extra-stopwords - Nepali Stop Word List'): 'extra_stopwords_nep',
                 _tr('init_settings_global', 'extra-stopwords - Norwegian Bokmål Stop Word List'): 'extra_stopwords_nob',
-                _tr('init_settings_global', 'extra-stopwords - Norwegian Bokmål Stop Word List'): 'extra_stopwords_nno',
+                _tr('init_settings_global', 'extra-stopwords - Norwegian Nynorsk Stop Word List'): 'extra_stopwords_nno',
                 _tr('init_settings_global', 'extra-stopwords - Persian Stop Word List'): 'extra_stopwords_fas',
                 _tr('init_settings_global', 'extra-stopwords - Polish Stop Word List'): 'extra_stopwords_pol',
                 _tr('init_settings_global', 'extra-stopwords - Portuguese Stop Word List'): 'extra_stopwords_por',
@@ -752,8 +804,8 @@ def init_settings_global():
                 _tr('init_settings_global', 'Stopwords ISO - Lithuanian Stop Word List'): 'stopwords_iso_lit',
                 _tr('init_settings_global', 'Stopwords ISO - Malay Stop Word List'): 'stopwords_iso_msa',
                 _tr('init_settings_global', 'Stopwords ISO - Marathi Stop Word List'): 'stopwords_iso_mar',
-                _tr('init_settings_global', 'Stopwords ISO - Norwegian Stop Word List'): 'stopwords_iso_nob',
-                _tr('init_settings_global', 'Stopwords ISO - Norwegian Stop Word List'): 'stopwords_iso_nno',
+                _tr('init_settings_global', 'Stopwords ISO - Norwegian Bokmål Stop Word List'): 'stopwords_iso_nob',
+                _tr('init_settings_global', 'Stopwords ISO - Norwegian Nynorsk Stop Word List'): 'stopwords_iso_nno',
                 _tr('init_settings_global', 'Stopwords ISO - Persian Stop Word List'): 'stopwords_iso_fas',
                 _tr('init_settings_global', 'Stopwords ISO - Polish Stop Word List'): 'stopwords_iso_pol',
                 _tr('init_settings_global', 'Stopwords ISO - Portuguese Stop Word List'): 'stopwords_iso_por',
@@ -782,6 +834,7 @@ def init_settings_global():
                 'spacy_sentence_recognizer',
                 'wordless_zho'
             ],
+
             'zho_tw': [
                 'spacy_sentence_recognizer',
                 'wordless_zho'
@@ -806,6 +859,7 @@ def init_settings_global():
                 'nltk_punkt',
                 'spacy_sentence_recognizer'
             ],
+
             'eng_us': [
                 'nltk_punkt',
                 'spacy_sentence_recognizer'
@@ -854,9 +908,7 @@ def init_settings_global():
                 'wordless_jpn'
             ],
 
-            'lit': [
-                'spacy_sentence_recognizer'
-            ],
+            'lit': ['spacy_sentence_recognizer'],
 
             'nob': [
                 'nltk_punkt',
@@ -877,14 +929,13 @@ def init_settings_global():
                 'nltk_punkt',
                 'spacy_sentence_recognizer'
             ],
+
             'por_pt': [
                 'nltk_punkt',
                 'spacy_sentence_recognizer'
             ],
 
-            'ron': [
-                'spacy_sentence_recognizer'
-            ],
+            'ron': ['spacy_sentence_recognizer'],
 
             'rus': [
                 'nltk_punkt',
@@ -911,18 +962,14 @@ def init_settings_global():
                 'pythainlp_thaisumcut'
             ],
 
-            'bod': [
-                'botok_bod'
-            ],
+            'bod': ['botok_bod'],
 
             'tur': [
                 'nltk_punkt',
                 'spacy_sentencizer'
             ],
 
-            'vie': [
-                'underthesea_vie'
-            ],
+            'vie': ['underthesea_vie'],
 
             'other': [
                 'nltk_punkt',
@@ -941,13 +988,8 @@ def init_settings_global():
                 'spacy_sqi'
             ],
 
-            'amh': [
-                'spacy_amh'
-            ],
-
-            'ara': [
-                'spacy_ara'
-            ],
+            'amh': ['spacy_amh'],
+            'ara': ['spacy_ara'],
 
             'hye': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -959,13 +1001,8 @@ def init_settings_global():
                 'sacremoses_moses'
             ],
 
-            'aze': [
-                'spacy_aze'
-            ],
-
-            'eus': [
-                'spacy_eus'
-            ],
+            'aze': ['spacy_aze'],
+            'eus': ['spacy_eus'],
 
             'ben': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -990,6 +1027,7 @@ def init_settings_global():
                 'spacy_zho',
                 'wordless_zho_char'
             ],
+
             'zho_tw': [
                 'jieba_zho',
                 'pkuseg_zho',
@@ -1024,6 +1062,7 @@ def init_settings_global():
                 'sacremoses_moses',
                 'spacy_eng'
             ],
+
             'eng_us': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
@@ -1051,20 +1090,21 @@ def init_settings_global():
                 'sacremoses_moses',
                 'spacy_deu'
             ],
+
             'deu_de': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_deu'
             ],
+
             'deu_ch': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_deu'
             ],
 
-            'grc': [
-                'spacy_grc'
-            ],
+            'grc': ['spacy_grc'],
+
             'ell': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
@@ -1077,9 +1117,7 @@ def init_settings_global():
                 'spacy_guj'
             ],
 
-            'heb': [
-                'spacy_heb'
-            ],
+            'heb': ['spacy_heb'],
 
             'hin': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1098,9 +1136,7 @@ def init_settings_global():
                 'spacy_isl'
             ],
 
-            'ind': [
-                'spacy_ind'
-            ],
+            'ind': ['spacy_ind'],
 
             'gle': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1125,9 +1161,7 @@ def init_settings_global():
                 'spacy_kan'
             ],
 
-            'kir': [
-                'spacy_kir'
-            ],
+            'kir': ['spacy_kir'],
 
             'lav': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1135,9 +1169,7 @@ def init_settings_global():
                 'spacy_lav'
             ],
 
-            'lij': [
-                'spacy_lij'
-            ],
+            'lij': ['spacy_lij'],
 
             'lit': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1166,9 +1198,7 @@ def init_settings_global():
                 'spacy_mar'
             ],
 
-            'mni': [
-                'sacremoses_moses'
-            ],
+            'mni': ['sacremoses_moses'],
 
             'nep': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1201,6 +1231,7 @@ def init_settings_global():
                 'sacremoses_moses',
                 'spacy_por'
             ],
+
             'por_pt': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
@@ -1233,6 +1264,7 @@ def init_settings_global():
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_srp'
             ],
+
             'srp_latn': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_srp'
@@ -1259,6 +1291,7 @@ def init_settings_global():
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_dsb'
             ],
+
             'hsb': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_dsb'
@@ -1276,9 +1309,7 @@ def init_settings_global():
                 'spacy_swe'
             ],
 
-            'tgl': [
-                'spacy_tgl'
-            ],
+            'tgl': ['spacy_tgl'],
 
             'tgk': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
@@ -1289,18 +1320,14 @@ def init_settings_global():
                 'spacy_tam'
             ],
 
-            'tat': [
-                'spacy_tat'
-            ],
+            'tat': ['spacy_tat'],
 
             'tel': [
                 'sacremoses_moses',
                 'spacy_tel'
             ],
 
-            'tdt': [
-                'sacremoses_moses'
-            ],
+            'tdt': ['sacremoses_moses'],
 
             'tha': [
                 'pythainlp_longest_matching',
@@ -1309,21 +1336,10 @@ def init_settings_global():
                 'pythainlp_nercut'
             ],
 
-            'bod': [
-                'botok_bod'
-            ],
-
-            'tir': [
-                'spacy_tir'
-            ],
-
-            'tsn': [
-                'spacy_tsn'
-            ],
-
-            'tur': [
-                'spacy_tur'
-            ],
+            'bod': ['botok_bod'],
+            'tir': ['spacy_tir'],
+            'tsn': ['spacy_tsn'],
+            'tur': ['spacy_tur'],
 
             'ukr': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1340,9 +1356,7 @@ def init_settings_global():
                 'underthesea_vie'
             ],
 
-            'yor': [
-                'spacy_yor'
-            ],
+            'yor': ['spacy_yor'],
 
             'other': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
@@ -1352,269 +1366,109 @@ def init_settings_global():
         },
 
         'syl_tokenizers': {
-            'afr': [
-                'pyphen_afr'
-            ],
-
-            'sqi': [
-                'pyphen_sqi'
-            ],
-
-            'bel': [
-                'pyphen_bel'
-            ],
-
-            'cat': [
-                'pyphen_cat'
-            ],
-
-            'bul': [
-                'pyphen_bul'
-            ],
-
-            'hrv': [
-                'pyphen_hrv'
-            ],
-
-            'ces': [
-                'pyphen_ces'
-            ],
-
-            'dan': [
-                'pyphen_dan'
-            ],
-
-            'nld': [
-                'pyphen_nld'
-            ],
+            'afr': ['pyphen_afr'],
+            'sqi': ['pyphen_sqi'],
+            'bel': ['pyphen_bel'],
+            'cat': ['pyphen_cat'],
+            'bul': ['pyphen_bul'],
+            'hrv': ['pyphen_hrv'],
+            'ces': ['pyphen_ces'],
+            'dan': ['pyphen_dan'],
+            'nld': ['pyphen_nld'],
 
             'eng_gb': [
                 'nltk_legality',
                 'nltk_sonority_sequencing',
                 'pyphen_eng_gb'
             ],
+
             'eng_us': [
                 'nltk_legality',
                 'nltk_sonority_sequencing',
                 'pyphen_eng_us'
             ],
 
-            'epo': [
-                'pyphen_epo'
-            ],
-
-            'est': [
-                'pyphen_est'
-            ],
-
-            'fra': [
-                'pyphen_fra'
-            ],
-
-            'glg': [
-                'pyphen_glg'
-            ],
-
-            'deu_at': [
-                'pyphen_deu_at'
-            ],
-            'deu_de': [
-                'pyphen_deu_de'
-            ],
-            'deu_ch': [
-                'pyphen_deu_ch'
-            ],
-
-            'ell': [
-                'pyphen_ell'
-            ],
-
-            'hun': [
-                'pyphen_hun'
-            ],
-
-            'isl': [
-                'pyphen_isl'
-            ],
-
-            'ind': [
-                'pyphen_ind'
-            ],
-
-            'ita': [
-                'pyphen_ita'
-            ],
-
-            'lit': [
-                'pyphen_lit'
-            ],
-
-            'lav': [
-                'pyphen_lav'
-            ],
-
-            'mon': [
-                'pyphen_mon'
-            ],
-
-            'nob': [
-                'pyphen_nob'
-            ],
-            'nno': [
-                'pyphen_nno'
-            ],
-
-            'pol': [
-                'pyphen_pol'
-            ],
-
-            'por_br': [
-                'pyphen_por_br'
-            ],
-            'por_pt': [
-                'pyphen_por_pt'
-            ],
-
-            'ron': [
-                'pyphen_ron'
-            ],
-
-            'rus': [
-                'pyphen_rus'
-            ],
-
-            'srp_cyrl': [
-                'pyphen_srp_cyrl'
-            ],
-            'srp_latn': [
-                'pyphen_srp_latn'
-            ],
-
-            'slk': [
-                'pyphen_slk'
-            ],
-
-            'slv': [
-                'pyphen_slv'
-            ],
-
-            'spa': [
-                'pyphen_spa'
-            ],
-
-            'swe': [
-                'pyphen_swe'
-            ],
-
-            'tel': [
-                'pyphen_tel'
-            ],
-
-            'tha': [
-                'pythainlp_tha'
-            ],
-
-            'ukr': [
-                'pyphen_ukr'
-            ],
-
-            'zul': [
-                'pyphen_zul'
-            ]
+            'epo': ['pyphen_epo'],
+            'est': ['pyphen_est'],
+            'fra': ['pyphen_fra'],
+            'glg': ['pyphen_glg'],
+            'deu_at': ['pyphen_deu_at'],
+            'deu_de': ['pyphen_deu_de'],
+            'deu_ch': ['pyphen_deu_ch'],
+            'ell': ['pyphen_ell'],
+            'hun': ['pyphen_hun'],
+            'isl': ['pyphen_isl'],
+            'ind': ['pyphen_ind'],
+            'ita': ['pyphen_ita'],
+            'lit': ['pyphen_lit'],
+            'lav': ['pyphen_lav'],
+            'mon': ['pyphen_mon'],
+            'nob': ['pyphen_nob'],
+            'nno': ['pyphen_nno'],
+            'pol': ['pyphen_pol'],
+            'por_br': ['pyphen_por_br'],
+            'por_pt': ['pyphen_por_pt'],
+            'ron': ['pyphen_ron'],
+            'rus': ['pyphen_rus'],
+            'srp_cyrl': ['pyphen_srp_cyrl'],
+            'srp_latn': ['pyphen_srp_latn'],
+            'slk': ['pyphen_slk'],
+            'slv': ['pyphen_slv'],
+            'spa': ['pyphen_spa'],
+            'swe': ['pyphen_swe'],
+            'tel': ['pyphen_tel'],
+            'tha': ['pythainlp_tha'],
+            'ukr': ['pyphen_ukr'],
+            'zul': ['pyphen_zul']
         },
 
         'pos_taggers': {
-            'cat': [
-                'spacy_cat'
-            ],
+            'cat': ['spacy_cat'],
 
             'zho_cn': [
                 'jieba_zho',
                 'spacy_zho'
             ],
+
             'zho_tw': [
                 'jieba_zho',
                 'spacy_zho'
             ],
 
-            'hrv': [
-                'spacy_hrv'
-            ],
-
-            'dan': [
-                'spacy_dan',
-            ],
-
-            'nld': [
-                'spacy_nld'
-            ],
+            'hrv': ['spacy_hrv'],
+            'dan': ['spacy_dan',],
+            'nld': ['spacy_nld'],
 
             'eng_gb': [
                 'nltk_perceptron',
                 'spacy_eng'
             ],
+
             'eng_us': [
                 'nltk_perceptron',
                 'spacy_eng'
             ],
 
-            'fin': [
-                'spacy_fin'
-            ],
-
-            'fra': [
-                'spacy_fra'
-            ],
-
-            'deu_at': [
-                'spacy_deu'
-            ],
-            'deu_de': [
-                'spacy_deu'
-            ],
-            'deu_ch': [
-                'spacy_deu'
-            ],
-
-            'ell': [
-                'spacy_ell'
-            ],
-
-            'ita': [
-                'spacy_ita'
-            ],
+            'fin': ['spacy_fin'],
+            'fra': ['spacy_fra'],
+            'deu_at': ['spacy_deu'],
+            'deu_de': ['spacy_deu'],
+            'deu_ch': ['spacy_deu'],
+            'ell': ['spacy_ell'],
+            'ita': ['spacy_ita'],
 
             'jpn': [
                 'spacy_jpn',
                 'sudachipy_jpn'
             ],
 
-            'lit': [
-                'spacy_lit'
-            ],
-
-            'mkd': [
-                'spacy_mkd'
-            ],
-
-            'nob': [
-                'spacy_nob'
-            ],
-
-            'pol': [
-                'spacy_pol'
-            ],
-
-            'por_br': [
-                'spacy_por'
-            ],
-            'por_pt': [
-                'spacy_por'
-            ],
-
-            'ron': [
-                'spacy_ron'
-            ],
+            'lit': ['spacy_lit'],
+            'mkd': ['spacy_mkd'],
+            'nob': ['spacy_nob'],
+            'pol': ['spacy_pol'],
+            'por_br': ['spacy_por'],
+            'por_pt': ['spacy_por'],
+            'ron': ['spacy_ron'],
 
             'rus': [
                 'nltk_perceptron',
@@ -1622,13 +1476,8 @@ def init_settings_global():
                 'spacy_rus'
             ],
 
-            'spa': [
-                'spacy_spa'
-            ],
-
-            'swe': [
-                'spacy_swe'
-            ],
+            'spa': ['spacy_spa'],
+            'swe': ['spacy_swe'],
 
             'tha': [
                 'pythainlp_perceptron_lst20',
@@ -1636,115 +1485,122 @@ def init_settings_global():
                 'pythainlp_perceptron_pud'
             ],
 
-            'bod': [
-                'botok_bod'
-            ],
+            'bod': ['botok_bod'],
 
             'ukr': [
                 'pymorphy2_morphological_analyzer',
                 'spacy_ukr'
             ],
 
-            'vie': [
-                'underthesea_vie'
-            ]
+            'vie': ['underthesea_vie']
         },
 
         'lemmatizers': {
-            'ben': [
-                'spacy_ben'
-            ],
-
-            'bul': [
-                'lemmatization_lists_bul'
-            ],
+            'sqi': ['simplemma_sqi'],
+            'hye': ['simplemma_hye'],
+            'ben': ['spacy_ben'],
+            'bul': ['simplemma_bul',],
 
             'cat': [
-                'lemmatization_lists_cat',
+                'simplemma_cat',
                 'spacy_cat'
             ],
 
             'hrv': [
+                'simplemma_hrv',
                 'spacy_hrv'
             ],
 
             'ces': [
-                'lemmatization_lists_ces',
+                'simplemma_ces',
                 'spacy_ces'
             ],
 
             'dan': [
+                'simplemma_dan',
                 'spacy_dan'
             ],
 
             'nld': [
+                'simplemma_nld',
                 'spacy_nld'
             ],
 
+            'enm': ['simplemma_enm'],
+
             'eng_gb': [
-                'lemmatization_lists_eng',
                 'nltk_wordnet',
-                'spacy_eng'
-            ],
-            'eng_us': [
-                'lemmatization_lists_eng',
-                'nltk_wordnet',
+                'simplemma_eng',
                 'spacy_eng'
             ],
 
-            'est': [
-                'lemmatization_lists_est'
+            'eng_us': [
+                'nltk_wordnet',
+                'simplemma_eng',
+                'spacy_eng'
             ],
+
+            'est': ['simplemma_est'],
 
             'fin': [
+                'simplemma_fin',
                 'spacy_fin'
             ],
 
             'fra': [
-                'lemmatization_lists_fra',
+                'simplemma_fra',
                 'spacy_fra'
             ],
 
-            'glg': [
-                'lemmatization_lists_glg'
-            ],
+            'glg': ['simplemma_glg'],
+            'kat': ['simplemma_kat'],
 
             'deu_at': [
-                'lemmatization_lists_deu',
+                'simplemma_deu',
                 'spacy_deu'
             ],
+
             'deu_de': [
-                'lemmatization_lists_deu',
+                'simplemma_deu',
                 'spacy_deu'
             ],
+
             'deu_ch': [
-                'lemmatization_lists_deu',
+                'simplemma_deu',
                 'spacy_deu'
             ],
+
 
             'grc': [
                 'spacy_grc'
             ],
+
             'ell': [
+                'simplemma_ell',
                 'spacy_ell'
             ],
 
+            'hin': ['simplemma_hin'],
+
             'hun': [
-                'lemmatization_lists_hun',
+                'simplemma_hun',
                 'spacy_hun'
             ],
 
+            'isl': ['simplemma_isl'],
+
             'ind': [
+                'simplemma_ind',
                 'spacy_ind'
             ],
 
             'gle': [
-                'lemmatization_lists_gle',
+                'simplemma_gle',
                 'spacy_gle'
             ],
 
             'ita': [
-                'lemmatization_lists_ita',
+                'simplemma_ita',
                 'spacy_ita'
             ],
 
@@ -1753,106 +1609,104 @@ def init_settings_global():
                 'sudachipy_jpn'
             ],
 
+            'lat': ['simplemma_lat'],
+            'lav': ['simplemma_lav'],
+
             'lit': [
+                'simplemma_lit',
                 'spacy_lit'
             ],
 
             'ltz': [
+                'simplemma_ltz',
                 'spacy_ltz'
             ],
 
             'mkd': [
+                'simplemma_mkd',
                 'spacy_mkd'
             ],
 
-            'glv': [
-                'lemmatization_lists_glv'
-            ],
+            'msa': ['simplemma_msa'],
+            'glv': ['simplemma_glv'],
 
             'nob': [
+                'simplemma_nob',
                 'spacy_nob'
             ],
 
+            'nno': ['simplemma_nno'],
+
             'fas': [
-                'lemmatization_lists_fas',
+                'simplemma_fas',
                 'spacy_fas'
             ],
 
             'pol': [
+                'simplemma_pol',
                 'spacy_pol'
             ],
 
             'por_br': [
-                'lemmatization_lists_por',
+                'simplemma_por',
                 'spacy_por'
             ],
+
             'por_pt': [
-                'lemmatization_lists_por',
+                'simplemma_por',
                 'spacy_por'
             ],
 
             'ron': [
-                'lemmatization_lists_ron',
+                'simplemma_ron',
                 'spacy_ron'
             ],
 
             'rus': [
-                'lemmatization_lists_rus',
+                'simplemma_rus',
                 'pymorphy2_morphological_analyzer',
                 'spacy_rus'
             ],
 
-            'gla': [
-                'lemmatization_lists_gla'
-            ],
-
-            'srp_cyrl': [
-                'spacy_srp_cyrl'
-            ],
-
-            'slk': [
-                'lemmatization_lists_slk'
-            ],
-
-            'slv': [
-                'lemmatization_lists_slv'
-            ],
+            'sme': ['simplemma_sme'],
+            'gla': ['simplemma_gla'],
+            'srp_cyrl': ['spacy_srp_cyrl'],
+            'srp_latn': ['simplemma_srp_latn'],
+            'slk': ['simplemma_slk'],
+            'slv': ['simplemma_slv'],
 
             'spa': [
-                'lemmatization_lists_spa',
+                'simplemma_spa',
                 'spacy_spa'
             ],
 
+            'swa': ['simplemma_swa'],
+
             'swe': [
-                'lemmatization_lists_swe',
+                'simplemma_swe',
                 'spacy_swe'
             ],
 
             'tgl': [
+                'simplemma_tgl',
                 'spacy_tgl'
             ],
 
-            'bod': [
-                'botok_bod'
-            ],
+            'bod': ['botok_bod'],
 
             'tur': [
+                'simplemma_tur',
                 'spacy_tur'
             ],
 
             'ukr': [
-                'lemmatization_lists_ukr',
+                'simplemma_ukr',
                 'pymorphy2_morphological_analyzer',
                 'spacy_ukr'
             ],
 
-            'urd': [
-                'spacy_urd'
-            ],
-
-            'cym': [
-                'lemmatization_lists_cym'
-            ]
+            'urd': ['spacy_urd'],
+            'cym': ['simplemma_cym']
         },
 
         'stop_word_lists': {
@@ -1938,6 +1792,7 @@ def init_settings_global():
                 'stopwords_iso_zho_cn',
                 'custom'
             ],
+
             'zho_tw': [
                 'extra_stopwords_zho_tw',
                 'spacy_zho_tw',
@@ -1982,6 +1837,7 @@ def init_settings_global():
                 'stopwords_iso_eng',
                 'custom'
             ],
+
             'eng_us': [
                 'extra_stopwords_eng',
                 'nltk_eng',
@@ -2031,6 +1887,7 @@ def init_settings_global():
                 'stopwords_iso_deu',
                 'custom'
             ],
+
             'deu_de': [
                 'extra_stopwords_deu',
                 'nltk_deu',
@@ -2038,6 +1895,7 @@ def init_settings_global():
                 'stopwords_iso_deu',
                 'custom'
             ],
+
             'deu_ch': [
                 'extra_stopwords_deu',
                 'nltk_deu',
@@ -2050,6 +1908,7 @@ def init_settings_global():
                 'spacy_grc',
                 'custom'
             ],
+
             'ell': [
                 'extra_stopwords_ell',
                 'nltk_ell',
@@ -2227,6 +2086,7 @@ def init_settings_global():
                 'stopwords_iso_nob',
                 'custom'
             ],
+
             'nno': [
                 'extra_stopwords_nno',
                 'nltk_nno',
@@ -2255,6 +2115,7 @@ def init_settings_global():
                 'stopwords_iso_por',
                 'custom'
             ],
+
             'por_pt': [
                 'extra_stopwords_por',
                 'nltk_por',
@@ -2289,6 +2150,7 @@ def init_settings_global():
                 'spacy_srp_cyrl',
                 'custom'
             ],
+
             'srp_latn': [
                 'extra_stopwords_srp_latn',
                 'spacy_srp_latn',
@@ -2324,6 +2186,7 @@ def init_settings_global():
                 'spacy_dsb',
                 'custom'
             ],
+
             'hsb': [
                 'spacy_hsb',
                 'custom'
@@ -2443,9 +2306,7 @@ def init_settings_global():
                 'custom'
             ],
 
-            'other': [
-                'custom'
-            ]
+            'other': ['custom']
         },
 
         'measures_dispersion': {

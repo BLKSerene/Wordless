@@ -595,12 +595,11 @@ You can further filter the results as you see fit by clicking **Filter Results**
 Language|Sentence Tokenization|Word Tokenization|Syllable Tokenization|Part-of-speech Tagging|Lemmatization|Stop Word List
 :------:|:-------------------:|:---------------:|:-------------------:|:--------------------:|:-----------:|:------------:
 Afrikaans               |⭕️ |✔|✔|✖️|✖️|✔
-Albanian                |⭕️ |✔|✔|✖️|✖️|✔
+Albanian                |⭕️ |✔|✔|✖️|✔|✔
 Amharic                 |⭕️ |✔|✖️|✖️|✖️|✔
 Arabic                  |⭕️ |✔|✖️|✖️|✖️|✔
-Armenian                |⭕️ |✔|✖️|✖️|✖️|✔
+Armenian                |⭕️ |✔|✖️|✖️|✔|✔
 Assamese                |⭕️ |✔|✖️|✖️|✖️|✖️
-Asturian                |⭕️ |⭕️ |✖️|✖️|✔|✖️
 Azerbaijani             |⭕️ |✔|✖️|✖️|✖️|✔
 Basque                  |⭕️ |✔|✖️|✖️|✖️|✔
 Belarusian              |⭕️ |⭕️ |✔|✖️|✖️|✔
@@ -614,6 +613,7 @@ Croatian                |⭕️ |✔|✔|✔|✔|✔
 Czech                   |✔|✔|✔|✖️|✔|✔
 Danish                  |✔|✔|✔|✔|✔|✔
 Dutch                   |✔|✔|✔|✔|✔|✔
+English (Middle)        |⭕️ |⭕️ |✖️|✖️|✔|✖️
 English (United Kingdom)|✔|✔|✔|✔|✔|✔
 English (United States) |✔|✔|✔|✔|✔|✔
 Esperanto               |⭕️ |⭕️ |✔|✖️|✖️|✔
@@ -621,6 +621,7 @@ Estonian                |✔|✔|✔|✖️|✔|✔
 Finnish                 |✔|✔|✖️|✔|✔|✔
 French                  |✔|✔|✔|✔|✔|✔
 Galician                |⭕️ |⭕️ |✔|✖️|✔|✔
+Georgian                |⭕️ |⭕️ |✖️|✖️|✔|✖️
 German (Austria)        |✔|✔|✔|✔|✔|✔
 German (Germany)        |✔|✔|✔|✔|✔|✔
 German (Switzerland)    |✔|✔|✔|✔|✔|✔
@@ -629,9 +630,9 @@ Greek (Modern)          |✔|✔|✔|✔|✔|✔
 Gujarati                |⭕️ |✔|✖️|✖️|✖️|✔
 Hausa                   |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Hebrew                  |⭕️ |✔|✖️|✖️|✖️|✔
-Hindi                   |⭕️ |✔|✖️|✖️|✖️|✔
+Hindi                   |⭕️ |✔|✖️|✖️|✔|✔
 Hungarian               |⭕️ |✔|✔|✖️|✔|✔
-Icelandic               |⭕️ |✔|✔|✖️|✖️|✔
+Icelandic               |⭕️ |✔|✔|✖️|✔|✔
 Indonesian              |⭕️ |✔|✔|✖️|✔|✔
 Irish                   |⭕️ |✔|✖️|✖️|✔|✔
 Italian                 |✔|✔|✔|✔|✔|✔
@@ -641,13 +642,13 @@ Kazakh                  |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Korean                  |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Kurdish                 |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Kyrgyz                  |⭕️ |✔|✖️|✖️|✖️|✔
-Latin                   |⭕️ |⭕️ |✖️|✖️|✖️|✔
-Latvian                 |⭕️ |✔|✔|✖️|✖️|✔
+Latin                   |⭕️ |⭕️ |✖️|✖️|✔|✔
+Latvian                 |⭕️ |✔|✔|✖️|✔|✔
 Ligurian                |⭕️ |✔|✖️|✖️|✖️|✔
 Lithuanian              |✔|✔|✔|✔|✔|✔
 Luxembourgish           |⭕️ |✔|✖️|✖️|✔|✔
 Macedonian              |⭕️ |✔|✖️|✔|✔|✔
-Malay                   |⭕️ |⭕️ |✖️|✖️|✖️|✔
+Malay                   |⭕️ |⭕️ |✖️|✖️|✔|✔
 Malayalam               |⭕️ |✔|✖️|✖️|✖️|✔
 Manx                    |⭕️ |⭕️ |✖️|✖️|✔|✖️
 Marathi                 |⭕️ |✔|✖️|✖️|✖️|✔
@@ -655,7 +656,7 @@ Meitei                  |⭕️ |✔|✖️|✖️|✖️|✖️
 Mongolian               |⭕️ |⭕️ |✔|✖️|✖️|✔
 Nepali                  |⭕️ |✔|✖️|✖️|✖️|✔
 Norwegian Bokmål        |✔|✔|✔|✔|✔|✔
-Norwegian Nynorsk       |✔|⭕️ |✔|✖️|✖️|✔
+Norwegian Nynorsk       |✔|⭕️ |✔|✖️|✔|✔
 Oriya                   |⭕️ |✔|✖️|✖️|✖️|✖️
 Persian                 |⭕️ |✔|✖️|✖️|✔|✔
 Polish                  |✔|✔|✔|✔|✔|✔
@@ -664,10 +665,11 @@ Portuguese (Portugal)   |✔|✔|✔|✔|✔|✔
 Punjabi                 |⭕️ |✔|✖️|✖️|✖️|✖️
 Romanian                |✔|✔|✔|✔|✔|✔
 Russian                 |✔|✔|✔|✔|✔|✔
+Sámi (Northern)         |⭕️ |⭕️ |✖️|✖️|✔|✖️
 Sanskrit                |⭕️ |✔|✖️|✖️|✖️|✔
 Scottish Gaelic         |⭕️ |⭕️ |✖️|✖️|✔|✖️
 Serbian (Cyrillic)      |⭕️ |✔|✔|✖️|✔|✔
-Serbian (Latin)         |⭕️ |✔|✔|✖️|✖️|✔
+Serbian (Latin)         |⭕️ |✔|✔|✖️|✔|✔
 Sinhala                 |⭕️ |✔|✖️|✖️|✖️|✔
 Slovak                  |⭕️ |✔|✔|✖️|✔|✔
 Slovenian               |✔|✔|✔|✖️|✔|✔
@@ -676,7 +678,7 @@ Sorbian (Lower)         |⭕️ |✔|✖️|✖️|✖️|✔
 Sorbian (Upper)         |⭕️ |✔|✖️|✖️|✖️|✔
 Sotho (Southern)        |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Spanish                 |✔|✔|✔|✔|✔|✔
-Swahili                 |⭕️ |⭕️ |✖️|✖️|✖️|✔
+Swahili                 |⭕️ |⭕️ |✖️|✖️|✔|✔
 Swedish                 |✔|✔|✔|✔|✔|✔
 Tagalog                 |⭕️ |✔|✖️|✖️|✔|✔
 Tajik                   |⭕️ |✔|✖️|✖️|✖️|✔

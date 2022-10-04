@@ -18,21 +18,23 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# Version-pinned
+# NLP
 botok == 0.8.10
 charset-normalizer == 2.1.1
 jieba == 0.42.1
 lingua-language-detector == 1.1.2
 nltk == 3.7
+pyphen == 0.13.0
+pythainlp == 3.1.0
+sacremoses == 0.0.53
+simplemma == 0.8.2
+textblob == 0.17.1
+underthesea == 1.3.4
 
 ## pymorphy2
 pymorphy2 == 0.9.1
 pymorphy2-dicts-ru == 2.4.417127.4579844
 pymorphy2-dicts-uk == 2.4.1.1.1460299261
-
-pyphen == 0.13.0
-pythainlp == 3.1.0
-sacremoses == 0.0.53
 
 ## spaCy
 spacy == 3.4.1
@@ -43,10 +45,7 @@ spacy-pkuseg == 0.0.31
 sudachipy == 0.6.6
 sudachidict_core == 20220729
 
-textblob == 0.17.1
-underthesea == 1.3.4
-
-# Not version-pinned
+# Miscellaneous
 beautifulsoup4
 lxml
 matplotlib
