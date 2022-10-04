@@ -20,9 +20,11 @@
 
 ## [2.4.0](https://github.com/BLKSerene/Wordless/releases/tag/2.4.0) - ??/??/2022
 ### ❌ Removals
+- Utils: Add simplemma's lemmatizers
 - Utils: Remove Lemmatization Lists's lemma lists
 
 ### ⏫ Dependency Changes
+- Dependencies: Add simplemma
 - Dependencies: Remove Lemmatization Lists
 
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - 09/25/2022
