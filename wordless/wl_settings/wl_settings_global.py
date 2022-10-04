@@ -511,31 +511,6 @@ def init_settings_global():
             'lemmatizers': {
                 _tr('init_settings_global', 'botok - Tibetan Lemmatizer'): 'botok_bod',
 
-                _tr('init_settings_global', 'Lemmatization Lists - Asturian Lemma List'): 'lemmatization_lists_ast',
-                _tr('init_settings_global', 'Lemmatization Lists - Bulgarian Lemma List'): 'lemmatization_lists_bul',
-                _tr('init_settings_global', 'Lemmatization Lists - Catalan Lemma List'): 'lemmatization_lists_cat',
-                _tr('init_settings_global', 'Lemmatization Lists - Czech Lemma List'): 'lemmatization_lists_ces',
-                _tr('init_settings_global', 'Lemmatization Lists - English Lemma List'): 'lemmatization_lists_eng',
-                _tr('init_settings_global', 'Lemmatization Lists - Estonian Lemma List'): 'lemmatization_lists_est',
-                _tr('init_settings_global', 'Lemmatization Lists - French Lemma List'): 'lemmatization_lists_fra',
-                _tr('init_settings_global', 'Lemmatization Lists - Galician Lemma List'): 'lemmatization_lists_glg',
-                _tr('init_settings_global', 'Lemmatization Lists - German Lemma List'): 'lemmatization_lists_deu',
-                _tr('init_settings_global', 'Lemmatization Lists - Hungarian Lemma List'): 'lemmatization_lists_hun',
-                _tr('init_settings_global', 'Lemmatization Lists - Irish Lemma List'): 'lemmatization_lists_gle',
-                _tr('init_settings_global', 'Lemmatization Lists - Italian Lemma List'): 'lemmatization_lists_ita',
-                _tr('init_settings_global', 'Lemmatization Lists - Manx Lemma List'): 'lemmatization_lists_glv',
-                _tr('init_settings_global', 'Lemmatization Lists - Persian Lemma List'): 'lemmatization_lists_fas',
-                _tr('init_settings_global', 'Lemmatization Lists - Portuguese Lemma List'): 'lemmatization_lists_por',
-                _tr('init_settings_global', 'Lemmatization Lists - Romanian Lemma List'): 'lemmatization_lists_ron',
-                _tr('init_settings_global', 'Lemmatization Lists - Russian Lemma List'): 'lemmatization_lists_rus',
-                _tr('init_settings_global', 'Lemmatization Lists - Scottish Gaelic Lemma List'): 'lemmatization_lists_gla',
-                _tr('init_settings_global', 'Lemmatization Lists - Slovak Lemma List'): 'lemmatization_lists_slk',
-                _tr('init_settings_global', 'Lemmatization Lists - Slovenian Lemma List'): 'lemmatization_lists_slv',
-                _tr('init_settings_global', 'Lemmatization Lists - Spanish Lemma List'): 'lemmatization_lists_spa',
-                _tr('init_settings_global', 'Lemmatization Lists - Swedish Lemma List'): 'lemmatization_lists_swe',
-                _tr('init_settings_global', 'Lemmatization Lists - Ukrainian Lemma List'): 'lemmatization_lists_ukr',
-                _tr('init_settings_global', 'Lemmatization Lists - Welsh Lemma List'): 'lemmatization_lists_cym',
-
                 _tr('init_settings_global', 'NLTK - WordNet Lemmatizer'): 'nltk_wordnet',
                 _tr('init_settings_global', 'pymorphy2 - Morphological Analyzer'): 'pymorphy2_morphological_analyzer',
 
@@ -1676,10 +1651,6 @@ def init_settings_global():
         },
 
         'lemmatizers': {
-            'ast': [
-                'lemmatization_lists_ast'
-            ],
-
             'ben': [
                 'spacy_ben'
             ],
