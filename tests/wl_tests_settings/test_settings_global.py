@@ -112,7 +112,6 @@ class Check_Settings_Global():
 
         settings_stop_word_lists = settings_global['stop_word_lists']
         settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_list_settings']
-        settings_stop_word_lists_default_custom = settings_default['stop_word_lists']['custom_lists']
 
         langs_supported_sacremoses = []
         langs_supported_spacy = []
@@ -141,7 +140,6 @@ class Check_Settings_Global():
 
         langs_stop_word_lists = list(settings_stop_word_lists)
         langs_stop_word_lists_default = list(settings_stop_word_lists_default)
-        langs_stop_word_lists_default_custom = list(settings_stop_word_lists_default_custom)
         langs_stop_word_lists_spacy = []
 
         # Loading languages supported by Sacremoses
@@ -262,7 +260,6 @@ class Check_Settings_Global():
         self.check_missing_extra_langs_default(langs_pos_taggers, langs_tagsets_default, 'tagsets')
         self.check_missing_extra_langs_default(langs_lemmatizers, langs_lemmatizers_default, 'lemmatizers')
         self.check_missing_extra_langs_default(langs_stop_word_lists, langs_stop_word_lists_default, 'stop word lists')
-        self.check_missing_extra_langs_default(langs_stop_word_lists_default, langs_stop_word_lists_default_custom, 'custom lists')
 
 def test_settings_global():
     assert wl_settings_global.init_settings_global()

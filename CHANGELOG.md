@@ -23,11 +23,13 @@
 - Utils: Add simplemma's lemmatizers
 - Utils: Remove extra-stopwords's stop word lists
 - Utils: Remove Lemmatization Lists's lemma lists
+- Utils: Remove Stopwords ISO's stop word lists
 
 ### ⏫ Dependency Changes
 - Dependencies: Add simplemma
 - Dependencies: Remove extra-stopwords
 - Dependencies: Remove Lemmatization Lists
+- Dependencies: Remove Stopwords ISO
 
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - 09/25/2022
 ### 🎉 New Features
