@@ -27,7 +27,7 @@ test_stop_word_lists = []
 
 for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
     if 'custom' not in stop_word_lists:
-        stop_word_lists.append('Missing Custom List')
+        stop_word_lists.append('missing_custom_list')
 
     for stop_word_list in stop_word_lists:
         test_stop_word_lists.append((lang, stop_word_list))
@@ -43,7 +43,7 @@ def test_get_stop_word_list(lang, stop_word_list):
         assert stop_words == set()
     else:
         # Check for missing custom lists
-        assert stop_word_list != 'Missing Custom List'
+        assert stop_word_list != 'missing_custom_list'
         # Check if the list is empty
         assert stop_words
         # Check if there are empty tokens in the list
