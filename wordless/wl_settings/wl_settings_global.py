@@ -604,8 +604,6 @@ def init_settings_global():
             },
 
             'stop_word_lists': {
-                _tr('init_settings_global', 'Custom List'): 'custom',
-
                 _tr('init_settings_global', 'NLTK - Arabic Stop Word List'): 'nltk_ara',
                 _tr('init_settings_global', 'NLTK - Azerbaijani Stop Word List'): 'nltk_aze',
                 _tr('init_settings_global', 'NLTK - Danish Stop Word List'): 'nltk_dan',
@@ -705,66 +703,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Vietnamese Stop Word List'): 'spacy_vie',
                 _tr('init_settings_global', 'spaCy - Yoruba Stop Word List'): 'spacy_yor',
 
-                _tr('init_settings_global', 'Stopwords ISO - Afrikaans Stop Word List'): 'stopwords_iso_afr',
-                _tr('init_settings_global', 'Stopwords ISO - Arabic Stop Word List'): 'stopwords_iso_ara',
-                _tr('init_settings_global', 'Stopwords ISO - Armenian Stop Word List'): 'stopwords_iso_hye',
-                _tr('init_settings_global', 'Stopwords ISO - Basque Stop Word List'): 'stopwords_iso_eus',
-                _tr('init_settings_global', 'Stopwords ISO - Bengali Stop Word List'): 'stopwords_iso_ben',
-                _tr('init_settings_global', 'Stopwords ISO - Breton Stop Word List'): 'stopwords_iso_bre',
-                _tr('init_settings_global', 'Stopwords ISO - Bulgarian Stop Word List'): 'stopwords_iso_bul',
-                _tr('init_settings_global', 'Stopwords ISO - Catalan Stop Word List'): 'stopwords_iso_cat',
-                _tr('init_settings_global', 'Stopwords ISO - Chinese (Simplified) Stop Word List'): 'stopwords_iso_zho_cn',
-                _tr('init_settings_global', 'Stopwords ISO - Chinese (Traditional) Stop Word List'): 'stopwords_iso_zho_tw',
-                _tr('init_settings_global', 'Stopwords ISO - Croatian Stop Word List'): 'stopwords_iso_hrv',
-                _tr('init_settings_global', 'Stopwords ISO - Czech Stop Word List'): 'stopwords_iso_ces',
-                _tr('init_settings_global', 'Stopwords ISO - Danish Stop Word List'): 'stopwords_iso_dan',
-                _tr('init_settings_global', 'Stopwords ISO - Dutch Stop Word List'): 'stopwords_iso_nld',
-                _tr('init_settings_global', 'Stopwords ISO - English Stop Word List'): 'stopwords_iso_eng',
-                _tr('init_settings_global', 'Stopwords ISO - Esperanto Stop Word List'): 'stopwords_iso_epo',
-                _tr('init_settings_global', 'Stopwords ISO - Estonian Stop Word List'): 'stopwords_iso_est',
-                _tr('init_settings_global', 'Stopwords ISO - Finnish Stop Word List'): 'stopwords_iso_fin',
-                _tr('init_settings_global', 'Stopwords ISO - French Stop Word List'): 'stopwords_iso_fra',
-                _tr('init_settings_global', 'Stopwords ISO - Galician Stop Word List'): 'stopwords_iso_glg',
-                _tr('init_settings_global', 'Stopwords ISO - German Stop Word List'): 'stopwords_iso_deu',
-                _tr('init_settings_global', 'Stopwords ISO - Greek (Modern) Stop Word List'): 'stopwords_iso_ell',
-                _tr('init_settings_global', 'Stopwords ISO - Gujarati Stop Word List'): 'stopwords_iso_guj',
-                _tr('init_settings_global', 'Stopwords ISO - Hausa Stop Word List'): 'stopwords_iso_hau',
-                _tr('init_settings_global', 'Stopwords ISO - Hebrew Stop Word List'): 'stopwords_iso_heb',
-                _tr('init_settings_global', 'Stopwords ISO - Hindi Stop Word List'): 'stopwords_iso_hin',
-                _tr('init_settings_global', 'Stopwords ISO - Hungarian Stop Word List'): 'stopwords_iso_hun',
-                _tr('init_settings_global', 'Stopwords ISO - Indonesian Stop Word List'): 'stopwords_iso_ind',
-                _tr('init_settings_global', 'Stopwords ISO - Irish Stop Word List'): 'stopwords_iso_gle',
-                _tr('init_settings_global', 'Stopwords ISO - Italian Stop Word List'): 'stopwords_iso_ita',
-                _tr('init_settings_global', 'Stopwords ISO - Japanese Stop Word List'): 'stopwords_iso_jpn',
-                _tr('init_settings_global', 'Stopwords ISO - Korean Stop Word List'): 'stopwords_iso_kor',
-                _tr('init_settings_global', 'Stopwords ISO - Kurdish Stop Word List'): 'stopwords_iso_kur',
-                _tr('init_settings_global', 'Stopwords ISO - Latin Stop Word List'): 'stopwords_iso_lat',
-                _tr('init_settings_global', 'Stopwords ISO - Latvian Stop Word List'): 'stopwords_iso_lav',
-                _tr('init_settings_global', 'Stopwords ISO - Lithuanian Stop Word List'): 'stopwords_iso_lit',
-                _tr('init_settings_global', 'Stopwords ISO - Malay Stop Word List'): 'stopwords_iso_msa',
-                _tr('init_settings_global', 'Stopwords ISO - Marathi Stop Word List'): 'stopwords_iso_mar',
-                _tr('init_settings_global', 'Stopwords ISO - Norwegian Bokmål Stop Word List'): 'stopwords_iso_nob',
-                _tr('init_settings_global', 'Stopwords ISO - Norwegian Nynorsk Stop Word List'): 'stopwords_iso_nno',
-                _tr('init_settings_global', 'Stopwords ISO - Persian Stop Word List'): 'stopwords_iso_fas',
-                _tr('init_settings_global', 'Stopwords ISO - Polish Stop Word List'): 'stopwords_iso_pol',
-                _tr('init_settings_global', 'Stopwords ISO - Portuguese Stop Word List'): 'stopwords_iso_por',
-                _tr('init_settings_global', 'Stopwords ISO - Romanian Stop Word List'): 'stopwords_iso_ron',
-                _tr('init_settings_global', 'Stopwords ISO - Russian Stop Word List'): 'stopwords_iso_rus',
-                _tr('init_settings_global', 'Stopwords ISO - Slovak Stop Word List'): 'stopwords_iso_slk',
-                _tr('init_settings_global', 'Stopwords ISO - Slovenian Stop Word List'): 'stopwords_iso_slv',
-                _tr('init_settings_global', 'Stopwords ISO - Somali Stop Word List'): 'stopwords_iso_som',
-                _tr('init_settings_global', 'Stopwords ISO - Sotho (Southern) Stop Word List'): 'stopwords_iso_sot',
-                _tr('init_settings_global', 'Stopwords ISO - Spanish Stop Word List'): 'stopwords_iso_spa',
-                _tr('init_settings_global', 'Stopwords ISO - Swahili Stop Word List'): 'stopwords_iso_swa',
-                _tr('init_settings_global', 'Stopwords ISO - Swedish Stop Word List'): 'stopwords_iso_swe',
-                _tr('init_settings_global', 'Stopwords ISO - Tagalog Stop Word List'): 'stopwords_iso_tgl',
-                _tr('init_settings_global', 'Stopwords ISO - Thai Stop Word List'): 'stopwords_iso_tha',
-                _tr('init_settings_global', 'Stopwords ISO - Turkish Stop Word List'): 'stopwords_iso_tur',
-                _tr('init_settings_global', 'Stopwords ISO - Ukrainian Stop Word List'): 'stopwords_iso_ukr',
-                _tr('init_settings_global', 'Stopwords ISO - Urdu Stop Word List'): 'stopwords_iso_urd',
-                _tr('init_settings_global', 'Stopwords ISO - Vietnamese Stop Word List'): 'stopwords_iso_vie',
-                _tr('init_settings_global', 'Stopwords ISO - Yoruba Stop Word List'): 'stopwords_iso_yor',
-                _tr('init_settings_global', 'Stopwords ISO - Zulu Stop Word List'): 'stopwords_iso_zul'
+                _tr('init_settings_global', 'Custom List'): 'custom',
             }
         },
 
@@ -1651,7 +1590,6 @@ def init_settings_global():
         'stop_word_lists': {
             'afr': [
                 'spacy_afr',
-                'stopwords_iso_afr',
                 'custom'
             ],
 
@@ -1668,13 +1606,11 @@ def init_settings_global():
             'ara': [
                 'nltk_ara',
                 'spacy_ara',
-                'stopwords_iso_ara',
                 'custom'
             ],
 
             'hye': [
                 'spacy_hye',
-                'stopwords_iso_hye',
                 'custom'
             ],
 
@@ -1686,133 +1622,112 @@ def init_settings_global():
 
             'eus': [
                 'spacy_eus',
-                'stopwords_iso_eus',
                 'custom'
             ],
 
             'ben': [
                 'spacy_ben',
-                'stopwords_iso_ben',
                 'custom'
             ],
 
             'bre': [
-                'stopwords_iso_bre',
                 'custom'
             ],
 
             'bul': [
                 'spacy_bul',
-                'stopwords_iso_bul',
                 'custom'
             ],
 
             'cat': [
                 'spacy_cat',
-                'stopwords_iso_cat',
                 'custom'
             ],
 
             'zho_cn': [
                 'spacy_zho_cn',
-                'stopwords_iso_zho_cn',
                 'custom'
             ],
 
             'zho_tw': [
                 'spacy_zho_tw',
-                'stopwords_iso_zho_tw',
                 'custom'
             ],
 
             'hrv': [
                 'spacy_hrv',
-                'stopwords_iso_hrv',
                 'custom'
             ],
 
             'ces': [
                 'spacy_ces',
-                'stopwords_iso_ces',
                 'custom'
             ],
 
             'dan': [
                 'nltk_dan',
                 'spacy_dan',
-                'stopwords_iso_dan',
                 'custom'
             ],
 
             'nld': [
                 'nltk_nld',
                 'spacy_nld',
-                'stopwords_iso_nld',
                 'custom'
             ],
 
             'eng_gb': [
                 'nltk_eng',
                 'spacy_eng',
-                'stopwords_iso_eng',
                 'custom'
             ],
 
             'eng_us': [
                 'nltk_eng',
                 'spacy_eng',
-                'stopwords_iso_eng',
                 'custom'
             ],
 
             'epo': [
-                'stopwords_iso_epo',
                 'custom'
             ],
 
             'est': [
                 'spacy_est',
-                'stopwords_iso_est',
                 'custom'
             ],
 
             'fin': [
                 'nltk_fin',
                 'spacy_fin',
-                'stopwords_iso_fin',
                 'custom'
             ],
 
             'fra': [
                 'nltk_fra',
                 'spacy_fra',
-                'stopwords_iso_fra',
                 'custom'
             ],
 
             'glg': [
-                'stopwords_iso_glg',
                 'custom'
             ],
 
             'deu_at': [
                 'nltk_deu',
                 'spacy_deu',
-                'stopwords_iso_deu',
                 'custom'
             ],
 
             'deu_de': [
                 'nltk_deu',
                 'spacy_deu',
-                'stopwords_iso_deu',
                 'custom'
             ],
 
             'deu_ch': [
                 'nltk_deu',
                 'spacy_deu',
-                'stopwords_iso_deu',
                 'custom'
             ],
 
@@ -1824,37 +1739,31 @@ def init_settings_global():
             'ell': [
                 'nltk_ell',
                 'spacy_ell',
-                'stopwords_iso_ell',
                 'custom'
             ],
 
             'guj': [
                 'spacy_guj',
-                'stopwords_iso_guj',
                 'custom'
             ],
 
             'hau': [
-                'stopwords_iso_hau',
                 'custom'
             ],
 
             'heb': [
                 'spacy_heb',
-                'stopwords_iso_heb',
                 'custom'
             ],
 
             'hin': [
                 'spacy_hin',
-                'stopwords_iso_hin',
                 'custom'
             ],
 
             'hun': [
                 'nltk_hun',
                 'spacy_hun',
-                'stopwords_iso_hun',
                 'custom'
             ],
 
@@ -1866,26 +1775,22 @@ def init_settings_global():
             'ind': [
                 'nltk_ind',
                 'spacy_ind',
-                'stopwords_iso_ind',
                 'custom'
             ],
 
             'gle': [
                 'spacy_gle',
-                'stopwords_iso_gle',
                 'custom'
             ],
 
             'ita': [
                 'nltk_ita',
                 'spacy_ita',
-                'stopwords_iso_ita',
                 'custom'
             ],
 
             'jpn': [
                 'spacy_jpn',
-                'stopwords_iso_jpn',
                 'custom'
             ],
 
@@ -1901,12 +1806,10 @@ def init_settings_global():
 
             'kor': [
                 'spacy_kor',
-                'stopwords_iso_kor',
                 'custom'
             ],
 
             'kur': [
-                'stopwords_iso_kur',
                 'custom'
             ],
 
@@ -1916,13 +1819,11 @@ def init_settings_global():
             ],
 
             'lat': [
-                'stopwords_iso_lat',
                 'custom'
             ],
 
             'lav': [
                 'spacy_lav',
-                'stopwords_iso_lav',
                 'custom'
             ],
 
@@ -1933,7 +1834,6 @@ def init_settings_global():
 
             'lit': [
                 'spacy_lit',
-                'stopwords_iso_lit',
                 'custom'
             ],
 
@@ -1948,7 +1848,6 @@ def init_settings_global():
             ],
 
             'msa': [
-                'stopwords_iso_msa',
                 'custom'
             ],
 
@@ -1959,7 +1858,6 @@ def init_settings_global():
 
             'mar': [
                 'spacy_mar',
-                'stopwords_iso_mar',
                 'custom'
             ],
 
@@ -1973,53 +1871,45 @@ def init_settings_global():
             'nob': [
                 'nltk_nob',
                 'spacy_nob',
-                'stopwords_iso_nob',
                 'custom'
             ],
 
             'nno': [
                 'nltk_nno',
-                'stopwords_iso_nno',
                 'custom'
             ],
 
             'fas': [
                 'spacy_fas',
-                'stopwords_iso_fas',
                 'custom'
             ],
 
             'pol': [
                 'spacy_pol',
-                'stopwords_iso_pol',
                 'custom'
             ],
 
             'por_br': [
                 'nltk_por',
                 'spacy_por',
-                'stopwords_iso_por',
                 'custom'
             ],
 
             'por_pt': [
                 'nltk_por',
                 'spacy_por',
-                'stopwords_iso_por',
                 'custom'
             ],
 
             'ron': [
                 'nltk_ron',
                 'spacy_ron',
-                'stopwords_iso_ron',
                 'custom'
             ],
 
             'rus': [
                 'nltk_rus',
                 'spacy_rus',
-                'stopwords_iso_rus',
                 'custom'
             ],
 
@@ -2045,19 +1935,16 @@ def init_settings_global():
 
             'slk': [
                 'spacy_slk',
-                'stopwords_iso_slk',
                 'custom'
             ],
 
             'slv': [
                 'nltk_slv',
                 'spacy_slv',
-                'stopwords_iso_slv',
                 'custom'
             ],
 
             'som': [
-                'stopwords_iso_som',
                 'custom'
             ],
 
@@ -2072,32 +1959,27 @@ def init_settings_global():
             ],
 
             'sot': [
-                'stopwords_iso_sot',
                 'custom'
             ],
 
             'spa': [
                 'nltk_spa',
                 'spacy_spa',
-                'stopwords_iso_spa',
                 'custom'
             ],
 
             'swa': [
-                'stopwords_iso_swa',
                 'custom'
             ],
 
             'swe': [
                 'nltk_swe',
                 'spacy_swe',
-                'stopwords_iso_swe',
                 'custom'
             ],
 
             'tgl': [
                 'spacy_tgl',
-                'stopwords_iso_tgl',
                 'custom'
             ],
 
@@ -2124,7 +2006,6 @@ def init_settings_global():
             'tha': [
                 'pythainlp_tha',
                 'spacy_tha',
-                'stopwords_iso_tha',
                 'custom'
             ],
 
@@ -2141,36 +2022,30 @@ def init_settings_global():
             'tur': [
                 'nltk_tur',
                 'spacy_tur',
-                'stopwords_iso_tur',
                 'custom'
             ],
 
             'ukr': [
                 'spacy_ukr',
-                'stopwords_iso_ukr',
                 'custom'
             ],
 
             'urd': [
                 'spacy_urd',
-                'stopwords_iso_urd',
                 'custom'
             ],
 
             'vie': [
                 'spacy_vie',
-                'stopwords_iso_vie',
                 'custom'
             ],
 
             'yor': [
                 'spacy_yor',
-                'stopwords_iso_yor',
                 'custom'
             ],
 
             'zul': [
-                'stopwords_iso_zul',
                 'custom'
             ],
 
