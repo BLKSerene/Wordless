@@ -17,14 +17,13 @@
 # ----------------------------------------------------------------------
 
 import importlib
-import json
 
 import nltk
 import opencc
 import pythainlp
 
 from wordless.wl_nlp import wl_nlp_utils
-from wordless.wl_utils import wl_conversion, wl_misc
+from wordless.wl_utils import wl_conversion
 
 def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
     if lang not in main.settings_global['stop_word_lists']:
@@ -102,14 +101,6 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
 
                 stop_words = spacy_lang.STOP_WORDS
-        # Stopwords ISO
-        elif stop_word_list.startswith('stopwords_iso_'):
-            # Norwegian
-            if lang_639_1 in ['nb', 'nn']:
-                lang_639_1 = 'no'
-
-            with open(wl_misc.get_normalized_path('data/Stopwords ISO/stopwords_iso.json'), 'r', encoding = 'utf_8') as f:
-                stop_words = json.load(f)[lang_639_1]
         # Thai
         elif stop_word_list == 'pythainlp_tha':
             stop_words = pythainlp.corpus.common.thai_stopwords()
