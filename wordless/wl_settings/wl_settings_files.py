@@ -157,8 +157,6 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.settings_tags = settings_tags
         self.defaults_row = defaults_row
 
-        self.setFixedHeight(125)
-
         self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
@@ -473,7 +471,6 @@ class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_xml_tag_settings, 2, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(3, 1)
 
     def load_settings(self, defaults = False):
         if defaults:

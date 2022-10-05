@@ -76,6 +76,7 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
             editable = True
         )
 
+        self.table_lemmatizers.setFixedHeight(370)
         self.table_lemmatizers.verticalHeader().setHidden(True)
         self.table_lemmatizers.model().setRowCount(len(self.settings_global))
 
@@ -137,8 +138,7 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(0, 3)
-        self.layout().setRowStretch(1, 2)
+        self.layout().setRowStretch(1, 1)
 
     def lemmatizers_changed(self, lang):
         if lang == self.settings_custom['preview']['preview_lang']:
