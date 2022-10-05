@@ -46,6 +46,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
             editable = True
         )
 
+        self.table_stop_word_lists.setFixedHeight(370)
         self.table_stop_word_lists.verticalHeader().setHidden(True)
         self.table_stop_word_lists.model().setRowCount(len(self.settings_global))
 
@@ -62,7 +63,8 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
                 items = list(wl_nlp_utils.to_lang_util_texts(
                     self.main,
                     util_type = 'stop_word_lists',
-                    util_codes = self.settings_global[lang]
+                    # Add custom lists
+                    util_codes = self.settings_global[lang] + ['custom']
                 )),
                 col = 1
             ))
@@ -107,8 +109,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(0, 3)
-        self.layout().setRowStretch(1, 2)
+        self.layout().setRowStretch(1, 1)
 
         self.load_settings()
         self.preview_results_changed()
@@ -134,7 +135,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
 
         stop_words = wl_stop_word_lists.wl_get_stop_word_list(self.main, lang, stop_word_list = list_stop_words)
 
-        self.list_stop_word_list_preview_results.load_items(stop_words)
+        self.list_stop_word_list_preview_results.load_items(sorted(stop_words))
         self.label_stop_word_list_preview_count.setText(self.tr('Count of Stop Words: ') + str(len(stop_words)))
 
         if list_stop_words == 'custom':

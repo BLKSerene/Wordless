@@ -26,11 +26,11 @@ main = wl_test_init.Wl_Test_Main()
 test_stop_word_lists = []
 
 for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
-    if 'custom' not in stop_word_lists:
-        stop_word_lists.append('missing_custom_list')
-
     for stop_word_list in stop_word_lists:
         test_stop_word_lists.append((lang, stop_word_list))
+
+    # Add custom lists
+    test_stop_word_lists.append((lang, 'custom'))
 
 @pytest.mark.parametrize('lang, stop_word_list', test_stop_word_lists)
 def test_get_stop_word_list(lang, stop_word_list):
@@ -39,14 +39,11 @@ def test_get_stop_word_list(lang, stop_word_list):
     print(f'Number of stop words ({lang} / {stop_word_list}): {len(stop_words)}')
 
     if stop_word_list == 'custom':
-        # Check if custom list is empty
+        # Check if the custom list is empty
         assert stop_words == set()
     else:
-        # Check for missing custom lists
-        assert stop_word_list != 'missing_custom_list'
-        # Check if the list is empty
+        # Check for empty stop words
         assert stop_words
-        # Check if there are empty tokens in the list
         assert all((stop_word.strip() for stop_word in stop_words))
 
 def test_filter_stop_words():

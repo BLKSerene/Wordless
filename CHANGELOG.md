@@ -21,15 +21,14 @@
 ## [2.4.0](https://github.com/BLKSerene/Wordless/releases/tag/2.4.0) - ??/??/2022
 ### ❌ Removals
 - Utils: Add simplemma's lemmatizers
+- Utils: Add stopword's stop word lists
 - Utils: Remove extra-stopwords's stop word lists
 - Utils: Remove Lemmatization Lists's lemma lists
 - Utils: Remove Stopwords ISO's stop word lists
 
 ### ⏫ Dependency Changes
-- Dependencies: Add simplemma
-- Dependencies: Remove extra-stopwords
-- Dependencies: Remove Lemmatization Lists
-- Dependencies: Remove Stopwords ISO
+- Dependencies: Add simplemma and stopword
+- Dependencies: Remove extra-stopwords, Lemmatization Lists, and Stopwords ISO
 
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - 09/25/2022
 ### 🎉 New Features
@@ -90,7 +89,7 @@
 - Work Area: Remove Wordlist Generator / N-gram Generator / Collocation Extractpr / Colligation Extractor / Keyword Extractor - Generation Settings - Advanced Settings
 
 ### ⏫ Dependency Changes
-- Dependencies: Add Lingua, PyPDF2, spacy-pkuseg
+- Dependencies: Add Lingua, PyPDF2, and spacy-pkuseg
 - Dependencies: Remove CLTK, langdetect, langid.py, nagisa, pkuseg, ssg, and Tokenizer
 - Dependencies: Upgrade Beautiful Soup to 4.11.1
 - Dependencies: Upgrade Botok to 0.8.10
