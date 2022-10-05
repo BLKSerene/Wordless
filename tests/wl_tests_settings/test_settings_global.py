@@ -30,26 +30,25 @@ from wordless.wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main()
 
-def add_country_codes(lang_codes):
+def add_lang_suffixes(lang_codes):
     lang_codes = sorted(set(lang_codes))
 
-    for lang_code in lang_codes:
-        # Chinese
-        if lang_code == 'zh':
-            lang_codes.remove('zh')
-            lang_codes.extend(['zh_cn', 'zh_tw'])
-        # English
-        elif lang_code == 'en':
-            lang_codes.remove('en')
-            lang_codes.extend(['en_gb', 'en_us'])
-        # German
-        elif lang_code == 'de':
-            lang_codes.remove('de')
-            lang_codes.extend(['de_at', 'de_de', 'de_ch'])
-        # Portuguese
-        elif lang_code == 'pt':
-            lang_codes.remove('pt')
-            lang_codes.extend(['pt_br', 'pt_pt'])
+    for lang_code in lang_codes.copy():
+        if lang_code in ['zh', 'en', 'de', 'pt', 'pa', 'sr']:
+            lang_codes.remove(lang_code)
+
+            if lang_code == 'zh':
+                lang_codes.extend(['zh_cn', 'zh_tw'])
+            elif lang_code == 'en':
+                lang_codes.extend(['en_gb', 'en_us'])
+            elif lang_code == 'de':
+                lang_codes.extend(['de_at', 'de_de', 'de_ch'])
+            elif lang_code == 'pt':
+                lang_codes.extend(['pt_br', 'pt_pt'])
+            elif lang_code == 'pa':
+                lang_codes.append('pa_guru')
+            elif lang_code == 'sr':
+                lang_codes.append('sr_cyrl')
 
     return sorted(lang_codes)
 
@@ -59,6 +58,7 @@ class Check_Settings_Global():
         self.lang_extra = False
         self.lang_default_missing = False
         self.lang_default_extra = False
+        self.invalid_default_lang_util = False
 
     def check_missing_extra_langs(self, langs_supported, langs_global, msg):
         for lang_code in langs_supported:
@@ -90,6 +90,13 @@ class Check_Settings_Global():
 
                 self.lang_default_extra = True
 
+    def check_invalid_default_lang_utils(self, lang_utils, lang_utils_default, msg):
+        for lang, lang_util in lang_utils_default.items():
+            if lang_util not in lang_utils[lang]:
+                print(f'Invalid default value "{lang_util}" for language "{lang}" found in the default settings of {msg}!')
+
+                self.invalid_default_lang_util = True
+
     def check_settings_global(self):
         settings_global = main.settings_global
         settings_default = main.settings_default
@@ -112,6 +119,10 @@ class Check_Settings_Global():
 
         settings_stop_word_lists = settings_global['stop_word_lists']
         settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_list_settings']
+
+        # Add custom lists
+        for lang, stop_word_lists in settings_stop_word_lists.items():
+            stop_word_lists.append('custom')
 
         langs_supported_sacremoses = []
         langs_supported_spacy = []
@@ -149,7 +160,7 @@ class Check_Settings_Global():
             if file_ext not in ['yue', 'zh']:
                 langs_supported_sacremoses.append(file_ext)
 
-        langs_supported_sacremoses = add_country_codes(langs_supported_sacremoses)
+        langs_supported_sacremoses = add_lang_suffixes(langs_supported_sacremoses)
 
         # Loading languages supported by spaCy
         for lang in pkgutil.iter_modules(spacy.lang.__path__):
@@ -160,22 +171,18 @@ class Check_Settings_Global():
                 elif lang.name == 'sr':
                     langs_supported_spacy.extend(['sr_cyrl', 'sr_latn'])
 
-        langs_supported_spacy = add_country_codes(langs_supported_spacy)
+        langs_supported_spacy = add_lang_suffixes(langs_supported_spacy)
 
         # Lemmatizers
         for file in os.listdir(f'{spacy_lookups_data.__path__[0]}/data/'):
             if 'lemma' in file:
                 lang_code = re.search(r'^([a-z]{2,3})_', file).groups()[0]
 
-                # Serbian
-                if lang_code == 'sr':
-                    langs_supported_spacy_lemmatizers.append('sr_cyrl')
-                else:
-                    langs_supported_spacy_lemmatizers.append(lang_code)
+                langs_supported_spacy_lemmatizers.append(lang_code)
 
         # Languages without data files
         langs_supported_spacy_lemmatizers.extend(['fi', 'ja', 'uk'])
-        langs_supported_spacy_lemmatizers = add_country_codes(langs_supported_spacy_lemmatizers)
+        langs_supported_spacy_lemmatizers = add_lang_suffixes(langs_supported_spacy_lemmatizers)
 
         # Stop word lists
         for lang in pkgutil.iter_modules(spacy.lang.__path__):
@@ -184,13 +191,12 @@ class Check_Settings_Global():
                     if file == 'stop_words.py':
                         if lang.name not in ['sr', 'xx']:
                             langs_supported_spacy_stop_words.append(lang.name)
-                        # Serbian
                         elif lang.name == 'sr':
                             langs_supported_spacy_stop_words.extend(['sr_cyrl', 'sr_latn'])
 
                         break
 
-        langs_supported_spacy_stop_words = add_country_codes(langs_supported_spacy_stop_words)
+        langs_supported_spacy_stop_words = add_lang_suffixes(langs_supported_spacy_stop_words)
 
         # Check for missing and extra languages for spaCy's sentence recognizer / sentencizer
         for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
@@ -260,6 +266,15 @@ class Check_Settings_Global():
         self.check_missing_extra_langs_default(langs_pos_taggers, langs_tagsets_default, 'tagsets')
         self.check_missing_extra_langs_default(langs_lemmatizers, langs_lemmatizers_default, 'lemmatizers')
         self.check_missing_extra_langs_default(langs_stop_word_lists, langs_stop_word_lists_default, 'stop word lists')
+
+        # Check for invalid default values in default settings
+        self.check_invalid_default_lang_utils(settings_sentence_tokenizers, settings_sentence_tokenizers_default, 'sentence_tokenizers')
+        self.check_invalid_default_lang_utils(settings_word_tokenizers, settings_word_tokenizers_default, 'word tokenizers')
+        self.check_invalid_default_lang_utils(settings_syl_tokenizers, settings_syl_tokenizers_default, 'syllable tokenizers')
+        self.check_invalid_default_lang_utils(settings_pos_taggers, settings_pos_taggers_default, 'pos_taggers')
+        self.check_invalid_default_lang_utils(settings_pos_taggers, settings_tagsets_default, 'tagsets')
+        self.check_invalid_default_lang_utils(settings_lemmatizers, settings_lemmatizers_default, 'lemmatizers')
+        self.check_invalid_default_lang_utils(settings_stop_word_lists, settings_stop_word_lists_default, 'stop word lists')
 
 def test_settings_global():
     assert wl_settings_global.init_settings_global()

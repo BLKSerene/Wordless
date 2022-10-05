@@ -241,7 +241,6 @@ class Wl_Settings(QDialog):
 
         self.tree_settings.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.scroll_area_settings = wl_layouts.Wl_Scroll_Area(self)
         self.stacked_widget_settings = QStackedWidget(self)
 
         # General
@@ -259,7 +258,7 @@ class Wl_Settings(QDialog):
 
         # POS Tagging
         self.settings_pos_tagging = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging(self.main)
-        self.settings_pos_tagging_tagsets = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging_Tagsets(self.main, self.scroll_area_settings)
+        self.settings_pos_tagging_tagsets = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging_Tagsets(self.main)
 
         self.settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(self.main)
         self.settings_stop_words = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(self.main)
@@ -301,9 +300,12 @@ class Wl_Settings(QDialog):
         ]
 
         for settings in self.settings_all:
-            self.stacked_widget_settings.addWidget(settings)
+            scroll_area_settings = wl_layouts.Wl_Scroll_Area(self)
+            scroll_area_settings.setWidget(settings)
 
-        self.scroll_area_settings.setWidget(self.stacked_widget_settings)
+            settings.scroll_area_settings = scroll_area_settings
+
+            self.stacked_widget_settings.addWidget(scroll_area_settings)
 
         button_reset_settings = wl_buttons.Wl_Button(self.tr('Reset all settings'), self)
         button_save = QPushButton(self.tr('Save'), self)
@@ -327,7 +329,7 @@ class Wl_Settings(QDialog):
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.tree_settings, 0, 0)
-        self.layout().addWidget(self.scroll_area_settings, 0, 1)
+        self.layout().addWidget(self.stacked_widget_settings, 0, 1)
         self.layout().addLayout(layout_buttons, 1, 0, 1, 2)
 
         self.tree_settings.node_selected_old = self.tree_settings.model().item(0)

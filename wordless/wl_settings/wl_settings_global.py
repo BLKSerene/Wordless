@@ -44,6 +44,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Bengali'): ['ben', 'bn', 'Indo-European'],
             _tr('init_settings_global', 'Breton'): ['bre', 'br', 'Indo-European'],
             _tr('init_settings_global', 'Bulgarian'): ['bul', 'bg', 'Indo-European'],
+            _tr('init_settings_global', 'Burmese'): ['mya', 'my', 'Sino-Tibetan'],
             _tr('init_settings_global', 'Catalan'): ['cat', 'ca', 'Indo-European'],
             _tr('init_settings_global', 'Chinese (Simplified)'): ['zho_cn', 'zh_cn', 'Sino-Tibetan'],
             _tr('init_settings_global', 'Chinese (Traditional)'): ['zho_tw', 'zh_tw', 'Sino-Tibetan'],
@@ -84,6 +85,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Latvian'): ['lav', 'lv', 'Indo-European'],
             _tr('init_settings_global', 'Ligurian'): ['lij', 'lij', 'Unclassified'],
             _tr('init_settings_global', 'Lithuanian'): ['lit', 'lt', 'Indo-European'],
+            _tr('init_settings_global', 'Lugbara'): ['lgg', 'lgg', 'Unclassified'],
             _tr('init_settings_global', 'Luxembourgish'): ['ltz', 'lb', 'Indo-European'],
             _tr('init_settings_global', 'Macedonian'): ['mkd', 'mk', 'Indo-European'],
             _tr('init_settings_global', 'Malay'): ['msa', 'ms', 'Austronesian'],
@@ -100,7 +102,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Polish'): ['pol', 'pl', 'Indo-European'],
             _tr('init_settings_global', 'Portuguese (Brazil)'): ['por_br', 'pt_br', 'Indo-European'],
             _tr('init_settings_global', 'Portuguese (Portugal)'): ['por_pt', 'pt_pt', 'Indo-European'],
-            _tr('init_settings_global', 'Punjabi'): ['pan', 'pa', 'Indo-European'],
+            _tr('init_settings_global', 'Punjabi (Gurmukhi)'): ['pan_guru', 'pa_guru', 'Indo-European'],
             _tr('init_settings_global', 'Romanian'): ['ron', 'ro', 'Indo-European'],
             _tr('init_settings_global', 'Russian'): ['rus', 'ru', 'Indo-European'],
             _tr('init_settings_global', 'Sámi (Northern)'): ['sme', 'se', 'Uralic'],
@@ -703,6 +705,70 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Vietnamese Stop Word List'): 'spacy_vie',
                 _tr('init_settings_global', 'spaCy - Yoruba Stop Word List'): 'spacy_yor',
 
+                _tr('init_settings_global', 'stopword - Afrikaans Stop Word List'): 'stopword_afr',
+                _tr('init_settings_global', 'stopword - Arabic Stop Word List'): 'stopword_ara',
+                _tr('init_settings_global', 'stopword - Armenian Stop Word List'): 'stopword_hye',
+                _tr('init_settings_global', 'stopword - Basque Stop Word List'): 'stopword_eus',
+                _tr('init_settings_global', 'stopword - Bengali Stop Word List'): 'stopword_ben',
+                _tr('init_settings_global', 'stopword - Breton Stop Word List'): 'stopword_bre',
+                _tr('init_settings_global', 'stopword - Bulgarian Stop Word List'): 'stopword_bul',
+                _tr('init_settings_global', 'stopword - Catalan Stop Word List'): 'stopword_cat',
+                _tr('init_settings_global', 'stopword - Chinese (Simplified) Stop Word List'): 'stopword_zho_cn',
+                _tr('init_settings_global', 'stopword - Chinese (Traditional) Stop Word List'): 'stopword_zho_tw',
+                _tr('init_settings_global', 'stopword - Croatian Stop Word List'): 'stopword_hrv',
+                _tr('init_settings_global', 'stopword - Czech Stop Word List'): 'stopword_ces',
+                _tr('init_settings_global', 'stopword - Danish Stop Word List'): 'stopword_dan',
+                _tr('init_settings_global', 'stopword - Dutch Stop Word List'): 'stopword_nld',
+                _tr('init_settings_global', 'stopword - English Stop Word List'): 'stopword_eng',
+                _tr('init_settings_global', 'stopword - Esperanto Stop Word List'): 'stopword_epo',
+                _tr('init_settings_global', 'stopword - Estonian Stop Word List'): 'stopword_est',
+                _tr('init_settings_global', 'stopword - Finnish Stop Word List'): 'stopword_fin',
+                _tr('init_settings_global', 'stopword - French Stop Word List'): 'stopword_fra',
+                _tr('init_settings_global', 'stopword - Galician Stop Word List'): 'stopword_glg',
+                _tr('init_settings_global', 'stopword - German Stop Word List'): 'stopword_deu',
+                _tr('init_settings_global', 'stopword - Greek (Modern) Stop Word List'): 'stopword_ell',
+                _tr('init_settings_global', 'stopword - Gujarati Stop Word List'): 'stopword_guj',
+                _tr('init_settings_global', 'stopword - Hausa Stop Word List'): 'stopword_hau',
+                _tr('init_settings_global', 'stopword - Hebrew Stop Word List'): 'stopword_heb',
+                _tr('init_settings_global', 'stopword - Hindi Stop Word List'): 'stopword_hin',
+                _tr('init_settings_global', 'stopword - Hungarian Stop Word List'): 'stopword_hun',
+                _tr('init_settings_global', 'stopword - Indonesian Stop Word List'): 'stopword_ind',
+                _tr('init_settings_global', 'stopword - Irish Stop Word List'): 'stopword_gle',
+                _tr('init_settings_global', 'stopword - Italian Stop Word List'): 'stopword_ita',
+                _tr('init_settings_global', 'stopword - Japanese Stop Word List'): 'stopword_jpn',
+                _tr('init_settings_global', 'stopword - Korean Stop Word List'): 'stopword_kor',
+                _tr('init_settings_global', 'stopword - Kurdish Stop Word List'): 'stopword_kur',
+                _tr('init_settings_global', 'stopword - Latin Stop Word List'): 'stopword_lat',
+                _tr('init_settings_global', 'stopword - Latvian Stop Word List'): 'stopword_lav',
+                _tr('init_settings_global', 'stopword - Lithuanian Stop Word List'): 'stopword_lit',
+                _tr('init_settings_global', 'stopword - Lugbara Stop Word List'): 'stopword_lgg',
+                _tr('init_settings_global', 'stopword - Malay Stop Word List'): 'stopword_msa',
+                _tr('init_settings_global', 'stopword - Marathi Stop Word List'): 'stopword_mar',
+                _tr('init_settings_global', 'stopword - Myanmar Stop Word List'): 'stopword_mya',
+                _tr('init_settings_global', 'stopword - Norwegian Bokmål Stop Word List'): 'stopword_nob',
+                _tr('init_settings_global', 'stopword - Persian Stop Word List'): 'stopword_fas',
+                _tr('init_settings_global', 'stopword - Polish Stop Word List'): 'stopword_pol',
+                _tr('init_settings_global', 'stopword - Portuguese (Brazil) Stop Word List'): 'stopword_por_br',
+                _tr('init_settings_global', 'stopword - Portuguese (Portugal) Stop Word List'): 'stopword_por_pt',
+                _tr('init_settings_global', 'stopword - Punjabi (Gurmukhi) Stop Word List'): 'stopword_pan_guru',
+                _tr('init_settings_global', 'stopword - Romanian Stop Word List'): 'stopword_ron',
+                _tr('init_settings_global', 'stopword - Russian Stop Word List'): 'stopword_rus',
+                _tr('init_settings_global', 'stopword - Slovak Stop Word List'): 'stopword_slk',
+                _tr('init_settings_global', 'stopword - Slovenian Stop Word List'): 'stopword_slv',
+                _tr('init_settings_global', 'stopword - Somali Stop Word List'): 'stopword_som',
+                _tr('init_settings_global', 'stopword - Sotho (Southern) Stop Word List'): 'stopword_sot',
+                _tr('init_settings_global', 'stopword - Spanish Stop Word List'): 'stopword_spa',
+                _tr('init_settings_global', 'stopword - Swahili Stop Word List'): 'stopword_swa',
+                _tr('init_settings_global', 'stopword - Swedish Stop Word List'): 'stopword_swe',
+                _tr('init_settings_global', 'stopword - Tagalog Stop Word List'): 'stopword_tgl',
+                _tr('init_settings_global', 'stopword - Thai Stop Word List'): 'stopword_tha',
+                _tr('init_settings_global', 'stopword - Turkish Stop Word List'): 'stopword_tur',
+                _tr('init_settings_global', 'stopword - Ukrainian Stop Word List'): 'stopword_ukr',
+                _tr('init_settings_global', 'stopword - Urdu Stop Word List'): 'stopword_urd',
+                _tr('init_settings_global', 'stopword - Vietnamese Stop Word List'): 'stopword_vie',
+                _tr('init_settings_global', 'stopword - Yoruba Stop Word List'): 'stopword_yor',
+                _tr('init_settings_global', 'stopword - Zulu Stop Word List'): 'stopword_zul',
+
                 _tr('init_settings_global', 'Custom List'): 'custom',
             }
         },
@@ -1116,7 +1182,7 @@ def init_settings_global():
                 'spacy_por'
             ],
 
-            'pan': [
+            'pan_guru': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses'
             ],
@@ -1172,7 +1238,7 @@ def init_settings_global():
 
             'hsb': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
-                'spacy_dsb'
+                'spacy_hsb'
             ],
 
             'spa': [
@@ -1590,466 +1656,357 @@ def init_settings_global():
         'stop_word_lists': {
             'afr': [
                 'spacy_afr',
-                'custom'
+                'stopword_afr'
             ],
 
-            'sqi': [
-                'spacy_sqi',
-                'custom'
-            ],
-
-            'amh': [
-                'spacy_amh',
-                'custom'
-            ],
+            'sqi': ['spacy_sqi'],
+            'amh': ['spacy_amh'],
 
             'ara': [
                 'nltk_ara',
                 'spacy_ara',
-                'custom'
+                'stopword_ara'
             ],
 
             'hye': [
                 'spacy_hye',
-                'custom'
+                'stopword_hye'
             ],
 
             'aze': [
                 'nltk_aze',
-                'spacy_aze',
-                'custom'
+                'spacy_aze'
             ],
 
             'eus': [
                 'spacy_eus',
-                'custom'
+                'stopword_eus'
             ],
 
             'ben': [
                 'spacy_ben',
-                'custom'
+                'stopword_ben'
             ],
 
-            'bre': [
-                'custom'
-            ],
+            'bre': ['stopword_bre'],
 
             'bul': [
                 'spacy_bul',
-                'custom'
+                'stopword_bul'
             ],
 
             'cat': [
                 'spacy_cat',
-                'custom'
+                'stopword_cat'
             ],
 
             'zho_cn': [
                 'spacy_zho_cn',
-                'custom'
+                'stopword_zho_cn'
             ],
 
             'zho_tw': [
                 'spacy_zho_tw',
-                'custom'
+                'stopword_zho_tw'
             ],
 
             'hrv': [
                 'spacy_hrv',
-                'custom'
+                'stopword_hrv'
             ],
 
             'ces': [
                 'spacy_ces',
-                'custom'
+                'stopword_ces'
             ],
 
             'dan': [
                 'nltk_dan',
                 'spacy_dan',
-                'custom'
+                'stopword_dan'
             ],
 
             'nld': [
                 'nltk_nld',
                 'spacy_nld',
-                'custom'
+                'stopword_nld'
             ],
 
             'eng_gb': [
                 'nltk_eng',
                 'spacy_eng',
-                'custom'
+                'stopword_eng'
             ],
 
             'eng_us': [
                 'nltk_eng',
                 'spacy_eng',
-                'custom'
+                'stopword_eng'
             ],
 
-            'epo': [
-                'custom'
-            ],
+            'epo': ['stopword_epo'],
 
             'est': [
                 'spacy_est',
-                'custom'
+                'stopword_est'
             ],
 
             'fin': [
                 'nltk_fin',
                 'spacy_fin',
-                'custom'
+                'stopword_fin'
             ],
 
             'fra': [
                 'nltk_fra',
                 'spacy_fra',
-                'custom'
+                'stopword_fra'
             ],
 
-            'glg': [
-                'custom'
-            ],
+            'glg': ['stopword_glg'],
 
             'deu_at': [
                 'nltk_deu',
                 'spacy_deu',
-                'custom'
+                'stopword_deu'
             ],
 
             'deu_de': [
                 'nltk_deu',
                 'spacy_deu',
-                'custom'
+                'stopword_deu'
             ],
 
             'deu_ch': [
                 'nltk_deu',
                 'spacy_deu',
-                'custom'
+                'stopword_deu'
             ],
 
-            'grc': [
-                'spacy_grc',
-                'custom'
-            ],
+            'grc': ['spacy_grc'],
 
             'ell': [
                 'nltk_ell',
                 'spacy_ell',
-                'custom'
+                'stopword_ell'
             ],
 
             'guj': [
                 'spacy_guj',
-                'custom'
+                'stopword_guj'
             ],
 
-            'hau': [
-                'custom'
-            ],
+            'hau': ['stopword_hau'],
 
             'heb': [
                 'spacy_heb',
-                'custom'
+                'stopword_heb'
             ],
 
             'hin': [
                 'spacy_hin',
-                'custom'
+                'stopword_hin'
             ],
 
             'hun': [
                 'nltk_hun',
                 'spacy_hun',
-                'custom'
+                'stopword_hun'
             ],
 
-            'isl': [
-                'spacy_isl',
-                'custom'
-            ],
+            'isl': ['spacy_isl'],
 
             'ind': [
                 'nltk_ind',
                 'spacy_ind',
-                'custom'
+                'stopword_ind'
             ],
 
             'gle': [
                 'spacy_gle',
-                'custom'
+                'stopword_gle'
             ],
 
             'ita': [
                 'nltk_ita',
                 'spacy_ita',
-                'custom'
+                'stopword_ita'
             ],
 
             'jpn': [
                 'spacy_jpn',
-                'custom'
+                'stopword_jpn'
             ],
 
-            'kan': [
-                'spacy_kan',
-                'custom'
-            ],
-
-            'kaz': [
-                'nltk_kaz',
-                'custom'
-            ],
+            'kan': ['spacy_kan'],
+            'kaz': ['nltk_kaz'],
 
             'kor': [
                 'spacy_kor',
-                'custom'
+                'stopword_kor'
             ],
 
-            'kur': [
-                'custom'
-            ],
-
-            'kir': [
-                'spacy_kir',
-                'custom'
-            ],
-
-            'lat': [
-                'custom'
-            ],
+            'kur': ['stopword_kur'],
+            'kir': ['spacy_kir'],
+            'lat': ['stopword_lat'],
 
             'lav': [
                 'spacy_lav',
-                'custom'
+                'stopword_lav'
             ],
 
-            'lij': [
-                'spacy_lij',
-                'custom'
-            ],
+            'lij': ['spacy_lij'],
 
             'lit': [
                 'spacy_lit',
-                'custom'
+                'stopword_lit'
             ],
 
-            'ltz': [
-                'spacy_ltz',
-                'custom'
-            ],
-
-            'mkd': [
-                'spacy_mkd',
-                'custom'
-            ],
-
-            'msa': [
-                'custom'
-            ],
-
-            'mal': [
-                'spacy_mal',
-                'custom'
-            ],
+            'lgg': ['stopword_lgg'],
+            'ltz': ['spacy_ltz'],
+            'mkd': ['spacy_mkd'],
+            'msa': ['stopword_msa'],
+            'mal': ['spacy_mal'],
 
             'mar': [
                 'spacy_mar',
-                'custom'
+                'stopword_mar'
             ],
 
+            'mya': ['stopword_mya'],
 
             'nep': [
                 'nltk_nep',
-                'spacy_nep',
-                'custom'
+                'spacy_nep'
             ],
 
             'nob': [
                 'nltk_nob',
                 'spacy_nob',
-                'custom'
+                'stopword_nob'
             ],
 
-            'nno': [
-                'nltk_nno',
-                'custom'
-            ],
+            'nno': ['nltk_nno'],
 
             'fas': [
                 'spacy_fas',
-                'custom'
+                'stopword_fas'
             ],
 
             'pol': [
                 'spacy_pol',
-                'custom'
+                'stopword_pol'
             ],
 
             'por_br': [
                 'nltk_por',
                 'spacy_por',
-                'custom'
+                'stopword_por_br'
             ],
 
             'por_pt': [
                 'nltk_por',
                 'spacy_por',
-                'custom'
+                'stopword_por_pt'
             ],
+
+            'pan_guru': ['stopword_pan_guru'],
 
             'ron': [
                 'nltk_ron',
                 'spacy_ron',
-                'custom'
+                'stopword_ron'
             ],
 
             'rus': [
                 'nltk_rus',
                 'spacy_rus',
-                'custom'
+                'stopword_rus'
             ],
 
-            'san': [
-                'spacy_san',
-                'custom'
-            ],
-
-            'srp_cyrl': [
-                'spacy_srp_cyrl',
-                'custom'
-            ],
-
-            'srp_latn': [
-                'spacy_srp_latn',
-                'custom'
-            ],
-
-            'sin': [
-                'spacy_sin',
-                'custom'
-            ],
+            'san': ['spacy_san'],
+            'srp_cyrl': ['spacy_srp_cyrl'],
+            'srp_latn': ['spacy_srp_latn'],
+            'sin': ['spacy_sin'],
 
             'slk': [
                 'spacy_slk',
-                'custom'
+                'stopword_slk'
             ],
 
             'slv': [
                 'nltk_slv',
                 'spacy_slv',
-                'custom'
+                'stopword_slv'
             ],
 
-            'som': [
-                'custom'
-            ],
-
-            'dsb': [
-                'spacy_dsb',
-                'custom'
-            ],
-
-            'hsb': [
-                'spacy_hsb',
-                'custom'
-            ],
-
-            'sot': [
-                'custom'
-            ],
+            'som': ['stopword_som'],
+            'dsb': ['spacy_dsb'],
+            'hsb': ['spacy_hsb'],
+            'sot': ['stopword_sot'],
 
             'spa': [
                 'nltk_spa',
                 'spacy_spa',
-                'custom'
+                'stopword_spa'
             ],
 
-            'swa': [
-                'custom'
-            ],
+            'swa': ['stopword_swa'],
 
             'swe': [
                 'nltk_swe',
                 'spacy_swe',
-                'custom'
+                'stopword_swe'
             ],
 
             'tgl': [
                 'spacy_tgl',
-                'custom'
+                'stopword_tgl'
             ],
 
-            'tgk': [
-                'nltk_tgk',
-                'custom'
-            ],
-
-            'tam': [
-                'spacy_tam',
-                'custom'
-            ],
-
-            'tat': [
-                'spacy_tat',
-                'custom'
-            ],
-
-            'tel': [
-                'spacy_tel',
-                'custom'
-            ],
+            'tgk': ['nltk_tgk'],
+            'tam': ['spacy_tam'],
+            'tat': ['spacy_tat'],
+            'tel': ['spacy_tel'],
 
             'tha': [
                 'pythainlp_tha',
                 'spacy_tha',
-                'custom'
+                'stopword_tha'
             ],
 
-            'tir': [
-                'spacy_tir',
-                'custom'
-            ],
-
-            'tsn': [
-                'spacy_tsn',
-                'custom'
-            ],
+            'tir': ['spacy_tir'],
+            'tsn': ['spacy_tsn'],
 
             'tur': [
                 'nltk_tur',
                 'spacy_tur',
-                'custom'
+                'stopword_tur'
             ],
 
             'ukr': [
                 'spacy_ukr',
-                'custom'
+                'stopword_ukr'
             ],
 
             'urd': [
                 'spacy_urd',
-                'custom'
+                'stopword_urd'
             ],
 
             'vie': [
                 'spacy_vie',
-                'custom'
+                'stopword_vie'
             ],
 
             'yor': [
                 'spacy_yor',
-                'custom'
+                'stopword_yor'
             ],
 
-            'zul': [
-                'custom'
-            ],
+            'zul': ['stopword_zul'],
 
-            'other': ['custom']
+            'other': []
         },
 
         'measures_dispersion': {

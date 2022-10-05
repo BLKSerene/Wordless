@@ -94,6 +94,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         self.checkbox_to_universal_pos_tags = QCheckBox(self.tr('Convert all part-of-speech tags to universal part-of-speech tags'))
 
+        self.table_pos_taggers.setFixedHeight(370)
         self.table_pos_taggers.verticalHeader().setHidden(True)
         self.table_pos_taggers.model().setRowCount(len(self.settings_global))
 
@@ -156,8 +157,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(0, 3)
-        self.layout().setRowStretch(1, 2)
+        self.layout().setRowStretch(1, 1)
 
     def preview_changed(self):
         self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_pos_tagging_preview_lang.currentText())
@@ -263,7 +263,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
 # Part-of-speech Tagging - Tagsets
 class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
-    def __init__(self, main, scroll_area_settings):
+    def __init__(self, main):
         super().__init__(main)
 
         self.settings_global = self.main.settings_global['pos_taggers']
@@ -272,7 +272,6 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.pos_tag_mappings_loaded = False
 
-        self.scroll_area_settings = scroll_area_settings
         self.settings_tagsets = QWidget(self)
 
         # Preview Settings

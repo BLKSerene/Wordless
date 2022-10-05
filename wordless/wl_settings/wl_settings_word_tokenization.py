@@ -75,6 +75,7 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
             editable = True
         )
 
+        self.table_word_tokenizers.setFixedHeight(370)
         self.table_word_tokenizers.verticalHeader().setHidden(True)
         self.table_word_tokenizers.model().setRowCount(len(self.settings_global))
 
@@ -136,8 +137,7 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(0, 3)
-        self.layout().setRowStretch(1, 2)
+        self.layout().setRowStretch(1, 1)
 
     def preview_changed(self):
         self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_word_tokenization_preview_lang.currentText())
