@@ -22,8 +22,37 @@ import nltk
 import opencc
 import pythainlp
 
+from data import stopword
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
+
+LANG_TEXTS_NLTK = {
+    'ara': 'arabic',
+    'aze': 'azerbaijani',
+    'dan': 'danish',
+    'nld': 'dutch',
+    'eng': 'english',
+    'fin': 'finnish',
+    'fra': 'french',
+    'deu': 'german',
+    'ell': 'greek',
+    'hun': 'hungarian',
+    'ind': 'indonesian',
+    'ita': 'italian',
+    'kaz': 'kazakh',
+    'nep': 'nepali',
+    # Norwegian
+    'nob': 'norwegian',
+    'nno': 'norwegian',
+    'por': 'portuguese',
+    'ron': 'romanian',
+    'rus': 'russian',
+    'slv': 'slovene',
+    'spa': 'spanish',
+    'swe': 'swedish',
+    'tgk': 'tajik',
+    'tur': 'turkish'
+}
 
 def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
     if lang not in main.settings_global['stop_word_lists']:
@@ -37,15 +66,8 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
     if stop_word_list == 'custom':
         stop_words = main.settings_custom['stop_word_lists']['custom_lists'][lang]
     else:
-        lang_639_1 = wl_conversion.to_iso_639_1(main, lang)
-
-        # Chinese (Simplified), English, German, Portuguese
-        if lang != 'zho_tw' and not lang.startswith('srp_'):
-            lang_639_1 = wl_conversion.remove_lang_code_suffixes(main, wl_conversion.to_iso_639_1(main, lang))
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
         # Chinese (Traditional)
-        if lang_639_1 == 'zh_tw':
+        if lang == 'zho_tw':
             converter = opencc.OpenCC('s2twp')
 
             stop_words_zho_cn = wl_get_stop_word_list(
@@ -56,52 +78,39 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
             stop_words = [converter.convert(stop_word) for stop_word in stop_words_zho_cn]
         # NLTK
         elif stop_word_list.startswith('nltk_'):
-            LANG_TEXTS = {
-                'ara': 'arabic',
-                'aze': 'azerbaijani',
-                'dan': 'danish',
-                'nld': 'dutch',
-                'eng': 'english',
-                'fin': 'finnish',
-                'fra': 'french',
-                'deu': 'german',
-                'ell': 'greek',
-                'hun': 'hungarian',
-                'ind': 'indonesian',
-                'ita': 'italian',
-                'kaz': 'kazakh',
-                'nep': 'nepali',
-                # Norwegian
-                'nob': 'norwegian',
-                'nno': 'norwegian',
-                'por': 'portuguese',
-                'ron': 'romanian',
-                'rus': 'russian',
-                'slv': 'slovene',
-                'spa': 'spanish',
-                'swe': 'swedish',
-                'tgk': 'tajik',
-                'tur': 'turkish'
-            }
-
-            stop_words = nltk.corpus.stopwords.words(LANG_TEXTS[lang])
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            stop_words = nltk.corpus.stopwords.words(LANG_TEXTS_NLTK[lang])
         # spaCy
         elif stop_word_list.startswith('spacy_'):
             # Serbian
-            if lang_639_1 == 'sr_cyrl':
+            if lang.startswith('srp_'):
                 spacy_lang = importlib.import_module('spacy.lang.sr')
-
                 stop_words = spacy_lang.STOP_WORDS
-            elif lang_639_1 == 'sr_latn':
-                spacy_lang = importlib.import_module('spacy.lang.sr')
 
-                stop_words = spacy_lang.STOP_WORDS
-                stop_words = wl_nlp_utils.to_srp_latn(stop_words)
+                if lang == 'srp_latn':
+                    stop_words = wl_nlp_utils.to_srp_latn(stop_words)
             else:
-                spacy_lang = importlib.import_module(f'spacy.lang.{lang_639_1}')
+                lang = wl_conversion.to_iso_639_1(main, lang)
+                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
+                spacy_lang = importlib.import_module(f'spacy.lang.{lang}')
                 stop_words = spacy_lang.STOP_WORDS
-        # Thai
+        # stopword
+        elif stop_word_list.startswith('stopword_'):
+            if lang == 'por_br':
+                stop_words = stopword.porBr
+            elif lang == 'pan_guru':
+                stop_words = stopword.panGu
+            else:
+                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+                stop_words = stopword.__dict__[lang]
+
+            stop_words.extend(stopword.num123)
+
+            # Language-specific numbers
+            if lang in ['kor', 'mya', 'fas', 'tel']:
+                stop_words.extend(stopword.__dict__[f'num{lang.capitalize()}'])
+        # PyThaiNLP
         elif stop_word_list == 'pythainlp_tha':
             stop_words = pythainlp.corpus.common.thai_stopwords()
 

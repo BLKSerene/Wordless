@@ -602,10 +602,11 @@ Armenian                |⭕️ |✔|✖️|✖️|✔|✔
 Assamese                |⭕️ |✔|✖️|✖️|✖️|✖️
 Azerbaijani             |⭕️ |✔|✖️|✖️|✖️|✔
 Basque                  |⭕️ |✔|✖️|✖️|✖️|✔
-Belarusian              |⭕️ |⭕️ |✔|✖️|✖️|✔
+Belarusian              |⭕️ |⭕️ |✔|✖️|✖️|✖️
 Bengali                 |⭕️ |✔|✖️|✖️|✔|✔
 Breton                  |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Bulgarian               |⭕️ |✔|✔|✖️|✔|✔
+Burmese                 |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Catalan                 |⭕️ |✔|✔|✔|✔|✔
 Chinese (Simplified)    |✔|✔|✖️|✔|✖️|✔
 Chinese (Traditional)   |✔|✔|✖️|✔|✖️|✔
@@ -646,6 +647,7 @@ Latin                   |⭕️ |⭕️ |✖️|✖️|✔|✔
 Latvian                 |⭕️ |✔|✔|✖️|✔|✔
 Ligurian                |⭕️ |✔|✖️|✖️|✖️|✔
 Lithuanian              |✔|✔|✔|✔|✔|✔
+Lugbara                 |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Luxembourgish           |⭕️ |✔|✖️|✖️|✔|✔
 Macedonian              |⭕️ |✔|✖️|✔|✔|✔
 Malay                   |⭕️ |⭕️ |✖️|✖️|✔|✔
@@ -653,7 +655,7 @@ Malayalam               |⭕️ |✔|✖️|✖️|✖️|✔
 Manx                    |⭕️ |⭕️ |✖️|✖️|✔|✖️
 Marathi                 |⭕️ |✔|✖️|✖️|✖️|✔
 Meitei                  |⭕️ |✔|✖️|✖️|✖️|✖️
-Mongolian               |⭕️ |⭕️ |✔|✖️|✖️|✔
+Mongolian               |⭕️ |⭕️ |✔|✖️|✖️|✖️
 Nepali                  |⭕️ |✔|✖️|✖️|✖️|✔
 Norwegian Bokmål        |✔|✔|✔|✔|✔|✔
 Norwegian Nynorsk       |✔|⭕️ |✔|✖️|✔|✔
@@ -662,7 +664,7 @@ Persian                 |⭕️ |✔|✖️|✖️|✔|✔
 Polish                  |✔|✔|✔|✔|✔|✔
 Portuguese (Brazil)     |✔|✔|✔|✔|✔|✔
 Portuguese (Portugal)   |✔|✔|✔|✔|✔|✔
-Punjabi                 |⭕️ |✔|✖️|✖️|✖️|✖️
+Punjabi (Gurmukhi)      |⭕️ |✔|✖️|✖️|✖️|✔
 Romanian                |✔|✔|✔|✔|✔|✔
 Russian                 |✔|✔|✔|✔|✔|✔
 Sámi (Northern)         |⭕️ |⭕️ |✖️|✖️|✔|✖️
