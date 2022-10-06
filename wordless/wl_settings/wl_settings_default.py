@@ -1506,7 +1506,7 @@ def init_settings_default(main):
                 'mya': 'stopword_mya',
                 'nep': 'spacy_nep',
                 'nob': 'stopword_nob',
-                'nno': 'nltk_nno',
+                'nno': 'nltk_nor',
                 'fas': 'stopword_fas',
                 'pol': 'stopword_pol',
                 'por_br': 'stopword_por_br',
