@@ -1327,38 +1327,7 @@ def init_settings_default(main):
             'tagsets': {
                 'preview_settings': {
                     'preview_lang': 'eng_us',
-                    'preview_pos_tagger': {
-                        'cat': 'spacy_cat',
-                        'zho_cn': 'spacy_zho',
-                        'zho_tw': 'spacy_zho',
-                        'hrv': 'spacy_hrv',
-                        'dan': 'spacy_dan',
-                        'nld': 'spacy_nld',
-                        'eng_gb': 'spacy_eng',
-                        'eng_us': 'spacy_eng',
-                        'fin': 'spacy_fin',
-                        'fra': 'spacy_fra',
-                        'deu_at': 'spacy_deu',
-                        'deu_de': 'spacy_deu',
-                        'deu_ch': 'spacy_deu',
-                        'ell': 'spacy_ell',
-                        'ita': 'spacy_ita',
-                        'jpn': 'spacy_jpn',
-                        'lit': 'spacy_lit',
-                        'mkd': 'spacy_mkd',
-                        'nob': 'spacy_nob',
-                        'pol': 'spacy_pol',
-                        'por_br': 'spacy_por',
-                        'por_pt': 'spacy_por',
-                        'ron': 'spacy_ron',
-                        'rus': 'spacy_rus',
-                        'spa': 'spacy_spa',
-                        'swe': 'spacy_swe',
-                        'tha': 'pythainlp_perceptron_pud',
-                        'bod': 'botok_bod',
-                        'ukr': 'spacy_ukr',
-                        'vie': 'underthesea_vie'
-                    }
+                    'preview_pos_tagger': {}
                 },
 
                 'mapping_settings': {
@@ -1370,10 +1339,10 @@ def init_settings_default(main):
                     },
 
                     'eng_gb': {
-                        'nltk_perceptron': wl_tagset_eng_penn_treebank.MAPPINGS,
+                        'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.MAPPINGS,
                     },
                     'eng_us': {
-                        'nltk_perceptron': wl_tagset_eng_penn_treebank.MAPPINGS,
+                        'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.MAPPINGS,
                     },
 
                     'jpn': {
@@ -1381,7 +1350,7 @@ def init_settings_default(main):
                     },
 
                     'rus': {
-                        'nltk_perceptron': wl_tagset_rus_russian_national_corpus.MAPPINGS,
+                        'nltk_perceptron_rus': wl_tagset_rus_russian_national_corpus.MAPPINGS,
                         'pymorphy2_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
                     },
 
@@ -1728,6 +1697,9 @@ def init_settings_default(main):
     settings_default['figs']['line_charts']['font'] = settings_default['general']['ui_settings']['font_family']
     settings_default['figs']['network_graphs']['node_font'] = settings_default['general']['ui_settings']['font_family']
     settings_default['figs']['network_graphs']['edge_font'] = settings_default['general']['ui_settings']['font_family']
+
+    # Tagsets
+    settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']
 
     # Custom stop word lists
     for lang in settings_default['stop_word_lists']['stop_word_list_settings']:

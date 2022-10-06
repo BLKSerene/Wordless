@@ -16,8 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# botok Tagset: https://github.com/Esukhia/botok/blob/master/botok/vars.py
-# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
+# Reference: https://github.com/Esukhia/botok/blob/master/botok/vars.py
 MAPPINGS = [
     ['ADJ', 'ADJ', 'Adjectives', ''],
     ['ADP', 'ADP', 'Adposition', ''],

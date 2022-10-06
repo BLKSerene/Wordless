@@ -101,7 +101,7 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
     elif pos_tagger == 'jieba_zho':
         tokens_tagged = jieba.posseg.cut(text)
     # English & Russian
-    elif pos_tagger == 'nltk_perceptron':
+    elif pos_tagger.startswith('nltk_perceptron_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
@@ -185,7 +185,7 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
     elif pos_tagger == 'jieba_zho':
         tokens_tagged = jieba.posseg.cut(''.join(tokens))
     # English & Russian
-    elif pos_tagger == 'nltk_perceptron':
+    elif pos_tagger.startswith('nltk_perceptron_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
         tokens_tagged = nltk.pos_tag(tokens, lang = lang)

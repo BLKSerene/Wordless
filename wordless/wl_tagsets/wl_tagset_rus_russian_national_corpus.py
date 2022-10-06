@@ -16,20 +16,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# Russian National Corpus Tagset: http://www.ruscorpora.ru/en/corpora-morph.html
-# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
+# References:
+#     [Dead] http://www.ruscorpora.ru/en/corpora-morph.html
+#     https://github.com/nltk/nltk/pull/2152
 MAPPINGS = [
-    ['S', 'NOUN', 'Noun', ''],
-
-    ['S=m', 'NOUN', 'Noun (masculine)', ''],
-    ['S=f', 'NOUN', 'Noun (feminine)', ''],
-    ['S=n', 'NOUN', 'Noun (neuter)', ''],
-
-    ['S=pl', 'NOUN', 'Noun (plural)', ''],
-
-    ['S=persn', 'PROPN', 'Noun (first name)', ''],
-    ['S=famn', 'PROPN', 'Noun (family name)', ''],
-
     ['A', 'ADJ', 'Adjective', ''],
 
     ['A=m', 'ADJ', 'Adjective (masculine)', ''],
@@ -48,6 +38,35 @@ MAPPINGS = [
     ['A=comp', 'ADJ', 'Adjective (comparative)', ''],
     ['A=comp=anom', 'ADJ', 'Adjective (comparative, anomalous form)', ''],
     ['A=comp2', 'ADJ', 'Adjective (prefix по + comparative)', ''],
+
+    ['ADV', 'ADV', 'Adverb', ''],
+
+    ['ADV=comp', 'ADV', 'Adverb (comparative)', ''],
+    ['ADV=comp=anom', 'ADV', 'Adverb (comparative, anomalous form)', ''],
+    ['ADV=comp2', 'ADV', 'Adverb (prefix по + comparative)', ''],
+
+    ['ADV=anom', 'ADV', 'Adverb (anomalous form)', ''],
+    ['ADV=distort', 'ADV', 'Adverb (distorted form)', ''],
+    ['ADV=abbr', 'ADV', 'Adverb (abbreviation)', ''],
+
+    ['CONJ', 'CONJ', 'Conjunction', ''],
+    ['CONJ=distort', 'CONJ', 'Conjunction (distorted form)', ''],
+
+    ['INTJ', 'INTJ', 'Interjection', ''],
+    ['INTJ=distort', 'INTJ', 'Interjection (distorted form)', ''],
+
+    ['INIT=abbr', 'PROPN', 'Initials (abbreviation)', ''],
+
+    ['S', 'NOUN', 'Noun', ''],
+
+    ['S=m', 'NOUN', 'Noun (masculine)', ''],
+    ['S=f', 'NOUN', 'Noun (feminine)', ''],
+    ['S=n', 'NOUN', 'Noun (neuter)', ''],
+
+    ['S=pl', 'NOUN', 'Noun (plural)', ''],
+
+    ['S=persn', 'PROPN', 'Noun (first name)', ''],
+    ['S=famn', 'PROPN', 'Noun (family name)', ''],
 
     ['NUM', 'NUM', 'Numeral', ''],
 
@@ -74,7 +93,6 @@ MAPPINGS = [
 
     ['NUM=comp', 'NUM', 'Numeral (comparative)', ''],
     ['NUM=comp2', 'NUM', 'Numeral (prefix по + comparative)', ''],
-
     ['NUM=distort', 'NUM', 'Numeral (distorted form)', ''],
     ['NUM=ciph', 'NUM', 'Numeral (numeral recording)', ''],
 
@@ -82,6 +100,7 @@ MAPPINGS = [
 
     ['ANUM=m', 'ADJ', 'Numeral adjective (masculine)', ''],
     ['ANUM=f', 'ADJ', 'Numeral adjective (feminine)', ''],
+    ['A-NUM=f', 'ADJ', 'Numeral adjective (feminine)', ''],
     ['ANUM=n', 'ADJ', 'Numeral adjective (neuter)', ''],
 
     ['ANUM=sg', 'ADJ', 'Numeral adjective (singular)', ''],
@@ -92,31 +111,35 @@ MAPPINGS = [
 
     ['ANUM=ciph', 'ADJ', 'Numeral adjective (numeral recording)', ''],
 
-    ['A-NUM=f', 'ADJ', 'Numeral adjective (feminine)', ''],
+    ['PRAEDIC', 'PART', 'Predicative', ''],
+    ['PRAEDIC=comp', 'PART', 'Predicative (comparative)', ''],
+    ['PRAEDIC=comp=anom', 'PART', 'Predicative (comparative, Anolamous form)', ''],
+    ['PRAEDIC=comp2', 'PART', 'Predicative (prefix по + comparative)', ''],
+    ['PRAEDIC=distort', 'PART', 'Predicative (distorted form)', ''],
 
-    ['V', 'VERB', 'Verb', ''],
+    ['PARENTH', 'PART', 'Parenthesis', ''],
+    ['PARENTH=distort', 'PART', 'Parenthesis (distorted form)', ''],
+    ['PARENTH=abbr', 'PART', 'Parenthesis (abbreviation)', ''],
 
-    ['ADV', 'ADV', 'Adverb', ''],
+    ['PART', 'PART', 'Particle', ''],
+    ['PART=anom', 'PART', 'Particle (anomolous form)', ''],
+    ['PART=distort', 'PART', 'Particle (distorted form)', ''],
 
-    ['ADV=comp', 'ADV', 'Adverb (comparative)', ''],
-    ['ADV=comp=anom', 'ADV', 'Adverb (comparative, anomalous form)', ''],
-    ['ADV=comp2', 'ADV', 'Adverb (prefix по + comparative)', ''],
+    ['PR', 'ADP', 'Preposition', ''],
+    ['PR=anom', 'ADP', 'Preposition (anomalous form)', ''],
+    ['PR=distort', 'ADP', 'Preposition (distorted form)', ''],
+    ['PR=abbr', 'ADP', 'Preposition (abbreviation)', ''],
 
-    ['ADV=anom', 'ADV', 'Adverb (anomalous form)', ''],
-    ['ADV=distort', 'ADV', 'Adverb (distorted form)', ''],
-    ['ADV=abbr', 'ADV', 'Adverb (abbreviation)', ''],
+    ['A-PRO', 'PRON', 'Pronoun', ''],
 
-    ['PRAEDIC', 'X', 'Predicative', ''],
+    ['A-PRO=m', 'PRON', 'Pronoun (masculine)', ''],
+    ['A-PRO=f', 'PRON', 'Pronoun (feminine)', ''],
+    ['A-PRO=n', 'PRON', 'Pronoun (neuter)', ''],
 
-    ['PRAEDIC=comp', 'X', 'Predicative (comparative)', ''],
-    ['PRAEDIC=comp=anom', 'X', 'Predicative (comparative, Anolamous form)', ''],
-    ['PRAEDIC=comp2', 'X', 'Predicative (prefix по + comparative)', ''],
+    ['A-PRO=sg', 'PRON', 'Pronoun (singular)', ''],
+    ['A-PRO=pl', 'PRON', 'Pronoun (plural)', ''],
 
-    ['PRAEDIC=distort', 'X', 'Predicative (distorted form)', ''],
-
-    ['PARENTH', 'X', 'Parenthesis', ''],
-    ['PARENTH=distort', 'X', 'Parenthesis (distorted form)', ''],
-    ['PARENTH=abbr', 'X', 'Parenthesis (abbreviation)', ''],
+    ['A-PRO=dat', 'PRON', 'Pronoun (dative)', ''],
 
     ['S-PRO', 'PRON', 'Pronoun', ''],
 
@@ -133,47 +156,21 @@ MAPPINGS = [
     ['S-PRO=ins', 'PRON', 'Pronoun (instrumental)', ''],
     ['S-PRO=loc', 'PRON', 'Pronoun (locative)', ''],
 
-    ['A-PRO', 'PRON', 'Pronoun', ''],
-
-    ['A-PRO=m', 'PRON', 'Pronoun (masculine)', ''],
-    ['A-PRO=f', 'PRON', 'Pronoun (feminine)', ''],
-    ['A-PRO=n', 'PRON', 'Pronoun (neuter)', ''],
-
-    ['A-PRO=sg', 'PRON', 'Pronoun (singular)', ''],
-    ['A-PRO=pl', 'PRON', 'Pronoun (plural)', ''],
-
-    ['A-PRO=dat', 'PRON', 'Pronoun (dative)', ''],
-
     ['ADV-PRO', 'PRON', 'Adverbial pronoun', ''],
 
     ['ADV-PRO=comp', 'PRON', 'Adverbial pronoun (comparative)', ''],
     ['ADV-PRO=comp2', 'PRON', 'Adverbial pronoun (prefix по + comparative)', ''],
-
     ['ADV-PRO=anom', 'PRON', 'Adverbial pronoun (anomalous form)', ''],
     ['ADV-PRO=distort', 'PRON', 'Adverbial pronoun (distorted form)', ''],
     ['ADV-PRO=abbr', 'PRON', 'Adverbial pronoun (abbreviation)', ''],
 
     ['PRAEDIC-PRO', 'PRON', 'Predicative pronoun', ''],
+
     ['PRAEDIC-PRO=dat', 'PRON', 'Predicative pronoun (dative)', ''],
     ['PRAEDIC-PRO=ins', 'PRON', 'Predicative pronoun (instrumental)', ''],
 
-    ['PR', 'ADP', 'Preposition', ''],
-    ['PR=anom', 'ADP', 'Preposition (anomalous form)', ''],
-    ['PR=distort', 'ADP', 'Preposition (distorted form)', ''],
-    ['PR=abbr', 'ADP', 'Preposition (abbreviation)', ''],
+    ['V', 'VERB', 'Verb', ''],
 
-    ['CONJ', 'CCONJ/SCONJ', 'Conjunction', ''],
-    ['CONJ=distort', 'CCONJ/SCONJ', 'Conjunction (distorted form)', ''],
-
-    ['PART', 'PART', 'Particle', ''],
-    ['PART=anom', 'PART', 'Particle (anomolous form)', ''],
-    ['PART=distort', 'PART', 'Particle (distorted form)', ''],
-
-    ['INTJ', 'INTJ', 'Interjection', ''],
-    ['INTJ=distort', 'INTJ', 'Interjection (distorted form)', ''],
-
-    ['INIT=abbr', 'PROPN', 'Initials (abbreviation)', ''],
-
-    ['NONLEX', 'PUNCT', 'Non-lexical', ''],
-    ['NONLEX=abbr', 'PUNCT', 'Non-lexical (abbreviation)', ''],
+    ['NONLEX', 'PUNCT/SYM', 'Non-lexical', ''],
+    ['NONLEX=abbr', 'PUNCT/SYM', 'Non-lexical (abbreviation)', '']
 ]
