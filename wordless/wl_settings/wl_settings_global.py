@@ -338,7 +338,28 @@ def init_settings_global():
                 _tr('init_settings_global', 'PyThaiNLP - CRFCut'): 'pythainlp_crfcut',
                 _tr('init_settings_global', 'PyThaiNLP - ThaiSumCut'): 'pythainlp_thaisumcut',
 
-                _tr('init_settings_global', 'spaCy - Sentence Recognizer'): 'spacy_sentence_recognizer',
+                _tr('init_settings_global', 'spaCy - Catalan Sentence Recognizer'): 'spacy_sentence_recognizer_cat',
+                _tr('init_settings_global', 'spaCy - Chinese Sentence Recognizer'): 'spacy_sentence_recognizer_zho',
+                _tr('init_settings_global', 'spaCy - Croatian Sentence Recognizer'): 'spacy_sentence_recognizer_hrv',
+                _tr('init_settings_global', 'spaCy - Danish Sentence Recognizer'): 'spacy_sentence_recognizer_dan',
+                _tr('init_settings_global', 'spaCy - Dutch Sentence Recognizer'): 'spacy_sentence_recognizer_nld',
+                _tr('init_settings_global', 'spaCy - English Sentence Recognizer'): 'spacy_sentence_recognizer_eng',
+                _tr('init_settings_global', 'spaCy - Finnish Sentence Recognizer'): 'spacy_sentence_recognizer_fin',
+                _tr('init_settings_global', 'spaCy - French Sentence Recognizer'): 'spacy_sentence_recognizer_fra',
+                _tr('init_settings_global', 'spaCy - German Sentence Recognizer'): 'spacy_sentence_recognizer_deu',
+                _tr('init_settings_global', 'spaCy - Greek Sentence Recognizer'): 'spacy_sentence_recognizer_ell',
+                _tr('init_settings_global', 'spaCy - Italian Sentence Recognizer'): 'spacy_sentence_recognizer_ita',
+                _tr('init_settings_global', 'spaCy - Japanese Sentence Recognizer'): 'spacy_sentence_recognizer_jpn',
+                _tr('init_settings_global', 'spaCy - Lithuanian Sentence Recognizer'): 'spacy_sentence_recognizer_lit',
+                _tr('init_settings_global', 'spaCy - Macedonian Sentence Recognizer'): 'spacy_sentence_recognizer_mkd',
+                _tr('init_settings_global', 'spaCy - Norwegian Bokmål Sentence Recognizer'): 'spacy_sentence_recognizer_nob',
+                _tr('init_settings_global', 'spaCy - Polish Sentence Recognizer'): 'spacy_sentence_recognizer_pol',
+                _tr('init_settings_global', 'spaCy - Portuguese Sentence Recognizer'): 'spacy_sentence_recognizer_por',
+                _tr('init_settings_global', 'spaCy - Romanian Sentence Recognizer'): 'spacy_sentence_recognizer_ron',
+                _tr('init_settings_global', 'spaCy - Russian Sentence Recognizer'): 'spacy_sentence_recognizer_rus',
+                _tr('init_settings_global', 'spaCy - Spanish Sentence Recognizer'): 'spacy_sentence_recognizer_spa',
+                _tr('init_settings_global', 'spaCy - Swedish Sentence Recognizer'): 'spacy_sentence_recognizer_swe',
+                _tr('init_settings_global', 'spaCy - Ukrainian Sentence Recognizer'): 'spacy_sentence_recognizer_ukr',
                 _tr('init_settings_global', 'spaCy - Sentencizer'): 'spacy_sentencizer',
 
                 _tr('init_settings_global', 'Underthesea - Vietnamese Sentence Tokenizer'): 'underthesea_vie',
@@ -801,14 +822,22 @@ def init_settings_global():
         },
 
         'sentence_tokenizers': {
+            'cat': [
+                'spacy_sentence_recognizer_cat'
+            ],
+
             'zho_cn': [
-                'spacy_sentence_recognizer',
+                'spacy_sentence_recognizer_zho',
                 'wordless_zho'
             ],
 
             'zho_tw': [
-                'spacy_sentence_recognizer',
+                'spacy_sentence_recognizer_zho',
                 'wordless_zho'
+            ],
+
+            'hrv': [
+                'spacy_sentence_recognizer_hrv'
             ],
 
             'ces': [
@@ -818,22 +847,22 @@ def init_settings_global():
 
             'dan': [
                 'nltk_punkt_dan',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_dan'
             ],
 
             'nld': [
                 'nltk_punkt_nld',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_nld'
             ],
 
             'eng_gb': [
                 'nltk_punkt_eng',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_eng'
             ],
 
             'eng_us': [
                 'nltk_punkt_eng',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_eng'
             ],
 
             'est': [
@@ -843,45 +872,46 @@ def init_settings_global():
 
             'fin': [
                 'nltk_punkt_fin',
-                'spacy_sentencizer'
+                'spacy_sentence_recognizer_fin'
             ],
 
             'fra': [
                 'nltk_punkt_fra',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_fra'
             ],
 
             'deu_at': [
                 'nltk_punkt_deu',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_deu'
             ],
 
             'deu_de': [
                 'nltk_punkt_deu',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_deu'
             ],
 
             'deu_ch': [
                 'nltk_punkt_deu',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_deu'
             ],
 
             'ell': [
                 'nltk_punkt_ell',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_ell'
             ],
 
             'ita': [
                 'nltk_punkt_ita',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_ita'
             ],
 
             'jpn': [
-                'spacy_sentence_recognizer',
+                'spacy_sentence_recognizer_jpn',
                 'wordless_jpn'
             ],
 
-            'lit': ['spacy_sentence_recognizer'],
+            'lit': ['spacy_sentence_recognizer_lit'],
+            'mkd': ['spacy_sentence_recognizer_mkd'],
 
             'mal': [
                 'nltk_punkt_mal',
@@ -890,7 +920,7 @@ def init_settings_global():
 
             'nob': [
                 'nltk_punkt_nor',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_nob'
             ],
 
             'nno': [
@@ -900,24 +930,24 @@ def init_settings_global():
 
             'pol': [
                 'nltk_punkt_pol',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_pol'
             ],
 
             'por_br': [
                 'nltk_punkt_por',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_por'
             ],
 
             'por_pt': [
                 'nltk_punkt_por',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_por'
             ],
 
-            'ron': ['spacy_sentence_recognizer'],
+            'ron': ['spacy_sentence_recognizer_ron'],
 
             'rus': [
                 'nltk_punkt_rus',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_rus'
             ],
 
             'slv': [
@@ -927,12 +957,12 @@ def init_settings_global():
 
             'spa': [
                 'nltk_punkt_spa',
-                'spacy_sentence_recognizer'
+                'spacy_sentence_recognizer_spa'
             ],
 
             'swe': [
                 'nltk_punkt_swe',
-                'spacy_sentencizer'
+                'spacy_sentence_recognizer_swe'
             ],
 
             'tha': [
@@ -947,6 +977,7 @@ def init_settings_global():
                 'spacy_sentencizer'
             ],
 
+            'ukr': ['spacy_sentence_recognizer_ukr'],
             'vie': ['underthesea_vie'],
 
             'other': [
