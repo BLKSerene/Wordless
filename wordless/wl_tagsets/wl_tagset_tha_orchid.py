@@ -16,8 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# ORCHID Tagset: https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
-# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
+# Reference: https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
 MAPPINGS = [
     ['NPRP', 'PROPN', 'Proper noun', 'วินโดวส์ 95, โคโรน่า, โค้ก'],
 

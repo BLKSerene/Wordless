@@ -16,8 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# OpenCorpora Tagset: https://pymorphy2.readthedocs.io/en/latest/user/grammemes.html
-# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
+# Reference: https://pymorphy2.readthedocs.io/en/latest/user/grammemes.html
 MAPPINGS = [
     ['NOUN', 'NOUN', 'Noun', 'хомяк'],
     ['ADJF', 'ADJ', 'Adjective (full)', 'хороший'],
