@@ -63,12 +63,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     elif lang == 'zho_cn':
         assert sentences == ['汉语又称华语[3]、唐话[4]，概指由上古汉语（先秦雅言）发展而来、书面使用汉字的分析语，为汉藏语系最大的一支语族。', '如把整个汉语族视为单一语言，则汉语为世界使用人数最多的语言，目前全世界有五分之一人口将汉语做为母语或第二语言。']
     elif lang == 'zho_tw':
-        if sentence_tokenizer == 'spacy_sentence_recognizer_zho':
-            assert sentences == ['漢語又稱華語[3]、唐話[4]，概指由上古漢語（先秦雅言）', '發展而來、書面使用漢字的分析語，為漢藏語系最大的一支語族。', '如把整個漢語族視為單一語言，則漢語為世界使用人數最多的語言，目前全世界有五分之一人口將漢語做為母語或第二語言。']
-        elif sentence_tokenizer == 'wordless_zho':
-            assert sentences == ['漢語又稱華語[3]、唐話[4]，概指由上古漢語（先秦雅言）發展而來、書面使用漢字的分析語，為漢藏語系最大的一支語族。', '如把整個漢語族視為單一語言，則漢語為世界使用人數最多的語言，目前全世界有五分之一人口將漢語做為母語或第二語言。']
-        else:
-            sentence_tokenizer_skipped = True
+        assert sentences == ['漢語又稱華語[3]、唐話[4]，概指由上古漢語（先秦雅言）', '發展而來、書面使用漢字的分析語，為漢藏語系最大的一支語族。', '如把整個漢語族視為單一語言，則漢語為世界使用人數最多的語言，目前全世界有五分之一人口將漢語做為母語或第二語言。']
     elif lang == 'hrv':
         assert sentences == ['Hrvatski jezik (ISO 639-3: hrv \u2002Inačica izvorne stranice\u2002arhivirana 18. rujna 2012.) skupni je naziv za nacionalni standardni jezik Hrvata, te za skup narječja i govora kojima govore ili su nekada govorili Hrvati.', 'Njime govori više od 5,5 milijuna ljudi, poglavito Hrvata u Hrvatskoj (3,980.000; popis iz 2001.) i Bosni i Hercegovini (469.000; 2004.).[2] Hrvatski je materinski jezik za Hrvate u drugim zemljama; Sjedinjenim Američkim Državama (58.400; popis iz 2000.);[1] Austriji, 19.400 (popis iz 2001.); Srbiji 19.223 popis 2011.; Mađarskoj, (14.300; popis iz 2001.); Italiji (3.500; Vincent 1987.); Crnoj Gori (6.810; 2006.); Slovačkoj, 890; popis iz 2001.).']
     elif lang == 'ces':

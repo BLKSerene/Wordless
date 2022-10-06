@@ -32,6 +32,7 @@
 - Utils: Remove extra-stopwords's stop word lists
 - Utils: Remove Lemmatization Lists's lemma lists
 - Utils: Remove Stopwords ISO's stop word lists
+- Utils: Remove Wordless's Chinese and Japanese sentence tokenizers
 
 ### ⏫ Dependency Changes
 - Dependencies: Add simplemma and stopword

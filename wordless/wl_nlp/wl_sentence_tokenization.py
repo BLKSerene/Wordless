@@ -86,22 +86,6 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             doc = nlp(line)
 
             sentences.extend([sentence.text for sentence in doc.sents])
-        # Chinese & Japanese
-        elif sentence_tokenizer in ['wordless_zho', 'wordless_jpn']:
-            sentence_start = 0
-
-            for i, char in enumerate(line):
-                if i >= sentence_start and char in ['。', '！', '？', '!', '?']:
-                    for j, char_next in enumerate(line):
-                        if j > i and char_next not in ['。', '！', '？', '!', '?', '’', '”', '」', '』', '）', ')', ']', '】', '}', '>', '》']:
-                            sentences.append(line[sentence_start : j])
-
-                            sentence_start = j
-
-                            break
-
-            if sentence_start <= len(line):
-                sentences.append(line[sentence_start:])
         # Thai
         elif sentence_tokenizer == 'pythainlp_crfcut':
             sentences.extend(pythainlp.sent_tokenize(line, engine = 'crfcut'))

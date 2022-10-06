@@ -362,10 +362,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Ukrainian Sentence Recognizer'): 'spacy_sentence_recognizer_ukr',
                 _tr('init_settings_global', 'spaCy - Sentencizer'): 'spacy_sentencizer',
 
-                _tr('init_settings_global', 'Underthesea - Vietnamese Sentence Tokenizer'): 'underthesea_vie',
-
-                _tr('init_settings_global', 'Wordless - Chinese Sentence Tokenizer'): 'wordless_zho',
-                _tr('init_settings_global', 'Wordless - Japanese Sentence Tokenizer'): 'wordless_jpn'
+                _tr('init_settings_global', 'Underthesea - Vietnamese Sentence Tokenizer'): 'underthesea_vie'
             },
 
             'word_tokenizers': {
@@ -822,23 +819,10 @@ def init_settings_global():
         },
 
         'sentence_tokenizers': {
-            'cat': [
-                'spacy_sentence_recognizer_cat'
-            ],
-
-            'zho_cn': [
-                'spacy_sentence_recognizer_zho',
-                'wordless_zho'
-            ],
-
-            'zho_tw': [
-                'spacy_sentence_recognizer_zho',
-                'wordless_zho'
-            ],
-
-            'hrv': [
-                'spacy_sentence_recognizer_hrv'
-            ],
+            'cat': ['spacy_sentence_recognizer_cat'],
+            'zho_cn': ['spacy_sentence_recognizer_zho',],
+            'zho_tw': ['spacy_sentence_recognizer_zho'],
+            'hrv': ['spacy_sentence_recognizer_hrv'],
 
             'ces': [
                 'nltk_punkt_ces',
@@ -905,11 +889,7 @@ def init_settings_global():
                 'spacy_sentence_recognizer_ita'
             ],
 
-            'jpn': [
-                'spacy_sentence_recognizer_jpn',
-                'wordless_jpn'
-            ],
-
+            'jpn': ['spacy_sentence_recognizer_jpn'],
             'lit': ['spacy_sentence_recognizer_lit'],
             'mkd': ['spacy_sentence_recognizer_mkd'],
 
