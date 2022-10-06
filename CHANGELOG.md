@@ -19,13 +19,16 @@
 <div align="center"><h1>📄 Changelog</h1></div>
 
 ## [2.4.0](https://github.com/BLKSerene/Wordless/releases/tag/2.4.0) - ??/??/2022
+### 🎉 New Features
+- Utils: Add NLTK's Basque, Bengali, Catalan, Chinese (Simplified), Chinese (Traditional), and Hebrew stop word lists
+- Utils: Add NLTK's Malayalam Punkt sentence tokenizer
+- Utils: Add simplemma's lemmatizers
+- Utils: Add stopword's stop word lists
+
 ### ✨ Improvements
 - Utils: Update NLTK's English and Russian perceptron part-of-speech taggers
 
 ### ❌ Removals
-- Utils: Add NLTK's Malayalam Punkt sentence tokenizer
-- Utils: Add simplemma's lemmatizers
-- Utils: Add stopword's stop word lists
 - Utils: Remove extra-stopwords's stop word lists
 - Utils: Remove Lemmatization Lists's lemma lists
 - Utils: Remove Stopwords ISO's stop word lists

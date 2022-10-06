@@ -630,6 +630,11 @@ def init_settings_global():
             'stop_word_lists': {
                 _tr('init_settings_global', 'NLTK - Arabic Stop Word List'): 'nltk_ara',
                 _tr('init_settings_global', 'NLTK - Azerbaijani Stop Word List'): 'nltk_aze',
+                _tr('init_settings_global', 'NLTK - Basque Stop Word List'): 'nltk_eus',
+                _tr('init_settings_global', 'NLTK - Bengali Stop Word List'): 'nltk_ben',
+                _tr('init_settings_global', 'NLTK - Catalan Stop Word List'): 'nltk_cat',
+                _tr('init_settings_global', 'NLTK - Chinese (Simplified) Stop Word List'): 'nltk_zho_cn',
+                _tr('init_settings_global', 'NLTK - Chinese (Traditional) Stop Word List'): 'nltk_zho_tw',
                 _tr('init_settings_global', 'NLTK - Danish Stop Word List'): 'nltk_dan',
                 _tr('init_settings_global', 'NLTK - Dutch Stop Word List'): 'nltk_nld',
                 _tr('init_settings_global', 'NLTK - English Stop Word List'): 'nltk_eng',
@@ -637,13 +642,13 @@ def init_settings_global():
                 _tr('init_settings_global', 'NLTK - French Stop Word List'): 'nltk_fra',
                 _tr('init_settings_global', 'NLTK - German Stop Word List'): 'nltk_deu',
                 _tr('init_settings_global', 'NLTK - Greek (Modern) Stop Word List'): 'nltk_ell',
+                _tr('init_settings_global', 'NLTK - Hebrew Stop Word List'): 'nltk_heb',
                 _tr('init_settings_global', 'NLTK - Hungarian Stop Word List'): 'nltk_hun',
                 _tr('init_settings_global', 'NLTK - Indonesian Stop Word List'): 'nltk_ind',
                 _tr('init_settings_global', 'NLTK - Italian Stop Word List'): 'nltk_ita',
                 _tr('init_settings_global', 'NLTK - Kazakh Stop Word List'): 'nltk_kaz',
                 _tr('init_settings_global', 'NLTK - Nepali Stop Word List'): 'nltk_nep',
-                _tr('init_settings_global', 'NLTK - Norwegian Bokmål Stop Word List'): 'nltk_nob',
-                _tr('init_settings_global', 'NLTK - Norwegian Nynorsk Stop Word List'): 'nltk_nno',
+                _tr('init_settings_global', 'NLTK - Norwegian Stop Word List'): 'nltk_nor',
                 _tr('init_settings_global', 'NLTK - Portuguese Stop Word List'): 'nltk_por',
                 _tr('init_settings_global', 'NLTK - Romanian Stop Word List'): 'nltk_ron',
                 _tr('init_settings_global', 'NLTK - Russian Stop Word List'): 'nltk_rus',
@@ -1708,11 +1713,13 @@ def init_settings_global():
             ],
 
             'eus': [
+                'nltk_eus',
                 'spacy_eus',
                 'stopword_eus'
             ],
 
             'ben': [
+                'nltk_ben',
                 'spacy_ben',
                 'stopword_ben'
             ],
@@ -1725,16 +1732,19 @@ def init_settings_global():
             ],
 
             'cat': [
+                'nltk_cat',
                 'spacy_cat',
                 'stopword_cat'
             ],
 
             'zho_cn': [
+                'nltk_zho_cn',
                 'spacy_zho_cn',
                 'stopword_zho_cn'
             ],
 
             'zho_tw': [
+                'nltk_zho_tw',
                 'spacy_zho_tw',
                 'stopword_zho_tw'
             ],
@@ -1828,6 +1838,7 @@ def init_settings_global():
             'hau': ['stopword_hau'],
 
             'heb': [
+                'nltk_heb',
                 'spacy_heb',
                 'stopword_heb'
             ],
@@ -1910,12 +1921,12 @@ def init_settings_global():
             ],
 
             'nob': [
-                'nltk_nob',
+                'nltk_nor',
                 'spacy_nob',
                 'stopword_nob'
             ],
 
-            'nno': ['nltk_nno'],
+            'nno': ['nltk_nor'],
 
             'fas': [
                 'spacy_fas',
