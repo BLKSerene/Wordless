@@ -607,10 +607,10 @@ Bengali                 |⭕️ |✔|✖️|✖️|✔|✔
 Breton                  |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Bulgarian               |⭕️ |✔|✔|✖️|✔|✔
 Burmese                 |⭕️ |⭕️ |✖️|✖️|✖️|✔
-Catalan                 |⭕️ |✔|✔|✔|✔|✔
+Catalan                 |✔|✔|✔|✔|✔|✔
 Chinese (Simplified)    |✔|✔|✖️|✔|✖️|✔
 Chinese (Traditional)   |✔|✔|✖️|✔|✖️|✔
-Croatian                |⭕️ |✔|✔|✔|✔|✔
+Croatian                |✔|✔|✔|✔|✔|✔
 Czech                   |✔|✔|✔|✖️|✔|✔
 Danish                  |✔|✔|✔|✔|✔|✔
 Dutch                   |✔|✔|✔|✔|✔|✔
@@ -649,7 +649,7 @@ Ligurian                |⭕️ |✔|✖️|✖️|✖️|✔
 Lithuanian              |✔|✔|✔|✔|✔|✔
 Lugbara                 |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Luxembourgish           |⭕️ |✔|✖️|✖️|✔|✔
-Macedonian              |⭕️ |✔|✖️|✔|✔|✔
+Macedonian              |✔|✔|✖️|✔|✔|✔
 Malay                   |⭕️ |⭕️ |✖️|✖️|✔|✔
 Malayalam               |✔|✔|✖️|✖️|✖️|✔
 Manx                    |⭕️ |⭕️ |✖️|✖️|✔|✖️
@@ -693,7 +693,7 @@ Tibetan                 |✔|✔|✖️|✔|✔|✖️
 Tigrinya                |⭕️ |✔|✖️|✖️|✖️|✔
 Tswana                  |⭕️ |✔|✖️|✖️|✖️|✔
 Turkish                 |✔|✔|✖️|✖️|✔|✔
-Ukrainian               |⭕️ |✔|✔|✔|✔|✔
+Ukrainian               |✔|✔|✔|✔|✔|✔
 Urdu                    |⭕️ |✔|✖️|✖️|✔|✔
 Vietnamese              |✔|✔|✖️|✔|✖️|✔
 Welsh                   |⭕️ |⭕️ |✖️|✖️|✔|✖️

@@ -84,7 +84,6 @@ SPACY_LANGS = {
 SPACY_LANGS_LEMMATIZERS = ['ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'tgl', 'tur', 'urd']
 
 def init_spacy_models(main, lang):
-    # Chinese, English, German, Portuguese
     if not lang.startswith('srp_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
