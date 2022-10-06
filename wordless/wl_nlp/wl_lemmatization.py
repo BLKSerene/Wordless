@@ -94,7 +94,7 @@ def wl_lemmatize_text(main, text, lang, tokenized, tagged, lemmatizer): # pylint
         for token, pos in wl_pos_tagging.wl_pos_tag(
             main, text,
             lang = 'eng_us',
-            pos_tagger = 'nltk_perceptron',
+            pos_tagger = 'nltk_perceptron_eng',
             tagset = 'universal'
         ):
             if pos == 'ADJ':
@@ -201,7 +201,7 @@ def wl_lemmatize_tokens(main, tokens, lang, tokenized, tagged, lemmatizer): # py
         for token, pos in wl_pos_tagging.wl_pos_tag(
             main, tokens,
             lang = 'eng_us',
-            pos_tagger = 'nltk_perceptron',
+            pos_tagger = 'nltk_perceptron_eng',
             tagset = 'universal'
         ):
             if pos == 'ADJ':

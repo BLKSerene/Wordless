@@ -16,8 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# jieba Tagset: https://gist.github.com/hscspring/c985355e0814f01437eaf8fd55fd7998
-# Universal POS Tags: http://universaldependencies.org/u/pos/all.html
+# Reference: https://gist.github.com/hscspring/c985355e0814f01437eaf8fd55fd7998
 MAPPINGS = [
     ['a', 'ADJ', '形容词', ''],
     ['ad', 'ADJ', '副形词', ''],

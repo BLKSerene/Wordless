@@ -19,6 +19,9 @@
 <div align="center"><h1>📄 Changelog</h1></div>
 
 ## [2.4.0](https://github.com/BLKSerene/Wordless/releases/tag/2.4.0) - ??/??/2022
+### ✨ Improvements
+- Utils: Update NLTK's English and Russian perceptron part-of-speech taggers
+
 ### ❌ Removals
 - Utils: Add NLTK's Malayalam Punkt sentence tokenizer
 - Utils: Add simplemma's lemmatizers
