@@ -20,6 +20,7 @@
 
 ## [2.4.0](https://github.com/BLKSerene/Wordless/releases/tag/2.4.0) - ??/??/2022
 ### ❌ Removals
+- Utils: Add NLTK's Malayalam Punkt sentence tokenizer
 - Utils: Add simplemma's lemmatizers
 - Utils: Add stopword's stop word lists
 - Utils: Remove extra-stopwords's stop word lists
