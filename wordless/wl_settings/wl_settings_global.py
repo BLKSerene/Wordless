@@ -497,7 +497,10 @@ def init_settings_global():
             'pos_taggers': {
                 _tr('init_settings_global', 'botok - Tibetan Part-of-speech Tagger'): 'botok_bod',
                 _tr('init_settings_global', 'jieba - Chinese Part-of-speech Tagger'): 'jieba_zho',
-                _tr('init_settings_global', 'NLTK - Perceptron Part-of-speech Tagger'): 'nltk_perceptron',
+
+                _tr('init_settings_global', 'NLTK - English Perceptron Part-of-speech Tagger'): 'nltk_perceptron_eng',
+                _tr('init_settings_global', 'NLTK - Russian Perceptron Part-of-speech Tagger'): 'nltk_perceptron_rus',
+
                 _tr('init_settings_global', 'pymorphy2 - Morphological Analyzer'): 'pymorphy2_morphological_analyzer',
 
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron Part-of-speech Tagger (LST20)'): 'pythainlp_perceptron_lst20',
@@ -1410,12 +1413,12 @@ def init_settings_global():
             'nld': ['spacy_nld'],
 
             'eng_gb': [
-                'nltk_perceptron',
+                'nltk_perceptron_eng',
                 'spacy_eng'
             ],
 
             'eng_us': [
-                'nltk_perceptron',
+                'nltk_perceptron_eng',
                 'spacy_eng'
             ],
 
@@ -1441,7 +1444,7 @@ def init_settings_global():
             'ron': ['spacy_ron'],
 
             'rus': [
-                'nltk_perceptron',
+                'nltk_perceptron_rus',
                 'pymorphy2_morphological_analyzer',
                 'spacy_rus'
             ],
