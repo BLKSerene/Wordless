@@ -45,28 +45,25 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
     for line in lines:
         # NLTK
-        if sentence_tokenizer == 'nltk_punkt':
+        if sentence_tokenizer.startswith('nltk_punkt'):
             lang_texts = {
                 'ces': 'czech',
                 'dan': 'danish',
                 'nld': 'dutch',
-                # English
                 'eng_gb': 'english',
                 'eng_us': 'english',
                 'est': 'estonian',
                 'fin': 'finnish',
                 'fra': 'french',
-                # German
                 'deu_at': 'german',
                 'deu_de': 'german',
                 'deu_ch': 'german',
                 'ell': 'greek',
                 'ita': 'italian',
-                # Norwegian
+                'mal': 'malayalam',
                 'nob': 'norwegian',
                 'nno': 'norwegian',
                 'pol': 'polish',
-                # Portuguese
                 'por_br': 'portuguese',
                 'por_pt': 'portuguese',
                 'rus': 'russian',
@@ -74,7 +71,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
                 'spa': 'spanish',
                 'swe': 'swedish',
                 'tur': 'turkish',
-                # Other languages
+
                 'other': 'english'
             }
 

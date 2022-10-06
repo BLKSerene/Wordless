@@ -314,7 +314,26 @@ def init_settings_global():
         'lang_util_mappings': {
             'sentence_tokenizers': {
                 _tr('init_settings_global', 'botok - Tibetan Sentence Tokenizer'): 'botok_bod',
-                _tr('init_settings_global', 'NLTK - Punkt Sentence Tokenizer'): 'nltk_punkt',
+
+                _tr('init_settings_global', 'NLTK - Czech Punkt Sentence Tokenizer'): 'nltk_punkt_ces',
+                _tr('init_settings_global', 'NLTK - Danish Punkt Sentence Tokenizer'): 'nltk_punkt_dan',
+                _tr('init_settings_global', 'NLTK - Dutch Punkt Sentence Tokenizer'): 'nltk_punkt_nld',
+                _tr('init_settings_global', 'NLTK - English Punkt Sentence Tokenizer'): 'nltk_punkt_eng',
+                _tr('init_settings_global', 'NLTK - Estonian Punkt Sentence Tokenizer'): 'nltk_punkt_est',
+                _tr('init_settings_global', 'NLTK - Finnish Punkt Sentence Tokenizer'): 'nltk_punkt_fin',
+                _tr('init_settings_global', 'NLTK - French Punkt Sentence Tokenizer'): 'nltk_punkt_fra',
+                _tr('init_settings_global', 'NLTK - German Punkt Sentence Tokenizer'): 'nltk_punkt_deu',
+                _tr('init_settings_global', 'NLTK - Greek Punkt Sentence Tokenizer'): 'nltk_punkt_ell',
+                _tr('init_settings_global', 'NLTK - Italian Punkt Sentence Tokenizer'): 'nltk_punkt_ita',
+                _tr('init_settings_global', 'NLTK - Malayalam Punkt Sentence Tokenizer'): 'nltk_punkt_mal',
+                _tr('init_settings_global', 'NLTK - Norwegian Punkt Sentence Tokenizer'): 'nltk_punkt_nor',
+                _tr('init_settings_global', 'NLTK - Polish Punkt Sentence Tokenizer'): 'nltk_punkt_pol',
+                _tr('init_settings_global', 'NLTK - Portuguese Punkt Sentence Tokenizer'): 'nltk_punkt_por',
+                _tr('init_settings_global', 'NLTK - Russian Punkt Sentence Tokenizer'): 'nltk_punkt_rus',
+                _tr('init_settings_global', 'NLTK - Slovenian Punkt Sentence Tokenizer'): 'nltk_punkt_slv',
+                _tr('init_settings_global', 'NLTK - Spanish Punkt Sentence Tokenizer'): 'nltk_punkt_spa',
+                _tr('init_settings_global', 'NLTK - Swedish Punkt Sentence Tokenizer'): 'nltk_punkt_swe',
+                _tr('init_settings_global', 'NLTK - Turkish Punkt Sentence Tokenizer'): 'nltk_punkt_tur',
 
                 _tr('init_settings_global', 'PyThaiNLP - CRFCut'): 'pythainlp_crfcut',
                 _tr('init_settings_global', 'PyThaiNLP - ThaiSumCut'): 'pythainlp_thaisumcut',
@@ -785,65 +804,67 @@ def init_settings_global():
             ],
 
             'ces': [
-                'nltk_punkt',
+                'nltk_punkt_ces',
                 'spacy_sentencizer'
             ],
 
             'dan': [
-                'nltk_punkt',
+                'nltk_punkt_dan',
                 'spacy_sentence_recognizer'
             ],
 
             'nld': [
-                'nltk_punkt',
+                'nltk_punkt_nld',
                 'spacy_sentence_recognizer'
             ],
 
             'eng_gb': [
-                'nltk_punkt',
+                'nltk_punkt_eng',
                 'spacy_sentence_recognizer'
             ],
 
             'eng_us': [
-                'nltk_punkt',
+                'nltk_punkt_eng',
                 'spacy_sentence_recognizer'
             ],
 
             'est': [
-                'nltk_punkt',
+                'nltk_punkt_est',
                 'spacy_sentencizer'
             ],
 
             'fin': [
-                'nltk_punkt',
+                'nltk_punkt_fin',
                 'spacy_sentencizer'
             ],
 
             'fra': [
-                'nltk_punkt',
+                'nltk_punkt_fra',
                 'spacy_sentence_recognizer'
             ],
 
             'deu_at': [
-                'nltk_punkt',
+                'nltk_punkt_deu',
                 'spacy_sentence_recognizer'
             ],
+
             'deu_de': [
-                'nltk_punkt',
+                'nltk_punkt_deu',
                 'spacy_sentence_recognizer'
             ],
+
             'deu_ch': [
-                'nltk_punkt',
+                'nltk_punkt_deu',
                 'spacy_sentence_recognizer'
             ],
 
             'ell': [
-                'nltk_punkt',
+                'nltk_punkt_ell',
                 'spacy_sentence_recognizer'
             ],
 
             'ita': [
-                'nltk_punkt',
+                'nltk_punkt_ita',
                 'spacy_sentence_recognizer'
             ],
 
@@ -854,50 +875,55 @@ def init_settings_global():
 
             'lit': ['spacy_sentence_recognizer'],
 
+            'mal': [
+                'nltk_punkt_mal',
+                'spacy_sentencizer'
+            ],
+
             'nob': [
-                'nltk_punkt',
+                'nltk_punkt_nor',
                 'spacy_sentence_recognizer'
             ],
 
             'nno': [
-                'nltk_punkt',
+                'nltk_punkt_nor',
                 'spacy_sentencizer'
             ],
 
             'pol': [
-                'nltk_punkt',
+                'nltk_punkt_pol',
                 'spacy_sentence_recognizer'
             ],
 
             'por_br': [
-                'nltk_punkt',
+                'nltk_punkt_por',
                 'spacy_sentence_recognizer'
             ],
 
             'por_pt': [
-                'nltk_punkt',
+                'nltk_punkt_por',
                 'spacy_sentence_recognizer'
             ],
 
             'ron': ['spacy_sentence_recognizer'],
 
             'rus': [
-                'nltk_punkt',
+                'nltk_punkt_rus',
                 'spacy_sentence_recognizer'
             ],
 
             'slv': [
-                'nltk_punkt',
+                'nltk_punkt_slv',
                 'spacy_sentencizer'
             ],
 
             'spa': [
-                'nltk_punkt',
+                'nltk_punkt_spa',
                 'spacy_sentence_recognizer'
             ],
 
             'swe': [
-                'nltk_punkt',
+                'nltk_punkt_swe',
                 'spacy_sentencizer'
             ],
 
@@ -909,14 +935,14 @@ def init_settings_global():
             'bod': ['botok_bod'],
 
             'tur': [
-                'nltk_punkt',
+                'nltk_punkt_tur',
                 'spacy_sentencizer'
             ],
 
             'vie': ['underthesea_vie'],
 
             'other': [
-                'nltk_punkt',
+                'nltk_punkt_eng',
                 'spacy_sentencizer'
             ]
         },

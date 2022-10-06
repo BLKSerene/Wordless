@@ -651,7 +651,7 @@ Lugbara                 |⭕️ |⭕️ |✖️|✖️|✖️|✔
 Luxembourgish           |⭕️ |✔|✖️|✖️|✔|✔
 Macedonian              |⭕️ |✔|✖️|✔|✔|✔
 Malay                   |⭕️ |⭕️ |✖️|✖️|✔|✔
-Malayalam               |⭕️ |✔|✖️|✖️|✖️|✔
+Malayalam               |✔|✔|✖️|✖️|✖️|✔
 Manx                    |⭕️ |⭕️ |✖️|✖️|✔|✖️
 Marathi                 |⭕️ |✔|✖️|✖️|✖️|✔
 Meitei                  |⭕️ |✔|✖️|✖️|✖️|✖️
