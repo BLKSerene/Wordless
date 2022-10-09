@@ -26,7 +26,7 @@ from wordless.wl_dialogs import wl_dialogs_misc
 main = wl_test_init.Wl_Test_Main()
 
 def test_wordlist_generator():
-    print('Start testing module Wordlist Generator...')
+    print('Start testing module Wordlist Generator...\n')
 
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
@@ -67,7 +67,7 @@ def test_wordlist_generator():
             update_gui = update_gui
         ).run()
 
-    print('All pass!')
+    print('All done!')
 
     main.app.quit()
 
