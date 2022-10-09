@@ -46,8 +46,24 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
     # Untokenized
     if isinstance(inputs, str):
-        for line in inputs.splitlines():
-            tokens_tagged.extend(wl_pos_tag_text(main, line, lang, pos_tagger, tagset))
+        # spaCy
+        if pos_tagger.startswith('spacy_'):
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            nlp = main.__dict__[f'spacy_nlp_{lang}']
+
+            with nlp.select_pipes(disable = [
+                pipeline
+                for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
+                if nlp.has_pipe(pipeline)
+            ]):
+                for doc in nlp.pipe(inputs.splitlines()):
+                    if tagset in ['default', 'raw']:
+                        tokens_tagged.extend([(token.text, token.tag_) for token in doc])
+                    elif tagset == 'universal':
+                        tokens_tagged.extend([(token.text, token.pos_) for token in doc])
+        else:
+            for line in inputs.splitlines():
+                tokens_tagged.extend(wl_pos_tag_text(main, line, lang, pos_tagger))
     # Tokenized
     else:
         # Check if the first token is empty
@@ -55,8 +71,122 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
         inputs = [str(token) for token in inputs if token]
 
-        for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger):
-            tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset))
+        # spaCy
+        if pos_tagger.startswith('spacy_'):
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            nlp = main.__dict__[f'spacy_nlp_{lang}']
+
+            with nlp.select_pipes(disable = [
+                pipeline
+                for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
+                if nlp.has_pipe(pipeline)
+            ]):
+                docs = []
+
+                for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger):
+                    # The Japanese model do not have a tagger component and Japanese POS tags are taken directly from SudachiPy
+                    # See: https://github.com/explosion/spaCy/discussions/9983#discussioncomment-1910117
+                    if lang == 'jpn':
+                        docs.append(''.join(tokens))
+                    else:
+                        docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens)))
+
+                for doc in nlp.pipe(docs):
+                    if tagset in ['default', 'raw']:
+                        tokens_tagged.extend([(token.text, token.tag_) for token in doc])
+                    elif tagset == 'universal':
+                        tokens_tagged.extend([(token.text, token.pos_) for token in doc])
+        else:
+            for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger):
+                tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger))
+
+    # Remove empty tokens and strip whitespace in tokens
+    tokens_tagged = [
+        (token_clean, tag)
+        for token, tag in tokens_tagged
+        if (token_clean := str(token).strip())
+    ]
+
+    # Make sure that tokenization is not modified during POS tagging
+    if not isinstance(inputs, str):
+        i_tokens = 0
+        i_tokens_tagged = 0
+
+        len_tokens = len(inputs)
+        len_tokens_tagged = len(tokens_tagged)
+
+        if len_tokens != len_tokens_tagged:
+            tokens_tagged_modified = []
+
+            while i_tokens < len_tokens and i_tokens_tagged < len_tokens_tagged:
+                # Different token
+                if len(inputs[i_tokens]) != len(tokens_tagged[i_tokens_tagged][0]):
+                    tokens_temp = [inputs[i_tokens]]
+                    tokens_tagged_temp = [tokens_tagged[i_tokens_tagged][0]]
+                    tags_temp = [tokens_tagged[i_tokens_tagged][1]]
+
+                    # Align tokens
+                    while i_tokens < len_tokens - 1 or i_tokens_tagged < len_tokens_tagged - 1:
+                        if lang in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod']:
+                            len_tokens_temp = sum((len(token) for token in tokens_temp))
+                            len_tokens_tagged_temp = sum((len(token) for token in tokens_tagged_temp))
+                        else:
+                            # Compare length in characters with whitespace
+                            len_tokens_temp = len(' '.join(tokens_temp))
+                            len_tokens_tagged_temp = len(' '.join(tokens_tagged_temp))
+
+                        if len_tokens_temp > len_tokens_tagged_temp:
+                            tokens_tagged_temp.append(tokens_tagged[i_tokens_tagged + 1][0])
+                            tags_temp.append(tokens_tagged[i_tokens_tagged + 1][1])
+
+                            i_tokens_tagged += 1
+                        elif len_tokens_temp < len_tokens_tagged_temp:
+                            tokens_temp.append(inputs[i_tokens + 1])
+
+                            i_tokens += 1
+                        else:
+                            len_tokens_temp_tokens = len(tokens_temp)
+                            len_tokens_tagged_temp_tokens = len(tokens_tagged_temp)
+
+                            if len_tokens_temp_tokens > len_tokens_tagged_temp_tokens:
+                                tags_temp.extend([tags_temp[-1]] * (len_tokens_temp_tokens - len_tokens_tagged_temp_tokens))
+                            elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
+                                tags_temp = tags_temp[:len_tokens_temp_tokens]
+
+                            tokens_tagged_modified.extend(list(zip(tokens_temp, tags_temp)))
+
+                            tokens_temp = []
+                            tokens_tagged_temp = []
+                            tags_temp = []
+
+                            break
+
+                    if tokens_temp:
+                        len_tokens_temp_tokens = len(tokens_temp)
+                        len_tokens_tagged_temp_tokens = len(tokens_tagged_temp)
+
+                        if len_tokens_temp_tokens > len_tokens_tagged_temp_tokens:
+                            tags_temp.extend([tags_temp[-1]] * (len_tokens_temp_tokens - len_tokens_tagged_temp_tokens))
+                        elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
+                            tags_temp = tags_temp[:len_tokens_temp_tokens]
+
+                        tokens_tagged_modified.extend(list(zip(tokens_temp, tags_temp)))
+                else:
+                    tokens_tagged_modified.append((inputs[i_tokens], tokens_tagged[i_tokens_tagged][1]))
+
+                i_tokens += 1
+                i_tokens_tagged += 1
+
+            len_tokens_tagged_modified = len(tokens_tagged_modified)
+
+            if len_tokens < len_tokens_tagged_modified:
+                tokens_tagged = tokens_tagged_modified[:len_tokens]
+            elif len_tokens > len_tokens_tagged_modified:
+                tokens_tagged = tokens_tagged_modified + [tokens_tagged_modified[-1]] * (len_tokens - len_tokens_tagged_modified)
+            else:
+                tokens_tagged = tokens_tagged_modified.copy()
+        else:
+            tokens_tagged = [(token, token_tagged[1]) for token, token_tagged in zip(inputs, tokens_tagged)]
 
     # Convert to Universal Tagset
     if not pos_tagger.startswith('spacy_') and tagset == 'universal':
@@ -82,23 +212,11 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
     return tokens_tagged
 
-def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
+def wl_pos_tag_text(main, text, lang, pos_tagger):
     tokens_tagged = []
 
-    # spaCy
-    if pos_tagger.startswith('spacy_'):
-        if not lang.startswith('srp_'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
-        doc = nlp(text)
-
-        if tagset in ['default', 'raw']:
-            tokens_tagged = [(token.text, token.tag_) for token in doc]
-        elif tagset == 'universal':
-            tokens_tagged = [(token.text, token.pos_) for token in doc]
     # Chinese
-    elif pos_tagger == 'jieba_zho':
+    if pos_tagger == 'jieba_zho':
         tokens_tagged = jieba.posseg.cut(text)
     # English & Russian
     elif pos_tagger.startswith('nltk_perceptron_'):
@@ -146,43 +264,15 @@ def wl_pos_tag_text(main, text, lang, pos_tagger, tagset):
     elif pos_tagger == 'underthesea_vie':
         tokens_tagged = underthesea.pos_tag(text)
 
-    # Remove empty tokens and strip whitespace in tokens
-    tokens_tagged = [
-        (str(token).strip(), tag)
-        for token, tag in tokens_tagged
-        if str(token).strip()
-    ]
+    return list(tokens_tagged)
 
-    return tokens_tagged
-
-def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
+def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
     tokens_tagged = []
 
     lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-    # spaCy
-    if pos_tagger.startswith('spacy_'):
-        if not lang.startswith('srp_'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
-
-        if lang != 'jpn':
-            doc = spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens))
-
-            for pipe_name in nlp.pipe_names:
-                nlp.get_pipe(pipe_name)(doc)
-        # The Japanese model do not have a tagger component and Japanese POS tags are taken directly from SudachiPy
-        # See: https://github.com/explosion/spaCy/discussions/9983#discussioncomment-1910117
-        else:
-            doc = nlp(''.join(tokens))
-
-        if tagset in ['default', 'raw']:
-            tokens_tagged = [(token.text, token.tag_) for token in doc]
-        elif tagset == 'universal':
-            tokens_tagged = [(token.text, token.pos_) for token in doc]
     # Chinese
-    elif pos_tagger == 'jieba_zho':
+    if pos_tagger == 'jieba_zho':
         tokens_tagged = jieba.posseg.cut(''.join(tokens))
     # English & Russian
     elif pos_tagger.startswith('nltk_perceptron_'):
@@ -225,91 +315,4 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger, tagset):
     elif pos_tagger == 'underthesea_vie':
         tokens_tagged = underthesea.pos_tag(' '.join(tokens))
 
-    # Remove empty tokens and strip whitespace in tokens
-    tokens_tagged = [
-        (str(token).strip(), tag)
-        for token, tag in tokens_tagged
-        if str(token).strip()
-    ]
-
-    # Make sure that tokenization is not modified during POS tagging
-    i_tokens = 0
-    i_tokens_tagged = 0
-
-    len_tokens = len(tokens)
-    len_tokens_tagged = len(tokens_tagged)
-
-    if len_tokens != len_tokens_tagged:
-        tokens_tagged_modified = []
-
-        while i_tokens < len_tokens and i_tokens_tagged < len_tokens_tagged:
-            # Different token
-            if len(tokens[i_tokens]) != len(tokens_tagged[i_tokens_tagged][0]):
-                tokens_temp = [tokens[i_tokens]]
-                tokens_tagged_temp = [tokens_tagged[i_tokens_tagged][0]]
-                tags_temp = [tokens_tagged[i_tokens_tagged][1]]
-
-                # Align tokens
-                while i_tokens < len_tokens - 1 or i_tokens_tagged < len_tokens_tagged - 1:
-                    if lang in ['zho', 'jpn', 'tha', 'bod']:
-                        len_tokens_temp = sum((len(token) for token in tokens_temp))
-                        len_tokens_tagged_temp = sum((len(token) for token in tokens_tagged_temp))
-                    else:
-                        # Compare length in characters with whitespace
-                        len_tokens_temp = len(' '.join(tokens_temp))
-                        len_tokens_tagged_temp = len(' '.join(tokens_tagged_temp))
-
-                    if len_tokens_temp > len_tokens_tagged_temp:
-                        tokens_tagged_temp.append(tokens_tagged[i_tokens_tagged + 1][0])
-                        tags_temp.append(tokens_tagged[i_tokens_tagged + 1][1])
-
-                        i_tokens_tagged += 1
-                    elif len_tokens_temp < len_tokens_tagged_temp:
-                        tokens_temp.append(tokens[i_tokens + 1])
-
-                        i_tokens += 1
-                    else:
-                        len_tokens_temp_tokens = len(tokens_temp)
-                        len_tokens_tagged_temp_tokens = len(tokens_tagged_temp)
-
-                        if len_tokens_temp_tokens > len_tokens_tagged_temp_tokens:
-                            tags_temp.extend([tags_temp[-1]] * (len_tokens_temp_tokens - len_tokens_tagged_temp_tokens))
-                        elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
-                            tags_temp = tags_temp[:len_tokens_temp_tokens]
-
-                        tokens_tagged_modified.extend(list(zip(tokens_temp, tags_temp)))
-
-                        tokens_temp = []
-                        tokens_tagged_temp = []
-                        tags_temp = []
-
-                        break
-
-                if tokens_temp:
-                    len_tokens_temp_tokens = len(tokens_temp)
-                    len_tokens_tagged_temp_tokens = len(tokens_tagged_temp)
-
-                    if len_tokens_temp_tokens > len_tokens_tagged_temp_tokens:
-                        tags_temp.extend([tags_temp[-1]] * (len_tokens_temp_tokens - len_tokens_tagged_temp_tokens))
-                    elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
-                        tags_temp = tags_temp[:len_tokens_temp_tokens]
-
-                    tokens_tagged_modified.extend(list(zip(tokens_temp, tags_temp)))
-            else:
-                tokens_tagged_modified.append((tokens[i_tokens], tokens_tagged[i_tokens_tagged][1]))
-
-            i_tokens += 1
-            i_tokens_tagged += 1
-
-        len_tokens_tagged_modified = len(tokens_tagged_modified)
-
-        if len_tokens < len_tokens_tagged_modified:
-            tokens_tagged = tokens_tagged_modified[:len_tokens]
-        elif len_tokens > len_tokens_tagged_modified:
-            tokens_tagged = tokens_tagged_modified + [tokens_tagged_modified[-1]] * (len_tokens - len_tokens_tagged_modified)
-        else:
-            tokens_tagged = tokens_tagged_modified.copy()
-    else:
-        tokens_tagged = [(token, token_tagged[1]) for token, token_tagged in zip(tokens, tokens_tagged)]
-
-    return tokens_tagged
+    return list(tokens_tagged)

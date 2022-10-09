@@ -29,7 +29,7 @@ main.settings_custom['ngram_generator']['search_settings']['multi_search_mode'] 
 main.settings_custom['ngram_generator']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
 def test_ngram_generator():
-    print('Start testing module N-gram Generator...')
+    print('Start testing module N-gram Generator...\n')
 
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
@@ -88,7 +88,7 @@ def test_ngram_generator():
             update_gui = update_gui
         ).run()
 
-    print('All pass!')
+    print('All done!')
 
     main.app.quit()
 

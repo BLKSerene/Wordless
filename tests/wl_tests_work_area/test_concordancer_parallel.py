@@ -29,7 +29,7 @@ main.settings_custom['concordancer_parallel']['search_settings']['multi_search_m
 main.settings_custom['concordancer_parallel']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
 def test_concordancer_parallel():
-    print('Start testing module Parallel Concordancer...')
+    print('Start testing module Parallel Concordancer...\n')
 
     files = main.settings_custom['file_area']['files_open']
 
@@ -54,7 +54,7 @@ def test_concordancer_parallel():
             update_gui = update_gui
         ).run()
 
-    print('All pass!')
+    print('All done!')
 
     main.app.quit()
 

@@ -23,8 +23,37 @@ import nltk
 import pythainlp
 import underthesea
 
-from wordless.wl_nlp import wl_nlp_utils
+from wordless.wl_nlp import wl_nlp_utils, wl_texts
 from wordless.wl_utils import wl_conversion, wl_misc
+
+LANG_TEXTS_NLTK = {
+    'ces': 'czech',
+    'dan': 'danish',
+    'nld': 'dutch',
+    'eng_gb': 'english',
+    'eng_us': 'english',
+    'est': 'estonian',
+    'fin': 'finnish',
+    'fra': 'french',
+    'deu_at': 'german',
+    'deu_de': 'german',
+    'deu_ch': 'german',
+    'ell': 'greek',
+    'ita': 'italian',
+    'mal': 'malayalam',
+    'nob': 'norwegian',
+    'nno': 'norwegian',
+    'pol': 'polish',
+    'por_br': 'portuguese',
+    'por_pt': 'portuguese',
+    'rus': 'russian',
+    'slv': 'slovene',
+    'spa': 'spanish',
+    'swe': 'swedish',
+    'tur': 'turkish',
+
+    'other': 'english'
+}
 
 def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
     sentences = []
@@ -43,73 +72,66 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
     lines = text.splitlines()
 
-    for line in lines:
-        # NLTK
-        if sentence_tokenizer.startswith('nltk_punkt'):
-            lang_texts = {
-                'ces': 'czech',
-                'dan': 'danish',
-                'nld': 'dutch',
-                'eng_gb': 'english',
-                'eng_us': 'english',
-                'est': 'estonian',
-                'fin': 'finnish',
-                'fra': 'french',
-                'deu_at': 'german',
-                'deu_de': 'german',
-                'deu_ch': 'german',
-                'ell': 'greek',
-                'ita': 'italian',
-                'mal': 'malayalam',
-                'nob': 'norwegian',
-                'nno': 'norwegian',
-                'pol': 'polish',
-                'por_br': 'portuguese',
-                'por_pt': 'portuguese',
-                'rus': 'russian',
-                'slv': 'slovene',
-                'spa': 'spanish',
-                'swe': 'swedish',
-                'tur': 'turkish',
-
-                'other': 'english'
-            }
-
-            sentences.extend(nltk.sent_tokenize(line, language = lang_texts[lang]))
-        # spaCy
-        elif sentence_tokenizer.startswith('spacy_'):
-            # Chinese, English, German, Portuguese
-            if not lang.startswith('srp_'):
-                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
+    # spaCy
+    if sentence_tokenizer.startswith('spacy_'):
+        if lang == 'nno':
+            nlp = main.spacy_nlp_nob
+        else:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
             nlp = main.__dict__[f'spacy_nlp_{lang}']
-            doc = nlp(line)
 
-            sentences.extend([sentence.text for sentence in doc.sents])
-        # Thai
-        elif sentence_tokenizer == 'pythainlp_crfcut':
-            sentences.extend(pythainlp.sent_tokenize(line, engine = 'crfcut'))
-        elif sentence_tokenizer == 'pythainlp_thaisumcut':
-            sentences.extend(pythainlp.sent_tokenize(line, engine = 'thaisum'))
-        # Tibetan
-        elif sentence_tokenizer == 'botok_bod':
-            wl_nlp_utils.init_word_tokenizers(main, lang = 'bod')
+        with nlp.select_pipes(disable = [
+            pipeline
+            for pipeline in ['tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler']
+            if nlp.has_pipe(pipeline)
+        ]):
+            for doc in nlp.pipe(lines):
+                sentences.extend([sentence.text for sentence in doc.sents])
+    else:
+        for line in lines:
+            # NLTK
+            if sentence_tokenizer.startswith('nltk_punkt'):
+                sentences.extend(nltk.sent_tokenize(line, language = LANG_TEXTS_NLTK[lang]))
+            # Thai
+            elif sentence_tokenizer == 'pythainlp_crfcut':
+                sentences.extend(pythainlp.sent_tokenize(line, engine = 'crfcut'))
+            elif sentence_tokenizer == 'pythainlp_thaisumcut':
+                sentences.extend(pythainlp.sent_tokenize(line, engine = 'thaisum'))
+            # Tibetan
+            elif sentence_tokenizer == 'botok_bod':
+                wl_nlp_utils.init_word_tokenizers(main, lang = 'bod')
 
-            tokens = main.botok_word_tokenizer.tokenize(line)
+                tokens = main.botok_word_tokenizer.tokenize(line)
 
-            for sentence_tokens in botok.sentence_tokenizer(tokens):
-                sentences.append(''.join([
-                    sentence_token.text
-                    for sentence_token in sentence_tokens['tokens']
-                ]))
-        # Vietnamese
-        elif sentence_tokenizer == 'underthesea_vie':
-            sentences.extend(underthesea.sent_tokenize(line))
+                for sentence_tokens in botok.sentence_tokenizer(tokens):
+                    sentences.append(''.join([
+                        sentence_token.text
+                        for sentence_token in sentence_tokens['tokens']
+                    ]))
+            # Vietnamese
+            elif sentence_tokenizer == 'underthesea_vie':
+                sentences.extend(underthesea.sent_tokenize(line))
 
     # Strip spaces
     sentences = [sentence_clean for sentence in sentences if (sentence_clean := sentence.strip())] # pylint: disable=undefined-loop-variable
+
     # Record sentence boundary
-    sentences = wl_nlp_utils.record_boundary_sentences(sentences, text)
+    sentence_start = 0
+
+    text = re.sub(r'\n+', ' ', text)
+    sentences = [re.sub(r'\n+', ' ', sentence) for sentence in sentences]
+
+    for i, sentence in enumerate(sentences):
+        boundary = re.search(r'^\s+', text[sentence_start + len(sentence):])
+
+        if boundary is None:
+            boundary = ''
+        else:
+            boundary = boundary.group()
+
+        sentences[i] = wl_texts.Wl_Token(sentences[i], boundary = boundary)
+
+        sentence_start += len(sentence) + len(boundary)
 
     return sentences
 
@@ -122,7 +144,10 @@ SENTENCE_TERMINATORS = {
 RE_SENTENCE_TERMINATORS = ''.join(SENTENCE_TERMINATORS)
 
 def wl_sentence_split(main, text): # pylint: disable=unused-argument
-    return [sentence.strip() for sentence in re.findall(fr'.+?[{RE_SENTENCE_TERMINATORS}]+\s+|.+?$', text.strip())]
+    return [
+        sentence.strip()
+        for sentence in re.findall(fr'.+?[{RE_SENTENCE_TERMINATORS}]+\s+|.+?$', text.strip())
+    ]
 
 # Reference: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]
 SENTENCE_SEG_TERMINATORS = {
