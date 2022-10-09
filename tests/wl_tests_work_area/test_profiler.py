@@ -31,7 +31,7 @@ from wordless.wl_utils import wl_misc
 main = wl_test_init.Wl_Test_Main()
 
 def test_profiler():
-    print('Start testing module Profiler...')
+    print('Start testing module Profiler...\n')
 
     files = main.settings_custom['file_area']['files_open']
 
@@ -61,7 +61,7 @@ def test_profiler():
             update_gui = update_gui
         ).run()
 
-    print('All pass!')
+    print('All done!')
 
     main.app.quit()
 

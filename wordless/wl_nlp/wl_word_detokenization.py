@@ -26,7 +26,7 @@ def wl_word_detokenize(main, tokens, lang):
     text = ''
 
     if lang == 'other':
-        lang = 'eng_gb'
+        lang = 'eng_us'
 
     wl_nlp_utils.init_word_detokenizers(
         main,
@@ -34,7 +34,7 @@ def wl_word_detokenize(main, tokens, lang):
     )
 
     # Chinese
-    if lang.startswith('zho'):
+    if lang.startswith('zho_'):
         non_cjk_start = 0
 
         for i, token in enumerate(tokens):

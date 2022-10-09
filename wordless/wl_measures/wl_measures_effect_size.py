@@ -59,7 +59,7 @@ def dices_coeff(main, c11, c12, c21, c22):
 def diff_coeff(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2 = wl_measures_statistical_significance.get_freqs_marginal(c11, c12, c21, c22)
 
-    return (c11 / cx1 - c12 / cx2) / (c11 / cx1 + c12 / cx2) if cx1 and cx2 else 0
+    return (c11 / cx1 - c12 / cx2) / (c11 / cx1 + c12 / cx2) if cx1 and cx2 and (c11 or c12) else 0
 
 # Jaccard Index
 # Reference: Dunning, T. E. (1998). Finding structure in text, genome and other symbolic sequences [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf

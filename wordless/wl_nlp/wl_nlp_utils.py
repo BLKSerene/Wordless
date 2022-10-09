@@ -31,10 +31,7 @@ import spacy
 import spacy_pkuseg
 import sudachipy
 
-from wordless.wl_nlp import wl_texts
-from wordless.wl_utils import wl_conversion, wl_misc
-
-is_windows, is_macos, is_linux = wl_misc.check_os()
+from wordless.wl_utils import wl_conversion
 
 def to_lang_util_code(main, util_type, util_text):
     return main.settings_global['lang_util_mappings'][util_type][util_text]
@@ -81,10 +78,14 @@ SPACY_LANGS = {
 
     'other': 'en_core_web_sm'
 }
-SPACY_LANGS_LEMMATIZERS = ['ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp_cyrl', 'tgl', 'tur', 'urd']
+SPACY_LANGS_LEMMATIZERS = ['ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl', 'tur', 'urd']
 
 def init_spacy_models(main, lang):
-    if not lang.startswith('srp_'):
+    if lang == 'nno':
+        lang = 'nob'
+    elif lang.startswith('srp_'):
+        lang = 'srp'
+    else:
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
     if f'spacy_nlp_{lang}' not in main.__dict__:
@@ -92,16 +93,14 @@ def init_spacy_models(main, lang):
         if lang in SPACY_LANGS:
             model = importlib.import_module(SPACY_LANGS[lang])
 
-            main.__dict__[f'spacy_nlp_{lang}'] = model.load(disable = ['parser', 'ner'])
-            # Add senter
+            # Exclude NER to boost speed
+            main.__dict__[f'spacy_nlp_{lang}'] = model.load(exclude = ['ner'])
+            # Add sentence recognizer
             main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
         # Languages without models
         else:
-            # Serbian
-            if lang == 'srp_cyrl':
-                main.__dict__['spacy_nlp_srp_cyrl'] = spacy.blank('sr')
-            elif lang == 'srp_latn':
-                main.__dict__['spacy_nlp_srp_latn'] = spacy.blank('sr')
+            if lang == 'srp':
+                main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank('sr')
             else:
                 main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
 
@@ -110,17 +109,15 @@ def init_spacy_models(main, lang):
 
             if lang in SPACY_LANGS_LEMMATIZERS:
                 main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
-
                 main.__dict__[f'spacy_nlp_{lang}'].initialize()
 
 def init_sudachipy_word_tokenizer(main):
     if 'sudachipy_word_tokenizer' not in main.__dict__:
-        # SudachiPy 0.5.4 is used on macOS for backward compatiblity
-        if is_macos:
-            main.sudachipy_word_tokenizer = sudachipy.dictionary.Dictionary().create()
-        # Latest version of Python bindings of Sudachi.rs is used on Windows and Linux
-        elif is_windows or is_linux:
+        try:
             main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
+        # SudachiPy 0.5.4 is used on macOS for backward compatibility
+        except AttributeError:
+            main.sudachipy_word_tokenizer = sudachipy.dictionary.Dictionary().create()
 
 def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
@@ -235,26 +232,6 @@ def init_lemmatizers(main, lang, lemmatizer):
     # Japanese
     elif lemmatizer == 'sudachipy_jpn':
         init_sudachipy_word_tokenizer(main)
-
-def record_boundary_sentences(sentences, text):
-    sentence_start = 0
-
-    text = re.sub(r'\n+', ' ', text)
-    sentences = [re.sub(r'\n+', ' ', sentence) for sentence in sentences]
-
-    for i, sentence in enumerate(sentences):
-        boundary = re.search(r'^\s+', text[sentence_start + len(sentence):])
-
-        if boundary is None:
-            boundary = ''
-        else:
-            boundary = boundary.group()
-
-        sentences[i] = wl_texts.Wl_Token(sentences[i], boundary = boundary)
-
-        sentence_start += len(sentence) + len(boundary)
-
-    return sentences
 
 def to_sections(tokens, num_sections):
     len_tokens = len(tokens)
