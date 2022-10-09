@@ -29,7 +29,7 @@ main.settings_custom['colligation_extractor']['search_settings']['multi_search_m
 main.settings_custom['colligation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
 def test_colligation_extractor():
-    print('Start testing module Colligation Extractor... ')
+    print('Start testing module Colligation Extractor...\n')
 
     # Do not test Fisher's exact test since it is too computationally expensive
     tests_statistical_significance = [
@@ -104,7 +104,7 @@ def test_colligation_extractor():
 
     main.app.quit()
 
-    print('pass!')
+    print('All done!')
 
 def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
     print(err_msg)

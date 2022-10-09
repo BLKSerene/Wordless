@@ -29,7 +29,7 @@ main.settings_custom['concordancer']['search_settings']['multi_search_mode'] = T
 main.settings_custom['concordancer']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
 def test_concordancer():
-    print('Start testing module Concordancer...')
+    print('Start testing module Concordancer...\n')
 
     files = main.settings_custom['file_area']['files_open']
 
@@ -64,7 +64,7 @@ def test_concordancer():
             update_gui = update_gui_fig
         ).run()
 
-    print('All pass!')
+    print('All done!')
 
     main.app.quit()
 

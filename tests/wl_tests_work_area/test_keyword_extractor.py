@@ -26,7 +26,7 @@ from wordless.wl_dialogs import wl_dialogs_misc
 main = wl_test_init.Wl_Test_Main()
 
 def test_keyword_extractor():
-    print('Start testing module Keyword Extractor... ')
+    print('Start testing module Keyword Extractor...\n')
 
     # Do not test Fisher's exact test since it is too computationally expensive
     tests_statistical_significance = [
@@ -108,7 +108,7 @@ def test_keyword_extractor():
 
     main.app.quit()
 
-    print('All pass!')
+    print('All done!')
 
 def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
     print(err_msg)

@@ -59,6 +59,27 @@ def test_to_lang_util_texts():
 
         assert list(util_texts) == list(TO_LANG_UTIL_TEXT.values())
 
+def test_init_spacy_models():
+    wl_nlp_utils.init_spacy_models(main, lang = 'eng_us')
+    wl_nlp_utils.init_spacy_models(main, lang = 'nno')
+    wl_nlp_utils.init_spacy_models(main, lang = 'srp_cyrl')
+    wl_nlp_utils.init_spacy_models(main, lang = 'srp_latn')
+
+    assert 'spacy_nlp_eng' in main.__dict__
+    assert 'spacy_nlp_eng_us' not in main.__dict__
+
+    assert 'spacy_nlp_nob' in main.__dict__
+    assert 'spacy_nlp_nno' not in main.__dict__
+
+    assert 'spacy_nlp_srp' in main.__dict__
+    assert 'spacy_nlp_srp_cyrl' not in main.__dict__
+    assert 'spacy_nlp_srp_latn' not in main.__dict__
+
+def test_init_sudachipy_word_tokenizer():
+    wl_nlp_utils.init_sudachipy_word_tokenizer(main)
+
+    assert 'sudachipy_word_tokenizer' in main.__dict__
+
 def test_to_sections():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
@@ -92,6 +113,12 @@ def test_split_into_chunks_text():
     assert sections_2 == ['\n\n', ' \n 1\n', '2 \n\n', ' 3 \n \n', '\n']
     assert sections_3 == ['\n\n \n', ' 1\n2 \n\n', ' 3 \n \n\n']
 
+def test_split_token_list():
+    tokens = ['test'] * 10000
+
+    assert len(list(wl_nlp_utils.split_token_list(main, tokens, nlp_util = 'sudachipy_jpn'))) == 5
+    assert len(list(wl_nlp_utils.split_token_list(main, tokens, nlp_util = 'test'))) == 2
+
 def test_srp_cyrl_to_latn():
     tokens_srp_cyrl = wl_test_lang_examples.SENTENCE_SRP_CYRL.split()
 
@@ -117,8 +144,12 @@ if __name__ == '__main__':
     test_to_lang_util_text()
     test_to_lang_util_texts()
 
+    test_init_spacy_models()
+    test_init_sudachipy_word_tokenizer()
+
     test_to_sections()
     test_to_sections_unequal()
+    test_split_token_list()
     test_split_into_chunks_text()
 
     test_srp_cyrl_to_latn()
