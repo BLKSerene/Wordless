@@ -956,7 +956,7 @@ Juilland's D:
     \begin{align*}
         \sigma &= \sqrt{\frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{n}} \\
         CV &= \frac{\sigma}{\overline{F}} \\
-        D &= \frac{1 - CV}{\sqrt{n - 1}}
+        D &= 1- \frac{CV}{\sqrt{n - 1}}
     \end{align*}
 
 Lyne's D₃:
@@ -1004,7 +1004,7 @@ Juilland's U:
     \begin{align*}
         \sigma &= \sqrt{\frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{n}} \\
         CV &= \frac{\sigma}{\overline{F}} \\
-        D &= \frac{1 - CV}{\sqrt{n - 1}} \\
+        D &= 1- \frac{CV}{\sqrt{n - 1}} \\
         U &= D \times F
     \end{align*}
 
@@ -1320,7 +1320,7 @@ Squared Phi Coefficient<br>([Church & Gale, 1991](#doc-eng-5-church-gale-1991))|
 <span id="doc-eng-5-kincaid-et-al-1975"></span>
 [30] Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis.
 <span id="doc-eng-5-kromer-2003"></span>
-[31] Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quatitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
+[31] Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quantitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
 <span id="doc-eng-5-lexical-computing-ltd-2015"></span>
 [32] Lexical Computing Ltd. (2015, July 8). Statistics used in Sketch Engine. Retrieved November 26, 2018 from https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/<br>
 <span id="doc-eng-5-lijffijt-gries-2012"></span>
