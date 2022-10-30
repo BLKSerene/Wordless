@@ -28,7 +28,7 @@ from wordless.wl_utils import wl_conversion
 
 _tr = QCoreApplication.translate
 
-def wl_lemmatize(main, inputs, lang, tokenized = False, tagged = False, lemmatizer = 'default'): # pylint: disable=unused-argument
+def wl_lemmatize(main, inputs, lang, lemmatizer = 'default', tagged = False):
     if inputs and lang in main.settings_global['lemmatizers']:
         if lemmatizer == 'default':
             lemmatizer = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
@@ -46,7 +46,7 @@ def wl_lemmatize(main, inputs, lang, tokenized = False, tagged = False, lemmatiz
         if isinstance(inputs, str):
             lemmas = wl_lemmatize_text(main, inputs, lang, lemmatizer)
         else:
-            lemmas = wl_lemmatize_tokens(main, inputs, lang, tagged, lemmatizer)
+            lemmas = wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged)
     else:
         if isinstance(inputs, str):
             lemmas = wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)
@@ -139,7 +139,7 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
 
     return lemmas
 
-def wl_lemmatize_tokens(main, inputs, lang, tagged, lemmatizer):
+def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
     empty_offsets = []
     lemma_tokens = []
     lemmas = []

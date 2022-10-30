@@ -29,6 +29,7 @@
 ### ✨ Improvements
 - Utils: Update NLTK's English and Russian perceptron part-of-speech taggers
 - Utils: Update spaCy's sentence tokenizers, word tokenizers, part-of-speech taggers, and lemmatizers
+- Work Area: Update Search Settings / Search in Results
 
 ### ❌ Removals
 - Utils: Remove extra-stopwords's stop word lists

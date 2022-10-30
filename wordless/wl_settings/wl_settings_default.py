@@ -112,29 +112,27 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             },
 
             'context_settings': {
-                'inclusion': {
-                    'inclusion': False,
+                'incl': {
+                    'incl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -142,19 +140,18 @@ def init_settings_default(main):
                     'context_window_right': 5
                 },
 
-                'exclusion': {
-                    'exclusion': False,
+                'excl': {
+                    'excl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -220,12 +217,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             }
         },
@@ -243,29 +239,27 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             },
 
             'context_settings': {
-                'inclusion': {
-                    'inclusion': False,
+                'incl': {
+                    'incl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -273,19 +267,18 @@ def init_settings_default(main):
                     'context_window_right': 5
                 },
 
-                'exclusion': {
-                    'exclusion': False,
+                'excl': {
+                    'excl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -303,12 +296,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             }
         },
@@ -326,29 +318,27 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             },
 
             'context_settings': {
-                'inclusion': {
-                    'inclusion': False,
+                'incl': {
+                    'incl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -356,19 +346,18 @@ def init_settings_default(main):
                     'context_window_right': 5
                 },
 
-                'exclusion': {
-                    'exclusion': False,
+                'excl': {
+                    'excl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -392,12 +381,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             }
         },
@@ -477,12 +465,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             }
         },
@@ -511,12 +498,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False,
 
                 'search_term_position_min': 1,
@@ -526,19 +512,18 @@ def init_settings_default(main):
             },
 
             'context_settings': {
-                'inclusion': {
-                    'inclusion': False,
+                'incl': {
+                    'incl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -546,19 +531,18 @@ def init_settings_default(main):
                     'context_window_right': 5
                 },
 
-                'exclusion': {
-                    'exclusion': False,
+                'excl': {
+                    'excl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -631,12 +615,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             }
         },
@@ -665,29 +648,27 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             },
 
             'context_settings': {
-                'inclusion': {
-                    'inclusion': False,
+                'incl': {
+                    'incl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -695,19 +676,18 @@ def init_settings_default(main):
                     'context_window_right': 5
                 },
 
-                'exclusion': {
-                    'exclusion': False,
+                'excl': {
+                    'excl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
-                    'match_inflected_forms': True,
+                    'match_case': False,
                     'match_whole_words': False,
+                    'match_inflected_forms': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -793,12 +773,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             }
         },
@@ -827,29 +806,27 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             },
 
             'context_settings': {
-                'inclusion': {
-                    'inclusion': False,
+                'incl': {
+                    'incl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
+                    'match_case': False,
                     'match_inflected_forms': False,
                     'match_whole_words': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -857,19 +834,18 @@ def init_settings_default(main):
                     'context_window_right': 5
                 },
 
-                'exclusion': {
-                    'exclusion': False,
+                'excl': {
+                    'excl': False,
 
                     'multi_search_mode': False,
                     'search_term': '',
                     'search_terms': [],
 
-                    'ignore_case': True,
+                    'match_case': False,
                     'match_inflected_forms': False,
                     'match_whole_words': False,
                     'use_regex': False,
-
-                    'ignore_tags': False,
+                    'match_without_tags': False,
                     'match_tags': False,
 
                     'context_window_sync': False,
@@ -955,12 +931,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             },
         },
@@ -1051,12 +1026,11 @@ def init_settings_default(main):
                 'search_term': '',
                 'search_terms': [],
 
-                'ignore_case': True,
-                'match_inflected_forms': True,
+                'match_case': False,
                 'match_whole_words': False,
+                'match_inflected_forms': False,
                 'use_regex': False,
-
-                'ignore_tags': False,
+                'match_without_tags': False,
                 'match_tags': False
             }
         },
