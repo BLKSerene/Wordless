@@ -72,6 +72,7 @@ def test_log_likelihood_ratio_test():
 
     assert wl_measures_statistical_significance.log_likelihood_ratio_test(main, 1, 1, 1, 1) == (0, 1)
     assert wl_measures_statistical_significance.log_likelihood_ratio_test(main, 0, 0, 0, 0) == (0, 1)
+    print(wl_measures_statistical_significance.log_likelihood_ratio_test(main, 30, 10, 270, 690))
 
 # References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil (p. 238)
 def test_mann_whitney_u_test():

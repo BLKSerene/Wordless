@@ -53,6 +53,7 @@ jobs:
       # Run tests and collect coverage
       - name: Run Tests and collect coverage
         run: |
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_dependency_parsing.py
           pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_lemmatization.py
           pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_matching.py
           pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_nlp_utils.py
@@ -102,6 +103,7 @@ jobs:
       # Run tests
       - name: Run Tests
         run: |
+          pytest tests/wl_tests_nlp/test_dependency_parsing.py
           pytest tests/wl_tests_nlp/test_lemmatization.py
           pytest tests/wl_tests_nlp/test_matching.py
           pytest tests/wl_tests_nlp/test_nlp_utils.py
@@ -148,6 +150,7 @@ jobs:
       # Run tests
       - name: Run Tests
         run: |
+          pytest tests/wl_tests_nlp/test_dependency_parsing.py
           pytest tests/wl_tests_nlp/test_lemmatization.py
           pytest tests/wl_tests_nlp/test_matching.py
           pytest tests/wl_tests_nlp/test_nlp_utils.py

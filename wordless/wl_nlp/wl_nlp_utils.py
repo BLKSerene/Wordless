@@ -233,6 +233,11 @@ def init_lemmatizers(main, lang, lemmatizer):
     elif lemmatizer == 'sudachipy_jpn':
         init_sudachipy_word_tokenizer(main)
 
+def init_dependency_parsers(main, lang, dependency_parser):
+    # spaCy
+    if dependency_parser.startswith('spacy_'):
+        init_spacy_models(main, lang)
+
 def to_sections(tokens, num_sections):
     len_tokens = len(tokens)
 

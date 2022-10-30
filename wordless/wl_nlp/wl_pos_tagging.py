@@ -206,7 +206,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
             for token, tag in tokens_tagged
         ]
 
-    # Add the first empty token (if any)
+    # Add the first empty token, if any
     if not isinstance(inputs, str) and first_token_empty:
         tokens_tagged.insert(0, ('', ''))
 
