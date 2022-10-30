@@ -144,7 +144,7 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
             self.checkbox_lemmatize_tokens,
             self.checkbox_filter_stop_words,
 
-            self.token_checkbox_ignore_tags,
+            self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings(self)
 
@@ -159,7 +159,7 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
         self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
 
-        self.token_checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
         self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
@@ -178,7 +178,7 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(self.token_checkbox_ignore_tags, 8, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
 
         # Search Settings
@@ -191,15 +191,13 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
             self.stacked_widget_search_term,
             self.line_edit_search_term,
             self.list_search_terms,
+            self.label_delimiter,
 
-            self.label_separator,
-
-            self.checkbox_ignore_case,
-            self.checkbox_match_inflected_forms,
+            self.checkbox_match_case,
             self.checkbox_match_whole_words,
+            self.checkbox_match_inflected_forms,
             self.checkbox_use_regex,
-
-            self.search_checkbox_ignore_tags,
+            self.checkbox_match_without_tags,
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings(
             self,
@@ -223,12 +221,11 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         self.line_edit_search_term.returnPressed.connect(self.table_collocation_extractor.button_generate_table.click)
         self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
 
-        self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_case.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
-
-        self.search_checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_without_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
         layout_context_settings = wl_layouts.Wl_Layout()
@@ -241,14 +238,13 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
         self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.label_separator, 2, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
 
-        self.group_box_search_settings.layout().addWidget(self.checkbox_ignore_case, 3, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_inflected_forms, 4, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_words, 5, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_case, 3, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_words, 4, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
-
-        self.group_box_search_settings.layout().addWidget(self.search_checkbox_ignore_tags, 7, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_without_tags, 7, 0, 1, 2)
         self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
         self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
@@ -445,7 +441,7 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
         self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
-        self.token_checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Search Settings
@@ -457,12 +453,11 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
             self.line_edit_search_term.setText(settings['search_settings']['search_term'])
             self.list_search_terms.load_items(settings['search_settings']['search_terms'])
 
-        self.checkbox_ignore_case.setChecked(settings['search_settings']['ignore_case'])
-        self.checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
+        self.checkbox_match_case.setChecked(settings['search_settings']['match_case'])
         self.checkbox_match_whole_words.setChecked(settings['search_settings']['match_whole_words'])
+        self.checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
         self.checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
-
-        self.search_checkbox_ignore_tags.setChecked(settings['search_settings']['ignore_tags'])
+        self.checkbox_match_without_tags.setChecked(settings['search_settings']['match_without_tags'])
         self.checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
 
         # Context Settings
@@ -530,7 +525,7 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()
         settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
 
-        settings['ignore_tags'] = self.token_checkbox_ignore_tags.isChecked()
+        settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
         # Check if searching is enabled
@@ -554,12 +549,11 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         settings['search_term'] = self.line_edit_search_term.text()
         settings['search_terms'] = self.list_search_terms.model().stringList()
 
-        settings['ignore_case'] = self.checkbox_ignore_case.isChecked()
-        settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
+        settings['match_case'] = self.checkbox_match_case.isChecked()
         settings['match_whole_words'] = self.checkbox_match_whole_words.isChecked()
+        settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
         settings['use_regex'] = self.checkbox_use_regex.isChecked()
-
-        settings['ignore_tags'] = self.search_checkbox_ignore_tags.isChecked()
+        settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
         settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
     def generation_settings_changed(self):
@@ -653,22 +647,20 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                     offsets_sentence_segs
                 ) = text.get_offsets()
 
-                search_terms = wl_matching.match_search_terms(
+                search_terms = wl_matching.match_search_terms_ngrams(
                     self.main, tokens,
                     lang = text.lang,
-                    tokenized = text.tokenized,
                     tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     search_settings = settings['search_settings']
                 )
 
                 (
-                    search_terms_inclusion,
-                    search_terms_exclusion
+                    search_terms_incl,
+                    search_terms_excl
                 ) = wl_matching.match_search_terms_context(
                     self.main, tokens,
                     lang = text.lang,
-                    tokenized = text.tokenized,
                     tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     context_settings = settings['context_settings']
@@ -733,8 +725,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                                 if wl_matching.check_context(
                                     i, tokens,
                                     context_settings = settings['context_settings'],
-                                    search_terms_inclusion = search_terms_inclusion,
-                                    search_terms_exclusion = search_terms_exclusion
+                                    search_terms_incl = search_terms_incl,
+                                    search_terms_excl = search_terms_excl
                                 ):
                                     if (ngram, collocate) not in collocations_freqs_file:
                                         collocations_freqs_file[(ngram, collocate)] = [0] * window_size
@@ -747,8 +739,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                                 if wl_matching.check_context(
                                     i, tokens,
                                     context_settings = settings['context_settings'],
-                                    search_terms_inclusion = search_terms_inclusion,
-                                    search_terms_exclusion = search_terms_exclusion
+                                    search_terms_incl = search_terms_incl,
+                                    search_terms_excl = search_terms_excl
                                 ):
                                     if (ngram, collocate) not in collocations_freqs_file:
                                         collocations_freqs_file[(ngram, collocate)] = [0] * window_size
@@ -770,8 +762,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                                 if wl_matching.check_context(
                                     i, tokens,
                                     context_settings = settings['context_settings'],
-                                    search_terms_inclusion = search_terms_inclusion,
-                                    search_terms_exclusion = search_terms_exclusion
+                                    search_terms_incl = search_terms_incl,
+                                    search_terms_excl = search_terms_excl
                                 ):
                                     if (ngram, collocate) not in collocations_freqs_file:
                                         collocations_freqs_file[(ngram, collocate)] = [0] * window_size
@@ -793,8 +785,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                                 if wl_matching.check_context(
                                     i, tokens,
                                     context_settings = settings['context_settings'],
-                                    search_terms_inclusion = search_terms_inclusion,
-                                    search_terms_exclusion = search_terms_exclusion
+                                    search_terms_incl = search_terms_incl,
+                                    search_terms_excl = search_terms_excl
                                 ):
                                     if (ngram, collocate) not in collocations_freqs_file:
                                         collocations_freqs_file[(ngram, collocate)] = [0] * window_size

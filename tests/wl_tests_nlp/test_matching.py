@@ -137,8 +137,352 @@ def test_get_re_tags_with_tokens():
     assert re.search(re_tags_xml, r'token <>token</> token').group() == '<>token</>'
     assert re.search(re_tags_xml, r'token < >token</ > token').group() == '< >token</ >'
 
+def init_token_settings(ignore_tags = False, use_tags = False):
+    return {
+        'ignore_tags': ignore_tags,
+        'use_tags': use_tags
+    }
+
+def init_search_settings(
+    multi_search_mode = False, search_term = '', search_terms = None,
+    match_case = False, match_whole_words = False, match_inflected_forms = False,
+    use_regex = False,
+    match_without_tags = False, match_tags = False
+):
+    search_terms = search_terms or []
+
+    return {
+        'multi_search_mode': multi_search_mode,
+        'search_term': search_term,
+        'search_terms': search_terms,
+
+        'match_case': match_case,
+        'match_whole_words': match_whole_words,
+        'match_inflected_forms': match_inflected_forms,
+        'use_regex': use_regex,
+        'match_without_tags': match_without_tags,
+        'match_tags': match_tags
+    }
+
+def test_check_search_terms():
+    SEARCH_SETTINGS_1 = init_search_settings(multi_search_mode = True, search_terms = ['test'])
+    SEARCH_SETTINGS_2 = init_search_settings(multi_search_mode = False, search_term = 'test')
+    SEARCH_SETTINGS_3 = init_search_settings(multi_search_mode = False, search_term = '')
+
+    assert wl_matching.check_search_terms(SEARCH_SETTINGS_1, True) == set(['test'])
+    assert wl_matching.check_search_terms(SEARCH_SETTINGS_2, True) == set(['test'])
+    assert not wl_matching.check_search_terms(SEARCH_SETTINGS_3, True)
+    assert not wl_matching.check_search_terms(SEARCH_SETTINGS_1, False)
+
+def test_check_search_settings():
+    TOKEN_SETTINGS_1 = init_token_settings(ignore_tags = True)
+    TOKEN_SETTINGS_2 = init_token_settings(use_tags = True)
+    TOKEN_SETTINGS_3 = init_token_settings()
+
+    SEARCH_SETTINGS_1 = init_search_settings(match_inflected_forms = True, match_without_tags = True)
+    SEARCH_SETTINGS_2 = init_search_settings(match_inflected_forms = True, match_tags = True)
+    SEARCH_SETTINGS_3 = init_search_settings(match_inflected_forms = True)
+    SEARCH_SETTINGS_4 = init_search_settings(match_without_tags = True)
+    SEARCH_SETTINGS_5 = init_search_settings(match_tags = True)
+    SEARCH_SETTINGS_6 = init_search_settings()
+
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_1) == SEARCH_SETTINGS_3
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_2) == SEARCH_SETTINGS_3
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_3) == SEARCH_SETTINGS_3
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_4) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_1, SEARCH_SETTINGS_6) == SEARCH_SETTINGS_6
+
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_1) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_2) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_3) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_4) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_6
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_2, SEARCH_SETTINGS_6) == SEARCH_SETTINGS_6
+
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_1) == SEARCH_SETTINGS_1
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_2) == SEARCH_SETTINGS_5
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_3) == SEARCH_SETTINGS_3
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_4) == SEARCH_SETTINGS_4
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_5
+    assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_6) == SEARCH_SETTINGS_6
+
+def test_match_tokens():
+    assert wl_matching.match_tokens(
+        main,
+        search_terms = ['tAke'],
+        tokens = ['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'TaKEs', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings()
+    ) == set(['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'TaKEs'])
+
+    assert wl_matching.match_tokens(
+        main,
+        search_terms = ['tAke'],
+        tokens = ['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(match_case = True)
+    ) == set(['tAke'])
+
+    assert wl_matching.match_tokens(
+        main,
+        search_terms = ['take'],
+        tokens = ['take', 'takes', 'taked', 'taken', 'taking', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(match_whole_words = True)
+    ) == set(['take'])
+
+    assert wl_matching.match_tokens(
+        main,
+        search_terms = ['taked'],
+        tokens = ['take', 'takes', 'taked', 'taken', 'taking', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(match_inflected_forms = True)
+    ) == set(['take', 'takes', 'taked', 'taken', 'taking'])
+
+    assert wl_matching.match_tokens(
+        main,
+        search_terms = ['take[dn]'],
+        tokens = ['take', 'takes', 'taked', 'taken', 'taking', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(use_regex = True)
+    ) == set(['taked', 'taken'])
+
+    assert wl_matching.match_tokens(
+        main,
+        search_terms = ['take'],
+        tokens = ['take', 'take_NN', 'taked_NN', 'test'],
+        lang = 'eng_us',
+        tagged = True,
+        settings = init_search_settings(match_whole_words = True, match_without_tags = True)
+    ) == set(['take', 'take_NN'])
+
+    assert wl_matching.match_tokens(
+        main,
+        search_terms = ['_NN'],
+        tokens = ['take', 'take_NN', 'taked_NN', 'taked_NNP', 'test'],
+        lang = 'eng_us',
+        tagged = True,
+        settings = init_search_settings(match_whole_words = True, match_tags = True)
+    ) == set(['take_NN', 'taked_NN'])
+
+    assert wl_matching.match_tokens(
+        main,
+        search_terms = ['_NN'],
+        tokens = ['take', 'take_NN', 'taked_NN', 'taked_NNP', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(match_whole_words = True, match_tags = True)
+    ) == set()
+
+def test_match_ngrams():
+    assert wl_matching.match_ngrams(
+        main,
+        search_terms = ['tAke WaLK'],
+        tokens = ['take', 'TAKE', 'WaLK', 'wAlk', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings()
+    ) == set([('take', 'WaLK'), ('take', 'wAlk'), ('TAKE', 'WaLK'), ('TAKE', 'wAlk')])
+
+    assert wl_matching.match_ngrams(
+        main,
+        search_terms = ['tAke WaLK'],
+        tokens = ['take', 'tAke', 'WALK', 'WaLK', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(match_case = True)
+    ) == set([('tAke', 'WaLK')])
+
+    assert wl_matching.match_ngrams(
+        main,
+        search_terms = ['take walk'],
+        tokens = ['take', 'takes', 'walk', 'walked', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(match_whole_words = True)
+    ) == set([('take', 'walk')])
+
+    assert wl_matching.match_ngrams(
+        main,
+        search_terms = ['taked walking'],
+        tokens = ['take', 'takes', 'walk', 'walked', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(match_inflected_forms = True)
+    ) == set([('take', 'walk'), ('take', 'walked'), ('takes', 'walk'), ('takes', 'walked')])
+
+    assert wl_matching.match_ngrams(
+        main,
+        search_terms = ['take[dn] walk(s|ing)'],
+        tokens = ['taked', 'taken', 'takes', 'walks', 'walking', 'walked', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(use_regex = True)
+    ) == set([('taked', 'walks'), ('taked', 'walking'), ('taken', 'walks'), ('taken', 'walking')])
+
+    assert wl_matching.match_ngrams(
+        main,
+        search_terms = ['take walk'],
+        tokens = ['take', 'take_NN', 'taked_NN', 'walk', 'walk_NN', 'walking_NN', 'test'],
+        lang = 'eng_us',
+        tagged = True,
+        settings = init_search_settings(match_whole_words = True, match_without_tags = True)
+    ) == set([('take', 'walk'), ('take', 'walk_NN'), ('take_NN', 'walk'), ('take_NN', 'walk_NN')])
+
+    assert wl_matching.match_ngrams(
+        main,
+        search_terms = ['_NN _JJ'],
+        tokens = ['take', 'take_NN', 'taked_NN', 'taked_NNP', 'walk', 'walk_JJ', 'walked_JJ', 'walked_JJS', 'test'],
+        lang = 'eng_us',
+        tagged = True,
+        settings = init_search_settings(match_whole_words = True, match_tags = True)
+    ) == set([('take_NN', 'walk_JJ'), ('take_NN', 'walked_JJ'), ('taked_NN', 'walk_JJ'), ('taked_NN', 'walked_JJ')])
+
+    assert wl_matching.match_ngrams(
+        main,
+        search_terms = ['_NN'],
+        tokens = ['take', 'take_NN', 'taked_NN', 'taked_NNP', 'walk', 'walk_JJ', 'walked_JJ', 'walked_JJS', 'test'],
+        lang = 'eng_us',
+        tagged = False,
+        settings = init_search_settings(match_whole_words = True, match_tags = True)
+    ) == set()
+
+def test_match_search_terms_tokens():
+    assert wl_matching.match_search_terms_tokens(
+        main,
+        tokens = ['take'],
+        lang = 'eng_us',
+        tagged = False,
+        token_settings = init_token_settings(),
+        search_settings = init_search_settings(search_term = 'take')
+    ) == set(['take'])
+
+def test_match_search_terms_ngrams():
+    assert wl_matching.match_search_terms_ngrams(
+        main,
+        tokens = ['take', 'walk'],
+        lang = 'eng_us',
+        tagged = False,
+        token_settings = init_token_settings(),
+        search_settings = init_search_settings(search_term = 'take walk')
+    ) == set([('take', 'walk')])
+
+def init_context_settings(
+    incl = False, incl_multi_search_mode = False, incl_search_term = '', incl_search_terms = None,
+    incl_context_window_left = -5, incl_context_window_right = 5,
+    excl = False, excl_multi_search_mode = False, excl_search_term = '', excl_search_terms = None,
+    excl_context_window_left = -5, excl_context_window_right = 5,
+):
+    incl_search_terms = incl_search_terms or []
+    excl_search_terms = excl_search_terms or []
+
+    context_settings = {
+        'incl': init_search_settings(),
+        'excl': init_search_settings()
+    }
+
+    context_settings['incl']['incl'] = incl
+    context_settings['incl']['multi_search_mode'] = incl_multi_search_mode
+    context_settings['incl']['search_term'] = incl_search_term
+    context_settings['incl']['search_terms'] = incl_search_terms
+
+    context_settings['incl']['context_window_left'] = incl_context_window_left
+    context_settings['incl']['context_window_right'] = incl_context_window_right
+
+    context_settings['excl']['excl'] = excl
+    context_settings['excl']['multi_search_mode'] = excl_multi_search_mode
+    context_settings['excl']['search_term'] = excl_search_term
+    context_settings['excl']['search_terms'] = excl_search_terms
+
+    context_settings['excl']['context_window_left'] = excl_context_window_left
+    context_settings['excl']['context_window_right'] = excl_context_window_right
+
+    return context_settings
+
+def test_match_search_terms_context():
+    assert wl_matching.match_search_terms_context(
+        main,
+        tokens = ['take'],
+        lang = 'eng_us',
+        tagged = False,
+        token_settings = init_token_settings(),
+        context_settings = init_context_settings()
+    ) == (set(), set())
+
+    assert wl_matching.match_search_terms_context(
+        main,
+        tokens = ['take', 'walk'],
+        lang = 'eng_us',
+        tagged = False,
+        token_settings = init_token_settings(),
+        context_settings = init_context_settings(incl = True, incl_search_term = 'take walk')
+    ) == (set([('take', 'walk')]), set())
+
+    assert wl_matching.match_search_terms_context(
+        main,
+        tokens = ['take', 'walk'],
+        lang = 'eng_us',
+        tagged = False,
+        token_settings = init_token_settings(),
+        context_settings = init_context_settings(excl = True, excl_search_term = 'take walk')
+    ) == (set(), set([('take', 'walk')]))
+
+    assert wl_matching.match_search_terms_context(
+        main,
+        tokens = ['take', 'walk'],
+        lang = 'eng_us',
+        tagged = False,
+        token_settings = init_token_settings(),
+        context_settings = init_context_settings(
+            incl = True, incl_search_term = 'take walk',
+            excl = True, excl_search_term = 'take walk'
+        )
+    ) == (set([('take', 'walk')]), set([('take', 'walk')]))
+
+def test_check_context():
+    assert wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(incl = True),
+        search_terms_incl = set([('take', 'walk')]),
+        search_terms_excl = set()
+    )
+
+    assert not wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(excl = True),
+        search_terms_incl = set(),
+        search_terms_excl = set([('take', 'walk')])
+    )
+
+    assert wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(incl = True, excl = True),
+        search_terms_incl = set([('take', 'walk')]),
+        search_terms_excl = set([('take', 'test')])
+    )
+
 if __name__ == '__main__':
     test_split_tag_embedded()
     test_split_tag_non_embedded()
     test_get_re_tags()
     test_get_re_tags_with_tokens()
+
+    test_check_search_terms()
+    test_check_search_settings()
+
+    test_match_tokens()
+    test_match_ngrams()
+    test_match_search_terms_tokens()
+    test_match_search_terms_ngrams()
+
+    test_match_search_terms_context()
+    test_check_context()
