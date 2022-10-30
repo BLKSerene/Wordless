@@ -788,31 +788,31 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
     @wl_misc.log_timing
     def _open_files(self, files_to_open):
-        def update_gui(err_msg, new_files):
-            if not err_msg:
-                len_files_old = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'])
-
-                self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].extend(new_files)
-                self.update_table()
-
-                len_files_opened = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']) - len_files_old
-                msg_file = self.tr('file') if len_files_opened == 1 else self.tr('files')
-
-                self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
-            else:
-                wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-
-                wl_msgs.wl_msg_fatal_error(self.main)
-
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
 
         wl_threading.Wl_Thread(Wl_Worker_Open_Files(
             self.main,
             dialog_progress = dialog_progress,
-            update_gui = update_gui,
+            update_gui = self.update_gui,
             files_to_open = files_to_open,
             file_type = self.file_type
         )).start_worker()
+
+    def update_gui(self, err_msg, new_files):
+        if not err_msg:
+            len_files_old = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'])
+
+            self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].extend(new_files)
+            self.update_table()
+
+            len_files_opened = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']) - len_files_old
+            msg_file = self.tr('file') if len_files_opened == 1 else self.tr('files')
+
+            self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
+        else:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
+
+            wl_msgs.wl_msg_fatal_error(self.main)
 
     def open_files(self):
         self.dialog_open_files = Dialog_Open_Files(self.main)
@@ -874,7 +874,6 @@ class Wl_Table_Files(wl_tables.Wl_Table):
     def close_all(self):
         self._close_files(list(range(len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']))))
 
-# Observed files
 class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
     def __init__(self, main, file_type = 'observed'):
         super().__init__(main)

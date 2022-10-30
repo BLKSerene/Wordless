@@ -24,6 +24,7 @@
 - Utils: Add NLTK's Malayalam Punkt sentence tokenizer
 - Utils: Add simplemma's lemmatizers
 - Utils: Add stopword's stop word lists
+- Work Area: Add Dependency Parser
 
 ### ✨ Improvements
 - Utils: Update NLTK's English and Russian perceptron part-of-speech taggers

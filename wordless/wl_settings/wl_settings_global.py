@@ -815,6 +815,31 @@ def init_settings_global():
                 _tr('init_settings_global', 'stopword - Zulu Stop Word List'): 'stopword_zul',
 
                 _tr('init_settings_global', 'Custom List'): 'custom',
+            },
+
+            'dependency_parsers':{
+                _tr('init_settings_global', 'spaCy - Catalan Dependency Parser'): 'spacy_cat',
+                _tr('init_settings_global', 'spaCy - Chinese Dependency Parser'): 'spacy_zho',
+                _tr('init_settings_global', 'spaCy - Croatian Dependency Parser'): 'spacy_hrv',
+                _tr('init_settings_global', 'spaCy - Danish Dependency Parser'): 'spacy_dan',
+                _tr('init_settings_global', 'spaCy - Dutch Dependency Parser'): 'spacy_nld',
+                _tr('init_settings_global', 'spaCy - English Dependency Parser'): 'spacy_eng',
+                _tr('init_settings_global', 'spaCy - Finnish Dependency Parser'): 'spacy_fin',
+                _tr('init_settings_global', 'spaCy - French Dependency Parser'): 'spacy_fra',
+                _tr('init_settings_global', 'spaCy - German Dependency Parser'): 'spacy_deu',
+                _tr('init_settings_global', 'spaCy - Greek (Modern) Dependency Parser'): 'spacy_ell',
+                _tr('init_settings_global', 'spaCy - Italian Dependency Parser'): 'spacy_ita',
+                _tr('init_settings_global', 'spaCy - Japanese Dependency Parser'): 'spacy_jpn',
+                _tr('init_settings_global', 'spaCy - Lithuanian Dependency Parser'): 'spacy_lit',
+                _tr('init_settings_global', 'spaCy - Macedonian Dependency Parser'): 'spacy_mkd',
+                _tr('init_settings_global', 'spaCy - Norwegian Bokmål Dependency Parser'): 'spacy_nob',
+                _tr('init_settings_global', 'spaCy - Polish Dependency Parser'): 'spacy_pol',
+                _tr('init_settings_global', 'spaCy - Portuguese Dependency Parser'): 'spacy_por',
+                _tr('init_settings_global', 'spaCy - Romanian Dependency Parser'): 'spacy_ron',
+                _tr('init_settings_global', 'spaCy - Russian Dependency Parser'): 'spacy_rus',
+                _tr('init_settings_global', 'spaCy - Spanish Dependency Parser'): 'spacy_spa',
+                _tr('init_settings_global', 'spaCy - Swedish Dependency Parser'): 'spacy_swe',
+                _tr('init_settings_global', 'spaCy - Ukrainian Dependency Parser'): 'spacy_ukr'
             }
         },
 
@@ -2058,6 +2083,36 @@ def init_settings_global():
             'zul': ['stopword_zul'],
 
             'other': []
+        },
+
+        'dependency_parsers': {
+            'cat': ['spacy_cat'],
+            'zho_cn': ['spacy_zho'],
+            'zho_tw': ['spacy_zho'],
+            'hrv': ['spacy_hrv'],
+            'dan': ['spacy_dan'],
+            'nld': ['spacy_nld'],
+            'eng_gb': ['spacy_eng'],
+            'eng_us': ['spacy_eng'],
+            'fin': ['spacy_fin'],
+            'fra': ['spacy_fra'],
+            'deu_at': ['spacy_deu'],
+            'deu_de': ['spacy_deu'],
+            'deu_ch': ['spacy_deu'],
+            'ell': ['spacy_ell'],
+            'ita': ['spacy_ita'],
+            'jpn': ['spacy_jpn'],
+            'lit': ['spacy_lit'],
+            'mkd': ['spacy_mkd'],
+            'nob': ['spacy_nob'],
+            'pol': ['spacy_pol'],
+            'por_br': ['spacy_por'],
+            'por_pt': ['spacy_por'],
+            'ron': ['spacy_ron'],
+            'rus': ['spacy_rus'],
+            'spa': ['spacy_spa'],
+            'swe': ['spacy_swe'],
+            'ukr': ['spacy_ukr']
         },
 
         'measures_dispersion': {

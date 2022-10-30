@@ -771,22 +771,25 @@ class Wl_Table(QTableView):
             self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def is_empty(self):
-        empty = False
-
         if self.header_orientation == 'hor':
-            if not any((
-                    self.indexWidget(self.model().index(0, i)) or self.model().item(0, i)
-                    for i in range(self.model().columnCount())
-            )):
-                empty = True
+            return not any((
+                self.model().item(0, i) or self.indexWidget(self.model().index(0, i))
+                for i in range(self.model().columnCount())
+            ))
         else:
-            if not any((
-                    self.indexWidget(self.model().index(i, 0)) or self.model().item(i, 0)
-                    for i in range(self.model().rowCount())
-            )):
-                empty = True
+            return not any((
+                self.model().item(i, 0) or self.indexWidget(self.model().index(i, 0))
+                for i in range(self.model().rowCount())
+            ))
 
-        return empty
+    def is_visible(self):
+        return any((
+            not self.isRowHidden(i)
+            for i in range(self.model().rowCount())
+        ))
+
+    def is_selected(self):
+        return bool(self.selectionModel().selectedIndexes())
 
     def get_header_labels_hor(self):
         return (self.model().headerData(row, Qt.Horizontal) for row in range(self.model().columnCount()))
@@ -1093,14 +1096,12 @@ class Wl_Table_Data(Wl_Table):
         self.clr_table()
 
     def item_changed(self, item):
-        rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
-
-        if [i for i in range(self.model().columnCount()) if self.model().item(0, i)] and rows_visible:
+        if not self.is_empty() and self.is_visible():
             self.button_exp_all.setEnabled(True)
         else:
             self.button_exp_all.setEnabled(False)
 
-        if [i for i in range(self.model().columnCount()) if self.model().item(0, i)]:
+        if not self.is_empty():
             self.button_clr.setEnabled(True)
         else:
             self.button_clr.setEnabled(False)
@@ -1110,14 +1111,15 @@ class Wl_Table_Data(Wl_Table):
         self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def selection_changed(self, selected, deselected):
-        if not self.is_empty() and [i for i in range(self.model().rowCount()) if not self.isRowHidden(i)] and self.selectionModel().selectedIndexes():
+        if not self.is_empty() and self.is_visible() and self.is_selected():
             self.button_exp_selected.setEnabled(True)
         else:
             self.button_exp_selected.setEnabled(False)
 
     def sorting_changed(self, logicalIndex, order): # pylint: disable=unused-argument
         if not self.is_empty():
-            self.update_ranks()
+            if _tr('Wl_Table_Data', 'Rank') in self.get_header_labels_hor():
+                self.update_ranks()
 
             if self.show_cumulative:
                 self.toggle_cumulative()

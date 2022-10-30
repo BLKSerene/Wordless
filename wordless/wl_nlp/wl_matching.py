@@ -109,6 +109,80 @@ def get_re_tags_with_tokens(main, tag_type):
     return '|'.join(tags_embedded + tags_non_embedded)
 
 # Search Terms
+def match_tokens(
+    main, search_terms, tokens,
+    lang, tokenized, tagged,
+    token_settings, search_settings
+):
+    search_results = set()
+
+    settings = copy.deepcopy(search_settings)
+    re_tags = get_re_tags(main, tag_type = 'body')
+
+    # Search Settings
+    if settings['ignore_tags']:
+        settings['match_tags'] = False
+    elif settings['match_tags']:
+        settings['match_inflected_forms'] = False
+        settings['ignore_tags'] = False
+
+    # Token Settings
+    if token_settings['use_tags']:
+        settings['match_inflected_forms'] = False
+
+    if token_settings['ignore_tags'] or token_settings['use_tags']:
+        settings['ignore_tags'] = False
+        settings['match_tags'] = False
+
+    # Process tokens to search
+    tokens_search = tokens.copy()
+
+    if settings['ignore_tags'] and tagged:
+        tokens_search = [re.sub(re_tags, '', token) for token in tokens]
+    elif settings['match_tags']:
+        if tagged:
+            tokens_search = [''.join(re.findall(re_tags, token)) for token in tokens]
+        else:
+            tokens_search = []
+
+    # Match tokens
+    if tokens_search:
+        if settings['match_whole_words']:
+            re_match = re.fullmatch
+        else:
+            re_match = re.search
+
+        if settings['ignore_case']:
+            re_flags = re.IGNORECASE
+        else:
+            re_flags = 0
+
+        if settings['use_regex']:
+            search_terms_regex = search_terms.copy()
+        # Prevent special characters from being treated as regex
+        else:
+            search_terms_regex = [re.escape(search_term) for search_term in search_terms]
+
+        for search_term in search_terms_regex:
+            for token, token_search in zip(tokens, tokens_search):
+                if re_match(search_term, token_search, flags = re_flags):
+                    search_results.add(token)
+
+        # Match inflected forms of search terms and search results
+        if settings['match_inflected_forms']:
+            lemmas_search = wl_lemmatization.wl_lemmatize(main, tokens_search, lang, tokenized, tagged)
+            lemmas_matched = wl_lemmatization.wl_lemmatize(main, search_terms, lang, tokenized, tagged)
+
+            for search_term, lemma_matched in zip([*search_terms, *search_results], lemmas_matched):
+                # Always match literal strings
+                lemma_matched = re.escape(lemma_matched)
+
+                for token, lemma_search in zip(tokens, lemmas_search):
+                    if re_match(lemma_matched, lemma_search, flags = re_flags):
+                        search_results.add(token)
+
+    return search_results
+
 def match_ngrams(
     main, search_terms, tokens,
     lang, tokenized, tagged,
@@ -236,6 +310,39 @@ def match_ngrams(
                 search_terms_matched.add(item)
 
     return search_terms_matched
+
+def check_search_terms(search_settings):
+    if (
+        'search_settings' in search_settings and search_settings['search_settings']
+        or 'search_settings' not in search_settings
+    ):
+        if search_settings['multi_search_mode']:
+            search_terms = search_settings['search_terms']
+        else:
+            if search_settings['search_term']:
+                search_terms = [search_settings['search_term']]
+            else:
+                search_terms = []
+    else:
+        search_terms = []
+
+    return search_terms
+
+def match_search_terms_tokens(
+    main, tokens,
+    lang, tokenized, tagged,
+    token_settings, search_settings
+):
+    search_terms = check_search_terms(search_settings)
+
+    if search_terms:
+        search_terms = match_tokens(
+            main, search_terms, tokens,
+            lang, tokenized, tagged,
+            token_settings, search_settings
+        )
+
+    return search_terms
 
 def match_search_terms(
     main, tokens,

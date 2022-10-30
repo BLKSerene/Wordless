@@ -608,6 +608,47 @@ def wl_widgets_search_settings(parent, tab):
         checkbox_match_tags
     )
 
+def wl_widgets_search_settings_tokens(parent, tab):
+    (
+        label_search_term,
+        checkbox_multi_search_mode,
+
+        stacked_widget_search_term,
+        line_edit_search_term,
+        list_search_terms,
+
+        label_separator,
+
+        checkbox_ignore_case,
+        checkbox_match_inflected_forms,
+        checkbox_match_whole_words,
+        checkbox_use_regex,
+
+        checkbox_ignore_tags,
+        checkbox_match_tags
+    ) = wl_widgets_search_settings(parent, tab)
+
+    label_separator.setText('* Only 1 token is allowed in each search term')
+
+    return (
+        label_search_term,
+        checkbox_multi_search_mode,
+
+        stacked_widget_search_term,
+        line_edit_search_term,
+        list_search_terms,
+
+        label_separator,
+
+        checkbox_ignore_case,
+        checkbox_match_inflected_forms,
+        checkbox_match_whole_words,
+        checkbox_use_regex,
+
+        checkbox_ignore_tags,
+        checkbox_match_tags
+    )
+
 def wl_widgets_context_settings(parent, tab):
     main = wl_misc.find_wl_main(parent)
 

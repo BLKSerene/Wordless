@@ -313,6 +313,95 @@ def init_settings_default(main):
             }
         },
 
+        'dependency_parser': {
+            'token_settings': {
+                'puncs': False,
+
+                'ignore_tags': False,
+                'use_tags': False
+            },
+
+            'search_settings': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_words': False,
+                'use_regex': False,
+
+                'ignore_tags': False,
+                'match_tags': False
+            },
+
+            'context_settings': {
+                'inclusion': {
+                    'inclusion': False,
+
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
+
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_words': False,
+                    'use_regex': False,
+
+                    'ignore_tags': False,
+                    'match_tags': False,
+
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                },
+
+                'exclusion': {
+                    'exclusion': False,
+
+                    'multi_search_mode': False,
+                    'search_term': '',
+                    'search_terms': [],
+
+                    'ignore_case': True,
+                    'match_inflected_forms': True,
+                    'match_whole_words': False,
+                    'use_regex': False,
+
+                    'ignore_tags': False,
+                    'match_tags': False,
+
+                    'context_window_sync': False,
+                    'context_window_left': -5,
+                    'context_window_right': 5
+                }
+            },
+
+            'table_settings': {
+                'show_pct': True
+            },
+
+            'fig_settings': {
+                'show_pos_tags': True,
+                'show_lemmas': False,
+                'compact_mode': False
+            },
+
+            'search_results': {
+                'multi_search_mode': False,
+                'search_term': '',
+                'search_terms': [],
+
+                'ignore_case': True,
+                'match_inflected_forms': True,
+                'match_whole_words': False,
+                'use_regex': False,
+
+                'ignore_tags': False,
+                'match_tags': False
+            }
+        },
+
         'wordlist_generator': {
             'token_settings': {
                 'words': True,
@@ -1553,6 +1642,39 @@ def init_settings_default(main):
 
             'preview': {
                 'preview_lang': 'eng_us'
+            }
+        },
+
+        # Settings - Dependency Parsers
+        'dependency_parsing': {
+            'dependency_parser_settings': {
+                'cat': 'spacy_cat',
+                'zho_cn': 'spacy_zho',
+                'zho_tw': 'spacy_zho',
+                'hrv': 'spacy_hrv',
+                'dan': 'spacy_dan',
+                'nld': 'spacy_nld',
+                'eng_gb': 'spacy_eng',
+                'eng_us': 'spacy_eng',
+                'fin': 'spacy_fin',
+                'fra': 'spacy_fra',
+                'deu_at': 'spacy_deu',
+                'deu_de': 'spacy_deu',
+                'deu_ch': 'spacy_deu',
+                'ell': 'spacy_ell',
+                'ita': 'spacy_ita',
+                'jpn': 'spacy_jpn',
+                'lit': 'spacy_lit',
+                'mkd': 'spacy_mkd',
+                'nob': 'spacy_nob',
+                'pol': 'spacy_pol',
+                'por_br': 'spacy_por',
+                'por_pt': 'spacy_por',
+                'ron': 'spacy_ron',
+                'rus': 'spacy_rus',
+                'spa': 'spacy_spa',
+                'swe': 'spacy_swe',
+                'ukr': 'spacy_ukr'
             }
         },
 
