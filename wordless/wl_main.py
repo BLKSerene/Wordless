@@ -68,6 +68,7 @@ from wordless import (
     wl_profiler,
     wl_concordancer,
     wl_concordancer_parallel,
+    wl_dependency_parser,
     wl_wordlist_generator,
     wl_ngram_generator,
     wl_collocation_extractor,
@@ -81,10 +82,6 @@ from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
-
-class Wl_Main_Blank:
-    def height(self):
-        return 0
 
 class Wl_Loading(QSplashScreen):
     def __init__(self):
@@ -168,6 +165,10 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
         settings = self.main.settings_custom['general']['misc_settings']
 
         settings['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
+
+class Wl_Main_Blank:
+    def height(self):
+        return 0
 
 class Wl_Main(QMainWindow):
     def __init__(self, loading_window):
@@ -501,6 +502,10 @@ class Wl_Main(QMainWindow):
         self.wl_work_area.addTab(
             wl_concordancer_parallel.Wrapper_Concordancer_Parallel(self),
             self.tr('Parallel Concordancer')
+        )
+        self.wl_work_area.addTab(
+            wl_dependency_parser.Wrapper_Dependency_Parser(self),
+            self.tr('Dependency Parser')
         )
         self.wl_work_area.addTab(
             wl_wordlist_generator.Wrapper_Wordlist_Generator(self),

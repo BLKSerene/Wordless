@@ -231,9 +231,8 @@ def wl_process_tokens_profiler(main, text, token_settings):
     return text
 
 def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
-    tokens_flat = text.get_tokens_flat()
-
     settings = copy.deepcopy(token_settings)
+    tokens_flat = text.get_tokens_flat()
 
     # Punctuations
     if not settings['puncs']:
