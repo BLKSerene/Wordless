@@ -41,137 +41,133 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.settings = self.main.settings_custom[self.tab]['context_settings']
 
         # Inclusion
-        self.inclusion_group_box = QGroupBox(self.tr('Inclusion'), self)
+        self.incl_group_box = QGroupBox(self.tr('Inclusion'), self)
 
-        self.inclusion_group_box.setCheckable(True)
+        self.incl_group_box.setCheckable(True)
 
         (
-            self.inclusion_label_search_term,
-            self.inclusion_checkbox_multi_search_mode,
+            self.incl_label_search_term,
+            self.incl_checkbox_multi_search_mode,
 
-            self.inclusion_stacked_widget_search_term,
-            self.inclusion_line_edit_search_term,
-            self.inclusion_list_search_terms,
+            self.incl_stacked_widget_search_term,
+            self.incl_line_edit_search_term,
+            self.incl_list_search_terms,
+            self.incl_label_delimiter,
 
-            self.inclusion_label_separator,
-
-            self.inclusion_checkbox_ignore_case,
-            self.inclusion_checkbox_match_inflected_forms,
-            self.inclusion_checkbox_match_whole_words,
-            self.inclusion_checkbox_use_regex,
-
-            self.inclusion_checkbox_ignore_tags,
-            self.inclusion_checkbox_match_tags
+            self.incl_checkbox_match_case,
+            self.incl_checkbox_match_whole_words,
+            self.incl_checkbox_match_inflected_forms,
+            self.incl_checkbox_use_regex,
+            self.incl_checkbox_match_without_tags,
+            self.incl_checkbox_match_tags
         ) = wl_widgets_search_settings(self, tab = tab)
 
-        self.inclusion_label_context_window = QLabel(self.tr('Context Window:'), self)
+        self.incl_label_context_window = QLabel(self.tr('Context Window:'), self)
         (
-            self.inclusion_checkbox_context_window_sync,
-            self.inclusion_label_context_window_left,
-            self.inclusion_spin_box_context_window_left,
-            self.inclusion_label_context_window_right,
-            self.inclusion_spin_box_context_window_right
+            self.incl_checkbox_context_window_sync,
+            self.incl_label_context_window_left,
+            self.incl_spin_box_context_window_left,
+            self.incl_label_context_window_right,
+            self.incl_spin_box_context_window_right
         ) = wl_widgets_window(self)
 
-        self.inclusion_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
+        self.incl_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
 
-        inclusion_layout_multi_search_mode = wl_layouts.Wl_Layout()
-        inclusion_layout_multi_search_mode.addWidget(self.inclusion_label_search_term, 0, 0)
-        inclusion_layout_multi_search_mode.addWidget(self.inclusion_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        incl_layout_multi_search_mode = wl_layouts.Wl_Layout()
+        incl_layout_multi_search_mode.addWidget(self.incl_label_search_term, 0, 0)
+        incl_layout_multi_search_mode.addWidget(self.incl_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
-        self.inclusion_group_box.setLayout(wl_layouts.Wl_Layout())
-        self.inclusion_group_box.layout().addLayout(inclusion_layout_multi_search_mode, 0, 0, 1, 4)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_stacked_widget_search_term, 1, 0, 1, 4)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_label_separator, 2, 0, 1, 4)
+        self.incl_group_box.setLayout(wl_layouts.Wl_Layout())
+        self.incl_group_box.layout().addLayout(incl_layout_multi_search_mode, 0, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(self.incl_stacked_widget_search_term, 1, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(self.incl_label_delimiter, 2, 0, 1, 4)
 
-        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_ignore_case, 3, 0, 1, 4)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_inflected_forms, 4, 0, 1, 4)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_whole_words, 5, 0, 1, 4)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_use_regex, 6, 0, 1, 4)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_ignore_tags, 7, 0, 1, 4)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_match_tags, 8, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(self.incl_checkbox_match_case, 3, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(self.incl_checkbox_match_whole_words, 4, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(self.incl_checkbox_match_inflected_forms, 5, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(self.incl_checkbox_use_regex, 6, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(self.incl_checkbox_match_without_tags, 7, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(self.incl_checkbox_match_tags, 8, 0, 1, 4)
 
-        self.inclusion_group_box.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
+        self.incl_group_box.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
 
-        self.inclusion_group_box.layout().addWidget(self.inclusion_label_context_window, 10, 0, 1, 3)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_checkbox_context_window_sync, 10, 3, Qt.AlignRight)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_label_context_window_left, 11, 0)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_spin_box_context_window_left, 11, 1)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_label_context_window_right, 11, 2)
-        self.inclusion_group_box.layout().addWidget(self.inclusion_spin_box_context_window_right, 11, 3)
+        self.incl_group_box.layout().addWidget(self.incl_label_context_window, 10, 0, 1, 3)
+        self.incl_group_box.layout().addWidget(self.incl_checkbox_context_window_sync, 10, 3, Qt.AlignRight)
+        self.incl_group_box.layout().addWidget(self.incl_label_context_window_left, 11, 0)
+        self.incl_group_box.layout().addWidget(self.incl_spin_box_context_window_left, 11, 1)
+        self.incl_group_box.layout().addWidget(self.incl_label_context_window_right, 11, 2)
+        self.incl_group_box.layout().addWidget(self.incl_spin_box_context_window_right, 11, 3)
 
-        self.inclusion_group_box.layout().setColumnStretch(1, 1)
-        self.inclusion_group_box.layout().setColumnStretch(3, 1)
+        self.incl_group_box.layout().setColumnStretch(1, 1)
+        self.incl_group_box.layout().setColumnStretch(3, 1)
 
         # Exclusion
-        self.exclusion_group_box = QGroupBox(self.tr('Exclusion'), self)
+        self.excl_group_box = QGroupBox(self.tr('Exclusion'), self)
 
-        self.exclusion_group_box.setCheckable(True)
+        self.excl_group_box.setCheckable(True)
 
         (
-            self.exclusion_label_search_term,
-            self.exclusion_checkbox_multi_search_mode,
+            self.excl_label_search_term,
+            self.excl_checkbox_multi_search_mode,
 
-            self.exclusion_stacked_widget_search_term,
-            self.exclusion_line_edit_search_term,
-            self.exclusion_list_search_terms,
+            self.excl_stacked_widget_search_term,
+            self.excl_line_edit_search_term,
+            self.excl_list_search_terms,
+            self.excl_label_delimiter,
 
-            self.exclusion_label_separator,
-
-            self.exclusion_checkbox_ignore_case,
-            self.exclusion_checkbox_match_inflected_forms,
-            self.exclusion_checkbox_match_whole_words,
-            self.exclusion_checkbox_use_regex,
-
-            self.exclusion_checkbox_ignore_tags,
-            self.exclusion_checkbox_match_tags
+            self.excl_checkbox_match_case,
+            self.excl_checkbox_match_whole_words,
+            self.excl_checkbox_match_inflected_forms,
+            self.excl_checkbox_use_regex,
+            self.excl_checkbox_match_without_tags,
+            self.excl_checkbox_match_tags
         ) = wl_widgets_search_settings(self, tab = tab)
 
-        self.exclusion_label_context_window = QLabel(self.tr('Context Window:'), self)
+        self.excl_label_context_window = QLabel(self.tr('Context Window:'), self)
         (
-            self.exclusion_checkbox_context_window_sync,
-            self.exclusion_label_context_window_left,
-            self.exclusion_spin_box_context_window_left,
-            self.exclusion_label_context_window_right,
-            self.exclusion_spin_box_context_window_right
+            self.excl_checkbox_context_window_sync,
+            self.excl_label_context_window_left,
+            self.excl_spin_box_context_window_left,
+            self.excl_label_context_window_right,
+            self.excl_spin_box_context_window_right
         ) = wl_widgets_window(self)
 
-        self.exclusion_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
+        self.excl_checkbox_multi_search_mode.stateChanged.connect(self.multi_search_mode_changed)
 
-        exclusion_layout_multi_search_mode = wl_layouts.Wl_Layout()
-        exclusion_layout_multi_search_mode.addWidget(self.exclusion_label_search_term, 0, 0)
-        exclusion_layout_multi_search_mode.addWidget(self.exclusion_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        excl_layout_multi_search_mode = wl_layouts.Wl_Layout()
+        excl_layout_multi_search_mode.addWidget(self.excl_label_search_term, 0, 0)
+        excl_layout_multi_search_mode.addWidget(self.excl_checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
 
-        self.exclusion_group_box.setLayout(wl_layouts.Wl_Layout())
-        self.exclusion_group_box.layout().addLayout(exclusion_layout_multi_search_mode, 0, 0, 1, 4)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_stacked_widget_search_term, 1, 0, 1, 4)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_label_separator, 2, 0, 1, 4)
+        self.excl_group_box.setLayout(wl_layouts.Wl_Layout())
+        self.excl_group_box.layout().addLayout(excl_layout_multi_search_mode, 0, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(self.excl_stacked_widget_search_term, 1, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(self.excl_label_delimiter, 2, 0, 1, 4)
 
-        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_ignore_case, 3, 0, 1, 4)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_inflected_forms, 4, 0, 1, 4)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_whole_words, 5, 0, 1, 4)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_use_regex, 6, 0, 1, 4)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_ignore_tags, 7, 0, 1, 4)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_match_tags, 8, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(self.excl_checkbox_match_case, 3, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(self.excl_checkbox_match_whole_words, 4, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(self.excl_checkbox_match_inflected_forms, 5, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(self.excl_checkbox_use_regex, 6, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(self.excl_checkbox_match_without_tags, 7, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(self.excl_checkbox_match_tags, 8, 0, 1, 4)
 
-        self.exclusion_group_box.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
+        self.excl_group_box.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
 
-        self.exclusion_group_box.layout().addWidget(self.exclusion_label_context_window, 10, 0, 1, 3)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_checkbox_context_window_sync, 10, 3, Qt.AlignRight)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_label_context_window_left, 11, 0)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_spin_box_context_window_left, 11, 1)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_label_context_window_right, 11, 2)
-        self.exclusion_group_box.layout().addWidget(self.exclusion_spin_box_context_window_right, 11, 3)
+        self.excl_group_box.layout().addWidget(self.excl_label_context_window, 10, 0, 1, 3)
+        self.excl_group_box.layout().addWidget(self.excl_checkbox_context_window_sync, 10, 3, Qt.AlignRight)
+        self.excl_group_box.layout().addWidget(self.excl_label_context_window_left, 11, 0)
+        self.excl_group_box.layout().addWidget(self.excl_spin_box_context_window_left, 11, 1)
+        self.excl_group_box.layout().addWidget(self.excl_label_context_window_right, 11, 2)
+        self.excl_group_box.layout().addWidget(self.excl_spin_box_context_window_right, 11, 3)
 
-        self.exclusion_group_box.layout().setColumnStretch(1, 1)
-        self.exclusion_group_box.layout().setColumnStretch(3, 1)
+        self.excl_group_box.layout().setColumnStretch(1, 1)
+        self.excl_group_box.layout().setColumnStretch(3, 1)
 
         self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
         self.button_save = QPushButton(self.tr('Save'))
         self.button_cancel = QPushButton(self.tr('Cancel'), self)
 
-        self.inclusion_line_edit_search_term.returnPressed.connect(self.button_save.click)
-        self.exclusion_line_edit_search_term.returnPressed.connect(self.button_save.click)
+        self.incl_line_edit_search_term.returnPressed.connect(self.button_save.click)
+        self.excl_line_edit_search_term.returnPressed.connect(self.button_save.click)
         self.button_save.clicked.connect(self.save_settings)
         self.button_cancel.clicked.connect(self.reject)
 
@@ -183,8 +179,8 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         layout_buttons.setColumnStretch(1, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.inclusion_group_box, 0, 0)
-        self.layout().addWidget(self.exclusion_group_box, 0, 1)
+        self.layout().addWidget(self.incl_group_box, 0, 0)
+        self.layout().addWidget(self.excl_group_box, 0, 1)
         self.layout().addLayout(layout_buttons, 1, 0, 1, 2)
 
         self.layout().setColumnStretch(0, 1)
@@ -197,183 +193,179 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
             settings = copy.deepcopy(self.settings)
 
         # Inclusion
-        self.inclusion_group_box.setChecked(settings['inclusion']['inclusion'])
+        self.incl_group_box.setChecked(settings['incl']['incl'])
 
-        self.inclusion_checkbox_multi_search_mode.setChecked(settings['inclusion']['multi_search_mode'])
+        self.incl_checkbox_multi_search_mode.setChecked(settings['incl']['multi_search_mode'])
 
         if not defaults:
-            self.inclusion_line_edit_search_term.setText(settings['inclusion']['search_term'])
-            self.inclusion_list_search_terms.load_items(settings['inclusion']['search_terms'])
+            self.incl_line_edit_search_term.setText(settings['incl']['search_term'])
+            self.incl_list_search_terms.load_items(settings['incl']['search_terms'])
 
-        self.inclusion_checkbox_ignore_case.setChecked(settings['inclusion']['ignore_case'])
-        self.inclusion_checkbox_match_inflected_forms.setChecked(settings['inclusion']['match_inflected_forms'])
-        self.inclusion_checkbox_match_whole_words.setChecked(settings['inclusion']['match_whole_words'])
-        self.inclusion_checkbox_use_regex.setChecked(settings['inclusion']['use_regex'])
+        self.incl_checkbox_match_case.setChecked(settings['incl']['match_case'])
+        self.incl_checkbox_match_whole_words.setChecked(settings['incl']['match_whole_words'])
+        self.incl_checkbox_match_inflected_forms.setChecked(settings['incl']['match_inflected_forms'])
+        self.incl_checkbox_use_regex.setChecked(settings['incl']['use_regex'])
+        self.incl_checkbox_match_without_tags.setChecked(settings['incl']['match_without_tags'])
+        self.incl_checkbox_match_tags.setChecked(settings['incl']['match_tags'])
 
-        self.inclusion_checkbox_ignore_tags.setChecked(settings['inclusion']['ignore_tags'])
-        self.inclusion_checkbox_match_tags.setChecked(settings['inclusion']['match_tags'])
+        self.incl_checkbox_context_window_sync.setChecked(settings['incl']['context_window_sync'])
 
-        self.inclusion_checkbox_context_window_sync.setChecked(settings['inclusion']['context_window_sync'])
-
-        if settings['inclusion']['context_window_left'] < 0:
-            self.inclusion_spin_box_context_window_left.setPrefix(self.tr('L'))
-            self.inclusion_spin_box_context_window_left.setValue(-settings['inclusion']['context_window_left'])
+        if settings['incl']['context_window_left'] < 0:
+            self.incl_spin_box_context_window_left.setPrefix(self.tr('L'))
+            self.incl_spin_box_context_window_left.setValue(-settings['incl']['context_window_left'])
         else:
-            self.inclusion_spin_box_context_window_left.setPrefix(self.tr('R'))
-            self.inclusion_spin_box_context_window_left.setValue(settings['inclusion']['context_window_left'])
+            self.incl_spin_box_context_window_left.setPrefix(self.tr('R'))
+            self.incl_spin_box_context_window_left.setValue(settings['incl']['context_window_left'])
 
-        if settings['inclusion']['context_window_right'] < 0:
-            self.inclusion_spin_box_context_window_right.setPrefix(self.tr('L'))
-            self.inclusion_spin_box_context_window_right.setValue(-settings['inclusion']['context_window_right'])
+        if settings['incl']['context_window_right'] < 0:
+            self.incl_spin_box_context_window_right.setPrefix(self.tr('L'))
+            self.incl_spin_box_context_window_right.setValue(-settings['incl']['context_window_right'])
         else:
-            self.inclusion_spin_box_context_window_right.setPrefix(self.tr('R'))
-            self.inclusion_spin_box_context_window_right.setValue(settings['inclusion']['context_window_right'])
+            self.incl_spin_box_context_window_right.setPrefix(self.tr('R'))
+            self.incl_spin_box_context_window_right.setValue(settings['incl']['context_window_right'])
 
         # Exclusion
-        self.exclusion_group_box.setChecked(settings['exclusion']['exclusion'])
+        self.excl_group_box.setChecked(settings['excl']['excl'])
 
-        self.exclusion_checkbox_multi_search_mode.setChecked(settings['exclusion']['multi_search_mode'])
+        self.excl_checkbox_multi_search_mode.setChecked(settings['excl']['multi_search_mode'])
 
         if not defaults:
-            self.exclusion_line_edit_search_term.setText(settings['exclusion']['search_term'])
-            self.exclusion_list_search_terms.load_items(settings['exclusion']['search_terms'])
+            self.excl_line_edit_search_term.setText(settings['excl']['search_term'])
+            self.excl_list_search_terms.load_items(settings['excl']['search_terms'])
 
-        self.exclusion_checkbox_ignore_case.setChecked(settings['exclusion']['ignore_case'])
-        self.exclusion_checkbox_match_inflected_forms.setChecked(settings['exclusion']['match_inflected_forms'])
-        self.exclusion_checkbox_match_whole_words.setChecked(settings['exclusion']['match_whole_words'])
-        self.exclusion_checkbox_use_regex.setChecked(settings['exclusion']['use_regex'])
+        self.excl_checkbox_match_case.setChecked(settings['excl']['match_case'])
+        self.excl_checkbox_match_whole_words.setChecked(settings['excl']['match_whole_words'])
+        self.excl_checkbox_match_inflected_forms.setChecked(settings['excl']['match_inflected_forms'])
+        self.excl_checkbox_use_regex.setChecked(settings['excl']['use_regex'])
+        self.excl_checkbox_match_without_tags.setChecked(settings['excl']['match_without_tags'])
+        self.excl_checkbox_match_tags.setChecked(settings['excl']['match_tags'])
 
-        self.exclusion_checkbox_ignore_tags.setChecked(settings['exclusion']['ignore_tags'])
-        self.exclusion_checkbox_match_tags.setChecked(settings['exclusion']['match_tags'])
+        self.excl_checkbox_context_window_sync.setChecked(settings['excl']['context_window_sync'])
 
-        self.exclusion_checkbox_context_window_sync.setChecked(settings['exclusion']['context_window_sync'])
-
-        if settings['exclusion']['context_window_left'] < 0:
-            self.exclusion_spin_box_context_window_left.setPrefix(self.tr('L'))
-            self.exclusion_spin_box_context_window_left.setValue(-settings['exclusion']['context_window_left'])
+        if settings['excl']['context_window_left'] < 0:
+            self.excl_spin_box_context_window_left.setPrefix(self.tr('L'))
+            self.excl_spin_box_context_window_left.setValue(-settings['excl']['context_window_left'])
         else:
-            self.exclusion_spin_box_context_window_left.setPrefix(self.tr('R'))
-            self.exclusion_spin_box_context_window_left.setValue(settings['exclusion']['context_window_left'])
+            self.excl_spin_box_context_window_left.setPrefix(self.tr('R'))
+            self.excl_spin_box_context_window_left.setValue(settings['excl']['context_window_left'])
 
-        if settings['exclusion']['context_window_right'] < 0:
-            self.exclusion_spin_box_context_window_right.setPrefix(self.tr('L'))
-            self.exclusion_spin_box_context_window_right.setValue(-settings['exclusion']['context_window_right'])
+        if settings['excl']['context_window_right'] < 0:
+            self.excl_spin_box_context_window_right.setPrefix(self.tr('L'))
+            self.excl_spin_box_context_window_right.setValue(-settings['excl']['context_window_right'])
         else:
-            self.exclusion_spin_box_context_window_right.setPrefix(self.tr('R'))
-            self.exclusion_spin_box_context_window_right.setValue(settings['exclusion']['context_window_right'])
+            self.excl_spin_box_context_window_right.setPrefix(self.tr('R'))
+            self.excl_spin_box_context_window_right.setValue(settings['excl']['context_window_right'])
 
         self.token_settings_changed()
 
     def save_settings(self):
         # Inclusion
-        self.settings['inclusion']['inclusion'] = self.inclusion_group_box.isChecked()
+        self.settings['incl']['incl'] = self.incl_group_box.isChecked()
 
-        self.settings['inclusion']['multi_search_mode'] = self.inclusion_checkbox_multi_search_mode.isChecked()
-        self.settings['inclusion']['search_term'] = self.inclusion_line_edit_search_term.text()
-        self.settings['inclusion']['search_terms'] = self.inclusion_list_search_terms.model().stringList()
+        self.settings['incl']['multi_search_mode'] = self.incl_checkbox_multi_search_mode.isChecked()
+        self.settings['incl']['search_term'] = self.incl_line_edit_search_term.text()
+        self.settings['incl']['search_terms'] = self.incl_list_search_terms.model().stringList()
 
-        self.settings['inclusion']['ignore_case'] = self.inclusion_checkbox_ignore_case.isChecked()
-        self.settings['inclusion']['match_inflected_forms'] = self.inclusion_checkbox_match_inflected_forms.isChecked()
-        self.settings['inclusion']['match_whole_words'] = self.inclusion_checkbox_match_whole_words.isChecked()
-        self.settings['inclusion']['use_regex'] = self.inclusion_checkbox_use_regex.isChecked()
+        self.settings['incl']['match_case'] = self.incl_checkbox_match_case.isChecked()
+        self.settings['incl']['match_whole_words'] = self.incl_checkbox_match_whole_words.isChecked()
+        self.settings['incl']['match_inflected_forms'] = self.incl_checkbox_match_inflected_forms.isChecked()
+        self.settings['incl']['use_regex'] = self.incl_checkbox_use_regex.isChecked()
+        self.settings['incl']['match_without_tags'] = self.incl_checkbox_match_without_tags.isChecked()
+        self.settings['incl']['match_tags'] = self.incl_checkbox_match_tags.isChecked()
 
-        self.settings['inclusion']['ignore_tags'] = self.inclusion_checkbox_ignore_tags.isChecked()
-        self.settings['inclusion']['match_tags'] = self.inclusion_checkbox_match_tags.isChecked()
+        self.settings['incl']['context_window_sync'] = self.incl_checkbox_context_window_sync.isChecked()
 
-        self.settings['inclusion']['context_window_sync'] = self.inclusion_checkbox_context_window_sync.isChecked()
-
-        if self.inclusion_spin_box_context_window_left.prefix() == self.tr('L'):
-            self.settings['inclusion']['context_window_left'] = -self.inclusion_spin_box_context_window_left.value()
+        if self.incl_spin_box_context_window_left.prefix() == self.tr('L'):
+            self.settings['incl']['context_window_left'] = -self.incl_spin_box_context_window_left.value()
         else:
-            self.settings['inclusion']['context_window_left'] = self.inclusion_spin_box_context_window_left.value()
+            self.settings['incl']['context_window_left'] = self.incl_spin_box_context_window_left.value()
 
-        if self.inclusion_spin_box_context_window_right.prefix() == self.tr('L'):
-            self.settings['inclusion']['context_window_right'] = -self.inclusion_spin_box_context_window_right.value()
+        if self.incl_spin_box_context_window_right.prefix() == self.tr('L'):
+            self.settings['incl']['context_window_right'] = -self.incl_spin_box_context_window_right.value()
         else:
-            self.settings['inclusion']['context_window_right'] = self.inclusion_spin_box_context_window_right.value()
+            self.settings['incl']['context_window_right'] = self.incl_spin_box_context_window_right.value()
 
         # Exclusion
-        self.settings['exclusion']['exclusion'] = self.exclusion_group_box.isChecked()
+        self.settings['excl']['excl'] = self.excl_group_box.isChecked()
 
-        self.settings['exclusion']['multi_search_mode'] = self.exclusion_checkbox_multi_search_mode.isChecked()
-        self.settings['exclusion']['search_term'] = self.exclusion_line_edit_search_term.text()
-        self.settings['exclusion']['search_terms'] = self.exclusion_list_search_terms.model().stringList()
+        self.settings['excl']['multi_search_mode'] = self.excl_checkbox_multi_search_mode.isChecked()
+        self.settings['excl']['search_term'] = self.excl_line_edit_search_term.text()
+        self.settings['excl']['search_terms'] = self.excl_list_search_terms.model().stringList()
 
-        self.settings['exclusion']['ignore_case'] = self.exclusion_checkbox_ignore_case.isChecked()
-        self.settings['exclusion']['match_inflected_forms'] = self.exclusion_checkbox_match_inflected_forms.isChecked()
-        self.settings['exclusion']['match_whole_words'] = self.exclusion_checkbox_match_whole_words.isChecked()
-        self.settings['exclusion']['use_regex'] = self.exclusion_checkbox_use_regex.isChecked()
+        self.settings['excl']['match_case'] = self.excl_checkbox_match_case.isChecked()
+        self.settings['excl']['match_whole_words'] = self.excl_checkbox_match_whole_words.isChecked()
+        self.settings['excl']['match_inflected_forms'] = self.excl_checkbox_match_inflected_forms.isChecked()
+        self.settings['excl']['use_regex'] = self.excl_checkbox_use_regex.isChecked()
+        self.settings['excl']['match_without_tags'] = self.excl_checkbox_match_without_tags.isChecked()
+        self.settings['excl']['match_tags'] = self.excl_checkbox_match_tags.isChecked()
 
-        self.settings['exclusion']['ignore_tags'] = self.exclusion_checkbox_ignore_tags.isChecked()
-        self.settings['exclusion']['match_tags'] = self.exclusion_checkbox_match_tags.isChecked()
+        self.settings['excl']['context_window_sync'] = self.excl_checkbox_context_window_sync.isChecked()
 
-        self.settings['exclusion']['context_window_sync'] = self.exclusion_checkbox_context_window_sync.isChecked()
-
-        if self.exclusion_spin_box_context_window_left.prefix() == self.tr('L'):
-            self.settings['exclusion']['context_window_left'] = -self.exclusion_spin_box_context_window_left.value()
+        if self.excl_spin_box_context_window_left.prefix() == self.tr('L'):
+            self.settings['excl']['context_window_left'] = -self.excl_spin_box_context_window_left.value()
         else:
-            self.settings['exclusion']['context_window_left'] = self.exclusion_spin_box_context_window_left.value()
+            self.settings['excl']['context_window_left'] = self.excl_spin_box_context_window_left.value()
 
-        if self.exclusion_spin_box_context_window_right.prefix() == self.tr('L'):
-            self.settings['exclusion']['context_window_right'] = -self.exclusion_spin_box_context_window_right.value()
+        if self.excl_spin_box_context_window_right.prefix() == self.tr('L'):
+            self.settings['excl']['context_window_right'] = -self.excl_spin_box_context_window_right.value()
         else:
-            self.settings['exclusion']['context_window_right'] = self.exclusion_spin_box_context_window_right.value()
+            self.settings['excl']['context_window_right'] = self.excl_spin_box_context_window_right.value()
 
         self.accept()
 
     def multi_search_mode_changed(self):
         if 'size_multi' in self.__dict__:
-            if self.inclusion_checkbox_multi_search_mode.isChecked() or self.exclusion_checkbox_multi_search_mode.isChecked():
+            if self.incl_checkbox_multi_search_mode.isChecked() or self.excl_checkbox_multi_search_mode.isChecked():
                 self.setFixedSize(self.size_multi)
             else:
                 self.setFixedSize(self.size_normal)
 
     def token_settings_changed(self):
         # Check if searching is enabled
-        if self.inclusion_group_box.isChecked():
-            self.inclusion_checkbox_match_tags.token_settings_changed()
+        if self.incl_group_box.isChecked():
+            self.incl_checkbox_match_tags.token_settings_changed()
         else:
-            self.inclusion_group_box.setChecked(True)
+            self.incl_group_box.setChecked(True)
 
-            self.inclusion_checkbox_match_tags.token_settings_changed()
+            self.incl_checkbox_match_tags.token_settings_changed()
 
-            self.inclusion_group_box.setChecked(False)
+            self.incl_group_box.setChecked(False)
 
-        if self.exclusion_group_box.isChecked():
-            self.exclusion_checkbox_match_tags.token_settings_changed()
+        if self.excl_group_box.isChecked():
+            self.excl_checkbox_match_tags.token_settings_changed()
         else:
-            self.exclusion_group_box.setChecked(True)
+            self.excl_group_box.setChecked(True)
 
-            self.exclusion_checkbox_match_tags.token_settings_changed()
+            self.excl_checkbox_match_tags.token_settings_changed()
 
-            self.exclusion_group_box.setChecked(False)
+            self.excl_group_box.setChecked(False)
 
     def load(self):
         # Calculate size
         if 'size_multi' not in self.__dict__:
-            inclusion_multi_search_mode = self.settings['inclusion']['multi_search_mode']
-            exclusion_multi_search_mode = self.settings['exclusion']['multi_search_mode']
+            incl_multi_search_mode = self.settings['incl']['multi_search_mode']
+            excl_multi_search_mode = self.settings['excl']['multi_search_mode']
 
-            self.inclusion_checkbox_multi_search_mode.setChecked(False)
-            self.exclusion_checkbox_multi_search_mode.setChecked(False)
+            self.incl_checkbox_multi_search_mode.setChecked(False)
+            self.excl_checkbox_multi_search_mode.setChecked(False)
 
-            self.inclusion_group_box.adjustSize()
-            self.exclusion_group_box.adjustSize()
+            self.incl_group_box.adjustSize()
+            self.excl_group_box.adjustSize()
             self.adjustSize()
 
             self.size_normal = self.size()
 
-            self.inclusion_checkbox_multi_search_mode.setChecked(True)
-            self.exclusion_checkbox_multi_search_mode.setChecked(True)
+            self.incl_checkbox_multi_search_mode.setChecked(True)
+            self.excl_checkbox_multi_search_mode.setChecked(True)
 
-            self.inclusion_group_box.adjustSize()
-            self.exclusion_group_box.adjustSize()
+            self.incl_group_box.adjustSize()
+            self.excl_group_box.adjustSize()
             self.adjustSize()
 
             self.size_multi = QSize(self.size_normal.width(), self.size().height())
 
-            self.inclusion_checkbox_multi_search_mode.setChecked(inclusion_multi_search_mode)
-            self.exclusion_checkbox_multi_search_mode.setChecked(exclusion_multi_search_mode)
+            self.incl_checkbox_multi_search_mode.setChecked(incl_multi_search_mode)
+            self.excl_checkbox_multi_search_mode.setChecked(excl_multi_search_mode)
 
         self.load_settings()
         self.exec_()
@@ -512,13 +504,13 @@ def wl_widgets_search_settings(parent, tab):
         token_settings = main.settings_custom[tab]['token_settings']
 
         if token_settings['ignore_tags'] or token_settings['use_tags']:
-            checkbox_ignore_tags.setEnabled(False)
+            checkbox_match_without_tags.setEnabled(False)
             checkbox_match_tags.setEnabled(False)
         else:
             if not checkbox_match_tags.isChecked():
-                checkbox_ignore_tags.setEnabled(True)
+                checkbox_match_without_tags.setEnabled(True)
 
-            if not checkbox_ignore_tags.isChecked():
+            if not checkbox_match_without_tags.isChecked():
                 checkbox_match_tags.setEnabled(True)
 
         if token_settings['use_tags']:
@@ -526,13 +518,13 @@ def wl_widgets_search_settings(parent, tab):
         elif not token_settings['use_tags'] or token_settings['ignore_tags']:
             checkbox_match_inflected_forms.setEnabled(True)
 
-        if checkbox_ignore_tags.isEnabled():
-            ignore_tags_changed()
+        if checkbox_match_without_tags.isEnabled():
+            match_without_tags_changed()
         if checkbox_match_tags.isEnabled():
             match_tags_changed()
 
-    def ignore_tags_changed():
-        if checkbox_ignore_tags.isChecked():
+    def match_without_tags_changed():
+        if checkbox_match_without_tags.isChecked():
             checkbox_match_tags.setEnabled(False)
         else:
             checkbox_match_tags.setEnabled(True)
@@ -540,10 +532,10 @@ def wl_widgets_search_settings(parent, tab):
     def match_tags_changed():
         if checkbox_match_tags.isChecked():
             checkbox_match_inflected_forms.setEnabled(False)
-            checkbox_ignore_tags.setEnabled(False)
+            checkbox_match_without_tags.setEnabled(False)
         else:
             checkbox_match_inflected_forms.setEnabled(True)
-            checkbox_ignore_tags.setEnabled(True)
+            checkbox_match_without_tags.setEnabled(True)
 
     main = wl_misc.find_wl_main(parent)
 
@@ -551,14 +543,13 @@ def wl_widgets_search_settings(parent, tab):
     checkbox_multi_search_mode = QCheckBox(_tr('wl_widgets_search_settings', 'Multi-search Mode'), parent)
     line_edit_search_term = QLineEdit(parent)
     list_search_terms = wl_lists.Wl_List_Search_Terms(parent)
-    label_separator = wl_labels.Wl_Label_Hint(_tr('wl_widgets_search_settings', '* Use space to separate multiple tokens'), parent)
+    label_delimiter = wl_labels.Wl_Label_Hint(_tr('wl_widgets_search_settings', '* Use whitespace to delimit multiple tokens'), parent)
 
-    checkbox_ignore_case = QCheckBox(_tr('wl_widgets_search_settings', 'Ignore case'), parent)
-    checkbox_match_inflected_forms = QCheckBox(_tr('wl_widgets_search_settings', 'Match all inflected forms'), parent)
-    checkbox_match_whole_words = QCheckBox(_tr('wl_widgets_search_settings', 'Match whole words only'), parent)
-    checkbox_use_regex = QCheckBox(_tr('wl_widgets_search_settings', 'Use regular expression'), parent)
-
-    checkbox_ignore_tags = QCheckBox(_tr('wl_widgets_search_settings', 'Ignore tags'), parent)
+    checkbox_match_case = QCheckBox(_tr('wl_widgets_search_settings', 'Match case'), parent)
+    checkbox_match_whole_words = QCheckBox(_tr('wl_widgets_search_settings', 'Match whole words'), parent)
+    checkbox_match_inflected_forms = QCheckBox(_tr('wl_widgets_search_settings', 'Match inflected forms'), parent)
+    checkbox_use_regex = QCheckBox(_tr('wl_widgets_search_settings', 'Use regular expressions'), parent)
+    checkbox_match_without_tags = QCheckBox(_tr('wl_widgets_search_settings', 'Match without tags'), parent)
     checkbox_match_tags = QCheckBox(_tr('wl_widgets_search_settings', 'Match tags only'), parent)
 
     wrapper_search_terms = QWidget(parent)
@@ -581,12 +572,12 @@ def wl_widgets_search_settings(parent, tab):
     checkbox_match_tags.token_settings_changed = token_settings_changed
 
     checkbox_multi_search_mode.stateChanged.connect(multi_search_mode_changed)
-    checkbox_ignore_tags.stateChanged.connect(ignore_tags_changed)
+    checkbox_match_without_tags.stateChanged.connect(match_without_tags_changed)
     checkbox_match_tags.stateChanged.connect(match_tags_changed)
 
     multi_search_mode_changed()
     token_settings_changed()
-    ignore_tags_changed()
+    match_without_tags_changed()
     match_tags_changed()
 
     return (
@@ -596,15 +587,13 @@ def wl_widgets_search_settings(parent, tab):
         stacked_widget_search_term,
         line_edit_search_term,
         list_search_terms,
+        label_delimiter,
 
-        label_separator,
-
-        checkbox_ignore_case,
-        checkbox_match_inflected_forms,
+        checkbox_match_case,
         checkbox_match_whole_words,
+        checkbox_match_inflected_forms,
         checkbox_use_regex,
-
-        checkbox_ignore_tags,
+        checkbox_match_without_tags,
         checkbox_match_tags
     )
 
@@ -616,19 +605,17 @@ def wl_widgets_search_settings_tokens(parent, tab):
         stacked_widget_search_term,
         line_edit_search_term,
         list_search_terms,
+        label_delimiter,
 
-        label_separator,
-
-        checkbox_ignore_case,
-        checkbox_match_inflected_forms,
+        checkbox_match_case,
         checkbox_match_whole_words,
+        checkbox_match_inflected_forms,
         checkbox_use_regex,
-
-        checkbox_ignore_tags,
+        checkbox_match_without_tags,
         checkbox_match_tags
     ) = wl_widgets_search_settings(parent, tab)
 
-    label_separator.setText('* Only 1 token is allowed in each search term')
+    label_delimiter.setText('* Only 1 token is allowed in each search term')
 
     return (
         label_search_term,
@@ -637,15 +624,13 @@ def wl_widgets_search_settings_tokens(parent, tab):
         stacked_widget_search_term,
         line_edit_search_term,
         list_search_terms,
+        label_delimiter,
 
-        label_separator,
-
-        checkbox_ignore_case,
-        checkbox_match_inflected_forms,
+        checkbox_match_case,
         checkbox_match_whole_words,
+        checkbox_match_inflected_forms,
         checkbox_use_regex,
-
-        checkbox_ignore_tags,
+        checkbox_match_without_tags,
         checkbox_match_tags
     )
 

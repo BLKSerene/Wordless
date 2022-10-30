@@ -51,13 +51,13 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
 
             for file in table.settings['file_area']['files_open']:
                 if file['selected']:
-                    search_terms_file = wl_matching.match_search_terms(
+                    search_terms_file = wl_matching.match_search_terms_ngrams(
                         self.main, items,
                         lang = file['lang'],
-                        tokenized = file['tokenized'],
                         tagged = file['tagged'],
                         token_settings = table.settings[self.dialog.tab]['token_settings'],
-                        search_settings = self.dialog.settings)
+                        search_settings = self.dialog.settings
+                    )
 
                     search_terms |= set(search_terms_file)
 
@@ -95,22 +95,19 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             self.stacked_widget_search_term,
             self.line_edit_search_term,
             self.list_search_terms,
+            self.label_delimiter,
 
-            self.label_separator,
-
-            self.checkbox_ignore_case,
-            self.checkbox_match_inflected_forms,
+            self.checkbox_match_case,
             self.checkbox_match_whole_words,
+            self.checkbox_match_inflected_forms,
             self.checkbox_use_regex,
-
-            self.checkbox_ignore_tags,
+            self.checkbox_match_without_tags,
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings(self, self.tab)
 
         self.button_find_next = QPushButton(self.tr('Find Next'), self)
         self.button_find_prev = QPushButton(self.tr('Find Previous'), self)
         self.button_find_all = QPushButton(self.tr('Find All'), self)
-        # Pad with spaces
         self.button_clr_hightlights = QPushButton(self.tr('Clear Highlights'), self)
 
         self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
@@ -121,12 +118,11 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.line_edit_search_term.returnPressed.connect(self.button_find_next.click)
         self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
 
-        self.checkbox_ignore_case.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_case.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
         self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
-
-        self.checkbox_ignore_tags.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_without_tags.stateChanged.connect(self.search_settings_changed)
         self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
 
         self.button_find_next.clicked.connect(lambda: self.find_next()) # pylint: disable=unnecessary-lambda
@@ -154,14 +150,13 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.layout().addWidget(self.label_search_term, 0, 0)
         self.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
         self.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
-        self.layout().addWidget(self.label_separator, 2, 0, 1, 2)
+        self.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
 
-        self.layout().addWidget(self.checkbox_ignore_case, 3, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_inflected_forms, 4, 0, 1, 2)
-        self.layout().addWidget(self.checkbox_match_whole_words, 5, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_case, 3, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_whole_words, 4, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
         self.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
-
-        self.layout().addWidget(self.checkbox_ignore_tags, 7, 0, 1, 2)
+        self.layout().addWidget(self.checkbox_match_without_tags, 7, 0, 1, 2)
         self.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
 
         self.layout().addWidget(wl_layouts.Wl_Separator(self, orientation = 'vert'), 0, 2, 9, 1)
@@ -184,12 +179,11 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             self.line_edit_search_term.setText(settings['search_term'])
             self.list_search_terms.load_items(settings['search_terms'])
 
-        self.checkbox_ignore_case.setChecked(settings['ignore_case'])
-        self.checkbox_match_inflected_forms.setChecked(settings['match_inflected_forms'])
+        self.checkbox_match_case.setChecked(settings['match_case'])
         self.checkbox_match_whole_words.setChecked(settings['match_whole_words'])
+        self.checkbox_match_inflected_forms.setChecked(settings['match_inflected_forms'])
         self.checkbox_use_regex.setChecked(settings['use_regex'])
-
-        self.checkbox_ignore_tags.setChecked(settings['ignore_tags'])
+        self.checkbox_match_without_tags.setChecked(settings['match_without_tags'])
         self.checkbox_match_tags.setChecked(settings['match_tags'])
 
         self.search_settings_changed()
@@ -199,12 +193,11 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.settings['search_term'] = self.line_edit_search_term.text()
         self.settings['search_terms'] = self.list_search_terms.model().stringList()
 
-        self.settings['ignore_case'] = self.checkbox_ignore_case.isChecked()
-        self.settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
+        self.settings['match_case'] = self.checkbox_match_case.isChecked()
         self.settings['match_whole_words'] = self.checkbox_match_whole_words.isChecked()
+        self.settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
         self.settings['use_regex'] = self.checkbox_use_regex.isChecked()
-
-        self.settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
+        self.settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
         if 'size_multi' in self.__dict__:

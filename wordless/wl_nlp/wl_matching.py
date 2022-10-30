@@ -109,35 +109,51 @@ def get_re_tags_with_tokens(main, tag_type):
     return '|'.join(tags_embedded + tags_non_embedded)
 
 # Search Terms
+def check_search_terms(search_settings, search_enabled):
+    search_terms = set()
+
+    if search_enabled:
+        if search_settings['multi_search_mode']:
+            search_terms = set(search_settings['search_terms'])
+        else:
+            if search_settings['search_term']:
+                search_terms.add(search_settings['search_term'])
+
+    return search_terms
+
+def check_search_settings(token_settings, search_settings):
+    search_settings = copy.deepcopy(search_settings)
+
+    # Search Settings
+    if search_settings['match_without_tags']:
+        search_settings['match_tags'] = False
+    elif search_settings['match_tags']:
+        search_settings['match_without_tags'] = False
+
+        if not token_settings['ignore_tags'] and not token_settings['use_tags']:
+            search_settings['match_inflected_forms'] = False
+
+    # Token Settings
+    if token_settings['ignore_tags'] or token_settings['use_tags']:
+        search_settings['match_without_tags'] = False
+        search_settings['match_tags'] = False
+
+        if token_settings['use_tags']:
+            search_settings['match_inflected_forms'] = False
+
+    return search_settings
+
 def match_tokens(
     main, search_terms, tokens,
-    lang, tokenized, tagged,
-    token_settings, search_settings
+    lang, tagged, settings
 ):
     search_results = set()
 
-    settings = copy.deepcopy(search_settings)
-    re_tags = get_re_tags(main, tag_type = 'body')
-
-    # Search Settings
-    if settings['ignore_tags']:
-        settings['match_tags'] = False
-    elif settings['match_tags']:
-        settings['match_inflected_forms'] = False
-        settings['ignore_tags'] = False
-
-    # Token Settings
-    if token_settings['use_tags']:
-        settings['match_inflected_forms'] = False
-
-    if token_settings['ignore_tags'] or token_settings['use_tags']:
-        settings['ignore_tags'] = False
-        settings['match_tags'] = False
-
     # Process tokens to search
     tokens_search = tokens.copy()
+    re_tags = get_re_tags(main, tag_type = 'body')
 
-    if settings['ignore_tags'] and tagged:
+    if settings['match_without_tags'] and tagged:
         tokens_search = [re.sub(re_tags, '', token) for token in tokens]
     elif settings['match_tags']:
         if tagged:
@@ -147,15 +163,8 @@ def match_tokens(
 
     # Match tokens
     if tokens_search:
-        if settings['match_whole_words']:
-            re_match = re.fullmatch
-        else:
-            re_match = re.search
-
-        if settings['ignore_case']:
-            re_flags = re.IGNORECASE
-        else:
-            re_flags = 0
+        re_match = re.fullmatch if settings['match_whole_words'] else re.search
+        re_flags = 0 if settings['match_case'] else re.IGNORECASE
 
         if settings['use_regex']:
             search_terms_regex = search_terms.copy()
@@ -170,14 +179,14 @@ def match_tokens(
 
         # Match inflected forms of search terms and search results
         if settings['match_inflected_forms']:
-            lemmas_search = wl_lemmatization.wl_lemmatize(main, tokens_search, lang, tokenized, tagged)
-            lemmas_matched = wl_lemmatization.wl_lemmatize(main, search_terms, lang, tokenized, tagged)
+            lemmas_search = wl_lemmatization.wl_lemmatize(main, tokens_search, lang, tagged = tagged)
+            lemmas_matched = wl_lemmatization.wl_lemmatize(main, set([*search_terms, *search_results]), lang, tagged = tagged)
 
-            for search_term, lemma_matched in zip([*search_terms, *search_results], lemmas_matched):
+            for lemma_matched in set(lemmas_matched):
                 # Always match literal strings
                 lemma_matched = re.escape(lemma_matched)
 
-                for token, lemma_search in zip(tokens, lemmas_search):
+                for token, lemma_search in set(zip(tokens, lemmas_search)):
                     if re_match(lemma_matched, lemma_search, flags = re_flags):
                         search_results.add(token)
 
@@ -185,295 +194,206 @@ def match_tokens(
 
 def match_ngrams(
     main, search_terms, tokens,
-    lang, tokenized, tagged,
-    token_settings, search_settings
+    lang, tagged, settings
 ):
-    search_terms_matched = set()
+    search_results = set()
 
-    settings = copy.deepcopy(search_settings)
-    re_tags = get_re_tags(main, tag_type = 'body')
-
-    search_term_tokens = [
+    search_term_tokens = list({
         search_term_token
         for search_term in search_terms
         for search_term_token in search_term.split()
-    ]
+    })
 
-    if search_settings['use_regex']:
-        regexes_matched = {search_term_token: set() for search_term_token in search_term_tokens}
-        tokens_matched = {}
-    else:
-        tokens_matched = {search_term_token: set() for search_term_token in search_term_tokens}
+    tokens_matched = {search_term_token: set() for search_term_token in search_term_tokens}
 
-    # Search Settings
-    if settings['ignore_tags']:
-        settings['match_tags'] = False
+    # Process tokens to search
+    tokens_search = tokens.copy()
+    re_tags = get_re_tags(main, tag_type = 'body')
+
+    if settings['match_without_tags'] and tagged:
+        tokens_search = [re.sub(re_tags, '', token) for token in tokens]
     elif settings['match_tags']:
-        settings['match_inflected_forms'] = False
-        settings['ignore_tags'] = False
-
-    # Token Settings
-    if token_settings['use_tags']:
-        settings['match_inflected_forms'] = False
-
-    if token_settings['ignore_tags'] or token_settings['use_tags']:
-        settings['ignore_tags'] = False
-        settings['match_tags'] = False
-
-    # Match tags only & Ignore tags
-    if settings['match_tags']:
-        if not tagged:
-            tokens_searched = []
+        if tagged:
+            tokens_search = [''.join(re.findall(re_tags, token)) for token in tokens]
         else:
-            tokens_searched = [''.join(re.findall(re_tags, token)) for token in tokens]
-    else:
-        if settings['ignore_tags']:
-            if not tagged:
-                tokens_searched = tokens
-            else:
-                if tagged:
-                    tokens_searched = [re.sub(re_tags, '', token) for token in tokens]
-        else:
-            tokens_searched = tokens
+            tokens_search = []
 
-    if tokens_searched:
+    # Match n-grams
+    if tokens_search:
+        re_match = re.fullmatch if settings['match_whole_words'] else re.search
+        re_flags = 0 if settings['match_case'] else re.IGNORECASE
+
         if settings['use_regex']:
-            for search_term_token in search_term_tokens:
-                if settings['match_whole_words']:
-                    regex = fr'^{search_term_token}$'
-                else:
-                    regex = search_term_token
-
-                if settings['ignore_case']:
-                    flags = re.IGNORECASE
-                else:
-                    flags = 0
-
-                for token, token_searched in zip(tokens, tokens_searched):
-                    if re.search(regex, token_searched, flags = flags):
-                        regexes_matched[search_term_token].add(token)
-                        tokens_matched[token] = set()
+            search_term_tokens_regex = search_term_tokens.copy()
+        # Prevent special characters from being treated as regex
         else:
-            for search_term_token in search_term_tokens:
-                regex = re.escape(search_term_token)
+            search_term_tokens_regex = [re.escape(token) for token in search_term_tokens]
 
-                if settings['match_whole_words']:
-                    regex = fr'^{regex}$'
-
-                if settings['ignore_case']:
-                    flags = re.IGNORECASE
-                else:
-                    flags = 0
-
-                for token, token_searched in zip(tokens, tokens_searched):
-                    if re.search(regex, token_searched, flags = flags):
-                        tokens_matched[search_term_token].add(token)
+        for search_term_token in search_term_tokens_regex:
+            for token, token_search in zip(tokens, tokens_search):
+                if re_match(search_term_token, token_search, flags = re_flags):
+                    tokens_matched[search_term_token].add(token)
 
         if settings['match_inflected_forms']:
-            lemmas_searched = wl_lemmatization.wl_lemmatize(main, tokens_searched, lang, tokenized, tagged)
-            lemmas_matched = wl_lemmatization.wl_lemmatize(main, list(tokens_matched), lang, tokenized, tagged)
+            lemmas_search = wl_lemmatization.wl_lemmatize(main, tokens_search, lang, tagged = tagged)
 
-            for token_matched, lemma_matched in zip(list(tokens_matched), lemmas_matched):
+            # Search for inflected forms of tokens in search results first
+            for search_term_token, search_term_tokens_matched in copy.deepcopy(tokens_matched).items():
+                lemmas_matched = wl_lemmatization.wl_lemmatize(main, search_term_tokens_matched, lang, tagged = tagged)
+
+                for token_matched, lemma_matched in zip(search_term_tokens_matched, lemmas_matched):
+                    # Always match literal strings
+                    lemma_matched = re.escape(lemma_matched)
+
+                    for token, lemma_search in set(zip(tokens, lemmas_search)):
+                        if re_match(lemma_matched, lemma_search, flags = re_flags):
+                            tokens_matched[search_term_token].add(token)
+
+            lemmas_matched = wl_lemmatization.wl_lemmatize(main, search_term_tokens, lang, tagged = tagged)
+
+            # Search for inflected forms of tokens in search terms
+            for token_matched, lemma_matched in zip(search_term_tokens, lemmas_matched):
+                # Always match literal strings
                 lemma_matched = re.escape(lemma_matched)
-                lemma_matched = fr'^{lemma_matched}$'
 
-                if settings['ignore_case']:
-                    flags = re.IGNORECASE
-                else:
-                    flags = 0
-
-                for token, lemma_searched in zip(tokens, lemmas_searched):
-                    if re.search(lemma_matched, lemma_searched, flags = flags):
+                for token, lemma_search in set(zip(tokens, lemmas_search)):
+                    if re_match(lemma_matched, lemma_search, flags = re_flags):
                         tokens_matched[token_matched].add(token)
 
-    if search_settings['use_regex']:
-        for search_term in search_terms:
-            search_term_tokens_matched = []
+    for search_term in search_terms:
+        search_term_tokens_matched = []
 
-            for search_term_token in search_term.split():
-                search_term_tokens_matched.append(set())
+        for search_term_token in search_term.split():
+            search_term_tokens_matched.append(tokens_matched[search_term_token])
 
-                for regex_matched in regexes_matched[search_term_token]:
-                    search_term_tokens_matched[-1].add(regex_matched)
-                    search_term_tokens_matched[-1] |= set(tokens_matched[regex_matched])
+        for item in itertools.product(*search_term_tokens_matched):
+            search_results.add(item)
 
-            for item in itertools.product(*search_term_tokens_matched):
-                search_terms_matched.add(item)
-    else:
-        for search_term in search_terms:
-            search_term_tokens_matched = []
-
-            for search_term_token in search_term.split():
-                search_term_tokens_matched.append(set(tokens_matched[search_term_token]))
-
-            for item in itertools.product(*search_term_tokens_matched):
-                search_terms_matched.add(item)
-
-    return search_terms_matched
-
-def check_search_terms(search_settings):
-    if (
-        'search_settings' in search_settings and search_settings['search_settings']
-        or 'search_settings' not in search_settings
-    ):
-        if search_settings['multi_search_mode']:
-            search_terms = search_settings['search_terms']
-        else:
-            if search_settings['search_term']:
-                search_terms = [search_settings['search_term']]
-            else:
-                search_terms = []
-    else:
-        search_terms = []
-
-    return search_terms
+    return search_results
 
 def match_search_terms_tokens(
     main, tokens,
-    lang, tokenized, tagged,
+    lang, tagged,
     token_settings, search_settings
 ):
-    search_terms = check_search_terms(search_settings)
+    search_terms = check_search_terms(
+        search_settings = search_settings,
+        search_enabled = search_settings.get('search_settings', True)
+    )
 
     if search_terms:
         search_terms = match_tokens(
             main, search_terms, tokens,
-            lang, tokenized, tagged,
-            token_settings, search_settings
+            lang, tagged,
+            check_search_settings(token_settings, search_settings)
         )
 
     return search_terms
 
-def match_search_terms(
+def match_search_terms_ngrams(
     main, tokens,
-    lang, tokenized, tagged,
+    lang, tagged,
     token_settings, search_settings
 ):
-    if (
-        'search_settings' in search_settings and search_settings['search_settings']
-        or 'search_settings' not in search_settings
-    ):
-        if search_settings['multi_search_mode']:
-            search_terms = search_settings['search_terms']
-        else:
-            if search_settings['search_term']:
-                search_terms = [search_settings['search_term']]
-            else:
-                search_terms = []
-    else:
-        search_terms = []
+    search_terms = check_search_terms(
+        search_settings = search_settings,
+        search_enabled = search_settings.get('search_settings', True)
+    )
 
     if search_terms:
         search_terms = match_ngrams(
             main, search_terms, tokens,
-            lang, tokenized, tagged,
-            token_settings, search_settings
+            lang, tagged,
+            check_search_settings(token_settings, search_settings)
         )
 
     return search_terms
 
+# Context
 def match_search_terms_context(
     main, tokens,
-    lang, tokenized, tagged,
+    lang, tagged,
     token_settings, context_settings
 ):
-    search_terms_inclusion = set()
-    search_terms_exclusion = set()
-
     # Inclusion
-    if context_settings['inclusion']['inclusion']:
-        if context_settings['inclusion']['multi_search_mode']:
-            search_terms = context_settings['search_terms']
-        else:
-            if context_settings['inclusion']['search_term']:
-                search_terms = [context_settings['inclusion']['search_term']]
-            else:
-                search_terms = []
+    search_terms_incl = check_search_terms(
+        search_settings = context_settings['incl'],
+        search_enabled = context_settings['incl']['incl']
+    )
 
-        if search_terms:
-            search_terms_inclusion = match_ngrams(
-                main, search_terms, tokens,
-                lang, tokenized, tagged,
-                token_settings, context_settings['inclusion']
-            )
-
-            for search_term in search_terms:
-                search_terms_inclusion.add(tuple(search_term))
+    if search_terms_incl:
+        search_terms_incl = match_ngrams(
+            main, search_terms_incl, tokens,
+            lang, tagged,
+            check_search_settings(token_settings, context_settings['incl'])
+        )
 
     # Exclusion
-    if context_settings['exclusion']['exclusion']:
-        if context_settings['exclusion']['multi_search_mode']:
-            search_terms = context_settings['exclusion']['search_terms']
-        else:
-            if context_settings['exclusion']['search_term']:
-                search_terms = [context_settings['exclusion']['search_term']]
-            else:
-                search_terms = []
+    search_terms_excl = check_search_terms(
+        search_settings = context_settings['excl'],
+        search_enabled = context_settings['excl']['excl']
+    )
 
-        if search_terms:
-            search_terms_exclusion = match_ngrams(
-                main, search_terms, tokens,
-                lang, tokenized, tagged,
-                token_settings, context_settings['exclusion']
-            )
+    if search_terms_excl:
+        search_terms_excl = match_ngrams(
+            main, search_terms_excl, tokens,
+            lang, tagged,
+            check_search_settings(token_settings, context_settings['excl'])
+        )
 
-            for search_term in search_terms:
-                search_terms_exclusion.add(tuple(search_term))
+    return search_terms_incl, search_terms_excl
 
-    return search_terms_inclusion, search_terms_exclusion
-
-# Context
 def check_context(
     i, tokens, context_settings,
-    search_terms_inclusion, search_terms_exclusion
+    search_terms_incl, search_terms_excl
 ):
-    if context_settings['inclusion']['inclusion'] or context_settings['exclusion']['exclusion']:
+    if context_settings['incl']['incl'] or context_settings['excl']['excl']:
         len_tokens = len(tokens)
 
         # Inclusion
-        if context_settings['inclusion']['inclusion'] and search_terms_inclusion:
-            inclusion_matched = False
+        if context_settings['incl']['incl'] and search_terms_incl:
+            incl_matched = False
 
-            for search_term in search_terms_inclusion:
-                if inclusion_matched:
+            for search_term in search_terms_incl:
+                if incl_matched:
                     break
 
                 for j in range(
-                    context_settings['inclusion']['context_window_left'],
-                    context_settings['inclusion']['context_window_right'] + 1
+                    context_settings['incl']['context_window_left'],
+                    context_settings['incl']['context_window_right'] + 1
                 ):
                     if i + j < 0 or i + j > len_tokens - 1:
                         continue
 
                     if j != 0:
                         if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
-                            inclusion_matched = True
+                            incl_matched = True
 
                             break
         else:
-            inclusion_matched = True
+            incl_matched = True
 
         # Exclusion
-        exclusion_matched = True
+        excl_matched = True
 
-        if context_settings['exclusion']['exclusion'] and search_terms_exclusion:
-            for search_term in search_terms_exclusion:
-                if not exclusion_matched:
+        if context_settings['excl']['excl'] and search_terms_excl:
+            for search_term in search_terms_excl:
+                if not excl_matched:
                     break
 
                 for j in range(
-                    context_settings['exclusion']['context_window_left'],
-                    context_settings['exclusion']['context_window_right'] + 1
+                    context_settings['excl']['context_window_left'],
+                    context_settings['excl']['context_window_right'] + 1
                 ):
                     if i + j < 0 or i + j > len_tokens - 1:
                         continue
 
                     if j != 0:
                         if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
-                            exclusion_matched = False
+                            excl_matched = False
 
                             break
 
-        return bool(inclusion_matched and exclusion_matched)
+        return bool(incl_matched and excl_matched)
     else:
         return True
