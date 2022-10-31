@@ -119,11 +119,9 @@ MLA（第8版）：
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
-## 助力
+## 貢獻
 
-如果你想要助力 Wordless 的開發工作，你可以在 Github 上提交 [pull requests](https://github.com/BLKSerene/Wordless/pulls) 來幫助修復程式錯誤、改善效能或實現新功能。
-
-此外，你還可以在 Github 上撰寫[百科](https://github.com/BLKSerene/Wordless/wiki)、製作影片教程、或幫助將使用者介面及[文檔](/doc/doc_eng.md)翻譯為其他語言。
+詳情請參閱 [CONTRIBUTING_zho_tw.md](/CONTRIBUTING_zho_tw.md)。
 
 ## 贊助
 
