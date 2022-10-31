@@ -110,8 +110,6 @@ datas.extend([
     ('../ACKNOWLEDGMENTS_zho_tw.md', '.'),
     ('../CHANGELOG.md', '.'),
     ('../LICENSE.txt', '.'),
-    ('../LICENSE_zho_cn.txt', '.'),
-    ('../LICENSE_zho_tw.txt', '.'),
     ('../VERSION', '.')
 ])
 

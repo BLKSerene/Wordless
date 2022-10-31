@@ -112,10 +112,20 @@ MLA（第8版）：
 
 ## 許可
 
-    版權所有（C）2018-2022 葉磊
-    本程式為自由軟體，在自由軟體聯盟發佈的GNU通用公共授權合約的約束下，你可以對其進行再發佈及修改。協議版本為第三版或（隨你）更新的版本。
-    我們希望發佈的這款程式有用，但不保證，甚至不保證它有經濟價值和適合特定用途。詳情參見GNU通用公共授權合約。
-    你理當已收到一份GNU通用公共授權合約的副本，如果沒有，請查閱<http://www.gnu.org/licenses/>
+    Copyright (C) 2018-2022  Ye Lei (叶磊)
+    
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+    
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_large)
 
