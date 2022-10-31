@@ -131,9 +131,7 @@ MLA (8th Edition):
 
 ## Contributing
 
-If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new features by submitting [pull requests](https://github.com/BLKSerene/Wordless/pulls) on Github.
-
-Besides, you may contribute by writing [wikis](https://github.com/BLKSerene/Wordless/wiki) on Github, making tutorial videos, or helping with the translation of the user interface and [documentation](/doc/doc_eng.md) into other languages.
+For more details, please refer to [CONTRIBUTING.md](/CONTRIBUTING.md).
 
 ## Donating
 
@@ -145,4 +143,4 @@ PayPal|Alipay|WeChat Pay
 
 ## Acknowledgments
 
-See [ACKNOWLEDGMENTS.md](/ACKNOWLEDGMENTS.md) for details.
+For more details, please refer to [ACKNOWLEDGMENTS.md](/ACKNOWLEDGMENTS.md).
