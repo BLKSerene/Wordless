@@ -69,6 +69,7 @@ class Wl_Wrapper(QWidget):
         self.wrapper_settings_outer.layout().addWidget(self.button_restore_default_settings, 1, 0)
 
         self.wrapper_settings_outer.layout().setContentsMargins(8, 6, 8, 6)
+        self.wrapper_settings_outer.layout().setRowStretch(2, 1)
 
         self.scroll_area_settings.setWidget(self.wrapper_settings_outer)
 

@@ -425,8 +425,6 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 2, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_fig_settings, 3, 0)
 
-        self.wrapper_settings.layout().setRowStretch(4, 1)
-
         self.load_settings()
 
     def load_settings(self, defaults = False):
