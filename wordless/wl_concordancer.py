@@ -38,467 +38,6 @@ from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_w
 
 _tr = QCoreApplication.translate
 
-class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
-    def __init__(self, parent):
-        super().__init__(
-            parent,
-            tab = 'concordancer',
-            headers = [
-                _tr('Wl_Table_Concordancer', 'Left'),
-                _tr('Wl_Table_Concordancer', 'Node'),
-                _tr('Wl_Table_Concordancer', 'Right'),
-                _tr('Wl_Table_Concordancer', 'Sentiment'),
-                _tr('Wl_Table_Concordancer', 'Token No.'),
-                _tr('Wl_Table_Concordancer', 'Token No. %'),
-                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
-                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
-                _tr('Wl_Table_Concordancer', 'Sentence No.'),
-                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
-                _tr('Wl_Table_Concordancer', 'Paragraph No.'),
-                _tr('Wl_Table_Concordancer', 'Paragraph No. %'),
-                _tr('Wl_Table_Concordancer', 'File')
-            ],
-            headers_int = [
-                _tr('Wl_Table_Concordancer', 'Token No.'),
-                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
-                _tr('Wl_Table_Concordancer', 'Sentence No.'),
-                _tr('Wl_Table_Concordancer', 'Paragraph No.')
-            ],
-            headers_float = [
-                _tr('Wl_Table_Concordancer', 'Sentiment')
-            ],
-            headers_pct = [
-                _tr('Wl_Table_Concordancer', 'Token No. %'),
-                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
-                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
-                _tr('Wl_Table_Concordancer', 'Paragraph No. %')
-            ]
-        )
-
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
-
-        self.button_generate_table.clicked.connect(lambda: generate_table(self.main, self))
-        self.button_generate_fig.clicked.connect(lambda: generate_fig(self.main))
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        if list(self.main.wl_file_area.get_selected_files()):
-            self.button_generate_table.setEnabled(True)
-            self.button_generate_fig.setEnabled(True)
-        else:
-            self.button_generate_table.setEnabled(False)
-            self.button_generate_fig.setEnabled(False)
-
-class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.table_concordancer = Wl_Table_Concordancer(self)
-
-        layout_results = wl_layouts.Wl_Layout()
-        layout_results.addWidget(self.table_concordancer.label_number_results, 0, 0)
-        layout_results.addWidget(self.table_concordancer.button_results_sort, 0, 2)
-        layout_results.addWidget(self.table_concordancer.button_results_search, 0, 3)
-
-        layout_results.setColumnStretch(1, 1)
-
-        self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_concordancer, 1, 0, 1, 5)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_clr, 2, 4)
-
-        # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
-
-        (
-            self.checkbox_puncs,
-
-            self.checkbox_ignore_tags,
-            self.checkbox_use_tags
-        ) = wl_widgets.wl_widgets_token_settings_concordancer(self)
-
-        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
-
-        self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
-
-        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0, 1, 2)
-
-        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
-
-        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 2, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 2, 1)
-
-        # Search Settings
-        self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
-
-        (
-            self.label_search_term,
-            self.checkbox_multi_search_mode,
-
-            self.stacked_widget_search_term,
-            self.line_edit_search_term,
-            self.list_search_terms,
-            self.label_delimiter,
-
-            self.checkbox_match_case,
-            self.checkbox_match_whole_words,
-            self.checkbox_match_inflected_forms,
-            self.checkbox_use_regex,
-            self.checkbox_match_without_tags,
-            self.checkbox_match_tags
-        ) = wl_widgets.wl_widgets_search_settings(
-            self,
-            tab = 'concordancer'
-        )
-
-        (
-            self.label_context_settings,
-            self.button_context_settings
-        ) = wl_widgets.wl_widgets_context_settings(
-            self,
-            tab = 'concordancer'
-        )
-
-        self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
-        self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
-        self.line_edit_search_term.returnPressed.connect(self.table_concordancer.button_generate_table.click)
-        self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
-
-        self.checkbox_match_case.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_without_tags.stateChanged.connect(self.search_settings_changed)
-        self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
-
-        layout_context_settings = wl_layouts.Wl_Layout()
-        layout_context_settings.addWidget(self.label_context_settings, 0, 0)
-        layout_context_settings.addWidget(self.button_context_settings, 0, 1)
-
-        layout_context_settings.setColumnStretch(1, 1)
-
-        self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
-        self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
-
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_case, 3, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_words, 4, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_without_tags, 7, 0, 1, 2)
-        self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
-
-        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
-
-        self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
-
-        # Generation Settings
-        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
-
-        self.label_width_left = QLabel(self.tr('Width (Left):'), self)
-        self.stacked_widget_width_left = wl_layouts.Wl_Stacked_Widget(self)
-        self.spin_box_width_left_char = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_left_token = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_left_sentence_seg = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_left_sentence = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_left_para = wl_boxes.Wl_Spin_Box(self)
-        self.label_width_right = QLabel(self.tr('Width (Right):'), self)
-        self.stacked_widget_width_right = wl_layouts.Wl_Stacked_Widget(self)
-        self.spin_box_width_right_char = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_right_token = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_right_sentence_seg = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_right_sentence = wl_boxes.Wl_Spin_Box(self)
-        self.spin_box_width_right_para = wl_boxes.Wl_Spin_Box(self)
-        self.label_width_unit = QLabel(self.tr('Width Unit:'), self)
-        self.combo_box_width_unit = wl_boxes.Wl_Combo_Box(self)
-
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_char)
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_token)
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence_seg)
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence)
-        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_para)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_char)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_token)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence_seg)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence)
-        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_para)
-
-        self.combo_box_width_unit.addItems([
-            self.tr('Character'),
-            self.tr('Token'),
-            self.tr('Sentence Segment'),
-            self.tr('Sentence'),
-            self.tr('Paragraph')
-        ])
-
-        self.spin_box_width_left_char.setRange(0, 3000)
-        self.spin_box_width_left_token.setRange(0, 500)
-        self.spin_box_width_left_sentence_seg.setRange(0, 100)
-        self.spin_box_width_left_sentence.setRange(0, 30)
-        self.spin_box_width_left_para.setRange(0, 10)
-        self.spin_box_width_right_char.setRange(0, 3000)
-        self.spin_box_width_right_token.setRange(0, 500)
-        self.spin_box_width_right_sentence_seg.setRange(0, 100)
-        self.spin_box_width_right_sentence.setRange(0, 30)
-        self.spin_box_width_right_para.setRange(0, 10)
-
-        self.spin_box_width_left_char.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_left_token.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_left_sentence_seg.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_left_sentence.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_left_para.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_char.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_token.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_sentence_seg.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_sentence.valueChanged.connect(self.generation_settings_changed)
-        self.spin_box_width_right_para.valueChanged.connect(self.generation_settings_changed)
-        self.combo_box_width_unit.currentTextChanged.connect(self.generation_settings_changed)
-
-        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_width_left, 0, 0)
-        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_width_left, 0, 1)
-        self.group_box_generation_settings.layout().addWidget(self.label_width_right, 1, 0)
-        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_width_right, 1, 1)
-        self.group_box_generation_settings.layout().addWidget(self.label_width_unit, 2, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_width_unit, 2, 1)
-
-        self.group_box_generation_settings.layout().setColumnStretch(1, 1)
-
-        # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
-
-        (
-            self.checkbox_show_pct,
-            self.checkbox_show_cumulative,
-            self.checkbox_show_breakdown
-        ) = wl_widgets.wl_widgets_table_settings(
-            self,
-            tables = [self.table_concordancer]
-        )
-
-        self.checkbox_show_cumulative.hide()
-        self.checkbox_show_breakdown.hide()
-
-        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
-
-        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
-
-        # Figure Settings
-        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
-
-        self.label_sort_results_by = QLabel(self.tr('Sort results by:'), self)
-        self.combo_box_sort_results_by = wl_boxes.Wl_Combo_Box(self)
-
-        self.combo_box_sort_results_by.addItems([
-            self.tr('File'),
-            self.tr('Search Term')
-        ])
-
-        self.combo_box_sort_results_by.currentTextChanged.connect(self.fig_settings_changed)
-
-        self.group_box_fig_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_fig_settings.layout().addWidget(self.label_sort_results_by, 0, 0)
-        self.group_box_fig_settings.layout().addWidget(self.combo_box_sort_results_by, 0, 1)
-
-        self.group_box_fig_settings.layout().setColumnStretch(1, 1)
-
-        # Zapping Settings
-        self.group_box_zapping_settings = QGroupBox(self.tr('Zapping Settings'), self)
-
-        self.label_replace_keywords_with = QLabel(self.tr('Replace keywords with'), self)
-        self.spin_box_replace_keywords_with = wl_boxes.Wl_Spin_Box(self)
-        self.line_edit_replace_keywords_with = QLineEdit('_', self)
-        self.checkbox_add_line_nums = QCheckBox(self.tr('Add line numbers'), self)
-        self.checkbox_randomize_outputs = QCheckBox(self.tr('Randomize outputs'), self)
-
-        self.group_box_zapping_settings.setCheckable(True)
-        self.spin_box_replace_keywords_with.setRange(1, 100)
-
-        self.group_box_zapping_settings.clicked.connect(self.zapping_settings_changed)
-        self.spin_box_replace_keywords_with.valueChanged.connect(self.zapping_settings_changed)
-        self.line_edit_replace_keywords_with.textChanged.connect(self.zapping_settings_changed)
-        self.checkbox_add_line_nums.clicked.connect(self.zapping_settings_changed)
-        self.checkbox_randomize_outputs.clicked.connect(self.zapping_settings_changed)
-
-        self.group_box_zapping_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_zapping_settings.layout().addWidget(self.label_replace_keywords_with, 0, 0)
-        self.group_box_zapping_settings.layout().addWidget(self.spin_box_replace_keywords_with, 0, 1)
-        self.group_box_zapping_settings.layout().addWidget(self.line_edit_replace_keywords_with, 0, 2)
-        self.group_box_zapping_settings.layout().addWidget(self.checkbox_add_line_nums, 1, 0, 1, 3)
-        self.group_box_zapping_settings.layout().addWidget(self.checkbox_randomize_outputs, 2, 0, 1, 3)
-
-        self.group_box_fig_settings.layout().setColumnStretch(3, 1)
-
-        self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_fig_settings, 4, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_zapping_settings, 5, 0)
-
-        self.wrapper_settings.layout().setRowStretch(6, 1)
-
-        self.load_settings()
-
-    def load_settings(self, defaults = False):
-        if defaults:
-            settings = copy.deepcopy(self.main.settings_default['concordancer'])
-        else:
-            settings = copy.deepcopy(self.main.settings_custom['concordancer'])
-
-        # Token Settings
-        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
-
-        self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
-        self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
-
-        # Search Settings
-        self.checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
-
-        if not defaults:
-            self.line_edit_search_term.setText(settings['search_settings']['search_term'])
-            self.list_search_terms.load_items(settings['search_settings']['search_terms'])
-
-        self.checkbox_match_case.setChecked(settings['search_settings']['match_case'])
-        self.checkbox_match_whole_words.setChecked(settings['search_settings']['match_whole_words'])
-        self.checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
-        self.checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
-        self.checkbox_match_without_tags.setChecked(settings['search_settings']['match_without_tags'])
-        self.checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
-
-        # Context Settings
-        if defaults:
-            self.main.wl_context_settings_concordancer.load_settings(defaults = True)
-
-        # Generation Settings
-        self.spin_box_width_left_char.setValue(settings['generation_settings']['width_left_char'])
-        self.spin_box_width_left_token.setValue(settings['generation_settings']['width_left_token'])
-        self.spin_box_width_left_sentence_seg.setValue(settings['generation_settings']['width_left_sentence_seg'])
-        self.spin_box_width_left_sentence.setValue(settings['generation_settings']['width_left_sentence'])
-        self.spin_box_width_left_para.setValue(settings['generation_settings']['width_left_para'])
-        self.spin_box_width_right_char.setValue(settings['generation_settings']['width_right_char'])
-        self.spin_box_width_right_token.setValue(settings['generation_settings']['width_right_token'])
-        self.spin_box_width_right_sentence_seg.setValue(settings['generation_settings']['width_right_sentence_seg'])
-        self.spin_box_width_right_sentence.setValue(settings['generation_settings']['width_right_sentence'])
-        self.spin_box_width_right_para.setValue(settings['generation_settings']['width_right_para'])
-        self.combo_box_width_unit.setCurrentText(settings['generation_settings']['width_unit'])
-
-        # Table Settings
-        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
-
-        # Figure Settings
-        self.combo_box_sort_results_by.setCurrentText(settings['fig_settings']['sort_results_by'])
-
-        # Zapping Settings
-        self.group_box_zapping_settings.setChecked(settings['zapping_settings']['zapping'])
-        self.spin_box_replace_keywords_with.setValue(settings['zapping_settings']['replace_keywords_with'])
-        self.line_edit_replace_keywords_with.setText(settings['zapping_settings']['placeholder'])
-        self.checkbox_add_line_nums.setChecked(settings['zapping_settings']['add_line_nums'])
-        self.checkbox_randomize_outputs.setChecked(settings['zapping_settings']['randomize_outputs'])
-
-        self.token_settings_changed()
-        self.search_settings_changed()
-        self.generation_settings_changed()
-        self.table_settings_changed()
-        self.fig_settings_changed()
-        self.zapping_settings_changed()
-
-    def token_settings_changed(self):
-        settings = self.main.settings_custom['concordancer']['token_settings']
-
-        settings['puncs'] = self.checkbox_puncs.isChecked()
-
-        settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
-        settings['use_tags'] = self.checkbox_use_tags.isChecked()
-
-        # Check if searching is enabled
-        if self.group_box_search_settings.isChecked():
-            self.checkbox_match_tags.token_settings_changed()
-        else:
-            self.group_box_search_settings.setChecked(True)
-
-            self.checkbox_match_tags.token_settings_changed()
-
-            self.group_box_search_settings.setChecked(False)
-
-        self.main.wl_context_settings_concordancer.token_settings_changed()
-
-    def search_settings_changed(self):
-        settings = self.main.settings_custom['concordancer']['search_settings']
-
-        settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
-        settings['search_term'] = self.line_edit_search_term.text()
-        settings['search_terms'] = self.list_search_terms.model().stringList()
-
-        settings['match_case'] = self.checkbox_match_case.isChecked()
-        settings['match_whole_words'] = self.checkbox_match_whole_words.isChecked()
-        settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
-        settings['use_regex'] = self.checkbox_use_regex.isChecked()
-        settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
-        settings['match_tags'] = self.checkbox_match_tags.isChecked()
-
-    def generation_settings_changed(self):
-        settings = self.main.settings_custom['concordancer']['generation_settings']
-
-        settings['width_left_char'] = self.spin_box_width_left_char.value()
-        settings['width_left_token'] = self.spin_box_width_left_token.value()
-        settings['width_left_sentence_seg'] = self.spin_box_width_left_sentence_seg.value()
-        settings['width_left_sentence'] = self.spin_box_width_left_sentence.value()
-        settings['width_left_para'] = self.spin_box_width_left_para.value()
-        settings['width_right_char'] = self.spin_box_width_right_char.value()
-        settings['width_right_token'] = self.spin_box_width_right_token.value()
-        settings['width_right_sentence_seg'] = self.spin_box_width_right_sentence_seg.value()
-        settings['width_right_sentence'] = self.spin_box_width_right_sentence.value()
-        settings['width_right_para'] = self.spin_box_width_right_para.value()
-        settings['width_unit'] = self.combo_box_width_unit.currentText()
-
-        # Width Unit
-        if settings['width_unit'] == self.tr('Character'):
-            self.stacked_widget_width_left.setCurrentIndex(0)
-            self.stacked_widget_width_right.setCurrentIndex(0)
-        elif settings['width_unit'] == self.tr('Token'):
-            self.stacked_widget_width_left.setCurrentIndex(1)
-            self.stacked_widget_width_right.setCurrentIndex(1)
-        elif settings['width_unit'] == self.tr('Sentence Segment'):
-            self.stacked_widget_width_left.setCurrentIndex(2)
-            self.stacked_widget_width_right.setCurrentIndex(2)
-        elif settings['width_unit'] == self.tr('Sentence'):
-            self.stacked_widget_width_left.setCurrentIndex(3)
-            self.stacked_widget_width_right.setCurrentIndex(3)
-        elif settings['width_unit'] == self.tr('Paragraph'):
-            self.stacked_widget_width_left.setCurrentIndex(4)
-            self.stacked_widget_width_right.setCurrentIndex(4)
-
-    def table_settings_changed(self):
-        settings = self.main.settings_custom['concordancer']['table_settings']
-
-        settings['show_pct'] = self.checkbox_show_pct.isChecked()
-
-    def fig_settings_changed(self):
-        settings = self.main.settings_custom['concordancer']['fig_settings']
-
-        settings['sort_results_by'] = self.combo_box_sort_results_by.currentText()
-
-    def zapping_settings_changed(self):
-        settings = self.main.settings_custom['concordancer']['zapping_settings']
-
-        settings['zapping'] = self.group_box_zapping_settings.isChecked()
-        settings['replace_keywords_with'] = self.spin_box_replace_keywords_with.value()
-        settings['placeholder'] = self.line_edit_replace_keywords_with.text()
-        settings['add_line_nums'] = self.checkbox_add_line_nums.isChecked()
-        settings['randomize_outputs'] = self.checkbox_randomize_outputs.isChecked()
-
 class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
@@ -876,18 +415,90 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
         self.progress_updated.emit(self.tr('Rendering figure...'))
         self.worker_done.emit(err_msg, points, labels)
 
-@wl_misc.log_timing
-def generate_table(main, table):
-    def update_gui(err_msg, concordance_lines):
+class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            tab = 'concordancer',
+            headers = [
+                _tr('Wl_Table_Concordancer', 'Left'),
+                _tr('Wl_Table_Concordancer', 'Node'),
+                _tr('Wl_Table_Concordancer', 'Right'),
+                _tr('Wl_Table_Concordancer', 'Sentiment'),
+                _tr('Wl_Table_Concordancer', 'Token No.'),
+                _tr('Wl_Table_Concordancer', 'Token No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No.'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No. %'),
+                _tr('Wl_Table_Concordancer', 'File')
+            ],
+            headers_int = [
+                _tr('Wl_Table_Concordancer', 'Token No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence No.'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No.')
+            ],
+            headers_float = [
+                _tr('Wl_Table_Concordancer', 'Sentiment')
+            ],
+            headers_pct = [
+                _tr('Wl_Table_Concordancer', 'Token No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No. %')
+            ]
+        )
+
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+
+        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
+        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item): # pylint: disable=unused-argument
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+            self.button_generate_fig.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+            self.button_generate_fig.setEnabled(False)
+
+    @wl_misc.log_timing
+    def generate_table(self):
+        settings = self.main.settings_custom['concordancer']
+
+        if (
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
+            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
+            worker_concordancer_table = Wl_Worker_Concordancer_Table(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_table
+            )
+            wl_threading.Wl_Thread(worker_concordancer_table).start_worker()
+        else:
+            wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
+            wl_msgs.wl_msg_generate_table_error(self.main)
+
+    def update_gui_table(self, err_msg, concordance_lines):
         if not err_msg:
             if concordance_lines:
                 try:
-                    table.settings = copy.deepcopy(main.settings_custom)
+                    self.settings = copy.deepcopy(self.main.settings_custom)
 
-                    table.clr_table(0)
-                    table.model().setRowCount(len(concordance_lines))
+                    self.clr_table(0)
+                    self.model().setRowCount(len(concordance_lines))
 
-                    table.disable_updates()
+                    settings = self.main.settings_custom['concordancer']
+
+                    self.disable_updates()
 
                     for i, concordance_line in enumerate(concordance_lines):
                         left_text, left_text_raw, left_text_search = concordance_line[0]
@@ -908,93 +519,94 @@ def generate_table(main, table):
                                     &nbsp;{node_text}&nbsp;
                                 </span>
                             ''',
-                            main
+                            self.main
                         )
 
-                        table.setIndexWidget(table.model().index(i, 1), label_node)
+                        self.setIndexWidget(self.model().index(i, 1), label_node)
 
-                        table.indexWidget(table.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                        self.indexWidget(self.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                        table.indexWidget(table.model().index(i, 1)).text_raw = node_text_raw
-                        table.indexWidget(table.model().index(i, 1)).text_search = node_text_search
+                        self.indexWidget(self.model().index(i, 1)).text_raw = node_text_raw
+                        self.indexWidget(self.model().index(i, 1)).text_search = node_text_search
 
                         # Left
-                        table.setIndexWidget(
-                            table.model().index(i, 0),
-                            wl_labels.Wl_Label_Html(left_text, main)
+                        self.setIndexWidget(
+                            self.model().index(i, 0),
+                            wl_labels.Wl_Label_Html(left_text, self.main)
                         )
 
-                        table.indexWidget(table.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+                        self.indexWidget(self.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                        table.indexWidget(table.model().index(i, 0)).text_raw = left_text_raw
-                        table.indexWidget(table.model().index(i, 0)).text_search = left_text_search
+                        self.indexWidget(self.model().index(i, 0)).text_raw = left_text_raw
+                        self.indexWidget(self.model().index(i, 0)).text_search = left_text_search
 
                         # Right
-                        table.setIndexWidget(
-                            table.model().index(i, 2),
-                            wl_labels.Wl_Label_Html(right_text, main)
+                        self.setIndexWidget(
+                            self.model().index(i, 2),
+                            wl_labels.Wl_Label_Html(right_text, self.main)
                         )
 
-                        table.indexWidget(table.model().index(i, 2)).text_raw = right_text_raw
-                        table.indexWidget(table.model().index(i, 2)).text_search = right_text_search
+                        self.indexWidget(self.model().index(i, 2)).text_raw = right_text_raw
+                        self.indexWidget(self.model().index(i, 2)).text_search = right_text_search
 
                         # Sentiment
                         if not isinstance(sentiment, str):
-                            table.set_item_num(i, 3, sentiment)
+                            self.set_item_num(i, 3, sentiment)
                         # No Support
                         else:
-                            table.set_item_error(i, 3, text = sentiment)
+                            self.set_item_error(i, 3, text = sentiment)
 
                         # Token No.
-                        table.set_item_num(i, 4, no_token)
-                        table.set_item_num(i, 5, no_token, len_tokens)
+                        self.set_item_num(i, 4, no_token)
+                        self.set_item_num(i, 5, no_token, len_tokens)
                         # Sentence Segment No.
-                        table.set_item_num(i, 6, no_sentence_seg)
-                        table.set_item_num(i, 7, no_sentence_seg, len_sentence_segs)
+                        self.set_item_num(i, 6, no_sentence_seg)
+                        self.set_item_num(i, 7, no_sentence_seg, len_sentence_segs)
                         # Sentence No.
-                        table.set_item_num(i, 8, no_sentence)
-                        table.set_item_num(i, 9, no_sentence, len_sentences)
+                        self.set_item_num(i, 8, no_sentence)
+                        self.set_item_num(i, 9, no_sentence, len_sentences)
                         # Paragraph No.
-                        table.set_item_num(i, 10, no_para)
-                        table.set_item_num(i, 11, no_para, len_paras)
+                        self.set_item_num(i, 10, no_para)
+                        self.set_item_num(i, 11, no_para, len_paras)
 
                         # File
-                        table.model().setItem(i, 12, QStandardItem(file_name))
+                        self.model().setItem(i, 12, QStandardItem(file_name))
 
-                    table.enable_updates()
+                    self.enable_updates()
 
-                    table.toggle_pct()
+                    self.toggle_pct()
 
-                    wl_msgs.wl_msg_generate_table_success(main)
+                    wl_msgs.wl_msg_generate_table_success(self.main)
                 except Exception:
                     err_msg = traceback.format_exc()
             else:
-                wl_msg_boxes.wl_msg_box_no_results(main)
-                wl_msgs.wl_msg_generate_table_error(main)
+                wl_msg_boxes.wl_msg_box_no_results(self.main)
+                wl_msgs.wl_msg_generate_table_error(self.main)
 
         if err_msg:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-            wl_msgs.wl_msg_fatal_error(main)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
+            wl_msgs.wl_msg_fatal_error(self.main)
 
-    settings = main.settings_custom['concordancer']
+    @wl_misc.log_timing
+    def generate_fig(self):
+        settings = self.main.settings_custom['concordancer']
 
-    if (
-        not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
-        or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
-    ):
-        worker_concordancer_table = Wl_Worker_Concordancer_Table(
-            main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
-        )
-        wl_threading.Wl_Thread(worker_concordancer_table).start_worker()
-    else:
-        wl_msg_boxes.wl_msg_box_missing_search_terms(main)
-        wl_msgs.wl_msg_generate_table_error(main)
+        # Check for empty search terms
+        if (
+            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
+            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        ):
+            self.worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_fig
+            )
+            wl_threading.Wl_Thread(self.worker_concordancer_fig).start_worker()
+        else:
+            wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
+            wl_msgs.wl_msg_generate_fig_error(self.main)
 
-@wl_misc.log_timing
-def generate_fig(main):
-    def update_gui(err_msg, points, labels):
+    def update_gui_fig(self, err_msg, points, labels):
         if not err_msg:
             if points:
                 x_ticks = labels[0]
@@ -1004,6 +616,7 @@ def generate_fig(main):
                 y_max = labels[4]
 
                 points = numpy.array(points)
+                settings = self.main.settings_custom['concordancer']
 
                 try:
                     if settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'File'):
@@ -1037,33 +650,421 @@ def generate_fig(main):
                     matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
                     # Hide the progress dialog early so that the main window will not obscure the generated figure
-                    worker_concordancer_fig.dialog_progress.accept()
+                    self.worker_concordancer_fig.dialog_progress.accept()
                     wl_figs.show_fig()
 
-                    wl_msgs.wl_msg_generate_fig_success(main)
+                    wl_msgs.wl_msg_generate_fig_success(self.main)
                 except Exception:
                     err_msg = traceback.format_exc()
             else:
-                wl_msg_boxes.wl_msg_box_no_results(main)
-                wl_msgs.wl_msg_generate_fig_error(main)
+                wl_msg_boxes.wl_msg_box_no_results(self.main)
+                wl_msgs.wl_msg_generate_fig_error(self.main)
 
         if err_msg:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
-            wl_msgs.wl_msg_fatal_error(main)
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
+            wl_msgs.wl_msg_fatal_error(self.main)
 
-    settings = main.settings_custom['concordancer']
+class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
+    def __init__(self, main):
+        super().__init__(main)
 
-    # Check for empty search terms
-    if (
-        not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
-        or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
-    ):
-        worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
-            main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
+        self.table_concordancer = Wl_Table_Concordancer(self)
+
+        layout_results = wl_layouts.Wl_Layout()
+        layout_results.addWidget(self.table_concordancer.label_number_results, 0, 0)
+        layout_results.addWidget(self.table_concordancer.button_results_sort, 0, 2)
+        layout_results.addWidget(self.table_concordancer.button_results_search, 0, 3)
+
+        layout_results.setColumnStretch(1, 1)
+
+        self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_concordancer, 1, 0, 1, 5)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_table, 2, 0)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_fig, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_selected, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_all, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_clr, 2, 4)
+
+        # Token Settings
+        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+
+        (
+            self.checkbox_puncs,
+
+            self.checkbox_ignore_tags,
+            self.checkbox_use_tags
+        ) = wl_widgets.wl_widgets_token_settings_concordancer(self)
+
+        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
+
+        self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
+
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0, 1, 2)
+
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
+
+        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 2, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 2, 1)
+
+        # Search Settings
+        self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
+
+        (
+            self.label_search_term,
+            self.checkbox_multi_search_mode,
+
+            self.stacked_widget_search_term,
+            self.line_edit_search_term,
+            self.list_search_terms,
+            self.label_delimiter,
+
+            self.checkbox_match_case,
+            self.checkbox_match_whole_words,
+            self.checkbox_match_inflected_forms,
+            self.checkbox_use_regex,
+            self.checkbox_match_without_tags,
+            self.checkbox_match_tags
+        ) = wl_widgets.wl_widgets_search_settings(
+            self,
+            tab = 'concordancer'
         )
-        wl_threading.Wl_Thread(worker_concordancer_fig).start_worker()
-    else:
-        wl_msg_boxes.wl_msg_box_missing_search_terms(main)
-        wl_msgs.wl_msg_generate_fig_error(main)
+
+        (
+            self.label_context_settings,
+            self.button_context_settings
+        ) = wl_widgets.wl_widgets_context_settings(
+            self,
+            tab = 'concordancer'
+        )
+
+        self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
+        self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
+        self.line_edit_search_term.returnPressed.connect(self.table_concordancer.button_generate_table.click)
+        self.list_search_terms.model().dataChanged.connect(self.search_settings_changed)
+
+        self.checkbox_match_case.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_whole_words.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_inflected_forms.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_use_regex.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_without_tags.stateChanged.connect(self.search_settings_changed)
+        self.checkbox_match_tags.stateChanged.connect(self.search_settings_changed)
+
+        layout_context_settings = wl_layouts.Wl_Layout()
+        layout_context_settings.addWidget(self.label_context_settings, 0, 0)
+        layout_context_settings.addWidget(self.button_context_settings, 0, 1)
+
+        layout_context_settings.setColumnStretch(1, 1)
+
+        self.group_box_search_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_search_settings.layout().addWidget(self.label_search_term, 0, 0)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_multi_search_mode, 0, 1, Qt.AlignRight)
+        self.group_box_search_settings.layout().addWidget(self.stacked_widget_search_term, 1, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.label_delimiter, 2, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_case, 3, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_whole_words, 4, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_inflected_forms, 5, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_use_regex, 6, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_without_tags, 7, 0, 1, 2)
+        self.group_box_search_settings.layout().addWidget(self.checkbox_match_tags, 8, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 2)
+
+        self.group_box_search_settings.layout().addLayout(layout_context_settings, 10, 0, 1, 2)
+
+        # Generation Settings
+        self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
+
+        self.label_width_left = QLabel(self.tr('Width (Left):'), self)
+        self.stacked_widget_width_left = wl_layouts.Wl_Stacked_Widget(self)
+        self.spin_box_width_left_char = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_token = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_sentence_seg = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_sentence = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_left_para = wl_boxes.Wl_Spin_Box(self)
+        self.label_width_right = QLabel(self.tr('Width (Right):'), self)
+        self.stacked_widget_width_right = wl_layouts.Wl_Stacked_Widget(self)
+        self.spin_box_width_right_char = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_token = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_sentence_seg = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_sentence = wl_boxes.Wl_Spin_Box(self)
+        self.spin_box_width_right_para = wl_boxes.Wl_Spin_Box(self)
+        self.label_width_unit = QLabel(self.tr('Width Unit:'), self)
+        self.combo_box_width_unit = wl_boxes.Wl_Combo_Box(self)
+
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_char)
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_token)
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence_seg)
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_sentence)
+        self.stacked_widget_width_left.addWidget(self.spin_box_width_left_para)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_char)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_token)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence_seg)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_sentence)
+        self.stacked_widget_width_right.addWidget(self.spin_box_width_right_para)
+
+        self.combo_box_width_unit.addItems([
+            self.tr('Character'),
+            self.tr('Token'),
+            self.tr('Sentence Segment'),
+            self.tr('Sentence'),
+            self.tr('Paragraph')
+        ])
+
+        self.spin_box_width_left_char.setRange(0, 3000)
+        self.spin_box_width_left_token.setRange(0, 500)
+        self.spin_box_width_left_sentence_seg.setRange(0, 100)
+        self.spin_box_width_left_sentence.setRange(0, 30)
+        self.spin_box_width_left_para.setRange(0, 10)
+        self.spin_box_width_right_char.setRange(0, 3000)
+        self.spin_box_width_right_token.setRange(0, 500)
+        self.spin_box_width_right_sentence_seg.setRange(0, 100)
+        self.spin_box_width_right_sentence.setRange(0, 30)
+        self.spin_box_width_right_para.setRange(0, 10)
+
+        self.spin_box_width_left_char.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_token.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_sentence_seg.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_sentence.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_left_para.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_char.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_token.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_sentence_seg.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_sentence.valueChanged.connect(self.generation_settings_changed)
+        self.spin_box_width_right_para.valueChanged.connect(self.generation_settings_changed)
+        self.combo_box_width_unit.currentTextChanged.connect(self.generation_settings_changed)
+
+        self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_generation_settings.layout().addWidget(self.label_width_left, 0, 0)
+        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_width_left, 0, 1)
+        self.group_box_generation_settings.layout().addWidget(self.label_width_right, 1, 0)
+        self.group_box_generation_settings.layout().addWidget(self.stacked_widget_width_right, 1, 1)
+        self.group_box_generation_settings.layout().addWidget(self.label_width_unit, 2, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_width_unit, 2, 1)
+
+        self.group_box_generation_settings.layout().setColumnStretch(1, 1)
+
+        # Table Settings
+        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
+
+        (
+            self.checkbox_show_pct,
+            self.checkbox_show_cumulative,
+            self.checkbox_show_breakdown
+        ) = wl_widgets.wl_widgets_table_settings(
+            self,
+            tables = [self.table_concordancer]
+        )
+
+        self.checkbox_show_cumulative.hide()
+        self.checkbox_show_breakdown.hide()
+
+        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
+
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
+
+        # Figure Settings
+        self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
+
+        self.label_sort_results_by = QLabel(self.tr('Sort results by:'), self)
+        self.combo_box_sort_results_by = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_sort_results_by.addItems([
+            self.tr('File'),
+            self.tr('Search Term')
+        ])
+
+        self.combo_box_sort_results_by.currentTextChanged.connect(self.fig_settings_changed)
+
+        self.group_box_fig_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_fig_settings.layout().addWidget(self.label_sort_results_by, 0, 0)
+        self.group_box_fig_settings.layout().addWidget(self.combo_box_sort_results_by, 0, 1)
+
+        self.group_box_fig_settings.layout().setColumnStretch(1, 1)
+
+        # Zapping Settings
+        self.group_box_zapping_settings = QGroupBox(self.tr('Zapping Settings'), self)
+
+        self.label_replace_keywords_with = QLabel(self.tr('Replace keywords with'), self)
+        self.spin_box_replace_keywords_with = wl_boxes.Wl_Spin_Box(self)
+        self.line_edit_replace_keywords_with = QLineEdit('_', self)
+        self.checkbox_add_line_nums = QCheckBox(self.tr('Add line numbers'), self)
+        self.checkbox_randomize_outputs = QCheckBox(self.tr('Randomize outputs'), self)
+
+        self.group_box_zapping_settings.setCheckable(True)
+        self.spin_box_replace_keywords_with.setRange(1, 100)
+
+        self.group_box_zapping_settings.clicked.connect(self.zapping_settings_changed)
+        self.spin_box_replace_keywords_with.valueChanged.connect(self.zapping_settings_changed)
+        self.line_edit_replace_keywords_with.textChanged.connect(self.zapping_settings_changed)
+        self.checkbox_add_line_nums.clicked.connect(self.zapping_settings_changed)
+        self.checkbox_randomize_outputs.clicked.connect(self.zapping_settings_changed)
+
+        self.group_box_zapping_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_zapping_settings.layout().addWidget(self.label_replace_keywords_with, 0, 0)
+        self.group_box_zapping_settings.layout().addWidget(self.spin_box_replace_keywords_with, 0, 1)
+        self.group_box_zapping_settings.layout().addWidget(self.line_edit_replace_keywords_with, 0, 2)
+        self.group_box_zapping_settings.layout().addWidget(self.checkbox_add_line_nums, 1, 0, 1, 3)
+        self.group_box_zapping_settings.layout().addWidget(self.checkbox_randomize_outputs, 2, 0, 1, 3)
+
+        self.group_box_fig_settings.layout().setColumnStretch(3, 1)
+
+        self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_generation_settings, 2, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 3, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_fig_settings, 4, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_zapping_settings, 5, 0)
+
+        self.load_settings()
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.main.settings_default['concordancer'])
+        else:
+            settings = copy.deepcopy(self.main.settings_custom['concordancer'])
+
+        # Token Settings
+        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+
+        self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
+
+        # Search Settings
+        self.checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
+
+        if not defaults:
+            self.line_edit_search_term.setText(settings['search_settings']['search_term'])
+            self.list_search_terms.load_items(settings['search_settings']['search_terms'])
+
+        self.checkbox_match_case.setChecked(settings['search_settings']['match_case'])
+        self.checkbox_match_whole_words.setChecked(settings['search_settings']['match_whole_words'])
+        self.checkbox_match_inflected_forms.setChecked(settings['search_settings']['match_inflected_forms'])
+        self.checkbox_use_regex.setChecked(settings['search_settings']['use_regex'])
+        self.checkbox_match_without_tags.setChecked(settings['search_settings']['match_without_tags'])
+        self.checkbox_match_tags.setChecked(settings['search_settings']['match_tags'])
+
+        # Context Settings
+        if defaults:
+            self.main.wl_context_settings_concordancer.load_settings(defaults = True)
+
+        # Generation Settings
+        self.spin_box_width_left_char.setValue(settings['generation_settings']['width_left_char'])
+        self.spin_box_width_left_token.setValue(settings['generation_settings']['width_left_token'])
+        self.spin_box_width_left_sentence_seg.setValue(settings['generation_settings']['width_left_sentence_seg'])
+        self.spin_box_width_left_sentence.setValue(settings['generation_settings']['width_left_sentence'])
+        self.spin_box_width_left_para.setValue(settings['generation_settings']['width_left_para'])
+        self.spin_box_width_right_char.setValue(settings['generation_settings']['width_right_char'])
+        self.spin_box_width_right_token.setValue(settings['generation_settings']['width_right_token'])
+        self.spin_box_width_right_sentence_seg.setValue(settings['generation_settings']['width_right_sentence_seg'])
+        self.spin_box_width_right_sentence.setValue(settings['generation_settings']['width_right_sentence'])
+        self.spin_box_width_right_para.setValue(settings['generation_settings']['width_right_para'])
+        self.combo_box_width_unit.setCurrentText(settings['generation_settings']['width_unit'])
+
+        # Table Settings
+        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
+
+        # Figure Settings
+        self.combo_box_sort_results_by.setCurrentText(settings['fig_settings']['sort_results_by'])
+
+        # Zapping Settings
+        self.group_box_zapping_settings.setChecked(settings['zapping_settings']['zapping'])
+        self.spin_box_replace_keywords_with.setValue(settings['zapping_settings']['replace_keywords_with'])
+        self.line_edit_replace_keywords_with.setText(settings['zapping_settings']['placeholder'])
+        self.checkbox_add_line_nums.setChecked(settings['zapping_settings']['add_line_nums'])
+        self.checkbox_randomize_outputs.setChecked(settings['zapping_settings']['randomize_outputs'])
+
+        self.token_settings_changed()
+        self.search_settings_changed()
+        self.generation_settings_changed()
+        self.table_settings_changed()
+        self.fig_settings_changed()
+        self.zapping_settings_changed()
+
+    def token_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['token_settings']
+
+        settings['puncs'] = self.checkbox_puncs.isChecked()
+
+        settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
+        settings['use_tags'] = self.checkbox_use_tags.isChecked()
+
+        # Check if searching is enabled
+        if self.group_box_search_settings.isChecked():
+            self.checkbox_match_tags.token_settings_changed()
+        else:
+            self.group_box_search_settings.setChecked(True)
+
+            self.checkbox_match_tags.token_settings_changed()
+
+            self.group_box_search_settings.setChecked(False)
+
+        self.main.wl_context_settings_concordancer.token_settings_changed()
+
+    def search_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['search_settings']
+
+        settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
+        settings['search_term'] = self.line_edit_search_term.text()
+        settings['search_terms'] = self.list_search_terms.model().stringList()
+
+        settings['match_case'] = self.checkbox_match_case.isChecked()
+        settings['match_whole_words'] = self.checkbox_match_whole_words.isChecked()
+        settings['match_inflected_forms'] = self.checkbox_match_inflected_forms.isChecked()
+        settings['use_regex'] = self.checkbox_use_regex.isChecked()
+        settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
+        settings['match_tags'] = self.checkbox_match_tags.isChecked()
+
+    def generation_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['generation_settings']
+
+        settings['width_left_char'] = self.spin_box_width_left_char.value()
+        settings['width_left_token'] = self.spin_box_width_left_token.value()
+        settings['width_left_sentence_seg'] = self.spin_box_width_left_sentence_seg.value()
+        settings['width_left_sentence'] = self.spin_box_width_left_sentence.value()
+        settings['width_left_para'] = self.spin_box_width_left_para.value()
+        settings['width_right_char'] = self.spin_box_width_right_char.value()
+        settings['width_right_token'] = self.spin_box_width_right_token.value()
+        settings['width_right_sentence_seg'] = self.spin_box_width_right_sentence_seg.value()
+        settings['width_right_sentence'] = self.spin_box_width_right_sentence.value()
+        settings['width_right_para'] = self.spin_box_width_right_para.value()
+        settings['width_unit'] = self.combo_box_width_unit.currentText()
+
+        # Width Unit
+        if settings['width_unit'] == self.tr('Character'):
+            self.stacked_widget_width_left.setCurrentIndex(0)
+            self.stacked_widget_width_right.setCurrentIndex(0)
+        elif settings['width_unit'] == self.tr('Token'):
+            self.stacked_widget_width_left.setCurrentIndex(1)
+            self.stacked_widget_width_right.setCurrentIndex(1)
+        elif settings['width_unit'] == self.tr('Sentence Segment'):
+            self.stacked_widget_width_left.setCurrentIndex(2)
+            self.stacked_widget_width_right.setCurrentIndex(2)
+        elif settings['width_unit'] == self.tr('Sentence'):
+            self.stacked_widget_width_left.setCurrentIndex(3)
+            self.stacked_widget_width_right.setCurrentIndex(3)
+        elif settings['width_unit'] == self.tr('Paragraph'):
+            self.stacked_widget_width_left.setCurrentIndex(4)
+            self.stacked_widget_width_right.setCurrentIndex(4)
+
+    def table_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['table_settings']
+
+        settings['show_pct'] = self.checkbox_show_pct.isChecked()
+
+    def fig_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['fig_settings']
+
+        settings['sort_results_by'] = self.combo_box_sort_results_by.currentText()
+
+    def zapping_settings_changed(self):
+        settings = self.main.settings_custom['concordancer']['zapping_settings']
+
+        settings['zapping'] = self.group_box_zapping_settings.isChecked()
+        settings['replace_keywords_with'] = self.spin_box_replace_keywords_with.value()
+        settings['placeholder'] = self.line_edit_replace_keywords_with.text()
+        settings['add_line_nums'] = self.checkbox_add_line_nums.isChecked()
+        settings['randomize_outputs'] = self.checkbox_randomize_outputs.isChecked()

@@ -106,7 +106,7 @@ By default, *Wordless* tries to detect the encoding and language settings of all
 
 <span id="doc-eng-3-1"></span>
 ### [3.1 Profiler](#doc-eng)
-**Note:** This module was originally named **Overview** before *Wordless* 2.2
+**Note:** Renamed from **Overview** to **Profiler** in *Wordless* 2.2
 
 In *Profiler*, you can check and compare general linguistic features of different files.
 
@@ -374,7 +374,7 @@ After the parallel concordance lines are generated and displayed in the table, y
 
 <span id="doc-eng-3-4"></span>
 ### [3.4 Wordlist Generator](#doc-eng)
-**Note:** This module was originally named **Wordlist** before *Wordless* 2.2
+**Note:** Renamed from **Wordlist** to **Wordlist Generator** in *Wordless* 2.2
 
 In *Wordlist Generator*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token.
 
@@ -409,7 +409,7 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 
 <span id="doc-eng-3-5"></span>
 ### [3.5 N-gram Generator](#doc-eng)
-**Note:** This module was originally named **N-gram** before *Wordless* 2.2
+**Note:** Renamed from **N-gram** to **N-gram Generator** in *Wordless* 2.2
 
 In *N-gram Generator*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated results via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
 
@@ -444,7 +444,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 
 <span id="doc-eng-3-6"></span>
 ### [3.6 Collocation Extractor](#doc-eng)
-**Note:** This module was originally named **Collocation** before *Wordless* 2.2
+**Note:** Renamed from **Collocation** to **Collocation Extractor** in *Wordless* 2.2
 
 In *Collocation Extractor*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**.
 
@@ -494,7 +494,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 
 <span id="doc-eng-3-7"></span>
 ### [3.7 Colligation Extractor](#doc-eng)
-**Note:** This module was originally named **Colligation** before *Wordless* 2.2
+**Note:** Renamed from **Colligation** to **Colligation Extractor** in *Wordless* 2.2
 
 In *Colligation Extractor*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
