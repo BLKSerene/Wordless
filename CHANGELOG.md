@@ -32,6 +32,7 @@
 - Work Area: Update Search Settings / Search in Results
 
 ### ❌ Removals
+- Menu: Remove Help - Contributing
 - Utils: Remove extra-stopwords's stop word lists
 - Utils: Remove Lemmatization Lists's lemma lists
 - Utils: Remove Stopwords ISO's stop word lists
