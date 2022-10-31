@@ -38,8 +38,8 @@ from PyQt5.QtCore import pyqtSignal, QCoreApplication, QObject, Qt, QTranslator
 from PyQt5.QtGui import QFont, QIcon, QKeySequence, QPixmap, QStandardItem
 from PyQt5.QtWidgets import (
     QActionGroup, QApplication, QCheckBox, QDialog, QLabel,
-    QMainWindow, QMessageBox, QPushButton, QSplashScreen, QTabWidget,
-    QTextEdit, QWidget
+    QMainWindow, QPushButton, QSplashScreen, QTabWidget, QTextEdit,
+    QWidget
 )
 import pythainlp
 import spacy_pkuseg
@@ -357,9 +357,6 @@ class Wl_Main(QMainWindow):
 
         self.menu_help.addSeparator()
 
-        self.action_help_contributing = self.menu_help.addAction(self.tr('C&ontributing'))
-        self.action_help_contributing.setStatusTip(self.tr('Show information about contributing'))
-        self.action_help_contributing.triggered.connect(self.help_contributing)
         self.action_help_donating = self.menu_help.addAction(self.tr('&Donating'))
         self.action_help_donating.setStatusTip(self.tr('Show information about donating'))
         self.action_help_donating.triggered.connect(self.help_donating)
@@ -425,10 +422,6 @@ class Wl_Main(QMainWindow):
     # Help - Citing
     def help_citing(self):
         Wl_Dialog_Citing(self).open()
-
-    # Help - Contributing
-    def help_contributing(self):
-        Wl_Msg_Box_Help(self).open()
 
     # Help - Donating
     def help_donating(self):
@@ -775,25 +768,6 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         self.text_edit_citing.setFocus()
         self.text_edit_citing.selectAll()
         self.text_edit_citing.copy()
-
-class Wl_Msg_Box_Help(wl_msg_boxes.Wl_Msg_Box):
-    def __init__(self, main):
-        super().__init__(
-            main,
-            icon = QMessageBox.Information,
-            title = _tr('Wl_Msg_Box_Help', 'Contributing'),
-            text = _tr('Wl_Msg_Box_Help', '''
-                <div>
-                    If you would like to contribute to the development of Wordless, you can help with bug fixes, performance enhancements, or implementation of new features by submitting <a href="https://github.com/BLKSerene/Wordless/pulls">pull requests</a> on Github.
-                </div>
-                <div>
-                    Besides, you may contribute by writing <a href="https://github.com/BLKSerene/Wordless/wiki">wikis</a> on Github, making tutorial videos, or helping with the translation of the user interface and <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md">documentation</a> into other languages.
-                </div>
-            ''')
-        )
-
-        self.setTextFormat(Qt.RichText)
-        self.setTextInteractionFlags(Qt.TextBrowserInteraction)
 
 class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
