@@ -58,6 +58,7 @@ SENTENCE_AMH = 'አማርኛ[1] ፡ የኢትዮጵያ ፡ መደበኛ ፡ ቋ�
 SENTENCE_ARA = 'اللُّغَة العَرَبِيّة هي أكثر اللغات السامية تحدثًا، وإحدى أكثر اللغات انتشاراً في العالم، يتحدثها أكثر من 467 مليون نسمة،(1) ويتوزع متحدثوها في الوطن العربي، بالإضافة إلى العديد من المناطق الأخرى المجاورة كالأحواز وتركيا وتشاد ومالي والسنغال وإرتيريا وإثيوبيا وجنوب السودان وإيران.'
 SENTENCE_HYE = 'Հայերեն (ավանդական՝ հայերէն), հնդեվրոպական լեզվաընտանիքի առանձին ճյուղ հանդիսացող լեզու։'
 SENTENCE_ASM = 'অসমীয়া ভাষা হৈছে সকলোতকৈ পূৰ্বীয় ভাৰতীয়-আৰ্য ভাষা।'
+SENTENCE_AST = "L'asturianu ye una llingua romance propia d'Asturies,[1] perteneciente al subgrupu asturllionés."
 SENTENCE_AZE = 'Azərbaycan dili[2][3] (Cənubi Azərbaycanda: Türk dili[4][5]) — Azərbaycan Respublikasının və Rusiya Federasiyası Dağıstan Respublikasının[6] rəsmi dövlət dili.'
 SENTENCE_EUS = 'Euskara Euskal Herriko hizkuntza da.[5]'
 SENTENCE_BEL = "Белару́ская мо́ва — нацыянальная мова беларусаў, уваходзіць у індаеўрапейскую моўную сям'ю, славянскую групу, усходнеславянскую падгрупу."

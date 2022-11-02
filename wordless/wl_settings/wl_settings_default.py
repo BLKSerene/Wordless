@@ -1441,6 +1441,7 @@ def init_settings_default(main):
             'lemmatizer_settings': {
                 'sqi': 'simplemma_sqi',
                 'hye': 'simplemma_hye',
+                'ast': 'simplemma_ast',
                 'ben': 'spacy_ben',
                 'bul': 'simplemma_bul',
                 'cat': 'spacy_cat',
@@ -1613,7 +1614,7 @@ def init_settings_default(main):
             }
         },
 
-        # Settings - Dependency Parsers
+        # Settings - Dependency Parsing
         'dependency_parsing': {
             'dependency_parser_settings': {
                 'cat': 'spacy_cat',
