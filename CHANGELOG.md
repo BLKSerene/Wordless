@@ -22,6 +22,7 @@
 ### 🎉 New Features
 - Utils: Add NLTK's Basque, Bengali, Catalan, Chinese (Simplified), Chinese (Traditional), and Hebrew stop word lists
 - Utils: Add NLTK's Malayalam Punkt sentence tokenizer
+- Utils: Add PyThaiNLP's Thai word detokenizer
 - Utils: Add simplemma's lemmatizers
 - Utils: Add stopword's stop word lists
 - Work Area: Add Dependency Parser
@@ -38,6 +39,7 @@
 - Utils: Remove Lemmatization Lists's lemma lists
 - Utils: Remove Stopwords ISO's stop word lists
 - Utils: Remove Wordless's Chinese and Japanese sentence tokenizers
+- Utils: Remove Wordless's Thai word detokenizer
 
 ### ⏫ Dependency Changes
 - Dependencies: Add simplemma and stopword

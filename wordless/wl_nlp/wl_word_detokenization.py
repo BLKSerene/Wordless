@@ -18,6 +18,8 @@
 
 import re
 
+import pythainlp
+
 from wordless.wl_checking import wl_checking_unicode
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
@@ -97,32 +99,7 @@ def wl_word_detokenize(main, tokens, lang):
                         break
     # Thai
     elif lang == 'tha':
-        non_thai_start = 0
-
-        for i, token in enumerate(tokens):
-            if i < non_thai_start:
-                continue
-
-            if wl_checking_unicode.has_thai(token):
-                text += token
-
-                non_thai_start = i + 1
-            else:
-                # Non-Thai
-                for j, _ in enumerate(tokens[i:]):
-                    if (
-                        i + j + 1 == len(tokens)
-                        or wl_checking_unicode.has_thai(tokens[i + j + 1])
-                    ):
-                        text += wl_word_detokenize(
-                            main,
-                            tokens = tokens[non_thai_start : i + j + 1],
-                            lang = 'other'
-                        )
-
-                        non_thai_start = i + j + 1
-
-                        break
+        text = pythainlp.tokenize.word_detokenize(pythainlp.tokenize.clause_tokenize(tokens))
     # Tibetan
     elif lang == 'bod':
         non_tibetan_start = 0

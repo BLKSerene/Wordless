@@ -587,8 +587,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 ### [4.1 Supported Languages](#doc-eng)
 
 Language|Sentence Tokenization|Word Tokenization|Syllable Tokenization|Part-of-speech Tagging|Lemmatization|Stop Word List|Dependency Parsing
-:------:|:-------------------:|:---------------:|:-------------------:|:--------------------:|:-----------:|:------------:|
-:----------------:
+:------:|:-------------------:|:---------------:|:-------------------:|:--------------------:|:-----------:|:------------:|:----------------:
 Afrikaans               |⭕️ |✔|✔|✖️|✖️|✔|✖️
 Albanian                |⭕️ |✔|✔|✖️|✔|✔|✖️
 Amharic                 |⭕️ |✔|✖️|✖️|✖️|✔|✖️
