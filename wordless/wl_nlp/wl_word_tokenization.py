@@ -22,7 +22,7 @@ import sudachipy
 import underthesea
 
 from wordless.wl_checking import wl_checking_unicode
-from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization, wl_texts
+from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization
 from wordless.wl_utils import wl_conversion, wl_misc
 
 def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
@@ -244,24 +244,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                     for sentence in sentences:
                         tokens_multilevel[-1].append(underthesea.word_tokenize(str(sentence)))
 
-    # Tokenize as entence segments
+    # Tokenize as sentence segments
     for para in tokens_multilevel:
         for i, sentence in enumerate(para):
             tokens = [token_clean for token in sentence if (token_clean := token.strip())]
 
             para[i] = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, tokens)
-
-    # Record token boundaries
-    if lang in ['zho_cn', 'zho_tw', 'jpn']:
-        for para in tokens_multilevel:
-            for sentence in para:
-                if sentence:
-                    sentence[-1][-1] = wl_texts.Wl_Token(sentence[-1][-1], boundary = '', sentence_ending = True)
-    else:
-        for para in tokens_multilevel:
-            for sentence in para:
-                if sentence:
-                    sentence[-1][-1] = wl_texts.Wl_Token(sentence[-1][-1], boundary = ' ', sentence_ending = True)
 
     return tokens_multilevel
 

@@ -27,15 +27,6 @@ from wordless.wl_utils import wl_misc
 
 _tr = QCoreApplication.translate
 
-class Wl_Token(str):
-    def __new__(cls, string, boundary = '', sentence_ending = False):
-        wl_token = str.__new__(cls, string)
-
-        wl_token.boundary = boundary
-        wl_token.sentence_ending = sentence_ending
-
-        return wl_token
-
 class Wl_Text:
     def __init__(self, main, file):
         self.main = main

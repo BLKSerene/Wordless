@@ -23,7 +23,7 @@ import nltk
 import pythainlp
 import underthesea
 
-from wordless.wl_nlp import wl_nlp_utils, wl_texts
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion, wl_misc
 
 LANG_TEXTS_NLTK = {
@@ -113,25 +113,11 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
                 sentences.extend(underthesea.sent_tokenize(line))
 
     # Strip spaces
-    sentences = [sentence_clean for sentence in sentences if (sentence_clean := sentence.strip())] # pylint: disable=undefined-loop-variable
-
-    # Record sentence boundary
-    sentence_start = 0
-
-    text = re.sub(r'\n+', ' ', text)
-    sentences = [re.sub(r'\n+', ' ', sentence) for sentence in sentences]
-
-    for i, sentence in enumerate(sentences):
-        boundary = re.search(r'^\s+', text[sentence_start + len(sentence):])
-
-        if boundary is None:
-            boundary = ''
-        else:
-            boundary = boundary.group()
-
-        sentences[i] = wl_texts.Wl_Token(sentences[i], boundary = boundary)
-
-        sentence_start += len(sentence) + len(boundary)
+    sentences = [
+        sentence_clean
+        for sentence in sentences
+        if (sentence_clean := sentence.strip())
+    ]
 
     return sentences
 
