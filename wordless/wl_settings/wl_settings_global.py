@@ -561,6 +561,7 @@ def init_settings_global():
 
                 _tr('init_settings_global', 'simplemma - Albanian Lemmatizer'): 'simplemma_sqi',
                 _tr('init_settings_global', 'simplemma - Armenian Lemmatizer'): 'simplemma_hye',
+                _tr('init_settings_global', 'simplemma - Asturian Lemmatizer'): 'simplemma_ast',
                 _tr('init_settings_global', 'simplemma - Bulgarian Lemmatizer'): 'simplemma_bul',
                 _tr('init_settings_global', 'simplemma - Catalan Lemmatizer'): 'simplemma_cat',
                 _tr('init_settings_global', 'simplemma - Czech Lemmatizer'): 'simplemma_ces',
@@ -1512,6 +1513,7 @@ def init_settings_global():
         'lemmatizers': {
             'sqi': ['simplemma_sqi'],
             'hye': ['simplemma_hye'],
+            'ast': ['simplemma_ast'],
             'ben': ['spacy_ben'],
             'bul': ['simplemma_bul',],
 

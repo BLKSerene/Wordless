@@ -25,61 +25,51 @@ def wl_test_supported_langs(main):
         (lang_name, lang_code_639_3)
         for lang_name, (lang_code_639_3, _, _) in main.settings_global['langs'].items()
     ]
+    len_max_langs = max((len(lang_name) for lang_name, lang_code_639_3 in langs_supported))
 
     langs_sentence_tokenizers = main.settings_global['sentence_tokenizers'].keys()
     langs_word_tokenizers = main.settings_global['word_tokenizers'].keys()
     langs_syl_tokenizers = main.settings_global['syl_tokenizers'].keys()
-    langs_pos_tagging = main.settings_global['pos_taggers'].keys()
+    langs_pos_taggers = main.settings_global['pos_taggers'].keys()
     langs_lemmatizers = main.settings_global['lemmatizers'].keys()
     langs_stop_word_lists = main.settings_global['stop_word_lists'].keys()
+    langs_dependency_parsers = main.settings_global['dependency_parsers'].keys()
 
-    len_max_langs = max((len(lang_name) for lang_name, lang_code_639_3 in langs_supported))
+    langs_nlp_utils = [
+        langs_sentence_tokenizers,
+        langs_word_tokenizers,
+        langs_syl_tokenizers,
+        langs_pos_taggers,
+        langs_lemmatizers,
+        langs_stop_word_lists,
+        langs_dependency_parsers
+    ]
 
     for lang_name, lang_code_639_3 in langs_supported:
-        if (
-            lang_code_639_3 in langs_sentence_tokenizers
-            or lang_code_639_3 in langs_word_tokenizers
-            or lang_code_639_3 in langs_syl_tokenizers
-            or lang_code_639_3 in langs_pos_tagging
-            or lang_code_639_3 in langs_lemmatizers
-            or lang_code_639_3 in langs_stop_word_lists
-        ):
+        if any((
+            lang_code_639_3 in langs
+            for langs in langs_nlp_utils
+        )):
             doc_supported_lang = f'{lang_name:{len_max_langs}s}'
 
             if lang_code_639_3 == 'other':
-                doc_supported_lang += '|⭕️ |⭕️ |✖️|✖️|✖️|✖️'
+                doc_supported_lang += '|⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️'
             else:
-                if lang_code_639_3 in langs_sentence_tokenizers:
-                    doc_supported_lang += '|✔'
-                else:
-                    doc_supported_lang += '|⭕️ '
-
-                if lang_code_639_3 in langs_word_tokenizers:
-                    doc_supported_lang += '|✔'
-                else:
-                    doc_supported_lang += '|⭕️ '
-
-                if lang_code_639_3 in langs_syl_tokenizers:
-                    doc_supported_lang += '|✔'
-                else:
-                    doc_supported_lang += '|✖️'
-
-                if lang_code_639_3 in langs_pos_tagging:
-                    doc_supported_lang += '|✔'
-                else:
-                    doc_supported_lang += '|✖️'
-
-                if lang_code_639_3 in langs_lemmatizers:
-                    doc_supported_lang += '|✔'
-                else:
-                    doc_supported_lang += '|✖️'
-
-                if lang_code_639_3 in langs_stop_word_lists:
-                    doc_supported_lang += '|✔'
-                else:
-                    doc_supported_lang += '|✖️'
+                for i, langs in enumerate(langs_nlp_utils):
+                    if i <= 1:
+                        if lang_code_639_3 in langs:
+                            doc_supported_lang += '|✔'
+                        else:
+                            doc_supported_lang += '|⭕️ '
+                    else:
+                        if lang_code_639_3 in langs:
+                            doc_supported_lang += '|✔'
+                        else:
+                            doc_supported_lang += '|✖️'
 
             print(doc_supported_lang)
+
+    print()
 
 def wl_test_supported_encodings(main):
     langs = []
