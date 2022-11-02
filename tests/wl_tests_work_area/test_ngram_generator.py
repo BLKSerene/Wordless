@@ -39,34 +39,18 @@ def test_ngram_generator():
     len_max_measures = max([len_measures_dispersion, len_measures_adjusted_freq])
 
     files = main.settings_custom['file_area']['files_open']
-    i_search_sing, i_search_multi = random.sample(range(len_max_measures), 2)
 
     for i in range(len_max_measures):
         for file in files:
             file['selected'] = False
 
-        # Single file without search terms
-        if i == i_search_sing:
+        # Single file
+        if i % 2 == 0:
             random.choice(files)['selected'] = True
-
-            main.settings_custom['ngram_generator']['search_settings']['search_settings'] = False
-        # Multiple files without search terms
-        elif i == i_search_multi:
-            for file in random.sample(files, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
-
-            main.settings_custom['ngram_generator']['search_settings']['search_settings'] = False
-        # Single file with search terms
-        elif i % 2 == 0:
-            random.choice(files)['selected'] = True
-
-            main.settings_custom['ngram_generator']['search_settings']['search_settings'] = True
-        # Multiple files with search terms
+        # Multiple files
         elif i % 2 == 1:
             for file in random.sample(files, 2):
                 file['selected'] = True # pylint: disable=unsupported-assignment-operation
-
-            main.settings_custom['ngram_generator']['search_settings']['search_settings'] = True
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
@@ -78,7 +62,6 @@ def test_ngram_generator():
 
         print(f'[Test Round {i + 1}]')
         print(f"Files: {', '.join(files_selected)}")
-        print(f"Search settings: {main.settings_custom['ngram_generator']['search_settings']['search_settings']}")
         print(f"Measure of dispersion: {main.settings_custom['ngram_generator']['generation_settings']['measure_dispersion']}")
         print(f"Measure of adjusted frequency: {main.settings_custom['ngram_generator']['generation_settings']['measure_adjusted_freq']}")
 
