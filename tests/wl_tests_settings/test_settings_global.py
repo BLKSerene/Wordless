@@ -112,13 +112,15 @@ class Check_Settings_Global():
 
         settings_pos_taggers = settings_global['pos_taggers']
         settings_pos_taggers_default = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']
-        settings_tagsets_default = settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger']
 
         settings_lemmatizers = settings_global['lemmatizers']
         settings_lemmatizers_default = settings_default['lemmatization']['lemmatizer_settings']
 
         settings_stop_word_lists = settings_global['stop_word_lists']
         settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_list_settings']
+
+        settings_dependency_parsers = settings_global['dependency_parsers']
+        settings_dependency_parsers_default = settings_default['dependency_parsing']['dependency_parser_settings']
 
         # Add custom lists
         for lang, stop_word_lists in settings_stop_word_lists.items():
@@ -143,7 +145,6 @@ class Check_Settings_Global():
 
         langs_pos_taggers = list(settings_pos_taggers)
         langs_pos_taggers_default = list(settings_pos_taggers_default)
-        langs_tagsets_default = list(settings_tagsets_default)
 
         langs_lemmatizers = list(settings_lemmatizers)
         langs_lemmatizers_default = list(settings_lemmatizers_default)
@@ -152,6 +153,9 @@ class Check_Settings_Global():
         langs_stop_word_lists = list(settings_stop_word_lists)
         langs_stop_word_lists_default = list(settings_stop_word_lists_default)
         langs_stop_word_lists_spacy = []
+
+        langs_dependency_parsers = list(settings_dependency_parsers)
+        langs_dependency_parsers_default = list(settings_dependency_parsers_default)
 
         # Loading languages supported by Sacremoses
         for file in os.listdir(os.path.split(sacremoses.__file__)[0] + '/data/nonbreaking_prefixes/'):
@@ -263,18 +267,18 @@ class Check_Settings_Global():
         self.check_missing_extra_langs_default(langs_word_tokenizers, langs_word_tokenizers_default, 'word tokenizers')
         self.check_missing_extra_langs_default(langs_syl_tokenizers, langs_syl_tokenizers_default, 'syllable tokenizers')
         self.check_missing_extra_langs_default(langs_pos_taggers, langs_pos_taggers_default, 'pos_taggers')
-        self.check_missing_extra_langs_default(langs_pos_taggers, langs_tagsets_default, 'tagsets')
         self.check_missing_extra_langs_default(langs_lemmatizers, langs_lemmatizers_default, 'lemmatizers')
         self.check_missing_extra_langs_default(langs_stop_word_lists, langs_stop_word_lists_default, 'stop word lists')
+        self.check_missing_extra_langs_default(langs_dependency_parsers, langs_dependency_parsers_default, 'dependency parsers')
 
         # Check for invalid default values in default settings
         self.check_invalid_default_lang_utils(settings_sentence_tokenizers, settings_sentence_tokenizers_default, 'sentence_tokenizers')
         self.check_invalid_default_lang_utils(settings_word_tokenizers, settings_word_tokenizers_default, 'word tokenizers')
         self.check_invalid_default_lang_utils(settings_syl_tokenizers, settings_syl_tokenizers_default, 'syllable tokenizers')
         self.check_invalid_default_lang_utils(settings_pos_taggers, settings_pos_taggers_default, 'pos_taggers')
-        self.check_invalid_default_lang_utils(settings_pos_taggers, settings_tagsets_default, 'tagsets')
         self.check_invalid_default_lang_utils(settings_lemmatizers, settings_lemmatizers_default, 'lemmatizers')
         self.check_invalid_default_lang_utils(settings_stop_word_lists, settings_stop_word_lists_default, 'stop word lists')
+        self.check_invalid_default_lang_utils(settings_dependency_parsers, settings_dependency_parsers_default, 'dependency parsers')
 
 def test_settings_global():
     assert wl_settings_global.init_settings_global()

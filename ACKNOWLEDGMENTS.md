@@ -44,7 +44,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 20|[Requests](https://github.com/psf/requests)                       |2.28.1 |Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 21|[Sacremoses](https://github.com/alvations/sacremoses)             |0.0.53 |Liling Tan|[MIT](https://github.com/alvations/sacremoses/blob/master/LICENSE)
 22|[SciPy](https://scipy.org/scipylib/)                              |1.9.1  |SciPy Developers|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
-23|[simplemma](https://github.com/adbar/simplemma)                   |0.8.2  |Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
+23|[simplemma](https://github.com/adbar/simplemma)                   |0.9.0  |Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
 24|[spaCy](https://spacy.io/)                                        |3.4.1  |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 25|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)         |0.0.31 |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩), Adriane Boyd|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
 26|[stopword](https://github.com/fergiemcdowall/stopword)            |2.0.5  |Fergus McDowall|[MIT](https://github.com/fergiemcdowall/stopword/blob/master/LICENSE)

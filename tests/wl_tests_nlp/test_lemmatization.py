@@ -80,6 +80,8 @@ def test_lemmatize(lang, lemmatizer):
         assert lemmas == ['gjuhë', 'shqip', '(', 'dhe/ose', 'thjesht', 'shqipe', ')', 'jam', 'gjuhë', 'jap', 'degë', 'ai', 'veçantë', 'ai', 'familje', 'indo', 'flas', 'evropiane', 'që', 'flitet', 'nga', 'rreth', '7', 'flas', '10', 'milionë', 'njeri', 'në', 'botë,[1', ']', 'kryesisht', 'në', 'Shqipëri', ',', 'Kosovë', 'jap', 'Maqedoninë', 'ai', 'veri', ',', 'por', 'edhe', 'në', 'zonë', 'ti', 'tjera', 'ti', 'Evropës', 'Juglindore', 'ku', 'kam', 'një', 'popullsi', 'shqiptar', ',', 'duk', 'përfshij', 'mal', 'ai', 'Zi', 'jap', 'luginë', 'ai', 'Preshevës', '.']
     elif lang == 'hye':
         assert lemmas == ['հայերեն', '(', 'ավանդական՝', 'հայերէն', ')', ',', 'հնդեվրոպական', 'լեզվաընտանիք', 'առանձին', 'ճյուղ', 'հանդիսացող', 'լեզու։']
+    elif lang == 'ast':
+        assert lemmas == ["L'asturianu", 'ser', 'un', 'llingua', 'romance', 'propiu', "d'Asturies,[1", ']', 'perteneciente', 'al', 'subgrupu', 'asturllionés', '.']
     elif lang == 'ben':
         assert lemmas == ['বাংলা', 'ভাষা', '(', 'বাঙলা', ',', 'বাঙ্গলা', ',', 'তথা', 'বাঙ্গালা', 'নামেও', 'পরিচিত', ')', 'একটি', 'ইন্দো', '-', 'আর্য', 'ভাষা', ',', 'যা', 'দক্ষিণ', 'এশিয়ার', 'বাঙালি', 'জাতির', 'প্রধান', 'কথ্য', 'ও', 'লেখ্য', 'ভাষা', '।']
     elif lang == 'bul':
@@ -161,7 +163,7 @@ def test_lemmatize(lang, lemmatizer):
         assert lemmas == ['Ὅτι', 'μέν', 'σύ', ',', 'ὦ', 'ἀνήρ', 'Ἀθηναῖοι', ',', 'πάσχω', 'ὑπό', 'ὁ', 'ἐμός', 'κατηγόρων', ',', 'οὐ', 'οἶδα', '·', 'ἐγώ', 'δέ', 'οὖν', 'καί', 'αὐτός', 'ὑπό', 'αὐτός', 'ὀλίγος', 'ἐμαυτοῦ', 'ἐπελαθόμην', ',', 'οὕτως', 'πιθανῶς', 'λέγω', '.']
     elif lang == 'ell':
         if lemmatizer == 'simplemma_ell':
-            assert lemmas == ['ο', 'ελληνικός', 'γλώσσα', 'ανήκω', 'σε την', 'ινδοευρωπαϊκή', 'οικογένεια[9', ']', 'και', 'αποτελώ', 'ο', 'μοναδικός', 'μέλος', 'ο', 'ελληνικός', 'κλάδος', ',', 'ενώ', 'είμαι', 'ο', 'επίσημος', 'γλώσσα', 'ο', 'Ελλάδα', 'και', 'ο', 'Κύπρος', '.']
+            assert lemmas == ['ο', 'ελληνικός', 'γλώσσα', 'ανήκω', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια[9', ']', 'και', 'αποτελώ', 'ο', 'μοναδικός', 'μέλος', 'ο', 'ελληνικός', 'κλάδος', ',', 'ενώ', 'είμαι', 'ο', 'επίσημος', 'γλώσσα', 'ο', 'Ελλάδα', 'και', 'ο', 'Κύπρος', '.']
         elif lemmatizer == 'spacy_ell':
             assert lemmas == ['ο', 'ελληνικός', 'γλώσσα', 'ανήκω', 'σε ο', 'ινδοευρωπαϊκός', 'οικογένεια[9', ']', 'και', 'αποτελώ', 'ο', 'μοναδικός', 'μέλος', 'ο', 'ελληνικός', 'κλάδος', ',', 'ενώ', 'είμαι', 'ο', 'επίσημος', 'γλώσσα', 'ο', 'Ελλάδα', 'και', 'ο', 'Κύπρος', '.']
         else:
@@ -282,7 +284,7 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'srp_latn':
         assert lemmas == ['srpski', 'jezik', 'pripadati', 'slovenski', 'grupa', 'jezika', 'porodica', 'indoevropski', 'jezika.[12', ']']
     elif lang == 'slk':
-        assert lemmas == ['slovenčina', 'patriť', 'do', 'skupina', 'západoslovanský', 'jazyk', '(', 'spolu', 's', 'čeština', ',', 'poľština', ',', 'horný', 'a', 'dolný', 'lužickou', 'srbčina', 'a', 'kašubčinou', ')', '.']
+        assert lemmas == ['slovenčina', 'patriť', 'do', 'skupina', 'západoslovanských', 'jazyk', '(', 'spolu', 's', 'čeština', ',', 'poľština', ',', 'horný', 'a', 'dolný', 'lužickou', 'srbčina', 'a', 'kašubčinou', ')', '.']
     elif lang == 'slv':
         assert lemmas == ['slovenščina', '[', 'sloˈʋenʃtʃina', ']', 'on', 'združen', 'naziv', 'za', 'uraden', 'knjižen', 'jezik', 'Slovenec', 'in', 'skupen', 'ime', 'za', 'narečje', 'in', 'govor', ',', 'ki', 'on', 'govoriti', 'ali', 'biti', 'on', 'nekoč', 'govorilo', 'Slovenec', '.']
     elif lang == 'spa':
