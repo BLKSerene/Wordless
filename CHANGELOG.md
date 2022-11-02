@@ -29,6 +29,7 @@
 ### ✨ Improvements
 - Utils: Update NLTK's English and Russian perceptron part-of-speech taggers
 - Utils: Update spaCy's sentence tokenizers, word tokenizers, part-of-speech taggers, and lemmatizers
+- Work Area: Update N-gram Generator / Collocation Extractor / Colligation Extractor - Search Settings
 - Work Area: Update Search Settings / Search in Results
 
 ### ❌ Removals
