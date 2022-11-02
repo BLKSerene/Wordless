@@ -50,34 +50,18 @@ def test_colligation_extractor():
     len_max_measures = max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])
 
     files = main.settings_custom['file_area']['files_open']
-    i_search_sing, i_search_multi = random.sample(range(len_max_measures), 2)
 
     for i in range(len_max_measures):
         for file in main.settings_custom['file_area']['files_open']:
             file['selected'] = False
 
-        # Single file without search terms
-        if i == i_search_sing:
+        # Single file
+        if i % 2 == 0:
             random.choice(files)['selected'] = True
-
-            main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = False
-        # Multiple files without search terms
-        elif i == i_search_multi:
-            for file in random.sample(files, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
-
-            main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = False
-        # Single file with search terms
-        elif i % 2 == 0:
-            random.choice(files)['selected'] = True
-
-            main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = True
-        # Multiple files with search terms
+        # Multiple files
         elif i % 2 == 1:
             for file in random.sample(files, 2):
                 file['selected'] = True # pylint: disable=unsupported-assignment-operation
-
-            main.settings_custom['colligation_extractor']['search_settings']['search_settings'] = True
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file['name']).group()
@@ -91,7 +75,6 @@ def test_colligation_extractor():
 
         print(f'[Test Round {i + 1}]')
         print(f"Files: {', '.join(files_selected)}")
-        print(f"Search settings: {main.settings_custom['colligation_extractor']['search_settings']['search_settings']}")
         print(f"Test of Statistical significance: {main.settings_custom['colligation_extractor']['generation_settings']['test_statistical_significance']}")
         print(f"Measure of bayes factor: {main.settings_custom['colligation_extractor']['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {main.settings_custom['colligation_extractor']['generation_settings']['measure_effect_size']}")

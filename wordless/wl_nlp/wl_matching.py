@@ -276,10 +276,7 @@ def match_search_terms_tokens(
     lang, tagged,
     token_settings, search_settings
 ):
-    search_terms = check_search_terms(
-        search_settings = search_settings,
-        search_enabled = search_settings.get('search_settings', True)
-    )
+    search_terms = check_search_terms(search_settings, search_enabled = True)
 
     if search_terms:
         search_terms = match_tokens(
@@ -295,10 +292,7 @@ def match_search_terms_ngrams(
     lang, tagged,
     token_settings, search_settings
 ):
-    search_terms = check_search_terms(
-        search_settings = search_settings,
-        search_enabled = search_settings.get('search_settings', True)
-    )
+    search_terms = check_search_terms(search_settings, search_enabled = True)
 
     if search_terms:
         search_terms = match_ngrams(
