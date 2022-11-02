@@ -144,8 +144,6 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
     lemma_tokens = []
     lemmas = []
 
-    inputs = [str(token) for token in inputs]
-
     if tagged:
         re_tags = wl_matching.get_re_tags(main, tag_type = 'body')
 

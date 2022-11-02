@@ -19,7 +19,7 @@
 import re
 
 from wordless.wl_checking import wl_checking_unicode
-from wordless.wl_nlp import wl_nlp_utils, wl_texts
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
 
 def wl_word_detokenize(main, tokens, lang):
@@ -104,10 +104,7 @@ def wl_word_detokenize(main, tokens, lang):
                 continue
 
             if wl_checking_unicode.has_thai(token):
-                if isinstance(token, wl_texts.Wl_Token):
-                    text += token + token.boundary
-                else:
-                    text += token
+                text += token
 
                 non_thai_start = i + 1
             else:
@@ -159,22 +156,10 @@ def wl_word_detokenize(main, tokens, lang):
                         non_tibetan_start = i + j + 1
 
                         break
+    # Other Languages
     else:
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
-        sentence_start = 0
-        sentences = []
-
-        for i, token in enumerate(tokens):
-            if isinstance(token, wl_texts.Wl_Token) and token.sentence_ending:
-                sentences.append(tokens[sentence_start : i + 1])
-
-                sentence_start = i + 1
-            elif i == len(tokens) - 1:
-                sentences.append(tokens[sentence_start:])
-
-        for sentence in sentences:
-            text += main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(sentence)
+        text = main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(tokens)
 
     text = re.sub(r'\s{2,}', ' ', text)
 

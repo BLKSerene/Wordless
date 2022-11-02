@@ -69,8 +69,6 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
         # Check if the first token is empty
         first_token_empty = bool(inputs and inputs[0] == '')
 
-        inputs = [str(token) for token in inputs if token]
-
         # spaCy
         if pos_tagger.startswith('spacy_'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -310,7 +308,6 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
                 tokens_tagged.append((token.text, token.pos))
             else:
                 tokens_tagged.append((token.text, token.chunk_type))
-
     # Vietnamese
     elif pos_tagger == 'underthesea_vie':
         tokens_tagged = underthesea.pos_tag(' '.join(tokens))
