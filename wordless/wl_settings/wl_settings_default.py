@@ -492,8 +492,6 @@ def init_settings_default(main):
             },
 
             'search_settings': {
-                'search_settings': True,
-
                 'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
@@ -642,8 +640,6 @@ def init_settings_default(main):
             },
 
             'search_settings': {
-                'search_settings': True,
-
                 'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],
@@ -800,8 +796,6 @@ def init_settings_default(main):
             },
 
             'search_settings': {
-                'search_settings': True,
-
                 'multi_search_mode': False,
                 'search_term': '',
                 'search_terms': [],

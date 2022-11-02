@@ -69,7 +69,6 @@ def wl_msg_box_question(main, title, text):
 
     return bool(reply == QMessageBox.Yes)
 
-# Search terms
 def wl_msg_box_missing_search_terms(main):
     Wl_Msg_Box_Warning(
         main,
@@ -81,22 +80,6 @@ def wl_msg_box_missing_search_terms(main):
         ''')
     ).open()
 
-def wl_msg_box_missing_search_terms_optional(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = _tr('wl_msg_box_missing_search_terms_optional', 'Missing Search Terms'),
-        text = _tr('wl_msg_box_missing_search_terms_optional', '''
-            <div>
-                You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
-            </div>
-
-            <div>
-                Or, you can disable searching altogether by unchecking "<span style="color: #F00; font-weight: bold;">Search Settings</span>", which will then generate all possible results, but it is not recommended to do so since the processing speed might be too slow.
-            </div>
-        ''')
-    ).open()
-
-# Results
 def wl_msg_box_no_results(main):
     Wl_Msg_Box_Warning(
         main,

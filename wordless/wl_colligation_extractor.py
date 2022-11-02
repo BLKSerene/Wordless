@@ -252,20 +252,17 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 }
 
                 # Filter search terms
-                if settings['search_settings']['search_settings']:
-                    colligations_freqs_file_filtered = {}
+                colligations_freqs_file_filtered = {}
 
-                    for search_term in search_terms:
-                        len_search_term = len(search_term)
+                for search_term in search_terms:
+                    len_search_term = len(search_term)
 
-                        for (node, collocate), freqs in colligations_freqs_file.items():
-                            for ngram in nltk.ngrams(node, len_search_term):
-                                if ngram == search_term:
-                                    colligations_freqs_file_filtered[(node, collocate)] = freqs
+                    for (node, collocate), freqs in colligations_freqs_file.items():
+                        for ngram in nltk.ngrams(node, len_search_term):
+                            if ngram == search_term:
+                                colligations_freqs_file_filtered[(node, collocate)] = freqs
 
-                    self.colligations_freqs_files.append(colligations_freqs_file_filtered)
-                else:
-                    self.colligations_freqs_files.append(colligations_freqs_file)
+                self.colligations_freqs_files.append(colligations_freqs_file_filtered)
 
                 # Frequency (All)
                 colligations_freqs_files_all.append(colligations_freqs_file_all)
@@ -472,9 +469,8 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
         if wl_checking_files.check_files_on_loading_colligation_extractor(self.main, files):
             if (
-                not settings['search_settings']['search_settings']
-                or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
-                or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+                (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'])
+                or (settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'])
             ):
                 worker_colligation_extractor_table = Wl_Worker_Colligation_Extractor_Table(
                     self.main,
@@ -483,7 +479,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 )
                 wl_threading.Wl_Thread(worker_colligation_extractor_table).start_worker()
             else:
-                wl_msg_boxes.wl_msg_box_missing_search_terms_optional(self.main)
+                wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
                 wl_msgs.wl_msg_generate_table_error(self.main)
         else:
             wl_msgs.wl_msg_generate_table_error(self.main)
@@ -794,9 +790,8 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
         if wl_checking_files.check_files_on_loading_colligation_extractor(self.main, files):
             if (
-                not settings['search_settings']['search_settings']
-                or not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
-                or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+                (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'])
+                or (settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'])
             ):
                 self.worker_colligation_extractor_fig = Wl_Worker_Colligation_Extractor_Fig(
                     self.main,
@@ -805,7 +800,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 )
                 wl_threading.Wl_Thread(self.worker_colligation_extractor_fig).start_worker()
             else:
-                wl_msg_boxes.wl_msg_box_missing_search_terms_optional(self.main)
+                wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
                 wl_msgs.wl_msg_generate_fig_error(self.main)
         else:
             wl_msgs.wl_msg_generate_fig_error(self.main)
@@ -1027,10 +1022,6 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self,
             tab = 'colligation_extractor'
         )
-
-        self.group_box_search_settings.setCheckable(True)
-
-        self.group_box_search_settings.toggled.connect(self.search_settings_changed)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
         self.line_edit_search_term.textChanged.connect(self.search_settings_changed)
@@ -1260,8 +1251,6 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Search Settings
-        self.group_box_search_settings.setChecked(settings['search_settings']['search_settings'])
-
         self.checkbox_multi_search_mode.setChecked(settings['search_settings']['multi_search_mode'])
 
         if not defaults:
@@ -1343,22 +1332,11 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
-        # Check if searching is enabled
-        if self.group_box_search_settings.isChecked():
-            self.checkbox_match_tags.token_settings_changed()
-        else:
-            self.group_box_search_settings.setChecked(True)
-
-            self.checkbox_match_tags.token_settings_changed()
-
-            self.group_box_search_settings.setChecked(False)
-
+        self.checkbox_match_tags.token_settings_changed()
         self.main.wl_context_settings_colligation_extractor.token_settings_changed()
 
     def search_settings_changed(self):
         settings = self.main.settings_custom['colligation_extractor']['search_settings']
-
-        settings['search_settings'] = self.group_box_search_settings.isChecked()
 
         settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
         settings['search_term'] = self.line_edit_search_term.text()
