@@ -22,6 +22,8 @@ import os
 import shutil
 import traceback
 
+import numpy
+
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QCheckBox, QGroupBox, QPushButton
@@ -82,7 +84,7 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                         if any((token in search_terms for token in sentence)):
                             dependencies = wl_dependency_parsing.wl_dependency_parse(self.main, sentence, lang = text.lang)
 
-                            for i, (token, head, dependency_relation, dependency_dist) in enumerate(dependencies):
+                            for i, (token, head, dependency_relation, dependency_len) in enumerate(dependencies):
                                 j = i_token + i
 
                                 if (
@@ -116,7 +118,7 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                     # Dependency Relation
                                     results[-1].append(dependency_relation)
                                     # Dependency Distance
-                                    results[-1].append(dependency_dist)
+                                    results[-1].append(dependency_len)
                                     # Sentence
                                     results[-1].extend([sentence_display, sentence_search])
                                     # Sentence No.
@@ -140,14 +142,16 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                 _tr('Wl_Table_Dependency_Parser', 'Head'),
                 _tr('Wl_Table_Dependency_Parser', 'Dependent'),
                 _tr('Wl_Table_Dependency_Parser', 'Dependency Relation'),
-                _tr('Wl_Table_Dependency_Parser', 'Dependency Distance'),
+                _tr('Wl_Table_Dependency_Parser', 'Dependency Length'),
+                _tr('Wl_Table_Dependency_Parser', 'Dependency Length (Absolute)'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No.'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No. %'),
                 _tr('Wl_Table_Dependency_Parser', 'File')
             ],
             headers_int = [
-                _tr('Wl_Table_Dependency_Parser', 'Dependency Distance'),
+                _tr('Wl_Table_Dependency_Parser', 'Dependency Length'),
+                _tr('Wl_Table_Dependency_Parser', 'Dependency Length (Absolute)'),
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No.')
             ],
             headers_pct = [
@@ -209,7 +213,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                     self.disable_updates()
 
                     for i, (
-                        head, dependent, dependency_relation, dependency_dist,
+                        head, dependent, dependency_relation, dependency_len,
                         sentence_display, sentence_search,
                         no_sentence, len_sentences, file
                     ) in enumerate(results):
@@ -220,16 +224,17 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                         # Dependency Relation
                         self.model().setItem(i, 2, QStandardItem(dependency_relation))
                         # Dependency Distance
-                        self.set_item_num(i, 3, dependency_dist)
+                        self.set_item_num(i, 3, dependency_len)
+                        self.set_item_num(i, 4, numpy.abs(dependency_len))
                         # Sentence
-                        self.model().setItem(i, 4, QStandardItem(' '.join(sentence_display)))
-                        self.model().item(i, 4).text_display = sentence_display
-                        self.model().item(i, 4).text_search = sentence_search
+                        self.model().setItem(i, 5, QStandardItem(' '.join(sentence_display)))
+                        self.model().item(i, 5).text_display = sentence_display
+                        self.model().item(i, 5).text_search = sentence_search
                         # Sentence No.
-                        self.set_item_num(i, 5, no_sentence)
-                        self.set_item_num(i, 6, no_sentence, len_sentences)
+                        self.set_item_num(i, 6, no_sentence)
+                        self.set_item_num(i, 7, no_sentence, len_sentences)
                         # File
-                        self.model().setItem(i, 7, QStandardItem(file))
+                        self.model().setItem(i, 8, QStandardItem(file))
 
                     self.enable_updates()
 
