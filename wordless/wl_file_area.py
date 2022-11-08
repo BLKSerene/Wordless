@@ -444,7 +444,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         layout_checkboxes.addWidget(self.checkbox_auto_detect_langs, 0, 1)
         layout_checkboxes.addWidget(self.checkbox_include_files_in_subfolders, 1, 0, 1, 2)
 
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
+        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_open = QPushButton(self.tr('Open'), self)
         self.button_cancel = QPushButton(self.tr('Cancel'), self)
 
@@ -457,7 +457,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
 
         self.layout().addWidget(wl_layouts.Wl_Separator(self), 2, 0, 1, 4)
 
-        self.layout().addWidget(self.button_restore_default_settings, 3, 0)
+        self.layout().addWidget(self.button_restore_defaults, 3, 0)
         self.layout().addWidget(self.button_open, 3, 2)
         self.layout().addWidget(self.button_cancel, 3, 3)
 

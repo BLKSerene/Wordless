@@ -110,7 +110,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_find_all = QPushButton(self.tr('Find All'), self)
         self.button_clr_hightlights = QPushButton(self.tr('Clear Highlights'), self)
 
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
+        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_close = QPushButton(self.tr('Close'), self)
 
         self.checkbox_multi_search_mode.stateChanged.connect(self.search_settings_changed)
@@ -141,7 +141,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         layout_buttons_right.setRowStretch(4, 1)
 
         layout_buttons_bottom = wl_layouts.Wl_Layout()
-        layout_buttons_bottom.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons_bottom.addWidget(self.button_restore_defaults, 0, 0)
         layout_buttons_bottom.addWidget(self.button_close, 0, 2)
 
         layout_buttons_bottom.setColumnStretch(1, 1)

@@ -18,8 +18,6 @@
 
 import bisect
 import copy
-import os
-import shutil
 import traceback
 
 import numpy
@@ -256,21 +254,19 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
         sentences_rendered = set()
         fig_settings = self.main.settings_custom['dependency_parser']['fig_settings']
 
-        # Clean figure caches
-        if os.path.exists('exports/_dependency_parsing_figs'):
-            shutil.rmtree('exports/_dependency_parsing_figs')
+        wl_dependency_parsing.clean_fig_cache()
 
         for row in self.get_selected_rows():
-            no_sentence = int(self.model().item(row, 5).text())
+            no_sentence = int(self.model().item(row, 6).text())
 
             if no_sentence not in sentences_rendered:
                 for file in self.settings['file_area']['files_open']:
-                    if file['selected'] and file['name'] == self.model().item(row, 7).text():
+                    if file['selected'] and file['name'] == self.model().item(row, 8).text():
                         file_selected = file
 
                 wl_dependency_parsing.wl_dependency_parse_fig(
                     self.main,
-                    inputs = self.model().item(row, 4).text_display,
+                    inputs = self.model().item(row, 5).text_display,
                     lang = file_selected['lang'],
                     show_pos_tags = fig_settings['show_pos_tags'],
                     show_lemmas = fig_settings['show_lemmas'],
