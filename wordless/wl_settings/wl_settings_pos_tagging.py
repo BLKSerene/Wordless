@@ -42,9 +42,7 @@ class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
         preview_samples = self.main.settings_custom['pos_tagging']['preview']['preview_samples']
 
         for line in preview_samples.split('\n'):
-            line = line.strip()
-
-            if line:
+            if (line := line.strip()):
                 tokens_tagged = wl_pos_tagging.wl_pos_tag(
                     self.main, line,
                     lang = preview_lang,

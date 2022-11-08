@@ -37,9 +37,7 @@ class Wl_Worker_Preview_Lemmatizer(wl_threading.Wl_Worker_No_Progress):
         preview_samples = self.main.settings_custom['lemmatization']['preview']['preview_samples']
 
         for line in preview_samples.split('\n'):
-            line = line.strip()
-
-            if line:
+            if (line := line.strip()):
                 lemmas = wl_lemmatization.wl_lemmatize(
                     self.main, line,
                     lang = preview_lang,

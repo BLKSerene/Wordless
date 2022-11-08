@@ -37,9 +37,7 @@ class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
         preview_samples = self.main.settings_custom['syl_tokenization']['preview']['preview_samples']
 
         for line in preview_samples.split('\n'):
-            line = line.strip()
-
-            if line:
+            if (line := line.strip()):
                 syls = wl_syl_tokenization.wl_syl_tokenize(
                     self.main, line,
                     lang = preview_lang,

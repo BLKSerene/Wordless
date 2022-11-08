@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import os
+import shutil
 
 import spacy
 
@@ -64,8 +65,6 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
 def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
     dependencies = []
 
-    inputs = [str(token) for token in inputs]
-
     # spaCy
     if dependency_parser.startswith('spacy_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -90,8 +89,11 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
     return dependencies
 
 def wl_dependency_parse_fig(
-    main, inputs, lang, dependency_parser = 'default',
-    show_pos_tags = True, show_lemmas = False, compact_mode = False
+    main, inputs,
+    lang, dependency_parser = 'default',
+    show_pos_tags = True, show_fine_grained_pos_tags = False,
+    show_lemmas = False, collapse_puncs = True, compact_mode = False,
+    show_in_separate_tab = False
 ):
     if dependency_parser == 'default':
         dependency_parser = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
@@ -99,9 +101,21 @@ def wl_dependency_parse_fig(
     wl_nlp_utils.init_dependency_parsers(main, lang, dependency_parser)
 
     if isinstance(inputs, str):
-        wl_dependency_parse_fig_text(main, inputs, lang, dependency_parser, show_pos_tags, show_lemmas, compact_mode)
+        wl_dependency_parse_fig_text(
+            main, inputs,
+            lang, dependency_parser,
+            show_pos_tags, show_fine_grained_pos_tags,
+            show_lemmas, collapse_puncs, compact_mode,
+            show_in_separate_tab
+        )
     else:
-        wl_dependency_parse_fig_tokens(main, inputs, lang, dependency_parser, show_pos_tags, show_lemmas, compact_mode)
+        wl_dependency_parse_fig_tokens(
+            main, inputs,
+            lang, dependency_parser,
+            show_pos_tags, show_fine_grained_pos_tags,
+            show_lemmas, collapse_puncs, compact_mode,
+            show_in_separate_tab
+        )
 
 def get_pipelines_disabled(show_pos_tags, show_lemmas):
     if show_pos_tags and show_lemmas:
@@ -115,7 +129,47 @@ def get_pipelines_disabled(show_pos_tags, show_lemmas):
 
     return pipelines_disabled
 
-def wl_dependency_parse_fig_text(main, inputs, lang, dependency_parser, show_pos_tags, show_lemmas, compact_mode):
+def clean_fig_cache():
+    if os.path.exists('exports/_dependency_parsing_figs'):
+        shutil.rmtree('exports/_dependency_parsing_figs')
+
+def show_svg(
+    inputs,
+    show_fine_grained_pos_tags, show_lemmas,
+    collapse_puncs, compact_mode,
+    show_in_separate_tab
+):
+    html = spacy.displacy.render(
+        inputs,
+        style = 'dep',
+        minify = True,
+        options = {
+            'fine_grained': show_fine_grained_pos_tags,
+            'add_lemma': show_lemmas,
+            'collapse_punct': collapse_puncs,
+            'compact': compact_mode
+        }
+    )
+
+    fig_dir = wl_checking_misc.check_dir('exports/_dependency_parsing_figs')
+
+    if show_in_separate_tab:
+        fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.svg'))
+    else:
+        fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.html'))
+
+    with open(fig_path, 'w', encoding = 'utf_8') as f:
+        f.write(html)
+
+    QDesktopServices.openUrl(QUrl.fromLocalFile(fig_path))
+
+def wl_dependency_parse_fig_text(
+    main, inputs,
+    lang, dependency_parser,
+    show_pos_tags, show_fine_grained_pos_tags,
+    show_lemmas, collapse_puncs, compact_mode,
+    show_in_separate_tab
+):
     # spaCy
     if dependency_parser.startswith('spacy_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -126,23 +180,35 @@ def wl_dependency_parse_fig_text(main, inputs, lang, dependency_parser, show_pos
             for pipeline in get_pipelines_disabled(show_pos_tags, show_lemmas)
             if nlp.has_pipe(pipeline)
         ]):
-            fig_dir = wl_checking_misc.check_dir('exports/_dependency_parsing_figs')
-            fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.svg'))
+            if show_in_separate_tab:
+                for doc in nlp.pipe(inputs.splitlines()):
+                    for sentence in doc.sents:
+                        show_svg(
+                            sentence,
+                            show_fine_grained_pos_tags, show_lemmas,
+                            collapse_puncs, compact_mode,
+                            show_in_separate_tab
+                        )
+            else:
+                sentences = []
 
-            html = spacy.displacy.render(nlp.pipe(inputs.splitlines()), style = 'dep', page = True, options = {
-                'add_lemma': show_lemmas,
-                'collapse_punct': False,
-                'compact': compact_mode,
-            })
+                for doc in nlp.pipe(inputs.splitlines()):
+                    sentences.extend(doc.sents)
 
-            with open(fig_path, 'w', encoding = 'utf_8') as f:
-                f.write(html)
+                show_svg(
+                    sentences,
+                    show_fine_grained_pos_tags, show_lemmas,
+                    collapse_puncs, compact_mode,
+                    show_in_separate_tab
+                )
 
-            QDesktopServices.openUrl(QUrl.fromLocalFile(fig_path))
-
-def wl_dependency_parse_fig_tokens(main, inputs, lang, dependency_parser, show_pos_tags, show_lemmas, compact_mode):
-    inputs = [str(token) for token in inputs]
-
+def wl_dependency_parse_fig_tokens(
+    main, inputs,
+    lang, dependency_parser,
+    show_pos_tags, show_fine_grained_pos_tags,
+    show_lemmas, collapse_puncs, compact_mode,
+    show_in_separate_tab
+):
     # spaCy
     if dependency_parser.startswith('spacy_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -154,19 +220,28 @@ def wl_dependency_parse_fig_tokens(main, inputs, lang, dependency_parser, show_p
             if nlp.has_pipe(pipeline)
         ]):
             docs = []
-            fig_dir = wl_checking_misc.check_dir('exports/_dependency_parsing_figs')
-            fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.svg'))
 
             for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser):
                 docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens)))
 
-            html = spacy.displacy.render(nlp.pipe(docs), style = 'dep', page = True, options = {
-                'add_lemma': show_lemmas,
-                'collapse_punct': False,
-                'compact': compact_mode,
-            })
+            if show_in_separate_tab:
+                for doc in nlp.pipe(docs):
+                    for sentence in doc.sents:
+                        show_svg(
+                            sentence,
+                            show_fine_grained_pos_tags, show_lemmas,
+                            compact_mode, collapse_puncs,
+                            show_in_separate_tab
+                        )
+            else:
+                sentences = []
 
-            with open(fig_path, 'w', encoding = 'utf_8') as f:
-                f.write(html)
+                for doc in nlp.pipe(docs):
+                    sentences.extend(doc.sents)
 
-            QDesktopServices.openUrl(QUrl.fromLocalFile(fig_path))
+                show_svg(
+                    sentences,
+                    show_fine_grained_pos_tags, show_lemmas,
+                    compact_mode, collapse_puncs,
+                    show_in_separate_tab
+                )

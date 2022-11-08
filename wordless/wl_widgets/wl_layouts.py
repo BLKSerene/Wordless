@@ -53,7 +53,7 @@ class Wl_Wrapper(QWidget):
         self.wrapper_table.layout().setContentsMargins(0, 0, 0, 0)
 
         self.scroll_area_settings = Wl_Scroll_Area(self)
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
+        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
 
         self.scroll_area_settings.setFixedWidth(400)
 
@@ -66,7 +66,7 @@ class Wl_Wrapper(QWidget):
         self.wrapper_settings.layout().setContentsMargins(0, 0, 0, 0)
 
         self.wrapper_settings_outer.layout().addWidget(self.wrapper_settings, 0, 0)
-        self.wrapper_settings_outer.layout().addWidget(self.button_restore_default_settings, 1, 0)
+        self.wrapper_settings_outer.layout().addWidget(self.button_restore_defaults, 1, 0)
 
         self.wrapper_settings_outer.layout().setContentsMargins(8, 6, 8, 6)
         self.wrapper_settings_outer.layout().setRowStretch(2, 1)
