@@ -372,8 +372,10 @@ def init_settings_default(main):
 
             'fig_settings': {
                 'show_pos_tags': True,
+                'show_fine_grained_pos_tags': False,
                 'show_lemmas': False,
-                'compact_mode': False
+                'compact_mode': False,
+                'show_in_separate_tab': False
             },
 
             'search_results': {
