@@ -28,17 +28,17 @@ from PyQt5.QtWidgets import (
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_utils import wl_misc
-from wordless.wl_widgets import wl_boxes, wl_buttons, wl_labels, wl_layouts, wl_lists
+from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_lists
 
 _tr = QCoreApplication.translate
 
-class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
+class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
     def __init__(self, main, tab):
-        super().__init__(main, _tr('Wl_Dialog_Context_Settings', 'Context Settings'))
+        super().__init__(main, title = _tr('Wl_Dialog_Context_Settings', 'Context Settings'))
 
         self.tab = tab
-
-        self.settings = self.main.settings_custom[self.tab]['context_settings']
+        self.settings_custom = self.main.settings_custom[self.tab]['context_settings']
+        self.settings_default = self.main.settings_custom[self.tab]['context_settings']
 
         # Inclusion
         self.incl_group_box = QGroupBox(self.tr('Inclusion'), self)
@@ -162,35 +162,47 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.excl_group_box.layout().setColumnStretch(1, 1)
         self.excl_group_box.layout().setColumnStretch(3, 1)
 
-        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_save = QPushButton(self.tr('Save'))
-        self.button_cancel = QPushButton(self.tr('Cancel'), self)
-
         self.incl_line_edit_search_term.returnPressed.connect(self.button_save.click)
         self.excl_line_edit_search_term.returnPressed.connect(self.button_save.click)
-        self.button_save.clicked.connect(self.save_settings)
-        self.button_cancel.clicked.connect(self.reject)
 
-        layout_buttons = wl_layouts.Wl_Layout()
-        layout_buttons.addWidget(self.button_restore_defaults, 0, 0)
-        layout_buttons.addWidget(self.button_save, 0, 2)
-        layout_buttons.addWidget(self.button_cancel, 0, 3)
+        self.wrapper_settings.layout().addWidget(self.incl_group_box, 0, 0)
+        self.wrapper_settings.layout().addWidget(self.excl_group_box, 0, 1)
 
-        layout_buttons.setColumnStretch(1, 1)
+        self.wrapper_settings.layout().setColumnStretch(0, 1)
+        self.wrapper_settings.layout().setColumnStretch(1, 1)
 
-        self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.incl_group_box, 0, 0)
-        self.layout().addWidget(self.excl_group_box, 0, 1)
-        self.layout().addLayout(layout_buttons, 1, 0, 1, 2)
+    def multi_search_mode_changed(self):
+        if 'size_multi' in self.__dict__:
+            if self.incl_checkbox_multi_search_mode.isChecked() or self.excl_checkbox_multi_search_mode.isChecked():
+                self.setFixedSize(self.size_multi)
+            else:
+                self.setFixedSize(self.size_normal)
 
-        self.layout().setColumnStretch(0, 1)
-        self.layout().setColumnStretch(1, 1)
+    def token_settings_changed(self):
+        # Check if searching is enabled
+        if self.incl_group_box.isChecked():
+            self.incl_checkbox_match_tags.token_settings_changed()
+        else:
+            self.incl_group_box.setChecked(True)
+
+            self.incl_checkbox_match_tags.token_settings_changed()
+
+            self.incl_group_box.setChecked(False)
+
+        if self.excl_group_box.isChecked():
+            self.excl_checkbox_match_tags.token_settings_changed()
+        else:
+            self.excl_group_box.setChecked(True)
+
+            self.excl_checkbox_match_tags.token_settings_changed()
+
+            self.excl_group_box.setChecked(False)
 
     def load_settings(self, defaults = False):
         if defaults:
-            settings = copy.deepcopy(self.main.settings_default[self.tab]['context_settings'])
+            settings = copy.deepcopy(self.settings_default)
         else:
-            settings = copy.deepcopy(self.settings)
+            settings = copy.deepcopy(self.settings_custom)
 
         # Inclusion
         self.incl_group_box.setChecked(settings['incl']['incl'])
@@ -260,91 +272,62 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
 
     def save_settings(self):
         # Inclusion
-        self.settings['incl']['incl'] = self.incl_group_box.isChecked()
+        self.settings_custom['incl']['incl'] = self.incl_group_box.isChecked()
 
-        self.settings['incl']['multi_search_mode'] = self.incl_checkbox_multi_search_mode.isChecked()
-        self.settings['incl']['search_term'] = self.incl_line_edit_search_term.text()
-        self.settings['incl']['search_terms'] = self.incl_list_search_terms.model().stringList()
+        self.settings_custom['incl']['multi_search_mode'] = self.incl_checkbox_multi_search_mode.isChecked()
+        self.settings_custom['incl']['search_term'] = self.incl_line_edit_search_term.text()
+        self.settings_custom['incl']['search_terms'] = self.incl_list_search_terms.model().stringList()
 
-        self.settings['incl']['match_case'] = self.incl_checkbox_match_case.isChecked()
-        self.settings['incl']['match_whole_words'] = self.incl_checkbox_match_whole_words.isChecked()
-        self.settings['incl']['match_inflected_forms'] = self.incl_checkbox_match_inflected_forms.isChecked()
-        self.settings['incl']['use_regex'] = self.incl_checkbox_use_regex.isChecked()
-        self.settings['incl']['match_without_tags'] = self.incl_checkbox_match_without_tags.isChecked()
-        self.settings['incl']['match_tags'] = self.incl_checkbox_match_tags.isChecked()
+        self.settings_custom['incl']['match_case'] = self.incl_checkbox_match_case.isChecked()
+        self.settings_custom['incl']['match_whole_words'] = self.incl_checkbox_match_whole_words.isChecked()
+        self.settings_custom['incl']['match_inflected_forms'] = self.incl_checkbox_match_inflected_forms.isChecked()
+        self.settings_custom['incl']['use_regex'] = self.incl_checkbox_use_regex.isChecked()
+        self.settings_custom['incl']['match_without_tags'] = self.incl_checkbox_match_without_tags.isChecked()
+        self.settings_custom['incl']['match_tags'] = self.incl_checkbox_match_tags.isChecked()
 
-        self.settings['incl']['context_window_sync'] = self.incl_checkbox_context_window_sync.isChecked()
+        self.settings_custom['incl']['context_window_sync'] = self.incl_checkbox_context_window_sync.isChecked()
 
         if self.incl_spin_box_context_window_left.prefix() == self.tr('L'):
-            self.settings['incl']['context_window_left'] = -self.incl_spin_box_context_window_left.value()
+            self.settings_custom['incl']['context_window_left'] = -self.incl_spin_box_context_window_left.value()
         else:
-            self.settings['incl']['context_window_left'] = self.incl_spin_box_context_window_left.value()
+            self.settings_custom['incl']['context_window_left'] = self.incl_spin_box_context_window_left.value()
 
         if self.incl_spin_box_context_window_right.prefix() == self.tr('L'):
-            self.settings['incl']['context_window_right'] = -self.incl_spin_box_context_window_right.value()
+            self.settings_custom['incl']['context_window_right'] = -self.incl_spin_box_context_window_right.value()
         else:
-            self.settings['incl']['context_window_right'] = self.incl_spin_box_context_window_right.value()
+            self.settings_custom['incl']['context_window_right'] = self.incl_spin_box_context_window_right.value()
 
         # Exclusion
-        self.settings['excl']['excl'] = self.excl_group_box.isChecked()
+        self.settings_custom['excl']['excl'] = self.excl_group_box.isChecked()
 
-        self.settings['excl']['multi_search_mode'] = self.excl_checkbox_multi_search_mode.isChecked()
-        self.settings['excl']['search_term'] = self.excl_line_edit_search_term.text()
-        self.settings['excl']['search_terms'] = self.excl_list_search_terms.model().stringList()
+        self.settings_custom['excl']['multi_search_mode'] = self.excl_checkbox_multi_search_mode.isChecked()
+        self.settings_custom['excl']['search_term'] = self.excl_line_edit_search_term.text()
+        self.settings_custom['excl']['search_terms'] = self.excl_list_search_terms.model().stringList()
 
-        self.settings['excl']['match_case'] = self.excl_checkbox_match_case.isChecked()
-        self.settings['excl']['match_whole_words'] = self.excl_checkbox_match_whole_words.isChecked()
-        self.settings['excl']['match_inflected_forms'] = self.excl_checkbox_match_inflected_forms.isChecked()
-        self.settings['excl']['use_regex'] = self.excl_checkbox_use_regex.isChecked()
-        self.settings['excl']['match_without_tags'] = self.excl_checkbox_match_without_tags.isChecked()
-        self.settings['excl']['match_tags'] = self.excl_checkbox_match_tags.isChecked()
+        self.settings_custom['excl']['match_case'] = self.excl_checkbox_match_case.isChecked()
+        self.settings_custom['excl']['match_whole_words'] = self.excl_checkbox_match_whole_words.isChecked()
+        self.settings_custom['excl']['match_inflected_forms'] = self.excl_checkbox_match_inflected_forms.isChecked()
+        self.settings_custom['excl']['use_regex'] = self.excl_checkbox_use_regex.isChecked()
+        self.settings_custom['excl']['match_without_tags'] = self.excl_checkbox_match_without_tags.isChecked()
+        self.settings_custom['excl']['match_tags'] = self.excl_checkbox_match_tags.isChecked()
 
-        self.settings['excl']['context_window_sync'] = self.excl_checkbox_context_window_sync.isChecked()
+        self.settings_custom['excl']['context_window_sync'] = self.excl_checkbox_context_window_sync.isChecked()
 
         if self.excl_spin_box_context_window_left.prefix() == self.tr('L'):
-            self.settings['excl']['context_window_left'] = -self.excl_spin_box_context_window_left.value()
+            self.settings_custom['excl']['context_window_left'] = -self.excl_spin_box_context_window_left.value()
         else:
-            self.settings['excl']['context_window_left'] = self.excl_spin_box_context_window_left.value()
+            self.settings_custom['excl']['context_window_left'] = self.excl_spin_box_context_window_left.value()
 
         if self.excl_spin_box_context_window_right.prefix() == self.tr('L'):
-            self.settings['excl']['context_window_right'] = -self.excl_spin_box_context_window_right.value()
+            self.settings_custom['excl']['context_window_right'] = -self.excl_spin_box_context_window_right.value()
         else:
-            self.settings['excl']['context_window_right'] = self.excl_spin_box_context_window_right.value()
-
-        self.accept()
-
-    def multi_search_mode_changed(self):
-        if 'size_multi' in self.__dict__:
-            if self.incl_checkbox_multi_search_mode.isChecked() or self.excl_checkbox_multi_search_mode.isChecked():
-                self.setFixedSize(self.size_multi)
-            else:
-                self.setFixedSize(self.size_normal)
-
-    def token_settings_changed(self):
-        # Check if searching is enabled
-        if self.incl_group_box.isChecked():
-            self.incl_checkbox_match_tags.token_settings_changed()
-        else:
-            self.incl_group_box.setChecked(True)
-
-            self.incl_checkbox_match_tags.token_settings_changed()
-
-            self.incl_group_box.setChecked(False)
-
-        if self.excl_group_box.isChecked():
-            self.excl_checkbox_match_tags.token_settings_changed()
-        else:
-            self.excl_group_box.setChecked(True)
-
-            self.excl_checkbox_match_tags.token_settings_changed()
-
-            self.excl_group_box.setChecked(False)
+            self.settings_custom['excl']['context_window_right'] = self.excl_spin_box_context_window_right.value()
 
     def load(self):
         # Calculate size
         if 'size_multi' not in self.__dict__:
-            incl_multi_search_mode = self.settings['incl']['multi_search_mode']
-            excl_multi_search_mode = self.settings['excl']['multi_search_mode']
+            incl_multi_search_mode = self.settings_custom['incl']['multi_search_mode']
+            excl_multi_search_mode = self.settings_custom['excl']['multi_search_mode']
 
             self.incl_checkbox_multi_search_mode.setChecked(False)
             self.excl_checkbox_multi_search_mode.setChecked(False)
