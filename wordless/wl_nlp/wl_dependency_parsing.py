@@ -18,7 +18,6 @@
 
 import os
 
-import numpy
 import spacy
 
 from PyQt5.QtCore import QUrl
@@ -56,7 +55,7 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
         ]):
             for doc in nlp.pipe(inputs.splitlines()):
                 dependencies.extend([
-                    (token.text, token.head.text, token.dep_, numpy.abs(token.i - token.head.i))
+                    (token.text, token.head.text, token.dep_, token.head.i - token.i)
                     for token in doc
                 ])
 
@@ -84,7 +83,7 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
 
             for doc in nlp.pipe(docs):
                 dependencies.extend([
-                    (token.text, token.head.text, token.dep_, numpy.abs(token.i - token.head.i))
+                    (token.text, token.head.text, token.dep_, token.head.i - token.i)
                     for token in doc
                 ])
 
