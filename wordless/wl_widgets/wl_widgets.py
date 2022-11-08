@@ -162,7 +162,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.excl_group_box.layout().setColumnStretch(1, 1)
         self.excl_group_box.layout().setColumnStretch(3, 1)
 
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
+        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_save = QPushButton(self.tr('Save'))
         self.button_cancel = QPushButton(self.tr('Cancel'), self)
 
@@ -172,7 +172,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog):
         self.button_cancel.clicked.connect(self.reject)
 
         layout_buttons = wl_layouts.Wl_Layout()
-        layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons.addWidget(self.button_restore_defaults, 0, 0)
         layout_buttons.addWidget(self.button_save, 0, 2)
         layout_buttons.addWidget(self.button_cancel, 0, 3)
 

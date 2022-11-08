@@ -20,6 +20,8 @@ from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QWidget
 
+from wordless.wl_widgets import wl_buttons
+
 _tr = QCoreApplication.translate
 
 class Wl_Dialog(QDialog):
@@ -107,6 +109,39 @@ class Wl_Dialog_Info(Wl_Dialog):
 
         self.layout().setRowStretch(0, 1)
         self.layout().setContentsMargins(0, 0, 0, 0)
+
+class Wl_Dialog_Settings(Wl_Dialog_Info):
+    def __init__(self, main, title, width = 0, height = 0):
+        super().__init__(main, title, width, height, no_buttons = True)
+
+        self.setMinimumWidth(450)
+
+        # Alias
+        self.wrapper_settings = self.wrapper_info
+
+        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
+        self.button_save = QPushButton(_tr('Wl_Dialog_Settings', 'Save'), self)
+        self.button_cancel = QPushButton(_tr('Wl_Dialog_Settings', 'Cancel'), self)
+
+        self.button_save.clicked.connect(self.save_settings)
+        self.button_save.clicked.connect(self.accept)
+        self.button_cancel.clicked.connect(self.reject)
+
+        self.wrapper_buttons.layout().addWidget(self.button_restore_defaults, 0, 0)
+        self.wrapper_buttons.layout().addWidget(self.button_save, 0, 2, Qt.AlignRight)
+        self.wrapper_buttons.layout().addWidget(self.button_cancel, 0, 3, Qt.AlignRight)
+
+        self.wrapper_buttons.layout().setColumnStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        pass
+
+    def save_settings(self):
+        pass
+
+    def load(self):
+        self.load_settings()
+        self.exec_()
 
 class Wl_Dialog_Err(Wl_Dialog_Info):
     def exec_(self):

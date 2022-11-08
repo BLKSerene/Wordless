@@ -470,7 +470,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.combo_box_file_to_filter = wl_boxes.Wl_Combo_Box_File_To_Filter(self, self.table)
         self.button_filter = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Filter'), self)
 
-        self.button_restore_default_settings = wl_buttons.Wl_Button_Restore_Default_Settings(self, load_settings = self.load_settings)
+        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_close = QPushButton(_tr('Wl_Dialog_Results_Filter', 'Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
@@ -487,7 +487,7 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.layout_filters = wl_layouts.Wl_Layout()
 
         layout_buttons = wl_layouts.Wl_Layout()
-        layout_buttons.addWidget(self.button_restore_default_settings, 0, 0)
+        layout_buttons.addWidget(self.button_restore_defaults, 0, 0)
         layout_buttons.addWidget(self.button_close, 0, 2)
 
         layout_buttons.setColumnStretch(1, 1)

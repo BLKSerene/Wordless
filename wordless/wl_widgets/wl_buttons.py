@@ -30,23 +30,23 @@ class Wl_Button(QPushButton):
 
         self.main = wl_misc.find_wl_main(parent)
 
-class Wl_Button_Restore_Default_Settings(Wl_Button):
+class Wl_Button_Restore_Defaults(Wl_Button):
     def __init__(self, parent, load_settings):
-        super().__init__(_tr('Wl_Button_Restore_Default_Settings', 'Restore default settings'), parent)
+        super().__init__(_tr('Wl_Button_Restore_Defaults', 'Restore defaults'), parent)
 
         self.parent = parent
         self.load_settings = load_settings
 
-        self.setMinimumWidth(200)
+        self.setMinimumWidth(150)
 
-        self.clicked.connect(self.restore_default_settings)
+        self.clicked.connect(self.restore_defaults)
 
-    def restore_default_settings(self):
+    def restore_defaults(self):
         if wl_msg_boxes.wl_msg_box_question(
             main = self.main,
-            title = self.tr('Restore default settings'),
+            title = self.tr('Restore defaults'),
             text = self.tr('''
-                <div>Do you want to reset all settings to their defaults?</div>
+                <div>Are you sure you want to reset all settings to their defaults?</div>
             ''')
         ):
             self.load_settings(defaults = True)
