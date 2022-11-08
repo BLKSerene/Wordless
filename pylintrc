@@ -69,4 +69,6 @@ disable=
     missing-timeout,
 
     # E401
-    import-error
+    import-error,
+    # E1121
+    too-many-function-args

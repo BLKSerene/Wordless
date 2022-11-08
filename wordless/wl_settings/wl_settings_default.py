@@ -1644,6 +1644,21 @@ def init_settings_default(main):
                 'spa': 'spacy_spa',
                 'swe': 'spacy_swe',
                 'ukr': 'spacy_ukr'
+            },
+
+            'preview': {
+                'preview_lang': 'eng_us',
+
+                'preview_settings': {
+                    'show_pos_tags': True,
+                    'show_fine_grained_pos_tags': False,
+                    'show_lemmas': False,
+                    'collapse_puncs': True,
+                    'compact_mode': False,
+                    'show_in_separate_tab': False
+                },
+
+                'preview_samples': ''
             }
         },
 

@@ -183,6 +183,7 @@ class Wl_Settings(QDialog):
             wl_settings_pos_tagging,
             wl_settings_lemmatization,
             wl_settings_stop_word_lists,
+            wl_settings_dependency_parsing,
             wl_settings_measures,
             wl_settings_tables,
             wl_settings_figs
@@ -217,16 +218,17 @@ class Wl_Settings(QDialog):
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Lemmatization')))
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Stop Word Lists')))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Dependency Parsing')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Measures')))
-        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Dispersion')))
-        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
-        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Statistical Significance')))
-        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Bayes Factor')))
-        self.tree_settings.model().item(8).appendRow(QStandardItem(self.tr('Effect Size')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Dispersion')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Statistical Significance')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Bayes Factor')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Effect Size')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Tables')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Profiler')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Profiler')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Figures')))
 
@@ -262,6 +264,7 @@ class Wl_Settings(QDialog):
 
         self.settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(self.main)
         self.settings_stop_words = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(self.main)
+        self.settings_dependency_parsing = wl_settings_dependency_parsing.Wl_Settings_Dependency_Parsing(self.main)
 
         # Measures
         self.settings_measures_dispersion = wl_settings_measures.Wl_Settings_Measures_Dispersion(self.main)
@@ -289,6 +292,7 @@ class Wl_Settings(QDialog):
             self.settings_pos_tagging_tagsets,
             self.settings_lemmatization,
             self.settings_stop_words,
+            self.settings_dependency_parsing,
             self.settings_measures_dispersion,
             self.settings_measures_adjusted_freq,
             self.settings_measures_statistical_significance,
@@ -368,24 +372,26 @@ class Wl_Settings(QDialog):
                     self.stacked_widget_settings.setCurrentIndex(10)
                 elif node_selected_text == self.tr('Stop Word Lists'):
                     self.stacked_widget_settings.setCurrentIndex(11)
+                elif node_selected_text == self.tr('Dependency Parsing'):
+                    self.stacked_widget_settings.setCurrentIndex(12)
                 # Measures
                 elif node_selected_text == self.tr('Dispersion'):
-                    self.stacked_widget_settings.setCurrentIndex(12)
-                elif node_selected_text == self.tr('Adjusted Frequency'):
                     self.stacked_widget_settings.setCurrentIndex(13)
-                elif node_selected_text == self.tr('Statistical Significance'):
+                elif node_selected_text == self.tr('Adjusted Frequency'):
                     self.stacked_widget_settings.setCurrentIndex(14)
-                elif node_selected_text == self.tr('Bayes Factor'):
+                elif node_selected_text == self.tr('Statistical Significance'):
                     self.stacked_widget_settings.setCurrentIndex(15)
-                elif node_selected_text == self.tr('Effect Size'):
+                elif node_selected_text == self.tr('Bayes Factor'):
                     self.stacked_widget_settings.setCurrentIndex(16)
+                elif node_selected_text == self.tr('Effect Size'):
+                    self.stacked_widget_settings.setCurrentIndex(17)
                 # Tables
                 elif node_selected_text == self.tr('Tables'):
-                    self.stacked_widget_settings.setCurrentIndex(17)
-                elif node_selected_text == self.tr('Profiler'):
                     self.stacked_widget_settings.setCurrentIndex(18)
-                elif node_selected_text == self.tr('Figures'):
+                elif node_selected_text == self.tr('Profiler'):
                     self.stacked_widget_settings.setCurrentIndex(19)
+                elif node_selected_text == self.tr('Figures'):
+                    self.stacked_widget_settings.setCurrentIndex(20)
 
                 if node_selected.hasChildren():
                     self.tree_settings.setExpanded(i_selected, True)
