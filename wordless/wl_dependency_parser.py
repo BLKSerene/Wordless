@@ -18,18 +18,21 @@
 
 import bisect
 import copy
+import glob
+import os
 import traceback
 
 import numpy
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QCheckBox, QGroupBox, QPushButton
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt, QUrl
+from PyQt5.QtGui import QDesktopServices, QStandardItem
+from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel, QPushButton
 
+from wordless.wl_checking import wl_checking_misc
 from wordless.wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_nlp_utils, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_msgs, wl_threading
-from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
 
@@ -252,28 +255,49 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
     @wl_misc.log_timing
     def generate_fig(self):
         sentences_rendered = set()
+
         fig_settings = self.main.settings_custom['dependency_parser']['fig_settings']
 
         wl_dependency_parsing.clean_fig_cache()
 
         for row in self.get_selected_rows():
-            no_sentence = int(self.model().item(row, 6).text())
+            sentence = tuple(self.model().item(row, 5).text_display)
 
-            if no_sentence not in sentences_rendered:
+            if sentence not in sentences_rendered:
                 for file in self.settings['file_area']['files_open']:
                     if file['selected'] and file['name'] == self.model().item(row, 8).text():
                         file_selected = file
 
                 wl_dependency_parsing.wl_dependency_parse_fig(
                     self.main,
-                    inputs = self.model().item(row, 5).text_display,
+                    inputs = sentence,
                     lang = file_selected['lang'],
                     show_pos_tags = fig_settings['show_pos_tags'],
-                    show_lemmas = fig_settings['show_lemmas'],
-                    compact_mode = fig_settings['compact_mode']
+                    show_fine_grained_pos_tags = fig_settings['show_fine_grained_pos_tags'],
+                    show_lemmas = fig_settings['show_pos_tags'] and fig_settings['show_lemmas'],
+                    collapse_puncs = False,
+                    compact_mode = fig_settings['compact_mode'],
+                    show_in_separate_tab = fig_settings['show_in_separate_tab'],
+                    # Combine HTML files later
+                    show_results = fig_settings['show_in_separate_tab']
                 )
 
-                sentences_rendered.add(no_sentence)
+                sentences_rendered.add(sentence)
+
+        if not fig_settings['show_in_separate_tab']:
+            htmls = []
+
+            for fig_cache in glob.glob('exports/_dependency_parsing_figs/*.html'):
+                with open(fig_cache, 'r', encoding = 'utf_8') as f:
+                    htmls.append(f.read())
+
+            fig_dir = wl_checking_misc.check_dir('exports/_dependency_parsing_figs')
+            fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.html'))
+
+            with open(fig_path, 'w', encoding = 'utf_8') as f:
+                f.write('\n'.join(htmls))
+
+            QDesktopServices.openUrl(QUrl.fromLocalFile(fig_path))
 
 class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
@@ -408,18 +432,33 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         # Figure Settings
         self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
 
-        self.checkbox_show_pos_tags = QCheckBox(self.tr('Show part-of-speech tags'), self)
+        self.checkbox_show_pos_tags = QCheckBox(self.tr('Show'), self)
+        self.combo_box_show_pos_tags = wl_boxes.Wl_Combo_Box(self)
+        self.label_show_pos_tags = QLabel(self.tr('part-of-speech tags'), self)
         self.checkbox_show_lemmas = QCheckBox(self.tr('Show lemmas'), self)
         self.checkbox_compact_mode = QCheckBox(self.tr('Compact mode'), self)
+        self.checkbox_show_in_separate_tab = QCheckBox(self.tr('Show each sentence in a separate tab'), self)
+
+        self.combo_box_show_pos_tags.addItems([
+            self.tr('coarse-grained'),
+            self.tr('fine-grained')
+        ])
 
         self.checkbox_show_pos_tags.stateChanged.connect(self.fig_settings_changed)
+        self.combo_box_show_pos_tags.currentTextChanged.connect(self.fig_settings_changed)
         self.checkbox_show_lemmas.stateChanged.connect(self.fig_settings_changed)
         self.checkbox_compact_mode.stateChanged.connect(self.fig_settings_changed)
+        self.checkbox_show_in_separate_tab.stateChanged.connect(self.fig_settings_changed)
 
         self.group_box_fig_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_fig_settings.layout().addWidget(self.checkbox_show_pos_tags, 0, 0)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_show_lemmas, 1, 0)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_compact_mode, 2, 0)
+        self.group_box_fig_settings.layout().addWidget(self.combo_box_show_pos_tags, 0, 1)
+        self.group_box_fig_settings.layout().addWidget(self.label_show_pos_tags, 0, 2)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_show_lemmas, 1, 0, 1, 4)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_compact_mode, 2, 0, 1, 4)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_show_in_separate_tab, 3, 0, 1, 4)
+
+        self.group_box_fig_settings.layout().setColumnStretch(3, 1)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
@@ -463,8 +502,15 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         # Figure Settings
         self.checkbox_show_pos_tags.setChecked(settings['fig_settings']['show_pos_tags'])
+
+        if settings['fig_settings']['show_fine_grained_pos_tags']:
+            self.combo_box_show_pos_tags.setCurrentText(self.tr('fine-grained'))
+        else:
+            self.combo_box_show_pos_tags.setCurrentText(self.tr('coarse-grained'))
+
         self.checkbox_show_lemmas.setChecked(settings['fig_settings']['show_lemmas'])
         self.checkbox_compact_mode.setChecked(settings['fig_settings']['compact_mode'])
+        self.checkbox_show_in_separate_tab.setChecked(settings['fig_settings']['show_in_separate_tab'])
 
         self.token_settings_changed()
         self.search_settings_changed()
@@ -504,6 +550,21 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
     def fig_settings_changed(self):
         settings = self.main.settings_custom['dependency_parser']['fig_settings']
 
+        # Show part-of-speech tags
+        if self.checkbox_show_pos_tags.isChecked():
+            self.combo_box_show_pos_tags.setEnabled(True)
+            self.checkbox_show_lemmas.setEnabled(True)
+        else:
+            self.combo_box_show_pos_tags.setEnabled(False)
+            self.checkbox_show_lemmas.setEnabled(False)
+
         settings['show_pos_tags'] = self.checkbox_show_pos_tags.isChecked()
+
+        if self.combo_box_show_pos_tags.currentText() == self.tr('fine-grained'):
+            settings['show_fine_grained_pos_tags'] = True
+        elif self.combo_box_show_pos_tags.currentText() == self.tr('coarse-grained'):
+            settings['show_fine_grained_pos_tags'] = False
+
         settings['show_lemmas'] = self.checkbox_show_lemmas.isChecked()
         settings['compact_mode'] = self.checkbox_compact_mode.isChecked()
+        settings['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()

@@ -28,6 +28,10 @@ from wordless.wl_checking import wl_checking_misc
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
 
+def clean_fig_cache():
+    if os.path.exists('exports/_dependency_parsing_figs'):
+        shutil.rmtree('exports/_dependency_parsing_figs')
+
 def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default'):
     if dependency_parser == 'default':
         dependency_parser = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
@@ -93,7 +97,7 @@ def wl_dependency_parse_fig(
     lang, dependency_parser = 'default',
     show_pos_tags = True, show_fine_grained_pos_tags = False,
     show_lemmas = False, collapse_puncs = True, compact_mode = False,
-    show_in_separate_tab = False
+    show_in_separate_tab = False, show_results = True
 ):
     if dependency_parser == 'default':
         dependency_parser = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
@@ -106,7 +110,7 @@ def wl_dependency_parse_fig(
             lang, dependency_parser,
             show_pos_tags, show_fine_grained_pos_tags,
             show_lemmas, collapse_puncs, compact_mode,
-            show_in_separate_tab
+            show_in_separate_tab, show_results
         )
     else:
         wl_dependency_parse_fig_tokens(
@@ -114,7 +118,7 @@ def wl_dependency_parse_fig(
             lang, dependency_parser,
             show_pos_tags, show_fine_grained_pos_tags,
             show_lemmas, collapse_puncs, compact_mode,
-            show_in_separate_tab
+            show_in_separate_tab, show_results
         )
 
 def get_pipelines_disabled(show_pos_tags, show_lemmas):
@@ -129,15 +133,11 @@ def get_pipelines_disabled(show_pos_tags, show_lemmas):
 
     return pipelines_disabled
 
-def clean_fig_cache():
-    if os.path.exists('exports/_dependency_parsing_figs'):
-        shutil.rmtree('exports/_dependency_parsing_figs')
-
 def show_svg(
     inputs,
     show_fine_grained_pos_tags, show_lemmas,
     collapse_puncs, compact_mode,
-    show_in_separate_tab
+    show_in_separate_tab, show_results
 ):
     html = spacy.displacy.render(
         inputs,
@@ -161,14 +161,15 @@ def show_svg(
     with open(fig_path, 'w', encoding = 'utf_8') as f:
         f.write(html)
 
-    QDesktopServices.openUrl(QUrl.fromLocalFile(fig_path))
+    if show_results:
+        QDesktopServices.openUrl(QUrl.fromLocalFile(fig_path))
 
 def wl_dependency_parse_fig_text(
     main, inputs,
     lang, dependency_parser,
     show_pos_tags, show_fine_grained_pos_tags,
     show_lemmas, collapse_puncs, compact_mode,
-    show_in_separate_tab
+    show_in_separate_tab, show_results
 ):
     # spaCy
     if dependency_parser.startswith('spacy_'):
@@ -187,7 +188,7 @@ def wl_dependency_parse_fig_text(
                             sentence,
                             show_fine_grained_pos_tags, show_lemmas,
                             collapse_puncs, compact_mode,
-                            show_in_separate_tab
+                            show_in_separate_tab, show_results
                         )
             else:
                 sentences = []
@@ -199,7 +200,7 @@ def wl_dependency_parse_fig_text(
                     sentences,
                     show_fine_grained_pos_tags, show_lemmas,
                     collapse_puncs, compact_mode,
-                    show_in_separate_tab
+                    show_in_separate_tab, show_results
                 )
 
 def wl_dependency_parse_fig_tokens(
@@ -207,7 +208,7 @@ def wl_dependency_parse_fig_tokens(
     lang, dependency_parser,
     show_pos_tags, show_fine_grained_pos_tags,
     show_lemmas, collapse_puncs, compact_mode,
-    show_in_separate_tab
+    show_in_separate_tab, show_results
 ):
     # spaCy
     if dependency_parser.startswith('spacy_'):
@@ -230,8 +231,8 @@ def wl_dependency_parse_fig_tokens(
                         show_svg(
                             sentence,
                             show_fine_grained_pos_tags, show_lemmas,
-                            compact_mode, collapse_puncs,
-                            show_in_separate_tab
+                            collapse_puncs, compact_mode,
+                            show_in_separate_tab, show_results
                         )
             else:
                 sentences = []
@@ -242,6 +243,6 @@ def wl_dependency_parse_fig_tokens(
                 show_svg(
                     sentences,
                     show_fine_grained_pos_tags, show_lemmas,
-                    compact_mode, collapse_puncs,
-                    show_in_separate_tab
+                    collapse_puncs, compact_mode,
+                    show_in_separate_tab, show_results
                 )
