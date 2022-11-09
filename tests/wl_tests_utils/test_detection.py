@@ -16,14 +16,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import glob
 import os
 import re
+import shutil
 
 import lingua
-import pytest
 
-from tests import wl_test_init
+from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_utils import wl_detection
 
 main = wl_test_init.Wl_Test_Main()
@@ -45,47 +44,204 @@ def test_lingua():
     assert langs_extra == ['BOSNIAN', 'GANDA', 'MAORI', 'SHONA', 'TSONGA', 'XHOSA']
 
 # Encoding detection
-@pytest.mark.parametrize('file_path', glob.glob('tests/files/wl_utils/wl_detection/encoding/*.txt'))
-def test_detection_encoding(file_path):
-    file_name = os.path.basename(file_path)
+def check_encodings_detected(test_file_dir, encodings, text):
+    for encoding in encodings:
+        file_path = os.path.join(test_file_dir, f'{encoding}.txt')
 
-    print(f'Detecting encoding for file "{file_name}"... ', end = '')
+        # Use same line endings for different OSes run on CI
+        with open(file_path, 'w', encoding = encoding, errors = 'replace', newline = '\r\n') as f:
+            f.write(text)
 
-    encoding_code = wl_detection.detect_encoding(main, file_path)
-    encoding_code_file = re.search(r'(?<=\()[^\(\)]+?(?=\)\.txt)', file_name).group()
+        encoding_detected = wl_detection.detect_encoding(main, file_path)
 
-    print(f'Detected: {encoding_code}')
+        print(f'{encoding} detected as {encoding_detected}')
+        assert encoding_detected == encoding
 
-    assert encoding_code == encoding_code_file
+def test_detection_encoding():
+    test_file_dir = 'tests/wl_tests_utils/files_encoding_detection'
+
+    # Clean cache
+    if os.path.exists(test_file_dir):
+        shutil.rmtree(test_file_dir)
+
+    os.mkdir(test_file_dir)
+
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # utf_8_sig, utf_7
+        encodings = ['utf_8', 'utf_16', 'utf_16_be', 'utf_16_le', 'utf_32', 'utf_32_be', 'utf_32_le'],
+        text = wl_test_lang_examples.ENCODING_ENG
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp720, cp864
+        encodings = ['cp1256', 'iso8859_6'],
+        text = wl_test_lang_examples.ENCODING_ARA
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # gb2312, gbk, hz
+        encodings = ['gb18030', 'iso2022_jp_2'],
+        text = wl_test_lang_examples.ENCODING_ZHO_CN
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # big5hkscs, cp950, gbk
+        encodings = ['big5', 'gb18030'],
+        text = wl_test_lang_examples.ENCODING_ZHO_TW
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp852, iso8859_2
+        encodings = ['cp1250', 'mac_latin2'],
+        text = wl_test_lang_examples.ENCODING_CES
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        encodings = ['ascii', 'cp037'],
+        text = wl_test_lang_examples.ENCODING_ENG
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        encodings = ['cp273'],
+        text = wl_test_lang_examples.ENCODING_DEU
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp737, cp875, iso2022_jp_2, iso8859_7
+        encodings = ['cp869', 'cp1253', 'mac_greek'],
+        text = wl_test_lang_examples.ENCODING_ELL
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp856, cp862, iso8859_8
+        encodings = ['cp424', 'cp1255'],
+        text = wl_test_lang_examples.ENCODING_HEB
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp858, cp1140, latin_1, iso8859_15, mac_roman
+        encodings = ['cp500', 'cp850', 'cp1252', 'iso2022_jp_2'],
+        text = wl_test_lang_examples.ENCODING_ITA
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # euc_jp, euc_jisx0213, iso2022_jp_1, iso2022_jp_2, iso2022_jp_2004, iso2022_jp_3, iso2022_jp_ext, shift_jis, shift_jis_2004, shift_jisx0213
+        encodings = ['cp932', 'euc_jis_2004', 'iso2022_jp'],
+        text = wl_test_lang_examples.ENCODING_JPN
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        encodings = ['kz1048', 'ptcp154'],
+        text = wl_test_lang_examples.ENCODING_KAZ
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # euc_kr
+        encodings = ['cp949', 'iso2022_jp_2', 'iso2022_kr', 'johab'],
+        text = wl_test_lang_examples.ENCODING_KOR
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # iso8859_4
+        encodings = ['cp775', 'cp1257', 'iso8859_13'],
+        text = wl_test_lang_examples.ENCODING_LAV
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        encodings = ['iso8859_3'],
+        text = wl_test_lang_examples.ENCODING_MLT
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp1250
+        encodings = ['cp852', 'iso8859_2', 'mac_latin2'],
+        text = wl_test_lang_examples.ENCODING_POL
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        encodings = ['iso8859_16'],
+        text = wl_test_lang_examples.ENCODING_RON
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp866
+        encodings = ['cp855', 'cp1251', 'iso8859_5', 'koi8_r', 'mac_cyrillic'],
+        text = wl_test_lang_examples.ENCODING_RUS
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp874
+        encodings = ['iso8859_11'],
+        text = wl_test_lang_examples.ENCODING_THA
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # cp1026, iso8859_9, mac_turkish
+        encodings = ['cp857', 'cp1254'],
+        text = wl_test_lang_examples.ENCODING_TUR
+    )
+    check_encodings_detected(
+        test_file_dir = test_file_dir,
+        # koi8_u
+        encodings = ['cp1125'],
+        text = wl_test_lang_examples.ENCODING_UKR
+    )
+
+    # Clean cache
+    shutil.rmtree(test_file_dir)
 
 # Language detection
-@pytest.mark.parametrize('file_path', glob.glob('tests/files/wl_utils/wl_detection/lang/*.txt'))
-def test_detection_lang(file_path):
-    file = {}
+def test_detection_lang():
+    test_file_dir = 'tests/wl_tests_utils/files_encoding_detection'
 
-    file['path'] = file_path
-    file['encoding'] = 'utf_8'
+    # Clean cache
+    if os.path.exists(test_file_dir):
+        shutil.rmtree(test_file_dir)
 
-    file_name = os.path.basename(file_path)
+    os.mkdir(test_file_dir)
 
-    print(f'Detecting language for file "{file_name}"... ', end = '')
+    for lang in [
+        'sqi', 'ara',
+        'bel', 'ben', 'bul',
+        'cat', 'hrv', 'ces',
+        'dan', 'nld',
+        'eng_us', 'epo', 'est',
+        'fin', 'fra',
+        'deu_de', 'ell',
+        'heb', 'hun',
+        'isl', 'ind', 'ita',
+        'jpn',
+        'kat',
+        'lav', 'lit',
+        'mkd', 'mon',
+        'nno',
+        'fas', 'pol', 'por_pt',
+        'ron', 'rus',
+        'srp_cyrl', 'slk', 'slv', 'spa', 'swa', 'swe',
+        'tha',
+        'tur'
+    ]:
+        file_path = os.path.join(test_file_dir, f'{lang}.txt')
+        file = {
+            'path': file_path,
+            'encoding': 'utf_8'
+        }
+        text = wl_test_lang_examples.__dict__[f'SENTENCE_{lang.upper()}']
 
-    lang_code_file = wl_detection.detect_lang_file(main, file)
+        with open(file_path, 'w', encoding = file['encoding']) as f:
+            f.write(text)
 
-    with open(file['path'], 'r', encoding = file['encoding']) as f:
-        text = f.read()
+        lang_code_file = wl_detection.detect_lang_file(main, file)
+        lang_code_text = wl_detection.detect_lang_text(main, text)
 
-    lang_code_text = wl_detection.detect_lang_text(main, text)
+        print(f'{lang} detected as {lang_code_file}/{lang_code_text}')
+        assert lang == lang_code_file == lang_code_text
 
-    print(f'Detected: {lang_code_file}/{lang_code_text}')
-
-    assert lang_code_file == lang_code_text == file_name.replace('.txt', '')
+    # Clean cache
+    shutil.rmtree(test_file_dir)
 
 if __name__ == '__main__':
     test_lingua()
-
-    for file in glob.glob('tests/files/wl_utils/wl_detection/encoding/*.txt'):
-        test_detection_encoding(file)
-
-    for file in glob.glob('tests/files/wl_utils/wl_detection/lang/*.txt'):
-        test_detection_lang(file)
+    test_detection_encoding()
+    test_detection_lang()
