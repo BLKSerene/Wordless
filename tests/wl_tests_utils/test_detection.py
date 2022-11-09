@@ -202,25 +202,29 @@ def test_detection_lang():
     os.mkdir(test_file_dir)
 
     for lang in [
-        'sqi', 'ara',
-        'bel', 'ben', 'bul',
-        'cat', 'hrv', 'ces',
+        'afr', 'sqi', 'ara', 'hye', 'aze',
+        'eus', 'bel', 'ben', 'bul',
+        'cat', 'zho_cn', 'zho_tw', 'hrv', 'ces',
         'dan', 'nld',
         'eng_us', 'epo', 'est',
         'fin', 'fra',
-        'deu_de', 'ell',
-        'heb', 'hun',
-        'isl', 'ind', 'ita',
+        'deu_de', 'ell', 'guj',
+        'heb', 'hin', 'hun',
+        'isl', 'ind', 'gle', 'ita',
         'jpn',
         'kat',
-        'lav', 'lit',
-        'mkd', 'mon',
+        'lat', 'lav', 'lit',
+        'mkd', 'mar', 'mon',
         'nno',
         'fas', 'pol', 'por_pt',
         'ron', 'rus',
         'srp_cyrl', 'slk', 'slv', 'spa', 'swa', 'swe',
-        'tha',
-        'tur'
+        'tha', 'tur',
+        'ukr', 'urd',
+        'vie',
+        'cym',
+        'yor',
+        'zul'
     ]:
         file_path = os.path.join(test_file_dir, f'{lang}.txt')
         file = {
