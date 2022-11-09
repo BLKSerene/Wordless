@@ -45,6 +45,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Add simplemma and stopword
 - Dependencies: Remove extra-stopwords, Lemmatization Lists, and Stopwords ISO
+- Dependencies: Upgrade Charset Normalizer to 3.0.0
 
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - 09/25/2022
 ### 🎉 New Features
