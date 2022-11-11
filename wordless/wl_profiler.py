@@ -90,18 +90,26 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
                 # Readability
                 readability_statistics = [
+                    wl_measures_readability.automated_ara_readability_index(self.main, text),
                     wl_measures_readability.automated_readability_index(self.main, text),
                     wl_measures_readability.coleman_liau_index(self.main, text),
                     wl_measures_readability.dale_chall_readability_score(self.main, text),
                     wl_measures_readability.devereux_readability_index(self.main, text),
+                    wl_measures_readability.fernandez_huertas_readability_score(self.main, text),
+                    wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
                     wl_measures_readability.flesch_reading_ease(self.main, text),
                     wl_measures_readability.flesch_reading_ease_simplified(self.main, text),
-                    wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
                     wl_measures_readability.forcast_grade_level(self.main, text),
+                    wl_measures_readability.gulpease_index(self.main, text),
                     wl_measures_readability.gunning_fog_index(self.main, text),
+                    wl_measures_readability.legibility_mu(self.main, text),
+                    wl_measures_readability.linsear_write(self.main, text),
+                    wl_measures_readability.lix(self.main, text),
+                    wl_measures_readability.rix(self.main, text),
                     wl_measures_readability.smog_grade(self.main, text),
                     wl_measures_readability.spache_grade_level(self.main, text),
-                    wl_measures_readability.write_score(self.main, text)
+                    wl_measures_readability.szigriszts_perspicuity_index(self.main, text),
+                    wl_measures_readability.wiener_sachtextformel(self.main, text)
                 ]
 
                 # Paragraph length
@@ -190,18 +198,26 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
             tab = 'profiler',
             headers = [
                 # Readability
+                _tr('Wl_Table_Profiler', 'Automated Arabic Readability Index'),
                 _tr('Wl_Table_Profiler', 'Automated Readability Index'),
                 _tr('Wl_Table_Profiler', 'Coleman-Liau Index'),
                 _tr('Wl_Table_Profiler', 'Dale-Chall Readability Score'),
                 _tr('Wl_Table_Profiler', 'Devereaux Readability Index'),
+                _tr('Wl_Table_Profiler', "Fernández Huerta's Readability Score"),
+                _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
                 _tr('Wl_Table_Profiler', 'Flesch Reading Ease'),
                 _tr('Wl_Table_Profiler', 'Flesch Reading Ease (Simplified)'),
-                _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
                 _tr('Wl_Table_Profiler', 'FORCAST Grade Level'),
+                _tr('Wl_Table_Profiler', 'Gulpease Index'),
                 _tr('Wl_Table_Profiler', 'Gunning Fog Index'),
+                _tr('Wl_Table_Profiler', 'Legibilidad μ'),
+                _tr('Wl_Table_Profiler', 'Linsear Write'),
+                _tr('Wl_Table_Profiler', 'Lix'),
+                _tr('Wl_Table_Profiler', 'Rix'),
                 _tr('Wl_Table_Profiler', 'SMOG Grade'),
                 _tr('Wl_Table_Profiler', 'Spache Grade Level'),
-                _tr('Wl_Table_Profiler', 'Write Score'),
+                _tr('Wl_Table_Profiler', "Szigriszt's Perspicuity Index"),
+                _tr('Wl_Table_Profiler', 'Wiener Sachtextformel'),
                 # Counts
                 _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
                 _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
@@ -386,18 +402,26 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
             ],
             headers_float = [
                 # Readability
+                _tr('Wl_Table_Profiler', 'Automated Arabic Readability Index'),
                 _tr('Wl_Table_Profiler', 'Automated Readability Index'),
                 _tr('Wl_Table_Profiler', 'Coleman-Liau Index'),
                 _tr('Wl_Table_Profiler', 'Dale-Chall Readability Score'),
                 _tr('Wl_Table_Profiler', 'Devereaux Readability Index'),
+                _tr('Wl_Table_Profiler', "Fernández Huerta's Readability Score"),
+                _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
                 _tr('Wl_Table_Profiler', 'Flesch Reading Ease'),
                 _tr('Wl_Table_Profiler', 'Flesch Reading Ease (Simplified)'),
-                _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
                 _tr('Wl_Table_Profiler', 'FORCAST Grade Level'),
+                _tr('Wl_Table_Profiler', 'Gulpease Index'),
                 _tr('Wl_Table_Profiler', 'Gunning Fog Index'),
+                _tr('Wl_Table_Profiler', 'Legibilidad μ'),
+                _tr('Wl_Table_Profiler', 'Linsear Write'),
+                _tr('Wl_Table_Profiler', 'Lix'),
+                _tr('Wl_Table_Profiler', 'Rix'),
                 _tr('Wl_Table_Profiler', 'SMOG Grade'),
                 _tr('Wl_Table_Profiler', 'Spache Grade Level'),
-                _tr('Wl_Table_Profiler', 'Write Score'),
+                _tr('Wl_Table_Profiler', "Szigriszt's Perspicuity Index"),
+                _tr('Wl_Table_Profiler', 'Wiener Sachtextformel'),
                 # TTR
                 _tr('Wl_Table_Profiler', 'Type-token Ratio'),
                 _tr('Wl_Table_Profiler', 'Type-token Ratio (Standardized)'),
@@ -574,7 +598,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                             else:
                                 file_lang = 'other'
 
-                        readability_statistics = stats[0]
+                        readability_stats = stats[0]
                         len_paras_sentences = numpy.array(stats[1])
                         len_paras_sentence_segs = numpy.array(stats[2])
                         len_paras_tokens = numpy.array(stats[3])
@@ -596,8 +620,10 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                         count_syls = len(len_syls)
                         count_chars = numpy.sum(len_tokens_chars)
 
+                        len_readability_stats = len(readability_stats)
+
                         # Readibility
-                        for j, statistic in enumerate(readability_statistics):
+                        for j, statistic in enumerate(readability_stats):
                             if statistic == 'no_support':
                                 self.set_item_error(j, i, _tr('wl_profiler', 'No Support'))
                             elif statistic == 'text_too_short':
@@ -606,48 +632,56 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                                 self.set_item_num(j, i, statistic)
 
                         # Count of Paragraphs
-                        self.set_item_num(12, i, count_paras)
-                        self.set_item_num(13, i, count_paras, count_paras_total)
+                        self.set_item_num(len_readability_stats, i, count_paras)
+                        self.set_item_num(len_readability_stats + 1, i, count_paras, count_paras_total)
 
                         # Count of Sentences
-                        self.set_item_num(14, i, count_sentences)
-                        self.set_item_num(15, i, count_sentences, count_sentences_total)
+                        self.set_item_num(len_readability_stats + 2, i, count_sentences)
+                        self.set_item_num(len_readability_stats + 3, i, count_sentences, count_sentences_total)
 
                         # Count of Sentence Segments
-                        self.set_item_num(16, i, count_sentence_segs)
-                        self.set_item_num(17, i, count_sentence_segs, count_sentence_segs_total)
+                        self.set_item_num(len_readability_stats + 4, i, count_sentence_segs)
+                        self.set_item_num(len_readability_stats + 5, i, count_sentence_segs, count_sentence_segs_total)
 
                         # Count of Tokens
-                        self.set_item_num(18, i, count_tokens)
-                        self.set_item_num(19, i, count_tokens, count_tokens_total)
+                        self.set_item_num(len_readability_stats + 6, i, count_tokens)
+                        self.set_item_num(len_readability_stats + 7, i, count_tokens, count_tokens_total)
 
                         # Count of Types
-                        self.set_item_num(20, i, count_types)
-                        self.set_item_num(21, i, count_types, count_types_total)
+                        self.set_item_num(len_readability_stats + 8, i, count_types)
+                        self.set_item_num(len_readability_stats + 9, i, count_types, count_types_total)
 
                         # Count of Syllables
                         if file_lang in self.main.settings_global['syl_tokenizers']:
-                            self.set_item_num(22, i, count_syls)
-                            self.set_item_num(23, i, count_syls, count_syls_total)
+                            self.set_item_num(len_readability_stats + 10, i, count_syls)
+                            self.set_item_num(len_readability_stats + 11, i, count_syls, count_syls_total)
                         else:
-                            self.set_item_error(22, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(23, i, text = _tr('wl_profiler', 'No Support'))
+                            self.set_item_error(len_readability_stats + 10, i, text = _tr('wl_profiler', 'No Support'))
+                            self.set_item_error(len_readability_stats + 11, i, text = _tr('wl_profiler', 'No Support'))
 
                         # Count of Characters
-                        self.set_item_num(24, i, count_chars)
-                        self.set_item_num(25, i, count_chars, count_chars_total)
+                        self.set_item_num(len_readability_stats + 12, i, count_chars)
+                        self.set_item_num(len_readability_stats + 13, i, count_chars, count_chars_total)
 
                         # Type-token Ratio
-                        self.set_item_num(26, i, ttr)
+                        self.set_item_num(len_readability_stats + 14, i, ttr)
                         # Type-token Ratio (Standardized)
-                        self.set_item_num(27, i, sttr)
+                        self.set_item_num(len_readability_stats + 15, i, sttr)
 
-                        # Paragraph Length
+                        # Paragraph / Sentence / Sentence Segment / Token in Characters / Type in Characters Length
                         for row, lens in zip(
-                            [28, 39, 50],
-                            [len_paras_sentences, len_paras_sentence_segs, len_paras_tokens]
+                            [
+                                len_readability_stats + 16, len_readability_stats + 27, len_readability_stats + 38,
+                                len_readability_stats + 49, len_readability_stats + 60,
+                                len_readability_stats + 82, len_readability_stats + 104
+                            ],
+                            [
+                                len_paras_sentences, len_paras_sentence_segs, len_paras_tokens,
+                                len_sentences, len_sentence_segs,
+                                len_tokens_chars, len_types_chars
+                            ]
                         ):
-                            if len_paras_sentences.any():
+                            if lens.any():
                                 self.set_item_num(row, i, numpy.mean(lens))
                                 self.set_item_num(row + 1, i, numpy.std(lens))
                                 self.set_item_num(row + 2, i, numpy.var(lens))
@@ -676,252 +710,58 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 
                             self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                        # Sentence Length
-                        if len_sentences.any():
-                            self.set_item_num(61, i, numpy.mean(len_sentences))
-                            self.set_item_num(62, i, numpy.std(len_sentences))
-                            self.set_item_num(63, i, numpy.var(len_sentences))
-                            self.set_item_num(64, i, numpy.min(len_sentences))
-                            self.set_item_num(65, i, numpy.percentile(len_sentences, 25))
-                            self.set_item_num(66, i, numpy.median(len_sentences))
-                            self.set_item_num(67, i, numpy.percentile(len_sentences, 75))
-                            self.set_item_num(68, i, numpy.max(len_sentences))
-                            self.set_item_num(69, i, numpy.ptp(len_sentences))
-                            self.set_item_num(70, i, scipy.stats.iqr(len_sentences))
-                            self.model().setItem(71, i, QStandardItem(', '.join([
-                                str(mode) for mode in wl_measures_misc.modes(len_sentences)
-                            ])))
-                        else:
-                            self.set_item_num(61, i, 0)
-                            self.set_item_num(62, i, 0)
-                            self.set_item_num(63, i, 0)
-                            self.set_item_num(64, i, 0)
-                            self.set_item_num(65, i, 0)
-                            self.set_item_num(66, i, 0)
-                            self.set_item_num(67, i, 0)
-                            self.set_item_num(68, i, 0)
-                            self.set_item_num(69, i, 0)
-                            self.set_item_num(70, i, 0)
-                            self.model().setItem(71, i, QStandardItem('0'))
+                        # Token in Syllables / Types in Syllables / Syllable Length
+                        for row, lens in zip(
+                            [
+                                len_readability_stats + 71, len_readability_stats + 93,
+                                len_readability_stats + 115
+                            ],
+                            [
+                                len_tokens_syls, len_types_syls,
+                                len_syls
+                            ]
+                        ):
+                            if file_lang in self.main.settings_global['syl_tokenizers']:
+                                if lens.any():
+                                    self.set_item_num(row, i, numpy.mean(lens))
+                                    self.set_item_num(row + 1, i, numpy.std(lens))
+                                    self.set_item_num(row + 2, i, numpy.var(lens))
+                                    self.set_item_num(row + 3, i, numpy.min(lens))
+                                    self.set_item_num(row + 4, i, numpy.percentile(lens, 25))
+                                    self.set_item_num(row + 5, i, numpy.median(lens))
+                                    self.set_item_num(row + 6, i, numpy.percentile(lens, 75))
+                                    self.set_item_num(row + 7, i, numpy.max(lens))
+                                    self.set_item_num(row + 8, i, numpy.ptp(lens))
+                                    self.set_item_num(row + 9, i, scipy.stats.iqr(lens))
+                                    self.model().setItem(row + 10, i, QStandardItem(', '.join([
+                                        str(mode) for mode in wl_measures_misc.modes(lens)
+                                    ])))
+                                else:
+                                    self.set_item_num(row, i, 0)
+                                    self.set_item_num(row + 1, i, 0)
+                                    self.set_item_num(row + 2, i, 0)
+                                    self.set_item_num(row + 3, i, 0)
+                                    self.set_item_num(row + 4, i, 0)
+                                    self.set_item_num(row + 5, i, 0)
+                                    self.set_item_num(row + 6, i, 0)
+                                    self.set_item_num(row + 7, i, 0)
+                                    self.set_item_num(row + 8, i, 0)
+                                    self.set_item_num(row + 9, i, 0)
+                                    self.model().setItem(row + 10, i, QStandardItem('0'))
 
-                        self.model().item(71, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-
-                        # Sentence Segment Length
-                        if len_sentence_segs.any():
-                            self.set_item_num(72, i, numpy.mean(len_sentence_segs))
-                            self.set_item_num(73, i, numpy.std(len_sentence_segs))
-                            self.set_item_num(74, i, numpy.var(len_sentence_segs))
-                            self.set_item_num(75, i, numpy.min(len_sentence_segs))
-                            self.set_item_num(76, i, numpy.percentile(len_sentence_segs, 25))
-                            self.set_item_num(77, i, numpy.median(len_sentence_segs))
-                            self.set_item_num(78, i, numpy.percentile(len_sentence_segs, 75))
-                            self.set_item_num(79, i, numpy.max(len_sentence_segs))
-                            self.set_item_num(80, i, numpy.ptp(len_sentence_segs))
-                            self.set_item_num(81, i, scipy.stats.iqr(len_sentence_segs))
-                            self.model().setItem(82, i, QStandardItem(', '.join([
-                                str(mode) for mode in wl_measures_misc.modes(len_sentence_segs)
-                            ])))
-                        else:
-                            self.set_item_num(72, i, 0)
-                            self.set_item_num(73, i, 0)
-                            self.set_item_num(74, i, 0)
-                            self.set_item_num(75, i, 0)
-                            self.set_item_num(76, i, 0)
-                            self.set_item_num(77, i, 0)
-                            self.set_item_num(78, i, 0)
-                            self.set_item_num(79, i, 0)
-                            self.set_item_num(80, i, 0)
-                            self.set_item_num(81, i, 0)
-                            self.model().setItem(82, i, QStandardItem('0'))
-
-                        self.model().item(82, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-
-                        # Token Length
-                        if file_lang in self.main.settings_global['syl_tokenizers']:
-                            if len_tokens_syls.any():
-                                self.set_item_num(83, i, numpy.mean(len_tokens_syls))
-                                self.set_item_num(84, i, numpy.std(len_tokens_syls))
-                                self.set_item_num(85, i, numpy.var(len_tokens_syls))
-                                self.set_item_num(86, i, numpy.min(len_tokens_syls))
-                                self.set_item_num(87, i, numpy.percentile(len_tokens_syls, 25))
-                                self.set_item_num(88, i, numpy.median(len_tokens_syls))
-                                self.set_item_num(89, i, numpy.percentile(len_tokens_syls, 75))
-                                self.set_item_num(90, i, numpy.max(len_tokens_syls))
-                                self.set_item_num(91, i, numpy.ptp(len_tokens_syls))
-                                self.set_item_num(92, i, scipy.stats.iqr(len_tokens_syls))
-                                self.model().setItem(93, i, QStandardItem(', '.join([
-                                    str(mode) for mode in wl_measures_misc.modes(len_tokens_syls)
-                                ])))
+                                self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                             else:
-                                self.set_item_num(83, i, 0)
-                                self.set_item_num(84, i, 0)
-                                self.set_item_num(85, i, 0)
-                                self.set_item_num(86, i, 0)
-                                self.set_item_num(87, i, 0)
-                                self.set_item_num(88, i, 0)
-                                self.set_item_num(89, i, 0)
-                                self.set_item_num(90, i, 0)
-                                self.set_item_num(91, i, 0)
-                                self.set_item_num(92, i, 0)
-                                self.model().setItem(93, i, QStandardItem('0'))
-
-                            self.model().item(93, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-                        else:
-                            self.set_item_error(83, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(84, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(85, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(86, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(87, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(88, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(89, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(90, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(91, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(92, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(93, i, text = _tr('wl_profiler', 'No Support'))
-
-                        if len_tokens_chars.any():
-                            self.set_item_num(94, i, numpy.mean(len_tokens_chars))
-                            self.set_item_num(95, i, numpy.std(len_tokens_chars))
-                            self.set_item_num(96, i, numpy.var(len_tokens_chars))
-                            self.set_item_num(97, i, numpy.min(len_tokens_chars))
-                            self.set_item_num(98, i, numpy.percentile(len_tokens_chars, 25))
-                            self.set_item_num(99, i, numpy.median(len_tokens_chars))
-                            self.set_item_num(100, i, numpy.percentile(len_tokens_chars, 75))
-                            self.set_item_num(101, i, numpy.max(len_tokens_chars))
-                            self.set_item_num(102, i, numpy.ptp(len_tokens_chars))
-                            self.set_item_num(103, i, scipy.stats.iqr(len_tokens_chars))
-                            self.model().setItem(104, i, QStandardItem(', '.join([
-                                str(mode) for mode in wl_measures_misc.modes(len_tokens_chars)
-                            ])))
-                        else:
-                            self.set_item_num(94, i, 0)
-                            self.set_item_num(95, i, 0)
-                            self.set_item_num(96, i, 0)
-                            self.set_item_num(97, i, 0)
-                            self.set_item_num(98, i, 0)
-                            self.set_item_num(99, i, 0)
-                            self.set_item_num(100, i, 0)
-                            self.set_item_num(101, i, 0)
-                            self.set_item_num(102, i, 0)
-                            self.set_item_num(103, i, 0)
-                            self.model().setItem(104, i, QStandardItem('0'))
-
-                        self.model().item(104, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-
-                        # Type Length
-                        if file_lang in self.main.settings_global['syl_tokenizers']:
-                            if len_types_syls.any():
-                                self.set_item_num(105, i, numpy.mean(len_types_syls))
-                                self.set_item_num(106, i, numpy.std(len_types_syls))
-                                self.set_item_num(107, i, numpy.var(len_types_syls))
-                                self.set_item_num(108, i, numpy.min(len_types_syls))
-                                self.set_item_num(109, i, numpy.percentile(len_types_syls, 25))
-                                self.set_item_num(110, i, numpy.median(len_types_syls))
-                                self.set_item_num(111, i, numpy.percentile(len_types_syls, 75))
-                                self.set_item_num(112, i, numpy.max(len_types_syls))
-                                self.set_item_num(113, i, numpy.ptp(len_types_syls))
-                                self.set_item_num(114, i, scipy.stats.iqr(len_types_syls))
-                                self.model().setItem(115, i, QStandardItem(', '.join([
-                                    str(mode) for mode in wl_measures_misc.modes(len_types_syls)
-                                ])))
-                            else:
-                                self.set_item_num(105, i, 0)
-                                self.set_item_num(106, i, 0)
-                                self.set_item_num(107, i, 0)
-                                self.set_item_num(108, i, 0)
-                                self.set_item_num(109, i, 0)
-                                self.set_item_num(110, i, 0)
-                                self.set_item_num(111, i, 0)
-                                self.set_item_num(112, i, 0)
-                                self.set_item_num(113, i, 0)
-                                self.set_item_num(114, i, 0)
-                                self.model().setItem(115, i, QStandardItem('0'))
-
-                            self.model().item(115, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-                        else:
-                            self.set_item_error(105, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(106, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(107, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(108, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(109, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(110, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(111, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(112, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(113, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(114, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(115, i, text = _tr('wl_profiler', 'No Support'))
-
-                        if len_types_chars.any():
-                            self.set_item_num(116, i, numpy.mean(len_types_chars))
-                            self.set_item_num(117, i, numpy.std(len_types_chars))
-                            self.set_item_num(118, i, numpy.var(len_types_chars))
-                            self.set_item_num(119, i, numpy.min(len_types_chars))
-                            self.set_item_num(120, i, numpy.percentile(len_types_chars, 25))
-                            self.set_item_num(121, i, numpy.median(len_types_chars))
-                            self.set_item_num(122, i, numpy.percentile(len_types_chars, 75))
-                            self.set_item_num(123, i, numpy.max(len_types_chars))
-                            self.set_item_num(124, i, numpy.ptp(len_types_chars))
-                            self.set_item_num(125, i, scipy.stats.iqr(len_types_chars))
-                            self.model().setItem(126, i, QStandardItem(', '.join([
-                                str(mode) for mode in wl_measures_misc.modes(len_types_chars)
-                            ])))
-                        else:
-                            self.set_item_num(116, i, 0)
-                            self.set_item_num(117, i, 0)
-                            self.set_item_num(118, i, 0)
-                            self.set_item_num(119, i, 0)
-                            self.set_item_num(120, i, 0)
-                            self.set_item_num(121, i, 0)
-                            self.set_item_num(122, i, 0)
-                            self.set_item_num(123, i, 0)
-                            self.set_item_num(124, i, 0)
-                            self.set_item_num(125, i, 0)
-                            self.model().setItem(126, i, QStandardItem('0'))
-
-                        self.model().item(126, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-
-                        # Syllable Length
-                        if file_lang in self.main.settings_global['syl_tokenizers']:
-                            if len_syls.any():
-                                self.set_item_num(127, i, numpy.mean(len_syls))
-                                self.set_item_num(128, i, numpy.std(len_syls))
-                                self.set_item_num(129, i, numpy.var(len_syls))
-                                self.set_item_num(130, i, numpy.min(len_syls))
-                                self.set_item_num(131, i, numpy.percentile(len_syls, 25))
-                                self.set_item_num(132, i, numpy.median(len_syls))
-                                self.set_item_num(133, i, numpy.percentile(len_syls, 75))
-                                self.set_item_num(134, i, numpy.max(len_syls))
-                                self.set_item_num(135, i, numpy.ptp(len_syls))
-                                self.set_item_num(136, i, scipy.stats.iqr(len_syls))
-                                self.model().setItem(137, i, QStandardItem(', '.join([
-                                    str(mode) for mode in wl_measures_misc.modes(len_syls)
-                                ])))
-                            else:
-                                self.set_item_num(127, i, 0)
-                                self.set_item_num(128, i, 0)
-                                self.set_item_num(129, i, 0)
-                                self.set_item_num(130, i, 0)
-                                self.set_item_num(131, i, 0)
-                                self.set_item_num(132, i, 0)
-                                self.set_item_num(133, i, 0)
-                                self.set_item_num(134, i, 0)
-                                self.set_item_num(135, i, 0)
-                                self.set_item_num(136, i, 0)
-                                self.model().setItem(137, i, QStandardItem('0'))
-
-                            self.model().item(137, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
-                        else:
-                            self.set_item_error(127, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(128, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(129, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(130, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(131, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(132, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(133, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(134, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(135, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(136, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(137, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 1, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 2, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 3, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 4, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 5, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 6, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 7, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 8, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 9, i, text = _tr('wl_profiler', 'No Support'))
+                                self.set_item_error(row + 10, i, text = _tr('wl_profiler', 'No Support'))
 
                         count_tokens_lens.append(collections.Counter(len_tokens_chars))
                         count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))

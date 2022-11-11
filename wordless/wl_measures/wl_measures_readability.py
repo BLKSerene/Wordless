@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Measures - Readibility
+# Wordless: Measures - Readability
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -74,6 +74,34 @@ def get_counts(main, text):
                 elif char.isalnum():
                     text.count_chars_alphanumeric += 1
 
+def get_count_words_letters(words, len_min = 1, len_max = None):
+    if len_max:
+        return len([
+            True
+            for word in words
+            if  len_min <= len([char for char in word if char.isalpha()]) <= len_max
+        ])
+    else:
+        return len([
+            True
+            for word in words
+            if  len([char for char in word if char.isalpha()]) >= len_min
+        ])
+
+def get_count_words_syls(syls_words, len_min = 1, len_max = None):
+    if len_max:
+        return len([
+            True
+            for syls in syls_words
+            if len_min <= len(syls) <= len_max
+        ])
+    else:
+        return len([
+            True
+            for syls in syls_words
+            if len(syls) >= len_min
+        ])
+
 # Calculate the number of words outside Dale's lists of easy words
 def get_count_difficult_words(words, num_easy_words):
     dale_list_easy_words = set()
@@ -93,6 +121,21 @@ def get_count_difficult_words(words, num_easy_words):
             count_difficult_words += 1
 
     return count_difficult_words
+
+# Automated Arabic Readability Index
+# Reference: Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. The International Arab Journal of Information Technology, 11(4), pp. 370–378.
+def automated_ara_readability_index(main, text):
+    get_counts(main, text)
+
+    if text.lang == 'ara':
+        if text.count_words and text.count_sentences:
+            aari = 3.28 * text.count_chars_alphanumeric + 1.43 * (text.count_chars_alphanumeric / text.count_words) + 1.24 * (text.count_words / text.count_sentences)
+        else:
+            aari = 'text_too_short'
+    else:
+        aari = 'no_support'
+
+    return aari
 
 # Automated Readability Index
 # Reference: Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
@@ -132,7 +175,6 @@ def dale_chall_readability_score(main, text):
             x_c50 = 0.1579 * (count_difficult_words / text.count_words) + 0.0496 * (text.count_words / text.count_sentences) + 3.6365
         else:
             x_c50 = 'text_too_short'
-    # No language support
     else:
         x_c50 = 'no_support'
 
@@ -150,6 +192,38 @@ def devereux_readability_index(main, text):
 
     return grade_placement
 
+# Fernández Huerta's Readability Score
+# References:
+#     Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. Consigna, 214, 29–32.
+#     Law, Gwillim. (2011, May 27). Error in the Fernandez Huerta Readability Formula. LINGUIST List. https://linguistlist.org/issues/22/22-2332/
+def fernandez_huertas_readability_score(main, text):
+    if text.lang == 'spa' and text.lang in main.settings_global['syl_tokenizers']:
+        get_counts(main, text)
+
+        if text.count_words and text.count_sentences:
+            p = 206.84 - 60 * (text.count_syls / text.count_words) - 102 * (text.count_sentences / text.count_words)
+        else:
+            p = 'text_too_short'
+    else:
+        p = 'no_support'
+
+    return p
+
+# Flesch-Kincaid Grade Level
+# Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+def flesch_kincaid_grade_level(main, text):
+    if text.lang in main.settings_global['syl_tokenizers']:
+        get_counts(main, text)
+
+        if text.count_sentences and text.count_words:
+            gl = 0.39 * (text.count_words / text.count_sentences) + 11.8 * (text.count_syls / text.count_words) - 15.59
+        else:
+            gl = 'text_too_short'
+    else:
+        gl = 'no_support'
+
+    return gl
+
 # Flesch Reading Ease
 # Reference: Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32(3), 221–233. https://doi.org/10.1037/h0057532
 def flesch_reading_ease(main, text):
@@ -160,7 +234,6 @@ def flesch_reading_ease(main, text):
             flesch_re = 206.835 - 0.846 * (text.count_syls / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences)
         else:
             flesch_re = 'text_too_short'
-    # No language support
     else:
         flesch_re = 'no_support'
 
@@ -173,32 +246,15 @@ def flesch_reading_ease_simplified(main, text):
         get_counts(main, text)
 
         if text.count_words and text.count_sentences:
-            count_words_1_syl = len([syls for syls in text.syls_words if len(syls) == 1])
+            count_words_monosyllabic = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1)
 
-            flesch_re_simplified = 1.599 * (count_words_1_syl / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences) - 31.517
+            flesch_re_simplified = 1.599 * (count_words_monosyllabic / text.count_words * 100) - 1.015 * (text.count_words / text.count_sentences) - 31.517
         else:
             flesch_re_simplified = 'text_too_short'
-    # No language support
     else:
         flesch_re_simplified = 'no_support'
 
     return flesch_re_simplified
-
-# Flesch-Kincaid Grade Level
-# Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
-def flesch_kincaid_grade_level(main, text):
-    if text.lang in main.settings_global['syl_tokenizers']:
-        get_counts(main, text)
-
-        if text.count_sentences and text.count_words:
-            gl = 0.39 * (text.count_words / text.count_sentences) + 11.8 * (text.count_syls / text.count_words) - 15.59
-        else:
-            gl = 'text_too_short'
-    # No language support
-    else:
-        gl = 'no_support'
-
-    return gl
 
 # FORCAST Grade Level
 # Reference: Caylor, J. S., Sticht, T. G., Fox, L. C., & Ford, J. P. (1973). Methodologies for determining reading requirements of military occupational specialties. Human Resource Research Organization. https://files.eric.ed.gov/fulltext/ED074343.pdf
@@ -210,21 +266,36 @@ def forcast_grade_level(main, text):
             sample_start = random.randint(0, text.count_words - 150)
             sample = text.syls_words[sample_start : sample_start + 150]
 
-            count_words_1_syl = len([syls for syls in sample if len(syls) == 1])
-            rgl = 20.43 - 0.11 * count_words_1_syl
-        # Text is too short
+            count_words_monosyllabic = get_count_words_syls(sample, len_min = 1, len_max = 1)
+            rgl = 20.43 - 0.11 * count_words_monosyllabic
         else:
             rgl = 'text_too_short'
-    # No language support
     else:
         rgl = 'no_support'
 
     return rgl
 
+# Gulpease Index
+# References:
+#     Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: a formula for the prediction of the difficulty of texts in Italian, Scuola e città, 39(3), pp. 110–124.
+#     Indice Gulpease. (2021, July 9). In Wikipedia.https://it.wikipedia.org/w/index.php?title=Indice_Gulpease&oldid=121763335.
+def gulpease_index(main, text):
+    if text.lang.startswith('ita'):
+        get_counts(main, text)
+
+        if text.count_words:
+            gulpease_index = 89 + (300 * text.count_sentences - 10 * text.count_chars_alphabetic) / text.count_words
+        else:
+            gulpease_index = 'text_too_short'
+    else:
+        gulpease_index = 'no_support'
+
+    return gulpease_index
+
 # Gunning Fog Index
 # Reference: Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
 def gunning_fog_index(main, text):
-    if text.lang.startswith('eng'):
+    if text.lang.startswith('eng') and text.lang in main.settings_global['syl_tokenizers']:
         get_counts(main, text)
 
         if text.count_sentences and text.count_words:
@@ -239,11 +310,105 @@ def gunning_fog_index(main, text):
             fog_index = 0.4 * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
         else:
             fog_index = 'text_too_short'
-    # No language support
     else:
         fog_index = 'no_support'
 
     return fog_index
+
+# Legibilidad µ
+# References:
+#     Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile, 21(2), 13–26.
+#     Muñoz Fernández, A. (2016). Analizador de legibilidad de texto. Legible. https://legible.es/
+def legibility_mu(main, text):
+    if text.lang == 'spa':
+        get_counts(main, text)
+
+        if text.count_words >= 2:
+            # Excluding numbers and punctuation marks
+            lens_words_letters = numpy.array([
+                len([char for char in word if char.isalpha()])
+                for word in text.words_flat
+            ])
+
+            mu = (text.count_words / (text.count_words - 1)) * (numpy.mean(lens_words_letters) / numpy.var(lens_words_letters)) * 100
+        else:
+            mu = 'text_too_short'
+    else:
+        mu = 'no_support'
+
+    return mu
+
+# Linsear Write
+# Reference: O’Hayre, J. (1966). Gobbledygook has gotta go. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
+def linsear_write(main, text):
+    if text.lang in main.settings_global['syl_tokenizers']:
+        get_counts(main, text)
+
+        if text.count_words >= 100:
+            samples = []
+            i_word = 0
+            count_sentences_samples = 0
+
+            samples_start = random.randint(0, text.count_words - 100)
+
+            for sentence in text.sentences:
+                if len(samples) < 100:
+                    if i_word + len(sentence) >= samples_start:
+                        count_sentences_samples += 1
+
+                        for token in sentence:
+                            if len(samples) < 100:
+                                samples.append(token)
+                            else:
+                                break
+
+                    i_word += len(sentence)
+                else:
+                    break
+
+            count_words_monosyllabic = 0
+
+            samples_syls = wl_syl_tokenization.wl_syl_tokenize(main, samples, lang = text.lang)
+
+            for syls in samples_syls:
+                if len(syls) == 1 and syls[0].lower() not in ['the', 'is', 'are', 'was', 'were']:
+                    count_words_monosyllabic += 1
+
+            score = count_words_monosyllabic + 3 * count_sentences_samples
+        else:
+            score = 'text_too_short'
+    else:
+        score = 'no_support'
+
+    return score
+
+# Lix
+# References:
+#     Björnsson, C.-H. (1968). Läsbarhet. Liber.
+#     Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. Journal of Reading, 26(6), pp. 490–496.
+def lix(main, text):
+    if text.count_words and text.count_sentences:
+        get_counts(main, text)
+
+        count_long_words = get_count_words_letters(text.words_flat, len_min = 7)
+        lix = text.count_words / text.count_sentences + 100 * (count_long_words / text.count_words)
+    else:
+        lix = 'text_too_short'
+
+    return lix
+
+# Rix
+# References: Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. Journal of Reading, 26(6), pp. 490–496.
+def rix(main, text):
+    if text.count_sentences:
+        get_counts(main, text)
+
+        count_long_words = get_count_words_letters(text.words_flat, len_min = 7)
+        rix = count_long_words / text.count_sentences
+    else:
+        rix = 'text_too_short'
+
+    return rix
 
 # SMOG Grade
 # Reference: McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), pp. 639–646.
@@ -262,13 +427,11 @@ def smog_grade(main, text):
             for sentence in samples:
                 syls_words = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
 
-                count_words_polysyllabic += len([syls for syls in syls_words if len(syls) >= 3])
+                count_words_polysyllabic += get_count_words_syls(syls_words, len_min = 3)
 
             g = 3.1291 + 1.043 * (count_words_polysyllabic ** 0.5)
-        # Text is too short
         else:
             g = 'text_too_short'
-    # No language support
     else:
         g = 'no_support'
 
@@ -312,57 +475,56 @@ def spache_grade_level(main, text):
                 grade_levels.append(0.141 * (100 / count_sentences_samples) + 0.086 * (count_difficult_words / 100 * 100) + 0.839)
 
             grade_level = numpy.mean(grade_levels)
-        # Text is too short
         else:
             grade_level = 'text_too_short'
-    # No language support
     else:
         grade_level = 'no_support'
 
     return grade_level
 
-# Write Score
-# Reference: O’Hayre, J. (1966). Gobbledygook has gotta go. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
-def write_score(main, text):
-    if text.lang in main.settings_global['syl_tokenizers']:
+# Szigriszt's Perspicuity Index
+# Reference: Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
+def szigriszts_perspicuity_index(main, text):
+    if text.lang == 'spa' and text.lang in main.settings_global['syl_tokenizers']:
         get_counts(main, text)
 
-        if text.count_words >= 100:
-            samples = []
-            i_word = 0
-            count_sentences_samples = 0
-
-            samples_start = random.randint(0, text.count_words - 100)
-
-            for sentence in text.sentences:
-                if len(samples) < 100:
-                    if i_word + len(sentence) >= samples_start:
-                        count_sentences_samples += 1
-
-                        for token in sentence:
-                            if len(samples) < 100:
-                                samples.append(token)
-                            else:
-                                break
-
-                    i_word += len(sentence)
-                else:
-                    break
-
-            count_words_1_syl = 0
-
-            samples_syls = wl_syl_tokenization.wl_syl_tokenize(main, samples, lang = text.lang)
-
-            for syls in samples_syls:
-                if len(syls) == 1 and syls[0].lower() not in ['the', 'is', 'are', 'was', 'were']:
-                    count_words_1_syl += 1
-
-            score = count_words_1_syl + 3 * count_sentences_samples
-        # Text is too short
+        if text.count_words and text.count_sentences:
+            p = 207 - 62.3 * (text.count_syls / text.count_words) - (text.count_words / text.count_sentences)
         else:
-            score = 'text_too_short'
-    # No language support
+            p = 'text_too_short'
     else:
-        score = 'no_support'
+        p = 'no_support'
 
-    return score
+    return p
+
+# Wiener Sachtextformel
+# References:
+#     Bamberger, R., & Vanecek, E. (1984). Lesen – Verstehen – Lernen – Schreiben. Jugend und Volk.
+#     Lesbarkeitsindex. (2022, July 21). In Wikipedia. https://de.wikipedia.org/w/index.php?title=Lesbarkeitsindex&oldid=224664667
+def wiener_sachtextformel(main, text, variant = None):
+    if text.lang.startswith('deu') and text.lang in main.settings_global['syl_tokenizers']:
+        get_counts(main, text)
+
+        if text.count_words and text.count_sentences:
+            if not variant:
+                variant = '1'
+
+            ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words
+            sl = text.count_words / text.count_sentences
+            iw = get_count_words_letters(text.words_flat, len_min = 7) / text.count_words
+            es = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1) / text.count_words
+
+            if variant == '1':
+                wstf = 0.1925 * ms + 0.1672 * sl + 0.1297 * iw - 0.0327 * es - 0.875
+            elif variant == '2':
+                wstf = 0.2007 * ms + 0.1682 * sl + 0.1373 * iw - 2.779
+            elif variant == '3':
+                wstf = 0.2963 * ms + 0.1905 * sl - 1.1144
+            elif variant == '4':
+                wstf = 0.2744 * ms + 0.2656 * sl - 1.693
+        else:
+            wstf = 'text_too_short'
+    else:
+        wstf = 'no_support'
+
+    return wstf

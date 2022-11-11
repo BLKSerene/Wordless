@@ -38,7 +38,7 @@ def pct_diff(main, c11, c12, c21, c22):
 
 # Cubic Association Ratio
 # References:
-#     Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Université Paris 7]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=
+#     Daille, B. (1994). Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques [Doctoral thesis, Paris Diderot University]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=
 #     Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. UCREL technical papers (Vol. 5). Lancaster University.
 def im3(main, c11, c12, c21, c22):
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_freqs_expected(c11, c12, c21, c22)
@@ -112,7 +112,7 @@ def log_dice(main, c11, c12, c21, c22):
 
 # MI.log-f
 # References:
-#     Lexical Computing Ltd. (2015, July 8). Statistics used in Sketch Engine. Retrieved November 26, 2018 from https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/
+#     Lexical Computing Ltd. (2015, July 8). Statistics used in Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/
 #     Kilgarriff, A., & Tugwell, D. (2002). WASP-bench – an MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In Proceedings of the 8th Machine Translation Summit (pp. 187–190). European Association for Machine Translation.
 def mi_log_f(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2 = wl_measures_statistical_significance.get_freqs_marginal(c11, c12, c21, c22)
