@@ -27,6 +27,7 @@
 - Utils: Add simplemma's lemmatizers
 - Utils: Add stopword's stop word lists
 - Work Area: Add Dependency Parser
+- Work Area: Add Profiler - Automated Arabic Readability Index / Fernández Huerta's Readability Score / Gulpease Index / Legibilidad µ / Lix / Rix / Szigriszt's Perspicuity Index / Wiener Sachtextformel
 
 ### ✨ Improvements
 - Utils: Update NLTK's English and Russian perceptron part-of-speech taggers
@@ -88,7 +89,7 @@
 - File Area: Fix support for .tmx files
 - Work Area: Fix Collocation/Colligation Extractor - Generation Settings - Limit Searching
 - Work Area: Fix Concordancer / Parallel Concordancer - Exported Selected/All after sorting
-- Work Area: Fix Profiler - Table Settings - Show Cumulutive after clicking horizontal headers
+- Work Area: Fix Profiler - Table Settings - Show Cumulative after clicking horizontal headers
 - Work Area: Fix Profiler - Token Settings - Use tags only
 
 ### ❌ Removals
@@ -104,7 +105,7 @@
 - Work Area: Remove N-gram Generator - Search Settings - Allow skipped tokens within search terms
 - Work Area: Remove Parallel Concordancer - Sort Results / Generation Settings
 - Work Area: Remove Profiler - Generation Settings
-- Work Area: Remove Wordlist Generator / N-gram Generator / Collocation Extractpr / Colligation Extractor / Keyword Extractor - Generation Settings - Advanced Settings
+- Work Area: Remove Wordlist Generator / N-gram Generator / Collocation Extractor / Colligation Extractor / Keyword Extractor - Generation Settings - Advanced Settings
 
 ### ⏫ Dependency Changes
 - Dependencies: Add Lingua, PyPDF2, and spacy-pkuseg
