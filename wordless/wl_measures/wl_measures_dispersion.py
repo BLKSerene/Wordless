@@ -82,7 +82,7 @@ def griess_dp_norm(freqs):
     return griess_dp(freqs) / (1 - 1 / len(freqs))
 
 # Juilland's D
-# Reference: Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of spanish words. Mouton.
+# Reference: Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of Spanish words. Mouton.
 def juillands_d(freqs):
     freqs = numpy.array(freqs)
 
