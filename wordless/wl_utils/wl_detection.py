@@ -53,7 +53,6 @@ def detect_encoding(main, file_path):
 
 lingua_detector = lingua.LanguageDetectorBuilder.from_all_languages_without(
     lingua.Language.BOSNIAN,
-    lingua.Language.GANDA,
     lingua.Language.MAORI,
     lingua.Language.SHONA,
     lingua.Language.TSONGA,
