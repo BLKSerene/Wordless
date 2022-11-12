@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # ----------------------------------------------------------------------
 # Wordless: CI - Requirements File - Tests
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
@@ -37,9 +36,9 @@ pymorphy2-dicts-ru == 2.4.417127.4579844
 pymorphy2-dicts-uk == 2.4.1.1.1460299261
 
 ## spaCy
-spacy == 3.4.1
+spacy == 3.4.3
 spacy-lookups-data == 1.0.3
-spacy-pkuseg == 0.0.31
+spacy-pkuseg == 0.0.32
 
 ## SudachiPy
 sudachipy == 0.6.6
