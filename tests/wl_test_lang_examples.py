@@ -245,6 +245,7 @@ SENTENCE_EST = 'Eesti keel (varasem nimetus maakeel) on läänemeresoome lõunar
 SENTENCE_FIN = 'Suomen kieli (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli, jota puhuvat pääosin suomalaiset.'
 SENTENCE_FRA = 'Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés francophones, également surnommé la langue de Molière.'
 SENTENCE_GLG = 'O galego ([ɡaˈleɣo̝]) é unha lingua indoeuropea que pertence á póla de linguas románicas.'
+SENTENCE_LUG = 'Luganda/Oluganda lwe lulimi olwogerwa Abaganda e Yuganda.'
 SENTENCE_KAT = 'ქართული ენა — იბერიულ-კავკასიურ ენათა ოჯახის ქართველურ ენათა ჯგუფის ენა.'
 SENTENCE_DEU_AT = SENTENCE_DEU_DE = SENTENCE_DEU_CH = 'Die deutsche Sprache bzw. Deutsch ([dɔɪ̯tʃ];[26] abgekürzt dt. oder dtsch.) ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.'
 SENTENCE_GRC = "Ὅτι μὲν ὑμεῖς, ὦ ἄνδρες Ἀθηναῖοι, πεπόνθατε ὑπὸ τῶν ἐμῶν κατηγόρων, οὐκ οἶδα· ἐγὼ δ' οὖν καὶ αὐτὸς ὑπ' αὐτῶν ὀλίγου ἐμαυτοῦ ἐπελαθόμην, οὕτω πιθανῶς ἔλεγον."
