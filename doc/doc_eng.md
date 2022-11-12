@@ -592,8 +592,8 @@ You can further filter the results as you see fit by clicking **Filter Results**
 Language|Sentence Tokenization|Word Tokenization|Syllable Tokenization|Part-of-speech Tagging|Lemmatization|Stop Word List|Dependency Parsing
 :------:|:-------------------:|:---------------:|:-------------------:|:--------------------:|:-----------:|:------------:|:----------------:
 Afrikaans               |⭕️ |✔|✔|✖️|✖️|✔|✖️
-Albanian                |⭕️ |✔|✔|✖️|✔|✔|✖️
-Amharic                 |⭕️ |✔|✖️|✖️|✖️|✔|✖️
+Albanian                |⭕️ |✔|✔|✖️|✔|✖️|✖️
+Amharic                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Arabic                  |⭕️ |✔|✖️|✖️|✖️|✔|✖️
 Armenian                |⭕️ |✔|✖️|✖️|✔|✔|✖️
 Assamese                |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
@@ -625,32 +625,32 @@ Georgian                |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️
 German (Austria)        |✔|✔|✔|✔|✔|✔|✔
 German (Germany)        |✔|✔|✔|✔|✔|✔|✔
 German (Switzerland)    |✔|✔|✔|✔|✔|✔|✔
-Greek (Ancient)         |⭕️ |✔|✖️|✖️|✔|✔|✖️
+Greek (Ancient)         |⭕️ |✔|✖️|✖️|✔|✖️|✖️
 Greek (Modern)          |✔|✔|✔|✔|✔|✔|✔
 Gujarati                |⭕️ |✔|✖️|✖️|✖️|✔|✖️
 Hausa                   |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️
 Hebrew                  |⭕️ |✔|✖️|✖️|✖️|✔|✖️
 Hindi                   |⭕️ |✔|✖️|✖️|✔|✔|✖️
 Hungarian               |⭕️ |✔|✔|✖️|✔|✔|✖️
-Icelandic               |⭕️ |✔|✔|✖️|✔|✔|✖️
+Icelandic               |⭕️ |✔|✔|✖️|✔|✖️|✖️
 Indonesian              |⭕️ |✔|✔|✖️|✔|✔|✖️
 Irish                   |⭕️ |✔|✖️|✖️|✔|✔|✖️
 Italian                 |✔|✔|✔|✔|✔|✔|✔
 Japanese                |✔|✔|✖️|✔|✔|✔|✔
-Kannada                 |⭕️ |✔|✖️|✖️|✖️|✔|✖️
+Kannada                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Kazakh                  |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️
 Korean                  |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️
 Kurdish                 |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️
-Kyrgyz                  |⭕️ |✔|✖️|✖️|✖️|✔|✖️
+Kyrgyz                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Latin                   |⭕️ |✔|✖️|✖️|✔|✔|✖️
 Latvian                 |⭕️ |✔|✔|✖️|✔|✔|✖️
-Ligurian                |⭕️ |✔|✖️|✖️|✖️|✔|✖️
+Ligurian                |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Lithuanian              |✔|✔|✔|✔|✔|✔|✔
 Lugbara                 |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️
-Luxembourgish           |⭕️ |✔|✖️|✖️|✔|✔|✖️
-Macedonian              |✔|✔|✖️|✔|✔|✔|✔
+Luxembourgish           |⭕️ |✔|✖️|✖️|✔|✖️|✖️
+Macedonian              |✔|✔|✖️|✔|✔|✖️|✔
 Malay                   |⭕️ |⭕️ |✖️|✖️|✔|✔|✖️
-Malayalam               |✔|✔|✖️|✖️|✖️|✔|✖️
+Malayalam               |✔|✔|✖️|✖️|✖️|✖️|✖️
 Manx                    |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️
 Marathi                 |⭕️ |✔|✖️|✖️|✖️|✔|✖️
 Meitei                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
@@ -667,30 +667,30 @@ Punjabi (Gurmukhi)      |⭕️ |✔|✖️|✖️|✖️|✔|✖️
 Romanian                |✔|✔|✔|✔|✔|✔|✔
 Russian                 |✔|✔|✔|✔|✔|✔|✔
 Sámi (Northern)         |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️
-Sanskrit                |⭕️ |✔|✖️|✖️|✖️|✔|✖️
+Sanskrit                |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Scottish Gaelic         |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️
-Serbian (Cyrillic)      |⭕️ |✔|✔|✖️|✔|✔|✖️
-Serbian (Latin)         |⭕️ |✔|✔|✖️|✔|✔|✖️
-Sinhala                 |⭕️ |✔|✖️|✖️|✖️|✔|✖️
+Serbian (Cyrillic)      |⭕️ |✔|✔|✖️|✔|✖️|✖️
+Serbian (Latin)         |⭕️ |✔|✔|✖️|✔|✖️|✖️
+Sinhala                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Slovak                  |⭕️ |✔|✔|✖️|✔|✔|✖️
 Slovenian               |✔|✔|✔|✖️|✔|✔|✖️
 Somali                  |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️
-Sorbian (Lower)         |⭕️ |✔|✖️|✖️|✖️|✔|✖️
-Sorbian (Upper)         |⭕️ |✔|✖️|✖️|✖️|✔|✖️
+Sorbian (Lower)         |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
+Sorbian (Upper)         |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Sotho (Southern)        |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️
 Spanish                 |✔|✔|✔|✔|✔|✔|✔
 Swahili                 |⭕️ |⭕️ |✖️|✖️|✔|✔|✖️
 Swedish                 |✔|✔|✔|✔|✔|✔|✔
 Tagalog                 |⭕️ |✔|✖️|✖️|✔|✔|✖️
 Tajik                   |⭕️ |✔|✖️|✖️|✖️|✔|✖️
-Tamil                   |⭕️ |✔|✖️|✖️|✖️|✔|✖️
-Tatar                   |⭕️ |✔|✖️|✖️|✖️|✔|✖️
-Telugu                  |⭕️ |✔|✔|✖️|✖️|✔|✖️
+Tamil                   |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
+Tatar                   |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
+Telugu                  |⭕️ |✔|✔|✖️|✖️|✖️|✖️
 Tetun Dili              |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Thai                    |✔|✔|✔|✔|✖️|✔|✖️
 Tibetan                 |✔|✔|✖️|✔|✔|✖️|✖️
-Tigrinya                |⭕️ |✔|✖️|✖️|✖️|✔|✖️
-Tswana                  |⭕️ |✔|✖️|✖️|✖️|✔|✖️
+Tigrinya                |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
+Tswana                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Turkish                 |✔|✔|✖️|✖️|✔|✔|✖️
 Ukrainian               |✔|✔|✔|✔|✔|✔|✔
 Urdu                    |⭕️ |✔|✖️|✖️|✔|✔|✖️

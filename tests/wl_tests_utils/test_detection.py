@@ -41,7 +41,7 @@ def test_lingua():
 
     print(f"Extra languages: {', '.join(langs_extra)}\n")
 
-    assert langs_extra == ['BOSNIAN', 'GANDA', 'MAORI', 'SHONA', 'TSONGA', 'XHOSA']
+    assert langs_extra == ['BOSNIAN', 'MAORI', 'SHONA', 'TSONGA', 'XHOSA']
 
 # Encoding detection
 def check_encodings_detected(test_file_dir, encodings, text):
