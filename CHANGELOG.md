@@ -26,6 +26,7 @@
 - Utils: Add NLTK's Malayalam Punkt sentence tokenizer
 - Utils: Add PyThaiNLP's Thai word detokenizer
 - Utils: Add simplemma's lemmatizers
+- Utils: Add spaCy's Ganda and Latin word tokenizers
 - Utils: Add stopword's stop word lists
 - Work Area: Add Dependency Parser
 - Work Area: Add Profiler - Automated Arabic Readability Index / Fernández Huerta's Readability Score / Gulpease Index / Legibilidad µ / Lix / Rix / Szigriszt's Perspicuity Index / Wiener Sachtextformel
