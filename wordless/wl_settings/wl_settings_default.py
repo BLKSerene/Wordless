@@ -1686,6 +1686,13 @@ def init_settings_default(main):
 
         # Settings - Measures
         'measures': {
+            # Settings - Measures - Readability
+            'readability': {
+                'wstf': {
+                    'variant': '1'
+                }
+            },
+
             # Settings - Measures - Dispersion
             'dispersion': {
                 'general_settings': {
