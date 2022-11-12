@@ -507,7 +507,7 @@ def wiener_sachtextformel(main, text, variant = None):
 
         if text.count_words and text.count_sentences:
             if not variant:
-                variant = '1'
+                variant = main.settings_custom['measures']['readability']['wiener_sachtextformel']['variant']
 
             ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words
             sl = text.count_words / text.count_sentences
