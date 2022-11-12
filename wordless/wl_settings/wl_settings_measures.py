@@ -23,6 +23,34 @@ from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
 from wordless.wl_settings import wl_settings
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_widgets
 
+# Measures - Readability
+class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['measures']['readability']
+        self.settings_custom = self.main.settings_custom['measures']['readability']
+
+        # Wiener Sachtextformel
+        self.group_box_wstf = QGroupBox(self.tr('Wiener Sachtextformel'), self)
+
+        self.label_variant = QLabel(self.tr('Variant:'), self)
+        self.combo_box_variant = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_variant.addItems(['1', '2', '3', '4'])
+
+        self.group_box_wstf.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_wstf.layout().addWidget(self.label_variant, 0, 0)
+        self.group_box_wstf.layout().addWidget(self.combo_box_variant, 0, 1)
+
+        self.group_box_wstf.layout().setColumnStretch(2, 1)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addWidget(self.group_box_wstf, 0, 0)
+
+        self.layout().setContentsMargins(6, 4, 6, 4)
+        self.layout().setRowStretch(1, 1)
+
 # Measures - Dispersion
 class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
