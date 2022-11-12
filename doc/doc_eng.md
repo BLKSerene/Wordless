@@ -106,11 +106,11 @@ By default, *Wordless* tries to detect the encoding and language settings of all
 
 <span id="doc-3-1"></span>
 ### [3.1 Profiler](#doc)
-**Note:** Renamed from **Overview** to **Profiler** in *Wordless* 2.2
+**Note:** Renamed from **Overview** to **Profiler** in *Wordless* 2.2.0
 
 In *Profiler*, you can check and compare general linguistic features of different files.
 
-- **3.1.1 Automated Arabic Readability Index ~ Write Score**<br>
+- **3.1.1 Automated Arabic Readability Index ~ Wiener Sachtextformel**<br>
   Readability statistics of each file calculated according to the different readability tests used. See [Measures of Readability](#doc-4-4-1) for more details.
 
 - **3.1.2 Count of Paragraphs**<br>
@@ -356,6 +356,9 @@ You can generate concordance plots for all search terms. You can modify the sett
 
 <span id="doc-3-3"></span>
 ### [3.3 Parallel Concordancer](#doc)
+**Notes:**
+1. Added in *Wordless* 2.0.0
+2. Renamed from **Concordancer (Parallel Mode)** to **Parallel Concordancer** in *Wordless* 2.2.0
 
 In *Parallel Concordancer*, you can search for tokens in parallel corpora and generate parallel concordance lines. You may leave **Search Settings → Search Term** blank so as to search for instances of additions and deletions.
 
@@ -374,7 +377,7 @@ After the parallel concordance lines are generated and displayed in the table, y
 
 <span id="doc-3-4"></span>
 ### [3.4 Wordlist Generator](#doc)
-**Note:** Renamed from **Wordlist** to **Wordlist Generator** in *Wordless* 2.2
+**Note:** Renamed from **Wordlist** to **Wordlist Generator** in *Wordless* 2.2.0
 
 In *Wordlist Generator*, you can generate wordlists for different files and calculate the raw frequency, relative frequency, dispersion and adjusted frequency for each token.
 
@@ -409,7 +412,7 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 
 <span id="doc-3-5"></span>
 ### [3.5 N-gram Generator](#doc)
-**Note:** Renamed from **N-gram** to **N-gram Generator** in *Wordless* 2.2
+**Note:** Renamed from **N-gram** to **N-gram Generator** in *Wordless* 2.2.0
 
 In *N-gram Generator*, you can search for n-grams (consecutive tokens) or skip-grams (non-consecutive tokens) in different files, count and compute the raw frequency and relative frequency of each n-gram/skip-gram, and calculate the dispersion and adjusted frequency for each n-gram/skip-gram using different measures.  You can adjust the settings for the generated results via **Generation Settings**. To allow skip-grams in the results, check **Generation Settings → Allow skipped tokens** and modify the settings. You can also set constraints on the position of search terms in all n-grams via **Search Settings → Search Term Position**.
 
@@ -442,7 +445,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 
 <span id="doc-3-6"></span>
 ### [3.6 Collocation Extractor](#doc)
-**Note:** Renamed from **Collocation** to **Collocation Extractor** in *Wordless* 2.2
+**Note:** Renamed from **Collocation** to **Collocation Extractor** in *Wordless* 2.2.0
 
 In *Collocation Extractor*, you can search for patterns of collocation (tokens that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of collocates and calculate the bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated results via **Generation Settings**.
 
@@ -490,7 +493,7 @@ You can further filter the results as you see fit by clicking **Filter Results**
 
 <span id="doc-3-7"></span>
 ### [3.7 Colligation Extractor](#doc)
-**Note:** Renamed from **Colligation** to **Colligation Extractor** in *Wordless* 2.2
+**Note:** Renamed from **Colligation** to **Colligation Extractor** in *Wordless* 2.2.0
 
 In *Colligation Extractor*, you can search for patterns of colligation (parts of speech that co-occur more often than would be expected by chance) within a given collocational window (from 5 words to the left to 5 words to the right by default), conduct different tests of statistical significance on each pair of parts of speech and calculate the bayes factor and effect size for each pair using different measures. You can adjust the settings for the generated data via **Generation Settings**.
 
@@ -834,21 +837,21 @@ Vietnamese              |CP1258                 |✔
 
 The readability of a text depends on several variables including the average sentence length, average word length in characters, average word length in syllables, number of monosyllabic words, number of polysyllabic words, number of difficult words, etc.
 
-It should be noted that **some readability tests can only be applied to English texts, or to texts in languages for which Wordless have built-in syllable tokenization support** (check [4.4.1](#doc-4-1) for reference), while others can be applied to files of all languages.
+It should be noted that some readability tests are **language-specific**, or applicable only to files of languages for which *Wordless* have **built-in syllable tokenization support** (check [4.4.1](#doc-4-1) for reference), while others can be applied to files of all languages.
 
 These variables are used in the following formulas:<br>
-**NumSentences**: number of sentences in the text or sample<br>
-**NumWords**: number of words in the text or sample<br>
-**NumWordsMonosyllabic**: number of monosyllabic words<br>
-**NumSyls**: number of syllable in the text or sample<br>
-**NumCharsAll**: number of characters (including letters, CJK characters, etc., numerals, and punctuation marks) in the text or sample<br>
-**NumCharsAlphanumeric**: number of alphanumeric characters (letters, CJK characters, etc., numerals) in the text or sample<br>
-**NumCharsAlphabetic**: number of alphabetic characters (letters, CJK characters, etc.) in the text or sample
+**NumSentences**: Number of sentences in the text or sample<br>
+**NumWords**: Number of words in the text or sample<br>
+**NumWordsMonosyllabic**: Number of monosyllabic words<br>
+**NumSyls**: Number of syllable in the text or sample<br>
+**NumCharsAll**: Number of characters (including letters, CJK characters, etc., numerals, and punctuation marks) in the text or sample<br>
+**NumCharsAlphanumeric**: Number of alphanumeric characters (letters, CJK characters, etc., numerals) in the text or sample<br>
+**NumCharsAlphabetic**: Number of alphabetic characters (letters, CJK characters, etc.) in the text or sample
 
 <!--
 Automated Arabic Readability Index:
     \begin{align*}
-        ARI = 3.28 \times NumCharsAlphanumeric + 1.43 \times \left(\frac{NumCharsAlphanumeric}{NumWords}\right) + 1.24 \times \left(\frac{NumWords}{NumSentences}\right)
+        AARI = 3.28 \times NumCharsAlphanumeric + 1.43 \times \left(\frac{NumCharsAlphanumeric}{NumWords}\right) + 1.24 \times \left(\frac{NumWords}{NumSentences}\right)
     \end{align*}
 
 Automated Readability Index:
@@ -976,10 +979,10 @@ Measure of Readability|Formula
 <span id="ref-smog-grade"></span>SMOG Grade<sup>1</sup><br>([McLaughlin, 1969](#ref-mclaughlin-1969))|![Formula](/doc/measures/readability/smog_grade.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables.<br><br>* A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text is taken from the text, thus the text should be **at least 30 sentences long**.
 <span id="ref-spache-grade-level"></span>Spache Grade Level<br>([Dale, 1931](#ref-dale-1931); [Spache, 1953](#ref-spache-1953))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 769 easy words ([Spache, 1953](#ref-spache-1953)).<br><br>* Three samples each of 100 words are taken randomly from the text and the mean of the three scores is calculated, thus the text should be **at least 100 words long**.
 <span id="ref-szigriszts-perspicuity_index"></span>Szigriszt's Perspicuity Index<sup>1</sup><br>([Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/szigriszts_perspicuity_index.svg)<br>* This test applies only to **Spanish texts**.
-<span id="ref-wstf"></span>Wiener Sachtextformel<sup>1</sup><br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984); [Lesbarkeitsindex, 2022](#ref-lesbarkeitsindex-2022))|![Formula](/doc/measures/readability/wstf.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables and **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This test applies only to **German texts**.
+<span id="ref-wstf"></span>Wiener Sachtextformel<sup>1</sup><br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984); [Lesbarkeitsindex, 2022](#ref-lesbarkeitsindex-2022))|![Formula](/doc/measures/readability/wstf.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables and **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This test applies only to **German texts**.<br>* This test has 4 variants, which you could select via **Menu → Preferences → Settings → Measures → Readability → Wiener Sachtextformel → Variant**.
 
 **Notes:**
-1. Requiring **built-in syllable tokenization support**
+1. Requires **built-in syllable tokenization support**
 
 <span id="doc-4-4-2"></span>
 #### [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc)
@@ -1296,7 +1299,7 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 <span id="ref-dices-coeff"></span>Dice's Coefficient<br>([Smadja et al., 1996](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dices_coeff.svg)
 <span id="ref-diff-coeff"></span>Difference Coefficient<br>([Hofland & Johanson, 1982](#ref-hofland-johanson-1982); [Gabrielatos, 2018](#ref-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)
 <span id="ref-jaccard-index"></span>Jaccard Index<br>([Dunning, 1998](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)
-<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's Ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, which is 1 by default.<br><br>You can change the value of **α** via **Menu → Preferences → Settings → Measures →<br>Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
+<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's Ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, which is 1 by default.<br><br>You can change the value of **α** via **Menu → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
 <span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)
 <span id="ref-lfmd"></span>Log-Frequency Biased MD<br>([Thanopoulos et al., 2002](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/lfmd.svg)
 <span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)

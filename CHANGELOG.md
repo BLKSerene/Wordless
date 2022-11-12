@@ -21,6 +21,7 @@
 ## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.4.0) - ??/??/2022
 ### 🎉 New Features
 - Settings: Add Settings - Dependency Parsing
+- Settings: Add Settings - Measures - Readability
 - Utils: Add NLTK's Basque, Bengali, Catalan, Chinese (Simplified), Chinese (Traditional), and Hebrew stop word lists
 - Utils: Add NLTK's Malayalam Punkt sentence tokenizer
 - Utils: Add PyThaiNLP's Thai word detokenizer
