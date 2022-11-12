@@ -682,78 +682,6 @@ def init_settings_global():
 
                 _tr('init_settings_global', 'PyThaiNLP - Thai Stop Word List'): 'pythainlp_tha',
 
-                _tr('init_settings_global', 'spaCy - Afrikaans Stop Word List'): 'spacy_afr',
-                _tr('init_settings_global', 'spaCy - Albanian Stop Word List'): 'spacy_sqi',
-                _tr('init_settings_global', 'spaCy - Amharic Stop Word List'): 'spacy_amh',
-                _tr('init_settings_global', 'spaCy - Arabic Stop Word List'): 'spacy_ara',
-                _tr('init_settings_global', 'spaCy - Armenian Stop Word List'): 'spacy_hye',
-                _tr('init_settings_global', 'spaCy - Azerbaijani Stop Word List'): 'spacy_aze',
-                _tr('init_settings_global', 'spaCy - Basque Stop Word List'): 'spacy_eus',
-                _tr('init_settings_global', 'spaCy - Bengali Stop Word List'): 'spacy_ben',
-                _tr('init_settings_global', 'spaCy - Bulgarian Stop Word List'): 'spacy_bul',
-                _tr('init_settings_global', 'spaCy - Catalan Stop Word List'): 'spacy_cat',
-                _tr('init_settings_global', 'spaCy - Chinese (Simplified) Stop Word List'): 'spacy_zho_cn',
-                _tr('init_settings_global', 'spaCy - Chinese (Traditional) Stop Word List'): 'spacy_zho_tw',
-                _tr('init_settings_global', 'spaCy - Croatian Stop Word List'): 'spacy_hrv',
-                _tr('init_settings_global', 'spaCy - Czech Stop Word List'): 'spacy_ces',
-                _tr('init_settings_global', 'spaCy - Danish Stop Word List'): 'spacy_dan',
-                _tr('init_settings_global', 'spaCy - Dutch Stop Word List'): 'spacy_nld',
-                _tr('init_settings_global', 'spaCy - English Stop Word List'): 'spacy_eng',
-                _tr('init_settings_global', 'spaCy - Estonian Stop Word List'): 'spacy_est',
-                _tr('init_settings_global', 'spaCy - Finnish Stop Word List'): 'spacy_fin',
-                _tr('init_settings_global', 'spaCy - French Stop Word List'): 'spacy_fra',
-                _tr('init_settings_global', 'spaCy - German Stop Word List'): 'spacy_deu',
-                _tr('init_settings_global', 'spaCy - Greek (Ancient) Stop Word List'): 'spacy_grc',
-                _tr('init_settings_global', 'spaCy - Greek (Modern) Stop Word List'): 'spacy_ell',
-                _tr('init_settings_global', 'spaCy - Gujarati Stop Word List'): 'spacy_guj',
-                _tr('init_settings_global', 'spaCy - Hebrew Stop Word List'): 'spacy_heb',
-                _tr('init_settings_global', 'spaCy - Hindi Stop Word List'): 'spacy_hin',
-                _tr('init_settings_global', 'spaCy - Hungarian Stop Word List'): 'spacy_hun',
-                _tr('init_settings_global', 'spaCy - Icelandic Stop Word List'): 'spacy_isl',
-                _tr('init_settings_global', 'spaCy - Indonesian Stop Word List'): 'spacy_ind',
-                _tr('init_settings_global', 'spaCy - Irish Stop Word List'): 'spacy_gle',
-                _tr('init_settings_global', 'spaCy - Italian Stop Word List'): 'spacy_ita',
-                _tr('init_settings_global', 'spaCy - Japanese Stop Word List'): 'spacy_jpn',
-                _tr('init_settings_global', 'spaCy - Kannada Stop Word List'): 'spacy_kan',
-                _tr('init_settings_global', 'spaCy - Korean Stop Word List'): 'spacy_kor',
-                _tr('init_settings_global', 'spaCy - Kyrgyz Stop Word List'): 'spacy_kir',
-                _tr('init_settings_global', 'spaCy - Latvian Stop Word List'): 'spacy_lav',
-                _tr('init_settings_global', 'spaCy - Ligurian Stop Word List'): 'spacy_lij',
-                _tr('init_settings_global', 'spaCy - Lithuanian Stop Word List'): 'spacy_lit',
-                _tr('init_settings_global', 'spaCy - Luxembourgish Stop Word List'): 'spacy_ltz',
-                _tr('init_settings_global', 'spaCy - Macedonian Stop Word List'): 'spacy_mkd',
-                _tr('init_settings_global', 'spaCy - Malayalam Stop Word List'): 'spacy_mal',
-                _tr('init_settings_global', 'spaCy - Marathi Stop Word List'): 'spacy_mar',
-                _tr('init_settings_global', 'spaCy - Nepali Stop Word List'): 'spacy_nep',
-                _tr('init_settings_global', 'spaCy - Norwegian Bokmål Stop Word List'): 'spacy_nob',
-                _tr('init_settings_global', 'spaCy - Persian Stop Word List'): 'spacy_fas',
-                _tr('init_settings_global', 'spaCy - Polish Stop Word List'): 'spacy_pol',
-                _tr('init_settings_global', 'spaCy - Portuguese Stop Word List'): 'spacy_por',
-                _tr('init_settings_global', 'spaCy - Romanian Stop Word List'): 'spacy_ron',
-                _tr('init_settings_global', 'spaCy - Russian Stop Word List'): 'spacy_rus',
-                _tr('init_settings_global', 'spaCy - Sanskrit Stop Word List'): 'spacy_san',
-                _tr('init_settings_global', 'spaCy - Serbian (Cyrillic) Stop Word List'): 'spacy_srp_cyrl',
-                _tr('init_settings_global', 'spaCy - Serbian (Latin) Stop Word List'): 'spacy_srp_latn',
-                _tr('init_settings_global', 'spaCy - Sinhala Stop Word List'): 'spacy_sin',
-                _tr('init_settings_global', 'spaCy - Slovak Stop Word List'): 'spacy_slk',
-                _tr('init_settings_global', 'spaCy - Slovenian Stop Word List'): 'spacy_slv',
-                _tr('init_settings_global', 'spaCy - Sorbian (Lower) Stop Word List'): 'spacy_dsb',
-                _tr('init_settings_global', 'spaCy - Sorbian (Upper) Stop Word List'): 'spacy_hsb',
-                _tr('init_settings_global', 'spaCy - Spanish Stop Word List'): 'spacy_spa',
-                _tr('init_settings_global', 'spaCy - Swedish Stop Word List'): 'spacy_swe',
-                _tr('init_settings_global', 'spaCy - Tagalog Stop Word List'): 'spacy_tgl',
-                _tr('init_settings_global', 'spaCy - Tamil Stop Word List'): 'spacy_tam',
-                _tr('init_settings_global', 'spaCy - Tatar Stop Word List'): 'spacy_tat',
-                _tr('init_settings_global', 'spaCy - Telugu Stop Word List'): 'spacy_tel',
-                _tr('init_settings_global', 'spaCy - Thai Stop Word List'): 'spacy_tha',
-                _tr('init_settings_global', 'spaCy - Tigrinya Stop Word List'): 'spacy_tir',
-                _tr('init_settings_global', 'spaCy - Tswana Stop Word List'): 'spacy_tsn',
-                _tr('init_settings_global', 'spaCy - Turkish Stop Word List'): 'spacy_tur',
-                _tr('init_settings_global', 'spaCy - Ukrainian Stop Word List'): 'spacy_ukr',
-                _tr('init_settings_global', 'spaCy - Urdu Stop Word List'): 'spacy_urd',
-                _tr('init_settings_global', 'spaCy - Vietnamese Stop Word List'): 'spacy_vie',
-                _tr('init_settings_global', 'spaCy - Yoruba Stop Word List'): 'spacy_yor',
-
                 _tr('init_settings_global', 'stopword - Afrikaans Stop Word List'): 'stopword_afr',
                 _tr('init_settings_global', 'stopword - Arabic Stop Word List'): 'stopword_ara',
                 _tr('init_settings_global', 'stopword - Armenian Stop Word List'): 'stopword_hye',
@@ -1736,117 +1664,77 @@ def init_settings_global():
         },
 
         'stop_word_lists': {
-            'afr': [
-                'spacy_afr',
-                'stopword_afr'
-            ],
-
-            'sqi': ['spacy_sqi'],
-            'amh': ['spacy_amh'],
+            'afr': ['stopword_afr'],
 
             'ara': [
                 'nltk_ara',
-                'spacy_ara',
                 'stopword_ara'
             ],
 
-            'hye': [
-                'spacy_hye',
-                'stopword_hye'
-            ],
-
-            'aze': [
-                'nltk_aze',
-                'spacy_aze'
-            ],
+            'hye': ['stopword_hye'],
+            'aze': ['nltk_aze'],
 
             'eus': [
                 'nltk_eus',
-                'spacy_eus',
                 'stopword_eus'
             ],
 
             'ben': [
                 'nltk_ben',
-                'spacy_ben',
                 'stopword_ben'
             ],
 
             'bre': ['stopword_bre'],
-
-            'bul': [
-                'spacy_bul',
-                'stopword_bul'
-            ],
+            'bul': ['stopword_bul'],
 
             'cat': [
                 'nltk_cat',
-                'spacy_cat',
                 'stopword_cat'
             ],
 
             'zho_cn': [
                 'nltk_zho_cn',
-                'spacy_zho_cn',
                 'stopword_zho_cn'
             ],
 
             'zho_tw': [
                 'nltk_zho_tw',
-                'spacy_zho_tw',
                 'stopword_zho_tw'
             ],
 
-            'hrv': [
-                'spacy_hrv',
-                'stopword_hrv'
-            ],
-
-            'ces': [
-                'spacy_ces',
-                'stopword_ces'
-            ],
+            'hrv': ['stopword_hrv'],
+            'ces': ['stopword_ces'],
 
             'dan': [
                 'nltk_dan',
-                'spacy_dan',
                 'stopword_dan'
             ],
 
             'nld': [
                 'nltk_nld',
-                'spacy_nld',
                 'stopword_nld'
             ],
 
             'eng_gb': [
                 'nltk_eng',
-                'spacy_eng',
                 'stopword_eng'
             ],
 
             'eng_us': [
                 'nltk_eng',
-                'spacy_eng',
                 'stopword_eng'
             ],
 
             'epo': ['stopword_epo'],
-
-            'est': [
-                'spacy_est',
-                'stopword_est'
-            ],
+            'est': ['stopword_est'],
 
             'fin': [
                 'nltk_fin',
-                'spacy_fin',
                 'stopword_fin'
             ],
 
             'fra': [
                 'nltk_fra',
-                'spacy_fra',
                 'stopword_fra'
             ],
 
@@ -1854,147 +1742,80 @@ def init_settings_global():
 
             'deu_at': [
                 'nltk_deu',
-                'spacy_deu',
                 'stopword_deu'
             ],
 
             'deu_de': [
                 'nltk_deu',
-                'spacy_deu',
                 'stopword_deu'
             ],
 
             'deu_ch': [
                 'nltk_deu',
-                'spacy_deu',
                 'stopword_deu'
             ],
 
-            'grc': ['spacy_grc'],
-
             'ell': [
                 'nltk_ell',
-                'spacy_ell',
                 'stopword_ell'
             ],
 
-            'guj': [
-                'spacy_guj',
-                'stopword_guj'
-            ],
-
+            'guj': ['stopword_guj'],
             'hau': ['stopword_hau'],
 
             'heb': [
                 'nltk_heb',
-                'spacy_heb',
                 'stopword_heb'
             ],
 
-            'hin': [
-                'spacy_hin',
-                'stopword_hin'
-            ],
+            'hin': ['stopword_hin'],
 
             'hun': [
                 'nltk_hun',
-                'spacy_hun',
                 'stopword_hun'
             ],
 
-            'isl': ['spacy_isl'],
-
             'ind': [
                 'nltk_ind',
-                'spacy_ind',
                 'stopword_ind'
             ],
 
-            'gle': [
-                'spacy_gle',
-                'stopword_gle'
-            ],
+            'gle': ['stopword_gle'],
 
             'ita': [
                 'nltk_ita',
-                'spacy_ita',
                 'stopword_ita'
             ],
 
-            'jpn': [
-                'spacy_jpn',
-                'stopword_jpn'
-            ],
-
-            'kan': ['spacy_kan'],
+            'jpn': ['stopword_jpn'],
             'kaz': ['nltk_kaz'],
-
-            'kor': [
-                'spacy_kor',
-                'stopword_kor'
-            ],
-
+            'kor': ['stopword_kor'],
             'kur': ['stopword_kur'],
-            'kir': ['spacy_kir'],
             'lat': ['stopword_lat'],
-
-            'lav': [
-                'spacy_lav',
-                'stopword_lav'
-            ],
-
-            'lij': ['spacy_lij'],
-
-            'lit': [
-                'spacy_lit',
-                'stopword_lit'
-            ],
-
+            'lav': ['stopword_lav'],
+            'lit': ['stopword_lit'],
             'lgg': ['stopword_lgg'],
-            'ltz': ['spacy_ltz'],
-            'mkd': ['spacy_mkd'],
             'msa': ['stopword_msa'],
-            'mal': ['spacy_mal'],
-
-            'mar': [
-                'spacy_mar',
-                'stopword_mar'
-            ],
-
+            'mar': ['stopword_mar'],
             'mya': ['stopword_mya'],
-
-            'nep': [
-                'nltk_nep',
-                'spacy_nep'
-            ],
+            'nep': ['nltk_nep'],
 
             'nob': [
                 'nltk_nor',
-                'spacy_nob',
                 'stopword_nob'
             ],
 
             'nno': ['nltk_nor'],
-
-            'fas': [
-                'spacy_fas',
-                'stopword_fas'
-            ],
-
-            'pol': [
-                'spacy_pol',
-                'stopword_pol'
-            ],
+            'fas': ['stopword_fas'],
+            'pol': ['stopword_pol'],
 
             'por_br': [
                 'nltk_por',
-                'spacy_por',
                 'stopword_por_br'
             ],
 
             'por_pt': [
                 'nltk_por',
-                'spacy_por',
                 'stopword_por_pt'
             ],
 
@@ -2002,40 +1823,26 @@ def init_settings_global():
 
             'ron': [
                 'nltk_ron',
-                'spacy_ron',
                 'stopword_ron'
             ],
 
             'rus': [
                 'nltk_rus',
-                'spacy_rus',
                 'stopword_rus'
             ],
 
-            'san': ['spacy_san'],
-            'srp_cyrl': ['spacy_srp_cyrl'],
-            'srp_latn': ['spacy_srp_latn'],
-            'sin': ['spacy_sin'],
-
-            'slk': [
-                'spacy_slk',
-                'stopword_slk'
-            ],
+            'slk': ['stopword_slk'],
 
             'slv': [
                 'nltk_slv',
-                'spacy_slv',
                 'stopword_slv'
             ],
 
             'som': ['stopword_som'],
-            'dsb': ['spacy_dsb'],
-            'hsb': ['spacy_hsb'],
             'sot': ['stopword_sot'],
 
             'spa': [
                 'nltk_spa',
-                'spacy_spa',
                 'stopword_spa'
             ],
 
@@ -2043,55 +1850,26 @@ def init_settings_global():
 
             'swe': [
                 'nltk_swe',
-                'spacy_swe',
                 'stopword_swe'
             ],
 
-            'tgl': [
-                'spacy_tgl',
-                'stopword_tgl'
-            ],
-
+            'tgl': ['stopword_tgl'],
             'tgk': ['nltk_tgk'],
-            'tam': ['spacy_tam'],
-            'tat': ['spacy_tat'],
-            'tel': ['spacy_tel'],
 
             'tha': [
                 'pythainlp_tha',
-                'spacy_tha',
                 'stopword_tha'
             ],
 
-            'tir': ['spacy_tir'],
-            'tsn': ['spacy_tsn'],
-
             'tur': [
                 'nltk_tur',
-                'spacy_tur',
                 'stopword_tur'
             ],
 
-            'ukr': [
-                'spacy_ukr',
-                'stopword_ukr'
-            ],
-
-            'urd': [
-                'spacy_urd',
-                'stopword_urd'
-            ],
-
-            'vie': [
-                'spacy_vie',
-                'stopword_vie'
-            ],
-
-            'yor': [
-                'spacy_yor',
-                'stopword_yor'
-            ],
-
+            'ukr': ['stopword_ukr'],
+            'urd': ['stopword_urd'],
+            'vie': ['stopword_vie'],
+            'yor': ['stopword_yor'],
             'zul': ['stopword_zul'],
 
             'other': []
