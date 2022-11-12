@@ -60,6 +60,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Finnish'): ['fin', 'fi', 'Uralic'],
             _tr('init_settings_global', 'French'): ['fra', 'fr', 'Indo-European'],
             _tr('init_settings_global', 'Galician'): ['glg', 'gl', 'Indo-European'],
+            _tr('init_settings_global', 'Ganda'): ['lug', 'lg', 'Niger-Congo'],
             _tr('init_settings_global', 'Georgian'): ['kat', 'ka', 'Kartvelian'],
             _tr('init_settings_global', 'German (Austria)'): ['deu_at', 'de_at', 'Indo-European'],
             _tr('init_settings_global', 'German (Germany)'): ['deu_de', 'de_de', 'Indo-European'],
@@ -404,6 +405,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Estonian Word Tokenizer'): 'spacy_est',
                 _tr('init_settings_global', 'spaCy - Finnish Word Tokenizer'): 'spacy_fin',
                 _tr('init_settings_global', 'spaCy - French Word Tokenizer'): 'spacy_fra',
+                _tr('init_settings_global', 'spaCy - Ganda Word Tokenizer'): 'spacy_lug',
                 _tr('init_settings_global', 'spaCy - German Word Tokenizer'): 'spacy_deu',
                 _tr('init_settings_global', 'spaCy - Greek (Ancient) Word Tokenizer'): 'spacy_grc',
                 _tr('init_settings_global', 'spaCy - Greek (Modern) Word Tokenizer'): 'spacy_ell',
@@ -418,6 +420,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Japanese Word Tokenizer'): 'spacy_jpn',
                 _tr('init_settings_global', 'spaCy - Kannada Word Tokenizer'): 'spacy_kan',
                 _tr('init_settings_global', 'spaCy - Kyrgyz Word Tokenizer'): 'spacy_kir',
+                _tr('init_settings_global', 'spaCy - Latin Word Tokenizer'): 'spacy_lat',
                 _tr('init_settings_global', 'spaCy - Latvian Word Tokenizer'): 'spacy_lav',
                 _tr('init_settings_global', 'spaCy - Ligurian Word Tokenizer'): 'spacy_lij',
                 _tr('init_settings_global', 'spaCy - Lithuanian Word Tokenizer'): 'spacy_lit',
@@ -1100,6 +1103,8 @@ def init_settings_global():
                 'spacy_fra'
             ],
 
+            'lug': ['spacy_lug'],
+
             'deu_at': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
                 'sacremoses_moses',
@@ -1177,6 +1182,11 @@ def init_settings_global():
             ],
 
             'kir': ['spacy_kir'],
+
+            'lat': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_lat'
+            ],
 
             'lav': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
