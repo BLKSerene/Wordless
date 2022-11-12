@@ -129,7 +129,6 @@ class Check_Settings_Global():
         langs_supported_sacremoses = []
         langs_supported_spacy = []
         langs_supported_spacy_lemmatizers = []
-        langs_supported_spacy_stop_words = []
 
         langs_sentence_tokenizers = list(settings_sentence_tokenizers)
         langs_sentence_tokenizers_default = list(settings_sentence_tokenizers_default)
@@ -152,7 +151,6 @@ class Check_Settings_Global():
 
         langs_stop_word_lists = list(settings_stop_word_lists)
         langs_stop_word_lists_default = list(settings_stop_word_lists_default)
-        langs_stop_word_lists_spacy = []
 
         langs_dependency_parsers = list(settings_dependency_parsers)
         langs_dependency_parsers_default = list(settings_dependency_parsers_default)
@@ -187,20 +185,6 @@ class Check_Settings_Global():
         # Languages without data files
         langs_supported_spacy_lemmatizers.extend(['fi', 'ja', 'uk'])
         langs_supported_spacy_lemmatizers = add_lang_suffixes(langs_supported_spacy_lemmatizers)
-
-        # Stop word lists
-        for lang in pkgutil.iter_modules(spacy.lang.__path__):
-            if lang.ispkg:
-                for file in os.listdir(f'{spacy.lang.__path__[0]}/{lang.name}/'):
-                    if file == 'stop_words.py':
-                        if lang.name not in ['sr', 'xx']:
-                            langs_supported_spacy_stop_words.append(lang.name)
-                        elif lang.name == 'sr':
-                            langs_supported_spacy_stop_words.extend(['sr_cyrl', 'sr_latn'])
-
-                        break
-
-        langs_supported_spacy_stop_words = add_lang_suffixes(langs_supported_spacy_stop_words)
 
         # Check for missing and extra languages for spaCy's sentence recognizer / sentencizer
         for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
@@ -254,13 +238,6 @@ class Check_Settings_Global():
                 langs_lemmatizers_spacy.append(lang_code)
 
         self.check_missing_extra_langs(langs_supported_spacy_lemmatizers, langs_lemmatizers_spacy, "spaCy's lemmatizers")
-
-        # Check for missing and extra languages for spaCy's stop word lists
-        for lang_code, stop_word_lists in settings_stop_word_lists.items():
-            if lang_code != 'other' and any(('spacy' in stop_word_list for stop_word_list in stop_word_lists)):
-                langs_stop_word_lists_spacy.append(lang_code)
-
-        self.check_missing_extra_langs(langs_supported_spacy_stop_words, langs_stop_word_lists_spacy, "spaCy's stop word lists")
 
         # Check for missing and extra languages in default settings
         self.check_missing_extra_langs_default(langs_sentence_tokenizers, langs_sentence_tokenizers_default, 'sentence tokenizers')
