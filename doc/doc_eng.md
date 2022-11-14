@@ -916,7 +916,7 @@ Legibilidad µ:
         \mu = \left(\frac{NumWords}{NumWords - 1}\right) * \left(\frac{LenWordsAvg}{LenWordsVar}\right) * 100
     \end{align*}
 
-Linsear Write:
+Lensear Write:
     \begin{align*}
         Score = NumWordsMonosyllabic + 3 \times NumSentences
     \end{align*}
@@ -974,7 +974,7 @@ Measure of Readability|Formula
 <span id="ref-gulpease-index"></span>Gulpease Index<br>([Lucisano & Emanuela Piemontese, 1988](#ref-lucisano-emanuela-piemontese-1988); [Indice Gulpease, 2021](#ref-indice-gulpease-2021))|![Formula](/doc/measures/readability/gulpease_index.svg)<br>* This test applies only to **Italian texts**.
 <span id="ref-fog-index"></span>Gunning Fog Index<sup>1</sup><br>([Gunning, 1968](#ref-gunning-1968))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables which end with *-ed* or *-es*.<br><br>* This test applies only to **English texts**.
 <span id="ref-legibilidad-mu"></span>Legibilidad µ<br>([Muñoz Baquedano, 2006](#ref-munoz-baquedano-2006); [Muñoz Fernández, 2016](#ref-munoz-fernandez-2016))|![Formula](/doc/measures/readability/legibilidad_mu.svg)<br>where **LenWordsAvg** is the average word length in letters, and **LenWordsVar** is the variance of word lengths in letters<br><br>* This test applies only to **Spanish texts**.<br>* The text should be **at least 2 words long**.
-<span id="ref-linsear-write"></span>Linsear Write<sup>1</sup><br>([O’Hayre, 1966](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/linsear_write.svg)<br>where **NumWordsMonosyllabic** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*.<br><br>* This test applies only to **English texts**.<br>* A sample of 100 words is taken randomly from the text, thus the text should be **at least 100 words long**.
+<span id="ref-lensear-write"></span>Lensear Write<sup>1</sup><br>([O’Hayre, 1966](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/linsear_write.svg)<br>where **NumWordsMonosyllabic** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*, and **NumSentences** is the number of sentences to the nearest period.<br><br>* This test applies only to **English texts**.<br>* A sample of 100 words is taken randomly from the text.<br>If the text is **shorter than 100 words**, **NumWordsMonosyllabic** and **NumSentences** need to be multiplied by 100 and then divided by the number of text.
 <span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968); [Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/lix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
 <span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
 <span id="ref-smog-grade"></span>SMOG Grade<sup>1</sup><br>([McLaughlin, 1969](#ref-mclaughlin-1969))|![Formula](/doc/measures/readability/smog_grade.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables.<br><br>* A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text is taken from the text, thus the text should be **at least 30 sentences long**.
@@ -1412,7 +1412,7 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 <span id="ref-oakes-1998"></span>
 [47] [**^**](#ref-pearsons-chi-squared-test) Oakes, M. P. (1998). *Statistics for Corpus Linguistics*. Edinburgh University Press.<br>
 <span id="ref-o-hayre-1966"></span>
-[48] [**^**](#ref-linsear-write) O’Hayre, J. (1966). *Gobbledygook has gotta go*. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf<br>
+[48] [**^**](#ref-lensear-write) O’Hayre, J. (1966). *Gobbledygook has gotta go*. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf<br>
 <span id="ref-paquot-bestgen-2009"></span>
 [49] [**^**](#ref-students-t-test-2-sample) Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. *Language and Computers*, *68*, 247–269.<br>
 <span id="ref-pedersen-1996"></span>
