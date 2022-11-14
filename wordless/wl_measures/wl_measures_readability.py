@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import bisect
 import random
 
 import numpy
@@ -338,43 +339,44 @@ def legibility_mu(main, text):
 
     return mu
 
-# Linsear Write
+# Lensear Write
 # Reference: O’Hayre, J. (1966). Gobbledygook has gotta go. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
-def linsear_write(main, text):
-    if text.lang in main.settings_global['syl_tokenizers']:
+def lensear_write(main, text):
+    if text.lang.startswith('eng') and text.lang in main.settings_global['syl_tokenizers']:
         get_counts(main, text)
 
-        if text.count_words >= 100:
-            samples = []
-            i_word = 0
-            count_sentences_samples = 0
+        if text.count_words > 0:
+            if text.count_words > 100:
+                sample_start = random.randint(0, text.count_words - 100)
+            else:
+                sample_start = 0
 
-            samples_start = random.randint(0, text.count_words - 100)
-
-            for sentence in text.sentences:
-                if len(samples) < 100:
-                    if i_word + len(sentence) >= samples_start:
-                        count_sentences_samples += 1
-
-                        for token in sentence:
-                            if len(samples) < 100:
-                                samples.append(token)
-                            else:
-                                break
-
-                    i_word += len(sentence)
-                else:
-                    break
+            sample = text.words_flat[sample_start : sample_start + 100]
 
             count_words_monosyllabic = 0
+            sysl_sample = wl_syl_tokenization.wl_syl_tokenize(main, sample, lang = text.lang)
 
-            samples_syls = wl_syl_tokenization.wl_syl_tokenize(main, samples, lang = text.lang)
-
-            for syls in samples_syls:
+            for syls in sysl_sample:
                 if len(syls) == 1 and syls[0].lower() not in ['the', 'is', 'are', 'was', 'were']:
                     count_words_monosyllabic += 1
 
-            score = count_words_monosyllabic + 3 * count_sentences_samples
+            offsets_sentences = []
+            offsets_sentences = []
+            num_tokens = 0
+
+            for sentence in text.sentences:
+                offsets_sentences.append(num_tokens)
+
+                num_tokens += len(sentence)
+
+            count_sentences_sample = bisect.bisect(offsets_sentences, sample_start + 100)
+
+            # Normalize counts if number of tokens is less than 100
+            if text.count_words < 100:
+                count_words_monosyllabic *= 100 / text.count_words
+                count_sentences_sample *= 100 / text.count_words
+
+            score = count_words_monosyllabic + 3 * count_sentences_sample
         else:
             score = 'text_too_short'
     else:
