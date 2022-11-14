@@ -20,7 +20,6 @@ import numpy
 
 from tests import wl_test_init
 from wordless.wl_measures import wl_measures_readability
-from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main()
 
@@ -38,9 +37,6 @@ class Wl_Test_Text():
         self.main = main
         self.lang = lang
         self.tokens_multilevel = tokens_multilevel
-
-    def get_tokens_flat(self):
-        return list(wl_misc.flatten_list(self.tokens_multilevel))
 
 test_text_eng_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0)
 test_text_eng_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12)
@@ -259,21 +255,21 @@ def test_legibility_mu():
     assert mu_spa_12 == (12 / 11) * (3.75 / 7.1875) * 100
     assert mu_eng_12 == 'no_support'
 
-def test_linsear_write():
-    score_eng_12 = wl_measures_readability.linsear_write(main, test_text_eng_12)
-    score_eng_100 = wl_measures_readability.linsear_write(main, test_text_eng_100)
-    score_spa_12 = wl_measures_readability.linsear_write(main, test_text_spa_12)
-    score_other_12 = wl_measures_readability.linsear_write(main, test_text_other_12)
+def test_lensear_write():
+    score_eng_0 = wl_measures_readability.lensear_write(main, test_text_eng_0)
+    score_eng_12 = wl_measures_readability.lensear_write(main, test_text_eng_12)
+    score_eng_100 = wl_measures_readability.lensear_write(main, test_text_eng_100)
+    score_other_12 = wl_measures_readability.lensear_write(main, test_text_other_12)
 
-    print('Linsear Write:')
+    print('Lensear Write:')
+    print(f'\t{score_eng_0} (eng/0)')
     print(f'\t{score_eng_12} (eng/12)')
     print(f'\t{score_eng_100} (eng/100)')
-    print(f'\t{score_spa_12} (spa/12)')
     print(f'\t{score_other_12} (other/12)')
 
-    assert score_eng_12 == 'text_too_short'
+    assert score_eng_0 == 'text_too_short'
+    assert score_eng_12 == 6 * (100 / 12) + 3 * 3 * (100 / 12)
     assert score_eng_100 == 50 + 3 * 25
-    assert score_spa_12 != 'no_support'
     assert score_other_12 == 'no_support'
 
 def test_lix():
@@ -393,7 +389,7 @@ if __name__ == '__main__':
     test_gulpease_index()
     test_gunning_fog_index()
     test_legibility_mu()
-    test_linsear_write()
+    test_lensear_write()
     test_lix()
     test_rix()
     test_smog_grade()
