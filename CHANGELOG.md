@@ -52,6 +52,7 @@
 - Dependencies: Remove extra-stopwords, Lemmatization Lists, and Stopwords ISO
 - Dependencies: Upgrade Charset Normalizer to 3.0.0
 - Dependencies: Upgrade Lingua to 1.1.3
+- Dependencies: Upgrade Matplotlib to 3.6.2
 - Dependencies: Upgrade spaCy to 3.4.3
 - Dependencies: Upgrade spacy-pkuseg to 0.0.32
 
