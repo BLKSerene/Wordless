@@ -294,19 +294,33 @@ def gulpease_index(main, text):
     return gulpease_index
 
 # Gunning Fog Index
-# Reference: Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
+# References:
+#     Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
+#     Indeks czytelności FOG. (2022, Sep 12). In Wikipedia. https://pl.wikipedia.org/wiki/Indeks_czytelno%C5%9Bci_FOG?oldid=68198881
+#     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu? Zeszyty Prasoznawcze, 4(42), 35–48.
 def gunning_fog_index(main, text):
-    if text.lang.startswith('eng') and text.lang in main.settings_global['syl_tokenizers']:
+    if text.lang.startswith('eng') or text.lang == 'pol' and text.lang in main.settings_global['syl_tokenizers']:
         get_counts(main, text)
 
         if text.count_sentences and text.count_words:
             count_hard_words = 0
 
-            words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
+            if text.lang.startswith('eng'):
+                words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
 
-            for syls, (_, tag) in zip(text.syls_words, words_tagged):
-                if tag != 'PROPN' and ((len(syls) == 3 and syls[-1] not in ['ed', 'es']) or len(syls) > 3):
-                    count_hard_words += 1
+                for syls, (word, tag) in zip(text.syls_words, words_tagged):
+                    if (
+                        tag != 'PROPN'
+                        and (
+                            (len(syls) == 3 and not word.endswith('ed') and not word.endswith('es'))
+                            or len(syls) > 3
+                        )
+                    ):
+                        count_hard_words += 1
+            elif text.lang == 'pol':
+                for syls in text.syls_words:
+                    if len(syls) >= 4:
+                        count_hard_words += 1
 
             fog_index = 0.4 * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
         else:
