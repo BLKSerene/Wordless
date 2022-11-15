@@ -27,7 +27,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.0.0  |TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
 4 |[jieba](https://github.com/fxsjy/jieba)                           |0.42.1 |Sun Junyi (孙君意)|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
 5 |[Lingua](https://github.com/pemistahl/lingua-py)                  |1.1.3  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
-6 |[Matplotlib](https://matplotlib.org/)                             |3.6.0  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
+6 |[Matplotlib](https://matplotlib.org/)                             |3.6.2  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 7 |[NetworkX](https://networkx.org/)                                 |2.8.6  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 8 |[NLTK](http://www.nltk.org/)                                      |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 9 |[NumPy](https://www.numpy.org/)                                   |1.23.3 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
