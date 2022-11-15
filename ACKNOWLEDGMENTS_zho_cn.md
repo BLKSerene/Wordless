@@ -28,7 +28,7 @@
 4 |[jieba](https://github.com/fxsjy/jieba)                           |0.42.1 |孙君意|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
 5 |[Lingua](https://github.com/pemistahl/lingua-py)                  |1.1.3  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 6 |[Matplotlib](https://matplotlib.org/)                             |3.6.2  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
-7 |[NetworkX](https://networkx.org/)                                 |2.8.6  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
+7 |[NetworkX](https://networkx.org/)                                 |2.8.8  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 8 |[NLTK](http://www.nltk.org/)                                      |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 9 |[NumPy](https://www.numpy.org/)                                   |1.23.3 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 10|[opencc-python](https://github.com/yichen0831/opencc-python)      |0.1.6  |郭家宝, Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
