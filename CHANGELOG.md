@@ -54,6 +54,7 @@
 - Dependencies: Upgrade Lingua to 1.1.3
 - Dependencies: Upgrade Matplotlib to 3.6.2
 - Dependencies: Upgrade NetworkX to 2.8.8
+- Dependencies: Upgrade NumPy to 1.23.4
 - Dependencies: Upgrade spaCy to 3.4.3
 - Dependencies: Upgrade spacy-pkuseg to 0.0.32
 
