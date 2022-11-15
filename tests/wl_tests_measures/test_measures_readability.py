@@ -228,18 +228,19 @@ def test_gulpease_index():
 def test_gunning_fog_index():
     fog_index_eng_0 = wl_measures_readability.gunning_fog_index(main, test_text_eng_0)
     fog_index_eng_12_propn = wl_measures_readability.gunning_fog_index(main, test_text_eng_12_propn)
+    fog_index_pol_12 = wl_measures_readability.gunning_fog_index(main, Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'pol'))
     fog_index_spa_12 = wl_measures_readability.gunning_fog_index(main, test_text_spa_12)
-    fog_index_other_12 = wl_measures_readability.gunning_fog_index(main, test_text_other_12)
 
     print('Gunning Fog Index:')
     print(f'\t{fog_index_eng_0} (0)')
     print(f'\t{fog_index_eng_12_propn} (eng/12)')
+    print(f'\t{fog_index_pol_12} (pol/12)')
     print(f'\t{fog_index_spa_12} (spa/12)')
-    print(f'\t{fog_index_other_12} (other/12)')
 
     assert fog_index_eng_0 == 'text_too_short'
     assert fog_index_eng_12_propn == 0.4 * (12 / 3 + 1 / 12 * 100)
-    assert fog_index_spa_12 == fog_index_other_12 == 'no_support'
+    assert fog_index_pol_12 == 0.4 * (12 / 3 + 1 / 12 * 100)
+    assert fog_index_spa_12 == 'no_support'
 
 def test_legibility_mu():
     mu_spa_0 = wl_measures_readability.legibility_mu(main, test_text_spa_0)

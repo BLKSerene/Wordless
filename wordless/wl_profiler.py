@@ -103,7 +103,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     wl_measures_readability.gulpease_index(self.main, text),
                     wl_measures_readability.gunning_fog_index(self.main, text),
                     wl_measures_readability.legibility_mu(self.main, text),
-                    wl_measures_readability.linsear_write(self.main, text),
+                    wl_measures_readability.lensear_write(self.main, text),
                     wl_measures_readability.lix(self.main, text),
                     wl_measures_readability.rix(self.main, text),
                     wl_measures_readability.smog_grade(self.main, text),
