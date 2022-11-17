@@ -29,7 +29,7 @@
 - Utils: Add spaCy's Ganda and Latin word tokenizers
 - Utils: Add stopword's stop word lists
 - Work Area: Add Dependency Parser
-- Work Area: Add Profiler - Automated Arabic Readability Index / Fernández Huerta's Readability Score / Gulpease Index / Legibilidad µ / Lix / Rix / Szigriszt's Perspicuity Index / Wiener Sachtextformel
+- Work Area: Add Profiler - Automated Arabic Readability Index / Fernández Huerta's Readability Score / Fórmula de comprensibilidad de Gutiérrez de Polini / Fórmula de Crawford / Gulpease Index / Legibilidad µ / Lix / McAlpine EFLAW Readability Score / OSMAN / Rix / Szigriszt's Perspicuity Index / Wiener Sachtextformel
 
 ### ✨ Improvements
 - Utils: Update NLTK's English and Russian perceptron part-of-speech taggers

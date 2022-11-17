@@ -91,7 +91,7 @@ def log_ratio(main, c11, c12, c21, c22):
         return numpy.log2((c11 / cx1) / (c12 / cx2))
 
 # Log-Frequency Biased MD
-# Reference: Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González, & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
+# Reference: Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), Proceedings of the Third International Conference on Language Resources and Evaluation (pp. 620–625). European Language Resources Association.
 def lfmd(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2 = wl_measures_statistical_significance.get_freqs_marginal(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_freqs_expected(c11, c12, c21, c22)
@@ -104,7 +104,7 @@ def lfmd(main, c11, c12, c21, c22):
         return numpy.log2(c11 ** 2 / e11) + numpy.log2(c11)
 
 # logDice
-# Reference: Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka, & A. Horák (Eds.), Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing. Masaryk University
+# Reference: Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing. Masaryk University
 def log_dice(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2 = wl_measures_statistical_significance.get_freqs_marginal(c11, c12, c21, c22)
 
@@ -112,8 +112,8 @@ def log_dice(main, c11, c12, c21, c22):
 
 # MI.log-f
 # References:
-#     Lexical Computing Ltd. (2015, July 8). Statistics used in Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/
-#     Kilgarriff, A., & Tugwell, D. (2002). WASP-bench – an MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In Proceedings of the 8th Machine Translation Summit (pp. 187–190). European Association for Machine Translation.
+#     Lexical Computing. (2015, July 8). Statistics used in Sketch Engine. Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/
+#     Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In Proceedings of the 8th Machine Translation Summit (pp. 187–190). European Association for Machine Translation.
 def mi_log_f(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2 = wl_measures_statistical_significance.get_freqs_marginal(c11, c12, c21, c22)
     e11, e12, e21, e22 = wl_measures_statistical_significance.get_freqs_expected(c11, c12, c21, c22)

@@ -214,7 +214,7 @@ def pearsons_chi_squared_test(main, c11, c12, c21, c22):
     return chi_squared, p_val
 
 # Student's t-test (1-sample)
-# References: Church, K., Gale, W., Hanks P., & Hindle D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
+# References: Church, K., Gale, W., Hanks, P., & Hindle, D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
 def students_t_test_1_sample(main, c11, c12, c21, c22):
     direction = main.settings_custom['measures']['statistical_significance']['students_t_test_1_sample']['direction']
 

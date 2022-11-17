@@ -23,13 +23,6 @@ from wordless.wl_measures import wl_measures_readability
 
 main = wl_test_init.Wl_Test_Main()
 
-TOKENS_MULTILEVEL_0 = []
-TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
-TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'readability', 'boxes', 'created', '.']]]]
-TOKENS_MULTILEVEL_100 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'a', 'sen-tence0', '.']]]]
-TOKENS_MULTILEVEL_120 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'metropolis', '.']]]] * 15
-TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 18 + [[[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]]
-
 class Wl_Test_Text():
     def __init__(self, tokens_multilevel, lang = 'eng_us'):
         super().__init__()
@@ -37,6 +30,13 @@ class Wl_Test_Text():
         self.main = main
         self.lang = lang
         self.tokens_multilevel = tokens_multilevel
+
+TOKENS_MULTILEVEL_0 = []
+TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
+TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'readability', 'boxes', 'created', '.']]]]
+TOKENS_MULTILEVEL_100 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'a', 'sen-tence0', '.']]]]
+TOKENS_MULTILEVEL_120 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'metropolis', '.']]]] * 15
+TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 18 + [[[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]]
 
 test_text_eng_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0)
 test_text_eng_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12)
@@ -70,64 +70,56 @@ def test_automated_readability_index():
     ari_eng_0 = wl_measures_readability.automated_readability_index(main, test_text_eng_0)
     ari_eng_12 = wl_measures_readability.automated_readability_index(main, test_text_eng_12)
     ari_spa_12 = wl_measures_readability.automated_readability_index(main, test_text_spa_12)
-    ari_other_12 = wl_measures_readability.automated_readability_index(main, test_text_other_12)
 
     print('Automated Readability Index:')
     print(f'\t{ari_eng_0} (0)')
     print(f'\t{ari_eng_12} (eng/12)')
     print(f'\t{ari_spa_12} (spa/12)')
-    print(f'\t{ari_other_12} (other/12)')
 
     assert ari_eng_0 == 'text_too_short'
-    assert ari_eng_12 == ari_spa_12 == ari_other_12 == 0.5 * (12 / 3) + 4.71 * (47 / 12) - 21.43
+    assert ari_eng_12 == ari_spa_12 == 0.5 * (12 / 3) + 4.71 * (47 / 12) - 21.43
 
 def test_coleman_liau_index():
     grade_level_eng_0 = wl_measures_readability.coleman_liau_index(main, test_text_eng_0)
     grade_level_eng_12 = wl_measures_readability.coleman_liau_index(main, test_text_eng_12)
     grade_level_spa_12 = wl_measures_readability.coleman_liau_index(main, test_text_spa_12)
-    grade_level_other_12 = wl_measures_readability.coleman_liau_index(main, test_text_other_12)
 
     print('Coleman-Liau Index:')
     print(f'\t{grade_level_eng_0} (0)')
     print(f'\t{grade_level_eng_12} (eng/12)')
     print(f'\t{grade_level_spa_12} (spa/12)')
-    print(f'\t{grade_level_other_12} (other/12)')
 
     est_cloze_pct = 141.8401 - 0.21459 * (45 / 12 * 100) + 1.079812 * (3 / 12 * 100)
 
     assert grade_level_eng_0 == 'text_too_short'
-    assert grade_level_eng_12 == grade_level_spa_12 == grade_level_other_12 == -27.4004 * (est_cloze_pct / 100) + 23.06395
+    assert grade_level_eng_12 == grade_level_spa_12 == -27.4004 * (est_cloze_pct / 100) + 23.06395
 
 def test_dale_chall_readability_score():
     x_c50_eng_0 = wl_measures_readability.dale_chall_readability_score(main, test_text_eng_0)
     x_c50_eng_12 = wl_measures_readability.dale_chall_readability_score(main, test_text_eng_12)
     x_c50_spa_12 = wl_measures_readability.dale_chall_readability_score(main, test_text_spa_12)
-    x_c50_other_12 = wl_measures_readability.dale_chall_readability_score(main, test_text_other_12)
 
     print('Dale-Chall Readibility Score:')
     print(f'\t{x_c50_eng_0} (0)')
     print(f'\t{x_c50_eng_12} (eng/12)')
     print(f'\t{x_c50_spa_12} (spa/12)')
-    print(f'\t{x_c50_other_12} (other/12)')
 
     assert x_c50_eng_0 == 'text_too_short'
     assert x_c50_eng_12 == 0.1579 * (1 / 12) + 0.0496 * (12 / 3) + 3.6365
-    assert x_c50_spa_12 == x_c50_other_12 == 'no_support'
+    assert x_c50_spa_12 == 'no_support'
 
 def test_devereux_readability_index():
     grade_placement_eng_0 = wl_measures_readability.devereux_readability_index(main, test_text_eng_0)
     grade_placement_eng_12 = wl_measures_readability.devereux_readability_index(main, test_text_eng_12)
     grade_placement_spa_12 = wl_measures_readability.devereux_readability_index(main, test_text_spa_12)
-    grade_placement_other_12 = wl_measures_readability.devereux_readability_index(main, test_text_other_12)
 
     print('Devereux Readability Index:')
     print(f'\t{grade_placement_eng_0} (0)')
     print(f'\t{grade_placement_eng_12} (eng/12)')
     print(f'\t{grade_placement_spa_12} (spa/12)')
-    print(f'\t{grade_placement_other_12} (other/12)')
 
     assert grade_placement_eng_0 == 'text_too_short'
-    assert grade_placement_eng_12 == grade_placement_spa_12 == grade_placement_other_12 == 1.56 * (47 / 12) + 0.19 * (12 / 3) - 6.49
+    assert grade_placement_eng_12 == grade_placement_spa_12 == 1.56 * (47 / 12) + 0.19 * (12 / 3) - 6.49
 
 def test_fernandez_huertas_readability_score():
     score_spa_0 = wl_measures_readability.fernandez_huertas_readability_score(main, test_text_spa_0)
@@ -190,8 +182,7 @@ def test_flesch_reading_ease_simplified():
     print(f'\t{flesch_re_simplified_other_12} (other/12)')
 
     assert flesch_re_simplified_eng_0 == 'text_too_short'
-    assert flesch_re_simplified_eng_12 == 1.599 * (9 / 12 * 100) - 1.015 * (12 / 3) - 31.517
-    assert flesch_re_simplified_spa_12 != 'no_support'
+    assert flesch_re_simplified_eng_12 == flesch_re_simplified_spa_12 == 1.599 * (9 / 12 * 100) - 1.015 * (12 / 3) - 31.517
     assert flesch_re_simplified_other_12 == 'no_support'
 
 def test_forcast_grade_level():
@@ -207,9 +198,36 @@ def test_forcast_grade_level():
     print(f'\t{rgl_other_12} (other/12)')
 
     assert rgl_eng_12 == 'text_too_short'
-    assert rgl_eng_150 == 20.43 - 0.11 * (6 * 18 + 4)
-    assert rgl_spa_150 != 'no_support'
+    assert rgl_eng_150 == rgl_spa_150 == 20.43 - 0.11 * (6 * 18 + 4)
     assert rgl_other_12 == 'no_support'
+
+def test_formula_de_comprensibilidad_de_gutierrez_de_polini():
+    cp_spa_0 = wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(main, test_text_spa_0)
+    cp_spa_12 = wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(main, test_text_spa_12)
+    cp_eng_12 = wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(main, test_text_eng_12)
+
+    print('Fórmula de comprensibilidad de Gutiérrez de Polini:')
+    print(f'\t{cp_spa_0} (spa/0)')
+    print(f'\t{cp_spa_12} (spa/12)')
+    print(f'\t{cp_eng_12} (eng/12)')
+
+    assert cp_spa_0 == 'text_too_short'
+    assert cp_spa_12 == 95.2 - 9.7 * (45 / 12) - 0.35 * (12 / 3)
+    assert cp_eng_12 == 'no_support'
+
+def test_formula_de_crawford():
+    grade_level_spa_0 = wl_measures_readability.formula_de_crawford(main, test_text_spa_0)
+    grade_level_spa_12 = wl_measures_readability.formula_de_crawford(main, test_text_spa_12)
+    grade_level_eng_12 = wl_measures_readability.formula_de_crawford(main, test_text_eng_12)
+
+    print('Fórmula de Crawford:')
+    print(f'\t{grade_level_spa_0} (spa/0)')
+    print(f'\t{grade_level_spa_12} (spa/12)')
+    print(f'\t{grade_level_eng_12} (eng/12)')
+
+    assert grade_level_spa_0 == 'text_too_short'
+    assert grade_level_spa_12 == 3 / 12 * 100 * (-0.205) + 18 / 12 * 100 * 0.049 - 3.407
+    assert grade_level_eng_12 == 'no_support'
 
 def test_gulpease_index():
     gulpease_index_ita_0 = wl_measures_readability.gulpease_index(main, Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'ita'))
@@ -276,30 +294,57 @@ def test_lensear_write():
 def test_lix():
     lix_eng_0 = wl_measures_readability.lix(main, test_text_eng_0)
     lix_eng_12 = wl_measures_readability.lix(main, test_text_eng_12)
-    lix_other_12 = wl_measures_readability.lix(main, test_text_other_12)
+    lix_spa_12 = wl_measures_readability.lix(main, test_text_spa_12)
 
     print('Lix:')
     print(f'\t{lix_eng_0} (eng/0)')
     print(f'\t{lix_eng_12} (eng/12)')
-    print(f'\t{lix_other_12} (other/12)')
+    print(f'\t{lix_spa_12} (spa/12)')
 
     assert lix_eng_0 == 'text_too_short'
     assert lix_eng_12 == 12 / 3 + 100 * (3 / 12)
-    assert lix_other_12 != 'no_support'
+    assert lix_spa_12 != 'no_support'
+
+def test_mcalpine_eflaw():
+    eflaw_eng_0 = wl_measures_readability.mcalpine_eflaw(main, test_text_eng_0)
+    eflaw_eng_12 = wl_measures_readability.mcalpine_eflaw(main, test_text_eng_12)
+    eflaw_spa_12 = wl_measures_readability.mcalpine_eflaw(main, test_text_spa_12)
+
+    print('McAlpine EFLAW Readability Score:')
+    print(f'\t{eflaw_eng_0} (eng/0)')
+    print(f'\t{eflaw_eng_12} (eng/12)')
+    print(f'\t{eflaw_spa_12} (spa/12)')
+
+    assert eflaw_eng_0 == 'text_too_short'
+    assert eflaw_eng_12 == (12 + 6) / 3
+    assert eflaw_spa_12 == 'no_support'
+
+def test_osman():
+    osman_ara_0 = wl_measures_readability.osman(main, Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'ara'))
+    osman_ara_12 = wl_measures_readability.osman(main, Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ara'))
+    osman_eng_12 = wl_measures_readability.osman(main, test_text_eng_12)
+
+    print('OSMAN:')
+    print(f'\t{osman_ara_0} (ara/0)')
+    print(f'\t{osman_ara_12} (ara/12)')
+    print(f'\t{osman_eng_12} (eng/12)')
+
+    assert osman_ara_0 == 'text_too_short'
+    assert osman_ara_12 == 200.791 - 1.015 * (12 / 3) - 24.181 * ((3 + 23 + 3 + 0) / 12)
+    assert osman_eng_12 == 'no_support'
 
 def test_rix():
     rix_eng_0 = wl_measures_readability.rix(main, test_text_eng_0)
     rix_eng_12 = wl_measures_readability.rix(main, test_text_eng_12)
-    rix_other_12 = wl_measures_readability.rix(main, test_text_other_12)
+    rix_spa_12 = wl_measures_readability.rix(main, test_text_spa_12)
 
     print('Rix:')
     print(f'\t{rix_eng_0} (eng/0)')
     print(f'\t{rix_eng_12} (eng/12)')
-    print(f'\t{rix_other_12} (other/12)')
+    print(f'\t{rix_spa_12} (spa/12)')
 
     assert rix_eng_0 == 'text_too_short'
-    assert rix_eng_12 == 3 / 3
-    assert rix_other_12 != 'no_support'
+    assert rix_eng_12 == rix_spa_12 == 3 / 3
 
 def test_smog_grade():
     g_eng_12 = wl_measures_readability.smog_grade(main, test_text_eng_12)
@@ -322,17 +367,15 @@ def test_spache_grade_level():
     grade_level_eng_12 = wl_measures_readability.spache_grade_level(main, test_text_eng_12)
     grade_level_eng_100 = wl_measures_readability.spache_grade_level(main, test_text_eng_100)
     grade_level_spa_12 = wl_measures_readability.spache_grade_level(main, test_text_spa_12)
-    grade_level_other_12 = wl_measures_readability.spache_grade_level(main, test_text_other_12)
 
     print('Spache Grade Level:')
     print(f'\t{grade_level_eng_12} (eng/12)')
     print(f'\t{grade_level_eng_100} (eng/100)')
     print(f'\t{grade_level_spa_12} (spa/12)')
-    print(f'\t{grade_level_other_12} (other/12)')
 
     assert grade_level_eng_12 == 'text_too_short'
     assert grade_level_eng_100 == numpy.mean([0.141 * (100 / 25) + 0.086 * (25 / 100 * 100) + 0.839] * 3)
-    assert grade_level_spa_12 == grade_level_other_12 == 'no_support'
+    assert grade_level_spa_12 == 'no_support'
 
 def test_szigriszts_perspicuity_index():
     p_spa_0 = wl_measures_readability.szigriszts_perspicuity_index(main, test_text_spa_0)
@@ -387,11 +430,15 @@ if __name__ == '__main__':
     test_flesch_reading_ease()
     test_flesch_reading_ease_simplified()
     test_forcast_grade_level()
+    test_formula_de_comprensibilidad_de_gutierrez_de_polini()
+    test_formula_de_crawford()
     test_gulpease_index()
     test_gunning_fog_index()
     test_legibility_mu()
     test_lensear_write()
     test_lix()
+    test_mcalpine_eflaw()
+    test_osman()
     test_rix()
     test_smog_grade()
     test_spache_grade_level()
