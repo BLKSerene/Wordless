@@ -31,7 +31,7 @@ def to_freq_sections_items(main, items_search, items_x1, items_x2, measure_bayes
     return wl_measures_statistical_significance._to_freq_sections_items(main, items_search, items_x1, items_x2, num_sub_sections, use_data)
 
 # Log-likelihood Ratio
-# Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
+# Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
 def bayes_factor_log_likelihood_ratio_test(main, c11, c12, c21, c22):
     cxx = c11 + c12 + c21 + c22
 
@@ -48,7 +48,7 @@ def bayes_factor_log_likelihood_ratio_test(main, c11, c12, c21, c22):
     return bic
 
 # Student's t-test (2-sample)
-# Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger, & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
+# Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
 def bayes_factor_students_t_test_2_sample(main, freqs_x1, freqs_x2):
     if any(freqs_x1) or any(freqs_x2):
         # Modify settings temporarily

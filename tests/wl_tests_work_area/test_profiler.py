@@ -104,7 +104,7 @@ def update_gui(err_msg, texts_stats_files):
         count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
         count_sentences_lens.append(collections.Counter(len_sentences))
 
-        assert len(readability_statistics) == 20
+        assert len(readability_statistics) == 24
 
         # Counts
         assert count_paras

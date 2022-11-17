@@ -29,8 +29,8 @@ from wordless import wl_file_area
 from wordless.wl_checking import wl_checking_misc
 from wordless.wl_settings import wl_settings_default, wl_settings_global
 
-# Chinese (Traditional), English, French, German, Greek, Italian, Japanese, Russian, Spanish
-SEARCH_TERMS = ['是', 'be', 'être', 'sein', 'είναι', 'essere', 'は', 'быть', 'esta']
+# Chinese (Traditional), Danish, Dutch, English, French, German, Greek, Italian, Japanese, Russian, Spanish
+SEARCH_TERMS = ['是', 'ja', 'ja', 'be', 'être', 'sein', 'είναι', 'essere', 'は', 'быть', 'esta']
 
 if platform.system() in ['Windows', 'Darwin']:
     wl_app = QApplication(sys.argv)
