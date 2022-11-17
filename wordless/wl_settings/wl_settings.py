@@ -221,6 +221,7 @@ class Wl_Settings(QDialog):
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Dependency Parsing')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Measures')))
+        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Readability')))
         self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Dispersion')))
         self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
         self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Statistical Significance')))
@@ -267,6 +268,7 @@ class Wl_Settings(QDialog):
         self.settings_dependency_parsing = wl_settings_dependency_parsing.Wl_Settings_Dependency_Parsing(self.main)
 
         # Measures
+        self.settings_measures_readability = wl_settings_measures.Wl_Settings_Measures_Readability(self.main)
         self.settings_measures_dispersion = wl_settings_measures.Wl_Settings_Measures_Dispersion(self.main)
         self.settings_measures_adjusted_freq = wl_settings_measures.Wl_Settings_Measures_Adjusted_Freq(self.main)
         self.settings_measures_statistical_significance = wl_settings_measures.Wl_Settings_Measures_Statistical_Significance(self.main)
@@ -293,6 +295,7 @@ class Wl_Settings(QDialog):
             self.settings_lemmatization,
             self.settings_stop_words,
             self.settings_dependency_parsing,
+            self.settings_measures_readability,
             self.settings_measures_dispersion,
             self.settings_measures_adjusted_freq,
             self.settings_measures_statistical_significance,
@@ -375,23 +378,25 @@ class Wl_Settings(QDialog):
                 elif node_selected_text == self.tr('Dependency Parsing'):
                     self.stacked_widget_settings.setCurrentIndex(12)
                 # Measures
-                elif node_selected_text == self.tr('Dispersion'):
+                elif node_selected_text == self.tr('Readability'):
                     self.stacked_widget_settings.setCurrentIndex(13)
-                elif node_selected_text == self.tr('Adjusted Frequency'):
+                elif node_selected_text == self.tr('Dispersion'):
                     self.stacked_widget_settings.setCurrentIndex(14)
-                elif node_selected_text == self.tr('Statistical Significance'):
+                elif node_selected_text == self.tr('Adjusted Frequency'):
                     self.stacked_widget_settings.setCurrentIndex(15)
-                elif node_selected_text == self.tr('Bayes Factor'):
+                elif node_selected_text == self.tr('Statistical Significance'):
                     self.stacked_widget_settings.setCurrentIndex(16)
-                elif node_selected_text == self.tr('Effect Size'):
+                elif node_selected_text == self.tr('Bayes Factor'):
                     self.stacked_widget_settings.setCurrentIndex(17)
+                elif node_selected_text == self.tr('Effect Size'):
+                    self.stacked_widget_settings.setCurrentIndex(18)
                 # Tables
                 elif node_selected_text == self.tr('Tables'):
-                    self.stacked_widget_settings.setCurrentIndex(18)
-                elif node_selected_text == self.tr('Profiler'):
                     self.stacked_widget_settings.setCurrentIndex(19)
-                elif node_selected_text == self.tr('Figures'):
+                elif node_selected_text == self.tr('Profiler'):
                     self.stacked_widget_settings.setCurrentIndex(20)
+                elif node_selected_text == self.tr('Figures'):
+                    self.stacked_widget_settings.setCurrentIndex(21)
 
                 if node_selected.hasChildren():
                     self.tree_settings.setExpanded(i_selected, True)

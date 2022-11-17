@@ -51,6 +51,21 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Wiener Sachtextformel
+        self.combo_box_variant.setCurrentText(settings['wstf']['variant'])
+
+    def apply_settings(self):
+        # Wiener Sachtextformel
+        self.settings_custom['wstf']['variant'] = self.combo_box_variant.currentText()
+
+        return True
+
 # Measures - Dispersion
 class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
