@@ -56,6 +56,7 @@
 - Dependencies: Upgrade NetworkX to 2.8.8
 - Dependencies: Upgrade NumPy to 1.23.4
 - Dependencies: Upgrade PyPDF2 to 2.11.1
+- Dependencies: Upgrade Pyphen to 0.13.1
 - Dependencies: Upgrade SciPy to 1.9.3
 - Dependencies: Upgrade spaCy to 3.4.3
 - Dependencies: Upgrade spacy-pkuseg to 0.0.32
