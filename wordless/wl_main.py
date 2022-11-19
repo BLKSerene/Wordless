@@ -186,7 +186,7 @@ class Wl_Main(QMainWindow):
         # Icon
         self.setWindowIcon(QIcon('imgs/wl_icon.ico'))
         # Title
-        self.setWindowTitle('Wordless')
+        self.setWindowTitle(f'Wordless {self.ver}')
 
         self.loading_window.show_message(self.tr('Loading settings...'))
 
