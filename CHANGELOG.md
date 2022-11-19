@@ -62,7 +62,7 @@
 
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - 09/25/2022
 ### 🎉 New Features
-- File Area: Add Observed/Reference Files
+- File Area: Add Observed Files / Reference Files
 - File Area: Add support for .pdf files
 - Settings: Add Settings - Figures - Word Clouds - Font Path
 - Settings: Add Settings - General - User Interface Settings - Interface Scaling
@@ -74,7 +74,7 @@
 - Utils: Add NLTK's regular-expression tokenizer
 - Utils: Add Pyphen's Catalan syllable tokenizer
 - Utils: Add PyThaiNLP's ThaiSumCut
-- Utils: Add spaCy's Croatian and Swedish part-of-speech tagger
+- Utils: Add spaCy's Croatian and Swedish part-of-speech taggers
 - Utils: Add spaCy's Finnish part-of-speech tagger and lemmatizer
 - Utils: Add spaCy's Sorbian (Lower) word tokenizer and stop word list
 - Utils: Add spaCy's Sorbian (Upper) word tokenizer and stop word list
