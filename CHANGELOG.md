@@ -50,7 +50,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Add simplemma and stopword
 - Dependencies: Remove extra-stopwords, Lemmatization Lists, and Stopwords ISO
-- Dependencies: Upgrade Charset Normalizer to 3.0.0
+- Dependencies: Upgrade Charset Normalizer to 3.0.1
 - Dependencies: Upgrade Lingua to 1.1.3
 - Dependencies: Upgrade Matplotlib to 3.6.2
 - Dependencies: Upgrade NetworkX to 2.8.8
