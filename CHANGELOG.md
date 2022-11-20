@@ -61,6 +61,7 @@
 - Dependencies: Upgrade SciPy to 1.9.3
 - Dependencies: Upgrade spaCy to 3.4.3
 - Dependencies: Upgrade spacy-pkuseg to 0.0.32
+- Dependencies: Upgrade Underthesea to 1.3.5
 
 ## [2.3.0](https://github.com/BLKSerene/Wordless/releases/tag/2.3.0) - 09/25/2022
 ### 🎉 New Features
