@@ -56,7 +56,7 @@
 - Dependencies: Upgrade NetworkX to 2.8.8
 - Dependencies: Upgrade NumPy to 1.23.5
 - Dependencies: Upgrade PyInstaller to 5.6.2
-- Dependencies: Upgrade PyPDF2 to 2.11.1
+- Dependencies: Upgrade PyPDF2 to 2.11.2
 - Dependencies: Upgrade Pyphen to 0.13.1
 - Dependencies: Upgrade PyThaiNLP to 3.1.1
 - Dependencies: Upgrade SciPy to 1.9.3
