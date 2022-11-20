@@ -18,17 +18,14 @@
 
 import bisect
 import copy
-import glob
-import os
 import traceback
 
 import numpy
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt, QUrl
-from PyQt5.QtGui import QDesktopServices, QStandardItem
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
+from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel, QPushButton
 
-from wordless.wl_checking import wl_checking_misc
 from wordless.wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_nlp_utils, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_msgs, wl_threading
@@ -255,10 +252,9 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
     @wl_misc.log_timing
     def generate_fig(self):
         sentences_rendered = set()
+        htmls = []
 
         fig_settings = self.main.settings_custom['dependency_parser']['fig_settings']
-
-        wl_dependency_parsing.clean_fig_cache()
 
         for row in self.get_selected_rows():
             sentence = tuple(self.model().item(row, 5).text_display)
@@ -268,7 +264,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                     if file['selected'] and file['name'] == self.model().item(row, 8).text():
                         file_selected = file
 
-                wl_dependency_parsing.wl_dependency_parse_fig(
+                htmls.extend(wl_dependency_parsing.wl_dependency_parse_fig(
                     self.main,
                     inputs = sentence,
                     lang = file_selected['lang'],
@@ -278,26 +274,15 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                     collapse_puncs = False,
                     compact_mode = fig_settings['compact_mode'],
                     show_in_separate_tab = fig_settings['show_in_separate_tab'],
-                    # Combine HTML files later
-                    show_results = fig_settings['show_in_separate_tab']
-                )
+                ))
 
                 sentences_rendered.add(sentence)
 
-        if not fig_settings['show_in_separate_tab']:
-            htmls = []
-
-            for fig_cache in glob.glob('exports/_dependency_parsing_figs/*.html'):
-                with open(fig_cache, 'r', encoding = 'utf_8') as f:
-                    htmls.append(f.read())
-
-            fig_dir = wl_checking_misc.check_dir('exports/_dependency_parsing_figs')
-            fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.html'))
-
-            with open(fig_path, 'w', encoding = 'utf_8') as f:
-                f.write('\n'.join(htmls))
-
-            QDesktopServices.openUrl(QUrl.fromLocalFile(fig_path))
+        wl_dependency_parsing.wl_show_dependency_graphs(
+            self.main,
+            htmls = htmls,
+            show_in_separate_tab = fig_settings['show_in_separate_tab']
+        )
 
 class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
