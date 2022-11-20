@@ -1790,9 +1790,17 @@ def init_settings_default(main):
         elif macos_ver_major == 10 and macos_ver_minor == 10:
             settings_default['general']['ui_settings']['font_family'] = 'Helvetica Neue'
         else:
-            settings_default['general']['ui_settings']['font_family'] = 'San Francisco'
+            settings_default['general']['ui_settings']['font_family'] = 'SF Pro'
     elif is_linux:
         settings_default['general']['ui_settings']['font_family'] = 'Liberation Sans'
+
+    # Font Sizes
+    if is_windows:
+        settings_default['general']['ui_settings']['font_size'] = 9
+    elif is_macos:
+        settings_default['general']['ui_settings']['font_size'] = 13
+    elif is_linux:
+        settings_default['general']['ui_settings']['font_size'] = 11
 
     settings_default['figs']['line_charts']['font'] = settings_default['general']['ui_settings']['font_family']
     settings_default['figs']['network_graphs']['node_font'] = settings_default['general']['ui_settings']['font_family']

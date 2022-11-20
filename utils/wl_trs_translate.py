@@ -37,6 +37,7 @@ TRS_LANGS = {
     'Bengali': ['孟加拉语'],
     'Breton': ['布列塔尼语'],
     'Bulgarian': ['保加利亚语'],
+    'Burmese': ['缅甸语'],
     'Catalan': ['加泰罗尼亚语'],
     'Chinese (Simplified)': ['汉语（简体）'],
     'Chinese (Traditional)': ['汉语（繁体）'],
@@ -44,6 +45,7 @@ TRS_LANGS = {
     'Czech': ['捷克语'],
     'Danish': ['丹麦语'],
     'Dutch': ['荷兰语'],
+    'English (Middle)': ['英语（中古）'],
     'English (United Kingdom)': ['英语（英国）'],
     'English (United States)': ['英语（美国）'],
     'Esperanto': ['世界语'],
@@ -51,6 +53,8 @@ TRS_LANGS = {
     'Finnish': ['芬兰语'],
     'French': ['法语'],
     'Galician': ['加里西亚语'],
+    'Ganda': ['干达语'],
+    'Georgian': ['格鲁吉亚语'],
     'German (Austria)': ['德语（奥地利）'],
     'German (Germany)': ['德语（德国）'],
     'German (Switzerland)': ['德语（瑞士）'],
@@ -77,6 +81,7 @@ TRS_LANGS = {
     'Latvian': ['拉脱维亚语'],
     'Ligurian': ['利古里亚语'],
     'Lithuanian': ['立陶宛语'],
+    'Lugbara': ['卢格巴拉语'],
     'Luxembourgish': ['卢森堡语'],
     'Macedonian': ['马其顿语'],
     # 'Malay' contained in 'Malayalam'
@@ -94,9 +99,10 @@ TRS_LANGS = {
     'Polish': ['波兰语'],
     'Portuguese (Brazil)': ['葡萄牙语（巴西）'],
     'Portuguese (Portugal)': ['葡萄牙语（葡萄牙）'],
-    'Punjabi': ['旁遮普语'],
+    'Punjabi (Gurmukhi)': ['旁遮普语（古木基）'],
     'Romanian': ['罗马尼亚语'],
     'Russian': ['俄语'],
+    'Sámi (Northern)': ['萨米语（北）'],
     'Sanskrit': ['梵语'],
     'Scottish Gaelic': ['苏格兰盖尔语'],
     'Serbian (Cyrillic)': ['塞尔维亚语（西里尔）'],
@@ -187,6 +193,8 @@ TRS_NLP_UTILS = {
     'Lemmatizers': ['词形还原器'],
     'Stop Word List Settings': ['停用词表设置'],
     'Stop Word Lists': ['停用词表'],
+    'Dependency Parser Settings': ['依存分析器设置'],
+    'Dependency Parsers': ['依存分析器'],
 
     'Sentence Tokenizer': ['分句器'],
     'Sentence Recognizer': ['句子识别器'],
@@ -215,10 +223,9 @@ TRS_NLP_UTILS = {
     'Morphological Analyzer': ['形态分析器'],
 
     'Lemmatizer': ['词形还原器'],
-    'Lemma List': ['词根表'],
+    'Stop Word List': ['停用词表'],
     'Custom List': ['自定义列表'],
-
-    'Stop Word List': ['停用词表']
+    'Dependency Parser': ['依存分析器']
 }
 TRS_MISC = {
     # Lists
@@ -301,6 +308,7 @@ for element_context in soup.select('context'):
                     # Excludes cases such as PyThaiNLP in third-party NLP libraries
                     tr = tr.replace('Py泰语NLP', 'PyThaiNLP')
                     tr = tr.replace('泰语SumCut', 'ThaiSumCut')
+                    tr = tr.replace('Automated 阿拉伯语 Readability Index', 'Automated Arabic Readability Index')
 
                     tr_hit = True
 
