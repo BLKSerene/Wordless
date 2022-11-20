@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/2.4.0) - ??/??/2022
+## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - ??/??/2022
 ### 🎉 New Features
 - Settings: Add Settings - Dependency Parsing
 - Settings: Add Settings - Measures - Readability
@@ -55,6 +55,7 @@
 - Dependencies: Upgrade Matplotlib to 3.6.2
 - Dependencies: Upgrade NetworkX to 2.8.8
 - Dependencies: Upgrade NumPy to 1.23.4
+- Dependencies: Upgrade PyInstaller to 5.6.2
 - Dependencies: Upgrade PyPDF2 to 2.11.1
 - Dependencies: Upgrade Pyphen to 0.13.1
 - Dependencies: Upgrade PyThaiNLP to 3.1.1
