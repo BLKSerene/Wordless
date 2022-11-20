@@ -54,7 +54,7 @@
 - Dependencies: Upgrade Lingua to 1.1.3
 - Dependencies: Upgrade Matplotlib to 3.6.2
 - Dependencies: Upgrade NetworkX to 2.8.8
-- Dependencies: Upgrade NumPy to 1.23.4
+- Dependencies: Upgrade NumPy to 1.23.5
 - Dependencies: Upgrade PyInstaller to 5.6.2
 - Dependencies: Upgrade PyPDF2 to 2.11.1
 - Dependencies: Upgrade Pyphen to 0.13.1
