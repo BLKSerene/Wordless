@@ -28,6 +28,7 @@ from PyQt5.QtWidgets import QMainWindow
 
 _tr = QCoreApplication.translate
 
+# OS
 def check_os():
     is_windows = False
     is_macos = False
@@ -45,6 +46,18 @@ def check_os():
 def get_macos_ver():
     return platform.mac_ver()[0]
 
+def change_file_owner_to_user(file_path):
+    # pylint: disable=no-member
+    _, is_macos, is_linux = check_os()
+
+    # Available on Unix only
+    if (is_macos or is_linux) and os.getuid() == 0:
+        uid = int(os.environ.get('SUDO_UID'))
+        gid = int(os.environ.get('SUDO_GID'))
+
+        os.chown(file_path, uid, gid)
+
+# Paths
 def get_normalized_path(path):
     path = os.path.realpath(path)
     path = os.path.normpath(path)

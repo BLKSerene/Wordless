@@ -29,7 +29,7 @@ from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
 
 class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal()
+    worker_done = pyqtSignal(list)
 
     def run(self):
         settings = self.main.settings_custom['dependency_parsing']['preview']
@@ -37,9 +37,7 @@ class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
         preview_lang = settings['preview_lang']
         preview_samples = settings['preview_samples']
 
-        wl_dependency_parsing.clean_fig_cache()
-
-        wl_dependency_parsing.wl_dependency_parse_fig(
+        htmls = wl_dependency_parsing.wl_dependency_parse_fig(
             self.main, preview_samples,
             lang = preview_lang,
             dependency_parser = self.dependency_parser,
@@ -52,7 +50,7 @@ class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
             show_in_separate_tab = settings['preview_settings']['show_in_separate_tab']
         )
 
-        self.worker_done.emit()
+        self.worker_done.emit(htmls)
 
 class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
     def __init__(self, main):
@@ -247,7 +245,13 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
                 self.thread_preview_dependency_parser = wl_threading.Wl_Thread_No_Progress(worker_preview_dependency_parser)
                 self.thread_preview_dependency_parser.start_worker()
 
-    def update_gui(self):
+    def update_gui(self, htmls):
+        wl_dependency_parsing.wl_show_dependency_graphs(
+            self.main,
+            htmls = htmls,
+            show_in_separate_tab = self.settings_custom['preview']['preview_settings']['show_in_separate_tab']
+        )
+
         self.button_dependency_parsing_show_preview.setText(self.tr('Show preview'))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
