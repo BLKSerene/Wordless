@@ -58,9 +58,6 @@ requests
 scipy
 wordcloud
 
-# Customized
-opencc_python_latest.zip
-
 # spaCy models
 spacy_models/ca_core_news_sm-3.4.0-py3-none-any.whl
 spacy_models/da_core_news_sm-3.4.0-py3-none-any.whl

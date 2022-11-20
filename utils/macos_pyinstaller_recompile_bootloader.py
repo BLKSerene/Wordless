@@ -23,7 +23,7 @@ import zipfile
 
 import requests
 
-PYINSTALLER_VER = '5.4.1'
+PYINSTALLER_VER = '5.6.2'
 
 # Fetch codes
 print(f'Downloading PyInstaller {PYINSTALLER_VER}... ', end = '')
@@ -46,8 +46,15 @@ os.chdir(f'pyinstaller-{PYINSTALLER_VER}/bootloader')
 
 subprocess.run(['python3', 'waf', 'all'], check = True)
 
-# Comment out signature-related codes in source files which do not work on OS X 10.9
 os.chdir('..')
+
+# codesign does not work properly on OS X 10.9
+with open('PyInstaller/building/utils.py', 'r+', encoding = 'utf_8') as f:
+    pyinstaller_building_utils = f.read()
+    pyinstaller_building_utils = pyinstaller_building_utils.replace('osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)', '# osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)')
+
+    f.seek(0)
+    f.write(pyinstaller_building_utils)
 
 with open('PyInstaller/building/api.py', 'r+', encoding = 'utf_8') as f:
     pyinstaller_building_api = f.read()
@@ -55,13 +62,6 @@ with open('PyInstaller/building/api.py', 'r+', encoding = 'utf_8') as f:
 
     f.seek(0)
     f.write(pyinstaller_building_api)
-
-with open('PyInstaller/building/utils.py', 'r+', encoding = 'utf_8') as f:
-    pyinstaller_building_utils = f.read()
-    pyinstaller_building_utils = pyinstaller_building_utils.replace('osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)', '# osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)')
-
-    f.seek(0)
-    f.write(pyinstaller_building_utils)
 
 # Install recompiled version of PyInstaller
 os.chdir('..')

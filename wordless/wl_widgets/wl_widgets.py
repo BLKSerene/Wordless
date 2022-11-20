@@ -598,7 +598,7 @@ def wl_widgets_search_settings_tokens(parent, tab):
         checkbox_match_tags
     ) = wl_widgets_search_settings(parent, tab)
 
-    label_delimiter.setText('* Only 1 token is allowed in each search term')
+    label_delimiter.setText(_tr('wl_widgets_search_settings_tokens', '* Only 1 token is allowed in each search term'))
 
     return (
         label_search_term,

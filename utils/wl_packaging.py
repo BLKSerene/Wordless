@@ -104,11 +104,22 @@ if is_windows or is_linux:
     os.chdir('..')
 
 if is_windows:
-    # "7z.exe" and "7z.dll" should be put under "C:/Windows/System32" first
-    subprocess.run(['7z', 'a', '-tzip', '-mx9', f'wordless_{wl_ver}_windows.zip', 'Wordless/'], check = True)
+    zip_file_name = f'wordless_{wl_ver}_windows.zip'
 elif is_macos:
-    subprocess.run(['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', 'Wordless.app/', f'wordless_{wl_ver}_macos.zip'], check = True)
+    zip_file_name = f'wordless_{wl_ver}_macos.zip'
 elif is_linux:
-    subprocess.run(['tar', '-czvf', f'wordless_{wl_ver}_linux.tar.gz', 'Wordless/'], check = True)
+    zip_file_name = f'wordless_{wl_ver}_linux.tar.gz'
+
+# Clear cache
+if os.path.exists(zip_file_name):
+    os.remove(zip_file_name)
+
+if is_windows:
+    # Requires 7-Zip
+    subprocess.run(['7z', 'a', '-tzip', '-mx9', zip_file_name, 'Wordless/'], check = True)
+elif is_macos:
+    subprocess.run(['ditto', '-c', '-k', '--sequesterRsrc', '--keepParent', 'Wordless.app/', zip_file_name], check = True)
+elif is_linux:
+    subprocess.run(['tar', '-czvf', zip_file_name, 'Wordless/'], check = True)
 
 print_with_elapsed_time('Compressing done!')
