@@ -115,6 +115,9 @@ datas.extend([
 
 # Hidden imports
 hiddenimports = [
+    # Charset Normalizer
+    'charset_normalizer.md__mypyc',
+
     # pymorphy2
     'pymorphy2_dicts_ru',
     'pymorphy2_dicts_uk',
