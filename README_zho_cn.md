@@ -65,15 +65,15 @@ Wordless 是一款拥有多语种支持的语料库集成工具，其可用于�
 
 ## 下载
 
-Wordless 最新版（**2.3.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.9 或更高版本**、**Ubuntu 16.04 或更高版本**、**Debian 9 或更高版本，**均仅支持**64位操作系统**。Intel 和 M1 处理器的苹果电脑均支持。
+Wordless 最新版（**3.0.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.9 或更高版本**、**Ubuntu 16.04 或更高版本**及 **Debian 9 或更高版本，**均仅支持**64位操作系统**。Intel 和 M1 处理器的苹果电脑均有支持。
 
 如需完整的更新日志，请参阅 [CHANGELOG.md](/CHANGELOG.md)（待翻译）。
 
 版本|备注
 ----|---
-[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_windows.zip)|1. 解压缩所有文件<br>2. 双击运行 **Wordless/Wordless.exe**
-[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_macos.zip)|1. 解压缩所有文件<br>2. 双击运行 **Wordless.app**
-[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/2.3.0/wordless_2.3.0_linux.tar.gz)|1. 解压缩所有文件<br>2. 右键单击 **Wordless/Wordless.sh** 并选择**作为程序运行**或在**终端**中运行该 shell 脚本<br>3. 在弹出的窗口中输入你的 sudo 密码后回车<br>4. [可选] 双击 **Wordless/Wordless - Create Shortucut** 在**显示应用程序**中创建一个快捷方式
+[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.0.0/wordless_3.0.0_windows.zip)|1. 解压缩所有文件<br>2. 双击运行 **Wordless/Wordless.exe**
+[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.0.0/wordless_3.0.0_macos.zip)|1. 解压缩所有文件<br>2. 双击运行 **Wordless.app**
+[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.0.0/wordless_3.0.0_linux.tar.gz)|1. 解压缩所有文件<br>2. 右键单击 **Wordless/Wordless.sh** 并选择**作为程序运行**或在**终端**中运行该 shell 脚本<br>3. 在弹出的窗口中输入你的 sudo 密码后回车<br>4. [可选] 双击 **Wordless/Wordless - Create Shortucut** 在**显示应用程序**中创建一个快捷方式
 [历史版本](https://github.com/BLKSerene/Wordless/releases)|不推荐
 [百度网盘](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg)|中国用户若 Github 连接不稳定可尝试该下载链接（**提取码：wdls**）
 
@@ -104,11 +104,11 @@ Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 
 APA（第7版）：
 
-<pre><code>Ye, L. (2022). <i>Wordless</i> (Version 2.3.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2022). <i>Wordless</i> (Version 3.0.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
 MLA（第8版）：
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 2.3.0, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>, version 3.0.0, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## 许可
 
