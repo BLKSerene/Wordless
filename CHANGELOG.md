@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - ??/??/2022
+## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - 11/21/2022
 ### 🎉 New Features
 - Settings: Add Settings - Dependency Parsing
 - Settings: Add Settings - Measures - Readability
