@@ -26,7 +26,7 @@ import wordcloud
 
 from wordless.wl_checking import wl_checking_misc
 from wordless.wl_settings import wl_settings
-from wordless.wl_utils import wl_misc
+from wordless.wl_utils import wl_paths
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_widgets
 
 class Wl_Settings_Figs(wl_settings.Wl_Settings_Node):
@@ -64,7 +64,6 @@ class Wl_Settings_Figs(wl_settings.Wl_Settings_Node):
 
         self.combo_box_figs_word_clouds_font.addItems([
             'Droid Sans Mono',
-            'GNU FreeFont',
             'GNU Unifont',
             self.tr('Custom')
         ])
@@ -151,7 +150,7 @@ class Wl_Settings_Figs(wl_settings.Wl_Settings_Node):
         )[0]
 
         if path_file:
-            self.line_edit_figs_word_clouds_font_path.setText(wl_misc.get_normalized_path(path_file))
+            self.line_edit_figs_word_clouds_font_path.setText(wl_paths.get_normalized_path(path_file))
 
     def word_clouds_changed(self):
         if self.combo_box_figs_word_clouds_font.currentText() == self.tr('Custom'):
@@ -166,10 +165,8 @@ class Wl_Settings_Figs(wl_settings.Wl_Settings_Node):
     def change_fonts(self):
         if self.main.settings_custom['figs']['word_clouds']['font'] == 'Droid Sans Mono':
             wordcloud.wordcloud.FONT_PATH = os.path.join(wordcloud.wordcloud.FILE, 'DroidSansMono.ttf')
-        elif self.main.settings_custom['figs']['word_clouds']['font'] == 'GNU FreeFont Serif':
-            wordcloud.wordcloud.FONT_PATH = wl_misc.get_normalized_path('fonts/freefont-20120503/FreeSerif.ttf')
         elif self.main.settings_custom['figs']['word_clouds']['font'] == 'GNU Unifont':
-            wordcloud.wordcloud.FONT_PATH = wl_misc.get_normalized_path('fonts/unifont-14.0.04.ttf')
+            wordcloud.wordcloud.FONT_PATH = wl_paths.get_path_data('unifont-15.0.01.ttf')
         elif self.main.settings_custom['figs']['word_clouds']['font'] == self.tr('Custom'):
             wordcloud.wordcloud.FONT_PATH = self.main.settings_custom['figs']['word_clouds']['font_path']
 

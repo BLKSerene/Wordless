@@ -23,7 +23,7 @@ import re
 import numpy
 from wordless.wl_checking import wl_checking_tokens
 from wordless.wl_nlp import wl_pos_tagging, wl_syl_tokenization
-from wordless.wl_utils import wl_misc
+from wordless.wl_utils import wl_misc, wl_paths
 
 def get_counts(main, text):
     # Count of sentences
@@ -112,7 +112,7 @@ def get_count_difficult_words(words, num_easy_words):
     count_difficult_words = 0
 
     # Load Dale's lists of easy words (769/3000)
-    with open(f'data/dale_list_easy_words_{num_easy_words}.txt', 'r', encoding = 'utf_8') as f:
+    with open(wl_paths.get_path_data(f'dale_list_easy_words_{num_easy_words}.txt'), 'r', encoding = 'utf_8') as f:
         for line in f:
             word = line.strip()
 

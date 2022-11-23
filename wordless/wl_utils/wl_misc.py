@@ -28,7 +28,6 @@ from PyQt5.QtWidgets import QMainWindow
 
 _tr = QCoreApplication.translate
 
-# OS
 def check_os():
     is_windows = False
     is_macos = False
@@ -56,18 +55,6 @@ def change_file_owner_to_user(file_path):
         gid = int(os.environ.get('SUDO_GID'))
 
         os.chown(file_path, uid, gid)
-
-# Paths
-def get_normalized_path(path):
-    path = os.path.realpath(path)
-    path = os.path.normpath(path)
-
-    return path
-
-def get_normalized_dir(path):
-    path = get_normalized_path(path)
-
-    return os.path.dirname(path)
 
 def get_wl_ver():
     wl_ver = '1.0.0'
