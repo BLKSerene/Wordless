@@ -27,7 +27,7 @@ from PyQt5.QtWidgets import (
 
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_settings import wl_settings
-from wordless.wl_utils import wl_conversion, wl_misc
+from wordless.wl_utils import wl_conversion, wl_paths
 from wordless.wl_widgets import wl_boxes, wl_layouts
 
 class Wl_Settings_General(wl_settings.Wl_Settings_Node):
@@ -303,7 +303,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         )
 
         if path_file:
-            self.line_edit_files_default_path.setText(wl_misc.get_normalized_path(path_file))
+            self.line_edit_files_default_path.setText(wl_paths.get_normalized_path(path_file))
 
     def browse_search_terms(self):
         path_file = QFileDialog.getExistingDirectory(
@@ -313,7 +313,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         )
 
         if path_file:
-            self.line_edit_search_terms_default_path.setText(wl_misc.get_normalized_path(path_file))
+            self.line_edit_search_terms_default_path.setText(wl_paths.get_normalized_path(path_file))
 
     def browse_stop_words(self):
         path_file = QFileDialog.getExistingDirectory(
@@ -323,7 +323,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         )
 
         if path_file:
-            self.line_edit_stop_words_default_path.setText(wl_misc.get_normalized_path(path_file))
+            self.line_edit_stop_words_default_path.setText(wl_paths.get_normalized_path(path_file))
 
     def browse_temp_files(self):
         path_file = QFileDialog.getExistingDirectory(
@@ -333,7 +333,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         )
 
         if path_file:
-            self.line_edit_temp_files_default_path.setText(wl_misc.get_normalized_path(path_file))
+            self.line_edit_temp_files_default_path.setText(wl_paths.get_normalized_path(path_file))
 
     def detect_encodings_changed(self):
         if self.checkbox_search_terms_detect_encodings.isChecked():
@@ -500,7 +500,7 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         )
 
         if path_file:
-            self.line_edit_tables_default_path.setText(wl_misc.get_normalized_path(path_file))
+            self.line_edit_tables_default_path.setText(wl_paths.get_normalized_path(path_file))
 
     def browse_search_terms(self):
         path_file = QFileDialog.getExistingDirectory(
@@ -510,7 +510,7 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         )
 
         if path_file:
-            self.line_edit_search_terms_default_path.setText(wl_misc.get_normalized_path(path_file))
+            self.line_edit_search_terms_default_path.setText(wl_paths.get_normalized_path(path_file))
 
     def browse_stop_words(self):
         path_file = QFileDialog.getExistingDirectory(
@@ -520,7 +520,7 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         )
 
         if path_file:
-            self.line_edit_stop_words_default_path.setText(wl_misc.get_normalized_path(path_file))
+            self.line_edit_stop_words_default_path.setText(wl_paths.get_normalized_path(path_file))
 
     def check_path(self, settings):
         if os.path.exists(self.settings_custom[settings]['default_path']):

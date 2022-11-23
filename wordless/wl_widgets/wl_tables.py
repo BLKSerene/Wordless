@@ -33,7 +33,7 @@ from PyQt5.QtWidgets import (
 from wordless.wl_checking import wl_checking_misc
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_nlp_utils
-from wordless.wl_utils import wl_misc, wl_threading
+from wordless.wl_utils import wl_misc, wl_paths, wl_threading
 from wordless.wl_widgets import wl_buttons
 
 _tr = QCoreApplication.translate
@@ -427,7 +427,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                 doc.save(self.file_path)
 
-            self.main.settings_custom['general']['exp']['tables']['default_path'] = wl_misc.get_normalized_dir(self.file_path)
+            self.main.settings_custom['general']['exp']['tables']['default_path'] = wl_paths.get_normalized_dir(self.file_path)
             self.main.settings_custom['general']['exp']['tables']['default_type'] = self.file_type
 
             exp_success = True

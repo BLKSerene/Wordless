@@ -98,8 +98,6 @@ datas.extend([
 
     # Data
     ('../data', 'data'),
-    # Fonts
-    ('../fonts', 'fonts'),
     # Images
     ('../imgs', 'imgs'),
     # Translation

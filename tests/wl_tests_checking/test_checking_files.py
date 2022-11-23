@@ -18,10 +18,10 @@
 
 from tests import wl_test_init
 from wordless.wl_checking import wl_checking_files
-from wordless.wl_utils import wl_misc
+from wordless.wl_utils import wl_paths
 
 def get_normalized_file_path(file_name):
-    return wl_misc.get_normalized_path(f'tests/files/wl_checking/wl_checking_files/{file_name}')
+    return wl_paths.get_normalized_path(f'tests/files/wl_checking/wl_checking_files/{file_name}')
 
 main = wl_test_init.Wl_Test_Main()
 main.settings_custom['file_area']['files_open'] = [

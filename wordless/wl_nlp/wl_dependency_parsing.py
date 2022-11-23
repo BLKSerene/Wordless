@@ -27,7 +27,7 @@ import spacy
 from wordless.wl_checking import wl_checking_misc
 from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_nlp import wl_nlp_utils
-from wordless.wl_utils import wl_conversion, wl_misc
+from wordless.wl_utils import wl_conversion, wl_misc, wl_paths
 
 _tr = QCoreApplication.translate
 
@@ -264,7 +264,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
             <div>Dependency graphs has been successfully generated and exported under folder: {}</div>
 
             <div>If the figures are not displayed automatically, you may try opening them manually using web browsers or image viewers installed on your computer, or save copies of them in other locations for later use.</div>
-        ''').format(wl_misc.get_normalized_path(DIR_PATH))
+        ''').format(wl_paths.get_normalized_path(DIR_PATH))
     ).open()
 
     fig_dir = wl_checking_misc.check_dir(DIR_PATH)
@@ -276,7 +276,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
     if show_in_separate_tab:
         for html in htmls:
             fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.svg'))
-            fig_path = wl_misc.get_normalized_path(fig_path)
+            fig_path = wl_paths.get_normalized_path(fig_path)
 
             with open(fig_path, 'w', encoding = 'utf_8') as f:
                 f.write(html)
@@ -290,7 +290,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
                 subprocess.Popen(['xdg-open', f'file://{fig_path}']) # pylint: disable=consider-using-with
     else:
         fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.html'))
-        fig_path = wl_misc.get_normalized_path(fig_path)
+        fig_path = wl_paths.get_normalized_path(fig_path)
 
         with open(fig_path, 'w', encoding = 'utf_8') as f:
             f.write('\n'.join(htmls))

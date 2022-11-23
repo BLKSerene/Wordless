@@ -30,7 +30,7 @@ from wordless.wl_tagsets import (
     wl_tagset_vie_underthesea,
     wl_tagset_zho_jieba
 )
-from wordless.wl_utils import wl_misc
+from wordless.wl_utils import wl_misc, wl_paths
 
 _tr = QCoreApplication.translate
 
@@ -1062,41 +1062,41 @@ def init_settings_default(main):
             # Settings - General - Import
             'imp': {
                 'files': {
-                    'default_path': wl_misc.get_normalized_path('.')
+                    'default_path': wl_paths.get_normalized_path('.')
                 },
 
                 'search_terms': {
-                    'default_path': wl_misc.get_normalized_path('.'),
+                    'default_path': wl_paths.get_normalized_path('.'),
                     'default_encoding': 'utf_8',
                     'detect_encodings': True
                 },
 
                 'stop_words': {
-                    'default_path': wl_misc.get_normalized_path('.'),
+                    'default_path': wl_paths.get_normalized_path('.'),
                     'default_encoding': 'utf_8',
                     'detect_encodings': True
                 },
 
                 'temp_files': {
-                    'default_path': wl_misc.get_normalized_path('imports/'),
+                    'default_path': wl_paths.get_normalized_path('imports/'),
                 }
             },
 
             # Settings - General - Export
             'exp': {
                 'tables': {
-                    'default_path': wl_misc.get_normalized_path('exports/'),
+                    'default_path': wl_paths.get_normalized_path('exports/'),
                     'default_type': _tr('init_settings_default', 'Excel Workbook (*.xlsx)'),
                     'default_encoding': 'utf_8'
                 },
 
                 'search_terms': {
-                    'default_path': wl_misc.get_normalized_path('exports/'),
+                    'default_path': wl_paths.get_normalized_path('exports/'),
                     'default_encoding': 'utf_8'
                 },
 
                 'stop_words': {
-                    'default_path': wl_misc.get_normalized_path('exports/'),
+                    'default_path': wl_paths.get_normalized_path('exports/'),
                     'default_encoding': 'utf_8'
                 }
             }

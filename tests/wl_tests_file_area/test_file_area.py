@@ -26,7 +26,7 @@ from PyQt5.QtCore import QObject
 from tests import wl_test_init
 from wordless import wl_file_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_utils import wl_misc
+from wordless.wl_utils import wl_paths
 
 main = wl_test_init.Wl_Test_Main()
 
@@ -71,8 +71,8 @@ def test_file_area():
 
         assert new_file['selected']
         assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
-        assert new_file['path'] == wl_misc.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area'), 'imports')
-        assert new_file['path_original'] == wl_misc.get_normalized_path(file_path)
+        assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area'), 'imports')
+        assert new_file['path_original'] == wl_paths.get_normalized_path(file_path)
         assert not new_file['tokenized']
         assert not new_file['tagged']
 

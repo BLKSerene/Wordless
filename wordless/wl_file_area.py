@@ -38,7 +38,10 @@ from PyQt5.QtWidgets import QAbstractItemDelegate, QCheckBox, QFileDialog, QLine
 from wordless.wl_checking import wl_checking_files, wl_checking_misc
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_matching, wl_texts
-from wordless.wl_utils import wl_conversion, wl_detection, wl_misc, wl_msgs, wl_threading
+from wordless.wl_utils import (
+    wl_conversion, wl_detection, wl_misc, wl_msgs, wl_paths,
+    wl_threading
+)
 from wordless.wl_widgets import wl_boxes, wl_buttons, wl_item_delegates, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
@@ -56,7 +59,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
             for i, file_path in enumerate(self.file_paths):
                 self.progress_updated.emit(self.tr('Adding files... ({}/{})').format(i + 1, len_file_paths))
 
-                file_path = wl_misc.get_normalized_path(file_path)
+                file_path = wl_paths.get_normalized_path(file_path)
                 file_name, file_ext = os.path.splitext(os.path.basename(file_path))
                 file_ext = file_ext.lower()
 
@@ -219,7 +222,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     new_files.append(new_file_tgt)
 
             if self.file_paths:
-                self.main.settings_custom['general']['imp']['files']['default_path'] = wl_misc.get_normalized_dir(self.file_paths[0])
+                self.main.settings_custom['general']['imp']['files']['default_path'] = wl_paths.get_normalized_dir(self.file_paths[0])
         except Exception:
             err_msg = traceback.format_exc()
 

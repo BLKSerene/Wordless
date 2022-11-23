@@ -78,14 +78,14 @@ from wordless import (
 from wordless.wl_checking import wl_checking_misc
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
-from wordless.wl_utils import wl_misc, wl_threading
+from wordless.wl_utils import wl_misc, wl_paths, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
 
 class Wl_Loading(QSplashScreen):
     def __init__(self):
-        super().__init__(QPixmap('imgs/wl_loading.png'))
+        super().__init__(QPixmap(wl_paths.get_path_img('wl_loading.png')))
 
         self.setFont(
             QFont(settings_custom['general']['ui_settings']['font_family'],
@@ -591,9 +591,9 @@ class Wl_Main(QMainWindow):
 
         if getattr(sys, '_MEIPASS', False):
             if is_windows:
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless.exe')])
+                subprocess.Popen([wl_paths.get_normalized_path('Wordless.exe')])
             elif is_macos or is_linux:
-                subprocess.Popen([wl_misc.get_normalized_path('Wordless')])
+                subprocess.Popen([wl_paths.get_normalized_path('Wordless')])
         else:
             if is_windows:
                 subprocess.Popen(['python', '-m', 'wordless.wl_main'])
@@ -641,32 +641,44 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(0, 1),
-            wl_labels.Wl_Label_Html(self.tr('<a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md">Documentation</a>'), self)
+            wl_labels.Wl_Label_Html(self.tr(
+                '<a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md">Documentation</a>'
+            ), self)
         )
+
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(1, 0),
             wl_labels.Wl_Label_Html(self.tr('Tutorial Videos'), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(1, 1),
-            wl_labels.Wl_Label_Html(self.tr('<a href="https://space.bilibili.com/34963752/video">bilibili</a>'), self)
+            wl_labels.Wl_Label_Html(self.tr(
+                '<a href="https://space.bilibili.com/34963752/video">bilibili</a>'
+            ), self)
         )
+
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(2, 0),
             wl_labels.Wl_Label_Html(self.tr('Bug Reports'), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(2, 1),
-            wl_labels.Wl_Label_Html(self.tr('<a href="https://github.com/BLKSerene/Wordless/issues">Gihub Issues</a>'), self)
+            wl_labels.Wl_Label_Html(self.tr(
+                '<a href="https://github.com/BLKSerene/Wordless/issues">Gihub Issues</a>'
+            ), self)
         )
+
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(3, 0),
             wl_labels.Wl_Label_Html(self.tr('Usage Questions'), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(3, 1),
-            wl_labels.Wl_Label_Html(self.tr('<a href="https://github.com/BLKSerene/Wordless/discussions">Gihub Discussions</a>'), self)
+            wl_labels.Wl_Label_Html(self.tr(
+                '<a href="https://github.com/BLKSerene/Wordless/discussions">Gihub Discussions</a>'
+            ), self)
         )
+
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(4, 0),
             wl_labels.Wl_Label_Html(self.tr('Email Support'), self)
@@ -675,13 +687,19 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
             self.table_need_help.model().index(4, 1),
             wl_labels.Wl_Label_Html(self.main.email_html, self)
         )
+
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(5, 0),
-            wl_labels.Wl_Label_Html(self.tr('<a href="https://www.wechat.com/en/">WeChat</a> Official Account'), self)
+            wl_labels.Wl_Label_Html(self.tr(
+                '<a href="https://www.wechat.com/en/">WeChat</a> Official Account'
+            ), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(5, 1),
-            wl_labels.Wl_Label_Html_Centered('<img src="imgs/wechat_official_account.jpg">', self)
+            wl_labels.Wl_Label_Html_Centered(
+                f'''<img src="{wl_paths.get_path_img('wechat_official_account.jpg')}">''',
+                self
+            )
         )
 
         self.table_need_help.enable_updates()
@@ -839,11 +857,17 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
         settings['donating_via'] = self.combo_box_donating_via.currentText()
 
         if settings['donating_via'] == self.tr('PayPal'):
-            self.label_donating_via_img.setText('<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32"><img src="imgs/donating_paypal.gif"></a>')
+            self.label_donating_via_img.setText(
+                f'''<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32"><img src="{wl_paths.get_path_img('donating_paypal.gif')}"></a>'''
+            )
         elif settings['donating_via'] == self.tr('Alipay'):
-            self.label_donating_via_img.setText('<img src="imgs/donating_alipay.png">')
+            self.label_donating_via_img.setText(
+                f'''<img src="{wl_paths.get_path_img('donating_alipay.png')}">'''
+            )
         elif settings['donating_via'] == self.tr('WeChat Pay'):
-            self.label_donating_via_img.setText('<img src="imgs/donating_wechat_pay.png">')
+            self.label_donating_via_img.setText(
+                f'''<img src="{wl_paths.get_path_img('donating_wechat_pay.png')}">'''
+            )
 
         if 'height_alipay' in self.__dict__:
             if settings['donating_via'] == self.tr('PayPal'):
@@ -1226,7 +1250,7 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(main, title = _tr('Wl_Dialog_About', 'About Wordless'))
 
-        img_wl_icon = QPixmap('imgs/wl_icon_about.png')
+        img_wl_icon = QPixmap(wl_paths.get_path_img('wl_icon_about.png'))
         img_wl_icon = img_wl_icon.scaled(64, 64)
 
         label_about_icon = QLabel('', self)
