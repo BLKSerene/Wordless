@@ -18,6 +18,10 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2022
+### ❌ Removals
+- Settings: Remove Settings - Figures - Word Clouds - Font - GNU FreeFont
+
 ## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - 11/21/2022
 ### 🎉 New Features
 - Settings: Add Settings - Dependency Parsing
