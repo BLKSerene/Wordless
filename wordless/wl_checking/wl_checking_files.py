@@ -23,7 +23,7 @@ from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QStandardItem
 
 from wordless.wl_dialogs import wl_dialogs_errs
-from wordless.wl_utils import wl_misc
+from wordless.wl_utils import wl_paths
 
 _tr = QCoreApplication.translate
 
@@ -39,7 +39,7 @@ def check_file_paths_unsupported(main, file_paths):
         ]
 
         for file_path in file_paths:
-            file_path = wl_misc.get_normalized_path(file_path)
+            file_path = wl_paths.get_normalized_path(file_path)
 
             if os.path.splitext(file_path)[1].lower() not in file_exts:
                 file_paths_unsupported.append(file_path)
@@ -54,7 +54,7 @@ def check_file_paths_empty(main, file_paths): # pylint: disable=unused-argument
 
     if file_paths:
         for file_path in file_paths:
-            file_path = wl_misc.get_normalized_path(file_path)
+            file_path = wl_paths.get_normalized_path(file_path)
 
             if os.stat(file_path).st_size:
                 file_paths_ok.append(file_path)
