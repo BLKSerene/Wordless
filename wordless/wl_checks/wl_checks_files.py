@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Checking - Files
+# Wordless: Checks - Files
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,8 +20,8 @@ import os
 import re
 
 from PyQt5.QtCore import QCoreApplication
-from PyQt5.QtGui import QStandardItem
 
+from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_errs
 from wordless.wl_utils import wl_paths
 
@@ -79,44 +79,9 @@ def check_file_paths_dup(main, new_file_paths, file_paths = None):
 
     return file_paths_ok, file_paths_dup
 
-def check_files_on_loading_colligation_extractor(main, files):
-    files_pos_tagging_unsupported = []
-    loading_ok = True
+def check_err_file_area(main, err_msg):
+    if err_msg:
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        wl_checks_work_area.wl_status_bar_msg_err_fatal(main)
 
-    for file in files:
-        if file['lang'] not in main.settings_global['pos_taggers']:
-            files_pos_tagging_unsupported.append(file)
-
-    file_paths_pos_tagging_unsupported = [file['path'] for file in files_pos_tagging_unsupported]
-
-    if file_paths_pos_tagging_unsupported:
-        dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = _tr('check_files_on_loading_colligation_extractor', 'Error Loading Files'))
-
-        dialog_err_files.label_err.set_text(_tr('check_files_on_loading_colligation_extractor', '''
-            <div>
-                The built-in part-of-speech taggers currently have no support for the following files, please check your language settings or provide corpora that have already been part-of-speech tagged.
-            </div>
-        '''))
-
-        dialog_err_files.table_err_files.model().setRowCount(len(file_paths_pos_tagging_unsupported))
-
-        dialog_err_files.table_err_files.disable_updates()
-
-        for i, file_path in enumerate(file_paths_pos_tagging_unsupported):
-            dialog_err_files.table_err_files.model().setItem(
-                i, 0,
-                QStandardItem(_tr('check_files_on_loading_colligation_extractor', 'Part-of-speech Tagging Unsupported'))
-            )
-            dialog_err_files.table_err_files.model().setItem(
-                i, 1,
-                QStandardItem(file_path)
-            )
-
-        dialog_err_files.table_err_files.enable_updates()
-
-        dialog_err_files.open()
-
-    if files_pos_tagging_unsupported:
-        loading_ok = False
-
-    return loading_ok
+    return not err_msg

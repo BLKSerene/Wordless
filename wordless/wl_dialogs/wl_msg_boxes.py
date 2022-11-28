@@ -68,24 +68,3 @@ def wl_msg_box_question(main, title, text):
     )
 
     return bool(reply == QMessageBox.Yes)
-
-def wl_msg_box_missing_search_terms(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = _tr('wl_msg_box_missing_search_terms', 'Missing Search Terms'),
-        text = _tr('wl_msg_box_missing_search_terms', '''
-            <div>
-                You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
-            </div>
-        ''')
-    ).open()
-
-def wl_msg_box_no_results(main):
-    Wl_Msg_Box_Warning(
-        main,
-        title = _tr('wl_msg_box_no_results', 'No Results'),
-        text = _tr('wl_msg_box_no_results', '''
-            <div>Data processing has completed successfully, but there are no results to display.</div>
-            <div>You can change your settings and try again.</div>
-        ''')
-    ).open()

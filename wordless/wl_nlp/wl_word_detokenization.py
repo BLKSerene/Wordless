@@ -20,7 +20,7 @@ import re
 
 import pythainlp
 
-from wordless.wl_checking import wl_checking_unicode
+from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
 
@@ -42,7 +42,7 @@ def wl_word_detokenize(main, tokens, lang):
         for i, token in enumerate(tokens):
             if i >= non_cjk_start:
                 if (
-                    wl_checking_unicode.has_han(token)
+                    wl_checks_tokens.has_han(token)
                     or all(map(str.isnumeric, token))
                 ):
                     text += token
@@ -53,7 +53,7 @@ def wl_word_detokenize(main, tokens, lang):
                     for j, _ in enumerate(tokens[i:]):
                         if (
                             i + j + 1 == len(tokens)
-                            or wl_checking_unicode.has_han(tokens[i + j + 1])
+                            or wl_checks_tokens.has_han(tokens[i + j + 1])
                         ):
                             text += wl_word_detokenize(
                                 main,
@@ -73,9 +73,9 @@ def wl_word_detokenize(main, tokens, lang):
                 continue
 
             if (
-                wl_checking_unicode.has_han(token)
-                or wl_checking_unicode.has_kana(token)
-                or all(map(str.isnumeric, token))
+                wl_checks_tokens.has_han(token)
+                or wl_checks_tokens.has_kana(token)
+                or all((char.isnumeric() for char in token))
             ):
                 text += token
 
@@ -85,8 +85,8 @@ def wl_word_detokenize(main, tokens, lang):
                 for j, _ in enumerate(tokens[i:]):
                     if (
                         i + j + 1 == len(tokens)
-                        or wl_checking_unicode.has_han(tokens[i + j + 1])
-                        or wl_checking_unicode.has_kana(tokens[i + j + 1])
+                        or wl_checks_tokens.has_han(tokens[i + j + 1])
+                        or wl_checks_tokens.has_kana(tokens[i + j + 1])
                     ):
                         text += wl_word_detokenize(
                             main,
@@ -108,7 +108,7 @@ def wl_word_detokenize(main, tokens, lang):
             if i < non_tibetan_start:
                 continue
 
-            if wl_checking_unicode.has_tibetan(token):
+            if wl_checks_tokens.has_tibetan(token):
                 # Check for Tibetan Mark Shad
                 # See: https://w3c.github.io/tlreq/#section_breaks
                 if i > 0 and text[-1] == '།' and token[0] == '།':
@@ -122,7 +122,7 @@ def wl_word_detokenize(main, tokens, lang):
                 for j, _ in enumerate(tokens[i:]):
                     if (
                         i + j + 1 == len(tokens)
-                        or wl_checking_unicode.has_tibetan(tokens[i + j + 1])
+                        or wl_checks_tokens.has_tibetan(tokens[i + j + 1])
                     ):
                         text += wl_word_detokenize(
                             main,

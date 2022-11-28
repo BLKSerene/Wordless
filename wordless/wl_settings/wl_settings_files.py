@@ -23,7 +23,7 @@ from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QAbstractItemDelegate, QGroupBox, QLabel, QLineEdit, QPushButton
 
-from wordless.wl_checking import wl_checking_misc
+from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_nlp import wl_matching
 from wordless.wl_settings import wl_settings
@@ -268,10 +268,10 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     re.sub(r'(^<)|(>$)', r'', self.model().item(i, 2).text())
                     for i in range(self.model().rowCount())
                 ]
-                opening_tag = f"<{wl_checking_misc.check_new_name(opening_tag[1:-1], opening_tags, separator = '')}>"
+                opening_tag = f"<{wl_checks_misc.check_new_name(opening_tag[1:-1], opening_tags, separator = '')}>"
             else:
                 opening_tags = [self.model().item(i, 2).text() for i in range(self.model().rowCount())]
-                opening_tag = wl_checking_misc.check_new_name(opening_tag, opening_tags, separator = '')
+                opening_tag = wl_checks_misc.check_new_name(opening_tag, opening_tags, separator = '')
 
             opening_tag = re.sub(r'\s\((\d+)\)', r'\1', opening_tag)
         else:

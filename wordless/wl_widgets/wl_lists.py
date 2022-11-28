@@ -26,7 +26,7 @@ from PyQt5.QtWidgets import (
     QPushButton
 )
 
-from wordless.wl_checking import wl_checking_files, wl_checking_misc
+from wordless.wl_checks import wl_checks_files, wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs_errs, wl_msg_boxes
 from wordless.wl_widgets import wl_boxes, wl_item_delegates
 from wordless.wl_utils import wl_detection, wl_misc
@@ -150,9 +150,9 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
     def _add_item(self, text = '', row = None):
         if text:
-            item_text = wl_checking_misc.check_new_name(text, self.model().stringList())
+            item_text = wl_checks_misc.check_new_name(text, self.model().stringList())
         else:
-            item_text = wl_checking_misc.check_new_name(self.new_item_text, self.model().stringList())
+            item_text = wl_checks_misc.check_new_name(self.new_item_text, self.model().stringList())
 
         data = self.model().stringList()
 
@@ -169,7 +169,7 @@ class Wl_List_Add_Ins_Del_Clr(QListView):
 
     def _add_items(self, texts, row = None):
         data = self.model().stringList()
-        texts = [wl_checking_misc.check_new_name(text, data) for text in list(dict.fromkeys(texts))]
+        texts = [wl_checks_misc.check_new_name(text, data) for text in list(dict.fromkeys(texts))]
 
         if row is None:
             data.extend(texts)
@@ -269,7 +269,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
             # Modify default path
             self.main.settings_custom['general']['imp'][self.settings]['default_path'] = os.path.normpath(os.path.dirname(file_paths[0]))
 
-            file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
+            file_paths, file_paths_empty = wl_checks_files.check_file_paths_empty(self.main, file_paths)
 
             if file_paths_empty:
                 dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Import Error'))
@@ -335,7 +335,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
         file_path = QFileDialog.getSaveFileName(
             self.main,
             _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Export to File'),
-            os.path.join(wl_checking_misc.check_dir(default_dir), self.exp_file_name),
+            os.path.join(wl_checks_misc.check_dir(default_dir), self.exp_file_name),
             _tr('Wl_List_Add_Ins_Del_Clr_Imp_Exp', 'Text File (*.txt)')
         )[0]
 
