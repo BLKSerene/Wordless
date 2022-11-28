@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=unused-argument
+
 import collections
 
 import numpy
@@ -24,7 +26,7 @@ import scipy.stats
 from wordless.wl_measures import wl_measures_adjusted_freq
 from wordless.wl_nlp import wl_nlp_utils
 
-def _to_freq_sections_items(main, items_search, items, num_sub_sections): # pylint: disable=unused-argument
+def _to_freq_sections_items(items_search, items, num_sub_sections):
     freq_sections_items = {}
 
     freq_items_sections = [
@@ -43,11 +45,11 @@ def _to_freq_sections_items(main, items_search, items, num_sub_sections): # pyli
 def to_freq_sections_items(main, items_search, items):
     num_sub_sections = main.settings_custom['measures']['dispersion']['general_settings']['num_sub_sections']
 
-    return _to_freq_sections_items(main, items_search, items, num_sub_sections)
+    return _to_freq_sections_items(items_search, items, num_sub_sections)
 
 # Carroll's D₂
 # Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
-def carrolls_d2(freqs):
+def carrolls_d2(main, freqs):
     freqs = numpy.array(freqs)
 
     if (freq_total := numpy.sum(freqs)) == 0:
@@ -63,9 +65,9 @@ def carrolls_d2(freqs):
 # References:
 #     Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri
 #     Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. International Journal of Corpus Linguistics, 17(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij
-def griess_dp(freqs):
+def griess_dp(main, freqs):
     freqs = numpy.array(freqs)
-    normalized = True
+    apply_normalization = main.settings_custom['measures']['dispersion']['griess_dp']['apply_normalization']
 
     if (freq_total := numpy.sum(freqs)) == 0:
         dp = 0
@@ -77,14 +79,14 @@ def griess_dp(freqs):
             for freq in freqs
         ]) / 2
 
-        if normalized:
+        if apply_normalization:
             dp /= 1 - 1 / len(freqs)
 
     return dp
 
 # Juilland's D
 # Reference: Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of Spanish words. Mouton.
-def juillands_d(freqs):
+def juillands_d(main, freqs):
     freqs = numpy.array(freqs)
 
     if numpy.sum(freqs) == 0:
@@ -97,7 +99,7 @@ def juillands_d(freqs):
 
 # Lyne's D₃
 # Reference: Lyne, A. A. (1985). Dispersion. In The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method (pp. 101–124). Slatkine/Champion.
-def lynes_d3(freqs):
+def lynes_d3(main, freqs):
     freqs = numpy.array(freqs)
 
     if (freq_total := numpy.sum(freqs)) == 0:
@@ -109,20 +111,20 @@ def lynes_d3(freqs):
 
 # Rosengren's S
 # Reference: Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. Études de linguistique appliquée, 1, 103–127.
-def rosengrens_s(freqs):
+def rosengrens_s(main, freqs):
     freqs = numpy.array(freqs)
 
     if (freq_total := numpy.sum(freqs)) == 0:
         s = 0
     else:
-        kf = wl_measures_adjusted_freq.rosengrens_kf(freqs)
+        kf = wl_measures_adjusted_freq.rosengrens_kf(main, freqs)
         s = kf / freq_total
 
     return s
 
 # Zhang's Distributional Consistency
 # Reference: Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), Proceedings of Fourth International Conference on Language Resources and Evaluation (pp. 1119–1122). European Language Resources Association.
-def zhangs_distributional_consistency(freqs):
+def zhangs_distributional_consistency(main, freqs):
     freqs = numpy.array(freqs)
 
     if (freq_total := numpy.sum(freqs)) == 0:

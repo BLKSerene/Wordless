@@ -160,7 +160,7 @@ def mi(main, c11, c12, c21, c22):
     return mi11 + mi12 + mi21 + mi22
 
 # Odds Ratio
-# Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Lingustic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030
+# Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030
 def odds_ratio(main, c11, c12, c21, c22):
     if c11 == 0 and c12 > 0:
         return float('-inf')

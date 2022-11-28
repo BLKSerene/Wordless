@@ -85,7 +85,7 @@ def test_me():
 def test_mi():
     assert wl_measures_effect_size.mi(main, 0, 0, 0, 0) == 0
 
-# Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Lingustic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030 (p. 154)
+# Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030 (p. 154)
 def test_odds_ratio():
     assert round(wl_measures_effect_size.odds_ratio(main, 16217, 735, 2796938 - 16217, 2087946 - 735), 1) == 16.6
 

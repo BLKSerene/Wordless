@@ -90,11 +90,19 @@ class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
 
         self.group_box_general_settings.layout().setColumnStretch(3, 1)
 
+        self.group_box_griess_dp = QGroupBox(self.tr("Gries's DP"), self)
+
+        self.checkbox_griess_dp_apply_normalization = QCheckBox(self.tr('Apply normalization'), self)
+
+        self.group_box_griess_dp.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_griess_dp.layout().addWidget(self.checkbox_griess_dp_apply_normalization, 0, 0)
+
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_general_settings, 0, 0)
+        self.layout().addWidget(self.group_box_griess_dp, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(1, 1)
+        self.layout().setRowStretch(2, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -105,9 +113,15 @@ class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
         # General Settings
         self.spin_box_dispersion_num_sub_sections.setValue(settings['general_settings']['num_sub_sections'])
 
+        # Gries's DP
+        self.checkbox_griess_dp_apply_normalization.setChecked(settings['griess_dp']['apply_normalization'])
+
     def apply_settings(self):
         # General Settings
         self.settings_custom['general_settings']['num_sub_sections'] = self.spin_box_dispersion_num_sub_sections.value()
+
+        # Gries's DP
+        self.settings_custom['griess_dp']['apply_normalization'] = self.checkbox_griess_dp_apply_normalization.isChecked()
 
         return True
 

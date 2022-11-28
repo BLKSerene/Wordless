@@ -104,7 +104,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                     )
 
                     for token, freqs in freqs_sections_tokens.items():
-                        tokens_stats_file[token] = [measure_dispersion(freqs)]
+                        tokens_stats_file[token] = [measure_dispersion(self.main, freqs)]
 
                 # Adjusted Frequency
                 if measure_adjusted_freq is None:
@@ -117,7 +117,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                     )
 
                     for token, freqs in freqs_sections_tokens.items():
-                        tokens_stats_file[token].append(measure_adjusted_freq(freqs))
+                        tokens_stats_file[token].append(measure_adjusted_freq(self.main, freqs))
 
                 self.tokens_stats_files.append(tokens_stats_file)
 
