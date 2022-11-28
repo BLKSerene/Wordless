@@ -18,12 +18,9 @@
 
 [run]
 omit =
-    # Tests
-    tests/*
-    # Data
     data/*
-    fonts/*
+    doc/*
     imgs/*
+    tests/*
     trs/*
-    # Misc
     utils/*
