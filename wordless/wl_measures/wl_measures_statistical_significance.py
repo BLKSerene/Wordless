@@ -64,7 +64,7 @@ def yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22):
 
     return c11, c12, c21, c22
 
-def _to_freq_sections_items(main, items_search, items_x1, items_x2, num_sub_sections, use_data):
+def _to_freq_sections_items(items_search, items_x1, items_x2, num_sub_sections, use_data):
     freq_sections_items = {}
 
     sections_x1 = wl_nlp_utils.to_sections(items_x1, num_sub_sections)
@@ -114,7 +114,7 @@ def to_freq_sections_items(main, items_search, items_x1, items_x2, test_statisti
         num_sub_sections = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['num_sub_sections']
         use_data = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['use_data']
 
-    return _to_freq_sections_items(main, items_search, items_x1, items_x2, num_sub_sections, use_data)
+    return _to_freq_sections_items(items_search, items_x1, items_x2, num_sub_sections, use_data)
 
 # Fisher's Exact Test
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group.

@@ -208,7 +208,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                         ))
 
                     for ngram, freqs in freqs_sections_ngrams.items():
-                        ngrams_stats_file[ngram] = [measure_dispersion(freqs)]
+                        ngrams_stats_file[ngram] = [measure_dispersion(self.main, freqs)]
 
                 # Adjusted Frequency
                 if measure_adjusted_freq is None:
@@ -226,7 +226,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                         ))
 
                     for ngram, freqs in freqs_sections_ngrams.items():
-                        ngrams_stats_file[ngram].append(measure_adjusted_freq(freqs))
+                        ngrams_stats_file[ngram].append(measure_adjusted_freq(self.main, freqs))
 
                 self.ngrams_stats_files.append(ngrams_stats_file)
 

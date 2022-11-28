@@ -1678,6 +1678,10 @@ def init_settings_default(main):
             'dispersion': {
                 'general_settings': {
                     'num_sub_sections': 5
+                },
+
+                'griess_dp': {
+                    'apply_normalization': True
                 }
             },
 
