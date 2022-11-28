@@ -35,13 +35,10 @@ from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QAbstractItemDelegate, QCheckBox, QFileDialog, QLineEdit, QPushButton
 
-from wordless.wl_checking import wl_checking_files, wl_checking_misc
+from wordless.wl_checks import wl_checks_files, wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_matching, wl_texts
-from wordless.wl_utils import (
-    wl_conversion, wl_detection, wl_misc, wl_msgs, wl_paths,
-    wl_threading
-)
+from wordless.wl_utils import wl_conversion, wl_detection, wl_misc, wl_paths, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_buttons, wl_item_delegates, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
@@ -72,10 +69,10 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     *[new_file['name'] for new_file in new_files]
                 ]
 
-                new_file['name'] = new_file['name_old'] = wl_checking_misc.check_new_name(file_name, file_names)
+                new_file['name'] = new_file['name_old'] = wl_checks_misc.check_new_name(file_name, file_names)
 
                 # Path, Tokenized, Tagged
-                default_dir = wl_checking_misc.check_dir(self.main.settings_custom['general']['imp']['temp_files']['default_path'])
+                default_dir = wl_checks_misc.check_dir(self.main.settings_custom['general']['imp']['temp_files']['default_path'])
 
                 if file_ext == '.xml':
                     new_file['path'] = os.path.join(default_dir, f'{file_name}.xml')
@@ -96,7 +93,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
 
                 # Check for duplicate files
-                new_file['path'] = wl_checking_misc.check_new_path(new_file['path'])
+                new_file['path'] = wl_checks_misc.check_new_path(new_file['path'])
 
                 # Detect encodings
                 default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
@@ -186,8 +183,8 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                     new_file_src = copy.deepcopy(new_file)
                     new_file_tgt = copy.deepcopy(new_file)
 
-                    new_file_src['name'] = new_file_src['name_old'] = wl_checking_misc.check_new_name(f'{file_name}_source', file_names)
-                    new_file_tgt['name'] = new_file_tgt['name_old'] = wl_checking_misc.check_new_name(f'{file_name}_target', file_names)
+                    new_file_src['name'] = new_file_src['name_old'] = wl_checks_misc.check_new_name(f'{file_name}_source', file_names)
+                    new_file_tgt['name'] = new_file_tgt['name_old'] = wl_checks_misc.check_new_name(f'{file_name}_target', file_names)
 
                     with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
                         soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
@@ -212,8 +209,8 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                         lines_src.append(seg_src.get_text().replace(r'\n', ' ').strip())
                         lines_target.append(seg_target.get_text().replace(r'\n', ' ').strip())
 
-                    new_file_src['path'] = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
-                    new_file_tgt['path'] = wl_checking_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
+                    new_file_src['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
+                    new_file_tgt['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
 
                     new_file_src['text'] = '\n'.join(lines_src)
                     new_file_tgt['text'] = '\n'.join(lines_target)
@@ -508,59 +505,11 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         settings['include_files_in_subfolders'] = self.checkbox_include_files_in_subfolders.isChecked()
 
     def _add_files(self, file_paths):
-        def update_gui(err_msg, new_files):
-            if not err_msg:
-                self.table_files.files_to_open.extend(new_files)
-
-                self.table_files.update_table()
-
-                if file_paths_empty or file_paths_unsupported or file_paths_dup:
-                    dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, title = self.tr('Error Adding Files'))
-
-                    dialog_err_files.label_err.set_text(self.tr('''
-                        <div>
-                            An error occurred while adding files, so the following files were not added to the table.
-                        </div>
-                    '''))
-                    dialog_err_files.table_err_files.model().setRowCount(len(file_paths_empty) + len(file_paths_unsupported) + len(file_paths_dup))
-
-                    dialog_err_files.table_err_files.disable_updates()
-
-                    for i, file_path in enumerate(file_paths_empty + file_paths_unsupported + file_paths_dup):
-                        if file_path in file_paths_empty:
-                            dialog_err_files.table_err_files.model().setItem(
-                                i, 0,
-                                QStandardItem(self.tr('Empty File'))
-                            )
-                        elif file_path in file_paths_unsupported:
-                            dialog_err_files.table_err_files.model().setItem(
-                                i, 0,
-                                QStandardItem(self.tr('Unsupported File Type'))
-                            )
-                        elif file_path in file_paths_dup:
-                            dialog_err_files.table_err_files.model().setItem(
-                                i, 0,
-                                QStandardItem(self.tr('Duplicate File'))
-                            )
-
-                        dialog_err_files.table_err_files.model().setItem(
-                            i, 1,
-                            QStandardItem(file_path)
-                        )
-
-                    dialog_err_files.table_err_files.enable_updates()
-
-                    dialog_err_files.open()
-            else:
-                wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-
-                wl_msgs.wl_msg_fatal_error(self.main)
-
         dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
 
-        file_paths, file_paths_unsupported = wl_checking_files.check_file_paths_unsupported(self.main, file_paths)
-        file_paths, file_paths_empty = wl_checking_files.check_file_paths_empty(self.main, file_paths)
-        file_paths, file_paths_dup = wl_checking_files.check_file_paths_dup(
+        file_paths, self.file_paths_unsupported = wl_checks_files.check_file_paths_unsupported(self.main, file_paths)
+        file_paths, self.file_paths_empty = wl_checks_files.check_file_paths_empty(self.main, file_paths)
+        file_paths, self.file_paths_dup = wl_checks_files.check_file_paths_dup(
             self.main,
             new_file_paths = file_paths,
             file_paths = [
@@ -575,10 +524,57 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         wl_threading.Wl_Thread(Wl_Worker_Add_Files(
             self.main,
             dialog_progress = dialog_progress,
-            update_gui = update_gui,
+            update_gui = self.update_gui,
             file_paths = file_paths,
             table = self.table_files
         )).start_worker()
+
+    def update_gui(self, err_msg, new_files):
+        if wl_checks_files.check_err_file_area(self.main, err_msg):
+            self.table_files.files_to_open.extend(new_files)
+
+            self.table_files.update_table()
+
+            if self.file_paths_empty or self.file_paths_unsupported or self.file_paths_dup:
+                dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, title = self.tr('Error Adding Files'))
+
+                dialog_err_files.label_err.set_text(self.tr('''
+                    <div>
+                        An error occurred while adding files, so the following files are not added to the table.
+                    </div>
+                '''))
+                dialog_err_files.table_err_files.model().setRowCount(
+                    len(self.file_paths_empty)
+                    + len(self.file_paths_unsupported)
+                    + len(self.file_paths_dup)
+                )
+
+                dialog_err_files.table_err_files.disable_updates()
+
+                for i, file_path in enumerate(self.file_paths_empty + self.file_paths_unsupported + self.file_paths_dup):
+                    if file_path in self.file_paths_empty:
+                        dialog_err_files.table_err_files.model().setItem(
+                            i, 0,
+                            QStandardItem(self.tr('Empty File'))
+                        )
+                    elif file_path in self.file_paths_unsupported:
+                        dialog_err_files.table_err_files.model().setItem(
+                            i, 0,
+                            QStandardItem(self.tr('Unsupported File Type'))
+                        )
+                    elif file_path in self.file_paths_dup:
+                        dialog_err_files.table_err_files.model().setItem(
+                            i, 0,
+                            QStandardItem(self.tr('Duplicate File'))
+                        )
+
+                    dialog_err_files.table_err_files.model().setItem(
+                        i, 1,
+                        QStandardItem(file_path)
+                    )
+
+                dialog_err_files.table_err_files.enable_updates()
+                dialog_err_files.open()
 
     def add_files(self):
         if os.path.exists(self.main.settings_custom['general']['imp']['files']['default_path']):
@@ -589,7 +585,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         file_paths = QFileDialog.getOpenFileNames(
             parent = self.main,
             caption = self.tr('Open Files'),
-            directory = wl_checking_misc.check_dir(default_dir),
+            directory = wl_checks_misc.check_dir(default_dir),
             filter = ';;'.join(self.main.settings_global['file_types']['files']),
             initialFilter = self.main.settings_global['file_types']['files'][-1]
         )[0]
@@ -802,7 +798,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         )).start_worker()
 
     def update_gui(self, err_msg, new_files):
-        if not err_msg:
+        if wl_checks_files.check_err_file_area(self.main, err_msg):
             len_files_old = len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'])
 
             self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].extend(new_files)
@@ -812,10 +808,6 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             msg_file = self.tr('file') if len_files_opened == 1 else self.tr('files')
 
             self.main.statusBar().showMessage(self.tr('{} {} has been successfully opened.').format(len_files_opened, msg_file))
-        else:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-
-            wl_msgs.wl_msg_fatal_error(self.main)
 
     def open_files(self):
         self.dialog_open_files = Dialog_Open_Files(self.main)

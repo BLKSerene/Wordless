@@ -24,7 +24,7 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QFileDialog, QGroupBox, QLabel, QLineEdit, QPushButton
 import wordcloud
 
-from wordless.wl_checking import wl_checking_misc
+from wordless.wl_checks import wl_checks_misc
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_paths
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_widgets
@@ -144,7 +144,7 @@ class Wl_Settings_Figs(wl_settings.Wl_Settings_Node):
         path_file = QFileDialog.getOpenFileName(
             parent = self.main,
             caption = self.tr('Select Font File'),
-            directory = wl_checking_misc.check_dir(os.path.split(self.line_edit_figs_word_clouds_font_path.text())[0]),
+            directory = wl_checks_misc.check_dir(os.path.split(self.line_edit_figs_word_clouds_font_path.text())[0]),
             filter = ';;'.join(self.main.settings_global['file_types']['fonts']),
             initialFilter = self.main.settings_global['file_types']['fonts'][-1]
         )[0]

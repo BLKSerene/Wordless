@@ -75,7 +75,7 @@ from wordless import (
     wl_colligation_extractor,
     wl_keyword_extractor
 )
-from wordless.wl_checking import wl_checking_misc
+from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc, wl_paths, wl_threading
@@ -198,7 +198,7 @@ class Wl_Main(QMainWindow):
             with open('wl_settings.pickle', 'rb') as f:
                 settings_custom = pickle.load(f)
 
-            if wl_checking_misc.check_custom_settings(settings_custom, self.settings_default):
+            if wl_checks_misc.check_custom_settings(settings_custom, self.settings_default):
                 self.settings_custom = settings_custom
             else:
                 self.settings_custom = copy.deepcopy(self.settings_default)

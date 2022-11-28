@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Checking - Miscellaneous
+# Wordless: Tests - Checks - Miscellaneous
 # Copyright (C) 2018-2022  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@
 import os
 import shutil
 
-from wordless.wl_checking import wl_checking_misc
+from wordless.wl_checks import wl_checks_misc
 
 def test_check_custom_settings():
     settings_custom = settings_default = {
@@ -30,21 +30,21 @@ def test_check_custom_settings():
         }
     }
 
-    assert wl_checking_misc.check_custom_settings(settings_custom, settings_default) is True
-    assert wl_checking_misc.check_custom_settings(settings_custom, {}) is False
+    assert wl_checks_misc.check_custom_settings(settings_custom, settings_default)
+    assert not wl_checks_misc.check_custom_settings(settings_custom, {})
 
 def test_check_dir():
     if os.path.exists('temp'):
         shutil.rmtree('temp')
 
-    wl_checking_misc.check_dir('temp')
+    wl_checks_misc.check_dir('temp')
 
     assert os.path.exists('temp')
 
     os.rmdir('temp')
 
 def test_check_new_name():
-    assert wl_checking_misc.check_new_name('new_name', ['new_name', 'new_name (2)', 'new_name (4)']) == 'new_name (3)'
+    assert wl_checks_misc.check_new_name('new_name', ['new_name', 'new_name (2)', 'new_name (4)']) == 'new_name (3)'
 
 def test_check_new_path():
     if os.path.exists('temp'):
@@ -56,7 +56,7 @@ def test_check_new_path():
         with open(f'temp/{file_name}.temp', 'w', encoding = 'utf_8'):
             pass
 
-    assert wl_checking_misc.check_new_path('temp/temp.temp') == 'temp/temp (3).temp'
+    assert wl_checks_misc.check_new_path('temp/temp.temp') == 'temp/temp (3).temp'
 
     shutil.rmtree('temp')
 

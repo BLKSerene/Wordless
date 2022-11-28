@@ -30,7 +30,7 @@ from PyQt5.QtWidgets import (
     QLabel, QPushButton, QTableView
 )
 
-from wordless.wl_checking import wl_checking_misc
+from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_misc, wl_paths, wl_threading
@@ -933,7 +933,7 @@ class Wl_Table(QTableView):
             file_path, file_type = QFileDialog.getSaveFileName(
                 self,
                 caption = caption,
-                directory = os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_error.{default_ext}'),
+                directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_error.{default_ext}'),
                 filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
                 initialFilter = default_type
             )
@@ -942,7 +942,7 @@ class Wl_Table(QTableView):
             file_path, file_type = QFileDialog.getSaveFileName(
                 self,
                 caption = caption,
-                directory = os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}.docx'),
+                directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.docx'),
                 filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer_zapping']),
             )
         # Concordancer (without zapping) & Parallel Concordancer
@@ -950,7 +950,7 @@ class Wl_Table(QTableView):
             file_path, file_type = QFileDialog.getSaveFileName(
                 self,
                 caption = caption,
-                directory = os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
+                directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
                 filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
                 initialFilter = default_type
             )
@@ -959,7 +959,7 @@ class Wl_Table(QTableView):
             file_path, file_type = QFileDialog.getSaveFileName(
                 self,
                 caption = caption,
-                directory = os.path.join(wl_checking_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
+                directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
                 filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
                 initialFilter = default_type
             )

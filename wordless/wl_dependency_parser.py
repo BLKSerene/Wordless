@@ -26,9 +26,10 @@ from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel, QPushButton
 
-from wordless.wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_checks import wl_checks_work_area
+from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_nlp_utils, wl_token_processing
-from wordless.wl_utils import wl_misc, wl_msgs, wl_threading
+from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
@@ -183,106 +184,105 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
 
     @wl_misc.log_timing
     def generate_table(self):
-        settings = self.main.settings_custom['dependency_parser']['search_settings']
-
-        if (
-            not settings['multi_search_mode'] and settings['search_term']
-            or settings['multi_search_mode'] and settings['search_terms']
+        if wl_checks_work_area.check_nlp_support(
+            self.main,
+            files = self.main.wl_file_area.get_selected_files(),
+            nlp_utils = ['dependency_parsers']
+        ) and wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.main.settings_custom['dependency_parser']['search_settings']
         ):
             worker_dependency_parser_table = Wl_Worker_Dependency_Parser(
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
                 update_gui = self.update_gui_table
             )
+
             wl_threading.Wl_Thread(worker_dependency_parser_table).start_worker()
-        else:
-            wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
-            wl_msgs.wl_msg_generate_table_error(self.main)
 
     def update_gui_table(self, err_msg, results):
-        if not err_msg:
-            if results:
-                try:
-                    self.settings = copy.deepcopy(self.main.settings_custom)
+        if wl_checks_work_area.check_results(self.main, err_msg, results):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
 
-                    self.clr_table(0)
-                    self.model().setRowCount(len(results))
+                self.clr_table(0)
 
-                    self.disable_updates()
+                self.model().setRowCount(len(results))
+                self.disable_updates()
 
-                    for i, (
-                        head, dependent, dependency_relation, dependency_len,
-                        sentence_display, sentence_search,
-                        no_sentence, len_sentences, file
-                    ) in enumerate(results):
-                        # Head
-                        self.model().setItem(i, 0, QStandardItem(head))
-                        # Dependant
-                        self.model().setItem(i, 1, QStandardItem(dependent))
-                        # Dependency Relation
-                        self.model().setItem(i, 2, QStandardItem(dependency_relation))
-                        # Dependency Distance
-                        self.set_item_num(i, 3, dependency_len)
-                        self.set_item_num(i, 4, numpy.abs(dependency_len))
-                        # Sentence
-                        self.model().setItem(i, 5, QStandardItem(' '.join(sentence_display)))
-                        self.model().item(i, 5).text_display = sentence_display
-                        self.model().item(i, 5).text_search = sentence_search
-                        # Sentence No.
-                        self.set_item_num(i, 6, no_sentence)
-                        self.set_item_num(i, 7, no_sentence, len_sentences)
-                        # File
-                        self.model().setItem(i, 8, QStandardItem(file))
+                for i, (
+                    head, dependent, dependency_relation, dependency_len,
+                    sentence_display, sentence_search,
+                    no_sentence, len_sentences, file
+                ) in enumerate(results):
+                    # Head
+                    self.model().setItem(i, 0, QStandardItem(head))
+                    # Dependant
+                    self.model().setItem(i, 1, QStandardItem(dependent))
+                    # Dependency Relation
+                    self.model().setItem(i, 2, QStandardItem(dependency_relation))
+                    # Dependency Distance
+                    self.set_item_num(i, 3, dependency_len)
+                    self.set_item_num(i, 4, numpy.abs(dependency_len))
+                    # Sentence
+                    self.model().setItem(i, 5, QStandardItem(' '.join(sentence_display)))
+                    self.model().item(i, 5).text_display = sentence_display
+                    self.model().item(i, 5).text_search = sentence_search
+                    # Sentence No.
+                    self.set_item_num(i, 6, no_sentence)
+                    self.set_item_num(i, 7, no_sentence, len_sentences)
+                    # File
+                    self.model().setItem(i, 8, QStandardItem(file))
 
-                    self.enable_updates()
+                self.enable_updates()
 
-                    self.toggle_pct()
-
-                    wl_msgs.wl_msg_generate_table_success(self.main)
-                except Exception:
-                    err_msg = traceback.format_exc()
-            else:
-                wl_msg_boxes.wl_msg_box_no_results(self.main)
-                wl_msgs.wl_msg_generate_table_error(self.main)
-
-        if err_msg:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-            wl_msgs.wl_msg_fatal_error(self.main)
+                self.toggle_pct()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
 
     @wl_misc.log_timing
     def generate_fig(self):
-        sentences_rendered = set()
-        htmls = []
+        err_msg = ''
 
-        fig_settings = self.main.settings_custom['dependency_parser']['fig_settings']
+        try:
+            sentences_rendered = set()
+            htmls = []
 
-        for row in self.get_selected_rows():
-            sentence = tuple(self.model().item(row, 5).text_display)
+            fig_settings = self.main.settings_custom['dependency_parser']['fig_settings']
 
-            if sentence not in sentences_rendered:
-                for file in self.settings['file_area']['files_open']:
-                    if file['selected'] and file['name'] == self.model().item(row, 8).text():
-                        file_selected = file
+            for row in self.get_selected_rows():
+                sentence = tuple(self.model().item(row, 5).text_display)
 
-                htmls.extend(wl_dependency_parsing.wl_dependency_parse_fig(
-                    self.main,
-                    inputs = sentence,
-                    lang = file_selected['lang'],
-                    show_pos_tags = fig_settings['show_pos_tags'],
-                    show_fine_grained_pos_tags = fig_settings['show_fine_grained_pos_tags'],
-                    show_lemmas = fig_settings['show_pos_tags'] and fig_settings['show_lemmas'],
-                    collapse_puncs = False,
-                    compact_mode = fig_settings['compact_mode'],
-                    show_in_separate_tab = fig_settings['show_in_separate_tab'],
-                ))
+                if sentence not in sentences_rendered:
+                    for file in self.settings['file_area']['files_open']:
+                        if file['selected'] and file['name'] == self.model().item(row, 8).text():
+                            file_selected = file
 
-                sentences_rendered.add(sentence)
+                    htmls.extend(wl_dependency_parsing.wl_dependency_parse_fig(
+                        self.main,
+                        inputs = sentence,
+                        lang = file_selected['lang'],
+                        show_pos_tags = fig_settings['show_pos_tags'],
+                        show_fine_grained_pos_tags = fig_settings['show_fine_grained_pos_tags'],
+                        show_lemmas = fig_settings['show_pos_tags'] and fig_settings['show_lemmas'],
+                        collapse_puncs = False,
+                        compact_mode = fig_settings['compact_mode'],
+                        show_in_separate_tab = fig_settings['show_in_separate_tab'],
+                    ))
 
-        wl_dependency_parsing.wl_show_dependency_graphs(
-            self.main,
-            htmls = htmls,
-            show_in_separate_tab = fig_settings['show_in_separate_tab']
-        )
+                    sentences_rendered.add(sentence)
+
+            wl_dependency_parsing.wl_show_dependency_graphs(
+                self.main,
+                htmls = htmls,
+                show_in_separate_tab = fig_settings['show_in_separate_tab']
+            )
+        except Exception:
+            err_msg = traceback.format_exc()
+        finally:
+            wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
     def __init__(self, main):

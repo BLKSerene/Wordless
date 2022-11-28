@@ -24,7 +24,7 @@ import webbrowser
 from PyQt5.QtCore import QCoreApplication
 import spacy
 
-from wordless.wl_checking import wl_checking_misc
+from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion, wl_misc, wl_paths
@@ -267,7 +267,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
         ''').format(wl_paths.get_normalized_path(DIR_PATH))
     ).open()
 
-    fig_dir = wl_checking_misc.check_dir(DIR_PATH)
+    fig_dir = wl_checks_misc.check_dir(DIR_PATH)
 
     # Change the owner of the figure folder to user on Linux so that figures could be opened with browsers
     if is_linux:
@@ -275,7 +275,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
 
     if show_in_separate_tab:
         for html in htmls:
-            fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.svg'))
+            fig_path = wl_checks_misc.check_new_path(os.path.join(fig_dir, 'fig.svg'))
             fig_path = wl_paths.get_normalized_path(fig_path)
 
             with open(fig_path, 'w', encoding = 'utf_8') as f:
@@ -289,7 +289,7 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
 
                 subprocess.Popen(['xdg-open', f'file://{fig_path}']) # pylint: disable=consider-using-with
     else:
-        fig_path = wl_checking_misc.check_new_path(os.path.join(fig_dir, 'fig.html'))
+        fig_path = wl_checks_misc.check_new_path(os.path.join(fig_dir, 'fig.html'))
         fig_path = wl_paths.get_normalized_path(fig_path)
 
         with open(fig_path, 'w', encoding = 'utf_8') as f:

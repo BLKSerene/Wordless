@@ -25,7 +25,7 @@ from PyQt5.QtWidgets import (
     QStackedWidget, QTreeView, QWidget
 )
 
-from wordless.wl_checking import wl_checking_misc
+from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_widgets import wl_buttons, wl_layouts
 
@@ -143,7 +143,7 @@ class Wl_Settings_Node(QWidget):
                 )
 
                 if reply == QMessageBox.Yes:
-                    wl_checking_misc.check_dir(path)
+                    wl_checks_misc.check_dir(path)
                 else:
                     path_ok = False
             elif not os.path.isdir(path):

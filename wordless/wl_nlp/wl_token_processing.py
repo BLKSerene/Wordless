@@ -18,7 +18,7 @@
 
 import copy
 
-from wordless.wl_checking import wl_checking_tokens
+from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_lemmatization, wl_stop_word_lists, wl_syl_tokenization, wl_word_detokenization
 from wordless.wl_utils import wl_misc
 
@@ -52,7 +52,7 @@ def wl_process_tokens(main, text, token_settings):
             for sentence in para:
                 for sentence_seg in sentence:
                     for i, token in enumerate(sentence_seg):
-                        if wl_checking_tokens.is_punc(token):
+                        if wl_checks_tokens.is_punc(token):
                             sentence_seg[i] = ''
 
                             text.tags[i_tokens + i] = ''
@@ -97,7 +97,7 @@ def wl_process_tokens(main, text, token_settings):
                 for sentence in para:
                     for sentence_seg in sentence:
                         for i, token in enumerate(sentence_seg):
-                            if wl_checking_tokens.is_word_lowercase(token):
+                            if token.islower():
                                 sentence_seg[i] = ''
         # Uppercase
         if not settings['all_uppercase']:
@@ -105,7 +105,7 @@ def wl_process_tokens(main, text, token_settings):
                 for sentence in para:
                     for sentence_seg in sentence:
                         for i, token in enumerate(sentence_seg):
-                            if wl_checking_tokens.is_word_uppercase(token):
+                            if token.isupper():
                                 sentence_seg[i] = ''
         # Title Case
         if not settings['title_case']:
@@ -113,14 +113,14 @@ def wl_process_tokens(main, text, token_settings):
                 for sentence in para:
                     for sentence_seg in sentence:
                         for i, token in enumerate(sentence_seg):
-                            if wl_checking_tokens.is_word_title_case(token):
+                            if token.istitle():
                                 sentence_seg[i] = ''
     else:
         for para in text.tokens_multilevel:
             for sentence in para:
                 for sentence_seg in sentence:
                     for i, token in enumerate(sentence_seg):
-                        if wl_checking_tokens.is_word_alphabetic(token):
+                        if wl_checks_tokens.is_word_alphabetic(token):
                             sentence_seg[i] = ''
 
     # Numerals
@@ -129,7 +129,7 @@ def wl_process_tokens(main, text, token_settings):
             for sentence in para:
                 for sentence_seg in sentence:
                     for i, token in enumerate(sentence_seg):
-                        if wl_checking_tokens.is_num(token):
+                        if wl_checks_tokens.is_num(token):
                             sentence_seg[i] = ''
 
     # Filter stop words
@@ -239,12 +239,12 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, sentence_seg in enumerate(sentence):
-                    sentence[i] = [token for token in sentence_seg if not wl_checking_tokens.is_punc(token)]
+                    sentence[i] = [token for token in sentence_seg if not wl_checks_tokens.is_punc(token)]
 
         text.tokens_flat_puncs_merged = []
 
         for i, token in enumerate(tokens_flat):
-            if wl_checking_tokens.is_punc(token) and i > 0:
+            if wl_checks_tokens.is_punc(token) and i > 0:
                 text.tokens_flat_puncs_merged[-1] = wl_word_detokenization.wl_word_detokenize(
                     main,
                     tokens = [text.tokens_flat_puncs_merged[-1], token],
@@ -254,7 +254,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
                 text.tokens_flat_puncs_merged.append(token)
 
         # Check if the first token is a punctuation mark
-        if wl_checking_tokens.is_punc(text.tokens_flat_puncs_merged[0]):
+        if wl_checks_tokens.is_punc(text.tokens_flat_puncs_merged[0]):
             text.tokens_multilevel[0][0][0].insert(0, '')
     else:
         text.tokens_flat_puncs_merged = tokens_flat

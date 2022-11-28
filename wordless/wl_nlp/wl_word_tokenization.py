@@ -21,7 +21,7 @@ import pythainlp
 import sudachipy
 import underthesea
 
-from wordless.wl_checking import wl_checking_unicode
+from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization
 from wordless.wl_utils import wl_conversion, wl_misc
 
@@ -101,15 +101,15 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                             for i, char in enumerate(sentence):
                                 if i >= non_han_start:
-                                    if wl_checking_unicode.is_han(char):
+                                    if wl_checks_tokens.is_han(char):
                                         tokens.append(char)
 
                                         non_han_start += 1
                                     else:
                                         # English
-                                        if wl_checking_unicode.is_eng(char):
+                                        if wl_checks_tokens.is_eng(char):
                                             for j, _ in enumerate(sentence[i:]):
-                                                if i + j + 1 == len(sentence) or not wl_checking_unicode.is_eng(sentence[i + j + 1]):
+                                                if i + j + 1 == len(sentence) or not wl_checks_tokens.is_eng(sentence[i + j + 1]):
                                                     tokens.extend(wl_word_tokenize_flat(
                                                         main, sentence[non_han_start : i + j + 1],
                                                         lang = 'eng_us'
@@ -121,7 +121,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                         # Other Languages
                                         else:
                                             for j, _ in enumerate(sentence[i:]):
-                                                if i + j + 1 == len(sentence) or wl_checking_unicode.is_han(sentence[i + j + 1]):
+                                                if i + j + 1 == len(sentence) or wl_checks_tokens.is_han(sentence[i + j + 1]):
                                                     tokens.extend(wl_word_tokenize_flat(
                                                         main, sentence[non_han_start : i + j + 1],
                                                         lang = 'other'
@@ -166,15 +166,15 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                         for i, char in enumerate(sentence):
                             if i >= non_han_start:
-                                if wl_checking_unicode.is_han(char):
+                                if wl_checks_tokens.is_han(char):
                                     tokens.append(char)
 
                                     non_han_start += 1
                                 else:
                                     # Japanese Kana
-                                    if wl_checking_unicode.is_kana(char):
+                                    if wl_checks_tokens.is_kana(char):
                                         for j, _ in enumerate(sentence[i:]):
-                                            if i + j + 1 == len(sentence) or not wl_checking_unicode.is_kana(sentence[i + j + 1]):
+                                            if i + j + 1 == len(sentence) or not wl_checks_tokens.is_kana(sentence[i + j + 1]):
                                                 tokens.extend(wl_word_tokenize_flat(
                                                     main, sentence[non_han_start : i + j + 1],
                                                     lang = 'jpn'
@@ -184,9 +184,9 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                                                 break
                                     # English
-                                    elif wl_checking_unicode.is_eng(char):
+                                    elif wl_checks_tokens.is_eng(char):
                                         for j, _ in enumerate(sentence[i:]):
-                                            if i + j + 1 == len(sentence) or not wl_checking_unicode.is_eng(sentence[i + j + 1]):
+                                            if i + j + 1 == len(sentence) or not wl_checks_tokens.is_eng(sentence[i + j + 1]):
                                                 tokens.extend(wl_word_tokenize_flat(
                                                     main, sentence[non_han_start : i + j + 1],
                                                     lang = 'eng_us'
@@ -198,7 +198,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                     # Other Languages
                                     else:
                                         for j, _ in enumerate(sentence[i:]):
-                                            if i + j + 1 == len(sentence) or wl_checking_unicode.is_han(sentence[i + j + 1]):
+                                            if i + j + 1 == len(sentence) or wl_checks_tokens.is_han(sentence[i + j + 1]):
                                                 tokens.extend(wl_word_tokenize_flat(
                                                     main, sentence[non_han_start : i + j + 1],
                                                     lang = 'other'

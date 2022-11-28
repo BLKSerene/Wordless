@@ -58,20 +58,19 @@ class Wl_Dialog_Err_Fatal(Wl_Dialog_Err):
 
 class Wl_Dialog_Err_Files(wl_dialogs.Wl_Dialog_Err):
     def __init__(self, main, title):
-        super().__init__(main, title, width = 560, height = 320, no_buttons = True)
+        super().__init__(main, title, width = 650, height = 250, no_buttons = True)
 
         self.label_err = wl_labels.Wl_Label_Dialog('', self)
         self.table_err_files = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Error Type'),
-                self.tr('File')
+                self.tr('File Path')
             ]
         )
 
         self.table_err_files.tab = 'err'
 
-        self.table_err_files.setFixedHeight(220)
         self.table_err_files.model().setRowCount(0)
 
         self.button_export = QPushButton(self.tr('Export'), self)

@@ -21,7 +21,7 @@ import random
 import re
 
 import numpy
-from wordless.wl_checking import wl_checking_tokens
+from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_pos_tagging, wl_syl_tokenization
 from wordless.wl_utils import wl_misc, wl_paths
 
@@ -40,7 +40,7 @@ def get_counts(main, text):
                     text.words_multilevel[-1][-1].append([
                         token
                         for token in sentence_seg
-                        if wl_checking_tokens.is_word_alphanumeric(token)
+                        if wl_checks_tokens.is_word_alphanumeric(token)
                     ])
 
         text.sentences = [
@@ -178,7 +178,7 @@ def coleman_liau_index(main, text):
 
     return grade_level
 
-# Dale-Chall Readibility Score
+# Dale-Chall Readability Score
 # References:
 #     Dale, E., & Chall, J. S. (1948). A formula for predicting readability. Educational Research Bulletin, 27(1), 11–20, 28.
 #     Dale, E., & Chall, J. S. (1948). A formula for predicting readability: Instructions. Educational Research Bulletin, 27(2), 37–54.

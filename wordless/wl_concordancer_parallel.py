@@ -25,9 +25,10 @@ from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QPushButton, QGroupBox
 
-from wordless.wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_checks import wl_checks_work_area
+from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
-from wordless.wl_utils import wl_misc, wl_msgs, wl_threading
+from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_labels, wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
@@ -213,78 +214,70 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
 
     @wl_misc.log_timing
     def generate_table(self):
-        settings = self.main.settings_custom['concordancer_parallel']
-
-        # Check for empty search term
-        if (
-            not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
-            or settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms']
+        if wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.main.settings_custom['concordancer_parallel']['search_settings'],
+            show_warning = False
         ):
             search_additions_deletions = True
         else:
+            # Check whether the user has simply forgotten to enter search terms
             search_additions_deletions = wl_msg_boxes.wl_msg_box_question(
                 self.main,
-                title = _tr('wl_concordancer_parallel', 'Empty Search Terms'),
+                title = _tr('wl_concordancer_parallel', 'Missing Search Terms'),
                 text = _tr('wl_concordancer_parallel', '''
                     <div>You have not specified any search terms. Do you want to search for additions and deletions?</div>
                 ''')
             )
 
-        # Ask for confirmation
         if search_additions_deletions:
             worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
                 update_gui = self.update_gui_table
             )
+
             wl_threading.Wl_Thread(worker_concordancer_parallel_table).start_worker()
         else:
-            wl_msgs.wl_msg_generate_table_error(self.main)
+            wl_checks_work_area.wl_status_bar_msg_missing_search_terms(self.main)
 
     def update_gui_table(self, err_msg, concordance_lines):
-        if not err_msg:
-            if concordance_lines:
-                try:
-                    self.settings = copy.deepcopy(self.main.settings_custom)
+        if wl_checks_work_area.check_results(self.main, err_msg, concordance_lines):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
 
-                    self.clr_table(0)
+                self.clr_table(0)
 
-                    for file_name in self.main.wl_file_area.get_selected_file_names():
-                        self.ins_header_hor(
-                            self.model().columnCount(),
-                            file_name
-                        )
+                for file_name in self.main.wl_file_area.get_selected_file_names():
+                    self.ins_header_hor(
+                        self.model().columnCount(),
+                        file_name
+                    )
 
-                    self.model().setRowCount(len(concordance_lines))
-                    self.disable_updates()
+                self.model().setRowCount(len(concordance_lines))
+                self.disable_updates()
 
-                    for i, concordance_line in enumerate(concordance_lines):
-                        parallel_unit_no, len_parallel_units = concordance_line[0]
+                for i, concordance_line in enumerate(concordance_lines):
+                    parallel_unit_no, len_parallel_units = concordance_line[0]
 
-                        self.set_item_num(i, 0, parallel_unit_no + 1)
-                        self.set_item_num(i, 1, parallel_unit_no + 1, len_parallel_units)
+                    self.set_item_num(i, 0, parallel_unit_no + 1)
+                    self.set_item_num(i, 1, parallel_unit_no + 1, len_parallel_units)
 
-                        for j, (parallel_unit_raw, parallel_unit_search) in enumerate(concordance_line[1]):
-                            label_parallel_unit = wl_labels.Wl_Label_Html(' '.join(parallel_unit_raw), self.main)
-                            label_parallel_unit.text_raw = parallel_unit_raw
-                            label_parallel_unit.text_search = parallel_unit_search
+                    for j, (parallel_unit_raw, parallel_unit_search) in enumerate(concordance_line[1]):
+                        label_parallel_unit = wl_labels.Wl_Label_Html(' '.join(parallel_unit_raw), self.main)
+                        label_parallel_unit.text_raw = parallel_unit_raw
+                        label_parallel_unit.text_search = parallel_unit_search
 
-                            self.setIndexWidget(self.model().index(i, 2 + j), label_parallel_unit)
-                            self.indexWidget(self.model().index(i, 2 + j)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+                        self.setIndexWidget(self.model().index(i, 2 + j), label_parallel_unit)
+                        self.indexWidget(self.model().index(i, 2 + j)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                    self.enable_updates()
-                    self.toggle_pct()
+                self.enable_updates()
 
-                    wl_msgs.wl_msg_generate_table_success(self.main)
-                except Exception:
-                    err_msg = traceback.format_exc()
-            else:
-                wl_msg_boxes.wl_msg_box_no_results(self.main)
-                wl_msgs.wl_msg_generate_table_error(self.main)
-
-        if err_msg:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-            wl_msgs.wl_msg_fatal_error(self.main)
+                self.toggle_pct()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
 
 class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
     def __init__(self, main):

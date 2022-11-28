@@ -23,6 +23,7 @@ from PyQt5.QtCore import QCoreApplication, QSize, Qt
 from PyQt5.QtGui import QBrush, QColor
 from PyQt5.QtWidgets import QPushButton
 
+from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_matching
 from wordless.wl_utils import wl_misc, wl_threading
@@ -187,6 +188,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.checkbox_match_tags.setChecked(settings['match_tags'])
 
         self.search_settings_changed()
+        self.clr_highlights()
 
     def search_settings_changed(self):
         self.settings['multi_search_mode'] = self.checkbox_multi_search_mode.isChecked()
@@ -199,6 +201,19 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.settings['use_regex'] = self.checkbox_use_regex.isChecked()
         self.settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
+
+        if wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.settings,
+            show_warning = False
+        ):
+            self.button_find_next.setEnabled(True)
+            self.button_find_prev.setEnabled(True)
+            self.button_find_all.setEnabled(True)
+        else:
+            self.button_find_next.setEnabled(False)
+            self.button_find_prev.setEnabled(False)
+            self.button_find_all.setEnabled(False)
 
         if 'size_multi' in self.__dict__:
             if self.settings['multi_search_mode']:
@@ -302,56 +317,51 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
 
     @wl_misc.log_timing
     def find_all(self):
-        def update_gui():
-            if self.items_found:
-                for table in self.tables:
-                    table.disable_updates()
+        self.clr_highlights()
 
-                for table, row, col in self.items_found:
-                    if table.indexWidget(table.model().index(row, col)):
-                        table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 1px solid #E53E3A;')
-                    else:
-                        table.model().item(row, col).setForeground(QBrush(QColor('#FFF')))
-                        table.model().item(row, col).setBackground(QBrush(QColor('#E53E3A')))
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Searching in results...'))
 
-                for table in self.tables:
-                    table.enable_updates()
-            else:
-                wl_msg_boxes.Wl_Msg_Box_Warning(
-                    self.main,
-                    title = self.tr('No Search Results'),
-                    text = self.tr('''
-                        <div>Searching has completed successfully, but there are no results found.</div>
-                        <div>You can change your settings and try again.</div>
-                    ''')
-                ).open()
+        worker_results_search = Wl_Worker_Results_Search(
+            self.main,
+            dialog_progress = dialog_progress,
+            update_gui = self.update_gui,
+            dialog = self
+        )
 
-            len_items_found = len(self.items_found)
-            msg_item = self.tr('item') if len_items_found == 1 else self.tr('items')
+        wl_threading.Wl_Thread(worker_results_search).start_worker()
 
-            self.main.statusBar().showMessage(self.tr('Found {} {}.').format(len_items_found, msg_item))
+    def update_gui(self):
+        if self.items_found:
+            for table in self.tables:
+                table.disable_updates()
 
-        if (
-            not self.settings['multi_search_mode'] and self.settings['search_term']
-            or self.settings['multi_search_mode'] and self.settings['search_terms']
-        ):
-            self.clr_highlights()
+            for table, row, col in self.items_found:
+                if table.indexWidget(table.model().index(row, col)):
+                    table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 1px solid #E53E3A;')
+                else:
+                    table.model().item(row, col).setForeground(QBrush(QColor('#FFF')))
+                    table.model().item(row, col).setBackground(QBrush(QColor('#E53E3A')))
 
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Searching in results...'))
+            for table in self.tables:
+                table.enable_updates()
 
-            worker_results_search = Wl_Worker_Results_Search(
-                self.main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui,
-                dialog = self
-            )
-
-            thread_results_search = wl_threading.Wl_Thread(worker_results_search)
-            thread_results_search.start_worker()
+            self.button_clr_hightlights.setEnabled(True)
         else:
-            wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
+            wl_msg_boxes.Wl_Msg_Box_Warning(
+                self.main,
+                title = self.tr('No Search Results'),
+                text = self.tr('''
+                    <div>Searching has completed successfully, but there are no results found.</div>
+                    <div>You can change your settings and try again.</div>
+                ''')
+            ).open()
 
-            self.main.statusBar().showMessage(self.tr('An error occured during searching!'))
+            self.button_clr_hightlights.setEnabled(False)
+
+        len_items_found = len(self.items_found)
+        msg_item = self.tr('item') if len_items_found == 1 else self.tr('items')
+
+        self.main.statusBar().showMessage(self.tr('Found {} {}.').format(len_items_found, msg_item))
 
     def clr_highlights(self):
         if self.items_found:
@@ -369,6 +379,9 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                 table.enable_updates()
 
             self.items_found.clear()
+            self.main.statusBar().showMessage(self.tr('Highlights cleared.'))
+
+        self.button_clr_hightlights.setEnabled(False)
 
     def load(self):
         # Calculate size
