@@ -28,7 +28,7 @@ def to_freq_sections_items(main, items_search, items_x1, items_x2, measure_bayes
         num_sub_sections = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['num_sub_sections']
         use_data = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['use_data']
 
-    return wl_measures_statistical_significance._to_freq_sections_items(main, items_search, items_x1, items_x2, num_sub_sections, use_data)
+    return wl_measures_statistical_significance._to_freq_sections_items(items_search, items_x1, items_x2, num_sub_sections, use_data)
 
 # Log-likelihood Ratio
 # Reference: Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), New Approaches to the Study of Linguistic Variability (pp. 3–11). Peter Lang.
