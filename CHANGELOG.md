@@ -19,6 +19,9 @@
 <div align="center"><h1>📄 Changelog</h1></div>
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2022
+### ✨ Improvements
+- File Area: Disallow empty file names
+
 ### 📌 Bugfixes
 - Settings: Fix Settings - Part-of-speech Tagging - Tagsets
 

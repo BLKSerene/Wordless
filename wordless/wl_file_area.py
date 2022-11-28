@@ -665,27 +665,36 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             # Record old file names that might be useful for other slots
             self.file_area.file_names_old = list(self.file_area.get_selected_file_names())
 
-            # Check for duplicate file names
+            # Check for empty and duplicate file names
             for row in range(self.model().rowCount()):
                 file = self.model().item(row, 0).wl_file
                 file_name = self.model().item(row, 0).text()
 
                 if file_name != file['name_old']:
-                    if self.main.wl_file_area.find_file_by_name(file_name):
+                    if not file_name or self.main.wl_file_area.find_file_by_name(file_name):
                         self.disable_updates()
 
                         self.model().item(row, 0).setText(file['name_old'])
 
                         self.enable_updates()
 
-                        wl_msg_boxes.Wl_Msg_Box_Warning(
-                            self.main,
-                            title = self.tr('Duplicate File Names Found'),
-                            text = self.tr('''
-                                <div>There is already a file with the same name in the file area.</div>
-                                <div>Please specify a different file name.</div>
-                            ''')
-                        ).exec_()
+                        if not file_name:
+                            wl_msg_boxes.Wl_Msg_Box_Warning(
+                                self.main,
+                                title = self.tr('Empty File Name'),
+                                text = self.tr('''
+                                    <div>The file name should not be left empty!</div>
+                                ''')
+                            ).exec_()
+                        elif self.main.wl_file_area.find_file_by_name(file_name):
+                            wl_msg_boxes.Wl_Msg_Box_Warning(
+                                self.main,
+                                title = self.tr('Duplicate File Names'),
+                                text = self.tr('''
+                                    <div>There is already a file with the same name in the file area.</div>
+                                    <div>Please specify a different file name.</div>
+                                ''')
+                            ).exec_()
 
                         self.setCurrentIndex(self.model().index(row, 0))
 
