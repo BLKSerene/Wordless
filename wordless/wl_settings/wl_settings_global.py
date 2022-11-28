@@ -1921,11 +1921,6 @@ def init_settings_global():
                 'func': wl_measures_dispersion.griess_dp
             },
 
-            _tr('init_settings_global', "Gries's DPnorm"): {
-                'col_text': _tr('init_settings_global', "Gries's DPnorm"),
-                'func': wl_measures_dispersion.griess_dp_norm
-            },
-
             _tr('init_settings_global', "Juilland's D"): {
                 'col_text': _tr('init_settings_global', "Juilland's D"),
                 'func': wl_measures_dispersion.juillands_d
@@ -1953,8 +1948,8 @@ def init_settings_global():
                 'func': None
             },
 
-            _tr('init_settings_global', "Carroll's Um"): {
-                'col_text': _tr('init_settings_global', "Carroll's Um"),
+            _tr('init_settings_global', "Carroll's Uₘ"): {
+                'col_text': _tr('init_settings_global', "Carroll's Uₘ"),
                 'func': wl_measures_adjusted_freq.carrolls_um
             },
 

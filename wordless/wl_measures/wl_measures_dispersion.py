@@ -60,9 +60,12 @@ def carrolls_d2(freqs):
     return d2
 
 # Gries's DP
-# Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri
+# References:
+#     Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri
+#     Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. International Journal of Corpus Linguistics, 17(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij
 def griess_dp(freqs):
     freqs = numpy.array(freqs)
+    normalized = True
 
     if (freq_total := numpy.sum(freqs)) == 0:
         dp = 0
@@ -74,12 +77,10 @@ def griess_dp(freqs):
             for freq in freqs
         ]) / 2
 
-    return dp
+        if normalized:
+            dp /= 1 - 1 / len(freqs)
 
-# Gries's DPnorm
-# Reference: Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. International Journal of Corpus Linguistics, 17(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij
-def griess_dp_norm(freqs):
-    return griess_dp(freqs) / (1 - 1 / len(freqs))
+    return dp
 
 # Juilland's D
 # Reference: Juilland, A., & Chang-Rodriguez, E. (1964). Frequency dictionary of Spanish words. Mouton.

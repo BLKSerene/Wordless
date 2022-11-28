@@ -27,6 +27,7 @@
 
 ### ❌ Removals
 - Settings: Remove Settings - Figures - Word Clouds - Font - GNU FreeFont
+- Work Area: Remove Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion - Gries's DPnorm
 
 ## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - 11/21/2022
 ### 🎉 New Features
