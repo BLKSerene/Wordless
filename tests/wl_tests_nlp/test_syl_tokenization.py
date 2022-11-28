@@ -19,7 +19,7 @@
 import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
-from wordless.wl_checking import wl_checking_tokens
+from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_syl_tokenization, wl_word_tokenization
 
 main = wl_test_init.Wl_Test_Main()
@@ -200,7 +200,7 @@ def test_syl_tokenize_tokens_no_punc(lang, syl_tokenizer):
 
     # Check for punctuation marks
     assert not any((
-        bool(len(syls) == 1 and wl_checking_tokens.is_punc(syls[0]))
+        bool(len(syls) == 1 and wl_checks_tokens.is_punc(syls[0]))
         for syls in syls_tokens
     ))
 

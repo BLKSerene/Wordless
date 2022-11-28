@@ -20,7 +20,7 @@ import re
 
 import pythainlp
 
-from wordless.wl_checking import wl_checking_tokens
+from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_nlp_utils, wl_word_tokenization
 
 def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
@@ -52,7 +52,7 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
         else:
             syls_tokens = [[token] for token in inputs]
 
-    # Remove emtpy syllables and whitespace around syllables
+    # Remove empty syllables and whitespace around syllables
     syls_tokens = [
         [syl_clean for syl in syls if (syl_clean := syl.strip())]
         for syls in syls_tokens
@@ -94,12 +94,12 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
 
     return syls_tokens
 
-# Excluding punctuations
+# Excluding punctuation marks
 def wl_syl_tokenize_tokens_no_puncs(main, tokens, lang, syl_tokenizer = 'default'):
     syls_tokens = wl_syl_tokenize(main, tokens, lang, syl_tokenizer = syl_tokenizer)
 
     for i, syls in reversed(list(enumerate(syls_tokens))):
-        if len(syls) == 1 and wl_checking_tokens.is_punc(syls[0]):
+        if len(syls) == 1 and wl_checks_tokens.is_punc(syls[0]):
             del syls_tokens[i]
 
     return syls_tokens
