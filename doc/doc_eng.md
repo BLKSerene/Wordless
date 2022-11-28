@@ -1052,60 +1052,7 @@ The dispersion and adjusted frequency of a word in each file is calculated by fi
 Then, the dispersion and adjusted frequency of the word will be calcuated as follows:
 
 <!--
-Carroll's D₂:
-    \begin{align*}
-        H &= \ln F - \frac{\sum_{i = 1}^n \left(F_i \times \ln F_i\right)}{F} \\
-        D_2 &= \frac{H}{\ln n}
-    \end{align*}
-
-Gries's DP:
-    \begin{align*}
-        DP = \frac{1}{2} \times \sum_{i = 1}^n \left|\frac{F_{i}}{F} - \frac{1}{n}\right|
-    \end{align*}
-
-Gries's DPnorm:
-    \begin{align*}
-        DP &= \frac{1}{2} \times \sum_{i = 1}^n \left|\frac{F_{i}}{F} - \frac{1}{n}\right| \\
-        DP_{norm} &= \frac{DP}{1 - \frac{1}{n}}
-    \end{align*}
-
-Juilland's D:
-    \begin{align*}
-        \sigma &= \sqrt{\frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{n}} \\
-        CV &= \frac{\sigma}{\overline{F}} \\
-        D &= 1- \frac{CV}{\sqrt{n - 1}}
-    \end{align*}
-
-Lyne's D₃:
-    \begin{align*}
-        \chi^2 &= \sum_{i = 1}^n \frac{\left(F_i - \overline{F}\right)^2}{\overline{F}} \\
-        D_3 &= \frac{1 - \chi^2}{4 \times F}
-    \end{align*}
-
-Rosengren's S:
-    \begin{align*}
-        KF &= \frac{1}{n} \times \left(\sum_{i = 1}^n \sqrt{F_{i}}\right)^2 \\
-        S &= \frac{KF}{F}
-    \end{align*}
-
-Zhang's Distributional Consistency:
-    \begin{align*}
-        DC = \frac{\left(\frac{\sum_{i = 1}^n \sqrt{F_i}}{n}\right)^2}{\frac{\sum_{i = 1}^n}{n}}
-    \end{align*}
--->
-
-Measure of Dispersion|Formula
----------------------|-------
-<span id="ref-carrolls-d2"></span>Carroll's D₂<br>([Carroll, 1970](#ref-carroll-1970))|![Formula](/doc/measures/dispersion/carrolls_d2.svg)
-<span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008))|![Formula](/doc/measures/dispersion/griess_dp.svg)
-<span id="ref-griess-dp-norm"></span>Gries's DPnorm<br>([Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))|![Formula](/doc/measures/dispersion/griess_dp_norm.svg)
-<span id="ref-juillands-d"></span>Juilland's D<br>([Juilland & Chang-Rodrigues, 1964](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion/juillands_d.svg)
-<span id="ref-lynes-d3"></span>Lyne's D₃<br>([Lyne, 1985](#ref-lyne-1985))|![Formula](/doc/measures/dispersion/lynes_d3.svg)
-<span id="ref-rosengrens-s"></span>Rosengren's S<br>([Rosengren, 1971](#ref-rosengren-1971))|![Formula](/doc/measures/dispersion/rosengrens_s.svg)
-<span id="ref-zhangs-distributional-consistency"></span>Zhang's Distributional Consistency<br>([Zhang, 2004](#ref-zhang-2004))|![Formula](/doc/measures/dispersion/zhangs_distributional_consistency.svg)
-
-<!--
-Carroll's Um:
+Carroll's D₂/Um:
     \begin{align*}
         H &= \ln F - \frac{\sum_{i = 1}^n \left(F_i \times \ln F_i\right)}{F} \\
         D_2 &= \frac{H}{\ln n} \\
@@ -1117,7 +1064,13 @@ Engwall's FM:
         FM = \frac{F \times R}{n}
     \end{align*}
 
-Juilland's U:
+Gries's DP:
+  \begin{align*}
+        DP &= \frac{1}{2} \times \sum_{i = 1}^n \left|\frac{F_{i}}{F} - \frac{1}{n}\right| \\
+        DP_{norm} &= \frac{DP}{1 - \frac{1}{n}}
+    \end{align*}
+
+Juilland's D/U:
     \begin{align*}
         \sigma &= \sqrt{\frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{n}} \\
         CV &= \frac{\sigma}{\overline{F}} \\
@@ -1130,19 +1083,34 @@ Kromer's UR:
         U_R = \sum_{i = 1}^n \psi\left(F_i + 1\right) + C
     \end{align*}
 
-Rosengren's KF:
+Lyne's D₃:
     \begin{align*}
-        KF &= \frac{1}{n} \times \left(\sum_{i = 1}^n \sqrt{F_i}\right)^2
+        \chi^2 &= \sum_{i = 1}^n \frac{\left(F_i - \overline{F}\right)^2}{\overline{F}} \\
+        D_3 &= \frac{1 - \chi^2}{4 \times F}
+    \end{align*}
+
+Rosengren's S/KF:
+    \begin{align*}
+        KF &= \frac{1}{n} \times \left(\sum_{i = 1}^n \sqrt{F_{i}}\right)^2 \\
+        S &= \frac{KF}{F}
+    \end{align*}
+
+Zhang's Distributional Consistency:
+    \begin{align*}
+        DC = \frac{\left(\frac{\sum_{i = 1}^n \sqrt{F_i}}{n}\right)^2}{\frac{\sum_{i = 1}^n}{n}}
     \end{align*}
 -->
 
-Measure of Adjusted Frequency|Formula
------------------------------|-------
-<span id="ref-carrolls-um"></span>Carroll's Um<br>([Carroll, 1970](#ref-carroll-1970))|![Formula](/doc/measures/adjusted_freq/carrolls_um.svg)
-<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974](#ref-engwall-1974))|![Formula](/doc/measures/adjusted_freq/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
-<span id="ref-juillands-u"></span>Juilland's U<br>([Juilland & Chang-Rodrigues, 1964](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/adjusted_freq/juillands_u.svg)
-<span id="ref-kromers-ur"></span>Kromer's UR<br>([Kromer, 2003](#ref-kromer-2003))|![Formula](/doc/measures/adjusted_freq/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
-<span id="ref-rosengrens-kf"></span>Rosengren's KF<br>([Rosengren, 1971](#ref-rosengren-1971))|![Formula](/doc/measures/adjusted_freq/rosengrens_kf.svg)
+Measure of Dispersion|Measure of Adjusted Frequency|Formula
+---------------------|-----------------------------|-------
+<span id="ref-carrolls-d2"></span>Carroll's D₂<br>([Carroll, 1970](#ref-carroll-1970))|<span id="ref-carrolls-um"></span>Carroll's Uₘ<br>([Carroll, 1970](#ref-carroll-1970))|![Formula](/doc/measures/dispersion_adjusted_frequency/carrolls_um.svg)
+&nbsp;|<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974](#ref-engwall-1974))|![Formula](/doc/measures/dispersion_adjusted_frequency/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
+<span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)
+<span id="ref-juillands-d"></span>Juilland's D<br>([Juilland & Chang-Rodrigues, 1964](#ref-juilland-chang-rodrigues-1964))|<span id="ref-juillands-u"></span>Juilland's U<br>([Juilland & Chang-Rodrigues, 1964](#ref-juilland-chang-rodrigues-1964))|![Formula](/doc/measures/dispersion_adjusted_frequency/juillands_u.svg)
+&nbsp;|<span id="ref-kromers-ur"></span>Kromer's UR<br>([Kromer, 2003](#ref-kromer-2003))|![Formula](/doc/measures/dispersion_adjusted_frequency/kromers_ur.svg)<br>where **ψ** is the [digamma function](https://en.wikipedia.org/wiki/Digamma_function), and **C** is the [Euler–Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant).
+<span id="ref-lynes-d3"></span>Lyne's D₃<br>([Lyne, 1985](#ref-lyne-1985))||![Formula](/doc/measures/dispersion_adjusted_frequency/lynes_d3.svg)
+<span id="ref-rosengrens-s"></span>Rosengren's S<br>([Rosengren, 1971](#ref-rosengren-1971))|<span id="ref-rosengrens-kf"></span>Rosengren's KF<br>([Rosengren, 1971](#ref-rosengren-1971))|![Formula](/doc/measures/dispersion_adjusted_frequency/rosengrens_s.svg)
+<span id="ref-zhangs-distributional-consistency"></span>Zhang's Distributional Consistency<br>([Zhang, 2004](#ref-zhang-2004))||![Formula](/doc/measures/dispersion_adjusted_frequency/zhangs_distributional_consistency.svg)
 
 <span id="doc-4-4-3"></span>
 #### [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc)
