@@ -18,8 +18,9 @@
 
 ---
 exclude_paths:
+  - ".github/**"
   - "data/**"
-  - "fonts/**"
+  - "doc/**"
   - "imgs/**"
   - "tests/files/**"
   - "trs/**"
