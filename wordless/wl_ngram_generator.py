@@ -26,11 +26,12 @@ from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QCheckBox, QLabel, QPushButton, QGroupBox
 
-from wordless.wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_checks import wl_checks_work_area
+from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measures_adjusted_freq, wl_measures_dispersion
 from wordless.wl_nlp import wl_matching, wl_texts, wl_token_processing
-from wordless.wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
+from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
@@ -309,242 +310,217 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
     @wl_misc.log_timing
     def generate_table(self):
-        settings = self.main.settings_custom['ngram_generator']
-
-        if (
-            (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'])
-            or (settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'])
+        if wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.main.settings_custom['ngram_generator']['search_settings']
         ):
             worker_ngram_generator_table = Wl_Worker_Ngram_Generator_Table(
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
                 update_gui = self.update_gui_table
             )
+
             wl_threading.Wl_Thread(worker_ngram_generator_table).start_worker()
-        else:
-            wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
-            wl_msgs.wl_msg_generate_table_error(self.main)
 
     def update_gui_table(self, err_msg, ngrams_freq_files, ngrams_stats_files):
-        if not err_msg:
-            if ngrams_freq_files:
-                try:
-                    self.settings = copy.deepcopy(self.main.settings_custom)
+        if wl_checks_work_area.check_results(self.main, err_msg, ngrams_freq_files):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
 
-                    settings = self.main.settings_custom['ngram_generator']
+                settings = self.main.settings_custom['ngram_generator']
 
-                    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-                    text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+                text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+                text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                    text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
-                    text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
+                text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
+                text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
 
-                    self.clr_table()
+                self.clr_table()
 
-                    # Insert columns (files)
-                    files = list(self.main.wl_file_area.get_selected_files())
+                # Insert columns (files)
+                files = list(self.main.wl_file_area.get_selected_files())
 
-                    for i, file in enumerate(files):
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('wl_ngram_generator', '[{}]\nFrequency').format(file['name']),
-                            is_int = True, is_cumulative = True, is_breakdown = True
-                        )
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('wl_ngram_generator', '[{}]\nFrequency %').format(file['name']),
-                            is_pct = True, is_cumulative = True, is_breakdown = True
-                        )
-
-                        if text_dispersion is not None:
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                f'[{file["name"]}]\n{text_dispersion}',
-                                is_float = True, is_breakdown = True
-                            )
-
-                        if text_adjusted_freq is not None:
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                f'[{file["name"]}]\n{text_adjusted_freq}',
-                                is_float = True, is_breakdown = True
-                            )
-
-                    # Insert columns (total)
+                for i, file in enumerate(files):
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        _tr('wl_ngram_generator', 'Total\nFrequency'),
-                        is_int = True, is_cumulative = True
+                        _tr('wl_ngram_generator', '[{}]\nFrequency').format(file['name']),
+                        is_int = True, is_cumulative = True, is_breakdown = True
                     )
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        _tr('wl_ngram_generator', 'Total\nFrequency %'),
-                        is_pct = True, is_cumulative = True
+                        _tr('wl_ngram_generator', '[{}]\nFrequency %').format(file['name']),
+                        is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
                     if text_dispersion is not None:
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            _tr('wl_ngram_generator', 'Total\n') + text_dispersion,
-                            is_float = True
+                            f'[{file["name"]}]\n{text_dispersion}',
+                            is_float = True, is_breakdown = True
                         )
 
                     if text_adjusted_freq is not None:
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            _tr('wl_ngram_generator', 'Total\n') + text_adjusted_freq,
-                            is_float = True
+                            f'[{file["name"]}]\n{text_adjusted_freq}',
+                            is_float = True, is_breakdown = True
                         )
 
-                    # Sort by frequency of the first file
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(_tr('wl_ngram_generator', '[{}]\nFrequency').format(files[0]['name'])),
-                        Qt.DescendingOrder
+                # Insert columns (total)
+                self.ins_header_hor(
+                    self.model().columnCount() - 2,
+                    _tr('wl_ngram_generator', 'Total\nFrequency'),
+                    is_int = True, is_cumulative = True
+                )
+                self.ins_header_hor(
+                    self.model().columnCount() - 2,
+                    _tr('wl_ngram_generator', 'Total\nFrequency %'),
+                    is_pct = True, is_cumulative = True
+                )
+
+                if text_dispersion is not None:
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        _tr('wl_ngram_generator', 'Total\n') + text_dispersion,
+                        is_float = True
                     )
 
-                    cols_freq = self.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency'))
-                    cols_freq_pct = self.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency %'))
+                if text_adjusted_freq is not None:
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        _tr('wl_ngram_generator', 'Total\n') + text_adjusted_freq,
+                        is_float = True
+                    )
 
-                    for col in cols_freq_pct:
-                        cols_freq.remove(col)
+                # Sort by frequency of the first file
+                self.horizontalHeader().setSortIndicator(
+                    self.find_header_hor(_tr('wl_ngram_generator', '[{}]\nFrequency').format(files[0]['name'])),
+                    Qt.DescendingOrder
+                )
 
-                    cols_dispersion = self.find_headers_hor(f'\n{text_dispersion}')
-                    cols_adjusted_freq = self.find_headers_hor(f'\n{text_adjusted_freq}')
-                    col_files_found = self.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found'))
-                    col_files_found_pct = self.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found %'))
+                cols_freq = self.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency'))
+                cols_freq_pct = self.find_headers_hor(_tr('wl_ngram_generator', '\nFrequency %'))
 
-                    freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
-                    len_files = len(files)
+                for col in cols_freq_pct:
+                    cols_freq.remove(col)
 
-                    self.model().setRowCount(len(ngrams_freq_files))
+                cols_dispersion = self.find_headers_hor(f'\n{text_dispersion}')
+                cols_adjusted_freq = self.find_headers_hor(f'\n{text_adjusted_freq}')
+                col_files_found = self.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found'))
+                col_files_found_pct = self.find_header_hor(_tr('wl_ngram_generator', 'Number of\nFiles Found %'))
 
-                    self.disable_updates()
+                freq_totals = numpy.array(list(ngrams_freq_files.values())).sum(axis = 0)
+                len_files = len(files)
 
-                    for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_freq_files_items(ngrams_freq_files)):
-                        stats_files = ngrams_stats_files[ngram]
+                self.model().setRowCount(len(ngrams_freq_files))
+                self.disable_updates()
 
-                        # Rank
-                        self.set_item_num(i, 0, -1)
+                for i, (ngram, freq_files) in enumerate(wl_sorting.sorted_freq_files_items(ngrams_freq_files)):
+                    stats_files = ngrams_stats_files[ngram]
 
-                        # N-gram
-                        self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(ngram)))
+                    # Rank
+                    self.set_item_num(i, 0, -1)
 
-                        self.model().item(i, 1).text_raw = ngram
+                    # N-gram
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(ngram)))
 
-                        # Frequency
-                        for j, freq in enumerate(freq_files):
-                            self.set_item_num(i, cols_freq[j], freq)
-                            self.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
+                    self.model().item(i, 1).text_raw = ngram
 
-                        for j, (dispersion, adjusted_freq) in enumerate(stats_files):
-                            # Dispersion
-                            if dispersion is not None:
-                                self.set_item_num(i, cols_dispersion[j], dispersion)
+                    # Frequency
+                    for j, freq in enumerate(freq_files):
+                        self.set_item_num(i, cols_freq[j], freq)
+                        self.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
-                            # Adjusted Frequency
-                            if adjusted_freq is not None:
-                                self.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
+                    for j, (dispersion, adjusted_freq) in enumerate(stats_files):
+                        # Dispersion
+                        if dispersion is not None:
+                            self.set_item_num(i, cols_dispersion[j], dispersion)
 
-                        # Number of Files Found
-                        num_files_found = len([freq for freq in freq_files[:-1] if freq])
+                        # Adjusted Frequency
+                        if adjusted_freq is not None:
+                            self.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
 
-                        self.set_item_num(i, col_files_found, num_files_found)
-                        self.set_item_num(i, col_files_found_pct, num_files_found, len_files)
+                    # Number of Files Found
+                    num_files_found = len([freq for freq in freq_files[:-1] if freq])
 
-                    self.enable_updates()
+                    self.set_item_num(i, col_files_found, num_files_found)
+                    self.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
-                    self.toggle_pct()
-                    self.toggle_cumulative()
-                    self.toggle_breakdown()
-                    self.update_ranks()
+                self.enable_updates()
 
-                    wl_msgs.wl_msg_generate_table_success(self.main)
-                except Exception:
-                    err_msg = traceback.format_exc()
-            else:
-                wl_msg_boxes.wl_msg_box_no_results(self.main)
-                wl_msgs.wl_msg_generate_table_error(self.main)
-
-        if err_msg:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-            wl_msgs.wl_msg_fatal_error(self.main)
+                self.toggle_pct()
+                self.toggle_cumulative()
+                self.toggle_breakdown()
+                self.update_ranks()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
 
     @wl_misc.log_timing
     def generate_fig(self):
-        settings = self.main.settings_custom['ngram_generator']
-
-        if (
-            (not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term'])
-            or (settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_terms'])
+        if wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.main.settings_custom['ngram_generator']['search_settings']
         ):
             self.worker_ngram_generator_fig = Wl_Worker_Ngram_Generator_Fig(
                 self.main,
                 dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
                 update_gui = self.update_gui_fig
             )
+
             wl_threading.Wl_Thread(self.worker_ngram_generator_fig).start_worker()
-        else:
-            wl_msg_boxes.wl_msg_box_missing_search_terms(self.main)
-            wl_msgs.wl_msg_generate_fig_error(self.main)
 
     def update_gui_fig(self, err_msg, ngrams_freq_files, ngrams_stats_files):
-        if not err_msg:
-            if ngrams_freq_files:
-                try:
-                    settings = self.main.settings_custom['ngram_generator']
+        if wl_checks_work_area.check_results(self.main, err_msg, ngrams_freq_files):
+            try:
+                settings = self.main.settings_custom['ngram_generator']
 
-                    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-                    text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+                text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+                text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                    text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
-                    text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
+                text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
+                text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
 
-                    if settings['fig_settings']['use_data'] == _tr('wl_ngram_generator', 'Frequency'):
-                        ngrams_freq_files = {
-                            ' '.join(ngram): freqs
-                            for ngram, freqs in ngrams_freq_files.items()
+                if settings['fig_settings']['use_data'] == _tr('wl_ngram_generator', 'Frequency'):
+                    ngrams_freq_files = {
+                        ' '.join(ngram): freqs
+                        for ngram, freqs in ngrams_freq_files.items()
+                    }
+
+                    wl_figs_freqs.wl_fig_freqs(
+                        self.main, ngrams_freq_files,
+                        tab = 'ngram_generator'
+                    )
+                else:
+                    ngrams_stats_files = {
+                        ' '.join(ngram): stats
+                        for ngram, stats in ngrams_stats_files.items()
+                    }
+
+                    if settings['fig_settings']['use_data'] == text_dispersion:
+                        ngrams_stat_files = {
+                            ngram: numpy.array(stats_files)[:, 0]
+                            for ngram, stats_files in ngrams_stats_files.items()
+                        }
+                    elif settings['fig_settings']['use_data'] == text_adjusted_freq:
+                        ngrams_stat_files = {
+                            ngram: numpy.array(stats_files)[:, 1]
+                            for ngram, stats_files in ngrams_stats_files.items()
                         }
 
-                        wl_figs_freqs.wl_fig_freqs(
-                            self.main, ngrams_freq_files,
-                            tab = 'ngram_generator'
-                        )
-                    else:
-                        ngrams_stats_files = {
-                            ' '.join(ngram): stats
-                            for ngram, stats in ngrams_stats_files.items()
-                        }
+                    wl_figs_stats.wl_fig_stats(
+                        self.main, ngrams_stat_files,
+                        tab = 'ngram_generator'
+                    )
 
-                        if settings['fig_settings']['use_data'] == text_dispersion:
-                            ngrams_stat_files = {
-                                ngram: numpy.array(stats_files)[:, 0]
-                                for ngram, stats_files in ngrams_stats_files.items()
-                            }
-                        elif settings['fig_settings']['use_data'] == text_adjusted_freq:
-                            ngrams_stat_files = {
-                                ngram: numpy.array(stats_files)[:, 1]
-                                for ngram, stats_files in ngrams_stats_files.items()
-                            }
-
-                        wl_figs_stats.wl_fig_stats(
-                            self.main, ngrams_stat_files,
-                            tab = 'ngram_generator'
-                        )
-
-                    # Hide the progress dialog early so that the main window will not obscure the generated figure
-                    self.worker_ngram_generator_fig.dialog_progress.accept()
-                    wl_figs.show_fig()
-
-                    wl_msgs.wl_msg_generate_fig_success(self.main)
-                except Exception:
-                    err_msg = traceback.format_exc()
-            else:
-                wl_msg_boxes.wl_msg_box_no_results(self.main)
-                wl_msgs.wl_msg_generate_fig_error(self.main)
-
-        if err_msg:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-            wl_msgs.wl_msg_fatal_error(self.main)
+                # Hide the progress dialog early so that the main window will not obscure the generated figure
+                self.worker_ngram_generator_fig.dialog_progress.accept()
+                wl_figs.show_fig()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
     def __init__(self, main):

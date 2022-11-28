@@ -25,11 +25,12 @@ from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QLabel, QPushButton, QGroupBox
 
-from wordless.wl_dialogs import wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
+from wordless.wl_checks import wl_checks_work_area
+from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measures_adjusted_freq, wl_measures_dispersion
 from wordless.wl_nlp import wl_texts, wl_token_processing
-from wordless.wl_utils import wl_misc, wl_msgs, wl_sorting, wl_threading
+from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
@@ -193,149 +194,141 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
             update_gui = self.update_gui_table
         )
+
         wl_threading.Wl_Thread(worker_wordlist_generator_table).start_worker()
 
     def update_gui_table(self, err_msg, tokens_freq_files, tokens_stats_files):
-        if not err_msg:
-            if tokens_freq_files:
-                try:
-                    self.settings = copy.deepcopy(self.main.settings_custom)
+        if wl_checks_work_area.check_results(self.main, err_msg, tokens_freq_files):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
 
-                    settings = self.main.settings_custom['wordlist_generator']
+                settings = self.main.settings_custom['wordlist_generator']
 
-                    text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-                    text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+                text_measure_dispersion = settings['generation_settings']['measure_dispersion']
+                text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                    text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
-                    text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
+                text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
+                text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
 
-                    self.clr_table()
+                self.clr_table()
 
-                    # Insert columns (files)
-                    files = list(self.main.wl_file_area.get_selected_files())
+                # Insert columns (files)
+                files = list(self.main.wl_file_area.get_selected_files())
 
-                    for file in files:
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('wl_wordlist_generator', '[{}]\nFrequency').format(file['name']),
-                            is_int = True, is_cumulative = True, is_breakdown = True
-                        )
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('wl_wordlist_generator', '[{}]\nFrequency %').format(file['name']),
-                            is_pct = True, is_cumulative = True, is_breakdown = True
-                        )
-
-                        if text_dispersion is not None:
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                f'[{file["name"]}]\n{text_dispersion}',
-                                is_float = True, is_breakdown = True
-                            )
-
-                        if text_adjusted_freq is not None:
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                f'[{file["name"]}]\n{text_adjusted_freq}',
-                                is_float = True, is_breakdown = True
-                            )
-
-                    # Insert columns (total)
+                for file in files:
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        _tr('wl_wordlist_generator', 'Total\nFrequency'),
-                        is_int = True, is_cumulative = True
+                        _tr('wl_wordlist_generator', '[{}]\nFrequency').format(file['name']),
+                        is_int = True, is_cumulative = True, is_breakdown = True
                     )
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        _tr('wl_wordlist_generator', 'Total\nFrequency %'),
-                        is_pct = True, is_cumulative = True
+                        _tr('wl_wordlist_generator', '[{}]\nFrequency %').format(file['name']),
+                        is_pct = True, is_cumulative = True, is_breakdown = True
                     )
 
                     if text_dispersion is not None:
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            _tr('wl_wordlist_generator', 'Total\n') + text_dispersion,
-                            is_float = True
+                            f'[{file["name"]}]\n{text_dispersion}',
+                            is_float = True, is_breakdown = True
                         )
 
                     if text_adjusted_freq is not None:
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            _tr('wl_wordlist_generator', 'Total\n') + text_adjusted_freq,
-                            is_float = True
+                            f'[{file["name"]}]\n{text_adjusted_freq}',
+                            is_float = True, is_breakdown = True
                         )
 
-                    # Sort by frequency of the first file
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(_tr('wl_wordlist_generator', '[{}]\nFrequency').format(files[0]['name'])),
-                        Qt.DescendingOrder
+                # Insert columns (total)
+                self.ins_header_hor(
+                    self.model().columnCount() - 2,
+                    _tr('wl_wordlist_generator', 'Total\nFrequency'),
+                    is_int = True, is_cumulative = True
+                )
+                self.ins_header_hor(
+                    self.model().columnCount() - 2,
+                    _tr('wl_wordlist_generator', 'Total\nFrequency %'),
+                    is_pct = True, is_cumulative = True
+                )
+
+                if text_dispersion is not None:
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        _tr('wl_wordlist_generator', 'Total\n') + text_dispersion,
+                        is_float = True
                     )
 
-                    cols_freq = self.find_headers_hor(_tr('wl_wordlist_generator', '\nFrequency'))
-                    cols_freq_pct = self.find_headers_hor(_tr('wl_wordlist_generator', '\nFrequency %'))
+                if text_adjusted_freq is not None:
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        _tr('wl_wordlist_generator', 'Total\n') + text_adjusted_freq,
+                        is_float = True
+                    )
 
-                    for col in cols_freq_pct:
-                        cols_freq.remove(col)
+                # Sort by frequency of the first file
+                self.horizontalHeader().setSortIndicator(
+                    self.find_header_hor(_tr('wl_wordlist_generator', '[{}]\nFrequency').format(files[0]['name'])),
+                    Qt.DescendingOrder
+                )
 
-                    cols_dispersion = self.find_headers_hor(f'\n{text_dispersion}')
-                    cols_adjusted_freq = self.find_headers_hor(f'\n{text_adjusted_freq}')
-                    col_files_found = self.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found'))
-                    col_files_found_pct = self.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found %'))
+                cols_freq = self.find_headers_hor(_tr('wl_wordlist_generator', '\nFrequency'))
+                cols_freq_pct = self.find_headers_hor(_tr('wl_wordlist_generator', '\nFrequency %'))
 
-                    freq_totals = numpy.array(list(tokens_freq_files.values())).sum(axis = 0)
-                    len_files = len(files)
+                for col in cols_freq_pct:
+                    cols_freq.remove(col)
 
-                    self.model().setRowCount(len(tokens_freq_files))
+                cols_dispersion = self.find_headers_hor(f'\n{text_dispersion}')
+                cols_adjusted_freq = self.find_headers_hor(f'\n{text_adjusted_freq}')
+                col_files_found = self.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found'))
+                col_files_found_pct = self.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found %'))
 
-                    self.disable_updates()
+                freq_totals = numpy.array(list(tokens_freq_files.values())).sum(axis = 0)
+                len_files = len(files)
 
-                    for i, (token, freq_files) in enumerate(wl_sorting.sorted_freq_files_items(tokens_freq_files)):
-                        stats_files = tokens_stats_files[token]
+                self.model().setRowCount(len(tokens_freq_files))
+                self.disable_updates()
 
-                        # Rank
-                        self.set_item_num(i, 0, -1)
+                for i, (token, freq_files) in enumerate(wl_sorting.sorted_freq_files_items(tokens_freq_files)):
+                    stats_files = tokens_stats_files[token]
 
-                        # Token
-                        self.model().setItem(i, 1, wl_tables.Wl_Table_Item(token))
+                    # Rank
+                    self.set_item_num(i, 0, -1)
 
-                        # Frequency
-                        for j, freq in enumerate(freq_files):
-                            self.set_item_num(i, cols_freq[j], freq)
-                            self.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
+                    # Token
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(token))
 
-                        for j, (dispersion, adjusted_freq) in enumerate(stats_files):
-                            # Dispersion
-                            if dispersion is not None:
-                                self.set_item_num(i, cols_dispersion[j], dispersion)
+                    # Frequency
+                    for j, freq in enumerate(freq_files):
+                        self.set_item_num(i, cols_freq[j], freq)
+                        self.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
 
-                            # Adjusted Frequency
-                            if adjusted_freq is not None:
-                                self.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
+                    for j, (dispersion, adjusted_freq) in enumerate(stats_files):
+                        # Dispersion
+                        if dispersion is not None:
+                            self.set_item_num(i, cols_dispersion[j], dispersion)
 
-                        # Number of Files Found
-                        num_files_found = len([freq for freq in freq_files[:-1] if freq])
+                        # Adjusted Frequency
+                        if adjusted_freq is not None:
+                            self.set_item_num(i, cols_adjusted_freq[j], adjusted_freq)
 
-                        self.set_item_num(i, col_files_found, num_files_found)
-                        self.set_item_num(i, col_files_found_pct, num_files_found, len_files)
+                    # Number of Files Found
+                    num_files_found = len([freq for freq in freq_files[:-1] if freq])
 
-                    self.enable_updates()
+                    self.set_item_num(i, col_files_found, num_files_found)
+                    self.set_item_num(i, col_files_found_pct, num_files_found, len_files)
 
-                    self.toggle_pct()
-                    self.toggle_cumulative()
-                    self.toggle_breakdown()
-                    self.update_ranks()
+                self.enable_updates()
 
-                    wl_msgs.wl_msg_generate_table_success(self.main)
-                except Exception:
-                    err_msg = traceback.format_exc()
-            else:
-                wl_msg_boxes.wl_msg_box_no_results(self.main)
-                wl_msgs.wl_msg_generate_table_error(self.main)
-
-        if err_msg:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-            wl_msgs.wl_msg_fatal_error(self.main)
+                self.toggle_pct()
+                self.toggle_cumulative()
+                self.toggle_breakdown()
+                self.update_ranks()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
 
     @wl_misc.log_timing
     def generate_fig(self):
@@ -344,56 +337,49 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
             update_gui = self.update_gui_fig
         )
+
         wl_threading.Wl_Thread(self.worker_wordlist_generator_fig).start_worker()
 
     def update_gui_fig(self, err_msg, tokens_freq_files, tokens_stats_files):
-        if not err_msg:
-            if tokens_freq_files:
-                try:
-                    settings = self.main.settings_custom['wordlist_generator']
+        if wl_checks_work_area.check_results(self.main, err_msg, tokens_freq_files):
+            try:
+                settings = self.main.settings_custom['wordlist_generator']
 
-                    measure_dispersion = settings['generation_settings']['measure_dispersion']
-                    measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+                measure_dispersion = settings['generation_settings']['measure_dispersion']
+                measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                    col_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
-                    col_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
+                col_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
+                col_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
 
-                    if settings['fig_settings']['use_data'] == _tr('wl_wordlist_generator', 'Frequency'):
-                        wl_figs_freqs.wl_fig_freqs(
-                            self.main, tokens_freq_files,
-                            tab = 'wordlist_generator'
-                        )
-                    else:
-                        if settings['fig_settings']['use_data'] == col_dispersion:
-                            tokens_stat_files = {
-                                token: numpy.array(stats_files)[:, 0]
-                                for token, stats_files in tokens_stats_files.items()
-                            }
-                        elif settings['fig_settings']['use_data'] == col_adjusted_freq:
-                            tokens_stat_files = {
-                                token: numpy.array(stats_files)[:, 1]
-                                for token, stats_files in tokens_stats_files.items()
-                            }
+                if settings['fig_settings']['use_data'] == _tr('wl_wordlist_generator', 'Frequency'):
+                    wl_figs_freqs.wl_fig_freqs(
+                        self.main, tokens_freq_files,
+                        tab = 'wordlist_generator'
+                    )
+                else:
+                    if settings['fig_settings']['use_data'] == col_dispersion:
+                        tokens_stat_files = {
+                            token: numpy.array(stats_files)[:, 0]
+                            for token, stats_files in tokens_stats_files.items()
+                        }
+                    elif settings['fig_settings']['use_data'] == col_adjusted_freq:
+                        tokens_stat_files = {
+                            token: numpy.array(stats_files)[:, 1]
+                            for token, stats_files in tokens_stats_files.items()
+                        }
 
-                        wl_figs_stats.wl_fig_stats(
-                            self.main, tokens_stat_files,
-                            tab = 'wordlist_generator'
-                        )
+                    wl_figs_stats.wl_fig_stats(
+                        self.main, tokens_stat_files,
+                        tab = 'wordlist_generator'
+                    )
 
-                    # Hide the progress dialog early so that the main window will not obscure the generated figure
-                    self.worker_wordlist_generator_fig.dialog_progress.accept()
-                    wl_figs.show_fig()
-
-                    wl_msgs.wl_msg_generate_fig_success(self.main)
-                except Exception:
-                    err_msg = traceback.format_exc()
-            else:
-                wl_msg_boxes.wl_msg_box_no_results(self.main)
-                wl_msgs.wl_msg_generate_fig_error(self.main)
-
-        if err_msg:
-            wl_dialogs_errs.Wl_Dialog_Err_Fatal(self.main, err_msg).open()
-            wl_msgs.wl_msg_fatal_error(self.main)
+                # Hide the progress dialog early so that the main window will not obscure the generated figure
+                self.worker_wordlist_generator_fig.dialog_progress.accept()
+                wl_figs.show_fig()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
