@@ -371,7 +371,6 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         preview_lang = self.settings_custom['preview_settings']['preview_lang']
 
         self.combo_box_tagsets_pos_tagger.blockSignals(True)
-
         self.combo_box_tagsets_pos_tagger.clear()
 
         self.combo_box_tagsets_pos_tagger.addItems(wl_nlp_utils.to_lang_util_texts(
@@ -386,7 +385,6 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         )
 
         self.combo_box_tagsets_pos_tagger.blockSignals(False)
-
         self.combo_box_tagsets_pos_tagger.currentTextChanged.emit('')
 
     def preview_pos_tagger_changed(self):
@@ -396,7 +394,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             util_text = self.combo_box_tagsets_pos_tagger.currentText()
         )
 
-        if 'spacy' not in self.settings_custom['preview_settings']['preview_pos_tagger'][self.settings_custom['preview_settings']['preview_lang']]:
+        if not self.settings_custom['preview_settings']['preview_pos_tagger'][self.settings_custom['preview_settings']['preview_lang']].startswith('spacy_'):
             self.combo_box_tagsets_lang.setEnabled(False)
             self.combo_box_tagsets_pos_tagger.setEnabled(False)
             self.button_tagsets_reset.setEnabled(False)
@@ -525,6 +523,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
 
             for i in range(self.table_mappings.model().rowCount()):
-                self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
+                if not preview_pos_tagger.startswith('spacy_'):
+                    self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
 
         return True
