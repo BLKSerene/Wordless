@@ -47,6 +47,53 @@ def to_freq_sections_items(main, items_search, items):
 
     return _to_freq_sections_items(items_search, items, num_sub_sections)
 
+# Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
+def _get_dists(tokens, search_term):
+    positions = numpy.array([i for i, token in enumerate(tokens) if token == search_term])
+
+    if positions.size > 0:
+        dists = positions[1:] - positions[:-1]
+        # Prepend the distance between the first and last occurrences
+        dists = numpy.insert(dists, 0, positions[0] + (len(tokens) - positions[-1]))
+    else:
+        dists = numpy.array([])
+
+    return dists
+
+# Average Logarithmic Distance
+def ald(main, tokens, search_term):
+    dists = _get_dists(tokens, search_term)
+
+    if dists.size > 0:
+        ald = numpy.sum(dists * numpy.log10(dists)) / len(tokens)
+    else:
+        ald = 0
+
+    return ald
+
+# Average Reduced Frequency
+def arf(main, tokens, search_term):
+    dists = _get_dists(tokens, search_term)
+
+    if dists.size > 0:
+        v = len(tokens) / dists.size
+        arf = numpy.sum(numpy.minimum(dists, v)) / v
+    else:
+        arf = 0
+
+    return arf
+
+# Average Waiting Time
+def awt(main, tokens, search_term):
+    dists = _get_dists(tokens, search_term)
+
+    if dists.size > 0:
+        awt = 0.5 * (1 + numpy.sum(numpy.square(dists)) / len(tokens))
+    else:
+        awt = 0
+
+    return awt
+
 # Carroll's D₂
 # Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 def carrolls_d2(main, freqs):
