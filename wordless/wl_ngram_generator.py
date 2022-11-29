@@ -174,6 +174,9 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
             measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
             measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
+            type_measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['type']
+            type_measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['type']
+
             ngrams_total = list(self.ngrams_freq_files[-1].keys())
 
             for text in texts:
@@ -195,7 +198,7 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 # Dispersion
                 if measure_dispersion is None:
                     ngrams_stats_file = {ngram: [None] for ngram in ngrams_total}
-                else:
+                elif type_measure_dispersion == 'parts_based':
                     freqs_sections_ngrams = {}
 
                     for ngram_size, ngram_list in ngrams_lens.items():
@@ -209,11 +212,17 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
                     for ngram, freqs in freqs_sections_ngrams.items():
                         ngrams_stats_file[ngram] = [measure_dispersion(self.main, freqs)]
+                elif type_measure_dispersion == 'dist_based':
+                    for ngram_size, ngram_list in ngrams_lens.items():
+                        ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
+
+                        for ngram in ngrams_total_len:
+                            ngrams_stats_file[ngram] = [measure_dispersion(self.main, ngram_list, ngram)]
 
                 # Adjusted Frequency
                 if measure_adjusted_freq is None:
                     ngrams_stats_file = {ngram: stats + [None] for ngram, stats in ngrams_stats_file.items()}
-                else:
+                elif type_measure_adjusted_freq == 'parts_based':
                     freqs_sections_ngrams = {}
 
                     for ngram_size, ngram_list in ngrams_lens.items():
@@ -227,6 +236,12 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
                     for ngram, freqs in freqs_sections_ngrams.items():
                         ngrams_stats_file[ngram].append(measure_adjusted_freq(self.main, freqs))
+                elif type_measure_adjusted_freq == 'dist_based':
+                    for ngram_size, ngram_list in ngrams_lens.items():
+                        ngrams_total_len = [ngram for ngram in ngrams_total if len(ngram) == ngram_size]
+
+                        for ngram in ngrams_total_len:
+                            ngrams_stats_file[ngram].append(measure_adjusted_freq(self.main, ngram_list, ngram))
 
                 self.ngrams_stats_files.append(ngrams_stats_file)
 
