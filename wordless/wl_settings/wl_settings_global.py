@@ -1908,69 +1908,118 @@ def init_settings_global():
         'measures_dispersion': {
             _tr('init_settings_global', 'None'): {
                 'col_text': None,
-                'func': None
+                'func': None,
+                'type': ''
+            },
+
+            _tr('init_settings_global', 'Average Logarithmic Distance'): {
+                'col_text': _tr('init_settings_global', 'ALD'),
+                'func': wl_measures_dispersion.ald,
+                'type': 'dist_based'
+            },
+
+            _tr('init_settings_global', 'Average Reduced Frequency'): {
+                'col_text': _tr('init_settings_global', 'ARF'),
+                'func': wl_measures_dispersion.arf,
+                'type': 'dist_based'
+            },
+
+            _tr('init_settings_global', 'Average Waiting Time'): {
+                'col_text': _tr('init_settings_global', 'AWT'),
+                'func': wl_measures_dispersion.awt,
+                'type': 'dist_based'
             },
 
             _tr('init_settings_global', "Carroll's D₂"): {
                 'col_text': _tr('init_settings_global', "Carroll's D₂"),
-                'func': wl_measures_dispersion.carrolls_d2
+                'func': wl_measures_dispersion.carrolls_d2,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Gries's DP"): {
                 'col_text': _tr('init_settings_global', "Gries's DP"),
-                'func': wl_measures_dispersion.griess_dp
+                'func': wl_measures_dispersion.griess_dp,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Juilland's D"): {
                 'col_text': _tr('init_settings_global', "Juilland's D"),
-                'func': wl_measures_dispersion.juillands_d
+                'func': wl_measures_dispersion.juillands_d,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Lyne's D₃"): {
                 'col_text': _tr('init_settings_global', "Lyne's D₃"),
-                'func': wl_measures_dispersion.lynes_d3
+                'func': wl_measures_dispersion.lynes_d3,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Rosengren's S"): {
                 'col_text': _tr('init_settings_global', "Rosengren's S"),
-                'func': wl_measures_dispersion.rosengrens_s
+                'func': wl_measures_dispersion.rosengrens_s,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Zhang's Distributional Consistency"): {
                 'col_text': _tr('init_settings_global', "Zhang's DC"),
-                'func': wl_measures_dispersion.zhangs_distributional_consistency
+                'func': wl_measures_dispersion.zhangs_distributional_consistency,
+                'type': 'parts_based'
             }
         },
 
         'measures_adjusted_freq': {
             _tr('init_settings_global', 'None'): {
                 'col_text': None,
-                'func': None
+                'func': None,
+                'type': ''
+            },
+
+            _tr('init_settings_global', 'Average Logarithmic Distance'): {
+                'col_text': _tr('init_settings_global', 'f-ALD'),
+                'func': wl_measures_adjusted_freq.fald,
+                'type': 'dist_based'
+            },
+
+            _tr('init_settings_global', 'Average Reduced Frequency'): {
+                'col_text': _tr('init_settings_global', 'f-ARF'),
+                'func': wl_measures_adjusted_freq.farf,
+                'type': 'dist_based'
+            },
+
+            _tr('init_settings_global', 'Average Waiting Time'): {
+                'col_text': _tr('init_settings_global', 'f-AWT'),
+                'func': wl_measures_adjusted_freq.fawt,
+                'type': 'dist_based'
             },
 
             _tr('init_settings_global', "Carroll's Uₘ"): {
                 'col_text': _tr('init_settings_global', "Carroll's Uₘ"),
-                'func': wl_measures_adjusted_freq.carrolls_um
+                'func': wl_measures_adjusted_freq.carrolls_um,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Engwall's FM"): {
                 'col_text': _tr('init_settings_global', "Engwall's FM"),
-                'func': wl_measures_adjusted_freq.engwalls_fm
+                'func': wl_measures_adjusted_freq.engwalls_fm,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Juilland's U"): {
                 'col_text': _tr('init_settings_global', "Juilland's U"),
-                'func': wl_measures_adjusted_freq.juillands_u
+                'func': wl_measures_adjusted_freq.juillands_u,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Kromer's UR"): {
                 'col_text': _tr('init_settings_global', "Kromer's UR"),
-                'func': wl_measures_adjusted_freq.kromers_ur
+                'func': wl_measures_adjusted_freq.kromers_ur,
+                'type': 'parts_based'
             },
 
             _tr('init_settings_global', "Rosengren's KF"): {
                 'col_text': _tr('init_settings_global', "Rosengren's KF"),
-                'func': wl_measures_adjusted_freq.rosengrens_kf
+                'func': wl_measures_adjusted_freq.rosengrens_kf,
+                'type': 'parts_based'
             }
         },
 

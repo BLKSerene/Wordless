@@ -21,21 +21,42 @@ from wordless.wl_measures import wl_measures_dispersion
 
 main = wl_test_init.Wl_Test_Main()
 
+ITEMS_TO_SEARCH = ['w1', 'w2']
+ITEMS = ['w1'] * 7 + ['w2'] * 3
+FREQ_SECTIONS_ITEMS = {
+    'w1': [2, 2, 2, 1, 0],
+    'w2': [0, 0, 0, 1, 2]
+}
+
+def test__to_freq_sections_items():
+    assert wl_measures_dispersion._to_freq_sections_items(ITEMS_TO_SEARCH, ITEMS, 5) == FREQ_SECTIONS_ITEMS
+
 def test_to_freq_sections_items():
-    items_search = ['w1', 'w2']
-    items = ['w1'] * 7 + ['w2'] * 3
+    assert wl_measures_dispersion.to_freq_sections_items(main, ITEMS_TO_SEARCH, ITEMS) == FREQ_SECTIONS_ITEMS
 
-    freq_sections_items = {
-        'w1': [2, 2, 2, 1, 0],
-        'w2': [0, 0, 0, 1, 2]
-    }
+# Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (pp. 406, 410)
+TOKENS = 'b a m n i b e u p k | b a s a t b e w q n | b c a g a b e s t a | b a g h a b e a a t | b a h a a b e a x a'.replace('|', '').split()
+DISTS = [2, 10, 2, 9, 2, 5, 2, 3, 3, 1, 3, 2, 1, 3, 2]
 
-    assert wl_measures_dispersion.to_freq_sections_items(main, items_search, items) == freq_sections_items
+def test__get_dists():
+    assert list(wl_measures_dispersion._get_dists(TOKENS, 'a')) == DISTS
+    assert not list(wl_measures_dispersion._get_dists(TOKENS, 'aa'))
+
+def test_ald():
+    assert round(wl_measures_dispersion.ald(main, TOKENS, 'a'), 3) == 0.628
+    assert wl_measures_dispersion.ald(main, TOKENS, 'aa') == 0
+
+def test_arf():
+    assert round(wl_measures_dispersion.arf(main, TOKENS, 'a'), 1) == 10.8
+    assert wl_measures_dispersion.arf(main, TOKENS, 'aa') == 0
+
+def test_awt():
+    assert wl_measures_dispersion.awt(main, TOKENS, 'a') == 3.18
+    assert wl_measures_dispersion.awt(main, TOKENS, 'aa') == 0
 
 # Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 def test_carrolls_d2():
     assert round(wl_measures_dispersion.carrolls_d2(main, [2, 1, 1, 1, 0]), 4) == 0.8277
-
     assert wl_measures_dispersion.carrolls_d2(main, [0, 0, 0, 0]) == 0
 
 # References:
@@ -55,29 +76,31 @@ def test_griess_dp():
 # Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 def test_juillands_d():
     assert round(wl_measures_dispersion.juillands_d(main, [0, 4, 3, 2, 1]), 4) == 0.6464
-
     assert wl_measures_dispersion.juillands_d(main, [0, 0, 0, 0]) == 0
 
 # Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 408)
 def test_lynes_d3():
     assert round(wl_measures_dispersion.lynes_d3(main, [1, 2, 3, 4, 5]), 3) == 0.944
-
     assert wl_measures_dispersion.lynes_d3(main, [0, 0, 0, 0]) == 0
 
 # Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 407)
 def test_rosengrens_s():
     assert round(wl_measures_dispersion.rosengrens_s(main, [1, 2, 3, 4, 5]), 3) == 0.937
-
     assert wl_measures_dispersion.rosengrens_s(main, [0, 0, 0, 0]) == 0
 
 # Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 408)
 def test_zhangs_distributional_consistency():
     assert round(wl_measures_dispersion.zhangs_distributional_consistency(main, [1, 2, 3, 4, 5]), 3) == 0.937
-
     assert wl_measures_dispersion.zhangs_distributional_consistency(main, [0, 0, 0, 0]) == 0
 
 if __name__ == '__main__':
+    test__to_freq_sections_items()
     test_to_freq_sections_items()
+
+    test__get_dists()
+    test_ald()
+    test_arf()
+    test_awt()
 
     test_carrolls_d2()
     test_griess_dp()

@@ -86,6 +86,9 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
             measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
             measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
 
+            type_measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['type']
+            type_measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['type']
+
             tokens_total = list(self.tokens_freq_files[-1].keys())
 
             for text in texts:
@@ -96,7 +99,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 # Dispersion
                 if measure_dispersion is None:
                     tokens_stats_file = {token: [None] for token in tokens_total}
-                else:
+                elif type_measure_dispersion == 'parts_based':
                     freqs_sections_tokens = wl_measures_dispersion.to_freq_sections_items(
                         self.main,
                         items_search = tokens_total,
@@ -105,11 +108,14 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
 
                     for token, freqs in freqs_sections_tokens.items():
                         tokens_stats_file[token] = [measure_dispersion(self.main, freqs)]
+                elif type_measure_dispersion == 'dist_based':
+                    for token in tokens_total:
+                        tokens_stats_file[token] = [measure_dispersion(self.main, tokens, token)]
 
                 # Adjusted Frequency
                 if measure_adjusted_freq is None:
                     tokens_stats_file = {token: stats + [None] for token, stats in tokens_stats_file.items()}
-                else:
+                elif type_measure_adjusted_freq == 'parts_based':
                     freqs_sections_tokens = wl_measures_adjusted_freq.to_freq_sections_items(
                         self.main,
                         items_search = tokens_total,
@@ -118,6 +124,9 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
 
                     for token, freqs in freqs_sections_tokens.items():
                         tokens_stats_file[token].append(measure_adjusted_freq(self.main, freqs))
+                elif type_measure_adjusted_freq == 'dist_based':
+                    for token in tokens_total:
+                        tokens_stats_file[token].append(measure_adjusted_freq(self.main, tokens, token))
 
                 self.tokens_stats_files.append(tokens_stats_file)
 

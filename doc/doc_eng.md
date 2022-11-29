@@ -1016,29 +1016,29 @@ Wiener Sachtextformel:
 
 Measure of Readability|Formula
 ----------------------|-------
-<span id="ref-aari"></span>Automated Arabic Readability Index<br>([Al-Tamimi et al., 2013](#ref-altamimi-et-al-2013))|![Formula](/doc/measures/readability/aari.svg)<br>* This test applies only to **Arabic texts**.
+<span id="ref-aari"></span>Automated Arabic Readability Index<br>([Al-Tamimi et al., 2013](#ref-altamimi-et-al-2013))|![Formula](/doc/measures/readability/aari.svg)<br><br>* This test applies only to **Arabic texts**.
 <span id="ref-ari"></span>Automated Readability Index<br>([Smith & Senter, 1967](#ref-smith-senter-1967))|![Formula](/doc/measures/readability/ari.svg)
 <span id="ref-coleman-liau-index"></span>Coleman-Liau Index<br>([Coleman & Liau, 1975](#ref-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)
 <span id="ref-dale-chall-readability-score"></span>Dale-Chall Readability Score<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a), [1948b](#ref-dale-chall-1948b))|![Formula](/doc/measures/readability/dale_chall_readability_score.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 3000 easy words ([Dale & Chall, 1948b](#ref-dale-chall-1948b)).<br><br>* This test applies only to **English texts**.
 <span id="ref-devereux-readability-index"></span>Devereux Readability Index<br>([Smith, 1961](#ref-smith-1961))|![Formula](/doc/measures/readability/devereux_readability_index.svg)
-<span id="ref-fernandez-huertas-readability-score"></span>Fernández Huerta's Readability Score<sup>1</sup><br>([Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Law, 2011](#ref-law-2011))|![Formula](/doc/measures/readability/fernandez_huertas_readability_score.svg)<br>* This test applies only to **Spanish texts**.
+<span id="ref-fernandez-huertas-readability-score"></span>Fernández Huerta's Readability Score<sup>1</sup><br>([Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Law, 2011](#ref-law-2011))|![Formula](/doc/measures/readability/fernandez_huertas_readability_score.svg)<br><br>* This test applies only to **Spanish texts**.
 <span id="ref-flesch-kincaid-grade-level"></span>Flesch-Kincaid Grade Level<sup>1</sup><br>([Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/flesch_kincaid_grade_level.svg)
 <span id="ref-re"></span>Flesch Reading Ease<sup>1</sup><br>([Flesch, 1948](#ref-flesch-1948))|![Formula](/doc/measures/readability/re.svg)
 <span id="ref-re-simplified"></span>Flesch Reading Ease (Simplified)<sup>1</sup><br>([Farr et al., 1951](#ref-farr-et-al-1951))|![Formula](/doc/measures/readability/re_simplified.svg)
 <span id="ref-rgl"></span>FORCAST Grade Level<sup>1</sup><br>([Caylor et al., 1973](#ref-caylor-et-al-1973))|![Formula](/doc/measures/readability/rgl.svg)<br>* A sample of 150 words is taken randomly from the text, thus the text should be **at least 150 words long**.
-<span id="ref-formula-de-comprensibilidad-de-gutierrez-de-polini"></span>Fórmula de comprensibilidad de Gutiérrez de Polini<br>([Gutiérrez de Polini, 1972](#ref-gutierrez-de-polini-1972); [Rodríguez Trujillo, 1980](#ref-rodriguez-trujillo-1980))|![Formula](/doc/measures/readability/formula_de_comprensibilidad_de_gutierrez_de_polini.svg)<br>* This test applies only to **Spanish texts**.
-<span id="ref-formula-de-crawford"></span>Fórmula de Crawford<sup>1</sup><br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/formula_de_crawford.svg)<br>* This test applies only to **Spanish texts**.
-<span id="ref-gulpease-index"></span>Gulpease Index<br>([Lucisano & Emanuela Piemontese, 1988](#ref-lucisano-emanuela-piemontese-1988); [Indice Gulpease, 2021](#ref-indice-gulpease-2021))|![Formula](/doc/measures/readability/gulpease_index.svg)<br>* This test applies only to **Italian texts**.
+<span id="ref-formula-de-comprensibilidad-de-gutierrez-de-polini"></span>Fórmula de comprensibilidad de Gutiérrez de Polini<br>([Gutiérrez de Polini, 1972](#ref-gutierrez-de-polini-1972); [Rodríguez Trujillo, 1980](#ref-rodriguez-trujillo-1980))|![Formula](/doc/measures/readability/formula_de_comprensibilidad_de_gutierrez_de_polini.svg)<br><br>* This test applies only to **Spanish texts**.
+<span id="ref-formula-de-crawford"></span>Fórmula de Crawford<sup>1</sup><br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/formula_de_crawford.svg)<br><br>* This test applies only to **Spanish texts**.
+<span id="ref-gulpease-index"></span>Gulpease Index<br>([Lucisano & Emanuela Piemontese, 1988](#ref-lucisano-emanuela-piemontese-1988); [Indice Gulpease, 2021](#ref-indice-gulpease-2021))|![Formula](/doc/measures/readability/gulpease_index.svg)<br><br>* This test applies only to **Italian texts**.
 <span id="ref-fog-index"></span>Gunning Fog Index<sup>1</sup><br>([Gunning, 1968](#ref-gunning-1968); [Indeks czytelności FOG, 2022](#ref-indeks-czytelnosci-fog-2022); [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables ending with *-ed* or *-es* for **English texts**, and the number of words with 4 or more syllables for **Polish texts**.<br><br>* This test applies only to **English texts** and **Polish texts**.
 <span id="ref-legibilidad-mu"></span>Legibilidad µ<br>([Muñoz Baquedano, 2006](#ref-munoz-baquedano-2006); [Muñoz Fernández, 2016](#ref-munoz-fernandez-2016))|![Formula](/doc/measures/readability/legibilidad_mu.svg)<br>where **LenWordsAvg** is the average word length in letters, and **LenWordsVar** is the variance of word lengths in letters.<br><br>* This test applies only to **Spanish texts**.<br>* The text should be **at least 2 words long**.
 <span id="ref-lensear-write"></span>Lensear Write<sup>1</sup><br>([O’Hayre, 1966](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/linsear_write.svg)<br>where **NumWordsMonosyllabic** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*, and **NumSentences** is the number of sentences to the nearest period.<br><br>* This test applies only to **English texts**.<br>* A sample of 100 words is taken randomly from the text.<br>If the text is **shorter than 100 words**, **NumWordsMonosyllabic** and **NumSentences** need to be multiplied by 100 and then divided by the number of text.
 <span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968); [Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/lix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
-<span id="ref-eflaw"></span>McAlpine EFLAW Readability Score<br>([Nirmaldasan, 2009](#ref-nirmaldasan-2009))|![Formula](/doc/measures/readability/eflaw.svg)<br>* This test applies only to **English texts**.
+<span id="ref-eflaw"></span>McAlpine EFLAW Readability Score<br>([Nirmaldasan, 2009](#ref-nirmaldasan-2009))|![Formula](/doc/measures/readability/eflaw.svg)<br><br>* This test applies only to **English texts**.
 <span id="ref-osman"></span>OSMAN<br>([El-Haj & Rayson, 2016](#ref-elhaj-rayson-2016))|![Formula](/doc/measures/readability/osman.svg)<br>where **NumLongWords** is the number of words with 6 or more letters, **NumComplexWords** is the number of words with 5 or more syllables, and **NumFaseehWords** is the number of complex words containing ء/ئ/ؤ/ذ/ظ or ending with وا/ون.<br><br>* This test applies only to **Arabic texts**.<br>* The number of syllables in each Arabic word is estimated by adding the number of short syllables and twice the number of long and stress syllables.
 <span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
 <span id="ref-smog-grade"></span>SMOG Grade<sup>1</sup><br>([McLaughlin, 1969](#ref-mclaughlin-1969))|![Formula](/doc/measures/readability/smog_grade.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables.<br><br>* A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text is taken from the text, thus the text should be **at least 30 sentences long**.
 <span id="ref-spache-grade-level"></span>Spache Grade Level<br>([Dale, 1931](#ref-dale-1931); [Spache, 1953](#ref-spache-1953))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 769 easy words ([Spache, 1953](#ref-spache-1953)).<br><br>* Three samples each of 100 words are taken randomly from the text and the mean of the three scores is calculated, thus the text should be **at least 100 words long**.
-<span id="ref-szigriszts-perspicuity_index"></span>Szigriszt's Perspicuity Index<sup>1</sup><br>([Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/szigriszts_perspicuity_index.svg)<br>* This test applies only to **Spanish texts**.
+<span id="ref-szigriszts-perspicuity_index"></span>Szigriszt's Perspicuity Index<sup>1</sup><br>([Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/szigriszts_perspicuity_index.svg)<br><br>* This test applies only to **Spanish texts**.
 <span id="ref-wstf"></span>Wiener Sachtextformel<sup>1</sup><br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984); [Lesbarkeitsindex, 2022](#ref-lesbarkeitsindex-2022))|![Formula](/doc/measures/readability/wstf.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables and **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This test applies only to **German texts**.<br>* This test has 4 variants, which you could select via **Menu → Preferences → Settings → Measures → Readability → Wiener Sachtextformel → Variant**.
 
 **Notes:**
@@ -1047,11 +1047,30 @@ Measure of Readability|Formula
 <span id="doc-4-4-2"></span>
 #### [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc)
 
-The dispersion and adjusted frequency of a word in each file is calculated by first dividing each file into **n** (5 by default) sub-sections and the frequency of the word in each part is counted, which are denoted by ![f_1](/doc/measures/f_1.svg), ![f_2](/doc/measures/f_2.svg), ![f_3](/doc/measures/f_3.svg) ,... ,![f_n](/doc/measures/f_n.svg). The total frequency of the word in each file is denoted by **F**. The mean value of the frequencies over all sub-sections is denoted by ![f_bar](/doc/measures/f_bar.svg).
+For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) sub-sections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**,... , **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all sub-sections is denoted by ![f_bar](/doc/measures/f_bar.svg).
 
-Then, the dispersion and adjusted frequency of the word will be calcuated as follows:
+For distance-based measures, the distance between each pair of subsequent occurrences of the word is calculated and denoted by **d₁**, **d₂**, **d₃**,... , ![d_f](/doc/measures/d_f.svg) respectively. The total number of tokens in each file is denoted by **N**.
+
+Then, the dispersion and adjusted frequency of the word are calculated as follows:
 
 <!--
+Average Logarithmic Distance:
+    \begin{align*}
+        ALD &= \frac{1}{N} \times \sum_{i = 1}^{F}(d_i \times \log_{10}d_i) \\
+        f_{ALD} &= \exp\left(-\sum_{i = 1}^{F}{\frac{d_i}{N} \times \ln\frac{d_i}{N}}\right)
+    \end{align*}
+
+Average Reduced Frequency:
+    \begin{align*}
+        ARF = f_{ARF} = \frac{F}{N} \times \sum_{i = 1}^{F}\min\left\{d_i, \frac{N}{F}\right\}
+    \end{align*}
+
+Average Waiting Time:
+    \begin{align*}
+        AWT &= \frac{1}{2} \times \left(1 + \frac{1}{N} \times \sum_{i = 1}^{F}{d_i^2}\right) \\
+        f_{AWT} &= \frac{N^2}{\sum_{i = 1}^F{d_i^2}}
+    \end{align*}
+
 Carroll's D₂/Um:
     \begin{align*}
         H &= \ln F - \frac{\sum_{i = 1}^n \left(F_i \times \ln F_i\right)}{F} \\
@@ -1101,8 +1120,8 @@ Zhang's Distributional Consistency:
     \end{align*}
 -->
 
-Measure of Dispersion|Measure of Adjusted Frequency|Formula
----------------------|-----------------------------|-------
+Measure of Dispersion (Parts-based)|Measure of Adjusted Frequency (Parts-based)|Formula
+-----------------------------------|-------------------------------------------|-------
 <span id="ref-carrolls-d2"></span>Carroll's D₂<br>([Carroll, 1970](#ref-carroll-1970))|<span id="ref-carrolls-um"></span>Carroll's Uₘ<br>([Carroll, 1970](#ref-carroll-1970))|![Formula](/doc/measures/dispersion_adjusted_frequency/carrolls_um.svg)
 &nbsp;|<span id="ref-engwalls-fm"></span>Engwall's FM<br>([Engwall, 1974](#ref-engwall-1974))|![Formula](/doc/measures/dispersion_adjusted_frequency/engwalls_fm.svg)<br>where **R** is the number of sub-sections in which the word appears at least once.
 <span id="ref-griess-dp"></span>Gries's DP<br>([Gries, 2008](#ref-gries-2008); [Lijffijt & Gries, 2012](#ref-lijffijt-gries-2012))||![Formula](/doc/measures/dispersion_adjusted_frequency/griess_dp.svg)<br><br>* Normalization is applied by default, which behavior you could change via **Menu → Preferences → Settings → Measures → Dispersion → Gries's DP → Apply normalization**.
@@ -1112,6 +1131,12 @@ Measure of Dispersion|Measure of Adjusted Frequency|Formula
 <span id="ref-rosengrens-s"></span>Rosengren's S<br>([Rosengren, 1971](#ref-rosengren-1971))|<span id="ref-rosengrens-kf"></span>Rosengren's KF<br>([Rosengren, 1971](#ref-rosengren-1971))|![Formula](/doc/measures/dispersion_adjusted_frequency/rosengrens_s.svg)
 <span id="ref-zhangs-distributional-consistency"></span>Zhang's Distributional Consistency<br>([Zhang, 2004](#ref-zhang-2004))||![Formula](/doc/measures/dispersion_adjusted_frequency/zhangs_distributional_consistency.svg)
 
+Measure of Dispersion (Distance-based)|Measure of Adjusted Frequency (Distance-based)|Formula
+--------------------------------------|----------------------------------------------|-------
+<span id="ref-ald"></span>Average Logarithmic Distance<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-fald"></span>Average Logarithmic Distance<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/ald.svg)
+<span id="ref-arf"></span>Average Reduced Frequency<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-farf"></span>Average Reduced Frequency<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/arf.svg)
+<span id="ref-awt"></span>Average Waiting Time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-fawt"></span>Average Waiting Time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/awt.svg)
+
 <span id="doc-4-4-3"></span>
 #### [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc)
 
@@ -1119,43 +1144,43 @@ In order to calculate the statistical significance, bayes factor, and effect siz
 
 As for collocates (in *Collocation Extractor* and *Colligation Extractor*):
 
-Observed Values|*Word 1*                       |Not *Word 1*                   |Row Total
---------------:|:-----------------------------:|:-----------------------------:|:-----------------------------:
-*Word 2*       |![o_11](/doc/measures/o_11.svg)|![o_12](/doc/measures/o_12.svg)|![o_1x](/doc/measures/o_1x.svg)
-Not *Word 2*   |![o_21](/doc/measures/o_21.svg)|![o_22](/doc/measures/o_22.svg)|![o_2x](/doc/measures/o_2x.svg)
-Column Total   |![o_x1](/doc/measures/o_x1.svg)|![o_x2](/doc/measures/o_x2.svg)|![o_xx](/doc/measures/o_xx.svg)
+Observed Values|*Word 1*|Not *Word 1*|Row Total
+--------------:|:------:|:----------:|:-------:
+*Word 2*       |O₁₁     |O₁₂         |O₁ₓ
+Not *Word 2*   |O₂₁     |O₂₂         |O₂ₓ
+Column Total   |Oₓ₁     |Oₓ₂         |Oₓₓ
 
-Expected Values|*Word 1*                       |Not *Word 1*
---------------:|:-----------------------------:|:-----------------------------:
-*Word 2*       |![e_11](/doc/measures/e_11.svg)|![e_12](/doc/measures/e_12.svg)
-Not *Word 2*   |![e_21](/doc/measures/e_21.svg)|![e_22](/doc/measures/e_22.svg)
+Expected Values|*Word 1*|Not *Word 1*
+--------------:|:------:|:----------:
+*Word 2*       |E₁₁     |E₁₂
+Not *Word 2*   |E₂₁     |E₂₂
 
-![o_11](/doc/measures/o_11.svg): Number of occurrences of *Word 1* followed by *Word 2*.<br>
-![o_12](/doc/measures/o_12.svg): Number of occurrences of *Word 1* followed by any word except *Word 2*.<br>
-![o_21](/doc/measures/o_21.svg): Number of occurrences of any word except *Word 1* followed by *Word 2*.<br>
-![o_22](/doc/measures/o_22.svg): Number of occurrences of any word except *Word 1* followed by any word except *Word 2*.
+O₁₁: Number of occurrences of *Word 1* followed by *Word 2*.<br>
+O₁₂: Number of occurrences of *Word 1* followed by any word except *Word 2*.<br>
+O₂₁: Number of occurrences of any word except *Word 1* followed by *Word 2*.<br>
+O₂₂: Number of occurrences of any word except *Word 1* followed by any word except *Word 2*.
 
 As for keywords (in *Keyword Extractor*):
 
-Observed Values|Observed File                  |Reference File                 |Row Total
---------------:|:-----------------------------:|:-----------------------------:|:-----------------------------:
-*Word w*       |![o_11](/doc/measures/o_11.svg)|![o_12](/doc/measures/o_12.svg)|![o_1x](/doc/measures/o_1x.svg)
-*Not Word w*   |![o_21](/doc/measures/o_21.svg)|![o_22](/doc/measures/o_22.svg)|![o_2x](/doc/measures/o_2x.svg)
-Column Total   |![o_x1](/doc/measures/o_x1.svg)|![o_x2](/doc/measures/o_x2.svg)|![o_xx](/doc/measures/o_xx.svg)
+Observed Values|Observed File|Reference File|Row Total
+--------------:|:-----------:|:------------:|:-------:
+*Word w*       |O₁₁          |O₁₂           |O₁ₓ
+*Not Word w*   |O₂₁          |O₂₂           |O₂ₓ
+Column Total   |Oₓ₁          |Oₓ₂           |Oₓₓ
 
-Expected Values|Observed File                  |Reference File
---------------:|:-----------------------------:|:-----------------------------:
-*Word w*       |![e_11](/doc/measures/e_11.svg)|![e_12](/doc/measures/e_12.svg)
-*Not Word w*   |![e_21](/doc/measures/e_21.svg)|![e_22](/doc/measures/e_22.svg)
+Expected Values|Observed File|Reference File
+--------------:|:-----------:|:------------:
+*Word w*       |E₁₁          |E₁₂
+*Not Word w*   |E₂₁          |E₂₂
 
-![o_11](/doc/measures/o_11.svg): Number of occurrences of *Word w* in the observed file.<br>
-![o_12](/doc/measures/o_12.svg): Number of occurrences of *Word w* in the reference file.<br>
-![o_21](/doc/measures/o_21.svg): Number of occurrences of all words except *Word w* in the observed file.<br>
-![o_22](/doc/measures/o_22.svg): Number of occurrences of all words except *Word w* in the reference file.
+O₁₁: Number of occurrences of *Word w* in the observed file.<br>
+O₁₂: Number of occurrences of *Word w* in the reference file.<br>
+O₂₁: Number of occurrences of all words except *Word w* in the observed file.<br>
+O₂₂: Number of occurrences of all words except *Word w* in the reference file.
 
 To conduct **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test** on a specific word, each column total is first divided into **n** (5 by default) sub-sections respectively. To be more specific, in *Collocation Extractor* and *Colligation Extractor*, all collocates where Word 1 appears as node and the other collocates where Word 1 does not appear as node are divided into **n** parts respectively. And in *Keyword Extractor*, all tokens in the observed file and all tokens in the reference files are equally divided into **n** parts respectively.
 
-The frequencies of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in each sub-section of the 2 column totals are counted and denoted by ![f_11](/doc/measures/f_11.svg), ![f_21](/doc/measures/f_21.svg), ![f_31](/doc/measures/f_31.svg), ..., ![f_n1](/doc/measures/f_n1.svg) and ![f_12](/doc/measures/f_12.svg), ![f_22](/doc/measures/f_22.svg), ![f_32](/doc/measures/f_32.svg), ..., ![f_n2](/doc/measures/f_n2.svg) respectively. The total frequency of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in the 2 column totals are denoted by ![f_x1](/doc/measures/f_x1.svg) and ![f_x1](/doc/measures/f_x1.svg) respectively. The mean value of the frequencies over all sub-sections in the 2 column totals are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
+The frequencies of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in each sub-section of the 2 column totals are counted and denoted by **F₁₁**, **F₂₁**, **F₃₁**, ..., **Fₙ₁**, and **F₁₂**, **F₂₂**, **F₃₂**, ..., **Fₙ₂** respectively. The total frequency of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in the 2 column totals are denoted by **Fₓ₁** and **Fₓ₂** respectively. The mean value of the frequencies over all sub-sections in the 2 column totals are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
 
 Then the test statistic, bayes factor, and effect size are calculated as follows:
 
@@ -1327,7 +1352,7 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 <span id="ref-dices-coeff"></span>Dice's Coefficient<br>([Smadja et al., 1996](#ref-smadja-et-al-1996))|![Formula](/doc/measures/effect_size/dices_coeff.svg)
 <span id="ref-diff-coeff"></span>Difference Coefficient<br>([Hofland & Johanson, 1982](#ref-hofland-johanson-1982); [Gabrielatos, 2018](#ref-gabrielatos-2018))|![Formula](/doc/measures/effect_size/diff_coeff.svg)
 <span id="ref-jaccard-index"></span>Jaccard Index<br>([Dunning, 1998](#ref-dunning-1998))|![Formula](/doc/measures/effect_size/jaccard_index.svg)
-<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's Ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, which is 1 by default.<br><br>You can change the value of **α** via **Menu → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
+<span id="ref-kilgarriffs-ratio"></span>Kilgarriff's Ratio<br>([Kilgarriff, 2009](#ref-kilgarriff-2009))|![Formula](/doc/measures/effect_size/kilgarriffs_ratio.svg)<br>where **α** is the smoothing parameter, which is 1 by default.<br><br>* You can change the value of **α** via **Menu → Preferences → Settings → Measures → Effect Size → Kilgarriff's Ratio → Smoothing Parameter**.
 <span id="ref-log-ratio"></span>Log Ratio<br>([Hardie, 2014](#ref-hardie-2014))|![Formula](/doc/measures/effect_size/log_ratio.svg)
 <span id="ref-lfmd"></span>Log-Frequency Biased MD<br>([Thanopoulos et al., 2002](#ref-thanopoulos-et-al-2002))|![Formula](/doc/measures/effect_size/lfmd.svg)
 <span id="ref-log-dice"></span>logDice<br>([Rychlý, 2008](#ref-rychly-2008))|![Formula](/doc/measures/effect_size/log_dice.svg)
@@ -1468,19 +1493,21 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 [61] [**^**](#ref-rosengrens-s)[**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
 <span id="ref-rychly-2008"></span>
 [62] [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
+<span id="ref-savicky-hlavacova-2002"></span>
+[63] [**^**](#ref-ald) [**^**](#ref-fald) [**^**](#ref-arf) [**^**](#ref-farf) [**^**](#ref-awt) [**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 <span id="ref-smadja-et-al-1996"></span>
-[63] [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
+[64] [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
 <span id="ref-smith-1961"></span>
-[64] [**^**](#ref-devereux-readability-index) Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728<br>
+[65] [**^**](#ref-devereux-readability-index) Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728<br>
 <span id="ref-smith-senter-1967"></span>
-[65] [**^**](#ref-ari) Smith, E. A., & Senter, R. J. (1967). *Automated readability index*. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
+[66] [**^**](#ref-ari) Smith, E. A., & Senter, R. J. (1967). *Automated readability index*. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
 <span id="ref-spache-1953"></span>
-[66] [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
+[67] [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
 <span id="ref-szigrisze-pazos-1993"></span>
-[67] [**^**](#ref-szigriszts-perspicuity_index) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
+[68] [**^**](#ref-szigriszts-perspicuity_index) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
 <span id="ref-thanopoulos-et-al-2002"></span>
-[68] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
+[69] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="ref-wilson-2013"></span>
-[69] [**^**](#ref-log-likehood-ratio-test-bayes-factor)[**^**](#ref-students-t-test-2-sample-bayes-factor) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
+[70] [**^**](#ref-log-likehood-ratio-test-bayes-factor)[**^**](#ref-students-t-test-2-sample-bayes-factor) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
 <span id="ref-zhang-2004"></span>
-[70] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
+[71] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>

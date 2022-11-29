@@ -31,6 +31,34 @@ def to_freq_sections_items(main, items_search, items):
 
     return wl_measures_dispersion._to_freq_sections_items(items_search, items, num_sub_sections)
 
+# Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
+# Average Logarithmic Distance
+def fald(main, tokens, search_term):
+    dists = wl_measures_dispersion._get_dists(tokens, search_term)
+
+    if dists.size > 0:
+        len_tokens = len(tokens)
+        fald = numpy.exp(-numpy.sum((dists / len_tokens) * numpy.log(dists / len_tokens)))
+    else:
+        fald = 0
+
+    return fald
+
+# Average Reduced Frequency
+def farf(main, tokens, search_term):
+    return wl_measures_dispersion.arf(main, tokens, search_term)
+
+# Average Waiting Time
+def fawt(main, tokens, search_term):
+    dists = wl_measures_dispersion._get_dists(tokens, search_term)
+
+    if dists.size > 0:
+        fawt = len(tokens)**2 / numpy.sum(numpy.square(dists))
+    else:
+        fawt = 0
+
+    return fawt
+
 # Carroll's Um
 # Reference: Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. Computer Studies in the Humanities and Verbal Behaviour, 3(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 def carrolls_um(main, freqs):
