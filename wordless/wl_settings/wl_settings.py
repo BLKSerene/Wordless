@@ -232,6 +232,9 @@ class Wl_Settings(QDialog):
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Profiler')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Figures')))
+        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Line Charts')))
+        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Word Clouds')))
+        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Network Graphs')))
 
         # Calculate width
         for i in range(self.tree_settings.model().rowCount()):
@@ -264,7 +267,7 @@ class Wl_Settings(QDialog):
         self.settings_pos_tagging_tagsets = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging_Tagsets(self.main)
 
         self.settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(self.main)
-        self.settings_stop_words = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(self.main)
+        self.settings_stop_words_lists = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(self.main)
         self.settings_dependency_parsing = wl_settings_dependency_parsing.Wl_Settings_Dependency_Parsing(self.main)
 
         # Measures
@@ -279,34 +282,46 @@ class Wl_Settings(QDialog):
         self.settings_tables = wl_settings_tables.Wl_Settings_Tables(self.main)
         self.settings_tables_profiler = wl_settings_tables.Wl_Settings_Tables_Profiler(self.main)
 
-        self.settings_figs = wl_settings_figs.Wl_Settings_Figs(self.main)
+        # Figures
+        self.settings_figs_line_charts = wl_settings_figs.Wl_Settings_Figs_Line_Charts(self.main)
+        self.settings_figs_word_clouds = wl_settings_figs.Wl_Settings_Figs_Word_Clouds(self.main)
+        self.settings_figs_network_graphs = wl_settings_figs.Wl_Settings_Figs_Network_Graphs(self.main)
 
-        self.settings_all = [
-            self.settings_general,
-            self.settings_general_imp,
-            self.settings_general_exp,
-            self.settings_files,
-            self.settings_files_tags,
-            self.settings_sentence_tokenization,
-            self.settings_word_tokenization,
-            self.settings_syl_tokenization,
-            self.settings_pos_tagging,
-            self.settings_pos_tagging_tagsets,
-            self.settings_lemmatization,
-            self.settings_stop_words,
-            self.settings_dependency_parsing,
-            self.settings_measures_readability,
-            self.settings_measures_dispersion,
-            self.settings_measures_adjusted_freq,
-            self.settings_measures_statistical_significance,
-            self.settings_measures_bayes_factor,
-            self.settings_measures_effect_size,
-            self.settings_tables,
-            self.settings_tables_profiler,
-            self.settings_figs
-        ]
+        self.settings_all = {
+            self.tr('General'): self.settings_general,
+            self.tr('Import'): self.settings_general_imp,
+            self.tr('Export'): self.settings_general_exp,
 
-        for settings in self.settings_all:
+            self.tr('Files'): self.settings_files,
+            self.tr('Tags'): self.settings_files_tags,
+
+            self.tr('Sentence Tokenization'): self.settings_sentence_tokenization,
+            self.tr('Word Tokenization'): self.settings_word_tokenization,
+            self.tr('Syllable Tokenization'): self.settings_syl_tokenization,
+
+            self.tr('Part-of-speech Tagging'): self.settings_pos_tagging,
+            self.tr('Tagsets'): self.settings_pos_tagging_tagsets,
+
+            self.tr('Lemmatization'): self.settings_lemmatization,
+            self.tr('Stop Word Lists'): self.settings_stop_words_lists,
+            self.tr('Dependency Parsing'): self.settings_dependency_parsing,
+
+            self.tr('Readability'): self.settings_measures_readability,
+            self.tr('Dispersion'): self.settings_measures_dispersion,
+            self.tr('Adjusted Frequency'): self.settings_measures_adjusted_freq,
+            self.tr('Statistical Significance'): self.settings_measures_statistical_significance,
+            self.tr('Bayes Factor'): self.settings_measures_bayes_factor,
+            self.tr('Effect Size'): self.settings_measures_effect_size,
+
+            self.tr('Tables'): self.settings_tables,
+            self.tr('Profiler'): self.settings_tables_profiler,
+
+            self.tr('Line Charts'): self.settings_figs_line_charts,
+            self.tr('Word Clouds'): self.settings_figs_word_clouds,
+            self.tr('Network Graphs'): self.settings_figs_network_graphs
+        }
+
+        for settings in self.settings_all.values():
             scroll_area_settings = wl_layouts.Wl_Scroll_Area(self)
             scroll_area_settings.setWidget(settings)
 
@@ -348,58 +363,12 @@ class Wl_Settings(QDialog):
                 node_selected = self.tree_settings.model().itemFromIndex(i_selected)
                 node_selected_text = node_selected.text()
 
-                # General
-                if node_selected_text == self.tr('General'):
-                    self.stacked_widget_settings.setCurrentIndex(0)
-                elif node_selected_text == self.tr('Import'):
-                    self.stacked_widget_settings.setCurrentIndex(1)
-                elif node_selected_text == self.tr('Export'):
-                    self.stacked_widget_settings.setCurrentIndex(2)
-                # Files
-                elif node_selected_text == self.tr('Files'):
-                    self.stacked_widget_settings.setCurrentIndex(3)
-                elif node_selected_text == self.tr('Tags'):
-                    self.stacked_widget_settings.setCurrentIndex(4)
-                elif node_selected_text == self.tr('Sentence Tokenization'):
-                    self.stacked_widget_settings.setCurrentIndex(5)
-                elif node_selected_text == self.tr('Word Tokenization'):
-                    self.stacked_widget_settings.setCurrentIndex(6)
-                elif node_selected_text == self.tr('Syllable Tokenization'):
-                    self.stacked_widget_settings.setCurrentIndex(7)
-                # POS Tagging
-                elif node_selected_text == self.tr('Part-of-speech Tagging'):
-                    self.stacked_widget_settings.setCurrentIndex(8)
-                elif node_selected_text == self.tr('Tagsets'):
-                    self.stacked_widget_settings.setCurrentIndex(9)
-                elif node_selected_text == self.tr('Lemmatization'):
-                    self.stacked_widget_settings.setCurrentIndex(10)
-                elif node_selected_text == self.tr('Stop Word Lists'):
-                    self.stacked_widget_settings.setCurrentIndex(11)
-                elif node_selected_text == self.tr('Dependency Parsing'):
-                    self.stacked_widget_settings.setCurrentIndex(12)
-                # Measures
-                elif node_selected_text == self.tr('Readability'):
-                    self.stacked_widget_settings.setCurrentIndex(13)
-                elif node_selected_text == self.tr('Dispersion'):
-                    self.stacked_widget_settings.setCurrentIndex(14)
-                elif node_selected_text == self.tr('Adjusted Frequency'):
-                    self.stacked_widget_settings.setCurrentIndex(15)
-                elif node_selected_text == self.tr('Statistical Significance'):
-                    self.stacked_widget_settings.setCurrentIndex(16)
-                elif node_selected_text == self.tr('Bayes Factor'):
-                    self.stacked_widget_settings.setCurrentIndex(17)
-                elif node_selected_text == self.tr('Effect Size'):
-                    self.stacked_widget_settings.setCurrentIndex(18)
-                # Tables
-                elif node_selected_text == self.tr('Tables'):
-                    self.stacked_widget_settings.setCurrentIndex(19)
-                elif node_selected_text == self.tr('Profiler'):
-                    self.stacked_widget_settings.setCurrentIndex(20)
-                elif node_selected_text == self.tr('Figures'):
-                    self.stacked_widget_settings.setCurrentIndex(21)
-
                 if node_selected.hasChildren():
                     self.tree_settings.setExpanded(i_selected, True)
+
+                for i, node_text in enumerate(self.settings_all):
+                    if node_selected_text == node_text:
+                        self.stacked_widget_settings.setCurrentIndex(i)
 
                 self.tree_settings.node_selected_old = node_selected
                 self.main.settings_custom['settings']['node_cur'] = node_selected_text
@@ -418,11 +387,11 @@ class Wl_Settings(QDialog):
                 self.tree_settings.selectionModel().blockSignals(False)
 
     def load_settings(self, defaults = False):
-        for settings in self.settings_all:
+        for settings in self.settings_all.values():
             settings.load_settings(defaults = defaults)
 
     def validate_settings(self):
-        for settings in self.settings_all:
+        for settings in self.settings_all.values():
             if not settings.validate_settings():
                 return False
 
@@ -447,7 +416,7 @@ class Wl_Settings(QDialog):
 
     def apply_settings(self):
         if self.validate_settings():
-            for settings in self.settings_all:
+            for settings in self.settings_all.values():
                 if not settings.apply_settings():
                     return False
 

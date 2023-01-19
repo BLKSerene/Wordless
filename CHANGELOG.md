@@ -20,6 +20,7 @@
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2022
 ### 🎉 New Features
+- Settings: Add Settings - Figures - Line Charts / Word Clouds / Network Graphs
 - Settings: Add Settings - Measures - Dispersion - Gries's DP
 - Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measures of Dispersion / Measure of Adjusted Frequency - Average Logarithmic Distance / Average Reduced Frequency / Average Waiting Time
 

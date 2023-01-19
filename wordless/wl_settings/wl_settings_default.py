@@ -1761,23 +1761,32 @@ def init_settings_default(main):
 
         # Settings - Figures
         'figs': {
+            # Settings - Figures - Line Charts
             'line_charts': {
-                'font': ''
+                'general_settings': {
+                    'font': ''
+                }
             },
 
+            # Settings - Figures - Word Clouds
             'word_clouds': {
-                'font': 'GNU Unifont',
-                'font_path': '',
-                'bg_color': '#FFFFFF'
+                'general_settings': {
+                    'font': 'GNU Unifont',
+                    'font_path': '',
+                    'bg_color': '#FFFFFF'
+                }
             },
 
+            # Settings - Figures - Network Graphs
             'network_graphs': {
-                'layout': _tr('init_settings_default', 'Spring'),
-                'node_font': '',
-                'node_font_size': 12,
-                'edge_font': '',
-                'edge_font_size': 10,
-                'edge_color': '#5C88C5'
+                'general_settings': {
+                    'layout': _tr('init_settings_default', 'Spring'),
+                    'node_font': '',
+                    'node_font_size': 12,
+                    'edge_font': '',
+                    'edge_font_size': 10,
+                    'edge_color': '#5C88C5'
+                }
             }
         }
     }
@@ -1806,9 +1815,9 @@ def init_settings_default(main):
     elif is_linux:
         settings_default['general']['ui_settings']['font_size'] = 11
 
-    settings_default['figs']['line_charts']['font'] = settings_default['general']['ui_settings']['font_family']
-    settings_default['figs']['network_graphs']['node_font'] = settings_default['general']['ui_settings']['font_family']
-    settings_default['figs']['network_graphs']['edge_font'] = settings_default['general']['ui_settings']['font_family']
+    settings_default['figs']['line_charts']['general_settings']['font'] = settings_default['general']['ui_settings']['font_family']
+    settings_default['figs']['network_graphs']['general_settings']['node_font'] = settings_default['general']['ui_settings']['font_family']
+    settings_default['figs']['network_graphs']['general_settings']['edge_font'] = settings_default['general']['ui_settings']['font_family']
 
     # Tagsets
     settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']
