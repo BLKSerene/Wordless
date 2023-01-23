@@ -79,7 +79,7 @@ from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc, wl_paths, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables
+from wordless.wl_widgets import wl_boxes, wl_editors, wl_labels, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
 
@@ -1241,7 +1241,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
         except (FileNotFoundError, PermissionError):
             changelog_text = traceback.format_exc()
 
-        text_edit_changelog = wl_boxes.Wl_Text_Browser(self)
+        text_edit_changelog = wl_editors.Wl_Text_Browser(self)
         text_edit_changelog.setHtml(changelog_text)
 
         self.wrapper_info.layout().addWidget(text_edit_changelog, 0, 0)
@@ -1291,6 +1291,7 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         self.setFixedWidth(self.width() + 10)
 
 if __name__ == '__main__':
+    wl_app = QApplication(sys.argv)
     is_windows, is_macos, is_linux = wl_misc.check_os()
 
     # UI scaling
@@ -1301,8 +1302,6 @@ if __name__ == '__main__':
         settings_custom = wl_settings_default.init_settings_default(Wl_Main_Blank())
 
     os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', settings_custom['general']['ui_settings']['interface_scaling'])
-
-    wl_app = QApplication(sys.argv)
 
     # Translations
     if os.path.exists('wl_settings_display_lang.pickle'):

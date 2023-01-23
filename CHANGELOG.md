@@ -20,7 +20,9 @@
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2022
 ### 🎉 New Features
-- Settings: Add Settings - Figures - Line Charts / Word Clouds / Network Graphs
+- Settings: Add Settings - Figures - Word Clouds - Background Settings - Background color - Transparent
+- Settings: Add Settings - Figures - Word Clouds - Font Settings - Font size / Relative scaling / Font color
+- Settings: Add Settings - Figures - Word Clouds - Mask Settings / Advanced Settings
 - Settings: Add Settings - Measures - Dispersion - Gries's DP
 - Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measures of Dispersion / Measure of Adjusted Frequency - Average Logarithmic Distance / Average Reduced Frequency / Average Waiting Time
 
@@ -176,12 +178,6 @@
 - File Area: Remove temporary files when closing files
 - File Area: Show original file paths instead of modified ones
 - Utils: Update CLTK's Norse (Old) stop word list
-- Work Area: Rename Colligation to Colligation Extractor
-- Work Area: Rename Collocation to Collocation Extractor
-- Work Area: Rename Keyword to Keyword Extractor
-- Work Area: Rename N-gram to N-gram Generator
-- Work Area: Rename Overview to Profiler
-- Work Area: Rename Wordlist to Wordlist Generator
 - Work Area: Update Work Area - Figure Settings - Sort by File
 
 ### ❌ Removals
