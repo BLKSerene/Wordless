@@ -282,34 +282,78 @@ def init_settings_global():
 
         'file_types': {
             'files': [
-                _tr('init_settings_global', 'CSV File (*.csv)'),
-                _tr('init_settings_global', 'Excel Workbook (*.xlsx)'),
-                _tr('init_settings_global', 'HTML Page (*.htm; *.html)'),
-                _tr('init_settings_global', 'PDF File (*.pdf)'),
-                _tr('init_settings_global', 'Text File (*.txt)'),
-                _tr('init_settings_global', 'Translation Memory File (*.tmx)'),
-                _tr('init_settings_global', 'Word Document (*.docx)'),
-                _tr('init_settings_global', 'XML File (*.xml)'),
+                _tr('init_settings_global', 'CSV Files (*.csv)'),
+                _tr('init_settings_global', 'Excel Workbooks (*.xlsx)'),
+                _tr('init_settings_global', 'HTML Pages (*.htm; *.html)'),
+                _tr('init_settings_global', 'PDF Files (*.pdf)'),
+                _tr('init_settings_global', 'Text Files (*.txt)'),
+                _tr('init_settings_global', 'Translation Memory Files (*.tmx)'),
+                _tr('init_settings_global', 'Word Documents (*.docx)'),
+                _tr('init_settings_global', 'XML Files (*.xml)'),
                 _tr('init_settings_global', 'All Files (*.*)')
             ],
 
             'exp_tables': [
-                _tr('init_settings_global', 'CSV File (*.csv)'),
-                _tr('init_settings_global', 'Excel Workbook (*.xlsx)')
+                _tr('init_settings_global', 'CSV Files (*.csv)'),
+                _tr('init_settings_global', 'Excel Workbooks (*.xlsx)')
             ],
             'exp_tables_concordancer': [
-                _tr('init_settings_global', 'CSV File (*.csv)'),
-                _tr('init_settings_global', 'Excel Workbook (*.xlsx)'),
-                _tr('init_settings_global', 'Word Document (*.docx)')
+                _tr('init_settings_global', 'CSV Files (*.csv)'),
+                _tr('init_settings_global', 'Excel Workbooks (*.xlsx)'),
+                _tr('init_settings_global', 'Word Documents (*.docx)')
             ],
             'exp_tables_concordancer_zapping': [
-                _tr('init_settings_global', 'Word Document (*.docx)')
+                _tr('init_settings_global', 'Word Documents (*.docx)')
             ],
 
             'fonts': [
-                _tr('init_settings_global', 'OpenType Font (*.otf)'),
-                _tr('init_settings_global', 'TrueType Font (*.ttf)')
-            ]
+                _tr('init_settings_global', 'OpenType Fonts (*.otf)'),
+                _tr('init_settings_global', 'TrueType Fonts (*.ttf)'),
+                _tr('init_settings_global', 'All Files (*.*)')
+            ],
+
+            # All image formats supported by Pillow
+            # Reference: https://stackoverflow.com/questions/71112986/retrieve-a-list-of-supported-read-file-extensions-formats
+            'masks': [
+                _tr('init_settings_global', 'Blizzard Mipmap Format (*.blp)'),
+                _tr('init_settings_global', 'Windows Bitmaps (*.bmp)'),
+                _tr('init_settings_global', 'Window Cursor Files (*.cur)'),
+                _tr('init_settings_global', 'Multi-page PCX Files (*.dcx)'),
+                _tr('init_settings_global', 'DirectDraw Surface (*.dds)'),
+                _tr('init_settings_global', 'Device-independent Bitmaps (*.dib)'),
+                _tr('init_settings_global', 'Encapsulated PostScript (*.eps, *.ps)'),
+                _tr('init_settings_global', 'Flexible Image Transport System (*.fit, *.fits)'),
+                _tr('init_settings_global', 'Autodesk Animation Files (*.flc, *.fli)'),
+                _tr('init_settings_global', 'Fox Engine Textures (*.ftex)'),
+                _tr('init_settings_global', 'GIMP Brush Files (*.gbr)'),
+                _tr('init_settings_global', 'Graphics Interchange Format (*.gif)'),
+                _tr('init_settings_global', 'Apple Icon Images (*.icns)'),
+                _tr('init_settings_global', 'Windows Icon Files (*.ico)'),
+                _tr('init_settings_global', 'IPTC/NAA Newsphoto Files (*.iim)'),
+                _tr('init_settings_global', 'IM Files (*.im)'),
+                _tr('init_settings_global', 'Image Tools Files (*)'),
+                _tr('init_settings_global', 'JPEG Files (*.jfif, *.jpe, *.jpeg, *.jpg)'),
+                _tr('init_settings_global', 'JPEG 2000 Files (*.j2c, *.j2k, *.jp2, *.jpc, *.jpf, *.jpx)'),
+                _tr('init_settings_global', 'McIDAS Area Files (*)'),
+                _tr('init_settings_global', 'Microsoft Paint Files (*.msp)'),
+                _tr('init_settings_global', 'PhotoCD Files (*.pcd)'),
+                _tr('init_settings_global', 'Picture Exchange (*.pcx)'),
+                _tr('init_settings_global', 'PIXAR Raster Files (*.pxr)'),
+                _tr('init_settings_global', 'Portable Network Graphics (*.apng, *.png)'),
+                _tr('init_settings_global', 'Portable Pixmap Format (*.pbm, *.pgm, *.pnm, *.ppm)'),
+                _tr('init_settings_global', 'Photoshop PSD Files (*.psd)'),
+                _tr('init_settings_global', 'Sun Raster Files (*.ras)'),
+                _tr('init_settings_global', 'Silicon Graphics Images (*.bw, *.rgb, *.rgba, *.sgi)'),
+                _tr('init_settings_global', 'SPIDER Files (*)'),
+                _tr('init_settings_global', 'Truevision TGA (*.icb, *.tga, *.vda, *.vst)'),
+                _tr('init_settings_global', 'TIFF Files (*.tif, *.tiff)'),
+                _tr('init_settings_global', 'WebP Files (*.webp)'),
+                _tr('init_settings_global', 'Windows Metafile (*.emf, *.wmf)'),
+                _tr('init_settings_global', 'X BitMaps (*.xbm)'),
+                _tr('init_settings_global', 'X PixMaps (*.xpm)'),
+                _tr('init_settings_global', 'XV Thumbnails (*)'),
+                _tr('init_settings_global', 'All Files (*.*)')
+            ],
         },
 
         'lang_util_mappings': {

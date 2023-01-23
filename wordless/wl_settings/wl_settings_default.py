@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 from PyQt5.QtCore import QCoreApplication
+from PyQt5.QtWidgets import QDesktopWidget
 
 from wordless.wl_tagsets import (
     wl_tagset_universal,
@@ -36,6 +37,7 @@ _tr = QCoreApplication.translate
 
 def init_settings_default(main):
     is_windows, is_macos, is_linux = wl_misc.check_os()
+    desktop_widget = QDesktopWidget()
 
     settings_default = {
         '1st_startup': True,
@@ -1770,10 +1772,35 @@ def init_settings_default(main):
 
             # Settings - Figures - Word Clouds
             'word_clouds': {
-                'general_settings': {
+                'font_settings': {
                     'font': 'GNU Unifont',
                     'font_path': '',
-                    'bg_color': '#FFFFFF'
+
+                    'font_size_min': 4,
+                    'font_size_max': desktop_widget.height(),
+                    # Auto
+                    'relative_scaling': -0.01,
+
+                    'font_color': _tr('init_settings_default', 'Colormap'),
+                    'font_color_monochrome': '#000000',
+                    'font_color_colormap': 'viridis'
+                },
+
+                'bg_settings': {
+                    'bg_color': '#FFFFFF',
+                    'bg_color_transparent': False
+                },
+
+                'mask_settings': {
+                    'mask_settings': False,
+                    'mask_path': '',
+                    'contour_width': 1,
+                    'contour_color': '#000000'
+                },
+
+                'advanced_settings': {
+                    'prefer_hor': 90,
+                    'allow_repeated_words': False
                 }
             },
 

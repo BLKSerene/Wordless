@@ -17,13 +17,11 @@
 # ----------------------------------------------------------------------
 
 import copy
-import re
 
 from PyQt5.QtCore import QCoreApplication, QSize, Qt
-from PyQt5.QtGui import QColor
 from PyQt5.QtWidgets import (
-    QCheckBox, QColorDialog, QGroupBox, QLabel, QLineEdit,
-    QPushButton, QWidget
+    QCheckBox, QGroupBox, QLabel, QLineEdit, QPushButton,
+    QWidget
 )
 
 from wordless.wl_dialogs import wl_dialogs
@@ -353,25 +351,85 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.load_settings()
         self.exec_()
 
-def wl_widgets_no_limit(parent, double = False):
-    def no_limit_changed():
-        if checkbox_no_limit.isChecked():
-            spin_box_no_limit.setEnabled(False)
-        else:
-            spin_box_no_limit.setEnabled(True)
+def wl_widgets_min_max(parent, val_min = 1, val_max = 100, double = False):
+    def min_changed():
+        if spin_box_min.value() > spin_box_max.value():
+            spin_box_max.setValue(spin_box_min.value())
+
+    def max_changed():
+        if spin_box_min.value() > spin_box_max.value():
+            spin_box_min.setValue(spin_box_max.value())
 
     if double:
-        spin_box_no_limit = wl_boxes.Wl_Double_Spin_Box(parent)
+        spin_box_min = wl_boxes.Wl_Double_Spin_Box(parent)
+        spin_box_max = wl_boxes.Wl_Double_Spin_Box(parent)
     else:
-        spin_box_no_limit = wl_boxes.Wl_Spin_Box(parent)
+        spin_box_min = wl_boxes.Wl_Spin_Box(parent)
+        spin_box_max = wl_boxes.Wl_Spin_Box(parent)
 
+    spin_box_min.setRange(val_min, val_max)
+    spin_box_max.setRange(val_min, val_max)
+
+    spin_box_min.valueChanged.connect(min_changed)
+    spin_box_max.valueChanged.connect(max_changed)
+
+    min_changed()
+    max_changed()
+
+    return spin_box_min, spin_box_max
+
+def wl_widgets_no_limit(parent, val_min = 1, val_max = 100, double = False):
+    def no_limit_changed():
+        if checkbox_no_limit.isChecked():
+            spin_box_val.setEnabled(False)
+        else:
+            spin_box_val.setEnabled(True)
+
+    if double:
+        spin_box_val = wl_boxes.Wl_Double_Spin_Box(parent)
+    else:
+        spin_box_val = wl_boxes.Wl_Spin_Box(parent)
     checkbox_no_limit = QCheckBox(_tr('wl_widgets_no_limit', 'No Limit'), parent)
+
+    spin_box_val.setRange(val_min, val_max)
 
     checkbox_no_limit.stateChanged.connect(no_limit_changed)
 
     no_limit_changed()
 
-    return spin_box_no_limit, checkbox_no_limit
+    return spin_box_val, checkbox_no_limit
+
+def wl_widgets_min_max_no_limit(parent, val_min = 1, val_max = 100, double = False):
+    def no_limit_min_changed():
+        if checkbox_min_no_limit.isChecked():
+            spin_box_min.setEnabled(False)
+        else:
+            spin_box_min.setEnabled(True)
+
+    def no_limit_max_changed():
+        if checkbox_max_no_limit.isChecked():
+            spin_box_max.setEnabled(False)
+        else:
+            spin_box_max.setEnabled(True)
+
+    (
+        spin_box_min,
+        spin_box_max
+    ) = wl_widgets_min_max(parent, val_min, val_max, double)
+
+    checkbox_min_no_limit = QCheckBox(_tr('wl_widgets_no_limit', 'No Limit'), parent)
+    checkbox_max_no_limit = QCheckBox(_tr('wl_widgets_no_limit', 'No Limit'), parent)
+
+    checkbox_min_no_limit.stateChanged.connect(no_limit_min_changed)
+    checkbox_max_no_limit.stateChanged.connect(no_limit_max_changed)
+
+    no_limit_min_changed()
+    no_limit_max_changed()
+
+    return (
+        spin_box_min, checkbox_min_no_limit,
+        spin_box_max, checkbox_max_no_limit
+    )
 
 # Token Settings
 def wl_widgets_token_settings(parent):
@@ -995,43 +1053,19 @@ def wl_widgets_fig_settings(parent, tab):
 
 # Filter Settings
 def wl_widgets_filter(parent, filter_min, filter_max):
-    def min_changed():
-        if spin_box_min.value() > spin_box_max.value():
-            spin_box_max.setValue(spin_box_min.value())
-
-    def max_changed():
-        if spin_box_min.value() > spin_box_max.value():
-            spin_box_min.setValue(spin_box_max.value())
-
     label_min = QLabel(_tr('wl_widgets_filter', 'From'), parent)
-    (spin_box_min,
-     checkbox_min_no_limit) = wl_widgets_no_limit(parent)
-
     label_max = QLabel(_tr('wl_widgets_filter', 'To'), parent)
-    (spin_box_max,
-     checkbox_max_no_limit) = wl_widgets_no_limit(parent)
+    (
+        spin_box_min, checkbox_min_no_limit,
+        spin_box_max, checkbox_max_no_limit
+    ) = wl_widgets_min_max_no_limit(parent, filter_min, filter_max)
 
-    spin_box_min.setRange(filter_min, filter_max)
-    spin_box_max.setRange(filter_min, filter_max)
-
-    spin_box_min.valueChanged.connect(min_changed)
-    spin_box_max.valueChanged.connect(max_changed)
-
-    min_changed()
-    max_changed()
-
-    return (label_min, spin_box_min, checkbox_min_no_limit,
-            label_max, spin_box_max, checkbox_max_no_limit)
+    return (
+        label_min, spin_box_min, checkbox_min_no_limit,
+        label_max, spin_box_max, checkbox_max_no_limit
+    )
 
 def wl_widgets_filter_measures(parent, filter_min = -10000, filter_max = 10000):
-    def min_changed():
-        if spin_box_min.value() > spin_box_max.value():
-            spin_box_max.setValue(spin_box_min.value())
-
-    def max_changed():
-        if spin_box_min.value() > spin_box_max.value():
-            spin_box_min.setValue(spin_box_max.value())
-
     def precision_changed():
         precision = main.settings_custom['tables']['precision_settings']['precision_decimals']
 
@@ -1044,23 +1078,13 @@ def wl_widgets_filter_measures(parent, filter_min = -10000, filter_max = 10000):
     main = wl_misc.find_wl_main(parent)
 
     label_min = QLabel(_tr('wl_widgets_filter_measures', 'From'), parent)
-    (spin_box_min,
-     checkbox_min_no_limit) = wl_widgets_no_limit(parent, double = True)
-
     label_max = QLabel(_tr('wl_widgets_filter_measures', 'To'), parent)
-    (spin_box_max,
-     checkbox_max_no_limit) = wl_widgets_no_limit(parent, double = True)
-
-    spin_box_min.setRange(filter_min, filter_max)
-    spin_box_max.setRange(filter_min, filter_max)
-
-    spin_box_min.valueChanged.connect(min_changed)
-    spin_box_max.valueChanged.connect(max_changed)
+    (
+        spin_box_min, checkbox_min_no_limit,
+        spin_box_max, checkbox_max_no_limit
+    ) = wl_widgets_min_max_no_limit(parent, filter_min, filter_max, double = True)
 
     main.wl_settings.wl_settings_changed.connect(precision_changed)
-
-    min_changed()
-    max_changed()
 
     precision_changed()
 
@@ -1070,14 +1094,6 @@ def wl_widgets_filter_measures(parent, filter_min = -10000, filter_max = 10000):
     )
 
 def wl_widgets_filter_p_val(parent):
-    def min_changed():
-        if spin_box_min.value() > spin_box_max.value():
-            spin_box_max.setValue(spin_box_min.value())
-
-    def max_changed():
-        if spin_box_min.value() > spin_box_max.value():
-            spin_box_min.setValue(spin_box_max.value())
-
     def precision_changed():
         precision = main.settings_custom['tables']['precision_settings']['precision_p_vals']
 
@@ -1090,27 +1106,14 @@ def wl_widgets_filter_p_val(parent):
     main = wl_misc.find_wl_main(parent)
 
     label_min = QLabel(_tr('wl_widgets_filter_p_val', 'From'), parent)
-    (
-        spin_box_min,
-        checkbox_min_no_limit
-    ) = wl_widgets_no_limit(parent, double = True)
-
     label_max = QLabel(_tr('wl_widgets_filter_p_val', 'To'), parent)
     (
-        spin_box_max,
-        checkbox_max_no_limit
-    ) = wl_widgets_no_limit(parent, double = True)
-
-    spin_box_min.setRange(0, 1)
-    spin_box_max.setRange(0, 1)
-
-    spin_box_min.valueChanged.connect(min_changed)
-    spin_box_max.valueChanged.connect(max_changed)
+        spin_box_min, checkbox_min_no_limit,
+        spin_box_max, checkbox_max_no_limit
+    ) = wl_widgets_min_max_no_limit(parent, 0, 1, double = True)
 
     main.wl_settings.wl_settings_changed.connect(precision_changed)
 
-    min_changed()
-    max_changed()
     precision_changed()
 
     return (
@@ -1146,8 +1149,10 @@ def wl_widgets_filter_results(parent, table):
 
     table_item_changed()
 
-    return (label_filter_file, combo_box_filter_file,
-            button_filter_results)
+    return (
+        label_filter_file, combo_box_filter_file,
+        button_filter_results
+    )
 
 # Settings -> Measures
 def wl_widgets_num_sub_sections(parent):
@@ -1181,27 +1186,3 @@ def wl_widgets_direction(parent):
     ])
 
     return label_direction, combo_box_direction
-
-# Settings -> Figures
-def wl_widgets_pick_color(parent):
-    def get_color():
-        return re.search(r'#[0-9a-zA-Z]{6}', label_pick_color.text()).group()
-
-    def set_color(color):
-        label_pick_color.setText(f'<span style="margin-right: 3px; background-color: {color}; color: {color}">00</span> <span>{color.upper()}</span>')
-
-    def pick_color():
-        color_picked = QColorDialog.getColor(QColor(get_color()), parent, _tr('wl_widgets_pick_color', 'Pick Color'))
-
-        if color_picked.isValid():
-            label_pick_color.set_color(color_picked.name())
-
-    label_pick_color = wl_labels.Wl_Label_Html('', parent)
-    button_pick_color = QPushButton(_tr('wl_widgets_pick_color', 'Pick Color...'), parent)
-
-    label_pick_color.get_color = get_color
-    label_pick_color.set_color = set_color
-
-    button_pick_color.clicked.connect(pick_color)
-
-    return label_pick_color, button_pick_color

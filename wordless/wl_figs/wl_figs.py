@@ -18,6 +18,7 @@
 
 import re
 
+import PIL.Image
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QDesktopWidget
 import matplotlib
@@ -26,9 +27,13 @@ import networkx
 import numpy
 import wordcloud
 
-from wordless.wl_utils import wl_misc
+from wordless.wl_utils import wl_paths, wl_misc
 
 _tr = QCoreApplication.translate
+
+# Restore Matplotlib's default settings
+def restore_matplotlib_rcparams():
+    matplotlib.pyplot.rcParams['savefig.facecolor'] = 'auto'
 
 def get_data_ranks(data_files_items, fig_settings):
     if fig_settings['rank_min_no_limit']:
@@ -48,6 +53,8 @@ def generate_line_chart(
     data_files_items, fig_settings,
     file_names_selected, label_x
 ): # pylint: disable=unused-argument
+    restore_matplotlib_rcparams()
+
     data_files_items = get_data_ranks(data_files_items, fig_settings)
 
     items = [item for item, vals in data_files_items]
@@ -77,7 +84,7 @@ def generate_line_chart(
                 matplotlib.pyplot.ylabel(_tr('wl_figs', 'Percentage Frequency'))
             else:
                 matplotlib.pyplot.ylabel(_tr('wl_figs', 'Frequency'))
-    # Non-frenquency data
+    # Non-frequency data
     else:
         for i, file_name in enumerate(file_names_selected):
             matplotlib.pyplot.plot(vals[:, i], label = file_name)
@@ -95,6 +102,8 @@ def generate_line_chart(
     matplotlib.pyplot.legend()
 
 def generate_word_cloud(main, data_file_items, fig_settings):
+    restore_matplotlib_rcparams()
+
     data_file_items = get_data_ranks(data_file_items, fig_settings)
 
     items = [item for item, val in data_file_items]
@@ -120,12 +129,60 @@ def generate_word_cloud(main, data_file_items, fig_settings):
     if vals[vals == 0].size > 0:
         vals += 1e-15
 
+    settings = main.settings_custom['figs']['word_clouds']
     desktop_widget = QDesktopWidget()
+
+    if settings['font_settings']['font'] == 'Droid Sans Mono':
+        font_path = wordcloud.wordcloud.FONT_PATH
+    elif settings['font_settings']['font'] == 'GNU Unifont':
+        font_path = wl_paths.get_path_data('unifont-15.0.01.ttf')
+    elif settings['font_settings']['font'] == _tr('wl_figs', 'Custom'):
+        font_path = settings['font_settings']['font_path']
+
+    if settings['font_settings']['relative_scaling'] == -0.01:
+        relative_scaling = 'auto'
+    else:
+        relative_scaling = settings['font_settings']['relative_scaling']
+
+    if settings['font_settings']['font_color'] == _tr('wl_figs', 'Monochrome'):
+        color_func = lambda *args, **kwargs: settings['font_settings']['font_color_monochrome'] # pylint: disable=unnecessary-lambda-assignment
+    elif settings['font_settings']['font_color'] == _tr('wl_figs', 'Colormap'):
+        color_func = None
+
+    if settings['bg_settings']['bg_color_transparent']:
+        # Modify Matplotlib's global settings
+        matplotlib.pyplot.rcParams['savefig.facecolor'] = (0, 0, 0, 0)
+
+        bg_color = None
+        mode = 'RGBA'
+    else:
+        bg_color = settings['bg_settings']['bg_color']
+        mode = 'RGB'
+
+    if settings['mask_settings']['mask_settings']:
+        mask = numpy.array(PIL.Image.open(settings['mask_settings']['mask_path']))
+    else:
+        mask = None
 
     word_cloud = wordcloud.WordCloud(
         width = desktop_widget.width(),
         height = desktop_widget.height(),
-        background_color = main.settings_custom['figs']['word_clouds']['bg_color'],
+        font_path = font_path,
+        min_font_size = settings['font_settings']['font_size_min'],
+        max_font_size = settings['font_settings']['font_size_max'],
+        relative_scaling = relative_scaling,
+        color_func = color_func,
+        colormap = settings['font_settings']['font_color_colormap'],
+        background_color = bg_color,
+        mode = mode,
+        mask = mask,
+        # Known issue: Error when background is transparent and contour width > 0
+        # Reference: https://github.com/amueller/word_cloud/issues/501
+        contour_width = settings['mask_settings']['contour_width'],
+        contour_color = settings['mask_settings']['contour_color'],
+        # The ratio of times to try horizontal fitting as opposed to vertical, ranging from 0 to 1 inclusive
+        prefer_horizontal = settings['advanced_settings']['prefer_hor'] / 100,
+        repeat = settings['advanced_settings']['allow_repeated_words']
     )
 
     word_cloud.generate_from_frequencies(dict(zip(items, vals)))
@@ -134,6 +191,8 @@ def generate_word_cloud(main, data_file_items, fig_settings):
     matplotlib.pyplot.axis('off')
 
 def generate_network_graph(main, data_file_items, fig_settings):
+    restore_matplotlib_rcparams()
+
     data_file_items = dict(get_data_ranks(data_file_items, fig_settings))
 
     graph = networkx.MultiDiGraph()
