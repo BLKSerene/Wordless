@@ -40,7 +40,7 @@
 16|[PyQt](https://riverbankcomputing.com/software/pyqt/)             |5.15.7 |Riverbank Computing Limited|[Commercial-Licnese/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
 17|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)               |3.1.1  |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
 18|[python-docx](https://github.com/python-openxml/python-docx)      |0.8.11 |Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
-19|[Requests](https://github.com/psf/requests)                       |2.28.1 |Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
+19|[Requests](https://github.com/psf/requests)                       |2.28.2 |Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 20|[Sacremoses](https://github.com/alvations/sacremoses)             |0.0.53 |Liling Tan|[MIT](https://github.com/alvations/sacremoses/blob/master/LICENSE)
 21|[SciPy](https://scipy.org/scipylib/)                              |1.9.3  |SciPy Developers|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 22|[simplemma](https://github.com/adbar/simplemma)                   |0.9.0  |Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
