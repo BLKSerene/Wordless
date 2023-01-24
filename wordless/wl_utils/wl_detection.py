@@ -66,7 +66,6 @@ def detect_lang_text(main, text):
 
     lang = lingua_detector.detect_language_of(text)
 
-    # Chinese
     if lang is lingua.Language.CHINESE:
         converter = opencc.OpenCC('t2s')
 
@@ -74,16 +73,14 @@ def detect_lang_text(main, text):
             lang_code = 'zho_cn'
         else:
             lang_code = 'zho_tw'
-    # English
     elif lang is lingua.Language.ENGLISH:
         lang_code = 'eng_us'
-    # German
     elif lang is lingua.Language.GERMAN:
         lang_code = 'deu_de'
-    # Portuguese
+    elif lang is lingua.Language.PUNJABI:
+        lang_code = 'pan_guru'
     elif lang is lingua.Language.PORTUGUESE:
         lang_code = 'por_pt'
-    # Serbian
     elif lang is lingua.Language.SERBIAN:
         lang_code = 'srp_cyrl'
     # No results

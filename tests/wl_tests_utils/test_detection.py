@@ -204,18 +204,18 @@ def test_detection_lang():
             'dan', 'nld',
             'eng_us', 'epo', 'est',
             'fin', 'fra',
-            'deu_de', 'ell', 'guj',
+            'lug', 'kat', 'deu_de', 'ell', 'guj',
             'heb', 'hin', 'hun',
             'isl', 'ind', 'gle', 'ita',
             'jpn',
-            'kat',
+            # 'kaz', 'kor'
             'lat', 'lav', 'lit',
-            'mkd', 'mar', 'mon',
-            'nno',
-            'fas', 'pol', 'por_pt',
+            'mkd', 'mar', 'mon', # 'msa' == 'ind'
+            'nno', # 'nob' == 'nno'
+            'fas', 'pol', 'por_pt', 'pan_guru',
             'ron', 'rus',
-            'srp_cyrl', 'slk', 'slv', 'spa', 'swa', 'swe',
-            'tha', 'tur',
+            'srp_cyrl', 'slk', 'slv', 'spa', 'swa', 'swe', # 'som', 'sot'
+            'tgl', 'tam', 'tel', 'tha', 'tsn', 'tur',
             'ukr', 'urd',
             'vie',
             'cym',
