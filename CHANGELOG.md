@@ -37,6 +37,7 @@
 - Work Area: Remove Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion - Gries's DPnorm
 
 ### ⏫ Dependency Changes
+- Dependencies: Upgrade NumPy to 1.24.1
 - Dependencies: Upgrade Requests to 2.28.2
 
 ## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - 11/21/2022
