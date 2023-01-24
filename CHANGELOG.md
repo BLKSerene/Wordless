@@ -37,6 +37,7 @@
 - Work Area: Remove Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion - Gries's DPnorm
 
 ### ⏫ Dependency Changes
+- Dependencies: Upgrade Lingua to 1.3.1
 - Dependencies: Upgrade NumPy to 1.24.1
 - Dependencies: Upgrade Requests to 2.28.2
 
