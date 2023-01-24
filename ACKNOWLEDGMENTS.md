@@ -30,7 +30,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 6 |[Matplotlib](https://matplotlib.org/)                             |3.6.2  |Matplotlib Development Team|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 7 |[NetworkX](https://networkx.org/)                                 |2.8.8  |Aric Hagberg, Dan Schult, Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 8 |[NLTK](http://www.nltk.org/)                                      |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
-9 |[NumPy](https://www.numpy.org/)                                   |1.23.5 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
+9 |[NumPy](https://www.numpy.org/)                                   |1.24.1 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 10|[opencc-python](https://github.com/yichen0831/opencc-python)      |0.1.6  |Carbo Kuo (郭家宝), Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
 11|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)           |3.0.10 |Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.0/LICENCE.rst)
 12|[PyInstaller](http://www.pyinstaller.org/)                        |5.6.2  |Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
