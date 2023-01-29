@@ -1272,7 +1272,7 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
             self.tr('''
                 <hr>
                 <div style="text-align: center;">
-                    Copyright (C) 2018-2022&nbsp;&nbsp;Ye Lei (叶磊)<br>
+                    Copyright (C) 2018-2023&nbsp;&nbsp;Ye Lei (叶磊)<br>
                     Licensed Under GNU GPLv3<br>
                     All Other Rights Reserved
                 </div>
