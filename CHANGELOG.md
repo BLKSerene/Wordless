@@ -42,6 +42,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade Lingua to 1.3.1
+- Dependencies: Upgrade NetworkX to 3.0
 - Dependencies: Upgrade NumPy to 1.24.1
 - Dependencies: Upgrade Requests to 2.28.2
 
