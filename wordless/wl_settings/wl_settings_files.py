@@ -28,7 +28,7 @@ from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_nlp import wl_matching
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion
-from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables
 
 _tr = QCoreApplication.translate
 
@@ -70,7 +70,7 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         (
             self.spin_box_num_lines,
             self.checkbox_num_lines_no_limit
-        ) = wl_widgets.wl_widgets_no_limit(self)
+        ) = wl_boxes.wl_spin_box_no_limit(self)
 
         self.spin_box_num_lines.setRange(1, 1000000)
 
@@ -114,8 +114,8 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         # Default Settings
         self.combo_box_encoding.setCurrentText(wl_conversion.to_encoding_text(self.main, settings['default_settings']['encoding']))
         self.combo_box_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['default_settings']['lang']))
-        self.combo_box_tokenized.setCurrentText(wl_conversion.to_yes_no_text(settings['default_settings']['tokenized']))
-        self.combo_box_tagged.setCurrentText(wl_conversion.to_yes_no_text(settings['default_settings']['tagged']))
+        self.combo_box_tokenized.set_yes_no(settings['default_settings']['tokenized'])
+        self.combo_box_tagged.set_yes_no(settings['default_settings']['tagged'])
 
         # Auto-detection Settings
         self.spin_box_num_lines.setValue(settings['auto_detection_settings']['num_lines'])
@@ -128,8 +128,8 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
         # Default Settings
         self.settings_custom['default_settings']['encoding'] = wl_conversion.to_encoding_code(self.main, self.combo_box_encoding.currentText())
         self.settings_custom['default_settings']['lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_lang.currentText())
-        self.settings_custom['default_settings']['tokenized'] = wl_conversion.to_yes_no_code(self.combo_box_tokenized.currentText())
-        self.settings_custom['default_settings']['tagged'] = wl_conversion.to_yes_no_code(self.combo_box_tagged.currentText())
+        self.settings_custom['default_settings']['tokenized'] = self.combo_box_tokenized.get_yes_no()
+        self.settings_custom['default_settings']['tagged'] = self.combo_box_tagged.get_yes_no()
 
         # Auto-detection Settings
         self.settings_custom['auto_detection_settings']['num_lines'] = self.spin_box_num_lines.value()

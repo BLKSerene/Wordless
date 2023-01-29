@@ -16,10 +16,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QComboBox, QDoubleSpinBox, QFontComboBox, QSpinBox
+from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt5.QtWidgets import (
+    QCheckBox, QComboBox, QDoubleSpinBox, QFontComboBox, QLabel,
+    QSpinBox
+)
 
 from wordless.wl_utils import wl_misc
+
+_tr = QCoreApplication.translate
 
 # Combo boxes
 class Wl_Combo_Box(QComboBox):
@@ -43,14 +48,36 @@ class Wl_Combo_Box_Adjustable(Wl_Combo_Box):
 
         self.setSizeAdjustPolicy(QComboBox.AdjustToContents)
 
-class Wl_Combo_Box_Yes_No(Wl_Combo_Box):
-    def __init__(self, parent):
+class Wl_Combo_Box_Enums(Wl_Combo_Box):
+    def __init__(self, parent, enums):
         super().__init__(parent)
 
-        self.addItems([
-            self.tr('Yes'),
-            self.tr('No')
-        ])
+        self._enums = enums
+
+        self.addItems(self._enums)
+
+    def get_val(self):
+        return self._enums[self.currentText()]
+
+    def set_val(self, val):
+        for val_name, val_code in self._enums.items():
+            if val == val_code:
+                super().setCurrentText(val_name)
+
+                break
+
+class Wl_Combo_Box_Yes_No(Wl_Combo_Box_Enums):
+    def __init__(self, parent):
+        super().__init__(parent, enums = {
+            _tr('wl_boxes', 'Yes'): True,
+            _tr('wl_boxes', 'No'): False
+        })
+
+    def get_yes_no(self):
+        return super().get_val()
+
+    def set_yes_no(self, yes_no):
+        super().set_val(yes_no)
 
 class Wl_Combo_Box_Lang(Wl_Combo_Box):
     def __init__(self, parent):
@@ -142,20 +169,6 @@ class Wl_Spin_Box(QSpinBox):
         else:
             event.ignore()
 
-class Wl_Double_Spin_Box(QDoubleSpinBox):
-    def __init__(self, parent):
-        super().__init__(parent)
-
-        self.main = wl_misc.find_wl_main(parent)
-
-        self.setFocusPolicy(Qt.StrongFocus)
-
-    def wheelEvent(self, event):
-        if self.hasFocus():
-            QDoubleSpinBox.wheelEvent(self, event)
-        else:
-            event.ignore()
-
 class Wl_Spin_Box_Window(Wl_Spin_Box):
     def __init__(self, parent):
         super().__init__(parent)
@@ -184,3 +197,214 @@ class Wl_Spin_Box_Font_Size(Wl_Spin_Box):
         super().__init__(parent)
 
         self.setRange(6, 20)
+
+class Wl_Spin_Box_Font_Weight(Wl_Spin_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.setRange(0, 1000)
+
+# Double spin boxes
+class Wl_Double_Spin_Box(QDoubleSpinBox):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.main = wl_misc.find_wl_main(parent)
+
+        self.setDecimals(2)
+        self.setSingleStep(.01)
+        self.setFocusPolicy(Qt.StrongFocus)
+
+    def wheelEvent(self, event):
+        if self.hasFocus():
+            QDoubleSpinBox.wheelEvent(self, event)
+        else:
+            event.ignore()
+
+class Wl_Double_Spin_Box_Alpha(Wl_Double_Spin_Box):
+    def __init__(self, parent):
+        super().__init__(parent)
+
+        self.setRange(0, 1)
+
+# Box combinations
+def wl_spin_box_no_limit(parent, val_min = 1, val_max = 100, double = False):
+    def no_limit_changed():
+        if checkbox_no_limit.isChecked():
+            spin_box_val.setEnabled(False)
+        else:
+            spin_box_val.setEnabled(True)
+
+    if double:
+        spin_box_val = Wl_Double_Spin_Box(parent)
+    else:
+        spin_box_val = Wl_Spin_Box(parent)
+
+    checkbox_no_limit = QCheckBox(_tr('wl_boxes', 'No Limit'), parent)
+
+    spin_box_val.setRange(val_min, val_max)
+
+    checkbox_no_limit.stateChanged.connect(no_limit_changed)
+
+    no_limit_changed()
+
+    return spin_box_val, checkbox_no_limit
+
+def wl_spin_boxes_min_max(parent, val_min = 1, val_max = 100, double = False):
+    def min_changed():
+        if spin_box_min.value() > spin_box_max.value():
+            spin_box_max.setValue(spin_box_min.value())
+
+    def max_changed():
+        if spin_box_min.value() > spin_box_max.value():
+            spin_box_min.setValue(spin_box_max.value())
+
+    if double:
+        spin_box_min = Wl_Double_Spin_Box(parent)
+        spin_box_max = Wl_Double_Spin_Box(parent)
+    else:
+        spin_box_min = Wl_Spin_Box(parent)
+        spin_box_max = Wl_Spin_Box(parent)
+
+    spin_box_min.setRange(val_min, val_max)
+    spin_box_max.setRange(val_min, val_max)
+
+    spin_box_min.valueChanged.connect(min_changed)
+    spin_box_max.valueChanged.connect(max_changed)
+
+    min_changed()
+    max_changed()
+
+    return spin_box_min, spin_box_max
+
+def wl_spin_boxes_min_max_no_limit(parent, val_min = 1, val_max = 100, double = False):
+    def no_limit_min_changed():
+        if checkbox_min_no_limit.isChecked():
+            spin_box_min.setEnabled(False)
+        else:
+            spin_box_min.setEnabled(True)
+
+    def no_limit_max_changed():
+        if checkbox_max_no_limit.isChecked():
+            spin_box_max.setEnabled(False)
+        else:
+            spin_box_max.setEnabled(True)
+
+    (
+        spin_box_min,
+        spin_box_max
+    ) = wl_spin_boxes_min_max(parent, val_min, val_max, double)
+
+    checkbox_min_no_limit = QCheckBox(_tr('wl_boxes', 'No Limit'), parent)
+    checkbox_max_no_limit = QCheckBox(_tr('wl_boxes', 'No Limit'), parent)
+
+    checkbox_min_no_limit.stateChanged.connect(no_limit_min_changed)
+    checkbox_max_no_limit.stateChanged.connect(no_limit_max_changed)
+
+    no_limit_min_changed()
+    no_limit_max_changed()
+
+    return (
+        spin_box_min, checkbox_min_no_limit,
+        spin_box_max, checkbox_max_no_limit
+    )
+
+def wl_spin_boxes_min_max_sync(parent, val_min = 1, val_max = 100, double = False):
+    def sync_changed():
+        if checkbox_sync.isChecked():
+            spin_box_min.setValue(spin_box_max.value())
+
+    def min_changed():
+        if checkbox_sync.isChecked() or spin_box_min.value() > spin_box_max.value():
+            spin_box_max.setValue(spin_box_min.value())
+
+    def max_changed():
+        if checkbox_sync.isChecked() or spin_box_min.value() > spin_box_max.value():
+            spin_box_min.setValue(spin_box_max.value())
+
+    checkbox_sync = QCheckBox(_tr('wl_boxes', 'Sync'), parent)
+    label_min = QLabel(_tr('wl_boxes', 'From'), parent)
+    label_max = QLabel(_tr('wl_boxes', 'To'), parent)
+    (
+        spin_box_min,
+        spin_box_max
+    ) = wl_spin_boxes_min_max(parent, val_min, val_max, double)
+
+    checkbox_sync.stateChanged.connect(sync_changed)
+
+    min_changed()
+    max_changed()
+    sync_changed()
+
+    return (
+        checkbox_sync,
+        label_min, spin_box_min,
+        label_max, spin_box_max
+    )
+
+def wl_spin_boxes_min_max_sync_window(parent):
+    def sync_changed():
+        if checkbox_sync.isChecked():
+            spin_box_left.setPrefix(spin_box_right.prefix())
+            spin_box_left.setValue(spin_box_right.value())
+
+    def left_changed():
+        if (
+            checkbox_sync.isChecked()
+            or (
+                spin_box_left.prefix() == _tr('wl_boxes', 'L')
+                and spin_box_right.prefix() == _tr('wl_boxes', 'L')
+                and spin_box_left.value() < spin_box_right.value()
+            ) or (
+                spin_box_left.prefix() == _tr('wl_boxes', 'R')
+                and spin_box_right.prefix() == _tr('wl_boxes', 'R')
+                and spin_box_left.value() > spin_box_right.value()
+            ) or (
+                spin_box_left.prefix() == _tr('wl_boxes', 'R')
+                and spin_box_right.prefix() == _tr('wl_boxes', 'L')
+            )
+        ):
+            spin_box_right.setPrefix(spin_box_left.prefix())
+            spin_box_right.setValue(spin_box_left.value())
+
+    def right_changed():
+        if (
+            checkbox_sync.isChecked()
+            or (
+                spin_box_left.prefix() == _tr('wl_boxes', 'L')
+                and spin_box_right.prefix() == _tr('wl_boxes', 'L')
+                and spin_box_left.value() < spin_box_right.value()
+            ) or (
+                spin_box_left.prefix() == _tr('wl_boxes', 'R')
+                and spin_box_right.prefix() == _tr('wl_boxes', 'R')
+                and spin_box_left.value() > spin_box_right.value()
+            ) or (
+                spin_box_left.prefix() == _tr('wl_boxes', 'R')
+                and spin_box_right.prefix() == _tr('wl_boxes', 'L')
+            )
+        ):
+            spin_box_left.setPrefix(spin_box_right.prefix())
+            spin_box_left.setValue(spin_box_right.value())
+
+    checkbox_sync = QCheckBox(_tr('wl_boxes', 'Sync'), parent)
+    label_left = QLabel(_tr('wl_boxes', 'From'), parent)
+    spin_box_left = Wl_Spin_Box_Window(parent)
+    label_right = QLabel(_tr('wl_boxes', 'To'), parent)
+    spin_box_right = Wl_Spin_Box_Window(parent)
+
+    spin_box_left.setRange(-100, 100)
+    spin_box_right.setRange(-100, 100)
+
+    checkbox_sync.stateChanged.connect(sync_changed)
+    spin_box_left.valueChanged.connect(left_changed)
+    spin_box_right.valueChanged.connect(right_changed)
+
+    sync_changed()
+    left_changed()
+    right_changed()
+
+    return (
+        checkbox_sync,
+        label_left, spin_box_left,
+        label_right, spin_box_right
+    )
