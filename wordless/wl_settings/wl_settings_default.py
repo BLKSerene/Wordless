@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import networkx
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QDesktopWidget
 
@@ -1806,13 +1807,44 @@ def init_settings_default(main):
 
             # Settings - Figures - Network Graphs
             'network_graphs': {
-                'general_settings': {
-                    'layout': _tr('init_settings_default', 'Spring'),
-                    'node_font': '',
-                    'node_font_size': 12,
-                    'edge_font': '',
-                    'edge_font_size': 10,
-                    'edge_color': '#5C88C5'
+                'node_settings': {
+                    'node_shape': 'o',
+                    'node_size': 800,
+                    'node_color': '#5C88C5',
+                    'node_opacity': 1.0
+                },
+
+                'node_label_settings': {
+                    'label_font': '',
+                    'label_font_size': 0,
+                    'label_font_weight': 400,
+                    'label_font_color': '#000000',
+                    'label_opacity': 1.0
+                },
+
+                'edge_settings': {
+                    'connection_style': 'arc3',
+                    'edge_width_min': .1,
+                    'edge_width_max': 3,
+                    'edge_style': 'solid',
+                    'edge_color': '#000000',
+                    'edge_opacity': 1.0,
+                    'arrow_style': '-|>',
+                    'arrow_size': 10
+                },
+
+                'edge_label_settings': {
+                    'label_position': .5,
+                    'rotate_labels': True,
+                    'label_font': '',
+                    'label_font_size': 0,
+                    'label_font_weight': 400,
+                    'label_font_color': '#000000',
+                    'label_opacity': 1.0
+                },
+
+                'advanced_settings': {
+                    'layout': networkx.spring_layout
                 }
             }
         }
@@ -1820,31 +1852,36 @@ def init_settings_default(main):
 
     # Fonts
     if is_windows:
-        settings_default['general']['ui_settings']['font_family'] = 'Arial'
+        default_font = 'Arial'
     elif is_macos:
         macos_ver = wl_misc.get_macos_ver()
         macos_ver_major, macos_ver_minor, _ = wl_misc.split_ver(macos_ver)
 
         if macos_ver_major == 10 and macos_ver_minor <= 9:
-            settings_default['general']['ui_settings']['font_family'] = 'Lucida Grande'
+            default_font = 'Lucida Grande'
         elif macos_ver_major == 10 and macos_ver_minor == 10:
-            settings_default['general']['ui_settings']['font_family'] = 'Helvetica Neue'
+            default_font = 'Helvetica Neue'
         else:
-            settings_default['general']['ui_settings']['font_family'] = 'SF Pro'
+            default_font = 'SF Pro'
     elif is_linux:
-        settings_default['general']['ui_settings']['font_family'] = 'Liberation Sans'
+        default_font = 'Liberation Sans'
+
+    settings_default['general']['ui_settings']['font_family'] = default_font
+    settings_default['figs']['line_charts']['general_settings']['font'] = default_font
+    settings_default['figs']['network_graphs']['node_label_settings']['label_font'] = default_font
+    settings_default['figs']['network_graphs']['edge_label_settings']['label_font'] = default_font
 
     # Font Sizes
     if is_windows:
-        settings_default['general']['ui_settings']['font_size'] = 9
+        default_font_size = 9
     elif is_macos:
-        settings_default['general']['ui_settings']['font_size'] = 13
+        default_font_size = 13
     elif is_linux:
-        settings_default['general']['ui_settings']['font_size'] = 11
+        default_font_size = 11
 
-    settings_default['figs']['line_charts']['general_settings']['font'] = settings_default['general']['ui_settings']['font_family']
-    settings_default['figs']['network_graphs']['general_settings']['node_font'] = settings_default['general']['ui_settings']['font_family']
-    settings_default['figs']['network_graphs']['general_settings']['edge_font'] = settings_default['general']['ui_settings']['font_family']
+    settings_default['general']['ui_settings']['font_size'] = default_font_size
+    settings_default['figs']['network_graphs']['node_label_settings']['label_font_size'] = default_font_size
+    settings_default['figs']['network_graphs']['edge_label_settings']['label_font_size'] = default_font_size
 
     # Tagsets
     settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']

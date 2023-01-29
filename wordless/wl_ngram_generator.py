@@ -721,7 +721,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             self.spin_box_ngram_size_min,
             self.label_ngram_size_max,
             self.spin_box_ngram_size_max
-        ) = wl_widgets.wl_widgets_size(self)
+        ) = wl_boxes.wl_spin_boxes_min_max_sync(self)
         self.checkbox_allow_skipped_tokens = QCheckBox(self.tr('Allow skipped tokens:'), self)
         self.spin_box_allow_skipped_tokens = wl_boxes.Wl_Spin_Box(self)
 

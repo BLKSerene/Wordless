@@ -20,6 +20,10 @@
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2022
 ### 🎉 New Features
+- Settings: Add Settings - Figures - Network Graphs - Edge Label Settings - Label position / Rotate labels to lie parallel to edges / Label font weight / Label font color / Label opacity
+- Settings: Add Settings - Figures - Network Graphs - Edge Settings - Connection style / Edge width / Edge style / Edge opacity / Arrow style / Arrow size
+- Settings: Add Settings - Figures - Network Graphs - Node Label Settings - Label font weight / Label font color / Label opacity
+- Settings: Add Settings - Figures - Network Graphs - Node Settings
 - Settings: Add Settings - Figures - Word Clouds - Background Settings - Background color - Transparent
 - Settings: Add Settings - Figures - Word Clouds - Font Settings - Font size / Relative scaling / Font color
 - Settings: Add Settings - Figures - Word Clouds - Mask Settings / Advanced Settings
