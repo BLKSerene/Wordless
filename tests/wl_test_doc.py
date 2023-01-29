@@ -86,7 +86,10 @@ def wl_test_supported_encodings(main):
     len_max_encodings = max((len(encoding) for encoding in encodings))
 
     for lang, encoding in zip(langs, encodings):
-        print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✔')
+        if encoding == 'UTF-8 with BOM':
+            print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✖️')
+        else:
+            print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✔')
 
 if __name__ == '__main__':
     main = wl_test_init.Wl_Test_Main()
