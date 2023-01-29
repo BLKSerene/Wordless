@@ -1017,7 +1017,7 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
             self.spin_box_window_left,
             self.label_window_right,
             self.spin_box_window_right
-        ) = wl_widgets.wl_widgets_window(self)
+        ) = wl_boxes.wl_spin_boxes_min_max_sync_window(self)
 
         self.label_limit_searching = QLabel(self.tr('Limit Searching:'), self)
         self.combo_box_limit_searching = wl_boxes.Wl_Combo_Box(self)

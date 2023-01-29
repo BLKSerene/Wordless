@@ -194,33 +194,30 @@ def generate_network_graph(main, data_file_items, fig_settings):
     restore_matplotlib_rcparams()
 
     data_file_items = dict(get_data_ranks(data_file_items, fig_settings))
+    settings = main.settings_custom['figs']['network_graphs']
 
     graph = networkx.MultiDiGraph()
     graph.add_edges_from(data_file_items)
 
-    graph_layout = main.settings_custom['figs']['network_graphs']['layout']
-
-    if graph_layout == _tr('wl_figs', 'Circular'):
-        layout = networkx.circular_layout(graph)
-    elif graph_layout == _tr('wl_figs', 'Kamada-Kawai'):
-        layout = networkx.kamada_kawai_layout(graph)
-    elif graph_layout == _tr('wl_figs', 'Planar'):
-        layout = networkx.planar_layout(graph)
-    elif graph_layout == _tr('wl_figs', 'Random'):
-        layout = networkx.random_layout(graph)
-    elif graph_layout == _tr('wl_figs', 'Shell'):
-        layout = networkx.shell_layout(graph)
-    elif graph_layout == _tr('wl_figs', 'Spring'):
-        layout = networkx.spring_layout(graph)
-    elif graph_layout == _tr('wl_figs', 'Spectral'):
-        layout = networkx.spectral_layout(graph)
+    layout = settings['advanced_settings']['layout'](graph)
 
     networkx.draw_networkx_nodes(
         graph,
         pos = layout,
-        node_size = 800,
-        node_color = '#FFFFFF',
-        alpha = 0.4
+        node_shape = settings['node_settings']['node_shape'],
+        node_size = settings['node_settings']['node_size'],
+        node_color = settings['node_settings']['node_color'],
+        alpha = settings['node_settings']['node_opacity']
+    )
+
+    networkx.draw_networkx_labels(
+        graph,
+        pos = layout,
+        font_family = settings['node_label_settings']['label_font'],
+        font_size = settings['node_label_settings']['label_font_size'],
+        font_weight = settings['node_label_settings']['label_font_weight'],
+        font_color = settings['node_label_settings']['label_font_color'],
+        alpha = settings['node_label_settings']['label_opacity']
     )
 
     if fig_settings['use_data'] == _tr('wl_figs', 'p-value'):
@@ -239,28 +236,34 @@ def generate_network_graph(main, data_file_items, fig_settings):
         graph,
         pos = layout,
         edgelist = data_file_items,
-        edge_color = main.settings_custom['figs']['network_graphs']['edge_color'],
         width = wl_misc.normalize_nums(
             data_file_items.values(),
-            normalized_min = 1,
-            normalized_max = 5,
+            normalized_min = settings['edge_settings']['edge_width_min'],
+            normalized_max = settings['edge_settings']['edge_width_max'],
             reverse = reverse
-        )
+        ),
+        connectionstyle = settings['edge_settings']['connection_style'],
+        style = settings['edge_settings']['edge_style'],
+        edge_color = settings['edge_settings']['edge_color'],
+        alpha = settings['edge_settings']['edge_opacity'],
+        arrowstyle = settings['edge_settings']['arrow_style'],
+        arrowsize = settings['edge_settings']['arrow_size'],
+        # Used to determine edge positions
+        node_shape = settings['node_settings']['node_shape'],
+        node_size = settings['node_settings']['node_size']
     )
 
-    networkx.draw_networkx_labels(
-        graph,
-        pos = layout,
-        font_family = main.settings_custom['figs']['network_graphs']['node_font'],
-        font_size = main.settings_custom['figs']['network_graphs']['node_font_size']
-    )
     networkx.draw_networkx_edge_labels(
         graph,
         pos = layout,
         edge_labels = data_file_items,
-        label_pos = 0.2,
-        font_family = main.settings_custom['figs']['network_graphs']['edge_font'],
-        font_size = main.settings_custom['figs']['network_graphs']['edge_font_size']
+        label_pos = settings['edge_label_settings']['label_position'],
+        rotate = settings['edge_label_settings']['rotate_labels'],
+        font_family = settings['edge_label_settings']['label_font'],
+        font_size = settings['edge_label_settings']['label_font_size'],
+        font_weight = settings['edge_label_settings']['label_font_weight'],
+        font_color = settings['edge_label_settings']['label_font_color'],
+        alpha = settings['edge_label_settings']['label_opacity']
     )
 
 def show_fig():
