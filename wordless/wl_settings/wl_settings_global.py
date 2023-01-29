@@ -169,7 +169,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Chinese (GBK)'): 'gbk',
 
             _tr('init_settings_global', 'Chinese (Simplified) (GB2312)'): 'gb2312',
-            _tr('init_settings_global', 'Chinese (Simplified) (HZ)'): 'hz_gb_2312',
+            _tr('init_settings_global', 'Chinese (Simplified) (HZ)'): 'hz',
 
             _tr('init_settings_global', 'Chinese (Traditional) (Big-5)'): 'big5',
             _tr('init_settings_global', 'Chinese (Traditional) (Big5-HKSCS)'): 'big5hkscs',
@@ -197,6 +197,7 @@ def init_settings_global():
             _tr('init_settings_global', 'European (Northern) (ISO-8859-4)'): 'iso8859_4',
 
             _tr('init_settings_global', 'European (Southern) (ISO-8859-3)'): 'iso8859_3',
+
             _tr('init_settings_global', 'European (South-Eastern) (ISO-8859-16)'): 'iso8859_16',
 
             _tr('init_settings_global', 'European (Western) (EBCDIC 500)'): 'cp500',
@@ -206,7 +207,7 @@ def init_settings_global():
             _tr('init_settings_global', 'European (Western) (ISO-8859-1)'): 'latin_1',
             _tr('init_settings_global', 'European (Western) (ISO-8859-15)'): 'iso8859_15',
             _tr('init_settings_global', 'European (Western) (Mac OS Roman)'): 'mac_roman',
-            _tr('init_settings_global', 'European (Western) (Windows-1252)'): 'windows_1252',
+            _tr('init_settings_global', 'European (Western) (Windows-1252)'): 'cp1252',
 
             _tr('init_settings_global', 'French (CP863)'): 'cp863',
 
@@ -217,13 +218,13 @@ def init_settings_global():
             _tr('init_settings_global', 'Greek (CP875)'): 'cp875',
             _tr('init_settings_global', 'Greek (ISO-8859-7)'): 'iso8859_7',
             _tr('init_settings_global', 'Greek (Mac OS Greek)'): 'mac_greek',
-            _tr('init_settings_global', 'Greek (Windows-1253)'): 'windows_1253',
+            _tr('init_settings_global', 'Greek (Windows-1253)'): 'cp1253',
 
             _tr('init_settings_global', 'Hebrew (CP856)'): 'cp856',
             _tr('init_settings_global', 'Hebrew (CP862)'): 'cp862',
             _tr('init_settings_global', 'Hebrew (EBCDIC 424)'): 'cp424',
             _tr('init_settings_global', 'Hebrew (ISO-8859-8)'): 'iso8859_8',
-            _tr('init_settings_global', 'Hebrew (Windows-1255)'): 'windows_1255',
+            _tr('init_settings_global', 'Hebrew (Windows-1255)'): 'cp1255',
 
             _tr('init_settings_global', 'Icelandic (CP861)'): 'cp861',
             _tr('init_settings_global', 'Icelandic (Mac OS Icelandic)'): 'mac_iceland',
@@ -265,6 +266,7 @@ def init_settings_global():
 
             _tr('init_settings_global', 'Thai (CP874)'): 'cp874',
             _tr('init_settings_global', 'Thai (ISO-8859-11)'): 'iso8859_11',
+            _tr('init_settings_global', 'Thai (TIS-620)'): 'tis_620',
 
             _tr('init_settings_global', 'Turkish (CP857)'): 'cp857',
             _tr('init_settings_global', 'Turkish (EBCDIC 1026)'): 'cp1026',

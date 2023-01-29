@@ -763,7 +763,7 @@ XML File                |\*.xml
 Language|File Encoding|Auto-detection
 --------|-------------|:------------:
 All Languages           |UTF-8 without BOM      |✔
-All Languages           |UTF-8 with BOM         |✔
+All Languages           |UTF-8 with BOM         |✖️
 All Languages           |UTF-16 with BOM        |✔
 All Languages           |UTF-16BE without BOM   |✔
 All Languages           |UTF-16LE without BOM   |✔
@@ -855,6 +855,7 @@ Russian                 |KOI8-R                 |✔
 Tajik                   |KOI8-T                 |✔
 Thai                    |CP874                  |✔
 Thai                    |ISO-8859-11            |✔
+Thai                    |TIS-620                |✔
 Turkish                 |CP857                  |✔
 Turkish                 |EBCDIC 1026            |✔
 Turkish                 |ISO-8859-9             |✔

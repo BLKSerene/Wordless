@@ -20,6 +20,7 @@
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2022
 ### 🎉 New Features
+- Settings: Add global settings - encodings - Thai (TIS-620)
 - Settings: Add Settings - Figures - Network Graphs - Edge Label Settings - Label position / Rotate labels to lie parallel to edges / Label font weight / Label font color / Label opacity
 - Settings: Add Settings - Figures - Network Graphs - Edge Settings - Connection style / Edge width / Edge style / Edge opacity / Arrow style / Arrow size
 - Settings: Add Settings - Figures - Network Graphs - Node Label Settings - Label font weight / Label font color / Label opacity
@@ -34,6 +35,7 @@
 - File Area: Disallow empty file names
 
 ### 📌 Bugfixes
+- Settings: Fix global settings - encodings
 - Settings: Fix Settings - Part-of-speech Tagging - Tagsets
 
 ### ❌ Removals
