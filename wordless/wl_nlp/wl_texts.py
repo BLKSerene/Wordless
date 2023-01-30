@@ -27,6 +27,8 @@ from wordless.wl_utils import wl_misc
 
 _tr = QCoreApplication.translate
 
+RE_VIE_TOKENIZED = re.compile(r'(?<!^)_(?!$)')
+
 class Wl_Text:
     def __init__(self, main, file):
         self.main = main
@@ -182,6 +184,16 @@ class Wl_Text:
             # Add empty tags
             self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
 
+        # Remove underscores in tokenized Vietnamese files
+        if self.lang == 'vie' and self.tokenized:
+            for para in self.tokens_multilevel:
+                for sentence in para:
+                    for i, sentence_seg in enumerate(sentence):
+                        sentence[i] = [
+                            re.sub(RE_VIE_TOKENIZED, ' ', token)
+                            for token in sentence_seg
+                        ]
+
         # Remove whitespace around all tags
         self.tags = [
             [tag_clean for tag in tags if (tag_clean := tag.strip())]
@@ -298,6 +310,16 @@ class Wl_Text_Ref():
                 tokens = wl_word_tokenization.wl_word_tokenize_flat(self.main, text, lang = self.lang)
 
                 self.tokens_multilevel[0][0][0].extend(tokens)
+
+        # Remove underscores in tokenized Vietnamese files
+        if self.lang == 'vie' and self.tokenized:
+            for para in self.tokens_multilevel:
+                for sentence in para:
+                    for i, sentence_seg in enumerate(sentence):
+                        sentence[i] = [
+                            re.sub(RE_VIE_TOKENIZED, ' ', token)
+                            for token in sentence_seg
+                        ]
 
         # Remove whitespace around tokens and empty tokens
         self.tokens_multilevel[0][0][0] = [

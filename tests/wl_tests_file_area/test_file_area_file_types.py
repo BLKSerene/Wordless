@@ -18,6 +18,7 @@
 
 import glob
 import os
+import re
 import time
 
 from PyQt5.QtCore import QObject
@@ -25,10 +26,11 @@ from PyQt5.QtCore import QObject
 from tests import wl_test_init
 from wordless import wl_file_area
 from wordless.wl_dialogs import wl_dialogs_misc
+from wordless.wl_nlp import wl_texts
 
 main = wl_test_init.Wl_Test_Main()
 
-def add_file(file_paths, update_gui):
+def add_file(file_paths, update_gui, file_type = 'observed'):
     def open_file(err_msg, files_to_open):
         assert not err_msg
 
@@ -46,7 +48,7 @@ def add_file(file_paths, update_gui):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
             update_gui = update_gui,
             files_to_open = files_to_open,
-            file_type = 'observed'
+            file_type = file_type
         ).run()
 
         print(f'Done! (In {round(time.time() - time_start, 2)} seconds)\n')
@@ -68,9 +70,7 @@ def add_file(file_paths, update_gui):
         ).run()
 
 def test_file_area_file_types():
-    # Clean cached files
-    for file in glob.glob('imports/*.*'):
-        os.remove(file)
+    wl_test_init.clean_import_caches()
 
     # Disable encoding detection
     main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings'] = False
@@ -226,5 +226,42 @@ def update_gui_tags(err_msg, new_files):
 
     assert len(file_text.get_tokens_flat()) == len(file_text.tags)
 
+def test_file_area_misc():
+    wl_test_init.clean_import_caches()
+
+    main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings'] = False
+    main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs'] = False
+
+    main.settings_custom['files']['default_settings']['encoding'] = 'utf_8'
+    main.settings_custom['files']['default_settings']['lang'] = 'vie'
+    main.settings_custom['files']['default_settings']['tokenized'] = True
+    main.settings_custom['files']['default_settings']['tagged'] = False
+
+    # Check if underscores in tokenized Vietnamese files are removed
+    add_file(
+        file_paths = ['tests/files/wl_file_area/misc/vie_tokenized.txt'],
+        update_gui = update_gui_misc,
+        file_type = 'observed'
+    )
+    add_file(
+        file_paths = ['tests/files/wl_file_area/misc/vie_tokenized.txt'],
+        update_gui = update_gui_misc,
+        file_type = 'ref'
+    )
+
+def update_gui_misc(err_msg, new_files):
+    assert not err_msg
+
+    file_text = new_files[0]['text']
+
+    print(file_text.tokens_multilevel)
+
+    for para in file_text.tokens_multilevel:
+        for sentence in para:
+            for sentence_seg in sentence:
+                for token in sentence_seg:
+                    assert not re.search(wl_texts.RE_VIE_TOKENIZED, token)
+
 if __name__ == '__main__':
     test_file_area_file_types()
+    test_file_area_misc()
