@@ -179,7 +179,7 @@ def test_syl_tokenize_tokens_no_punc(lang, syl_tokenizer):
         text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
         lang = lang
     )
-    syls_tokens = wl_syl_tokenization.wl_syl_tokenize_tokens_no_puncs(
+    syls_tokens = wl_syl_tokenization.wl_syl_tokenize_tokens_no_punc(
         main,
         tokens = tokens,
         lang = lang,

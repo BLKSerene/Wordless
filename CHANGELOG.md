@@ -29,6 +29,7 @@
 - Settings: Add Settings - Figures - Word Clouds - Font Settings - Font size / Relative scaling / Font color
 - Settings: Add Settings - Figures - Word Clouds - Mask Settings / Advanced Settings
 - Settings: Add Settings - Measures - Dispersion - Gries's DP
+- Utils: Add Pyphen's Thai syllable tokenizer
 - Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measures of Dispersion / Measure of Adjusted Frequency - Average Logarithmic Distance / Average Reduced Frequency / Average Waiting Time
 
 ### ✨ Improvements

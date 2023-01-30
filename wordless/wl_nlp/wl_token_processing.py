@@ -222,7 +222,7 @@ def wl_process_tokens_profiler(main, text, token_settings):
     ]
 
     # Syllable tokenization
-    text.syls_tokens = wl_syl_tokenization.wl_syl_tokenize_tokens_no_puncs(
+    text.syls_tokens = wl_syl_tokenization.wl_syl_tokenize_tokens_no_punc(
         main,
         tokens = list(wl_misc.flatten_list(text.tokens_multilevel)),
         lang = text.lang

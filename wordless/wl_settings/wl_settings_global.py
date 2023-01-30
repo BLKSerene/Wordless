@@ -555,6 +555,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'Pyphen - Spanish Syllable Tokenizer'): 'pyphen_spa',
                 _tr('init_settings_global', 'Pyphen - Swedish Syllable Tokenizer'): 'pyphen_swe',
                 _tr('init_settings_global', 'Pyphen - Telugu Syllable Tokenizer'): 'pyphen_tel',
+                _tr('init_settings_global', 'Pyphen - Thai Syllable Tokenizer'): 'pyphen_tha',
                 _tr('init_settings_global', 'Pyphen - Ukrainian Syllable Tokenizer'): 'pyphen_ukr',
                 _tr('init_settings_global', 'Pyphen - Zulu Syllable Tokenizer'): 'pyphen_zul',
 
@@ -1416,7 +1417,12 @@ def init_settings_global():
             'spa': ['pyphen_spa'],
             'swe': ['pyphen_swe'],
             'tel': ['pyphen_tel'],
-            'tha': ['pythainlp_tha'],
+
+            'tha': [
+                'pyphen_tha',
+                'pythainlp_tha'
+            ],
+
             'ukr': ['pyphen_ukr'],
             'zul': ['pyphen_zul']
         },
