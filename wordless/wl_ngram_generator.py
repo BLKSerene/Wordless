@@ -20,7 +20,6 @@ import collections
 import copy
 import traceback
 
-import nltk
 import numpy
 from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
@@ -30,7 +29,7 @@ from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measures_adjusted_freq, wl_measures_dispersion
-from wordless.wl_nlp import wl_matching, wl_texts, wl_token_processing
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
@@ -73,16 +72,11 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
                 # Generate all possible n-grams/skip-grams with the index of their first token
                 if allow_skipped_tokens:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        if ngram_size == 1:
-                            ngrams = nltk.ngrams(tokens, 1)
-                        else:
-                            ngrams = nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens_num)
-
+                        ngrams = wl_nlp_utils.skipgrams(tokens, ngram_size, allow_skipped_tokens_num)
                         ngrams_is.extend(self.get_ngrams_is(ngrams, tokens))
 
                 else:
-                    ngrams = nltk.everygrams(tokens, ngram_size_min, ngram_size_max)
-
+                    ngrams = wl_nlp_utils.everygrams(tokens, ngram_size_min, ngram_size_max)
                     ngrams_is.extend(self.get_ngrams_is(ngrams, tokens))
 
                 # Remove n-grams with at least 1 empty token
@@ -187,13 +181,10 @@ class Wl_Worker_Ngram_Generator(wl_threading.Wl_Worker):
 
                 if allow_skipped_tokens:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        if ngram_size == 1:
-                            ngrams_lens[ngram_size] = list(nltk.ngrams(tokens, ngram_size))
-                        else:
-                            ngrams_lens[ngram_size] = list(nltk.skipgrams(tokens, ngram_size, allow_skipped_tokens_num))
+                        ngrams_lens[ngram_size] = list(wl_nlp_utils.skipgrams(tokens, ngram_size, allow_skipped_tokens_num))
                 else:
                     for ngram_size in range(ngram_size_min, ngram_size_max + 1):
-                        ngrams_lens[ngram_size] = list(nltk.ngrams(tokens, ngram_size))
+                        ngrams_lens[ngram_size] = list(wl_nlp_utils.ngrams(tokens, ngram_size))
 
                 # Dispersion
                 if measure_dispersion is None:

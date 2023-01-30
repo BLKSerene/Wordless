@@ -23,7 +23,6 @@ import operator
 import re
 import traceback
 
-import nltk
 import numpy
 from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
@@ -33,7 +32,7 @@ from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measures_statistical_significance
-from wordless.wl_nlp import wl_matching, wl_texts, wl_token_processing
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
@@ -120,7 +119,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 for ngram_size in range(len_search_term_min, len_search_term_max + 1):
                     collocations_freqs_file_all[ngram_size] = collections.Counter()
 
-                    for i, ngram in enumerate(nltk.ngrams(tokens, ngram_size)):
+                    for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, ngram_size)):
                         # Limit Searching
                         if settings_limit_searching != _tr('Wl_Worker_Collocation_Extractor', 'None'):
                             if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'Within Sentence Segments'):
@@ -245,7 +244,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                     len_search_term = len(search_term)
 
                     for (node, collocate), freqs in collocations_freqs_file.items():
-                        for ngram in nltk.ngrams(node, len_search_term):
+                        for ngram in wl_nlp_utils.ngrams(node, len_search_term):
                             if ngram == search_term:
                                 collocations_freqs_file_filtered[(node, collocate)] = freqs
 

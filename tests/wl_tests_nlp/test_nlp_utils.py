@@ -129,6 +129,32 @@ def test_srp_latn_to_cyrl():
 
     assert ' '.join(wl_nlp_utils.to_srp_cyrl(tokens_srp_latn)) == wl_test_lang_examples.SENTENCE_SRP_CYRL
 
+def test_ngrams():
+    assert list(wl_nlp_utils.ngrams(range(5), 1)) == [(0,), (1,), (2,), (3,), (4,)]
+    assert list(wl_nlp_utils.ngrams(range(5), 2)) == [(0, 1), (1, 2), (2, 3), (3, 4)]
+    assert list(wl_nlp_utils.ngrams(range(5), 3)) == [(0, 1, 2), (1, 2, 3), (2, 3, 4)]
+    assert list(wl_nlp_utils.ngrams(range(5), 4)) == [(0, 1, 2, 3), (1, 2, 3, 4)]
+    assert list(wl_nlp_utils.ngrams(range(5), 5)) == [(0, 1, 2, 3, 4)]
+    assert not list(wl_nlp_utils.ngrams(range(5), 6))
+
+def test_everygrams():
+    assert list(wl_nlp_utils.everygrams(range(5), 1, 1)) == list(wl_nlp_utils.ngrams(range(5), 1))
+    assert list(wl_nlp_utils.everygrams(range(5), 1, 2)) == [(0,), (0, 1), (1,), (1, 2), (2,), (2, 3), (3,), (3, 4), (4,)]
+    assert list(wl_nlp_utils.everygrams(range(5), 2, 2)) == list(wl_nlp_utils.ngrams(range(5), 2))
+    assert list(wl_nlp_utils.everygrams(range(5), 2, 3)) == [(0, 1), (0, 1, 2), (1, 2), (1, 2, 3), (2, 3), (2, 3, 4), (3, 4)]
+    assert list(wl_nlp_utils.everygrams(range(5), 2, 4)) == [(0, 1), (0, 1, 2), (0, 1, 2, 3), (1, 2), (1, 2, 3), (1, 2, 3, 4), (2, 3), (2, 3, 4), (3, 4)]
+    assert list(wl_nlp_utils.everygrams(range(5), 2, 5)) == [(0, 1), (0, 1, 2), (0, 1, 2, 3), (0, 1, 2, 3, 4), (1, 2), (1, 2, 3), (1, 2, 3, 4), (2, 3), (2, 3, 4), (3, 4)]
+    assert list(wl_nlp_utils.everygrams(range(5), 6, 6)) == list(wl_nlp_utils.ngrams(range(5), 6))
+
+def test_skipgrams():
+    assert list(wl_nlp_utils.skipgrams(range(5), 1, 0)) == list(wl_nlp_utils.ngrams(range(5), 1))
+    assert list(wl_nlp_utils.skipgrams(range(5), 1, 9)) == list(wl_nlp_utils.ngrams(range(5), 1))
+    assert list(wl_nlp_utils.skipgrams(range(5), 2, 0)) == list(wl_nlp_utils.ngrams(range(5), 2))
+    assert list(wl_nlp_utils.skipgrams(range(5), 2, 1)) == [(0, 1), (0, 2), (1, 2), (1, 3), (2, 3), (2, 4), (3, 4)]
+    assert list(wl_nlp_utils.skipgrams(range(5), 3, 1)) == [(0, 1, 2), (0, 1, 3), (0, 2, 3), (1, 2, 3), (1, 2, 4), (1, 3, 4), (2, 3, 4)]
+    assert list(wl_nlp_utils.skipgrams(range(5), 3, 2)) == [(0, 1, 2), (0, 1, 3), (0, 1, 4), (0, 2, 3), (0, 2, 4), (0, 3, 4), (1, 2, 3), (1, 2, 4), (1, 3, 4), (2, 3, 4)]
+    assert list(wl_nlp_utils.skipgrams(range(5), 6, 9)) == list(wl_nlp_utils.ngrams(range(5), 6))
+
 def test_escape_text():
     assert wl_nlp_utils.escape_text('<test test="test">') == '&lt;test test=&quot;test&quot;&gt;'
 
@@ -154,6 +180,10 @@ if __name__ == '__main__':
 
     test_srp_cyrl_to_latn()
     test_srp_latn_to_cyrl()
+
+    test_ngrams()
+    test_everygrams()
+    test_skipgrams()
 
     test_escape_text()
     test_escape_tokens()

@@ -20,7 +20,6 @@ import bisect
 import copy
 import traceback
 
-import nltk
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QPushButton, QGroupBox
@@ -95,7 +94,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                         len_search_term_max = 0
 
                     for len_search_term in range(len_search_term_min, len_search_term_max + 1):
-                        for j, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
+                        for j, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
                             if (
                                 ngram in search_terms
                                 and wl_matching.check_context(

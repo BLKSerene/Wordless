@@ -18,14 +18,13 @@
 
 import copy
 
-import nltk
 from PyQt5.QtCore import QCoreApplication, QSize, Qt
 from PyQt5.QtGui import QBrush, QColor
 from PyQt5.QtWidgets import QPushButton
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
-from wordless.wl_nlp import wl_matching
+from wordless.wl_nlp import wl_matching, wl_nlp_utils
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_buttons, wl_layouts, wl_widgets
 
@@ -66,7 +65,7 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
                 len_search_term = len(search_term)
 
                 for (row, col), text in results.items():
-                    for ngram in nltk.ngrams(text, len_search_term):
+                    for ngram in wl_nlp_utils.ngrams(text, len_search_term):
                         if ngram == search_term:
                             self.dialog.items_found.append([table, row, col])
 
