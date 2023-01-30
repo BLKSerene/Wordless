@@ -95,7 +95,7 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
     return syls_tokens
 
 # Excluding punctuation marks
-def wl_syl_tokenize_tokens_no_puncs(main, tokens, lang, syl_tokenizer = 'default'):
+def wl_syl_tokenize_tokens_no_punc(main, tokens, lang, syl_tokenizer = 'default'):
     syls_tokens = wl_syl_tokenize(main, tokens, lang, syl_tokenizer = syl_tokenizer)
 
     for i, syls in reversed(list(enumerate(syls_tokens))):
