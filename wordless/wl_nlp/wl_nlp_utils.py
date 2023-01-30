@@ -16,8 +16,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import collections
 import html
 import importlib
+import itertools
 import re
 
 import botok
@@ -462,6 +464,55 @@ def to_srp_cyrl(tokens):
         tokens_cyrl.append(token_cyrl)
 
     return tokens_cyrl
+
+# N-grams
+# Reference: https://more-itertools.readthedocs.io/en/stable/_modules/more_itertools/recipes.html#sliding_window
+def ngrams(tokens, ngram_size):
+    if ngram_size == 1:
+        for token in tokens:
+            yield (token,)
+    else:
+        it = iter(tokens)
+        window = collections.deque(itertools.islice(it, ngram_size), maxlen = ngram_size)
+
+        if len(window) == ngram_size:
+            yield tuple(window)
+
+        for x in it:
+            window.append(x)
+
+            yield tuple(window)
+
+# Reference: https://www.nltk.org/_modules/nltk/util.html#everygrams
+def everygrams(tokens, ngram_size_min, ngram_size_max):
+    if ngram_size_min == ngram_size_max:
+        yield from ngrams(tokens, ngram_size_min)
+    else:
+        # Pad token list to the right
+        SENTINEL = object()
+        tokens = itertools.chain(tokens, (SENTINEL,) * (ngram_size_max - 1))
+
+        for ngram in ngrams(tokens, ngram_size_max):
+            for i in range(ngram_size_min, ngram_size_max + 1):
+                if ngram[i - 1] is not SENTINEL:
+                    yield ngram[:i]
+
+# Reference: https://www.nltk.org/_modules/nltk/util.html#skipgrams
+def skipgrams(tokens, ngram_size, num_skipped_tokens):
+    if ngram_size == 1:
+        yield from ngrams(tokens, ngram_size = 1)
+    else:
+        # Pad token list to the right
+        SENTINEL = object()
+        tokens = itertools.chain(tokens, (SENTINEL,) * (ngram_size - 1))
+
+        for ngram in ngrams(tokens, ngram_size + num_skipped_tokens):
+            head = ngram[:1]
+            tail = ngram[1:]
+
+            for skip_tail in itertools.combinations(tail, ngram_size - 1):
+                if skip_tail[-1] is not SENTINEL:
+                    yield head + skip_tail
 
 # HTML
 def escape_text(text):

@@ -34,6 +34,7 @@
 ### ✨ Improvements
 - File Area: Disallow empty file names
 - File Area: Remove underscores in tokenized Vietnamese files
+- Utils: Speed up n-gram/skip-gram generation
 
 ### 📌 Bugfixes
 - Settings: Fix global settings - encodings
