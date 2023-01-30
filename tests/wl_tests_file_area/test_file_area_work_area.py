@@ -65,12 +65,9 @@ def test_file_area():
 
         main.settings_custom['file_area']['files_open_ref'].extend(new_files)
 
+    wl_test_init.clean_import_caches()
     # Reset custom settings
     main.settings_custom = copy.deepcopy(main.settings_default)
-
-    # Clean cached files
-    for file in glob.glob('imports/*.*'):
-        os.remove(file)
 
     for file_path in glob.glob('tests/files/wl_file_area/work_area/*.txt'):
         time_start = time.time()
