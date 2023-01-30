@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import copy
+import glob
 import os
 import pickle
 import platform
@@ -101,3 +102,8 @@ elif platform.system() == 'Linux':
 
         def height(self):
             return 768
+
+# Clean cached files
+def clean_import_caches():
+    for file in glob.glob('imports/*.*'):
+        os.remove(file)

@@ -47,9 +47,7 @@ def test_file_area():
 
         main.settings_custom['file_area']['files_open'].extend(new_files)
 
-    # Clean cached files
-    for file in glob.glob('imports/*.*'):
-        os.remove(file)
+    wl_test_init.clean_import_caches()
 
     for file_path in random.sample(glob.glob('tests/files/wl_file_area/*.txt'), 2):
         time_start = time.time()

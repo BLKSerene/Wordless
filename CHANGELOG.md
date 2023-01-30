@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2022
+## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2023
 ### 🎉 New Features
 - Settings: Add global settings - encodings - Thai (TIS-620)
 - Settings: Add Settings - Figures - Network Graphs - Edge Label Settings - Label position / Rotate labels to lie parallel to edges / Label font weight / Label font color / Label opacity
@@ -33,6 +33,7 @@
 
 ### ✨ Improvements
 - File Area: Disallow empty file names
+- File Area: Remove underscores in tokenized Vietnamese files
 
 ### 📌 Bugfixes
 - Settings: Fix global settings - encodings
@@ -306,7 +307,6 @@
 - Dependencies: Upgrade PyInstaller to 4.4
 - Dependencies: Upgrade PyQt to 5.15.4
 - Dependencies: Upgrade PyThaiNLP to 2.3.1
-- Dependencies: Upgrade Python 3.8.10
 - Dependencies: Upgrade python-docx to 0.8.11
 - Dependencies: Upgrade Requests to 2.26.0
 - Dependencies: Upgrade Sacremoses to 0.0.45
@@ -344,7 +344,6 @@
 - Dependencies: Upgrade chardet to 4.0.0
 - Dependencies: Upgrade NumPy to 1.19.5
 - Dependencies: Upgrade PyThaiNLP to 2.2.6
-- Dependencies: Upgrade Python to 3.8.7
 - Dependencies: Upgrade Requests to 2.25.1
 - Dependencies: Upgrade SciPy to 1.6.0
 - Dependencies: Upgrade spaCy to 2.3.5
@@ -404,7 +403,6 @@
 - Dependencies: Upgrade pymorphy2 to 0.9.1
 - Dependencies: Upgrade PyQt to 5.15.2
 - Dependencies: Upgrade PyThaiNLP to 2.2.5
-- Dependencies: Upgrade Python to 3.8.6
 - Dependencies: Upgrade razdel to 0.5.0
 - Dependencies: Upgrade Requests to 2.25.0
 - Dependencies: Upgrade Sacremoses to 0.0.43
@@ -503,7 +501,6 @@
 - Dependencies: Upgrade PyInstaller to 4.0.dev0+46286a1f4
 - Dependencies: Upgrade PyQt to 5.13.0
 - Dependencies: Upgrade PyThaiNLP to 2.0.7
-- Dependencies: Upgrade Python to 3.7.4
 - Dependencies: Upgrade Requests to 2.22.0
 - Dependencies: Upgrade Sacremoses to 0.0.33
 - Dependencies: Upgrade SciPy to 1.3.1
