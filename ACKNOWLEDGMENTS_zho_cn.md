@@ -29,7 +29,7 @@
 5 |[Lingua](https://github.com/pemistahl/lingua-py)                  |1.3.1  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 6 |[Matplotlib](https://matplotlib.org/)                             |3.6.2  |Matplotlib 开发团队|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 7 |[NetworkX](https://networkx.org/)                                 |3.0    |NetworkX 开发人员, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
-8 |[NLTK](http://www.nltk.org/)                                      |3.7    |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
+8 |[NLTK](https://www.nltk.org/)                                     |3.8.1  |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 9 |[NumPy](https://www.numpy.org/)                                   |1.24.1 |NumPy 开发人员|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 10|[opencc-python](https://github.com/yichen0831/opencc-python)      |0.1.6  |郭家宝, Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
 11|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)           |3.0.10 |Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.0/LICENCE.rst)

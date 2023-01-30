@@ -52,15 +52,12 @@ def test_syl_tokenize(lang, syl_tokenizer):
         lang = lang,
         syl_tokenizer = syl_tokenizer
     )
-
-    # Sonority sequencing syllable tokenizer performs extremely slow on numbers
-    if syl_tokenizer != 'nltk_sonority_sequencing':
-        syls_long_text_tokenized = wl_syl_tokenization.wl_syl_tokenize(
-            main,
-            inputs = [str(i) for i in range(101) for j in range(50)],
-            lang = lang,
-            syl_tokenizer = syl_tokenizer
-        )
+    syls_long_text_tokenized = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(50)],
+        lang = lang,
+        syl_tokenizer = syl_tokenizer
+    )
 
     print(f'{lang} / {syl_tokenizer}:')
     print(f'{syls}\n')
@@ -104,7 +101,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
         if syl_tokenizer == 'nltk_legality':
             assert syls == [['En', 'glish'], ['is'], ['a'], ['West'], ['Ger', 'ma', 'nic'], ['lan', 'gu', 'a', 'ge'], ['of'], ['the'], ['In', 'do'], ['-'], ['E', 'u', 'rop', 'ean'], ['lan', 'gu', 'a', 'ge'], ['fa', 'mi', 'ly'], [','], ['o', 'ri', 'gi', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'ha', 'bi', 'tants'], ['of'], ['e', 'ar', 'ly'], ['me', 'di', 'e', 'val'], ['En', 'gland.[3][4][5'], [']']]
         elif syl_tokenizer == 'nltk_sonority_sequencing':
-            assert syls == [['English'], ['is'], ['a'], ['West'], ['Ger', 'ma', 'nic'], ['lan', 'gua', 'ge'], ['of'], ['the'], ['Indo'], ['-'], ['Eu', 'ro', 'pean'], ['lan', 'gua', 'ge'], ['fa', 'mi', 'ly'], [','], ['o', 'ri', 'gi', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'ha', 'bi', 'tants'], ['of'], ['ear', 'ly'], ['me', 'die', 'val'], ['England', '.', '[', '3', ']', '[', '4', ']', '[', '5'], [']']]
+            assert syls == [['English'], ['is'], ['a'], ['West'], ['Ger', 'ma', 'nic'], ['lan', 'gua', 'ge'], ['of'], ['the'], ['Indo'], ['-'], ['Eu', 'ro', 'pean'], ['lan', 'gua', 'ge'], ['fa', 'mi', 'ly'], [','], ['o', 'ri', 'gi', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'ha', 'bi', 'tants'], ['of'], ['ear', 'ly'], ['me', 'die', 'val'], ['England.[3][4][5'], [']']]
         elif syl_tokenizer == 'pyphen_eng_gb':
             assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['of'], ['the'], ['Indo'], ['-'], ['European'], ['lan', 'guage'], ['fam', 'ily'], [','], ['ori', 'gin', 'ally'], ['spoken'], ['by'], ['the'], ['in', 'hab', 'it', 'ants'], ['of'], ['early'], ['me', 'di', 'ev', 'al'], ['Eng', 'land.[3][4][5'], [']']]
         elif syl_tokenizer == 'pyphen_eng_us':
