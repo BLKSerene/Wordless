@@ -62,7 +62,7 @@ def check_encodings_detected(test_file_dir, encodings, text):
         assert encoding_detected_text
 
 def test_detection_encoding():
-    test_file_dir = 'tests/wl_tests_utils/files_encoding_detection'
+    test_file_dir = 'tests/wl_tests_utils/_files_encoding_detection'
 
     os.makedirs(test_file_dir, exist_ok = True)
 
@@ -288,7 +288,7 @@ def test_detection_encoding():
 
 # Language detection
 def test_detection_lang():
-    test_file_dir = 'tests/wl_tests_utils/files_encoding_detection'
+    test_file_dir = 'tests/wl_tests_utils/_files_encoding_detection'
 
     os.makedirs(test_file_dir, exist_ok = True)
 
@@ -304,13 +304,13 @@ def test_detection_lang():
             'heb', 'hin', 'hun',
             'isl', 'ind', 'gle', 'ita',
             'jpn',
-            # 'kaz', 'kor'
+            'kor', # 'kaz',
             'lat', 'lav', 'lit',
-            'mkd', 'mar', 'mon', # 'msa' == 'ind'
-            'nno', # 'nob' == 'nno'
+            'mkd', 'mar', 'mon', # 'msa',
+            'nno', # 'nob',
             'fas', 'pol', 'por_pt', 'pan_guru',
             'ron', 'rus',
-            'srp_cyrl', 'slk', 'slv', 'spa', 'swa', 'swe', # 'som', 'sot'
+            'srp_cyrl', 'slk', 'slv', 'som', 'sot', 'spa', 'swa', 'swe',
             'tgl', 'tam', 'tel', 'tha', 'tsn', 'tur',
             'ukr', 'urd',
             'vie',
