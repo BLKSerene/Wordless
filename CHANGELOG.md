@@ -49,6 +49,7 @@
 - Dependencies: Upgrade NLTK to 3.8.1
 - Dependencies: Upgrade NumPy to 1.24.1
 - Dependencies: Upgrade Requests to 2.28.2
+- Dependencies: Upgrade simplemma to 0.9.1
 
 ## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - 11/21/2022
 ### 🎉 New Features
