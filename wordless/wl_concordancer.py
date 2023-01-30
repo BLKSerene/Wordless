@@ -22,7 +22,6 @@ import traceback
 
 import matplotlib
 import matplotlib.pyplot
-import nltk
 import numpy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
@@ -95,7 +94,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 len_tokens = len(tokens)
 
                 for len_search_term in range(len_search_term_min, len_search_term_max + 1):
-                    for i, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
+                    for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
                         if (
                             ngram in search_terms
                             and wl_matching.check_context(
@@ -331,7 +330,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                             ))
                             len_tokens = len(tokens)
 
-                            for k, ngram in enumerate(nltk.ngrams(tokens, len_search_term)):
+                            for k, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
                                 if ngram == search_term:
                                     points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
                                     # Total
@@ -351,7 +350,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                                 if k < j
                             )) + j + 2
 
-                            for k, ngram in enumerate(nltk.ngrams(text.get_tokens_flat(), len_search_term)):
+                            for k, ngram in enumerate(wl_nlp_utils.ngrams(text.get_tokens_flat(), len_search_term)):
                                 if ngram == search_term:
                                     points.append([x_start + k, i])
 
