@@ -30,7 +30,7 @@ from docx.oxml.text.paragraph import CT_P
 from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 import openpyxl
-import PyPDF2
+import pypdf
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QAbstractItemDelegate, QCheckBox, QFileDialog, QLineEdit, QPushButton
@@ -166,7 +166,7 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
                         new_file['text'] = '\n'.join(lines)
                     # PDF files
                     elif file_ext == '.pdf':
-                        reader = PyPDF2.PdfReader(file_path)
+                        reader = pypdf.PdfReader(file_path)
                         new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
 
                     if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']:

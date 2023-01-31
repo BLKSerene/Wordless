@@ -52,7 +52,7 @@ networkx
 numpy
 opencc-python-reimplemented
 openpyxl
-pypdf2
+pypdf
 pyqt5
 pytest
 python-docx

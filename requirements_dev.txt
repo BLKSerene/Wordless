@@ -51,7 +51,7 @@ networkx
 numpy
 openpyxl
 pyinstaller
-pypdf2
+pypdf
 pyqt5
 python-docx
 requests
