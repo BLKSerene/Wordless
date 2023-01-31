@@ -166,10 +166,6 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
 
         settings['confirm_on_exit'] = self.checkbox_confirm_on_exit.isChecked()
 
-class Wl_Main_Blank:
-    def height(self):
-        return 0
-
 class Wl_Main(QMainWindow):
     def __init__(self, loading_window):
         super().__init__()
@@ -1291,17 +1287,20 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         self.setFixedWidth(self.width() + 10)
 
 if __name__ == '__main__':
-    wl_app = QApplication(sys.argv)
-    is_windows, is_macos, is_linux = wl_misc.check_os()
-
     # UI scaling
     if os.path.exists('wl_settings.pickle'):
         with open('wl_settings.pickle', 'rb') as f:
             settings_custom = pickle.load(f)
-    else:
-        settings_custom = wl_settings_default.init_settings_default(Wl_Main_Blank())
 
-    os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', settings_custom['general']['ui_settings']['interface_scaling'])
+        ui_scaling = settings_custom['general']['ui_settings']['interface_scaling']
+    else:
+        ui_scaling = wl_settings_default.DEFAULT_UI_SCALING
+
+    # Environment variables for QT should be set before QApplication is created
+    os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', ui_scaling)
+
+    wl_app = QApplication(sys.argv)
+    is_windows, is_macos, is_linux = wl_misc.check_os()
 
     # Translations
     if os.path.exists('wl_settings_display_lang.pickle'):

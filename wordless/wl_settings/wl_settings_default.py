@@ -36,6 +36,8 @@ from wordless.wl_utils import wl_misc, wl_paths
 
 _tr = QCoreApplication.translate
 
+DEFAULT_UI_SCALING = '100%'
+
 def init_settings_default(main):
     is_windows, is_macos, is_linux = wl_misc.check_os()
     desktop_widget = QDesktopWidget()
@@ -1041,7 +1043,7 @@ def init_settings_default(main):
         # Settings - General
         'general': {
             'ui_settings': {
-                'interface_scaling': '100%',
+                'interface_scaling': DEFAULT_UI_SCALING,
                 'font_family': '',
                 'font_size': 9
             },
