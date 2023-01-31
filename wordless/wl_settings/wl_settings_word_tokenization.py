@@ -47,7 +47,7 @@ class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
         for para in tokens_multilevel:
             tokens = wl_misc.flatten_list(para)
 
-            # Vietnamese
+            # Replace spaces with underscores in Vietnamese texts
             if preview_lang == 'vie':
                 tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
 
