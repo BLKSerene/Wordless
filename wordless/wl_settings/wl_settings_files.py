@@ -354,7 +354,7 @@ class Wl_Table_Tags_Body(Wl_Table_Tags):
         self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
-                self.tr('Part of Speech'),
+                self.tr('Part of speech'),
                 self.tr('Others')
             ]
         ))

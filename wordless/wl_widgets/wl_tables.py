@@ -56,7 +56,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
             len_rows = len(self.rows_to_exp)
 
             # CSV files
-            if self.file_type == _tr('Wl_Worker_Exp_Table', 'CSV File (*.csv)'):
+            if '*.csv' in self.file_type:
                 encoding = self.main.settings_custom['general']['exp']['tables']['default_encoding']
 
                 # Concordancer
@@ -155,7 +155,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
             # Excel workbooks
-            elif self.file_type == _tr('Wl_Worker_Exp_Table', 'Excel Workbook (*.xlsx)'):
+            elif '*.xlsx' in self.file_type:
                 workbook = openpyxl.Workbook()
                 worksheet = workbook.active
 
@@ -359,7 +359,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Saving file...'))
 
                 workbook.save(self.file_path)
-            elif self.file_type == _tr('Wl_Worker_Exp_Table', 'Word Document (*.docx)'):
+            elif '*.docx' in self.file_type:
                 doc = docx.Document()
 
                 # Concordancer
