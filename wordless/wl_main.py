@@ -708,7 +708,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = _tr('Wl_Dialog_Citing', 'Citing'),
-            width = 450,
+            width = 500,
             no_buttons = True
         )
 
@@ -721,32 +721,29 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
             self
         )
 
-        self.label_citation_sys = QLabel(self.tr('Citation system:'), self)
-        self.combo_box_citation_sys = wl_boxes.Wl_Combo_Box(self)
+        self.label_select_citation_sys = QLabel(self.tr('Select citation system:'), self)
+        self.combo_box_select_citation_sys = wl_boxes.Wl_Combo_Box(self)
         self.text_edit_citing = QTextEdit(self)
 
         self.button_copy = QPushButton(self.tr('Copy'), self)
         self.button_close = QPushButton(self.tr('Close'), self)
 
-        self.combo_box_citation_sys.addItems([
+        self.combo_box_select_citation_sys.addItems([
             self.tr('APA (7th edition)'),
             self.tr('MLA (8th edition)')
         ])
 
-        self.button_copy.setFixedWidth(100)
-        self.button_close.setFixedWidth(100)
-
         self.text_edit_citing.setFixedHeight(100)
         self.text_edit_citing.setReadOnly(True)
 
-        self.combo_box_citation_sys.currentTextChanged.connect(self.citation_sys_changed)
+        self.combo_box_select_citation_sys.currentTextChanged.connect(self.select_citation_sys_changed)
 
         self.button_copy.clicked.connect(self.copy)
         self.button_close.clicked.connect(self.accept)
 
         layout_citation_sys = wl_layouts.Wl_Layout()
-        layout_citation_sys.addWidget(self.label_citation_sys, 0, 0)
-        layout_citation_sys.addWidget(self.combo_box_citation_sys, 0, 1)
+        layout_citation_sys.addWidget(self.label_select_citation_sys, 0, 0)
+        layout_citation_sys.addWidget(self.combo_box_select_citation_sys, 0, 1)
 
         layout_citation_sys.setColumnStretch(2, 1)
 
@@ -754,8 +751,13 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_info.layout().addLayout(layout_citation_sys, 1, 0, 1, 2)
         self.wrapper_info.layout().addWidget(self.text_edit_citing, 2, 0, 1, 2)
 
-        self.wrapper_buttons.layout().addWidget(self.button_copy, 0, 0)
-        self.wrapper_buttons.layout().addWidget(self.button_close, 0, 1)
+        self.wrapper_buttons.layout().addWidget(self.button_copy, 0, 1, Qt.AlignLeft)
+        self.wrapper_buttons.layout().addWidget(self.button_close, 0, 2, Qt.AlignRight)
+
+        self.wrapper_buttons.layout().setColumnStretch(0, 1)
+        self.wrapper_buttons.layout().setColumnStretch(1, 1)
+        self.wrapper_buttons.layout().setColumnStretch(2, 1)
+        self.wrapper_buttons.layout().setColumnStretch(3, 1)
 
         self.load_settings()
 
@@ -764,18 +766,18 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['menu']['help']['citing'])
 
-        self.combo_box_citation_sys.setCurrentText(settings['citation_sys'])
+        self.combo_box_select_citation_sys.setCurrentText(settings['select_citation_sys'])
 
-        self.citation_sys_changed()
+        self.select_citation_sys_changed()
 
-    def citation_sys_changed(self):
+    def select_citation_sys_changed(self):
         settings = self.main.settings_custom['menu']['help']['citing']
 
-        settings['citation_sys'] = self.combo_box_citation_sys.currentText()
+        settings['select_citation_sys'] = self.combo_box_select_citation_sys.currentText()
 
-        if settings['citation_sys'].startswith('APA'):
+        if settings['select_citation_sys'].startswith('APA'):
             self.text_edit_citing.setHtml(f'Ye, L. (2022). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless')
-        elif settings['citation_sys'].startswith('MLA'):
+        elif settings['select_citation_sys'].startswith('MLA'):
             self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
 
     def copy(self):
