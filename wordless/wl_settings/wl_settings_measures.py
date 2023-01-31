@@ -535,7 +535,7 @@ class Wl_Settings_Measures_Effect_Size(wl_settings.Wl_Settings_Node):
         # Kilgarriff's Ratio
         self.group_box_kilgarriffs_ratio = QGroupBox(self.tr("Kilgarriff's Ratio"), self)
 
-        self.label_kilgarriffs_ratio_smoothing_param = QLabel(self.tr('Smoothing Parameter:'), self)
+        self.label_kilgarriffs_ratio_smoothing_param = QLabel(self.tr('Smoothing parameter:'), self)
         self.spin_box_kilgarriffs_ratio_smoothing_param = wl_boxes.Wl_Double_Spin_Box(self)
 
         self.spin_box_kilgarriffs_ratio_smoothing_param.setRange(0.01, 10000)
