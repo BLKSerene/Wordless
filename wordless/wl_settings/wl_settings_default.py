@@ -83,7 +83,7 @@ def init_settings_default(main):
 
             'help': {
                 'citing': {
-                    'citation_sys': _tr('init_settings_default', 'APA (7th edition)')
+                    'select_citation_sys': _tr('init_settings_default', 'APA (7th edition)')
                 },
 
                 'donating': {
