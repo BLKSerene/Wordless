@@ -39,6 +39,7 @@
 
 ### 📌 Bugfixes
 - Settings: Fix global settings - encodings
+- Settings: Fix Settings - General - User Interface Settings - Interface Scaling
 - Settings: Fix Settings - Part-of-speech Tagging - Tagsets
 
 ### ❌ Removals
