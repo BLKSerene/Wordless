@@ -20,6 +20,7 @@
 
 As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
 
+<!-- SPDX License List: https://spdx.org/licenses/ -->
 &nbsp;|Name|Version|Authors|License
 -----:|----|:-----:|-------|:-----:
 1 |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)  |4.11.1 |Leonard Richardson|[MIT](https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE)
@@ -49,5 +50,5 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 25|[stopword](https://github.com/fergiemcdowall/stopword)            |2.0.5  |Fergus McDowall|[MIT](https://github.com/fergiemcdowall/stopword/blob/master/LICENSE)
 26|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)      |0.6.6  |Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 27|[TextBlob](https://github.com/sloria/TextBlob)                    |0.17.1 |Steven Loria|[MIT](https://github.com/sloria/TextBlob/blob/dev/LICENSE)
-28|[Underthesea](https://github.com/undertheseanlp/underthesea)      |1.3.5  |Vu Anh|[GPL-3.0-only](https://github.com/undertheseanlp/underthesea/blob/master/LICENSE)
+28|[Underthesea](https://undertheseanlp.com/)                        |6.0.3  |Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
 29|[WordCloud](https://github.com/amueller/word_cloud)               |1.8.2.2|Andreas Christian Mueller|[MIT](https://github.com/amueller/word_cloud/blob/master/LICENSE)

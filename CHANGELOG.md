@@ -55,6 +55,7 @@
 - Dependencies: Upgrade PyQt to 5.15.8
 - Dependencies: Upgrade Requests to 2.28.2
 - Dependencies: Upgrade simplemma to 0.9.1
+- Dependencies: Upgrade Underthesea to 6.0.3
 
 ## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - 11/21/2022
 ### 🎉 New Features
