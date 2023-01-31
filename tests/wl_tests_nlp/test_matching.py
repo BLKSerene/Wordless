@@ -69,10 +69,6 @@ def test_get_re_tags():
     re_tags_body = wl_matching.get_re_tags(main, tag_type = 'body')
     re_tags_xml = wl_matching.get_re_tags(main, tag_type = 'xml')
 
-    print(re_tags_header)
-    print(re_tags_body)
-    print(re_tags_xml)
-
     assert re_tags_header == r'</?teiHeader>|</?\ tei\ Header\ >|</?>|</?\ >'
     assert re_tags_body == r'_\S*(?=\s|$)|/\S*(?=\s|$)|_(?=\s|$)|</?.*?>|</?\ \*\ >|</?\ T\ AG\ >|</?>|</?\ >'
     assert re_tags_xml == r'</?p>|</?s>|</?w>|</?c>|</?\ p\ p\ >|</?>|</?\ >'
@@ -107,10 +103,6 @@ def test_get_re_tags_with_tokens():
     re_tags_header = wl_matching.get_re_tags_with_tokens(main, tag_type = 'header')
     re_tags_body = wl_matching.get_re_tags_with_tokens(main, tag_type = 'body')
     re_tags_xml = wl_matching.get_re_tags_with_tokens(main, tag_type = 'xml')
-
-    print(re_tags_header)
-    print(re_tags_body)
-    print(re_tags_xml)
 
     assert re_tags_header == r'<teiHeader>.*</teiHeader>|<\ tei\ Header\ >.*</\ tei\ Header\ >|<>.*</>|<\ >.*</\ >'
     assert re_tags_body == r'\S*_\S*(?=\s|$)|\S*/\S*(?=\s|$)|\S*_(?=\s|$)|<.*?>.*?</.*?>|<\ \*\ >.*</\ \*\ >|<\ T\ AG\ >.*</\ T\ AG\ >|<>.*</>|<\ >.*</\ >'
