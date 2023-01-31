@@ -24,7 +24,7 @@ environment:
     - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
       PYTHON: "C:/Python38-x64"
     # MacOS
-    - APPVEYOR_BUILD_WORKER_IMAGE: "macos-mojave"
+    - APPVEYOR_BUILD_WORKER_IMAGE: "macos-catalina"
       PYTHON: "~/venv3.8"
     # Linux
     - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1804"
@@ -80,7 +80,7 @@ for:
   -
     matrix:
       only: 
-        - APPVEYOR_BUILD_WORKER_IMAGE: "macos-mojave"
+        - APPVEYOR_BUILD_WORKER_IMAGE: "macos-catalina"
 
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
