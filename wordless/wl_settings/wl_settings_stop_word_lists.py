@@ -80,7 +80,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.label_stop_word_list_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_stop_word_list_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.combo_box_stop_word_list_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
-        self.label_stop_word_list_preview_count = QLabel('', self)
+        self.label_stop_word_list_preview_num = QLabel('', self)
 
         self.list_stop_word_list_preview_results = wl_lists.Wl_List_Stop_Words(self)
 
@@ -90,7 +90,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         layout_preview_settings = wl_layouts.Wl_Layout()
         layout_preview_settings.addWidget(self.label_stop_word_list_preview_lang, 0, 0)
         layout_preview_settings.addWidget(self.combo_box_stop_word_list_preview_lang, 0, 1)
-        layout_preview_settings.addWidget(self.label_stop_word_list_preview_count, 0, 3)
+        layout_preview_settings.addWidget(self.label_stop_word_list_preview_num, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
@@ -136,12 +136,12 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         stop_words = wl_stop_word_lists.wl_get_stop_word_list(self.main, lang, stop_word_list = list_stop_words)
 
         self.list_stop_word_list_preview_results.load_items(sorted(stop_words))
-        self.label_stop_word_list_preview_count.setText(self.tr('Count of Stop Words: ') + str(len(stop_words)))
+        self.label_stop_word_list_preview_num.setText(self.tr('Number of stop words: ') + str(len(stop_words)))
 
         if list_stop_words == 'custom':
             self.list_stop_word_list_preview_results.switch_to_custom()
 
-            self.list_stop_word_list_preview_results.model().dataChanged.connect(lambda: self.label_stop_word_list_preview_count.setText(self.tr('Count of Stop Words: ') + str(self.list_stop_word_list_preview_results.model().rowCount())))
+            self.list_stop_word_list_preview_results.model().dataChanged.connect(lambda: self.label_stop_word_list_preview_num.setText(self.tr('Number of stop words: ') + str(self.list_stop_word_list_preview_results.model().rowCount())))
         else:
             self.list_stop_word_list_preview_results.switch_to_default()
 

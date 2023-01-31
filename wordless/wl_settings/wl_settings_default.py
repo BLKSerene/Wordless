@@ -35,11 +35,36 @@ from wordless.wl_tagsets import (
 from wordless.wl_utils import wl_misc, wl_paths
 
 _tr = QCoreApplication.translate
+is_windows, is_macos, is_linux = wl_misc.check_os()
 
-DEFAULT_UI_SCALING = '100%'
+# These settings need to be loaded before initialization of the main window
+DEFAULT_INTERFACE_SCALING = '100%'
+
+# Font family
+if is_windows:
+    DEFAULT_FONT_FAMILY = 'Arial'
+elif is_macos:
+    macos_ver = wl_misc.get_macos_ver()
+    macos_ver_major, macos_ver_minor, _ = wl_misc.split_ver(macos_ver)
+
+    if macos_ver_major == 10 and macos_ver_minor <= 9:
+        DEFAULT_FONT_FAMILY = 'Lucida Grande'
+    elif macos_ver_major == 10 and macos_ver_minor == 10:
+        DEFAULT_FONT_FAMILY = 'Helvetica Neue'
+    else:
+        DEFAULT_FONT_FAMILY = 'SF Pro'
+elif is_linux:
+    DEFAULT_FONT_FAMILY = 'Liberation Sans'
+
+# Font size
+if is_windows:
+    DEFAULT_FONT_SIZE = 9
+elif is_macos:
+    DEFAULT_FONT_SIZE = 13
+elif is_linux:
+    DEFAULT_FONT_SIZE = 11
 
 def init_settings_default(main):
-    is_windows, is_macos, is_linux = wl_misc.check_os()
     desktop_widget = QDesktopWidget()
 
     settings_default = {
@@ -58,7 +83,7 @@ def init_settings_default(main):
 
             'help': {
                 'citing': {
-                    'citation_sys': _tr('init_settings_default', 'APA (7th Edition)')
+                    'citation_sys': _tr('init_settings_default', 'APA (7th edition)')
                 },
 
                 'donating': {
@@ -1043,9 +1068,9 @@ def init_settings_default(main):
         # Settings - General
         'general': {
             'ui_settings': {
-                'interface_scaling': DEFAULT_UI_SCALING,
-                'font_family': '',
-                'font_size': 9
+                'interface_scaling': DEFAULT_INTERFACE_SCALING,
+                'font_family': DEFAULT_FONT_FAMILY,
+                'font_size': DEFAULT_FONT_SIZE
             },
 
             'proxy_settings': {
@@ -1091,7 +1116,7 @@ def init_settings_default(main):
             'exp': {
                 'tables': {
                     'default_path': wl_paths.get_normalized_path('exports/'),
-                    'default_type': _tr('init_settings_default', 'Excel Workbook (*.xlsx)'),
+                    'default_type': _tr('init_settings_default', 'Excel workbooks (*.xlsx)'),
                     'default_encoding': 'utf_8'
                 },
 
@@ -1132,8 +1157,8 @@ def init_settings_default(main):
                 ],
 
                 'body_tag_settings': [
-                    [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of Speech'), '_*', 'N/A'],
-                    [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of Speech'), '/*', 'N/A'],
+                    [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of speech'), '_*', 'N/A'],
+                    [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of speech'), '/*', 'N/A'],
                     [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Others'), '<*>', 'N/A']
                 ],
 
@@ -1495,7 +1520,7 @@ def init_settings_default(main):
                 'rus': 'spacy_rus',
                 'sme': 'simplemma_sme',
                 'gla': 'simplemma_gla',
-                'srp_cyrl': 'spacy_srp_cyrl',
+                'srp_cyrl': 'spacy_srp',
                 'srp_latn': 'simplemma_srp_latn',
                 'slk': 'simplemma_slk',
                 'slv': 'simplemma_slv',
@@ -1709,7 +1734,7 @@ def init_settings_default(main):
 
                 'mann_whitney_u_test': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'use_data': _tr('init_settings_default', 'Relative frequency'),
                     'direction': _tr('init_settings_default', 'Two-tailed'),
                     'apply_correction': True
                 },
@@ -1724,13 +1749,13 @@ def init_settings_default(main):
 
                 'students_t_test_2_sample': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'use_data': _tr('init_settings_default', 'Relative frequency'),
                     'direction': _tr('init_settings_default', 'Two-tailed')
                 },
 
                 'welchs_t_test': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'use_data': _tr('init_settings_default', 'Relative frequency'),
                     'direction': _tr('init_settings_default', 'Two-tailed')
                 },
 
@@ -1751,7 +1776,7 @@ def init_settings_default(main):
 
                 'students_t_test_2_sample': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative Frequency'),
+                    'use_data': _tr('init_settings_default', 'Relative frequency'),
                     'direction': _tr('init_settings_default', 'Two-tailed')
                 }
             },
@@ -1769,7 +1794,7 @@ def init_settings_default(main):
             # Settings - Figures - Line Charts
             'line_charts': {
                 'general_settings': {
-                    'font': ''
+                    'font': DEFAULT_FONT_FAMILY
                 }
             },
 
@@ -1817,8 +1842,8 @@ def init_settings_default(main):
                 },
 
                 'node_label_settings': {
-                    'label_font': '',
-                    'label_font_size': 0,
+                    'label_font': DEFAULT_FONT_FAMILY,
+                    'label_font_size': DEFAULT_FONT_SIZE,
                     'label_font_weight': 400,
                     'label_font_color': '#000000',
                     'label_opacity': 1.0
@@ -1838,8 +1863,8 @@ def init_settings_default(main):
                 'edge_label_settings': {
                     'label_position': .5,
                     'rotate_labels': True,
-                    'label_font': '',
-                    'label_font_size': 0,
+                    'label_font': DEFAULT_FONT_FAMILY,
+                    'label_font_size': DEFAULT_FONT_SIZE,
                     'label_font_weight': 400,
                     'label_font_color': '#000000',
                     'label_opacity': 1.0
@@ -1851,39 +1876,6 @@ def init_settings_default(main):
             }
         }
     }
-
-    # Fonts
-    if is_windows:
-        default_font = 'Arial'
-    elif is_macos:
-        macos_ver = wl_misc.get_macos_ver()
-        macos_ver_major, macos_ver_minor, _ = wl_misc.split_ver(macos_ver)
-
-        if macos_ver_major == 10 and macos_ver_minor <= 9:
-            default_font = 'Lucida Grande'
-        elif macos_ver_major == 10 and macos_ver_minor == 10:
-            default_font = 'Helvetica Neue'
-        else:
-            default_font = 'SF Pro'
-    elif is_linux:
-        default_font = 'Liberation Sans'
-
-    settings_default['general']['ui_settings']['font_family'] = default_font
-    settings_default['figs']['line_charts']['general_settings']['font'] = default_font
-    settings_default['figs']['network_graphs']['node_label_settings']['label_font'] = default_font
-    settings_default['figs']['network_graphs']['edge_label_settings']['label_font'] = default_font
-
-    # Font Sizes
-    if is_windows:
-        default_font_size = 9
-    elif is_macos:
-        default_font_size = 13
-    elif is_linux:
-        default_font_size = 11
-
-    settings_default['general']['ui_settings']['font_size'] = default_font_size
-    settings_default['figs']['network_graphs']['node_label_settings']['label_font_size'] = default_font_size
-    settings_default['figs']['network_graphs']['edge_label_settings']['label_font_size'] = default_font_size
 
     # Tagsets
     settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']

@@ -40,11 +40,11 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         # UI Settings
         self.group_box_ui_settings = QGroupBox(self.tr('User Interface Settings'), self)
 
-        self.label_interface_scaling = QLabel(self.tr('Interface Scaling:'), self)
+        self.label_interface_scaling = QLabel(self.tr('Interface scaling:'), self)
         self.combo_box_interface_scaling = wl_boxes.Wl_Combo_Box(self)
-        self.label_font_family = QLabel(self.tr('Font Family:'), self)
+        self.label_font_family = QLabel(self.tr('Font family:'), self)
         self.combo_box_font_family = wl_boxes.Wl_Combo_Box_Font_Family(self)
-        self.label_font_size = QLabel(self.tr('Font Size:'), self)
+        self.label_font_size = QLabel(self.tr('Font size:'), self)
         self.spin_box_font_size = wl_boxes.Wl_Spin_Box_Font_Size(self)
 
         self.combo_box_interface_scaling.addItems([
@@ -65,7 +65,7 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
         # Proxy Settings
         self.group_box_proxy_settings = QGroupBox(self.tr('Proxy Settings'), self)
 
-        self.checkbox_use_proxy = QCheckBox(self.tr('Use Proxy'), self)
+        self.checkbox_use_proxy = QCheckBox(self.tr('Use proxy'), self)
         self.label_address = QLabel(self.tr('Address:'), self)
         self.line_edit_address = QLineEdit(self)
         self.label_port = QLabel(self.tr('Port:'), self)
@@ -219,7 +219,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         # Files
         self.group_box_files = QGroupBox(self.tr('Files'), self)
 
-        self.label_files_default_path = QLabel(self.tr('Default Path:'), self)
+        self.label_files_default_path = QLabel(self.tr('Default path:'), self)
         self.line_edit_files_default_path = QLineEdit(self)
         self.button_files_browse = QPushButton(self.tr('Browse...'), self)
 
@@ -233,10 +233,10 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         # Search Terms
         self.group_box_search_terms = QGroupBox(self.tr('Search Terms'), self)
 
-        self.label_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
+        self.label_search_terms_default_path = QLabel(self.tr('Default path:'), self)
         self.line_edit_search_terms_default_path = QLineEdit(self)
         self.button_search_terms_browse = QPushButton(self.tr('Browse...'), self)
-        self.label_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.label_search_terms_default_encoding = QLabel(self.tr('Default encoding:'), self)
         self.combo_box_search_terms_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
         self.checkbox_search_terms_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
 
@@ -254,10 +254,10 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         # Stop Words
         self.group_box_stop_words = QGroupBox(self.tr('Stop Words'), self)
 
-        self.label_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
+        self.label_stop_words_default_path = QLabel(self.tr('Default path:'), self)
         self.line_edit_stop_words_default_path = QLineEdit(self)
         self.button_stop_words_browse = QPushButton(self.tr('Browse...'), self)
-        self.label_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.label_stop_words_default_encoding = QLabel(self.tr('Default encoding:'), self)
         self.combo_box_stop_words_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
         self.checkbox_stop_words_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'))
 
@@ -275,7 +275,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
         # Temporary Files
         self.group_box_temp_files = QGroupBox(self.tr('Temporary Files'), self)
 
-        self.label_temp_files_default_path = QLabel(self.tr('Default Path:'), self)
+        self.label_temp_files_default_path = QLabel(self.tr('Default path:'), self)
         self.line_edit_temp_files_default_path = QLineEdit(self)
         self.button_temp_files_browse = QPushButton(self.tr('Browse...'), self)
 
@@ -418,12 +418,12 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         # Tables
         self.group_box_tables = QGroupBox(self.tr('Tables'), self)
 
-        self.label_tables_default_path = QLabel(self.tr('Default Path:'), self)
+        self.label_tables_default_path = QLabel(self.tr('Default path:'), self)
         self.line_edit_tables_default_path = QLineEdit(self)
         self.button_tables_default_path = QPushButton(self.tr('Browse...'), self)
-        self.label_tables_default_type = QLabel(self.tr('Default Type:'), self)
+        self.label_tables_default_type = QLabel(self.tr('Default type:'), self)
         self.combo_box_tables_default_type = wl_boxes.Wl_Combo_Box(self)
-        self.label_tables_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.label_tables_default_encoding = QLabel(self.tr('Default encoding:'), self)
         self.combo_box_tables_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self.main)
 
         self.combo_box_tables_default_type.addItems(self.main.settings_global['file_types']['exp_tables'])
@@ -443,10 +443,10 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         # Search Terms
         self.group_box_search_terms = QGroupBox(self.tr('Search Terms'), self)
 
-        self.label_search_terms_default_path = QLabel(self.tr('Default Path:'), self)
+        self.label_search_terms_default_path = QLabel(self.tr('Default path:'), self)
         self.line_edit_search_terms_default_path = QLineEdit(self)
         self.button_search_terms_default_path = QPushButton(self.tr('Browse...'), self)
-        self.label_search_terms_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.label_search_terms_default_encoding = QLabel(self.tr('Default encoding:'), self)
         self.combo_box_search_terms_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
 
         self.button_search_terms_default_path.clicked.connect(self.browse_search_terms)
@@ -461,10 +461,10 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         # Stop Words
         self.group_box_stop_words = QGroupBox(self.tr('Stop Words'), self)
 
-        self.label_stop_words_default_path = QLabel(self.tr('Default Path:'), self)
+        self.label_stop_words_default_path = QLabel(self.tr('Default path:'), self)
         self.line_edit_stop_words_default_path = QLineEdit(self)
         self.button_stop_words_default_path = QPushButton(self.tr('Browse...'), self)
-        self.label_stop_words_default_encoding = QLabel(self.tr('Default Encoding:'), self)
+        self.label_stop_words_default_encoding = QLabel(self.tr('Default encoding:'), self)
         self.combo_box_stop_words_default_encoding = wl_boxes.Wl_Combo_Box_Encoding(self)
 
         self.button_stop_words_default_path.clicked.connect(self.browse_stop_words)
@@ -487,7 +487,7 @@ class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
         self.tables_default_type_changed()
 
     def tables_default_type_changed(self):
-        if self.combo_box_tables_default_type.currentText() == self.tr('Excel Workbook (*.xlsx)'):
+        if '*.xlsx' in self.combo_box_tables_default_type.currentText():
             self.combo_box_tables_default_encoding.setEnabled(False)
         else:
             self.combo_box_tables_default_encoding.setEnabled(True)

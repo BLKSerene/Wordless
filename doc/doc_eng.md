@@ -733,7 +733,7 @@ Vietnamese              |✔|✔|✖️|✔|✖️|✔|✖️
 Welsh                   |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️
 Yoruba                  |⭕️ |✔|✖️|✖️|✖️|✔|✖️
 Zulu                    |⭕️ |⭕️ |✔|✖️|✖️|✔|✖️
-Other Languages         |⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️
+Other languages         |⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️
 
 ✔: Supported<br>
 ⭕️: Supported but falls back to the default English tokenizer<br>
@@ -742,16 +742,16 @@ Other Languages         |⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️
 <span id="doc-4-2"></span>
 ### [4.2 Supported File Types](#doc)
 
-File Type               |File Extension(s)
+File Type               |File Extensions
 ------------------------|-----------------
-CSV File                |\*.csv
-Excel Workbook          |\*.xlsx
-HTML Page               |\*.htm, \*.html
-PDF File                |\*.pdf
-Text File               |\*.txt
-Translation Memory File |\*.tmx
-Word Document           |\*.docx
-XML File                |\*.xml
+CSV files               |\*.csv
+Excel workbooks         |\*.xlsx
+HTML pages              |\*.htm, \*.html
+PDF files               |\*.pdf
+Text files              |\*.txt
+Translation memory files|\*.tmx
+Word documents          |\*.docx
+XML files               |\*.xml
 
 \* Microsoft 97-03 Word documents (\*.doc) and Microsoft 97-03 Excel Workbooks (\*.xls) are not supported.<br>
 \* Non-text files will be converted to text files first before being added to the *File Table*. You can check the converted files under folder **imports** at the installation location of *Wordless* on your computer (as for macOS users, right click **Wordless.app**, select **Show Package Contents** and navigate to **Contents/MacOS/imports/**). You can change this location via **Menu → Preferences → Settings → General → Import → Temporary Files → Default Path**.
@@ -760,111 +760,111 @@ XML File                |\*.xml
 <span id="doc-4-3"></span>
 ### [4.3 Supported File Encodings](#doc)
 
-Language|File Encoding|Auto-detection
---------|-------------|:------------:
-All Languages           |UTF-8 without BOM      |✔
-All Languages           |UTF-8 with BOM         |✖️
-All Languages           |UTF-16 with BOM        |✔
-All Languages           |UTF-16BE without BOM   |✔
-All Languages           |UTF-16LE without BOM   |✔
-All Languages           |UTF-32 with BOM        |✔
-All Languages           |UTF-32BE without BOM   |✔
-All Languages           |UTF-32LE without BOM   |✔
-All Languages           |UTF-7                  |✔
-Arabic                  |CP720                  |✔
-Arabic                  |CP864                  |✔
-Arabic                  |ISO-8859-6             |✔
-Arabic                  |Mac OS                 |✔
-Arabic                  |Windows-1256           |✔
-Baltic Languages        |CP775                  |✔
-Baltic Languages        |ISO-8859-13            |✔
-Baltic Languages        |Windows-1257           |✔
-Celtic Languages        |ISO-8859-14            |✔
-Chinese                 |GB18030                |✔
-Chinese                 |GBK                    |✔
-Chinese (Simplified)    |GB2312                 |✔
-Chinese (Simplified)    |HZ                     |✔
-Chinese (Traditional)   |Big-5                  |✔
-Chinese (Traditional)   |Big5-HKSCS             |✔
-Chinese (Traditional)   |CP950                  |✔
-Croatian                |Mac OS                 |✔
-Cyrillic                |CP855                  |✔
-Cyrillic                |CP866                  |✔
-Cyrillic                |ISO-8859-5             |✔
-Cyrillic                |Mac OS                 |✔
-Cyrillic                |Windows-1251           |✔
-English                 |ASCII                  |✔
-English                 |EBCDIC 037             |✔
-English                 |CP437                  |✔
-European                |HP Roman-8             |✔
-European (Central)      |CP852                  |✔
-European (Central)      |ISO-8859-2             |✔
-European (Central)      |Mac OS Central European|✔
-European (Central)      |Windows-1250           |✔
-European (Northern)     |ISO-8859-4             |✔
-European (Southern)     |ISO-8859-3             |✔
-European (South-Eastern)|ISO-8859-16            |✔
-European (Western)      |EBCDIC 500             |✔
-European (Western)      |CP850                  |✔
-European (Western)      |CP858                  |✔
-European (Western)      |CP1140                 |✔
-European (Western)      |ISO-8859-1             |✔
-European (Western)      |ISO-8859-15            |✔
-European (Western)      |Mac OS Roman           |✔
-European (Western)      |Windows-1252           |✔
-French                  |CP863                  |✔
-German                  |EBCDIC 273             |✔
-Greek                   |CP737                  |✔
-Greek                   |CP869                  |✔
-Greek                   |CP875                  |✔
-Greek                   |ISO-8859-7             |✔
-Greek                   |Mac OS                 |✔
-Greek                   |Windows-1253           |✔
-Hebrew                  |CP856                  |✔
-Hebrew                  |CP862                  |✔
-Hebrew                  |EBCDIC 424             |✔
-Hebrew                  |ISO-8859-8             |✔
-Hebrew                  |Windows-1255           |✔
-Icelandic               |CP861                  |✔
-Icelandic               |Mac OS                 |✔
-Japanese                |CP932                  |✔
-Japanese                |EUC-JP                 |✔
-Japanese                |EUC-JIS-2004           |✔
-Japanese                |EUC-JISx0213           |✔
-Japanese                |ISO-2022-JP            |✔
-Japanese                |ISO-2022-JP-1          |✔
-Japanese                |ISO-2022-JP-2          |✔
-Japanese                |ISO-2022-JP-2004       |✔
-Japanese                |ISO-2022-JP-3          |✔
-Japanese                |ISO-2022-JP-EXT        |✔
-Japanese                |Shift_JIS              |✔
-Japanese                |Shift_JIS-2004         |✔
-Japanese                |Shift_JISx0213         |✔
-Kazakh                  |KZ-1048                |✔
-Kazakh                  |PTCP154                |✔
-Korean                  |EUC-KR                 |✔
-Korean                  |ISO-2022-KR            |✔
-Korean                  |JOHAB                  |✔
-Korean                  |UHC                    |✔
-Nordic Languages        |CP865                  |✔
-Nordic Languages        |ISO-8859-10            |✔
-Persian/Urdu            |Mac OS Farsi           |✔
-Portuguese              |CP860                  |✔
-Romanian                |Mac OS                 |✔
-Russian                 |KOI8-R                 |✔
-Tajik                   |KOI8-T                 |✔
-Thai                    |CP874                  |✔
-Thai                    |ISO-8859-11            |✔
-Thai                    |TIS-620                |✔
-Turkish                 |CP857                  |✔
-Turkish                 |EBCDIC 1026            |✔
-Turkish                 |ISO-8859-9             |✔
-Turkish                 |Mac OS                 |✔
-Turkish                 |Windows-1254           |✔
-Ukrainian               |CP1125                 |✔
-Ukrainian               |KOI8-U                 |✔
-Urdu                    |CP1006                 |✔
-Vietnamese              |CP1258                 |✔
+Language               |File Encoding          |Auto-detection
+-----------------------|-----------------------|:------------:
+All languages          |UTF-8 without BOM      |✔
+All languages          |UTF-8 with BOM         |✖️
+All languages          |UTF-16 with BOM        |✔
+All languages          |UTF-16BE without BOM   |✔
+All languages          |UTF-16LE without BOM   |✔
+All languages          |UTF-32 with BOM        |✔
+All languages          |UTF-32BE without BOM   |✔
+All languages          |UTF-32LE without BOM   |✔
+All languages          |UTF-7                  |✔
+Arabic                 |CP720                  |✔
+Arabic                 |CP864                  |✔
+Arabic                 |ISO-8859-6             |✔
+Arabic                 |Mac OS                 |✔
+Arabic                 |Windows-1256           |✔
+Baltic languages       |CP775                  |✔
+Baltic languages       |ISO-8859-13            |✔
+Baltic languages       |Windows-1257           |✔
+Celtic languages       |ISO-8859-14            |✔
+Chinese                |GB18030                |✔
+Chinese                |GBK                    |✔
+Chinese (Simplified)   |GB2312                 |✔
+Chinese (Simplified)   |HZ                     |✔
+Chinese (Traditional)  |Big-5                  |✔
+Chinese (Traditional)  |Big5-HKSCS             |✔
+Chinese (Traditional)  |CP950                  |✔
+Croatian               |Mac OS                 |✔
+Cyrillic               |CP855                  |✔
+Cyrillic               |CP866                  |✔
+Cyrillic               |ISO-8859-5             |✔
+Cyrillic               |Mac OS                 |✔
+Cyrillic               |Windows-1251           |✔
+English                |ASCII                  |✔
+English                |EBCDIC 037             |✔
+English                |CP437                  |✔
+European               |HP Roman-8             |✔
+European (Central)     |CP852                  |✔
+European (Central)     |ISO-8859-2             |✔
+European (Central)     |Mac OS Central European|✔
+European (Central)     |Windows-1250           |✔
+European (Northern)    |ISO-8859-4             |✔
+European (Southern)    |ISO-8859-3             |✔
+European (Southeastern)|ISO-8859-16            |✔
+European (Western)     |EBCDIC 500             |✔
+European (Western)     |CP850                  |✔
+European (Western)     |CP858                  |✔
+European (Western)     |CP1140                 |✔
+European (Western)     |ISO-8859-1             |✔
+European (Western)     |ISO-8859-15            |✔
+European (Western)     |Mac OS Roman           |✔
+European (Western)     |Windows-1252           |✔
+French                 |CP863                  |✔
+German                 |EBCDIC 273             |✔
+Greek                  |CP737                  |✔
+Greek                  |CP869                  |✔
+Greek                  |CP875                  |✔
+Greek                  |ISO-8859-7             |✔
+Greek                  |Mac OS                 |✔
+Greek                  |Windows-1253           |✔
+Hebrew                 |CP856                  |✔
+Hebrew                 |CP862                  |✔
+Hebrew                 |EBCDIC 424             |✔
+Hebrew                 |ISO-8859-8             |✔
+Hebrew                 |Windows-1255           |✔
+Icelandic              |CP861                  |✔
+Icelandic              |Mac OS                 |✔
+Japanese               |CP932                  |✔
+Japanese               |EUC-JP                 |✔
+Japanese               |EUC-JIS-2004           |✔
+Japanese               |EUC-JISx0213           |✔
+Japanese               |ISO-2022-JP            |✔
+Japanese               |ISO-2022-JP-1          |✔
+Japanese               |ISO-2022-JP-2          |✔
+Japanese               |ISO-2022-JP-2004       |✔
+Japanese               |ISO-2022-JP-3          |✔
+Japanese               |ISO-2022-JP-EXT        |✔
+Japanese               |Shift_JIS              |✔
+Japanese               |Shift_JIS-2004         |✔
+Japanese               |Shift_JISx0213         |✔
+Kazakh                 |KZ-1048                |✔
+Kazakh                 |PTCP154                |✔
+Korean                 |EUC-KR                 |✔
+Korean                 |ISO-2022-KR            |✔
+Korean                 |JOHAB                  |✔
+Korean                 |UHC                    |✔
+Nordic languages       |CP865                  |✔
+Nordic languages       |ISO-8859-10            |✔
+Persian/Urdu           |Mac OS Farsi           |✔
+Portuguese             |CP860                  |✔
+Romanian               |Mac OS                 |✔
+Russian                |KOI8-R                 |✔
+Tajik                  |KOI8-T                 |✔
+Thai                   |CP874                  |✔
+Thai                   |ISO-8859-11            |✔
+Thai                   |TIS-620                |✔
+Turkish                |CP857                  |✔
+Turkish                |EBCDIC 1026            |✔
+Turkish                |ISO-8859-9             |✔
+Turkish                |Mac OS                 |✔
+Turkish                |Windows-1254           |✔
+Ukrainian              |CP1125                 |✔
+Ukrainian              |KOI8-U                 |✔
+Urdu                   |CP1006                 |✔
+Vietnamese             |CP1258                 |✔
 
 <span id="doc-4-4"></span>
 ### [4.4 Supported Measures](#doc)

@@ -992,8 +992,8 @@ def wl_widgets_use_data_freq(parent):
     combo_box_use_data = wl_boxes.Wl_Combo_Box(parent)
 
     combo_box_use_data.addItems([
-        _tr('wl_widgets', 'Absolute Frequency'),
-        _tr('wl_widgets', 'Relative Frequency')
+        _tr('wl_widgets', 'Absolute frequency'),
+        _tr('wl_widgets', 'Relative frequency')
     ])
 
     return label_use_data, combo_box_use_data

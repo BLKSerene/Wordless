@@ -88,8 +88,8 @@ class Wl_Loading(QSplashScreen):
         super().__init__(QPixmap(wl_paths.get_path_img('wl_loading.png')))
 
         self.setFont(
-            QFont(settings_custom['general']['ui_settings']['font_family'],
-            pointSize = settings_custom['general']['ui_settings']['font_size'] - 1)
+            QFont(global_font_family,
+            pointSize = global_font_size - 1)
         )
         self.show_message(self.tr('Initializing Wordless...'))
 
@@ -633,7 +633,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
 
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(0, 0),
-            wl_labels.Wl_Label_Html(self.tr('Official Documentation'), self)
+            wl_labels.Wl_Label_Html(self.tr('Official documentation'), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(0, 1),
@@ -644,7 +644,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
 
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(1, 0),
-            wl_labels.Wl_Label_Html(self.tr('Tutorial Videos'), self)
+            wl_labels.Wl_Label_Html(self.tr('Tutorial videos'), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(1, 1),
@@ -655,7 +655,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
 
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(2, 0),
-            wl_labels.Wl_Label_Html(self.tr('Bug Reports'), self)
+            wl_labels.Wl_Label_Html(self.tr('Bug reports'), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(2, 1),
@@ -666,7 +666,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
 
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(3, 0),
-            wl_labels.Wl_Label_Html(self.tr('Usage Questions'), self)
+            wl_labels.Wl_Label_Html(self.tr('Usage questions'), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(3, 1),
@@ -677,7 +677,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
 
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(4, 0),
-            wl_labels.Wl_Label_Html(self.tr('Email Support'), self)
+            wl_labels.Wl_Label_Html(self.tr('Email support'), self)
         )
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(4, 1),
@@ -687,7 +687,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(5, 0),
             wl_labels.Wl_Label_Html(self.tr(
-                '<a href="https://www.wechat.com/en/">WeChat</a> Official Account'
+                '<a href="https://www.wechat.com/en/">WeChat</a> official account'
             ), self)
         )
         self.table_need_help.setIndexWidget(
@@ -721,7 +721,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
             self
         )
 
-        self.label_citation_sys = QLabel(self.tr('Citation System:'), self)
+        self.label_citation_sys = QLabel(self.tr('Citation system:'), self)
         self.combo_box_citation_sys = wl_boxes.Wl_Combo_Box(self)
         self.text_edit_citing = QTextEdit(self)
 
@@ -729,8 +729,8 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         self.button_close = QPushButton(self.tr('Close'), self)
 
         self.combo_box_citation_sys.addItems([
-            self.tr('APA (7th Edition)'),
-            self.tr('MLA (8th Edition)')
+            self.tr('APA (7th edition)'),
+            self.tr('MLA (8th edition)')
         ])
 
         self.button_copy.setFixedWidth(100)
@@ -773,9 +773,9 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
 
         settings['citation_sys'] = self.combo_box_citation_sys.currentText()
 
-        if settings['citation_sys'] == self.tr('APA (7th Edition)'):
+        if settings['citation_sys'].startswith('APA'):
             self.text_edit_citing.setHtml(f'Ye, L. (2022). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless')
-        elif settings['citation_sys'] == self.tr('MLA (8th Edition)'):
+        elif settings['citation_sys'].startswith('MLA'):
             self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
 
     def copy(self):
@@ -1010,11 +1010,11 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         self.on_startup = on_startup
 
         self.label_checking_status = wl_labels.Wl_Label_Dialog('', self)
-        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr('Current Version: ') + self.main.ver, self)
+        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr('Current version: ') + self.main.ver, self)
         self.label_latest_ver = wl_labels.Wl_Label_Dialog('', self)
 
         self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
-        self.button_try_again = QPushButton(self.tr('Try Again'), self)
+        self.button_try_again = QPushButton(self.tr('Try again'), self)
         self.button_cancel = QPushButton(self.tr('Cancel'), self)
 
         self.checkbox_check_updates_on_startup.stateChanged.connect(self.check_updates_on_startup_changed)
@@ -1068,7 +1068,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
                     Checking for updates...
                 </div>
             '''))
-            self.label_latest_ver.set_text(self.tr('Latest Version: Checking...'))
+            self.label_latest_ver.set_text(self.tr('Latest version: Checking...'))
 
             self.button_cancel.setText(self.tr('Cancel'))
             self.button_cancel.disconnect()
@@ -1081,21 +1081,21 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
                             Wordless {} is out, click <a href="https://github.com/BLKSerene/Wordless#download"><b>HERE</b></a> to download the latest version of Wordless.
                         </div>
                     ''').format(ver_new))
-                    self.label_latest_ver.set_text(self.tr('Latest Version: ') + ver_new)
+                    self.label_latest_ver.set_text(self.tr('Latest version: ') + ver_new)
                 elif status == 'no_updates':
                     self.label_checking_status.set_text(self.tr('''
                         <div>
                             Hooray, you are using the latest version of Wordless!
                         </div>
                     '''))
-                    self.label_latest_ver.set_text(self.tr('Latest Version: ') + self.main.ver)
+                    self.label_latest_ver.set_text(self.tr('Latest version: ') + self.main.ver)
             elif status == 'network_err':
                 self.label_checking_status.set_text(self.tr('''
                     <div>
                         A network error has occurred, please check your network settings and try again or <a href="https://github.com/BLKSerene/Wordless/releases">check for updates manually</a>.
                     </div>
                 '''))
-                self.label_latest_ver.set_text(self.tr('Latest Version: Network error'))
+                self.label_latest_ver.set_text(self.tr('Latest version: Network error'))
 
             self.button_cancel.setText(self.tr('OK'))
             self.button_cancel.disconnect()
@@ -1293,8 +1293,12 @@ if __name__ == '__main__':
             settings_custom = pickle.load(f)
 
         ui_scaling = settings_custom['general']['ui_settings']['interface_scaling']
+        global_font_family = settings_custom['general']['ui_settings']['font_family']
+        global_font_size = settings_custom['general']['ui_settings']['font_size']
     else:
-        ui_scaling = wl_settings_default.DEFAULT_UI_SCALING
+        ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
+        global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
+        global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
 
     # Environment variables for QT should be set before QApplication is created
     os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', ui_scaling)

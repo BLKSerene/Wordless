@@ -300,7 +300,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.label_tagsets_num_pos_tags = QLabel('', self)
         self.label_tagsets_uneditable = wl_labels.Wl_Label_Hint(self.tr('* This part-of-speech tagger does not support custom mappings.'), self)
         self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)
-        self.button_tagsets_reset_all = QPushButton(self.tr('Reset All'), self)
+        self.button_tagsets_reset_all = QPushButton(self.tr('Reset all'), self)
         self.table_mappings = wl_tables.Wl_Table(
             self,
             headers = [
@@ -448,7 +448,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         else:
             self.table_mappings.setEnabled(True)
 
-        self.label_tagsets_num_pos_tags.setText(self.tr('Number of Part-of-speech Tags: ') + str(self.table_mappings.model().rowCount()))
+        self.label_tagsets_num_pos_tags.setText(self.tr('Number of part-of-speech tags: ') + str(self.table_mappings.model().rowCount()))
         self.stacked_widget_num_pos_tags.setCurrentIndex(0)
 
         self.combo_box_tagsets_lang.setEnabled(True)

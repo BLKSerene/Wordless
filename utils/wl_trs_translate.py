@@ -137,9 +137,9 @@ TRS_LANGS = {
     'Other Languages': ['其他语种'],
 
     # Encodings
-    'All Languages': ['所有语种'],
-    'Baltic Languages': ['波罗的海诸语'],
-    'Celtic Languages': ['凯尔特语'],
+    'All languages': ['所有语种'],
+    'Baltic languages': ['波罗的海诸语'],
+    'Celtic languages': ['凯尔特语'],
     'Chinese': ['汉语'],
     'Cyrillic': ['西里尔'],
     'English': ['英语'],
@@ -147,12 +147,12 @@ TRS_LANGS = {
     'European (Central)': ['欧洲（中部）'],
     'European (Northern)': ['欧洲（北部）'],
     'European (Southern)': ['欧洲（南部）'],
-    'European (South-Eastern)': ['欧洲（东南部）'],
+    'European (Southeastern)': ['欧洲（东南部）'],
     'European (Western)': ['欧洲（西部）'],
     'European': ['欧洲'],
     'German': ['德语'],
     'Greek': ['希腊语'],
-    'Nordic Languages': ['北欧诸语'],
+    'Nordic languages': ['北欧诸语'],
     'Portuguese': ['葡萄牙语'],
 
     # NLP utils
@@ -169,15 +169,15 @@ TRS_ENCODINGS = {
     'without BOM': ['无签名'],
 }
 TRS_FILE_TYPES = {
-    'CSV File (*.csv)': ['CSV 文件 (*.csv)'],
-    'Excel Workbook (*.xlsx)': ['Excel 工作簿 (*.xlsx)'],
-    'HTML Page (*.htm; *.html)': ['HTML 页面 (*.htm; *.html)'],
-    'PDF File (*.pdf)': ['PDF 文件 (*.pdf)'],
-    'Text File (*.txt)': ['文本文件 (*.txt)'],
-    'Translation Memory File (*.tmx)': ['翻译记忆库文件 (*.tmx)'],
-    'Word Document (*.docx)': ['Word 文档 (*.docx)'],
-    'XML File (*.xml)': ['XML 文件 (*.xml)'],
-    'All Files (*.*)': ['所有文件 (*.*)']
+    'CSV file (*.csv)': ['CSV 文件 (*.csv)'],
+    'Excel workbooks (*.xlsx)': ['Excel 工作簿 (*.xlsx)'],
+    'HTML page (*.htm; *.html)': ['HTML 页面 (*.htm; *.html)'],
+    'PDF file (*.pdf)': ['PDF 文件 (*.pdf)'],
+    'Text file (*.txt)': ['文本文件 (*.txt)'],
+    'Translation memory file (*.tmx)': ['翻译记忆库文件 (*.tmx)'],
+    'Word document (*.docx)': ['Word 文档 (*.docx)'],
+    'XML file (*.xml)': ['XML 文件 (*.xml)'],
+    'All files (*.*)': ['所有文件 (*.*)']
 }
 TRS_NLP_UTILS = {
     # Settings
@@ -196,36 +196,37 @@ TRS_NLP_UTILS = {
     'Dependency Parser Settings': ['依存分析器设置'],
     'Dependency Parsers': ['依存分析器'],
 
-    'Sentence Tokenizer': ['分句器'],
-    'Sentence Recognizer': ['句子识别器'],
-    'Sentencizer': ['分句器'],
+    'sentence tokenizer': ['分句器'],
+    'sentence recognizer': ['句子识别器'],
+    'sentencizer': ['分句器'],
 
     # 'Tokenizer' contained in 'Word Tokenizer', 'Syllable Tokenizer', and others
-    'Legality Syllable Tokenizer': ['合法性分音节器'],
-    'Sonority Sequencing Syllable Tokenizer': ['响度顺序分音节器'],
-    'Syllable Tokenizer': ['分音节器'],
+    'Legality syllable tokenizer': ['合法性分音节器'],
+    'Sonority sequencing syllable tokenizer': ['响度顺序分音节器'],
+    'Syllable tokenizer': ['分音节器'],
 
     # 'Word Tokenizer' contained in 'Word Tokenizer (Split Mode'
-    'Word Tokenizer (Split Mode': ['分词器（切分模式'],
-    'Word Tokenizer': ['分词器'],
-    'Penn Treebank Tokenizer': ['宾州树库分词器'],
-    'Twitter Tokenizer': ['推特分词器'],
-    'Regular-Expression Tokenizer': ['正则表达式分词器'],
-    'Character Tokenizer': ['分字器'],
-    'Kanji Tokenizer': ['分字器'],
-    'Tokenizer': ['分词器'],
-    'Longest Matching': ['最长匹配'],
-    'Maximum Matching': ['最大匹配'],
+    'Word tokenizer (split mode': ['分词器（切分模式'],
+    'Word tokenizer': ['分词器'],
+    'Penn Treebank tokenizer': ['宾州树库分词器'],
+    'Twitter tokenizer': ['推特分词器'],
+    'Regular-expression tokenizer': ['正则表达式分词器'],
+    'character tokenizer': ['分字器'],
+    'kanji tokenizer': ['分字器'],
+    'tokenizer': ['分词器'],
+    'Longest matching': ['最长匹配'],
+    'Maximum matching': ['最大匹配'],
 
     # 'Part-of-speech Tagger' contained in 'Perceptron Part-of-speech Tagger'
-    'Perceptron Part-of-speech Tagger': ['感知机词性标注器'],
-    'Part-of-speech Tagger': ['词性标注器'],
-    'Morphological Analyzer': ['形态分析器'],
+    'Perceptron part-of-speech tagger': ['感知机词性标注器'],
+    'perceptron part-of-speech tagger': ['感知机词性标注器'],
+    'part-of-speech tagger': ['词性标注器'],
+    'Morphological analyzer': ['形态分析器'],
 
-    'Lemmatizer': ['词形还原器'],
-    'Stop Word List': ['停用词表'],
-    'Custom List': ['自定义列表'],
-    'Dependency Parser': ['依存分析器']
+    'lemmatizer': ['词形还原器'],
+    'stop word list': ['停用词表'],
+    'Custom stop word list': ['自定义停用词表'],
+    'dependency parser': ['依存分析器']
 }
 TRS_MISC = {
     # Lists
