@@ -37,7 +37,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 13|[pymorphy2](https://github.com/kmike/pymorphy2)                   |0.9.1  |Mikhail Korobov|[MIT](https://github.com/kmike/pymorphy2/#pymorphy2)
 14|[pypdf](https://github.com/py-pdf/pypdf)                          |3.3.0  |Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
 15|[Pyphen](https://pyphen.org/)                                     |0.13.2 |Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/master/LICENSE)
-16|[PyQt](https://riverbankcomputing.com/software/pyqt/)             |5.15.7 |Riverbank Computing Limited|[Commercial-Licnese/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
+16|[PyQt](https://riverbankcomputing.com/software/pyqt/)             |5.15.8 |Riverbank Computing|[Commercial-License/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
 17|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)               |3.1.1  |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
 18|[python-docx](https://github.com/python-openxml/python-docx)      |0.8.11 |Steve Canny|[MIT](https://github.com/python-openxml/python-docx/blob/master/LICENSE)
 19|[Requests](https://github.com/psf/requests)                       |2.28.2 |Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
