@@ -91,22 +91,22 @@ If you have any questions, find software bugs, need to provide feedback, or want
 
 Support Channel       |Information
 ----------------------|-----------
-Official Documentation|[Documentation](/doc/doc_eng.md)
-Tutorial Videos       |[bilibili](https://space.bilibili.com/34963752/video)
-Bug Reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
-Usage Questions       |[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
-Email Support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
-[WeChat](https://www.wechat.com/en/) Official Account|![WeChat Official Account](/imgs/wechat_official_account.jpg)
+Official documentation|[Documentation](/doc/doc_eng.md)
+Tutorial videos       |[bilibili](https://space.bilibili.com/34963752/video)
+Bug reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
+Usage questions       |[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
+Email support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
+[WeChat](https://www.wechat.com/en/) official account|![WeChat official account](/imgs/wechat_official_account.jpg)
 
 ## Citing
 
 If you publish work that uses Wordless, please cite as follows.
 
-APA (7th Edition):
+APA (7th edition):
 
 <pre><code>Ye, L. (2022). <i>Wordless</i> (Version 3.0.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
-MLA (8th Edition):
+MLA (8th edition):
 
 <pre><code>Ye Lei. <i>Wordless</i>, version 3.0.0, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
