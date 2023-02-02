@@ -41,6 +41,7 @@
 - Settings: Fix global settings - encodings
 - Settings: Fix Settings - General - User Interface Settings - Interface scaling
 - Settings: Fix Settings - Part-of-speech Tagging - Tagsets
+- Work Area: Fix Work Area - Filter results
 
 ### ❌ Removals
 - Settings: Remove Settings - Figures - Word Clouds - Font - GNU FreeFont

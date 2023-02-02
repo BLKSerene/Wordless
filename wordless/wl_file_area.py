@@ -45,577 +45,68 @@ from wordless.wl_widgets import wl_boxes, wl_buttons, wl_item_delegates, wl_layo
 
 _tr = QCoreApplication.translate
 
-class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
+    def __init__(self, main, file_type = 'observed'):
+        super().__init__(main)
 
-    def run(self):
-        err_msg = ''
-        new_files = []
+        self.file_names_old = []
+        self.file_type = file_type
 
-        try:
-            len_file_paths = len(self.file_paths)
+        # Suffix for settings
+        if self.file_type == 'observed':
+            self.settings_suffix = ''
+        elif self.file_type == 'ref':
+            self.settings_suffix = '_ref'
 
-            for i, file_path in enumerate(self.file_paths):
-                self.progress_updated.emit(self.tr('Adding files... ({}/{})').format(i + 1, len_file_paths))
+        # Table
+        self.table_files = Wl_Table_Files(self)
 
-                file_path = wl_paths.get_normalized_path(file_path)
-                file_name, file_ext = os.path.splitext(os.path.basename(file_path))
-                file_ext = file_ext.lower()
+        self.wrapper_table.layout().addWidget(self.table_files, 0, 0)
 
-                new_file = {'selected': True, 'path_original': file_path}
+        # Load files
+        self.table_files.update_table()
 
-                # Check for duplicate file names
-                file_names = [
-                    *self.main.wl_file_area.get_file_names(),
-                    *[file['name'] for file in self.table.files_to_open],
-                    *[new_file['name'] for new_file in new_files]
-                ]
+    def get_files(self):
+        return self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']
 
-                new_file['name'] = new_file['name_old'] = wl_checks_misc.check_new_name(file_name, file_names)
-
-                # Path, Tokenized, Tagged
-                default_dir = wl_checks_misc.check_dir(self.main.settings_custom['general']['imp']['temp_files']['default_path'])
-
-                if file_ext == '.xml':
-                    new_file['path'] = os.path.join(default_dir, f'{file_name}.xml')
-
-                    # Use default settings for "Tokenized" & "Tagged" if auto-detection of encodings and languages are both disabled
-                    if (
-                        not self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings']
-                        and not self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']
-                    ):
-                        new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
-                        new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
-                    else:
-                        new_file['tokenized'] = True
-                        new_file['tagged'] = True
-                else:
-                    new_file['path'] = os.path.join(default_dir, f'{file_name}.txt')
-                    new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
-                    new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
-
-                # Check for duplicate files
-                new_file['path'] = wl_checks_misc.check_new_path(new_file['path'])
-
-                # Detect encodings
-                default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
-
-                if file_ext in ['.docx', '.xlsx']:
-                    new_file['encoding'] = default_encoding
-                else:
-                    if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings']:
-                        new_file['encoding'] = wl_detection.detect_encoding(self.main, file_path)
-                    else:
-                        new_file['encoding'] = default_encoding
-
-                # Cleanse contents before language detection
-                if file_ext != '.tmx':
-                    if file_ext in ['.txt', '.xml']:
-                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                            new_file['text'] = f.read()
-                    # CSV files
-                    elif file_ext == '.csv':
-                        lines = []
-
-                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace', newline = '') as f:
-                            # Remove NULL bytes to avoid error
-                            csv_reader = csv.reader([line.replace('\0', '') for line in f])
-
-                            for row in csv_reader:
-                                lines.append('\t'.join(row))
-
-                        new_file['text'] = '\n'.join(lines)
-                    # HTML pages
-                    elif file_ext in ['.htm', '.html']:
-                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                            soup = bs4.BeautifulSoup(f.read(), 'lxml')
-
-                        new_file['text'] = soup.get_text()
-                    # Word documents
-                    elif file_ext == '.docx':
-                        lines = []
-                        doc = docx.Document(file_path)
-
-                        for block in self.iter_block_items(doc):
-                            if isinstance(block, docx.text.paragraph.Paragraph):
-                                lines.append(block.text)
-                            elif isinstance(block, docx.table.Table):
-                                for row in self.iter_visual_cells(block):
-                                    cells = []
-
-                                    for cell in row:
-                                        cells.append(' '.join([item.text for item in self.iter_cell_items(cell)]))
-
-                                    lines.append('\t'.join(cells))
-
-                        new_file['text'] = '\n'.join(lines)
-                    # Excel workbooks
-                    elif file_ext == '.xlsx':
-                        lines = []
-                        workbook = openpyxl.load_workbook(file_path, data_only = True)
-
-                        for worksheet_name in workbook.sheetnames:
-                            worksheet = workbook[worksheet_name]
-
-                            for row in worksheet.rows:
-                                cells = [
-                                    (cell.value if cell.value is not None else '')
-                                    for cell in row
-                                ]
-
-                                lines.append('\t'.join(cells))
-
-                        new_file['text'] = '\n'.join(lines)
-                    # PDF files
-                    elif file_ext == '.pdf':
-                        reader = pypdf.PdfReader(file_path)
-                        new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
-
-                    if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']:
-                        new_file['lang'] = wl_detection.detect_lang_text(self.main, new_file['text'])
-                    else:
-                        new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']
-
-                    new_files.append(new_file)
-                # Translation memory files
-                else:
-                    lines_src = []
-                    lines_target = []
-
-                    new_file_src = copy.deepcopy(new_file)
-                    new_file_tgt = copy.deepcopy(new_file)
-
-                    new_file_src['name'] = new_file_src['name_old'] = wl_checks_misc.check_new_name(f'{file_name}_source', file_names)
-                    new_file_tgt['name'] = new_file_tgt['name_old'] = wl_checks_misc.check_new_name(f'{file_name}_target', file_names)
-
-                    with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
-                        soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
-
-                    # Extract source and target languages
-                    elements_tuv = soup.select(r'tu:first-child tuv[xml\:lang]')
-
-                    if len(elements_tuv) == 2:
-                        new_file_src['lang'] = wl_conversion.to_iso_639_3(self.main, elements_tuv[0]['xml:lang'])
-                        new_file_tgt['lang'] = wl_conversion.to_iso_639_3(self.main, elements_tuv[1]['xml:lang'])
-
-                        if new_file_src['lang'] is None:
-                            new_file_src['lang'] = 'other'
-                        if new_file_tgt['lang'] is None:
-                            new_file_tgt['lang'] = 'other'
-                    else:
-                        new_file_src['lang'] = new_file_tgt['lang'] = self.main.settings_custom['files']['default_settings']['lang']
-
-                    for elements_tu in soup.select('tu'):
-                        seg_src, seg_target = elements_tu.select('seg')
-
-                        lines_src.append(seg_src.get_text().replace(r'\n', ' ').strip())
-                        lines_target.append(seg_target.get_text().replace(r'\n', ' ').strip())
-
-                    new_file_src['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
-                    new_file_tgt['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
-
-                    new_file_src['text'] = '\n'.join(lines_src)
-                    new_file_tgt['text'] = '\n'.join(lines_target)
-
-                    new_files.append(new_file_src)
-                    new_files.append(new_file_tgt)
-
-            if self.file_paths:
-                self.main.settings_custom['general']['imp']['files']['default_path'] = wl_paths.get_normalized_dir(self.file_paths[0])
-        except Exception:
-            err_msg = traceback.format_exc()
-
-        self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit(err_msg, new_files)
-
-    # Reference: https://github.com/python-openxml/python-docx/issues/276
-    def iter_block_items(self, parent):
-        """
-        Yield each paragraph and table child within *parent*, in document order.
-        Each returned value is an instance of either Table or Paragraph. *parent*
-        would most commonly be a reference to a main Document object, but
-        also works for a _Cell object, which itself can contain paragraphs and tables.
-        """
-        if isinstance(parent, Document):
-            parent_elm = parent.element.body
-        elif isinstance(parent, _Cell):
-            parent_elm = parent._tc
-        else:
-            raise ValueError("something's not right")
-
-        for child in parent_elm.iterchildren():
-            if isinstance(child, CT_P):
-                yield Paragraph(child, parent)
-            elif isinstance(child, CT_Tbl):
-                yield Table(child, parent)
-
-    def iter_cell_items(self, parent):
-        parent_elm = parent._tc
-
-        for child in parent_elm.iterchildren():
-            if isinstance(child, CT_P):
-                yield Paragraph(child, parent)
-            elif isinstance(child, CT_Tbl):
-                table = Table(child, parent)
-
-                for row in table.rows:
-                    for cell in row.cells:
-                        yield from self.iter_cell_items(cell)
-
-    # Reference: https://github.com/python-openxml/python-docx/issues/40
-    def iter_visual_cells(self, table):
-        prior_tcs = []
-        visual_cells = []
-
-        for row in table.rows:
-            visual_cells.append([])
-
-            for cell in row.cells:
-                this_tc = cell._tc
-
-                if this_tc in prior_tcs:  # skip cells pointing to same `<w:tc>` element
-                    continue
-                else:
-                    prior_tcs.append(this_tc)
-
-                    visual_cells[-1].append(cell)
-
-        return visual_cells
-
-class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
-    def __init__(self, parent):
-        super().__init__(
-            parent = parent,
-            headers = [
-                _tr('Table_Open_Files', 'Path'),
-                _tr('Table_Open_Files', 'Encoding'),
-                _tr('Table_Open_Files', 'Language'),
-                _tr('Table_Open_Files', 'Tokenized'),
-                _tr('Table_Open_Files', 'Tagged')
-            ],
-            col_edit = 2
+    def get_file_names(self):
+        return (
+            file['name']
+            for file in self.get_files()
         )
 
-        self.files_to_open = []
-
-        self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
-        self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Encoding))
-        self.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Lang))
-        self.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Yes_No))
-        self.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Yes_No))
-
-        self.button_clr.disconnect()
-        self.button_clr.clicked.connect(lambda: self.clr_table(remove_placeholders = True))
-
-        self.clr_table()
-
-    def item_changed(self, item):
-        super().item_changed(item = item)
-
-        self.files_to_open = []
-
-        if not self.is_empty():
-            for row in range(self.model().rowCount()):
-                file = self.model().item(row, 0).file
-
-                file['encoding'] = wl_conversion.to_encoding_code(self.main, self.model().item(row, 1).text())
-                file['lang'] = wl_conversion.to_lang_code(self.main, self.model().item(row, 2).text())
-                file['tokenized'] = wl_conversion.to_yes_no_code(self.model().item(row, 3).text())
-                file['tagged'] = wl_conversion.to_yes_no_code(self.model().item(row, 4).text())
-
-                self.files_to_open.append(file)
-
-    def del_row(self):
-        for row in self.get_selected_rows():
-            file_path = self.files_to_open[row]['path']
-
-            if os.path.exists(file_path):
-                os.remove(file_path)
-
-        super().del_row()
-
-    def clr_table(self, num_headers = 1, remove_placeholders = False):
-        # Remove placeholders for new paths
-        if remove_placeholders:
-            for file in self.files_to_open:
-                if os.path.exists(file['path']):
-                    os.remove(file['path'])
-
-        super().clr_table(num_headers = num_headers)
-
-    def update_table(self):
-        files = self.files_to_open
-
-        if files:
-            self.clr_table(len(files))
-
-            self.disable_updates()
-
-            for i, file in enumerate(files):
-                self.model().setItem(i, 0, QStandardItem(file['path_original']))
-                self.model().setItem(i, 1, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
-                self.model().setItem(i, 2, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
-                self.model().setItem(i, 3, QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
-                self.model().setItem(i, 4, QStandardItem(wl_conversion.to_yes_no_text(file['tagged'])))
-
-                self.model().item(i, 0).file = file
-
-            self.enable_updates()
-        else:
-            self.clr_table()
-
-class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
-
-    def run(self):
-        err_msg = ''
-        new_files = []
-
-        try:
-            len_files = len(self.files_to_open)
-            # Regex for headers
-            re_tags_header = wl_matching.get_re_tags_with_tokens(self.main, tag_type = 'header')
-
-            for i, file in enumerate(self.files_to_open):
-                self.progress_updated.emit(self.tr('Opening files... ({}/{})').format(i + 1, len_files))
-
-                # Remove header tags
-                with open(file['path'], 'w', encoding = file['encoding']) as f:
-                    text = file['text']
-
-                    if file['tagged'] and re_tags_header:
-                        # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
-                        # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
-                        text = re.sub(re_tags_header, '', text)
-
-                    f.write(text)
-
-                # Process texts
-                if self.file_type == 'observed':
-                    file['text'] = wl_texts.Wl_Text(self.main, file)
-                elif self.file_type == 'ref':
-                    file['text'] = wl_texts.Wl_Text_Ref(self.main, file)
-
-                new_files.append(file)
-        except Exception:
-            err_msg = traceback.format_exc()
-
-        self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit(err_msg, new_files)
-
-class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
-    def __init__(self, main):
-        super().__init__(
-            main,
-            title = _tr('Dialog_Open_Files', 'Open Files'),
-            width = 800
+    def get_selected_files(self):
+        return (
+            file
+            for file in self.get_files()
+            if file['selected']
         )
 
-        self.table_files = Table_Open_Files(self)
-
-        self.table_files.model().itemChanged.connect(self.table_files_changed)
-
-        self.table_files.button_add.hide()
-        self.table_files.button_ins.hide()
-
-        self.table_files.button_add_files = QPushButton(self.tr('Add files...'), self)
-        self.table_files.button_add_folder = QPushButton(self.tr('Add folder...'), self)
-
-        self.table_files.button_add_files.clicked.connect(self.add_files)
-        self.table_files.button_add_folder.clicked.connect(self.add_folder)
-
-        layout_table = wl_layouts.Wl_Layout()
-        layout_table.addWidget(self.table_files, 0, 0, 5, 1)
-        layout_table.addWidget(self.table_files.button_add_files, 0, 1)
-        layout_table.addWidget(self.table_files.button_add_folder, 1, 1)
-        layout_table.addWidget(self.table_files.button_del, 2, 1)
-        layout_table.addWidget(self.table_files.button_clr, 3, 1)
-
-        layout_table.setRowStretch(4, 1)
-
-        self.checkbox_auto_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'), self)
-        self.checkbox_auto_detect_langs = QCheckBox(self.tr('Auto-detect languages'), self)
-        self.checkbox_include_files_in_subfolders = QCheckBox(self.tr('Include files in subfolders'), self)
-
-        self.checkbox_auto_detect_encodings.stateChanged.connect(self.settings_changed)
-        self.checkbox_auto_detect_langs.stateChanged.connect(self.settings_changed)
-        self.checkbox_include_files_in_subfolders.stateChanged.connect(self.settings_changed)
-
-        layout_checkboxes = wl_layouts.Wl_Layout()
-        layout_checkboxes.addWidget(self.checkbox_auto_detect_encodings, 0, 0)
-        layout_checkboxes.addWidget(self.checkbox_auto_detect_langs, 0, 1)
-        layout_checkboxes.addWidget(self.checkbox_include_files_in_subfolders, 1, 0, 1, 2)
-
-        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_open = QPushButton(self.tr('Open'), self)
-        self.button_cancel = QPushButton(self.tr('Cancel'), self)
-
-        self.button_open.clicked.connect(self.accept)
-        self.button_cancel.clicked.connect(self.reject)
-
-        self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addLayout(layout_table, 0, 0, 1, 4)
-        self.layout().addLayout(layout_checkboxes, 1, 0, 1, 4)
-
-        self.layout().addWidget(wl_layouts.Wl_Separator(self), 2, 0, 1, 4)
-
-        self.layout().addWidget(self.button_restore_defaults, 3, 0)
-        self.layout().addWidget(self.button_open, 3, 2)
-        self.layout().addWidget(self.button_cancel, 3, 3)
-
-        self.layout().setColumnStretch(1, 1)
-
-        self.load_settings()
-
-    def accept(self):
-        super().accept()
-
-        self.main.tabs_file_area.currentWidget().table_files._open_files(files_to_open = self.table_files.files_to_open)
-
-    def reject(self):
-        # Remove placeholders for new paths
-        for file in self.table_files.files_to_open:
-            if os.path.exists(file['path']):
-                os.remove(file['path'])
-
-        super().reject()
-
-    def load_settings(self, defaults = False):
-        if defaults:
-            settings = copy.deepcopy(self.main.settings_default['file_area']['dialog_open_files'])
-        else:
-            settings = copy.deepcopy(self.main.settings_custom['file_area']['dialog_open_files'])
-
-        self.checkbox_auto_detect_encodings.setChecked(settings['auto_detect_encodings'])
-        self.checkbox_auto_detect_langs.setChecked(settings['auto_detect_langs'])
-        self.checkbox_include_files_in_subfolders.setChecked(settings['include_files_in_subfolders'])
-
-        self.table_files.model().itemChanged.emit(QStandardItem())
-        self.settings_changed()
-
-    def table_files_changed(self, item): # pylint: disable=unused-argument
-        if self.table_files.is_empty():
-            self.button_open.setEnabled(False)
-        else:
-            self.button_open.setEnabled(True)
-
-    def settings_changed(self):
-        settings = self.main.settings_custom['file_area']['dialog_open_files']
-
-        settings['auto_detect_encodings'] = self.checkbox_auto_detect_encodings.isChecked()
-        settings['auto_detect_langs'] = self.checkbox_auto_detect_langs.isChecked()
-        settings['include_files_in_subfolders'] = self.checkbox_include_files_in_subfolders.isChecked()
-
-    def _add_files(self, file_paths):
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
-
-        file_paths, self.file_paths_unsupported = wl_checks_files.check_file_paths_unsupported(self.main, file_paths)
-        file_paths, self.file_paths_empty = wl_checks_files.check_file_paths_empty(self.main, file_paths)
-        file_paths, self.file_paths_dup = wl_checks_files.check_file_paths_dup(
-            self.main,
-            new_file_paths = file_paths,
-            file_paths = [
-                file['path_original']
-                for file in (
-                    self.main.settings_custom['file_area'][f'files_open{self.main.tabs_file_area.currentWidget().settings_suffix}']
-                    + self.table_files.files_to_open
-                )
-            ]
+    def get_selected_file_names(self):
+        return (
+            file['name']
+            for file in self.get_selected_files()
         )
 
-        wl_threading.Wl_Thread(Wl_Worker_Add_Files(
-            self.main,
-            dialog_progress = dialog_progress,
-            update_gui = self.update_gui,
-            file_paths = file_paths,
-            table = self.table_files
-        )).start_worker()
-
-    def update_gui(self, err_msg, new_files):
-        if wl_checks_files.check_err_file_area(self.main, err_msg):
-            self.table_files.files_to_open.extend(new_files)
-
-            self.table_files.update_table()
-
-            if self.file_paths_empty or self.file_paths_unsupported or self.file_paths_dup:
-                dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, title = self.tr('Error Adding Files'))
-
-                dialog_err_files.label_err.set_text(self.tr('''
-                    <div>
-                        An error occurred while adding files, so the following files are not added to the table.
-                    </div>
-                '''))
-                dialog_err_files.table_err_files.model().setRowCount(
-                    len(self.file_paths_empty)
-                    + len(self.file_paths_unsupported)
-                    + len(self.file_paths_dup)
-                )
-
-                dialog_err_files.table_err_files.disable_updates()
-
-                for i, file_path in enumerate(self.file_paths_empty + self.file_paths_unsupported + self.file_paths_dup):
-                    if file_path in self.file_paths_empty:
-                        dialog_err_files.table_err_files.model().setItem(
-                            i, 0,
-                            QStandardItem(self.tr('Empty File'))
-                        )
-                    elif file_path in self.file_paths_unsupported:
-                        dialog_err_files.table_err_files.model().setItem(
-                            i, 0,
-                            QStandardItem(self.tr('Unsupported File Type'))
-                        )
-                    elif file_path in self.file_paths_dup:
-                        dialog_err_files.table_err_files.model().setItem(
-                            i, 0,
-                            QStandardItem(self.tr('Duplicate File'))
-                        )
-
-                    dialog_err_files.table_err_files.model().setItem(
-                        i, 1,
-                        QStandardItem(file_path)
-                    )
-
-                dialog_err_files.table_err_files.enable_updates()
-                dialog_err_files.open()
-
-    def add_files(self):
-        if os.path.exists(self.main.settings_custom['general']['imp']['files']['default_path']):
-            default_dir = self.main.settings_custom['general']['imp']['files']['default_path']
+    def find_file_by_name(self, file_name, selected_only = False):
+        if selected_only:
+            files = self.get_selected_files()
         else:
-            default_dir = self.main.settings_default['general']['imp']['files']['default_path']
+            files = self.get_files()
 
-        file_paths = QFileDialog.getOpenFileNames(
-            parent = self.main,
-            caption = self.tr('Open Files'),
-            directory = wl_checks_misc.check_dir(default_dir),
-            filter = ';;'.join(self.main.settings_global['file_types']['files']),
-            initialFilter = self.main.settings_global['file_types']['files'][-1]
-        )[0]
+        for file in files:
+            if file['name'] == file_name:
+                return file
 
-        if file_paths:
-            self._add_files(file_paths)
+        return None
 
-    def add_folder(self):
-        file_paths = []
+    def find_files_by_name(self, file_names, selected_only = False):
+        files = [
+            self.find_file_by_name(file_name, selected_only = selected_only)
+            for file_name in file_names
+        ]
 
-        file_dir = QFileDialog.getExistingDirectory(
-            parent = self.main,
-            caption = self.tr('Open Folder'),
-            directory = self.main.settings_custom['general']['imp']['files']['default_path']
-        )
-
-        if file_dir:
-            if self.main.settings_custom['file_area']['dialog_open_files']['include_files_in_subfolders']:
-                for dir_path, _, file_names in os.walk(file_dir):
-                    for file_name in file_names:
-                        file_paths.append(os.path.join(dir_path, file_name))
-            else:
-                file_names = list(os.walk(file_dir))[0][2]
-
-                for file_name in file_names:
-                    file_paths.append(os.path.join(file_dir, file_name))
-
-            self._add_files(file_paths)
+        return (file for file in files if file)
 
 class Wl_Table_Files(wl_tables.Wl_Table):
     def __init__(self, parent):
@@ -880,65 +371,574 @@ class Wl_Table_Files(wl_tables.Wl_Table):
     def close_all(self):
         self._close_files(list(range(len(self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']))))
 
-class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
-    def __init__(self, main, file_type = 'observed'):
-        super().__init__(main)
-
-        self.file_names_old = []
-        self.file_type = file_type
-
-        # Suffix for settings
-        if self.file_type == 'observed':
-            self.settings_suffix = ''
-        elif self.file_type == 'ref':
-            self.settings_suffix = '_ref'
-
-        # Table
-        self.table_files = Wl_Table_Files(self)
-
-        self.wrapper_table.layout().addWidget(self.table_files, 0, 0)
-
-        # Load files
-        self.table_files.update_table()
-
-    def get_files(self):
-        return self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}']
-
-    def get_file_names(self):
-        return (
-            file['name']
-            for file in self.get_files()
+class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
+    def __init__(self, main):
+        super().__init__(
+            main,
+            title = _tr('Dialog_Open_Files', 'Open Files'),
+            width = 800
         )
 
-    def get_selected_files(self):
-        return (
-            file
-            for file in self.get_files()
-            if file['selected']
-        )
+        self.table_files = Table_Open_Files(self)
 
-    def get_selected_file_names(self):
-        return (
-            file['name']
-            for file in self.get_selected_files()
-        )
+        self.table_files.model().itemChanged.connect(self.table_files_changed)
 
-    def find_file_by_name(self, file_name, selected_only = False):
-        if selected_only:
-            files = self.get_selected_files()
+        self.table_files.button_add.hide()
+        self.table_files.button_ins.hide()
+
+        self.table_files.button_add_files = QPushButton(self.tr('Add files...'), self)
+        self.table_files.button_add_folder = QPushButton(self.tr('Add folder...'), self)
+
+        self.table_files.button_add_files.clicked.connect(self.add_files)
+        self.table_files.button_add_folder.clicked.connect(self.add_folder)
+
+        layout_table = wl_layouts.Wl_Layout()
+        layout_table.addWidget(self.table_files, 0, 0, 5, 1)
+        layout_table.addWidget(self.table_files.button_add_files, 0, 1)
+        layout_table.addWidget(self.table_files.button_add_folder, 1, 1)
+        layout_table.addWidget(self.table_files.button_del, 2, 1)
+        layout_table.addWidget(self.table_files.button_clr, 3, 1)
+
+        layout_table.setRowStretch(4, 1)
+
+        self.checkbox_auto_detect_encodings = QCheckBox(self.tr('Auto-detect encodings'), self)
+        self.checkbox_auto_detect_langs = QCheckBox(self.tr('Auto-detect languages'), self)
+        self.checkbox_include_files_in_subfolders = QCheckBox(self.tr('Include files in subfolders'), self)
+
+        self.checkbox_auto_detect_encodings.stateChanged.connect(self.settings_changed)
+        self.checkbox_auto_detect_langs.stateChanged.connect(self.settings_changed)
+        self.checkbox_include_files_in_subfolders.stateChanged.connect(self.settings_changed)
+
+        layout_checkboxes = wl_layouts.Wl_Layout()
+        layout_checkboxes.addWidget(self.checkbox_auto_detect_encodings, 0, 0)
+        layout_checkboxes.addWidget(self.checkbox_auto_detect_langs, 0, 1)
+        layout_checkboxes.addWidget(self.checkbox_include_files_in_subfolders, 1, 0, 1, 2)
+
+        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
+        self.button_open = QPushButton(self.tr('Open'), self)
+        self.button_cancel = QPushButton(self.tr('Cancel'), self)
+
+        self.button_open.clicked.connect(self.accept)
+        self.button_cancel.clicked.connect(self.reject)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addLayout(layout_table, 0, 0, 1, 4)
+        self.layout().addLayout(layout_checkboxes, 1, 0, 1, 4)
+
+        self.layout().addWidget(wl_layouts.Wl_Separator(self), 2, 0, 1, 4)
+
+        self.layout().addWidget(self.button_restore_defaults, 3, 0)
+        self.layout().addWidget(self.button_open, 3, 2)
+        self.layout().addWidget(self.button_cancel, 3, 3)
+
+        self.layout().setColumnStretch(1, 1)
+
+        self.load_settings()
+
+    def accept(self):
+        super().accept()
+
+        self.main.tabs_file_area.currentWidget().table_files._open_files(files_to_open = self.table_files.files_to_open)
+
+    def reject(self):
+        # Remove placeholders for new paths
+        for file in self.table_files.files_to_open:
+            if os.path.exists(file['path']):
+                os.remove(file['path'])
+
+        super().reject()
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.main.settings_default['file_area']['dialog_open_files'])
         else:
-            files = self.get_files()
+            settings = copy.deepcopy(self.main.settings_custom['file_area']['dialog_open_files'])
 
-        for file in files:
-            if file['name'] == file_name:
-                return file
+        self.checkbox_auto_detect_encodings.setChecked(settings['auto_detect_encodings'])
+        self.checkbox_auto_detect_langs.setChecked(settings['auto_detect_langs'])
+        self.checkbox_include_files_in_subfolders.setChecked(settings['include_files_in_subfolders'])
 
-        return None
+        self.table_files.model().itemChanged.emit(QStandardItem())
+        self.settings_changed()
 
-    def find_files_by_name(self, file_names, selected_only = False):
-        files = [
-            self.find_file_by_name(file_name, selected_only = selected_only)
-            for file_name in file_names
-        ]
+    def table_files_changed(self, item): # pylint: disable=unused-argument
+        if self.table_files.is_empty():
+            self.button_open.setEnabled(False)
+        else:
+            self.button_open.setEnabled(True)
 
-        return (file for file in files if file)
+    def settings_changed(self):
+        settings = self.main.settings_custom['file_area']['dialog_open_files']
+
+        settings['auto_detect_encodings'] = self.checkbox_auto_detect_encodings.isChecked()
+        settings['auto_detect_langs'] = self.checkbox_auto_detect_langs.isChecked()
+        settings['include_files_in_subfolders'] = self.checkbox_include_files_in_subfolders.isChecked()
+
+    def _add_files(self, file_paths):
+        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
+
+        file_paths, self.file_paths_unsupported = wl_checks_files.check_file_paths_unsupported(self.main, file_paths)
+        file_paths, self.file_paths_empty = wl_checks_files.check_file_paths_empty(self.main, file_paths)
+        file_paths, self.file_paths_dup = wl_checks_files.check_file_paths_dup(
+            self.main,
+            new_file_paths = file_paths,
+            file_paths = [
+                file['path_original']
+                for file in (
+                    self.main.settings_custom['file_area'][f'files_open{self.main.tabs_file_area.currentWidget().settings_suffix}']
+                    + self.table_files.files_to_open
+                )
+            ]
+        )
+
+        wl_threading.Wl_Thread(Wl_Worker_Add_Files(
+            self.main,
+            dialog_progress = dialog_progress,
+            update_gui = self.update_gui,
+            file_paths = file_paths,
+            table = self.table_files
+        )).start_worker()
+
+    def update_gui(self, err_msg, new_files):
+        if wl_checks_files.check_err_file_area(self.main, err_msg):
+            self.table_files.files_to_open.extend(new_files)
+
+            self.table_files.update_table()
+
+            if self.file_paths_empty or self.file_paths_unsupported or self.file_paths_dup:
+                dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(self.main, title = self.tr('Error Adding Files'))
+
+                dialog_err_files.label_err.set_text(self.tr('''
+                    <div>
+                        An error occurred while adding files, so the following files are not added to the table.
+                    </div>
+                '''))
+                dialog_err_files.table_err_files.model().setRowCount(
+                    len(self.file_paths_empty)
+                    + len(self.file_paths_unsupported)
+                    + len(self.file_paths_dup)
+                )
+
+                dialog_err_files.table_err_files.disable_updates()
+
+                for i, file_path in enumerate(self.file_paths_empty + self.file_paths_unsupported + self.file_paths_dup):
+                    if file_path in self.file_paths_empty:
+                        dialog_err_files.table_err_files.model().setItem(
+                            i, 0,
+                            QStandardItem(self.tr('Empty File'))
+                        )
+                    elif file_path in self.file_paths_unsupported:
+                        dialog_err_files.table_err_files.model().setItem(
+                            i, 0,
+                            QStandardItem(self.tr('Unsupported File Type'))
+                        )
+                    elif file_path in self.file_paths_dup:
+                        dialog_err_files.table_err_files.model().setItem(
+                            i, 0,
+                            QStandardItem(self.tr('Duplicate File'))
+                        )
+
+                    dialog_err_files.table_err_files.model().setItem(
+                        i, 1,
+                        QStandardItem(file_path)
+                    )
+
+                dialog_err_files.table_err_files.enable_updates()
+                dialog_err_files.open()
+
+    def add_files(self):
+        if os.path.exists(self.main.settings_custom['general']['imp']['files']['default_path']):
+            default_dir = self.main.settings_custom['general']['imp']['files']['default_path']
+        else:
+            default_dir = self.main.settings_default['general']['imp']['files']['default_path']
+
+        file_paths = QFileDialog.getOpenFileNames(
+            parent = self.main,
+            caption = self.tr('Open Files'),
+            directory = wl_checks_misc.check_dir(default_dir),
+            filter = ';;'.join(self.main.settings_global['file_types']['files']),
+            initialFilter = self.main.settings_global['file_types']['files'][-1]
+        )[0]
+
+        if file_paths:
+            self._add_files(file_paths)
+
+    def add_folder(self):
+        file_paths = []
+
+        file_dir = QFileDialog.getExistingDirectory(
+            parent = self.main,
+            caption = self.tr('Open Folder'),
+            directory = self.main.settings_custom['general']['imp']['files']['default_path']
+        )
+
+        if file_dir:
+            if self.main.settings_custom['file_area']['dialog_open_files']['include_files_in_subfolders']:
+                for dir_path, _, file_names in os.walk(file_dir):
+                    for file_name in file_names:
+                        file_paths.append(os.path.join(dir_path, file_name))
+            else:
+                file_names = list(os.walk(file_dir))[0][2]
+
+                for file_name in file_names:
+                    file_paths.append(os.path.join(file_dir, file_name))
+
+            self._add_files(file_paths)
+
+class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
+    def __init__(self, parent):
+        super().__init__(
+            parent = parent,
+            headers = [
+                _tr('Table_Open_Files', 'Path'),
+                _tr('Table_Open_Files', 'Encoding'),
+                _tr('Table_Open_Files', 'Language'),
+                _tr('Table_Open_Files', 'Tokenized'),
+                _tr('Table_Open_Files', 'Tagged')
+            ],
+            col_edit = 2
+        )
+
+        self.files_to_open = []
+
+        self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
+        self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Encoding))
+        self.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Lang))
+        self.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Yes_No))
+        self.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate_Combo_Box_Custom(self, wl_boxes.Wl_Combo_Box_Yes_No))
+
+        self.button_clr.disconnect()
+        self.button_clr.clicked.connect(lambda: self.clr_table(remove_placeholders = True))
+
+        self.clr_table()
+
+    def item_changed(self, item):
+        super().item_changed(item = item)
+
+        self.files_to_open = []
+
+        if not self.is_empty():
+            for row in range(self.model().rowCount()):
+                file = self.model().item(row, 0).file
+
+                file['encoding'] = wl_conversion.to_encoding_code(self.main, self.model().item(row, 1).text())
+                file['lang'] = wl_conversion.to_lang_code(self.main, self.model().item(row, 2).text())
+                file['tokenized'] = wl_conversion.to_yes_no_code(self.model().item(row, 3).text())
+                file['tagged'] = wl_conversion.to_yes_no_code(self.model().item(row, 4).text())
+
+                self.files_to_open.append(file)
+
+    def del_row(self):
+        for row in self.get_selected_rows():
+            file_path = self.files_to_open[row]['path']
+
+            if os.path.exists(file_path):
+                os.remove(file_path)
+
+        super().del_row()
+
+    def clr_table(self, num_headers = 1, remove_placeholders = False):
+        # Remove placeholders for new paths
+        if remove_placeholders:
+            for file in self.files_to_open:
+                if os.path.exists(file['path']):
+                    os.remove(file['path'])
+
+        super().clr_table(num_headers = num_headers)
+
+    def update_table(self):
+        files = self.files_to_open
+
+        if files:
+            self.clr_table(len(files))
+
+            self.disable_updates()
+
+            for i, file in enumerate(files):
+                self.model().setItem(i, 0, QStandardItem(file['path_original']))
+                self.model().setItem(i, 1, QStandardItem(wl_conversion.to_encoding_text(self.main, file['encoding'])))
+                self.model().setItem(i, 2, QStandardItem(wl_conversion.to_lang_text(self.main, file['lang'])))
+                self.model().setItem(i, 3, QStandardItem(wl_conversion.to_yes_no_text(file['tokenized'])))
+                self.model().setItem(i, 4, QStandardItem(wl_conversion.to_yes_no_text(file['tagged'])))
+
+                self.model().item(i, 0).file = file
+
+            self.enable_updates()
+        else:
+            self.clr_table()
+
+class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str, list)
+
+    def run(self):
+        err_msg = ''
+        new_files = []
+
+        try:
+            len_file_paths = len(self.file_paths)
+
+            for i, file_path in enumerate(self.file_paths):
+                self.progress_updated.emit(self.tr('Adding files... ({}/{})').format(i + 1, len_file_paths))
+
+                file_path = wl_paths.get_normalized_path(file_path)
+                file_name, file_ext = os.path.splitext(os.path.basename(file_path))
+                file_ext = file_ext.lower()
+
+                new_file = {'selected': True, 'path_original': file_path}
+
+                # Check for duplicate file names
+                file_names = [
+                    *self.main.wl_file_area.get_file_names(),
+                    *[file['name'] for file in self.table.files_to_open],
+                    *[new_file['name'] for new_file in new_files]
+                ]
+
+                new_file['name'] = new_file['name_old'] = wl_checks_misc.check_new_name(file_name, file_names)
+
+                # Path, Tokenized, Tagged
+                default_dir = wl_checks_misc.check_dir(self.main.settings_custom['general']['imp']['temp_files']['default_path'])
+
+                if file_ext == '.xml':
+                    new_file['path'] = os.path.join(default_dir, f'{file_name}.xml')
+
+                    # Use default settings for "Tokenized" & "Tagged" if auto-detection of encodings and languages are both disabled
+                    if (
+                        not self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings']
+                        and not self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']
+                    ):
+                        new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
+                        new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
+                    else:
+                        new_file['tokenized'] = True
+                        new_file['tagged'] = True
+                else:
+                    new_file['path'] = os.path.join(default_dir, f'{file_name}.txt')
+                    new_file['tokenized'] = self.main.settings_custom['files']['default_settings']['tokenized']
+                    new_file['tagged'] = self.main.settings_custom['files']['default_settings']['tagged']
+
+                # Check for duplicate files
+                new_file['path'] = wl_checks_misc.check_new_path(new_file['path'])
+
+                # Detect encodings
+                default_encoding = self.main.settings_custom['files']['default_settings']['encoding']
+
+                if file_ext in ['.docx', '.xlsx']:
+                    new_file['encoding'] = default_encoding
+                else:
+                    if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings']:
+                        new_file['encoding'] = wl_detection.detect_encoding(self.main, file_path)
+                    else:
+                        new_file['encoding'] = default_encoding
+
+                # Cleanse contents before language detection
+                if file_ext != '.tmx':
+                    if file_ext in ['.txt', '.xml']:
+                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                            new_file['text'] = f.read()
+                    # CSV files
+                    elif file_ext == '.csv':
+                        lines = []
+
+                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace', newline = '') as f:
+                            # Remove NULL bytes to avoid error
+                            csv_reader = csv.reader([line.replace('\0', '') for line in f])
+
+                            for row in csv_reader:
+                                lines.append('\t'.join(row))
+
+                        new_file['text'] = '\n'.join(lines)
+                    # HTML pages
+                    elif file_ext in ['.htm', '.html']:
+                        with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                            soup = bs4.BeautifulSoup(f.read(), 'lxml')
+
+                        new_file['text'] = soup.get_text()
+                    # Word documents
+                    elif file_ext == '.docx':
+                        lines = []
+                        doc = docx.Document(file_path)
+
+                        for block in self.iter_block_items(doc):
+                            if isinstance(block, docx.text.paragraph.Paragraph):
+                                lines.append(block.text)
+                            elif isinstance(block, docx.table.Table):
+                                for row in self.iter_visual_cells(block):
+                                    cells = []
+
+                                    for cell in row:
+                                        cells.append(' '.join([item.text for item in self.iter_cell_items(cell)]))
+
+                                    lines.append('\t'.join(cells))
+
+                        new_file['text'] = '\n'.join(lines)
+                    # Excel workbooks
+                    elif file_ext == '.xlsx':
+                        lines = []
+                        workbook = openpyxl.load_workbook(file_path, data_only = True)
+
+                        for worksheet_name in workbook.sheetnames:
+                            worksheet = workbook[worksheet_name]
+
+                            for row in worksheet.rows:
+                                cells = [
+                                    (cell.value if cell.value is not None else '')
+                                    for cell in row
+                                ]
+
+                                lines.append('\t'.join(cells))
+
+                        new_file['text'] = '\n'.join(lines)
+                    # PDF files
+                    elif file_ext == '.pdf':
+                        reader = pypdf.PdfReader(file_path)
+                        new_file['text'] = '\n'.join([page.extract_text() for page in reader.pages])
+
+                    if self.main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs']:
+                        new_file['lang'] = wl_detection.detect_lang_text(self.main, new_file['text'])
+                    else:
+                        new_file['lang'] = self.main.settings_custom['files']['default_settings']['lang']
+
+                    new_files.append(new_file)
+                # Translation memory files
+                else:
+                    lines_src = []
+                    lines_target = []
+
+                    new_file_src = copy.deepcopy(new_file)
+                    new_file_tgt = copy.deepcopy(new_file)
+
+                    new_file_src['name'] = new_file_src['name_old'] = wl_checks_misc.check_new_name(f'{file_name}_source', file_names)
+                    new_file_tgt['name'] = new_file_tgt['name_old'] = wl_checks_misc.check_new_name(f'{file_name}_target', file_names)
+
+                    with open(file_path, 'r', encoding = new_file['encoding'], errors = 'replace') as f:
+                        soup = bs4.BeautifulSoup(f.read(), 'lxml-xml')
+
+                    # Extract source and target languages
+                    elements_tuv = soup.select(r'tu:first-child tuv[xml\:lang]')
+
+                    if len(elements_tuv) == 2:
+                        new_file_src['lang'] = wl_conversion.to_iso_639_3(self.main, elements_tuv[0]['xml:lang'])
+                        new_file_tgt['lang'] = wl_conversion.to_iso_639_3(self.main, elements_tuv[1]['xml:lang'])
+
+                        if new_file_src['lang'] is None:
+                            new_file_src['lang'] = 'other'
+                        if new_file_tgt['lang'] is None:
+                            new_file_tgt['lang'] = 'other'
+                    else:
+                        new_file_src['lang'] = new_file_tgt['lang'] = self.main.settings_custom['files']['default_settings']['lang']
+
+                    for elements_tu in soup.select('tu'):
+                        seg_src, seg_target = elements_tu.select('seg')
+
+                        lines_src.append(seg_src.get_text().replace(r'\n', ' ').strip())
+                        lines_target.append(seg_target.get_text().replace(r'\n', ' ').strip())
+
+                    new_file_src['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_source.txt'))
+                    new_file_tgt['path'] = wl_checks_misc.check_new_path(os.path.join(default_dir, f'{file_name}_target.txt'))
+
+                    new_file_src['text'] = '\n'.join(lines_src)
+                    new_file_tgt['text'] = '\n'.join(lines_target)
+
+                    new_files.append(new_file_src)
+                    new_files.append(new_file_tgt)
+
+            if self.file_paths:
+                self.main.settings_custom['general']['imp']['files']['default_path'] = wl_paths.get_normalized_dir(self.file_paths[0])
+        except Exception:
+            err_msg = traceback.format_exc()
+
+        self.progress_updated.emit(self.tr('Updating table...'))
+        self.worker_done.emit(err_msg, new_files)
+
+    # Reference: https://github.com/python-openxml/python-docx/issues/276
+    def iter_block_items(self, parent):
+        """
+        Yield each paragraph and table child within *parent*, in document order.
+        Each returned value is an instance of either Table or Paragraph. *parent*
+        would most commonly be a reference to a main Document object, but
+        also works for a _Cell object, which itself can contain paragraphs and tables.
+        """
+        if isinstance(parent, Document):
+            parent_elm = parent.element.body
+        elif isinstance(parent, _Cell):
+            parent_elm = parent._tc
+        else:
+            raise ValueError("something's not right")
+
+        for child in parent_elm.iterchildren():
+            if isinstance(child, CT_P):
+                yield Paragraph(child, parent)
+            elif isinstance(child, CT_Tbl):
+                yield Table(child, parent)
+
+    def iter_cell_items(self, parent):
+        parent_elm = parent._tc
+
+        for child in parent_elm.iterchildren():
+            if isinstance(child, CT_P):
+                yield Paragraph(child, parent)
+            elif isinstance(child, CT_Tbl):
+                table = Table(child, parent)
+
+                for row in table.rows:
+                    for cell in row.cells:
+                        yield from self.iter_cell_items(cell)
+
+    # Reference: https://github.com/python-openxml/python-docx/issues/40
+    def iter_visual_cells(self, table):
+        prior_tcs = []
+        visual_cells = []
+
+        for row in table.rows:
+            visual_cells.append([])
+
+            for cell in row.cells:
+                this_tc = cell._tc
+
+                if this_tc in prior_tcs:  # skip cells pointing to same `<w:tc>` element
+                    continue
+                else:
+                    prior_tcs.append(this_tc)
+
+                    visual_cells[-1].append(cell)
+
+        return visual_cells
+
+class Wl_Worker_Open_Files(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str, list)
+
+    def run(self):
+        err_msg = ''
+        new_files = []
+
+        try:
+            len_files = len(self.files_to_open)
+            # Regex for headers
+            re_tags_header = wl_matching.get_re_tags_with_tokens(self.main, tag_type = 'header')
+
+            for i, file in enumerate(self.files_to_open):
+                self.progress_updated.emit(self.tr('Opening files... ({}/{})').format(i + 1, len_files))
+
+                # Remove header tags
+                with open(file['path'], 'w', encoding = file['encoding']) as f:
+                    text = file['text']
+
+                    if file['tagged'] and re_tags_header:
+                        # Use regex here since BeautifulSoup will add tags including <html> and <body> to the text
+                        # See: https://www.crummy.com/software/BeautifulSoup/bs4/doc/#differences-between-parsers
+                        text = re.sub(re_tags_header, '', text)
+
+                    f.write(text)
+
+                # Process texts
+                if self.file_type == 'observed':
+                    file['text'] = wl_texts.Wl_Text(self.main, file)
+                elif self.file_type == 'ref':
+                    file['text'] = wl_texts.Wl_Text_Ref(self.main, file)
+
+                new_files.append(file)
+        except Exception:
+            err_msg = traceback.format_exc()
+
+        self.progress_updated.emit(self.tr('Updating table...'))
+        self.worker_done.emit(err_msg, new_files)
