@@ -30,6 +30,7 @@ from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_paths
 from wordless.wl_widgets import wl_boxes, wl_layouts
 
+# General
 class Wl_Settings_General(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -209,6 +210,7 @@ class Wl_Settings_General(wl_settings.Wl_Settings_Node):
 
         return None
 
+# General - Import
 class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -408,6 +410,7 @@ class Wl_Settings_General_Imp(wl_settings.Wl_Settings_Node):
 
         return True
 
+# General - Export
 class Wl_Settings_General_Exp(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)

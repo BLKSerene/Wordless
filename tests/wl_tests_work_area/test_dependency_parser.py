@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Work Area - Parallel Concordancer
+# Wordless: Tests - Work Area - Dependency Parser
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -19,17 +19,22 @@
 import re
 
 from tests import wl_test_init
-from wordless import wl_concordancer_parallel
+from wordless import wl_dependency_parser
 from wordless.wl_dialogs import wl_dialogs_misc
 
 main = wl_test_init.Wl_Test_Main()
 
-main.settings_custom['concordancer_parallel']['search_settings']['multi_search_mode'] = True
-main.settings_custom['concordancer_parallel']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+main.settings_custom['dependency_parser']['search_settings']['multi_search_mode'] = True
+main.settings_custom['dependency_parser']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-def test_concordancer_parallel():
-    for _ in range(2):
-        wl_test_init.select_random_files(main, num_files = 3)
+def test_dependency_parser():
+    for i in range(2):
+        # Single file
+        if i % 2 == 0:
+            wl_test_init.select_random_files(main, num_files = 1)
+        # Multiple files
+        elif i % 2 == 1:
+            wl_test_init.select_random_files(main, num_files = 2)
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
@@ -38,29 +43,42 @@ def test_concordancer_parallel():
 
         print(f"Files: {', '.join(files_selected)}")
 
-        wl_concordancer_parallel.Wl_Worker_Concordancer_Parallel_Table(
+        wl_dependency_parser.Wl_Worker_Dependency_Parser(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
         ).run()
 
-    main.app.quit()
-
-def update_gui(err_msg, concordance_lines):
+def update_gui(err_msg, results):
     print(err_msg)
     assert not err_msg
-    assert concordance_lines
+    assert results
 
-    for concordance_line in concordance_lines:
-        parallel_unit_no, len_parallel_units = concordance_line[0]
+    file_names = list(main.wl_file_area.get_selected_file_names())
 
-        # Parallel Unit No.
-        assert parallel_unit_no >= 1
-        assert len_parallel_units >= 1
+    for (
+        head, dependent, dependency_relation, dependency_len,
+        sentence_display, sentence_search,
+        no_sentence, len_sentences, file
+    ) in results:
+        # Head
+        assert head
+        # Dependent
+        assert dependent
+        # Dependency Relation
+        assert dependency_relation
+        # Dependency Length
+        assert isinstance(dependency_len, int)
 
-        # Parallel Units
-        for parallel_unit in concordance_line[1]:
-            assert len(parallel_unit) == 2
+        # Sentence
+        assert all(sentence_display)
+        assert all(sentence_search)
+
+        # Sentence No.
+        assert no_sentence >= 1
+        assert len_sentences >= 1
+        # File
+        assert file in file_names
 
 if __name__ == '__main__':
-    test_concordancer_parallel()
+    test_dependency_parser()

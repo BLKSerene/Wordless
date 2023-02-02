@@ -26,13 +26,11 @@ from wordless.wl_dialogs import wl_dialogs_misc
 main = wl_test_init.Wl_Test_Main()
 
 def test_keyword_extractor():
-    print('Start testing module Keyword Extractor...\n')
-
     # Do not test Fisher's exact test since it is too computationally expensive
     tests_statistical_significance = [
         test_statistical_significance
         for test_statistical_significance, vals in main.settings_global['tests_statistical_significance'].items()
-        if vals['keyword_extractor'] and test_statistical_significance != "Fisher's Exact Test"
+        if vals['keyword_extractor'] and test_statistical_significance != 'fishers_exact_test'
     ]
     measures_bayes_factor = [
         measure_bayes_factor
@@ -93,11 +91,10 @@ def test_keyword_extractor():
         main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor'] = measures_bayes_factor[i % len_measures_bayes_factor]
         main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size'] = measures_effect_size[i % len_measures_effect_size]
 
-        print(f'[Test Round {i + 1}]')
         print(f"Observed files: {', '.join(file_names_observed)}")
         print(f"Reference files: {', '.join(file_names_ref)}")
-        print(f"Test of Statistical significance: {main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance']}")
-        print(f"Measure of bayes factor: {main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor']}")
+        print(f"Test of statistical significance: {main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance']}")
+        print(f"Measure of Bayes factor: {main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size']}")
 
         wl_keyword_extractor.Wl_Worker_Keyword_Extractor_Table(
@@ -107,8 +104,6 @@ def test_keyword_extractor():
         ).run()
 
     main.app.quit()
-
-    print('All done!')
 
 def update_gui(err_msg, keywords_freq_files, keywords_stats_files):
     print(err_msg)

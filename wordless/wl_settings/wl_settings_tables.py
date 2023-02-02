@@ -23,6 +23,7 @@ from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
 from wordless.wl_settings import wl_settings
 from wordless.wl_widgets import wl_boxes, wl_layouts
 
+# Tables
 class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -94,6 +95,7 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
 
         return True
 
+# Tables - Profiler
 class Wl_Settings_Tables_Profiler(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
