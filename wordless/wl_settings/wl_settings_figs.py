@@ -84,6 +84,7 @@ NETWORKX_LAYOUTS = {
     _tr('wl_settings_figs', 'Spectral'): networkx.spectral_layout
 }
 
+# Figures - Line Charts
 class Wl_Settings_Figs_Line_Charts(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -131,6 +132,7 @@ class Wl_Settings_Figs_Line_Charts(wl_settings.Wl_Settings_Node):
 
         return True
 
+# Figures - Word Clouds
 class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -412,6 +414,7 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
 
         return True
 
+# Figures - Network Graphs
 class Wl_Settings_Figs_Network_Graphs(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)

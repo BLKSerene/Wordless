@@ -20,6 +20,7 @@ import copy
 import glob
 import os
 import pickle
+import random
 import sys
 
 from PyQt5.QtCore import QObject
@@ -102,6 +103,25 @@ class Wl_Exception_Tests_Lang_Skipped(Exception):
 class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
     def __init__(self, lang_util):
         super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
+
+# Select files randomly
+def select_random_files(main, num_files):
+    files = main.settings_custom['file_area']['files_open']
+
+    for file in files:
+        file['selected'] = False
+
+    for file in random.sample(files, num_files):
+        file['selected'] = True # pylint: disable=unsupported-assignment-operation
+
+def select_random_files_ref(main, num_files):
+    files = main.settings_custom['file_area']['files_open_ref']
+
+    for file in files:
+        file['selected'] = False
+
+    for file in random.sample(files, num_files):
+        file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
 # Clean cached files
 def clean_import_caches():

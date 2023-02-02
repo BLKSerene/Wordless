@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import random
 import re
 
 from tests import wl_test_init
@@ -29,8 +28,6 @@ main.settings_custom['ngram_generator']['search_settings']['multi_search_mode'] 
 main.settings_custom['ngram_generator']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
 def test_ngram_generator():
-    print('Start testing module N-gram Generator...\n')
-
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
 
@@ -38,19 +35,13 @@ def test_ngram_generator():
     len_measures_adjusted_freq = len(measures_adjusted_freq)
     len_max_measures = max([len_measures_dispersion, len_measures_adjusted_freq])
 
-    files = main.settings_custom['file_area']['files_open']
-
     for i in range(len_max_measures):
-        for file in files:
-            file['selected'] = False
-
         # Single file
         if i % 2 == 0:
-            random.choice(files)['selected'] = True
+            wl_test_init.select_random_files(main, num_files = 1)
         # Multiple files
         elif i % 2 == 1:
-            for file in random.sample(files, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
+            wl_test_init.select_random_files(main, num_files = 2)
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
@@ -60,7 +51,6 @@ def test_ngram_generator():
         main.settings_custom['ngram_generator']['generation_settings']['measure_dispersion'] = measures_dispersion[i % len_measures_dispersion]
         main.settings_custom['ngram_generator']['generation_settings']['measure_adjusted_freq'] = measures_adjusted_freq[i % len_measures_adjusted_freq]
 
-        print(f'[Test Round {i + 1}]')
         print(f"Files: {', '.join(files_selected)}")
         print(f"Measure of dispersion: {main.settings_custom['ngram_generator']['generation_settings']['measure_dispersion']}")
         print(f"Measure of adjusted frequency: {main.settings_custom['ngram_generator']['generation_settings']['measure_adjusted_freq']}")
@@ -70,8 +60,6 @@ def test_ngram_generator():
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
         ).run()
-
-    print('All done!')
 
     main.app.quit()
 
