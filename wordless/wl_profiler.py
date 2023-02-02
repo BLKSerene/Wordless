@@ -37,165 +37,149 @@ from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
 
-class Wl_Worker_Profiler(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
+class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
+    def __init__(self, main):
+        super().__init__(main)
 
-    def __init__(self, main, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
+        # Table
+        self.table_profiler = Wl_Table_Profiler(self)
 
-        self.err_msg = ''
-        self.text_stats_files = []
+        self.wrapper_table.layout().addWidget(self.table_profiler, 0, 0, 1, 4)
+        self.wrapper_table.layout().addWidget(self.table_profiler.button_generate_table, 1, 0)
+        self.wrapper_table.layout().addWidget(self.table_profiler.button_exp_selected, 1, 1)
+        self.wrapper_table.layout().addWidget(self.table_profiler.button_exp_all, 1, 2)
+        self.wrapper_table.layout().addWidget(self.table_profiler.button_clr, 1, 3)
 
-    def run(self):
-        try:
-            texts = []
+        # Token Settings
+        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
-            settings = self.main.settings_custom['profiler']
-            files = list(self.main.wl_file_area.get_selected_files())
+        (
+            self.checkbox_words,
+            self.checkbox_all_lowercase,
+            self.checkbox_all_uppercase,
+            self.checkbox_title_case,
+            self.checkbox_nums,
+            self.checkbox_puncs,
 
-            for file in files:
-                text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_profiler(
-                    self.main, text,
-                    token_settings = settings['token_settings']
-                )
+            self.checkbox_treat_as_all_lowercase,
+            self.checkbox_lemmatize_tokens,
+            self.checkbox_filter_stop_words,
 
-                texts.append(text)
+            self.checkbox_ignore_tags,
+            self.checkbox_use_tags
+        ) = wl_widgets.wl_widgets_token_settings(self)
 
-            # Total
-            if len(files) > 1:
-                text_total = wl_texts.Wl_Text_Blank()
+        self.checkbox_words.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_all_lowercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_all_uppercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_title_case.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_nums.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
 
-                # Set language for the combined text only if all texts are in the same language
-                if len({text.lang for text in texts}) == 1:
-                    text_total.lang = texts[0].lang
-                else:
-                    text_total.lang = 'other'
+        self.checkbox_treat_as_all_lowercase.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
 
-                text_total.tokens_multilevel = [
-                    copy.deepcopy(para)
-                    for text in texts
-                    for para in text.tokens_multilevel
-                ]
-                text_total.syls_tokens = [
-                    syls
-                    for text in texts
-                    for syls in text.syls_tokens
-                ]
+        self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
-                texts.append(text_total)
+        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_all_lowercase, 0, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_all_uppercase, 1, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_title_case, 1, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
 
-            num_tokens_section_sttr = self.main.settings_custom['tables']['profiler']['general_settings']['num_tokens_section_sttr']
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
-            for text in texts:
-                tokens = text.get_tokens_flat()
+        self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_all_lowercase, 4, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
 
-                # Readability
-                readability_statistics = [
-                    wl_measures_readability.automated_ara_readability_index(self.main, text),
-                    wl_measures_readability.automated_readability_index(self.main, text),
-                    wl_measures_readability.coleman_liau_index(self.main, text),
-                    wl_measures_readability.dale_chall_readability_score(self.main, text),
-                    wl_measures_readability.devereux_readability_index(self.main, text),
-                    wl_measures_readability.fernandez_huertas_readability_score(self.main, text),
-                    wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
-                    wl_measures_readability.flesch_reading_ease(self.main, text),
-                    wl_measures_readability.flesch_reading_ease_simplified(self.main, text),
-                    wl_measures_readability.forcast_grade_level(self.main, text),
-                    wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(self.main, text),
-                    wl_measures_readability.formula_de_crawford(self.main, text),
-                    wl_measures_readability.gulpease_index(self.main, text),
-                    wl_measures_readability.gunning_fog_index(self.main, text),
-                    wl_measures_readability.legibility_mu(self.main, text),
-                    wl_measures_readability.lensear_write(self.main, text),
-                    wl_measures_readability.lix(self.main, text),
-                    wl_measures_readability.mcalpine_eflaw(self.main, text),
-                    wl_measures_readability.osman(self.main, text),
-                    wl_measures_readability.rix(self.main, text),
-                    wl_measures_readability.smog_grade(self.main, text),
-                    wl_measures_readability.spache_grade_level(self.main, text),
-                    wl_measures_readability.szigriszts_perspicuity_index(self.main, text),
-                    wl_measures_readability.wiener_sachtextformel(self.main, text)
-                ]
+        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
 
-                # Paragraph length
-                len_paras_sentences = [
-                    len(para)
-                    for para in text.tokens_multilevel
-                ]
-                len_paras_sentence_segs = [
-                    sum((len(sentence) for sentence in para))
-                    for para in text.tokens_multilevel
-                ]
-                len_paras_tokens = [
-                    sum((len(sentence_seg) for sentence in para for sentence_seg in sentence))
-                    for para in text.tokens_multilevel
-                ]
+        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
 
-                # Sentence length
-                len_sentences = [
-                    sum((len(sentence_seg) for sentence_seg in sentence))
-                    for para in text.tokens_multilevel
-                    for sentence in para
-                ]
-                len_sentence_segs = [
-                    len(sentence_seg)
-                    for para in text.tokens_multilevel
-                    for sentence in para
-                    for sentence_seg in sentence
-                ]
+        # Table Settings
+        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
 
-                # Token length
-                len_tokens_syls = [len(syls) for syls in text.syls_tokens]
-                len_tokens_chars = [len(token) for token in tokens]
-                # Type length
-                len_types_syls = [len(syls) for syls in {tuple(syls) for syls in text.syls_tokens}]
-                len_types_chars = [len(token_type) for token_type in set(tokens)]
-                # Syllable length
-                len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
+        (
+            self.checkbox_show_pct,
+            self.checkbox_show_cumulative,
+            self.checkbox_show_breakdown
+        ) = wl_widgets.wl_widgets_table_settings(
+            self,
+            tables = [self.table_profiler]
+        )
 
-                count_tokens = len(len_tokens_chars)
-                count_types = len(len_types_chars)
+        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
 
-                # TTR & STTR (weighted average)
-                if count_tokens:
-                    ttr = count_types / count_tokens
+        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
 
-                    ttrs = [
-                        len(set(token_section))
-                        for token_section in wl_nlp_utils.to_sections_unequal(tokens, num_tokens_section_sttr)
-                    ]
-                    sttr = numpy.sum(ttrs) / count_tokens
-                else:
-                    ttr = sttr = 0
+        self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
+        self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 1, 0)
 
-                self.text_stats_files.append([
-                    readability_statistics,
-                    len_paras_sentences,
-                    len_paras_sentence_segs,
-                    len_paras_tokens,
-                    len_sentences,
-                    len_sentence_segs,
-                    len_tokens_syls,
-                    len_tokens_chars,
-                    len_types_syls,
-                    len_types_chars,
-                    len_syls,
-                    ttr,
-                    sttr
-                ])
+        self.load_settings()
 
-            if len(files) == 1:
-                self.text_stats_files *= 2
-        except Exception:
-            self.err_msg = traceback.format_exc()
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.main.settings_default['profiler'])
+        else:
+            settings = copy.deepcopy(self.main.settings_custom['profiler'])
 
-class Wl_Worker_Profiler_Table(Wl_Worker_Profiler):
-    def run(self):
-        super().run()
+        # Token Settings
+        self.checkbox_words.setChecked(settings['token_settings']['words'])
+        self.checkbox_all_lowercase.setChecked(settings['token_settings']['all_lowercase'])
+        self.checkbox_all_uppercase.setChecked(settings['token_settings']['all_uppercase'])
+        self.checkbox_title_case.setChecked(settings['token_settings']['title_case'])
+        self.checkbox_nums.setChecked(settings['token_settings']['nums'])
+        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
 
-        self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(self.err_msg, self.text_stats_files)
+        self.checkbox_treat_as_all_lowercase.setChecked(settings['token_settings']['treat_as_all_lowercase'])
+        self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
+        self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
+
+        self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
+        self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
+
+        # Table Settings
+        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
+        self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
+        self.checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
+
+        self.token_settings_changed()
+        self.table_settings_changed()
+
+    def token_settings_changed(self):
+        settings = self.main.settings_custom['profiler']['token_settings']
+
+        settings['words'] = self.checkbox_words.isChecked()
+        settings['all_lowercase'] = self.checkbox_all_lowercase.isChecked()
+        settings['all_uppercase'] = self.checkbox_all_uppercase.isChecked()
+        settings['title_case'] = self.checkbox_title_case.isChecked()
+        settings['nums'] = self.checkbox_nums.isChecked()
+        settings['puncs'] = self.checkbox_puncs.isChecked()
+
+        settings['treat_as_all_lowercase'] = self.checkbox_treat_as_all_lowercase.isChecked()
+        settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()
+        settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
+
+        settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
+        settings['use_tags'] = self.checkbox_use_tags.isChecked()
+
+    def table_settings_changed(self):
+        settings = self.main.settings_custom['profiler']['table_settings']
+
+        settings['show_pct'] = self.checkbox_show_pct.isChecked()
+        settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
+        settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
 class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
     def __init__(self, parent):
@@ -902,146 +886,162 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
             finally:
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
-class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
-    def __init__(self, main):
-        super().__init__(main)
+class Wl_Worker_Profiler(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str, list)
 
-        # Table
-        self.table_profiler = Wl_Table_Profiler(self)
+    def __init__(self, main, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
 
-        self.wrapper_table.layout().addWidget(self.table_profiler, 0, 0, 1, 4)
-        self.wrapper_table.layout().addWidget(self.table_profiler.button_generate_table, 1, 0)
-        self.wrapper_table.layout().addWidget(self.table_profiler.button_exp_selected, 1, 1)
-        self.wrapper_table.layout().addWidget(self.table_profiler.button_exp_all, 1, 2)
-        self.wrapper_table.layout().addWidget(self.table_profiler.button_clr, 1, 3)
+        self.err_msg = ''
+        self.text_stats_files = []
 
-        # Token Settings
-        self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
+    def run(self):
+        try:
+            texts = []
 
-        (
-            self.checkbox_words,
-            self.checkbox_all_lowercase,
-            self.checkbox_all_uppercase,
-            self.checkbox_title_case,
-            self.checkbox_nums,
-            self.checkbox_puncs,
+            settings = self.main.settings_custom['profiler']
+            files = list(self.main.wl_file_area.get_selected_files())
 
-            self.checkbox_treat_as_all_lowercase,
-            self.checkbox_lemmatize_tokens,
-            self.checkbox_filter_stop_words,
+            for file in files:
+                text = copy.deepcopy(file['text'])
+                text = wl_token_processing.wl_process_tokens_profiler(
+                    self.main, text,
+                    token_settings = settings['token_settings']
+                )
 
-            self.checkbox_ignore_tags,
-            self.checkbox_use_tags
-        ) = wl_widgets.wl_widgets_token_settings(self)
+                texts.append(text)
 
-        self.checkbox_words.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_all_lowercase.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_all_uppercase.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_title_case.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_nums.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
+            # Total
+            if len(files) > 1:
+                text_total = wl_texts.Wl_Text_Blank()
 
-        self.checkbox_treat_as_all_lowercase.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
+                # Set language for the combined text only if all texts are in the same language
+                if len({text.lang for text in texts}) == 1:
+                    text_total.lang = texts[0].lang
+                else:
+                    text_total.lang = 'other'
 
-        self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
+                text_total.tokens_multilevel = [
+                    copy.deepcopy(para)
+                    for text in texts
+                    for para in text.tokens_multilevel
+                ]
+                text_total.syls_tokens = [
+                    syls
+                    for text in texts
+                    for syls in text.syls_tokens
+                ]
 
-        self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_token_settings.layout().addWidget(self.checkbox_words, 0, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_all_lowercase, 0, 1)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_all_uppercase, 1, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_title_case, 1, 1)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
+                texts.append(text_total)
 
-        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
+            num_tokens_section_sttr = self.main.settings_custom['tables']['profiler']['general_settings']['num_tokens_section_sttr']
 
-        self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_all_lowercase, 4, 0, 1, 2)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
+            for text in texts:
+                tokens = text.get_tokens_flat()
 
-        self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
+                # Readability
+                readability_statistics = [
+                    wl_measures_readability.automated_ara_readability_index(self.main, text),
+                    wl_measures_readability.automated_readability_index(self.main, text),
+                    wl_measures_readability.coleman_liau_index(self.main, text),
+                    wl_measures_readability.dale_chall_readability_score(self.main, text),
+                    wl_measures_readability.devereux_readability_index(self.main, text),
+                    wl_measures_readability.fernandez_huertas_readability_score(self.main, text),
+                    wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
+                    wl_measures_readability.flesch_reading_ease(self.main, text),
+                    wl_measures_readability.flesch_reading_ease_simplified(self.main, text),
+                    wl_measures_readability.forcast_grade_level(self.main, text),
+                    wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(self.main, text),
+                    wl_measures_readability.formula_de_crawford(self.main, text),
+                    wl_measures_readability.gulpease_index(self.main, text),
+                    wl_measures_readability.gunning_fog_index(self.main, text),
+                    wl_measures_readability.legibility_mu(self.main, text),
+                    wl_measures_readability.lensear_write(self.main, text),
+                    wl_measures_readability.lix(self.main, text),
+                    wl_measures_readability.mcalpine_eflaw(self.main, text),
+                    wl_measures_readability.osman(self.main, text),
+                    wl_measures_readability.rix(self.main, text),
+                    wl_measures_readability.smog_grade(self.main, text),
+                    wl_measures_readability.spache_grade_level(self.main, text),
+                    wl_measures_readability.szigriszts_perspicuity_index(self.main, text),
+                    wl_measures_readability.wiener_sachtextformel(self.main, text)
+                ]
 
-        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
+                # Paragraph length
+                len_paras_sentences = [
+                    len(para)
+                    for para in text.tokens_multilevel
+                ]
+                len_paras_sentence_segs = [
+                    sum((len(sentence) for sentence in para))
+                    for para in text.tokens_multilevel
+                ]
+                len_paras_tokens = [
+                    sum((len(sentence_seg) for sentence in para for sentence_seg in sentence))
+                    for para in text.tokens_multilevel
+                ]
 
-        # Table Settings
-        self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
+                # Sentence length
+                len_sentences = [
+                    sum((len(sentence_seg) for sentence_seg in sentence))
+                    for para in text.tokens_multilevel
+                    for sentence in para
+                ]
+                len_sentence_segs = [
+                    len(sentence_seg)
+                    for para in text.tokens_multilevel
+                    for sentence in para
+                    for sentence_seg in sentence
+                ]
 
-        (
-            self.checkbox_show_pct,
-            self.checkbox_show_cumulative,
-            self.checkbox_show_breakdown
-        ) = wl_widgets.wl_widgets_table_settings(
-            self,
-            tables = [self.table_profiler]
-        )
+                # Token length
+                len_tokens_syls = [len(syls) for syls in text.syls_tokens]
+                len_tokens_chars = [len(token) for token in tokens]
+                # Type length
+                len_types_syls = [len(syls) for syls in {tuple(syls) for syls in text.syls_tokens}]
+                len_types_chars = [len(token_type) for token_type in set(tokens)]
+                # Syllable length
+                len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
 
-        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
+                count_tokens = len(len_tokens_chars)
+                count_types = len(len_types_chars)
 
-        self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
+                # TTR & STTR (weighted average)
+                if count_tokens:
+                    ttr = count_types / count_tokens
 
-        self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
-        self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 1, 0)
+                    ttrs = [
+                        len(set(token_section))
+                        for token_section in wl_nlp_utils.to_sections_unequal(tokens, num_tokens_section_sttr)
+                    ]
+                    sttr = numpy.sum(ttrs) / count_tokens
+                else:
+                    ttr = sttr = 0
 
-        self.load_settings()
+                self.text_stats_files.append([
+                    readability_statistics,
+                    len_paras_sentences,
+                    len_paras_sentence_segs,
+                    len_paras_tokens,
+                    len_sentences,
+                    len_sentence_segs,
+                    len_tokens_syls,
+                    len_tokens_chars,
+                    len_types_syls,
+                    len_types_chars,
+                    len_syls,
+                    ttr,
+                    sttr
+                ])
 
-    def load_settings(self, defaults = False):
-        if defaults:
-            settings = copy.deepcopy(self.main.settings_default['profiler'])
-        else:
-            settings = copy.deepcopy(self.main.settings_custom['profiler'])
+            if len(files) == 1:
+                self.text_stats_files *= 2
+        except Exception:
+            self.err_msg = traceback.format_exc()
 
-        # Token Settings
-        self.checkbox_words.setChecked(settings['token_settings']['words'])
-        self.checkbox_all_lowercase.setChecked(settings['token_settings']['all_lowercase'])
-        self.checkbox_all_uppercase.setChecked(settings['token_settings']['all_uppercase'])
-        self.checkbox_title_case.setChecked(settings['token_settings']['title_case'])
-        self.checkbox_nums.setChecked(settings['token_settings']['nums'])
-        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+class Wl_Worker_Profiler_Table(Wl_Worker_Profiler):
+    def run(self):
+        super().run()
 
-        self.checkbox_treat_as_all_lowercase.setChecked(settings['token_settings']['treat_as_all_lowercase'])
-        self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
-        self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
-
-        self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
-        self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
-
-        # Table Settings
-        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
-        self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
-        self.checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
-
-        self.token_settings_changed()
-        self.table_settings_changed()
-
-    def token_settings_changed(self):
-        settings = self.main.settings_custom['profiler']['token_settings']
-
-        settings['words'] = self.checkbox_words.isChecked()
-        settings['all_lowercase'] = self.checkbox_all_lowercase.isChecked()
-        settings['all_uppercase'] = self.checkbox_all_uppercase.isChecked()
-        settings['title_case'] = self.checkbox_title_case.isChecked()
-        settings['nums'] = self.checkbox_nums.isChecked()
-        settings['puncs'] = self.checkbox_puncs.isChecked()
-
-        settings['treat_as_all_lowercase'] = self.checkbox_treat_as_all_lowercase.isChecked()
-        settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()
-        settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
-
-        settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
-        settings['use_tags'] = self.checkbox_use_tags.isChecked()
-
-    def table_settings_changed(self):
-        settings = self.main.settings_custom['profiler']['table_settings']
-
-        settings['show_pct'] = self.checkbox_show_pct.isChecked()
-        settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
-        settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
+        self.progress_updated.emit(self.tr('Rendering table...'))
+        self.worker_done.emit(self.err_msg, self.text_stats_files)

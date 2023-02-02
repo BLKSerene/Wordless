@@ -1737,20 +1737,13 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
 
         self.label_number_results = QLabel()
         self.button_results_filter = wl_buttons.Wl_Button(
-            _tr('Wl_Table_Data_Filter_Search', 'Filter Results'),
+            _tr('Wl_Table_Data_Filter_Search', 'Filter results'),
             self
         )
         self.button_results_search = wl_buttons.Wl_Button(
             _tr('Wl_Table_Data_Filter_Search', 'Search in Results'),
             self
         )
-
-        if self.tab in ['wordlist_generator', 'ngram_generator']:
-            self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(self.main, tab = self.tab, table = self)
-        elif self.tab in ['collocation_extractor', 'colligation_extractor']:
-            self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(self.main, tab = self.tab, table = self)
-        elif self.tab == 'keyword_extractor':
-            self.dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Keyword_Extractor(self.main, tab = self.tab, table = self)
 
         self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
             self.main,
@@ -1761,7 +1754,7 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         self.button_results_filter.setFixedWidth(150)
         self.button_results_search.setFixedWidth(150)
 
-        self.button_results_filter.clicked.connect(self.dialog_results_filter.show)
+        self.button_results_filter.clicked.connect(self.results_filter_clicked)
         self.button_results_search.clicked.connect(self.dialog_results_search.load)
 
         self.results_changed()
@@ -1782,3 +1775,11 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             self.button_results_search.setEnabled(True)
         else:
             self.button_results_search.setEnabled(False)
+
+    def results_filter_clicked(self):
+        if self.tab in ['wordlist_generator', 'ngram_generator']:
+            wl_dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Wordlist_Generator(self.main, tab = self.tab, table = self)
+        elif self.tab in ['collocation_extractor', 'colligation_extractor', 'keyword_extractor']:
+            wl_dialog_results_filter = wl_results_filter.Wl_Dialog_Results_Filter_Collocation_Extractor(self.main, tab = self.tab, table = self)
+
+        wl_dialog_results_filter.show()

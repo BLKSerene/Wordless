@@ -40,607 +40,6 @@ from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_w
 
 _tr = QCoreApplication.translate
 
-class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list)
-
-    def run(self):
-        err_msg = ''
-        concordance_lines = []
-
-        try:
-            settings = self.main.settings_custom['concordancer']
-
-            for file in self.main.wl_file_area.get_selected_files():
-                text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_concordancer(
-                    self.main, text,
-                    token_settings = settings['token_settings']
-                )
-
-                tokens = text.get_tokens_flat()
-                (
-                    offsets_paras,
-                    offsets_sentences,
-                    offsets_sentence_segs
-                ) = text.get_offsets()
-
-                search_terms = wl_matching.match_search_terms_ngrams(
-                    self.main, tokens,
-                    lang = text.lang,
-                    tagged = text.tagged,
-                    token_settings = settings['token_settings'],
-                    search_settings = settings['search_settings']
-                )
-
-                (
-                    search_terms_incl,
-                    search_terms_excl
-                ) = wl_matching.match_search_terms_context(
-                    self.main, tokens,
-                    lang = text.lang,
-                    tagged = text.tagged,
-                    token_settings = settings['token_settings'],
-                    context_settings = settings['context_settings']
-                )
-
-                if search_terms:
-                    len_search_term_min = min((len(search_term) for search_term in search_terms))
-                    len_search_term_max = max((len(search_term) for search_term in search_terms))
-                else:
-                    len_search_term_min = 0
-                    len_search_term_max = 0
-
-                len_paras = len(offsets_paras)
-                len_sentences = len(offsets_sentences)
-                len_sentence_segs = len(offsets_sentence_segs)
-                len_tokens = len(tokens)
-
-                for len_search_term in range(len_search_term_min, len_search_term_max + 1):
-                    for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
-                        if (
-                            ngram in search_terms
-                            and wl_matching.check_context(
-                                i, tokens,
-                                context_settings = settings['context_settings'],
-                                search_terms_incl = search_terms_incl,
-                                search_terms_excl = search_terms_excl
-                            )
-                        ):
-                            concordance_line = []
-
-                            # No.
-                            no_sentence_seg = bisect.bisect(offsets_sentence_segs, i)
-                            no_sentence = bisect.bisect(offsets_sentences, i)
-                            no_para = bisect.bisect(offsets_paras, i)
-
-                            # Search in Results (Node)
-                            text_search_node = list(ngram)
-
-                            if not settings['token_settings']['puncs']:
-                                ngram = text.tokens_flat_puncs_merged[i : i + len_search_term]
-
-                            node_text = ' '.join(ngram)
-                            node_text = wl_nlp_utils.escape_text(node_text)
-
-                            # Width Unit
-                            if settings['generation_settings']['width_unit'] == self.tr('Character'):
-                                len_context_left = 0
-                                len_context_right = 0
-
-                                context_left = []
-                                context_right = []
-
-                                width_left_char = settings['generation_settings']['width_left_char']
-                                width_right_char = settings['generation_settings']['width_right_char']
-
-                                while len_context_left < width_left_char:
-                                    if i - 1 - len(context_left) < 0:
-                                        break
-                                    else:
-                                        token_next = tokens[i - 1 - len(context_left)]
-                                        len_token_next = len(token_next)
-
-                                    if len_context_left + len_token_next > width_left_char:
-                                        context_left.insert(0, token_next[-(width_left_char - len_context_left):])
-                                    else:
-                                        context_left.insert(0, token_next)
-
-                                    len_context_left += len_token_next
-
-                                while len_context_right < width_right_char:
-                                    if i + len_search_term + len(context_right) > len(text.tokens_flat_puncs_merged) - 1:
-                                        break
-                                    else:
-                                        token_next = tokens[i + len_search_term + len(context_right)]
-                                        len_token_next = len(token_next)
-
-                                    if len_context_right + len_token_next > width_right_char:
-                                        context_right.append(token_next[: width_right_char - len_context_right])
-                                    else:
-                                        context_right.append(token_next)
-
-                                    len_context_right += len(token_next)
-
-                                # Search in Results (Left & Right)
-                                text_search_left = copy.deepcopy(context_left)
-                                text_search_right = copy.deepcopy(context_right)
-
-                                if not settings['token_settings']['puncs']:
-                                    context_left = text.tokens_flat_puncs_merged[i - len(context_left): i]
-                                    context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + len(context_right)]
-                            elif settings['generation_settings']['width_unit'] == self.tr('Token'):
-                                width_left_token = settings['generation_settings']['width_left_token']
-                                width_right_token = settings['generation_settings']['width_right_token']
-
-                                context_left = text.tokens_flat_puncs_merged[max(0, i - width_left_token) : i]
-                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + width_right_token]
-
-                                # Search in Results (Left & Right)
-                                if settings['token_settings']['puncs']:
-                                    text_search_left = copy.deepcopy(context_left)
-                                    text_search_right = copy.deepcopy(context_right)
-                                else:
-                                    text_search_left = tokens[max(0, i - width_left_token) : i]
-                                    text_search_right = tokens[i + len_search_term : i + len_search_term + width_right_token]
-                            else:
-                                if settings['generation_settings']['width_unit'] == self.tr('Sentence Segment'):
-                                    width_settings = 'sentence_seg'
-                                    offsets_unit = offsets_sentence_segs
-                                    no_unit = no_sentence_seg
-                                    len_unit = len_sentence_segs
-                                elif settings['generation_settings']['width_unit'] == self.tr('Sentence'):
-                                    width_settings = 'sentence'
-                                    offsets_unit = offsets_sentences
-                                    no_unit = no_sentence
-                                    len_unit = len_sentences
-                                elif settings['generation_settings']['width_unit'] == self.tr('Paragraph'):
-                                    width_settings = 'para'
-                                    offsets_unit = offsets_paras
-                                    no_unit = no_para
-                                    len_unit = len_paras
-
-                                width_left = settings['generation_settings'][f'width_left_{width_settings}']
-                                width_right = settings['generation_settings'][f'width_right_{width_settings}']
-
-                                offset_start = offsets_unit[max(0, no_unit - 1 - width_left)]
-
-                                if no_unit + width_right > len_unit - 1:
-                                    offset_end = None
-                                else:
-                                    offset_end = offsets_unit[no_unit + width_right]
-
-                                context_left = text.tokens_flat_puncs_merged[offset_start:i]
-                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : offset_end]
-
-                                # Search in Results (Left & Right)
-                                if settings['token_settings']['puncs']:
-                                    text_search_left = copy.deepcopy(context_left)
-                                    text_search_right = copy.deepcopy(context_right)
-                                else:
-                                    text_search_left = tokens[offset_start:i]
-                                    text_search_right = tokens[i + len_search_term : offset_end]
-
-                            context_left = wl_nlp_utils.escape_tokens(context_left)
-                            context_right = wl_nlp_utils.escape_tokens(context_right)
-
-                            context_left_text = ' '.join(context_left)
-                            context_right_text = ' '.join(context_right)
-
-                            # Left
-                            concordance_line.append([context_left_text, context_left, text_search_left])
-                            # Node
-                            concordance_line.append([node_text, list(ngram), text_search_node])
-                            # Right
-                            concordance_line.append([context_right_text, context_right, text_search_right])
-
-                            # Sentiment
-                            context_text = ' '.join([context_left_text, node_text, context_right_text])
-
-                            if text.lang.startswith('eng'):
-                                concordance_line.append(textblob.TextBlob(context_text).sentiment.polarity)
-                            elif text.lang == 'vie':
-                                sentiment = underthesea.sentiment(context_text)
-
-                                if sentiment == 'positive':
-                                    concordance_line.append(1)
-                                elif sentiment == 'negative':
-                                    concordance_line.append(-1)
-                                else:
-                                    concordance_line.append(0)
-                            else:
-                                concordance_line.append(self.tr('No Support'))
-
-                            # Token No.
-                            concordance_line.append([i + 1, len_tokens])
-                            # Sentence Segment No.
-                            concordance_line.append([no_sentence_seg, len_sentence_segs])
-                            # Sentence No.
-                            concordance_line.append([no_sentence, len_sentences])
-                            # Paragraph No.
-                            concordance_line.append([no_para, len_paras])
-                            # File
-                            concordance_line.append(file['name'])
-
-                            concordance_lines.append(concordance_line)
-        except Exception:
-            err_msg = traceback.format_exc()
-
-        self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(err_msg, concordance_lines)
-
-class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, list, list)
-
-    def run(self):
-        err_msg = ''
-        points = []
-        labels = []
-
-        try:
-            texts = []
-            search_terms_files = []
-            search_terms_total = set()
-            search_terms_labels = set()
-
-            settings = self.main.settings_custom['concordancer']
-            files = sorted(self.main.wl_file_area.get_selected_files(), key = lambda item: item['name'])
-
-            for file in files:
-                text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_concordancer(
-                    self.main, text,
-                    token_settings = settings['token_settings']
-                )
-
-                search_terms_file = wl_matching.match_search_terms_ngrams(
-                    self.main, text.get_tokens_flat(),
-                    lang = text.lang,
-                    tagged = text.tagged,
-                    token_settings = settings['token_settings'],
-                    search_settings = settings['search_settings']
-                )
-
-                search_terms_files.append(sorted(search_terms_file))
-
-                for search_term in search_terms_file:
-                    search_terms_total.add(search_term)
-                    search_terms_labels.add(' '.join(search_term))
-
-                texts.append(text)
-
-            len_files = len(files)
-            len_tokens_total = sum((len(text.get_tokens_flat()) for text in texts))
-
-            if settings['fig_settings']['sort_results_by'] == self.tr('File'):
-                search_terms_total = sorted(search_terms_total)
-                search_terms_labels = sorted(search_terms_labels)
-
-                for i, search_term in enumerate(search_terms_total):
-                    len_search_term = len(search_term)
-
-                    x_start = len_tokens_total * i + 1
-                    y_start = len_files
-
-                    for j, text in enumerate(texts):
-                        tokens = text.get_tokens_flat()
-
-                        if search_term in search_terms_files[j]:
-                            x_start_total = x_start + sum((
-                                len(text.get_tokens_flat())
-                                for k, text in enumerate(texts)
-                                if k < j
-                            ))
-                            len_tokens = len(tokens)
-
-                            for k, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
-                                if ngram == search_term:
-                                    points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
-                                    # Total
-                                    points.append([x_start_total + k, 0])
-            elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
-                search_terms_total = sorted(search_terms_total, reverse = True)
-                search_terms_labels = sorted(search_terms_labels, reverse = True)
-
-                for i, search_term in enumerate(search_terms_total):
-                    len_search_term = len(search_term)
-
-                    for j, text in enumerate(texts):
-                        if search_term in search_terms_files[j]:
-                            x_start = sum((
-                                len(text.get_tokens_flat())
-                                for k, text in enumerate(texts)
-                                if k < j
-                            )) + j + 2
-
-                            for k, ngram in enumerate(wl_nlp_utils.ngrams(text.get_tokens_flat(), len_search_term)):
-                                if ngram == search_term:
-                                    points.append([x_start + k, i])
-
-            if points:
-                x_ticks = [0]
-                x_tick_labels = ['']
-
-                if settings['fig_settings']['sort_results_by'] == self.tr('File'):
-                    len_tokens_total = sum((len(text.get_tokens_flat()) for text in texts))
-
-                    for i, search_term in enumerate(search_terms_total):
-                        x_tick_start = len_tokens_total * i + i + 1
-
-                        # 1/2
-                        x_ticks.append(x_tick_start + len_tokens_total / 2)
-                        # Divider
-                        x_ticks.append(x_tick_start + len_tokens_total + 1)
-
-                    for search_term in search_terms_labels:
-                        # 1/2
-                        x_tick_labels.append(search_term)
-                        # Divider
-                        x_tick_labels.append('')
-
-                    labels.append(x_ticks)
-                    labels.append(x_tick_labels)
-                    labels.append(list(range(len(files) + 1)))
-                    labels.append([self.tr('Total')] + [file['name'] for file in reversed(files)])
-                    labels.append(len(files) + 1)
-
-                elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
-                    len_search_terms_total = len(search_terms_total)
-
-                    for i, text in enumerate(texts):
-                        tokens = text.get_tokens_flat()
-
-                        x_tick_start = sum((
-                            len(text.get_tokens_flat())
-                            for j, text in enumerate(texts)
-                            if j < i
-                        )) + j + 1
-
-                        # 1/2
-                        x_ticks.append(x_tick_start + len(tokens) / 2)
-                        # Divider
-                        x_ticks.append(x_tick_start + len(tokens) + 1)
-
-                    for file in files:
-                        # 1/2
-                        x_tick_labels.append(file['name'])
-                        # Divider
-                        x_tick_labels.append('')
-
-                    labels.append(x_ticks)
-                    labels.append(x_tick_labels)
-                    labels.append(list(range(len_search_terms_total)))
-                    labels.append(search_terms_labels)
-                    labels.append(len_search_terms_total)
-        except Exception:
-            err_msg = traceback.format_exc()
-
-        self.progress_updated.emit(self.tr('Rendering figure...'))
-        self.worker_done.emit(err_msg, points, labels)
-
-class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
-    def __init__(self, parent):
-        super().__init__(
-            parent,
-            tab = 'concordancer',
-            headers = [
-                _tr('Wl_Table_Concordancer', 'Left'),
-                _tr('Wl_Table_Concordancer', 'Node'),
-                _tr('Wl_Table_Concordancer', 'Right'),
-                _tr('Wl_Table_Concordancer', 'Sentiment'),
-                _tr('Wl_Table_Concordancer', 'Token No.'),
-                _tr('Wl_Table_Concordancer', 'Token No. %'),
-                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
-                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
-                _tr('Wl_Table_Concordancer', 'Sentence No.'),
-                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
-                _tr('Wl_Table_Concordancer', 'Paragraph No.'),
-                _tr('Wl_Table_Concordancer', 'Paragraph No. %'),
-                _tr('Wl_Table_Concordancer', 'File')
-            ],
-            headers_int = [
-                _tr('Wl_Table_Concordancer', 'Token No.'),
-                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
-                _tr('Wl_Table_Concordancer', 'Sentence No.'),
-                _tr('Wl_Table_Concordancer', 'Paragraph No.')
-            ],
-            headers_float = [
-                _tr('Wl_Table_Concordancer', 'Sentiment')
-            ],
-            headers_pct = [
-                _tr('Wl_Table_Concordancer', 'Token No. %'),
-                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
-                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
-                _tr('Wl_Table_Concordancer', 'Paragraph No. %')
-            ]
-        )
-
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
-
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        if list(self.main.wl_file_area.get_selected_files()):
-            self.button_generate_table.setEnabled(True)
-            self.button_generate_fig.setEnabled(True)
-        else:
-            self.button_generate_table.setEnabled(False)
-            self.button_generate_fig.setEnabled(False)
-
-    @wl_misc.log_timing
-    def generate_table(self):
-        if wl_checks_work_area.check_search_terms(
-            self.main,
-            search_settings = self.main.settings_custom['concordancer']['search_settings']
-        ):
-            worker_concordancer_table = Wl_Worker_Concordancer_Table(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
-
-            wl_threading.Wl_Thread(worker_concordancer_table).start_worker()
-
-    def update_gui_table(self, err_msg, concordance_lines):
-        if wl_checks_work_area.check_results(self.main, err_msg, concordance_lines):
-            try:
-                self.settings = copy.deepcopy(self.main.settings_custom)
-
-                self.clr_table(0)
-                self.model().setRowCount(len(concordance_lines))
-
-                settings = self.main.settings_custom['concordancer']
-
-                self.disable_updates()
-
-                for i, concordance_line in enumerate(concordance_lines):
-                    left_text, left_text_raw, left_text_search = concordance_line[0]
-                    node_text, node_text_raw, node_text_search = concordance_line[1]
-                    right_text, right_text_raw, right_text_search = concordance_line[2]
-
-                    sentiment = concordance_line[3]
-                    no_token, len_tokens = concordance_line[4]
-                    no_sentence_seg, len_sentence_segs = concordance_line[5]
-                    no_sentence, len_sentences = concordance_line[6]
-                    no_para, len_paras = concordance_line[7]
-                    file_name = concordance_line[8]
-
-                    # Node
-                    label_node = wl_labels.Wl_Label_Html(
-                        f'''
-                            <span style="color: {settings['sort_results']['highlight_colors'][0]}; font-weight: bold;">
-                                &nbsp;{node_text}&nbsp;
-                            </span>
-                        ''',
-                        self.main
-                    )
-
-                    self.setIndexWidget(self.model().index(i, 1), label_node)
-
-                    self.indexWidget(self.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
-
-                    self.indexWidget(self.model().index(i, 1)).text_raw = node_text_raw
-                    self.indexWidget(self.model().index(i, 1)).text_search = node_text_search
-
-                    # Left
-                    self.setIndexWidget(
-                        self.model().index(i, 0),
-                        wl_labels.Wl_Label_Html(left_text, self.main)
-                    )
-
-                    self.indexWidget(self.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-
-                    self.indexWidget(self.model().index(i, 0)).text_raw = left_text_raw
-                    self.indexWidget(self.model().index(i, 0)).text_search = left_text_search
-
-                    # Right
-                    self.setIndexWidget(
-                        self.model().index(i, 2),
-                        wl_labels.Wl_Label_Html(right_text, self.main)
-                    )
-
-                    self.indexWidget(self.model().index(i, 2)).text_raw = right_text_raw
-                    self.indexWidget(self.model().index(i, 2)).text_search = right_text_search
-
-                    # Sentiment
-                    if not isinstance(sentiment, str):
-                        self.set_item_num(i, 3, sentiment)
-                    # No Support
-                    else:
-                        self.set_item_error(i, 3, text = sentiment)
-
-                    # Token No.
-                    self.set_item_num(i, 4, no_token)
-                    self.set_item_num(i, 5, no_token, len_tokens)
-                    # Sentence Segment No.
-                    self.set_item_num(i, 6, no_sentence_seg)
-                    self.set_item_num(i, 7, no_sentence_seg, len_sentence_segs)
-                    # Sentence No.
-                    self.set_item_num(i, 8, no_sentence)
-                    self.set_item_num(i, 9, no_sentence, len_sentences)
-                    # Paragraph No.
-                    self.set_item_num(i, 10, no_para)
-                    self.set_item_num(i, 11, no_para, len_paras)
-
-                    # File
-                    self.model().setItem(i, 12, QStandardItem(file_name))
-
-                self.enable_updates()
-
-                self.toggle_pct()
-            except Exception:
-                err_msg = traceback.format_exc()
-            finally:
-                wl_checks_work_area.check_err_table(self.main, err_msg)
-
-    @wl_misc.log_timing
-    def generate_fig(self):
-        if wl_checks_work_area.check_search_terms(
-            self.main,
-            search_settings = self.main.settings_custom['concordancer']['search_settings']
-        ):
-            self.worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_fig
-            )
-
-            wl_threading.Wl_Thread(self.worker_concordancer_fig).start_worker()
-
-    def update_gui_fig(self, err_msg, points, labels):
-        if wl_checks_work_area.check_results(self.main, err_msg, points):
-            try:
-                x_ticks = labels[0]
-                x_tick_labels = labels[1]
-                y_ticks = labels[2]
-                y_tick_labels = labels[3]
-                y_max = labels[4]
-
-                points = numpy.array(points)
-                settings = self.main.settings_custom['concordancer']
-
-                if settings['fig_settings']['sort_results_by'] == self.tr('File'):
-                    matplotlib.pyplot.plot(
-                        points[:, 0],
-                        points[:, 1],
-                        'b|'
-                    )
-
-                    matplotlib.pyplot.xlabel(self.tr('Search Term'))
-                    matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
-
-                    matplotlib.pyplot.ylabel(self.tr('File'))
-                    matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
-                    matplotlib.pyplot.ylim(-1, y_max)
-                elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
-                    matplotlib.pyplot.plot(
-                        points[:, 0],
-                        points[:, 1],
-                        'b|'
-                    )
-
-                    matplotlib.pyplot.xlabel(self.tr('File'))
-                    matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
-
-                    matplotlib.pyplot.ylabel(self.tr('Search Term'))
-                    matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
-                    matplotlib.pyplot.ylim(-1, y_max)
-
-                matplotlib.pyplot.title(self.tr('Dispersion Plot'))
-                matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
-
-                # Hide the progress dialog early so that the main window will not obscure the generated figure
-                self.worker_concordancer_fig.dialog_progress.accept()
-                wl_figs.show_fig()
-            except Exception:
-                err_msg = traceback.format_exc()
-            finally:
-                wl_checks_work_area.check_err_fig(self.main, err_msg)
-
 class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
@@ -1045,3 +444,604 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         settings['placeholder'] = self.line_edit_replace_keywords_with.text()
         settings['add_line_nums'] = self.checkbox_add_line_nums.isChecked()
         settings['randomize_outputs'] = self.checkbox_randomize_outputs.isChecked()
+
+class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            tab = 'concordancer',
+            headers = [
+                _tr('Wl_Table_Concordancer', 'Left'),
+                _tr('Wl_Table_Concordancer', 'Node'),
+                _tr('Wl_Table_Concordancer', 'Right'),
+                _tr('Wl_Table_Concordancer', 'Sentiment'),
+                _tr('Wl_Table_Concordancer', 'Token No.'),
+                _tr('Wl_Table_Concordancer', 'Token No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No.'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No. %'),
+                _tr('Wl_Table_Concordancer', 'File')
+            ],
+            headers_int = [
+                _tr('Wl_Table_Concordancer', 'Token No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No.'),
+                _tr('Wl_Table_Concordancer', 'Sentence No.'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No.')
+            ],
+            headers_float = [
+                _tr('Wl_Table_Concordancer', 'Sentiment')
+            ],
+            headers_pct = [
+                _tr('Wl_Table_Concordancer', 'Token No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence Segment No. %'),
+                _tr('Wl_Table_Concordancer', 'Sentence No. %'),
+                _tr('Wl_Table_Concordancer', 'Paragraph No. %')
+            ]
+        )
+
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+
+        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
+        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item): # pylint: disable=unused-argument
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+            self.button_generate_fig.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+            self.button_generate_fig.setEnabled(False)
+
+    @wl_misc.log_timing
+    def generate_table(self):
+        if wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.main.settings_custom['concordancer']['search_settings']
+        ):
+            worker_concordancer_table = Wl_Worker_Concordancer_Table(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_table
+            )
+
+            wl_threading.Wl_Thread(worker_concordancer_table).start_worker()
+
+    def update_gui_table(self, err_msg, concordance_lines):
+        if wl_checks_work_area.check_results(self.main, err_msg, concordance_lines):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
+
+                self.clr_table(0)
+                self.model().setRowCount(len(concordance_lines))
+
+                settings = self.main.settings_custom['concordancer']
+
+                self.disable_updates()
+
+                for i, concordance_line in enumerate(concordance_lines):
+                    left_text, left_text_raw, left_text_search = concordance_line[0]
+                    node_text, node_text_raw, node_text_search = concordance_line[1]
+                    right_text, right_text_raw, right_text_search = concordance_line[2]
+
+                    sentiment = concordance_line[3]
+                    no_token, len_tokens = concordance_line[4]
+                    no_sentence_seg, len_sentence_segs = concordance_line[5]
+                    no_sentence, len_sentences = concordance_line[6]
+                    no_para, len_paras = concordance_line[7]
+                    file_name = concordance_line[8]
+
+                    # Node
+                    label_node = wl_labels.Wl_Label_Html(
+                        f'''
+                            <span style="color: {settings['sort_results']['highlight_colors'][0]}; font-weight: bold;">
+                                &nbsp;{node_text}&nbsp;
+                            </span>
+                        ''',
+                        self.main
+                    )
+
+                    self.setIndexWidget(self.model().index(i, 1), label_node)
+
+                    self.indexWidget(self.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+
+                    self.indexWidget(self.model().index(i, 1)).text_raw = node_text_raw
+                    self.indexWidget(self.model().index(i, 1)).text_search = node_text_search
+
+                    # Left
+                    self.setIndexWidget(
+                        self.model().index(i, 0),
+                        wl_labels.Wl_Label_Html(left_text, self.main)
+                    )
+
+                    self.indexWidget(self.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+
+                    self.indexWidget(self.model().index(i, 0)).text_raw = left_text_raw
+                    self.indexWidget(self.model().index(i, 0)).text_search = left_text_search
+
+                    # Right
+                    self.setIndexWidget(
+                        self.model().index(i, 2),
+                        wl_labels.Wl_Label_Html(right_text, self.main)
+                    )
+
+                    self.indexWidget(self.model().index(i, 2)).text_raw = right_text_raw
+                    self.indexWidget(self.model().index(i, 2)).text_search = right_text_search
+
+                    # Sentiment
+                    if not isinstance(sentiment, str):
+                        self.set_item_num(i, 3, sentiment)
+                    # No Support
+                    else:
+                        self.set_item_error(i, 3, text = sentiment)
+
+                    # Token No.
+                    self.set_item_num(i, 4, no_token)
+                    self.set_item_num(i, 5, no_token, len_tokens)
+                    # Sentence Segment No.
+                    self.set_item_num(i, 6, no_sentence_seg)
+                    self.set_item_num(i, 7, no_sentence_seg, len_sentence_segs)
+                    # Sentence No.
+                    self.set_item_num(i, 8, no_sentence)
+                    self.set_item_num(i, 9, no_sentence, len_sentences)
+                    # Paragraph No.
+                    self.set_item_num(i, 10, no_para)
+                    self.set_item_num(i, 11, no_para, len_paras)
+
+                    # File
+                    self.model().setItem(i, 12, QStandardItem(file_name))
+
+                self.enable_updates()
+
+                self.toggle_pct()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
+
+    @wl_misc.log_timing
+    def generate_fig(self):
+        if wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.main.settings_custom['concordancer']['search_settings']
+        ):
+            self.worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_fig
+            )
+
+            wl_threading.Wl_Thread(self.worker_concordancer_fig).start_worker()
+
+    def update_gui_fig(self, err_msg, points, labels):
+        if wl_checks_work_area.check_results(self.main, err_msg, points):
+            try:
+                x_ticks = labels[0]
+                x_tick_labels = labels[1]
+                y_ticks = labels[2]
+                y_tick_labels = labels[3]
+                y_max = labels[4]
+
+                points = numpy.array(points)
+                settings = self.main.settings_custom['concordancer']
+
+                if settings['fig_settings']['sort_results_by'] == self.tr('File'):
+                    matplotlib.pyplot.plot(
+                        points[:, 0],
+                        points[:, 1],
+                        'b|'
+                    )
+
+                    matplotlib.pyplot.xlabel(self.tr('Search Term'))
+                    matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
+
+                    matplotlib.pyplot.ylabel(self.tr('File'))
+                    matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
+                    matplotlib.pyplot.ylim(-1, y_max)
+                elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
+                    matplotlib.pyplot.plot(
+                        points[:, 0],
+                        points[:, 1],
+                        'b|'
+                    )
+
+                    matplotlib.pyplot.xlabel(self.tr('File'))
+                    matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
+
+                    matplotlib.pyplot.ylabel(self.tr('Search Term'))
+                    matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
+                    matplotlib.pyplot.ylim(-1, y_max)
+
+                matplotlib.pyplot.title(self.tr('Dispersion Plot'))
+                matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
+
+                # Hide the progress dialog early so that the main window will not obscure the generated figure
+                self.worker_concordancer_fig.dialog_progress.accept()
+                wl_figs.show_fig()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_fig(self.main, err_msg)
+
+class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str, list)
+
+    def run(self):
+        err_msg = ''
+        concordance_lines = []
+
+        try:
+            settings = self.main.settings_custom['concordancer']
+
+            for file in self.main.wl_file_area.get_selected_files():
+                text = copy.deepcopy(file['text'])
+                text = wl_token_processing.wl_process_tokens_concordancer(
+                    self.main, text,
+                    token_settings = settings['token_settings']
+                )
+
+                tokens = text.get_tokens_flat()
+                (
+                    offsets_paras,
+                    offsets_sentences,
+                    offsets_sentence_segs
+                ) = text.get_offsets()
+
+                search_terms = wl_matching.match_search_terms_ngrams(
+                    self.main, tokens,
+                    lang = text.lang,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
+                )
+
+                (
+                    search_terms_incl,
+                    search_terms_excl
+                ) = wl_matching.match_search_terms_context(
+                    self.main, tokens,
+                    lang = text.lang,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    context_settings = settings['context_settings']
+                )
+
+                if search_terms:
+                    len_search_term_min = min((len(search_term) for search_term in search_terms))
+                    len_search_term_max = max((len(search_term) for search_term in search_terms))
+                else:
+                    len_search_term_min = 0
+                    len_search_term_max = 0
+
+                len_paras = len(offsets_paras)
+                len_sentences = len(offsets_sentences)
+                len_sentence_segs = len(offsets_sentence_segs)
+                len_tokens = len(tokens)
+
+                for len_search_term in range(len_search_term_min, len_search_term_max + 1):
+                    for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
+                        if (
+                            ngram in search_terms
+                            and wl_matching.check_context(
+                                i, tokens,
+                                context_settings = settings['context_settings'],
+                                search_terms_incl = search_terms_incl,
+                                search_terms_excl = search_terms_excl
+                            )
+                        ):
+                            concordance_line = []
+
+                            # No.
+                            no_sentence_seg = bisect.bisect(offsets_sentence_segs, i)
+                            no_sentence = bisect.bisect(offsets_sentences, i)
+                            no_para = bisect.bisect(offsets_paras, i)
+
+                            # Search in Results (Node)
+                            text_search_node = list(ngram)
+
+                            if not settings['token_settings']['puncs']:
+                                ngram = text.tokens_flat_puncs_merged[i : i + len_search_term]
+
+                            node_text = ' '.join(ngram)
+                            node_text = wl_nlp_utils.escape_text(node_text)
+
+                            # Width Unit
+                            if settings['generation_settings']['width_unit'] == self.tr('Character'):
+                                len_context_left = 0
+                                len_context_right = 0
+
+                                context_left = []
+                                context_right = []
+
+                                width_left_char = settings['generation_settings']['width_left_char']
+                                width_right_char = settings['generation_settings']['width_right_char']
+
+                                while len_context_left < width_left_char:
+                                    if i - 1 - len(context_left) < 0:
+                                        break
+                                    else:
+                                        token_next = tokens[i - 1 - len(context_left)]
+                                        len_token_next = len(token_next)
+
+                                    if len_context_left + len_token_next > width_left_char:
+                                        context_left.insert(0, token_next[-(width_left_char - len_context_left):])
+                                    else:
+                                        context_left.insert(0, token_next)
+
+                                    len_context_left += len_token_next
+
+                                while len_context_right < width_right_char:
+                                    if i + len_search_term + len(context_right) > len(text.tokens_flat_puncs_merged) - 1:
+                                        break
+                                    else:
+                                        token_next = tokens[i + len_search_term + len(context_right)]
+                                        len_token_next = len(token_next)
+
+                                    if len_context_right + len_token_next > width_right_char:
+                                        context_right.append(token_next[: width_right_char - len_context_right])
+                                    else:
+                                        context_right.append(token_next)
+
+                                    len_context_right += len(token_next)
+
+                                # Search in Results (Left & Right)
+                                text_search_left = copy.deepcopy(context_left)
+                                text_search_right = copy.deepcopy(context_right)
+
+                                if not settings['token_settings']['puncs']:
+                                    context_left = text.tokens_flat_puncs_merged[i - len(context_left): i]
+                                    context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + len(context_right)]
+                            elif settings['generation_settings']['width_unit'] == self.tr('Token'):
+                                width_left_token = settings['generation_settings']['width_left_token']
+                                width_right_token = settings['generation_settings']['width_right_token']
+
+                                context_left = text.tokens_flat_puncs_merged[max(0, i - width_left_token) : i]
+                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + width_right_token]
+
+                                # Search in Results (Left & Right)
+                                if settings['token_settings']['puncs']:
+                                    text_search_left = copy.deepcopy(context_left)
+                                    text_search_right = copy.deepcopy(context_right)
+                                else:
+                                    text_search_left = tokens[max(0, i - width_left_token) : i]
+                                    text_search_right = tokens[i + len_search_term : i + len_search_term + width_right_token]
+                            else:
+                                if settings['generation_settings']['width_unit'] == self.tr('Sentence Segment'):
+                                    width_settings = 'sentence_seg'
+                                    offsets_unit = offsets_sentence_segs
+                                    no_unit = no_sentence_seg
+                                    len_unit = len_sentence_segs
+                                elif settings['generation_settings']['width_unit'] == self.tr('Sentence'):
+                                    width_settings = 'sentence'
+                                    offsets_unit = offsets_sentences
+                                    no_unit = no_sentence
+                                    len_unit = len_sentences
+                                elif settings['generation_settings']['width_unit'] == self.tr('Paragraph'):
+                                    width_settings = 'para'
+                                    offsets_unit = offsets_paras
+                                    no_unit = no_para
+                                    len_unit = len_paras
+
+                                width_left = settings['generation_settings'][f'width_left_{width_settings}']
+                                width_right = settings['generation_settings'][f'width_right_{width_settings}']
+
+                                offset_start = offsets_unit[max(0, no_unit - 1 - width_left)]
+
+                                if no_unit + width_right > len_unit - 1:
+                                    offset_end = None
+                                else:
+                                    offset_end = offsets_unit[no_unit + width_right]
+
+                                context_left = text.tokens_flat_puncs_merged[offset_start:i]
+                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : offset_end]
+
+                                # Search in Results (Left & Right)
+                                if settings['token_settings']['puncs']:
+                                    text_search_left = copy.deepcopy(context_left)
+                                    text_search_right = copy.deepcopy(context_right)
+                                else:
+                                    text_search_left = tokens[offset_start:i]
+                                    text_search_right = tokens[i + len_search_term : offset_end]
+
+                            context_left = wl_nlp_utils.escape_tokens(context_left)
+                            context_right = wl_nlp_utils.escape_tokens(context_right)
+
+                            context_left_text = ' '.join(context_left)
+                            context_right_text = ' '.join(context_right)
+
+                            # Left
+                            concordance_line.append([context_left_text, context_left, text_search_left])
+                            # Node
+                            concordance_line.append([node_text, list(ngram), text_search_node])
+                            # Right
+                            concordance_line.append([context_right_text, context_right, text_search_right])
+
+                            # Sentiment
+                            context_text = ' '.join([context_left_text, node_text, context_right_text])
+
+                            if text.lang.startswith('eng'):
+                                concordance_line.append(textblob.TextBlob(context_text).sentiment.polarity)
+                            elif text.lang == 'vie':
+                                sentiment = underthesea.sentiment(context_text)
+
+                                if sentiment == 'positive':
+                                    concordance_line.append(1)
+                                elif sentiment == 'negative':
+                                    concordance_line.append(-1)
+                                else:
+                                    concordance_line.append(0)
+                            else:
+                                concordance_line.append(self.tr('No Support'))
+
+                            # Token No.
+                            concordance_line.append([i + 1, len_tokens])
+                            # Sentence Segment No.
+                            concordance_line.append([no_sentence_seg, len_sentence_segs])
+                            # Sentence No.
+                            concordance_line.append([no_sentence, len_sentences])
+                            # Paragraph No.
+                            concordance_line.append([no_para, len_paras])
+                            # File
+                            concordance_line.append(file['name'])
+
+                            concordance_lines.append(concordance_line)
+        except Exception:
+            err_msg = traceback.format_exc()
+
+        self.progress_updated.emit(self.tr('Rendering table...'))
+        self.worker_done.emit(err_msg, concordance_lines)
+
+class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str, list, list)
+
+    def run(self):
+        err_msg = ''
+        points = []
+        labels = []
+
+        try:
+            texts = []
+            search_terms_files = []
+            search_terms_total = set()
+            search_terms_labels = set()
+
+            settings = self.main.settings_custom['concordancer']
+            files = sorted(self.main.wl_file_area.get_selected_files(), key = lambda item: item['name'])
+
+            for file in files:
+                text = copy.deepcopy(file['text'])
+                text = wl_token_processing.wl_process_tokens_concordancer(
+                    self.main, text,
+                    token_settings = settings['token_settings']
+                )
+
+                search_terms_file = wl_matching.match_search_terms_ngrams(
+                    self.main, text.get_tokens_flat(),
+                    lang = text.lang,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
+                )
+
+                search_terms_files.append(sorted(search_terms_file))
+
+                for search_term in search_terms_file:
+                    search_terms_total.add(search_term)
+                    search_terms_labels.add(' '.join(search_term))
+
+                texts.append(text)
+
+            len_files = len(files)
+            len_tokens_total = sum((len(text.get_tokens_flat()) for text in texts))
+
+            if settings['fig_settings']['sort_results_by'] == self.tr('File'):
+                search_terms_total = sorted(search_terms_total)
+                search_terms_labels = sorted(search_terms_labels)
+
+                for i, search_term in enumerate(search_terms_total):
+                    len_search_term = len(search_term)
+
+                    x_start = len_tokens_total * i + 1
+                    y_start = len_files
+
+                    for j, text in enumerate(texts):
+                        tokens = text.get_tokens_flat()
+
+                        if search_term in search_terms_files[j]:
+                            x_start_total = x_start + sum((
+                                len(text.get_tokens_flat())
+                                for k, text in enumerate(texts)
+                                if k < j
+                            ))
+                            len_tokens = len(tokens)
+
+                            for k, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
+                                if ngram == search_term:
+                                    points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
+                                    # Total
+                                    points.append([x_start_total + k, 0])
+            elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
+                search_terms_total = sorted(search_terms_total, reverse = True)
+                search_terms_labels = sorted(search_terms_labels, reverse = True)
+
+                for i, search_term in enumerate(search_terms_total):
+                    len_search_term = len(search_term)
+
+                    for j, text in enumerate(texts):
+                        if search_term in search_terms_files[j]:
+                            x_start = sum((
+                                len(text.get_tokens_flat())
+                                for k, text in enumerate(texts)
+                                if k < j
+                            )) + j + 2
+
+                            for k, ngram in enumerate(wl_nlp_utils.ngrams(text.get_tokens_flat(), len_search_term)):
+                                if ngram == search_term:
+                                    points.append([x_start + k, i])
+
+            if points:
+                x_ticks = [0]
+                x_tick_labels = ['']
+
+                if settings['fig_settings']['sort_results_by'] == self.tr('File'):
+                    len_tokens_total = sum((len(text.get_tokens_flat()) for text in texts))
+
+                    for i, search_term in enumerate(search_terms_total):
+                        x_tick_start = len_tokens_total * i + i + 1
+
+                        # 1/2
+                        x_ticks.append(x_tick_start + len_tokens_total / 2)
+                        # Divider
+                        x_ticks.append(x_tick_start + len_tokens_total + 1)
+
+                    for search_term in search_terms_labels:
+                        # 1/2
+                        x_tick_labels.append(search_term)
+                        # Divider
+                        x_tick_labels.append('')
+
+                    labels.append(x_ticks)
+                    labels.append(x_tick_labels)
+                    labels.append(list(range(len(files) + 1)))
+                    labels.append([self.tr('Total')] + [file['name'] for file in reversed(files)])
+                    labels.append(len(files) + 1)
+
+                elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
+                    len_search_terms_total = len(search_terms_total)
+
+                    for i, text in enumerate(texts):
+                        tokens = text.get_tokens_flat()
+
+                        x_tick_start = sum((
+                            len(text.get_tokens_flat())
+                            for j, text in enumerate(texts)
+                            if j < i
+                        )) + j + 1
+
+                        # 1/2
+                        x_ticks.append(x_tick_start + len(tokens) / 2)
+                        # Divider
+                        x_ticks.append(x_tick_start + len(tokens) + 1)
+
+                    for file in files:
+                        # 1/2
+                        x_tick_labels.append(file['name'])
+                        # Divider
+                        x_tick_labels.append('')
+
+                    labels.append(x_ticks)
+                    labels.append(x_tick_labels)
+                    labels.append(list(range(len_search_terms_total)))
+                    labels.append(search_terms_labels)
+                    labels.append(len_search_terms_total)
+        except Exception:
+            err_msg = traceback.format_exc()
+
+        self.progress_updated.emit(self.tr('Rendering figure...'))
+        self.worker_done.emit(err_msg, points, labels)
