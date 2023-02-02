@@ -43,13 +43,13 @@ def wl_fig_stats(main, stat_files_items, tab):
     # Line Chart
     if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Line Chart'):
         if tab == 'wordlist_generator':
-            label_x = _tr('wl_fig_freqs', 'Token')
+            label_x = _tr('wl_fig_stats', 'Token')
         elif tab == 'ngram_generator':
-            label_x = _tr('wl_fig_freqs', 'N-gram')
+            label_x = _tr('wl_fig_stats', 'N-gram')
         elif tab in ['collocation_extractor', 'colligation_extractor']:
-            label_x = _tr('wl_fig_freqs', 'Collocate')
+            label_x = _tr('wl_fig_stats', 'Collocate')
         elif tab == 'keyword_extractor':
-            label_x = _tr('wl_fig_freqs', 'Keyword')
+            label_x = _tr('wl_fig_stats', 'Keyword')
 
         wl_figs.generate_line_chart(
             main, stat_files_items,

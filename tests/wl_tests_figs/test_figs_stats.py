@@ -91,9 +91,9 @@ def test_wl_fig_stats():
             ]
 
             print(f"Files: {', '.join(files_selected)}")
-            print(f"Graph Type: {fig_settings['graph_type']}")
-            print(f"Sort by File: {fig_settings['sort_by_file']}")
-            print(f"Use Data: {fig_settings['use_data']}")
+            print(f"Graph type: {fig_settings['graph_type']}")
+            print(f"Sort by file: {fig_settings['sort_by_file']}")
+            print(f"Use data: {fig_settings['use_data']}")
             print(f"Use cumulative data: {fig_settings['use_cumulative']}")
             print(f"Use percentage data: {fig_settings['use_pct']}\n")
 
