@@ -383,7 +383,7 @@ def wl_widgets_token_settings(parent):
     checkbox_all_uppercase = QCheckBox(_tr('wl_widgets', 'All Uppercase'), parent)
     checkbox_title_case = QCheckBox(_tr('wl_widgets', 'Title Case'), parent)
     checkbox_nums = QCheckBox(_tr('wl_widgets', 'Numerals'), parent)
-    checkbox_puncs = QCheckBox(_tr('wl_widgets', 'Punctuations'), parent)
+    checkbox_punc_marks = QCheckBox(_tr('wl_widgets', 'Punctuation marks'), parent)
 
     checkbox_treat_as_all_lowercase = QCheckBox(_tr('wl_widgets', 'Treat as all lowercase'), parent)
     checkbox_lemmatize_tokens = QCheckBox(_tr('wl_widgets', 'Lemmatize all tokens'), parent)
@@ -406,7 +406,7 @@ def wl_widgets_token_settings(parent):
         checkbox_all_uppercase,
         checkbox_title_case,
         checkbox_nums,
-        checkbox_puncs,
+        checkbox_punc_marks,
 
         checkbox_treat_as_all_lowercase,
         checkbox_lemmatize_tokens,
@@ -429,7 +429,7 @@ def wl_widgets_token_settings_concordancer(parent):
         else:
             checkbox_ignore_tags.setEnabled(True)
 
-    checkbox_puncs = QCheckBox(_tr('wl_widgets', 'Punctuations'), parent)
+    checkbox_punc_marks = QCheckBox(_tr('wl_widgets', 'Punctuation marks'), parent)
 
     checkbox_ignore_tags = QCheckBox(_tr('wl_widgets', 'Ignore tags'), parent)
     checkbox_use_tags = QCheckBox(_tr('wl_widgets', 'Use tags only'), parent)
@@ -441,7 +441,7 @@ def wl_widgets_token_settings_concordancer(parent):
     use_tags_changed()
 
     return (
-        checkbox_puncs,
+        checkbox_punc_marks,
 
         checkbox_ignore_tags,
         checkbox_use_tags

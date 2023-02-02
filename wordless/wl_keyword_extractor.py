@@ -68,7 +68,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
             self.checkbox_all_uppercase,
             self.checkbox_title_case,
             self.checkbox_nums,
-            self.checkbox_puncs,
+            self.checkbox_punc_marks,
 
             self.checkbox_treat_as_all_lowercase,
             self.checkbox_lemmatize_tokens,
@@ -83,7 +83,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_all_uppercase.stateChanged.connect(self.token_settings_changed)
         self.checkbox_title_case.stateChanged.connect(self.token_settings_changed)
         self.checkbox_nums.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_punc_marks.stateChanged.connect(self.token_settings_changed)
 
         self.checkbox_treat_as_all_lowercase.stateChanged.connect(self.token_settings_changed)
         self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
@@ -98,7 +98,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(self.checkbox_all_uppercase, 1, 0)
         self.group_box_token_settings.layout().addWidget(self.checkbox_title_case, 1, 1)
         self.group_box_token_settings.layout().addWidget(self.checkbox_nums, 2, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 2, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_punc_marks, 2, 1)
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
@@ -241,7 +241,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_all_uppercase.setChecked(settings['token_settings']['all_uppercase'])
         self.checkbox_title_case.setChecked(settings['token_settings']['title_case'])
         self.checkbox_nums.setChecked(settings['token_settings']['nums'])
-        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+        self.checkbox_punc_marks.setChecked(settings['token_settings']['punc_marks'])
 
         self.checkbox_treat_as_all_lowercase.setChecked(settings['token_settings']['treat_as_all_lowercase'])
         self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
@@ -285,7 +285,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         settings['all_uppercase'] = self.checkbox_all_uppercase.isChecked()
         settings['title_case'] = self.checkbox_title_case.isChecked()
         settings['nums'] = self.checkbox_nums.isChecked()
-        settings['puncs'] = self.checkbox_puncs.isChecked()
+        settings['punc_marks'] = self.checkbox_punc_marks.isChecked()
 
         settings['treat_as_all_lowercase'] = self.checkbox_treat_as_all_lowercase.isChecked()
         settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()

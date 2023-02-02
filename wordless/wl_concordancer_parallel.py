@@ -57,19 +57,19 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
         (
-            self.checkbox_puncs,
+            self.checkbox_punc_marks,
 
             self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings_concordancer(self)
 
-        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_punc_marks.stateChanged.connect(self.token_settings_changed)
 
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
         self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_punc_marks, 0, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
 
@@ -175,7 +175,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
             settings = copy.deepcopy(self.main.settings_custom['concordancer_parallel'])
 
         # Token Settings
-        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+        self.checkbox_punc_marks.setChecked(settings['token_settings']['punc_marks'])
 
         self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
@@ -208,7 +208,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
     def token_settings_changed(self):
         settings = self.main.settings_custom['concordancer_parallel']['token_settings']
 
-        settings['puncs'] = self.checkbox_puncs.isChecked()
+        settings['punc_marks'] = self.checkbox_punc_marks.isChecked()
 
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
@@ -435,7 +435,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                     if parallel_unit_no < len_parallel_units:
                         # Search in Results
-                        if settings['token_settings']['puncs']:
+                        if settings['token_settings']['punc_marks']:
                             parallel_unit_raw = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no]))
                         else:
                             offset_para_start = offsets_paras[parallel_unit_no]
@@ -445,7 +445,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             else:
                                 offset_para_end = offsets_paras[parallel_unit_no + 1]
 
-                            parallel_unit_raw = text.tokens_flat_puncs_merged[offset_para_start:offset_para_end]
+                            parallel_unit_raw = text.tokens_flat_punc_marks_merged[offset_para_start:offset_para_end]
 
                         parallel_unit_raw = wl_nlp_utils.escape_tokens(parallel_unit_raw)
                         parallel_unit_search = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no]))
