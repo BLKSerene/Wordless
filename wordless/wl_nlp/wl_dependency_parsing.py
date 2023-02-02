@@ -97,7 +97,7 @@ def wl_dependency_parse_fig(
     main, inputs,
     lang, dependency_parser = 'default',
     show_pos_tags = True, show_fine_grained_pos_tags = False,
-    show_lemmas = False, collapse_puncs = True, compact_mode = False,
+    show_lemmas = False, collapse_punc_marks = True, compact_mode = False,
     show_in_separate_tab = False
 ):
     if dependency_parser == 'default':
@@ -110,7 +110,7 @@ def wl_dependency_parse_fig(
             main, inputs,
             lang, dependency_parser,
             show_pos_tags, show_fine_grained_pos_tags,
-            show_lemmas, collapse_puncs, compact_mode,
+            show_lemmas, collapse_punc_marks, compact_mode,
             show_in_separate_tab
         )
     else:
@@ -118,7 +118,7 @@ def wl_dependency_parse_fig(
             main, inputs,
             lang, dependency_parser,
             show_pos_tags, show_fine_grained_pos_tags,
-            show_lemmas, collapse_puncs, compact_mode,
+            show_lemmas, collapse_punc_marks, compact_mode,
             show_in_separate_tab
         )
 
@@ -140,7 +140,7 @@ def wl_dependency_parse_fig_text(
     main, inputs,
     lang, dependency_parser,
     show_pos_tags, show_fine_grained_pos_tags,
-    show_lemmas, collapse_puncs, compact_mode,
+    show_lemmas, collapse_punc_marks, compact_mode,
     show_in_separate_tab
 ):
     htmls = []
@@ -165,7 +165,7 @@ def wl_dependency_parse_fig_text(
                             options = {
                                 'fine_grained': show_fine_grained_pos_tags,
                                 'add_lemma': show_lemmas,
-                                'collapse_punct': collapse_puncs,
+                                'collapse_punct': collapse_punc_marks,
                                 'compact': compact_mode
                             }
                         ))
@@ -183,7 +183,7 @@ def wl_dependency_parse_fig_text(
                     options = {
                         'fine_grained': show_fine_grained_pos_tags,
                         'add_lemma': show_lemmas,
-                        'collapse_punct': collapse_puncs,
+                        'collapse_punct': collapse_punc_marks,
                         'compact': compact_mode
                     }
                 ))
@@ -194,7 +194,7 @@ def wl_dependency_parse_fig_tokens(
     main, inputs,
     lang, dependency_parser,
     show_pos_tags, show_fine_grained_pos_tags,
-    show_lemmas, collapse_puncs, compact_mode,
+    show_lemmas, collapse_punc_marks, compact_mode,
     show_in_separate_tab
 ):
     htmls = []
@@ -224,7 +224,7 @@ def wl_dependency_parse_fig_tokens(
                             options = {
                                 'fine_grained': show_fine_grained_pos_tags,
                                 'add_lemma': show_lemmas,
-                                'collapse_punct': collapse_puncs,
+                                'collapse_punct': collapse_punc_marks,
                                 'compact': compact_mode
                             }
                         ))
@@ -242,7 +242,7 @@ def wl_dependency_parse_fig_tokens(
                     options = {
                         'fine_grained': show_fine_grained_pos_tags,
                         'add_lemma': show_lemmas,
-                        'collapse_punct': collapse_puncs,
+                        'collapse_punct': collapse_punc_marks,
                         'compact': compact_mode
                     }
                 ))
