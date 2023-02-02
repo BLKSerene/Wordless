@@ -21,7 +21,7 @@ from wordless.wl_nlp import wl_nlp_utils
 
 main = wl_test_init.Wl_Test_Main()
 
-settings_lang_utils = main.settings_global['lang_util_mappings']
+settings_lang_utils = main.settings_global['mapping_lang_utils']
 
 def test_to_lang_util_code():
     for util_type, utils in settings_lang_utils.items():

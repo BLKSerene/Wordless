@@ -77,7 +77,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
     if syl_tokenizer != 'nltk_sonority_sequencing':
         assert syls_long_text_tokenized == [[str(i)] for i in range(101) for j in range(50)]
 
-    syl_tokenizer_skipped = False
+    tests_lang_util_skipped = False
 
     if lang == 'afr':
         assert syls == [['Afri', 'kaans'], ['is'], ['ti', 'po', 'lo', 'gies'], ['be', 'skou'], ["'"], ['n'], ['In', 'do'], ['-'], ['Eu', 'ro', 'pe', 'se'], [','], ['Wes'], ['-'], ['Ger', 'maan', 'se'], [','], ['Ne', 'derfran', 'kie', 'se'], ['taal', ',[2'], [']'], ['wat'], ['aan'], ['die'], ['suid', 'punt'], ['van'], ['Afri', 'ka'], ['on', 'der'], ['in', 'vloed'], ['van'], ['ver', 'skeie'], ['an', 'der'], ['ta', 'le'], ['en'], ['taal', 'groe', 'pe'], ['ont', 'staan'], ['het'], ['.']]
@@ -107,7 +107,7 @@ def test_syl_tokenize(lang, syl_tokenizer):
         elif syl_tokenizer == 'pyphen_eng_us':
             assert syls == [['Eng', 'lish'], ['is'], ['a'], ['West'], ['Ger', 'man', 'ic'], ['lan', 'guage'], ['of'], ['the'], ['In', 'do'], ['-'], ['Eu', 'ro', 'pean'], ['lan', 'guage'], ['fam', 'i', 'ly'], [','], ['orig', 'i', 'nal', 'ly'], ['spo', 'ken'], ['by'], ['the'], ['in', 'hab', 'i', 'tants'], ['of'], ['ear', 'ly'], ['me', 'dieval'], ['Eng', 'land.[3][4][5'], [']']]
         else:
-            syl_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'epo':
         assert syls == [['Es', 'pe', 'r', 'anto'], [','], ['ori', 'gi', 'ne'], ['la'], ['Lin', 'g', 'vo'], ['In', 'ter', 'na', 'ci', 'a', ',[4'], [']'], ['es', 'tas'], ['la'], ['plej'], ['dis', 'vas', 't', 'iĝ', 'inta'], ['in', 'ter', 'na', 'cia'], ['plan', 'lin', 'g', 'vo', '.[5'], [']']]
     elif lang == 'est':
@@ -167,10 +167,10 @@ def test_syl_tokenize(lang, syl_tokenizer):
     elif lang == 'zul':
         assert syls == [['Zu', 'lu'], ['/ˈzu', 'ːlu', 'ː/'], [','], ['no', 'ma'], ['isi', 'Zu', 'lu'], ['wu', 'li', 'mi'], ['lwa', 'ba', 'ntu'], ['ba', 'se'], ['Ni', 'ngi', 'zi', 'mu'], ['neA', 'fri', 'ka'], ['aba', 'yi', 'ngxe', 'nye'], ['ya', 'ma', 'Ngu', 'ni'], ['.']]
     else:
-        raise Exception(f'Error: Tests for language "{lang}" is skipped!')
+        raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 
-    if syl_tokenizer_skipped:
-        raise Exception(f'Error: Tests for syllable tokenizer "{syl_tokenizer}" is skipped!')
+    if tests_lang_util_skipped:
+        raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(syl_tokenizer)
 
 @pytest.mark.parametrize('lang, syl_tokenizer', test_syl_tokenizers)
 def test_syl_tokenize_tokens_no_punc(lang, syl_tokenizer):

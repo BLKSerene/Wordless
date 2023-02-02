@@ -978,7 +978,7 @@ class Worker_Check_Updates(QObject):
                     updates_status = 'no_updates'
             else:
                 updates_status = 'network_err'
-        except Exception:
+        except requests.RequestException:
             print(traceback.format_exc())
 
             updates_status = 'network_err'

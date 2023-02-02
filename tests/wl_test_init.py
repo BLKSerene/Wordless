@@ -23,7 +23,7 @@ import pickle
 import sys
 
 from PyQt5.QtCore import QObject
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtWidgets import QApplication, QStatusBar, QWidget
 
 from wordless import wl_file_area
 from wordless.wl_checks import wl_checks_misc
@@ -63,6 +63,9 @@ class Wl_Test_Main(QWidget):
         # Global settings
         self.settings_global = wl_settings_global.init_settings_global()
 
+        # Status bar
+        self.status_bar = QStatusBar()
+
         # Files
         self.wl_file_area = QObject()
         self.wl_file_area.main = self
@@ -88,6 +91,17 @@ class Wl_Test_Main(QWidget):
 
     def height(self):
         return 1080
+
+    def statusBar(self):
+        return self.status_bar
+
+class Wl_Exception_Tests_Lang_Skipped(Exception):
+    def __init__(self, lang):
+        super().__init__(f'Tests for language "{lang}" is skipped!')
+
+class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
+    def __init__(self, lang_util):
+        super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
 
 # Clean cached files
 def clean_import_caches():
