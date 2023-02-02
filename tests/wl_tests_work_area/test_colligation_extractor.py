@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import random
 import re
 
 from tests import wl_test_init
@@ -29,13 +28,11 @@ main.settings_custom['colligation_extractor']['search_settings']['multi_search_m
 main.settings_custom['colligation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
 def test_colligation_extractor():
-    print('Start testing module Colligation Extractor...\n')
-
     # Do not test Fisher's exact test since it is too computationally expensive
     tests_statistical_significance = [
         test_statistical_significance
         for test_statistical_significance, vals in main.settings_global['tests_statistical_significance'].items()
-        if vals['collocation_extractor'] and test_statistical_significance != "Fisher's Exact Test"
+        if vals['collocation_extractor'] and test_statistical_significance != 'fishers_exact_test'
     ]
     measures_bayes_factor = [
         measure_bayes_factor
@@ -49,34 +46,26 @@ def test_colligation_extractor():
     len_measures_effect_size = len(measures_effect_size)
     len_max_measures = max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])
 
-    files = main.settings_custom['file_area']['files_open']
-
     for i in range(len_max_measures):
-        for file in main.settings_custom['file_area']['files_open']:
-            file['selected'] = False
-
         # Single file
         if i % 2 == 0:
-            random.choice(files)['selected'] = True
+            wl_test_init.select_random_files(main, num_files = 1)
         # Multiple files
         elif i % 2 == 1:
-            for file in random.sample(files, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
+            wl_test_init.select_random_files(main, num_files = 2)
 
         files_selected = [
-            re.search(r'(?<=\[)[a-z_]+(?=\])', file['name']).group()
-            for file in files
-            if file['selected']
+            re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
+            for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
         main.settings_custom['colligation_extractor']['generation_settings']['test_statistical_significance'] = tests_statistical_significance[i % len_tests_statistical_significance]
         main.settings_custom['colligation_extractor']['generation_settings']['measure_bayes_factor'] = measures_bayes_factor[i % len_measures_bayes_factor]
         main.settings_custom['colligation_extractor']['generation_settings']['measure_effect_size'] = measures_effect_size[i % len_measures_effect_size]
 
-        print(f'[Test Round {i + 1}]')
         print(f"Files: {', '.join(files_selected)}")
-        print(f"Test of Statistical significance: {main.settings_custom['colligation_extractor']['generation_settings']['test_statistical_significance']}")
-        print(f"Measure of bayes factor: {main.settings_custom['colligation_extractor']['generation_settings']['measure_bayes_factor']}")
+        print(f"Test of statistical significance: {main.settings_custom['colligation_extractor']['generation_settings']['test_statistical_significance']}")
+        print(f"Measure of Bayes factor: {main.settings_custom['colligation_extractor']['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {main.settings_custom['colligation_extractor']['generation_settings']['measure_effect_size']}")
 
         wl_colligation_extractor.Wl_Worker_Colligation_Extractor_Table(
@@ -86,8 +75,6 @@ def test_colligation_extractor():
         ).run()
 
     main.app.quit()
-
-    print('All done!')
 
 def update_gui(err_msg, colligations_freqs_files, colligations_stats_files):
     print(err_msg)

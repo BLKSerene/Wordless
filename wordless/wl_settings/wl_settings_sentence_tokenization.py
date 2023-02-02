@@ -27,22 +27,6 @@ from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
 
-class Wl_Worker_Preview_Sentence_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
-
-    def run(self):
-        preview_lang = self.main.settings_custom['sentence_tokenization']['preview']['preview_lang']
-        preview_samples = self.main.settings_custom['sentence_tokenization']['preview']['preview_samples']
-
-        preview_results = wl_sentence_tokenization.wl_sentence_tokenize(
-            self.main,
-            text = preview_samples.strip(),
-            lang = preview_lang,
-            sentence_tokenizer = self.sentence_tokenizer
-        )
-
-        self.worker_done.emit(preview_results)
-
 class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -209,3 +193,19 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
             )
 
         return True
+
+class Wl_Worker_Preview_Sentence_Tokenizer(wl_threading.Wl_Worker_No_Progress):
+    worker_done = pyqtSignal(list)
+
+    def run(self):
+        preview_lang = self.main.settings_custom['sentence_tokenization']['preview']['preview_lang']
+        preview_samples = self.main.settings_custom['sentence_tokenization']['preview']['preview_samples']
+
+        preview_results = wl_sentence_tokenization.wl_sentence_tokenize(
+            self.main,
+            text = preview_samples.strip(),
+            lang = preview_lang,
+            sentence_tokenizer = self.sentence_tokenizer
+        )
+
+        self.worker_done.emit(preview_results)

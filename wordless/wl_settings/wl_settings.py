@@ -29,144 +29,6 @@ from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_widgets import wl_buttons, wl_layouts
 
-class Wl_Settings_Node(QWidget):
-    def __init__(self, main):
-        super().__init__()
-
-        self.main = main
-
-    def wl_msg_box_path_empty(self):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
-            self.main,
-            title = self.tr('Empty Path'),
-            text = self.tr('''
-                <div>The path should not be left empty!</div>
-            '''),
-        ).open()
-
-    def wl_msg_box_path_not_found(self, path):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
-            self.main,
-            title = self.tr('Path not Found'),
-            text = self.tr('''
-                <div>The specified path "{}" could not be found!</div>
-                <div>Please check your settings and try again.</div>
-            ''').format(path),
-        ).open()
-
-    def wl_msg_box_path_is_dir(self, path):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
-            self.main,
-            title = self.tr('Invalid File Path'),
-            text = self.tr('''
-                <div>The specified path "{}" should be a file, not a directory!</div>
-                <div>Please check your settings and try again.</div>
-            ''').format(path),
-        ).open()
-
-    def wl_msg_box_path_not_dir(self, path):
-        wl_msg_boxes.Wl_Msg_Box_Warning(
-            self.main,
-            title = self.tr('Invalid Directory Path'),
-            text = self.tr('''
-                <div>The specified path "{}" should be a directory, not a file!</div>
-                <div>Please check your settings and try again.</div>
-            ''').format(path),
-        ).open()
-
-    def validate_path_file(self, line_edit):
-        path = line_edit.text().strip()
-        path_ok = True
-
-        if path:
-            if not os.path.exists(path):
-                self.wl_msg_box_path_not_found(path)
-
-                path_ok = False
-            elif os.path.isdir(path):
-                self.wl_msg_box_path_is_dir(path)
-
-                path_ok = False
-        else:
-            self.wl_msg_box_path_empty()
-
-            path_ok = False
-
-        if not path_ok:
-            line_edit.setFocus()
-            line_edit.selectAll()
-
-        return path_ok
-
-    def validate_path_dir(self, line_edit):
-        path = line_edit.text().strip()
-        path_ok = True
-
-        if path:
-            if not os.path.exists(path):
-                self.wl_msg_box_path_not_found(path)
-
-                path_ok = False
-            elif not os.path.isdir(path):
-                self.wl_msg_box_path_not_dir(path)
-
-                path_ok = False
-        else:
-            self.wl_msg_box_path_empty()
-
-            path_ok = False
-
-        if not path_ok:
-            line_edit.setFocus()
-            line_edit.selectAll()
-
-        return path_ok
-
-    def confirm_path(self, line_edit):
-        path = line_edit.text().strip()
-        path_ok = True
-
-        if path:
-            if not os.path.exists(path):
-                reply = QMessageBox.question(
-                    self.main,
-                    self.tr('Path Not Exist'),
-                    self.tr('''
-                        {}
-                        <body>
-                            <div>The specified path "{}" does not exist.</div>
-                            <div>Do you want to create the directory?</div>
-                        </body>
-                    ''').format(self.main.settings_global['styles']['style_dialog'], path),
-                    QMessageBox.Yes | QMessageBox.No,
-                    QMessageBox.No
-                )
-
-                if reply == QMessageBox.Yes:
-                    wl_checks_misc.check_dir(path)
-                else:
-                    path_ok = False
-            elif not os.path.isdir(path):
-                self.wl_msg_box_path_not_dir(path)
-
-                path_ok = False
-        else:
-            self.wl_msg_box_path_empty()
-
-            path_ok = False
-
-        if not path_ok:
-            line_edit.setFocus()
-            line_edit.selectAll()
-
-        return path_ok
-
-    def validate_settings(self):
-        return True
-
-    def apply_settings(self):
-        return True
-
 class Wl_Settings(QDialog):
     wl_settings_changed = pyqtSignal()
 
@@ -445,3 +307,141 @@ class Wl_Settings(QDialog):
             self.tree_settings.setExpanded(node_cur.parent().index(), True)
 
         self.exec_()
+
+class Wl_Settings_Node(QWidget):
+    def __init__(self, main):
+        super().__init__()
+
+        self.main = main
+
+    def wl_msg_box_path_empty(self):
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            self.main,
+            title = self.tr('Empty Path'),
+            text = self.tr('''
+                <div>The path should not be left empty!</div>
+            '''),
+        ).open()
+
+    def wl_msg_box_path_not_found(self, path):
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            self.main,
+            title = self.tr('Path not Found'),
+            text = self.tr('''
+                <div>The specified path "{}" could not be found!</div>
+                <div>Please check your settings and try again.</div>
+            ''').format(path),
+        ).open()
+
+    def wl_msg_box_path_is_dir(self, path):
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            self.main,
+            title = self.tr('Invalid File Path'),
+            text = self.tr('''
+                <div>The specified path "{}" should be a file, not a directory!</div>
+                <div>Please check your settings and try again.</div>
+            ''').format(path),
+        ).open()
+
+    def wl_msg_box_path_not_dir(self, path):
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            self.main,
+            title = self.tr('Invalid Directory Path'),
+            text = self.tr('''
+                <div>The specified path "{}" should be a directory, not a file!</div>
+                <div>Please check your settings and try again.</div>
+            ''').format(path),
+        ).open()
+
+    def validate_path_file(self, line_edit):
+        path = line_edit.text().strip()
+        path_ok = True
+
+        if path:
+            if not os.path.exists(path):
+                self.wl_msg_box_path_not_found(path)
+
+                path_ok = False
+            elif os.path.isdir(path):
+                self.wl_msg_box_path_is_dir(path)
+
+                path_ok = False
+        else:
+            self.wl_msg_box_path_empty()
+
+            path_ok = False
+
+        if not path_ok:
+            line_edit.setFocus()
+            line_edit.selectAll()
+
+        return path_ok
+
+    def validate_path_dir(self, line_edit):
+        path = line_edit.text().strip()
+        path_ok = True
+
+        if path:
+            if not os.path.exists(path):
+                self.wl_msg_box_path_not_found(path)
+
+                path_ok = False
+            elif not os.path.isdir(path):
+                self.wl_msg_box_path_not_dir(path)
+
+                path_ok = False
+        else:
+            self.wl_msg_box_path_empty()
+
+            path_ok = False
+
+        if not path_ok:
+            line_edit.setFocus()
+            line_edit.selectAll()
+
+        return path_ok
+
+    def confirm_path(self, line_edit):
+        path = line_edit.text().strip()
+        path_ok = True
+
+        if path:
+            if not os.path.exists(path):
+                reply = QMessageBox.question(
+                    self.main,
+                    self.tr('Path Not Exist'),
+                    self.tr('''
+                        {}
+                        <body>
+                            <div>The specified path "{}" does not exist.</div>
+                            <div>Do you want to create the directory?</div>
+                        </body>
+                    ''').format(self.main.settings_global['styles']['style_dialog'], path),
+                    QMessageBox.Yes | QMessageBox.No,
+                    QMessageBox.No
+                )
+
+                if reply == QMessageBox.Yes:
+                    wl_checks_misc.check_dir(path)
+                else:
+                    path_ok = False
+            elif not os.path.isdir(path):
+                self.wl_msg_box_path_not_dir(path)
+
+                path_ok = False
+        else:
+            self.wl_msg_box_path_empty()
+
+            path_ok = False
+
+        if not path_ok:
+            line_edit.setFocus()
+            line_edit.selectAll()
+
+        return path_ok
+
+    def validate_settings(self):
+        return True
+
+    def apply_settings(self):
+        return True

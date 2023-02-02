@@ -32,43 +32,6 @@ from wordless.wl_tagsets import wl_tagset_universal
 from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables
 
-class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
-
-    def run(self):
-        preview_results = []
-
-        preview_lang = self.main.settings_custom['pos_tagging']['preview']['preview_lang']
-        preview_samples = self.main.settings_custom['pos_tagging']['preview']['preview_samples']
-
-        for line in preview_samples.split('\n'):
-            if (line := line.strip()):
-                tokens_tagged = wl_pos_tagging.wl_pos_tag(
-                    self.main, line,
-                    lang = preview_lang,
-                    pos_tagger = self.pos_tagger,
-                    tagset = self.tagset
-                )
-
-                preview_results.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
-            else:
-                preview_results.append('')
-
-        self.worker_done.emit(preview_results)
-
-class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(list)
-
-    def run(self):
-        settings_custom = self.main.settings_custom['pos_tagging']['tagsets']
-
-        preview_lang = settings_custom['preview_settings']['preview_lang']
-        preview_pos_tagger = settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
-        mappings = settings_custom['mapping_settings'][preview_lang][preview_pos_tagger]
-
-        self.progress_updated.emit(self.tr('Updating table...'))
-        self.worker_done.emit(mappings)
-
 # Part-of-speech Tagging
 class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
@@ -258,6 +221,30 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
         self.settings_custom['pos_tagger_settings']['to_universal_pos_tags'] = self.checkbox_to_universal_pos_tags.isChecked()
 
         return True
+
+class Wl_Worker_Preview_Pos_Tagger(wl_threading.Wl_Worker_No_Progress):
+    worker_done = pyqtSignal(list)
+
+    def run(self):
+        preview_results = []
+
+        preview_lang = self.main.settings_custom['pos_tagging']['preview']['preview_lang']
+        preview_samples = self.main.settings_custom['pos_tagging']['preview']['preview_samples']
+
+        for line in preview_samples.split('\n'):
+            if (line := line.strip()):
+                tokens_tagged = wl_pos_tagging.wl_pos_tag(
+                    self.main, line,
+                    lang = preview_lang,
+                    pos_tagger = self.pos_tagger,
+                    tagset = self.tagset
+                )
+
+                preview_results.append(' '.join([f'{token}_{tag}' for token, tag in tokens_tagged]))
+            else:
+                preview_results.append('')
+
+        self.worker_done.emit(preview_results)
 
 # Part-of-speech Tagging - Tagsets
 class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
@@ -527,3 +514,16 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
                     self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
 
         return True
+
+class Wl_Worker_Fetch_Data_Tagsets(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(list)
+
+    def run(self):
+        settings_custom = self.main.settings_custom['pos_tagging']['tagsets']
+
+        preview_lang = settings_custom['preview_settings']['preview_lang']
+        preview_pos_tagger = settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
+        mappings = settings_custom['mapping_settings'][preview_lang][preview_pos_tagger]
+
+        self.progress_updated.emit(self.tr('Updating table...'))
+        self.worker_done.emit(mappings)

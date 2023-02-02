@@ -322,8 +322,8 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                 for i, concordance_line in enumerate(concordance_lines):
                     parallel_unit_no, len_parallel_units = concordance_line[0]
 
-                    self.set_item_num(i, 0, parallel_unit_no + 1)
-                    self.set_item_num(i, 1, parallel_unit_no + 1, len_parallel_units)
+                    self.set_item_num(i, 0, parallel_unit_no)
+                    self.set_item_num(i, 1, parallel_unit_no, len_parallel_units)
 
                     for j, (parallel_unit_raw, parallel_unit_search) in enumerate(concordance_line[1]):
                         label_parallel_unit = wl_labels.Wl_Label_Html(' '.join(parallel_unit_raw), self.main)
@@ -413,7 +413,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                     search_terms_excl = search_terms_excl
                                 )
                             ):
-                                parallel_unit_no = bisect.bisect(offsets_paras, j) - 1
+                                parallel_unit_no = bisect.bisect(offsets_paras, j)
 
                                 if parallel_unit_no not in parallel_units:
                                     parallel_units[parallel_unit_no] = [[] for _ in range(len_files)]
@@ -433,22 +433,22 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                 for parallel_unit_no, parallel_unit_nodes in parallel_units.items():
                     node = parallel_unit_nodes[i]
 
-                    if parallel_unit_no < len_parallel_units:
+                    if parallel_unit_no <= len_parallel_units:
                         # Search in Results
                         if settings['token_settings']['punc_marks']:
-                            parallel_unit_raw = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no]))
+                            parallel_unit_raw = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
                         else:
-                            offset_para_start = offsets_paras[parallel_unit_no]
+                            offset_para_start = offsets_paras[parallel_unit_no - 1]
 
-                            if parallel_unit_no == len_parallel_units - 1:
+                            if parallel_unit_no == len_parallel_units:
                                 offset_para_end = None
                             else:
-                                offset_para_end = offsets_paras[parallel_unit_no + 1]
+                                offset_para_end = offsets_paras[parallel_unit_no]
 
                             parallel_unit_raw = text.tokens_flat_punc_marks_merged[offset_para_start:offset_para_end]
 
                         parallel_unit_raw = wl_nlp_utils.escape_tokens(parallel_unit_raw)
-                        parallel_unit_search = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no]))
+                        parallel_unit_search = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
 
                         # Highlight node if found
                         if node:

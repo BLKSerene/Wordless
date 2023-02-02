@@ -20,110 +20,13 @@ import copy
 
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel, QPushButton, QTextEdit
+from PyQt5.QtWidgets import QGroupBox, QLabel, QPushButton, QTextEdit
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_nlp import wl_dependency_parsing, wl_nlp_utils
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
-
-class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
-
-    def run(self):
-        settings = self.main.settings_custom['dependency_parsing']['preview']
-
-        preview_lang = settings['preview_lang']
-        preview_samples = settings['preview_samples']
-
-        htmls = wl_dependency_parsing.wl_dependency_parse_fig(
-            self.main, preview_samples,
-            lang = preview_lang,
-            dependency_parser = self.dependency_parser,
-            show_pos_tags = settings['preview_settings']['show_pos_tags'],
-            show_fine_grained_pos_tags = settings['preview_settings']['show_fine_grained_pos_tags'],
-            # "Show lemmas" requires "Show part-of-speech tags"
-            show_lemmas = settings['preview_settings']['show_pos_tags'] and settings['preview_settings']['show_lemmas'],
-            collapse_punc_marks = settings['preview_settings']['collapse_punc_marks'],
-            compact_mode = settings['preview_settings']['compact_mode'],
-            show_in_separate_tab = settings['preview_settings']['show_in_separate_tab']
-        )
-
-        self.worker_done.emit(htmls)
-
-class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
-    def __init__(self, main):
-        super().__init__(main, title = 'Preview Settings')
-
-        self.settings_custom = self.main.settings_custom['dependency_parsing']['preview']['preview_settings']
-        self.settings_default = self.main.settings_default['dependency_parsing']['preview']['preview_settings']
-
-        self.checkbox_show_pos_tags = QCheckBox(self.tr('Show'), self)
-        self.combo_box_show_pos_tags = wl_boxes.Wl_Combo_Box(self)
-        self.label_show_pos_tags = QLabel(self.tr('part-of-speech tags'), self)
-        self.checkbox_show_lemmas = QCheckBox(self.tr('Show lemmas'), self)
-        self.checkbox_collapse_punc_marks = QCheckBox(self.tr('Collapse punctuation marks'), self)
-        self.checkbox_compact_mode = QCheckBox(self.tr('Compact mode'), self)
-        self.checkbox_show_in_separate_tab = QCheckBox(self.tr('Show each sentence in a separate tab'), self)
-
-        self.combo_box_show_pos_tags.addItems([
-            self.tr('coarse-grained'),
-            self.tr('fine-grained')
-        ])
-
-        self.checkbox_show_pos_tags.stateChanged.connect(self.show_pos_tags_changed)
-
-        self.wrapper_settings.layout().addWidget(self.checkbox_show_pos_tags, 0, 0)
-        self.wrapper_settings.layout().addWidget(self.combo_box_show_pos_tags, 0, 1)
-        self.wrapper_settings.layout().addWidget(self.label_show_pos_tags, 0, 2)
-        self.wrapper_settings.layout().addWidget(self.checkbox_show_lemmas, 1, 0, 1, 4)
-        self.wrapper_settings.layout().addWidget(self.checkbox_collapse_punc_marks, 2, 0, 1, 4)
-        self.wrapper_settings.layout().addWidget(self.checkbox_compact_mode, 3, 0, 1, 4)
-        self.wrapper_settings.layout().addWidget(self.checkbox_show_in_separate_tab, 4, 0, 1, 4)
-
-        self.wrapper_settings.layout().setColumnStretch(3, 1)
-
-    def show_pos_tags_changed(self):
-        if self.checkbox_show_pos_tags.isChecked():
-            self.combo_box_show_pos_tags.setEnabled(True)
-            self.checkbox_show_lemmas.setEnabled(True)
-        else:
-            self.combo_box_show_pos_tags.setEnabled(False)
-            self.checkbox_show_lemmas.setEnabled(False)
-
-    def load_settings(self, defaults = False):
-        if defaults:
-            settings = copy.deepcopy(self.settings_default)
-        else:
-            settings = copy.deepcopy(self.settings_custom)
-
-        self.checkbox_show_pos_tags.setChecked(settings['show_pos_tags'])
-
-        if settings['show_fine_grained_pos_tags']:
-            self.combo_box_show_pos_tags.setCurrentText(self.tr('fine-grained'))
-        else:
-            self.combo_box_show_pos_tags.setCurrentText(self.tr('coarse-grained'))
-
-        self.checkbox_show_lemmas.setChecked(settings['show_lemmas'])
-        self.checkbox_collapse_punc_marks.setChecked(settings['collapse_punc_marks'])
-        self.checkbox_compact_mode.setChecked(settings['compact_mode'])
-        self.checkbox_show_in_separate_tab.setChecked(settings['show_in_separate_tab'])
-
-        self.show_pos_tags_changed()
-
-    def save_settings(self):
-        self.settings_custom['show_pos_tags'] = self.checkbox_show_pos_tags.isChecked()
-
-        if self.combo_box_show_pos_tags.currentText() == self.tr('fine-grained'):
-            self.settings_custom['show_fine_grained_pos_tags'] = True
-        elif self.combo_box_show_pos_tags.currentText() == self.tr('coarse-grained'):
-            self.settings_custom['show_fine_grained_pos_tags'] = False
-
-        self.settings_custom['show_lemmas'] = self.checkbox_show_lemmas.isChecked()
-        self.settings_custom['collapse_punc_marks'] = self.checkbox_collapse_punc_marks.isChecked()
-        self.settings_custom['compact_mode'] = self.checkbox_compact_mode.isChecked()
-        self.settings_custom['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
+from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables, wl_widgets
 
 class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
@@ -297,3 +200,85 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
             )
 
         return True
+
+class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
+    def __init__(self, main):
+        super().__init__(main, title = 'Preview Settings')
+
+        self.settings_custom = self.main.settings_custom['dependency_parsing']['preview']['preview_settings']
+        self.settings_default = self.main.settings_default['dependency_parsing']['preview']['preview_settings']
+
+        (
+            self.checkbox_show_pos_tags, self.combo_box_show_pos_tags, self.label_show_pos_tags,
+            self.checkbox_show_lemmas,
+            self.checkbox_collapse_punc_marks,
+            self.checkbox_compact_mode,
+            self.checkbox_show_in_separate_tab
+        ) = wl_widgets.wl_widgets_fig_settings_dependency_parsing(self)
+
+        self.wrapper_settings.layout().addWidget(self.checkbox_show_pos_tags, 0, 0)
+        self.wrapper_settings.layout().addWidget(self.combo_box_show_pos_tags, 0, 1)
+        self.wrapper_settings.layout().addWidget(self.label_show_pos_tags, 0, 2)
+        self.wrapper_settings.layout().addWidget(self.checkbox_show_lemmas, 1, 0, 1, 4)
+        self.wrapper_settings.layout().addWidget(self.checkbox_collapse_punc_marks, 2, 0, 1, 4)
+        self.wrapper_settings.layout().addWidget(self.checkbox_compact_mode, 3, 0, 1, 4)
+        self.wrapper_settings.layout().addWidget(self.checkbox_show_in_separate_tab, 4, 0, 1, 4)
+
+        self.wrapper_settings.layout().setColumnStretch(3, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        self.checkbox_show_pos_tags.setChecked(settings['show_pos_tags'])
+
+        if settings['show_fine_grained_pos_tags']:
+            self.combo_box_show_pos_tags.setCurrentText(self.tr('fine-grained'))
+        else:
+            self.combo_box_show_pos_tags.setCurrentText(self.tr('coarse-grained'))
+
+        self.checkbox_show_lemmas.setChecked(settings['show_lemmas'])
+        self.checkbox_collapse_punc_marks.setChecked(settings['collapse_punc_marks'])
+        self.checkbox_compact_mode.setChecked(settings['compact_mode'])
+        self.checkbox_show_in_separate_tab.setChecked(settings['show_in_separate_tab'])
+
+        self.checkbox_show_pos_tags.stateChanged.emit(self.checkbox_show_pos_tags.checkState())
+
+    def save_settings(self):
+        self.settings_custom['show_pos_tags'] = self.checkbox_show_pos_tags.isChecked()
+
+        if self.combo_box_show_pos_tags.currentText() == self.tr('fine-grained'):
+            self.settings_custom['show_fine_grained_pos_tags'] = True
+        elif self.combo_box_show_pos_tags.currentText() == self.tr('coarse-grained'):
+            self.settings_custom['show_fine_grained_pos_tags'] = False
+
+        self.settings_custom['show_lemmas'] = self.checkbox_show_lemmas.isChecked()
+        self.settings_custom['collapse_punc_marks'] = self.checkbox_collapse_punc_marks.isChecked()
+        self.settings_custom['compact_mode'] = self.checkbox_compact_mode.isChecked()
+        self.settings_custom['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
+
+class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
+    worker_done = pyqtSignal(list)
+
+    def run(self):
+        settings = self.main.settings_custom['dependency_parsing']['preview']
+
+        preview_lang = settings['preview_lang']
+        preview_samples = settings['preview_samples']
+
+        htmls = wl_dependency_parsing.wl_dependency_parse_fig(
+            self.main, preview_samples,
+            lang = preview_lang,
+            dependency_parser = self.dependency_parser,
+            show_pos_tags = settings['preview_settings']['show_pos_tags'],
+            show_fine_grained_pos_tags = settings['preview_settings']['show_fine_grained_pos_tags'],
+            # "Show lemmas" requires "Show part-of-speech tags"
+            show_lemmas = settings['preview_settings']['show_pos_tags'] and settings['preview_settings']['show_lemmas'],
+            collapse_punc_marks = settings['preview_settings']['collapse_punc_marks'],
+            compact_mode = settings['preview_settings']['compact_mode'],
+            show_in_separate_tab = settings['preview_settings']['show_in_separate_tab']
+        )
+
+        self.worker_done.emit(htmls)

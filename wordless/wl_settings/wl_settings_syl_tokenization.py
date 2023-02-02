@@ -27,37 +27,6 @@ from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
 
-class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
-
-    def run(self):
-        preview_results = []
-
-        preview_lang = self.main.settings_custom['syl_tokenization']['preview']['preview_lang']
-        preview_samples = self.main.settings_custom['syl_tokenization']['preview']['preview_samples']
-
-        for line in preview_samples.split('\n'):
-            if (line := line.strip()):
-                syls = wl_syl_tokenization.wl_syl_tokenize(
-                    self.main, line,
-                    lang = preview_lang,
-                    syl_tokenizer = self.syl_tokenizer
-                )
-
-                if preview_lang == 'tha':
-                    text = ' '.join(['-'.join(syl) for syl in syls])
-                else:
-                    text = wl_word_detokenization.wl_word_detokenize(
-                        self.main, ['-'.join(syl) for syl in syls],
-                        lang = preview_lang
-                    )
-
-                preview_results.append(text)
-            else:
-                preview_results.append('')
-
-        self.worker_done.emit(preview_results)
-
 class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -224,3 +193,34 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
             )
 
         return True
+
+class Wl_Worker_Preview_Syl_Tokenizer(wl_threading.Wl_Worker_No_Progress):
+    worker_done = pyqtSignal(list)
+
+    def run(self):
+        preview_results = []
+
+        preview_lang = self.main.settings_custom['syl_tokenization']['preview']['preview_lang']
+        preview_samples = self.main.settings_custom['syl_tokenization']['preview']['preview_samples']
+
+        for line in preview_samples.split('\n'):
+            if (line := line.strip()):
+                syls = wl_syl_tokenization.wl_syl_tokenize(
+                    self.main, line,
+                    lang = preview_lang,
+                    syl_tokenizer = self.syl_tokenizer
+                )
+
+                if preview_lang == 'tha':
+                    text = ' '.join(['-'.join(syl) for syl in syls])
+                else:
+                    text = wl_word_detokenization.wl_word_detokenize(
+                        self.main, ['-'.join(syl) for syl in syls],
+                        lang = preview_lang
+                    )
+
+                preview_results.append(text)
+            else:
+                preview_results.append('')
+
+        self.worker_done.emit(preview_results)

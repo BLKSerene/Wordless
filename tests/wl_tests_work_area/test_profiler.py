@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 import collections
-import random
 import re
 
 import numpy
@@ -31,28 +30,19 @@ from wordless.wl_utils import wl_misc
 main = wl_test_init.Wl_Test_Main()
 
 def test_profiler():
-    print('Start testing module Profiler...\n')
-
-    files = main.settings_custom['file_area']['files_open']
-
     for i in range(2):
-        for file in files:
-            file['selected'] = False
-
         # Single file
-        if i == 0:
-            random.choice(files)['selected'] = True
+        if i % 2 == 0:
+            wl_test_init.select_random_files(main, num_files = 1)
         # Multiple files
-        elif i == 1:
-            for file in random.sample(files, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
+        elif i % 2 == 1:
+            wl_test_init.select_random_files(main, num_files = 2)
 
         files_selected = [
             re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
-        print(f'[Test Round {i + 1}]')
         print(f"Files: {', '.join(files_selected)}")
 
         wl_profiler.Wl_Worker_Profiler_Table(
@@ -60,8 +50,6 @@ def test_profiler():
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
             update_gui = update_gui
         ).run()
-
-    print('All done!')
 
     main.app.quit()
 

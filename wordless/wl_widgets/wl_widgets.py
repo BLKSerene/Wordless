@@ -871,6 +871,38 @@ def wl_widgets_fig_settings(parent, tab):
         checkbox_use_pct, checkbox_use_cumulative
     )
 
+def wl_widgets_fig_settings_dependency_parsing(parent):
+    def show_pos_tags_changed():
+        if checkbox_show_pos_tags.isChecked():
+            combo_box_show_pos_tags.setEnabled(True)
+            checkbox_show_lemmas.setEnabled(True)
+        else:
+            combo_box_show_pos_tags.setEnabled(False)
+            checkbox_show_lemmas.setEnabled(False)
+
+    checkbox_show_pos_tags = QCheckBox(_tr('wl_widgets', 'Show'), parent)
+    combo_box_show_pos_tags = wl_boxes.Wl_Combo_Box(parent)
+    label_show_pos_tags = QLabel(_tr('wl_widgets', 'part-of-speech tags'), parent)
+    checkbox_show_lemmas = QCheckBox(_tr('wl_widgets', 'Show lemmas'), parent)
+    checkbox_collapse_punc_marks = QCheckBox(_tr('wl_widgets', 'Collapse punctuation marks'), parent)
+    checkbox_compact_mode = QCheckBox(_tr('wl_widgets', 'Compact mode'), parent)
+    checkbox_show_in_separate_tab = QCheckBox(_tr('wl_widgets', 'Show each sentence in a separate tab'), parent)
+
+    combo_box_show_pos_tags.addItems([
+        _tr('wl_widgets', 'coarse-grained'),
+        _tr('wl_widgets', 'fine-grained')
+    ])
+
+    checkbox_show_pos_tags.stateChanged.connect(show_pos_tags_changed)
+
+    return (
+        checkbox_show_pos_tags, combo_box_show_pos_tags, label_show_pos_tags,
+        checkbox_show_lemmas,
+        checkbox_collapse_punc_marks,
+        checkbox_compact_mode,
+        checkbox_show_in_separate_tab
+    )
+
 # Filter Settings
 def wl_widgets_filter(parent, filter_min, filter_max):
     label_min = QLabel(_tr('wl_widgets', 'From'), parent)

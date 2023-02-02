@@ -28,33 +28,6 @@ from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
 
-class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
-
-    def run(self):
-        preview_results = []
-
-        preview_lang = self.main.settings_custom['word_tokenization']['preview']['preview_lang']
-        preview_samples = self.main.settings_custom['word_tokenization']['preview']['preview_samples']
-
-        tokens_multilevel = wl_word_tokenization.wl_word_tokenize(
-            main = self.main,
-            text = preview_samples,
-            lang = preview_lang,
-            word_tokenizer = self.word_tokenizer
-        )
-
-        for para in tokens_multilevel:
-            tokens = wl_misc.flatten_list(para)
-
-            # Replace spaces with underscores in Vietnamese texts
-            if preview_lang == 'vie':
-                tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
-
-            preview_results.append(' '.join(tokens))
-
-        self.worker_done.emit(preview_results)
-
 class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -221,3 +194,30 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
             )
 
         return True
+
+class Wl_Worker_Preview_Word_Tokenizer(wl_threading.Wl_Worker_No_Progress):
+    worker_done = pyqtSignal(list)
+
+    def run(self):
+        preview_results = []
+
+        preview_lang = self.main.settings_custom['word_tokenization']['preview']['preview_lang']
+        preview_samples = self.main.settings_custom['word_tokenization']['preview']['preview_samples']
+
+        tokens_multilevel = wl_word_tokenization.wl_word_tokenize(
+            main = self.main,
+            text = preview_samples,
+            lang = preview_lang,
+            word_tokenizer = self.word_tokenizer
+        )
+
+        for para in tokens_multilevel:
+            tokens = wl_misc.flatten_list(para)
+
+            # Replace spaces with underscores in Vietnamese texts
+            if preview_lang == 'vie':
+                tokens = [re.sub(r'\s+', r'_', token) for token in tokens]
+
+            preview_results.append(' '.join(tokens))
+
+        self.worker_done.emit(preview_results)
