@@ -1666,7 +1666,7 @@ def init_settings_default(main):
                     'show_pos_tags': True,
                     'show_fine_grained_pos_tags': False,
                     'show_lemmas': False,
-                    'collapse_puncs': True,
+                    'collapse_punc_marks': True,
                     'compact_mode': False,
                     'show_in_separate_tab': False
                 },

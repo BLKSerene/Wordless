@@ -45,7 +45,7 @@ class Wl_Worker_Preview_Dependency_Parser(wl_threading.Wl_Worker_No_Progress):
             show_fine_grained_pos_tags = settings['preview_settings']['show_fine_grained_pos_tags'],
             # "Show lemmas" requires "Show part-of-speech tags"
             show_lemmas = settings['preview_settings']['show_pos_tags'] and settings['preview_settings']['show_lemmas'],
-            collapse_puncs = settings['preview_settings']['collapse_puncs'],
+            collapse_punc_marks = settings['preview_settings']['collapse_punc_marks'],
             compact_mode = settings['preview_settings']['compact_mode'],
             show_in_separate_tab = settings['preview_settings']['show_in_separate_tab']
         )
@@ -63,7 +63,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.combo_box_show_pos_tags = wl_boxes.Wl_Combo_Box(self)
         self.label_show_pos_tags = QLabel(self.tr('part-of-speech tags'), self)
         self.checkbox_show_lemmas = QCheckBox(self.tr('Show lemmas'), self)
-        self.checkbox_collapse_puncs = QCheckBox(self.tr('Collapse punctuation marks'), self)
+        self.checkbox_collapse_punc_marks = QCheckBox(self.tr('Collapse punctuation marks'), self)
         self.checkbox_compact_mode = QCheckBox(self.tr('Compact mode'), self)
         self.checkbox_show_in_separate_tab = QCheckBox(self.tr('Show each sentence in a separate tab'), self)
 
@@ -78,7 +78,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.wrapper_settings.layout().addWidget(self.combo_box_show_pos_tags, 0, 1)
         self.wrapper_settings.layout().addWidget(self.label_show_pos_tags, 0, 2)
         self.wrapper_settings.layout().addWidget(self.checkbox_show_lemmas, 1, 0, 1, 4)
-        self.wrapper_settings.layout().addWidget(self.checkbox_collapse_puncs, 2, 0, 1, 4)
+        self.wrapper_settings.layout().addWidget(self.checkbox_collapse_punc_marks, 2, 0, 1, 4)
         self.wrapper_settings.layout().addWidget(self.checkbox_compact_mode, 3, 0, 1, 4)
         self.wrapper_settings.layout().addWidget(self.checkbox_show_in_separate_tab, 4, 0, 1, 4)
 
@@ -106,7 +106,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
             self.combo_box_show_pos_tags.setCurrentText(self.tr('coarse-grained'))
 
         self.checkbox_show_lemmas.setChecked(settings['show_lemmas'])
-        self.checkbox_collapse_puncs.setChecked(settings['collapse_puncs'])
+        self.checkbox_collapse_punc_marks.setChecked(settings['collapse_punc_marks'])
         self.checkbox_compact_mode.setChecked(settings['compact_mode'])
         self.checkbox_show_in_separate_tab.setChecked(settings['show_in_separate_tab'])
 
@@ -121,7 +121,7 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
             self.settings_custom['show_fine_grained_pos_tags'] = False
 
         self.settings_custom['show_lemmas'] = self.checkbox_show_lemmas.isChecked()
-        self.settings_custom['collapse_puncs'] = self.checkbox_collapse_puncs.isChecked()
+        self.settings_custom['collapse_punc_marks'] = self.checkbox_collapse_punc_marks.isChecked()
         self.settings_custom['compact_mode'] = self.checkbox_compact_mode.isChecked()
         self.settings_custom['show_in_separate_tab'] = self.checkbox_show_in_separate_tab.isChecked()
 
