@@ -941,39 +941,6 @@ def wl_widgets_filter_p_val(parent):
         label_max, spin_box_max, checkbox_max_no_limit
     )
 
-def wl_widgets_filter_results(parent, table):
-    def table_item_changed():
-        if combo_box_filter_file.count() == 1:
-            file_old = ''
-        else:
-            file_old = combo_box_filter_file.currentText()
-
-        combo_box_filter_file.clear()
-
-        for file in table.settings['files']['files_open']:
-            if file['selected']:
-                combo_box_filter_file.addItem(file['name'])
-
-        combo_box_filter_file.addItem(_tr('wl_widgets', 'Total'))
-
-        if combo_box_filter_file.findText(file_old) > -1:
-            combo_box_filter_file.setCurrentText(file_old)
-
-    label_filter_file = QLabel(_tr('wl_widgets', 'Filter File:'), parent)
-    combo_box_filter_file = wl_boxes.Wl_Combo_Box(parent)
-    button_filter_results = QPushButton(_tr('wl_widgets', 'Filter Results in Table'), parent)
-
-    button_filter_results.clicked.connect(lambda: table.update_filters()) # pylint: disable=unnecessary-lambda
-
-    table.itemChanged.connect(table_item_changed)
-
-    table_item_changed()
-
-    return (
-        label_filter_file, combo_box_filter_file,
-        button_filter_results
-    )
-
 # Settings -> Measures
 def wl_widgets_num_sub_sections(parent):
     label_divide_each_file_into = QLabel(_tr('wl_widgets', 'Divide each file into'), parent)

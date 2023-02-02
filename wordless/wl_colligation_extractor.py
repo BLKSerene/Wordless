@@ -39,797 +39,6 @@ from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
 
-class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
-    worker_done = wl_threading.wl_pyqt_signal(str, dict, dict)
-
-    def __init__(self, main, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
-
-        self.err_msg = ''
-        self.colligations_freqs_files = []
-        self.colligations_stats_files = []
-
-    def run(self):
-        try:
-            texts = []
-            colligations_freqs_files_all = []
-
-            settings = self.main.settings_custom['colligation_extractor']
-            files = list(self.main.wl_file_area.get_selected_files())
-
-            window_left = settings['generation_settings']['window_left']
-            window_right = settings['generation_settings']['window_right']
-
-            # Calculate window size
-            if window_left < 0 < window_right:
-                window_size = window_right - window_left
-            else:
-                window_size = window_right - window_left + 1
-
-            # Frequency
-            for i, file in enumerate(files):
-                colligations_freqs_file = {}
-                colligations_freqs_file_all = {}
-
-                text = copy.deepcopy(file['text'])
-
-                # Generate POS tags for files that are not POS tagged already
-                if not file['tagged']:
-                    tokens_tagged = wl_pos_tagging.wl_pos_tag(
-                        self.main,
-                        inputs = text.get_tokens_flat(),
-                        lang = text.lang
-                    )
-
-                    text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
-                    # Modify text types
-                    text.tagged = True
-
-                text = wl_token_processing.wl_process_tokens_colligation_extractor(
-                    self.main, text,
-                    token_settings = settings['token_settings']
-                )
-
-                tokens = text.get_tokens_flat()
-                (
-                    offsets_paras,
-                    offsets_sentences,
-                    offsets_sentence_segs
-                ) = text.get_offsets()
-
-                search_terms = wl_matching.match_search_terms_ngrams(
-                    self.main, tokens,
-                    lang = text.lang,
-                    tagged = text.tagged,
-                    token_settings = settings['token_settings'],
-                    search_settings = settings['search_settings']
-                )
-
-                (
-                    search_terms_incl,
-                    search_terms_excl
-                ) = wl_matching.match_search_terms_context(
-                    self.main, tokens,
-                    lang = text.lang,
-                    tagged = text.tagged,
-                    token_settings = settings['token_settings'],
-                    context_settings = settings['context_settings']
-                )
-
-                if search_terms:
-                    len_search_term_min = min((len(search_term) for search_term in search_terms))
-                    len_search_term_max = max((len(search_term) for search_term in search_terms))
-                else:
-                    len_search_term_min = 1
-                    len_search_term_max = 1
-
-                len_paras = len(offsets_paras)
-                len_sentences = len(offsets_sentences)
-                len_sentence_segs = len(offsets_sentence_segs)
-                len_tokens = len(tokens)
-
-                settings_limit_searching = settings['generation_settings']['limit_searching']
-
-                for ngram_size in range(len_search_term_min, len_search_term_max + 1):
-                    colligations_freqs_file_all[ngram_size] = collections.Counter()
-
-                    for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, ngram_size)):
-                        # Limit Searching
-                        if settings_limit_searching != self.tr('None'):
-                            if settings_limit_searching == self.tr('Within Sentence Segments'):
-                                offsets_unit = offsets_sentence_segs
-                                len_unit = len_sentence_segs
-                            elif settings_limit_searching == self.tr('Within Sentences'):
-                                offsets_unit = offsets_sentences
-                                len_unit = len_sentences
-                            elif settings_limit_searching == self.tr('Within Paragraphs'):
-                                offsets_unit = offsets_paras
-                                len_unit = len_paras
-
-                            i_unit = bisect.bisect(offsets_unit, i) - 1
-
-                            i_unit_start = offsets_unit[i_unit]
-                            i_unit_end = offsets_unit[i_unit + 1] - 1 if i_unit < len_unit - 1 else len_tokens - 1
-
-                        # Extract collocates
-                        tags_left = []
-                        tags_right = []
-
-                        if window_left < 0 < window_right:
-                            # Limit Searching
-                            if settings_limit_searching == self.tr('None'):
-                                tags_left = text.tags[max(0, i + window_left) : i]
-                                tags_right = text.tags[i + ngram_size : i + ngram_size + window_right]
-                            else:
-                                # Span positions (Left)
-                                for position in range(max(0, i + window_left), i):
-                                    if i_unit_start <= position <= i_unit_end:
-                                        tags_left.append(text.tags[position])
-
-                                # Span positions (Right)
-                                for position in range(i + ngram_size, i + ngram_size + window_right):
-                                    if i_unit_start <= position <= i_unit_end:
-                                        tags_right.append(text.tags[position])
-
-                            for j, collocate in enumerate(reversed(tags_left)):
-                                if wl_matching.check_context(
-                                    i, tokens,
-                                    context_settings = settings['context_settings'],
-                                    search_terms_incl = search_terms_incl,
-                                    search_terms_excl = search_terms_excl
-                                ):
-                                    if (ngram, collocate) not in colligations_freqs_file:
-                                        colligations_freqs_file[(ngram, collocate)] = [0] * window_size
-
-                                    colligations_freqs_file[(ngram, collocate)][abs(window_left) - 1 - j] += 1
-
-                                colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
-
-                            for j, collocate in enumerate(tags_right):
-                                if wl_matching.check_context(
-                                    i, tokens,
-                                    context_settings = settings['context_settings'],
-                                    search_terms_incl = search_terms_incl,
-                                    search_terms_excl = search_terms_excl
-                                ):
-                                    if (ngram, collocate) not in colligations_freqs_file:
-                                        colligations_freqs_file[(ngram, collocate)] = [0] * window_size
-
-                                    colligations_freqs_file[(ngram, collocate)][abs(window_left) + j] += 1
-
-                                colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
-                        elif window_left < 0 and window_right < 0:
-                            # Limit Searching
-                            if settings_limit_searching == self.tr('None'):
-                                tags_left = text.tags[max(0, i + window_left) : max(0, i + window_right + 1)]
-                            else:
-                                # Span positions (Left)
-                                for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
-                                    if i_unit_start <= position <= i_unit_end:
-                                        tags_left.append(text.tags[position])
-
-                            for j, collocate in enumerate(reversed(tags_left)):
-                                if wl_matching.check_context(
-                                    i, tokens,
-                                    context_settings = settings['context_settings'],
-                                    search_terms_incl = search_terms_incl,
-                                    search_terms_excl = search_terms_excl
-                                ):
-                                    if (ngram, collocate) not in colligations_freqs_file:
-                                        colligations_freqs_file[(ngram, collocate)] = [0] * window_size
-
-                                    colligations_freqs_file[(ngram, collocate)][window_size - 1 - j] += 1
-
-                                colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
-                        elif window_left > 0 and window_right > 0:
-                            # Limit Searching
-                            if settings_limit_searching == self.tr('None'):
-                                tags_right = text.tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
-                            else:
-                                # Span positions (Right)
-                                for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
-                                    if i_unit_start <= position <= i_unit_end:
-                                        tags_right.append(text.tags[position])
-
-                            for j, collocate in enumerate(tags_right):
-                                if wl_matching.check_context(
-                                    i, tokens,
-                                    context_settings = settings['context_settings'],
-                                    search_terms_incl = search_terms_incl,
-                                    search_terms_excl = search_terms_excl
-                                ):
-                                    if (ngram, collocate) not in colligations_freqs_file:
-                                        colligations_freqs_file[(ngram, collocate)] = [0] * window_size
-
-                                    colligations_freqs_file[(ngram, collocate)][j] += 1
-
-                                colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
-
-                colligations_freqs_file = {
-                    (ngram, collocate): freqs
-                    for (ngram, collocate), freqs in colligations_freqs_file.items()
-                    if all(ngram) and collocate
-                }
-
-                # Filter search terms
-                colligations_freqs_file_filtered = {}
-
-                for search_term in search_terms:
-                    len_search_term = len(search_term)
-
-                    for (node, collocate), freqs in colligations_freqs_file.items():
-                        for ngram in wl_nlp_utils.ngrams(node, len_search_term):
-                            if ngram == search_term:
-                                colligations_freqs_file_filtered[(node, collocate)] = freqs
-
-                self.colligations_freqs_files.append(colligations_freqs_file_filtered)
-
-                # Frequency (All)
-                colligations_freqs_files_all.append(colligations_freqs_file_all)
-
-                texts.append(text)
-
-            # Total
-            if len(files) > 1:
-                colligations_freqs_total = {}
-                colligations_freqs_total_all = {}
-
-                # Frequency
-                for colligations_freqs_file in self.colligations_freqs_files:
-                    for colligation, freqs in colligations_freqs_file.items():
-                        if colligation not in colligations_freqs_total:
-                            colligations_freqs_total[colligation] = freqs
-                        else:
-                            colligations_freqs_total[colligation] = list(map(operator.add, colligations_freqs_total[colligation], freqs))
-                # Frequency (All)
-                for colligations_freqs_file_all in colligations_freqs_files_all:
-                    for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
-                        if ngram_size not in colligations_freqs_total_all:
-                            colligations_freqs_total_all[ngram_size] = collections.Counter()
-
-                        colligations_freqs_total_all[ngram_size] += colligations_freqs
-
-                self.colligations_freqs_files.append(colligations_freqs_total)
-                colligations_freqs_files_all.append(colligations_freqs_total_all)
-
-                texts.append(wl_texts.Wl_Text_Blank())
-
-            test_statistical_significance = settings['generation_settings']['test_statistical_significance']
-            measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
-            measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-            func_statistical_significance = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['func']
-            func_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['func']
-            func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
-
-            colligations_all = self.colligations_freqs_files[-1].keys()
-            # Used for z-score (Berry-Rogghe)
-            span = (abs(window_left) + abs(window_right)) / 2
-
-            for text, colligations_freqs_file, colligations_freqs_file_all in zip(
-                texts,
-                self.colligations_freqs_files,
-                colligations_freqs_files_all
-            ):
-                if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
-                    colligations_stats_file = {}
-                    c1xs = collections.Counter()
-                    cx1s = collections.Counter()
-                    cxxs = {}
-
-                    for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
-                        c1xs[ngram_size] = collections.Counter()
-                        cx1s[ngram_size] = collections.Counter()
-
-                        # C1x & Cx1
-                        for (node, collocate), freq in colligations_freqs.items():
-                            c1xs[ngram_size][collocate] += freq
-                            cx1s[ngram_size][node] += freq
-
-                        # Cxx
-                        cxxs[ngram_size] = sum(colligations_freqs.values())
-
-                    for node, collocate in colligations_all:
-                        len_node = len(node)
-
-                        c11 = sum(colligations_freqs_file.get((node, collocate), [0]))
-                        c12 = c1xs[len_node][collocate] - c11
-                        c21 = cx1s[len_node][node] - c11
-                        c22 = cxxs[len_node] - c11 - c12 - c21
-
-                        # Test Statistic & p-value
-                        if test_statistical_significance == 'none':
-                            colligations_stats_file[(node, collocate)] = [None, None]
-                        else:
-                            if test_statistical_significance == 'z_score_berry_rogghe':
-                                colligations_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22, span))
-                            else:
-                                colligations_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
-
-                        # Bayes Factor
-                        if measure_bayes_factor == 'none':
-                            colligations_stats_file[(node, collocate)].append(None)
-                        else:
-                            colligations_stats_file[(node, collocate)].append(func_bayes_factor(self.main, c11, c12, c21, c22))
-
-                        # Effect Size
-                        if measure_effect_size == 'none':
-                            colligations_stats_file[(node, collocate)].append(None)
-                        else:
-                            colligations_stats_file[(node, collocate)].append(func_effect_size(self.main, c11, c12, c21, c22))
-                else:
-                    colligations_stats_file = {
-                        (node, collocate): [None, None, None, None]
-                        for node, collocate in colligations_all
-                    }
-
-                self.colligations_stats_files.append(colligations_stats_file)
-
-            if len(files) == 1:
-                self.colligations_freqs_files *= 2
-                self.colligations_stats_files *= 2
-        except Exception:
-            self.err_msg = traceback.format_exc()
-
-class Wl_Worker_Colligation_Extractor_Table(Wl_Worker_Colligation_Extractor):
-    def run(self):
-        super().run()
-
-        self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(
-            self.err_msg,
-            wl_misc.merge_dicts(self.colligations_freqs_files),
-            wl_misc.merge_dicts(self.colligations_stats_files)
-        )
-
-class Wl_Worker_Colligation_Extractor_Fig(Wl_Worker_Colligation_Extractor):
-    def run(self):
-        super().run()
-
-        self.progress_updated.emit(self.tr('Rendering figure...'))
-        self.worker_done.emit(
-            self.err_msg,
-            wl_misc.merge_dicts(self.colligations_freqs_files),
-            wl_misc.merge_dicts(self.colligations_stats_files)
-        )
-
-class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
-    def __init__(self, parent):
-        super().__init__(
-            parent,
-            tab = 'colligation_extractor',
-            headers = [
-                _tr('Wl_Table_Colligation_Extractor', 'Rank'),
-                _tr('Wl_Table_Colligation_Extractor', 'Node'),
-                _tr('Wl_Table_Colligation_Extractor', 'Collocate'),
-                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found'),
-                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
-            ],
-            headers_int = [
-                _tr('Wl_Table_Colligation_Extractor', 'Rank'),
-                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found')
-            ],
-            headers_pct = [
-                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
-            ],
-            sorting_enabled = True
-        )
-
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
-
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        if list(self.main.wl_file_area.get_selected_files()):
-            self.button_generate_table.setEnabled(True)
-            self.button_generate_fig.setEnabled(True)
-        else:
-            self.button_generate_table.setEnabled(False)
-            self.button_generate_fig.setEnabled(False)
-
-    def toggle_breakdown(self):
-        settings = self.main.settings_custom['colligation_extractor']['table_settings']
-
-        self.setUpdatesEnabled(False)
-
-        for col in self.cols_breakdown | self.cols_breakdown_position:
-            if col in self.cols_breakdown and col in self.cols_breakdown_position:
-                if settings['show_breakdown_file'] and settings['show_breakdown_position']:
-                    self.showColumn(col)
-                else:
-                    self.hideColumn(col)
-            elif col in self.cols_breakdown:
-                if settings['show_breakdown_file']:
-                    self.showColumn(col)
-                else:
-                    self.hideColumn(col)
-            elif col in self.cols_breakdown_position:
-                if settings['show_breakdown_position']:
-                    self.showColumn(col)
-                else:
-                    self.hideColumn(col)
-
-        self.setUpdatesEnabled(True)
-
-    def clr_table(self, num_headers = 1, confirm = False):
-        confirmed = super().clr_table(num_headers = num_headers, confirm = confirm)
-
-        if confirmed:
-            self.cols_breakdown_position = set()
-
-    @wl_misc.log_timing
-    def generate_table(self):
-        files_untagged = [
-            file
-            for file in self.main.wl_file_area.get_selected_files()
-            if not file['tagged']
-        ]
-
-        if wl_checks_work_area.check_nlp_support(
-            self.main,
-            files = files_untagged,
-            nlp_utils = ['pos_taggers']
-        ) and wl_checks_work_area.check_search_terms(
-            self.main,
-            search_settings = self.main.settings_custom['colligation_extractor']['search_settings']
-        ):
-            worker_colligation_extractor_table = Wl_Worker_Colligation_Extractor_Table(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
-
-            wl_threading.Wl_Thread(worker_colligation_extractor_table).start_worker()
-
-    def update_gui_table(self, err_msg, colligations_freqs_files, colligations_stats_files):
-        if wl_checks_work_area.check_results(self.main, err_msg, colligations_freqs_files):
-            try:
-                self.settings = copy.deepcopy(self.main.settings_custom)
-
-                self.clr_table()
-
-                settings = self.main.settings_custom['colligation_extractor']
-
-                test_statistical_significance = settings['generation_settings']['test_statistical_significance']
-                measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
-                measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
-                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
-
-                # Insert columns
-                files = list(self.main.wl_file_area.get_selected_files())
-                files_with_total = files + [{'name': self.tr('Total')}]
-
-                for file in files_with_total:
-                    if file['name'] == self.tr('Total'):
-                        is_breakdown = False
-                    else:
-                        is_breakdown = True
-
-                    for i in range(
-                        settings['generation_settings']['window_left'],
-                        settings['generation_settings']['window_right'] + 1
-                    ):
-                        if i < 0:
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                self.tr('[{}]\nL{}').format(file['name'], -i),
-                                is_int = True, is_cumulative = True, is_breakdown = is_breakdown
-                            )
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                self.tr('[{}]\nL{} %').format(file['name'], -i),
-                                is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
-                            )
-                        elif i > 0:
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                self.tr('[{}]\nR{}').format(file['name'], i),
-                                is_int = True, is_cumulative = True, is_breakdown = is_breakdown
-                            )
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                self.tr('[{}]\nR{} %').format(file['name'], i),
-                                is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
-                            )
-
-                        # Show breakdown by span position
-                        self.cols_breakdown_position.add(self.model().columnCount() - 3)
-                        self.cols_breakdown_position.add(self.model().columnCount() - 4)
-
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        self.tr('[{}]\nFrequency').format(file['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = is_breakdown
-                    )
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        self.tr('[{}]\nFrequency %').format(file['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
-                    )
-
-                    if test_statistical_significance != 'none':
-                        if col_text_test_stat:
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                f'[{file["name"]}]\n{col_text_test_stat}',
-                                is_float = True, is_breakdown = is_breakdown
-                            )
-
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            self.tr('[{}]\np-value').format(file['name']),
-                            is_float = True, is_breakdown = is_breakdown
-                        )
-
-                    if measure_bayes_factor != 'none':
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            self.tr('[{}]\nBayes Factor').format(file['name']),
-                            is_float = True, is_breakdown = is_breakdown
-                        )
-
-                    if measure_effect_size != 'none':
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{col_text_effect_size}',
-                            is_float = True, is_breakdown = is_breakdown
-                        )
-
-                # Sort by p-value of the first file
-                if test_statistical_significance != 'none':
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(self.tr('[{}]\np-value').format(files[0]['name'])),
-                        Qt.AscendingOrder
-                    )
-                # Sort by bayes factor of the first file
-                elif measure_bayes_factor != 'none':
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(self.tr('[{}]\nBayes Factor').format(files[0]['name'])),
-                        Qt.DescendingOrder
-                    )
-                # Sort by effect size of the first file
-                elif measure_effect_size != 'none':
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(f"[{files[0]['name']}]\n{col_text_effect_size}"),
-                        Qt.DescendingOrder
-                    )
-                # Otherwise sort by frequency of the first file
-                else:
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
-                        Qt.DescendingOrder
-                    )
-
-                if settings['generation_settings']['window_left'] < 0:
-                    cols_freqs_start = [
-                        self.find_header_hor(self.tr('[{}]\nL{}').format(file['name'], -settings['generation_settings']['window_left']))
-                        for file in files_with_total
-                    ]
-                else:
-                    cols_freqs_start = [
-                        self.find_header_hor(self.tr('[{}]\nR{}').format(file['name'], settings['generation_settings']['window_left']))
-                        for file in files_with_total
-                    ]
-
-                cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
-                cols_freq_pct = self.find_headers_hor(self.tr('\nFrequency %'))
-
-                for col in cols_freq_pct:
-                    cols_freq.remove(col)
-
-                cols_test_stat = self.find_headers_hor(f'\n{col_text_test_stat}')
-                cols_p_val = self.find_headers_hor(self.tr('\np-value'))
-                cols_bayes_factor = self.find_headers_hor(self.tr('\nBayes Factor'))
-                cols_effect_size = self.find_headers_hor(f'\n{col_text_effect_size}')
-                col_files_found = self.find_header_hor(self.tr('Number of\nFiles Found'))
-                col_files_found_pct = self.find_header_hor(self.tr('Number of\nFiles Found %'))
-
-                freqs_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 0)
-                freq_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 2).sum(axis = 0)
-                len_files = len(files)
-
-                self.model().setRowCount(len(colligations_freqs_files))
-
-                self.disable_updates()
-
-                for i, ((node, collocate), stats_files) in enumerate(wl_sorting.sorted_stats_files_items(colligations_stats_files)):
-                    freqs_files = colligations_freqs_files[(node, collocate)]
-
-                    # Rank
-                    self.set_item_num(i, 0, -1)
-
-                    # Node
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(node)))
-                    # Collocate
-                    self.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
-
-                    # Frequency
-                    for j, freqs_file in enumerate(freqs_files):
-                        for k, freq in enumerate(freqs_file):
-                            self.set_item_num(i, cols_freqs_start[j] + k * 2, freq)
-
-                            if freqs_totals[j][k]:
-                                self.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, freq / freqs_totals[j][k])
-                            else:
-                                self.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, 0)
-
-                        self.set_item_num(i, cols_freq[j], sum(freqs_file))
-
-                        if freq_totals[j]:
-                            self.set_item_num(i, cols_freq_pct[j], sum(freqs_file) / freq_totals[j])
-                        else:
-                            self.set_item_num(i, cols_freq_pct[j], 0)
-
-                    for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
-                            # Test Statistic
-                        if test_stat is not None:
-                            self.set_item_num(i, cols_test_stat[j], test_stat)
-
-                        # p-value
-                        if p_val is not None:
-                            self.set_item_p_val(i, cols_p_val[j], p_val)
-
-                        # Bayes Factor
-                        if bayes_factor is not None:
-                            self.set_item_num(i, cols_bayes_factor[j], bayes_factor)
-
-                        # Effect Size
-                        if effect_size is not None:
-                            self.set_item_num(i, cols_effect_size[j], effect_size)
-
-                    # Number of Files Found
-                    num_files_found = len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)])
-
-                    self.set_item_num(i, col_files_found, num_files_found)
-                    self.set_item_num(i, col_files_found_pct, num_files_found / len_files)
-
-                self.enable_updates()
-
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
-                self.update_ranks()
-            except Exception:
-                err_msg = traceback.format_exc()
-            finally:
-                wl_checks_work_area.check_err_table(self.main, err_msg)
-
-    @wl_misc.log_timing
-    def generate_fig(self):
-        files_untagged = [
-            file
-            for file in self.main.wl_file_area.get_selected_files()
-            if not file['tagged']
-        ]
-
-        if wl_checks_work_area.check_nlp_support(
-            self.main,
-            files = files_untagged,
-            nlp_utils = ['pos_taggers']
-        ) and wl_checks_work_area.check_search_terms(
-            self.main,
-            search_settings = self.main.settings_custom['colligation_extractor']['search_settings']
-        ):
-            self.worker_colligation_extractor_fig = Wl_Worker_Colligation_Extractor_Fig(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_fig
-            )
-
-            wl_threading.Wl_Thread(self.worker_colligation_extractor_fig).start_worker()
-
-    def update_gui_fig(self, err_msg, colligations_freqs_file, colligations_stats_files):
-        if wl_checks_work_area.check_results(self.main, err_msg, colligations_freqs_file):
-            try:
-                settings = self.main.settings_custom['colligation_extractor']
-
-                test_statistical_significance = settings['generation_settings']['test_statistical_significance']
-                measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
-                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
-
-                if re.search(_tr('Wl_Table_Colligation_Extractor', r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
-                    span_positions = (
-                        list(range(settings['generation_settings']['window_left'], 0))
-                        + list(range(1, settings['generation_settings']['window_right'] + 1))
-                    )
-
-                    if self.tr('L') in settings['fig_settings']['use_data']:
-                        span_position = span_positions.index(-int(settings['fig_settings']['use_data'][1:]))
-                    else:
-                        span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
-
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
-                        collocates_freq_files = {
-                            (' '.join(node), collocate): numpy.array(freqs)[:, span_position]
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocates_freq_files = {
-                            ', '.join([' '.join(node), collocate]): numpy.array(freqs)[:, span_position]
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
-
-                    wl_figs_freqs.wl_fig_freqs(
-                        self.main, collocates_freq_files,
-                        tab = 'colligation_extractor'
-                    )
-                elif settings['fig_settings']['use_data'] == self.tr('Frequency'):
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
-                        collocates_freq_files = {
-                            (' '.join(node), collocate): numpy.array(freqs).sum(axis = 1)
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocates_freq_files = {
-                            ', '.join([' '.join(node), collocate]): numpy.array(freqs).sum(axis = 1)
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
-
-                    wl_figs_freqs.wl_fig_freqs(
-                        self.main, collocates_freq_files,
-                        tab = 'colligation_extractor'
-                    )
-                else:
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
-                        colligations_stats_files = {
-                            (' '.join(node), collocate): freqs
-                            for (node, collocate), freqs in colligations_stats_files.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        colligations_stats_files = {
-                            ', '.join([' '.join(node), collocate]): freqs
-                            for (node, collocate), freqs in colligations_stats_files.items()
-                        }
-
-                    if settings['fig_settings']['use_data'] == col_text_test_stat:
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 0]
-                            for collocate, stats_files in colligations_stats_files.items()
-                        }
-                    elif settings['fig_settings']['use_data'] == self.tr('p-value'):
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 1]
-                            for collocate, stats_files in colligations_stats_files.items()
-                        }
-                    elif settings['fig_settings']['use_data'] == self.tr('Bayes Factor'):
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 2]
-                            for collocate, stats_files in colligations_stats_files.items()
-                        }
-                    elif settings['fig_settings']['use_data'] == col_text_effect_size:
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 3]
-                            for collocate, stats_files in colligations_stats_files.items()
-                        }
-
-                    wl_figs_stats.wl_fig_stats(
-                        self.main, collocates_stat_files,
-                        tab = 'colligation_extractor'
-                    )
-
-                # Hide the progress dialog early so that the main window will not obscure the generated figure
-                self.worker_colligation_extractor_fig.dialog_progress.accept()
-                wl_figs.show_fig()
-            except Exception:
-                err_msg = traceback.format_exc()
-            finally:
-                wl_checks_work_area.check_err_fig(self.main, err_msg)
-
 class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
@@ -1306,3 +515,794 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         settings['rank_min_no_limit'] = self.checkbox_rank_min_no_limit.isChecked()
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
+
+class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            tab = 'colligation_extractor',
+            headers = [
+                _tr('Wl_Table_Colligation_Extractor', 'Rank'),
+                _tr('Wl_Table_Colligation_Extractor', 'Node'),
+                _tr('Wl_Table_Colligation_Extractor', 'Collocate'),
+                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found'),
+                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
+            ],
+            headers_int = [
+                _tr('Wl_Table_Colligation_Extractor', 'Rank'),
+                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found')
+            ],
+            headers_pct = [
+                _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
+            ],
+            sorting_enabled = True
+        )
+
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+
+        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
+        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item): # pylint: disable=unused-argument
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+            self.button_generate_fig.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+            self.button_generate_fig.setEnabled(False)
+
+    def toggle_breakdown(self):
+        settings = self.main.settings_custom['colligation_extractor']['table_settings']
+
+        self.setUpdatesEnabled(False)
+
+        for col in self.cols_breakdown | self.cols_breakdown_position:
+            if col in self.cols_breakdown and col in self.cols_breakdown_position:
+                if settings['show_breakdown_file'] and settings['show_breakdown_position']:
+                    self.showColumn(col)
+                else:
+                    self.hideColumn(col)
+            elif col in self.cols_breakdown:
+                if settings['show_breakdown_file']:
+                    self.showColumn(col)
+                else:
+                    self.hideColumn(col)
+            elif col in self.cols_breakdown_position:
+                if settings['show_breakdown_position']:
+                    self.showColumn(col)
+                else:
+                    self.hideColumn(col)
+
+        self.setUpdatesEnabled(True)
+
+    def clr_table(self, num_headers = 1, confirm = False):
+        confirmed = super().clr_table(num_headers = num_headers, confirm = confirm)
+
+        if confirmed:
+            self.cols_breakdown_position = set()
+
+    @wl_misc.log_timing
+    def generate_table(self):
+        files_untagged = [
+            file
+            for file in self.main.wl_file_area.get_selected_files()
+            if not file['tagged']
+        ]
+
+        if wl_checks_work_area.check_nlp_support(
+            self.main,
+            files = files_untagged,
+            nlp_utils = ['pos_taggers']
+        ) and wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.main.settings_custom['colligation_extractor']['search_settings']
+        ):
+            worker_colligation_extractor_table = Wl_Worker_Colligation_Extractor_Table(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_table
+            )
+
+            wl_threading.Wl_Thread(worker_colligation_extractor_table).start_worker()
+
+    def update_gui_table(self, err_msg, colligations_freqs_files, colligations_stats_files):
+        if wl_checks_work_area.check_results(self.main, err_msg, colligations_freqs_files):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
+
+                self.clr_table()
+
+                settings = self.main.settings_custom['colligation_extractor']
+
+                test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+                measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
+                measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
+
+                # Insert columns
+                files = list(self.main.wl_file_area.get_selected_files())
+                files_with_total = files + [{'name': self.tr('Total')}]
+
+                for file in files_with_total:
+                    if file['name'] == self.tr('Total'):
+                        is_breakdown = False
+                    else:
+                        is_breakdown = True
+
+                    for i in range(
+                        settings['generation_settings']['window_left'],
+                        settings['generation_settings']['window_right'] + 1
+                    ):
+                        if i < 0:
+                            self.ins_header_hor(
+                                self.model().columnCount() - 2,
+                                self.tr('[{}]\nL{}').format(file['name'], -i),
+                                is_int = True, is_cumulative = True, is_breakdown = is_breakdown
+                            )
+                            self.ins_header_hor(
+                                self.model().columnCount() - 2,
+                                self.tr('[{}]\nL{} %').format(file['name'], -i),
+                                is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
+                            )
+                        elif i > 0:
+                            self.ins_header_hor(
+                                self.model().columnCount() - 2,
+                                self.tr('[{}]\nR{}').format(file['name'], i),
+                                is_int = True, is_cumulative = True, is_breakdown = is_breakdown
+                            )
+                            self.ins_header_hor(
+                                self.model().columnCount() - 2,
+                                self.tr('[{}]\nR{} %').format(file['name'], i),
+                                is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
+                            )
+
+                        # Show breakdown by span position
+                        self.cols_breakdown_position.add(self.model().columnCount() - 3)
+                        self.cols_breakdown_position.add(self.model().columnCount() - 4)
+
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        self.tr('[{}]\nFrequency').format(file['name']),
+                        is_int = True, is_cumulative = True, is_breakdown = is_breakdown
+                    )
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        self.tr('[{}]\nFrequency %').format(file['name']),
+                        is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
+                    )
+
+                    if test_statistical_significance != 'none':
+                        if col_text_test_stat:
+                            self.ins_header_hor(
+                                self.model().columnCount() - 2,
+                                f'[{file["name"]}]\n{col_text_test_stat}',
+                                is_float = True, is_breakdown = is_breakdown
+                            )
+
+                        self.ins_header_hor(
+                            self.model().columnCount() - 2,
+                            self.tr('[{}]\np-value').format(file['name']),
+                            is_float = True, is_breakdown = is_breakdown
+                        )
+
+                    if measure_bayes_factor != 'none':
+                        self.ins_header_hor(
+                            self.model().columnCount() - 2,
+                            self.tr('[{}]\nBayes Factor').format(file['name']),
+                            is_float = True, is_breakdown = is_breakdown
+                        )
+
+                    if measure_effect_size != 'none':
+                        self.ins_header_hor(
+                            self.model().columnCount() - 2,
+                            f'[{file["name"]}]\n{col_text_effect_size}',
+                            is_float = True, is_breakdown = is_breakdown
+                        )
+
+                # Sort by p-value of the first file
+                if test_statistical_significance != 'none':
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(self.tr('[{}]\np-value').format(files[0]['name'])),
+                        Qt.AscendingOrder
+                    )
+                # Sort by bayes factor of the first file
+                elif measure_bayes_factor != 'none':
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(self.tr('[{}]\nBayes Factor').format(files[0]['name'])),
+                        Qt.DescendingOrder
+                    )
+                # Sort by effect size of the first file
+                elif measure_effect_size != 'none':
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(f"[{files[0]['name']}]\n{col_text_effect_size}"),
+                        Qt.DescendingOrder
+                    )
+                # Otherwise sort by frequency of the first file
+                else:
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
+                        Qt.DescendingOrder
+                    )
+
+                if settings['generation_settings']['window_left'] < 0:
+                    cols_freqs_start = [
+                        self.find_header_hor(self.tr('[{}]\nL{}').format(file['name'], -settings['generation_settings']['window_left']))
+                        for file in files_with_total
+                    ]
+                else:
+                    cols_freqs_start = [
+                        self.find_header_hor(self.tr('[{}]\nR{}').format(file['name'], settings['generation_settings']['window_left']))
+                        for file in files_with_total
+                    ]
+
+                cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
+                cols_freq_pct = self.find_headers_hor(self.tr('\nFrequency %'))
+
+                for col in cols_freq_pct:
+                    cols_freq.remove(col)
+
+                cols_test_stat = self.find_headers_hor(f'\n{col_text_test_stat}')
+                cols_p_val = self.find_headers_hor(self.tr('\np-value'))
+                cols_bayes_factor = self.find_headers_hor(self.tr('\nBayes Factor'))
+                cols_effect_size = self.find_headers_hor(f'\n{col_text_effect_size}')
+                col_files_found = self.find_header_hor(self.tr('Number of\nFiles Found'))
+                col_files_found_pct = self.find_header_hor(self.tr('Number of\nFiles Found %'))
+
+                freqs_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 0)
+                freq_totals = numpy.array(list(colligations_freqs_files.values())).sum(axis = 2).sum(axis = 0)
+                len_files = len(files)
+
+                self.model().setRowCount(len(colligations_freqs_files))
+
+                self.disable_updates()
+
+                for i, ((node, collocate), stats_files) in enumerate(wl_sorting.sorted_stats_files_items(colligations_stats_files)):
+                    freqs_files = colligations_freqs_files[(node, collocate)]
+
+                    # Rank
+                    self.set_item_num(i, 0, -1)
+
+                    # Node
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(node)))
+                    # Collocate
+                    self.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
+
+                    # Frequency
+                    for j, freqs_file in enumerate(freqs_files):
+                        for k, freq in enumerate(freqs_file):
+                            self.set_item_num(i, cols_freqs_start[j] + k * 2, freq)
+
+                            if freqs_totals[j][k]:
+                                self.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, freq / freqs_totals[j][k])
+                            else:
+                                self.set_item_num(i, cols_freqs_start[j] + k * 2 + 1, 0)
+
+                        self.set_item_num(i, cols_freq[j], sum(freqs_file))
+
+                        if freq_totals[j]:
+                            self.set_item_num(i, cols_freq_pct[j], sum(freqs_file) / freq_totals[j])
+                        else:
+                            self.set_item_num(i, cols_freq_pct[j], 0)
+
+                    for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
+                            # Test Statistic
+                        if test_stat is not None:
+                            self.set_item_num(i, cols_test_stat[j], test_stat)
+
+                        # p-value
+                        if p_val is not None:
+                            self.set_item_p_val(i, cols_p_val[j], p_val)
+
+                        # Bayes Factor
+                        if bayes_factor is not None:
+                            self.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+
+                        # Effect Size
+                        if effect_size is not None:
+                            self.set_item_num(i, cols_effect_size[j], effect_size)
+
+                    # Number of Files Found
+                    num_files_found = len([freqs_file for freqs_file in freqs_files[:-1] if sum(freqs_file)])
+
+                    self.set_item_num(i, col_files_found, num_files_found)
+                    self.set_item_num(i, col_files_found_pct, num_files_found / len_files)
+
+                self.enable_updates()
+
+                self.toggle_pct()
+                self.toggle_cumulative()
+                self.toggle_breakdown()
+                self.update_ranks()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
+
+    @wl_misc.log_timing
+    def generate_fig(self):
+        files_untagged = [
+            file
+            for file in self.main.wl_file_area.get_selected_files()
+            if not file['tagged']
+        ]
+
+        if wl_checks_work_area.check_nlp_support(
+            self.main,
+            files = files_untagged,
+            nlp_utils = ['pos_taggers']
+        ) and wl_checks_work_area.check_search_terms(
+            self.main,
+            search_settings = self.main.settings_custom['colligation_extractor']['search_settings']
+        ):
+            self.worker_colligation_extractor_fig = Wl_Worker_Colligation_Extractor_Fig(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_fig
+            )
+
+            wl_threading.Wl_Thread(self.worker_colligation_extractor_fig).start_worker()
+
+    def update_gui_fig(self, err_msg, colligations_freqs_file, colligations_stats_files):
+        if wl_checks_work_area.check_results(self.main, err_msg, colligations_freqs_file):
+            try:
+                settings = self.main.settings_custom['colligation_extractor']
+
+                test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+                measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
+
+                if re.search(_tr('Wl_Table_Colligation_Extractor', r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
+                    span_positions = (
+                        list(range(settings['generation_settings']['window_left'], 0))
+                        + list(range(1, settings['generation_settings']['window_right'] + 1))
+                    )
+
+                    if self.tr('L') in settings['fig_settings']['use_data']:
+                        span_position = span_positions.index(-int(settings['fig_settings']['use_data'][1:]))
+                    else:
+                        span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
+
+                    # Network Graph
+                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
+                        collocates_freq_files = {
+                            (' '.join(node), collocate): numpy.array(freqs)[:, span_position]
+                            for (node, collocate), freqs in colligations_freqs_file.items()
+                        }
+                    # Line Chart & Word Cloud
+                    else:
+                        collocates_freq_files = {
+                            ', '.join([' '.join(node), collocate]): numpy.array(freqs)[:, span_position]
+                            for (node, collocate), freqs in colligations_freqs_file.items()
+                        }
+
+                    wl_figs_freqs.wl_fig_freqs(
+                        self.main, collocates_freq_files,
+                        tab = 'colligation_extractor'
+                    )
+                elif settings['fig_settings']['use_data'] == self.tr('Frequency'):
+                    # Network Graph
+                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
+                        collocates_freq_files = {
+                            (' '.join(node), collocate): numpy.array(freqs).sum(axis = 1)
+                            for (node, collocate), freqs in colligations_freqs_file.items()
+                        }
+                    # Line Chart & Word Cloud
+                    else:
+                        collocates_freq_files = {
+                            ', '.join([' '.join(node), collocate]): numpy.array(freqs).sum(axis = 1)
+                            for (node, collocate), freqs in colligations_freqs_file.items()
+                        }
+
+                    wl_figs_freqs.wl_fig_freqs(
+                        self.main, collocates_freq_files,
+                        tab = 'colligation_extractor'
+                    )
+                else:
+                    # Network Graph
+                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
+                        colligations_stats_files = {
+                            (' '.join(node), collocate): freqs
+                            for (node, collocate), freqs in colligations_stats_files.items()
+                        }
+                    # Line Chart & Word Cloud
+                    else:
+                        colligations_stats_files = {
+                            ', '.join([' '.join(node), collocate]): freqs
+                            for (node, collocate), freqs in colligations_stats_files.items()
+                        }
+
+                    if settings['fig_settings']['use_data'] == col_text_test_stat:
+                        collocates_stat_files = {
+                            collocate: numpy.array(stats_files)[:, 0]
+                            for collocate, stats_files in colligations_stats_files.items()
+                        }
+                    elif settings['fig_settings']['use_data'] == self.tr('p-value'):
+                        collocates_stat_files = {
+                            collocate: numpy.array(stats_files)[:, 1]
+                            for collocate, stats_files in colligations_stats_files.items()
+                        }
+                    elif settings['fig_settings']['use_data'] == self.tr('Bayes Factor'):
+                        collocates_stat_files = {
+                            collocate: numpy.array(stats_files)[:, 2]
+                            for collocate, stats_files in colligations_stats_files.items()
+                        }
+                    elif settings['fig_settings']['use_data'] == col_text_effect_size:
+                        collocates_stat_files = {
+                            collocate: numpy.array(stats_files)[:, 3]
+                            for collocate, stats_files in colligations_stats_files.items()
+                        }
+
+                    wl_figs_stats.wl_fig_stats(
+                        self.main, collocates_stat_files,
+                        tab = 'colligation_extractor'
+                    )
+
+                # Hide the progress dialog early so that the main window will not obscure the generated figure
+                self.worker_colligation_extractor_fig.dialog_progress.accept()
+                wl_figs.show_fig()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_fig(self.main, err_msg)
+
+class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
+    worker_done = wl_threading.wl_pyqt_signal(str, dict, dict)
+
+    def __init__(self, main, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
+
+        self.err_msg = ''
+        self.colligations_freqs_files = []
+        self.colligations_stats_files = []
+
+    def run(self):
+        try:
+            texts = []
+            colligations_freqs_files_all = []
+
+            settings = self.main.settings_custom['colligation_extractor']
+            files = list(self.main.wl_file_area.get_selected_files())
+
+            window_left = settings['generation_settings']['window_left']
+            window_right = settings['generation_settings']['window_right']
+
+            # Calculate window size
+            if window_left < 0 < window_right:
+                window_size = window_right - window_left
+            else:
+                window_size = window_right - window_left + 1
+
+            # Frequency
+            for i, file in enumerate(files):
+                colligations_freqs_file = {}
+                colligations_freqs_file_all = {}
+
+                text = copy.deepcopy(file['text'])
+
+                # Generate POS tags for files that are not POS tagged already
+                if not file['tagged']:
+                    tokens_tagged = wl_pos_tagging.wl_pos_tag(
+                        self.main,
+                        inputs = text.get_tokens_flat(),
+                        lang = text.lang
+                    )
+
+                    text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
+                    # Modify text types
+                    text.tagged = True
+
+                text = wl_token_processing.wl_process_tokens_colligation_extractor(
+                    self.main, text,
+                    token_settings = settings['token_settings']
+                )
+
+                tokens = text.get_tokens_flat()
+                (
+                    offsets_paras,
+                    offsets_sentences,
+                    offsets_sentence_segs
+                ) = text.get_offsets()
+
+                search_terms = wl_matching.match_search_terms_ngrams(
+                    self.main, tokens,
+                    lang = text.lang,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    search_settings = settings['search_settings']
+                )
+
+                (
+                    search_terms_incl,
+                    search_terms_excl
+                ) = wl_matching.match_search_terms_context(
+                    self.main, tokens,
+                    lang = text.lang,
+                    tagged = text.tagged,
+                    token_settings = settings['token_settings'],
+                    context_settings = settings['context_settings']
+                )
+
+                if search_terms:
+                    len_search_term_min = min((len(search_term) for search_term in search_terms))
+                    len_search_term_max = max((len(search_term) for search_term in search_terms))
+                else:
+                    len_search_term_min = 1
+                    len_search_term_max = 1
+
+                len_paras = len(offsets_paras)
+                len_sentences = len(offsets_sentences)
+                len_sentence_segs = len(offsets_sentence_segs)
+                len_tokens = len(tokens)
+
+                settings_limit_searching = settings['generation_settings']['limit_searching']
+
+                for ngram_size in range(len_search_term_min, len_search_term_max + 1):
+                    colligations_freqs_file_all[ngram_size] = collections.Counter()
+
+                    for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, ngram_size)):
+                        # Limit Searching
+                        if settings_limit_searching != self.tr('None'):
+                            if settings_limit_searching == self.tr('Within Sentence Segments'):
+                                offsets_unit = offsets_sentence_segs
+                                len_unit = len_sentence_segs
+                            elif settings_limit_searching == self.tr('Within Sentences'):
+                                offsets_unit = offsets_sentences
+                                len_unit = len_sentences
+                            elif settings_limit_searching == self.tr('Within Paragraphs'):
+                                offsets_unit = offsets_paras
+                                len_unit = len_paras
+
+                            i_unit = bisect.bisect(offsets_unit, i) - 1
+
+                            i_unit_start = offsets_unit[i_unit]
+                            i_unit_end = offsets_unit[i_unit + 1] - 1 if i_unit < len_unit - 1 else len_tokens - 1
+
+                        # Extract collocates
+                        tags_left = []
+                        tags_right = []
+
+                        if window_left < 0 < window_right:
+                            # Limit Searching
+                            if settings_limit_searching == self.tr('None'):
+                                tags_left = text.tags[max(0, i + window_left) : i]
+                                tags_right = text.tags[i + ngram_size : i + ngram_size + window_right]
+                            else:
+                                # Span positions (Left)
+                                for position in range(max(0, i + window_left), i):
+                                    if i_unit_start <= position <= i_unit_end:
+                                        tags_left.append(text.tags[position])
+
+                                # Span positions (Right)
+                                for position in range(i + ngram_size, i + ngram_size + window_right):
+                                    if i_unit_start <= position <= i_unit_end:
+                                        tags_right.append(text.tags[position])
+
+                            for j, collocate in enumerate(reversed(tags_left)):
+                                if wl_matching.check_context(
+                                    i, tokens,
+                                    context_settings = settings['context_settings'],
+                                    search_terms_incl = search_terms_incl,
+                                    search_terms_excl = search_terms_excl
+                                ):
+                                    if (ngram, collocate) not in colligations_freqs_file:
+                                        colligations_freqs_file[(ngram, collocate)] = [0] * window_size
+
+                                    colligations_freqs_file[(ngram, collocate)][abs(window_left) - 1 - j] += 1
+
+                                colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
+
+                            for j, collocate in enumerate(tags_right):
+                                if wl_matching.check_context(
+                                    i, tokens,
+                                    context_settings = settings['context_settings'],
+                                    search_terms_incl = search_terms_incl,
+                                    search_terms_excl = search_terms_excl
+                                ):
+                                    if (ngram, collocate) not in colligations_freqs_file:
+                                        colligations_freqs_file[(ngram, collocate)] = [0] * window_size
+
+                                    colligations_freqs_file[(ngram, collocate)][abs(window_left) + j] += 1
+
+                                colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
+                        elif window_left < 0 and window_right < 0:
+                            # Limit Searching
+                            if settings_limit_searching == self.tr('None'):
+                                tags_left = text.tags[max(0, i + window_left) : max(0, i + window_right + 1)]
+                            else:
+                                # Span positions (Left)
+                                for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
+                                    if i_unit_start <= position <= i_unit_end:
+                                        tags_left.append(text.tags[position])
+
+                            for j, collocate in enumerate(reversed(tags_left)):
+                                if wl_matching.check_context(
+                                    i, tokens,
+                                    context_settings = settings['context_settings'],
+                                    search_terms_incl = search_terms_incl,
+                                    search_terms_excl = search_terms_excl
+                                ):
+                                    if (ngram, collocate) not in colligations_freqs_file:
+                                        colligations_freqs_file[(ngram, collocate)] = [0] * window_size
+
+                                    colligations_freqs_file[(ngram, collocate)][window_size - 1 - j] += 1
+
+                                colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
+                        elif window_left > 0 and window_right > 0:
+                            # Limit Searching
+                            if settings_limit_searching == self.tr('None'):
+                                tags_right = text.tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
+                            else:
+                                # Span positions (Right)
+                                for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
+                                    if i_unit_start <= position <= i_unit_end:
+                                        tags_right.append(text.tags[position])
+
+                            for j, collocate in enumerate(tags_right):
+                                if wl_matching.check_context(
+                                    i, tokens,
+                                    context_settings = settings['context_settings'],
+                                    search_terms_incl = search_terms_incl,
+                                    search_terms_excl = search_terms_excl
+                                ):
+                                    if (ngram, collocate) not in colligations_freqs_file:
+                                        colligations_freqs_file[(ngram, collocate)] = [0] * window_size
+
+                                    colligations_freqs_file[(ngram, collocate)][j] += 1
+
+                                colligations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
+
+                colligations_freqs_file = {
+                    (ngram, collocate): freqs
+                    for (ngram, collocate), freqs in colligations_freqs_file.items()
+                    if all(ngram) and collocate
+                }
+
+                # Filter search terms
+                colligations_freqs_file_filtered = {}
+
+                for search_term in search_terms:
+                    len_search_term = len(search_term)
+
+                    for (node, collocate), freqs in colligations_freqs_file.items():
+                        for ngram in wl_nlp_utils.ngrams(node, len_search_term):
+                            if ngram == search_term:
+                                colligations_freqs_file_filtered[(node, collocate)] = freqs
+
+                self.colligations_freqs_files.append(colligations_freqs_file_filtered)
+
+                # Frequency (All)
+                colligations_freqs_files_all.append(colligations_freqs_file_all)
+
+                texts.append(text)
+
+            # Total
+            if len(files) > 1:
+                colligations_freqs_total = {}
+                colligations_freqs_total_all = {}
+
+                # Frequency
+                for colligations_freqs_file in self.colligations_freqs_files:
+                    for colligation, freqs in colligations_freqs_file.items():
+                        if colligation not in colligations_freqs_total:
+                            colligations_freqs_total[colligation] = freqs
+                        else:
+                            colligations_freqs_total[colligation] = list(map(operator.add, colligations_freqs_total[colligation], freqs))
+                # Frequency (All)
+                for colligations_freqs_file_all in colligations_freqs_files_all:
+                    for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
+                        if ngram_size not in colligations_freqs_total_all:
+                            colligations_freqs_total_all[ngram_size] = collections.Counter()
+
+                        colligations_freqs_total_all[ngram_size] += colligations_freqs
+
+                self.colligations_freqs_files.append(colligations_freqs_total)
+                colligations_freqs_files_all.append(colligations_freqs_total_all)
+
+                texts.append(wl_texts.Wl_Text_Blank())
+
+            test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+            measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
+            measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+            func_statistical_significance = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['func']
+            func_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['func']
+            func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
+
+            colligations_all = self.colligations_freqs_files[-1].keys()
+            # Used for z-score (Berry-Rogghe)
+            span = (abs(window_left) + abs(window_right)) / 2
+
+            for text, colligations_freqs_file, colligations_freqs_file_all in zip(
+                texts,
+                self.colligations_freqs_files,
+                colligations_freqs_files_all
+            ):
+                if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
+                    colligations_stats_file = {}
+                    c1xs = collections.Counter()
+                    cx1s = collections.Counter()
+                    cxxs = {}
+
+                    for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
+                        c1xs[ngram_size] = collections.Counter()
+                        cx1s[ngram_size] = collections.Counter()
+
+                        # C1x & Cx1
+                        for (node, collocate), freq in colligations_freqs.items():
+                            c1xs[ngram_size][collocate] += freq
+                            cx1s[ngram_size][node] += freq
+
+                        # Cxx
+                        cxxs[ngram_size] = sum(colligations_freqs.values())
+
+                    for node, collocate in colligations_all:
+                        len_node = len(node)
+
+                        c11 = sum(colligations_freqs_file.get((node, collocate), [0]))
+                        c12 = c1xs[len_node][collocate] - c11
+                        c21 = cx1s[len_node][node] - c11
+                        c22 = cxxs[len_node] - c11 - c12 - c21
+
+                        # Test Statistic & p-value
+                        if test_statistical_significance == 'none':
+                            colligations_stats_file[(node, collocate)] = [None, None]
+                        else:
+                            if test_statistical_significance == 'z_score_berry_rogghe':
+                                colligations_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22, span))
+                            else:
+                                colligations_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+
+                        # Bayes Factor
+                        if measure_bayes_factor == 'none':
+                            colligations_stats_file[(node, collocate)].append(None)
+                        else:
+                            colligations_stats_file[(node, collocate)].append(func_bayes_factor(self.main, c11, c12, c21, c22))
+
+                        # Effect Size
+                        if measure_effect_size == 'none':
+                            colligations_stats_file[(node, collocate)].append(None)
+                        else:
+                            colligations_stats_file[(node, collocate)].append(func_effect_size(self.main, c11, c12, c21, c22))
+                else:
+                    colligations_stats_file = {
+                        (node, collocate): [None, None, None, None]
+                        for node, collocate in colligations_all
+                    }
+
+                self.colligations_stats_files.append(colligations_stats_file)
+
+            if len(files) == 1:
+                self.colligations_freqs_files *= 2
+                self.colligations_stats_files *= 2
+        except Exception:
+            self.err_msg = traceback.format_exc()
+
+class Wl_Worker_Colligation_Extractor_Table(Wl_Worker_Colligation_Extractor):
+    def run(self):
+        super().run()
+
+        self.progress_updated.emit(self.tr('Rendering table...'))
+        self.worker_done.emit(
+            self.err_msg,
+            wl_misc.merge_dicts(self.colligations_freqs_files),
+            wl_misc.merge_dicts(self.colligations_stats_files)
+        )
+
+class Wl_Worker_Colligation_Extractor_Fig(Wl_Worker_Colligation_Extractor):
+    def run(self):
+        super().run()
+
+        self.progress_updated.emit(self.tr('Rendering figure...'))
+        self.worker_done.emit(
+            self.err_msg,
+            wl_misc.merge_dicts(self.colligations_freqs_files),
+            wl_misc.merge_dicts(self.colligations_stats_files)
+        )
