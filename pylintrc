@@ -63,10 +63,6 @@ disable=
     fixme,
     # W621
     redefined-outer-name,
-    # W703
-    broad-except,
-    # W3101
-    missing-timeout,
 
     # E401
     import-error,

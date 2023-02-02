@@ -440,8 +440,8 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
-                'measure_dispersion': _tr('init_settings_default', "Juilland's D"),
-                'measure_adjusted_freq': _tr('init_settings_default', "Juilland's U")
+                'measure_dispersion': 'juillands_d',
+                'measure_adjusted_freq': 'juillands_u'
             },
 
             'table_settings': {
@@ -588,8 +588,8 @@ def init_settings_default(main):
                 'allow_skipped_tokens': False,
                 'allow_skipped_tokens_num': 1,
 
-                'measure_dispersion': _tr('init_settings_default', "Juilland's D"),
-                'measure_adjusted_freq': _tr('init_settings_default', "Juilland's U")
+                'measure_dispersion': 'juillands_d',
+                'measure_adjusted_freq': 'juillands_u'
             },
 
             'table_settings': {
@@ -731,9 +731,9 @@ def init_settings_default(main):
 
                 'limit_searching': _tr('init_settings_default', 'None'),
 
-                'test_statistical_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
-                'measure_bayes_factor': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
-                'measure_effect_size': _tr('init_settings_default', 'Pointwise Mutual Information')
+                'test_statistical_significance': 'pearsons_chi_squared_test',
+                'measure_bayes_factor': 'log_likelihood_ratio_test',
+                'measure_effect_size': 'pmi'
             },
 
             'table_settings': {
@@ -887,9 +887,9 @@ def init_settings_default(main):
 
                 'limit_searching': _tr('init_settings_default', 'None'),
 
-                'test_statistical_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
-                'measure_bayes_factor': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
-                'measure_effect_size': _tr('init_settings_default', 'Pointwise Mutual Information')
+                'test_statistical_significance': 'pearsons_chi_squared_test',
+                'measure_bayes_factor': 'log_likelihood_ratio_test',
+                'measure_effect_size': 'pmi'
             },
 
             'table_settings': {
@@ -984,9 +984,9 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
-                'test_statistical_significance': _tr('init_settings_default', "Pearson's Chi-squared Test"),
-                'measure_bayes_factor': _tr('init_settings_default', 'Log-likelihood Ratio Test'),
-                'measure_effect_size': _tr('init_settings_default', 'Odds Ratio'),
+                'test_statistical_significance': 'pearsons_chi_squared_test',
+                'measure_bayes_factor': 'log_likelihood_ratio_test',
+                'measure_effect_size': 'or',
             },
 
             'table_settings': {

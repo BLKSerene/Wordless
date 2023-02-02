@@ -31,20 +31,6 @@ def test_get_freqs_expected():
     assert wl_measures_statistical_significance.get_freqs_expected(0, 0, 1, 2) == (0, 0, 1, 2)
     assert wl_measures_statistical_significance.get_freqs_expected(0, 0, 0, 0) == (0, 0, 0, 0)
 
-def test_to_freq_sections_items():
-    items_search = ['w1', 'w2']
-    items_x1 = ['w1'] * 7 + ['w2'] * 3
-    items_x2 = ['w1'] * 6 + ['w2'] * 4
-
-    freq_sections_items = {
-        'w1': ([1, 1, 1, .5, 0], [1, 1, 1, 0, 0]),
-        'w2': ([0, 0, 0, .5, 1], [0, 0, 0, 1, 1])
-    }
-
-    assert wl_measures_statistical_significance.to_freq_sections_items(main, items_search, items_x1, items_x2, test_statistical_significance = 'Mann-Whitney U Test') == freq_sections_items
-    assert wl_measures_statistical_significance.to_freq_sections_items(main, items_search, items_x1, items_x2, test_statistical_significance = "Student's t-test (2-sample)") == freq_sections_items
-    assert wl_measures_statistical_significance.to_freq_sections_items(main, items_search, items_x1, items_x2, test_statistical_significance = "Welch's t-test") == freq_sections_items
-
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
 def test_fishers_exact_test():
     # Two-tailed
@@ -131,7 +117,6 @@ def test_z_score_berry_rogghe():
 if __name__ == '__main__':
     test_get_freqs_marginal()
     test_get_freqs_expected()
-    test_to_freq_sections_items()
 
     test_fishers_exact_test()
     test_log_likelihood_ratio_test()

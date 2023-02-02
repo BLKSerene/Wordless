@@ -21,28 +21,52 @@ from wordless.wl_checks import wl_checks_work_area
 
 main = wl_test_init.Wl_Test_Main()
 
+def test_wl_msg_box_missing_search_terms():
+    wl_checks_work_area.wl_msg_box_missing_search_terms(main)
+
+def test_wl_msg_box_no_results():
+    wl_checks_work_area.wl_msg_box_no_results(main)
+
+def test_wl_status_bar_msg_lang_support_unavailable():
+    wl_checks_work_area.wl_status_bar_msg_lang_support_unavailable(main)
+
+def test_wl_status_bar_msg_missing_search_terms():
+    wl_checks_work_area.wl_status_bar_msg_missing_search_terms(main)
+
+def test_wl_status_bar_msg_success_generate_table():
+    wl_checks_work_area.wl_status_bar_msg_success_generate_table(main)
+
+def test_wl_status_bar_msg_success_generate_fig():
+    wl_checks_work_area.wl_status_bar_msg_success_generate_fig(main)
+
+def test_wl_status_bar_msg_success_no_results():
+    wl_checks_work_area.wl_status_bar_msg_success_no_results(main)
+
+def test_wl_status_bar_msg_err_fatal():
+    wl_checks_work_area.wl_status_bar_msg_err_fatal(main)
+
 def test_check_search_terms():
     assert wl_checks_work_area.check_search_terms(main, {
         'multi_search_mode': False,
         'search_term': 'test',
         'search_terms': []
     })
+    assert not wl_checks_work_area.check_search_terms(main, {
+        'multi_search_mode': False,
+        'search_term': '',
+        'search_terms': ['test']
+    })
+
     assert wl_checks_work_area.check_search_terms(main, {
         'multi_search_mode': True,
         'search_term': '',
         'search_terms': ['test']
     })
     assert not wl_checks_work_area.check_search_terms(main, {
-        'multi_search_mode': False,
-        'search_term': '',
-        'search_terms': ['test']
-    }, show_warning = False)
-
-    assert not wl_checks_work_area.check_search_terms(main, {
         'multi_search_mode': True,
         'search_term': 'test',
         'search_terms': []
-    }, show_warning = False)
+    })
 
 def test_check_nlp_support():
     assert wl_checks_work_area.check_nlp_support(
@@ -55,7 +79,27 @@ def test_check_results():
     assert wl_checks_work_area.check_results(main, '', 'test')
     assert not wl_checks_work_area.check_results(main, 'test', '')
 
+def test_check_err_table():
+    wl_checks_work_area.check_err_table(main, '')
+    wl_checks_work_area.check_err_table(main, 'test')
+
+def test_check_err_fig():
+    wl_checks_work_area.check_err_fig(main, '')
+    wl_checks_work_area.check_err_fig(main, 'test')
+
 if __name__ == '__main__':
+    test_wl_msg_box_missing_search_terms()
+    test_wl_msg_box_no_results()
+
+    test_wl_status_bar_msg_lang_support_unavailable()
+    test_wl_status_bar_msg_missing_search_terms()
+    test_wl_status_bar_msg_success_generate_table()
+    test_wl_status_bar_msg_success_generate_fig()
+    test_wl_status_bar_msg_success_no_results()
+    test_wl_status_bar_msg_err_fatal()
+
     test_check_search_terms()
     test_check_nlp_support()
     test_check_results()
+    test_check_err_table()
+    test_check_err_fig()

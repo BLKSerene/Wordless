@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=broad-exception-caught
+
 import bisect
 import collections
 import copy
@@ -31,7 +33,6 @@ from PyQt5.QtWidgets import QCheckBox, QLabel, QPushButton, QGroupBox
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
-from wordless.wl_measures import wl_measures_statistical_significance
 from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
@@ -121,14 +122,14 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
                     for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, ngram_size)):
                         # Limit Searching
-                        if settings_limit_searching != _tr('Wl_Worker_Collocation_Extractor', 'None'):
-                            if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'Within Sentence Segments'):
+                        if settings_limit_searching != self.tr('None'):
+                            if settings_limit_searching == self.tr('Within Sentence Segments'):
                                 offsets_unit = offsets_sentence_segs
                                 len_unit = len_sentence_segs
-                            elif settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'Within Sentences'):
+                            elif settings_limit_searching == self.tr('Within Sentences'):
                                 offsets_unit = offsets_sentences
                                 len_unit = len_sentences
-                            elif settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'Within Paragraphs'):
+                            elif settings_limit_searching == self.tr('Within Paragraphs'):
                                 offsets_unit = offsets_paras
                                 len_unit = len_paras
 
@@ -143,7 +144,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
                         if window_left < 0 < window_right:
                             # Limit Searching
-                            if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'None'):
+                            if settings_limit_searching == self.tr('None'):
                                 tokens_left = tokens[max(0, i + window_left) : i]
                                 tokens_right = tokens[i + ngram_size : i + ngram_size + window_right]
                             else:
@@ -186,7 +187,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                                 collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left < 0 and window_right < 0:
                             # Limit Searching
-                            if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'None'):
+                            if settings_limit_searching == self.tr('None'):
                                 tokens_left = tokens[max(0, i + window_left) : max(0, i + window_right + 1)]
                             else:
                                 # Span positions (Left)
@@ -209,7 +210,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                                 collocations_freqs_file_all[ngram_size][(ngram, collocate)] += 1
                         elif window_left > 0 and window_right > 0:
                             # Limit Searching
-                            if settings_limit_searching == _tr('Wl_Worker_Collocation_Extractor', 'None'):
+                            if settings_limit_searching == self.tr('None'):
                                 tokens_right = tokens[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
                             else:
                                 # Span positions (Right)
@@ -326,22 +327,22 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                         c22 = cxxs[len_node] - c11 - c12 - c21
 
                         # Test Statistic & p-value
-                        if func_statistical_significance is None:
+                        if test_statistical_significance == 'none':
                             collocates_stats_file[(node, collocate)] = [None, None]
                         else:
-                            if func_statistical_significance is wl_measures_statistical_significance.z_score_berry_rogghe:
+                            if test_statistical_significance == 'z_score_berry_rogghe':
                                 collocates_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22, span))
                             else:
                                 collocates_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
 
                         # Bayes Factor
-                        if func_bayes_factor is None:
+                        if measure_bayes_factor == 'none':
                             collocates_stats_file[(node, collocate)].append(None)
                         else:
                             collocates_stats_file[(node, collocate)].append(func_bayes_factor(self.main, c11, c12, c21, c22))
 
                         # Effect Size
-                        if func_effect_size is None:
+                        if measure_effect_size == 'none':
                             collocates_stats_file[(node, collocate)].append(None)
                         else:
                             collocates_stats_file[(node, collocate)].append(func_effect_size(self.main, c11, c12, c21, c22))
@@ -477,17 +478,19 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
                 measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                func_statistical_significance = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['func']
-                func_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['func']
-                func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
+                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
-                text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
-                text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
-
-                # Insert columns (files)
+                # Insert columns
                 files = list(self.main.wl_file_area.get_selected_files())
+                files_with_total = files + [{'name': self.tr('Total')}]
 
-                for i, file in enumerate(files):
+                for file in files_with_total:
+                    if file['name'] == self.tr('Total'):
+                        is_breakdown = False
+                    else:
+                        is_breakdown = True
+
                     for i in range(
                         settings['generation_settings']['window_left'],
                         settings['generation_settings']['window_right'] + 1
@@ -495,24 +498,24 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                         if i < 0:
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
-                                _tr('Wl_Table_Collocation_Extractor', '[{}]\nL{}').format(file['name'], -i),
-                                is_int = True, is_cumulative = True, is_breakdown = True
+                                self.tr('[{}]\nL{}').format(file['name'], -i),
+                                is_int = True, is_cumulative = True, is_breakdown = is_breakdown
                             )
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
-                                _tr('Wl_Table_Collocation_Extractor', '[{}]\nL{} %').format(file['name'], -i),
-                                is_pct = True, is_cumulative = True, is_breakdown = True
+                                self.tr('[{}]\nL{} %').format(file['name'], -i),
+                                is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
                             )
                         elif i > 0:
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
-                                _tr('Wl_Table_Collocation_Extractor', '[{}]\nR{}').format(file['name'], i),
-                                is_int = True, is_cumulative = True, is_breakdown = True
+                                self.tr('[{}]\nR{}').format(file['name'], i),
+                                is_int = True, is_cumulative = True, is_breakdown = is_breakdown
                             )
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
-                                _tr('Wl_Table_Collocation_Extractor', '[{}]\nR{} %').format(file['name'], i),
-                                is_pct = True, is_cumulative = True, is_breakdown = True
+                                self.tr('[{}]\nR{} %').format(file['name'], i),
+                                is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
                             )
 
                         # Show breakdown by span position
@@ -521,170 +524,91 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        _tr('Wl_Table_Collocation_Extractor', '[{}]\nFrequency').format(file['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = True
+                        self.tr('[{}]\nFrequency').format(file['name']),
+                        is_int = True, is_cumulative = True, is_breakdown = is_breakdown
                     )
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        _tr('Wl_Table_Collocation_Extractor', '[{}]\nFrequency %').format(file['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = True
+                        self.tr('[{}]\nFrequency %').format(file['name']),
+                        is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
                     )
 
-                    if func_statistical_significance is not None:
-                        if text_test_stat:
+                    if test_statistical_significance != 'none':
+                        if col_text_test_stat:
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
-                                f'[{file["name"]}]\n{text_test_stat}',
-                                is_float = True, is_breakdown = True
+                                f'[{file["name"]}]\n{col_text_test_stat}',
+                                is_float = True, is_breakdown = is_breakdown
                             )
 
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', '[{}]\np-value').format(file['name']),
-                            is_float = True, is_breakdown = True
+                            self.tr('[{}]\np-value').format(file['name']),
+                            is_float = True, is_breakdown = is_breakdown
                         )
 
-                    if func_bayes_factor is not None:
+                    if measure_bayes_factor != 'none':
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', '[{}]\nBayes Factor').format(file['name']),
-                            is_float = True, is_breakdown = True
+                            self.tr('[{}]\nBayes Factor').format(file['name']),
+                            is_float = True, is_breakdown = is_breakdown
                         )
 
-                    if func_effect_size is not None:
+                    if measure_effect_size != 'none':
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_effect_size}',
-                            is_float = True, is_breakdown = True
+                            f'[{file["name"]}]\n{col_text_effect_size}',
+                            is_float = True, is_breakdown = is_breakdown
                         )
-
-                # Insert columns (total)
-                for i in range(
-                    settings['generation_settings']['window_left'],
-                    settings['generation_settings']['window_right'] + 1
-                ):
-                    if i < 0:
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', 'Total\nL{}').format(-i),
-                            is_int = True, is_cumulative = True
-                        )
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', 'Total\nL{} %').format(-i),
-                            is_pct = True, is_cumulative = True
-                        )
-                    elif i > 0:
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', 'Total\nR{}').format(i),
-                            is_int = True, is_cumulative = True
-                        )
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', 'Total\nR{} %').format(i),
-                            is_pct = True, is_cumulative = True
-                        )
-
-                    # Show breakdown by span position
-                    self.cols_breakdown_position.add(self.model().columnCount() - 3)
-                    self.cols_breakdown_position.add(self.model().columnCount() - 4)
-
-                self.ins_header_hor(
-                    self.model().columnCount() - 2,
-                    _tr('Wl_Table_Collocation_Extractor', 'Total\nFrequency'),
-                    is_int = True, is_cumulative = True
-                )
-                self.ins_header_hor(
-                    self.model().columnCount() - 2,
-                    _tr('Wl_Table_Collocation_Extractor', 'Total\nFrequency %'),
-                    is_pct = True, is_cumulative = True
-                )
-
-                if func_statistical_significance is not None:
-                    if text_test_stat:
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            _tr('Wl_Table_Collocation_Extractor', 'Total\n') + text_test_stat,
-                            is_float = True
-                        )
-
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        _tr('Wl_Table_Collocation_Extractor', 'Total\np-value'),
-                        is_float = True
-                    )
-
-                if func_bayes_factor is not None:
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        _tr('Wl_Table_Collocation_Extractor', 'Total\nBayes Factor'),
-                        is_float = True
-                    )
-
-                if func_effect_size is not None:
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        _tr('Wl_Table_Collocation_Extractor', 'Total\n') + text_effect_size,
-                        is_float = True
-                    )
 
                 # Sort by p-value of the first file
-                if func_statistical_significance is not None:
+                if test_statistical_significance != 'none':
                     self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\np-value').format(files[0]['name'])),
+                        self.find_header_hor(self.tr('[{}]\np-value').format(files[0]['name'])),
                         Qt.AscendingOrder
                     )
                 # Sort by bayes factor of the first file
-                elif func_bayes_factor is not None:
+                elif measure_bayes_factor != 'none':
                     self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\nBayes Factor').format(files[0]['name'])),
+                        self.find_header_hor(self.tr('[{}]\nBayes Factor').format(files[0]['name'])),
                         Qt.DescendingOrder
                     )
                 # Sort by effect size of the first file
-                elif func_effect_size is not None:
+                elif measure_effect_size != 'none':
                     self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(f"[{files[0]['name']}]\n{text_effect_size}"),
+                        self.find_header_hor(f"[{files[0]['name']}]\n{col_text_effect_size}"),
                         Qt.DescendingOrder
                     )
                 # Otherwise sort by frequency of the first file
                 else:
                     self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\nFrequency').format(files[0]['name'])),
+                        self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
                         Qt.DescendingOrder
                     )
 
                 if settings['generation_settings']['window_left'] < 0:
                     cols_freqs_start = [
-                        self.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\nL{}').format(file['name'], -settings['generation_settings']['window_left']))
-                        for file in files
+                        self.find_header_hor(self.tr('[{}]\nL{}').format(file['name'], -settings['generation_settings']['window_left']))
+                        for file in files_with_total
                     ]
-                    cols_freqs_start.append(self.find_header_hor(
-                        _tr('Wl_Table_Collocation_Extractor', 'Total\nL')
-                        + str(-settings['generation_settings']['window_left'])
-                    ))
                 else:
                     cols_freqs_start = [
-                        self.find_header_hor(_tr('Wl_Table_Collocation_Extractor', '[{}]\nR{}').format(file['name'], settings['generation_settings']['window_left']))
-                        for file in files
+                        self.find_header_hor(self.tr('[{}]\nR{}').format(file['name'], settings['generation_settings']['window_left']))
+                        for file in files_with_total
                     ]
-                    cols_freqs_start.append(self.find_header_hor(
-                        _tr('Wl_Table_Collocation_Extractor', 'Total\nR')
-                        + str(settings['generation_settings']['window_left'])
-                    ))
 
-                cols_freq = self.find_headers_hor(_tr('Wl_Table_Collocation_Extractor', '\nFrequency'))
-                cols_freq_pct = self.find_headers_hor(_tr('Wl_Table_Collocation_Extractor', '\nFrequency %'))
+                cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
+                cols_freq_pct = self.find_headers_hor(self.tr('\nFrequency %'))
 
                 for col in cols_freq_pct:
                     cols_freq.remove(col)
 
-                cols_test_stat = self.find_headers_hor(f'\n{text_test_stat}')
-                cols_p_val = self.find_headers_hor(_tr('Wl_Table_Collocation_Extractor', '\np-value'))
-                cols_bayes_factor = self.find_headers_hor(_tr('Wl_Table_Collocation_Extractor', '\nBayes Factor'))
-                cols_effect_size = self.find_headers_hor(f'\n{text_effect_size}')
-                col_files_found = self.find_header_hor(_tr('Wl_Table_Collocation_Extractor', 'Number of\nFiles Found'))
-                col_files_found_pct = self.find_header_hor(_tr('Wl_Table_Collocation_Extractor', 'Number of\nFiles Found %'))
+                cols_test_stat = self.find_headers_hor(f'\n{col_text_test_stat}')
+                cols_p_val = self.find_headers_hor(self.tr('\np-value'))
+                cols_bayes_factor = self.find_headers_hor(self.tr('\nBayes Factor'))
+                cols_effect_size = self.find_headers_hor(f'\n{col_text_effect_size}')
+                col_files_found = self.find_header_hor(self.tr('Number of\nFiles Found'))
+                col_files_found_pct = self.find_header_hor(self.tr('Number of\nFiles Found %'))
 
                 freqs_totals = numpy.array(list(collocations_freqs_files.values())).sum(axis = 0)
                 freq_totals = numpy.array(list(collocations_freqs_files.values())).sum(axis = 2).sum(axis = 0)
@@ -715,19 +639,19 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
                     for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
                         # Test Statistic
-                        if text_test_stat is not None:
+                        if test_stat is not None:
                             self.set_item_num(i, cols_test_stat[j], test_stat)
 
                         # p-value
-                        if func_statistical_significance is not None:
+                        if p_val is not None:
                             self.set_item_p_val(i, cols_p_val[j], p_val)
 
                         # Bayes Factor
-                        if func_bayes_factor is not None:
+                        if bayes_factor is not None:
                             self.set_item_num(i, cols_bayes_factor[j], bayes_factor)
 
                         # Effect Size
-                        if func_effect_size is not None:
+                        if effect_size is not None:
                             self.set_item_num(i, cols_effect_size[j], effect_size)
 
                     # Number of Files Found
@@ -769,8 +693,8 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                 test_statistical_significance = settings['generation_settings']['test_statistical_significance']
                 measure_effect_size = settings['generation_settings']['measure_effect_size']
 
-                text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
-                text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
+                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
 
                 if re.search(_tr('Wl_Table_Collocation_Extractor', r'^[LR][0-9]+$'), settings['fig_settings']['use_data']):
                     span_positions = (
@@ -778,13 +702,13 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                         + list(range(1, settings['generation_settings']['window_right'] + 1))
                     )
 
-                    if _tr('Wl_Table_Collocation_Extractor', 'L') in settings['fig_settings']['use_data']:
+                    if self.tr('L') in settings['fig_settings']['use_data']:
                         span_position = span_positions.index(-int(settings['fig_settings']['use_data'][1:]))
                     else:
                         span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
 
                     # Network Graph
-                    if settings['fig_settings']['graph_type'] == _tr('Wl_Table_Collocation_Extractor', 'Network Graph'):
+                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
                         collocates_freq_files = {
                             (' '.join(node), collocate): numpy.array(freqs)[:, span_position]
                             for (node, collocate), freqs in collocations_freqs_files.items()
@@ -800,9 +724,9 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                         self.main, collocates_freq_files,
                         tab = 'collocation_extractor'
                     )
-                elif settings['fig_settings']['use_data'] == _tr('Wl_Table_Collocation_Extractor', 'Frequency'):
+                elif settings['fig_settings']['use_data'] == self.tr('Frequency'):
                     # Network Graph
-                    if settings['fig_settings']['graph_type'] == _tr('Wl_Table_Collocation_Extractor', 'Network Graph'):
+                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
                         collocates_freq_files = {
                             (' '.join(node), collocate): numpy.array(freqs).sum(axis = 1)
                             for (node, collocate), freqs in collocations_freqs_files.items()
@@ -820,7 +744,7 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     )
                 else:
                     # Network Graph
-                    if settings['fig_settings']['graph_type'] == _tr('Wl_Table_Collocation_Extractor', 'Network Graph'):
+                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
                         collocations_stats_files = {
                             (' '.join(node), collocate): freqs
                             for (node, collocate), freqs in collocations_stats_files.items()
@@ -832,22 +756,22 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                             for (node, collocate), freqs in collocations_stats_files.items()
                         }
 
-                    if settings['fig_settings']['use_data'] == text_test_stat:
+                    if settings['fig_settings']['use_data'] == col_text_test_stat:
                         collocates_stat_files = {
                             collocate: numpy.array(stats_files)[:, 0]
                             for collocate, stats_files in collocations_stats_files.items()
                         }
-                    elif settings['fig_settings']['use_data'] == _tr('Wl_Table_Collocation_Extractor', 'p-value'):
+                    elif settings['fig_settings']['use_data'] == self.tr('p-value'):
                         collocates_stat_files = {
                             collocate: numpy.array(stats_files)[:, 1]
                             for collocate, stats_files in collocations_stats_files.items()
                         }
-                    elif settings['fig_settings']['use_data'] == _tr('Wl_Table_Collocation_Extractor', 'Bayes Factor'):
+                    elif settings['fig_settings']['use_data'] == self.tr('Bayes Factor'):
                         collocates_stat_files = {
                             collocate: numpy.array(stats_files)[:, 2]
                             for collocate, stats_files in collocations_stats_files.items()
                         }
-                    elif settings['fig_settings']['use_data'] == text_effect_size:
+                    elif settings['fig_settings']['use_data'] == col_text_effect_size:
                         collocates_stat_files = {
                             collocate: numpy.array(stats_files)[:, 3]
                             for collocate, stats_files in collocations_stats_files.items()
@@ -1234,9 +1158,9 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
 
         self.combo_box_limit_searching.setCurrentText(settings['generation_settings']['limit_searching'])
 
-        self.combo_box_test_statistical_significance.setCurrentText(settings['generation_settings']['test_statistical_significance'])
-        self.combo_box_measure_bayes_factor.setCurrentText(settings['generation_settings']['measure_bayes_factor'])
-        self.combo_box_measure_effect_size.setCurrentText(settings['generation_settings']['measure_effect_size'])
+        self.combo_box_test_statistical_significance.set_measure(settings['generation_settings']['test_statistical_significance'])
+        self.combo_box_measure_bayes_factor.set_measure(settings['generation_settings']['measure_bayes_factor'])
+        self.combo_box_measure_effect_size.set_measure(settings['generation_settings']['measure_effect_size'])
 
         # Table Settings
         self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
@@ -1313,9 +1237,9 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
 
         settings['limit_searching'] = self.combo_box_limit_searching.currentText()
 
-        settings['test_statistical_significance'] = self.combo_box_test_statistical_significance.currentText()
-        settings['measure_bayes_factor'] = self.combo_box_measure_bayes_factor.currentText()
-        settings['measure_effect_size'] = self.combo_box_measure_effect_size.currentText()
+        settings['test_statistical_significance'] = self.combo_box_test_statistical_significance.get_measure()
+        settings['measure_bayes_factor'] = self.combo_box_measure_bayes_factor.get_measure()
+        settings['measure_effect_size'] = self.combo_box_measure_effect_size.get_measure()
 
         # Use Data
         self.combo_box_use_data.measures_changed()
