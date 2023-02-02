@@ -112,7 +112,7 @@ def init_settings_default(main):
                 'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
-                'puncs': False,
+                'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
                 'lemmatize_tokens': False,
@@ -131,7 +131,7 @@ def init_settings_default(main):
 
         'concordancer': {
             'token_settings': {
-                'puncs': False,
+                'punc_marks': False,
 
                 'ignore_tags': False,
                 'use_tags': False
@@ -258,7 +258,7 @@ def init_settings_default(main):
 
         'concordancer_parallel': {
             'token_settings': {
-                'puncs': False,
+                'punc_marks': False,
 
                 'ignore_tags': False,
                 'use_tags': False
@@ -337,7 +337,7 @@ def init_settings_default(main):
 
         'dependency_parser': {
             'token_settings': {
-                'puncs': False,
+                'punc_marks': False,
 
                 'ignore_tags': False,
                 'use_tags': False
@@ -429,7 +429,7 @@ def init_settings_default(main):
                 'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
-                'puncs': False,
+                'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
                 'lemmatize_tokens': False,
@@ -513,7 +513,7 @@ def init_settings_default(main):
                 'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
-                'puncs': False,
+                'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
                 'lemmatize_tokens': False,
@@ -661,7 +661,7 @@ def init_settings_default(main):
                 'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
-                'puncs': False,
+                'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
                 'lemmatize_tokens': False,
@@ -817,7 +817,7 @@ def init_settings_default(main):
                 'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
-                'puncs': False,
+                'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
                 'lemmatize_tokens': False,
@@ -973,7 +973,7 @@ def init_settings_default(main):
                 'all_uppercase': True,
                 'title_case': True,
                 'nums': True,
-                'puncs': False,
+                'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
                 'lemmatize_tokens': False,

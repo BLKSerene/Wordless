@@ -65,19 +65,19 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
 
         (
-            self.checkbox_puncs,
+            self.checkbox_punc_marks,
 
             self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings_concordancer(self)
 
-        self.checkbox_puncs.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_punc_marks.stateChanged.connect(self.token_settings_changed)
 
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
         self.group_box_token_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_token_settings.layout().addWidget(self.checkbox_puncs, 0, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_punc_marks, 0, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
 
@@ -304,7 +304,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
             settings = copy.deepcopy(self.main.settings_custom['concordancer'])
 
         # Token Settings
-        self.checkbox_puncs.setChecked(settings['token_settings']['puncs'])
+        self.checkbox_punc_marks.setChecked(settings['token_settings']['punc_marks'])
 
         self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
@@ -363,7 +363,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
     def token_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['token_settings']
 
-        settings['puncs'] = self.checkbox_puncs.isChecked()
+        settings['punc_marks'] = self.checkbox_punc_marks.isChecked()
 
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
@@ -745,8 +745,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             # Search in Results (Node)
                             text_search_node = list(ngram)
 
-                            if not settings['token_settings']['puncs']:
-                                ngram = text.tokens_flat_puncs_merged[i : i + len_search_term]
+                            if not settings['token_settings']['punc_marks']:
+                                ngram = text.tokens_flat_punc_marks_merged[i : i + len_search_term]
 
                             node_text = ' '.join(ngram)
                             node_text = wl_nlp_utils.escape_text(node_text)
@@ -777,7 +777,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                     len_context_left += len_token_next
 
                                 while len_context_right < width_right_char:
-                                    if i + len_search_term + len(context_right) > len(text.tokens_flat_puncs_merged) - 1:
+                                    if i + len_search_term + len(context_right) > len(text.tokens_flat_punc_marks_merged) - 1:
                                         break
                                     else:
                                         token_next = tokens[i + len_search_term + len(context_right)]
@@ -794,18 +794,18 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 text_search_left = copy.deepcopy(context_left)
                                 text_search_right = copy.deepcopy(context_right)
 
-                                if not settings['token_settings']['puncs']:
-                                    context_left = text.tokens_flat_puncs_merged[i - len(context_left): i]
-                                    context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + len(context_right)]
+                                if not settings['token_settings']['punc_marks']:
+                                    context_left = text.tokens_flat_punc_marks_merged[i - len(context_left): i]
+                                    context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : i + len_search_term + len(context_right)]
                             elif settings['generation_settings']['width_unit'] == self.tr('Token'):
                                 width_left_token = settings['generation_settings']['width_left_token']
                                 width_right_token = settings['generation_settings']['width_right_token']
 
-                                context_left = text.tokens_flat_puncs_merged[max(0, i - width_left_token) : i]
-                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : i + len_search_term + width_right_token]
+                                context_left = text.tokens_flat_punc_marks_merged[max(0, i - width_left_token) : i]
+                                context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : i + len_search_term + width_right_token]
 
                                 # Search in Results (Left & Right)
-                                if settings['token_settings']['puncs']:
+                                if settings['token_settings']['punc_marks']:
                                     text_search_left = copy.deepcopy(context_left)
                                     text_search_right = copy.deepcopy(context_right)
                                 else:
@@ -838,11 +838,11 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 else:
                                     offset_end = offsets_unit[no_unit + width_right]
 
-                                context_left = text.tokens_flat_puncs_merged[offset_start:i]
-                                context_right = text.tokens_flat_puncs_merged[i + len_search_term : offset_end]
+                                context_left = text.tokens_flat_punc_marks_merged[offset_start:i]
+                                context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : offset_end]
 
                                 # Search in Results (Left & Right)
-                                if settings['token_settings']['puncs']:
+                                if settings['token_settings']['punc_marks']:
                                     text_search_left = copy.deepcopy(context_left)
                                     text_search_right = copy.deepcopy(context_right)
                                 else:

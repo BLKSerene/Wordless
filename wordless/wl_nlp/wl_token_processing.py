@@ -43,8 +43,8 @@ def wl_process_tokens(main, text, token_settings):
         if para
     ]
 
-    # Punctuations
-    if not settings['puncs']:
+    # Punctuation marks
+    if not settings['punc_marks']:
         i_tokens = 0
 
         # Mark tokens to be removed
@@ -59,7 +59,7 @@ def wl_process_tokens(main, text, token_settings):
 
                     i_tokens += len(sentence_seg)
 
-        # Remove punctuations
+        # Remove punctuation marks
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, sentence_seg in enumerate(sentence):
@@ -235,29 +235,29 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
     tokens_flat = text.get_tokens_flat()
 
     # Punctuations
-    if not settings['puncs']:
+    if not settings['punc_marks']:
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, sentence_seg in enumerate(sentence):
                     sentence[i] = [token for token in sentence_seg if not wl_checks_tokens.is_punc(token)]
 
-        text.tokens_flat_puncs_merged = []
+        text.tokens_flat_punc_marks_merged = []
 
         for i, token in enumerate(tokens_flat):
             if wl_checks_tokens.is_punc(token) and i > 0:
-                text.tokens_flat_puncs_merged[-1] = wl_word_detokenization.wl_word_detokenize(
+                text.tokens_flat_punc_marks_merged[-1] = wl_word_detokenization.wl_word_detokenize(
                     main,
-                    tokens = [text.tokens_flat_puncs_merged[-1], token],
+                    tokens = [text.tokens_flat_punc_marks_merged[-1], token],
                     lang = text.lang
                 )
             else:
-                text.tokens_flat_puncs_merged.append(token)
+                text.tokens_flat_punc_marks_merged.append(token)
 
         # Check if the first token is a punctuation mark
-        if wl_checks_tokens.is_punc(text.tokens_flat_puncs_merged[0]):
+        if wl_checks_tokens.is_punc(text.tokens_flat_punc_marks_merged[0]):
             text.tokens_multilevel[0][0][0].insert(0, '')
     else:
-        text.tokens_flat_puncs_merged = tokens_flat
+        text.tokens_flat_punc_marks_merged = tokens_flat
 
     # Remove empty paragraphs
     if not preserve_blank_lines:
@@ -293,9 +293,9 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
                 for i, sentence_seg in enumerate(sentence):
                     sentence[i] = [(token, []) for token in sentence_seg]
 
-        text.tokens_flat_puncs_merged = [
+        text.tokens_flat_punc_marks_merged = [
             (token, [])
-            for token in text.tokens_flat_puncs_merged
+            for token in text.tokens_flat_punc_marks_merged
         ]
     else:
         i_tags = 0
@@ -308,7 +308,7 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
                     i_tags += len(sentence_seg)
 
-        text.tokens_flat_puncs_merged = list(zip(text.tokens_flat_puncs_merged, text.tags))
+        text.tokens_flat_punc_marks_merged = list(zip(text.tokens_flat_punc_marks_merged, text.tags))
 
     # Use tags only
     if settings['use_tags']:
@@ -317,9 +317,9 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
                 for i, sentence_seg in enumerate(sentence):
                     sentence[i] = [''.join(tags) for (_, tags) in sentence_seg]
 
-        text.tokens_flat_puncs_merged = [
+        text.tokens_flat_punc_marks_merged = [
             ''.join(tags)
-            for _, tags in text.tokens_flat_puncs_merged
+            for _, tags in text.tokens_flat_punc_marks_merged
         ]
     else:
         for para in text.tokens_multilevel:
@@ -327,9 +327,9 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
                 for i, sentence_seg in enumerate(sentence):
                     sentence[i] = [f"{token}{''.join(tags)}" for (token, tags) in sentence_seg]
 
-        text.tokens_flat_puncs_merged = [
+        text.tokens_flat_punc_marks_merged = [
             f"{token}{''.join(tags)}"
-            for token, tags in text.tokens_flat_puncs_merged
+            for token, tags in text.tokens_flat_punc_marks_merged
         ]
 
     return text
