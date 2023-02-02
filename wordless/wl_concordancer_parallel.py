@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=broad-exception-caught
+
 import bisect
 import copy
 import traceback
@@ -223,8 +225,8 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
             # Check whether the user has simply forgotten to enter search terms
             search_additions_deletions = wl_msg_boxes.wl_msg_box_question(
                 self.main,
-                title = _tr('wl_concordancer_parallel', 'Missing Search Terms'),
-                text = _tr('wl_concordancer_parallel', '''
+                title = self.tr('Missing Search Terms'),
+                text = self.tr('''
                     <div>You have not specified any search terms. Do you want to search for additions and deletions?</div>
                 ''')
             )

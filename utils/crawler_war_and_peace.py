@@ -27,7 +27,7 @@ with open('Война и мир.txt', 'w', encoding = 'utf_8') as f:
 
         url = f'https://ilibrary.ru/text/11/p.{i + 1}/index.html'
 
-        r = requests.get(url)
+        r = requests.get(url, timeout = 10)
 
         if r.status_code == 200:
             soup = bs4.BeautifulSoup(r.text, features = 'lxml')
@@ -48,6 +48,6 @@ with open('Война и мир.txt', 'w', encoding = 'utf_8') as f:
 
             f.write(text.get_text())
         else:
-            raise Exception(f'HTTP Error: {r.status_code}!')
+            raise requests.HTTPError(f'{r.status_code}!')
 
 print('All done!')

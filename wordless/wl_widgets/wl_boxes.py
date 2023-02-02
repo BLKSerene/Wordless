@@ -22,6 +22,7 @@ from PyQt5.QtWidgets import (
     QSpinBox
 )
 
+from wordless.wl_measures import wl_measure_utils
 from wordless.wl_utils import wl_misc
 
 _tr = QCoreApplication.translate
@@ -90,6 +91,22 @@ class Wl_Combo_Box_Encoding(Wl_Combo_Box):
         super().__init__(parent)
 
         self.addItems(list(self.main.settings_global['encodings']))
+
+class Wl_Combo_Box_Measure(Wl_Combo_Box):
+    def __init__(self, parent, measure_type):
+        super().__init__(parent)
+
+        self.measure_type = measure_type
+
+        self.addItems(self.main.settings_global['mapping_measures'][self.measure_type])
+
+    def get_measure(self):
+        return wl_measure_utils.to_measure_code(self.main, self.measure_type, self.currentText())
+
+    def set_measure(self, measure):
+        for i in range(self.count()):
+            if wl_measure_utils.to_measure_text(self.main, self.measure_type, measure) == self.itemText(i):
+                self.setCurrentIndex(i)
 
 class Wl_Combo_Box_File_To_Filter(Wl_Combo_Box):
     def __init__(self, parent, table):
@@ -240,7 +257,7 @@ def wl_spin_box_no_limit(parent, val_min = 1, val_max = 100, double = False):
     else:
         spin_box_val = Wl_Spin_Box(parent)
 
-    checkbox_no_limit = QCheckBox(_tr('wl_boxes', 'No Limit'), parent)
+    checkbox_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
 
     spin_box_val.setRange(val_min, val_max)
 
@@ -295,8 +312,8 @@ def wl_spin_boxes_min_max_no_limit(parent, val_min = 1, val_max = 100, double = 
         spin_box_max
     ) = wl_spin_boxes_min_max(parent, val_min, val_max, double)
 
-    checkbox_min_no_limit = QCheckBox(_tr('wl_boxes', 'No Limit'), parent)
-    checkbox_max_no_limit = QCheckBox(_tr('wl_boxes', 'No Limit'), parent)
+    checkbox_min_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
+    checkbox_max_no_limit = QCheckBox(_tr('wl_boxes', 'No limit'), parent)
 
     checkbox_min_no_limit.stateChanged.connect(no_limit_min_changed)
     checkbox_max_no_limit.stateChanged.connect(no_limit_max_changed)
@@ -324,7 +341,7 @@ def wl_spin_boxes_min_max_sync(parent, val_min = 1, val_max = 100, double = Fals
 
     checkbox_sync = QCheckBox(_tr('wl_boxes', 'Sync'), parent)
     label_min = QLabel(_tr('wl_boxes', 'From'), parent)
-    label_max = QLabel(_tr('wl_boxes', 'To'), parent)
+    label_max = QLabel(_tr('wl_boxes', 'to'), parent)
     (
         spin_box_min,
         spin_box_max
@@ -389,7 +406,7 @@ def wl_spin_boxes_min_max_sync_window(parent):
     checkbox_sync = QCheckBox(_tr('wl_boxes', 'Sync'), parent)
     label_left = QLabel(_tr('wl_boxes', 'From'), parent)
     spin_box_left = Wl_Spin_Box_Window(parent)
-    label_right = QLabel(_tr('wl_boxes', 'To'), parent)
+    label_right = QLabel(_tr('wl_boxes', 'to'), parent)
     spin_box_right = Wl_Spin_Box_Window(parent)
 
     spin_box_left.setRange(-100, 100)

@@ -25,6 +25,7 @@ from PyQt5.QtWidgets import (
 )
 
 from wordless.wl_dialogs import wl_dialogs
+from wordless.wl_measures import wl_measure_utils
 from wordless.wl_utils import wl_misc
 from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_lists
 
@@ -610,48 +611,44 @@ def wl_widgets_context_settings(parent, tab):
 
 # Generation Settings
 def wl_widgets_measures_wordlist_generator(parent):
-    main = wl_misc.find_wl_main(parent)
-
-    label_measure_dispersion = QLabel(_tr('wl_widgets', 'Measure of Dispersion:'), parent)
-    combo_box_measure_dispersion = wl_boxes.Wl_Combo_Box(parent)
-    label_measure_adjusted_freq = QLabel(_tr('wl_widgets', 'Measure of Adjusted Frequency:'), parent)
-    combo_box_measure_adjusted_freq = wl_boxes.Wl_Combo_Box(parent)
-
-    combo_box_measure_dispersion.addItems(list(main.settings_global['measures_dispersion'].keys()))
-    combo_box_measure_adjusted_freq.addItems(list(main.settings_global['measures_adjusted_freq'].keys()))
+    label_measure_dispersion = QLabel(_tr('wl_widgets', 'Measure of dispersion:'), parent)
+    combo_box_measure_dispersion = wl_boxes.Wl_Combo_Box_Measure(parent, measure_type = 'dispersion')
+    label_measure_adjusted_freq = QLabel(_tr('wl_widgets', 'Measure of adjusted frequency:'), parent)
+    combo_box_measure_adjusted_freq = wl_boxes.Wl_Combo_Box_Measure(parent, measure_type = 'adjusted_freq')
 
     return (
-        label_measure_dispersion,
-        combo_box_measure_dispersion,
-        label_measure_adjusted_freq,
-        combo_box_measure_adjusted_freq
+        label_measure_dispersion, combo_box_measure_dispersion,
+        label_measure_adjusted_freq, combo_box_measure_adjusted_freq
     )
 
 def wl_widgets_measures_collocation_extractor(parent, tab):
-    label_test_statistical_significance = QLabel(_tr('wl_widgets', 'Test of Statistical Significance:'), parent)
-    combo_box_test_statistical_significance = wl_boxes.Wl_Combo_Box(parent)
-    label_measure_bayes_factor = QLabel(_tr('wl_widgets', 'Measure of Bayes Factor:'), parent)
-    combo_box_measure_bayes_factor = wl_boxes.Wl_Combo_Box(parent)
-    label_measure_effect_size = QLabel(_tr('wl_widgets', 'Measure of Effect Size:'), parent)
-    combo_box_measure_effect_size = wl_boxes.Wl_Combo_Box(parent)
+    main = wl_misc.find_wl_main(parent)
 
-    for measure, vals in parent.main.settings_global['tests_statistical_significance'].items():
-        if vals[tab]:
-            combo_box_test_statistical_significance.addItem(measure)
+    label_test_statistical_significance = QLabel(_tr('wl_widgets', 'Test of statistical significance:'), parent)
+    combo_box_test_statistical_significance = wl_boxes.Wl_Combo_Box_Measure(parent, measure_type = 'statistical_significance')
+    label_measure_bayes_factor = QLabel(_tr('wl_widgets', 'Measure of Bayes factor:'), parent)
+    combo_box_measure_bayes_factor = wl_boxes.Wl_Combo_Box_Measure(parent, measure_type = 'bayes_factor')
+    label_measure_effect_size = QLabel(_tr('wl_widgets', 'Measure of effect size:'), parent)
+    combo_box_measure_effect_size = wl_boxes.Wl_Combo_Box_Measure(parent, measure_type = 'effect_size')
 
-    for measure, vals in parent.main.settings_global['measures_bayes_factor'].items():
-        if vals[tab]:
-            combo_box_measure_bayes_factor.addItem(measure)
+    for i in reversed(range(combo_box_test_statistical_significance.count())):
+        measure_text = combo_box_test_statistical_significance.itemText(i)
+        measure_code = wl_measure_utils.to_measure_code(main, 'statistical_significance', measure_text)
 
-    combo_box_measure_effect_size.addItems(list(parent.main.settings_global['measures_effect_size'].keys()))
+        if not main.settings_global['tests_statistical_significance'][measure_code][tab]:
+            combo_box_test_statistical_significance.removeItem(i)
+
+    for i in reversed(range(combo_box_measure_bayes_factor.count())):
+        measure_text = combo_box_measure_bayes_factor.itemText(i)
+        measure_code = wl_measure_utils.to_measure_code(main, 'bayes_factor', measure_text)
+
+        if not main.settings_global['measures_bayes_factor'][measure_code][tab]:
+            combo_box_measure_bayes_factor.removeItem(i)
 
     return (
-        label_test_statistical_significance,
-        combo_box_test_statistical_significance,
-        label_measure_bayes_factor,
-        combo_box_measure_bayes_factor,
-        label_measure_effect_size,
-        combo_box_measure_effect_size
+        label_test_statistical_significance, combo_box_test_statistical_significance,
+        label_measure_bayes_factor, combo_box_measure_bayes_factor,
+        label_measure_effect_size, combo_box_measure_effect_size
     )
 
 # Table Settings

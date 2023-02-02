@@ -26,11 +26,6 @@ from wordless.wl_measures import wl_measures_dispersion
 # Euler-Mascheroni Constant
 C = -scipy.special.digamma(1)
 
-def to_freq_sections_items(main, items_search, items):
-    num_sub_sections = main.settings_custom['measures']['adjusted_freq']['general_settings']['num_sub_sections']
-
-    return wl_measures_dispersion._to_freq_sections_items(items_search, items, num_sub_sections)
-
 # Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 # Average Logarithmic Distance
 def fald(main, tokens, search_term):
