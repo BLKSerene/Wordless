@@ -32,6 +32,7 @@ from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layou
 
 _tr = QCoreApplication.translate
 
+# Files
 class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
@@ -137,6 +138,90 @@ class Wl_Settings_Files(wl_settings.Wl_Settings_Node):
 
         # Miscellaneous Settings
         self.settings_custom['misc_settings']['read_files_in_chunks'] = self.spin_box_read_files_in_chunks.value()
+
+        return True
+
+# Files - Tags
+class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['files']['tags']
+        self.settings_custom = self.main.settings_custom['files']['tags']
+
+        # Header Tag Settings
+        self.group_box_header_tag_settings = QGroupBox(self.tr('Header Tag Settings'), self)
+
+        self.table_tags_header = Wl_Table_Tags_Header(self)
+        self.label_tags_header_note = wl_labels.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
+
+        self.group_box_header_tag_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 5)
+        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_add, 1, 0)
+        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_ins, 1, 1)
+        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_del, 1, 2)
+        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_clr, 1, 3)
+        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_reset, 1, 4)
+        self.group_box_header_tag_settings.layout().addWidget(self.label_tags_header_note, 2, 0, 1, 5)
+
+        # Body Tag Settings
+        self.group_box_body_tag_settings = QGroupBox(self.tr('Body Tag Settings'), self)
+
+        self.table_tags_body = Wl_Table_Tags_Body(self)
+        self.label_tags_body_wildcard = wl_labels.Wl_Label_Hint(self.tr('* Use asterisk character (*) to indicate any number of characters'), self)
+
+        self.group_box_body_tag_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body, 0, 0, 1, 5)
+        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_add, 1, 0)
+        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_ins, 1, 1)
+        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_del, 1, 2)
+        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_clr, 1, 3)
+        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_reset, 1, 4)
+        self.group_box_body_tag_settings.layout().addWidget(self.label_tags_body_wildcard, 2, 0, 1, 5)
+
+        # XML Tag Settings
+        self.group_box_xml_tag_settings = QGroupBox(self.tr('XML Tag Settings'), self)
+
+        self.table_tags_xml = Wl_Table_Tags_Xml(self)
+
+        self.group_box_xml_tag_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml, 0, 0, 1, 5)
+        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_add, 1, 0)
+        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_ins, 1, 1)
+        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_del, 1, 2)
+        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_clr, 1, 3)
+        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_reset, 1, 4)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addWidget(self.group_box_header_tag_settings, 0, 0)
+        self.layout().addWidget(self.group_box_body_tag_settings, 1, 0)
+        self.layout().addWidget(self.group_box_xml_tag_settings, 2, 0)
+
+        self.layout().setContentsMargins(6, 4, 6, 4)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        self.table_tags_header.clr_table(0)
+        self.table_tags_body.clr_table(0)
+        self.table_tags_xml.clr_table(0)
+
+        for tag in settings['header_tag_settings']:
+            self.table_tags_header._add_row(texts = tag)
+
+        for tag in settings['body_tag_settings']:
+            self.table_tags_body._add_row(texts = tag)
+
+        for tag in settings['xml_tag_settings']:
+            self.table_tags_xml._add_row(texts = tag)
+
+    def apply_settings(self):
+        self.settings_custom['header_tag_settings'] = self.table_tags_header.get_tags()
+        self.settings_custom['body_tag_settings'] = self.table_tags_body.get_tags()
+        self.settings_custom['xml_tag_settings'] = self.table_tags_xml.get_tags()
 
         return True
 
@@ -414,86 +499,3 @@ class Wl_Table_Tags_Xml(Wl_Table_Tags):
                 return
 
         super().item_changed(item)
-
-class Wl_Settings_Files_Tags(wl_settings.Wl_Settings_Node):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.settings_default = self.main.settings_default['files']['tags']
-        self.settings_custom = self.main.settings_custom['files']['tags']
-
-        # Header Tag Settings
-        self.group_box_header_tag_settings = QGroupBox(self.tr('Header Tag Settings'), self)
-
-        self.table_tags_header = Wl_Table_Tags_Header(self)
-        self.label_tags_header_note = wl_labels.Wl_Label_Important(self.tr('Note: All contents surrounded by header tags will be discarded during text processing!'), self)
-
-        self.group_box_header_tag_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header, 0, 0, 1, 5)
-        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_add, 1, 0)
-        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_ins, 1, 1)
-        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_del, 1, 2)
-        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_clr, 1, 3)
-        self.group_box_header_tag_settings.layout().addWidget(self.table_tags_header.button_reset, 1, 4)
-        self.group_box_header_tag_settings.layout().addWidget(self.label_tags_header_note, 2, 0, 1, 5)
-
-        # Body Tag Settings
-        self.group_box_body_tag_settings = QGroupBox(self.tr('Body Tag Settings'), self)
-
-        self.table_tags_body = Wl_Table_Tags_Body(self)
-        self.label_tags_body_wildcard = wl_labels.Wl_Label_Hint(self.tr('* Use asterisk character (*) to indicate any number of characters'), self)
-
-        self.group_box_body_tag_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body, 0, 0, 1, 5)
-        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_add, 1, 0)
-        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_ins, 1, 1)
-        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_del, 1, 2)
-        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_clr, 1, 3)
-        self.group_box_body_tag_settings.layout().addWidget(self.table_tags_body.button_reset, 1, 4)
-        self.group_box_body_tag_settings.layout().addWidget(self.label_tags_body_wildcard, 2, 0, 1, 5)
-
-        # XML Tag Settings
-        self.group_box_xml_tag_settings = QGroupBox(self.tr('XML Tag Settings'), self)
-
-        self.table_tags_xml = Wl_Table_Tags_Xml(self)
-
-        self.group_box_xml_tag_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml, 0, 0, 1, 5)
-        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_add, 1, 0)
-        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_ins, 1, 1)
-        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_del, 1, 2)
-        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_clr, 1, 3)
-        self.group_box_xml_tag_settings.layout().addWidget(self.table_tags_xml.button_reset, 1, 4)
-
-        self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_header_tag_settings, 0, 0)
-        self.layout().addWidget(self.group_box_body_tag_settings, 1, 0)
-        self.layout().addWidget(self.group_box_xml_tag_settings, 2, 0)
-
-        self.layout().setContentsMargins(6, 4, 6, 4)
-
-    def load_settings(self, defaults = False):
-        if defaults:
-            settings = copy.deepcopy(self.settings_default)
-        else:
-            settings = copy.deepcopy(self.settings_custom)
-
-        self.table_tags_header.clr_table(0)
-        self.table_tags_body.clr_table(0)
-        self.table_tags_xml.clr_table(0)
-
-        for tag in settings['header_tag_settings']:
-            self.table_tags_header._add_row(texts = tag)
-
-        for tag in settings['body_tag_settings']:
-            self.table_tags_body._add_row(texts = tag)
-
-        for tag in settings['xml_tag_settings']:
-            self.table_tags_xml._add_row(texts = tag)
-
-    def apply_settings(self):
-        self.settings_custom['header_tag_settings'] = self.table_tags_header.get_tags()
-        self.settings_custom['body_tag_settings'] = self.table_tags_body.get_tags()
-        self.settings_custom['xml_tag_settings'] = self.table_tags_xml.get_tags()
-
-        return True

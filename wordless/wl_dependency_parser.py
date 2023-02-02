@@ -26,13 +26,13 @@ import numpy
 
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel, QPushButton
+from PyQt5.QtWidgets import QGroupBox, QPushButton
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_nlp_utils, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_threading
-from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
+from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
 
@@ -169,21 +169,20 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         # Figure Settings
         self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
 
-        self.checkbox_show_pos_tags = QCheckBox(self.tr('Show'), self)
-        self.combo_box_show_pos_tags = wl_boxes.Wl_Combo_Box(self)
-        self.label_show_pos_tags = QLabel(self.tr('part-of-speech tags'), self)
-        self.checkbox_show_lemmas = QCheckBox(self.tr('Show lemmas'), self)
-        self.checkbox_compact_mode = QCheckBox(self.tr('Compact mode'), self)
-        self.checkbox_show_in_separate_tab = QCheckBox(self.tr('Show each sentence in a separate tab'), self)
+        (
+            self.checkbox_show_pos_tags, self.combo_box_show_pos_tags, self.label_show_pos_tags,
+            self.checkbox_show_lemmas,
+            self.checkbox_collapse_punc_marks,
+            self.checkbox_compact_mode,
+            self.checkbox_show_in_separate_tab
+        ) = wl_widgets.wl_widgets_fig_settings_dependency_parsing(self)
 
-        self.combo_box_show_pos_tags.addItems([
-            self.tr('coarse-grained'),
-            self.tr('fine-grained')
-        ])
+        self.checkbox_collapse_punc_marks.hide()
 
         self.checkbox_show_pos_tags.stateChanged.connect(self.fig_settings_changed)
         self.combo_box_show_pos_tags.currentTextChanged.connect(self.fig_settings_changed)
         self.checkbox_show_lemmas.stateChanged.connect(self.fig_settings_changed)
+        self.checkbox_collapse_punc_marks.stateChanged.connect(self.fig_settings_changed)
         self.checkbox_compact_mode.stateChanged.connect(self.fig_settings_changed)
         self.checkbox_show_in_separate_tab.stateChanged.connect(self.fig_settings_changed)
 
@@ -192,8 +191,9 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.group_box_fig_settings.layout().addWidget(self.combo_box_show_pos_tags, 0, 1)
         self.group_box_fig_settings.layout().addWidget(self.label_show_pos_tags, 0, 2)
         self.group_box_fig_settings.layout().addWidget(self.checkbox_show_lemmas, 1, 0, 1, 4)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_compact_mode, 2, 0, 1, 4)
-        self.group_box_fig_settings.layout().addWidget(self.checkbox_show_in_separate_tab, 3, 0, 1, 4)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_collapse_punc_marks, 2, 0, 1, 4)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_compact_mode, 3, 0, 1, 4)
+        self.group_box_fig_settings.layout().addWidget(self.checkbox_show_in_separate_tab, 4, 0, 1, 4)
 
         self.group_box_fig_settings.layout().setColumnStretch(3, 1)
 
@@ -254,6 +254,8 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         self.table_settings_changed()
         self.fig_settings_changed()
 
+        self.checkbox_show_pos_tags.stateChanged.emit(self.checkbox_show_pos_tags.checkState())
+
     def token_settings_changed(self):
         settings = self.main.settings_custom['dependency_parser']['token_settings']
 
@@ -286,14 +288,6 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
     def fig_settings_changed(self):
         settings = self.main.settings_custom['dependency_parser']['fig_settings']
-
-        # Show part-of-speech tags
-        if self.checkbox_show_pos_tags.isChecked():
-            self.combo_box_show_pos_tags.setEnabled(True)
-            self.checkbox_show_lemmas.setEnabled(True)
-        else:
-            self.combo_box_show_pos_tags.setEnabled(False)
-            self.checkbox_show_lemmas.setEnabled(False)
 
         settings['show_pos_tags'] = self.checkbox_show_pos_tags.isChecked()
 
@@ -441,6 +435,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                         show_pos_tags = fig_settings['show_pos_tags'],
                         show_fine_grained_pos_tags = fig_settings['show_fine_grained_pos_tags'],
                         show_lemmas = fig_settings['show_pos_tags'] and fig_settings['show_lemmas'],
+                        # Let "Token Settings - Punctuation marks" to decide whether to collapse punctuation marks
                         collapse_punc_marks = False,
                         compact_mode = fig_settings['compact_mode'],
                         show_in_separate_tab = fig_settings['show_in_separate_tab'],
@@ -522,15 +517,15 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                     results.append([])
 
                                     # Sentence No.
-                                    no_sentence = bisect.bisect(offsets_sentences, j) - 1
+                                    no_sentence = bisect.bisect(offsets_sentences, j)
 
                                     # Sentence
-                                    if no_sentence == len_sentences - 1:
+                                    if no_sentence == len_sentences:
                                         offset_end = None
                                     else:
-                                        offset_end = offsets_sentences[no_sentence + 1]
+                                        offset_end = offsets_sentences[no_sentence]
 
-                                    sentence_display = text.tokens_flat_punc_marks_merged[offsets_sentences[no_sentence]:offset_end]
+                                    sentence_display = text.tokens_flat_punc_marks_merged[offsets_sentences[no_sentence - 1]:offset_end]
                                     sentence_display = wl_nlp_utils.escape_tokens(sentence_display)
                                     sentence_search = sentence
 
