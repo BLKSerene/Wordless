@@ -54,7 +54,7 @@ def test_word_detokenize(lang):
     elif lang == 'bod':
         assert text == 'བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་དེའི་ཉེ་འཁོར་གྱི་ས་ཁུལ་ཏེ།'
     else:
-        raise Exception(f'Error: Tests for language "{lang}" is skipped!')
+        raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 
 if __name__ == '__main__':
     for lang in LANGS_DETOKENIZATION:

@@ -18,34 +18,10 @@
 
 # pylint: disable=unused-argument
 
-import collections
-
 import numpy
 import scipy.stats
 
 from wordless.wl_measures import wl_measures_adjusted_freq
-from wordless.wl_nlp import wl_nlp_utils
-
-def _to_freq_sections_items(items_search, items, num_sub_sections):
-    freq_sections_items = {}
-
-    freq_items_sections = [
-        collections.Counter(section)
-        for section in wl_nlp_utils.to_sections(items, num_sub_sections)
-    ]
-
-    for item_search in items_search:
-        freq_sections_items[item_search] = [
-            freq_tokens.get(item_search, 0)
-            for freq_tokens in freq_items_sections
-        ]
-
-    return freq_sections_items
-
-def to_freq_sections_items(main, items_search, items):
-    num_sub_sections = main.settings_custom['measures']['dispersion']['general_settings']['num_sub_sections']
-
-    return _to_freq_sections_items(items_search, items, num_sub_sections)
 
 # Reference: Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. Journal of Quantitative Linguistics, 9(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 def _get_dists(tokens, search_term):
@@ -102,7 +78,7 @@ def carrolls_d2(main, freqs):
     if (freq_total := numpy.sum(freqs)) == 0:
         d2 = 0
     else:
-        h = numpy.sum(freqs * numpy.log(freqs, out = numpy.zeros_like(freqs, dtype = numpy.float64), where = (freqs != 0)))
+        h = numpy.sum(freqs * numpy.log(freqs, out = numpy.zeros_like(freqs, dtype = numpy.float64), where = freqs != 0))
         h = numpy.log(freq_total) - h / freq_total
         d2 = h / numpy.log(len(freqs))
 

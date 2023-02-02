@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=broad-exception-caught
+
 import collections
 import copy
 import traceback
@@ -28,7 +30,7 @@ from PyQt5.QtWidgets import QLabel, QPushButton, QGroupBox
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
-from wordless.wl_measures import wl_measures_adjusted_freq, wl_measures_dispersion
+from wordless.wl_measures import wl_measure_utils
 from wordless.wl_nlp import wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
@@ -80,14 +82,14 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 texts.append(text_total)
 
             # Dispersion & Adjusted Frequency
-            text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-            text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+            measure_dispersion = settings['generation_settings']['measure_dispersion']
+            measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-            measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['func']
-            measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['func']
+            func_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['func']
+            func_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['func']
 
-            type_measure_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['type']
-            type_measure_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['type']
+            type_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['type']
+            type_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['type']
 
             tokens_total = list(self.tokens_freq_files[-1].keys())
 
@@ -97,36 +99,42 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 tokens = text.get_tokens_flat()
 
                 # Dispersion
-                if measure_dispersion is None:
-                    tokens_stats_file = {token: [None] for token in tokens_total}
-                elif type_measure_dispersion == 'parts_based':
-                    freqs_sections_tokens = wl_measures_dispersion.to_freq_sections_items(
+                if measure_dispersion == 'none':
+                    tokens_stats_file = {
+                        token: [None]
+                        for token in tokens_total
+                    }
+                elif type_dispersion == 'parts_based':
+                    freqs_sections_tokens = wl_measure_utils.to_freqs_sections_dispersion(
                         self.main,
-                        items_search = tokens_total,
+                        items_to_search = tokens_total,
                         items = tokens
                     )
 
                     for token, freqs in freqs_sections_tokens.items():
-                        tokens_stats_file[token] = [measure_dispersion(self.main, freqs)]
-                elif type_measure_dispersion == 'dist_based':
+                        tokens_stats_file[token] = [func_dispersion(self.main, freqs)]
+                elif type_dispersion == 'dist_based':
                     for token in tokens_total:
-                        tokens_stats_file[token] = [measure_dispersion(self.main, tokens, token)]
+                        tokens_stats_file[token] = [func_dispersion(self.main, tokens, token)]
 
                 # Adjusted Frequency
-                if measure_adjusted_freq is None:
-                    tokens_stats_file = {token: stats + [None] for token, stats in tokens_stats_file.items()}
-                elif type_measure_adjusted_freq == 'parts_based':
-                    freqs_sections_tokens = wl_measures_adjusted_freq.to_freq_sections_items(
+                if measure_adjusted_freq == 'none':
+                    tokens_stats_file = {
+                        token: stats + [None]
+                        for token, stats in tokens_stats_file.items()
+                    }
+                elif type_adjusted_freq == 'parts_based':
+                    freqs_sections_tokens = wl_measure_utils.to_freqs_sections_adjusted_freq(
                         self.main,
-                        items_search = tokens_total,
+                        items_to_search = tokens_total,
                         items = tokens
                     )
 
                     for token, freqs in freqs_sections_tokens.items():
-                        tokens_stats_file[token].append(measure_adjusted_freq(self.main, freqs))
-                elif type_measure_adjusted_freq == 'dist_based':
+                        tokens_stats_file[token].append(func_adjusted_freq(self.main, freqs))
+                elif type_adjusted_freq == 'dist_based':
                     for token in tokens_total:
-                        tokens_stats_file[token].append(measure_adjusted_freq(self.main, tokens, token))
+                        tokens_stats_file[token].append(func_adjusted_freq(self.main, tokens, token))
 
                 self.tokens_stats_files.append(tokens_stats_file)
 
@@ -213,85 +221,64 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                 settings = self.main.settings_custom['wordlist_generator']
 
-                text_measure_dispersion = settings['generation_settings']['measure_dispersion']
-                text_measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+                measure_dispersion = settings['generation_settings']['measure_dispersion']
+                measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
 
-                text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
-                text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
+                col_text_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
+                col_text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
 
                 self.clr_table()
 
-                # Insert columns (files)
+                # Insert columns
                 files = list(self.main.wl_file_area.get_selected_files())
 
-                for file in files:
+                for file in files + [{'name': self.tr('Total')}]:
+                    if file['name'] == self.tr('Total'):
+                        is_breakdown = False
+                    else:
+                        is_breakdown = True
+
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        _tr('wl_wordlist_generator', '[{}]\nFrequency').format(file['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = True
+                        self.tr('[{}]\nFrequency').format(file['name']),
+                        is_int = True, is_cumulative = True, is_breakdown = is_breakdown
                     )
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
-                        _tr('wl_wordlist_generator', '[{}]\nFrequency %').format(file['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = True
+                        self.tr('[{}]\nFrequency %').format(file['name']),
+                        is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
                     )
 
-                    if text_dispersion is not None:
+                    if measure_dispersion != 'none':
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_dispersion}',
-                            is_float = True, is_breakdown = True
+                            f'[{file["name"]}]\n{col_text_dispersion}',
+                            is_float = True, is_breakdown = is_breakdown
                         )
 
-                    if text_adjusted_freq is not None:
+                    if measure_adjusted_freq != 'none':
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
-                            f'[{file["name"]}]\n{text_adjusted_freq}',
-                            is_float = True, is_breakdown = True
+                            f'[{file["name"]}]\n{col_text_adjusted_freq}',
+                            is_float = True, is_breakdown = is_breakdown
                         )
-
-                # Insert columns (total)
-                self.ins_header_hor(
-                    self.model().columnCount() - 2,
-                    _tr('wl_wordlist_generator', 'Total\nFrequency'),
-                    is_int = True, is_cumulative = True
-                )
-                self.ins_header_hor(
-                    self.model().columnCount() - 2,
-                    _tr('wl_wordlist_generator', 'Total\nFrequency %'),
-                    is_pct = True, is_cumulative = True
-                )
-
-                if text_dispersion is not None:
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        _tr('wl_wordlist_generator', 'Total\n') + text_dispersion,
-                        is_float = True
-                    )
-
-                if text_adjusted_freq is not None:
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        _tr('wl_wordlist_generator', 'Total\n') + text_adjusted_freq,
-                        is_float = True
-                    )
 
                 # Sort by frequency of the first file
                 self.horizontalHeader().setSortIndicator(
-                    self.find_header_hor(_tr('wl_wordlist_generator', '[{}]\nFrequency').format(files[0]['name'])),
+                    self.find_header_hor(self.tr('[{}]\nFrequency').format(files[0]['name'])),
                     Qt.DescendingOrder
                 )
 
-                cols_freq = self.find_headers_hor(_tr('wl_wordlist_generator', '\nFrequency'))
-                cols_freq_pct = self.find_headers_hor(_tr('wl_wordlist_generator', '\nFrequency %'))
+                cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
+                cols_freq_pct = self.find_headers_hor(self.tr('\nFrequency %'))
 
                 for col in cols_freq_pct:
                     cols_freq.remove(col)
 
-                cols_dispersion = self.find_headers_hor(f'\n{text_dispersion}')
-                cols_adjusted_freq = self.find_headers_hor(f'\n{text_adjusted_freq}')
-                col_files_found = self.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found'))
-                col_files_found_pct = self.find_header_hor(_tr('wl_wordlist_generator', 'Number of\nFiles Found %'))
+                cols_dispersion = self.find_headers_hor(f'\n{col_text_dispersion}')
+                cols_adjusted_freq = self.find_headers_hor(f'\n{col_text_adjusted_freq}')
+                col_files_found = self.find_header_hor(self.tr('Number of\nFiles Found'))
+                col_files_found_pct = self.find_header_hor(self.tr('Number of\nFiles Found %'))
 
                 freq_totals = numpy.array(list(tokens_freq_files.values())).sum(axis = 0)
                 len_files = len(files)
@@ -354,24 +341,24 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             try:
                 settings = self.main.settings_custom['wordlist_generator']
 
-                measure_dispersion = settings['generation_settings']['measure_dispersion']
-                measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
-
-                col_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
-                col_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
-
-                if settings['fig_settings']['use_data'] == _tr('wl_wordlist_generator', 'Frequency'):
+                if settings['fig_settings']['use_data'] == self.tr('Frequency'):
                     wl_figs_freqs.wl_fig_freqs(
                         self.main, tokens_freq_files,
                         tab = 'wordlist_generator'
                     )
                 else:
-                    if settings['fig_settings']['use_data'] == col_dispersion:
+                    measure_dispersion = settings['generation_settings']['measure_dispersion']
+                    measure_adjusted_freq = settings['generation_settings']['measure_adjusted_freq']
+
+                    col_text_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
+                    col_text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
+
+                    if settings['fig_settings']['use_data'] == col_text_dispersion:
                         tokens_stat_files = {
                             token: numpy.array(stats_files)[:, 0]
                             for token, stats_files in tokens_stats_files.items()
                         }
-                    elif settings['fig_settings']['use_data'] == col_adjusted_freq:
+                    elif settings['fig_settings']['use_data'] == col_text_adjusted_freq:
                         tokens_stat_files = {
                             token: numpy.array(stats_files)[:, 1]
                             for token, stats_files in tokens_stats_files.items()
@@ -599,8 +586,8 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Generation Settings
-        self.combo_box_measure_dispersion.setCurrentText(settings['generation_settings']['measure_dispersion'])
-        self.combo_box_measure_adjusted_freq.setCurrentText(settings['generation_settings']['measure_adjusted_freq'])
+        self.combo_box_measure_dispersion.set_measure(settings['generation_settings']['measure_dispersion'])
+        self.combo_box_measure_adjusted_freq.set_measure(settings['generation_settings']['measure_adjusted_freq'])
 
         # Table Settings
         self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
@@ -644,8 +631,8 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def generation_settings_changed(self):
         settings = self.main.settings_custom['wordlist_generator']['generation_settings']
 
-        settings['measure_dispersion'] = self.combo_box_measure_dispersion.currentText()
-        settings['measure_adjusted_freq'] = self.combo_box_measure_adjusted_freq.currentText()
+        settings['measure_dispersion'] = self.combo_box_measure_dispersion.get_measure()
+        settings['measure_adjusted_freq'] = self.combo_box_measure_adjusted_freq.get_measure()
 
         # Use Data
         self.combo_box_use_data.measures_changed()

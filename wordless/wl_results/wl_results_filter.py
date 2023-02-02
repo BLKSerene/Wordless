@@ -29,11 +29,11 @@ _tr = QCoreApplication.translate
 
 class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
     def run(self):
-        text_measure_dispersion = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_dispersion']
-        text_measure_adjusted_freq = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_adjusted_freq']
+        measure_dispersion = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_dispersion']
+        measure_adjusted_freq = self.dialog.table.settings[self.dialog.tab]['generation_settings']['measure_adjusted_freq']
 
-        text_dispersion = self.main.settings_global['measures_dispersion'][text_measure_dispersion]['col_text']
-        text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][text_measure_adjusted_freq]['col_text']
+        col_text_dispersion = self.main.settings_global['measures_dispersion'][measure_dispersion]['col_text']
+        col_text_adjusted_freq = self.main.settings_global['measures_adjusted_freq'][measure_adjusted_freq]['col_text']
 
         if self.dialog.tab == 'wordlist_generator':
             col_token = self.dialog.table.find_header_hor(self.tr('Token'))
@@ -45,20 +45,20 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
                 self.tr('Total\nFrequency')
             )
             col_dispersion = self.dialog.table.find_header_hor(
-                self.tr('Total\n') + text_dispersion
+                self.tr('Total\n') + col_text_dispersion
             )
             col_adjusted_freq = self.dialog.table.find_header_hor(
-                self.tr('Total\n') + text_adjusted_freq
+                self.tr('Total\n') + col_text_adjusted_freq
             )
         else:
             col_freq = self.dialog.table.find_header_hor(
                 self.tr('[{}]\nFrequency').format(self.dialog.settings['file_to_filter'])
             )
             col_dispersion = self.dialog.table.find_header_hor(
-                f"[{self.dialog.settings['file_to_filter']}]\n{text_dispersion}"
+                f"[{self.dialog.settings['file_to_filter']}]\n{col_text_dispersion}"
             )
             col_adjusted_freq = self.dialog.table.find_header_hor(
-                f"[{self.dialog.settings['file_to_filter']}]\n{text_adjusted_freq}"
+                f"[{self.dialog.settings['file_to_filter']}]\n{col_text_adjusted_freq}"
             )
 
         col_num_files_found = self.dialog.table.find_header_hor(self.tr('Number of\nFiles Found'))

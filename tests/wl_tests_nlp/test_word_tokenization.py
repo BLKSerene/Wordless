@@ -54,7 +54,7 @@ def test_word_tokenize(lang, word_tokenizer):
     # The count of tokens should be more than the length of tokens split by space
     assert len(tokens) > len(f'SENTENCE_{lang.upper()}'.split())
 
-    word_tokenizer_skipped = False
+    tests_lang_util_skipped = False
 
     if lang == 'afr':
         assert tokens == ['Afrikaans', 'is', 'tipologies', 'beskou', "'", 'n', 'Indo', '-', 'Europese', ',', 'Wes', '-', 'Germaanse', ',', 'Nederfrankiese', 'taal,[2', ']', 'wat', 'aan', 'die', 'suidpunt', 'van', 'Afrika', 'onder', 'invloed', 'van', 'verskeie', 'ander', 'tale', 'en', 'taalgroepe', 'ontstaan', 'het', '.']
@@ -78,7 +78,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_ben':
             assert tokens == ['বাংলা', 'ভাষা', '(', 'বাঙলা', ',', 'বাঙ্গলা', ',', 'তথা', 'বাঙ্গালা', 'নামেও', 'পরিচিত', ')', 'একটি', 'ইন্দো', '-', 'আর্য', 'ভাষা', ',', 'যা', 'দক্ষিণ', 'এশিয়ার', 'বাঙালি', 'জাতির', 'প্রধান', 'কথ্য', 'ও', 'লেখ্য', 'ভাষা', '।']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'bul':
         assert tokens == ['Бъ̀лгарският', 'езѝк', 'е', 'индоевропейски', 'език', 'от', 'групата', 'на', 'южнославянските', 'езици', '.']
     elif lang == 'cat':
@@ -87,7 +87,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_cat':
             assert tokens == ['El', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'les', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'la', 'ciutat', 'de', "l'", 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'd', 'el', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'a', 'l', 'País', 'Valencià', 'i', 'tradicional', 'a', 'l', 'Carxe', ')', 'és', 'una', 'llengua', 'romànica', 'parlada', 'a', 'Catalunya', ',', 'el', 'País', 'Valencià', '(', 'tret', "d'", 'algunes', 'comarques', 'i', 'localitats', 'de', "l'", 'interior', ')', ',', 'les', 'Illes', 'Balears', ',', 'Andorra', ',', 'la', 'Franja', 'de', 'Ponent', '(', 'a', "l'", 'Aragó', ')', ',', 'la', 'ciutat', 'de', "l'", 'Alguer', '(', 'a', "l'", 'illa', 'de', 'Sardenya', ')', ',', 'la', 'Catalunya', 'd', 'el', 'Nord,[8', ']', 'el', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'poblat', 'per', 'pobladors', 'valencians),[9][10', ']', 'i', 'en', 'comunitats', 'arreu', 'd', 'el', 'món', '(', 'entre', 'les', 'quals', 'destaca', 'la', 'de', "l'", 'Argentina', ',', 'amb', '200.000', 'parlants).[11', ']']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'zho_cn':
         if word_tokenizer == 'jieba_zho':
             assert tokens == ['汉语', '又称', '华语', '[', '3', ']', '、', '唐话', '[', '4', ']', '，', '概指', '由', '上', '古汉语', '（', '先秦', '雅言', '）', '发展', '而', '来', '、', '书面', '使用', '汉字', '的', '分析语', '，', '为', '汉藏语系', '最大', '的', '一支', '语族', '。']
@@ -98,7 +98,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'wordless_zho_char':
             assert tokens == ['汉', '语', '又', '称', '华', '语', '[', '3', ']', '、', '唐', '话', '[', '4', ']', '，', '概', '指', '由', '上', '古', '汉', '语', '（', '先', '秦', '雅', '言', '）', '发', '展', '而', '来', '、', '书', '面', '使', '用', '汉', '字', '的', '分', '析', '语', '，', '为', '汉', '藏', '语', '系', '最', '大', '的', '一', '支', '语', '族', '。']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'zho_tw':
         if word_tokenizer == 'jieba_zho':
             assert tokens == ['漢語', '又', '稱華語', '[', '3', ']', '、', '唐話', '[', '4', ']', '，', '概指', '由', '上古', '漢語', '（', '先秦', '雅言', '）', '發展', '而', '來', '、', '書面', '使用', '漢字', '的', '分析', '語', '，', '為漢藏', '語系', '最大', '的', '一支', '語族', '。']
@@ -109,7 +109,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'wordless_zho_char':
             assert tokens == ['漢', '語', '又', '稱', '華', '語', '[', '3', ']', '、', '唐', '話', '[', '4', ']', '，', '概', '指', '由', '上', '古', '漢', '語', '（', '先', '秦', '雅', '言', '）', '發', '展', '而', '來', '、', '書', '面', '使', '用', '漢', '字', '的', '分', '析', '語', '，', '為', '漢', '藏', '語', '系', '最', '大', '的', '一', '支', '語', '族', '。']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'hrv':
         assert tokens == ['Hrvatski', 'jezik', '(', 'ISO', '639', '-', '3', ':', 'hrv', 'Inačica', 'izvorne', 'stranice', 'arhivirana', '18', '.', 'rujna', '2012', '.', ')', 'skupni', 'je', 'naziv', 'za', 'nacionalni', 'standardni', 'jezik', 'Hrvata', ',', 'te', 'za', 'skup', 'narječja', 'i', 'govora', 'kojima', 'govore', 'ili', 'su', 'nekada', 'govorili', 'Hrvati', '.']
     elif lang == 'ces':
@@ -132,7 +132,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_eng':
             assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'of', 'the', 'Indo', '-', 'European', 'language', 'family', ',', 'originally', 'spoken', 'by', 'the', 'inhabitants', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'est':
         assert tokens == ['Eesti', 'keel', '(', 'varasem', 'nimetus', 'maakeel', ')', 'on', 'läänemeresoome', 'lõunarühma', 'kuuluv', 'keel', '.']
     elif lang == 'fin':
@@ -149,7 +149,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_deu':
             assert tokens == ['Die', 'deutsche', 'Sprache', 'bzw.', 'Deutsch', '(', '[', 'dɔɪ̯tʃ];[26', ']', 'abgekürzt', 'dt', '.', 'oder', 'dtsch', '.', ')', 'ist', 'eine', 'westgermanische', 'Sprache', ',', 'die', 'weltweit', 'etwa', '90', 'bis', '105', 'Millionen', 'Menschen', 'als', 'Muttersprache', 'und', 'weiteren', 'rund', '80', 'Millionen', 'als', 'Zweit-', 'oder', 'Fremdsprache', 'dient', '.']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'grc':
         assert tokens == ['Ὅτι', 'μὲν', 'ὑμεῖς', ',', 'ὦ', 'ἄνδρες', 'Ἀθηναῖοι', ',', 'πεπόνθατε', 'ὑπὸ', 'τῶν', 'ἐμῶν', 'κατηγόρων', ',', 'οὐκ', 'οἶδα', '·', 'ἐγὼ', "δ'", 'οὖν', 'καὶ', 'αὐτὸς', "ὑπ'", 'αὐτῶν', 'ὀλίγου', 'ἐμαυτοῦ', 'ἐπελαθόμην', ',', 'οὕτω', 'πιθανῶς', 'ἔλεγον', '.']
     elif lang == 'ell':
@@ -158,14 +158,14 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_ell':
             assert tokens == ['Η', 'ελληνική', 'γλώσσα', 'ανήκει', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια[9', ']', 'και', 'αποτελεί', 'το', 'μοναδικό', 'μέλος', 'του', 'ελληνικού', 'κλάδου', ',', 'ενώ', 'είναι', 'η', 'επίσημη', 'γλώσσα', 'της', 'Ελλάδας', 'και', 'της', 'Κύπρου', '.']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'guj':
         if word_tokenizer == 'sacremoses_moses':
             assert tokens == ['ગુજરાતી', '\u200d', '(', '/', 'ɡʊdʒəˈrɑːti', '/', '[', '૭', ']', ',', 'રોમન', 'લિપિમાં', ':', 'Gujarātī', ',', 'ઉચ્ચાર', ':', '[', 'ɡudʒəˈɾɑːtiː', ']', ')', 'ભારત', 'દેશના', 'ગુજરાત', 'રાજ્યની', 'ઇન્ડો-આર્યન', 'ભાષા', 'છે', ',', 'અને', 'મુખ્યત્વે', 'ગુજરાતી', 'લોકો', 'દ્વારા', 'બોલાય', 'છે', '.']
         elif word_tokenizer == 'spacy_guj':
             assert tokens == ['ગુજરાતી', '\u200d(/ɡʊdʒəˈrɑːti/[૭', ']', ',', 'રોમન', 'લિપિમાં', ':', 'Gujarātī', ',', 'ઉચ્ચાર', ':', '[', 'ɡudʒəˈɾɑːtiː', ']', ')', 'ભારત', 'દેશના', 'ગુજરાત', 'રાજ્યની', 'ઇન્ડો-આર્યન', 'ભાષા', 'છે', ',', 'અને', 'મુખ્યત્વે', 'ગુજરાતી', 'લોકો', 'દ્વારા', 'બોલાય', 'છે.']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'heb':
         assert tokens == ['עִבְרִית', '(', 'נקראת', 'גם', 'בשם', ':', 'עברית', 'מודרנית', ')', 'היא', 'שפה', 'שמית', ',', 'ממשפחת', 'השפות', 'האפרו', '-', 'אסיאתיות', ',', 'הידועה', 'כשפתם', 'של', 'היהודים', 'ושל', 'השומרונים', '.']
     elif lang == 'hin':
@@ -178,7 +178,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_isl':
             assert tokens == ['Íslenska', 'er', 'vesturnorrænt', ',', 'germanskt', 'og', 'indóevrópskt', 'tungumál', 'sem', 'er', 'einkum', 'talað', 'og', 'ritað', 'á', 'Íslandi', 'og', 'er', 'móðurmál', 'langflestra', 'Íslendinga.[4', ']']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'ind':
         assert tokens == ['Bahasa', 'Indonesia', 'adalah', 'bahasa', 'nasional', 'dan', 'resmi', 'di', 'seluruh', 'Indonesia', '.']
     elif lang == 'gle':
@@ -189,7 +189,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_ita':
             assert tokens == ["L'", 'italiano', '(', '[', 'itaˈljaːno][Nota', '1', ']', 'ascolta[?·info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'jpn':
         if word_tokenizer in [
             'spacy_jpn',
@@ -204,7 +204,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'wordless_jpn_kanji':
             assert tokens == ['日', '本', '語', '（', 'にほんご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', '）', 'は', '、', '日', '本', '国', '内', 'や', '、', 'かつて', 'の', '日', '本', '領', 'だっ', 'た', '国', '、', 'そして', '日', '本', '人', '同', '士', 'の', '間', 'で', '使', '用', 'さ', 'れ', 'て', 'いる', '言', '語', '。']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'kan':
         assert tokens == ['ದ್ರಾವಿಡ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಪ್ರಾಮುಖ್ಯವುಳ್ಳ', 'ಭಾಷೆಯೂ', 'ಭಾರತದ', 'ಪುರಾತನವಾದ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಒಂದೂ', 'ಆಗಿರುವ', 'ಕನ್ನಡ', 'ಭಾಷೆಯನ್ನು', 'ಅದರ', 'ವಿವಿಧ', 'ರೂಪಗಳಲ್ಲಿ', 'ಸುಮಾರು', '೪೫', 'ದಶಲಕ್ಷ', 'ಜನರು', 'ಆಡು', 'ನುಡಿಯಾಗಿ', 'ಬಳಸುತ್ತಲಿದ್ದಾರೆ', '.']
     elif lang == 'kir':
@@ -217,7 +217,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_lav':
             assert tokens == ['Latviešu', 'valoda', 'ir', 'dzimtā', 'valoda', 'apmēram', '1,7', 'miljoniem', 'cilvēku', ',', 'galvenokārt', 'Latvijā', ',', 'kur', 'tā', 'ir', 'vienīgā', 'valsts', 'valoda.[3', ']']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'lij':
         assert tokens == ['O', 'Lìgure', '(', 'in', 'monegasco', ':', 'lenga', 'ligüra', 'e', 'lenga', 'lìgura', ')', 'o', "l'", 'é', "'", 'na', 'lengoa[1', ']', 'do', 'gruppo', 'lengoìstego', 'itàlico', 'oçidentâ', 'parlâ', 'in', 'Italia', '(', 'Liguria', ',', 'Piemonte', ',', 'Emilia', '-', 'Romagna', 'e', 'Sardegna', ')', ',', 'into', 'sud', 'da', 'Fransa', ',', 'in', 'Còrsega', ',', 'e', 'into', 'Prinçipato', 'de', 'Monego', '.']
     elif lang == 'lit':
@@ -232,14 +232,14 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_mal':
             assert tokens == ['ഇന്ത്യയിൽ', 'കേരള', 'സംസ്ഥാനത്തിലും', 'കേന്ദ്രഭരണപ്രദേശങ്ങളായ', 'ലക്ഷദ്വീപിലും', 'പുതുച്ചേരിയുടെ', 'ഭാഗമായ', 'മയ്യഴിയിലും', 'തമിഴ്നാട്ടിലെ', 'കന്യാകുമാരി', 'ജില്ലയിലും', 'നീലഗിരി', 'ജില്ലയിലെ', 'ഗൂഡല്ലൂർ', 'താലൂക്കിലും', 'സംസാരിക്കപ്പെടുന്ന', 'ഭാഷയാണ്', 'മലയാളം.']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'mar':
         if word_tokenizer == 'sacremoses_moses':
             assert tokens == ['मराठी', 'भाषा', 'ही', 'इंडो-युरोपीय', 'भाषाकुळातील', 'एक', 'भाषा', 'आहे', '.']
         elif word_tokenizer == 'spacy_mar':
             assert tokens == ['मराठी', 'भाषा', 'ही', 'इंडो', '-', 'युरोपीय', 'भाषाकुळातील', 'एक', 'भाषा', 'आहे', '.']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'mni':
         assert tokens == ['ꯃꯤꯇꯩꯂꯣꯟ', 'ꯍꯥꯏꯕꯁꯤ', 'ꯏꯟꯗꯤꯌꯥ', 'ꯑꯋꯥꯡ-ꯅꯣꯡꯄꯣꯛꯇ', 'ꯂꯩꯕ', 'ꯃꯅꯤꯄꯨꯔꯗ', 'ꯃꯔꯨꯑꯣꯏꯅ', 'ꯉꯥꯡꯅꯕ', 'ꯇꯤꯕꯦꯇꯣ-ꯕꯔꯃꯟ', 'ꯀꯥꯡꯂꯨꯞꯇ', 'ꯆꯤꯡꯕ', 'ꯂꯣꯟ', 'ꯑꯃꯅꯤ', '꯫', 'ꯚꯥꯔꯠ', 'ꯂꯩꯉꯥꯛꯅꯥ', 'ꯁꯛꯈꯪꯂꯕ', 'ꯂꯣꯟ', '꯲꯲', 'ꯁꯤꯡꯒꯤ', 'ꯃꯅꯨꯡꯗ', 'ꯃꯤꯇꯩꯂꯣꯟꯁꯤꯁꯨ', 'ꯑꯃꯅꯤ', '꯫', 'ꯃꯤꯇꯩꯂꯣꯟ', 'ꯑꯁꯤ', 'ꯏꯟꯗꯤꯌꯥꯒꯤ', 'ꯁ', '꯭', 'ꯇꯦꯠ', 'ꯑꯣꯏꯔꯤꯕ', 'ꯑꯁꯥꯝ', 'ꯑꯃꯁꯨꯡ', 'ꯇ', '꯭', 'ꯔꯤꯄꯨꯔꯥ', 'ꯑꯃꯗꯤ', 'ꯑꯇꯩ', 'ꯂꯩꯕꯥꯛꯁꯤꯡꯗ', 'ꯍꯥꯏꯕꯗꯤ', 'ꯕꯥꯡꯂꯥꯗꯦꯁ', 'ꯑꯃꯁꯨꯡ', 'ꯑꯋꯥꯗꯁꯨ', 'ꯉꯥꯡꯅꯩ', '꯫', 'ꯏꯪ', 'ꯀꯨꯝꯖ', '꯲꯰꯱꯱', 'ꯒꯤ', 'ꯃꯤꯀꯣꯛ', 'ꯊꯤꯕꯗ', 'ꯃꯤꯇꯩꯂꯣꯟꯕꯨ', 'ꯏꯃꯥꯂꯣꯟ', 'ꯑꯣꯢꯅ', 'ꯉꯥꯡꯕꯒꯤ', 'ꯃꯤꯁꯤꯡ', 'ꯂꯤꯆꯥ', '꯱꯸', 'ꯃꯨꯛ', 'ꯁꯨꯢ', '꯫']
     elif lang == 'nep':
@@ -266,7 +266,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'spacy_rus':
             assert tokens == ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'Информация', 'о', 'файле', 'слушать)[~', '3', ']', '[', '⇨', ']', '—', 'один', 'из', 'восточнославянских', 'языков', ',', 'национальный', 'язык', 'русского', 'народа', '.']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'san':
         assert tokens == ['संस्कृतम्', 'जगतः', 'एकतमा', 'अतिप्राचीना', 'समृद्धा', 'शास्त्रीया', 'च', 'भाषासु', 'वर्तते', '।']
     elif lang == 'srp_cyrl':
@@ -310,7 +310,7 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'pythainlp_nercut':
             assert tokens == ['ภาษาไทย', 'หรือ', 'ภาษาไทย', 'กลาง', 'เป็น', 'ภาษา', 'ใน', 'กลุ่ม', 'ภาษา', 'ไท', 'ซึ่ง', 'เป็น', 'กลุ่มย่อย', 'ของ', 'ตระกูลภาษาขร้า', '-', 'ไท', 'และ', 'เป็น', 'ภาษาราชการ', 'และ', 'ภาษาประจำชาติ', 'ของ', 'ประเทศ', 'ไทย', '[', '3][4]']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'bod':
         assert tokens == ['བོད་', 'ཀྱི་', 'སྐད་ཡིག་', 'ནི་', 'བོད་ཡུལ་', 'དང་', 'དེ', 'འི་', 'ཉེ་འཁོར་', 'གྱི་', 'ས་ཁུལ་', 'ཏེ', '།']
     elif lang == 'tir':
@@ -329,14 +329,14 @@ def test_word_tokenize(lang, word_tokenizer):
         elif word_tokenizer == 'underthesea_vie':
             assert tokens == ['Tiếng', 'Việt', ',', 'cũng', 'gọi là', 'tiếng', 'Việt Nam', '[', '9 ]', 'hay', 'Việt ngữ', 'là', 'ngôn ngữ', 'của', 'người', 'Việt', 'và', 'là', 'ngôn ngữ', 'chính thức', 'tại', 'Việt Nam', '.']
         else:
-            word_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'yor':
         assert tokens == ['Èdè', 'Yorùbá', 'Ni', 'èdè', 'tí', 'ó', 'ṣàkójọ', 'pọ̀', 'gbogbo', 'kú', 'oótu', 'o', '-', 'ò', '-', 'jíire', 'bí', ',', 'níapá', 'ìwọ̀', 'Oòrùn', 'ilẹ̀', 'Nàìjíríà', ',', 'tí', 'a', 'bá', 'wo', 'èdè', 'Yorùbá', ',', 'àwọn', 'onímọ̀', 'pín', 'èdè', 'náà', 'sábẹ́', 'ẹ̀yà', 'Kwa', 'nínú', 'ẹbí', 'èdè', 'Niger', '-', 'Congo', '.']
     else:
-        raise Exception(f'Error: Tests for language "{lang}" is skipped!')
+        raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 
-    if word_tokenizer_skipped:
-        raise Exception(f'Error: Tests for word tokenizer "{word_tokenizer}" is skipped!')
+    if tests_lang_util_skipped:
+        raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(word_tokenizer)
 
 if __name__ == '__main__':
     for lang, word_tokenizer in test_word_tokenizers:

@@ -25,7 +25,7 @@ import requests
 url_chapters = {}
 url_domain = 'https://ja.wikisource.org'
 
-r = requests.get(f'{url_domain}/wiki/%E6%BA%90%E6%B0%8F%E7%89%A9%E8%AA%9E_(%E6%B8%8B%E8%B0%B7%E6%A0%84%E4%B8%80%E6%A0%A1%E8%A8%82)')
+r = requests.get(f'{url_domain}/wiki/%E6%BA%90%E6%B0%8F%E7%89%A9%E8%AA%9E_(%E6%B8%8B%E8%B0%B7%E6%A0%84%E4%B8%80%E6%A0%A1%E8%A8%82)', timeout = 10)
 soup = bs4.BeautifulSoup(r.text, features = 'lxml')
 
 for element_li in soup.select('.mw-parser-output > ul li'):
@@ -35,7 +35,7 @@ with open('源氏物語.txt', 'w', encoding = 'utf_8') as f:
     for title, url in url_chapters.items():
         print(f'Downloading chapter {title}...')
 
-        r = requests.get(url)
+        r = requests.get(url, timeout = 10)
 
         if r.status_code == 200:
             soup = bs4.BeautifulSoup(r.text, features = 'lxml')
@@ -43,7 +43,7 @@ with open('源氏物語.txt', 'w', encoding = 'utf_8') as f:
             for element_p in soup.select('.mw-parser-output > p'):
                 f.write(element_p.text + '\n')
         else:
-            raise Exception(f'HTTP Error: {r.status_code}!')
+            raise requests.HTTPError(f'{r.status_code}!')
 
 # Clean text
 with open('源氏物語.txt', 'r', encoding = 'utf_8') as f:

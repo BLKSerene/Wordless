@@ -139,6 +139,9 @@ def check_results(main, err_msg, results):
 
     if err_msg:
         results_ok = False
+
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        wl_status_bar_msg_err_fatal(main)
     elif not any(results):
         results_ok = False
 

@@ -21,18 +21,6 @@ from wordless.wl_measures import wl_measures_bayes_factor
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_to_freq_sections_items():
-    items_search = ['w1', 'w2']
-    items_x1 = ['w1'] * 7 + ['w2'] * 3
-    items_x2 = ['w1'] * 6 + ['w2'] * 4
-
-    freq_sections_items = {
-        'w1': ([1, 1, 1, .5, 0], [1, 1, 1, 0, 0]),
-        'w2': ([0, 0, 0, .5, 1], [0, 0, 0, 1, 1])
-    }
-
-    assert wl_measures_bayes_factor.to_freq_sections_items(main, items_search, items_x1, items_x2, measure_bayes_factor = "Student's t-test (2-sample)") == freq_sections_items
-
 def test_bayes_factor_log_likelihood_ratio_test():
     assert wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test(main, 0, 0, 0, 0) == 0
 
@@ -40,7 +28,5 @@ def test_bayes_factor_students_t_test_2_sample():
     assert wl_measures_bayes_factor.bayes_factor_students_t_test_2_sample(main, [0] * 5, [0] * 5) == 0
 
 if __name__ == '__main__':
-    test_to_freq_sections_items()
-
     test_bayes_factor_log_likelihood_ratio_test()
     test_bayes_factor_students_t_test_2_sample()

@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=broad-exception-caught
+
 import collections
 import copy
 import traceback
@@ -584,12 +586,12 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 count_sentences_lens = []
                 count_sentence_segs_lens = []
 
-                # Insert column (total)
+                # Insert columns
                 files = list(self.main.wl_file_area.get_selected_files())
 
                 for i, file in enumerate(files):
                     self.ins_header_hor(
-                        self.find_header_hor(_tr('wl_profiler', 'Total')), file['name'],
+                        self.find_header_hor(self.tr('Total')), file['name'],
                         is_breakdown = True
                     )
 
@@ -640,9 +642,9 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     # Readability
                     for j, statistic in enumerate(readability_stats):
                         if statistic == 'no_support':
-                            self.set_item_error(j, i, _tr('wl_profiler', 'No Support'))
+                            self.set_item_error(j, i, self.tr('No support'))
                         elif statistic == 'text_too_short':
-                            self.set_item_error(j, i, _tr('wl_profiler', 'Text is Too Short'))
+                            self.set_item_error(j, i, self.tr('Text is too short'))
                         else:
                             self.set_item_num(j, i, statistic)
 
@@ -671,8 +673,8 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                         self.set_item_num(len_readability_stats + 10, i, count_syls)
                         self.set_item_num(len_readability_stats + 11, i, count_syls, count_syls_total)
                     else:
-                        self.set_item_error(len_readability_stats + 10, i, text = _tr('wl_profiler', 'No Support'))
-                        self.set_item_error(len_readability_stats + 11, i, text = _tr('wl_profiler', 'No Support'))
+                        self.set_item_error(len_readability_stats + 10, i, text = self.tr('No support'))
+                        self.set_item_error(len_readability_stats + 11, i, text = self.tr('No support'))
 
                     # Count of Characters
                     self.set_item_num(len_readability_stats + 12, i, count_chars)
@@ -766,17 +768,17 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 
                             self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
-                            self.set_item_error(row, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 1, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 2, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 3, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 4, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 5, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 6, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 7, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 8, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 9, i, text = _tr('wl_profiler', 'No Support'))
-                            self.set_item_error(row + 10, i, text = _tr('wl_profiler', 'No Support'))
+                            self.set_item_error(row, i, text = self.tr('No support'))
+                            self.set_item_error(row + 1, i, text = self.tr('No support'))
+                            self.set_item_error(row + 2, i, text = self.tr('No support'))
+                            self.set_item_error(row + 3, i, text = self.tr('No support'))
+                            self.set_item_error(row + 4, i, text = self.tr('No support'))
+                            self.set_item_error(row + 5, i, text = self.tr('No support'))
+                            self.set_item_error(row + 6, i, text = self.tr('No support'))
+                            self.set_item_error(row + 7, i, text = self.tr('No support'))
+                            self.set_item_error(row + 8, i, text = self.tr('No support'))
+                            self.set_item_error(row + 9, i, text = self.tr('No support'))
+                            self.set_item_error(row + 10, i, text = self.tr('No support'))
 
                     count_tokens_lens.append(collections.Counter(len_tokens_chars))
                     count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
@@ -794,11 +796,11 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     # Append vertical headers
                     for count_sentences_len in count_sentences_lens:
                         self.add_header_vert(
-                            _tr('wl_profiler', 'Count of {}-length Sentences').format(count_sentences_len),
+                            self.tr('Count of {}-length Sentences').format(count_sentences_len),
                             is_int = True, is_cumulative = True
                         )
                         self.add_header_vert(
-                            _tr('wl_profiler', 'Count of {}-length Sentences %').format(count_sentences_len),
+                            self.tr('Count of {}-length Sentences %').format(count_sentences_len),
                             is_pct = True, is_cumulative = True
                         )
 
@@ -830,11 +832,11 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     # Append vertical headers
                     for count_sentence_segs_len in count_sentence_segs_lens:
                         self.add_header_vert(
-                            _tr('wl_profiler', 'Count of {}-length Sentence Segment').format(count_sentence_segs_len),
+                            self.tr('Count of {}-length Sentence Segment').format(count_sentence_segs_len),
                             is_int = True, is_cumulative = True
                         )
                         self.add_header_vert(
-                            _tr('wl_profiler', 'Count of {}-length Sentence Segment %').format(count_sentence_segs_len),
+                            self.tr('Count of {}-length Sentence Segment %').format(count_sentence_segs_len),
                             is_pct = True, is_cumulative = True
                         )
 
@@ -866,11 +868,11 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     # Append vertical headers
                     for count_tokens_len in count_tokens_lens:
                         self.add_header_vert(
-                            _tr('wl_profiler', 'Count of {}-Length Tokens').format(count_tokens_len),
+                            self.tr('Count of {}-Length Tokens').format(count_tokens_len),
                             is_int = True, is_cumulative = True
                         )
                         self.add_header_vert(
-                            _tr('wl_profiler', 'Count of {}-Length Tokens %').format(count_tokens_len),
+                            self.tr('Count of {}-Length Tokens %').format(count_tokens_len),
                             is_pct = True, is_cumulative = True
                         )
 

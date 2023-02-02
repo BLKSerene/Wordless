@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=broad-exception-caught
+
 import copy
 import csv
 import os
@@ -708,7 +710,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             for row in range(self.model().rowCount()):
                 file = self.model().item(row, 0).wl_file
 
-                file['selected'] = (self.model().item(row, 0).checkState() == Qt.Checked)
+                file['selected'] = self.model().item(row, 0).checkState() == Qt.Checked
                 file['name'] = file['name_old'] = self.model().item(row, 0).text()
                 file['encoding'] = wl_conversion.to_encoding_code(self.main, self.model().item(row, 2).text())
                 file['lang'] = wl_conversion.to_lang_code(self.main, self.model().item(row, 3).text())

@@ -21,19 +21,6 @@ from wordless.wl_measures import wl_measures_dispersion
 
 main = wl_test_init.Wl_Test_Main()
 
-ITEMS_TO_SEARCH = ['w1', 'w2']
-ITEMS = ['w1'] * 7 + ['w2'] * 3
-FREQ_SECTIONS_ITEMS = {
-    'w1': [2, 2, 2, 1, 0],
-    'w2': [0, 0, 0, 1, 2]
-}
-
-def test__to_freq_sections_items():
-    assert wl_measures_dispersion._to_freq_sections_items(ITEMS_TO_SEARCH, ITEMS, 5) == FREQ_SECTIONS_ITEMS
-
-def test_to_freq_sections_items():
-    assert wl_measures_dispersion.to_freq_sections_items(main, ITEMS_TO_SEARCH, ITEMS) == FREQ_SECTIONS_ITEMS
-
 # Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (pp. 406, 410)
 TOKENS = 'b a m n i b e u p k | b a s a t b e w q n | b c a g a b e s t a | b a g h a b e a a t | b a h a a b e a x a'.replace('|', '').split()
 DISTS = [2, 10, 2, 9, 2, 5, 2, 3, 3, 1, 3, 2, 1, 3, 2]
@@ -94,9 +81,6 @@ def test_zhangs_distributional_consistency():
     assert wl_measures_dispersion.zhangs_distributional_consistency(main, [0, 0, 0, 0]) == 0
 
 if __name__ == '__main__':
-    test__to_freq_sections_items()
-    test_to_freq_sections_items()
-
     test__get_dists()
     test_ald()
     test_arf()

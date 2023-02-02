@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=broad-exception-caught
+
 import bisect
 import copy
 import traceback
@@ -601,34 +603,34 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 points = numpy.array(points)
                 settings = self.main.settings_custom['concordancer']
 
-                if settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'File'):
+                if settings['fig_settings']['sort_results_by'] == self.tr('File'):
                     matplotlib.pyplot.plot(
                         points[:, 0],
                         points[:, 1],
                         'b|'
                     )
 
-                    matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'Search Term'))
+                    matplotlib.pyplot.xlabel(self.tr('Search Term'))
                     matplotlib.pyplot.xticks(x_ticks, x_tick_labels, color = 'r', rotation = 90)
 
-                    matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'File'))
+                    matplotlib.pyplot.ylabel(self.tr('File'))
                     matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
                     matplotlib.pyplot.ylim(-1, y_max)
-                elif settings['fig_settings']['sort_results_by'] == _tr('wl_concordancer', 'Search Term'):
+                elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
                     matplotlib.pyplot.plot(
                         points[:, 0],
                         points[:, 1],
                         'b|'
                     )
 
-                    matplotlib.pyplot.xlabel(_tr('wl_concordancer', 'File'))
+                    matplotlib.pyplot.xlabel(self.tr('File'))
                     matplotlib.pyplot.xticks(x_ticks, x_tick_labels, rotation = 90)
 
-                    matplotlib.pyplot.ylabel(_tr('wl_concordancer', 'Search Term'))
+                    matplotlib.pyplot.ylabel(self.tr('Search Term'))
                     matplotlib.pyplot.yticks(y_ticks, y_tick_labels, color = 'r')
                     matplotlib.pyplot.ylim(-1, y_max)
 
-                matplotlib.pyplot.title(_tr('wl_concordancer', 'Dispersion Plot'))
+                matplotlib.pyplot.title(self.tr('Dispersion Plot'))
                 matplotlib.pyplot.grid(True, which = 'major', axis = 'x', linestyle = 'dotted')
 
                 # Hide the progress dialog early so that the main window will not obscure the generated figure

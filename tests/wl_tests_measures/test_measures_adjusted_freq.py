@@ -22,13 +22,6 @@ from wordless.wl_measures import wl_measures_adjusted_freq
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_to_freq_sections_items():
-    assert wl_measures_adjusted_freq.to_freq_sections_items(
-        main,
-        test_measures_dispersion.ITEMS_TO_SEARCH,
-        test_measures_dispersion.ITEMS
-    ) == test_measures_dispersion.FREQ_SECTIONS_ITEMS
-
 # Reference: Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. International Journal of Corpus Linguistics, 13(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri (p. 410)
 def test_fald():
     assert round(wl_measures_adjusted_freq.fald(main, test_measures_dispersion.TOKENS, 'a'), 3) == 11.764
@@ -86,8 +79,6 @@ def test_kromers_ur():
     assert wl_measures_adjusted_freq.kromers_ur(main, [0, 0, 0, 0, 0]) == 0
 
 if __name__ == '__main__':
-    test_to_freq_sections_items()
-
     test_fald()
     test_farf()
     test_fawt()

@@ -18,13 +18,9 @@
 
 # pylint: disable=unused-variable, unused-argument
 
-import collections
-
 import numpy
 from PyQt5.QtCore import QCoreApplication
 import scipy.stats
-
-from wordless.wl_nlp import wl_nlp_utils
 
 _tr = QCoreApplication.translate
 
@@ -63,58 +59,6 @@ def yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22):
     c22 = c22 + min(0.5, numpy.abs(e22 - c22)) if e22 > c22 else c22 - min(0.5, numpy.abs(e22 - c22))
 
     return c11, c12, c21, c22
-
-def _to_freq_sections_items(items_search, items_x1, items_x2, num_sub_sections, use_data):
-    freq_sections_items = {}
-
-    sections_x1 = wl_nlp_utils.to_sections(items_x1, num_sub_sections)
-    sections_x2 = wl_nlp_utils.to_sections(items_x2, num_sub_sections)
-
-    freq_items_sections_x1 = [collections.Counter(section) for section in sections_x1]
-    freq_items_sections_x2 = [collections.Counter(section) for section in sections_x2]
-
-    if use_data == _tr('wl_measures_statistical_significance', 'Absolute frequency'):
-        for item in items_search:
-            freqs_x1 = [
-                freq_items.get(item, 0)
-                for freq_items in freq_items_sections_x1
-            ]
-            freqs_x2 = [
-                freq_items.get(item, 0)
-                for freq_items in freq_items_sections_x2
-            ]
-
-            freq_sections_items[item] = (freqs_x1, freqs_x2)
-    elif use_data == _tr('wl_measures_statistical_significance', 'Relative frequency'):
-        len_sections_x1 = [len(section) for section in sections_x1]
-        len_sections_x2 = [len(section) for section in sections_x2]
-
-        for item in items_search:
-            freqs_x1 = [
-                freq_items.get(item, 0) / len_section
-                for freq_items, len_section in zip(freq_items_sections_x1, len_sections_x1)
-            ]
-            freqs_x2 = [
-                freq_items.get(item, 0) / len_section
-                for freq_items, len_section in zip(freq_items_sections_x2, len_sections_x2)
-            ]
-
-            freq_sections_items[item] = (freqs_x1, freqs_x2)
-
-    return freq_sections_items
-
-def to_freq_sections_items(main, items_search, items_x1, items_x2, test_statistical_significance):
-    if test_statistical_significance == _tr('wl_measures_statistical_significance', 'Mann-Whitney U Test'):
-        num_sub_sections = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['num_sub_sections']
-        use_data = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['use_data']
-    elif test_statistical_significance == _tr('wl_measures_statistical_significance', "Student's t-test (2-sample)"):
-        num_sub_sections = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_sub_sections']
-        use_data = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
-    elif test_statistical_significance == _tr('wl_measures_statistical_significance', "Welch's t-test"):
-        num_sub_sections = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['num_sub_sections']
-        use_data = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['use_data']
-
-    return _to_freq_sections_items(items_search, items_x1, items_x2, num_sub_sections, use_data)
 
 # Fisher's Exact Test
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group.

@@ -28,7 +28,7 @@ PYINSTALLER_VER = '5.6.2'
 # Fetch codes
 print(f'Downloading PyInstaller {PYINSTALLER_VER}... ', end = '')
 
-r = requests.get(f'https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v{PYINSTALLER_VER}.zip')
+r = requests.get(f'https://github.com/pyinstaller/pyinstaller/archive/refs/tags/v{PYINSTALLER_VER}.zip', timeout = 10)
 
 with open(f'pyinstaller-{PYINSTALLER_VER}.zip', 'wb') as f:
     f.write(r.content)

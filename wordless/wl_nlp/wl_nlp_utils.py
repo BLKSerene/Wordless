@@ -36,13 +36,16 @@ import sudachipy
 from wordless.wl_utils import wl_conversion
 
 def to_lang_util_code(main, util_type, util_text):
-    return main.settings_global['lang_util_mappings'][util_type][util_text]
+    return main.settings_global['mapping_lang_utils'][util_type][util_text]
 
 def to_lang_util_codes(main, util_type, util_texts):
-    return (main.settings_global['lang_util_mappings'][util_type][util_text] for util_text in util_texts)
+    return (
+        main.settings_global['mapping_lang_utils'][util_type][util_text]
+        for util_text in util_texts
+    )
 
 def _to_lang_util_text(main, util_type, util_code):
-    for text, code in main.settings_global['lang_util_mappings'][util_type].items():
+    for text, code in main.settings_global['mapping_lang_utils'][util_type].items():
         if code == util_code:
             return text
 
@@ -52,7 +55,10 @@ def to_lang_util_text(main, util_type, util_code):
     return _to_lang_util_text(main, util_type, util_code)
 
 def to_lang_util_texts(main, util_type, util_codes):
-    return (_to_lang_util_text(main, util_type, util_code) for util_code in util_codes)
+    return (
+        _to_lang_util_text(main, util_type, util_code)
+        for util_code in util_codes
+    )
 
 SPACY_LANGS = {
     'cat': 'ca_core_news_sm',

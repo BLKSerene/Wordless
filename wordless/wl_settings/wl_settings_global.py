@@ -363,7 +363,7 @@ def init_settings_global():
         },
 
         # Only language names and proper nouns are capitalized in names of language utilities
-        'lang_util_mappings': {
+        'mapping_lang_utils': {
             'sentence_tokenizers': {
                 _tr('init_settings_global', 'botok - Tibetan sentence tokenizer'): 'botok_bod',
 
@@ -1962,62 +1962,132 @@ def init_settings_global():
             'ukr': ['spacy_ukr']
         },
 
+        # Only people's names are capitalized
+        # Case of measure names are preserved
+        'mapping_measures': {
+            'dispersion': {
+                _tr('init_settings_global', 'None'): 'none',
+                _tr('init_settings_global', 'Average logarithmic distance'): 'ald',
+                _tr('init_settings_global', 'Average reduced frequency'): 'arf',
+                _tr('init_settings_global', 'Average waiting time'): 'awt',
+                _tr('init_settings_global', "Carroll's D₂"): 'carrolls_d2',
+                _tr('init_settings_global', "Gries's DP"): 'griess_dp',
+                _tr('init_settings_global', "Juilland's D"): 'juillands_d',
+                _tr('init_settings_global', "Lyne's D₃"): 'lynes_d3',
+                _tr('init_settings_global', "Rosengren's S"): 'rosengrens_s',
+                _tr('init_settings_global', "Zhang's Distributional Consistency"): 'zhangs_dc'
+            },
+
+            'adjusted_freq': {
+                _tr('init_settings_global', 'None'): 'none',
+                _tr('init_settings_global', 'Average logarithmic distance'): 'fald',
+                _tr('init_settings_global', 'Average reduced frequency'): 'farf',
+                _tr('init_settings_global', 'Average waiting time'): 'fawt',
+                _tr('init_settings_global', "Carroll's Uₘ"): 'carrolls_um',
+                _tr('init_settings_global', "Engwall's FM"): 'engwalls_fm',
+                _tr('init_settings_global', "Juilland's U"): 'juillands_u',
+                _tr('init_settings_global', "Kromer's UR"): 'kromers_ur',
+                _tr('init_settings_global', "Rosengren's KF"): 'rosengrens_kf'
+            },
+
+            'statistical_significance': {
+                _tr('init_settings_global', 'None'): 'none',
+                _tr('init_settings_global', "Fisher's exact test"): 'fishers_exact_test',
+                _tr('init_settings_global', 'Log-likelihood ratio test'): 'log_likelihood_ratio_test',
+                _tr('init_settings_global', 'Mann-Whitney U Test'): 'mann_whitney_u_test',
+                _tr('init_settings_global', "Pearson's chi-squared test"): 'pearsons_chi_squared_test',
+                _tr('init_settings_global', "Student's t-test (1-sample)"): 'students_t_test_1_sample',
+                _tr('init_settings_global', "Student's t-test (2-sample)"): 'students_t_test_2_sample',
+                _tr('init_settings_global', "Welch's t-test"): 'welchs_t_test',
+                _tr('init_settings_global', 'z-score'): 'z_score',
+                _tr('init_settings_global', 'z-score (Berry-Rogghe)'): 'z_score_berry_rogghe'
+            },
+
+            'bayes_factor': {
+                _tr('init_settings_global', 'None'): 'none',
+                _tr('init_settings_global', 'Log-likelihood ratio test'): 'log_likelihood_ratio_test',
+                _tr('init_settings_global', "Student's t-test (2-sample)"): 'students_t_test_2_sample'
+            },
+
+            'effect_size': {
+                _tr('init_settings_global', 'None'): 'none',
+                '%DIFF': 'pct_diff',
+                _tr('init_settings_global', 'Cubic association ratio'): 'im3',
+                _tr('init_settings_global', "Dice's coefficient"): 'dices_coeff',
+                _tr('init_settings_global', 'Difference coefficient'): 'diff_coeff',
+                _tr('init_settings_global', 'Jaccard index'): 'jaccard_index',
+                _tr('init_settings_global', 'Log-frequency biased MD'): 'lfmd',
+                _tr('init_settings_global', "Kilgarriff's ratio"): 'kilgarriffs_ratio',
+                'logDice': 'log_dice',
+                _tr('init_settings_global', 'Log ratio'): 'log_ratio',
+                'MI.log-f': 'mi_log_f',
+                _tr('init_settings_global', 'Minimum sensitivity'): 'min_sensitivity',
+                _tr('init_settings_global', 'Mutual dependency'): 'md',
+                _tr('init_settings_global', 'Mutual expectation'): 'me',
+                _tr('init_settings_global', 'Mutual information'): 'mi',
+                _tr('init_settings_global', 'Odds ratio'): 'or',
+                _tr('init_settings_global', 'Pointwise mutual information'): 'pmi',
+                _tr('init_settings_global', 'Poisson collocation measure'): 'poisson_collocation_measure',
+                _tr('init_settings_global', 'Squared phi coefficient'): 'squared_phi_coeff'
+            }
+        },
+
         'measures_dispersion': {
-            _tr('init_settings_global', 'None'): {
+            'none': {
                 'col_text': None,
                 'func': None,
                 'type': ''
             },
 
-            _tr('init_settings_global', 'Average Logarithmic Distance'): {
-                'col_text': _tr('init_settings_global', 'ALD'),
+            'ald': {
+                'col_text': 'ALD',
                 'func': wl_measures_dispersion.ald,
                 'type': 'dist_based'
             },
 
-            _tr('init_settings_global', 'Average Reduced Frequency'): {
-                'col_text': _tr('init_settings_global', 'ARF'),
+            'arf': {
+                'col_text': 'ARF',
                 'func': wl_measures_dispersion.arf,
                 'type': 'dist_based'
             },
 
-            _tr('init_settings_global', 'Average Waiting Time'): {
-                'col_text': _tr('init_settings_global', 'AWT'),
+            'awt': {
+                'col_text': 'AWT',
                 'func': wl_measures_dispersion.awt,
                 'type': 'dist_based'
             },
 
-            _tr('init_settings_global', "Carroll's D₂"): {
+            'carrolls_d2': {
                 'col_text': _tr('init_settings_global', "Carroll's D₂"),
                 'func': wl_measures_dispersion.carrolls_d2,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Gries's DP"): {
+            'griess_dp': {
                 'col_text': _tr('init_settings_global', "Gries's DP"),
                 'func': wl_measures_dispersion.griess_dp,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Juilland's D"): {
+            'juillands_d': {
                 'col_text': _tr('init_settings_global', "Juilland's D"),
                 'func': wl_measures_dispersion.juillands_d,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Lyne's D₃"): {
+            'lynes_d3': {
                 'col_text': _tr('init_settings_global', "Lyne's D₃"),
                 'func': wl_measures_dispersion.lynes_d3,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Rosengren's S"): {
+            'rosengrens_s': {
                 'col_text': _tr('init_settings_global', "Rosengren's S"),
                 'func': wl_measures_dispersion.rosengrens_s,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Zhang's Distributional Consistency"): {
+            'zhangs_dc': {
                 'col_text': _tr('init_settings_global', "Zhang's DC"),
                 'func': wl_measures_dispersion.zhangs_distributional_consistency,
                 'type': 'parts_based'
@@ -2025,55 +2095,55 @@ def init_settings_global():
         },
 
         'measures_adjusted_freq': {
-            _tr('init_settings_global', 'None'): {
+            'none': {
                 'col_text': None,
                 'func': None,
                 'type': ''
             },
 
-            _tr('init_settings_global', 'Average Logarithmic Distance'): {
-                'col_text': _tr('init_settings_global', 'f-ALD'),
+            'fald': {
+                'col_text': 'f-ALD',
                 'func': wl_measures_adjusted_freq.fald,
                 'type': 'dist_based'
             },
 
-            _tr('init_settings_global', 'Average Reduced Frequency'): {
-                'col_text': _tr('init_settings_global', 'f-ARF'),
+            'farf': {
+                'col_text': 'f-ARF',
                 'func': wl_measures_adjusted_freq.farf,
                 'type': 'dist_based'
             },
 
-            _tr('init_settings_global', 'Average Waiting Time'): {
-                'col_text': _tr('init_settings_global', 'f-AWT'),
+            'fawt': {
+                'col_text': 'f-AWT',
                 'func': wl_measures_adjusted_freq.fawt,
                 'type': 'dist_based'
             },
 
-            _tr('init_settings_global', "Carroll's Uₘ"): {
+            'carrolls_um': {
                 'col_text': _tr('init_settings_global', "Carroll's Uₘ"),
                 'func': wl_measures_adjusted_freq.carrolls_um,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Engwall's FM"): {
+            'engwalls_fm': {
                 'col_text': _tr('init_settings_global', "Engwall's FM"),
                 'func': wl_measures_adjusted_freq.engwalls_fm,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Juilland's U"): {
+            'juillands_u': {
                 'col_text': _tr('init_settings_global', "Juilland's U"),
                 'func': wl_measures_adjusted_freq.juillands_u,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Kromer's UR"): {
+            'kromers_ur': {
                 'col_text': _tr('init_settings_global', "Kromer's UR"),
                 'func': wl_measures_adjusted_freq.kromers_ur,
                 'type': 'parts_based'
             },
 
-            _tr('init_settings_global', "Rosengren's KF"): {
+            'rosengrens_kf': {
                 'col_text': _tr('init_settings_global', "Rosengren's KF"),
                 'func': wl_measures_adjusted_freq.rosengrens_kf,
                 'type': 'parts_based'
@@ -2081,15 +2151,15 @@ def init_settings_global():
         },
 
         'tests_statistical_significance': {
-            _tr('init_settings_global', 'None'): {
+            'none': {
                 'col_text': None,
                 'func': None,
-                'to_sections': None,
+                'to_sections': False,
                 'collocation_extractor': True,
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', "Fisher's Exact Test"): {
+            'fishers_exact_test': {
                 # There is no test statistic for Fisher's exact test
                 'col_text': None,
                 'func': wl_measures_statistical_significance.fishers_exact_test,
@@ -2098,7 +2168,7 @@ def init_settings_global():
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', 'Log-likelihood Ratio Test'): {
+            'log_likelihood_ratio_test': {
                 'col_text': _tr('init_settings_global', 'Log-likelihood Ratio'),
                 'func': wl_measures_statistical_significance.log_likelihood_ratio_test,
                 'to_sections': False,
@@ -2106,23 +2176,23 @@ def init_settings_global():
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', 'Mann-Whitney U Test'): {
-                'col_text': _tr('init_settings_global', 'U1'),
+            'mann_whitney_u_test': {
+                'col_text': 'U1',
                 'func': wl_measures_statistical_significance.mann_whitney_u_test,
                 'to_sections': True,
                 'collocation_extractor': False,
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', "Pearson's Chi-squared Test"): {
-                'col_text': _tr('init_settings_global', 'χ2'),
+            'pearsons_chi_squared_test': {
+                'col_text': 'χ2',
                 'func': wl_measures_statistical_significance.pearsons_chi_squared_test,
                 'to_sections': False,
                 'collocation_extractor': True,
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', "Student's t-test (1-sample)"): {
+            'students_t_test_1_sample': {
                 'col_text': _tr('init_settings_global', 't-statistic'),
                 'func': wl_measures_statistical_significance.students_t_test_1_sample,
                 'to_sections': False,
@@ -2130,7 +2200,7 @@ def init_settings_global():
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', "Student's t-test (2-sample)"): {
+            'students_t_test_2_sample': {
                 'col_text': _tr('init_settings_global', 't-statistic'),
                 'func': wl_measures_statistical_significance.students_t_test_2_sample,
                 'to_sections': True,
@@ -2138,7 +2208,7 @@ def init_settings_global():
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', "Welch's t-test"): {
+            'welchs_t_test': {
                 'col_text': _tr('init_settings_global', 't-statistic'),
                 'func': wl_measures_statistical_significance.welchs_t_test,
                 'to_sections': True,
@@ -2146,7 +2216,7 @@ def init_settings_global():
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', 'z-score'): {
+            'z_score': {
                 'col_text': _tr('init_settings_global', 'z-score'),
                 'func': wl_measures_statistical_significance.z_score,
                 'to_sections': False,
@@ -2154,7 +2224,7 @@ def init_settings_global():
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', 'z-score (Berry-Rogghe)'): {
+            'z_score_berry_rogghe': {
                 'col_text': _tr('init_settings_global', 'z-score'),
                 'func': wl_measures_statistical_significance.z_score_berry_rogghe,
                 'to_sections': False,
@@ -2164,21 +2234,21 @@ def init_settings_global():
         },
 
         'measures_bayes_factor': {
-            _tr('init_settings_global', 'None'): {
+            'none': {
                 'func': None,
                 'to_sections': None,
                 'collocation_extractor': True,
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', 'Log-likelihood Ratio Test'): {
+            'log_likelihood_ratio_test': {
                 'func': wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test,
                 'to_sections': False,
                 'collocation_extractor': True,
                 'keyword_extractor': True
             },
 
-            _tr('init_settings_global', "Student's t-test (2-sample)"): {
+            'students_t_test_2_sample': {
                 'func': wl_measures_bayes_factor.bayes_factor_students_t_test_2_sample,
                 'to_sections': True,
                 'collocation_extractor': False,
@@ -2187,98 +2257,98 @@ def init_settings_global():
         },
 
         'measures_effect_size': {
-            _tr('init_settings_global', 'None'): {
+            'none': {
                 'col_text': None,
                 'func': None
             },
 
-            _tr('init_settings_global', '%DIFF'): {
-                'col_text': _tr('init_settings_global', '%DIFF'),
+            'pct_diff': {
+                'col_text': '%DIFF',
                 'func': wl_measures_effect_size.pct_diff
             },
 
-            _tr('init_settings_global', 'Cubic Association Ratio'): {
-                'col_text': _tr('init_settings_global', 'IM³'),
+            'im3': {
+                'col_text': 'IM³',
                 'func': wl_measures_effect_size.im3
             },
 
-            _tr('init_settings_global', "Dice's Coefficient"): {
+            'dices_coeff': {
                 'col_text': _tr('init_settings_global', "Dice's Coefficient"),
                 'func': wl_measures_effect_size.dices_coeff
             },
 
-            _tr('init_settings_global', 'Difference Coefficient'): {
+            'diff_coeff': {
                 'col_text': _tr('init_settings_global', 'Difference Coefficient'),
                 'func': wl_measures_effect_size.diff_coeff
             },
 
-            _tr('init_settings_global', 'Jaccard Index'): {
+            'jaccard_index': {
                 'col_text': _tr('init_settings_global', 'Jaccard Index'),
                 'func': wl_measures_effect_size.jaccard_index
             },
 
-            _tr('init_settings_global', 'Log-Frequency Biased MD'): {
-                'col_text': _tr('init_settings_global', 'LFMD'),
+            'lfmd': {
+                'col_text': 'LFMD',
                 'func': wl_measures_effect_size.lfmd
             },
 
-            _tr('init_settings_global', "Kilgarriff's Ratio"): {
+            'kilgarriffs_ratio': {
                 'col_text': _tr('init_settings_global', "Kilgarriff's Ratio"),
                 'func': wl_measures_effect_size.kilgarriffs_ratio
             },
 
-            _tr('init_settings_global', 'logDice'): {
-                'col_text': _tr('init_settings_global', 'logDice'),
+            'log_dice': {
+                'col_text': 'logDice',
                 'func': wl_measures_effect_size.log_dice
             },
 
-            _tr('init_settings_global', 'Log Ratio'): {
+            'log_ratio': {
                 'col_text': _tr('init_settings_global', 'Log Ratio'),
                 'func': wl_measures_effect_size.log_ratio
             },
 
-            _tr('init_settings_global', 'MI.log-f'): {
-                'col_text': _tr('init_settings_global', 'MI.log-f'),
+            'mi_log_f': {
+                'col_text': 'MI.log-f',
                 'func': wl_measures_effect_size.mi_log_f
             },
 
-            _tr('init_settings_global', 'Minimum Sensitivity'): {
+            'min_sensitivity': {
                 'col_text': _tr('init_settings_global', 'Minimum Sensitivity'),
                 'func': wl_measures_effect_size.min_sensitivity
             },
 
-            _tr('init_settings_global', 'Mutual Dependency'): {
-                'col_text': _tr('init_settings_global', 'MD'),
+            'md': {
+                'col_text': 'MD',
                 'func': wl_measures_effect_size.md
             },
 
-            _tr('init_settings_global', 'Mutual Expectation'): {
-                'col_text': _tr('init_settings_global', 'ME'),
+            'me': {
+                'col_text': 'ME',
                 'func': wl_measures_effect_size.me
             },
 
-            _tr('init_settings_global', 'Mutual Information'): {
-                'col_text': _tr('init_settings_global', 'MI'),
+            'mi': {
+                'col_text': 'MI',
                 'func': wl_measures_effect_size.mi
             },
 
-            _tr('init_settings_global', 'Odds Ratio'): {
-                'col_text': _tr('init_settings_global', 'Odds Ratio'),
+            'or': {
+                'col_text': 'OR',
                 'func': wl_measures_effect_size.odds_ratio
             },
 
-            _tr('init_settings_global', 'Pointwise Mutual Information'): {
-                'col_text': _tr('init_settings_global', 'PMI'),
+            'pmi': {
+                'col_text': 'PMI',
                 'func': wl_measures_effect_size.pmi
             },
 
-            _tr('init_settings_global', 'Poisson Collocation Measure'): {
+            'poisson_collocation_measure': {
                 'col_text': _tr('init_settings_global', 'Poisson Collocation Measure'),
                 'func': wl_measures_effect_size.poisson_collocation_measure
             },
 
-            _tr('init_settings_global', 'Squared Phi Coefficient'): {
-                'col_text': _tr('init_settings_global', 'φ2'),
+            'squared_phi_coeff': {
+                'col_text': 'φ2',
                 'func': wl_measures_effect_size.squared_phi_coeff
             }
         },

@@ -47,7 +47,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     # The count of sentences should be more than 1
     assert len(sentences) > 1
 
-    sentence_tokenizer_skipped = False
+    tests_lang_util_skipped = False
 
     if lang == 'cat':
         assert sentences == ["El català (denominació oficial a Catalunya, a les Illes Balears, a Andorra, a la ciutat de l'Alguer i tradicional a Catalunya del Nord) o valencià (denominació oficial al País Valencià i tradicional al Carxe) és una llengua romànica parlada a Catalunya, el País Valencià (tret d'algunes comarques i localitats de l'interior), les Illes Balears, Andorra, la Franja de Ponent (a l'Aragó), la ciutat de l'Alguer (a l'illa de Sardenya), la Catalunya del Nord,[8] el Carxe (un petit territori de Múrcia poblat per pobladors valencians),[9][10] i en comunitats arreu del món (entre les quals destaca la de l'Argentina, amb 200.000 parlants).[11] Té deu milions de parlants, dels quals quasi la meitat ho són de llengua materna; el seu domini lingüístic, amb una superfície de 68.730 km² i 13.529.127 d'habitants (2009),[12] inclou 1.687 termes municipals.", "Com a llengua materna, és parlada per quatre milions de persones (29% de la població del territori lingüístic), de les quals 2.263.000 a Catalunya,[13] 1.521.000 al País Valencià[14] i 417.000 a les Illes Balears.[15] Com les altres llengües romàniques, el català prové del llatí vulgar que parlaven els romans que s'establiren a Hispània durant l'edat antiga."]
@@ -63,14 +63,14 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         elif sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ['Čeština neboli český jazyk je západoslovanský jazyk, nejbližší slovenštině, poté lužické srbštině a polštině.', 'Patří mezi slovanské jazyky, do rodiny jazyků indoevropských.', 'Čeština se vyvinula ze západních nářečí praslovanštiny na konci 10.', 'století.', 'Je částečně ovlivněná latinou a němčinou.', 'Česky psaná literatura se objevuje od 14.', 'století.', 'První písemné památky jsou však již z 12.', 'století.']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'dan':
         if sentence_tokenizer == 'nltk_punkt_dan':
             assert sentences == ['Dansk er et østnordisk sprog indenfor den germanske gren af den indoeuropæiske sprogfamilie.', 'Det danske sprog tales af ca. seks millioner mennesker, hovedsageligt i Danmark, men også i Sydslesvig (i Flensborg ca. 20 %), på Færøerne og Grønland.', '[1] Dansk er tæt forbundet med norsk og svensk, og sproghistorisk har dansk været stærkt påvirket af plattysk.']
         elif sentence_tokenizer == 'spacy_sentence_recognizer_dan':
             assert sentences == ['Dansk er et østnordisk sprog indenfor den germanske gren af den indoeuropæiske sprogfamilie.', 'Det danske sprog tales af ca. seks millioner mennesker, hovedsageligt i Danmark, men også i Sydslesvig (i Flensborg ca. 20 %), på Færøerne og Grønland.[1] Dansk er tæt forbundet med norsk og svensk, og sproghistorisk har dansk været stærkt påvirket af plattysk.']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'nld':
         assert sentences == ['Het Nederlands is een West-Germaanse taal en de officiële taal van Nederland, Suriname en een van de drie officiële talen van België.', 'Binnen het Koninkrijk der Nederlanden is het Nederlands ook een officiële taal van Aruba, Curaçao en Sint-Maarten.', 'Het Nederlands is de op twee na meest gesproken Germaanse taal.']
     elif lang.startswith('eng_') or lang == 'other':
@@ -82,14 +82,14 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         ]:
             assert sentences == ['English is a West Germanic language of the Indo-European language family, originally spoken by the inhabitants of early medieval England.[3][4][5] It is named after the Angles, one of the ancient Germanic peoples that migrated from Anglia, a peninsula on the Baltic Sea (not to be confused with East Anglia in England), to the area of Great Britain later named after them: England.', 'The closest living relatives of English include Scots, followed by the Low Saxon and Frisian languages.', 'While English is genealogically West Germanic, its vocabulary is also distinctively influenced by dialects of French (about 29% of modern English words) and Latin (also about 29%), as well as by Old Norse (a North Germanic language).[6][7][8] Speakers of English are called Anglophones.']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'est':
         if sentence_tokenizer == 'nltk_punkt_est':
             assert sentences == ['Eesti keel (varasem nimetus maakeel) on läänemeresoome lõunarühma kuuluv keel.', 'Eesti keel on Eesti riigikeel ja 2004. aastast ka üks Euroopa Liidu ametlikke keeli.']
         elif sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ['Eesti keel (varasem nimetus maakeel) on läänemeresoome lõunarühma kuuluv keel.', 'Eesti keel on Eesti riigikeel ja 2004.', 'aastast ka üks Euroopa Liidu ametlikke keeli.']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'fin':
         assert sentences == ['Suomen kieli (suomi) on uralilaisten kielten itämerensuomalaiseen ryhmään kuuluva kieli, jota puhuvat pääosin suomalaiset.', 'Sitä puhuu äidinkielenään Suomessa 4,8 miljoonaa ja toisena kielenä 0,5 miljoonaa ihmistä.', 'Suurimmat suomea puhuvat vähemmistöt ovat Ruotsissa, Norjassa ja Venäjällä.']
     elif lang == 'fra':
@@ -100,21 +100,21 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         elif sentence_tokenizer == 'spacy_sentence_recognizer_deu':
             assert sentences == ['Die deutsche Sprache bzw. Deutsch ([dɔɪ̯tʃ];[26] abgekürzt dt.', 'oder dtsch.) ist eine westgermanische Sprache, die weltweit etwa 90 bis 105 Millionen Menschen als Muttersprache und weiteren rund 80 Millionen als Zweit- oder Fremdsprache dient.', 'Das Deutsche ist eine plurizentrische Sprache, enthält also mehrere Standardvarietäten in verschiedenen Regionen.', 'Ihr Sprachgebiet umfasst Deutschland, Österreich, die Deutschschweiz, Liechtenstein, Luxemburg, Ostbelgien, Südtirol, das Elsass und Lothringen sowie Nordschleswig.', 'Außerdem ist Deutsch eine Minderheitensprache in einigen europäischen und außereuropäischen Ländern, z. B. in Rumänien und Südafrika sowie Nationalsprache im afrikanischen Namibia.', 'Deutsch ist die meistgesprochene Muttersprache in der Europäischen Union (EU).[27]']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'ell':
         if sentence_tokenizer == 'nltk_punkt_ell':
             assert sentences == ['Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] και αποτελεί το μοναδικό μέλος του ελληνικού κλάδου, ενώ είναι η επίσημη γλώσσα της Ελλάδας και της Κύπρου.', 'Ανήκει επίσης στο βαλκανικό γλωσσικό δεσμό.', 'Στην ελληνική γλώσσα, έχουμε γραπτά κείμενα ήδη από τον 15ο αιώνα π.Χ.. Σαν Παγκόσμια Ημέρα Ελληνικής Γλώσσας, κάθε έτος, έχει καθιερωθεί η 9η Φεβρουαρίου.', 'Έχει την μακροβιότερη καταγεγραμμένη ιστορία από οποιαδήποτε άλλη ζωντανή ινδοευρωπαϊκή γλώσσα με τουλάχιστον 3.400 χρόνια γραπτής ιστορίας.', '[10] Γράφεται με το ελληνικό αλφάβητο το οποίο χρησιμοποιείται για περίπου 2.600 χρόνια.', '[11][12] Προηγουμένως η ελληνική γλώσσα γραφόταν με τη Γραμμική Β και το κυπριακό συλλαβάριο.', '[13] Το ελληνικό αλφάβητο προέρχεται από το φοινικικό αλφάβητο.', 'Στο ελληνικό αλφάβητο βασίζεται το λατινικό, το κυριλλικό, το αρμενικό, το κοπτικό, το γοτθικό και πολλά άλλα αλφάβητα.']
         elif sentence_tokenizer == 'spacy_sentence_recognizer_ell':
             assert sentences == ['Η ελληνική γλώσσα ανήκει στην ινδοευρωπαϊκή οικογένεια[9] και αποτελεί το μοναδικό μέλος του ελληνικού κλάδου, ενώ είναι η επίσημη γλώσσα της Ελλάδας και της Κύπρου.', 'Ανήκει επίσης στο βαλκανικό γλωσσικό δεσμό.', 'Στην ελληνική γλώσσα, έχουμε γραπτά κείμενα ήδη από τον 15ο αιώνα π.', 'Χ..', 'Σαν Παγκόσμια Ημέρα Ελληνικής Γλώσσας, κάθε έτος, έχει καθιερωθεί η 9η Φεβρουαρίου.', 'Έχει την μακροβιότερη καταγεγραμμένη ιστορία από οποιαδήποτε άλλη ζωντανή ινδοευρωπαϊκή γλώσσα με τουλάχιστον 3.400 χρόνια γραπτής ιστορίας.[10] Γράφεται με το ελληνικό αλφάβητο το οποίο χρησιμοποιείται για περίπου 2.600 χρόνια.[11][12] Προηγουμένως η ελληνική γλώσσα γραφόταν με τη Γραμμική Β και το κυπριακό συλλαβάριο.[13] Το ελληνικό αλφάβητο προέρχεται από το φοινικικό αλφάβητο.', 'Στο ελληνικό αλφάβητο βασίζεται το λατινικό, το κυριλλικό, το αρμενικό, το κοπτικό, το γοτθικό και πολλά άλλα αλφάβητα.']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'ita':
         if sentence_tokenizer == 'nltk_punkt_ita':
             assert sentences == ["L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia.", 'È classificato al 23º posto tra le lingue per numero di parlanti nel mondo e, in Italia, è utilizzato da circa 58 milioni di residenti.', "[2] Nel 2015 l'italiano era la lingua materna del 90,4% dei residenti in Italia,[3] che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano, alle lingue regionali e ai dialetti.", "In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana ed è largamente prevalente nei mezzi di comunicazione nazionali, nell'amministrazione pubblica dello Stato italiano e nell'editoria."]
         elif sentence_tokenizer == 'spacy_sentence_recognizer_ita':
             assert sentences == ["L'italiano ([itaˈljaːno][Nota 1] ascolta[?·info]) è una lingua romanza parlata principalmente in Italia.", "È classificato al 23º posto tra le lingue per numero di parlanti nel mondo e, in Italia, è utilizzato da circa 58 milioni di residenti.[2] Nel 2015 l'italiano era la lingua materna del 90,4% dei residenti in Italia,[3] che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano, alle lingue regionali e ai dialetti.", "In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana ed è largamente prevalente nei mezzi di comunicazione nazionali, nell'amministrazione pubblica dello Stato italiano e nell'editoria."]
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'jpn':
         assert sentences == ['日本語（にほんご、にっぽんご[注 2]）は、日本国内や、かつての日本領だった国、そして日本人同士の間で使用されている言語。', '日本は法令によって公用語を規定していないが、法令その他の公用文は全て日本語で記述され、各種法令[10]において日本語を用いることが規定され、学校教育においては「国語」の教科として学習を行う等、事実上、日本国内において唯一の公用語となっている。']
     elif lang == 'lit':
@@ -127,21 +127,21 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         elif sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ['ഇന്ത്യയിൽ കേരള സംസ്ഥാനത്തിലും കേന്ദ്രഭരണപ്രദേശങ്ങളായ ലക്ഷദ്വീപിലും പുതുച്ചേരിയുടെ ഭാഗമായ മയ്യഴിയിലും തമിഴ്നാട്ടിലെ കന്യാകുമാരി ജില്ലയിലും നീലഗിരി ജില്ലയിലെ ഗൂഡല്ലൂർ താലൂക്കിലും സംസാരിക്കപ്പെടുന്ന ഭാഷയാണ് മലയാളം. ഇതു ദ്രാവിഡ ഭാഷാ കുടുംബത്തിൽപ്പെടുന്നു. ഇന്ത്യയിൽ ശ്രേഷ്ഠഭാഷാ പദവി ലഭിക്കുന്ന അഞ്ചാമത്തെ ഭാഷയാണ് മലയാളം[5].', '2013 മേയ് 23-നു ചേർന്ന കേന്ദ്രമന്ത്രിസഭായോഗമാണ് മലയാളത്തെ ശ്രേഷ്ഠഭാഷയായി അംഗീകരിച്ചത് ഇന്ത്യൻ ഭരണഘടനയിലെ എട്ടാം ഷെഡ്യൂളിൽ ഉൾപ്പെടുത്തിയിരിക്കുന്ന ഇന്ത്യയിലെ ഇരുപത്തിരണ്ട് ഔദ്യോഗിക ഭാഷകളിൽ ഒന്നാണ് മലയാളം[6].', 'മലയാള ഭാഷ കൈരളി, മലനാട്ട് ഭാഷ എന്നും അറിയപ്പെടുന്നു. കേരള സംസ്ഥാനത്തിലെ ഭരണഭാഷയും കൂടിയാണ്\u200c മലയാളം. കേരളത്തിനും ലക്ഷദ്വീപിനും പുറമേ തമിഴ്നാട്ടിലെ ചില ഭാഗങ്ങളിലും കന്യാകുമാരി ജില്ല, നീലഗിരി ജില്ല കർണാടകയുടെ ദക്ഷിണ കന്നഡ ജില്ല, കൊടഗ് ഭാഗങ്ങളിലും ഗൾഫ് രാജ്യങ്ങൾ, സിംഗപ്പൂർ, മലേഷ്യ എന്നിവിടങ്ങളിലെ കേരളീയ പൈതൃകമുള്ള അനേകം ജനങ്ങളും മലയാളം ഉപയോഗിച്ചുപോരുന്നു. ദേശീയ ഭാഷയായി ഉൾപ്പെടുത്തിയത് മറ്റ് 21 ഭാഷകളുടേതു പോലെ തനതായ വ്യക്തിത്വം ഉള്ളതിനാലാണ്. മലയാള ഭാഷയുടെ ഉല്പത്തിയും പ്രാചീനതയും സംബന്ധിച്ച കാര്യങ്ങൾ ഇന്നും അവ്യക്തമാണ്. പഴയ തമിഴിനും മുൻപത്തെ മൂലദ്രാവിഡം ആകാം മലയാളത്തിന്റെ ആദ്യ രൂപം എന്നു കരുതുന്നു. യു. എ. ഇ.-യിലെ നാല് ഔദ്യോഗിക ഭാഷകളിൽ ഒന്നു മലയാളമാണ്.[അവലംബം ആവശ്യമാണ്]']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'nob':
         if sentence_tokenizer == 'nltk_punkt_nor':
             assert sentences == ['Bokmål er en varietet av norsk skriftspråk.', 'Bokmål er en av to offisielle målformer av norsk skriftspråk, hvorav den andre er nynorsk.', 'I skrift benyttes bokmål av anslagsvis 90 % av befolkningen i Norge.', '[1][2] Etter skriftreformene av riksmål i 1987 og bokmål i 1981 og 2005 er det lite som skiller bokmål og riksmål i alminnelig bruk.']
         elif sentence_tokenizer == 'spacy_sentence_recognizer_nob':
             assert sentences == ['Bokmål er en varietet av norsk skriftspråk.', 'Bokmål er en av to offisielle målformer av norsk skriftspråk, hvorav den andre er nynorsk.', 'I skrift benyttes bokmål av anslagsvis 90 % av befolkningen i Norge.[1][2]', 'Etter skriftreformene av riksmål i 1987 og bokmål i 1981 og 2005 er det lite som skiller bokmål og riksmål i alminnelig bruk.']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'nno':
         if sentence_tokenizer == 'nltk_punkt_nor':
             assert sentences == ['Nynorsk, før 1929 offisielt kalla landsmål, er sidan jamstillingsvedtaket av 12. mai 1885 ei av dei to offisielle målformene av norsk; den andre forma er bokmål.', 'Nynorsk blir i dag nytta av om lag 10–15% av innbyggjarane[1][2] i Noreg.', 'Skriftspråket er basert på nynorsk talemål, det vil seie dei moderne norske dialektane til skilnad frå gamalnorsk og mellomnorsk.', 'Når ein seier at nokon snakkar nynorsk, meiner ein helst at dei snakkar nynorsk normaltalemål.', 'Dei færraste dialekttalande nordmenn seier at dei snakkar nynorsk, men det er ikkje uvanleg i kjerneområda til nynorsken.', 'Dette tilhøvet mellom tale og skrift ligg bak målrørsla sitt slagord sidan 1970-talet: «Snakk dialekt – skriv nynorsk!» Nynorske dialektar blir snakka over heile landet, men det er berre på Vestlandet utanom dei største byene og i dei austlandske fjellbygdene at skriftspråket står sterkt.', 'Det vil seie at dei fleste dialekttalarane har bokmål som det primære skriftspråket sitt.']
         elif sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ['Nynorsk, før 1929 offisielt kalla landsmål, er sidan jamstillingsvedtaket av 12. mai 1885 ei av dei to offisielle målformene av norsk; den andre forma er bokmål.', 'Nynorsk blir i dag nytta av om lag 10–15% av innbyggjarane[1][2] i Noreg.', 'Skriftspråket er basert på nynorsk talemål, det vil seie dei moderne norske dialektane til skilnad frå gamalnorsk og mellomnorsk.', 'Når ein seier at nokon snakkar nynorsk, meiner ein helst at dei snakkar nynorsk normaltalemål.', 'Dei færraste dialekttalande nordmenn seier at dei snakkar nynorsk, men det er ikkje uvanleg i kjerneområda til nynorsken.', 'Dette tilhøvet mellom tale og skrift ligg bak målrørsla sitt slagord sidan 1970-talet:', '«Snakk dialekt – skriv nynorsk!»', 'Nynorske dialektar blir snakka over heile landet, men det er berre på Vestlandet utanom dei største byene og i dei austlandske fjellbygdene at skriftspråket står sterkt.', 'Det vil seie at dei fleste dialekttalarane har bokmål som det primære skriftspråket sitt.']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'pol':
         assert sentences == ['Język polski, polszczyzna – język lechicki z grupy zachodniosłowiańskiej (do której należą również czeski, kaszubski, słowacki i języki łużyckie), stanowiącej część rodziny indoeuropejskiej.', 'Jest językiem urzędowym w Polsce oraz należy do oficjalnych języków Unii Europejskiej.', 'Ocenia się, że jest mową ojczystą ok. 44 mln ludzi na świecie[1] (w literaturze naukowej można spotkać szacunki od 39[2][3] do 48 mln[4]).', 'Językiem tym posługują się przede wszystkim mieszkańcy Polski oraz przedstawiciele tak zwanej Polonii, czyli ludność polska zamieszkała za granicą.']
     elif lang.startswith('por_'):
@@ -150,7 +150,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         elif sentence_tokenizer == 'spacy_sentence_recognizer_por':
             assert sentences == ['A língua portuguesa, também designada português, é uma língua indo-europeia românica flexiva ocidental originada no galego-português falado no Reino da Galiza e no norte de Portugal.', 'Com a criação do Reino de Portugal em 1139 e a expansão para o sul na sequência da Reconquista, deu-se a difusão da língua pelas terras conquistadas e mais tarde, com as descobertas portuguesas, para o Brasil, África e outras partes do mundo.[3]', 'O português foi usado, naquela época, não somente nas cidades conquistadas pelos portugueses, mas também por muitos governantes locais nos seus contatos com outros estrangeiros poderosos.', 'Especialmente nessa altura a língua portuguesa também influenciou várias línguas.[4]']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'ron':
         assert sentences == ['Limba română este o limbă indo-europeană, din grupul italic și din subgrupul oriental al limbilor romanice.', 'Printre limbile romanice, româna este a cincea după numărul de vorbitori, în urma spaniolei, portughezei, francezei și italienei.', 'Din motive de diferențiere tipologică, limba română mai este numită în lingvistica comparată limba dacoromână sau dialectul dacoromân.', 'De asemenea, este înregistrată ca limbă de stat atât în România cât și în Republica Moldova, unde circa 75% din populație o consideră limbă maternă (inclusiv sub denumirea de „limba moldovenească”).']
     elif lang == 'rus':
@@ -167,7 +167,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         elif sentence_tokenizer == 'pythainlp_thaisumcut':
             assert sentences == ['ภาษาไทย', 'หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท', 'ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ', 'และภาษาประจำชาติของประเทศไทย[3][4] มีการสันนิษฐานว่าภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน', 'และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต']
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'bod':
         assert sentences == ['བོད་ཀྱི་སྐད་ཡིག་ནི་བོད་ཡུལ་དང་ཉེ་འཁོར་གྱི་ས་ཁུལ་བལ་ཡུལ། འབྲུག་དང་འབྲས་ལྗོངས། ལ་དྭགས་ནས་ལྷོ་མོན་རོང་སོགས་སུ་བེད་སྤྱོད་བྱེད་པའི་སྐད་ཡིག་དེ།', 'ད་ཆར་ཡོངས་གྲགས་སུ་བོད་ཀྱི་ཡུལ་གྲུ་སྟོད་སྨད་བར་གསུམ་ལ་ལྟོས་ཏེ་ནང་གསེས་རིགས་གསུམ་དུ་ཕྱེ་བ་སྟེ།', 'སྟོད་དབུས་གཙང་གི་སྐད་དང་། བར་ཁམས་པའི་སྐད་དང་། སྨད་ཨ་མདོའི་སྐད་རྣམས་སོ།', 'བོད་སྐད་ནི་ཧོར་སོག་ལ་སོགས་པ་གྲངས་ཉུང་མི་རིགས་གཞན་པ་ཁག་ཅིག་གིས་བེད་སྤྱོད་གཏོང་བཞིན་ཡོད་པར་མ་ཟད། བལ་ཡུལ་དང་། འབྲས་ལྗོངས། འབྲུག་ཡུལ་། རྒྱ་གར་ཤར་དང་བྱང་རྒྱུད་མངའ་སྡེ་ཁག་གཅིག་བཅས་ཀྱི་རྒྱལ་ཁབ་རྣམས་སུའང་བེད་སྤྱོད་གཏོང་བཞིན་ཡོད།']
     elif lang == 'tur':
@@ -176,16 +176,16 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
         elif sentence_tokenizer == 'spacy_sentencizer':
             assert sentences == ["Türkçe ya da Türk dili, Güneydoğu Avrupa ve Batı Asya'da konuşulan, Türk dilleri dil ailesine ait sondan eklemeli bir dil.[12] Türk dilleri ailesinin Oğuz dilleri grubundan bir Batı Oğuz dili olan Osmanlı Türkçesinin devamını oluşturur.", "Dil, başta Türkiye olmak üzere Balkanlar, Ege Adaları, Kıbrıs ve Orta Doğu'yu kapsayan eski Osmanlı İmparatorluğu coğrafyasında konuşulur.[12] Ethnologue'a göre Türkçe, yaklaşık 83 milyon konuşuru ile dünyada en çok konuşulan 16. dildir.[13] Türkçe Türkiye, Kıbrıs Cumhuriyeti ve Kuzey Kıbrıs'ta ulusal resmî dil statüsüne sahiptir.[12]"]
         else:
-            sentence_tokenizer_skipped = True
+            tests_lang_util_skipped = True
     elif lang == 'ukr':
         assert sentences == ['Украї́нська мо́ва (МФА: [ukrɑ̽ˈjɪnʲsʲkɑ̽ ˈmɔwɑ̽], історичні назви — ру́ська, руси́нська[10][11][12][* 1]) — національна мова українців.', "Як слов'янська мова українська мова належить до сім'ї індоєвропейських, поряд з романськими, германськими, кельтськими, грецькою, албанською, вірменською та (найближче спорідненими зі слов'янськими) балтійськими мовами.[13][* 2].", "Сучасне мовознавство заперечує існування стадії спільної східнослов'янської мови, тому віднесення української мови до «східнослов'янських» також є радше даниною академічній традиції[14].", 'Є державною мовою в Україні[15][13].']
     elif lang == 'vie':
         assert sentences == ['Tiếng Việt, cũng gọi là tiếng Việt Nam[8] hay Việt ngữ là ngôn ngữ của người Việt và là ngôn ngữ chính thức tại Việt Nam.', 'Đây là tiếng mẹ đẻ của khoảng 85% dân cư Việt Nam cùng với hơn 4 triệu người Việt kiều.', 'Tiếng Việt còn là ngôn ngữ thứ hai của các dân tộc thiểu số tại Việt Nam và là ngôn ngữ dân tộc thiểu số được công nhận tại Cộng hòa Séc.']
     else:
-        raise Exception(f'Error: Tests for language "{lang}" is skipped!')
+        raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 
-    if sentence_tokenizer_skipped:
-        raise Exception(f'Error: Tests for sentence tokenizer "{sentence_tokenizer}" is skipped!')
+    if tests_lang_util_skipped:
+        raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(sentence_tokenizer)
 
 @pytest.mark.parametrize('lang', test_langs)
 def test_sentence_split(lang):
@@ -277,7 +277,7 @@ def test_sentence_seg_tokenize(lang):
     elif lang == 'vie':
         assert sentence_segs == ['Tiếng Việt,', 'cũng gọi là tiếng Việt Nam[8] hay Việt ngữ là ngôn ngữ của người Việt và là ngôn ngữ chính thức tại Việt Nam.', 'Đây là tiếng mẹ đẻ của khoảng 85% dân cư Việt Nam cùng với hơn 4 triệu người Việt kiều.', 'Tiếng Việt còn là ngôn ngữ thứ hai của các dân tộc thiểu số tại Việt Nam và là ngôn ngữ dân tộc thiểu số được công nhận tại Cộng hòa Séc.']
     else:
-        raise Exception(f'Error: Tests for language "{lang}" is skipped!')
+        raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 
 @pytest.mark.parametrize('lang', test_langs)
 def test_sentence_seg_split(lang):
