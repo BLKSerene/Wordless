@@ -160,12 +160,12 @@ def update_gui(err_msg, texts_stats_files):
             assert numpy.ptp(lens) == max(lens) - min(lens)
             assert scipy.stats.iqr(lens) == numpy.percentile(lens, 75) - numpy.percentile(lens, 25)
 
-    # Count of n-length Sentences
+    # Count of n-token-long Sentences
     if any(count_sentences_lens):
         count_sentences_lens_files = wl_misc.merge_dicts(count_sentences_lens)
         count_sentences_lens = sorted(count_sentences_lens_files.keys())
 
-        # The total of counts of n-length sentences should be equal to the count of tokens
+        # The total of counts of n-token-long sentences should be equal to the count of tokens
         for i, stats in enumerate(texts_stats_files):
             len_sentences_total = sum((
                 count_sentences_files[i] * len_sentence
@@ -177,12 +177,12 @@ def update_gui(err_msg, texts_stats_files):
         # Sentence length should never be zero
         assert 0 not in count_sentences_lens
 
-    # Count of n-length Sentence Segments
+    # Count of n-token-long Sentence Segments
     if any(count_sentence_segs_lens):
         count_sentence_segs_lens_files = wl_misc.merge_dicts(count_sentence_segs_lens)
         count_sentence_segs_lens = sorted(count_sentence_segs_lens_files.keys())
 
-        # The total of counts of n-length sentence segments should be equal to the count of tokens
+        # The total of counts of n-token-long sentence segments should be equal to the count of tokens
         for i, stats in enumerate(texts_stats_files):
             len_sentence_segs_total = sum((
                 count_sentence_segs_files[i] * len_sentence_seg
@@ -194,12 +194,12 @@ def update_gui(err_msg, texts_stats_files):
         # Sentence segment length should never be zero
         assert 0 not in count_sentence_segs_lens
 
-    # Count of n-length Tokens
+    # Count of n-character-long Tokens
     if any(count_tokens_lens):
         count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
         count_tokens_lens = sorted(count_tokens_lens_files.keys())
 
-        # The total of counts of n-length tokens should be equal to the count of characters
+        # The total of counts of n-character-long tokens should be equal to the count of characters
         for i, stats in enumerate(texts_stats_files):
             len_tokens_total = sum((
                 count_tokens_files[i] * len_token

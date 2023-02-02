@@ -768,7 +768,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
                     count_sentences_lens.append(collections.Counter(len_sentences))
 
-                # Count of n-length Sentences
+                # Count of n-token-long Sentences
                 if any(count_sentences_lens):
                     count_sentences_lens_files = wl_misc.merge_dicts(count_sentences_lens)
                     count_sentences_lens_total = {
@@ -780,11 +780,11 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     # Append vertical headers
                     for count_sentences_len in count_sentences_lens:
                         self.add_header_vert(
-                            self.tr('Count of {}-length Sentences').format(count_sentences_len),
+                            self.tr('Count of {}-token-long Sentences').format(count_sentences_len),
                             is_int = True, is_cumulative = True
                         )
                         self.add_header_vert(
-                            self.tr('Count of {}-length Sentences %').format(count_sentences_len),
+                            self.tr('Count of {}-token-long Sentences %').format(count_sentences_len),
                             is_pct = True, is_cumulative = True
                         )
 
@@ -804,7 +804,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                                 total = count_sentences_lens_total[count_sentences_len]
                             )
 
-                # Count of n-length Sentence Segments
+                # Count of n-token-long Sentence Segments
                 if any(count_sentence_segs_lens):
                     count_sentence_segs_lens_files = wl_misc.merge_dicts(count_sentence_segs_lens)
                     count_sentence_segs_lens_total = {
@@ -816,11 +816,11 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     # Append vertical headers
                     for count_sentence_segs_len in count_sentence_segs_lens:
                         self.add_header_vert(
-                            self.tr('Count of {}-length Sentence Segment').format(count_sentence_segs_len),
+                            self.tr('Count of {}-token-long Sentence Segment').format(count_sentence_segs_len),
                             is_int = True, is_cumulative = True
                         )
                         self.add_header_vert(
-                            self.tr('Count of {}-length Sentence Segment %').format(count_sentence_segs_len),
+                            self.tr('Count of {}-token-long Sentence Segment %').format(count_sentence_segs_len),
                             is_pct = True, is_cumulative = True
                         )
 
@@ -840,7 +840,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                                 total = count_sentence_segs_lens_total[count_sentence_segs_len]
                             )
 
-                # Count of n-length Tokens
+                # Count of n-character-long Tokens
                 if any(count_tokens_lens):
                     count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
                     count_tokens_lens_total = {
@@ -852,11 +852,11 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     # Append vertical headers
                     for count_tokens_len in count_tokens_lens:
                         self.add_header_vert(
-                            self.tr('Count of {}-Length Tokens').format(count_tokens_len),
+                            self.tr('Count of {}-character-long Tokens').format(count_tokens_len),
                             is_int = True, is_cumulative = True
                         )
                         self.add_header_vert(
-                            self.tr('Count of {}-Length Tokens %').format(count_tokens_len),
+                            self.tr('Count of {}-character-long Tokens %').format(count_tokens_len),
                             is_pct = True, is_cumulative = True
                         )
 
