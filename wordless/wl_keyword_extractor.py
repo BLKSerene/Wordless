@@ -37,512 +37,6 @@ from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
 
-class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, dict, dict)
-
-    def __init__(self, main, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
-
-        self.err_msg = ''
-        self.keywords_freq_files = []
-        self.keywords_stats_files = []
-
-    def run(self):
-        try:
-            texts = []
-
-            settings = self.main.settings_custom['keyword_extractor']
-
-            files_observed = list(self.main.wl_file_area.get_selected_files())
-            files_ref = list(self.main.wl_file_area_ref.get_selected_files())
-
-            # Frequency (Reference files)
-            self.keywords_freq_files.append(collections.Counter())
-            tokens_ref = []
-            len_tokens_ref = 0
-
-            for file_ref in files_ref:
-                text = copy.deepcopy(file_ref['text'])
-                text = wl_token_processing.wl_process_tokens(
-                    self.main, text,
-                    token_settings = settings['token_settings']
-                )
-
-                # Remove empty tokens
-                tokens_flat = text.get_tokens_flat()
-                tokens = [token for token in tokens_flat if token]
-
-                self.keywords_freq_files[0] += collections.Counter(tokens)
-
-                tokens_ref.extend(tokens_flat)
-                len_tokens_ref += len(tokens_ref)
-
-            # Frequency (Observed files)
-            for file_observed in files_observed:
-                text = copy.deepcopy(file_observed['text'])
-                text = wl_token_processing.wl_process_tokens(
-                    self.main, text,
-                    token_settings = settings['token_settings']
-                )
-
-                # Remove empty tokens
-                tokens_flat = text.get_tokens_flat()
-                tokens = [token for token in tokens_flat if token]
-
-                self.keywords_freq_files.append(collections.Counter(tokens))
-
-                texts.append(text)
-
-            # Total
-            if len(files_observed) > 1:
-                text_total = wl_texts.Wl_Text_Blank()
-                text_total.tokens_multilevel = [
-                    copy.deepcopy(para)
-                    for text in texts
-                    for para in text.tokens_multilevel
-                ]
-
-                self.keywords_freq_files.append(sum(self.keywords_freq_files[1:], collections.Counter()))
-
-                texts.append(text_total)
-
-            # Remove tokens that do not appear in any of the observed files
-            self.keywords_freq_files[0] = {
-                token: freq
-                for token, freq in self.keywords_freq_files[0].items()
-                if token in self.keywords_freq_files[-1].keys()
-            }
-
-            # Keyness
-            test_statistical_significance = settings['generation_settings']['test_statistical_significance']
-            measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
-            measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-            func_statistical_significance = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['func']
-            func_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['func']
-            func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
-
-            to_sections_statistical_significance = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['to_sections']
-            to_sections_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['to_sections']
-
-            keywords_freq_file_ref = self.keywords_freq_files[0]
-            keywords_all = self.keywords_freq_files[-1].keys()
-
-            for i, text in enumerate(texts):
-                if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
-                    keywords_stats_file = {}
-
-                    keywords_freq_file_observed = self.keywords_freq_files[i + 1]
-                    tokens_observed = text.get_tokens_flat()
-                    len_tokens_observed = len(tokens_observed)
-
-                    if to_sections_statistical_significance:
-                        freqs_sections_tokens_statistical_significance = wl_measure_utils.to_freqs_sections_statistical_significance(
-                            self.main,
-                            items_to_search = keywords_all,
-                            items_x1 = tokens_observed,
-                            items_x2 = tokens_ref,
-                            test_statistical_significance = test_statistical_significance
-                        )
-
-                    if to_sections_bayes_factor:
-                        freqs_sections_tokens_bayes_factor = wl_measure_utils.to_freqs_sections_bayes_factor(
-                            self.main,
-                            items_to_search = keywords_all,
-                            items_x1 = tokens_observed,
-                            items_x2 = tokens_ref,
-                            measure_bayes_factor = measure_bayes_factor
-                        )
-
-                    for token in keywords_all:
-                        c11 = keywords_freq_file_observed.get(token, 0)
-                        c12 = keywords_freq_file_ref.get(token, 0)
-                        c21 = len_tokens_observed - c11
-                        c22 = len_tokens_ref - c12
-
-                        # Test Statistic & p-value
-                        if test_statistical_significance == 'none':
-                            keywords_stats_file[token] = [None, None]
-                        else:
-                            if to_sections_statistical_significance:
-                                keywords_stats_file[token] = list(func_statistical_significance(self.main, *freqs_sections_tokens_statistical_significance[token]))
-                            else:
-                                keywords_stats_file[token] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
-
-                        # Bayes Factor
-                        if measure_bayes_factor == 'none':
-                            keywords_stats_file[token].append(None)
-                        else:
-                            if to_sections_bayes_factor:
-                                keywords_stats_file[token].append(func_bayes_factor(self.main, *freqs_sections_tokens_bayes_factor[token]))
-                            else:
-                                keywords_stats_file[token].append(func_bayes_factor(self.main, c11, c12, c21, c22))
-
-                        # Effect Size
-                        if measure_effect_size == 'none':
-                            keywords_stats_file[token].append(None)
-                        else:
-                            keywords_stats_file[token].append(func_effect_size(self.main, c11, c12, c21, c22))
-                else:
-                    keywords_stats_file = {
-                        token: [None, None, None, None]
-                        for token in keywords_all
-                    }
-
-                self.keywords_stats_files.append(keywords_stats_file)
-
-            if len(files_observed) == 1:
-                self.keywords_freq_files.append(self.keywords_freq_files[1])
-                self.keywords_stats_files *= 2
-        except Exception:
-            self.err_msg = traceback.format_exc()
-
-class Wl_Worker_Keyword_Extractor_Table(Wl_Worker_Keyword_Extractor):
-    def run(self):
-        super().run()
-
-        self.progress_updated.emit(self.tr('Rendering table...'))
-        self.worker_done.emit(
-            self.err_msg,
-            wl_misc.merge_dicts(self.keywords_freq_files),
-            wl_misc.merge_dicts(self.keywords_stats_files)
-        )
-
-class Wl_Worker_Keyword_Extractor_Fig(Wl_Worker_Keyword_Extractor):
-    def run(self):
-        super().run()
-
-        self.progress_updated.emit(self.tr('Rendering figure...'))
-        self.worker_done.emit(
-            self.err_msg,
-            wl_misc.merge_dicts(self.keywords_freq_files),
-            wl_misc.merge_dicts(self.keywords_stats_files)
-        )
-
-def wl_msg_box_missing_files_observed(main):
-    wl_msg_boxes.Wl_Msg_Box_Warning(
-        main,
-        title = _tr('wl_keyword_extractor', 'Missing Observed Files'),
-        text = _tr('wl_keyword_extractor', '''
-            <div>You have not specified any observed files yet.</div>
-        ''')
-    ).open()
-
-def wl_msg_box_missing_files_ref(main):
-    wl_msg_boxes.Wl_Msg_Box_Warning(
-        main,
-        title = _tr('wl_keyword_extractor', 'Missing Reference Files'),
-        text = _tr('wl_keyword_extractor', '''
-            <div>You have not specified any reference files yet.</div>
-        ''')
-    ).open()
-
-def wl_status_bar_msg_missing_files_observed(main):
-    main.statusBar().showMessage(_tr('wl_keyword_extractor', 'Missing observed files!'))
-
-def wl_status_bar_msg_missing_files_ref(main):
-    main.statusBar().showMessage(_tr('wl_keyword_extractor', 'Missing reference files!'))
-
-class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
-    def __init__(self, parent):
-        super().__init__(
-            parent,
-            tab = 'keyword_extractor',
-            headers = [
-                _tr('Wl_Table_Keyword_Extractor', 'Rank'),
-                _tr('Wl_Table_Keyword_Extractor', 'Keyword'),
-                _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found'),
-                _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found %')
-            ],
-            headers_int = [
-                _tr('Wl_Table_Keyword_Extractor', 'Rank'),
-                _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found')
-            ],
-            headers_pct = [
-                _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found %')
-            ],
-            sorting_enabled = True
-        )
-
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
-
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-        self.main.wl_file_area_ref.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-        self.main.wl_file_area_ref.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        # Enable the buttons and prompt the user if there are only observed files or only reference files
-        if list(self.main.wl_file_area.get_selected_files()) or list(self.main.wl_file_area_ref.get_selected_files()):
-            self.button_generate_table.setEnabled(True)
-            self.button_generate_fig.setEnabled(True)
-        else:
-            self.button_generate_table.setEnabled(False)
-            self.button_generate_fig.setEnabled(False)
-
-    @wl_misc.log_timing
-    def generate_table(self):
-        files_observed = list(self.main.wl_file_area.get_selected_files())
-        files_ref = list(self.main.wl_file_area_ref.get_selected_files())
-
-        if files_observed and files_ref:
-            worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
-
-            wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
-        else:
-            if not files_observed:
-                wl_msg_box_missing_files_observed(self.main)
-                wl_status_bar_msg_missing_files_observed(self.main)
-            elif not files_ref:
-                wl_msg_box_missing_files_ref(self.main)
-                wl_status_bar_msg_missing_files_ref(self.main)
-
-    def update_gui_table(self, err_msg, keywords_freq_files, keywords_stats_files):
-        if wl_checks_work_area.check_results(self.main, err_msg, keywords_freq_files):
-            try:
-                self.settings = copy.deepcopy(self.main.settings_custom)
-
-                settings = self.main.settings_custom['keyword_extractor']
-                files_observed = list(self.main.wl_file_area.get_selected_files())
-
-                test_statistical_significance = settings['generation_settings']['test_statistical_significance']
-                measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
-                measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
-                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
-
-                self.clr_table()
-
-                # Insert columns
-                self.ins_header_hor(
-                    self.model().columnCount() - 2,
-                    self.tr('[Reference Files]\nFrequency'),
-                    is_int = True, is_cumulative = True
-                )
-                self.ins_header_hor(
-                    self.model().columnCount() - 2,
-                    self.tr('[Reference Files]\nFrequency %'),
-                    is_pct = True, is_cumulative = True
-                )
-
-                for file in files_observed + [{'name': self.tr('Total')}]:
-                    if file['name'] == self.tr('Total'):
-                        is_breakdown = False
-                    else:
-                        is_breakdown = True
-
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        self.tr('[{}]\nFrequency').format(file['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = is_breakdown
-                    )
-                    self.ins_header_hor(
-                        self.model().columnCount() - 2,
-                        self.tr('[{}]\nFrequency %').format(file['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
-                    )
-
-                    if test_statistical_significance != 'none':
-                        if col_text_test_stat:
-                            self.ins_header_hor(
-                                self.model().columnCount() - 2,
-                                f"[{file['name']}]\n{col_text_test_stat}",
-                                is_float = True, is_breakdown = is_breakdown
-                            )
-
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            self.tr('[{}]\np-value').format(file['name']),
-                            is_float = True, is_breakdown = is_breakdown
-                        )
-
-                    if measure_bayes_factor != 'none':
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            self.tr('[{}]\nBayes Factor').format(file['name']),
-                            is_float = True, is_breakdown = is_breakdown
-                        )
-
-                    if measure_effect_size != 'none':
-                        self.ins_header_hor(
-                            self.model().columnCount() - 2,
-                            f"[{file['name']}]\n{col_text_effect_size}",
-                            is_float = True, is_breakdown = is_breakdown
-                        )
-
-                # Sort by p-value of the first observed file
-                if test_statistical_significance != 'none':
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(self.tr('[{}]\np-value').format(files_observed[0]['name'])),
-                        Qt.AscendingOrder
-                    )
-                # Sort by bayes factor of the first observed file
-                elif measure_bayes_factor != 'none':
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(self.tr('[{}]\nBayes Factor').format(files_observed[0]['name'])),
-                        Qt.DescendingOrder
-                    )
-                # Sort by effect size of the first observed file
-                elif measure_effect_size != 'none':
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(f"[{files_observed[0]['name']}]\n{col_text_effect_size}"),
-                        Qt.DescendingOrder
-                    )
-                # Otherwise sort by frequency of the first observed file
-                else:
-                    self.horizontalHeader().setSortIndicator(
-                        self.find_header_hor(self.tr('[{}]\nFrequency').format(files_observed[0]['name'])),
-                        Qt.DescendingOrder
-                    )
-
-                cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
-                cols_freq_pct = self.find_headers_hor(self.tr('\nFrequency %'))
-
-                for col in cols_freq_pct:
-                    cols_freq.remove(col)
-
-                cols_test_stat = self.find_headers_hor(f'\n{col_text_test_stat}')
-                cols_p_val = self.find_headers_hor(self.tr('\np-value'))
-                cols_bayes_factor = self.find_headers_hor(self.tr('\nBayes Factor'))
-                cols_effect_size = self.find_headers_hor(f'\n{col_text_effect_size}')
-                col_files_found = self.find_header_hor(self.tr('Number of\nFiles Found'))
-                col_files_found_pct = self.find_header_hor(self.tr('Number of\nFiles Found %'))
-
-                freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
-                len_files_observed = len(files_observed)
-
-                self.model().setRowCount(len(keywords_freq_files))
-                self.disable_updates()
-
-                for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_stats_files_items(keywords_stats_files)):
-                    freq_files = keywords_freq_files[keyword]
-
-                    # Rank
-                    self.set_item_num(i, 0, -1)
-
-                    # Keyword
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(keyword))
-
-                    # Frequency
-                    for j, freq in enumerate(freq_files):
-                        self.set_item_num(i, cols_freq[j], freq)
-                        self.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
-
-                    for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
-                        # Test Statistic
-                        if test_stat is not None:
-                            self.set_item_num(i, cols_test_stat[j], test_stat)
-
-                        # p-value
-                        if p_val is not None:
-                            self.set_item_p_val(i, cols_p_val[j], p_val)
-
-                        # Bayes Factor
-                        if bayes_factor is not None:
-                            self.set_item_num(i, cols_bayes_factor[j], bayes_factor)
-
-                        # Effect Size
-                        if effect_size is not None:
-                            self.set_item_num(i, cols_effect_size[j], effect_size)
-
-                    # Number of Files Found
-                    num_files_found = len([freq for freq in freq_files[1:-1] if freq])
-
-                    self.set_item_num(i, col_files_found, num_files_found)
-                    self.set_item_num(i, col_files_found_pct, num_files_found, len_files_observed)
-
-                self.enable_updates()
-
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
-                self.update_ranks()
-            except Exception:
-                err_msg = traceback.format_exc()
-            finally:
-                wl_checks_work_area.check_err_table(self.main, err_msg)
-
-    @wl_misc.log_timing
-    def generate_fig(self):
-        files_observed = list(self.main.wl_file_area.get_selected_files())
-        files_ref = list(self.main.wl_file_area_ref.get_selected_files())
-
-        if files_observed and files_ref:
-            self.worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_fig
-            )
-
-            wl_threading.Wl_Thread(self.worker_keyword_extractor_fig).start_worker()
-        else:
-            if not files_observed:
-                wl_msg_box_missing_files_observed(self.main)
-                wl_status_bar_msg_missing_files_observed(self.main)
-            elif not files_ref:
-                wl_msg_box_missing_files_ref(self.main)
-                wl_status_bar_msg_missing_files_ref(self.main)
-
-    def update_gui_fig(self, err_msg, keywords_freq_files, keywords_stats_files):
-        if wl_checks_work_area.check_results(self.main, err_msg, keywords_freq_files):
-            try:
-                settings = self.main.settings_custom['keyword_extractor']
-
-                test_statistical_significance = settings['generation_settings']['test_statistical_significance']
-                measure_effect_size = settings['generation_settings']['measure_effect_size']
-
-                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
-                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
-
-                if settings['fig_settings']['use_data'] == self.tr('Frequency'):
-                    wl_figs_freqs.wl_fig_freqs(
-                        self.main, keywords_freq_files,
-                        tab = 'keyword_extractor'
-                    )
-                else:
-                    if settings['fig_settings']['use_data'] == col_text_test_stat:
-                        keywords_stat_files = {
-                            keyword: numpy.array(stats_files)[:, 0]
-                            for keyword, stats_files in keywords_stats_files.items()
-                        }
-                    elif settings['fig_settings']['use_data'] == self.tr('p-value'):
-                        keywords_stat_files = {
-                            keyword: numpy.array(stats_files)[:, 1]
-                            for keyword, stats_files in keywords_stats_files.items()
-                        }
-                    elif settings['fig_settings']['use_data'] == self.tr('Bayes Factor'):
-                        keywords_stat_files = {
-                            keyword: numpy.array(stats_files)[:, 2]
-                            for keyword, stats_files in keywords_stats_files.items()
-                        }
-                    elif settings['fig_settings']['use_data'] == col_text_effect_size:
-                        keywords_stat_files = {
-                            keyword: numpy.array(stats_files)[:, 3]
-                            for keyword, stats_files in keywords_stats_files.items()
-                        }
-
-                    wl_figs_stats.wl_fig_stats(
-                        self.main, keywords_stat_files,
-                        tab = 'keyword_extractor'
-                    )
-
-                # Hide the progress dialog early so that the main window will not obscure the generated figure
-                self.worker_keyword_extractor_fig.dialog_progress.accept()
-                wl_figs.show_fig()
-            except Exception:
-                err_msg = traceback.format_exc()
-            finally:
-                wl_checks_work_area.check_err_fig(self.main, err_msg)
-
 class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
     def __init__(self, main):
         super().__init__(main)
@@ -830,3 +324,509 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         settings['rank_min_no_limit'] = self.checkbox_rank_min_no_limit.isChecked()
         settings['rank_max'] = self.spin_box_rank_max.value()
         settings['rank_max_no_limit'] = self.checkbox_rank_max_no_limit.isChecked()
+
+class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            tab = 'keyword_extractor',
+            headers = [
+                _tr('Wl_Table_Keyword_Extractor', 'Rank'),
+                _tr('Wl_Table_Keyword_Extractor', 'Keyword'),
+                _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found'),
+                _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found %')
+            ],
+            headers_int = [
+                _tr('Wl_Table_Keyword_Extractor', 'Rank'),
+                _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found')
+            ],
+            headers_pct = [
+                _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found %')
+            ],
+            sorting_enabled = True
+        )
+
+        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+
+        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
+        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+        self.main.wl_file_area_ref.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
+        self.main.wl_file_area_ref.table_files.model().itemChanged.emit(QStandardItem())
+
+    def file_changed(self, item): # pylint: disable=unused-argument
+        # Enable the buttons and prompt the user if there are only observed files or only reference files
+        if list(self.main.wl_file_area.get_selected_files()) or list(self.main.wl_file_area_ref.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+            self.button_generate_fig.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+            self.button_generate_fig.setEnabled(False)
+
+    def wl_msg_box_missing_files_observed(self):
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            self.main,
+            title = self.tr('Missing Observed Files'),
+            text = self.tr('''
+                <div>You have not specified any observed files yet.</div>
+            ''')
+        ).open()
+
+    def wl_msg_box_missing_files_ref(self):
+        wl_msg_boxes.Wl_Msg_Box_Warning(
+            self.main,
+            title = self.tr('Missing Reference Files'),
+            text = self.tr('''
+                <div>You have not specified any reference files yet.</div>
+            ''')
+        ).open()
+
+    def wl_status_bar_msg_missing_files_observed(self):
+        self.main.statusBar().showMessage(self.tr('Missing observed files!'))
+
+    def wl_status_bar_msg_missing_files_ref(self):
+        self.main.statusBar().showMessage(self.tr('Missing reference files!'))
+
+    @wl_misc.log_timing
+    def generate_table(self):
+        files_observed = list(self.main.wl_file_area.get_selected_files())
+        files_ref = list(self.main.wl_file_area_ref.get_selected_files())
+
+        if files_observed and files_ref:
+            worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_table
+            )
+
+            wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
+        else:
+            if not files_observed:
+                self.wl_msg_box_missing_files_observed()
+                self.wl_status_bar_msg_missing_files_observed()
+            elif not files_ref:
+                self.wl_msg_box_missing_files_ref()
+                self.wl_status_bar_msg_missing_files_ref()
+
+    def update_gui_table(self, err_msg, keywords_freq_files, keywords_stats_files):
+        if wl_checks_work_area.check_results(self.main, err_msg, keywords_freq_files):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
+
+                settings = self.main.settings_custom['keyword_extractor']
+                files_observed = list(self.main.wl_file_area.get_selected_files())
+
+                test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+                measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
+                measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
+
+                self.clr_table()
+
+                # Insert columns
+                self.ins_header_hor(
+                    self.model().columnCount() - 2,
+                    self.tr('[Reference Files]\nFrequency'),
+                    is_int = True, is_cumulative = True
+                )
+                self.ins_header_hor(
+                    self.model().columnCount() - 2,
+                    self.tr('[Reference Files]\nFrequency %'),
+                    is_pct = True, is_cumulative = True
+                )
+
+                for file in files_observed + [{'name': self.tr('Total')}]:
+                    if file['name'] == self.tr('Total'):
+                        is_breakdown = False
+                    else:
+                        is_breakdown = True
+
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        self.tr('[{}]\nFrequency').format(file['name']),
+                        is_int = True, is_cumulative = True, is_breakdown = is_breakdown
+                    )
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        self.tr('[{}]\nFrequency %').format(file['name']),
+                        is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
+                    )
+
+                    if test_statistical_significance != 'none':
+                        if col_text_test_stat:
+                            self.ins_header_hor(
+                                self.model().columnCount() - 2,
+                                f"[{file['name']}]\n{col_text_test_stat}",
+                                is_float = True, is_breakdown = is_breakdown
+                            )
+
+                        self.ins_header_hor(
+                            self.model().columnCount() - 2,
+                            self.tr('[{}]\np-value').format(file['name']),
+                            is_float = True, is_breakdown = is_breakdown
+                        )
+
+                    if measure_bayes_factor != 'none':
+                        self.ins_header_hor(
+                            self.model().columnCount() - 2,
+                            self.tr('[{}]\nBayes Factor').format(file['name']),
+                            is_float = True, is_breakdown = is_breakdown
+                        )
+
+                    if measure_effect_size != 'none':
+                        self.ins_header_hor(
+                            self.model().columnCount() - 2,
+                            f"[{file['name']}]\n{col_text_effect_size}",
+                            is_float = True, is_breakdown = is_breakdown
+                        )
+
+                # Sort by p-value of the first observed file
+                if test_statistical_significance != 'none':
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(self.tr('[{}]\np-value').format(files_observed[0]['name'])),
+                        Qt.AscendingOrder
+                    )
+                # Sort by bayes factor of the first observed file
+                elif measure_bayes_factor != 'none':
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(self.tr('[{}]\nBayes Factor').format(files_observed[0]['name'])),
+                        Qt.DescendingOrder
+                    )
+                # Sort by effect size of the first observed file
+                elif measure_effect_size != 'none':
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(f"[{files_observed[0]['name']}]\n{col_text_effect_size}"),
+                        Qt.DescendingOrder
+                    )
+                # Otherwise sort by frequency of the first observed file
+                else:
+                    self.horizontalHeader().setSortIndicator(
+                        self.find_header_hor(self.tr('[{}]\nFrequency').format(files_observed[0]['name'])),
+                        Qt.DescendingOrder
+                    )
+
+                cols_freq = self.find_headers_hor(self.tr('\nFrequency'))
+                cols_freq_pct = self.find_headers_hor(self.tr('\nFrequency %'))
+
+                for col in cols_freq_pct:
+                    cols_freq.remove(col)
+
+                cols_test_stat = self.find_headers_hor(f'\n{col_text_test_stat}')
+                cols_p_val = self.find_headers_hor(self.tr('\np-value'))
+                cols_bayes_factor = self.find_headers_hor(self.tr('\nBayes Factor'))
+                cols_effect_size = self.find_headers_hor(f'\n{col_text_effect_size}')
+                col_files_found = self.find_header_hor(self.tr('Number of\nFiles Found'))
+                col_files_found_pct = self.find_header_hor(self.tr('Number of\nFiles Found %'))
+
+                freq_totals = numpy.array(list(keywords_freq_files.values())).sum(axis = 0)
+                len_files_observed = len(files_observed)
+
+                self.model().setRowCount(len(keywords_freq_files))
+                self.disable_updates()
+
+                for i, (keyword, stats_files) in enumerate(wl_sorting.sorted_stats_files_items(keywords_stats_files)):
+                    freq_files = keywords_freq_files[keyword]
+
+                    # Rank
+                    self.set_item_num(i, 0, -1)
+
+                    # Keyword
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(keyword))
+
+                    # Frequency
+                    for j, freq in enumerate(freq_files):
+                        self.set_item_num(i, cols_freq[j], freq)
+                        self.set_item_num(i, cols_freq_pct[j], freq, freq_totals[j])
+
+                    for j, (test_stat, p_val, bayes_factor, effect_size) in enumerate(stats_files):
+                        # Test Statistic
+                        if test_stat is not None:
+                            self.set_item_num(i, cols_test_stat[j], test_stat)
+
+                        # p-value
+                        if p_val is not None:
+                            self.set_item_p_val(i, cols_p_val[j], p_val)
+
+                        # Bayes Factor
+                        if bayes_factor is not None:
+                            self.set_item_num(i, cols_bayes_factor[j], bayes_factor)
+
+                        # Effect Size
+                        if effect_size is not None:
+                            self.set_item_num(i, cols_effect_size[j], effect_size)
+
+                    # Number of Files Found
+                    num_files_found = len([freq for freq in freq_files[1:-1] if freq])
+
+                    self.set_item_num(i, col_files_found, num_files_found)
+                    self.set_item_num(i, col_files_found_pct, num_files_found, len_files_observed)
+
+                self.enable_updates()
+
+                self.toggle_pct()
+                self.toggle_cumulative()
+                self.toggle_breakdown()
+                self.update_ranks()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
+
+    @wl_misc.log_timing
+    def generate_fig(self):
+        files_observed = list(self.main.wl_file_area.get_selected_files())
+        files_ref = list(self.main.wl_file_area_ref.get_selected_files())
+
+        if files_observed and files_ref:
+            self.worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_fig
+            )
+
+            wl_threading.Wl_Thread(self.worker_keyword_extractor_fig).start_worker()
+        else:
+            if not files_observed:
+                self.wl_msg_box_missing_files_observed()
+                self.wl_status_bar_msg_missing_files_observed()
+            elif not files_ref:
+                self.wl_msg_box_missing_files_ref()
+                self.wl_status_bar_msg_missing_files_ref()
+
+    def update_gui_fig(self, err_msg, keywords_freq_files, keywords_stats_files):
+        if wl_checks_work_area.check_results(self.main, err_msg, keywords_freq_files):
+            try:
+                settings = self.main.settings_custom['keyword_extractor']
+
+                test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+                measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+                col_text_test_stat = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['col_text']
+                col_text_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['col_text']
+
+                if settings['fig_settings']['use_data'] == self.tr('Frequency'):
+                    wl_figs_freqs.wl_fig_freqs(
+                        self.main, keywords_freq_files,
+                        tab = 'keyword_extractor'
+                    )
+                else:
+                    if settings['fig_settings']['use_data'] == col_text_test_stat:
+                        keywords_stat_files = {
+                            keyword: numpy.array(stats_files)[:, 0]
+                            for keyword, stats_files in keywords_stats_files.items()
+                        }
+                    elif settings['fig_settings']['use_data'] == self.tr('p-value'):
+                        keywords_stat_files = {
+                            keyword: numpy.array(stats_files)[:, 1]
+                            for keyword, stats_files in keywords_stats_files.items()
+                        }
+                    elif settings['fig_settings']['use_data'] == self.tr('Bayes Factor'):
+                        keywords_stat_files = {
+                            keyword: numpy.array(stats_files)[:, 2]
+                            for keyword, stats_files in keywords_stats_files.items()
+                        }
+                    elif settings['fig_settings']['use_data'] == col_text_effect_size:
+                        keywords_stat_files = {
+                            keyword: numpy.array(stats_files)[:, 3]
+                            for keyword, stats_files in keywords_stats_files.items()
+                        }
+
+                    wl_figs_stats.wl_fig_stats(
+                        self.main, keywords_stat_files,
+                        tab = 'keyword_extractor'
+                    )
+
+                # Hide the progress dialog early so that the main window will not obscure the generated figure
+                self.worker_keyword_extractor_fig.dialog_progress.accept()
+                wl_figs.show_fig()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_fig(self.main, err_msg)
+
+class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(str, dict, dict)
+
+    def __init__(self, main, dialog_progress, update_gui):
+        super().__init__(main, dialog_progress, update_gui)
+
+        self.err_msg = ''
+        self.keywords_freq_files = []
+        self.keywords_stats_files = []
+
+    def run(self):
+        try:
+            texts = []
+
+            settings = self.main.settings_custom['keyword_extractor']
+
+            files_observed = list(self.main.wl_file_area.get_selected_files())
+            files_ref = list(self.main.wl_file_area_ref.get_selected_files())
+
+            # Frequency (Reference files)
+            self.keywords_freq_files.append(collections.Counter())
+            tokens_ref = []
+            len_tokens_ref = 0
+
+            for file_ref in files_ref:
+                text = copy.deepcopy(file_ref['text'])
+                text = wl_token_processing.wl_process_tokens(
+                    self.main, text,
+                    token_settings = settings['token_settings']
+                )
+
+                # Remove empty tokens
+                tokens_flat = text.get_tokens_flat()
+                tokens = [token for token in tokens_flat if token]
+
+                self.keywords_freq_files[0] += collections.Counter(tokens)
+
+                tokens_ref.extend(tokens_flat)
+                len_tokens_ref += len(tokens_ref)
+
+            # Frequency (Observed files)
+            for file_observed in files_observed:
+                text = copy.deepcopy(file_observed['text'])
+                text = wl_token_processing.wl_process_tokens(
+                    self.main, text,
+                    token_settings = settings['token_settings']
+                )
+
+                # Remove empty tokens
+                tokens_flat = text.get_tokens_flat()
+                tokens = [token for token in tokens_flat if token]
+
+                self.keywords_freq_files.append(collections.Counter(tokens))
+
+                texts.append(text)
+
+            # Total
+            if len(files_observed) > 1:
+                text_total = wl_texts.Wl_Text_Blank()
+                text_total.tokens_multilevel = [
+                    copy.deepcopy(para)
+                    for text in texts
+                    for para in text.tokens_multilevel
+                ]
+
+                self.keywords_freq_files.append(sum(self.keywords_freq_files[1:], collections.Counter()))
+
+                texts.append(text_total)
+
+            # Remove tokens that do not appear in any of the observed files
+            self.keywords_freq_files[0] = {
+                token: freq
+                for token, freq in self.keywords_freq_files[0].items()
+                if token in self.keywords_freq_files[-1].keys()
+            }
+
+            # Keyness
+            test_statistical_significance = settings['generation_settings']['test_statistical_significance']
+            measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
+            measure_effect_size = settings['generation_settings']['measure_effect_size']
+
+            func_statistical_significance = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['func']
+            func_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['func']
+            func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
+
+            to_sections_statistical_significance = self.main.settings_global['tests_statistical_significance'][test_statistical_significance]['to_sections']
+            to_sections_bayes_factor = self.main.settings_global['measures_bayes_factor'][measure_bayes_factor]['to_sections']
+
+            keywords_freq_file_ref = self.keywords_freq_files[0]
+            keywords_all = self.keywords_freq_files[-1].keys()
+
+            for i, text in enumerate(texts):
+                if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
+                    keywords_stats_file = {}
+
+                    keywords_freq_file_observed = self.keywords_freq_files[i + 1]
+                    tokens_observed = text.get_tokens_flat()
+                    len_tokens_observed = len(tokens_observed)
+
+                    if to_sections_statistical_significance:
+                        freqs_sections_tokens_statistical_significance = wl_measure_utils.to_freqs_sections_statistical_significance(
+                            self.main,
+                            items_to_search = keywords_all,
+                            items_x1 = tokens_observed,
+                            items_x2 = tokens_ref,
+                            test_statistical_significance = test_statistical_significance
+                        )
+
+                    if to_sections_bayes_factor:
+                        freqs_sections_tokens_bayes_factor = wl_measure_utils.to_freqs_sections_bayes_factor(
+                            self.main,
+                            items_to_search = keywords_all,
+                            items_x1 = tokens_observed,
+                            items_x2 = tokens_ref,
+                            measure_bayes_factor = measure_bayes_factor
+                        )
+
+                    for token in keywords_all:
+                        c11 = keywords_freq_file_observed.get(token, 0)
+                        c12 = keywords_freq_file_ref.get(token, 0)
+                        c21 = len_tokens_observed - c11
+                        c22 = len_tokens_ref - c12
+
+                        # Test Statistic & p-value
+                        if test_statistical_significance == 'none':
+                            keywords_stats_file[token] = [None, None]
+                        else:
+                            if to_sections_statistical_significance:
+                                keywords_stats_file[token] = list(func_statistical_significance(self.main, *freqs_sections_tokens_statistical_significance[token]))
+                            else:
+                                keywords_stats_file[token] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+
+                        # Bayes Factor
+                        if measure_bayes_factor == 'none':
+                            keywords_stats_file[token].append(None)
+                        else:
+                            if to_sections_bayes_factor:
+                                keywords_stats_file[token].append(func_bayes_factor(self.main, *freqs_sections_tokens_bayes_factor[token]))
+                            else:
+                                keywords_stats_file[token].append(func_bayes_factor(self.main, c11, c12, c21, c22))
+
+                        # Effect Size
+                        if measure_effect_size == 'none':
+                            keywords_stats_file[token].append(None)
+                        else:
+                            keywords_stats_file[token].append(func_effect_size(self.main, c11, c12, c21, c22))
+                else:
+                    keywords_stats_file = {
+                        token: [None, None, None, None]
+                        for token in keywords_all
+                    }
+
+                self.keywords_stats_files.append(keywords_stats_file)
+
+            if len(files_observed) == 1:
+                self.keywords_freq_files.append(self.keywords_freq_files[1])
+                self.keywords_stats_files *= 2
+        except Exception:
+            self.err_msg = traceback.format_exc()
+
+class Wl_Worker_Keyword_Extractor_Table(Wl_Worker_Keyword_Extractor):
+    def run(self):
+        super().run()
+
+        self.progress_updated.emit(self.tr('Rendering table...'))
+        self.worker_done.emit(
+            self.err_msg,
+            wl_misc.merge_dicts(self.keywords_freq_files),
+            wl_misc.merge_dicts(self.keywords_stats_files)
+        )
+
+class Wl_Worker_Keyword_Extractor_Fig(Wl_Worker_Keyword_Extractor):
+    def run(self):
+        super().run()
+
+        self.progress_updated.emit(self.tr('Rendering figure...'))
+        self.worker_done.emit(
+            self.err_msg,
+            wl_misc.merge_dicts(self.keywords_freq_files),
+            wl_misc.merge_dicts(self.keywords_stats_files)
+        )
