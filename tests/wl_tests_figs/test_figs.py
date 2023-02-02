@@ -23,6 +23,9 @@ from wordless.wl_figs import wl_figs
 
 main = wl_test_init.Wl_Test_Main()
 
+def test_restore_matplotlib_rcparams():
+    wl_figs.restore_matplotlib_rcparams()
+
 def test_get_data_ranks():
     data_files_items = [(str(i), i) for i in range(100)]
     fig_settings = {
@@ -75,9 +78,15 @@ def test_generate_network_graph():
         fig_settings = main.settings_custom['collocation_extractor']['fig_settings'],
     )
 
+def test_show_fig():
+    wl_figs.show_fig()
+
 if __name__ == '__main__':
+    test_restore_matplotlib_rcparams()
     test_get_data_ranks()
 
     test_generate_line_chart()
     test_generate_word_cloud()
     test_generate_network_graph()
+
+    test_show_fig()
