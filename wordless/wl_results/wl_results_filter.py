@@ -279,6 +279,12 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
                 self.label_adjusted_freq_max, self.spin_box_adjusted_freq_max, self.checkbox_adjusted_freq_max_no_limit
             ])
 
+        widgets_filter.append([
+            self.label_num_files_found,
+            self.label_num_files_found_min, self.spin_box_num_files_found_min, self.checkbox_num_files_found_min_no_limit,
+            self.label_num_files_found_max, self.spin_box_num_files_found_max, self.checkbox_num_files_found_max_no_limit
+        ])
+
         add_widgets_filter(self, widgets_filter = widgets_filter, layout = self.layout_filters)
 
         self.load_settings()

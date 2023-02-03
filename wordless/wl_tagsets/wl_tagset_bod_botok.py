@@ -33,7 +33,7 @@ MAPPINGS = [
     ['PART', 'PART', 'Particle', ''],
     ['PRON', 'PRON', 'Pronoun', ''],
     ['VERB', 'VERB', 'Verb', ''],
-    ['NO_POS', 'X', '', 'No POS'],
+    ['NO_POS', 'X', '', 'No part-of-speech'],
     ['NON_WORD', 'X', '', 'Non-word'],
 
     # Languages
@@ -43,7 +43,7 @@ MAPPINGS = [
     ['OTHER', 'X', '', 'Other languages'],
 
     # Tibetan Textual Content
-    ['TEXT', 'X', '', 'Tibetan Textual Content'],
+    ['TEXT', 'X', '', 'Tibetan textual content'],
 
     # Tibetan Non-textual Content
     ['NUM', 'NUM', '', 'Numeral'],

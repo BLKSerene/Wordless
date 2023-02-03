@@ -134,7 +134,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
             tab = 'ngram_generator'
         )
 
-        self.label_search_term_position = QLabel(self.tr('Search Term Position:'), self)
+        self.label_search_term_position = QLabel(self.tr('Search term position:'), self)
         (
             self.label_search_term_position_min,
             self.spin_box_search_term_position_min,
@@ -214,7 +214,7 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
 
-        self.label_ngram_size = QLabel(self.tr('N-gram Size:'), self)
+        self.label_ngram_size = QLabel(self.tr('N-gram size:'), self)
         (
             self.checkbox_ngram_size_sync,
             self.label_ngram_size_min,
@@ -552,8 +552,8 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             sorting_enabled = True
         )
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
         self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda

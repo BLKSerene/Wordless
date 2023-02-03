@@ -525,17 +525,17 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
                     if file_path in self.file_paths_empty:
                         dialog_err_files.table_err_files.model().setItem(
                             i, 0,
-                            QStandardItem(self.tr('Empty File'))
+                            QStandardItem(self.tr('Empty file'))
                         )
                     elif file_path in self.file_paths_unsupported:
                         dialog_err_files.table_err_files.model().setItem(
                             i, 0,
-                            QStandardItem(self.tr('Unsupported File Type'))
+                            QStandardItem(self.tr('Unsupported file type'))
                         )
                     elif file_path in self.file_paths_dup:
                         dialog_err_files.table_err_files.model().setItem(
                             i, 0,
-                            QStandardItem(self.tr('Duplicate File'))
+                            QStandardItem(self.tr('Duplicate file'))
                         )
 
                     dialog_err_files.table_err_files.model().setItem(

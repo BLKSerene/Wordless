@@ -105,10 +105,10 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             self.checkbox_match_tags
         ) = wl_widgets.wl_widgets_search_settings(self, self.tab)
 
-        self.button_find_next = QPushButton(self.tr('Find Next'), self)
-        self.button_find_prev = QPushButton(self.tr('Find Previous'), self)
-        self.button_find_all = QPushButton(self.tr('Find All'), self)
-        self.button_clr_hightlights = QPushButton(self.tr('Clear Highlights'), self)
+        self.button_find_next = QPushButton(self.tr('Find next'), self)
+        self.button_find_prev = QPushButton(self.tr('Find previous'), self)
+        self.button_find_all = QPushButton(self.tr('Find all'), self)
+        self.button_clr_hightlights = QPushButton(self.tr('Clear highlights'), self)
 
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_close = QPushButton(self.tr('Close'), self)

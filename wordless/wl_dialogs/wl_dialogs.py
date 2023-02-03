@@ -114,8 +114,6 @@ class Wl_Dialog_Settings(Wl_Dialog_Info):
     def __init__(self, main, title, width = 0, height = 0):
         super().__init__(main, title, width, height, no_buttons = True)
 
-        self.setMinimumWidth(450)
-
         # Alias
         self.wrapper_settings = self.wrapper_info
 

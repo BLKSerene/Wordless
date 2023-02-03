@@ -153,21 +153,21 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
-        self.label_width_left = QLabel(self.tr('Width (Left):'), self)
+        self.label_width_left = QLabel(self.tr('Width (left):'), self)
         self.stacked_widget_width_left = wl_layouts.Wl_Stacked_Widget(self)
         self.spin_box_width_left_char = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_token = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_sentence_seg = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_sentence = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_para = wl_boxes.Wl_Spin_Box(self)
-        self.label_width_right = QLabel(self.tr('Width (Right):'), self)
+        self.label_width_right = QLabel(self.tr('Width (right):'), self)
         self.stacked_widget_width_right = wl_layouts.Wl_Stacked_Widget(self)
         self.spin_box_width_right_char = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_right_token = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_right_sentence_seg = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_right_sentence = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_right_para = wl_boxes.Wl_Spin_Box(self)
-        self.label_width_unit = QLabel(self.tr('Width Unit:'), self)
+        self.label_width_unit = QLabel(self.tr('Width unit:'), self)
         self.combo_box_width_unit = wl_boxes.Wl_Combo_Box(self)
 
         self.stacked_widget_width_left.addWidget(self.spin_box_width_left_char)
@@ -184,7 +184,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.combo_box_width_unit.addItems([
             self.tr('Character'),
             self.tr('Token'),
-            self.tr('Sentence Segment'),
+            self.tr('Sentence segment'),
             self.tr('Sentence'),
             self.tr('Paragraph')
         ])
@@ -250,7 +250,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
 
         self.combo_box_sort_results_by.addItems([
             self.tr('File'),
-            self.tr('Search Term')
+            self.tr('Search term')
         ])
 
         self.combo_box_sort_results_by.currentTextChanged.connect(self.fig_settings_changed)
@@ -416,7 +416,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         elif settings['width_unit'] == self.tr('Token'):
             self.stacked_widget_width_left.setCurrentIndex(1)
             self.stacked_widget_width_right.setCurrentIndex(1)
-        elif settings['width_unit'] == self.tr('Sentence Segment'):
+        elif settings['width_unit'] == self.tr('Sentence segment'):
             self.stacked_widget_width_left.setCurrentIndex(2)
             self.stacked_widget_width_right.setCurrentIndex(2)
         elif settings['width_unit'] == self.tr('Sentence'):
@@ -482,8 +482,8 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             ]
         )
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
         self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
@@ -644,7 +644,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     matplotlib.pyplot.ylabel(self.tr('File'))
                     matplotlib.pyplot.yticks(y_ticks, y_tick_labels)
                     matplotlib.pyplot.ylim(-1, y_max)
-                elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
+                elif settings['fig_settings']['sort_results_by'] == self.tr('Search term'):
                     matplotlib.pyplot.plot(
                         points[:, 0],
                         points[:, 1],
@@ -812,7 +812,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                     text_search_left = tokens[max(0, i - width_left_token) : i]
                                     text_search_right = tokens[i + len_search_term : i + len_search_term + width_right_token]
                             else:
-                                if settings['generation_settings']['width_unit'] == self.tr('Sentence Segment'):
+                                if settings['generation_settings']['width_unit'] == self.tr('Sentence segment'):
                                     width_settings = 'sentence_seg'
                                     offsets_unit = offsets_sentence_segs
                                     no_unit = no_sentence_seg
@@ -877,7 +877,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 else:
                                     concordance_line.append(0)
                             else:
-                                concordance_line.append(self.tr('No Support'))
+                                concordance_line.append(self.tr('No support'))
 
                             # Token No.
                             concordance_line.append([i + 1, len_tokens])
@@ -966,7 +966,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                                     points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
                                     # Total
                                     points.append([x_start_total + k, 0])
-            elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
+            elif settings['fig_settings']['sort_results_by'] == self.tr('Search term'):
                 search_terms_total = sorted(search_terms_total, reverse = True)
                 search_terms_labels = sorted(search_terms_labels, reverse = True)
 
@@ -1012,7 +1012,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     labels.append([self.tr('Total')] + [file['name'] for file in reversed(files)])
                     labels.append(len(files) + 1)
 
-                elif settings['fig_settings']['sort_results_by'] == self.tr('Search Term'):
+                elif settings['fig_settings']['sort_results_by'] == self.tr('Search term'):
                     len_search_terms_total = len(search_terms_total)
 
                     for i, text in enumerate(texts):

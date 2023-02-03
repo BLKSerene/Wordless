@@ -346,8 +346,8 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             sorting_enabled = True
         )
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
         self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
@@ -625,7 +625,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                             keyword: numpy.array(stats_files)[:, 1]
                             for keyword, stats_files in keywords_stats_files.items()
                         }
-                    elif settings['fig_settings']['use_data'] == self.tr('Bayes Factor'):
+                    elif settings['fig_settings']['use_data'] == self.tr('Bayes factor'):
                         keywords_stat_files = {
                             keyword: numpy.array(stats_files)[:, 2]
                             for keyword, stats_files in keywords_stats_files.items()

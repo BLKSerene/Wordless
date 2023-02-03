@@ -183,7 +183,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
 
-        self.label_window = QLabel(self.tr('Collocational Window:'), self)
+        self.label_window = QLabel(self.tr('Collocational window:'), self)
         (
             self.checkbox_window_sync,
             self.label_window_left,
@@ -192,7 +192,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.spin_box_window_right
         ) = wl_boxes.wl_spin_boxes_min_max_sync_window(self)
 
-        self.label_limit_searching = QLabel(self.tr('Limit Searching:'), self)
+        self.label_limit_searching = QLabel(self.tr('Limit searching:'), self)
         self.combo_box_limit_searching = wl_boxes.Wl_Combo_Box(self)
 
         (
@@ -206,9 +206,9 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
 
         self.combo_box_limit_searching.addItems([
             self.tr('None'),
-            self.tr('Within Sentence Segments'),
-            self.tr('Within Sentences'),
-            self.tr('Within Paragraphs')
+            self.tr('Within sentence segments'),
+            self.tr('Within sentences'),
+            self.tr('Within paragraphs')
         ])
 
         self.checkbox_window_sync.stateChanged.connect(self.generation_settings_changed)
@@ -538,8 +538,8 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             sorting_enabled = True
         )
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
         self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
@@ -889,7 +889,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     )
                 elif settings['fig_settings']['use_data'] == self.tr('Frequency'):
                     # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
+                    if settings['fig_settings']['graph_type'] == self.tr('Network graph'):
                         collocates_freq_files = {
                             (' '.join(node), collocate): numpy.array(freqs).sum(axis = 1)
                             for (node, collocate), freqs in colligations_freqs_file.items()
@@ -907,7 +907,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     )
                 else:
                     # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
+                    if settings['fig_settings']['graph_type'] == self.tr('Network graph'):
                         colligations_stats_files = {
                             (' '.join(node), collocate): freqs
                             for (node, collocate), freqs in colligations_stats_files.items()
@@ -929,7 +929,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                             collocate: numpy.array(stats_files)[:, 1]
                             for collocate, stats_files in colligations_stats_files.items()
                         }
-                    elif settings['fig_settings']['use_data'] == self.tr('Bayes Factor'):
+                    elif settings['fig_settings']['use_data'] == self.tr('Bayes factor'):
                         collocates_stat_files = {
                             collocate: numpy.array(stats_files)[:, 2]
                             for collocate, stats_files in colligations_stats_files.items()
@@ -1050,13 +1050,13 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                     for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, ngram_size)):
                         # Limit Searching
                         if settings_limit_searching != self.tr('None'):
-                            if settings_limit_searching == self.tr('Within Sentence Segments'):
+                            if settings_limit_searching == self.tr('Within sentence segments'):
                                 offsets_unit = offsets_sentence_segs
                                 len_unit = len_sentence_segs
-                            elif settings_limit_searching == self.tr('Within Sentences'):
+                            elif settings_limit_searching == self.tr('Within sentences'):
                                 offsets_unit = offsets_sentences
                                 len_unit = len_sentences
-                            elif settings_limit_searching == self.tr('Within Paragraphs'):
+                            elif settings_limit_searching == self.tr('Within paragraphs'):
                                 offsets_unit = offsets_paras
                                 len_unit = len_paras
 
