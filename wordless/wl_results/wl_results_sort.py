@@ -29,6 +29,185 @@ from wordless.wl_widgets import wl_buttons, wl_item_delegates, wl_labels, wl_lay
 
 _tr = QCoreApplication.translate
 
+class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
+    def __init__(self, main, table):
+        super().__init__(main, _tr('Wl_Dialog_Results_Sort_Concordancer', 'Sort Results'))
+
+        self.table = table
+        self.settings = self.main.settings_custom[self.table.tab]['sort_results']
+
+        self.main.wl_work_area.currentChanged.connect(self.reject)
+
+        self.table_sort = Wl_Table_Results_Sort_Conordancer(self, table = self.table)
+
+        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
+        self.button_sort = QPushButton(self.tr('Sort'), self)
+        self.button_close = QPushButton(self.tr('Close'), self)
+
+        if self.table.tab == 'concordancer':
+            self.button_sort.clicked.connect(lambda: self.sort_results()) # pylint: disable=unnecessary-lambda
+
+        self.button_close.clicked.connect(self.reject)
+
+        layout_table_sort = wl_layouts.Wl_Layout()
+        layout_table_sort.addWidget(self.table_sort, 0, 0, 5, 1)
+        layout_table_sort.addWidget(self.table_sort.button_add, 0, 1)
+        layout_table_sort.addWidget(self.table_sort.button_ins, 1, 1)
+        layout_table_sort.addWidget(self.table_sort.button_del, 2, 1)
+        layout_table_sort.addWidget(self.table_sort.button_clr, 3, 1)
+
+        layout_table_sort.setRowStretch(4, 1)
+
+        layout_buttons = wl_layouts.Wl_Layout()
+        layout_buttons.addWidget(self.button_restore_defaults, 0, 0)
+        layout_buttons.addWidget(self.button_sort, 0, 2)
+        layout_buttons.addWidget(self.button_close, 0, 3)
+
+        layout_buttons.setColumnStretch(1, 1)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addLayout(layout_table_sort, 0, 0)
+
+        self.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0)
+        self.layout().addLayout(layout_buttons, 2, 0)
+
+        self.set_fixed_size()
+
+    # To be called by "Restore Default Settings"
+    def load_settings(self, defaults = False):
+        self.table_sort.load_settings(defaults = defaults)
+
+    @wl_misc.log_timing
+    def sort_results(self):
+        if not self.table.is_empty():
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Sorting results...'))
+
+            worker_results_sort_concordancer = Wl_Worker_Results_Sort_Concordancer(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = self.update_gui,
+                dialog = self
+            )
+
+            thread_results_sort_concordancer = wl_threading.Wl_Thread(worker_results_sort_concordancer)
+            thread_results_sort_concordancer.start_worker()
+
+        self.main.statusBar().showMessage(self.tr('The results in the table has been successfully sorted.'))
+
+    def update_gui(self, results):
+        # Create new labels
+        for i, (
+            left_old, node_old, right_old,
+            _, _, _, _, _, _, _, _, _, _
+        ) in enumerate(results):
+            left_new = wl_labels.Wl_Label_Html('', self.table)
+            node_new = wl_labels.Wl_Label_Html(node_old.text(), self.table)
+            right_new = wl_labels.Wl_Label_Html('', self.table)
+
+            left_new.text_raw = left_old.text_raw.copy()
+            node_new.text_raw = node_old.text_raw.copy()
+            right_new.text_raw = right_old.text_raw.copy()
+
+            left_new.text_search = left_old.text_search.copy()
+            node_new.text_search = node_old.text_search.copy()
+            right_new.text_search = right_old.text_search.copy()
+
+            results[i][0] = left_new
+            results[i][1] = node_new
+            results[i][2] = right_new
+
+        # Sort results
+        for sorting_col, sorting_order in reversed(self.settings['sorting_rules']):
+            reverse = 0 if sorting_order == self.tr('Ascending') else 1
+
+            if sorting_col == self.tr('Node'):
+                results.sort(key = lambda item: item[1].text_raw, reverse = reverse)
+            # Sort first by type (strings after floats), then sort numerically or alphabetically
+            elif sorting_col == self.tr('Sentiment'):
+                results.sort(key = lambda item: (str(type(item[3])), item[3]), reverse = reverse)
+            elif sorting_col == self.tr('Token no.'):
+                results.sort(key = lambda item: item[4], reverse = reverse)
+            elif sorting_col == self.tr('File'):
+                results.sort(key = lambda item: item[12], reverse = reverse)
+            else:
+                span = int(sorting_col[1:])
+
+                if re.search(self.tr(r'^L\d+$'), sorting_col):
+                    results.sort(key = lambda item, span = span: item[0].text_raw[-span], reverse = reverse)
+                elif re.search(self.tr(r'^R\d+$'), sorting_col):
+                    results.sort(key = lambda item, span = span: item[2].text_raw[span - 1], reverse = reverse)
+
+        self.table.disable_updates()
+
+        for i, (
+            left, node, right, sentiment,
+            no_token, no_token_pct,
+            no_sentence_seg, no_sentence_seg_pct,
+            no_sentence, no_sentence_pct,
+            no_para, no_para_pct,
+            file
+        ) in enumerate(results):
+            # Remove empty tokens
+            text_left = [token for token in left.text_raw if token]
+            text_right = [token for token in right.text_raw if token]
+
+            highlight_colors = self.main.settings_custom['concordancer']['sort_results']['highlight_colors']
+
+            i_highlight_color_left = 1
+            i_highlight_color_right = 1
+
+            for sorting_col, _ in self.settings['sorting_rules']:
+                if re.search(self.tr(r'^L[0-9]+$'), sorting_col) and int(sorting_col[1:]) <= len(text_left):
+                    hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
+
+                    text_left[-int(sorting_col[1:])] = f'''
+                        <span style="color: {hightlight_color}; font-weight: bold;">
+                            {text_left[-int(sorting_col[1:])]}
+                        </span>
+                    '''
+
+                    i_highlight_color_left += 1
+                elif re.search(self.tr(r'^R[0-9]+$'), sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
+                    hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
+
+                    text_right[int(sorting_col[1:]) - 1] = f'''
+                        <span style="color: {hightlight_color}; font-weight: bold;">
+                            {text_right[int(sorting_col[1:]) - 1]}
+                        </span>
+                    '''
+
+                    i_highlight_color_right += 1
+
+            self.table.indexWidget(self.table.model().index(i, 0)).setText(' '.join(text_left))
+            self.table.indexWidget(self.table.model().index(i, 1)).setText(node.text())
+            self.table.indexWidget(self.table.model().index(i, 2)).setText(' '.join(text_right))
+
+            self.table.indexWidget(self.table.model().index(i, 0)).text_raw = [token for token in left.text_raw if token]
+            self.table.indexWidget(self.table.model().index(i, 1)).text_raw = node.text_raw
+            self.table.indexWidget(self.table.model().index(i, 2)).text_raw = [token for token in right.text_raw if token]
+
+            self.table.indexWidget(self.table.model().index(i, 0)).text_search = left.text_search
+            self.table.indexWidget(self.table.model().index(i, 1)).text_search = node.text_search
+            self.table.indexWidget(self.table.model().index(i, 2)).text_search = right.text_search
+
+            if isinstance(sentiment, float):
+                self.table.set_item_num(i, 3, sentiment)
+            # No Support
+            else:
+                self.table.set_item_error(i, 3, text = sentiment)
+
+            self.table.set_item_num_val(i, 4, no_token)
+            self.table.set_item_num_val(i, 5, no_token_pct)
+            self.table.set_item_num_val(i, 6, no_sentence_seg)
+            self.table.set_item_num_val(i, 7, no_sentence_seg_pct)
+            self.table.set_item_num_val(i, 8, no_sentence)
+            self.table.set_item_num_val(i, 9, no_sentence_pct)
+            self.table.set_item_num_val(i, 10, no_para)
+            self.table.set_item_num_val(i, 11, no_para_pct)
+            self.table.model().item(i, 12).setText(file)
+
+        self.table.enable_updates(emit_signals = False)
+
 class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
     def __init__(self, parent, table):
         super().__init__(
@@ -304,16 +483,18 @@ class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
             sentiment = self.dialog.table.model().item(i, 3).read_data()
             no_token = self.dialog.table.model().item(i, 4).val
             no_token_pct = self.dialog.table.model().item(i, 5).val
-            no_sentence = self.dialog.table.model().item(i, 6).val
-            no_sentence_pct = self.dialog.table.model().item(i, 7).val
-            no_para = self.dialog.table.model().item(i, 8).val
-            no_para_pct = self.dialog.table.model().item(i, 9).val
-            file = self.dialog.table.model().item(i, 10).text()
+            no_sentence_seg = self.dialog.table.model().item(i, 6).val
+            no_sentence_seg_pct = self.dialog.table.model().item(i, 7).val
+            no_sentence = self.dialog.table.model().item(i, 8).val
+            no_sentence_pct = self.dialog.table.model().item(i, 9).val
+            no_para = self.dialog.table.model().item(i, 10).val
+            no_para_pct = self.dialog.table.model().item(i, 11).val
+            file = self.dialog.table.model().item(i, 12).text()
 
             results.append([
-                left_old, node_old, right_old,
-                sentiment,
+                left_old, node_old, right_old, sentiment,
                 no_token, no_token_pct,
+                no_sentence_seg, no_sentence_seg_pct,
                 no_sentence, no_sentence_pct,
                 no_para, no_para_pct,
                 file
@@ -321,180 +502,3 @@ class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
 
         self.progress_updated.emit(self.tr('Updating table...'))
         self.worker_done.emit(results)
-
-class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
-    def __init__(self, main, table):
-        super().__init__(main, _tr('Wl_Dialog_Results_Sort_Concordancer', 'Sort Results'))
-
-        self.table = table
-        self.settings = self.main.settings_custom[self.table.tab]['sort_results']
-
-        self.main.wl_work_area.currentChanged.connect(self.reject)
-
-        self.table_sort = Wl_Table_Results_Sort_Conordancer(self, table = self.table)
-
-        self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_sort = QPushButton(self.tr('Sort'), self)
-        self.button_close = QPushButton(self.tr('Close'), self)
-
-        if self.table.tab == 'concordancer':
-            self.button_sort.clicked.connect(lambda: self.sort_results()) # pylint: disable=unnecessary-lambda
-
-        self.button_close.clicked.connect(self.reject)
-
-        layout_table_sort = wl_layouts.Wl_Layout()
-        layout_table_sort.addWidget(self.table_sort, 0, 0, 5, 1)
-        layout_table_sort.addWidget(self.table_sort.button_add, 0, 1)
-        layout_table_sort.addWidget(self.table_sort.button_ins, 1, 1)
-        layout_table_sort.addWidget(self.table_sort.button_del, 2, 1)
-        layout_table_sort.addWidget(self.table_sort.button_clr, 3, 1)
-
-        layout_table_sort.setRowStretch(4, 1)
-
-        layout_buttons = wl_layouts.Wl_Layout()
-        layout_buttons.addWidget(self.button_restore_defaults, 0, 0)
-        layout_buttons.addWidget(self.button_sort, 0, 2)
-        layout_buttons.addWidget(self.button_close, 0, 3)
-
-        layout_buttons.setColumnStretch(1, 1)
-
-        self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addLayout(layout_table_sort, 0, 0)
-
-        self.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0)
-        self.layout().addLayout(layout_buttons, 2, 0)
-
-        self.set_fixed_size()
-
-    # To be called by "Restore Default Settings"
-    def load_settings(self, defaults = False):
-        self.table_sort.load_settings(defaults = defaults)
-
-    @wl_misc.log_timing
-    def sort_results(self):
-        def update_gui(results):
-            # Create new labels
-            for i, (
-                left_old, node_old, right_old,
-                _, _, _, _, _, _, _, _
-            ) in enumerate(results):
-                left_new = wl_labels.Wl_Label_Html('', self.table)
-                node_new = wl_labels.Wl_Label_Html(node_old.text(), self.table)
-                right_new = wl_labels.Wl_Label_Html('', self.table)
-
-                left_new.text_raw = left_old.text_raw.copy()
-                node_new.text_raw = node_old.text_raw.copy()
-                right_new.text_raw = right_old.text_raw.copy()
-
-                left_new.text_search = left_old.text_search.copy()
-                node_new.text_search = node_old.text_search.copy()
-                right_new.text_search = right_old.text_search.copy()
-
-                results[i][0] = left_new
-                results[i][1] = node_new
-                results[i][2] = right_new
-
-            # Sort results
-            for sorting_col, sorting_order in reversed(self.settings['sorting_rules']):
-                reverse = 0 if sorting_order == self.tr('Ascending') else 1
-
-                if sorting_col == self.tr('Node'):
-                    results.sort(key = lambda item: item[1].text_raw, reverse = reverse)
-                # Sort first by type (strings after floats), then sort numerically or alphabetically
-                elif sorting_col == self.tr('Sentiment'):
-                    results.sort(key = lambda item: (str(type(item[3])), item[3]), reverse = reverse)
-                elif sorting_col == self.tr('Token no.'):
-                    results.sort(key = lambda item: item[4], reverse = reverse)
-                elif sorting_col == self.tr('File'):
-                    results.sort(key = lambda item: item[10], reverse = reverse)
-                else:
-                    span = int(sorting_col[1:])
-
-                    if re.search(r'^L\d+$', sorting_col):
-                        results.sort(key = lambda item, span = span: item[0].text_raw[-span], reverse = reverse)
-                    elif re.search(r'^R\d+$', sorting_col):
-                        results.sort(key = lambda item, span = span: item[2].text_raw[span - 1], reverse = reverse)
-
-            self.table.disable_updates()
-
-            for i, (
-                left, node, right,
-                sentiment,
-                no_token, no_token_pct,
-                no_sentence, no_sentence_pct,
-                no_para, no_para_pct,
-                file
-            ) in enumerate(results):
-                # Remove empty tokens
-                text_left = [token for token in left.text_raw if token]
-                text_right = [token for token in right.text_raw if token]
-
-                highlight_colors = self.main.settings_custom['concordancer']['sort_results']['highlight_colors']
-
-                i_highlight_color_left = 1
-                i_highlight_color_right = 1
-
-                for sorting_col, _ in self.settings['sorting_rules']:
-                    if re.search(self.tr(r'^L[0-9]+$'), sorting_col) and int(sorting_col[1:]) <= len(text_left):
-                        hightlight_color = highlight_colors[i_highlight_color_left % len(highlight_colors)]
-
-                        text_left[-int(sorting_col[1:])] = f'''
-                            <span style="color: {hightlight_color}; font-weight: bold;">
-                                {text_left[-int(sorting_col[1:])]}
-                            </span>
-                        '''
-
-                        i_highlight_color_left += 1
-                    elif re.search(self.tr(r'^R[0-9]+$'), sorting_col) and int(sorting_col[1:]) - 1 < len(text_right):
-                        hightlight_color = highlight_colors[i_highlight_color_right % len(highlight_colors)]
-
-                        text_right[int(sorting_col[1:]) - 1] = f'''
-                            <span style="color: {hightlight_color}; font-weight: bold;">
-                                {text_right[int(sorting_col[1:]) - 1]}
-                            </span>
-                        '''
-
-                        i_highlight_color_right += 1
-
-                self.table.indexWidget(self.table.model().index(i, 0)).setText(' '.join(text_left))
-                self.table.indexWidget(self.table.model().index(i, 1)).setText(node.text())
-                self.table.indexWidget(self.table.model().index(i, 2)).setText(' '.join(text_right))
-
-                self.table.indexWidget(self.table.model().index(i, 0)).text_raw = [token for token in left.text_raw if token]
-                self.table.indexWidget(self.table.model().index(i, 1)).text_raw = node.text_raw
-                self.table.indexWidget(self.table.model().index(i, 2)).text_raw = [token for token in right.text_raw if token]
-
-                self.table.indexWidget(self.table.model().index(i, 0)).text_search = left.text_search
-                self.table.indexWidget(self.table.model().index(i, 1)).text_search = node.text_search
-                self.table.indexWidget(self.table.model().index(i, 2)).text_search = right.text_search
-
-                if isinstance(sentiment, float):
-                    self.table.set_item_num(i, 3, sentiment)
-                # No Support
-                else:
-                    self.table.set_item_error(i, 3, text = sentiment)
-
-                self.table.set_item_num_val(i, 4, no_token)
-                self.table.set_item_num_val(i, 5, no_token_pct)
-                self.table.set_item_num_val(i, 6, no_sentence)
-                self.table.set_item_num_val(i, 7, no_sentence_pct)
-                self.table.set_item_num_val(i, 8, no_para)
-                self.table.set_item_num_val(i, 9, no_para_pct)
-                self.table.model().item(i, 10).setText(file)
-
-            self.table.enable_updates(emit_signals = False)
-
-        if not self.table.is_empty():
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Sorting results...'))
-
-            worker_results_sort_concordancer = Wl_Worker_Results_Sort_Concordancer(
-                self.main,
-                dialog_progress = dialog_progress,
-                update_gui = update_gui,
-                dialog = self
-            )
-
-            thread_results_sort_concordancer = wl_threading.Wl_Thread(worker_results_sort_concordancer)
-            thread_results_sort_concordancer.start_worker()
-
-        self.main.statusBar().showMessage(self.tr('The results in the table has been successfully sorted.'))
