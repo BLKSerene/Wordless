@@ -144,11 +144,11 @@ class Wl_Text:
             tags_word = []
 
             for _, level, opening_tag, _ in self.main.settings_custom['files']['tags']['xml_tag_settings']:
-                if level == _tr('Wl_Text', 'Paragraph'):
+                if level == _tr('wl_texts', 'Paragraph'):
                     tags_para.append(opening_tag[1:-1])
-                elif level == _tr('Wl_Text', 'Sentence'):
+                elif level == _tr('wl_texts', 'Sentence'):
                     tags_sentence.append(opening_tag[1:-1])
-                elif level == _tr('Wl_Text', 'Word'):
+                elif level == _tr('wl_texts', 'Word'):
                     tags_word.append(opening_tag[1:-1])
 
             css_para = ','.join(tags_para)
@@ -289,7 +289,7 @@ class Wl_Text_Ref():
             tags_word = []
 
             for _, level, opening_tag, _ in self.main.settings_custom['files']['tags']['xml_tag_settings']:
-                if level == _tr('Wl_Text', 'Word'):
+                if level == _tr('wl_texts', 'Word'):
                     tags_word.append(opening_tag[1:-1])
 
             css_word = ','.join(tags_word)

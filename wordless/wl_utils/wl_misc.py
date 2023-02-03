@@ -169,12 +169,12 @@ def log_timing(func):
         time_elapsed_mins = int(time_elapsed // 60)
         time_elapsed_secs = time_elapsed % 60
 
-        msg_min = _tr('log_timing', 'minute') if time_elapsed_mins == 1 else _tr('log_timing', 'minutes')
-        msg_time = _tr('log_timing', '(In {} {} {:.2f} seconds)').format(time_elapsed_mins, msg_min, time_elapsed_secs)
+        msg_min = _tr('wl_misc', 'minute') if time_elapsed_mins == 1 else _tr('wl_misc', 'minutes')
+        msg_time = _tr('wl_misc', '(In {} {} {:.2f} seconds)').format(time_elapsed_mins, msg_min, time_elapsed_secs)
 
         if (msg_cur := main.statusBar().currentMessage()):
-            if _tr('log_timing', '(In') in msg_cur:
-                main.statusBar().showMessage(f"{msg_cur.split(_tr('log_timing', '(In'))[0].rstrip()} {msg_time}")
+            if _tr('wl_misc', '(In') in msg_cur:
+                main.statusBar().showMessage(f"{msg_cur.split(_tr('wl_misc', '(In'))[0].rstrip()} {msg_time}")
             else:
                 main.statusBar().showMessage(f'{msg_cur} {msg_time}')
         else:

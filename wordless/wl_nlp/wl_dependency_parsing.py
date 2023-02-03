@@ -259,8 +259,8 @@ def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
     # Inform users of figures' save location in case the browser does not start successfully
     wl_msg_boxes.Wl_Msg_Box_Info(
         main,
-        title = _tr('open_svg_in_browser', 'Dependency Graphs Generated Successfully'),
-        text = _tr('open_svg_in_browser', '''
+        title = _tr('wl_dependency_parsing', 'Dependency Graphs Generated Successfully'),
+        text = _tr('wl_dependency_parsing', '''
             <div>Dependency graphs has been successfully generated and exported under folder: {}</div>
 
             <div>If the figures are not displayed automatically, you may try opening them manually using web browsers or image viewers installed on your computer, or save copies of them in other locations for later use.</div>
