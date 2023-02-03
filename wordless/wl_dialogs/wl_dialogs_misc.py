@@ -36,7 +36,7 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
         self.timer_time_elapsed = QTimer(self)
 
         self.label_progress = QLabel(text, self)
-        self.label_time_elapsed = QLabel(_tr('Wl_Dialog_Progress', 'Elapsed Time: 0:00:00'), self)
+        self.label_time_elapsed = QLabel(_tr('Wl_Dialog_Progress', 'Elapsed time: 0:00:00'), self)
         self.label_processing = wl_labels.Wl_Label_Dialog(_tr('Wl_Dialog_Progress', 'Please wait. It may take a few seconds to several minutes for the operation to be completed.'), self)
 
         self.timer_time_elapsed.timeout.connect(self.update_elapsed_time)
@@ -51,7 +51,7 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
 
     def update_elapsed_time(self):
         self.label_time_elapsed.setText(
-            _tr('Wl_Dialog_Progress', 'Elapsed Time: ')
+            _tr('Wl_Dialog_Progress', 'Elapsed time: ')
             + str(datetime.timedelta(seconds = round(time.time() - self.time_start)))
         )
 

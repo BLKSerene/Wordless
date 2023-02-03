@@ -45,7 +45,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.cols_to_sort_default = [
             self.tr('Node'),
             self.tr('Sentiment'),
-            self.tr('Token No.'),
+            self.tr('Token no.'),
             self.tr('File')
         ]
 
@@ -403,7 +403,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                 # Sort first by type (strings after floats), then sort numerically or alphabetically
                 elif sorting_col == self.tr('Sentiment'):
                     results.sort(key = lambda item: (str(type(item[3])), item[3]), reverse = reverse)
-                elif sorting_col == self.tr('Token No.'):
+                elif sorting_col == self.tr('Token no.'):
                     results.sort(key = lambda item: item[4], reverse = reverse)
                 elif sorting_col == self.tr('File'):
                     results.sort(key = lambda item: item[10], reverse = reverse)

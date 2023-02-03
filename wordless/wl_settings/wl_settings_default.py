@@ -223,7 +223,7 @@ def init_settings_default(main):
             'sort_results': {
                 'sorting_rules': [
                     [_tr('init_settings_default', 'File'), _tr('init_settings_default', 'Ascending')],
-                    [_tr('init_settings_default', 'Token No.'), _tr('init_settings_default', 'Ascending')]
+                    [_tr('init_settings_default', 'Token no.'), _tr('init_settings_default', 'Ascending')]
                 ],
 
                 'highlight_colors': [
@@ -451,7 +451,7 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'graph_type': _tr('init_settings_default', 'Line chart'),
                 'sort_by_file': _tr('init_settings_default', 'Total'),
                 'use_data': _tr('init_settings_default', 'Frequency'),
                 'use_pct': False,
@@ -599,7 +599,7 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'graph_type': _tr('init_settings_default', 'Line chart'),
                 'sort_by_file': _tr('init_settings_default', 'Total'),
                 'use_data': _tr('init_settings_default', 'Frequency'),
                 'use_pct': False,
@@ -744,7 +744,7 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'graph_type': _tr('init_settings_default', 'Line chart'),
                 'sort_by_file': _tr('init_settings_default', 'Total'),
                 'use_data': _tr('init_settings_default', 'p-value'),
                 'use_pct': False,
@@ -900,7 +900,7 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'graph_type': _tr('init_settings_default', 'Line chart'),
                 'sort_by_file': _tr('init_settings_default', 'Total'),
                 'use_data': _tr('init_settings_default', 'p-value'),
                 'use_pct': False,
@@ -996,7 +996,7 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line Chart'),
+                'graph_type': _tr('init_settings_default', 'Line chart'),
                 'sort_by_file': _tr('init_settings_default', 'Total'),
                 'use_data': _tr('init_settings_default', 'p-value'),
                 'use_pct': False,
