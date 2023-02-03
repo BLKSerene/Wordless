@@ -41,6 +41,7 @@
 - Settings: Fix global settings - encodings
 - Settings: Fix Settings - General - User Interface Settings - Interface scaling
 - Settings: Fix Settings - Part-of-speech Tagging - Tagsets
+- Work Area: Fix Concordancer - Sort results
 - Work Area: Fix Work Area - Filter results
 
 ### ❌ Removals
