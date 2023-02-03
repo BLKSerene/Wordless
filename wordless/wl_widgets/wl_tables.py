@@ -85,7 +85,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                             csv_writer.writerow(row_to_exp)
 
-                            self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
                 # Parallel Concordancer
                 elif self.table.tab == 'concordancer_parallel':
                     with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
@@ -112,7 +112,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                             csv_writer.writerow(row_to_exp)
 
-                            self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
                 else:
                     with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
                         csv_writer = csv.writer(f)
@@ -133,7 +133,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 csv_writer.writerow(row_to_exp)
 
-                                self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
+                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
                         else:
                             # Horizontal Headers
                             csv_writer.writerow(
@@ -153,7 +153,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 csv_writer.writerow(row_to_exp)
 
-                                self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
+                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
             # Excel workbooks
             elif '*.xlsx' in self.file_type:
                 workbook = openpyxl.Workbook()
@@ -221,7 +221,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                 else:
                                     self.style_cell_text(cell, self.table.model().item(row_item, col))
 
-                            self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(row_cell + 1, len_rows))
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
 
                     # Row Height
                     worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
@@ -229,7 +229,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     for i, _ in enumerate(worksheet.rows):
                         worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
 
-                    self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Saving file...'))
+                    self.progress_updated.emit(self.tr('Saving file...'))
                 # Parallel Concordancer
                 elif self.table.tab == 'concordancer_parallel':
                     worksheet.freeze_panes = 'A3'
@@ -270,7 +270,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 self.style_cell_concordancer_parallel_node(cell, self.table.indexWidget(self.table.model().index(row_item, col)))
 
-                            self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(row_cell + 1, len_rows))
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
 
                     # Row Height
                     worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
@@ -278,7 +278,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     for i, _ in enumerate(worksheet.rows):
                         worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
 
-                    self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Saving target file...'))
+                    self.progress_updated.emit(self.tr('Saving target file...'))
                 else:
                     worksheet.freeze_panes = 'B2'
 
@@ -310,7 +310,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                 else:
                                     self.style_cell_text(cell, self.table.model().item(row_item, col))
 
-                            self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(row_cell + 1, len_rows))
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
                     else:
                         # Horizontal Headers
                         for col in range(self.table.model().columnCount()):
@@ -348,7 +348,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                 else:
                                     self.style_cell_text(cell, self.table.model().item(row_item, col))
 
-                            self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(row_cell + 1, len_rows))
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
 
                     # Row Height
                     worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
@@ -356,7 +356,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     for i, _ in enumerate(worksheet.rows):
                         worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
 
-                    self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Saving file...'))
+                    self.progress_updated.emit(self.tr('Saving file...'))
 
                 workbook.save(self.file_path)
             elif '*.docx' in self.file_type:
@@ -408,9 +408,9 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                         para = doc.add_paragraph(' '.join(para))
                         para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
 
-                        self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
+                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
 
-                    self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Saving file...'))
+                    self.progress_updated.emit(self.tr('Saving file...'))
                 # Parallel Concordancer
                 elif self.table.tab == 'concordancer_parallel':
                     for i, row in enumerate(self.rows_to_exp):
@@ -423,7 +423,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                         doc.add_paragraph('')
 
-                        self.progress_updated.emit(_tr('Wl_Worker_Exp_Table', 'Exporting table... ({} / {})').format(i + 1, len_rows))
+                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
 
                 doc.save(self.file_path)
 
@@ -909,21 +909,21 @@ class Wl_Table(QTableView):
             if exp_success:
                 wl_msg_boxes.Wl_Msg_Box_Info(
                     self.main,
-                    title = _tr('Wl_Table', 'Export Completed'),
-                    text = _tr('Wl_Table', '''
+                    title = self.tr('Export Completed'),
+                    text = self.tr('''
                         <div>The table has been successfully exported to "{}".</div>
                     ''').format(file_path)
                 ).open()
             else:
                 wl_msg_boxes.Wl_Msg_Box_Info(
                     self.main,
-                    title = _tr('Wl_Table', 'Export Error'),
-                    text = _tr('Wl_Table', '''
+                    title = self.tr('Export Error'),
+                    text = self.tr('''
                         <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
                     ''').format(file_path)
                 ).open()
 
-        caption = _tr('Wl_Table', 'Export Table')
+        caption = self.tr('Export Table')
         default_dir = self.main.settings_custom['general']['exp']['tables']['default_path']
         default_type = self.main.settings_custom['general']['exp']['tables']['default_type']
         default_ext = re.search(r'(?<=\(\*\.)[a-zA-Z0-9]+(?=[;\)])', default_type).group()
@@ -931,7 +931,7 @@ class Wl_Table(QTableView):
         # Errors (Search terms, stop word lists, file checking, etc.)
         if self.tab == 'err':
             file_path, file_type = QFileDialog.getSaveFileName(
-                self,
+                parent = self,
                 caption = caption,
                 directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_error.{default_ext}'),
                 filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
@@ -940,7 +940,7 @@ class Wl_Table(QTableView):
         # Concordancer (with zapping)
         elif self.tab == 'concordancer' and self.main.settings_custom['concordancer']['zapping_settings']['zapping']:
             file_path, file_type = QFileDialog.getSaveFileName(
-                self,
+                parent = self,
                 caption = caption,
                 directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.docx'),
                 filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer_zapping']),
@@ -948,7 +948,7 @@ class Wl_Table(QTableView):
         # Concordancer (without zapping) & Parallel Concordancer
         elif self.tab in ['concordancer', 'concordancer_parallel']:
             file_path, file_type = QFileDialog.getSaveFileName(
-                self,
+                parent = self,
                 caption = caption,
                 directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
                 filter = ';;'.join(self.main.settings_global['file_types']['exp_tables_concordancer']),
@@ -957,7 +957,7 @@ class Wl_Table(QTableView):
         # Other modules
         else:
             file_path, file_type = QFileDialog.getSaveFileName(
-                self,
+                parent = self,
                 caption = caption,
                 directory = os.path.join(wl_checks_misc.check_dir(default_dir), f'wordless_results_{self.tab}.{default_ext}'),
                 filter = ';;'.join(self.main.settings_global['file_types']['exp_tables']),
@@ -965,7 +965,7 @@ class Wl_Table(QTableView):
             )
 
         if file_path:
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('Wl_Table', 'Exporting table...'))
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Exporting table...'))
 
             worker_exp_table = Wl_Worker_Exp_Table(
                 self.main,
@@ -991,10 +991,10 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
 
         self.col_edit = col_edit
 
-        self.button_add = QPushButton(_tr('Wl_Table_Add_Ins_Del_Clr', 'Add'), self)
-        self.button_ins = QPushButton(_tr('Wl_Table_Add_Ins_Del_Clr', 'Insert'), self)
-        self.button_del = QPushButton(_tr('Wl_Table_Add_Ins_Del_Clr', 'Remove'), self)
-        self.button_clr = QPushButton(_tr('Wl_Table_Add_Ins_Del_Clr', 'Clear'), self)
+        self.button_add = QPushButton(self.tr('Add'), self)
+        self.button_ins = QPushButton(self.tr('Insert'), self)
+        self.button_del = QPushButton(self.tr('Remove'), self)
+        self.button_clr = QPushButton(self.tr('Clear'), self)
 
         self.button_add.clicked.connect(lambda: self.add_row()) # pylint: disable=unnecessary-lambda
         self.button_ins.clicked.connect(lambda: self.ins_row()) # pylint: disable=unnecessary-lambda
@@ -1085,9 +1085,9 @@ class Wl_Table_Data(Wl_Table):
         self.model().itemChanged.connect(self.item_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.button_exp_selected = QPushButton(_tr('Wl_Table_Data', 'Export Selected...'), self)
-        self.button_exp_all = QPushButton(_tr('Wl_Table_Data', 'Export All...'), self)
-        self.button_clr = QPushButton(_tr('Wl_Table_Data', 'Clear'), self)
+        self.button_exp_selected = QPushButton(self.tr('Export selected...'), self)
+        self.button_exp_all = QPushButton(self.tr('Export all...'), self)
+        self.button_clr = QPushButton(self.tr('Clear'), self)
 
         self.button_exp_selected.clicked.connect(self.exp_selected)
         self.button_exp_all.clicked.connect(self.exp_all)
@@ -1118,7 +1118,7 @@ class Wl_Table_Data(Wl_Table):
 
     def sorting_changed(self, logicalIndex, order): # pylint: disable=unused-argument
         if not self.is_empty():
-            if _tr('Wl_Table_Data', 'Rank') in self.get_header_labels_hor():
+            if self.tr('Rank') in self.get_header_labels_hor():
                 self.update_ranks()
 
             if self.show_cumulative:
@@ -1363,7 +1363,7 @@ class Wl_Table_Data(Wl_Table):
         sort_section = self.horizontalHeader().sortIndicatorSection()
         sort_order = self.horizontalHeader().sortIndicatorOrder()
 
-        col_rank = self.find_header_hor(_tr('Wl_Table_Data', 'Rank'))
+        col_rank = self.find_header_hor(self.tr('Rank'))
 
         self.sortByColumn(sort_section, sort_order)
 
@@ -1630,7 +1630,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
 
         self.label_number_results = QLabel()
         self.button_results_search = wl_buttons.Wl_Button(
-            _tr('Wl_Table_Data_Search', 'Search in Results'),
+            self.tr('Search in results'),
             self
         )
         self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
@@ -1649,11 +1649,11 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty() and rows_visible:
-            self.label_number_results.setText(_tr('Wl_Table_Data_Search', 'Number of Results: ') + str(rows_visible))
+            self.label_number_results.setText(self.tr('Number of results: ') + str(rows_visible))
 
             self.button_results_search.setEnabled(True)
         else:
-            self.label_number_results.setText(_tr('Wl_Table_Data_Search', 'Number of Results: 0'))
+            self.label_number_results.setText(self.tr('Number of results: 0'))
 
             self.button_results_search.setEnabled(False)
 
@@ -1677,11 +1677,11 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
 
         self.label_number_results = QLabel()
         self.button_results_search = wl_buttons.Wl_Button(
-            _tr('Wl_Table_Data_Sort_Search', 'Search in Results'),
+            self.tr('Search in results'),
             self
         )
         self.button_results_sort = wl_buttons.Wl_Button(
-            _tr('Wl_Table_Data_Sort_Search', 'Sort Results'),
+            self.tr('Sort results'),
             self
         )
 
@@ -1707,12 +1707,12 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty() and rows_visible:
-            self.label_number_results.setText(_tr('Wl_Table_Data_Sort_Search', 'Number of Results: ') + str(rows_visible))
+            self.label_number_results.setText(self.tr('Number of results: ') + str(rows_visible))
 
             self.button_results_sort.setEnabled(True)
             self.button_results_search.setEnabled(True)
         else:
-            self.label_number_results.setText(_tr('Wl_Table_Data_Sort_Search', 'Number of Results: 0'))
+            self.label_number_results.setText(self.tr('Number of results: 0'))
 
             self.button_results_sort.setEnabled(False)
             self.button_results_search.setEnabled(False)
@@ -1737,11 +1737,11 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
 
         self.label_number_results = QLabel()
         self.button_results_filter = wl_buttons.Wl_Button(
-            _tr('Wl_Table_Data_Filter_Search', 'Filter results'),
+            self.tr('Filter results'),
             self
         )
         self.button_results_search = wl_buttons.Wl_Button(
-            _tr('Wl_Table_Data_Filter_Search', 'Search in Results'),
+            self.tr('Search in results'),
             self
         )
 
@@ -1763,11 +1763,11 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty():
-            self.label_number_results.setText(_tr('Wl_Table_Data_Filter_Search', 'Number of Results: ') + str(rows_visible))
+            self.label_number_results.setText(self.tr('Number of results: ') + str(rows_visible))
 
             self.button_results_filter.setEnabled(True)
         else:
-            self.label_number_results.setText(_tr('Wl_Table_Data_Filter_Search', 'Number of Results: 0'))
+            self.label_number_results.setText(self.tr('Number of results: 0'))
 
             self.button_results_filter.setEnabled(False)
 

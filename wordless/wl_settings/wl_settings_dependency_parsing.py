@@ -205,6 +205,8 @@ class Wl_Dialog_Preview_Settings(wl_dialogs.Wl_Dialog_Settings):
     def __init__(self, main):
         super().__init__(main, title = 'Preview Settings')
 
+        self.setMinimumWidth(450)
+
         self.settings_custom = self.main.settings_custom['dependency_parsing']['preview']['preview_settings']
         self.settings_default = self.main.settings_default['dependency_parsing']['preview']['preview_settings']
 

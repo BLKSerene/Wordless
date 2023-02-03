@@ -329,8 +329,8 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
 
         self.selectionModel().selectionChanged.connect(self.selection_changed_generate_fig)
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate Figure'), self)
+        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
 
         self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
         self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda

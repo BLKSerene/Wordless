@@ -41,7 +41,7 @@ def wl_fig_stats(main, stat_files_items, tab):
         )
 
     # Line Chart
-    if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Line Chart'):
+    if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Line chart'):
         if tab == 'wordlist_generator':
             label_x = _tr('wl_fig_stats', 'Token')
         elif tab == 'ngram_generator':
@@ -64,8 +64,8 @@ def wl_fig_stats(main, stat_files_items, tab):
         ]
 
         # Word Cloud
-        if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Word Cloud'):
+        if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Word cloud'):
             wl_figs.generate_word_cloud(main, stat_file_items, fig_settings = fig_settings)
         # Network Graph
-        elif fig_settings['graph_type'] == _tr('wl_fig_stats', 'Network Graph'):
+        elif fig_settings['graph_type'] == _tr('wl_fig_stats', 'Network graph'):
             wl_figs.generate_network_graph(main, stat_file_items, fig_settings = fig_settings)

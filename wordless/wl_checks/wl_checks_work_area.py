@@ -30,7 +30,7 @@ def wl_msg_box_missing_search_terms(main):
         title = _tr('wl_checks_work_area', 'Missing Search Terms'),
         text = _tr('wl_checks_work_area', '''
             <div>
-                You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search Term</span>" first.
+                You have not specified any search terms yet, please enter one in the input box under "<span style="color: #F00; font-weight: bold;">Search term</span>" first.
             </div>
         ''')
     ).open()
@@ -79,10 +79,10 @@ def check_search_terms(main, search_settings, show_warning = True):
     return search_terms_ok
 
 NLP_UTILS = {
-    'syl_tokenizers': _tr('wl_checks_work_area', 'Syllable Tokenization'),
-    'pos_taggers': _tr('wl_checks_work_area', 'Part-of-speech Tagging'),
+    'syl_tokenizers': _tr('wl_checks_work_area', 'Syllable tokenization'),
+    'pos_taggers': _tr('wl_checks_work_area', 'Part-of-speech tagging'),
     'lemmatizers': _tr('wl_checks_work_area', 'Lemmatization'),
-    'dependency_parsers': _tr('wl_checks_work_area', 'Dependency Parsing')
+    'dependency_parsers': _tr('wl_checks_work_area', 'Dependency parsing')
 }
 
 def check_nlp_support(main, files, nlp_utils):

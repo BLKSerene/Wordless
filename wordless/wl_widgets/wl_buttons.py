@@ -119,7 +119,7 @@ class Wl_Button_Html_Multi_Label(Wl_Button):
 
 class Wl_Button_Browse(Wl_Button):
     def __init__(self, parent, line_edit, caption, filters, initial_filter = -1):
-        super().__init__(_tr('Wl_Button_Browse', 'Browse...'), parent)
+        super().__init__(_tr('wl_buttons', 'Browse...'), parent)
 
         self.line_edit = line_edit
         self.caption = caption
@@ -184,7 +184,7 @@ def wl_button_color(parent, allow_transparent = False):
 
 class Wl_Button_Restore_Defaults(Wl_Button):
     def __init__(self, parent, load_settings):
-        super().__init__(_tr('Wl_Button_Restore_Defaults', 'Restore defaults'), parent)
+        super().__init__(_tr('wl_buttons', 'Restore defaults'), parent)
 
         self.parent = parent
         self.load_settings = load_settings
@@ -196,7 +196,7 @@ class Wl_Button_Restore_Defaults(Wl_Button):
     def restore_defaults(self):
         if wl_msg_boxes.wl_msg_box_question(
             main = self.main,
-            title = self.tr('Restore defaults'),
+            title = self.tr('Restore Defaults'),
             text = self.tr('''
                 <div>Are you sure you want to reset all settings to their defaults?</div>
             ''')

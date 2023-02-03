@@ -261,7 +261,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
             ]
         )
 
-        self.button_generate_table = QPushButton(self.tr('Generate Table'), self)
+        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
 
         self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
         self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)

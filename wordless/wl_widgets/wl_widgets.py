@@ -18,7 +18,7 @@
 
 import copy
 
-from PyQt5.QtCore import QCoreApplication, QSize, Qt
+from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtWidgets import (
     QCheckBox, QGroupBox, QLabel, QLineEdit, QPushButton,
     QWidget
@@ -33,7 +33,7 @@ _tr = QCoreApplication.translate
 
 class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
     def __init__(self, main, tab):
-        super().__init__(main, title = _tr('Wl_Dialog_Context_Settings', 'Context Settings'))
+        super().__init__(main, title = _tr('wl_widgets', 'Context Settings'))
 
         self.tab = tab
         self.settings_custom = self.main.settings_custom[self.tab]['context_settings']
@@ -41,7 +41,6 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
 
         # Inclusion
         self.incl_group_box = QGroupBox(self.tr('Inclusion'), self)
-
         self.incl_group_box.setCheckable(True)
 
         (
@@ -61,7 +60,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
             self.incl_checkbox_match_tags
         ) = wl_widgets_search_settings(self, tab = tab)
 
-        self.incl_label_context_window = QLabel(self.tr('Context Window:'), self)
+        self.incl_label_context_window = QLabel(self.tr('Context window:'), self)
         (
             self.incl_checkbox_context_window_sync,
             self.incl_label_context_window_left,
@@ -97,12 +96,12 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.incl_group_box.layout().addWidget(self.incl_label_context_window_right, 11, 2)
         self.incl_group_box.layout().addWidget(self.incl_spin_box_context_window_right, 11, 3)
 
+        self.incl_group_box.layout().setRowStretch(12, 1)
         self.incl_group_box.layout().setColumnStretch(1, 1)
         self.incl_group_box.layout().setColumnStretch(3, 1)
 
         # Exclusion
         self.excl_group_box = QGroupBox(self.tr('Exclusion'), self)
-
         self.excl_group_box.setCheckable(True)
 
         (
@@ -122,7 +121,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
             self.excl_checkbox_match_tags
         ) = wl_widgets_search_settings(self, tab = tab)
 
-        self.excl_label_context_window = QLabel(self.tr('Context Window:'), self)
+        self.excl_label_context_window = QLabel(self.tr('Context window:'), self)
         (
             self.excl_checkbox_context_window_sync,
             self.excl_label_context_window_left,
@@ -158,6 +157,7 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.excl_group_box.layout().addWidget(self.excl_label_context_window_right, 11, 2)
         self.excl_group_box.layout().addWidget(self.excl_spin_box_context_window_right, 11, 3)
 
+        self.excl_group_box.layout().setRowStretch(12, 1)
         self.excl_group_box.layout().setColumnStretch(1, 1)
         self.excl_group_box.layout().setColumnStretch(3, 1)
 
@@ -171,11 +171,10 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
         self.wrapper_settings.layout().setColumnStretch(1, 1)
 
     def multi_search_mode_changed(self):
-        if 'size_multi' in self.__dict__:
-            if self.incl_checkbox_multi_search_mode.isChecked() or self.excl_checkbox_multi_search_mode.isChecked():
-                self.setFixedSize(self.size_multi)
-            else:
-                self.setFixedSize(self.size_normal)
+        self.incl_group_box.adjustSize()
+        self.excl_group_box.adjustSize()
+        self.wrapper_settings.adjustSize()
+        self.adjustSize()
 
     def token_settings_changed(self):
         # Check if searching is enabled
@@ -323,33 +322,8 @@ class Wl_Dialog_Context_Settings(wl_dialogs.Wl_Dialog_Settings):
             self.settings_custom['excl']['context_window_right'] = self.excl_spin_box_context_window_right.value()
 
     def load(self):
-        # Calculate size
-        if 'size_multi' not in self.__dict__:
-            incl_multi_search_mode = self.settings_custom['incl']['multi_search_mode']
-            excl_multi_search_mode = self.settings_custom['excl']['multi_search_mode']
-
-            self.incl_checkbox_multi_search_mode.setChecked(False)
-            self.excl_checkbox_multi_search_mode.setChecked(False)
-
-            self.incl_group_box.adjustSize()
-            self.excl_group_box.adjustSize()
-            self.adjustSize()
-
-            self.size_normal = self.size()
-
-            self.incl_checkbox_multi_search_mode.setChecked(True)
-            self.excl_checkbox_multi_search_mode.setChecked(True)
-
-            self.incl_group_box.adjustSize()
-            self.excl_group_box.adjustSize()
-            self.adjustSize()
-
-            self.size_multi = QSize(self.size_normal.width(), self.size().height())
-
-            self.incl_checkbox_multi_search_mode.setChecked(incl_multi_search_mode)
-            self.excl_checkbox_multi_search_mode.setChecked(excl_multi_search_mode)
-
         self.load_settings()
+
         self.exec_()
 
 # Token Settings
@@ -379,9 +353,9 @@ def wl_widgets_token_settings(parent):
             checkbox_ignore_tags.setEnabled(True)
 
     checkbox_words = QCheckBox(_tr('wl_widgets', 'Words'), parent)
-    checkbox_all_lowercase = QCheckBox(_tr('wl_widgets', 'All Lowercase'), parent)
-    checkbox_all_uppercase = QCheckBox(_tr('wl_widgets', 'All Uppercase'), parent)
-    checkbox_title_case = QCheckBox(_tr('wl_widgets', 'Title Case'), parent)
+    checkbox_all_lowercase = QCheckBox(_tr('wl_widgets', 'All lowercase'), parent)
+    checkbox_all_uppercase = QCheckBox(_tr('wl_widgets', 'All uppercase'), parent)
+    checkbox_title_case = QCheckBox(_tr('wl_widgets', 'Title case'), parent)
     checkbox_nums = QCheckBox(_tr('wl_widgets', 'Numerals'), parent)
     checkbox_punc_marks = QCheckBox(_tr('wl_widgets', 'Punctuation marks'), parent)
 
@@ -451,14 +425,14 @@ def wl_widgets_token_settings_concordancer(parent):
 def wl_widgets_search_settings(parent, tab):
     def multi_search_mode_changed():
         if checkbox_multi_search_mode.isChecked():
-            label_search_term.setText(_tr('wl_widgets', 'Search Terms:'))
+            label_search_term.setText(_tr('wl_widgets', 'Search terms:'))
 
             if line_edit_search_term.text() and list_search_terms.model().rowCount() == 0:
                 list_search_terms.load_items([line_edit_search_term.text()])
 
             stacked_widget_search_term.setCurrentIndex(1)
         else:
-            label_search_term.setText(_tr('wl_widgets', 'Search Term:'))
+            label_search_term.setText(_tr('wl_widgets', 'Search term:'))
 
             stacked_widget_search_term.setCurrentIndex(0)
 
@@ -501,8 +475,8 @@ def wl_widgets_search_settings(parent, tab):
 
     main = wl_misc.find_wl_main(parent)
 
-    label_search_term = QLabel(_tr('wl_widgets', 'Search Term:'), parent)
-    checkbox_multi_search_mode = QCheckBox(_tr('wl_widgets', 'Multi-search Mode'), parent)
+    label_search_term = QLabel(_tr('wl_widgets', 'Search term:'), parent)
+    checkbox_multi_search_mode = QCheckBox(_tr('wl_widgets', 'Multi-search mode'), parent)
     line_edit_search_term = QLineEdit(parent)
     list_search_terms = wl_lists.Wl_List_Search_Terms(parent)
     label_delimiter = wl_labels.Wl_Label_Hint(_tr('wl_widgets', '* Use whitespace to delimit multiple tokens'), parent)
@@ -599,7 +573,7 @@ def wl_widgets_search_settings_tokens(parent, tab):
 def wl_widgets_context_settings(parent, tab):
     main = wl_misc.find_wl_main(parent)
 
-    label_context_settings = QLabel(_tr('wl_widgets', 'Context Settings:'), parent)
+    label_context_settings = QLabel(_tr('wl_widgets', 'Context settings:'), parent)
     button_context_settings = QPushButton(_tr('wl_widgets', 'Settings...'), parent)
 
     dialog_context_settings = Wl_Dialog_Context_Settings(main, tab = tab)
@@ -707,7 +681,7 @@ class Wl_Combo_Box_File_Figure_Settings(wl_boxes.Wl_Combo_Box_File):
 
 def wl_widgets_fig_settings(parent, tab):
     def graph_type_changed():
-        if combo_box_graph_type.currentText() == _tr('wl_widgets', 'Line Chart'):
+        if combo_box_graph_type.currentText() == _tr('wl_widgets', 'Line chart'):
             combo_box_sort_by_file.setEnabled(True)
 
             use_data_changed()
@@ -717,7 +691,7 @@ def wl_widgets_fig_settings(parent, tab):
             checkbox_use_cumulative.setEnabled(False)
 
     def use_data_changed():
-        if combo_box_graph_type.currentText() == _tr('wl_widgets', 'Line Chart'):
+        if combo_box_graph_type.currentText() == _tr('wl_widgets', 'Line chart'):
             if combo_box_use_data.currentText() == _tr('wl_widgets', 'Frequency'):
                 checkbox_use_pct.setEnabled(True)
                 checkbox_use_cumulative.setEnabled(True)
@@ -784,7 +758,7 @@ def wl_widgets_fig_settings(parent, tab):
             combo_box_use_data.addItem(_tr('wl_widgets', 'p-value'))
 
         if measure_bayes_factor['func']:
-            combo_box_use_data.addItem(_tr('wl_widgets', 'Bayes Factor'))
+            combo_box_use_data.addItem(_tr('wl_widgets', 'Bayes factor'))
 
         if measure_effect_size['func']:
             combo_box_use_data.addItem(measure_effect_size['col_text'])
@@ -820,7 +794,7 @@ def wl_widgets_fig_settings(parent, tab):
             combo_box_use_data.addItem(_tr('wl_widgets', 'p-value'))
 
         if measure_bayes_factor['func']:
-            combo_box_use_data.addItem(_tr('wl_widgets', 'Bayes Factor'))
+            combo_box_use_data.addItem(_tr('wl_widgets', 'Bayes factor'))
 
         if measure_effect_size['func']:
             combo_box_use_data.addItem(measure_effect_size['col_text'])
@@ -830,23 +804,23 @@ def wl_widgets_fig_settings(parent, tab):
         else:
             combo_box_use_data.setCurrentText(settings_default['fig_settings']['use_data'])
 
-    label_graph_type = QLabel(_tr('wl_widgets', 'Graph Type:'), parent)
+    label_graph_type = QLabel(_tr('wl_widgets', 'Graph type:'), parent)
     combo_box_graph_type = wl_boxes.Wl_Combo_Box(parent)
-    label_sort_by_file = QLabel(_tr('wl_widgets', 'Sort by File:'), parent)
+    label_sort_by_file = QLabel(_tr('wl_widgets', 'Sort by file:'), parent)
     combo_box_sort_by_file = Wl_Combo_Box_File_Figure_Settings(parent)
-    label_use_data = QLabel(_tr('wl_widgets', 'Use Data:'), parent)
+    label_use_data = QLabel(_tr('wl_widgets', 'Use data:'), parent)
     combo_box_use_data = wl_boxes.Wl_Combo_Box(parent)
     checkbox_use_pct = QCheckBox(_tr('wl_widgets', 'Use percentage data'), parent)
     checkbox_use_cumulative = QCheckBox(_tr('wl_widgets', 'Use cumulative data'), parent)
 
     combo_box_graph_type.addItems([
-        _tr('wl_widgets', 'Line Chart'),
-        _tr('wl_widgets', 'Word Cloud')
+        _tr('wl_widgets', 'Line chart'),
+        _tr('wl_widgets', 'Word cloud')
     ])
 
     # Network Graph
     if tab in ['collocation_extractor', 'colligation_extractor']:
-        combo_box_graph_type.addItem(_tr('wl_widgets', 'Network Graph'))
+        combo_box_graph_type.addItem(_tr('wl_widgets', 'Network graph'))
 
     if tab in ['wordlist_generator', 'ngram_generator', 'collocation_extractor', 'colligation_extractor', 'keyword_extractor']:
         if tab in ['wordlist_generator', 'ngram_generator']:
@@ -906,7 +880,7 @@ def wl_widgets_fig_settings_dependency_parsing(parent):
 # Filter Settings
 def wl_widgets_filter(parent, filter_min, filter_max):
     label_min = QLabel(_tr('wl_widgets', 'From'), parent)
-    label_max = QLabel(_tr('wl_widgets', 'To'), parent)
+    label_max = QLabel(_tr('wl_widgets', 'to'), parent)
     (
         spin_box_min, checkbox_min_no_limit,
         spin_box_max, checkbox_max_no_limit
@@ -930,7 +904,7 @@ def wl_widgets_filter_measures(parent, filter_min = -10000, filter_max = 10000):
     main = wl_misc.find_wl_main(parent)
 
     label_min = QLabel(_tr('wl_widgets', 'From'), parent)
-    label_max = QLabel(_tr('wl_widgets', 'To'), parent)
+    label_max = QLabel(_tr('wl_widgets', 'to'), parent)
     (
         spin_box_min, checkbox_min_no_limit,
         spin_box_max, checkbox_max_no_limit
@@ -958,7 +932,7 @@ def wl_widgets_filter_p_val(parent):
     main = wl_misc.find_wl_main(parent)
 
     label_min = QLabel(_tr('wl_widgets', 'From'), parent)
-    label_max = QLabel(_tr('wl_widgets', 'To'), parent)
+    label_max = QLabel(_tr('wl_widgets', 'to'), parent)
     (
         spin_box_min, checkbox_min_no_limit,
         spin_box_max, checkbox_max_no_limit
@@ -984,7 +958,7 @@ def wl_widgets_num_sub_sections(parent):
     return label_divide_each_file_into, spin_box_num_sub_sections, label_sub_sections
 
 def wl_widgets_use_data_freq(parent):
-    label_use_data = QLabel(_tr('wl_widgets', 'Use Data:'), parent)
+    label_use_data = QLabel(_tr('wl_widgets', 'Use data:'), parent)
     combo_box_use_data = wl_boxes.Wl_Combo_Box(parent)
 
     combo_box_use_data.addItems([
