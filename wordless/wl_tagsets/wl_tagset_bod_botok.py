@@ -33,25 +33,25 @@ MAPPINGS = [
     ['PART', 'PART', 'Particle', ''],
     ['PRON', 'PRON', 'Pronoun', ''],
     ['VERB', 'VERB', 'Verb', ''],
-    ['NO_POS', 'X', '', 'No part-of-speech'],
-    ['NON_WORD', 'X', '', 'Non-word'],
+    ['NO_POS', 'X', 'No part-of-speech', ''],
+    ['NON_WORD', 'X', 'Non-word', ''],
 
     # Languages
-    ['BO', 'X', '', 'Tibetan language'],
-    ['LATIN', 'X', '', 'Latin languages'],
-    ['CJK', 'X', '', 'CJK languages'],
-    ['OTHER', 'X', '', 'Other languages'],
+    ['BO', 'X', 'Tibetan language', ''],
+    ['LATIN', 'X', 'Latin languages', ''],
+    ['CJK', 'X', 'CJK languages', ''],
+    ['OTHER', 'X', 'Other languages', ''],
 
     # Tibetan Textual Content
-    ['TEXT', 'X', '', 'Tibetan textual content'],
+    ['TEXT', 'X', 'Tibetan textual content', ''],
 
     # Tibetan Non-textual Content
-    ['NUM', 'NUM', '', 'Numeral'],
-    ['NON_NUM', 'X', '', 'Non-numeral'],
-    ['PUNCT', 'PUNCT', '', 'Punctuation'],
-    ['NON_PUNCT', 'X', '', 'Non-punctuation'],
-    ['SYM', 'SYM', '', 'Symbol'],
-    ['NON_SYM', 'X', '', 'Non-symbol'],
-    ['SPACE', 'X', '', 'Space'],
-    ['NON_SPACE', 'X', '', 'Non-space']
+    ['NUM', 'NUM', 'Numeral', ''],
+    ['NON_NUM', 'X', 'Non-numeral', ''],
+    ['PUNCT', 'PUNCT', 'Punctuation', ''],
+    ['NON_PUNCT', 'X', 'Non-punctuation', ''],
+    ['SYM', 'SYM', 'Symbol', ''],
+    ['NON_SYM', 'X', 'Non-symbol', ''],
+    ['SPACE', 'X', 'Space', ''],
+    ['NON_SPACE', 'X', 'Non-space', '']
 ]
