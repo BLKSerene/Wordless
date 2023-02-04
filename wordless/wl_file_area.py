@@ -33,9 +33,12 @@ from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 import openpyxl
 import pypdf
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, Qt
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, QRect, Qt
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QAbstractItemDelegate, QCheckBox, QFileDialog, QLineEdit, QPushButton
+from PyQt5.QtWidgets import (
+    QAbstractItemDelegate, QCheckBox, QFileDialog, QHeaderView, QLineEdit,
+    QPushButton, QStyle, QStyleOptionButton
+)
 
 from wordless.wl_checks import wl_checks_files, wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
@@ -108,12 +111,80 @@ class Wrapper_File_Area(wl_layouts.Wl_Wrapper_File_Area):
 
         return (file for file in files if file)
 
+# References:
+#     https://stackoverflow.com/a/29621256
+#     https://wiki.qt.io/Technical_FAQ#How_can_I_insert_a_checkbox_into_the_header_of_my_view.3F
+class Wl_Table_Header_Files(QHeaderView):
+    def __init__(self, orientation, parent):
+        super().__init__(orientation, parent)
+
+        self.table = parent
+        self._is_checked = False
+
+        self.setSectionsClickable(True)
+
+        self.sectionClicked.connect(self.section_clicked)
+
+    def paintSection(self, painter, rect, logicalIndex):
+        painter.save()
+
+        super().paintSection(painter, rect, logicalIndex)
+
+        painter.restore()
+
+        if logicalIndex == 0:
+            option = QStyleOptionButton()
+            option.rect = QRect(3, 6, 16, 16)
+
+            if self.table.is_empty():
+                option.state = QStyle.State_None
+            else:
+                option.state = QStyle.State_Enabled | QStyle.State_Active
+
+            if self._is_checked:
+                option.state |= QStyle.State_On
+            else:
+                option.state |= QStyle.State_Off
+
+            self.style().drawPrimitive(QStyle.PE_IndicatorCheckBox, option, painter)
+
+    def section_clicked(self, logicalIndex):
+        if logicalIndex == 0:
+            self._is_checked = not self._is_checked
+
+            if self._is_checked:
+                self.select_all()
+            else:
+                self.deselect_all()
+
+            self.update()
+
+    def select_all(self):
+        self._is_checked = True
+
+        for i in range(self.model().rowCount()):
+            self.model().item(i, 0).setCheckState(Qt.Checked)
+
+    def deselect_all(self):
+        self._is_checked = True
+
+        for i in range(self.model().rowCount()):
+            self.model().item(i, 0).setCheckState(Qt.Unchecked)
+
+    def invert_selection(self):
+        for i in range(self.model().rowCount()):
+            if self.model().item(i, 0).checkState() == Qt.Checked:
+                self.model().item(i, 0).setCheckState(Qt.Unchecked)
+            else:
+                self.model().item(i, 0).setCheckState(Qt.Checked)
+
 class Wl_Table_Files(wl_tables.Wl_Table):
     def __init__(self, parent):
         super().__init__(
             parent,
             headers = [
-                _tr('Wl_Table_Files', 'Name'),
+                # Padding for the checkbox
+                _tr('Wl_Table_Files', '  Name'),
                 _tr('Wl_Table_Files', 'Path'),
                 _tr('Wl_Table_Files', 'Encoding'),
                 _tr('Wl_Table_Files', 'Language'),
@@ -123,6 +194,8 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             editable = True,
             drag_drop = True
         )
+
+        self.setHorizontalHeader(Wl_Table_Header_Files(Qt.Horizontal, self))
 
         self.file_area = parent
         self.file_type = self.file_area.file_type
@@ -142,9 +215,9 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         self.main.action_file_open_dir.triggered.connect(lambda: self.check_file_area(self.open_dir))
         self.main.action_file_reopen.triggered.connect(lambda: self.check_file_area(self.reopen))
 
-        self.main.action_file_select_all.triggered.connect(lambda: self.check_file_area(self.select_all))
-        self.main.action_file_deselect_all.triggered.connect(lambda: self.check_file_area(self.deselect_all))
-        self.main.action_file_invert_selection.triggered.connect(lambda: self.check_file_area(self.invert_selection))
+        self.main.action_file_select_all.triggered.connect(lambda: self.check_file_area(self.horizontalHeader().select_all))
+        self.main.action_file_deselect_all.triggered.connect(lambda: self.check_file_area(self.horizontalHeader().deselect_all))
+        self.main.action_file_invert_selection.triggered.connect(lambda: self.check_file_area(self.horizontalHeader().invert_selection))
 
         self.main.action_file_close_selected.triggered.connect(lambda: self.check_file_area(self.close_selected))
         self.main.action_file_close_all.triggered.connect(lambda: self.check_file_area(self.close_all))
@@ -209,6 +282,22 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 file['tagged'] = wl_conversion.to_yes_no_code(self.model().item(row, 5).text())
 
                 self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'].append(file)
+
+            # Checkbox
+            check_states = []
+
+            for i in range(self.model().rowCount()):
+                if self.model().item(i, 0).checkState() == Qt.Checked:
+                    check_states.append(Qt.Checked)
+                else:
+                    check_states.append(Qt.Unchecked)
+
+            if all((check_state == Qt.Checked for check_state in check_states)):
+                self.horizontalHeader()._is_checked = True
+            else:
+                self.horizontalHeader()._is_checked = False
+
+        self.horizontalHeader().update()
 
         # Menu
         if not self.is_empty():
@@ -330,26 +419,6 @@ class Wl_Table_Files(wl_tables.Wl_Table):
         dialog_open_files._add_files(list(dict.fromkeys([file['path_original'] for file in files])))
 
         self._open_files(files_to_open = dialog_open_files.table_files.files_to_open)
-
-    def select_all(self):
-        if self.model().item(0, 0):
-            for i in range(self.model().rowCount()):
-                if self.model().item(i, 0).checkState() == Qt.Unchecked:
-                    self.model().item(i, 0).setCheckState(Qt.Checked)
-
-    def deselect_all(self):
-        if self.model().item(0, 0):
-            for i in range(self.model().rowCount()):
-                if self.model().item(i, 0).checkState() == Qt.Checked:
-                    self.model().item(i, 0).setCheckState(Qt.Unchecked)
-
-    def invert_selection(self):
-        if self.model().item(0, 0):
-            for i in range(self.model().rowCount()):
-                if self.model().item(i, 0).checkState() == Qt.Checked:
-                    self.model().item(i, 0).setCheckState(Qt.Unchecked)
-                else:
-                    self.model().item(i, 0).setCheckState(Qt.Checked)
 
     def _close_files(self, i_files):
         self.main.settings_custom['file_area'][f'files_closed{self.settings_suffix}'].append([])
