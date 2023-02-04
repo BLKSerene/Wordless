@@ -33,6 +33,7 @@
 - Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measures of Dispersion / Measure of Adjusted Frequency - Average Logarithmic Distance / Average Reduced Frequency / Average Waiting Time
 
 ### ✨ Improvements
+- File Area: Add checkbox in table header to select/deselect all files
 - File Area: Disallow empty file names
 - File Area: Remove underscores in tokenized Vietnamese files
 - Utils: Speed up n-gram/skip-gram generation
