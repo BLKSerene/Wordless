@@ -725,7 +725,7 @@ class Wl_Table(QTableView):
 
         event.accept()
 
-    def item_changed(self, item): # pylint: disable=unused-argument
+    def item_changed(self):
         if self.is_empty():
             self.setEnabled(False)
         else:
@@ -737,9 +737,9 @@ class Wl_Table(QTableView):
         for i in range(self.model().columnCount()):
             self.setColumnWidth(i, self.columnWidth(i) + 22)
 
-        self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
+        self.selection_changed()
 
-    def selection_changed(self, selected, deselected):
+    def selection_changed(self):
         pass
 
     def disable_updates(self):
@@ -1001,15 +1001,15 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
         self.button_del.clicked.connect(lambda: self.del_row()) # pylint: disable=unnecessary-lambda
         self.button_clr.clicked.connect(lambda: self.clr_table(0))
 
-    def item_changed(self, item):
+    def item_changed(self):
         if not self.is_empty():
             self.button_clr.setEnabled(True)
         else:
             self.button_clr.setEnabled(False)
 
-        super().item_changed(item)
+        super().item_changed()
 
-    def selection_changed(self, selected, deselected):
+    def selection_changed(self):
         if self.selectionModel().selectedIndexes():
             self.button_ins.setEnabled(True)
             self.button_del.setEnabled(True)
@@ -1056,7 +1056,8 @@ class Wl_Table_Data(Wl_Table):
         headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cumulative = None, cols_breakdown = None,
-        sorting_enabled = False
+        sorting_enabled = False,
+        generate_fig = True
     ):
         super().__init__(
             main, headers, header_orientation,
@@ -1085,17 +1086,27 @@ class Wl_Table_Data(Wl_Table):
         self.model().itemChanged.connect(self.item_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
+        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
+        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
         self.button_exp_selected = QPushButton(self.tr('Export selected...'), self)
         self.button_exp_all = QPushButton(self.tr('Export all...'), self)
         self.button_clr = QPushButton(self.tr('Clear'), self)
 
+        if not generate_fig:
+            self.button_generate_fig.hide()
+
+        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
+        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
         self.button_exp_selected.clicked.connect(self.exp_selected)
         self.button_exp_all.clicked.connect(self.exp_all)
         self.button_clr.clicked.connect(lambda: self.clr_table(confirm = True))
 
-        self.clr_table()
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
 
-    def item_changed(self, item):
+        self.clr_table()
+        self.file_changed()
+
+    def item_changed(self):
         if not self.is_empty() and self.is_visible():
             self.button_exp_all.setEnabled(True)
         else:
@@ -1106,23 +1117,31 @@ class Wl_Table_Data(Wl_Table):
         else:
             self.button_clr.setEnabled(False)
 
-        super().item_changed(item)
+        super().item_changed()
 
         self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
-    def selection_changed(self, selected, deselected):
+    def selection_changed(self):
         if not self.is_empty() and self.is_visible() and self.is_selected():
             self.button_exp_selected.setEnabled(True)
         else:
             self.button_exp_selected.setEnabled(False)
 
-    def sorting_changed(self, logicalIndex, order): # pylint: disable=unused-argument
+    def sorting_changed(self):
         if not self.is_empty():
             if self.tr('Rank') in self.get_header_labels_hor():
                 self.update_ranks()
 
             if self.show_cumulative:
                 self.toggle_cumulative()
+
+    def file_changed(self):
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_table.setEnabled(True)
+            self.button_generate_fig.setEnabled(True)
+        else:
+            self.button_generate_table.setEnabled(False)
+            self.button_generate_fig.setEnabled(False)
 
     def add_header_hor(
         self, label,
@@ -1551,13 +1570,19 @@ class Wl_Table_Data(Wl_Table):
         self.toggle_cumulative()
         self.update_ranks()
 
+    def generate_table(self):
+        pass
+
+    def generate_fig(self):
+        pass
+
     def clr_table(self, num_headers = 1, confirm = False):
         confirmed = True
 
         # Ask for confirmation if results have not been exported
         if confirm:
             if not self.is_empty() and not self.results_saved:
-                dialog_clr_table = wl_dialogs_misc.WL_Dialog_Clr_Table(self.main)
+                dialog_clr_table = wl_dialogs_misc.Wl_Dialog_Clr_Table(self.main)
                 result = dialog_clr_table.exec_()
 
                 if result == QDialog.Rejected:
@@ -1616,14 +1641,16 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cumulative = None, cols_breakdown = None,
-        sorting_enabled = False
+        sorting_enabled = False,
+        generate_fig = True
     ):
         super().__init__(
             main, tab,
             headers, header_orientation,
             headers_int, headers_float,
             headers_pct, headers_cumulative, cols_breakdown,
-            sorting_enabled
+            sorting_enabled,
+            generate_fig
         )
 
         self.model().itemChanged.connect(self.results_changed)
@@ -1663,14 +1690,16 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cumulative = None, cols_breakdown = None,
-        sorting_enabled = False
+        sorting_enabled = False,
+        generate_fig = True
     ):
         super().__init__(
             main, tab,
             headers, header_orientation,
             headers_int, headers_float,
             headers_pct, headers_cumulative, cols_breakdown,
-            sorting_enabled
+            sorting_enabled,
+            generate_fig
         )
 
         self.model().itemChanged.connect(self.results_changed)
@@ -1723,14 +1752,16 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         headers, header_orientation = 'hor',
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cumulative = None, cols_breakdown = None,
-        sorting_enabled = False
+        sorting_enabled = False,
+        generate_fig = True
     ):
         super().__init__(
             main, tab,
             headers, header_orientation,
             headers_int, headers_float,
             headers_pct, headers_cumulative, cols_breakdown,
-            sorting_enabled
+            sorting_enabled,
+            generate_fig
         )
 
         self.model().itemChanged.connect(self.results_changed)

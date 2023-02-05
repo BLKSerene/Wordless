@@ -106,6 +106,8 @@ def init_settings_default(main):
         },
 
         'profiler': {
+            'tab': _tr('init_settings_default', 'Counts'),
+
             'token_settings': {
                 'words': True,
                 'all_lowercase': True,

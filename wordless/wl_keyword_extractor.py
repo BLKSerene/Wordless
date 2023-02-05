@@ -24,8 +24,7 @@ import traceback
 
 import numpy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QLabel, QPushButton, QGroupBox
+from PyQt5.QtWidgets import QLabel, QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
@@ -346,19 +345,10 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             sorting_enabled = True
         )
 
-        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
-
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
         self.main.wl_file_area_ref.table_files.model().itemChanged.connect(self.file_changed)
 
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-        self.main.wl_file_area_ref.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        # Enable the buttons and prompt the user if there are only observed files or only reference files
+    # Enable the buttons and prompt the user if there are only observed files or only reference files
+    def file_changed(self):
         if list(self.main.wl_file_area.get_selected_files()) or list(self.main.wl_file_area_ref.get_selected_files()):
             self.button_generate_table.setEnabled(True)
             self.button_generate_fig.setEnabled(True)

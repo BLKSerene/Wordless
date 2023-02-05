@@ -26,7 +26,7 @@ import numpy
 import scipy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QPushButton, QGroupBox
+from PyQt5.QtWidgets import QDialog, QGroupBox, QPushButton, QStackedWidget, QTabWidget
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -42,13 +42,66 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         super().__init__(main)
 
         # Table
-        self.table_profiler = Wl_Table_Profiler(self)
+        self.table_profiler_readability = Wl_Table_Profiler_Readability(self)
+        self.table_profiler_counts = Wl_Table_Profiler_Counts(self)
+        self.table_profiler_ttrs = Wl_Table_Profiler_Ttrs(self)
+        self.table_profiler_lens = Wl_Table_Profiler_Lens(self)
+        self.table_profiler_len_breakdown = Wl_Table_Profiler_Len_Breakdown(self)
 
-        self.wrapper_table.layout().addWidget(self.table_profiler, 0, 0, 1, 4)
-        self.wrapper_table.layout().addWidget(self.table_profiler.button_generate_table, 1, 0)
-        self.wrapper_table.layout().addWidget(self.table_profiler.button_exp_selected, 1, 1)
-        self.wrapper_table.layout().addWidget(self.table_profiler.button_exp_all, 1, 2)
-        self.wrapper_table.layout().addWidget(self.table_profiler.button_clr, 1, 3)
+        self.tables = [
+            self.table_profiler_readability,
+            self.table_profiler_counts,
+            self.table_profiler_ttrs,
+            self.table_profiler_lens,
+            self.table_profiler_len_breakdown
+        ]
+
+        self.stacked_widget_button_generate_table = QStackedWidget(self)
+        self.button_generate_all_tables = QPushButton(self.tr('Generate all tables'), self)
+        self.stacked_widget_button_exp_selected = QStackedWidget(self)
+        self.stacked_widget_button_exp_all = QStackedWidget(self)
+        self.stacked_widget_button_clr = QStackedWidget(self)
+        self.button_clr_all_tables = QPushButton(self.tr('Clear all tables'), self)
+
+        for table in self.tables:
+            self.stacked_widget_button_generate_table.addWidget(table.button_generate_table)
+            self.stacked_widget_button_exp_selected.addWidget(table.button_exp_selected)
+            self.stacked_widget_button_exp_all.addWidget(table.button_exp_all)
+            self.stacked_widget_button_clr.addWidget(table.button_clr)
+
+            table.model().itemChanged.connect(self.item_changed)
+
+        self.button_generate_all_tables.clicked.connect(lambda: self.generate_all_tables()) # pylint: disable=unnecessary-lambda
+        self.button_clr_all_tables.clicked.connect(self.clr_all_tables)
+
+        self.tabs_profiler = QTabWidget(self)
+        self.tabs_profiler.addTab(self.table_profiler_readability, self.tr('Readability'))
+        self.tabs_profiler.addTab(self.table_profiler_counts, self.tr('Counts'))
+        self.tabs_profiler.addTab(self.table_profiler_ttrs, self.tr('Type-token Ratios'))
+        self.tabs_profiler.addTab(self.table_profiler_lens, self.tr('Lengths'))
+        self.tabs_profiler.addTab(self.table_profiler_len_breakdown, self.tr('Length Breakdown'))
+
+        self.tabs_profiler.currentChanged.connect(self.tabs_changed)
+
+        self.wrapper_table.layout().addWidget(self.tabs_profiler, 0, 0, 1, 6)
+        self.wrapper_table.layout().addWidget(self.stacked_widget_button_generate_table, 1, 0)
+        self.wrapper_table.layout().addWidget(self.button_generate_all_tables, 1, 1)
+        self.wrapper_table.layout().addWidget(self.stacked_widget_button_exp_selected, 1, 2)
+        self.wrapper_table.layout().addWidget(self.stacked_widget_button_exp_all, 1, 3)
+        self.wrapper_table.layout().addWidget(self.stacked_widget_button_clr, 1, 4)
+        self.wrapper_table.layout().addWidget(self.button_clr_all_tables, 1, 5)
+
+        self.wrapper_table.layout().setRowStretch(0, 1)
+        self.wrapper_table.layout().setColumnStretch(0, 1)
+        self.wrapper_table.layout().setColumnStretch(1, 1)
+        self.wrapper_table.layout().setColumnStretch(2, 1)
+        self.wrapper_table.layout().setColumnStretch(3, 1)
+        self.wrapper_table.layout().setColumnStretch(4, 1)
+        self.wrapper_table.layout().setColumnStretch(5, 1)
+
+        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
+
+        self.file_changed()
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -111,7 +164,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
             self.checkbox_show_breakdown
         ) = wl_widgets.wl_widgets_table_settings(
             self,
-            tables = [self.table_profiler]
+            tables = self.tables
         )
 
         self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
@@ -134,6 +187,11 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         else:
             settings = copy.deepcopy(self.main.settings_custom['profiler'])
 
+        # Tab
+        for i in range(self.tabs_profiler.count()):
+            if self.tabs_profiler.tabText(i) == settings['tab']:
+                self.tabs_profiler.setCurrentIndex(i)
+
         # Token Settings
         self.checkbox_words.setChecked(settings['token_settings']['words'])
         self.checkbox_all_lowercase.setChecked(settings['token_settings']['all_lowercase'])
@@ -154,8 +212,26 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
         self.checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
 
+        self.tabs_changed()
+        self.item_changed()
         self.token_settings_changed()
         self.table_settings_changed()
+
+    def tabs_changed(self):
+        i_tabs = self.tabs_profiler.currentIndex()
+
+        self.main.settings_custom['profiler']['tab'] = self.tabs_profiler.tabText(i_tabs)
+
+        self.stacked_widget_button_generate_table.setCurrentIndex(i_tabs)
+        self.stacked_widget_button_exp_selected.setCurrentIndex(i_tabs)
+        self.stacked_widget_button_exp_all.setCurrentIndex(i_tabs)
+        self.stacked_widget_button_clr.setCurrentIndex(i_tabs)
+
+    def item_changed(self):
+        if any((not table.is_empty() for table in self.tables)):
+            self.button_clr_all_tables.setEnabled(True)
+        else:
+            self.button_clr_all_tables.setEnabled(False)
 
     def token_settings_changed(self):
         settings = self.main.settings_custom['profiler']['token_settings']
@@ -181,368 +257,70 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
         settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
 
+    def file_changed(self):
+        if list(self.main.wl_file_area.get_selected_files()):
+            self.button_generate_all_tables.setEnabled(True)
+        else:
+            self.button_generate_all_tables.setEnabled(False)
+
+    @wl_misc.log_timing
+    def generate_all_tables(self):
+        worker_profiler_table = Wl_Worker_Profiler_Table(
+            self.main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+            update_gui = self.update_gui_table,
+            profiler_tab = 'all'
+        )
+
+        wl_threading.Wl_Thread(worker_profiler_table).start_worker()
+
+    def update_gui_table(self, err_msg, text_stats_files):
+        text_stats = [stat for text_stats in text_stats_files for stat in text_stats]
+
+        if wl_checks_work_area.check_results(self.main, err_msg, text_stats_files):
+            for table in self.tables:
+                err_msg = table.update_gui_table(err_msg, text_stats_files)
+
+                # Stop if error occurs when generating any of the tables
+                if err_msg:
+                    break
+
+    def clr_all_tables(self):
+        # Confirm if any of the tables are not empty and has yet to be exported
+        needs_confirm = any((not table.is_empty() and not table.results_saved for table in self.tables))
+
+        # Ask for confirmation if results have not been exported
+        if needs_confirm:
+            dialog_clr_table = wl_dialogs_misc.Wl_Dialog_Clr_All_Tables(self.main)
+            result = dialog_clr_table.exec_()
+
+            confirmed = bool(result == QDialog.Accepted)
+
+        if confirmed:
+            for table in self.tables:
+                table.clr_table()
+
 class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
-    def __init__(self, parent):
+    def __init__(
+        self, parent, headers,
+        headers_int = None, headers_float = None, headers_pct = None, headers_cumulative = None,
+        profiler_tab = 'all'
+    ):
         super().__init__(
             parent,
             tab = 'profiler',
-            headers = [
-                # Readability
-                _tr('Wl_Table_Profiler', 'Automated Arabic Readability Index'),
-                _tr('Wl_Table_Profiler', 'Automated Readability Index'),
-                _tr('Wl_Table_Profiler', 'Coleman-Liau Index'),
-                _tr('Wl_Table_Profiler', 'Dale-Chall Readability Score'),
-                _tr('Wl_Table_Profiler', 'Devereaux Readability Index'),
-                _tr('Wl_Table_Profiler', "Fernández Huerta's Readability Score"),
-                _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
-                _tr('Wl_Table_Profiler', 'Flesch Reading Ease'),
-                _tr('Wl_Table_Profiler', 'Flesch Reading Ease (Simplified)'),
-                _tr('Wl_Table_Profiler', 'FORCAST Grade Level'),
-                _tr('Wl_Table_Profiler', 'Fórmula de comprensibilidad de Gutiérrez de Polini'),
-                _tr('Wl_Table_Profiler', 'Fórmula de Crawford'),
-                _tr('Wl_Table_Profiler', 'Gulpease Index'),
-                _tr('Wl_Table_Profiler', 'Gunning Fog Index'),
-                _tr('Wl_Table_Profiler', 'Legibilidad μ'),
-                _tr('Wl_Table_Profiler', 'Lensear Write'),
-                _tr('Wl_Table_Profiler', 'Lix'),
-                _tr('Wl_Table_Profiler', 'McAlpine EFLAW Readability Score'),
-                _tr('Wl_Table_Profiler', 'OSMAN'),
-                _tr('Wl_Table_Profiler', 'Rix'),
-                _tr('Wl_Table_Profiler', 'SMOG Grade'),
-                _tr('Wl_Table_Profiler', 'Spache Grade Level'),
-                _tr('Wl_Table_Profiler', "Szigriszt's Perspicuity Index"),
-                _tr('Wl_Table_Profiler', 'Wiener Sachtextformel'),
-                # Counts
-                _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
-                _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
-                _tr('Wl_Table_Profiler', 'Count of Sentences'),
-                _tr('Wl_Table_Profiler', 'Count of Sentences %'),
-                _tr('Wl_Table_Profiler', 'Count of Sentence Segments'),
-                _tr('Wl_Table_Profiler', 'Count of Sentence Segments %'),
-                _tr('Wl_Table_Profiler', 'Count of Tokens'),
-                _tr('Wl_Table_Profiler', 'Count of Tokens %'),
-                _tr('Wl_Table_Profiler', 'Count of Types'),
-                _tr('Wl_Table_Profiler', 'Count of Types %'),
-                _tr('Wl_Table_Profiler', 'Count of Syllables'),
-                _tr('Wl_Table_Profiler', 'Count of Syllables %'),
-                _tr('Wl_Table_Profiler', 'Count of Characters'),
-                _tr('Wl_Table_Profiler', 'Count of Characters %'),
-                # TTR
-                _tr('Wl_Table_Profiler', 'Type-token Ratio'),
-                _tr('Wl_Table_Profiler', 'Type-token Ratio (Standardized)'),
-                # Paragraph length
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Mean)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Variance)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Median)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Modes)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Mean)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Variance)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Median)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Modes)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Variance)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Median)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Modes)'),
-                # Sentence length
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Mean)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Variance)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Median)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Range)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Modes)'),
-                # Sentence segment length
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Mean)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Variance)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Median)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Range)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Modes)'),
-                # Token length
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Variance)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Median)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Range)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Modes)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Mean)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Variance)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Median)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Range)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Modes)'),
-                # Type length
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Mean)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Variance)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Median)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Range)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Modes)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Mean)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Variance)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Median)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Range)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Modes)'),
-                # Syllable length
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Mean)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Variance)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Median)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Range)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Modes)')
-            ],
+            headers = headers,
             header_orientation = 'vert',
-            headers_int = [
-                # Counts
-                _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
-                _tr('Wl_Table_Profiler', 'Count of Sentences'),
-                _tr('Wl_Table_Profiler', 'Count of Sentence Segments'),
-                _tr('Wl_Table_Profiler', 'Count of Tokens'),
-                _tr('Wl_Table_Profiler', 'Count of Types'),
-                _tr('Wl_Table_Profiler', 'Count of Syllables'),
-                _tr('Wl_Table_Profiler', 'Count of Characters'),
-                # Paragraph length
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Range)'),
-                # Sentence length
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Range)'),
-                # Sentence segment length
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Range)'),
-                # Token length
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Range)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Range)'),
-                # Type length
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Range)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Range)'),
-                # Syllable length
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Minimum)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Maximum)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Range)')
-            ],
-            headers_float = [
-                # Readability
-                _tr('Wl_Table_Profiler', 'Automated Arabic Readability Index'),
-                _tr('Wl_Table_Profiler', 'Automated Readability Index'),
-                _tr('Wl_Table_Profiler', 'Coleman-Liau Index'),
-                _tr('Wl_Table_Profiler', 'Dale-Chall Readability Score'),
-                _tr('Wl_Table_Profiler', 'Devereaux Readability Index'),
-                _tr('Wl_Table_Profiler', "Fernández Huerta's Readability Score"),
-                _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
-                _tr('Wl_Table_Profiler', 'Flesch Reading Ease'),
-                _tr('Wl_Table_Profiler', 'Flesch Reading Ease (Simplified)'),
-                _tr('Wl_Table_Profiler', 'FORCAST Grade Level'),
-                _tr('Wl_Table_Profiler', 'Fórmula de comprensibilidad de Gutiérrez de Polini'),
-                _tr('Wl_Table_Profiler', 'Fórmula de Crawford'),
-                _tr('Wl_Table_Profiler', 'Gulpease Index'),
-                _tr('Wl_Table_Profiler', 'Gunning Fog Index'),
-                _tr('Wl_Table_Profiler', 'Legibilidad μ'),
-                _tr('Wl_Table_Profiler', 'Lensear Write'),
-                _tr('Wl_Table_Profiler', 'Lix'),
-                _tr('Wl_Table_Profiler', 'McAlpine EFLAW Readability Score'),
-                _tr('Wl_Table_Profiler', 'OSMAN'),
-                _tr('Wl_Table_Profiler', 'Rix'),
-                _tr('Wl_Table_Profiler', 'SMOG Grade'),
-                _tr('Wl_Table_Profiler', 'Spache Grade Level'),
-                _tr('Wl_Table_Profiler', "Szigriszt's Perspicuity Index"),
-                _tr('Wl_Table_Profiler', 'Wiener Sachtextformel'),
-                # TTR
-                _tr('Wl_Table_Profiler', 'Type-token Ratio'),
-                _tr('Wl_Table_Profiler', 'Type-token Ratio (Standardized)'),
-                # Paragraph length
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Mean)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Variance)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Median)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Mean)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Variance)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Median)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Variance)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Median)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Interquartile Range)'),
-                # Sentence length
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Mean)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Variance)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Median)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Interquartile Range)'),
-                # Sentence segment length
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Mean)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Variance)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Median)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Interquartile Range)'),
-                # Token length
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Variance)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Median)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Syllables (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Mean)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Variance)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Median)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Token Length in Characters (Interquartile Range)'),
-                # Type length
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Mean)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Variance)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Median)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Syllables (Interquartile Range)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Mean)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Variance)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Median)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Type Length in Characters (Interquartile Range)'),
-                # Syllable length
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Mean)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Standard Deviation)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Variance)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (25th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Median)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (75th Percentile)'),
-                _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Interquartile Range)')
-            ],
-            headers_pct = [
-                # Counts
-                _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
-                _tr('Wl_Table_Profiler', 'Count of Sentences %'),
-                _tr('Wl_Table_Profiler', 'Count of Sentence Segments %'),
-                _tr('Wl_Table_Profiler', 'Count of Tokens %'),
-                _tr('Wl_Table_Profiler', 'Count of Types %'),
-                _tr('Wl_Table_Profiler', 'Count of Syllables %'),
-                _tr('Wl_Table_Profiler', 'Count of Characters %')
-            ],
-            headers_cumulative = [
-                # Counts
-                _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
-                _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
-                _tr('Wl_Table_Profiler', 'Count of Sentences'),
-                _tr('Wl_Table_Profiler', 'Count of Sentences %'),
-                _tr('Wl_Table_Profiler', 'Count of Sentence Segments'),
-                _tr('Wl_Table_Profiler', 'Count of Sentence Segments %'),
-                _tr('Wl_Table_Profiler', 'Count of Tokens'),
-                _tr('Wl_Table_Profiler', 'Count of Tokens %'),
-                _tr('Wl_Table_Profiler', 'Count of Types'),
-                _tr('Wl_Table_Profiler', 'Count of Types %'),
-                _tr('Wl_Table_Profiler', 'Count of Syllables'),
-                _tr('Wl_Table_Profiler', 'Count of Syllables %'),
-                _tr('Wl_Table_Profiler', 'Count of Characters'),
-                _tr('Wl_Table_Profiler', 'Count of Characters %')
-            ]
+            headers_int = headers_int,
+            headers_float = headers_float,
+            headers_pct = headers_pct,
+            headers_cumulative = headers_cumulative,
+            generate_fig = False
         )
 
-        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
+        self.profiler_tab = profiler_tab
 
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        if list(self.main.wl_file_area.get_selected_files()):
-            self.button_generate_table.setEnabled(True)
-        else:
-            self.button_generate_table.setEnabled(False)
-
-    def clr_table(self, num_headers = 1, confirm = False):
+    def clr_table(self, confirm = False): # pylint: disable=arguments-differ
         if super().clr_table(num_headers = 0, confirm = confirm):
             self.ins_header_hor(0, self.tr('Total'))
 
@@ -551,10 +329,122 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
         worker_profiler_table = Wl_Worker_Profiler_Table(
             self.main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-            update_gui = self.update_gui_table
+            update_gui = self.update_gui_table,
+            profiler_tab = self.profiler_tab
         )
 
         wl_threading.Wl_Thread(worker_profiler_table).start_worker()
+
+    def update_gui_table(self, err_msg, text_stats_files):
+        raise NotImplementedError
+
+HEADERS_READABILITY = [
+    _tr('Wl_Table_Profiler', 'Automated Arabic Readability Index'),
+    _tr('Wl_Table_Profiler', 'Automated Readability Index'),
+    _tr('Wl_Table_Profiler', 'Coleman-Liau Index'),
+    _tr('Wl_Table_Profiler', 'Dale-Chall Readability Score'),
+    _tr('Wl_Table_Profiler', 'Devereaux Readability Index'),
+    _tr('Wl_Table_Profiler', "Fernández Huerta's Readability Score"),
+    _tr('Wl_Table_Profiler', 'Flesch-Kincaid Grade Level'),
+    _tr('Wl_Table_Profiler', 'Flesch Reading Ease'),
+    _tr('Wl_Table_Profiler', 'Flesch Reading Ease (Simplified)'),
+    _tr('Wl_Table_Profiler', 'FORCAST Grade Level'),
+    _tr('Wl_Table_Profiler', 'Fórmula de comprensibilidad de Gutiérrez de Polini'),
+    _tr('Wl_Table_Profiler', 'Fórmula de Crawford'),
+    _tr('Wl_Table_Profiler', 'Gulpease Index'),
+    _tr('Wl_Table_Profiler', 'Gunning Fog Index'),
+    _tr('Wl_Table_Profiler', 'Legibilidad μ'),
+    _tr('Wl_Table_Profiler', 'Lensear Write'),
+    _tr('Wl_Table_Profiler', 'Lix'),
+    _tr('Wl_Table_Profiler', 'McAlpine EFLAW Readability Score'),
+    _tr('Wl_Table_Profiler', 'OSMAN'),
+    _tr('Wl_Table_Profiler', 'Rix'),
+    _tr('Wl_Table_Profiler', 'SMOG Grade'),
+    _tr('Wl_Table_Profiler', 'Spache Grade Level'),
+    _tr('Wl_Table_Profiler', "Szigriszt's Perspicuity Index"),
+    _tr('Wl_Table_Profiler', 'Wiener Sachtextformel')
+]
+
+class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            headers = HEADERS_READABILITY,
+            headers_float = HEADERS_READABILITY,
+            profiler_tab = 'readability'
+        )
+
+    def update_gui_table(self, err_msg, text_stats_files):
+        text_stats = [stat for text_stats in text_stats_files for stat in text_stats]
+
+        if wl_checks_work_area.check_results(self.main, err_msg, text_stats_files):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
+
+                self.clr_table()
+
+                # Insert columns
+                files = list(self.main.wl_file_area.get_selected_files())
+
+                for i, file in enumerate(files):
+                    self.ins_header_hor(
+                        self.find_header_hor(self.tr('Total')), file['name'],
+                        is_breakdown = True
+                    )
+
+                self.disable_updates()
+
+                for i, stats in enumerate(text_stats_files):
+                    readability_stats = stats[0]
+
+                    # Readability
+                    for j, statistic in enumerate(readability_stats):
+                        if statistic == 'no_support':
+                            self.set_item_error(j, i, self.tr('No language support'))
+                        elif statistic == 'text_too_short':
+                            self.set_item_error(j, i, self.tr('Text is too short'))
+                        else:
+                            self.set_item_num(j, i, statistic)
+
+                self.enable_updates()
+
+                self.toggle_pct()
+                self.toggle_cumulative()
+                self.toggle_breakdown()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
+
+        return err_msg
+
+HEADERS_COUNTS = [
+    _tr('Wl_Table_Profiler', 'Count of Paragraphs'),
+    _tr('Wl_Table_Profiler', 'Count of Paragraphs %'),
+    _tr('Wl_Table_Profiler', 'Count of Sentences'),
+    _tr('Wl_Table_Profiler', 'Count of Sentences %'),
+    _tr('Wl_Table_Profiler', 'Count of Sentence Segments'),
+    _tr('Wl_Table_Profiler', 'Count of Sentence Segments %'),
+    _tr('Wl_Table_Profiler', 'Count of Tokens'),
+    _tr('Wl_Table_Profiler', 'Count of Tokens %'),
+    _tr('Wl_Table_Profiler', 'Count of Types'),
+    _tr('Wl_Table_Profiler', 'Count of Types %'),
+    _tr('Wl_Table_Profiler', 'Count of Syllables'),
+    _tr('Wl_Table_Profiler', 'Count of Syllables %'),
+    _tr('Wl_Table_Profiler', 'Count of Characters'),
+    _tr('Wl_Table_Profiler', 'Count of Characters %')
+]
+
+class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            headers = HEADERS_COUNTS,
+            headers_int = [HEADERS_COUNTS[i] for i in range(0, len(HEADERS_COUNTS), 2)],
+            headers_pct = [HEADERS_COUNTS[i] for i in range(1, len(HEADERS_COUNTS), 2)],
+            headers_cumulative = HEADERS_COUNTS,
+            profiler_tab = 'counts'
+        )
 
     def update_gui_table(self, err_msg, text_stats_files):
         # Skip if all statistics except readability measures are 0 or empty
@@ -565,10 +455,6 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                 self.settings = copy.deepcopy(self.main.settings_custom)
 
                 self.clr_table()
-
-                count_tokens_lens = []
-                count_sentences_lens = []
-                count_sentence_segs_lens = []
 
                 # Insert columns
                 files = list(self.main.wl_file_area.get_selected_files())
@@ -599,7 +485,308 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                         else:
                             file_lang = 'other'
 
-                    readability_stats = stats[0]
+                    len_paras_sentences = numpy.array(stats[1])
+                    len_sentences = numpy.array(stats[4])
+                    len_sentence_segs = numpy.array(stats[5])
+                    len_tokens_chars = numpy.array(stats[7])
+                    len_types_chars = numpy.array(stats[9])
+                    len_syls = numpy.array(stats[10])
+
+                    count_paras = len(len_paras_sentences)
+                    count_sentences = len(len_sentences)
+                    count_sentence_segs = len(len_sentence_segs)
+                    count_tokens = len(len_tokens_chars)
+                    count_types = len(len_types_chars)
+                    count_syls = len(len_syls)
+                    count_chars = numpy.sum(len_tokens_chars)
+
+                    # Count of Paragraphs
+                    self.set_item_num(0, i, count_paras)
+                    self.set_item_num(1, i, count_paras, count_paras_total)
+
+                    # Count of Sentences
+                    self.set_item_num(2, i, count_sentences)
+                    self.set_item_num(3, i, count_sentences, count_sentences_total)
+
+                    # Count of Sentence Segments
+                    self.set_item_num(4, i, count_sentence_segs)
+                    self.set_item_num(5, i, count_sentence_segs, count_sentence_segs_total)
+
+                    # Count of Tokens
+                    self.set_item_num(6, i, count_tokens)
+                    self.set_item_num(7, i, count_tokens, count_tokens_total)
+
+                    # Count of Types
+                    self.set_item_num(8, i, count_types)
+                    self.set_item_num(9, i, count_types, count_types_total)
+
+                    # Count of Syllables
+                    if file_lang in self.main.settings_global['syl_tokenizers']:
+                        self.set_item_num(10, i, count_syls)
+                        self.set_item_num(11, i, count_syls, count_syls_total)
+                    else:
+                        self.set_item_error(10, i, text = self.tr('No language support'))
+                        self.set_item_error(11, i, text = self.tr('No language support'))
+
+                    # Count of Characters
+                    self.set_item_num(12, i, count_chars)
+                    self.set_item_num(13, i, count_chars, count_chars_total)
+
+                self.enable_updates()
+
+                self.toggle_pct()
+                self.toggle_cumulative()
+                self.toggle_breakdown()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
+
+        return err_msg
+
+HEADERS_TTRS = [
+    _tr('Wl_Table_Profiler', 'Type-token Ratio'),
+    _tr('Wl_Table_Profiler', 'Type-token Ratio (Standardized)')
+]
+
+class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            headers = HEADERS_TTRS,
+            headers_float = HEADERS_TTRS,
+            profiler_tab = 'ttrs'
+        )
+
+    def update_gui_table(self, err_msg, text_stats_files):
+        # Skip if all statistics except readability measures are 0 or empty
+        text_stats = [stat for text_stats in text_stats_files for stat in text_stats[1:]]
+
+        if wl_checks_work_area.check_results(self.main, err_msg, text_stats):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
+
+                self.clr_table()
+
+                # Insert columns
+                files = list(self.main.wl_file_area.get_selected_files())
+
+                for i, file in enumerate(files):
+                    self.ins_header_hor(
+                        self.find_header_hor(self.tr('Total')), file['name'],
+                        is_breakdown = True
+                    )
+
+                self.disable_updates()
+
+                for i, stats in enumerate(text_stats_files):
+                    ttr = stats[11]
+                    sttr = stats[12]
+
+                    # Type-token Ratio
+                    self.set_item_num(0, i, ttr)
+                    # Type-token Ratio (Standardized)
+                    self.set_item_num(1, i, sttr)
+
+                self.enable_updates()
+
+                self.toggle_pct()
+                self.toggle_cumulative()
+                self.toggle_breakdown()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
+
+        return err_msg
+
+HEADERS_LEN_PARAS_SENTENCES = [
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Mean)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Variance)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Median)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Range)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentences (Modes)')
+]
+HEADERS_LEN_PARAS_SENTENCE_SEGS = [
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Mean)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Variance)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Median)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Range)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Sentence Segments (Modes)')
+]
+HEADERS_LEN_PARAS_TOKENS = [
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Mean)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Variance)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Median)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Range)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Paragraph Length in Tokens (Modes)')
+]
+HEADERS_LEN_SENTENCES_TOKENS = [
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Mean)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Variance)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Median)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Range)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Sentence Length in Tokens (Modes)')
+]
+HEADERS_LEN_SENTENCE_SEGS_TOKENS = [
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Mean)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Variance)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Median)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Range)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Sentence Segment Length in Tokens (Modes)')
+]
+HEADERS_LEN_TOKENS_SYLS = [
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Mean)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Variance)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Median)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Range)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Syllables (Modes)')
+]
+HEADERS_LEN_TOKENS_CHARS = [
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Mean)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Variance)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Median)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Range)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Token Length in Characters (Modes)')
+]
+HEADERS_LEN_TYPES_SYLS = [
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Mean)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Variance)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Median)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Range)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Syllables (Modes)')
+]
+HEADERS_LEN_TYPES_CHARS = [
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Mean)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Variance)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Median)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Range)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Type Length in Characters (Modes)')
+]
+HEADERS_LEN_SYLS_CHARS = [
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Mean)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Standard Deviation)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Variance)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Minimum)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (25th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Median)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (75th Percentile)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Maximum)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Range)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Interquartile Range)'),
+    _tr('Wl_Table_Profiler', 'Syllable Length in Characters (Modes)')
+]
+HEADERS_LENS = [
+    HEADERS_LEN_PARAS_SENTENCES, HEADERS_LEN_PARAS_SENTENCE_SEGS, HEADERS_LEN_PARAS_TOKENS,
+    HEADERS_LEN_SENTENCES_TOKENS, HEADERS_LEN_SENTENCE_SEGS_TOKENS,
+    HEADERS_LEN_TOKENS_SYLS, HEADERS_LEN_TOKENS_CHARS,
+    HEADERS_LEN_TYPES_SYLS, HEADERS_LEN_TYPES_CHARS,
+    HEADERS_LEN_SYLS_CHARS
+]
+
+class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            headers = [header for headers in HEADERS_LENS for header in headers],
+            # Minimum, Maximum, and Range
+            headers_int = sum((
+                [HEADERS[3], HEADERS[7], HEADERS[8]]
+                for HEADERS in HEADERS_LENS
+            ), start = []),
+            # Mean, Standard Deviation, Variance, 25th Percentile, Median, 75th Percentile, and Interquartile Range
+            headers_float = sum((
+                [*HEADERS[0:3], *HEADERS[4:7], HEADERS[9]]
+                for HEADERS in HEADERS_LENS
+            ), start = []),
+            profiler_tab = 'lens'
+        )
+
+    def update_gui_table(self, err_msg, text_stats_files):
+        # Skip if all statistics except readability measures are 0 or empty
+        text_stats = [stat for text_stats in text_stats_files for stat in text_stats[1:]]
+
+        if wl_checks_work_area.check_results(self.main, err_msg, text_stats):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
+
+                self.clr_table()
+
+                # Insert columns
+                files = list(self.main.wl_file_area.get_selected_files())
+
+                for i, file in enumerate(files):
+                    self.ins_header_hor(
+                        self.find_header_hor(self.tr('Total')), file['name'],
+                        is_breakdown = True
+                    )
+
+                self.disable_updates()
+
+                for i, stats in enumerate(text_stats_files):
+                    if i < len(files):
+                        file_lang = files[i]['lang']
+                    # Total
+                    else:
+                        if len({file['lang'] for file in files}) == 1:
+                            file_lang = files[0]['lang']
+                        else:
+                            file_lang = 'other'
+
                     len_paras_sentences = numpy.array(stats[1])
                     len_paras_sentence_segs = numpy.array(stats[2])
                     len_paras_tokens = numpy.array(stats[3])
@@ -610,73 +797,16 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
                     len_types_syls = numpy.array(stats[8])
                     len_types_chars = numpy.array(stats[9])
                     len_syls = numpy.array(stats[10])
-                    ttr = stats[11]
-                    sttr = stats[12]
 
-                    count_paras = len(len_paras_sentences)
-                    count_sentences = len(len_sentences)
-                    count_sentence_segs = len(len_sentence_segs)
-                    count_tokens = len(len_tokens_chars)
-                    count_types = len(len_types_chars)
-                    count_syls = len(len_syls)
-                    count_chars = numpy.sum(len_tokens_chars)
-
-                    len_readability_stats = len(readability_stats)
-
-                    # Readability
-                    for j, statistic in enumerate(readability_stats):
-                        if statistic == 'no_support':
-                            self.set_item_error(j, i, self.tr('No support'))
-                        elif statistic == 'text_too_short':
-                            self.set_item_error(j, i, self.tr('Text is too short'))
-                        else:
-                            self.set_item_num(j, i, statistic)
-
-                    # Count of Paragraphs
-                    self.set_item_num(len_readability_stats, i, count_paras)
-                    self.set_item_num(len_readability_stats + 1, i, count_paras, count_paras_total)
-
-                    # Count of Sentences
-                    self.set_item_num(len_readability_stats + 2, i, count_sentences)
-                    self.set_item_num(len_readability_stats + 3, i, count_sentences, count_sentences_total)
-
-                    # Count of Sentence Segments
-                    self.set_item_num(len_readability_stats + 4, i, count_sentence_segs)
-                    self.set_item_num(len_readability_stats + 5, i, count_sentence_segs, count_sentence_segs_total)
-
-                    # Count of Tokens
-                    self.set_item_num(len_readability_stats + 6, i, count_tokens)
-                    self.set_item_num(len_readability_stats + 7, i, count_tokens, count_tokens_total)
-
-                    # Count of Types
-                    self.set_item_num(len_readability_stats + 8, i, count_types)
-                    self.set_item_num(len_readability_stats + 9, i, count_types, count_types_total)
-
-                    # Count of Syllables
-                    if file_lang in self.main.settings_global['syl_tokenizers']:
-                        self.set_item_num(len_readability_stats + 10, i, count_syls)
-                        self.set_item_num(len_readability_stats + 11, i, count_syls, count_syls_total)
-                    else:
-                        self.set_item_error(len_readability_stats + 10, i, text = self.tr('No support'))
-                        self.set_item_error(len_readability_stats + 11, i, text = self.tr('No support'))
-
-                    # Count of Characters
-                    self.set_item_num(len_readability_stats + 12, i, count_chars)
-                    self.set_item_num(len_readability_stats + 13, i, count_chars, count_chars_total)
-
-                    # Type-token Ratio
-                    self.set_item_num(len_readability_stats + 14, i, ttr)
-                    # Type-token Ratio (Standardized)
-                    self.set_item_num(len_readability_stats + 15, i, sttr)
-
-                    # Paragraph / Sentence / Sentence Segment / Token in Characters / Type in Characters Length
+                    # Paragraph Length in Sentences / Sentence Segments / Tokens
+                    # Sentence / Sentence Segment Length in Tokens
+                    # Token/Type Length in Characters
                     for row, lens in zip(
                         [
-                            len_readability_stats + 16, len_readability_stats + 27, len_readability_stats + 38,
-                            len_readability_stats + 49, len_readability_stats + 60,
-                            len_readability_stats + 82, len_readability_stats + 104
-                        ],
-                        [
+                            0, 11, 22,
+                            33, 44,
+                            55, 66
+                        ], [
                             len_paras_sentences, len_paras_sentence_segs, len_paras_tokens,
                             len_sentences, len_sentence_segs,
                             len_tokens_chars, len_types_chars
@@ -711,13 +841,13 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 
                         self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                    # Token in Syllables / Types in Syllables / Syllable Length
+                    # Token/Type Length in Syllables
+                    # Syllable Length in Characters
                     for row, lens in zip(
                         [
-                            len_readability_stats + 71, len_readability_stats + 93,
-                            len_readability_stats + 115
-                        ],
-                        [
+                            77, 88,
+                            99
+                        ], [
                             len_tokens_syls, len_types_syls,
                             len_syls
                         ]
@@ -752,17 +882,67 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 
                             self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
-                            self.set_item_error(row, i, text = self.tr('No support'))
-                            self.set_item_error(row + 1, i, text = self.tr('No support'))
-                            self.set_item_error(row + 2, i, text = self.tr('No support'))
-                            self.set_item_error(row + 3, i, text = self.tr('No support'))
-                            self.set_item_error(row + 4, i, text = self.tr('No support'))
-                            self.set_item_error(row + 5, i, text = self.tr('No support'))
-                            self.set_item_error(row + 6, i, text = self.tr('No support'))
-                            self.set_item_error(row + 7, i, text = self.tr('No support'))
-                            self.set_item_error(row + 8, i, text = self.tr('No support'))
-                            self.set_item_error(row + 9, i, text = self.tr('No support'))
-                            self.set_item_error(row + 10, i, text = self.tr('No support'))
+                            self.set_item_error(row, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 1, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 2, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 3, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 4, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 5, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 6, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 7, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 8, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 9, i, text = self.tr('No language support'))
+                            self.set_item_error(row + 10, i, text = self.tr('No language support'))
+
+                self.enable_updates()
+
+                self.toggle_pct()
+                self.toggle_cumulative()
+                self.toggle_breakdown()
+            except Exception:
+                err_msg = traceback.format_exc()
+            finally:
+                wl_checks_work_area.check_err_table(self.main, err_msg)
+
+        return err_msg
+
+class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
+    def __init__(self, parent):
+        super().__init__(
+            parent,
+            headers = [],
+            profiler_tab = 'len_breakdown'
+        )
+
+    def update_gui_table(self, err_msg, text_stats_files):
+        # Skip if all statistics except readability measures are 0 or empty
+        text_stats = [stat for text_stats in text_stats_files for stat in text_stats[1:]]
+
+        if wl_checks_work_area.check_results(self.main, err_msg, text_stats):
+            try:
+                self.settings = copy.deepcopy(self.main.settings_custom)
+
+                self.clr_table()
+
+                count_tokens_lens = []
+                count_sentences_lens = []
+                count_sentence_segs_lens = []
+
+                # Insert columns
+                files = list(self.main.wl_file_area.get_selected_files())
+
+                for i, file in enumerate(files):
+                    self.ins_header_hor(
+                        self.find_header_hor(self.tr('Total')), file['name'],
+                        is_breakdown = True
+                    )
+
+                self.disable_updates()
+
+                for i, stats in enumerate(text_stats_files):
+                    len_sentences = numpy.array(stats[4])
+                    len_sentence_segs = numpy.array(stats[5])
+                    len_tokens_chars = numpy.array(stats[7])
 
                     count_tokens_lens.append(collections.Counter(len_tokens_chars))
                     count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
@@ -886,11 +1066,13 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
             finally:
                 wl_checks_work_area.check_err_table(self.main, err_msg)
 
+        return err_msg
+
 class Wl_Worker_Profiler(wl_threading.Wl_Worker):
     worker_done = pyqtSignal(str, list)
 
-    def __init__(self, main, dialog_progress, update_gui):
-        super().__init__(main, dialog_progress, update_gui)
+    def __init__(self, main, dialog_progress, update_gui, profiler_tab):
+        super().__init__(main, dialog_progress, update_gui, profiler_tab = profiler_tab)
 
         self.err_msg = ''
         self.text_stats_files = []
@@ -940,86 +1122,99 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 tokens = text.get_tokens_flat()
 
                 # Readability
-                readability_statistics = [
-                    wl_measures_readability.automated_ara_readability_index(self.main, text),
-                    wl_measures_readability.automated_readability_index(self.main, text),
-                    wl_measures_readability.coleman_liau_index(self.main, text),
-                    wl_measures_readability.dale_chall_readability_score(self.main, text),
-                    wl_measures_readability.devereux_readability_index(self.main, text),
-                    wl_measures_readability.fernandez_huertas_readability_score(self.main, text),
-                    wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
-                    wl_measures_readability.flesch_reading_ease(self.main, text),
-                    wl_measures_readability.flesch_reading_ease_simplified(self.main, text),
-                    wl_measures_readability.forcast_grade_level(self.main, text),
-                    wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(self.main, text),
-                    wl_measures_readability.formula_de_crawford(self.main, text),
-                    wl_measures_readability.gulpease_index(self.main, text),
-                    wl_measures_readability.gunning_fog_index(self.main, text),
-                    wl_measures_readability.legibility_mu(self.main, text),
-                    wl_measures_readability.lensear_write(self.main, text),
-                    wl_measures_readability.lix(self.main, text),
-                    wl_measures_readability.mcalpine_eflaw(self.main, text),
-                    wl_measures_readability.osman(self.main, text),
-                    wl_measures_readability.rix(self.main, text),
-                    wl_measures_readability.smog_grade(self.main, text),
-                    wl_measures_readability.spache_grade_level(self.main, text),
-                    wl_measures_readability.szigriszts_perspicuity_index(self.main, text),
-                    wl_measures_readability.wiener_sachtextformel(self.main, text)
-                ]
+                if self.profiler_tab in ['readability', 'all']:
+                    readability_stats = [
+                        wl_measures_readability.automated_ara_readability_index(self.main, text),
+                        wl_measures_readability.automated_readability_index(self.main, text),
+                        wl_measures_readability.coleman_liau_index(self.main, text),
+                        wl_measures_readability.dale_chall_readability_score(self.main, text),
+                        wl_measures_readability.devereux_readability_index(self.main, text),
+                        wl_measures_readability.fernandez_huertas_readability_score(self.main, text),
+                        wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
+                        wl_measures_readability.flesch_reading_ease(self.main, text),
+                        wl_measures_readability.flesch_reading_ease_simplified(self.main, text),
+                        wl_measures_readability.forcast_grade_level(self.main, text),
+                        wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(self.main, text),
+                        wl_measures_readability.formula_de_crawford(self.main, text),
+                        wl_measures_readability.gulpease_index(self.main, text),
+                        wl_measures_readability.gunning_fog_index(self.main, text),
+                        wl_measures_readability.legibility_mu(self.main, text),
+                        wl_measures_readability.lensear_write(self.main, text),
+                        wl_measures_readability.lix(self.main, text),
+                        wl_measures_readability.mcalpine_eflaw(self.main, text),
+                        wl_measures_readability.osman(self.main, text),
+                        wl_measures_readability.rix(self.main, text),
+                        wl_measures_readability.smog_grade(self.main, text),
+                        wl_measures_readability.spache_grade_level(self.main, text),
+                        wl_measures_readability.szigriszts_perspicuity_index(self.main, text),
+                        wl_measures_readability.wiener_sachtextformel(self.main, text)
+                    ]
+                else:
+                    readability_stats = None
 
-                # Paragraph length
-                len_paras_sentences = [
-                    len(para)
-                    for para in text.tokens_multilevel
-                ]
-                len_paras_sentence_segs = [
-                    sum((len(sentence) for sentence in para))
-                    for para in text.tokens_multilevel
-                ]
-                len_paras_tokens = [
-                    sum((len(sentence_seg) for sentence in para for sentence_seg in sentence))
-                    for para in text.tokens_multilevel
-                ]
+                if self.profiler_tab in ['ttrs', 'counts', 'lens', 'len_breakdown', 'all']:
+                    # Paragraph length
+                    len_paras_sentences = [
+                        len(para)
+                        for para in text.tokens_multilevel
+                    ]
+                    len_paras_sentence_segs = [
+                        sum((len(sentence) for sentence in para))
+                        for para in text.tokens_multilevel
+                    ]
+                    len_paras_tokens = [
+                        sum((len(sentence_seg) for sentence in para for sentence_seg in sentence))
+                        for para in text.tokens_multilevel
+                    ]
 
-                # Sentence length
-                len_sentences = [
-                    sum((len(sentence_seg) for sentence_seg in sentence))
-                    for para in text.tokens_multilevel
-                    for sentence in para
-                ]
-                len_sentence_segs = [
-                    len(sentence_seg)
-                    for para in text.tokens_multilevel
-                    for sentence in para
-                    for sentence_seg in sentence
-                ]
+                    # Sentence length
+                    len_sentences = [
+                        sum((len(sentence_seg) for sentence_seg in sentence))
+                        for para in text.tokens_multilevel
+                        for sentence in para
+                    ]
+                    len_sentence_segs = [
+                        len(sentence_seg)
+                        for para in text.tokens_multilevel
+                        for sentence in para
+                        for sentence_seg in sentence
+                    ]
 
-                # Token length
-                len_tokens_syls = [len(syls) for syls in text.syls_tokens]
-                len_tokens_chars = [len(token) for token in tokens]
-                # Type length
-                len_types_syls = [len(syls) for syls in {tuple(syls) for syls in text.syls_tokens}]
-                len_types_chars = [len(token_type) for token_type in set(tokens)]
-                # Syllable length
-                len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
-
-                count_tokens = len(len_tokens_chars)
-                count_types = len(len_types_chars)
+                    # Token length
+                    len_tokens_syls = [len(syls) for syls in text.syls_tokens]
+                    len_tokens_chars = [len(token) for token in tokens]
+                    # Type length
+                    len_types_syls = [len(syls) for syls in {tuple(syls) for syls in text.syls_tokens}]
+                    len_types_chars = [len(token_type) for token_type in set(tokens)]
+                    # Syllable length
+                    len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
+                else:
+                    len_paras_sentences = len_paras_sentence_segs = len_paras_tokens = None
+                    len_sentences = len_sentence_segs = None
+                    len_tokens_syls = len_tokens_chars = None
+                    len_types_syls = len_types_chars = None
+                    len_syls = None
 
                 # TTR & STTR (weighted average)
-                if count_tokens:
-                    ttr = count_types / count_tokens
+                if self.profiler_tab in ['ttrs', 'all']:
+                    count_tokens = len(len_tokens_chars)
+                    count_types = len(len_types_chars)
 
-                    ttrs = [
-                        len(set(token_section))
-                        for token_section in wl_nlp_utils.to_sections_unequal(tokens, num_tokens_section_sttr)
-                    ]
-                    sttr = numpy.sum(ttrs) / count_tokens
+                    if count_tokens:
+                        ttr = count_types / count_tokens
+
+                        ttrs = [
+                            len(set(token_section))
+                            for token_section in wl_nlp_utils.to_sections_unequal(tokens, num_tokens_section_sttr)
+                        ]
+                        sttr = numpy.sum(ttrs) / count_tokens
+                    else:
+                        ttr = sttr = 0
                 else:
-                    ttr = sttr = 0
+                    ttr = sttr = None
 
                 self.text_stats_files.append([
-                    readability_statistics,
+                    readability_stats,
                     len_paras_sentences,
                     len_paras_sentence_segs,
                     len_paras_tokens,
