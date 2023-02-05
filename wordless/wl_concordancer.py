@@ -27,7 +27,7 @@ import matplotlib.pyplot
 import numpy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QCheckBox, QLabel, QLineEdit, QPushButton, QGroupBox
+from PyQt5.QtWidgets import QCheckBox, QLabel, QLineEdit, QGroupBox, QStackedWidget
 import textblob
 import underthesea
 
@@ -154,14 +154,14 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'), self)
 
         self.label_width_left = QLabel(self.tr('Width (left):'), self)
-        self.stacked_widget_width_left = wl_layouts.Wl_Stacked_Widget(self)
+        self.stacked_widget_width_left = QStackedWidget(self)
         self.spin_box_width_left_char = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_token = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_sentence_seg = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_sentence = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_left_para = wl_boxes.Wl_Spin_Box(self)
         self.label_width_right = QLabel(self.tr('Width (right):'), self)
-        self.stacked_widget_width_right = wl_layouts.Wl_Stacked_Widget(self)
+        self.stacked_widget_width_right = QStackedWidget(self)
         self.spin_box_width_right_char = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_right_token = wl_boxes.Wl_Spin_Box(self)
         self.spin_box_width_right_sentence_seg = wl_boxes.Wl_Spin_Box(self)
@@ -481,23 +481,6 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 _tr('Wl_Table_Concordancer', 'Paragraph No. %')
             ]
         )
-
-        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
-
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        if list(self.main.wl_file_area.get_selected_files()):
-            self.button_generate_table.setEnabled(True)
-            self.button_generate_fig.setEnabled(True)
-        else:
-            self.button_generate_table.setEnabled(False)
-            self.button_generate_fig.setEnabled(False)
 
     @wl_misc.log_timing
     def generate_table(self):

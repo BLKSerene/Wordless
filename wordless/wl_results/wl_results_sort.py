@@ -245,7 +245,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         self.table.model().itemChanged.connect(self.table_item_changed)
 
-    def item_changed(self, item):
+    def item_changed(self, item): # pylint: disable=arguments-differ
         # Check for duplicates
         if item.column() == 0:
             for i in range(self.model().rowCount()):
@@ -289,9 +289,9 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         else:
             self.button_add.setEnabled(False)
 
-        super().item_changed(item)
+        super().item_changed()
 
-    def selection_changed(self, selected, deselected):
+    def selection_changed(self):
         if self.selectionModel().selectedIndexes() and self.model().rowCount() < len(self.cols_to_sort):
             self.button_ins.setEnabled(True)
         else:

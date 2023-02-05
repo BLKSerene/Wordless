@@ -114,7 +114,7 @@ class Wl_Scroll_Area(QScrollArea):
         self.setWidgetResizable(True)
         self.setBackgroundRole(QPalette.Light)
 
-class Wl_Stacked_Widget(QStackedWidget):
+class Wl_Stacked_Widget_Resizable(QStackedWidget):
     def __init__(self, parent):
         super().__init__(parent)
 

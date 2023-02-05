@@ -19,7 +19,7 @@
 import os
 
 from PyQt5.QtCore import QCoreApplication, Qt
-from PyQt5.QtGui import QColor
+from PyQt5.QtGui import QBrush, QColor, QPainter
 from PyQt5.QtWidgets import (
     QCheckBox, QColorDialog, QFileDialog, QLabel, QPushButton,
     QSizePolicy
@@ -68,55 +68,6 @@ class Wl_Button_Html(Wl_Button):
 
         return size
 
-class Wl_Button_Html_Multi_Label(Wl_Button):
-    def __init__(self, texts, parent = None):
-        super().__init__('', parent)
-
-        self._labels = []
-        self._num_labels = len(texts)
-
-        for i in range(self._num_labels):
-            self._labels.append(QLabel(texts[i], self))
-
-            self._labels[-1].setTextFormat(Qt.RichText)
-            self._labels[-1].setAttribute(Qt.WA_TransparentForMouseEvents)
-            self._labels[-1].setSizePolicy(
-                QSizePolicy.Expanding,
-                QSizePolicy.Expanding,
-            )
-
-        self.setLayout(wl_layouts.Wl_Layout())
-
-        for i, label in enumerate(self._labels):
-            self.layout().addWidget(label, 0, i)
-
-        self.layout().setContentsMargins(5, 0, 5, 0)
-        self.layout().setSpacing(5)
-
-    def set_text(self, i, text):
-        self._labels[i].setText(text)
-
-        self.updateGeometry()
-
-    def set_texts(self, texts):
-        for i, text in enumerate(texts):
-            self._labels[i].setText(text)
-
-        self.updateGeometry()
-
-    def sizeHint(self):
-        size = super().sizeHint()
-        size.setWidth(
-            self.contentsMargins().left()
-            + sum((label.sizeHint().width() for label in self._labels))
-            + self.layout().spacing() * (self._num_labels - 1)
-            + self.contentsMargins().right()
-            # Right padding
-            + self.main.settings_custom['general']['ui_settings']['font_size'] * 1.5
-        )
-
-        return size
-
 class Wl_Button_Browse(Wl_Button):
     def __init__(self, parent, line_edit, caption, filters, initial_filter = -1):
         super().__init__(_tr('wl_buttons', 'Browse...'), parent)
@@ -140,29 +91,38 @@ class Wl_Button_Browse(Wl_Button):
         if path:
             self.line_edit.setText(wl_paths.get_normalized_path(path))
 
-class Wl_Button_Color(Wl_Button_Html_Multi_Label):
+class Wl_Button_Color(Wl_Button):
     def __init__(self, parent):
-        super().__init__([''] * 2, parent)
+        super().__init__('', parent)
 
         self.clicked.connect(self.pick_color)
 
-        self._label_color = self._labels[0]
-        self._label_hex = self._labels[1]
+    def paintEvent(self, event):
+        super().paintEvent(event)
 
-        self._label_color.setFixedSize(self.size().height() * 0.65, self.size().height() * 0.65)
+        # A white border within a black border
+        painter = QPainter(self)
+        painter.setPen(QColor('#000000'))
+        painter.setBrush(QBrush(QColor(self.get_color())))
+
+        painter.drawRect(4, 4, 19, 19)
+
+        painter.setPen(QColor('#FFFFFF'))
+        painter.drawRect(5, 5, 17, 17)
 
     def pick_color(self):
         color_picked = QColorDialog.getColor(QColor(self.get_color()), self.main, _tr('wl_buttons', 'Pick Color'))
 
         if color_picked.isValid():
-            self.set_color(color_picked.name())
+            self.set_color(color_picked.name().upper())
 
     def get_color(self):
-        return self._label_hex.text().strip()
+        return self.text().strip()
 
     def set_color(self, color):
-        self._label_color.setStyleSheet(f'background-color: {color};')
-        self._label_hex.setText(color.upper())
+        self.setText(' ' * 6 + color)
+
+        self.update()
 
 def wl_button_color(parent, allow_transparent = False):
     def transparent_changed():

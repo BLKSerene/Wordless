@@ -21,8 +21,8 @@ import copy
 from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import (
-    QCheckBox, QGroupBox, QLabel, QPushButton, QTextEdit,
-    QWidget
+    QCheckBox, QGroupBox, QLabel, QPushButton, QStackedWidget,
+    QTextEdit, QWidget
 )
 
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
@@ -283,7 +283,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         # Mapping Settings
         self.group_box_mapping_settings = QGroupBox(self.tr('Mapping Settings'))
 
-        self.stacked_widget_num_pos_tags = wl_layouts.Wl_Stacked_Widget(self)
+        self.stacked_widget_num_pos_tags = QStackedWidget(self)
         self.label_tagsets_num_pos_tags = QLabel('', self)
         self.label_tagsets_uneditable = wl_labels.Wl_Label_Hint(self.tr('* This part-of-speech tagger does not support custom mappings.'), self)
         self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)

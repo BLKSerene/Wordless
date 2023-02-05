@@ -62,7 +62,7 @@ class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main, text = _tr('Wl_Dialog_Progress_Process_Data', 'Processing data...'))
 
-class WL_Dialog_Clr_Table(wl_dialogs.Wl_Dialog_Info):
+class Wl_Dialog_Clr_Table(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
         super().__init__(
             main,
@@ -94,6 +94,17 @@ class WL_Dialog_Clr_Table(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_buttons.layout().setColumnStretch(0, 1)
 
         self.set_fixed_height()
+
+class Wl_Dialog_Clr_All_Tables(Wl_Dialog_Clr_Table):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.setWindowTitle(self.tr('Clear All Tables'))
+        self.label_confirm_clr.setText(self.tr('''
+            <div>
+                The results in some of the tables have yet been exported. Do you really want to clear all tables?
+            </div>
+        '''))
 
 class Wl_Dialog_Restart_Required(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):

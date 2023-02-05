@@ -30,6 +30,8 @@
 - Settings: Add Settings - Figures - Word Clouds - Mask Settings / Advanced Settings
 - Settings: Add Settings - Measures - Dispersion - Gries's DP
 - Utils: Add Pyphen's Thai syllable tokenizer
+- Work Area: Add Profiler - Generate/Clear all tables
+- Work Area: Add Profiler - Readability / Counts / Type-token Ratios / Lengths / Length Breakdown
 - Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measures of Dispersion / Measure of Adjusted Frequency - Average Logarithmic Distance / Average Reduced Frequency / Average Waiting Time
 
 ### ✨ Improvements

@@ -27,8 +27,7 @@ import traceback
 
 import numpy
 from PyQt5.QtCore import QCoreApplication, Qt
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QCheckBox, QLabel, QPushButton, QGroupBox
+from PyQt5.QtWidgets import QCheckBox, QLabel, QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -537,23 +536,6 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             ],
             sorting_enabled = True
         )
-
-        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
-
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        if list(self.main.wl_file_area.get_selected_files()):
-            self.button_generate_table.setEnabled(True)
-            self.button_generate_fig.setEnabled(True)
-        else:
-            self.button_generate_table.setEnabled(False)
-            self.button_generate_fig.setEnabled(False)
 
     def toggle_breakdown(self):
         settings = self.main.settings_custom['colligation_extractor']['table_settings']

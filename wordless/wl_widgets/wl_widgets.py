@@ -501,7 +501,7 @@ def wl_widgets_search_settings(parent, tab):
 
     wrapper_search_terms.layout().setContentsMargins(0, 0, 0, 0)
 
-    stacked_widget_search_term = wl_layouts.Wl_Stacked_Widget(parent)
+    stacked_widget_search_term = wl_layouts.Wl_Stacked_Widget_Resizable(parent)
     stacked_widget_search_term.addWidget(line_edit_search_term)
     stacked_widget_search_term.addWidget(wrapper_search_terms)
 

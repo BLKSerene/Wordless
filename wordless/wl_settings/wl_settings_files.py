@@ -258,7 +258,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         self.reset_table()
 
-    def item_changed(self, item):
+    def item_changed(self, item): # pylint: disable=arguments-differ
         if not self.is_empty():
             for row in range(self.model().rowCount()):
                 item_opening_tag = self.model().item(row, 2)
@@ -341,7 +341,7 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
                 self.enable_updates()
 
-        super().item_changed(item)
+        super().item_changed()
 
     def _add_row(self, row = None, texts = None):
         if texts is None:

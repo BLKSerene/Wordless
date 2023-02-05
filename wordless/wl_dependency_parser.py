@@ -26,7 +26,7 @@ import numpy
 
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QGroupBox, QPushButton
+from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -329,22 +329,14 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
 
         self.selectionModel().selectionChanged.connect(self.selection_changed_generate_fig)
 
-        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
-
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-
-    def selection_changed_generate_fig(self, selected, deselected): # pylint: disable=unused-argument
+    # Enable the button "Generate figure" when table cells are selected, not when there are files opened
+    def selection_changed_generate_fig(self):
         if not self.is_empty() and self.is_visible() and self.is_selected():
             self.button_generate_fig.setEnabled(True)
         else:
             self.button_generate_fig.setEnabled(False)
 
-    def file_changed(self, item): # pylint: disable=unused-argument
+    def file_changed(self):
         if list(self.main.wl_file_area.get_selected_files()):
             self.button_generate_table.setEnabled(True)
         else:
