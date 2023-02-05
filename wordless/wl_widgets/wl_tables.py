@@ -38,510 +38,6 @@ from wordless.wl_widgets import wl_buttons
 
 _tr = QCoreApplication.translate
 
-class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(bool, str)
-
-    def run(self):
-        if 'headers_int' not in self.table.__dict__:
-            self.table.headers_int = []
-        if 'headers_float' not in self.table.__dict__:
-            self.table.headers_float = []
-        if 'headers_pct' not in self.table.__dict__:
-            self.table.headers_pct = []
-
-        settings_concordancer = self.main.settings_custom['concordancer']['zapping_settings']
-
-        # Check file permissions
-        try:
-            len_rows = len(self.rows_to_exp)
-
-            # CSV files
-            if '*.csv' in self.file_type:
-                encoding = self.main.settings_custom['general']['exp']['tables']['default_encoding']
-
-                # Concordancer
-                if self.table.tab == 'concordancer':
-                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
-                        csv_writer = csv.writer(f)
-
-                        # Horizontal Headers
-                        csv_writer.writerow([
-                            self.table.model().horizontalHeaderItem(col).text().strip()
-                            for col in range(self.table.model().columnCount())
-                        ])
-
-                        # Cells
-                        for i, row in enumerate(self.rows_to_exp):
-                            row_to_exp = []
-
-                            for col in range(self.table.model().columnCount()):
-                                if self.table.model().item(row, col):
-                                    cell_text = self.table.model().item(row, col).text()
-                                else:
-                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
-
-                                row_to_exp.append(cell_text)
-
-                            csv_writer.writerow(row_to_exp)
-
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-                # Parallel Concordancer
-                elif self.table.tab == 'concordancer_parallel':
-                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
-                        csv_writer = csv.writer(f)
-
-                        # Horizontal Headers
-                        csv_writer.writerow([
-                            self.table.model().horizontalHeaderItem(col).text().strip()
-                            for col in range(self.table.model().columnCount())
-                        ])
-
-                        # Cells
-                        for i, row in enumerate(self.rows_to_exp):
-                            row_to_exp = []
-
-                            for col in range(self.table.model().columnCount()):
-                                if self.table.model().item(row, col):
-                                    cell_text = self.table.model().item(row, col).text()
-                                else:
-                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
-
-                                row_to_exp.append(cell_text)
-
-                            csv_writer.writerow(row_to_exp)
-
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-                else:
-                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
-                        csv_writer = csv.writer(f)
-
-                        if self.table.header_orientation == 'hor':
-                            # Horizontal Headers
-                            csv_writer.writerow([
-                                self.table.model().horizontalHeaderItem(col).text().strip()
-                                for col in range(self.table.model().columnCount())
-                            ])
-
-                            # Cells
-                            for i, row in enumerate(self.rows_to_exp):
-                                row_to_exp = []
-
-                                for col in range(self.table.model().columnCount()):
-                                    row_to_exp.append(self.table.model().item(row, col).text().strip())
-
-                                csv_writer.writerow(row_to_exp)
-
-                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-                        else:
-                            # Horizontal Headers
-                            csv_writer.writerow(
-                                ['']
-                                + [
-                                    self.table.model().horizontalHeaderItem(col).text().strip()
-                                    for col in range(self.table.model().columnCount())
-                                ]
-                            )
-
-                            # Vertical Headers & Cells
-                            for i, row in enumerate(self.rows_to_exp):
-                                row_to_exp = [self.table.model().verticalHeaderItem(row).text().strip()]
-
-                                for col in range(self.table.model().columnCount()):
-                                    row_to_exp.append(self.table.model().item(row, col).text().strip())
-
-                                csv_writer.writerow(row_to_exp)
-
-                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-            # Excel workbooks
-            elif '*.xlsx' in self.file_type:
-                workbook = openpyxl.Workbook()
-                worksheet = workbook.active
-
-                dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
-                dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
-
-                # Concordancer
-                if self.table.tab == 'concordancer':
-                    worksheet.freeze_panes = 'A2'
-
-                    # Horizontal Headers
-                    for col in range(self.table.model().columnCount()):
-                        cell = worksheet.cell(1, 1 + col)
-                        cell.value = self.table.model().horizontalHeaderItem(col).text()
-
-                        self.style_header_horizontal(cell, self.table.model().horizontalHeaderItem(col))
-
-                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
-
-                    # Cells
-                    for row_cell, row_item in enumerate(self.rows_to_exp):
-                        for col in range(self.table.model().columnCount()):
-                            # Left
-                            if col == 0:
-                                cell = worksheet.cell(2 + row_cell, 1 + col)
-
-                                cell_val = wl_nlp_utils.html_to_text(self.table.indexWidget(self.table.model().index(row_item, col)).text())
-                                cell_val = self.remove_illegal_chars(cell_val)
-                                cell.value = cell_val
-
-                                self.style_cell_num(cell, self.table.indexWidget(self.table.model().index(row_item, col)))
-                            # Node
-                            elif col == 1:
-                                cell = worksheet.cell(2 + row_cell, 1 + col)
-
-                                cell_val = wl_nlp_utils.html_to_text(self.table.indexWidget(self.table.model().index(row_item, col)).text())
-                                cell_val = self.remove_illegal_chars(cell_val)
-                                cell.value = cell_val
-
-                                self.style_cell_concordancer_node(cell, self.table.indexWidget(self.table.model().index(row_item, col)))
-                            # Right
-                            elif col == 2:
-                                cell = worksheet.cell(2 + row_cell, 1 + col)
-
-                                cell_val = wl_nlp_utils.html_to_text(self.table.indexWidget(self.table.model().index(row_item, col)).text())
-                                cell_val = self.remove_illegal_chars(cell_val)
-                                cell.value = cell_val
-
-                                self.style_cell_text(cell, self.table.indexWidget(self.table.model().index(row_item, col)))
-                            else:
-                                cell = worksheet.cell(2 + row_cell, 1 + col)
-
-                                cell_val = self.table.model().item(row_item, col).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
-                                cell.value = cell_val
-
-                                if (
-                                    col in self.table.headers_int
-                                    or col in self.table.headers_float
-                                    or col in self.table.headers_pct
-                                ):
-                                    self.style_cell_num(cell, self.table.model().item(row_item, col))
-                                else:
-                                    self.style_cell_text(cell, self.table.model().item(row_item, col))
-
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
-
-                    # Row Height
-                    worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
-
-                    for i, _ in enumerate(worksheet.rows):
-                        worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
-
-                    self.progress_updated.emit(self.tr('Saving file...'))
-                # Parallel Concordancer
-                elif self.table.tab == 'concordancer_parallel':
-                    worksheet.freeze_panes = 'A3'
-
-                    # Horizontal Headers
-                    for col in range(self.table.model().columnCount()):
-                        cell = worksheet.cell(1, 1 + col)
-                        cell.value = self.table.model().horizontalHeaderItem(col).text()
-
-                        self.style_header_horizontal(cell, self.table.model().horizontalHeaderItem(col))
-
-                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
-
-                    # Cells
-                    for row_cell, row_item in enumerate(self.rows_to_exp):
-                        for col in range(self.table.model().columnCount()):
-                            if col in [0, 1]:
-                                cell = worksheet.cell(2 + row_cell, 1 + col)
-
-                                cell_val = self.table.model().item(row_item, col).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
-                                cell.value = cell_val
-
-                                if (
-                                    col in self.table.headers_int
-                                    or col in self.table.headers_float
-                                    or col in self.table.headers_pct
-                                ):
-                                    self.style_cell_num(cell, self.table.model().item(row_item, col))
-                                else:
-                                    self.style_cell_text(cell, self.table.model().item(row_item, col))
-                            else:
-                                cell = worksheet.cell(2 + row_cell, 1 + col)
-
-                                cell_val = wl_nlp_utils.html_to_text(self.table.indexWidget(self.table.model().index(row_item, col)).text())
-                                cell_val = self.remove_illegal_chars(cell_val)
-                                cell.value = cell_val
-
-                                self.style_cell_concordancer_parallel_node(cell, self.table.indexWidget(self.table.model().index(row_item, col)))
-
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
-
-                    # Row Height
-                    worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
-
-                    for i, _ in enumerate(worksheet.rows):
-                        worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
-
-                    self.progress_updated.emit(self.tr('Saving target file...'))
-                else:
-                    worksheet.freeze_panes = 'B2'
-
-                    if self.table.header_orientation == 'hor':
-                        # Horizontal Headers
-                        for col in range(self.table.model().columnCount()):
-                            cell = worksheet.cell(1, 1 + col)
-                            cell.value = self.table.model().horizontalHeaderItem(col).text()
-
-                            self.style_header_horizontal(cell, self.table.model().horizontalHeaderItem(col))
-
-                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
-
-                        # Cells
-                        for row_cell, row_item in enumerate(self.rows_to_exp):
-                            for col in range(self.table.model().columnCount()):
-                                cell = worksheet.cell(2 + row_cell, 1 + col)
-
-                                cell_val = self.table.model().item(row_item, col).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
-                                cell.value = cell_val
-
-                                if (
-                                    col in self.table.headers_int
-                                    or col in self.table.headers_float
-                                    or col in self.table.headers_pct
-                                ):
-                                    self.style_cell_num(cell, self.table.model().item(row_item, col))
-                                else:
-                                    self.style_cell_text(cell, self.table.model().item(row_item, col))
-
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
-                    else:
-                        # Horizontal Headers
-                        for col in range(self.table.model().columnCount()):
-                            cell = worksheet.cell(1, 2 + col)
-                            cell.value = self.table.model().horizontalHeaderItem(col).text()
-
-                            self.style_header_horizontal(cell, self.table.model().horizontalHeaderItem(col))
-
-                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(2 + col)].width = self.table.horizontalHeader().sectionSize(col) / dpi_horizontal * 13 + 3
-
-                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1)].width = self.table.verticalHeader().width() / dpi_horizontal * 13 + 3
-
-                        # Vertical Headers
-                        for row_cell, row_item in enumerate(self.rows_to_exp):
-                            cell = worksheet.cell(2 + row_cell, 1)
-                            cell.value = self.table.model().verticalHeaderItem(row_item).text()
-
-                            self.style_header_vertical(cell, self.table.model().verticalHeaderItem(row_item))
-
-                        # Cells
-                        for row_cell, row_item in enumerate(self.rows_to_exp):
-                            for col in range(self.table.model().columnCount()):
-                                cell = worksheet.cell(2 + row_cell, 2 + col)
-
-                                cell_val = self.table.model().item(row_item, col).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
-                                cell.value = cell_val
-
-                                if (
-                                    col in self.table.headers_int
-                                    or col in self.table.headers_float
-                                    or col in self.table.headers_pct
-                                ):
-                                    self.style_cell_num(cell, self.table.model().item(row_item, col))
-                                else:
-                                    self.style_cell_text(cell, self.table.model().item(row_item, col))
-
-                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
-
-                    # Row Height
-                    worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
-
-                    for i, _ in enumerate(worksheet.rows):
-                        worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
-
-                    self.progress_updated.emit(self.tr('Saving file...'))
-
-                workbook.save(self.file_path)
-            elif '*.docx' in self.file_type:
-                doc = docx.Document()
-
-                # Concordancer
-                if self.table.tab == 'concordancer':
-                    outputs = []
-
-                    for i, row in enumerate(self.rows_to_exp):
-                        output = []
-
-                        # Zapping
-                        if settings_concordancer['zapping']:
-                            # Left & Right
-                            for col in [0, 2]:
-                                if self.table.model().item(row, col):
-                                    cell_text = self.table.model().item(row, col).text()
-                                else:
-                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
-
-                                output.append(cell_text)
-
-                            # Node
-                            output.insert(-1, settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with'])
-
-                            if settings_concordancer['add_line_nums']:
-                                output.insert(0, f'{i + 1}. ')
-                        else:
-                            for col in range(3):
-                                cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                cell_text = wl_nlp_utils.html_to_text(cell_text)
-
-                                output.append(cell_text)
-
-                        outputs.append(output)
-
-                    # Randomize outputs
-                    if settings_concordancer['zapping'] and settings_concordancer['randomize_outputs']:
-                        random.shuffle(outputs)
-
-                        # Re-order line numbers
-                        if settings_concordancer['add_line_nums']:
-                            for i, _ in enumerate(outputs):
-                                outputs[i][0] = f'{i + 1}. '
-
-                    for i, para in enumerate(outputs):
-                        para = doc.add_paragraph(' '.join(para))
-                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
-
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-
-                    self.progress_updated.emit(self.tr('Saving file...'))
-                # Parallel Concordancer
-                elif self.table.tab == 'concordancer_parallel':
-                    for i, row in enumerate(self.rows_to_exp):
-                        for col in range(2, self.table.model().columnCount()):
-                            cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                            cell_text = wl_nlp_utils.html_to_text(cell_text)
-
-                            para = doc.add_paragraph(cell_text)
-                            para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
-
-                        doc.add_paragraph('')
-
-                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
-
-                doc.save(self.file_path)
-
-            self.main.settings_custom['general']['exp']['tables']['default_path'] = wl_paths.get_normalized_dir(self.file_path)
-            self.main.settings_custom['general']['exp']['tables']['default_type'] = self.file_type
-
-            exp_success = True
-        except PermissionError:
-            exp_success = False
-
-        self.worker_done.emit(exp_success, self.file_path)
-
-    # Remove illegal characters
-    def remove_illegal_chars(self, text):
-        return re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', text)
-
-    def style_header_horizontal(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['ui_settings']['font_size'],
-            bold = True,
-            color = 'FFFFFF'
-        )
-
-        if self.table.header_orientation == 'hor':
-            cell.fill = openpyxl.styles.PatternFill(
-                fill_type = 'solid',
-                fgColor = '5C88C5'
-            )
-        else:
-            cell.fill = openpyxl.styles.PatternFill(
-                fill_type = 'solid',
-                fgColor = '888888'
-            )
-
-        cell.alignment = openpyxl.styles.Alignment(
-            horizontal = 'center',
-            vertical = 'center',
-            wrap_text = True
-        )
-
-    def style_header_vertical(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['ui_settings']['font_size'],
-            bold = True,
-            color = 'FFFFFF'
-        )
-
-        if self.table.header_orientation == 'hor':
-            cell.fill = openpyxl.styles.PatternFill(
-                fill_type = 'solid',
-                fgColor = '888888'
-            )
-            cell.alignment = openpyxl.styles.Alignment(
-                horizontal = 'right',
-                vertical = 'center',
-                wrap_text = True
-            )
-        else:
-            cell.fill = openpyxl.styles.PatternFill(
-                fill_type = 'solid',
-                fgColor = '5C88C5'
-            )
-            cell.alignment = openpyxl.styles.Alignment(
-                horizontal = 'left',
-                vertical = 'center',
-                wrap_text = True
-            )
-
-    def style_cell_text(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['ui_settings']['font_size'],
-            color = '292929'
-        )
-        cell.alignment = openpyxl.styles.Alignment(
-            horizontal = 'left',
-            vertical = 'center',
-            wrap_text = True
-        )
-
-    def style_cell_num(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['ui_settings']['font_size'],
-            color = '292929'
-        )
-        cell.alignment = openpyxl.styles.Alignment(
-            horizontal = 'right',
-            vertical = 'center',
-            wrap_text = True
-        )
-
-    def style_cell_concordancer_node(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['ui_settings']['font_size'],
-            bold = True,
-            color = 'FF0000'
-        )
-        cell.alignment = openpyxl.styles.Alignment(
-            horizontal = 'center',
-            vertical = 'center',
-            wrap_text = True
-        )
-
-    def style_cell_concordancer_parallel_node(self, cell, item):
-        cell.font = openpyxl.styles.Font(
-            name = item.font().family(),
-            size = self.main.settings_custom['general']['ui_settings']['font_size']
-        )
-        cell.alignment = openpyxl.styles.Alignment(
-            horizontal = 'center',
-            vertical = 'center',
-            wrap_text = True
-        )
-
 class Wl_Table(QTableView):
     def __init__(
         self, parent,
@@ -589,21 +85,20 @@ class Wl_Table(QTableView):
             self.setDragDropOverwriteMode(False)
 
         self.setSelectionBehavior(QAbstractItemView.SelectRows)
+        # Remove dotted gray border around selected cells
+        self.setFocusPolicy(Qt.NoFocus)
 
         if self.header_orientation == 'hor':
             self.setStyleSheet('''
-                QTableView {
-                    outline: none;
-                    color: #292929;
+                QTableView::item {
+                    color: #000;
                 }
-
                 QTableView::item:hover {
                     background-color: #EEE;
-                    color: #292929;
                 }
                 QTableView::item:selected {
                     background-color: #EEE;
-                    color: #292929;
+                    color: #000;
                 }
 
                 QHeaderView::section {
@@ -633,17 +128,15 @@ class Wl_Table(QTableView):
             ''')
         else:
             self.setStyleSheet('''
-                QTableView {
-                    outline: none;
-                    color: #292929;
+                QTableView::item {
+                    color: #000;
                 }
-
                 QTableView::item:hover {
                     background-color: #EEE;
                 }
                 QTableView::item:selected {
                     background-color: #EEE;
-                    color: #292929;
+                    color: #000;
                 }
 
                 QHeaderView::section {
@@ -851,11 +344,21 @@ class Wl_Table(QTableView):
 
         self.model().setVerticalHeaderLabels(headers)
 
-    def get_selected_rows(self):
-        return sorted({index.row() for index in self.selectionModel().selectedIndexes()})
+    def get_selected_rows(self, visible_only = False):
+        selected_rows = sorted({index.row() for index in self.selectionModel().selectedIndexes()})
 
-    def get_selected_cols(self):
-        return sorted({index.column() for index in self.selectionModel().selectedIndexes()})
+        if visible_only:
+            return [row for row in selected_rows if not self.isRowHidden(row)]
+        else:
+            return selected_rows
+
+    def get_selected_cols(self, visible_only = False):
+        selected_col = sorted({index.column() for index in self.selectionModel().selectedIndexes()})
+
+        if visible_only:
+            return [col for col in selected_col if not self.isColumnHidden(col)]
+        else:
+            return selected_col
 
     def _add_row(self, row = None, texts = None):
         if texts is None:
@@ -899,30 +402,11 @@ class Wl_Table(QTableView):
 
         self.model().itemChanged.emit(QStandardItem())
 
-    def exp_selected(self):
-        self.exp_all(rows_to_exp = self.get_selected_rows())
+    # Export visible rows only
+    def exp_selected_cells(self):
+        self.exp_all_cells(rows_to_exp = self.get_selected_rows(visible_only = True))
 
-    def exp_all(self, rows_to_exp = None):
-        def update_gui(exp_success, file_path):
-            self.results_saved = True
-
-            if exp_success:
-                wl_msg_boxes.Wl_Msg_Box_Info(
-                    self.main,
-                    title = self.tr('Export Completed'),
-                    text = self.tr('''
-                        <div>The table has been successfully exported to "{}".</div>
-                    ''').format(file_path)
-                ).open()
-            else:
-                wl_msg_boxes.Wl_Msg_Box_Info(
-                    self.main,
-                    title = self.tr('Export Error'),
-                    text = self.tr('''
-                        <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
-                    ''').format(file_path)
-                ).open()
-
+    def exp_all_cells(self, rows_to_exp = None):
         caption = self.tr('Export Table')
         default_dir = self.main.settings_custom['general']['exp']['tables']['default_path']
         default_type = self.main.settings_custom['general']['exp']['tables']['default_type']
@@ -970,15 +454,498 @@ class Wl_Table(QTableView):
             worker_exp_table = Wl_Worker_Exp_Table(
                 self.main,
                 dialog_progress = dialog_progress,
-                update_gui = update_gui,
+                update_gui = self.update_gui_exp,
                 table = self,
                 file_path = file_path,
                 file_type = file_type,
-                rows_to_exp = rows_to_exp or list(range(self.model().rowCount()))
+                rows_to_exp = (
+                    rows_to_exp or
+                    # Export visible rows only
+                    [row for row in range(self.model().rowCount()) if not self.isRowHidden(row)]
+                )
             )
 
             thread_exp_table = wl_threading.Wl_Thread(worker_exp_table)
             thread_exp_table.start_worker()
+
+    def update_gui_exp(self, exp_success, file_path):
+        self.results_saved = True
+
+        if exp_success:
+            wl_msg_boxes.Wl_Msg_Box_Info(
+                self.main,
+                title = self.tr('Export Completed'),
+                text = self.tr('''
+                    <div>The table has been successfully exported to "{}".</div>
+                ''').format(file_path)
+            ).open()
+        else:
+            wl_msg_boxes.Wl_Msg_Box_Info(
+                self.main,
+                title = self.tr('Export Error'),
+                text = self.tr('''
+                    <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
+                ''').format(file_path)
+            ).open()
+
+class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
+    worker_done = pyqtSignal(bool, str)
+
+    def run(self):
+        if 'headers_int' not in self.table.__dict__:
+            self.table.headers_int = []
+        if 'headers_float' not in self.table.__dict__:
+            self.table.headers_float = []
+        if 'headers_pct' not in self.table.__dict__:
+            self.table.headers_pct = []
+
+        settings_concordancer = self.main.settings_custom['concordancer']['zapping_settings']
+
+        # Check file permissions
+        try:
+            len_rows = len(self.rows_to_exp)
+            # Export visible columns only
+            cols = [col for col in range(self.table.model().columnCount()) if not self.table.isColumnHidden(col)]
+
+            # CSV files
+            if '*.csv' in self.file_type:
+                encoding = self.main.settings_custom['general']['exp']['tables']['default_encoding']
+
+                # Concordancer
+                if self.table.tab == 'concordancer':
+                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
+                        csv_writer = csv.writer(f)
+
+                        # Horizontal headers
+                        csv_writer.writerow([
+                            self.table.model().horizontalHeaderItem(col).text().strip()
+                            for col in cols
+                        ])
+
+                        # Cells
+                        for i, row in enumerate(self.rows_to_exp):
+                            row_to_exp = []
+
+                            for col in cols:
+                                if self.table.model().item(row, col):
+                                    cell_text = self.table.model().item(row, col).text()
+                                else:
+                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
+                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
+
+                                row_to_exp.append(cell_text)
+
+                            csv_writer.writerow(row_to_exp)
+
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
+                # Parallel Concordancer
+                elif self.table.tab == 'concordancer_parallel':
+                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
+                        csv_writer = csv.writer(f)
+
+                        # Horizontal Headers
+                        csv_writer.writerow([
+                            self.table.model().horizontalHeaderItem(col).text().strip()
+                            for col in cols
+                        ])
+
+                        # Cells
+                        for i, row in enumerate(self.rows_to_exp):
+                            row_to_exp = []
+
+                            for col in cols:
+                                if self.table.model().item(row, col):
+                                    cell_text = self.table.model().item(row, col).text()
+                                else:
+                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
+                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
+
+                                row_to_exp.append(cell_text)
+
+                            csv_writer.writerow(row_to_exp)
+
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
+                else:
+                    with open(self.file_path, 'w', encoding = encoding, newline = '') as f:
+                        csv_writer = csv.writer(f)
+
+                        if self.table.header_orientation == 'hor':
+                            # Horizontal headers
+                            csv_writer.writerow([
+                                self.table.model().horizontalHeaderItem(col).text().strip()
+                                for col in cols
+                            ])
+
+                            # Cells
+                            for i, row in enumerate(self.rows_to_exp):
+                                row_to_exp = []
+
+                                for col in cols:
+                                    row_to_exp.append(self.table.model().item(row, col).text().strip())
+
+                                csv_writer.writerow(row_to_exp)
+
+                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
+                        else:
+                            # Horizontal headers
+                            csv_writer.writerow(
+                                ['']
+                                + [
+                                    self.table.model().horizontalHeaderItem(col).text().strip()
+                                    for col in cols
+                                ]
+                            )
+
+                            # Vertical headers & cells
+                            for i, row in enumerate(self.rows_to_exp):
+                                row_to_exp = [self.table.model().verticalHeaderItem(row).text().strip()]
+
+                                for col in cols:
+                                    row_to_exp.append(self.table.model().item(row, col).text().strip())
+
+                                csv_writer.writerow(row_to_exp)
+
+                                self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
+            # Excel workbooks
+            elif '*.xlsx' in self.file_type:
+                workbook = openpyxl.Workbook()
+                worksheet = workbook.active
+
+                dpi_horizontal = QApplication.primaryScreen().logicalDotsPerInchX()
+                dpi_vertical = QApplication.primaryScreen().logicalDotsPerInchY()
+
+                # Concordancer
+                if self.table.tab == 'concordancer':
+                    worksheet.freeze_panes = 'A2'
+
+                    # Horizontal headers
+                    for col_cell, col_item in enumerate(cols):
+                        cell = worksheet.cell(1, 1 + col_cell)
+                        cell.value = self.table.model().horizontalHeaderItem(col_item).text()
+
+                        self.style_header_hor(cell)
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col_cell)].width = self.table.horizontalHeader().sectionSize(col_item) / dpi_horizontal * 13 + 3
+
+                    # Cells
+                    for row_cell, row_item in enumerate(self.rows_to_exp):
+                        for col_cell, col_item in enumerate(cols):
+                            cell = worksheet.cell(2 + row_cell, 1 + col_cell)
+
+                            # Left, Node, and Right
+                            if col_item in [0, 1, 2]:
+                                cell_val = wl_nlp_utils.html_to_text(self.table.indexWidget(self.table.model().index(row_item, col_item)).text())
+                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell.value = cell_val
+
+                                if col_item == 1:
+                                    self.style_cell_concordancer_node(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
+                                else:
+                                    self.style_cell(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
+                            else:
+                                cell_val = self.table.model().item(row_item, col_item).text()
+                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell.value = cell_val
+
+                                self.style_cell(cell, self.table.model().item(row_item, col_item))
+
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
+                # Parallel Concordancer
+                elif self.table.tab == 'concordancer_parallel':
+                    worksheet.freeze_panes = 'A3'
+
+                    # Horizontal headers
+                    for col_cell, col_item in enumerate(cols):
+                        cell = worksheet.cell(1, 1 + col_cell)
+                        cell.value = self.table.model().horizontalHeaderItem(col_item).text()
+
+                        self.style_header_hor(cell)
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col_cell)].width = self.table.horizontalHeader().sectionSize(col_item) / dpi_horizontal * 13 + 3
+
+                    # Cells
+                    for row_cell, row_item in enumerate(self.rows_to_exp):
+                        for col_cell, col_item in enumerate(cols):
+                            cell = worksheet.cell(2 + row_cell, 1 + col_cell)
+
+                            if col_item in [0, 1]:
+                                cell_val = self.table.model().item(row_item, col_item).text()
+                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell.value = cell_val
+
+                                self.style_cell(cell, self.table.model().item(row_item, col_item))
+                            else:
+                                cell_val = wl_nlp_utils.html_to_text(self.table.indexWidget(self.table.model().index(row_item, col_item)).text())
+                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell.value = cell_val
+
+                                self.style_cell(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
+
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
+                else:
+                    worksheet.freeze_panes = 'B2'
+
+                    if self.table.header_orientation == 'hor':
+                        # Horizontal Headers
+                        for col_cell, col_item in enumerate(cols):
+                            cell = worksheet.cell(1, 1 + col_cell)
+                            cell.value = self.table.model().horizontalHeaderItem(col_item).text()
+
+                            self.style_header_hor(cell)
+
+                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(1 + col_cell)].width = self.table.horizontalHeader().sectionSize(col_item) / dpi_horizontal * 13 + 3
+
+                        # Cells
+                        for row_cell, row_item in enumerate(self.rows_to_exp):
+                            for col_cell, col_item in enumerate(cols):
+                                cell = worksheet.cell(2 + row_cell, 1 + col_cell)
+
+                                cell_val = self.table.model().item(row_item, col_item).text()
+                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell.value = cell_val
+
+                                self.style_cell(cell, self.table.model().item(row_item, col_item))
+
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
+                    else:
+                        # Horizontal headers
+                        for col_cell, col_item in enumerate(cols):
+                            cell = worksheet.cell(1, 2 + col_cell)
+                            cell.value = self.table.model().horizontalHeaderItem(col_item).text()
+
+                            self.style_header_hor(cell)
+
+                            worksheet.column_dimensions[openpyxl.utils.get_column_letter(2 + col_cell)].width = self.table.horizontalHeader().sectionSize(col_item) / dpi_horizontal * 13 + 3
+
+                        worksheet.column_dimensions[openpyxl.utils.get_column_letter(1)].width = self.table.verticalHeader().width() / dpi_horizontal * 13 + 3
+
+                        # Vertical headers
+                        for row_cell, row_item in enumerate(self.rows_to_exp):
+                            cell = worksheet.cell(2 + row_cell, 1)
+                            cell.value = self.table.model().verticalHeaderItem(row_item).text()
+
+                            self.style_header_vert(cell)
+
+                        # Cells
+                        for row_cell, row_item in enumerate(self.rows_to_exp):
+                            for col_cell, col_item in enumerate(cols):
+                                cell = worksheet.cell(2 + row_cell, 2 + col_cell)
+
+                                cell_val = self.table.model().item(row_item, col_item).text()
+                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell.value = cell_val
+
+                                self.style_cell(cell, self.table.model().item(row_item, col_item))
+
+                            self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
+
+                # Row height
+                worksheet.row_dimensions[1].height = self.table.horizontalHeader().height() / dpi_vertical * 72
+
+                for i, _ in enumerate(worksheet.rows):
+                    worksheet.row_dimensions[2 + i].height = self.table.verticalHeader().sectionSize(0) / dpi_vertical * 72
+
+                self.progress_updated.emit(self.tr('Saving file...'))
+
+                workbook.save(self.file_path)
+            elif '*.docx' in self.file_type:
+                doc = docx.Document()
+
+                # Concordancer
+                if self.table.tab == 'concordancer':
+                    outputs = []
+
+                    for i, row in enumerate(self.rows_to_exp):
+                        output = []
+
+                        # Zapping
+                        if settings_concordancer['zapping']:
+                            # Left & Right
+                            for col in [0, 2]:
+                                if self.table.model().item(row, col):
+                                    cell_text = self.table.model().item(row, col).text()
+                                else:
+                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
+                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
+
+                                output.append(cell_text)
+
+                            # Node
+                            output.insert(-1, settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with'])
+
+                            if settings_concordancer['add_line_nums']:
+                                output.insert(0, f'{i + 1}. ')
+                        else:
+                            for col in range(3):
+                                cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
+                                cell_text = wl_nlp_utils.html_to_text(cell_text)
+
+                                output.append(cell_text)
+
+                        outputs.append(output)
+
+                    # Randomize outputs
+                    if settings_concordancer['zapping'] and settings_concordancer['randomize_outputs']:
+                        random.shuffle(outputs)
+
+                        # Re-order line numbers
+                        if settings_concordancer['add_line_nums']:
+                            for i, _ in enumerate(outputs):
+                                outputs[i][0] = f'{i + 1}. '
+
+                    for i, para in enumerate(outputs):
+                        para = doc.add_paragraph(' '.join(para))
+                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
+
+                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
+
+                    self.progress_updated.emit(self.tr('Saving file...'))
+                # Parallel Concordancer
+                elif self.table.tab == 'concordancer_parallel':
+                    for i, row in enumerate(self.rows_to_exp):
+                        for col in range(2, self.table.model().columnCount()):
+                            cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
+                            cell_text = wl_nlp_utils.html_to_text(cell_text)
+
+                            para = doc.add_paragraph(cell_text)
+                            para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
+
+                        doc.add_paragraph('')
+
+                        self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
+
+                doc.save(self.file_path)
+
+            self.main.settings_custom['general']['exp']['tables']['default_path'] = wl_paths.get_normalized_dir(self.file_path)
+            self.main.settings_custom['general']['exp']['tables']['default_type'] = self.file_type
+
+            exp_success = True
+        except PermissionError:
+            exp_success = False
+
+        self.worker_done.emit(exp_success, self.file_path)
+
+    # Remove illegal characters
+    def remove_illegal_chars(self, text):
+        return re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', text)
+
+    def style_header(self, cell):
+        cell.font = openpyxl.styles.Font(
+            name = self.main.settings_custom['general']['ui_settings']['font_family'],
+            size = self.main.settings_custom['general']['ui_settings']['font_size'],
+            bold = True,
+            color = 'FFFFFF'
+        )
+
+    def style_header_hor(self, cell):
+        self.style_header(cell)
+
+        # Headers
+        if self.table.header_orientation == 'hor':
+            cell.fill = openpyxl.styles.PatternFill(
+                fill_type = 'solid',
+                fgColor = '5C88C5'
+            )
+        # File names
+        elif self.table.header_orientation == 'vert':
+            cell.fill = openpyxl.styles.PatternFill(
+                fill_type = 'solid',
+                fgColor = '888888'
+            )
+
+        cell.alignment = openpyxl.styles.Alignment(
+            horizontal = 'center',
+            vertical = 'center',
+            wrap_text = True
+        )
+
+    def style_header_vert(self, cell):
+        self.style_header(cell)
+
+        # Line numbers
+        if self.table.header_orientation == 'hor':
+            cell.fill = openpyxl.styles.PatternFill(
+                fill_type = 'solid',
+                fgColor = '888888'
+            )
+            cell.alignment = openpyxl.styles.Alignment(
+                horizontal = 'right',
+                vertical = 'center',
+                wrap_text = True
+            )
+        # Headers
+        elif self.table.header_orientation == 'vert':
+            cell.fill = openpyxl.styles.PatternFill(
+                fill_type = 'solid',
+                fgColor = '5C88C5'
+            )
+            cell.alignment = openpyxl.styles.Alignment(
+                horizontal = 'left',
+                vertical = 'center',
+                wrap_text = True
+            )
+
+    def style_cell_alignment(self, cell, item):
+        if isinstance(item, QStandardItem):
+            alignment = item.textAlignment()
+        else:
+            alignment = item.alignment()
+
+        if alignment & Qt.AlignLeft == Qt.AlignLeft:
+            alignment_hor = 'left'
+        elif alignment & Qt.AlignRight == Qt.AlignRight:
+            alignment_hor = 'right'
+        elif alignment & Qt.AlignHCenter == Qt.AlignHCenter:
+            alignment_hor = 'center'
+        elif alignment & Qt.AlignJustify == Qt.AlignJustify:
+            alignment_hor = 'justify'
+        # Default
+        else:
+            alignment_hor = 'left'
+
+        if alignment & Qt.AlignTop == Qt.AlignTop:
+            alignment_vert = 'top'
+        elif alignment & Qt.AlignBottom == Qt.AlignBottom:
+            alignment_vert = 'bottom'
+        elif alignment & Qt.AlignVCenter == Qt.AlignVCenter:
+            alignment_vert = 'center'
+        # Not sure
+        elif alignment & Qt.AlignBaseline == Qt.AlignBaseline:
+            alignment_vert = 'justify'
+        # Default
+        else:
+            alignment_vert = 'center'
+
+        cell.alignment = openpyxl.styles.Alignment(
+            horizontal = alignment_hor,
+            vertical = alignment_vert,
+            wrap_text = True
+        )
+
+    def style_cell(self, cell, item):
+        font_family = item.font().family()
+
+        if font_family != 'Consolas':
+            font_family = self.main.settings_custom['general']['ui_settings']['font_family']
+
+        cell.font = openpyxl.styles.Font(
+            name = font_family,
+            size = self.main.settings_custom['general']['ui_settings']['font_size'],
+            bold = item.font().bold(),
+            italic = item.font().italic()
+        )
+
+        self.style_cell_alignment(cell, item)
+
+    def style_cell_concordancer_node(self, cell, item):
+        cell.font = openpyxl.styles.Font(
+            name = item.font().family(),
+            size = self.main.settings_custom['general']['ui_settings']['font_size'],
+            bold = True,
+            color = 'FF0000'
+        )
+
+        self.style_cell_alignment(cell, item)
 
 class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
     def __init__(self, parent, headers, col_edit = None):
@@ -996,9 +963,9 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
         self.button_del = QPushButton(self.tr('Remove'), self)
         self.button_clr = QPushButton(self.tr('Clear'), self)
 
-        self.button_add.clicked.connect(lambda: self.add_row()) # pylint: disable=unnecessary-lambda
-        self.button_ins.clicked.connect(lambda: self.ins_row()) # pylint: disable=unnecessary-lambda
-        self.button_del.clicked.connect(lambda: self.del_row()) # pylint: disable=unnecessary-lambda
+        self.button_add.clicked.connect(self.add_row)
+        self.button_ins.clicked.connect(self.ins_row)
+        self.button_del.clicked.connect(self.del_row)
         self.button_clr.clicked.connect(lambda: self.clr_table(0))
 
     def item_changed(self):
@@ -1043,7 +1010,7 @@ class Wl_Table_Item(QStandardItem):
     def __lt__(self, other):
         return self.read_data() < other.read_data()
 
-class Wl_Table_Item_Error(QStandardItem):
+class Wl_Table_Item_Err(QStandardItem):
     def read_data(self):
         return self.text()
 
@@ -1088,18 +1055,18 @@ class Wl_Table_Data(Wl_Table):
 
         self.button_generate_table = QPushButton(self.tr('Generate table'), self)
         self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
-        self.button_exp_selected = QPushButton(self.tr('Export selected...'), self)
-        self.button_exp_all = QPushButton(self.tr('Export all...'), self)
-        self.button_clr = QPushButton(self.tr('Clear'), self)
+        self.button_exp_selected_cells = QPushButton(self.tr('Export selected cells...'), self)
+        self.button_exp_all_cells = QPushButton(self.tr('Export all cells...'), self)
+        self.button_clr_table = QPushButton(self.tr('Clear table'), self)
 
         if not generate_fig:
             self.button_generate_fig.hide()
 
         self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
         self.button_generate_fig.clicked.connect(lambda: self.generate_fig()) # pylint: disable=unnecessary-lambda
-        self.button_exp_selected.clicked.connect(self.exp_selected)
-        self.button_exp_all.clicked.connect(self.exp_all)
-        self.button_clr.clicked.connect(lambda: self.clr_table(confirm = True))
+        self.button_exp_selected_cells.clicked.connect(self.exp_selected_cells)
+        self.button_exp_all_cells.clicked.connect(lambda: self.exp_all_cells()) # pylint: disable=unnecessary-lambda
+        self.button_clr_table.clicked.connect(lambda: self.clr_table(confirm = True))
 
         self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
 
@@ -1108,24 +1075,25 @@ class Wl_Table_Data(Wl_Table):
 
     def item_changed(self):
         if not self.is_empty() and self.is_visible():
-            self.button_exp_all.setEnabled(True)
+            self.button_exp_all_cells.setEnabled(True)
         else:
-            self.button_exp_all.setEnabled(False)
+            self.button_exp_all_cells.setEnabled(False)
 
         if not self.is_empty():
-            self.button_clr.setEnabled(True)
+            self.button_clr_table.setEnabled(True)
         else:
-            self.button_clr.setEnabled(False)
+            self.button_clr_table.setEnabled(False)
 
         super().item_changed()
 
         self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
     def selection_changed(self):
-        if not self.is_empty() and self.is_visible() and self.is_selected():
-            self.button_exp_selected.setEnabled(True)
+        # Enable "Export selected cells" only if any visible rows are selected
+        if not self.is_empty() and self.get_selected_rows(visible_only = True):
+            self.button_exp_selected_cells.setEnabled(True)
         else:
-            self.button_exp_selected.setEnabled(False)
+            self.button_exp_selected_cells.setEnabled(False)
 
     def sorting_changed(self):
         if not self.is_empty():
@@ -1363,14 +1331,14 @@ class Wl_Table_Data(Wl_Table):
 
         self.model().setItem(row, col, item)
 
-    def set_item_error(self, row, col, text):
-        item = Wl_Table_Item_Error(text)
+    def set_item_err(self, row, col, text):
+        item = Wl_Table_Item_Err(text)
 
-        item_font = QFont('Consolas')
-        item_font.setBold(True)
+        item_font = QFont(self.main.settings_custom['general']['ui_settings']['font_family'])
+        item_font.setItalic(True)
 
         item.setFont(item_font)
-        item.setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
         self.model().setItem(row, col, item)
 
@@ -1430,7 +1398,7 @@ class Wl_Table_Data(Wl_Table):
             else:
                 for col in self.headers_pct:
                     self.hideColumn(col)
-        else:
+        elif self.header_orientation == 'vert':
             if self.show_pct:
                 for row in self.headers_pct:
                     self.showRow(row)
@@ -1503,7 +1471,7 @@ class Wl_Table_Data(Wl_Table):
                                 item = self.model().item(row, col)
 
                                 item.setText(f'{item.val:.{precision_pcts}%}')
-        else:
+        elif self.header_orientation == 'vert':
             if self.show_cumulative:
                 for row in self.headers_cumulative:
                     val_cumulative = 0
@@ -1511,7 +1479,7 @@ class Wl_Table_Data(Wl_Table):
                     for col in range(self.model().columnCount() - 1):
                         item = self.model().item(row, col)
 
-                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Error):
+                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
                             val_cumulative += item.val
 
                             # Integers
@@ -1528,7 +1496,7 @@ class Wl_Table_Data(Wl_Table):
                     for col in range(self.model().columnCount() - 1):
                         item = self.model().item(row, col)
 
-                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Error):
+                        if not self.isColumnHidden(col) and not isinstance(item, Wl_Table_Item_Err):
                             # Integers
                             if row in self.headers_int:
                                 item.setText(str(item.val))

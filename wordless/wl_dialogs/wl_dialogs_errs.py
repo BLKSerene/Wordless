@@ -24,21 +24,13 @@ from wordless.wl_widgets import wl_labels, wl_tables
 
 _tr = QCoreApplication.translate
 
-class Wl_Dialog_Err(wl_dialogs.Wl_Dialog_Err):
-    def __init__(self, main, title, width = 0, height = 0):
-        super().__init__(main, title, width = 560, height = 320, no_buttons = True)
-
-        self.button_export = QPushButton(self.tr('Export'), self)
-        self.button_ok = QPushButton(self.tr('OK'), self)
-
-        self.button_ok.clicked.connect(self.accept)
-
-        self.wrapper_buttons.layout().addWidget(self.button_export, 0, 0, Qt.AlignLeft)
-        self.wrapper_buttons.layout().addWidget(self.button_ok, 0, 1, Qt.AlignRight)
-
-class Wl_Dialog_Err_Fatal(Wl_Dialog_Err):
+class Wl_Dialog_Err_Fatal(wl_dialogs.Wl_Dialog_Err):
     def __init__(self, main, err_msg):
-        super().__init__(main, _tr('Wl_Dialog_Err_Fatal', 'Fatal Error'))
+        super().__init__(
+            main,
+            title = _tr('Wl_Dialog_Err_Fatal', 'Fatal Error'),
+            width = 580, height = 260
+        )
 
         self.label_err_msg = wl_labels.Wl_Label_Dialog(
             self.tr('''
@@ -54,11 +46,9 @@ class Wl_Dialog_Err_Fatal(Wl_Dialog_Err):
         self.wrapper_info.layout().addWidget(self.label_err_msg, 0, 0)
         self.wrapper_info.layout().addWidget(self.text_edit_err_msg, 1, 0)
 
-        self.button_export.hide()
-
 class Wl_Dialog_Err_Files(wl_dialogs.Wl_Dialog_Err):
     def __init__(self, main, title):
-        super().__init__(main, title, width = 650, height = 250, no_buttons = True)
+        super().__init__(main, title, width = 580, height = 260, no_buttons = True)
 
         self.label_err = wl_labels.Wl_Label_Dialog('', self)
         self.table_err_files = wl_tables.Wl_Table(
@@ -73,14 +63,14 @@ class Wl_Dialog_Err_Files(wl_dialogs.Wl_Dialog_Err):
 
         self.table_err_files.model().setRowCount(0)
 
-        self.button_export = QPushButton(self.tr('Export'), self)
+        self.button_exp_table = QPushButton(' ' * 3 + self.tr('Export table...') + ' ' * 3, self)
         self.button_ok = QPushButton(self.tr('OK'), self)
 
-        self.button_export.clicked.connect(self.table_err_files.exp_all)
+        self.button_exp_table.clicked.connect(self.table_err_files.exp_all_cells)
         self.button_ok.clicked.connect(self.accept)
 
         self.wrapper_info.layout().addWidget(self.label_err, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_err_files, 1, 0)
 
-        self.wrapper_buttons.layout().addWidget(self.button_export, 0, 0, Qt.AlignLeft)
+        self.wrapper_buttons.layout().addWidget(self.button_exp_table, 0, 0, Qt.AlignLeft)
         self.wrapper_buttons.layout().addWidget(self.button_ok, 0, 1, Qt.AlignRight)
