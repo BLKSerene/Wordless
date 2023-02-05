@@ -631,14 +631,14 @@ def wl_widgets_table_settings(parent, tables):
         for table in tables:
             table.show_pct = checkbox_show_pct.isChecked()
 
-            if any((table.model().item(0, i) for i in range(table.model().columnCount()))):
+            if not table.is_empty():
                 table.toggle_pct()
 
     def show_cumulative_changed():
         for table in tables:
             table.show_cumulative = checkbox_show_cumulative.isChecked()
 
-            if any((table.model().item(0, i) for i in range(table.model().columnCount()))):
+            if not table.is_empty():
                 table.toggle_cumulative()
 
     def show_breakdown_changed():

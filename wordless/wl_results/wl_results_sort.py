@@ -192,9 +192,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
             if isinstance(sentiment, float):
                 self.table.set_item_num(i, 3, sentiment)
-            # No Support
+            # No language support
             else:
-                self.table.set_item_error(i, 3, text = sentiment)
+                self.table.set_item_err(i, 3, text = sentiment)
 
             self.table.set_item_num_val(i, 4, no_token)
             self.table.set_item_num_val(i, 5, no_token_pct)

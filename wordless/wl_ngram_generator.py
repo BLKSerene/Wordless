@@ -54,9 +54,9 @@ class Wrapper_Ngram_Generator(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_ngram_generator, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_exp_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_exp_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_clr, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_exp_selected_cells, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_exp_all_cells, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_ngram_generator.button_clr_table, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)

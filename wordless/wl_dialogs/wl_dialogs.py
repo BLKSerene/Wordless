@@ -41,6 +41,23 @@ class Wl_Dialog(QDialog):
         self.setWindowFlags(self.windowFlags() | Qt.MSWindowsFixedSizeDialogHint)
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint)
 
+        # Fix styles of tables inside dialogs
+        self.setStyleSheet('''
+            QHeaderView::section {
+                color: #FFF;
+                font-weight: bold;
+            }
+            QHeaderView::section:horizontal {
+                background-color: #5C88C5;
+            }
+            QHeaderView::section:horizontal:hover {
+                background-color: #3265B2;
+            }
+            QHeaderView::section:horizontal:pressed {
+                background-color: #3265B2;
+            }
+        ''')
+
     def set_fixed_height(self):
         self.setFixedHeight(self.heightForWidth(self.width()))
 
@@ -97,7 +114,7 @@ class Wl_Dialog_Info(Wl_Dialog):
         self.wrapper_buttons.layout().setContentsMargins(11, 0, 11, 11)
 
         if not no_buttons:
-            self.button_ok = QPushButton(_tr('Wl_Dialog_Info', 'OK'), self)
+            self.button_ok = QPushButton(self.tr('OK'), self)
 
             self.button_ok.clicked.connect(self.accept)
 
