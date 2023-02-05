@@ -61,10 +61,6 @@ class Wl_Dialog(QDialog):
     def set_fixed_height(self):
         self.setFixedHeight(self.heightForWidth(self.width()))
 
-    def set_fixed_size(self):
-        self.adjustSize()
-        self.setFixedSize(self.sizeHint())
-
     def move_to_center(self):
         self.move(
             (self.main.width() - self.width()) / 2,

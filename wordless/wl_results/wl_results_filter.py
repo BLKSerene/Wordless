@@ -102,8 +102,6 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         self.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0)
         self.layout().addLayout(layout_buttons, 4, 0)
 
-        self.set_fixed_size()
-
     def load_settings(self, defaults = False):
         if defaults:
             settings = self.main.settings_default[self.tab]['filter_results']
