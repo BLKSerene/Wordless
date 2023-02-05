@@ -167,7 +167,7 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
 
         self.label_font_color = QLabel(self.tr('Font color:'), self)
         self.combo_box_font_color = wl_boxes.Wl_Combo_Box(self)
-        self.stacked_widget_font_color = wl_layouts.Wl_Stacked_Widget(self)
+        self.stacked_widget_font_color = wl_layouts.Wl_Stacked_Widget_Resizable(self)
         self.button_font_color_monochrome = wl_buttons.wl_button_color(self)
         self.combo_box_font_color_colormap = wl_boxes.Wl_Combo_Box(self)
         self.label_font_color_colormap = QLabel('', self)

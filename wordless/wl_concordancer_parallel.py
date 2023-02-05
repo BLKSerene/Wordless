@@ -23,8 +23,7 @@ import copy
 import traceback
 
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QPushButton, QGroupBox
+from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
@@ -258,21 +257,9 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
             ],
             headers_pct = [
                 _tr('Wl_Table_Concordancer_Parallel', 'Parallel Unit No. %')
-            ]
+            ],
+            generate_fig = False
         )
-
-        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
-
-        self.button_generate_table.clicked.connect(lambda: self.generate_table()) # pylint: disable=unnecessary-lambda
-        self.main.wl_file_area.table_files.model().itemChanged.connect(self.file_changed)
-
-        self.main.wl_file_area.table_files.model().itemChanged.emit(QStandardItem())
-
-    def file_changed(self, item): # pylint: disable=unused-argument
-        if list(self.main.wl_file_area.get_selected_files()):
-            self.button_generate_table.setEnabled(True)
-        else:
-            self.button_generate_table.setEnabled(False)
 
     @wl_misc.log_timing
     def generate_table(self):
