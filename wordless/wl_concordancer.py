@@ -57,9 +57,9 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.table_concordancer, 1, 0, 1, 5)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_table, 2, 0)
         self.wrapper_table.layout().addWidget(self.table_concordancer.button_generate_fig, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_selected, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_all, 2, 3)
-        self.wrapper_table.layout().addWidget(self.table_concordancer.button_clr, 2, 4)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_selected_cells, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_exp_all_cells, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_concordancer.button_clr_table, 2, 4)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
@@ -560,9 +560,9 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     # Sentiment
                     if not isinstance(sentiment, str):
                         self.set_item_num(i, 3, sentiment)
-                    # No Support
+                    # No language support
                     else:
-                        self.set_item_error(i, 3, text = sentiment)
+                        self.set_item_err(i, 3, text = sentiment)
 
                     # Token No.
                     self.set_item_num(i, 4, no_token)
@@ -860,7 +860,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 else:
                                     concordance_line.append(0)
                             else:
-                                concordance_line.append(self.tr('No support'))
+                                concordance_line.append(self.tr('No language support'))
 
                             # Token No.
                             concordance_line.append([i + 1, len_tokens])

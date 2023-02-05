@@ -48,9 +48,9 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addLayout(layout_results, 0, 0, 1, 4)
         self.wrapper_table.layout().addWidget(self.table_concordancer_parallel, 1, 0, 1, 4)
         self.wrapper_table.layout().addWidget(self.table_concordancer_parallel.button_generate_table, 2, 0)
-        self.wrapper_table.layout().addWidget(self.table_concordancer_parallel.button_exp_selected, 2, 1)
-        self.wrapper_table.layout().addWidget(self.table_concordancer_parallel.button_exp_all, 2, 2)
-        self.wrapper_table.layout().addWidget(self.table_concordancer_parallel.button_clr, 2, 3)
+        self.wrapper_table.layout().addWidget(self.table_concordancer_parallel.button_exp_selected_cells, 2, 1)
+        self.wrapper_table.layout().addWidget(self.table_concordancer_parallel.button_exp_all_cells, 2, 2)
+        self.wrapper_table.layout().addWidget(self.table_concordancer_parallel.button_clr_table, 2, 3)
 
         # Token Settings
         self.group_box_token_settings = QGroupBox(self.tr('Token Settings'), self)
