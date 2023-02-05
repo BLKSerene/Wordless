@@ -1285,9 +1285,6 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_info.layout().setColumnStretch(1, 1)
         self.wrapper_info.layout().setVerticalSpacing(0)
 
-        self.set_fixed_size()
-        self.setFixedWidth(self.width() + 10)
-
 if __name__ == '__main__':
     # UI scaling
     if os.path.exists('wl_settings.pickle'):

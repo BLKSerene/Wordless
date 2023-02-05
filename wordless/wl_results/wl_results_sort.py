@@ -67,13 +67,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addLayout(layout_table_sort, 0, 0)
+        self.layout().addLayout(layout_buttons, 1, 0)
 
-        self.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0)
-        self.layout().addLayout(layout_buttons, 2, 0)
-
-        self.set_fixed_size()
-
-    # To be called by "Restore Default Settings"
+    # To be called by "Restore defaults"
     def load_settings(self, defaults = False):
         self.table_sort.load_settings(defaults = defaults)
 
