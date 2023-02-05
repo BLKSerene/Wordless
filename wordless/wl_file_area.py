@@ -224,8 +224,8 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
         self.main.tabs_file_area.currentChanged.connect(lambda: self.check_file_area(self.model().itemChanged.emit, self.model().item(0, 0)))
 
-    def item_changed(self, item):
-        super().item_changed(item)
+    def item_changed(self):
+        super().item_changed()
 
         if not self.is_empty():
             # Record old file names that might be useful for other slots
@@ -320,7 +320,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
         self.selectionModel().selectionChanged.emit(QItemSelection(), QItemSelection())
 
-    def item_clicked(self, index): # pylint: disable=unused-argument
+    def item_clicked(self):
         if not self.is_empty():
             for row in range(self.model().rowCount()):
                 if self.model().item(row, 0).checkState() == Qt.Checked:
@@ -328,7 +328,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
                 else:
                     self.main.settings_custom['file_area'][f'files_open{self.settings_suffix}'][row]['selected'] = False
 
-    def selection_changed(self, selected, deselected):
+    def selection_changed(self):
         if self.get_selected_rows():
             self.main.action_file_close_selected.setEnabled(True)
         else:
@@ -681,8 +681,8 @@ class Table_Open_Files(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         self.clr_table()
 
-    def item_changed(self, item):
-        super().item_changed(item = item)
+    def item_changed(self):
+        super().item_changed()
 
         self.files_to_open = []
 

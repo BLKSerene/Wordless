@@ -48,7 +48,8 @@ def test_profiler():
         wl_profiler.Wl_Worker_Profiler_Table(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main),
-            update_gui = update_gui
+            update_gui = update_gui,
+            profiler_tab = 'all'
         ).run()
 
     main.app.quit()
