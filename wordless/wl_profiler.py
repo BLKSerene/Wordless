@@ -58,16 +58,16 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
         self.stacked_widget_button_generate_table = QStackedWidget(self)
         self.button_generate_all_tables = QPushButton(self.tr('Generate all tables'), self)
-        self.stacked_widget_button_exp_selected = QStackedWidget(self)
-        self.stacked_widget_button_exp_all = QStackedWidget(self)
-        self.stacked_widget_button_clr = QStackedWidget(self)
+        self.stacked_widget_button_exp_selected_cells = QStackedWidget(self)
+        self.stacked_widget_button_exp_all_cells = QStackedWidget(self)
+        self.stacked_widget_button_clr_table = QStackedWidget(self)
         self.button_clr_all_tables = QPushButton(self.tr('Clear all tables'), self)
 
         for table in self.tables:
             self.stacked_widget_button_generate_table.addWidget(table.button_generate_table)
-            self.stacked_widget_button_exp_selected.addWidget(table.button_exp_selected)
-            self.stacked_widget_button_exp_all.addWidget(table.button_exp_all)
-            self.stacked_widget_button_clr.addWidget(table.button_clr)
+            self.stacked_widget_button_exp_selected_cells.addWidget(table.button_exp_selected_cells)
+            self.stacked_widget_button_exp_all_cells.addWidget(table.button_exp_all_cells)
+            self.stacked_widget_button_clr_table.addWidget(table.button_clr_table)
 
             table.model().itemChanged.connect(self.item_changed)
 
@@ -86,9 +86,9 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.wrapper_table.layout().addWidget(self.tabs_profiler, 0, 0, 1, 6)
         self.wrapper_table.layout().addWidget(self.stacked_widget_button_generate_table, 1, 0)
         self.wrapper_table.layout().addWidget(self.button_generate_all_tables, 1, 1)
-        self.wrapper_table.layout().addWidget(self.stacked_widget_button_exp_selected, 1, 2)
-        self.wrapper_table.layout().addWidget(self.stacked_widget_button_exp_all, 1, 3)
-        self.wrapper_table.layout().addWidget(self.stacked_widget_button_clr, 1, 4)
+        self.wrapper_table.layout().addWidget(self.stacked_widget_button_exp_selected_cells, 1, 2)
+        self.wrapper_table.layout().addWidget(self.stacked_widget_button_exp_all_cells, 1, 3)
+        self.wrapper_table.layout().addWidget(self.stacked_widget_button_clr_table, 1, 4)
         self.wrapper_table.layout().addWidget(self.button_clr_all_tables, 1, 5)
 
         self.wrapper_table.layout().setRowStretch(0, 1)
@@ -223,9 +223,9 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.main.settings_custom['profiler']['tab'] = self.tabs_profiler.tabText(i_tabs)
 
         self.stacked_widget_button_generate_table.setCurrentIndex(i_tabs)
-        self.stacked_widget_button_exp_selected.setCurrentIndex(i_tabs)
-        self.stacked_widget_button_exp_all.setCurrentIndex(i_tabs)
-        self.stacked_widget_button_clr.setCurrentIndex(i_tabs)
+        self.stacked_widget_button_exp_selected_cells.setCurrentIndex(i_tabs)
+        self.stacked_widget_button_exp_all_cells.setCurrentIndex(i_tabs)
+        self.stacked_widget_button_clr_table.setCurrentIndex(i_tabs)
 
     def item_changed(self):
         if any((not table.is_empty() for table in self.tables)):
@@ -400,9 +400,9 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
                     # Readability
                     for j, statistic in enumerate(readability_stats):
                         if statistic == 'no_support':
-                            self.set_item_error(j, i, self.tr('No language support'))
+                            self.set_item_err(j, i, self.tr('No language support'))
                         elif statistic == 'text_too_short':
-                            self.set_item_error(j, i, self.tr('Text is too short'))
+                            self.set_item_err(j, i, self.tr('Text is too short'))
                         else:
                             self.set_item_num(j, i, statistic)
 
@@ -525,8 +525,8 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
                         self.set_item_num(10, i, count_syls)
                         self.set_item_num(11, i, count_syls, count_syls_total)
                     else:
-                        self.set_item_error(10, i, text = self.tr('No language support'))
-                        self.set_item_error(11, i, text = self.tr('No language support'))
+                        self.set_item_err(10, i, text = self.tr('No language support'))
+                        self.set_item_err(11, i, text = self.tr('No language support'))
 
                     # Count of Characters
                     self.set_item_num(12, i, count_chars)
@@ -827,16 +827,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                                 str(mode) for mode in wl_measures_misc.modes(lens)
                             ])))
                         else:
-                            self.set_item_num(row, i, 0)
-                            self.set_item_num(row + 1, i, 0)
-                            self.set_item_num(row + 2, i, 0)
-                            self.set_item_num(row + 3, i, 0)
-                            self.set_item_num(row + 4, i, 0)
-                            self.set_item_num(row + 5, i, 0)
-                            self.set_item_num(row + 6, i, 0)
-                            self.set_item_num(row + 7, i, 0)
-                            self.set_item_num(row + 8, i, 0)
-                            self.set_item_num(row + 9, i, 0)
+                            for j in range(10):
+                                self.set_item_num(row + j, i, 0)
+
                             self.model().setItem(row + 10, i, QStandardItem('0'))
 
                         self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
@@ -868,31 +861,15 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                                     str(mode) for mode in wl_measures_misc.modes(lens)
                                 ])))
                             else:
-                                self.set_item_num(row, i, 0)
-                                self.set_item_num(row + 1, i, 0)
-                                self.set_item_num(row + 2, i, 0)
-                                self.set_item_num(row + 3, i, 0)
-                                self.set_item_num(row + 4, i, 0)
-                                self.set_item_num(row + 5, i, 0)
-                                self.set_item_num(row + 6, i, 0)
-                                self.set_item_num(row + 7, i, 0)
-                                self.set_item_num(row + 8, i, 0)
-                                self.set_item_num(row + 9, i, 0)
+                                for j in range(10):
+                                    self.set_item_num(row + j, i, 0)
+
                                 self.model().setItem(row + 10, i, QStandardItem('0'))
 
                             self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
-                            self.set_item_error(row, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 1, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 2, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 3, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 4, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 5, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 6, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 7, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 8, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 9, i, text = self.tr('No language support'))
-                            self.set_item_error(row + 10, i, text = self.tr('No language support'))
+                            for j in range(11):
+                                self.set_item_err(row + j, i, text = self.tr('No language support'))
 
                 self.enable_updates()
 

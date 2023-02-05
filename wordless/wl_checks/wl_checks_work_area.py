@@ -104,7 +104,7 @@ def check_nlp_support(main, files, nlp_utils):
 
         dialog_err_files.label_err.set_text(_tr('wl_checks_work_area', '''
             <div>
-                The process cannot be done because language support is unavailable for the following files. Please check your language settings or try again with files of other languages.
+                The process cannot be done because language support is unavailable for the following files. Please check your language settings or try again with files of different languages.
             </div>
         '''))
 

@@ -21,9 +21,6 @@ from wordless.wl_dialogs import wl_dialogs_errs
 
 main = wl_test_init.Wl_Test_Main()
 
-def test_wl_dialog_err():
-    wl_dialogs_errs.Wl_Dialog_Err(main, title = 'test')
-
 def test_wl_dialog_err_fatal():
     wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg = 'test')
 
@@ -31,6 +28,5 @@ def test_wl_dialog_err_files():
     wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = 'test')
 
 if __name__ == '__main__':
-    test_wl_dialog_err()
     test_wl_dialog_err_fatal()
     test_wl_dialog_err_files()
