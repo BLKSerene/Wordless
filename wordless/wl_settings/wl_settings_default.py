@@ -230,7 +230,7 @@ def init_settings_default(main):
 
                 'highlight_colors': [
                     # Red
-                    '#F00',
+                    '#FF0000',
                     # Orange
                     '#C2691D',
                     # Yellow
