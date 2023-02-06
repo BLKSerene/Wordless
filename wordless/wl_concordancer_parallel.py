@@ -145,21 +145,21 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
 
         (
-            self.checkbox_show_pct,
-            self.checkbox_show_cumulative,
-            self.checkbox_show_breakdown
+            self.checkbox_show_pct_data,
+            self.checkbox_show_cum_data,
+            self.checkbox_show_breakdown_file
         ) = wl_widgets.wl_widgets_table_settings(
             self,
             tables = [self.table_concordancer_parallel]
         )
 
-        self.checkbox_show_cumulative.hide()
-        self.checkbox_show_breakdown.hide()
+        self.checkbox_show_cum_data.hide()
+        self.checkbox_show_breakdown_file.hide()
 
-        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
 
         self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct_data, 0, 0)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_search_settings, 1, 0)
@@ -198,7 +198,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
             self.main.wl_context_settings_concordancer.load_settings(defaults = True)
 
         # Table Settings
-        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
+        self.checkbox_show_pct_data.setChecked(settings['table_settings']['show_pct_data'])
 
         self.token_settings_changed()
         self.search_settings_changed()
@@ -241,7 +241,7 @@ class Wrapper_Concordancer_Parallel(wl_layouts.Wl_Wrapper):
     def table_settings_changed(self):
         settings = self.main.settings_custom['concordancer_parallel']['table_settings']
 
-        settings['show_pct'] = self.checkbox_show_pct.isChecked()
+        settings['show_pct_data'] = self.checkbox_show_pct_data.isChecked()
 
 class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
     def __init__(self, parent):
@@ -322,7 +322,7 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
 
                 self.enable_updates()
 
-                self.toggle_pct()
+                self.toggle_pct_data()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
