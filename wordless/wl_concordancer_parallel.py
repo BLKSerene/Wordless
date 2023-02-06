@@ -445,7 +445,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                             while j < len_parallel_unit_raw:
                                 if parallel_unit_raw[j : j + len_node] == list(node):
-                                    parallel_unit_raw[j] = '<span style="color: red; font-weight: bold;">' + parallel_unit_raw[j]
+                                    parallel_unit_raw[j] = '<span style="color: #F00; font-weight: bold;">' + parallel_unit_raw[j]
                                     parallel_unit_raw[j + len_node - 1] += '</span>'
 
                                     j += len_node
