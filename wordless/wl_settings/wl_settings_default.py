@@ -125,9 +125,9 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown': True
+                'show_pct_data': True,
+                'show_cum_data': False,
+                'show_breakdown_file': True
             }
         },
 
@@ -207,7 +207,7 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True
+                'show_pct_data': True
             },
 
             'fig_settings': {
@@ -320,7 +320,7 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True
+                'show_pct_data': True
             },
 
             'search_results': {
@@ -399,7 +399,7 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True
+                'show_pct_data': True
             },
 
             'fig_settings': {
@@ -447,9 +447,9 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown': True
+                'show_pct_data': True,
+                'show_cum_data': False,
+                'show_breakdown_file': True
             },
 
             'fig_settings': {
@@ -595,9 +595,9 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown': True
+                'show_pct_data': True,
+                'show_cum_data': False,
+                'show_breakdown_file': True
             },
 
             'fig_settings': {
@@ -739,9 +739,9 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown_position': True,
+                'show_pct_data': True,
+                'show_cum_data': False,
+                'show_breakdown_span_position': True,
                 'show_breakdown_file': True
             },
 
@@ -895,9 +895,9 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown_position': True,
+                'show_pct_data': True,
+                'show_cum_data': False,
+                'show_breakdown_span_position': True,
                 'show_breakdown_file': True
             },
 
@@ -992,9 +992,9 @@ def init_settings_default(main):
             },
 
             'table_settings': {
-                'show_pct': True,
-                'show_cumulative': False,
-                'show_breakdown': True
+                'show_pct_data': True,
+                'show_cum_data': False,
+                'show_breakdown_file': True
             },
 
             'fig_settings': {

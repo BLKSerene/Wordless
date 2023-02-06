@@ -27,7 +27,7 @@ import traceback
 
 import numpy
 from PyQt5.QtCore import QCoreApplication, Qt
-from PyQt5.QtWidgets import QCheckBox, QLabel, QGroupBox
+from PyQt5.QtWidgets import QLabel, QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -250,28 +250,24 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
 
         (
-            self.checkbox_show_pct,
-            self.checkbox_show_cumulative,
+            self.checkbox_show_pct_data,
+            self.checkbox_show_cum_data,
+            self.checkbox_show_breakdown_span_position,
             self.checkbox_show_breakdown_file
-        ) = wl_widgets.wl_widgets_table_settings(
+        ) = wl_widgets.wl_widgets_table_settings_span_position(
             self,
             tables = [self.table_collocation_extractor]
         )
 
-        self.checkbox_show_breakdown_file.setText(self.tr('Show breakdown by file'))
-        self.checkbox_show_breakdown_position = QCheckBox(self.tr('Show breakdown by span position'), self)
-
-        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_breakdown_position.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_breakdown_position.stateChanged.connect(self.table_collocation_extractor.toggle_breakdown)
+        self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_cum_data.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_breakdown_span_position.stateChanged.connect(self.table_settings_changed)
         self.checkbox_show_breakdown_file.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_breakdown_file.stateChanged.connect(self.table_collocation_extractor.toggle_breakdown)
 
         self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_position, 2, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct_data, 0, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cum_data, 1, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_span_position, 2, 0)
         self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 3, 0)
 
         # Figure Settings
@@ -411,9 +407,9 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
         self.combo_box_measure_effect_size.set_measure(settings['generation_settings']['measure_effect_size'])
 
         # Table Settings
-        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
-        self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
-        self.checkbox_show_breakdown_position.setChecked(settings['table_settings']['show_breakdown_position'])
+        self.checkbox_show_pct_data.setChecked(settings['table_settings']['show_pct_data'])
+        self.checkbox_show_cum_data.setChecked(settings['table_settings']['show_cum_data'])
+        self.checkbox_show_breakdown_span_position.setChecked(settings['table_settings']['show_breakdown_span_position'])
         self.checkbox_show_breakdown_file.setChecked(settings['table_settings']['show_breakdown_file'])
 
         # Figure Settings
@@ -495,9 +491,9 @@ class Wrapper_Collocation_Extractor(wl_layouts.Wl_Wrapper):
     def table_settings_changed(self):
         settings = self.main.settings_custom['collocation_extractor']['table_settings']
 
-        settings['show_pct'] = self.checkbox_show_pct.isChecked()
-        settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
-        settings['show_breakdown_position'] = self.checkbox_show_breakdown_position.isChecked()
+        settings['show_pct_data'] = self.checkbox_show_pct_data.isChecked()
+        settings['show_cum_data'] = self.checkbox_show_cum_data.isChecked()
+        settings['show_breakdown_span_position'] = self.checkbox_show_breakdown_span_position.isChecked()
         settings['show_breakdown_file'] = self.checkbox_show_breakdown_file.isChecked()
 
     def fig_settings_changed(self):
@@ -536,36 +532,6 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             sorting_enabled = True
         )
 
-    def toggle_breakdown(self):
-        settings = self.main.settings_custom['collocation_extractor']['table_settings']
-
-        self.setUpdatesEnabled(False)
-
-        for col in self.cols_breakdown | self.cols_breakdown_position:
-            if col in self.cols_breakdown and col in self.cols_breakdown_position:
-                if settings['show_breakdown_file'] and settings['show_breakdown_position']:
-                    self.showColumn(col)
-                else:
-                    self.hideColumn(col)
-            elif col in self.cols_breakdown:
-                if settings['show_breakdown_file']:
-                    self.showColumn(col)
-                else:
-                    self.hideColumn(col)
-            elif col in self.cols_breakdown_position:
-                if settings['show_breakdown_position']:
-                    self.showColumn(col)
-                else:
-                    self.hideColumn(col)
-
-        self.setUpdatesEnabled(True)
-
-    def clr_table(self, num_headers = 1, confirm = False):
-        confirmed = super().clr_table(num_headers = num_headers, confirm = confirm)
-
-        if confirmed:
-            self.cols_breakdown_position = set()
-
     @wl_misc.log_timing
     def generate_table(self):
         if wl_checks_work_area.check_search_terms(
@@ -602,9 +568,9 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
                 for file in files_with_total:
                     if file['name'] == self.tr('Total'):
-                        is_breakdown = False
+                        is_breakdown_file = False
                     else:
-                        is_breakdown = True
+                        is_breakdown_file = True
 
                     for i in range(
                         settings['generation_settings']['window_left'],
@@ -614,38 +580,40 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
                                 self.tr('[{}]\nL{}').format(file['name'], -i),
-                                is_int = True, is_cumulative = True, is_breakdown = is_breakdown
+                                is_int = True, is_cum = True,
+                                is_breakdown_file = is_breakdown_file, is_breakdown_span_position = True
                             )
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
                                 self.tr('[{}]\nL{} %').format(file['name'], -i),
-                                is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
+                                is_pct = True, is_cum = True,
+                                is_breakdown_file = is_breakdown_file, is_breakdown_span_position = True
                             )
                         elif i > 0:
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
                                 self.tr('[{}]\nR{}').format(file['name'], i),
-                                is_int = True, is_cumulative = True, is_breakdown = is_breakdown
+                                is_int = True, is_cum = True,
+                                is_breakdown_file = is_breakdown_file, is_breakdown_span_position = True
                             )
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
                                 self.tr('[{}]\nR{} %').format(file['name'], i),
-                                is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
+                                is_pct = True, is_cum = True,
+                                is_breakdown_file = is_breakdown_file, is_breakdown_span_position = True
                             )
-
-                        # Show breakdown by span position
-                        self.cols_breakdown_position.add(self.model().columnCount() - 3)
-                        self.cols_breakdown_position.add(self.model().columnCount() - 4)
 
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
                         self.tr('[{}]\nFrequency').format(file['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = is_breakdown
+                        is_int = True, is_cum = True,
+                        is_breakdown_file = is_breakdown_file
                     )
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
                         self.tr('[{}]\nFrequency %').format(file['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
+                        is_pct = True, is_cum = True,
+                        is_breakdown_file = is_breakdown_file
                     )
 
                     if test_statistical_significance != 'none':
@@ -653,27 +621,31 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                             self.ins_header_hor(
                                 self.model().columnCount() - 2,
                                 f'[{file["name"]}]\n{col_text_test_stat}',
-                                is_float = True, is_breakdown = is_breakdown
+                                is_float = True,
+                                is_breakdown_file = is_breakdown_file
                             )
 
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
                             self.tr('[{}]\np-value').format(file['name']),
-                            is_float = True, is_breakdown = is_breakdown
+                            is_float = True,
+                            is_breakdown_file = is_breakdown_file
                         )
 
                     if measure_bayes_factor != 'none':
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
                             self.tr('[{}]\nBayes Factor').format(file['name']),
-                            is_float = True, is_breakdown = is_breakdown
+                            is_float = True,
+                            is_breakdown_file = is_breakdown_file
                         )
 
                     if measure_effect_size != 'none':
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
                             f'[{file["name"]}]\n{col_text_effect_size}',
-                            is_float = True, is_breakdown = is_breakdown
+                            is_float = True,
+                            is_breakdown_file = is_breakdown_file
                         )
 
                 # Sort by p-value of the first file
@@ -777,9 +749,10 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
                 self.enable_updates()
 
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
+                self.toggle_pct_data_span_position()
+                self.toggle_cum_data()
+                self.toggle_breakdown_span_position()
+                self.toggle_breakdown_file_span_position()
                 self.update_ranks()
             except Exception:
                 err_msg = traceback.format_exc()

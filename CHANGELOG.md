@@ -46,6 +46,7 @@
 - Settings: Fix Settings - Part-of-speech Tagging - Tagsets
 - Work Area: Fix Concordancer - Sort results
 - Work Area: Fix Work Area - Filter results
+- Work Area: Fix Work Area - Table Settings - Show percentage data / Show breakdown by span position / Show breakdown by file
 
 ### ❌ Removals
 - Settings: Remove Settings - Figures - Word Clouds - Font - GNU FreeFont

@@ -159,22 +159,22 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'), self)
 
         (
-            self.checkbox_show_pct,
-            self.checkbox_show_cumulative,
-            self.checkbox_show_breakdown
+            self.checkbox_show_pct_data,
+            self.checkbox_show_cum_data,
+            self.checkbox_show_breakdown_file
         ) = wl_widgets.wl_widgets_table_settings(
             self,
             tables = self.tables
         )
 
-        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_cum_data.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_breakdown_file.stateChanged.connect(self.table_settings_changed)
 
         self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct_data, 0, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cum_data, 1, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 2, 0)
 
         self.wrapper_settings.layout().addWidget(self.group_box_token_settings, 0, 0)
         self.wrapper_settings.layout().addWidget(self.group_box_table_settings, 1, 0)
@@ -208,9 +208,9 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Table Settings
-        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
-        self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
-        self.checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
+        self.checkbox_show_pct_data.setChecked(settings['table_settings']['show_pct_data'])
+        self.checkbox_show_cum_data.setChecked(settings['table_settings']['show_cum_data'])
+        self.checkbox_show_breakdown_file.setChecked(settings['table_settings']['show_breakdown_file'])
 
         self.tabs_changed()
         self.item_changed()
@@ -253,9 +253,9 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
     def table_settings_changed(self):
         settings = self.main.settings_custom['profiler']['table_settings']
 
-        settings['show_pct'] = self.checkbox_show_pct.isChecked()
-        settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
-        settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
+        settings['show_pct_data'] = self.checkbox_show_pct_data.isChecked()
+        settings['show_cum_data'] = self.checkbox_show_cum_data.isChecked()
+        settings['show_breakdown_file'] = self.checkbox_show_breakdown_file.isChecked()
 
     def file_changed(self):
         if list(self.main.wl_file_area.get_selected_files()):
@@ -303,7 +303,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
     def __init__(
         self, parent, headers,
-        headers_int = None, headers_float = None, headers_pct = None, headers_cumulative = None,
+        headers_int = None, headers_float = None, headers_pct = None, headers_cum = None,
         profiler_tab = 'all'
     ):
         super().__init__(
@@ -314,7 +314,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
             headers_int = headers_int,
             headers_float = headers_float,
             headers_pct = headers_pct,
-            headers_cumulative = headers_cumulative,
+            headers_cum = headers_cum,
             generate_fig = False
         )
 
@@ -389,7 +389,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
                 for i, file in enumerate(files):
                     self.ins_header_hor(
                         self.find_header_hor(self.tr('Total')), file['name'],
-                        is_breakdown = True
+                        is_breakdown_file = True
                     )
 
                 self.disable_updates()
@@ -408,9 +408,9 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
+                self.toggle_pct_data()
+                self.toggle_cum_data()
+                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -442,7 +442,7 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
             headers = HEADERS_COUNTS,
             headers_int = [HEADERS_COUNTS[i] for i in range(0, len(HEADERS_COUNTS), 2)],
             headers_pct = [HEADERS_COUNTS[i] for i in range(1, len(HEADERS_COUNTS), 2)],
-            headers_cumulative = HEADERS_COUNTS,
+            headers_cum = HEADERS_COUNTS,
             profiler_tab = 'counts'
         )
 
@@ -462,7 +462,7 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
                 for i, file in enumerate(files):
                     self.ins_header_hor(
                         self.find_header_hor(self.tr('Total')), file['name'],
-                        is_breakdown = True
+                        is_breakdown_file = True
                     )
 
                 count_paras_total = len(text_stats_files[-1][1])
@@ -534,9 +534,9 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
+                self.toggle_pct_data()
+                self.toggle_cum_data()
+                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -574,7 +574,7 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
                 for i, file in enumerate(files):
                     self.ins_header_hor(
                         self.find_header_hor(self.tr('Total')), file['name'],
-                        is_breakdown = True
+                        is_breakdown_file = True
                     )
 
                 self.disable_updates()
@@ -590,9 +590,9 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
+                self.toggle_pct_data()
+                self.toggle_cum_data()
+                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -772,7 +772,7 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                 for i, file in enumerate(files):
                     self.ins_header_hor(
                         self.find_header_hor(self.tr('Total')), file['name'],
-                        is_breakdown = True
+                        is_breakdown_file = True
                     )
 
                 self.disable_updates()
@@ -873,9 +873,9 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
+                self.toggle_pct_data()
+                self.toggle_cum_data()
+                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
@@ -911,7 +911,7 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                 for i, file in enumerate(files):
                     self.ins_header_hor(
                         self.find_header_hor(self.tr('Total')), file['name'],
-                        is_breakdown = True
+                        is_breakdown_file = True
                     )
 
                 self.disable_updates()
@@ -938,11 +938,11 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                     for count_sentences_len in count_sentences_lens:
                         self.add_header_vert(
                             self.tr('Count of {}-token-long Sentences').format(count_sentences_len),
-                            is_int = True, is_cumulative = True
+                            is_int = True, is_cum = True
                         )
                         self.add_header_vert(
                             self.tr('Count of {}-token-long Sentences %').format(count_sentences_len),
-                            is_pct = True, is_cumulative = True
+                            is_pct = True, is_cum = True
                         )
 
                     for i, count_sentences_len in enumerate(reversed(count_sentences_lens)):
@@ -974,11 +974,11 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                     for count_sentence_segs_len in count_sentence_segs_lens:
                         self.add_header_vert(
                             self.tr('Count of {}-token-long Sentence Segment').format(count_sentence_segs_len),
-                            is_int = True, is_cumulative = True
+                            is_int = True, is_cum = True
                         )
                         self.add_header_vert(
                             self.tr('Count of {}-token-long Sentence Segment %').format(count_sentence_segs_len),
-                            is_pct = True, is_cumulative = True
+                            is_pct = True, is_cum = True
                         )
 
                     for i, count_sentence_segs_len in enumerate(reversed(count_sentence_segs_lens)):
@@ -1010,11 +1010,11 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                     for count_tokens_len in count_tokens_lens:
                         self.add_header_vert(
                             self.tr('Count of {}-character-long Tokens').format(count_tokens_len),
-                            is_int = True, is_cumulative = True
+                            is_int = True, is_cum = True
                         )
                         self.add_header_vert(
                             self.tr('Count of {}-character-long Tokens %').format(count_tokens_len),
-                            is_pct = True, is_cumulative = True
+                            is_pct = True, is_cum = True
                         )
 
                     for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
@@ -1035,9 +1035,9 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
 
                 self.enable_updates()
 
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
+                self.toggle_pct_data()
+                self.toggle_cum_data()
+                self.toggle_breakdown_file()
             except Exception:
                 err_msg = traceback.format_exc()
             finally:
