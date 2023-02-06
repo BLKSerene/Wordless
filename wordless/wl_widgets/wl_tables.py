@@ -21,6 +21,7 @@ import os
 import random
 import re
 
+import bs4
 import docx
 import openpyxl
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, Qt
@@ -60,9 +61,9 @@ class Wl_Table(QTableView):
 
         self.setModel(model)
 
-        if header_orientation == 'hor':
+        if self.header_orientation == 'hor':
             self.model().setHorizontalHeaderLabels(self.headers)
-        else:
+        elif self.header_orientation == 'vert':
             self.model().setVerticalHeaderLabels(self.headers)
 
         self.verticalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
@@ -127,7 +128,7 @@ class Wl_Table(QTableView):
                     background-color: #606060;
                 }
             ''')
-        else:
+        elif self.header_orientation == 'vert':
             self.setStyleSheet('''
                 QTableView::item {
                     color: #000;
@@ -649,14 +650,11 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                             # Left, Node, and Right
                             if col_item in [0, 1, 2]:
-                                cell_val = wl_nlp_utils.html_to_text(self.table.indexWidget(self.table.model().index(row_item, col_item)).text())
+                                cell_val = self.table.indexWidget(self.table.model().index(row_item, col_item)).text()
                                 cell_val = self.remove_illegal_chars(cell_val)
                                 cell.value = cell_val
 
-                                if col_item == 1:
-                                    self.style_cell_concordancer_node(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
-                                else:
-                                    self.style_cell(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
+                                self.style_cell_rich_text(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
                             else:
                                 cell_val = self.table.model().item(row_item, col_item).text()
                                 cell_val = self.remove_illegal_chars(cell_val)
@@ -667,7 +665,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                             self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
                 # Parallel Concordancer
                 elif self.table.tab == 'concordancer_parallel':
-                    worksheet.freeze_panes = 'A3'
+                    worksheet.freeze_panes = 'A2'
 
                     # Horizontal headers
                     for col_cell, col_item in enumerate(cols):
@@ -690,11 +688,11 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                                 self.style_cell(cell, self.table.model().item(row_item, col_item))
                             else:
-                                cell_val = wl_nlp_utils.html_to_text(self.table.indexWidget(self.table.model().index(row_item, col_item)).text())
+                                cell_val = self.table.indexWidget(self.table.model().index(row_item, col_item)).text()
                                 cell_val = self.remove_illegal_chars(cell_val)
                                 cell.value = cell_val
 
-                                self.style_cell(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
+                                self.style_cell_rich_text(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
 
                             self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(row_cell + 1, len_rows))
                 else:
@@ -952,6 +950,69 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
         self.style_cell_alignment(cell, item)
 
+    def style_cell_rich_text(self, cell, item):
+        rich_texts = []
+        font_family = item.font().family()
+
+        if font_family != 'Consolas':
+            font_family = self.main.settings_custom['general']['ui_settings']['font_family']
+
+        # Trick the parser to force it always wrap HTML with <html><body><p></p></body></html>
+        soup = bs4.BeautifulSoup('&nbsp;' + cell.value, features = 'lxml')
+
+        for html in soup.body.p.contents:
+            if isinstance(html, bs4.element.Tag):
+                text = html.text.strip()
+            else:
+                text = html.strip()
+
+            if text:
+                if isinstance(html, bs4.element.Tag) and html.has_attr('style'):
+                    style = html['style']
+
+                    re_color = re.search(r'(?<=color: #)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?=;)', style)
+
+                    if re_color:
+                        color = re_color.group()
+
+                        # 3-digit color shorthand
+                        if len(color) == 3:
+                            color = color[0] * 2 + color[1] * 2 + color[2] * 2
+                    else:
+                        color = '000000'
+
+                    bold = 'font-weight: bold;' in style
+                    italic = 'font-style: italic;' in style
+
+                    rich_texts.append(openpyxl.cell.rich_text.TextBlock(
+                        openpyxl.cell.text.InlineFont(
+                            rFont = font_family,
+                            sz = self.main.settings_custom['general']['ui_settings']['font_size'],
+                            b = bold,
+                            i = italic,
+                            # 6/8-digit aRGB hex values without "#"
+                            color = color
+                        ),
+                        text + ' '
+                    ))
+                else:
+                    rich_texts.append(openpyxl.cell.rich_text.TextBlock(
+                        openpyxl.cell.text.InlineFont(
+                            rFont = font_family,
+                            sz = self.main.settings_custom['general']['ui_settings']['font_size'],
+                            color = '000000'
+                        ),
+                        text + ' '
+                    ))
+
+        if rich_texts:
+            # Remove trailing space after the last part of the text
+            rich_texts[-1].text = rich_texts[-1].text.strip()
+
+        cell.value = openpyxl.cell.rich_text.CellRichText(rich_texts)
+
+        self.style_cell_alignment(cell, item)
+
     def style_cell_concordancer_node(self, cell, item):
         cell.font = openpyxl.styles.Font(
             name = item.font().family(),
@@ -978,9 +1039,9 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
         self.button_del = QPushButton(self.tr('Remove'), self)
         self.button_clr = QPushButton(self.tr('Clear'), self)
 
-        self.button_add.clicked.connect(self.add_row)
-        self.button_ins.clicked.connect(self.ins_row)
-        self.button_del.clicked.connect(self.del_row)
+        self.button_add.clicked.connect(lambda: self.add_row()) # pylint: disable=unnecessary-lambda
+        self.button_ins.clicked.connect(lambda: self.ins_row()) # pylint: disable=unnecessary-lambda
+        self.button_del.clicked.connect(lambda: self.del_row()) # pylint: disable=unnecessary-lambda
         self.button_clr.clicked.connect(lambda: self.clr_table(0))
 
     def item_changed(self):
