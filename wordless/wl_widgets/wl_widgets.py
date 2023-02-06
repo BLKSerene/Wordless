@@ -627,39 +627,89 @@ def wl_widgets_measures_collocation_extractor(parent, tab):
 
 # Table Settings
 def wl_widgets_table_settings(parent, tables):
-    def show_pct_changed():
+    def show_pct_data_changed():
         for table in tables:
-            table.show_pct = checkbox_show_pct.isChecked()
+            table.table_settings['show_pct_data'] = checkbox_show_pct_data.isChecked()
+
+            table.toggle_pct_data()
+
+    def show_cum_data_changed():
+        for table in tables:
+            table.table_settings['show_cum_data'] = checkbox_show_cum_data.isChecked()
 
             if not table.is_empty():
-                table.toggle_pct()
+                table.toggle_cum_data()
 
-    def show_cumulative_changed():
+    def show_breakdown_file_changed():
         for table in tables:
-            table.show_cumulative = checkbox_show_cumulative.isChecked()
+            table.table_settings['show_breakdown_file'] = checkbox_show_breakdown_file.isChecked()
+
+            table.toggle_breakdown_file()
+
+    checkbox_show_pct_data = QCheckBox(_tr('wl_widgets', 'Show percentage data'), parent)
+    checkbox_show_cum_data = QCheckBox(_tr('wl_widgets', 'Show cumulative data'), parent)
+    checkbox_show_breakdown_file = QCheckBox(_tr('wl_widgets', 'Show breakdown by file'), parent)
+
+    checkbox_show_pct_data.stateChanged.connect(show_pct_data_changed)
+    checkbox_show_cum_data.stateChanged.connect(show_cum_data_changed)
+    checkbox_show_breakdown_file.stateChanged.connect(show_breakdown_file_changed)
+
+    show_pct_data_changed()
+    show_cum_data_changed()
+    show_breakdown_file_changed()
+
+    return (
+        checkbox_show_pct_data,
+        checkbox_show_cum_data,
+        checkbox_show_breakdown_file
+    )
+
+def wl_widgets_table_settings_span_position(parent, tables):
+    def show_pct_data_changed():
+        for table in tables:
+            table.table_settings['show_pct_data'] = checkbox_show_pct_data.isChecked()
+
+            table.toggle_pct_data_span_position()
+
+    def show_cum_data_changed():
+        for table in tables:
+            table.table_settings['show_cum_data'] = checkbox_show_cum_data.isChecked()
 
             if not table.is_empty():
-                table.toggle_cumulative()
+                table.toggle_cum_data()
 
-    def show_breakdown_changed():
+    def show_breakdown_span_position_changed():
         for table in tables:
-            table.show_breakdown = checkbox_show_breakdown.isChecked()
+            table.table_settings['show_breakdown_span_position'] = checkbox_show_breakdown_span_position.isChecked()
 
-            table.toggle_breakdown()
+            table.toggle_breakdown_span_position()
 
-    checkbox_show_pct = QCheckBox(_tr('wl_widgets', 'Show percentage data'), parent)
-    checkbox_show_cumulative = QCheckBox(_tr('wl_widgets', 'Show cumulative data'), parent)
-    checkbox_show_breakdown = QCheckBox(_tr('wl_widgets', 'Show breakdown by file'), parent)
+    def show_breakdown_file_changed():
+        for table in tables:
+            table.table_settings['show_breakdown_file'] = checkbox_show_breakdown_file.isChecked()
 
-    checkbox_show_pct.stateChanged.connect(show_pct_changed)
-    checkbox_show_cumulative.stateChanged.connect(show_cumulative_changed)
-    checkbox_show_breakdown.stateChanged.connect(show_breakdown_changed)
+            table.toggle_breakdown_file_span_position()
 
-    show_pct_changed()
-    show_cumulative_changed()
-    show_breakdown_changed()
+    checkbox_show_pct_data = QCheckBox(_tr('wl_widgets', 'Show percentage data'), parent)
+    checkbox_show_cum_data = QCheckBox(_tr('wl_widgets', 'Show cumulative data'), parent)
+    checkbox_show_breakdown_span_position = QCheckBox(_tr('wl_widgets', 'Show breakdown by span position'), parent)
+    checkbox_show_breakdown_file = QCheckBox(_tr('wl_widgets', 'Show breakdown by file'), parent)
 
-    return checkbox_show_pct, checkbox_show_cumulative, checkbox_show_breakdown
+    checkbox_show_pct_data.stateChanged.connect(show_pct_data_changed)
+    checkbox_show_cum_data.stateChanged.connect(show_cum_data_changed)
+    checkbox_show_breakdown_span_position.stateChanged.connect(show_breakdown_span_position_changed)
+    checkbox_show_breakdown_file.stateChanged.connect(show_breakdown_file_changed)
+
+    show_pct_data_changed()
+    show_cum_data_changed()
+    show_breakdown_span_position_changed()
+    show_breakdown_file_changed()
+
+    return (
+        checkbox_show_pct_data,
+        checkbox_show_cum_data,
+        checkbox_show_breakdown_span_position, checkbox_show_breakdown_file
+    )
 
 # Figure Settings
 class Wl_Combo_Box_File_Figure_Settings(wl_boxes.Wl_Combo_Box_File):

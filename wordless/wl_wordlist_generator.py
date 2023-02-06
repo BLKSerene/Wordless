@@ -133,22 +133,22 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
 
         (
-            self.checkbox_show_pct,
-            self.checkbox_show_cumulative,
-            self.checkbox_show_breakdown
+            self.checkbox_show_pct_data,
+            self.checkbox_show_cum_data,
+            self.checkbox_show_breakdown_file
         ) = wl_widgets.wl_widgets_table_settings(
             self,
             tables = [self.table_wordlist_generator]
         )
 
-        self.checkbox_show_pct.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_cumulative.stateChanged.connect(self.table_settings_changed)
-        self.checkbox_show_breakdown.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_pct_data.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_cum_data.stateChanged.connect(self.table_settings_changed)
+        self.checkbox_show_breakdown_file.stateChanged.connect(self.table_settings_changed)
 
         self.group_box_table_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct, 0, 0)
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cumulative, 1, 0)
-        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown, 2, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_pct_data, 0, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_cum_data, 1, 0)
+        self.group_box_table_settings.layout().addWidget(self.checkbox_show_breakdown_file, 2, 0)
 
         # Figure Settings
         self.group_box_fig_settings = QGroupBox(self.tr('Figure Settings'), self)
@@ -249,9 +249,9 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.combo_box_measure_adjusted_freq.set_measure(settings['generation_settings']['measure_adjusted_freq'])
 
         # Table Settings
-        self.checkbox_show_pct.setChecked(settings['table_settings']['show_pct'])
-        self.checkbox_show_cumulative.setChecked(settings['table_settings']['show_cumulative'])
-        self.checkbox_show_breakdown.setChecked(settings['table_settings']['show_breakdown'])
+        self.checkbox_show_pct_data.setChecked(settings['table_settings']['show_pct_data'])
+        self.checkbox_show_cum_data.setChecked(settings['table_settings']['show_cum_data'])
+        self.checkbox_show_breakdown_file.setChecked(settings['table_settings']['show_breakdown_file'])
 
         # Figure Settings
         self.combo_box_graph_type.setCurrentText(settings['fig_settings']['graph_type'])
@@ -299,9 +299,9 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def table_settings_changed(self):
         settings = self.main.settings_custom['wordlist_generator']['table_settings']
 
-        settings['show_pct'] = self.checkbox_show_pct.isChecked()
-        settings['show_cumulative'] = self.checkbox_show_cumulative.isChecked()
-        settings['show_breakdown'] = self.checkbox_show_breakdown.isChecked()
+        settings['show_pct_data'] = self.checkbox_show_pct_data.isChecked()
+        settings['show_cum_data'] = self.checkbox_show_cum_data.isChecked()
+        settings['show_breakdown_file'] = self.checkbox_show_breakdown_file.isChecked()
 
     def fig_settings_changed(self):
         settings = self.main.settings_custom['wordlist_generator']['fig_settings']
@@ -368,33 +368,37 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                 for file in files + [{'name': self.tr('Total')}]:
                     if file['name'] == self.tr('Total'):
-                        is_breakdown = False
+                        is_breakdown_file = False
                     else:
-                        is_breakdown = True
+                        is_breakdown_file = True
 
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
                         self.tr('[{}]\nFrequency').format(file['name']),
-                        is_int = True, is_cumulative = True, is_breakdown = is_breakdown
+                        is_int = True, is_cum = True,
+                        is_breakdown_file = is_breakdown_file
                     )
                     self.ins_header_hor(
                         self.model().columnCount() - 2,
                         self.tr('[{}]\nFrequency %').format(file['name']),
-                        is_pct = True, is_cumulative = True, is_breakdown = is_breakdown
+                        is_pct = True, is_cum = True,
+                        is_breakdown_file = is_breakdown_file
                     )
 
                     if measure_dispersion != 'none':
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
                             f'[{file["name"]}]\n{col_text_dispersion}',
-                            is_float = True, is_breakdown = is_breakdown
+                            is_float = True,
+                            is_breakdown_file = is_breakdown_file
                         )
 
                     if measure_adjusted_freq != 'none':
                         self.ins_header_hor(
                             self.model().columnCount() - 2,
                             f'[{file["name"]}]\n{col_text_adjusted_freq}',
-                            is_float = True, is_breakdown = is_breakdown
+                            is_float = True,
+                            is_breakdown_file = is_breakdown_file
                         )
 
                 # Sort by frequency of the first file
@@ -451,9 +455,9 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                 self.enable_updates()
 
-                self.toggle_pct()
-                self.toggle_cumulative()
-                self.toggle_breakdown()
+                self.toggle_pct_data()
+                self.toggle_cum_data()
+                self.toggle_breakdown_file()
                 self.update_ranks()
             except Exception:
                 err_msg = traceback.format_exc()
