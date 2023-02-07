@@ -29,7 +29,7 @@
 - Settings: Add Settings - Figures - Word Clouds - Font Settings - Font size / Relative scaling / Font color
 - Settings: Add Settings - Figures - Word Clouds - Mask Settings / Advanced Settings
 - Settings: Add Settings - Measures - Dispersion - Gries's DP
-- Settings: Add Settings - Tables - Concordancer
+- Settings: Add Settings - Tables - Concordancer / Parallel Concordancer
 - Utils: Add Pyphen's Thai syllable tokenizer
 - Work Area: Add Profiler - Generate/Clear all tables
 - Work Area: Add Profiler - Readability / Counts / Type-token Ratios / Lengths / Length Breakdown
