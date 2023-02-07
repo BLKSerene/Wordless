@@ -413,6 +413,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                             parallel_units[i] = [[] for _ in range(len_files)]
 
             len_max_parallel_units = max((len(offsets) for offsets in offsets_paras_files))
+            node_color = self.main.settings_custom['tables']['parallel_concordancer']['color_settings']['search_term_color']
 
             for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
                 len_parallel_units = len(offsets_paras)
@@ -445,7 +446,7 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
                             while j < len_parallel_unit_raw:
                                 if parallel_unit_raw[j : j + len_node] == list(node):
-                                    parallel_unit_raw[j] = '<span style="color: #F00; font-weight: bold;">' + parallel_unit_raw[j]
+                                    parallel_unit_raw[j] = f'<span style="color: {node_color}; font-weight: bold;">' + parallel_unit_raw[j]
                                     parallel_unit_raw[j + len_node - 1] += '</span>'
 
                                     j += len_node

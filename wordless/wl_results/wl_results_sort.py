@@ -135,6 +135,16 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
 
         self.table.disable_updates()
 
+        color_settings = self.main.settings_custom['tables']['concordancer']['sorting_settings']['highlight_colors']
+        highlight_colors = [
+            color_settings['lvl_1'],
+            color_settings['lvl_2'],
+            color_settings['lvl_3'],
+            color_settings['lvl_4'],
+            color_settings['lvl_5'],
+            color_settings['lvl_6']
+        ]
+
         for i, (
             left, node, right, sentiment,
             no_token, no_token_pct,
@@ -146,16 +156,6 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             # Remove empty tokens
             text_left = [token for token in left.text_raw if token]
             text_right = [token for token in right.text_raw if token]
-
-            color_settings = self.main.settings_custom['tables']['concordancer']['sorting_settings']['highlight_colors']
-            highlight_colors = [
-                color_settings['lvl_1'],
-                color_settings['lvl_2'],
-                color_settings['lvl_3'],
-                color_settings['lvl_4'],
-                color_settings['lvl_5'],
-                color_settings['lvl_6']
-            ]
 
             # Re-apply node color
             node_text = re.sub(
