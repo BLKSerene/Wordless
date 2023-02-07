@@ -1693,6 +1693,13 @@ def init_settings_default(main):
                         'lvl_6': '#491D76', # Purple
                     }
                 }
+            },
+
+            # Settings - Tables - Parallel Concordancer
+            'parallel_concordancer': {
+                'color_settings': {
+                    'search_term_color': '#FF0000' # Red
+                }
             }
         },
 

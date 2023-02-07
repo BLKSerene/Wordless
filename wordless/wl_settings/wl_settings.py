@@ -93,6 +93,7 @@ class Wl_Settings(QDialog):
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Tables')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Profiler')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Concordancer')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Parallel Concordancer')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Figures')))
         self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Line Charts')))
@@ -145,6 +146,7 @@ class Wl_Settings(QDialog):
         self.settings_tables = wl_settings_tables.Wl_Settings_Tables(self.main)
         self.settings_tables_profiler = wl_settings_tables.Wl_Settings_Tables_Profiler(self.main)
         self.settings_tables_concordancer = wl_settings_tables.Wl_Settings_Tables_Concordancer(self.main)
+        self.settings_tables_parallel_concordancer = wl_settings_tables.Wl_Settings_Tables_Parallel_Concordancer(self.main)
 
         # Figures
         self.settings_figs_line_charts = wl_settings_figs.Wl_Settings_Figs_Line_Charts(self.main)
@@ -180,6 +182,7 @@ class Wl_Settings(QDialog):
             self.tr('Tables'): self.settings_tables,
             self.tr('Profiler'): self.settings_tables_profiler,
             self.tr('Concordancer'): self.settings_tables_concordancer,
+            self.tr('Parallel Concordancer'): self.settings_tables_parallel_concordancer,
 
             self.tr('Line Charts'): self.settings_figs_line_charts,
             self.tr('Word Clouds'): self.settings_figs_word_clouds,
