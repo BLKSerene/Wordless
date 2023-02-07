@@ -445,7 +445,9 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         super().__init__(
             main,
             title = _tr('Dialog_Open_Files', 'Open Files'),
-            width = 800
+            width = 800,
+            height = 320,
+            resizable = True
         )
 
         self.table_files = Table_Open_Files(self)
@@ -457,6 +459,13 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
 
         self.table_files.button_add_files = QPushButton(self.tr('Add files...'), self)
         self.table_files.button_add_folder = QPushButton(self.tr('Add folder...'), self)
+        self.table_files.button_del.setText(self.tr('Remove files'))
+        self.table_files.button_clr.setText(self.tr('Clear table'))
+
+        self.table_files.button_add_files.setMinimumWidth(120)
+        self.table_files.button_add_files.setMinimumWidth(120)
+        self.table_files.button_add_files.setMinimumWidth(120)
+        self.table_files.button_add_files.setMinimumWidth(120)
 
         self.table_files.button_add_files.clicked.connect(self.add_files)
         self.table_files.button_add_folder.clicked.connect(self.add_folder)
@@ -481,7 +490,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         layout_checkboxes = wl_layouts.Wl_Layout()
         layout_checkboxes.addWidget(self.checkbox_auto_detect_encodings, 0, 0)
         layout_checkboxes.addWidget(self.checkbox_auto_detect_langs, 0, 1)
-        layout_checkboxes.addWidget(self.checkbox_include_files_in_subfolders, 1, 0, 1, 2)
+        layout_checkboxes.addWidget(self.checkbox_include_files_in_subfolders, 1, 0)
 
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_open = QPushButton(self.tr('Open'), self)
