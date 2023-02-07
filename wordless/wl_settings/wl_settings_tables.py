@@ -210,3 +210,44 @@ class Wl_Settings_Tables_Concordancer(wl_settings.Wl_Settings_Node):
         self.settings_custom['sorting_settings']['highlight_colors']['lvl_6'] = self.button_lvl_6.get_color()
 
         return True
+
+# Tables - Parallel Concordancer
+class Wl_Settings_Tables_Parallel_Concordancer(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['parallel_concordancer']
+        self.settings_custom = self.main.settings_custom['tables']['parallel_concordancer']
+
+        # Color Settings
+        self.group_box_color_settings = QGroupBox(self.tr('Color Settings'), self)
+
+        self.label_search_term_color = QLabel(self.tr('Search term color:'), self)
+        self.button_search_term_color = wl_buttons.wl_button_color(self)
+
+        self.group_box_color_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_color_settings.layout().addWidget(self.label_search_term_color, 0, 0)
+        self.group_box_color_settings.layout().addWidget(self.button_search_term_color, 0, 1)
+
+        self.group_box_color_settings.layout().setColumnStretch(2, 1)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addWidget(self.group_box_color_settings, 0, 0)
+
+        self.layout().setContentsMargins(6, 4, 6, 4)
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Color Settings
+        self.button_search_term_color.set_color(settings['color_settings']['search_term_color'])
+
+    def apply_settings(self):
+        # Color Settings
+        self.settings_custom['color_settings']['search_term_color'] = self.button_search_term_color.get_color()
+
+        return True
