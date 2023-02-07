@@ -25,20 +25,32 @@ from wordless.wl_widgets import wl_buttons
 _tr = QCoreApplication.translate
 
 class Wl_Dialog(QDialog):
-    def __init__(self, main, title, width = 0, height = 0):
+    def __init__(self, main, title, width = 0, height = 0, resizable = False):
         super().__init__(main)
 
         self.main = main
 
-        if width:
-            self.setFixedWidth(width)
-        if height:
-            self.setFixedHeight(height)
+        # Dialog size
+        if resizable:
+            if not width:
+                width = self.size().width()
+            if not height:
+                height = self.size().height()
+
+            self.resize(width, height)
+        else:
+            if width:
+                self.setFixedWidth(width)
+            if height:
+                self.setFixedHeight(height)
 
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon('imgs/wl_icon.ico'))
+
         # Do not use setWindowFlag, which was added in Qt 5.9 (PyQt 5.8 is used on macOS for compatibility with old macOSes)
-        self.setWindowFlags(self.windowFlags() | Qt.MSWindowsFixedSizeDialogHint)
+        if not resizable:
+            self.setWindowFlags(self.windowFlags() | Qt.MSWindowsFixedSizeDialogHint)
+
         self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint)
 
         # Fix styles of tables inside dialogs

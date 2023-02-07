@@ -1826,7 +1826,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
             table = self
         )
 
-        self.button_results_search.setFixedWidth(150)
+        self.button_results_search.setMinimumWidth(140)
 
         self.button_results_search.clicked.connect(self.dialog_results_search.load)
 
@@ -1886,8 +1886,8 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
             table = self
         )
 
-        self.button_results_search.setFixedWidth(150)
-        self.button_results_sort.setFixedWidth(150)
+        self.button_results_search.setMinimumWidth(140)
+        self.button_results_sort.setMinimumWidth(140)
 
         self.button_results_search.clicked.connect(self.dialog_results_search.load)
         self.button_results_sort.clicked.connect(self.dialog_results_sort.show)
@@ -1946,8 +1946,8 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             table = self
         )
 
-        self.button_results_filter.setFixedWidth(150)
-        self.button_results_search.setFixedWidth(150)
+        self.button_results_filter.setMinimumWidth(140)
+        self.button_results_search.setMinimumWidth(140)
 
         self.button_results_filter.clicked.connect(self.results_filter_clicked)
         self.button_results_search.clicked.connect(self.dialog_results_search.load)

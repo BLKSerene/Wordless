@@ -83,7 +83,7 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
 
         self.combo_box_sentence_tokenization_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
-        self.button_sentence_tokenization_show_preview.setFixedWidth(150)
+        self.button_sentence_tokenization_show_preview.setMinimumWidth(140)
         self.text_edit_sentence_tokenization_preview_samples.setAcceptRichText(False)
         self.text_edit_sentence_tokenization_preview_results.setReadOnly(True)
 

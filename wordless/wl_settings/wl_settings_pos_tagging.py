@@ -92,7 +92,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
 
         self.combo_box_pos_tagging_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
-        self.button_pos_tagging_show_preview.setFixedWidth(150)
+        self.button_pos_tagging_show_preview.setMinimumWidth(140)
         self.text_edit_pos_tagging_preview_samples.setAcceptRichText(False)
         self.text_edit_pos_tagging_preview_results.setReadOnly(True)
 
@@ -285,7 +285,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.stacked_widget_num_pos_tags = QStackedWidget(self)
         self.label_tagsets_num_pos_tags = QLabel('', self)
-        self.label_tagsets_uneditable = wl_labels.Wl_Label_Hint(self.tr('* This part-of-speech tagger does not support custom mappings.'), self)
+        self.label_tagsets_uneditable = wl_labels.Wl_Label_Hint(self.tr('* This part-of-speech tagger does not support custom mapping.'), self)
         self.button_tagsets_reset = QPushButton(self.tr('Reset'), self)
         self.button_tagsets_reset_all = QPushButton(self.tr('Reset all'), self)
         self.table_mappings = wl_tables.Wl_Table(
@@ -328,8 +328,8 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             editable = True
         ))
 
-        self.button_tagsets_reset.setFixedWidth(120)
-        self.button_tagsets_reset_all.setFixedWidth(120)
+        self.button_tagsets_reset.setMinimumWidth(100)
+        self.button_tagsets_reset_all.setMinimumWidth(100)
 
         self.button_tagsets_reset.clicked.connect(self.reset_mappings)
         self.button_tagsets_reset_all.clicked.connect(self.reset_all_mappings)

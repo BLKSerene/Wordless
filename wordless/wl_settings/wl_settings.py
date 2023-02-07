@@ -18,22 +18,30 @@
 
 import os
 
-from PyQt5.QtCore import pyqtSignal, QSize, Qt
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, QSize, Qt
 from PyQt5.QtGui import QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import (
-    QAbstractItemView, QDialog, QHeaderView, QMessageBox, QPushButton,
+    QAbstractItemView, QHeaderView, QMessageBox, QPushButton,
     QStackedWidget, QTreeView, QWidget
 )
 
 from wordless.wl_checks import wl_checks_misc
-from wordless.wl_dialogs import wl_msg_boxes
+from wordless.wl_dialogs import wl_dialogs, wl_msg_boxes
 from wordless.wl_widgets import wl_buttons, wl_layouts
 
-class Wl_Settings(QDialog):
+_tr = QCoreApplication.translate
+
+class Wl_Settings(wl_dialogs.Wl_Dialog):
     wl_settings_changed = pyqtSignal()
 
     def __init__(self, main):
-        super().__init__(main)
+        super().__init__(
+            main,
+            title = _tr('Wl_Settings', 'Settings'),
+            width = 1024,
+            height = 768,
+            resizable = True
+        )
 
         # Avoid circular imports
         from wordless.wl_settings import (
@@ -50,11 +58,6 @@ class Wl_Settings(QDialog):
             wl_settings_tables,
             wl_settings_figs
         )
-
-        self.main = main
-
-        self.setWindowTitle(self.tr('Settings'))
-        self.resize(QSize(1024, 768))
 
         self.tree_settings = QTreeView(self)
         self.tree_settings.setModel(QStandardItemModel())
@@ -202,7 +205,7 @@ class Wl_Settings(QDialog):
         button_apply = QPushButton(self.tr('Apply'), self)
         button_cancel = QPushButton(self.tr('Cancel'), self)
 
-        button_reset_settings.setFixedWidth(180)
+        button_reset_settings.setMinimumWidth(150)
 
         button_reset_settings.clicked.connect(self.reset_all_settings)
         button_save.clicked.connect(self.save_settings)
