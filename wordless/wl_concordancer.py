@@ -504,8 +504,6 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 self.clr_table(0)
                 self.model().setRowCount(len(concordance_lines))
 
-                settings = self.main.settings_custom['concordancer']
-
                 self.disable_updates()
 
                 for i, concordance_line in enumerate(concordance_lines):
@@ -521,9 +519,10 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     file_name = concordance_line[8]
 
                     # Node
+                    node_color = self.main.settings_custom['tables']['concordancer']['sorting_settings']['highlight_colors']['lvl_1']
                     label_node = wl_labels.Wl_Label_Html(
                         f'''
-                            <span style="color: {settings['sort_results']['highlight_colors'][0]}; font-weight: bold;">
+                            <span style="color: {node_color}; font-weight: bold;">
                                 &nbsp;{node_text}&nbsp;
                             </span>
                         ''',

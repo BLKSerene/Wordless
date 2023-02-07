@@ -21,7 +21,7 @@ import copy
 from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
 
 from wordless.wl_settings import wl_settings
-from wordless.wl_widgets import wl_boxes, wl_layouts
+from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
 
 # Tables
 class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
@@ -135,5 +135,78 @@ class Wl_Settings_Tables_Profiler(wl_settings.Wl_Settings_Node):
     def apply_settings(self):
         # General Settings
         self.settings_custom['general_settings']['num_tokens_section_sttr'] = self.spin_num_tokens_section_sttr.value()
+
+        return True
+
+# Tables - Concordancer
+class Wl_Settings_Tables_Concordancer(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['tables']['concordancer']
+        self.settings_custom = self.main.settings_custom['tables']['concordancer']
+
+        # Sorting Settings
+        self.group_box_sorting_settings = QGroupBox(self.tr('Sorting Settings'), self)
+
+        self.label_highlight_colors = QLabel(self.tr('Highlight colors:'), self)
+        self.label_lvl_1 = QLabel(self.tr('Level 1 / Node:'), self)
+        self.button_lvl_1 = wl_buttons.wl_button_color(self)
+        self.label_lvl_2 = QLabel(self.tr('Level 2:'), self)
+        self.button_lvl_2 = wl_buttons.wl_button_color(self)
+        self.label_lvl_3 = QLabel(self.tr('Level 3:'), self)
+        self.button_lvl_3 = wl_buttons.wl_button_color(self)
+        self.label_lvl_4 = QLabel(self.tr('Level 4:'), self)
+        self.button_lvl_4 = wl_buttons.wl_button_color(self)
+        self.label_lvl_5 = QLabel(self.tr('Level 5:'), self)
+        self.button_lvl_5 = wl_buttons.wl_button_color(self)
+        self.label_lvl_6 = QLabel(self.tr('Level 6:'), self)
+        self.button_lvl_6 = wl_buttons.wl_button_color(self)
+
+        self.group_box_sorting_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_sorting_settings.layout().addWidget(self.label_highlight_colors, 0, 0, 1, 3)
+        self.group_box_sorting_settings.layout().addWidget(self.label_lvl_1, 1, 0)
+        self.group_box_sorting_settings.layout().addWidget(self.button_lvl_1, 1, 1)
+        self.group_box_sorting_settings.layout().addWidget(self.label_lvl_2, 2, 0)
+        self.group_box_sorting_settings.layout().addWidget(self.button_lvl_2, 2, 1)
+        self.group_box_sorting_settings.layout().addWidget(self.label_lvl_3, 3, 0)
+        self.group_box_sorting_settings.layout().addWidget(self.button_lvl_3, 3, 1)
+        self.group_box_sorting_settings.layout().addWidget(self.label_lvl_4, 4, 0)
+        self.group_box_sorting_settings.layout().addWidget(self.button_lvl_4, 4, 1)
+        self.group_box_sorting_settings.layout().addWidget(self.label_lvl_5, 5, 0)
+        self.group_box_sorting_settings.layout().addWidget(self.button_lvl_5, 5, 1)
+        self.group_box_sorting_settings.layout().addWidget(self.label_lvl_6, 6, 0)
+        self.group_box_sorting_settings.layout().addWidget(self.button_lvl_6, 6, 1)
+
+        self.group_box_sorting_settings.layout().setColumnStretch(2, 1)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addWidget(self.group_box_sorting_settings, 0, 0)
+
+        self.layout().setContentsMargins(6, 4, 6, 4)
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Sorting Settings
+        self.button_lvl_1.set_color(settings['sorting_settings']['highlight_colors']['lvl_1'])
+        self.button_lvl_2.set_color(settings['sorting_settings']['highlight_colors']['lvl_2'])
+        self.button_lvl_3.set_color(settings['sorting_settings']['highlight_colors']['lvl_3'])
+        self.button_lvl_4.set_color(settings['sorting_settings']['highlight_colors']['lvl_4'])
+        self.button_lvl_5.set_color(settings['sorting_settings']['highlight_colors']['lvl_5'])
+        self.button_lvl_6.set_color(settings['sorting_settings']['highlight_colors']['lvl_6'])
+
+    def apply_settings(self):
+        # Sorting Settings
+        self.settings_custom['sorting_settings']['highlight_colors']['lvl_1'] = self.button_lvl_1.get_color()
+        self.settings_custom['sorting_settings']['highlight_colors']['lvl_2'] = self.button_lvl_2.get_color()
+        self.settings_custom['sorting_settings']['highlight_colors']['lvl_3'] = self.button_lvl_3.get_color()
+        self.settings_custom['sorting_settings']['highlight_colors']['lvl_4'] = self.button_lvl_4.get_color()
+        self.settings_custom['sorting_settings']['highlight_colors']['lvl_5'] = self.button_lvl_5.get_color()
+        self.settings_custom['sorting_settings']['highlight_colors']['lvl_6'] = self.button_lvl_6.get_color()
 
         return True
