@@ -147,8 +147,24 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             text_left = [token for token in left.text_raw if token]
             text_right = [token for token in right.text_raw if token]
 
-            highlight_colors = self.main.settings_custom['concordancer']['sort_results']['highlight_colors']
+            color_settings = self.main.settings_custom['tables']['concordancer']['sorting_settings']['highlight_colors']
+            highlight_colors = [
+                color_settings['lvl_1'],
+                color_settings['lvl_2'],
+                color_settings['lvl_3'],
+                color_settings['lvl_4'],
+                color_settings['lvl_5'],
+                color_settings['lvl_6']
+            ]
 
+            # Re-apply node color
+            node_text = re.sub(
+                r'(?<=color: )#[0-9A-Za-z]{6}(?=;)',
+                color_settings['lvl_1'],
+                node.text()
+            )
+
+            # Start from level 2 (level 1 applies to nodes)
             i_highlight_color_left = 1
             i_highlight_color_right = 1
 
@@ -175,7 +191,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                     i_highlight_color_right += 1
 
             self.table.indexWidget(self.table.model().index(i, 0)).setText(' '.join(text_left))
-            self.table.indexWidget(self.table.model().index(i, 1)).setText(node.text())
+            self.table.indexWidget(self.table.model().index(i, 1)).setText(node_text)
             self.table.indexWidget(self.table.model().index(i, 2)).setText(' '.join(text_right))
 
             self.table.indexWidget(self.table.model().index(i, 0)).text_raw = [token for token in left.text_raw if token]
