@@ -242,8 +242,7 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
 
         self.cols_to_sort = self.cols_to_sort_default.copy()
 
-        self.setFixedWidth(400)
-        self.setFixedHeight(200)
+        self.setFixedSize(400, 200)
 
         self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,

@@ -110,6 +110,11 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_find_all = QPushButton(self.tr('Find all'), self)
         self.button_clr_hightlights = QPushButton(self.tr('Clear highlights'), self)
 
+        self.button_find_next.setMinimumWidth(130)
+        self.button_find_prev.setMinimumWidth(130)
+        self.button_find_all.setMinimumWidth(130)
+        self.button_clr_hightlights.setMinimumWidth(130)
+
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
         self.button_close = QPushButton(self.tr('Close'), self)
 

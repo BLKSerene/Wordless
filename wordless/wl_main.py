@@ -120,7 +120,7 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = _tr('Wl_Dialog_Confirm_Exit', 'Exit Wordless'),
-            width = 420,
+            width = 450,
             no_buttons = True
         )
 
