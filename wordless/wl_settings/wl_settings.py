@@ -18,7 +18,7 @@
 
 import os
 
-from PyQt5.QtCore import pyqtSignal, QCoreApplication, QSize, Qt
+from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtGui import QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import (
     QAbstractItemView, QHeaderView, QMessageBox, QPushButton,
