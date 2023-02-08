@@ -110,11 +110,11 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
                     for token in main.sudachipy_word_tokenizer.tokenize(line)
                 ])
             # Russian & Ukrainian
-            elif lemmatizer == 'pymorphy2_morphological_analyzer':
+            elif lemmatizer == 'pymorphy3_morphological_analyzer':
                 if lang == 'rus':
-                    morphological_analyzer = main.pymorphy2_morphological_analyzer_rus
+                    morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
                 elif lang == 'ukr':
-                    morphological_analyzer = main.pymorphy2_morphological_analyzer_ukr
+                    morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
                 tokens = wl_word_tokenization.wl_word_tokenize_flat(main, line, lang = lang)
 
@@ -225,11 +225,11 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
                 lemma_tokens.extend([token.surface() for token in tokens_retokenized])
                 lemmas.extend([token.dictionary_form() for token in tokens_retokenized])
             # Russian & Ukrainian
-            elif lemmatizer == 'pymorphy2_morphological_analyzer':
+            elif lemmatizer == 'pymorphy3_morphological_analyzer':
                 if lang == 'rus':
-                    morphological_analyzer = main.pymorphy2_morphological_analyzer_rus
+                    morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
                 elif lang == 'ukr':
-                    morphological_analyzer = main.pymorphy2_morphological_analyzer_ukr
+                    morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
                 for token in tokens:
                     lemmas.append(morphological_analyzer.parse(token)[0].normal_form)

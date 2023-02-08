@@ -276,7 +276,7 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'rus':
         if lemmatizer == 'simplemma_rus':
             assert lemmas == ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать)[~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковый', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
-        elif lemmatizer in ['pymorphy2_morphological_analyzer', 'spacy_rus']:
+        elif lemmatizer in ['pymorphy3_morphological_analyzer', 'spacy_rus']:
             assert lemmas == ['ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать)[~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковой', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
         else:
             tests_lang_util_skipped = True
@@ -325,7 +325,7 @@ def test_lemmatize(lang, lemmatizer):
         else:
             tests_lang_util_skipped = True
     elif lang == 'ukr':
-        if lemmatizer == 'pymorphy2_morphological_analyzer':
+        if lemmatizer == 'pymorphy3_morphological_analyzer':
             assert lemmas == ['украї́нський', 'мо́вий', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'ру́ський', ',', 'руси́нська[10][11][12', ']', '[', '*', '1', ']', ')', '—', 'національний', 'мова', 'українець', '.']
         elif lemmatizer == 'simplemma_ukr':
             assert lemmas == ['Українськ', 'мо́ва', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'руський', ',', 'руси́нська[10][11][12', ']', '[', '*', '1', ']', ')', '—', 'національний', 'мова', 'українець', '.']
