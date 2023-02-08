@@ -29,10 +29,10 @@ simplemma
 textblob
 underthesea
 
-## pymorphy2
-pymorphy2
-pymorphy2-dicts-ru
-pymorphy2-dicts-uk
+## pymorphy3
+pymorphy3
+pymorphy3-dicts-ru
+pymorphy3-dicts-uk
 
 ## spaCy
 spacy

@@ -1433,7 +1433,7 @@ def init_settings_default(main):
 
                     'rus': {
                         'nltk_perceptron_rus': wl_tagset_rus_russian_national_corpus.MAPPINGS,
-                        'pymorphy2_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
+                        'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
                     },
 
                     'tha': {
@@ -1447,7 +1447,7 @@ def init_settings_default(main):
                     },
 
                     'ukr': {
-                        'pymorphy2_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
+                        'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
                     },
 
                     'vie': {

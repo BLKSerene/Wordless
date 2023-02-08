@@ -229,11 +229,11 @@ def wl_pos_tag_text(main, text, lang, pos_tagger):
             for token in main.sudachipy_word_tokenizer.tokenize(text)
         ]
     # Russian & Ukrainian
-    elif pos_tagger == 'pymorphy2_morphological_analyzer':
+    elif pos_tagger == 'pymorphy3_morphological_analyzer':
         if lang == 'rus':
-            morphological_analyzer = main.pymorphy2_morphological_analyzer_rus
+            morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
         elif lang == 'ukr':
-            morphological_analyzer = main.pymorphy2_morphological_analyzer_ukr
+            morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
         tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
 
@@ -284,11 +284,11 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
             for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens))
         ]
     # Russian & Ukrainian
-    elif pos_tagger == 'pymorphy2_morphological_analyzer':
+    elif pos_tagger == 'pymorphy3_morphological_analyzer':
         if lang == 'rus':
-            morphological_analyzer = main.pymorphy2_morphological_analyzer_rus
+            morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
         elif lang == 'ukr':
-            morphological_analyzer = main.pymorphy2_morphological_analyzer_ukr
+            morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
         for token in tokens:
             tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))

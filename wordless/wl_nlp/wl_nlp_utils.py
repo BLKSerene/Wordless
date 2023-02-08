@@ -26,7 +26,7 @@ import botok
 import bs4
 import nltk
 import nltk.tokenize.nist
-import pymorphy2
+import pymorphy3
 import pyphen
 import sacremoses
 import spacy
@@ -214,13 +214,13 @@ def init_pos_taggers(main, lang, pos_tagger):
     if pos_tagger.startswith('spacy_'):
         init_spacy_models(main, lang)
     # Russian & Ukrainian
-    elif pos_tagger == 'pymorphy2_morphological_analyzer':
+    elif pos_tagger == 'pymorphy3_morphological_analyzer':
         if lang == 'rus':
-            if 'pymorphy2_morphological_analyzer_rus' not in main.__dict__:
-                main.pymorphy2_morphological_analyzer_rus = pymorphy2.MorphAnalyzer(lang = 'ru')
+            if 'pymorphy3_morphological_analyzer_rus' not in main.__dict__:
+                main.pymorphy3_morphological_analyzer_rus = pymorphy3.MorphAnalyzer(lang = 'ru')
         elif lang == 'ukr':
-            if 'pymorphy2_morphological_analyzer_urk' not in main.__dict__:
-                main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
+            if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
+                main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
     # Japanese
     elif pos_tagger == 'sudachipy_jpn':
         init_sudachipy_word_tokenizer(main)
@@ -230,13 +230,13 @@ def init_lemmatizers(main, lang, lemmatizer):
     if lemmatizer.startswith('spacy_'):
         init_spacy_models(main, lang)
     # Russian & Ukrainian
-    elif lemmatizer == 'pymorphy2_morphological_analyzer':
+    elif lemmatizer == 'pymorphy3_morphological_analyzer':
         if lang == 'rus':
-            if 'pymorphy2_morphological_analyzer_rus' not in main.__dict__:
-                main.pymorphy2_morphological_analyzer_rus = pymorphy2.MorphAnalyzer(lang = 'ru')
+            if 'pymorphy3_morphological_analyzer_rus' not in main.__dict__:
+                main.pymorphy3_morphological_analyzer_rus = pymorphy3.MorphAnalyzer(lang = 'ru')
         elif lang == 'ukr':
-            if 'pymorphy2_morphological_analyzer_ukr' not in main.__dict__:
-                main.pymorphy2_morphological_analyzer_ukr = pymorphy2.MorphAnalyzer(lang = 'uk')
+            if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
+                main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
     # Japanese
     elif lemmatizer == 'sudachipy_jpn':
         init_sudachipy_word_tokenizer(main)

@@ -574,7 +574,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'NLTK - English perceptron part-of-speech tagger'): 'nltk_perceptron_eng',
                 _tr('init_settings_global', 'NLTK - Russian perceptron part-of-speech tagger'): 'nltk_perceptron_rus',
 
-                _tr('init_settings_global', 'pymorphy2 - Morphological analyzer'): 'pymorphy2_morphological_analyzer',
+                _tr('init_settings_global', 'pymorphy3 - Morphological analyzer'): 'pymorphy3_morphological_analyzer',
 
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (LST20)'): 'pythainlp_perceptron_lst20',
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (ORCHID)'): 'pythainlp_perceptron_orchid',
@@ -612,7 +612,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'botok - Tibetan lemmatizer'): 'botok_bod',
 
                 _tr('init_settings_global', 'NLTK - WordNet lemmatizer'): 'nltk_wordnet',
-                _tr('init_settings_global', 'pymorphy2 - Morphological analyzer'): 'pymorphy2_morphological_analyzer',
+                _tr('init_settings_global', 'pymorphy3 - Morphological analyzer'): 'pymorphy3_morphological_analyzer',
 
                 _tr('init_settings_global', 'simplemma - Albanian lemmatizer'): 'simplemma_sqi',
                 _tr('init_settings_global', 'simplemma - Armenian lemmatizer'): 'simplemma_hye',
@@ -1482,7 +1482,7 @@ def init_settings_global():
 
             'rus': [
                 'nltk_perceptron_rus',
-                'pymorphy2_morphological_analyzer',
+                'pymorphy3_morphological_analyzer',
                 'spacy_rus'
             ],
 
@@ -1498,7 +1498,7 @@ def init_settings_global():
             'bod': ['botok_bod'],
 
             'ukr': [
-                'pymorphy2_morphological_analyzer',
+                'pymorphy3_morphological_analyzer',
                 'spacy_ukr'
             ],
 
@@ -1675,7 +1675,7 @@ def init_settings_global():
 
             'rus': [
                 'simplemma_rus',
-                'pymorphy2_morphological_analyzer',
+                'pymorphy3_morphological_analyzer',
                 'spacy_rus'
             ],
 
@@ -1712,7 +1712,7 @@ def init_settings_global():
 
             'ukr': [
                 'simplemma_ukr',
-                'pymorphy2_morphological_analyzer',
+                'pymorphy3_morphological_analyzer',
                 'spacy_ukr'
             ],
 

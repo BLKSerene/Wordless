@@ -54,6 +54,8 @@
 - Work Area: Remove Wordlist/N-gram Generator - Generation Settings - Measure of Dispersion - Gries's DPnorm
 
 ### ⏫ Dependency Changes
+- Dependencies: Add pymorphy3
+- Dependencies: Remove pymorphy2
 - Dependencies: Upgrade Lingua to 1.3.2
 - Dependencies: Upgrade NetworkX to 3.0
 - Dependencies: Upgrade NLTK to 3.8.1
