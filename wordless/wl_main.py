@@ -596,7 +596,7 @@ class Wl_Main(QMainWindow):
             elif is_macos:
                 subprocess.Popen(['python3', '-m', 'wordless.wl_main'])
             elif is_linux:
-                subprocess.Popen(['python3.8', '-m', 'wordless.wl_main'])
+                subprocess.Popen(['python3.9', '-m', 'wordless.wl_main'])
 
         sys.exit(0)
 

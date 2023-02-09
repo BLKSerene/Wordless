@@ -1,6 +1,6 @@
 #!/bin/bash
 # ----------------------------------------------------------------------
-# Utilities: Linux - Compile Python 3.8 from Source
+# Utilities: Linux - Compile Python from Source
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@ sudo apt-get -y build-dep python3
 sudo apt-get -y install build-essential gdb lcov pkg-config libbz2-dev libffi-dev libgdbm-dev liblzma-dev libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev lzma lzma-dev tk-dev uuid-dev zlib1g-dev
 
 # Compile Python from source
-PY_VER=3.8.15
+PY_VER=3.9.14
 PY_PACKAGE="Python-$PY_VER.tgz"
 PY_FOLDER="Python-$PY_VER"
 
@@ -52,9 +52,9 @@ cd ..
 sudo ldconfig
 
 # Install 3rd-party libraries
-python3.8 -m pip install --upgrade pip setuptools
-pip3.8 install -r requirements_dev.txt
-pip3.8 cache purge
+python3.9 -m pip install --upgrade pip setuptools
+pip3.9 install -r requirements_dev.txt
+pip3.9 cache purge
 
 # Fix libxcb-xinerama.so
 sudo apt-get install libxcb-xinerama0
