@@ -23,7 +23,7 @@
 <!-- SPDX License List: https://spdx.org/licenses/ -->
 &nbsp;|名称|版本|作者|许可
 -----:|----|:--:|---|:--:
-1 |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)  |4.11.1 |Leonard Richardson|[MIT](https://bazaar.launchpad.net/~leonardr/beautifulsoup/bs4/view/head:/LICENSE)
+1 |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)  |4.11.2 |Leonard Richardson|[MIT](https://git.launchpad.net/beautifulsoup/tree/LICENSE)
 2 |[Botok](https://github.com/OpenPecha/Botok)                       |0.8.10 |Hélios Drupchen Hildt|[Apache-2.0](https://github.com/OpenPecha/Botok/blob/master/LICENSE)
 3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.0.1  |TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
 4 |[jieba](https://github.com/fxsjy/jieba)                           |0.42.1 |孙君意|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
