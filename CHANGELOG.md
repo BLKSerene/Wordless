@@ -58,6 +58,7 @@
 - Dependencies: Remove pymorphy2
 - Dependencies: Upgrade Beautiful Soup to 4.11.2
 - Dependencies: Upgrade Lingua to 1.3.2
+- Dependencies: Upgrade Matplotlib to 3.6.3
 - Dependencies: Upgrade NetworkX to 3.0
 - Dependencies: Upgrade NLTK to 3.8.1
 - Dependencies: Upgrade NumPy to 1.24.1
