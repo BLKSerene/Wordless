@@ -67,6 +67,7 @@
 - Dependencies: Upgrade Pyphen to 0.13.2
 - Dependencies: Upgrade PyQt to 5.15.9
 - Dependencies: Upgrade Requests to 2.28.2
+- Dependencies: Upgrade SciPy to 1.10.0
 - Dependencies: Upgrade simplemma to 0.9.1
 - Dependencies: Upgrade spaCy to 3.5.0
 - Dependencies: Upgrade Underthesea to 6.0.3
