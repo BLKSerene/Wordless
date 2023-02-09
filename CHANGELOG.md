@@ -65,7 +65,7 @@
 - Dependencies: Upgrade openpyxl to 3.1.0
 - Dependencies: Upgrade pypdf (originally named PyPDF2) to 3.3.0
 - Dependencies: Upgrade Pyphen to 0.13.2
-- Dependencies: Upgrade PyQt to 5.15.8
+- Dependencies: Upgrade PyQt to 5.15.9
 - Dependencies: Upgrade Requests to 2.28.2
 - Dependencies: Upgrade simplemma to 0.9.1
 - Dependencies: Upgrade spaCy to 3.5.0
