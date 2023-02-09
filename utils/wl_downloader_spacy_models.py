@@ -83,6 +83,6 @@ for lang_text, lang_code_639_3, lang_code_639_1 in langs:
         elif platform.system() == 'Darwin':
             subprocess.run(['pip3', 'install', model_url], check = True)
         elif platform.system() == 'Linux':
-            subprocess.run(['pip3.8', 'install', model_url], check = True)
+            subprocess.run(['pip3.9', 'install', model_url], check = True)
     else:
         print(f"The latest version of spaCy's {lang_text} model ({model_ver}) has already been installed!")
