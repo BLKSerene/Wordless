@@ -34,7 +34,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 9 |[NumPy](https://www.numpy.org/)                                   |1.24.2 |NumPy Developers|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 10|[opencc-python](https://github.com/yichen0831/opencc-python)      |0.1.6  |Carbo Kuo (郭家宝), Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
 11|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)           |3.1.0  |Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
-12|[PyInstaller](http://www.pyinstaller.org/)                        |5.6.2  |Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
+12|[PyInstaller](http://www.pyinstaller.org/)                        |5.7.0  |Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
 13|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)           |1.2.0  |Mikhail Korobov, Danylo Halaiko|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
 14|[pypdf](https://github.com/py-pdf/pypdf)                          |3.3.0  |Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
 15|[Pyphen](https://pyphen.org/)                                     |0.13.2 |Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/master/LICENSE)
