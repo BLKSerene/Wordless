@@ -29,7 +29,7 @@ jobs:
     steps:
       - task: UsePythonVersion@0
         inputs:
-          versionSpec: '3.8'
+          versionSpec: '3.9'
           architecture: 'x64'
 
       - task: Cache@2
@@ -80,7 +80,7 @@ jobs:
     steps:
       - task: UsePythonVersion@0
         inputs:
-          versionSpec: '3.8'
+          versionSpec: '3.9'
 
       - task: Cache@2
         inputs:
@@ -131,7 +131,7 @@ jobs:
     steps:
       - task: UsePythonVersion@0
         inputs:
-          versionSpec: '3.8'
+          versionSpec: '3.9'
 
       - task: Cache@2
         inputs:
@@ -142,15 +142,15 @@ jobs:
         displayName: Cache pip packages
 
       # Check Python version
-      - script: python3.8 --version
+      - script: python3.9 --version
         displayName: 'Check Python version'
 
       # Install dependencies
       - script: |
-          pip3.8 install --upgrade pip setuptools
-          pip3.8 install --requirement requirements_tests.txt
+          pip3.9 install --upgrade pip setuptools
+          pip3.9 install --requirement requirements_tests.txt
           # Download models and data files
-          python3.8 utils/wl_downloader_ci.py
+          python3.9 utils/wl_downloader_ci.py
         displayName: 'Install dependencies'
 
       # Run tests
