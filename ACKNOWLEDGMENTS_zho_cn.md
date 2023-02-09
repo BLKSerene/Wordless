@@ -28,7 +28,7 @@
 3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.0.1  |TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
 4 |[jieba](https://github.com/fxsjy/jieba)                           |0.42.1 |孙君意|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
 5 |[Lingua](https://github.com/pemistahl/lingua-py)                  |1.3.2  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
-6 |[Matplotlib](https://matplotlib.org/)                             |3.6.2  |Matplotlib 开发团队|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
+6 |[Matplotlib](https://matplotlib.org/)                             |3.6.3  |Matplotlib 开发团队|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 7 |[NetworkX](https://networkx.org/)                                 |3.0    |NetworkX 开发人员, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 8 |[NLTK](https://www.nltk.org/)                                     |3.8.1  |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 9 |[NumPy](https://www.numpy.org/)                                   |1.24.1 |NumPy 开发人员|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
