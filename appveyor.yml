@@ -25,10 +25,10 @@ environment:
       PYTHON: "C:/Python38-x64"
     # MacOS
     - APPVEYOR_BUILD_WORKER_IMAGE: "macos-catalina"
-      PYTHON: "~/venv3.8"
+      PYTHON: "~/venv3.9"
     # Linux
     - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1804"
-      PYTHON: "$HOME/venv3.8"
+      PYTHON: "$HOME/venv3.9"
 
 cache:
   # Windows
@@ -38,7 +38,7 @@ cache:
   # Linux
   - "/home/appveyor/.cache/pip"
 
-stack: python 3.8
+stack: python 3.9
 
 build: off
 
