@@ -232,6 +232,10 @@ def match_ngrams(
         for search_term_token in search_term_tokens_regex:
             for token, token_search in zip(tokens, tokens_search):
                 if re_match(search_term_token, token_search, flags = re_flags):
+                    # Unescape escaped special characters
+                    if not settings['use_regex']:
+                        search_term_token = re.sub(r'\\(.)', r'\1', search_term_token)
+
                     tokens_matched[search_term_token].add(token)
 
         if settings['match_inflected_forms']:

@@ -30,53 +30,6 @@ from wordless.wl_widgets import wl_buttons, wl_layouts, wl_widgets
 
 _tr = QCoreApplication.translate
 
-class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
-    def run(self):
-        for table in self.dialog.tables:
-            results = {}
-            search_terms = set()
-
-            for col in range(table.model().columnCount()):
-                if table.indexWidget(table.model().index(0, col)):
-                    for row in range(table.model().rowCount()):
-                        results[(row, col)] = table.indexWidget(table.model().index(row, col)).text_search
-                else:
-                    for row in range(table.model().rowCount()):
-                        try:
-                            results[(row, col)] = table.model().item(row, col).text_raw
-                        except AttributeError:
-                            results[(row, col)] = [table.model().item(row, col).text()]
-
-            items = [token for text in results.values() for token in text]
-
-            for file in table.settings['file_area']['files_open']:
-                if file['selected']:
-                    search_terms_file = wl_matching.match_search_terms_ngrams(
-                        self.main, items,
-                        lang = file['lang'],
-                        tagged = file['tagged'],
-                        token_settings = table.settings[self.dialog.tab]['token_settings'],
-                        search_settings = self.dialog.settings
-                    )
-
-                    search_terms |= set(search_terms_file)
-
-            for search_term in search_terms:
-                len_search_term = len(search_term)
-
-                for (row, col), text in results.items():
-                    for ngram in wl_nlp_utils.ngrams(text, len_search_term):
-                        if ngram == search_term:
-                            self.dialog.items_found.append([table, row, col])
-
-        self.dialog.items_found = sorted(
-            self.dialog.items_found,
-            key = lambda item: (id(item[0]), item[1], item[2])
-        )
-
-        self.progress_updated.emit(self.tr('Highlighting found items...'))
-        self.worker_done.emit()
-
 class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
     def __init__(self, main, tab, table):
         super().__init__(main, _tr('Wl_Dialog_Results_Search', 'Search in Results'))
@@ -343,7 +296,7 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                 if table.indexWidget(table.model().index(row, col)):
                     table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 1px solid #E53E3A;')
                 else:
-                    table.model().item(row, col).setForeground(QBrush(QColor('#FFF')))
+                    table.model().item(row, col).setForeground(QBrush(QColor('#FFFFFF')))
                     table.model().item(row, col).setBackground(QBrush(QColor('#E53E3A')))
 
             for table in self.tables:
@@ -405,3 +358,62 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             self.checkbox_multi_search_mode.setChecked(multi_search_mode)
 
         self.show()
+
+class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
+    def run(self):
+        for table in self.dialog.tables:
+            results = {}
+            search_terms = set()
+
+            # Only search in visible rows and columns
+            rows_to_search = [
+                row
+                for row in range(table.model().rowCount())
+                if not table.isRowHidden(row)
+            ]
+            cols_to_search = [
+                col
+                for col in range(table.model().columnCount())
+                if not table.isColumnHidden(col)
+            ]
+
+            for col in cols_to_search:
+                if table.indexWidget(table.model().index(0, col)):
+                    for row in rows_to_search:
+                        results[(row, col)] = table.indexWidget(table.model().index(row, col)).text_search
+                else:
+                    for row in rows_to_search:
+                        try:
+                            results[(row, col)] = table.model().item(row, col).text_raw
+                        except AttributeError:
+                            results[(row, col)] = [table.model().item(row, col).text()]
+
+            items = [token for text in results.values() for token in text]
+
+            for file in table.settings['file_area']['files_open']:
+                if file['selected']:
+                    search_terms_file = wl_matching.match_search_terms_ngrams(
+                        self.main, items,
+                        lang = file['lang'],
+                        tagged = file['tagged'],
+                        token_settings = table.settings[self.dialog.tab]['token_settings'],
+                        search_settings = self.dialog.settings
+                    )
+
+                    search_terms |= set(search_terms_file)
+
+            for search_term in search_terms:
+                len_search_term = len(search_term)
+
+                for (row, col), text in results.items():
+                    for ngram in wl_nlp_utils.ngrams(text, len_search_term):
+                        if ngram == search_term:
+                            self.dialog.items_found.append([table, row, col])
+
+        self.dialog.items_found = sorted(
+            self.dialog.items_found,
+            key = lambda item: (id(item[0]), item[1], item[2])
+        )
+
+        self.progress_updated.emit(self.tr('Highlighting found items...'))
+        self.worker_done.emit()

@@ -92,14 +92,12 @@ class Wl_Table(QTableView):
 
         if self.header_orientation == 'hor':
             self.setStyleSheet('''
-                QTableView::item {
+                QTableView::item:hover {
+                    background-color: #C7C7C7;
                     color: #000;
                 }
-                QTableView::item:hover {
-                    background-color: #EEE;
-                }
                 QTableView::item:selected {
-                    background-color: #EEE;
+                    background-color: #C7C7C7;
                     color: #000;
                 }
 
