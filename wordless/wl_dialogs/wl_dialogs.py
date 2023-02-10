@@ -47,11 +47,10 @@ class Wl_Dialog(QDialog):
         self.setWindowTitle(title)
         self.setWindowIcon(QIcon('imgs/wl_icon.ico'))
 
-        # Do not use setWindowFlag, which was added in Qt 5.9 (PyQt 5.8 is used on macOS for compatibility with old macOSes)
         if not resizable:
-            self.setWindowFlags(self.windowFlags() | Qt.MSWindowsFixedSizeDialogHint)
+            self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
 
-        self.setWindowFlags(self.windowFlags() & ~Qt.WindowContextHelpButtonHint)
+        self.setWindowFlag(Qt.WindowContextHelpButtonHint, False)
 
         # Fix styles of tables inside dialogs
         self.setStyleSheet('''

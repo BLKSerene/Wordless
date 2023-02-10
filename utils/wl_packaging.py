@@ -56,7 +56,7 @@ if is_linux:
         # Fix libGL error on Linux
         f.write('sudo LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 ./Wordless\n')
 
-    # Allow excuting file as program
+    # Allow executing file as program
     subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless.sh'], check = True)
 
     # Create .desktop file

@@ -134,21 +134,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                             tokens_multilevel[-1].append(tokens)
                 # Japanese
                 elif word_tokenizer.startswith('sudachipy_jpn'):
-                    try:
-                        if word_tokenizer == 'sudachipy_jpn_split_mode_a':
-                            mode = sudachipy.SplitMode.A
-                        elif word_tokenizer == 'sudachipy_jpn_split_mode_b':
-                            mode = sudachipy.SplitMode.B
-                        elif word_tokenizer == 'sudachipy_jpn_split_mode_c':
-                            mode = sudachipy.SplitMode.C
-                    # SudachiPy 0.5.4 is used on macOS for backward compatibility
-                    except AttributeError:
-                        if word_tokenizer == 'sudachipy_jpn_split_mode_a':
-                            mode = sudachipy.tokenizer.Tokenizer.SplitMode.A
-                        elif word_tokenizer == 'sudachipy_jpn_split_mode_b':
-                            mode = sudachipy.tokenizer.Tokenizer.SplitMode.B
-                        elif word_tokenizer == 'sudachipy_jpn_split_mode_c':
-                            mode = sudachipy.tokenizer.Tokenizer.SplitMode.C
+                    if word_tokenizer == 'sudachipy_jpn_split_mode_a':
+                        mode = sudachipy.SplitMode.A
+                    elif word_tokenizer == 'sudachipy_jpn_split_mode_b':
+                        mode = sudachipy.SplitMode.B
+                    elif word_tokenizer == 'sudachipy_jpn_split_mode_c':
+                        mode = sudachipy.SplitMode.C
 
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = lang)
 
