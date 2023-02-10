@@ -59,7 +59,7 @@ def add_widgets_filter(parent, widgets_filter, layout):
 
 class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
     def __init__(self, main, tab, table):
-        super().__init__(main, _tr('Wl_Dialog_Results_Filter', 'Filter Results'))
+        super().__init__(main, _tr('wl_results_filter', 'Filter Results'))
 
         self.tab = tab
         self.table = table
@@ -67,12 +67,12 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
         self.main.wl_work_area.currentChanged.connect(self.close)
 
-        self.label_file_to_filter = QLabel(self.tr('File to filter:'), self)
+        self.label_file_to_filter = QLabel(_tr('wl_results_filter', 'File to filter:'), self)
         self.combo_box_file_to_filter = wl_boxes.Wl_Combo_Box_File_To_Filter(self, self.table)
-        self.button_filter = QPushButton(self.tr('Filter'), self)
+        self.button_filter = QPushButton(_tr('wl_results_filter', 'Filter'), self)
 
         self.button_restore_defaults = wl_buttons.Wl_Button_Restore_Defaults(self, load_settings = self.load_settings)
-        self.button_close = QPushButton(self.tr('Close'), self)
+        self.button_close = QPushButton(_tr('wl_results_filter', 'Close'), self)
 
         self.combo_box_file_to_filter.currentTextChanged.connect(self.file_to_filter_changed)
         self.button_filter.clicked.connect(lambda checked: self.filter_results())
@@ -118,11 +118,11 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
         def update_gui():
             self.table.filter_table()
 
-            self.main.statusBar().showMessage(self.tr('The results in the table has been successfully filtered.'))
+            self.main.statusBar().showMessage(_tr('wl_results_filter', 'The results in the table has been successfully filtered.'))
 
         worker_filter_results = self.Worker_Filter_Results(
             self.main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Filtering results...')),
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('wl_results_filter', 'Filtering results...')),
             update_gui = update_gui,
             dialog = self
         )

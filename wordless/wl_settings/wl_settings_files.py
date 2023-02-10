@@ -230,11 +230,11 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         super().__init__(
             parent = parent,
             headers = [
-                _tr('Wl_Table_Tags', 'Type'),
-                _tr('Wl_Table_Tags', 'Level'),
-                _tr('Wl_Table_Tags', 'Opening Tag'),
-                _tr('Wl_Table_Tags', 'Closing Tag'),
-                _tr('Wl_Table_Tags', 'Preview')
+                _tr('wl_settings_files', 'Type'),
+                _tr('wl_settings_files', 'Level'),
+                _tr('wl_settings_files', 'Opening Tag'),
+                _tr('wl_settings_files', 'Closing Tag'),
+                _tr('wl_settings_files', 'Preview')
             ],
             col_edit = 2
         )
@@ -245,14 +245,14 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
         self.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self,
             items = [
-                self.tr('Embedded'),
-                self.tr('Non-embedded')
+                _tr('wl_settings_files', 'Embedded'),
+                _tr('wl_settings_files', 'Non-embedded')
             ]
         ))
         self.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
         self.setItemDelegateForColumn(4, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
 
-        self.button_reset = QPushButton(self.tr('Reset'), self)
+        self.button_reset = QPushButton(_tr('wl_settings_files', 'Reset'), self)
 
         self.button_reset.clicked.connect(lambda: self.reset_table()) # pylint: disable=unnecessary-lambda
 
@@ -264,21 +264,21 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 item_opening_tag = self.model().item(row, 2)
 
                 # Opening Tag
-                if self.model().item(row, 0).text() == self.tr('Embedded'):
+                if self.model().item(row, 0).text() == _tr('wl_settings_files', 'Embedded'):
                     re_validation = re.search(r'^([^\w\s]|_)+\S*$', item_opening_tag.text())
-                    warning_text = self.tr('''
+                    warning_text = _tr('wl_settings_files', '''
                         <div>Embedded tags must begin with a punctuation mark, e.g. an underscore or a slash!</div>
                     ''')
                 else:
                     re_validation = re.search(r'^([^\w\s]|_)+\S*([^\w\s]|_)+$', item_opening_tag.text())
-                    warning_text = self.tr('''
+                    warning_text = _tr('wl_settings_files', '''
                         <div>Non-embedded tags must begin and end with a punctuation mark, e.g. brackets!</div>
                     ''')
 
                 if re_validation is None:
                     wl_msg_boxes.Wl_Msg_Box_Warning(
                         self.main,
-                        title = self.tr('Invalid Opening Tag'),
+                        title = _tr('wl_settings_files', 'Invalid Opening Tag'),
                         text = warning_text
                     ).exec_()
 
@@ -295,8 +295,8 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     if row != item.row() and self.model().item(row, 2).text() == item.text():
                         wl_msg_boxes.Wl_Msg_Box_Warning(
                             self.main,
-                            title = self.tr('Duplicate Tags'),
-                            text = self.tr('''
+                            title = _tr('wl_settings_files', 'Duplicate Tags'),
+                            text = _tr('wl_settings_files', '''
                                 <div>The tag that you have specified already exists in the table!</div>
                             ''')
                         ).exec_()
@@ -320,24 +320,24 @@ class Wl_Table_Tags(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     preview = self.model().item(row, 4)
 
                     # Closing Tag & Preview
-                    if type_text == self.tr('Embedded'):
+                    if type_text == _tr('wl_settings_files', 'Embedded'):
                         if wl_matching.split_tag_embedded(opening_tag_text)[1] == '*':
                             opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
 
                         closing_tag.setText('N/A')
-                        preview.setText(self.tr('token') + opening_tag_text)
-                    elif type_text == self.tr('Non-embedded'):
+                        preview.setText(_tr('wl_settings_files', 'token') + opening_tag_text)
+                    elif type_text == _tr('wl_settings_files', 'Non-embedded'):
                         # Add a "/" before the first non-punctuation character
                         tag_start, tag_name, tag_end = wl_matching.split_tag_non_embedded(opening_tag_text)
 
                         closing_tag.setText(f'{tag_start}/{tag_name}{tag_end}')
 
                         if self.settings_tags == 'body_tag_settings' and tag_name == '*':
-                            opening_tag_text = opening_tag_text.replace('*', self.tr('TAG'))
-                            closing_tag_text = self.model().item(row, 3).text().replace('*', self.tr('TAG'))
-                            preview.setText(opening_tag_text + self.tr('token') + closing_tag_text)
+                            opening_tag_text = opening_tag_text.replace('*', _tr('wl_settings_files', 'TAG'))
+                            closing_tag_text = self.model().item(row, 3).text().replace('*', _tr('wl_settings_files', 'TAG'))
+                            preview.setText(opening_tag_text + _tr('wl_settings_files', 'token') + closing_tag_text)
                         else:
-                            preview.setText(opening_tag_text + self.tr('token') + self.model().item(row, 3).text())
+                            preview.setText(opening_tag_text + _tr('wl_settings_files', 'token') + self.model().item(row, 3).text())
 
                 self.enable_updates()
 

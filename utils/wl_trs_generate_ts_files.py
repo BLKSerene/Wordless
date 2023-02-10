@@ -26,7 +26,7 @@ files = []
 for file in pathlib.Path('../wordless').rglob('*.py'):
     if all((
         os.path.sep + folder + os.path.sep not in str(file)
-        for folder in ['data', 'doc', 'exports', 'fonts', 'imgs', 'imports', 'misc', 'tests', 'trs', 'utils']
+        for folder in ['.github', 'data', 'doc', 'exports', 'imgs', 'imports', 'misc', 'tests', 'trs', 'utils']
     )):
         files.append(str(file))
 
