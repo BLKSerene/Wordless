@@ -41,14 +41,14 @@ with zipfile.ZipFile(f'pyinstaller-{PYINSTALLER_VER}.zip', 'r') as zip_file:
 
 # Lower MACOSX_DEPLOYMENT_TARGET and recompile the bootloader
 # Reference: https://pyinstaller.org/en/stable/bootloader-building.html?highlight=waf#building-for-macos
-os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.9'
+os.environ['MACOSX_DEPLOYMENT_TARGET'] = '10.11'
 os.chdir(f'pyinstaller-{PYINSTALLER_VER}/bootloader')
 
 subprocess.run(['python3', 'waf', 'all'], check = True)
 
 os.chdir('..')
 
-# codesign does not work properly on OS X 10.9
+# codesign does not work properly on OS X 10.11
 with open('PyInstaller/building/utils.py', 'r+', encoding = 'utf_8') as f:
     pyinstaller_building_utils = f.read()
     pyinstaller_building_utils = pyinstaller_building_utils.replace('osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)', '# osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)')
