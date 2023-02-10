@@ -50,5 +50,5 @@
 25|[stopword](https://github.com/fergiemcdowall/stopword)            |2.0.5  |Fergus McDowall|[MIT](https://github.com/fergiemcdowall/stopword/blob/master/LICENSE)
 26|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)      |0.6.6  |Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 27|[TextBlob](https://github.com/sloria/TextBlob)                    |0.17.1 |Steven Loria|[MIT](https://github.com/sloria/TextBlob/blob/dev/LICENSE)
-28|[Underthesea](https://undertheseanlp.com/)                        |6.0.3  |Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
+28|[Underthesea](https://undertheseanlp.com/)                        |6.1.1  |Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
 29|[WordCloud](https://github.com/amueller/word_cloud)               |1.8.2.2|Andreas Christian Mueller|[MIT](https://github.com/amueller/word_cloud/blob/master/LICENSE)

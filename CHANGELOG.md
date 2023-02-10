@@ -71,7 +71,7 @@
 - Dependencies: Upgrade SciPy to 1.10.0
 - Dependencies: Upgrade simplemma to 0.9.1
 - Dependencies: Upgrade spaCy to 3.5.0
-- Dependencies: Upgrade Underthesea to 6.0.3
+- Dependencies: Upgrade Underthesea to 6.1.1
 
 ## [3.0.0](https://github.com/BLKSerene/Wordless/releases/tag/3.0.0) - 11/21/2022
 ### 🎉 New Features
