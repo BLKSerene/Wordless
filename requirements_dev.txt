@@ -49,6 +49,7 @@ lxml
 matplotlib
 networkx
 numpy
+opencc-python-reimplemented
 openpyxl
 pyinstaller
 pypdf

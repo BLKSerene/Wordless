@@ -1335,12 +1335,10 @@ if __name__ == '__main__':
         wl_main.help_check_updates(on_startup = True)
 
     # Show changelog on first startup
-    # * Do not do this on macOS since the popped-up changelog window cannot be closed sometimes
-    if is_windows or is_linux:
-        if wl_main.settings_custom['1st_startup']:
-            wl_main.help_changelog()
+    if wl_main.settings_custom['1st_startup']:
+        wl_main.help_changelog()
 
-            wl_main.settings_custom['1st_startup'] = False
+        wl_main.settings_custom['1st_startup'] = False
 
     wl_main.showMaximized()
 

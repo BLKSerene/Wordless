@@ -121,11 +121,7 @@ def init_spacy_models(main, lang):
 
 def init_sudachipy_word_tokenizer(main):
     if 'sudachipy_word_tokenizer' not in main.__dict__:
-        try:
-            main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
-        # SudachiPy 0.5.4 is used on macOS for backward compatibility
-        except AttributeError:
-            main.sudachipy_word_tokenizer = sudachipy.dictionary.Dictionary().create()
+        main.sudachipy_word_tokenizer = sudachipy.Dictionary().create()
 
 def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy

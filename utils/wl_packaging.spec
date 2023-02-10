@@ -39,11 +39,11 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('lingua'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('opencc'))
 # python-crfsuite
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
-# pymorphy2
-datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy2_dicts_ru'))
-datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy2_dicts_uk'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_ru'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy2_dicts_uk'))
+# pymorphy3
+datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy3_dicts_ru'))
+datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy3_dicts_uk'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy3_dicts_ru'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy3_dicts_uk'))
 # PyThaiNLP
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
 # simplemma
@@ -116,9 +116,9 @@ hiddenimports = [
     # Charset Normalizer
     'charset_normalizer.md__mypyc',
 
-    # pymorphy2
-    'pymorphy2_dicts_ru',
-    'pymorphy2_dicts_uk',
+    # pymorphy3
+    'pymorphy3_dicts_ru',
+    'pymorphy3_dicts_uk',
 
     # spaCy models
     'ca_core_news_sm',
@@ -147,10 +147,6 @@ hiddenimports = [
     # SudachiPy
     'sudachidict_core'
 ]
-
-# SudachiPy 0.5.4 is used on OS X 10.9
-if is_macos:
-    hiddenimports.append('sudachipy.lattice')
 
 # Exclusions
 excludes = []
