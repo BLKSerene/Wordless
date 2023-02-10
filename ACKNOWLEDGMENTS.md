@@ -36,7 +36,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 11|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)           |3.1.0  |Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
 12|[PyInstaller](http://www.pyinstaller.org/)                        |5.7.0  |Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
 13|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)           |1.2.0  |Mikhail Korobov, Danylo Halaiko|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
-14|[pypdf](https://github.com/py-pdf/pypdf)                          |3.3.0  |Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
+14|[pypdf](https://github.com/py-pdf/pypdf)                          |3.4.0  |Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
 15|[Pyphen](https://pyphen.org/)                                     |0.13.2 |Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/master/LICENSE)
 16|[PyQt](https://riverbankcomputing.com/software/pyqt/)             |5.15.9 |Riverbank Computing|[Commercial-License/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
 17|[PyThaiNLP](https://github.com/PyThaiNLP/pythainlp)               |3.1.1  |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/PyThaiNLP/pythainlp/blob/dev/LICENSE)
