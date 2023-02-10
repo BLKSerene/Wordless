@@ -326,8 +326,8 @@ class Wl_Settings_Node(QWidget):
     def wl_msg_box_path_empty(self):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = self.tr('Empty Path'),
-            text = self.tr('''
+            title = _tr('wl_settings', 'Empty Path'),
+            text = _tr('wl_settings', '''
                 <div>The path should not be left empty!</div>
             '''),
         ).open()
@@ -335,8 +335,8 @@ class Wl_Settings_Node(QWidget):
     def wl_msg_box_path_not_found(self, path):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = self.tr('Path not Found'),
-            text = self.tr('''
+            title = _tr('wl_settings', 'Path not Found'),
+            text = _tr('wl_settings', '''
                 <div>The specified path "{}" could not be found!</div>
                 <div>Please check your settings and try again.</div>
             ''').format(path),
@@ -345,8 +345,8 @@ class Wl_Settings_Node(QWidget):
     def wl_msg_box_path_is_dir(self, path):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = self.tr('Invalid File Path'),
-            text = self.tr('''
+            title = _tr('wl_settings', 'Invalid File Path'),
+            text = _tr('wl_settings', '''
                 <div>The specified path "{}" should be a file, not a directory!</div>
                 <div>Please check your settings and try again.</div>
             ''').format(path),
@@ -355,8 +355,8 @@ class Wl_Settings_Node(QWidget):
     def wl_msg_box_path_not_dir(self, path):
         wl_msg_boxes.Wl_Msg_Box_Warning(
             self.main,
-            title = self.tr('Invalid Directory Path'),
-            text = self.tr('''
+            title = _tr('wl_settings', 'Invalid Directory Path'),
+            text = _tr('wl_settings', '''
                 <div>The specified path "{}" should be a directory, not a file!</div>
                 <div>Please check your settings and try again.</div>
             ''').format(path),
@@ -418,8 +418,8 @@ class Wl_Settings_Node(QWidget):
             if not os.path.exists(path):
                 reply = QMessageBox.question(
                     self.main,
-                    self.tr('Path Not Exist'),
-                    self.tr('''
+                    _tr('wl_settings', 'Path Not Exist'),
+                    _tr('wl_settings', '''
                         {}
                         <body>
                             <div>The specified path "{}" does not exist.</div>

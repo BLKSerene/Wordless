@@ -87,7 +87,7 @@ def init_settings_default(main):
                 },
 
                 'donating': {
-                    'donating_via': _tr('init_settings_default', 'PayPal')
+                    'donating_via': 'PayPal'
                 }
             }
         },
@@ -1540,6 +1540,7 @@ def init_settings_default(main):
                 'ben': 'stopword_ben',
                 'bre': 'stopword_bre',
                 'bul': 'stopword_bul',
+                'mya': 'stopword_mya',
                 'cat': 'stopword_cat',
                 'zho_cn': 'stopword_zho_cn',
                 'zho_tw': 'stopword_zho_tw',
@@ -1576,7 +1577,6 @@ def init_settings_default(main):
                 'lgg': 'stopword_lgg',
                 'msa': 'stopword_msa',
                 'mar': 'stopword_mar',
-                'mya': 'stopword_mya',
                 'nep': 'nltk_nep',
                 'nob': 'stopword_nob',
                 'nno': 'nltk_nor',
