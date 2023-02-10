@@ -18,6 +18,7 @@
 
 import copy
 import os
+import glob
 import pickle
 import platform
 import re
@@ -381,9 +382,13 @@ class Wl_Main(QMainWindow):
                         with open('wl_settings_display_lang.pickle', 'wb') as f:
                             pickle.dump(action.lang, f)
 
-                        # Delete settings file
+                        # Remove settings file
                         if os.path.exists('wl_settings.pickle'):
                             os.remove('wl_settings.pickle')
+
+                        # Remove file caches
+                        for file in glob.glob('imports/*.*'):
+                            os.remove(file)
 
                         self.restart(save_settings = False)
                     else:
@@ -806,7 +811,7 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
         self.label_donating_via_img = wl_labels.Wl_Label_Html('', self)
 
         self.combo_box_donating_via.addItems([
-            self.tr('PayPal'),
+            'PayPal',
             self.tr('Alipay'),
             self.tr('WeChat Pay')
         ])
@@ -832,7 +837,7 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
         height_donating_via_paypal = self.label_donating_via_img.sizeHint().height()
         self.height_paypal = self.heightForWidth(self.width())
 
-        self.combo_box_donating_via.setCurrentText('Alipay')
+        self.combo_box_donating_via.setCurrentText(self.tr('Alipay'))
         self.donating_via_changed()
 
         height_donating_via_alipay = self.label_donating_via_img.sizeHint().height()
@@ -854,7 +859,7 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
 
         settings['donating_via'] = self.combo_box_donating_via.currentText()
 
-        if settings['donating_via'] == self.tr('PayPal'):
+        if settings['donating_via'] == 'PayPal':
             self.label_donating_via_img.setText(
                 f'''<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V2V54NYE2YD32"><img src="{wl_paths.get_path_img('donating_paypal.gif')}"></a>'''
             )
