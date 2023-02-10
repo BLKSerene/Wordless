@@ -781,9 +781,9 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         settings['select_citation_sys'] = self.combo_box_select_citation_sys.currentText()
 
         if settings['select_citation_sys'].startswith('APA'):
-            self.text_edit_citing.setHtml(f'Ye, L. (2022). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless')
+            self.text_edit_citing.setHtml(f'Ye, L. (2023). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless')
         elif settings['select_citation_sys'].startswith('MLA'):
-            self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
+            self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
 
     def copy(self):
         self.text_edit_citing.setFocus()
