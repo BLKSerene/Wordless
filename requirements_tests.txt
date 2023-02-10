@@ -28,7 +28,7 @@ pythainlp == 3.1.1
 sacremoses == 0.0.53
 simplemma == 0.9.1
 textblob == 0.17.1
-underthesea == 6.0.3
+underthesea == 6.1.1
 
 ## pymorphy3
 pymorphy3 == 1.2.0
