@@ -341,7 +341,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'JPEG files (*.jfif, *.jpe, *.jpeg, *.jpg)'),
                 _tr('init_settings_global', 'JPEG 2000 files (*.j2c, *.j2k, *.jp2, *.jpc, *.jpf, *.jpx)'),
                 _tr('init_settings_global', 'McIDAS area files (*)'),
-                _tr('init_settings_global', 'Microsoft paint files (*.msp)'),
+                _tr('init_settings_global', 'Microsoft Paint files (*.msp)'),
                 _tr('init_settings_global', 'PhotoCD files (*.pcd)'),
                 _tr('init_settings_global', 'Picture exchange (*.pcx)'),
                 _tr('init_settings_global', 'PIXAR raster files (*.pxr)'),
@@ -387,8 +387,8 @@ def init_settings_global():
                 _tr('init_settings_global', 'NLTK - Swedish Punkt sentence tokenizer'): 'nltk_punkt_swe',
                 _tr('init_settings_global', 'NLTK - Turkish Punkt sentence tokenizer'): 'nltk_punkt_tur',
 
-                _tr('init_settings_global', 'PyThaiNLP - CRFCut'): 'pythainlp_crfcut',
-                _tr('init_settings_global', 'PyThaiNLP - ThaiSumCut'): 'pythainlp_thaisumcut',
+                'PyThaiNLP - CRFCut': 'pythainlp_crfcut',
+                'PyThaiNLP - ThaiSumCut': 'pythainlp_thaisumcut',
 
                 _tr('init_settings_global', 'spaCy - Catalan sentence recognizer'): 'spacy_sentence_recognizer_cat',
                 _tr('init_settings_global', 'spaCy - Chinese sentence recognizer'): 'spacy_sentence_recognizer_zho',
@@ -433,7 +433,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'PyThaiNLP - Longest matching'): 'pythainlp_longest_matching',
                 _tr('init_settings_global', 'PyThaiNLP - Maximum matching'): 'pythainlp_max_matching',
                 _tr('init_settings_global', 'PyThaiNLP - Maximum matching + TCC'): 'pythainlp_max_matching_tcc',
-                _tr('init_settings_global', 'PyThaiNLP - NERCut'): 'pythainlp_nercut',
+                'PyThaiNLP - NERCut': 'pythainlp_nercut',
 
                 _tr('init_settings_global', 'Sacremoses - Moses tokenizer'): 'sacremoses_moses',
 
@@ -741,6 +741,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'stopword - Bengali stop word list'): 'stopword_ben',
                 _tr('init_settings_global', 'stopword - Breton stop word list'): 'stopword_bre',
                 _tr('init_settings_global', 'stopword - Bulgarian stop word list'): 'stopword_bul',
+                _tr('init_settings_global', 'stopword - Burmese stop word list'): 'stopword_mya',
                 _tr('init_settings_global', 'stopword - Catalan stop word list'): 'stopword_cat',
                 _tr('init_settings_global', 'stopword - Chinese (Simplified) stop word list'): 'stopword_zho_cn',
                 _tr('init_settings_global', 'stopword - Chinese (Traditional) stop word list'): 'stopword_zho_tw',
@@ -773,7 +774,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'stopword - Lugbara stop word list'): 'stopword_lgg',
                 _tr('init_settings_global', 'stopword - Malay stop word list'): 'stopword_msa',
                 _tr('init_settings_global', 'stopword - Marathi stop word list'): 'stopword_mar',
-                _tr('init_settings_global', 'stopword - Myanmar stop word list'): 'stopword_mya',
                 _tr('init_settings_global', 'stopword - Norwegian Bokmål stop word list'): 'stopword_nob',
                 _tr('init_settings_global', 'stopword - Persian stop word list'): 'stopword_fas',
                 _tr('init_settings_global', 'stopword - Polish stop word list'): 'stopword_pol',
@@ -1743,6 +1743,7 @@ def init_settings_global():
 
             'bre': ['stopword_bre'],
             'bul': ['stopword_bul'],
+            'mya': ['stopword_mya'],
 
             'cat': [
                 'nltk_cat',
@@ -1854,7 +1855,6 @@ def init_settings_global():
             'lgg': ['stopword_lgg'],
             'msa': ['stopword_msa'],
             'mar': ['stopword_mar'],
-            'mya': ['stopword_mya'],
             'nep': ['nltk_nep'],
 
             'nob': [

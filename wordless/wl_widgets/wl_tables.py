@@ -421,7 +421,7 @@ class Wl_Table(QTableView):
         self.exp_all_cells(rows_to_exp = self.get_selected_rows(visible_only = True))
 
     def exp_all_cells(self, rows_to_exp = None):
-        caption = self.tr('Export Table')
+        caption = _tr('wl_tables', 'Export Table')
         default_dir = self.main.settings_custom['general']['exp']['tables']['default_path']
         default_type = self.main.settings_custom['general']['exp']['tables']['default_type']
         default_ext = re.search(r'(?<=\(\*\.)[a-zA-Z0-9]+(?=[;\)])', default_type).group()
@@ -463,7 +463,7 @@ class Wl_Table(QTableView):
             )
 
         if file_path:
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Exporting table...'))
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('wl_tables', 'Exporting table...'))
 
             worker_exp_table = Wl_Worker_Exp_Table(
                 self.main,
@@ -488,16 +488,16 @@ class Wl_Table(QTableView):
         if exp_success:
             wl_msg_boxes.Wl_Msg_Box_Info(
                 self.main,
-                title = self.tr('Export Completed'),
-                text = self.tr('''
+                title = _tr('wl_tables', 'Export Completed'),
+                text = _tr('wl_tables', '''
                     <div>The table has been successfully exported to "{}".</div>
                 ''').format(file_path)
             ).open()
         else:
             wl_msg_boxes.Wl_Msg_Box_Info(
                 self.main,
-                title = self.tr('Export Error'),
-                text = self.tr('''
+                title = _tr('wl_tables', 'Export Error'),
+                text = _tr('wl_tables', '''
                     <div>Access to "{}" is denied, please specify another location or close the file and try again.</div>
                 ''').format(file_path)
             ).open()
@@ -1032,10 +1032,10 @@ class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
 
         self.col_edit = col_edit
 
-        self.button_add = QPushButton(self.tr('Add'), self)
-        self.button_ins = QPushButton(self.tr('Insert'), self)
-        self.button_del = QPushButton(self.tr('Remove'), self)
-        self.button_clr = QPushButton(self.tr('Clear'), self)
+        self.button_add = QPushButton(_tr('wl_tables', 'Add'), self)
+        self.button_ins = QPushButton(_tr('wl_tables', 'Insert'), self)
+        self.button_del = QPushButton(_tr('wl_tables', 'Remove'), self)
+        self.button_clr = QPushButton(_tr('wl_tables', 'Clear'), self)
 
         self.button_add.clicked.connect(lambda: self.add_row()) # pylint: disable=unnecessary-lambda
         self.button_ins.clicked.connect(lambda: self.ins_row()) # pylint: disable=unnecessary-lambda
@@ -1129,11 +1129,11 @@ class Wl_Table_Data(Wl_Table):
         self.model().itemChanged.connect(self.item_changed)
         self.selectionModel().selectionChanged.connect(self.selection_changed)
 
-        self.button_generate_table = QPushButton(self.tr('Generate table'), self)
-        self.button_generate_fig = QPushButton(self.tr('Generate figure'), self)
-        self.button_exp_selected_cells = QPushButton(self.tr('Export selected cells...'), self)
-        self.button_exp_all_cells = QPushButton(self.tr('Export all cells...'), self)
-        self.button_clr_table = QPushButton(self.tr('Clear table'), self)
+        self.button_generate_table = QPushButton(_tr('Wl_Table_Data', 'Generate table'), self)
+        self.button_generate_fig = QPushButton(_tr('Wl_Table_Data', 'Generate figure'), self)
+        self.button_exp_selected_cells = QPushButton(_tr('Wl_Table_Data', 'Export selected cells...'), self)
+        self.button_exp_all_cells = QPushButton(_tr('Wl_Table_Data', 'Export all cells...'), self)
+        self.button_clr_table = QPushButton(_tr('Wl_Table_Data', 'Clear table'), self)
 
         if not generate_fig:
             self.button_generate_fig.hide()
@@ -1814,10 +1814,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         self.model().itemChanged.connect(self.results_changed)
 
         self.label_number_results = QLabel()
-        self.button_results_search = wl_buttons.Wl_Button(
-            self.tr('Search in results'),
-            self
-        )
+        self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
         self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
             self.main,
             tab = self.tab,
@@ -1834,11 +1831,11 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty() and rows_visible:
-            self.label_number_results.setText(self.tr('Number of results: ') + str(rows_visible))
+            self.label_number_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
 
             self.button_results_search.setEnabled(True)
         else:
-            self.label_number_results.setText(self.tr('Number of results: 0'))
+            self.label_number_results.setText(_tr('wl_tables', 'Number of results: 0'))
 
             self.button_results_search.setEnabled(False)
 
@@ -1865,14 +1862,8 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         self.model().itemChanged.connect(self.results_changed)
 
         self.label_number_results = QLabel()
-        self.button_results_search = wl_buttons.Wl_Button(
-            self.tr('Search in results'),
-            self
-        )
-        self.button_results_sort = wl_buttons.Wl_Button(
-            self.tr('Sort results'),
-            self
-        )
+        self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
+        self.button_results_sort = wl_buttons.Wl_Button(_tr('wl_tables', 'Sort results'), self)
 
         self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
             self.main,
@@ -1896,12 +1887,12 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty() and rows_visible:
-            self.label_number_results.setText(self.tr('Number of results: ') + str(rows_visible))
+            self.label_number_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
 
             self.button_results_sort.setEnabled(True)
             self.button_results_search.setEnabled(True)
         else:
-            self.label_number_results.setText(self.tr('Number of results: 0'))
+            self.label_number_results.setText(_tr('wl_tables', 'Number of results: 0'))
 
             self.button_results_sort.setEnabled(False)
             self.button_results_search.setEnabled(False)
@@ -1929,14 +1920,8 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         self.model().itemChanged.connect(self.results_changed)
 
         self.label_number_results = QLabel()
-        self.button_results_filter = wl_buttons.Wl_Button(
-            self.tr('Filter results'),
-            self
-        )
-        self.button_results_search = wl_buttons.Wl_Button(
-            self.tr('Search in results'),
-            self
-        )
+        self.button_results_filter = wl_buttons.Wl_Button(_tr('wl_tables', 'Filter results'), self)
+        self.button_results_search = wl_buttons.Wl_Button(_tr('wl_tables', 'Search in results'), self)
 
         self.dialog_results_search = wl_results_search.Wl_Dialog_Results_Search(
             self.main,
@@ -1956,11 +1941,11 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         rows_visible = len([i for i in range(self.model().rowCount()) if not self.isRowHidden(i)])
 
         if not self.is_empty():
-            self.label_number_results.setText(self.tr('Number of results: ') + str(rows_visible))
+            self.label_number_results.setText(_tr('wl_tables', 'Number of results: ') + str(rows_visible))
 
             self.button_results_filter.setEnabled(True)
         else:
-            self.label_number_results.setText(self.tr('Number of results: 0'))
+            self.label_number_results.setText(_tr('wl_tables', 'Number of results: 0'))
 
             self.button_results_filter.setEnabled(False)
 

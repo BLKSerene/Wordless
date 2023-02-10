@@ -169,14 +169,14 @@ TRS_ENCODINGS = {
     'without BOM': ['无签名'],
 }
 TRS_FILE_TYPES = {
-    'CSV file (*.csv)': ['CSV 文件 (*.csv)'],
+    'CSV files (*.csv)': ['CSV 文件 (*.csv)'],
     'Excel workbooks (*.xlsx)': ['Excel 工作簿 (*.xlsx)'],
-    'HTML page (*.htm; *.html)': ['HTML 页面 (*.htm; *.html)'],
-    'PDF file (*.pdf)': ['PDF 文件 (*.pdf)'],
-    'Text file (*.txt)': ['文本文件 (*.txt)'],
-    'Translation memory file (*.tmx)': ['翻译记忆库文件 (*.tmx)'],
-    'Word document (*.docx)': ['Word 文档 (*.docx)'],
-    'XML file (*.xml)': ['XML 文件 (*.xml)'],
+    'HTML pages (*.htm; *.html)': ['HTML 页面 (*.htm; *.html)'],
+    'PDF files (*.pdf)': ['PDF 文件 (*.pdf)'],
+    'Text files (*.txt)': ['文本文件 (*.txt)'],
+    'Translation memory files (*.tmx)': ['翻译记忆库文件 (*.tmx)'],
+    'Word documents (*.docx)': ['Word 文档 (*.docx)'],
+    'XML files (*.xml)': ['XML 文件 (*.xml)'],
     'All files (*.*)': ['所有文件 (*.*)']
 }
 TRS_NLP_UTILS = {
@@ -203,11 +203,11 @@ TRS_NLP_UTILS = {
     # 'Tokenizer' contained in 'Word Tokenizer', 'Syllable Tokenizer', and others
     'Legality syllable tokenizer': ['合法性分音节器'],
     'Sonority sequencing syllable tokenizer': ['响度顺序分音节器'],
-    'Syllable tokenizer': ['分音节器'],
+    'syllable tokenizer': ['分音节器'],
 
     # 'Word Tokenizer' contained in 'Word Tokenizer (Split Mode'
-    'Word tokenizer (split mode': ['分词器（切分模式'],
-    'Word tokenizer': ['分词器'],
+    'word tokenizer (split mode': ['分词器（切分模式'],
+    'word tokenizer': ['分词器'],
     'Penn Treebank tokenizer': ['宾州树库分词器'],
     'Twitter tokenizer': ['推特分词器'],
     'Regular-expression tokenizer': ['正则表达式分词器'],
@@ -253,11 +253,13 @@ TRS_MISC = {
     'R': ['右'],
     'Sync': ['同步'],
     'From': ['从'],
-    'To': ['至'],
-    'No Limit': ['无限制'],
+    'to': ['至'],
+    'No limit': ['无限制'],
     'Two-tailed': ['双尾'],
     'Left-tailed': ['左尾'],
     'Right-tailed': ['右尾'],
+    'Minimum': ['最小'],
+    'Maximum': ['最大'],
 
     # File Area
     'Name': ['名称'],
@@ -268,9 +270,9 @@ TRS_MISC = {
     # Work Area
     'Total': ['合计'],
 
-    'Generate Table': ['生成表格'],
-    'Generate Figure': ['生成图表'],
-    'Clear Table': ['清空表格'],
+    'Generate table': ['生成表格'],
+    'Generate figure': ['生成图表'],
+    'Clear table': ['清空表格'],
 
     'Token Settings': ['形符设置'],
     'Search Settings': ['搜索设置'],
@@ -289,6 +291,7 @@ with open('../trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
 for element_context in soup.select('context'):
     for element_message in element_context.select('message'):
         tr_hit = False
+        unfinished = False
 
         element_src = element_message.select_one('source')
         element_tr = element_message.select_one('translation')
@@ -304,12 +307,15 @@ for element_context in soup.select('context'):
             for lang, trs in TRS_LANGS.items():
                 if lang in tr:
                     tr = tr.replace(lang, trs[0])
-                    # Excludes cases such as Mac OS Romanian in encodings
-                    tr = tr.replace(f'(Mac OS {trs[0]})', f'(Mac OS {lang})')
-                    # Excludes cases such as PyThaiNLP in third-party NLP libraries
-                    tr = tr.replace('Py泰语NLP', 'PyThaiNLP')
-                    tr = tr.replace('泰语SumCut', 'ThaiSumCut')
-                    tr = tr.replace('Automated 阿拉伯语 Readability Index', 'Automated Arabic Readability Index')
+
+                    if any((text in tr for text in [
+                        f'(Mac OS {trs[0]})'
+                    ])):
+                        # Excludes cases such as Mac OS Romanian in encodings
+                        tr = tr.replace(f'(Mac OS {trs[0]})', f'(Mac OS {lang})')
+
+                        # Flag translation as unfinished
+                        unfinished = True
 
                     tr_hit = True
 
@@ -351,6 +357,21 @@ for element_context in soup.select('context'):
 
                     break
 
+            if any((text in tr for text in [
+                'Serbo-克罗地亚语',
+                'Py泰语NLP',
+                'Automated 阿拉伯语 Readability Index',
+                'This 词性标注器'
+            ])):
+                # Excludes cases such as PyThaiNLP in third-party NLP libraries
+                tr = tr.replace('Py泰语NLP', 'PyThaiNLP')
+                tr = tr.replace('Automated 阿拉伯语 Readability Index', '')
+                tr = tr.replace('Serbo-克罗地亚语', '塞尔维亚-克罗地亚语')
+                tr = tr.replace('* This 词性标注器 does not support custom mapping.', '* 该词性标注器不支持自定义映射。')
+
+                # Flag translation as unfinished
+                unfinished = True
+
             if tr_hit:
                 # Do not replace parentheses in file type filters
                 if element_src.text not in TRS_FILE_TYPES:
@@ -360,8 +381,12 @@ for element_context in soup.select('context'):
                     # Remove whitespace between Chinese characters
                     tr = re.sub(r'(?<=[\u4E00-\u9FFF（）])\s+(?=[\u4E00-\u9FFF（）])', '', tr)
 
-                element_message.select_one('translation').string = tr
-                element_message.select_one('translation').attrs = {}
+                element_tr.string = tr
+
+                if unfinished:
+                    element_tr.attrs = {'type': 'unfinished'}
+                else:
+                    element_tr.attrs = {}
 
                 print(f'Auto-translated "{element_src.text}" into "{tr}".')
 
