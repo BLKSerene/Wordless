@@ -828,23 +828,6 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_info.layout().addLayout(layout_donating_via, 1, 0)
         self.wrapper_info.layout().addWidget(self.label_donating_via_img, 2, 0, Qt.AlignHCenter | Qt.AlignVCenter)
 
-        # Calculate height
-        donating_via_old = self.main.settings_custom['menu']['help']['donating']['donating_via']
-
-        self.combo_box_donating_via.setCurrentText('PayPal')
-        self.donating_via_changed()
-
-        height_donating_via_paypal = self.label_donating_via_img.sizeHint().height()
-        self.height_paypal = self.heightForWidth(self.width())
-
-        self.combo_box_donating_via.setCurrentText(self.tr('Alipay'))
-        self.donating_via_changed()
-
-        height_donating_via_alipay = self.label_donating_via_img.sizeHint().height()
-        self.height_alipay = self.heightForWidth(self.width()) + (height_donating_via_alipay - height_donating_via_paypal)
-
-        self.main.settings_custom['menu']['help']['donating']['donating_via'] = donating_via_old
-
         self.load_settings()
 
     def load_settings(self):
@@ -872,11 +855,9 @@ class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
                 f'''<img src="{wl_paths.get_path_img('donating_wechat_pay.png')}">'''
             )
 
-        if 'height_alipay' in self.__dict__:
-            if settings['donating_via'] == self.tr('PayPal'):
-                self.setFixedHeight(self.height_paypal)
-            elif settings['donating_via'] in [self.tr('Alipay'), self.tr('WeChat Pay')]:
-                self.setFixedHeight(self.height_alipay)
+        self.label_donating_via_img.adjustSize()
+        self.wrapper_info.adjustSize()
+        self.adjustSize()
 
         if is_windows or is_linux:
             self.move_to_center()
