@@ -104,11 +104,11 @@ If you publish work that uses Wordless, please cite as follows.
 
 APA (7th edition):
 
-<pre><code>Ye, L. (2022). <i>Wordless</i> (Version 3.0.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.1.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
 MLA (8th edition):
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 3.0.0, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>, version 3.1.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## License
 
