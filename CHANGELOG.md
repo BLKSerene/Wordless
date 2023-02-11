@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - ??/??/2023
+## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - 02/11/2023
 ### 🎉 New Features
 - Settings: Add global settings - encodings - Thai (TIS-620)
 - Settings: Add Settings - Figures - Network Graphs - Edge Label Settings - Label position / Rotate labels to lie parallel to edges / Label font weight / Label font color / Label opacity
@@ -62,6 +62,7 @@
 - Dependencies: Upgrade NetworkX to 3.0
 - Dependencies: Upgrade NLTK to 3.8.1
 - Dependencies: Upgrade NumPy to 1.24.2
+- Dependencies: Upgrade opencc-python to 0.1.7
 - Dependencies: Upgrade openpyxl to 3.1.0
 - Dependencies: Upgrade PyInstaller to 5.7.0
 - Dependencies: Upgrade pypdf (originally named PyPDF2) to 3.4.0
