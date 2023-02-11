@@ -104,11 +104,11 @@ Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 
 APA（第7版）：
 
-<pre><code>Ye, L. (2022). <i>Wordless</i> (Version 3.0.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.1.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
 MLA（第8版）：
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 3.0.0, 2022. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>, version 3.1.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## 許可
 
