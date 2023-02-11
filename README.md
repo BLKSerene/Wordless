@@ -65,17 +65,17 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 
 ## Download
 
-The latest version (**3.0.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.9 or later**, **Ubuntu 16.04 or later**, and **Debian 9 or later**, all **64-bit only**. Both Intel-based and M1-based Macs are supported.
+The latest version (**3.1.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, **Ubuntu 16.04 or later**, and **Debian 9 or later**, all **64-bit only**. Both Intel-based and M1-based Macs are supported.
 
 For a detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
 Release|Remarks
 -------|-------
-[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/3.0.0/wordless_3.0.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
-[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.0.0/wordless_3.0.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
-[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.0.0/wordless_3.0.0_linux.tar.gz)|1. Extract all files<br>2. Right-click **Wordless/Wordless.sh** and select **Run as a program** or run the shell script from **Terminal**<br>3. Type your sudo password in the prompted window and press Enter<br>4. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
+[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/3.1.0/wordless_3.1.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
+[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.1.0/wordless_3.1.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
+[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.1.0/wordless_3.1.0_linux.tar.gz)|1. Extract all files<br>2. Right-click **Wordless/Wordless.sh** and select **Run as a program** or run the shell script from **Terminal**<br>3. Type your sudo password in the prompted window and press Enter<br>4. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
 [Past Releases](https://github.com/BLKSerene/Wordless/releases)|Not recommended
-[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
+[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.1.0)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
 
 **Note 1:** It is recommended that the path to Wordless **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.<br>
 
