@@ -20,6 +20,9 @@
 
 ## [3.2.0](https://github.com/BLKSerene/Wordless/releases/tag/3.2.0) - ??/??/2023
 
+### 📌 Bugfixes
+- Work Area: Remove all invalid XML characters when exporting tables to Excel workbooks
+
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - 02/11/2023
 ### 🎉 New Features
 - Settings: Add global settings - encodings - Thai (TIS-620)
