@@ -649,13 +649,13 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                             # Left, Node, and Right
                             if col_item in [0, 1, 2]:
                                 cell_val = self.table.indexWidget(self.table.model().index(row_item, col_item)).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell_val = self.remove_invalid_xml_chars(cell_val)
                                 cell.value = cell_val
 
                                 self.style_cell_rich_text(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
                             else:
                                 cell_val = self.table.model().item(row_item, col_item).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell_val = self.remove_invalid_xml_chars(cell_val)
                                 cell.value = cell_val
 
                                 self.style_cell(cell, self.table.model().item(row_item, col_item))
@@ -681,13 +681,13 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
                             if col_item in [0, 1]:
                                 cell_val = self.table.model().item(row_item, col_item).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell_val = self.remove_invalid_xml_chars(cell_val)
                                 cell.value = cell_val
 
                                 self.style_cell(cell, self.table.model().item(row_item, col_item))
                             else:
                                 cell_val = self.table.indexWidget(self.table.model().index(row_item, col_item)).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell_val = self.remove_invalid_xml_chars(cell_val)
                                 cell.value = cell_val
 
                                 self.style_cell_rich_text(cell, self.table.indexWidget(self.table.model().index(row_item, col_item)))
@@ -712,7 +712,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                 cell = worksheet.cell(2 + row_cell, 1 + col_cell)
 
                                 cell_val = self.table.model().item(row_item, col_item).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell_val = self.remove_invalid_xml_chars(cell_val)
                                 cell.value = cell_val
 
                                 self.style_cell(cell, self.table.model().item(row_item, col_item))
@@ -743,7 +743,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                                 cell = worksheet.cell(2 + row_cell, 2 + col_cell)
 
                                 cell_val = self.table.model().item(row_item, col_item).text()
-                                cell_val = self.remove_illegal_chars(cell_val)
+                                cell_val = self.remove_invalid_xml_chars(cell_val)
                                 cell.value = cell_val
 
                                 self.style_cell(cell, self.table.model().item(row_item, col_item))
@@ -836,9 +836,11 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
         self.worker_done.emit(exp_success, self.file_path)
 
-    # Remove illegal characters
-    def remove_illegal_chars(self, text):
-        return re.sub(openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE, '', text)
+    # Remove invalid XML characters
+    def remove_invalid_xml_chars(self, text):
+        # openpyxl.cell.cell.ILLEGAL_CHARACTERS_RE is not complete
+        # Reference: https://www.w3.org/TR/xml/#charsets
+        return re.sub(r'[^\u0009\u000A\u000D\u0020-\uD7FF\uE000-\uFFFD\U00010000-\U0010FFFF]+', '', text)
 
     def style_header(self, cell):
         cell.font = openpyxl.styles.Font(
