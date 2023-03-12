@@ -448,7 +448,8 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
                 HEADERS_COUNTS[i]
                 for i in range(1, len(HEADERS_COUNTS), 2)
             ],
-            headers_cum = HEADERS_COUNTS,
+            # Excluding count of types
+            headers_cum = HEADERS_COUNTS[:8] + HEADERS_COUNTS[10:],
             profiler_tab = 'counts'
         )
 
