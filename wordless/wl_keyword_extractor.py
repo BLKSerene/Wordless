@@ -342,7 +342,7 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             headers_pct = [
                 _tr('Wl_Table_Keyword_Extractor', 'Number of\nFiles Found %')
             ],
-            sorting_enabled = True
+            enable_sorting = True
         )
 
         self.main.wl_file_area_ref.table_files.model().itemChanged.connect(self.file_changed)

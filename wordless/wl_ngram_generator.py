@@ -548,7 +548,7 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             headers_pct = [
                 _tr('Wl_Table_Ngram_Generator', 'Number of\nFiles Found %')
             ],
-            sorting_enabled = True
+            enable_sorting = True
         )
 
     @wl_misc.log_timing
