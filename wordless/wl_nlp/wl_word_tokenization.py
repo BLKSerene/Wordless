@@ -200,6 +200,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                                 break
 
                         tokens_multilevel[-1].append(tokens)
+                # Korean
+                elif word_tokenizer == 'python_mecab_ko_mecab':
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = 'kor')
+
+                    for sentence in sentences:
+                        tokens_multilevel[-1].append(main.python_mecab_ko_mecab.morphs(sentence))
                 # Thai
                 elif word_tokenizer.startswith('pythainlp_'):
                     # Preserve sentence boundaries

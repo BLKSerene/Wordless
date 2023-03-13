@@ -24,6 +24,7 @@ lingua-language-detector
 nltk
 pyphen
 pythainlp
+python-mecab-ko
 sacremoses
 simplemma
 textblob
@@ -41,7 +42,7 @@ spacy-pkuseg
 
 ## SudachiPy
 sudachipy
-sudachidict_core
+sudachidict-core
 
 # Micellaneous
 beautifulsoup4

@@ -24,6 +24,7 @@ from wordless.wl_tagsets import (
     wl_tagset_universal,
     wl_tagset_eng_penn_treebank,
     wl_tagset_jpn_unidic,
+    wl_tagset_kor_mecab,
     wl_tagset_rus_open_corpora,
     wl_tagset_rus_russian_national_corpus,
     wl_tagset_tha_lst20,
@@ -1250,6 +1251,7 @@ def init_settings_default(main):
                 'jpn': 'spacy_jpn',
                 'kan': 'sacremoses_moses',
                 'kir': 'spacy_kir',
+                'kor': 'python_mecab_ko_mecab',
                 'lat': 'spacy_lat',
                 'lav': 'sacremoses_moses',
                 'lij': 'spacy_lij',
@@ -1380,6 +1382,7 @@ def init_settings_default(main):
                     'ell': 'spacy_ell',
                     'ita': 'spacy_ita',
                     'jpn': 'spacy_jpn',
+                    'kor': 'python_mecab_ko_mecab',
                     'lit': 'spacy_lit',
                     'mkd': 'spacy_mkd',
                     'nob': 'spacy_nob',
@@ -1429,6 +1432,10 @@ def init_settings_default(main):
 
                     'jpn': {
                         'sudachipy_jpn': wl_tagset_jpn_unidic.MAPPINGS
+                    },
+
+                    'kor': {
+                        'python_mecab_ko_mecab': wl_tagset_kor_mecab.MAPPINGS
                     },
 
                     'rus': {
