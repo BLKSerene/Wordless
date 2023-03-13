@@ -18,7 +18,10 @@
 
 from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QApplication, QDialog, QPushButton, QWidget
+from PyQt5.QtWidgets import (
+    QApplication, QDialog, QPlainTextEdit, QPushButton, QTextEdit,
+    QWidget
+)
 
 from wordless.wl_widgets import wl_buttons
 
@@ -34,6 +37,7 @@ class Wl_Dialog(QDialog):
         if resizable:
             if not width:
                 width = self.size().width()
+
             if not height:
                 height = self.size().height()
 
@@ -41,6 +45,7 @@ class Wl_Dialog(QDialog):
         else:
             if width:
                 self.setFixedWidth(width)
+
             if height:
                 self.setFixedHeight(height)
 
@@ -96,11 +101,11 @@ class Wl_Dialog_Frameless(Wl_Dialog):
         ''')
 
 class Wl_Dialog_Info(Wl_Dialog):
-    def __init__(self, main, title, width = 0, height = 0, no_buttons = False):
+    def __init__(self, main, title, width = 0, height = 0, resizable = False, no_buttons = False):
         # Avoid circular imports
         from wordless.wl_widgets import wl_layouts
 
-        super().__init__(main, title, width, height)
+        super().__init__(main, title, width, height, resizable)
 
         self.wrapper_info = QWidget(self)
 
@@ -133,6 +138,50 @@ class Wl_Dialog_Info(Wl_Dialog):
 
         self.layout().setRowStretch(0, 1)
         self.layout().setContentsMargins(0, 0, 0, 0)
+
+class Wl_Dialog_Info_Copy(Wl_Dialog_Info):
+    def __init__(self, main, title, width = 0, height = 0, resizable = False, is_plain_text = False):
+        super().__init__(
+            main, title, width, height, resizable,
+            no_buttons = True
+        )
+
+        self.is_plain_text = is_plain_text
+
+        if is_plain_text:
+            self.text_edit_info = QPlainTextEdit(self)
+        else:
+            self.text_edit_info = QTextEdit(self)
+
+        self.button_copy = QPushButton(self.tr('Copy'), self)
+        self.button_close = QPushButton(self.tr('Close'), self)
+
+        self.text_edit_info.setReadOnly(True)
+
+        self.button_copy.clicked.connect(self.copy)
+        self.button_close.clicked.connect(self.accept)
+
+        self.wrapper_buttons.layout().addWidget(self.button_copy, 0, 1, Qt.AlignLeft)
+        self.wrapper_buttons.layout().addWidget(self.button_close, 0, 2, Qt.AlignRight)
+
+        self.wrapper_buttons.layout().setColumnStretch(0, 1)
+        self.wrapper_buttons.layout().setColumnStretch(1, 1)
+        self.wrapper_buttons.layout().setColumnStretch(2, 1)
+        self.wrapper_buttons.layout().setColumnStretch(3, 1)
+
+    def copy(self):
+        self.text_edit_info.setFocus()
+        self.text_edit_info.selectAll()
+        self.text_edit_info.copy()
+
+    def get_info(self):
+        return self.text_edit_info.toPlainText()
+
+    def set_info(self, text):
+        if self.is_plain_text:
+            self.text_edit_info.setPlainText(text)
+        else:
+            self.text_edit_info.setHtml(text)
 
 class Wl_Dialog_Settings(Wl_Dialog_Info):
     def __init__(self, main, title, width = 0, height = 0):
