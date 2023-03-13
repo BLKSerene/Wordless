@@ -530,7 +530,7 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             headers_pct = [
                 _tr('Wl_Table_Colligation_Extractor', 'Number of\nFiles Found %')
             ],
-            sorting_enabled = True
+            enable_sorting = True
         )
 
         self.wrapper = parent
