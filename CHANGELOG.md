@@ -24,6 +24,7 @@
 
 ### ✨ Improvements
 - Misc: Add fatal error dialog - Copy
+- Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Word documents
 
 ### 📌 Bugfixes
 - Work Area: Remove all invalid XML characters when exporting tables to Excel workbooks
@@ -47,6 +48,7 @@
 - Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measures of Dispersion / Measure of Adjusted Frequency - Average Logarithmic Distance / Average Reduced Frequency / Average Waiting Time
 
 ### ✨ Improvements
+- Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Excel workbooks
 - File Area: Add checkbox in table header to select/deselect all files
 - File Area: Disallow empty file names
 - File Area: Remove underscores in tokenized Vietnamese files
@@ -567,4 +569,4 @@
 
 ## [1.0.0](https://github.com/BLKSerene/Wordless/releases/tag/1.0.0) - 03/20/2019
 ### 🎉 New Features
-- Release Wordless 1.0.0
+- First release
