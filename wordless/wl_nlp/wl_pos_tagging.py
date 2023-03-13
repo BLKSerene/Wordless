@@ -228,6 +228,9 @@ def wl_pos_tag_text(main, text, lang, pos_tagger):
             (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
             for token in main.sudachipy_word_tokenizer.tokenize(text)
         ]
+    # Korean
+    elif pos_tagger == 'python_mecab_ko_mecab':
+        tokens_tagged = main.python_mecab_ko_mecab.pos(text)
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy3_morphological_analyzer':
         if lang == 'rus':
@@ -283,6 +286,9 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
             (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
             for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens))
         ]
+    # Korean
+    elif pos_tagger == 'python_mecab_ko_mecab':
+        tokens_tagged = wl_pos_tag_text(main, ' '.join(tokens), lang = 'kor', pos_tagger = 'python_mecab_ko_mecab')
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy3_morphological_analyzer':
         if lang == 'rus':
