@@ -21,6 +21,7 @@
 ## [3.2.0](https://github.com/BLKSerene/Wordless/releases/tag/3.2.0) - ??/??/2023
 ### 🎉 New Features
 - Settings: Add Settings - Figures - Network Graphs - Advanced Settings - Layout - Spiral
+- Utils: Add python-mecab-ko's MeCab
 
 ### ✨ Improvements
 - Misc: Add fatal error dialog - Copy
@@ -29,6 +30,9 @@
 ### 📌 Bugfixes
 - Work Area: Remove all invalid XML characters when exporting tables to Excel workbooks
 - Work Area: Fix Parallel Concordancer - Search Settings - Search for additions and deletions
+
+### ⏫ Dependency Changes
+- Dependencies: Add python-mecab-ko
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - 02/11/2023
 ### 🎉 New Features
@@ -48,10 +52,10 @@
 - Work Area: Add Wordlist/N-gram Generator - Generation Settings - Measures of Dispersion / Measure of Adjusted Frequency - Average Logarithmic Distance / Average Reduced Frequency / Average Waiting Time
 
 ### ✨ Improvements
-- Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Excel workbooks
 - File Area: Add checkbox in table header to select/deselect all files
 - File Area: Disallow empty file names
 - File Area: Remove underscores in tokenized Vietnamese files
+- Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Excel workbooks
 - Utils: Speed up n-gram/skip-gram generation
 
 ### 📌 Bugfixes
