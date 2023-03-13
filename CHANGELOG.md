@@ -22,6 +22,7 @@
 
 ### 📌 Bugfixes
 - Work Area: Remove all invalid XML characters when exporting tables to Excel workbooks
+- Work Area: Fix Parallel Concordancer - Search Settings - Search for additions and deletions
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - 02/11/2023
 ### 🎉 New Features

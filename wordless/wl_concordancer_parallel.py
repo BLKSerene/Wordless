@@ -276,7 +276,8 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                 title = self.tr('Missing Search Terms'),
                 text = self.tr('''
                     <div>You have not specified any search terms. Do you want to search for additions and deletions?</div>
-                ''')
+                '''),
+                default_to_yes = True
             )
 
         if search_additions_deletions:
@@ -344,20 +345,22 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
             len_files = len(files)
 
             # Parallel Unit No.
-            for i, file in enumerate(files):
+            for file in files:
                 text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, text,
                     token_settings = settings['token_settings'],
                     preserve_blank_lines = True
                 )
-                tokens = text.get_tokens_flat()
-                offsets_paras, _, _ = text.get_offsets()
 
-                offsets_paras_files.append(offsets_paras)
-
+                offsets_paras_files.append(text.get_offsets()[0])
                 # Save text
                 texts.append(text)
+
+            len_max_parallel_units = max((len(offsets) for offsets in offsets_paras_files))
+
+            for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
+                tokens = text.get_tokens_flat()
 
                 if (
                     not settings['search_settings']['multi_search_mode'] and settings['search_settings']['search_term']
@@ -408,11 +411,15 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                                 parallel_units[parallel_unit_no][i] = ngram
                 # Search for additions & deletions
                 else:
-                    for i, para in enumerate(text.tokens_multilevel):
+                    for j, para in enumerate(text.tokens_multilevel):
                         if para == []:
-                            parallel_units[i] = [[] for _ in range(len_files)]
+                            parallel_units[j + 1] = [[] for _ in range(len_files)]
 
-            len_max_parallel_units = max((len(offsets) for offsets in offsets_paras_files))
+                    # Empty lines at the end of files
+                    if len(offsets_paras) < len_max_parallel_units:
+                        for j in range(len(offsets_paras) + 1, len_max_parallel_units + 1):
+                            parallel_units[j] = [[] for _ in range(len_files)]
+
             node_color = self.main.settings_custom['tables']['parallel_concordancer']['color_settings']['search_term_color']
 
             for i, (text, offsets_paras) in enumerate(zip(texts, offsets_paras_files)):
@@ -441,17 +448,11 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                         # Highlight node if found
                         if node:
                             len_node = len(node)
-                            len_parallel_unit_raw = len(parallel_unit_raw)
-                            j = 0
 
-                            while j < len_parallel_unit_raw:
-                                if parallel_unit_raw[j : j + len_node] == list(node):
-                                    parallel_unit_raw[j] = f'<span style="color: {node_color}; font-weight: bold;">' + parallel_unit_raw[j]
+                            for j, ngram in enumerate(wl_nlp_utils.ngrams(parallel_unit_search, len_node)):
+                                if ngram == tuple(node):
+                                    parallel_unit_raw[j] = f'<span style="color: {node_color}; font-weight: bold;">{parallel_unit_raw[j]}'
                                     parallel_unit_raw[j + len_node - 1] += '</span>'
-
-                                    j += len_node
-                                else:
-                                    j += 1
                     else:
                         parallel_unit_raw = []
                         parallel_unit_search = []

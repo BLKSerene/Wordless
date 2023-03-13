@@ -53,7 +53,12 @@ class Wl_Msg_Box_Warning(Wl_Msg_Box):
             text = text
         )
 
-def wl_msg_box_question(main, title, text):
+def wl_msg_box_question(main, title, text, default_to_yes = False):
+    if default_to_yes:
+        default_button = QMessageBox.Yes
+    else:
+        default_button = QMessageBox.No
+
     reply = QMessageBox.question(
         main,
         title,
@@ -63,8 +68,8 @@ def wl_msg_box_question(main, title, text):
                 {text}
             </body>
         ''',
-        QMessageBox.Yes | QMessageBox.No,
-        QMessageBox.No
+        buttons = QMessageBox.Yes | QMessageBox.No,
+        defaultButton = default_button
     )
 
     return bool(reply == QMessageBox.Yes)
