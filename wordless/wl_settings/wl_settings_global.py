@@ -435,6 +435,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'PyThaiNLP - Maximum matching + TCC'): 'pythainlp_max_matching_tcc',
                 'PyThaiNLP - NERCut': 'pythainlp_nercut',
 
+                _tr('init_settings_global', 'python-mecab-ko - MeCab'): 'python_mecab_ko_mecab',
                 _tr('init_settings_global', 'Sacremoses - Moses tokenizer'): 'sacremoses_moses',
 
                 _tr('init_settings_global', 'spaCy - Afrikaans word tokenizer'): 'spacy_afr',
@@ -575,6 +576,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'NLTK - Russian perceptron part-of-speech tagger'): 'nltk_perceptron_rus',
 
                 _tr('init_settings_global', 'pymorphy3 - Morphological analyzer'): 'pymorphy3_morphological_analyzer',
+                _tr('init_settings_global', 'python-mecab-ko - MeCab'): 'python_mecab_ko_mecab',
 
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (LST20)'): 'pythainlp_perceptron_lst20',
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (ORCHID)'): 'pythainlp_perceptron_orchid',
@@ -604,13 +606,11 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Ukrainian part-of-speech tagger'): 'spacy_ukr',
 
                 _tr('init_settings_global', 'SudachiPy - Japanese part-of-speech tagger'): 'sudachipy_jpn',
-
                 _tr('init_settings_global', 'Underthesea - Vietnamese part-of-speech tagger'): 'underthesea_vie'
             },
 
             'lemmatizers': {
                 _tr('init_settings_global', 'botok - Tibetan lemmatizer'): 'botok_bod',
-
                 _tr('init_settings_global', 'NLTK - WordNet lemmatizer'): 'nltk_wordnet',
                 _tr('init_settings_global', 'pymorphy3 - Morphological analyzer'): 'pymorphy3_morphological_analyzer',
 
@@ -1162,6 +1162,7 @@ def init_settings_global():
             ],
 
             'kir': ['spacy_kir'],
+            'kor': ['python_mecab_ko_mecab'],
 
             'lat': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1472,6 +1473,7 @@ def init_settings_global():
                 'sudachipy_jpn'
             ],
 
+            'kor': ['python_mecab_ko_mecab'],
             'lit': ['spacy_lit'],
             'mkd': ['spacy_mkd'],
             'nob': ['spacy_nob'],
