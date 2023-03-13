@@ -767,46 +767,31 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                     outputs = []
 
                     for i, row in enumerate(self.rows_to_exp):
-                        output = []
+                        para_text = []
+
+                        for col in range(3):
+                            para_text.append(self.table.indexWidget(self.table.model().index(row, col)).text())
 
                         # Zapping
                         if settings_concordancer['zapping']:
-                            # Left & Right
-                            for col in [0, 2]:
-                                if self.table.model().item(row, col):
-                                    cell_text = self.table.model().item(row, col).text()
-                                else:
-                                    cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                    cell_text = wl_nlp_utils.html_to_text(cell_text)
-
-                                output.append(cell_text)
-
                             # Node
-                            output.insert(-1, settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with'])
+                            para_text[1] = settings_concordancer['placeholder'] * settings_concordancer['replace_keywords_with']
 
-                            if settings_concordancer['add_line_nums']:
-                                output.insert(0, f'{i + 1}. ')
-                        else:
-                            for col in range(3):
-                                cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                                cell_text = wl_nlp_utils.html_to_text(cell_text)
+                        outputs.append([' '.join(para_text), self.table.indexWidget(self.table.model().index(row, col))])
 
-                                output.append(cell_text)
+                    if settings_concordancer['zapping']:
+                        # Randomize outputs
+                        if settings_concordancer['randomize_outputs']:
+                            random.shuffle(outputs)
 
-                        outputs.append(output)
-
-                    # Randomize outputs
-                    if settings_concordancer['zapping'] and settings_concordancer['randomize_outputs']:
-                        random.shuffle(outputs)
-
-                        # Re-order line numbers
+                        # Assign line numbers
                         if settings_concordancer['add_line_nums']:
                             for i, _ in enumerate(outputs):
-                                outputs[i][0] = f'{i + 1}. '
+                                outputs[i][0] = f'{i + 1}. ' + outputs[i][0]
 
-                    for i, para in enumerate(outputs):
-                        para = doc.add_paragraph(' '.join(para))
-                        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
+                    for i, (para_text, item) in enumerate(outputs):
+                        para = self.add_para(doc)
+                        self.style_para_rich_text(para, para_text, item)
 
                         self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
 
@@ -815,16 +800,17 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
                 elif self.table.tab == 'concordancer_parallel':
                     for i, row in enumerate(self.rows_to_exp):
                         for col in range(2, self.table.model().columnCount()):
-                            cell_text = self.table.indexWidget(self.table.model().index(row, col)).text()
-                            cell_text = wl_nlp_utils.html_to_text(cell_text)
+                            para_text = self.table.indexWidget(self.table.model().index(row, col)).text()
 
-                            para = doc.add_paragraph(cell_text)
-                            para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
+                            para = self.add_para(doc)
+                            self.style_para_rich_text(para, para_text, self.table.indexWidget(self.table.model().index(row, col)))
 
-                        doc.add_paragraph('')
+                        self.add_para(doc)
 
                         self.progress_updated.emit(self.tr('Exporting table... ({} / {})').format(i + 1, len_rows))
 
+                # Add the last empty paragraph
+                self.add_para(doc)
                 doc.save(self.file_path)
 
             self.main.settings_custom['general']['exp']['tables']['default_path'] = wl_paths.get_normalized_dir(self.file_path)
@@ -1023,6 +1009,68 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
 
         self.style_cell_alignment(cell, item)
 
+    def add_para(self, doc):
+        para = doc.add_paragraph()
+        para.alignment = docx.enum.text.WD_ALIGN_PARAGRAPH.JUSTIFY # pylint: disable=no-member
+
+        self.style_para_spacing(para)
+
+        return para
+
+    def style_para_rich_text(self, para, para_text, item):
+        font_family = item.font().family()
+
+        if font_family != 'Consolas':
+            font_family = self.main.settings_custom['general']['ui_settings']['font_family']
+
+        # Trick the parser to force it always wrap HTML with <html><body><p></p></body></html>
+        soup = bs4.BeautifulSoup('&nbsp;' + para_text, features = 'lxml')
+
+        for html in soup.body.p.contents:
+            if isinstance(html, bs4.element.Tag):
+                text = html.text.strip()
+            else:
+                text = html.strip()
+
+            if text:
+                if para.text:
+                    para.add_run(' ')
+
+                run = para.add_run(text)
+
+                run.font.name = self.main.settings_custom['general']['ui_settings']['font_family']
+                run.font.size = docx.shared.Pt(self.main.settings_custom['general']['ui_settings']['font_size'])
+
+                if isinstance(html, bs4.element.Tag) and html.has_attr('style'):
+                    style = html['style']
+
+                    re_color = re.search(r'(?<=color: #)([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(?=;)', style)
+
+                    if re_color:
+                        color = re_color.group()
+
+                        # 3-digit color shorthand
+                        if len(color) == 3:
+                            color = color[0] * 2 + color[1] * 2 + color[2] * 2
+                    else:
+                        color = '000000'
+
+                    bold = 'font-weight: bold;' in style
+                    italic = 'font-style: italic;' in style
+
+                    run.bold = bold
+                    run.italic = italic
+                    run.font.color.rgb = docx.shared.RGBColor.from_string(color)
+                else:
+                    run.font.color.rgb = docx.shared.RGBColor.from_string('000000')
+
+        self.style_para_spacing(para)
+
+    def style_para_spacing(self, para):
+        para.paragraph_format.space_before = docx.shared.Pt(0)
+        para.paragraph_format.space_after = docx.shared.Pt(0)
+        para.paragraph_format.line_spacing = 1.5
+
 class Wl_Table_Add_Ins_Del_Clr(Wl_Table):
     def __init__(self, parent, headers, col_edit = None):
         super().__init__(
@@ -1100,8 +1148,7 @@ class Wl_Table_Data(Wl_Table):
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cum = None,
         cols_breakdown_file = None, cols_breakdown_span_position = None,
-        sorting_enabled = False,
-        generate_fig = True
+        enable_sorting = False, generate_fig = True
     ):
         super().__init__(
             main, headers, header_orientation,
@@ -1118,9 +1165,9 @@ class Wl_Table_Data(Wl_Table):
         self.cols_breakdown_file_old = cols_breakdown_file or {}
         self.cols_breakdown_span_position_old = cols_breakdown_span_position or {}
 
-        self.sorting_enabled = sorting_enabled
+        self.enable_sorting = enable_sorting
 
-        if sorting_enabled:
+        if enable_sorting:
             self.setSortingEnabled(True)
 
             if header_orientation == 'hor':
@@ -1543,7 +1590,7 @@ class Wl_Table_Data(Wl_Table):
         precision_pcts = self.main.settings_custom['tables']['precision_settings']['precision_pcts']
 
         # Boost performance
-        if self.sorting_enabled:
+        if self.enable_sorting:
             self.sortByColumn(self.horizontalHeader().sortIndicatorSection(), self.horizontalHeader().sortIndicatorOrder())
 
         self.disable_updates()
@@ -1639,7 +1686,7 @@ class Wl_Table_Data(Wl_Table):
 
         self.enable_updates()
 
-        if self.sorting_enabled:
+        if self.enable_sorting:
             self.setSortingEnabled(True)
 
     def toggle_breakdown_file(self):
@@ -1800,8 +1847,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cum = None,
         cols_breakdown_file = None, cols_breakdown_span_position = None,
-        sorting_enabled = False,
-        generate_fig = True
+        enable_sorting = False, generate_fig = True
     ):
         super().__init__(
             main, tab,
@@ -1809,8 +1855,7 @@ class Wl_Table_Data_Search(Wl_Table_Data):
             headers_int, headers_float,
             headers_pct, headers_cum,
             cols_breakdown_file, cols_breakdown_span_position,
-            sorting_enabled,
-            generate_fig
+            enable_sorting, generate_fig
         )
 
         self.model().itemChanged.connect(self.results_changed)
@@ -1848,8 +1893,7 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cum = None,
         cols_breakdown_file = None, cols_breakdown_span_position = None,
-        sorting_enabled = False,
-        generate_fig = True
+        enable_sorting = False, generate_fig = True
     ):
         super().__init__(
             main, tab,
@@ -1857,8 +1901,7 @@ class Wl_Table_Data_Sort_Search(Wl_Table_Data):
             headers_int, headers_float,
             headers_pct, headers_cum,
             cols_breakdown_file, cols_breakdown_span_position,
-            sorting_enabled,
-            generate_fig
+            enable_sorting, generate_fig
         )
 
         self.model().itemChanged.connect(self.results_changed)
@@ -1906,8 +1949,7 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
         headers_int = None, headers_float = None,
         headers_pct = None, headers_cum = None,
         cols_breakdown_file = None, cols_breakdown_span_position = None,
-        sorting_enabled = False,
-        generate_fig = True
+        enable_sorting = False, generate_fig = True
     ):
         super().__init__(
             main, tab,
@@ -1915,8 +1957,7 @@ class Wl_Table_Data_Filter_Search(Wl_Table_Data):
             headers_int, headers_float,
             headers_pct, headers_cum,
             cols_breakdown_file, cols_breakdown_span_position,
-            sorting_enabled,
-            generate_fig
+            enable_sorting, generate_fig
         )
 
         self.model().itemChanged.connect(self.results_changed)

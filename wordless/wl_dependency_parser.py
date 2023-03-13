@@ -324,7 +324,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
             headers_pct = [
                 _tr('Wl_Table_Dependency_Parser', 'Sentence No. %')
             ],
-            sorting_enabled = True
+            enable_sorting = True
         )
 
         self.selectionModel().selectionChanged.connect(self.selection_changed_generate_fig)

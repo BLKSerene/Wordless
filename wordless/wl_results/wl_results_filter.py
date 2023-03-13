@@ -115,18 +115,18 @@ class Wl_Dialog_Results_Filter(wl_dialogs.Wl_Dialog):
 
     @wl_misc.log_timing
     def filter_results(self):
-        def update_gui():
-            self.table.filter_table()
-
-            self.main.statusBar().showMessage(_tr('wl_results_filter', 'The results in the table has been successfully filtered.'))
-
         worker_filter_results = self.Worker_Filter_Results(
             self.main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = _tr('wl_results_filter', 'Filtering results...')),
-            update_gui = update_gui,
+            update_gui = self.update_gui,
             dialog = self
         )
         wl_threading.Wl_Thread(worker_filter_results).start_worker()
+
+    def update_gui(self):
+        self.table.filter_table()
+
+        self.main.statusBar().showMessage(_tr('wl_results_filter', 'The results in the table has been successfully filtered.'))
 
 class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
     def __init__(self, main, tab, table):
