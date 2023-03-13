@@ -22,6 +22,9 @@
 ### 🎉 New Features
 - Settings: Add Settings - Figures - Network Graphs - Advanced Settings - Layout - Spiral
 
+### ✨ Improvements
+- Misc: Add fatal error dialog - Copy
+
 ### 📌 Bugfixes
 - Work Area: Remove all invalid XML characters when exporting tables to Excel workbooks
 - Work Area: Fix Parallel Concordancer - Search Settings - Search for additions and deletions
@@ -508,7 +511,6 @@
 - Work Area: Add Overview - Count of Clauses / Clause Length / Paragraph/Sentence/Token Length (Standard Deviation)
 
 ### ✨ Improvements
-- Main Window: Check file permissions when exporting tables
 - Utils: Update part-of-speech tag mappings for pybo's Tibetan part-of-speech tagger
 - Utils: Update pybo's Tibetan tokenizers, part-of-speech tagger, and lemmatizer
 - Utils: Update PyThaiNLP's Thai stop word list
@@ -545,7 +547,7 @@
 - Settings: Add Settings - General - Font Settings
 
 ### ✨ Improvements
-- Main Window: Disable mouse wheel for combo boxes and spin boxes when they are not focused
+- Misc: Disable mouse wheel events for combo boxes and spin boxes when they are not focused
 - Utils: Update spaCy's sentencizer
 - Utils: Update part-of-speech tag mappings for spaCy's English part-of-speech tagger
 

@@ -67,7 +67,7 @@ class Wl_Dialog_Clr_Table(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = _tr('WL_Dialog_Clear_Table', 'Clear Table'),
-            width = 420,
+            width = 450,
             no_buttons = True
         )
 
