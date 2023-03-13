@@ -81,7 +81,8 @@ NETWORKX_LAYOUTS = {
     _tr('wl_settings_figs', 'Random'): networkx.random_layout,
     _tr('wl_settings_figs', 'Shell'): networkx.shell_layout,
     _tr('wl_settings_figs', 'Spring'): networkx.spring_layout,
-    _tr('wl_settings_figs', 'Spectral'): networkx.spectral_layout
+    _tr('wl_settings_figs', 'Spectral'): networkx.spectral_layout,
+    _tr('wl_settings_figs', 'Spiral'): networkx.spiral_layout
 }
 
 # Figures - Line Charts
