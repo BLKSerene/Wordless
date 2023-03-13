@@ -17,34 +17,34 @@
 # ----------------------------------------------------------------------
 
 from PyQt5.QtCore import QCoreApplication, Qt
-from PyQt5.QtWidgets import QPushButton, QTextEdit
+from PyQt5.QtWidgets import QPushButton
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_widgets import wl_labels, wl_tables
 
 _tr = QCoreApplication.translate
 
-class Wl_Dialog_Err_Fatal(wl_dialogs.Wl_Dialog_Err):
+class Wl_Dialog_Err_Fatal(wl_dialogs.Wl_Dialog_Err, wl_dialogs.Wl_Dialog_Info_Copy):
     def __init__(self, main, err_msg):
         super().__init__(
             main,
-            title = _tr('Wl_Dialog_Err_Fatal', 'Fatal Error'),
-            width = 580, height = 260
+            title = _tr('wl_dialogs_errs', 'Fatal Error'),
+            width = 550,
+            height = 300,
+            resizable = True
         )
 
         self.label_err_msg = wl_labels.Wl_Label_Dialog(
             self.tr('''
-                <div>A fatal error has occurred, please <b>contact the author for support</b> by emailing to {}!</div>
+                <div>A fatal error has occurred, please <b>send the following error messages</b> to {} in order to <b>contact the author for support</b>!</div>
             ''').format(self.main.email_html),
             self
         )
-        self.text_edit_err_msg = QTextEdit(self)
 
-        self.text_edit_err_msg.setPlainText(err_msg)
-        self.text_edit_err_msg.setReadOnly(True)
+        self.text_edit_info.setPlainText(err_msg)
 
         self.wrapper_info.layout().addWidget(self.label_err_msg, 0, 0)
-        self.wrapper_info.layout().addWidget(self.text_edit_err_msg, 1, 0)
+        self.wrapper_info.layout().addWidget(self.text_edit_info, 1, 0)
 
 class Wl_Dialog_Err_Files(wl_dialogs.Wl_Dialog_Err):
     def __init__(self, main, title):

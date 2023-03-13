@@ -39,8 +39,7 @@ from PyQt5.QtCore import pyqtSignal, QCoreApplication, QObject, Qt, QTranslator
 from PyQt5.QtGui import QFont, QIcon, QKeySequence, QPixmap, QStandardItem
 from PyQt5.QtWidgets import (
     QActionGroup, QApplication, QCheckBox, QDialog, QLabel,
-    QMainWindow, QPushButton, QSplashScreen, QTabWidget, QTextEdit,
-    QWidget
+    QMainWindow, QPushButton, QSplashScreen, QTabWidget, QWidget
 )
 import pythainlp
 import spacy_pkuseg
@@ -154,8 +153,6 @@ class Wl_Dialog_Confirm_Exit(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_buttons.layout().setColumnStretch(1, 1)
 
         self.load_settings()
-
-        self.set_fixed_height()
 
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['general']['misc_settings'])
@@ -708,13 +705,14 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_info.layout().addWidget(self.label_need_help, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_need_help, 1, 0)
 
-class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
+class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
     def __init__(self, main):
         super().__init__(
             main,
             title = _tr('Wl_Dialog_Citing', 'Citing'),
             width = 500,
-            no_buttons = True
+            height = 300,
+            resizable = True
         )
 
         self.label_citing = wl_labels.Wl_Label_Dialog(
@@ -728,45 +726,22 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
 
         self.label_select_citation_sys = QLabel(self.tr('Select citation system:'), self)
         self.combo_box_select_citation_sys = wl_boxes.Wl_Combo_Box(self)
-        self.text_edit_citing = QTextEdit(self)
-
-        self.button_copy = QPushButton(self.tr('Copy'), self)
-        self.button_close = QPushButton(self.tr('Close'), self)
 
         self.combo_box_select_citation_sys.addItems([
             self.tr('APA (7th edition)'),
             self.tr('MLA (8th edition)')
         ])
 
-        self.text_edit_citing.setFixedHeight(100)
-        self.text_edit_citing.setReadOnly(True)
-
         self.combo_box_select_citation_sys.currentTextChanged.connect(self.select_citation_sys_changed)
 
-        self.button_copy.clicked.connect(self.copy)
-        self.button_close.clicked.connect(self.accept)
-
-        layout_citation_sys = wl_layouts.Wl_Layout()
-        layout_citation_sys.addWidget(self.label_select_citation_sys, 0, 0)
-        layout_citation_sys.addWidget(self.combo_box_select_citation_sys, 0, 1)
-
-        layout_citation_sys.setColumnStretch(2, 1)
-
         self.wrapper_info.layout().addWidget(self.label_citing, 0, 0, 1, 2)
-        self.wrapper_info.layout().addLayout(layout_citation_sys, 1, 0, 1, 2)
-        self.wrapper_info.layout().addWidget(self.text_edit_citing, 2, 0, 1, 2)
+        self.wrapper_info.layout().addWidget(self.label_select_citation_sys, 1, 0)
+        self.wrapper_info.layout().addWidget(self.combo_box_select_citation_sys, 1, 1)
+        self.wrapper_info.layout().addWidget(self.text_edit_info, 2, 0, 1, 2)
 
-        self.wrapper_buttons.layout().addWidget(self.button_copy, 0, 1, Qt.AlignLeft)
-        self.wrapper_buttons.layout().addWidget(self.button_close, 0, 2, Qt.AlignRight)
-
-        self.wrapper_buttons.layout().setColumnStretch(0, 1)
-        self.wrapper_buttons.layout().setColumnStretch(1, 1)
-        self.wrapper_buttons.layout().setColumnStretch(2, 1)
-        self.wrapper_buttons.layout().setColumnStretch(3, 1)
+        self.wrapper_info.layout().setColumnStretch(1, 1)
 
         self.load_settings()
-
-        self.set_fixed_height()
 
     def load_settings(self):
         settings = copy.deepcopy(self.main.settings_custom['menu']['help']['citing'])
@@ -781,14 +756,13 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info):
         settings['select_citation_sys'] = self.combo_box_select_citation_sys.currentText()
 
         if settings['select_citation_sys'].startswith('APA'):
-            self.text_edit_citing.setHtml(f'Ye, L. (2023). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless')
+            self.set_info(
+                f'Ye, L. (2023). <i>Wordless</i> (Version {self.main.ver}) [Computer software]. Github. https://github.com/BLKSerene/Wordless'
+            )
         elif settings['select_citation_sys'].startswith('MLA'):
-            self.text_edit_citing.setHtml(f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.')
-
-    def copy(self):
-        self.text_edit_citing.setFocus()
-        self.text_edit_citing.selectAll()
-        self.text_edit_citing.copy()
+            self.set_info(
+                f'Ye Lei. <i>Wordless</i>, version {self.main.ver}, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.'
+            )
 
 class Wl_Dialog_Donating(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
@@ -867,7 +841,9 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = _tr('Wl_Dialog_Acks', 'Acknowledgments'),
-            width = 700
+            width = 700,
+            height = 600,
+            resizable = True
         )
 
         # Load acknowledgments
@@ -903,9 +879,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
             ]
         )
 
-        self.table_acks.setFixedHeight(400)
         self.table_acks.model().setRowCount(len(acks))
-
         self.table_acks.disable_updates()
 
         for i, (name, ver, authors, proj_license) in enumerate(acks):
@@ -918,73 +892,6 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
 
         self.wrapper_info.layout().addWidget(self.label_acks, 0, 0)
         self.wrapper_info.layout().addWidget(self.table_acks, 1, 0)
-
-        self.set_fixed_height()
-
-class Worker_Check_Updates(QObject):
-    worker_done = pyqtSignal(str, str)
-
-    def __init__(self, main):
-        super().__init__()
-
-        self.main = main
-        self.stopped = False
-
-    def run(self):
-        ver_new = ''
-        proxy_settings = self.main.settings_custom['general']['proxy_settings']
-
-        try:
-            timeout = 5
-
-            if proxy_settings['use_proxy']:
-                r = requests.get(
-                    'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION',
-                    timeout = timeout,
-                    proxies = {
-                        'http': f"http://{proxy_settings['address']}:{proxy_settings['port']}",
-                        'https': f"http://{proxy_settings['address']}:{proxy_settings['port']}"
-                    },
-                    auth = (proxy_settings['username'], proxy_settings['password'])
-                )
-            else:
-                r = requests.get(
-                    'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION',
-                    timeout = timeout
-                )
-
-            if r.status_code == 200:
-                for line in r.text.splitlines():
-                    if line and not line.startswith('#'):
-                        ver_new = line.rstrip()
-
-                if self.is_newer_version(ver_new):
-                    updates_status = 'updates_available'
-                else:
-                    updates_status = 'no_updates'
-            else:
-                updates_status = 'network_err'
-        except requests.RequestException:
-            print(traceback.format_exc())
-
-            updates_status = 'network_err'
-
-        if self.stopped:
-            updates_status = ''
-
-        self.worker_done.emit(updates_status, ver_new)
-
-    def is_newer_version(self, ver_new):
-        ver_major_new, ver_minor_new, ver_patch_new = wl_misc.split_ver(ver_new)
-
-        return bool(
-            self.main.ver_major < ver_major_new
-            or self.main.ver_minor < ver_minor_new
-            or self.main.ver_patch < ver_patch_new
-        )
-
-    def stop(self):
-        self.stopped = True
 
 class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main, on_startup = False):
@@ -1018,9 +925,8 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
 
         self.wrapper_buttons.layout().setColumnStretch(1, 1)
 
-        self.load_settings()
-
         self.set_fixed_height()
+        self.load_settings()
 
     def check_updates(self):
         self.checking_status_changed('checking')
@@ -1108,6 +1014,71 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         settings = self.main.settings_custom['general']['update_settings']
 
         settings['check_updates_on_startup'] = self.checkbox_check_updates_on_startup.isChecked()
+
+class Worker_Check_Updates(QObject):
+    worker_done = pyqtSignal(str, str)
+
+    def __init__(self, main):
+        super().__init__()
+
+        self.main = main
+        self.stopped = False
+
+    def run(self):
+        ver_new = ''
+        proxy_settings = self.main.settings_custom['general']['proxy_settings']
+
+        try:
+            timeout = 5
+
+            if proxy_settings['use_proxy']:
+                r = requests.get(
+                    'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION',
+                    timeout = timeout,
+                    proxies = {
+                        'http': f"http://{proxy_settings['address']}:{proxy_settings['port']}",
+                        'https': f"http://{proxy_settings['address']}:{proxy_settings['port']}"
+                    },
+                    auth = (proxy_settings['username'], proxy_settings['password'])
+                )
+            else:
+                r = requests.get(
+                    'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION',
+                    timeout = timeout
+                )
+
+            if r.status_code == 200:
+                for line in r.text.splitlines():
+                    if line and not line.startswith('#'):
+                        ver_new = line.rstrip()
+
+                if self.is_newer_version(ver_new):
+                    updates_status = 'updates_available'
+                else:
+                    updates_status = 'no_updates'
+            else:
+                updates_status = 'network_err'
+        except requests.RequestException:
+            print(traceback.format_exc())
+
+            updates_status = 'network_err'
+
+        if self.stopped:
+            updates_status = ''
+
+        self.worker_done.emit(updates_status, ver_new)
+
+    def is_newer_version(self, ver_new):
+        ver_major_new, ver_minor_new, ver_patch_new = wl_misc.split_ver(ver_new)
+
+        return bool(
+            self.main.ver_major < ver_major_new
+            or self.main.ver_minor < ver_minor_new
+            or self.main.ver_patch < ver_patch_new
+        )
+
+    def stop(self):
+        self.stopped = True
 
 class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
