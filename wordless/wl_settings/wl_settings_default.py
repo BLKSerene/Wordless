@@ -38,24 +38,22 @@ from wordless.wl_utils import wl_misc, wl_paths
 _tr = QCoreApplication.translate
 is_windows, is_macos, is_linux = wl_misc.check_os()
 
-# These settings need to be loaded before initialization of the main window
+# The following settings need to be loaded before initialization of the main window
 DEFAULT_INTERFACE_SCALING = '100%'
 
 # Font family
 if is_windows:
     DEFAULT_FONT_FAMILY = 'Arial'
 elif is_macos:
-    macos_ver = wl_misc.get_macos_ver()
-    macos_ver_major, macos_ver_minor, _ = wl_misc.split_ver(macos_ver)
-
-    if macos_ver_major == 10 and macos_ver_minor <= 9:
-        DEFAULT_FONT_FAMILY = 'Lucida Grande'
-    elif macos_ver_major == 10 and macos_ver_minor == 10:
-        DEFAULT_FONT_FAMILY = 'Helvetica Neue'
-    else:
-        DEFAULT_FONT_FAMILY = 'SF Pro'
+    # SF Pro is the system font on macOS >= 10.11 but is not installed by default
+    DEFAULT_FONT_FAMILY = 'Helvetica Neue'
 elif is_linux:
-    DEFAULT_FONT_FAMILY = 'Liberation Sans'
+    linux_distro = wl_misc.get_linux_distro()
+
+    if linux_distro == 'ubuntu':
+        DEFAULT_FONT_FAMILY = 'Ubuntu'
+    elif linux_distro == 'debian':
+        DEFAULT_FONT_FAMILY = 'DejaVu'
 
 # Font size
 if is_windows:
