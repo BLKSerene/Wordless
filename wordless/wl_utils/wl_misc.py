@@ -42,8 +42,14 @@ def check_os():
 
     return is_windows, is_macos, is_linux
 
-def get_macos_ver():
-    return platform.mac_ver()[0]
+def get_linux_distro():
+    if 'Ubuntu' in platform.version():
+        return 'ubuntu'
+    elif 'Debian' in platform.version():
+        return 'debian'
+    # Default to Ubuntu if undetermined
+    else:
+        return 'ubuntu'
 
 def change_file_owner_to_user(file_path):
     # pylint: disable=no-member
