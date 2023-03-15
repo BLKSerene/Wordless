@@ -31,13 +31,8 @@ def test_check_os():
     elif platform.system() == 'Linux':
         assert not is_windows and not is_macos and is_linux
 
-def test_get_macos_ver():
-    is_windows, is_macos, is_linux = wl_misc.check_os()
-
-    if is_windows or is_linux:
-        assert not wl_misc.get_macos_ver()
-    elif is_macos:
-        assert wl_misc.get_macos_ver()
+def test_get_linux_distro():
+    assert wl_misc.get_linux_distro() in ['ubuntu', 'debian']
 
 def test_get_wl_ver():
     assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', wl_misc.get_wl_ver())
@@ -60,9 +55,11 @@ def test_merge_dicts():
 
 if __name__ == '__main__':
     test_check_os()
-    test_get_macos_ver()
+    test_get_linux_distro()
+
     test_get_wl_ver()
     test_split_ver()
+
     test_flatten_list()
     test_normalize_nums()
     test_merge_dicts()
