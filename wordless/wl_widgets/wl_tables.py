@@ -1475,14 +1475,21 @@ class Wl_Table_Data(Wl_Table):
 
         self.model().setItem(row, col, item)
 
-    def set_item_err(self, row, col, text):
+    def set_item_err(self, row, col, text, alignment_hor = 'center'):
         item = Wl_Table_Item_Err(text)
+
+        if alignment_hor == 'center':
+            alignment_hor = Qt.AlignHCenter
+        elif alignment_hor == 'left':
+            alignment_hor = Qt.AlignLeft
+        elif alignment_hor == 'right':
+            alignment_hor = Qt.AlignRight
 
         item_font = QFont(self.main.settings_custom['general']['ui_settings']['font_family'])
         item_font.setItalic(True)
 
         item.setFont(item_font)
-        item.setTextAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+        item.setTextAlignment(alignment_hor | Qt.AlignVCenter)
 
         self.model().setItem(row, col, item)
 
