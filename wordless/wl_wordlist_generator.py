@@ -24,13 +24,13 @@ import traceback
 
 import numpy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtWidgets import QLabel, QGroupBox
+from PyQt5.QtWidgets import QCheckBox, QLabel, QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measure_utils
-from wordless.wl_nlp import wl_texts, wl_token_processing
+from wordless.wl_nlp import wl_syl_tokenization, wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -113,6 +113,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
 
+        self.checkbox_syllabification = QCheckBox(self.tr('Syllabification'))
         (
             self.label_measure_dispersion,
             self.combo_box_measure_dispersion,
@@ -120,14 +121,16 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
             self.combo_box_measure_adjusted_freq
         ) = wl_widgets.wl_widgets_measures_wordlist_generator(self)
 
+        self.checkbox_syllabification.stateChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_dispersion.currentTextChanged.connect(self.generation_settings_changed)
         self.combo_box_measure_adjusted_freq.currentTextChanged.connect(self.generation_settings_changed)
 
         self.group_box_generation_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_dispersion, 0, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_dispersion, 1, 0)
-        self.group_box_generation_settings.layout().addWidget(self.label_measure_adjusted_freq, 2, 0)
-        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_adjusted_freq, 3, 0)
+        self.group_box_generation_settings.layout().addWidget(self.checkbox_syllabification, 0, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_dispersion, 1, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_dispersion, 2, 0)
+        self.group_box_generation_settings.layout().addWidget(self.label_measure_adjusted_freq, 3, 0)
+        self.group_box_generation_settings.layout().addWidget(self.combo_box_measure_adjusted_freq, 4, 0)
 
         # Table Settings
         self.group_box_table_settings = QGroupBox(self.tr('Table Settings'))
@@ -245,6 +248,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
         # Generation Settings
+        self.checkbox_syllabification.setChecked(settings['generation_settings']['syllabification'])
         self.combo_box_measure_dispersion.set_measure(settings['generation_settings']['measure_dispersion'])
         self.combo_box_measure_adjusted_freq.set_measure(settings['generation_settings']['measure_adjusted_freq'])
 
@@ -290,6 +294,7 @@ class Wrapper_Wordlist_Generator(wl_layouts.Wl_Wrapper):
     def generation_settings_changed(self):
         settings = self.main.settings_custom['wordlist_generator']['generation_settings']
 
+        settings['syllabification'] = self.checkbox_syllabification.isChecked()
         settings['measure_dispersion'] = self.combo_box_measure_dispersion.get_measure()
         settings['measure_adjusted_freq'] = self.combo_box_measure_adjusted_freq.get_measure()
 
@@ -348,7 +353,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
         wl_threading.Wl_Thread(worker_wordlist_generator_table).start_worker()
 
-    def update_gui_table(self, err_msg, tokens_freq_files, tokens_stats_files):
+    def update_gui_table(self, err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabification):
         if wl_checks_work_area.check_results(self.main, err_msg, tokens_freq_files):
             try:
                 self.settings = copy.deepcopy(self.main.settings_custom)
@@ -364,6 +369,12 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 self.clr_table()
 
                 # Insert columns
+                if settings['generation_settings']['syllabification']:
+                    self.ins_header_hor(
+                        self.model().columnCount() - 2,
+                        self.tr('Syllabification')
+                    )
+
                 files = list(self.main.wl_file_area.get_selected_files())
 
                 for file in files + [{'name': self.tr('Total')}]:
@@ -432,6 +443,13 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                     # Token
                     self.model().setItem(i, 1, wl_tables.Wl_Table_Item(token))
+
+                    # Syllabification
+                    if settings['generation_settings']['syllabification']:
+                        if _tr('wl_wordlist_generator', 'No language support') in tokens_syllabification[token]:
+                            self.set_item_err(i, 2, ', '.join(tokens_syllabification[token]), alignment_hor = 'left')
+                        else:
+                            self.model().setItem(i, 2, wl_tables.Wl_Table_Item(', '.join(tokens_syllabification[token])))
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -516,7 +534,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
                 wl_checks_work_area.check_err_fig(self.main, err_msg)
 
 class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
-    worker_done = pyqtSignal(str, dict, dict)
+    worker_done = pyqtSignal(str, dict, dict, dict)
 
     def __init__(self, main, dialog_progress, update_gui):
         super().__init__(main, dialog_progress, update_gui)
@@ -524,6 +542,7 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
         self.err_msg = ''
         self.tokens_freq_files = []
         self.tokens_stats_files = []
+        self.tokens_syllabification = {}
 
     def run(self):
         try:
@@ -532,7 +551,6 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
             settings = self.main.settings_custom['wordlist_generator']
             files = list(self.main.wl_file_area.get_selected_files())
 
-            # Frequency
             for file in files:
                 text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens(
@@ -544,7 +562,21 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 tokens_flat = text.get_tokens_flat()
                 tokens = [token for token in tokens_flat if token]
 
+                # Frequency
                 self.tokens_freq_files.append(collections.Counter(tokens))
+
+                # Syllabification
+                for token in set(tokens):
+                    if token not in self.tokens_syllabification:
+                        self.tokens_syllabification[token] = []
+
+                    if file['lang'] in self.main.settings_global['syl_tokenizers']:
+                        syls_tokens = wl_syl_tokenization.wl_syl_tokenize(self.main, [token], file['lang'])
+
+                        self.tokens_syllabification[token].append('-'.join(syls_tokens[0]))
+                    else:
+                        self.tokens_syllabification[token].append(_tr('wl_wordlist_generator', 'No language support'))
+
                 texts.append(text)
 
             # Total
@@ -556,7 +588,9 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                     for para in text.tokens_multilevel
                 ]
 
+                # Frequency
                 self.tokens_freq_files.append(sum(self.tokens_freq_files, collections.Counter()))
+
                 texts.append(text_total)
 
             # Dispersion & Adjusted Frequency
@@ -630,7 +664,8 @@ class Wl_Worker_Wordlist_Generator_Table(Wl_Worker_Wordlist_Generator):
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.tokens_freq_files),
-            wl_misc.merge_dicts(self.tokens_stats_files)
+            wl_misc.merge_dicts(self.tokens_stats_files),
+            self.tokens_syllabification
         )
 
 class Wl_Worker_Wordlist_Generator_Fig(Wl_Worker_Wordlist_Generator):

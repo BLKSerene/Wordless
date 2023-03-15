@@ -428,6 +428,7 @@ def init_settings_default(main):
             },
 
             'generation_settings': {
+                'syllabification': True,
                 'measure_dispersion': 'juillands_d',
                 'measure_adjusted_freq': 'juillands_u'
             },

@@ -22,6 +22,8 @@
 ### 🎉 New Features
 - Settings: Add Settings - Figures - Network Graphs - Advanced Settings - Layout - Spiral
 - Utils: Add python-mecab-ko's MeCab
+- Work Area: Add Wordlist Generator - Syllabification
+- Work Area: Add Wordlist Generator - Generation Settings - Syllabification
 
 ### ✨ Improvements
 - Misc: Add fatal error dialog - Copy

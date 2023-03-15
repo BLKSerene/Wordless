@@ -25,7 +25,6 @@ import traceback
 import numpy
 import scipy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QDialog, QGroupBox, QPushButton, QStackedWidget, QTabWidget
 
 from wordless.wl_checks import wl_checks_work_area
@@ -400,9 +399,9 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
                     # Readability
                     for j, statistic in enumerate(readability_stats):
                         if statistic == 'no_support':
-                            self.set_item_err(j, i, self.tr('No language support'))
+                            self.set_item_err(j, i, self.tr('No language support'), alignment_hor = 'right')
                         elif statistic == 'text_too_short':
-                            self.set_item_err(j, i, self.tr('Text is too short'))
+                            self.set_item_err(j, i, self.tr('Text is too short'), alignment_hor = 'right')
                         else:
                             self.set_item_num(j, i, statistic)
 
@@ -532,8 +531,8 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
                         self.set_item_num(10, i, count_syls)
                         self.set_item_num(11, i, count_syls, count_syls_total)
                     else:
-                        self.set_item_err(10, i, text = self.tr('No language support'))
-                        self.set_item_err(11, i, text = self.tr('No language support'))
+                        self.set_item_err(10, i, text = self.tr('No language support'), alignment_hor = 'right')
+                        self.set_item_err(11, i, text = self.tr('No language support'), alignment_hor = 'right')
 
                     # Count of Characters
                     self.set_item_num(12, i, count_chars)
@@ -840,14 +839,14 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                             self.set_item_num(row + 7, i, numpy.max(lens))
                             self.set_item_num(row + 8, i, numpy.ptp(lens))
                             self.set_item_num(row + 9, i, scipy.stats.iqr(lens))
-                            self.model().setItem(row + 10, i, QStandardItem(', '.join([
+                            self.model().setItem(row + 10, i, wl_tables.Wl_Table_Item(', '.join([
                                 str(mode) for mode in wl_measures_misc.modes(lens)
                             ])))
                         else:
                             for j in range(10):
                                 self.set_item_num(row + j, i, 0)
 
-                            self.model().setItem(row + 10, i, QStandardItem('0'))
+                            self.model().setItem(row + 10, i, wl_tables.Wl_Table_Item('0'))
 
                         self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
@@ -874,19 +873,19 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                                 self.set_item_num(row + 7, i, numpy.max(lens))
                                 self.set_item_num(row + 8, i, numpy.ptp(lens))
                                 self.set_item_num(row + 9, i, scipy.stats.iqr(lens))
-                                self.model().setItem(row + 10, i, QStandardItem(', '.join([
+                                self.model().setItem(row + 10, i, wl_tables.Wl_Table_Item(', '.join([
                                     str(mode) for mode in wl_measures_misc.modes(lens)
                                 ])))
                             else:
                                 for j in range(10):
                                     self.set_item_num(row + j, i, 0)
 
-                                self.model().setItem(row + 10, i, QStandardItem('0'))
+                                self.model().setItem(row + 10, i, wl_tables.Wl_Table_Item('0'))
 
                             self.model().item(row + 10, i).setTextAlignment(Qt.AlignRight | Qt.AlignVCenter)
                         else:
                             for j in range(11):
-                                self.set_item_err(row + j, i, text = self.tr('No language support'))
+                                self.set_item_err(row + j, i, text = self.tr('No language support'), alignment_hor = 'right')
 
                 self.enable_updates()
 

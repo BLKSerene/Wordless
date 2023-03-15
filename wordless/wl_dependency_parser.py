@@ -25,7 +25,6 @@ import traceback
 import numpy
 
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
@@ -376,23 +375,23 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                     no_sentence, len_sentences, file
                 ) in enumerate(results):
                     # Head
-                    self.model().setItem(i, 0, QStandardItem(head))
+                    self.model().setItem(i, 0, wl_tables.Wl_Table_Item(head))
                     # Dependant
-                    self.model().setItem(i, 1, QStandardItem(dependent))
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(dependent))
                     # Dependency Relation
-                    self.model().setItem(i, 2, QStandardItem(dependency_relation))
+                    self.model().setItem(i, 2, wl_tables.Wl_Table_Item(dependency_relation))
                     # Dependency Distance
                     self.set_item_num(i, 3, dependency_len)
                     self.set_item_num(i, 4, numpy.abs(dependency_len))
                     # Sentence
-                    self.model().setItem(i, 5, QStandardItem(' '.join(sentence_display)))
+                    self.model().setItem(i, 5, wl_tables.Wl_Table_Item(' '.join(sentence_display)))
                     self.model().item(i, 5).text_display = sentence_display
                     self.model().item(i, 5).text_search = sentence_search
                     # Sentence No.
                     self.set_item_num(i, 6, no_sentence)
                     self.set_item_num(i, 7, no_sentence, len_sentences)
                     # File
-                    self.model().setItem(i, 8, QStandardItem(file))
+                    self.model().setItem(i, 8, wl_tables.Wl_Table_Item(file))
 
                 self.enable_updates()
 

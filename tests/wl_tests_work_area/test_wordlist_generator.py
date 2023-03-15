@@ -59,7 +59,7 @@ def test_wordlist_generator():
 
     main.app.quit()
 
-def update_gui(err_msg, tokens_freq_files, tokens_stats_files):
+def update_gui(err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabification):
     print(err_msg)
     assert not err_msg
 
@@ -72,6 +72,8 @@ def update_gui(err_msg, tokens_freq_files, tokens_stats_files):
 
         # Token
         assert token
+        # Syllabification
+        assert tokens_syllabification[token]
         # Frequency
         assert len(freq_files) == len_files_selected + 1
         # Dispersion & Adjusted Frequency

@@ -26,7 +26,6 @@ import matplotlib
 import matplotlib.pyplot
 import numpy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
-from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QCheckBox, QLabel, QLineEdit, QGroupBox, QStackedWidget
 import textblob
 import underthesea
@@ -562,7 +561,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                         self.set_item_num(i, 3, sentiment)
                     # No language support
                     else:
-                        self.set_item_err(i, 3, text = sentiment)
+                        self.set_item_err(i, 3, text = sentiment, alignment_hor = 'right')
 
                     # Token No.
                     self.set_item_num(i, 4, no_token)
@@ -578,7 +577,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     self.set_item_num(i, 11, no_para, len_paras)
 
                     # File
-                    self.model().setItem(i, 12, QStandardItem(file_name))
+                    self.model().setItem(i, 12, wl_tables.Wl_Table_Item(file_name))
 
                 self.enable_updates()
 
