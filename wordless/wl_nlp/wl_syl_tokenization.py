@@ -21,9 +21,9 @@ import re
 import pythainlp
 
 from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_nlp_utils, wl_word_tokenization
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_word_tokenization
 
-def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
+def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default', tagged = False):
     if inputs and lang in main.settings_global['syl_tokenizers']:
         syls_tokens = []
 
@@ -40,12 +40,12 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
 
         if isinstance(inputs, str):
             for line in inputs.splitlines():
-                syls_tokens.extend(wl_syl_tokenize_text(main, line, lang, syl_tokenizer))
+                syls_tokens.extend(wl_syl_tokenize_text(main, line, lang, syl_tokenizer, tagged))
         else:
             texts = wl_nlp_utils.to_sections_unequal(inputs, section_size = section_size * 50)
 
             for tokens in texts:
-                syls_tokens.extend(wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer))
+                syls_tokens.extend(wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer, tagged))
     else:
         if isinstance(inputs, str):
             syls_tokens = [[token] for token in wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)]
@@ -61,13 +61,17 @@ def wl_syl_tokenize(main, inputs, lang, syl_tokenizer = 'default'):
 
     return syls_tokens
 
-def wl_syl_tokenize_text(main, text, lang, syl_tokenizer):
+def wl_syl_tokenize_text(main, text, lang, syl_tokenizer, tagged):
     tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
 
-    return wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer)
+    return wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer, tagged)
 
-def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
+def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer, tagged):
     syls_tokens = []
+
+    # Separate tokens and tags
+    if tagged:
+        tokens, tags = wl_matching.split_tokens_tags(main, tokens)
 
     for token in tokens:
         # NLTK
@@ -92,14 +96,23 @@ def wl_syl_tokenize_tokens(main, tokens, lang, syl_tokenizer = 'default'):
         elif syl_tokenizer == 'pythainlp_tha':
             syls_tokens.append(pythainlp.subword_tokenize(token, engine = 'dict'))
 
+    # Put back tokens and tags
+    if tagged:
+        for syls, tag in zip(syls_tokens, tags):
+            syls[-1] += tag
+
     return syls_tokens
 
 # Excluding punctuation marks
-def wl_syl_tokenize_tokens_no_punc(main, tokens, lang, syl_tokenizer = 'default'):
-    syls_tokens = wl_syl_tokenize(main, tokens, lang, syl_tokenizer = syl_tokenizer)
+def wl_syl_tokenize_tokens_no_punc(main, tokens, lang, syl_tokenizer = 'default', tagged = False):
+    syls_tokens = wl_syl_tokenize(main, tokens, lang, syl_tokenizer, tagged)
 
     for i, syls in reversed(list(enumerate(syls_tokens))):
-        if len(syls) == 1 and wl_checks_tokens.is_punc(syls[0]):
-            del syls_tokens[i]
+        if len(syls) == 1:
+            # Separate token and tag
+            syl, _ = wl_matching.split_tokens_tags(main, [syls[0]])
+
+            if wl_checks_tokens.is_punc(syl[0]):
+                del syls_tokens[i]
 
     return syls_tokens

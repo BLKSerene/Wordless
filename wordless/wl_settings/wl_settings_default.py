@@ -119,6 +119,7 @@ def init_settings_default(main):
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
+                'assign_pos_tags': False,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -134,6 +135,7 @@ def init_settings_default(main):
             'token_settings': {
                 'punc_marks': False,
 
+                'assign_pos_tags': False,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -246,6 +248,7 @@ def init_settings_default(main):
             'token_settings': {
                 'punc_marks': False,
 
+                'assign_pos_tags': False,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -325,6 +328,7 @@ def init_settings_default(main):
             'token_settings': {
                 'punc_marks': False,
 
+                'assign_pos_tags': False,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -421,6 +425,7 @@ def init_settings_default(main):
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
+                'assign_pos_tags': False,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -506,6 +511,7 @@ def init_settings_default(main):
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
+                'assign_pos_tags': False,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -654,6 +660,7 @@ def init_settings_default(main):
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
+                'assign_pos_tags': False,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -810,6 +817,7 @@ def init_settings_default(main):
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
+                'assign_pos_tags': True,
                 'ignore_tags': False,
                 'use_tags': False
             },
@@ -966,6 +974,7 @@ def init_settings_default(main):
                 'lemmatize_tokens': False,
                 'filter_stop_words': False,
 
+                'assign_pos_tags': False,
                 'ignore_tags': False,
                 'use_tags': False
             },

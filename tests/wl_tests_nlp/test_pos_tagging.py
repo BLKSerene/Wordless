@@ -66,7 +66,8 @@ def test_pos_tag(lang, pos_tagger):
         tagset = 'universal'
     )
 
-    tokens_tagged_long_text_tokenized = wl_pos_tagging.wl_pos_tag(
+    # Long texts
+    tokens_tagged_tokenized_long = wl_pos_tagging.wl_pos_tag(
         main,
         inputs = [str(i) for i in range(101) for j in range(50)],
         lang = lang,
@@ -93,8 +94,8 @@ def test_pos_tag(lang, pos_tagger):
     # Tokenization should not be modified
     assert len(tokens) == len(tokens_tagged_tokenized) == len(tokens_tagged_universal_tokenized)
 
-    # Test long texts
-    assert [token[0] for token in tokens_tagged_long_text_tokenized] == [str(i) for i in range(101) for j in range(50)]
+    # Long texts
+    assert [token[0] for token in tokens_tagged_tokenized_long] == [str(i) for i in range(101) for j in range(50)]
 
     tests_lang_util_skipped = False
 

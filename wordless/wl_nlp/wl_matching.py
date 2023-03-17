@@ -108,6 +108,14 @@ def get_re_tags_with_tokens(main, tag_type):
 
     return '|'.join(tags_embedded + tags_non_embedded)
 
+def split_tokens_tags(main, tokens):
+    re_tags = get_re_tags(main, tag_type = 'body')
+
+    tags = [''.join(re.findall(re_tags, token)) for token in tokens]
+    tokens = [re.sub(re_tags, '', token) for token in tokens]
+
+    return tokens, tags
+
 # Search Terms
 def check_search_terms(search_settings, search_enabled):
     search_terms = set()
@@ -208,13 +216,15 @@ def match_ngrams(
 
     # Process tokens to search
     tokens_search = tokens.copy()
-    re_tags = get_re_tags(main, tag_type = 'body')
+
+    if (settings['match_without_tags'] or settings['match_tags']) and tagged:
+        tokens_search_tokens, tokens_search_tags = split_tokens_tags(main, tokens_search)
 
     if settings['match_without_tags'] and tagged:
-        tokens_search = [re.sub(re_tags, '', token) for token in tokens]
+        tokens_search = tokens_search_tokens
     elif settings['match_tags']:
         if tagged:
-            tokens_search = [''.join(re.findall(re_tags, token)) for token in tokens]
+            tokens_search = tokens_search_tags
         else:
             tokens_search = []
 
@@ -282,6 +292,10 @@ def match_search_terms_tokens(
 ):
     search_terms = check_search_terms(search_settings, search_enabled = True)
 
+    # Assign part-of-speech tags
+    if token_settings['assign_pos_tags']:
+        tagged = True
+
     if search_terms:
         search_terms = match_tokens(
             main, search_terms, tokens,
@@ -298,6 +312,10 @@ def match_search_terms_ngrams(
 ):
     search_terms = check_search_terms(search_settings, search_enabled = True)
 
+    # Assign part-of-speech tags
+    if token_settings['assign_pos_tags']:
+        tagged = True
+
     if search_terms:
         search_terms = match_ngrams(
             main, search_terms, tokens,
@@ -313,28 +331,35 @@ def match_search_terms_context(
     lang, tagged,
     token_settings, context_settings
 ):
+    search_terms_incl = set()
+    search_terms_excl = set()
+
+    # Assign part-of-speech tags
+    if token_settings['assign_pos_tags']:
+        tagged = True
+
     # Inclusion
-    search_terms_incl = check_search_terms(
+    search_terms = check_search_terms(
         search_settings = context_settings['incl'],
         search_enabled = context_settings['incl']['incl']
     )
 
-    if search_terms_incl:
+    if search_terms:
         search_terms_incl = match_ngrams(
-            main, search_terms_incl, tokens,
+            main, search_terms, tokens,
             lang, tagged,
             check_search_settings(token_settings, context_settings['incl'])
         )
 
     # Exclusion
-    search_terms_excl = check_search_terms(
+    search_terms = check_search_terms(
         search_settings = context_settings['excl'],
         search_enabled = context_settings['excl']['excl']
     )
 
-    if search_terms_excl:
+    if search_terms:
         search_terms_excl = match_ngrams(
-            main, search_terms_excl, tokens,
+            main, search_terms, tokens,
             lang, tagged,
             check_search_settings(token_settings, context_settings['excl'])
         )
@@ -345,53 +370,72 @@ def check_context(
     i, tokens, context_settings,
     search_terms_incl, search_terms_excl
 ):
-    if context_settings['incl']['incl'] or context_settings['excl']['excl']:
-        len_tokens = len(tokens)
+    len_tokens = len(tokens)
 
-        # Inclusion
-        if context_settings['incl']['incl'] and search_terms_incl:
-            incl_matched = False
+    # Inclusion
+    search_terms = check_search_terms(
+        search_settings = context_settings['incl'],
+        search_enabled = context_settings['incl']['incl']
+    )
 
-            for search_term in search_terms_incl:
-                if incl_matched:
-                    break
+    # Search terms to be included found in texts
+    if search_terms and search_terms_incl:
+        incl_matched = False
 
-                for j in range(
-                    context_settings['incl']['context_window_left'],
-                    context_settings['incl']['context_window_right'] + 1
-                ):
-                    if i + j < 0 or i + j > len_tokens - 1:
-                        continue
+        for search_term in search_terms_incl:
+            if incl_matched:
+                break
 
-                    if j != 0:
-                        if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
-                            incl_matched = True
+            for j in range(
+                context_settings['incl']['context_window_left'],
+                context_settings['incl']['context_window_right'] + 1
+            ):
+                if i + j < 0 or i + j > len_tokens - 1:
+                    continue
 
-                            break
-        else:
-            incl_matched = True
+                if j != 0:
+                    if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
+                        incl_matched = True
 
-        # Exclusion
+                        break
+    # Search terms to be included not found in texts
+    elif search_terms and not search_terms_incl:
+        incl_matched = False
+    # No search terms to be included
+    elif not search_terms:
+        incl_matched = True
+
+    # Exclusion
+    search_terms = check_search_terms(
+        search_settings = context_settings['excl'],
+        search_enabled = context_settings['excl']['excl']
+    )
+
+    # Search terms to be excluded found in texts
+    if search_terms and search_terms_excl:
         excl_matched = True
 
-        if context_settings['excl']['excl'] and search_terms_excl:
-            for search_term in search_terms_excl:
-                if not excl_matched:
-                    break
+        for search_term in search_terms_excl:
+            if not excl_matched:
+                break
 
-                for j in range(
-                    context_settings['excl']['context_window_left'],
-                    context_settings['excl']['context_window_right'] + 1
-                ):
-                    if i + j < 0 or i + j > len_tokens - 1:
-                        continue
+            for j in range(
+                context_settings['excl']['context_window_left'],
+                context_settings['excl']['context_window_right'] + 1
+            ):
+                if i + j < 0 or i + j > len_tokens - 1:
+                    continue
 
-                    if j != 0:
-                        if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
-                            excl_matched = False
+                if j != 0:
+                    if tuple(tokens[i + j : i + j + len(search_term)]) == tuple(search_term):
+                        excl_matched = False
 
-                            break
+                        break
+    # Search terms to be excluded not found in texts
+    elif search_terms and not search_terms_excl:
+        excl_matched = True
+    # No search term to be excluded
+    elif not search_terms:
+        excl_matched = True
 
-        return bool(incl_matched and excl_matched)
-    else:
-        return True
+    return bool(incl_matched and excl_matched)

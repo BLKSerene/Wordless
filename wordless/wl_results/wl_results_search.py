@@ -18,7 +18,7 @@
 
 import copy
 
-from PyQt5.QtCore import QCoreApplication, QSize, Qt
+from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QBrush, QColor
 from PyQt5.QtWidgets import QPushButton
 
@@ -123,6 +123,9 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.layout().addWidget(wl_layouts.Wl_Separator(self), 9, 0, 1, 4)
         self.layout().addLayout(layout_buttons_bottom, 10, 0, 1, 4)
 
+        for table in self.tables: # pylint: disable=redefined-argument-from-local
+            table.model().itemChanged.connect(self.table_item_changed)
+
         self.load_settings()
 
     def load_settings(self, defaults = False):
@@ -159,6 +162,9 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.settings['match_without_tags'] = self.checkbox_match_without_tags.isChecked()
         self.settings['match_tags'] = self.checkbox_match_tags.isChecked()
 
+        # Multi-search mode
+        self.adjustSize()
+
         if wl_checks_work_area.check_search_terms(
             self.main,
             search_settings = self.settings,
@@ -177,6 +183,9 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
                 self.setFixedSize(self.size_multi)
             else:
                 self.setFixedSize(self.size_normal)
+
+    def table_item_changed(self):
+        self.checkbox_match_tags.token_settings_changed(token_settings = self.tables[0].settings[self.tab]['token_settings'])
 
     @wl_misc.log_timing
     def find_next(self):
@@ -328,7 +337,8 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
             for table, row, col in self.items_found:
                 if table.indexWidget(table.model().index(row, col)):
                     table.indexWidget(table.model().index(row, col)).setStyleSheet('border: 0')
-                else:
+                # Skip if the found item no longer exist (eg. the table has been re-generated)
+                elif table.model().item(row, col):
                     table.model().item(row, col).setForeground(QBrush(QColor('#292929')))
                     table.model().item(row, col).setBackground(QBrush(QColor('#FFF')))
 
@@ -341,22 +351,6 @@ class Wl_Dialog_Results_Search(wl_dialogs.Wl_Dialog):
         self.button_clr_hightlights.setEnabled(False)
 
     def load(self):
-        # Calculate size
-        if 'size_multi' not in self.__dict__:
-            multi_search_mode = self.settings['multi_search_mode']
-
-            self.checkbox_multi_search_mode.setChecked(False)
-
-            self.adjustSize()
-            self.size_normal = self.size()
-
-            self.checkbox_multi_search_mode.setChecked(True)
-
-            self.adjustSize()
-            self.size_multi = QSize(self.size_normal.width(), self.size().height())
-
-            self.checkbox_multi_search_mode.setChecked(multi_search_mode)
-
         self.show()
 
 class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
