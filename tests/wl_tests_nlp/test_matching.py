@@ -129,8 +129,9 @@ def test_get_re_tags_with_tokens():
     assert re.search(re_tags_xml, r'token <>token</> token').group() == '<>token</>'
     assert re.search(re_tags_xml, r'token < >token</ > token').group() == '< >token</ >'
 
-def init_token_settings(ignore_tags = False, use_tags = False):
+def init_token_settings(assign_pos_tags = False, ignore_tags = False, use_tags = False):
     return {
+        'assign_pos_tags': assign_pos_tags,
         'ignore_tags': ignore_tags,
         'use_tags': use_tags
     }
@@ -414,7 +415,7 @@ def test_match_search_terms_context():
         tagged = False,
         token_settings = init_token_settings(),
         context_settings = init_context_settings(incl = True, incl_search_term = 'take walk')
-    ) == (set([('take', 'walk')]), set())
+    ) == ({('take', 'walk')}, set())
 
     assert wl_matching.match_search_terms_context(
         main,
@@ -423,7 +424,7 @@ def test_match_search_terms_context():
         tagged = False,
         token_settings = init_token_settings(),
         context_settings = init_context_settings(excl = True, excl_search_term = 'take walk')
-    ) == (set(), set([('take', 'walk')]))
+    ) == (set(), {('take', 'walk')})
 
     assert wl_matching.match_search_terms_context(
         main,
@@ -435,31 +436,73 @@ def test_match_search_terms_context():
             incl = True, incl_search_term = 'take walk',
             excl = True, excl_search_term = 'take walk'
         )
-    ) == (set([('take', 'walk')]), set([('take', 'walk')]))
+    ) == ({('take', 'walk')}, {('take', 'walk')})
 
 def test_check_context():
     assert wl_matching.check_context(
         i = 0,
         tokens = ['test'] * 5 + ['take', 'walk'],
-        context_settings = init_context_settings(incl = True),
-        search_terms_incl = set([('take', 'walk')]),
+        context_settings = init_context_settings(incl = False, excl = False),
+        search_terms_incl = set(),
         search_terms_excl = set()
     )
-
-    assert not wl_matching.check_context(
+    assert wl_matching.check_context(
         i = 0,
         tokens = ['test'] * 5 + ['take', 'walk'],
-        context_settings = init_context_settings(excl = True),
-        search_terms_incl = set(),
-        search_terms_excl = set([('take', 'walk')])
+        context_settings = init_context_settings(incl = False, excl = False),
+        search_terms_incl = {('take', 'walk')},
+        search_terms_excl = {('take', 'walk')}
     )
 
     assert wl_matching.check_context(
         i = 0,
         tokens = ['test'] * 5 + ['take', 'walk'],
-        context_settings = init_context_settings(incl = True, excl = True),
-        search_terms_incl = set([('take', 'walk')]),
-        search_terms_excl = set([('take', 'test')])
+        context_settings = init_context_settings(incl = True, incl_search_term = 'test'),
+        search_terms_incl = {('take', 'walk')},
+        search_terms_excl = set()
+    )
+    assert not wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(incl = True, incl_search_term = 'test'),
+        search_terms_incl = {('take', 'test')},
+        search_terms_excl = set()
+    )
+
+    assert wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(excl = True, excl_search_term = 'test'),
+        search_terms_incl = set(),
+        search_terms_excl = {('take', 'test')}
+    )
+    assert not wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(excl = True, excl_search_term = 'test'),
+        search_terms_incl = set(),
+        search_terms_excl = {('take', 'walk')}
+    )
+
+    assert wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(
+            incl = True, incl_search_term = 'test',
+            excl = True, excl_search_term = 'test'
+        ),
+        search_terms_incl = {('take', 'walk')},
+        search_terms_excl = {('take', 'test')}
+    )
+    assert not wl_matching.check_context(
+        i = 0,
+        tokens = ['test'] * 5 + ['take', 'walk'],
+        context_settings = init_context_settings(
+            incl = True, incl_search_term = 'test',
+            excl = True, excl_search_term = 'test'
+        ),
+        search_terms_incl = {('take', 'walk')},
+        search_terms_excl = {('take', 'walk')}
     )
 
 if __name__ == '__main__':
