@@ -31,7 +31,7 @@ from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measure_utils
 from wordless.wl_nlp import wl_syl_tokenization, wl_texts, wl_token_preprocessing
-from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
+from wordless.wl_utils import wl_conversion, wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
 _tr = QCoreApplication.translate
@@ -451,10 +451,27 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                     # Syllabification
                     if settings['generation_settings']['syllabification']:
-                        if _tr('wl_wordlist_generator', 'No language support') in tokens_syllabification[token]:
-                            self.set_item_err(i, 2, ', '.join(tokens_syllabification[token]), alignment_hor = 'left')
+                        if len(tokens_syllabification[token]) == 1:
+                            token_syllabified = list(tokens_syllabification[token].values())[0]
+
+                            if token_syllabified == _tr('wl_wordlist_generator', 'No language support'):
+                                self.set_item_err(i, 2, token_syllabified, alignment_hor = 'left')
+                            else:
+                                self.model().setItem(i, 2, wl_tables.Wl_Table_Item(token_syllabified))
+                        # Same token found in more than one language
                         else:
-                            self.model().setItem(i, 2, wl_tables.Wl_Table_Item(', '.join(tokens_syllabification[token])))
+                            token_syllabified_forms = []
+
+                            for lang, syllabified_form in tokens_syllabification[token].items():
+                                lang_text = wl_conversion.to_lang_text(self.main, lang)
+                                token_syllabified_forms.append(f'{syllabified_form} ({lang_text})')
+
+                            tokens_syllabified = ', '.join(token_syllabified_forms)
+
+                            if _tr('wl_wordlist_generator', 'No language support') in tokens_syllabified:
+                                self.set_item_err(i, 2, tokens_syllabified, alignment_hor = 'left')
+                            else:
+                                self.model().setItem(i, 2, wl_tables.Wl_Table_Item(tokens_syllabified))
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -573,14 +590,15 @@ class Wl_Worker_Wordlist_Generator(wl_threading.Wl_Worker):
                 # Syllabification
                 for token in set(tokens):
                     if token not in self.tokens_syllabification:
-                        self.tokens_syllabification[token] = []
+                        self.tokens_syllabification[token] = {}
 
-                    if text.lang in self.main.settings_global['syl_tokenizers']:
-                        syls_tokens = wl_syl_tokenization.wl_syl_tokenize(self.main, [token], text.lang, tagged = text.tagged)
+                    if text.lang not in self.tokens_syllabification[token]:
+                        if text.lang in self.main.settings_global['syl_tokenizers']:
+                            syls_tokens = wl_syl_tokenization.wl_syl_tokenize(self.main, [token], text.lang, tagged = text.tagged)
 
-                        self.tokens_syllabification[token].append('-'.join(syls_tokens[0]))
-                    else:
-                        self.tokens_syllabification[token].append(_tr('wl_wordlist_generator', 'No language support'))
+                            self.tokens_syllabification[token][text.lang] = '-'.join(syls_tokens[0])
+                        else:
+                            self.tokens_syllabification[token][text.lang] = _tr('wl_wordlist_generator', 'No language support')
 
                 texts.append(text)
 
