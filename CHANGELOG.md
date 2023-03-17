@@ -371,7 +371,6 @@
 
 ### ✨ Improvements
 - File Area: Only load files that can be successfully decoded
-- Work Area: Overview/Concordancer - Rename “Clause” to “Sentence Segment”
 
 ### 📌 Bugfixes
 - Settings: Fix Settings - Word Tokenization - Preview - Select language - Vietnamese
