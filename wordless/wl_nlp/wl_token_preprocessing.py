@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: NLP - Token Processing
+# Wordless: NLP - Token Preprocessing
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -19,10 +19,10 @@
 import copy
 
 from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_lemmatization, wl_stop_word_lists, wl_syl_tokenization, wl_word_detokenization
+from wordless.wl_nlp import wl_lemmatization, wl_pos_tagging, wl_stop_word_lists, wl_syl_tokenization, wl_word_detokenization
 from wordless.wl_utils import wl_misc
 
-def wl_process_tokens(main, text, token_settings):
+def wl_preprocess_tokens(main, text, token_settings):
     settings = copy.deepcopy(token_settings)
 
     if not settings['words']:
@@ -144,6 +144,18 @@ def wl_process_tokens(main, text, token_settings):
                         for token in sentence_seg
                     ]
 
+    # Assign part-of-speech tags
+    if settings['assign_pos_tags'] and not text.tagged:
+        tokens_tagged = wl_pos_tagging.wl_pos_tag(
+            main,
+            inputs = text.get_tokens_flat(),
+            lang = text.lang
+        )
+
+        text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
+        # Modify text types
+        text.tagged = True
+
     # Ignore tags
     i_token = 0
 
@@ -178,8 +190,8 @@ def wl_process_tokens(main, text, token_settings):
 
     return text
 
-def wl_process_tokens_profiler(main, text, token_settings):
-    text = wl_process_tokens(main, text, token_settings)
+def wl_preprocess_tokens_profiler(main, text, token_settings):
+    text = wl_preprocess_tokens(main, text, token_settings)
 
     # Remove empty tokens, sentence segments, sentences, and paragraphs
     text.tokens_multilevel = [
@@ -225,16 +237,17 @@ def wl_process_tokens_profiler(main, text, token_settings):
     text.syls_tokens = wl_syl_tokenization.wl_syl_tokenize_tokens_no_punc(
         main,
         tokens = list(wl_misc.flatten_list(text.tokens_multilevel)),
-        lang = text.lang
+        lang = text.lang,
+        tagged = text.tagged
     )
 
     return text
 
-def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
+def wl_preprocess_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
     settings = copy.deepcopy(token_settings)
     tokens_flat = text.get_tokens_flat()
 
-    # Punctuations
+    # Punctuation marks
     if not settings['punc_marks']:
         for para in text.tokens_multilevel:
             for sentence in para:
@@ -286,6 +299,18 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
             if para
         ]
 
+    # Assign part-of-speech tags
+    if settings['assign_pos_tags'] and not text.tagged:
+        tokens_tagged = wl_pos_tagging.wl_pos_tag(
+            main,
+            inputs = text.get_tokens_flat(),
+            lang = text.lang
+        )
+
+        text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
+        # Modify text types
+        text.tagged = True
+
     # Ignore tags
     if settings['ignore_tags']:
         for para in text.tokens_multilevel:
@@ -334,8 +359,8 @@ def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_li
 
     return text
 
-def wl_process_tokens_colligation_extractor(main, text, token_settings):
-    text = wl_process_tokens(main, text, token_settings)
+def wl_preprocess_tokens_colligation_extractor(main, text, token_settings):
+    text = wl_preprocess_tokens(main, text, token_settings)
 
     # Use tags Only
     if token_settings['use_tags']:

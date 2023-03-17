@@ -30,7 +30,7 @@ from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measure_utils
-from wordless.wl_nlp import wl_texts, wl_token_processing
+from wordless.wl_nlp import wl_texts, wl_token_preprocessing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -73,6 +73,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
             self.checkbox_lemmatize_tokens,
             self.checkbox_filter_stop_words,
 
+            self.checkbox_assign_pos_tags,
             self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings(self)
@@ -88,6 +89,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
         self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
 
+        self.checkbox_assign_pos_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
@@ -107,8 +109,9 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 8, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 8, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_assign_pos_tags, 8, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 9, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 9, 1)
 
         # Generation Settings
         self.group_box_generation_settings = QGroupBox(self.tr('Generation Settings'))
@@ -246,6 +249,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
         self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
+        self.checkbox_assign_pos_tags.setChecked(settings['token_settings']['assign_pos_tags'])
         self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
@@ -290,6 +294,7 @@ class Wrapper_Keyword_Extractor(wl_layouts.Wl_Wrapper):
         settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()
         settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
 
+        settings['assign_pos_tags'] = self.checkbox_assign_pos_tags.isChecked()
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
@@ -671,7 +676,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             for file_ref in files_ref:
                 text = copy.deepcopy(file_ref['text'])
-                text = wl_token_processing.wl_process_tokens(
+                text = wl_token_preprocessing.wl_preprocess_tokens(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -688,7 +693,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             # Frequency (Observed files)
             for file_observed in files_observed:
                 text = copy.deepcopy(file_observed['text'])
-                text = wl_token_processing.wl_process_tokens(
+                text = wl_token_preprocessing.wl_preprocess_tokens(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
