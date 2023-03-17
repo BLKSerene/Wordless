@@ -346,10 +346,10 @@ def wl_widgets_token_settings(parent):
 
     def use_tags_changed():
         if checkbox_use_tags.isChecked():
-            checkbox_lemmatize_tokens.setEnabled(False)
+            checkbox_apply_lemmatization.setEnabled(False)
             checkbox_ignore_tags.setEnabled(False)
         else:
-            checkbox_lemmatize_tokens.setEnabled(True)
+            checkbox_apply_lemmatization.setEnabled(True)
             checkbox_ignore_tags.setEnabled(True)
 
     checkbox_words = QCheckBox(_tr('wl_widgets', 'Words'), parent)
@@ -360,7 +360,7 @@ def wl_widgets_token_settings(parent):
     checkbox_punc_marks = QCheckBox(_tr('wl_widgets', 'Punctuation marks'), parent)
 
     checkbox_treat_as_all_lowercase = QCheckBox(_tr('wl_widgets', 'Treat as all lowercase'), parent)
-    checkbox_lemmatize_tokens = QCheckBox(_tr('wl_widgets', 'Lemmatize all tokens'), parent)
+    checkbox_apply_lemmatization = QCheckBox(_tr('wl_widgets', 'Apply lemmatization'), parent)
     checkbox_filter_stop_words = QCheckBox(_tr('wl_widgets', 'Filter stop words'), parent)
 
     checkbox_assign_pos_tags = QCheckBox(_tr('wl_widgets', 'Assign part-of-speech tags'), parent)
@@ -384,7 +384,7 @@ def wl_widgets_token_settings(parent):
         checkbox_punc_marks,
 
         checkbox_treat_as_all_lowercase,
-        checkbox_lemmatize_tokens,
+        checkbox_apply_lemmatization,
         checkbox_filter_stop_words,
 
         checkbox_assign_pos_tags,

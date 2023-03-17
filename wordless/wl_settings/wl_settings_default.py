@@ -116,7 +116,7 @@ def init_settings_default(main):
                 'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
-                'lemmatize_tokens': False,
+                'apply_lemmatization': False,
                 'filter_stop_words': False,
 
                 'assign_pos_tags': False,
@@ -422,7 +422,7 @@ def init_settings_default(main):
                 'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
-                'lemmatize_tokens': False,
+                'apply_lemmatization': False,
                 'filter_stop_words': False,
 
                 'assign_pos_tags': False,
@@ -508,7 +508,7 @@ def init_settings_default(main):
                 'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
-                'lemmatize_tokens': False,
+                'apply_lemmatization': False,
                 'filter_stop_words': False,
 
                 'assign_pos_tags': False,
@@ -657,7 +657,7 @@ def init_settings_default(main):
                 'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
-                'lemmatize_tokens': False,
+                'apply_lemmatization': False,
                 'filter_stop_words': False,
 
                 'assign_pos_tags': False,
@@ -814,7 +814,7 @@ def init_settings_default(main):
                 'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
-                'lemmatize_tokens': False,
+                'apply_lemmatization': False,
                 'filter_stop_words': False,
 
                 'assign_pos_tags': True,
@@ -971,7 +971,7 @@ def init_settings_default(main):
                 'punc_marks': False,
 
                 'treat_as_all_lowercase': False,
-                'lemmatize_tokens': False,
+                'apply_lemmatization': False,
                 'filter_stop_words': False,
 
                 'assign_pos_tags': False,

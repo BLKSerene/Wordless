@@ -72,7 +72,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.checkbox_punc_marks,
 
             self.checkbox_treat_as_all_lowercase,
-            self.checkbox_lemmatize_tokens,
+            self.checkbox_apply_lemmatization,
             self.checkbox_filter_stop_words,
 
             self.checkbox_assign_pos_tags,
@@ -90,7 +90,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_punc_marks.stateChanged.connect(self.token_settings_changed)
 
         self.checkbox_treat_as_all_lowercase.stateChanged.connect(self.token_settings_changed)
-        self.checkbox_lemmatize_tokens.stateChanged.connect(self.token_settings_changed)
+        self.checkbox_apply_lemmatization.stateChanged.connect(self.token_settings_changed)
         self.checkbox_filter_stop_words.stateChanged.connect(self.token_settings_changed)
 
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
@@ -107,7 +107,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 3, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(self.checkbox_treat_as_all_lowercase, 4, 0, 1, 2)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_lemmatize_tokens, 5, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_apply_lemmatization, 5, 0, 1, 2)
         self.group_box_token_settings.layout().addWidget(self.checkbox_filter_stop_words, 6, 0, 1, 2)
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 7, 0, 1, 2)
@@ -363,7 +363,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         self.checkbox_punc_marks.setChecked(settings['token_settings']['punc_marks'])
 
         self.checkbox_treat_as_all_lowercase.setChecked(settings['token_settings']['treat_as_all_lowercase'])
-        self.checkbox_lemmatize_tokens.setChecked(settings['token_settings']['lemmatize_tokens'])
+        self.checkbox_apply_lemmatization.setChecked(settings['token_settings']['apply_lemmatization'])
         self.checkbox_filter_stop_words.setChecked(settings['token_settings']['filter_stop_words'])
 
         self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
@@ -445,7 +445,7 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
         settings['punc_marks'] = self.checkbox_punc_marks.isChecked()
 
         settings['treat_as_all_lowercase'] = self.checkbox_treat_as_all_lowercase.isChecked()
-        settings['lemmatize_tokens'] = self.checkbox_lemmatize_tokens.isChecked()
+        settings['apply_lemmatization'] = self.checkbox_apply_lemmatization.isChecked()
         settings['filter_stop_words'] = self.checkbox_filter_stop_words.isChecked()
 
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
