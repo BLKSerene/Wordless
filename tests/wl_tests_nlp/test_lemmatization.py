@@ -52,7 +52,19 @@ def test_lemmatize(lang, lemmatizer):
         lemmatizer = lemmatizer
     )
 
-    lemmas_long_text_tokenized = wl_lemmatization.wl_lemmatize(
+    # Tagged texts
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
+
+    lemmas_tokenized_tagged = wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = [token + '_TEST' for token in tokens],
+        lang = lang,
+        lemmatizer = lemmatizer,
+        tagged = True
+    )
+
+    # Long texts
+    lemmas_tokenized_long = wl_lemmatization.wl_lemmatize(
         main,
         inputs = [str(i) for i in range(101) for j in range(50)],
         lang = lang,
@@ -71,8 +83,13 @@ def test_lemmatize(lang, lemmatizer):
     # Tokenization should not be modified
     assert len(tokens) == len(lemmas_tokenized)
 
-    # Test long texts
-    assert lemmas_long_text_tokenized == [str(i) for i in range(101) for j in range(50)]
+    # Tagged texts
+    lemmas_tokenized = [lemma + '_TEST' for lemma in lemmas_tokenized]
+
+    assert lemmas_tokenized_tagged == lemmas_tokenized
+
+    # Long texts
+    assert lemmas_tokenized_long == [str(i) for i in range(101) for j in range(50)]
 
     tests_lang_util_skipped = False
 

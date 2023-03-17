@@ -52,6 +52,25 @@ def test_dependency_parse(lang, dependency_parser):
         dependency_parser = dependency_parser
     )
 
+    # Tagged texts
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
+
+    dependencies_tokenized_tagged = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = [token + '_TEST' for token in tokens],
+        lang = lang,
+        dependency_parser = dependency_parser,
+        tagged = True
+    )
+
+    # Long texts
+    dependencies_tokenized_long = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(50)],
+        lang = lang,
+        dependency_parser = dependency_parser
+    )
+
     print(f'{lang} / {dependency_parser}:')
     print(f'{dependencies}\n')
 
@@ -66,6 +85,17 @@ def test_dependency_parse(lang, dependency_parser):
 
     # Tokenization should not be modified
     assert len(tokens) == len(dependencies_tokenized)
+
+    # Tagged texts
+    dependencies_tokenized = [
+        (child + '_TEST', head + '_TEST', dependency_relation, dependency_dist)
+        for child, head, dependency_relation, dependency_dist in dependencies_tokenized
+    ]
+
+    assert dependencies_tokenized_tagged == dependencies_tokenized
+
+    # Long texts
+    assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(50)]
 
     if lang == 'cat':
         assert dependencies == [('El', 'català', 'det', 1), ('català', 'llengua', 'nsubj', 46), ('(', 'denominació', 'punct', 1), ('denominació', 'català', 'appos', -2), ('oficial', 'denominació', 'amod', -1), ('a', 'Catalunya', 'case', 1), ('Catalunya', 'denominació', 'nmod', -3), (',', 'Illes', 'punct', 3), ('a', 'Illes', 'case', 2), ('les', 'Illes', 'det', 1), ('Illes', 'denominació', 'nmod', -7), ('Balears', 'Illes', 'flat', -1), (',', 'Andorra', 'punct', 2), ('a', 'Andorra', 'case', 1), ('Andorra', 'denominació', 'nmod', -11), (',', 'ciutat', 'punct', 3), ('a', 'ciutat', 'case', 2), ('la', 'ciutat', 'det', 1), ('ciutat', 'català', 'nmod', -17), ('de', 'Alguer', 'case', 2), ("l'", 'Alguer', 'det', 1), ('Alguer', 'ciutat', 'nmod', -3), ('i', 'tradicional', 'cc', 1), ('tradicional', 'Alguer', 'conj', -2), ('a', 'Catalunya', 'case', 1), ('Catalunya', 'ciutat', 'nmod', -7), ('d', 'Nord', 'case', 2), ('el', 'Nord', 'det', 1), ('Nord', 'Catalunya', 'flat', -3), (')', 'ciutat', 'punct', -11), ('o', 'valencià', 'cc', 1), ('valencià', 'català', 'conj', -30), ('(', 'denominació', 'punct', 1), ('denominació', 'català', 'appos', -32), ('oficial', 'denominació', 'amod', -1), ('a', 'País', 'case', 2), ('l', 'País', 'det', 1), ('País', 'denominació', 'nmod', -4), ('Valencià', 'País', 'flat', -1), ('i', 'tradicional', 'cc', 1), ('tradicional', 'denominació', 'conj', -7), ('a', 'Carxe', 'case', 2), ('l', 'Carxe', 'det', 1), ('Carxe', 'tradicional', 'nmod', -3), (')', 'denominació', 'punct', -11), ('és', 'llengua', 'cop', 2), ('una', 'llengua', 'det', 1), ('llengua', 'llengua', 'ROOT', 0), ('romànica', 'llengua', 'amod', -1), ('parlada', 'llengua', 'amod', -2), ('a', 'Catalunya', 'case', 1), ('Catalunya', 'llengua', 'obl', -4), (',', 'País', 'punct', 2), ('el', 'País', 'det', 1), ('País', 'llengua', 'appos', -7), ('Valencià', 'País', 'flat', -1), ('(', 'tret', 'punct', 1), ('tret', 'País', 'appos', -3), ("d'", 'comarques', 'case', 2), ('algunes', 'comarques', 'det', 1), ('comarques', 'tret', 'nmod', -3), ('i', 'localitats', 'cc', 1), ('localitats', 'comarques', 'conj', -2), ('de', 'interior', 'case', 2), ("l'", 'interior', 'det', 1), ('interior', 'comarques', 'nmod', -5), (')', 'tret', 'punct', -9), (',', 'Illes', 'punct', 2), ('les', 'Illes', 'det', 1), ('Illes', 'llengua', 'appos', -22), ('Balears', 'Illes', 'flat', -1), ('(', 'rep', 'punct', 3), ('on', 'rep', 'obl', 2), ('també', 'rep', 'advmod', 1), ('rep', 'Illes', 'acl', -5), ('el', 'nom', 'det', 1), ('nom', 'rep', 'obj', -2), ('de', 'mallorquí', 'case', 1), ('mallorquí', 'nom', 'nmod', -2), (',', 'menorquí', 'punct', 1), ('menorquí', 'mallorquí', 'conj', -2), (',', 'eivissenc', 'punct', 1), ('eivissenc', 'mallorquí', 'conj', -4), ('o', 'formenterer', 'cc', 1), ('formenterer', 'mallorquí', 'conj', -6), ('segons', 'illa', 'case', 2), ("l'", 'illa', 'det', 1), ('illa', 'formenterer', 'obl', -3), (')', 'rep', 'punct', -14), (',', 'Andorra', 'punct', 1), ('Andorra', 'llengua', 'appos', -43), (',', 'Franja', 'punct', 2), ('la', 'Franja', 'det', 1), ('Franja', 'llengua', 'appos', -46), ('de', 'Ponent', 'case', 1), ('Ponent', 'Franja', 'flat', -2), ('(', 'Aragó', 'punct', 3), ('a', 'Aragó', 'case', 2), ("l'", 'Aragó', 'det', 1), ('Aragó', 'Franja', 'nmod', -6), (')', 'Aragó', 'punct', -1), (',', 'ciutat', 'punct', 2), ('la', 'ciutat', 'det', 1), ('ciutat', 'llengua', 'appos', -56), ('de', 'Alguer', 'case', 2), ("l'", 'Alguer', 'det', 1), ('Alguer', 'ciutat', 'nmod', -3), ('(', 'illa', 'punct', 3), ('a', 'illa', 'case', 2), ("l'", 'illa', 'det', 1), ('illa', 'ciutat', 'nmod', -7), ('de', 'Sardenya', 'case', 1), ('Sardenya', 'illa', 'nmod', -2), (')', 'illa', 'punct', -3), (',', 'Catalunya', 'punct', 2), ('la', 'Catalunya', 'det', 1), ('Catalunya', 'llengua', 'appos', -69), ('d', 'Nord,[8', 'case', 2), ('el', 'Nord,[8', 'det', 1), ('Nord,[8', 'Catalunya', 'flat', -3), (']', 'Carxe', 'punct', 2), ('el', 'Carxe', 'det', 1), ('Carxe', 'Catalunya', 'flat', -6), ('(', 'territori', 'punct', 3), ('un', 'territori', 'det', 2), ('petit', 'territori', 'amod', 1), ('territori', 'Carxe', 'appos', -4), ('de', 'Múrcia', 'case', 1), ('Múrcia', 'territori', 'nmod', -2), ('poblat', 'territori', 'amod', -3), ('per', 'pobladors', 'case', 1), ('pobladors', 'poblat', 'obj', -2), ('valencians),[9][10', 'pobladors', 'amod', -1), (']', 'poblat', 'punct', -4), ('i', 'comunitats', 'cc', 2), ('en', 'comunitats', 'case', 1), ('comunitats', 'llengua', 'conj', -89), ('arreu', 'comunitats', 'advmod', -1), ('d', 'món', 'case', 2), ('el', 'món', 'det', 1), ('món', 'arreu', 'obl', -3), ('(', 'destaca', 'punct', 4), ('entre', 'quals', 'case', 2), ('les', 'quals', 'det', 1), ('quals', 'destaca', 'obl', 1), ('destaca', 'món', 'acl', -5), ('la', 'destaca', 'det', -1), ('de', 'la', 'case', -1), ("l'", 'Argentina', 'det', 1), ('Argentina', 'la', 'obj', -3), (',', '200.000', 'punct', 2), ('amb', '200.000', 'case', 1), ('200.000', 'parlants).[11', 'nummod', 1), ('parlants).[11', 'destaca', 'nsubj', -8), (']', 'parlants).[11', 'punct', -1)]

@@ -16,8 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import re
-
 import nltk
 from PyQt5.QtCore import QCoreApplication
 import simplemma
@@ -145,10 +143,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
     lemmas = []
 
     if tagged:
-        re_tags = wl_matching.get_re_tags(main, tag_type = 'body')
-
-        tags = [''.join(re.findall(re_tags, token)) for token in inputs]
-        inputs = [re.sub(re_tags, '', token) for token in inputs]
+        inputs, tags = wl_matching.split_tokens_tags(main, inputs)
     else:
         tags = [''] * len(inputs)
 

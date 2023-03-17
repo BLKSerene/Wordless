@@ -32,7 +32,7 @@ from PyQt5.QtWidgets import QLabel, QGroupBox
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_pos_tagging, wl_texts, wl_token_processing
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_preprocessing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_layouts, wl_tables, wl_widgets
 
@@ -75,9 +75,12 @@ class Wrapper_Colligation_Extractor(wl_layouts.Wl_Wrapper):
             self.checkbox_lemmatize_tokens,
             self.checkbox_filter_stop_words,
 
+            self.checkbox_assign_pos_tags,
             self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings(self)
+
+        self.checkbox_assign_pos_tags.hide()
 
         self.checkbox_words.stateChanged.connect(self.token_settings_changed)
         self.checkbox_all_lowercase.stateChanged.connect(self.token_settings_changed)
@@ -944,19 +947,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
 
                 text = copy.deepcopy(file['text'])
 
-                # Generate POS tags for files that are not POS tagged already
-                if not file['tagged']:
-                    tokens_tagged = wl_pos_tagging.wl_pos_tag(
-                        self.main,
-                        inputs = text.get_tokens_flat(),
-                        lang = text.lang
-                    )
-
-                    text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
-                    # Modify text types
-                    text.tagged = True
-
-                text = wl_token_processing.wl_process_tokens_colligation_extractor(
+                text = wl_token_preprocessing.wl_preprocess_tokens_colligation_extractor(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )

@@ -33,7 +33,7 @@ import underthesea
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_preprocessing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
@@ -66,12 +66,14 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         (
             self.checkbox_punc_marks,
 
+            self.checkbox_assign_pos_tags,
             self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings_concordancer(self)
 
         self.checkbox_punc_marks.stateChanged.connect(self.token_settings_changed)
 
+        self.checkbox_assign_pos_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
@@ -80,8 +82,9 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 2, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 2, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_assign_pos_tags, 2, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 3, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 3, 1)
 
         # Search Settings
         self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
@@ -305,6 +308,7 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
         # Token Settings
         self.checkbox_punc_marks.setChecked(settings['token_settings']['punc_marks'])
 
+        self.checkbox_assign_pos_tags.setChecked(settings['token_settings']['assign_pos_tags'])
         self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
@@ -364,20 +368,11 @@ class Wrapper_Concordancer(wl_layouts.Wl_Wrapper):
 
         settings['punc_marks'] = self.checkbox_punc_marks.isChecked()
 
+        settings['assign_pos_tags'] = self.checkbox_assign_pos_tags.isChecked()
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
-        # Check if searching is enabled
-        if self.group_box_search_settings.isChecked():
-            self.checkbox_match_tags.token_settings_changed()
-        else:
-            self.group_box_search_settings.setChecked(True)
-
-            self.checkbox_match_tags.token_settings_changed()
-
-            self.group_box_search_settings.setChecked(False)
-
-        self.main.wl_context_settings_concordancer.token_settings_changed()
+        self.checkbox_match_tags.token_settings_changed()
 
     def search_settings_changed(self):
         settings = self.main.settings_custom['concordancer']['search_settings']
@@ -663,7 +658,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
             for file in self.main.wl_file_area.get_selected_files():
                 text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_concordancer(
+                text = wl_token_preprocessing.wl_preprocess_tokens_concordancer(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -898,7 +893,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
             for file in files:
                 text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_concordancer(
+                text = wl_token_preprocessing.wl_preprocess_tokens_concordancer(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )

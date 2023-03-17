@@ -363,6 +363,7 @@ def wl_widgets_token_settings(parent):
     checkbox_lemmatize_tokens = QCheckBox(_tr('wl_widgets', 'Lemmatize all tokens'), parent)
     checkbox_filter_stop_words = QCheckBox(_tr('wl_widgets', 'Filter stop words'), parent)
 
+    checkbox_assign_pos_tags = QCheckBox(_tr('wl_widgets', 'Assign part-of-speech tags'), parent)
     checkbox_ignore_tags = QCheckBox(_tr('wl_widgets', 'Ignore tags'), parent)
     checkbox_use_tags = QCheckBox(_tr('wl_widgets', 'Use tags only'), parent)
 
@@ -386,11 +387,45 @@ def wl_widgets_token_settings(parent):
         checkbox_lemmatize_tokens,
         checkbox_filter_stop_words,
 
+        checkbox_assign_pos_tags,
         checkbox_ignore_tags,
         checkbox_use_tags
     )
 
 def wl_widgets_token_settings_concordancer(parent):
+    def ignore_tags_changed():
+        if checkbox_ignore_tags.isChecked():
+            checkbox_use_tags.setEnabled(False)
+        else:
+            checkbox_use_tags.setEnabled(True)
+
+    def use_tags_changed():
+        if checkbox_use_tags.isChecked():
+            checkbox_ignore_tags.setEnabled(False)
+        else:
+            checkbox_ignore_tags.setEnabled(True)
+
+    checkbox_punc_marks = QCheckBox(_tr('wl_widgets', 'Punctuation marks'), parent)
+
+    checkbox_assign_pos_tags = QCheckBox(_tr('wl_widgets', 'Assign part-of-speech tags'), parent)
+    checkbox_ignore_tags = QCheckBox(_tr('wl_widgets', 'Ignore tags'), parent)
+    checkbox_use_tags = QCheckBox(_tr('wl_widgets', 'Use tags only'), parent)
+
+    checkbox_ignore_tags.stateChanged.connect(ignore_tags_changed)
+    checkbox_use_tags.stateChanged.connect(use_tags_changed)
+
+    ignore_tags_changed()
+    use_tags_changed()
+
+    return (
+        checkbox_punc_marks,
+
+        checkbox_assign_pos_tags,
+        checkbox_ignore_tags,
+        checkbox_use_tags
+    )
+
+def wl_widgets_token_settings_concordancer1(parent):
     def ignore_tags_changed():
         if checkbox_ignore_tags.isChecked():
             checkbox_use_tags.setEnabled(False)
@@ -436,8 +471,9 @@ def wl_widgets_search_settings(parent, tab):
 
             stacked_widget_search_term.setCurrentIndex(0)
 
-    def token_settings_changed():
-        token_settings = main.settings_custom[tab]['token_settings']
+    def token_settings_changed(token_settings = None):
+        if token_settings is None:
+            token_settings = main.settings_custom[tab]['token_settings']
 
         if token_settings['ignore_tags'] or token_settings['use_tags']:
             checkbox_match_without_tags.setEnabled(False)

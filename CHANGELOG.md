@@ -24,6 +24,7 @@
 - Utils: Add python-mecab-ko's MeCab
 - Work Area: Add Wordlist Generator - Syllabification
 - Work Area: Add Wordlist Generator - Generation Settings - Syllabification
+- Work Area: Add Work Area - Token Settings - Assign part-of-speech tags
 
 ### ✨ Improvements
 - Misc: Add fatal error dialog - Copy

@@ -26,14 +26,14 @@ import spacy
 
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
-from wordless.wl_nlp import wl_nlp_utils
+from wordless.wl_nlp import wl_matching, wl_nlp_utils
 from wordless.wl_utils import wl_conversion, wl_misc, wl_paths
 
 _tr = QCoreApplication.translate
 
 is_windows, is_macos, is_linux = wl_misc.check_os()
 
-def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default'):
+def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default', tagged = False):
     if dependency_parser == 'default':
         dependency_parser = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
 
@@ -42,7 +42,7 @@ def wl_dependency_parse(main, inputs, lang, dependency_parser = 'default'):
     if isinstance(inputs, str):
         dependencies = wl_dependency_parse_text(main, inputs, lang, dependency_parser)
     else:
-        dependencies = wl_dependency_parse_tokens(main, inputs, lang, dependency_parser)
+        dependencies = wl_dependency_parse_tokens(main, inputs, lang, dependency_parser, tagged)
 
     return dependencies
 
@@ -67,8 +67,11 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
 
     return dependencies
 
-def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
+def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser, tagged):
     dependencies = []
+
+    if tagged:
+        inputs, tags = wl_matching.split_tokens_tags(main, inputs)
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
@@ -81,21 +84,36 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser):
             if nlp.has_pipe(pipeline)
         ]):
             docs = []
+            lens_docs = []
 
             for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser):
                 docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens)))
 
-            for doc in nlp.pipe(docs):
-                dependencies.extend([
-                    (token.text, token.head.text, token.dep_, token.head.i - token.i)
-                    for token in doc
-                ])
+                # Record length of each section
+                if tagged:
+                    lens_docs.append(len(tokens))
+
+            for i, doc in enumerate(nlp.pipe(docs)):
+                if tagged:
+                    for token in doc:
+                        # Put back tokens and tags
+                        i_tag = sum(lens_docs[:i]) + token.i
+                        i_tag_head = sum(lens_docs[:i]) + token.head.i
+
+                        dependencies.append((
+                            token.text + tags[i_tag], token.head.text + tags[i_tag_head], token.dep_, token.head.i - token.i
+                        ))
+                else:
+                    dependencies.extend([
+                        (token.text, token.head.text, token.dep_, token.head.i - token.i)
+                        for token in doc
+                    ])
 
     return dependencies
 
 def wl_dependency_parse_fig(
     main, inputs,
-    lang, dependency_parser = 'default',
+    lang, dependency_parser = 'default', tagged = False,
     show_pos_tags = True, show_fine_grained_pos_tags = False,
     show_lemmas = False, collapse_punc_marks = True, compact_mode = False,
     show_in_separate_tab = False
@@ -116,7 +134,7 @@ def wl_dependency_parse_fig(
     else:
         htmls = wl_dependency_parse_fig_tokens(
             main, inputs,
-            lang, dependency_parser,
+            lang, dependency_parser, tagged,
             show_pos_tags, show_fine_grained_pos_tags,
             show_lemmas, collapse_punc_marks, compact_mode,
             show_in_separate_tab
@@ -192,12 +210,15 @@ def wl_dependency_parse_fig_text(
 
 def wl_dependency_parse_fig_tokens(
     main, inputs,
-    lang, dependency_parser,
+    lang, dependency_parser, tagged,
     show_pos_tags, show_fine_grained_pos_tags,
     show_lemmas, collapse_punc_marks, compact_mode,
     show_in_separate_tab
 ):
     htmls = []
+
+    if tagged:
+        inputs, tags = wl_matching.split_tokens_tags(main, inputs)
 
     # spaCy
     if dependency_parser.startswith('spacy_'):
@@ -210,41 +231,61 @@ def wl_dependency_parse_fig_tokens(
             if nlp.has_pipe(pipeline)
         ]):
             docs = []
+            lens_docs = []
 
             for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser):
                 docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens)))
 
+                # Record length of each section
+                if tagged:
+                    lens_docs.append(len(tokens))
+
+            options = {
+                'fine_grained': show_fine_grained_pos_tags,
+                'add_lemma': show_lemmas,
+                'collapse_punct': collapse_punc_marks,
+                'compact': compact_mode
+            }
+
             if show_in_separate_tab:
-                for doc in nlp.pipe(docs):
+                for i_doc, doc in enumerate(nlp.pipe(docs)):
                     for sentence in doc.sents:
+                        # Put back tokens and tags
+                        displacy_dict = spacy.displacy.parse_deps(sentence.as_doc(), options = options)
+
+                        for token, word in zip(sentence, displacy_dict['words']):
+                            i_tag = sum(lens_docs[:i_doc]) + token.i
+
+                            word['text'] += tags[i_tag]
+
                         htmls.append(spacy.displacy.render(
-                            sentence,
+                            displacy_dict,
                             style = 'dep',
                             minify = True,
-                            options = {
-                                'fine_grained': show_fine_grained_pos_tags,
-                                'add_lemma': show_lemmas,
-                                'collapse_punct': collapse_punc_marks,
-                                'compact': compact_mode
-                            }
+                            options = options,
+                            manual = True
                         ))
             else:
-                sentences = [
-                    sentence
-                    for doc in nlp.pipe(docs)
-                    for sentence in doc.sents
-                ]
+                sentences = []
+
+                for i_doc, doc in enumerate(nlp.pipe(docs)):
+                    for sentence in doc.sents:
+                        # Put back tokens and tags
+                        displacy_dict = spacy.displacy.parse_deps(sentence.as_doc(), options = options)
+
+                        for token, word in zip(sentence, displacy_dict['words']):
+                            i_tag = sum(lens_docs[:i_doc]) + token.i
+
+                            word['text'] += tags[i_tag]
+
+                        sentences.append(displacy_dict)
 
                 htmls.append(spacy.displacy.render(
                     sentences,
                     style = 'dep',
                     minify = True,
-                    options = {
-                        'fine_grained': show_fine_grained_pos_tags,
-                        'add_lemma': show_lemmas,
-                        'collapse_punct': collapse_punc_marks,
-                        'compact': compact_mode
-                    }
+                    options = options,
+                    manual = True
                 ))
 
     return htmls

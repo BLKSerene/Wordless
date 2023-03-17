@@ -52,7 +52,20 @@ def test_syl_tokenize(lang, syl_tokenizer):
         lang = lang,
         syl_tokenizer = syl_tokenizer
     )
-    syls_long_text_tokenized = wl_syl_tokenization.wl_syl_tokenize(
+
+    # Tagged texts
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
+
+    syls_tokenized_tagged = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = [token + '_TEST' for token in tokens],
+        lang = lang,
+        syl_tokenizer = syl_tokenizer,
+        tagged = True
+    )
+
+    # Long texts
+    syls_tokenized_long = wl_syl_tokenization.wl_syl_tokenize(
         main,
         inputs = [str(i) for i in range(101) for j in range(50)],
         lang = lang,
@@ -73,9 +86,14 @@ def test_syl_tokenize(lang, syl_tokenizer):
     # Tokenization should not be modified
     assert len(syls_tokenized) == len(tokens)
 
-    # Test long texts
-    if syl_tokenizer != 'nltk_sonority_sequencing':
-        assert syls_long_text_tokenized == [[str(i)] for i in range(101) for j in range(50)]
+    # Tagged texts
+    for syls_tokens in syls_tokenized:
+        syls_tokens[-1] += '_TEST'
+
+    assert syls_tokenized_tagged == syls_tokenized
+
+    # Long texts
+    assert syls_tokenized_long == [[str(i)] for i in range(101) for j in range(50)]
 
     tests_lang_util_skipped = False
 
@@ -186,6 +204,23 @@ def test_syl_tokenize_tokens_no_punc(lang, syl_tokenizer):
         syl_tokenizer = syl_tokenizer
     )
 
+    # Tagged texts
+    syls_tokens_tagged = wl_syl_tokenization.wl_syl_tokenize_tokens_no_punc(
+        main,
+        tokens = [token + '_TEST' for token in tokens],
+        lang = lang,
+        syl_tokenizer = syl_tokenizer,
+        tagged = True
+    )
+
+    # Long texts
+    syls_tokens_long = wl_syl_tokenization.wl_syl_tokenize(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(50)],
+        lang = lang,
+        syl_tokenizer = syl_tokenizer
+    )
+
     # Check for empty syllables
     assert all(all(syls_token) for syls_token in syls_tokens)
 
@@ -200,6 +235,15 @@ def test_syl_tokenize_tokens_no_punc(lang, syl_tokenizer):
         bool(len(syls) == 1 and wl_checks_tokens.is_punc(syls[0]))
         for syls in syls_tokens
     ))
+
+    # Tagged texts
+    for syls_tagged in syls_tokens_tagged:
+        syls_tagged[-1] = syls_tagged[-1].replace('_TEST', '')
+
+    assert syls_tokens_tagged == syls_tokens
+
+    # Long texts
+    assert syls_tokens_long == [[str(i)] for i in range(101) for j in range(50)]
 
 if __name__ == '__main__':
     for lang, syl_tokenizer in test_syl_tokenizers:

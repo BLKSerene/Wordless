@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_nlp_utils, wl_token_processing
+from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_nlp_utils, wl_token_preprocessing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -61,12 +61,14 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         (
             self.checkbox_punc_marks,
 
+            self.checkbox_assign_pos_tags,
             self.checkbox_ignore_tags,
             self.checkbox_use_tags
         ) = wl_widgets.wl_widgets_token_settings_concordancer(self)
 
         self.checkbox_punc_marks.stateChanged.connect(self.token_settings_changed)
 
+        self.checkbox_assign_pos_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_ignore_tags.stateChanged.connect(self.token_settings_changed)
         self.checkbox_use_tags.stateChanged.connect(self.token_settings_changed)
 
@@ -75,8 +77,9 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         self.group_box_token_settings.layout().addWidget(wl_layouts.Wl_Separator(self), 1, 0, 1, 2)
 
-        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 2, 0)
-        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 2, 1)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_assign_pos_tags, 2, 0, 1, 2)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_ignore_tags, 3, 0)
+        self.group_box_token_settings.layout().addWidget(self.checkbox_use_tags, 3, 1)
 
         # Search Settings
         self.group_box_search_settings = QGroupBox(self.tr('Search Settings'), self)
@@ -212,6 +215,7 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
         # Token Settings
         self.checkbox_punc_marks.setChecked(settings['token_settings']['punc_marks'])
 
+        self.checkbox_assign_pos_tags.setChecked(settings['token_settings']['assign_pos_tags'])
         self.checkbox_ignore_tags.setChecked(settings['token_settings']['ignore_tags'])
         self.checkbox_use_tags.setChecked(settings['token_settings']['use_tags'])
 
@@ -260,11 +264,11 @@ class Wrapper_Dependency_Parser(wl_layouts.Wl_Wrapper):
 
         settings['punc_marks'] = self.checkbox_punc_marks.isChecked()
 
+        settings['assign_pos_tags'] = self.checkbox_assign_pos_tags.isChecked()
         settings['ignore_tags'] = self.checkbox_ignore_tags.isChecked()
         settings['use_tags'] = self.checkbox_use_tags.isChecked()
 
         self.checkbox_match_tags.token_settings_changed()
-        self.main.wl_context_settings_dependency_parser.token_settings_changed()
 
     def search_settings_changed(self):
         settings = self.main.settings_custom['dependency_parser']['search_settings']
@@ -415,14 +419,13 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                 sentence = tuple(self.model().item(row, 5).text_display)
 
                 if sentence not in sentences_rendered:
-                    for file in self.settings['file_area']['files_open']:
-                        if file['selected'] and file['name'] == self.model().item(row, 8).text():
-                            file_selected = file
+                    file_selected = self.main.wl_file_area.find_file_by_name(self.model().item(row, 8).text(), selected_only = True)
 
                     htmls.extend(wl_dependency_parsing.wl_dependency_parse_fig(
                         self.main,
                         inputs = sentence,
                         lang = file_selected['lang'],
+                        tagged = file_selected['text'].lang,
                         show_pos_tags = fig_settings['show_pos_tags'],
                         show_fine_grained_pos_tags = fig_settings['show_fine_grained_pos_tags'],
                         show_lemmas = fig_settings['show_pos_tags'] and fig_settings['show_lemmas'],
@@ -456,7 +459,7 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
 
             for file in self.main.wl_file_area.get_selected_files():
                 text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_concordancer(
+                text = wl_token_preprocessing.wl_preprocess_tokens_concordancer(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -491,7 +494,12 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                         sentence = list(wl_misc.flatten_list(sentence))
 
                         if any((token in search_terms for token in sentence)):
-                            dependencies = wl_dependency_parsing.wl_dependency_parse(self.main, sentence, lang = text.lang)
+                            dependencies = wl_dependency_parsing.wl_dependency_parse(
+                                self.main,
+                                inputs = sentence,
+                                lang = text.lang,
+                                tagged = text.tagged
+                            )
 
                             for i, (token, head, dependency_relation, dependency_len) in enumerate(dependencies):
                                 j = i_token + i
