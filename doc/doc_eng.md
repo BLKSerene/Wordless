@@ -112,7 +112,7 @@ By default, *Wordless* tries to detect the encoding and language settings of all
 In *Profiler*, you can check and compare general linguistic features of different files.
 
 - **3.1.1 Automated Arabic Readability Index ~ Wiener Sachtextformel**<br>
-  Readability statistics of each file calculated according to the different readability tests used. See [Measures of Readability](#doc-4-4-1) for more details.
+  Readability statistics of each file calculated according to the different readability tests used. See section [4.4.1 Measures of Readability](#doc-4-4-1) for more details.
 
 - **3.1.2 Count of Paragraphs**<br>
   The number of paragraphs in each file. Each line in the file is counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are not counted.
@@ -425,19 +425,26 @@ You can generate line charts or word clouds for wordlists using any statistics. 
 - **3.5.2 Token**<br>
   You can specify what should be counted as a "token" via **Token Settings**.
 
-- **3.5.3 Frequency**<br>
+- **3.5.3 Syllabification**<br>
+  The syllabified form of each token.
+
+  If the token happens to exist in the vocabulary of multiple languages, all syllabified forms with their applicable languages will be listed.
+
+  If there is no syllable tokenization support for the language where the token is found, "No language support" is displayed instead. To check which languages have syllable tokenization support, please refer to section [4.1 Supported Languages](#doc-4-1).
+
+- **3.5.4 Frequency**<br>
   The number of occurrences of the token in each file.
 
-- **3.5.4 Dispersion**<br>
-  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
+- **3.5.5 Dispersion**<br>
+  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
 
-- **3.5.5 Adjusted Frequency**<br>
-  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
+- **3.5.6 Adjusted Frequency**<br>
+  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
 
-- **3.5.6 Number of Files Found**<br>
+- **3.5.7 Number of Files Found**<br>
   The number of files in which the token appears at least once.
 
-- **3.5.7 Number of Files Found %**<br>
+- **3.5.8 Number of Files Found %**<br>
   The percentage of the number of files in which the token appears at least once out of the total number of files that are cureently selected.
 
 ![Wordlist Generator - Table](/doc/work_area/wordlist_generator_table.png)
@@ -464,10 +471,10 @@ You can further filter the results as you see fit by clicking **Filter Results**
   The number of occurrences of the n-gram in each file.
 
 - **3.6.4 Dispersion**<br>
-  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See [Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
+  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
 
 - **3.6.5 Adjusted Frequency**<br>
-  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See [Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
+  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
 
 - **3.6.6 Number of Files Found**<br>
   The number of files in which the n-gram appears at least once.
@@ -503,18 +510,18 @@ You can further filter the results as you see fit by clicking **Filter Results**
   The total number of co-occurrences of the node and the collocating token with the collocating token at all possible positions in each file.
 
 - **3.7.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **3.7.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
 - **3.7.8 Bayes Factor**<br>
-  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
 - **3.7.9 Effect Size**<br>
-  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
 - **3.7.10 Number of Files Found**<br>
   The number of files in which the node and the collocating token co-occur at least once.
@@ -553,18 +560,18 @@ You can further filter the results as you see fit by clicking **Filter Results**
   The total number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at all possible positions in each file.
 
 - **3.8.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **3.8.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
 - **3.8.8 Bayes Factor**<br>
-  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
   
 - **3.8.9 Effect Size**<br>
-  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
 - **3.8.10 Number of Files Found**<br>
   The number of files in which the node and the collocating part of speech co-occur at least once.
@@ -597,18 +604,18 @@ You can further filter the results as you see fit by clicking **Filter Results**
   The number of co-occurrences of the keywords in each observed file.
 
 - **3.9.5 Test Statistic**<br>
-  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **3.9.6 p-value**<br>
-  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
 - **3.9.7 Bayes Factor**<br>
-  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
 - **3.9.8 Effect Size**<br>
-  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See [Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
 
 - **3.9.9 Number of Files Found**<br>
   The number of files in which the keyword appears at least once.
