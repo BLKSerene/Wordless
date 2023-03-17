@@ -33,7 +33,7 @@ def wl_preprocess_tokens(main, text, token_settings):
     if settings['ignore_tags']:
         settings['use_tags'] = False
     elif settings['use_tags']:
-        settings['lemmatize_tokens'] = False
+        settings['apply_lemmatization'] = False
         settings['ignore_tags'] = False
 
     # Remove empty paragraphs
@@ -67,8 +67,8 @@ def wl_preprocess_tokens(main, text, token_settings):
 
         text.tags = [tags for tags in text.tags if tags != '']
 
-    # Lemmatize all tokens
-    if settings['lemmatize_tokens']:
+    # Apply lemmatization
+    if settings['apply_lemmatization']:
         for para in text.tokens_multilevel:
             for sentence in para:
                 for i, sentence_seg in enumerate(sentence):
