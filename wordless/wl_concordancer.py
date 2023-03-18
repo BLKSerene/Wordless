@@ -482,13 +482,19 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             self.main,
             search_settings = self.main.settings_custom['concordancer']['search_settings']
         ):
-            worker_concordancer_table = Wl_Worker_Concordancer_Table(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
+            if self.main.settings_custom['concordancer']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(worker_concordancer_table).start_worker()
+            if nlp_support_ok:
+                worker_concordancer_table = Wl_Worker_Concordancer_Table(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_table
+                )
+
+                wl_threading.Wl_Thread(worker_concordancer_table).start_worker()
 
     def update_gui_table(self, err_msg, concordance_lines):
         if wl_checks_work_area.check_results(self.main, err_msg, concordance_lines):
@@ -588,13 +594,19 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
             self.main,
             search_settings = self.main.settings_custom['concordancer']['search_settings']
         ):
-            self.worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_fig
-            )
+            if self.main.settings_custom['concordancer']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(self.worker_concordancer_fig).start_worker()
+            if nlp_support_ok:
+                self.worker_concordancer_fig = Wl_Worker_Concordancer_Fig(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_fig
+                )
+
+                wl_threading.Wl_Thread(self.worker_concordancer_fig).start_worker()
 
     def update_gui_fig(self, err_msg, points, labels):
         if wl_checks_work_area.check_results(self.main, err_msg, points):

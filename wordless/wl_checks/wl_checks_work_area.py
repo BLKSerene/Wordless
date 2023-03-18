@@ -85,14 +85,26 @@ NLP_UTILS = {
     'dependency_parsers': _tr('wl_checks_work_area', 'Dependency parsing')
 }
 
-def check_nlp_support(main, files, nlp_utils):
+def check_nlp_support(main, nlp_utils, files = None, ref = False):
     support_ok = True
     nlp_utils_no_support = []
 
+    if files is None:
+        if ref:
+            files = list(main.wl_file_area_ref.get_selected_files())
+        else:
+            files = list(main.wl_file_area.get_selected_files())
+
     for nlp_util in nlp_utils:
-        for file in files:
-            if file['lang'] not in main.settings_global[nlp_util]:
-                nlp_utils_no_support.append([nlp_util, file])
+        # Check pos tagging support for untagged files only
+        if nlp_util == 'pos_taggers':
+            for file in files:
+                if not file['tagged'] and file['lang'] not in main.settings_global[nlp_util]:
+                    nlp_utils_no_support.append([nlp_util, file])
+        else:
+            for file in files:
+                if file['lang'] not in main.settings_global[nlp_util]:
+                    nlp_utils_no_support.append([nlp_util, file])
 
     if nlp_utils_no_support:
         dialog_err_files = wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = _tr('wl_checks_work_area', 'No Language Support'))

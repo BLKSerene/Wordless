@@ -276,13 +276,22 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
             )
 
         if search_additions_deletions:
-            worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
+            if self.main.settings_custom['concordancer_parallel']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(
+                    self.main,
+                    nlp_utils = ['pos_taggers']
+                )
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(worker_concordancer_parallel_table).start_worker()
+            if nlp_support_ok:
+                worker_concordancer_parallel_table = Wl_Worker_Concordancer_Parallel_Table(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_table
+                )
+
+                wl_threading.Wl_Thread(worker_concordancer_parallel_table).start_worker()
         else:
             wl_checks_work_area.wl_status_bar_msg_missing_search_terms(self.main)
 

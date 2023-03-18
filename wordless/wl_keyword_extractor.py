@@ -391,13 +391,22 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
         files_ref = list(self.main.wl_file_area_ref.get_selected_files())
 
         if files_observed and files_ref:
-            worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
+            if self.main.settings_custom['keyword_extractor']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(
+                    self.main,
+                    nlp_utils = ['pos_taggers']
+                )
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
+            if nlp_support_ok:
+                worker_keyword_extractor_table = Wl_Worker_Keyword_Extractor_Table(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_table
+                )
+
+                wl_threading.Wl_Thread(worker_keyword_extractor_table).start_worker()
         else:
             if not files_observed:
                 self.wl_msg_box_missing_files_observed()
@@ -584,13 +593,22 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
         files_ref = list(self.main.wl_file_area_ref.get_selected_files())
 
         if files_observed and files_ref:
-            self.worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_fig
-            )
+            if self.main.settings_custom['keyword_extractor']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(
+                    self.main,
+                    nlp_utils = ['pos_taggers']
+                )
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(self.worker_keyword_extractor_fig).start_worker()
+            if nlp_support_ok:
+                self.worker_keyword_extractor_fig = Wl_Worker_Keyword_Extractor_Fig(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_fig
+                )
+
+                wl_threading.Wl_Thread(self.worker_keyword_extractor_fig).start_worker()
         else:
             if not files_observed:
                 self.wl_msg_box_missing_files_observed()
