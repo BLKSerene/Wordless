@@ -269,14 +269,20 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
 
     @wl_misc.log_timing
     def generate_all_tables(self):
-        worker_profiler_table = Wl_Worker_Profiler_Table(
-            self.main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-            update_gui = self.update_gui_table,
-            profiler_tab = 'all'
-        )
+        if self.main.settings_custom['profiler']['token_settings']['assign_pos_tags']:
+            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+        else:
+            nlp_support = True
 
-        wl_threading.Wl_Thread(worker_profiler_table).start_worker()
+        if nlp_support:
+            worker_profiler_table = Wl_Worker_Profiler_Table(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_table,
+                profiler_tab = 'all'
+            )
+
+            wl_threading.Wl_Thread(worker_profiler_table).start_worker()
 
     def update_gui_table(self, err_msg, text_stats_files):
         text_stats = [stat for text_stats in text_stats_files for stat in text_stats]
@@ -330,14 +336,20 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 
     @wl_misc.log_timing
     def generate_table(self):
-        worker_profiler_table = Wl_Worker_Profiler_Table(
-            self.main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-            update_gui = self.update_gui_table,
-            profiler_tab = self.profiler_tab
-        )
+        if self.main.settings_custom['profiler']['token_settings']['assign_pos_tags']:
+            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+        else:
+            nlp_support = True
 
-        wl_threading.Wl_Thread(worker_profiler_table).start_worker()
+        if nlp_support:
+            worker_profiler_table = Wl_Worker_Profiler_Table(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_table,
+                profiler_tab = self.profiler_tab
+            )
+
+            wl_threading.Wl_Thread(worker_profiler_table).start_worker()
 
     def update_gui_table(self, err_msg, text_stats_files):
         raise NotImplementedError
