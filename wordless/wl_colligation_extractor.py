@@ -540,19 +540,14 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
     @wl_misc.log_timing
     def generate_table(self):
-        files_untagged = [
-            file
-            for file in self.main.wl_file_area.get_selected_files()
-            if not file['tagged']
-        ]
-
-        if wl_checks_work_area.check_nlp_support(
-            self.main,
-            files = files_untagged,
-            nlp_utils = ['pos_taggers']
-        ) and wl_checks_work_area.check_search_terms(
-            self.main,
-            search_settings = self.main.settings_custom['colligation_extractor']['search_settings']
+        if (
+            wl_checks_work_area.check_search_terms(
+                self.main,
+                search_settings = self.main.settings_custom['colligation_extractor']['search_settings']
+            ) and wl_checks_work_area.check_nlp_support(
+                self.main,
+                nlp_utils = ['pos_taggers']
+            )
         ):
             worker_colligation_extractor_table = Wl_Worker_Colligation_Extractor_Table(
                 self.main,
@@ -786,19 +781,14 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
 
     @wl_misc.log_timing
     def generate_fig(self):
-        files_untagged = [
-            file
-            for file in self.main.wl_file_area.get_selected_files()
-            if not file['tagged']
-        ]
-
-        if wl_checks_work_area.check_nlp_support(
-            self.main,
-            files = files_untagged,
-            nlp_utils = ['pos_taggers']
-        ) and wl_checks_work_area.check_search_terms(
-            self.main,
-            search_settings = self.main.settings_custom['colligation_extractor']['search_settings']
+        if (
+            wl_checks_work_area.check_search_terms(
+                self.main,
+                search_settings = self.main.settings_custom['colligation_extractor']['search_settings']
+            ) and wl_checks_work_area.check_nlp_support(
+                self.main,
+                nlp_utils = ['pos_taggers']
+            )
         ):
             self.worker_colligation_extractor_fig = Wl_Worker_Colligation_Extractor_Fig(
                 self.main,

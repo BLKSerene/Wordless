@@ -347,21 +347,29 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
 
     @wl_misc.log_timing
     def generate_table(self):
-        if wl_checks_work_area.check_nlp_support(
-            self.main,
-            files = self.main.wl_file_area.get_selected_files(),
-            nlp_utils = ['dependency_parsers']
-        ) and wl_checks_work_area.check_search_terms(
+        if wl_checks_work_area.check_search_terms(
             self.main,
             search_settings = self.main.settings_custom['dependency_parser']['search_settings']
         ):
-            worker_dependency_parser_table = Wl_Worker_Dependency_Parser(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
+            if self.main.settings_custom['dependency_parser']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(
+                    self.main,
+                    nlp_utils = ['pos_taggers', 'dependency_parsers']
+                )
+            else:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(
+                    self.main,
+                    nlp_utils = ['dependency_parsers']
+                )
 
-            wl_threading.Wl_Thread(worker_dependency_parser_table).start_worker()
+            if nlp_support_ok:
+                worker_dependency_parser_table = Wl_Worker_Dependency_Parser(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_table
+                )
+
+                wl_threading.Wl_Thread(worker_dependency_parser_table).start_worker()
 
     def update_gui_table(self, err_msg, results):
         if wl_checks_work_area.check_results(self.main, err_msg, results):

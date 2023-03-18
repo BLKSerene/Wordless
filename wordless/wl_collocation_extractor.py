@@ -542,13 +542,22 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             self.main,
             search_settings = self.main.settings_custom['collocation_extractor']['search_settings']
         ):
-            worker_collocation_extractor_table = Wl_Worker_Collocation_Extractor_Table(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
+            if self.main.settings_custom['collocation_extractor']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(
+                    self.main,
+                    nlp_utils = ['pos_taggers']
+                )
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(worker_collocation_extractor_table).start_worker()
+            if nlp_support_ok:
+                worker_collocation_extractor_table = Wl_Worker_Collocation_Extractor_Table(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_table
+                )
+
+                wl_threading.Wl_Thread(worker_collocation_extractor_table).start_worker()
 
     def update_gui_table(self, err_msg, collocations_freqs_files, collocations_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, collocations_freqs_files):
@@ -769,13 +778,22 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
             self.main,
             search_settings = self.main.settings_custom['collocation_extractor']['search_settings']
         ):
-            self.worker_collocation_extractor_fig = Wl_Worker_Collocation_Extractor_Fig(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_fig
-            )
+            if self.main.settings_custom['collocation_extractor']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(
+                    self.main,
+                    nlp_utils = ['pos_taggers']
+                )
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(self.worker_collocation_extractor_fig).start_worker()
+            if nlp_support_ok:
+                self.worker_collocation_extractor_fig = Wl_Worker_Collocation_Extractor_Fig(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_fig
+                )
+
+                wl_threading.Wl_Thread(self.worker_collocation_extractor_fig).start_worker()
 
     def update_gui_fig(self, err_msg, collocations_freqs_files, collocations_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, collocations_freqs_files):

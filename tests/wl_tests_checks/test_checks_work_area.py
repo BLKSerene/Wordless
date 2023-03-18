@@ -69,11 +69,25 @@ def test_check_search_terms():
     })
 
 def test_check_nlp_support():
+    file_eng_us = {'selected': True, 'name': 'test', 'lang': 'eng_us', 'tagged': False}
+    file_xxx = {'selected': True, 'name': 'test', 'lang': 'xxx', 'tagged': False}
+
     assert wl_checks_work_area.check_nlp_support(
         main,
-        files = [{'lang': 'eng_us'}],
-        nlp_utils = ['word_tokenizers']
+        nlp_utils = ['pos_taggers'],
+        files = [file_eng_us]
     )
+    assert not wl_checks_work_area.check_nlp_support(
+        main,
+        nlp_utils = ['pos_taggers'],
+        files = [file_xxx]
+    )
+
+    main.settings_custom['file_area']['files_open'] = [file_eng_us]
+    main.settings_custom['file_area']['files_open_ref'] = [file_xxx]
+
+    assert wl_checks_work_area.check_nlp_support(main, nlp_utils = ['pos_taggers'])
+    assert not wl_checks_work_area.check_nlp_support(main, nlp_utils = ['pos_taggers'], ref = True)
 
 def test_check_results():
     assert wl_checks_work_area.check_results(main, '', 'test')

@@ -561,13 +561,19 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             self.main,
             search_settings = self.main.settings_custom['ngram_generator']['search_settings']
         ):
-            worker_ngram_generator_table = Wl_Worker_Ngram_Generator_Table(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_table
-            )
+            if self.main.settings_custom['ngram_generator']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(worker_ngram_generator_table).start_worker()
+            if nlp_support_ok:
+                worker_ngram_generator_table = Wl_Worker_Ngram_Generator_Table(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_table
+                )
+
+                wl_threading.Wl_Thread(worker_ngram_generator_table).start_worker()
 
     def update_gui_table(self, err_msg, ngrams_freq_files, ngrams_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, ngrams_freq_files):
@@ -693,13 +699,19 @@ class Wl_Table_Ngram_Generator(wl_tables.Wl_Table_Data_Filter_Search):
             self.main,
             search_settings = self.main.settings_custom['ngram_generator']['search_settings']
         ):
-            self.worker_ngram_generator_fig = Wl_Worker_Ngram_Generator_Fig(
-                self.main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-                update_gui = self.update_gui_fig
-            )
+            if self.main.settings_custom['ngram_generator']['token_settings']['assign_pos_tags']:
+                nlp_support_ok = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+            else:
+                nlp_support_ok = True
 
-            wl_threading.Wl_Thread(self.worker_ngram_generator_fig).start_worker()
+            if nlp_support_ok:
+                self.worker_ngram_generator_fig = Wl_Worker_Ngram_Generator_Fig(
+                    self.main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                    update_gui = self.update_gui_fig
+                )
+
+                wl_threading.Wl_Thread(self.worker_ngram_generator_fig).start_worker()
 
     def update_gui_fig(self, err_msg, ngrams_freq_files, ngrams_stats_files):
         if wl_checks_work_area.check_results(self.main, err_msg, ngrams_freq_files):

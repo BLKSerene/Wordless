@@ -350,13 +350,19 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
     @wl_misc.log_timing
     def generate_table(self):
-        worker_wordlist_generator_table = Wl_Worker_Wordlist_Generator_Table(
-            self.main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-            update_gui = self.update_gui_table
-        )
+        if self.main.settings_custom['wordlist_generator']['token_settings']['assign_pos_tags']:
+            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+        else:
+            nlp_support = True
 
-        wl_threading.Wl_Thread(worker_wordlist_generator_table).start_worker()
+        if nlp_support:
+            worker_wordlist_generator_table = Wl_Worker_Wordlist_Generator_Table(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_table
+            )
+
+            wl_threading.Wl_Thread(worker_wordlist_generator_table).start_worker()
 
     def update_gui_table(self, err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabification):
         if wl_checks_work_area.check_results(self.main, err_msg, tokens_freq_files):
@@ -506,15 +512,21 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
     @wl_misc.log_timing
     def generate_fig(self):
-        self.worker_wordlist_generator_fig = Wl_Worker_Wordlist_Generator_Fig(
-            self.main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
-            update_gui = self.update_gui_fig
-        )
+        if self.main.settings_custom['wordlist_generator']['token_settings']['assign_pos_tags']:
+            nlp_support = wl_checks_work_area.check_nlp_support(self.main, nlp_utils = ['pos_taggers'])
+        else:
+            nlp_support = True
 
-        wl_threading.Wl_Thread(self.worker_wordlist_generator_fig).start_worker()
+        if nlp_support:
+            self.worker_wordlist_generator_fig = Wl_Worker_Wordlist_Generator_Fig(
+                self.main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(self.main),
+                update_gui = self.update_gui_fig
+            )
 
-    def update_gui_fig(self, err_msg, tokens_freq_files, tokens_stats_files):
+            wl_threading.Wl_Thread(self.worker_wordlist_generator_fig).start_worker()
+
+    def update_gui_fig(self, err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabification): # pylint: disable=unused-argument
         if wl_checks_work_area.check_results(self.main, err_msg, tokens_freq_files):
             try:
                 settings = self.main.settings_custom['wordlist_generator']
@@ -699,5 +711,6 @@ class Wl_Worker_Wordlist_Generator_Fig(Wl_Worker_Wordlist_Generator):
         self.worker_done.emit(
             self.err_msg,
             wl_misc.merge_dicts(self.tokens_freq_files),
-            wl_misc.merge_dicts(self.tokens_stats_files)
+            wl_misc.merge_dicts(self.tokens_stats_files),
+            self.tokens_syllabification
         )
