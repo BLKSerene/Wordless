@@ -390,6 +390,28 @@ def init_settings_global():
                 'PyThaiNLP - CRFCut': 'pythainlp_crfcut',
                 'PyThaiNLP - ThaiSumCut': 'pythainlp_thaisumcut',
 
+                _tr('init_settings_global', 'spaCy - Catalan dependency parser'): 'spacy_dependency_parser_cat',
+                _tr('init_settings_global', 'spaCy - Chinese dependency parser'): 'spacy_dependency_parser_zho',
+                _tr('init_settings_global', 'spaCy - Croatian dependency parser'): 'spacy_dependency_parser_hrv',
+                _tr('init_settings_global', 'spaCy - Danish dependency parser'): 'spacy_dependency_parser_dan',
+                _tr('init_settings_global', 'spaCy - Dutch dependency parser'): 'spacy_dependency_parser_nld',
+                _tr('init_settings_global', 'spaCy - English dependency parser'): 'spacy_dependency_parser_eng',
+                _tr('init_settings_global', 'spaCy - Finnish dependency parser'): 'spacy_dependency_parser_fin',
+                _tr('init_settings_global', 'spaCy - French dependency parser'): 'spacy_dependency_parser_fra',
+                _tr('init_settings_global', 'spaCy - German dependency parser'): 'spacy_dependency_parser_deu',
+                _tr('init_settings_global', 'spaCy - Greek (Modern) dependency parser'): 'spacy_dependency_parser_ell',
+                _tr('init_settings_global', 'spaCy - Italian dependency parser'): 'spacy_dependency_parser_ita',
+                _tr('init_settings_global', 'spaCy - Japanese dependency parser'): 'spacy_dependency_parser_jpn',
+                _tr('init_settings_global', 'spaCy - Lithuanian dependency parser'): 'spacy_dependency_parser_lit',
+                _tr('init_settings_global', 'spaCy - Macedonian dependency parser'): 'spacy_dependency_parser_mkd',
+                _tr('init_settings_global', 'spaCy - Norwegian Bokmål dependency parser'): 'spacy_dependency_parser_nob',
+                _tr('init_settings_global', 'spaCy - Polish dependency parser'): 'spacy_dependency_parser_pol',
+                _tr('init_settings_global', 'spaCy - Portuguese dependency parser'): 'spacy_dependency_parser_por',
+                _tr('init_settings_global', 'spaCy - Romanian dependency parser'): 'spacy_dependency_parser_ron',
+                _tr('init_settings_global', 'spaCy - Russian dependency parser'): 'spacy_dependency_parser_rus',
+                _tr('init_settings_global', 'spaCy - Spanish dependency parser'): 'spacy_dependency_parser_spa',
+                _tr('init_settings_global', 'spaCy - Swedish dependency parser'): 'spacy_dependency_parser_swe',
+                _tr('init_settings_global', 'spaCy - Ukrainian dependency parser'): 'spacy_dependency_parser_ukr',
                 _tr('init_settings_global', 'spaCy - Catalan sentence recognizer'): 'spacy_sentence_recognizer_cat',
                 _tr('init_settings_global', 'spaCy - Chinese sentence recognizer'): 'spacy_sentence_recognizer_zho',
                 _tr('init_settings_global', 'spaCy - Croatian sentence recognizer'): 'spacy_sentence_recognizer_hrv',
@@ -828,10 +850,26 @@ def init_settings_global():
         },
 
         'sentence_tokenizers': {
-            'cat': ['spacy_sentence_recognizer_cat'],
-            'zho_cn': ['spacy_sentence_recognizer_zho',],
-            'zho_tw': ['spacy_sentence_recognizer_zho'],
-            'hrv': ['spacy_sentence_recognizer_hrv'],
+            'cat': [
+                'spacy_dependency_parser_cat',
+                'spacy_sentence_recognizer_cat'
+            ],
+
+            'zho_cn': [
+                'spacy_dependency_parser_zho',
+                'spacy_sentence_recognizer_zho'
+            ,]
+,
+            'zho_tw': [
+                'spacy_dependency_parser_zho',
+                'spacy_sentence_recognizer_zho'
+            ],
+
+            'hrv': [
+                'spacy_dependency_parser_hrv',
+                'spacy_sentence_recognizer_hrv'
+            ],
+
 
             'ces': [
                 'nltk_punkt_ces',
@@ -840,21 +878,25 @@ def init_settings_global():
 
             'dan': [
                 'nltk_punkt_dan',
+                'spacy_dependency_parser_dan',
                 'spacy_sentence_recognizer_dan'
             ],
 
             'nld': [
                 'nltk_punkt_nld',
+                'spacy_dependency_parser_nld',
                 'spacy_sentence_recognizer_nld'
             ],
 
             'eng_gb': [
                 'nltk_punkt_eng',
+                'spacy_dependency_parser_eng',
                 'spacy_sentence_recognizer_eng'
             ],
 
             'eng_us': [
                 'nltk_punkt_eng',
+                'spacy_dependency_parser_eng',
                 'spacy_sentence_recognizer_eng'
             ],
 
@@ -865,42 +907,60 @@ def init_settings_global():
 
             'fin': [
                 'nltk_punkt_fin',
+                'spacy_dependency_parser_fin',
                 'spacy_sentence_recognizer_fin'
             ],
 
             'fra': [
                 'nltk_punkt_fra',
+                'spacy_dependency_parser_fra',
                 'spacy_sentence_recognizer_fra'
             ],
 
             'deu_at': [
                 'nltk_punkt_deu',
+                'spacy_dependency_parser_deu',
                 'spacy_sentence_recognizer_deu'
             ],
 
             'deu_de': [
                 'nltk_punkt_deu',
+                'spacy_dependency_parser_deu',
                 'spacy_sentence_recognizer_deu'
             ],
 
             'deu_ch': [
                 'nltk_punkt_deu',
+                'spacy_dependency_parser_deu',
                 'spacy_sentence_recognizer_deu'
             ],
 
             'ell': [
                 'nltk_punkt_ell',
+                'spacy_dependency_parser_ell',
                 'spacy_sentence_recognizer_ell'
             ],
 
             'ita': [
                 'nltk_punkt_ita',
+                'spacy_dependency_parser_ita',
                 'spacy_sentence_recognizer_ita'
             ],
 
-            'jpn': ['spacy_sentence_recognizer_jpn'],
-            'lit': ['spacy_sentence_recognizer_lit'],
-            'mkd': ['spacy_sentence_recognizer_mkd'],
+            'jpn': [
+                'spacy_dependency_parser_jpn',
+                'spacy_sentence_recognizer_jpn'
+            ],
+
+            'lit': [
+                'spacy_dependency_parser_lit',
+                'spacy_sentence_recognizer_lit'
+            ],
+
+            'mkd': [
+                'spacy_dependency_parser_mkd',
+                'spacy_sentence_recognizer_mkd'
+            ],
 
             'mal': [
                 'nltk_punkt_mal',
@@ -909,6 +969,7 @@ def init_settings_global():
 
             'nob': [
                 'nltk_punkt_nor',
+                'spacy_dependency_parser_nob',
                 'spacy_sentence_recognizer_nob'
             ],
 
@@ -919,23 +980,30 @@ def init_settings_global():
 
             'pol': [
                 'nltk_punkt_pol',
+                'spacy_dependency_parser_pol',
                 'spacy_sentence_recognizer_pol'
             ],
 
             'por_br': [
                 'nltk_punkt_por',
+                'spacy_dependency_parser_por',
                 'spacy_sentence_recognizer_por'
             ],
 
             'por_pt': [
                 'nltk_punkt_por',
+                'spacy_dependency_parser_por',
                 'spacy_sentence_recognizer_por'
             ],
 
-            'ron': ['spacy_sentence_recognizer_ron'],
+            'ron': [
+                'spacy_dependency_parser_ron',
+                'spacy_sentence_recognizer_ron'
+            ],
 
             'rus': [
                 'nltk_punkt_rus',
+                'spacy_dependency_parser_rus',
                 'spacy_sentence_recognizer_rus'
             ],
 
@@ -946,11 +1014,13 @@ def init_settings_global():
 
             'spa': [
                 'nltk_punkt_spa',
+                'spacy_dependency_parser_spa',
                 'spacy_sentence_recognizer_spa'
             ],
 
             'swe': [
                 'nltk_punkt_swe',
+                'spacy_dependency_parser_swe',
                 'spacy_sentence_recognizer_swe'
             ],
 
@@ -966,7 +1036,11 @@ def init_settings_global():
                 'spacy_sentencizer'
             ],
 
-            'ukr': ['spacy_sentence_recognizer_ukr'],
+            'ukr': [
+                'spacy_dependency_parser_ukr',
+                'spacy_sentence_recognizer_ukr'
+            ],
+
             'vie': ['underthesea_vie'],
 
             'other': [

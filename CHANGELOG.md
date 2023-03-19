@@ -29,6 +29,7 @@
 
 ### ✨ Improvements
 - Misc: Add fatal error dialog - Copy
+- Utils: Update spaCy's dependency parsers
 - Work Area: Update Concordancer / Parallel Concordancer - Export selected/all cells - Word documents
 
 ### 📌 Bugfixes
