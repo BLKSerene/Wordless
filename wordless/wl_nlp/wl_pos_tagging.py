@@ -66,8 +66,14 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
                 tokens_tagged.extend(wl_pos_tag_text(main, line, lang, pos_tagger))
     # Tokenized
     else:
-        # Check if the first token is empty
-        first_token_empty = bool(inputs and inputs[0] == '')
+        # Record positions of empty tokens since spacy.tokens.Doc does not accept empty strings
+        empty_offsets = []
+
+        for i, token in reversed(list(enumerate(inputs))):
+            if not token.strip():
+                empty_offsets.append(i)
+
+                del inputs[i]
 
         # spaCy
         if pos_tagger.startswith('spacy_'):
@@ -98,11 +104,11 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
             for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger):
                 tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger))
 
-    # Remove empty tokens and strip whitespace in tokens
+    # Remove empty tokens (e.g. SudachiPy) and strip whitespace around tokens and tags
     tokens_tagged = [
-        (token_clean, tag)
+        (token_clean, tag.strip())
         for token, tag in tokens_tagged
-        if (token_clean := str(token).strip())
+        if (token_clean := token.strip())
     ]
 
     # Make sure that tokenization is not modified during POS tagging
@@ -186,6 +192,10 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
         else:
             tokens_tagged = [(token, token_tagged[1]) for token, token_tagged in zip(inputs, tokens_tagged)]
 
+        # Insert empty tokens after alignment of input and output
+        for empty_offset in sorted(empty_offsets):
+            tokens_tagged.insert(empty_offset, ('', ''))
+
     # Convert to Universal Tagset
     if not pos_tagger.startswith('spacy_') and tagset == 'universal':
         mappings = {
@@ -203,10 +213,6 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
             (token, mappings.get(tag, 'X'))
             for token, tag in tokens_tagged
         ]
-
-    # Add the first empty token, if any
-    if not isinstance(inputs, str) and first_token_empty:
-        tokens_tagged.insert(0, ('', ''))
 
     return tokens_tagged
 
