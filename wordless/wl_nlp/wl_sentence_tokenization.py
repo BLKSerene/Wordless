@@ -74,6 +74,13 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
     # spaCy
     if sentence_tokenizer.startswith('spacy_'):
+        # Dependency parsers
+        if sentence_tokenizer.startswith('spacy_dependency_parser_'):
+            pipelines_disabled = ['tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter']
+        # Sentence recognizers and sentencizers
+        else:
+            pipelines_disabled = ['tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler']
+
         if lang == 'nno':
             nlp = main.spacy_nlp_nob
         else:
@@ -82,7 +89,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         with nlp.select_pipes(disable = [
             pipeline
-            for pipeline in ['tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler']
+            for pipeline in pipelines_disabled
             if nlp.has_pipe(pipeline)
         ]):
             for doc in nlp.pipe(lines):
