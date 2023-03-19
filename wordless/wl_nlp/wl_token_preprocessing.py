@@ -67,6 +67,18 @@ def wl_preprocess_tokens(main, text, token_settings):
 
         text.tags = [tags for tags in text.tags if tags != '']
 
+    # Assign part-of-speech tags
+    if settings['assign_pos_tags'] and not text.tagged:
+        tokens_tagged = wl_pos_tagging.wl_pos_tag(
+            main,
+            inputs = text.get_tokens_flat(),
+            lang = text.lang
+        )
+
+        text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
+        # Modify text types
+        text.tagged = True
+
     # Apply lemmatization
     if settings['apply_lemmatization']:
         for para in text.tokens_multilevel:
@@ -136,25 +148,17 @@ def wl_preprocess_tokens(main, text, token_settings):
     if settings['filter_stop_words']:
         stop_words = wl_stop_word_lists.wl_get_stop_word_list(main, lang = text.lang)
 
+        i_tag = 0
+
         for para in text.tokens_multilevel:
             for sentence in para:
-                for i, sentence_seg in enumerate(sentence):
-                    sentence[i] = [
-                        token if token not in stop_words else ''
-                        for token in sentence_seg
-                    ]
+                for sentence_seg in sentence:
+                    for i, token in enumerate(sentence_seg):
+                        if token in stop_words:
+                            sentence_seg[i] = ''
+                            text.tags[i_tag + i] = ''
 
-    # Assign part-of-speech tags
-    if settings['assign_pos_tags'] and not text.tagged:
-        tokens_tagged = wl_pos_tagging.wl_pos_tag(
-            main,
-            inputs = text.get_tokens_flat(),
-            lang = text.lang
-        )
-
-        text.tags = [[(f'_{tag}' if tag else '')] for _, tag in tokens_tagged]
-        # Modify text types
-        text.tagged = True
+                    i_tag += len(sentence_seg)
 
     # Ignore tags
     i_token = 0

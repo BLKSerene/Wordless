@@ -147,7 +147,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
     else:
         tags = [''] * len(inputs)
 
-    # Record empty tokens with their tags
+    # Record positions of empty tokens and tags
     for i, token in reversed(list(enumerate(inputs))):
         if not token.strip():
             empty_offsets.append(i)
@@ -242,10 +242,10 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
 
                     lemma_tokens.append(token.text)
 
-    # Remove empty lemmas and strip whitespace in tokens
-    for i, lemma in reversed(list(enumerate(lemmas))):
-        lemma_tokens[i] = str(lemma_tokens[i]).strip()
+    # Remove empty lemmas and strip whitespace around lemmas
+    for i, (lemma, lemma_token) in reversed(list(enumerate(zip(lemmas, lemma_tokens)))):
         lemmas[i] = str(lemma).strip()
+        lemma_tokens[i] = str(lemma_token).strip()
 
         if not lemmas[i]:
             del lemmas[i]
