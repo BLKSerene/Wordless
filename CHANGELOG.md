@@ -46,6 +46,7 @@
 - Dependencies: Upgrade SciPy to 1.10.1
 - Dependencies: Upgrade spaCy to 3.5.1
 - Dependencies: Upgrade SudachiPy to 0.6.7
+- Dependencies: Upgrade Underthesea to 6.2.0
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - 02/11/2023
 ### 🎉 New Features
