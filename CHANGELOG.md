@@ -42,6 +42,7 @@
 - Dependencies: Upgrade Matplotlib to 3.7.1
 - Dependencies: Upgrade openpyxl to 3.1.2
 - Dependencies: Upgrade pypdf to 3.6.0
+- Dependencies: Upgrade Pyphen to 0.14.0
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - 02/11/2023
 ### 🎉 New Features
