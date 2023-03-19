@@ -60,9 +60,10 @@ def update_gui(err_msg, texts_stats_files):
 
     assert len(texts_stats_files) >= 1
 
-    count_tokens_lens = []
-    count_sentence_segs_lens = []
     count_sentences_lens = []
+    count_sentence_segs_lens = []
+    count_tokens_lens_syls = []
+    count_tokens_lens_chars = []
 
     files = main.settings_custom['file_area']['files_open']
 
@@ -89,9 +90,10 @@ def update_gui(err_msg, texts_stats_files):
         count_syls = len(len_syls)
         count_chars = numpy.sum(len_tokens_chars)
 
-        count_tokens_lens.append(collections.Counter(len_tokens_chars))
-        count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
         count_sentences_lens.append(collections.Counter(len_sentences))
+        count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
+        count_tokens_lens_syls.append(collections.Counter(len_tokens_syls))
+        count_tokens_lens_chars.append(collections.Counter(len_tokens_chars))
 
         assert len(readability_statistics) == 24
 
@@ -183,10 +185,27 @@ def update_gui(err_msg, texts_stats_files):
         # Sentence segment length should never be zero
         assert 0 not in count_sentence_segs_lens
 
+    # Count of n-syllable-long Tokens
+    if any(count_tokens_lens_syls):
+        count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens_syls)
+        count_tokens_lens_syls = sorted(count_tokens_lens_files.keys())
+
+        # The total of counts of n-syllable-long tokens should be equal to the count of characters
+        for i, stats in enumerate(texts_stats_files):
+            len_tokens_total = sum((
+                count_tokens_files[i] * len_token
+                for len_token, count_tokens_files in count_tokens_lens_files.items()
+            ))
+
+            assert len_tokens_total == numpy.sum(stats[6])
+
+        # Token length should never be zero
+        assert 0 not in count_tokens_lens_syls
+
     # Count of n-character-long Tokens
-    if any(count_tokens_lens):
-        count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
-        count_tokens_lens = sorted(count_tokens_lens_files.keys())
+    if any(count_tokens_lens_chars):
+        count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens_chars)
+        count_tokens_lens_chars = sorted(count_tokens_lens_files.keys())
 
         # The total of counts of n-character-long tokens should be equal to the count of characters
         for i, stats in enumerate(texts_stats_files):
@@ -198,7 +217,7 @@ def update_gui(err_msg, texts_stats_files):
             assert len_tokens_total == numpy.sum(stats[7])
 
         # Token length should never be zero
-        assert 0 not in count_tokens_lens
+        assert 0 not in count_tokens_lens_chars
 
 if __name__ == '__main__':
     test_profiler()
