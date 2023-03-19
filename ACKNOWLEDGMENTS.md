@@ -49,7 +49,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 24|[spaCy](https://spacy.io/)                                         |3.5.1  |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 25|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)          |0.0.32 |Ruixuan Luo (罗睿轩), Jingjing Xu (许晶晶),<br>Xuancheng Ren (任宣丞), Yi Zhang (张艺),<br>Zhiyuan Zhang (张之远), Bingzhen Wei (位冰镇),<br>Xu Sun (孙栩)<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
 26|[stopword](https://github.com/fergiemcdowall/stopword)             |2.0.5  |Fergus McDowall|[MIT](https://github.com/fergiemcdowall/stopword/blob/master/LICENSE)
-27|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)       |0.6.6  |Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
+27|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)       |0.6.7  |Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 28|[TextBlob](https://github.com/sloria/TextBlob)                     |0.17.1 |Steven Loria|[MIT](https://github.com/sloria/TextBlob/blob/dev/LICENSE)
 29|[Underthesea](https://undertheseanlp.com/)                         |6.1.1  |Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
 30|[WordCloud](https://github.com/amueller/word_cloud)                |1.8.2.2|Andreas Christian Mueller|[MIT](https://github.com/amueller/word_cloud/blob/master/LICENSE)
