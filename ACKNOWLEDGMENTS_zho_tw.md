@@ -25,7 +25,7 @@
 -----:|----|:--:|---|:--:
 1 |[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)  |4.11.2 |Leonard Richardson|[MIT](https://git.launchpad.net/beautifulsoup/tree/LICENSE)
 2 |[Botok](https://github.com/OpenPecha/Botok)                       |0.8.10 |Hélios Drupchen Hildt|[Apache-2.0](https://github.com/OpenPecha/Botok/blob/master/LICENSE)
-3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.0.1  |TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
+3 |[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.1.0  |TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
 4 |[jieba](https://github.com/fxsjy/jieba)                           |0.42.1 |孫君意|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
 5 |[Lingua](https://github.com/pemistahl/lingua-py)                  |1.3.2  |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 6 |[Matplotlib](https://matplotlib.org/)                             |3.6.3  |Matplotlib 開發團隊|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
