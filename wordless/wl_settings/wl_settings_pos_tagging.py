@@ -28,7 +28,6 @@ from PyQt5.QtWidgets import (
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging
 from wordless.wl_settings import wl_settings
-from wordless.wl_tagsets import wl_tagset_universal
 from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_labels, wl_layouts, wl_tables
 
@@ -428,12 +427,6 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             self.table_mappings.model().setItem(i, 3, QStandardItem(examples))
 
         self.table_mappings.enable_updates()
-
-        # Disable editing if the default tagset is Universal POS tags
-        if mappings == wl_tagset_universal.MAPPINGS:
-            self.table_mappings.setEnabled(False)
-        else:
-            self.table_mappings.setEnabled(True)
 
         self.label_tagsets_num_pos_tags.setText(self.tr('Number of part-of-speech tags: ') + str(self.table_mappings.model().rowCount()))
         self.stacked_widget_num_pos_tags.setCurrentIndex(0)
