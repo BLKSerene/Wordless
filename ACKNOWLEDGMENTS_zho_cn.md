@@ -44,7 +44,7 @@
 19|[python-mecab-ko](https://github.com/jonghwanhyeon/python-mecab-ko)|1.3.3  |Jonghwan Hyeon|[BSD-3-Clause](https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE)
 20|[Requests](https://github.com/psf/requests)                        |2.28.2 |Kenneth Reitz|[Apache-2.0](https://github.com/psf/requests/blob/main/LICENSE)
 21|[Sacremoses](https://github.com/alvations/sacremoses)              |0.0.53 |Liling Tan|[MIT](https://github.com/alvations/sacremoses/blob/master/LICENSE)
-22|[SciPy](https://scipy.org/scipylib/)                               |1.10.0 |SciPy 开发人员|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
+22|[SciPy](https://scipy.org/scipylib/)                               |1.10.1 |SciPy 开发人员|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 23|[simplemma](https://github.com/adbar/simplemma)                    |0.9.1  |Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
 24|[spaCy](https://spacy.io/)                                         |3.5.0  |Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
 25|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)          |0.0.32 |罗睿轩, 许晶晶, 任宣丞, 张艺, 张之远, 位冰镇, 孙栩<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
