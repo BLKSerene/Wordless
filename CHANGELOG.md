@@ -42,6 +42,7 @@
 - Dependencies: Upgrade Charset Normalizer to 3.1.0
 - Dependencies: Upgrade Matplotlib to 3.7.1
 - Dependencies: Upgrade openpyxl to 3.1.2
+- Dependencies: Upgrade PyInstaller to 5.9.0
 - Dependencies: Upgrade pypdf to 3.6.0
 - Dependencies: Upgrade Pyphen to 0.14.0
 - Dependencies: Upgrade SciPy to 1.10.1
