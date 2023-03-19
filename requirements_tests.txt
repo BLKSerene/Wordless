@@ -40,7 +40,7 @@ pymorphy3-dicts-ru == 2.4.417150.4580142
 pymorphy3-dicts-uk == 2.4.1.1.1663094765
 
 ## spaCy
-spacy == 3.5.0
+spacy == 3.5.1
 spacy-lookups-data == 1.0.3
 spacy-pkuseg == 0.0.32
 
