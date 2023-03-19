@@ -163,6 +163,21 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
             filter_max = 100
         )
 
+        if self.tab == 'wordlist_generator':
+            self.label_num_syls = QLabel(self.tr('Number of syllables:'), self)
+            (
+                self.label_num_syls_min,
+                self.spin_box_num_syls_min,
+                self.checkbox_num_syls_min_no_limit,
+                self.label_num_syls_max,
+                self.spin_box_num_syls_max,
+                self.checkbox_num_syls_max_no_limit
+            ) = wl_widgets.wl_widgets_filter(
+                self,
+                filter_min = 1,
+                filter_max = 100
+            )
+
         self.label_freq = QLabel(self.tr('Frequency:'), self)
         (
             self.label_freq_min,
@@ -226,6 +241,12 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         self.spin_box_len_token_ngram_max.valueChanged.connect(self.filters_changed)
         self.checkbox_len_token_ngram_max_no_limit.stateChanged.connect(self.filters_changed)
 
+        if self.tab == 'wordlist_generator':
+            self.spin_box_num_syls_min.valueChanged.connect(self.filters_changed)
+            self.checkbox_num_syls_min_no_limit.stateChanged.connect(self.filters_changed)
+            self.spin_box_num_syls_max.valueChanged.connect(self.filters_changed)
+            self.checkbox_num_syls_max_no_limit.stateChanged.connect(self.filters_changed)
+
         self.spin_box_freq_min.valueChanged.connect(self.filters_changed)
         self.checkbox_freq_min_no_limit.stateChanged.connect(self.filters_changed)
         self.spin_box_freq_max.valueChanged.connect(self.filters_changed)
@@ -251,17 +272,24 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         # Close the dialog when data in the table are re-generated
         self.table.button_generate_table.clicked.connect(self.close)
 
-        widgets_filter = [
-            [
-                self.label_len_token_ngram,
-                self.label_len_token_ngram_min, self.spin_box_len_token_ngram_min, self.checkbox_len_token_ngram_min_no_limit,
-                self.label_len_token_ngram_max, self.spin_box_len_token_ngram_max, self.checkbox_len_token_ngram_max_no_limit
-            ], [
-                self.label_freq,
-                self.label_freq_min, self.spin_box_freq_min, self.checkbox_freq_min_no_limit,
-                self.label_freq_max, self.spin_box_freq_max, self.checkbox_freq_max_no_limit
-            ]
-        ]
+        widgets_filter = [[
+            self.label_len_token_ngram,
+            self.label_len_token_ngram_min, self.spin_box_len_token_ngram_min, self.checkbox_len_token_ngram_min_no_limit,
+            self.label_len_token_ngram_max, self.spin_box_len_token_ngram_max, self.checkbox_len_token_ngram_max_no_limit
+        ]]
+
+        if self.tab == 'wordlist_generator':
+            widgets_filter.append([
+                self.label_num_syls,
+                self.label_num_syls_min, self.spin_box_num_syls_min, self.checkbox_num_syls_min_no_limit,
+                self.label_num_syls_max, self.spin_box_num_syls_max, self.checkbox_num_syls_max_no_limit
+            ])
+
+        widgets_filter.append([
+            self.label_freq,
+            self.label_freq_min, self.spin_box_freq_min, self.checkbox_freq_min_no_limit,
+            self.label_freq_max, self.spin_box_freq_max, self.checkbox_freq_max_no_limit
+        ])
 
         if self.has_dispersion:
             widgets_filter.append([
@@ -305,6 +333,12 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         self.spin_box_len_token_ngram_max.setValue(settings[f'len_{len_type}_max'])
         self.checkbox_len_token_ngram_max_no_limit.setChecked(settings[f'len_{len_type}_max_no_limit'])
 
+        if self.tab == 'wordlist_generator':
+            self.spin_box_num_syls_min.setValue(settings['num_syls_min'])
+            self.checkbox_num_syls_min_no_limit.setChecked(settings['num_syls_min_no_limit'])
+            self.spin_box_num_syls_max.setValue(settings['num_syls_max'])
+            self.checkbox_num_syls_max_no_limit.setChecked(settings['num_syls_max_no_limit'])
+
         self.spin_box_freq_min.setValue(settings['freq_min'])
         self.checkbox_freq_min_no_limit.setChecked(settings['freq_min_no_limit'])
         self.spin_box_freq_max.setValue(settings['freq_max'])
@@ -338,6 +372,12 @@ class Wl_Dialog_Results_Filter_Wordlist_Generator(Wl_Dialog_Results_Filter):
         self.settings[f'len_{len_type}_max'] = self.spin_box_len_token_ngram_max.value()
         self.settings[f'len_{len_type}_max_no_limit'] = self.checkbox_len_token_ngram_max_no_limit.isChecked()
 
+        if self.tab == 'wordlist_generator':
+            self.settings['num_syls_min'] = self.spin_box_num_syls_min.value()
+            self.settings['num_syls_min_no_limit'] = self.checkbox_num_syls_min_no_limit.isChecked()
+            self.settings['num_syls_max'] = self.spin_box_num_syls_max.value()
+            self.settings['num_syls_max_no_limit'] = self.checkbox_num_syls_max_no_limit.isChecked()
+
         self.settings['freq_min'] = self.spin_box_freq_min.value()
         self.settings['freq_min_no_limit'] = self.checkbox_freq_min_no_limit.isChecked()
         self.settings['freq_max'] = self.spin_box_freq_max.value()
@@ -370,6 +410,7 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
 
         if self.dialog.tab == 'wordlist_generator':
             col_token_ngram = self.dialog.table.find_header_hor(self.tr('Token'))
+            col_num_syls = self.dialog.table.find_header_hor(self.tr('Syllabification'))
         elif self.dialog.tab == 'ngram_generator':
             col_token_ngram = self.dialog.table.find_header_hor(self.tr('N-gram'))
 
@@ -404,6 +445,18 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
             if self.dialog.settings[f'len_{len_type}_max_no_limit']
             else self.dialog.settings[f'len_{len_type}_max']
         )
+
+        if self.dialog.tab == 'wordlist_generator':
+            num_syls_min = (
+                float('-inf')
+                if self.dialog.settings['num_syls_min_no_limit']
+                else self.dialog.settings['num_syls_min']
+            )
+            num_syls_max = (
+                float('inf')
+                if self.dialog.settings['num_syls_max_no_limit']
+                else self.dialog.settings['num_syls_max']
+            )
 
         freq_min = (
             float('-inf')
@@ -456,6 +509,18 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
                 len_token_ngram_min <= len(self.dialog.table.model().item(i, col_token_ngram).text()) <= len_token_ngram_max
             )
 
+            if self.dialog.tab == 'wordlist_generator':
+                filter_num_syls = False
+                syllabification = self.dialog.table.model().item(i, col_num_syls).text()
+
+                for syls in syllabification.split(', '):
+                    if num_syls_min <= len(syls.split('-')) <= num_syls_max:
+                        filter_num_syls = True
+
+                        break
+            else:
+                filter_num_syls = True
+
             filter_freq = (
                 freq_min <= self.dialog.table.model().item(i, col_freq).val <= freq_max
             )
@@ -480,6 +545,7 @@ class Wl_Worker_Results_Filter_Wordlist_Generator(wl_threading.Wl_Worker):
 
             if (
                 filter_len_token_ngram
+                and filter_num_syls
                 and filter_freq
                 and filter_dispersion
                 and filter_adjusted_freq
