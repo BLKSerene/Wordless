@@ -458,6 +458,16 @@ def init_settings_default(main):
             'filter_results': {
                 'file_to_filter': _tr('init_settings_default', 'Total'),
 
+                'len_token_min': 1,
+                'len_token_min_no_limit': True,
+                'len_token_max': 20,
+                'len_token_max_no_limit': True,
+
+                'num_syls_min': 1,
+                'num_syls_min_no_limit': True,
+                'num_syls_max': 20,
+                'num_syls_max_no_limit': True,
+
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -472,11 +482,6 @@ def init_settings_default(main):
                 'adjusted_freq_min_no_limit': True,
                 'adjusted_freq_max': 1000,
                 'adjusted_freq_max_no_limit': True,
-
-                'len_token_min': 1,
-                'len_token_min_no_limit': True,
-                'len_token_max': 20,
-                'len_token_max_no_limit': True,
 
                 'num_files_found_min': 1,
                 'num_files_found_min_no_limit': True,
