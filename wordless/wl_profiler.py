@@ -934,9 +934,10 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
 
                 self.clr_table()
 
-                count_tokens_lens = []
                 count_sentences_lens = []
                 count_sentence_segs_lens = []
+                count_tokens_lens_syls = []
+                count_tokens_lens_chars = []
 
                 # Insert columns
                 files = list(self.main.wl_file_area.get_selected_files())
@@ -952,11 +953,13 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                 for i, stats in enumerate(text_stats_files):
                     len_sentences = numpy.array(stats[4])
                     len_sentence_segs = numpy.array(stats[5])
+                    len_tokens_syls = numpy.array(stats[6])
                     len_tokens_chars = numpy.array(stats[7])
 
-                    count_tokens_lens.append(collections.Counter(len_tokens_chars))
-                    count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
                     count_sentences_lens.append(collections.Counter(len_sentences))
+                    count_sentence_segs_lens.append(collections.Counter(len_sentence_segs))
+                    count_tokens_lens_syls.append(collections.Counter(len_tokens_syls))
+                    count_tokens_lens_chars.append(collections.Counter(len_tokens_chars))
 
                 # Count of n-token-long Sentences
                 if any(count_sentences_lens):
@@ -1030,17 +1033,53 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                                 total = count_sentence_segs_lens_total[count_sentence_segs_len]
                             )
 
-                # Count of n-character-long Tokens
-                if any(count_tokens_lens):
-                    count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens)
+                # Count of n-syllable-long Tokens
+                if any(count_tokens_lens_syls):
+                    count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens_syls)
                     count_tokens_lens_total = {
                         len_token: count_tokens_files[-1]
                         for len_token, count_tokens_files in count_tokens_lens_files.items()
                     }
-                    count_tokens_lens = sorted(count_tokens_lens_files.keys())
+                    count_tokens_lens_syls = sorted(count_tokens_lens_files.keys())
 
                     # Append vertical headers
-                    for count_tokens_len in count_tokens_lens:
+                    for count_tokens_len in count_tokens_lens_syls:
+                        self.add_header_vert(
+                            self.tr('Count of {}-syllables-long Tokens').format(count_tokens_len),
+                            is_int = True, is_cum = True
+                        )
+                        self.add_header_vert(
+                            self.tr('Count of {}-syllables-long Tokens %').format(count_tokens_len),
+                            is_pct = True, is_cum = True
+                        )
+
+                    for i, count_tokens_len in enumerate(reversed(count_tokens_lens_syls)):
+                        counts = count_tokens_lens_files[count_tokens_len]
+
+                        for j, count in enumerate(counts):
+                            self.set_item_num(
+                                row = self.model().rowCount() - 2 - i * 2,
+                                col = j,
+                                val = count
+                            )
+                            self.set_item_num(
+                                row = self.model().rowCount() - 1 - i * 2,
+                                col = j,
+                                val = count,
+                                total = count_tokens_lens_total[count_tokens_len]
+                            )
+
+                # Count of n-character-long Tokens
+                if any(count_tokens_lens_chars):
+                    count_tokens_lens_files = wl_misc.merge_dicts(count_tokens_lens_chars)
+                    count_tokens_lens_total = {
+                        len_token: count_tokens_files[-1]
+                        for len_token, count_tokens_files in count_tokens_lens_files.items()
+                    }
+                    count_tokens_lens_chars = sorted(count_tokens_lens_files.keys())
+
+                    # Append vertical headers
+                    for count_tokens_len in count_tokens_lens_chars:
                         self.add_header_vert(
                             self.tr('Count of {}-character-long Tokens').format(count_tokens_len),
                             is_int = True, is_cum = True
@@ -1050,7 +1089,7 @@ class Wl_Table_Profiler_Len_Breakdown(Wl_Table_Profiler):
                             is_pct = True, is_cum = True
                         )
 
-                    for i, count_tokens_len in enumerate(reversed(count_tokens_lens)):
+                    for i, count_tokens_len in enumerate(reversed(count_tokens_lens_chars)):
                         counts = count_tokens_lens_files[count_tokens_len]
 
                         for j, count in enumerate(counts):

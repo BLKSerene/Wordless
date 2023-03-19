@@ -111,196 +111,214 @@ By default, *Wordless* tries to detect the encoding and language settings of all
 
 In *Profiler*, you can check and compare general linguistic features of different files.
 
-- **3.1.1 Automated Arabic Readability Index ~ Wiener Sachtextformel**<br>
+All statistics are grouped into 5 tables for better readability: Readability, Counts, Type-token Ratios, Lengths, Length Breakdown.
+
+- **3.1.1 Readability**<br>
   Readability statistics of each file calculated according to the different readability tests used. See section [4.4.1 Measures of Readability](#doc-4-4-1) for more details.
 
-- **3.1.2 Count of Paragraphs**<br>
-  The number of paragraphs in each file. Each line in the file is counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are not counted.
+- **3.1.2 Counts**<br>
+  - **3.1.2.1 Count of Paragraphs**<br>
+    The number of paragraphs in each file. Each line in the file is counted as one paragraph. Blank lines and lines containing only spaces, tabs and other invisible characters are not counted.
 
-- **3.1.3 Count of Paragraphs %**<br>
-  The percentage of the number of paragraphs in each file out of the total number of paragraphs in all files.
+  - **3.1.2.2 Count of Paragraphs %**<br>
+    The percentage of the number of paragraphs in each file out of the total number of paragraphs in all files.
 
-- **3.1.4 Count of Sentences**<br>
-  The number of sentences in each file. *Wordless* automatically applies the built-in sentence tokenizer according to the language of each file to calculate the number of sentences in each file. You can modify sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
+  - **3.1.2.3 Count of Sentences**<br>
+    The number of sentences in each file. *Wordless* automatically applies the built-in sentence tokenizer according to the language of each file to calculate the number of sentences in each file. You can modify sentence tokenizer settings via **Menu → Preferences → Settings → Sentence Tokenization → Sentence Tokenizer Settings**.
 
-- **3.1.5 Count of Sentences %**<br>
-  The percentage of the number of sentences in each file out of the total number of sentences in all files.
+  - **3.1.2.4 Count of Sentences %**<br>
+    The percentage of the number of sentences in each file out of the total number of sentences in all files.
 
-- **3.1.6 Count of Sentence Segments**<br>
-  The number of sentence segments in each file. Each part of sentence ending with one or more consecutive [terminal punctuation marks](https://en.wikipedia.org/wiki/Terminal_punctuation) (as per the [Unicode Standard](https://en.wikipedia.org/wiki/Unicode)) is counted as one sentence segment. See [here](https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]) for the full list of terminal punctuation marks.
+  - **3.1.2.5 Count of Sentence Segments**<br>
+    The number of sentence segments in each file. Each part of sentence ending with one or more consecutive [terminal punctuation marks](https://en.wikipedia.org/wiki/Terminal_punctuation) (as per the [Unicode Standard](https://en.wikipedia.org/wiki/Unicode)) is counted as one sentence segment. See [here](https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]) for the full list of terminal punctuation marks.
 
-- **3.1.7 Count of Sentence Segments %**<br>
-  The percentage of the number of sentence segments in each file out of the total number of sentence segments in all files.
+  - **3.1.2.6 Count of Sentence Segments %**<br>
+    The percentage of the number of sentence segments in each file out of the total number of sentence segments in all files.
 
-- **3.1.8 Count of Tokens**<br>
-  The number of tokens in each file. *Wordless* automatically applies the built-in word tokenizer according to the language of each file to calculate the number of tokens in each file. You can modify word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
+  - **3.1.2.7 Count of Tokens**<br>
+    The number of tokens in each file. *Wordless* automatically applies the built-in word tokenizer according to the language of each file to calculate the number of tokens in each file. You can modify word tokenizer settings via **Menu → Preferences → Settings → Word Tokenization → Word Tokenizer Settings**.
 
-  You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
+    You can specify what should be counted as a "token" via **Token Settings** in the *Settings Area*
 
-- **3.1.9 Count of Tokens %**<br>
-  The percentage of the number of tokens in each file out of the total number of tokens in all files.
+  - **3.1.2.8 Count of Tokens %**<br>
+    The percentage of the number of tokens in each file out of the total number of tokens in all files.
 
-- **3.1.10 Count of Types**<br>
-  The number of token types in each file.
+  - **3.1.2.9 Count of Types**<br>
+    The number of token types in each file.
 
-- **3.1.11 Count of Types %**<br>
-  The percentage of the number of token types in each file out of the total number of token types in all files.
+  - **3.1.2.10 Count of Types %**<br>
+    The percentage of the number of token types in each file out of the total number of token types in all files.
 
-- **3.1.12 Count of Syllables**<br>
-  The number of syllables in each files. *Wordless* automatically applies the built-in syllable tokenizer according to the language of each file to calculate the number of syllable in each file. You can modify syllable tokenizer settings via **Menu → Preferences → Settings → Syllable Tokenization → Syllable Tokenizer Settings**.
+  - **3.1.2.11 Count of Syllables**<br>
+    The number of syllables in each files. *Wordless* automatically applies the built-in syllable tokenizer according to the language of each file to calculate the number of syllable in each file. You can modify syllable tokenizer settings via **Menu → Preferences → Settings → Syllable Tokenization → Syllable Tokenizer Settings**.
 
-- **3.1.13 Count of Syllables %**<br>
-  The percentage of the number of syllables in each file out of the total number of syllable in all files.
+  - **3.1.2.12 Count of Syllables %**<br>
+    The percentage of the number of syllables in each file out of the total number of syllable in all files.
 
-- **3.1.14 Count of Characters**<br>
-  The number of single characters in each file. Spaces, tabs and all other invisible characters are not counted.
+  - **3.1.2.13 Count of Characters**<br>
+    The number of single characters in each file. Spaces, tabs and all other invisible characters are not counted.
 
-- **3.1.15 Count of Characters %**<br>
-  The percentage of the number of characters in each file out of the total number of characters in all files.
+  - **3.1.2.14 Count of Characters %**<br>
+    The percentage of the number of characters in each file out of the total number of characters in all files.
 
-- **3.1.16 Type-token Ratio**<br>
-  The number of token types divided by the number of tokens in each file.
+- **3.1.3 Type-token Ratios**<br>
+  - **3.1.3.1 Type-token Ratio**<br>
+    The number of token types divided by the number of tokens in each file.
 
-- **3.1.17 Type-token Ratio (Standardized)**<br>
-  Standardized type-token ratio. Each file is divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratios are calculated for each part. The standardized type-token ratio of each file is then averaged out with weights (number of tokens in each sub-section) over all sub-sections. You can change the number of tokens in each sub-section via **Menu → Preferences → Settings → Tables → Profiler → Number of tokens in each section when calculating standardized type-token ratio**.
+  - **3.1.3.2 Type-token Ratio (Standardized)**<br>
+    Standardized type-token ratio. Each file is divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratios are calculated for each part. The standardized type-token ratio of each file is then averaged out with weights (number of tokens in each sub-section) over all sub-sections. You can change the number of tokens in each sub-section via **Menu → Preferences → Settings → Tables → Profiler → Number of tokens in each section when calculating standardized type-token ratio**.
 
-- **3.1.18 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
-  The average value of paragraph lengths expressed in sentences / sentence segments / tokens.
+- **3.1.4 Lengths**<br>
+  - **3.1.4.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
+    The average value of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.19 Paragraph Length in Sentences / Sentence Segments / Tokens (Standard Deviation)**<br>
-  The standard deviation of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.2 Paragraph Length in Sentences / Sentence Segments / Tokens (Standard Deviation)**<br>
+    The standard deviation of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.20 Paragraph Length in Sentences / Sentence Segments / Tokens (Variance)**<br>
-  The variance of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.3 Paragraph Length in Sentences / Sentence Segments / Tokens (Variance)**<br>
+    The variance of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.21 Paragraph Length in Sentences / Sentence Segments / Tokens (Minimum)**<br>
-  The minimum of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.4 Paragraph Length in Sentences / Sentence Segments / Tokens (Minimum)**<br>
+    The minimum of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.22 Paragraph Length in Sentences / Sentence Segments / Tokens (25th Percentile)**<br>
-  The 25th percentile of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.5 Paragraph Length in Sentences / Sentence Segments / Tokens (25th Percentile)**<br>
+    The 25th percentile of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.23 Paragraph Length in Sentences / Sentence Segments / Tokens (Median)**<br>
-  The median of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.6 Paragraph Length in Sentences / Sentence Segments / Tokens (Median)**<br>
+    The median of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.24 Paragraph Length in Sentences / Sentence Segments / Tokens (75th Percentile)**<br>
-  The 75th percentile of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.7 Paragraph Length in Sentences / Sentence Segments / Tokens (75th Percentile)**<br>
+    The 75th percentile of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.25 Paragraph Length in Sentences / Sentence Segments / Tokens (Maximum)**<br>
-  The maximum of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.8 Paragraph Length in Sentences / Sentence Segments / Tokens (Maximum)**<br>
+    The maximum of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.26 Paragraph Length in Sentences / Sentence Segments / Tokens (Range)**<br>
-  The range of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.9 Paragraph Length in Sentences / Sentence Segments / Tokens (Range)**<br>
+    The range of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.27 Paragraph Length in Sentences / Sentence Segments / Tokens (Interquartile Range)**<br>
-  The interquartile range of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.10 Paragraph Length in Sentences / Sentence Segments / Tokens (Interquartile Range)**<br>
+    The interquartile range of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.28 Paragraph Length in Sentences / Sentence Segments / Tokens (Modes)**<br>
-  The mode(s) of paragraph lengths expressed in sentences / sentence segments / tokens.
+  - **3.1.4.11 Paragraph Length in Sentences / Sentence Segments / Tokens (Modes)**<br>
+    The mode(s) of paragraph lengths expressed in sentences / sentence segments / tokens.
 
-- **3.1.29 Sentence / Sentence Segment Length in Tokens (Mean)**<br>
-  The average value of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.12 Sentence / Sentence Segment Length in Tokens (Mean)**<br>
+    The average value of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.30 Sentence / Sentence Segment Length in Tokens (Standard Deviation)**<br>
-  The standard deviation of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.13 Sentence / Sentence Segment Length in Tokens (Standard Deviation)**<br>
+    The standard deviation of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.31 Sentence / Sentence Segment Length in Tokens (Variance)**<br>
-  The variance of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.14 Sentence / Sentence Segment Length in Tokens (Variance)**<br>
+    The variance of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.32 Sentence / Sentence Segment Length in Tokens (Minimum)**<br>
-  The minimum of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.15 Sentence / Sentence Segment Length in Tokens (Minimum)**<br>
+    The minimum of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.33 Sentence / Sentence Segment Length in Tokens (25th Percentile)**<br>
-  The 25th percentile of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.16 Sentence / Sentence Segment Length in Tokens (25th Percentile)**<br>
+    The 25th percentile of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.34 Sentence / Sentence Segment Length in Tokens (Median)**<br>
-  The median of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.17 Sentence / Sentence Segment Length in Tokens (Median)**<br>
+    The median of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.35 Sentence / Sentence Segment Length in Tokens (75th Percentile)**<br>
-  The 75th percentile of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.18 Sentence / Sentence Segment Length in Tokens (75th Percentile)**<br>
+    The 75th percentile of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.36 Sentence / Sentence Segment Length in Tokens (Maximum)**<br>
-  The maximum of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.19 Sentence / Sentence Segment Length in Tokens (Maximum)**<br>
+    The maximum of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.37 Sentence / Sentence Segment Length in Tokens (Range)**<br>
-  The range of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.20 Sentence / Sentence Segment Length in Tokens (Range)**<br>
+    The range of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.38 Sentence / Sentence Segment Length in Tokens (Interquartile Range)**<br>
-  The interquartile range of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.21 Sentence / Sentence Segment Length in Tokens (Interquartile Range)**<br>
+    The interquartile range of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.39 Sentence / Sentence Segment Length in Tokens (Modes)**<br>
-  The mode(s) of sentence / sentence segment lengths expressed in tokens.
+  - **3.1.4.22 Sentence / Sentence Segment Length in Tokens (Modes)**<br>
+    The mode(s) of sentence / sentence segment lengths expressed in tokens.
 
-- **3.1.40 Token/Type Length in Syllables/Characters (Mean)**<br>
-  The average value of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.23 Token/Type Length in Syllables/Characters (Mean)**<br>
+    The average value of token / token type lengths expressed in syllables/characters.
 
-- **3.1.41 Token/Type Length in Syllables/Characters (Standard Deviation)**<br>
-  The standard deviation of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.24 Token/Type Length in Syllables/Characters (Standard Deviation)**<br>
+    The standard deviation of token / token type lengths expressed in syllables/characters.
 
-- **3.1.42 Token/Type Length in Syllables/Characters (Variance)**<br>
-  The variance of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.25 Token/Type Length in Syllables/Characters (Variance)**<br>
+    The variance of token / token type lengths expressed in syllables/characters.
 
-- **3.1.43 Token/Type Length in Syllables/Characters (Minimum)**<br>
-  The minimum of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.26 Token/Type Length in Syllables/Characters (Minimum)**<br>
+    The minimum of token / token type lengths expressed in syllables/characters.
 
-- **3.1.44 Token/Type Length in Syllables/Characters (25th Percentile)**<br>
-  The 25th percentile of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.27 Token/Type Length in Syllables/Characters (25th Percentile)**<br>
+    The 25th percentile of token / token type lengths expressed in syllables/characters.
 
-- **3.1.45 Token/Type Length in Syllables/Characters (Median)**<br>
-  The median of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.28 Token/Type Length in Syllables/Characters (Median)**<br>
+    The median of token / token type lengths expressed in syllables/characters.
 
-- **3.1.46 Token/Type Length in Syllables/Characters (75th Percentile)**<br>
-  The 75th percentile of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.29 Token/Type Length in Syllables/Characters (75th Percentile)**<br>
+    The 75th percentile of token / token type lengths expressed in syllables/characters.
 
-- **3.1.47 Token/Type Length in Syllables/Characters (Maximum)**<br>
-  The maximum of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.30 Token/Type Length in Syllables/Characters (Maximum)**<br>
+    The maximum of token / token type lengths expressed in syllables/characters.
 
-- **3.1.48 Token/Type Length in Syllables/Characters (Range)**<br>
-  The range of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.31 Token/Type Length in Syllables/Characters (Range)**<br>
+    The range of token / token type lengths expressed in syllables/characters.
 
-- **3.1.49 Token/Type Length in Syllables/Characters (Interquartile Range)**<br>
-  The interquartile range of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.32 Token/Type Length in Syllables/Characters (Interquartile Range)**<br>
+    The interquartile range of token / token type lengths expressed in syllables/characters.
 
-- **3.1.50 Token/Type Length in Syllables/Characters (Modes)**<br>
-  The mode(s) of token / token type lengths expressed in syllables/characters.
+  - **3.1.4.33 Token/Type Length in Syllables/Characters (Modes)**<br>
+    The mode(s) of token / token type lengths expressed in syllables/characters.
 
-- **3.1.51 Syllable Length in Characters (Mean)**<br>
-  The average value of syllable lengths expressed in characters.
+  - **3.1.4.34 Syllable Length in Characters (Mean)**<br>
+    The average value of syllable lengths expressed in characters.
 
-- **3.1.52 Syllable Length in Characters (Standard Deviation)**<br>
-  The standard deviation of syllable lengths expressed in characters.
+  - **3.1.4.35 Syllable Length in Characters (Standard Deviation)**<br>
+    The standard deviation of syllable lengths expressed in characters.
 
-- **3.1.53 Syllable Length in Characters (Variance)**<br>
-  The variance of syllable lengths expressed in characters.
+  - **3.1.4.36 Syllable Length in Characters (Variance)**<br>
+    The variance of syllable lengths expressed in characters.
 
-- **3.1.54 Syllable Length in Characters (Minimum)**<br>
-  The minimum of syllable lengths expressed in characters.
+  - **3.1.4.37 Syllable Length in Characters (Minimum)**<br>
+    The minimum of syllable lengths expressed in characters.
 
-- **3.1.55 Syllable Length in Characters (25th Percentile)**<br>
-  The 25th percentile of syllable lengths expressed in characters.
+  - **3.1.4.38 Syllable Length in Characters (25th Percentile)**<br>
+    The 25th percentile of syllable lengths expressed in characters.
 
-- **3.1.56 Syllable Length in Characters (Median)**<br>
-  The median of syllable lengths expressed in characters.
+  - **3.1.4.39 Syllable Length in Characters (Median)**<br>
+    The median of syllable lengths expressed in characters.
 
-- **3.1.57 Syllable Length in Characters (75th Percentile)**<br>
-  The 75th percentile of syllable lengths expressed in characters.
+  - **3.1.4.40 Syllable Length in Characters (75th Percentile)**<br>
+    The 75th percentile of syllable lengths expressed in characters.
 
-- **3.1.58 Syllable Length in Characters (Maximum)**<br>
-  The maximum of syllable lengths expressed in characters.
+  - **3.1.4.41 Syllable Length in Characters (Maximum)**<br>
+    The maximum of syllable lengths expressed in characters.
 
-- **3.1.59 Syllable Length in Characters (Range)**<br>
-  The range of syllable lengths expressed in characters.
+  - **3.1.4.42 Syllable Length in Characters (Range)**<br>
+    The range of syllable lengths expressed in characters.
 
-- **3.1.60 Syllable Length in Characters (Interquartile Range)**<br>
-  The interquartile range of Syllable lengths expressed in characters.
+  - **3.1.4.43 Syllable Length in Characters (Interquartile Range)**<br>
+    The interquartile range of Syllable lengths expressed in characters.
 
-- **3.1.61 Syllable Length in Characters (Modes)**<br>
-  The mode(s) of syllable lengths expressed in characters.
+  - **3.1.4.44 Syllable Length in Characters (Modes)**<br>
+    The mode(s) of syllable lengths expressed in characters.
 
-- **3.1.62 Count of n-length Sentences / Sentence Segments / Tokens**<br>
-  The number of n-length sentences / sentence segments / tokens, where n = 1, 2, 3, etc.
+- **3.1.5 Length Breakdown**<br>
+  - **3.1.5.1 Count of n-token-long Sentences / Sentence Segments**<br>
+    The number of n-token-long sentences / sentence segments, where n = 1, 2, 3, etc.
 
-- **3.1.63 Count of n-length Sentences / Sentence Segments / Tokens %**<br>
-  The percentage of the number of n-length sentences / sentence segments / tokens in each file out of the total number of n-length sentences / sentence segments / tokens in all files, where n = 1, 2, 3, etc.
+  - **3.1.5.2 Count of n-token-long Sentences / Sentence Segments %**<br>
+    The percentage of the number of n-token-long sentences / sentence segments in each file out of the total number of n-token-long sentences / sentence segments in all files, where n = 1, 2, 3, etc.
+
+  - **3.1.5.3 Count of n-syllable-long Tokens**<br>
+    The number of n-syllable-long tokens, where n = 1, 2, 3, etc.
+
+  - **3.1.5.4 Count of n-syllable-long Tokens %**<br>
+    The percentage of the number of n-syllable-long tokens in each file out of the total number of n-syllable-long tokens in all files, where n = 1, 2, 3, etc.
+
+  - **3.1.5.5 Count of n-character-long Tokens**<br>
+    The number of n-character-long tokens, where n = 1, 2, 3, etc.
+
+  - **3.1.5.6 Count of n-character-long Tokens %**<br>
+    The percentage of the number of n-character-long tokens in each file out of the total number of n-character-long tokens in all files, where n = 1, 2, 3, etc.
 
 ![Profiler - Table](/doc/work_area/profiler_table.png)
 

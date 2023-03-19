@@ -22,6 +22,7 @@
 ### 🎉 New Features
 - Settings: Add Settings - Figures - Network Graphs - Advanced Settings - Layout - Spiral
 - Utils: Add python-mecab-ko's MeCab
+- Work Area: Add Profiler - Length Breakdown - Count of n-syllable-long Tokens
 - Work Area: Add Wordlist Generator - Filter results - Number of syllables
 - Work Area: Add Wordlist Generator - Generation Settings - Syllabification
 - Work Area: Add Wordlist Generator - Syllabification
