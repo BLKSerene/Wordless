@@ -39,6 +39,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Add python-mecab-ko
 - Dependencies: Upgrade Charset Normalizer to 3.1.0
+- Dependencies: Upgrade Matplotlib to 3.7.1
 
 ## [3.1.0](https://github.com/BLKSerene/Wordless/releases/tag/3.1.0) - 02/11/2023
 ### 🎉 New Features
