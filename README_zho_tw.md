@@ -65,17 +65,17 @@ Wordless 是一款擁有多語種支援的語料庫整合工具，其可用於�
 
 ## 下載
 
-Wordless 最新版（**3.1.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**、**Ubuntu 16.04 或更高版本**及 **Debian 9 或更高版本**，均僅支援**64位作業系統**。Intel 和 M1 處理器的蘋果電腦均有支援。
+Wordless 最新版（**3.2.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**及 **Ubuntu 16.04 或更高版本**，均僅支援**64位作業系統**。Intel 和 M1 處理器的蘋果電腦均有支援。
 
 如需完整的更新日誌，請參閱 [CHANGELOG.md](/CHANGELOG.md)（待翻譯）。
 
 版本|備註
 ----|---
-[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.1.0/wordless_3.1.0_windows.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
-[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.1.0/wordless_3.1.0_macos.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless.app**
-[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.1.0/wordless_3.1.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 右鍵單擊 **Wordless/Wordless.sh** 並選擇**作為程式執行**或在**終端**中執行該 shell 指令碼<br>3. 在彈出的視窗中輸入你的 sudo 密碼後回車<br>4. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
+[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.2.0/wordless_3.2.0_windows.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
+[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.2.0/wordless_3.2.0_macos.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless.app**
+[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.2.0/wordless_3.2.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 雙擊執行**Wordless/Wordless**<br>3. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
 [歷史版本](https://github.com/BLKSerene/Wordless/releases)|不推薦
-[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.1.0)|中國使用者若 Github 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
+[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.2.0)|中國使用者若 Github 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
 
 **備註 1**：Wordless 的路徑中**不建議包含任何非 ASCII 字元，如漢字和帶變音記號的字母等**。
 
@@ -84,6 +84,8 @@ Wordless 最新版（**3.1.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.1
     xattr -rc /Applications/Wordless.app
 
 請注意將 **/Applications/Wordless.app** 替換為 Wordless 在電腦上的實際存放路徑（可直接拖拽 **Wordless.app** 檔案至**終端**中）。然後，**再次執行 Wordless**（若程式可成功執行，終端中提示的警告可忽略）。
+
+**備註 3**：如果 Linux 版本雙擊後無法執行，請嘗試**在終端中使用 sudo 命令執行程式**。如果程式仍然無法執行，請**聯絡作者尋求幫助**。
 
 ## 需要幫助？
 
@@ -104,11 +106,11 @@ Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 
 APA（第7版）：
 
-<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.1.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.2.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
 MLA（第8版）：
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 3.1.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>, version 3.2.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## 許可
 
