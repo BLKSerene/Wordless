@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.2.0](https://github.com/BLKSerene/Wordless/releases/tag/3.2.0) - ??/??/2023
+## [3.2.0](https://github.com/BLKSerene/Wordless/releases/tag/3.2.0) - 03/20/2023
 ### 🎉 New Features
 - Settings: Add Settings - Figures - Network Graphs - Advanced Settings - Layout - Spiral
 - Utils: Add python-mecab-ko's MeCab
