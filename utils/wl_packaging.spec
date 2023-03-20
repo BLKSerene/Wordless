@@ -39,6 +39,9 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('lingua'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('opencc'))
 # python-crfsuite
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
+# python-mecab-ko
+datas.extend(PyInstaller.utils.hooks.collect_data_files('mecab'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('mecab_ko_dic'))
 # pymorphy3
 datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy3_dicts_ru'))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy3_dicts_uk'))
