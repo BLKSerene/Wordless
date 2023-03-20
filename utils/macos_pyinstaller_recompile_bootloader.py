@@ -23,7 +23,7 @@ import zipfile
 
 import requests
 
-PYINSTALLER_VER = '5.7.0'
+PYINSTALLER_VER = '5.9.0'
 
 # Fetch codes
 print(f'Downloading PyInstaller {PYINSTALLER_VER}... ', end = '')
