@@ -49,17 +49,21 @@ elif is_macos:
     os.makedirs('dist/Wordless.app/Contents/Macos/imports')
     os.makedirs('dist/Wordless.app/Contents/Macos/exports')
 
-# Running on Linux requires sudo
 if is_linux:
+    # Fix GLib-GIO-ERROR, Gtk-WARNING, and many other errors/warnings on Linux
+    # See: https://github.com/pyinstaller/pyinstaller/issues/7506
+    os.remove('dist/Wordless/libgtk-3.so.0')
+    os.remove('dist/Wordless/libstdc++.so.6')
+
+    # Generate shell file
     with open('dist/Wordless/Wordless.sh', 'w', encoding = 'utf_8') as f:
         f.write('#!/bin/bash\n')
-        # Fix libGL error on Linux
-        f.write('sudo LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6 ./Wordless\n')
+        f.write('./Wordless\n')
 
     # Allow executing file as program
     subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless.sh'], check = True)
 
-    # Create .desktop file
+    # Generate .desktop file
     subprocess.run(['python3.9', '-m', 'PyInstaller', '--clean', '--noconfirm', 'linux_create_shortcut.py'], check = True)
     shutil.copyfile('dist/linux_create_shortcut/linux_create_shortcut', 'dist/Wordless/Wordless - Create Shortcut')
     subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless - Create Shortcut'], check = True)
