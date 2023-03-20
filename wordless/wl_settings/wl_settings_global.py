@@ -457,7 +457,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'PyThaiNLP - Maximum matching + TCC'): 'pythainlp_max_matching_tcc',
                 'PyThaiNLP - NERCut': 'pythainlp_nercut',
 
-                _tr('init_settings_global', 'python-mecab-ko - MeCab'): 'python_mecab_ko_mecab',
+                'python-mecab-ko - MeCab': 'python_mecab_ko_mecab',
                 _tr('init_settings_global', 'Sacremoses - Moses tokenizer'): 'sacremoses_moses',
 
                 _tr('init_settings_global', 'spaCy - Afrikaans word tokenizer'): 'spacy_afr',
@@ -598,7 +598,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'NLTK - Russian perceptron part-of-speech tagger'): 'nltk_perceptron_rus',
 
                 _tr('init_settings_global', 'pymorphy3 - Morphological analyzer'): 'pymorphy3_morphological_analyzer',
-                _tr('init_settings_global', 'python-mecab-ko - MeCab'): 'python_mecab_ko_mecab',
+                'python-mecab-ko - MeCab': 'python_mecab_ko_mecab',
 
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (LST20)'): 'pythainlp_perceptron_lst20',
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (ORCHID)'): 'pythainlp_perceptron_orchid',
