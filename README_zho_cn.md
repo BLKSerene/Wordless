@@ -94,7 +94,7 @@ Wordless 最新版（**3.2.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.1
 支持渠道|信息
 -------|----
 官方文档|[文档](/doc/doc_eng.md)（待翻译）
-视频教程|[B站](https://space.bilibili.com/34963752/video)
+视频教程|[YouTube](https://www.youtube.com/@BLKSerene) \| [B站](https://space.bilibili.com/34963752/video)
 Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 使用疑问|[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
 邮件咨询|[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)

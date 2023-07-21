@@ -94,7 +94,7 @@ If you have any questions, find software bugs, need to provide feedback, or want
 Support Channel       |Information
 ----------------------|-----------
 Official documentation|[Documentation](/doc/doc_eng.md)
-Tutorial videos       |[bilibili](https://space.bilibili.com/34963752/video)
+Tutorial videos       |[YouTube](https://www.youtube.com/@BLKSerene) \| [bilibili](https://space.bilibili.com/34963752/video)
 Bug reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 Usage questions       |[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
 Email support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmail.com)
