@@ -62,4 +62,5 @@ pytest
 python-docx
 requests
 scipy
+tzdata; sys_platform == 'win32' # Required by PyThaiNLP on Windows
 wordcloud
