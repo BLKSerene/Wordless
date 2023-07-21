@@ -651,7 +651,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(1, 1),
             wl_labels.Wl_Label_Html(self.tr(
-                '<a href="https://space.bilibili.com/34963752/video">bilibili</a>'
+                '<a href="https://www.youtube.com/@BLKSerene">YouTube</a> | <a href="https://space.bilibili.com/34963752/video">bilibili</a>'
             ), self)
         )
 
