@@ -20,6 +20,7 @@
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - ??/??/2023
 ### ⏫ Dependency Changes
+- Dependencies: Upgrade Charset Normalizer to 3.2.0
 - Dependencies: Upgrade Requests to 2.31.0
 
 ## [3.2.0](https://github.com/BLKSerene/Wordless/releases/tag/3.2.0) - 03/20/2023
