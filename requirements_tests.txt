@@ -24,7 +24,7 @@ jieba == 0.42.1
 lingua-language-detector == 1.3.2
 nltk == 3.8.1
 pyphen == 0.14.0
-pythainlp == 3.1.1
+pythainlp == 4.0.2
 sacremoses == 0.0.53
 simplemma == 0.9.1
 textblob == 0.17.1

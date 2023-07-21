@@ -22,6 +22,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade Botok to 0.8.12
 - Dependencies: Upgrade Charset Normalizer to 3.2.0
+- Dependencies: Upgrade PyThaiNLP to 4.0.2
 - Dependencies: Upgrade Requests to 2.31.0
 - Dependencies: Upgrade wordcloud to 1.9.2
 
