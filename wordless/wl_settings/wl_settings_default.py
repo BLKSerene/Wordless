@@ -27,7 +27,7 @@ from wordless.wl_tagsets import (
     wl_tagset_kor_mecab,
     wl_tagset_rus_open_corpora,
     wl_tagset_rus_russian_national_corpus,
-    wl_tagset_tha_lst20,
+    wl_tagset_tha_blackboard,
     wl_tagset_tha_orchid,
     wl_tagset_bod_botok,
     wl_tagset_vie_underthesea,
@@ -1457,7 +1457,7 @@ def init_settings_default(main):
                     },
 
                     'tha': {
-                        'pythainlp_perceptron_lst20': wl_tagset_tha_lst20.MAPPINGS,
+                        'pythainlp_perceptron_blackboard': wl_tagset_tha_blackboard.MAPPINGS,
                         'pythainlp_perceptron_orchid': wl_tagset_tha_orchid.MAPPINGS,
                         'pythainlp_perceptron_pud': wl_tagset_universal.MAPPINGS
                     },
