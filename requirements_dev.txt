@@ -58,6 +58,7 @@ pyqt5
 python-docx
 requests
 scipy
+tzdata; sys_platform == 'win32' # Required by PyThaiNLP on Windows
 wordcloud
 
 # spaCy models

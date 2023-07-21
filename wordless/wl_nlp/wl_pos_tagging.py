@@ -252,8 +252,8 @@ def wl_pos_tag_text(main, text, lang, pos_tagger):
     elif pos_tagger.startswith('pythainlp_'):
         tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
 
-        if pos_tagger == 'pythainlp_perceptron_lst20':
-            tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'lst20')
+        if pos_tagger == 'pythainlp_perceptron_blackboard':
+            tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
         elif pos_tagger == 'pythainlp_perceptron_orchid':
             tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
         elif pos_tagger == 'pythainlp_perceptron_pud':
@@ -305,8 +305,8 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
         for token in tokens:
             tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
     # Thai
-    elif pos_tagger == 'pythainlp_perceptron_lst20':
-        tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'lst20')
+    elif pos_tagger == 'pythainlp_perceptron_blackboard':
+        tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
     elif pos_tagger == 'pythainlp_perceptron_orchid':
         tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
     elif pos_tagger == 'pythainlp_perceptron_pud':

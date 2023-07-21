@@ -19,6 +19,12 @@
 <div align="center"><h1>📄 Changelog</h1></div>
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - ??/??/2023
+### 🎉 New Features
+- Utils: Add PyThaiNLP's perceptron part-of-speech tagger (Blackboard)
+
+### ❌ Removals
+- Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)
+
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade Botok to 0.8.12
 - Dependencies: Upgrade Charset Normalizer to 3.2.0
