@@ -718,7 +718,7 @@ class Wl_Dialog_Citing(wl_dialogs.Wl_Dialog_Info_Copy):
         self.label_citing = wl_labels.Wl_Label_Dialog(
             self.tr('''
                 <div>
-                    If you publish work that uses Wordless, please cite as follows.
+                    If you are going to publish a work that uses Wordless, please cite as follows.
                 </div>
             '''),
             self

@@ -102,7 +102,7 @@ Email support         |[blkserene<i>@</i>gmail<i>.</i>com](mailto:blkserene@gmai
 
 ## Citing
 
-If you publish work that uses Wordless, please cite as follows.
+If you are going to publish a work that uses Wordless, please cite as follows.
 
 APA (7th edition):
 

@@ -102,7 +102,7 @@ Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 
 ## 引用
 
-如果你在發表的成果中使用了 Wordless，請按如下格式進行引用。
+如果你準備發表的成果中使用了 Wordless，請按如下格式進行引用。
 
 APA（第7版）：
 
