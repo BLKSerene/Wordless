@@ -263,7 +263,7 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.label_tagsets_lang = QLabel(self.tr('Language:'), self)
         self.combo_box_tagsets_lang = wl_boxes.Wl_Combo_Box(self)
-        self.label_tagsets_pos_tagger = QLabel(self.tr('Part-of-speech Tagger:'), self)
+        self.label_tagsets_pos_tagger = QLabel(self.tr('Part-of-speech tagger:'), self)
         self.combo_box_tagsets_pos_tagger = wl_boxes.Wl_Combo_Box_Adjustable(self)
 
         self.combo_box_tagsets_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
