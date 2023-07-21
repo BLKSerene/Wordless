@@ -65,7 +65,7 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 
 ## Download
 
-The latest version (**3.2.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**. Both Intel-based and M1-based Macs are supported.
+The latest version (**3.2.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, and **Ubuntu 16.04 or later**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
 
 For a detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
