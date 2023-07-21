@@ -600,7 +600,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'pymorphy3 - Morphological analyzer'): 'pymorphy3_morphological_analyzer',
                 'python-mecab-ko - MeCab': 'python_mecab_ko_mecab',
 
-                _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (LST20)'): 'pythainlp_perceptron_lst20',
+                _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (Blackboard)'): 'pythainlp_perceptron_blackboard',
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (ORCHID)'): 'pythainlp_perceptron_orchid',
                 _tr('init_settings_global', 'PyThaiNLP - Perceptron part-of-speech tagger (PUD)'): 'pythainlp_perceptron_pud',
 
@@ -1566,7 +1566,7 @@ def init_settings_global():
             'swe': ['spacy_swe'],
 
             'tha': [
-                'pythainlp_perceptron_lst20',
+                'pythainlp_perceptron_blackboard',
                 'pythainlp_perceptron_orchid',
                 'pythainlp_perceptron_pud'
             ],

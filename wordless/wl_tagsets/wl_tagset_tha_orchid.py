@@ -16,11 +16,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# Reference: https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
+# References:
+#     https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
+#     https://github.com/PyThaiNLP/pythainlp/blob/dev/pythainlp/tag/orchid.py
 MAPPINGS = [
     ['NPRP', 'PROPN', 'Proper noun', 'วินโดวส์ 95, โคโรน่า, โค้ก'],
 
-    ['NCNM', 'NUM', 'Cardinal number', 'หนึ่ง, สอง, สาม, 1, 2, 10'],
+    ['NCNM', 'NOUN/NUM', 'Cardinal number', 'หนึ่ง, สอง, สาม, 1, 2, 10'],
     ['NONM', 'ADJ', 'Ordinal number', 'ที่หนึ่ง, ที่สอง, ที่สาม, ที่1, ที่2'],
 
     ['NLBL', 'NUM', 'Label noun', '1, 2, 3, 4, ก, ข, a, b'],
@@ -76,6 +78,7 @@ MAPPINGS = [
 
     ['EAFF', 'PART', 'Ending for affirmative sentence', 'จ๊ะ, จ้ะ, ค่ะ, ครับ, นะ, น่า, เถอะ'],
     ['EITT', 'PART', 'Ending for interrogative sentence', 'หรือ, เหรอ, ไหม, มั้ย'],
+    ['AITT', 'PART', '', ''],
 
     ['NEG', 'PART', 'Negator', 'ไม่, มิได้, ไม่ได้, มิ'],
 
