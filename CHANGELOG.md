@@ -22,6 +22,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Upgrade Charset Normalizer to 3.2.0
 - Dependencies: Upgrade Requests to 2.31.0
+- Dependencies: Upgrade wordcloud to 1.9.2
 
 ## [3.2.0](https://github.com/BLKSerene/Wordless/releases/tag/3.2.0) - 03/20/2023
 ### 🎉 New Features
@@ -235,7 +236,7 @@
 - Dependencies: Upgrade SciPy to 1.9.1
 - Dependencies: Upgrade spaCy to 3.4.1
 - Dependencies: Upgrade SudachiPy to 0.6.6
-- Dependencies: Upgrade WordCloud to 1.8.2.2
+- Dependencies: Upgrade wordcloud to 1.8.2.2
 
 ## [2.2.0](https://github.com/BLKSerene/Wordless/releases/tag/2.2.0) - 03/12/2022
 ### 🎉 New Features
@@ -473,7 +474,7 @@
 - Dependencies: Upgrade Stopwords ISO to 1.0.0
 - Dependencies: Upgrade syntok to 1.3.1
 - Dependencies: Upgrade Underthesea to 1.2.2
-- Dependencies: Upgrade WordCloud to 1.8.1
+- Dependencies: Upgrade wordcloud to 1.8.1
 
 ## [1.3.0](https://github.com/BLKSerene/Wordless/releases/tag/1.3.0) - 11/30/2019
 ### 🎉 New Features
@@ -520,7 +521,7 @@
 - Dependencies: Upgrade SciPy to 1.3.3
 - Dependencies: Upgrade spaCy to 2.2.3
 - Dependencies: Upgrade underthesea to 1.1.17
-- Dependencies: Upgrade WordCloud to 1.6.0
+- Dependencies: Upgrade wordcloud to 1.6.0
 
 ## [1.2.0](https://github.com/BLKSerene/Wordless/releases/tag/1.2.0) - 08/27/2019
 ### 🎉 New Features
