@@ -234,6 +234,8 @@ def test_word_tokenize(lang, word_tokenizer):
         assert tokens == ["D'", 'Lëtzebuergesch', 'gëtt', 'an', 'der', 'däitscher', 'Dialektologie', 'als', 'ee', 'westgermaneschen', ',', 'mëtteldäitschen', 'Dialekt', 'aklasséiert', ',', 'deen', 'zum', 'Muselfränkesche', 'gehéiert', '.']
     elif lang == 'mkd':
         assert tokens == ['Македонски', 'јазик', '—', 'јужнословенски', 'јазик', ',', 'дел', 'од', 'групата', 'на', 'словенски', 'јазици', 'од', 'јазичното', 'семејство', 'на', 'индоевропски', 'јазици', '.']
+    elif lang == 'msa':
+        assert tokens == ['Bahasa', 'Melayu', '(', 'Tulisan', 'Jawi', ':', 'بهاس', 'ملايو', ';', 'Rencong', ':', 'ꤷꥁꤼ', 'ꤸꥍꤾꤿꥈ', ')', 'ialah', 'salah', 'satu', 'daripada', 'bahasa', '-', 'bahasa', 'Melayu', '-', 'Polinesia', 'di', 'bawah', 'keluarga', 'bahasa', 'Austronesia', ',', 'yang', 'merupakan', 'bahasa', 'rasmi', 'di', 'Brunei', ',', 'Indonesia', ',', 'Malaysia', 'dan', 'Singapura', ',', 'serta', 'dituturkan', 'di', 'Timor', 'Leste', 'dan', 'sebahagian', 'wilayah', 'di', 'Kemboja', ',', 'Filipina', 'dan', 'Thailand', '.']
     elif lang == 'mal':
         if word_tokenizer == 'sacremoses_moses':
             assert tokens == ['ഇന്ത്യയിൽ', 'കേരള', 'സംസ്ഥാനത്തിലും', 'കേന്ദ്രഭരണപ്രദേശങ്ങളായ', 'ലക്ഷദ്വീപിലും', 'പോണ്ടിച്ചേരിയുടെ', 'ഭാഗമായ', 'മാഹിയിലും', 'തമിഴ്നാട്ടിലെ', 'കന്യാകുമാരി', 'ജില്ലയിലും', 'നീലഗിരി', 'ജില്ലയിലെ', 'ഗൂഡല്ലൂർ', 'താലൂക്കിലും', 'സംസാരിക്കപ്പെടുന്ന', 'ഭാഷയാണ്', 'മലയാളം', '.']
