@@ -505,6 +505,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Lithuanian word tokenizer'): 'spacy_lit',
                 _tr('init_settings_global', 'spaCy - Luxembourgish word tokenizer'): 'spacy_ltz',
                 _tr('init_settings_global', 'spaCy - Macedonian word tokenizer'): 'spacy_mkd',
+                _tr('init_settings_global', 'spaCy - Malay word tokenizer'): 'spacy_msa',
                 _tr('init_settings_global', 'spaCy - Malayalam word tokenizer'): 'spacy_mal',
                 _tr('init_settings_global', 'spaCy - Marathi word tokenizer'): 'spacy_mar',
                 _tr('init_settings_global', 'spaCy - Nepali word tokenizer'): 'spacy_nep',
@@ -1283,6 +1284,8 @@ def init_settings_global():
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_mkd'
             ],
+
+            'msa': ['spacy_msa'],
 
             'mal': [
                 'sacremoses_moses',

@@ -1272,6 +1272,7 @@ def init_settings_default(main):
                 'lit': 'spacy_lit',
                 'ltz': 'spacy_ltz',
                 'mkd': 'spacy_mkd',
+                'msa': 'spacy_msa',
                 'mal': 'sacremoses_moses',
                 'mar': 'sacremoses_moses',
                 'mni': 'sacremoses_moses',
