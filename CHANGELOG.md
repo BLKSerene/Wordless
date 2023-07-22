@@ -21,6 +21,7 @@
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - ??/??/2023
 ### 🎉 New Features
 - Utils: Add PyThaiNLP's perceptron part-of-speech tagger (Blackboard)
+- Utils: Add spaCy's Korean sentence recognizer, word tokenizer, part-of-speech tagger, lemmatizer, and dependency parser
 
 ### ❌ Removals
 - Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)
