@@ -56,7 +56,7 @@ model_ver_cat = model_ver_zho = model_ver_hrv = model_ver_dan = model_ver_nld = 
 model_ver_eng = model_ver_fin = model_ver_fra = model_ver_deu = model_ver_ell = \
 model_ver_ita = model_ver_jpn = model_ver_lit = model_ver_mkd = model_ver_nob = \
 model_ver_pol = model_ver_por = model_ver_ron = model_ver_rus = model_ver_spa = \
-model_ver_swe = model_ver_ukr = '3.5.0'
+model_ver_swe = model_ver_ukr = '3.6.0'
 
 # Check updates
 for lang_text, lang_code_639_3, lang_code_639_1 in langs:
