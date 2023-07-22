@@ -74,6 +74,7 @@ SPACY_LANGS = {
     'ell': 'el_core_news_sm',
     'ita': 'it_core_news_sm',
     'jpn': 'ja_core_news_sm',
+    'kor': 'ko_core_news_sm',
     'lit': 'lt_core_news_sm',
     'mkd': 'mk_core_news_sm',
     'nob': 'nb_core_news_sm',
