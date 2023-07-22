@@ -167,11 +167,11 @@ class Check_Settings_Global():
         # Loading languages supported by spaCy
         for lang in pkgutil.iter_modules(spacy.lang.__path__):
             if lang.ispkg:
-                if lang.name not in ['ko', 'sr', 'th', 'vi', 'xx']:
-                    langs_supported_spacy.append(lang.name)
                 # Serbian
-                elif lang.name == 'sr':
+                if lang.name == 'sr':
                     langs_supported_spacy.extend(['sr_cyrl', 'sr_latn'])
+                elif lang.name not in ['th', 'vi', 'xx']:
+                    langs_supported_spacy.append(lang.name)
 
         langs_supported_spacy = add_lang_suffixes(langs_supported_spacy)
 
@@ -183,7 +183,7 @@ class Check_Settings_Global():
                 langs_supported_spacy_lemmatizers.append(lang_code)
 
         # Languages without data files
-        langs_supported_spacy_lemmatizers.extend(['fi', 'ja', 'uk'])
+        langs_supported_spacy_lemmatizers.extend(['fi', 'ja', 'ko', 'uk'])
         langs_supported_spacy_lemmatizers = add_lang_suffixes(langs_supported_spacy_lemmatizers)
 
         # Check for missing and extra languages for spaCy's sentence recognizer / sentencizer
