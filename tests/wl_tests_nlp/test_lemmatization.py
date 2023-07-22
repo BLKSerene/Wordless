@@ -224,6 +224,8 @@ def test_lemmatize(lang, lemmatizer):
             assert lemmas == ['日本語', '(', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住者', 'を', '含む', '日本人', '同士', 'の', '間', 'で', '使用', 'する', 'れる', 'て', 'いる', '言語', '。']
         else:
             tests_lang_util_skipped = True
+    elif lang == 'kor':
+        assert lemmas == ['한국어', '(', '韓國語', ')', '는', '대한민+국과', '조선민주주의인민공화국+의', '공용어이다', '.']
     elif lang == 'lat':
         assert lemmas == ['lingua', 'Latina,[1', ']', 'sive', 'sermo', 'Latinus,[2', ']', 'sum', 'lingua', 'indoeuropaeus', 'qui', 'primus', 'Latinus', 'universus', 'et', 'Romanus', 'antiquus', 'in', 'primus', 'loquor', 'quamobrem', 'interdum', 'etiam', 'lingua', 'Latia[3', ']', '(', 'in', 'Latium', 'enim', 'suetus', ')', 'et', 'lingua', 'Romana[4', ']', '(', 'nam', 'imperium', 'Romanus', 'sermo', 'sollemne', ')', 'appello', '.']
     elif lang == 'lav':

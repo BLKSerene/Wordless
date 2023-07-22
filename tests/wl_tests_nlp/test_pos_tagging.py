@@ -159,8 +159,14 @@ def test_pos_tag(lang, pos_tagger):
         else:
             tests_lang_util_skipped = True
     elif lang == 'kor':
-        assert tokens_tagged == [('한국어', 'NNG'), ('(', 'SSO'), ('韓', 'NNG'), ('國語', 'NNG'), (')', 'SSC'), ('는', 'JX'), ('대한민국', 'NNP'), ('과', 'JC'), ('조선', 'NNP'), ('민주주의', 'NNG'), ('인민공화국', 'NNP'), ('의', 'JKG'), ('공용어', 'NNG'), ('이', 'VCP'), ('다', 'EF'), ('.', 'SF')]
-        assert tokens_tagged_universal == [('한국어', 'NOUN'), ('(', 'PUNCT'), ('韓', 'NOUN'), ('國語', 'NOUN'), (')', 'PUNCT'), ('는', 'ADP'), ('대한민국', 'PROPN'), ('과', 'CONJ'), ('조선', 'PROPN'), ('민주주의', 'NOUN'), ('인민공화국', 'PROPN'), ('의', 'ADP'), ('공용어', 'NOUN'), ('이', 'ADP'), ('다', 'X'), ('.', 'PUNCT')]
+        if pos_tagger == 'python_mecab_ko_mecab':
+            assert tokens_tagged == [('한국어', 'NNG'), ('(', 'SSO'), ('韓', 'NNG'), ('國語', 'NNG'), (')', 'SSC'), ('는', 'JX'), ('대한민국', 'NNP'), ('과', 'JC'), ('조선', 'NNP'), ('민주주의', 'NNG'), ('인민공화국', 'NNP'), ('의', 'JKG'), ('공용어', 'NNG'), ('이', 'VCP'), ('다', 'EF'), ('.', 'SF')]
+            assert tokens_tagged_universal == [('한국어', 'NOUN'), ('(', 'PUNCT'), ('韓', 'NOUN'), ('國語', 'NOUN'), (')', 'PUNCT'), ('는', 'ADP'), ('대한민국', 'PROPN'), ('과', 'CONJ'), ('조선', 'PROPN'), ('민주주의', 'NOUN'), ('인민공화국', 'PROPN'), ('의', 'ADP'), ('공용어', 'NOUN'), ('이', 'ADP'), ('다', 'X'), ('.', 'PUNCT')]
+        elif pos_tagger == 'spacy_kor':
+            assert tokens_tagged == [('한국어', 'ncn'), ('(', 'sl'), ('韓國語', 'nq'), (')', 'sr'), ('는', 'jxt'), ('대한민국과', 'ncn+ncn'), ('조선민주주의인민공화국의', 'nq+jcs'), ('공용어이다', 'ncpa+xsv+ep+ef'), ('.', 'sf')]
+            assert tokens_tagged_universal == [('한국어', 'NOUN'), ('(', 'PUNCT'), ('韓國語', 'PROPN'), (')', 'PUNCT'), ('는', 'ADP'), ('대한민국과', 'NOUN'), ('조선민주주의인민공화국의', 'NOUN'), ('공용어이다', 'VERB'), ('.', 'PUNCT')]
+        else:
+            tests_lang_util_skipped = True
     elif lang == 'lit':
         assert tokens_tagged == [('Lietuvių', 'dkt.vyr.dgs.K.'), ('kalba', 'dkt.mot.vns.Įn.'), ('–', 'skyr.'), ('iš', 'prl.K.'), ('baltų', 'bdv.aukšč.vyr.dgs.K.'), ('prokalbės', 'dkt.mot.vns.K.'), ('kilusi', 'vksm.dlv.veik.būt-k.mot.vns.V.'), ('lietuvių', 'dkt.vyr.dgs.K.'), ('tautos', 'dkt.mot.vns.K.'), ('kalba', 'dkt.mot.vns.Įn.'), (',', 'skyr.'), ('kuri', 'įv.mot.vns.V.'), ('Lietuvoje', 'dkt.tikr.mot.vns.Vt.'), ('yra', 'vksm.asm.tiesiog.es.vns.3.'), ('valstybinė', 'bdv.nelygin.mot.vns.V.'), (',', 'skyr.'), ('o', 'jng.'), ('Europos', 'dkt.tikr.mot.vns.K.'), ('Sąjungoje', 'dkt.mot.vns.Vt.'), ('–', 'skyr.'), ('viena', 'įv.mot.vns.V.'), ('iš', 'prl.K.'), ('oficialiųjų', 'bdv.nelygin.įvardž.vyr.dgs.K.'), ('kalbų', 'dkt.vyr.vns.V.'), ('.', 'skyr.')]
         assert tokens_tagged_universal == [('Lietuvių', 'NOUN'), ('kalba', 'NOUN'), ('–', 'PUNCT'), ('iš', 'ADP'), ('baltų', 'ADJ'), ('prokalbės', 'NOUN'), ('kilusi', 'VERB'), ('lietuvių', 'NOUN'), ('tautos', 'NOUN'), ('kalba', 'NOUN'), (',', 'PUNCT'), ('kuri', 'DET'), ('Lietuvoje', 'PROPN'), ('yra', 'AUX'), ('valstybinė', 'ADJ'), (',', 'PUNCT'), ('o', 'CCONJ'), ('Europos', 'PROPN'), ('Sąjungoje', 'NOUN'), ('–', 'PUNCT'), ('viena', 'PRON'), ('iš', 'ADP'), ('oficialiųjų', 'ADJ'), ('kalbų', 'NOUN'), ('.', 'PUNCT')]

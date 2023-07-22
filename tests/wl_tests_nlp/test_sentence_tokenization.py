@@ -129,6 +129,8 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
             tests_lang_util_skipped = True
     elif lang == 'jpn':
         assert sentences == ['日本語（にほんご、にっぽんご[注 2]）は、日本国内や、かつての日本領だった国、そして国外移民や移住者を含む日本人同士の間で使用されている言語。', '日本は法令によって公用語を規定していないが、法令その他の公用文は全て日本語で記述され、各種法令[注 3]において日本語を用いることが規定され、学校教育においては「国語」の教科として学習を行う等、事実上、日本国内において唯一の公用語となっている。']
+    elif lang == 'kor':
+        assert sentences == ['한국어(韓國語)는 대한민국과 조선민주주의인민공화국의 공용어이다.', '한국말, 조선말, 조선어로도 불린다.']
     elif lang == 'lit':
         if sentence_tokenizer == 'spacy_dependency_parser_lit':
             assert sentences == ['Lietuvių kalba', '– iš baltų prokalbės kilusi lietuvių tautos kalba', ', kuri Lietuvoje yra valstybinė, o Europos Sąjungoje – viena iš oficialiųjų kalbų.', 'Lietuviškai kalba apie tris milijonus žmonių (dauguma jų gyvena Lietuvoje).', 'Drauge su latvių, mirusiomis prūsų, jotvingių ir kitomis baltų kalbomis priklauso indoeuropiečių kalbų šeimos baltų kalbų grupei.']
@@ -284,6 +286,8 @@ def test_sentence_seg_tokenize(lang):
         assert sentence_segs == ['È classificato al 23º posto tra le lingue per numero di parlanti nel mondo e,', 'in Italia,', 'è utilizzato da circa 58 milioni di residenti.', "[2] Nel 2015 l'italiano era la lingua materna del 90,", '4% dei residenti in Italia,', "[3] che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano,", 'alle lingue regionali e ai dialetti.', 'In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana ed è largamente prevalente nei mezzi di comunicazione nazionali,', "nell'amministrazione pubblica dello Stato italiano e nell'editoria."]
     elif lang == 'jpn':
         assert sentence_segs == ['日本語（にほんご、', 'にっぽんご[注 2]）は、', '日本国内や、', 'かつての日本領だった国、', 'そして国外移民や移住者を含む日本人同士の間で使用されている言語。', '日本は法令によって公用語を規定していないが、', '法令その他の公用文は全て日本語で記述され、', '各種法令[注 3]において日本語を用いることが規定され、', '学校教育においては「国語」の教科として学習を行う等、', '事実上、', '日本国内において唯一の公用語となっている。']
+    elif lang == 'kor':
+        assert sentence_segs == ['한국어(韓國語)는 대한민국과 조선민주주의인민공화국의 공용어이다.', '한국말,', '조선말,', '조선어로도 불린다.']
     elif lang == 'lit':
         assert sentence_segs == ['Lietuvių kalba – iš baltų prokalbės kilusi lietuvių tautos kalba,', 'kuri Lietuvoje yra valstybinė,', 'o Europos Sąjungoje – viena iš oficialiųjų kalbų.', 'Lietuviškai kalba apie tris milijonus žmonių (dauguma jų gyvena Lietuvoje).', 'Drauge su latvių,', 'mirusiomis prūsų,', 'jotvingių ir kitomis baltų kalbomis priklauso indoeuropiečių kalbų šeimos baltų kalbų grupei.']
     elif lang == 'mkd':

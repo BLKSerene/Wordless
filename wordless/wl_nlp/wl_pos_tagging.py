@@ -131,7 +131,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
                     # Align tokens
                     while i_tokens < len_tokens - 1 or i_tokens_tagged < len_tokens_tagged - 1:
-                        if lang in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod']:
+                        if lang in ['zho_cn', 'zho_tw', 'jpn', 'kor', 'tha', 'bod']:
                             len_tokens_temp = sum((len(token) for token in tokens_temp))
                             len_tokens_tagged_temp = sum((len(token) for token in tokens_tagged_temp))
                         else:

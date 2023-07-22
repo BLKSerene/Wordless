@@ -402,6 +402,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Greek (Modern) dependency parser'): 'spacy_dependency_parser_ell',
                 _tr('init_settings_global', 'spaCy - Italian dependency parser'): 'spacy_dependency_parser_ita',
                 _tr('init_settings_global', 'spaCy - Japanese dependency parser'): 'spacy_dependency_parser_jpn',
+                _tr('init_settings_global', 'spaCy - Korean dependency parser'): 'spacy_dependency_parser_kor',
                 _tr('init_settings_global', 'spaCy - Lithuanian dependency parser'): 'spacy_dependency_parser_lit',
                 _tr('init_settings_global', 'spaCy - Macedonian dependency parser'): 'spacy_dependency_parser_mkd',
                 _tr('init_settings_global', 'spaCy - Norwegian Bokmål dependency parser'): 'spacy_dependency_parser_nob',
@@ -412,6 +413,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Spanish dependency parser'): 'spacy_dependency_parser_spa',
                 _tr('init_settings_global', 'spaCy - Swedish dependency parser'): 'spacy_dependency_parser_swe',
                 _tr('init_settings_global', 'spaCy - Ukrainian dependency parser'): 'spacy_dependency_parser_ukr',
+
                 _tr('init_settings_global', 'spaCy - Catalan sentence recognizer'): 'spacy_sentence_recognizer_cat',
                 _tr('init_settings_global', 'spaCy - Chinese sentence recognizer'): 'spacy_sentence_recognizer_zho',
                 _tr('init_settings_global', 'spaCy - Croatian sentence recognizer'): 'spacy_sentence_recognizer_hrv',
@@ -424,6 +426,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Greek (Modern) sentence recognizer'): 'spacy_sentence_recognizer_ell',
                 _tr('init_settings_global', 'spaCy - Italian sentence recognizer'): 'spacy_sentence_recognizer_ita',
                 _tr('init_settings_global', 'spaCy - Japanese sentence recognizer'): 'spacy_sentence_recognizer_jpn',
+                _tr('init_settings_global', 'spaCy - Korean sentence recognizer'): 'spacy_sentence_recognizer_kor',
                 _tr('init_settings_global', 'spaCy - Lithuanian sentence recognizer'): 'spacy_sentence_recognizer_lit',
                 _tr('init_settings_global', 'spaCy - Macedonian sentence recognizer'): 'spacy_sentence_recognizer_mkd',
                 _tr('init_settings_global', 'spaCy - Norwegian Bokmål sentence recognizer'): 'spacy_sentence_recognizer_nob',
@@ -434,6 +437,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Spanish sentence recognizer'): 'spacy_sentence_recognizer_spa',
                 _tr('init_settings_global', 'spaCy - Swedish sentence recognizer'): 'spacy_sentence_recognizer_swe',
                 _tr('init_settings_global', 'spaCy - Ukrainian sentence recognizer'): 'spacy_sentence_recognizer_ukr',
+
                 _tr('init_settings_global', 'spaCy - Sentencizer'): 'spacy_sentencizer',
 
                 _tr('init_settings_global', 'Underthesea - Vietnamese sentence tokenizer'): 'underthesea_vie'
@@ -493,6 +497,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Italian word tokenizer'): 'spacy_ita',
                 _tr('init_settings_global', 'spaCy - Japanese word tokenizer'): 'spacy_jpn',
                 _tr('init_settings_global', 'spaCy - Kannada word tokenizer'): 'spacy_kan',
+                _tr('init_settings_global', 'spaCy - Korean word tokenizer'): 'spacy_kor',
                 _tr('init_settings_global', 'spaCy - Kyrgyz word tokenizer'): 'spacy_kir',
                 _tr('init_settings_global', 'spaCy - Latin word tokenizer'): 'spacy_lat',
                 _tr('init_settings_global', 'spaCy - Latvian word tokenizer'): 'spacy_lav',
@@ -616,6 +621,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Greek (Modern) part-of-speech tagger'): 'spacy_ell',
                 _tr('init_settings_global', 'spaCy - Italian part-of-speech tagger'): 'spacy_ita',
                 _tr('init_settings_global', 'spaCy - Japanese part-of-speech tagger'): 'spacy_jpn',
+                _tr('init_settings_global', 'spaCy - Korean part-of-speech tagger'): 'spacy_kor',
                 _tr('init_settings_global', 'spaCy - Lithuanian part-of-speech tagger'): 'spacy_lit',
                 _tr('init_settings_global', 'spaCy - Macedonian part-of-speech tagger'): 'spacy_mkd',
                 _tr('init_settings_global', 'spaCy - Norwegian Bokmål part-of-speech tagger'): 'spacy_nob',
@@ -703,6 +709,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Irish lemmatizer'): 'spacy_gle',
                 _tr('init_settings_global', 'spaCy - Italian lemmatizer'): 'spacy_ita',
                 _tr('init_settings_global', 'spaCy - Japanese lemmatizer'): 'spacy_jpn',
+                _tr('init_settings_global', 'spaCy - Korean lemmatizer'): 'spacy_kor',
                 _tr('init_settings_global', 'spaCy - Lithuanian lemmatizer'): 'spacy_lit',
                 _tr('init_settings_global', 'spaCy - Luxembourgish lemmatizer'): 'spacy_ltz',
                 _tr('init_settings_global', 'spaCy - Macedonian lemmatizer'): 'spacy_mkd',
@@ -836,6 +843,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Greek (Modern) dependency parser'): 'spacy_ell',
                 _tr('init_settings_global', 'spaCy - Italian dependency parser'): 'spacy_ita',
                 _tr('init_settings_global', 'spaCy - Japanese dependency parser'): 'spacy_jpn',
+                _tr('init_settings_global', 'spaCy - Korean dependency parser'): 'spacy_kor',
                 _tr('init_settings_global', 'spaCy - Lithuanian dependency parser'): 'spacy_lit',
                 _tr('init_settings_global', 'spaCy - Macedonian dependency parser'): 'spacy_mkd',
                 _tr('init_settings_global', 'spaCy - Norwegian Bokmål dependency parser'): 'spacy_nob',
@@ -950,6 +958,11 @@ def init_settings_global():
             'jpn': [
                 'spacy_dependency_parser_jpn',
                 'spacy_sentence_recognizer_jpn'
+            ],
+
+            'kor': [
+                'spacy_dependency_parser_kor',
+                'spacy_sentence_recognizer_kor'
             ],
 
             'lit': [
@@ -1236,7 +1249,11 @@ def init_settings_global():
             ],
 
             'kir': ['spacy_kir'],
-            'kor': ['python_mecab_ko_mecab'],
+
+            'kor': [
+                'python_mecab_ko_mecab',
+                'spacy_kor'
+            ],
 
             'lat': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1547,7 +1564,11 @@ def init_settings_global():
                 'sudachipy_jpn'
             ],
 
-            'kor': ['python_mecab_ko_mecab'],
+            'kor': [
+                'python_mecab_ko_mecab',
+                'spacy_kor'
+            ],
+
             'lit': ['spacy_lit'],
             'mkd': ['spacy_mkd'],
             'nob': ['spacy_nob'],
@@ -1657,7 +1678,6 @@ def init_settings_global():
                 'spacy_deu'
             ],
 
-
             'grc': [
                 'spacy_grc'
             ],
@@ -1696,6 +1716,7 @@ def init_settings_global():
                 'sudachipy_jpn'
             ],
 
+            'kor': ['spacy_kor'],
             'lat': ['simplemma_lat'],
             'lav': ['simplemma_lav'],
 
@@ -2025,6 +2046,7 @@ def init_settings_global():
             'ell': ['spacy_ell'],
             'ita': ['spacy_ita'],
             'jpn': ['spacy_jpn'],
+            'kor': ['spacy_kor'],
             'lit': ['spacy_lit'],
             'mkd': ['spacy_mkd'],
             'nob': ['spacy_nob'],

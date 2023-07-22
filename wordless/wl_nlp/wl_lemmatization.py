@@ -272,7 +272,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
 
                 # Align tokens
                 while i_tokens < len_tokens - 1 or i_lemmas < len_lemmas - 1:
-                    if lang in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod']:
+                    if lang in ['zho_cn', 'zho_tw', 'jpn', 'kor', 'tha', 'bod']:
                         len_tokens_temp = sum((len(token) for token in tokens_temp))
                         len_lemma_tokens_temp = sum((len(token) for token in lemma_tokens_temp))
                     else:
