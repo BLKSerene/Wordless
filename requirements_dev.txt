@@ -20,6 +20,7 @@
 botok
 charset-normalizer
 jieba
+khmer-nltk
 lingua-language-detector
 nltk
 pyphen

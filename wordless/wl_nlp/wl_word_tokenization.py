@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import jieba
+import khmernltk
 import pythainlp
 import sudachipy
 import underthesea
@@ -200,6 +201,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                                                 break
 
                         tokens_multilevel[-1].append(tokens)
+                # Khmer
+                elif word_tokenizer == 'khmer_nltk_khm':
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = 'khm')
+
+                    for sentence in sentences:
+                        tokens_multilevel[-1].append(khmernltk.word_tokenize(line))
                 # Korean
                 elif word_tokenizer == 'python_mecab_ko_mecab':
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = 'kor')

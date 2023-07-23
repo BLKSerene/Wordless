@@ -20,6 +20,7 @@
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - ??/??/2023
 ### 🎉 New Features
+- Utils: Add khmer-nltk's Khmer sentence tokenizer, word tokenizer, and part-of-speech tagger
 - Utils: Add PyThaiNLP's perceptron part-of-speech tagger (Blackboard)
 - Utils: Add spaCy's Korean sentence recognizer, word tokenizer, part-of-speech tagger, lemmatizer, and dependency parser
 - Utils: Add spaCy's Malay word tokenizer
@@ -29,6 +30,7 @@
 - Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)
 
 ### ⏫ Dependency Changes
+- Dependencies: Add khmer-nltk
 - Dependencies: Upgrade Botok to 0.8.12
 - Dependencies: Upgrade Charset Normalizer to 3.2.0
 - Dependencies: Upgrade PyThaiNLP to 4.0.2

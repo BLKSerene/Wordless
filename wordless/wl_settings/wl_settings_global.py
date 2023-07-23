@@ -80,6 +80,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Japanese'): ['jpn', 'ja', 'Japonic'],
             _tr('init_settings_global', 'Kannada'): ['kan', 'kn', 'Dravidian'],
             _tr('init_settings_global', 'Kazakh'): ['kaz', 'kk', 'Turkic'],
+            _tr('init_settings_global', 'Khmer'): ['khm', 'km', 'Austroasiatic'],
             _tr('init_settings_global', 'Korean'): ['kor', 'ko', 'Koreanic'],
             _tr('init_settings_global', 'Kurdish'): ['kur', 'ku', 'Indo-European'],
             _tr('init_settings_global', 'Kyrgyz'): ['kir', 'ky', 'Turkic'],
@@ -366,6 +367,7 @@ def init_settings_global():
         'mapping_lang_utils': {
             'sentence_tokenizers': {
                 _tr('init_settings_global', 'botok - Tibetan sentence tokenizer'): 'botok_bod',
+                _tr('init_settings_global', 'khmer-nltk - Khmer sentence tokenizer'): 'khmer_nltk_khm',
 
                 _tr('init_settings_global', 'NLTK - Czech Punkt sentence tokenizer'): 'nltk_punkt_ces',
                 _tr('init_settings_global', 'NLTK - Danish Punkt sentence tokenizer'): 'nltk_punkt_dan',
@@ -448,6 +450,7 @@ def init_settings_global():
             'word_tokenizers': {
                 _tr('init_settings_global', 'botok - Tibetan word tokenizer'): 'botok_bod',
                 _tr('init_settings_global', 'jieba - Chinese word tokenizer'): 'jieba_zho',
+                _tr('init_settings_global', 'khmer-nltk - Khmer word tokenizer'): 'khmer_nltk_khm',
 
                 _tr('init_settings_global', 'NLTK - NIST tokenizer'): 'nltk_nist',
                 _tr('init_settings_global', 'NLTK - NLTK tokenizer'): 'nltk_nltk',
@@ -601,6 +604,7 @@ def init_settings_global():
             'pos_taggers': {
                 _tr('init_settings_global', 'botok - Tibetan part-of-speech tagger'): 'botok_bod',
                 _tr('init_settings_global', 'jieba - Chinese part-of-speech tagger'): 'jieba_zho',
+                _tr('init_settings_global', 'khmer-nltk - Khmer part-of-speech tagger'): 'khmer_nltk_khm',
 
                 _tr('init_settings_global', 'NLTK - English perceptron part-of-speech tagger'): 'nltk_perceptron_eng',
                 _tr('init_settings_global', 'NLTK - Russian perceptron part-of-speech tagger'): 'nltk_perceptron_rus',
@@ -966,6 +970,8 @@ def init_settings_global():
                 'spacy_sentence_recognizer_jpn'
             ],
 
+            'khm': ['khmer_nltk_khm'],
+
             'kor': [
                 'spacy_dependency_parser_kor',
                 'spacy_sentence_recognizer_kor'
@@ -1255,12 +1261,14 @@ def init_settings_global():
                 'spacy_kan'
             ],
 
-            'kir': ['spacy_kir'],
+            'khm': ['khmer_nltk_khm'],
 
             'kor': [
                 'python_mecab_ko_mecab',
                 'spacy_kor'
             ],
+
+            'kir': ['spacy_kir'],
 
             'lat': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1572,6 +1580,8 @@ def init_settings_global():
                 'spacy_jpn',
                 'sudachipy_jpn'
             ],
+
+            'khm': ['khmer_nltk_khm'],
 
             'kor': [
                 'python_mecab_ko_mecab',

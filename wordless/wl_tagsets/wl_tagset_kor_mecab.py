@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# Reference:
+# References:
 #     MeCab: https://docs.google.com/spreadsheets/u/0/d/1-9blXKjtjeKZqsf4NzHeYJCrr49-nXeRF6D80udfcwY/edit?usp=sharing
 #     spaCy: https://github.com/explosion/spaCy/blob/2ce9a220dbd30d3a79c2a232230204a102fb3f1d/spacy/lang/ko/tag_map.py
 MAPPINGS = [

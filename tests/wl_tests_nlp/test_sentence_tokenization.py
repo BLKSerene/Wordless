@@ -129,6 +129,8 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
             tests_lang_util_skipped = True
     elif lang == 'jpn':
         assert sentences == ['日本語（にほんご、にっぽんご[注 2]）は、日本国内や、かつての日本領だった国、そして国外移民や移住者を含む日本人同士の間で使用されている言語。', '日本は法令によって公用語を規定していないが、法令その他の公用文は全て日本語で記述され、各種法令[注 3]において日本語を用いることが規定され、学校教育においては「国語」の教科として学習を行う等、事実上、日本国内において唯一の公用語となっている。']
+    elif lang == 'khm':
+        assert sentences == ['ភាសាខ្មែរ គឺជាភាសាកំណើតរបស់ជនជាតិខ្មែរនិងជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា។', 'ភាសាសំស្ក្រឹតនិងភាសាបាលីបាន\u200bជួយបង្កើតខេមរភាសា ព្រោះភាសាខ្មែរបានខ្ចីពាក្យច្រើនពីភាសាទាំងពីរនេះ។', '\u200bមានអក្សរក្រមវែងជាងគេនៅលើពិភពលោក ។', '\u200b វាជាភាសាមួយដ៏ចំណាស់\u200b ដែលប្រហែលជាមានដើមកំណើតតាំងតែពី\u200b២០០០ឆ្នាំមុនមកម៉្លេះ។']
     elif lang == 'kor':
         assert sentences == ['한국어(韓國語)는 대한민국과 조선민주주의인민공화국의 공용어이다.', '한국말, 조선말, 조선어로도 불린다.']
     elif lang == 'lit':
@@ -243,7 +245,7 @@ def test_sentence_split(lang):
         text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'))
     )
 
-    if lang not in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod']:
+    if lang not in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod', 'khm']:
         assert len(sentences_split) > 1
 
 @pytest.mark.parametrize('lang', test_langs)
@@ -289,6 +291,8 @@ def test_sentence_seg_tokenize(lang):
         assert sentence_segs == ['È classificato al 23º posto tra le lingue per numero di parlanti nel mondo e,', 'in Italia,', 'è utilizzato da circa 58 milioni di residenti.', "[2] Nel 2015 l'italiano era la lingua materna del 90,", '4% dei residenti in Italia,', "[3] che spesso lo acquisiscono e lo usano insieme alle varianti regionali dell'italiano,", 'alle lingue regionali e ai dialetti.', 'In Italia viene ampiamente usato per tutti i tipi di comunicazione della vita quotidiana ed è largamente prevalente nei mezzi di comunicazione nazionali,', "nell'amministrazione pubblica dello Stato italiano e nell'editoria."]
     elif lang == 'jpn':
         assert sentence_segs == ['日本語（にほんご、', 'にっぽんご[注 2]）は、', '日本国内や、', 'かつての日本領だった国、', 'そして国外移民や移住者を含む日本人同士の間で使用されている言語。', '日本は法令によって公用語を規定していないが、', '法令その他の公用文は全て日本語で記述され、', '各種法令[注 3]において日本語を用いることが規定され、', '学校教育においては「国語」の教科として学習を行う等、', '事実上、', '日本国内において唯一の公用語となっている。']
+    elif lang == 'khm':
+        assert sentence_segs == ['ភាសាខ្មែរ គឺជាភាសាកំណើតរបស់ជនជាតិខ្មែរនិងជាភាសាផ្លូវការរបស់ប្រទេសកម្ពុជា។', 'ភាសាសំស្ក្រឹតនិងភាសាបាលីបាន\u200bជួយបង្កើតខេមរភាសា ព្រោះភាសាខ្មែរបានខ្ចីពាក្យច្រើនពីភាសាទាំងពីរនេះ។', '\u200bមានអក្សរក្រមវែងជាងគេនៅលើពិភពលោក ។', '\u200b វាជាភាសាមួយដ៏ចំណាស់\u200b ដែលប្រហែលជាមានដើមកំណើតតាំងតែពី\u200b២០០០ឆ្នាំមុនមកម៉្លេះ។']
     elif lang == 'kor':
         assert sentence_segs == ['한국어(韓國語)는 대한민국과 조선민주주의인민공화국의 공용어이다.', '한국말,', '조선말,', '조선어로도 불린다.']
     elif lang == 'lit':
@@ -351,7 +355,7 @@ def test_sentence_seg_tokenize_tokens(lang):
     )
     sentence_segs = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, tokens)
 
-    if lang not in ['tha']:
+    if lang not in ['tha', 'khm']:
         assert len(sentence_segs) > 1
 
 if __name__ == '__main__':
