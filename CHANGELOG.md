@@ -23,6 +23,7 @@
 - Utils: Add PyThaiNLP's perceptron part-of-speech tagger (Blackboard)
 - Utils: Add spaCy's Korean sentence recognizer, word tokenizer, part-of-speech tagger, lemmatizer, and dependency parser
 - Utils: Add spaCy's Malay word tokenizer
+- Utils: Add spaCy's Slovenian sentence recognizer, part-of-speech tagger, lemmatizer, and dependency parser
 
 ### ❌ Removals
 - Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)

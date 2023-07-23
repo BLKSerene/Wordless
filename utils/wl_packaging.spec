@@ -67,6 +67,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('fi_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('fr_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('it_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ja_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('ko_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('lt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('mk_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('nb_core_news_sm'))
@@ -75,6 +76,7 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('sl_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('es_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sv_core_news_sm'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('uk_core_news_sm'))
@@ -135,6 +137,7 @@ hiddenimports = [
     'fr_core_news_sm',
     'it_core_news_sm',
     'ja_core_news_sm',
+    'ko_core_news_sm',
     'lt_core_news_sm',
     'mk_core_news_sm',
     'nb_core_news_sm',
@@ -143,6 +146,7 @@ hiddenimports = [
     'pt_core_news_sm',
     'ro_core_news_sm',
     'ru_core_news_sm',
+    'sl_core_news_sm',
     'es_core_news_sm',
     'sv_core_news_sm',
     'uk_core_news_sm',

@@ -733,7 +733,7 @@ Serbian (Cyrillic)      |⭕️ |✔|✔|✖️|✔|✖️|✖️
 Serbian (Latin)         |⭕️ |✔|✔|✖️|✔|✖️|✖️
 Sinhala                 |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Slovak                  |⭕️ |✔|✔|✖️|✔|✔|✖️
-Slovenian               |✔|✔|✔|✖️|✔|✔|✖️
+Slovenian               |✔|✔|✔|✔|✔|✔|✔
 Somali                  |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️
 Sorbian (Lower)         |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Sorbian (Upper)         |⭕️ |✔|✖️|✖️|✖️|✖️|✖️

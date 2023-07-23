@@ -82,6 +82,7 @@ SPACY_LANGS = {
     'por': 'pt_core_news_sm',
     'ron': 'ro_core_news_sm',
     'rus': 'ru_core_news_sm',
+    'slv': 'sl_core_news_sm',
     'spa': 'es_core_news_sm',
     'swe': 'sv_core_news_sm',
     'ukr': 'uk_core_news_sm',
