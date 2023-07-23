@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# Reference:
+# References:
 #     UniDic: https://gist.github.com/masayu-a/e3eee0637c07d4019ec9
 #     spaCy: https://github.com/explosion/spaCy/blob/master/spacy/lang/ja/tag_map.py
 MAPPINGS = [

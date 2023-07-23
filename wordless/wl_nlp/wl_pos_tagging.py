@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import jieba.posseg
+import khmernltk
 import nltk
 import pythainlp
 import spacy
@@ -131,7 +132,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
                     # Align tokens
                     while i_tokens < len_tokens - 1 or i_tokens_tagged < len_tokens_tagged - 1:
-                        if lang in ['zho_cn', 'zho_tw', 'jpn', 'kor', 'tha', 'bod']:
+                        if lang in ['zho_cn', 'zho_tw', 'khm', 'jpn', 'kor', 'tha', 'bod']:
                             len_tokens_temp = sum((len(token) for token in tokens_temp))
                             len_tokens_tagged_temp = sum((len(token) for token in tokens_tagged_temp))
                         else:
@@ -234,6 +235,9 @@ def wl_pos_tag_text(main, text, lang, pos_tagger):
             (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
             for token in main.sudachipy_word_tokenizer.tokenize(text)
         ]
+    # Khmer
+    elif pos_tagger == 'khmer_nltk_khm':
+        tokens_tagged = khmernltk.pos_tag(text)
     # Korean
     elif pos_tagger == 'python_mecab_ko_mecab':
         tokens_tagged = main.python_mecab_ko_mecab.pos(text)
@@ -292,6 +296,9 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
             (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
             for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens))
         ]
+    # Khmer
+    elif pos_tagger == 'khmer_nltk_khm':
+        tokens_tagged = khmernltk.pos_tag(''.join(tokens))
     # Korean
     elif pos_tagger == 'python_mecab_ko_mecab':
         tokens_tagged = wl_pos_tag_text(main, ' '.join(tokens), lang = 'kor', pos_tagger = 'python_mecab_ko_mecab')

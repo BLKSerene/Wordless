@@ -33,6 +33,8 @@ is_windows, is_macos, is_linux = wl_utils.check_os()
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # jieba
 datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
+# khmer-nltk
+datas.extend(PyInstaller.utils.hooks.collect_data_files('khmernltk'))
 # Lingua
 datas.extend(PyInstaller.utils.hooks.collect_data_files('lingua'))
 # opencc-python
