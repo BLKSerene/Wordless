@@ -19,6 +19,7 @@
 import re
 
 import botok
+import khmernltk
 import nltk
 import pythainlp
 import underthesea
@@ -99,6 +100,9 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             # NLTK
             if sentence_tokenizer.startswith('nltk_punkt'):
                 sentences.extend(nltk.sent_tokenize(line, language = LANG_TEXTS_NLTK[lang]))
+            # Khmer
+            elif sentence_tokenizer == 'khmer_nltk_khm':
+                sentences.extend(khmernltk.sentence_tokenize(line))
             # Thai
             elif sentence_tokenizer == 'pythainlp_crfcut':
                 sentences.extend(pythainlp.sent_tokenize(line, engine = 'crfcut'))

@@ -24,6 +24,7 @@ from wordless.wl_tagsets import (
     wl_tagset_universal,
     wl_tagset_eng_penn_treebank,
     wl_tagset_jpn_unidic,
+    wl_tagset_khm_alt,
     wl_tagset_kor_mecab,
     wl_tagset_rus_open_corpora,
     wl_tagset_rus_russian_national_corpus,
@@ -1193,6 +1194,7 @@ def init_settings_default(main):
                 'ell': 'spacy_dependency_parser_ell',
                 'ita': 'spacy_dependency_parser_ita',
                 'jpn': 'spacy_dependency_parser_jpn',
+                'khm': 'khmer_nltk_khm',
                 'kor': 'spacy_dependency_parser_kor',
                 'lit': 'spacy_dependency_parser_lit',
                 'mkd': 'spacy_dependency_parser_mkd',
@@ -1264,8 +1266,9 @@ def init_settings_default(main):
                 'ita': 'spacy_ita',
                 'jpn': 'spacy_jpn',
                 'kan': 'sacremoses_moses',
-                'kir': 'spacy_kir',
+                'khm': 'khmer_nltk_khm',
                 'kor': 'spacy_kor',
+                'kir': 'spacy_kir',
                 'lat': 'spacy_lat',
                 'lav': 'sacremoses_moses',
                 'lij': 'spacy_lij',
@@ -1397,6 +1400,7 @@ def init_settings_default(main):
                     'ell': 'spacy_ell',
                     'ita': 'spacy_ita',
                     'jpn': 'spacy_jpn',
+                    'khm': 'khmer_nltk_khm',
                     'kor': 'spacy_kor',
                     'lit': 'spacy_lit',
                     'mkd': 'spacy_mkd',
@@ -1448,6 +1452,10 @@ def init_settings_default(main):
 
                     'jpn': {
                         'sudachipy_jpn': wl_tagset_jpn_unidic.MAPPINGS
+                    },
+
+                    'khm': {
+                        'khmer_nltk_khm': wl_tagset_khm_alt.MAPPINGS
                     },
 
                     'kor': {

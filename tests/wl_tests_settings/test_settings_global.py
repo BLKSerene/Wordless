@@ -189,7 +189,7 @@ class Check_Settings_Global():
         # Check for missing and extra languages for spaCy's sentence recognizer / sentencizer
         for lang_code, sentence_tokenizers in settings_sentence_tokenizers.items():
             if (
-                lang_code not in ['tha', 'bod', 'vie']
+                lang_code not in ['khm', 'tha', 'bod', 'vie']
                 and not any((sentence_tokenizer.startswith('spacy_') for sentence_tokenizer in sentence_tokenizers))
             ):
                 lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
