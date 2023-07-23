@@ -26,6 +26,9 @@
 - Utils: Add spaCy's Malay word tokenizer
 - Utils: Add spaCy's Slovenian sentence recognizer, part-of-speech tagger, lemmatizer, and dependency parser
 
+### ✨ Improvements
+- Utils: Update Wordless's sentence and sentence segment splitters
+
 ### ❌ Removals
 - Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)
 
