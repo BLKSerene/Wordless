@@ -777,7 +777,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                     else:
                                         context_right.append(token_next)
 
-                                    len_context_right += len(token_next)
+                                    len_context_right += len_token_next
 
                                 # Search in Results (Left & Right)
                                 text_search_left = copy.deepcopy(context_left)
@@ -786,6 +786,13 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 if not settings['token_settings']['punc_marks']:
                                     context_left = text.tokens_flat_punc_marks_merged[i - len(context_left): i]
                                     context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : i + len_search_term + len(context_right)]
+
+                                    # Modify the first token in left context and the last token in right context
+                                    len_left_extra = len_context_left - sum((len(token) for token in context_left))
+                                    len_right_missing = len(context_right[-1])
+
+                                    context_left[0] = context_left[0][len_left_extra:]
+                                    context_right[-1] = context_right[-1][:len_right_missing]
                             elif settings['generation_settings']['width_unit'] == self.tr('Token'):
                                 width_left_token = settings['generation_settings']['width_left_token']
                                 width_right_token = settings['generation_settings']['width_right_token']
