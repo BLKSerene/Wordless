@@ -245,7 +245,7 @@ def test_sentence_split(lang):
         text = ''.join(getattr(wl_test_lang_examples, f'TEXT_{lang.upper()}'))
     )
 
-    if lang not in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod', 'khm']:
+    if lang not in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod']:
         assert len(sentences_split) > 1
 
 @pytest.mark.parametrize('lang', test_langs)
@@ -355,7 +355,7 @@ def test_sentence_seg_tokenize_tokens(lang):
     )
     sentence_segs = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, tokens)
 
-    if lang not in ['tha', 'khm']:
+    if lang not in ['tha']:
         assert len(sentence_segs) > 1
 
 if __name__ == '__main__':
