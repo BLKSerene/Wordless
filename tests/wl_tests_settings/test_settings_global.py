@@ -183,7 +183,7 @@ class Check_Settings_Global():
                 langs_supported_spacy_lemmatizers.append(lang_code)
 
         # Languages without data files
-        langs_supported_spacy_lemmatizers.extend(['fi', 'ja', 'ko', 'uk'])
+        langs_supported_spacy_lemmatizers.extend(['fi', 'ja', 'ko', 'sl', 'uk'])
         langs_supported_spacy_lemmatizers = add_lang_suffixes(langs_supported_spacy_lemmatizers)
 
         # Check for missing and extra languages for spaCy's sentence recognizer / sentencizer
