@@ -410,6 +410,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Portuguese dependency parser'): 'spacy_dependency_parser_por',
                 _tr('init_settings_global', 'spaCy - Romanian dependency parser'): 'spacy_dependency_parser_ron',
                 _tr('init_settings_global', 'spaCy - Russian dependency parser'): 'spacy_dependency_parser_rus',
+                _tr('init_settings_global', 'spaCy - Slovenian dependency parser'): 'spacy_dependency_parser_slv',
                 _tr('init_settings_global', 'spaCy - Spanish dependency parser'): 'spacy_dependency_parser_spa',
                 _tr('init_settings_global', 'spaCy - Swedish dependency parser'): 'spacy_dependency_parser_swe',
                 _tr('init_settings_global', 'spaCy - Ukrainian dependency parser'): 'spacy_dependency_parser_ukr',
@@ -434,6 +435,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Portuguese sentence recognizer'): 'spacy_sentence_recognizer_por',
                 _tr('init_settings_global', 'spaCy - Romanian sentence recognizer'): 'spacy_sentence_recognizer_ron',
                 _tr('init_settings_global', 'spaCy - Russian sentence recognizer'): 'spacy_sentence_recognizer_rus',
+                _tr('init_settings_global', 'spaCy - Slovenian sentence recognizer'): 'spacy_sentence_recognizer_slv',
                 _tr('init_settings_global', 'spaCy - Spanish sentence recognizer'): 'spacy_sentence_recognizer_spa',
                 _tr('init_settings_global', 'spaCy - Swedish sentence recognizer'): 'spacy_sentence_recognizer_swe',
                 _tr('init_settings_global', 'spaCy - Ukrainian sentence recognizer'): 'spacy_sentence_recognizer_ukr',
@@ -630,6 +632,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Portuguese part-of-speech tagger'): 'spacy_por',
                 _tr('init_settings_global', 'spaCy - Romanian part-of-speech tagger'): 'spacy_ron',
                 _tr('init_settings_global', 'spaCy - Russian part-of-speech tagger'): 'spacy_rus',
+                _tr('init_settings_global', 'spaCy - Slovenian part-of-speech tagger'): 'spacy_slv',
                 _tr('init_settings_global', 'spaCy - Spanish part-of-speech tagger'): 'spacy_spa',
                 _tr('init_settings_global', 'spaCy - Swedish part-of-speech tagger'): 'spacy_swe',
                 _tr('init_settings_global', 'spaCy - Ukrainian part-of-speech tagger'): 'spacy_ukr',
@@ -721,6 +724,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Romanian lemmatizer'): 'spacy_ron',
                 _tr('init_settings_global', 'spaCy - Russian lemmatizer'): 'spacy_rus',
                 _tr('init_settings_global', 'spaCy - Serbian lemmatizer'): 'spacy_srp',
+                _tr('init_settings_global', 'spaCy - Slovenian lemmatizer'): 'spacy_slv',
                 _tr('init_settings_global', 'spaCy - Spanish lemmatizer'): 'spacy_spa',
                 _tr('init_settings_global', 'spaCy - Swedish lemmatizer'): 'spacy_swe',
                 _tr('init_settings_global', 'spaCy - Tagalog lemmatizer'): 'spacy_tgl',
@@ -852,6 +856,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Portuguese dependency parser'): 'spacy_por',
                 _tr('init_settings_global', 'spaCy - Romanian dependency parser'): 'spacy_ron',
                 _tr('init_settings_global', 'spaCy - Russian dependency parser'): 'spacy_rus',
+                _tr('init_settings_global', 'spaCy - Slovenian dependency parser'): 'spacy_slv',
                 _tr('init_settings_global', 'spaCy - Spanish dependency parser'): 'spacy_spa',
                 _tr('init_settings_global', 'spaCy - Swedish dependency parser'): 'spacy_swe',
                 _tr('init_settings_global', 'spaCy - Ukrainian dependency parser'): 'spacy_ukr'
@@ -1023,7 +1028,8 @@ def init_settings_global():
 
             'slv': [
                 'nltk_punkt_slv',
-                'spacy_sentencizer'
+                'spacy_dependency_parser_slv',
+                'spacy_sentence_recognizer_slv'
             ],
 
             'spa': [
@@ -1586,6 +1592,7 @@ def init_settings_global():
                 'spacy_rus'
             ],
 
+            'slv': ['spacy_slv'],
             'spa': ['spacy_spa'],
             'swe': ['spacy_swe'],
 
@@ -1784,7 +1791,11 @@ def init_settings_global():
             'srp_cyrl': ['spacy_srp'],
             'srp_latn': ['simplemma_srp_latn'],
             'slk': ['simplemma_slk'],
-            'slv': ['simplemma_slv'],
+
+            'slv': [
+                'simplemma_slv',
+                'spacy_slv'
+            ],
 
             'spa': [
                 'simplemma_spa',
@@ -2058,6 +2069,7 @@ def init_settings_global():
             'por_pt': ['spacy_por'],
             'ron': ['spacy_ron'],
             'rus': ['spacy_rus'],
+            'slv': ['spacy_slv'],
             'spa': ['spacy_spa'],
             'swe': ['spacy_swe'],
             'ukr': ['spacy_ukr']

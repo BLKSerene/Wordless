@@ -82,6 +82,7 @@ spacy_models/pl_core_news_sm-3.6.0-py3-none-any.whl
 spacy_models/pt_core_news_sm-3.6.0-py3-none-any.whl
 spacy_models/ro_core_news_sm-3.6.0-py3-none-any.whl
 spacy_models/ru_core_news_sm-3.6.0-py3-none-any.whl
+spacy_models/sl_core_news_sm-3.6.0-py3-none-any.whl
 spacy_models/sv_core_news_sm-3.6.0-py3-none-any.whl
 spacy_models/uk_core_news_sm-3.6.0-py3-none-any.whl
 spacy_models/zh_core_web_sm-3.6.0-py3-none-any.whl
