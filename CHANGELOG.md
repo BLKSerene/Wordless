@@ -29,6 +29,9 @@
 ### ✨ Improvements
 - Utils: Update Wordless's sentence and sentence segment splitters
 
+### 📌 Bugfixes
+- Work Area: Fix Concordancer - Generation Settings - Width unit - Character
+
 ### ❌ Removals
 - Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)
 
