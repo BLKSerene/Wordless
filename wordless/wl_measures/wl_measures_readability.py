@@ -216,27 +216,6 @@ def devereux_readability_index(main, text):
 
     return grade_placement
 
-# Fernández Huerta's Readability Score
-# References:
-#     Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. Consigna, 214, 29–32.
-#     Law, Gwillim. (2011, May 27). Error in the Fernandez Huerta readability formula. LINGUIST List. https://linguistlist.org/issues/22/22-2332/
-def fernandez_huertas_readability_score(main, text):
-    if text.lang == 'spa' and text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
-
-        if text.count_words and text.count_sentences:
-            p = (
-                206.84
-                - 60 * (text.count_syls / text.count_words)
-                - 102 * (text.count_sentences / text.count_words)
-            )
-        else:
-            p = 'text_too_short'
-    else:
-        p = 'no_support'
-
-    return p
-
 # Flesch-Kincaid Grade Level
 # Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def flesch_kincaid_grade_level(main, text):
@@ -259,8 +238,10 @@ def flesch_kincaid_grade_level(main, text):
 # Flesch Reading Ease
 # Reference:
 #     Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32(3), 221–233. https://doi.org/10.1037/h0057532
-# Dutch variant:
+# Dutch variant (Douma):
 #     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
+# Dutch variant (Brouwer's Leesindex A):
+#     Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. Paedagogische studiën, 40, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
 # French variant:
 #     Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. The Journal of Educational Research, 21, 283–287.
 #     Kopient, A., & Grabar, N. (2020). Rated lexicon for the simplification of medical texts. In B.  Gersbeck-Schierholz (ed.), HEALTHINFO 2020: The fifth international conference on informatics and assistive technologies for health-care, medical support and wellbeing (pp. 11–17). IARIA. https://hal.science/hal-03095275/document
@@ -272,22 +253,78 @@ def flesch_kincaid_grade_level(main, text):
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
 # Russian variant:
 #     Oborneva, I. V. (2006). Автоматизированная оценка сложности учебных текстов на основе статистических параметров [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education]. Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3
+# Spanish variant (Fernández Huerta):
+#     Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. Consigna, 214, 29–32.
+#     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
+# Spanish variant (Szigriszt Pazos):
+#     Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
 def flesch_reading_ease(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
-            flesch_re = (
-                206.835
-                - 0.846 * (text.count_syls / text.count_words * 100)
-                - 1.015 * (text.count_words / text.count_sentences)
-            )
+            if text.lang == 'nld':
+                if main.settings_custom['measures']['readability']['re']['variant_nld'] == 'Douma':
+                    re = (
+                        206.84
+                        - 77 * (text.count_syls / text.count_words)
+                        - 0.93 * (text.count_words / text.count_sentences)
+                    )
+                elif main.settings_custom['measures']['readability']['re']['variant_nld'] == "Brouwer's Leesindex A":
+                    re = (
+                        195
+                        - (200 / 3) * (text.count_syls / text.count_words)
+                        - 2 * (text.count_words / text.count_sentences)
+                    )
+            elif text.lang == 'fra':
+                re = (
+                    207
+                    - 73.6 * (text.count_syls / text.count_words)
+                    - 1.015 * (text.count_words / text.count_sentences)
+                )
+            elif text.lang.startswith('deu_'):
+                re = (
+                    180
+                    - 58.5 * (text.count_syls / text.count_words)
+                    - (text.count_words / text.count_sentences)
+                )
+            elif text.lang == 'ita':
+                re = (
+                    217
+                    - 60 * (text.count_syls / text.count_words)
+                    - 1.3 * (text.count_words / text.count_sentences)
+                )
+            elif text.lang == 'rus':
+                re = (
+                    206.835
+                    - 60.1 * (text.count_syls / text.count_words)
+                    - 1.3 * (text.count_words / text.count_sentences)
+                )
+            elif text.lang == 'spa':
+                if main.settings_custom['measures']['readability']['re']['variant_spa'] == 'Fernández Huerta':
+                    re = (
+                        206.84
+                        - 60 * (text.count_syls / text.count_words)
+                        - 1.02 * (text.count_words / text.count_sentences)
+                    )
+                elif main.settings_custom['measures']['readability']['re']['variant_spa'] == 'Szigriszt Pazos':
+                    re = (
+                        206.84
+                        - 62.3 * (text.count_syls / text.count_words)
+                        - (text.count_words / text.count_sentences)
+                    )
+            else:
+                re = (
+                    206.835
+                    - 0.846 * (text.count_syls / text.count_words * 100)
+                    - 1.015 * (text.count_words / text.count_sentences)
+                )
         else:
-            flesch_re = 'text_too_short'
+            re = 'text_too_short'
     else:
-        flesch_re = 'no_support'
+        re = 'no_support'
 
-    return flesch_re
+    return re
 
 # Flesch Reading Ease (Simplified)
 # Reference: Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. Journal of Applied Psychology, 35(5), 333–337. https://doi.org/10.1037/h0062427
@@ -688,25 +725,6 @@ def spache_grade_level(main, text):
         grade_level = 'no_support'
 
     return grade_level
-
-# Szigriszt's Perspicuity Index
-# Reference: Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
-def szigriszts_perspicuity_index(main, text):
-    if text.lang == 'spa' and text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
-
-        if text.count_words and text.count_sentences:
-            p = (
-                207
-                - 62.3 * (text.count_syls / text.count_words)
-                - (text.count_words / text.count_sentences)
-            )
-        else:
-            p = 'text_too_short'
-    else:
-        p = 'no_support'
-
-    return p
 
 # Wiener Sachtextformel
 # References:
