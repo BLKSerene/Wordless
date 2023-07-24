@@ -28,6 +28,7 @@
 
 ### ✨ Improvements
 - Utils: Update Wordless's sentence and sentence segment splitters
+- Work Area: Update Profiler - Readability - Flesch Reading Ease
 
 ### 📌 Bugfixes
 - Work Area: Fix Concordancer - Generation Settings - Width unit - Character

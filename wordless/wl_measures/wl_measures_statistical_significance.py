@@ -61,7 +61,7 @@ def yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22):
     return c11, c12, c21, c22
 
 # Fisher's Exact Test
-# References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group.
+# References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188–200). The South–Central Regional SAS Users' Group.
 def fishers_exact_test(main, c11, c12, c21, c22):
     direction = main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction']
 
