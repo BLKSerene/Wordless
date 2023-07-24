@@ -180,8 +180,8 @@ def coleman_liau_index(main, text):
 
 # Dale-Chall Readability Score
 # References:
-#     Dale, E., & Chall, J. S. (1948). A formula for predicting readability. Educational Research Bulletin, 27(1), 11–20, 28.
-#     Dale, E., & Chall, J. S. (1948). A formula for predicting readability: Instructions. Educational Research Bulletin, 27(2), 37–54.
+#     Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. Educational Research Bulletin, 27(1), 11–20, 28.
+#     Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. Educational Research Bulletin, 27(2), 37–54.
 def dale_chall_readability_score(main, text):
     if text.lang.startswith('eng'):
         text = get_counts(main, text)
@@ -257,7 +257,21 @@ def flesch_kincaid_grade_level(main, text):
     return gl
 
 # Flesch Reading Ease
-# Reference: Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32(3), 221–233. https://doi.org/10.1037/h0057532
+# Reference:
+#     Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32(3), 221–233. https://doi.org/10.1037/h0057532
+# Dutch variant:
+#     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
+# French variant:
+#     Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. The Journal of Educational Research, 21, 283–287.
+#     Kopient, A., & Grabar, N. (2020). Rated lexicon for the simplification of medical texts. In B.  Gersbeck-Schierholz (ed.), HEALTHINFO 2020: The fifth international conference on informatics and assistive technologies for health-care, medical support and wellbeing (pp. 11–17). IARIA. https://hal.science/hal-03095275/document
+# German variant:
+#     Amstad, T. (1978). Wie verständlich sind unsere Zeitungen? [Unpublished doctoral dissertation]. University of Zurich.
+#     Lesbarkeitsindex. (2023, February 2). In Wikipedia. https://de.wikipedia.org/w/index.php?title=Lesbarkeitsindex&oldid=230472824
+# Italian variant:
+#     Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. Linguaggi, 3, 47–49.
+#     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
+# Russian variant:
+#     Oborneva, I. V. (2006). Автоматизированная оценка сложности учебных текстов на основе статистических параметров [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education]. Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3
 def flesch_reading_ease(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
@@ -373,9 +387,9 @@ def gulpease_index(main, text):
     return gulpease_index
 
 # Gunning Fog Index
-# References:
+# Reference:
 #     Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
-#     Indeks czytelności FOG. (2022, September 12). In Wikipedia. https://pl.wikipedia.org/wiki/Indeks_czytelno%C5%9Bci_FOG?oldid=68198881
+# Polish variant:
 #     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. Zeszyty Prasoznawcze, 4(42), 35–48.
 def gunning_fog_index(main, text):
     if text.lang.startswith('eng') or text.lang == 'pol' and text.lang in main.settings_global['syl_tokenizers']:
@@ -410,9 +424,7 @@ def gunning_fog_index(main, text):
     return fog_index
 
 # Legibilidad µ
-# References:
-#     Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile, 21(2), 13–26.
-#     Muñoz Fernández, A. (2016). Analizador de legibilidad de texto. Legible. https://legible.es/
+# Reference: Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile, 21(2), 13–26.
 def legibility_mu(main, text):
     if text.lang == 'spa':
         text = get_counts(main, text)
