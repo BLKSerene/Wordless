@@ -31,25 +31,51 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['measures']['readability']
         self.settings_custom = self.main.settings_custom['measures']['readability']
 
+        # Flesch Reading Ease
+        self.group_box_re = QGroupBox(self.tr('Flesch Reading Ease'), self)
+
+        self.label_re_variant_nld = QLabel(self.tr('Dutch variant:'), self)
+        self.combo_box_re_variant_nld = wl_boxes.Wl_Combo_Box(self)
+        self.label_re_variant_spa = QLabel(self.tr('Spanish variant:'), self)
+        self.combo_box_re_variant_spa = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_re_variant_nld.addItems([
+            "Brouwer's Leesindex A",
+            'Douma',
+        ])
+        self.combo_box_re_variant_spa.addItems([
+            'Fernández Huerta',
+            'Szigriszt Pazos'
+        ])
+
+        self.group_box_re.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_re.layout().addWidget(self.label_re_variant_nld, 0, 0)
+        self.group_box_re.layout().addWidget(self.combo_box_re_variant_nld, 0, 1)
+        self.group_box_re.layout().addWidget(self.label_re_variant_spa, 1, 0)
+        self.group_box_re.layout().addWidget(self.combo_box_re_variant_spa, 1, 1)
+
+        self.group_box_re.layout().setColumnStretch(2, 1)
+
         # Wiener Sachtextformel
         self.group_box_wstf = QGroupBox(self.tr('Wiener Sachtextformel'), self)
 
-        self.label_variant = QLabel(self.tr('Variant:'), self)
-        self.combo_box_variant = wl_boxes.Wl_Combo_Box(self)
+        self.label_wstf_variant = QLabel(self.tr('Variant:'), self)
+        self.combo_box_wstf_variant = wl_boxes.Wl_Combo_Box(self)
 
-        self.combo_box_variant.addItems(['1', '2', '3', '4'])
+        self.combo_box_wstf_variant.addItems(['1', '2', '3', '4'])
 
         self.group_box_wstf.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_wstf.layout().addWidget(self.label_variant, 0, 0)
-        self.group_box_wstf.layout().addWidget(self.combo_box_variant, 0, 1)
+        self.group_box_wstf.layout().addWidget(self.label_wstf_variant, 0, 0)
+        self.group_box_wstf.layout().addWidget(self.combo_box_wstf_variant, 0, 1)
 
         self.group_box_wstf.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_wstf, 0, 0)
+        self.layout().addWidget(self.group_box_re, 0, 0)
+        self.layout().addWidget(self.group_box_wstf, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(1, 1)
+        self.layout().setRowStretch(2, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -57,12 +83,20 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
+        # Flesch Reading Ease
+        self.combo_box_re_variant_nld.setCurrentText(settings['re']['variant_nld'])
+        self.combo_box_re_variant_spa.setCurrentText(settings['re']['variant_spa'])
+
         # Wiener Sachtextformel
-        self.combo_box_variant.setCurrentText(settings['wstf']['variant'])
+        self.combo_box_wstf_variant.setCurrentText(settings['wstf']['variant'])
 
     def apply_settings(self):
+        # Flesch Reading Ease
+        self.settings_custom['re']['variant_nld'] = self.combo_box_re_variant_nld.currentText()
+        self.settings_custom['re']['variant_spa'] = self.combo_box_re_variant_spa.currentText()
+
         # Wiener Sachtextformel
-        self.settings_custom['wstf']['variant'] = self.combo_box_variant.currentText()
+        self.settings_custom['wstf']['variant'] = self.combo_box_wstf_variant.currentText()
 
         return True
 

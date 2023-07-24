@@ -930,20 +930,21 @@ Dale-Chall Readability Score:
 Devereux Readability Index:
     Grade \; Placement = 1.56 \times \frac{NumCharsAll}{NumWords} + 0.19 \times \frac{NumWords}{NumSentences} - 6.49
 
-Fernández Huerta's Readability Score:
-    Score = 206.84 - 60 \times \frac{NumSyls}{NumWords} - 102 \times \frac{NumSentences}{NumWords}
-
 Flesch-Kincaid Grade Level:
     GL = 0.39 \times \frac{NumWords}{NumSentences} + 11.8 \times \frac{NumSyls}{NumWords} - 15.59
 
 Flesch Reading Ease:
     \begin{align*}
-        RE &= 206.835 - 0.846 \times \left(\frac{NumSyls}{NumWords} \times 100\right) - 1.015 \times \frac{NumWords}{NumSentences} \\
-        RE_{Dutch} &= 206.84 - 77 \times \frac{NumSyls}{NumWords} - 0.93 \times \frac{NumWords}{NumSentences} \\
-        RE_{French} &= 207 - 73.6 \times \frac{NumSyls}{NumWords} - 1.015 \times \frac{NumWords}{NumSentences} \\
-        RE_{German} &= 180 - 58.5 \times \frac{NumSyls}{NumWords} - \frac{NumWords}{NumSentences} \\
-        RE_{Italian} &= 217 - 60 \times \frac{NumSyls}{NumWords} - 1.3 \times \frac{NumWords}{NumSentences} \\
-        RE_{Russian} &= 206.835 - 60.1 \times \frac{NumSyls}{NumWords} - 1.3 \times \frac{NumWords}{NumSentences}
+        ASW &= \frac{NumSyls}{NumWords} \qquad ASL = \frac{NumWords}{NumSentences} \\
+        RE &= 206.835 - 0.846 \times \left(ASW \times 100\right) - 1.015 \times ASL \\
+        RE_{Dutch-Douma} &= 206.84 - 77 \times ASW - 0.93 \times ASL \\
+        RE_{Dutch-Brouwer} &= 195 - \frac{200}{3} \times ASW - 2 \times ASL \\
+        RE_{French} &= 207 - 73.6 \times ASW - 1.015 \times ASL \\
+        RE_{German} &= 180 - 58.5 \times ASW - ASL \\
+        RE_{Italian} &= 217 - 60 \times ASW - 1.3 \times ASL \\
+        RE_{Russian} &= 206.835 - 60.1 \times ASW - 1.3 \times ASL \\
+        RE_{Spanish-Fernández \; Huerta} &= 206.84 - 60 \times ASW - 1.02 \times ASL \\
+        RE_{Spanish-Szigriszt \; Pazos} &= 207 - 62.3 \times ASW - ASL
     \end{align*}
 
 Flesch Reading Ease (Simplified):
@@ -988,15 +989,10 @@ SMOG Grade:
 Spache Grade Level:
     {Grade \; Level = 0.141 \times \frac{100}{NumSentences} + 0.086 \times \left(\frac{NumDifficultWords}{100} \times 100\right) + 0.839}
 
-Szigriszt's Perspicuity Index:
-    p = 207 - 62.3 \times \frac{NumSyls}{NumWords} - \frac{NumWords}{NumSentences}
-
 Wiener Sachtextformel:
     \begin{align*}
-        MS &= \frac{NumWordsPolysyllabic}{NumWords} \\
-        SL &= \frac{NumWords}{NumSentences} \\
-        IW &= \frac{NumLongWords}{NumWords} \\
-        ES &= \frac{NumWordsMonosyllabic}{NumWords} \\
+        MS &= \frac{NumWordsPolysyllabic}{NumWords} \qquad SL = \frac{NumWords}{NumSentences} \\
+        IW &= \frac{NumLongWords}{NumWords} \qquad \qquad \quad ES = \frac{NumWordsMonosyllabic}{NumWords} \\
         WSTF_1 &= 0.1925 \times MS + 0.1672 \times SL + 0.1297 \times IW - 0.0327 \times ES - 0.875 \\
         WSTF_2 &= 0.2007 \times MS + 0.1682 \times SL + 0.1373 \times IW - 2.779 \\
         WSTF_3 &= 0.2963 \times MS + 0.1905 \times SL - 1.1144 \\
@@ -1011,15 +1007,14 @@ Measure of Readability|Formula
 <span id="ref-coleman-liau-index"></span>Coleman-Liau Index<br>([Coleman & Liau, 1975](#ref-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)
 <span id="ref-dale-chall-readability-score"></span>Dale-Chall Readability Score<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a))|![Formula](/doc/measures/readability/xc50.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 3000 easy words ([Dale & Chall, 1948b](#ref-dale-chall-1948b)).<br><br>* This test applies only to **English texts**.
 <span id="ref-devereux-readability-index"></span>Devereux Readability Index<br>([Smith, 1961](#ref-smith-1961))|![Formula](/doc/measures/readability/devereux_readability_index.svg)
-<span id="ref-fernandez-huertas-readability-score"></span>Fernández Huerta's Readability Score<sup>1</sup><br>([Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Law, 2011](#ref-law-2011))|![Formula](/doc/measures/readability/fernandez_huertas_readability_score.svg)<br><br>* This test applies only to **Spanish texts**.
 <span id="ref-flesch-kincaid-grade-level"></span>Flesch-Kincaid Grade Level<sup>1</sup><br>([Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/flesch_kincaid_grade_level.svg)
-<span id="ref-re"></span>Flesch Reading Ease<sup>1</sup><br>(English: [Flesch, 1948](#ref-flesch-1948); Dutch: [Douma, 1960](#ref-douma-1960); French: [Kandel & Moles, 1958](#ref-kandel-moles-1958); German: [Amstad, 1978](#ref-amstad-1978); Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986); Russian: [Oborneva, 2006](#ref-oborneva-2006))|![Formula](/doc/measures/readability/re.svg)
+<span id="ref-re"></span>Flesch Reading Ease<sup>1</sup><br>([Flesch, 1948](#ref-flesch-1948)<br>Dutch: [Douma, 1960](#ref-douma-1960); [Brouwer, 1963](#ref-brouwer-1963)<br>French: [Kandel & Moles, 1958](#ref-kandel-moles-1958)<br>German: [Amstad, 1978](#ref-amstad-1978)<br>Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986)<br>Russian: [Oborneva, 2006](#ref-oborneva-2006)<br>Spanish: [Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/re.svg)<br><br>* This test has multiple variants for some languages, which you could select via **Menu → Preferences → Settings → Measures → Readability → Flesch Reading Ease**.
 <span id="ref-re-simplified"></span>Flesch Reading Ease (Simplified)<sup>1</sup><br>([Farr et al., 1951](#ref-farr-et-al-1951))|![Formula](/doc/measures/readability/re_simplified.svg)
-<span id="ref-rgl"></span>FORCAST Grade Level<sup>1</sup><br>([Caylor et al., 1973](#ref-caylor-et-al-1973))|![Formula](/doc/measures/readability/rgl.svg)<br>* A sample of 150 words is taken randomly from the text, thus the text should be **at least 150 words long**.
+<span id="ref-rgl"></span>FORCAST Grade Level<sup>1</sup><br>([Caylor et al., 1973](#ref-caylor-et-al-1973))|![Formula](/doc/measures/readability/rgl.svg)<br><br>* A sample of 150 words is taken randomly from the text, thus the text should be **at least 150 words long**.
 <span id="ref-formula-de-comprensibilidad-de-gutierrez-de-polini"></span>Fórmula de comprensibilidad de Gutiérrez de Polini<br>([Gutiérrez de Polini, 1972](#ref-gutierrez-de-polini-1972))|![Formula](/doc/measures/readability/cp.svg)<br><br>* This test applies only to **Spanish texts**.
 <span id="ref-formula-de-crawford"></span>Fórmula de Crawford<sup>1</sup><br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/formula_de_crawford.svg)<br><br>* This test applies only to **Spanish texts**.
 <span id="ref-gulpease-index"></span>Gulpease Index<br>([Lucisano & Emanuela Piemontese, 1988](#ref-lucisano-emanuela-piemontese-1988))|![Formula](/doc/measures/readability/gulpease_index.svg)<br><br>* This test applies only to **Italian texts**.
-<span id="ref-fog-index"></span>Gunning Fog Index<sup>1</sup><br>(English: [Gunning, 1968](#ref-gunning-1968); Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables ending with *-ed* or *-es* for **English texts**, and the number of words with 4 or more syllables for **Polish texts**.<br><br>* This test applies only to **English texts** and **Polish texts**.
+<span id="ref-fog-index"></span>Gunning Fog Index<sup>1</sup><br>(English: [Gunning, 1968](#ref-gunning-1968)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables ending with *-ed* or *-es* for **English texts**, and the number of words with 4 or more syllables for **Polish texts**.<br><br>* This test applies only to **English texts** and **Polish texts**.
 <span id="ref-legibilidad-mu"></span>Legibilidad µ<br>([Muñoz Baquedano, 2006](#ref-munoz-baquedano-2006))|![Formula](/doc/measures/readability/mu.svg)<br>where **LenWordsAvg** is the average word length in letters, and **LenWordsVar** is the variance of word lengths in letters.<br><br>* This test applies only to **Spanish texts**.<br>* The text should be **at least 2 words long**.
 <span id="ref-lensear-write"></span>Lensear Write<sup>1</sup><br>([O’Hayre, 1966](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/lensear_write.svg)<br>where **NumWordsMonosyllabic** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*, and **NumSentences** is the number of sentences to the nearest period.<br><br>* This test applies only to **English texts**.<br>* A sample of 100 words is taken randomly from the text.<br>If the text is **shorter than 100 words**, **NumWordsMonosyllabic** and **NumSentences** need to be multiplied by 100 and then divided by the number of text.
 <span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968))|![Formula](/doc/measures/readability/lix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
@@ -1028,7 +1023,6 @@ Measure of Readability|Formula
 <span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
 <span id="ref-smog-grade"></span>SMOG Grade<sup>1</sup><br>([McLaughlin, 1969](#ref-mclaughlin-1969))|![Formula](/doc/measures/readability/smog_grade.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables.<br><br>* A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text is taken from the text, thus the text should be **at least 30 sentences long**.
 <span id="ref-spache-grade-level"></span>Spache Grade Level<br>([Spache, 1953](#ref-spache-1953))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br>where **NumDifficultWords** is the number of words outside the Dale list of 769 easy words ([Dale, 1931](#ref-dale-1931)).<br><br>* Three samples each of 100 words are taken randomly from the text and the mean of the three scores is calculated, thus the text should be **at least 100 words long**.
-<span id="ref-szigriszts-perspicuity_index"></span>Szigriszt's Perspicuity Index<sup>1</sup><br>([Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/szigriszts_perspicuity_index.svg)<br><br>* This test applies only to **Spanish texts**.
 <span id="ref-wstf"></span>Wiener Sachtextformel<sup>1</sup><br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/wstf.svg)<br>where **NumWordsPolysyllabic** is the number of words with 3 or more syllables and **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This test applies only to **German texts**.<br>* This test has 4 variants, which you could select via **Menu → Preferences → Settings → Measures → Readability → Wiener Sachtextformel → Variant**.
 
 **Notes:**
@@ -1358,7 +1352,6 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 
 <span id="doc-5"></span>
 ## [5 References](#doc)
-
 <span id="ref-altamimi-et-al-2013"></span>
 [1] [**^**](#ref-aari) Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. *The International Arab Journal of Information Technology*, *11*(4), pp. 370–378.<br>
 <span id="ref-anderson-1983"></span>
@@ -1371,83 +1364,82 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 [5] [**^**](#ref-z-score-berry-rogghes) Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.<br>
 <span id="ref-bjornsson-1968"></span>
 [6] [**^**](#ref-lix) Björnsson, C.-H. (1968). *Läsbarhet*. Liber.<br>
+<span id="ref-brouwer-1963"></span>
+[7] [**^**](#ref-re) Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. Paedagogische studiën, 40, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
 <span id="ref-carroll-1970"></span>
-[7] [**^**](#ref-carrolls-d2)[**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x<br>
+[8] [**^**](#ref-carrolls-d2)[**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x<br>
 <span id="ref-caylor-et-al-1973"></span>
-[8] [**^**](#ref-rgl) Caylor, J. S., Sticht, T. G., Fox, L. C., & Ford, J. P. (1973). *Methodologies for determining reading requirements of military occupational specialties*. Human Resource Research Organization. https://files.eric.ed.gov/fulltext/ED074343.pdf<br>
+[9] [**^**](#ref-rgl) Caylor, J. S., Sticht, T. G., Fox, L. C., & Ford, J. P. (1973). *Methodologies for determining reading requirements of military occupational specialties*. Human Resource Research Organization. https://files.eric.ed.gov/fulltext/ED074343.pdf<br>
 <span id="ref-church-gale-1991"></span>
-[9] [**^**](#ref-squared-phi-coeff) Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.<br>
+[10] [**^**](#ref-squared-phi-coeff) Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.<br>
 <span id="ref-church-et-al-1991"></span>
-[10] [**^**](#ref-students-t-test-1-sample) Church, K., Gale, W., Hanks, P., & Hindle, D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), *Lexical acquisition: Exploiting on-line resources to build a lexicon* (pp. 115–164). Psychology Press.<br>
+[11] [**^**](#ref-students-t-test-1-sample) Church, K., Gale, W., Hanks, P., & Hindle, D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), *Lexical acquisition: Exploiting on-line resources to build a lexicon* (pp. 115–164). Psychology Press.<br>
 <span id="ref-church-hanks-1990"></span>
-[11] [**^**](#ref-pmi) Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. *Computational Linguistics*, *16*(1), 22–29.<br>
+[12] [**^**](#ref-pmi) Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. *Computational Linguistics*, *16*(1), 22–29.<br>
 <span id="ref-coleman-liau-1975"></span>
-[12] [**^**](#ref-coleman-liau-index) Coleman, M., & Liau, T. L. (1975). A computer readability formula designed for machine scoring. *Journal of Applied Psychology*, *60*(2), 283–284. https://doi.org/10.1037/h0076540<br>
+[13] [**^**](#ref-coleman-liau-index) Coleman, M., & Liau, T. L. (1975). A computer readability formula designed for machine scoring. *Journal of Applied Psychology*, *60*(2), 283–284. https://doi.org/10.1037/h0076540<br>
 <span id="ref-crawford-1985"></span>
-[13] [**^**](#ref-formula-de-crawford) Crawford, A. N. (1985). Fórmula y gráfico para determinar la comprensibilidad de textos de nivel primario en castellano. *Lectura y Vida*, *6*(4). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a6n4/06_04_Crawford.pdf<br>
+[14] [**^**](#ref-formula-de-crawford) Crawford, A. N. (1985). Fórmula y gráfico para determinar la comprensibilidad de textos de nivel primario en castellano. *Lectura y Vida*, *6*(4). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a6n4/06_04_Crawford.pdf<br>
 <span id="ref-daille-1994"></span>
-[14] [**^**](#ref-im3) Daille, B. (1994). *Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques* [Doctoral thesis, Paris Diderot University]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=<br>
+[15] [**^**](#ref-im3) Daille, B. (1994). *Approche mixte pour l'extraction automatique de terminologie: statistiques lexicales et filtres linguistiques* [Doctoral thesis, Paris Diderot University]. Béatrice Daille. http://www.bdaille.com/index.php?option=com_docman&task=doc_download&gid=8&Itemid=<br>
 <span id="ref-daille-1995"></span>
-[15] [**^**](#ref-im3) Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. *UCREL technical papers* (Vol. 5). Lancaster University.<br>
+[16] [**^**](#ref-im3) Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. *UCREL technical papers* (Vol. 5). Lancaster University.<br>
 <span id="ref-dale-1931"></span>
-[16] [**^**](#ref-spache-grade-level) Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.<br>
+[17] [**^**](#ref-spache-grade-level) Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.<br>
 <span id="ref-dale-chall-1948a"></span>
-[17] [**^**](#ref-dale-chall-readability-score) Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. *Educational Research Bulletin*, *27*(1), 11–20, 28.<br>
+[18] [**^**](#ref-dale-chall-readability-score) Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. *Educational Research Bulletin*, *27*(1), 11–20, 28.<br>
 <span id="ref-dale-chall-1948b"></span>
-[18] [**^**](#ref-dale-chall-readability-score) Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.<br>
+[19] [**^**](#ref-dale-chall-readability-score) Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.<br>
 <span id="ref-dennis-1964"></span>
-[19] [**^**](#ref-z-score) Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), *Proceedings of the symposium on statistical association methods for mechanized documentation* (pp. 61–148). National Bureau of Standards.<br>
+[20] [**^**](#ref-z-score) Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), *Proceedings of the symposium on statistical association methods for mechanized documentation* (pp. 61–148). National Bureau of Standards.<br>
 <span id="ref-dias-et-al-1999"></span>
-[20] [**^**](#ref-me) Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), *TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles* (pp. 333–339). TALN.<br>
+[21] [**^**](#ref-me) Dias, G., Guilloré, S., & Pereira Lopes, J. G. (1999). Language independent automatic acquisition of rigid multiword units from unrestricted text corpora. In A. Condamines, C. Fabre, & M. Péry-Woodley (Eds.), *TALN'99: 6ème Conférence Annuelle Sur le Traitement Automatique des Langues Naturelles* (pp. 333–339). TALN.<br>
 <span id="ref-douma-1960"></span>
-[21] [**^**](#ref-re) Douma, W. H. (1960). *De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules* [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
+[22] [**^**](#ref-re) Douma, W. H. (1960). *De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules* [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
 <span id="ref-dunning-1993"></span>
-[22] [**^**](#ref-log-likehood-ratio-test) Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.<br>
+[23] [**^**](#ref-log-likehood-ratio-test) Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.<br>
 <span id="ref-dunning-1998"></span>
-[23] [**^**](#ref-jaccard-index)[**^**](#ref-mi) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf<br>
+[24] [**^**](#ref-jaccard-index)[**^**](#ref-mi) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf<br>
 <span id="ref-elhaj-rayson-2016"></span>
-[24] [**^**](#ref-osman) El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), *Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)* (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html<br>
+[25] [**^**](#ref-osman) El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), *Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)* (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html<br>
 <span id="ref-engwall-1974"></span>
-[25] [**^**](#ref-engwalls-fm) Engwall, G. (1974). *Fréquence et distribution du vocabulaire dans un choix de romans français* [Unpublished doctoral dissertation]. Stockholm University.<br>
+[26] [**^**](#ref-engwalls-fm) Engwall, G. (1974). *Fréquence et distribution du vocabulaire dans un choix de romans français* [Unpublished doctoral dissertation]. Stockholm University.<br>
 <span id="ref-farr-et-al-1951"></span>
-[26] [**^**](#ref-re-simplified) Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. *Journal of Applied Psychology*, *35*(5), 333–337. https://doi.org/10.1037/h0062427<br>
+[27] [**^**](#ref-re-simplified) Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. *Journal of Applied Psychology*, *35*(5), 333–337. https://doi.org/10.1037/h0062427<br>
 <span id="ref-fernandez-huerta-1959"></span>
-[27] [**^**](#ref-fernandez-huertas-readability-score) Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. *Consigna*, *214*, 29–32.<br>
+[28] [**^**](#ref-re) Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. *Consigna*, *214*, 29–32.<br>
 <span id="ref-flesch-1948"></span>
-[28] [**^**](#ref-re) Flesch, R. (1948). A new readability yardstick. *Journal of Applied Psychology*, *32*(3), 221–233. https://doi.org/10.1037/h0057532<br>
+[29] [**^**](#ref-re) Flesch, R. (1948). A new readability yardstick. *Journal of Applied Psychology*, *32*(3), 221–233. https://doi.org/10.1037/h0057532<br>
 <span id="ref-flesch-1948"></span>
-[29] [**^**](#ref-re) Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. *Linguaggi*, *3*, 47–49.<br>
+[30] [**^**](#ref-re) Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. *Linguaggi*, *3*, 47–49.<br>
 <span id="ref-gabrielatos-2018"></span>
-[30] [**^**](#ref-diff-coeff) Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), *Corpus approaches to discourse: A critical review* (pp. 225–258). Routledge.<br>
+[31] [**^**](#ref-diff-coeff) Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), *Corpus approaches to discourse: A critical review* (pp. 225–258). Routledge.<br>
 <span id="ref-gabrielatos-marchi-2012"></span>
-[31] [**^**](#ref-pct-diff) Gabrielatos, C., & Marchi, A. (2012, September 13–14). *Keyness: Appropriate metrics and practical issues* [Conference session]. CADS International Conference 2012, University of Bologna, Italy.<br>
+[32] [**^**](#ref-pct-diff) Gabrielatos, C., & Marchi, A. (2012, September 13–14). *Keyness: Appropriate metrics and practical issues* [Conference session]. CADS International Conference 2012, University of Bologna, Italy.<br>
 <span id="ref-gries-2008"></span>
-[32] [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri<br>
+[33] [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri<br>
 <span id="ref-gunning-1968"></span>
-[33] [**^**](#ref-fog-index) Gunning, R. (1968). *The technique of clear writing* (revised ed.). McGraw-Hill Book Company.<br>
+[34] [**^**](#ref-fog-index) Gunning, R. (1968). *The technique of clear writing* (revised ed.). McGraw-Hill Book Company.<br>
 <span id="ref-gutierrez-de-polini-1972"></span>
-[34] [**^**](#ref-formula-de-comprensibilidad-de-gutierrez-de-polini) Gutiérrez de Polini, L. E. (1972). *Investigación sobre lectura en Venezuela* [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.<br>
+[35] [**^**](#ref-formula-de-comprensibilidad-de-gutierrez-de-polini) Gutiérrez de Polini, L. E. (1972). *Investigación sobre lectura en Venezuela* [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.<br>
 <span id="ref-hardie-2014"></span>
-[35] [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
+[36] [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
 <span id="ref-hofland-johanson-1982"></span>
-[36] [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
+[37] [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
 <span id="ref-juilland-chang-rodrigues-1964"></span>
-[37] [**^**](#ref-juillands-d)[**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.<br>
+[38] [**^**](#ref-juillands-d)[**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.<br>
 <span id="ref-kandel-moles-1958"></span>
-[38] [**^**](#ref-re) Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. *The Journal of Educational Research*, *21*, 283–287.<br>
-
+[39] [**^**](#ref-re) Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. *The Journal of Educational Research*, *21*, 283–287.<br>
 <span id="ref-kilgarriff-2001"></span>
-[39] [**^**](#ref-mann-whiteney-u-test) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil<br>
+[40] [**^**](#ref-mann-whiteney-u-test) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil<br>
 <span id="ref-kilgarriff-2009"></span>
-[40] [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009* (p. 171). University of Liverpool.<br>
+[41] [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009* (p. 171). University of Liverpool.<br>
 <span id="ref-kilgarriff-tugwell-2002"></span>
-[41] [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.<br>
+[42] [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.<br>
 <span id="ref-kincaid-et-al-1975"></span>
-[42] [**^**](#ref-flesch-kincaid-grade-level) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel*. Naval Air Station Memphis.<br>
+[43] [**^**](#ref-flesch-kincaid-grade-level) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel*. Naval Air Station Memphis.<br>
 <span id="ref-kromer-2003"></span>
-[43] [**^**](#ref-kromers-ur) Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quantitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
-<span id="ref-law-2011"></span>
-[44] [**^**](#ref-fernandez-huertas-readability-score) Law, Gwillim. (2011, May 27). *Error in the Fernandez Huerta readability formula*. LINGUIST List. https://linguistlist.org/issues/22/22-2332/<br>
+[44] [**^**](#ref-kromers-ur) Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quantitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
 <span id="ref-lexical-computing-ltd-2015"></span>
 [45] [**^**](#ref-mi-log-f) Lexical Computing. (2015, July 8). *Statistics used in Sketch Engine*. Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/<br>
 <span id="ref-lijffijt-gries-2012"></span>
@@ -1495,7 +1487,7 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 <span id="ref-spache-1953"></span>
 [67] [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
 <span id="ref-szigrisze-pazos-1993"></span>
-[68] [**^**](#ref-szigriszts-perspicuity_index) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
+[68] [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
 <span id="ref-thanopoulos-et-al-2002"></span>
 [69] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="ref-wilson-2013"></span>

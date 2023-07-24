@@ -1741,6 +1741,11 @@ def init_settings_default(main):
         'measures': {
             # Settings - Measures - Readability
             'readability': {
+                're': {
+                    'variant_nld': 'Douma',
+                    'variant_spa': 'Fernández Huerta'
+                },
+
                 'wstf': {
                     'variant': '1'
                 }

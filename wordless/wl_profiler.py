@@ -362,7 +362,6 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('wl_profiler', 'Coleman-Liau Index'),
             _tr('wl_profiler', 'Dale-Chall Readability Score'),
             _tr('wl_profiler', 'Devereaux Readability Index'),
-            _tr('wl_profiler', "Fernández Huerta's Readability Score"),
             _tr('wl_profiler', 'Flesch-Kincaid Grade Level'),
             _tr('wl_profiler', 'Flesch Reading Ease'),
             _tr('wl_profiler', 'Flesch Reading Ease (Simplified)'),
@@ -379,7 +378,6 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('wl_profiler', 'Rix'),
             _tr('wl_profiler', 'SMOG Grade'),
             _tr('wl_profiler', 'Spache Grade Level'),
-            _tr('wl_profiler', "Szigriszt's Perspicuity Index"),
             _tr('wl_profiler', 'Wiener Sachtextformel')
         ]
 
@@ -1178,7 +1176,6 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.coleman_liau_index(self.main, text),
                         wl_measures_readability.dale_chall_readability_score(self.main, text),
                         wl_measures_readability.devereux_readability_index(self.main, text),
-                        wl_measures_readability.fernandez_huertas_readability_score(self.main, text),
                         wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
                         wl_measures_readability.flesch_reading_ease(self.main, text),
                         wl_measures_readability.flesch_reading_ease_simplified(self.main, text),
@@ -1195,7 +1192,6 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.rix(self.main, text),
                         wl_measures_readability.smog_grade(self.main, text),
                         wl_measures_readability.spache_grade_level(self.main, text),
-                        wl_measures_readability.szigriszts_perspicuity_index(self.main, text),
                         wl_measures_readability.wiener_sachtextformel(self.main, text)
                     ]
                 else:
