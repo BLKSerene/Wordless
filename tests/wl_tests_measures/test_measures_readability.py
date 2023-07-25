@@ -93,6 +93,48 @@ def test_automated_readability_index():
     assert ari_eng_0 == 'text_too_short'
     assert ari_eng_12 == ari_spa_12 == 0.5 * (12 / 3) + 4.71 * (47 / 12) - 21.43
 
+def test_bormuths_cloze_mean():
+    m_eng_0 = wl_measures_readability.bormuths_cloze_mean(main, test_text_eng_0)
+    m_eng_12 = wl_measures_readability.bormuths_cloze_mean(main, test_text_eng_12)
+    m_other_12 = wl_measures_readability.bormuths_cloze_mean(main, test_text_other_12)
+
+    print("Bormuth's Cloze Mean:")
+    print(f'\teng/0: {m_eng_0}')
+    print(f'\teng/12: {m_eng_12}')
+    print(f'\tother/12: {m_other_12}')
+
+    assert m_eng_0 == 'text_too_short'
+    assert m_eng_12 == (
+        0.886593 -
+        0.083640 * (45 / 12) +
+        0.161911 * ((1 / 12)**3) -
+        0.021401 * (12 / 3) +
+        0.000577 * ((12 / 3)**2) -
+        0.000005 * ((12 / 3)**3)
+    )
+    assert m_other_12 == 'no_support'
+
+def test_bormuths_gp():
+    gp_eng_0 = wl_measures_readability.bormuths_gp(main, test_text_eng_0)
+    gp_eng_12 = wl_measures_readability.bormuths_gp(main, test_text_eng_12)
+    gp_other_12 = wl_measures_readability.bormuths_gp(main, test_text_other_12)
+
+    print("Bormuth's Grade Placement:")
+    print(f'\teng/0: {gp_eng_0}')
+    print(f'\teng/12: {gp_eng_12}')
+    print(f'\tother/12: {gp_other_12}')
+
+    m = wl_measures_readability.bormuths_cloze_mean(main, test_text_eng_12)
+    c = 0.35
+
+    assert gp_eng_0 == 'text_too_short'
+    assert gp_eng_12 == (
+        4.275 + 12.881 * m - 34.934 * (m**2) + 20.388 * (m**3) +
+        26.194 * c - 2.046 * (c**2) - 11.767 * (c**3) -
+        44.285 * (m * c) + 97.620 * ((m * c)**2) - 59.538 * ((m * c)**3)
+    )
+    assert gp_other_12 == 'no_support'
+
 def test_coleman_liau_index():
     grade_level_eng_0 = wl_measures_readability.coleman_liau_index(main, test_text_eng_0)
     grade_level_eng_12 = wl_measures_readability.coleman_liau_index(main, test_text_eng_12)
@@ -440,6 +482,8 @@ def test_wiener_sachtextformel():
 if __name__ == '__main__':
     test_automated_ara_readability_index()
     test_automated_readability_index()
+    test_bormuths_cloze_mean()
+    test_bormuths_gp()
     test_coleman_liau_index()
     test_dale_chall_readability_score()
     test_devereux_readability_index()

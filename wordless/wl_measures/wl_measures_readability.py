@@ -107,7 +107,7 @@ def get_count_words_syls(syls_words, len_min = 1, len_max = None):
         ])
 
 # Calculate the number of words outside Dale's lists of easy words
-def get_count_difficult_words(words, num_easy_words):
+def get_count_words_dale(words, num_easy_words):
     dale_list_easy_words = set()
     count_difficult_words = 0
 
@@ -161,6 +161,47 @@ def automated_readability_index(main, text):
 
     return ari
 
+# Bormuth's Cloze Mean & Grade Placement
+# Reference: Bormuth, J. R. (1969). Development of readability analyses. U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
+def bormuths_cloze_mean(main, text):
+    text = get_counts(main, text)
+
+    if text.lang.startswith('eng_'):
+        if text.count_sentences and text.count_words:
+            ddl = get_count_words_dale(text.words_flat, 3000)
+            m = (
+                0.886593 -
+                0.083640 * (text.count_chars_alphabetic / text.count_words) +
+                0.161911 * ((ddl / text.count_words)**3) -
+                0.021401 * (text.count_words / text.count_sentences) +
+                0.000577 * ((text.count_words / text.count_sentences)**2) -
+                0.000005 * ((text.count_words / text.count_sentences)**3)
+            )
+        else:
+            m = 'text_too_short'
+    else:
+        m = 'no_support'
+
+    return m
+
+def bormuths_gp(main, text):
+    if text.lang.startswith('eng_'):
+        m = bormuths_cloze_mean(main, text)
+        c = main.settings_custom['measures']['readability']['bormuths_gp']['cloze_criterion_score'] / 100
+
+        if m == 'text_too_short':
+            gp = m
+        else:
+            gp = (
+                4.275 + 12.881 * m - 34.934 * (m**2) + 20.388 * (m**3) +
+                26.194 * c - 2.046 * (c**2) - 11.767 * (c**3) -
+                44.285 * (m * c) + 97.620 * ((m * c)**2) - 59.538 * ((m * c)**3)
+            )
+    else:
+        gp = 'no_support'
+
+    return gp
+
 # Coleman-Liau Index
 # Reference: Coleman, M., & Liau, T. L. (1975). A computer readability formula designed for machine scoring. Journal of Applied Psychology, 60(2), 283–284. https://doi.org/10.1037/h0076540
 def coleman_liau_index(main, text):
@@ -187,7 +228,7 @@ def dale_chall_readability_score(main, text):
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
-            count_difficult_words = get_count_difficult_words(text.words_flat, 3000)
+            count_difficult_words = get_count_words_dale(text.words_flat, 3000)
             x_c50 = (
                 0.1579 * (count_difficult_words / text.count_words)
                 + 0.0496 * (text.count_words / text.count_sentences)
@@ -711,7 +752,7 @@ def spache_grade_level(main, text):
                     else:
                         break
 
-                count_difficult_words = get_count_difficult_words(samples, 769)
+                count_difficult_words = get_count_words_dale(samples, 769)
                 grade_levels.append(
                     0.141 * (100 / count_sentences_samples)
                     + 0.086 * (count_difficult_words / 100 * 100)
