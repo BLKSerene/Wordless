@@ -359,6 +359,8 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
         HEADERS_READABILITY = [
             _tr('wl_profiler', 'Automated Arabic Readability Index'),
             _tr('wl_profiler', 'Automated Readability Index'),
+            _tr('wl_profiler', "Bormuth's Cloze Mean"),
+            _tr('wl_profiler', "Bormuth's Grade Placement"),
             _tr('wl_profiler', 'Coleman-Liau Index'),
             _tr('wl_profiler', 'Dale-Chall Readability Score'),
             _tr('wl_profiler', 'Devereaux Readability Index'),
@@ -1173,6 +1175,8 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     readability_stats = [
                         wl_measures_readability.automated_ara_readability_index(self.main, text),
                         wl_measures_readability.automated_readability_index(self.main, text),
+                        wl_measures_readability.bormuths_cloze_mean(self.main, text),
+                        wl_measures_readability.bormuths_gp(self.main, text),
                         wl_measures_readability.coleman_liau_index(self.main, text),
                         wl_measures_readability.dale_chall_readability_score(self.main, text),
                         wl_measures_readability.devereux_readability_index(self.main, text),
