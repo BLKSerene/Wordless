@@ -31,6 +31,21 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['measures']['readability']
         self.settings_custom = self.main.settings_custom['measures']['readability']
 
+        # Bormuth's Grade Placement
+        self.group_box_bormuths_gp = QGroupBox(self.tr("Bormuth's Grade Placement"), self)
+
+        self.label_cloze_criterion_score = QLabel(self.tr('Cloze criterion score:'), self)
+        self.spin_box_cloze_criterion_score = wl_boxes.Wl_Spin_Box(self)
+
+        self.spin_box_cloze_criterion_score.setRange(0, 100)
+        self.spin_box_cloze_criterion_score.setSuffix('%')
+
+        self.group_box_bormuths_gp.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_bormuths_gp.layout().addWidget(self.label_cloze_criterion_score, 0, 0)
+        self.group_box_bormuths_gp.layout().addWidget(self.spin_box_cloze_criterion_score, 0, 1)
+
+        self.group_box_bormuths_gp.layout().setColumnStretch(2, 1)
+
         # Flesch Reading Ease
         self.group_box_re = QGroupBox(self.tr('Flesch Reading Ease'), self)
 
@@ -71,17 +86,21 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_wstf.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_re, 0, 0)
-        self.layout().addWidget(self.group_box_wstf, 1, 0)
+        self.layout().addWidget(self.group_box_bormuths_gp, 0, 0)
+        self.layout().addWidget(self.group_box_re, 1, 0)
+        self.layout().addWidget(self.group_box_wstf, 2, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(2, 1)
+        self.layout().setRowStretch(3, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.settings_default)
         else:
             settings = copy.deepcopy(self.settings_custom)
+
+        # Bormuth's Grade Placement
+        self.spin_box_cloze_criterion_score.setValue(settings['bormuths_gp']['cloze_criterion_score'])
 
         # Flesch Reading Ease
         self.combo_box_re_variant_nld.setCurrentText(settings['re']['variant_nld'])
@@ -91,6 +110,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.combo_box_wstf_variant.setCurrentText(settings['wstf']['variant'])
 
     def apply_settings(self):
+        # Bormuth's Grade Placement
+        self.settings_custom['bormuths_gp']['cloze_criterion_score'] = self.spin_box_cloze_criterion_score.value()
+
         # Flesch Reading Ease
         self.settings_custom['re']['variant_nld'] = self.combo_box_re_variant_nld.currentText()
         self.settings_custom['re']['variant_spa'] = self.combo_box_re_variant_spa.currentText()
