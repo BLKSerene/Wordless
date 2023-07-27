@@ -1745,6 +1745,10 @@ def init_settings_default(main):
                     'cloze_criterion_score': 35
                 },
 
+                'colemans_readability_formula': {
+                    'variant': '2'
+                },
+
                 're': {
                     'variant_nld': 'Douma',
                     'variant_spa': 'Fernández Huerta'

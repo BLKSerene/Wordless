@@ -21,8 +21,6 @@ import numpy
 from tests import wl_test_init
 from wordless.wl_measures import wl_measures_readability
 
-main = wl_test_init.Wl_Test_Main()
-
 class Wl_Test_Text():
     def __init__(self, tokens_multilevel, lang = 'eng_us'):
         super().__init__()
@@ -30,6 +28,9 @@ class Wl_Test_Text():
         self.main = main
         self.lang = lang
         self.tokens_multilevel = tokens_multilevel
+
+main = wl_test_init.Wl_Test_Main()
+settings = main.settings_custom['measures']['readability']
 
 TOKENS_MULTILEVEL_0 = []
 TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
@@ -150,6 +151,33 @@ def test_coleman_liau_index():
     assert grade_level_eng_0 == 'text_too_short'
     assert grade_level_eng_12 == grade_level_spa_12 == -27.4004 * (est_cloze_pct / 100) + 23.06395
 
+def test_colemans_readability_formula():
+    cloze_pct_eng_0 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_0)
+    settings['colemans_readability_formula']['variant'] = '1'
+    cloze_pct_eng_12_1 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_12)
+    settings['colemans_readability_formula']['variant'] = '2'
+    cloze_pct_eng_12_2 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_12)
+    settings['colemans_readability_formula']['variant'] = '3'
+    cloze_pct_eng_12_3 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_12)
+    settings['colemans_readability_formula']['variant'] = '4'
+    cloze_pct_eng_12_4 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_12)
+    cloze_pct_other_12 = wl_measures_readability.colemans_readability_formula(main, test_text_other_12)
+
+    print("Coleman's Readability Formula:")
+    print(f'\teng/0: {cloze_pct_eng_0}')
+    print(f'\teng/12-1: {cloze_pct_eng_12_1}')
+    print(f'\teng/12-2: {cloze_pct_eng_12_2}')
+    print(f'\teng/12-3: {cloze_pct_eng_12_3}')
+    print(f'\teng/12-4: {cloze_pct_eng_12_4}')
+    print(f'\tother/12: {cloze_pct_other_12}')
+
+    assert cloze_pct_eng_0 == 'text_too_short'
+    assert cloze_pct_eng_12_1 == 1.29 * (9 / 12 * 100) - 38.45
+    assert cloze_pct_eng_12_2 == 1.16 * (9 / 12 * 100) + 1.48 * (3 / 12 * 100) - 37.95
+    assert cloze_pct_eng_12_3 == 1.07 * (9 / 12 * 100) + 1.18 * (3 / 12 * 100) + 0.76 * (0 / 12 * 100) - 34.02
+    assert cloze_pct_eng_12_4 == 1.04 * (9 / 12 * 100) + 1.06 * (3 / 12 * 100) + 0.56 * (0 / 12 * 100) - 0.36 * (0 / 12) - 26.01
+    assert cloze_pct_other_12 == 'no_support'
+
 def test_dale_chall_readability_score():
     x_c50_eng_0 = wl_measures_readability.dale_chall_readability_score(main, test_text_eng_0)
     x_c50_eng_12 = wl_measures_readability.dale_chall_readability_score(main, test_text_eng_12)
@@ -198,9 +226,9 @@ def test_flesch_reading_ease():
     flesch_re_eng_0 = wl_measures_readability.flesch_reading_ease(main, test_text_eng_0)
     flesch_re_eng_12 = wl_measures_readability.flesch_reading_ease(main, test_text_eng_12)
 
-    main.settings_custom['measures']['readability']['re']['variant_nld'] = 'Douma'
+    settings['re']['variant_nld'] = 'Douma'
     flesch_re_nld_12_douma = wl_measures_readability.flesch_reading_ease(main, test_text_nld_12)
-    main.settings_custom['measures']['readability']['re']['variant_nld'] = "Brouwer's Leesindex A"
+    settings['re']['variant_nld'] = "Brouwer's Leesindex A"
     flesch_re_nld_12_brouwer = wl_measures_readability.flesch_reading_ease(main, test_text_nld_12)
 
     flesch_re_fra_12 = wl_measures_readability.flesch_reading_ease(main, test_text_fra_12)
@@ -208,9 +236,9 @@ def test_flesch_reading_ease():
     flesch_re_ita_12 = wl_measures_readability.flesch_reading_ease(main, test_text_ita_12)
     flesch_re_rus_12 = wl_measures_readability.flesch_reading_ease(main, test_text_rus_12)
 
-    main.settings_custom['measures']['readability']['re']['variant_spa'] = 'Fernández Huerta'
+    settings['re']['variant_spa'] = 'Fernández Huerta'
     flesch_re_spa_12_fh = wl_measures_readability.flesch_reading_ease(main, test_text_spa_12)
-    main.settings_custom['measures']['readability']['re']['variant_spa'] = 'Szigriszt Pazos'
+    settings['re']['variant_spa'] = 'Szigriszt Pazos'
     flesch_re_spa_12_sp = wl_measures_readability.flesch_reading_ease(main, test_text_spa_12)
 
     flesch_re_afr_12 = wl_measures_readability.flesch_reading_ease(main, test_text_afr_12)
@@ -219,14 +247,14 @@ def test_flesch_reading_ease():
     print('Flesch Reading Ease:')
     print(f'\teng/0: {flesch_re_eng_0}')
     print(f'\teng/12: {flesch_re_eng_12}')
-    print(f'\tnld-douma/12: {flesch_re_nld_12_douma}')
-    print(f'\tnld-brouwer/12: {flesch_re_nld_12_brouwer}')
+    print(f'\tnld/12-douma: {flesch_re_nld_12_douma}')
+    print(f'\tnld/12-brouwer: {flesch_re_nld_12_brouwer}')
     print(f'\tfra/12: {flesch_re_fra_12}')
     print(f'\tdeu/12: {flesch_re_deu_12}')
     print(f'\tita/12: {flesch_re_ita_12}')
     print(f'\trus/12: {flesch_re_rus_12}')
-    print(f'\tspa-fh/12: {flesch_re_spa_12_fh}')
-    print(f'\tspa-sp/12: {flesch_re_spa_12_sp}')
+    print(f'\tspa/12-fh: {flesch_re_spa_12_fh}')
+    print(f'\tspa/12-sp: {flesch_re_spa_12_sp}')
     print(f'\tafr/12: {flesch_re_afr_12}')
     print(f'\tother/12: {flesch_re_other_12}')
 
@@ -453,18 +481,22 @@ def test_spache_grade_level():
 
 def test_wiener_sachtextformel():
     wstf_deu_0 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_0)
-    wstf_deu_12_1 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12, variant = '1')
-    wstf_deu_12_2 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12, variant = '2')
-    wstf_deu_12_3 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12, variant = '3')
-    wstf_deu_12_4 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12, variant = '4')
+    settings['wstf']['variant'] = '1'
+    wstf_deu_12_1 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12)
+    settings['wstf']['variant'] = '2'
+    wstf_deu_12_2 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12)
+    settings['wstf']['variant'] = '3'
+    wstf_deu_12_3 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12)
+    settings['wstf']['variant'] = '4'
+    wstf_deu_12_4 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12)
     wstf_eng_12 = wl_measures_readability.wiener_sachtextformel(main, test_text_eng_12)
 
     print('Wiener Sachtextformel:')
     print(f'\tdeu/0: {wstf_deu_0}')
-    print(f'\tdeu-1/12: {wstf_deu_12_1}')
-    print(f'\tdeu-2/12: {wstf_deu_12_2}')
-    print(f'\tdeu-3/12: {wstf_deu_12_3}')
-    print(f'\tdeu-4/12: {wstf_deu_12_4}')
+    print(f'\tdeu/12-1: {wstf_deu_12_1}')
+    print(f'\tdeu/12-2: {wstf_deu_12_2}')
+    print(f'\tdeu/12-3: {wstf_deu_12_3}')
+    print(f'\tdeu/12-4: {wstf_deu_12_4}')
     print(f'\teng/12: {wstf_eng_12}')
 
     ms = 0 / 12
@@ -485,6 +517,7 @@ if __name__ == '__main__':
     test_bormuths_cloze_mean()
     test_bormuths_gp()
     test_coleman_liau_index()
+    test_colemans_readability_formula()
     test_dale_chall_readability_score()
     test_devereux_readability_index()
     test_flesch_kincaid_grade_level()

@@ -129,9 +129,9 @@ def get_count_words_dale(words, num_easy_words):
 # Automated Arabic Readability Index
 # Reference: Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. The International Arab Journal of Information Technology, 11(4), pp. 370–378.
 def automated_ara_readability_index(main, text):
-    text = get_counts(main, text)
-
     if text.lang == 'ara':
+        text = get_counts(main, text)
+
         if text.count_words and text.count_sentences:
             aari = (
                 3.28 * text.count_chars_alphanumeric
@@ -164,9 +164,9 @@ def automated_readability_index(main, text):
 # Bormuth's Cloze Mean & Grade Placement
 # Reference: Bormuth, J. R. (1969). Development of readability analyses. U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
 def bormuths_cloze_mean(main, text):
-    text = get_counts(main, text)
-
     if text.lang.startswith('eng_'):
+        text = get_counts(main, text)
+
         if text.count_sentences and text.count_words:
             ddl = get_count_words_dale(text.words_flat, 3000)
             m = (
@@ -219,12 +219,62 @@ def coleman_liau_index(main, text):
 
     return grade_level
 
+# Coleman's Readability Formula
+# Reference: Liau, T. L., Bassin, C. B., Martin, C. J., & Coleman, E. B. (1976). Modification of the Coleman readability formulas. Journal of Reading Behavior, 8(4), 381–386. https://journals.sagepub.com/doi/pdf/10.1080/10862967609547193
+def colemans_readability_formula(main, text):
+    if text.lang.startswith('eng_'):
+        text = get_counts(main, text)
+
+        if text.count_words:
+            variant = main.settings_custom['measures']['readability']['colemans_readability_formula']['variant']
+            count_words_1_syl = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1)
+
+            if variant in ['3', '4']:
+                pos_tags = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
+                count_prons = sum((1 for _, pos in pos_tags if pos == 'PRON'))
+
+                if variant == '4':
+                    count_preps = sum((1 for _, pos in pos_tags if pos == 'ADP'))
+
+            if variant == '1':
+                cloze_pct = (
+                    1.29 * (count_words_1_syl / text.count_words * 100) -
+                    38.45
+                )
+            elif variant == '2':
+                cloze_pct = (
+                    1.16 * (count_words_1_syl / text.count_words * 100) +
+                    1.48 * (text.count_sentences / text.count_words * 100) -
+                    37.95
+                )
+            elif variant == '3':
+                cloze_pct = (
+                    1.07 * (count_words_1_syl / text.count_words * 100) +
+                    1.18 * (text.count_sentences / text.count_words * 100) +
+                    0.76 * (count_prons / text.count_words * 100) -
+                    34.02
+                )
+            elif variant == '4':
+                cloze_pct = (
+                    1.04 * (count_words_1_syl / text.count_words * 100) +
+                    1.06 * (text.count_sentences / text.count_words * 100) +
+                    0.56 * (count_prons / text.count_words * 100) -
+                    0.36 * (count_preps / text.count_words) -
+                    26.01
+                )
+        else:
+            cloze_pct = 'text_too_short'
+    else:
+        cloze_pct = 'no_support'
+
+    return cloze_pct
+
 # Dale-Chall Readability Score
 # References:
 #     Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. Educational Research Bulletin, 27(1), 11–20, 28.
 #     Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. Educational Research Bulletin, 27(2), 37–54.
 def dale_chall_readability_score(main, text):
-    if text.lang.startswith('eng'):
+    if text.lang.startswith('eng_'):
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
@@ -374,10 +424,10 @@ def flesch_reading_ease_simplified(main, text):
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
-            count_words_monosyllabic = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1)
+            count_words_1_syl = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1)
 
             flesch_re_simplified = (
-                1.599 * (count_words_monosyllabic / text.count_words * 100)
+                1.599 * (count_words_1_syl / text.count_words * 100)
                 - 1.015 * (text.count_words / text.count_sentences)
                 - 31.517
             )
@@ -398,8 +448,8 @@ def forcast_grade_level(main, text):
             sample_start = random.randint(0, text.count_words - 150)
             sample = text.syls_words[sample_start : sample_start + 150]
 
-            count_words_monosyllabic = get_count_words_syls(sample, len_min = 1, len_max = 1)
-            rgl = 20.43 - 0.11 * count_words_monosyllabic
+            count_words_1_syl = get_count_words_syls(sample, len_min = 1, len_max = 1)
+            rgl = 20.43 - 0.11 * count_words_1_syl
         else:
             rgl = 'text_too_short'
     else:
@@ -452,7 +502,7 @@ def formula_de_crawford(main, text):
 #     Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. Scuola e Città, 39(3), pp. 110–124.
 #     Indice Gulpease. (2021, July 9). In Wikipedia.https://it.wikipedia.org/w/index.php?title=Indice_Gulpease&oldid=121763335.
 def gulpease_index(main, text):
-    if text.lang.startswith('ita'):
+    if text.lang == 'ita':
         text = get_counts(main, text)
 
         if text.count_words:
@@ -470,13 +520,13 @@ def gulpease_index(main, text):
 # Polish variant:
 #     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. Zeszyty Prasoznawcze, 4(42), 35–48.
 def gunning_fog_index(main, text):
-    if text.lang.startswith('eng') or text.lang == 'pol' and text.lang in main.settings_global['syl_tokenizers']:
+    if text.lang.startswith('eng_') or text.lang == 'pol' and text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
         if text.count_sentences and text.count_words:
             count_hard_words = 0
 
-            if text.lang.startswith('eng'):
+            if text.lang.startswith('eng_'):
                 words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
 
                 for syls, (word, tag) in zip(text.syls_words, words_tagged):
@@ -529,7 +579,7 @@ def legibility_mu(main, text):
 # Lensear Write
 # Reference: O’Hayre, J. (1966). Gobbledygook has gotta go. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
 def lensear_write(main, text):
-    if text.lang.startswith('eng') and text.lang in main.settings_global['syl_tokenizers']:
+    if text.lang.startswith('eng_') and text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
         if text.count_words > 0:
@@ -589,7 +639,7 @@ def lix(main, text):
 # McAlpine EFLAW Readability Score
 # Reference: Nirmaldasan. (2009, April 30). McAlpine EFLAW readability score. Readability Monitor. Retrieved November 15, 2022, from https://strainindex.wordpress.com/2009/04/30/mcalpine-eflaw-readability-score/
 def mcalpine_eflaw(main, text):
-    if text.lang.startswith('eng'):
+    if text.lang.startswith('eng_'):
         text = get_counts(main, text)
 
         if text.count_sentences:
@@ -703,14 +753,14 @@ def smog_grade(main, text):
             )
 
             # Calculate the number of words with 3 or more syllables
-            count_words_polysyllabic = 0
+            count_words_3_plus_syls = 0
 
             for sentence in samples:
                 syls_words = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
 
-                count_words_polysyllabic += get_count_words_syls(syls_words, len_min = 3)
+                count_words_3_plus_syls += get_count_words_syls(syls_words, len_min = 3)
 
-            g = 3.1291 + 1.043 * (count_words_polysyllabic ** 0.5)
+            g = 3.1291 + 1.043 * (count_words_3_plus_syls ** 0.5)
         else:
             g = 'text_too_short'
     else:
@@ -723,7 +773,7 @@ def smog_grade(main, text):
 #     Dale, E. (1931). A comparison of two word lists. Educational Research Bulletin, 10(18), 484–489.
 #     Spache, G. (1953). A new readability formula for primary-grade reading materials. Elementary School Journal, 53(7), 410–413. https://doi.org/10.1086/458513
 def spache_grade_level(main, text):
-    if text.lang.startswith('eng'):
+    if text.lang.startswith('eng_'):
         text = get_counts(main, text)
 
         if text.count_words >= 100:
@@ -771,14 +821,12 @@ def spache_grade_level(main, text):
 # References:
 #     Bamberger, R., & Vanecek, E. (1984). Lesen – Verstehen – Lernen – Schreiben. Jugend und Volk.
 #     Lesbarkeitsindex. (2022, July 21). In Wikipedia. https://de.wikipedia.org/w/index.php?title=Lesbarkeitsindex&oldid=224664667
-def wiener_sachtextformel(main, text, variant = None):
-    if text.lang.startswith('deu') and text.lang in main.settings_global['syl_tokenizers']:
+def wiener_sachtextformel(main, text):
+    if text.lang.startswith('deu_') and text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
-            if not variant:
-                variant = main.settings_custom['measures']['readability']['wstf']['variant']
-
+            variant = main.settings_custom['measures']['readability']['wstf']['variant']
             ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words
             sl = text.count_words / text.count_sentences
             iw = get_count_words_letters(text.words_flat, len_min = 7) / text.count_words
