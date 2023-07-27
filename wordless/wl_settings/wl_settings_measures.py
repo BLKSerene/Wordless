@@ -46,6 +46,19 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_bormuths_gp.layout().setColumnStretch(2, 1)
 
+        # Coleman's Readability Formula
+        self.group_box_colemans_readability_formula = QGroupBox(self.tr("Coleman's Readability Formula"), self)
+
+        self.label_colemans_readability_formula_variant = QLabel(self.tr('Variant:'), self)
+        self.combo_box_colemans_readability_formula_variant = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_colemans_readability_formula_variant.addItems(['1', '2', '3', '4'])
+
+        self.group_box_colemans_readability_formula.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_colemans_readability_formula.layout().addWidget(self.label_colemans_readability_formula_variant, 0, 0)
+        self.group_box_colemans_readability_formula.layout().addWidget(self.combo_box_colemans_readability_formula_variant, 0, 1)
+        self.group_box_colemans_readability_formula.layout().setColumnStretch(2, 1)
+
         # Flesch Reading Ease
         self.group_box_re = QGroupBox(self.tr('Flesch Reading Ease'), self)
 
@@ -87,11 +100,12 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_bormuths_gp, 0, 0)
-        self.layout().addWidget(self.group_box_re, 1, 0)
-        self.layout().addWidget(self.group_box_wstf, 2, 0)
+        self.layout().addWidget(self.group_box_colemans_readability_formula, 1, 0)
+        self.layout().addWidget(self.group_box_re, 2, 0)
+        self.layout().addWidget(self.group_box_wstf, 3, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(3, 1)
+        self.layout().setRowStretch(4, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -101,6 +115,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         # Bormuth's Grade Placement
         self.spin_box_cloze_criterion_score.setValue(settings['bormuths_gp']['cloze_criterion_score'])
+
+        # Coleman's Readability Formula
+        self.combo_box_colemans_readability_formula_variant.setCurrentText(settings['colemans_readability_formula']['variant'])
 
         # Flesch Reading Ease
         self.combo_box_re_variant_nld.setCurrentText(settings['re']['variant_nld'])
@@ -112,6 +129,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
     def apply_settings(self):
         # Bormuth's Grade Placement
         self.settings_custom['bormuths_gp']['cloze_criterion_score'] = self.spin_box_cloze_criterion_score.value()
+
+        # Coleman's Readability Formula
+        self.settings_custom['colemans_readability_formula']['variant'] = self.combo_box_colemans_readability_formula_variant.currentText()
 
         # Flesch Reading Ease
         self.settings_custom['re']['variant_nld'] = self.combo_box_re_variant_nld.currentText()
