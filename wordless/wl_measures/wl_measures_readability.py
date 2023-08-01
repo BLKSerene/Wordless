@@ -311,6 +311,31 @@ def dale_chall_readability_formula_new(main, text):
 
     return x_c50
 
+# Danielson-Bryan's Readability Formula
+# Reference: Danielson, W. A., & Bryan, S. D. (1963). Computer automation of two readability formulas. Journalism Quarterly, 40(2), 201–206. https://doi.org/10.1177/107769906304000207
+def danielson_bryans_readability_formula(main, text):
+    text = get_counts(main, text)
+
+    if text.count_words - 1 and text.count_sentences:
+        variant = main.settings_custom['measures']['readability']['danielson_bryans_readability_formula']['variant']
+
+        if variant == '1':
+            danielson_bryan = (
+                1.0364 * (text.count_chars_all / (text.count_words - 1))
+                + 0.0194 * (text.count_chars_all / text.count_sentences)
+                - 0.6059
+            )
+        elif variant == '2':
+            danielson_bryan = (
+                131.059
+                - 10.364 * (text.count_chars_all / (text.count_words - 1))
+                - 0.194 * (text.count_chars_all / text.count_sentences)
+            )
+    else:
+        danielson_bryan = 'text_too_short'
+
+    return danielson_bryan
+
 # Devereux Readability Index
 # Reference: Smith, E. A. (1961). Devereaux readability index. Journal of Educational Research, 54(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728
 def devereux_readability_index(main, text):
