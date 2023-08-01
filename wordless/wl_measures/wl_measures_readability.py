@@ -17,10 +17,12 @@
 # ----------------------------------------------------------------------
 
 import bisect
+import math
 import random
 import re
 
 import numpy
+
 from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_pos_tagging, wl_syl_tokenization
 from wordless.wl_utils import wl_misc, wl_paths
@@ -128,7 +130,7 @@ def get_count_words_dale(words, num_easy_words):
 
 # Automated Arabic Readability Index
 # Reference: Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. The International Arab Journal of Information Technology, 11(4), pp. 370–378.
-def automated_ara_readability_index(main, text):
+def aari(main, text):
     if text.lang == 'ara':
         text = get_counts(main, text)
 
@@ -147,7 +149,7 @@ def automated_ara_readability_index(main, text):
 
 # Automated Readability Index
 # Reference: Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
-def automated_readability_index(main, text):
+def ari(main, text):
     text = get_counts(main, text)
 
     if text.count_sentences and text.count_words:
@@ -185,20 +187,17 @@ def bormuths_cloze_mean(main, text):
     return m
 
 def bormuths_gp(main, text):
-    if text.lang.startswith('eng_'):
-        m = bormuths_cloze_mean(main, text)
-        c = main.settings_custom['measures']['readability']['bormuths_gp']['cloze_criterion_score'] / 100
+    m = bormuths_cloze_mean(main, text)
 
-        if m == 'text_too_short':
-            gp = m
-        else:
-            gp = (
-                4.275 + 12.881 * m - 34.934 * (m**2) + 20.388 * (m**3)
-                + 26.194 * c - 2.046 * (c**2) - 11.767 * (c**3)
-                - 44.285 * (m * c) + 97.620 * ((m * c)**2) - 59.538 * ((m * c)**3)
-            )
+    if m not in ['no_support', 'text_too_short']:
+        c = main.settings_custom['measures']['readability']['bormuths_gp']['cloze_criterion_score'] / 100
+        gp = (
+            4.275 + 12.881 * m - 34.934 * (m**2) + 20.388 * (m**3)
+            + 26.194 * c - 2.046 * (c**2) - 11.767 * (c**3)
+            - 44.285 * (m * c) + 97.620 * ((m * c)**2) - 59.538 * ((m * c)**3)
+        )
     else:
-        gp = 'no_support'
+        gp = m
 
     return gp
 
@@ -336,6 +335,20 @@ def danielson_bryans_readability_formula(main, text):
 
     return danielson_bryan
 
+# Degrees of Reading Power
+# References:
+#     College Entrance Examination Board. (1981). Degrees of reading power brings the students and the text together.
+#     Carver, R. P. (1985). Measuring readability using DRP units. Journal of Reading Behavior, 17(4), 303–316. https://doi.org/10.1080/10862968509547547
+def drp(main, text):
+    m = bormuths_cloze_mean(main, text)
+
+    if m not in ['no_support', 'text_too_short']:
+        drp = 100 - math.floor(m * 100 + 0.5)
+    else:
+        drp = m
+
+    return drp
+
 # Devereux Readability Index
 # Reference: Smith, E. A. (1961). Devereaux readability index. Journal of Educational Research, 54(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728
 def devereux_readability_index(main, text):
@@ -354,7 +367,7 @@ def devereux_readability_index(main, text):
 
 # Flesch-Kincaid Grade Level
 # Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
-def flesch_kincaid_grade_level(main, text):
+def gl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
@@ -394,7 +407,7 @@ def flesch_kincaid_grade_level(main, text):
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
 # Spanish variant (Szigriszt Pazos):
 #     Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
-def flesch_reading_ease(main, text):
+def re_flesch(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
@@ -464,7 +477,7 @@ def flesch_reading_ease(main, text):
 
 # Flesch Reading Ease (Simplified)
 # Reference: Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. Journal of Applied Psychology, 35(5), 333–337. https://doi.org/10.1037/h0062427
-def flesch_reading_ease_simplified(main, text):
+def re_simplified(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
@@ -485,7 +498,7 @@ def flesch_reading_ease_simplified(main, text):
 
 # FORCAST Grade Level
 # Reference: Caylor, J. S., Sticht, T. G., Fox, L. C., & Ford, J. P. (1973). Methodologies for determining reading requirements of military occupational specialties. Human Resource Research Organization. https://files.eric.ed.gov/fulltext/ED074343.pdf
-def forcast_grade_level(main, text):
+def rgl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
@@ -506,7 +519,7 @@ def forcast_grade_level(main, text):
 # References:
 #     Gutiérrez de Polini, L. E. (1972). Investigación sobre lectura en Venezuela [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.
 #     Rodríguez Trujillo, N. (1980). Determinación de la comprensibilidad de materiales de lectura por medio de variables lingüísticas. Lectura y Vida, 1(1). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a1n1/01_01_Rodriguez.pdf
-def formula_de_comprensibilidad_de_gutierrez_de_polini(main, text):
+def cp(main, text):
     if text.lang == 'spa':
         text = get_counts(main, text)
 
@@ -567,7 +580,7 @@ def gulpease_index(main, text):
 #     Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
 # Polish variant:
 #     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. Zeszyty Prasoznawcze, 4(42), 35–48.
-def gunning_fog_index(main, text):
+def fog_index(main, text):
     if text.lang.startswith('eng_') or text.lang == 'pol' and text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
@@ -604,7 +617,7 @@ def gunning_fog_index(main, text):
 
 # Legibilidad µ
 # Reference: Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile, 21(2), 13–26.
-def legibility_mu(main, text):
+def mu(main, text):
     if text.lang == 'spa':
         text = get_counts(main, text)
 
@@ -689,7 +702,7 @@ def lix(main, text):
 
 # McAlpine EFLAW Readability Score
 # Reference: Nirmaldasan. (2009, April 30). McAlpine EFLAW readability score. Readability Monitor. Retrieved November 15, 2022, from https://strainindex.wordpress.com/2009/04/30/mcalpine-eflaw-readability-score/
-def mcalpine_eflaw(main, text):
+def eflaw(main, text):
     if text.lang.startswith('eng_'):
         text = get_counts(main, text)
 
@@ -872,7 +885,7 @@ def spache_grade_level(main, text):
 # References:
 #     Bamberger, R., & Vanecek, E. (1984). Lesen – Verstehen – Lernen – Schreiben. Jugend und Volk.
 #     Lesbarkeitsindex. (2022, July 21). In Wikipedia. https://de.wikipedia.org/w/index.php?title=Lesbarkeitsindex&oldid=224664667
-def wiener_sachtextformel(main, text):
+def wstf(main, text):
     if text.lang.startswith('deu_') and text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 

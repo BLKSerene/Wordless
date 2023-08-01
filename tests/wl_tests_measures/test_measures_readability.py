@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import math
+
 import numpy
 
 from tests import wl_test_init
@@ -67,10 +69,10 @@ test_text_pol_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'pol')
 test_text_rus_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'rus')
 test_text_other_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'other')
 
-def test_automated_ara_readability_index():
-    aari_ara_0 = wl_measures_readability.automated_ara_readability_index(main, test_text_ara_0)
-    aari_ara_12 = wl_measures_readability.automated_ara_readability_index(main, test_text_ara_12)
-    aari_eng_12 = wl_measures_readability.automated_ara_readability_index(main, test_text_eng_12)
+def test_aari():
+    aari_ara_0 = wl_measures_readability.aari(main, test_text_ara_0)
+    aari_ara_12 = wl_measures_readability.aari(main, test_text_ara_12)
+    aari_eng_12 = wl_measures_readability.aari(main, test_text_eng_12)
 
     print('Automated Arabic Readability Index:')
     print(f'\tara/0: {aari_ara_0}')
@@ -81,10 +83,10 @@ def test_automated_ara_readability_index():
     assert aari_ara_12 == 3.28 * 46 + 1.43 * (46 / 12) + 1.24 * (12 / 3)
     assert aari_eng_12 == 'no_support'
 
-def test_automated_readability_index():
-    ari_eng_0 = wl_measures_readability.automated_readability_index(main, test_text_eng_0)
-    ari_eng_12 = wl_measures_readability.automated_readability_index(main, test_text_eng_12)
-    ari_spa_12 = wl_measures_readability.automated_readability_index(main, test_text_spa_12)
+def test_ari():
+    ari_eng_0 = wl_measures_readability.ari(main, test_text_eng_0)
+    ari_eng_12 = wl_measures_readability.ari(main, test_text_eng_12)
+    ari_spa_12 = wl_measures_readability.ari(main, test_text_spa_12)
 
     print('Automated Readability Index:')
     print(f'\teng/0: {ari_eng_0}')
@@ -224,6 +226,21 @@ def test_danielson_bryans_readability_formula():
     assert danielson_bryan_eng_12_1 == 1.0364 * (47 / (12 - 1)) + 0.0194 * (47 / 3) - 0.6059
     assert danielson_bryan_eng_12_2 == danielson_bryan_other_12 == 131.059 - 10.364 * (47 / (12 - 1)) - 0.194 * (47 / 3)
 
+def test_drp():
+    drp_eng_0 = wl_measures_readability.drp(main, test_text_eng_0)
+    drp_eng_12 = wl_measures_readability.drp(main, test_text_eng_12)
+    drp_other_12 = wl_measures_readability.drp(main, test_text_other_12)
+
+    print('Degrees of Reading Power:')
+    print(f'\teng/0: {drp_eng_0}')
+    print(f'\teng/12: {drp_eng_12}')
+    print(f'\tother/12: {drp_other_12}')
+
+    assert drp_eng_0 == 'text_too_short'
+    m = wl_measures_readability.bormuths_cloze_mean(main, test_text_eng_12)
+    assert drp_eng_12 == 100 - math.floor(m * 100 + 0.5)
+    assert drp_other_12 == 'no_support'
+
 def test_devereux_readability_index():
     grade_placement_eng_0 = wl_measures_readability.devereux_readability_index(main, test_text_eng_0)
     grade_placement_eng_12 = wl_measures_readability.devereux_readability_index(main, test_text_eng_12)
@@ -237,11 +254,11 @@ def test_devereux_readability_index():
     assert grade_placement_eng_0 == 'text_too_short'
     assert grade_placement_eng_12 == grade_placement_spa_12 == 1.56 * (47 / 12) + 0.19 * (12 / 3) - 6.49
 
-def test_flesch_kincaid_grade_level():
-    gl_eng_0 = wl_measures_readability.flesch_kincaid_grade_level(main, test_text_eng_0)
-    gl_eng_12 = wl_measures_readability.flesch_kincaid_grade_level(main, test_text_eng_12)
-    gl_spa_12 = wl_measures_readability.flesch_kincaid_grade_level(main, test_text_spa_12)
-    gl_other_12 = wl_measures_readability.flesch_kincaid_grade_level(main, test_text_other_12)
+def test_gl():
+    gl_eng_0 = wl_measures_readability.gl(main, test_text_eng_0)
+    gl_eng_12 = wl_measures_readability.gl(main, test_text_eng_12)
+    gl_spa_12 = wl_measures_readability.gl(main, test_text_spa_12)
+    gl_other_12 = wl_measures_readability.gl(main, test_text_other_12)
 
     print('Flesch-Kincaid Grade Level:')
     print(f'\teng/0: {gl_eng_0}')
@@ -254,27 +271,27 @@ def test_flesch_kincaid_grade_level():
     assert gl_spa_12 != 'no_support'
     assert gl_other_12 == 'no_support'
 
-def test_flesch_reading_ease():
-    flesch_re_eng_0 = wl_measures_readability.flesch_reading_ease(main, test_text_eng_0)
-    flesch_re_eng_12 = wl_measures_readability.flesch_reading_ease(main, test_text_eng_12)
+def test_re_flesch():
+    flesch_re_eng_0 = wl_measures_readability.re_flesch(main, test_text_eng_0)
+    flesch_re_eng_12 = wl_measures_readability.re_flesch(main, test_text_eng_12)
 
     settings['re']['variant_nld'] = 'Douma'
-    flesch_re_nld_12_douma = wl_measures_readability.flesch_reading_ease(main, test_text_nld_12)
+    flesch_re_nld_12_douma = wl_measures_readability.re_flesch(main, test_text_nld_12)
     settings['re']['variant_nld'] = "Brouwer's Leesindex A"
-    flesch_re_nld_12_brouwer = wl_measures_readability.flesch_reading_ease(main, test_text_nld_12)
+    flesch_re_nld_12_brouwer = wl_measures_readability.re_flesch(main, test_text_nld_12)
 
-    flesch_re_fra_12 = wl_measures_readability.flesch_reading_ease(main, test_text_fra_12)
-    flesch_re_deu_12 = wl_measures_readability.flesch_reading_ease(main, test_text_deu_12)
-    flesch_re_ita_12 = wl_measures_readability.flesch_reading_ease(main, test_text_ita_12)
-    flesch_re_rus_12 = wl_measures_readability.flesch_reading_ease(main, test_text_rus_12)
+    flesch_re_fra_12 = wl_measures_readability.re_flesch(main, test_text_fra_12)
+    flesch_re_deu_12 = wl_measures_readability.re_flesch(main, test_text_deu_12)
+    flesch_re_ita_12 = wl_measures_readability.re_flesch(main, test_text_ita_12)
+    flesch_re_rus_12 = wl_measures_readability.re_flesch(main, test_text_rus_12)
 
     settings['re']['variant_spa'] = 'Fernández Huerta'
-    flesch_re_spa_12_fh = wl_measures_readability.flesch_reading_ease(main, test_text_spa_12)
+    flesch_re_spa_12_fh = wl_measures_readability.re_flesch(main, test_text_spa_12)
     settings['re']['variant_spa'] = 'Szigriszt Pazos'
-    flesch_re_spa_12_sp = wl_measures_readability.flesch_reading_ease(main, test_text_spa_12)
+    flesch_re_spa_12_sp = wl_measures_readability.re_flesch(main, test_text_spa_12)
 
-    flesch_re_afr_12 = wl_measures_readability.flesch_reading_ease(main, test_text_afr_12)
-    flesch_re_other_12 = wl_measures_readability.flesch_reading_ease(main, test_text_other_12)
+    flesch_re_afr_12 = wl_measures_readability.re_flesch(main, test_text_afr_12)
+    flesch_re_other_12 = wl_measures_readability.re_flesch(main, test_text_other_12)
 
     print('Flesch Reading Ease:')
     print(f'\teng/0: {flesch_re_eng_0}')
@@ -303,11 +320,11 @@ def test_flesch_reading_ease():
     assert flesch_re_afr_12 == 206.835 - 0.846 * (18 / 12 * 100) - 1.015 * (12 / 3)
     assert flesch_re_other_12 == 'no_support'
 
-def test_flesch_reading_ease_simplified():
-    flesch_re_simplified_eng_0 = wl_measures_readability.flesch_reading_ease_simplified(main, test_text_eng_0)
-    flesch_re_simplified_eng_12 = wl_measures_readability.flesch_reading_ease_simplified(main, test_text_eng_12)
-    flesch_re_simplified_spa_12 = wl_measures_readability.flesch_reading_ease_simplified(main, test_text_spa_12)
-    flesch_re_simplified_other_12 = wl_measures_readability.flesch_reading_ease_simplified(main, test_text_other_12)
+def test_re_simplified():
+    flesch_re_simplified_eng_0 = wl_measures_readability.re_simplified(main, test_text_eng_0)
+    flesch_re_simplified_eng_12 = wl_measures_readability.re_simplified(main, test_text_eng_12)
+    flesch_re_simplified_spa_12 = wl_measures_readability.re_simplified(main, test_text_spa_12)
+    flesch_re_simplified_other_12 = wl_measures_readability.re_simplified(main, test_text_other_12)
 
     print('Flesch Reading Ease (Simplified):')
     print(f'\teng/0: {flesch_re_simplified_eng_0}')
@@ -319,11 +336,11 @@ def test_flesch_reading_ease_simplified():
     assert flesch_re_simplified_eng_12 == flesch_re_simplified_spa_12 == 1.599 * (9 / 12 * 100) - 1.015 * (12 / 3) - 31.517
     assert flesch_re_simplified_other_12 == 'no_support'
 
-def test_forcast_grade_level():
-    rgl_eng_12 = wl_measures_readability.forcast_grade_level(main, test_text_eng_12)
-    rgl_eng_150 = wl_measures_readability.forcast_grade_level(main, test_text_eng_150)
-    rgl_spa_150 = wl_measures_readability.forcast_grade_level(main, test_text_spa_150)
-    rgl_other_12 = wl_measures_readability.forcast_grade_level(main, test_text_other_12)
+def test_rgl():
+    rgl_eng_12 = wl_measures_readability.rgl(main, test_text_eng_12)
+    rgl_eng_150 = wl_measures_readability.rgl(main, test_text_eng_150)
+    rgl_spa_150 = wl_measures_readability.rgl(main, test_text_spa_150)
+    rgl_other_12 = wl_measures_readability.rgl(main, test_text_other_12)
 
     print('FORCAST Grade Level:')
     print(f'\teng/12: {rgl_eng_12}')
@@ -335,10 +352,10 @@ def test_forcast_grade_level():
     assert rgl_eng_150 == rgl_spa_150 == 20.43 - 0.11 * (6 * 18 + 4)
     assert rgl_other_12 == 'no_support'
 
-def test_formula_de_comprensibilidad_de_gutierrez_de_polini():
-    cp_spa_0 = wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(main, test_text_spa_0)
-    cp_spa_12 = wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(main, test_text_spa_12)
-    cp_eng_12 = wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(main, test_text_eng_12)
+def test_cp():
+    cp_spa_0 = wl_measures_readability.cp(main, test_text_spa_0)
+    cp_spa_12 = wl_measures_readability.cp(main, test_text_spa_12)
+    cp_eng_12 = wl_measures_readability.cp(main, test_text_eng_12)
 
     print('Fórmula de Comprensibilidad de Gutiérrez de Polini:')
     print(f'\tspa/0: {cp_spa_0}')
@@ -377,11 +394,11 @@ def test_gulpease_index():
     assert gulpease_index_ita_12 == 89 + (300 * 3 - 10 * 45) / 12
     assert gulpease_index_eng_12 == 'no_support'
 
-def test_gunning_fog_index():
-    fog_index_eng_0 = wl_measures_readability.gunning_fog_index(main, test_text_eng_0)
-    fog_index_eng_12_propn = wl_measures_readability.gunning_fog_index(main, test_text_eng_12_propn)
-    fog_index_pol_12 = wl_measures_readability.gunning_fog_index(main, test_text_pol_12)
-    fog_index_spa_12 = wl_measures_readability.gunning_fog_index(main, test_text_spa_12)
+def test_fog_index():
+    fog_index_eng_0 = wl_measures_readability.fog_index(main, test_text_eng_0)
+    fog_index_eng_12_propn = wl_measures_readability.fog_index(main, test_text_eng_12_propn)
+    fog_index_pol_12 = wl_measures_readability.fog_index(main, test_text_pol_12)
+    fog_index_spa_12 = wl_measures_readability.fog_index(main, test_text_spa_12)
 
     print('Gunning Fog Index:')
     print(f'\teng/0: {fog_index_eng_0}')
@@ -394,10 +411,10 @@ def test_gunning_fog_index():
     assert fog_index_pol_12 == 0.4 * (12 / 3 + 1 / 12 * 100)
     assert fog_index_spa_12 == 'no_support'
 
-def test_legibility_mu():
-    mu_spa_0 = wl_measures_readability.legibility_mu(main, test_text_spa_0)
-    mu_spa_12 = wl_measures_readability.legibility_mu(main, test_text_spa_12)
-    mu_eng_12 = wl_measures_readability.legibility_mu(main, test_text_eng_12)
+def test_mu():
+    mu_spa_0 = wl_measures_readability.mu(main, test_text_spa_0)
+    mu_spa_12 = wl_measures_readability.mu(main, test_text_spa_12)
+    mu_eng_12 = wl_measures_readability.mu(main, test_text_eng_12)
 
     print('Legibilidad µ:')
     print(f'\tspa/0: {mu_spa_0}')
@@ -439,10 +456,10 @@ def test_lix():
     assert lix_eng_12 == 12 / 3 + 100 * (3 / 12)
     assert lix_spa_12 != 'no_support'
 
-def test_mcalpine_eflaw():
-    eflaw_eng_0 = wl_measures_readability.mcalpine_eflaw(main, test_text_eng_0)
-    eflaw_eng_12 = wl_measures_readability.mcalpine_eflaw(main, test_text_eng_12)
-    eflaw_spa_12 = wl_measures_readability.mcalpine_eflaw(main, test_text_spa_12)
+def test_eflaw():
+    eflaw_eng_0 = wl_measures_readability.eflaw(main, test_text_eng_0)
+    eflaw_eng_12 = wl_measures_readability.eflaw(main, test_text_eng_12)
+    eflaw_spa_12 = wl_measures_readability.eflaw(main, test_text_spa_12)
 
     print('McAlpine EFLAW Readability Score:')
     print(f'\teng/0: {eflaw_eng_0}')
@@ -511,17 +528,17 @@ def test_spache_grade_level():
     assert grade_level_eng_100 == numpy.mean([0.141 * (100 / 25) + 0.086 * (25 / 100 * 100) + 0.839] * 3)
     assert grade_level_spa_12 == 'no_support'
 
-def test_wiener_sachtextformel():
-    wstf_deu_0 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_0)
+def test_wstf():
+    wstf_deu_0 = wl_measures_readability.wstf(main, test_text_deu_0)
     settings['wstf']['variant'] = '1'
-    wstf_deu_12_1 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12)
+    wstf_deu_12_1 = wl_measures_readability.wstf(main, test_text_deu_12)
     settings['wstf']['variant'] = '2'
-    wstf_deu_12_2 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12)
+    wstf_deu_12_2 = wl_measures_readability.wstf(main, test_text_deu_12)
     settings['wstf']['variant'] = '3'
-    wstf_deu_12_3 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12)
+    wstf_deu_12_3 = wl_measures_readability.wstf(main, test_text_deu_12)
     settings['wstf']['variant'] = '4'
-    wstf_deu_12_4 = wl_measures_readability.wiener_sachtextformel(main, test_text_deu_12)
-    wstf_eng_12 = wl_measures_readability.wiener_sachtextformel(main, test_text_eng_12)
+    wstf_deu_12_4 = wl_measures_readability.wstf(main, test_text_deu_12)
+    wstf_eng_12 = wl_measures_readability.wstf(main, test_text_eng_12)
 
     print('Wiener Sachtextformel:')
     print(f'\tdeu/0: {wstf_deu_0}')
@@ -544,8 +561,8 @@ def test_wiener_sachtextformel():
     assert wstf_eng_12 == 'no_support'
 
 if __name__ == '__main__':
-    test_automated_ara_readability_index()
-    test_automated_readability_index()
+    test_aari()
+    test_ari()
     test_bormuths_cloze_mean()
     test_bormuths_gp()
     test_coleman_liau_index()
@@ -553,21 +570,22 @@ if __name__ == '__main__':
     test_dale_chall_readability_formula()
     test_dale_chall_readability_formula_new()
     test_danielson_bryans_readability_formula()
+    test_drp()
     test_devereux_readability_index()
-    test_flesch_kincaid_grade_level()
-    test_flesch_reading_ease()
-    test_flesch_reading_ease_simplified()
-    test_forcast_grade_level()
-    test_formula_de_comprensibilidad_de_gutierrez_de_polini()
+    test_gl()
+    test_re_flesch()
+    test_re_simplified()
+    test_rgl()
+    test_cp()
     test_formula_de_crawford()
     test_gulpease_index()
-    test_gunning_fog_index()
-    test_legibility_mu()
+    test_fog_index()
+    test_mu()
     test_lensear_write()
     test_lix()
-    test_mcalpine_eflaw()
+    test_eflaw()
     test_osman()
     test_rix()
     test_smog_grade()
     test_spache_grade_level()
-    test_wiener_sachtextformel()
+    test_wstf()
