@@ -206,6 +206,24 @@ def test_dale_chall_readability_formula_new():
     assert x_c50_eng_12 == 64 - 0.95 * (1 / 12 * 100) - 0.69 * (12 / 3)
     assert x_c50_spa_12 == 'no_support'
 
+def test_danielson_bryans_readability_formula():
+    danielson_bryan_eng_0 = wl_measures_readability.danielson_bryans_readability_formula(main, test_text_eng_0)
+    settings['danielson_bryans_readability_formula']['variant'] = '1'
+    danielson_bryan_eng_12_1 = wl_measures_readability.danielson_bryans_readability_formula(main, test_text_eng_12)
+    settings['danielson_bryans_readability_formula']['variant'] = '2'
+    danielson_bryan_eng_12_2 = wl_measures_readability.danielson_bryans_readability_formula(main, test_text_eng_12)
+    danielson_bryan_other_12 = wl_measures_readability.danielson_bryans_readability_formula(main, test_text_other_12)
+
+    print("Danielson-Bryan's Readability Formula:")
+    print(f'\teng/0: {danielson_bryan_eng_0}')
+    print(f'\teng/12-1: {danielson_bryan_eng_12_1}')
+    print(f'\teng/12-2: {danielson_bryan_eng_12_2}')
+    print(f'\tother/12: {danielson_bryan_other_12}')
+
+    assert danielson_bryan_eng_0 == 'text_too_short'
+    assert danielson_bryan_eng_12_1 == 1.0364 * (47 / (12 - 1)) + 0.0194 * (47 / 3) - 0.6059
+    assert danielson_bryan_eng_12_2 == danielson_bryan_other_12 == 131.059 - 10.364 * (47 / (12 - 1)) - 0.194 * (47 / 3)
+
 def test_devereux_readability_index():
     grade_placement_eng_0 = wl_measures_readability.devereux_readability_index(main, test_text_eng_0)
     grade_placement_eng_12 = wl_measures_readability.devereux_readability_index(main, test_text_eng_12)
@@ -534,6 +552,7 @@ if __name__ == '__main__':
     test_colemans_readability_formula()
     test_dale_chall_readability_formula()
     test_dale_chall_readability_formula_new()
+    test_danielson_bryans_readability_formula()
     test_devereux_readability_index()
     test_flesch_kincaid_grade_level()
     test_flesch_reading_ease()

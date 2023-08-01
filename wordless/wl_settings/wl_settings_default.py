@@ -1749,6 +1749,10 @@ def init_settings_default(main):
                     'variant': '2'
                 },
 
+                'danielson_bryans_readability_formula': {
+                    'variant': '1'
+                },
+
                 're': {
                     'variant_nld': 'Douma',
                     'variant_spa': 'Fernández Huerta'
