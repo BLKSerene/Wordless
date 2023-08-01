@@ -366,6 +366,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('wl_profiler', 'Dale-Chall Readability Formula'),
             _tr('wl_profiler', 'Dale-Chall Readability Formula (New)'),
             _tr('wl_profiler', "Danielson-Bryan's Readability Formula"),
+            _tr('wl_profiler', 'Degrees of Reading Power'),
             _tr('wl_profiler', 'Devereaux Readability Index'),
             _tr('wl_profiler', 'Flesch-Kincaid Grade Level'),
             _tr('wl_profiler', 'Flesch Reading Ease'),
@@ -1176,8 +1177,8 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 # Readability
                 if self.profiler_tab in ['readability', 'all']:
                     readability_stats = [
-                        wl_measures_readability.automated_ara_readability_index(self.main, text),
-                        wl_measures_readability.automated_readability_index(self.main, text),
+                        wl_measures_readability.aari(self.main, text),
+                        wl_measures_readability.ari(self.main, text),
                         wl_measures_readability.bormuths_cloze_mean(self.main, text),
                         wl_measures_readability.bormuths_gp(self.main, text),
                         wl_measures_readability.coleman_liau_index(self.main, text),
@@ -1185,24 +1186,25 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.dale_chall_readability_formula(self.main, text),
                         wl_measures_readability.dale_chall_readability_formula_new(self.main, text),
                         wl_measures_readability.danielson_bryans_readability_formula(self.main, text),
+                        wl_measures_readability.drp(self.main, text),
                         wl_measures_readability.devereux_readability_index(self.main, text),
-                        wl_measures_readability.flesch_kincaid_grade_level(self.main, text),
-                        wl_measures_readability.flesch_reading_ease(self.main, text),
-                        wl_measures_readability.flesch_reading_ease_simplified(self.main, text),
-                        wl_measures_readability.forcast_grade_level(self.main, text),
-                        wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(self.main, text),
+                        wl_measures_readability.gl(self.main, text),
+                        wl_measures_readability.re_flesch(self.main, text),
+                        wl_measures_readability.re_simplified(self.main, text),
+                        wl_measures_readability.rgl(self.main, text),
+                        wl_measures_readability.cp(self.main, text),
                         wl_measures_readability.formula_de_crawford(self.main, text),
                         wl_measures_readability.gulpease_index(self.main, text),
-                        wl_measures_readability.gunning_fog_index(self.main, text),
-                        wl_measures_readability.legibility_mu(self.main, text),
+                        wl_measures_readability.fog_index(self.main, text),
+                        wl_measures_readability.mu(self.main, text),
                         wl_measures_readability.lensear_write(self.main, text),
                         wl_measures_readability.lix(self.main, text),
-                        wl_measures_readability.mcalpine_eflaw(self.main, text),
+                        wl_measures_readability.eflaw(self.main, text),
                         wl_measures_readability.osman(self.main, text),
                         wl_measures_readability.rix(self.main, text),
                         wl_measures_readability.smog_grade(self.main, text),
                         wl_measures_readability.spache_grade_level(self.main, text),
-                        wl_measures_readability.wiener_sachtextformel(self.main, text)
+                        wl_measures_readability.wstf(self.main, text)
                     ]
                 else:
                     readability_stats = None
