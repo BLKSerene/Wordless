@@ -95,7 +95,7 @@ def update_gui(err_msg, texts_stats_files):
         count_tokens_lens_syls.append(collections.Counter(len_tokens_syls))
         count_tokens_lens_chars.append(collections.Counter(len_tokens_chars))
 
-        assert len(readability_statistics) == 25
+        assert len(readability_statistics) == 26
 
         # Counts
         assert count_paras

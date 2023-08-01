@@ -178,18 +178,32 @@ def test_colemans_readability_formula():
     assert cloze_pct_eng_12_4 == 1.04 * (9 / 12 * 100) + 1.06 * (3 / 12 * 100) + 0.56 * (0 / 12 * 100) - 0.36 * (0 / 12) - 26.01
     assert cloze_pct_other_12 == 'no_support'
 
-def test_dale_chall_readability_score():
-    x_c50_eng_0 = wl_measures_readability.dale_chall_readability_score(main, test_text_eng_0)
-    x_c50_eng_12 = wl_measures_readability.dale_chall_readability_score(main, test_text_eng_12)
-    x_c50_spa_12 = wl_measures_readability.dale_chall_readability_score(main, test_text_spa_12)
+def test_dale_chall_readability_formula():
+    x_c50_eng_0 = wl_measures_readability.dale_chall_readability_formula(main, test_text_eng_0)
+    x_c50_eng_12 = wl_measures_readability.dale_chall_readability_formula(main, test_text_eng_12)
+    x_c50_spa_12 = wl_measures_readability.dale_chall_readability_formula(main, test_text_spa_12)
 
-    print('Dale-Chall Readibility Score:')
+    print('Dale-Chall Readability Formula:')
     print(f'\teng/0: {x_c50_eng_0}')
     print(f'\teng/12: {x_c50_eng_12}')
     print(f'\tspa/12: {x_c50_spa_12}')
 
     assert x_c50_eng_0 == 'text_too_short'
-    assert x_c50_eng_12 == 0.1579 * (1 / 12) + 0.0496 * (12 / 3) + 3.6365
+    assert x_c50_eng_12 == 0.1579 * (1 / 12 * 100) + 0.0496 * (12 / 3) + 3.6365
+    assert x_c50_spa_12 == 'no_support'
+
+def test_dale_chall_readability_formula_new():
+    x_c50_eng_0 = wl_measures_readability.dale_chall_readability_formula_new(main, test_text_eng_0)
+    x_c50_eng_12 = wl_measures_readability.dale_chall_readability_formula_new(main, test_text_eng_12)
+    x_c50_spa_12 = wl_measures_readability.dale_chall_readability_formula_new(main, test_text_spa_12)
+
+    print('Dale-Chall Readability Formula (New):')
+    print(f'\teng/0: {x_c50_eng_0}')
+    print(f'\teng/12: {x_c50_eng_12}')
+    print(f'\tspa/12: {x_c50_spa_12}')
+
+    assert x_c50_eng_0 == 'text_too_short'
+    assert x_c50_eng_12 == 64 - 0.95 * (1 / 12 * 100) - 0.69 * (12 / 3)
     assert x_c50_spa_12 == 'no_support'
 
 def test_devereux_readability_index():
@@ -308,7 +322,7 @@ def test_formula_de_comprensibilidad_de_gutierrez_de_polini():
     cp_spa_12 = wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(main, test_text_spa_12)
     cp_eng_12 = wl_measures_readability.formula_de_comprensibilidad_de_gutierrez_de_polini(main, test_text_eng_12)
 
-    print('Fórmula de comprensibilidad de Gutiérrez de Polini:')
+    print('Fórmula de Comprensibilidad de Gutiérrez de Polini:')
     print(f'\tspa/0: {cp_spa_0}')
     print(f'\tspa/12: {cp_spa_12}')
     print(f'\teng/12: {cp_eng_12}')
@@ -518,7 +532,8 @@ if __name__ == '__main__':
     test_bormuths_gp()
     test_coleman_liau_index()
     test_colemans_readability_formula()
-    test_dale_chall_readability_score()
+    test_dale_chall_readability_formula()
+    test_dale_chall_readability_formula_new()
     test_devereux_readability_index()
     test_flesch_kincaid_grade_level()
     test_flesch_reading_ease()

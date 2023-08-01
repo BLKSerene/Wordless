@@ -170,12 +170,12 @@ def bormuths_cloze_mean(main, text):
         if text.count_sentences and text.count_words:
             ddl = get_count_words_dale(text.words_flat, 3000)
             m = (
-                0.886593 -
-                0.083640 * (text.count_chars_alphabetic / text.count_words) +
-                0.161911 * ((ddl / text.count_words)**3) -
-                0.021401 * (text.count_words / text.count_sentences) +
-                0.000577 * ((text.count_words / text.count_sentences)**2) -
-                0.000005 * ((text.count_words / text.count_sentences)**3)
+                0.886593
+                - 0.083640 * (text.count_chars_alphabetic / text.count_words)
+                + 0.161911 * ((ddl / text.count_words)**3)
+                - 0.021401 * (text.count_words / text.count_sentences)
+                + 0.000577 * ((text.count_words / text.count_sentences)**2)
+                - 0.000005 * ((text.count_words / text.count_sentences)**3)
             )
         else:
             m = 'text_too_short'
@@ -193,9 +193,9 @@ def bormuths_gp(main, text):
             gp = m
         else:
             gp = (
-                4.275 + 12.881 * m - 34.934 * (m**2) + 20.388 * (m**3) +
-                26.194 * c - 2.046 * (c**2) - 11.767 * (c**3) -
-                44.285 * (m * c) + 97.620 * ((m * c)**2) - 59.538 * ((m * c)**3)
+                4.275 + 12.881 * m - 34.934 * (m**2) + 20.388 * (m**3)
+                + 26.194 * c - 2.046 * (c**2) - 11.767 * (c**3)
+                - 44.285 * (m * c) + 97.620 * ((m * c)**2) - 59.538 * ((m * c)**3)
             )
     else:
         gp = 'no_support'
@@ -238,29 +238,29 @@ def colemans_readability_formula(main, text):
 
             if variant == '1':
                 cloze_pct = (
-                    1.29 * (count_words_1_syl / text.count_words * 100) -
-                    38.45
+                    1.29 * (count_words_1_syl / text.count_words * 100)
+                    - 38.45
                 )
             elif variant == '2':
                 cloze_pct = (
-                    1.16 * (count_words_1_syl / text.count_words * 100) +
-                    1.48 * (text.count_sentences / text.count_words * 100) -
-                    37.95
+                    1.16 * (count_words_1_syl / text.count_words * 100)
+                    + 1.48 * (text.count_sentences / text.count_words * 100)
+                    - 37.95
                 )
             elif variant == '3':
                 cloze_pct = (
-                    1.07 * (count_words_1_syl / text.count_words * 100) +
-                    1.18 * (text.count_sentences / text.count_words * 100) +
-                    0.76 * (count_prons / text.count_words * 100) -
-                    34.02
+                    1.07 * (count_words_1_syl / text.count_words * 100)
+                    + 1.18 * (text.count_sentences / text.count_words * 100)
+                    + 0.76 * (count_prons / text.count_words * 100)
+                    - 34.02
                 )
             elif variant == '4':
                 cloze_pct = (
-                    1.04 * (count_words_1_syl / text.count_words * 100) +
-                    1.06 * (text.count_sentences / text.count_words * 100) +
-                    0.56 * (count_prons / text.count_words * 100) -
-                    0.36 * (count_preps / text.count_words) -
-                    26.01
+                    1.04 * (count_words_1_syl / text.count_words * 100)
+                    + 1.06 * (text.count_sentences / text.count_words * 100)
+                    + 0.56 * (count_prons / text.count_words * 100)
+                    - 0.36 * (count_preps / text.count_words)
+                    - 26.01
                 )
         else:
             cloze_pct = 'text_too_short'
@@ -269,20 +269,40 @@ def colemans_readability_formula(main, text):
 
     return cloze_pct
 
-# Dale-Chall Readability Score
+# Dale-Chall Readability Formula
 # References:
 #     Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. Educational Research Bulletin, 27(1), 11–20, 28.
 #     Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. Educational Research Bulletin, 27(2), 37–54.
-def dale_chall_readability_score(main, text):
+def dale_chall_readability_formula(main, text):
     if text.lang.startswith('eng_'):
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
             count_difficult_words = get_count_words_dale(text.words_flat, 3000)
             x_c50 = (
-                0.1579 * (count_difficult_words / text.count_words)
+                0.1579 * (count_difficult_words / text.count_words * 100)
                 + 0.0496 * (text.count_words / text.count_sentences)
                 + 3.6365
+            )
+        else:
+            x_c50 = 'text_too_short'
+    else:
+        x_c50 = 'no_support'
+
+    return x_c50
+
+# Dale-Chall Readability Formula (New)
+# Reference: Chall, J. S., & Dale, E. (1995). Readability revisited: The new Dale-Chall readability formula. Brookline Books.
+def dale_chall_readability_formula_new(main, text):
+    if text.lang.startswith('eng_'):
+        text = get_counts(main, text)
+
+        if text.count_words and text.count_sentences:
+            count_difficult_words = get_count_words_dale(text.words_flat, 3000)
+            x_c50 = (
+                64
+                - 0.95 * (count_difficult_words / text.count_words * 100)
+                - 0.69 * (text.count_words / text.count_sentences)
             )
         else:
             x_c50 = 'text_too_short'
@@ -457,7 +477,7 @@ def forcast_grade_level(main, text):
 
     return rgl
 
-# Fórmula de comprensibilidad de Gutiérrez de Polini
+# Fórmula de Comprensibilidad de Gutiérrez de Polini
 # References:
 #     Gutiérrez de Polini, L. E. (1972). Investigación sobre lectura en Venezuela [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.
 #     Rodríguez Trujillo, N. (1980). Determinación de la comprensibilidad de materiales de lectura por medio de variables lingüísticas. Lectura y Vida, 1(1). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a1n1/01_01_Rodriguez.pdf
@@ -506,7 +526,10 @@ def gulpease_index(main, text):
         text = get_counts(main, text)
 
         if text.count_words:
-            gulpease_index = 89 + (300 * text.count_sentences - 10 * text.count_chars_alphabetic) / text.count_words
+            gulpease_index = (
+                89
+                + (300 * text.count_sentences - 10 * text.count_chars_alphabetic) / text.count_words
+            )
         else:
             gulpease_index = 'text_too_short'
     else:
@@ -543,7 +566,10 @@ def gunning_fog_index(main, text):
                     if len(syls) >= 4:
                         count_hard_words += 1
 
-            fog_index = 0.4 * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
+            fog_index = (
+                0.4
+                * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
+            )
         else:
             fog_index = 'text_too_short'
     else:
