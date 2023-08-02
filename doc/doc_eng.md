@@ -941,6 +941,9 @@ Degrees of Reading Power:
 Devereux Readability Index:
     \text{Grade Placement} = 1.56 \times \frac{\text{NumCharsAll}}{\text{NumWords}} + 0.19 \times \frac{\text{NumWords}}{\text{NumSentences}} - 6.49
 
+Easy Listening Formula:
+    \text{ELF} = \frac{\text{NumSyls} - \text{NumWords}}{\text{NumSentences}}
+
 Flesch-Kincaid Grade Level:
     \text{GL} = 0.39 \times \frac{\text{NumWords}}{\text{NumSentences}} + 11.8 \times \frac{\text{NumSyls}}{\text{NumWords}} - 15.59
 
@@ -1023,6 +1026,7 @@ Measure of Readability|Formula
 <span id="ref-danielson-bryans-readability-formula"></span>Danielson-Bryan's Readability Formula<br>([Danielson & Bryan, 1963](#ref-danielson-bryan-1963))|![Formula](/doc/measures/readability/danielson_bryans_readability_formula.svg)<br><br>* This measure has 2 variants, which you could select via **Menu → Preferences → Settings → Measures → Readability → Danielson-Bryan's Readability Formula → Variant**.
 <span id="ref-drp"></span>Degrees of Reading Power<br>([College Entrance Examination Board, 1981](#ref-college-entrance-examination-board-1981))|![Formula](/doc/measures/readability/drp.svg)<br>where **M** is *Bormuth's cloze mean*.<br><br>* This measure applies only to **English texts**.
 <span id="ref-devereux-readability-index"></span>Devereux Readability Index<br>([Smith, 1961](#ref-smith-1961))|![Formula](/doc/measures/readability/devereux_readability_index.svg)
+<span id="ref-elf"></span>Easy Listening Formula¹<br>([Fang, 1966](#ref-fang-1966))|![Formula](/doc/measures/readability/elf.svg)
 <span id="ref-gl"></span>Flesch-Kincaid Grade Level¹<br>([Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/gl.svg)
 <span id="ref-re"></span>Flesch Reading Ease¹<br>([Flesch, 1948](#ref-flesch-1948)<br>Dutch: [Douma, 1960](#ref-douma-1960); [Brouwer, 1963](#ref-brouwer-1963)<br>French: [Kandel & Moles, 1958](#ref-kandel-moles-1958)<br>German: [Amstad, 1978](#ref-amstad-1978)<br>Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986)<br>Russian: [Oborneva, 2006](#ref-oborneva-2006)<br>Spanish: [Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/re.svg)<br><br>* This measure has multiple variants for some languages, which you could select via **Menu → Preferences → Settings → Measures → Readability → Flesch Reading Ease**.
 <span id="ref-re-simplified"></span>Flesch Reading Ease (Simplified)¹<br>([Farr et al., 1951](#ref-farr-et-al-1951))|![Formula](/doc/measures/readability/re_simplified.svg)
@@ -1056,68 +1060,60 @@ Then, the dispersion and adjusted frequency of the word are calculated as follow
 <!--
 Average Logarithmic Distance:
     \begin{align*}
-        ALD &= \frac{1}{N} \times \sum_{i = 1}^{F}(d_i \times \log_{10}d_i) \\
-        f_{ALD} &= \exp\left(-\sum_{i = 1}^{F}{\frac{d_i}{N} \times \ln\frac{d_i}{N}}\right)
+        \text{ALD} &= \frac{1}{N} \times \sum_{i = 1}^{F}(d_i \times \log_{10}d_i) \\
+        \text{f}_{\text{ALD}} &= \exp\left(-\sum_{i = 1}^{F}{\frac{d_i}{N} \times \ln\frac{d_i}{N}}\right)
     \end{align*}
 
 Average Reduced Frequency:
-    \begin{align*}
-        ARF = f_{ARF} = \frac{F}{N} \times \sum_{i = 1}^{F}\min\left\{d_i, \frac{N}{F}\right\}
-    \end{align*}
+    \text{ARF} = \text{f}_{\text{ARF}} = \frac{F}{N} \times \sum_{i = 1}^{F}\min\left\{d_i, \frac{N}{F}\right\}
 
 Average Waiting Time:
     \begin{align*}
-        AWT &= \frac{1}{2} \times \left(1 + \frac{1}{N} \times \sum_{i = 1}^{F}{d_i^2}\right) \\
-        f_{AWT} &= \frac{N^2}{\sum_{i = 1}^F{d_i^2}}
+        \text{AWT} &= \frac{1}{2} \times \left(1 + \frac{1}{N} \times \sum_{i = 1}^{F}{d_i^2}\right) \\
+        \text{f}_{\text{AWT}} &= \frac{N^2}{\sum_{i = 1}^F{d_i^2}}
     \end{align*}
 
-Carroll's D₂/Uₘ:
+Carroll's D₂ & Uₘ:
     \begin{align*}
-        H &= \ln F - \frac{\sum_{i = 1}^n \left(F_i \times \ln F_i\right)}{F} \\
-        D_2 &= \frac{H}{\ln n} \\
-        U_m & = F \times D_2 + \left(1 - D_2\right) \times \frac{F}{n}
+        \text{H} &= \ln F - \frac{\sum_{i = 1}^n (F_i \times \ln F_i)}{F} \\
+        \text{D}_2 &= \frac{\text{H}}{\ln n} \\
+        \text{U}_\text{m} & = F \times \text{D}_2 + (1 - \text{D}_2) \times \frac{F}{n}
     \end{align*}
 
 Engwall's FM:
-    \begin{align*}
-        FM = \frac{F \times R}{n}
-    \end{align*}
+    \text{FM} = \frac{F \times \text{R}}{n}
 
 Gries's DP:
-  \begin{align*}
-        DP &= \frac{1}{2} \times \sum_{i = 1}^n \left|\frac{F_{i}}{F} - \frac{1}{n}\right| \\
-        DP_{norm} &= \frac{DP}{1 - \frac{1}{n}}
+    \begin{align*}
+        \text{DP} &= \frac{1}{2} \times \sum_{i = 1}^n \left|\frac{F_{i}}{F} - \frac{1}{n}\right| \\
+        \text{DP}_{\text{norm}} &= \frac{\text{DP}}{1 - \frac{1}{n}}
     \end{align*}
 
-Juilland's D/U:
+Juilland's D & U:
     \begin{align*}
-        \sigma &= \sqrt{\frac{\sum_{i = 1}^n \left(F_i - \overline{F}\right)^2}{n}} \\
-        CV &= \frac{\sigma}{\overline{F}} \\
-        D &= 1- \frac{CV}{\sqrt{n - 1}} \\
-        U &= D \times F
+        \sigma &= \sqrt{\frac{\sum_{i = 1}^n (F_i - \overline{F})^2}{n}} \\
+        \text{CV} &= \frac{\sigma}{\overline{F}} \\
+        \text{D} &= 1- \frac{\text{CV}}{\sqrt{n - 1}} \\
+        \text{U} &= \text{D} \times F
     \end{align*}
 
 Kromer's UR:
-    \begin{align*}
-        U_R = \sum_{i = 1}^n \psi\left(F_i + 1\right) + C
-    \end{align*}
+    \text{U}_\text{R} = \sum_{i = 1}^n \psi(F_i + 1) + \text{C}
 
 Lyne's D₃:
     \begin{align*}
         \chi^2 &= \sum_{i = 1}^n \frac{\left(F_i - \overline{F}\right)^2}{\overline{F}} \\
-        D_3 &= \frac{1 - \chi^2}{4 \times F}
+        \text{D}_3 &= \frac{1 - \chi^2}{4 \times F}
     \end{align*}
 
-Rosengren's S/KF:
+Rosengren's S & KF:
     \begin{align*}
-        KF &= \frac{1}{n} \times \left(\sum_{i = 1}^n \sqrt{F_{i}}\right)^2 \\
-        S &= \frac{KF}{F}
+        \text{KF} &= \frac{1}{n} \times \left(\sum_{i = 1}^n \sqrt{F_{i}}\right)^2 \\
+        \text{S} &= \frac{\text{KF}}{F}
     \end{align*}
 
 Zhang's Distributional Consistency:
-    \begin{align*}
-        DC = \frac{\left(\frac{\sum_{i = 1}^n \sqrt{F_i}}{n}\right)^2}{\frac{\sum_{i = 1}^n}{n}}
-    \end{align*}
+    \text{DC} = \frac{\left(\frac{\sum_{i = 1}^n \sqrt{F_i}}{n}\right)^2}{\frac{\sum_{i = 1}^n}{n}}
 -->
 
 Measure of Dispersion (Parts-based)|Measure of Adjusted Frequency (Parts-based)|Formula
@@ -1140,7 +1136,7 @@ Measure of Dispersion (Distance-based)|Measure of Adjusted Frequency (Distance-b
 <span id="doc-4-4-3"></span>
 #### [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc)
 
-In order to calculate the statistical significance, bayes factor, and effect size (except **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
+In order to calculate the statistical significance, Bayes factor, and effect size (except **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
 As for collocates (in *Collocation Extractor* and *Colligation Extractor*):
 
@@ -1182,167 +1178,106 @@ To conduct **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch
 
 The frequencies of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in each sub-section of the 2 column totals are counted and denoted by **F₁₁**, **F₂₁**, **F₃₁**, ..., **Fₙ₁**, and **F₁₂**, **F₂₂**, **F₃₂**, ..., **Fₙ₂** respectively. The total frequency of *Word 2* (in *Collocation Extractor* and *Colligation Extractor*) or *Word w* (in *Keyword Extractor*) in the 2 column totals are denoted by **Fₓ₁** and **Fₓ₂** respectively. The mean value of the frequencies over all sub-sections in the 2 column totals are denoted by ![f_x1_bar](/doc/measures/f_x1_bar.svg) and ![f_x2_bar](/doc/measures/f_x2_bar.svg) respectively.
 
-Then the test statistic, bayes factor, and effect size are calculated as follows:
+Then the test statistic, Bayes factor, and effect size are calculated as follows:
 
 <!--
-Berry-Rogghe's z-score:
-    \begin{align*}
-        p &= \frac{C_{x1}}{C_{xx} - C_{1x}} \\
-        E &= p \times C_{1x} \times S \\
-        z &= \frac{C_{11} - E}{\sqrt{E \times \left(1 - p\right)}}
-    \end{align*}
-
 Log-likelihood Ratio:
     \begin{align*}
-        G &= 2 \times \sum_{i = 1}^2 \sum_{j = 1}^2 \left(O_{ij} \times \ln \frac{O_{ij}}{E_{ij}}\right)
+        \text{G} &= 2 \times \sum_{i = 1}^2 \sum_{j = 1}^2 \left(O_{ij} \times \ln \frac{O_{ij}}{E_{ij}}\right) \\
+        \text{BF} &= \text{G} - \ln O_{xx}
     \end{align*}
 
 Pearson's Chi-squared Test:
-    \begin{align*}
-        \chi^2 = \sum_{i = 1}^2 \sum_{j = 1}^2 \frac{\left(O_{ij} - E{ij}\right)^2}{E_{ij}}
-    \end{align*}
+    \chi^2 = \sum_{i = 1}^2 \sum_{j = 1}^2 \frac{\left(O_{ij} - E{ij}\right)^2}{E_{ij}}
 
 Student's t-test (1-sample):
-    \begin{align*}
-        t = \frac{O_{11} - E_{11}}{\sqrt{O_{11} \times \left(1 - \frac{O_{11}}{O_{xx}}\right)}}
-    \end{align*}
+    \text{t} = \frac{O_{11} - E_{11}}{\sqrt{O_{11} \times \left(1 - \frac{O_{11}}{O_{xx}}\right)}}
 
 Student's t-test (2-sample):
     \begin{align*}
-        s_1 &= \frac{\sum_{i = 1}^n \left(F_{i1} - \overline{F_{x1}}\right)^2}{n - 1} \\
-        s_2 &= \frac{\sum_{i = 1}^n \left(F_{i2} - \overline{F_{x2}}\right)^2}{n - 1} \\
-        t &= \frac{\overline{F_{x1}} - \overline{F_{x2}}}{\sqrt{\frac{s_1 - s_2}{n}}}
+        \text{s}_1 &= \frac{\sum_{i = 1}^n (F_{i1} - \overline{F_{x1}})^2}{n - 1} \\
+        \text{s}_2 &= \frac{\sum_{i = 1}^n (F_{i2} - \overline{F_{x2}})^2}{n - 1} \\
+        \text{t} &= \frac{\overline{F_{x1}} - \overline{F_{x2}}}{\sqrt{\frac{\text{s}_1 - \text{s}_2}{n}}} \\
+        \text{BF} &= \text{t}^2 - \ln(2 \times n)
     \end{align*}
 
 z-score:
+    \text{z} = \frac{O_{11} - E_{11}}{\sqrt{E_{11} \times \left(1 - \frac{E_{11}}{O_{xx}}\right)}}
+
+z-score (Berry-Rogghe):
     \begin{align*}
-        z = \frac{O_{11} - E_{11}}{\sqrt{E_{11} \times \left(1 - \frac{E_{11}}{O_{xx}}\right)}}
+        \text{p} &= \frac{O_{x1}}{O_{xx} - O_{1x}} \\
+        \text{E} &= \text{p} \times O_{1x} \times \text{S} \\
+        \text{z} &= \frac{O_{11} - \text{E}}{\sqrt{\text{E} \times (1 - \text{p})}}
     \end{align*}
 -->
 
-Test of Statistical Significance|Formula
---------------------------------|-------
-<span id="ref-fishers-exact-test"></span>Fisher's Exact Test<br>([Pedersen, 1996](#ref-pedersen-1996))|See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
-<span id="ref-log-likehood-ratio-test"></span>Log-likelihood Ratio Test<br>([Dunning, 1993](#ref-dunning-1993))|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.svg)
-<span id="ref-mann-whiteney-u-test"></span>Mann-Whitney U Test<br>([Kilgarriff, 2001](#ref-kilgarriff-2001))|See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
-<span id="ref-pearsons-chi-squared-test"></span>Pearson's Chi-squared Test<br>([Hofland & Johanson, 1982](#ref-hofland-johanson-1982); [Oakes, 1998](#ref-oakes-1998))|![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.svg)
-<span id="ref-students-t-test-1-sample"></span>Student's t-test (1-sample)<br>([Church et al., 1991](#ref-church-et-al-1991))|![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.svg)
-<span id="ref-students-t-test-2-sample"></span>Student's t-test (2-sample)<br>([Paquot & Bestgen, 2009](#ref-paquot-bestgen-2009))|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.svg)
-<span id="ref-welchs-t-test"></span>Welch's t-test|* Same as Student's t-test (2-sample), but with different degrees of freedom (hence a different p-value).
-<span id="ref-z-score"></span>z-score<br>([Dennis, 1964](#ref-dennis-1964))|![Formula](/doc/measures/statistical_significance/z_score.svg)
-<span id="ref-z-score-berry-rogghes"></span>z-score (Berry-Rogghe)<br>([Berry-Rogghe, 1973](#ref-berry-rogghe-1973))|![Formula](/doc/measures/statistical_significance/z_score_berry_rogghes.svg)<br>where **S** is the average span size on both sides of the node word.
-
-<!--
-Log-likelihood Ratio:
-    \begin{align*}
-        G &= 2 \times \sum_{i = 1}^2 \sum_{j = 1}^2 \left(O_{ij} \times \ln \frac{O_{ij}}{E_{ij}}\right) \\
-        BF &= G - \ln O_{xx}
-    \end{align*}
-
-Student's t-test (2-sample):
-    \begin{align*}
-        s_1 &= \frac{\sum_{i = 1}^n \left(F_{i1} - \overline{F_{x1}}\right)^2}{n - 1} \\
-        s_2 &= \frac{\sum_{i = 1}^n \left(F_{i2} - \overline{F_{x2}}\right)^2}{n - 1} \\
-        t &= \frac{\overline{F_{x1}} - \overline{F_{x2}}}{\sqrt{\frac{s_1 - s_2}{n}}} \\
-        BF &= t^2 - \ln \left(2 \times n\right)
-    \end{align*}
--->
-
-Measure of Bayes Factor|Formula
------------------------|-------
-<span id="ref-log-likehood-ratio-test-bayes-factor"></span>Log-likelihood Ratio Test<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/bayes_factor/log_likehood_ratio_test.svg)
-<span id="ref-students-t-test-2-sample-bayes-factor"></span>Student's t-test (2-sample)<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/bayes_factor/students_t_test_2_sample.svg)
+Test of Statistical Significance|Measure of Bayes Factor|Formula
+--------------------------------|-----------------------|-------
+<span id="ref-fishers-exact-test"></span>Fisher's Exact Test<br>([Pedersen, 1996](#ref-pedersen-1996))||See: [Fisher's exact test - Wikipedia](https://en.wikipedia.org/wiki/Fisher%27s_exact_test#Example)
+<span id="ref-log-likehood-ratio-test"></span>Log-likelihood Ratio Test<br>([Dunning, 1993](#ref-dunning-1993))|Log-likelihood Ratio Test<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/statistical_significance/log_likehood_ratio_test.svg)
+<span id="ref-mann-whiteney-u-test"></span>Mann-Whitney U Test<br>([Kilgarriff, 2001](#ref-kilgarriff-2001))||See: [Mann–Whitney U test - Wikipedia](https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test#Calculations)
+<span id="ref-pearsons-chi-squared-test"></span>Pearson's Chi-squared Test<br>([Hofland & Johanson, 1982](#ref-hofland-johanson-1982); [Oakes, 1998](#ref-oakes-1998))||![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.svg)
+<span id="ref-students-t-test-1-sample"></span>Student's t-test (1-sample)<br>([Church et al., 1991](#ref-church-et-al-1991))||![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.svg)
+<span id="ref-students-t-test-2-sample"></span>Student's t-test (2-sample)<br>([Paquot & Bestgen, 2009](#ref-paquot-bestgen-2009))|Student's t-test (2-sample)<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.svg)
+<span id="ref-welchs-t-test"></span>Welch's t-test||* Same as Student's t-test (2-sample), but with different degrees of freedom (hence a different p-value).
+<span id="ref-z-score"></span>z-score<br>([Dennis, 1964](#ref-dennis-1964))||![Formula](/doc/measures/statistical_significance/z_score.svg)
+<span id="ref-z-score-berry-rogghes"></span>z-score (Berry-Rogghe)<br>([Berry-Rogghe, 1973](#ref-berry-rogghe-1973))||![Formula](/doc/measures/statistical_significance/z_score_berry_rogghe.svg)<br>where **S** is the average span size on both sides of the node word.
 
 <!--
 %DIFF:
-    \begin{align*}
-        \%DIFF = \frac{\left(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}\right) \times 100}{\frac{O_{12}}{O_{x2}}}
-    \end{align*}
+    \text{%DIFF} = \frac{\left(\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}\right) \times 100}{\frac{O_{12}}{O_{x2}}}
 
 Cubic Association Ratio:
-    \begin{align*}
-        IM^3 = \log_{2} \frac{{O_{11}}^3}{E_{11}}
-    \end{align*}
+    \text{IM}^3 = \log_{2} \frac{{O_{11}}^3}{E_{11}}
 
 Dice's Coefficient:
-    \begin{align*}
-        DSC &= \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
-    \end{align*}
+    \text{DSC} = \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
 
 Difference Coefficient:
-    \begin{align*}
-        Difference \ Coefficient = \frac{\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}}{\frac{O_{11}}{O_{x1}} + \frac{O_{12}}{O_{x2}}}
-    \end{align*}
+    \text{Difference Coefficient} = \frac{\frac{O_{11}}{O_{x1}} - \frac{O_{12}}{O_{x2}}}{\frac{O_{11}}{O_{x1}} + \frac{O_{12}}{O_{x2}}}
 
 Jaccard Index:
-    \begin{align*}
-        J = \frac{O_{11}}{O_{11} + O_{12} + O_{21}}
-    \end{align*}
+    \text{J} = \frac{O_{11}}{O_{11} + O_{12} + O_{21}}
 
 Kilgarriff's Ratio:
-    \begin{align*}
-        Kilgarriff's \ Ratio = \frac{\frac{O_{11}}{O_{11} + O_{21}} \times 1000000 + \alpha}{\frac{O_{12}}{O_{12} + O_{22}} \times 1000000 + \alpha}
-    \end{align*}
+    \text{Kilgarriff's Ratio} = \frac{\frac{O_{11}}{O_{11} + O_{21}} \times 1000000 + \alpha}{\frac{O_{12}}{O_{12} + O_{22}} \times 1000000 + \alpha}
 
 Log Ratio:
-    \begin{align*}
-        Log \ Ratio = \log_{2} \frac{\frac{O_{11}}{O_{x1}}}{\frac{O_{12}}{O_{x2}}}
-    \end{align*}
+    \text{Log Ratio} = \log_{2} \frac{\frac{O_{11}}{O_{x1}}}{\frac{O_{12}}{O_{x2}}}
 
 Log-Frequency Biased MD:
-    \begin{align*}
-        LFMD = \log_{2} \frac{O_{11}}{E_{11}} + \log_{2} O_{11}
-    \end{align*}
+    \text{LFMD} = \log_{2} \frac{O_{11}}{E_{11}} + \log_{2} O_{11}
 
 logDice:
-    \begin{align*}
-        logDice = 14 + \log_{2} \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
-    \end{align*}
+    \text{logDice} = 14 + \log_{2} \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
 
 MI.log-f:
-    \begin{align*}
-        \text{MI.log-f} = \log_{2} \frac{{O_{11}}^2}{E_{11}} \times \ln (O_{11} + 1)
-    \end{align*}
+    \text{MI.log-f} = \log_{2} \frac{{O_{11}}^2}{E_{11}} \times \ln (O_{11} + 1)
 
 Minimum Sensitivity:
-    \begin{align*}
-        S = \min\left\{\frac{O_{11}}{O_{1x}} \text{, } \frac{O_{11}}{O_{x1}}\right\}
-    \end{align*}
+    \text{S} = \min\left\{\frac{O_{11}}{O_{1x}},\;\frac{O_{11}}{O_{x1}}\right\}
 
 Mutual Dependency:
-    \begin{align*}
-        MD = \log_{2} \frac{{O_{11}}^2}{E_{11}}
-    \end{align*}
+    \text{MD} = \log_{2} \frac{{O_{11}}^2}{E_{11}}
 
 Mutual Expectation:
-    \begin{align*}
-        ME = O_{11} \times \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
-    \end{align*}
+    \text{ME} = O_{11} \times \frac{2 \times O_{11}}{O_{1x} + O_{x1}}
 
 Mutual Information:
-    \begin{align*}
-        MI = \sum_{i = 1}^n \sum_{j = 1}^n (\frac{O_{ij}}{O_{xx}} \times \log_{2} \frac{O_{ij}}{E_{ij}})
-    \end{align*}
+    \text{MI} = \sum_{i = 1}^n \sum_{j = 1}^n \left(\frac{O_{ij}}{O_{xx}} \times \log_{2} \frac{O_{ij}}{E_{ij}}\right)
 
 Odds Ratio:
-    \begin{align*}
-        Odd's \ Ratio = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
-    \end{align*}
+    \text{Odd's Ratio} = \frac{O_{11} \times O_{22}}{O_{12} \times O_{21}}
 
 Pointwise Mutual Information:
-    \begin{align*}
-        PMI = \log_{2} \frac{O_{11}}{E_{11}}
-    \end{align*}
+    \text{PMI} = \log_{2} \frac{O_{11}}{E_{11}}
 
 Poisson Collocation Measure:
-    \begin{align*}
-        sig = \frac{O_{11}(\ln O_{11} - \ln E_{11} - 1)}{\ln O_{xx}}
-    \end{align*}
+    \text{sig} = \frac{O_{11} \times (\ln O_{11} - \ln E_{11} - 1)}{\ln O_{xx}}
 
 Squared Phi Coefficient:
-    \begin{align*}
-        \phi^2 = \frac{(O_{11} \times O_{22} - O_{12} \times O_{21})^2}{O_{1x} \times O_{2x} \times O_{x1} \times O_{x2}}
-    \end{align*}
+    \phi^2 = \frac{(O_{11} \times O_{22} - O_{12} \times O_{21})^2}{O_{1x} \times O_{2x} \times O_{x1} \times O_{x2}}
 -->
 
 Measure of Effect Size|Formula
@@ -1428,95 +1363,97 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 [29] [**^**](#ref-osman) El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), *Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)* (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html<br>
 <span id="ref-engwall-1974"></span>
 [30] [**^**](#ref-engwalls-fm) Engwall, G. (1974). *Fréquence et distribution du vocabulaire dans un choix de romans français* [Unpublished doctoral dissertation]. Stockholm University.<br>
+<span id="ref-fang-1966"></span>
+[31] [**^**](#ref-elf) Fang, I. E. (1966). The easy listening formula. *Journal of Broadcasting*, *11*(1), 63–68. https://doi.org/10.1080/08838156609363529<br>
 <span id="ref-farr-et-al-1951"></span>
-[31] [**^**](#ref-re-simplified) Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. *Journal of Applied Psychology*, *35*(5), 333–337. https://doi.org/10.1037/h0062427<br>
+[32] [**^**](#ref-re-simplified) Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. *Journal of Applied Psychology*, *35*(5), 333–337. https://doi.org/10.1037/h0062427<br>
 <span id="ref-fernandez-huerta-1959"></span>
-[32] [**^**](#ref-re) Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. *Consigna*, *214*, 29–32.<br>
+[33] [**^**](#ref-re) Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. *Consigna*, *214*, 29–32.<br>
 <span id="ref-flesch-1948"></span>
-[33] [**^**](#ref-re) Flesch, R. (1948). A new readability yardstick. *Journal of Applied Psychology*, *32*(3), 221–233. https://doi.org/10.1037/h0057532<br>
+[34] [**^**](#ref-re) Flesch, R. (1948). A new readability yardstick. *Journal of Applied Psychology*, *32*(3), 221–233. https://doi.org/10.1037/h0057532<br>
 <span id="ref-flesch-1948"></span>
-[34] [**^**](#ref-re) Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. *Linguaggi*, *3*, 47–49.<br>
+[35] [**^**](#ref-re) Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. *Linguaggi*, *3*, 47–49.<br>
 <span id="ref-gabrielatos-2018"></span>
-[35] [**^**](#ref-diff-coeff) Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), *Corpus approaches to discourse: A critical review* (pp. 225–258). Routledge.<br>
+[36] [**^**](#ref-diff-coeff) Gabrielatos, C. (2018). Keyness analysis: Nature, metrics and techniques. In C. Taylor & A. Marchi (Eds.), *Corpus approaches to discourse: A critical review* (pp. 225–258). Routledge.<br>
 <span id="ref-gabrielatos-marchi-2012"></span>
-[36] [**^**](#ref-pct-diff) Gabrielatos, C., & Marchi, A. (2012, September 13–14). *Keyness: Appropriate metrics and practical issues* [Conference session]. CADS International Conference 2012, University of Bologna, Italy.<br>
+[37] [**^**](#ref-pct-diff) Gabrielatos, C., & Marchi, A. (2012, September 13–14). *Keyness: Appropriate metrics and practical issues* [Conference session]. CADS International Conference 2012, University of Bologna, Italy.<br>
 <span id="ref-gries-2008"></span>
-[37] [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri<br>
+[38] [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri<br>
 <span id="ref-gunning-1968"></span>
-[38] [**^**](#ref-fog-index) Gunning, R. (1968). *The technique of clear writing* (revised ed.). McGraw-Hill Book Company.<br>
+[39] [**^**](#ref-fog-index) Gunning, R. (1968). *The technique of clear writing* (revised ed.). McGraw-Hill Book Company.<br>
 <span id="ref-gutierrez-de-polini-1972"></span>
-[39] [**^**](#ref-cp) Gutiérrez de Polini, L. E. (1972). *Investigación sobre lectura en Venezuela* [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.<br>
+[40] [**^**](#ref-cp) Gutiérrez de Polini, L. E. (1972). *Investigación sobre lectura en Venezuela* [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.<br>
 <span id="ref-hardie-2014"></span>
-[40] [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
+[41] [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
 <span id="ref-hofland-johanson-1982"></span>
-[41] [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
+[42] [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
 <span id="ref-juilland-chang-rodrigues-1964"></span>
-[42] [**^**](#ref-juillands-d)[**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.<br>
+[43] [**^**](#ref-juillands-d)[**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.<br>
 <span id="ref-kandel-moles-1958"></span>
-[43] [**^**](#ref-re) Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. *The Journal of Educational Research*, *21*, 283–287.<br>
+[44] [**^**](#ref-re) Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. *The Journal of Educational Research*, *21*, 283–287.<br>
 <span id="ref-kilgarriff-2001"></span>
-[44] [**^**](#ref-mann-whiteney-u-test) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil<br>
+[45] [**^**](#ref-mann-whiteney-u-test) Kilgarriff, A. (2001). Comparing corpora. *International Journal of Corpus Linguistics*, *6*(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil<br>
 <span id="ref-kilgarriff-2009"></span>
-[45] [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009* (p. 171). University of Liverpool.<br>
+[46] [**^**](#ref-kilgarriffs-ratio) Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), *Proceedings of the Corpus Linguistics Conference 2009* (p. 171). University of Liverpool.<br>
 <span id="ref-kilgarriff-tugwell-2002"></span>
-[46] [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.<br>
+[47] [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.<br>
 <span id="ref-kincaid-et-al-1975"></span>
-[47] [**^**](#ref-gl) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel*. Naval Air Station Memphis.<br>
+[48] [**^**](#ref-gl) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel*. Naval Air Station Memphis.<br>
 <span id="ref-kromer-2003"></span>
-[48] [**^**](#ref-kromers-ur) Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quantitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
+[49] [**^**](#ref-kromers-ur) Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quantitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
 <span id="ref-lexical-computing-ltd-2015"></span>
-[49] [**^**](#ref-mi-log-f) Lexical Computing. (2015, July 8). *Statistics used in Sketch Engine*. Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/<br>
+[50] [**^**](#ref-mi-log-f) Lexical Computing. (2015, July 8). *Statistics used in Sketch Engine*. Sketch Engine. https://www.sketchengine.eu/documentation/statistics-used-in-sketch-engine/<br>
 <span id="ref-coleman-et-al-1976"></span>
-[50] [**^**](#ref-colemans-readability-formula) Liau, T. L., Bassin, C. B., Martin, C. J., & Coleman, E. B. (1976). Modification of the Coleman readability formulas. *Journal of Reading Behavior*, *8*(4), 381–386. https://journals.sagepub.com/doi/pdf/10.1080/10862967609547193<br>
+[51] [**^**](#ref-colemans-readability-formula) Liau, T. L., Bassin, C. B., Martin, C. J., & Coleman, E. B. (1976). Modification of the Coleman readability formulas. *Journal of Reading Behavior*, *8*(4), 381–386. https://journals.sagepub.com/doi/pdf/10.1080/10862967609547193<br>
 <span id="ref-lijffijt-gries-2012"></span>
-[51] [**^**](#ref-griess-dp-norm) Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. *International Journal of Corpus Linguistics*, *17*(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij<br>
+[52] [**^**](#ref-griess-dp-norm) Lijffijt, J., & Gries, S. T. (2012). Correction to Stefan Th. Gries’ “dispersions and adjusted frequencies in corpora”. *International Journal of Corpus Linguistics*, *17*(1), 147–149. https://doi.org/10.1075/ijcl.17.1.08lij<br>
 <span id="ref-lucisano-emanuela-piemontese-1988"></span>
-[52] [**^**](#ref-gulpease-index) Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. *Scuola e Città*, *39*(3), pp. 110–124.<br>
+[53] [**^**](#ref-gulpease-index) Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. *Scuola e Città*, *39*(3), pp. 110–124.<br>
 <span id="ref-lyne-1985"></span>
-[53] [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.<br>
+[54] [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.<br>
 <span id="ref-mclaughlin-1969"></span>
-[54] [**^**](#ref-smog-grade) McLaughlin, G. H. (1969). SMOG grading: A new readability formula. *Journal of Reading*, *12*(8), pp. 639–646.<br>
+[55] [**^**](#ref-smog-grade) McLaughlin, G. H. (1969). SMOG grading: A new readability formula. *Journal of Reading*, *12*(8), pp. 639–646.<br>
 <span id="ref-munoz-baquedano-2006"></span>
-[55] [**^**](#ref-mu) Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. *Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile*, *21*(2), 13–26.<br>
+[56] [**^**](#ref-mu) Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. *Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile*, *21*(2), 13–26.<br>
 <span id="ref-nirmaldasan-2009"></span>
-[56] [**^**](#ref-eflaw) Nirmaldasan. (2009, April 30). *McAlpine EFLAW readability score*. Readability Monitor. Retrieved November 15, 2022, from https://strainindex.wordpress.com/2009/04/30/mcalpine-eflaw-readability-score/<br>
+[57] [**^**](#ref-eflaw) Nirmaldasan. (2009, April 30). *McAlpine EFLAW readability score*. Readability Monitor. Retrieved November 15, 2022, from https://strainindex.wordpress.com/2009/04/30/mcalpine-eflaw-readability-score/<br>
 <span id="ref-oakes-1998"></span>
-[57] [**^**](#ref-pearsons-chi-squared-test) Oakes, M. P. (1998). *Statistics for Corpus Linguistics*. Edinburgh University Press.<br>
+[58] [**^**](#ref-pearsons-chi-squared-test) Oakes, M. P. (1998). *Statistics for Corpus Linguistics*. Edinburgh University Press.<br>
 <span id="ref-oborneva-2006"></span>
-[58] [**^**](#ref-re) Oborneva, I. V. (2006). *Автоматизированная оценка сложности учебных текстов на основе статистических параметров* [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education]. Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3<br>
+[59] [**^**](#ref-re) Oborneva, I. V. (2006). *Автоматизированная оценка сложности учебных текстов на основе статистических параметров* [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education]. Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3<br>
 <span id="ref-o-hayre-1966"></span>
-[59] [**^**](#ref-lensear-write) O’Hayre, J. (1966). *Gobbledygook has gotta go*. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf<br>
+[60] [**^**](#ref-lensear-write) O’Hayre, J. (1966). *Gobbledygook has gotta go*. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf<br>
 <span id="ref-paquot-bestgen-2009"></span>
-[60] [**^**](#ref-students-t-test-2-sample) Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. *Language and Computers*, *68*, 247–269.<br>
+[61] [**^**](#ref-students-t-test-2-sample) Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. *Language and Computers*, *68*, 247–269.<br>
 <span id="ref-pedersen-1996"></span>
-[61] [**^**](#ref-fishers-exact-test) Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188–200). The South–Central Regional SAS Users' Group.<br>
+[62] [**^**](#ref-fishers-exact-test) Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188–200). The South–Central Regional SAS Users' Group.<br>
 <span id="ref-pedersen-1998"></span>
-[62] [**^**](#ref-min-sensitivity) Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.<br>
+[63] [**^**](#ref-min-sensitivity) Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.<br>
 <span id="ref-pisarek-1969"></span>
-[63] [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. *Zeszyty Prasoznawcze*, *4*(42), 35–48.<br>
+[64] [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. *Zeszyty Prasoznawcze*, *4*(42), 35–48.<br>
 <span id="ref-pojanapunya-todd-2016"></span>
-[64] [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
+[65] [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
 <span id="ref-quasthoff-wolff-2002"></span>
-[65] [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
+[66] [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
 <span id="ref-rosengren-1971"></span>
-[66] [**^**](#ref-rosengrens-s)[**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
+[67] [**^**](#ref-rosengrens-s)[**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
 <span id="ref-rychly-2008"></span>
-[67] [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
+[68] [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
 <span id="ref-savicky-hlavacova-2002"></span>
-[68] [**^**](#ref-ald) [**^**](#ref-fald) [**^**](#ref-arf) [**^**](#ref-farf) [**^**](#ref-awt) [**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124<br>
+[69] [**^**](#ref-ald) [**^**](#ref-fald) [**^**](#ref-arf) [**^**](#ref-farf) [**^**](#ref-awt) [**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124<br>
 <span id="ref-smadja-et-al-1996"></span>
-[69] [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
+[70] [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
 <span id="ref-smith-1961"></span>
-[70] [**^**](#ref-devereux-readability-index) Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728<br>
+[71] [**^**](#ref-devereux-readability-index) Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728<br>
 <span id="ref-smith-senter-1967"></span>
-[71] [**^**](#ref-ari) Smith, E. A., & Senter, R. J. (1967). *Automated readability index*. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
+[72] [**^**](#ref-ari) Smith, E. A., & Senter, R. J. (1967). *Automated readability index*. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
 <span id="ref-spache-1953"></span>
-[72] [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
+[73] [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
 <span id="ref-szigrisze-pazos-1993"></span>
-[73] [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
+[74] [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
 <span id="ref-thanopoulos-et-al-2002"></span>
-[74] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
+[75] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="ref-wilson-2013"></span>
-[75] [**^**](#ref-log-likehood-ratio-test-bayes-factor)[**^**](#ref-students-t-test-2-sample-bayes-factor) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
+[76] [**^**](#ref-log-likehood-ratio-test)[**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
 <span id="ref-zhang-2004"></span>
-[76] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
+[77] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>

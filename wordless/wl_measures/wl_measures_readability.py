@@ -291,7 +291,9 @@ def dale_chall_readability_formula(main, text):
     return x_c50
 
 # Dale-Chall Readability Formula (New)
-# Reference: Chall, J. S., & Dale, E. (1995). Readability revisited: The new Dale-Chall readability formula. Brookline Books.
+# References:
+#     Chall, J. S., & Dale, E. (1995). Readability revisited: The new Dale-Chall readability formula. Brookline Books.
+#     清川英男. (1996). CHALL, J. S. and DALE, E.(1995) Readability Revisited: The New Dale-Chall Readability Formula. Brookline Books. 教育メディア研究, 3(1), 59. https://www.jstage.jst.go.jp/article/jaems/3/1/3_KJ00009004543/_pdf
 def dale_chall_readability_formula_new(main, text):
     if text.lang.startswith('eng_'):
         text = get_counts(main, text)
@@ -364,6 +366,21 @@ def devereux_readability_index(main, text):
         grade_placement = 'text_too_short'
 
     return grade_placement
+
+# Easy Listening Formula
+# Reference: Fang, I. E. (1966). The easy listening formula. Journal of Broadcasting, 11(1), 63–68. https://doi.org/10.1080/08838156609363529
+def elf(main, text):
+    if text.lang in main.settings_global['syl_tokenizers']:
+        text = get_counts(main, text)
+
+        if text.count_sentences:
+            elf = (text.count_syls - text.count_words) / text.count_sentences
+        else:
+            elf = 'text_too_short'
+    else:
+        elf = 'no_support'
+
+    return elf
 
 # Flesch-Kincaid Grade Level
 # Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
