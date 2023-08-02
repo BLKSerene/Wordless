@@ -386,6 +386,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('wl_profiler', 'Rix'),
             _tr('wl_profiler', 'SMOG Grade'),
             _tr('wl_profiler', 'Spache Grade Level'),
+            _tr('wl_profiler', 'Strain Index'),
             _tr('wl_profiler', 'Wiener Sachtextformel')
         ]
 
@@ -1208,6 +1209,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.rix(self.main, text),
                         wl_measures_readability.smog_grade(self.main, text),
                         wl_measures_readability.spache_grade_lvl(self.main, text),
+                        wl_measures_readability.strain_index(self.main, text),
                         wl_measures_readability.wstf(self.main, text)
                     ]
                 else:

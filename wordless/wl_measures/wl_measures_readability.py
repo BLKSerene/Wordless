@@ -868,7 +868,7 @@ def smog_grade(main, text):
         if text.count_sentences >= 30:
             # Calculate the index for the 10 sentences at the middle of the text
             sample_start_mid = text.count_sentences // 2 - 5
-            samples = (
+            sample = (
                 text.sentences[:10]
                 + text.sentences[sample_start_mid : sample_start_mid + 10]
                 + text.sentences[-10:]
@@ -877,7 +877,7 @@ def smog_grade(main, text):
             # Calculate the number of words with 3 or more syllables
             count_words_3_plus_syls = 0
 
-            for sentence in samples:
+            for sentence in sample:
                 syls_words = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
 
                 count_words_3_plus_syls += get_count_words_syls(syls_words, len_min = 3)
@@ -949,6 +949,30 @@ def spache_grade_lvl(main, text):
         grade_lvl = 'no_support'
 
     return grade_lvl
+
+# Strain Index
+# References:
+#     Solomon, N. W. (2006). Qualitative analysis of media language [Unpublished doctoral dissertation]. Madurai Kamaraj University.
+#     Nirmaldasan. (2007, September 25). Strain index: A new readability formula. Readability Monitor. Retrieved August 3, 2023, from https://strainindex.wordpress.com/2007/09/25/hello-world/
+def strain_index(main, text):
+    if text.lang in main.settings_global['syl_tokenizers']:
+        text = get_counts(main, text)
+
+        if text.count_sentences >= 3:
+            count_syls = 0
+
+            for sentence in text.sentences[:3]:
+                syls_words = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
+
+                count_syls += sum((len(syls) for syls in syls_words))
+
+            strain_index = count_syls / 10
+        else:
+            strain_index = 'text_too_short'
+    else:
+        strain_index = 'no_support'
+
+    return strain_index
 
 # Wiener Sachtextformel
 # References:

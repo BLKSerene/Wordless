@@ -577,6 +577,23 @@ def test_spache_grade_lvl():
     assert grade_lvl_eng_100 == numpy.mean([0.141 * (100 / 25) + 0.086 * 25 + 0.839] * 3)
     assert grade_lvl_spa_12 == 'no_support'
 
+def test_strain_index():
+    strain_index_eng_0 = wl_measures_readability.strain_index(main, test_text_eng_0)
+    strain_index_eng_12 = wl_measures_readability.strain_index(main, test_text_eng_12)
+    strain_index_spa_12 = wl_measures_readability.strain_index(main, test_text_spa_12)
+    strain_index_other_12 = wl_measures_readability.strain_index(main, test_text_other_12)
+
+    print('Strain Index:')
+    print(f'\teng/0: {strain_index_eng_0}')
+    print(f'\teng/12: {strain_index_eng_12}')
+    print(f'\tspa/12: {strain_index_spa_12}')
+    print(f'\tother/12: {strain_index_other_12}')
+
+    assert strain_index_eng_0 == 'text_too_short'
+    assert strain_index_eng_12 == 15 / 10
+    assert strain_index_spa_12 != 'no_support'
+    assert strain_index_other_12 == 'no_support'
+
 def test_wstf():
     wstf_deu_0 = wl_measures_readability.wstf(main, test_text_deu_0)
     settings['wstf']['variant'] = '1'
@@ -639,4 +656,5 @@ if __name__ == '__main__':
     test_rix()
     test_smog_grade()
     test_spache_grade_lvl()
+    test_strain_index()
     test_wstf()
