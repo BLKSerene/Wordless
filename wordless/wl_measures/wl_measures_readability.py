@@ -148,16 +148,26 @@ def aari(main, text):
     return aari
 
 # Automated Readability Index
-# Reference: Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
+# Reference:
+#     Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
+# Navy variant:
+#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def ari(main, text):
     text = get_counts(main, text)
 
     if text.count_sentences and text.count_words:
-        ari = (
-            0.5 * (text.count_words / text.count_sentences)
-            + 4.71 * (text.count_chars_all / text.count_words)
-            - 21.43
-        )
+        if main.settings_custom['measures']['readability']['ari']['use_navy_variant']:
+            ari = (
+                0.37 * (text.count_words / text.count_sentences)
+                + 5.84 * (text.count_chars_all / text.count_words)
+                - 26.01
+            )
+        else:
+            ari = (
+                0.5 * (text.count_words / text.count_sentences)
+                + 4.71 * (text.count_chars_all / text.count_words)
+                - 21.43
+            )
     else:
         ari = 'text_too_short'
 
@@ -383,7 +393,7 @@ def elf(main, text):
     return elf
 
 # Flesch-Kincaid Grade Level
-# Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel. Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+# Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def gl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
@@ -595,36 +605,44 @@ def gulpease_index(main, text):
 # Gunning Fog Index
 # Reference:
 #     Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
+# Navy variant:
+#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 # Polish variant:
 #     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. Zeszyty Prasoznawcze, 4(42), 35–48.
 def fog_index(main, text):
-    if text.lang.startswith('eng_') or text.lang == 'pol' and text.lang in main.settings_global['syl_tokenizers']:
+    if text.lang.startswith('eng_') or text.lang == 'pol':
         text = get_counts(main, text)
 
         if text.count_sentences and text.count_words:
             count_hard_words = 0
 
             if text.lang.startswith('eng_'):
-                words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
+                if main.settings_custom['measures']['readability']['fog_index']['use_navy_variant_for_eng']:
+                    count_words_3_plus_syls = get_count_words_syls(text.syls_words, len_min = 3)
+                else:
+                    words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
 
-                for syls, (word, tag) in zip(text.syls_words, words_tagged):
-                    if (
-                        tag != 'PROPN'
-                        and (
-                            (len(syls) == 3 and not word.endswith('ed') and not word.endswith('es'))
-                            or len(syls) > 3
-                        )
-                    ):
-                        count_hard_words += 1
+                    for syls, (word, tag) in zip(text.syls_words, words_tagged):
+                        if (
+                            tag != 'PROPN'
+                            and (
+                                (len(syls) == 3 and not word.endswith('ed') and not word.endswith('es'))
+                                or len(syls) > 3
+                            )
+                        ):
+                            count_hard_words += 1
             elif text.lang == 'pol':
                 for syls in text.syls_words:
                     if len(syls) >= 4:
                         count_hard_words += 1
 
-            fog_index = (
-                0.4
-                * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
-            )
+            if text.lang.startswith('eng_') and main.settings_custom['measures']['readability']['fog_index']['use_navy_variant_for_eng']:
+                fog_index = ((text.count_words + 2 * count_words_3_plus_syls) / text.count_sentences - 3) / 2
+            else:
+                fog_index = (
+                    0.4
+                    * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
+                )
         else:
             fog_index = 'text_too_short'
     else:
