@@ -254,6 +254,23 @@ def test_devereux_readability_index():
     assert grade_placement_eng_0 == 'text_too_short'
     assert grade_placement_eng_12 == grade_placement_spa_12 == 1.56 * (47 / 12) + 0.19 * (12 / 3) - 6.49
 
+def test_elf():
+    elf_eng_0 = wl_measures_readability.elf(main, test_text_eng_0)
+    elf_eng_12 = wl_measures_readability.elf(main, test_text_eng_12)
+    elf_spa_12 = wl_measures_readability.elf(main, test_text_spa_12)
+    elf_other_12 = wl_measures_readability.elf(main, test_text_other_12)
+
+    print('Easy Listening Formula:')
+    print(f'\teng/0: {elf_eng_0}')
+    print(f'\teng/12: {elf_eng_12}')
+    print(f'\tspa/12: {elf_spa_12}')
+    print(f'\tother/12: {elf_other_12}')
+
+    assert elf_eng_0 == 'text_too_short'
+    assert elf_eng_12 == (15 - 12) / 3
+    assert elf_spa_12 != 'no_support'
+    assert elf_other_12 == 'no_support'
+
 def test_gl():
     gl_eng_0 = wl_measures_readability.gl(main, test_text_eng_0)
     gl_eng_12 = wl_measures_readability.gl(main, test_text_eng_12)
@@ -572,6 +589,7 @@ if __name__ == '__main__':
     test_danielson_bryans_readability_formula()
     test_drp()
     test_devereux_readability_index()
+    test_elf()
     test_gl()
     test_re_flesch()
     test_re_simplified()
