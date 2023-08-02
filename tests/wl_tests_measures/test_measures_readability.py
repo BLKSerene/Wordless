@@ -85,16 +85,21 @@ def test_aari():
 
 def test_ari():
     ari_eng_0 = wl_measures_readability.ari(main, test_text_eng_0)
+    settings['ari']['use_navy_variant'] = False
     ari_eng_12 = wl_measures_readability.ari(main, test_text_eng_12)
+    settings['ari']['use_navy_variant'] = True
+    ari_eng_12_navy = wl_measures_readability.ari(main, test_text_eng_12)
     ari_spa_12 = wl_measures_readability.ari(main, test_text_spa_12)
 
     print('Automated Readability Index:')
     print(f'\teng/0: {ari_eng_0}')
     print(f'\teng/12: {ari_eng_12}')
+    print(f'\teng/12-navy: {ari_eng_12_navy}')
     print(f'\tspa/12: {ari_spa_12}')
 
     assert ari_eng_0 == 'text_too_short'
-    assert ari_eng_12 == ari_spa_12 == 0.5 * (12 / 3) + 4.71 * (47 / 12) - 21.43
+    assert ari_eng_12 == 0.5 * (12 / 3) + 4.71 * (47 / 12) - 21.43
+    assert ari_eng_12_navy == ari_spa_12 == 0.37 * (12 / 3) + 5.84 * (47 / 12) - 26.01
 
 def test_bormuths_cloze_mean():
     m_eng_0 = wl_measures_readability.bormuths_cloze_mean(main, test_text_eng_0)
@@ -413,18 +418,23 @@ def test_gulpease_index():
 
 def test_fog_index():
     fog_index_eng_0 = wl_measures_readability.fog_index(main, test_text_eng_0)
+    settings['fog_index']['use_navy_variant_for_eng'] = False
     fog_index_eng_12_propn = wl_measures_readability.fog_index(main, test_text_eng_12_propn)
+    settings['fog_index']['use_navy_variant_for_eng'] = True
+    fog_index_eng_12_navy = wl_measures_readability.fog_index(main, test_text_eng_12)
     fog_index_pol_12 = wl_measures_readability.fog_index(main, test_text_pol_12)
     fog_index_spa_12 = wl_measures_readability.fog_index(main, test_text_spa_12)
 
     print('Gunning Fog Index:')
     print(f'\teng/0: {fog_index_eng_0}')
     print(f'\teng/12: {fog_index_eng_12_propn}')
+    print(f'\teng/12-navy: {fog_index_eng_12_navy}')
     print(f'\tpol/12: {fog_index_pol_12}')
     print(f'\tspa/12: {fog_index_spa_12}')
 
     assert fog_index_eng_0 == 'text_too_short'
     assert fog_index_eng_12_propn == 0.4 * (12 / 3 + 1 / 12 * 100)
+    assert fog_index_eng_12_navy == ((12 + 2 * 0) / 3 - 3) / 2
     assert fog_index_pol_12 == 0.4 * (12 / 3 + 1 / 12 * 100)
     assert fog_index_spa_12 == 'no_support'
 

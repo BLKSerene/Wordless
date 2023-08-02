@@ -1741,6 +1741,10 @@ def init_settings_default(main):
         'measures': {
             # Settings - Measures - Readability
             'readability': {
+                'ari': {
+                    'use_navy_variant': False
+                },
+
                 'bormuths_gp': {
                     'cloze_criterion_score': 35
                 },
@@ -1751,6 +1755,10 @@ def init_settings_default(main):
 
                 'danielson_bryans_readability_formula': {
                     'variant': '1'
+                },
+
+                'fog_index': {
+                    'use_navy_variant_for_eng': False
                 },
 
                 're': {

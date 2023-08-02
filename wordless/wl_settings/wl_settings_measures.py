@@ -31,6 +31,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['measures']['readability']
         self.settings_custom = self.main.settings_custom['measures']['readability']
 
+        # Automated Readability Index
+        self.group_box_ari = QGroupBox(self.tr('Automated Readability Index'), self)
+
+        self.checkbox_use_navy_variant = QCheckBox(self.tr('Use Navy variant'), self)
+
+        self.group_box_ari.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_ari.layout().addWidget(self.checkbox_use_navy_variant, 0, 0)
+
         # Bormuth's Grade Placement
         self.group_box_bormuths_gp = QGroupBox(self.tr("Bormuth's Grade Placement"), self)
 
@@ -97,6 +105,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_re.layout().setColumnStretch(2, 1)
 
+        # Gunning Fog Index
+        self.group_box_fog_index = QGroupBox(self.tr('Gunning Fog Index'), self)
+
+        self.checkbox_use_navy_variant_for_eng = QCheckBox(self.tr('Use Navy variant for English'), self)
+
+        self.group_box_fog_index.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_fog_index.layout().addWidget(self.checkbox_use_navy_variant_for_eng, 0, 0)
+
         # Wiener Sachtextformel
         self.group_box_wstf = QGroupBox(self.tr('Wiener Sachtextformel'), self)
 
@@ -112,20 +128,25 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_wstf.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_bormuths_gp, 0, 0)
-        self.layout().addWidget(self.group_box_colemans_readability_formula, 1, 0)
-        self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 2, 0)
-        self.layout().addWidget(self.group_box_re, 3, 0)
-        self.layout().addWidget(self.group_box_wstf, 4, 0)
+        self.layout().addWidget(self.group_box_ari, 0, 0)
+        self.layout().addWidget(self.group_box_bormuths_gp, 1, 0)
+        self.layout().addWidget(self.group_box_colemans_readability_formula, 2, 0)
+        self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 3, 0)
+        self.layout().addWidget(self.group_box_fog_index, 4, 0)
+        self.layout().addWidget(self.group_box_re, 5, 0)
+        self.layout().addWidget(self.group_box_wstf, 6, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(5, 1)
+        self.layout().setRowStretch(7, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.settings_default)
         else:
             settings = copy.deepcopy(self.settings_custom)
+
+        # Automated Readability Index
+        self.checkbox_use_navy_variant.setChecked(settings['ari']['use_navy_variant'])
 
         # Bormuth's Grade Placement
         self.spin_box_cloze_criterion_score.setValue(settings['bormuths_gp']['cloze_criterion_score'])
@@ -140,10 +161,16 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.combo_box_re_variant_nld.setCurrentText(settings['re']['variant_nld'])
         self.combo_box_re_variant_spa.setCurrentText(settings['re']['variant_spa'])
 
+        # Gunning Fog Index
+        self.checkbox_use_navy_variant_for_eng.setChecked(settings['fog_index']['use_navy_variant_for_eng'])
+
         # Wiener Sachtextformel
         self.combo_box_wstf_variant.setCurrentText(settings['wstf']['variant'])
 
     def apply_settings(self):
+        # Automated Readability Index
+        self.settings_custom['ari']['use_navy_variant'] = self.checkbox_use_navy_variant.isChecked()
+
         # Bormuth's Grade Placement
         self.settings_custom['bormuths_gp']['cloze_criterion_score'] = self.spin_box_cloze_criterion_score.value()
 
@@ -156,6 +183,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Flesch Reading Ease
         self.settings_custom['re']['variant_nld'] = self.combo_box_re_variant_nld.currentText()
         self.settings_custom['re']['variant_spa'] = self.combo_box_re_variant_spa.currentText()
+
+        # Gunning Fog Index
+        self.settings_custom['fog_index']['use_navy_variant_for_eng'] = self.checkbox_use_navy_variant_for_eng.isChecked()
 
         # Wiener Sachtextformel
         self.settings_custom['wstf']['variant'] = self.combo_box_wstf_variant.currentText()

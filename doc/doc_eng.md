@@ -899,7 +899,10 @@ Automated Arabic Readability Index:
     {\text{AARI} = 3.28 \times \text{NumCharsAlnum} + 1.43 \times \frac{\text{NumCharsAlnum}}{\text{NumWords}} + 1.24 \times \frac{\text{NumWords}}{\text{NumSentences}}}
 
 Automated Readability Index:
-    \text{ARI} = 0.5 \times \frac{\text{NumWords}}{\text{NumSentences}} + 4.71 \times \frac{\text{NumCharsAll}}{\text{NumWords}} - 21.43
+    \begin{align*}
+        \text{ARI} &= 0.5 \times \frac{\text{NumWords}}{\text{NumSentences}} + 4.71 \times \frac{\text{NumCharsAll}}{\text{NumWords}} - 21.43 \\
+        \text{ARI}_{\text{Navy}} &= 0.37 \times \frac{\text{NumWords}}{\text{NumSentences}} + 5.84 \times \frac{\text{NumCharsAll}}{\text{NumWords}} - 26.01
+    \end{align*} 
 
 Bormuth's Cloze Mean & Grade Placement:
     \begin{align*}
@@ -977,7 +980,10 @@ Gulpease Index:
     \text{Gulpease Index} = 89 + \frac{300 \times \text{NumSentences} - 10 \times \text{NumCharsAlpha}}{\text{NumWords}}
 
 Gunning Fog Index:
-    \text{Fog Index} = 0.4 \times \left(\frac{\text{NumWords}}{\text{NumSentences}} + \frac{\text{NumHardWords}}{\text{NumWords}} \times 100\right)
+    \begin{align*}
+        \text{Fog Index} &= 0.4 \times \left(\frac{\text{NumWords}}{\text{NumSentences}} + \frac{\text{NumHardWords}}{\text{NumWords}} \times 100\right) \\
+        \text{Fog Index}_{\text{Navy}} &= \frac{\frac{\text{NumWords} + 2 \times \text{NumWords3+Syls}}{\text{NumSentences}} - 3}{2}
+    \end{align*}
 
 Legibilidad µ:
     \mu = \frac{\text{NumWords}}{\text{NumWords} - 1} \times \frac{\text{LenWordsAvg}}{\text{LenWordsVar}} \times 100
@@ -1017,24 +1023,24 @@ Wiener Sachtextformel:
 Measure of Readability|Formula
 ----------------------|-------
 <span id="ref-aari"></span>Automated Arabic Readability Index<br>([Al-Tamimi et al., 2013](#ref-altamimi-et-al-2013))|![Formula](/doc/measures/readability/aari.svg)<br><br>* This measure applies only to **Arabic texts**.
-<span id="ref-ari"></span>Automated Readability Index<br>([Smith & Senter, 1967](#ref-smith-senter-1967))|![Formula](/doc/measures/readability/ari.svg)
+<span id="ref-ari"></span>Automated Readability Index²<br>([Smith & Senter, 1967](#ref-smith-senter-1967); [Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/ari.svg)
 <span id="ref-bormuths-cloze-mean-gp"></span>Bormuth's Cloze Mean & Grade Placement<br>([Bormuth, 1969](#ref-bormuth-1969))|![Formula](/doc/measures/readability/bormuths_cloze_mean_gp.svg)<br>where **C** is the cloze criterion score, whose value could be changed via **Menu → Preferences → Settings → Measures → Readability → Bormuth's Grade Placement - Cloze criterion score**<br><br>* This measure applies only to **English texts**.
 <span id="ref-coleman-liau-index"></span>Coleman-Liau Index<br>([Coleman & Liau, 1975](#ref-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)
-<span id="ref-colemans-readability-formula"></span>Coleman's Readability Formula¹<br>([Coleman et al., 1976](#ref-coleman-et-al-1976))|![Formula](/doc/measures/readability/colemans_readability_formula.svg)<br>where **NumProns** is the number of pronouns and **NumPreps** is the number of Prepositions<br><br>* This measure applies only to **English texts**.<br>* This measure has 4 variants, which you could select via **Menu → Preferences → Settings → Measures → Readability → Coleman's Readability Formula → Variant**.
+<span id="ref-colemans-readability-formula"></span>Coleman's Readability Formula¹²<br>([Coleman et al., 1976](#ref-coleman-et-al-1976))|![Formula](/doc/measures/readability/colemans_readability_formula.svg)<br>where **NumProns** is the number of pronouns and **NumPreps** is the number of Prepositions<br><br>* This measure applies only to **English texts**.
 <span id="ref-dale-chall-readability-formula"></span>Dale-Chall Readability Formula<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b))|![Formula](/doc/measures/readability/x_c50.svg)<br><br>* This measure applies only to **English texts**.
 <span id="ref-dale-chall-readability-formula-new"></span>Dale-Chall Readability Formula (New)<br>([Chall & Dale, 1995](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50_new.svg)<br><br>* This measure applies only to **English texts**.
-<span id="ref-danielson-bryans-readability-formula"></span>Danielson-Bryan's Readability Formula<br>([Danielson & Bryan, 1963](#ref-danielson-bryan-1963))|![Formula](/doc/measures/readability/danielson_bryans_readability_formula.svg)<br><br>* This measure has 2 variants, which you could select via **Menu → Preferences → Settings → Measures → Readability → Danielson-Bryan's Readability Formula → Variant**.
+<span id="ref-danielson-bryans-readability-formula"></span>Danielson-Bryan's Readability Formula²<br>([Danielson & Bryan, 1963](#ref-danielson-bryan-1963))|![Formula](/doc/measures/readability/danielson_bryans_readability_formula.svg)
 <span id="ref-drp"></span>Degrees of Reading Power<br>([College Entrance Examination Board, 1981](#ref-college-entrance-examination-board-1981))|![Formula](/doc/measures/readability/drp.svg)<br>where **M** is *Bormuth's cloze mean*.<br><br>* This measure applies only to **English texts**.
 <span id="ref-devereux-readability-index"></span>Devereux Readability Index<br>([Smith, 1961](#ref-smith-1961))|![Formula](/doc/measures/readability/devereux_readability_index.svg)
 <span id="ref-elf"></span>Easy Listening Formula¹<br>([Fang, 1966](#ref-fang-1966))|![Formula](/doc/measures/readability/elf.svg)
 <span id="ref-gl"></span>Flesch-Kincaid Grade Level¹<br>([Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/gl.svg)
-<span id="ref-re"></span>Flesch Reading Ease¹<br>([Flesch, 1948](#ref-flesch-1948)<br>Dutch: [Douma, 1960](#ref-douma-1960); [Brouwer, 1963](#ref-brouwer-1963)<br>French: [Kandel & Moles, 1958](#ref-kandel-moles-1958)<br>German: [Amstad, 1978](#ref-amstad-1978)<br>Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986)<br>Russian: [Oborneva, 2006](#ref-oborneva-2006)<br>Spanish: [Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/re.svg)<br><br>* This measure has multiple variants for some languages, which you could select via **Menu → Preferences → Settings → Measures → Readability → Flesch Reading Ease**.
+<span id="ref-re"></span>Flesch Reading Ease¹²<br>([Flesch, 1948](#ref-flesch-1948)<br>Dutch: [Douma, 1960](#ref-douma-1960); [Brouwer, 1963](#ref-brouwer-1963)<br>French: [Kandel & Moles, 1958](#ref-kandel-moles-1958)<br>German: [Amstad, 1978](#ref-amstad-1978)<br>Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986)<br>Russian: [Oborneva, 2006](#ref-oborneva-2006)<br>Spanish: [Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/re.svg)
 <span id="ref-re-simplified"></span>Flesch Reading Ease (Simplified)¹<br>([Farr et al., 1951](#ref-farr-et-al-1951))|![Formula](/doc/measures/readability/re_simplified.svg)
 <span id="ref-rgl"></span>FORCAST Grade Level¹<br>([Caylor et al., 1973](#ref-caylor-et-al-1973))|![Formula](/doc/measures/readability/rgl.svg)<br><br>* A sample of 150 words is taken randomly from the text, thus the text should be **at least 150 words long**.
 <span id="ref-cp"></span>Fórmula de comprensibilidad de Gutiérrez de Polini<br>([Gutiérrez de Polini, 1972](#ref-gutierrez-de-polini-1972))|![Formula](/doc/measures/readability/cp.svg)<br><br>* This measure applies only to **Spanish texts**.
 <span id="ref-formula-de-crawford"></span>Fórmula de Crawford¹<br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/formula_de_crawford.svg)<br><br>* This measure applies only to **Spanish texts**.
 <span id="ref-gulpease-index"></span>Gulpease Index<br>([Lucisano & Emanuela Piemontese, 1988](#ref-lucisano-emanuela-piemontese-1988))|![Formula](/doc/measures/readability/gulpease_index.svg)<br><br>* This measure applies only to **Italian texts**.
-<span id="ref-fog-index"></span>Gunning Fog Index¹<br>(English: [Gunning, 1968](#ref-gunning-1968)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables ending with *-ed* or *-es* for **English texts**, and the number of words with 4 or more syllables for **Polish texts**.<br><br>* This measure applies only to **English texts** and **Polish texts**.
+<span id="ref-fog-index"></span>Gunning Fog Index¹²<br>(English: [Gunning, 1968](#ref-gunning-1968); [Kincaid et al., 1975](#ref-kincaid-et-al-1975)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables ending with *-ed* or *-es* for **English texts**, and the number of words with 4 or more syllables for **Polish texts**.<br><br>* This measure applies only to **English texts** and **Polish texts**.
 <span id="ref-mu"></span>Legibilidad µ<br>([Muñoz Baquedano, 2006](#ref-munoz-baquedano-2006))|![Formula](/doc/measures/readability/mu.svg)<br>where **LenWordsAvg** is the average word length in letters, and **LenWordsVar** is the variance of word lengths in letters.<br><br>* This measure applies only to **Spanish texts**.<br>* The text should be **at least 2 words long**.
 <span id="ref-lensear-write"></span>Lensear Write¹<br>([O’Hayre, 1966](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/lensear_write.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*, and **NumSentences** is the number of sentences to the nearest period.<br><br>* This measure applies only to **English texts**.<br>* A sample of 100 words is taken randomly from the text.<br>* If the text is **shorter than 100 words**, **NumWords1Syl** and **NumSentences** need to be multiplied by 100 and then divided by the number of text.
 <span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968))|![Formula](/doc/measures/readability/lix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
@@ -1043,10 +1049,11 @@ Measure of Readability|Formula
 <span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
 <span id="ref-smog-grade"></span>SMOG Grade¹<br>([McLaughlin, 1969](#ref-mclaughlin-1969))|![Formula](/doc/measures/readability/smog_grade.svg)<br><br>* A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text is taken from the text, thus the text should be **at least 30 sentences long**.
 <span id="ref-spache-grade-level"></span>Spache Grade Level<br>([Spache, 1953](#ref-spache-1953))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br><br>* Three samples each of 100 words are taken randomly from the text and the mean of the three scores is calculated, thus the text should be **at least 100 words long**.
-<span id="ref-wstf"></span>Wiener Sachtextformel¹<br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/wstf.svg)<br>where **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This measure applies only to **German texts**.<br>* This measure has 4 variants, which you could select via **Menu → Preferences → Settings → Measures → Readability → Wiener Sachtextformel → Variant**.
+<span id="ref-wstf"></span>Wiener Sachtextformel¹²<br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/wstf.svg)<br>where **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This measure applies only to **German texts**.
 
 **Notes:**
 1. Requires **built-in syllable tokenization support**
+2. Has variants, which could be selected via **Menu - Preferences - Settings - Measures - Readability**
 
 <span id="doc-4-4-2"></span>
 #### [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc)
@@ -1398,7 +1405,7 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 <span id="ref-kilgarriff-tugwell-2002"></span>
 [47] [**^**](#ref-mi-log-f) Kilgarriff, A., & Tugwell, D. (2002). WASP-bench: An MT lexicographers' workstation supporting state-of-the-art lexical disambiguation. In *Proceedings of the 8th Machine Translation Summit* (pp. 187–190). European Association for Machine Translation.<br>
 <span id="ref-kincaid-et-al-1975"></span>
-[48] [**^**](#ref-gl) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for navy enlisted personnel*. Naval Air Station Memphis.<br>
+[48] [**^**](#ref-ari) [**^**](#ref-gl) [**^**](#ref-fog-index) Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). *Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel* (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf<br>
 <span id="ref-kromer-2003"></span>
 [49] [**^**](#ref-kromers-ur) Kromer, V. (2003). A usage measure based on psychophysical relations. *Journal of Quantitative Linguistics*, *10*(2), 177–186. https://doi.org/10.1076/jqul.10.2.177.16718<br>
 <span id="ref-lexical-computing-ltd-2015"></span>
