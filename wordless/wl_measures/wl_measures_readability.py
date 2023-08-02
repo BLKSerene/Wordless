@@ -582,6 +582,23 @@ def formula_de_crawford(main, text):
 
     return grade_level
 
+# Fucks's Stilcharakteristik
+# References:
+#     Fucks, W. (1955). Unterschied des Prosastils von Dichtern und anderen Schriftstellern: ein Beispiel mathematischer Stilanalyse. Bouvier.
+#     Briest, W. (1974). Kann man Verständlichkeit messen?. STUF - Language Typology and Universals, 27(1-3), 543–563. https://doi.org/10.1524/stuf.1974.27.13.543
+def fuckss_stilcharakteristik(main, text):
+    if text.lang in main.settings_global['syl_tokenizers']:
+        text = get_counts(main, text)
+
+        if text.count_sentences:
+            stilcharakteristik = text.count_syls / text.count_sentences
+        else:
+            stilcharakteristik = 'text_too_short'
+    else:
+        stilcharakteristik = 'no_support'
+
+    return stilcharakteristik
+
 # Gulpease Index
 # References:
 #     Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. Scuola e Città, 39(3), pp. 110–124.

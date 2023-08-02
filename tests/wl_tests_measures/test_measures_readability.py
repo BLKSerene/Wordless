@@ -402,6 +402,23 @@ def test_formula_de_crawford():
     assert grade_level_spa_12 == 3 / 12 * 100 * (-0.205) + 18 / 12 * 100 * 0.049 - 3.407
     assert grade_level_eng_12 == 'no_support'
 
+def test_fuckss_stilcharakteristik():
+    stilcharakteristik_eng_0 = wl_measures_readability.fuckss_stilcharakteristik(main, test_text_eng_0)
+    stilcharakteristik_eng_12 = wl_measures_readability.fuckss_stilcharakteristik(main, test_text_eng_12)
+    stilcharakteristik_spa_12 = wl_measures_readability.fuckss_stilcharakteristik(main, test_text_spa_12)
+    stilcharakteristik_other_12 = wl_measures_readability.fuckss_stilcharakteristik(main, test_text_other_12)
+
+    print("Fucks's Stilcharakteristik:")
+    print(f'\teng/0: {stilcharakteristik_eng_0}')
+    print(f'\teng/12: {stilcharakteristik_eng_12}')
+    print(f'\tspa/12: {stilcharakteristik_spa_12}')
+    print(f'\tother/12: {stilcharakteristik_other_12}')
+
+    assert stilcharakteristik_eng_0 == 'text_too_short'
+    assert stilcharakteristik_eng_12 == 15 / 3
+    assert stilcharakteristik_spa_12 != 'no_support'
+    assert stilcharakteristik_other_12 == 'no_support'
+
 def test_gulpease_index():
     gulpease_index_ita_0 = wl_measures_readability.gulpease_index(main, test_text_ita_0)
     gulpease_index_ita_12 = wl_measures_readability.gulpease_index(main, test_text_ita_12)
@@ -606,6 +623,7 @@ if __name__ == '__main__':
     test_rgl()
     test_cp()
     test_formula_de_crawford()
+    test_fuckss_stilcharakteristik()
     test_gulpease_index()
     test_fog_index()
     test_mu()
