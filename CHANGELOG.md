@@ -26,7 +26,7 @@
 - Utils: Add spaCy's Korean sentence recognizer, word tokenizer, part-of-speech tagger, lemmatizer, and dependency parser
 - Utils: Add spaCy's Malay word tokenizer
 - Utils: Add spaCy's Slovenian sentence recognizer, part-of-speech tagger, lemmatizer, and dependency parser
-- Work Area: Add Profiler - Readability - Bormuth's Cloze Mean / Bormuth's Grade Placement / Coleman's Readability Formula / Dale-Chall Readability Formula (New) / Danielson-Bryan's Readability Formula / Degrees of Reading Power / Easy Listening Formula
+- Work Area: Add Profiler - Readability - Bormuth's Cloze Mean / Bormuth's Grade Placement / Coleman's Readability Formula / Dale-Chall Readability Formula (New) / Danielson-Bryan's Readability Formula / Degrees of Reading Power / Easy Listening Formula / Fucks's Stilcharakteristik
 
 ### ✨ Improvements
 - Utils: Update Wordless's sentence and sentence segment splitters
