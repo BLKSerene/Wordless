@@ -20,7 +20,7 @@
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - ??/??/2023
 ### 🎉 New Features
-- Settings: Add Settings - Measures - Readability - Bormuth's Grade Placement / Coleman's Readability Formula / Flesch Reading Ease / Danielson-Bryan's Readability Formula
+- Settings: Add Settings - Measures - Readability - Automated Readability Index / Bormuth's Grade Placement / Coleman's Readability Formula / Flesch Reading Ease / Danielson-Bryan's Readability Formula / Gunning Fog Index
 - Utils: Add khmer-nltk's Khmer sentence tokenizer, word tokenizer, and part-of-speech tagger
 - Utils: Add PyThaiNLP's perceptron part-of-speech tagger (Blackboard)
 - Utils: Add spaCy's Korean sentence recognizer, word tokenizer, part-of-speech tagger, lemmatizer, and dependency parser
@@ -30,7 +30,7 @@
 
 ### ✨ Improvements
 - Utils: Update Wordless's sentence and sentence segment splitters
-- Work Area: Update Profiler - Readability - Flesch Reading Ease
+- Work Area: Update Profiler - Readability - Automated Readability Index / Flesch Reading Ease / Gunning Fog Index
 
 ### 📌 Bugfixes
 - Work Area: Fix Concordancer - Generation Settings - Width unit - Character
