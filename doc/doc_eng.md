@@ -885,8 +885,9 @@ It should be noted that some readability measures are **language-specific**, or 
 These variables are used in the following formulas:<br>
 **NumSentences**: Number of sentences in the text or sample<br>
 **NumWords**: Number of words in the text or sample<br>
-<span id="ref-num-words-769"></span>**NumWordsDale₇₆₉**: Number of words outside the Dale list of 769 easy words ([Dale, 1931](#ref-dale-1931))<br>
-<span id="ref-num-words-3000"></span>**NumWordsDale₃₀₀₀**: Number of words outside the Dale list of 3000 easy words ([Dale & Chall, 1948b](#ref-dale-chall-1948b))<br>
+<span id="ref-num-words-dale-769"></span>**NumWordsDale₇₆₉**: Number of words outside the Dale list of 769 easy words ([Dale, 1931](#ref-dale-1931))<br>
+<span id="ref-num-words-dale-3000"></span>**NumWordsDale₃₀₀₀**: Number of words outside the Dale list of 3000 easy words ([Dale & Chall, 1948b](#ref-dale-chall-1948b))<br>
+<span id="ref-num-words-spache"></span>**NumWordsSpache**: Number of words outside the Spache word list ([Spache, 1974](#ref-spache-1974))<br>
 **NumWords1Syl**: Number of monosyllabic words<br>
 **NumWords3+Syls**: Number of words with 3 or more syllables<br>
 **NumSyls**: Number of syllable in the text or sample<br>
@@ -1010,7 +1011,10 @@ SMOG Grade:
     \text{g} = 3.1291 + 1.043 \times \sqrt{\text{NumWords3+Syls}}
 
 Spache Grade Level:
-    {\text{Grade Level} = 0.141 \times \frac{100}{\text{NumSentences}} + 0.086 \times \left(\frac{\text{NumWordsDale}_{769}}{100} \times 100\right) + 0.839}
+    \begin{align*}
+        \text{Grade Level} &= 0.141 \times \frac{100}{\text{NumSentences}} + 0.086 \times \left(\frac{\text{NumWordsDale}_{769}}{100} \times 100\right) + 0.839 \\
+        \text{Grade Level}_{Revised} &= 0.121 \times \frac{100}{\text{NumSentences}} + 0.082 \times \left(\frac{\text{NumWordsSpache}}{100} \times 100\right) + 0.659
+    \end{align*}
 
 Wiener Sachtextformel:
     \begin{align*}
@@ -1026,7 +1030,7 @@ Wiener Sachtextformel:
 Measure of Readability|Formula
 ----------------------|-------
 <span id="ref-aari"></span>Automated Arabic Readability Index<br>([Al-Tamimi et al., 2013](#ref-altamimi-et-al-2013))|![Formula](/doc/measures/readability/aari.svg)<br><br>* This measure applies only to **Arabic texts**.
-<span id="ref-ari"></span>Automated Readability Index²<br>([Smith & Senter, 1967](#ref-smith-senter-1967); [Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/ari.svg)
+<span id="ref-ari"></span>Automated Readability Index²<br>([Smith & Senter, 1967](#ref-smith-senter-1967)<br>Navy: [Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/ari.svg)
 <span id="ref-bormuths-cloze-mean-gp"></span>Bormuth's Cloze Mean & Grade Placement<br>([Bormuth, 1969](#ref-bormuth-1969))|![Formula](/doc/measures/readability/bormuths_cloze_mean_gp.svg)<br>where **C** is the cloze criterion score, whose value could be changed via **Menu → Preferences → Settings → Measures → Readability → Bormuth's Grade Placement - Cloze criterion score**<br><br>* This measure applies only to **English texts**.
 <span id="ref-coleman-liau-index"></span>Coleman-Liau Index<br>([Coleman & Liau, 1975](#ref-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)
 <span id="ref-colemans-readability-formula"></span>Coleman's Readability Formula¹²<br>([Coleman et al., 1976](#ref-coleman-et-al-1976))|![Formula](/doc/measures/readability/colemans_readability_formula.svg)<br>where **NumProns** is the number of pronouns and **NumPreps** is the number of Prepositions<br><br>* This measure applies only to **English texts**.
@@ -1044,7 +1048,7 @@ Measure of Readability|Formula
 <span id="ref-formula-de-crawford"></span>Fórmula de Crawford¹<br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/formula_de_crawford.svg)<br><br>* This measure applies only to **Spanish texts**.
 <span id="ref-fuckss-stilcharakteristik"></span>Fucks's Stilcharakteristik¹<br>([Fucks, 1955](#ref-fucks-1955))|![Formula](/doc/measures/readability/fuckss_stilcharakteristik.svg)
 <span id="ref-gulpease-index"></span>Gulpease Index<br>([Lucisano & Emanuela Piemontese, 1988](#ref-lucisano-emanuela-piemontese-1988))|![Formula](/doc/measures/readability/gulpease_index.svg)<br><br>* This measure applies only to **Italian texts**.
-<span id="ref-fog-index"></span>Gunning Fog Index¹²<br>(English: [Gunning, 1968](#ref-gunning-1968); [Kincaid et al., 1975](#ref-kincaid-et-al-1975)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables ending with *-ed* or *-es* for **English texts**, and the number of words with 4 or more syllables for **Polish texts**.<br><br>* This measure applies only to **English texts** and **Polish texts**.
+<span id="ref-fog-index"></span>Gunning Fog Index¹²<br>(English: [Gunning, 1968](#ref-gunning-1968)<br>Navy: [Kincaid et al., 1975](#ref-kincaid-et-al-1975)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables ending with *-ed* or *-es* for **English texts**, and the number of words with 4 or more syllables for **Polish texts**.<br><br>* This measure applies only to **English texts** and **Polish texts**.
 <span id="ref-mu"></span>Legibilidad µ<br>([Muñoz Baquedano, 2006](#ref-munoz-baquedano-2006))|![Formula](/doc/measures/readability/mu.svg)<br>where **LenWordsAvg** is the average word length in letters, and **LenWordsVar** is the variance of word lengths in letters.<br><br>* This measure applies only to **Spanish texts**.<br>* The text should be **at least 2 words long**.
 <span id="ref-lensear-write"></span>Lensear Write¹<br>([O’Hayre, 1966](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/lensear_write.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*, and **NumSentences** is the number of sentences to the nearest period.<br><br>* This measure applies only to **English texts**.<br>* A sample of 100 words is taken randomly from the text.<br>* If the text is **shorter than 100 words**, **NumWords1Syl** and **NumSentences** need to be multiplied by 100 and then divided by the number of text.
 <span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968))|![Formula](/doc/measures/readability/lix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
@@ -1052,7 +1056,7 @@ Measure of Readability|Formula
 <span id="ref-osman"></span>OSMAN<br>([El-Haj & Rayson, 2016](#ref-elhaj-rayson-2016))|![Formula](/doc/measures/readability/osman.svg)<br>where **NumLongWords** is the number of words with 6 or more letters, **NumComplexWords** is the number of words with 5 or more syllables, and **NumFaseehWords** is the number of complex words containing ء/ئ/ؤ/ذ/ظ or ending with وا/ون.<br><br>* This measure applies only to **Arabic texts**.<br>* The number of syllables in each Arabic word is estimated by adding the number of short syllables and twice the number of long and stress syllables.
 <span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
 <span id="ref-smog-grade"></span>SMOG Grade¹<br>([McLaughlin, 1969](#ref-mclaughlin-1969))|![Formula](/doc/measures/readability/smog_grade.svg)<br><br>* A sample consisting of the first 10 sentences of the text, the last 10 sentences of the text, and 10 sentences at the middle of the text is taken from the text, thus the text should be **at least 30 sentences long**.
-<span id="ref-spache-grade-level"></span>Spache Grade Level<br>([Spache, 1953](#ref-spache-1953))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br><br>* Three samples each of 100 words are taken randomly from the text and the mean of the three scores is calculated, thus the text should be **at least 100 words long**.
+<span id="ref-spache-grade-level"></span>Spache Grade Level<br>([Spache, 1953](#ref-spache-1953)<br>Revised: [Spache, 1974](#ref-spache-1974))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br><br>* Three samples each of 100 words are taken randomly from the text and the results are averaged out, thus the text should be **at least 100 words long**.
 <span id="ref-wstf"></span>Wiener Sachtextformel¹²<br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/wstf.svg)<br>where **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This measure applies only to **German texts**.
 
 **Notes:**
@@ -1353,11 +1357,11 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 <span id="ref-daille-1995"></span>
 [19] [**^**](#ref-im3) Daille, B. (1995). Combined approach for terminology extraction: Lexical statistics and linguistic filtering. *UCREL technical papers* (Vol. 5). Lancaster University.<br>
 <span id="ref-dale-1931"></span>
-[20] [**^**](#ref-num-words-769) [**^**](#ref-spache-grade-level) Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.<br>
+[20] [**^**](#ref-num-words-dale-769) [**^**](#ref-spache-grade-level) Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.<br>
 <span id="ref-dale-chall-1948a"></span>
 [21] [**^**](#ref-dale-chall-readability-formula) Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. *Educational Research Bulletin*, *27*(1), 11–20, 28.<br>
 <span id="ref-dale-chall-1948b"></span>
-[22] [**^**](#ref-num-words-3000) [**^**](#ref-dale-chall-readability-formula) Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.<br>
+[22] [**^**](#ref-num-words-dale-3000) [**^**](#ref-dale-chall-readability-formula) Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.<br>
 <span id="ref-danielson-bryan-1963"></span>
 [23] [**^**](#ref-danielson-bryans-readability-formula) Danielson, W. A., & Bryan, S. D. (1963). Computer automation of two readability formulas. *Journalism Quarterly*, *40*(2), 201–206. https://doi.org/10.1177/107769906304000207<br>
 <span id="ref-dennis-1964"></span>
@@ -1462,11 +1466,13 @@ Cubic Association Ratio<br>([Daille, 1994](#ref-daille-1994), [1995](#ref-daille
 [73] [**^**](#ref-ari) Smith, E. A., & Senter, R. J. (1967). *Automated readability index*. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
 <span id="ref-spache-1953"></span>
 [74] [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
+<span id="ref-spache-1974"></span>
+[75] [**^**](#ref-num-words-spache) [**^**](#ref-spache-grade-level) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.<br>
 <span id="ref-szigrisze-pazos-1993"></span>
-[75] [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
+[76] [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
 <span id="ref-thanopoulos-et-al-2002"></span>
-[76] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
+[77] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="ref-wilson-2013"></span>
-[77] [**^**](#ref-log-likehood-ratio-test)[**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
+[78] [**^**](#ref-log-likehood-ratio-test)[**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
 <span id="ref-zhang-2004"></span>
-[78] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
+[79] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>

@@ -113,6 +113,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_fog_index.setLayout(wl_layouts.Wl_Layout())
         self.group_box_fog_index.layout().addWidget(self.checkbox_use_navy_variant_for_eng, 0, 0)
 
+        # Spache Grade Level
+        self.group_box_spache_grade_lvl = QGroupBox(self.tr('Spache Grade Level'), self)
+
+        self.checkbox_use_rev_formula = QCheckBox(self.tr('Use revised formula'), self)
+
+        self.group_box_spache_grade_lvl.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_spache_grade_lvl.layout().addWidget(self.checkbox_use_rev_formula, 0, 0)
+
         # Wiener Sachtextformel
         self.group_box_wstf = QGroupBox(self.tr('Wiener Sachtextformel'), self)
 
@@ -134,10 +142,11 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 3, 0)
         self.layout().addWidget(self.group_box_fog_index, 4, 0)
         self.layout().addWidget(self.group_box_re, 5, 0)
-        self.layout().addWidget(self.group_box_wstf, 6, 0)
+        self.layout().addWidget(self.group_box_spache_grade_lvl, 6, 0)
+        self.layout().addWidget(self.group_box_wstf, 7, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(7, 1)
+        self.layout().setRowStretch(8, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -164,6 +173,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Gunning Fog Index
         self.checkbox_use_navy_variant_for_eng.setChecked(settings['fog_index']['use_navy_variant_for_eng'])
 
+        # Spache Grade Level
+        self.checkbox_use_rev_formula.setChecked(settings['spache_grade_lvl']['use_rev_formula'])
+
         # Wiener Sachtextformel
         self.combo_box_wstf_variant.setCurrentText(settings['wstf']['variant'])
 
@@ -186,6 +198,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         # Gunning Fog Index
         self.settings_custom['fog_index']['use_navy_variant_for_eng'] = self.checkbox_use_navy_variant_for_eng.isChecked()
+
+        # Spache Grade Level
+        self.settings_custom['spache_grade_lvl']['use_rev_formula'] = self.checkbox_use_rev_formula.isChecked()
 
         # Wiener Sachtextformel
         self.settings_custom['wstf']['variant'] = self.combo_box_wstf_variant.currentText()

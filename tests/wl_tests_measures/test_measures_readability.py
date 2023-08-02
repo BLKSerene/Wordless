@@ -558,19 +558,24 @@ def test_smog_grade():
     assert g_spa_120 != 'no_support'
     assert g_other_12 == 'no_support'
 
-def test_spache_grade_level():
-    grade_level_eng_12 = wl_measures_readability.spache_grade_level(main, test_text_eng_12)
-    grade_level_eng_100 = wl_measures_readability.spache_grade_level(main, test_text_eng_100)
-    grade_level_spa_12 = wl_measures_readability.spache_grade_level(main, test_text_spa_12)
+def test_spache_grade_lvl():
+    grade_lvl_eng_12 = wl_measures_readability.spache_grade_lvl(main, test_text_eng_12)
+    settings['spache_grade_lvl']['use_rev_formula'] = True
+    grade_lvl_eng_100_rev = wl_measures_readability.spache_grade_lvl(main, test_text_eng_100)
+    settings['spache_grade_lvl']['use_rev_formula'] = False
+    grade_lvl_eng_100 = wl_measures_readability.spache_grade_lvl(main, test_text_eng_100)
+    grade_lvl_spa_12 = wl_measures_readability.spache_grade_lvl(main, test_text_spa_12)
 
     print('Spache Grade Level:')
-    print(f'\teng/12: {grade_level_eng_12}')
-    print(f'\teng/100: {grade_level_eng_100}')
-    print(f'\tspa/12: {grade_level_spa_12}')
+    print(f'\teng/12: {grade_lvl_eng_12}')
+    print(f'\teng/100-rev: {grade_lvl_eng_100_rev}')
+    print(f'\teng/100: {grade_lvl_eng_100}')
+    print(f'\tspa/12: {grade_lvl_spa_12}')
 
-    assert grade_level_eng_12 == 'text_too_short'
-    assert grade_level_eng_100 == numpy.mean([0.141 * (100 / 25) + 0.086 * (25 / 100 * 100) + 0.839] * 3)
-    assert grade_level_spa_12 == 'no_support'
+    assert grade_lvl_eng_12 == 'text_too_short'
+    assert grade_lvl_eng_100_rev == numpy.mean([0.121 * (100 / 25) + 0.082 * 25 + 0.659] * 3)
+    assert grade_lvl_eng_100 == numpy.mean([0.141 * (100 / 25) + 0.086 * 25 + 0.839] * 3)
+    assert grade_lvl_spa_12 == 'no_support'
 
 def test_wstf():
     wstf_deu_0 = wl_measures_readability.wstf(main, test_text_deu_0)
@@ -633,5 +638,5 @@ if __name__ == '__main__':
     test_osman()
     test_rix()
     test_smog_grade()
-    test_spache_grade_level()
+    test_spache_grade_lvl()
     test_wstf()
