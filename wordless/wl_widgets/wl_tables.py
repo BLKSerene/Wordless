@@ -922,6 +922,33 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         )
 
     def style_cell(self, cell, item):
+        # Modify number format
+        val = cell.value
+
+        try:
+            if val[-1] == '%':
+                cell.value = float(val[:-1]) / 100
+            else:
+                cell.value = float(val)
+
+            if val[-1] == '%':
+                precision_pcts = self.main.settings_custom['tables']['precision_settings']['precision_pcts']
+
+                if precision_pcts:
+                    cell.number_format = '0.' + '0' * precision_pcts + '%'
+                else:
+                    cell.number_format = '0%'
+            else:
+                i_decimal_point = val.find('.')
+
+                if i_decimal_point > -1:
+                    cell.number_format = '0.' + '0' * (len(val) - i_decimal_point - 1)
+                else:
+                    cell.number_format = '0'
+        # Skip text
+        except ValueError:
+            pass
+
         font_family = item.font().family()
 
         if font_family != 'Consolas':
@@ -943,7 +970,7 @@ class Wl_Worker_Exp_Table(wl_threading.Wl_Worker):
         if font_family != 'Consolas':
             font_family = self.main.settings_custom['general']['ui_settings']['font_family']
 
-        # Trick the parser to force it always wrap HTML with <html><body><p></p></body></html>
+        # Trick the parser to force it to always wrap HTML with <html><body><p></p></body></html>
         soup = bs4.BeautifulSoup('&nbsp;' + cell.value, features = 'lxml')
 
         for html in soup.body.p.contents:
