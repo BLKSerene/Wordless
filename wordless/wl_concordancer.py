@@ -784,15 +784,38 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 text_search_right = copy.deepcopy(context_right)
 
                                 if not settings['token_settings']['punc_marks']:
+                                    len_context_leftmost = len(context_left[0])
+                                    len_context_rightmost = len(context_right[-1])
+
                                     context_left = text.tokens_flat_punc_marks_merged[i - len(context_left): i]
                                     context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : i + len_search_term + len(context_right)]
 
-                                    # Modify the first token in left context and the last token in right context
-                                    len_left_extra = len_context_left - sum((len(token) for token in context_left))
-                                    len_right_missing = len(context_right[-1])
+                                    # Clip the leftmost and rightmost token in context
+                                    context_leftmost = ''
+                                    context_rightmost = ''
+                                    len_context_leftmost_no_puncs = 0
+                                    len_context_rightmost_no_puncs = 0
 
-                                    context_left[0] = context_left[0][len_left_extra:]
-                                    context_right[-1] = context_right[-1][:len_right_missing]
+                                    for char in reversed(context_left[0]):
+                                        if len_context_leftmost_no_puncs < len_context_leftmost:
+                                            context_leftmost = char + context_leftmost
+
+                                            if char.isalnum():
+                                                len_context_leftmost_no_puncs += 1
+                                        else:
+                                            break
+
+                                    for char in reversed(context_right[-1]):
+                                        if len_context_rightmost_no_puncs < len_context_rightmost:
+                                            context_rightmost += char
+
+                                            if char.isalnum():
+                                                len_context_rightmost_no_puncs += 1
+                                        else:
+                                            break
+
+                                    context_left[0] = context_leftmost
+                                    context_right[-1] = context_rightmost
                             elif settings['generation_settings']['width_unit'] == self.tr('Token'):
                                 width_left_token = settings['generation_settings']['width_left_token']
                                 width_right_token = settings['generation_settings']['width_right_token']
