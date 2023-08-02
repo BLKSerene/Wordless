@@ -1207,7 +1207,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.osman(self.main, text),
                         wl_measures_readability.rix(self.main, text),
                         wl_measures_readability.smog_grade(self.main, text),
-                        wl_measures_readability.spache_grade_level(self.main, text),
+                        wl_measures_readability.spache_grade_lvl(self.main, text),
                         wl_measures_readability.wstf(self.main, text)
                     ]
                 else:

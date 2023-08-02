@@ -1766,6 +1766,10 @@ def init_settings_default(main):
                     'variant_spa': 'Fernández Huerta'
                 },
 
+                'spache_grade_lvl': {
+                    'use_rev_formula': True
+                },
+
                 'wstf': {
                     'variant': '1'
                 }

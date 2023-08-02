@@ -108,22 +108,28 @@ def get_count_words_syls(syls_words, len_min = 1, len_max = None):
             if len(syls) >= len_min
         ])
 
-# Calculate the number of words outside Dale's lists of easy words
-def get_count_words_dale(words, num_easy_words):
-    dale_list_easy_words = set()
+def get_count_words_outside_wordlist(words, wordlist):
+    easy_words = set()
     count_difficult_words = 0
 
-    # Load Dale's lists of easy words (769/3000)
-    with open(wl_paths.get_path_data(f'dale_list_easy_words_{num_easy_words}.txt'), 'r', encoding = 'utf_8') as f:
+    # Load wordlist
+    if wordlist == 'dale_769':
+        file_name = 'dale_list_easy_words_769'
+    elif wordlist == 'dale_3000':
+        file_name = 'dale_list_easy_words_3000'
+    elif wordlist == 'spache':
+        file_name = 'spache_word_list'
+
+    with open(wl_paths.get_path_data(f'{file_name}.txt'), 'r', encoding = 'utf_8') as f:
         for line in f:
             word = line.strip()
 
             if word:
                 # Ignore case
-                dale_list_easy_words.add(word.lower())
+                easy_words.add(word.lower())
 
     for word in words:
-        if word.lower() not in dale_list_easy_words:
+        if word.lower() not in easy_words:
             count_difficult_words += 1
 
     return count_difficult_words
@@ -180,7 +186,7 @@ def bormuths_cloze_mean(main, text):
         text = get_counts(main, text)
 
         if text.count_sentences and text.count_words:
-            ddl = get_count_words_dale(text.words_flat, 3000)
+            ddl = get_count_words_outside_wordlist(text.words_flat, wordlist = 'dale_3000')
             m = (
                 0.886593
                 - 0.083640 * (text.count_chars_alphabetic / text.count_words)
@@ -287,7 +293,7 @@ def dale_chall_readability_formula(main, text):
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
-            count_difficult_words = get_count_words_dale(text.words_flat, 3000)
+            count_difficult_words = get_count_words_outside_wordlist(text.words_flat, wordlist = 'dale_3000')
             x_c50 = (
                 0.1579 * (count_difficult_words / text.count_words * 100)
                 + 0.0496 * (text.count_words / text.count_sentences)
@@ -309,7 +315,7 @@ def dale_chall_readability_formula_new(main, text):
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
-            count_difficult_words = get_count_words_dale(text.words_flat, 3000)
+            count_difficult_words = get_count_words_outside_wordlist(text.words_flat, wordlist = 'dale_3000')
             x_c50 = (
                 64
                 - 0.95 * (count_difficult_words / text.count_words * 100)
@@ -886,16 +892,19 @@ def smog_grade(main, text):
 
 # Spache Grade Level
 # References:
-#     Dale, E. (1931). A comparison of two word lists. Educational Research Bulletin, 10(18), 484–489.
 #     Spache, G. (1953). A new readability formula for primary-grade reading materials. Elementary School Journal, 53(7), 410–413. https://doi.org/10.1086/458513
-def spache_grade_level(main, text):
+#     Spache, G. (1974). Good reading for poor readers (Rev. 9th ed.). Garrard.
+#     Michalke, M., Brown, E., Mirisola, A., Brulet, A., & Hauser, L. (2021, May 17). Measure readability. Documentation for package ‘koRpus’ version 0.13-8. Retrieved August 3, 2023, from https://search.r-project.org/CRAN/refmans/koRpus/html/readability-methods.html
+# Spache word list:
+#     Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., & Matsuo, A. (2020, November 17). data_char_wordlists.rda. quanteda.textstats. Retrieved August 3, 2023, from https://github.com/quanteda/quanteda.textstats/raw/master/data/data_char_wordlists.rda
+def spache_grade_lvl(main, text):
     if text.lang.startswith('eng_'):
         text = get_counts(main, text)
 
         if text.count_words >= 100:
-            grade_levels = []
+            grade_lvls = []
 
-            # Calculate the average grade level of 3 samples
+            # Sample 3 times
             for _ in range(3):
                 samples = []
                 i_word = 0
@@ -918,20 +927,28 @@ def spache_grade_level(main, text):
                     else:
                         break
 
-                count_difficult_words = get_count_words_dale(samples, 769)
-                grade_levels.append(
-                    0.141 * (100 / count_sentences_samples)
-                    + 0.086 * (count_difficult_words / 100 * 100)
-                    + 0.839
-                )
+                if main.settings_custom['measures']['readability']['spache_grade_lvl']['use_rev_formula']:
+                    count_difficult_words = get_count_words_outside_wordlist(samples, wordlist = 'spache')
+                    grade_lvls.append(
+                        0.121 * (100 / count_sentences_samples)
+                        + 0.082 * (count_difficult_words)
+                        + 0.659
+                    )
+                else:
+                    count_difficult_words = get_count_words_outside_wordlist(samples, wordlist = 'dale_769')
+                    grade_lvls.append(
+                        0.141 * (100 / count_sentences_samples)
+                        + 0.086 * (count_difficult_words)
+                        + 0.839
+                    )
 
-            grade_level = numpy.mean(grade_levels)
+            grade_lvl = numpy.mean(grade_lvls)
         else:
-            grade_level = 'text_too_short'
+            grade_lvl = 'text_too_short'
     else:
-        grade_level = 'no_support'
+        grade_lvl = 'no_support'
 
-    return grade_level
+    return grade_lvl
 
 # Wiener Sachtextformel
 # References:
