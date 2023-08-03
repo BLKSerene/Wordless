@@ -121,6 +121,20 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_spache_grade_lvl.setLayout(wl_layouts.Wl_Layout())
         self.group_box_spache_grade_lvl.layout().addWidget(self.checkbox_use_rev_formula, 0, 0)
 
+        # Tränkle & Bailer's Readability Formula
+        self.group_box_trankle_bailers_readability_formula = QGroupBox(self.tr("Tränkle & Bailer's Readability Formula"), self)
+
+        self.label_trankle_bailers_readability_formula_variant = QLabel(self.tr('Variant:'), self)
+        self.combo_box_trankle_bailers_readability_formula_variant = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_trankle_bailers_readability_formula_variant.addItems(['1', '2'])
+
+        self.group_box_trankle_bailers_readability_formula.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_trankle_bailers_readability_formula.layout().addWidget(self.label_trankle_bailers_readability_formula_variant, 0, 0)
+        self.group_box_trankle_bailers_readability_formula.layout().addWidget(self.combo_box_trankle_bailers_readability_formula_variant, 0, 1)
+
+        self.group_box_trankle_bailers_readability_formula.layout().setColumnStretch(2, 1)
+
         # Wiener Sachtextformel
         self.group_box_wstf = QGroupBox(self.tr('Wiener Sachtextformel'), self)
 
@@ -143,10 +157,11 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_fog_index, 4, 0)
         self.layout().addWidget(self.group_box_re, 5, 0)
         self.layout().addWidget(self.group_box_spache_grade_lvl, 6, 0)
-        self.layout().addWidget(self.group_box_wstf, 7, 0)
+        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 7, 0)
+        self.layout().addWidget(self.group_box_wstf, 8, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(8, 1)
+        self.layout().setRowStretch(9, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -176,6 +191,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Spache Grade Level
         self.checkbox_use_rev_formula.setChecked(settings['spache_grade_lvl']['use_rev_formula'])
 
+        # Tränkle & Bailer's Readability Formula
+        self.combo_box_trankle_bailers_readability_formula_variant.setCurrentText(settings['trankle_bailers_readability_formula']['variant'])
+
         # Wiener Sachtextformel
         self.combo_box_wstf_variant.setCurrentText(settings['wstf']['variant'])
 
@@ -201,6 +219,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         # Spache Grade Level
         self.settings_custom['spache_grade_lvl']['use_rev_formula'] = self.checkbox_use_rev_formula.isChecked()
+
+        # Tränkle & Bailer's Readability Formula
+        self.settings_custom['trankle_bailers_readability_formula']['variant'] = self.combo_box_trankle_bailers_readability_formula_variant.currentText()
 
         # Wiener Sachtextformel
         self.settings_custom['wstf']['variant'] = self.combo_box_wstf_variant.currentText()

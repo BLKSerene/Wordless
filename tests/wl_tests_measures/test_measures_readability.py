@@ -59,6 +59,7 @@ test_text_ita_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ita')
 
 test_text_spa_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'spa')
 test_text_spa_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'spa')
+test_text_spa_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'spa')
 test_text_spa_120 = Wl_Test_Text(TOKENS_MULTILEVEL_120, lang = 'spa')
 test_text_spa_150 = Wl_Test_Text(TOKENS_MULTILEVEL_150, lang = 'spa')
 
@@ -67,7 +68,9 @@ test_text_nld_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'nld')
 test_text_fra_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'fra')
 test_text_pol_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'pol')
 test_text_rus_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'rus')
+
 test_text_other_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'other')
+test_text_other_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'other')
 
 def test_aari():
     aari_ara_0 = wl_measures_readability.aari(main, test_text_ara_0)
@@ -168,6 +171,7 @@ def test_colemans_readability_formula():
     cloze_pct_eng_12_3 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_12)
     settings['colemans_readability_formula']['variant'] = '4'
     cloze_pct_eng_12_4 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_12)
+    cloze_pct_spa_12 = wl_measures_readability.colemans_readability_formula(main, test_text_spa_12)
     cloze_pct_other_12 = wl_measures_readability.colemans_readability_formula(main, test_text_other_12)
 
     print("Coleman's Readability Formula:")
@@ -176,6 +180,7 @@ def test_colemans_readability_formula():
     print(f'\teng/12-2: {cloze_pct_eng_12_2}')
     print(f'\teng/12-3: {cloze_pct_eng_12_3}')
     print(f'\teng/12-4: {cloze_pct_eng_12_4}')
+    print(f'\tspa/12: {cloze_pct_spa_12}')
     print(f'\tother/12: {cloze_pct_other_12}')
 
     assert cloze_pct_eng_0 == 'text_too_short'
@@ -183,6 +188,7 @@ def test_colemans_readability_formula():
     assert cloze_pct_eng_12_2 == 1.16 * (9 / 12 * 100) + 1.48 * (3 / 12 * 100) - 37.95
     assert cloze_pct_eng_12_3 == 1.07 * (9 / 12 * 100) + 1.18 * (3 / 12 * 100) + 0.76 * (0 / 12 * 100) - 34.02
     assert cloze_pct_eng_12_4 == 1.04 * (9 / 12 * 100) + 1.06 * (3 / 12 * 100) + 0.56 * (0 / 12 * 100) - 0.36 * (0 / 12) - 26.01
+    assert cloze_pct_spa_12 != 'no_support'
     assert cloze_pct_other_12 == 'no_support'
 
 def test_dale_chall_readability_formula():
@@ -473,18 +479,18 @@ def test_lensear_write():
     score_eng_0 = wl_measures_readability.lensear_write(main, test_text_eng_0)
     score_eng_12 = wl_measures_readability.lensear_write(main, test_text_eng_12)
     score_eng_100 = wl_measures_readability.lensear_write(main, test_text_eng_100)
-    score_other_12 = wl_measures_readability.lensear_write(main, test_text_other_12)
+    score_spa_100 = wl_measures_readability.lensear_write(main, test_text_spa_100)
 
     print('Lensear Write:')
     print(f'\teng/0: {score_eng_0}')
     print(f'\teng/12: {score_eng_12}')
     print(f'\teng/100: {score_eng_100}')
-    print(f'\tother/12: {score_other_12}')
+    print(f'\tspa/100: {score_spa_100}')
 
     assert score_eng_0 == 'text_too_short'
     assert score_eng_12 == 6 * (100 / 12) + 3 * 3 * (100 / 12)
     assert score_eng_100 == 50 + 3 * 25
-    assert score_other_12 == 'no_support'
+    assert score_spa_100 == 'no_support'
 
 def test_lix():
     lix_eng_0 = wl_measures_readability.lix(main, test_text_eng_0)
@@ -564,18 +570,18 @@ def test_spache_grade_lvl():
     grade_lvl_eng_100_rev = wl_measures_readability.spache_grade_lvl(main, test_text_eng_100)
     settings['spache_grade_lvl']['use_rev_formula'] = False
     grade_lvl_eng_100 = wl_measures_readability.spache_grade_lvl(main, test_text_eng_100)
-    grade_lvl_spa_12 = wl_measures_readability.spache_grade_lvl(main, test_text_spa_12)
+    grade_lvl_spa_100 = wl_measures_readability.spache_grade_lvl(main, test_text_spa_100)
 
     print('Spache Grade Level:')
     print(f'\teng/12: {grade_lvl_eng_12}')
     print(f'\teng/100-rev: {grade_lvl_eng_100_rev}')
     print(f'\teng/100: {grade_lvl_eng_100}')
-    print(f'\tspa/12: {grade_lvl_spa_12}')
+    print(f'\tspa/100: {grade_lvl_spa_100}')
 
     assert grade_lvl_eng_12 == 'text_too_short'
     assert grade_lvl_eng_100_rev == numpy.mean([0.121 * (100 / 25) + 0.082 * 25 + 0.659] * 3)
     assert grade_lvl_eng_100 == numpy.mean([0.141 * (100 / 25) + 0.086 * 25 + 0.839] * 3)
-    assert grade_lvl_spa_12 == 'no_support'
+    assert grade_lvl_spa_100 == 'no_support'
 
 def test_strain_index():
     strain_index_eng_0 = wl_measures_readability.strain_index(main, test_text_eng_0)
@@ -593,6 +599,28 @@ def test_strain_index():
     assert strain_index_eng_12 == 15 / 10
     assert strain_index_spa_12 != 'no_support'
     assert strain_index_other_12 == 'no_support'
+
+def test_trankle_bailers_readability_formula():
+    trankle_bailers_eng_0 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_0)
+    settings['trankle_bailers_readability_formula']['variant'] = '1'
+    trankle_bailers_eng_100_1 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_100)
+    settings['trankle_bailers_readability_formula']['variant'] = '2'
+    trankle_bailers_eng_100_2 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_100)
+    trankle_bailers_spa_100 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_spa_12)
+    trankle_bailers_other_100 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_other_12)
+
+    print("Tränkle & Bailer's Readability Formula:")
+    print(f'\teng/0: {trankle_bailers_eng_0}')
+    print(f'\teng/12-1: {trankle_bailers_eng_100_1}')
+    print(f'\teng/12-2: {trankle_bailers_eng_100_2}')
+    print(f'\tspa/12: {trankle_bailers_spa_100}')
+    print(f'\tother/12: {trankle_bailers_other_100}')
+
+    assert trankle_bailers_eng_0 == 'text_too_short'
+    assert trankle_bailers_eng_100_1 == 224.6814 - 79.8304 * (376 / 100) - 12.24032 * (100 / 25) - 1.292857 * 0
+    assert trankle_bailers_eng_100_2 == 234.1063 - 96.11069 * (376 / 100) - 2.05444 * 0 - 1.02805 * 0
+    assert trankle_bailers_spa_100 != 'no_support'
+    assert trankle_bailers_other_100 == 'no_support'
 
 def test_wstf():
     wstf_deu_0 = wl_measures_readability.wstf(main, test_text_deu_0)
@@ -657,4 +685,5 @@ if __name__ == '__main__':
     test_smog_grade()
     test_spache_grade_lvl()
     test_strain_index()
+    test_trankle_bailers_readability_formula()
     test_wstf()
