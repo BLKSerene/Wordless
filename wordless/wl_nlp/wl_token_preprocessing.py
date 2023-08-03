@@ -195,6 +195,9 @@ def wl_preprocess_tokens(main, text, token_settings):
     return text
 
 def wl_preprocess_tokens_profiler(main, text, token_settings):
+    # Punctuation marks must be preserved for some readability measures (e.g. Wheeler & Smith's Readability Formula)
+    text.tokens_multilevel_with_puncs = copy.deepcopy(text.tokens_multilevel)
+
     text = wl_preprocess_tokens(main, text, token_settings)
 
     # Remove empty tokens, sentence segments, sentences, and paragraphs

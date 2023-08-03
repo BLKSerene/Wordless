@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=unused-argument
+
 import re
 
 import botok
@@ -135,7 +137,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 # References:
 #     https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
 #     https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=%5B%3ATerminal_Punctuation%CE%B2%3DYes%3A%5D%26%5B%3ASentence_Break%CE%B2%3D%2F%5BAS%5DTerm%2F%3A%5D&g=&i=
-SENTENCE_TERMINATORS = {
+SENTENCE_TERMINATORS = ''.join([
     '\u0021', '\u002E', '\u003F',
     '\u0589',
     '\u061D', '\u061E', '\u061F', '\u06D4',
@@ -193,17 +195,16 @@ SENTENCE_TERMINATORS = {
     '\U00016E98',
     '\U0001BC9F',
     '\U0001DA88'
-}
-RE_SENTENCE_TERMINATORS = ''.join(SENTENCE_TERMINATORS)
+])
 
-def wl_sentence_split(main, text): # pylint: disable=unused-argument
+def wl_sentence_split(main, text, terminators = SENTENCE_TERMINATORS):
     return [
         sentence.strip()
-        for sentence in re.findall(fr'.+?[{RE_SENTENCE_TERMINATORS}]+\s+|.+?$', text.strip())
+        for sentence in re.findall(fr'.+?[{terminators}][{terminators}\s]*|.+?$', text.strip())
     ]
 
 # Reference: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation%CE%B2=Yes:]
-SENTENCE_SEG_TERMINATORS = {
+SENTENCE_SEG_TERMINATORS = ''.join([
     '\u0021', '\u002C', '\u002E', '\u003A', '\u003B', '\u003F',
     '\u037E', '\u0387',
     '\u0589',
@@ -277,30 +278,29 @@ SENTENCE_SEG_TERMINATORS = {
     '\U00016E97', '\U00016E98',
     '\U0001BC9F',
     '\U0001DA87', '\U0001DA88', '\U0001DA89', '\U0001DA8A'
-}
-RE_SENTENCE_SEG_TERMINATORS = ''.join(SENTENCE_SEG_TERMINATORS)
+])
 
-def wl_sentence_seg_tokenize(main, text): # pylint: disable=unused-argument
+def wl_sentence_seg_tokenize(main, text, terminators = SENTENCE_SEG_TERMINATORS):
     return [
-        sentence.strip()
-        for sentence in re.findall(fr'.+?[{RE_SENTENCE_SEG_TERMINATORS}]+|.+?$', text.strip())
+        sentence_seg.strip()
+        for sentence_seg in re.findall(fr'.+?[{terminators}]+|.+?$', text.strip())
     ]
 
-def wl_sentence_seg_split(main, text): # pylint: disable=unused-argument
+def wl_sentence_seg_split(main, text, terminators = SENTENCE_SEG_TERMINATORS):
     return [
-        sentence.strip()
-        for sentence in re.findall(fr'.+?[{RE_SENTENCE_SEG_TERMINATORS}]+\s+|.+?$', text.strip())
+        sentence_seg.strip()
+        for sentence_seg in re.findall(fr'.+?[{terminators}][{terminators}\s]*|.+?$', text.strip())
     ]
 
 REPLACEMENT_CHAR = '\uFFFF'
 
-def wl_sentence_seg_tokenize_tokens(main, tokens): # pylint: disable=unused-argument
+def wl_sentence_seg_tokenize_tokens(main, tokens, terminators = SENTENCE_SEG_TERMINATORS):
     sentence_segs = []
 
     # Insert a replacement character between tokens to prevent text from being split within tokens
     text = REPLACEMENT_CHAR.join(tokens)
 
-    for sentence_seg in re.findall(fr'.+?[{RE_SENTENCE_SEG_TERMINATORS}]+{REPLACEMENT_CHAR}|.+?$', text.strip()):
+    for sentence_seg in re.findall(fr'.+?[{terminators}]+{REPLACEMENT_CHAR}|.+?$', text.strip()):
         sentence_segs.append([
             token_clean
             for token in sentence_seg.split(REPLACEMENT_CHAR)
