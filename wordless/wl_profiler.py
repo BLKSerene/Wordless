@@ -388,6 +388,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('wl_profiler', 'Spache Grade Level'),
             _tr('wl_profiler', 'Strain Index'),
             _tr('wl_profiler', "Tränkle & Bailer's Readability Formula"),
+            _tr('wl_profiler', "Wheeler & Smith's Readability Formula"),
             _tr('wl_profiler', 'Wiener Sachtextformel')
         ]
 
@@ -1212,6 +1213,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.spache_grade_lvl(self.main, text),
                         wl_measures_readability.strain_index(self.main, text),
                         wl_measures_readability.trankle_bailers_readability_formula(self.main, text),
+                        wl_measures_readability.wheeler_smiths_readability_formula(self.main, text),
                         wl_measures_readability.wstf(self.main, text)
                     ]
                 else:

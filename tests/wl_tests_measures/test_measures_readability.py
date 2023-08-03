@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import copy
 import math
 
 import numpy
@@ -30,6 +31,7 @@ class Wl_Test_Text():
         self.main = main
         self.lang = lang
         self.tokens_multilevel = tokens_multilevel
+        self.tokens_multilevel_with_puncs = copy.deepcopy(tokens_multilevel)
 
 main = wl_test_init.Wl_Test_Main()
 settings = main.settings_custom['measures']['readability']
@@ -38,6 +40,8 @@ TOKENS_MULTILEVEL_0 = []
 TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
 TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'readability', 'boxes', 'created', '.']]]]
 TOKENS_MULTILEVEL_100 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'a', 'sen-tence0', '.']]]]
+TOKENS_MULTILEVEL_100_PREP = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'of', 'sentence', '.']]]]
+TOKENS_MULTILEVEL_100_CONJ = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'and', 'sentence', '.']]]]
 TOKENS_MULTILEVEL_120 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'metropolis', '.']]]] * 15
 TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 18 + [[[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]]
 
@@ -45,6 +49,8 @@ test_text_eng_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0)
 test_text_eng_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12)
 test_text_eng_12_propn = Wl_Test_Text(TOKENS_MULTILEVEL_12_PROPN)
 test_text_eng_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100)
+test_text_eng_100_prep = Wl_Test_Text(TOKENS_MULTILEVEL_100_PREP)
+test_text_eng_100_conj = Wl_Test_Text(TOKENS_MULTILEVEL_100_CONJ)
 test_text_eng_120 = Wl_Test_Text(TOKENS_MULTILEVEL_120)
 test_text_eng_150 = Wl_Test_Text(TOKENS_MULTILEVEL_150)
 
@@ -603,24 +609,41 @@ def test_strain_index():
 def test_trankle_bailers_readability_formula():
     trankle_bailers_eng_0 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_0)
     settings['trankle_bailers_readability_formula']['variant'] = '1'
-    trankle_bailers_eng_100_1 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_100)
+    trankle_bailers_eng_100_prep_1 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_100_prep)
     settings['trankle_bailers_readability_formula']['variant'] = '2'
-    trankle_bailers_eng_100_2 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_100)
+    trankle_bailers_eng_100_conj_2 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_100_conj)
     trankle_bailers_spa_100 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_spa_12)
     trankle_bailers_other_100 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_other_12)
 
     print("Tränkle & Bailer's Readability Formula:")
     print(f'\teng/0: {trankle_bailers_eng_0}')
-    print(f'\teng/12-1: {trankle_bailers_eng_100_1}')
-    print(f'\teng/12-2: {trankle_bailers_eng_100_2}')
+    print(f'\teng/12-1: {trankle_bailers_eng_100_prep_1}')
+    print(f'\teng/12-2: {trankle_bailers_eng_100_conj_2}')
     print(f'\tspa/12: {trankle_bailers_spa_100}')
     print(f'\tother/12: {trankle_bailers_other_100}')
 
     assert trankle_bailers_eng_0 == 'text_too_short'
-    assert trankle_bailers_eng_100_1 == 224.6814 - 79.8304 * (376 / 100) - 12.24032 * (100 / 25) - 1.292857 * 0
-    assert trankle_bailers_eng_100_2 == 234.1063 - 96.11069 * (376 / 100) - 2.05444 * 0 - 1.02805 * 0
+    assert trankle_bailers_eng_100_prep_1 == 224.6814 - 79.8304 * (376 / 100) - 12.24032 * (100 / 25) - 1.292857 * 1
+    assert trankle_bailers_eng_100_conj_2 == 234.1063 - 96.11069 * (377 / 100) - 2.05444 * 0 - 1.02805 * 1
     assert trankle_bailers_spa_100 != 'no_support'
     assert trankle_bailers_other_100 == 'no_support'
+
+def test_wheeler_smiths_readability_formula():
+    wheeler_smith_eng_0 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_0)
+    wheeler_smith_eng_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_12)
+    wheeler_smith_spa_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_spa_12)
+    wheeler_smith_other_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_other_12)
+
+    print("Wheeler & Smith's Readability Formula:")
+    print(f'\teng/0: {wheeler_smith_eng_0}')
+    print(f'\teng/12: {wheeler_smith_eng_12}')
+    print(f'\tspa/12: {wheeler_smith_spa_12}')
+    print(f'\tother/12: {wheeler_smith_other_12}')
+
+    assert wheeler_smith_eng_0 == 'text_too_short'
+    assert wheeler_smith_eng_12 == (12 / 4) * (3 / 12) * 10
+    assert wheeler_smith_spa_12 != 'no_support'
+    assert wheeler_smith_other_12 == 'no_support'
 
 def test_wstf():
     wstf_deu_0 = wl_measures_readability.wstf(main, test_text_deu_0)
@@ -686,4 +709,5 @@ if __name__ == '__main__':
     test_spache_grade_lvl()
     test_strain_index()
     test_trankle_bailers_readability_formula()
+    test_wheeler_smiths_readability_formula()
     test_wstf()
