@@ -1026,6 +1026,9 @@ Tränkle & Bailer's Readability Formula:
         \text{Tr}\ddot{\text{a}}\text{nkle-Bailer}_2 &= 234.1063 - 96.11069 \times \frac{\text{NumCharsAlnum}}{\text{NumWords}} - 2.05444 \times \text{NumPreps} - 1.02805 \times \text{NumConjs}
     \end{align*}
 
+Tuldava's Text Difficulty:
+    \text{TD} = \frac{\text{NumSyls}}{\text{NumWords}} \times \ln \frac{\text{NumWords}}{\text{NumSentences}}
+
 Wheeler & Smith's Readability Formula:
     \text{Wheeler-Smith} = \frac{\text{NumWords}}{\text{NumUnits}} \times \frac{\text{NumWords2+Syls}}{\text{NumWords}} \times 10
 
@@ -1072,6 +1075,7 @@ Measure of Readability|Formula
 <span id="ref-spache-grade-level"></span>Spache Grade Level<br>([Spache, 1953](#ref-spache-1953)<br>Revised: [Spache, 1974](#ref-spache-1974))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br><br>* **Three samples each of 100 words** would be taken randomly from the text and the results would be averaged out, so the text should be **at least 100 words long**.
 <span id="ref-strain-index"></span>Strain Index¹<br>([Solomon, 2006](#ref-solomon-2006))|![Formula](/doc/measures/readability/strain_index.svg)<br><br>* A sample would be constructed using **the first 3 sentences in the text**, so the text should be **at least 3 sentences long**.
 <span id="ref-trankle-bailers-readability-formula"></span>Tränkle & Bailer's Readability Formula²³<br>([Tränkle & Bailer, 1984](#ref-trankle-bailer-1984))|![Formula](/doc/measures/readability/trankle_bailers_readability_formula.svg)<br>where **NumPreps** is the numbers of prepositions, and **NumConjs** is the number of conjunctions.<br><br>* **One sample of 100 words** would be taken randomly from the text, so the text should be **at least 100 words long**.
+<span id="ref-td"></span>Tuldava's Text Difficulty¹<br>([Tuldava, 1975](#ref-tuldava-1975))|![Formula](/doc/measures/readability/td.svg)
 <span id="ref-wheeler-smiths-readability-formula"></span>Wheeler & Smith's Readability Formula¹<br>([Wheeler & Smith, 1954](#ref-wheeler-smith-1954))|![Formula](/doc/measures/readability/wheeler_smiths_readability_formula.svg)<br>where **NumUnits** is the number of sentence segments ending in periods, question marks, exclamation marks, colons, semicolons, and dashes.
 <span id="ref-wstf"></span>Wiener Sachtextformel¹³<br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/wstf.svg)<br>where **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This measure applies only to **German texts**.
 
@@ -1493,9 +1497,11 @@ Measure of Effect Size|Formula
 [78] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="ref-trankle-bailer-1984"></span>
 [79] [**^**](#ref-trankle-bailers-readability-formula) Tränkle, U., & Bailer, H. (1984). *Kreuzvalidierung und Neuberechnung von Lesbarkeitsformeln für die Deutsche Sprache* [Cross-validation and recalculation of the readability formulas for the German language]. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, *16*(3), 231–244.<br>
+<span id="ref-tuldava-1975"></span>
+[80] [**^**](#ref-td) Tuldava, J. (1975). Ob izmerenii trudnosti tekstov [On measuring the complexity of the text]. *Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov*, *345*, 102–120.<br>
 <span id="ref-wheeler-smith-1954"></span>
-[80] [**^**](#ref-wheeler-smiths-readability-formula) Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. *Elementary English*, *31*(7), 397–399.<br>
+[81] [**^**](#ref-wheeler-smiths-readability-formula) Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. *Elementary English*, *31*(7), 397–399.<br>
 <span id="ref-wilson-2013"></span>
-[81] [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
+[82] [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
 <span id="ref-zhang-2004"></span>
-[82] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
+[83] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
