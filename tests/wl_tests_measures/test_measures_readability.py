@@ -628,6 +628,23 @@ def test_trankle_bailers_readability_formula():
     assert trankle_bailers_spa_100 != 'no_support'
     assert trankle_bailers_other_100 == 'no_support'
 
+def test_td():
+    td_eng_0 = wl_measures_readability.td(main, test_text_eng_0)
+    td_eng_12 = wl_measures_readability.td(main, test_text_eng_12)
+    td_spa_12 = wl_measures_readability.td(main, test_text_spa_12)
+    td_other_12 = wl_measures_readability.td(main, test_text_other_12)
+
+    print("Tuldava's Text Difficulty:")
+    print(f'\teng/0: {td_eng_0}')
+    print(f'\teng/12: {td_eng_12}')
+    print(f'\tspa/12: {td_spa_12}')
+    print(f'\tother/12: {td_other_12}')
+
+    assert td_eng_0 == 'text_too_short'
+    assert td_eng_12 == (15 / 12) * numpy.log(12 / 3)
+    assert td_spa_12 != 'no_support'
+    assert td_other_12 == 'no_support'
+
 def test_wheeler_smiths_readability_formula():
     wheeler_smith_eng_0 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_0)
     wheeler_smith_eng_12 = wl_measures_readability.wheeler_smiths_readability_formula(main, test_text_eng_12)
@@ -709,5 +726,6 @@ if __name__ == '__main__':
     test_spache_grade_lvl()
     test_strain_index()
     test_trankle_bailers_readability_formula()
+    test_td()
     test_wheeler_smiths_readability_formula()
     test_wstf()
