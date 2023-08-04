@@ -547,7 +547,7 @@ def re_simplified(main, text):
     return flesch_re_simplified
 
 # FORCAST Grade Level
-# Reference: Caylor, J. S., & Sticht, T. G. (1973). *Development of a simple readability index for job reading material*. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
+# Reference: Caylor, J. S., & Sticht, T. G. (1973). Development of a simple readability index for job reading material. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
 def rgl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
@@ -1008,6 +1008,26 @@ def trankle_bailers_readability_formula(main, text):
         trankle_bailers = 'no_support'
 
     return trankle_bailers
+
+# Tuldava's Text Difficulty
+# References:
+#     Tuldava, J. (1975). Ob izmerenii trudnosti tekstov [On measuring the complexity of the text]. Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov, 345, 102–120.
+#     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. http://peter-grzybek.eu/science/publications/2010/grzybek_2010_text-difficulty-arens-altmann.pdf
+def td(main, text):
+    if text.lang in main.settings_global['syl_tokenizers']:
+        text = get_counts(main, text)
+
+        if text.count_words:
+            td = (
+                (text.count_syls / text.count_words)
+                * numpy.log(text.count_words / text.count_sentences)
+            )
+        else:
+            td = 'text_too_short'
+    else:
+        td = 'no_support'
+
+    return td
 
 # Wheeler & Smith's Readability Formula
 # Reference: Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. Elementary English, 31(7), 397–399.
