@@ -74,6 +74,7 @@ test_text_nld_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'nld')
 test_text_fra_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'fra')
 test_text_pol_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'pol')
 test_text_rus_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'rus')
+test_text_ukr_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ukr')
 
 test_text_other_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'other')
 test_text_other_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'other')
@@ -307,28 +308,31 @@ def test_gl():
 
 def test_re_flesch():
     flesch_re_eng_0 = wl_measures_readability.re_flesch(main, test_text_eng_0)
+    settings['re']['use_powers_sumner_kearl_variant_for_all_langs'] = True
+    flesch_re_eng_12_psk = wl_measures_readability.re_flesch(main, test_text_eng_12)
+    settings['re']['use_powers_sumner_kearl_variant_for_all_langs'] = False
     flesch_re_eng_12 = wl_measures_readability.re_flesch(main, test_text_eng_12)
 
     settings['re']['variant_nld'] = 'Douma'
     flesch_re_nld_12_douma = wl_measures_readability.re_flesch(main, test_text_nld_12)
     settings['re']['variant_nld'] = "Brouwer's Leesindex A"
     flesch_re_nld_12_brouwer = wl_measures_readability.re_flesch(main, test_text_nld_12)
-
     flesch_re_fra_12 = wl_measures_readability.re_flesch(main, test_text_fra_12)
     flesch_re_deu_12 = wl_measures_readability.re_flesch(main, test_text_deu_12)
     flesch_re_ita_12 = wl_measures_readability.re_flesch(main, test_text_ita_12)
     flesch_re_rus_12 = wl_measures_readability.re_flesch(main, test_text_rus_12)
-
     settings['re']['variant_spa'] = 'Fernández Huerta'
     flesch_re_spa_12_fh = wl_measures_readability.re_flesch(main, test_text_spa_12)
     settings['re']['variant_spa'] = 'Szigriszt Pazos'
     flesch_re_spa_12_sp = wl_measures_readability.re_flesch(main, test_text_spa_12)
+    flesch_re_ukr_12 = wl_measures_readability.re_flesch(main, test_text_ukr_12)
 
     flesch_re_afr_12 = wl_measures_readability.re_flesch(main, test_text_afr_12)
     flesch_re_other_12 = wl_measures_readability.re_flesch(main, test_text_other_12)
 
     print('Flesch Reading Ease:')
     print(f'\teng/0: {flesch_re_eng_0}')
+    print(f'\teng/12-psk: {flesch_re_eng_12_psk}')
     print(f'\teng/12: {flesch_re_eng_12}')
     print(f'\tnld/12-douma: {flesch_re_nld_12_douma}')
     print(f'\tnld/12-brouwer: {flesch_re_nld_12_brouwer}')
@@ -338,11 +342,13 @@ def test_re_flesch():
     print(f'\trus/12: {flesch_re_rus_12}')
     print(f'\tspa/12-fh: {flesch_re_spa_12_fh}')
     print(f'\tspa/12-sp: {flesch_re_spa_12_sp}')
+    print(f'\tukr/12: {flesch_re_ukr_12}')
     print(f'\tafr/12: {flesch_re_afr_12}')
     print(f'\tother/12: {flesch_re_other_12}')
 
     assert flesch_re_eng_0 == 'text_too_short'
-    assert flesch_re_eng_12 == 206.835 - 0.846 * (15 / 12 * 100) - 1.015 * (12 / 3)
+    assert flesch_re_eng_12_psk == -2.2029 + 4.55 * (15 / 12) + 0.0778 * (12 / 3)
+    assert flesch_re_eng_12 == 206.835 - 84.6 * (15 / 12) - 1.015 * (12 / 3)
     assert flesch_re_nld_12_douma == 206.84 - 77 * (18 / 12) - 0.93 * (12 / 3)
     assert flesch_re_nld_12_brouwer == 195 - (200 / 3) * (18 / 12) - 2 * (12 / 3)
     assert flesch_re_fra_12 == 207 - 73.6 * (16 / 12) - 1.015 * (12 / 3)
@@ -351,6 +357,7 @@ def test_re_flesch():
     assert flesch_re_rus_12 == 206.835 - 60.1 * (13 / 12) - 1.3 * (12 / 3)
     assert flesch_re_spa_12_fh == 206.84 - 60 * (18 / 12) - 1.02 * (12 / 3)
     assert flesch_re_spa_12_sp == 206.84 - 62.3 * (18 / 12) - (12 / 3)
+    assert flesch_re_ukr_12 == 206.84 - 28.3 * (13 / 12) - 5.93 * (12 / 3)
     assert flesch_re_afr_12 == 206.835 - 0.846 * (18 / 12 * 100) - 1.015 * (12 / 3)
     assert flesch_re_other_12 == 'no_support'
 
