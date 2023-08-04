@@ -46,7 +46,7 @@ for:
   # Windows
   -
     matrix:
-      only: 
+      only:
         - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
 
     install:
@@ -79,7 +79,7 @@ for:
   # macOS
   -
     matrix:
-      only: 
+      only:
         - APPVEYOR_BUILD_WORKER_IMAGE: "macos-catalina"
 
     install:
@@ -112,9 +112,9 @@ for:
       - pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area
 
   # Ubuntu
-  - 
+  -
     matrix:
-      only: 
+      only:
         - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1804"
 
     install:
