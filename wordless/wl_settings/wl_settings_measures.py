@@ -83,6 +83,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Flesch Reading Ease
         self.group_box_re = QGroupBox(self.tr('Flesch Reading Ease'), self)
 
+        self.checkbox_use_powers_sumner_kearl_variant_for_all_langs = QCheckBox(self.tr('Use Powers-Sumner-Kearl variant for all languages'), self)
         self.label_re_variant_nld = QLabel(self.tr('Dutch variant:'), self)
         self.combo_box_re_variant_nld = wl_boxes.Wl_Combo_Box(self)
         self.label_re_variant_spa = QLabel(self.tr('Spanish variant:'), self)
@@ -97,11 +98,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
             'Szigriszt Pazos'
         ])
 
+        self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.stateChanged.connect(self.re_changed)
+
         self.group_box_re.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_re.layout().addWidget(self.label_re_variant_nld, 0, 0)
-        self.group_box_re.layout().addWidget(self.combo_box_re_variant_nld, 0, 1)
-        self.group_box_re.layout().addWidget(self.label_re_variant_spa, 1, 0)
-        self.group_box_re.layout().addWidget(self.combo_box_re_variant_spa, 1, 1)
+        self.group_box_re.layout().addWidget(self.checkbox_use_powers_sumner_kearl_variant_for_all_langs, 0, 0, 1, 3)
+        self.group_box_re.layout().addWidget(self.label_re_variant_nld, 1, 0)
+        self.group_box_re.layout().addWidget(self.combo_box_re_variant_nld, 1, 1)
+        self.group_box_re.layout().addWidget(self.label_re_variant_spa, 2, 0)
+        self.group_box_re.layout().addWidget(self.combo_box_re_variant_spa, 2, 1)
 
         self.group_box_re.layout().setColumnStretch(2, 1)
 
@@ -163,6 +167,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(9, 1)
 
+    def re_changed(self):
+        if self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.isChecked():
+            self.combo_box_re_variant_nld.setEnabled(False)
+            self.combo_box_re_variant_spa.setEnabled(False)
+        else:
+            self.combo_box_re_variant_nld.setEnabled(True)
+            self.combo_box_re_variant_spa.setEnabled(True)
+
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.settings_default)
@@ -182,6 +194,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.combo_box_danielson_bryans_readability_formula_variant.setCurrentText(settings['danielson_bryans_readability_formula']['variant'])
 
         # Flesch Reading Ease
+        self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.setChecked(settings['re']['use_powers_sumner_kearl_variant_for_all_langs'])
         self.combo_box_re_variant_nld.setCurrentText(settings['re']['variant_nld'])
         self.combo_box_re_variant_spa.setCurrentText(settings['re']['variant_spa'])
 
@@ -211,6 +224,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_custom['danielson_bryans_readability_formula']['variant'] = self.combo_box_danielson_bryans_readability_formula_variant.currentText()
 
         # Flesch Reading Ease
+        self.settings_custom['re']['use_powers_sumner_kearl_variant_for_all_langs'] = self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.isChecked()
         self.settings_custom['re']['variant_nld'] = self.combo_box_re_variant_nld.currentText()
         self.settings_custom['re']['variant_spa'] = self.combo_box_re_variant_spa.currentText()
 

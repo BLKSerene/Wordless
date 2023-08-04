@@ -437,6 +437,8 @@ def gl(main, text):
 # Flesch Reading Ease
 # Reference:
 #     Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32(3), 221–233. https://doi.org/10.1037/h0057532
+# Powers-Sumner-Kearl variant:
+#     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # Dutch variant (Douma):
 #     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
 # Dutch variant (Brouwer's Leesindex A):
@@ -457,67 +459,84 @@ def gl(main, text):
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
 # Spanish variant (Szigriszt Pazos):
 #     Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
+# Ukrainian variant:
+#     Partiko, Z. V. (2001). Zagal’ne redaguvannja. Normativni osnovi. Afiša.
+#     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. https://www.iqla.org/includes/basic_references/qualico_2009_proceedings_Grzybek_Kelih_Macutek_2009.pdf
 def re_flesch(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
+        settings = main.settings_custom['measures']['readability']['re']
 
         if text.count_words and text.count_sentences:
-            if text.lang == 'nld':
-                if main.settings_custom['measures']['readability']['re']['variant_nld'] == 'Douma':
+            if settings['use_powers_sumner_kearl_variant_for_all_langs']:
+                re = (
+                    -2.2029
+                    + 4.55 * (text.count_syls / text.count_words)
+                    + 0.0778 * (text.count_words / text.count_sentences)
+                )
+            else:
+                if text.lang == 'nld':
+                    if settings['variant_nld'] == 'Douma':
+                        re = (
+                            206.84
+                            - 77 * (text.count_syls / text.count_words)
+                            - 0.93 * (text.count_words / text.count_sentences)
+                        )
+                    elif settings['variant_nld'] == "Brouwer's Leesindex A":
+                        re = (
+                            195
+                            - (200 / 3) * (text.count_syls / text.count_words)
+                            - 2 * (text.count_words / text.count_sentences)
+                        )
+                elif text.lang == 'fra':
                     re = (
-                        206.84
-                        - 77 * (text.count_syls / text.count_words)
-                        - 0.93 * (text.count_words / text.count_sentences)
+                        207
+                        - 73.6 * (text.count_syls / text.count_words)
+                        - 1.015 * (text.count_words / text.count_sentences)
                     )
-                elif main.settings_custom['measures']['readability']['re']['variant_nld'] == "Brouwer's Leesindex A":
+                elif text.lang.startswith('deu_'):
                     re = (
-                        195
-                        - (200 / 3) * (text.count_syls / text.count_words)
-                        - 2 * (text.count_words / text.count_sentences)
-                    )
-            elif text.lang == 'fra':
-                re = (
-                    207
-                    - 73.6 * (text.count_syls / text.count_words)
-                    - 1.015 * (text.count_words / text.count_sentences)
-                )
-            elif text.lang.startswith('deu_'):
-                re = (
-                    180
-                    - 58.5 * (text.count_syls / text.count_words)
-                    - (text.count_words / text.count_sentences)
-                )
-            elif text.lang == 'ita':
-                re = (
-                    217
-                    - 60 * (text.count_syls / text.count_words)
-                    - 1.3 * (text.count_words / text.count_sentences)
-                )
-            elif text.lang == 'rus':
-                re = (
-                    206.835
-                    - 60.1 * (text.count_syls / text.count_words)
-                    - 1.3 * (text.count_words / text.count_sentences)
-                )
-            elif text.lang == 'spa':
-                if main.settings_custom['measures']['readability']['re']['variant_spa'] == 'Fernández Huerta':
-                    re = (
-                        206.84
-                        - 60 * (text.count_syls / text.count_words)
-                        - 1.02 * (text.count_words / text.count_sentences)
-                    )
-                elif main.settings_custom['measures']['readability']['re']['variant_spa'] == 'Szigriszt Pazos':
-                    re = (
-                        206.84
-                        - 62.3 * (text.count_syls / text.count_words)
+                        180
+                        - 58.5 * (text.count_syls / text.count_words)
                         - (text.count_words / text.count_sentences)
                     )
-            else:
-                re = (
-                    206.835
-                    - 0.846 * (text.count_syls / text.count_words * 100)
-                    - 1.015 * (text.count_words / text.count_sentences)
-                )
+                elif text.lang == 'ita':
+                    re = (
+                        217
+                        - 60 * (text.count_syls / text.count_words)
+                        - 1.3 * (text.count_words / text.count_sentences)
+                    )
+                elif text.lang == 'rus':
+                    re = (
+                        206.835
+                        - 60.1 * (text.count_syls / text.count_words)
+                        - 1.3 * (text.count_words / text.count_sentences)
+                    )
+                elif text.lang == 'spa':
+                    if settings['variant_spa'] == 'Fernández Huerta':
+                        re = (
+                            206.84
+                            - 60 * (text.count_syls / text.count_words)
+                            - 1.02 * (text.count_words / text.count_sentences)
+                        )
+                    elif settings['variant_spa'] == 'Szigriszt Pazos':
+                        re = (
+                            206.84
+                            - 62.3 * (text.count_syls / text.count_words)
+                            - (text.count_words / text.count_sentences)
+                        )
+                elif text.lang == 'ukr':
+                    re = (
+                        206.84
+                        - 28.3 * (text.count_syls / text.count_words)
+                        - 5.93 * (text.count_words / text.count_sentences)
+                    )
+                else:
+                    re = (
+                        206.835
+                        - 84.6 * (text.count_syls / text.count_words)
+                        - 1.015 * (text.count_words / text.count_sentences)
+                    )
         else:
             re = 'text_too_short'
     else:
@@ -1012,7 +1031,7 @@ def trankle_bailers_readability_formula(main, text):
 # Tuldava's Text Difficulty
 # References:
 #     Tuldava, J. (1975). Ob izmerenii trudnosti tekstov [On measuring the complexity of the text]. Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov, 345, 102–120.
-#     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. http://peter-grzybek.eu/science/publications/2010/grzybek_2010_text-difficulty-arens-altmann.pdf
+#     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. https://www.iqla.org/includes/basic_references/qualico_2009_proceedings_Grzybek_Kelih_Macutek_2009.pdf
 def td(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)

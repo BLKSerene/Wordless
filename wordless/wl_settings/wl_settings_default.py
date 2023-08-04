@@ -1762,6 +1762,7 @@ def init_settings_default(main):
                 },
 
                 're': {
+                    'use_powers_sumner_kearl_variant_for_all_langs': False,
                     'variant_nld': 'Douma',
                     'variant_spa': 'Fernández Huerta'
                 },

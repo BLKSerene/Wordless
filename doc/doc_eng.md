@@ -954,16 +954,18 @@ Flesch-Kincaid Grade Level:
 
 Flesch Reading Ease:
     \begin{align*}
-        \text{ASW} &= \frac{\text{NumSyls}}{\text{NumWords}} \qquad \text{ASL} = \frac{\text{NumWords}}{\text{NumSentences}} \\
-        \text{RE} &= 206.835 - 0.846 \times (\text{ASW} \times 100) - 1.015 \times \text{ASL} \\
-        \text{RE}_\text{Dutch-Douma} &= 206.84 - 77 \times \text{ASW} - 0.93 \times \text{ASL} \\
-        \text{RE}_\text{Dutch-Brouwer} &= 195 - \frac{200}{3} \times \text{ASW} - 2 \times \text{ASL} \\
-        \text{RE}_\text{French} &= 207 - 73.6 \times \text{ASW} - 1.015 \times \text{ASL} \\
-        \text{RE}_\text{German} &= 180 - 58.5 \times \text{ASW} - \text{ASL} \\
-        \text{RE}_\text{Italian} &= 217 - 60 \times \text{ASW} - 1.3 \times \text{ASL} \\
-        \text{RE}_\text{Russian} &= 206.835 - 60.1 \times \text{ASW} - 1.3 \times \text{ASL} \\
-        \text{RE}_{\text{Spanish-Fern}\acute{\text{a}}\text{ndez Huerta}} &= 206.84 - 60 \times \text{ASW} - 1.02 \times \text{ASL} \\
-        \text{RE}_\text{Spanish-Szigriszt Pazos} &= 207 - 62.3 \times \text{ASW} - \text{ASL}
+        \text{wl} &= \frac{\text{NumSyls}}{\text{NumWords}} \qquad \text{sl} = \frac{\text{NumWords}}{\text{NumSentences}} \\
+        \text{RE} &= 206.835 - 84.6 \times \text{wl} - 1.015 \times \text{sl} \\
+        \text{RE}_\text{Powers-Sumner-Kearl} &= -2.2029 + 4.55 \times \text{wl} + 0.0778 \times \text{sl} \\
+        \text{RE}_\text{Dutch-Douma} &= 206.84 - 77 \times \text{wl} - 0.93 \times \text{sl} \\
+        \text{RE}_\text{Dutch-Brouwer} &= 195 - \frac{200}{3} \times \text{wl} - 2 \times \text{sl} \\
+        \text{RE}_\text{French} &= 207 - 73.6 \times \text{wl} - 1.015 \times \text{sl} \\
+        \text{RE}_\text{German} &= 180 - 58.5 \times \text{wl} - \text{sl} \\
+        \text{RE}_\text{Italian} &= 217 - 60 \times \text{wl} - 1.3 \times \text{sl} \\
+        \text{RE}_\text{Russian} &= 206.835 - 60.1 \times \text{wl} - 1.3 \times \text{sl} \\
+        \text{RE}_{\text{Spanish-Fern}\acute{\text{a}}\text{ndez Huerta}} &= 206.84 - 60 \times \text{wl} - 1.02 \times \text{sl} \\
+        \text{RE}_\text{Spanish-Szigriszt Pazos} &= 207 - 62.3 \times \text{wl} - \text{sl} \\
+        \text{RE}_\text{Ukrainian} &= 206.84 - 28.3 \times \text{wl} - 5.93 \times \text{sl}
     \end{align*}
 
 Flesch Reading Ease (Simplified):
@@ -1057,7 +1059,7 @@ Measure of Readability|Formula
 <span id="ref-devereux-readability-index"></span>Devereux Readability Index<br>([Smith, 1961](#ref-smith-1961))|![Formula](/doc/measures/readability/devereux_readability_index.svg)
 <span id="ref-elf"></span>Easy Listening Formula¹<br>([Fang, 1966](#ref-fang-1966))|![Formula](/doc/measures/readability/elf.svg)
 <span id="ref-gl"></span>Flesch-Kincaid Grade Level¹<br>([Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/gl.svg)
-<span id="ref-re"></span>Flesch Reading Ease¹³<br>([Flesch, 1948](#ref-flesch-1948)<br>Dutch: [Douma, 1960](#ref-douma-1960); [Brouwer, 1963](#ref-brouwer-1963)<br>French: [Kandel & Moles, 1958](#ref-kandel-moles-1958)<br>German: [Amstad, 1978](#ref-amstad-1978)<br>Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986)<br>Russian: [Oborneva, 2006](#ref-oborneva-2006)<br>Spanish: [Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993))|![Formula](/doc/measures/readability/re.svg)
+<span id="ref-re"></span>Flesch Reading Ease¹³<br>([Flesch, 1948](#ref-flesch-1948)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>Dutch: [Douma, 1960](#ref-douma-1960); [Brouwer, 1963](#ref-brouwer-1963)<br>French: [Kandel & Moles, 1958](#ref-kandel-moles-1958)<br>German: [Amstad, 1978](#ref-amstad-1978)<br>Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986)<br>Russian: [Oborneva, 2006](#ref-oborneva-2006)<br>Spanish: [Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993)<br>Ukrainian: [Partiko, 2001](#ref-partiko-2001))|![Formula](/doc/measures/readability/re.svg)
 <span id="ref-re-simplified"></span>Flesch Reading Ease (Simplified)¹<br>([Farr et al., 1951](#ref-farr-et-al-1951))|![Formula](/doc/measures/readability/re_simplified.svg)
 <span id="ref-rgl"></span>FORCAST Grade Level¹<br>([Caylor & Sticht, 1973](#ref-caylor-sticht-1973))|![Formula](/doc/measures/readability/rgl.svg)<br><br>* **One sample of 150 words** would be taken randomly from the text, so the text should be **at least 150 words long**.
 <span id="ref-cp"></span>Fórmula de comprensibilidad de Gutiérrez de Polini<br>([Gutiérrez de Polini, 1972](#ref-gutierrez-de-polini-1972))|![Formula](/doc/measures/readability/cp.svg)<br><br>* This measure applies only to **Spanish texts**.
@@ -1463,45 +1465,49 @@ Measure of Effect Size|Formula
 [61] [**^**](#ref-lensear-write) O’Hayre, J. (1966). *Gobbledygook has gotta go*. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf<br>
 <span id="ref-paquot-bestgen-2009"></span>
 [62] [**^**](#ref-students-t-test-2-sample) Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. *Language and Computers*, *68*, 247–269.<br>
+<span id="ref-partiko-2001"></span>
+[63] [**^**](#ref-re) Partiko, Z. V. (2001). *Zagal’ne redaguvannja. Normativni osnovi.* Afiša.<br>
 <span id="ref-pedersen-1996"></span>
-[63] [**^**](#ref-fishers-exact-test) Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188–200). The South–Central Regional SAS Users' Group.<br>
+[64] [**^**](#ref-fishers-exact-test) Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), *Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference* (pp. 188–200). The South–Central Regional SAS Users' Group.<br>
 <span id="ref-pedersen-1998"></span>
-[64] [**^**](#ref-min-sensitivity) Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.<br>
+[65] [**^**](#ref-min-sensitivity) Pedersen, T. (1998). Dependent bigram identification. In *Proceedings of the Fifteenth National Conference on Artificial Intelligence* (p. 1197). AAAI Press.<br>
 <span id="ref-pisarek-1969"></span>
-[65] [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. *Zeszyty Prasoznawcze*, *4*(42), 35–48.<br>
+[66] [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. *Zeszyty Prasoznawcze*, *4*(42), 35–48.<br>
 <span id="ref-pojanapunya-todd-2016"></span>
-[66] [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
+[67] [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
+<span id="ref-powers-et-al-1958"></span>
+[68] [**^**](#ref-re) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254<br>
 <span id="ref-quasthoff-wolff-2002"></span>
-[67] [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
+[69] [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
 <span id="ref-rosengren-1971"></span>
-[68] [**^**](#ref-rosengrens-s)[**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
+[70] [**^**](#ref-rosengrens-s)[**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
 <span id="ref-rychly-2008"></span>
-[69] [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
+[71] [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
 <span id="ref-savicky-hlavacova-2002"></span>
-[70] [**^**](#ref-ald) [**^**](#ref-fald) [**^**](#ref-arf) [**^**](#ref-farf) [**^**](#ref-awt) [**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124<br>
+[72] [**^**](#ref-ald) [**^**](#ref-fald) [**^**](#ref-arf) [**^**](#ref-farf) [**^**](#ref-awt) [**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124<br>
 <span id="ref-smadja-et-al-1996"></span>
-[71] [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
+[73] [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.<br>
 <span id="ref-smith-1961"></span>
-[72] [**^**](#ref-devereux-readability-index) Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728<br>
+[74] [**^**](#ref-devereux-readability-index) Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728<br>
 <span id="ref-smith-senter-1967"></span>
-[73] [**^**](#ref-ari) Smith, E. A., & Senter, R. J. (1967). *Automated readability index*. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
+[75] [**^**](#ref-ari) Smith, E. A., & Senter, R. J. (1967). *Automated readability index*. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf<br>
 <span id="ref-solomon-2006"></span>
-[74] [**^**](#ref-strain-index) Solomon, N. W. (2006). *Qualitative analysis of media language* [Unpublished doctoral dissertation]. Madurai Kamaraj University.<br>
+[76] [**^**](#ref-strain-index) Solomon, N. W. (2006). *Qualitative analysis of media language* [Unpublished doctoral dissertation]. Madurai Kamaraj University.<br>
 <span id="ref-spache-1953"></span>
-[75] [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
+[77] [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513<br>
 <span id="ref-spache-1974"></span>
-[76] [**^**](#ref-num-words-spache) [**^**](#ref-spache-grade-level) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.<br>
+[78] [**^**](#ref-num-words-spache) [**^**](#ref-spache-grade-level) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.<br>
 <span id="ref-szigrisze-pazos-1993"></span>
-[77] [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
+[79] [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
 <span id="ref-thanopoulos-et-al-2002"></span>
-[78] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
+[80] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="ref-trankle-bailer-1984"></span>
-[79] [**^**](#ref-trankle-bailers-readability-formula) Tränkle, U., & Bailer, H. (1984). *Kreuzvalidierung und Neuberechnung von Lesbarkeitsformeln für die Deutsche Sprache* [Cross-validation and recalculation of the readability formulas for the German language]. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, *16*(3), 231–244.<br>
+[81] [**^**](#ref-trankle-bailers-readability-formula) Tränkle, U., & Bailer, H. (1984). *Kreuzvalidierung und Neuberechnung von Lesbarkeitsformeln für die Deutsche Sprache* [Cross-validation and recalculation of the readability formulas for the German language]. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, *16*(3), 231–244.<br>
 <span id="ref-tuldava-1975"></span>
-[80] [**^**](#ref-td) Tuldava, J. (1975). Ob izmerenii trudnosti tekstov [On measuring the complexity of the text]. *Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov*, *345*, 102–120.<br>
+[82] [**^**](#ref-td) Tuldava, J. (1975). Ob izmerenii trudnosti tekstov [On measuring the complexity of the text]. *Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov*, *345*, 102–120.<br>
 <span id="ref-wheeler-smith-1954"></span>
-[81] [**^**](#ref-wheeler-smiths-readability-formula) Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. *Elementary English*, *31*(7), 397–399.<br>
+[83] [**^**](#ref-wheeler-smiths-readability-formula) Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. *Elementary English*, *31*(7), 397–399.<br>
 <span id="ref-wilson-2013"></span>
-[82] [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
+[84] [**^**](#ref-log-likehood-ratio-test) [**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.<br>
 <span id="ref-zhang-2004"></span>
-[83] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
+[85] [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.<br>
