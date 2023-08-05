@@ -41,6 +41,7 @@
 
 ### ⏫ Dependency Changes
 - Dependencies: Add khmer-nltk
+- Dependencies: Upgrade Beautiful Soup to 4.12.2
 - Dependencies: Upgrade Botok to 0.8.12
 - Dependencies: Upgrade Charset Normalizer to 3.2.0
 - Dependencies: Upgrade PyThaiNLP to 4.0.2
