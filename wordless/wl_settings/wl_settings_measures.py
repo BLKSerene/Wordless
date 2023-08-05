@@ -128,6 +128,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_re.layout().setColumnStretch(2, 1)
 
+        # Flesch Reading Ease (Farr-Jenkins-Paterson)
+        self.group_box_re_farr_jenkins_paterson = QGroupBox(self.tr('Flsch Reading Ease (Farr-Jenkins-Paterson)'), self)
+
+        self.checkbox_use_powers_sumner_kearl_variant = QCheckBox(self.tr('Use Powers-Sumner-Kearl variant'), self)
+
+        self.group_box_re_farr_jenkins_paterson.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_re_farr_jenkins_paterson.layout().addWidget(self.checkbox_use_powers_sumner_kearl_variant, 0, 0)
+
         # Gunning Fog Index
         self.group_box_fog_index = QGroupBox(self.tr('Gunning Fog Index'), self)
 
@@ -180,12 +188,13 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 4, 0)
         self.layout().addWidget(self.group_box_fog_index, 5, 0)
         self.layout().addWidget(self.group_box_re, 6, 0)
-        self.layout().addWidget(self.group_box_spache_grade_lvl, 7, 0)
-        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 8, 0)
-        self.layout().addWidget(self.group_box_wstf, 9, 0)
+        self.layout().addWidget(self.group_box_re_farr_jenkins_paterson, 7, 0)
+        self.layout().addWidget(self.group_box_spache_grade_lvl, 8, 0)
+        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 9, 0)
+        self.layout().addWidget(self.group_box_wstf, 10, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(10, 1)
+        self.layout().setRowStretch(11, 1)
 
     def re_changed(self):
         if self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.isChecked():
@@ -221,6 +230,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.combo_box_re_variant_nld.setCurrentText(settings['re']['variant_nld'])
         self.combo_box_re_variant_spa.setCurrentText(settings['re']['variant_spa'])
 
+        # Flesch Reading Ease (Farr-Jenkins-Paterson)
+        self.checkbox_use_powers_sumner_kearl_variant.setChecked(settings['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant'])
+
         # Gunning Fog Index
         self.checkbox_use_navy_variant_for_eng.setChecked(settings['fog_index']['use_navy_variant_for_eng'])
 
@@ -253,6 +265,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_custom['re']['use_powers_sumner_kearl_variant_for_all_langs'] = self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.isChecked()
         self.settings_custom['re']['variant_nld'] = self.combo_box_re_variant_nld.currentText()
         self.settings_custom['re']['variant_spa'] = self.combo_box_re_variant_spa.currentText()
+
+        # Flesch Reading Ease (Farr-Jenkins-Paterson)
+        self.settings_custom['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant'] = self.checkbox_use_powers_sumner_kearl_variant.isChecked()
 
         # Gunning Fog Index
         self.settings_custom['fog_index']['use_navy_variant_for_eng'] = self.checkbox_use_navy_variant_for_eng.isChecked()

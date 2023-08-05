@@ -969,8 +969,11 @@ Flesch Reading Ease:
         \text{RE}_\text{Ukrainian} &= 206.84 - 28.3 \times \text{wl} - 5.93 \times \text{sl}
     \end{align*}
 
-Flesch Reading Ease (Simplified):
-    \text{RE} = 1.599 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) - 1.015 \times \frac{\text{NumWords}}{\text{NumSentences}} - 31.517
+Flesch Reading Ease (Farr-Jenkins-Paterson):
+    \begin{align*}
+        \text{RE} &= 1.599 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) - 1.015 \times \frac{\text{NumWords}}{\text{NumSentences}} - 31.517 \\
+        \text{RE}_\text{Farr-Jenkins-Paterson} &= 8.4335 - 0.0648 \times \left(\frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100\right) + 0.0923 \times \frac{\text{NumWords}}{\text{NumSentences}}
+    \end{align*}
 
 FORCAST Grade Level:
     \text{RGL} = 20.43 - 0.11 \times \text{NumWords1Syl}
@@ -1060,7 +1063,7 @@ Measure of Readability|Formula
 <span id="ref-elf"></span>Easy Listening Formula¹<br>([Fang, 1966](#ref-fang-1966))|![Formula](/doc/measures/readability/elf.svg)
 <span id="ref-gl"></span>Flesch-Kincaid Grade Level¹<br>([Kincaid et al., 1975](#ref-kincaid-et-al-1975))|![Formula](/doc/measures/readability/gl.svg)
 <span id="ref-re"></span>Flesch Reading Ease¹³<br>([Flesch, 1948](#ref-flesch-1948)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>Dutch: [Douma, 1960](#ref-douma-1960); [Brouwer, 1963](#ref-brouwer-1963)<br>French: [Kandel & Moles, 1958](#ref-kandel-moles-1958)<br>German: [Amstad, 1978](#ref-amstad-1978)<br>Italian: [Franchina & Vacca, 1986](#ref-franchina-vacca-1986)<br>Russian: [Oborneva, 2006](#ref-oborneva-2006)<br>Spanish: [Fernández Huerta, 1959](#ref-fernandez-huerta-1959); [Szigriszt Pazos, 1993](#ref-szigrisze-pazos-1993)<br>Ukrainian: [Partiko, 2001](#ref-partiko-2001))|![Formula](/doc/measures/readability/re.svg)
-<span id="ref-re-simplified"></span>Flesch Reading Ease (Simplified)¹<br>([Farr et al., 1951](#ref-farr-et-al-1951))|![Formula](/doc/measures/readability/re_simplified.svg)
+<span id="ref-re-farr-jenkins-paterson"></span>Flesch Reading Ease (Farr-Jenkins-Paterson)¹³<br>([Farr et al., 1951](#ref-farr-et-al-1951)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958))|![Formula](/doc/measures/readability/re_farr_jenkins_paterson.svg)
 <span id="ref-rgl"></span>FORCAST Grade Level¹<br>([Caylor & Sticht, 1973](#ref-caylor-sticht-1973))|![Formula](/doc/measures/readability/rgl.svg)<br><br>* **One sample of 150 words** would be taken randomly from the text, so the text should be **at least 150 words long**.
 <span id="ref-cp"></span>Fórmula de comprensibilidad de Gutiérrez de Polini<br>([Gutiérrez de Polini, 1972](#ref-gutierrez-de-polini-1972))|![Formula](/doc/measures/readability/cp.svg)<br><br>* This measure applies only to **Spanish texts**.
 <span id="ref-formula-de-crawford"></span>Fórmula de Crawford¹<br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/formula_de_crawford.svg)<br><br>* This measure applies only to **Spanish texts**.
@@ -1476,7 +1479,7 @@ Measure of Effect Size|Formula
 <span id="ref-pojanapunya-todd-2016"></span>
 [67] [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
 <span id="ref-powers-et-al-1958"></span>
-[68] [**^**](#ref-x-c50) [**^**](#ref-re) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254<br>
+[68] [**^**](#ref-x-c50) [**^**](#ref-re) [**^**](#ref-re-farr-jenkins-paterson) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254<br>
 <span id="ref-quasthoff-wolff-2002"></span>
 [69] [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
 <span id="ref-rosengren-1971"></span>
