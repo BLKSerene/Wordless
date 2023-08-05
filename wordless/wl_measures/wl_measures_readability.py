@@ -305,39 +305,37 @@ def colemans_readability_formula(main, text):
 # References:
 #     Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. Educational Research Bulletin, 27(1), 11–20, 28.
 #     Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. Educational Research Bulletin, 27(2), 37–54.
-def dale_chall_readability_formula(main, text):
-    if text.lang.startswith('eng_'):
-        text = get_counts(main, text)
-
-        if text.count_words and text.count_sentences:
-            count_difficult_words = get_count_words_outside_wordlist(text.words_flat, wordlist = 'dale_3000')
-            x_c50 = (
-                0.1579 * (count_difficult_words / text.count_words * 100)
-                + 0.0496 * (text.count_words / text.count_sentences)
-                + 3.6365
-            )
-        else:
-            x_c50 = 'text_too_short'
-    else:
-        x_c50 = 'no_support'
-
-    return x_c50
-
-# Dale-Chall Readability Formula (New)
-# References:
+# Powers-Sumner-Kearl variant:
+#     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
+# New variant:
 #     Chall, J. S., & Dale, E. (1995). Readability revisited: The new Dale-Chall readability formula. Brookline Books.
 #     清川英男. (1996). CHALL, J. S. and DALE, E.(1995) Readability Revisited: The New Dale-Chall Readability Formula. Brookline Books. 教育メディア研究, 3(1), 59. https://www.jstage.jst.go.jp/article/jaems/3/1/3_KJ00009004543/_pdf
-def dale_chall_readability_formula_new(main, text):
+def x_c50(main, text):
     if text.lang.startswith('eng_'):
         text = get_counts(main, text)
+        settings = main.settings_custom['measures']['readability']['x_c50']
 
         if text.count_words and text.count_sentences:
             count_difficult_words = get_count_words_outside_wordlist(text.words_flat, wordlist = 'dale_3000')
-            x_c50 = (
-                64
-                - 0.95 * (count_difficult_words / text.count_words * 100)
-                - 0.69 * (text.count_words / text.count_sentences)
-            )
+
+            if settings['variant'] == 'Original':
+                x_c50 = (
+                    0.1579 * (count_difficult_words / text.count_words * 100)
+                    + 0.0496 * (text.count_words / text.count_sentences)
+                    + 3.6365
+                )
+            elif settings['variant'] == 'Powers-Sumner-Kearl':
+                x_c50 = (
+                    3.2672
+                    + 0.1155 * (count_difficult_words / text.count_words * 100)
+                    + 0.0596 * (text.count_words / text.count_sentences)
+                )
+            elif settings['variant'] == 'New':
+                x_c50 = (
+                    64
+                    - 0.95 * (count_difficult_words / text.count_words * 100)
+                    - 0.69 * (text.count_words / text.count_sentences)
+                )
         else:
             x_c50 = 'text_too_short'
     else:

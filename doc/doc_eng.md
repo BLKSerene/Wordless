@@ -929,10 +929,11 @@ Coleman's Readability Formula:
     \end{align*}
 
 Dale-Chall Readability Formula:
-    {\text{X}_{\text{c}50} = 0.1579 \times \left(\frac{\text{NumWordsDale}_{3000}}{\text{NumWords}} \times 100\right) + 0.0496 \times \frac{\text{NumWords}}{\text{NumSentences}} + 3.6365}
-
-Dale-Chall Readability Formula (New):
-    \text{X}_{\text{c}50} = 64 - 0.95 \times \left(\frac{\text{NumWordsDale}_{3000}}{\text{NumWords}} \times 100\right) - 0.69 \times \frac{\text{NumWords}}{\text{NumSentences}}
+    \begin{align*}
+        \text{X}_{\text{c50}} &= 0.1579 \times \left(\frac{\text{NumWordsDale}_{3000}}{\text{NumWords}} \times 100\right) + 0.0496 \times \frac{\text{NumWords}}{\text{NumSentences}} + 3.6365 \\
+        \text{X}_{\text{c50-Powers-Sumner-Kearl}} &= 3.2672 + 0.1155 \times \left(\frac{\text{NumWordsDale}_{3000}}{\text{NumWords}} \times 100\right) + 0.0596 \times \frac{\text{NumWords}}{\text{NumSentences}} \\
+        \text{X}_{\text{c50-New}} &= 64 - 0.95 \times \left(\frac{\text{NumWordsDale}_{3000}}{\text{NumWords}} \times 100\right) - 0.69 \times \frac{\text{NumWords}}{\text{NumSentences}}
+    \end{align*}
 
 Danielson-Bryan's Readability Formula:
     \begin{align*}
@@ -1052,8 +1053,7 @@ Measure of Readability|Formula
 <span id="ref-bormuths-cloze-mean-gp"></span>Bormuth's Cloze Mean & Grade Placement<br>([Bormuth, 1969](#ref-bormuth-1969))|![Formula](/doc/measures/readability/bormuths_cloze_mean_gp.svg)<br>where **C** is the cloze criterion score, whose value could be changed via **Menu → Preferences → Settings → Measures → Readability → Bormuth's Grade Placement - Cloze criterion score**<br><br>* This measure applies only to **English texts**.
 <span id="ref-coleman-liau-index"></span>Coleman-Liau Index<br>([Coleman & Liau, 1975](#ref-coleman-liau-1975))|![Formula](/doc/measures/readability/coleman_liau_index.svg)
 <span id="ref-colemans-readability-formula"></span>Coleman's Readability Formula¹²³<br>([Liau et al., 1976](#ref-liau-et-al-1976))|![Formula](/doc/measures/readability/colemans_readability_formula.svg)<br>where **NumProns** is the number of pronouns, and **NumPreps** is the number of prepositions
-<span id="ref-dale-chall-readability-formula"></span>Dale-Chall Readability Formula<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b))|![Formula](/doc/measures/readability/x_c50.svg)<br><br>* This measure applies only to **English texts**.
-<span id="ref-dale-chall-readability-formula-new"></span>Dale-Chall Readability Formula (New)<br>([Chall & Dale, 1995](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50_new.svg)<br><br>* This measure applies only to **English texts**.
+<span id="ref-x-c50"></span>Dale-Chall Readability Formula³<br>([Dale & Chall, 1948a](#ref-dale-chall-1948a); [Dale & Chall, 1948b](#ref-dale-chall-1948b)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>New: [Chall & Dale, 1995](#ref-chall-dale-1995))|![Formula](/doc/measures/readability/x_c50.svg)<br><br>* This measure applies only to **English texts**.
 <span id="ref-danielson-bryans-readability-formula"></span>Danielson-Bryan's Readability Formula³<br>([Danielson & Bryan, 1963](#ref-danielson-bryan-1963))|![Formula](/doc/measures/readability/danielson_bryans_readability_formula.svg)
 <span id="ref-drp"></span>Degrees of Reading Power<br>([College Entrance Examination Board, 1981](#ref-college-entrance-examination-board-1981))|![Formula](/doc/measures/readability/drp.svg)<br>where **M** is *Bormuth's cloze mean*.<br><br>* This measure applies only to **English texts**.
 <span id="ref-devereux-readability-index"></span>Devereux Readability Index<br>([Smith, 1961](#ref-smith-1961))|![Formula](/doc/measures/readability/devereux_readability_index.svg)
@@ -1358,11 +1358,11 @@ Measure of Effect Size|Formula
 <span id="ref-brouwer-1963"></span>
 [8] [**^**](#ref-re) Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. *Paedagogische studiën*, *40*, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en<br>
 <span id="ref-carroll-1970"></span>
-[9] [**^**](#ref-carrolls-d2)[**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x<br>
+[9] [**^**](#ref-carrolls-d2) [**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x<br>
 <span id="ref-caylor-sticht-1973"></span>
 [10] [**^**](#ref-rgl) Caylor, J. S., & Sticht, T. G. (1973). *Development of a simple readability index for job reading material*. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf<br>
 <span id="ref-chall-dale-1995"></span>
-[11] [**^**](#ref-dale-chall-readability-formula-new) Chall, J. S., & Dale, E. (1995). *Readability revisited: The new Dale-Chall readability formula*. Brookline Books.<br>
+[11] [**^**](#ref-x-c50) Chall, J. S., & Dale, E. (1995). *Readability revisited: The new Dale-Chall readability formula*. Brookline Books.<br>
 <span id="ref-church-gale-1991"></span>
 [12] [**^**](#ref-squared-phi-coeff) Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.<br>
 <span id="ref-church-et-al-1991"></span>
@@ -1382,9 +1382,9 @@ Measure of Effect Size|Formula
 <span id="ref-dale-1931"></span>
 [20] [**^**](#ref-num-words-dale-769) Dale, E. (1931). A comparison of two word lists. *Educational Research Bulletin*, *10*(18), 484–489.<br>
 <span id="ref-dale-chall-1948a"></span>
-[21] [**^**](#ref-dale-chall-readability-formula) Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. *Educational Research Bulletin*, *27*(1), 11–20, 28.<br>
+[21] [**^**](#ref-x-c50) Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. *Educational Research Bulletin*, *27*(1), 11–20, 28.<br>
 <span id="ref-dale-chall-1948b"></span>
-[22] [**^**](#ref-num-words-dale-3000) [**^**](#ref-dale-chall-readability-formula) Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.<br>
+[22] [**^**](#ref-num-words-dale-3000) [**^**](#ref-x-c50) Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. *Educational Research Bulletin*, *27*(2), 37–54.<br>
 <span id="ref-danielson-bryan-1963"></span>
 [23] [**^**](#ref-danielson-bryans-readability-formula) Danielson, W. A., & Bryan, S. D. (1963). Computer automation of two readability formulas. *Journalism Quarterly*, *40*(2), 201–206. https://doi.org/10.1177/107769906304000207<br>
 <span id="ref-dennis-1964"></span>
@@ -1396,7 +1396,7 @@ Measure of Effect Size|Formula
 <span id="ref-dunning-1993"></span>
 [27] [**^**](#ref-log-likehood-ratio-test) Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.<br>
 <span id="ref-dunning-1998"></span>
-[28] [**^**](#ref-jaccard-index)[**^**](#ref-mi) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf<br>
+[28] [**^**](#ref-jaccard-index) [**^**](#ref-mi) Dunning, T. E. (1998). *Finding structure in text, genome and other symbolic sequences* [Doctoral dissertation, University of Sheffield]. arXiv. arxiv.org/pdf/1207.1847.pdf<br>
 <span id="ref-elhaj-rayson-2016"></span>
 [29] [**^**](#ref-osman) El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), *Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016)* (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html<br>
 <span id="ref-engwall-1974"></span>
@@ -1426,9 +1426,9 @@ Measure of Effect Size|Formula
 <span id="ref-hardie-2014"></span>
 [42] [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.<br>
 <span id="ref-hofland-johanson-1982"></span>
-[43] [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
+[43] [**^**](#ref-pearsons-chi-squared-test) [**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.<br>
 <span id="ref-juilland-chang-rodrigues-1964"></span>
-[44] [**^**](#ref-juillands-d)[**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.<br>
+[44] [**^**](#ref-juillands-d) [**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.<br>
 <span id="ref-kandel-moles-1958"></span>
 [45] [**^**](#ref-re) Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. *The Journal of Educational Research*, *21*, 283–287.<br>
 <span id="ref-kilgarriff-2001"></span>
@@ -1476,11 +1476,11 @@ Measure of Effect Size|Formula
 <span id="ref-pojanapunya-todd-2016"></span>
 [67] [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
 <span id="ref-powers-et-al-1958"></span>
-[68] [**^**](#ref-re) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254<br>
+[68] [**^**](#ref-x-c50) [**^**](#ref-re) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254<br>
 <span id="ref-quasthoff-wolff-2002"></span>
 [69] [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
 <span id="ref-rosengren-1971"></span>
-[70] [**^**](#ref-rosengrens-s)[**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
+[70] [**^**](#ref-rosengrens-s) [**^**](#ref-rosengrens-kf) Rosengren, I. (1971). The quantitative concept of language and its relation to the structure of frequency dictionaries. *Études de linguistique appliquée*, *1*, 103–127.<br>
 <span id="ref-rychly-2008"></span>
 [71] [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University<br>
 <span id="ref-savicky-hlavacova-2002"></span>
@@ -1500,7 +1500,7 @@ Measure of Effect Size|Formula
 <span id="ref-szigrisze-pazos-1993"></span>
 [79] [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y<br>
 <span id="ref-thanopoulos-et-al-2002"></span>
-[80] [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
+[80] [**^**](#ref-lfmd) [**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.<br>
 <span id="ref-trankle-bailer-1984"></span>
 [81] [**^**](#ref-trankle-bailers-readability-formula) Tränkle, U., & Bailer, H. (1984). *Kreuzvalidierung und Neuberechnung von Lesbarkeitsformeln für die Deutsche Sprache* [Cross-validation and recalculation of the readability formulas for the German language]. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, *16*(3), 231–244.<br>
 <span id="ref-tuldava-1975"></span>

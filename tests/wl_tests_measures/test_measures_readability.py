@@ -198,32 +198,27 @@ def test_colemans_readability_formula():
     assert cloze_pct_spa_12 != 'no_support'
     assert cloze_pct_other_12 == 'no_support'
 
-def test_dale_chall_readability_formula():
-    x_c50_eng_0 = wl_measures_readability.dale_chall_readability_formula(main, test_text_eng_0)
-    x_c50_eng_12 = wl_measures_readability.dale_chall_readability_formula(main, test_text_eng_12)
-    x_c50_spa_12 = wl_measures_readability.dale_chall_readability_formula(main, test_text_spa_12)
+def test_x_c50():
+    x_c50_eng_0 = wl_measures_readability.x_c50(main, test_text_eng_0)
+    settings['x_c50']['variant'] = 'Original'
+    x_c50_eng_12_orig = wl_measures_readability.x_c50(main, test_text_eng_12)
+    settings['x_c50']['variant'] = 'Powers-Sumner-Kearl'
+    x_c50_eng_12_psk = wl_measures_readability.x_c50(main, test_text_eng_12)
+    settings['x_c50']['variant'] = 'New'
+    x_c50_eng_12_new = wl_measures_readability.x_c50(main, test_text_eng_12)
+    x_c50_spa_12 = wl_measures_readability.x_c50(main, test_text_spa_12)
 
     print('Dale-Chall Readability Formula:')
     print(f'\teng/0: {x_c50_eng_0}')
-    print(f'\teng/12: {x_c50_eng_12}')
+    print(f'\teng/12-orig: {x_c50_eng_12_orig}')
+    print(f'\teng/12-psk: {x_c50_eng_12_psk}')
+    print(f'\teng/12-new: {x_c50_eng_12_new}')
     print(f'\tspa/12: {x_c50_spa_12}')
 
     assert x_c50_eng_0 == 'text_too_short'
-    assert x_c50_eng_12 == 0.1579 * (1 / 12 * 100) + 0.0496 * (12 / 3) + 3.6365
-    assert x_c50_spa_12 == 'no_support'
-
-def test_dale_chall_readability_formula_new():
-    x_c50_eng_0 = wl_measures_readability.dale_chall_readability_formula_new(main, test_text_eng_0)
-    x_c50_eng_12 = wl_measures_readability.dale_chall_readability_formula_new(main, test_text_eng_12)
-    x_c50_spa_12 = wl_measures_readability.dale_chall_readability_formula_new(main, test_text_spa_12)
-
-    print('Dale-Chall Readability Formula (New):')
-    print(f'\teng/0: {x_c50_eng_0}')
-    print(f'\teng/12: {x_c50_eng_12}')
-    print(f'\tspa/12: {x_c50_spa_12}')
-
-    assert x_c50_eng_0 == 'text_too_short'
-    assert x_c50_eng_12 == 64 - 0.95 * (1 / 12 * 100) - 0.69 * (12 / 3)
+    assert x_c50_eng_12_orig == 0.1579 * (1 / 12 * 100) + 0.0496 * (12 / 3) + 3.6365
+    assert x_c50_eng_12_psk == 3.2672 + 0.1155 * (1 / 12 * 100) + 0.0596 * (12 / 3)
+    assert x_c50_eng_12_new == 64 - 0.95 * (1 / 12 * 100) - 0.69 * (12 / 3)
     assert x_c50_spa_12 == 'no_support'
 
 def test_danielson_bryans_readability_formula():
@@ -708,8 +703,7 @@ if __name__ == '__main__':
     test_bormuths_gp()
     test_coleman_liau_index()
     test_colemans_readability_formula()
-    test_dale_chall_readability_formula()
-    test_dale_chall_readability_formula_new()
+    test_x_c50()
     test_danielson_bryans_readability_formula()
     test_drp()
     test_devereux_readability_index()

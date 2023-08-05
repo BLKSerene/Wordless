@@ -65,7 +65,25 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_colemans_readability_formula.setLayout(wl_layouts.Wl_Layout())
         self.group_box_colemans_readability_formula.layout().addWidget(self.label_colemans_readability_formula_variant, 0, 0)
         self.group_box_colemans_readability_formula.layout().addWidget(self.combo_box_colemans_readability_formula_variant, 0, 1)
+
         self.group_box_colemans_readability_formula.layout().setColumnStretch(2, 1)
+
+        # Dale-Chall Readability Formula
+        self.group_box_x_c50 = QGroupBox(self.tr('Dale-Chall Readability Formula'), self)
+        self.label_x_c50_variant = QLabel(self.tr('Variant:'), self)
+        self.combo_box_x_c50_variant = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_x_c50_variant.addItems([
+            self.tr('Original'),
+            self.tr('Powers-Sumner-Kearl'),
+            self.tr('New')
+        ])
+
+        self.group_box_x_c50.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_x_c50.layout().addWidget(self.label_x_c50_variant, 0, 0)
+        self.group_box_x_c50.layout().addWidget(self.combo_box_x_c50_variant, 0, 1)
+
+        self.group_box_x_c50.layout().setColumnStretch(2, 1)
 
         # Danielson-Bryan's Readability Formula
         self.group_box_danielson_bryans_readability_formula = QGroupBox(self.tr("Danielson-Bryan's Readability Formula"), self)
@@ -78,6 +96,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_danielson_bryans_readability_formula.setLayout(wl_layouts.Wl_Layout())
         self.group_box_danielson_bryans_readability_formula.layout().addWidget(self.label_danielson_bryans_readability_formula_variant, 0, 0)
         self.group_box_danielson_bryans_readability_formula.layout().addWidget(self.combo_box_danielson_bryans_readability_formula_variant, 0, 1)
+
         self.group_box_danielson_bryans_readability_formula.layout().setColumnStretch(2, 1)
 
         # Flesch Reading Ease
@@ -157,15 +176,16 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_ari, 0, 0)
         self.layout().addWidget(self.group_box_bormuths_gp, 1, 0)
         self.layout().addWidget(self.group_box_colemans_readability_formula, 2, 0)
-        self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 3, 0)
-        self.layout().addWidget(self.group_box_fog_index, 4, 0)
-        self.layout().addWidget(self.group_box_re, 5, 0)
-        self.layout().addWidget(self.group_box_spache_grade_lvl, 6, 0)
-        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 7, 0)
-        self.layout().addWidget(self.group_box_wstf, 8, 0)
+        self.layout().addWidget(self.group_box_x_c50, 3, 0)
+        self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 4, 0)
+        self.layout().addWidget(self.group_box_fog_index, 5, 0)
+        self.layout().addWidget(self.group_box_re, 6, 0)
+        self.layout().addWidget(self.group_box_spache_grade_lvl, 7, 0)
+        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 8, 0)
+        self.layout().addWidget(self.group_box_wstf, 9, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(9, 1)
+        self.layout().setRowStretch(10, 1)
 
     def re_changed(self):
         if self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.isChecked():
@@ -189,6 +209,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         # Coleman's Readability Formula
         self.combo_box_colemans_readability_formula_variant.setCurrentText(settings['colemans_readability_formula']['variant'])
+
+        # Dale-Chall Readability Formula
+        self.combo_box_x_c50_variant.setCurrentText(settings['x_c50']['variant'])
 
         # Danielson-Bryan's Readability Formula
         self.combo_box_danielson_bryans_readability_formula_variant.setCurrentText(settings['danielson_bryans_readability_formula']['variant'])
@@ -219,6 +242,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         # Coleman's Readability Formula
         self.settings_custom['colemans_readability_formula']['variant'] = self.combo_box_colemans_readability_formula_variant.currentText()
+
+        # Dale-Chall Readability Formula
+        self.settings_custom['x_c50']['variant'] = self.combo_box_x_c50_variant.currentText()
 
         # Danielson-Bryan's Readability Formula
         self.settings_custom['danielson_bryans_readability_formula']['variant'] = self.combo_box_danielson_bryans_readability_formula_variant.currentText()

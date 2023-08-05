@@ -1753,6 +1753,10 @@ def init_settings_default(main):
                     'variant': '2'
                 },
 
+                'x_c50': {
+                    'variant': _tr('init_settings_default', 'New')
+                },
+
                 'danielson_bryans_readability_formula': {
                     'variant': '1'
                 },
