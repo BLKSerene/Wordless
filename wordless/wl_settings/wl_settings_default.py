@@ -1762,7 +1762,7 @@ def init_settings_default(main):
                 },
 
                 'fog_index': {
-                    'use_navy_variant_for_eng': False
+                    'variant_eng': _tr('init_settings_default', 'Original')
                 },
 
                 're': {

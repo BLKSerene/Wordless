@@ -993,7 +993,9 @@ Gulpease Index:
 Gunning Fog Index:
     \begin{align*}
         \text{Fog Index} &= 0.4 \times \left(\frac{\text{NumWords}}{\text{NumSentences}} + \frac{\text{NumHardWords}}{\text{NumWords}} \times 100\right) \\
-        \text{Fog Index}_{\text{Navy}} &= \frac{\frac{\text{NumWords} + 2 \times \text{NumWords3+Syls}}{\text{NumSentences}} - 3}{2}
+        \text{Fog Index}_\text{Powers-Sumner-Kearl} &= 3.0680 + 0.0877 \times \frac{\text{NumWords}}{\text{NumSentences}} + 0.0984 \times \left(\frac{\text{NumHardWords}}{\text{NumWords}} \times 100\right) \\
+        \text{Fog Index}_\text{Navy} &= \frac{\frac{\text{NumWords} + 2 \times \text{NumWords3+Syls}}{\text{NumSentences}} - 3}{2} \\
+        \text{Fog Index}_\text{Polish} &= \frac{\sqrt{\left(\frac{\text{NumWords}}{\text{NumSentences}}\right)^2 + \left(\frac{\text{NumHardWords}}{\text{NumWords}} \times 100\right)^2}}{2}
     \end{align*}
 
 Legibilidad µ:
@@ -1069,7 +1071,7 @@ Measure of Readability|Formula
 <span id="ref-formula-de-crawford"></span>Fórmula de Crawford¹<br>([Crawford, 1985](#ref-crawford-1985))|![Formula](/doc/measures/readability/formula_de_crawford.svg)<br><br>* This measure applies only to **Spanish texts**.
 <span id="ref-fuckss-stilcharakteristik"></span>Fucks's Stilcharakteristik¹<br>([Fucks, 1955](#ref-fucks-1955))|![Formula](/doc/measures/readability/fuckss_stilcharakteristik.svg)
 <span id="ref-gulpease-index"></span>Gulpease Index<br>([Lucisano & Emanuela Piemontese, 1988](#ref-lucisano-emanuela-piemontese-1988))|![Formula](/doc/measures/readability/gulpease_index.svg)<br><br>* This measure applies only to **Italian texts**.
-<span id="ref-fog-index"></span>Gunning Fog Index¹³<br>(English: [Gunning, 1968](#ref-gunning-1968)<br>Navy: [Kincaid et al., 1975](#ref-kincaid-et-al-1975)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables excluding all proper nouns and words with 3 syllables ending with *-ed* or *-es* for **English texts**, and the number of words with 4 or more syllables for **Polish texts**.<br><br>* This measure applies only to **English & Polish texts**.
+<span id="ref-fog-index"></span>Gunning Fog Index¹³<br>(English: [Gunning, 1968](#ref-gunning-1968)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>Navy: [Kincaid et al., 1975](#ref-kincaid-et-al-1975)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables, except proper nouns and words with 3 syllables ending with *-ed* or *-es*, for **English texts**, and the number of words with 4 or more syllables in their base forms, except proper nouns, for **Polish texts**.<br><br>* This measure applies only to **English & Polish texts**.
 <span id="ref-mu"></span>Legibilidad µ<br>([Muñoz Baquedano, 2006](#ref-munoz-baquedano-2006))|![Formula](/doc/measures/readability/mu.svg)<br>where **LenWordsAvg** is the average word length in letters, and **LenWordsVar** is the variance of word lengths in letters.<br><br>* This measure applies only to **Spanish texts**.
 <span id="ref-lensear-write"></span>Lensear Write¹<br>([O’Hayre, 1966](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/lensear_write.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*.<br><br>* This measure applies only to **English texts**.<br>* **One sample of 100 words** would be taken randomly from the text, and if the text is **shorter than 100 words**, **NumWords1Syl** and **NumSentences** would be multiplied by 100 and then divided by **NumWords**.
 <span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968))|![Formula](/doc/measures/readability/lix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
@@ -1479,7 +1481,7 @@ Measure of Effect Size|Formula
 <span id="ref-pojanapunya-todd-2016"></span>
 [67] [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030<br>
 <span id="ref-powers-et-al-1958"></span>
-[68] [**^**](#ref-x-c50) [**^**](#ref-re) [**^**](#ref-re-farr-jenkins-paterson) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254<br>
+[68] [**^**](#ref-x-c50) [**^**](#ref-re) [**^**](#ref-re-farr-jenkins-paterson) [**^**](#ref-fog-index) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254<br>
 <span id="ref-quasthoff-wolff-2002"></span>
 [69] [**^**](#ref-poisson-collocation-measure) Quasthoff, U., & Wolff, C. (2002). The poisson collocation measure and its applications. *Proceedings of 2nd International Workshop on Computational Approaches to Collocations*. IEEE.<br>
 <span id="ref-rosengren-1971"></span>

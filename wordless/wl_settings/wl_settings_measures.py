@@ -75,7 +75,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.combo_box_x_c50_variant.addItems([
             self.tr('Original'),
-            self.tr('Powers-Sumner-Kearl'),
+            'Powers-Sumner-Kearl',
             self.tr('New')
         ])
 
@@ -109,7 +109,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.combo_box_re_variant_spa = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_re_variant_nld.addItems([
-            "Brouwer's Leesindex A",
+            self.tr("Brouwer's Leesindex A"),
             'Douma',
         ])
         self.combo_box_re_variant_spa.addItems([
@@ -139,10 +139,20 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Gunning Fog Index
         self.group_box_fog_index = QGroupBox(self.tr('Gunning Fog Index'), self)
 
-        self.checkbox_use_navy_variant_for_eng = QCheckBox(self.tr('Use Navy variant for English'), self)
+        self.label_fog_index_variant_eng = QLabel(self.tr('English variant:'), self)
+        self.combo_box_fog_index_variant_eng = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_fog_index_variant_eng.addItems([
+            self.tr('Original'),
+            'Powers-Sumner-Kearl',
+            self.tr('Navy')
+        ])
 
         self.group_box_fog_index.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_fog_index.layout().addWidget(self.checkbox_use_navy_variant_for_eng, 0, 0)
+        self.group_box_fog_index.layout().addWidget(self.label_fog_index_variant_eng, 0, 0)
+        self.group_box_fog_index.layout().addWidget(self.combo_box_fog_index_variant_eng, 0, 1)
+
+        self.group_box_fog_index.layout().setColumnStretch(2, 1)
 
         # Spache Grade Level
         self.group_box_spache_grade_lvl = QGroupBox(self.tr('Spache Grade Level'), self)
@@ -234,7 +244,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.checkbox_use_powers_sumner_kearl_variant.setChecked(settings['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant'])
 
         # Gunning Fog Index
-        self.checkbox_use_navy_variant_for_eng.setChecked(settings['fog_index']['use_navy_variant_for_eng'])
+        self.combo_box_fog_index_variant_eng.setCurrentText(settings['fog_index']['variant_eng'])
 
         # Spache Grade Level
         self.checkbox_use_rev_formula.setChecked(settings['spache_grade_lvl']['use_rev_formula'])
@@ -270,7 +280,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_custom['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant'] = self.checkbox_use_powers_sumner_kearl_variant.isChecked()
 
         # Gunning Fog Index
-        self.settings_custom['fog_index']['use_navy_variant_for_eng'] = self.checkbox_use_navy_variant_for_eng.isChecked()
+        self.settings_custom['fog_index']['variant_eng'] = self.combo_box_fog_index_variant_eng.currentText()
 
         # Spache Grade Level
         self.settings_custom['spache_grade_lvl']['use_rev_formula'] = self.checkbox_use_rev_formula.isChecked()

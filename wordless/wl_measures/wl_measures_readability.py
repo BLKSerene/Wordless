@@ -22,10 +22,13 @@ import random
 import re
 
 import numpy
+from PyQt5.QtCore import QCoreApplication
 
 from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_pos_tagging, wl_sentence_tokenization, wl_syl_tokenization
+from wordless.wl_nlp import wl_lemmatization, wl_pos_tagging, wl_sentence_tokenization, wl_syl_tokenization
 from wordless.wl_utils import wl_misc, wl_paths
+
+_tr = QCoreApplication.translate
 
 def get_counts(main, text):
     # Count of sentences
@@ -318,7 +321,7 @@ def x_c50(main, text):
         if text.count_words and text.count_sentences:
             count_difficult_words = get_count_words_outside_wordlist(text.words_flat, wordlist = 'dale_3000')
 
-            if settings['variant'] == 'Original':
+            if settings['variant'] == _tr('wl_measures_readability', 'Original'):
                 x_c50 = (
                     0.1579 * (count_difficult_words / text.count_words * 100)
                     + 0.0496 * (text.count_words / text.count_sentences)
@@ -330,7 +333,7 @@ def x_c50(main, text):
                     + 0.1155 * (count_difficult_words / text.count_words * 100)
                     + 0.0596 * (text.count_words / text.count_sentences)
                 )
-            elif settings['variant'] == 'New':
+            elif settings['variant'] == _tr('wl_measures_readability', 'New'):
                 x_c50 = (
                     64
                     - 0.95 * (count_difficult_words / text.count_words * 100)
@@ -480,7 +483,7 @@ def re_flesch(main, text):
                             - 77 * (text.count_syls / text.count_words)
                             - 0.93 * (text.count_words / text.count_sentences)
                         )
-                    elif settings['variant_nld'] == "Brouwer's Leesindex A":
+                    elif settings['variant_nld'] == _tr('wl_measures_readability', "Brouwer's Leesindex A"):
                         re = (
                             195
                             - (200 / 3) * (text.count_syls / text.count_words)
@@ -672,6 +675,8 @@ def gulpease_index(main, text):
 # Gunning Fog Index
 # References:
 #     Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
+# Powers-Sumner-Kearl:
+#     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # Navy:
 #     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 # Polish:
@@ -682,11 +687,13 @@ def fog_index(main, text):
 
         if text.count_sentences and text.count_words:
             count_hard_words = 0
+            variant_eng = main.settings_custom['measures']['readability']['fog_index']['variant_eng']
 
             if text.lang.startswith('eng_'):
-                if main.settings_custom['measures']['readability']['fog_index']['use_navy_variant_for_eng']:
-                    count_words_3_plus_syls = get_count_words_syls(text.syls_words, len_min = 3)
-                else:
+                if variant_eng in [
+                    _tr('wl_measures_readability', 'Original'),
+                    _tr('wl_measures_readability', 'Powers-Sumner-Kearl')
+                ]:
                     words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
 
                     for syls, (word, tag) in zip(text.syls_words, words_tagged):
@@ -698,17 +705,40 @@ def fog_index(main, text):
                             )
                         ):
                             count_hard_words += 1
+
+                    if variant_eng == _tr('wl_measures_readability', 'Original'):
+                        fog_index = (
+                            0.4
+                            * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
+                        )
+                    elif variant_eng == _tr('wl_measures_readability', 'Powers-Sumner-Kearl'):
+                        fog_index = (
+                            3.0680
+                            + 0.0877 * (text.count_words / text.count_sentences)
+                            + 0.0984 * (count_hard_words / text.count_words * 100)
+                        )
+                elif variant_eng == _tr('wl_measures_readability', 'Navy'):
+                    count_words_3_plus_syls = get_count_words_syls(text.syls_words, len_min = 3)
+
+                    fog_index = (
+                        ((text.count_words + 2 * count_words_3_plus_syls) / text.count_sentences - 3)
+                        / 2
+                    )
             elif text.lang == 'pol':
-                for syls in text.syls_words:
-                    if len(syls) >= 4:
+                words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = 'pol', tagset = 'universal')
+                lemmas = wl_lemmatization.wl_lemmatize(main, text.words_flat, lang = 'pol')
+                syls_words = wl_syl_tokenization.wl_syl_tokenize(main, lemmas, lang = 'pol')
+
+                for syls, (word, tag) in zip(syls_words, words_tagged):
+                    if len(syls) > 4 and 'PROPN' not in tag:
                         count_hard_words += 1
 
-            if text.lang.startswith('eng_') and main.settings_custom['measures']['readability']['fog_index']['use_navy_variant_for_eng']:
-                fog_index = ((text.count_words + 2 * count_words_3_plus_syls) / text.count_sentences - 3) / 2
-            else:
                 fog_index = (
-                    0.4
-                    * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
+                    numpy.sqrt(
+                        (text.count_words / text.count_sentences) ** 2
+                        + (count_hard_words / text.count_words * 100) ** 2
+                    )
+                    / 2
                 )
         else:
             fog_index = 'text_too_short'
