@@ -171,9 +171,9 @@ def aari(main, text):
     return aari
 
 # Automated Readability Index
-# Reference:
+# References:
 #     Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
-# Navy variant:
+# Navy:
 #     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def ari(main, text):
     text = get_counts(main, text)
@@ -305,9 +305,9 @@ def colemans_readability_formula(main, text):
 # References:
 #     Dale, E., & Chall, J. S. (1948a). A formula for predicting readability. Educational Research Bulletin, 27(1), 11–20, 28.
 #     Dale, E., & Chall, J. S. (1948b). A formula for predicting readability: Instructions. Educational Research Bulletin, 27(2), 37–54.
-# Powers-Sumner-Kearl variant:
+# Powers-Sumner-Kearl:
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
-# New variant:
+# New:
 #     Chall, J. S., & Dale, E. (1995). Readability revisited: The new Dale-Chall readability formula. Brookline Books.
 #     清川英男. (1996). CHALL, J. S. and DALE, E.(1995) Readability Revisited: The New Dale-Chall Readability Formula. Brookline Books. 教育メディア研究, 3(1), 59. https://www.jstage.jst.go.jp/article/jaems/3/1/3_KJ00009004543/_pdf
 def x_c50(main, text):
@@ -433,31 +433,31 @@ def gl(main, text):
     return gl
 
 # Flesch Reading Ease
-# Reference:
+# References:
 #     Flesch, R. (1948). A new readability yardstick. Journal of Applied Psychology, 32(3), 221–233. https://doi.org/10.1037/h0057532
-# Powers-Sumner-Kearl variant:
+# Powers-Sumner-Kearl:
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
-# Dutch variant (Douma):
+# Dutch (Douma):
 #     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
-# Dutch variant (Brouwer's Leesindex A):
+# Dutch (Brouwer's Leesindex A):
 #     Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. Paedagogische studiën, 40, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
-# French variant:
+# French:
 #     Kandel, L., & Moles A. (1958). Application de l’indice de flesch la langue francaise [applying flesch index to french language]. The Journal of Educational Research, 21, 283–287.
 #     Kopient, A., & Grabar, N. (2020). Rated lexicon for the simplification of medical texts. In B.  Gersbeck-Schierholz (ed.), HEALTHINFO 2020: The fifth international conference on informatics and assistive technologies for health-care, medical support and wellbeing (pp. 11–17). IARIA. https://hal.science/hal-03095275/document
-# German variant:
+# German:
 #     Amstad, T. (1978). Wie verständlich sind unsere Zeitungen? [Unpublished doctoral dissertation]. University of Zurich.
 #     Lesbarkeitsindex. (2023, February 2). In Wikipedia. https://de.wikipedia.org/w/index.php?title=Lesbarkeitsindex&oldid=230472824
-# Italian variant:
+# Italian:
 #     Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. Linguaggi, 3, 47–49.
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
-# Russian variant:
+# Russian:
 #     Oborneva, I. V. (2006). Автоматизированная оценка сложности учебных текстов на основе статистических параметров [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education]. Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3
-# Spanish variant (Fernández Huerta):
+# Spanish (Fernández Huerta):
 #     Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. Consigna, 214, 29–32.
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
-# Spanish variant (Szigriszt Pazos):
+# Spanish (Szigriszt Pazos):
 #     Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
-# Ukrainian variant:
+# Ukrainian:
 #     Partiko, Z. V. (2001). Zagal’ne redaguvannja. Normativni osnovi. Afiša.
 #     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. https://www.iqla.org/includes/basic_references/qualico_2009_proceedings_Grzybek_Kelih_Macutek_2009.pdf
 def re_flesch(main, text):
@@ -542,26 +542,36 @@ def re_flesch(main, text):
 
     return re
 
-# Flesch Reading Ease (Simplified)
-# Reference: Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. Journal of Applied Psychology, 35(5), 333–337. https://doi.org/10.1037/h0062427
-def re_simplified(main, text):
+# Flesch Reading Ease (Farr-Jenkins-Paterson)
+# References:
+#     Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. Journal of Applied Psychology, 35(5), 333–337. https://doi.org/10.1037/h0062427
+# Powers-Sumner-Kearl:
+#     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
+def re_farr_jenkins_paterson(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
 
         if text.count_words and text.count_sentences:
             count_words_1_syl = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1)
 
-            flesch_re_simplified = (
-                1.599 * (count_words_1_syl / text.count_words * 100)
-                - 1.015 * (text.count_words / text.count_sentences)
-                - 31.517
-            )
+            if main.settings_custom['measures']['readability']['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant']:
+                re = (
+                    8.4335
+                    - 0.0648 * (count_words_1_syl / text.count_words * 100)
+                    + 0.0923 * (text.count_words / text.count_sentences)
+                )
+            else:
+                re = (
+                    1.599 * (count_words_1_syl / text.count_words * 100)
+                    - 1.015 * (text.count_words / text.count_sentences)
+                    - 31.517
+                )
         else:
-            flesch_re_simplified = 'text_too_short'
+            re = 'text_too_short'
     else:
-        flesch_re_simplified = 'no_support'
+        re = 'no_support'
 
-    return flesch_re_simplified
+    return re
 
 # FORCAST Grade Level
 # Reference: Caylor, J. S., & Sticht, T. G. (1973). Development of a simple readability index for job reading material. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
@@ -660,11 +670,11 @@ def gulpease_index(main, text):
     return gulpease_index
 
 # Gunning Fog Index
-# Reference:
+# References:
 #     Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
-# Navy variant:
+# Navy:
 #     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
-# Polish variant:
+# Polish:
 #     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. Zeszyty Prasoznawcze, 4(42), 35–48.
 def fog_index(main, text):
     if text.lang.startswith('eng_') or text.lang == 'pol':
@@ -1164,6 +1174,7 @@ def wstf(main, text):
 
         if text.count_words and text.count_sentences:
             variant = main.settings_custom['measures']['readability']['wstf']['variant']
+
             ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words
             sl = text.count_words / text.count_sentences
             iw = get_count_words_letters(text.words_flat, len_min = 7) / text.count_words
