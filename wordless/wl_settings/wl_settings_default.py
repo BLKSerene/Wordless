@@ -1771,6 +1771,10 @@ def init_settings_default(main):
                     'variant_spa': 'Fernández Huerta'
                 },
 
+                're_farr_jenkins_paterson': {
+                    'use_powers_sumner_kearl_variant': False
+                },
+
                 'spache_grade_lvl': {
                     'use_rev_formula': True
                 },

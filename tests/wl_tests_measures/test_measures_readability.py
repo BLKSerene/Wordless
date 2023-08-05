@@ -356,21 +356,27 @@ def test_re_flesch():
     assert flesch_re_afr_12 == 206.835 - 0.846 * (18 / 12 * 100) - 1.015 * (12 / 3)
     assert flesch_re_other_12 == 'no_support'
 
-def test_re_simplified():
-    flesch_re_simplified_eng_0 = wl_measures_readability.re_simplified(main, test_text_eng_0)
-    flesch_re_simplified_eng_12 = wl_measures_readability.re_simplified(main, test_text_eng_12)
-    flesch_re_simplified_spa_12 = wl_measures_readability.re_simplified(main, test_text_spa_12)
-    flesch_re_simplified_other_12 = wl_measures_readability.re_simplified(main, test_text_other_12)
+def test_re_farr_jenkins_paterson():
+    re_farr_jenkins_paterson_eng_0 = wl_measures_readability.re_farr_jenkins_paterson(main, test_text_eng_0)
+    settings['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant'] = False
+    re_farr_jenkins_paterson_eng_12 = wl_measures_readability.re_farr_jenkins_paterson(main, test_text_eng_12)
+    settings['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant'] = True
+    re_farr_jenkins_paterson_eng_12_psk = wl_measures_readability.re_farr_jenkins_paterson(main, test_text_eng_12)
+    re_farr_jenkins_paterson_spa_12 = wl_measures_readability.re_farr_jenkins_paterson(main, test_text_spa_12)
+    re_farr_jenkins_paterson_other_12 = wl_measures_readability.re_farr_jenkins_paterson(main, test_text_other_12)
 
-    print('Flesch Reading Ease (Simplified):')
-    print(f'\teng/0: {flesch_re_simplified_eng_0}')
-    print(f'\teng/12: {flesch_re_simplified_eng_12}')
-    print(f'\tspa/12: {flesch_re_simplified_spa_12}')
-    print(f'\tother/12: {flesch_re_simplified_other_12}')
+    print('Flesch Reading Ease (Farr-Jenkins-Paterson):')
+    print(f'\teng/0: {re_farr_jenkins_paterson_eng_0}')
+    print(f'\teng/12: {re_farr_jenkins_paterson_eng_12}')
+    print(f'\teng/12-psk: {re_farr_jenkins_paterson_eng_12_psk}')
+    print(f'\tspa/12: {re_farr_jenkins_paterson_spa_12}')
+    print(f'\tother/12: {re_farr_jenkins_paterson_other_12}')
 
-    assert flesch_re_simplified_eng_0 == 'text_too_short'
-    assert flesch_re_simplified_eng_12 == flesch_re_simplified_spa_12 == 1.599 * (9 / 12 * 100) - 1.015 * (12 / 3) - 31.517
-    assert flesch_re_simplified_other_12 == 'no_support'
+    assert re_farr_jenkins_paterson_eng_0 == 'text_too_short'
+    assert re_farr_jenkins_paterson_eng_12 == 1.599 * (9 / 12 * 100) - 1.015 * (12 / 3) - 31.517
+    assert re_farr_jenkins_paterson_eng_12_psk == 8.4335 - 0.0648 * (9 / 12 * 100) + 0.0923 * (12 / 3)
+    assert re_farr_jenkins_paterson_spa_12 != 'no_support'
+    assert re_farr_jenkins_paterson_other_12 == 'no_support'
 
 def test_rgl():
     rgl_eng_12 = wl_measures_readability.rgl(main, test_text_eng_12)
@@ -710,7 +716,7 @@ if __name__ == '__main__':
     test_elf()
     test_gl()
     test_re_flesch()
-    test_re_simplified()
+    test_re_farr_jenkins_paterson()
     test_rgl()
     test_cp()
     test_formula_de_crawford()
