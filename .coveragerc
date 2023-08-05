@@ -18,6 +18,7 @@
 
 [run]
 omit =
+    .github/*
     data/*
     doc/*
     imgs/*

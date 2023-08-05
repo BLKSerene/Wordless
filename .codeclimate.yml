@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: CI - Codacy
+# Wordless: CI - Code Climate
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,10 +16,33 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
----
-exclude_paths:
-  - "data/**"
-  - "doc/**"
-  - "imgs/**"
-  - "tests/files/**"
-  - "trs/**"
+version: "2" # required to adjust maintainability checks
+
+checks:
+  argument-count:
+    enabled: true
+  complex-logic:
+    enabled: true
+  file-lines:
+    enabled: false
+  identical-code:
+    enabled: false
+  method-complexity:
+    enabled: false
+  method-count:
+    enabled: true
+  method-lines:
+    enabled: false
+  nested-control-flow:
+    enabled: true
+  return-statements:
+    enabled: true
+  similar-code:
+    enabled: false
+
+exclude_patterns:
+- "data/**"
+- "doc/**"
+- "imgs/**"
+- "tests/files/**"
+- "trs/**"
