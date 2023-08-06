@@ -19,17 +19,16 @@
 
 # Install build dependencies for Python
 # Reference: https://devguide.python.org/getting-started/setup-building/#linux
-if ! grep -Fxq "deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial main" "/etc/apt/sources.list"; then
-    sudo sh -c "echo 'deb-src http://cn.archive.ubuntu.com/ubuntu/ xenial main' >> /etc/apt/sources.list"
+if ! grep -Fxq "deb-src http://cn.archive.ubuntu.com/ubuntu/ bionic main" "/etc/apt/sources.list"; then
+    sudo sh -c "echo 'deb-src http://cn.archive.ubuntu.com/ubuntu/ bionic main' >> /etc/apt/sources.list"
 fi
 
 sudo apt-get update
 sudo apt-get -y build-dep python3
-# libgdbm-compat-dev is not available on Ubuntu 16.04
-sudo apt-get -y install build-essential gdb lcov pkg-config libbz2-dev libffi-dev libgdbm-dev liblzma-dev libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev lzma lzma-dev tk-dev uuid-dev zlib1g-dev
+sudo apt-get -y install build-essential gdb lcov pkg-config libbz2-dev libffi-dev libgdbm-dev libgdbm-compat-dev liblzma-dev libncurses5-dev libreadline6-dev libsqlite3-dev libssl-dev lzma lzma-dev tk-dev uuid-dev zlib1g-dev
 
 # Compile Python from source
-PY_VER=3.9.16
+PY_VER=3.10.12
 PY_PACKAGE="Python-$PY_VER.tgz"
 PY_FOLDER="Python-$PY_VER"
 
@@ -44,7 +43,7 @@ fi
 cd $PY_FOLDER
 # PyInstaller requires "--enable-shared"
 ./configure --enable-optimizations --with-lto --enable-shared
-make -j -s
+make -s -j
 sudo make altinstall
 cd ..
 
@@ -52,9 +51,9 @@ cd ..
 sudo ldconfig
 
 # Install 3rd-party libraries
-python3.9 -m pip install --upgrade pip setuptools
-pip3.9 install -r requirements_dev.txt
-pip3.9 cache purge
+python3.10 -m pip install --upgrade pip setuptools
+pip3.10 install -r requirements_dev.txt
+pip3.10 cache purge
 
 # Fix libxcb-xinerama.so
 sudo apt-get install libxcb-xinerama0
