@@ -123,6 +123,9 @@ hiddenimports = [
     # Charset Normalizer
     'charset_normalizer.md__mypyc',
 
+    # khmer-nltk
+    'sklearn_crfsuite',
+
     # pymorphy3
     'pymorphy3_dicts_ru',
     'pymorphy3_dicts_uk',
