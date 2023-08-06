@@ -48,6 +48,7 @@
 - Dependencies: Upgrade PyThaiNLP to 4.0.2
 - Dependencies: Upgrade Requests to 2.31.0
 - Dependencies: Upgrade spaCy to 3.6.0
+- Dependencies: Upgrade Underthesea to 6.7.0
 - Dependencies: Upgrade wordcloud to 1.9.2
 
 ## [3.2.0](https://github.com/BLKSerene/Wordless/releases/tag/3.2.0) - 03/20/2023
