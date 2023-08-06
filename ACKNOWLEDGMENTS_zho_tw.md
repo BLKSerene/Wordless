@@ -30,7 +30,7 @@
 5 |[khmer-nltk](https://github.com/VietHoang1512/khmer-nltk)          |1.5   |Phan Viet Hoang|[Apache-2.0](https://github.com/VietHoang1512/khmer-nltk/blob/main/LICENSE)
 6 |[Lingua](https://github.com/pemistahl/lingua-py)                   |1.3.2 |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 7 |[Matplotlib](https://matplotlib.org/)                              |3.7.1 |Matplotlib 開發團隊|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
-8 |[NetworkX](https://networkx.org/)                                  |3.0   |NetworkX 開發人員, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
+8 |[NetworkX](https://networkx.org/)                                  |3.1   |NetworkX 開發人員, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 9 |[NLTK](https://www.nltk.org/)                                      |3.8.1 |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
 10|[NumPy](https://www.numpy.org/)                                    |1.24.2|NumPy 開發人員|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 11|[opencc-python](https://github.com/yichen0831/opencc-python)       |0.1.7 |郭家寶, Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
