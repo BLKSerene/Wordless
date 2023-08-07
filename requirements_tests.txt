@@ -28,7 +28,6 @@ pyphen == 0.14.0
 pythainlp == 4.0.2
 sacremoses == 0.0.53
 simplemma == 0.9.1
-textblob == 0.17.1
 underthesea == 6.7.0
 
 ## python-mecab-ko

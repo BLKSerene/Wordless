@@ -37,10 +37,12 @@
 
 ### ❌ Removals
 - Utils: Remove PyThaiNLP's perceptron part-of-speech tagger (LST20)
+- Utils: Remove TextBlob's English sentiment analyzer
 - Work Area: Remove Profiler - Fernández Huerta's Readability Score / Szigriszt's Perspicuity Index
 
 ### ⏫ Dependency Changes
 - Dependencies: Add khmer-nltk
+- Dependencies: Remove TextBlob
 - Dependencies: Upgrade Beautiful Soup to 4.12.2
 - Dependencies: Upgrade Botok to 0.8.12
 - Dependencies: Upgrade Charset Normalizer to 3.2.0

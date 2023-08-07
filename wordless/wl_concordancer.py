@@ -27,7 +27,6 @@ import matplotlib.pyplot
 import numpy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtWidgets import QCheckBox, QLabel, QLineEdit, QGroupBox, QStackedWidget
-import textblob
 import underthesea
 
 from wordless.wl_checks import wl_checks_work_area
@@ -884,9 +883,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             # Sentiment
                             context_text = ' '.join([context_left_text, node_text, context_right_text])
 
-                            if text.lang.startswith('eng'):
-                                concordance_line.append(textblob.TextBlob(context_text).sentiment.polarity)
-                            elif text.lang == 'vie':
+                            if text.lang == 'vie':
                                 sentiment = underthesea.sentiment(context_text)
 
                                 if sentiment == 'positive':
