@@ -28,7 +28,6 @@ pythainlp
 python-mecab-ko
 sacremoses
 simplemma
-textblob
 underthesea
 
 ## pymorphy3

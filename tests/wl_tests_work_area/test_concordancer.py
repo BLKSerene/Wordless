@@ -89,7 +89,7 @@ def update_gui_table(err_msg, concordance_lines):
         assert right_text_search
 
         # Sentiment
-        assert sentiment == 'No Support' or -1 <= sentiment <= 1
+        assert sentiment == 'No language support' or -1 <= sentiment <= 1
         # Token No.
         assert no_token >= 1
         assert len_tokens >= 1
