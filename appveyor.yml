@@ -22,13 +22,13 @@ environment:
   matrix:
     # Windows
     - APPVEYOR_BUILD_WORKER_IMAGE: "Visual Studio 2019"
-      PYTHON: "C:/Python39-x64"
+      PYTHON: "C:/Python310-x64"
     # MacOS
     - APPVEYOR_BUILD_WORKER_IMAGE: "macos-catalina"
-      PYTHON: "~/venv3.9"
+      PYTHON: "~/venv3.10"
     # Linux
     - APPVEYOR_BUILD_WORKER_IMAGE: "Ubuntu1804"
-      PYTHON: "$HOME/venv3.9"
+      PYTHON: "$HOME/venv3.10"
 
 cache:
   # Windows
@@ -38,7 +38,7 @@ cache:
   # Linux
   - "/home/appveyor/.cache/pip"
 
-stack: python 3.9
+stack: python 3.10
 
 build: off
 
