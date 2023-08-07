@@ -157,7 +157,10 @@ hiddenimports = [
     'uk_core_news_sm',
 
     # SudachiPy
-    'sudachidict_core'
+    'sudachidict_core',
+
+    # Underthesea
+    'sklearn.pipeline'
 ]
 
 # Exclusions

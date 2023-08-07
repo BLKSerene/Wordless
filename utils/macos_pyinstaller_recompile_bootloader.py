@@ -23,7 +23,7 @@ import zipfile
 
 import requests
 
-PYINSTALLER_VER = '5.9.0'
+PYINSTALLER_VER = '5.13.0'
 
 # Fetch codes
 print(f'Downloading PyInstaller {PYINSTALLER_VER}... ', end = '')
@@ -51,17 +51,34 @@ os.chdir('..')
 # codesign does not work properly on OS X 10.11
 with open('PyInstaller/building/utils.py', 'r+', encoding = 'utf_8') as f:
     pyinstaller_building_utils = f.read()
-    pyinstaller_building_utils = pyinstaller_building_utils.replace('osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)', '# osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)')
+    pyinstaller_building_utils = pyinstaller_building_utils.replace(
+        'osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)',
+        '# osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)'
+    )
 
     f.seek(0)
     f.write(pyinstaller_building_utils)
 
 with open('PyInstaller/building/api.py', 'r+', encoding = 'utf_8') as f:
     pyinstaller_building_api = f.read()
-    pyinstaller_building_api = pyinstaller_building_api.replace('osxutils.remove_signature_from_binary(build_name)', '# osxutils.remove_signature_from_binary(build_name)')
+    pyinstaller_building_api = pyinstaller_building_api.replace(
+        'osxutils.remove_signature_from_binary(build_name)',
+        '# osxutils.remove_signature_from_binary(build_name)'
+    )
 
     f.seek(0)
     f.write(pyinstaller_building_api)
+
+# Fix Underthesea
+with open('PyInstaller/utils/osx.py', 'r+', encoding = 'utf_8') as f:
+    pyinstaller_utils_osx = f.read()
+    pyinstaller_utils_osx = pyinstaller_utils_osx.replace(
+        'p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)\n    if p.returncode:',
+        'p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)\n    if p.returncode and False:'
+    )
+
+    f.seek(0)
+    f.write(pyinstaller_utils_osx)
 
 # Install recompiled version of PyInstaller
 os.chdir('..')
