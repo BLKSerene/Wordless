@@ -16,10 +16,22 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import os
 import platform
 import re
 
+from tests import wl_test_init
 from wordless.wl_utils import wl_misc
+
+main = wl_test_init.Wl_Test_Main()
+
+def test_change_file_owner_to_user():
+    with open('test', 'wb'):
+        pass
+
+    wl_misc.change_file_owner_to_user('test')
+
+    os.remove('test')
 
 def test_check_os():
     is_windows, is_macos, is_linux = wl_misc.check_os()
@@ -31,35 +43,43 @@ def test_check_os():
     elif platform.system() == 'Linux':
         assert not is_windows and not is_macos and is_linux
 
+def test_flatten_list():
+    assert list(wl_misc.flatten_list([1, 2, [3, 4, [5, 6]]])) == [1, 2, 3, 4, 5, 6]
+
 def test_get_linux_distro():
     assert wl_misc.get_linux_distro() in ['ubuntu', 'debian']
 
 def test_get_wl_ver():
-    assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', wl_misc.get_wl_ver())
-
-def test_split_ver():
-    assert wl_misc.split_ver('1.2.3') == (1, 2, 3)
-    assert wl_misc.split_ver('0.0.0') == (0, 0, 0)
-    assert wl_misc.split_ver('10.100.1000') == (10, 100, 1000)
-
-def test_flatten_list():
-    assert list(wl_misc.flatten_list([1, 2, [3, 4, [5, 6]]])) == [1, 2, 3, 4, 5, 6]
-
-def test_normalize_nums():
-    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 100) == [0, 25, 50, 75, 100]
-    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 100, reverse = True) == [100, 75, 50, 25, 0]
+    assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', str(wl_misc.get_wl_ver()))
 
 def test_merge_dicts():
     assert wl_misc.merge_dicts([{1: 10}, {1: 20, 2: 30}]) == {1: [10, 20], 2: [0, 30]}
     assert wl_misc.merge_dicts([{1: [10, 20]}, {1: [30, 40], 2: [50, 60]}]) == {1: [[10, 20], [30, 40]], 2: [[0, 0], [50, 60]]}
 
+def test_normalize_nums():
+    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 100) == [0, 25, 50, 75, 100]
+    assert wl_misc.normalize_nums([1, 2, 3, 4, 5], 0, 100, reverse = True) == [100, 75, 50, 25, 0]
+
+URL_VER = 'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION'
+
+def test_wl_download():
+    r, err_msg = wl_misc.wl_download(main, URL_VER)
+
+    assert r
+    assert not err_msg
+
+def test_wl_download_file_size():
+    file_size = wl_misc.wl_download_file_size(main, URL_VER)
+
+    assert file_size
+
 if __name__ == '__main__':
+    test_change_file_owner_to_user()
     test_check_os()
-    test_get_linux_distro()
-
-    test_get_wl_ver()
-    test_split_ver()
-
     test_flatten_list()
-    test_normalize_nums()
+    test_get_linux_distro()
+    test_get_wl_ver()
     test_merge_dicts()
+    test_normalize_nums()
+    test_wl_download()
+    test_wl_download_file_size()

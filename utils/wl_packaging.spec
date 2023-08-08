@@ -18,8 +18,10 @@
 
 import botok
 import PyInstaller
+import pymorphy3
 import pythainlp
 import spacy_pkuseg
+import transformers
 import underthesea.file_utils
 
 import wl_utils
@@ -58,35 +60,18 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('ca_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('zh_core_web_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('hr_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('da_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('de_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('el_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('fi_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('fr_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('it_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('ja_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('ko_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('lt_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('mk_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('nb_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('nl_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pl_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pt_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('ro_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('ru_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('sl_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('es_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('sv_core_news_sm'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('uk_core_news_sm'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_trf'))
+datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_transformers'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('pip', include_py_files = True))
+
+# Metadata required by Transformers
+for package in transformers.dependency_versions_check.pkgs_to_check_at_runtime + ['torch']:
+    if package != 'python':
+        datas.extend(PyInstaller.utils.hooks.copy_metadata(package))
+
 # SudachiPy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachipy', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachidict_core'))
-# TextBlob
-datas.extend(PyInstaller.utils.hooks.collect_data_files('textblob'))
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
 # wordcloud
@@ -120,9 +105,6 @@ datas.extend([
 
 # Hidden imports
 hiddenimports = [
-    # Charset Normalizer
-    'charset_normalizer.md__mypyc',
-
     # khmer-nltk
     'sklearn_crfsuite',
 
@@ -130,31 +112,9 @@ hiddenimports = [
     'pymorphy3_dicts_ru',
     'pymorphy3_dicts_uk',
 
-    # spaCy models
-    'ca_core_news_sm',
-    'zh_core_web_sm',
-    'hr_core_news_sm',
-    'da_core_news_sm',
-    'de_core_news_sm',
-    'el_core_news_sm',
-    'en_core_web_sm',
-    'fi_core_news_sm',
-    'fr_core_news_sm',
-    'it_core_news_sm',
-    'ja_core_news_sm',
-    'ko_core_news_sm',
-    'lt_core_news_sm',
-    'mk_core_news_sm',
-    'nb_core_news_sm',
-    'nl_core_news_sm',
-    'pl_core_news_sm',
-    'pt_core_news_sm',
-    'ro_core_news_sm',
-    'ru_core_news_sm',
-    'sl_core_news_sm',
-    'es_core_news_sm',
-    'sv_core_news_sm',
-    'uk_core_news_sm',
+    # spaCy
+    'en_core_web_trf',
+    'spacy_alignments',
 
     # SudachiPy
     'sudachidict_core',
@@ -162,6 +122,17 @@ hiddenimports = [
     # Underthesea
     'sklearn.pipeline'
 ]
+
+# When using uk_core_news_trf the first time after downloading the model using pip, pymorphy3's logging function would be overwritten by pip's and assertion would be raised during logging, so disable logging temporarily and restore logging after packaging completes
+with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'r+', encoding = 'utf_8') as f:
+    pymorphy3_opencorpora_dict_wrapper = f.read()
+    pymorphy3_opencorpora_dict_wrapper = pymorphy3_opencorpora_dict_wrapper.replace(
+        'logger.info("format: %(format_version)s, revision: %(source_revision)s, updated: %(compiled_at)s", self._data.meta)',
+        '# logger.info("format: %(format_version)s, revision: %(source_revision)s, updated: %(compiled_at)s", self._data.meta)'
+    )
+
+    f.seek(0)
+    f.write(pymorphy3_opencorpora_dict_wrapper)
 
 # Exclusions
 excludes = []
@@ -229,6 +200,8 @@ coll = COLLECT(
 # Bundle application on macOS
 # Reference: https://pyinstaller.org/en/stable/spec-files.html#spec-file-options-for-a-macos-bundle
 if is_macos:
+    wl_ver = wl_utils.get_wl_ver()
+
     app = BUNDLE(
         coll,
         name = 'Wordless.app',
@@ -242,9 +215,9 @@ if is_macos:
             'CFBundleDisplayName': 'Wordless',
             'CFBundleExecutable': 'Wordless',
             'CFBundlePackageType': 'APPL',
-            'CFBundleVersion': wl_utils.get_wl_ver(),
-            'CFBundleShortVersionString': wl_utils.get_wl_ver(),
-            'CFBundleInfoDictionaryVersion': wl_utils.get_wl_ver(),
+            'CFBundleVersion': wl_ver,
+            'CFBundleShortVersionString': wl_ver,
+            'CFBundleInfoDictionaryVersion': wl_ver,
             # Required by Retina displays on macOS
             # References:
             #     https://developer.apple.com/documentation/bundleresources/information_property_list/nshighresolutioncapable
@@ -254,3 +227,14 @@ if is_macos:
             'NSPrincipalClass': 'NSApplication'
         }
     )
+
+# Restore logging in pymorphy3
+with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'r+', encoding = 'utf_8') as f:
+    pymorphy3_opencorpora_dict_wrapper = f.read()
+    pymorphy3_opencorpora_dict_wrapper = pymorphy3_opencorpora_dict_wrapper.replace(
+        '# logger.info("format: %(format_version)s, revision: %(source_revision)s, updated: %(compiled_at)s", self._data.meta)',
+        'logger.info("format: %(format_version)s, revision: %(source_revision)s, updated: %(compiled_at)s", self._data.meta)'
+    )
+
+    f.seek(0)
+    f.write(pymorphy3_opencorpora_dict_wrapper)

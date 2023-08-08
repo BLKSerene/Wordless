@@ -21,12 +21,26 @@ import copy
 import os
 import platform
 import time
+import traceback
 
 import numpy
+import packaging.version
+import requests
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QMainWindow
 
 _tr = QCoreApplication.translate
+
+def change_file_owner_to_user(file_path):
+    # pylint: disable=no-member
+    _, is_macos, is_linux = check_os()
+
+    # Available on Unix only
+    if (is_macos or is_linux) and os.getuid() == 0:
+        uid = int(os.environ.get('SUDO_UID'))
+        gid = int(os.environ.get('SUDO_GID'))
+
+        os.chown(file_path, uid, gid)
 
 def check_os():
     is_windows = False
@@ -41,56 +55,6 @@ def check_os():
         is_linux = True
 
     return is_windows, is_macos, is_linux
-
-def get_linux_distro():
-    if 'Ubuntu' in platform.version():
-        return 'ubuntu'
-    elif 'Debian' in platform.version():
-        return 'debian'
-    # Default to Ubuntu if undetermined
-    else:
-        return 'ubuntu'
-
-def change_file_owner_to_user(file_path):
-    # pylint: disable=no-member
-    _, is_macos, is_linux = check_os()
-
-    # Available on Unix only
-    if (is_macos or is_linux) and os.getuid() == 0:
-        uid = int(os.environ.get('SUDO_UID'))
-        gid = int(os.environ.get('SUDO_GID'))
-
-        os.chown(file_path, uid, gid)
-
-def get_wl_ver():
-    wl_ver = '1.0.0'
-
-    try:
-        # Version file is generated on Windows
-        with open('VERSION', 'r', encoding = 'utf_8', newline = '\r\n') as f:
-            for line in f:
-                if line.strip() and not line.startswith('#'):
-                    wl_ver = line.strip()
-
-                    break
-    except (FileNotFoundError, PermissionError):
-        pass
-
-    return wl_ver
-
-def split_ver(ver):
-    vers = ver.split('.')
-
-    if len(vers) == 3:
-        ver_major, ver_minor, ver_patch = vers
-    elif len(vers) == 2:
-        ver_major, ver_minor = vers
-        ver_patch = '0'
-    elif len(vers) == 1:
-        ver_major = vers[0]
-        ver_minor = ver_patch = '0'
-
-    return int(ver_major), int(ver_minor), int(ver_patch)
 
 def find_wl_main(widget):
     if 'main' in widget.__dict__:
@@ -110,25 +74,60 @@ def flatten_list(list_to_flatten):
         else:
             yield item
 
-def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
-    nums_min = min(nums)
-    nums_max = max(nums)
-
-    if nums_max - nums_min == 0:
-        nums_normalized = [normalized_min] * len(nums)
+def get_linux_distro():
+    if 'Ubuntu' in platform.version():
+        return 'ubuntu'
+    elif 'Debian' in platform.version():
+        return 'debian'
+    # Default to Ubuntu if undetermined
     else:
-        if reverse:
-            nums_normalized = [
-                numpy.interp(num, [nums_min, nums_max], [normalized_max, normalized_min])
-                for num in nums
-            ]
-        else:
-            nums_normalized = [
-                numpy.interp(num, [nums_min, nums_max], [normalized_min, normalized_max])
-                for num in nums
-            ]
+        return 'ubuntu'
 
-    return nums_normalized
+def get_wl_ver():
+    wl_ver = '1.0.0'
+
+    try:
+        # Version file is generated on Windows
+        with open('VERSION', 'r', encoding = 'utf_8', newline = '\r\n') as f:
+            for line in f:
+                if line.strip() and not line.startswith('#'):
+                    wl_ver = line.strip()
+
+                    break
+    except (FileNotFoundError, PermissionError):
+        pass
+
+    return packaging.version.Version(wl_ver)
+
+def log_timing(func):
+    def wrapper(widget, *args, **kwargs):
+        if isinstance(widget, QMainWindow):
+            main = widget
+        else:
+            main = widget.main
+
+        time_start = time.time()
+
+        return_val = func(widget, *args, **kwargs)
+
+        time_elapsed = time.time() - time_start
+        time_elapsed_mins = int(time_elapsed // 60)
+        time_elapsed_secs = time_elapsed % 60
+
+        msg_min = _tr('wl_misc', 'minute') if time_elapsed_mins == 1 else _tr('wl_misc', 'minutes')
+        msg_time = _tr('wl_misc', '(In {} {} {:.2f} seconds)').format(time_elapsed_mins, msg_min, time_elapsed_secs)
+
+        if (msg_cur := main.statusBar().currentMessage()):
+            if _tr('wl_misc', '(In') in msg_cur:
+                main.statusBar().showMessage(f"{msg_cur.split(_tr('wl_misc', '(In'))[0].rstrip()} {msg_time}")
+            else:
+                main.statusBar().showMessage(f'{msg_cur} {msg_time}')
+        else:
+            main.statusBar().showMessage(msg_time)
+
+        return return_val
+
+    return wrapper
 
 def merge_dicts(dicts_to_merge):
     dict_merged = {}
@@ -160,32 +159,80 @@ def merge_dicts(dicts_to_merge):
 
     return dict_merged
 
-def log_timing(func):
-    def wrapper(widget, *args, **kwargs):
-        if isinstance(widget, QMainWindow):
-            main = widget
+def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
+    nums_min = min(nums)
+    nums_max = max(nums)
+
+    if nums_max - nums_min == 0:
+        nums_normalized = [normalized_min] * len(nums)
+    else:
+        if reverse:
+            nums_normalized = [
+                numpy.interp(num, [nums_min, nums_max], [normalized_max, normalized_min])
+                for num in nums
+            ]
         else:
-            main = widget.main
+            nums_normalized = [
+                numpy.interp(num, [nums_min, nums_max], [normalized_min, normalized_max])
+                for num in nums
+            ]
 
-        time_start = time.time()
+    return nums_normalized
 
-        return_val = func(widget, *args, **kwargs)
+REQUESTS_TIMEOUT = 10
 
-        time_elapsed = time.time() - time_start
-        time_elapsed_mins = int(time_elapsed // 60)
-        time_elapsed_secs = time_elapsed % 60
+def wl_download(main, url):
+    proxy_settings = main.settings_custom['general']['proxy_settings']
+    err_msg = ''
 
-        msg_min = _tr('wl_misc', 'minute') if time_elapsed_mins == 1 else _tr('wl_misc', 'minutes')
-        msg_time = _tr('wl_misc', '(In {} {} {:.2f} seconds)').format(time_elapsed_mins, msg_min, time_elapsed_secs)
-
-        if (msg_cur := main.statusBar().currentMessage()):
-            if _tr('wl_misc', '(In') in msg_cur:
-                main.statusBar().showMessage(f"{msg_cur.split(_tr('wl_misc', '(In'))[0].rstrip()} {msg_time}")
-            else:
-                main.statusBar().showMessage(f'{msg_cur} {msg_time}')
+    try:
+        if proxy_settings['use_proxy']:
+            r = requests.get(
+                url,
+                timeout = REQUESTS_TIMEOUT,
+                proxies = {
+                    'http': f"http://{proxy_settings['address']}:{proxy_settings['port']}",
+                    'https': f"http://{proxy_settings['address']}:{proxy_settings['port']}"
+                },
+                auth = (proxy_settings['username'], proxy_settings['password'])
+            )
         else:
-            main.statusBar().showMessage(msg_time)
+            r = requests.get(url, timeout = REQUESTS_TIMEOUT)
 
-        return return_val
+        if r.status_code != 200:
+            err_msg = 'A network error occurred!'
+    except requests.RequestException:
+        r = None
+        err_msg = traceback.format_exc()
 
-    return wrapper
+    return r, err_msg
+
+def wl_download_file_size(main, url):
+    proxy_settings = main.settings_custom['general']['proxy_settings']
+    file_size = 0
+
+    try:
+        if proxy_settings['use_proxy']:
+            r = requests.get(
+                url,
+                timeout = REQUESTS_TIMEOUT,
+                stream = True,
+                proxies = {
+                    'http': f"http://{proxy_settings['address']}:{proxy_settings['port']}",
+                    'https': f"http://{proxy_settings['address']}:{proxy_settings['port']}"
+                },
+                auth = (proxy_settings['username'], proxy_settings['password'])
+            )
+        else:
+            r = requests.get(url, timeout = REQUESTS_TIMEOUT, stream = True)
+
+        if r.status_code == 200:
+            file_size = int(r.headers['content-length'])
+
+        # See: https://requests.readthedocs.io/en/latest/user/advanced/#body-content-workflow
+        r.close()
+    except requests.RequestException:
+        pass
+
+    # In megabytes
+    return file_size / 1024 / 1024

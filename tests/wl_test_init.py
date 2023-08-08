@@ -30,8 +30,7 @@ from wordless import wl_file_area
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_settings import wl_settings_default, wl_settings_global
 
-# Chinese (Traditional), Danish, Dutch, English, French, German, Greek, Italian, Japanese, Russian, Spanish
-SEARCH_TERMS = ['是', 'ja', 'ja', 'be', 'être', 'sein', 'είναι', 'essere', 'は', 'быть', 'esta']
+SEARCH_TERMS = ['be']
 
 # An instance of QApplication must be created before any instance of QWidget
 wl_app = QApplication(sys.argv)
@@ -127,3 +126,19 @@ def select_random_files_ref(main, num_files):
 def clean_import_caches():
     for file in glob.glob('imports/*.*'):
         os.remove(file)
+
+def change_default_tokenizers(main):
+    for lang in [
+        'cat', 'zho_cn', 'zho_tw', 'hrv', 'dan',
+        'nld', 'eng_gb', 'eng_us', 'fin', 'fra',
+        'deu_at', 'deu_de', 'deu_ch', 'ell', 'ita',
+        'jpn', 'kor', 'lit', 'mkd', 'nob',
+        'pol', 'por_br', 'por_pt', 'ron', 'rus',
+        'slv', 'spa', 'swe', 'ukr', 'other'
+    ]:
+        main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang] = 'spacy_sentencizer'
+
+        if lang in ['zho_cn', 'zho_tw']:
+            main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang] = 'pkuseg_zho'
+        else:
+            main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang] = 'nltk_nltk'

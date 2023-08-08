@@ -120,24 +120,33 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
         self.settings_custom['preview']['preview_samples'] = self.text_edit_lemmatization_preview_samples.toPlainText()
         self.settings_custom['preview']['preview_results'] = self.text_edit_lemmatization_preview_results.toPlainText()
 
+        if self.settings_custom['preview']['preview_samples'].strip():
+            self.button_lemmatization_show_preview.setEnabled(True)
+        else:
+            self.button_lemmatization_show_preview.setEnabled(False)
+
     def preview_results_changed(self):
-        if self.settings_custom['preview']['preview_samples']:
-            if self.combo_box_lemmatization_preview_lang.isEnabled():
-                row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
+        if self.combo_box_lemmatization_preview_lang.isEnabled():
+            row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
-                self.table_lemmatizers.itemDelegateForRow(row).set_enabled(False)
-                self.combo_box_lemmatization_preview_lang.setEnabled(False)
-                self.button_lemmatization_show_preview.setEnabled(False)
-                self.text_edit_lemmatization_preview_samples.setEnabled(False)
+            self.table_lemmatizers.itemDelegateForRow(row).set_enabled(False)
+            self.combo_box_lemmatization_preview_lang.setEnabled(False)
+            self.button_lemmatization_show_preview.setEnabled(False)
+            self.text_edit_lemmatization_preview_samples.setEnabled(False)
 
-                self.button_lemmatization_show_preview.setText(self.tr('Processing...'))
+            self.button_lemmatization_show_preview.setText(self.tr('Processing...'))
 
-                lemmatizer = wl_nlp_utils.to_lang_util_code(
-                    self.main,
-                    util_type = 'lemmatizers',
-                    util_text = self.table_lemmatizers.model().item(row, 1).text()
-                )
+            lemmatizer = wl_nlp_utils.to_lang_util_code(
+                self.main,
+                util_type = 'lemmatizers',
+                util_text = self.table_lemmatizers.model().item(row, 1).text()
+            )
 
+            if wl_nlp_utils.check_models(
+                self.main,
+                langs = [self.settings_custom['preview']['preview_lang']],
+                lang_utils = [lemmatizer]
+            ):
                 worker_preview_lemmatizer = Wl_Worker_Preview_Lemmatizer(
                     self.main,
                     update_gui = self.update_gui,
@@ -146,12 +155,16 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
 
                 self.thread_preview_lemmatizer = wl_threading.Wl_Thread_No_Progress(worker_preview_lemmatizer)
                 self.thread_preview_lemmatizer.start_worker()
-        else:
-            self.text_edit_lemmatization_preview_results.clear()
+            else:
+                self.update_gui_err()
 
     def update_gui(self, preview_results):
-        self.button_lemmatization_show_preview.setText(self.tr('Show preview'))
         self.text_edit_lemmatization_preview_results.setPlainText('\n'.join(preview_results))
+
+        self.update_gui_err()
+
+    def update_gui_err(self):
+        self.button_lemmatization_show_preview.setText(self.tr('Show preview'))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 

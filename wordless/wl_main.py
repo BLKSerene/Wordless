@@ -17,8 +17,8 @@
 # ----------------------------------------------------------------------
 
 import copy
-import os
 import glob
+import os
 import pickle
 import platform
 import re
@@ -31,10 +31,17 @@ import traceback
 if getattr(sys, '_MEIPASS', False) and platform.system() == 'Darwin':
     os.chdir(sys._MEIPASS) # pylint: disable=no-member
 
+# Fake sys.stdout and sys.stderr when frozen
+# See: https://github.com/pyinstaller/pyinstaller/issues/7334#issuecomment-1357447176
+if sys.stdout is None:
+    sys.stdout = open(os.devnull, 'w') # pylint: disable=unspecified-encoding, consider-using-with
+if sys.stderr is None:
+    sys.stderr = open(os.devnull, 'w') # pylint: disable=unspecified-encoding, consider-using-with
+
 import botok
 import matplotlib
 import nltk
-import requests
+import packaging.version
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, QObject, Qt, QTranslator
 from PyQt5.QtGui import QFont, QIcon, QKeySequence, QPixmap, QStandardItem
 from PyQt5.QtWidgets import (
@@ -48,7 +55,7 @@ import underthesea.file_utils
 # Use Qt backend for Matplotlib
 matplotlib.use('Qt5Agg')
 
-# Modify paths of data files after the program is packaged
+# Modify paths of data files when frozen
 if getattr(sys, '_MEIPASS', False):
     # botok
     botok.config.DEFAULT_BASE_PATH = os.path.join('pybo', 'dialect_packs')
@@ -170,9 +177,8 @@ class Wl_Main(QMainWindow):
 
         self.loading_window = loading_window
         self.threads_check_updates = []
-        # Version numbers
+        # Version number
         self.ver = wl_misc.get_wl_ver()
-        self.ver_major, self.ver_minor, self.ver_patch = wl_misc.split_ver(self.ver)
         # Email
         self.email = 'blkserene@gmail.com'
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
@@ -898,14 +904,14 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
         super().__init__(
             main,
             title = _tr('Wl_Dialog_Check_Updates', 'Check for Updates'),
-            width = 500,
+            width = 550,
             no_buttons = True
         )
 
         self.on_startup = on_startup
 
         self.label_checking_status = wl_labels.Wl_Label_Dialog('', self)
-        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr('Current version: ') + self.main.ver, self)
+        self.label_cur_ver = wl_labels.Wl_Label_Dialog(self.tr('Current version: ') + str(self.main.ver), self)
         self.label_latest_ver = wl_labels.Wl_Label_Dialog('', self)
 
         self.checkbox_check_updates_on_startup = QCheckBox(self.tr('Check for updates on startup'), self)
@@ -925,7 +931,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
 
         self.wrapper_buttons.layout().setColumnStretch(1, 1)
 
-        self.set_fixed_height()
+        #self.set_fixed_height()
         self.load_settings()
 
     def check_updates(self):
@@ -982,7 +988,7 @@ class Wl_Dialog_Check_Updates(wl_dialogs.Wl_Dialog_Info):
                             Hooray, you are using the latest version of Wordless!
                         </div>
                     '''))
-                    self.label_latest_ver.set_text(self.tr('Latest version: ') + self.main.ver)
+                    self.label_latest_ver.set_text(self.tr('Latest version: ') + str(self.main.ver))
             elif status == 'network_err':
                 self.label_checking_status.set_text(self.tr('''
                     <div>
@@ -1026,56 +1032,25 @@ class Worker_Check_Updates(QObject):
 
     def run(self):
         ver_new = ''
-        proxy_settings = self.main.settings_custom['general']['proxy_settings']
 
-        try:
-            timeout = 5
+        r, err_msg = wl_misc.wl_download(self.main, 'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION')
 
-            if proxy_settings['use_proxy']:
-                r = requests.get(
-                    'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION',
-                    timeout = timeout,
-                    proxies = {
-                        'http': f"http://{proxy_settings['address']}:{proxy_settings['port']}",
-                        'https': f"http://{proxy_settings['address']}:{proxy_settings['port']}"
-                    },
-                    auth = (proxy_settings['username'], proxy_settings['password'])
-                )
+        if not err_msg:
+            for line in r.text.splitlines():
+                if line and not line.startswith('#'):
+                    ver_new = line.rstrip()
+
+            if self.main.ver < packaging.version.Version(ver_new):
+                updates_status = 'updates_available'
             else:
-                r = requests.get(
-                    'https://raw.githubusercontent.com/BLKSerene/Wordless/main/VERSION',
-                    timeout = timeout
-                )
-
-            if r.status_code == 200:
-                for line in r.text.splitlines():
-                    if line and not line.startswith('#'):
-                        ver_new = line.rstrip()
-
-                if self.is_newer_version(ver_new):
-                    updates_status = 'updates_available'
-                else:
-                    updates_status = 'no_updates'
-            else:
-                updates_status = 'network_err'
-        except requests.RequestException:
-            print(traceback.format_exc())
-
+                updates_status = 'no_updates'
+        else:
             updates_status = 'network_err'
 
         if self.stopped:
             updates_status = ''
 
         self.worker_done.emit(updates_status, ver_new)
-
-    def is_newer_version(self, ver_new):
-        ver_major_new, ver_minor_new, ver_patch_new = wl_misc.split_ver(ver_new)
-
-        return bool(
-            self.main.ver_major < ver_major_new
-            or self.main.ver_minor < ver_minor_new
-            or self.main.ver_patch < ver_patch_new
-        )
 
     def stop(self):
         self.stopped = True

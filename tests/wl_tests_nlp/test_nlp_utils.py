@@ -59,21 +59,33 @@ def test_to_lang_util_texts():
 
         assert list(util_texts) == list(TO_LANG_UTIL_TEXT.values())
 
+def test_check_models():
+    assert wl_nlp_utils.check_models(main, langs = ['eng_us', 'eng_gb'])
+
 def test_init_spacy_models():
     wl_nlp_utils.init_spacy_models(main, lang = 'eng_us')
-    wl_nlp_utils.init_spacy_models(main, lang = 'nno')
+    wl_nlp_utils.init_spacy_models(main, lang = 'eng_gb')
+    wl_nlp_utils.init_spacy_models(main, lang = 'other')
+    wl_nlp_utils.init_spacy_models(main, lang = 'afr')
     wl_nlp_utils.init_spacy_models(main, lang = 'srp_cyrl')
     wl_nlp_utils.init_spacy_models(main, lang = 'srp_latn')
 
+    wl_nlp_utils.init_spacy_models(main, lang = 'eng_us', sentencizer_only = True)
+    wl_nlp_utils.init_spacy_models(main, lang = 'afr', sentencizer_only = True)
+
     assert 'spacy_nlp_eng' in main.__dict__
     assert 'spacy_nlp_eng_us' not in main.__dict__
+    assert 'spacy_nlp_eng_gb' not in main.__dict__
+    assert 'spacy_nlp_other' in main.__dict__
 
-    assert 'spacy_nlp_nob' in main.__dict__
-    assert 'spacy_nlp_nno' not in main.__dict__
+    assert 'spacy_nlp_afr' in main.__dict__
 
     assert 'spacy_nlp_srp' in main.__dict__
     assert 'spacy_nlp_srp_cyrl' not in main.__dict__
     assert 'spacy_nlp_srp_latn' not in main.__dict__
+
+    assert 'spacy_nlp_eng_sentencizer' in main.__dict__
+    assert 'spacy_nlp_afr_sentencizer' not in main.__dict__
 
 def test_init_sudachipy_word_tokenizer():
     wl_nlp_utils.init_sudachipy_word_tokenizer(main)
@@ -170,6 +182,7 @@ if __name__ == '__main__':
     test_to_lang_util_text()
     test_to_lang_util_texts()
 
+    test_check_models()
     test_init_spacy_models()
     test_init_sudachipy_word_tokenizer()
 

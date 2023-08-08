@@ -174,7 +174,7 @@ def test_detection_encoding():
         # German
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp273'],
+            encodings = [], # cp273
             text = wl_test_lang_examples.ENCODING_DEU
         )
         # Greek

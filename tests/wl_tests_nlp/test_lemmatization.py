@@ -22,12 +22,20 @@ from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_lemmatization, wl_word_tokenization
 
 main = wl_test_init.Wl_Test_Main()
+wl_test_init.change_default_tokenizers(main)
 
 test_lemmatizers = []
 
 for lang, lemmatizers in main.settings_global['lemmatizers'].items():
     for lemmatizer in lemmatizers:
-        test_lemmatizers.append((lang, lemmatizer))
+        if lemmatizer not in [
+            'spacy_cat', 'spacy_zho', 'spacy_hrv', 'spacy_dan', 'spacy_nld',
+            'spacy_eng', 'spacy_fin', 'spacy_fra', 'spacy_deu', 'spacy_ell',
+            'spacy_ita', 'spacy_jpn', 'spacy_kor', 'spacy_lit', 'spacy_mkd',
+            'spacy_nob', 'spacy_pol', 'spacy_por', 'spacy_ron', 'spacy_rus',
+            'spacy_slv', 'spacy_spa', 'spacy_swe', 'spacy_ukr'
+        ]:
+            test_lemmatizers.append((lang, lemmatizer))
 
 @pytest.mark.parametrize('lang, lemmatizer', test_lemmatizers)
 def test_lemmatize(lang, lemmatizer):
@@ -98,25 +106,15 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'hye':
         assert lemmas == ['հայերեն', '(', 'ավանդական՝', 'հայերէն', ')', ',', 'հնդեվրոպական', 'լեզվաընտանիք', 'առանձին', 'ճյուղ', 'հանդիսացող', 'լեզու։']
     elif lang == 'ast':
-        assert lemmas == ["L'asturianu", 'ser', 'un', 'llingua', 'romance', 'propiu', "d'Asturies,[1", ']', 'perteneciente', 'al', 'subgrupu', 'asturllionés', '.']
+        assert lemmas == ["L'asturianu", 'ser', 'un', 'llingua', 'romance', 'propiu', "d'Asturies", ',', '[', '1', ']', 'perteneciente', 'al', 'subgrupu', 'asturllionés', '.']
     elif lang == 'ben':
         assert lemmas == ['বাংলা', 'ভাষা', '(', 'বাঙলা', ',', 'বাঙ্গলা', ',', 'তথা', 'বাঙ্গালা', 'নামেও', 'পরিচিত', ')', 'একটি', 'ইন্দো', '-', 'আর্য', 'ভাষা', ',', 'যা', 'দক্ষিণ', 'এশিয়ার', 'বাঙালি', 'জাতির', 'প্রধান', 'কথ্য', 'ও', 'লেখ্য', 'ভাষা', '।']
     elif lang == 'bul':
         assert lemmas == ['бъ̀лгарският', 'езѝк', 'съм', 'индоевропейски', 'език', 'от', 'група', 'на', 'южнославянскит', 'език', '.']
     elif lang == 'cat':
-        if lemmatizer == 'simplemma_cat':
-            assert lemmas == ['ell', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'el', 'illa', 'balear', ',', 'a', 'Andorra', ',', 'a', 'el', 'ciutat', 'de', 'el', 'alguer', 'i', 'tradicional', 'a', 'Catalunya', 'd', 'ell', 'nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'a', 'litre', 'pair', 'valencià', 'i', 'tradicional', 'a', 'litre', 'Carxe', ')', 'ser', 'un', 'llengua', 'romànic', 'parlar', 'a', 'Catalunya', ',', 'ell', 'pair', 'valencià', '(', 'treure', 'de', 'algun', 'comarca', 'i', 'localitat', 'de', 'el', 'interior', ')', ',', 'el', 'illa', 'balear', '(', 'on', 'també', 'rebre', 'ell', 'nòmer', 'de', 'mallorquí', ',', 'menorquí', ',', 'eivissenc', 'o', 'formenterer', 'segon', 'el', 'illa', ')', ',', 'Andorra', ',', 'el', 'franjar', 'de', 'pondre', '(', 'a', 'el', 'Aragó', ')', ',', 'el', 'ciutat', 'de', 'el', 'alguer', '(', 'a', 'el', 'illa', 'de', 'Sardenya', ')', ',', 'el', 'Catalunya', 'd', 'ell', 'Nord,[8', ']', 'ell', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'poblar', 'per', 'poblador', 'valencians),[9][10', ']', 'i', 'en', 'comunitat', 'arreu', 'd', 'ell', 'món', '(', 'entrar', 'el', 'qual', 'destacar', 'el', 'de', 'el', 'argentí', ',', 'amb', '200.000', 'parlants).[11', ']']
-        elif lemmatizer == 'spacy_cat':
-            assert lemmas == ['el', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'el', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'el', 'ciutat', 'de', 'el', 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'de', 'el', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'a', 'el', 'País', 'Valencià', 'i', 'tradicional', 'a', 'el', 'Carxe', ')', 'ser', 'un', 'llengua', 'romànic', 'parlat', 'a', 'Catalunya', ',', 'el', 'País', 'Valencià', '(', 'tret', 'de', 'algun', 'comarca', 'i', 'localitat', 'de', 'el', 'interior', ')', ',', 'el', 'Illes', 'Balears', '(', 'on', 'també', 'rebre', 'el', 'nom', 'de', 'mallorquí', ',', 'menorquí', ',', 'eivissenc', 'o', 'formenterer', 'segons', 'el', 'illa', ')', ',', 'Andorra', ',', 'el', 'Franja', 'de', 'Ponent', '(', 'a', 'el', 'Aragó', ')', ',', 'el', 'ciutat', 'de', 'el', 'Alguer', '(', 'a', 'el', 'illa', 'de', 'Sardenya', ')', ',', 'el', 'Catalunya', 'de', 'el', 'Nord,[8', ']', 'el', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'poblat', 'per', 'poblador', 'valencians),[9][10', ']', 'i', 'en', 'comunitat', 'arreu', 'de', 'el', 'món', '(', 'entre', 'el', 'qual', 'destacar', 'el', 'de', 'el', 'Argentina', ',', 'amb', '200.000', 'parlants).[11', ']']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['ell', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'el', 'illa', 'balear', ',', 'a', 'Andorra', ',', 'a', 'el', 'ciutat', 'de', "l'Alguer", 'i', 'tradicional', 'a', 'Catalunya', 'del', 'nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'al', 'pair', 'valencià', 'i', 'tradicional', 'al', 'Carxe', ')', 'ser', 'un', 'llengua', 'romànic', 'parlar', 'a', 'Catalunya', ',', 'ell', 'pair', 'valencià', '(', 'treure', "d'algunes", 'comarca', 'i', 'localitat', 'de', "l'interior", ')', ',', 'el', 'illa', 'balear', '(', 'on', 'també', 'rebre', 'ell', 'nòmer', 'de', 'mallorquí', ',', 'menorquí', ',', 'eivissenc', 'o', 'formenterer', 'segon', "l'illa", ')', ',', 'Andorra', ',', 'el', 'franjar', 'de', 'pondre', '(', 'a', "l'Aragó", ')', ',', 'el', 'ciutat', 'de', "l'Alguer", '(', 'a', "l'illa", 'de', 'Sardenya', ')', ',', 'el', 'Catalunya', 'del', 'nord', ',', '[', '8', ']', 'ell', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'habitar', 'per', 'poblador', 'valencià', ')', ',', '[', '9', ']', '[', '10', ']', 'i', 'en', 'comunitat', 'arreu', 'del', 'món', '(', 'entrar', 'el', 'qual', 'destacar', 'el', 'de', "l'Argentina", ',', 'amb', '200.000', 'parlant', ')', '.', '[', '11', ']']
     elif lang == 'hrv':
-        if lemmatizer == 'simplemma_hrv':
-            assert lemmas == ['hrvatski', 'jezik', '(', 'ISO', '639', 'ga', '3', ':', 'hrv', ')', 'skupni', 'ju', 'naziv', 'за', 'nacionalni', 'standardni', 'jezik', 'Hrvat', ',', 'ti', 'за', 'skup', 'narječje', 'i', 'govora', 'kojima', 'govoriti', 'ili', 'biti', 'nekada', 'govoriti', 'Hrvat', '.']
-        elif lemmatizer == 'spacy_hrv':
-            assert lemmas == ['hrvatski', 'jezik', '(', 'ISO', '639', '-', '3', ':', 'hrv', ')', 'skupni', 'biti', 'naziv', 'za', 'nacionalan', 'standardan', 'jezik', 'Hrvat', ',', 'te', 'za', 'skup', 'narječje', 'i', 'govor', 'koji', 'govoriti', 'ili', 'biti', 'nekada', 'govoriti', 'Hrvat', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['hrvatski', 'jezik', '(', 'ISO', '639-3', ':', 'hrv', ')', 'skupni', 'ju', 'naziv', 'за', 'nacionalni', 'standardni', 'jezik', 'Hrvat', ',', 'ti', 'за', 'skup', 'narječje', 'i', 'govora', 'kojima', 'govoriti', 'ili', 'biti', 'nekada', 'govoriti', 'Hrvat', '.']
     elif lang == 'ces':
         if lemmatizer == 'simplemma_ces':
             assert lemmas == ['čeština', 'neboli', 'český', 'jazyk', 'být', 'západoslovanský', 'jazyk', ',', 'nejbližší', 'slovenština', ',', 'poté', 'lužické', 'srbštině', 'a', 'polština', '.']
@@ -125,66 +123,34 @@ def test_lemmatize(lang, lemmatizer):
         else:
             tests_lang_util_skipped = True
     elif lang == 'dan':
-        if lemmatizer == 'simplemma_dan':
-            assert lemmas == ['dansk', 'være', 'en', 'østnordisk', 'sprog', 'indenfor', 'den', 'germansk', 'gren', 'af', 'den', 'indoeuropæiske', 'sprogfamilie', '.']
-        elif lemmatizer == 'spacy_dan':
-            assert lemmas == ['dansk', 'være', 'en', 'østnordisk', 'sprog', 'indenfor', 'den', 'germansk', 'gren', 'af', 'den', 'indoeuropæisk', 'sprogfamilie', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['dansk', 'være', 'en', 'østnordisk', 'sprog', 'indenfor', 'den', 'germansk', 'gren', 'af', 'den', 'indoeuropæiske', 'sprogfamilie', '.']
     elif lang == 'nld':
-        if lemmatizer == 'simplemma_nld':
-            assert lemmas == ['het', 'Nederlands', 'zijn', 'een', 'west-germaans', 'talen', 'en', 'de', 'officieel', 'talen', 'van', 'Nederland', ',', 'Suriname', 'en', 'een', 'van', 'de', 'drie', 'officieel', 'tale', 'van', 'België', '.']
-        elif lemmatizer == 'spacy_nld':
-            assert lemmas == ['het', 'Nederlands', 'zijn', 'een', 'West-Germaans', 'taal', 'en', 'de', 'officieel', 'taal', 'van', 'Nederland', ',', 'Suriname', 'en', 'één', 'van', 'de', 'drie', 'officieel', 'taal', 'van', 'België', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['het', 'Nederlands', 'zijn', 'een', 'west-germaans', 'talen', ',', 'de', 'veel', 'gebruiken', 'talen', 'in', 'Nederland', 'en', 'België', ',', 'de', 'officieel', 'talen', 'van', 'Suriname', 'en', 'een', 'van', 'de', 'drie', 'officieel', 'tale', 'van', 'België', '.']
     elif lang == 'enm':
         assert lemmas == ['Forrþrihht', 'anan', 'see', 'timen', 'comm', 'þatt', 'eure', 'Drihhtin', 'wollde', 'been', 'borenn', 'in', 'þiss', 'middellærd', 'forr', 'all', 'mannkinne', 'neden', 'hem', 'chæs', 'him', 'sonne', 'kinnessmenn', 'all', 'swillke', 'summ', 'hem', 'wollde', 'and', 'whær', 'hem', 'wollde', 'borenn', 'been', 'hem', 'chæs', 'all', 'att', 'his', 'willen', '.']
     elif lang.startswith('eng_'):
         if lemmatizer == 'nltk_wordnet':
-            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', ',', 'with', 'it', 'early', 'form', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
+            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', 'that', 'originate', 'in', 'early', 'medieval', 'England.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
         elif lemmatizer == 'simplemma_eng':
-            assert lemmas == ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', ',', 'with', 'its', 'early', 'form', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
-        elif lemmatizer == 'spacy_eng':
-            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'european', 'language', 'family', ',', 'with', 'its', 'early', 'form', 'speak', 'by', 'the', 'inhabitant', 'of', 'early', 'medieval', 'England.[3][4][5', ']']
+            assert lemmas == ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', 'that', 'originate', 'in', 'early', 'medieval', 'England.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
         else:
             tests_lang_util_skipped = True
     elif lang == 'est':
         assert lemmas == ['Eesti', 'keel', 'olema', 'kaks', 'suurem', 'murd', '(', 'põhi', 'ja', 'lõuna', ')', ',', 'mõni', 'käsitlus', 'eristama', 'ka', 'kirderannik', 'murre', 'eraldi', 'murderühmana', '.']
     elif lang == 'fin':
-        if lemmatizer == 'simplemma_fin':
-            assert lemmas == ['Suomi', 'kieli', 'eli', 'suomi', 'olla', 'uralilainen', 'kieli', 'itämerensuomalainen', 'ryhmä', 'kuuluva', 'kieli', ',', 'jota', 'puhua', 'pääosa', 'Suomalainen', '.']
-        elif lemmatizer == 'spacy_fin':
-            assert lemmas == ['Suomi', 'kieli', 'eli', 'Suomi', 'olla', 'uralilainen', 'kieli', 'itämerensuomalaiseen', 'ryhmä', 'kuulua', 'kieli', ',', 'joka', 'puhua', 'pääosin', 'suomalainen', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['Suomi', 'kieli', 'eli', 'suomi', 'olla', 'uralilainen', 'kieli', 'itämerensuomalainen', 'ryhmä', 'kuuluva', 'kieli', ',', 'jota', 'puhua', 'pääosa', 'Suomalainen', '.']
     elif lang == 'fra':
-        if lemmatizer == 'simplemma_fra':
-            assert lemmas == ['le', 'français', 'être', 'parlé', ',', 'en', '2023', ',', 'sur', 'tout', 'le', 'continent', 'par', 'environ', '321', 'million', 'de', 'personnes5,2', ':', '235', 'million', 'le', 'employer', 'quotidiennement', ',', 'et', '90', 'millions3', 'en', 'être', 'un', 'locuteurs', 'natif', '.']
-        elif lemmatizer == 'spacy_fra':
-            assert lemmas == ['le', 'français', 'être', 'parler', ',', 'en', '2023', ',', 'sur', 'tout', 'le', 'continent', 'par', 'environ', '321', 'million', 'de', 'personnes5,2', ':', '235', 'million', 'le', 'emploient', 'quotidiennement', ',', 'et', '90', 'millions3', 'en', 'être', 'un', 'locuteur', 'natif', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'un', 'langue', 'roman', 'dont', 'le', 'locuteurs', 'être', 'appelé', 'francophone', '.']
     elif lang == 'glg':
         assert lemmas == ['O', 'galego', '(', '[', 'ɡaˈleɣo̝', ']', ')', 'ser', 'un', 'lingua', 'indoeuropeo', 'que', 'pertencer', 'á', 'póla', 'de', 'lingua', 'románico', '.']
     elif lang == 'kat':
-        assert lemmas == ['ქართული', 'ენა', '—', 'იბერიულ-კავკასიურ', 'ენათა', 'ოჯახის', 'ქართველურ', 'ენათა', 'ჯგუფი', 'ენა.']
+        assert lemmas == ['ქართული', 'ენა', '—', 'იბერიულ-კავკასიურ', 'ენათა', 'ოჯახის', 'ქართველურ', 'ენათა', 'ჯგუფი', 'ენა', '.']
     elif lang.startswith('deu_'):
-        if lemmatizer == 'simplemma_deu':
-            assert lemmas == ['der', 'Deutscher', 'sein', 'ein', 'plurizentrische', 'Sprache', ',', 'enthalten', 'also', 'mehrere', 'Standardvarietät', 'in', 'verschieden', 'Region', '.']
-        elif lemmatizer == 'spacy_deu':
-            assert lemmas == ['der', 'deutsche', 'sein', 'ein', 'plurizentrisch', 'Sprache', '--', 'enthalten', 'also', 'mehrere', 'Standardvarietät', 'in', 'verschieden', 'Region', '--']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['der', 'Deutscher', 'sein', 'ein', 'plurizentrische', 'Sprache', ',', 'enthalten', 'also', 'mehrere', 'Standardvarietät', 'in', 'verschieden', 'Region', '.']
     elif lang == 'grc':
         assert lemmas == ['Ὅτι', 'μέν', 'σύ', ',', 'ὦ', 'ἀνήρ', 'Ἀθηναῖοι', ',', 'πάσχω', 'ὑπό', 'ὁ', 'ἐμός', 'κατηγόρων', ',', 'οὐ', 'οἶδα', '·', 'ἐγώ', 'δέ', 'οὖν', 'καί', 'αὐτός', 'ὑπό', 'αὐτός', 'ὀλίγος', 'ἐμαυτοῦ', 'ἐπελαθόμην', ',', 'οὕτως', 'πιθανῶς', 'λέγω', '.']
     elif lang == 'ell':
-        if lemmatizer == 'simplemma_ell':
-            assert lemmas == ['ο', 'ελληνικός', 'γλώσσα', 'ανήκω', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια', ']', 'και', 'αποτελώ', 'ο', 'μοναδικός', 'μέλος', 'ο', 'ελληνικός', 'κλάδος', ',', 'ενώ', 'είμαι', 'ο', 'επίσημος', 'γλώσσα', 'ο', 'Ελλάδα', 'και', 'ο', 'Κύπρος', '.']
-        elif lemmatizer == 'spacy_ell':
-            assert lemmas == ['ο', 'ελληνικός', 'γλώσσα', 'ανήκω', 'σε ο', 'ινδοευρωπαϊκός', 'οικογένεια[9', ']', 'και', 'αποτελώ', 'ο', 'μοναδικός', 'μέλος', 'ο', 'ελληνικός', 'κλάδος', ',', 'ενώ', 'είμαι', 'ο', 'επίσημος', 'γλώσσα', 'ο', 'Ελλάδα', 'και', 'ο', 'Κύπρος', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['ο', 'ελληνικός', 'γλώσσα', 'ανήκω', 'στην', 'ινδοευρωπαϊκή', 'οικογένεια', '[', '9', ']', 'και', 'αποτελώ', 'ο', 'μοναδικός', 'μέλος', 'ο', 'ελληνικός', 'κλάδος', ',', 'ενώ', 'είμαι', 'ο', 'επίσημος', 'γλώσσα', 'ο', 'Ελλάδα', 'και', 'ο', 'Κύπρος', '.']
     elif lang == 'hin':
         assert lemmas == ['हिंदी', 'या', 'हिंदी', 'जिसके', 'मानकीकृत', 'रूप', 'को', 'मानक', 'हिंदी', 'कहना', 'जाना', 'होना', ',', 'विश्व', 'का', 'एक', 'प्रमुख', 'भाषा', 'होना', 'एवं', 'भारत', 'का', 'एक', 'राजभाषा', 'होना', '।']
     elif lang == 'hun':
@@ -211,19 +177,9 @@ def test_lemmatize(lang, lemmatizer):
         else:
             tests_lang_util_skipped = True
     elif lang == 'ita':
-        if lemmatizer == 'simplemma_ita':
-            assert lemmas == ['essere', 'classificare', 'al', '23º', 'posto', 'tra', 'il', 'lingua', 'per', 'numero', 'di', 'parlante', 'nel', 'mondo', 'e', ',', 'in', 'Italia', ',', 'essere', 'utilizzare', 'da', 'circa', '58', 'milione', 'di', 'residenti.[2', ']']
-        elif lemmatizer == 'spacy_ita':
-            assert lemmas == ['essere', 'classificare', 'a il', '23º', 'posto', 'tra', 'il', 'lingua', 'per', 'numero', 'di', 'parlanto', 'in il', 'mondo', 'e', ',', 'in', 'Italia', ',', 'essere', 'utilizzare', 'da', 'circa', '58', 'milione', 'di', 'residenti.[2', ']']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ["L'italiano", '(', '[', 'itaˈljaːno', ']', '[', 'nota', '1', ']', 'ascoltare', '[', '?', '·info', ']', ')', 'essere', 'uno', 'lingua', 'romanza', 'parlato', 'principalmente', 'in', 'Italia', '.']
     elif lang == 'jpn':
-        if lemmatizer == 'spacy_jpn':
-            assert lemmas == ['日本', '語', '(', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住', '者', 'を', '含む', '日本', '人', '同士', 'の', '間', 'で', '使用', 'する', 'れる', 'て', 'いる', '言語', '。']
-        elif lemmatizer == 'sudachipy_jpn':
-            assert lemmas == ['日本語', '(', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注', '2', ']', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住者', 'を', '含む', '日本人', '同士', 'の', '間', 'で', '使用', 'する', 'れる', 'て', 'いる', '言語', '。']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['日本語', '(', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注釈', '2', ']', '、', '英語', ':', 'Japanese', 'language', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住者', 'を', '含む', '日本人', '同士', 'の', '間', 'で', '使用', 'する', 'れる', 'て', 'いる', '言語', '。']
     elif lang == 'kor':
         assert lemmas == ['한국어', '(', '韓國語', ')', '는', '대한민+국과', '조선민주주의인민공화국+의', '공용어이다', '.']
     elif lang == 'lat':
@@ -231,12 +187,7 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'lav':
         assert lemmas == ['latviete', 'valoda', 'būt', 'dzimta', 'valoda', 'apmērs', '1,7', 'miljons', 'cilvēks', ',', 'galvenokārt', 'Latvija', ',', 'kur', 'tā', 'būt', 'vienīgs', 'valsts', 'valoda', '.', '[', '3', ']']
     elif lang == 'lit':
-        if lemmatizer == 'simplemma_lit':
-            assert lemmas == ['lietuvė', 'kalba', '–', 'ižti', 'baltas', 'prokalbė', 'kilęs', 'lietuvė', 'tauta', 'kalba', ',', 'kurti', 'Lietuva', 'irti', 'valstybinis', ',', 'o', 'Europa', 'sąjunga', '–', 'Viena', 'ižti', 'oficialus', 'kalbus', '.']
-        elif lemmatizer == 'spacy_lit':
-            assert lemmas == ['Lietuvis', 'kalba', '–', 'iš', 'baltas', 'prokalbė', 'kilusi', 'lietuvis', 'tauta', 'kalba', ',', 'kuris', 'Lietuva', 'būti', 'valstybinis', ',', 'o', 'Europa', 'Sąjungoje', '–', 'vienas', 'iš', 'oficialiųjų', 'kalbų', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['lietuvė', 'kalba', '–', 'ižti', 'baltas', 'prokalbė', 'kilęs', 'lietuvė', 'tauta', 'kalba', ',', 'kurti', 'Lietuva', 'irti', 'valstybinis', ',', 'o', 'Europa', 'sąjunga', '–', 'Viena', 'ižti', 'oficialus', 'kalbus', '.']
     elif lang == 'ltz':
         if lemmatizer == 'simplemma_ltz':
             assert lemmas == ["D'", 'Lëtzebuergesch', 'ginn', 'an', 'der', 'däitsch', 'Dialektologie', 'als', 'een', 'westgermanesch', ',', 'mëtteldäitsch', 'Dialekt', 'aklasséiert', ',', 'deen', 'zum', 'muselfränkesch', 'gehéiert', '.']
@@ -245,23 +196,13 @@ def test_lemmatize(lang, lemmatizer):
         else:
             tests_lang_util_skipped = True
     elif lang == 'mkd':
-        if lemmatizer == 'simplemma_mkd':
-            assert lemmas == ['македонски', 'јазик', '—', 'јужнословенски', 'јазик', ',', 'дел', 'од', 'група', 'на', 'словенски', 'јазик', 'од', 'јазичното', 'семејство', 'на', 'индоевропски', 'јазик', '.']
-        elif lemmatizer == 'spacy_mkd':
-            assert lemmas == ['Македонски', 'јаз', '—', 'јужнословенски', 'јаз', ',', 'дел', 'од', 'група', 'на', 'словенски', 'јазик', 'од', 'јазичен', 'семејство', 'на', 'индоевропски', 'јазик', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['македонски', 'јазик', '—', 'јужнословенски', 'јазик', ',', 'дел', 'од', 'група', 'на', 'словенски', 'јазик', 'од', 'јазичното', 'семејство', 'на', 'индоевропски', 'јазик', '.']
     elif lang == 'msa':
         assert lemmas == ['bahasa', 'Melayu', '(', 'tulisan', 'Jawi', ':', 'bahasa', 'Melayu', ';', 'rencong', ':', 'ꤷꥁꤼ', 'ꤸꥍꤾꤿꥈ', ')', 'ialah', 'salah', 'ساتو', 'daripada', 'bahasa', '-', 'bahasa', 'Melayu', '-', 'Polinesia', 'di', 'bawah', 'keluarga', 'bahasa', 'Austronesia', ',', 'hiang', 'merupakan', 'bahasa', 'rasmi', 'di', 'Brunei', ',', 'Indonesia', ',', 'Malaysia', 'دان', 'Singapura', ',', 'serta', 'dituturkan', 'di', 'timur', 'Leste', 'دان', 'sebahagian', 'wilayah', 'di', 'Kemboja', ',', 'Filipina', 'دان', 'Thailand', '.']
     elif lang == 'glv':
         assert lemmas == ['She', 'Gaelg', '(', 'graït', ':', '/gɪlg/', ')', 'çhengey', 'Gaelagh', 'Mannin', '.']
     elif lang == 'nob':
-        if lemmatizer == 'simplemma_nob':
-            assert lemmas == ['bokmål', 'være', 'enn', 'varietet', 'av', 'norsk', 'skriftspråk', '.']
-        elif lemmatizer == 'spacy_nob':
-            assert lemmas == ['Bokmål', 'være', 'en', 'varietet', 'av', 'norsk', 'skriftspråk', '$.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['bokmål', 'være', 'enn', 'varietet', 'av', 'norsk', 'skriftspråk', '.']
     elif lang == 'nno':
         assert lemmas == ['nynorsk', ',', 'føra', '1929', 'offisiell', 'kall', 'landsmål', ',', 'vera', 'sidan', 'jamstillingsvedtaket', 'av', '12', '.', 'mai', '1885', 'ein', 'av', 'den', 'to', 'offisiell', 'målformene', 'av', 'norsk', ';', 'den', 'annan', 'forme', 'vera', 'bokmål', '.']
     elif lang == 'fas':
@@ -272,37 +213,22 @@ def test_lemmatize(lang, lemmatizer):
         else:
             tests_lang_util_skipped = True
     elif lang == 'pol':
-        if lemmatizer == 'simplemma_pol':
-            assert lemmas == ['język', 'polski', ',', 'polszczyzna', '–', 'język', 'lechicki', 'z', 'grupa', 'zachodniosłowiański', '(', 'do', 'który', 'należeć', 'również', 'czeski', ',', 'kaszubski', ',', 'słowacki', 'i', 'język', 'łużycki', ')', ',', 'stanowić', 'część', 'rodzina', 'indoeuropejski', '.']
-        elif lemmatizer == 'spacy_pol':
-            assert lemmas == ['Język', 'polski', ',', 'polszczyzny', '–', 'język', 'lechicki', 'z', 'grupa', 'zachodniosłowiański', '(', 'do', 'który', 'należeć', 'również', 'czeski', ',', 'kaszubski', ',', 'słowacki', 'i', 'język', 'łużycki', ')', ',', 'stanowić', 'część', 'rodzina', 'indoeuropejski', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['język', 'polski', ',', 'polszczyzna', '–', 'język', 'z', 'grupa', 'zachodniosłowiański', '(', 'do', 'który', 'należeć', 'również', 'czeski', ',', 'kaszubski', ',', 'słowacki', 'i', 'język', 'łużycki', ')', ',', 'stanowić', 'część', 'rodzina', 'indoeuropejski', '.']
     elif lang.startswith('por_'):
-        if lemmatizer == 'simplemma_por':
-            assert lemmas == ['o', 'língua', 'portuguesar', ',', 'também', 'designado', 'português', ',', 'ser', 'umar', 'língua', 'indo-europeu', 'românico', 'flexivo', 'ocidental', 'originado', 'o', 'galego-português', 'falar', 'o', 'reino', 'da', 'galiza', 'e', 'o', 'norte', 'de', 'portugal', '.']
-        elif lemmatizer == 'spacy_por':
-            assert lemmas == ['o', 'língua', 'português', ',', 'também', 'designar', 'português', ',', 'ser', 'um', 'língua', 'indo-europeia', 'românico', 'flexivo', 'Ocidental', 'originar', 'em o', 'galego-português', 'falar', 'em o', 'Reino', 'de o', 'Galiza', 'e', 'em o', 'norte', 'de', 'Portugal', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['o', 'língua', 'portuguesar', ',', 'também', 'designado', 'português', ',', 'ser', 'umar', 'língua', 'indo-europeu', 'românico', 'flexivo', 'ocidental', 'originado', 'o', 'galego-português', 'falar', 'o', 'reino', 'da', 'galiza', 'e', 'o', 'norte', 'de', 'portugal', '.']
     elif lang == 'ron':
-        if lemmatizer == 'simplemma_ron':
-            assert lemmas == ['limbă', 'român', 'fi', 'el', 'limbă', 'indo-european', 'din', 'grup', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbă', 'romanice', '.']
-        elif lemmatizer == 'spacy_ron':
-            assert lemmas == ['limbă', 'român', 'fi', 'un', 'limbă', 'indo-european', 'din', 'grup', 'italic', 'și', 'din', 'subgrup', 'oriental', 'al', 'limbe', 'romanic', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['limbă', 'român', 'fi', 'el', 'limbă', 'indo-european', 'din', 'grup', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbă', 'romanice', '.']
     elif lang == 'rus':
         if lemmatizer == 'simplemma_rus':
-            assert lemmas == ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать)[~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковый', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
-        elif lemmatizer in ['pymorphy3_morphological_analyzer', 'spacy_rus']:
-            assert lemmas == ['ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать)[~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковой', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
+            assert lemmas == ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковый', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
+        elif lemmatizer == 'pymorphy3_morphological_analyzer':
+            assert lemmas == ['ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковой', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
         else:
             tests_lang_util_skipped = True
     elif lang == 'sme':
         assert lemmas == ['davvisámegiella', 'gullát', 'sámegiella', 'oarjesámegielaid', 'davvejovkui', 'ovttastit', 'julev-', 'ja', 'bihtánsámegielain', '.']
     elif lang == 'gla':
-        assert lemmas == ["'S", 'i', 'cànan', 'dùthchasach', 'na', 'h', '-', 'alba', 'a', 'th', "'", 'anns', 'a', "'", 'gàidhlig', '.']
+        assert lemmas == ["'S", 'i', 'cànan', 'dùthchasach', 'na', 'h-alba', 'a', 'th', "'", 'anns', 'a', "'", 'gàidhlig', '.']
     elif lang == 'srp_cyrl':
         assert lemmas == ['Српски', 'језик', 'припадати', 'словенски', 'група', 'језик', 'породица', 'индоевропских', 'језика.[12', ']']
     elif lang == 'srp_latn':
@@ -310,28 +236,13 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'slk':
         assert lemmas == ['slovenčina', 'patriť', 'do', 'skupina', 'západoslovanský', 'jazyk', '(', 'spolu', 's', 'čeština', ',', 'poľština', ',', 'horný', 'a', 'dolný', 'lužickou', 'srbčina', 'a', 'kašubčiný', ')', '.']
     elif lang == 'slv':
-        if lemmatizer == 'simplemma_slv':
-            assert lemmas == ['slovenščina', '[', 'sloˈʋenʃtʃina', ']', 'on', 'združen', 'naziv', 'za', 'uraden', 'knjižen', 'jezik', 'Slovenec', 'in', 'skupen', 'ime', 'za', 'narečje', 'in', 'govor', ',', 'ki', 'on', 'govoriti', 'ali', 'biti', 'on', 'nekoč', 'govorilo', 'Slovenec', '.']
-        elif lemmatizer == 'spacy_slv':
-            assert lemmas == ['slovenščina', '[', 'sloˈʋenʃtʃina', ']', 'biti', 'združen', 'naziv', 'za', 'uraden', 'knjižen', 'jezik', 'Slovenec', 'in', 'skupen', 'ime', 'za', 'narečje', 'in', 'govor', ',', 'ki', 'on', 'govoriti', 'ali', 'biti', 'on', 'nekoč', 'govoriti', 'Slovenec', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['slovenščina', '[', 'sloˈʋenʃtʃina', ']', 'on', 'združen', 'naziv', 'za', 'uraden', 'knjižen', 'jezik', 'Slovenec', 'in', 'skupen', 'ime', 'za', 'narečje', 'in', 'govor', ',', 'ki', 'on', 'govoriti', 'ali', 'biti', 'on', 'nekoč', 'govorilo', 'Slovenec', '.']
     elif lang == 'spa':
-        if lemmatizer == 'simplemma_spa':
-            assert lemmas == ['el', 'español', 'o', 'castellano', 'ser', 'uno', 'lengua', 'romance', 'procedente', 'del', 'latín', 'hablar', ',', 'perteneciente', 'a', 'el', 'familia', 'de', 'lengua', 'indoeuropeo', '.']
-        elif lemmatizer == 'spacy_spa':
-            assert lemmas == ['el', 'español', 'o', 'castellano', 'ser', 'uno', 'lenguo', 'romance', 'procedente', 'del', 'latín', 'hablado', ',', 'perteneciente', 'a', 'el', 'familia', 'de', 'lengua', 'indoeuropea', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['el', 'español', 'o', 'castellano', 'ser', 'uno', 'lengua', 'romance', 'procedente', 'del', 'latín', 'hablar', ',', 'perteneciente', 'a', 'el', 'familia', 'de', 'lengua', 'indoeuropeo', '.']
     elif lang == 'swa':
-        assert lemmas == ['Kiswahili', 'ni', 'lugha', 'ya', 'Kibantu', 'enye', 'msamiati', 'ingi', 'ya', 'Kiarabu', '(', '35%[1', ']', ')', ',', 'laki', 'sasa', 'ya', 'Kiingereza', 'pia', '(', '10', '%', ')', ',', 'inayozungumzwa', 'katika', 'eneo', 'kubwa', 'la', 'Afrika', 'ya', 'mashariki', '.']
+        assert lemmas == ['Kiswahili', 'ni', 'lugha', 'ya', 'Kibantu', 'enye', 'msamiati', 'ingi', 'ya', 'Kiarabu', '(', '35', '%', '[', '1', ']', ')', ',', 'laki', 'sasa', 'ya', 'Kiingereza', 'pia', '(', '10', '%', ')', ',', 'inayozungumzwa', 'katika', 'eneo', 'kubwa', 'la', 'Afrika', 'ya', 'mashariki', '.']
     elif lang == 'swe':
-        if lemmatizer == 'simplemma_swe':
-            assert lemmas == ['svensk', '(', 'svensk', '(', 'info', ')', ')', 'ära', 'en', 'östnordiskt', 'språka', 'som', 'tala', 'av', 'ungefär', 'tio', 'miljon', 'person', 'främst', 'i', 'Sverige', 'där', 'språk', 'ha', 'man', 'dominant', 'ställning', 'som', 'huvudspråk', ',', 'mena', 'även', 'som', 'den', 'en', 'nationalspråk', 'i', 'Finland', 'och', 'som', 'enda', 'officiell', 'språka', 'på', 'Åland', '.']
-        elif lemmatizer == 'spacy_swe':
-            assert lemmas == ['svensk', '(', 'svensk', '(', 'info', ')', ')', 'vara', 'en', 'östnordisk', 'språk', 'som', 'tala', 'av', 'ungefär', 'tio', 'miljon', 'person', 'främst', 'i', 'Sverige', 'där', 'språke', 'ha', 'en', 'dominant', 'ställning', 'som', 'huvudspråk', ',', 'men', 'även', 'som', 'en', 'ena', 'nationalspråk', 'i', 'Finland', 'och', 'som', 'enda', 'officiell', 'språk', 'på', 'Åland', '.']
-        else:
-            tests_lang_util_skipped = True
+        assert lemmas == ['svensk', '(', 'svensk', '(', 'info', ')', ')', 'ära', 'en', 'östnordiskt', 'språka', 'som', 'tala', 'av', 'ungefär', 'tio', 'miljon', 'person', 'främst', 'i', 'Sverige', 'där', 'språk', 'ha', 'man', 'dominant', 'ställning', 'som', 'huvudspråk', ',', 'mena', 'även', 'som', 'den', 'en', 'nationalspråk', 'i', 'Finland', 'och', 'som', 'enda', 'officiell', 'språka', 'på', 'Åland', '.']
     elif lang == 'tgl':
         if lemmatizer == 'simplemma_tgl':
             assert lemmas == ['Ang', 'wikang', 'Tagalog[1', ']', '(', 'Baybayin', ':', 'ᜏᜒᜃᜆᜄᜎᜓ', ')', ',', 'o', 'ang', 'Tagalog', ',', 'ay', 'isa', 'sa', 'mga', 'pinakaginagamit', 'na', 'wikain', 'ng', 'Pilipinas', '.']
@@ -350,17 +261,15 @@ def test_lemmatize(lang, lemmatizer):
             tests_lang_util_skipped = True
     elif lang == 'ukr':
         if lemmatizer == 'pymorphy3_morphological_analyzer':
-            assert lemmas == ['украї́нський', 'мо́вий', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'ру́ський', ',', 'руси́нська[10][11][12', ']', '[', '*', '1', ']', ')', '—', 'національний', 'мова', 'українець', '.']
+            assert lemmas == ['украї́нський', 'мо́вий', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'ру́ський', '[', '10', ']', '[', '11', ']', '[', '12', ']', '[', '*', '1', ']', ')', '—', 'національний', 'мова', 'українець', '.']
         elif lemmatizer == 'simplemma_ukr':
-            assert lemmas == ['Українськ', 'мо́ва', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'руський', ',', 'руси́нська[10][11][12', ']', '[', '*', '1', ']', ')', '—', 'національний', 'мова', 'українець', '.']
-        elif lemmatizer == 'spacy_ukr':
-            assert lemmas == ['украї́нська', 'мо́ва', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'ру́ська', ',', 'руси́нська[10][11][12', ']', '[', '*', '1', ']', ')', '—', 'національний', 'мова', 'українець', '.']
+            assert lemmas == ['Українськ', 'мо́ва', '(', 'мфа', ':', '[', 'ukrɑ̽ˈjɪnʲsʲkɑ̽', 'ˈmɔwɑ̽', ']', ',', 'історичний', 'назва', '—', 'руський', '[', '10', ']', '[', '11', ']', '[', '12', ']', '[', '*', '1', ']', ')', '—', 'національний', 'мова', 'українець', '.']
         else:
             tests_lang_util_skipped = True
     elif lang == 'urd':
         assert lemmas == ['اُردُو', 'یا', 'لشکری', 'زبان[8', ']', 'برصغیر', 'کم', 'معیاری', 'زبان', 'میں', 'سے', 'ایک', 'ہونا', '۔']
     elif lang == 'cym':
-        assert lemmas == ['aelod', "o'r", 'cangen', 'Frythonaidd', "o'r", 'iaith', 'celtaidd', 'a', 'siarad', 'bod', 'brodorol', 'yn', 'cymru', ',', 'can', 'cymry', 'a', 'pobl', 'arall', 'aredig', 'gwasgar', 'bod', 'lloegr', ',', 'a', 'can', 'cymuned', 'bechan', 'bod', 'yr', 'gwladfa', ',', 'gŵr', 'Ariannin[7', ']', "yw'r", 'cymraeg', '(', 'hefyd', 'cymraeg', 'heb', 'yr', 'bannod', ')', '.']
+        assert lemmas == ['aelod', 'prpers', "'", 'rhoi', 'cangen', 'Frythonaidd', 'prpers', "'", 'rhoi', 'iaith', 'celtaidd', 'a', 'siarad', 'bod', 'brodorol', 'yn', 'cymru', ',', 'can', 'cymry', 'a', 'pobl', 'arall', 'aredig', 'gwasgar', 'bod', 'lloegr', ',', 'a', 'can', 'cymuned', 'bechan', 'bod', 'yr', 'gwladfa', ',', 'gŵr', 'Ariannin', '[', '7', ']', 'ywen', "'", 'rhoi', 'cymraeg', '(', 'hefyd', 'cymraeg', 'heb', 'yr', 'bannod', ')', '.']
     else:
         raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 

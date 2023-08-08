@@ -297,7 +297,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
                             lemmas_modified.extend(lemmas_temp)
                         # Use original tokens in many-to-one or one-to-many
                         else:
-                            tags_modified.extend(tags)
+                            tags_modified.extend(tags_temp)
                             lemmas_modified.extend(tokens_temp)
 
                         tokens_temp = []
@@ -317,7 +317,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
                         tags_modified.extend(tags)
                         lemmas_modified.extend(tokens_temp)
             else:
-                tags_modified.extend(tags[i_tokens])
+                tags_modified.append(tags[i_tokens])
                 lemmas_modified.append(lemmas[i_lemmas])
 
             i_tokens += 1

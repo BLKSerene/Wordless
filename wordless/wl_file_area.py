@@ -42,7 +42,7 @@ from PyQt5.QtWidgets import (
 
 from wordless.wl_checks import wl_checks_files, wl_checks_misc
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_errs, wl_dialogs_misc, wl_msg_boxes
-from wordless.wl_nlp import wl_matching, wl_texts
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts
 from wordless.wl_utils import wl_conversion, wl_detection, wl_misc, wl_paths, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_buttons, wl_item_delegates, wl_layouts, wl_tables
 
@@ -378,15 +378,19 @@ class Wl_Table_Files(wl_tables.Wl_Table):
 
     @wl_misc.log_timing
     def _open_files(self, files_to_open):
-        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
-
-        wl_threading.Wl_Thread(Wl_Worker_Open_Files(
+        if wl_nlp_utils.check_models(
             self.main,
-            dialog_progress = dialog_progress,
-            update_gui = self.update_gui,
-            files_to_open = files_to_open,
-            file_type = self.file_type
-        )).start_worker()
+            langs = [file['lang'] for file in files_to_open],
+        ):
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
+
+            wl_threading.Wl_Thread(Wl_Worker_Open_Files(
+                self.main,
+                dialog_progress = dialog_progress,
+                update_gui = self.update_gui,
+                files_to_open = files_to_open,
+                file_type = self.file_type
+            )).start_worker()
 
     def update_gui(self, err_msg, new_files):
         if wl_checks_files.check_err_file_area(self.main, err_msg):
@@ -514,9 +518,12 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         self.load_settings()
 
     def accept(self):
-        super().accept()
+        num_files = self.main.settings_custom['file_area']['files_open'] + self.main.settings_custom['file_area']['files_open_ref']
 
         self.main.tabs_file_area.currentWidget().table_files._open_files(files_to_open = self.table_files.files_to_open)
+
+        if num_files < self.main.settings_custom['file_area']['files_open'] + self.main.settings_custom['file_area']['files_open_ref']:
+            super().accept()
 
     def reject(self):
         # Remove placeholders for new paths

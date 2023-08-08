@@ -50,7 +50,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
         with nlp.select_pipes(disable = [
             pipeline
-            for pipeline in ['tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler']
+            for pipeline in ['tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler']
             if nlp.has_pipe(pipeline)
         ]):
             for doc in nlp.pipe([line.strip() for line in lines]):

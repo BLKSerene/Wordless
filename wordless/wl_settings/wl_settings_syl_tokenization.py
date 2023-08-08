@@ -116,34 +116,36 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         self.settings_custom['preview']['preview_samples'] = self.text_edit_syl_tokenization_preview_samples.toPlainText()
         self.settings_custom['preview']['preview_results'] = self.text_edit_syl_tokenization_preview_results.toPlainText()
 
-    def preview_results_changed(self):
-        if self.settings_custom['preview']['preview_samples']:
-            if self.combo_box_syl_tokenization_preview_lang.isEnabled():
-                row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
-
-                self.table_syl_tokenizers.itemDelegateForRow(row).set_enabled(False)
-                self.combo_box_syl_tokenization_preview_lang.setEnabled(False)
-                self.button_syl_tokenization_show_preview.setEnabled(False)
-                self.text_edit_syl_tokenization_preview_samples.setEnabled(False)
-
-                self.button_syl_tokenization_show_preview.setText(self.tr('Processing...'))
-
-                syl_tokenizer = wl_nlp_utils.to_lang_util_code(
-                    self.main,
-                    util_type = 'syl_tokenizers',
-                    util_text = self.table_syl_tokenizers.model().item(row, 1).text()
-                )
-
-                worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
-                    self.main,
-                    update_gui = self.update_gui,
-                    syl_tokenizer = syl_tokenizer
-                )
-
-                self.thread_preview_syl_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_syl_tokenizer)
-                self.thread_preview_syl_tokenizer.start_worker()
+        if self.settings_custom['preview']['preview_samples'].strip():
+            self.button_syl_tokenization_show_preview.setEnabled(True)
         else:
-            self.text_edit_syl_tokenization_preview_results.clear()
+            self.button_syl_tokenization_show_preview.setEnabled(False)
+
+    def preview_results_changed(self):
+        if self.combo_box_syl_tokenization_preview_lang.isEnabled():
+            row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
+
+            self.table_syl_tokenizers.itemDelegateForRow(row).set_enabled(False)
+            self.combo_box_syl_tokenization_preview_lang.setEnabled(False)
+            self.button_syl_tokenization_show_preview.setEnabled(False)
+            self.text_edit_syl_tokenization_preview_samples.setEnabled(False)
+
+            self.button_syl_tokenization_show_preview.setText(self.tr('Processing...'))
+
+            syl_tokenizer = wl_nlp_utils.to_lang_util_code(
+                self.main,
+                util_type = 'syl_tokenizers',
+                util_text = self.table_syl_tokenizers.model().item(row, 1).text()
+            )
+
+            worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
+                self.main,
+                update_gui = self.update_gui,
+                syl_tokenizer = syl_tokenizer
+            )
+
+            self.thread_preview_syl_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_syl_tokenizer)
+            self.thread_preview_syl_tokenizer.start_worker()
 
     def update_gui(self, preview_results):
         self.button_syl_tokenization_show_preview.setText(self.tr('Show preview'))

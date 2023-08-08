@@ -29,6 +29,7 @@
 - Work Area: Add Profiler - Readability - Bormuth's Cloze Mean / Bormuth's Grade Placement / Coleman's Readability Formula / Danielson-Bryan's Readability Formula / Degrees of Reading Power / Easy Listening Formula / Fucks's Stilcharakteristik / Strain Index / Tränkle & Bailer's Readability Formula / Tuldava's Text Difficulty / Wheeler & Smith's Readability Formula
 
 ### ✨ Improvements
+- Utils: Update spaCy's sentence recognizers, word tokenizers, part-of-speech taggers, lemmatizers, and dependency parsers
 - Utils: Update Wordless's sentence and sentence segment splitters
 - Work Area: Update Profiler - Readability - Automated Readability Index / Dale-Chall Readability Formula / Flesch Reading Ease / Flesch Reading Ease (Farr-Jenkins-Paterson) / Gunning Fog Index / Spache Grade Level
 

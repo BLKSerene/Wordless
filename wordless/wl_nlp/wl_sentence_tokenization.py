@@ -84,11 +84,15 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         else:
             pipelines_disabled = ['tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler']
 
-        if lang == 'nno':
-            nlp = main.spacy_nlp_nob
+        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        if lang in wl_nlp_utils.SPACY_LANGS and sentence_tokenizer == 'spacy_sentencizer':
+            nlp = main.__dict__[f'spacy_nlp_{lang}_sentencizer']
         else:
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-            nlp = main.__dict__[f'spacy_nlp_{lang}']
+            if lang == 'nno':
+                nlp = main.spacy_nlp_nob
+            else:
+                nlp = main.__dict__[f'spacy_nlp_{lang}']
 
         with nlp.select_pipes(disable = [
             pipeline

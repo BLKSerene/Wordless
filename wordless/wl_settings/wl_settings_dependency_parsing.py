@@ -121,24 +121,33 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_dependency_parsing_preview_lang.currentText())
         self.settings_custom['preview']['preview_samples'] = self.text_edit_dependency_parsing_preview_samples.toPlainText()
 
+        if self.settings_custom['preview']['preview_samples'].strip():
+            self.button_dependency_parsing_show_preview.setEnabled(True)
+        else:
+            self.button_dependency_parsing_show_preview.setEnabled(False)
+
     def preview_results_changed(self):
-        if self.settings_custom['preview']['preview_samples']:
-            if self.combo_box_dependency_parsing_preview_lang.isEnabled():
-                row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
+        if self.combo_box_dependency_parsing_preview_lang.isEnabled():
+            row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
-                self.table_dependency_parsers.itemDelegateForRow(row).set_enabled(False)
-                self.combo_box_dependency_parsing_preview_lang.setEnabled(False)
-                self.button_dependency_parsing_show_preview.setEnabled(False)
-                self.text_edit_dependency_parsing_preview_samples.setEnabled(False)
+            self.table_dependency_parsers.itemDelegateForRow(row).set_enabled(False)
+            self.combo_box_dependency_parsing_preview_lang.setEnabled(False)
+            self.button_dependency_parsing_show_preview.setEnabled(False)
+            self.text_edit_dependency_parsing_preview_samples.setEnabled(False)
 
-                self.button_dependency_parsing_show_preview.setText(self.tr('Processing...'))
+            self.button_dependency_parsing_show_preview.setText(self.tr('Processing...'))
 
-                dependency_parser = wl_nlp_utils.to_lang_util_code(
-                    self.main,
-                    util_type = 'dependency_parsers',
-                    util_text = self.table_dependency_parsers.model().item(row, 1).text()
-                )
+            dependency_parser = wl_nlp_utils.to_lang_util_code(
+                self.main,
+                util_type = 'dependency_parsers',
+                util_text = self.table_dependency_parsers.model().item(row, 1).text()
+            )
 
+            if wl_nlp_utils.check_models(
+                self.main,
+                langs = [self.settings_custom['preview']['preview_lang']],
+                lang_utils = [dependency_parser]
+            ):
                 worker_preview_dependency_parser = Wl_Worker_Preview_Dependency_Parser(
                     self.main,
                     update_gui = self.update_gui,
@@ -147,6 +156,8 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
 
                 self.thread_preview_dependency_parser = wl_threading.Wl_Thread_No_Progress(worker_preview_dependency_parser)
                 self.thread_preview_dependency_parser.start_worker()
+            else:
+                self.update_gui_err()
 
     def update_gui(self, htmls):
         wl_dependency_parsing.wl_show_dependency_graphs(
@@ -155,6 +166,9 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
             show_in_separate_tab = self.settings_custom['preview']['preview_settings']['show_in_separate_tab']
         )
 
+        self.update_gui_err()
+
+    def update_gui_err(self):
         self.button_dependency_parsing_show_preview.setText(self.tr('Show preview'))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])

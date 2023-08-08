@@ -16,9 +16,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import copy
 import glob
 import os
-import random
+import pickle
 import time
 
 from PyQt5.QtCore import QObject
@@ -42,14 +43,32 @@ def test_file_area():
             file_type = 'observed'
         ).run()
 
+    def open_file_ref(err_msg, files_to_open):
+        assert not err_msg
+
+        wl_file_area.Wl_Worker_Open_Files(
+            main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
+            update_gui = update_gui_ref,
+            files_to_open = files_to_open,
+            file_type = 'ref'
+        ).run()
+
     def update_gui(err_msg, new_files):
         assert not err_msg
 
         main.settings_custom['file_area']['files_open'].extend(new_files)
 
-    wl_test_init.clean_import_caches()
+    def update_gui_ref(err_msg, new_files):
+        assert not err_msg
 
-    for file_path in random.sample(glob.glob('tests/files/wl_file_area/*.txt'), 2):
+        main.settings_custom['file_area']['files_open_ref'].extend(new_files)
+
+    wl_test_init.clean_import_caches()
+    # Reset custom settings
+    main.settings_custom = copy.deepcopy(main.settings_default)
+
+    for file_path in glob.glob('tests/files/wl_file_area/file_area/*.txt'):
         time_start = time.time()
 
         print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
@@ -69,12 +88,48 @@ def test_file_area():
 
         assert new_file['selected']
         assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
-        assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area'), 'imports')
+        assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area', 'file_area'), 'imports')
         assert new_file['path_original'] == wl_paths.get_normalized_path(file_path)
+        assert new_file['encoding'] == 'utf_8'
+        assert new_file['lang'] == 'eng_us'
         assert not new_file['tokenized']
         assert not new_file['tagged']
 
         print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
+
+    # Reference files
+    for file_path in glob.glob('tests/files/wl_file_area/file_area/*.txt'):
+        time_start = time.time()
+
+        print(f'Loading file "{os.path.split(file_path)[1]}" as reference file... ', end = '')
+
+        table = QObject()
+        table.files_to_open = []
+
+        wl_file_area.Wl_Worker_Add_Files(
+            main,
+            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
+            update_gui = open_file_ref,
+            file_paths = [file_path],
+            table = table
+        ).run()
+
+        new_file = main.settings_custom['file_area']['files_open_ref'][-1]
+
+        assert new_file['selected']
+        assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0] + ' (2)'
+        assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area', 'file_area'), 'imports').replace('.txt', ' (2).txt')
+        assert new_file['path_original'] == wl_paths.get_normalized_path(file_path)
+        assert new_file['encoding'] == 'utf_8'
+        assert new_file['lang'] == 'eng_us'
+        assert not new_file['tokenized']
+        assert not new_file['tagged']
+
+        print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
+
+    # Save Settings
+    with open('tests/wl_settings.pickle', 'wb') as f:
+        pickle.dump(main.settings_custom, f)
 
 if __name__ == '__main__':
     test_file_area()

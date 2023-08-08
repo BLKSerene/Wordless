@@ -18,10 +18,7 @@
 
 from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import (
-    QApplication, QDialog, QPlainTextEdit, QPushButton, QTextEdit,
-    QWidget
-)
+from PyQt5.QtWidgets import QDialog, QPlainTextEdit, QPushButton, QTextEdit, QWidget
 
 from wordless.wl_widgets import wl_buttons
 
@@ -213,14 +210,3 @@ class Wl_Dialog_Settings(Wl_Dialog_Info):
     def load(self):
         self.load_settings()
         self.exec_()
-
-class Wl_Dialog_Err(Wl_Dialog_Info):
-    def exec_(self):
-        super().exec_()
-
-        QApplication.beep()
-
-    def open(self):
-        super().open()
-
-        QApplication.beep()

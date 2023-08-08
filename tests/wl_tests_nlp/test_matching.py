@@ -235,7 +235,7 @@ def test_match_tokens():
         lang = 'eng_us',
         tagged = False,
         settings = init_search_settings(match_inflected_forms = True)
-    ) == set(['take', 'takes', 'taked', 'taken', 'taking'])
+    ) == set(['take', 'takes', 'taked', 'taken'])
 
     assert wl_matching.match_tokens(
         main,
@@ -303,7 +303,7 @@ def test_match_ngrams():
 
     assert wl_matching.match_ngrams(
         main,
-        search_terms = ['taked walking'],
+        search_terms = ['take walked'],
         tokens = ['take', 'takes', 'walk', 'walked', 'test'],
         lang = 'eng_us',
         tagged = False,

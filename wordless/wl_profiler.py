@@ -1166,6 +1166,11 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     for text in texts
                     for para in text.tokens_multilevel
                 ]
+                text_total.tokens_multilevel_with_puncs = [
+                    copy.deepcopy(para)
+                    for text in texts
+                    for para in text.tokens_multilevel_with_puncs
+                ]
                 text_total.syls_tokens = [
                     syls
                     for text in texts
