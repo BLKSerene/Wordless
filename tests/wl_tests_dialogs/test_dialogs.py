@@ -30,15 +30,15 @@ def test_wl_dialog_frameless():
 def test_wl_dialog_info():
     wl_dialogs.Wl_Dialog_Info(main, title = 'test')
 
+def test_wl_dialog_info_copy():
+    wl_dialogs.Wl_Dialog_Info_Copy(main, title = 'test')
+
 def test_wl_dialog_settings():
     wl_dialogs.Wl_Dialog_Settings(main, title = 'test')
-
-def test_wl_dialog_err():
-    wl_dialogs.Wl_Dialog_Err(main, title = 'test')
 
 if __name__ == '__main__':
     test_wl_dialog()
     test_wl_dialog_frameless()
     test_wl_dialog_info()
+    test_wl_dialog_info_copy()
     test_wl_dialog_settings()
-    test_wl_dialog_err()

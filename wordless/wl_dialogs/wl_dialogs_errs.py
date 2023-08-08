@@ -17,36 +17,65 @@
 # ----------------------------------------------------------------------
 
 from PyQt5.QtCore import QCoreApplication, Qt
-from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QApplication, QPushButton
 
 from wordless.wl_dialogs import wl_dialogs
 from wordless.wl_widgets import wl_labels, wl_tables
 
 _tr = QCoreApplication.translate
 
-class Wl_Dialog_Err_Fatal(wl_dialogs.Wl_Dialog_Err, wl_dialogs.Wl_Dialog_Info_Copy):
-    def __init__(self, main, err_msg):
-        super().__init__(
-            main,
-            title = _tr('wl_dialogs_errs', 'Fatal Error'),
-            width = 550,
-            height = 300,
-            resizable = True
-        )
+class Wl_Dialog_Err(wl_dialogs.Wl_Dialog_Info):
+    def exec_(self):
+        super().exec_()
 
-        self.label_err_msg = wl_labels.Wl_Label_Dialog(
-            self.tr('''
-                <div>A fatal error has occurred, please <b>send the following error messages</b> to {} in order to <b>contact the author for support</b>!</div>
-            ''').format(self.main.email_html),
-            self
-        )
+        QApplication.beep()
+
+    def open(self):
+        super().open()
+
+        QApplication.beep()
+
+class Wl_Dialog_Err_Info_Copy(Wl_Dialog_Err, wl_dialogs.Wl_Dialog_Info_Copy):
+    def __init__(self, main, title, width = 0, height = 0, resizable = False, help_info = '', err_msg = ''):
+        super().__init__(main, title, width = width, height = height, resizable = resizable)
+
+        self.label_err_msg = wl_labels.Wl_Label_Dialog(help_info, self)
 
         self.text_edit_info.setPlainText(err_msg)
 
         self.wrapper_info.layout().addWidget(self.label_err_msg, 0, 0)
         self.wrapper_info.layout().addWidget(self.text_edit_info, 1, 0)
 
-class Wl_Dialog_Err_Files(wl_dialogs.Wl_Dialog_Err):
+class Wl_Dialog_Err_Fatal(Wl_Dialog_Err_Info_Copy):
+    def __init__(self, main, err_msg):
+        super().__init__(
+            main,
+            title = _tr('wl_dialogs_errs', 'Fatal Error'),
+            width = 600,
+            height = 300,
+            resizable = True,
+            help_info = _tr('wl_dialogs_errs', '''
+                <div>A fatal error has occurred, please <b>send the following error messages</b> to {} in order to <b>contact the author for support</b>!</div>
+            ''').format(main.email_html),
+            err_msg = err_msg
+        )
+
+class Wl_Dialog_Err_Download_Model(Wl_Dialog_Err_Info_Copy):
+    def __init__(self, main, err_msg):
+        super().__init__(
+            main,
+            title = _tr('wl_dialogs_errs', 'Network Error'),
+            width = 600,
+            height = 400,
+            resizable = True,
+            help_info = _tr('wl_dialogs_errs', '''
+                <div>A network error occurred while downloading the model, please check your internet connections and proxy settings in <b>Menu → Preferences → General → Proxy Settings</b> if you are using a proxy.</div>
+                <div>If the network issue persists, please <b>send the following error messages</b> to {} in order to <b>contact the author for support</b>.</div>
+            ''').format(main.email_html),
+            err_msg = err_msg
+        )
+
+class Wl_Dialog_Err_Files(Wl_Dialog_Err):
     def __init__(self, main, title):
         super().__init__(main, title, width = 580, height = 260, no_buttons = True)
 

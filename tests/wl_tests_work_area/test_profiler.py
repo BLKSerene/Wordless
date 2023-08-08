@@ -39,11 +39,11 @@ def test_profiler():
             wl_test_init.select_random_files(main, num_files = 2)
 
         files_selected = [
-            re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
+            re.search(r'(?<=\)\. ).+?$', file_name).group()
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
-        print(f"Files: {', '.join(files_selected)}")
+        print(f"Files: {' | '.join(files_selected)}")
 
         wl_profiler.Wl_Worker_Profiler_Table(
             main,

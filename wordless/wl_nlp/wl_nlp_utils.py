@@ -20,13 +20,19 @@ import collections
 import html
 import importlib
 import itertools
+import os
 import re
+import shutil
+import sys
+import traceback
 
 import botok
 import bs4
 import mecab
 import nltk
 import nltk.tokenize.nist
+import packaging.version
+import pip
 import pymorphy3
 import pyphen
 import sacremoses
@@ -34,7 +40,9 @@ import spacy
 import spacy_pkuseg
 import sudachipy
 
-from wordless.wl_utils import wl_conversion
+from wordless.wl_checks import wl_checks_work_area
+from wordless.wl_dialogs import wl_dialogs_misc
+from wordless.wl_utils import wl_conversion, wl_misc, wl_threading
 
 def to_lang_util_code(main, util_type, util_text):
     return main.settings_global['mapping_lang_utils'][util_type][util_text]
@@ -62,65 +70,175 @@ def to_lang_util_texts(main, util_type, util_codes):
     )
 
 SPACY_LANGS = {
-    'cat': 'ca_core_news_sm',
-    'zho': 'zh_core_web_sm',
-    'hrv': 'hr_core_news_sm',
-    'dan': 'da_core_news_sm',
-    'nld': 'nl_core_news_sm',
-    'eng': 'en_core_web_sm',
-    'fin': 'fi_core_news_sm',
-    'fra': 'fr_core_news_sm',
-    'deu': 'de_core_news_sm',
-    'ell': 'el_core_news_sm',
-    'ita': 'it_core_news_sm',
-    'jpn': 'ja_core_news_sm',
-    'kor': 'ko_core_news_sm',
-    'lit': 'lt_core_news_sm',
-    'mkd': 'mk_core_news_sm',
-    'nob': 'nb_core_news_sm',
-    'pol': 'pl_core_news_sm',
-    'por': 'pt_core_news_sm',
-    'ron': 'ro_core_news_sm',
-    'rus': 'ru_core_news_sm',
-    'slv': 'sl_core_news_sm',
-    'spa': 'es_core_news_sm',
-    'swe': 'sv_core_news_sm',
-    'ukr': 'uk_core_news_sm',
+    'cat': 'ca_core_news_trf',
+    'zho': 'zh_core_web_trf',
+    'hrv': 'hr_core_news_lg',
+    'dan': 'da_core_news_trf',
+    'nld': 'nl_core_news_lg',
+    'eng': 'en_core_web_trf',
+    'fin': 'fi_core_news_lg',
+    'fra': 'fr_dep_news_trf',
+    'deu': 'de_dep_news_trf',
+    'ell': 'el_core_news_lg',
+    'ita': 'it_core_news_lg',
+    'jpn': 'ja_core_news_trf',
+    'kor': 'ko_core_news_lg',
+    'lit': 'lt_core_news_lg',
+    'mkd': 'mk_core_news_lg',
+    'nob': 'nb_core_news_lg',
+    'pol': 'pl_core_news_lg',
+    'por': 'pt_core_news_lg',
+    'ron': 'ro_core_news_lg',
+    'rus': 'ru_core_news_lg',
+    'slv': 'sl_core_news_trf',
+    'spa': 'es_dep_news_trf',
+    'swe': 'sv_core_news_lg',
+    'ukr': 'uk_core_news_trf',
 
-    'other': 'en_core_web_sm'
+    'other': 'en_core_web_trf'
 }
 SPACY_LANGS_LEMMATIZERS = ['ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl', 'tur', 'urd']
 
-def init_spacy_models(main, lang):
+def check_models(main, langs, lang_utils = None):
+    models_ok = True
+
+    # Check all language utilities if language utility is not specified
+    if lang_utils is None:
+        langs_to_check = langs.copy()
+        langs = []
+        lang_utils = []
+
+        for lang in langs_to_check:
+            langs.extend([lang] * 5)
+            lang_utils.extend([
+                main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang],
+                main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang],
+                main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang],
+                main.settings_custom['lemmatization']['lemmatizer_settings'][lang],
+                main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
+            ])
+
+    for lang, lang_util in zip(langs, lang_utils):
+        if lang == 'nno':
+            lang = 'nob'
+        else:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        if lang_util.startswith('spacy_') and lang in SPACY_LANGS:
+            model_name = SPACY_LANGS[lang]
+
+            try:
+                importlib.import_module(model_name)
+            except ModuleNotFoundError:
+                worker_download_model = Wl_Worker_Download_Spacy_Model(
+                    main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
+                    update_gui = lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(main, model_name, err_msg),
+                    model_name = model_name
+                )
+
+                wl_threading.Wl_Thread(worker_download_model).start_worker()
+
+                try:
+                    importlib.import_module(model_name)
+                except ModuleNotFoundError:
+                    models_ok = False
+
+        if not models_ok:
+            break
+
+    return models_ok
+
+class Wl_Worker_Download_Spacy_Model(wl_threading.Wl_Worker):
+    worker_done = wl_threading.wl_pyqt_signal(str)
+
+    def __init__(self, main, dialog_progress, update_gui, model_name): # pylint: disable=unused-argument
+        super().__init__(main, dialog_progress, update_gui, model_name = model_name)
+
+        self.err_msg = ''
+
+    def run(self):
+        try:
+            self.progress_updated.emit(self.tr('Fetching model information...'))
+
+            # Clean existing models
+            for file in os.listdir('.'):
+                if os.path.isdir(file) and file.startswith(self.model_name):
+                    shutil.rmtree(self.model_name, ignore_errors = True)
+
+            spacy_ver = packaging.version.Version(spacy.about.__version__)
+            model_ver = f'{spacy_ver.major}.{spacy_ver.minor}'
+
+            r, err_msg = wl_misc.wl_download(self.main, spacy.about.__compatibility__)
+
+            if not err_msg:
+                model_ver = r.json()['spacy'][model_ver][self.model_name][0]
+                filename = f'{self.model_name}-{model_ver}/{self.model_name}-{model_ver}{spacy.cli._util.WHEEL_SUFFIX}'
+
+                model_url = f'{spacy.about.__download_url__}/{filename}'
+
+                # Get model size
+                file_size = wl_misc.wl_download_file_size(self.main, model_url)
+
+                if file_size:
+                    self.progress_updated.emit(self.tr(f'Downloading model ({file_size:.2f} MB)...'))
+                else:
+                    self.progress_updated.emit(self.tr('Downloading model...'))
+
+                if getattr(sys, '_MEIPASS', False):
+                    pip.main(['install', '--target', '.', '--no-deps', model_url])
+                else:
+                    pip.main(['install', model_url])
+
+                # Clear cache
+                pip.main(['cache', 'purge'])
+            else:
+                self.err_msg = err_msg
+        except Exception: # pylint: disable=broad-exception-caught
+            self.err_msg = traceback.format_exc()
+
+        self.progress_updated.emit(self.tr('Download completed successfully.'))
+        self.worker_done.emit(self.err_msg)
+
+def init_spacy_models(main, lang, sentencizer_only = False):
     if lang == 'nno':
         lang = 'nob'
-    elif lang.startswith('srp_'):
-        lang = 'srp'
     else:
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-    if f'spacy_nlp_{lang}' not in main.__dict__:
-        # Languages with models
-        if lang in SPACY_LANGS:
-            model = importlib.import_module(SPACY_LANGS[lang])
+    # Languages with models
+    if lang in SPACY_LANGS:
+        # Sentencizer only
+        if sentencizer_only and f'spacy_nlp_{lang}_sentencizer' not in main.__dict__:
+            if lang == 'other':
+                main.__dict__[f'spacy_nlp_{lang}_sentencizer'] = spacy.blank('en')
+            else:
+                main.__dict__[f'spacy_nlp_{lang}_sentencizer'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
+
+            main.__dict__[f'spacy_nlp_{lang}_sentencizer'].add_pipe('sentencizer')
+        elif not sentencizer_only and f'spacy_nlp_{lang}' not in main.__dict__:
+            model_name = SPACY_LANGS[lang]
+            model = importlib.import_module(model_name)
 
             # Exclude NER to boost speed
             main.__dict__[f'spacy_nlp_{lang}'] = model.load(exclude = ['ner'])
-            # Add sentence recognizer
-            main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
-        # Languages without models
-        else:
-            if lang == 'srp':
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank('sr')
-            else:
-                main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
 
-            # Add sentencizer and lemmatizer
-            main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+            # Transformer-based models do not have sentence recognizer
+            if not model_name.endswith('_trf'):
+                main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
 
-            if lang in SPACY_LANGS_LEMMATIZERS:
-                main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
-                main.__dict__[f'spacy_nlp_{lang}'].initialize()
+            if lang == 'other':
+                main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+    # Languages without models
+    elif lang not in SPACY_LANGS and f'spacy_nlp_{lang}' not in main.__dict__:
+        main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
+
+        # Add sentencizer and lemmatizer
+        main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+
+        if lang in SPACY_LANGS_LEMMATIZERS:
+            main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
+            main.__dict__[f'spacy_nlp_{lang}'].initialize()
 
 def init_sudachipy_word_tokenizer(main):
     if 'sudachipy_word_tokenizer' not in main.__dict__:
@@ -129,7 +247,10 @@ def init_sudachipy_word_tokenizer(main):
 def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
     if sentence_tokenizer.startswith('spacy_'):
-        init_spacy_models(main, lang)
+        if sentence_tokenizer == 'spacy_sentencizer':
+            init_spacy_models(main, lang, sentencizer_only = True)
+        else:
+            init_spacy_models(main, lang)
 
 def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
     if lang not in main.settings_global['word_tokenizers']:

@@ -32,11 +32,11 @@ def test_concordancer_parallel():
         wl_test_init.select_random_files(main, num_files = 3)
 
         files_selected = [
-            re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
+            re.search(r'(?<=\)\. ).+?$', file_name).group()
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
-        print(f"Files: {', '.join(files_selected)}")
+        print(f"Files: {' | '.join(files_selected)}")
 
         wl_concordancer_parallel.Wl_Worker_Concordancer_Parallel_Table(
             main,

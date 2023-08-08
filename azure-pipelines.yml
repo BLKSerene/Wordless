@@ -54,21 +54,18 @@ jobs:
 
       # Run tests
       - script: |
-          pytest tests/wl_tests_nlp/test_dependency_parsing.py
-          pytest tests/wl_tests_nlp/test_lemmatization.py
-          pytest tests/wl_tests_nlp/test_matching.py
-          pytest tests/wl_tests_nlp/test_nlp_utils.py
-          pytest tests/wl_tests_nlp/test_pos_tagging.py
+          pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+
           pytest tests/wl_tests_nlp/test_sentence_tokenization.py
-          pytest tests/wl_tests_nlp/test_stop_word_lists.py
-          pytest tests/wl_tests_nlp/test_syl_tokenization.py
-          pytest tests/wl_tests_nlp/test_word_detokenization.py
           pytest tests/wl_tests_nlp/test_word_tokenization.py
+          pytest tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest tests/wl_tests_nlp/test_pos_tagging.py
+          pytest tests/wl_tests_nlp/test_lemmatization.py
 
-          pytest tests/wl_tests_file_area
-          pytest tests/wl_tests_work_area
+          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
 
-          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area
+          pytest tests/wl_tests_file_area/test_file_area.py
+          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
         displayName: 'Run tests'
 
   # macOS
@@ -104,22 +101,19 @@ jobs:
 
       # Run tests
       - script: |
-          pytest tests/wl_tests_nlp/test_dependency_parsing.py
-          pytest tests/wl_tests_nlp/test_lemmatization.py
-          pytest tests/wl_tests_nlp/test_matching.py
-          pytest tests/wl_tests_nlp/test_nlp_utils.py
-          pytest tests/wl_tests_nlp/test_pos_tagging.py
+          pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+
           pytest tests/wl_tests_nlp/test_sentence_tokenization.py
-          pytest tests/wl_tests_nlp/test_stop_word_lists.py
-          pytest tests/wl_tests_nlp/test_syl_tokenization.py
-          pytest tests/wl_tests_nlp/test_word_detokenization.py
           pytest tests/wl_tests_nlp/test_word_tokenization.py
+          pytest tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest tests/wl_tests_nlp/test_pos_tagging.py
+          pytest tests/wl_tests_nlp/test_lemmatization.py
 
-          pytest tests/wl_tests_file_area
+          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
+
+          pytest tests/wl_tests_file_area/test_file_area.py
           # Ignore tests of Profiler due to unknown errors
-          pytest tests/wl_tests_work_area --ignore=tests/wl_tests_work_area/test_profiler.py
-
-          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area
+          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py --ignore=tests/wl_tests_work_area/test_profiler.py
         displayName: 'Run tests'
 
   # Linux
@@ -158,19 +152,16 @@ jobs:
           # Fix PyQt
           export QT_QPA_PLATFORM=offscreen
 
-          pytest tests/wl_tests_nlp/test_dependency_parsing.py
-          pytest tests/wl_tests_nlp/test_lemmatization.py
-          pytest tests/wl_tests_nlp/test_matching.py
-          pytest tests/wl_tests_nlp/test_nlp_utils.py
-          pytest tests/wl_tests_nlp/test_pos_tagging.py
+          pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+
           pytest tests/wl_tests_nlp/test_sentence_tokenization.py
-          pytest tests/wl_tests_nlp/test_stop_word_lists.py
-          pytest tests/wl_tests_nlp/test_syl_tokenization.py
-          pytest tests/wl_tests_nlp/test_word_detokenization.py
           pytest tests/wl_tests_nlp/test_word_tokenization.py
+          pytest tests/wl_tests_nlp/test_syl_tokenization.py
+          pytest tests/wl_tests_nlp/test_pos_tagging.py
+          pytest tests/wl_tests_nlp/test_lemmatization.py
 
-          pytest tests/wl_tests_file_area
-          pytest tests/wl_tests_work_area
+          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
 
-          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area --ignore=tests/wl_tests_work_area
+          pytest tests/wl_tests_file_area/test_file_area.py
+          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
         displayName: 'Run tests'
