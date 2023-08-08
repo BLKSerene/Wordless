@@ -79,11 +79,11 @@ def test_keyword_extractor():
                 file['selected'] = True # pylint: disable=unsupported-assignment-operation
 
         file_names_observed = [
-            re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
+            re.search(r'(?<=\)\. ).+?$', file_name).group()
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
         file_names_ref = [
-            re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
+            re.search(r'(?<=\)\. ).+?$', file_name).group()
             for file_name in main.wl_file_area_ref.get_selected_file_names()
         ]
 
@@ -91,8 +91,8 @@ def test_keyword_extractor():
         main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor'] = measures_bayes_factor[i % len_measures_bayes_factor]
         main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size'] = measures_effect_size[i % len_measures_effect_size]
 
-        print(f"Observed files: {', '.join(file_names_observed)}")
-        print(f"Reference files: {', '.join(file_names_ref)}")
+        print(f"Observed files: {' | '.join(file_names_observed)}")
+        print(f"Reference files: {' | '.join(file_names_ref)}")
         print(f"Test of statistical significance: {main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance']}")
         print(f"Measure of Bayes factor: {main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size']}")

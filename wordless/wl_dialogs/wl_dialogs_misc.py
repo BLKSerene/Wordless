@@ -29,7 +29,7 @@ _tr = QCoreApplication.translate
 
 class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
     def __init__(self, main, text):
-        super().__init__(main, width = 450)
+        super().__init__(main, width = 500)
 
         self.time_start = time.time()
 
@@ -61,6 +61,10 @@ class Wl_Dialog_Progress(wl_dialogs.Wl_Dialog_Frameless):
 class Wl_Dialog_Progress_Process_Data(Wl_Dialog_Progress):
     def __init__(self, main):
         super().__init__(main, text = _tr('Wl_Dialog_Progress_Process_Data', 'Processing data...'))
+
+class Wl_Dialog_Progress_Download_Model(Wl_Dialog_Progress):
+    def __init__(self, main):
+        super().__init__(main, text = _tr('Wl_Dialog_Progress_Process_Data', 'Downloading model...'))
 
 class Wl_Dialog_Clr_Table(wl_dialogs.Wl_Dialog_Info):
     def __init__(self, main):
