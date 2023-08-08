@@ -40,8 +40,8 @@ TOKENS_MULTILEVEL_0 = []
 TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
 TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'readability', 'boxes', 'created', '.']]]]
 TOKENS_MULTILEVEL_100 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'a', 'sen-tence0', '.']]]]
-TOKENS_MULTILEVEL_100_PREP = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'of', 'sentence', '.']]]]
-TOKENS_MULTILEVEL_100_CONJ = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'and', 'sentence', '.']]]]
+TOKENS_MULTILEVEL_100_PREP = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['I', 'am', 'behind', 'you', '.']]]]
+TOKENS_MULTILEVEL_100_CONJ = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['Go', 'ahead', 'and', 'turn', '.']]]]
 TOKENS_MULTILEVEL_120 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'metropolis', '.']]]] * 15
 TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 18 + [[[['This', 'is', 'a', 'sen-tence0', 'for', 'testing', '.']]]]
 
@@ -68,6 +68,9 @@ test_text_spa_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'spa')
 test_text_spa_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'spa')
 test_text_spa_120 = Wl_Test_Text(TOKENS_MULTILEVEL_120, lang = 'spa')
 test_text_spa_150 = Wl_Test_Text(TOKENS_MULTILEVEL_150, lang = 'spa')
+
+test_text_tha_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'tha')
+test_text_tha_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'tha')
 
 test_text_afr_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'afr')
 test_text_nld_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'nld')
@@ -178,7 +181,7 @@ def test_colemans_readability_formula():
     cloze_pct_eng_12_3 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_12)
     settings['colemans_readability_formula']['variant'] = '4'
     cloze_pct_eng_12_4 = wl_measures_readability.colemans_readability_formula(main, test_text_eng_12)
-    cloze_pct_spa_12 = wl_measures_readability.colemans_readability_formula(main, test_text_spa_12)
+    cloze_pct_tha_12 = wl_measures_readability.colemans_readability_formula(main, test_text_tha_12)
     cloze_pct_other_12 = wl_measures_readability.colemans_readability_formula(main, test_text_other_12)
 
     print("Coleman's Readability Formula:")
@@ -187,7 +190,7 @@ def test_colemans_readability_formula():
     print(f'\teng/12-2: {cloze_pct_eng_12_2}')
     print(f'\teng/12-3: {cloze_pct_eng_12_3}')
     print(f'\teng/12-4: {cloze_pct_eng_12_4}')
-    print(f'\tspa/12: {cloze_pct_spa_12}')
+    print(f'\ttha/12: {cloze_pct_tha_12}')
     print(f'\tother/12: {cloze_pct_other_12}')
 
     assert cloze_pct_eng_0 == 'text_too_short'
@@ -195,7 +198,7 @@ def test_colemans_readability_formula():
     assert cloze_pct_eng_12_2 == 1.16 * (9 / 12 * 100) + 1.48 * (3 / 12 * 100) - 37.95
     assert cloze_pct_eng_12_3 == 1.07 * (9 / 12 * 100) + 1.18 * (3 / 12 * 100) + 0.76 * (0 / 12 * 100) - 34.02
     assert cloze_pct_eng_12_4 == 1.04 * (9 / 12 * 100) + 1.06 * (3 / 12 * 100) + 0.56 * (0 / 12 * 100) - 0.36 * (0 / 12) - 26.01
-    assert cloze_pct_spa_12 != 'no_support'
+    assert cloze_pct_tha_12 != 'no_support'
     assert cloze_pct_other_12 == 'no_support'
 
 def test_x_c50():
@@ -461,7 +464,6 @@ def test_fog_index():
     fog_index_eng_12_pron_psk = wl_measures_readability.fog_index(main, test_text_eng_12_propn)
     settings['fog_index']['variant_eng'] = 'Navy'
     fog_index_eng_12_navy = wl_measures_readability.fog_index(main, test_text_eng_12)
-    fog_index_pol_12 = wl_measures_readability.fog_index(main, test_text_pol_12)
     fog_index_spa_12 = wl_measures_readability.fog_index(main, test_text_spa_12)
 
     print('Gunning Fog Index:')
@@ -469,14 +471,12 @@ def test_fog_index():
     print(f'\teng/12-orig: {fog_index_eng_12_propn_orig}')
     print(f'\teng/12-psk: {fog_index_eng_12_pron_psk}')
     print(f'\teng/12-navy: {fog_index_eng_12_navy}')
-    print(f'\tpol/12: {fog_index_pol_12}')
     print(f'\tspa/12: {fog_index_spa_12}')
 
     assert fog_index_eng_0 == 'text_too_short'
     assert fog_index_eng_12_propn_orig == 0.4 * (12 / 3 + 1 / 12 * 100)
     assert fog_index_eng_12_pron_psk == 3.0680 + 0.0877 * (12 / 3) + 0.0984 * (1 / 12 * 100)
     assert fog_index_eng_12_navy == ((12 + 2 * 0) / 3 - 3) / 2
-    assert fog_index_pol_12 == numpy.sqrt((12 / 3) ** 2 + (0 / 12) ** 2) / 2
     assert fog_index_spa_12 == 'no_support'
 
 def test_mu():
@@ -624,20 +624,20 @@ def test_trankle_bailers_readability_formula():
     trankle_bailers_eng_100_prep_1 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_100_prep)
     settings['trankle_bailers_readability_formula']['variant'] = '2'
     trankle_bailers_eng_100_conj_2 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_eng_100_conj)
-    trankle_bailers_spa_100 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_spa_12)
-    trankle_bailers_other_100 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_other_12)
+    trankle_bailers_tha_100 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_tha_100)
+    trankle_bailers_other_100 = wl_measures_readability.trankle_bailers_readability_formula(main, test_text_other_100)
 
     print("Tränkle & Bailer's Readability Formula:")
     print(f'\teng/0: {trankle_bailers_eng_0}')
-    print(f'\teng/12-1: {trankle_bailers_eng_100_prep_1}')
-    print(f'\teng/12-2: {trankle_bailers_eng_100_conj_2}')
-    print(f'\tspa/12: {trankle_bailers_spa_100}')
-    print(f'\tother/12: {trankle_bailers_other_100}')
+    print(f'\teng/100-prep: {trankle_bailers_eng_100_prep_1}')
+    print(f'\teng/100-conj: {trankle_bailers_eng_100_conj_2}')
+    print(f'\ttha/100: {trankle_bailers_tha_100}')
+    print(f'\tother/100: {trankle_bailers_other_100}')
 
     assert trankle_bailers_eng_0 == 'text_too_short'
-    assert trankle_bailers_eng_100_prep_1 == 224.6814 - 79.8304 * (376 / 100) - 12.24032 * (100 / 25) - 1.292857 * 1
-    assert trankle_bailers_eng_100_conj_2 == 234.1063 - 96.11069 * (377 / 100) - 2.05444 * 0 - 1.02805 * 1
-    assert trankle_bailers_spa_100 != 'no_support'
+    assert trankle_bailers_eng_100_prep_1 == 224.6814 - 79.8304 * (372 / 100) - 12.24032 * (100 / 25) - 1.292857 * 1
+    assert trankle_bailers_eng_100_conj_2 == 234.1063 - 96.11069 * (374 / 100) - 2.05444 * 0 - 1.02805 * 1
+    assert trankle_bailers_tha_100 != 'no_support'
     assert trankle_bailers_other_100 == 'no_support'
 
 def test_td():

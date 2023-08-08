@@ -117,24 +117,33 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
         self.settings_custom['preview']['preview_samples'] = self.text_edit_word_tokenization_preview_samples.toPlainText()
         self.settings_custom['preview']['preview_results'] = self.text_edit_word_tokenization_preview_results.toPlainText()
 
+        if self.settings_custom['preview']['preview_samples'].strip():
+            self.button_word_tokenization_show_preview.setEnabled(True)
+        else:
+            self.button_word_tokenization_show_preview.setEnabled(False)
+
     def preview_results_changed(self):
-        if self.settings_custom['preview']['preview_samples']:
-            if self.combo_box_word_tokenization_preview_lang.isEnabled():
-                row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
+        if self.combo_box_word_tokenization_preview_lang.isEnabled():
+            row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
-                self.table_word_tokenizers.itemDelegateForRow(row).set_enabled(False)
-                self.combo_box_word_tokenization_preview_lang.setEnabled(False)
-                self.button_word_tokenization_show_preview.setEnabled(False)
-                self.text_edit_word_tokenization_preview_samples.setEnabled(False)
+            self.table_word_tokenizers.itemDelegateForRow(row).set_enabled(False)
+            self.combo_box_word_tokenization_preview_lang.setEnabled(False)
+            self.button_word_tokenization_show_preview.setEnabled(False)
+            self.text_edit_word_tokenization_preview_samples.setEnabled(False)
 
-                self.button_word_tokenization_show_preview.setText(self.tr('Processing...'))
+            self.button_word_tokenization_show_preview.setText(self.tr('Processing...'))
 
-                word_tokenizer = wl_nlp_utils.to_lang_util_code(
-                    self.main,
-                    util_type = 'word_tokenizers',
-                    util_text = self.table_word_tokenizers.model().item(row, 1).text()
-                )
+            word_tokenizer = wl_nlp_utils.to_lang_util_code(
+                self.main,
+                util_type = 'word_tokenizers',
+                util_text = self.table_word_tokenizers.model().item(row, 1).text()
+            )
 
+            if wl_nlp_utils.check_models(
+                self.main,
+                langs = [self.settings_custom['preview']['preview_lang']],
+                lang_utils = [word_tokenizer]
+            ):
                 worker_preview_word_tokenizer = Wl_Worker_Preview_Word_Tokenizer(
                     self.main,
                     update_gui = self.update_gui,
@@ -143,12 +152,16 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
 
                 self.thread_preview_word_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_word_tokenizer)
                 self.thread_preview_word_tokenizer.start_worker()
-        else:
-            self.text_edit_word_tokenization_preview_results.clear()
+            else:
+                self.update_gui_err()
 
     def update_gui(self, preview_results):
-        self.button_word_tokenization_show_preview.setText(self.tr('Show preview'))
         self.text_edit_word_tokenization_preview_results.setPlainText('\n'.join(preview_results))
+
+        self.update_gui_err()
+
+    def update_gui_err(self):
+        self.button_word_tokenization_show_preview.setText(self.tr('Show preview'))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 

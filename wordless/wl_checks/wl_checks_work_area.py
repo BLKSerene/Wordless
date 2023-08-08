@@ -16,6 +16,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import importlib
+import traceback
+
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QStandardItem
 
@@ -51,6 +54,9 @@ def wl_status_bar_msg_lang_support_unavailable(main):
 def wl_status_bar_msg_missing_search_terms(main):
     main.statusBar().showMessage(_tr('wl_checks_work_area', 'Missing search terms!'))
 
+def wl_status_bar_msg_success_download_model(main):
+    main.statusBar().showMessage(_tr('wl_checks_work_area', 'Model downloaded successfully.'))
+
 def wl_status_bar_msg_success_generate_table(main):
     main.statusBar().showMessage(_tr('wl_checks_work_area', 'Table generated successfully.'))
 
@@ -59,6 +65,9 @@ def wl_status_bar_msg_success_generate_fig(main):
 
 def wl_status_bar_msg_success_no_results(main):
     main.statusBar().showMessage(_tr('wl_checks_work_area', 'No results to display.'))
+
+def wl_status_bar_msg_err_download_model(main):
+    main.statusBar().showMessage(_tr('wl_checks_work_area', 'A network error occurred while downloading the model!'))
 
 def wl_status_bar_msg_err_fatal(main):
     main.statusBar().showMessage(_tr('wl_checks_work_area', 'A fatal error has just occurred!'))
@@ -159,6 +168,25 @@ def check_results(main, err_msg, results):
 
         wl_msg_box_no_results(main)
         wl_status_bar_msg_success_no_results(main)
+
+    return results_ok
+
+def check_results_download_model(main, model_name, err_msg):
+    results_ok = True
+
+    try:
+        importlib.import_module(model_name)
+
+        wl_status_bar_msg_success_download_model(main)
+    except ModuleNotFoundError:
+        results_ok = False
+
+        # Show import error if the error message is empty
+        if not err_msg:
+            err_msg = traceback.format_exc()
+
+        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).open()
+        wl_status_bar_msg_err_download_model(main)
 
     return results_ok
 

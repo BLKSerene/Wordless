@@ -62,9 +62,15 @@ def to_iso_639_3(main, lang_code):
 def to_iso_639_1(main, lang_code):
     lang_code = normalize_lang_code(lang_code)
 
-    for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
-        if lang_code_639_3 == lang_code:
-            return lang_code_639_1
+    # Fuzzy matching without code suffixes
+    if '_' in lang_code:
+        for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+            if lang_code_639_3 == lang_code:
+                return lang_code_639_1
+    else:
+        for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
+            if remove_lang_code_suffixes(main, lang_code_639_3) == remove_lang_code_suffixes(main, lang_code):
+                return lang_code_639_1
 
     return None
 
