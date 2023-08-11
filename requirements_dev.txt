@@ -36,8 +36,7 @@ pymorphy3-dicts-ru
 pymorphy3-dicts-uk
 
 ## spaCy
-spacy
-spacy-lookups-data
+spacy[lookups,transformers]
 spacy-pkuseg
 
 ## SudachiPy
