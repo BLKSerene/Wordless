@@ -51,6 +51,7 @@
 - Dependencies: Upgrade NumPy to 1.25.2
 - Dependencies: Upgrade PyThaiNLP to 4.0.2
 - Dependencies: Upgrade Requests to 2.31.0
+- Dependencies: Upgrade SciPy to 1.11.1
 - Dependencies: Upgrade spaCy to 3.6.1
 - Dependencies: Upgrade Underthesea to 6.7.0
 - Dependencies: Upgrade wordcloud to 1.9.2
