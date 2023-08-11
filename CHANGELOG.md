@@ -48,6 +48,7 @@
 - Dependencies: Upgrade Botok to 0.8.12
 - Dependencies: Upgrade Charset Normalizer to 3.2.0
 - Dependencies: Upgrade NetworkX to 3.1
+- Dependencies: Upgrade NumPy to 1.25.2
 - Dependencies: Upgrade PyThaiNLP to 4.0.2
 - Dependencies: Upgrade Requests to 2.31.0
 - Dependencies: Upgrade spaCy to 3.6.1
