@@ -50,7 +50,7 @@
 - Dependencies: Upgrade NetworkX to 3.1
 - Dependencies: Upgrade PyThaiNLP to 4.0.2
 - Dependencies: Upgrade Requests to 2.31.0
-- Dependencies: Upgrade spaCy to 3.6.0
+- Dependencies: Upgrade spaCy to 3.6.1
 - Dependencies: Upgrade Underthesea to 6.7.0
 - Dependencies: Upgrade wordcloud to 1.9.2
 

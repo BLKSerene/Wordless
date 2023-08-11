@@ -62,27 +62,4 @@ tzdata; sys_platform == 'win32' # Required by PyThaiNLP on Windows
 wordcloud
 
 # spaCy models
-spacy_models/ca_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/da_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/de_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/el_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/en_core_web_sm-3.6.0-py3-none-any.whl
-spacy_models/es_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/fi_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/fr_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/hr_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/it_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/ja_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/ko_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/lt_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/mk_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/nb_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/nl_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/pl_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/pt_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/ro_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/ru_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/sl_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/sv_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/uk_core_news_sm-3.6.0-py3-none-any.whl
-spacy_models/zh_core_web_sm-3.6.0-py3-none-any.whl
+en_core_web_trf-3.6.1-py3-none-any.whl
