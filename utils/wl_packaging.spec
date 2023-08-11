@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Utilities: Packaging - spec File
+# Utilities: Packaging - spec file
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -33,6 +33,8 @@ is_windows, is_macos, is_linux = wl_utils.check_os()
 
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
+# Dostoevsky
+datas.extend(PyInstaller.utils.hooks.collect_data_files('dostoevsky'))
 # jieba
 datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
 # khmer-nltk

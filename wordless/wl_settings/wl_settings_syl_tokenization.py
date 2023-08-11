@@ -75,34 +75,34 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         # Preview
         self.group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_syl_tokenization_preview_lang = QLabel(self.tr('Select language:'), self)
-        self.combo_box_syl_tokenization_preview_lang = wl_boxes.Wl_Combo_Box(self)
-        self.button_syl_tokenization_show_preview = QPushButton(self.tr('Show preview'), self)
-        self.text_edit_syl_tokenization_preview_samples = QTextEdit(self)
-        self.text_edit_syl_tokenization_preview_results = QTextEdit(self)
+        self.label_preview_lang = QLabel(self.tr('Select language:'), self)
+        self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
+        self.button_show_preview = QPushButton(self.tr('Show preview'), self)
+        self.text_edit_preview_samples = QTextEdit(self)
+        self.text_edit_preview_results = QTextEdit(self)
 
-        self.combo_box_syl_tokenization_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
+        self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
-        self.button_syl_tokenization_show_preview.setMinimumWidth(140)
-        self.text_edit_syl_tokenization_preview_samples.setAcceptRichText(False)
-        self.text_edit_syl_tokenization_preview_results.setReadOnly(True)
+        self.button_show_preview.setMinimumWidth(140)
+        self.text_edit_preview_samples.setAcceptRichText(False)
+        self.text_edit_preview_results.setReadOnly(True)
 
-        self.combo_box_syl_tokenization_preview_lang.currentTextChanged.connect(self.preview_changed)
-        self.button_syl_tokenization_show_preview.clicked.connect(self.preview_results_changed)
-        self.text_edit_syl_tokenization_preview_samples.textChanged.connect(self.preview_changed)
-        self.text_edit_syl_tokenization_preview_results.textChanged.connect(self.preview_changed)
+        self.combo_box_preview_lang.currentTextChanged.connect(self.preview_changed)
+        self.button_show_preview.clicked.connect(self.preview_results_changed)
+        self.text_edit_preview_samples.textChanged.connect(self.preview_changed)
+        self.text_edit_preview_results.textChanged.connect(self.preview_changed)
 
         layout_preview_settings = wl_layouts.Wl_Layout()
-        layout_preview_settings.addWidget(self.label_syl_tokenization_preview_lang, 0, 0)
-        layout_preview_settings.addWidget(self.combo_box_syl_tokenization_preview_lang, 0, 1)
-        layout_preview_settings.addWidget(self.button_syl_tokenization_show_preview, 0, 3)
+        layout_preview_settings.addWidget(self.label_preview_lang, 0, 0)
+        layout_preview_settings.addWidget(self.combo_box_preview_lang, 0, 1)
+        layout_preview_settings.addWidget(self.button_show_preview, 0, 3)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
         self.group_box_preview.setLayout(wl_layouts.Wl_Layout())
         self.group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
-        self.group_box_preview.layout().addWidget(self.text_edit_syl_tokenization_preview_samples, 1, 0)
-        self.group_box_preview.layout().addWidget(self.text_edit_syl_tokenization_preview_results, 1, 1)
+        self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0)
+        self.group_box_preview.layout().addWidget(self.text_edit_preview_results, 1, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_syl_tokenizer_settings, 0, 0)
@@ -112,25 +112,25 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         self.layout().setRowStretch(1, 1)
 
     def preview_changed(self):
-        self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_syl_tokenization_preview_lang.currentText())
-        self.settings_custom['preview']['preview_samples'] = self.text_edit_syl_tokenization_preview_samples.toPlainText()
-        self.settings_custom['preview']['preview_results'] = self.text_edit_syl_tokenization_preview_results.toPlainText()
+        self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_preview_lang.currentText())
+        self.settings_custom['preview']['preview_samples'] = self.text_edit_preview_samples.toPlainText()
+        self.settings_custom['preview']['preview_results'] = self.text_edit_preview_results.toPlainText()
 
         if self.settings_custom['preview']['preview_samples'].strip():
-            self.button_syl_tokenization_show_preview.setEnabled(True)
+            self.button_show_preview.setEnabled(True)
         else:
-            self.button_syl_tokenization_show_preview.setEnabled(False)
+            self.button_show_preview.setEnabled(False)
 
     def preview_results_changed(self):
-        if self.combo_box_syl_tokenization_preview_lang.isEnabled():
+        if self.combo_box_preview_lang.isEnabled():
             row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
             self.table_syl_tokenizers.itemDelegateForRow(row).set_enabled(False)
-            self.combo_box_syl_tokenization_preview_lang.setEnabled(False)
-            self.button_syl_tokenization_show_preview.setEnabled(False)
-            self.text_edit_syl_tokenization_preview_samples.setEnabled(False)
+            self.combo_box_preview_lang.setEnabled(False)
+            self.button_show_preview.setEnabled(False)
+            self.text_edit_preview_samples.setEnabled(False)
 
-            self.button_syl_tokenization_show_preview.setText(self.tr('Processing...'))
+            self.button_show_preview.setText(self.tr('Processing...'))
 
             syl_tokenizer = wl_nlp_utils.to_lang_util_code(
                 self.main,
@@ -148,15 +148,15 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
             self.thread_preview_syl_tokenizer.start_worker()
 
     def update_gui(self, preview_results):
-        self.button_syl_tokenization_show_preview.setText(self.tr('Show preview'))
-        self.text_edit_syl_tokenization_preview_results.setPlainText('\n'.join(preview_results))
+        self.button_show_preview.setText(self.tr('Show preview'))
+        self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
         self.table_syl_tokenizers.itemDelegateForRow(row).set_enabled(True)
-        self.combo_box_syl_tokenization_preview_lang.setEnabled(True)
-        self.button_syl_tokenization_show_preview.setEnabled(True)
-        self.text_edit_syl_tokenization_preview_samples.setEnabled(True)
+        self.combo_box_preview_lang.setEnabled(True)
+        self.button_show_preview.setEnabled(True)
+        self.text_edit_preview_samples.setEnabled(True)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -176,15 +176,17 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
         self.table_syl_tokenizers.enable_updates()
 
         if not defaults:
-            self.combo_box_syl_tokenization_preview_lang.blockSignals(True)
-            self.text_edit_syl_tokenization_preview_samples.blockSignals(True)
+            self.combo_box_preview_lang.blockSignals(True)
+            self.text_edit_preview_samples.blockSignals(True)
 
-            self.combo_box_syl_tokenization_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
-            self.text_edit_syl_tokenization_preview_samples.setText(settings['preview']['preview_samples'])
-            self.text_edit_syl_tokenization_preview_results.setText(settings['preview']['preview_results'])
+            self.combo_box_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
+            self.text_edit_preview_samples.setText(settings['preview']['preview_samples'])
+            self.text_edit_preview_results.setText(settings['preview']['preview_results'])
 
-            self.combo_box_syl_tokenization_preview_lang.blockSignals(False)
-            self.text_edit_syl_tokenization_preview_samples.blockSignals(False)
+            self.combo_box_preview_lang.blockSignals(False)
+            self.text_edit_preview_samples.blockSignals(False)
+
+        self.preview_changed()
 
     def apply_settings(self):
         for i, lang in enumerate(self.settings_custom['syl_tokenizer_settings']):

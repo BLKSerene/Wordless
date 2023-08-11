@@ -54,6 +54,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             wl_settings_lemmatization,
             wl_settings_stop_word_lists,
             wl_settings_dependency_parsing,
+            wl_settings_sentiment_analysis,
             wl_settings_measures,
             wl_settings_tables,
             wl_settings_figs
@@ -84,24 +85,25 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Lemmatization')))
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Stop Word Lists')))
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Dependency Parsing')))
+        self.tree_settings.model().appendRow(QStandardItem(self.tr('Sentiment Analysis')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Measures')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Readability')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Dispersion')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Statistical Significance')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Bayes Factor')))
-        self.tree_settings.model().item(9).appendRow(QStandardItem(self.tr('Effect Size')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Readability')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Dispersion')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Statistical Significance')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Bayes Factor')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Effect Size')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Tables')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Profiler')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Concordancer')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Parallel Concordancer')))
+        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Profiler')))
+        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Concordancer')))
+        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Parallel Concordancer')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Figures')))
-        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Line Charts')))
-        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Word Clouds')))
-        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Network Graphs')))
+        self.tree_settings.model().item(12).appendRow(QStandardItem(self.tr('Line Charts')))
+        self.tree_settings.model().item(12).appendRow(QStandardItem(self.tr('Word Clouds')))
+        self.tree_settings.model().item(12).appendRow(QStandardItem(self.tr('Network Graphs')))
 
         # Calculate width
         for i in range(self.tree_settings.model().rowCount()):
@@ -136,6 +138,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         self.settings_lemmatization = wl_settings_lemmatization.Wl_Settings_Lemmatization(self.main)
         self.settings_stop_words_lists = wl_settings_stop_word_lists.Wl_Settings_Stop_Word_Lists(self.main)
         self.settings_dependency_parsing = wl_settings_dependency_parsing.Wl_Settings_Dependency_Parsing(self.main)
+        self.settings_sentiment_analysis = wl_settings_sentiment_analysis.Wl_Settings_Sentiment_Analysis(self.main)
 
         # Measures
         self.settings_measures_readability = wl_settings_measures.Wl_Settings_Measures_Readability(self.main)
@@ -174,6 +177,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             self.tr('Lemmatization'): self.settings_lemmatization,
             self.tr('Stop Word Lists'): self.settings_stop_words_lists,
             self.tr('Dependency Parsing'): self.settings_dependency_parsing,
+            self.tr('Sentiment Analysis'): self.settings_sentiment_analysis,
 
             self.tr('Readability'): self.settings_measures_readability,
             self.tr('Dispersion'): self.settings_measures_dispersion,

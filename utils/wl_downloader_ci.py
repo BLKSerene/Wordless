@@ -16,11 +16,27 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import subprocess
+
 import nltk
 import spacy
 
-# Download spaCy models
-spacy.cli.download('en_core_web_trf')
+import wl_trs_utils
+
+# Download Dostoevsky model
+is_windows, is_macos, is_linux = wl_trs_utils.check_os()
+commands = ['dostoevsky', 'download', 'fasttext-social-network-model']
+
+if is_windows:
+    subprocess.run(['python', '-m'] + commands, check = True)
+else:
+    try:
+        if is_macos:
+            subprocess.run(['python3', '-m'] + commands, check = True)
+        elif is_linux:
+            subprocess.run(['python3.10', '-m'] + commands, check = True)
+    except subprocess.CalledProcessError:
+        subprocess.run(['python', '-m'] + commands, check = True)
 
 # Download NLTK data
 # Corpora
@@ -35,3 +51,6 @@ nltk.download('averaged_perceptron_tagger_ru')
 nltk.download('punkt')
 # Misc
 nltk.download('perluniprops')
+
+# Download spaCy models
+spacy.cli.download('en_core_web_trf')
