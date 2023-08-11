@@ -34,6 +34,7 @@ def wl_test_supported_langs(main):
     langs_lemmatizers = main.settings_global['lemmatizers'].keys()
     langs_stop_word_lists = main.settings_global['stop_word_lists'].keys()
     langs_dependency_parsers = main.settings_global['dependency_parsers'].keys()
+    langs_sentiment_analyzers = main.settings_global['sentiment_analyzers'].keys()
 
     langs_nlp_utils = [
         langs_sentence_tokenizers,
@@ -42,7 +43,8 @@ def wl_test_supported_langs(main):
         langs_pos_taggers,
         langs_lemmatizers,
         langs_stop_word_lists,
-        langs_dependency_parsers
+        langs_dependency_parsers,
+        langs_sentiment_analyzers
     ]
 
     for lang_name, lang_code_639_3 in langs_supported:
@@ -53,7 +55,7 @@ def wl_test_supported_langs(main):
             doc_supported_lang = f'{lang_name:{len_max_langs}s}'
 
             if lang_code_639_3 == 'other':
-                doc_supported_lang += '|⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️'
+                doc_supported_lang += '|⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖️'
             else:
                 for i, langs in enumerate(langs_nlp_utils):
                     if i <= 1:
