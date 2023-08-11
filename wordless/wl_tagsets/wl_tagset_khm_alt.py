@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tagsets - Asian Language Treebank
+# Wordless: Tagsets - Asian language treebank
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify

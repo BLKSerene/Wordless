@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Settings - Global Settings
+# Wordless: Tests - Settings - Global settings
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -122,6 +122,9 @@ class Check_Settings_Global():
         settings_dependency_parsers = settings_global['dependency_parsers']
         settings_dependency_parsers_default = settings_default['dependency_parsing']['dependency_parser_settings']
 
+        settings_sentiment_analyzers = settings_global['sentiment_analyzers']
+        settings_sentiment_analyzers_default = settings_default['sentiment_analysis']['sentiment_analyzer_settings']
+
         # Add custom lists
         for lang, stop_word_lists in settings_stop_word_lists.items():
             stop_word_lists.append('custom')
@@ -154,6 +157,9 @@ class Check_Settings_Global():
 
         langs_dependency_parsers = list(settings_dependency_parsers)
         langs_dependency_parsers_default = list(settings_dependency_parsers_default)
+
+        langs_sentiment_analyzers = list(settings_sentiment_analyzers)
+        langs_sentiment_analyzers_default = list(settings_sentiment_analyzers_default)
 
         # Loading languages supported by Sacremoses
         for file in os.listdir(os.path.split(sacremoses.__file__)[0] + '/data/nonbreaking_prefixes/'):
@@ -240,22 +246,30 @@ class Check_Settings_Global():
         self.check_missing_extra_langs(langs_supported_spacy_lemmatizers, langs_lemmatizers_spacy, "spaCy's lemmatizers")
 
         # Check for missing and extra languages in default settings
-        self.check_missing_extra_langs_default(langs_sentence_tokenizers, langs_sentence_tokenizers_default, 'sentence tokenizers')
-        self.check_missing_extra_langs_default(langs_word_tokenizers, langs_word_tokenizers_default, 'word tokenizers')
-        self.check_missing_extra_langs_default(langs_syl_tokenizers, langs_syl_tokenizers_default, 'syllable tokenizers')
-        self.check_missing_extra_langs_default(langs_pos_taggers, langs_pos_taggers_default, 'pos_taggers')
-        self.check_missing_extra_langs_default(langs_lemmatizers, langs_lemmatizers_default, 'lemmatizers')
-        self.check_missing_extra_langs_default(langs_stop_word_lists, langs_stop_word_lists_default, 'stop word lists')
-        self.check_missing_extra_langs_default(langs_dependency_parsers, langs_dependency_parsers_default, 'dependency parsers')
+        for langs, langs_default, msg in [
+            [langs_sentence_tokenizers, langs_sentence_tokenizers_default, 'sentence tokenizers'],
+            [langs_word_tokenizers, langs_word_tokenizers_default, 'word tokenizers'],
+            [langs_syl_tokenizers, langs_syl_tokenizers_default, 'syllable tokenizers'],
+            [langs_pos_taggers, langs_pos_taggers_default, 'POS taggers'],
+            [langs_lemmatizers, langs_lemmatizers_default, 'lemmatizers'],
+            [langs_stop_word_lists, langs_stop_word_lists_default, 'stop word lists'],
+            [langs_dependency_parsers, langs_dependency_parsers_default, 'dependency parsers'],
+            [langs_sentiment_analyzers, langs_sentiment_analyzers_default, 'sentiment analyzers']
+        ]:
+            self.check_missing_extra_langs_default(langs, langs_default, msg)
 
         # Check for invalid default values in default settings
-        self.check_invalid_default_lang_utils(settings_sentence_tokenizers, settings_sentence_tokenizers_default, 'sentence_tokenizers')
-        self.check_invalid_default_lang_utils(settings_word_tokenizers, settings_word_tokenizers_default, 'word tokenizers')
-        self.check_invalid_default_lang_utils(settings_syl_tokenizers, settings_syl_tokenizers_default, 'syllable tokenizers')
-        self.check_invalid_default_lang_utils(settings_pos_taggers, settings_pos_taggers_default, 'pos_taggers')
-        self.check_invalid_default_lang_utils(settings_lemmatizers, settings_lemmatizers_default, 'lemmatizers')
-        self.check_invalid_default_lang_utils(settings_stop_word_lists, settings_stop_word_lists_default, 'stop word lists')
-        self.check_invalid_default_lang_utils(settings_dependency_parsers, settings_dependency_parsers_default, 'dependency parsers')
+        for lang_utils, lang_utils_default, msg in [
+            [settings_sentence_tokenizers, settings_sentence_tokenizers_default, 'sentence tokenizers'],
+            [settings_word_tokenizers, settings_word_tokenizers_default, 'word tokenizers'],
+            [settings_syl_tokenizers, settings_syl_tokenizers_default, 'syllable tokenizers'],
+            [settings_pos_taggers, settings_pos_taggers_default, 'POS taggers'],
+            [settings_lemmatizers, settings_lemmatizers_default, 'lemmatizers'],
+            [settings_stop_word_lists, settings_stop_word_lists_default, 'stop word lists'],
+            [settings_dependency_parsers, settings_dependency_parsers_default, 'dependency parsers'],
+            [settings_sentiment_analyzers, settings_sentiment_analyzers_default, 'sentiment analyzers']
+        ]:
+            self.check_invalid_default_lang_utils(lang_utils, lang_utils_default, msg)
 
 def test_settings_global():
     assert wl_settings_global.init_settings_global()

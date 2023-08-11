@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: NLP - NLP Utilities
+# Wordless: NLP - NLP utilities
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -109,14 +109,17 @@ def check_models(main, langs, lang_utils = None):
         lang_utils = []
 
         for lang in langs_to_check:
-            langs.extend([lang] * 5)
-            lang_utils.extend([
-                main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang],
-                main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang],
-                main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang],
-                main.settings_custom['lemmatization']['lemmatizer_settings'][lang],
-                main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
-            ])
+            for settings in [
+                main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
+                main.settings_custom['word_tokenization']['word_tokenizer_settings'],
+                main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'],
+                main.settings_custom['lemmatization']['lemmatizer_settings'],
+                main.settings_custom['dependency_parsing']['dependency_parser_settings'],
+                main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']
+            ]:
+                if lang in settings:
+                    langs.append(lang)
+                    lang_utils.append(settings[lang])
 
     for lang, lang_util in zip(langs, lang_utils):
         if lang == 'nno':

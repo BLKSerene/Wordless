@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+# ----------------------------------------------------------------------
+# Wordless: Requirements files - Tests
+# Copyright (C) 2018-2023  Ye Lei (叶磊)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# ----------------------------------------------------------------------
+
+# NLP
+botok == 0.8.12
+charset-normalizer == 3.2.0
+jieba == 0.42.1
+khmer-nltk == 1.5
+lingua-language-detector == 1.3.2
+nltk == 3.8.1
+pyphen == 0.14.0
+pythainlp == 4.0.2
+sacremoses == 0.0.53
+simplemma == 0.9.1
+underthesea == 6.7.0
+
+## python-mecab-ko
+python-mecab-ko == 1.3.3
+python-mecab-ko-dic == 2.1.1.post2
+
+## pymorphy3
+pymorphy3 == 1.2.0
+pymorphy3-dicts-ru == 2.4.417150.4580142
+pymorphy3-dicts-uk == 2.4.1.1.1663094765
+
+## spaCy
+spacy == 3.6.1
+spacy-lookups-data == 1.0.5
+spacy-pkuseg == 0.0.32
+
+## SudachiPy
+sudachipy == 0.6.7
+sudachidict_core == 20230110
+
+# Miscellaneous
+beautifulsoup4
+lxml
+matplotlib
+networkx
+numpy
+opencc-python-reimplemented
+openpyxl
+pypdf
+pyqt5
+pytest
+python-docx
+requests
+scipy
+tzdata; sys_platform == 'win32' # Required by PyThaiNLP on Windows
+wordcloud
