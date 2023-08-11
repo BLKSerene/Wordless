@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Settings - Default Settings
+# Wordless: Settings - Default settings
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -1693,6 +1693,20 @@ def init_settings_default(main):
                 },
 
                 'preview_samples': ''
+            }
+        },
+
+        # Settings - Sentiment Analysis
+        'sentiment_analysis': {
+            'sentiment_analyzer_settings': {
+                'rus': 'dostoevsky_rus',
+                'vie': 'underthesea_vie'
+            },
+
+            'preview': {
+                'preview_lang': 'rus',
+                'preview_samples': '',
+                'preview_sentiment_score': '0',
             }
         },
 

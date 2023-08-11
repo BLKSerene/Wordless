@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Settings - Sentence Tokenization
+# Wordless: Settings - Sentiment Analysis
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,55 +22,55 @@ from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import QGroupBox, QLabel, QPushButton, QTextEdit
 
-from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization
+from wordless.wl_nlp import wl_nlp_utils, wl_sentiment_analysis
 from wordless.wl_settings import wl_settings
 from wordless.wl_utils import wl_conversion, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_item_delegates, wl_layouts, wl_tables
 
-class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
+class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
-        self.settings_global = self.main.settings_global['sentence_tokenizers']
-        self.settings_default = self.main.settings_default['sentence_tokenization']
-        self.settings_custom = self.main.settings_custom['sentence_tokenization']
+        self.settings_global = self.main.settings_global['sentiment_analyzers']
+        self.settings_default = self.main.settings_default['sentiment_analysis']
+        self.settings_custom = self.main.settings_custom['sentiment_analysis']
 
-        # Sentence Tokenizer Settings
-        self.group_box_sentence_tokenizer_settings = QGroupBox(self.tr('Sentence Tokenizer Settings'), self)
+        # Sentiment Analyzer Settings
+        self.group_box_sentiment_analyzer_settings = QGroupBox(self.tr('Sentiment Analyzer Settings'), self)
 
-        self.table_sentence_tokenizers = wl_tables.Wl_Table(
+        self.table_sentiment_analyzers = wl_tables.Wl_Table(
             self,
             headers = [
                 self.tr('Language'),
-                self.tr('Sentence Tokenizers')
+                self.tr('Sentiment Analyzer')
             ],
             editable = True
         )
 
-        self.table_sentence_tokenizers.setFixedHeight(370)
-        self.table_sentence_tokenizers.verticalHeader().setHidden(True)
-        self.table_sentence_tokenizers.model().setRowCount(len(self.settings_global))
+        self.table_sentiment_analyzers.setFixedHeight(370)
+        self.table_sentiment_analyzers.verticalHeader().setHidden(True)
+        self.table_sentiment_analyzers.model().setRowCount(len(self.settings_global))
 
-        self.table_sentence_tokenizers.disable_updates()
+        self.table_sentiment_analyzers.disable_updates()
 
         for i, lang in enumerate(self.settings_global):
-            self.table_sentence_tokenizers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
-            self.table_sentence_tokenizers.model().setItem(i, 1, QStandardItem())
+            self.table_sentiment_analyzers.model().setItem(i, 0, QStandardItem(wl_conversion.to_lang_text(self.main, lang)))
+            self.table_sentiment_analyzers.model().setItem(i, 1, QStandardItem())
 
-            self.table_sentence_tokenizers.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
-                parent = self.table_sentence_tokenizers,
+            self.table_sentiment_analyzers.setItemDelegateForRow(i, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
+                parent = self.table_sentiment_analyzers,
                 items = list(wl_nlp_utils.to_lang_util_texts(
                     self.main,
-                    util_type = 'sentence_tokenizers',
+                    util_type = 'sentiment_analyzers',
                     util_codes = self.settings_global[lang]
                 )),
                 col = 1
             ))
 
-        self.table_sentence_tokenizers.enable_updates()
+        self.table_sentiment_analyzers.enable_updates()
 
-        self.group_box_sentence_tokenizer_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_sentence_tokenizer_settings.layout().addWidget(self.table_sentence_tokenizers, 0, 0)
+        self.group_box_sentiment_analyzer_settings.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_sentiment_analyzer_settings.layout().addWidget(self.table_sentiment_analyzers, 0, 0)
 
         # Preview
         self.group_box_preview = QGroupBox(self.tr('Preview'), self)
@@ -78,34 +78,31 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
         self.label_preview_lang = QLabel(self.tr('Select language:'), self)
         self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_show_preview = QPushButton(self.tr('Show preview'), self)
+        self.label_preview_sentiment_score = QLabel(self.tr('Sentiment score: '), self)
+        self.label_preview_sentiment_score_val = QLabel('', self)
         self.text_edit_preview_samples = QTextEdit(self)
-        self.text_edit_preview_results = QTextEdit(self)
 
         self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.button_show_preview.setMinimumWidth(140)
         self.text_edit_preview_samples.setAcceptRichText(False)
-        self.text_edit_preview_results.setReadOnly(True)
 
         self.combo_box_preview_lang.currentTextChanged.connect(self.preview_changed)
         self.button_show_preview.clicked.connect(self.preview_results_changed)
         self.text_edit_preview_samples.textChanged.connect(self.preview_changed)
-        self.text_edit_preview_results.textChanged.connect(self.preview_changed)
-
-        layout_preview_settings = wl_layouts.Wl_Layout()
-        layout_preview_settings.addWidget(self.label_preview_lang, 0, 0)
-        layout_preview_settings.addWidget(self.combo_box_preview_lang, 0, 1)
-        layout_preview_settings.addWidget(self.button_show_preview, 0, 3)
-
-        layout_preview_settings.setColumnStretch(2, 1)
 
         self.group_box_preview.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_preview.layout().addLayout(layout_preview_settings, 0, 0, 1, 2)
-        self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0)
-        self.group_box_preview.layout().addWidget(self.text_edit_preview_results, 1, 1)
+        self.group_box_preview.layout().addWidget(self.label_preview_lang, 0, 0)
+        self.group_box_preview.layout().addWidget(self.combo_box_preview_lang, 0, 1)
+        self.group_box_preview.layout().addWidget(self.button_show_preview, 0, 2)
+        self.group_box_preview.layout().addWidget(self.label_preview_sentiment_score, 0, 4)
+        self.group_box_preview.layout().addWidget(self.label_preview_sentiment_score_val, 0, 5)
+        self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0, 1, 6)
+
+        self.group_box_preview.layout().setColumnStretch(3, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_sentence_tokenizer_settings, 0, 0)
+        self.layout().addWidget(self.group_box_sentiment_analyzer_settings, 0, 0)
         self.layout().addWidget(self.group_box_preview, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
@@ -114,7 +111,6 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
     def preview_changed(self):
         self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_preview_lang.currentText())
         self.settings_custom['preview']['preview_samples'] = self.text_edit_preview_samples.toPlainText()
-        self.settings_custom['preview']['preview_results'] = self.text_edit_preview_results.toPlainText()
 
         if self.settings_custom['preview']['preview_samples'].strip():
             self.button_show_preview.setEnabled(True)
@@ -125,37 +121,38 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
         if self.combo_box_preview_lang.isEnabled():
             row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
-            self.table_sentence_tokenizers.itemDelegateForRow(row).set_enabled(False)
+            self.table_sentiment_analyzers.itemDelegateForRow(row).set_enabled(False)
             self.combo_box_preview_lang.setEnabled(False)
             self.button_show_preview.setEnabled(False)
             self.text_edit_preview_samples.setEnabled(False)
 
             self.button_show_preview.setText(self.tr('Processing...'))
 
-            sentence_tokenizer = wl_nlp_utils.to_lang_util_code(
+            sentiment_analyzer = wl_nlp_utils.to_lang_util_code(
                 self.main,
-                util_type = 'sentence_tokenizers',
-                util_text = self.table_sentence_tokenizers.model().item(row, 1).text()
+                util_type = 'sentiment_analyzers',
+                util_text = self.table_sentiment_analyzers.model().item(row, 1).text()
             )
 
             if wl_nlp_utils.check_models(
                 self.main,
                 langs = [self.settings_custom['preview']['preview_lang']],
-                lang_utils = [sentence_tokenizer]
+                lang_utils = [sentiment_analyzer]
             ):
-                worker_preview_sentence_tokenizer = Wl_Worker_Preview_Sentence_Tokenizer(
+                worker_preview_sentiment_analyzer = Wl_Worker_Preview_Sentiment_Analyzer(
                     self.main,
                     update_gui = self.update_gui,
-                    sentence_tokenizer = sentence_tokenizer
+                    sentiment_analyzer = sentiment_analyzer
                 )
 
-                self.thread_preview_sentence_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_sentence_tokenizer)
-                self.thread_preview_sentence_tokenizer.start_worker()
+                self.thread_preview_sentiment_analyzer = wl_threading.Wl_Thread_No_Progress(worker_preview_sentiment_analyzer)
+                self.thread_preview_sentiment_analyzer.start_worker()
             else:
                 self.update_gui_err()
 
     def update_gui(self, preview_results):
-        self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
+        self.label_preview_sentiment_score_val.setText(str(preview_results))
+        self.settings_custom['preview']['preview_sentiment_score'] = self.label_preview_sentiment_score_val.text()
 
         self.update_gui_err()
 
@@ -164,7 +161,7 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
-        self.table_sentence_tokenizers.itemDelegateForRow(row).set_enabled(True)
+        self.table_sentiment_analyzers.itemDelegateForRow(row).set_enabled(True)
         self.combo_box_preview_lang.setEnabled(True)
         self.button_show_preview.setEnabled(True)
         self.text_edit_preview_samples.setEnabled(True)
@@ -175,16 +172,16 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
         else:
             settings = copy.deepcopy(self.settings_custom)
 
-        self.table_sentence_tokenizers.disable_updates()
+        self.table_sentiment_analyzers.disable_updates()
 
-        for i, lang in enumerate(settings['sentence_tokenizer_settings']):
-            self.table_sentence_tokenizers.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
+        for i, lang in enumerate(settings['sentiment_analyzer_settings']):
+            self.table_sentiment_analyzers.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
                 self.main,
-                util_type = 'sentence_tokenizers',
-                util_code = settings['sentence_tokenizer_settings'][lang]
+                util_type = 'sentiment_analyzers',
+                util_code = settings['sentiment_analyzer_settings'][lang]
             ))
 
-        self.table_sentence_tokenizers.enable_updates()
+        self.table_sentiment_analyzers.enable_updates()
 
         if not defaults:
             self.combo_box_preview_lang.blockSignals(True)
@@ -192,7 +189,7 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
 
             self.combo_box_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
             self.text_edit_preview_samples.setText(settings['preview']['preview_samples'])
-            self.text_edit_preview_results.setText(settings['preview']['preview_results'])
+            self.label_preview_sentiment_score_val.setText(settings['preview']['preview_sentiment_score'])
 
             self.combo_box_preview_lang.blockSignals(False)
             self.text_edit_preview_samples.blockSignals(False)
@@ -200,27 +197,27 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
         self.preview_changed()
 
     def apply_settings(self):
-        for i, lang in enumerate(self.settings_custom['sentence_tokenizer_settings']):
-            self.settings_custom['sentence_tokenizer_settings'][lang] = wl_nlp_utils.to_lang_util_code(
+        for i, lang in enumerate(self.settings_custom['sentiment_analyzer_settings']):
+            self.settings_custom['sentiment_analyzer_settings'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
-                util_type = 'sentence_tokenizers',
-                util_text = self.table_sentence_tokenizers.model().item(i, 1).text()
+                util_type = 'sentiment_analyzers',
+                util_text = self.table_sentiment_analyzers.model().item(i, 1).text()
             )
 
         return True
 
-class Wl_Worker_Preview_Sentence_Tokenizer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(list)
+class Wl_Worker_Preview_Sentiment_Analyzer(wl_threading.Wl_Worker_No_Progress):
+    worker_done = pyqtSignal(int)
 
     def run(self):
-        preview_lang = self.main.settings_custom['sentence_tokenization']['preview']['preview_lang']
-        preview_samples = self.main.settings_custom['sentence_tokenization']['preview']['preview_samples']
+        preview_lang = self.main.settings_custom['sentiment_analysis']['preview']['preview_lang']
+        preview_samples = self.main.settings_custom['sentiment_analysis']['preview']['preview_samples']
 
-        preview_results = wl_sentence_tokenization.wl_sentence_tokenize(
+        sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
             self.main,
-            text = preview_samples.strip(),
+            inputs = [preview_samples.strip()],
             lang = preview_lang,
-            sentence_tokenizer = self.sentence_tokenizer
+            sentiment_analyzer = self.sentiment_analyzer
         )
 
-        self.worker_done.emit(preview_results)
+        self.worker_done.emit(sentiment_scores[0])

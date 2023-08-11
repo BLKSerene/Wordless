@@ -27,12 +27,11 @@ import matplotlib.pyplot
 import numpy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtWidgets import QCheckBox, QLabel, QLineEdit, QGroupBox, QStackedWidget
-import underthesea
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_preprocessing
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_preprocessing, wl_sentiment_analysis
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
@@ -881,17 +880,14 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             concordance_line.append([context_right_text, context_right, text_search_right])
 
                             # Sentiment
-                            context_text = ' '.join([context_left_text, node_text, context_right_text])
+                            if text.lang in self.main.settings_global['sentiment_analyzers']:
+                                sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
+                                    self.main,
+                                    inputs = [' '.join([context_left_text, node_text, context_right_text])],
+                                    lang = text.lang
+                                )
 
-                            if text.lang == 'vie':
-                                sentiment = underthesea.sentiment(context_text)
-
-                                if sentiment == 'positive':
-                                    concordance_line.append(1)
-                                elif sentiment == 'negative':
-                                    concordance_line.append(-1)
-                                else:
-                                    concordance_line.append(0)
+                                concordance_line.append(sentiment_scores[0])
                             else:
                                 concordance_line.append(self.tr('No language support'))
 

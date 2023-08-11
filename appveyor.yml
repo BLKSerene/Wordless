@@ -32,11 +32,11 @@ environment:
 
 cache:
   # Windows
-  - "%LOCALAPPDATA%/pip/Cache"
+  - %LOCALAPPDATA%/pip/Cache -> requirements/requirements_tests.txt
   # macOS
-  - "/Users/appveyor/Library/Caches/pip"
+  - /Users/appveyor/Library/Caches/pip -> requirements/requirements_tests.txt
   # Linux
-  - "/home/appveyor/.cache/pip"
+  - /home/appveyor/.cache/pip -> requirements/requirements_tests.txt
 
 stack: python 3.10
 
@@ -51,10 +51,9 @@ for:
 
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
-      # Check Python version
-      - python --version
       - python -m pip install --upgrade pip setuptools
-      - pip install --requirement requirements_tests.txt
+      - pip install --requirement requirements/requirements_tests.txt
+      - pip install --requirement requirements/requirements_no_deps.txt --no-deps
       # Download models and data files
       - python utils/wl_downloader_ci.py
 
@@ -81,11 +80,10 @@ for:
 
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
-      # Check Python version
-      - python --version
       # Install dependencies
       - python -m pip install --upgrade pip setuptools
-      - pip install --requirement requirements_tests.txt
+      - pip install --requirement requirements/requirements_tests.txt
+      - pip install --requirement requirements/requirements_no_deps.txt --no-deps
       # Download models and data files
       - python utils/wl_downloader_ci.py
 
@@ -113,11 +111,10 @@ for:
 
     install:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
-      # Check Python version
-      - python --version
       # Install dependencies
       - python -m pip install --upgrade pip setuptools
-      - pip install --requirement requirements_tests.txt
+      - pip install --requirement requirements/requirements_tests.txt
+      - pip install --requirement requirements/requirements_no_deps.txt --no-deps
       # Download models and data files
       - python utils/wl_downloader_ci.py
 

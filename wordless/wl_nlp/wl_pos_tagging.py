@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: NLP - POS Tagging
+# Wordless: NLP - POS tagging
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify

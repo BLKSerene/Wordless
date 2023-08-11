@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tagsets - Russian National Corpus
+# Wordless: Tagsets - Russian national corpus
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify

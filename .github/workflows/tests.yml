@@ -34,17 +34,14 @@ jobs:
           python-version: '3.10'
           architecture: 'x64'
           cache: 'pip'
-          cache-dependency-path: 'requirements_tests.txt'
-
-      # Check Python version
-      - name: Check Python version
-        run: python --version
+          cache-dependency-path: 'requirements/requirements_tests.txt'
 
       # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools
-          pip install -r requirements_tests.txt
+          pip install --requirement requirements/requirements_tests.txt
+          pip install --requirement requirements/requirements_no_deps.txt --no-deps
           # For Codecov
           pip install pytest-cov
           # Download models and data files
@@ -83,17 +80,14 @@ jobs:
           python-version: '3.10'
           architecture: 'x64'
           cache: 'pip'
-          cache-dependency-path: 'requirements_tests.txt'
-
-      # Check Python version
-      - name: Check Python version
-        run: python --version
+          cache-dependency-path: 'requirements/requirements_tests.txt'
 
       # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools
-          pip install -r requirements_tests.txt
+          pip install --requirement requirements/requirements_tests.txt
+          pip install --requirement requirements/requirements_no_deps.txt --no-deps
           # Download models and data files
           python utils/wl_downloader_ci.py
 
@@ -127,17 +121,14 @@ jobs:
           python-version: '3.10'
           architecture: 'x64'
           cache: 'pip'
-          cache-dependency-path: 'requirements_tests.txt'
-
-      # Check Python version
-      - name: Check Python version
-        run: python --version
+          cache-dependency-path: 'requirements/requirements_tests.txt'
 
       # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools
-          pip install -r requirements_tests.txt
+          pip install --requirement requirements/requirements_tests.txt
+          pip install --requirement requirements/requirements_no_deps.txt --no-deps
           # Download models and data files
           python utils/wl_downloader_ci.py
 

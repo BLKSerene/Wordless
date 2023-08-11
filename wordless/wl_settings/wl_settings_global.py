@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Settings - Global Settings
+# Wordless: Settings - Global settings
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -854,6 +854,11 @@ def init_settings_global():
                 _tr('init_settings_global', 'spaCy - Spanish dependency parser'): 'spacy_spa',
                 _tr('init_settings_global', 'spaCy - Swedish dependency parser'): 'spacy_swe',
                 _tr('init_settings_global', 'spaCy - Ukrainian dependency parser'): 'spacy_ukr'
+            },
+
+            'sentiment_analyzers': {
+                _tr('init_settings_global', 'Dostoevsky - Russian sentiment analyzer'): 'dostoevsky_rus',
+                _tr('init_settings_global', 'Underthesea - Underthesea sentiment analyzer'): 'underthesea_vie'
             }
         },
 
@@ -2082,6 +2087,11 @@ def init_settings_global():
             'spa': ['spacy_spa'],
             'swe': ['spacy_swe'],
             'ukr': ['spacy_ukr']
+        },
+
+        'sentiment_analyzers': {
+            'rus': ['dostoevsky_rus'],
+            'vie': ['underthesea_vie']
         },
 
         # Only people's names are capitalized

@@ -76,35 +76,35 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         # Preview
         self.group_box_preview = QGroupBox(self.tr('Preview'), self)
 
-        self.label_dependency_parsing_preview_lang = QLabel(self.tr('Select language:'), self)
-        self.combo_box_dependency_parsing_preview_lang = wl_boxes.Wl_Combo_Box(self)
+        self.label_preview_lang = QLabel(self.tr('Select language:'), self)
+        self.combo_box_preview_lang = wl_boxes.Wl_Combo_Box(self)
         self.button_preview_settings = QPushButton(self.tr('Preview settings'), self)
         self.dialog_preview_settings = Wl_Dialog_Preview_Settings(self.main)
-        self.button_dependency_parsing_show_preview = QPushButton(self.tr('Show preview'), self)
-        self.text_edit_dependency_parsing_preview_samples = QTextEdit(self)
+        self.button_show_preview = QPushButton(self.tr('Show preview'), self)
+        self.text_edit_preview_samples = QTextEdit(self)
 
-        self.combo_box_dependency_parsing_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
+        self.combo_box_preview_lang.addItems(wl_conversion.to_lang_texts(self.main, self.settings_global))
 
         self.button_preview_settings.setMinimumWidth(140)
-        self.button_dependency_parsing_show_preview.setMinimumWidth(140)
-        self.text_edit_dependency_parsing_preview_samples.setAcceptRichText(False)
+        self.button_show_preview.setMinimumWidth(140)
+        self.text_edit_preview_samples.setAcceptRichText(False)
 
-        self.combo_box_dependency_parsing_preview_lang.currentTextChanged.connect(self.preview_changed)
+        self.combo_box_preview_lang.currentTextChanged.connect(self.preview_changed)
         self.button_preview_settings.clicked.connect(self.dialog_preview_settings.load)
-        self.button_dependency_parsing_show_preview.clicked.connect(self.preview_results_changed)
-        self.text_edit_dependency_parsing_preview_samples.textChanged.connect(self.preview_changed)
+        self.button_show_preview.clicked.connect(self.preview_results_changed)
+        self.text_edit_preview_samples.textChanged.connect(self.preview_changed)
 
         layout_preview_settings = wl_layouts.Wl_Layout()
-        layout_preview_settings.addWidget(self.label_dependency_parsing_preview_lang, 0, 0)
-        layout_preview_settings.addWidget(self.combo_box_dependency_parsing_preview_lang, 0, 1)
+        layout_preview_settings.addWidget(self.label_preview_lang, 0, 0)
+        layout_preview_settings.addWidget(self.combo_box_preview_lang, 0, 1)
         layout_preview_settings.addWidget(self.button_preview_settings, 0, 3)
-        layout_preview_settings.addWidget(self.button_dependency_parsing_show_preview, 0, 4)
+        layout_preview_settings.addWidget(self.button_show_preview, 0, 4)
 
         layout_preview_settings.setColumnStretch(2, 1)
 
         self.group_box_preview.setLayout(wl_layouts.Wl_Layout())
         self.group_box_preview.layout().addLayout(layout_preview_settings, 0, 0)
-        self.group_box_preview.layout().addWidget(self.text_edit_dependency_parsing_preview_samples, 1, 0)
+        self.group_box_preview.layout().addWidget(self.text_edit_preview_samples, 1, 0)
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_dependency_parser_settings, 0, 0)
@@ -118,24 +118,24 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
             self.preview_results_changed()
 
     def preview_changed(self):
-        self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_dependency_parsing_preview_lang.currentText())
-        self.settings_custom['preview']['preview_samples'] = self.text_edit_dependency_parsing_preview_samples.toPlainText()
+        self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_preview_lang.currentText())
+        self.settings_custom['preview']['preview_samples'] = self.text_edit_preview_samples.toPlainText()
 
         if self.settings_custom['preview']['preview_samples'].strip():
-            self.button_dependency_parsing_show_preview.setEnabled(True)
+            self.button_show_preview.setEnabled(True)
         else:
-            self.button_dependency_parsing_show_preview.setEnabled(False)
+            self.button_show_preview.setEnabled(False)
 
     def preview_results_changed(self):
-        if self.combo_box_dependency_parsing_preview_lang.isEnabled():
+        if self.combo_box_preview_lang.isEnabled():
             row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
             self.table_dependency_parsers.itemDelegateForRow(row).set_enabled(False)
-            self.combo_box_dependency_parsing_preview_lang.setEnabled(False)
-            self.button_dependency_parsing_show_preview.setEnabled(False)
-            self.text_edit_dependency_parsing_preview_samples.setEnabled(False)
+            self.combo_box_preview_lang.setEnabled(False)
+            self.button_show_preview.setEnabled(False)
+            self.text_edit_preview_samples.setEnabled(False)
 
-            self.button_dependency_parsing_show_preview.setText(self.tr('Processing...'))
+            self.button_show_preview.setText(self.tr('Processing...'))
 
             dependency_parser = wl_nlp_utils.to_lang_util_code(
                 self.main,
@@ -169,14 +169,14 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         self.update_gui_err()
 
     def update_gui_err(self):
-        self.button_dependency_parsing_show_preview.setText(self.tr('Show preview'))
+        self.button_show_preview.setText(self.tr('Show preview'))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 
         self.table_dependency_parsers.itemDelegateForRow(row).set_enabled(True)
-        self.combo_box_dependency_parsing_preview_lang.setEnabled(True)
-        self.button_dependency_parsing_show_preview.setEnabled(True)
-        self.text_edit_dependency_parsing_preview_samples.setEnabled(True)
+        self.combo_box_preview_lang.setEnabled(True)
+        self.button_show_preview.setEnabled(True)
+        self.text_edit_preview_samples.setEnabled(True)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -196,14 +196,16 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         self.table_dependency_parsers.enable_updates()
 
         if not defaults:
-            self.combo_box_dependency_parsing_preview_lang.blockSignals(True)
-            self.text_edit_dependency_parsing_preview_samples.blockSignals(True)
+            self.combo_box_preview_lang.blockSignals(True)
+            self.text_edit_preview_samples.blockSignals(True)
 
-            self.combo_box_dependency_parsing_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
-            self.text_edit_dependency_parsing_preview_samples.setText(settings['preview']['preview_samples'])
+            self.combo_box_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
+            self.text_edit_preview_samples.setText(settings['preview']['preview_samples'])
 
-            self.combo_box_dependency_parsing_preview_lang.blockSignals(False)
-            self.text_edit_dependency_parsing_preview_samples.blockSignals(False)
+            self.combo_box_preview_lang.blockSignals(False)
+            self.text_edit_preview_samples.blockSignals(False)
+
+        self.preview_changed()
 
     def apply_settings(self):
         for i, lang in enumerate(self.settings_custom['dependency_parser_settings']):
