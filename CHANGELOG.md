@@ -50,6 +50,7 @@
 - Dependencies: Upgrade Matplotlib to 3.7.2
 - Dependencies: Upgrade NetworkX to 3.1
 - Dependencies: Upgrade NumPy to 1.25.2
+- Dependencies: Upgrade PyInstaller to 5.13.0
 - Dependencies: Upgrade PyThaiNLP to 4.0.2
 - Dependencies: Upgrade Requests to 2.31.0
 - Dependencies: Upgrade SciPy to 1.11.1
