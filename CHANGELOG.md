@@ -28,12 +28,12 @@
 - Utils: Add spaCy's Korean sentence recognizer, word tokenizer, part-of-speech tagger, lemmatizer, and dependency parser
 - Utils: Add spaCy's Malay word tokenizer
 - Utils: Add spaCy's Slovenian sentence recognizer, part-of-speech tagger, lemmatizer, and dependency parser
-- Work Area: Add Profiler - Readability - Bormuth's Cloze Mean / Bormuth's Grade Placement / Coleman's Readability Formula / Danielson-Bryan's Readability Formula / Degrees of Reading Power / Easy Listening Formula / Fucks's Stilcharakteristik / Strain Index / Tränkle & Bailer's Readability Formula / Tuldava's Text Difficulty / Wheeler & Smith's Readability Formula
+- Work Area: Add Profiler - Readability - Bormuth's Cloze Mean / Bormuth's Grade Placement / Coleman's Readability Formula / Danielson-Bryan's Readability Formula / Degrees of Reading Power / Dickes-Steiwer Handformel / Easy Listening Formula / Fucks's Stilcharakteristik / Strain Index / Tränkle & Bailer's Readability Formula / Tuldava's Text Difficulty / Wheeler & Smith's Readability Formula
 
 ### ✨ Improvements
 - Utils: Update spaCy's sentence recognizers, word tokenizers, part-of-speech taggers, lemmatizers, and dependency parsers
 - Utils: Update Wordless's sentence and sentence segment splitters
-- Work Area: Update Profiler - Readability - Automated Readability Index / Dale-Chall Readability Formula / Flesch Reading Ease / Flesch Reading Ease (Farr-Jenkins-Paterson) / Gunning Fog Index / Spache Grade Level
+- Work Area: Update Profiler - Readability - Automated Readability Index / Dale-Chall Readability Formula / Flesch Reading Ease / Flesch Reading Ease (Farr-Jenkins-Paterson) / Gunning Fog Index / neue Wiener Sachtextformel / SMOG Grade / Spache Grade Level
 
 ### 📌 Bugfixes
 - Work Area: Fix Concordancer - Generation Settings - Width unit - Character

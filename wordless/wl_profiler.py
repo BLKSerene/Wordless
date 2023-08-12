@@ -367,6 +367,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('wl_profiler', "Danielson-Bryan's Readability Formula"),
             _tr('wl_profiler', 'Degrees of Reading Power'),
             _tr('wl_profiler', 'Devereaux Readability Index'),
+            _tr('wl_profiler', 'Dickes-Steiwer Handformel'),
             _tr('wl_profiler', 'Easy Listening Formula'),
             _tr('wl_profiler', 'Flesch-Kincaid Grade Level'),
             _tr('wl_profiler', 'Flesch Reading Ease'),
@@ -381,6 +382,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('wl_profiler', 'Lensear Write'),
             _tr('wl_profiler', 'Lix'),
             _tr('wl_profiler', 'McAlpine EFLAW Readability Score'),
+            _tr('wl_profiler', 'neue Wiener Sachtextformel'),
             _tr('wl_profiler', 'OSMAN'),
             _tr('wl_profiler', 'Rix'),
             _tr('wl_profiler', 'SMOG Grade'),
@@ -388,8 +390,7 @@ class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
             _tr('wl_profiler', 'Strain Index'),
             _tr('wl_profiler', "Tränkle & Bailer's Readability Formula"),
             _tr('wl_profiler', "Tuldava's Text Difficulty"),
-            _tr('wl_profiler', "Wheeler & Smith's Readability Formula"),
-            _tr('wl_profiler', 'Wiener Sachtextformel')
+            _tr('wl_profiler', "Wheeler & Smith's Readability Formula")
         ]
 
         super().__init__(
@@ -1197,6 +1198,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.danielson_bryans_readability_formula(self.main, text),
                         wl_measures_readability.drp(self.main, text),
                         wl_measures_readability.devereux_readability_index(self.main, text),
+                        wl_measures_readability.dickes_steiwer_handformel(self.main, text),
                         wl_measures_readability.elf(self.main, text),
                         wl_measures_readability.gl(self.main, text),
                         wl_measures_readability.re_flesch(self.main, text),
@@ -1211,6 +1213,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.lensear_write(self.main, text),
                         wl_measures_readability.lix(self.main, text),
                         wl_measures_readability.eflaw(self.main, text),
+                        wl_measures_readability.nws(self.main, text),
                         wl_measures_readability.osman(self.main, text),
                         wl_measures_readability.rix(self.main, text),
                         wl_measures_readability.smog_grade(self.main, text),
@@ -1218,8 +1221,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.strain_index(self.main, text),
                         wl_measures_readability.trankle_bailers_readability_formula(self.main, text),
                         wl_measures_readability.td(self.main, text),
-                        wl_measures_readability.wheeler_smiths_readability_formula(self.main, text),
-                        wl_measures_readability.wstf(self.main, text)
+                        wl_measures_readability.wheeler_smiths_readability_formula(self.main, text)
                     ]
                 else:
                     readability_stats = None
@@ -1267,7 +1269,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_syls = len_types_chars = None
                     len_syls = None
 
-                # TTR & STTR (weighted average)
+                # TTRs
                 if self.profiler_tab in ['ttrs', 'all']:
                     count_tokens = len(len_tokens_chars)
                     count_types = len(len_types_chars)

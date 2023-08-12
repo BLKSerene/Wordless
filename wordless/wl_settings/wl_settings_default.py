@@ -1789,15 +1789,15 @@ def init_settings_default(main):
                     'use_powers_sumner_kearl_variant': False
                 },
 
+                'nws': {
+                    'variant': '1'
+                },
+
                 'spache_grade_lvl': {
                     'use_rev_formula': True
                 },
 
                 'trankle_bailers_readability_formula': {
-                    'variant': '1'
-                },
-
-                'wstf': {
                     'variant': '1'
                 }
             },
