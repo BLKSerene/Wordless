@@ -154,6 +154,20 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_fog_index.layout().setColumnStretch(2, 1)
 
+        # neue Wiener Sachtextformel
+        self.group_box_nws = QGroupBox(self.tr('neue Wiener Sachtextformel'), self)
+
+        self.label_nws_variant = QLabel(self.tr('Variant:'), self)
+        self.combo_box_nws_variant = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_nws_variant.addItems(['1', '2', '3'])
+
+        self.group_box_nws.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_nws.layout().addWidget(self.label_nws_variant, 0, 0)
+        self.group_box_nws.layout().addWidget(self.combo_box_nws_variant, 0, 1)
+
+        self.group_box_nws.layout().setColumnStretch(2, 1)
+
         # Spache Grade Level
         self.group_box_spache_grade_lvl = QGroupBox(self.tr('Spache Grade Level'), self)
 
@@ -176,32 +190,18 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_trankle_bailers_readability_formula.layout().setColumnStretch(2, 1)
 
-        # Wiener Sachtextformel
-        self.group_box_wstf = QGroupBox(self.tr('Wiener Sachtextformel'), self)
-
-        self.label_wstf_variant = QLabel(self.tr('Variant:'), self)
-        self.combo_box_wstf_variant = wl_boxes.Wl_Combo_Box(self)
-
-        self.combo_box_wstf_variant.addItems(['1', '2', '3', '4'])
-
-        self.group_box_wstf.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_wstf.layout().addWidget(self.label_wstf_variant, 0, 0)
-        self.group_box_wstf.layout().addWidget(self.combo_box_wstf_variant, 0, 1)
-
-        self.group_box_wstf.layout().setColumnStretch(2, 1)
-
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_ari, 0, 0)
         self.layout().addWidget(self.group_box_bormuths_gp, 1, 0)
         self.layout().addWidget(self.group_box_colemans_readability_formula, 2, 0)
         self.layout().addWidget(self.group_box_x_c50, 3, 0)
         self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 4, 0)
-        self.layout().addWidget(self.group_box_fog_index, 5, 0)
-        self.layout().addWidget(self.group_box_re, 6, 0)
-        self.layout().addWidget(self.group_box_re_farr_jenkins_paterson, 7, 0)
-        self.layout().addWidget(self.group_box_spache_grade_lvl, 8, 0)
-        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 9, 0)
-        self.layout().addWidget(self.group_box_wstf, 10, 0)
+        self.layout().addWidget(self.group_box_re, 5, 0)
+        self.layout().addWidget(self.group_box_re_farr_jenkins_paterson, 6, 0)
+        self.layout().addWidget(self.group_box_fog_index, 7, 0)
+        self.layout().addWidget(self.group_box_nws, 8, 0)
+        self.layout().addWidget(self.group_box_spache_grade_lvl, 9, 0)
+        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 10, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(11, 1)
@@ -246,14 +246,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Gunning Fog Index
         self.combo_box_fog_index_variant_eng.setCurrentText(settings['fog_index']['variant_eng'])
 
+        # neue Wiener Sachtextformel
+        self.combo_box_nws_variant.setCurrentText(settings['nws']['variant'])
+
         # Spache Grade Level
         self.checkbox_use_rev_formula.setChecked(settings['spache_grade_lvl']['use_rev_formula'])
 
         # Tränkle & Bailer's Readability Formula
         self.combo_box_trankle_bailers_readability_formula_variant.setCurrentText(settings['trankle_bailers_readability_formula']['variant'])
-
-        # Wiener Sachtextformel
-        self.combo_box_wstf_variant.setCurrentText(settings['wstf']['variant'])
 
     def apply_settings(self):
         # Automated Readability Index
@@ -282,14 +282,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Gunning Fog Index
         self.settings_custom['fog_index']['variant_eng'] = self.combo_box_fog_index_variant_eng.currentText()
 
+        # neue Wiener Sachtextformel
+        self.settings_custom['nws']['variant'] = self.combo_box_nws_variant.currentText()
+
         # Spache Grade Level
         self.settings_custom['spache_grade_lvl']['use_rev_formula'] = self.checkbox_use_rev_formula.isChecked()
 
         # Tränkle & Bailer's Readability Formula
         self.settings_custom['trankle_bailers_readability_formula']['variant'] = self.combo_box_trankle_bailers_readability_formula_variant.currentText()
-
-        # Wiener Sachtextformel
-        self.settings_custom['wstf']['variant'] = self.combo_box_wstf_variant.currentText()
 
         return True
 

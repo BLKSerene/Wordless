@@ -59,6 +59,7 @@ test_text_ara_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ara')
 
 test_text_deu_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'deu_de')
 test_text_deu_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'deu_de')
+test_text_deu_120 = Wl_Test_Text(TOKENS_MULTILEVEL_120, lang = 'deu_de')
 
 test_text_ita_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'ita')
 test_text_ita_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ita')
@@ -268,7 +269,22 @@ def test_devereux_readability_index():
     print(f'\tspa/12: {grade_placement_spa_12}')
 
     assert grade_placement_eng_0 == 'text_too_short'
-    assert grade_placement_eng_12 == grade_placement_spa_12 == 1.56 * (47 / 12) + 0.19 * (12 / 3) - 6.49
+    assert grade_placement_eng_12 == 1.56 * (47 / 12) + 0.19 * (12 / 3) - 6.49
+    assert grade_placement_spa_12 != 'text_too_short'
+
+def test_dickes_steiwer_handformel():
+    dickes_steiwer_eng_0 = wl_measures_readability.dickes_steiwer_handformel(main, test_text_eng_0)
+    dickes_steiwer_eng_12 = wl_measures_readability.dickes_steiwer_handformel(main, test_text_eng_12)
+    dickes_steiwer_spa_12 = wl_measures_readability.dickes_steiwer_handformel(main, test_text_spa_12)
+
+    print('Dickes-Steiwer Handformel:')
+    print(f'\teng/0: {dickes_steiwer_eng_0}')
+    print(f'\teng/12: {dickes_steiwer_eng_12}')
+    print(f'\tspa/12: {dickes_steiwer_spa_12}')
+
+    assert dickes_steiwer_eng_0 == 'text_too_short'
+    assert dickes_steiwer_eng_12 == 235.95993 - numpy.log(45 / 12 + 1) * 73.021 - numpy.log(12 / 3 + 1) * 12.56438 - 5 / 12 * 50.03293
+    assert dickes_steiwer_spa_12 != 'text_too_short'
 
 def test_elf():
     elf_eng_0 = wl_measures_readability.elf(main, test_text_eng_0)
@@ -538,6 +554,34 @@ def test_eflaw():
     assert eflaw_eng_12 == (12 + 6) / 3
     assert eflaw_spa_12 == 'no_support'
 
+def test_nws():
+    nws_deu_0 = wl_measures_readability.nws(main, test_text_deu_0)
+    settings['nws']['variant'] = '1'
+    nws_deu_12_1 = wl_measures_readability.nws(main, test_text_deu_12)
+    settings['nws']['variant'] = '2'
+    nws_deu_12_2 = wl_measures_readability.nws(main, test_text_deu_12)
+    settings['nws']['variant'] = '3'
+    nws_deu_12_3 = wl_measures_readability.nws(main, test_text_deu_12)
+    nws_eng_12 = wl_measures_readability.nws(main, test_text_eng_12)
+
+    print('neue Wiener Sachtextformel:')
+    print(f'\tdeu/0: {nws_deu_0}')
+    print(f'\tdeu/12-1: {nws_deu_12_1}')
+    print(f'\tdeu/12-2: {nws_deu_12_2}')
+    print(f'\tdeu/12-3: {nws_deu_12_3}')
+    print(f'\teng/12: {nws_eng_12}')
+
+    ms = 0 / 12 * 100
+    sl = 12 / 3
+    iw = 3 / 12 * 100
+    es = 9 / 12 * 100
+
+    assert nws_deu_0 == 'text_too_short'
+    assert nws_deu_12_1 == 0.1925 * ms + 0.1672 * sl + 0.1297 * iw - 0.0327 * es - 0.875
+    assert nws_deu_12_2 == 0.2007 * ms + 0.1682 * sl + 0.1373 * iw - 2.779
+    assert nws_deu_12_3 == 0.2963 * ms + 0.1905 * sl - 1.1144
+    assert nws_eng_12 == 'no_support'
+
 def test_osman():
     osman_ara_0 = wl_measures_readability.osman(main, test_text_ara_0)
     osman_ara_12 = wl_measures_readability.osman(main, test_text_ara_12)
@@ -568,17 +612,21 @@ def test_rix():
 def test_smog_grade():
     g_eng_12 = wl_measures_readability.smog_grade(main, test_text_eng_12)
     g_eng_120 = wl_measures_readability.smog_grade(main, test_text_eng_120)
+    g_eng_120 = wl_measures_readability.smog_grade(main, test_text_eng_120)
+    g_deu_120 = wl_measures_readability.smog_grade(main, test_text_deu_120)
     g_spa_120 = wl_measures_readability.smog_grade(main, test_text_spa_120)
     g_other_12 = wl_measures_readability.smog_grade(main, test_text_other_12)
 
     print('SMOG Grade:')
     print(f'\teng/12: {g_eng_12}')
     print(f'\teng/120: {g_eng_120}')
+    print(f'\tdeu/120: {g_deu_120}')
     print(f'\tspa/120: {g_spa_120}')
     print(f'\tother/12: {g_other_12}')
 
     assert g_eng_12 == 'text_too_short'
-    assert g_eng_120 == 3.1291 + 1.043 * (15 ** 0.5)
+    assert g_eng_120 == 3.1291 + 1.043 * numpy.sqrt(15)
+    assert g_deu_120 == numpy.sqrt(15 / 30 * 30) - 2
     assert g_spa_120 != 'no_support'
     assert g_other_12 == 'no_support'
 
@@ -635,8 +683,8 @@ def test_trankle_bailers_readability_formula():
     print(f'\tother/100: {trankle_bailers_other_100}')
 
     assert trankle_bailers_eng_0 == 'text_too_short'
-    assert trankle_bailers_eng_100_prep_1 == 224.6814 - 79.8304 * (372 / 100) - 12.24032 * (100 / 25) - 1.292857 * 1
-    assert trankle_bailers_eng_100_conj_2 == 234.1063 - 96.11069 * (374 / 100) - 2.05444 * 0 - 1.02805 * 1
+    assert trankle_bailers_eng_100_prep_1 == 224.6814 - numpy.log(372 / 100 + 1) * 79.8304 - numpy.log(100 / 25 + 1) * 12.24032 - 1 * 1.292857
+    assert trankle_bailers_eng_100_conj_2 == 234.1063 - numpy.log(374 / 100 + 1) * 96.11069 - 0 * 2.05444 - 1 * 1.02805
     assert trankle_bailers_tha_100 != 'no_support'
     assert trankle_bailers_other_100 == 'no_support'
 
@@ -674,38 +722,6 @@ def test_wheeler_smiths_readability_formula():
     assert wheeler_smith_spa_12 != 'no_support'
     assert wheeler_smith_other_12 == 'no_support'
 
-def test_wstf():
-    wstf_deu_0 = wl_measures_readability.wstf(main, test_text_deu_0)
-    settings['wstf']['variant'] = '1'
-    wstf_deu_12_1 = wl_measures_readability.wstf(main, test_text_deu_12)
-    settings['wstf']['variant'] = '2'
-    wstf_deu_12_2 = wl_measures_readability.wstf(main, test_text_deu_12)
-    settings['wstf']['variant'] = '3'
-    wstf_deu_12_3 = wl_measures_readability.wstf(main, test_text_deu_12)
-    settings['wstf']['variant'] = '4'
-    wstf_deu_12_4 = wl_measures_readability.wstf(main, test_text_deu_12)
-    wstf_eng_12 = wl_measures_readability.wstf(main, test_text_eng_12)
-
-    print('Wiener Sachtextformel:')
-    print(f'\tdeu/0: {wstf_deu_0}')
-    print(f'\tdeu/12-1: {wstf_deu_12_1}')
-    print(f'\tdeu/12-2: {wstf_deu_12_2}')
-    print(f'\tdeu/12-3: {wstf_deu_12_3}')
-    print(f'\tdeu/12-4: {wstf_deu_12_4}')
-    print(f'\teng/12: {wstf_eng_12}')
-
-    ms = 0 / 12
-    sl = 12 / 3
-    iw = 3 / 12
-    es = 9 / 12
-
-    assert wstf_deu_0 == 'text_too_short'
-    assert wstf_deu_12_1 == 0.1925 * ms + 0.1672 * sl + 0.1297 * iw - 0.0327 * es - 0.875
-    assert wstf_deu_12_2 == 0.2007 * ms + 0.1682 * sl + 0.1373 * iw - 2.779
-    assert wstf_deu_12_3 == 0.2963 * ms + 0.1905 * sl - 1.1144
-    assert wstf_deu_12_4 == 0.2744 * ms + 0.2656 * sl - 1.693
-    assert wstf_eng_12 == 'no_support'
-
 if __name__ == '__main__':
     test_aari()
     test_ari()
@@ -717,6 +733,7 @@ if __name__ == '__main__':
     test_danielson_bryans_readability_formula()
     test_drp()
     test_devereux_readability_index()
+    test_dickes_steiwer_handformel()
     test_elf()
     test_gl()
     test_re_flesch()
@@ -731,6 +748,7 @@ if __name__ == '__main__':
     test_lensear_write()
     test_lix()
     test_eflaw()
+    test_nws()
     test_osman()
     test_rix()
     test_smog_grade()
@@ -739,4 +757,3 @@ if __name__ == '__main__':
     test_trankle_bailers_readability_formula()
     test_td()
     test_wheeler_smiths_readability_formula()
-    test_wstf()

@@ -59,6 +59,7 @@ def get_counts(main, text):
     if 'count_words' not in text.__dict__:
         text.words_flat = list(wl_misc.flatten_list(text.words_multilevel))
         text.count_words = len(text.words_flat)
+        text.count_word_types = len(set(text.words_flat))
 
     # Count of syllables
     if 'count_syls' not in text.__dict__ and text.lang in main.settings_global['syl_tokenizers']:
@@ -401,6 +402,25 @@ def devereux_readability_index(main, text):
 
     return grade_placement
 
+# Dickes-Steiwer Handformel
+# References:
+#     Dickes, P. & Steiwer, L. (1977). Ausarbeitung von lesbarkeitsformeln für die deutsche sprache. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, 9(1), 20–28.
+#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 57). Jugend und Volk.
+def dickes_steiwer_handformel(main, text):
+    text = get_counts(main, text)
+
+    if text.count_words and text.count_sentences:
+        dickes_steiwer = (
+            235.95993
+            - numpy.log(text.count_chars_alpha / text.count_words + 1) * 73.021
+            - numpy.log(text.count_words / text.count_sentences + 1) * 12.56438
+            - text.count_word_types / text.count_words * 50.03293
+        )
+    else:
+        dickes_steiwer = 'text_too_short'
+
+    return dickes_steiwer
+
 # Easy Listening Formula
 # Reference: Fang, I. E. (1966). The easy listening formula. Journal of Broadcasting, 11(1), 63–68. https://doi.org/10.1080/08838156609363529
 def elf(main, text):
@@ -449,7 +469,7 @@ def gl(main, text):
 #     Kopient, A., & Grabar, N. (2020). Rated lexicon for the simplification of medical texts. In B.  Gersbeck-Schierholz (ed.), HEALTHINFO 2020: The fifth international conference on informatics and assistive technologies for health-care, medical support and wellbeing (pp. 11–17). IARIA. https://hal.science/hal-03095275/document
 # German:
 #     Amstad, T. (1978). Wie verständlich sind unsere Zeitungen? [Unpublished doctoral dissertation]. University of Zurich.
-#     Lesbarkeitsindex. (2023, February 2). In Wikipedia. https://de.wikipedia.org/w/index.php?title=Lesbarkeitsindex&oldid=230472824
+#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 56). Jugend und Volk.
 # Italian:
 #     Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. Linguaggi, 3, 47–49.
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
@@ -839,6 +859,33 @@ def eflaw(main, text):
 
     return eflaw
 
+# neue Wiener Sachtextformel
+# Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk.
+def nws(main, text):
+    if text.lang.startswith('deu_'):
+        text = get_counts(main, text)
+
+        if text.count_words and text.count_sentences:
+            variant = main.settings_custom['measures']['readability']['nws']['variant']
+
+            ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words * 100
+            sl = text.count_words / text.count_sentences
+            iw = get_count_words_letters(text.words_flat, len_min = 7) / text.count_words * 100
+            es = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1) / text.count_words * 100
+
+            if variant == '1':
+                nws = 0.1935 * ms + 0.1672 * sl + 0.1297 * iw - 0.0327 * es - 0.875
+            elif variant == '2':
+                nws = 0.2007 * ms + 0.1682 * sl + 0.1373 * iw - 2.779
+            elif variant == '3':
+                nws = 0.2963 * ms + 0.1905 * sl - 1.1144
+        else:
+            nws = 'text_too_short'
+    else:
+        nws = 'no_support'
+
+    return nws
+
 # Estimate number of syllables in Arabic texts by counting short, long, and stress syllables
 # Reference: https://github.com/textstat/textstat/blob/9bf37414407bcaaa45c498478ee383c8738e5d0c/textstat/textstat.py#L569
 def _get_count_syls_ara(text):
@@ -925,7 +972,10 @@ def rix(main, text):
     return rix
 
 # SMOG Grade
-# Reference: McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), pp. 639–646.
+# References:
+#     McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), pp. 639–646.
+# German:
+#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk.
 def smog_grade(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
@@ -947,7 +997,10 @@ def smog_grade(main, text):
 
                 count_words_3_plus_syls += get_count_words_syls(syls_words, len_min = 3)
 
-            g = 3.1291 + 1.043 * (count_words_3_plus_syls ** 0.5)
+            if text.lang.startswith('deu_'):
+                g = numpy.sqrt(count_words_3_plus_syls / text.count_sentences * 30) - 2
+            else:
+                g = 3.1291 + 1.043 * numpy.sqrt(count_words_3_plus_syls)
         else:
             g = 'text_too_short'
     else:
@@ -1046,18 +1099,18 @@ def trankle_bailers_readability_formula(main, text):
             if variant == '1':
                 trankle_bailers = (
                     224.6814
-                    - 79.8304 * (count_chars_alnum / 100)
-                    - 12.24032 * (100 / count_sentences)
-                    - 1.292857 * count_preps
+                    - numpy.log(count_chars_alnum / 100 + 1) * 79.8304
+                    - numpy.log(100 / count_sentences + 1) * 12.24032
+                    - count_preps * 1.292857
                 )
             elif variant == '2':
                 count_conjs = sum((1 for _, pos in pos_tags if 'CONJ' in pos)) # CCONJ/SCONJ
 
                 trankle_bailers = (
                     234.1063
-                    - 96.11069 * (count_chars_alnum / 100)
-                    - 2.05444 * count_preps
-                    - 1.02805 * count_conjs
+                    - numpy.log(count_chars_alnum / 100 + 1) * 96.11069
+                    - count_preps * 2.05444
+                    - count_conjs * 1.02805
                 )
         else:
             trankle_bailers = 'text_too_short'
@@ -1193,34 +1246,3 @@ def wheeler_smiths_readability_formula(main, text):
         wheeler_smith = 'no_support'
 
     return wheeler_smith
-
-# Wiener Sachtextformel
-# References:
-#     Bamberger, R., & Vanecek, E. (1984). Lesen – Verstehen – Lernen – Schreiben. Jugend und Volk.
-#     Lesbarkeitsindex. (2022, July 21). In Wikipedia. https://de.wikipedia.org/w/index.php?title=Lesbarkeitsindex&oldid=224664667
-def wstf(main, text):
-    if text.lang.startswith('deu_'):
-        text = get_counts(main, text)
-
-        if text.count_words and text.count_sentences:
-            variant = main.settings_custom['measures']['readability']['wstf']['variant']
-
-            ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words
-            sl = text.count_words / text.count_sentences
-            iw = get_count_words_letters(text.words_flat, len_min = 7) / text.count_words
-            es = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1) / text.count_words
-
-            if variant == '1':
-                wstf = 0.1925 * ms + 0.1672 * sl + 0.1297 * iw - 0.0327 * es - 0.875
-            elif variant == '2':
-                wstf = 0.2007 * ms + 0.1682 * sl + 0.1373 * iw - 2.779
-            elif variant == '3':
-                wstf = 0.2963 * ms + 0.1905 * sl - 1.1144
-            elif variant == '4':
-                wstf = 0.2744 * ms + 0.2656 * sl - 1.693
-        else:
-            wstf = 'text_too_short'
-    else:
-        wstf = 'no_support'
-
-    return wstf
