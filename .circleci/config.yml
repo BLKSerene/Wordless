@@ -1,0 +1,237 @@
+# ----------------------------------------------------------------------
+# Wordless: CI - CircleCI
+# Copyright (C) 2018-2023  Ye Lei (叶磊)
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# ----------------------------------------------------------------------
+
+version: 2.1
+
+jobs:
+  # Windows
+  Windows:
+    machine:
+      image: 'windows-server-2019-vs2019:2023.08.1'
+      shell: powershell.exe -ExecutionPolicy Bypass
+
+    resource_class: windows.medium
+
+    steps:
+      - checkout
+
+      # Install dependencies
+      - restore_cache:
+          name: Restore pip cache
+          keys:
+            - pip-{{ arch }}-{{ checksum "requirements/requirements_tests.txt" }}
+            - pip-{{ arch }}
+
+      - run:
+          command: |
+            pip install --upgrade pip setuptools
+            pip install --requirement requirements/requirements_tests.txt
+            pip install --requirement requirements/requirements_no_deps.txt --no-deps
+            # Download models and data files
+            python utils/wl_downloader_ci.py
+          name: Install dependencies
+
+      # Run tests
+      - run:
+          command: |
+            pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+
+            pytest tests/wl_tests_nlp/test_sentence_tokenization.py
+            pytest tests/wl_tests_nlp/test_word_tokenization.py
+            pytest tests/wl_tests_nlp/test_syl_tokenization.py
+            pytest tests/wl_tests_nlp/test_pos_tagging.py
+            pytest tests/wl_tests_nlp/test_lemmatization.py
+
+            pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
+
+            pytest tests/wl_tests_file_area/test_file_area.py
+            pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
+          name: Run tests
+
+      # Save cache
+      - save_cache:
+          name: Save pip cache
+          key: pip-{{ arch }}-{{ checksum "requirements/requirements_tests.txt" }}
+          paths:
+              - "%LocalAppData%/pip/Cache"
+
+  # macOS
+  macOS:
+    macos:
+      xcode: 14.1.0
+
+    resource_class: macos.x86.medium.gen2
+
+    steps:
+      - checkout
+
+      # Install dependencies
+      - restore_cache:
+          name: Restore pip cache
+          keys:
+            - pip-{{ arch }}-{{ checksum "requirements/requirements_tests.txt" }}
+            - pip-{{ arch }}
+
+      - run:
+          command: |
+            pip3 install --upgrade pip setuptools
+            pip3 install --requirement requirements/requirements_tests.txt
+            # Fix permission denied error
+            pip3 install --requirement requirements/requirements_no_deps.txt --no-deps --user
+            # Download models and data files
+            python3 utils/wl_downloader_ci.py
+          name: Install dependencies
+
+      # Run tests
+      - run:
+          command: |
+            pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+
+            pytest tests/wl_tests_nlp/test_sentence_tokenization.py
+            pytest tests/wl_tests_nlp/test_word_tokenization.py
+            pytest tests/wl_tests_nlp/test_syl_tokenization.py
+            pytest tests/wl_tests_nlp/test_pos_tagging.py
+            pytest tests/wl_tests_nlp/test_lemmatization.py
+
+            pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
+
+            pytest tests/wl_tests_file_area/test_file_area.py
+            pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
+          name: Run tests
+
+      # Save cache
+      - save_cache:
+          name: Save pip cache
+          key: pip-{{ arch }}-{{ checksum "requirements/requirements_tests.txt" }}
+          paths:
+              - "~/Library/Caches/pip"
+
+  # Linux
+  Linux:
+    machine:
+      image: ubuntu-2004:2022.10.1
+
+    resource_class: large
+
+    steps:
+      - checkout
+
+      # Install dependencies
+      - restore_cache:
+          name: Restore pip cache
+          keys:
+            - pip-{{ arch }}-{{ checksum "requirements/requirements_tests.txt" }}
+            - pip-{{ arch }}
+
+      - run:
+          command: |
+            pip3.10 install --upgrade pip setuptools
+            pip3.10 install --requirement requirements/requirements_tests.txt
+            pip3.10 install --requirement requirements/requirements_no_deps.txt --no-deps
+            # Download models and data files
+            python3.10 utils/wl_downloader_ci.py
+          name: Install dependencies
+
+      # Run tests
+      - run:
+          command: |
+            # Fix PyQt
+            export QT_QPA_PLATFORM=offscreen
+
+            # Use "python -m pytest" instead to fix "pytest: command not found"
+            python3.10 -m pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+
+            python3.10 -m pytest tests/wl_tests_nlp/test_sentence_tokenization.py
+            python3.10 -m pytest tests/wl_tests_nlp/test_word_tokenization.py
+            python3.10 -m pytest tests/wl_tests_nlp/test_syl_tokenization.py
+            python3.10 -m pytest tests/wl_tests_nlp/test_pos_tagging.py
+            python3.10 -m pytest tests/wl_tests_nlp/test_lemmatization.py
+
+            python3.10 -m pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
+
+            python3.10 -m pytest tests/wl_tests_file_area/test_file_area.py
+            python3.10 -m pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
+          name: Run tests
+
+      # Save cache
+      - save_cache:
+          name: Save pip cache
+          key: pip-{{ arch }}-{{ checksum "requirements/requirements_tests.txt" }}
+          paths:
+              - "~/.cache/pip"
+
+  # Docker
+  Docker:
+    docker:
+      - image: cimg/python:3.10
+
+    resource_class: large
+
+    steps:
+      - checkout
+
+      # Install dependencies
+      - restore_cache:
+          name: Restore pip cache
+          keys:
+            - pip-{{ arch }}-{{ checksum "requirements/requirements_tests.txt" }}
+            - pip-{{ arch }}
+
+      - run:
+          command: |
+            pip install --upgrade pip setuptools
+            pip install --requirement requirements/requirements_tests.txt
+            pip install --requirement requirements/requirements_no_deps.txt --no-deps
+            # Download models and data files
+            python utils/wl_downloader_ci.py
+          name: Install dependencies
+
+      # Run tests
+      - run:
+          command: |
+            # Fix PyQt
+            export QT_QPA_PLATFORM=offscreen
+
+            pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+
+            pytest tests/wl_tests_nlp/test_sentence_tokenization.py
+            pytest tests/wl_tests_nlp/test_word_tokenization.py
+            pytest tests/wl_tests_nlp/test_syl_tokenization.py
+            pytest tests/wl_tests_nlp/test_pos_tagging.py
+            pytest tests/wl_tests_nlp/test_lemmatization.py
+
+            pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
+
+            pytest tests/wl_tests_file_area/test_file_area.py
+            pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
+          name: Run tests
+
+      # Save cache
+      - save_cache:
+          name: Save pip cache
+          key: pip-{{ arch }}-{{ checksum "requirements/requirements_tests.txt" }}
+          paths:
+              - "~/.cache/pip"
+
+workflows:
+  test:
+    jobs:
+      - Windows
+      - macOS
+      - Linux
+      - Docker
