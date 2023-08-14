@@ -105,8 +105,7 @@ jobs:
           pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
 
           pytest tests/wl_tests_file_area/test_file_area.py
-          # Ignore tests of Profiler due to unknown errors
-          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py --ignore=tests/wl_tests_work_area/test_profiler.py
+          pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
 
   # Linux
   build-linux:
