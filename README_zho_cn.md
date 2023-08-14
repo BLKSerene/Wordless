@@ -24,9 +24,11 @@
     <a href="https://ci.appveyor.com/project/BLKSerene/wordless">
         <img src="https://ci.appveyor.com/api/projects/status/github/BLKSerene/Wordless?svg=true" alt="AppVeyor"></a>
     <a href="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_build/latest?definitionId=1&branchName=main">
-        <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status/BLKSerene.Wordless?branchName=main" alt="Azure Pipelines"></a>
-    <a href="https://github.com/BLKSerene/Wordless/actions?query=workflow%3ATests">
-        <img src="https://github.com/BLKSerene/Wordless/workflows/Tests/badge.svg" alt="Github Actions"></a>
+        <img src="https://dev.azure.com/blkserene/BLKSerene%20-%20Github/_apis/build/status%2FBLKSerene.Wordless?branchName=main" alt="Azure Pipelines"></a>
+    <a href="https://dl.circleci.com/status-badge/redirect/gh/BLKSerene/Wordless/tree/main">
+        <img src="https://dl.circleci.com/status-badge/img/gh/BLKSerene/Wordless/tree/main.svg?style=svg" alt="CircleCI"></a>
+    <a href="https://github.com/BLKSerene/Wordless/actions/workflows/tests.yml">
+        <img src="https://github.com/BLKSerene/Wordless/actions/workflows/tests.yml/badge.svg" alt="Github Actions"></a>
     <a href="https://codecov.io/gh/BLKSerene/Wordless">
         <img src="https://codecov.io/gh/BLKSerene/Wordless/branch/main/graph/badge.svg?token=ED6TW92A7G" alt="Codecov"></a>
 </div>
