@@ -64,3 +64,9 @@ requests
 scipy
 tzdata; sys_platform == 'win32' # Required by PyThaiNLP on Windows
 wordcloud
+
+# For PyTorch on Linux using CPU
+# See: https://stackoverflow.com/a/57060441
+--index-url=https://download.pytorch.org/whl/cpu
+--extra-index-url=https://pypi.org/simple
+torch
