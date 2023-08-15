@@ -554,6 +554,35 @@ def test_eflaw():
     assert eflaw_eng_12 == (12 + 6) / 3
     assert eflaw_spa_12 == 'no_support'
 
+def test_nwl():
+    nwl_deu_0 = wl_measures_readability.nwl(main, test_text_deu_0)
+    settings['nwl']['variant'] = '1'
+    nwl_deu_12_1 = wl_measures_readability.nwl(main, test_text_deu_12)
+    settings['nwl']['variant'] = '2'
+    nwl_deu_12_2 = wl_measures_readability.nwl(main, test_text_deu_12)
+    settings['nwl']['variant'] = '3'
+    nwl_deu_12_3 = wl_measures_readability.nwl(main, test_text_deu_12)
+    nwl_eng_12 = wl_measures_readability.nwl(main, test_text_eng_12)
+
+    print('neue Wiener Literaturformeln:')
+    print(f'\tdeu/0: {nwl_deu_0}')
+    print(f'\tdeu/12-1: {nwl_deu_12_1}')
+    print(f'\tdeu/12-2: {nwl_deu_12_2}')
+    print(f'\tdeu/12-3: {nwl_deu_12_3}')
+    print(f'\teng/12: {nwl_eng_12}')
+
+    sw = 5 / 5 * 100
+    s_100 = 3 / 12 * 100
+    ms = 0 / 12 * 100
+    sl = 12 / 3
+    iw = 3 / 12 * 100
+
+    assert nwl_deu_0 == 'text_too_short'
+    assert nwl_deu_12_1 == 0.2032 * sw - 0.1715 * s_100 + 0.1594 * ms - 0.0746 * ms - 0.145
+    assert nwl_deu_12_2 == 0.2081 * sw - 0.207 * s_100 + 0.1772 * ms + 0.7498
+    assert nwl_deu_12_3 == 0.2373 * ms + 0.2433 * sl + 0.1508 * iw - 3.9203
+    assert nwl_eng_12 == 'no_support'
+
 def test_nws():
     nws_deu_0 = wl_measures_readability.nws(main, test_text_deu_0)
     settings['nws']['variant'] = '1'
@@ -748,6 +777,7 @@ if __name__ == '__main__':
     test_lensear_write()
     test_lix()
     test_eflaw()
+    test_nwl()
     test_nws()
     test_osman()
     test_rix()
