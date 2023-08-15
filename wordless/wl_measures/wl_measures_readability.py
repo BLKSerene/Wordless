@@ -84,7 +84,7 @@ def get_counts(main, text):
 
     return text
 
-def get_count_words_letters(words, len_min = 1, len_max = None):
+def get_count_words_ltrs(words, len_min = 1, len_max = None):
     if len_max:
         return len([
             True
@@ -117,7 +117,9 @@ def get_count_words_outside_wordlist(words, wordlist):
     count_difficult_words = 0
 
     # Load wordlist
-    if wordlist == 'dale_769':
+    if wordlist == 'bamberger_vanecek_1000':
+        file_name = 'bamberger_vanecek_most_common_words_1000'
+    elif wordlist == 'dale_769':
         file_name = 'dale_list_easy_words_769'
     elif wordlist == 'dale_3000':
         file_name = 'dale_list_easy_words_3000'
@@ -836,7 +838,7 @@ def lix(main, text):
     if text.count_words and text.count_sentences:
         text = get_counts(main, text)
 
-        count_long_words = get_count_words_letters(text.words_flat, len_min = 7)
+        count_long_words = get_count_words_ltrs(text.words_flat, len_min = 7)
         lix = text.count_words / text.count_sentences + 100 * (count_long_words / text.count_words)
     else:
         lix = 'text_too_short'
@@ -850,7 +852,7 @@ def eflaw(main, text):
         text = get_counts(main, text)
 
         if text.count_sentences:
-            count_mini_words = get_count_words_letters(text.words_flat, len_max = 3)
+            count_mini_words = get_count_words_ltrs(text.words_flat, len_max = 3)
             eflaw = (text.count_words + count_mini_words) / text.count_sentences
         else:
             eflaw = 'text_too_short'
@@ -859,8 +861,36 @@ def eflaw(main, text):
 
     return eflaw
 
+# neue Wiener Literaturformeln
+# Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 82). Jugend und Volk.
+def nwl(main, text):
+    if text.lang.startswith('deu_'):
+        text = get_counts(main, text)
+
+        if text.count_words and text.count_sentences:
+            variant = main.settings_custom['measures']['readability']['nwl']['variant']
+
+            sw = get_count_words_outside_wordlist(set(text.words_flat), 'bamberger_vanecek_1000') / text.count_word_types * 100
+            s_100 = text.count_sentences / text.count_words * 100
+            ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words * 100
+            sl = text.count_words / text.count_sentences
+            iw = get_count_words_ltrs(text.words_flat, len_min = 7) / text.count_words * 100
+
+            if variant == '1':
+                nwl = 0.2032 * sw - 0.1715 * s_100 + 0.1594 * ms - 0.0746 * ms - 0.145
+            elif variant == '2':
+                nwl = 0.2081 * sw - 0.207 * s_100 + 0.1772 * ms + 0.7498
+            elif variant == '3':
+                nwl = 0.2373 * ms + 0.2433 * sl + 0.1508 * iw - 3.9203
+        else:
+            nwl = 'text_too_short'
+    else:
+        nwl = 'no_support'
+
+    return nwl
+
 # neue Wiener Sachtextformel
-# Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk.
+# Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (pp. 83–84). Jugend und Volk.
 def nws(main, text):
     if text.lang.startswith('deu_'):
         text = get_counts(main, text)
@@ -870,7 +900,7 @@ def nws(main, text):
 
             ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words * 100
             sl = text.count_words / text.count_sentences
-            iw = get_count_words_letters(text.words_flat, len_min = 7) / text.count_words * 100
+            iw = get_count_words_ltrs(text.words_flat, len_min = 7) / text.count_words * 100
             es = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1) / text.count_words * 100
 
             if variant == '1':
@@ -931,7 +961,7 @@ def osman(main, text):
 
             a = text.count_words
             b = text.count_sentences
-            c = get_count_words_letters(text.words_flat, len_min = 6)
+            c = get_count_words_ltrs(text.words_flat, len_min = 6)
             d = numpy.sum(counts_syls_tokens)
             g = numpy.sum(counts_syls_tokens > 4)
             h = 0
@@ -964,7 +994,7 @@ def rix(main, text):
     text = get_counts(main, text)
 
     if text.count_sentences:
-        count_long_words = get_count_words_letters(text.words_flat, len_min = 7)
+        count_long_words = get_count_words_ltrs(text.words_flat, len_min = 7)
         rix = count_long_words / text.count_sentences
     else:
         rix = 'text_too_short'
@@ -975,7 +1005,7 @@ def rix(main, text):
 # References:
 #     McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), pp. 639–646.
 # German:
-#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache. Jugend und Volk.
+#     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 78). Jugend und Volk.
 def smog_grade(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)

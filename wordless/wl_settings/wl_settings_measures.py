@@ -154,6 +154,20 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_fog_index.layout().setColumnStretch(2, 1)
 
+        # neue Wiener Literaturformeln
+        self.group_box_nwl = QGroupBox(self.tr('neue Wiener Literaturformeln'), self)
+
+        self.label_nwl_variant = QLabel(self.tr('Variant:'), self)
+        self.combo_box_nwl_variant = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_nwl_variant.addItems(['1', '2', '3'])
+
+        self.group_box_nwl.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_nwl.layout().addWidget(self.label_nwl_variant, 0, 0)
+        self.group_box_nwl.layout().addWidget(self.combo_box_nwl_variant, 0, 1)
+
+        self.group_box_nwl.layout().setColumnStretch(2, 1)
+
         # neue Wiener Sachtextformel
         self.group_box_nws = QGroupBox(self.tr('neue Wiener Sachtextformel'), self)
 
@@ -199,12 +213,13 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_re, 5, 0)
         self.layout().addWidget(self.group_box_re_farr_jenkins_paterson, 6, 0)
         self.layout().addWidget(self.group_box_fog_index, 7, 0)
-        self.layout().addWidget(self.group_box_nws, 8, 0)
-        self.layout().addWidget(self.group_box_spache_grade_lvl, 9, 0)
-        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 10, 0)
+        self.layout().addWidget(self.group_box_nwl, 8, 0)
+        self.layout().addWidget(self.group_box_nws, 9, 0)
+        self.layout().addWidget(self.group_box_spache_grade_lvl, 10, 0)
+        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 11, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(11, 1)
+        self.layout().setRowStretch(12, 1)
 
     def re_changed(self):
         if self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.isChecked():
@@ -246,6 +261,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Gunning Fog Index
         self.combo_box_fog_index_variant_eng.setCurrentText(settings['fog_index']['variant_eng'])
 
+        # neue Wiener Literaturformeln
+        self.combo_box_nwl_variant.setCurrentText(settings['nwl']['variant'])
+
         # neue Wiener Sachtextformel
         self.combo_box_nws_variant.setCurrentText(settings['nws']['variant'])
 
@@ -281,6 +299,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         # Gunning Fog Index
         self.settings_custom['fog_index']['variant_eng'] = self.combo_box_fog_index_variant_eng.currentText()
+
+        # neue Wiener Literaturformeln
+        self.settings_custom['nwl']['variant'] = self.combo_box_nwl_variant.currentText()
 
         # neue Wiener Sachtextformel
         self.settings_custom['nws']['variant'] = self.combo_box_nws_variant.currentText()

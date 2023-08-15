@@ -1789,6 +1789,10 @@ def init_settings_default(main):
                     'use_powers_sumner_kearl_variant': False
                 },
 
+                'nwl': {
+                    'variant': '1'
+                },
+
                 'nws': {
                     'variant': '1'
                 },

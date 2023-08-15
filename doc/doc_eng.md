@@ -891,7 +891,12 @@ The following variables would be used in formulas:<br>
 **NumWords1Syl**: Number of monosyllabic words<br>
 **NumWords2+Syls**: Number of words with 2 or more syllables<br>
 **NumWords3+Syls**: Number of words with 3 or more syllables<br>
+**NumWords5+Syls**: Number of words with 5 or more syllables<br>
+**NumWords6+Ltrs**: Number of words with 6 or more letters<br>
+**NumWords7+Ltrs**: Number of words with 7 or more letters<br>
+**NumWords3-Ltrs**: Number of words with 3 or less letters<br>
 **NumWordTypes**: Number of word types<br>
+<span id="ref-num-word-types-bamberger-vanecek"></span>**NumWordTypesBambergerVanecek**: Number of word types outside the Bamberger-Vanecek's list of 1000 most common words ([Bamberger & Vanecek, 1984, pp. 176–179](#ref-bamberger-vanecek-1984))<br>
 **NumSyls**: Number of syllables<br>
 **NumCharsAll**: Number of characters (letters, CJK characters, etc., numerals, and punctuation marks)<br>
 **NumCharsAlnum**: Number of alphanumeric characters (letters, CJK characters, etc., and numerals)<br>
@@ -1009,25 +1014,35 @@ Lensear Write:
     \text{Score} = \text{NumWords1Syl} + 3 \times \text{NumSentences}
 
 Lix:
-    \text{Lix} = \frac{\text{NumWords}}{\text{NumSentences}} + 100 \times \frac{\text{NumLongWords}}{\text{NumWords}}
+    \text{Lix} = \frac{\text{NumWords}}{\text{NumSentences}} + 100 \times \frac{\text{NumWords7+Ltrs}}{\text{NumWords}}
 
 McAlpine EFLAW Readability Score:
-    \text{EFLAW} = \frac{\text{NumWords} + \text{NumMiniWords}}{\text{NumSentences}}
+    \text{EFLAW} = \frac{\text{NumWords} + \text{NumWords3-Ltrs}}{\text{NumSentences}}
+
+neue Wiener Literaturformeln:
+    \begin{align*}
+        \text{sW} &= \frac{\text{NumWordTypesBambergerVanecek}}{\text{NumWordTypes}} \times 100 \qquad \text{S/100} = \frac{\text{NumSentences}}{\text{NumWords}} \times 100 \\
+        \text{MS} &= \frac{\text{NumWords3+Syls}}{\text{NumWords}} \times 100 \qquad \qquad \qquad \qquad \qquad \quad \text{SL} = \frac{\text{NumWords}}{\text{NumSentences}} \\
+        \text{IW} &= \frac{\text{NumWords7+Ltrs}}{\text{NumWords}} \times 100 \\
+        \text{nWL}_1 &= 0.2032 \times \text{sW} - 0.1715 \times \text{S/100} + 0.1594 \times \text{MS} - 0.0746 \times \text{SL} - 0.145 \\
+        \text{nWL}_2 &= 0.2081 \times \text{sW} - 0.207 \times \text{S/100} + 0.1772 \times \text{MS} + 0.7498 \\
+        \text{nWL}_3 &= 0.2373 \times \text{MS} + 0.2433 \times \text{SL} + 0.1508 \times \text{IW} - 3.9203
+    \end{align*}
 
 neue Wiener Sachtextformel:
     \begin{align*}
         \text{MS} &= \frac{\text{NumWords3+Syls}}{\text{NumWords}} \times 100 \qquad \text{SL} = \frac{\text{NumWords}}{\text{NumSentences}} \\
-        \text{IW} &= \frac{\text{NumLongWords}}{\text{NumWords}} \times 100 \qquad \; \; \; \text{ES} = \frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100 \\
+        \text{IW} &= \frac{\text{NumWords7+Ltrs}}{\text{NumWords}} \times 100 \qquad \; \; \; \text{ES} = \frac{\text{NumWords1Syl}}{\text{NumWords}} \times 100 \\
         \text{nWS}_1 &= 0.1935 \times \text{MS} + 0.1672 \times \text{SL} + 0.1297 \times \text{IW} - 0.0327 \times \text{ES} - 0.875 \\
         \text{nWS}_2 &= 0.2007 \times \text{MS} + 0.1682 \times \text{SL} + 0.1373 \times \text{IW} - 2.779 \\
         \text{nWS}_3 &= 0.2963 \times \text{MS} + 0.1905 \times \text{SL} - 1.1144
     \end{align*}
 
 OSMAN:
-    \text{OSMAN} = 200.791 - 1.015 \times \frac{\text{NumWords}}{\text{NumSentences}} - 24.181 \times \frac{\text{NumLongWords} + \text{NumSyls} + \text{NumComplexWords} + \text{NumFaseehWords}}{\text{NumWords}}
+    \text{OSMAN} = 200.791 - 1.015 \times \frac{\text{NumWords}}{\text{NumSentences}} - 24.181 \times \frac{\text{NumWords6+Ltrs} + \text{NumSyls} + \text{NumWords5+Syls} + \text{NumFaseehWords}}{\text{NumWords}}
 
 Rix:
-    \text{Rix} = \frac{\text{NumLongWords}}{\text{NumSentences}}
+    \text{Rix} = \frac{\text{NumWords7+Ltrs}}{\text{NumSentences}}
 
 SMOG Grade:
     \begin{align*}
@@ -1081,12 +1096,13 @@ Measure of Readability|Formula
 <span id="ref-fog-index"></span>Gunning Fog Index¹³<br>(English: [Gunning, 1968](#ref-gunning-1968)<br>Powers-Sumner-Kearl: [Powers et al., 1958](#ref-powers-et-al-1958)<br>Navy: [Kincaid et al., 1975](#ref-kincaid-et-al-1975)<br>Polish: [Pisarek, 1969](#ref-pisarek-1969))|![Formula](/doc/measures/readability/fog_index.svg)<br>where **NumHardWords** is the number of words with 3 or more syllables, except proper nouns and words with 3 syllables ending with *-ed* or *-es*, for **English texts**, and the number of words with 4 or more syllables in their base forms, except proper nouns, for **Polish texts**.<br><br>* This measure applies only to **English & Polish texts**.
 <span id="ref-mu"></span>Legibilidad µ<br>([Muñoz Baquedano, 2006](#ref-munoz-baquedano-2006))|![Formula](/doc/measures/readability/mu.svg)<br>where **LenWordsAvg** is the average word length in letters, and **LenWordsVar** is the variance of word lengths in letters.<br><br>* This measure applies only to **Spanish texts**.
 <span id="ref-lensear-write"></span>Lensear Write¹<br>([O’Hayre, 1966](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/lensear_write.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*.<br><br>* This measure applies only to **English texts**.<br>* **One sample of 100 words** would be taken randomly from the text, and if the text is **shorter than 100 words**, **NumWords1Syl** and **NumSentences** would be multiplied by 100 and then divided by **NumWords**.
-<span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968))|![Formula](/doc/measures/readability/lix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
+<span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968))|![Formula](/doc/measures/readability/lix.svg)
 <span id="ref-eflaw"></span>McAlpine EFLAW Readability Score<br>([Nirmaldasan, 2009](#ref-nirmaldasan-2009))|![Formula](/doc/measures/readability/eflaw.svg)<br><br>* This measure applies only to **English texts**.
-<span id="ref-nws"></span>neue Wiener Sachtextformel¹³<br>([Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nws.svg)<br>where **NumLongWords** is the numbers of words with 7 or more letters.<br><br>* This measure applies only to **German texts**.
-<span id="ref-osman"></span>OSMAN<br>([El-Haj & Rayson, 2016](#ref-elhaj-rayson-2016))|![Formula](/doc/measures/readability/osman.svg)<br>where **NumLongWords** is the number of words with 6 or more letters, **NumComplexWords** is the number of words with 5 or more syllables, and **NumFaseehWords** is the number of complex words containing ء/ئ/ؤ/ذ/ظ or ending with وا/ون.<br><br>* This measure applies only to **Arabic texts**.<br>* **NumSyls** is estimated by adding up the number of short syllables and twice the number of long and stress syllables in each word.
-<span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)<br>where **NumLongWords** is the number of words with 7 or more letters.
-<span id="ref-smog-grade"></span>SMOG Grade¹<br>([McLaughlin, 1969](#ref-mclaughlin-1969)<br>German: [Bamberger & Vanecek, 1984](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/smog_grade.svg)<br><br>* A sample would be constructed using **the first 10 sentences, the last 10 sentences, and the 10 sentences at the middle of the text**, so the text should be **at least 30 sentences long**.
+<span id="ref-nwl"></span>neue Wiener Literaturformeln¹³<br>([Bamberger & Vanecek, 1984, p. 82](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nwl.svg)<br><br>* This measure applies only to **German texts**.
+<span id="ref-nws"></span>neue Wiener Sachtextformel¹³<br>([Bamberger & Vanecek, 1984, pp. 83–84](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nws.svg)<br><br>* This measure applies only to **German texts**.
+<span id="ref-osman"></span>OSMAN<br>([El-Haj & Rayson, 2016](#ref-elhaj-rayson-2016))|![Formula](/doc/measures/readability/osman.svg)<br>where **NumFaseehWords** is the number of words with 5 or more syllable which contains ء/ئ/ؤ/ذ/ظ or ends with وا/ون.<br><br>* This measure applies only to **Arabic texts**.<br>* The number of syllables in each word is estimated by adding up the number of short syllables and twice the number of long and stress syllables in each word.
+<span id="ref-rix"></span>Rix<br>([Anderson, 1983](#ref-anderson-1983))|![Formula](/doc/measures/readability/rix.svg)
+<span id="ref-smog-grade"></span>SMOG Grade¹<br>([McLaughlin, 1969](#ref-mclaughlin-1969)<br>German: [Bamberger & Vanecek, 1984, p.78](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/smog_grade.svg)<br><br>* A sample would be constructed using **the first 10 sentences, the last 10 sentences, and the 10 sentences at the middle of the text**, so the text should be **at least 30 sentences long**.
 <span id="ref-spache-grade-level"></span>Spache Grade Level³<br>([Spache, 1953](#ref-spache-1953)<br>Revised: [Spache, 1974](#ref-spache-1974))|![Formula](/doc/measures/readability/spache_grade_level.svg)<br><br>* **Three samples each of 100 words** would be taken randomly from the text and the results would be averaged out, so the text should be **at least 100 words long**.
 <span id="ref-strain-index"></span>Strain Index¹<br>([Solomon, 2006](#ref-solomon-2006))|![Formula](/doc/measures/readability/strain_index.svg)<br><br>* A sample would be constructed using **the first 3 sentences in the text**, so the text should be **at least 3 sentences long**.
 <span id="ref-trankle-bailers-readability-formula"></span>Tränkle & Bailer's Readability Formula²³<br>([Tränkle & Bailer, 1984](#ref-trankle-bailer-1984))|![Formula](/doc/measures/readability/trankle_bailers_readability_formula.svg)<br>where **NumPreps** is the numbers of prepositions, and **NumConjs** is the number of conjunctions.<br><br>* **One sample of 100 words** would be taken randomly from the text, so the text should be **at least 100 words long**.
@@ -1360,7 +1376,7 @@ Measure of Effect Size|Formula
 <span id="ref-anderson-1983"></span>
 [3] [**^**](#ref-rix) Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. *Journal of Reading*, *26*(6), pp. 490–496.<br>
 <span id="ref-bamberger-vanecek-1984"></span>
-[4] [**^**](#ref-nws) [**^**](#ref-smog-grade) Bamberger, R., & Vanecek, E. (1984). *Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache*. Jugend und Volk.<br>
+[4] [**^**](#ref-num-word-types-bamberger-vanecek) [**^**](#ref-nwl) [**^**](#ref-nws) [**^**](#ref-smog-grade) Bamberger, R., & Vanecek, E. (1984). *Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache*. Jugend und Volk.<br>
 <span id="ref-berry-rogghe-1973"></span>
 [5] [**^**](#ref-z-score-berry-rogghes) Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), *The computer and literary studies* (pp. 103–112). Edinburgh University Press.<br>
 <span id="ref-bormuth-1969"></span>
