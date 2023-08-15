@@ -357,6 +357,7 @@ class Wl_Table_Profiler(wl_tables.Wl_Table_Data):
 class Wl_Table_Profiler_Readability(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_READABILITY = [
+            _tr('wl_profiler', "Al-Heeti's Readability Prediction Formula"),
             _tr('wl_profiler', 'Automated Arabic Readability Index'),
             _tr('wl_profiler', 'Automated Readability Index'),
             _tr('wl_profiler', "Bormuth's Cloze Mean"),
@@ -1189,6 +1190,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 # Readability
                 if self.profiler_tab in ['readability', 'all']:
                     readability_stats = [
+                        wl_measures_readability.rd(self.main, text),
                         wl_measures_readability.aari(self.main, text),
                         wl_measures_readability.ari(self.main, text),
                         wl_measures_readability.bormuths_cloze_mean(self.main, text),
