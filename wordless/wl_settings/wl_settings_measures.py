@@ -31,6 +31,23 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['measures']['readability']
         self.settings_custom = self.main.settings_custom['measures']['readability']
 
+        # Al-Heeti's Readability Prediction Formula
+        self.group_box_rd = QGroupBox(self.tr("Al-Heeti's Readability Prediction Formula"), self)
+
+        self.label_rd_variant = QLabel(self.tr('Variant:'), self)
+        self.combo_box_rd_variant = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_rd_variant.addItems([
+            self.tr('Policy one'),
+            self.tr('Policy two')
+        ])
+
+        self.group_box_rd.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_rd.layout().addWidget(self.label_rd_variant, 0, 0)
+        self.group_box_rd.layout().addWidget(self.combo_box_rd_variant, 0, 1)
+
+        self.group_box_rd.layout().setColumnStretch(2, 1)
+
         # Automated Readability Index
         self.group_box_ari = QGroupBox(self.tr('Automated Readability Index'), self)
 
@@ -205,21 +222,22 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.group_box_trankle_bailers_readability_formula.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_ari, 0, 0)
-        self.layout().addWidget(self.group_box_bormuths_gp, 1, 0)
-        self.layout().addWidget(self.group_box_colemans_readability_formula, 2, 0)
-        self.layout().addWidget(self.group_box_x_c50, 3, 0)
-        self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 4, 0)
-        self.layout().addWidget(self.group_box_re, 5, 0)
-        self.layout().addWidget(self.group_box_re_farr_jenkins_paterson, 6, 0)
-        self.layout().addWidget(self.group_box_fog_index, 7, 0)
-        self.layout().addWidget(self.group_box_nwl, 8, 0)
-        self.layout().addWidget(self.group_box_nws, 9, 0)
-        self.layout().addWidget(self.group_box_spache_grade_lvl, 10, 0)
-        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 11, 0)
+        self.layout().addWidget(self.group_box_rd, 0, 0)
+        self.layout().addWidget(self.group_box_ari, 1, 0)
+        self.layout().addWidget(self.group_box_bormuths_gp, 2, 0)
+        self.layout().addWidget(self.group_box_colemans_readability_formula, 3, 0)
+        self.layout().addWidget(self.group_box_x_c50, 4, 0)
+        self.layout().addWidget(self.group_box_danielson_bryans_readability_formula, 5, 0)
+        self.layout().addWidget(self.group_box_re, 6, 0)
+        self.layout().addWidget(self.group_box_re_farr_jenkins_paterson, 7, 0)
+        self.layout().addWidget(self.group_box_fog_index, 8, 0)
+        self.layout().addWidget(self.group_box_nwl, 9, 0)
+        self.layout().addWidget(self.group_box_nws, 10, 0)
+        self.layout().addWidget(self.group_box_spache_grade_lvl, 11, 0)
+        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 12, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(12, 1)
+        self.layout().setRowStretch(13, 1)
 
     def re_changed(self):
         if self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.isChecked():
@@ -234,6 +252,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_default)
         else:
             settings = copy.deepcopy(self.settings_custom)
+
+        # Al-Heeti's Readability Prediction Formula
+        self.combo_box_rd_variant.setCurrentText(settings['rd']['variant'])
 
         # Automated Readability Index
         self.checkbox_use_navy_variant.setChecked(settings['ari']['use_navy_variant'])
@@ -274,6 +295,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.combo_box_trankle_bailers_readability_formula_variant.setCurrentText(settings['trankle_bailers_readability_formula']['variant'])
 
     def apply_settings(self):
+        # Al-Heeti's Readability Prediction Formula
+        self.settings_custom['rd']['variant'] = self.combo_box_rd_variant.currentText()
+
         # Automated Readability Index
         self.settings_custom['ari']['use_navy_variant'] = self.checkbox_use_navy_variant.isChecked()
 

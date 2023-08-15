@@ -1755,6 +1755,10 @@ def init_settings_default(main):
         'measures': {
             # Settings - Measures - Readability
             'readability': {
+                'rd': {
+                    'variant': _tr('init_settings_default', 'Policy one')
+                },
+
                 'ari': {
                     'use_navy_variant': False
                 },
