@@ -83,6 +83,25 @@ test_text_ukr_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'ukr')
 test_text_other_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'other')
 test_text_other_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'other')
 
+def test_rd():
+    rd_ara_0 = wl_measures_readability.rd(main, test_text_ara_0)
+    settings['rd']['variant'] = 'Policy one'
+    rd_ara_12_policy_1 = wl_measures_readability.rd(main, test_text_ara_12)
+    settings['rd']['variant'] = 'Policy two'
+    rd_ara_12_policy_2 = wl_measures_readability.rd(main, test_text_ara_12)
+    rd_eng_12 = wl_measures_readability.rd(main, test_text_eng_12)
+
+    print("Al-Heeti's Readability Prediction Formula:")
+    print(f'\tara/0: {rd_ara_0}')
+    print(f'\tara/12-policy-1: {rd_ara_12_policy_1}')
+    print(f'\tara/12-policy-2: {rd_ara_12_policy_2}')
+    print(f'\teng/12: {rd_eng_12}')
+
+    assert rd_ara_0 == 'text_too_short'
+    assert rd_ara_12_policy_1 == 4.41434307 * (45 / 12) - 13.46873475
+    assert rd_ara_12_policy_2 == 0.97569509 * (45 / 12) + 0.37237998 * (12 / 3) - 0.90451827 * (12 / 5) - 1.06000414
+    assert rd_eng_12 == 'no_support'
+
 def test_aari():
     aari_ara_0 = wl_measures_readability.aari(main, test_text_ara_0)
     aari_ara_12 = wl_measures_readability.aari(main, test_text_ara_12)
@@ -752,6 +771,7 @@ def test_wheeler_smiths_readability_formula():
     assert wheeler_smith_other_12 == 'no_support'
 
 if __name__ == '__main__':
+    test_rd()
     test_aari()
     test_ari()
     test_bormuths_cloze_mean()

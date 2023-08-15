@@ -157,6 +157,34 @@ def get_count_sentences_sample(text, sample, sample_start):
         + 1
     )
 
+# Al-Heeti's Readability Prediction Formula
+# Reference: Al-Heeti, K. N. (1984). Judgment analysis technique applied to readability prediction of Arabic reading material [Doctoral dissertation, University of Northern Colorado] (pp. 102, 104, 106). ProQuest Dissertations and Theses Global.
+def rd(main, text):
+    if text.lang == 'ara':
+        text = get_counts(main, text)
+
+        if text.count_words and text.count_sentences and text.count_word_types:
+            variant = main.settings_custom['measures']['readability']['rd']['variant']
+
+            if variant == _tr('wl_measures_readability', 'Policy one'):
+                rd = (
+                    4.41434307 * (text.count_chars_alpha / text.count_words)
+                    - 13.46873475
+                )
+            elif variant == _tr('wl_measures_readability', 'Policy two'):
+                rd = (
+                    0.97569509 * (text.count_chars_alpha / text.count_words)
+                    + 0.37237998 * (text.count_words / text.count_sentences)
+                    - 0.90451827 * (text.count_words / text.count_word_types)
+                    - 1.06000414
+                )
+        else:
+            rd = 'text_too_short'
+    else:
+        rd = 'no_support'
+
+    return rd
+
 # Automated Arabic Readability Index
 # Reference: Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. The International Arab Journal of Information Technology, 11(4), pp. 370–378.
 def aari(main, text):
@@ -178,9 +206,9 @@ def aari(main, text):
 
 # Automated Readability Index
 # References:
-#     Smith, E. A., & Senter, R. J. (1967). Automated readability index. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
+#     Smith, E. A., & Senter, R. J. (1967). Automated readability index (p. 8). Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
 # Navy:
-#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def ari(main, text):
     text = get_counts(main, text)
 
@@ -203,7 +231,7 @@ def ari(main, text):
     return ari
 
 # Bormuth's Cloze Mean & Grade Placement
-# Reference: Bormuth, J. R. (1969). Development of readability analyses. U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
+# Reference: Bormuth, J. R. (1969). Development of readability analyses (pp. 152, 160). U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
 def bormuths_cloze_mean(main, text):
     if text.lang.startswith('eng_'):
         text = get_counts(main, text)
@@ -439,7 +467,7 @@ def elf(main, text):
     return elf
 
 # Flesch-Kincaid Grade Level
-# Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+# Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def gl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
@@ -463,7 +491,7 @@ def gl(main, text):
 # Powers-Sumner-Kearl:
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # Dutch (Douma):
-#     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
+#     Douma, W. H. (1960). De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules [Readability of Dutch farm papers: A discussion and application of readability-formulas] (p. 453). Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
 # Dutch (Brouwer's Leesindex A):
 #     Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. Paedagogische studiën, 40, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
 # French:
@@ -476,12 +504,12 @@ def gl(main, text):
 #     Franchina, V., & Vacca, R. (1986). Adaptation of Flesh readability index on a bilingual text written by the same author both in Italian and English languages. Linguaggi, 3, 47–49.
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
 # Russian:
-#     Oborneva, I. V. (2006). Автоматизированная оценка сложности учебных текстов на основе статистических параметров [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education]. Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3
+#     Oborneva, I. V. (2006). Автоматизированная оценка сложности учебных текстов на основе статистических параметров [Doctoral dissertation, Institute for Strategy of Education Development of the Russian Academy of Education] (p. 13). Freereferats.ru. https://static.freereferats.ru/_avtoreferats/01002881899.pdf?ver=3
 # Spanish (Fernández Huerta):
 #     Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. Consigna, 214, 29–32.
 #     Garais, E. (2011). Web applications readability. Journal of Information Systems and Operations Management, 5(1), 117–121. http://www.rebe.rau.ro/RePEc/rau/jisomg/SP11/JISOM-SP11-A13.pdf
 # Spanish (Szigriszt Pazos):
-#     Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
+#     Szigriszt Pazos, F. (1993). Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad [Doctoral dissertation, Complutense University of Madrid] (p. 247). Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
 # Ukrainian:
 #     Partiko, Z. V. (2001). Zagal’ne redaguvannja. Normativni osnovi. Afiša.
 #     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. https://www.iqla.org/includes/basic_references/qualico_2009_proceedings_Grzybek_Kelih_Macutek_2009.pdf
@@ -599,7 +627,7 @@ def re_farr_jenkins_paterson(main, text):
     return re
 
 # FORCAST Grade Level
-# Reference: Caylor, J. S., & Sticht, T. G. (1973). Development of a simple readability index for job reading material. Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
+# Reference: Caylor, J. S., & Sticht, T. G. (1973). Development of a simple readability index for job reading material (p. 3). Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
 def rgl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
@@ -696,11 +724,11 @@ def gulpease_index(main, text):
 
 # Gunning Fog Index
 # References:
-#     Gunning, R. (1968). The technique of clear writing (revised ed.). McGraw-Hill Book Company.
+#     Gunning, R. (1968). The technique of clear writing (revised ed., p. 38). McGraw-Hill Book Company.
 # Powers-Sumner-Kearl:
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 # Navy:
-#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
+#     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 # Polish:
 #     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. Zeszyty Prasoznawcze, 4(42), 35–48.
 def fog_index(main, text):
@@ -795,7 +823,7 @@ def mu(main, text):
     return mu
 
 # Lensear Write
-# Reference: O’Hayre, J. (1966). Gobbledygook has gotta go. U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
+# Reference: O’Hayre, J. (1966). Gobbledygook has gotta go (p. 8). U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
 def lensear_write(main, text):
     if text.lang.startswith('eng_') and text.lang in main.settings_global['syl_tokenizers']:
         text = get_counts(main, text)
