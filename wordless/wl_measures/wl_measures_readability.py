@@ -30,9 +30,9 @@ from wordless.wl_utils import wl_misc, wl_paths
 
 _tr = QCoreApplication.translate
 
-def get_counts(main, text):
-    # Count of sentences
-    if 'count_sentences' not in text.__dict__:
+def get_nums(main, text):
+    # Number of sentences
+    if 'num_sentences' not in text.__dict__:
         text.words_multilevel = []
 
         for para in text.tokens_multilevel:
@@ -53,38 +53,38 @@ def get_counts(main, text):
             for para in text.words_multilevel
             for sentence in para
         ]
-        text.count_sentences = len(text.sentences)
+        text.num_sentences = len(text.sentences)
 
-    # Count of words with at least one letter or numeral
-    if 'count_words' not in text.__dict__:
+    # Number of words with at least one letter or numeral
+    if 'num_words' not in text.__dict__:
         text.words_flat = list(wl_misc.flatten_list(text.words_multilevel))
-        text.count_words = len(text.words_flat)
-        text.count_word_types = len(set(text.words_flat))
+        text.num_words = len(text.words_flat)
+        text.num_word_types = len(set(text.words_flat))
 
-    # Count of syllables
-    if 'count_syls' not in text.__dict__ and text.lang in main.settings_global['syl_tokenizers']:
+    # Number of syllables
+    if 'num_syls' not in text.__dict__ and text.lang in main.settings_global['syl_tokenizers']:
         text.syls_words = wl_syl_tokenization.wl_syl_tokenize(main, text.words_flat, lang = text.lang)
-        text.count_syls = sum((len(syls) for syls in text.syls_words))
+        text.num_syls = sum((len(syls) for syls in text.syls_words))
 
-    # Count of characters
-    if 'count_chars_all' not in text.__dict__:
-        text.count_chars_all = 0
-        text.count_chars_alnum = 0
-        text.count_chars_alpha = 0
+    # Number of characters
+    if 'num_chars_all' not in text.__dict__:
+        text.num_chars_all = 0
+        text.num_chars_alnum = 0
+        text.num_chars_alpha = 0
 
         for token in text.words_flat:
             for char in token:
-                text.count_chars_all += 1
+                text.num_chars_all += 1
 
                 if char.isalpha():
-                    text.count_chars_alnum += 1
-                    text.count_chars_alpha += 1
+                    text.num_chars_alnum += 1
+                    text.num_chars_alpha += 1
                 elif char.isalnum():
-                    text.count_chars_alnum += 1
+                    text.num_chars_alnum += 1
 
     return text
 
-def get_count_words_ltrs(words, len_min = 1, len_max = None):
+def get_num_words_ltrs(words, len_min = 1, len_max = None):
     if len_max:
         return len([
             True
@@ -98,7 +98,7 @@ def get_count_words_ltrs(words, len_min = 1, len_max = None):
             if  len([char for char in word if char.isalpha()]) >= len_min
         ])
 
-def get_count_words_syls(syls_words, len_min = 1, len_max = None):
+def get_num_words_syls(syls_words, len_min = 1, len_max = None):
     if len_max:
         return sum((
             1
@@ -112,24 +112,24 @@ def get_count_words_syls(syls_words, len_min = 1, len_max = None):
             if len(syls) >= len_min
         ))
 
-def get_count_words_pos_tags(main, words, lang, pos_tag):
+def get_num_words_pos_tags(main, words, lang, pos_tag):
     words_tagged = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal')
 
     return sum((1 for _, pos in words_tagged if pos_tag in pos))
 
-def get_counts_words_pos_tags(main, words, lang, pos_tags):
-    counts = []
+def get_nums_words_pos_tags(main, words, lang, pos_tags):
+    nums = []
 
     words_tagged = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal')
 
     for pos_tag in pos_tags:
-        counts.append(sum((1 for _, pos in words_tagged if pos_tag in pos)))
+        nums.append(sum((1 for _, pos in words_tagged if pos_tag in pos)))
 
-    return counts
+    return nums
 
-def get_count_words_outside_list(words, wordlist, use_word_types = False):
+def get_num_words_outside_list(words, wordlist, use_word_types = False):
     words_inside_wordlist = set()
-    count_words_outside_wordlist = 0
+    num_words_outside_wordlist = 0
 
     # Load wordlist
     if wordlist == 'bamberger_vanecek_1000':
@@ -155,11 +155,11 @@ def get_count_words_outside_list(words, wordlist, use_word_types = False):
 
     for word in words:
         if word.lower() not in words_inside_wordlist:
-            count_words_outside_wordlist += 1
+            num_words_outside_wordlist += 1
 
-    return count_words_outside_wordlist
+    return num_words_outside_wordlist
 
-def get_count_sentences_sample(text, sample, sample_start):
+def get_num_sentences_sample(text, sample, sample_start):
     # Calculate sentence offsets using words (punctuation marks already excluded)
     if 'offsets_sentences_words' not in text.__dict__:
         text.offsets_sentences_words = []
@@ -180,21 +180,21 @@ def get_count_sentences_sample(text, sample, sample_start):
 # Reference: Al-Heeti, K. N. (1984). Judgment analysis technique applied to readability prediction of Arabic reading material [Doctoral dissertation, University of Northern Colorado] (pp. 102, 104, 106). ProQuest Dissertations and Theses Global.
 def rd(main, text):
     if text.lang == 'ara':
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words and text.count_sentences and text.count_word_types:
+        if text.num_words and text.num_sentences and text.num_word_types:
             variant = main.settings_custom['measures']['readability']['rd']['variant']
 
             if variant == _tr('wl_measures_readability', 'Policy one'):
                 rd = (
-                    4.41434307 * (text.count_chars_alpha / text.count_words)
+                    4.41434307 * (text.num_chars_alpha / text.num_words)
                     - 13.46873475
                 )
             elif variant == _tr('wl_measures_readability', 'Policy two'):
                 rd = (
-                    0.97569509 * (text.count_chars_alpha / text.count_words)
-                    + 0.37237998 * (text.count_words / text.count_sentences)
-                    - 0.90451827 * (text.count_words / text.count_word_types)
+                    0.97569509 * (text.num_chars_alpha / text.num_words)
+                    + 0.37237998 * (text.num_words / text.num_sentences)
+                    - 0.90451827 * (text.num_words / text.num_word_types)
                     - 1.06000414
                 )
         else:
@@ -208,13 +208,13 @@ def rd(main, text):
 # Reference: Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. The International Arab Journal of Information Technology, 11(4), pp. 370–378.
 def aari(main, text):
     if text.lang == 'ara':
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words and text.count_sentences:
+        if text.num_words and text.num_sentences:
             aari = (
-                3.28 * text.count_chars_alnum
-                + 1.43 * (text.count_chars_alnum / text.count_words)
-                + 1.24 * (text.count_words / text.count_sentences)
+                3.28 * text.num_chars_alnum
+                + 1.43 * (text.num_chars_alnum / text.num_words)
+                + 1.24 * (text.num_words / text.num_sentences)
             )
         else:
             aari = 'text_too_short'
@@ -229,19 +229,19 @@ def aari(main, text):
 # Navy:
 #     Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def ari(main, text):
-    text = get_counts(main, text)
+    text = get_nums(main, text)
 
-    if text.count_sentences and text.count_words:
+    if text.num_sentences and text.num_words:
         if main.settings_custom['measures']['readability']['ari']['use_navy_variant']:
             ari = (
-                0.37 * (text.count_words / text.count_sentences)
-                + 5.84 * (text.count_chars_all / text.count_words)
+                0.37 * (text.num_words / text.num_sentences)
+                + 5.84 * (text.num_chars_all / text.num_words)
                 - 26.01
             )
         else:
             ari = (
-                0.5 * (text.count_words / text.count_sentences)
-                + 4.71 * (text.count_chars_all / text.count_words)
+                0.5 * (text.num_words / text.num_sentences)
+                + 4.71 * (text.num_chars_all / text.num_words)
                 - 21.43
             )
     else:
@@ -253,17 +253,17 @@ def ari(main, text):
 # Reference: Bormuth, J. R. (1969). Development of readability analyses (pp. 152, 160). U.S. Department of Health, Education, and Welfare. http://files.eric.ed.gov/fulltext/ED029166.pdf
 def bormuths_cloze_mean(main, text):
     if text.lang.startswith('eng_'):
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences and text.count_words:
-            ddl = get_count_words_outside_list(text.words_flat, wordlist = 'dale_3000')
+        if text.num_sentences and text.num_words:
+            ddl = get_num_words_outside_list(text.words_flat, wordlist = 'dale_3000')
             m = (
                 0.886593
-                - 0.083640 * (text.count_chars_alpha / text.count_words)
-                + 0.161911 * ((ddl / text.count_words)**3)
-                - 0.021401 * (text.count_words / text.count_sentences)
-                + 0.000577 * ((text.count_words / text.count_sentences)**2)
-                - 0.000005 * ((text.count_words / text.count_sentences)**3)
+                - 0.083640 * (text.num_chars_alpha / text.num_words)
+                + 0.161911 * ((ddl / text.num_words)**3)
+                - 0.021401 * (text.num_words / text.num_sentences)
+                + 0.000577 * ((text.num_words / text.num_sentences)**2)
+                - 0.000005 * ((text.num_words / text.num_sentences)**3)
             )
         else:
             m = 'text_too_short'
@@ -290,13 +290,13 @@ def bormuths_gp(main, text):
 # Coleman-Liau Index
 # Reference: Coleman, M., & Liau, T. L. (1975). A computer readability formula designed for machine scoring. Journal of Applied Psychology, 60(2), 283–284. https://doi.org/10.1037/h0076540
 def coleman_liau_index(main, text):
-    text = get_counts(main, text)
+    text = get_nums(main, text)
 
-    if text.count_words:
+    if text.num_words:
         est_cloze_pct = (
             141.8401
-            - 0.21459 * (text.count_chars_alpha / text.count_words * 100)
-            + 1.079812 * (text.count_sentences / text.count_words * 100)
+            - 0.21459 * (text.num_chars_alpha / text.num_words * 100)
+            + 1.079812 * (text.num_sentences / text.num_words * 100)
         )
         grade_level = -27.4004 * (est_cloze_pct / 100) + 23.06395
     else:
@@ -308,25 +308,25 @@ def coleman_liau_index(main, text):
 # Reference: Liau, T. L., Bassin, C. B., Martin, C. J., & Coleman, E. B. (1976). Modification of the Coleman readability formulas. Journal of Reading Behavior, 8(4), 381–386. https://journals.sagepub.com/doi/pdf/10.1080/10862967609547193
 def colemans_readability_formula(main, text):
     if text.lang in main.settings_global['syl_tokenizers'] and text.lang in main.settings_global['pos_taggers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words:
+        if text.num_words:
             variant = main.settings_custom['measures']['readability']['colemans_readability_formula']['variant']
-            count_words_1_syl = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1)
+            num_words_1_syl = get_num_words_syls(text.syls_words, len_min = 1, len_max = 1)
 
             if variant == '1':
                 cloze_pct = (
-                    1.29 * (count_words_1_syl / text.count_words * 100)
+                    1.29 * (num_words_1_syl / text.num_words * 100)
                     - 38.45
                 )
             elif variant == '2':
                 cloze_pct = (
-                    1.16 * (count_words_1_syl / text.count_words * 100)
-                    + 1.48 * (text.count_sentences / text.count_words * 100)
+                    1.16 * (num_words_1_syl / text.num_words * 100)
+                    + 1.48 * (text.num_sentences / text.num_words * 100)
                     - 37.95
                 )
             elif variant in ['3', '4']:
-                count_prons, count_preps = get_counts_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
+                num_prons, num_preps = get_nums_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
                     main,
                     words = text.words_flat,
                     lang = text.lang,
@@ -335,17 +335,17 @@ def colemans_readability_formula(main, text):
 
                 if variant == '3':
                     cloze_pct = (
-                        1.07 * (count_words_1_syl / text.count_words * 100)
-                        + 1.18 * (text.count_sentences / text.count_words * 100)
-                        + 0.76 * (count_prons / text.count_words * 100)
+                        1.07 * (num_words_1_syl / text.num_words * 100)
+                        + 1.18 * (text.num_sentences / text.num_words * 100)
+                        + 0.76 * (num_prons / text.num_words * 100)
                         - 34.02
                     )
                 elif variant == '4':
                     cloze_pct = (
-                        1.04 * (count_words_1_syl / text.count_words * 100)
-                        + 1.06 * (text.count_sentences / text.count_words * 100)
-                        + 0.56 * (count_prons / text.count_words * 100)
-                        - 0.36 * (count_preps / text.count_words)
+                        1.04 * (num_words_1_syl / text.num_words * 100)
+                        + 1.06 * (text.num_sentences / text.num_words * 100)
+                        + 0.56 * (num_prons / text.num_words * 100)
+                        - 0.36 * (num_preps / text.num_words)
                         - 26.01
                     )
         else:
@@ -366,29 +366,29 @@ def colemans_readability_formula(main, text):
 #     清川英男. (1996). CHALL, J. S. and DALE, E.(1995) Readability Revisited: The New Dale-Chall Readability Formula. Brookline Books. 教育メディア研究, 3(1), 59. https://www.jstage.jst.go.jp/article/jaems/3/1/3_KJ00009004543/_pdf
 def x_c50(main, text):
     if text.lang.startswith('eng_'):
-        text = get_counts(main, text)
+        text = get_nums(main, text)
         settings = main.settings_custom['measures']['readability']['x_c50']
 
-        if text.count_words and text.count_sentences:
-            count_difficult_words = get_count_words_outside_list(text.words_flat, wordlist = 'dale_3000')
+        if text.num_words and text.num_sentences:
+            num_difficult_words = get_num_words_outside_list(text.words_flat, wordlist = 'dale_3000')
 
             if settings['variant'] == _tr('wl_measures_readability', 'Original'):
                 x_c50 = (
-                    0.1579 * (count_difficult_words / text.count_words * 100)
-                    + 0.0496 * (text.count_words / text.count_sentences)
+                    0.1579 * (num_difficult_words / text.num_words * 100)
+                    + 0.0496 * (text.num_words / text.num_sentences)
                     + 3.6365
                 )
             elif settings['variant'] == 'Powers-Sumner-Kearl':
                 x_c50 = (
                     3.2672
-                    + 0.1155 * (count_difficult_words / text.count_words * 100)
-                    + 0.0596 * (text.count_words / text.count_sentences)
+                    + 0.1155 * (num_difficult_words / text.num_words * 100)
+                    + 0.0596 * (text.num_words / text.num_sentences)
                 )
             elif settings['variant'] == _tr('wl_measures_readability', 'New'):
                 x_c50 = (
                     64
-                    - 0.95 * (count_difficult_words / text.count_words * 100)
-                    - 0.69 * (text.count_words / text.count_sentences)
+                    - 0.95 * (num_difficult_words / text.num_words * 100)
+                    - 0.69 * (text.num_words / text.num_sentences)
                 )
         else:
             x_c50 = 'text_too_short'
@@ -400,27 +400,49 @@ def x_c50(main, text):
 # Danielson-Bryan's Readability Formula
 # Reference: Danielson, W. A., & Bryan, S. D. (1963). Computer automation of two readability formulas. Journalism Quarterly, 40(2), 201–206. https://doi.org/10.1177/107769906304000207
 def danielson_bryans_readability_formula(main, text):
-    text = get_counts(main, text)
+    text = get_nums(main, text)
 
-    if text.count_words - 1 and text.count_sentences:
+    if text.num_words - 1 and text.num_sentences:
         variant = main.settings_custom['measures']['readability']['danielson_bryans_readability_formula']['variant']
 
         if variant == '1':
             danielson_bryan = (
-                1.0364 * (text.count_chars_all / (text.count_words - 1))
-                + 0.0194 * (text.count_chars_all / text.count_sentences)
+                1.0364 * (text.num_chars_all / (text.num_words - 1))
+                + 0.0194 * (text.num_chars_all / text.num_sentences)
                 - 0.6059
             )
         elif variant == '2':
             danielson_bryan = (
                 131.059
-                - 10.364 * (text.count_chars_all / (text.count_words - 1))
-                - 0.194 * (text.count_chars_all / text.count_sentences)
+                - 10.364 * (text.num_chars_all / (text.num_words - 1))
+                - 0.194 * (text.num_chars_all / text.num_sentences)
             )
     else:
         danielson_bryan = 'text_too_short'
 
     return danielson_bryan
+
+# Dawood's Readability Formula
+# References:
+#     Dawood, B.A.K. (1977). The relationship between readability and selected language variables [Unpublished master’s thesis]. University of Baghdad.
+#     Cavalli-Sforza, V., Saddiki, H., & Nassiri, N. (2018). Arabic readability research—Current state and future directions. Procedia Computer Science, 142, 38–49.
+def dawoods_readability_formula(main, text):
+    if text.lang == 'ara':
+        text = get_nums(main, text)
+
+        if text.num_words and text.num_sentences and text.num_word_types:
+            dawood = (
+                (-0.0533) * (text.num_chars_alpha / text.num_words)
+                - 0.2066 * (text.num_words / text.num_sentences)
+                + 5.5543 * (text.num_words / text.num_word_types)
+                - 1.0801
+            )
+        else:
+            dawood = 'text_too_short'
+    else:
+        dawood = 'no_support'
+
+    return dawood
 
 # Degrees of Reading Power
 # References:
@@ -439,12 +461,12 @@ def drp(main, text):
 # Devereux Readability Index
 # Reference: Smith, E. A. (1961). Devereaux readability index. Journal of Educational Research, 54(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728
 def devereux_readability_index(main, text):
-    text = get_counts(main, text)
+    text = get_nums(main, text)
 
-    if text.count_words and text.count_sentences:
+    if text.num_words and text.num_sentences:
         grade_placement = (
-            1.56 * (text.count_chars_all / text.count_words)
-            + 0.19 * (text.count_words / text.count_sentences)
+            1.56 * (text.num_chars_all / text.num_words)
+            + 0.19 * (text.num_words / text.num_sentences)
             - 6.49
         )
     else:
@@ -457,14 +479,14 @@ def devereux_readability_index(main, text):
 #     Dickes, P. & Steiwer, L. (1977). Ausarbeitung von lesbarkeitsformeln für die deutsche sprache. Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie, 9(1), 20–28.
 #     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 57). Jugend und Volk.
 def dickes_steiwer_handformel(main, text):
-    text = get_counts(main, text)
+    text = get_nums(main, text)
 
-    if text.count_words and text.count_sentences:
+    if text.num_words and text.num_sentences:
         dickes_steiwer = (
             235.95993
-            - numpy.log(text.count_chars_alpha / text.count_words + 1) * 73.021
-            - numpy.log(text.count_words / text.count_sentences + 1) * 12.56438
-            - text.count_word_types / text.count_words * 50.03293
+            - numpy.log(text.num_chars_alpha / text.num_words + 1) * 73.021
+            - numpy.log(text.num_words / text.num_sentences + 1) * 12.56438
+            - text.num_word_types / text.num_words * 50.03293
         )
     else:
         dickes_steiwer = 'text_too_short'
@@ -475,10 +497,10 @@ def dickes_steiwer_handformel(main, text):
 # Reference: Fang, I. E. (1966). The easy listening formula. Journal of Broadcasting, 11(1), 63–68. https://doi.org/10.1080/08838156609363529
 def elf(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences:
-            elf = (text.count_syls - text.count_words) / text.count_sentences
+        if text.num_sentences:
+            elf = (text.num_syls - text.num_words) / text.num_sentences
         else:
             elf = 'text_too_short'
     else:
@@ -490,12 +512,12 @@ def elf(main, text):
 # Reference: Kincaid, J. P., Fishburne, R. P., Rogers, R. L., & Chissom, B. S. (1975). Derivation of new readability formulas (automated readability index, fog count, and Flesch reading ease formula) for Navy enlisted personnel (Report No. RBR 8-75, p. 14). Naval Air Station Memphis. https://apps.dtic.mil/sti/pdfs/ADA006655.pdf
 def gl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences and text.count_words:
+        if text.num_sentences and text.num_words:
             gl = (
-                0.39 * (text.count_words / text.count_sentences)
-                + 11.8 * (text.count_syls / text.count_words)
+                0.39 * (text.num_words / text.num_sentences)
+                + 11.8 * (text.num_syls / text.num_words)
                 - 15.59
             )
         else:
@@ -535,78 +557,78 @@ def gl(main, text):
 #     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. https://www.iqla.org/includes/basic_references/qualico_2009_proceedings_Grzybek_Kelih_Macutek_2009.pdf
 def re_flesch(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
         settings = main.settings_custom['measures']['readability']['re']
 
-        if text.count_words and text.count_sentences:
+        if text.num_words and text.num_sentences:
             if settings['use_powers_sumner_kearl_variant_for_all_langs']:
                 re = (
                     -2.2029
-                    + 4.55 * (text.count_syls / text.count_words)
-                    + 0.0778 * (text.count_words / text.count_sentences)
+                    + 4.55 * (text.num_syls / text.num_words)
+                    + 0.0778 * (text.num_words / text.num_sentences)
                 )
             else:
                 if text.lang == 'nld':
                     if settings['variant_nld'] == 'Douma':
                         re = (
                             206.84
-                            - 77 * (text.count_syls / text.count_words)
-                            - 0.93 * (text.count_words / text.count_sentences)
+                            - 77 * (text.num_syls / text.num_words)
+                            - 0.93 * (text.num_words / text.num_sentences)
                         )
                     elif settings['variant_nld'] == _tr('wl_measures_readability', "Brouwer's Leesindex A"):
                         re = (
                             195
-                            - (200 / 3) * (text.count_syls / text.count_words)
-                            - 2 * (text.count_words / text.count_sentences)
+                            - (200 / 3) * (text.num_syls / text.num_words)
+                            - 2 * (text.num_words / text.num_sentences)
                         )
                 elif text.lang == 'fra':
                     re = (
                         207
-                        - 73.6 * (text.count_syls / text.count_words)
-                        - 1.015 * (text.count_words / text.count_sentences)
+                        - 73.6 * (text.num_syls / text.num_words)
+                        - 1.015 * (text.num_words / text.num_sentences)
                     )
                 elif text.lang.startswith('deu_'):
                     re = (
                         180
-                        - 58.5 * (text.count_syls / text.count_words)
-                        - (text.count_words / text.count_sentences)
+                        - 58.5 * (text.num_syls / text.num_words)
+                        - (text.num_words / text.num_sentences)
                     )
                 elif text.lang == 'ita':
                     re = (
                         217
-                        - 60 * (text.count_syls / text.count_words)
-                        - 1.3 * (text.count_words / text.count_sentences)
+                        - 60 * (text.num_syls / text.num_words)
+                        - 1.3 * (text.num_words / text.num_sentences)
                     )
                 elif text.lang == 'rus':
                     re = (
                         206.835
-                        - 60.1 * (text.count_syls / text.count_words)
-                        - 1.3 * (text.count_words / text.count_sentences)
+                        - 60.1 * (text.num_syls / text.num_words)
+                        - 1.3 * (text.num_words / text.num_sentences)
                     )
                 elif text.lang == 'spa':
                     if settings['variant_spa'] == 'Fernández Huerta':
                         re = (
                             206.84
-                            - 60 * (text.count_syls / text.count_words)
-                            - 1.02 * (text.count_words / text.count_sentences)
+                            - 60 * (text.num_syls / text.num_words)
+                            - 1.02 * (text.num_words / text.num_sentences)
                         )
                     elif settings['variant_spa'] == 'Szigriszt Pazos':
                         re = (
                             206.84
-                            - 62.3 * (text.count_syls / text.count_words)
-                            - (text.count_words / text.count_sentences)
+                            - 62.3 * (text.num_syls / text.num_words)
+                            - (text.num_words / text.num_sentences)
                         )
                 elif text.lang == 'ukr':
                     re = (
                         206.84
-                        - 28.3 * (text.count_syls / text.count_words)
-                        - 5.93 * (text.count_words / text.count_sentences)
+                        - 28.3 * (text.num_syls / text.num_words)
+                        - 5.93 * (text.num_words / text.num_sentences)
                     )
                 else:
                     re = (
                         206.835
-                        - 84.6 * (text.count_syls / text.count_words)
-                        - 1.015 * (text.count_words / text.count_sentences)
+                        - 84.6 * (text.num_syls / text.num_words)
+                        - 1.015 * (text.num_words / text.num_sentences)
                     )
         else:
             re = 'text_too_short'
@@ -622,21 +644,21 @@ def re_flesch(main, text):
 #     Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. Journal of Educational Psychology, 49(2), 99–105. https://doi.org/10.1037/h0043254
 def re_farr_jenkins_paterson(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words and text.count_sentences:
-            count_words_1_syl = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1)
+        if text.num_words and text.num_sentences:
+            num_words_1_syl = get_num_words_syls(text.syls_words, len_min = 1, len_max = 1)
 
             if main.settings_custom['measures']['readability']['re_farr_jenkins_paterson']['use_powers_sumner_kearl_variant']:
                 re = (
                     8.4335
-                    - 0.0648 * (count_words_1_syl / text.count_words * 100)
-                    + 0.0923 * (text.count_words / text.count_sentences)
+                    - 0.0648 * (num_words_1_syl / text.num_words * 100)
+                    + 0.0923 * (text.num_words / text.num_sentences)
                 )
             else:
                 re = (
-                    1.599 * (count_words_1_syl / text.count_words * 100)
-                    - 1.015 * (text.count_words / text.count_sentences)
+                    1.599 * (num_words_1_syl / text.num_words * 100)
+                    - 1.015 * (text.num_words / text.num_sentences)
                     - 31.517
                 )
         else:
@@ -650,14 +672,14 @@ def re_farr_jenkins_paterson(main, text):
 # Reference: Caylor, J. S., & Sticht, T. G. (1973). Development of a simple readability index for job reading material (p. 3). Human Resource Research Organization. https://ia902703.us.archive.org/31/items/ERIC_ED076707/ERIC_ED076707.pdf
 def rgl(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words >= 150:
-            sample_start = random.randint(0, text.count_words - 150)
+        if text.num_words >= 150:
+            sample_start = random.randint(0, text.num_words - 150)
             sample = text.syls_words[sample_start : sample_start + 150]
 
-            count_words_1_syl = get_count_words_syls(sample, len_min = 1, len_max = 1)
-            rgl = 20.43 - 0.11 * count_words_1_syl
+            num_words_1_syl = get_num_words_syls(sample, len_min = 1, len_max = 1)
+            rgl = 20.43 - 0.11 * num_words_1_syl
         else:
             rgl = 'text_too_short'
     else:
@@ -671,13 +693,13 @@ def rgl(main, text):
 #     Rodríguez Trujillo, N. (1980). Determinación de la comprensibilidad de materiales de lectura por medio de variables lingüísticas. Lectura y Vida, 1(1). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a1n1/01_01_Rodriguez.pdf
 def cp(main, text):
     if text.lang == 'spa':
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words and text.count_sentences:
+        if text.num_words and text.num_sentences:
             cp = (
                 95.2
-                - 9.7 * (text.count_chars_alpha / text.count_words)
-                - 0.35 * (text.count_words / text.count_sentences)
+                - 9.7 * (text.num_chars_alpha / text.num_words)
+                - 0.35 * (text.num_words / text.num_sentences)
             )
         else:
             cp = 'text_too_short'
@@ -690,12 +712,12 @@ def cp(main, text):
 # Reference: Crawford, A. N. (1985). Fórmula y gráfico para determinar la comprensibilidad de textos de nivel primario en castellano. Lectura y Vida, 6(4). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a6n4/06_04_Crawford.pdf
 def formula_de_crawford(main, text):
     if text.lang == 'spa' and text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words:
+        if text.num_words:
             grade_level = (
-                text.count_sentences / text.count_words * 100 * (-0.205)
-                + text.count_syls / text.count_words * 100 * 0.049
+                text.num_sentences / text.num_words * 100 * (-0.205)
+                + text.num_syls / text.num_words * 100 * 0.049
                 - 3.407
             )
         else:
@@ -711,10 +733,10 @@ def formula_de_crawford(main, text):
 #     Briest, W. (1974). Kann man Verständlichkeit messen?. STUF - Language Typology and Universals, 27(1-3), 543–563. https://doi.org/10.1524/stuf.1974.27.13.543
 def fuckss_stilcharakteristik(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences:
-            stilcharakteristik = text.count_syls / text.count_sentences
+        if text.num_sentences:
+            stilcharakteristik = text.num_syls / text.num_sentences
         else:
             stilcharakteristik = 'text_too_short'
     else:
@@ -728,12 +750,12 @@ def fuckss_stilcharakteristik(main, text):
 #     Indice Gulpease. (2021, July 9). In Wikipedia.https://it.wikipedia.org/w/index.php?title=Indice_Gulpease&oldid=121763335.
 def gulpease_index(main, text):
     if text.lang == 'ita':
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words:
+        if text.num_words:
             gulpease_index = (
                 89
-                + (300 * text.count_sentences - 10 * text.count_chars_alpha) / text.count_words
+                + (300 * text.num_sentences - 10 * text.num_chars_alpha) / text.num_words
             )
         else:
             gulpease_index = 'text_too_short'
@@ -753,10 +775,10 @@ def gulpease_index(main, text):
 #     Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. Zeszyty Prasoznawcze, 4(42), 35–48.
 def fog_index(main, text):
     if text.lang.startswith('eng_') or text.lang == 'pol':
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences and text.count_words:
-            count_hard_words = 0
+        if text.num_sentences and text.num_words:
+            num_hard_words = 0
             variant_eng = main.settings_custom['measures']['readability']['fog_index']['variant_eng']
 
             if text.lang.startswith('eng_'):
@@ -774,24 +796,24 @@ def fog_index(main, text):
                                 or len(syls) > 3
                             )
                         ):
-                            count_hard_words += 1
+                            num_hard_words += 1
 
                     if variant_eng == _tr('wl_measures_readability', 'Original'):
                         fog_index = (
                             0.4
-                            * (text.count_words / text.count_sentences + count_hard_words / text.count_words * 100)
+                            * (text.num_words / text.num_sentences + num_hard_words / text.num_words * 100)
                         )
                     elif variant_eng == _tr('wl_measures_readability', 'Powers-Sumner-Kearl'):
                         fog_index = (
                             3.0680
-                            + 0.0877 * (text.count_words / text.count_sentences)
-                            + 0.0984 * (count_hard_words / text.count_words * 100)
+                            + 0.0877 * (text.num_words / text.num_sentences)
+                            + 0.0984 * (num_hard_words / text.num_words * 100)
                         )
                 elif variant_eng == _tr('wl_measures_readability', 'Navy'):
-                    count_words_3_plus_syls = get_count_words_syls(text.syls_words, len_min = 3)
+                    num_words_3_plus_syls = get_num_words_syls(text.syls_words, len_min = 3)
 
                     fog_index = (
-                        ((text.count_words + 2 * count_words_3_plus_syls) / text.count_sentences - 3)
+                        ((text.num_words + 2 * num_words_3_plus_syls) / text.num_sentences - 3)
                         / 2
                     )
             elif text.lang == 'pol':
@@ -801,12 +823,12 @@ def fog_index(main, text):
 
                 for syls, (word, tag) in zip(syls_words, words_tagged):
                     if len(syls) > 4 and 'PROPN' not in tag:
-                        count_hard_words += 1
+                        num_hard_words += 1
 
                 fog_index = (
                     numpy.sqrt(
-                        (text.count_words / text.count_sentences) ** 2
-                        + (count_hard_words / text.count_words * 100) ** 2
+                        (text.num_words / text.num_sentences) ** 2
+                        + (num_hard_words / text.num_words * 100) ** 2
                     )
                     / 2
                 )
@@ -821,9 +843,9 @@ def fog_index(main, text):
 # Reference: Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile, 21(2), 13–26.
 def mu(main, text):
     if text.lang == 'spa':
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words >= 2:
+        if text.num_words >= 2:
             # Excluding numbers and punctuation marks
             lens_words_letters = numpy.array([
                 len([char for char in word if char.isalpha()])
@@ -831,7 +853,7 @@ def mu(main, text):
             ])
 
             mu = (
-                (text.count_words / (text.count_words - 1))
+                (text.num_words / (text.num_words - 1))
                 * (numpy.mean(lens_words_letters) / numpy.var(lens_words_letters))
                 * 100
             )
@@ -846,31 +868,31 @@ def mu(main, text):
 # Reference: O’Hayre, J. (1966). Gobbledygook has gotta go (p. 8). U.S. Government Printing Office. https://www.governmentattic.org/15docs/Gobbledygook_Has_Gotta_Go_1966.pdf
 def lensear_write(main, text):
     if text.lang.startswith('eng_') and text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words > 0:
-            if text.count_words > 100:
-                sample_start = random.randint(0, text.count_words - 100)
+        if text.num_words > 0:
+            if text.num_words > 100:
+                sample_start = random.randint(0, text.num_words - 100)
             else:
                 sample_start = 0
 
             sample = text.words_flat[sample_start : sample_start + 100]
 
-            count_words_1_syl = 0
+            num_words_1_syl = 0
             sysl_sample = wl_syl_tokenization.wl_syl_tokenize(main, sample, lang = text.lang)
 
             for syls in sysl_sample:
                 if len(syls) == 1 and syls[0].lower() not in ['the', 'is', 'are', 'was', 'were']:
-                    count_words_1_syl += 1
+                    num_words_1_syl += 1
 
-            count_sentences = get_count_sentences_sample(text, sample, sample_start)
+            num_sentences = get_num_sentences_sample(text, sample, sample_start)
 
             # Normalize counts if number of tokens is less than 100
-            if text.count_words < 100:
-                count_words_1_syl *= 100 / text.count_words
-                count_sentences *= 100 / text.count_words
+            if text.num_words < 100:
+                num_words_1_syl *= 100 / text.num_words
+                num_sentences *= 100 / text.num_words
 
-            score = count_words_1_syl + 3 * count_sentences
+            score = num_words_1_syl + 3 * num_sentences
         else:
             score = 'text_too_short'
     else:
@@ -883,11 +905,11 @@ def lensear_write(main, text):
 #     Björnsson, C.-H. (1968). Läsbarhet. Liber.
 #     Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. Journal of Reading, 26(6), pp. 490–496.
 def lix(main, text):
-    if text.count_words and text.count_sentences:
-        text = get_counts(main, text)
+    if text.num_words and text.num_sentences:
+        text = get_nums(main, text)
 
-        count_long_words = get_count_words_ltrs(text.words_flat, len_min = 7)
-        lix = text.count_words / text.count_sentences + 100 * (count_long_words / text.count_words)
+        num_long_words = get_num_words_ltrs(text.words_flat, len_min = 7)
+        lix = text.num_words / text.num_sentences + 100 * (num_long_words / text.num_words)
     else:
         lix = 'text_too_short'
 
@@ -901,16 +923,16 @@ def lix(main, text):
 #     Lorge, I. (1948). The Lorge and Flesch readability formulae: A correction. School and Society, 67, 141–142.
 #     DuBay, W. H. (2006). In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
 def lorge_readability_index(main, text):
-    text = get_counts(main, text)
+    text = get_nums(main, text)
 
-    if text.count_sentences and text.count_words:
-        count_preps = get_count_words_pos_tags(
+    if text.num_sentences and text.num_words:
+        num_preps = get_num_words_pos_tags(
             main,
             words = text.words_flat,
             lang = text.lang,
             pos_tag = 'ADP'
         )
-        count_hard_words = get_count_words_outside_list(
+        num_hard_words = get_num_words_outside_list(
             text.words_flat,
             wordlist = 'dale_769',
             use_word_types = True
@@ -918,16 +940,16 @@ def lorge_readability_index(main, text):
 
         if main.settings_custom['measures']['readability']['lorge_readability_index']['use_corrected_formula']:
             lorge = (
-                text.count_words / text.count_sentences * 0.06
-                + count_preps / text.count_words * 0.1
-                + count_hard_words / text.count_words * 0.1
+                text.num_words / text.num_sentences * 0.06
+                + num_preps / text.num_words * 0.1
+                + num_hard_words / text.num_words * 0.1
                 + 1.99
             )
         else:
             lorge = (
-                text.count_words / text.count_sentences * 0.07
-                + count_preps / text.count_words * 13.01
-                + count_hard_words / text.count_words * 10.73
+                text.num_words / text.num_sentences * 0.07
+                + num_preps / text.num_words * 13.01
+                + num_hard_words / text.num_words * 10.73
                 + 1.6126
             )
     else:
@@ -939,11 +961,11 @@ def lorge_readability_index(main, text):
 # Reference: Nirmaldasan. (2009, April 30). McAlpine EFLAW readability score. Readability Monitor. Retrieved November 15, 2022, from https://strainindex.wordpress.com/2009/04/30/mcalpine-eflaw-readability-score/
 def eflaw(main, text):
     if text.lang.startswith('eng_'):
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences:
-            count_mini_words = get_count_words_ltrs(text.words_flat, len_max = 3)
-            eflaw = (text.count_words + count_mini_words) / text.count_sentences
+        if text.num_sentences:
+            num_mini_words = get_num_words_ltrs(text.words_flat, len_max = 3)
+            eflaw = (text.num_words + num_mini_words) / text.num_sentences
         else:
             eflaw = 'text_too_short'
     else:
@@ -955,16 +977,16 @@ def eflaw(main, text):
 # Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 82). Jugend und Volk.
 def nwl(main, text):
     if text.lang.startswith('deu_'):
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words and text.count_sentences:
+        if text.num_words and text.num_sentences:
             variant = main.settings_custom['measures']['readability']['nwl']['variant']
 
-            sw = get_count_words_outside_list(text.words_flat, wordlist = 'bamberger_vanecek_1000', use_word_types = True) / text.count_word_types * 100
-            s_100 = text.count_sentences / text.count_words * 100
-            ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words * 100
-            sl = text.count_words / text.count_sentences
-            iw = get_count_words_ltrs(text.words_flat, len_min = 7) / text.count_words * 100
+            sw = get_num_words_outside_list(text.words_flat, wordlist = 'bamberger_vanecek_1000', use_word_types = True) / text.num_word_types * 100
+            s_100 = text.num_sentences / text.num_words * 100
+            ms = get_num_words_syls(text.syls_words, len_min = 3) / text.num_words * 100
+            sl = text.num_words / text.num_sentences
+            iw = get_num_words_ltrs(text.words_flat, len_min = 7) / text.num_words * 100
 
             if variant == '1':
                 nwl = 0.2032 * sw - 0.1715 * s_100 + 0.1594 * ms - 0.0746 * ms - 0.145
@@ -983,15 +1005,15 @@ def nwl(main, text):
 # Reference: Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (pp. 83–84). Jugend und Volk.
 def nws(main, text):
     if text.lang.startswith('deu_'):
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words and text.count_sentences:
+        if text.num_words and text.num_sentences:
             variant = main.settings_custom['measures']['readability']['nws']['variant']
 
-            ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words * 100
-            sl = text.count_words / text.count_sentences
-            iw = get_count_words_ltrs(text.words_flat, len_min = 7) / text.count_words * 100
-            es = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1) / text.count_words * 100
+            ms = get_num_words_syls(text.syls_words, len_min = 3) / text.num_words * 100
+            sl = text.num_words / text.num_sentences
+            iw = get_num_words_ltrs(text.words_flat, len_min = 7) / text.num_words * 100
+            es = get_num_words_syls(text.syls_words, len_min = 1, len_max = 1) / text.num_words * 100
 
             if variant == '1':
                 nws = 0.1935 * ms + 0.1672 * sl + 0.1297 * iw - 0.0327 * es - 0.875
@@ -1008,7 +1030,7 @@ def nws(main, text):
 
 # Estimate number of syllables in Arabic texts by counting short, long, and stress syllables
 # Reference: https://github.com/textstat/textstat/blob/9bf37414407bcaaa45c498478ee383c8738e5d0c/textstat/textstat.py#L569
-def _get_count_syls_ara(text):
+def _get_num_syls_ara(text):
     short_count = 0
     long_count = 0
 
@@ -1044,21 +1066,21 @@ def _get_count_syls_ara(text):
 # Reference: El-Haj, M., & Rayson, P. (2016). OSMAN: A novel Arabic readability metric. In N. Calzolari, K. Choukri, T. Declerck, S. Goggi, M. Grobelnik, B. Maegaard, J. Mariani, H. Mazo, A. Moreno, J. Odijk, & S. Piperidis (Eds.), Proceedings of the Tenth International Conference on Language Resources and Evaluation (LREC 2016) (pp. 250–255). European Language Resources Association. http://www.lrec-conf.org/proceedings/lrec2016/index.html
 def osman(main, text):
     if text.lang == 'ara':
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences and text.count_words:
-            counts_syls_tokens = numpy.array([_get_count_syls_ara(word) for word in text.words_flat])
+        if text.num_sentences and text.num_words:
+            nums_syls_tokens = numpy.array([_get_num_syls_ara(word) for word in text.words_flat])
 
-            a = text.count_words
-            b = text.count_sentences
-            c = get_count_words_ltrs(text.words_flat, len_min = 6)
-            d = numpy.sum(counts_syls_tokens)
-            g = numpy.sum(counts_syls_tokens > 4)
+            a = text.num_words
+            b = text.num_sentences
+            c = get_num_words_ltrs(text.words_flat, len_min = 6)
+            d = numpy.sum(nums_syls_tokens)
+            g = numpy.sum(nums_syls_tokens > 4)
             h = 0
 
-            for word, count_syls in zip(text.words_flat, counts_syls_tokens):
+            for word, num_syls in zip(text.words_flat, nums_syls_tokens):
                 if (
-                    count_syls > 4
+                    num_syls > 4
                     and (
                         any((letter in word for letter in ['ء', 'ئ', 'ؤ', 'ذ', 'ظ']))
                         or any((word.endswith(letters) for letters in ['وا', 'ون']))
@@ -1081,11 +1103,11 @@ def osman(main, text):
 # Rix
 # Reference: Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. Journal of Reading, 26(6), pp. 490–496.
 def rix(main, text):
-    text = get_counts(main, text)
+    text = get_nums(main, text)
 
-    if text.count_sentences:
-        count_long_words = get_count_words_ltrs(text.words_flat, len_min = 7)
-        rix = count_long_words / text.count_sentences
+    if text.num_sentences:
+        num_long_words = get_num_words_ltrs(text.words_flat, len_min = 7)
+        rix = num_long_words / text.num_sentences
     else:
         rix = 'text_too_short'
 
@@ -1098,11 +1120,11 @@ def rix(main, text):
 #     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 78). Jugend und Volk.
 def smog_grade(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences >= 30:
+        if text.num_sentences >= 30:
             # Calculate the index for the 10 sentences at the middle of the text
-            sample_start_mid = text.count_sentences // 2 - 5
+            sample_start_mid = text.num_sentences // 2 - 5
             sample = (
                 text.sentences[:10]
                 + text.sentences[sample_start_mid : sample_start_mid + 10]
@@ -1110,17 +1132,17 @@ def smog_grade(main, text):
             )
 
             # Calculate the number of words with 3 or more syllables
-            count_words_3_plus_syls = 0
+            num_words_3_plus_syls = 0
 
             for sentence in sample:
                 syls_words = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
 
-                count_words_3_plus_syls += get_count_words_syls(syls_words, len_min = 3)
+                num_words_3_plus_syls += get_num_words_syls(syls_words, len_min = 3)
 
             if text.lang.startswith('deu_'):
-                g = numpy.sqrt(count_words_3_plus_syls / text.count_sentences * 30) - 2
+                g = numpy.sqrt(num_words_3_plus_syls / text.num_sentences * 30) - 2
             else:
-                g = 3.1291 + 1.043 * numpy.sqrt(count_words_3_plus_syls)
+                g = 3.1291 + 1.043 * numpy.sqrt(num_words_3_plus_syls)
         else:
             g = 'text_too_short'
     else:
@@ -1137,30 +1159,30 @@ def smog_grade(main, text):
 #     Benoit, K., Watanabe, K., Wang, H., Nulty, P., Obeng, A., Müller, S., & Matsuo, A. (2020, November 17). data_char_wordlists.rda. quanteda.textstats. Retrieved August 3, 2023, from https://github.com/quanteda/quanteda.textstats/raw/master/data/data_char_wordlists.rda
 def spache_grade_lvl(main, text):
     if text.lang.startswith('eng_'):
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words >= 100:
+        if text.num_words >= 100:
             grade_lvls = []
 
             # Sample 3 times
             for _ in range(3):
-                sample_start = random.randint(0, text.count_words - 100)
+                sample_start = random.randint(0, text.num_words - 100)
                 sample = text.words_flat[sample_start : sample_start + 100]
 
-                count_sentences = get_count_sentences_sample(text, sample, sample_start)
+                num_sentences = get_num_sentences_sample(text, sample, sample_start)
 
                 if main.settings_custom['measures']['readability']['spache_grade_lvl']['use_rev_formula']:
-                    count_difficult_words = get_count_words_outside_list(sample, wordlist = 'spache')
+                    num_difficult_words = get_num_words_outside_list(sample, wordlist = 'spache')
                     grade_lvls.append(
-                        0.121 * (100 / count_sentences)
-                        + 0.082 * (count_difficult_words)
+                        0.121 * (100 / num_sentences)
+                        + 0.082 * (num_difficult_words)
                         + 0.659
                     )
                 else:
-                    count_difficult_words = get_count_words_outside_list(sample, wordlist = 'dale_769')
+                    num_difficult_words = get_num_words_outside_list(sample, wordlist = 'dale_769')
                     grade_lvls.append(
-                        0.141 * (100 / count_sentences)
-                        + 0.086 * (count_difficult_words)
+                        0.141 * (100 / num_sentences)
+                        + 0.086 * (num_difficult_words)
                         + 0.839
                     )
 
@@ -1178,17 +1200,17 @@ def spache_grade_lvl(main, text):
 #     Nirmaldasan. (2007, September 25). Strain index: A new readability formula. Readability Monitor. Retrieved August 3, 2023, from https://strainindex.wordpress.com/2007/09/25/hello-world/
 def strain_index(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_sentences >= 3:
-            count_syls = 0
+        if text.num_sentences >= 3:
+            num_syls = 0
 
             for sentence in text.sentences[:3]:
                 syls_words = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
 
-                count_syls += sum((len(syls) for syls in syls_words))
+                num_syls += sum((len(syls) for syls in syls_words))
 
-            strain_index = count_syls / 10
+            strain_index = num_syls / 10
         else:
             strain_index = 'text_too_short'
     else:
@@ -1202,16 +1224,16 @@ def strain_index(main, text):
 #     Benoit, K. (2020, November 24). Calculate readability. quanteda: Quantitative Analysis of Textual Data. Retrieved August 3, 2023, from https://quanteda.io/reference/textstat_readability.html
 def trankle_bailers_readability_formula(main, text):
     if text.lang in main.settings_global['pos_taggers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words >= 100:
-            sample_start = random.randint(0, text.count_words - 100)
+        if text.num_words >= 100:
+            sample_start = random.randint(0, text.num_words - 100)
             sample = text.words_flat[sample_start : sample_start + 100]
 
-            count_chars_alnum = sum((1 for token in sample for char in token if char.isalnum()))
-            count_sentences = get_count_sentences_sample(text, sample, sample_start)
+            num_chars_alnum = sum((1 for token in sample for char in token if char.isalnum()))
+            num_sentences = get_num_sentences_sample(text, sample, sample_start)
 
-            count_preps, count_conjs = get_counts_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
+            num_preps, num_conjs = get_nums_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
                 main,
                 words = sample,
                 lang = text.lang,
@@ -1223,16 +1245,16 @@ def trankle_bailers_readability_formula(main, text):
             if variant == '1':
                 trankle_bailers = (
                     224.6814
-                    - numpy.log(count_chars_alnum / 100 + 1) * 79.8304
-                    - numpy.log(100 / count_sentences + 1) * 12.24032
-                    - count_preps * 1.292857
+                    - numpy.log(num_chars_alnum / 100 + 1) * 79.8304
+                    - numpy.log(100 / num_sentences + 1) * 12.24032
+                    - num_preps * 1.292857
                 )
             elif variant == '2':
                 trankle_bailers = (
                     234.1063
-                    - numpy.log(count_chars_alnum / 100 + 1) * 96.11069
-                    - count_preps * 2.05444
-                    - count_conjs * 1.02805
+                    - numpy.log(num_chars_alnum / 100 + 1) * 96.11069
+                    - num_preps * 2.05444
+                    - num_conjs * 1.02805
                 )
         else:
             trankle_bailers = 'text_too_short'
@@ -1247,12 +1269,12 @@ def trankle_bailers_readability_formula(main, text):
 #     Grzybek, P. (2010). Text difficulty and the Arens-Altmann law. In P. Grzybek, E. Kelih, & J. Mačutek (eds.), Text and language: Structures · functions · interrelations quantitative perspectives. Praesens Verlag. https://www.iqla.org/includes/basic_references/qualico_2009_proceedings_Grzybek_Kelih_Macutek_2009.pdf
 def td(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words:
+        if text.num_words:
             td = (
-                (text.count_syls / text.count_words)
-                * numpy.log(text.count_words / text.count_sentences)
+                (text.num_syls / text.num_words)
+                * numpy.log(text.num_words / text.num_sentences)
             )
         else:
             td = 'text_too_short'
@@ -1347,19 +1369,19 @@ UNIT_TERMINATORS = ''.join([
 
 def wheeler_smiths_readability_formula(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:
-        text = get_counts(main, text)
+        text = get_nums(main, text)
 
-        if text.count_words:
-            count_units = len(wl_sentence_tokenization.wl_sentence_seg_split(
+        if text.num_words:
+            num_units = len(wl_sentence_tokenization.wl_sentence_seg_split(
                 main,
                 text = ' '.join(wl_misc.flatten_list(text.tokens_multilevel_with_puncs)),
                 terminators = UNIT_TERMINATORS
             ))
-            count_words_2_syls = get_count_words_syls(text.syls_words, len_min = 2)
+            num_words_2_syls = get_num_words_syls(text.syls_words, len_min = 2)
 
             wheeler_smith = (
-                (text.count_words / count_units)
-                * (count_words_2_syls / text.count_words)
+                (text.num_words / num_units)
+                * (num_words_2_syls / text.num_words)
                 * 10
             )
         else:
