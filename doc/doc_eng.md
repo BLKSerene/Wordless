@@ -911,6 +911,7 @@ The following variables would be used in formulas:<br>
 <span id="ref-num-word-types-bamberger-vanecek"></span>**NumWordTypesBambergerVanecek**: Number of word types outside the Bamberger-Vanecek's list of 1000 most common words ([Bamberger & Vanecek, 1984, pp. 176–179](#ref-bamberger-vanecek-1984))<br>
 <span id="ref-num-word-types-dale-769"></span>**NumWordTypesDale₇₆₉**: Number of word types outside the Dale list of 769 easy words ([Dale, 1931](#ref-dale-1931))<br>
 **NumSyls**: Number of syllables<br>
+<span id="ref-num-syls-luong-nguyen-dinh-1000"></span>**NumSylsLuongNguyenDinh₁₀₀₀**: Number of syllables outside the Luong-Nguyen-Dinh list of 1000 most frequent syllables extracted from all easy documents of the corpus of Vietnamese text readability dataset on literature domain ([Luong et al., 2018](#ref-luong-et-al-2018))<br>
 **NumCharsAll**: Number of characters (letters, CJK characters, etc., numerals, and punctuation marks)<br>
 **NumCharsAlnum**: Number of alphanumeric characters (letters, CJK characters, etc., and numerals)<br>
 **NumCharsAlpha**: Number of alphabetic characters (letters, CJK characters, etc.)
@@ -1044,6 +1045,9 @@ Lorge Readability Index:
         \text{Lorge}_\text{Corrected} &= \frac{\text{NumWords}}{\text{NumSentences}} \times 0.06 + \frac{\text{NumPreps}}{\text{NumWords}} \times 0.1 + \frac{\text{NumWordTypesDale}_\text{769}}{\text{NumWords}} \times 0.1 + 1.99
     \end{align*}
 
+Luong-Nguyen-Dinh's Readability Formula:
+    {\text{Readability} = 0.004 \times \frac{\text{NumCharsAlnum}}{\text{NumSentences}} + 0.1905 \times \frac{\text{NumCharsAlnum}}{\text{NumWords}} + 2.7147 \times \frac{\text{NumSylsLuongNguyenDinh}_\text{1000}}{\text{NumSyls}} - 0.7295}
+
 McAlpine EFLAW Readability Score:
     \text{EFLAW} = \frac{\text{NumWords} + \text{NumWords3-Ltrs}}{\text{NumSentences}}
 
@@ -1128,6 +1132,7 @@ Measure of Readability|Formula|Supported Languages
 <span id="ref-lensear-write"></span>Lensear Write<br>([O’Hayre, 1966, p. 8](#ref-o-hayre-1966))|![Formula](/doc/measures/readability/lensear_write.svg)<br>where **NumWords1Syl** is the number of monosyllabic words excluding *the*, *is*, *are*, *was*, *were*.<br><br>* **One sample of 100 words** would be taken randomly from the text, and if the text is **shorter than 100 words**, **NumWords1Syl** and **NumSentences** would be multiplied by 100 and then divided by **NumWords**.|**English**²
 <span id="ref-lix"></span>Lix<br>([Björnsson, 1968](#ref-bjornsson-1968))|![Formula](/doc/measures/readability/lix.svg)|All languages
 <span id="ref-lorge-readability-index"></span>Lorge Readability Index¹<br>([Lorge, 1944](#ref-lorge-1944)<br>Corrected: [Lorge, 1948](#ref-lorge-1948))|![Formula](/doc/measures/readability/lorge_readability_index.svg)|**English**³
+<span id="ref-luong-nguyen-dinhs-readability-formula"></span>Luong-Nguyen-Dinh's Readability Formula<br>([Luong et al., 2018](#ref-luong-et-al-2018))|![Formula](/doc/measures/readability/luong_nguyen_dinh_readability_formula.svg)<br><br>* The number of syllables is estimated by tokenizing the text by whitespace and counting the number of tokens excluding punctuation marks|**Vietnamese**
 <span id="ref-eflaw"></span>McAlpine EFLAW Readability Score<br>([Nirmaldasan, 2009](#ref-nirmaldasan-2009))|![Formula](/doc/measures/readability/eflaw.svg)|**English**
 <span id="ref-nwl"></span>neue Wiener Literaturformeln¹<br>([Bamberger & Vanecek, 1984, p. 82](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nwl.svg)|**German**²
 <span id="ref-nws"></span>neue Wiener Sachtextformel¹<br>([Bamberger & Vanecek, 1984, pp. 83–84](#ref-bamberger-vanecek-1984))|![Formula](/doc/measures/readability/nws.svg)|**German**²
@@ -1518,6 +1523,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-lorge-readability-index) Lorge, I. (1948). The Lorge and Flesch readability formulae: A correction. *School and Society*, *67*, 141–142.
 <span id="ref-lucisano-emanuela-piemontese-1988"></span>
 1. [**^**](#ref-gulpease-index) Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. *Scuola e Città*, *39*(3), pp. 110–124.
+<span id="ref-luong-et-al-2018"></span>
+1. [**^**](#ref-num-syls-luong-nguyen-dinh-1000)[**^**](#ref-luong-nguyen-dinhs-readability-formula) Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. *2018 10th International Conference on Knowledge and Systems Engineering (KSE)* (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
 <span id="ref-lyne-1985"></span>
 1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.
 <span id="ref-mclaughlin-1969"></span>
