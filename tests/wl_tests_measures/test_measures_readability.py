@@ -38,6 +38,7 @@ settings = main.settings_custom['measures']['readability']
 
 TOKENS_MULTILEVEL_0 = []
 TOKENS_MULTILEVEL_12 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['This', 'is', 'a', 'sen-tence0', '.']]]]
+TOKENS_MULTILEVEL_12_PREP = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['From', 'beginning', 'to', 'end', '.']]]]
 TOKENS_MULTILEVEL_12_PROPN = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]], [[['Louisiana', 'readability', 'boxes', 'created', '.']]]]
 TOKENS_MULTILEVEL_100 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['This', 'is', 'a', 'sen-tence0', '.']]]]
 TOKENS_MULTILEVEL_100_PREP = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is', 'a', 'sentence', '.']]]] * 12 + [[[['I', 'am', 'behind', 'you', '.']]]]
@@ -47,6 +48,7 @@ TOKENS_MULTILEVEL_150 = [[[['This', 'is', 'a', 'sentence', '.']], [['This', 'is'
 
 test_text_eng_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0)
 test_text_eng_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12)
+test_text_eng_12_prep = Wl_Test_Text(TOKENS_MULTILEVEL_12_PREP)
 test_text_eng_12_propn = Wl_Test_Text(TOKENS_MULTILEVEL_12_PROPN)
 test_text_eng_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100)
 test_text_eng_100_prep = Wl_Test_Text(TOKENS_MULTILEVEL_100_PREP)
@@ -559,6 +561,25 @@ def test_lix():
     assert lix_eng_12 == 12 / 3 + 100 * (3 / 12)
     assert lix_spa_12 != 'no_support'
 
+def test_lorge_readability_index():
+    lorge_eng_0 = wl_measures_readability.lorge_readability_index(main, test_text_eng_0)
+    settings['lorge_readability_index']['use_corrected_formula'] = True
+    lorge_eng_12_corrected = wl_measures_readability.lorge_readability_index(main, test_text_eng_12_prep)
+    settings['lorge_readability_index']['use_corrected_formula'] = False
+    lorge_eng_12 = wl_measures_readability.lorge_readability_index(main, test_text_eng_12_prep)
+    lorge_tha_12 = wl_measures_readability.lorge_readability_index(main, test_text_tha_12)
+
+    print('Lorge Readability Index:')
+    print(f'\teng/0: {lorge_eng_0}')
+    print(f'\teng/12-corrected: {lorge_eng_12_corrected}')
+    print(f'\teng/12: {lorge_eng_12}')
+    print(f'\ttha/12: {lorge_tha_12}')
+
+    assert lorge_eng_0 == 'text_too_short'
+    assert lorge_eng_12_corrected == 12 / 3 * 0.06 + 1 / 12 * 0.1 + 2 / 12 * 0.1 + 1.99
+    assert lorge_eng_12 == 12 / 3 * 0.07 + 1 / 12 * 13.01 + 2 / 12 * 10.73 + 1.6126
+    assert lorge_tha_12 != 'no_support'
+
 def test_eflaw():
     eflaw_eng_0 = wl_measures_readability.eflaw(main, test_text_eng_0)
     eflaw_eng_12 = wl_measures_readability.eflaw(main, test_text_eng_12)
@@ -796,6 +817,7 @@ if __name__ == '__main__':
     test_mu()
     test_lensear_write()
     test_lix()
+    test_lorge_readability_index()
     test_eflaw()
     test_nwl()
     test_nws()

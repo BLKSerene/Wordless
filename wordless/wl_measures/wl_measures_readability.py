@@ -112,9 +112,24 @@ def get_count_words_syls(syls_words, len_min = 1, len_max = None):
             if len(syls) >= len_min
         ))
 
-def get_count_words_outside_wordlist(words, wordlist):
-    easy_words = set()
-    count_difficult_words = 0
+def get_count_words_pos_tags(main, words, lang, pos_tag):
+    words_tagged = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal')
+
+    return sum((1 for _, pos in words_tagged if pos_tag in pos))
+
+def get_counts_words_pos_tags(main, words, lang, pos_tags):
+    counts = []
+
+    words_tagged = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal')
+
+    for pos_tag in pos_tags:
+        counts.append(sum((1 for _, pos in words_tagged if pos_tag in pos)))
+
+    return counts
+
+def get_count_words_outside_list(words, wordlist, use_word_types = False):
+    words_inside_wordlist = set()
+    count_words_outside_wordlist = 0
 
     # Load wordlist
     if wordlist == 'bamberger_vanecek_1000':
@@ -132,13 +147,17 @@ def get_count_words_outside_wordlist(words, wordlist):
 
             if word:
                 # Ignore case
-                easy_words.add(word.lower())
+                words_inside_wordlist.add(word.lower())
+
+    if use_word_types:
+        words = set(words)
+        words_inside_wordlist = set(words_inside_wordlist)
 
     for word in words:
-        if word.lower() not in easy_words:
-            count_difficult_words += 1
+        if word.lower() not in words_inside_wordlist:
+            count_words_outside_wordlist += 1
 
-    return count_difficult_words
+    return count_words_outside_wordlist
 
 def get_count_sentences_sample(text, sample, sample_start):
     # Calculate sentence offsets using words (punctuation marks already excluded)
@@ -237,7 +256,7 @@ def bormuths_cloze_mean(main, text):
         text = get_counts(main, text)
 
         if text.count_sentences and text.count_words:
-            ddl = get_count_words_outside_wordlist(text.words_flat, wordlist = 'dale_3000')
+            ddl = get_count_words_outside_list(text.words_flat, wordlist = 'dale_3000')
             m = (
                 0.886593
                 - 0.083640 * (text.count_chars_alpha / text.count_words)
@@ -295,13 +314,6 @@ def colemans_readability_formula(main, text):
             variant = main.settings_custom['measures']['readability']['colemans_readability_formula']['variant']
             count_words_1_syl = get_count_words_syls(text.syls_words, len_min = 1, len_max = 1)
 
-            if variant in ['3', '4']:
-                pos_tags = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
-                count_prons = sum((1 for _, pos in pos_tags if 'PRON' in pos))
-
-                if variant == '4':
-                    count_preps = sum((1 for _, pos in pos_tags if 'ADP' in pos))
-
             if variant == '1':
                 cloze_pct = (
                     1.29 * (count_words_1_syl / text.count_words * 100)
@@ -313,21 +325,29 @@ def colemans_readability_formula(main, text):
                     + 1.48 * (text.count_sentences / text.count_words * 100)
                     - 37.95
                 )
-            elif variant == '3':
-                cloze_pct = (
-                    1.07 * (count_words_1_syl / text.count_words * 100)
-                    + 1.18 * (text.count_sentences / text.count_words * 100)
-                    + 0.76 * (count_prons / text.count_words * 100)
-                    - 34.02
+            elif variant in ['3', '4']:
+                count_prons, count_preps = get_counts_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
+                    main,
+                    words = text.words_flat,
+                    lang = text.lang,
+                    pos_tags = ['PRON', 'ADP']
                 )
-            elif variant == '4':
-                cloze_pct = (
-                    1.04 * (count_words_1_syl / text.count_words * 100)
-                    + 1.06 * (text.count_sentences / text.count_words * 100)
-                    + 0.56 * (count_prons / text.count_words * 100)
-                    - 0.36 * (count_preps / text.count_words)
-                    - 26.01
-                )
+
+                if variant == '3':
+                    cloze_pct = (
+                        1.07 * (count_words_1_syl / text.count_words * 100)
+                        + 1.18 * (text.count_sentences / text.count_words * 100)
+                        + 0.76 * (count_prons / text.count_words * 100)
+                        - 34.02
+                    )
+                elif variant == '4':
+                    cloze_pct = (
+                        1.04 * (count_words_1_syl / text.count_words * 100)
+                        + 1.06 * (text.count_sentences / text.count_words * 100)
+                        + 0.56 * (count_prons / text.count_words * 100)
+                        - 0.36 * (count_preps / text.count_words)
+                        - 26.01
+                    )
         else:
             cloze_pct = 'text_too_short'
     else:
@@ -350,7 +370,7 @@ def x_c50(main, text):
         settings = main.settings_custom['measures']['readability']['x_c50']
 
         if text.count_words and text.count_sentences:
-            count_difficult_words = get_count_words_outside_wordlist(text.words_flat, wordlist = 'dale_3000')
+            count_difficult_words = get_count_words_outside_list(text.words_flat, wordlist = 'dale_3000')
 
             if settings['variant'] == _tr('wl_measures_readability', 'Original'):
                 x_c50 = (
@@ -873,6 +893,48 @@ def lix(main, text):
 
     return lix
 
+# Lorge Readability Index
+# References:
+#     Lorge, I. (1944). Predicting readability. Teachers College Record, 45, 404–419.
+#     DuBay, W. H. (2006). In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
+# Corrected:
+#     Lorge, I. (1948). The Lorge and Flesch readability formulae: A correction. School and Society, 67, 141–142.
+#     DuBay, W. H. (2006). In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
+def lorge_readability_index(main, text):
+    text = get_counts(main, text)
+
+    if text.count_sentences and text.count_words:
+        count_preps = get_count_words_pos_tags(
+            main,
+            words = text.words_flat,
+            lang = text.lang,
+            pos_tag = 'ADP'
+        )
+        count_hard_words = get_count_words_outside_list(
+            text.words_flat,
+            wordlist = 'dale_769',
+            use_word_types = True
+        )
+
+        if main.settings_custom['measures']['readability']['lorge_readability_index']['use_corrected_formula']:
+            lorge = (
+                text.count_words / text.count_sentences * 0.06
+                + count_preps / text.count_words * 0.1
+                + count_hard_words / text.count_words * 0.1
+                + 1.99
+            )
+        else:
+            lorge = (
+                text.count_words / text.count_sentences * 0.07
+                + count_preps / text.count_words * 13.01
+                + count_hard_words / text.count_words * 10.73
+                + 1.6126
+            )
+    else:
+        lorge = 'text_too_short'
+
+    return lorge
+
 # McAlpine EFLAW Readability Score
 # Reference: Nirmaldasan. (2009, April 30). McAlpine EFLAW readability score. Readability Monitor. Retrieved November 15, 2022, from https://strainindex.wordpress.com/2009/04/30/mcalpine-eflaw-readability-score/
 def eflaw(main, text):
@@ -898,7 +960,7 @@ def nwl(main, text):
         if text.count_words and text.count_sentences:
             variant = main.settings_custom['measures']['readability']['nwl']['variant']
 
-            sw = get_count_words_outside_wordlist(set(text.words_flat), 'bamberger_vanecek_1000') / text.count_word_types * 100
+            sw = get_count_words_outside_list(text.words_flat, wordlist = 'bamberger_vanecek_1000', use_word_types = True) / text.count_word_types * 100
             s_100 = text.count_sentences / text.count_words * 100
             ms = get_count_words_syls(text.syls_words, len_min = 3) / text.count_words * 100
             sl = text.count_words / text.count_sentences
@@ -1088,14 +1150,14 @@ def spache_grade_lvl(main, text):
                 count_sentences = get_count_sentences_sample(text, sample, sample_start)
 
                 if main.settings_custom['measures']['readability']['spache_grade_lvl']['use_rev_formula']:
-                    count_difficult_words = get_count_words_outside_wordlist(sample, wordlist = 'spache')
+                    count_difficult_words = get_count_words_outside_list(sample, wordlist = 'spache')
                     grade_lvls.append(
                         0.121 * (100 / count_sentences)
                         + 0.082 * (count_difficult_words)
                         + 0.659
                     )
                 else:
-                    count_difficult_words = get_count_words_outside_wordlist(sample, wordlist = 'dale_769')
+                    count_difficult_words = get_count_words_outside_list(sample, wordlist = 'dale_769')
                     grade_lvls.append(
                         0.141 * (100 / count_sentences)
                         + 0.086 * (count_difficult_words)
@@ -1149,8 +1211,12 @@ def trankle_bailers_readability_formula(main, text):
             count_chars_alnum = sum((1 for token in sample for char in token if char.isalnum()))
             count_sentences = get_count_sentences_sample(text, sample, sample_start)
 
-            pos_tags = wl_pos_tagging.wl_pos_tag(main, sample, lang = text.lang, tagset = 'universal')
-            count_preps = sum((1 for _, pos in pos_tags if 'ADP' in pos))
+            count_preps, count_conjs = get_counts_words_pos_tags( # pylint: disable=unbalanced-tuple-unpacking
+                main,
+                words = sample,
+                lang = text.lang,
+                pos_tags = ['ADP', 'CONJ']
+            )
 
             variant = main.settings_custom['measures']['readability']['trankle_bailers_readability_formula']['variant']
 
@@ -1162,8 +1228,6 @@ def trankle_bailers_readability_formula(main, text):
                     - count_preps * 1.292857
                 )
             elif variant == '2':
-                count_conjs = sum((1 for _, pos in pos_tags if 'CONJ' in pos)) # CCONJ/SCONJ
-
                 trankle_bailers = (
                     234.1063
                     - numpy.log(count_chars_alnum / 100 + 1) * 96.11069
