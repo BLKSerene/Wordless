@@ -171,6 +171,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         self.group_box_fog_index.layout().setColumnStretch(2, 1)
 
+        # Lorge Readability Index
+        self.group_box_lorge_readability_index = QGroupBox(self.tr('Lorge Readability Index'), self)
+
+        self.checkbox_use_corrected_formula = QCheckBox(self.tr('Use corrected formula'), self)
+
+        self.group_box_lorge_readability_index.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_lorge_readability_index.layout().addWidget(self.checkbox_use_corrected_formula, 0, 0)
+
         # neue Wiener Literaturformeln
         self.group_box_nwl = QGroupBox(self.tr('neue Wiener Literaturformeln'), self)
 
@@ -231,13 +239,14 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.layout().addWidget(self.group_box_re, 6, 0)
         self.layout().addWidget(self.group_box_re_farr_jenkins_paterson, 7, 0)
         self.layout().addWidget(self.group_box_fog_index, 8, 0)
-        self.layout().addWidget(self.group_box_nwl, 9, 0)
-        self.layout().addWidget(self.group_box_nws, 10, 0)
-        self.layout().addWidget(self.group_box_spache_grade_lvl, 11, 0)
-        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 12, 0)
+        self.layout().addWidget(self.group_box_lorge_readability_index, 9, 0)
+        self.layout().addWidget(self.group_box_nwl, 10, 0)
+        self.layout().addWidget(self.group_box_nws, 11, 0)
+        self.layout().addWidget(self.group_box_spache_grade_lvl, 12, 0)
+        self.layout().addWidget(self.group_box_trankle_bailers_readability_formula, 13, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(13, 1)
+        self.layout().setRowStretch(14, 1)
 
     def re_changed(self):
         if self.checkbox_use_powers_sumner_kearl_variant_for_all_langs.isChecked():
@@ -282,6 +291,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         # Gunning Fog Index
         self.combo_box_fog_index_variant_eng.setCurrentText(settings['fog_index']['variant_eng'])
 
+        # Lorge Readability Index
+        self.checkbox_use_corrected_formula.setChecked(settings['lorge_readability_index']['use_corrected_formula'])
+
         # neue Wiener Literaturformeln
         self.combo_box_nwl_variant.setCurrentText(settings['nwl']['variant'])
 
@@ -323,6 +335,9 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         # Gunning Fog Index
         self.settings_custom['fog_index']['variant_eng'] = self.combo_box_fog_index_variant_eng.currentText()
+
+        # Lorge Readability Index
+        self.settings_custom['lorge_readability_index']['use_corrected_formula'] = self.checkbox_use_corrected_formula.isChecked()
 
         # neue Wiener Literaturformeln
         self.settings_custom['nwl']['variant'] = self.combo_box_nwl_variant.currentText()
