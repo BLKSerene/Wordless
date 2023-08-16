@@ -75,6 +75,9 @@ test_text_spa_150 = Wl_Test_Text(TOKENS_MULTILEVEL_150, lang = 'spa')
 test_text_tha_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'tha')
 test_text_tha_100 = Wl_Test_Text(TOKENS_MULTILEVEL_100, lang = 'tha')
 
+test_text_vie_0 = Wl_Test_Text(TOKENS_MULTILEVEL_0, lang = 'vie')
+test_text_vie_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'vie')
+
 test_text_afr_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'afr')
 test_text_nld_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'nld')
 test_text_fra_12 = Wl_Test_Text(TOKENS_MULTILEVEL_12, lang = 'fra')
@@ -594,6 +597,20 @@ def test_lorge_readability_index():
     assert lorge_eng_12 == 12 / 3 * 0.07 + 1 / 12 * 13.01 + 2 / 12 * 10.73 + 1.6126
     assert lorge_tha_12 != 'no_support'
 
+def test_luong_nguyen_dinhs_readability_formula():
+    readability_vie_0 = wl_measures_readability.luong_nguyen_dinhs_readability_formula(main, test_text_vie_0)
+    readability_vie_12 = wl_measures_readability.luong_nguyen_dinhs_readability_formula(main, test_text_vie_12)
+    readability_eng_12 = wl_measures_readability.luong_nguyen_dinhs_readability_formula(main, test_text_eng_12)
+
+    print("Luong-Nguyen-Dinh's Readability Formula:")
+    print(f'\tvie/0: {readability_vie_0}')
+    print(f'\tvie/12: {readability_vie_12}')
+    print(f'\teng/12: {readability_eng_12}')
+
+    assert readability_vie_0 == 'text_too_short'
+    assert readability_vie_12 == 0.004 * (46 / 3) + 0.1905 * (46 / 12) + 2.7147 * 12 / 12 - 0.7295
+    assert readability_eng_12 == 'no_support'
+
 def test_eflaw():
     eflaw_eng_0 = wl_measures_readability.eflaw(main, test_text_eng_0)
     eflaw_eng_12 = wl_measures_readability.eflaw(main, test_text_eng_12)
@@ -833,6 +850,7 @@ if __name__ == '__main__':
     test_lensear_write()
     test_lix()
     test_lorge_readability_index()
+    test_luong_nguyen_dinhs_readability_formula()
     test_eflaw()
     test_nwl()
     test_nws()

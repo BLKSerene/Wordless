@@ -132,12 +132,14 @@ def get_num_words_outside_list(words, wordlist, use_word_types = False):
     num_words_outside_wordlist = 0
 
     # Load wordlist
-    if wordlist == 'bamberger_vanecek_1000':
+    if wordlist == 'bamberger_vanecek':
         file_name = 'bamberger_vanecek_most_common_words_1000'
     elif wordlist == 'dale_769':
         file_name = 'dale_list_easy_words_769'
     elif wordlist == 'dale_3000':
         file_name = 'dale_list_easy_words_3000'
+    elif wordlist == 'luong_nguyen_dinh':
+        file_name = 'luong_nguyen_dinh_freq_syls_easy_1000'
     elif wordlist == 'spache':
         file_name = 'spache_word_list'
 
@@ -957,6 +959,29 @@ def lorge_readability_index(main, text):
 
     return lorge
 
+# Luong-Nguyen-Dinh's Readability Formula
+# Reference: Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. 2018 10th International Conference on Knowledge and Systems Engineering (KSE) (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
+def luong_nguyen_dinhs_readability_formula(main, text):
+    if text.lang == 'vie':
+        text = get_nums(main, text)
+
+        syls = [syl.strip() for word in text.words_flat for syl in word.split()]
+        num_difficult_syls = get_num_words_outside_list(words = syls, wordlist = 'luong_nguyen_dinh')
+
+        if text.num_sentences and text.num_words:
+            readability = (
+                0.004 * (text.num_chars_alnum / text.num_sentences)
+                + 0.1905 * (text.num_chars_alnum / text.num_words)
+                + 2.7147 * num_difficult_syls / len(syls)
+                - 0.7295
+            )
+        else:
+            readability = 'text_too_short'
+    else:
+        readability = 'no_support'
+
+    return readability
+
 # McAlpine EFLAW Readability Score
 # Reference: Nirmaldasan. (2009, April 30). McAlpine EFLAW readability score. Readability Monitor. Retrieved November 15, 2022, from https://strainindex.wordpress.com/2009/04/30/mcalpine-eflaw-readability-score/
 def eflaw(main, text):
@@ -982,7 +1007,7 @@ def nwl(main, text):
         if text.num_words and text.num_sentences:
             variant = main.settings_custom['measures']['readability']['nwl']['variant']
 
-            sw = get_num_words_outside_list(text.words_flat, wordlist = 'bamberger_vanecek_1000', use_word_types = True) / text.num_word_types * 100
+            sw = get_num_words_outside_list(text.words_flat, wordlist = 'bamberger_vanecek', use_word_types = True) / text.num_word_types * 100
             s_100 = text.num_sentences / text.num_words * 100
             ms = get_num_words_syls(text.syls_words, len_min = 3) / text.num_words * 100
             sl = text.num_words / text.num_sentences
