@@ -1793,6 +1793,10 @@ def init_settings_default(main):
                     'use_powers_sumner_kearl_variant': False
                 },
 
+                'lorge_readability_index': {
+                    'use_corrected_formula': True
+                },
+
                 'nwl': {
                     'variant': '1'
                 },
