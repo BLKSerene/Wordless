@@ -264,6 +264,20 @@ def test_danielson_bryans_readability_formula():
     assert danielson_bryan_eng_12_1 == 1.0364 * (47 / (12 - 1)) + 0.0194 * (47 / 3) - 0.6059
     assert danielson_bryan_eng_12_2 == danielson_bryan_other_12 == 131.059 - 10.364 * (47 / (12 - 1)) - 0.194 * (47 / 3)
 
+def test_dawoods_readability_formula():
+    dawood_ara_0 = wl_measures_readability.dawoods_readability_formula(main, test_text_ara_0)
+    dawood_ara_12 = wl_measures_readability.dawoods_readability_formula(main, test_text_ara_12)
+    dawood_eng_12 = wl_measures_readability.dawoods_readability_formula(main, test_text_eng_12)
+
+    print("Dawood's Readability Formula:")
+    print(f'\tara/0: {dawood_ara_0}')
+    print(f'\tara/12: {dawood_ara_12}')
+    print(f'\teng/12: {dawood_eng_12}')
+
+    assert dawood_ara_0 == 'text_too_short'
+    assert dawood_ara_12 == (-0.0533) * (45 / 12) - 0.2066 * (12 / 3) + 5.5543 * (12 / 5) - 1.0801
+    assert dawood_eng_12 == 'no_support'
+
 def test_drp():
     drp_eng_0 = wl_measures_readability.drp(main, test_text_eng_0)
     drp_eng_12 = wl_measures_readability.drp(main, test_text_eng_12)
@@ -801,6 +815,7 @@ if __name__ == '__main__':
     test_colemans_readability_formula()
     test_x_c50()
     test_danielson_bryans_readability_formula()
+    test_dawoods_readability_formula()
     test_drp()
     test_devereux_readability_index()
     test_dickes_steiwer_handformel()
