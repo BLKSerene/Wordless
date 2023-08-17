@@ -629,7 +629,7 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
                     )
 
                 dialog_err_files.table_err_files.enable_updates()
-                dialog_err_files.open()
+                dialog_err_files.exec_()
 
     def add_files(self):
         if os.path.exists(self.main.settings_custom['general']['imp']['files']['default_path']):

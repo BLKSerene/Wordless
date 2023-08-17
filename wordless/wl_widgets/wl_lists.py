@@ -296,7 +296,7 @@ class Wl_List_Add_Ins_Del_Clr_Imp_Exp(Wl_List_Add_Ins_Del_Clr):
 
                 dialog_err_files.table_err_files.enable_updates()
 
-                dialog_err_files.open()
+                dialog_err_files.exec_()
 
                 self.main.statusBar().showMessage(_tr('wl_lists', 'An error occurred during import!'))
             else:
