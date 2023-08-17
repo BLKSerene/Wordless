@@ -18,7 +18,7 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - ??/??/2023
+## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - 08/18/2023
 ### 🎉 New Features
 - Settings: Add Settings - Measures - Readability - Al-Heeti's Readability Prediction Formula / Automated Readability Index / Bormuth's Grade Placement / Coleman's Readability Formula / Dale-Chall Readability Formula / Danielson-Bryan's Readability Formula / Flesch Reading Ease / Flesch Reading Ease (Farr-Jenkins-Paterson) / Gunning Fog Index / Lorge Readability Index / neue Wiener Literaturformeln / Spache Grade Level / Tränkle & Bailer's Readability Formula
 - Settings: Add Settings - Sentiment Analysis
@@ -54,6 +54,7 @@
 - Dependencies: Upgrade NetworkX to 3.1
 - Dependencies: Upgrade NumPy to 1.25.2
 - Dependencies: Upgrade PyInstaller to 5.13.0
+- Dependencies: Upgrade pypdf to 3.15.1
 - Dependencies: Upgrade PyThaiNLP to 4.0.2
 - Dependencies: Upgrade Requests to 2.31.0
 - Dependencies: Upgrade SciPy to 1.11.1

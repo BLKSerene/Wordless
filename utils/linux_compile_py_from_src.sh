@@ -53,6 +53,7 @@ sudo ldconfig
 # Install 3rd-party libraries
 python3.10 -m pip install --upgrade pip setuptools
 pip3.10 install -r requirements_dev.txt
+pip3.10 install -r requirements_no_deps.txt --no-deps
 pip3.10 cache purge
 
 # Fix libxcb-xinerama.so
