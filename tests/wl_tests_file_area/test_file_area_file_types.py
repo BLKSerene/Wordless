@@ -72,8 +72,9 @@ def add_file(file_paths, update_gui, file_type = 'observed'):
 def test_file_area_file_types():
     wl_test_init.clean_import_caches()
 
-    # Disable encoding detection
+    # Disable auto-detection
     main.settings_custom['file_area']['dialog_open_files']['auto_detect_encodings'] = False
+    main.settings_custom['file_area']['dialog_open_files']['auto_detect_langs'] = False
 
     # File types (Non-XML)
     files_non_xml = glob.glob('tests/files/wl_file_area/file_types/*.*')
@@ -83,6 +84,10 @@ def test_file_area_file_types():
         file_paths = files_non_xml,
         update_gui = update_gui_file_types
     )
+
+    # Modify default file settings for XML files
+    main.settings_custom['files']['default_settings']['tokenized'] = True
+    main.settings_custom['files']['default_settings']['tagged'] = True
 
     # File types (XML)
     for i in range(5):
@@ -109,6 +114,9 @@ def test_file_area_file_types():
             file_paths = glob.glob('tests/files/wl_file_area/file_types/*.xml'),
             update_gui = update_gui_file_types
         )
+
+    main.settings_custom['files']['default_settings']['tokenized'] = False
+    main.settings_custom['files']['default_settings']['tagged'] = False
 
     # UnicodeDecodeError
     add_file(
