@@ -925,37 +925,40 @@ def lix(main, text):
 #     Lorge, I. (1948). The Lorge and Flesch readability formulae: A correction. School and Society, 67, 141–142.
 #     DuBay, W. H. (2006). In W. H. DuBay (Ed.), The classic readability studies (pp. 46–60). Impact Information. https://files.eric.ed.gov/fulltext/ED506404.pdf
 def lorge_readability_index(main, text):
-    text = get_nums(main, text)
+    if text.lang in main.settings_global['pos_taggers']:
+        text = get_nums(main, text)
 
-    if text.num_sentences and text.num_words:
-        num_preps = get_num_words_pos_tags(
-            main,
-            words = text.words_flat,
-            lang = text.lang,
-            pos_tag = 'ADP'
-        )
-        num_hard_words = get_num_words_outside_list(
-            text.words_flat,
-            wordlist = 'dale_769',
-            use_word_types = True
-        )
-
-        if main.settings_custom['measures']['readability']['lorge_readability_index']['use_corrected_formula']:
-            lorge = (
-                text.num_words / text.num_sentences * 0.06
-                + num_preps / text.num_words * 0.1
-                + num_hard_words / text.num_words * 0.1
-                + 1.99
+        if text.num_sentences and text.num_words:
+            num_preps = get_num_words_pos_tags(
+                main,
+                words = text.words_flat,
+                lang = text.lang,
+                pos_tag = 'ADP'
             )
+            num_hard_words = get_num_words_outside_list(
+                text.words_flat,
+                wordlist = 'dale_769',
+                use_word_types = True
+            )
+
+            if main.settings_custom['measures']['readability']['lorge_readability_index']['use_corrected_formula']:
+                lorge = (
+                    text.num_words / text.num_sentences * 0.06
+                    + num_preps / text.num_words * 0.1
+                    + num_hard_words / text.num_words * 0.1
+                    + 1.99
+                )
+            else:
+                lorge = (
+                    text.num_words / text.num_sentences * 0.07
+                    + num_preps / text.num_words * 13.01
+                    + num_hard_words / text.num_words * 10.73
+                    + 1.6126
+                )
         else:
-            lorge = (
-                text.num_words / text.num_sentences * 0.07
-                + num_preps / text.num_words * 13.01
-                + num_hard_words / text.num_words * 10.73
-                + 1.6126
-            )
+            lorge = 'text_too_short'
     else:
-        lorge = 'text_too_short'
+        lorge = 'no_support'
 
     return lorge
 
