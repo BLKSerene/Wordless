@@ -46,7 +46,7 @@ spacy-pkuseg == 0.0.32
 
 ## SudachiPy
 sudachipy == 0.6.7
-sudachidict_core == 20230110
+sudachidict_core == 20230711
 
 # Miscellaneous
 beautifulsoup4
