@@ -104,7 +104,8 @@ class Wl_Loading(QSplashScreen):
         self.showMessage(
             f' {message}',
             color = Qt.white,
-            alignment = Qt.AlignLeft | Qt.AlignBottom
+            # To be compatible with PyQt 5.10.0 on OS X 10.11
+            alignment = int(Qt.AlignLeft | Qt.AlignBottom)
         )
 
     def fade_in(self):

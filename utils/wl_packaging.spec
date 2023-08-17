@@ -28,8 +28,14 @@ import wl_utils
 
 block_cipher = None
 
+binaries = []
 datas = []
 is_windows, is_macos, is_linux = wl_utils.check_os()
+
+# Fix PyTorch
+# See: https://github.com/pyinstaller/pyinstaller/issues/7485#issuecomment-1465155018
+if is_macos:
+    binaries.extend(PyInstaller.utils.hooks.collect_dynamic_libs('torch'))
 
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
@@ -148,7 +154,7 @@ elif is_macos:
 a = Analysis(
     ['../wordless/wl_main.py'],
     pathex = [],
-    binaries = [],
+    binaries = binaries,
     datas = datas,
     hiddenimports = hiddenimports,
     hookspath = [],

@@ -147,7 +147,7 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False):
             )
 
         dialog_err_files.table_err_files.enable_updates()
-        dialog_err_files.open()
+        dialog_err_files.exec_()
 
         wl_status_bar_msg_lang_support_unavailable(main)
 
@@ -161,7 +161,7 @@ def check_results(main, err_msg, results):
     if err_msg:
         results_ok = False
 
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
         wl_status_bar_msg_err_fatal(main)
     elif not any(results):
         results_ok = False
@@ -185,21 +185,21 @@ def check_results_download_model(main, model_name, err_msg):
         if not err_msg:
             err_msg = traceback.format_exc()
 
-        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).open()
+        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).exec_()
         wl_status_bar_msg_err_download_model(main)
 
     return results_ok
 
 def check_err_table(main, err_msg):
     if err_msg:
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
         wl_status_bar_msg_err_fatal(main)
     else:
         wl_status_bar_msg_success_generate_table(main)
 
 def check_err_fig(main, err_msg):
     if err_msg:
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
         wl_status_bar_msg_err_fatal(main)
     else:
         wl_status_bar_msg_success_generate_fig(main)
