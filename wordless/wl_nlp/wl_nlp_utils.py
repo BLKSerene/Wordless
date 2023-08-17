@@ -184,7 +184,7 @@ class Wl_Worker_Download_Spacy_Model(wl_threading.Wl_Worker):
                 file_size = wl_misc.wl_download_file_size(self.main, model_url)
 
                 if file_size:
-                    self.progress_updated.emit(self.tr(f'Downloading model ({file_size:.2f} MB)...'))
+                    self.progress_updated.emit(self.tr('Downloading model ({:.2f} MB)...').format(file_size))
                 else:
                     self.progress_updated.emit(self.tr('Downloading model...'))
 

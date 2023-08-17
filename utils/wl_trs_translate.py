@@ -41,7 +41,11 @@ TRS_LANGS = {
     'Catalan': ['加泰罗尼亚语'],
     'Chinese (Simplified)': ['汉语（简体）'],
     'Chinese (Traditional)': ['汉语（繁体）'],
+
+    # In names of some language utils (eg. simplemma)
+    'Serbo-Croatian': ['塞尔维亚-克罗地亚语'],
     'Croatian': ['克罗地亚语'],
+
     'Czech': ['捷克语'],
     'Danish': ['丹麦语'],
     'Dutch': ['荷兰语'],
@@ -72,21 +76,24 @@ TRS_LANGS = {
     'Japanese': ['日语'],
     'Kannada': ['卡纳达语'],
     'Kazakh': ['哈萨克语'],
+    'Khmer': ['柬埔寨语'],
     'Korean': ['韩语'],
     'Kurdish': ['库尔德语'],
     'Kyrgyz': ['吉尔吉斯语'],
-    # 'Latin' contained in 'Serbian (Latin)'
+
     'Serbian (Latin)': ['塞尔维亚语（拉丁）'],
     'Latin': ['拉丁语'],
+
     'Latvian': ['拉脱维亚语'],
     'Ligurian': ['利古里亚语'],
     'Lithuanian': ['立陶宛语'],
     'Lugbara': ['卢格巴拉语'],
     'Luxembourgish': ['卢森堡语'],
     'Macedonian': ['马其顿语'],
-    # 'Malay' contained in 'Malayalam'
+
     'Malayalam': ['马拉雅拉姆语'],
     'Malay': ['马来语'],
+
     'Manx': ['马恩语'],
     'Marathi': ['马拉地语'],
     'Meitei': ['曼尼普尔语'],
@@ -133,8 +140,7 @@ TRS_LANGS = {
     'Welsh': ['威尔士语'],
     'Yoruba': ['约鲁巴语'],
     'Zulu': ['祖鲁语'],
-
-    'Other Languages': ['其他语种'],
+    'Other languages': ['其他语种'],
 
     # Encodings
     'All languages': ['所有语种'],
@@ -143,13 +149,14 @@ TRS_LANGS = {
     'Chinese': ['汉语'],
     'Cyrillic': ['西里尔'],
     'English': ['英语'],
-    # 'European' contained in 'European (Central)', 'European (Northern), etc.
+
     'European (Central)': ['欧洲（中部）'],
     'European (Northern)': ['欧洲（北部）'],
     'European (Southern)': ['欧洲（南部）'],
     'European (Southeastern)': ['欧洲（东南部）'],
     'European (Western)': ['欧洲（西部）'],
     'European': ['欧洲'],
+
     'German': ['德语'],
     'Greek': ['希腊语'],
     'Nordic languages': ['北欧诸语'],
@@ -160,7 +167,7 @@ TRS_LANGS = {
     'Serbian': ['塞尔维亚语'],
 }
 TRS_ENCODINGS = {
-    # 'with/without BOM' & contained in 'BE/LE with/without BOM'
+    # "with/without BOM" contained in "BE/LE with/without BOM"
     'BE with BOM': [' 大端带签名'],
     'BE without BOM': [' 大端无签名'],
     'LE with BOM': [' 小端带签名'],
@@ -195,18 +202,20 @@ TRS_NLP_UTILS = {
     'Stop Word Lists': ['停用词表'],
     'Dependency Parser Settings': ['依存分析器设置'],
     'Dependency Parsers': ['依存分析器'],
+    'Sentiment Analyzer Settings': ['情感分析器设置'],
+    'Sentiment Analyzer': ['情感分析器'],
 
     'sentence tokenizer': ['分句器'],
     'sentence recognizer': ['句子识别器'],
     'sentencizer': ['分句器'],
 
-    # 'Tokenizer' contained in 'Word Tokenizer', 'Syllable Tokenizer', and others
     'Legality syllable tokenizer': ['合法性分音节器'],
     'Sonority sequencing syllable tokenizer': ['响度顺序分音节器'],
     'syllable tokenizer': ['分音节器'],
 
-    # 'Word Tokenizer' contained in 'Word Tokenizer (Split Mode'
-    'word tokenizer (split mode': ['分词器（切分模式'],
+    'word tokenizer (split mode A)': ['分词器（切分模式 A）'],
+    'word tokenizer (split mode B)': ['分词器（切分模式 B）'],
+    'word tokenizer (split mode C)': ['分词器（切分模式 C）'],
     'word tokenizer': ['分词器'],
     'Penn Treebank tokenizer': ['宾州树库分词器'],
     'Twitter tokenizer': ['推特分词器'],
@@ -214,19 +223,19 @@ TRS_NLP_UTILS = {
     'character tokenizer': ['分字器'],
     'kanji tokenizer': ['分字器'],
     'tokenizer': ['分词器'],
-    'Longest matching': ['最长匹配'],
-    'Maximum matching': ['最大匹配'],
 
-    # 'Part-of-speech Tagger' contained in 'Perceptron Part-of-speech Tagger'
     'Perceptron part-of-speech tagger': ['感知机词性标注器'],
     'perceptron part-of-speech tagger': ['感知机词性标注器'],
     'part-of-speech tagger': ['词性标注器'],
     'Morphological analyzer': ['形态分析器'],
 
     'lemmatizer': ['词形还原器'],
-    'stop word list': ['停用词表'],
+
     'Custom stop word list': ['自定义停用词表'],
-    'dependency parser': ['依存分析器']
+    'stop word list': ['停用词表'],
+
+    'dependency parser': ['依存分析器'],
+    'sentiment analyzer': ['情感分析器']
 }
 TRS_MISC = {
     # Lists
@@ -305,21 +314,16 @@ for element_context in soup.select('context'):
 
             # Languages
             for lang, trs in TRS_LANGS.items():
-                if lang in tr:
-                    tr = tr.replace(lang, trs[0])
-
-                    if any((text in tr for text in [
-                        f'(Mac OS {trs[0]})'
-                    ])):
-                        # Excludes cases such as Mac OS Romanian in encodings
-                        tr = tr.replace(f'(Mac OS {trs[0]})', f'(Mac OS {lang})')
-
-                        # Flag translation as unfinished
-                        unfinished = True
+                # Only replace language names at the beginning of the text, after hyphens in names of language utils, or after slashes in encoding names
+                if tr.startswith(lang) or f' - {lang}' in tr or f'/{lang}' in tr:
+                    if tr.startswith(lang):
+                        tr = tr.replace(lang, trs[0], 1)
+                    elif f' - {lang}' in tr:
+                        tr = tr.replace(f' - {lang}', f' - {trs[0]}', 1)
+                    elif f'/{lang}' in tr:
+                        tr = tr.replace(f'/{lang}', f'/{trs[0]}', 1)
 
                     tr_hit = True
-
-                    break
 
             # Encodings
             for encoding, trs in TRS_ENCODINGS.items():
@@ -341,8 +345,12 @@ for element_context in soup.select('context'):
 
             # NLP utils
             for util, trs in TRS_NLP_UTILS.items():
-                if util in tr:
-                    tr = tr.replace(util, trs[0])
+                # Only replace language util names after language names or at the end of text
+                if f' - {util}' in tr or tr.endswith(util):
+                    if f' - {util}' in tr:
+                        tr = tr.replace(f' - {util}', f' - {trs[0]}', 1)
+                    elif tr.endswith(util):
+                        tr = tr.replace(util, trs[0], 1)
 
                     tr_hit = True
 
@@ -357,19 +365,13 @@ for element_context in soup.select('context'):
 
                     break
 
+            # Exceptions
             if any((text in tr for text in [
-                'Serbo-克罗地亚语',
-                'Py泰语NLP',
-                'Automated 阿拉伯语 Readability Index',
-                'This 词性标注器'
+                '语 variant:'
             ])):
-                # Excludes cases such as PyThaiNLP in third-party NLP libraries
-                tr = tr.replace('Py泰语NLP', 'PyThaiNLP')
-                tr = tr.replace('Automated 阿拉伯语 Readability Index', '')
-                tr = tr.replace('Serbo-克罗地亚语', '塞尔维亚-克罗地亚语')
-                tr = tr.replace('* This 词性标注器 does not support custom mapping.', '* 该词性标注器不支持自定义映射。')
+                tr = tr.replace('语 variant:', '语变体：')
 
-                # Flag translation as unfinished
+                # Flag translation as unfinished to be reviewed manually
                 unfinished = True
 
             if tr_hit:

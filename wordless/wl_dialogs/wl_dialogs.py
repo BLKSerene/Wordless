@@ -123,7 +123,7 @@ class Wl_Dialog_Info(Wl_Dialog):
         self.wrapper_buttons.layout().setContentsMargins(11, 0, 11, 11)
 
         if not no_buttons:
-            self.button_ok = QPushButton(self.tr('OK'), self)
+            self.button_ok = QPushButton(_tr('Wl_Dialog_Settings', 'OK'), self)
 
             self.button_ok.clicked.connect(self.accept)
 
@@ -150,8 +150,8 @@ class Wl_Dialog_Info_Copy(Wl_Dialog_Info):
         else:
             self.text_edit_info = QTextEdit(self)
 
-        self.button_copy = QPushButton(self.tr('Copy'), self)
-        self.button_close = QPushButton(self.tr('Close'), self)
+        self.button_copy = QPushButton(_tr('Wl_Dialog_Settings', 'Copy'), self)
+        self.button_close = QPushButton(_tr('Wl_Dialog_Settings', 'Close'), self)
 
         self.text_edit_info.setReadOnly(True)
 
