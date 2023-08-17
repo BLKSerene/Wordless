@@ -786,7 +786,7 @@ def fog_index(main, text):
             if text.lang.startswith('eng_'):
                 if variant_eng in [
                     _tr('wl_measures_readability', 'Original'),
-                    _tr('wl_measures_readability', 'Powers-Sumner-Kearl')
+                    'Powers-Sumner-Kearl'
                 ]:
                     words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
 
@@ -805,7 +805,7 @@ def fog_index(main, text):
                             0.4
                             * (text.num_words / text.num_sentences + num_hard_words / text.num_words * 100)
                         )
-                    elif variant_eng == _tr('wl_measures_readability', 'Powers-Sumner-Kearl'):
+                    elif variant_eng == 'Powers-Sumner-Kearl':
                         fog_index = (
                             3.0680
                             + 0.0877 * (text.num_words / text.num_sentences)

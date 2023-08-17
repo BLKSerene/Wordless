@@ -858,7 +858,7 @@ def init_settings_global():
 
             'sentiment_analyzers': {
                 _tr('init_settings_global', 'Dostoevsky - Russian sentiment analyzer'): 'dostoevsky_rus',
-                _tr('init_settings_global', 'Underthesea - Underthesea sentiment analyzer'): 'underthesea_vie'
+                _tr('init_settings_global', 'Underthesea - Vietnamese sentiment analyzer'): 'underthesea_vie'
             }
         },
 
