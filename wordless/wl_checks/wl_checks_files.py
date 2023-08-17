@@ -81,7 +81,7 @@ def check_file_paths_dup(main, new_file_paths, file_paths = None):
 
 def check_err_file_area(main, err_msg):
     if err_msg:
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
         wl_checks_work_area.wl_status_bar_msg_err_fatal(main)
 
     return not err_msg
