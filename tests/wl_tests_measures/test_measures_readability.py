@@ -585,17 +585,20 @@ def test_lorge_readability_index():
     settings['lorge_readability_index']['use_corrected_formula'] = False
     lorge_eng_12 = wl_measures_readability.lorge_readability_index(main, test_text_eng_12_prep)
     lorge_tha_12 = wl_measures_readability.lorge_readability_index(main, test_text_tha_12)
+    lorge_other_12 = wl_measures_readability.lorge_readability_index(main, test_text_other_12)
 
     print('Lorge Readability Index:')
     print(f'\teng/0: {lorge_eng_0}')
     print(f'\teng/12-corrected: {lorge_eng_12_corrected}')
     print(f'\teng/12: {lorge_eng_12}')
     print(f'\ttha/12: {lorge_tha_12}')
+    print(f'\tother/12: {lorge_other_12}')
 
     assert lorge_eng_0 == 'text_too_short'
     assert lorge_eng_12_corrected == 12 / 3 * 0.06 + 1 / 12 * 0.1 + 2 / 12 * 0.1 + 1.99
     assert lorge_eng_12 == 12 / 3 * 0.07 + 1 / 12 * 13.01 + 2 / 12 * 10.73 + 1.6126
     assert lorge_tha_12 != 'no_support'
+    assert lorge_other_12 == 'no_support'
 
 def test_luong_nguyen_dinhs_readability_formula():
     readability_vie_0 = wl_measures_readability.luong_nguyen_dinhs_readability_formula(main, test_text_vie_0)
