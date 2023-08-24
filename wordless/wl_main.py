@@ -1182,41 +1182,38 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         super().__init__(main, title = _tr('Wl_Dialog_About', 'About Wordless'))
 
         img_wl_icon = QPixmap(wl_paths.get_path_img('wl_icon_about.png'))
-        img_wl_icon = img_wl_icon.scaled(64, 64)
 
         label_about_icon = QLabel('', self)
         label_about_icon.setPixmap(img_wl_icon)
 
-        label_about_title = wl_labels.Wl_Label_Dialog_No_Wrap(
-            self.tr('''
-                <div style="text-align: center;">
-                    <h2>Wordless {}</h2>
-                    <div>
-                        An Integrated Corpus Tool with Multilingual Support<br>
-                        for the Study of Language, Literature, and Translation
-                    </div>
-                </div>
-            ''').format(main.ver),
-            self
-        )
-        label_about_copyright = wl_labels.Wl_Label_Dialog_No_Wrap(
-            self.tr('''
-                <hr>
-                <div style="text-align: center;">
-                    Copyright (C) 2018-2023&nbsp;&nbsp;Ye Lei (叶磊)<br>
-                    Licensed Under GNU GPLv3<br>
-                    All Other Rights Reserved
-                </div>
-            '''),
-            self
-        )
+        label_about_title = wl_labels.Wl_Label_Dialog_No_Wrap(self.tr('''
+            <div style="text-align: center;">
+                <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wordless</h2>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version {}</div>
+            </div>
+        ''').format(main.ver), self)
 
-        self.wrapper_info.layout().addWidget(label_about_icon, 0, 0)
-        self.wrapper_info.layout().addWidget(label_about_title, 0, 1)
-        self.wrapper_info.layout().addWidget(label_about_copyright, 1, 0, 1, 2)
+        label_about_info = wl_labels.Wl_Label_Dialog_No_Wrap(self.tr('''
+            <div style="text-align: center;">
+                An Integrated Corpus Tool with Multilingual Support<br>
+                for the Study of Language, Literature, and Translation
+            </div>
 
-        self.wrapper_info.layout().setColumnStretch(1, 1)
-        self.wrapper_info.layout().setVerticalSpacing(0)
+            <hr>
+
+            <div style="text-align: center;">
+                Copyright (C) 2018-2023&nbsp;&nbsp;Ye Lei (叶磊)<br>
+                Licensed Under GNU GPLv3<br>
+                All Other Rights Reserved
+            </div>
+        '''), self)
+
+        self.wrapper_info.layout().addWidget(label_about_icon, 0, 0, Qt.AlignHCenter)
+        self.wrapper_info.layout().addWidget(label_about_title, 0, 0, 1, 2)
+        self.wrapper_info.layout().addWidget(label_about_info, 1, 0, 1, 2)
+
+        self.wrapper_info.layout().setColumnStretch(0, 9)
+        self.wrapper_info.layout().setColumnStretch(1, 5)
 
 if __name__ == '__main__':
     # UI scaling
