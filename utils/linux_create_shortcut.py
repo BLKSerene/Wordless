@@ -18,6 +18,7 @@
 
 import os
 import subprocess
+import textwrap
 
 import wl_utils
 
@@ -29,7 +30,7 @@ path_desktop = os.path.expanduser('~/.local/share/applications/Wordless.desktop'
 
 # Reference: https://askubuntu.com/a/680699
 with open(path_desktop, 'w', encoding = 'utf_8') as f:
-    f.write(f'''
+    f.write(textwrap.dedent(f'''\
         [Desktop Entry]
         Type=Application
         Name=Wordless
@@ -39,7 +40,7 @@ with open(path_desktop, 'w', encoding = 'utf_8') as f:
         Exec=bash -c "./Wordless.sh; $SHELL"
         Icon={path_icon}
         Terminal=true
-    ''')
+    '''))
 
 # Allow excuting file as program
 subprocess.run(['chmod', '+x', path_desktop], check = True)
