@@ -101,7 +101,9 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 stop_words = spacy_lang.STOP_WORDS
         # stopword
         elif stop_word_list.startswith('stopword_'):
-            if lang == 'por_br':
+            if lang == 'kmr':
+                stop_words = stopword.kur
+            elif lang == 'por_br':
                 stop_words = stopword.porBr
             elif lang == 'pan_guru':
                 stop_words = stopword.panGu

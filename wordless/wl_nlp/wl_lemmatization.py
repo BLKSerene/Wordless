@@ -38,7 +38,8 @@ def wl_lemmatize(main, inputs, lang, lemmatizer = 'default', tagged = False):
         wl_nlp_utils.init_lemmatizers(
             main,
             lang = lang,
-            lemmatizer = lemmatizer
+            lemmatizer = lemmatizer,
+            tokenized = not isinstance(inputs, str)
         )
 
         if isinstance(inputs, str):
@@ -67,7 +68,26 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
             if nlp.has_pipe(pipeline)
         ]):
             for doc in nlp.pipe(inputs.splitlines()):
-                lemmas.extend([token.lemma_ for token in doc])
+                for token in doc:
+                    if token.lemma_:
+                        lemmas.append(token.lemma_)
+                    else:
+                        lemmas.append(token.text)
+    # Stanza
+    elif lemmatizer.startswith('stanza_'):
+        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        nlp = main.__dict__[f'stanza_nlp_{lang}']
+        lines = [line.strip() for line in inputs.splitlines() if line.strip()]
+
+        for doc in nlp.bulk_process(lines):
+            for sentence in doc.sentences:
+                for token in sentence.words:
+                    if token.lemma is not None:
+                        lemmas.append(token.lemma)
+                    else:
+                        lemmas.append(token.text)
     else:
         for line in inputs.splitlines():
             # simplemma
@@ -77,8 +97,7 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
                 if lang in ['hrv', 'srp_latn']:
                     lang = 'hbs'
                 else:
-                    lang = wl_conversion.to_iso_639_1(main, lang)
-                    lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+                    lang = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
                 lemmas.extend([simplemma.lemmatize(token, lang = lang) for token in tokens])
             # English
@@ -157,8 +176,8 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
 
     # spaCy
     if lemmatizer.startswith('spacy_'):
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-        nlp = main.__dict__[f'spacy_nlp_{lang}']
+        lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+        nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
 
         with nlp.select_pipes(disable = [
             pipeline
@@ -176,21 +195,45 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
                     docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens)))
 
             for doc in nlp.pipe(docs):
-                lemma_tokens.extend([token.text for token in doc])
-                lemmas.extend([token.lemma_ for token in doc])
-    else:
-        if lemmatizer.startswith('simplemma_'):
-            if lang in ['hrv', 'srp_latn']:
-                lang = 'hbs'
-            else:
-                lang = wl_conversion.to_iso_639_1(main, lang)
-                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+                for token in doc:
+                    if token.lemma_:
+                        lemmas.append(token.lemma_)
+                    else:
+                        lemmas.append(token.text)
 
+                lemma_tokens.extend([token.text for token in doc])
+    # Stanza
+    elif lemmatizer.startswith('stanza_'):
+        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+            lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+        else:
+            lang_stanza = lang
+
+        nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
+
+        for doc in nlp.bulk_process([
+            [tokens]
+            for tokens in wl_nlp_utils.split_token_list(main, inputs, lemmatizer)
+        ]):
+            for sentence in doc.sentences:
+                for token in sentence.words:
+                    if token.lemma is not None:
+                        lemmas.append(token.lemma)
+                    else:
+                        lemmas.append(token.text)
+
+                lemma_tokens.extend([token.text for token in sentence.words])
+    else:
         for tokens in wl_nlp_utils.split_token_list(main, inputs, lemmatizer):
             # simplemma
             if lemmatizer.startswith('simplemma_'):
+                if lang in ['hrv', 'srp_latn']:
+                    lang_simplemma = 'hbs'
+                else:
+                    lang_simplemma = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
+
                 lemma_tokens.extend(tokens.copy())
-                lemmas.extend([simplemma.lemmatize(token, lang = lang) for token in tokens])
+                lemmas.extend([simplemma.lemmatize(token, lang = lang_simplemma) for token in tokens])
             # English
             elif lemmatizer == 'nltk_wordnet':
                 word_net_lemmatizer = nltk.WordNetLemmatizer()

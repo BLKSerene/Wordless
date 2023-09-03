@@ -86,8 +86,8 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
 
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-        if lang in wl_nlp_utils.SPACY_LANGS and sentence_tokenizer == 'spacy_sentencizer':
-            nlp = main.__dict__[f'spacy_nlp_{lang}_sentencizer']
+        if sentence_tokenizer == 'spacy_sentencizer':
+            nlp = main.__dict__['spacy_nlp_sentencizer']
         else:
             if lang == 'nno':
                 nlp = main.spacy_nlp_nob
@@ -101,6 +101,15 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         ]):
             for doc in nlp.pipe(lines):
                 sentences.extend([sentence.text for sentence in doc.sents])
+    # Stanza
+    elif sentence_tokenizer.startswith('stanza_'):
+        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        nlp = main.__dict__[f'stanza_nlp_{lang}']
+
+        for doc in nlp.bulk_process(lines):
+            sentences.extend([sentence.text for sentence in doc.sentences])
     else:
         for line in lines:
             # NLTK

@@ -128,17 +128,59 @@ def clean_import_caches():
         os.remove(file)
 
 def change_default_tokenizers(main):
-    for lang in [
-        'cat', 'zho_cn', 'zho_tw', 'hrv', 'dan',
-        'nld', 'eng_gb', 'eng_us', 'fin', 'fra',
-        'deu_at', 'deu_de', 'deu_ch', 'ell', 'ita',
-        'jpn', 'kor', 'lit', 'mkd', 'nob',
-        'pol', 'por_br', 'por_pt', 'ron', 'rus',
-        'slv', 'spa', 'swe', 'ukr', 'other'
-    ]:
-        main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang] = 'spacy_sentencizer'
+    settings_custom_sentence_tokenization = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']
+    settings_global_sentence_tokenizers = main.settings_global['sentence_tokenizers']
+    settings_custom_word_tokenization = main.settings_custom['word_tokenization']['word_tokenizer_settings']
+    settings_global_word_tokenizers = main.settings_global['word_tokenizers']
 
-        if lang in ['zho_cn', 'zho_tw']:
-            main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang] = 'pkuseg_zho'
+    for lang in settings_custom_sentence_tokenization:
+        for lang_util in settings_global_sentence_tokenizers[lang]:
+            if lang_util == 'spacy_sentencizer':
+                settings_custom_sentence_tokenization[lang] = lang_util
+
+                break
+
+    for lang in settings_custom_word_tokenization:
+        if 'nltk_nltk' in settings_global_word_tokenizers[lang]:
+            settings_custom_word_tokenization[lang] = 'nltk_nltk'
+        elif 'sacremoses_moses' in settings_global_word_tokenizers[lang]:
+            settings_custom_word_tokenization[lang] = 'sacremoses_moses'
+        elif 'pkuseg_zho' in settings_global_word_tokenizers[lang]:
+            settings_custom_word_tokenization[lang] = 'pkuseg_zho'
+        elif 'sudachipy_jpn_split_mode_a' in settings_global_word_tokenizers[lang]:
+            settings_custom_word_tokenization[lang] = 'sudachipy_jpn_split_mode_a'
         else:
-            main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang] = 'nltk_nltk'
+            for lang_util in settings_global_word_tokenizers[lang]:
+                if lang_util.startswith('spacy_'):
+                    settings_custom_word_tokenization[lang] = lang_util
+
+                    break
+
+def change_default_lang_utils_stanza(main):
+    for settings_custom, settings_global in [
+        (
+            main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
+            main.settings_global['sentence_tokenizers']
+        ), (
+            main.settings_custom['word_tokenization']['word_tokenizer_settings'],
+            main.settings_global['word_tokenizers']
+        ), (
+            main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'],
+            main.settings_global['pos_taggers']
+        ), (
+            main.settings_custom['lemmatization']['lemmatizer_settings'],
+            main.settings_global['lemmatizers']
+        ), (
+            main.settings_custom['dependency_parsing']['dependency_parser_settings'],
+            main.settings_global['dependency_parsers']
+        ), (
+            main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'],
+            main.settings_global['sentiment_analyzers']
+        )
+    ]:
+        for lang in settings_custom:
+            for lang_util in settings_global[lang]:
+                if lang_util.startswith('stanza_'):
+                    settings_custom[lang] = lang_util
+
+                    break

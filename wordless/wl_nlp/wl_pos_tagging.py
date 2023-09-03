@@ -42,26 +42,48 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     wl_nlp_utils.init_pos_taggers(
         main,
         lang = lang,
-        pos_tagger = pos_tagger
+        pos_tagger = pos_tagger,
+        tokenized = not isinstance(inputs, str)
     )
 
     # Untokenized
     if isinstance(inputs, str):
         # spaCy
         if pos_tagger.startswith('spacy_'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-            nlp = main.__dict__[f'spacy_nlp_{lang}']
+            lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+            nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
+            lines = [line.strip() for line in inputs.splitlines() if line.strip()]
 
             with nlp.select_pipes(disable = [
                 pipeline
                 for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
                 if nlp.has_pipe(pipeline)
             ]):
-                for doc in nlp.pipe(inputs.splitlines()):
+                for doc in nlp.pipe(lines):
                     if tagset in ['default', 'raw']:
                         tokens_tagged.extend([(token.text, token.tag_) for token in doc])
                     elif tagset == 'universal':
                         tokens_tagged.extend([(token.text, token.pos_) for token in doc])
+        # Stanza
+        elif pos_tagger.startswith('stanza_'):
+            if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+                lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+            else:
+                lang_stanza = lang
+
+            nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
+            lines = [line.strip() for line in inputs.splitlines() if line.strip()]
+
+            for doc in nlp.bulk_process(lines):
+                for sentence in doc.sentences:
+                    if tagset in ['default', 'raw']:
+                        for token in sentence.words:
+                            if token.xpos is not None:
+                                tokens_tagged.append((token.text, token.xpos))
+                            else:
+                                tokens_tagged.append((token.text, token.upos))
+                    elif tagset == 'universal':
+                        tokens_tagged.extend([(token.text, token.upos) for token in sentence.words])
         else:
             for line in inputs.splitlines():
                 tokens_tagged.extend(wl_pos_tag_text(main, line, lang, pos_tagger))
@@ -78,8 +100,8 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
 
         # spaCy
         if pos_tagger.startswith('spacy_'):
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-            nlp = main.__dict__[f'spacy_nlp_{lang}']
+            lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+            nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
 
             with nlp.select_pipes(disable = [
                 pipeline
@@ -101,6 +123,28 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
                         tokens_tagged.extend([(token.text, token.tag_) for token in doc])
                     elif tagset == 'universal':
                         tokens_tagged.extend([(token.text, token.pos_) for token in doc])
+        # Stanza
+        elif pos_tagger.startswith('stanza_'):
+            if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+                lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+            else:
+                lang_stanza = lang
+
+            nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
+
+            for doc in nlp.bulk_process([
+                [tokens]
+                for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger)
+            ]):
+                for sentence in doc.sentences:
+                    if tagset in ['default', 'raw']:
+                        for token in sentence.words:
+                            if token.xpos is not None:
+                                tokens_tagged.append((token.text, token.xpos))
+                            else:
+                                tokens_tagged.append((token.text, token.upos))
+                    elif tagset == 'universal':
+                        tokens_tagged.extend([(token.text, token.upos) for token in sentence.words])
         else:
             for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger):
                 tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger))
@@ -197,8 +241,8 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
         for empty_offset in sorted(empty_offsets):
             tokens_tagged.insert(empty_offset, ('', ''))
 
-    # Convert to Universal Tagset
-    if not pos_tagger.startswith('spacy_') and tagset == 'universal':
+    # Convert to universal POS tags
+    if not pos_tagger.startswith('spacy_') and not pos_tagger.startswith('stanza_') and tagset == 'universal':
         mappings = {
             tag: tag_universal
             for tag, tag_universal, _, _ in main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]

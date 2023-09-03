@@ -141,7 +141,7 @@ class Wl_Settings_Lemmatization(wl_settings.Wl_Settings_Node):
             if wl_nlp_utils.check_models(
                 self.main,
                 langs = [self.settings_custom['preview']['preview_lang']],
-                lang_utils = [lemmatizer]
+                lang_utils = [[lemmatizer]]
             ):
                 worker_preview_lemmatizer = Wl_Worker_Preview_Lemmatizer(
                     self.main,

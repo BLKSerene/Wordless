@@ -29,7 +29,7 @@ test_sentence_tokenizers = []
 
 for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
     for sentence_tokenizer in sentence_tokenizers:
-        if not sentence_tokenizer.startswith('spacy_'):
+        if not sentence_tokenizer.startswith(('spacy_', 'stanza_')):
             test_sentence_tokenizers.append((lang, sentence_tokenizer))
 
 test_langs = list(dict.fromkeys([lang for lang, _ in test_sentence_tokenizers]))

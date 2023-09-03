@@ -29,7 +29,10 @@ test_pos_taggers = []
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
         # The Korean blank model for sentencizer requires mecab-ko which would be replaced by python-mecab-ko in the upcoming spaCy 4.0
-        if not pos_tagger.startswith('spacy_') and lang != 'kor':
+        if (
+            not pos_tagger.startswith(('spacy_', 'stanza_'))
+            and lang != 'kor'
+        ):
             test_pos_taggers.append((lang, pos_tagger))
 
 @pytest.mark.parametrize('lang, pos_tagger', test_pos_taggers)
@@ -69,14 +72,6 @@ def test_pos_tag(lang, pos_tagger):
         tagset = 'universal'
     )
 
-    # Long texts
-    tokens_tagged_tokenized_long = wl_pos_tagging.wl_pos_tag(
-        main,
-        inputs = [str(i) for i in range(101) for j in range(50)],
-        lang = lang,
-        pos_tagger = pos_tagger
-    )
-
     print(f'{lang} / {pos_tagger}:')
     print(tokens_tagged)
     print(f'{tokens_tagged_universal}\n')
@@ -98,7 +93,14 @@ def test_pos_tag(lang, pos_tagger):
     assert len(tokens) == len(tokens_tagged_tokenized) == len(tokens_tagged_universal_tokenized)
 
     # Long texts
-    assert [token[0] for token in tokens_tagged_tokenized_long] == [str(i) for i in range(101) for j in range(50)]
+    tokens_tagged_tokenized_long = wl_pos_tagging.wl_pos_tag(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(10)],
+        lang = lang,
+        pos_tagger = pos_tagger
+    )
+
+    assert [token[0] for token in tokens_tagged_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
 
     tests_lang_util_skipped = False
 

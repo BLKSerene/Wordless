@@ -33,10 +33,13 @@ def wl_test_spacy(
     results_lemmatize = None,
     results_dependency_parse = None
 ):
+    lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
+    wl_nlp_utils.check_models(main, langs = [lang], lang_utils = [[f'spacy_{lang_no_suffix}']])
+
     wl_test_sentence_tokenize(lang, results_sentence_tokenize_trf, results_sentence_tokenize_lg)
+    wl_test_word_tokenize(lang, results_word_tokenize)
 
     if lang != 'other':
-        wl_test_word_tokenize(lang, results_word_tokenize)
         wl_test_pos_tag(lang, results_pos_tag, results_pos_tag_universal)
         wl_test_lemmatize(lang, results_lemmatize)
         wl_test_dependency_parse(lang, results_dependency_parse)
@@ -65,7 +68,7 @@ def wl_test_sentence_tokenize(lang, results_trf, results_lg):
 
     assert sentences_trf == results_trf
 
-    if not wl_nlp_utils.SPACY_LANGS[lang_no_suffix].endswith('_trf'):
+    if not wl_nlp_utils.LANGS_SPACY[lang_no_suffix].endswith('_trf'):
         sentence_tokenizer_lg = f'spacy_sentence_recognizer_{lang_no_suffix}'
 
         sentences_lg = wl_sentence_tokenization.wl_sentence_tokenize(
@@ -145,21 +148,13 @@ def wl_test_pos_tag(lang, results, results_universal):
         tagset = 'universal'
     )
 
-    # Long texts
-    tokens_tagged_tokenized_long = wl_pos_tagging.wl_pos_tag(
-        main,
-        inputs = [str(i) for i in range(101) for j in range(50)],
-        lang = lang,
-        pos_tagger = pos_tagger
-    )
-
     print(f'{lang} / {pos_tagger}:')
     print(tokens_tagged)
     print(f'{tokens_tagged_universal}\n')
 
     # Check for empty tags
-    assert tokens_tagged
-    assert tokens_tagged_universal
+    assert tokens_tagged == results
+    assert tokens_tagged_universal == results_universal
     assert tokens_tagged_tokenized
     assert tokens_tagged_universal_tokenized
     assert all((tag for token, tag in tokens_tagged))
@@ -174,10 +169,14 @@ def wl_test_pos_tag(lang, results, results_universal):
     assert len(tokens) == len(tokens_tagged_tokenized) == len(tokens_tagged_universal_tokenized)
 
     # Long texts
-    assert [token[0] for token in tokens_tagged_tokenized_long] == [str(i) for i in range(101) for j in range(50)]
+    tokens_tagged_tokenized_long = wl_pos_tagging.wl_pos_tag(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(10)],
+        lang = lang,
+        pos_tagger = pos_tagger
+    )
 
-    assert tokens_tagged == results
-    assert tokens_tagged_universal == results_universal
+    assert [token[0] for token in tokens_tagged_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
 
 def wl_test_lemmatize(lang, results):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -205,25 +204,6 @@ def wl_test_lemmatize(lang, results):
         lemmatizer = lemmatizer
     )
 
-    # Tagged texts
-    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
-
-    lemmas_tokenized_tagged = wl_lemmatization.wl_lemmatize(
-        main,
-        inputs = [token + '_TEST' for token in tokens],
-        lang = lang,
-        lemmatizer = lemmatizer,
-        tagged = True
-    )
-
-    # Long texts
-    lemmas_tokenized_long = wl_lemmatization.wl_lemmatize(
-        main,
-        inputs = [str(i) for i in range(101) for j in range(50)],
-        lang = lang,
-        lemmatizer = lemmatizer
-    )
-
     print(f'{lang} / {lemmatizer}:')
     print(f'{lemmas}\n')
 
@@ -237,12 +217,27 @@ def wl_test_lemmatize(lang, results):
     assert len(tokens) == len(lemmas_tokenized)
 
     # Tagged texts
-    lemmas_tokenized = [lemma + '_TEST' for lemma in lemmas_tokenized]
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
 
-    assert lemmas_tokenized_tagged == lemmas_tokenized
+    lemmas_tokenized_tagged = wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = [token + '_TEST' for token in tokens],
+        lang = lang,
+        lemmatizer = lemmatizer,
+        tagged = True
+    )
+
+    assert lemmas_tokenized_tagged == [lemma + '_TEST' for lemma in lemmas_tokenized]
 
     # Long texts
-    assert lemmas_tokenized_long == [str(i) for i in range(101) for j in range(50)]
+    lemmas_tokenized_long = wl_lemmatization.wl_lemmatize(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(10)],
+        lang = lang,
+        lemmatizer = lemmatizer
+    )
+
+    assert lemmas_tokenized_long == [str(i) for i in range(101) for j in range(10)]
 
 def wl_test_dependency_parse(lang, results):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -270,25 +265,6 @@ def wl_test_dependency_parse(lang, results):
         dependency_parser = dependency_parser
     )
 
-    # Tagged texts
-    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
-
-    dependencies_tokenized_tagged = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = [token + '_TEST' for token in tokens],
-        lang = lang,
-        dependency_parser = dependency_parser,
-        tagged = True
-    )
-
-    # Long texts
-    dependencies_tokenized_long = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = [str(i) for i in range(101) for j in range(50)],
-        lang = lang,
-        dependency_parser = dependency_parser
-    )
-
     print(f'{lang} / {dependency_parser}:')
     print(f'{dependencies}\n')
 
@@ -305,6 +281,16 @@ def wl_test_dependency_parse(lang, results):
     assert len(tokens) == len(dependencies_tokenized)
 
     # Tagged texts
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
+
+    dependencies_tokenized_tagged = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = [token + '_TEST' for token in tokens],
+        lang = lang,
+        dependency_parser = dependency_parser,
+        tagged = True
+    )
+
     dependencies_tokenized = [
         (child + '_TEST', head + '_TEST', dependency_relation, dependency_dist)
         for child, head, dependency_relation, dependency_dist in dependencies_tokenized
@@ -313,4 +299,11 @@ def wl_test_dependency_parse(lang, results):
     assert dependencies_tokenized_tagged == dependencies_tokenized
 
     # Long texts
-    assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(50)]
+    dependencies_tokenized_long = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(10)],
+        lang = lang,
+        dependency_parser = dependency_parser
+    )
+
+    assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(10)]

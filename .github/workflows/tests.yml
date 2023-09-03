@@ -51,14 +51,13 @@ jobs:
       - name: Run Tests and collect coverage
         run: |
           pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
 
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_sentence_tokenization.py
           pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_word_tokenization.py
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_syl_tokenization.py
           pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_pos_tagging.py
           pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_lemmatization.py
 
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
 
           pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_file_area/test_file_area.py
           pytest --cov=./ --cov-report=xml --cov-append --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
@@ -95,14 +94,13 @@ jobs:
       - name: Run Tests
         run: |
           pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+          pytest tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
 
-          pytest tests/wl_tests_nlp/test_sentence_tokenization.py
           pytest tests/wl_tests_nlp/test_word_tokenization.py
-          pytest tests/wl_tests_nlp/test_syl_tokenization.py
           pytest tests/wl_tests_nlp/test_pos_tagging.py
           pytest tests/wl_tests_nlp/test_lemmatization.py
 
-          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
+          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
 
           pytest tests/wl_tests_file_area/test_file_area.py
           pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
@@ -138,14 +136,13 @@ jobs:
           export QT_QPA_PLATFORM=offscreen
 
           pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
+          pytest tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
 
-          pytest tests/wl_tests_nlp/test_sentence_tokenization.py
           pytest tests/wl_tests_nlp/test_word_tokenization.py
-          pytest tests/wl_tests_nlp/test_syl_tokenization.py
           pytest tests/wl_tests_nlp/test_pos_tagging.py
           pytest tests/wl_tests_nlp/test_lemmatization.py
 
-          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/test_sentence_tokenization.py --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
+          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
 
           pytest tests/wl_tests_file_area/test_file_area.py
           pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py

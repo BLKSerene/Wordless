@@ -380,7 +380,7 @@ class Wl_Table_Files(wl_tables.Wl_Table):
     def _open_files(self, files_to_open):
         if wl_nlp_utils.check_models(
             self.main,
-            langs = [file['lang'] for file in files_to_open],
+            langs = set((file['lang'] for file in files_to_open)),
         ):
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(self.main, text = self.tr('Checking files...'))
 

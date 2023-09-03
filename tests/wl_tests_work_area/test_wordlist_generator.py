@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import itertools
 import re
 
 from tests import wl_test_init
@@ -28,10 +29,11 @@ def test_wordlist_generator():
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
 
-    len_measures_dispersion = len(measures_dispersion)
-    len_measures_adjusted_freq = len(measures_adjusted_freq)
-
-    for i in range(max([len_measures_dispersion, len_measures_adjusted_freq])):
+    for i, (measure_dispersion, measure_adjusted_freq) in enumerate(itertools.zip_longest(
+        measures_dispersion,
+        measures_adjusted_freq,
+        fillvalue = 'none'
+    )):
         # Single file
         if i % 2 == 0:
             wl_test_init.select_random_files(main, num_files = 1)
@@ -44,8 +46,8 @@ def test_wordlist_generator():
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
-        main.settings_custom['wordlist_generator']['generation_settings']['measure_dispersion'] = measures_dispersion[i % len_measures_dispersion]
-        main.settings_custom['wordlist_generator']['generation_settings']['measure_adjusted_freq'] = measures_adjusted_freq[i % len_measures_adjusted_freq]
+        main.settings_custom['wordlist_generator']['generation_settings']['measure_dispersion'] = measure_dispersion
+        main.settings_custom['wordlist_generator']['generation_settings']['measure_adjusted_freq'] = measure_adjusted_freq
 
         print(f"Files: {' | '.join(files_selected)}")
         print(f"Measure of dispersion: {main.settings_custom['wordlist_generator']['generation_settings']['measure_dispersion']}")
