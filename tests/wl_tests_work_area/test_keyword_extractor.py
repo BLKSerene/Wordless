@@ -16,6 +16,9 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# pylint: disable=unsupported-assignment-operation
+
+import itertools
 import random
 import re
 
@@ -39,44 +42,41 @@ def test_keyword_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    len_tests_statistical_significance = len(tests_statistical_significance)
-    len_measures_bayes_factor = len(measures_bayes_factor)
-    len_measures_effect_size = len(measures_effect_size)
-    len_max_measures = max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])
-
     files_observed = main.settings_custom['file_area']['files_open']
     files_ref = main.settings_custom['file_area']['files_open_ref']
 
-    i_multi_observed, i_multi_observed_ref = random.sample(range(len_max_measures), 2)
-
-    for i in range(len_max_measures):
+    for i, (test_statistical_significance, measure_bayes_factor, measure_effect_size) in enumerate(itertools.zip_longest(
+        tests_statistical_significance,
+        measures_bayes_factor,
+        measures_effect_size,
+        fillvalue = 'none'
+    )):
         for file in main.settings_custom['file_area']['files_open'] + main.settings_custom['file_area']['files_open_ref']:
             file['selected'] = False
 
-        # Single reference file & multiple observed files
-        if i == i_multi_observed:
-            for file in random.sample(files_observed, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
-
-            random.choice(files_ref)['selected'] = True
-        # Multiple reference files & multiple observed files
-        elif i == i_multi_observed_ref:
-            for file in random.sample(files_observed, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
-
-            for file in random.sample(files_ref, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
-        # Single reference file & single observed file
-        elif i % 2 == 0:
+        # Single observed file & single reference file
+        if i % 10 in [0, 3, 6, 9]:
             random.choice(files_observed)['selected'] = True
             random.choice(files_ref)['selected'] = True
-
-        # Multiple reference files & single observed file
-        elif i % 2 == 1:
+        # Single observed file & multiple reference files
+        elif i % 10 in [1, 4, 7]:
             random.choice(files_observed)['selected'] = True
 
             for file in random.sample(files_ref, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
+                file['selected'] = True
+        # Multiple observed files & single reference file
+        if i % 10 in [2, 5]:
+            for file in random.sample(files_observed, 2):
+                file['selected'] = True
+
+            random.choice(files_ref)['selected'] = True
+        # Multiple observed files & multiple reference files
+        elif i % 10 == 8:
+            for file in random.sample(files_observed, 2):
+                file['selected'] = True
+
+            for file in random.sample(files_ref, 2):
+                file['selected'] = True
 
         file_names_observed = [
             re.search(r'(?<=\)\. ).+?$', file_name).group()
@@ -87,9 +87,9 @@ def test_keyword_extractor():
             for file_name in main.wl_file_area_ref.get_selected_file_names()
         ]
 
-        main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance'] = tests_statistical_significance[i % len_tests_statistical_significance]
-        main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor'] = measures_bayes_factor[i % len_measures_bayes_factor]
-        main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size'] = measures_effect_size[i % len_measures_effect_size]
+        main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance'] = test_statistical_significance
+        main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor'] = measure_bayes_factor
+        main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size'] = measure_effect_size
 
         print(f"Observed files: {' | '.join(file_names_observed)}")
         print(f"Reference files: {' | '.join(file_names_ref)}")

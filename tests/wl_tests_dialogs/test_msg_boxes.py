@@ -24,13 +24,13 @@ from wordless.wl_dialogs import wl_msg_boxes
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_msg_box():
-    wl_msg_boxes.Wl_Msg_Box(main, icon = QMessageBox.Information, title = 'test', text = 'test')
+    wl_msg_boxes.Wl_Msg_Box(main, icon = QMessageBox.Information, title = 'test', text = 'test').open()
 
 def test_wl_msg_box_info():
-    wl_msg_boxes.Wl_Msg_Box_Info(main, title = 'test', text = 'test')
+    wl_msg_boxes.Wl_Msg_Box_Info(main, title = 'test', text = 'test').open()
 
 def test_wl_msg_box_warning():
-    wl_msg_boxes.Wl_Msg_Box_Warning(main, title = 'test', text = 'test')
+    wl_msg_boxes.Wl_Msg_Box_Warning(main, title = 'test', text = 'test').open()
 
 if __name__ == '__main__':
     test_wl_msg_box()

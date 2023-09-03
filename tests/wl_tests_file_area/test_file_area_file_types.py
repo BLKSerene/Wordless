@@ -202,7 +202,8 @@ def update_gui_file_types(err_msg, new_files):
         print(file_text_tgt.tokens_multilevel)
         print(file_text_tgt.tags)
 
-        assert file_text_tgt.lang == 'fra'
+        # Avoid loading the French model
+        assert file_text_tgt.lang == 'eng_gb'
         assert file_text_tgt.tokens_multilevel == [[[['Bonjour', 'tout', 'le', 'monde', '!']]]]
 
 def update_gui_unicode_decode_error(err_msg, new_files):

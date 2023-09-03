@@ -58,6 +58,18 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                 for sentence in doc.sents:
                     tokens_multilevel[-1].append([token.text for token in sentence])
+    # Stanza
+    elif word_tokenizer.startswith('stanza_'):
+        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        nlp = main.__dict__[f'stanza_nlp_{lang}']
+
+        for doc in nlp.bulk_process([line.strip() for line in lines]):
+            tokens_multilevel.append([])
+
+            for sentence in doc.sentences:
+                tokens_multilevel[-1].append([token.text for token in sentence.tokens])
     else:
         for line in lines:
             tokens_multilevel.append([])

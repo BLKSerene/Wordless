@@ -22,7 +22,6 @@ def test_spacy_eng():
     test_spacy.wl_test_spacy(
         lang = 'eng_us',
         results_sentence_tokenize_trf = ['English is a West Germanic language in the Indo-European language family that originated in early medieval England.[3][4][5]', 'It is the most spoken language in the world[6] and the third most spoken native language in the world, after Standard Chinese and Spanish.[7]', 'Today, English is the primary language of the Anglosphere, which is usually defined as the United States, the United Kingdom, Canada, Australia, and New Zealand.', 'English is also the primary language of the Republic of Ireland, although it is not typically included within the Anglosphere.'],
-        results_sentence_tokenize_lg = [],
         results_word_tokenize = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England.[3][4][5', ']'],
         results_pos_tag = [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'JJ'), ('Germanic', 'JJ'), ('language', 'NN'), ('in', 'IN'), ('the', 'DT'), ('Indo', 'JJ'), ('-', 'JJ'), ('European', 'JJ'), ('language', 'NN'), ('family', 'NN'), ('that', 'WDT'), ('originated', 'VBD'), ('in', 'IN'), ('early', 'JJ'), ('medieval', 'JJ'), ('England.[3][4][5', 'CD'), (']', '-RRB-')],
         results_pos_tag_universal = [('English', 'PROPN'), ('is', 'AUX'), ('a', 'DET'), ('West', 'ADJ'), ('Germanic', 'ADJ'), ('language', 'NOUN'), ('in', 'ADP'), ('the', 'DET'), ('Indo', 'ADJ'), ('-', 'ADJ'), ('European', 'ADJ'), ('language', 'NOUN'), ('family', 'NOUN'), ('that', 'PRON'), ('originated', 'VERB'), ('in', 'ADP'), ('early', 'ADJ'), ('medieval', 'ADJ'), ('England.[3][4][5', 'NUM'), (']', 'PUNCT')],
@@ -34,7 +33,8 @@ def test_spacy_other():
     test_spacy.wl_test_spacy(
         lang = 'other',
         results_sentence_tokenize_trf = ['English is a West Germanic language in the Indo-European language family that originated in early medieval England.[3][4][5] It is the most spoken language in the world[6] and the third most spoken native language in the world, after Standard Chinese and Spanish.[7] Today, English is the primary language of the Anglosphere, which is usually defined as the United States, the United Kingdom, Canada, Australia, and New Zealand.', 'English is also the primary language of the Republic of Ireland, although it is not typically included within the Anglosphere.'],
-        )
+        results_word_tokenize = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England.[3][4][5', ']']
+    )
 
 if __name__ == '__main__':
     test_spacy_eng()

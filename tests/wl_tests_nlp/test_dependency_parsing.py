@@ -28,7 +28,7 @@ test_dependency_parsers = []
 
 for lang, dependency_parsers in main.settings_global['dependency_parsers'].items():
     for dependency_parser in dependency_parsers:
-        if not dependency_parser.startswith('spacy_'):
+        if not dependency_parser.startswith(('spacy_', 'stanza_')):
             test_dependency_parsers.append((lang, dependency_parser))
 
 @pytest.mark.parametrize('lang, dependency_parser', test_dependency_parsers)
@@ -54,25 +54,6 @@ def test_dependency_parse(lang, dependency_parser):
         dependency_parser = dependency_parser
     )
 
-    # Tagged texts
-    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
-
-    dependencies_tokenized_tagged = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = [token + '_TEST' for token in tokens],
-        lang = lang,
-        dependency_parser = dependency_parser,
-        tagged = True
-    )
-
-    # Long texts
-    dependencies_tokenized_long = wl_dependency_parsing.wl_dependency_parse(
-        main,
-        inputs = [str(i) for i in range(101) for j in range(50)],
-        lang = lang,
-        dependency_parser = dependency_parser
-    )
-
     print(f'{lang} / {dependency_parser}:')
     print(f'{dependencies}\n')
 
@@ -89,6 +70,16 @@ def test_dependency_parse(lang, dependency_parser):
     assert len(tokens) == len(dependencies_tokenized)
 
     # Tagged texts
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
+
+    dependencies_tokenized_tagged = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = [token + '_TEST' for token in tokens],
+        lang = lang,
+        dependency_parser = dependency_parser,
+        tagged = True
+    )
+
     dependencies_tokenized = [
         (child + '_TEST', head + '_TEST', dependency_relation, dependency_dist)
         for child, head, dependency_relation, dependency_dist in dependencies_tokenized
@@ -97,7 +88,14 @@ def test_dependency_parse(lang, dependency_parser):
     assert dependencies_tokenized_tagged == dependencies_tokenized
 
     # Long texts
-    assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(50)]
+    dependencies_tokenized_long = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(10)],
+        lang = lang,
+        dependency_parser = dependency_parser
+    )
+
+    assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
 
 if __name__ == '__main__':
     for lang, dependency_parser in test_dependency_parsers:

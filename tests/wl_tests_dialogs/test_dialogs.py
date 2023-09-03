@@ -22,19 +22,19 @@ from wordless.wl_dialogs import wl_dialogs
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_dialog():
-    wl_dialogs.Wl_Dialog(main, title = 'test')
+    wl_dialogs.Wl_Dialog(main, title = 'test').open()
 
 def test_wl_dialog_frameless():
-    wl_dialogs.Wl_Dialog_Frameless(main)
+    wl_dialogs.Wl_Dialog_Frameless(main).open()
 
 def test_wl_dialog_info():
-    wl_dialogs.Wl_Dialog_Info(main, title = 'test')
+    wl_dialogs.Wl_Dialog_Info(main, title = 'test').open()
 
 def test_wl_dialog_info_copy():
-    wl_dialogs.Wl_Dialog_Info_Copy(main, title = 'test')
+    wl_dialogs.Wl_Dialog_Info_Copy(main, title = 'test').open()
 
 def test_wl_dialog_settings():
-    wl_dialogs.Wl_Dialog_Settings(main, title = 'test')
+    wl_dialogs.Wl_Dialog_Settings(main, title = 'test').open()
 
 if __name__ == '__main__':
     test_wl_dialog()

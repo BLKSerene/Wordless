@@ -28,6 +28,7 @@ pythainlp
 python-mecab-ko
 sacremoses
 simplemma
+stanza
 underthesea
 
 ## pymorphy3

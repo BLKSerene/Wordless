@@ -141,7 +141,7 @@ class Wl_Settings_Sentence_Tokenization(wl_settings.Wl_Settings_Node):
             if wl_nlp_utils.check_models(
                 self.main,
                 langs = [self.settings_custom['preview']['preview_lang']],
-                lang_utils = [sentence_tokenizer]
+                lang_utils = [[sentence_tokenizer]]
             ):
                 worker_preview_sentence_tokenizer = Wl_Worker_Preview_Sentence_Tokenizer(
                     self.main,
