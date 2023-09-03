@@ -24,7 +24,6 @@ def test_spacy_fra():
     test_spacy.wl_test_spacy(
         lang = 'fra',
         results_sentence_tokenize_trf = ['Le français est une langue indo-européenne de la famille des langues romanes dont les locuteurs sont appelés francophones.', 'Elle est parfois surnommée la langue de Molière.'],
-        results_sentence_tokenize_lg = [],
         results_word_tokenize = ['Le', 'français', 'est', 'une', 'langue', 'indo-européenne', 'de', 'la', 'famille', 'des', 'langues', 'romanes', 'dont', 'les', 'locuteurs', 'sont', 'appelés', 'francophones', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,

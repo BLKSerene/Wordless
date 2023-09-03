@@ -49,7 +49,7 @@ def test_word_detokenize(lang):
     elif lang in ['eng_us', 'other']:
         assert text == 'English is a West Germanic language in the Indo-European language family that originated in early medieval England. [3] [4] [5]'
     elif lang == 'jpn':
-        assert text == '日本語（にほんご、にっぽんご[注釈2]、英語: Japaneselanguage）は、日本国内や、かつての日本領だった国、そして国外移民や移住者を含む日本人同士の間で使用されている言語。'
+        assert text == '日本語（にほんご、にっぽんご[注釈2]、英語: Japanese language ）は、日本国内や、かつての日本領だった国、そして国外移民や移住者を含む日本人同士の間で使用されている言語。'
     elif lang == 'tha':
         assert text == 'ภาษาไทยหรือภาษาไทยกลางเป็นภาษาในกลุ่มภาษาไทซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า - ไทและเป็นภาษาราชการและภาษาประจำชาติของประเทศไทย [ 3 ][ 4 ]'
     elif lang == 'bod':

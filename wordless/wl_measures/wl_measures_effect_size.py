@@ -166,7 +166,7 @@ def odds_ratio(main, c11, c12, c21, c22):
         return float('-inf')
     elif c11 > 0 and c12 == 0:
         return float('inf')
-    elif c11 == 0 and c12 == 0:
+    elif c12 == 0 or c21 == 0:
         return 0
     else:
         return (c11 * c22) / (c12 * c21)

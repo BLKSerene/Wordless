@@ -94,7 +94,7 @@ NLP_UTILS = {
     'dependency_parsers': _tr('wl_checks_work_area', 'Dependency parsing')
 }
 
-def check_nlp_support(main, nlp_utils, files = None, ref = False):
+def check_nlp_support(main, nlp_utils, files = None, ref = False, test = False):
     support_ok = True
     nlp_utils_no_support = []
 
@@ -147,7 +147,11 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False):
             )
 
         dialog_err_files.table_err_files.enable_updates()
-        dialog_err_files.exec_()
+
+        if test:
+            dialog_err_files.open()
+        else:
+            dialog_err_files.exec_()
 
         wl_status_bar_msg_lang_support_unavailable(main)
 
@@ -155,13 +159,17 @@ def check_nlp_support(main, nlp_utils, files = None, ref = False):
 
     return support_ok
 
-def check_results(main, err_msg, results):
+def check_results(main, err_msg, results, test = False):
     results_ok = True
 
     if err_msg:
         results_ok = False
 
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
+        if test:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        else:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
+
         wl_status_bar_msg_err_fatal(main)
     elif not any(results):
         results_ok = False
@@ -171,11 +179,12 @@ def check_results(main, err_msg, results):
 
     return results_ok
 
-def check_results_download_model(main, model_name, err_msg):
+def check_results_download_model(main, err_msg, model_name = '', test = False):
     results_ok = True
 
     try:
-        importlib.import_module(model_name)
+        if model_name:
+            importlib.import_module(model_name)
 
         wl_status_bar_msg_success_download_model(main)
     except ModuleNotFoundError:
@@ -185,21 +194,34 @@ def check_results_download_model(main, model_name, err_msg):
         if not err_msg:
             err_msg = traceback.format_exc()
 
-        wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).exec_()
+    if err_msg:
+        if test:
+            wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).open()
+        else:
+            wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg).exec_()
+
         wl_status_bar_msg_err_download_model(main)
 
     return results_ok
 
-def check_err_table(main, err_msg):
+def check_err_table(main, err_msg, test = False):
     if err_msg:
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
+        if test:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        else:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
+
         wl_status_bar_msg_err_fatal(main)
     else:
         wl_status_bar_msg_success_generate_table(main)
 
-def check_err_fig(main, err_msg):
+def check_err_fig(main, err_msg, test = False):
     if err_msg:
-        wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
+        if test:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).open()
+        else:
+            wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg).exec_()
+
         wl_status_bar_msg_err_fatal(main)
     else:
         wl_status_bar_msg_success_generate_fig(main)

@@ -20,6 +20,7 @@ import subprocess
 
 import nltk
 import spacy
+import stanza
 
 import wl_trs_utils
 
@@ -52,5 +53,6 @@ nltk.download('punkt')
 # Misc
 nltk.download('perluniprops')
 
-# Download spaCy models
+# Download models
 spacy.cli.download('en_core_web_trf')
+stanza.download('en', processors = ['tokenize', 'pos', 'lemma', 'depparse', 'sentiment'])

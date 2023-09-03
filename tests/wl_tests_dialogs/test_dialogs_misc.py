@@ -22,22 +22,22 @@ from wordless.wl_dialogs import wl_dialogs_misc
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_dialog_progress():
-    wl_dialogs_misc.Wl_Dialog_Progress(main, text = 'test')
+    wl_dialogs_misc.Wl_Dialog_Progress(main, text = 'test').open()
 
 def test_wl_dialog_progress_process_data():
-    wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main)
+    wl_dialogs_misc.Wl_Dialog_Progress_Process_Data(main).open()
 
 def test_wl_dialog_progress_download_model():
-    wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main)
+    wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main).open()
 
 def test_wl_dialog_clr_table():
-    wl_dialogs_misc.Wl_Dialog_Clr_Table(main)
+    wl_dialogs_misc.Wl_Dialog_Clr_Table(main).open()
 
 def test_wl_dialog_clr_all_tables():
-    wl_dialogs_misc.Wl_Dialog_Clr_All_Tables(main)
+    wl_dialogs_misc.Wl_Dialog_Clr_All_Tables(main).open()
 
 def test_wl_dialog_restart_required():
-    wl_dialogs_misc.Wl_Dialog_Restart_Required(main)
+    wl_dialogs_misc.Wl_Dialog_Restart_Required(main).open()
 
 if __name__ == '__main__':
     test_wl_dialog_progress()

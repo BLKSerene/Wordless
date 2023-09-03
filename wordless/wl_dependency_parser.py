@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_nlp_utils, wl_token_preprocessing
+from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_token_preprocessing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -427,13 +427,15 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                 sentence = tuple(self.model().item(row, 5).text_display)
 
                 if sentence not in sentences_rendered:
-                    file_selected = self.main.wl_file_area.find_file_by_name(self.model().item(row, 8).text(), selected_only = True)
+                    for file in self.settings['file_area']['files_open']:
+                        if file['name'] == self.model().item(row, 8).text():
+                            file_selected = file
 
                     htmls.extend(wl_dependency_parsing.wl_dependency_parse_fig(
                         self.main,
                         inputs = sentence,
                         lang = file_selected['lang'],
-                        tagged = file_selected['text'].lang,
+                        tagged = file_selected['tagged'],
                         show_pos_tags = fig_settings['show_pos_tags'],
                         show_fine_grained_pos_tags = fig_settings['show_fine_grained_pos_tags'],
                         show_lemmas = fig_settings['show_pos_tags'] and fig_settings['show_lemmas'],
@@ -533,7 +535,6 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                         offset_end = offsets_sentences[no_sentence]
 
                                     sentence_display = text.tokens_flat_punc_marks_merged[offsets_sentences[no_sentence - 1]:offset_end]
-                                    sentence_display = wl_nlp_utils.escape_tokens(sentence_display)
                                     sentence_search = sentence
 
                                     # Head

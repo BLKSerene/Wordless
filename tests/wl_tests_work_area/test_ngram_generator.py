@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import itertools
 import re
 
 from tests import wl_test_init
@@ -31,16 +32,16 @@ def test_ngram_generator():
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
 
-    len_measures_dispersion = len(measures_dispersion)
-    len_measures_adjusted_freq = len(measures_adjusted_freq)
-    len_max_measures = max([len_measures_dispersion, len_measures_adjusted_freq])
-
-    for i in range(len_max_measures):
+    for i, (measure_dispersion, measure_adjusted_freq) in enumerate(itertools.zip_longest(
+        measures_dispersion,
+        measures_adjusted_freq,
+        fillvalue = 'none'
+    )):
         # Single file
-        if i % 2 == 0:
+        if i % 3 in [0, 2]:
             wl_test_init.select_random_files(main, num_files = 1)
         # Multiple files
-        elif i % 2 == 1:
+        elif i % 3 == 1:
             wl_test_init.select_random_files(main, num_files = 2)
 
         files_selected = [
@@ -48,8 +49,8 @@ def test_ngram_generator():
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
-        main.settings_custom['ngram_generator']['generation_settings']['measure_dispersion'] = measures_dispersion[i % len_measures_dispersion]
-        main.settings_custom['ngram_generator']['generation_settings']['measure_adjusted_freq'] = measures_adjusted_freq[i % len_measures_adjusted_freq]
+        main.settings_custom['ngram_generator']['generation_settings']['measure_dispersion'] = measure_dispersion
+        main.settings_custom['ngram_generator']['generation_settings']['measure_adjusted_freq'] = measure_adjusted_freq
 
         print(f"Files: {' | '.join(files_selected)}")
         print(f"Measure of dispersion: {main.settings_custom['ngram_generator']['generation_settings']['measure_dispersion']}")

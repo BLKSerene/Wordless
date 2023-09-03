@@ -37,7 +37,7 @@ def _to_lang_text(main, lang_code):
         if lang_code_639_3 == lang_code:
             return lang_text
 
-    return None
+    return ''
 
 def to_lang_text(main, lang_code):
     return _to_lang_text(main, lang_code)
@@ -57,22 +57,25 @@ def to_iso_639_3(main, lang_code):
         if lang_code_639_1.startswith(f'{lang_code}_'):
             return lang_code_639_3
 
-    return None
+    return ''
 
-def to_iso_639_1(main, lang_code):
+def to_iso_639_1(main, lang_code, no_suffix = False):
     lang_code = normalize_lang_code(lang_code)
 
     # Fuzzy matching without code suffixes
     if '_' in lang_code:
         for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
             if lang_code_639_3 == lang_code:
-                return lang_code_639_1
+                lang_code_converted = lang_code_639_1
     else:
         for lang_code_639_3, lang_code_639_1, _ in main.settings_global['langs'].values():
             if remove_lang_code_suffixes(main, lang_code_639_3) == remove_lang_code_suffixes(main, lang_code):
-                return lang_code_639_1
+                lang_code_converted = lang_code_639_1
 
-    return None
+    if no_suffix:
+        return remove_lang_code_suffixes(main, lang_code_converted)
+    else:
+        return lang_code_converted
 
 def remove_lang_code_suffixes(main, lang_code): # pylint: disable=unused-argument
     lang_code = normalize_lang_code(lang_code)
@@ -89,7 +92,7 @@ def get_lang_family(main, lang_code):
         if lang_code_639_3 == lang_code:
             return lang_family
 
-    return None
+    return ''
 
 # Encodings
 def to_encoding_code(main, encoding_text):
@@ -100,7 +103,7 @@ def to_encoding_text(main, encoding_code):
         if encoding_code == code:
             return text
 
-    return None
+    return ''
 
 # Yes/No
 def to_yes_no_code(yes_no_text):

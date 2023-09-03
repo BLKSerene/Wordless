@@ -22,6 +22,7 @@ import os
 import platform
 import time
 import traceback
+import urllib
 
 import numpy
 import packaging.version
@@ -181,23 +182,29 @@ def normalize_nums(nums, normalized_min, normalized_max, reverse = False):
 
 REQUESTS_TIMEOUT = 10
 
-def wl_download(main, url):
+def wl_get_proxies(main):
     proxy_settings = main.settings_custom['general']['proxy_settings']
+
+    if proxy_settings['use_proxy']:
+        if proxy_settings['username']:
+            proxy_username = urllib.parse.quote(proxy_settings['username'])
+            proxy_password = urllib.parse.quote(proxy_settings['password'])
+
+            proxy = f"http://{proxy_username}:{proxy_password}@{proxy_settings['address']}:{proxy_settings['port']}"
+        else:
+            proxy = f"http://{proxy_settings['address']}:{proxy_settings['port']}"
+
+        proxies = {'http': proxy, 'https': proxy}
+    else:
+        proxies = None
+
+    return proxies
+
+def wl_download(main, url):
     err_msg = ''
 
     try:
-        if proxy_settings['use_proxy']:
-            r = requests.get(
-                url,
-                timeout = REQUESTS_TIMEOUT,
-                proxies = {
-                    'http': f"http://{proxy_settings['address']}:{proxy_settings['port']}",
-                    'https': f"http://{proxy_settings['address']}:{proxy_settings['port']}"
-                },
-                auth = (proxy_settings['username'], proxy_settings['password'])
-            )
-        else:
-            r = requests.get(url, timeout = REQUESTS_TIMEOUT)
+        r = requests.get(url, timeout = REQUESTS_TIMEOUT, proxies = wl_get_proxies(main))
 
         if r.status_code != 200:
             err_msg = 'A network error occurred!'
@@ -208,23 +215,10 @@ def wl_download(main, url):
     return r, err_msg
 
 def wl_download_file_size(main, url):
-    proxy_settings = main.settings_custom['general']['proxy_settings']
     file_size = 0
 
     try:
-        if proxy_settings['use_proxy']:
-            r = requests.get(
-                url,
-                timeout = REQUESTS_TIMEOUT,
-                stream = True,
-                proxies = {
-                    'http': f"http://{proxy_settings['address']}:{proxy_settings['port']}",
-                    'https': f"http://{proxy_settings['address']}:{proxy_settings['port']}"
-                },
-                auth = (proxy_settings['username'], proxy_settings['password'])
-            )
-        else:
-            r = requests.get(url, timeout = REQUESTS_TIMEOUT, stream = True)
+        r = requests.get(url, timeout = REQUESTS_TIMEOUT, stream = True, proxies = wl_get_proxies(main))
 
         if r.status_code == 200:
             file_size = int(r.headers['content-length'])

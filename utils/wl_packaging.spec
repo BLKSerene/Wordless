@@ -93,6 +93,9 @@ datas.extend([
     (pythainlp.tools.get_pythainlp_data_path(), 'pythainlp-data'),
     # spaCy-pkuseg
     (spacy_pkuseg.config.pkuseg_home, '.pkuseg'),
+    # Stanza
+    (f'{stanza.resources.common.DEFAULT_MODEL_DIR}/resources.json', 'stanza_resources/resources.json'),
+    (f'{stanza.resources.common.DEFAULT_MODEL_DIR}/en', 'stanza_resources/en'),
     # Underthesea
     (underthesea.file_utils.UNDERTHESEA_FOLDER, '.underthesea'),
 

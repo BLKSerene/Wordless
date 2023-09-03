@@ -137,7 +137,7 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
             if wl_nlp_utils.check_models(
                 self.main,
                 langs = [self.settings_custom['preview']['preview_lang']],
-                lang_utils = [sentiment_analyzer]
+                lang_utils = [[sentiment_analyzer]]
             ):
                 worker_preview_sentiment_analyzer = Wl_Worker_Preview_Sentiment_Analyzer(
                     self.main,

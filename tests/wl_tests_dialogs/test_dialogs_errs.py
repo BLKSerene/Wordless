@@ -22,19 +22,19 @@ from wordless.wl_dialogs import wl_dialogs_errs
 main = wl_test_init.Wl_Test_Main()
 
 def test_wl_dialog_err():
-    wl_dialogs_errs.Wl_Dialog_Err(main, title = 'test')
+    wl_dialogs_errs.Wl_Dialog_Err(main, title = 'test').open()
 
 def test_wl_dialog_err_info_copy():
-    wl_dialogs_errs.Wl_Dialog_Err_Info_Copy(main, title = 'test')
+    wl_dialogs_errs.Wl_Dialog_Err_Info_Copy(main, title = 'test').open()
 
 def test_wl_dialog_err_fatal():
-    wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg = 'test')
+    wl_dialogs_errs.Wl_Dialog_Err_Fatal(main, err_msg = 'test').open()
 
 def test_wl_dialog_err_download_model():
-    wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg = 'test')
+    wl_dialogs_errs.Wl_Dialog_Err_Download_Model(main, err_msg = 'test').open()
 
 def test_wl_dialog_err_files():
-    wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = 'test')
+    wl_dialogs_errs.Wl_Dialog_Err_Files(main, title = 'test').open()
 
 if __name__ == '__main__':
     test_wl_dialog_err()

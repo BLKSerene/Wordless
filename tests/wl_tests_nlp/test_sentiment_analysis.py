@@ -20,6 +20,7 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_sentiment_analysis, wl_word_tokenization
+from wordless.wl_utils import wl_misc
 
 main = wl_test_init.Wl_Test_Main()
 wl_test_init.change_default_tokenizers(main)
@@ -28,8 +29,14 @@ test_sentiment_analyzers = []
 
 for lang, sentiment_analyzers in main.settings_global['sentiment_analyzers'].items():
     for sentiment_analyzer in sentiment_analyzers:
-        test_sentiment_analyzers.append((lang, sentiment_analyzer))
+        if (
+            not sentiment_analyzer.startswith('stanza_')
+        ):
+            test_sentiment_analyzers.append((lang, sentiment_analyzer))
 
+is_windows, _, _ = wl_misc.check_os()
+
+@pytest.mark.xfail(is_windows, reason = 'https://github.com/undertheseanlp/underthesea/issues/704')
 @pytest.mark.parametrize('lang, sentiment_analyzer', test_sentiment_analyzers)
 def test_sentiment_analyze(lang, sentiment_analyzer):
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
@@ -55,17 +62,6 @@ def test_sentiment_analyze(lang, sentiment_analyzer):
         sentiment_analyzer = sentiment_analyzer
     )
 
-    # Tagged texts
-    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
-
-    sentiment_scores_tokenized_tagged = wl_sentiment_analysis.wl_sentiment_analyze(
-        main,
-        inputs = [[token + '_TEST' for token in tokens]],
-        lang = lang,
-        sentiment_analyzer = sentiment_analyzer,
-        tagged = True
-    )
-
     print(f'{lang} / {sentiment_analyzer}:')
     print(f'{sentiment_scores}\n')
 
@@ -77,6 +73,16 @@ def test_sentiment_analyze(lang, sentiment_analyzer):
         assert -1 <= sentiment_score <= 1
 
     # Tagged texts
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
+
+    sentiment_scores_tokenized_tagged = wl_sentiment_analysis.wl_sentiment_analyze(
+        main,
+        inputs = [[token + '_TEST' for token in tokens]],
+        lang = lang,
+        sentiment_analyzer = sentiment_analyzer,
+        tagged = True
+    )
+
     assert sentiment_scores_tokenized_tagged == sentiment_scores_tokenized
 
 if __name__ == '__main__':

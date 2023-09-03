@@ -38,6 +38,7 @@ import pyphen
 import sacremoses
 import spacy
 import spacy_pkuseg
+import stanza
 import sudachipy
 
 from wordless.wl_checks import wl_checks_work_area
@@ -69,7 +70,7 @@ def to_lang_util_texts(main, util_type, util_codes):
         for util_code in util_codes
     )
 
-SPACY_LANGS = {
+LANGS_SPACY = {
     'cat': 'ca_core_news_trf',
     'zho': 'zh_core_web_trf',
     'hrv': 'hr_core_news_lg',
@@ -97,18 +98,54 @@ SPACY_LANGS = {
 
     'other': 'en_core_web_trf'
 }
-SPACY_LANGS_LEMMATIZERS = ['ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl', 'tur', 'urd']
+LANGS_SPACY_LEMMATIZERS = [
+    'ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl',
+    'tur', 'urd'
+]
+
+LANGS_STANZA_TOKENIZERS = [
+    'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'mya', 'bxr', 'cat',
+    'lzh', 'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng',
+    'myv', 'est', 'fao', 'fin', 'fra', 'fro', 'glg', 'deu', 'got', 'grc',
+    'ell', 'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz',
+    'kor', 'kmr', 'lat', 'lav', 'lij', 'lit', 'mlt', 'mar', 'pcm', 'nob',
+    'nno', 'fas', 'pol', 'por', 'ron', 'rus', 'orv', 'sme', 'san', 'gla',
+    'srp_latn', 'snd', 'slk', 'slv', 'hsb', 'spa', 'swe', 'swl', 'tam', 'tel',
+    'tha', 'tur', 'ukr', 'urd', 'uig', 'vie', 'cym', 'wol', 'other'
+]
+LANGS_STANZA_POS_TAGGERS = [
+    'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
+    'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng', 'myv',
+    'est', 'fao', 'fin', 'fra', 'fro', 'glg', 'deu', 'got', 'grc', 'ell',
+    'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz', 'kor',
+    'kmr', 'lat', 'lav', 'lij', 'lit', 'mlt', 'mar', 'pcm', 'nob', 'nno',
+    'fas', 'pol', 'por', 'ron', 'rus', 'orv', 'sme', 'san', 'gla', 'srp_latn',
+    'slk', 'slv', 'hsb', 'spa', 'swe', 'swl', 'tam', 'tel', 'tur', 'ukr',
+    'urd', 'uig', 'vie', 'cym', 'wol'
+]
+LANGS_STANZA_LEMMATIZERS = [
+    'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
+    'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng', 'myv',
+    'est', 'fin', 'fra', 'glg', 'deu', 'got', 'grc', 'ell', 'heb', 'hin',
+    'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz', 'kor', 'kmr', 'lat',
+    'lav', 'lij', 'lit', 'mar', 'pcm', 'nob', 'nno', 'fas', 'pol', 'por',
+    'ron', 'rus', 'orv', 'sme', 'san', 'gla', 'srp_latn', 'slk', 'slv', 'hsb',
+    'spa', 'swe', 'tam', 'tur', 'ukr', 'urd', 'uig', 'cym', 'wol'
+]
+LANGS_STANZA_DEPENDENCY_PARSERS = LANGS_STANZA_POS_TAGGERS
+LANGS_STANZA_SENTIMENT_ANALYZERS = ['zho_cn', 'eng', 'deu', 'mar', 'spa', 'vie']
 
 def check_models(main, langs, lang_utils = None):
     models_ok = True
+    langs = list(langs)
 
     # Check all language utilities if language utility is not specified
     if lang_utils is None:
-        langs_to_check = langs.copy()
-        langs = []
         lang_utils = []
 
-        for lang in langs_to_check:
+        for lang in langs:
+            lang_utils.append([])
+
             for settings in [
                 main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
                 main.settings_custom['word_tokenization']['word_tokenizer_settings'],
@@ -118,25 +155,31 @@ def check_models(main, langs, lang_utils = None):
                 main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']
             ]:
                 if lang in settings:
-                    langs.append(lang)
-                    lang_utils.append(settings[lang])
+                    lang_utils[-1].append(settings[lang])
 
-    for lang, lang_util in zip(langs, lang_utils):
-        if lang == 'nno':
-            lang = 'nob'
-        else:
-            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+    for lang, utils in zip(langs, lang_utils):
+        if any((util.startswith('spacy_') for util in utils)):
+            if lang == 'nno':
+                lang = 'nob'
+            else:
+                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        elif any((util.startswith('stanza_') for util in utils)):
+            if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-        if lang_util.startswith('spacy_') and lang in SPACY_LANGS:
-            model_name = SPACY_LANGS[lang]
+        if (
+            any((util.startswith('spacy_') for util in utils))
+            and lang in LANGS_SPACY
+        ):
+            model_name = LANGS_SPACY[lang]
 
             try:
                 importlib.import_module(model_name)
             except ModuleNotFoundError:
-                worker_download_model = Wl_Worker_Download_Spacy_Model(
+                worker_download_model = Wl_Worker_Download_Model_Spacy(
                     main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
-                    update_gui = lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(main, model_name, err_msg),
+                    update_gui = lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(main, err_msg, model_name),
                     model_name = model_name
                 )
 
@@ -146,16 +189,28 @@ def check_models(main, langs, lang_utils = None):
                     importlib.import_module(model_name)
                 except ModuleNotFoundError:
                     models_ok = False
+        elif (
+            any((util.startswith('stanza_') for util in utils))
+            and lang in LANGS_STANZA_TOKENIZERS
+        ):
+            worker_download_model = Wl_Worker_Download_Model_Stanza(
+                main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
+                update_gui = lambda err_msg: wl_checks_work_area.check_results_download_model(main, err_msg),
+                lang = lang
+            )
+
+            wl_threading.Wl_Thread(worker_download_model).start_worker()
 
         if not models_ok:
             break
 
     return models_ok
 
-class Wl_Worker_Download_Spacy_Model(wl_threading.Wl_Worker):
+class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
     worker_done = wl_threading.wl_pyqt_signal(str)
 
-    def __init__(self, main, dialog_progress, update_gui, model_name): # pylint: disable=unused-argument
+    def __init__(self, main, dialog_progress, update_gui, model_name):
         super().__init__(main, dialog_progress, update_gui, model_name = model_name)
 
         self.err_msg = ''
@@ -203,45 +258,140 @@ class Wl_Worker_Download_Spacy_Model(wl_threading.Wl_Worker):
         self.progress_updated.emit(self.tr('Download completed successfully.'))
         self.worker_done.emit(self.err_msg)
 
-def init_spacy_models(main, lang, sentencizer_only = False):
+class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
+    worker_done = wl_threading.wl_pyqt_signal(str)
+
+    def __init__(self, main, dialog_progress, update_gui, lang):
+        super().__init__(main, dialog_progress, update_gui, lang = lang)
+
+        self.err_msg = ''
+
+    def run(self):
+        try:
+            self.progress_updated.emit(self.tr('Downloading model...'))
+
+            # Change the directory for Stanza's downloaded models when the application is frozen
+            if getattr(sys, '_MEIPASS', False):
+                model_dir = './stanza_resources'
+            else:
+                model_dir = stanza.resources.common.DEFAULT_MODEL_DIR
+
+            processors = []
+
+            if self.lang in LANGS_STANZA_TOKENIZERS:
+                processors.append('tokenize')
+            if self.lang in LANGS_STANZA_POS_TAGGERS:
+                processors.append('pos')
+            if self.lang in LANGS_STANZA_LEMMATIZERS:
+                processors.append('lemma')
+            if self.lang in LANGS_STANZA_DEPENDENCY_PARSERS:
+                processors.append('depparse')
+            if self.lang in LANGS_STANZA_SENTIMENT_ANALYZERS:
+                processors.append('sentiment')
+
+            if self.lang == 'zho_cn':
+                lang_stanza = 'zh-hans'
+            elif self.lang == 'zho_tw':
+                lang_stanza = 'zh-hant'
+            elif self.lang == 'sme':
+                lang_stanza = 'sme'
+            elif self.lang == 'srp_latn':
+                lang_stanza = 'sr'
+            elif self.lang == 'other':
+                lang_stanza = 'en'
+            else:
+                lang_stanza = wl_conversion.to_iso_639_1(self.main, self.lang, no_suffix = True)
+
+            stanza.download(
+                lang = lang_stanza,
+                model_dir = model_dir,
+                processors = processors,
+                proxies = wl_misc.wl_get_proxies(self.main)
+            )
+        except Exception: # pylint: disable=broad-exception-caught
+            self.err_msg = traceback.format_exc()
+
+        self.progress_updated.emit(self.tr('Download completed successfully.'))
+        self.worker_done.emit(self.err_msg)
+
+def init_model_spacy(main, lang, sentencizer_only = False):
     if lang == 'nno':
         lang = 'nob'
     else:
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-    # Languages with models
-    if lang in SPACY_LANGS:
-        # Sentencizer only
-        if sentencizer_only and f'spacy_nlp_{lang}_sentencizer' not in main.__dict__:
-            if lang == 'other':
-                main.__dict__[f'spacy_nlp_{lang}_sentencizer'] = spacy.blank('en')
+    # Sentencizer
+    if sentencizer_only:
+        if 'spacy_nlp_sentencizer' not in main.__dict__:
+            main.__dict__['spacy_nlp_sentencizer'] = spacy.blank('en')
+            main.__dict__['spacy_nlp_sentencizer'].add_pipe('sentencizer')
+    else:
+        if f'spacy_nlp_{lang}' not in main.__dict__:
+            # Languages with models
+            if lang in LANGS_SPACY:
+                model_name = LANGS_SPACY[lang]
+                model = importlib.import_module(model_name)
+
+                # Exclude NER to boost speed
+                main.__dict__[f'spacy_nlp_{lang}'] = model.load(exclude = ['ner'])
+
+                # Transformer-based models do not have sentence recognizer
+                if not model_name.endswith('_trf'):
+                    main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
+
+                if lang == 'other':
+                    main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+            # Languages without models
             else:
-                main.__dict__[f'spacy_nlp_{lang}_sentencizer'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
+                main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
 
-            main.__dict__[f'spacy_nlp_{lang}_sentencizer'].add_pipe('sentencizer')
-        elif not sentencizer_only and f'spacy_nlp_{lang}' not in main.__dict__:
-            model_name = SPACY_LANGS[lang]
-            model = importlib.import_module(model_name)
-
-            # Exclude NER to boost speed
-            main.__dict__[f'spacy_nlp_{lang}'] = model.load(exclude = ['ner'])
-
-            # Transformer-based models do not have sentence recognizer
-            if not model_name.endswith('_trf'):
-                main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
-
-            if lang == 'other':
+                # Add sentencizer and lemmatizer
                 main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
-    # Languages without models
-    elif lang not in SPACY_LANGS and f'spacy_nlp_{lang}' not in main.__dict__:
-        main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
 
-        # Add sentencizer and lemmatizer
-        main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+                if lang in LANGS_SPACY_LEMMATIZERS:
+                    main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
+                    main.__dict__[f'spacy_nlp_{lang}'].initialize()
 
-        if lang in SPACY_LANGS_LEMMATIZERS:
-            main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
-            main.__dict__[f'spacy_nlp_{lang}'].initialize()
+def init_model_stanza(main, lang, lang_util, tokenized = False):
+    if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+    if lang_util in ['sentence_tokenizer', 'word_tokenizer']:
+        processors = ['tokenize']
+    elif lang_util == 'pos_tagger':
+        processors = ['tokenize', 'pos']
+    elif lang_util == 'lemmatizer':
+        processors = ['tokenize', 'pos', 'lemma']
+    elif lang_util == 'dependency_parser':
+        processors = ['tokenize', 'pos', 'lemma', 'depparse']
+    elif lang_util == 'sentiment_analyzer':
+        processors = ['tokenize', 'pos', 'lemma', 'depparse', 'sentiment']
+
+    if (
+        lang in LANGS_STANZA_TOKENIZERS
+        and (
+            f'stanza_nlp_{lang}' not in main.__dict__
+            or set(processors) != set(main.__dict__[f'stanza_nlp_{lang}'].processors)
+            or tokenized != main.__dict__[f'stanza_nlp_{lang}'].kwargs.get('tokenize_pretokenized', False)
+        )
+    ):
+        if lang == 'zho_cn':
+            lang_stanza = 'zh-hans'
+        elif lang == 'zho_tw':
+            lang_stanza = 'zh-hant'
+        elif lang == 'sme':
+            lang_stanza = 'sme'
+        elif lang == 'srp_latn':
+            lang_stanza = 'sr'
+        elif lang == 'other':
+            lang_stanza = 'en'
+        else:
+            lang_stanza = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
+
+        if tokenized:
+            main.__dict__[f'stanza_nlp_{lang}'] = stanza.Pipeline(lang_stanza, processors = processors, download_method = None, tokenize_pretokenized = True)
+        else:
+            main.__dict__[f'stanza_nlp_{lang}'] = stanza.Pipeline(lang_stanza, processors = processors, download_method = None)
 
 def init_sudachipy_word_tokenizer(main):
     if 'sudachipy_word_tokenizer' not in main.__dict__:
@@ -251,9 +401,12 @@ def init_sentence_tokenizers(main, lang, sentence_tokenizer):
     # spaCy
     if sentence_tokenizer.startswith('spacy_'):
         if sentence_tokenizer == 'spacy_sentencizer':
-            init_spacy_models(main, lang, sentencizer_only = True)
+            init_model_spacy(main, lang, sentencizer_only = True)
         else:
-            init_spacy_models(main, lang)
+            init_model_spacy(main, lang)
+    # Stanza
+    elif sentence_tokenizer.startswith('stanza_'):
+        init_model_stanza(main, lang, lang_util = 'sentence_tokenizer')
 
 def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
     if lang not in main.settings_global['word_tokenizers']:
@@ -291,15 +444,18 @@ def init_word_tokenizers(main, lang, word_tokenizer = 'default'):
             main.__dict__[f'sacremoses_moses_tokenizer_{lang}'] = sacremoses.MosesTokenizer(lang = lang_sacremoses)
     # spaCy
     elif word_tokenizer.startswith('spacy_'):
-        init_spacy_models(main, lang)
+        init_model_spacy(main, lang)
+    # Stanza
+    elif word_tokenizer.startswith('stanza_'):
+        init_model_stanza(main, lang, lang_util = 'word_tokenizer')
     # Chinese
     elif word_tokenizer == 'pkuseg_zho':
         if 'pkuseg_word_tokenizer' not in main.__dict__:
             main.pkuseg_word_tokenizer = spacy_pkuseg.pkuseg(model_name = 'mixed')
     # Chinese & Japanese
     elif word_tokenizer.startswith('wordless_'):
-        init_spacy_models(main, 'eng_us')
-        init_spacy_models(main, 'other')
+        init_model_spacy(main, 'eng_us')
+        init_model_spacy(main, 'other')
     # Japanese
     elif word_tokenizer.startswith('sudachipy_jpn'):
         init_sudachipy_word_tokenizer(main)
@@ -336,10 +492,13 @@ def init_word_detokenizers(main, lang):
         if f'sacremoses_moses_detokenizer_{lang}' not in main.__dict__:
             main.__dict__[f'sacremoses_moses_detokenizer_{lang}'] = sacremoses.MosesDetokenizer(lang = lang_sacremoses)
 
-def init_pos_taggers(main, lang, pos_tagger):
+def init_pos_taggers(main, lang, pos_tagger, tokenized = False):
     # spaCy
     if pos_tagger.startswith('spacy_'):
-        init_spacy_models(main, lang)
+        init_model_spacy(main, lang)
+    # Stanza
+    elif pos_tagger.startswith('stanza_'):
+        init_model_stanza(main, lang, lang_util = 'pos_tagger', tokenized = tokenized)
     # Japanese
     elif pos_tagger == 'sudachipy_jpn':
         init_sudachipy_word_tokenizer(main)
@@ -355,10 +514,13 @@ def init_pos_taggers(main, lang, pos_tagger):
             if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
                 main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
 
-def init_lemmatizers(main, lang, lemmatizer):
+def init_lemmatizers(main, lang, lemmatizer, tokenized = False):
     # spaCy
     if lemmatizer.startswith('spacy_'):
-        init_spacy_models(main, lang)
+        init_model_spacy(main, lang)
+    # Stanza
+    elif lemmatizer.startswith('stanza_'):
+        init_model_stanza(main, lang, lang_util = 'lemmatizer', tokenized = tokenized)
     # Japanese
     elif lemmatizer == 'sudachipy_jpn':
         init_sudachipy_word_tokenizer(main)
@@ -371,10 +533,13 @@ def init_lemmatizers(main, lang, lemmatizer):
             if 'pymorphy3_morphological_analyzer_ukr' not in main.__dict__:
                 main.pymorphy3_morphological_analyzer_ukr = pymorphy3.MorphAnalyzer(lang = 'uk')
 
-def init_dependency_parsers(main, lang, dependency_parser):
+def init_dependency_parsers(main, lang, dependency_parser, tokenized = False):
     # spaCy
     if dependency_parser.startswith('spacy_'):
-        init_spacy_models(main, lang)
+        init_model_spacy(main, lang)
+    # Stanza
+    elif dependency_parser.startswith('stanza_'):
+        init_model_stanza(main, lang, lang_util = 'dependency_parser', tokenized = tokenized)
 
 def to_sections(tokens, num_sections):
     len_tokens = len(tokens)
@@ -424,7 +589,7 @@ def split_token_list(main, inputs, nlp_util):
         # Around 6 characters per token and 4 bytes per character (≈ 49149 / 4 / 6)
         texts = to_sections_unequal(inputs, section_size = 2000)
     else:
-        texts = to_sections_unequal(inputs, section_size = section_size * 50)
+        texts = to_sections_unequal(inputs, section_size = section_size * 100)
 
     return texts
 

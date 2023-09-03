@@ -155,7 +155,7 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
             if wl_nlp_utils.check_models(
                 self.main,
                 langs = [self.settings_custom['preview']['preview_lang']],
-                lang_utils = [pos_tagger]
+                lang_utils = [[pos_tagger]]
             ):
                 worker_preview_pos_tagger = Wl_Worker_Preview_Pos_Tagger(
                     self.main,
@@ -389,13 +389,15 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.combo_box_tagsets_pos_tagger.currentTextChanged.emit('')
 
     def preview_pos_tagger_changed(self):
-        self.settings_custom['preview_settings']['preview_pos_tagger'][self.settings_custom['preview_settings']['preview_lang']] = wl_nlp_utils.to_lang_util_code(
+        preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][self.settings_custom['preview_settings']['preview_lang']]
+
+        preview_pos_tagger = wl_nlp_utils.to_lang_util_code(
             self.main,
             util_type = 'pos_taggers',
             util_text = self.combo_box_tagsets_pos_tagger.currentText()
         )
 
-        if not self.settings_custom['preview_settings']['preview_pos_tagger'][self.settings_custom['preview_settings']['preview_lang']].startswith('spacy_'):
+        if not preview_pos_tagger.startswith('spacy_') and not preview_pos_tagger.startswith('stanza_'):
             self.combo_box_tagsets_lang.setEnabled(False)
             self.combo_box_tagsets_pos_tagger.setEnabled(False)
             self.button_tagsets_reset.setEnabled(False)

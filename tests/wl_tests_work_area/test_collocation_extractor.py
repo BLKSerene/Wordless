@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import itertools
 import re
 
 from tests import wl_test_init
@@ -41,17 +42,17 @@ def test_collocation_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    len_tests_statistical_significance = len(tests_statistical_significance)
-    len_measures_bayes_factor = len(measures_bayes_factor)
-    len_measures_effect_size = len(measures_effect_size)
-    len_max_measures = max([len_tests_statistical_significance, len_measures_bayes_factor, len_measures_effect_size])
-
-    for i in range(len_max_measures):
+    for i, (test_statistical_significance, measure_bayes_factor, measure_effect_size) in enumerate(itertools.zip_longest(
+        tests_statistical_significance,
+        measures_bayes_factor,
+        measures_effect_size,
+        fillvalue = 'none'
+    )):
         # Single file
-        if i % 2 == 0:
+        if i % 3 in [0, 2]:
             wl_test_init.select_random_files(main, num_files = 1)
         # Multiple files
-        elif i % 2 == 1:
+        elif i % 3 == 1:
             wl_test_init.select_random_files(main, num_files = 2)
 
         files_selected = [
@@ -59,9 +60,9 @@ def test_collocation_extractor():
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
 
-        main.settings_custom['collocation_extractor']['generation_settings']['test_statistical_significance'] = tests_statistical_significance[i % len_tests_statistical_significance]
-        main.settings_custom['collocation_extractor']['generation_settings']['measure_bayes_factor'] = measures_bayes_factor[i % len_measures_bayes_factor]
-        main.settings_custom['collocation_extractor']['generation_settings']['measure_effect_size'] = measures_effect_size[i % len_measures_effect_size]
+        main.settings_custom['collocation_extractor']['generation_settings']['test_statistical_significance'] = test_statistical_significance
+        main.settings_custom['collocation_extractor']['generation_settings']['measure_bayes_factor'] = measure_bayes_factor
+        main.settings_custom['collocation_extractor']['generation_settings']['measure_effect_size'] = measure_effect_size
 
         print(f"Files: {' | '.join(files_selected)}")
         print(f"Test of statistical significance: {main.settings_custom['collocation_extractor']['generation_settings']['test_statistical_significance']}")

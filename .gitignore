@@ -122,10 +122,10 @@ venv.bak/
 .mypy_cache/
 
 # Wordless
-imports/
-exports/
-misc/
-# Wordless - Custom Settings
+/imports/
+/exports/
+/misc/
+# Wordless - Custom settings
 *.pickle
 # Wordless - Translations
 *.qm
