@@ -18,14 +18,24 @@
 
 # pylint: disable=unused-argument
 
+import collections
+
 import dostoevsky.models
 import underthesea
 
-from wordless.wl_nlp import wl_matching
+from wordless.wl_nlp import wl_matching, wl_nlp_utils
+from wordless.wl_utils import wl_conversion
 
 def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default', tagged = False):
     if sentiment_analyzer == 'default':
         sentiment_analyzer = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][lang]
+
+    wl_nlp_utils.init_sentiment_analyzers(
+        main,
+        lang = lang,
+        sentiment_analyzer = sentiment_analyzer,
+        tokenized = not isinstance(inputs[0], str)
+    )
 
     if inputs:
         if isinstance(inputs[0], str):
@@ -45,8 +55,24 @@ class Dostoevsky_Tokenizer:
 def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
     sentiment_scores = []
 
+    # Stanza:
+    if sentiment_analyzer.startswith('stanza_'):
+        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        nlp = main.__dict__[f'stanza_nlp_{lang}']
+
+        for sentence_input in inputs:
+            # If the input is split into multiple sentences, use the sentiment with the highest frequency as the sentiment score of the input
+            sentiments = []
+
+            for sentence in nlp(sentence_input).sentences:
+                sentiments.append(sentence.sentiment)
+
+            sentiment_scores.append(collections.Counter(sentiments).most_common(1)[0][0] - 1)
+
     # Russian
-    if sentiment_analyzer == 'dostoevsky_rus':
+    elif sentiment_analyzer == 'dostoevsky_rus':
         model = dostoevsky.models.FastTextSocialNetworkModel(tokenizer = Dostoevsky_Tokenizer())
 
         for sentiments in model.predict(inputs, k = 5):
@@ -78,8 +104,28 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer, tagged):
     if tagged:
         inputs = [wl_matching.split_tokens_tags(main, tokens)[0] for tokens in inputs]
 
-    inputs = [' '.join(tokens) for tokens in inputs]
+    # Stanza
+    if sentiment_analyzer.startswith('stanza_'):
+        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-    sentiment_scores = wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer)
+        nlp = main.__dict__[f'stanza_nlp_{lang}']
+
+        for tokens_input in inputs:
+            # If the input is too long, use the sentiment with the highest frequency as the sentiment score of the input
+            sentiments = []
+
+            for doc in nlp.bulk_process([
+                [tokens]
+                for tokens in wl_nlp_utils.split_token_list(main, tokens_input, sentiment_analyzer)
+            ]):
+                for sentence in doc.sentences:
+                    sentiments.append(sentence.sentiment)
+
+            sentiment_scores.append(collections.Counter(sentiments).most_common(1)[0][0] - 1)
+    else:
+        inputs = [' '.join(tokens) for tokens in inputs]
+
+        sentiment_scores = wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer)
 
     return sentiment_scores

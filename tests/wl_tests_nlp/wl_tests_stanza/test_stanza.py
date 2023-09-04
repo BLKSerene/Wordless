@@ -19,7 +19,7 @@
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import (
     wl_dependency_parsing, wl_lemmatization, wl_nlp_utils, wl_pos_tagging, wl_sentence_tokenization,
-    wl_word_tokenization
+    wl_sentiment_analysis, wl_word_tokenization
 )
 from wordless.wl_utils import wl_conversion
 
@@ -318,5 +318,50 @@ def wl_test_dependency_parse(lang, results):
 
         assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
 
-def wl_test_sentiment_analyze(lang, results): # pylint: disable=unused-argument
-    pass
+def wl_test_sentiment_analyze(lang, results):
+    test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
+    sentiment_analyzer = wl_test_get_lang_util(main, lang)
+
+    # Untokenized
+    sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
+        main,
+        inputs = [test_sentence],
+        lang = lang,
+        sentiment_analyzer = sentiment_analyzer
+    )
+
+    # Tokenized
+    tokens = wl_word_tokenization.wl_word_tokenize_flat(
+        main,
+        text = test_sentence,
+        lang = lang
+    )
+    sentiment_scores_tokenized = wl_sentiment_analysis.wl_sentiment_analyze(
+        main,
+        inputs = [tokens],
+        lang = lang,
+        sentiment_analyzer = sentiment_analyzer
+    )
+
+    print(f'{lang} / {sentiment_analyzer}:')
+    print(f'{sentiment_scores}\n')
+
+    # Check for empty results
+    assert sentiment_scores == results
+    assert sentiment_scores_tokenized == results
+
+    for sentiment_score in sentiment_scores + sentiment_scores_tokenized:
+        assert -1 <= sentiment_score <= 1
+
+    # Tagged texts
+    main.settings_custom['files']['tags']['body_tag_settings'] = [['Embedded', 'Part of speech', '_*', 'N/A']]
+
+    sentiment_scores_tokenized_tagged = wl_sentiment_analysis.wl_sentiment_analyze(
+        main,
+        inputs = [[token + '_TEST' for token in tokens]],
+        lang = lang,
+        sentiment_analyzer = sentiment_analyzer,
+        tagged = True
+    )
+
+    assert sentiment_scores_tokenized_tagged == sentiment_scores_tokenized

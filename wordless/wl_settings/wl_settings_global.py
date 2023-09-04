@@ -1254,6 +1254,14 @@ def init_settings_global():
 
             'sentiment_analyzers': {
                 _tr('init_settings_global', 'Dostoevsky - Russian sentiment analyzer'): 'dostoevsky_rus',
+
+                _tr('init_settings_global', 'Stanza - Chinese (Simplified) sentiment analyzer'): 'stanza_zho_cn',
+                _tr('init_settings_global', 'Stanza - German sentiment analyzer'): 'stanza_deu',
+                _tr('init_settings_global', 'Stanza - English sentiment analyzer'): 'stanza_eng',
+                _tr('init_settings_global', 'Stanza - Marathi sentiment analyzer'): 'stanza_mar',
+                _tr('init_settings_global', 'Stanza - Spanish sentiment analyzer'): 'stanza_spa',
+                _tr('init_settings_global', 'Stanza - Vietnamese sentiment analyzer'): 'stanza_vie',
+
                 _tr('init_settings_global', 'Underthesea - Vietnamese sentiment analyzer'): 'underthesea_vie'
             }
         },
@@ -3340,8 +3348,20 @@ def init_settings_global():
         },
 
         'sentiment_analyzers': {
+            'zho_cn': ['stanza_zho_cn'],
+            'eng_gb': ['stanza_eng'],
+            'eng_us': ['stanza_eng'],
+            'deu_at': ['stanza_deu'],
+            'deu_de': ['stanza_deu'],
+            'deu_ch': ['stanza_deu'],
+            'mar': ['stanza_mar'],
             'rus': ['dostoevsky_rus'],
-            'vie': ['underthesea_vie']
+            'spa': ['stanza_spa'],
+
+            'vie': [
+                'stanza_vie',
+                'underthesea_vie'
+            ]
         },
 
         # Only people's names are capitalized
