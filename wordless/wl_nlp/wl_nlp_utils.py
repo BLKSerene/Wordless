@@ -365,7 +365,7 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
     elif lang_util == 'dependency_parser':
         processors = ['tokenize', 'pos', 'lemma', 'depparse']
     elif lang_util == 'sentiment_analyzer':
-        processors = ['tokenize', 'pos', 'lemma', 'depparse', 'sentiment']
+        processors = ['tokenize', 'sentiment']
 
     if (
         lang in LANGS_STANZA_TOKENIZERS
@@ -540,6 +540,11 @@ def init_dependency_parsers(main, lang, dependency_parser, tokenized = False):
     # Stanza
     elif dependency_parser.startswith('stanza_'):
         init_model_stanza(main, lang, lang_util = 'dependency_parser', tokenized = tokenized)
+
+def init_sentiment_analyzers(main, lang, sentiment_analyzer, tokenized = False):
+    # Stanza
+    if sentiment_analyzer.startswith('stanza_'):
+        init_model_stanza(main, lang, lang_util = 'sentiment_analyzer', tokenized = tokenized)
 
 def to_sections(tokens, num_sections):
     len_tokens = len(tokens)

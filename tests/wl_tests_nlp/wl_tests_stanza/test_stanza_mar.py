@@ -28,7 +28,8 @@ def test_stanza_mar():
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
         results_lemmatize = ['मराठी', 'भाष', 'ही', 'इंडो', '-', 'युरोपीय', 'भाषाकुळा', 'एक', 'भाष', 'असणे', '.'],
-        results_dependency_parse = [('मराठी', 'भाषा', 'amod', 1), ('भाषा', 'भाषा', 'nsubj', 7), ('ही', 'भाषा', 'discourse', -1), ('इंडो', 'भाषा', 'obl', 5), ('-', 'युरोपीय', 'punct', 1), ('युरोपीय', 'इंडो', 'amod', -2), ('भाषाकुळातील', 'भाषा', 'obl', 2), ('एक', 'भाषा', 'det', 1), ('भाषा', 'भाषा', 'root', 0), ('आहे', 'भाषा', 'cop', -1), ('.', 'भाषा', 'punct', -2)]
+        results_dependency_parse = [('मराठी', 'भाषा', 'amod', 1), ('भाषा', 'भाषा', 'nsubj', 7), ('ही', 'भाषा', 'discourse', -1), ('इंडो', 'भाषा', 'obl', 5), ('-', 'युरोपीय', 'punct', 1), ('युरोपीय', 'इंडो', 'amod', -2), ('भाषाकुळातील', 'भाषा', 'obl', 2), ('एक', 'भाषा', 'det', 1), ('भाषा', 'भाषा', 'root', 0), ('आहे', 'भाषा', 'cop', -1), ('.', 'भाषा', 'punct', -2)],
+        results_sentiment_analayze = [0]
     )
 
 if __name__ == '__main__':

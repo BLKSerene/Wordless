@@ -260,7 +260,7 @@ class Check_Settings_Global():
         langs_stanza_pos_taggers = []
         langs_stanza_lemmatizers = []
         langs_stanza_dependency_parsers = []
-        langs_stanza_sentiment_analyzers = [] # pylint: disable=unused-variable
+        langs_stanza_sentiment_analyzers = []
 
         with open('requirements/requirements_tests.txt', 'r', encoding = 'utf_8') as f:
             for line in f:
@@ -322,7 +322,7 @@ class Check_Settings_Global():
             (settings_pos_taggers, langs_stanza_pos_taggers, langs_stanza_supported_pos_taggers, 'POS tagger'),
             (settings_lemmatizers, langs_stanza_lemmatizers, langs_stanza_supported_lemmatizers, 'lemmatizer'),
             (settings_dependency_parsers, langs_stanza_dependency_parsers, langs_stanza_supported_dependency_parsers, 'dependency parser'),
-            # (settings_sentiment_analyzers, langs_stanza_sentiment_analyzers, langs_stanza_supported_sentiment_analyzers, 'sentiment analyzer')
+            (settings_sentiment_analyzers, langs_stanza_sentiment_analyzers, langs_stanza_supported_sentiment_analyzers, 'sentiment analyzer')
         ]:
             for lang_code, lang_utils in settings_lang_utils.items():
                 if lang_code != 'other' and any(('stanza' in lang_util for lang_util in lang_utils)):

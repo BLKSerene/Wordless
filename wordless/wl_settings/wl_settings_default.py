@@ -1898,7 +1898,15 @@ def init_settings_default(main):
         # Settings - Sentiment Analysis
         'sentiment_analysis': {
             'sentiment_analyzer_settings': {
+                'zho_cn': 'stanza_zho_cn',
+                'eng_gb': 'stanza_eng',
+                'eng_us': 'stanza_eng',
+                'deu_at': 'stanza_deu',
+                'deu_de': 'stanza_deu',
+                'deu_ch': 'stanza_deu',
+                'mar': 'stanza_mar',
                 'rus': 'dostoevsky_rus',
+                'spa': 'stanza_spa',
                 'vie': 'underthesea_vie'
             },
 

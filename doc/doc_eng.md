@@ -656,7 +656,7 @@ Burmese                 |✔|✔|✖️|✖️|✖️|✔|✖️|✖️
 Buryat (Russia)         |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Catalan                 |✔|✔|✔|✔|✔|✔|✔|✖️
 Chinese (Classical)     |✔|✔|✖️|✔|✔|✖️|✔|✖️
-Chinese (Simplified)    |✔|✔|✖️|✔|✔|✔|✔|✖️
+Chinese (Simplified)    |✔|✔|✖️|✔|✔|✔|✔|✔
 Chinese (Traditional)   |✔|✔|✖️|✔|✔|✔|✔|✖️
 Church Slavonic (Old)   |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Coptic                  |✔|✔|✖️|✔|✔|✖️|✔|✖️
@@ -665,8 +665,8 @@ Czech                   |✔|✔|✔|✔|✔|✔|✔|✖️
 Danish                  |✔|✔|✔|✔|✔|✔|✔|✖️
 Dutch                   |✔|✔|✔|✔|✔|✔|✔|✖️
 English (Middle)        |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✖️
-English (United Kingdom)|✔|✔|✔|✔|✔|✔|✔|✖️
-English (United States) |✔|✔|✔|✔|✔|✔|✔|✖️
+English (United Kingdom)|✔|✔|✔|✔|✔|✔|✔|✔
+English (United States) |✔|✔|✔|✔|✔|✔|✔|✔
 Erzya                   |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Esperanto               |⭕️ |⭕️ |✔|✖️|✖️|✔|✖️|✖️
 Estonian                |✔|✔|✔|✔|✔|✔|✔|✖️
@@ -677,9 +677,9 @@ French (Old)            |✔|✔|✖️|✔|✖️|✖️|✔|✖️
 Galician                |✔|✔|✔|✔|✔|✔|✔|✖️
 Ganda                   |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✖️
 Georgian                |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✖️
-German (Austria)        |✔|✔|✔|✔|✔|✔|✔|✖️
-German (Germany)        |✔|✔|✔|✔|✔|✔|✔|✖️
-German (Switzerland)    |✔|✔|✔|✔|✔|✔|✔|✖️
+German (Austria)        |✔|✔|✔|✔|✔|✔|✔|✔
+German (Germany)        |✔|✔|✔|✔|✔|✔|✔|✔
+German (Switzerland)    |✔|✔|✔|✔|✔|✔|✔|✔
 Gothic                  |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Greek (Ancient)         |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Greek (Modern)          |✔|✔|✔|✔|✔|✔|✔|✖️
@@ -710,7 +710,7 @@ Malay                   |⭕️ |✔|✖️|✖️|✔|✔|✖️|✖️
 Malayalam               |✔|✔|✖️|✖️|✖️|✖️|✖️|✖️
 Maltese                 |✔|✔|✖️|✔|✖️|✖️|✔|✖️
 Manx                    |⭕️ |⭕️ |✖️|✖️|✔|✖️|✖️|✖️
-Marathi                 |✔|✔|✖️|✔|✔|✔|✔|✖️
+Marathi                 |✔|✔|✖️|✔|✔|✔|✔|✔
 Meitei                  |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✖️
 Mongolian               |⭕️ |⭕️ |✔|✖️|✖️|✖️|✖️|✖️
 Nepali                  |⭕️ |✔|✖️|✖️|✖️|✔|✖️|✖️
@@ -739,7 +739,7 @@ Somali                  |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️|✖️
 Sorbian (Lower)         |⭕️ |✔|✖️|✖️|✖️|✖️|✖️|✖️
 Sorbian (Upper)         |✔|✔|✖️|✔|✔|✖️|✔|✖️
 Sotho (Southern)        |⭕️ |⭕️ |✖️|✖️|✖️|✔|✖️|✖️
-Spanish                 |✔|✔|✔|✔|✔|✔|✔|✖️
+Spanish                 |✔|✔|✔|✔|✔|✔|✔|✔
 Swahili                 |⭕️ |⭕️ |✖️|✖️|✔|✔|✖️|✖️
 Swedish                 |✔|✔|✔|✔|✔|✔|✔|✖️
 Swedish Sign Language   |✔|✔|✖️|✔|✖️|✖️|✔|✖️
