@@ -586,6 +586,7 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_TTRS = [
             _tr('wl_profiler', 'Mean Segmental TTR'),
+            _tr('wl_profiler', 'Measure of Textual Lexical Diversity'),
             _tr('wl_profiler', 'Moving-average TTR'),
             _tr('wl_profiler', 'Type-token Ratio')
         ]
@@ -620,15 +621,18 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
 
                 for i, stats in enumerate(text_stats_files):
                     msttr = stats[11]
-                    mattr = stats[12]
-                    ttr = stats[13]
+                    mtld = stats[12]
+                    mattr = stats[13]
+                    ttr = stats[14]
 
                     # Mean Segmental TTR
                     self.set_item_num(0, i, msttr)
+                    # Measure of Textual Lexical Diversity
+                    self.set_item_num(1, i, mtld)
                     # Moving-average TTR
-                    self.set_item_num(1, i, mattr)
+                    self.set_item_num(2, i, mattr)
                     # Type-token Ratio
-                    self.set_item_num(2, i, ttr)
+                    self.set_item_num(3, i, ttr)
 
                 self.enable_updates()
 
@@ -1285,12 +1289,13 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 if self.profiler_tab in ['ttrs', 'all']:
                     if tokens:
                         msttr = wl_measures_ttr.msttr(self.main, tokens)
+                        mtld = wl_measures_ttr.mtld(self.main, tokens)
                         mattr = wl_measures_ttr.mattr(self.main, tokens)
                         ttr = wl_measures_ttr.ttr(self.main, tokens)
                     else:
-                        msttr = mattr = ttr = 0
+                        msttr = mtld = mattr = ttr = 0
                 else:
-                    msttr = mattr = ttr = None
+                    msttr = mtld = mattr = ttr = None
 
                 self.text_stats_files.append([
                     readability_stats,
@@ -1305,6 +1310,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_chars,
                     len_syls,
                     msttr,
+                    mtld,
                     mattr,
                     ttr
                 ])

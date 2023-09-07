@@ -375,6 +375,21 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
 
         self.group_box_msttr.layout().setColumnStretch(2, 1)
 
+        # Measure of Textual Lexical Diversity
+        self.group_box_mtld = QGroupBox(self.tr('Measure of Textual Lexical Diversity'), self)
+
+        self.label_factor_size = QLabel(self.tr('Factor size:'), self)
+        self.spin_box_factor_size = wl_boxes.Wl_Double_Spin_Box(self)
+
+        self.spin_box_factor_size.setDecimals(3)
+        self.spin_box_factor_size.setSingleStep(.001)
+
+        self.group_box_mtld.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_mtld.layout().addWidget(self.label_factor_size, 0, 0)
+        self.group_box_mtld.layout().addWidget(self.spin_box_factor_size, 0, 1)
+
+        self.group_box_mtld.layout().setColumnStretch(2, 1)
+
         # Moving-average TTR
         self.group_box_mattr = QGroupBox(self.tr('Moving-average TTR'), self)
 
@@ -391,10 +406,11 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_msttr, 0, 0)
-        self.layout().addWidget(self.group_box_mattr, 1, 0)
+        self.layout().addWidget(self.group_box_mtld, 1, 0)
+        self.layout().addWidget(self.group_box_mattr, 2, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(2, 1)
+        self.layout().setRowStretch(3, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -405,12 +421,18 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
         # Mean Segmental TTR
         self.spin_box_num_tokens_in_each_seg.setValue(settings['msttr']['num_tokens_in_each_seg'])
 
+        # Measure of Textual Lexical Diversity
+        self.spin_box_factor_size.setValue(settings['mtld']['factor_size'])
+
         # Moving-average TTR
         self.spin_box_window_size.setValue(settings['mattr']['window_size'])
 
     def apply_settings(self):
         # Mean Segmental TTR
         self.settings_custom['msttr']['num_tokens_in_each_seg'] = self.spin_box_num_tokens_in_each_seg.value()
+
+        # Measure of Textual Lexical Diversity
+        self.settings_custom['mtld']['factor_size'] = self.spin_box_factor_size.value()
 
         # Moving-average TTR
         self.settings_custom['mattr']['window_size'] = self.spin_box_window_size.value()

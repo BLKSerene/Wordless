@@ -31,8 +31,13 @@ def test_msttr():
     settings['msttr']['num_tokens_in_each_seg'] = 1000
     msttr_1000 = wl_measures_ttr.msttr(main, TOKENS_101)
 
-    assert msttr_100 == (5 / 100 + 1 / 1) / 2
-    assert msttr_1000 == 6 / 101
+    assert msttr_100 == 5 / 100
+    assert msttr_1000 == 0
+
+def test_mtld():
+    mtld_100 = wl_measures_ttr.mtld(main, TOKENS_100)
+
+    assert mtld_100 == 100 / (14 + 0 / 0.28)
 
 def test_mattr():
     mattr_100 = wl_measures_ttr.mattr(main, TOKENS_100)
@@ -48,5 +53,6 @@ def test_ttr():
 
 if __name__ == '__main__':
     test_msttr()
+    test_mtld()
     test_mattr()
     test_ttr()
