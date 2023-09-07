@@ -586,6 +586,7 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_TTRS = [
             _tr('wl_profiler', 'Mean Segmental TTR'),
+            _tr('wl_profiler', 'Moving-average TTR'),
             _tr('wl_profiler', 'Type-token Ratio')
         ]
 
@@ -619,12 +620,15 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
 
                 for i, stats in enumerate(text_stats_files):
                     msttr = stats[11]
-                    ttr = stats[12]
+                    mattr = stats[12]
+                    ttr = stats[13]
 
                     # Mean Segmental TTR
                     self.set_item_num(0, i, msttr)
+                    # Moving-average TTR
+                    self.set_item_num(1, i, mattr)
                     # Type-token Ratio
-                    self.set_item_num(1, i, ttr)
+                    self.set_item_num(2, i, ttr)
 
                 self.enable_updates()
 
@@ -1281,11 +1285,12 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 if self.profiler_tab in ['ttrs', 'all']:
                     if tokens:
                         msttr = wl_measures_ttr.msttr(self.main, tokens)
+                        mattr = wl_measures_ttr.mattr(self.main, tokens)
                         ttr = wl_measures_ttr.ttr(self.main, tokens)
                     else:
-                        msttr = ttr = 0
+                        msttr = mattr = ttr = 0
                 else:
-                    msttr = ttr = None
+                    msttr = mattr = ttr = None
 
                 self.text_stats_files.append([
                     readability_stats,
@@ -1300,6 +1305,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_chars,
                     len_syls,
                     msttr,
+                    mattr,
                     ttr
                 ])
 
