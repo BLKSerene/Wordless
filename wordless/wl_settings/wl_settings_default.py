@@ -2020,6 +2020,10 @@ def init_settings_default(main):
                     'num_tokens_in_each_seg': 100
                 },
 
+                'mtld': {
+                    'factor_size': 0.720
+                },
+
                 'mattr': {
                     'window_size': 500
                 }

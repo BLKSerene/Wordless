@@ -25,16 +25,60 @@ import numpy
 from wordless.wl_nlp import wl_nlp_utils
 
 # Mean Segmental TTR
-# Reference: Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
+# References:
+#     Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
+#     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) [Doctoral dissertation, The University of Memphis] (p. 37). ProQuest Dissertations and Theses Global.
 def msttr(main, tokens):
     num_tokens_seg = main.settings_custom['measures']['ttr']['msttr']['num_tokens_in_each_seg']
 
     ttrs = [
-        len(set(tokens_seg)) / len(tokens_seg)
+        len(set(tokens_seg)) / num_tokens_seg
         for tokens_seg in wl_nlp_utils.to_sections_unequal(tokens, num_tokens_seg)
+        # Discard the last segment of text if its length is shorter than other segments
+        if len(tokens_seg) == num_tokens_seg
     ]
 
-    return numpy.mean(ttrs)
+    if ttrs:
+        msttr = numpy.mean(ttrs)
+    else:
+        msttr = 0
+
+    return msttr
+
+# Measure of Textual Lexical Diversity
+# References:
+#     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) [Doctoral dissertation, The University of Memphis] (pp. 95–96, 99–100). ProQuest Dissertations and Theses Global.
+#     McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. Behavior Research Methods, 42(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
+def mtld(main, tokens):
+    mtlds = numpy.empty(shape = 2)
+    factor_size = main.settings_custom['measures']['ttr']['mtld']['factor_size']
+    len_tokens = len(tokens)
+
+    for i in range(2):
+        num_factors = 0
+        counter = collections.Counter()
+
+        # Backward MTLD
+        if i == 1:
+            tokens = reversed(tokens)
+
+        for j, token in enumerate(tokens):
+            counter[token] += 1
+            num_types_counter = len(list(counter))
+            ttr = num_types_counter / counter.total()
+
+            if ttr <= factor_size:
+                num_factors += 1
+
+                counter.clear()
+            # The last incomplete factor
+            elif j == len_tokens - 1:
+                if factor_size < 1:
+                    num_factors += (1 - ttr) / (1 - factor_size)
+
+        mtlds[i] = len_tokens / num_factors
+
+    return numpy.mean(mtlds)
 
 # Moving-average TTR
 # Reference: Covington, M. A., & McFall, J. D. (2010). Cutting the Gordian knot: The moving-average type-token ratio (MATTR). Journal of Quantitative Linguistics, 17(2), 94–100. https://doi.org/10.1080/09296171003643098
