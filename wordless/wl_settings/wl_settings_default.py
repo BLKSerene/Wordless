@@ -1929,13 +1929,6 @@ def init_settings_default(main):
                 'precision_p_vals': 5
             },
 
-            # Settings - Tables - Profiler
-            'profiler': {
-                'general_settings': {
-                    'num_tokens_section_sttr': 1000
-                }
-            },
-
             # Settings - Tables - Concordancer
             'concordancer': {
                 'sorting_settings': {
@@ -2018,6 +2011,13 @@ def init_settings_default(main):
 
                 'trankle_bailers_readability_formula': {
                     'variant': '1'
+                }
+            },
+
+            # Settings - Measures - Type-token Ratio
+            'ttr': {
+                'msttr': {
+                    'num_tokens_in_each_seg': 100
                 }
             },
 

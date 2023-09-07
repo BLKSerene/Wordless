@@ -95,49 +95,6 @@ class Wl_Settings_Tables(wl_settings.Wl_Settings_Node):
 
         return True
 
-# Tables - Profiler
-class Wl_Settings_Tables_Profiler(wl_settings.Wl_Settings_Node):
-    def __init__(self, main):
-        super().__init__(main)
-
-        self.settings_default = self.main.settings_default['tables']['profiler']
-        self.settings_custom = self.main.settings_custom['tables']['profiler']
-
-        # General Settings
-        self.group_box_general_settings = QGroupBox(self.tr('General Settings'), self)
-
-        self.label_num_tokens_section_sttr = QLabel(self.tr('Number of tokens in each section when calculating standardized type-token ratio:'), self)
-        self.spin_num_tokens_section_sttr = wl_boxes.Wl_Spin_Box(self)
-
-        self.spin_num_tokens_section_sttr.setRange(100, 10000)
-
-        self.group_box_general_settings.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_general_settings.layout().addWidget(self.label_num_tokens_section_sttr, 0, 0)
-        self.group_box_general_settings.layout().addWidget(self.spin_num_tokens_section_sttr, 0, 1)
-
-        self.group_box_general_settings.layout().setColumnStretch(2, 1)
-
-        self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_general_settings, 0, 0)
-
-        self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(1, 1)
-
-    def load_settings(self, defaults = False):
-        if defaults:
-            settings = copy.deepcopy(self.settings_default)
-        else:
-            settings = copy.deepcopy(self.settings_custom)
-
-        # General Settings
-        self.spin_num_tokens_section_sttr.setValue(settings['general_settings']['num_tokens_section_sttr'])
-
-    def apply_settings(self):
-        # General Settings
-        self.settings_custom['general_settings']['num_tokens_section_sttr'] = self.spin_num_tokens_section_sttr.value()
-
-        return True
-
 # Tables - Concordancer
 class Wl_Settings_Tables_Concordancer(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
