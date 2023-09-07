@@ -1176,15 +1176,18 @@ The following variables would be used in formulas:<br>
 **NumTokens**: Number of tokens<br>
 
 <!--
-Type-token Ratio:
-    \text{TTR} = \frac{\text{NumTypes}}{\text{NumTokens}}
 Mean Segmental TTR:
     \text{MSTTR} = \frac{\sum_{i = 1}^{n}\frac{\text{NumTypesSeg}_i}{\text{NumTokensSeg}_i}}{n}
+Moving-average TTR:
+    \text{MATTR} = \frac{\sum_{p = 1}^{\text{NumTokens} - w + 1}\frac{\text{NumTypesWindow}_p}{\text{NumTokensWindow}_p}}{\text{NumTokens} - w + 1}
+Type-token Ratio:
+    \text{TTR} = \frac{\text{NumTypes}}{\text{NumTokens}}
 -->
 
 Measure of Type-token Ratio|Formula
 ---------------------------|-------
-<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of types in the i-th segment, and **NumTokensSegᵢ** is the number of tokens in the i-th segment.
+<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
+<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/ttr/mattr.svg)<br>where **w** is the window size which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
 <span id="ref-ttr"></span>Type-token Ratio<br>([Templin, 1957](#ref-templin-1957))|![Formula](/doc/measures/ttr/ttr.svg)
 
 <span id="doc-4-4-3"></span>
@@ -1476,6 +1479,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-coleman-liau-index) Coleman, M., & Liau, T. L. (1975). A computer readability formula designed for machine scoring. *Journal of Applied Psychology*, *60*(2), 283–284. https://doi.org/10.1037/h0076540
 <span id="ref-college-entrance-examination-board-1981"></span>
 1. [**^**](#ref-drp) College Entrance Examination Board. (1981). *Degrees of reading power brings the students and the text together*.
+<span id="ref-covington-mcfall-2010"></span>
+1. [**^**](#ref-mattr) Covington, M. A., & McFall, J. D. (2010). Cutting the Gordian knot: The moving-average type-token ratio (MATTR). *Journal of Quantitative Linguistics*, *17*(2), 94–100. https://doi.org/10.1080/09296171003643098
 <span id="ref-crawford-1985"></span>
 1. [**^**](#ref-formula-de-crawford) Crawford, A. N. (1985). Fórmula y gráfico para determinar la comprensibilidad de textos de nivel primario en castellano. *Lectura y Vida*, *6*(4). http://www.lecturayvida.fahce.unlp.edu.ar/numeros/a6n4/06_04_Crawford.pdf
 <span id="ref-daille-1994"></span>

@@ -364,22 +364,37 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
         # Mean Segmental TTR
         self.group_box_msttr = QGroupBox(self.tr('Mean Segmental TTR'), self)
 
-        self.label_msttr_num_tokens_in_each_seg = QLabel(self.tr('Number of tokens in each segment:'), self)
-        self.spin_box_msttr_num_tokens_in_each_seg = wl_boxes.Wl_Spin_Box(self)
+        self.label_num_tokens_in_each_seg = QLabel(self.tr('Number of tokens in each segment:'), self)
+        self.spin_box_num_tokens_in_each_seg = wl_boxes.Wl_Spin_Box(self)
 
-        self.spin_box_msttr_num_tokens_in_each_seg.setRange(1, 100000)
+        self.spin_box_num_tokens_in_each_seg.setRange(1, 1000000)
 
         self.group_box_msttr.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_msttr.layout().addWidget(self.label_msttr_num_tokens_in_each_seg, 0, 0)
-        self.group_box_msttr.layout().addWidget(self.spin_box_msttr_num_tokens_in_each_seg, 0, 1)
+        self.group_box_msttr.layout().addWidget(self.label_num_tokens_in_each_seg, 0, 0)
+        self.group_box_msttr.layout().addWidget(self.spin_box_num_tokens_in_each_seg, 0, 1)
 
         self.group_box_msttr.layout().setColumnStretch(2, 1)
 
+        # Moving-average TTR
+        self.group_box_mattr = QGroupBox(self.tr('Moving-average TTR'), self)
+
+        self.label_window_size = QLabel(self.tr('Window size:'), self)
+        self.spin_box_window_size = wl_boxes.Wl_Spin_Box(self)
+
+        self.spin_box_window_size.setRange(1, 1000000)
+
+        self.group_box_mattr.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_mattr.layout().addWidget(self.label_window_size, 0, 0)
+        self.group_box_mattr.layout().addWidget(self.spin_box_window_size, 0, 1)
+
+        self.group_box_mattr.layout().setColumnStretch(2, 1)
+
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_msttr, 0, 0)
+        self.layout().addWidget(self.group_box_mattr, 1, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(1, 1)
+        self.layout().setRowStretch(2, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -388,11 +403,17 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
             settings = copy.deepcopy(self.settings_custom)
 
         # Mean Segmental TTR
-        self.spin_box_msttr_num_tokens_in_each_seg.setValue(settings['msttr']['num_tokens_in_each_seg'])
+        self.spin_box_num_tokens_in_each_seg.setValue(settings['msttr']['num_tokens_in_each_seg'])
+
+        # Moving-average TTR
+        self.spin_box_window_size.setValue(settings['mattr']['window_size'])
 
     def apply_settings(self):
         # Mean Segmental TTR
-        self.settings_custom['msttr']['num_tokens_in_each_seg'] = self.spin_box_msttr_num_tokens_in_each_seg.value()
+        self.settings_custom['msttr']['num_tokens_in_each_seg'] = self.spin_box_num_tokens_in_each_seg.value()
+
+        # Moving-average TTR
+        self.settings_custom['mattr']['window_size'] = self.spin_box_window_size.value()
 
         return True
 
