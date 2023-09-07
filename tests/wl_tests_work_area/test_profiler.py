@@ -79,8 +79,8 @@ def update_gui(err_msg, texts_stats_files):
         len_types_syls = numpy.array(stats[8])
         len_types_chars = numpy.array(stats[9])
         len_syls = numpy.array(stats[10])
-        ttr = stats[11]
-        sttr = stats[12]
+        msttr = stats[11]
+        ttr = stats[12]
 
         count_paras = len(len_paras_sentences)
         count_sentences = len(len_sentences)
@@ -126,8 +126,8 @@ def update_gui(err_msg, texts_stats_files):
                 assert all((len_syls == 1 for len_syls in len_types_syls))
 
         # TTRs
+        assert msttr
         assert ttr
-        assert sttr
 
         # Average
         assert numpy.mean(len_paras_sentences) == count_sentences / count_paras

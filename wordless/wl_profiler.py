@@ -29,8 +29,8 @@ from PyQt5.QtWidgets import QDialog, QGroupBox, QPushButton, QStackedWidget, QTa
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_measures import wl_measures_misc, wl_measures_readability
-from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_token_preprocessing
+from wordless.wl_measures import wl_measures_misc, wl_measures_readability, wl_measures_ttr
+from wordless.wl_nlp import wl_texts, wl_token_preprocessing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -585,8 +585,8 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_TTRS = [
-            _tr('wl_profiler', 'Type-token Ratio'),
-            _tr('wl_profiler', 'Type-token Ratio (Standardized)')
+            _tr('wl_profiler', 'Mean Segmental TTR'),
+            _tr('wl_profiler', 'Type-token Ratio')
         ]
 
         super().__init__(
@@ -618,13 +618,13 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
                 self.disable_updates()
 
                 for i, stats in enumerate(text_stats_files):
-                    ttr = stats[11]
-                    sttr = stats[12]
+                    msttr = stats[11]
+                    ttr = stats[12]
 
+                    # Mean Segmental TTR
+                    self.set_item_num(0, i, msttr)
                     # Type-token Ratio
-                    self.set_item_num(0, i, ttr)
-                    # Type-token Ratio (Standardized)
-                    self.set_item_num(1, i, sttr)
+                    self.set_item_num(1, i, ttr)
 
                 self.enable_updates()
 
@@ -1185,8 +1185,6 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
                 texts.append(text_total)
 
-            num_tokens_section_sttr = self.main.settings_custom['tables']['profiler']['general_settings']['num_tokens_section_sttr']
-
             for text in texts:
                 tokens = text.get_tokens_flat()
 
@@ -1281,21 +1279,13 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
                 # TTRs
                 if self.profiler_tab in ['ttrs', 'all']:
-                    count_tokens = len(len_tokens_chars)
-                    count_types = len(len_types_chars)
-
-                    if count_tokens:
-                        ttr = count_types / count_tokens
-
-                        ttrs = [
-                            len(set(token_section))
-                            for token_section in wl_nlp_utils.to_sections_unequal(tokens, num_tokens_section_sttr)
-                        ]
-                        sttr = numpy.sum(ttrs) / count_tokens
+                    if tokens:
+                        msttr = wl_measures_ttr.msttr(self.main, tokens)
+                        ttr = wl_measures_ttr.ttr(self.main, tokens)
                     else:
-                        ttr = sttr = 0
+                        msttr = ttr = 0
                 else:
-                    ttr = sttr = None
+                    msttr = ttr = None
 
                 self.text_stats_files.append([
                     readability_stats,
@@ -1309,8 +1299,8 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_syls,
                     len_types_chars,
                     len_syls,
-                    ttr,
-                    sttr
+                    msttr,
+                    ttr
                 ])
 
             if len(files) == 1:

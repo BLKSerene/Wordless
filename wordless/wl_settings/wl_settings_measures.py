@@ -353,6 +353,49 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         return True
 
+# Measures - Type-token Ratio
+class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
+    def __init__(self, main):
+        super().__init__(main)
+
+        self.settings_default = self.main.settings_default['measures']['ttr']
+        self.settings_custom = self.main.settings_custom['measures']['ttr']
+
+        # Mean Segmental TTR
+        self.group_box_msttr = QGroupBox(self.tr('Mean Segmental TTR'), self)
+
+        self.label_msttr_num_tokens_in_each_seg = QLabel(self.tr('Number of tokens in each segment:'), self)
+        self.spin_box_msttr_num_tokens_in_each_seg = wl_boxes.Wl_Spin_Box(self)
+
+        self.spin_box_msttr_num_tokens_in_each_seg.setRange(1, 100000)
+
+        self.group_box_msttr.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_msttr.layout().addWidget(self.label_msttr_num_tokens_in_each_seg, 0, 0)
+        self.group_box_msttr.layout().addWidget(self.spin_box_msttr_num_tokens_in_each_seg, 0, 1)
+
+        self.group_box_msttr.layout().setColumnStretch(2, 1)
+
+        self.setLayout(wl_layouts.Wl_Layout())
+        self.layout().addWidget(self.group_box_msttr, 0, 0)
+
+        self.layout().setContentsMargins(6, 4, 6, 4)
+        self.layout().setRowStretch(1, 1)
+
+    def load_settings(self, defaults = False):
+        if defaults:
+            settings = copy.deepcopy(self.settings_default)
+        else:
+            settings = copy.deepcopy(self.settings_custom)
+
+        # Mean Segmental TTR
+        self.spin_box_msttr_num_tokens_in_each_seg.setValue(settings['msttr']['num_tokens_in_each_seg'])
+
+    def apply_settings(self):
+        # Mean Segmental TTR
+        self.settings_custom['msttr']['num_tokens_in_each_seg'] = self.spin_box_msttr_num_tokens_in_each_seg.value()
+
+        return True
+
 # Measures - Dispersion
 class Wl_Settings_Measures_Dispersion(wl_settings.Wl_Settings_Node):
     def __init__(self, main):

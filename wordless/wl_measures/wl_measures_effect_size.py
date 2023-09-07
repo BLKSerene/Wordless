@@ -46,7 +46,7 @@ def im3(main, c11, c12, c21, c22):
     return numpy.log2(c11 ** 3 / e11) if c11 and e11 else 0
 
 # Dice's Coefficient
-# Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), pp. 1–38.
+# Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), 1–38.
 def dices_coeff(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2 = wl_measures_statistical_significance.get_freqs_marginal(c11, c12, c21, c22)
 
@@ -160,7 +160,7 @@ def mi(main, c11, c12, c21, c22):
     return mi11 + mi12 + mi21 + mi22
 
 # Odds Ratio
-# Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030
+# Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
 def odds_ratio(main, c11, c12, c21, c22):
     if c11 == 0 and c12 > 0:
         return float('-inf')
