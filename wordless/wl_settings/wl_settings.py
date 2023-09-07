@@ -89,6 +89,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Measures')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Readability')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Type-token Ratio')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Dispersion')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Statistical Significance')))
@@ -96,7 +97,6 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Effect Size')))
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Tables')))
-        self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Profiler')))
         self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Concordancer')))
         self.tree_settings.model().item(11).appendRow(QStandardItem(self.tr('Parallel Concordancer')))
 
@@ -131,7 +131,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
         self.settings_word_tokenization = wl_settings_word_tokenization.Wl_Settings_Word_Tokenization(self.main)
         self.settings_syl_tokenization = wl_settings_syl_tokenization.Wl_Settings_Syl_Tokenization(self.main)
 
-        # POS Tagging
+        # Part-of-speech Tagging
         self.settings_pos_tagging = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging(self.main)
         self.settings_pos_tagging_tagsets = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging_Tagsets(self.main)
 
@@ -142,6 +142,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
         # Measures
         self.settings_measures_readability = wl_settings_measures.Wl_Settings_Measures_Readability(self.main)
+        self.settings_measures_ttr = wl_settings_measures.Wl_Settings_Measures_Ttr(self.main)
         self.settings_measures_dispersion = wl_settings_measures.Wl_Settings_Measures_Dispersion(self.main)
         self.settings_measures_adjusted_freq = wl_settings_measures.Wl_Settings_Measures_Adjusted_Freq(self.main)
         self.settings_measures_statistical_significance = wl_settings_measures.Wl_Settings_Measures_Statistical_Significance(self.main)
@@ -150,7 +151,6 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
         # Tables
         self.settings_tables = wl_settings_tables.Wl_Settings_Tables(self.main)
-        self.settings_tables_profiler = wl_settings_tables.Wl_Settings_Tables_Profiler(self.main)
         self.settings_tables_concordancer = wl_settings_tables.Wl_Settings_Tables_Concordancer(self.main)
         self.settings_tables_parallel_concordancer = wl_settings_tables.Wl_Settings_Tables_Parallel_Concordancer(self.main)
 
@@ -180,6 +180,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             self.tr('Sentiment Analysis'): self.settings_sentiment_analysis,
 
             self.tr('Readability'): self.settings_measures_readability,
+            self.tr('Type-token Ratio'): self.settings_measures_ttr,
             self.tr('Dispersion'): self.settings_measures_dispersion,
             self.tr('Adjusted Frequency'): self.settings_measures_adjusted_freq,
             self.tr('Statistical Significance'): self.settings_measures_statistical_significance,
@@ -187,7 +188,6 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             self.tr('Effect Size'): self.settings_measures_effect_size,
 
             self.tr('Tables'): self.settings_tables,
-            self.tr('Profiler'): self.settings_tables_profiler,
             self.tr('Concordancer'): self.settings_tables_concordancer,
             self.tr('Parallel Concordancer'): self.settings_tables_parallel_concordancer,
 

@@ -207,7 +207,7 @@ def rd(main, text):
     return rd
 
 # Automated Arabic Readability Index
-# Reference: Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. The International Arab Journal of Information Technology, 11(4), pp. 370–378.
+# Reference: Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. The International Arab Journal of Information Technology, 11(4), 370–378.
 def aari(main, text):
     if text.lang == 'ara':
         text = get_nums(main, text)
@@ -748,7 +748,7 @@ def fuckss_stilcharakteristik(main, text):
 
 # Gulpease Index
 # References:
-#     Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. Scuola e Città, 39(3), pp. 110–124.
+#     Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. Scuola e Città, 39(3), 110–124.
 #     Indice Gulpease. (2021, July 9). In Wikipedia.https://it.wikipedia.org/w/index.php?title=Indice_Gulpease&oldid=121763335.
 def gulpease_index(main, text):
     if text.lang == 'ita':
@@ -905,7 +905,7 @@ def lensear_write(main, text):
 # Lix
 # References:
 #     Björnsson, C.-H. (1968). Läsbarhet. Liber.
-#     Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. Journal of Reading, 26(6), pp. 490–496.
+#     Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. Journal of Reading, 26(6), 490–496.
 def lix(main, text):
     if text.num_words and text.num_sentences:
         text = get_nums(main, text)
@@ -1129,7 +1129,7 @@ def osman(main, text):
     return osman
 
 # Rix
-# Reference: Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. Journal of Reading, 26(6), pp. 490–496.
+# Reference: Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. Journal of Reading, 26(6), 490–496.
 def rix(main, text):
     text = get_nums(main, text)
 
@@ -1143,7 +1143,7 @@ def rix(main, text):
 
 # SMOG Grade
 # References:
-#     McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), pp. 639–646.
+#     McLaughlin, G. H. (1969). SMOG grading: A new readability formula. Journal of Reading, 12(8), 639–646.
 # German:
 #     Bamberger, R., & Vanecek, E. (1984). Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache (p. 78). Jugend und Volk.
 def smog_grade(main, text):

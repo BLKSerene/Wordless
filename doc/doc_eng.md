@@ -38,8 +38,9 @@
   - [4.3 Supported File Encodings](#doc-4-3)
   - [4.4 Supported Measures](#doc-4-4)
     - [4.4.1 Measures of Readability](#doc-4-4-1)
-    - [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2)
-    - [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3)
+    - [4.4.2 Measures of Type-token Ratios](#doc-4-4-2)
+    - [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3)
+    - [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4)
 - [5 References](#doc-5)
 
 <span id="doc-1"></span>
@@ -450,10 +451,10 @@ You can generate line charts or word clouds for wordlists using any statistics. 
   The number of occurrences of the token in each file.
 
 - **3.5.5 Dispersion**<br>
-  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
+  The dispersion of the token in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3) for more details.
 
 - **3.5.6 Adjusted Frequency**<br>
-  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
+  The adjusted frequency of the token in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3) for more details.
 
 - **3.5.7 Number of Files Found**<br>
   The number of files in which the token appears at least once.
@@ -482,10 +483,10 @@ You can further filter the results as you see fit by clicking **Filter Results**
   The number of occurrences of the n-gram in each file.
 
 - **3.6.4 Dispersion**<br>
-  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
+  The dispersion of the n-gram in each file. You can change the measure of dispersion used via **Generation Settings → Measure of Dispersion**. See section [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3) for more details.
 
 - **3.6.5 Adjusted Frequency**<br>
-  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc-4-4-2) for more details.
+  The adjusted frequency of the n-gram in each file. You can change the measure of adjusted frequency used via **Generation Settings → Measure of Adjusted Frequency**. See section [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3) for more details.
 
 - **3.6.6 Number of Files Found**<br>
   The number of files in which the n-gram appears at least once.
@@ -520,18 +521,18 @@ You can further filter the results as you see fit by clicking **Filter Results**
   The total number of co-occurrences of the node and the collocating token with the collocating token at all possible positions in each file.
 
 - **3.7.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The test statistic of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **3.7.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The p-value of the significance test conducted on the node and the collocating token in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
 - **3.7.8 Bayes Factor**<br>
-  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The Bayes factor the node and the collocating token in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
 - **3.7.9 Effect Size**<br>
-  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The effect size of the node and the collocating token in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
 - **3.7.10 Number of Files Found**<br>
   The number of files in which the node and the collocating token co-occur at least once.
@@ -568,18 +569,18 @@ You can further filter the results as you see fit by clicking **Filter Results**
   The total number of co-occurrences of the node and the collocating part of speech with the collocating part of speech at all possible positions in each file.
 
 - **3.8.6 Test Statistic**<br>
-  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The test statistic of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **3.8.7 p-value**<br>
-  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The p-value of the significance test conducted on the node and the collocating part of speech in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
 - **3.8.8 Bayes Factor**<br>
-  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The Bayes factor of the node and the collocating part of speech in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
   
 - **3.8.9 Effect Size**<br>
-  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The effect size of the node and the collocating part of speech in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
 - **3.8.10 Number of Files Found**<br>
   The number of files in which the node and the collocating part of speech co-occur at least once.
@@ -611,18 +612,18 @@ You can further filter the results as you see fit by clicking **Filter Results**
   The number of co-occurrences of the keywords in each observed file.
 
 - **3.9.5 Test Statistic**<br>
-  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The test statistic of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
   Please note that test statistic is not available for some tests of statistical significance.
 
 - **3.9.6 p-value**<br>
-  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The p-value of the significance test conducted on the keyword in each file. You can change the test of statistical significance used via **Generation Settings → Test of Statistical Significance**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
 - **3.9.7 Bayes Factor**<br>
-  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The Bayes factor of the keyword in each file. You can change the measure of Bayes factor used via **Generation Settings → Measure of Bayes Factor**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
 - **3.9.8 Effect Size**<br>
-  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-3) for more details.
+  The effect size of on the keyword in each file. You can change the measure of effect size used via **Generation Settings → Measure of Effect Size**. See section [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4) for more details.
 
 - **3.9.9 Number of Files Found**<br>
   The number of files in which the keyword appears at least once.
@@ -1167,7 +1168,27 @@ Measure of Readability|Formula|Supported Languages
 > 1. Requires **built-in part-of-speech tagging support**
 
 <span id="doc-4-4-2"></span>
-#### [4.4.2 Measures of Dispersion & Adjusted Frequency](#doc)
+#### [4.4.2 Measures of Type-token Ratio](#doc)
+The type-token ratio of a text reflects the lexical diversity of the text.
+
+The following variables would be used in formulas:<br>
+**NumTypes**: Number of token types<br>
+**NumTokens**: Number of tokens<br>
+
+<!--
+Type-token Ratio:
+    \text{TTR} = \frac{\text{NumTypes}}{\text{NumTokens}}
+Mean Segmental TTR:
+    \text{MSTTR} = \frac{\sum_{i = 1}^{n}\frac{\text{NumTypesSeg}_i}{\text{NumTokensSeg}_i}}{n}
+-->
+
+Measure of Type-token Ratio|Formula
+---------------------------|-------
+<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of types in the i-th segment, and **NumTokensSegᵢ** is the number of tokens in the i-th segment.
+<span id="ref-ttr"></span>Type-token Ratio<br>([Templin, 1957](#ref-templin-1957))|![Formula](/doc/measures/ttr/ttr.svg)
+
+<span id="doc-4-4-3"></span>
+#### [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc)
 
 For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) sub-sections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**, ..., **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all sub-sections is denoted by **F̅**.
 
@@ -1251,8 +1272,8 @@ Measure of Dispersion (Distance-based)|Measure of Adjusted Frequency (Distance-b
 <span id="ref-arf"></span>Average Reduced Frequency<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-farf"></span>Average Reduced Frequency<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/arf.svg)
 <span id="ref-awt"></span>Average Waiting Time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-fawt"></span>Average Waiting Time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/awt.svg)
 
-<span id="doc-4-4-3"></span>
-#### [4.4.3 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc)
+<span id="doc-4-4-4"></span>
+#### [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc)
 
 In order to calculate the statistical significance, Bayes factor, and effect size (except **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
@@ -1424,11 +1445,11 @@ Measure of Effect Size|Formula
 <span id="ref-al-heeti-1984"></span>
 1. [**^**](#ref-rd) Al-Heeti, K. N. (1984). *Judgment analysis technique applied to readability prediction of Arabic reading material* [Doctoral dissertation, University of Northern Colorado]. ProQuest Dissertations and Theses Global.
 <span id="ref-al-tamimi-et-al-2013"></span>
-1. [**^**](#ref-aari) Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. *The International Arab Journal of Information Technology*, *11*(4), pp. 370–378.
+1. [**^**](#ref-aari) Al-Tamimi, A., Jaradat M., Aljarrah, N., & Ghanim, S. (2013). AARI: Automatic Arabic readability index. *The International Arab Journal of Information Technology*, *11*(4), 370–378.
 <span id="ref-amstad-1978"></span>
 1. [**^**](#ref-re) Amstad, T. (1978). *Wie verständlich sind unsere Zeitungen?* [Unpublished doctoral dissertation]. University of Zurich.
 <span id="ref-anderson-1983"></span>
-1. [**^**](#ref-rix) Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. *Journal of Reading*, *26*(6), pp. 490–496.
+1. [**^**](#ref-rix) Anderson, J. (1983). Lix and Rix: Variations on a little-known readability index. *Journal of Reading*, *26*(6), 490–496.
 <span id="ref-bamberger-vanecek-1984"></span>
 1. [**^**](#ref-num-word-types-bamberger-vanecek)[**^**](#ref-nwl)[**^**](#ref-nws)[**^**](#ref-smog-grade) Bamberger, R., & Vanecek, E. (1984). *Lesen-verstehen-lernen-schreiben: Die schwierigkeitsstufen von texten in deutscher sprache*. Jugend und Volk.
 <span id="ref-berry-rogghe-1973"></span>
@@ -1513,6 +1534,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
 <span id="ref-hofland-johanson-1982"></span>
 1. [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.
+<span id="ref-johnson-1944"></span>
+1. [**^**](#ref-msttr) Johnson, W. (1944). Studies in language behavior: I. a program of research. *Psychological Monographs*, *56*(2), 1–15. https://doi.org/10.1037/h0093508
 <span id="ref-juilland-chang-rodrigues-1964"></span>
 1. [**^**](#ref-juillands-d)[**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.
 <span id="ref-kandel-moles-1958"></span>
@@ -1538,13 +1561,13 @@ Measure of Effect Size|Formula
 <span id="ref-lorge-1948"></span>
 1. [**^**](#ref-lorge-readability-index) Lorge, I. (1948). The Lorge and Flesch readability formulae: A correction. *School and Society*, *67*, 141–142.
 <span id="ref-lucisano-emanuela-piemontese-1988"></span>
-1. [**^**](#ref-gulpease-index) Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. *Scuola e Città*, *39*(3), pp. 110–124.
+1. [**^**](#ref-gulpease-index) Lucisano, P., & Emanuela Piemontese, M. (1988). GULPEASE: A formula for the prediction of the difficulty of texts in Italian. *Scuola e Città*, *39*(3), 110–124.
 <span id="ref-luong-et-al-2018"></span>
 1. [**^**](#ref-num-syls-luong-nguyen-dinh-1000)[**^**](#ref-luong-nguyen-dinhs-readability-formula) Luong, A.-V., Nguyen, D., & Dinh, D. (2018). A new formula for Vietnamese text readability assessment. *2018 10th International Conference on Knowledge and Systems Engineering (KSE)* (pp. 198–202). IEEE. https://doi.org/10.1109/KSE.2018.8573379
 <span id="ref-lyne-1985"></span>
 1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.
 <span id="ref-mclaughlin-1969"></span>
-1. [**^**](#ref-smog-grade) McLaughlin, G. H. (1969). SMOG grading: A new readability formula. *Journal of Reading*, *12*(8), pp. 639–646.
+1. [**^**](#ref-smog-grade) McLaughlin, G. H. (1969). SMOG grading: A new readability formula. *Journal of Reading*, *12*(8), 639–646.
 <span id="ref-munoz-baquedano-2006"></span>
 1. [**^**](#ref-mu) Muñoz Baquedano, M. (2006). Legibilidad y variabilidad de los textos. *Boletín de Investigación Educacional, Pontificia Universidad Católica de Chile*, *21*(2), 13–26.
 <span id="ref-nirmaldasan-2009"></span>
@@ -1566,7 +1589,7 @@ Measure of Effect Size|Formula
 <span id="ref-pisarek-1969"></span>
 1. [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. *Zeszyty Prasoznawcze*, *4*(42), 35–48.
 <span id="ref-pojanapunya-todd-2016"></span>
-1. [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030
+1. [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
 <span id="ref-powers-et-al-1958"></span>
 1. [**^**](#ref-x-c50)[**^**](#ref-re)[**^**](#ref-re-farr-jenkins-paterson)[**^**](#ref-fog-index) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254
 <span id="ref-quasthoff-wolff-2002"></span>
@@ -1578,7 +1601,7 @@ Measure of Effect Size|Formula
 <span id="ref-savicky-hlavacova-2002"></span>
 1. [**^**](#ref-ald)[**^**](#ref-fald)[**^**](#ref-arf)[**^**](#ref-farf)[**^**](#ref-awt)[**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
 <span id="ref-smadja-et-al-1996"></span>
-1. [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), pp. 1–38.
+1. [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), 1–38.
 <span id="ref-smith-1961"></span>
 1. [**^**](#ref-devereux-readability-index) Smith, E. A. (1961). Devereaux readability index. *Journal of Educational Research*, *54*(8), 298–303. https://doi.org/10.1080/00220671.1961.10882728
 <span id="ref-smith-senter-1967"></span>
@@ -1591,6 +1614,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-num-words-spache)[**^**](#ref-spache-grade-level) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.
 <span id="ref-szigrisze-pazos-1993"></span>
 1. [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
+<span id="ref-templin-1957"></span>
+1. [**^**](#ref-ttr) Templin, M. (1957). *Certain language skills in children*. University of Minnesota Press.
 <span id="ref-thanopoulos-et-al-2002"></span>
 1. [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.
 <span id="ref-trankle-bailer-1984"></span>
