@@ -361,6 +361,20 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
         self.settings_default = self.main.settings_default['measures']['ttr']
         self.settings_custom = self.main.settings_custom['measures']['ttr']
 
+        # HD-D
+        self.group_box_hdd = QGroupBox(self.tr('HD-D'), self)
+
+        self.label_sample_size = QLabel(self.tr('Sample size:'), self)
+        self.spin_box_sample_size = wl_boxes.Wl_Spin_Box(self)
+
+        self.spin_box_sample_size.setRange(35, 50)
+
+        self.group_box_hdd.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_hdd.layout().addWidget(self.label_sample_size, 0, 0)
+        self.group_box_hdd.layout().addWidget(self.spin_box_sample_size, 0, 1)
+
+        self.group_box_hdd.layout().setColumnStretch(2, 1)
+
         # Mean Segmental TTR
         self.group_box_msttr = QGroupBox(self.tr('Mean Segmental TTR'), self)
 
@@ -405,18 +419,22 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
         self.group_box_mattr.layout().setColumnStretch(2, 1)
 
         self.setLayout(wl_layouts.Wl_Layout())
-        self.layout().addWidget(self.group_box_msttr, 0, 0)
-        self.layout().addWidget(self.group_box_mtld, 1, 0)
-        self.layout().addWidget(self.group_box_mattr, 2, 0)
+        self.layout().addWidget(self.group_box_hdd, 0, 0)
+        self.layout().addWidget(self.group_box_msttr, 1, 0)
+        self.layout().addWidget(self.group_box_mtld, 2, 0)
+        self.layout().addWidget(self.group_box_mattr, 3, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(3, 1)
+        self.layout().setRowStretch(4, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
             settings = copy.deepcopy(self.settings_default)
         else:
             settings = copy.deepcopy(self.settings_custom)
+
+        # HD-D
+        self.spin_box_sample_size.setValue(settings['hdd']['sample_size'])
 
         # Mean Segmental TTR
         self.spin_box_num_tokens_in_each_seg.setValue(settings['msttr']['num_tokens_in_each_seg'])
@@ -428,6 +446,9 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
         self.spin_box_window_size.setValue(settings['mattr']['window_size'])
 
     def apply_settings(self):
+        # HD-D
+        self.settings_custom['hdd']['sample_size'] = self.spin_box_sample_size.value()
+
         # Mean Segmental TTR
         self.settings_custom['msttr']['num_tokens_in_each_seg'] = self.spin_box_num_tokens_in_each_seg.value()
 

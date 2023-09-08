@@ -21,8 +21,27 @@
 import collections
 
 import numpy
+import scipy
 
 from wordless.wl_nlp import wl_nlp_utils
+
+# HD-D
+# Reference: McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. Behavior Research Methods, 42(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
+def hdd(main, tokens):
+    sample_size = main.settings_custom['measures']['ttr']['hdd']['sample_size']
+
+    num_tokens = len(tokens)
+    tokens_freqs = collections.Counter(tokens)
+    ttrs = numpy.empty(len(list(tokens_freqs)))
+
+    for i, freq in enumerate(tokens_freqs.values()):
+        ttrs[i] = scipy.stats.hypergeom.pmf(k = 0, M = num_tokens, n = freq, N = sample_size)
+
+    # The probability that each type appears at least once in the sample
+    ttrs = 1 - ttrs
+    ttrs *= 1 / sample_size
+
+    return sum(ttrs)
 
 # Mean Segmental TTR
 # References:
@@ -108,8 +127,6 @@ def mattr(main, tokens):
     return numpy.mean(ttrs)
 
 # Type-token Ratio
-# References:
-#     Templin, M. (1957). Certain language skills in children. University of Minnesota Press.
-#     Torreulla, J., & Capsada, R. (2013). Lexical statistics and tipological structures: A measure of lexical richness. Procedia - Social and Behavioral Sciences, 95, 447–454.
+# Reference: Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
 def ttr(main, tokens):
     return len(set(tokens)) / len(tokens)
