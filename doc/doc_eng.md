@@ -1186,10 +1186,11 @@ Type-token Ratio:
 
 Measure of Type-token Ratio|Formula
 ---------------------------|-------
+<span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|See: [McCarthy & Jarvis, 2010, p. 383](#ref-mccarthy-jarvis-2010)<br>The sample size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
 <span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
-<span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|See: [McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010)<br>The factor size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
+<span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|See: [McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010, p. 384](#ref-mccarthy-jarvis-2010)<br>The factor size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
 <span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/ttr/mattr.svg)<br>where **w** is the window size which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
-<span id="ref-ttr"></span>Type-token Ratio<br>([Templin, 1957](#ref-templin-1957))|![Formula](/doc/measures/ttr/ttr.svg)
+<span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/ttr.svg)
 
 <span id="doc-4-4-3"></span>
 #### [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc)
@@ -1541,7 +1542,7 @@ Measure of Effect Size|Formula
 <span id="ref-hofland-johanson-1982"></span>
 1. [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.
 <span id="ref-johnson-1944"></span>
-1. [**^**](#ref-msttr) Johnson, W. (1944). Studies in language behavior: I. a program of research. *Psychological Monographs*, *56*(2), 1–15. https://doi.org/10.1037/h0093508
+1. [**^**](#ref-msttr)[**^**](#ref-ttr) Johnson, W. (1944). Studies in language behavior: I. a program of research. *Psychological Monographs*, *56*(2), 1–15. https://doi.org/10.1037/h0093508
 <span id="ref-juilland-chang-rodrigues-1964"></span>
 1. [**^**](#ref-juillands-d)[**^**](#ref-juillands-u) Juilland, A., & Chang-Rodriguez, E. (1964). *Frequency dictionary of Spanish words*. Mouton.
 <span id="ref-kandel-moles-1958"></span>
@@ -1575,7 +1576,7 @@ Measure of Effect Size|Formula
 <span id="ref-mccarthy-2005"></span>
 1. [**^**](#ref-mtld) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD)* [Doctoral dissertation, The University of Memphis]. ProQuest Dissertations and Theses Global.
 <span id="ref-mccarthy-jarvis-2010"></span>
-1. [**^**](#ref-mtld) McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. *Behavior Research Methods*, *42*(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
+1. [**^**](#ref-hdd)[**^**](#ref-mtld) McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. *Behavior Research Methods*, *42*(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
 <span id="ref-mclaughlin-1969"></span>
 1. [**^**](#ref-smog-grade) McLaughlin, G. H. (1969). SMOG grading: A new readability formula. *Journal of Reading*, *12*(8), 639–646.
 <span id="ref-munoz-baquedano-2006"></span>
@@ -1624,8 +1625,6 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-num-words-spache)[**^**](#ref-spache-grade-level) Spache, G. (1974). *Good reading for poor readers* (Rev. 9th ed.). Garrard.
 <span id="ref-szigrisze-pazos-1993"></span>
 1. [**^**](#ref-re) Szigriszt Pazos, F. (1993). *Sistemas predictivos de legibilidad del mensaje escrito: Formula de perspicuidad* [Doctoral dissertation, Complutense University of Madrid]. Biblos-e Archivo. https://repositorio.uam.es/bitstream/handle/10486/2488/3907_barrio_cantalejo_ines_maria.pdf?sequence=1&isAllowed=y
-<span id="ref-templin-1957"></span>
-1. [**^**](#ref-ttr) Templin, M. (1957). *Certain language skills in children*. University of Minnesota Press.
 <span id="ref-thanopoulos-et-al-2002"></span>
 1. [**^**](#ref-lfmd)[**^**](#ref-md) Thanopoulos, A., Fakotakis, N., & Kokkinakis, G. (2002). Comparative evaluation of collocation extraction metrics. In M. G. González & C. P. S. Araujo (Eds.), *Proceedings of the Third International Conference on Language Resources and Evaluation* (pp. 620–625). European Language Resources Association.
 <span id="ref-trankle-bailer-1984"></span>
