@@ -587,6 +587,7 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
         HEADERS_TTRS = [
             _tr('wl_profiler', 'Corrected TTR'),
             _tr('wl_profiler', 'HD-D'),
+            _tr('wl_profiler', 'LogTTR'),
             _tr('wl_profiler', 'Mean Segmental TTR'),
             _tr('wl_profiler', 'Measure of Textual Lexical Diversity'),
             _tr('wl_profiler', 'Moving-average TTR'),
@@ -1284,6 +1285,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         ttrs = [
                             wl_measures_ttr.cttr(self.main, tokens),
                             wl_measures_ttr.hdd(self.main, tokens),
+                            wl_measures_ttr.logttr(self.main, tokens),
                             wl_measures_ttr.msttr(self.main, tokens),
                             wl_measures_ttr.mtld(self.main, tokens),
                             wl_measures_ttr.mattr(self.main, tokens),
@@ -1292,7 +1294,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                             wl_measures_ttr.vocdd(self.main, tokens)
                         ]
                     else:
-                        ttrs = [0] * 8
+                        ttrs = [0] * 9
                 else:
                     ttrs = None
 

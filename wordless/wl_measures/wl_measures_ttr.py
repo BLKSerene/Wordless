@@ -51,6 +51,40 @@ def hdd(main, tokens):
 
     return sum(ttrs)
 
+# LogTTR
+# Herdan:
+#     Herdan, G. (1960). Type-token mathematics: A textbook of mathematical linguistics (p. 28). Mouton.
+# Somers:
+#     Somers, H. H. (1966). Statistical methods in literary analysis. In J. Leeds (Ed.), The computer and literary style (pp. 128–140). Kent State University Press.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 28). Palgrave Macmillan.
+# Rubet:
+#     Dugast, D. (1979). Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative. Slatkine.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 28). Palgrave Macmillan.
+# Maas:
+#     Maas, H.-D. (1972). Über den zusammenhang zwischen wortschatzumfang und länge eines textes. Zeitschrift für Literaturwissenschaft und Linguistik, 2(8), 73–96.
+# Dugast:
+#     Dugast, D. (1978). Sur quoi se fonde la notion d’étendue théoretique du vocabulaire?. Le Français Moderne, 46, 25–32.
+#     Dugast, D. (1979). Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative. Slatkine.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 28). Palgrave Macmillan.
+def logttr(main, tokens):
+    variant = main.settings_custom['measures']['ttr']['logttr']['variant']
+
+    num_types = len(set(tokens))
+    num_tokens = len(tokens)
+
+    if variant == 'Herdan':
+        logttr = numpy.log(num_types) / numpy.log(num_tokens)
+    elif variant == 'Somers':
+        logttr = numpy.log(numpy.log(num_types)) / numpy.log(numpy.log(num_tokens))
+    elif variant == 'Rubet':
+        logttr = numpy.log(num_types) / numpy.log(numpy.log(num_tokens))
+    elif variant == 'Maas':
+        logttr = (numpy.log(num_tokens) - numpy.log(num_types)) / (numpy.log(num_tokens) ** 2)
+    elif variant == 'Dugast':
+        logttr = (numpy.log(num_tokens) ** 2) / (numpy.log(num_tokens) - numpy.log(num_types))
+
+    return logttr
+
 # Mean Segmental TTR
 # References:
 #     Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
@@ -79,7 +113,7 @@ def msttr(main, tokens):
 def mtld(main, tokens):
     mtlds = numpy.empty(shape = 2)
     factor_size = main.settings_custom['measures']['ttr']['mtld']['factor_size']
-    len_tokens = len(tokens)
+    num_tokens = len(tokens)
 
     for i in range(2):
         num_factors = 0
@@ -99,11 +133,11 @@ def mtld(main, tokens):
 
                 counter.clear()
             # The last incomplete factor
-            elif j == len_tokens - 1:
+            elif j == num_tokens - 1:
                 if factor_size < 1:
                     num_factors += (1 - ttr) / (1 - factor_size)
 
-        mtlds[i] = len_tokens / num_factors
+        mtlds[i] = num_tokens / num_factors
 
     return numpy.mean(mtlds)
 
