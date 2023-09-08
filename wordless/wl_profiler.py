@@ -585,10 +585,12 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_TTRS = [
+            _tr('wl_profiler', 'Corrected TTR'),
             _tr('wl_profiler', 'HD-D'),
             _tr('wl_profiler', 'Mean Segmental TTR'),
             _tr('wl_profiler', 'Measure of Textual Lexical Diversity'),
             _tr('wl_profiler', 'Moving-average TTR'),
+            _tr('wl_profiler', 'Root TTR'),
             _tr('wl_profiler', 'Type-token Ratio'),
             _tr('wl_profiler', 'vocd-D')
         ]
@@ -1280,15 +1282,17 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 if self.profiler_tab in ['ttrs', 'all']:
                     if tokens:
                         ttrs = [
+                            wl_measures_ttr.cttr(self.main, tokens),
                             wl_measures_ttr.hdd(self.main, tokens),
                             wl_measures_ttr.msttr(self.main, tokens),
                             wl_measures_ttr.mtld(self.main, tokens),
                             wl_measures_ttr.mattr(self.main, tokens),
+                            wl_measures_ttr.rttr(self.main, tokens),
                             wl_measures_ttr.ttr(self.main, tokens),
                             wl_measures_ttr.vocdd(self.main, tokens)
                         ]
                     else:
-                        ttrs = [0] * 6
+                        ttrs = [0] * 8
                 else:
                     ttrs = None
 
