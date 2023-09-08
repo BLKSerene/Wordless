@@ -125,10 +125,15 @@ def update_gui(err_msg, texts_stats_files):
                 assert all((len_syls == 1 for len_syls in len_types_syls))
 
         # TTRs
+        assert len(ttrs) == 6
+
         for i, ttr in enumerate(ttrs):
             # MTLD
             if i == 2:
                 assert ttr > 1
+            # vocd-D
+            elif i == 5:
+                assert ttr > 0
             else:
                 assert 0 < ttr < 1
 
