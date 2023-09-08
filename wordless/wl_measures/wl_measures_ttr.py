@@ -26,6 +26,13 @@ import scipy
 
 from wordless.wl_nlp import wl_nlp_utils
 
+# Corrected TTR
+# References:
+#     Carroll, J. B. (1964). Language and thought. Prentice-Hall.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 26). Palgrave Macmillan.
+def cttr(main, tokens):
+    return len(set(tokens)) / numpy.sqrt(2 * len(tokens))
+
 # HD-D
 # Reference: McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. Behavior Research Methods, 42(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
 def hdd(main, tokens):
@@ -127,13 +134,20 @@ def mattr(main, tokens):
 
     return numpy.mean(ttrs)
 
+# Root TTR
+# References:
+#     Guiraud, P. (1954). Les caractères statistiques du vocabulaire: Essai de méthodologie. Presses universitaires de France.
+#     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 26). Palgrave Macmillan.
+def rttr(main, tokens):
+    return len(set(tokens)) / numpy.sqrt(len(tokens))
+
 # Type-token Ratio
 # Reference: Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
 def ttr(main, tokens):
     return len(set(tokens)) / len(tokens)
 
 # vocd-D
-# Reference: Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quanitfication and assessment (pp. 51, 56–57). Palgrave Macmillan.
+# Reference: Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (pp. 51, 56–57). Palgrave Macmillan.
 def vocdd(main, tokens):
     def ttr(n, d):
         return (d / n) * (numpy.sqrt(1 + 2 * n / d) - 1)

@@ -29,6 +29,11 @@ TOKENS_100 = ['This', 'is', 'a', 'sentence', '.'] * 20
 TOKENS_101 = ['This', 'is', 'a', 'sentence', '.'] * 20 + ['another']
 TOKENS_1000 = ['This', 'is', 'a', 'sentence', '.'] * 200
 
+def test_cttr():
+    cttr = wl_measures_ttr.cttr(main, TOKENS_100)
+
+    assert cttr == 5 / (2 * 100) ** 0.5
+
 def test_hdd():
     hdd_100 = wl_measures_ttr.hdd(main, TOKENS_100)
 
@@ -54,6 +59,11 @@ def test_mattr():
     assert mattr_100 == wl_measures_ttr.ttr(main, TOKENS_100)
     assert mattr_1000 == 5 / 500
 
+def test_rttr():
+    rttr = wl_measures_ttr.rttr(main, TOKENS_100)
+
+    assert rttr == 5 / 100 ** 0.5
+
 def test_ttr():
     ttr = wl_measures_ttr.ttr(main, TOKENS_100)
 
@@ -69,9 +79,11 @@ def test_vocdd():
     assert vocdd_1000 > 0
 
 if __name__ == '__main__':
+    test_cttr()
     test_hdd()
     test_msttr()
     test_mtld()
     test_mattr()
+    test_rttr()
     test_ttr()
     test_vocdd()

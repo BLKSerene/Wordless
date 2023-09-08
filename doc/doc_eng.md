@@ -164,11 +164,7 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
     The percentage of the number of characters in each file out of the total number of characters in all files.
 
 - **3.1.3 Type-token Ratios**<br>
-  - **3.1.3.1 Type-token Ratio**<br>
-    The number of token types divided by the number of tokens in each file.
-
-  - **3.1.3.2 Type-token Ratio (Standardized)**<br>
-    Standardized type-token ratio. Each file is divided into several sub-sections with each one consisting of 1000 tokens by default and type-token ratios are calculated for each part. The standardized type-token ratio of each file is then averaged out with weights (number of tokens in each sub-section) over all sub-sections. You can change the number of tokens in each sub-section via **Menu → Preferences → Settings → Tables → Profiler → Number of tokens in each section when calculating standardized type-token ratio**.
+  Statistics of type-token ratios which reflect the lexical diversity of the each file. See section [4.4.2 Measures of Type-token Ratio](#doc-4-4-2) for more details.
 
 - **3.1.4 Lengths**<br>
   - **3.1.4.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
@@ -1176,20 +1172,26 @@ The following variables would be used in formulas:<br>
 **NumTokens**: Number of tokens<br>
 
 <!--
+Corrected TTR:
+    \text{CTTR} = \frac{\text{NumTypes}}{\sqrt{2 \times \text{NumTokens}}}
 Mean Segmental TTR:
     \text{MSTTR} = \frac{\sum_{i = 1}^{n}\frac{\text{NumTypesSeg}_i}{\text{NumTokensSeg}_i}}{n}
 Moving-average TTR:
     \text{MATTR} = \frac{\sum_{p = 1}^{\text{NumTokens} - w + 1}\frac{\text{NumTypesWindow}_p}{\text{NumTokensWindow}_p}}{\text{NumTokens} - w + 1}
+Root TTR:
+    \text{RTTR} = \frac{\text{NumTypes}}{\sqrt{\text{NumTokens}}}
 Type-token Ratio:
     \text{TTR} = \frac{\text{NumTypes}}{\text{NumTokens}}
 -->
 
 Measure of Type-token Ratio|Formula
 ---------------------------|-------
+<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/ttr/cttr.svg)
 <span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
 <span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
 <span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
 <span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/ttr/mattr.svg)<br>where **w** is the window size which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
+<span id="ref-rttr"></span>Root TTR<br>([Guiraud, 1954](#ref-guiraud-1954))|![Formula](/doc/measures/ttr/rttr.svg)
 <span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/ttr.svg)
 <span id="ref-vocdd"></span>vocd-D<br>([Malvern et al., 2004, pp. 51, 56–57](#ref-malvern-et-al-2004))|For detailed calculation procedures, see reference.
 
@@ -1466,6 +1468,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-lix) Björnsson, C.-H. (1968). *Läsbarhet*. Liber.
 <span id="ref-brouwer-1963"></span>
 1. [**^**](#ref-re) Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. *Paedagogische studiën*, *40*, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
+<span id="ref-carroll-1964"></span>
+1. [**^**](#ref-cttr) Carroll, J. B. (1964). *Language and thought*. Prentice-Hall.
 <span id="ref-carroll-1970"></span>
 1. [**^**](#ref-carrolls-d2)[**^**](#ref-carrolls-um) Carroll, J. B. (1970). An alternative to Juilland’s usage coefficient for lexical frequencies and a proposal for a standard frequency index. *Computer Studies in the Humanities and Verbal Behaviour*, *3*(2), 61–65. https://doi.org/10.1002/j.2333-8504.1970.tb00778.x
 <span id="ref-caylor-sticht-1973"></span>
@@ -1534,6 +1538,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-pct-diff) Gabrielatos, C., & Marchi, A. (2012, September 13–14). *Keyness: Appropriate metrics and practical issues* [Conference session]. CADS International Conference 2012, University of Bologna, Italy.
 <span id="ref-gries-2008"></span>
 1. [**^**](#ref-griess-dp) Gries, S. T. (2008). Dispersions and adjusted frequencies in corpora. *International Journal of Corpus Linguistics*, *13*(4), 403–437. https://doi.org/10.1075/ijcl.13.4.02gri
+<span id="ref-guiraud-1954"></span>
+1. [**^**](#ref-rttr) Guiraud, P. (1954). *Les caractères statistiques du vocabulaire: Essai de méthodologie*. Presses universitaires de France.
 <span id="ref-gunning-1968"></span>
 1. [**^**](#ref-fog-index) Gunning, R. (1968). *The technique of clear writing* (revised ed.). McGraw-Hill Book Company.
 <span id="ref-gutierrez-de-polini-1972"></span>
@@ -1575,7 +1581,7 @@ Measure of Effect Size|Formula
 <span id="ref-lyne-1985"></span>
 1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.
 <span id="ref-malvern-et-al-2004"></span>
-1. [**^**](#ref-vocdd) Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). *Lexical diversity and language development: Quanitfication and assessment*. Palgrave Macmillan.
+1. [**^**](#ref-vocdd) Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). *Lexical diversity and language development: Quantification and assessment*. Palgrave Macmillan.
 <span id="ref-mccarthy-2005"></span>
 1. [**^**](#ref-mtld) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD)* [Doctoral dissertation, The University of Memphis]. ProQuest Dissertations and Theses Global.
 <span id="ref-mccarthy-jarvis-2010"></span>
