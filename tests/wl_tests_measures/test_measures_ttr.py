@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import numpy
 import scipy
 
 from tests import wl_test_init
@@ -38,6 +39,27 @@ def test_hdd():
     hdd_100 = wl_measures_ttr.hdd(main, TOKENS_100)
 
     assert hdd_100 == (1 - scipy.stats.hypergeom.pmf(k = 0, M = 100, n = 20, N = 42)) * (1 / 42) * 5
+
+def test_logttr():
+    settings['logttr']['variant'] = 'Herdan'
+    logttr_herdan = wl_measures_ttr.logttr(main, TOKENS_100)
+    settings['logttr']['variant'] = 'Somers'
+    logttr_somers = wl_measures_ttr.logttr(main, TOKENS_100)
+    settings['logttr']['variant'] = 'Rubet'
+    logttr_rubet = wl_measures_ttr.logttr(main, TOKENS_100)
+    settings['logttr']['variant'] = 'Maas'
+    logttr_maas = wl_measures_ttr.logttr(main, TOKENS_100)
+    settings['logttr']['variant'] = 'Dugast'
+    logttr_dugast = wl_measures_ttr.logttr(main, TOKENS_100)
+
+    num_types = 5
+    num_tokens = 100
+
+    assert logttr_herdan == numpy.log(num_types) / numpy.log(num_tokens)
+    assert logttr_somers == numpy.log(numpy.log(num_types)) / numpy.log(numpy.log(num_tokens))
+    assert logttr_rubet == numpy.log(num_types) / numpy.log(numpy.log(num_tokens))
+    assert logttr_maas == (numpy.log(num_tokens) - numpy.log(num_types)) / (numpy.log(num_tokens) ** 2)
+    assert logttr_dugast == (numpy.log(num_tokens) ** 2) / (numpy.log(num_tokens) - numpy.log(num_types))
 
 def test_msttr():
     msttr_100 = wl_measures_ttr.msttr(main, TOKENS_101)
@@ -81,6 +103,7 @@ def test_vocdd():
 if __name__ == '__main__':
     test_cttr()
     test_hdd()
+    test_logttr()
     test_msttr()
     test_mtld()
     test_mattr()

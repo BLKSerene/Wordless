@@ -125,7 +125,7 @@ def update_gui(err_msg, texts_stats_files):
                 assert all((len_syls == 1 for len_syls in len_types_syls))
 
         # TTRs
-        assert len(ttrs) == 8
+        assert len(ttrs) == 9
 
         for i, ttr in enumerate(ttrs):
             assert ttr > 0
