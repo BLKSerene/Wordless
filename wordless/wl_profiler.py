@@ -589,7 +589,8 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
             _tr('wl_profiler', 'Mean Segmental TTR'),
             _tr('wl_profiler', 'Measure of Textual Lexical Diversity'),
             _tr('wl_profiler', 'Moving-average TTR'),
-            _tr('wl_profiler', 'Type-token Ratio')
+            _tr('wl_profiler', 'Type-token Ratio'),
+            _tr('wl_profiler', 'vocd-D')
         ]
 
         super().__init__(
@@ -1283,10 +1284,11 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                             wl_measures_ttr.msttr(self.main, tokens),
                             wl_measures_ttr.mtld(self.main, tokens),
                             wl_measures_ttr.mattr(self.main, tokens),
-                            wl_measures_ttr.ttr(self.main, tokens)
+                            wl_measures_ttr.ttr(self.main, tokens),
+                            wl_measures_ttr.vocdd(self.main, tokens)
                         ]
                     else:
-                        ttrs = [0] * 5
+                        ttrs = [0] * 6
                 else:
                     ttrs = None
 
