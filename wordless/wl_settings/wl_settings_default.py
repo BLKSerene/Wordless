@@ -2020,6 +2020,10 @@ def init_settings_default(main):
                     'sample_size': 42
                 },
 
+                'logttr': {
+                    'variant': 'Herdan'
+                },
+
                 'msttr': {
                     'num_tokens_in_each_seg': 100
                 },

@@ -375,6 +375,26 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
 
         self.group_box_hdd.layout().setColumnStretch(2, 1)
 
+        # LogTTR
+        self.group_box_logttr = QGroupBox(self.tr('LogTTR'), self)
+
+        self.label_variant = QLabel(self.tr('Sample size:'), self)
+        self.combo_box_variant = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_variant.addItems([
+            'Herdan',
+            'Somers',
+            'Rubet',
+            'Maas',
+            'Dugast'
+        ])
+
+        self.group_box_logttr.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_logttr.layout().addWidget(self.label_variant, 0, 0)
+        self.group_box_logttr.layout().addWidget(self.combo_box_variant, 0, 1)
+
+        self.group_box_logttr.layout().setColumnStretch(2, 1)
+
         # Mean Segmental TTR
         self.group_box_msttr = QGroupBox(self.tr('Mean Segmental TTR'), self)
 
@@ -420,12 +440,13 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
 
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_hdd, 0, 0)
-        self.layout().addWidget(self.group_box_msttr, 1, 0)
-        self.layout().addWidget(self.group_box_mtld, 2, 0)
-        self.layout().addWidget(self.group_box_mattr, 3, 0)
+        self.layout().addWidget(self.group_box_logttr, 1, 0)
+        self.layout().addWidget(self.group_box_msttr, 2, 0)
+        self.layout().addWidget(self.group_box_mtld, 3, 0)
+        self.layout().addWidget(self.group_box_mattr, 4, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(4, 1)
+        self.layout().setRowStretch(5, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -435,6 +456,9 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
 
         # HD-D
         self.spin_box_sample_size.setValue(settings['hdd']['sample_size'])
+
+        # LogTTR
+        self.combo_box_variant.setCurrentText(settings['logttr']['variant'])
 
         # Mean Segmental TTR
         self.spin_box_num_tokens_in_each_seg.setValue(settings['msttr']['num_tokens_in_each_seg'])
@@ -448,6 +472,9 @@ class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
     def apply_settings(self):
         # HD-D
         self.settings_custom['hdd']['sample_size'] = self.spin_box_sample_size.value()
+
+        # LogTTR
+        self.settings_custom['logttr']['variant'] = self.combo_box_variant.currentText()
 
         # Mean Segmental TTR
         self.settings_custom['msttr']['num_tokens_in_each_seg'] = self.spin_box_num_tokens_in_each_seg.value()

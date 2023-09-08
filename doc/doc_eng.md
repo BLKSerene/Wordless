@@ -1174,6 +1174,14 @@ The following variables would be used in formulas:<br>
 <!--
 Corrected TTR:
     \text{CTTR} = \frac{\text{NumTypes}}{\sqrt{2 \times \text{NumTokens}}}
+LogTTR:
+    \begin{align*}
+        \text{LogTTR}_\text{Herdan} &= \frac{\ln{\text{NumTypes}}}{\ln{\text{NumTokens}}} \\
+        \text{LogTTR}_\text{Somers} &= \frac{\ln{\ln{\text{NumTypes}}}}{\ln{\ln{\text{NumTokens}}}} \\
+        \text{LogTTR}_\text{Rubet} &= \frac{\ln{\text{NumTypes}}}{\ln{\ln{\text{NumTokens}}}} \\
+        \text{LogTTR}_\text{Maas} &= \frac{\ln{\text{NumTokens}} - \ln{\text{NumTypes}}}{\ln^2{\text{NumTokens}}} \\
+        \text{LogTTR}_\text{Dugast} &= \frac{\ln^2{\text{NumTokens}}}{\ln{\text{NumTokens}} - \ln{\text{NumTypes}}}
+    \end{align*}
 Mean Segmental TTR:
     \text{MSTTR} = \frac{\sum_{i = 1}^{n}\frac{\text{NumTypesSeg}_i}{\text{NumTokensSeg}_i}}{n}
 Moving-average TTR:
@@ -1188,12 +1196,16 @@ Measure of Type-token Ratio|Formula
 ---------------------------|-------
 <span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/ttr/cttr.svg)
 <span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
+<span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/ttr/logttr.svg)
 <span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
 <span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
 <span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/ttr/mattr.svg)<br>where **w** is the window size which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
 <span id="ref-rttr"></span>Root TTR<br>([Guiraud, 1954](#ref-guiraud-1954))|![Formula](/doc/measures/ttr/rttr.svg)
 <span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/ttr.svg)
 <span id="ref-vocdd"></span>vocd-D<br>([Malvern et al., 2004, pp. 51, 56–57](#ref-malvern-et-al-2004))|For detailed calculation procedures, see reference.
+
+> [!NOTE]
+> 1. Variants available and can be selected via **Menu - Preferences - Settings - Measures - Type-token Ratio**
 
 <span id="doc-4-4-3"></span>
 #### [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc)
@@ -1512,6 +1524,10 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-dickes-steiwer-handformel) Dickes, P. & Steiwer, L. (1977). Ausarbeitung von lesbarkeitsformeln für die deutsche sprache. *Zeitschrift für Entwicklungspsychologie und Pädagogische Psychologie*, *9*(1), 20–28.
 <span id="ref-douma-1960"></span>
 1. [**^**](#ref-re) Douma, W. H. (1960). *De leesbaarheid van landbouwbladen: Een onderzoek naar en een toepassing van leesbaarheidsformules* [Readability of Dutch farm papers: A discussion and application of readability-formulas]. Afdeling sociologie en sociografie van de Landbouwhogeschool Wageningen. https://edepot.wur.nl/276323
+<span id="ref-dugast-1978"></span>
+1. [**^**](#ref-logttr) Dugast, D. (1978). Sur quoi se fonde la notion d’étendue théoretique du vocabulaire?. *Le Français Moderne*, *46*, 25–32.
+<span id="ref-dugast-1979"></span>
+1. [**^**](#ref-logttr)[**^**](#ref-logttr) Dugast, D. (1979). *Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative*. Slatkine.
 <span id="ref-dunning-1993"></span>
 1. [**^**](#ref-log-likehood-ratio-test) Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. *Computational Linguistics*, *19*(1), 61–74.
 <span id="ref-dunning-1998"></span>
@@ -1546,6 +1562,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-cp) Gutiérrez de Polini, L. E. (1972). *Investigación sobre lectura en Venezuela* [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.
 <span id="ref-hardie-2014"></span>
 1. [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
+<span id="ref-herdan-1960"></span>
+1. [**^**](#ref-logttr) Herdan, G. (1960). *Type-token mathematics: A textbook of mathematical linguistics*. Mouton.
 <span id="ref-hofland-johanson-1982"></span>
 1. [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.
 <span id="ref-johnson-1944"></span>
@@ -1582,6 +1600,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-lynes-d3) Lyne, A. A. (1985). Dispersion. In *The vocabulary of French business correspondence: Word frequencies, collocations, and problems of lexicometric method* (pp. 101–124). Slatkine/Champion.
 <span id="ref-malvern-et-al-2004"></span>
 1. [**^**](#ref-vocdd) Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). *Lexical diversity and language development: Quantification and assessment*. Palgrave Macmillan.
+<span id="ref-maas-1972"></span>
+1. [**^**](#ref-logttr) Maas, H.-D. (1972). Über den zusammenhang zwischen wortschatzumfang und länge eines textes. *Zeitschrift für Literaturwissenschaft und Linguistik*, *2*(8), 73–96.
 <span id="ref-mccarthy-2005"></span>
 1. [**^**](#ref-mtld) McCarthy, P. M. (2005). *An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD)* [Doctoral dissertation, The University of Memphis]. ProQuest Dissertations and Theses Global.
 <span id="ref-mccarthy-jarvis-2010"></span>
@@ -1628,6 +1648,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-ari) Smith, E. A., & Senter, R. J. (1967). *Automated readability index*. Aerospace Medical Research Laboratories. https://apps.dtic.mil/sti/pdfs/AD0667273.pdf
 <span id="ref-solomon-2006"></span>
 1. [**^**](#ref-strain-index) Solomon, N. W. (2006). *Qualitative analysis of media language* [Unpublished doctoral dissertation]. Madurai Kamaraj University.
+<span id="ref-somers-1966"></span>
+1. [**^**](#ref-logttr) Somers, H. H. (1966). Statistical methods in literary analysis. In J. Leeds (Ed.), *The computer and literary style* (pp. 128–140). Kent State University Press.
 <span id="ref-spache-1953"></span>
 1. [**^**](#ref-spache-grade-level) Spache, G. (1953). A new readability formula for primary-grade reading materials. *Elementary School Journal*, *53*(7), 410–413. https://doi.org/10.1086/458513
 <span id="ref-spache-1974"></span>
