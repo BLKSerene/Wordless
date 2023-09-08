@@ -68,7 +68,7 @@ def update_gui(err_msg, texts_stats_files):
     files = main.settings_custom['file_area']['files_open']
 
     for i, stats in enumerate(texts_stats_files):
-        readability_statistics = stats[0]
+        readability_stats = stats[0]
         len_paras_sentences = numpy.array(stats[1])
         len_paras_sentence_segs = numpy.array(stats[2])
         len_paras_tokens = numpy.array(stats[3])
@@ -79,10 +79,7 @@ def update_gui(err_msg, texts_stats_files):
         len_types_syls = numpy.array(stats[8])
         len_types_chars = numpy.array(stats[9])
         len_syls = numpy.array(stats[10])
-        msttr = stats[11]
-        mtld = stats[12]
-        mattr = stats[13]
-        ttr = stats[14]
+        ttrs = stats[11]
 
         count_paras = len(len_paras_sentences)
         count_sentences = len(len_sentences)
@@ -97,7 +94,7 @@ def update_gui(err_msg, texts_stats_files):
         count_tokens_lens_syls.append(collections.Counter(len_tokens_syls))
         count_tokens_lens_chars.append(collections.Counter(len_tokens_chars))
 
-        assert len(readability_statistics) == 39
+        assert len(readability_stats) == 39
 
         # Counts
         assert count_paras
@@ -128,10 +125,12 @@ def update_gui(err_msg, texts_stats_files):
                 assert all((len_syls == 1 for len_syls in len_types_syls))
 
         # TTRs
-        for ttr_statistic in [msttr, mattr, ttr]:
-            assert 0 < ttr_statistic < 1
-
-        assert mtld > 1
+        for i, ttr in enumerate(ttrs):
+            # MTLD
+            if i == 2:
+                assert ttr > 1
+            else:
+                assert 0 < ttr < 1
 
         # Mean
         assert numpy.mean(len_paras_sentences) == count_sentences / count_paras

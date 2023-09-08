@@ -2016,6 +2016,10 @@ def init_settings_default(main):
 
             # Settings - Measures - Type-token Ratio
             'ttr': {
+                'hdd': {
+                    'sample_size': 42
+                },
+
                 'msttr': {
                     'num_tokens_in_each_seg': 100
                 },

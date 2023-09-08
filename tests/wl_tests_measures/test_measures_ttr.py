@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import scipy
+
 from tests import wl_test_init
 from wordless.wl_measures import wl_measures_ttr
 
@@ -25,6 +27,11 @@ settings = main.settings_custom['measures']['ttr']
 TOKENS_100 = ['This', 'is', 'a', 'sentence', '.'] * 20
 TOKENS_101 = ['This', 'is', 'a', 'sentence', '.'] * 20 + ['another']
 TOKENS_1000 = ['This', 'is', 'a', 'sentence', '.'] * 200
+
+def test_hdd():
+    hdd_100 = wl_measures_ttr.hdd(main, TOKENS_100)
+
+    assert hdd_100 == (1 - scipy.stats.hypergeom.pmf(k = 0, M = 100, n = 20, N = 42)) * (1 / 42) * 5
 
 def test_msttr():
     msttr_100 = wl_measures_ttr.msttr(main, TOKENS_101)
@@ -52,6 +59,7 @@ def test_ttr():
     assert ttr == 5 / 100
 
 if __name__ == '__main__':
+    test_hdd()
     test_msttr()
     test_mtld()
     test_mattr()
