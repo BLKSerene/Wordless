@@ -19,6 +19,7 @@
 # pylint: disable=unused-argument
 
 import collections
+import random
 
 import numpy
 import scipy
@@ -130,3 +131,33 @@ def mattr(main, tokens):
 # Reference: Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
 def ttr(main, tokens):
     return len(set(tokens)) / len(tokens)
+
+# vocd-D
+# Reference: Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quanitfication and assessment (pp. 51, 56–57). Palgrave Macmillan.
+def vocdd(main, tokens):
+    def ttr(n, d):
+        return (d / n) * (numpy.sqrt(1 + 2 * n / d) - 1)
+
+    num_tokens = len(tokens)
+    ttr_ys = numpy.empty(shape = 16)
+
+    for i, n in enumerate(range(35, 51)):
+        ttrs = numpy.empty(shape = 100)
+
+        for j in range(100):
+            if n <= num_tokens:
+                sample = random.sample(tokens, k = n)
+            else:
+                sample = tokens
+
+            ttrs[j] = len(set(sample)) / len(sample)
+
+        ttr_ys[i] = numpy.mean(ttrs)
+
+    popt, _ = scipy.optimize.curve_fit( # pylint: disable=unbalanced-tuple-unpacking
+        f = ttr,
+        xdata = numpy.array(range(35, 51)),
+        ydata = ttr_ys
+    )
+
+    return popt[0]

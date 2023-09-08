@@ -24,6 +24,7 @@ from wordless.wl_measures import wl_measures_ttr
 main = wl_test_init.Wl_Test_Main()
 settings = main.settings_custom['measures']['ttr']
 
+TOKENS_10 = ['This', 'is', 'a', 'sentence', '.'] * 2
 TOKENS_100 = ['This', 'is', 'a', 'sentence', '.'] * 20
 TOKENS_101 = ['This', 'is', 'a', 'sentence', '.'] * 20 + ['another']
 TOKENS_1000 = ['This', 'is', 'a', 'sentence', '.'] * 200
@@ -58,9 +59,19 @@ def test_ttr():
 
     assert ttr == 5 / 100
 
+def test_vocdd():
+    vocdd_10 = wl_measures_ttr.vocdd(main, TOKENS_10)
+    vocdd_100 = wl_measures_ttr.vocdd(main, TOKENS_100)
+    vocdd_1000 = wl_measures_ttr.vocdd(main, TOKENS_1000)
+
+    assert vocdd_10 > 0
+    assert vocdd_100 > 0
+    assert vocdd_1000 > 0
+
 if __name__ == '__main__':
     test_hdd()
     test_msttr()
     test_mtld()
     test_mattr()
     test_ttr()
+    test_vocdd()
