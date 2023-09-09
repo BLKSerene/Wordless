@@ -32,11 +32,11 @@ environment:
 
 cache:
   # Windows
-  - %LOCALAPPDATA%/pip/Cache -> requirements/requirements_tests.txt
+  - '%LOCALAPPDATA%/pip/Cache -> requirements/requirements_tests.txt'
   # macOS
-  - /Users/appveyor/Library/Caches/pip -> requirements/requirements_tests.txt
+  - '/Users/appveyor/Library/Caches/pip -> requirements/requirements_tests.txt'
   # Linux
-  - /home/appveyor/.cache/pip -> requirements/requirements_tests.txt
+  - '/home/appveyor/.cache/pip -> requirements/requirements_tests.txt'
 
 stack: python 3.10
 
