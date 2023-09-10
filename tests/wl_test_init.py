@@ -143,8 +143,6 @@ def change_default_tokenizers(main):
     for lang in settings_custom_word_tokenization:
         if 'nltk_nltk' in settings_global_word_tokenizers[lang]:
             settings_custom_word_tokenization[lang] = 'nltk_nltk'
-        elif 'sacremoses_moses' in settings_global_word_tokenizers[lang]:
-            settings_custom_word_tokenization[lang] = 'sacremoses_moses'
         elif 'pkuseg_zho' in settings_global_word_tokenizers[lang]:
             settings_custom_word_tokenization[lang] = 'pkuseg_zho'
         elif 'sudachipy_jpn_split_mode_a' in settings_global_word_tokenizers[lang]:

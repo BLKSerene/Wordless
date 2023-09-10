@@ -1732,6 +1732,7 @@ def init_settings_global():
             'amh': ['spacy_amh'],
 
             'ara': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ara',
                 'stanza_ara'
             ],
@@ -1751,9 +1752,13 @@ def init_settings_global():
                 'sacremoses_moses'
             ],
 
-            'aze': ['spacy_aze'],
+            'aze': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_aze'
+            ],
 
             'eus': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_eus',
                 'stanza_eus'
             ],
@@ -1776,7 +1781,11 @@ def init_settings_global():
             ],
 
             'mya': ['stanza_mya'],
-            'bxr': ['stanza_bxr'],
+
+            'bxr': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_bxr'
+            ],
 
             'cat': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1806,7 +1815,10 @@ def init_settings_global():
                 'stanza_chu'
             ],
 
-            'cop': ['stanza_cop'],
+            'cop': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_cop'
+            ],
 
             'hrv': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -1847,9 +1859,13 @@ def init_settings_global():
                 'stanza_eng'
             ],
 
-            'myv': ['stanza_myv'],
+            'myv': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_myv'
+            ],
 
             'est': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_est',
                 'stanza_est'
@@ -1861,6 +1877,7 @@ def init_settings_global():
             ],
 
             'fin': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_fin',
                 'stanza_fin'
@@ -1882,7 +1899,10 @@ def init_settings_global():
                 'stanza_glg'
             ],
 
-            'lug': ['spacy_lug'],
+            'lug': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_lug'
+            ],
 
             'deu_at': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
@@ -1909,6 +1929,7 @@ def init_settings_global():
             ],
 
             'grc': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_grc',
                 'stanza_grc'
             ],
@@ -1925,8 +1946,12 @@ def init_settings_global():
                 'spacy_guj'
             ],
 
-            'hbo': ['stanza_hbo'],
+            'hbo': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_hbo'
+            ],
             'heb': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_heb',
                 'stanza_heb'
             ],
@@ -1939,6 +1964,7 @@ def init_settings_global():
             ],
 
             'hun': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_hun',
                 'stanza_hun'
@@ -1952,6 +1978,7 @@ def init_settings_global():
             ],
 
             'ind': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_ind',
                 'stanza_ind'
             ],
@@ -1978,14 +2005,20 @@ def init_settings_global():
             ],
 
             'kan': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_kan'
             ],
 
-            'kaz': ['stanza_kaz'],
+            'kaz': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_kaz'
+            ],
+
             'khm': ['khmer_nltk_khm'],
 
             'kor': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'python_mecab_ko_mecab',
                 'spacy_kor',
                 'stanza_kor'
@@ -1997,6 +2030,7 @@ def init_settings_global():
             ],
 
             'kir': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_kir',
                 'stanza_kir'
             ],
@@ -2015,6 +2049,7 @@ def init_settings_global():
             ],
 
             'lij': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_lij',
                 'stanza_lij'
             ],
@@ -2036,14 +2071,21 @@ def init_settings_global():
                 'spacy_mkd'
             ],
 
-            'msa': ['spacy_msa'],
+            'msa': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_msa'
+            ],
 
             'mal': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_mal'
             ],
 
-            'mlt': ['stanza_mlt'],
+            'mlt': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_mlt'
+            ],
 
             'glv': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -2057,8 +2099,15 @@ def init_settings_global():
                 'stanza_mar'
             ],
 
-            'pcm': ['stanza_pcm'],
-            'mni': ['sacremoses_moses'],
+            'pcm': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_pcm'
+            ],
+
+            'mni': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'sacremoses_moses'
+            ],
 
             'nep': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -2093,7 +2142,10 @@ def init_settings_global():
                 'stanza_pol'
             ],
 
-            'qpm': ['stanza_qpm'],
+            'qpm': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_qpm'
+            ],
 
             'por_br': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -2131,7 +2183,10 @@ def init_settings_global():
                 'stanza_orv'
             ],
 
-            'sme': ['stanza_sme'],
+            'sme': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_sme'
+            ],
 
             'san': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
@@ -2204,24 +2259,36 @@ def init_settings_global():
                 'stanza_swe'
             ],
 
-            'tgl': ['spacy_tgl'],
+            'tgl': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_tgl'
+            ],
+
             'tgk': ['nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter'],
 
             'tam': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_tam',
                 'stanza_tam'
             ],
 
-            'tat': ['spacy_tat'],
+            'tat': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_tat'
+            ],
 
             'tel': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'sacremoses_moses',
                 'spacy_tel',
                 'stanza_tel'
             ],
 
-            'tdt': ['sacremoses_moses'],
+            'tdt': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'sacremoses_moses'
+            ],
 
             'tha': [
                 'pythainlp_longest_matching',
@@ -2232,10 +2299,19 @@ def init_settings_global():
             ],
 
             'bod': ['botok_bod'],
-            'tir': ['spacy_tir'],
-            'tsn': ['spacy_tsn'],
+
+            'tir': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_tir'
+            ],
+
+            'tsn': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_tsn'
+            ],
 
             'tur': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_tur',
                 'stanza_tur'
             ],
@@ -2252,7 +2328,10 @@ def init_settings_global():
                 'stanza_urd'
             ],
 
-            'uig': ['stanza_uig'],
+            'uig': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_uig'
+            ],
 
             'vie': [
                 'nltk_tok_tok',
@@ -2265,8 +2344,15 @@ def init_settings_global():
                 'stanza_cym'
             ],
 
-            'wol': ['stanza_wol'],
-            'yor': ['spacy_yor'],
+            'wol': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'stanza_wol'
+            ],
+
+            'yor': [
+                'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
+                'spacy_yor'
+            ],
 
             'other': [
                 'nltk_nist', 'nltk_nltk', 'nltk_penn_treebank', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter',
