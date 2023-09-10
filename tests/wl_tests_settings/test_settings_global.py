@@ -71,8 +71,10 @@ def add_lang_suffixes(lang_codes):
 
 class Check_Settings_Global():
     def __init__(self):
-        self.lang_missing = False
-        self.lang_extra = False
+        self.lang_utils_missing = False
+        self.lang_utils_extra = False
+        self.langs_missing = False
+        self.langs_extra = False
         self.invalid_lang_utils = False
         self.lang_default_missing = False
         self.lang_default_extra = False
@@ -84,7 +86,7 @@ class Check_Settings_Global():
             if lang_code_639_3 not in langs_global:
                 print(f'''Missing language code "{lang_code_639_3}/{lang_code}" found for {msg}!''')
 
-                self.lang_missing = True
+                self.lang_utils_missing = True
 
         for lang_code in langs_global:
             lang_code_639_1 = wl_conversion.to_iso_639_1(main, lang_code)
@@ -92,7 +94,7 @@ class Check_Settings_Global():
             if lang_code_639_1 not in langs_supported:
                 print(f'''Extra language code "{lang_code}/{lang_code_639_1}" found for {msg}!''')
 
-                self.lang_extra = True
+                self.lang_utils_extra = True
 
     def check_missing_extra_langs_default(self, langs, langs_default, msg):
         for lang_code in langs:
@@ -154,12 +156,12 @@ class Check_Settings_Global():
                     if lang_code not in langs_nltk_word_tokenizers:
                         print(f'''Missing language code "{lang_code}" found for NLTK's tokenizers!''')
 
-                        self.lang_missing = True
+                        self.lang_utils_missing = True
                 else:
                     if lang_code in langs_nltk_word_tokenizers:
                         print(f'''Extra language code "{lang_code}" found for NLTK's tokenizers!''')
 
-                        self.lang_extra = True
+                        self.lang_utils_extra = True
 
         # Sacremoses
         langs_sacremoses_supported = []
@@ -235,7 +237,7 @@ class Check_Settings_Global():
 
                 print(f'''Missing language code "{lang_code}/{lang_code_639_1}" found for spaCy's sentence recognizers or sentencizer!''')
 
-                self.lang_missing = True
+                self.lang_utils_missing = True
 
         for lang_code, word_tokenizers in settings_word_tokenizers.items():
             if lang_code != 'other' and any(('spacy' in word_tokenizer for word_tokenizer in word_tokenizers)):
@@ -333,6 +335,27 @@ class Check_Settings_Global():
 
             self.check_missing_extra_langs(langs_supported, langs, f"Stanza's {msg_lang_util}")
 
+        # Check for missing and extra languages
+        settings_langs = [lang[0] for lang in settings_global['langs'].values()]
+        settings_langs_lang_utils = set([
+            *settings_sentence_tokenizers,
+            *settings_word_tokenizers,
+            *settings_syl_tokenizers,
+            *settings_pos_taggers,
+            *settings_lemmatizers,
+            *settings_stop_word_lists,
+            *settings_dependency_parsers,
+            *settings_sentiment_analyzers
+        ])
+
+        for lang in settings_langs:
+            if lang not in settings_langs_lang_utils:
+                print(f'Found extra language: {lang}!')
+
+        for lang in settings_langs_lang_utils:
+            if lang not in settings_langs:
+                print(f'Found missing language: {lang}!')
+
         # Check for invalid language utils
         for settings_lang_utils, mapping_lang_utils, msg in [
             [settings_sentence_tokenizers, 'sentence_tokenizers', 'sentence tokenizers'],
@@ -385,8 +408,8 @@ def test_settings_global():
     check_settings_global = Check_Settings_Global()
     check_settings_global.check_settings_global()
 
-    assert not check_settings_global.lang_missing
-    assert not check_settings_global.lang_extra
+    assert not check_settings_global.lang_utils_missing
+    assert not check_settings_global.lang_utils_extra
     assert not check_settings_global.invalid_lang_utils
     assert not check_settings_global.lang_default_missing
     assert not check_settings_global.lang_default_extra

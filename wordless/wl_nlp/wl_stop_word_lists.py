@@ -22,7 +22,6 @@ import nltk
 import opencc
 import pythainlp
 
-from data import stopword
 from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_utils import wl_conversion
 
@@ -99,23 +98,6 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
 
                 spacy_lang = importlib.import_module(f'spacy.lang.{lang}')
                 stop_words = spacy_lang.STOP_WORDS
-        # stopword
-        elif stop_word_list.startswith('stopword_'):
-            if lang == 'kmr':
-                stop_words = stopword.kur
-            elif lang == 'por_br':
-                stop_words = stopword.porBr
-            elif lang == 'pan_guru':
-                stop_words = stopword.panGu
-            else:
-                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-                stop_words = stopword.__dict__[lang]
-
-            stop_words.extend(stopword.num123)
-
-            # Language-specific numbers
-            if lang in ['kor', 'mya', 'fas', 'tel']:
-                stop_words.extend(stopword.__dict__[f'num{lang.capitalize()}'])
         # PyThaiNLP
         elif stop_word_list == 'pythainlp_tha':
             stop_words = pythainlp.corpus.common.thai_stopwords()
