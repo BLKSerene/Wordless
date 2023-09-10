@@ -150,9 +150,7 @@ class Check_Settings_Global():
 
         for lang_code in settings_word_tokenizers:
             if lang_code != 'other':
-                lang_family = wl_conversion.get_lang_family(main, lang_code)
-
-                if lang_family == 'Indo-European':
+                if lang_code not in ['amh', 'mya', 'lzh', 'zho_cn', 'zho_tw', 'jpn', 'khm', 'tha', 'bod', 'vie']:
                     if lang_code not in langs_nltk_word_tokenizers:
                         print(f'''Missing language code "{lang_code}" found for NLTK's tokenizers!''')
 
