@@ -105,7 +105,7 @@ def wl_test_word_tokenize(lang, results):
     # The count of tokens should be more than 1
     assert len(tokens) > 1
     # The count of tokens should be more than the length of tokens split by space
-    if lang in ['chu', 'cop', 'fro', 'grc', 'pcm', 'orv', 'san', 'tel']:
+    if lang in ['chu', 'cop', 'grc', 'pcm', 'orv', 'san', 'tel']:
         assert len(tokens) == len(test_sentence.split())
     elif lang == 'vie':
         assert len(tokens) < len(test_sentence.split())

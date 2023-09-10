@@ -1650,6 +1650,7 @@ def init_settings_default(main):
                 'est': 'stanza_est',
                 'fin': 'spacy_fin',
                 'fra': 'spacy_fra',
+                'fro': 'stanza_fro',
                 'glg': 'stanza_glg',
                 'kat': 'simplemma_kat',
                 'deu_at': 'spacy_deu',

@@ -127,12 +127,12 @@ LANGS_STANZA_POS_TAGGERS = [
 LANGS_STANZA_LEMMATIZERS = [
     'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
     'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng', 'myv',
-    'est', 'fin', 'fra', 'glg', 'deu', 'got', 'grc', 'ell', 'hbo', 'heb',
-    'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz', 'kor', 'kmr',
-    'kir', 'lat', 'lav', 'lij', 'lit', 'glv', 'mar', 'pcm', 'nob', 'nno',
-    'fas', 'pol', 'qpm', 'por', 'ron', 'rus', 'orv', 'sme', 'san', 'gla',
-    'srp_latn', 'slk', 'slv', 'hsb', 'spa', 'swe', 'tam', 'tur', 'ukr', 'urd',
-    'uig', 'cym', 'wol'
+    'est', 'fin', 'fra', 'fro', 'glg', 'deu', 'got', 'grc', 'ell', 'hbo',
+    'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz', 'kor',
+    'kmr', 'kir', 'lat', 'lav', 'lij', 'lit', 'glv', 'mar', 'pcm', 'nob',
+    'nno', 'fas', 'pol', 'qpm', 'por', 'ron', 'rus', 'orv', 'sme', 'san',
+    'gla', 'srp_latn', 'slk', 'slv', 'hsb', 'spa', 'swe', 'tam', 'tur', 'ukr',
+    'urd', 'uig', 'cym', 'wol'
 ]
 LANGS_STANZA_DEPENDENCY_PARSERS = LANGS_STANZA_POS_TAGGERS
 LANGS_STANZA_SENTIMENT_ANALYZERS = ['zho_cn', 'eng', 'deu', 'mar', 'spa', 'vie']
@@ -306,7 +306,8 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
                 lang = lang_stanza,
                 model_dir = model_dir,
                 processors = processors,
-                proxies = wl_misc.wl_get_proxies(self.main)
+                proxies = wl_misc.wl_get_proxies(self.main),
+                download_json = False
             )
         except Exception: # pylint: disable=broad-exception-caught
             self.err_msg = traceback.format_exc()
