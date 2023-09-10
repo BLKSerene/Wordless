@@ -138,7 +138,6 @@ def init_settings_global():
             _tr('init_settings_global', 'Spanish'): ['spa', 'es', 'Indo-European'],
             _tr('init_settings_global', 'Swahili'): ['swa', 'sw', 'Niger-Congo'],
             _tr('init_settings_global', 'Swedish'): ['swe', 'sv', 'Indo-European'],
-            _tr('init_settings_global', 'Swedish Sign Language'): ['swl', 'swl', 'Swedish Sign'],
             _tr('init_settings_global', 'Tagalog'): ['tgl', 'tl', 'Austronesian'],
             _tr('init_settings_global', 'Tajik'): ['tgk', 'tg', 'Indo-European'],
             _tr('init_settings_global', 'Tamil'): ['tam', 'ta', 'Dravidian'],
@@ -523,7 +522,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'Stanza - Sorbian (Upper) sentence tokenizer'): 'stanza_hsb',
                 _tr('init_settings_global', 'Stanza - Spanish sentence tokenizer'): 'stanza_spa',
                 _tr('init_settings_global', 'Stanza - Swedish sentence tokenizer'): 'stanza_swe',
-                _tr('init_settings_global', 'Stanza - Swedish Sign Language sentence tokenizer'): 'stanza_swl',
                 _tr('init_settings_global', 'Stanza - Tamil sentence tokenizer'): 'stanza_tam',
                 _tr('init_settings_global', 'Stanza - Telugu sentence tokenizer'): 'stanza_tel',
                 _tr('init_settings_global', 'Stanza - Thai sentence tokenizer'): 'stanza_tha',
@@ -702,7 +700,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'Stanza - Sorbian (Upper) word tokenizer'): 'stanza_hsb',
                 _tr('init_settings_global', 'Stanza - Spanish word tokenizer'): 'stanza_spa',
                 _tr('init_settings_global', 'Stanza - Swedish word tokenizer'): 'stanza_swe',
-                _tr('init_settings_global', 'Stanza - Swedish Sign Language word tokenizer'): 'stanza_swl',
                 _tr('init_settings_global', 'Stanza - Tamil word tokenizer'): 'stanza_tam',
                 _tr('init_settings_global', 'Stanza - Telugu word tokenizer'): 'stanza_tel',
                 _tr('init_settings_global', 'Stanza - Thai word tokenizer'): 'stanza_tha',
@@ -884,7 +881,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'Stanza - Sorbian (Upper) part-of-speech tagger'): 'stanza_hsb',
                 _tr('init_settings_global', 'Stanza - Spanish part-of-speech tagger'): 'stanza_spa',
                 _tr('init_settings_global', 'Stanza - Swedish part-of-speech tagger'): 'stanza_swe',
-                _tr('init_settings_global', 'Stanza - Swedish Sign Language part-of-speech tagger'): 'stanza_swl',
                 _tr('init_settings_global', 'Stanza - Tamil part-of-speech tagger'): 'stanza_tam',
                 _tr('init_settings_global', 'Stanza - Telugu part-of-speech tagger'): 'stanza_tel',
                 _tr('init_settings_global', 'Stanza - Turkish part-of-speech tagger'): 'stanza_tur',
@@ -1262,7 +1258,6 @@ def init_settings_global():
                 _tr('init_settings_global', 'Stanza - Sorbian (Upper) dependency parser'): 'stanza_hsb',
                 _tr('init_settings_global', 'Stanza - Spanish dependency parser'): 'stanza_spa',
                 _tr('init_settings_global', 'Stanza - Swedish dependency parser'): 'stanza_swe',
-                _tr('init_settings_global', 'Stanza - Swedish Sign Language dependency parser'): 'stanza_swl',
                 _tr('init_settings_global', 'Stanza - Tamil dependency parser'): 'stanza_tam',
                 _tr('init_settings_global', 'Stanza - Telugu dependency parser'): 'stanza_tel',
                 _tr('init_settings_global', 'Stanza - Turkish dependency parser'): 'stanza_tur',
@@ -1727,10 +1722,6 @@ def init_settings_global():
                 'spacy_sentence_recognizer_swe',
                 'spacy_sentencizer',
                 'stanza_swe'
-            ],
-            'swl': [
-                'spacy_sentencizer',
-                'stanza_swl'
             ],
 
             'tam': [
@@ -2280,7 +2271,6 @@ def init_settings_global():
                 'spacy_swe',
                 'stanza_swe'
             ],
-            'swl': ['stanza_swl'],
 
             'tgl': ['spacy_tgl'],
             'tgk': ['nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_tok_tok', 'nltk_twitter'],
@@ -2617,7 +2607,6 @@ def init_settings_global():
                 'spacy_swe',
                 'stanza_swe'
             ],
-            'swl': ['stanza_swl'],
 
             'tam': ['stanza_tam'],
             'tel': ['stanza_tel'],
@@ -3400,7 +3389,6 @@ def init_settings_global():
                 'spacy_swe',
                 'stanza_swe'
             ],
-            'swl': ['stanza_swl'],
 
             'tam': ['stanza_tam'],
             'tel': ['stanza_tel'],
