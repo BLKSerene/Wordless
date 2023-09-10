@@ -111,8 +111,8 @@ LANGS_STANZA_TOKENIZERS = [
     'kaz', 'kor', 'kmr', 'kir', 'lat', 'lav', 'lij', 'lit', 'mlt', 'glv',
     'mar', 'pcm', 'nob', 'nno', 'fas', 'pol', 'qpm', 'por', 'ron', 'rus',
     'orv', 'sme', 'san', 'gla', 'srp_latn', 'snd', 'slk', 'slv', 'hsb', 'spa',
-    'swe', 'swl', 'tam', 'tel', 'tha', 'tur', 'ukr', 'urd', 'uig', 'vie',
-    'cym', 'wol', 'other'
+    'swe', 'tam', 'tel', 'tha', 'tur', 'ukr', 'urd', 'uig', 'vie', 'cym',
+    'wol', 'other'
 ]
 LANGS_STANZA_POS_TAGGERS = [
     'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
@@ -121,8 +121,8 @@ LANGS_STANZA_POS_TAGGERS = [
     'hbo', 'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz',
     'kor', 'kmr', 'kir', 'lat', 'lav', 'lij', 'lit', 'mlt', 'glv', 'mar',
     'pcm', 'nob', 'nno', 'fas', 'pol', 'qpm', 'por', 'ron', 'rus', 'orv',
-    'sme', 'san', 'gla', 'srp_latn', 'slk', 'slv', 'hsb', 'spa', 'swe', 'swl',
-    'tam', 'tel', 'tur', 'ukr', 'urd', 'uig', 'vie', 'cym', 'wol'
+    'sme', 'san', 'gla', 'srp_latn', 'slk', 'slv', 'hsb', 'spa', 'swe', 'tam',
+    'tel', 'tur', 'ukr', 'urd', 'uig', 'vie', 'cym', 'wol'
 ]
 LANGS_STANZA_LEMMATIZERS = [
     'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
