@@ -28,6 +28,7 @@
 - Work Area: Add Profiler - Type-token Ratios - Corrected TTR / HD-D / LogTTR / Measure of Textual Lexical Diversity / Moving-average TTR / Root TTR / vocd-D
 
 ### ✨ Improvements
+- Utils: Update NLTK's word tokenizers
 - Work Area: Update Profiler - Type-token Ratios - Mean Segmental TTR
 
 ### ❌ Removals
