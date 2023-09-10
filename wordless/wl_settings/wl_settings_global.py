@@ -1009,6 +1009,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'Stanza - Estonian lemmatizer'): 'stanza_est',
                 _tr('init_settings_global', 'Stanza - Finnish lemmatizer'): 'stanza_fin',
                 _tr('init_settings_global', 'Stanza - French lemmatizer'): 'stanza_fra',
+                _tr('init_settings_global', 'Stanza - French (Old) lemmatizer'): 'stanza_fro',
                 _tr('init_settings_global', 'Stanza - Galician lemmatizer'): 'stanza_glg',
                 _tr('init_settings_global', 'Stanza - German lemmatizer'): 'stanza_deu',
                 _tr('init_settings_global', 'Stanza - Gothic lemmatizer'): 'stanza_got',
@@ -2729,6 +2730,7 @@ def init_settings_global():
                 'spacy_fra',
                 'stanza_fra'
             ],
+            'fro': ['stanza_fro'],
 
             'glg': [
                 'simplemma_glg',
