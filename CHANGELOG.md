@@ -32,9 +32,11 @@
 
 ### ❌ Removals
 - Settings: Remove Settings - Tables - Profiler
+- Utils: Remove stopword's stop word lists
 
 ### ⏫ Dependency Changes
 - Dependencies: Add Stanza
+- Dependencies: Remove stopword
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - 08/18/2023
 ### 🎉 New Features

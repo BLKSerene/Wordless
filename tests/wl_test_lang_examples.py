@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+from tests import wl_test_init
+
 # Examples are extracted from Wikipedia in different languages
 # Encodings
 ENCODING_ARA = '''ٱللُّغَةُ ٱلْعَرَبِيَّة هي أكثر اللغات السامية تحدثًا، وإحدى أكثر اللغات انتشاراً في العالم، يتحدثها أكثر من 467 مليون نسمة.(1) ويتوزع متحدثوها في الوطن العربي، بالإضافة إلى العديد من المناطق الأخرى المجاورة كالأحواز وتركيا وتشاد ومالي والسنغال وإرتيريا وإثيوبيا وجنوب السودان وإيران. وبذلك فهي تحتل المركز الرابع أو الخامس من حيث اللغات الأكثر انتشارًا في العالم، وهي تحتل المركز الثالث تبعًا لعدد الدول التي تعترف بها كلغة رسمية؛ إذ تعترف بها 27 دولة كلغة رسمية، واللغة الرابعة من حيث عدد المستخدمين على الإنترنت. اللغةُ العربيةُ ذات أهمية قصوى لدى المسلمين، فهي عندَهم لغةٌ مقدسة إذ أنها لغة القرآن، وهي لغةُ الصلاة وأساسيةٌ في القيام بالعديد من العبادات والشعائرِ الإسلامية. العربيةُ هي أيضاً لغة شعائرية رئيسية لدى عدد من الكنائس المسيحية في الوطن العربي، كما كُتبَت بها كثير من أهمِّ الأعمال الدينية والفكرية اليهودية في العصور الوسطى. ارتفعتْ مكانةُ اللغةِ العربية إثْرَ انتشارِ الإسلام بين الدول إذ أصبحت لغة السياسة والعلم والأدب لقرون طويلة في الأراضي التي حكمها المسلمون. وللغة العربية تأثير مباشر وغير مباشر على كثير من اللغات الأخرى في العالم الإسلامي، كالتركية والفارسية والأمازيغية والكردية والأردية والماليزية والإندونيسية والألبانية وبعض اللغات الإفريقية الأخرى مثل الهاوسا والسواحيلية والتجرية والأمهرية والصومالية، وبعض اللغات الأوروبية وخاصةً المتوسطية كالإسبانية والبرتغالية والمالطية والصقلية؛ ودخلت الكثير من مصطلحاتها في اللغة الإنجليزية واللغات الأخرى، مثل أدميرال والتعريفة والكحول والجبر وأسماء النجوم. كما أنها تُدرَّس بشكل رسمي أو غير رسمي في الدول الإسلامية والدول الإفريقية المحاذية للوطن العربي.
@@ -356,7 +358,6 @@ TEXT_DSB = ['Dolnoserbšćina, dolnoserbska rěc (nimski Niedersorbisch abo teke
 TEXT_HSB = ['Hornjoserbšćina je zapadosłowjanska rěč, kotraž so w Hornjej Łužicy wokoło městow Budyšin, Kamjenc a Wojerecy rěči.', ' ', 'Wona je přiwuzna z delnjoserbšćinu w susodnej Delnjej Łužicy, čěšćinu, pólšćinu, słowakšćinu a kašubšćinu.', ' ', 'Jako słowjanska rěč hornjoserbšćina k indoeuropskim rěčam słuša.']
 TEXT_SPA = ['El español o castellano es una lengua romance procedente del latín hablado, perteneciente a la familia de lenguas indoeuropeas.', ' ', 'Forma parte del grupo ibérico y es originaria de Castilla, reino medieval de la península ibérica.', ' ', 'Se conoce también informalmente como castillan. 1\u200b32\u200b33\u200b en algunas áreas rurales e indígenas de América,34\u200b pues el español se empezó a enseñar poco después de la incorporación de los nuevos territorios a la Corona de Castilla.35\u200b36\u200b37\u200b38\u200b39\u200b40\u200b']
 TEXT_SWE = ['Svenska (svenska (info)) är ett östnordiskt språk som talas av ungefär tio miljoner personer främst i Sverige där språket har en dominant ställning som huvudspråk, men även som det ena nationalspråket i Finland och som enda officiella språk på Åland.', ' ', 'I övriga Finland talas det som modersmål framförallt i de finlandssvenska kustområdena i Österbotten, Åboland och Nyland.', ' ', 'En liten minoritet svenskspråkiga finns även i Estland.', ' ', 'Svenska är nära besläktat och i hög grad ömsesidigt begripligt med danska och norska.', ' ', 'De andra nordiska språken, isländska och färöiska, är mindre ömsesidigt begripliga med svenska.', ' ', 'Liksom de övriga nordiska språken härstammar svenskan från en gren av fornnordiska, vilket var det språk som talades av de germanska folken i Skandinavien.']
-TEXT_SWL = ['JA@ub STÄMMA', ' ', 'PRO1 BLI BÖRJA MED.VARA LEDAMOT INUTI IDROTT^KLUBB TID-FRAMÅT KASSÖR TID-FRAMÅT BLI IDROTT^KLUBB ORDFÖRANDE TID-FRAMÅT SEX ÅR TID-FRAMÅT']
 TEXT_TAM = ['தமிழ் (Tamil language) தமிழர்களினதும் தமிழ் பேசும் பலரின் தாய்மொழி ஆகும்.', ' ', 'தமிழ், உலகில் உள்ள முதன்மையான மொழிகளில் ஒன்றும் செம்மொழியும் ஆகும்.', ' ', 'இந்தியா, இலங்கை, மலேசியா, சிங்கப்பூர் ஆகிய நாடுகளில் அதிக அளவிலும், ஐக்கிய அரபு அமீரகம், தென்னாப்பிரிக்கா, மொரிசியசு, பிசி, இரீயூனியன், திரினிடாடு போன்ற நாடுகளில் சிறிய அளவிலும் தமிழ் பேசப்படுகிறது.', ' ', '1997-ஆம் ஆண்டுப் புள்ளி விவரப்படி உலகம் முழுவதிலும் 8 கோடி (80 மில்லியன்) மக்களால் பேசப்படும் தமிழ்,[13] ஒரு மொழியைத் தாய்மொழியாகக் கொண்டு பேசும் மக்களின் எண்ணிக்கை அடிப்படையில் பதினெட்டாவது இடத்தில் உள்ளது.[14]', ' ', 'இணையத்தில் அதிகம் பயன்படுத்தப்படும் இந்திய மொழிகளில் தமிழ் முதன்மையாக உள்ளதாக 2017-ஆம் ஆண்டு நடைபெற்ற கூகுள் கணக்கெடுப்பில் தெரிய வந்தது.[15]']
 TEXT_TEL = ['తెలుగు అనేది ద్రావిడ భాషల కుటుంబానికి చెందిన భాష.', ' ', 'దీనిని మాట్లాడే ప్రజలు ప్రధానంగా ఆంధ్ర, తెలంగాణాలో ఉన్నారు.', ' ', 'ఇది ఆ రాష్ట్రాలలో అధికార భాష.', ' ', 'భారతదేశంలో ఒకటి కంటే ఎక్కువ రాష్ట్రాల్లో ప్రాథమిక అధికారిక భాషా హోదా కలిగిన కొద్ది భాషలలో హిందీ, బెంగాలీలతో పాటు ఇది కూడా ఉంది.[5][6]', ' ', 'పుదుచ్చేరిలోని యానం జిల్లాలో తెలుగు అధికారిక భాష.', ' ', 'ఒడిశా, కర్ణాటక, తమిళనాడు, కేరళ, పంజాబ్, ఛత్తీస్‌గఢ్, మహారాష్ట్ర, అండమాన్ నికోబార్ దీవులలో గుర్తింపబడిన అల్పసంఖ్యాక భాష.', ' ', 'దేశ ప్రభుత్వం భారతదేశ ప్రాచీన భాషగా గుర్తించిన ఆరు భాషలలో ఇది ఒకటి.[7][8]']
 TEXT_THA = ['ภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ และภาษาประจำชาติของประเทศไทย[3][4]', ' ', 'มีการสันนิษฐานว่าภาษาในตระกูลนี้มีถิ่นกำเนิดจากทางตอนใต้ของประเทศจีน และนักภาษาศาสตร์บางส่วนเสนอว่า ภาษาไทยน่าจะมีความเชื่อมโยงกับตระกูลภาษาออสโตร-เอเชียติก ตระกูลภาษาออสโตรนีเซียน และตระกูลภาษาจีน-ทิเบต']
@@ -462,14 +463,11 @@ SENTENCE_SND = TEXT_SND[0]
 SENTENCE_SIN = 'ශ්‍රී ලංකාවේ ප්‍රධාන ජාතිය වන සිංහල ජනයාගේ මව් බස සිංහල වෙයි.'
 SENTENCE_SLK = TEXT_SLK[0]
 SENTENCE_SLV = TEXT_SLV[0]
-SENTENCE_SOM = 'Af-Soomaali waa luqad Afro-Aasiyatik ah oo ay leedahay laanta Kushiitik .'
-SENTENCE_SOT = 'Lebitso la "Sesotho" le bolela meetlo ea batho ba buang puo e bitsoang Sesotho.'
 SENTENCE_DSB = TEXT_DSB[0]
 SENTENCE_HSB = TEXT_HSB[0]
 SENTENCE_SPA = TEXT_SPA[0]
 SENTENCE_SWA = 'Kiswahili ni lugha ya Kibantu yenye misamiati mingi ya Kiarabu (35%[1]), lakini sasa ya Kiingereza pia (10%), inayozungumzwa katika eneo kubwa la Afrika ya Mashariki.'
 SENTENCE_SWE = TEXT_SWE[0]
-SENTENCE_SWL = TEXT_SWL[0]
 SENTENCE_TGL = 'Ang wikang Tagalog[1] (Baybayin: ᜏᜒᜃᜆᜄᜎᜓ), o ang Tagalog, ay isa sa mga pinakaginagamit na wika ng Pilipinas.'
 SENTENCE_TGK = 'Забони тоҷикӣ — забоне, ки дар Эрон: форсӣ, ва дар Афғонистон дарӣ номида мешавад, забони давлатии кишварҳои Тоҷикистон, Эрон ва Афғонистон мебошад.'
 SENTENCE_TAM = TEXT_TAM[0]
@@ -490,3 +488,18 @@ SENTENCE_WOL = TEXT_WOL[0]
 SENTENCE_YOR = 'Èdè Yorùbá Ni èdè tí ó ṣàkójọ pọ̀ gbogbo kú oótu o-ò-jíire bí, níapá ìwọ̀ Oòrùn ilẹ̀ Nàìjíríà, tí a bá wo èdè Yorùbá, àwọn onímọ̀ pín èdè náà sábẹ́ ẹ̀yà Kwa nínú ẹbí èdè Niger-Congo.'
 SENTENCE_ZUL = 'Zulu /ˈzuːluː/, noma isiZulu wulimi lwabantu base Ningizimu neAfrika abayingxenye yamaNguni.'
 SENTENCE_OTHER = SENTENCE_ENG_US
+
+def check_lang_examples(main):
+    settings_langs = settings_langs = [lang[0] for lang in main.settings_global['langs'].values()]
+
+    for var in globals():
+        if var.startswith(('TEXT_', 'SENTENCE_')):
+            var_lang = var.split('_', maxsplit = 1)[1].lower()
+
+            if var_lang not in settings_langs:
+                print(f'Found unused language example: {var}/{var_lang}!')
+
+if __name__ == '__main__':
+    main = wl_test_init.Wl_Test_Main()
+
+    check_lang_examples(main)

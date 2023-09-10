@@ -41,7 +41,7 @@ def test_lingua():
 
     print(f"Extra languages: {', '.join(langs_extra)}\n")
 
-    assert langs_extra == ['BOSNIAN', 'MAORI', 'SHONA', 'TSONGA', 'XHOSA']
+    assert langs_extra == ['BOSNIAN', 'MAORI', 'SHONA', 'SOMALI', 'SOTHO', 'TSONGA', 'XHOSA']
 
 # Encoding detection
 def check_encodings_detected(test_file_dir, encodings, text):
@@ -304,13 +304,13 @@ def test_detection_lang():
             'heb', 'hin', 'hun',
             'isl', 'ind', 'gle', 'ita',
             'jpn',
-            'kor', # 'kaz',
+            'kor', 'kaz',
             'lat', 'lav', 'lit',
-            'mkd', 'mar', 'mon', # 'msa',
+            'mkd', 'mar', 'mon', 'msa',
             'nno', # 'nob',
             'fas', 'pol', 'por_pt', 'pan_guru',
             'ron', 'rus',
-            'srp_cyrl', 'slk', 'slv', 'som', 'sot', 'spa', 'swa', 'swe',
+            'srp_cyrl', 'slk', 'slv', 'spa', 'swa', 'swe',
             'tgl', 'tam', 'tel', 'tha', 'tsn', 'tur',
             'ukr', 'urd',
             'vie',
