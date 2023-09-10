@@ -81,7 +81,7 @@ def wl_test_sentence_tokenize(lang, results):
     print(f'{sentences}\n')
 
     # The count of sentences should be more than 1
-    if lang in ['cop', 'fro', 'kaz', 'pcm', 'san', 'srp_latn']:
+    if lang in ['cop', 'fro', 'kaz', 'pcm', 'qpm', 'san', 'srp_latn']:
         assert len(sentences) == 1
     else:
         assert len(sentences) > 1
@@ -242,8 +242,8 @@ def wl_test_lemmatize(lang, results):
     )
 
     if lang in [
-        'bul', 'cop', 'grc', 'ell', 'hin', 'isl', 'lit', 'pcm', 'pol', 'orv',
-        'sme', 'san', 'cym'
+        'bul', 'cop', 'grc', 'ell', 'hin', 'isl', 'lit', 'glv', 'pcm', 'pol',
+        'orv', 'sme', 'san', 'cym'
     ]:
         assert len(lemmas_tokenized_long) == 101 * 10
     else:
@@ -308,15 +308,14 @@ def wl_test_dependency_parse(lang, results):
     assert dependencies_tokenized_tagged == dependencies_tokenized
 
     # Long texts
-    if lang not in ['afr', 'pcm']:
-        dependencies_tokenized_long = wl_dependency_parsing.wl_dependency_parse(
-            main,
-            inputs = [str(i) for i in range(101) for j in range(10)],
-            lang = lang,
-            dependency_parser = dependency_parser
-        )
+    dependencies_tokenized_long = wl_dependency_parsing.wl_dependency_parse(
+        main,
+        inputs = [str(i) for i in range(101) for j in range(10)],
+        lang = lang,
+        dependency_parser = dependency_parser
+    )
 
-        assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
+    assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
 
 def wl_test_sentiment_analyze(lang, results):
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')

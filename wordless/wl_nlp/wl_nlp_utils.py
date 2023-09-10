@@ -107,30 +107,32 @@ LANGS_STANZA_TOKENIZERS = [
     'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'mya', 'bxr', 'cat',
     'lzh', 'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng',
     'myv', 'est', 'fao', 'fin', 'fra', 'fro', 'glg', 'deu', 'got', 'grc',
-    'ell', 'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz',
-    'kor', 'kmr', 'lat', 'lav', 'lij', 'lit', 'mlt', 'mar', 'pcm', 'nob',
-    'nno', 'fas', 'pol', 'por', 'ron', 'rus', 'orv', 'sme', 'san', 'gla',
-    'srp_latn', 'snd', 'slk', 'slv', 'hsb', 'spa', 'swe', 'swl', 'tam', 'tel',
-    'tha', 'tur', 'ukr', 'urd', 'uig', 'vie', 'cym', 'wol', 'other'
+    'ell', 'hbo', 'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn',
+    'kaz', 'kor', 'kmr', 'kir', 'lat', 'lav', 'lij', 'lit', 'mlt', 'glv',
+    'mar', 'pcm', 'nob', 'nno', 'fas', 'pol', 'qpm', 'por', 'ron', 'rus',
+    'orv', 'sme', 'san', 'gla', 'srp_latn', 'snd', 'slk', 'slv', 'hsb', 'spa',
+    'swe', 'swl', 'tam', 'tel', 'tha', 'tur', 'ukr', 'urd', 'uig', 'vie',
+    'cym', 'wol', 'other'
 ]
 LANGS_STANZA_POS_TAGGERS = [
     'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
     'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng', 'myv',
     'est', 'fao', 'fin', 'fra', 'fro', 'glg', 'deu', 'got', 'grc', 'ell',
-    'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz', 'kor',
-    'kmr', 'lat', 'lav', 'lij', 'lit', 'mlt', 'mar', 'pcm', 'nob', 'nno',
-    'fas', 'pol', 'por', 'ron', 'rus', 'orv', 'sme', 'san', 'gla', 'srp_latn',
-    'slk', 'slv', 'hsb', 'spa', 'swe', 'swl', 'tam', 'tel', 'tur', 'ukr',
-    'urd', 'uig', 'vie', 'cym', 'wol'
+    'hbo', 'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz',
+    'kor', 'kmr', 'kir', 'lat', 'lav', 'lij', 'lit', 'mlt', 'glv', 'mar',
+    'pcm', 'nob', 'nno', 'fas', 'pol', 'qpm', 'por', 'ron', 'rus', 'orv',
+    'sme', 'san', 'gla', 'srp_latn', 'slk', 'slv', 'hsb', 'spa', 'swe', 'swl',
+    'tam', 'tel', 'tur', 'ukr', 'urd', 'uig', 'vie', 'cym', 'wol'
 ]
 LANGS_STANZA_LEMMATIZERS = [
     'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
     'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng', 'myv',
-    'est', 'fin', 'fra', 'glg', 'deu', 'got', 'grc', 'ell', 'heb', 'hin',
-    'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz', 'kor', 'kmr', 'lat',
-    'lav', 'lij', 'lit', 'mar', 'pcm', 'nob', 'nno', 'fas', 'pol', 'por',
-    'ron', 'rus', 'orv', 'sme', 'san', 'gla', 'srp_latn', 'slk', 'slv', 'hsb',
-    'spa', 'swe', 'tam', 'tur', 'ukr', 'urd', 'uig', 'cym', 'wol'
+    'est', 'fin', 'fra', 'glg', 'deu', 'got', 'grc', 'ell', 'hbo', 'heb',
+    'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz', 'kor', 'kmr',
+    'kir', 'lat', 'lav', 'lij', 'lit', 'glv', 'mar', 'pcm', 'nob', 'nno',
+    'fas', 'pol', 'qpm', 'por', 'ron', 'rus', 'orv', 'sme', 'san', 'gla',
+    'srp_latn', 'slk', 'slv', 'hsb', 'spa', 'swe', 'tam', 'tur', 'ukr', 'urd',
+    'uig', 'cym', 'wol'
 ]
 LANGS_STANZA_DEPENDENCY_PARSERS = LANGS_STANZA_POS_TAGGERS
 LANGS_STANZA_SENTIMENT_ANALYZERS = ['zho_cn', 'eng', 'deu', 'mar', 'spa', 'vie']
@@ -293,8 +295,6 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
                 lang_stanza = 'zh-hans'
             elif self.lang == 'zho_tw':
                 lang_stanza = 'zh-hant'
-            elif self.lang == 'sme':
-                lang_stanza = 'sme'
             elif self.lang == 'srp_latn':
                 lang_stanza = 'sr'
             elif self.lang == 'other':
@@ -379,8 +379,6 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
             lang_stanza = 'zh-hans'
         elif lang == 'zho_tw':
             lang_stanza = 'zh-hant'
-        elif lang == 'sme':
-            lang_stanza = 'sme'
         elif lang == 'srp_latn':
             lang_stanza = 'sr'
         elif lang == 'other':

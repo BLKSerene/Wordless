@@ -256,7 +256,8 @@ class Check_Settings_Global():
         langs_stanza_supported_dependency_parsers = []
         langs_stanza_supported_sentiment_analyzers = []
 
-        langs_stanza_tokenizers = []
+        langs_stanza_sentence_tokenizers = []
+        langs_stanza_word_tokenizers = []
         langs_stanza_pos_taggers = []
         langs_stanza_lemmatizers = []
         langs_stanza_dependency_parsers = []
@@ -306,7 +307,9 @@ class Check_Settings_Global():
                 elif lang == 'sr':
                     langs[i] = 'sr_latn'
 
-            # Language code for Turkish-German is missing from ISO 639-3
+            # Excluding code-switching languages : Arabic-French, Turkish-German
+            if 'qaf' in langs:
+                langs.remove('qaf')
             if 'qtd' in langs:
                 langs.remove('qtd')
 
@@ -317,8 +320,8 @@ class Check_Settings_Global():
         langs_stanza_supported_sentiment_analyzers = add_lang_suffixes(langs_stanza_supported_sentiment_analyzers)
 
         for settings_lang_utils, langs, langs_supported, msg_lang_util in [
-            (settings_sentence_tokenizers, langs_stanza_tokenizers, langs_stanza_supported_tokenizers, 'sentence tokenizer'),
-            (settings_word_tokenizers, langs_stanza_tokenizers, langs_stanza_supported_tokenizers, 'word tokenizer'),
+            (settings_sentence_tokenizers, langs_stanza_sentence_tokenizers, langs_stanza_supported_tokenizers, 'sentence tokenizer'),
+            (settings_word_tokenizers, langs_stanza_word_tokenizers, langs_stanza_supported_tokenizers, 'word tokenizer'),
             (settings_pos_taggers, langs_stanza_pos_taggers, langs_stanza_supported_pos_taggers, 'POS tagger'),
             (settings_lemmatizers, langs_stanza_lemmatizers, langs_stanza_supported_lemmatizers, 'lemmatizer'),
             (settings_dependency_parsers, langs_stanza_dependency_parsers, langs_stanza_supported_dependency_parsers, 'dependency parser'),

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - NLP - Stanza - Nigerian Pidgin
+# Wordless: Tests - NLP - Stanza - Pomak
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -18,18 +18,18 @@
 
 from tests.wl_tests_nlp.wl_tests_stanza import test_stanza
 
-def test_stanza_pcm():
-    results_pos_tag = [('Naijá', 'PROPN'), ('na', 'AUX'), ('pijin,', 'VERB'), ('a', 'DET'), ('langwej', 'NOUN'), ('for', 'ADP'), ('oda', 'ADJ'), ('langwej.', 'NOUN')]
+def test_stanza_qpm():
+    results_pos_tag = [('Kážyjte', 'VERB'), ('nǽko', 'DET'), (',', 'PUNCT'), ('de', 'PART'), ('!', 'PUNCT')]
 
     test_stanza.wl_test_stanza(
-        lang = 'pcm',
-        results_sentence_tokenize = ['Naijá na pijin, a langwej for oda langwej. Naijá for Inglish an wey Afrikan langwej.'],
-        results_word_tokenize = ['Naijá', 'na', 'pijin,', 'a', 'langwej', 'for', 'oda', 'langwej.'],
+        lang = 'qpm',
+        results_sentence_tokenize = ['Kážyjte nǽko, de! Še go preskókneme!'],
+        results_word_tokenize = ['Kážyjte', 'nǽko', ',', 'de', '!'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
-        results_lemmatize = ['Naijá', 'na', 'pijin,', 'a', 'langwej', 'for', 'oder', 'langwej.'],
-        results_dependency_parse = [('Naijá', 'pijin,', 'nsubj', 2), ('na', 'pijin,', 'cop', 1), ('pijin,', 'pijin,', 'root', 0), ('a', 'langwej', 'det', 1), ('langwej', 'pijin,', 'obj', -2), ('for', 'oda', 'case', 1), ('oda', 'pijin,', 'obl:arg', -4), ('langwej.', 'pijin,', 'dep', -5)]
+        results_lemmatize = ['kážom', 'nǽko', ',', 'de', '!'],
+        results_dependency_parse = [('Kážyjte', 'Kážyjte', 'root', 0), ('nǽko', 'Kážyjte', 'det', -1), (',', 'de', 'punct', 1), ('de', 'Kážyjte', 'vocative', -3), ('!', 'Kážyjte', 'punct', -4)]
     )
 
 if __name__ == '__main__':
-    test_stanza_pcm()
+    test_stanza_qpm()

@@ -25,7 +25,7 @@ def test_stanza_sme():
         results_word_tokenize = ['Davvisámegiella', 'gullá', 'sámegielaid', 'oarjesámegielaid', 'davvejovkui', 'ovttas', 'julev-', 'ja', 'bihtánsámegielain', '.'],
         results_pos_tag = [('Davvisámegiella', 'N'), ('gullá', 'V'), ('sámegielaid', 'N'), ('oarjesámegielaid', 'N'), ('davvejovkui', 'N'), ('ovttas', 'Adv'), ('julev-', 'N'), ('ja', 'CC'), ('bihtánsámegielain', 'N'), ('.', 'CLB')],
         results_pos_tag_universal = [('Davvisámegiella', 'NOUN'), ('gullá', 'VERB'), ('sámegielaid', 'NOUN'), ('oarjesámegielaid', 'NOUN'), ('davvejovkui', 'NOUN'), ('ovttas', 'ADV'), ('julev-', 'NOUN'), ('ja', 'CCONJ'), ('bihtánsámegielain', 'NOUN'), ('.', 'PUNCT')],
-        results_lemmatize = ['davvisámegiella', 'gullat', 'sámegiella', 'oarjesámegiella', 'davvejovku', 'ovttas', 'julle', 'ja', 'bihtánsámegiella', '.'],
+        results_lemmatize = ['davvisámegiella', 'gullat', 'sámegiella', 'oarjesámegiella', 'davvejoavku', 'ovttas', 'julle', 'ja', 'bihtánsámegiella', '.'],
         results_dependency_parse = [('Davvisámegiella', 'gullá', 'nsubj', 1), ('gullá', 'gullá', 'root', 0), ('sámegielaid', 'gullá', 'obj', -1), ('oarjesámegielaid', 'davvejovkui', 'nmod:poss', 1), ('davvejovkui', 'gullá', 'obl', -3), ('ovttas', 'gullá', 'advmod', -4), ('julev-', 'gullá', 'obl', -5), ('ja', 'julev-', 'cc', -1), ('bihtánsámegielain', 'julev-', 'conj', -2), ('.', 'gullá', 'punct', -8)]
     )
 
