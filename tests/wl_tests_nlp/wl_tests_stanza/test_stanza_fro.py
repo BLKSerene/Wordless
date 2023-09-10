@@ -22,10 +22,11 @@ def test_stanza_fro():
     test_stanza.wl_test_stanza(
         lang = 'fro',
         results_sentence_tokenize = ["Si l'orrat Carles, ki est as porz passant. Je vos plevis, ja returnerunt Franc."],
-        results_word_tokenize = ['Si', "l'orrat", 'Carles,', 'ki', 'est', 'as', 'porz', 'passant.'],
-        results_pos_tag = [('Si', 'ADVgen'), ("l'orrat", 'VERcjg'), ('Carles,', 'NOMpro'), ('ki', 'PROrel'), ('est', 'VERcjg'), ('as', 'PRE.DETdef'), ('porz', 'NOMcom'), ('passant.', 'VERppa')],
-        results_pos_tag_universal = [('Si', 'ADV'), ("l'orrat", 'VERB'), ('Carles,', 'PROPN'), ('ki', 'PRON'), ('est', 'AUX'), ('as', 'ADP'), ('porz', 'NOUN'), ('passant.', 'VERB')],
-        results_dependency_parse = [('Si', "l'orrat", 'advmod', 1), ("l'orrat", "l'orrat", 'root', 0), ('Carles,', "l'orrat", 'nsubj', -1), ('ki', 'passant.', 'nsubj', 4), ('est', 'passant.', 'aux', 3), ('as', 'porz', 'case:det', 1), ('porz', 'passant.', 'obl', 1), ('passant.', 'Carles,', 'acl:relcl', -5)]
+        results_word_tokenize = ['Si', "l'", 'orrat', 'Carles', ',', 'ki', 'est', 'as', 'porz', 'passant', '.'],
+        results_pos_tag = [('Si', 'ADVgen'), ("l'", 'PROper'), ('orrat', 'VERcjg'), ('Carles', 'NOMpro'), (',', 'PONfbl'), ('ki', 'PROrel'), ('est', 'VERcjg'), ('as', 'PRE.DETdef'), ('porz', 'NOMcom'), ('passant', 'VERppa'), ('.', 'PONfrt')],
+        results_pos_tag_universal = [('Si', 'ADV'), ("l'", 'PRON'), ('orrat', 'VERB'), ('Carles', 'PROPN'), (',', 'PUNCT'), ('ki', 'PRON'), ('est', 'AUX'), ('as', 'ADP'), ('porz', 'NOUN'), ('passant', 'VERB'), ('.', 'PUNCT')],
+        results_lemmatize = ['si', "l'", 'orrat', 'Carles', ',', 'ki', 'est', 'as', 'porz', 'passant', '.'],
+        results_dependency_parse = [('Si', 'orrat', 'advmod', 2), ("l'", 'orrat', 'obj', 1), ('orrat', 'orrat', 'root', 0), ('Carles', 'orrat', 'nsubj', -1), (',', 'Carles', 'punct', -1), ('ki', 'passant', 'nsubj', 4), ('est', 'passant', 'aux', 3), ('as', 'porz', 'case:det', 1), ('porz', 'passant', 'obl', 1), ('passant', 'Carles', 'acl:relcl', -6), ('.', 'orrat', 'punct', -8)]
     )
 
 if __name__ == '__main__':
