@@ -38,7 +38,7 @@
   - [4.3 Supported File Encodings](#doc-4-3)
   - [4.4 Supported Measures](#doc-4-4)
     - [4.4.1 Measures of Readability](#doc-4-4-1)
-    - [4.4.2 Measures of Type-token Ratios](#doc-4-4-2)
+    - [4.4.2 Measures of Lexical Diversity](#doc-4-4-2)
     - [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3)
     - [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4)
 - [5 References](#doc-5)
@@ -113,7 +113,7 @@ By default, *Wordless* tries to detect the encoding and language settings of all
 
 In *Profiler*, you can check and compare general linguistic features of different files.
 
-All statistics are grouped into 5 tables for better readability: Readability, Counts, Type-token Ratios, Lengths, Length Breakdown.
+All statistics are grouped into 5 tables for better readability: Readability, Counts, Lexical Diversity, Lengths, Length Breakdown.
 
 - **3.1.1 Readability**<br>
   Readability statistics of each file calculated according to the different readability tests used. See section [4.4.1 Measures of Readability](#doc-4-4-1) for more details.
@@ -163,8 +163,8 @@ All statistics are grouped into 5 tables for better readability: Readability, Co
   - **3.1.2.14 Count of Characters %**<br>
     The percentage of the number of characters in each file out of the total number of characters in all files.
 
-- **3.1.3 Type-token Ratios**<br>
-  Statistics of type-token ratios which reflect the lexical diversity of the each file. See section [4.4.2 Measures of Type-token Ratio](#doc-4-4-2) for more details.
+- **3.1.3 Lexical Diversity**<br>
+  Statistics of lexical diversity which reflect the the extend to which the vocabulary used in each file varies. See section [4.4.2 Measures of Lexical Diversity](#doc-4-4-2) for more details.
 
 - **3.1.4 Lengths**<br>
   - **3.1.4.1 Paragraph Length in Sentences / Sentence Segments / Tokens (Mean)**<br>
@@ -1160,16 +1160,22 @@ Measure of Readability|Formula|Supported Languages
 > 1. Requires **built-in part-of-speech tagging support**
 
 <span id="doc-4-4-2"></span>
-#### [4.4.2 Measures of Type-token Ratio](#doc)
-The type-token ratio of a text reflects the lexical diversity of the text.
+#### [4.4.2 Measures of Lexical Diversity](#doc)
+Lexical diversity is the measurement of the extent to which the vocabulary used in the text varies.
 
 The following variables would be used in formulas:<br>
+**fₘₐₓ**: Maximum frequency among all token types<br>
 **NumTypes**: Number of token types<br>
+**NumTypes<sub>f</sub>**: Number of token types whose frequencies equal **f**<br>
 **NumTokens**: Number of tokens<br>
 
 <!--
 Corrected TTR:
     \text{CTTR} = \frac{\text{NumTypes}}{\sqrt{2 \times \text{NumTokens}}}
+
+Herdan's Vₘ:
+    \text{V}_\text{m} = \frac{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2)}{\text{NumTokens}^2} - \frac{1}{\text{NumTypes}}
+
 LogTTR:
     \begin{align*}
         \text{LogTTR}_\text{Herdan} &= \frac{\ln{\text{NumTypes}}}{\ln{\text{NumTokens}}} \\
@@ -1178,30 +1184,47 @@ LogTTR:
         \text{LogTTR}_\text{Maas} &= \frac{\ln{\text{NumTokens}} - \ln{\text{NumTypes}}}{\ln^2{\text{NumTokens}}} \\
         \text{LogTTR}_\text{Dugast} &= \frac{\ln^2{\text{NumTokens}}}{\ln{\text{NumTokens}} - \ln{\text{NumTypes}}}
     \end{align*}
+
 Mean Segmental TTR:
     \text{MSTTR} = \frac{\sum_{i = 1}^{n}\frac{\text{NumTypesSeg}_i}{\text{NumTokensSeg}_i}}{n}
+
 Moving-average TTR:
     \text{MATTR} = \frac{\sum_{p = 1}^{\text{NumTokens} - w + 1}\frac{\text{NumTypesWindow}_p}{\text{NumTokensWindow}_p}}{\text{NumTokens} - w + 1}
+
 Root TTR:
     \text{RTTR} = \frac{\text{NumTypes}}{\sqrt{\text{NumTokens}}}
+
+Simpleson's l:
+    \text{l} = \frac{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2) - \text{NumTokens}}{\text{NumTokens} \times (\text{NumTokens} - 1)}
+
 Type-token Ratio:
     \text{TTR} = \frac{\text{NumTypes}}{\text{NumTokens}}
+
+Yule's Characteristic K:
+    \text{K} = 10000 \times \frac{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2) - \text{NumTokens}}{\text{NumTokens}^2}
+
+Yule's Index of Diversity:
+    \text{Index of Diversity} = \frac{\text{NumTokens}^2}{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2) - \text{NumTokens}}
 -->
 
-Measure of Type-token Ratio|Formula
+Measure of Lexical Diversity|Formula
 ---------------------------|-------
-<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/ttr/cttr.svg)
+<span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_diversity/cttr.svg)
+<span id="ref-herdans-vm"></span>Herdan's Vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_diversity/herdans_vm.svg)
 <span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
-<span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/ttr/logttr.svg)
-<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
+<span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_diversity/logttr.svg)
+<span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
 <span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
-<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/ttr/mattr.svg)<br>where **w** is the window size which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
-<span id="ref-rttr"></span>Root TTR<br>([Guiraud, 1954](#ref-guiraud-1954))|![Formula](/doc/measures/ttr/rttr.svg)
-<span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/ttr/ttr.svg)
+<span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
+<span id="ref-rttr"></span>Root TTR<br>([Guiraud, 1954](#ref-guiraud-1954))|![Formula](/doc/measures/lexical_diversity/rttr.svg)
+<span id="ref-simpsons-l"></span>Simpson's l<br>([Simpson, 1949](#ref-simpson-1949))|![Formula](/doc/measures/lexical_diversity/simpsons_l.svg)
+<span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/ttr.svg)
 <span id="ref-vocdd"></span>vocd-D<br>([Malvern et al., 2004, pp. 51, 56–57](#ref-malvern-et-al-2004))|For detailed calculation procedures, see reference.
+<span id="ref-yules-characteristic-k"></span>Yule's Characteristic K<br>([Yule, 1944, pp. 52–53](#ref-yule-1944))|![Formula](/doc/measures/lexical_diversity/yules_characteristic_k.svg)
+<span id="ref-yules-index_of_diversity"></span>Yule's Index of Diversity<br>([Williams, 1970, p. 100](#ref-williams-1970))|![Formula](/doc/measures/lexical_diversity/yules_index_of_diversity.svg)
 
 > [!NOTE]
-> 1. Variants available and can be selected via **Menu - Preferences - Settings - Measures - Type-token Ratio**
+> 1. Variants available and can be selected via **Menu - Preferences - Settings - Measures - Lexical Diversity**
 
 <span id="doc-4-4-3"></span>
 #### [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc)
@@ -1557,7 +1580,9 @@ Measure of Effect Size|Formula
 <span id="ref-gutierrez-de-polini-1972"></span>
 1. [**^**](#ref-cp) Gutiérrez de Polini, L. E. (1972). *Investigación sobre lectura en Venezuela* [Paper presentation]. Primeras Jornadas de Educación Primaria, Ministerio de Educación, Caracas, Venezuela.
 <span id="ref-hardie-2014"></span>
-1. [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
+1. [**^**](#ref-log-ratio) Hardie, A. (2014, April 28). *Log ratio: An informal introduction*. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/
+<span id="ref-herdan-1955"></span>
+1. [**^**](#ref-herdans-vm) Herdan, G. (1955). A new derivation and interpretation of Yule's ‘Characteristic’ K. *Zeitschrift für Angewandte Mathematik und Physik (ZAMP)*, *6*(4), 332–339. https://doi.org/10.1007/BF01587632
 <span id="ref-herdan-1960"></span>
 1. [**^**](#ref-logttr) Herdan, G. (1960). *Type-token mathematics: A textbook of mathematical linguistics*. Mouton.
 <span id="ref-hofland-johanson-1982"></span>
@@ -1636,6 +1661,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-log-dice) Rychlý, P. (2008). A lexicographyer-friendly association score. In P. Sojka & A. Horák (Eds.), *Proceedings of Second Workshop on Recent Advances in Slavonic Natural Languages Processing*. Masaryk University
 <span id="ref-savicky-hlavacova-2002"></span>
 1. [**^**](#ref-ald)[**^**](#ref-fald)[**^**](#ref-arf)[**^**](#ref-farf)[**^**](#ref-awt)[**^**](#ref-fawt) Savický, P., & Hlaváčová, J. (2002). Measures of word commonness. *Journal of Quantitative Linguistics*, *9*(3), 215–231. https://doi.org/10.1076/jqul.9.3.215.14124
+<span id="ref-simpson-1949"></span>
+1. [**^**](#ref-simpsons-l) Simpson, E. H. (1949). Measurement of diversity. *Nature*, *163*, p. 688. https://doi.org/10.1038/163688a0
 <span id="ref-smadja-et-al-1996"></span>
 1. [**^**](#ref-dices-coeff) Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. *Computational Linguistics*, *22*(1), 1–38.
 <span id="ref-smith-1961"></span>
@@ -1660,7 +1687,11 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-td) Tuldava, J. (1975). Ob izmerenii trudnosti tekstov [On measuring the complexity of the text]. *Uchenye zapiski Tartuskogo universiteta. Trudy po metodike prepodavaniya inostrannykh yazykov*, *345*, 102–120.
 <span id="ref-wheeler-smith-1954"></span>
 1. [**^**](#ref-wheeler-smiths-readability-formula) Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. *Elementary English*, *31*(7), 397–399.
+<span id="ref-williams-1970"></span>
+1. [**^**](#ref-yules-index-of-diversity) Williams, C. B. (1970). *Style and vocabulary: Numerical studies*. Griffin.
 <span id="ref-wilson-2013"></span>
 1. [**^**](#ref-log-likehood-ratio-test)[**^**](#ref-students-t-test-2-sample) Wilson, A. (2013). Embracing Bayes Factors for key item analysis in corpus linguistics. In M. Bieswanger & A. Koll-Stobbe (Eds.), *New Approaches to the Study of Linguistic Variability* (pp. 3–11). Peter Lang.
+<span id="ref-yule-1944"></span>
+1. [**^**](#ref-yules-characteristic-k) Yule, G. U. (1944). *The statistical study of literary vocabulary*. Cambridge University Press.
 <span id="ref-zhang-2004"></span>
 1. [**^**](#ref-zhangs-distributional-consistency) Zhang, H., Huang, C., & Yu, S. (2004). Distributional consistency: As a general method for defining a core lexicon. In M. T. Lino, M. F. Xavier, F. Ferreira, R. Costa, & R. Silva (Eds.), *Proceedings of Fourth International Conference on Language Resources and Evaluation* (pp. 1119–1122). European Language Resources Association.

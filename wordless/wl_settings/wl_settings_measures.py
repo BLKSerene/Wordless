@@ -353,13 +353,13 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
 
         return True
 
-# Measures - Type-token Ratio
-class Wl_Settings_Measures_Ttr(wl_settings.Wl_Settings_Node):
+# Measures - Lexical Diversity
+class Wl_Settings_Measures_Lexical_Diversity(wl_settings.Wl_Settings_Node):
     def __init__(self, main):
         super().__init__(main)
 
-        self.settings_default = self.main.settings_default['measures']['ttr']
-        self.settings_custom = self.main.settings_custom['measures']['ttr']
+        self.settings_default = self.main.settings_default['measures']['lexical_diversity']
+        self.settings_custom = self.main.settings_custom['measures']['lexical_diversity']
 
         # HD-D
         self.group_box_hdd = QGroupBox(self.tr('HD-D'), self)
