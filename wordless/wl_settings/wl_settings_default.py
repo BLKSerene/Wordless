@@ -1993,8 +1993,8 @@ def init_settings_default(main):
                 }
             },
 
-            # Settings - Measures - Type-token Ratio
-            'ttr': {
+            # Settings - Measures - Lexical Diversity
+            'lexical_diversity': {
                 'hdd': {
                     'sample_size': 42
                 },

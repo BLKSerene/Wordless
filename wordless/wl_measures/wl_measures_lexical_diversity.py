@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Measures - Type-token ratio (TTR)
+# Wordless: Measures - Lexical diversity
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -33,10 +33,26 @@ from wordless.wl_nlp import wl_nlp_utils
 def cttr(main, tokens):
     return len(set(tokens)) / numpy.sqrt(2 * len(tokens))
 
+# Herdan's Vₘ
+# Reference: Herdan, G. (1955). A new derivation and interpretation of Yule's ‘Characteristic’ K. Zeitschrift für Angewandte Mathematik und Physik (ZAMP), 6(4), 332–339. https://doi.org/10.1007/BF01587632
+def herdans_vm(main, tokens):
+    num_tokens = len(tokens)
+    num_types = len(set(tokens))
+    types_freqs = collections.Counter(tokens)
+    freqs_num_types = collections.Counter(types_freqs.values())
+
+    s2 = sum((
+        num_types * (freq ** 2)
+        for freq, num_types in freqs_num_types.items()
+    ))
+    vm = s2 / (num_tokens ** 2) - 1 / num_types
+
+    return vm
+
 # HD-D
 # Reference: McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. Behavior Research Methods, 42(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
 def hdd(main, tokens):
-    sample_size = main.settings_custom['measures']['ttr']['hdd']['sample_size']
+    sample_size = main.settings_custom['measures']['lexical_diversity']['hdd']['sample_size']
 
     num_tokens = len(tokens)
     tokens_freqs = collections.Counter(tokens)
@@ -67,7 +83,7 @@ def hdd(main, tokens):
 #     Dugast, D. (1979). Vocabulaire et stylistique: I théâtre et dialogue, travaux de linguistique quantitative. Slatkine.
 #     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 28). Palgrave Macmillan.
 def logttr(main, tokens):
-    variant = main.settings_custom['measures']['ttr']['logttr']['variant']
+    variant = main.settings_custom['measures']['lexical_diversity']['logttr']['variant']
 
     num_types = len(set(tokens))
     num_tokens = len(tokens)
@@ -90,7 +106,7 @@ def logttr(main, tokens):
 #     Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
 #     McCarthy, P. M. (2005). An assessment of the range and usefulness of lexical diversity measures and the potential of the measure of textual, lexical diversity (MTLD) [Doctoral dissertation, The University of Memphis] (p. 37). ProQuest Dissertations and Theses Global.
 def msttr(main, tokens):
-    num_tokens_seg = main.settings_custom['measures']['ttr']['msttr']['num_tokens_in_each_seg']
+    num_tokens_seg = main.settings_custom['measures']['lexical_diversity']['msttr']['num_tokens_in_each_seg']
 
     ttrs = [
         len(set(tokens_seg)) / num_tokens_seg
@@ -112,7 +128,7 @@ def msttr(main, tokens):
 #     McCarthy, P. M., & Jarvis, S. (2010). MTLD, vocd-D, and HD-D: A validation study of sophisticated approaches to lexical diversity assessment. Behavior Research Methods, 42(2), 381–392. https://doi.org/10.3758/BRM.42.2.381
 def mtld(main, tokens):
     mtlds = numpy.empty(shape = 2)
-    factor_size = main.settings_custom['measures']['ttr']['mtld']['factor_size']
+    factor_size = main.settings_custom['measures']['lexical_diversity']['mtld']['factor_size']
     num_tokens = len(tokens)
 
     for i in range(2):
@@ -144,7 +160,7 @@ def mtld(main, tokens):
 # Moving-average TTR
 # Reference: Covington, M. A., & McFall, J. D. (2010). Cutting the Gordian knot: The moving-average type-token ratio (MATTR). Journal of Quantitative Linguistics, 17(2), 94–100. https://doi.org/10.1080/09296171003643098
 def mattr(main, tokens):
-    window_size = main.settings_custom['measures']['ttr']['mattr']['window_size']
+    window_size = main.settings_custom['measures']['lexical_diversity']['mattr']['window_size']
 
     num_tokens = len(tokens)
     num_windows = max(1, num_tokens - window_size + 1)
@@ -174,6 +190,21 @@ def mattr(main, tokens):
 #     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 26). Palgrave Macmillan.
 def rttr(main, tokens):
     return len(set(tokens)) / numpy.sqrt(len(tokens))
+
+# Simpson's l
+# Reference: Simpson, E. H. (1949). Measurement of diversity. Nature, 163, p. 688. https://doi.org/10.1038/163688a0
+def simpsons_l(main, tokens):
+    num_tokens = len(tokens)
+    types_freqs = collections.Counter(tokens)
+    freqs_num_types = collections.Counter(types_freqs.values())
+
+    s2 = sum((
+        num_types * (freq ** 2)
+        for freq, num_types in freqs_num_types.items()
+    ))
+    l = (s2 - num_tokens) / (num_tokens * (num_tokens - 1))
+
+    return l
 
 # Type-token Ratio
 # Reference: Johnson, W. (1944). Studies in language behavior: I. a program of research. Psychological Monographs, 56(2), 1–15. https://doi.org/10.1037/h0093508
@@ -209,3 +240,33 @@ def vocdd(main, tokens):
     )
 
     return popt[0]
+
+# Yule's Characteristic K
+# Reference: Yule, G. U. (1944). The statistical study of literary vocabulary (pp. 52–53). Cambridge University Press.
+def yules_characteristic_k(main, tokens):
+    num_tokens = len(tokens)
+    types_freqs = collections.Counter(tokens)
+    freqs_num_types = collections.Counter(types_freqs.values())
+
+    s2 = sum((
+        num_types * (freq ** 2)
+        for freq, num_types in freqs_num_types.items()
+    ))
+    k = 10000 * ((s2 - num_tokens) / (num_tokens ** 2))
+
+    return k
+
+# Yule's Index of Diversity
+# Reference: Williams, C. B. (1970). Style and vocabulary: Numerical studies (p. 100). Griffin.
+def yules_index_of_diversity(main, tokens):
+    num_tokens = len(tokens)
+    types_freqs = collections.Counter(tokens)
+    freqs_num_types = collections.Counter(types_freqs.values())
+
+    s2 = sum((
+        num_types * (freq ** 2)
+        for freq, num_types in freqs_num_types.items()
+    ))
+    index_of_diversity = (num_tokens ** 2) / (s2 - num_tokens)
+
+    return index_of_diversity

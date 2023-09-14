@@ -68,7 +68,7 @@ def update_gui(err_msg, texts_stats_files):
     files = main.settings_custom['file_area']['files_open']
 
     for i, stats in enumerate(texts_stats_files):
-        readability_stats = stats[0]
+        stats_readability = stats[0]
         len_paras_sentences = numpy.array(stats[1])
         len_paras_sentence_segs = numpy.array(stats[2])
         len_paras_tokens = numpy.array(stats[3])
@@ -79,7 +79,7 @@ def update_gui(err_msg, texts_stats_files):
         len_types_syls = numpy.array(stats[8])
         len_types_chars = numpy.array(stats[9])
         len_syls = numpy.array(stats[10])
-        ttrs = stats[11]
+        stats_lexical_diversity = stats[11]
 
         count_paras = len(len_paras_sentences)
         count_sentences = len(len_sentences)
@@ -94,7 +94,10 @@ def update_gui(err_msg, texts_stats_files):
         count_tokens_lens_syls.append(collections.Counter(len_tokens_syls))
         count_tokens_lens_chars.append(collections.Counter(len_tokens_chars))
 
-        assert len(readability_stats) == 39
+        assert len(stats_readability) == 39
+
+        for i, readability in enumerate(stats_readability):
+            assert readability
 
         # Counts
         assert count_paras
@@ -124,11 +127,11 @@ def update_gui(err_msg, texts_stats_files):
                 assert all((len_syls == 1 for len_syls in len_tokens_syls))
                 assert all((len_syls == 1 for len_syls in len_types_syls))
 
-        # TTRs
-        assert len(ttrs) == 9
+        # Lexical Diversity
+        assert len(stats_lexical_diversity) == 13
 
-        for i, ttr in enumerate(ttrs):
-            assert ttr > 0
+        for i, lexical_diversity in enumerate(stats_lexical_diversity):
+            assert lexical_diversity > 0
 
         # Mean
         assert numpy.mean(len_paras_sentences) == count_sentences / count_paras
