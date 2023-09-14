@@ -20,16 +20,16 @@
 
 ## [3.4.0](https://github.com/BLKSerene/Wordless/releases/tag/3.4.0) - ??/??/2023
 ### 🎉 New Features
-- Settings: Add Settings - Measures - Type-token Ratio
+- Settings: Add Settings - Measures - Lexical Diversity
 - Utils: Add Stanza's Chinese (Simplified), English, German, Marathi, Spanish, and Vietnamese sentiment analyzer
 - Utils: Add Stanza's Afrikaans, Arabic, Armenian (Eastern), Armenian (Western), Basque, Belarusian, Bulgarian, Burmese, Buryat (Russia), Catalan, Chinese (Classical), Chinese (Simplified), Chinese (Traditional), Church Slavonic (Old), Coptic, Croatian, Czech, Danish, Dutch, English, Erzya, Estonian, Faroese, Finnish, French, French (Old), Galician, German, Gothic, Greek (Ancient), Greek (Modern), Hebrew (Ancient), Hebrew (Modern), Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish (Kurmanji), Kyrgyz, Latin, Latvian, Ligurian, Lithuanian, Maltese, Manx, Marathi, Nigerian Pidgin, Norwegian Bokmål, Norwegian Nynorsk, Persian, Polish, Pomak, Portuguese, Romanian, Russian, Russian (Old), Sámi (Northern), Sanskrit, Scottish Gaelic, Serbian (Latin), Sindhi, Slovak, Slovenian, Sorbian (Upper), Spanish, Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uyghur, Vietnamese, Welsh, and Wolof sentence tokenizers / word tokenizers
 - Utils: Add Stanza's Afrikaans, Arabic, Armenian (Eastern), Armenian (Western), Basque, Belarusian, Bulgarian, Buryat (Russia), Catalan, Chinese (Classical), Chinese (Simplified), Chinese (Traditional), Church Slavonic (Old), Coptic, Croatian, Czech, Danish, Dutch, English, Erzya, Estonian, Faroese, Finnish, French, French (Old), Galician, German, Gothic, Greek (Ancient), Greek (Modern), Hebrew (Ancient), Hebrew (Modern), Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish (Kurmanji), Kyrgyz, Latin, Latvian, Ligurian, Lithuanian, Maltese, Manx, Marathi, Nigerian Pidgin, Norwegian Bokmål, Norwegian Nynorsk, Persian, Polish, Pomak, Portuguese, Romanian, Russian, Russian (Old), Sámi (Northern), Sanskrit, Scottish Gaelic, Serbian (Latin), Slovak, Slovenian, Sorbian (Upper), Spanish, Swedish, Tamil, Telugu, Turkish, Ukrainian, Urdu, Uyghur, Vietnamese, Welsh, and Wolof part-of-speech taggers / dependency parsers
 - Utils: Add Stanza's Afrikaans, Arabic, Armenian (Eastern), Armenian (Western), Basque, Belarusian, Bulgarian, Buryat (Russia), Catalan, Chinese (Classical), Chinese (Simplified), Chinese (Traditional), Church Slavonic (Old), Coptic, Croatian, Czech, Danish, Dutch, English, Erzya, Estonian, Finnish, French, French (Old), Galician, German, Gothic, Greek (Ancient), Greek (Modern), Hebrew (Ancient), Hebrew (Modern), Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish (Kurmanji), Kyrgyz, Latin, Latvian, Ligurian, Lithuanian, Manx, Marathi, Nigerian Pidgin, Norwegian Bokmål, Norwegian Nynorsk, Persian, Polish, Pomak, Portuguese, Romanian, Russian, Russian (Old), Sámi (Northern), Sanskrit, Scottish Gaelic, Serbian (Latin), Slovak, Slovenian, Sorbian (Upper), Spanish, Swedish, Tamil, Turkish, Ukrainian, Urdu, Uyghur, Welsh, and Wolof lemmatizers
-- Work Area: Add Profiler - Type-token Ratios - Corrected TTR / HD-D / LogTTR / Measure of Textual Lexical Diversity / Moving-average TTR / Root TTR / vocd-D
+- Work Area: Add Profiler - Lexical Diversity - Corrected TTR / Herdan's Vₘ / HD-D / LogTTR / Measure of Textual Lexical Diversity / Moving-average TTR / Root TTR / Simpleson's l / vocd-D / Yule's Characteristic K / Yule's Index of Diversity
 
 ### ✨ Improvements
 - Utils: Update NLTK's word tokenizers
-- Work Area: Update Profiler - Type-token Ratios - Mean Segmental TTR
+- Work Area: Update Profiler - Lexical Diversity - Mean Segmental TTR
 
 ### ❌ Removals
 - Settings: Remove Settings - Tables - Profiler

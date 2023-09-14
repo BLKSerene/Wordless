@@ -77,7 +77,7 @@ def kilgarriffs_ratio(main, c11, c12, c21, c22):
     return (relative_freq_observed + smoothing_param) / (relative_freq_ref + smoothing_param)
 
 # Log Ratio
-# Reference: Hardie, A. (2014, April 28). Log ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
+# Reference: Hardie, A. (2014, April 28). Log ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/
 def log_ratio(main, c11, c12, c21, c22):
     c1x, c2x, cx1, cx2 = wl_measures_statistical_significance.get_freqs_marginal(c11, c12, c21, c22)
 

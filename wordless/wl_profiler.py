@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import QDialog, QGroupBox, QPushButton, QStackedWidget, QTa
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_measures import wl_measures_misc, wl_measures_readability, wl_measures_ttr
+from wordless.wl_measures import wl_measures_lexical_diversity, wl_measures_misc, wl_measures_readability
 from wordless.wl_nlp import wl_texts, wl_token_preprocessing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
@@ -43,14 +43,14 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         # Table
         self.table_profiler_readability = Wl_Table_Profiler_Readability(self)
         self.table_profiler_counts = Wl_Table_Profiler_Counts(self)
-        self.table_profiler_ttrs = Wl_Table_Profiler_Ttrs(self)
+        self.table_profiler_lexical_diversity = Wl_Table_Profiler_Lexical_Diversity(self)
         self.table_profiler_lens = Wl_Table_Profiler_Lens(self)
         self.table_profiler_len_breakdown = Wl_Table_Profiler_Len_Breakdown(self)
 
         self.tables = [
             self.table_profiler_readability,
             self.table_profiler_counts,
-            self.table_profiler_ttrs,
+            self.table_profiler_lexical_diversity,
             self.table_profiler_lens,
             self.table_profiler_len_breakdown
         ]
@@ -76,7 +76,7 @@ class Wrapper_Profiler(wl_layouts.Wl_Wrapper):
         self.tabs_profiler = QTabWidget(self)
         self.tabs_profiler.addTab(self.table_profiler_readability, self.tr('Readability'))
         self.tabs_profiler.addTab(self.table_profiler_counts, self.tr('Counts'))
-        self.tabs_profiler.addTab(self.table_profiler_ttrs, self.tr('Type-token Ratios'))
+        self.tabs_profiler.addTab(self.table_profiler_lexical_diversity, self.tr('Lexical Diversity'))
         self.tabs_profiler.addTab(self.table_profiler_lens, self.tr('Lengths'))
         self.tabs_profiler.addTab(self.table_profiler_len_breakdown, self.tr('Length Breakdown'))
 
@@ -582,25 +582,29 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 
         return err_msg
 
-class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
+class Wl_Table_Profiler_Lexical_Diversity(Wl_Table_Profiler):
     def __init__(self, parent):
-        HEADERS_TTRS = [
+        HEADERS_LEXICAL_DIVERSITY = [
             _tr('wl_profiler', 'Corrected TTR'),
+            _tr('wl_profiler', "Herdan's Vₘ"),
             _tr('wl_profiler', 'HD-D'),
             _tr('wl_profiler', 'LogTTR'),
             _tr('wl_profiler', 'Mean Segmental TTR'),
             _tr('wl_profiler', 'Measure of Textual Lexical Diversity'),
             _tr('wl_profiler', 'Moving-average TTR'),
             _tr('wl_profiler', 'Root TTR'),
+            _tr('wl_profiler', "Simpson's l"),
             _tr('wl_profiler', 'Type-token Ratio'),
-            _tr('wl_profiler', 'vocd-D')
+            _tr('wl_profiler', 'vocd-D'),
+            _tr('wl_profiler', "Yule's Characteristic K"),
+            _tr('wl_profiler', "Yule's Index of Diversity")
         ]
 
         super().__init__(
             parent,
-            headers = HEADERS_TTRS,
-            headers_float = HEADERS_TTRS,
-            profiler_tab = 'ttrs'
+            headers = HEADERS_LEXICAL_DIVERSITY,
+            headers_float = HEADERS_LEXICAL_DIVERSITY,
+            profiler_tab = 'lexical_diversity'
         )
 
     def update_gui_table(self, err_msg, text_stats_files):
@@ -625,8 +629,8 @@ class Wl_Table_Profiler_Ttrs(Wl_Table_Profiler):
                 self.disable_updates()
 
                 for i, stats in enumerate(text_stats_files):
-                    for j, ttr in enumerate(stats[11]):
-                        self.set_item_num(j, i, ttr)
+                    for j, lexical_diversity in enumerate(stats[11]):
+                        self.set_item_num(j, i, lexical_diversity)
 
                 self.enable_updates()
 
@@ -1192,7 +1196,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
                 # Readability
                 if self.profiler_tab in ['readability', 'all']:
-                    readability_stats = [
+                    stats_readability = [
                         wl_measures_readability.rd(self.main, text),
                         wl_measures_readability.aari(self.main, text),
                         wl_measures_readability.ari(self.main, text),
@@ -1234,9 +1238,9 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         wl_measures_readability.wheeler_smiths_readability_formula(self.main, text)
                     ]
                 else:
-                    readability_stats = None
+                    stats_readability = None
 
-                if self.profiler_tab in ['ttrs', 'counts', 'lens', 'len_breakdown', 'all']:
+                if self.profiler_tab in ['lexical_diversity', 'counts', 'lens', 'len_breakdown', 'all']:
                     # Paragraph length
                     len_paras_sentences = [
                         len(para)
@@ -1279,27 +1283,31 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_syls = len_types_chars = None
                     len_syls = None
 
-                # TTRs
-                if self.profiler_tab in ['ttrs', 'all']:
+                # Lexical Diversity
+                if self.profiler_tab in ['lexical_diversity', 'all']:
                     if tokens:
-                        ttrs = [
-                            wl_measures_ttr.cttr(self.main, tokens),
-                            wl_measures_ttr.hdd(self.main, tokens),
-                            wl_measures_ttr.logttr(self.main, tokens),
-                            wl_measures_ttr.msttr(self.main, tokens),
-                            wl_measures_ttr.mtld(self.main, tokens),
-                            wl_measures_ttr.mattr(self.main, tokens),
-                            wl_measures_ttr.rttr(self.main, tokens),
-                            wl_measures_ttr.ttr(self.main, tokens),
-                            wl_measures_ttr.vocdd(self.main, tokens)
+                        stats_lexical_diversity = [
+                            wl_measures_lexical_diversity.cttr(self.main, tokens),
+                            wl_measures_lexical_diversity.herdans_vm(self.main, tokens),
+                            wl_measures_lexical_diversity.hdd(self.main, tokens),
+                            wl_measures_lexical_diversity.logttr(self.main, tokens),
+                            wl_measures_lexical_diversity.msttr(self.main, tokens),
+                            wl_measures_lexical_diversity.mtld(self.main, tokens),
+                            wl_measures_lexical_diversity.mattr(self.main, tokens),
+                            wl_measures_lexical_diversity.rttr(self.main, tokens),
+                            wl_measures_lexical_diversity.simpsons_l(self.main, tokens),
+                            wl_measures_lexical_diversity.ttr(self.main, tokens),
+                            wl_measures_lexical_diversity.vocdd(self.main, tokens),
+                            wl_measures_lexical_diversity.yules_characteristic_k(self.main, tokens),
+                            wl_measures_lexical_diversity.yules_index_of_diversity(self.main, tokens)
                         ]
                     else:
-                        ttrs = [0] * 9
+                        stats_lexical_diversity = [0] * 13
                 else:
-                    ttrs = None
+                    stats_lexical_diversity = None
 
                 self.text_stats_files.append([
-                    readability_stats,
+                    stats_readability,
                     len_paras_sentences,
                     len_paras_sentence_segs,
                     len_paras_tokens,
@@ -1310,7 +1318,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     len_types_syls,
                     len_types_chars,
                     len_syls,
-                    ttrs
+                    stats_lexical_diversity
                 ])
 
             if len(files) == 1:

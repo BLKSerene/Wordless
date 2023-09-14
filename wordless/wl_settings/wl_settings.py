@@ -89,7 +89,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
         self.tree_settings.model().appendRow(QStandardItem(self.tr('Measures')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Readability')))
-        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Type-token Ratio')))
+        self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Lexical Diversity')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Dispersion')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Adjusted Frequency')))
         self.tree_settings.model().item(10).appendRow(QStandardItem(self.tr('Statistical Significance')))
@@ -142,7 +142,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
 
         # Measures
         self.settings_measures_readability = wl_settings_measures.Wl_Settings_Measures_Readability(self.main)
-        self.settings_measures_ttr = wl_settings_measures.Wl_Settings_Measures_Ttr(self.main)
+        self.settings_measures_lexical_diversity = wl_settings_measures.Wl_Settings_Measures_Lexical_Diversity(self.main)
         self.settings_measures_dispersion = wl_settings_measures.Wl_Settings_Measures_Dispersion(self.main)
         self.settings_measures_adjusted_freq = wl_settings_measures.Wl_Settings_Measures_Adjusted_Freq(self.main)
         self.settings_measures_statistical_significance = wl_settings_measures.Wl_Settings_Measures_Statistical_Significance(self.main)
@@ -180,7 +180,7 @@ class Wl_Settings(wl_dialogs.Wl_Dialog):
             self.tr('Sentiment Analysis'): self.settings_sentiment_analysis,
 
             self.tr('Readability'): self.settings_measures_readability,
-            self.tr('Type-token Ratio'): self.settings_measures_ttr,
+            self.tr('Lexical Diversity'): self.settings_measures_lexical_diversity,
             self.tr('Dispersion'): self.settings_measures_dispersion,
             self.tr('Adjusted Frequency'): self.settings_measures_adjusted_freq,
             self.tr('Statistical Significance'): self.settings_measures_statistical_significance,

@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: Tests - Measures - Type-token ratio
+# Wordless: Tests - Measures - Lexical diversity
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -20,10 +20,10 @@ import numpy
 import scipy
 
 from tests import wl_test_init
-from wordless.wl_measures import wl_measures_ttr
+from wordless.wl_measures import wl_measures_lexical_diversity
 
 main = wl_test_init.Wl_Test_Main()
-settings = main.settings_custom['measures']['ttr']
+settings = main.settings_custom['measures']['lexical_diversity']
 
 TOKENS_10 = ['This', 'is', 'a', 'sentence', '.'] * 2
 TOKENS_100 = ['This', 'is', 'a', 'sentence', '.'] * 20
@@ -31,26 +31,31 @@ TOKENS_101 = ['This', 'is', 'a', 'sentence', '.'] * 20 + ['another']
 TOKENS_1000 = ['This', 'is', 'a', 'sentence', '.'] * 200
 
 def test_cttr():
-    cttr = wl_measures_ttr.cttr(main, TOKENS_100)
+    cttr = wl_measures_lexical_diversity.cttr(main, TOKENS_100)
 
     assert cttr == 5 / (2 * 100) ** 0.5
 
+def test_herdans_vm():
+    vm = wl_measures_lexical_diversity.herdans_vm(main, TOKENS_100)
+
+    assert vm == (5 * 20 ** 2) / (100 ** 2) - 1 / 5
+
 def test_hdd():
-    hdd_100 = wl_measures_ttr.hdd(main, TOKENS_100)
+    hdd_100 = wl_measures_lexical_diversity.hdd(main, TOKENS_100)
 
     assert hdd_100 == (1 - scipy.stats.hypergeom.pmf(k = 0, M = 100, n = 20, N = 42)) * (1 / 42) * 5
 
 def test_logttr():
     settings['logttr']['variant'] = 'Herdan'
-    logttr_herdan = wl_measures_ttr.logttr(main, TOKENS_100)
+    logttr_herdan = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
     settings['logttr']['variant'] = 'Somers'
-    logttr_somers = wl_measures_ttr.logttr(main, TOKENS_100)
+    logttr_somers = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
     settings['logttr']['variant'] = 'Rubet'
-    logttr_rubet = wl_measures_ttr.logttr(main, TOKENS_100)
+    logttr_rubet = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
     settings['logttr']['variant'] = 'Maas'
-    logttr_maas = wl_measures_ttr.logttr(main, TOKENS_100)
+    logttr_maas = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
     settings['logttr']['variant'] = 'Dugast'
-    logttr_dugast = wl_measures_ttr.logttr(main, TOKENS_100)
+    logttr_dugast = wl_measures_lexical_diversity.logttr(main, TOKENS_100)
 
     num_types = 5
     num_tokens = 100
@@ -62,46 +67,62 @@ def test_logttr():
     assert logttr_dugast == (numpy.log(num_tokens) ** 2) / (numpy.log(num_tokens) - numpy.log(num_types))
 
 def test_msttr():
-    msttr_100 = wl_measures_ttr.msttr(main, TOKENS_101)
+    msttr_100 = wl_measures_lexical_diversity.msttr(main, TOKENS_101)
     settings['msttr']['num_tokens_in_each_seg'] = 1000
-    msttr_1000 = wl_measures_ttr.msttr(main, TOKENS_101)
+    msttr_1000 = wl_measures_lexical_diversity.msttr(main, TOKENS_101)
 
     assert msttr_100 == 5 / 100
     assert msttr_1000 == 0
 
 def test_mtld():
-    mtld_100 = wl_measures_ttr.mtld(main, TOKENS_100)
+    mtld_100 = wl_measures_lexical_diversity.mtld(main, TOKENS_100)
 
     assert mtld_100 == 100 / (14 + 0 / 0.28)
 
 def test_mattr():
-    mattr_100 = wl_measures_ttr.mattr(main, TOKENS_100)
-    mattr_1000 = wl_measures_ttr.mattr(main, TOKENS_1000)
+    mattr_100 = wl_measures_lexical_diversity.mattr(main, TOKENS_100)
+    mattr_1000 = wl_measures_lexical_diversity.mattr(main, TOKENS_1000)
 
-    assert mattr_100 == wl_measures_ttr.ttr(main, TOKENS_100)
+    assert mattr_100 == wl_measures_lexical_diversity.ttr(main, TOKENS_100)
     assert mattr_1000 == 5 / 500
 
 def test_rttr():
-    rttr = wl_measures_ttr.rttr(main, TOKENS_100)
+    rttr = wl_measures_lexical_diversity.rttr(main, TOKENS_100)
 
     assert rttr == 5 / 100 ** 0.5
 
+def test_simpsons_l():
+    l = wl_measures_lexical_diversity.simpsons_l(main, TOKENS_100)
+
+    assert l == (5 * 20 ** 2 - 100) / (100 * (100 - 1))
+
 def test_ttr():
-    ttr = wl_measures_ttr.ttr(main, TOKENS_100)
+    ttr = wl_measures_lexical_diversity.ttr(main, TOKENS_100)
 
     assert ttr == 5 / 100
 
 def test_vocdd():
-    vocdd_10 = wl_measures_ttr.vocdd(main, TOKENS_10)
-    vocdd_100 = wl_measures_ttr.vocdd(main, TOKENS_100)
-    vocdd_1000 = wl_measures_ttr.vocdd(main, TOKENS_1000)
+    vocdd_10 = wl_measures_lexical_diversity.vocdd(main, TOKENS_10)
+    vocdd_100 = wl_measures_lexical_diversity.vocdd(main, TOKENS_100)
+    vocdd_1000 = wl_measures_lexical_diversity.vocdd(main, TOKENS_1000)
 
     assert vocdd_10 > 0
     assert vocdd_100 > 0
     assert vocdd_1000 > 0
 
+def test_yules_characteristic_k():
+    k = wl_measures_lexical_diversity.yules_characteristic_k(main, TOKENS_100)
+
+    assert k == 10000 * ((5 * 20 ** 2 - 100) / (100 ** 2))
+
+def test_yules_index_of_diversity():
+    index_of_diversity = wl_measures_lexical_diversity.yules_index_of_diversity(main, TOKENS_100)
+
+    assert index_of_diversity == (100 ** 2) / (5 * 20 ** 2 - 100)
+
 if __name__ == '__main__':
     test_cttr()
+    test_herdans_vm()
     test_hdd()
     test_logttr()
     test_msttr()
@@ -109,4 +130,7 @@ if __name__ == '__main__':
     test_mattr()
     test_rttr()
     test_ttr()
+    test_simpsons_l()
     test_vocdd()
+    test_yules_characteristic_k()
+    test_yules_index_of_diversity()
