@@ -35,6 +35,13 @@ def test_cttr():
 
     assert cttr == 5 / (2 * 100) ** 0.5
 
+# Reference: Fisher, R. A., Steven, A. C., & Williams, C. B. (1943). The relation between the number of species and the number of individuals in a random sample of an animal population. Journal of Animal Ecology, 12(1), 56. https://doi.org/10.2307/1411
+def test_fishers_index_of_diversity():
+    tokens = [str(i) for i in range(240)] + ['0'] * (15609 - 240)
+    alpha = wl_measures_lexical_diversity.fishers_index_of_diversity(main, tokens)
+
+    assert round(alpha, 3) == 40.247
+
 def test_herdans_vm():
     vm = wl_measures_lexical_diversity.herdans_vm(main, TOKENS_100)
 
@@ -122,6 +129,7 @@ def test_yules_index_of_diversity():
 
 if __name__ == '__main__':
     test_cttr()
+    test_fishers_index_of_diversity()
     test_herdans_vm()
     test_hdd()
     test_logttr()
