@@ -33,6 +33,27 @@ from wordless.wl_nlp import wl_nlp_utils
 def cttr(main, tokens):
     return len(set(tokens)) / numpy.sqrt(2 * len(tokens))
 
+# Fisher's Index of Diversity
+# Reference: Fisher, R. A., Steven, A. C., & Williams, C. B. (1943). The relation between the number of species and the number of individuals in a random sample of an animal population. Journal of Animal Ecology, 12(1), 42–58. https://doi.org/10.2307/1411
+def fishers_index_of_diversity(main, tokens):
+    num_tokens = len(tokens)
+    num_types = len(set(tokens))
+
+    alpha = -(
+        (num_tokens * num_types)
+        / (
+            num_tokens
+            * scipy.special.lambertw(-(
+                numpy.exp(-(num_types / num_tokens))
+                * num_types
+                / num_tokens
+            ), -1)
+            + num_types
+        )
+    )
+
+    return alpha.real
+
 # Herdan's Vₘ
 # Reference: Herdan, G. (1955). A new derivation and interpretation of Yule's ‘Characteristic’ K. Zeitschrift für Angewandte Mathematik und Physik (ZAMP), 6(4), 332–339. https://doi.org/10.1007/BF01587632
 def herdans_vm(main, tokens):

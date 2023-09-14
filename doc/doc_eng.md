@@ -1173,6 +1173,9 @@ The following variables would be used in formulas:<br>
 Corrected TTR:
     \text{CTTR} = \frac{\text{NumTypes}}{\sqrt{2 \times \text{NumTokens}}}
 
+Fisher's Index of Diversity:
+    \alpha = -\frac{\text{NumTokens} \times \text{NumTypes}}{\text{NumTokens} \times W_{-1}\left(-\frac{\exp\left(-\frac{\text{NumTypes}}{\text{NumTokens}}\right) \times \text{NumTypes}}{\text{NumTokens}}\right) + \text{NumTypes}}
+
 Herdan's Vₘ:
     \text{V}_\text{m} = \frac{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2)}{\text{NumTokens}^2} - \frac{1}{\text{NumTypes}}
 
@@ -1210,6 +1213,7 @@ Yule's Index of Diversity:
 Measure of Lexical Diversity|Formula
 ---------------------------|-------
 <span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_diversity/cttr.svg)
+<span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_diversity/fishers_index_of_diversity.svg)<br>where W₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function)
 <span id="ref-herdans-vm"></span>Herdan's Vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_diversity/herdans_vm.svg)
 <span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
 <span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_diversity/logttr.svg)
@@ -1221,7 +1225,7 @@ Measure of Lexical Diversity|Formula
 <span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/ttr.svg)
 <span id="ref-vocdd"></span>vocd-D<br>([Malvern et al., 2004, pp. 51, 56–57](#ref-malvern-et-al-2004))|For detailed calculation procedures, see reference.
 <span id="ref-yules-characteristic-k"></span>Yule's Characteristic K<br>([Yule, 1944, pp. 52–53](#ref-yule-1944))|![Formula](/doc/measures/lexical_diversity/yules_characteristic_k.svg)
-<span id="ref-yules-index_of_diversity"></span>Yule's Index of Diversity<br>([Williams, 1970, p. 100](#ref-williams-1970))|![Formula](/doc/measures/lexical_diversity/yules_index_of_diversity.svg)
+<span id="ref-yules-index-of-diversity"></span>Yule's Index of Diversity<br>([Williams, 1970, p. 100](#ref-williams-1970))|![Formula](/doc/measures/lexical_diversity/yules_index_of_diversity.svg)
 
 > [!NOTE]
 > 1. Variants available and can be selected via **Menu - Preferences - Settings - Measures - Lexical Diversity**
@@ -1561,6 +1565,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-re-simplified) Farr, J. N., Jenkins, J. J., & Paterson, D. G. (1951). Simplification of Flesch reading ease formula. *Journal of Applied Psychology*, *35*(5), 333–337. https://doi.org/10.1037/h0062427
 <span id="ref-fernandez-huerta-1959"></span>
 1. [**^**](#ref-re) Fernández Huerta, J. (1959). Medidas sencillas de lecturabilidad. *Consigna*, *214*, 29–32.
+<span id="ref-fisher-et-al-1943"></span>
+1. [**^**](#ref-fishers-index-of-diversity) Fisher, R. A., Steven, A. C., & Williams, C. B. (1943). The relation between the number of species and the number of individuals in a random sample of an animal population. *Journal of Animal Ecology*, *12*(1), 42–58. https://doi.org/10.2307/1411
 <span id="ref-flesch-1948"></span>
 1. [**^**](#ref-re) Flesch, R. (1948). A new readability yardstick. *Journal of Applied Psychology*, *32*(3), 221–233. https://doi.org/10.1037/h0057532
 <span id="ref-franchina-vacca-1986"></span>

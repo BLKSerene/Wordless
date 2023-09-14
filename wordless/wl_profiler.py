@@ -586,6 +586,7 @@ class Wl_Table_Profiler_Lexical_Diversity(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_LEXICAL_DIVERSITY = [
             _tr('wl_profiler', 'Corrected TTR'),
+            _tr('wl_profiler', "Fisher's Index of Diversity"),
             _tr('wl_profiler', "Herdan's Vₘ"),
             _tr('wl_profiler', 'HD-D'),
             _tr('wl_profiler', 'LogTTR'),
@@ -1288,6 +1289,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                     if tokens:
                         stats_lexical_diversity = [
                             wl_measures_lexical_diversity.cttr(self.main, tokens),
+                            wl_measures_lexical_diversity.fishers_index_of_diversity(self.main, tokens),
                             wl_measures_lexical_diversity.herdans_vm(self.main, tokens),
                             wl_measures_lexical_diversity.hdd(self.main, tokens),
                             wl_measures_lexical_diversity.logttr(self.main, tokens),
@@ -1302,7 +1304,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                             wl_measures_lexical_diversity.yules_index_of_diversity(self.main, tokens)
                         ]
                     else:
-                        stats_lexical_diversity = [0] * 13
+                        stats_lexical_diversity = [0] * 14
                 else:
                     stats_lexical_diversity = None
 
