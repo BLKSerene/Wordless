@@ -24,7 +24,6 @@ jobs:
     machine:
       image: 'windows-server-2019-vs2019:2023.08.1'
       shell: powershell.exe -ExecutionPolicy Bypass
-
     resource_class: windows.medium
 
     steps:
@@ -73,7 +72,6 @@ jobs:
   macOS:
     macos:
       xcode: 14.1.0
-
     resource_class: macos.x86.medium.gen2
 
     steps:
@@ -123,8 +121,7 @@ jobs:
   Linux:
     machine:
       image: ubuntu-2004:2022.10.1
-
-    resource_class: large
+    resource_class: medium
 
     steps:
       - checkout
@@ -176,7 +173,6 @@ jobs:
   Docker:
     docker:
       - image: cimg/python:3.10
-
     resource_class: large
 
     steps:
