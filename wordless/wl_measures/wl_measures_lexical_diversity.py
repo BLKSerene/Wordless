@@ -60,11 +60,11 @@ def herdans_vm(main, tokens):
     num_tokens = len(tokens)
     num_types = len(set(tokens))
     types_freqs = collections.Counter(tokens)
-    freqs_num_types = collections.Counter(types_freqs.values())
+    freqs_nums_types = collections.Counter(types_freqs.values())
 
     s2 = sum((
         num_types * (freq ** 2)
-        for freq, num_types in freqs_num_types.items()
+        for freq, num_types in freqs_nums_types.items()
     ))
     vm = s2 / (num_tokens ** 2) - 1 / num_types
 
@@ -205,6 +205,114 @@ def mattr(main, tokens):
 
     return numpy.mean(ttrs)
 
+# Popescu's R₁
+# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 18, 30, 33). Mouton de Gruyter.
+def popescus_r1(main, tokens):
+    num_tokens = len(tokens)
+    types_freqs = collections.Counter(tokens)
+    ranks_freqs = [
+        (i + 1, freq)
+        for i, freq in enumerate(sorted(types_freqs.values(), reverse = True))
+    ]
+
+    h = 0
+
+    for rank, freq in ranks_freqs:
+        if rank == freq:
+            h = rank
+
+            break
+
+    if not h:
+        cs = [1 / (freq - rank) for rank, freq in ranks_freqs]
+        c_max = max(cs)
+        c_min = min(cs)
+        r_max = ranks_freqs[cs.index(c_max)][0]
+        r_min = ranks_freqs[cs.index(c_min)][0]
+        h = (c_min * r_max - c_max * r_min) / (c_min - c_max)
+
+    f_h = sum((freq for _, freq in ranks_freqs[:int(numpy.floor(h))])) / num_tokens
+    r1 = 1 - (f_h - numpy.square(h) / (2 * num_tokens))
+
+    return r1
+
+# Popescu's R₂
+# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 35–36, 38). Mouton de Gruyter.
+def popescus_r2(main, tokens):
+    num_types_all = len(set(tokens))
+    types_freqs = collections.Counter(tokens)
+    freqs_nums_types = sorted(collections.Counter(types_freqs.values()).items())
+
+    k = 0
+
+    for freq, num_types in freqs_nums_types:
+        if freq == num_types:
+            k = freq
+
+            break
+
+    if not k:
+        cs = [1 / (num_types - freq) for freq, num_types in freqs_nums_types]
+        c_max = max(cs)
+        c_min = min(cs)
+        freq_max = freqs_nums_types[cs.index(c_max)][0]
+        freq_min = freqs_nums_types[cs.index(c_min)][0]
+        k = (c_min * freq_max - c_max * freq_min) / (c_min - c_max)
+
+    g_k = sum((num_types for freq, num_types in freqs_nums_types if freq <= numpy.floor(k))) / num_types_all
+    r2 = g_k - numpy.square(k) / (2 * num_types_all)
+
+    return r2
+
+# Popescu's R₃
+# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 48–49, 53). Mouton de Gruyter.
+def popescus_r3(main, tokens):
+    num_tokens = len(tokens)
+    num_types = len(set(tokens))
+    types_freqs = collections.Counter(tokens)
+    ranks_freqs = [
+        (i + 1, freq)
+        for i, freq in enumerate(sorted(types_freqs.values(), reverse = True))
+    ]
+
+    rs_rel = numpy.empty(shape = num_types)
+    fs_rel = numpy.empty(shape = num_types)
+    freq_cum = 0
+
+    for i, (rank, freq) in enumerate(ranks_freqs):
+        freq_cum += freq
+
+        rs_rel[i] = rank
+        fs_rel[i] = freq_cum
+
+    rs_rel /= num_types
+    fs_rel /= num_tokens
+
+    drs = numpy.sqrt(numpy.square(rs_rel) + numpy.square(1 - fs_rel))
+    m = numpy.argmin(drs) + 1 # m refers to rank
+    fm = fs_rel[m - 1]
+    r3 = 1 - fm
+
+    return r3
+
+# Popescu's R₄
+# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 57). Mouton de Gruyter.
+def popescus_r4(main, tokens):
+    num_tokens = len(tokens)
+    num_types = len(set(tokens))
+    types_freqs = collections.Counter(tokens)
+
+    ranks = numpy.empty(shape = num_types)
+    freqs = numpy.empty(shape = num_types)
+
+    for i, freq in enumerate(sorted(types_freqs.values(), reverse = True)):
+        ranks[i] = i + 1
+        freqs[i] = freq
+
+    r4 = 1 - (num_types + 1 - 2 / num_tokens * numpy.sum(ranks * freqs)) / num_types
+
+    return r4
+
 # Root TTR
 # References:
 #     Guiraud, P. (1954). Les caractères statistiques du vocabulaire: Essai de méthodologie. Presses universitaires de France.
@@ -217,11 +325,11 @@ def rttr(main, tokens):
 def simpsons_l(main, tokens):
     num_tokens = len(tokens)
     types_freqs = collections.Counter(tokens)
-    freqs_num_types = collections.Counter(types_freqs.values())
+    freqs_nums_types = collections.Counter(types_freqs.values())
 
     s2 = sum((
         num_types * (freq ** 2)
-        for freq, num_types in freqs_num_types.items()
+        for freq, num_types in freqs_nums_types.items()
     ))
     l = (s2 - num_tokens) / (num_tokens * (num_tokens - 1))
 
@@ -267,11 +375,11 @@ def vocdd(main, tokens):
 def yules_characteristic_k(main, tokens):
     num_tokens = len(tokens)
     types_freqs = collections.Counter(tokens)
-    freqs_num_types = collections.Counter(types_freqs.values())
+    freqs_nums_types = collections.Counter(types_freqs.values())
 
     s2 = sum((
         num_types * (freq ** 2)
-        for freq, num_types in freqs_num_types.items()
+        for freq, num_types in freqs_nums_types.items()
     ))
     k = 10000 * ((s2 - num_tokens) / (num_tokens ** 2))
 
@@ -282,11 +390,11 @@ def yules_characteristic_k(main, tokens):
 def yules_index_of_diversity(main, tokens):
     num_tokens = len(tokens)
     types_freqs = collections.Counter(tokens)
-    freqs_num_types = collections.Counter(types_freqs.values())
+    freqs_nums_types = collections.Counter(types_freqs.values())
 
     s2 = sum((
         num_types * (freq ** 2)
-        for freq, num_types in freqs_num_types.items()
+        for freq, num_types in freqs_nums_types.items()
     ))
     index_of_diversity = (num_tokens ** 2) / (s2 - num_tokens)
 

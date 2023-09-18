@@ -593,6 +593,10 @@ class Wl_Table_Profiler_Lexical_Diversity(Wl_Table_Profiler):
             _tr('wl_profiler', 'Mean Segmental TTR'),
             _tr('wl_profiler', 'Measure of Textual Lexical Diversity'),
             _tr('wl_profiler', 'Moving-average TTR'),
+            _tr('wl_profiler', "Popescu's R₁"),
+            _tr('wl_profiler', "Popescu's R₂"),
+            _tr('wl_profiler', "Popescu's R₃"),
+            _tr('wl_profiler', "Popescu's R₄"),
             _tr('wl_profiler', 'Root TTR'),
             _tr('wl_profiler', "Simpson's l"),
             _tr('wl_profiler', 'Type-token Ratio'),
@@ -1296,6 +1300,10 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                             wl_measures_lexical_diversity.msttr(self.main, tokens),
                             wl_measures_lexical_diversity.mtld(self.main, tokens),
                             wl_measures_lexical_diversity.mattr(self.main, tokens),
+                            wl_measures_lexical_diversity.popescus_r1(self.main, tokens),
+                            wl_measures_lexical_diversity.popescus_r2(self.main, tokens),
+                            wl_measures_lexical_diversity.popescus_r3(self.main, tokens),
+                            wl_measures_lexical_diversity.popescus_r4(self.main, tokens),
                             wl_measures_lexical_diversity.rttr(self.main, tokens),
                             wl_measures_lexical_diversity.simpsons_l(self.main, tokens),
                             wl_measures_lexical_diversity.ttr(self.main, tokens),
@@ -1304,7 +1312,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                             wl_measures_lexical_diversity.yules_index_of_diversity(self.main, tokens)
                         ]
                     else:
-                        stats_lexical_diversity = [0] * 14
+                        stats_lexical_diversity = [0] * 18
                 else:
                     stats_lexical_diversity = None
 

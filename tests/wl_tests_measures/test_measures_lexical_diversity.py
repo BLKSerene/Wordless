@@ -30,6 +30,9 @@ TOKENS_100 = ['This', 'is', 'a', 'sentence', '.'] * 20
 TOKENS_101 = ['This', 'is', 'a', 'sentence', '.'] * 20 + ['another']
 TOKENS_1000 = ['This', 'is', 'a', 'sentence', '.'] * 200
 
+# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 26). Mouton de Gruyter.
+TOKENS_225 = [1] * 11 + [2, 3] * 9 + [4] * 7 + [5, 6] * 6 + [7, 8] * 5 + list(range(9, 16)) * 4 + list(range(16, 22)) * 3 + list(range(22, 40)) * 2 + list(range(40, 125))
+
 def test_cttr():
     cttr = wl_measures_lexical_diversity.cttr(main, TOKENS_100)
 
@@ -93,6 +96,30 @@ def test_mattr():
     assert mattr_100 == wl_measures_lexical_diversity.ttr(main, TOKENS_100)
     assert mattr_1000 == 5 / 500
 
+# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 30). Mouton de Gruyter.
+def test_popescus_r1():
+    r1 = wl_measures_lexical_diversity.popescus_r1(main, TOKENS_225)
+
+    assert round(r1, 4) == 0.8667
+
+# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 39). Mouton de Gruyter.
+def test_popescus_r2():
+    r2 = wl_measures_lexical_diversity.popescus_r2(main, TOKENS_225)
+
+    assert round(r2, 3) == 0.871
+
+# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 51). Mouton de Gruyter.
+def test_popescus_r3():
+    r3 = wl_measures_lexical_diversity.popescus_r3(main, TOKENS_225)
+
+    assert round(r3, 4) == 0.3778
+
+# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 59). Mouton de Gruyter.
+def test_popescus_r4():
+    r4 = wl_measures_lexical_diversity.popescus_r4(main, TOKENS_225)
+
+    assert round(r4, 4) == 0.6344
+
 def test_rttr():
     rttr = wl_measures_lexical_diversity.rttr(main, TOKENS_100)
 
@@ -136,6 +163,10 @@ if __name__ == '__main__':
     test_msttr()
     test_mtld()
     test_mattr()
+    test_popescus_r1()
+    test_popescus_r2()
+    test_popescus_r3()
+    test_popescus_r4()
     test_rttr()
     test_ttr()
     test_simpsons_l()
