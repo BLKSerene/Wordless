@@ -33,7 +33,7 @@
 8 |[Matplotlib](https://matplotlib.org/)                              |3.8.0 |Matplotlib 開發團隊|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 9 |[NetworkX](https://networkx.org/)                                  |3.1   |NetworkX 開發人員, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
 10|[NLTK](https://www.nltk.org/)                                      |3.8.1 |Steven Bird, Edward Loper, Ewan Klein|[Apache-2.0](https://github.com/nltk/nltk/blob/develop/LICENSE.txt)
-11|[NumPy](https://www.numpy.org/)                                    |1.25.2|NumPy 開發人員|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
+11|[NumPy](https://www.numpy.org/)                                    |1.26.0|NumPy 開發人員|[BSD-3-Clause](https://github.com/numpy/numpy/blob/main/LICENSE.txt)
 12|[opencc-python](https://github.com/yichen0831/opencc-python)       |0.1.7 |郭家寶, Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
 13|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)            |3.1.2 |Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
 14|[PyInstaller](http://www.pyinstaller.org/)                         |5.13.0|Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
