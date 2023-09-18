@@ -1220,6 +1220,10 @@ Measure of Lexical Diversity|Formula
 <span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
 <span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
 <span id="ref-mattr"></span>Moving-average TTR<br>([Covington & McFall, 2010](#ref-covington-mcfall-2010))|![Formula](/doc/measures/lexical_diversity/mattr.svg)<br>where **w** is the window size which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Moving-average TTR → Window size**, **NumTypesWindowₚ** is the number of token types within the moving window starting at position **p**, and **NumTokensWindowₚ** is the number of tokens within the moving window starting at position **p**.
+<span id="ref-popescus-r1"></span>Popescu's R₁<br>([Popescu, 2009, pp. 18, 30, 33](#ref-popescu-2009))|For detailed calculation procedures, see reference.
+<span id="ref-popescus-r2"></span>Popescu's R₂<br>([Popescu, 2009, pp. 35–36, 38](#ref-popescu-2009))|For detailed calculation procedures, see reference.
+<span id="ref-popescus-r3"></span>Popescu's R₃<br>([Popescu, 2009, pp. 48–49, 53](#ref-popescu-2009))|For detailed calculation procedures, see reference.
+<span id="ref-popescus-r4"></span>Popescu's R₄<br>([Popescu, 2009, p. 57](#ref-popescu-2009))|For detailed calculation procedures, see reference.
 <span id="ref-rttr"></span>Root TTR<br>([Guiraud, 1954](#ref-guiraud-1954))|![Formula](/doc/measures/lexical_diversity/rttr.svg)
 <span id="ref-simpsons-l"></span>Simpson's l<br>([Simpson, 1949](#ref-simpson-1949))|![Formula](/doc/measures/lexical_diversity/simpsons_l.svg)
 <span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/ttr.svg)
@@ -1657,6 +1661,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-fog-index) Pisarek, W. (1969). Jak mierzyć zrozumiałość tekstu?. *Zeszyty Prasoznawcze*, *4*(42), 35–48.
 <span id="ref-pojanapunya-todd-2016"></span>
 1. [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
+<span id="ref-popescu-2009"></span>
+1. [**^**](#ref-popescus-r1)[**^**](#ref-popescus-r2)[**^**](#ref-popescus-r3)[**^**](#ref-popescus-r4) Popescu, I.-I. (2009). *Word frequency studies*. Mouton de Gruyter.
 <span id="ref-powers-et-al-1958"></span>
 1. [**^**](#ref-x-c50)[**^**](#ref-re)[**^**](#ref-re-farr-jenkins-paterson)[**^**](#ref-fog-index) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254
 <span id="ref-quasthoff-wolff-2002"></span>
