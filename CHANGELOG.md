@@ -38,6 +38,7 @@
 ### ⏫ Dependency Changes
 - Dependencies: Add Stanza
 - Dependencies: Remove stopword
+- Dependencies: Upgrade Matplotlib to 3.8.0
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - 08/18/2023
 ### 🎉 New Features
