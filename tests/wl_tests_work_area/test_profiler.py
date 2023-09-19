@@ -27,9 +27,11 @@ from wordless import wl_profiler
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_utils import wl_misc
 
-main = wl_test_init.Wl_Test_Main()
+main_global = None
 
 def test_profiler():
+    main = wl_test_init.Wl_Test_Main()
+
     for i in range(2):
         # Single file
         if i % 2 == 0:
@@ -42,6 +44,9 @@ def test_profiler():
             re.search(r'(?<=\)\. ).+?$', file_name).group()
             for file_name in main.wl_file_area.get_selected_file_names()
         ]
+
+        global main_global # pylint: disable=global-statement
+        main_global = main
 
         print(f"Files: {' | '.join(files_selected)}")
 
@@ -65,7 +70,7 @@ def update_gui(err_msg, texts_stats_files):
     count_tokens_lens_syls = []
     count_tokens_lens_chars = []
 
-    files = main.settings_custom['file_area']['files_open']
+    files = main_global.settings_custom['file_area']['files_open']
 
     for i, stats in enumerate(texts_stats_files):
         stats_readability = stats[0]
@@ -123,12 +128,12 @@ def update_gui(err_msg, texts_stats_files):
         if i < len(files):
             lang = re.search(r'(?<=\[)[a-z_]+(?=\])', files[i]['name']).group()
 
-            if lang not in main.settings_global['syl_tokenizers']:
+            if lang not in main_global.settings_global['syl_tokenizers']:
                 assert all((len_syls == 1 for len_syls in len_tokens_syls))
                 assert all((len_syls == 1 for len_syls in len_types_syls))
 
         # Lexical Diversity
-        assert len(stats_lexical_diversity) == 18
+        assert len(stats_lexical_diversity) == 20
 
         for i, lexical_diversity in enumerate(stats_lexical_diversity):
             assert lexical_diversity > 0

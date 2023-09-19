@@ -23,12 +23,12 @@ from tests import wl_test_init
 from wordless import wl_collocation_extractor
 from wordless.wl_dialogs import wl_dialogs_misc
 
-main = wl_test_init.Wl_Test_Main()
-
-main.settings_custom['collocation_extractor']['search_settings']['multi_search_mode'] = True
-main.settings_custom['collocation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
-
 def test_collocation_extractor():
+    main = wl_test_init.Wl_Test_Main()
+
+    main.settings_custom['collocation_extractor']['search_settings']['multi_search_mode'] = True
+    main.settings_custom['collocation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+
     # Do not test Fisher's exact test since it is too computationally expensive
     tests_statistical_significance = [
         test_statistical_significance

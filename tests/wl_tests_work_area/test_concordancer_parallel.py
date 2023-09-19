@@ -22,12 +22,12 @@ from tests import wl_test_init
 from wordless import wl_concordancer_parallel
 from wordless.wl_dialogs import wl_dialogs_misc
 
-main = wl_test_init.Wl_Test_Main()
-
-main.settings_custom['concordancer_parallel']['search_settings']['multi_search_mode'] = True
-main.settings_custom['concordancer_parallel']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
-
 def test_concordancer_parallel():
+    main = wl_test_init.Wl_Test_Main()
+
+    main.settings_custom['concordancer_parallel']['search_settings']['multi_search_mode'] = True
+    main.settings_custom['concordancer_parallel']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+
     for _ in range(2):
         wl_test_init.select_random_files(main, num_files = 3)
 
