@@ -441,7 +441,7 @@ class Wl_Settings_Measures_Lexical_Diversity(wl_settings.Wl_Settings_Node):
         # Repeat Rate
         self.group_box_repeat_rate = QGroupBox(self.tr('Repeat Rate'), self)
 
-        self.label_use_data_repeat_rate = QLabel(self.tr('Window size:'), self)
+        self.label_use_data_repeat_rate = QLabel(self.tr('Use data:'), self)
         self.combo_box_use_data_repeat_rate = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_use_data_repeat_rate.addItems([
@@ -458,7 +458,7 @@ class Wl_Settings_Measures_Lexical_Diversity(wl_settings.Wl_Settings_Node):
         # Shannon Entropy
         self.group_box_shannon_entropy = QGroupBox(self.tr('Shannon Entropy'), self)
 
-        self.label_use_data_shannon_entropy = QLabel(self.tr('Window size:'), self)
+        self.label_use_data_shannon_entropy = QLabel(self.tr('Use data:'), self)
         self.combo_box_use_data_shannon_entropy = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_use_data_shannon_entropy.addItems([

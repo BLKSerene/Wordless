@@ -20,15 +20,26 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_lemmatization, wl_word_tokenization
+from wordless.wl_utils import wl_misc
+
+_, is_macos, _ = wl_misc.check_os()
 
 main = wl_test_init.Wl_Test_Main()
 wl_test_init.change_default_tokenizers(main)
 
 test_lemmatizers = []
+test_lemmatizers_local = []
 
 for lang, lemmatizers in main.settings_global['lemmatizers'].items():
     for lemmatizer in lemmatizers:
-        if (
+        if lemmatizer == 'botok_bod':
+            test_lemmatizers.append(pytest.param(
+                lang, lemmatizer,
+                marks = pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
+            ))
+
+            test_lemmatizers_local.append((lang, lemmatizer))
+        elif (
             lemmatizer not in [
                 'spacy_cat', 'spacy_zho', 'spacy_hrv', 'spacy_dan', 'spacy_nld',
                 'spacy_eng', 'spacy_fin', 'spacy_fra', 'spacy_deu', 'spacy_ell',
@@ -39,6 +50,7 @@ for lang, lemmatizers in main.settings_global['lemmatizers'].items():
             and not lemmatizer.startswith('stanza_')
         ):
             test_lemmatizers.append((lang, lemmatizer))
+            test_lemmatizers_local.append((lang, lemmatizer))
 
 @pytest.mark.parametrize('lang, lemmatizer', test_lemmatizers)
 def test_lemmatize(lang, lemmatizer):
@@ -276,5 +288,5 @@ def test_lemmatize(lang, lemmatizer):
         raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(lemmatizer)
 
 if __name__ == '__main__':
-    for lang, lemmatizer in test_lemmatizers:
+    for lang, lemmatizer in test_lemmatizers_local:
         test_lemmatize(lang, lemmatizer)
