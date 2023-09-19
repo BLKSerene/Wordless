@@ -20,15 +20,26 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_word_tokenization
+from wordless.wl_utils import wl_misc
+
+_, is_macos, _ = wl_misc.check_os()
 
 main = wl_test_init.Wl_Test_Main()
 wl_test_init.change_default_tokenizers(main)
 
 test_word_tokenizers = []
+test_word_tokenizers_local = []
 
 for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
     for word_tokenizer in word_tokenizers:
-        if (
+        if word_tokenizer == 'botok_bod':
+            test_word_tokenizers.append(pytest.param(
+                lang, word_tokenizer,
+                marks = pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
+            ))
+
+            test_word_tokenizers_local.append((lang, word_tokenizer))
+        elif (
             word_tokenizer not in [
                 'spacy_cat', 'spacy_zho', 'spacy_hrv', 'spacy_dan', 'spacy_nld',
                 'spacy_eng', 'spacy_fin', 'spacy_fra', 'spacy_deu', 'spacy_ell',
@@ -49,6 +60,9 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
             and lang != 'kor'
         ):
             test_word_tokenizers.append((lang, word_tokenizer))
+            test_word_tokenizers_local.append((lang, word_tokenizer))
+
+print(test_word_tokenizers)
 
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
 def test_word_tokenize(lang, word_tokenizer):
@@ -337,5 +351,5 @@ def test_word_tokenize(lang, word_tokenizer):
         raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(word_tokenizer)
 
 if __name__ == '__main__':
-    for lang, word_tokenizer in test_word_tokenizers:
+    for lang, word_tokenizer in test_word_tokenizers_local:
         test_word_tokenize(lang, word_tokenizer)

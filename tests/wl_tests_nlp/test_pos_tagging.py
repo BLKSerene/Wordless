@@ -20,20 +20,32 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_pos_tagging, wl_word_tokenization
+from wordless.wl_utils import wl_misc
+
+_, is_macos, _ = wl_misc.check_os()
 
 main = wl_test_init.Wl_Test_Main()
 wl_test_init.change_default_tokenizers(main)
 
 test_pos_taggers = []
+test_pos_taggers_local = []
 
 for lang, pos_taggers in main.settings_global['pos_taggers'].items():
     for pos_tagger in pos_taggers:
+        if pos_tagger == 'botok_bod':
+            test_pos_taggers.append(pytest.param(
+                lang, pos_tagger,
+                marks = pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
+            ))
+
+            test_pos_taggers_local.append((lang, pos_tagger))
         # The Korean blank model for sentencizer requires mecab-ko which would be replaced by python-mecab-ko in the upcoming spaCy 4.0
-        if (
+        elif (
             not pos_tagger.startswith(('spacy_', 'stanza_'))
             and lang != 'kor'
         ):
             test_pos_taggers.append((lang, pos_tagger))
+            test_pos_taggers_local.append((lang, pos_tagger))
 
 @pytest.mark.parametrize('lang, pos_tagger', test_pos_taggers)
 def test_pos_tag(lang, pos_tagger):
@@ -159,5 +171,5 @@ def test_pos_tag(lang, pos_tagger):
         raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(pos_tagger)
 
 if __name__ == '__main__':
-    for lang, pos_tagger in test_pos_taggers:
+    for lang, pos_tagger in test_pos_taggers_local:
         test_pos_tag(lang, pos_tagger)

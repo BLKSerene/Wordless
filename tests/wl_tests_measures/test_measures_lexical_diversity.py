@@ -96,6 +96,16 @@ def test_mattr():
     assert mattr_100 == wl_measures_lexical_diversity.ttr(main, TOKENS_100)
     assert mattr_1000 == 5 / 500
 
+# Reference: Popescu I.-I., Mačutek, J, & Altmann, G. (2008). Word frequency and arc length. Glottometrics, 17, 21, 33.
+def test_popescu_macutek_altmanns_b1_b2_b3_b4_b5():
+    b1, b2, b3, b4, b5 = wl_measures_lexical_diversity.popescu_macutek_altmanns_b1_b2_b3_b4_b5(main, TOKENS_225)
+
+    assert round(b1, 3) == 0.969
+    assert round(b2, 3) == 0.527
+    assert round(b3, 3) == 0.961
+    assert round(b4, 3) == 0.078
+    assert round(b5, 3) == 0.664
+
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 30). Mouton de Gruyter.
 def test_popescus_r1():
     r1 = wl_measures_lexical_diversity.popescus_r1(main, TOKENS_225)
@@ -183,6 +193,7 @@ if __name__ == '__main__':
     test_msttr()
     test_mtld()
     test_mattr()
+    test_popescu_macutek_altmanns_b1_b2_b3_b4_b5()
     test_popescus_r1()
     test_popescus_r2()
     test_popescus_r3()
