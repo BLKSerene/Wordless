@@ -20,13 +20,24 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_word_detokenization, wl_word_tokenization
+from wordless.wl_utils import wl_misc
+
+_, is_macos, _ = wl_misc.check_os()
 
 main = wl_test_init.Wl_Test_Main()
 wl_test_init.change_default_tokenizers(main)
 
-LANGS_DETOKENIZATION = ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha', 'bod', 'other']
+test_langs = (
+    ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha']
+    + [pytest.param(
+        'bod',
+        marks = pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
+    )]
+    + ['other']
+)
+test_langs_local = ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha', 'bod', 'other']
 
-@pytest.mark.parametrize('lang', LANGS_DETOKENIZATION)
+@pytest.mark.parametrize('lang', test_langs)
 def test_word_detokenize(lang):
     tokens = wl_word_tokenization.wl_word_tokenize_flat(
         main,
@@ -58,5 +69,5 @@ def test_word_detokenize(lang):
         raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 
 if __name__ == '__main__':
-    for lang in LANGS_DETOKENIZATION:
+    for lang in test_langs_local:
         test_word_detokenize(lang)

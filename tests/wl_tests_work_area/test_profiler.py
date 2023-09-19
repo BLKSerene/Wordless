@@ -133,7 +133,7 @@ def update_gui(err_msg, texts_stats_files):
                 assert all((len_syls == 1 for len_syls in len_types_syls))
 
         # Lexical Diversity
-        assert len(stats_lexical_diversity) == 20
+        assert len(stats_lexical_diversity) == 25
 
         for i, lexical_diversity in enumerate(stats_lexical_diversity):
             assert lexical_diversity > 0

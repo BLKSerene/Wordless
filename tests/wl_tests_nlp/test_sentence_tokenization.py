@@ -21,18 +21,36 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_sentence_tokenization, wl_word_tokenization
+from wordless.wl_utils import wl_misc
+
+_, is_macos, _ = wl_misc.check_os()
 
 main = wl_test_init.Wl_Test_Main()
 wl_test_init.change_default_tokenizers(main)
 
 test_sentence_tokenizers = []
+test_sentence_tokenizers_local = []
 
 for lang, sentence_tokenizers in main.settings_global['sentence_tokenizers'].items():
     for sentence_tokenizer in sentence_tokenizers:
-        if not sentence_tokenizer.startswith(('spacy_', 'stanza_')):
-            test_sentence_tokenizers.append((lang, sentence_tokenizer))
+        if sentence_tokenizer == 'botok_bod':
+            test_sentence_tokenizers.append(pytest.param(
+                lang, sentence_tokenizer,
+                marks = pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
+            ))
 
-test_langs = list(dict.fromkeys([lang for lang, _ in test_sentence_tokenizers]))
+            test_sentence_tokenizers_local.append((lang, sentence_tokenizer))
+        elif not sentence_tokenizer.startswith(('spacy_', 'stanza_')):
+            test_sentence_tokenizers.append((lang, sentence_tokenizer))
+            test_sentence_tokenizers_local.append((lang, sentence_tokenizer))
+
+test_langs = list(dict.fromkeys([lang for lang, _ in test_sentence_tokenizers_local]))
+test_langs_local = test_langs[:]
+
+test_langs[test_langs.index('bod')] = pytest.param(
+    'bod',
+    marks = pytest.mark.xfail(is_macos, reason = 'https://github.com/OpenPecha/Botok/issues/76')
+)
 
 @pytest.mark.parametrize('lang, sentence_tokenizer', test_sentence_tokenizers)
 def test_sentence_tokenize(lang, sentence_tokenizer):
@@ -110,7 +128,7 @@ def test_sentence_tokenize(lang, sentence_tokenizer):
     if tests_lang_util_skipped:
         raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(sentence_tokenizer)
 
-@pytest.mark.parametrize('lang', test_langs)
+@pytest.mark.parametrize('lang', test_langs_local)
 def test_sentence_split(lang):
     print(f'Testing {lang} / Sentence Splitter...')
 
@@ -122,7 +140,7 @@ def test_sentence_split(lang):
     if lang not in ['zho_cn', 'zho_tw', 'jpn', 'tha', 'bod']:
         assert len(sentences_split) > 1
 
-@pytest.mark.parametrize('lang', test_langs)
+@pytest.mark.parametrize('lang', test_langs_local)
 def test_sentence_seg_tokenize(lang):
     sentence_segs = wl_sentence_tokenization.wl_sentence_seg_tokenize(
         main,
@@ -186,7 +204,7 @@ def test_sentence_seg_tokenize(lang):
     else:
         raise wl_test_init.Wl_Exception_Tests_Lang_Skipped(lang)
 
-@pytest.mark.parametrize('lang', test_langs)
+@pytest.mark.parametrize('lang', test_langs_local)
 def test_sentence_seg_split(lang):
     print(f'Testing {lang} / Sentence Segment Splitter...')
 
@@ -213,17 +231,17 @@ def test_sentence_seg_tokenize_tokens(lang):
         assert len(sentence_segs) > 1
 
 if __name__ == '__main__':
-    for lang, sentence_tokenizer in test_sentence_tokenizers:
+    for lang, sentence_tokenizer in test_sentence_tokenizers_local:
         test_sentence_tokenize(lang, sentence_tokenizer)
 
-    for lang in test_langs:
+    for lang in test_langs_local:
         test_sentence_split(lang)
 
-    for lang in test_langs:
+    for lang in test_langs_local:
         test_sentence_seg_tokenize(lang)
 
-    for lang in test_langs:
+    for lang in test_langs_local:
         test_sentence_seg_split(lang)
 
-    for lang in test_langs:
+    for lang in test_langs_local:
         test_sentence_seg_tokenize_tokens(lang)

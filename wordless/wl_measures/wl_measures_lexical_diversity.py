@@ -61,14 +61,13 @@ def fishers_index_of_diversity(main, tokens):
 # Reference: Herdan, G. (1955). A new derivation and interpretation of Yule's ‘Characteristic’ K. Zeitschrift für Angewandte Mathematik und Physik (ZAMP), 6(4), 332–339. https://doi.org/10.1007/BF01587632
 def herdans_vm(main, tokens):
     num_tokens = len(tokens)
-    num_types = len(set(tokens))
     types_freqs = collections.Counter(tokens)
+    num_types = len(types_freqs)
     freqs_nums_types = collections.Counter(types_freqs.values())
 
-    s2 = sum((
-        num_types * (freq ** 2)
-        for freq, num_types in freqs_nums_types.items()
-    ))
+    freqs = numpy.array(list(freqs_nums_types))
+    nums_types = numpy.array(list(freqs_nums_types.values()))
+    s2 = numpy.sum(nums_types * numpy.square(freqs))
     vm = s2 / (num_tokens ** 2) - 1 / num_types
 
     return vm
@@ -208,33 +207,58 @@ def mattr(main, tokens):
 
     return numpy.mean(ttrs)
 
+# Popescu-Mačutek-Altmann's B₁/B₂/B₃/B₄/B₅
+# Reference: Popescu I.-I., Mačutek, J, & Altmann, G. (2008). Word frequency and arc length. Glottometrics, 17, 18–42.
+def popescu_macutek_altmanns_b1_b2_b3_b4_b5(main, tokens):
+    types_freqs = collections.Counter(tokens)
+    num_types = len(types_freqs)
+    freqs = numpy.array(sorted(types_freqs.values(), reverse = True))
+    freqs_nums_types = collections.Counter(types_freqs.values())
+
+    l = numpy.sum(numpy.sqrt(numpy.square(freqs[:-1] - freqs[1:]) + 1))
+    l_min = numpy.sqrt(numpy.square(num_types - 1) + numpy.square(freqs[0] - 1))
+    l_max = numpy.sqrt(numpy.square(freqs[0] - 1) + 1) + num_types - 2
+
+    b1 = l / l_max
+    b2 = (l - l_min) / (l_max - l_min)
+    b3 = (num_types - 1) / l
+    b4 = (freqs[0] - 1) / l
+    b5 = freqs_nums_types[1] / l
+
+    return b1, b2, b3, b4, b5
+
 # Popescu's R₁
 # Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 18, 30, 33). Mouton de Gruyter.
 def popescus_r1(main, tokens):
     num_tokens = len(tokens)
     types_freqs = collections.Counter(tokens)
-    ranks_freqs = [
-        (i + 1, freq)
-        for i, freq in enumerate(sorted(types_freqs.values(), reverse = True))
-    ]
+    num_types = len(types_freqs)
+    ranks = numpy.empty(shape = num_types)
+    freqs = numpy.empty(shape = num_types)
+
+    for i, freq in enumerate(sorted(types_freqs.values(), reverse = True)):
+        ranks[i] = i + 1
+        freqs[i] = freq
 
     h = 0
 
-    for rank, freq in ranks_freqs:
+    for rank, freq in zip(ranks, freqs):
         if rank == freq:
             h = rank
 
             break
 
     if not h:
-        cs = [1 / (freq - rank) for rank, freq in ranks_freqs]
-        c_max = max(cs)
-        c_min = min(cs)
-        r_max = ranks_freqs[cs.index(c_max)][0]
-        r_min = ranks_freqs[cs.index(c_min)][0]
+        cs = 1 / (freqs - ranks)
+        i_max = numpy.argmax(cs)
+        i_min = numpy.argmin(cs)
+        c_max = cs[i_max]
+        c_min = cs[i_min]
+        r_max = ranks[i_max]
+        r_min = ranks[i_min]
         h = (c_min * r_max - c_max * r_min) / (c_min - c_max)
 
-    f_h = sum((freq for _, freq in ranks_freqs[:int(numpy.floor(h))])) / num_tokens
+    f_h = numpy.sum(freqs[:int(numpy.floor(h))]) / num_tokens
     r1 = 1 - (f_h - numpy.square(h) / (2 * num_tokens))
 
     return r1
@@ -245,6 +269,8 @@ def popescus_r2(main, tokens):
     num_types_all = len(set(tokens))
     types_freqs = collections.Counter(tokens)
     freqs_nums_types = sorted(collections.Counter(types_freqs.values()).items())
+    freqs = numpy.array([freq for freq, _ in freqs_nums_types])
+    nums_types = numpy.array([num_types for _, num_types in freqs_nums_types])
 
     k = 0
 
@@ -255,14 +281,16 @@ def popescus_r2(main, tokens):
             break
 
     if not k:
-        cs = [1 / (num_types - freq) for freq, num_types in freqs_nums_types]
-        c_max = max(cs)
-        c_min = min(cs)
-        freq_max = freqs_nums_types[cs.index(c_max)][0]
-        freq_min = freqs_nums_types[cs.index(c_min)][0]
+        cs = 1 / (nums_types - freqs)
+        i_max = numpy.argmax(cs)
+        i_min = numpy.argmin(cs)
+        c_max = cs[i_max]
+        c_min = cs[i_min]
+        freq_max = freqs[i_max]
+        freq_min = freqs[i_min]
         k = (c_min * freq_max - c_max * freq_min) / (c_min - c_max)
 
-    g_k = sum((num_types for freq, num_types in freqs_nums_types if freq <= numpy.floor(k))) / num_types_all
+    g_k = numpy.sum([num_types for freq, num_types in freqs_nums_types if freq <= numpy.floor(k)]) / num_types_all
     r2 = g_k - numpy.square(k) / (2 * num_types_all)
 
     return r2
@@ -369,11 +397,10 @@ def simpsons_l(main, tokens):
     num_tokens = len(tokens)
     types_freqs = collections.Counter(tokens)
     freqs_nums_types = collections.Counter(types_freqs.values())
+    freqs = numpy.array(list(freqs_nums_types))
+    nums_types = numpy.array(list(freqs_nums_types.values()))
 
-    s2 = sum((
-        num_types * (freq ** 2)
-        for freq, num_types in freqs_nums_types.items()
-    ))
+    s2 = numpy.sum(nums_types * numpy.square(freqs))
     l = (s2 - num_tokens) / (num_tokens * (num_tokens - 1))
 
     return l
@@ -419,11 +446,10 @@ def yules_characteristic_k(main, tokens):
     num_tokens = len(tokens)
     types_freqs = collections.Counter(tokens)
     freqs_nums_types = collections.Counter(types_freqs.values())
+    freqs = numpy.array(list(freqs_nums_types))
+    nums_types = numpy.array(list(freqs_nums_types.values()))
 
-    s2 = sum((
-        num_types * (freq ** 2)
-        for freq, num_types in freqs_nums_types.items()
-    ))
+    s2 = numpy.sum(nums_types * numpy.square(freqs))
     k = 10000 * ((s2 - num_tokens) / (num_tokens ** 2))
 
     return k
@@ -434,11 +460,10 @@ def yules_index_of_diversity(main, tokens):
     num_tokens = len(tokens)
     types_freqs = collections.Counter(tokens)
     freqs_nums_types = collections.Counter(types_freqs.values())
+    freqs = numpy.array(list(freqs_nums_types))
+    nums_types = numpy.array(list(freqs_nums_types.values()))
 
-    s2 = sum((
-        num_types * (freq ** 2)
-        for freq, num_types in freqs_nums_types.items()
-    ))
+    s2 = numpy.sum(nums_types * numpy.square(freqs))
     index_of_diversity = (num_tokens ** 2) / (s2 - num_tokens)
 
     return index_of_diversity
