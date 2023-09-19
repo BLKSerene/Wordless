@@ -26,6 +26,7 @@ import sys
 from PyQt5.QtCore import QObject
 from PyQt5.QtWidgets import QApplication, QStatusBar, QWidget
 
+from tests import wl_test_file_area
 from wordless import wl_file_area
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_settings import wl_settings_default, wl_settings_global
@@ -107,6 +108,11 @@ class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
 def select_random_files(main, num_files):
     files = main.settings_custom['file_area']['files_open']
 
+    if not files:
+        wl_test_file_area.wl_test_file_area(main)
+
+        files = main.settings_custom['file_area']['files_open']
+
     for file in files:
         file['selected'] = False
 
@@ -115,6 +121,11 @@ def select_random_files(main, num_files):
 
 def select_random_files_ref(main, num_files):
     files = main.settings_custom['file_area']['files_open_ref']
+
+    if not files:
+        wl_test_file_area.wl_test_file_area(main)
+
+        files = main.settings_custom['file_area']['files_open_ref']
 
     for file in files:
         file['selected'] = False

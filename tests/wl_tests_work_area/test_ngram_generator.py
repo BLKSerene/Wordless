@@ -23,12 +23,14 @@ from tests import wl_test_init
 from wordless import wl_ngram_generator
 from wordless.wl_dialogs import wl_dialogs_misc
 
-main = wl_test_init.Wl_Test_Main()
-
-main.settings_custom['ngram_generator']['search_settings']['multi_search_mode'] = True
-main.settings_custom['ngram_generator']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+main_global = None
 
 def test_ngram_generator():
+    main = wl_test_init.Wl_Test_Main()
+
+    main.settings_custom['ngram_generator']['search_settings']['multi_search_mode'] = True
+    main.settings_custom['ngram_generator']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
 
@@ -43,6 +45,9 @@ def test_ngram_generator():
         # Multiple files
         elif i % 3 == 1:
             wl_test_init.select_random_files(main, num_files = 2)
+
+        global main_global # pylint: disable=global-statement
+        main_global = main
 
         files_selected = [
             re.search(r'(?<=\)\. ).+?$', file_name).group()
@@ -68,9 +73,9 @@ def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
     print(err_msg)
     assert not err_msg
 
-    len_files_selected = len(list(main.wl_file_area.get_selected_files()))
-
     assert len(ngrams_freq_files) == len(ngrams_stats_files) >= 1
+
+    num_files_selected = len(list(main_global.wl_file_area.get_selected_files()))
 
     for ngram, freq_files in ngrams_freq_files.items():
         stats_files = ngrams_stats_files[ngram]
@@ -78,9 +83,9 @@ def update_gui(err_msg, ngrams_freq_files, ngrams_stats_files):
         # N-gram
         assert ngram
         # Frequency
-        assert len(freq_files) == len_files_selected + 1
+        assert len(freq_files) == num_files_selected + 1
         # Dispersion & Adjusted Frequency
-        assert len(stats_files) == len_files_selected + 1
+        assert len(stats_files) == num_files_selected + 1
         # Number of Files Found
         assert len([freq for freq in freq_files[:-1] if freq]) >= 1
 

@@ -23,9 +23,11 @@ from tests import wl_test_init
 from wordless import wl_wordlist_generator
 from wordless.wl_dialogs import wl_dialogs_misc
 
-main = wl_test_init.Wl_Test_Main()
+main_global = None
 
 def test_wordlist_generator():
+    main = wl_test_init.Wl_Test_Main()
+
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
 
@@ -40,6 +42,9 @@ def test_wordlist_generator():
         # Multiple files
         elif i % 2 == 1:
             wl_test_init.select_random_files(main, num_files = 2)
+
+        global main_global # pylint: disable=global-statement
+        main_global = main
 
         files_selected = [
             re.search(r'(?<=\)\. ).+?$', file_name).group()
@@ -65,9 +70,9 @@ def update_gui(err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabific
     print(err_msg)
     assert not err_msg
 
-    len_files_selected = len(list(main.wl_file_area.get_selected_files()))
-
     assert len(tokens_freq_files) == len(tokens_stats_files) >= 1
+
+    num_files_selected = len(list(main_global.wl_file_area.get_selected_files()))
 
     for token, freq_files in tokens_freq_files.items():
         stats_files = tokens_stats_files[token]
@@ -77,9 +82,9 @@ def update_gui(err_msg, tokens_freq_files, tokens_stats_files, tokens_syllabific
         # Syllabification
         assert tokens_syllabification[token]
         # Frequency
-        assert len(freq_files) == len_files_selected + 1
+        assert len(freq_files) == num_files_selected + 1
         # Dispersion & Adjusted Frequency
-        assert len(stats_files) == len_files_selected + 1
+        assert len(stats_files) == num_files_selected + 1
         # Number of Files Found
         assert len([freq for freq in freq_files[:-1] if freq]) >= 1
 

@@ -19,16 +19,15 @@
 # pylint: disable=unsupported-assignment-operation
 
 import itertools
-import random
 import re
 
 from tests import wl_test_init
 from wordless import wl_keyword_extractor
 from wordless.wl_dialogs import wl_dialogs_misc
 
-main = wl_test_init.Wl_Test_Main()
-
 def test_keyword_extractor():
+    main = wl_test_init.Wl_Test_Main()
+
     # Do not test Fisher's exact test since it is too computationally expensive
     tests_statistical_significance = [
         test_statistical_significance
@@ -42,41 +41,28 @@ def test_keyword_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    files_observed = main.settings_custom['file_area']['files_open']
-    files_ref = main.settings_custom['file_area']['files_open_ref']
-
     for i, (test_statistical_significance, measure_bayes_factor, measure_effect_size) in enumerate(itertools.zip_longest(
         tests_statistical_significance,
         measures_bayes_factor,
         measures_effect_size,
         fillvalue = 'none'
     )):
-        for file in main.settings_custom['file_area']['files_open'] + main.settings_custom['file_area']['files_open_ref']:
-            file['selected'] = False
-
         # Single observed file & single reference file
         if i % 10 in [0, 3, 6, 9]:
-            random.choice(files_observed)['selected'] = True
-            random.choice(files_ref)['selected'] = True
+            wl_test_init.select_random_files(main, num_files = 1)
+            wl_test_init.select_random_files_ref(main, num_files = 1)
         # Single observed file & multiple reference files
         elif i % 10 in [1, 4, 7]:
-            random.choice(files_observed)['selected'] = True
-
-            for file in random.sample(files_ref, 2):
-                file['selected'] = True
+            wl_test_init.select_random_files(main, num_files = 1)
+            wl_test_init.select_random_files_ref(main, num_files = 2)
         # Multiple observed files & single reference file
         if i % 10 in [2, 5]:
-            for file in random.sample(files_observed, 2):
-                file['selected'] = True
-
-            random.choice(files_ref)['selected'] = True
+            wl_test_init.select_random_files(main, num_files = 2)
+            wl_test_init.select_random_files_ref(main, num_files = 1)
         # Multiple observed files & multiple reference files
         elif i % 10 == 8:
-            for file in random.sample(files_observed, 2):
-                file['selected'] = True
-
-            for file in random.sample(files_ref, 2):
-                file['selected'] = True
+            wl_test_init.select_random_files(main, num_files = 2)
+            wl_test_init.select_random_files_ref(main, num_files = 2)
 
         file_names_observed = [
             re.search(r'(?<=\)\. ).+?$', file_name).group()

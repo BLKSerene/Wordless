@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import copy
 import glob
 import os
 import pickle
@@ -29,9 +28,7 @@ from wordless import wl_file_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_utils import wl_paths
 
-main = wl_test_init.Wl_Test_Main()
-
-def test_file_area():
+def wl_test_file_area(main):
     def open_file(err_msg, files_to_open):
         assert not err_msg
 
@@ -66,7 +63,8 @@ def test_file_area():
 
     wl_test_init.clean_import_caches()
     # Reset custom settings
-    main.settings_custom = copy.deepcopy(main.settings_default)
+    main.settings_custom['file_area']['files_open'].clear()
+    main.settings_custom['file_area']['files_open_ref'].clear()
 
     for file_path in glob.glob('tests/files/wl_file_area/file_area/*.txt'):
         time_start = time.time()
@@ -132,4 +130,6 @@ def test_file_area():
         pickle.dump(main.settings_custom, f)
 
 if __name__ == '__main__':
-    test_file_area()
+    main = wl_test_init.Wl_Test_Main()
+
+    wl_test_file_area(main)

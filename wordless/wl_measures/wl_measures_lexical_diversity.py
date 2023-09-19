@@ -22,9 +22,12 @@ import collections
 import random
 
 import numpy
+from PyQt5.QtCore import QCoreApplication
 import scipy
 
 from wordless.wl_nlp import wl_nlp_utils
+
+_tr = QCoreApplication.translate
 
 # Corrected TTR
 # References:
@@ -313,12 +316,52 @@ def popescus_r4(main, tokens):
 
     return r4
 
+# Repeat Rate
+# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 166). Mouton de Gruyter.
+def repeat_rate(main, tokens):
+    use_data = main.settings_custom['measures']['lexical_diversity']['repeat_rate']['use_data']
+
+    num_tokens = len(tokens)
+    num_types = len(set(tokens))
+    types_freqs = collections.Counter(tokens)
+
+    if use_data == _tr('wl_measures_lexical_diversity', 'Rank-frequency distribution'):
+        freqs = numpy.array(list(types_freqs.values()))
+
+        rr = numpy.sum(numpy.square(freqs)) / numpy.square(num_tokens)
+    elif use_data == _tr('wl_measures_lexical_diversity', 'Frequency spectrum'):
+        nums_types = numpy.array(list(collections.Counter(types_freqs.values()).values()))
+
+        rr = numpy.sum(numpy.square(nums_types)) / numpy.square(num_types)
+
+    return rr
+
 # Root TTR
 # References:
 #     Guiraud, P. (1954). Les caractères statistiques du vocabulaire: Essai de méthodologie. Presses universitaires de France.
 #     Malvern, D., Richards, B., Chipere, N., & Durán, P. (2004). Lexical diversity and language development: Quantification and assessment (p. 26). Palgrave Macmillan.
 def rttr(main, tokens):
     return len(set(tokens)) / numpy.sqrt(len(tokens))
+
+# Shannon Entropy
+# Reference: Popescu, I.-I. (2009). Word frequency studies (p. 173). Mouton de Gruyter.
+def shannon_entropy(main, tokens):
+    use_data = main.settings_custom['measures']['lexical_diversity']['shannon_entropy']['use_data']
+
+    num_tokens = len(tokens)
+    num_types = len(set(tokens))
+    types_freqs = collections.Counter(tokens)
+
+    if use_data == _tr('wl_measures_lexical_diversity', 'Rank-frequency distribution'):
+        freqs = numpy.array(list(types_freqs.values()))
+        ps = freqs / num_tokens
+    elif use_data == _tr('wl_measures_lexical_diversity', 'Frequency spectrum'):
+        nums_types = numpy.array(list(collections.Counter(types_freqs.values()).values()))
+        ps = nums_types / num_types
+
+    h = -numpy.sum(ps * numpy.log2(ps))
+
+    return h
 
 # Simpson's l
 # Reference: Simpson, E. H. (1949). Measurement of diversity. Nature, 163, p. 688. https://doi.org/10.1038/163688a0

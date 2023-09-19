@@ -69,8 +69,8 @@ def init_settings_default(main):
 
     settings_default = {
         '1st_startup': True,
-        'file_area_cur': _tr('init_settings_default', 'Observed Files'),
-        'work_area_cur': _tr('init_settings_default', 'Profiler'),
+        'file_area_cur': _tr('wl_settings_default', 'Observed Files'),
+        'work_area_cur': _tr('wl_settings_default', 'Profiler'),
 
         'menu': {
             'prefs': {
@@ -83,7 +83,7 @@ def init_settings_default(main):
 
             'help': {
                 'citing': {
-                    'select_citation_sys': _tr('init_settings_default', 'APA (7th edition)')
+                    'select_citation_sys': _tr('wl_settings_default', 'APA (7th edition)')
                 },
 
                 'donating': {
@@ -106,7 +106,7 @@ def init_settings_default(main):
         },
 
         'profiler': {
-            'tab': _tr('init_settings_default', 'Counts'),
+            'tab': _tr('wl_settings_default', 'Counts'),
 
             'token_settings': {
                 'words': True,
@@ -205,7 +205,7 @@ def init_settings_default(main):
                 'width_right_sentence_seg': 0,
                 'width_right_sentence': 0,
                 'width_right_para': 0,
-                'width_unit': _tr('init_settings_default', 'Token')
+                'width_unit': _tr('wl_settings_default', 'Token')
             },
 
             'table_settings': {
@@ -213,7 +213,7 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'sort_results_by': _tr('init_settings_default', 'File')
+                'sort_results_by': _tr('wl_settings_default', 'File')
             },
 
             'zapping_settings': {
@@ -226,8 +226,8 @@ def init_settings_default(main):
 
             'sort_results': {
                 'sorting_rules': [
-                    [_tr('init_settings_default', 'File'), _tr('init_settings_default', 'Ascending')],
-                    [_tr('init_settings_default', 'Token no.'), _tr('init_settings_default', 'Ascending')]
+                    [_tr('wl_settings_default', 'File'), _tr('wl_settings_default', 'Ascending')],
+                    [_tr('wl_settings_default', 'Token no.'), _tr('wl_settings_default', 'Ascending')]
                 ]
             },
 
@@ -444,9 +444,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line chart'),
-                'sort_by_file': _tr('init_settings_default', 'Total'),
-                'use_data': _tr('init_settings_default', 'Frequency'),
+                'graph_type': _tr('wl_settings_default', 'Line chart'),
+                'sort_by_file': _tr('wl_settings_default', 'Total'),
+                'use_data': _tr('wl_settings_default', 'Frequency'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -457,7 +457,7 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': _tr('init_settings_default', 'Total'),
+                'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_token_min': 1,
                 'len_token_min_no_limit': True,
@@ -598,9 +598,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line chart'),
-                'sort_by_file': _tr('init_settings_default', 'Total'),
-                'use_data': _tr('init_settings_default', 'Frequency'),
+                'graph_type': _tr('wl_settings_default', 'Line chart'),
+                'sort_by_file': _tr('wl_settings_default', 'Total'),
+                'use_data': _tr('wl_settings_default', 'Frequency'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -611,7 +611,7 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': _tr('init_settings_default', 'Total'),
+                'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_ngram_min': 1,
                 'len_ngram_min_no_limit': True,
@@ -729,7 +729,7 @@ def init_settings_default(main):
                 'window_left': -5,
                 'window_right': 5,
 
-                'limit_searching': _tr('init_settings_default', 'None'),
+                'limit_searching': _tr('wl_settings_default', 'None'),
 
                 'test_statistical_significance': 'pearsons_chi_squared_test',
                 'measure_bayes_factor': 'log_likelihood_ratio_test',
@@ -744,9 +744,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line chart'),
-                'sort_by_file': _tr('init_settings_default', 'Total'),
-                'use_data': _tr('init_settings_default', 'p-value'),
+                'graph_type': _tr('wl_settings_default', 'Line chart'),
+                'sort_by_file': _tr('wl_settings_default', 'Total'),
+                'use_data': _tr('wl_settings_default', 'p-value'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -757,14 +757,14 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': _tr('init_settings_default', 'Total'),
+                'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_collocate_min': 1,
                 'len_collocate_min_no_limit': True,
                 'len_collocate_max': 20,
                 'len_collocate_max_no_limit': True,
 
-                'freq_position': _tr('init_settings_default', 'Total'),
+                'freq_position': _tr('wl_settings_default', 'Total'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -886,7 +886,7 @@ def init_settings_default(main):
                 'window_left': -5,
                 'window_right': 5,
 
-                'limit_searching': _tr('init_settings_default', 'None'),
+                'limit_searching': _tr('wl_settings_default', 'None'),
 
                 'test_statistical_significance': 'pearsons_chi_squared_test',
                 'measure_bayes_factor': 'log_likelihood_ratio_test',
@@ -901,9 +901,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line chart'),
-                'sort_by_file': _tr('init_settings_default', 'Total'),
-                'use_data': _tr('init_settings_default', 'p-value'),
+                'graph_type': _tr('wl_settings_default', 'Line chart'),
+                'sort_by_file': _tr('wl_settings_default', 'Total'),
+                'use_data': _tr('wl_settings_default', 'p-value'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -914,14 +914,14 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': _tr('init_settings_default', 'Total'),
+                'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_collocate_min': 1,
                 'len_collocate_min_no_limit': True,
                 'len_collocate_max': 20,
                 'len_collocate_max_no_limit': True,
 
-                'freq_position': _tr('init_settings_default', 'Total'),
+                'freq_position': _tr('wl_settings_default', 'Total'),
                 'freq_min': 0,
                 'freq_min_no_limit': True,
                 'freq_max': 1000,
@@ -998,9 +998,9 @@ def init_settings_default(main):
             },
 
             'fig_settings': {
-                'graph_type': _tr('init_settings_default', 'Line chart'),
-                'sort_by_file': _tr('init_settings_default', 'Total'),
-                'use_data': _tr('init_settings_default', 'p-value'),
+                'graph_type': _tr('wl_settings_default', 'Line chart'),
+                'sort_by_file': _tr('wl_settings_default', 'Total'),
+                'use_data': _tr('wl_settings_default', 'p-value'),
                 'use_pct': False,
                 'use_cumulative': False,
 
@@ -1011,7 +1011,7 @@ def init_settings_default(main):
             },
 
             'filter_results': {
-                'file_to_filter': _tr('init_settings_default', 'Total'),
+                'file_to_filter': _tr('wl_settings_default', 'Total'),
 
                 'len_keyword_min': 1,
                 'len_keyword_min_no_limit': True,
@@ -1064,7 +1064,7 @@ def init_settings_default(main):
         },
 
         'settings': {
-            'node_cur': _tr('init_settings_default', 'General')
+            'node_cur': _tr('wl_settings_default', 'General')
         },
 
         # Settings - General
@@ -1118,7 +1118,7 @@ def init_settings_default(main):
             'exp': {
                 'tables': {
                     'default_path': wl_paths.get_normalized_path('exports/'),
-                    'default_type': _tr('init_settings_default', 'Excel workbooks (*.xlsx)'),
+                    'default_type': _tr('wl_settings_default', 'Excel workbooks (*.xlsx)'),
                     'default_encoding': 'utf_8'
                 },
 
@@ -1155,20 +1155,20 @@ def init_settings_default(main):
             # Settings - Files - Tags
             'tags': {
                 'header_tag_settings': [
-                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Header'), '<teiHeader>', '</teiHeader>']
+                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Header'), '<teiHeader>', '</teiHeader>']
                 ],
 
                 'body_tag_settings': [
-                    [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of speech'), '_*', 'N/A'],
-                    [_tr('init_settings_default', 'Embedded'), _tr('init_settings_default', 'Part of speech'), '/*', 'N/A'],
-                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Others'), '<*>', 'N/A']
+                    [_tr('wl_settings_default', 'Embedded'), _tr('wl_settings_default', 'Part of speech'), '_*', 'N/A'],
+                    [_tr('wl_settings_default', 'Embedded'), _tr('wl_settings_default', 'Part of speech'), '/*', 'N/A'],
+                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Others'), '<*>', 'N/A']
                 ],
 
                 'xml_tag_settings': [
-                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Paragraph'), '<p>', '</p>'],
-                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Sentence'), '<s>', '</s>'],
-                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Word'), '<w>', '</w>'],
-                    [_tr('init_settings_default', 'Non-embedded'), _tr('init_settings_default', 'Word'), '<c>', '</c>']
+                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Paragraph'), '<p>', '</p>'],
+                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Sentence'), '<s>', '</s>'],
+                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Word'), '<w>', '</w>'],
+                    [_tr('wl_settings_default', 'Non-embedded'), _tr('wl_settings_default', 'Word'), '<c>', '</c>']
                 ]
             }
         },
@@ -1935,7 +1935,7 @@ def init_settings_default(main):
             # Settings - Measures - Readability
             'readability': {
                 'rd': {
-                    'variant': _tr('init_settings_default', 'Policy one')
+                    'variant': _tr('wl_settings_default', 'Policy one')
                 },
 
                 'ari': {
@@ -1951,7 +1951,7 @@ def init_settings_default(main):
                 },
 
                 'x_c50': {
-                    'variant': _tr('init_settings_default', 'New')
+                    'variant': _tr('wl_settings_default', 'New')
                 },
 
                 'danielson_bryans_readability_formula': {
@@ -1959,7 +1959,7 @@ def init_settings_default(main):
                 },
 
                 'fog_index': {
-                    'variant_eng': _tr('init_settings_default', 'Original')
+                    'variant_eng': _tr('wl_settings_default', 'Original')
                 },
 
                 're': {
@@ -2013,6 +2013,14 @@ def init_settings_default(main):
 
                 'mattr': {
                     'window_size': 500
+                },
+
+                'repeat_rate': {
+                    'use_data': _tr('wl_settings_default', 'Rank-frequency distribution')
+                },
+
+                'shannon_entropy': {
+                    'use_data': _tr('wl_settings_default', 'Rank-frequency distribution')
                 }
             },
 
@@ -2037,7 +2045,7 @@ def init_settings_default(main):
             # Settings - Measures - Statistical Significance
             'statistical_significance': {
                 'fishers_exact_test': {
-                    'direction': _tr('init_settings_default', 'Two-tailed')
+                    'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
 
                 'log_likelihood_ratio_test': {
@@ -2046,8 +2054,8 @@ def init_settings_default(main):
 
                 'mann_whitney_u_test': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative frequency'),
-                    'direction': _tr('init_settings_default', 'Two-tailed'),
+                    'use_data': _tr('wl_settings_default', 'Relative frequency'),
+                    'direction': _tr('wl_settings_default', 'Two-tailed'),
                     'apply_correction': True
                 },
 
@@ -2056,27 +2064,27 @@ def init_settings_default(main):
                 },
 
                 'students_t_test_1_sample': {
-                    'direction': _tr('init_settings_default', 'Two-tailed')
+                    'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
 
                 'students_t_test_2_sample': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative frequency'),
-                    'direction': _tr('init_settings_default', 'Two-tailed')
+                    'use_data': _tr('wl_settings_default', 'Relative frequency'),
+                    'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
 
                 'welchs_t_test': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative frequency'),
-                    'direction': _tr('init_settings_default', 'Two-tailed')
+                    'use_data': _tr('wl_settings_default', 'Relative frequency'),
+                    'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
 
                 'z_score': {
-                    'direction': _tr('init_settings_default', 'Two-tailed')
+                    'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
 
                 'z_score_berry_rogghe': {
-                    'direction': _tr('init_settings_default', 'Two-tailed')
+                    'direction': _tr('wl_settings_default', 'Two-tailed')
                 }
             },
 
@@ -2088,8 +2096,8 @@ def init_settings_default(main):
 
                 'students_t_test_2_sample': {
                     'num_sub_sections': 5,
-                    'use_data': _tr('init_settings_default', 'Relative frequency'),
-                    'direction': _tr('init_settings_default', 'Two-tailed')
+                    'use_data': _tr('wl_settings_default', 'Relative frequency'),
+                    'direction': _tr('wl_settings_default', 'Two-tailed')
                 }
             },
 
@@ -2121,7 +2129,7 @@ def init_settings_default(main):
                     # Auto
                     'relative_scaling': -0.01,
 
-                    'font_color': _tr('init_settings_default', 'Colormap'),
+                    'font_color': _tr('wl_settings_default', 'Colormap'),
                     'font_color_monochrome': '#000000',
                     'font_color_colormap': 'viridis'
                 },

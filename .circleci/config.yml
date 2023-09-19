@@ -56,9 +56,7 @@ jobs:
             pytest tests/wl_tests_nlp/test_lemmatization.py
 
             pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-
-            pytest tests/wl_tests_file_area/test_file_area.py
-            pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
+            pytest --ignore=tests/wl_tests_nlp
           name: Run tests
 
       # Save cache
@@ -105,9 +103,7 @@ jobs:
             pytest tests/wl_tests_nlp/test_lemmatization.py
 
             pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-
-            pytest tests/wl_tests_file_area/test_file_area.py
-            pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
+            pytest --ignore=tests/wl_tests_nlp
           name: Run tests
 
       # Save cache
@@ -157,9 +153,7 @@ jobs:
             python3.10 -m pytest tests/wl_tests_nlp/test_lemmatization.py
 
             python3.10 -m pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-
-            python3.10 -m pytest tests/wl_tests_file_area/test_file_area.py
-            python3.10 -m pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
+            python3.10 -m pytest --ignore=tests/wl_tests_nlp
           name: Run tests
 
       # Save cache
@@ -208,9 +202,7 @@ jobs:
             pytest tests/wl_tests_nlp/test_lemmatization.py
 
             pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-
-            pytest tests/wl_tests_file_area/test_file_area.py
-            pytest --ignore=tests/wl_tests_nlp --ignore=tests/wl_tests_file_area/test_file_area.py
+            pytest --ignore=tests/wl_tests_nlp
           name: Run tests
 
       # Save cache
