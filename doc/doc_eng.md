@@ -1164,6 +1164,7 @@ Measure of Readability|Formula|Supported Languages
 Lexical diversity is the measurement of the extent to which the vocabulary used in the text varies.
 
 The following variables would be used in formulas:<br>
+**fᵢ**: Frequency of the i-th token type ranked descendingly by frequencies<br>
 **fₘₐₓ**: Maximum frequency among all token types<br>
 **NumTypes**: Number of token types<br>
 **NumTypes<sub>f</sub>**: Number of token types whose frequencies equal **f**<br>
@@ -1194,8 +1195,20 @@ Mean Segmental TTR:
 Moving-average TTR:
     \text{MATTR} = \frac{\sum_{p = 1}^{\text{NumTokens} - w + 1}\frac{\text{NumTypesWindow}_p}{\text{NumTokensWindow}_p}}{\text{NumTokens} - w + 1}
 
+Repeat Rate:
+    \begin{align*}
+        \text{RR}_\text{Rank-frequency distribution} &= \frac{\sum_{i = 1}^\text{NumTypes}\text{f}_i^2}{\text{NumTokens}^2} \\
+        \text{RR}_\text{Frequency spectrum} &= \frac{\sum_{f = 1}^{\text{f}_\text{max}}\text{NumTypes}_f^2}{\text{NumTypes}^2}
+    \end{align*}
+
 Root TTR:
     \text{RTTR} = \frac{\text{NumTypes}}{\sqrt{\text{NumTokens}}}
+
+Shannon Entropy:
+    \begin{align*}
+        \text{H}_\text{Rank-frequency distribution} &= -\sum_{i = 1}^\text{NumTypes}\left(\frac{\text{f}_i}{\text{NumTokens}} \times \log_{2}\frac{\text{f}_i}{\text{NumTokens}}\right) \\
+        \text{H}_\text{Frequency spectrum} &= -\sum_{f = 1}^{\text{f}_\text{max}}\left(\frac{\text{NumTypes}_f}{\text{NumTypes}} \times \log_{2}\frac{\text{NumTypes}_f}{\text{NumTypes}}\right)
+    \end{align*}
 
 Simpleson's l:
     \text{l} = \frac{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2) - \text{NumTokens}}{\text{NumTokens} \times (\text{NumTokens} - 1)}
@@ -1224,7 +1237,9 @@ Measure of Lexical Diversity|Formula
 <span id="ref-popescus-r2"></span>Popescu's R₂<br>([Popescu, 2009, pp. 35–36, 38](#ref-popescu-2009))|For detailed calculation procedures, see reference.
 <span id="ref-popescus-r3"></span>Popescu's R₃<br>([Popescu, 2009, pp. 48–49, 53](#ref-popescu-2009))|For detailed calculation procedures, see reference.
 <span id="ref-popescus-r4"></span>Popescu's R₄<br>([Popescu, 2009, p. 57](#ref-popescu-2009))|For detailed calculation procedures, see reference.
+<span id="ref-repeat-rate"></span>Repeat Rate¹<br>([Popescu, 2009, p. 166](#ref-popescu-2009))|![Formula](/doc/measures/lexical_diversity/repeat_rate.svg)
 <span id="ref-rttr"></span>Root TTR<br>([Guiraud, 1954](#ref-guiraud-1954))|![Formula](/doc/measures/lexical_diversity/rttr.svg)
+<span id="ref-shannon-entropy"></span>Shannon Entropy¹<br>([Popescu, 2009, p. 173](#ref-popescu-2009))|![Formula](/doc/measures/lexical_diversity/shannon_entropy.svg)
 <span id="ref-simpsons-l"></span>Simpson's l<br>([Simpson, 1949](#ref-simpson-1949))|![Formula](/doc/measures/lexical_diversity/simpsons_l.svg)
 <span id="ref-ttr"></span>Type-token Ratio<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/ttr.svg)
 <span id="ref-vocdd"></span>vocd-D<br>([Malvern et al., 2004, pp. 51, 56–57](#ref-malvern-et-al-2004))|For detailed calculation procedures, see reference.
@@ -1662,7 +1677,7 @@ Measure of Effect Size|Formula
 <span id="ref-pojanapunya-todd-2016"></span>
 1. [**^**](#ref-odds-ratio) Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. *Corpus Linguistics and Linguistic Theory*, *15*(1), 133–167. https://doi.org/10.1515/cllt-2015-0030
 <span id="ref-popescu-2009"></span>
-1. [**^**](#ref-popescus-r1)[**^**](#ref-popescus-r2)[**^**](#ref-popescus-r3)[**^**](#ref-popescus-r4) Popescu, I.-I. (2009). *Word frequency studies*. Mouton de Gruyter.
+1. [**^**](#ref-popescus-r1)[**^**](#ref-popescus-r2)[**^**](#ref-popescus-r3)[**^**](#ref-popescus-r4)[**^**](#ref-repeat-rate)[**^**](#ref-shannon-entropy) Popescu, I.-I. (2009). *Word frequency studies*. Mouton de Gruyter.
 <span id="ref-powers-et-al-1958"></span>
 1. [**^**](#ref-x-c50)[**^**](#ref-re)[**^**](#ref-re-farr-jenkins-paterson)[**^**](#ref-fog-index) Powers, R. D., Sumner, W. A., & Kearl, B. E. (1958). A recalculation of four adult readability formulas. *Journal of Educational Psychology*, *49*(2), 99–105. https://doi.org/10.1037/h0043254
 <span id="ref-quasthoff-wolff-2002"></span>

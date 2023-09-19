@@ -438,15 +438,51 @@ class Wl_Settings_Measures_Lexical_Diversity(wl_settings.Wl_Settings_Node):
 
         self.group_box_mattr.layout().setColumnStretch(2, 1)
 
+        # Repeat Rate
+        self.group_box_repeat_rate = QGroupBox(self.tr('Repeat Rate'), self)
+
+        self.label_use_data_repeat_rate = QLabel(self.tr('Window size:'), self)
+        self.combo_box_use_data_repeat_rate = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_use_data_repeat_rate.addItems([
+            self.tr('Rank-frequency distribution'),
+            self.tr('Frequency spectrum')
+        ])
+
+        self.group_box_repeat_rate.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_repeat_rate.layout().addWidget(self.label_use_data_repeat_rate, 0, 0)
+        self.group_box_repeat_rate.layout().addWidget(self.combo_box_use_data_repeat_rate, 0, 1)
+
+        self.group_box_repeat_rate.layout().setColumnStretch(2, 1)
+
+        # Shannon Entropy
+        self.group_box_shannon_entropy = QGroupBox(self.tr('Shannon Entropy'), self)
+
+        self.label_use_data_shannon_entropy = QLabel(self.tr('Window size:'), self)
+        self.combo_box_use_data_shannon_entropy = wl_boxes.Wl_Combo_Box(self)
+
+        self.combo_box_use_data_shannon_entropy.addItems([
+            self.tr('Rank-frequency distribution'),
+            self.tr('Frequency spectrum')
+        ])
+
+        self.group_box_shannon_entropy.setLayout(wl_layouts.Wl_Layout())
+        self.group_box_shannon_entropy.layout().addWidget(self.label_use_data_shannon_entropy, 0, 0)
+        self.group_box_shannon_entropy.layout().addWidget(self.combo_box_use_data_shannon_entropy, 0, 1)
+
+        self.group_box_shannon_entropy.layout().setColumnStretch(2, 1)
+
         self.setLayout(wl_layouts.Wl_Layout())
         self.layout().addWidget(self.group_box_hdd, 0, 0)
         self.layout().addWidget(self.group_box_logttr, 1, 0)
         self.layout().addWidget(self.group_box_msttr, 2, 0)
         self.layout().addWidget(self.group_box_mtld, 3, 0)
         self.layout().addWidget(self.group_box_mattr, 4, 0)
+        self.layout().addWidget(self.group_box_repeat_rate, 5, 0)
+        self.layout().addWidget(self.group_box_shannon_entropy, 6, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(5, 1)
+        self.layout().setRowStretch(7, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -469,6 +505,12 @@ class Wl_Settings_Measures_Lexical_Diversity(wl_settings.Wl_Settings_Node):
         # Moving-average TTR
         self.spin_box_window_size.setValue(settings['mattr']['window_size'])
 
+        # Repeat Rate
+        self.combo_box_use_data_repeat_rate.setCurrentText(settings['repeat_rate']['use_data'])
+
+        # Shannon Entropy
+        self.combo_box_use_data_shannon_entropy.setCurrentText(settings['shannon_entropy']['use_data'])
+
     def apply_settings(self):
         # HD-D
         self.settings_custom['hdd']['sample_size'] = self.spin_box_sample_size.value()
@@ -484,6 +526,12 @@ class Wl_Settings_Measures_Lexical_Diversity(wl_settings.Wl_Settings_Node):
 
         # Moving-average TTR
         self.settings_custom['mattr']['window_size'] = self.spin_box_window_size.value()
+
+        # Repeat Rate
+        self.settings_custom['repeat_rate']['use_data'] = self.combo_box_use_data_repeat_rate.currentText()
+
+        # Shannon Entropy
+        self.settings_custom['shannon_entropy']['use_data'] = self.combo_box_use_data_shannon_entropy.currentText()
 
         return True
 

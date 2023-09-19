@@ -21,7 +21,7 @@ import random
 from tests import wl_test_init
 from wordless.wl_figs import wl_figs
 
-main = wl_test_init.Wl_Test_Main()
+main_global = None
 
 def test_restore_matplotlib_rcparams():
     wl_figs.restore_matplotlib_rcparams()
@@ -38,13 +38,11 @@ def test_get_data_ranks():
     assert wl_figs.get_data_ranks(data_files_items, fig_settings) == [(str(i), i) for i in range(50)]
 
 def test_generate_line_chart():
-    files = main.settings_custom['file_area']['files_open']
+    main = wl_test_init.Wl_Test_Main()
+    wl_test_init.select_random_files(main, num_files = 2)
 
-    for file in files:
-        file['selected'] = False
-
-    for file in random.sample(files, 2):
-        file['selected'] = True # pylint: disable=unsupported-assignment-operation
+    global main_global # pylint: disable=global-statement
+    main_global = main
 
     wl_figs.generate_line_chart(
         main,
@@ -59,23 +57,23 @@ def test_generate_line_chart():
 
 def test_generate_word_cloud():
     wl_figs.generate_word_cloud(
-        main,
+        main_global,
         data_file_items = [
             (str(item), random.randrange(0, 10000))
             for item in range(100)
         ],
-        fig_settings = main.settings_custom['wordlist_generator']['fig_settings'],
+        fig_settings = main_global.settings_custom['wordlist_generator']['fig_settings'],
     )
 
 def test_generate_network_graph():
     wl_figs.generate_network_graph(
-        main,
+        main_global,
         data_file_items = [
             ((str(node), str(collocate)), random.uniform(0, 1))
             for node in range(10)
             for collocate in range(10)
         ],
-        fig_settings = main.settings_custom['collocation_extractor']['fig_settings'],
+        fig_settings = main_global.settings_custom['collocation_extractor']['fig_settings'],
     )
 
 def test_show_fig():

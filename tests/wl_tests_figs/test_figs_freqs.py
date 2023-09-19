@@ -22,10 +22,8 @@ import re
 from tests import wl_test_init
 from wordless.wl_figs import wl_figs_freqs
 
-main = wl_test_init.Wl_Test_Main()
-
 def test_wl_fig_freqs():
-    files = main.settings_custom['file_area']['files_open']
+    main = wl_test_init.Wl_Test_Main()
 
     for tab in [
         'wordlist_generator',
@@ -77,11 +75,7 @@ def test_wl_fig_freqs():
                             max(freq_1, freq_2)
                         ]
 
-            for file in files:
-                file['selected'] = False
-
-            for file in random.sample(files, 2):
-                file['selected'] = True # pylint: disable=unsupported-assignment-operation
+            wl_test_init.select_random_files(main, num_files = 2)
 
             fig_settings = main.settings_custom[tab]['fig_settings']
             fig_settings['graph_type'] = graph_type

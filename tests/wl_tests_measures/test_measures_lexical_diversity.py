@@ -120,10 +120,30 @@ def test_popescus_r4():
 
     assert round(r4, 4) == 0.6344
 
+# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 170, 172). Mouton de Gruyter.
+def test_repeat_rate():
+    settings['repeat_rate']['use_data'] = 'Rank-frequency distribution'
+    rr_distribution = wl_measures_lexical_diversity.repeat_rate(main, TOKENS_225)
+    settings['repeat_rate']['use_data'] = 'Frequency spectrum'
+    rr_spectrum = wl_measures_lexical_diversity.repeat_rate(main, TOKENS_225)
+
+    assert round(rr_distribution, 4) == 0.0153
+    assert round(rr_spectrum, 4) == 0.4974
+
 def test_rttr():
     rttr = wl_measures_lexical_diversity.rttr(main, TOKENS_100)
 
     assert rttr == 5 / 100 ** 0.5
+
+# Reference: Popescu, I.-I. (2009). Word frequency studies (pp. 176, 178). Mouton de Gruyter.
+def test_shannon_entropy():
+    settings['shannon_entropy']['use_data'] = 'Rank-frequency distribution'
+    h_distribution = wl_measures_lexical_diversity.shannon_entropy(main, TOKENS_225)
+    settings['shannon_entropy']['use_data'] = 'Frequency spectrum'
+    h_spectrum = wl_measures_lexical_diversity.shannon_entropy(main, TOKENS_225)
+
+    assert round(h_distribution, 4) == 6.5270
+    assert round(h_spectrum, 4) == 1.6234
 
 def test_simpsons_l():
     l = wl_measures_lexical_diversity.simpsons_l(main, TOKENS_100)
@@ -167,9 +187,11 @@ if __name__ == '__main__':
     test_popescus_r2()
     test_popescus_r3()
     test_popescus_r4()
+    test_repeat_rate()
     test_rttr()
-    test_ttr()
+    test_shannon_entropy()
     test_simpsons_l()
+    test_ttr()
     test_vocdd()
     test_yules_characteristic_k()
     test_yules_index_of_diversity()

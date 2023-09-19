@@ -22,12 +22,14 @@ from tests import wl_test_init
 from wordless import wl_dependency_parser
 from wordless.wl_dialogs import wl_dialogs_misc
 
-main = wl_test_init.Wl_Test_Main()
-
-main.settings_custom['dependency_parser']['search_settings']['multi_search_mode'] = True
-main.settings_custom['dependency_parser']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+main_global = None
 
 def test_dependency_parser():
+    main = wl_test_init.Wl_Test_Main()
+
+    main.settings_custom['dependency_parser']['search_settings']['multi_search_mode'] = True
+    main.settings_custom['dependency_parser']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+
     for i in range(2):
         # Single file
         if i % 2 == 0:
@@ -35,6 +37,9 @@ def test_dependency_parser():
         # Multiple files
         elif i % 2 == 1:
             wl_test_init.select_random_files(main, num_files = 2)
+
+        global main_global # pylint: disable=global-statement
+        main_global = main
 
         files_selected = [
             re.search(r'(?<=\)\. ).+?$', file_name).group()
@@ -54,7 +59,7 @@ def update_gui(err_msg, results):
     assert not err_msg
     assert results
 
-    file_names = list(main.wl_file_area.get_selected_file_names())
+    file_names_selected = list(main_global.wl_file_area.get_selected_file_names())
 
     for (
         head, dependent, dependency_relation, dependency_len,
@@ -78,7 +83,7 @@ def update_gui(err_msg, results):
         assert no_sentence >= 1
         assert len_sentences >= 1
         # File
-        assert file in file_names
+        assert file in file_names_selected
 
 if __name__ == '__main__':
     test_dependency_parser()
