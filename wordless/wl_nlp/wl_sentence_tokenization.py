@@ -81,7 +81,7 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
         # Dependency parsers
         if sentence_tokenizer.startswith('spacy_dependency_parser_'):
             pipelines_disabled = ['tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter']
-        # Sentence recognizers and sentencizers
+        # Sentence recognizers and sentencizer
         else:
             pipelines_disabled = ['tagger', 'morphologizer', 'parser', 'lemmatizer', 'attribute_ruler']
 
