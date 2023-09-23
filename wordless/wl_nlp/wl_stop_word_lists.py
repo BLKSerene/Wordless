@@ -18,6 +18,7 @@
 
 import importlib
 
+import laonlp
 import nltk
 import opencc
 import pythainlp
@@ -79,6 +80,9 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
                 stop_word_list = stop_word_list.replace('zho_tw', 'zho_cn')
             )
             stop_words = [converter.convert(stop_word) for stop_word in stop_words_zho_cn]
+        # Lao
+        elif stop_word_list == 'laonlp_lao':
+            stop_words = laonlp.corpus.lao_stopwords()
         # NLTK
         elif stop_word_list.startswith('nltk_'):
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)

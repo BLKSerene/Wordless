@@ -18,6 +18,7 @@
 
 import jieba
 import khmernltk
+import laonlp
 import pythainlp
 import sudachipy
 import underthesea
@@ -225,6 +226,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
 
                     for sentence in sentences:
                         tokens_multilevel[-1].append(main.python_mecab_ko_mecab.morphs(sentence))
+                # Lao
+                elif word_tokenizer == 'laonlp_lao':
+                    sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = 'lao')
+
+                    for sentence in sentences:
+                        tokens_multilevel[-1].append(laonlp.word_tokenize(sentence))
                 # Thai
                 elif word_tokenizer.startswith('pythainlp_'):
                     # Preserve sentence boundaries

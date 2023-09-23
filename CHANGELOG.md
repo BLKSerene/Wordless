@@ -21,6 +21,7 @@
 ## [3.4.0](https://github.com/BLKSerene/Wordless/releases/tag/3.4.0) - ??/??/2023
 ### 🎉 New Features
 - Settings: Add Settings - Measures - Lexical Diversity
+- Utils: Add LaoNLP's Lao sentence tokenizer, word tokenizer, part-of-speech taggers, and stop word list
 - Utils: Add Stanza's Chinese (Simplified), English, German, Marathi, Spanish, and Vietnamese sentiment analyzer
 - Utils: Add Stanza's Afrikaans, Arabic, Armenian (Eastern), Armenian (Western), Basque, Belarusian, Bulgarian, Burmese, Buryat (Russia), Catalan, Chinese (Classical), Chinese (Simplified), Chinese (Traditional), Church Slavonic (Old), Coptic, Croatian, Czech, Danish, Dutch, English, Erzya, Estonian, Faroese, Finnish, French, French (Old), Galician, German, Gothic, Greek (Ancient), Greek (Modern), Hebrew (Ancient), Hebrew (Modern), Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish (Kurmanji), Kyrgyz, Latin, Latvian, Ligurian, Lithuanian, Maltese, Manx, Marathi, Nigerian Pidgin, Norwegian Bokmål, Norwegian Nynorsk, Persian, Polish, Pomak, Portuguese, Romanian, Russian, Russian (Old), Sámi (Northern), Sanskrit, Scottish Gaelic, Serbian (Latin), Sindhi, Slovak, Slovenian, Sorbian (Upper), Spanish, Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uyghur, Vietnamese, Welsh, and Wolof sentence tokenizers / word tokenizers
 - Utils: Add Stanza's Afrikaans, Arabic, Armenian (Eastern), Armenian (Western), Basque, Belarusian, Bulgarian, Buryat (Russia), Catalan, Chinese (Classical), Chinese (Simplified), Chinese (Traditional), Church Slavonic (Old), Coptic, Croatian, Czech, Danish, Dutch, English, Erzya, Estonian, Faroese, Finnish, French, French (Old), Galician, German, Gothic, Greek (Ancient), Greek (Modern), Hebrew (Ancient), Hebrew (Modern), Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish (Kurmanji), Kyrgyz, Latin, Latvian, Ligurian, Lithuanian, Maltese, Manx, Marathi, Nigerian Pidgin, Norwegian Bokmål, Norwegian Nynorsk, Persian, Polish, Pomak, Portuguese, Romanian, Russian, Russian (Old), Sámi (Northern), Sanskrit, Scottish Gaelic, Serbian (Latin), Slovak, Slovenian, Sorbian (Upper), Spanish, Swedish, Tamil, Telugu, Turkish, Ukrainian, Urdu, Uyghur, Vietnamese, Welsh, and Wolof part-of-speech taggers / dependency parsers
@@ -36,6 +37,7 @@
 - Utils: Remove stopword's stop word lists
 
 ### ⏫ Dependency Changes
+- Dependencies: Add LaoNLP
 - Dependencies: Add Stanza
 - Dependencies: Remove stopword
 - Dependencies: Upgrade khmer-nltk to 1.6

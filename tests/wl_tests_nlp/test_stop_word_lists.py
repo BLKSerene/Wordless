@@ -47,7 +47,7 @@ def test_get_stop_word_list(lang, stop_word_list):
         assert all((stop_word.strip() for stop_word in stop_words))
 
 def test_filter_stop_words():
-    assert wl_stop_word_lists.wl_filter_stop_words(main, items = ['a'], lang = 'eng_us') == []
+    assert wl_stop_word_lists.wl_filter_stop_words(main, items = ['a', 'aa'], lang = 'eng_us') == ['aa']
     assert wl_stop_word_lists.wl_filter_stop_words(main, items = [], lang = 'eng_us') == []
 
 if __name__ == '__main__':

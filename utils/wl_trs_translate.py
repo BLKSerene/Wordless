@@ -28,19 +28,23 @@ TRS_LANGS = {
     'Albanian': ['阿尔巴尼亚语'],
     'Amharic': ['阿姆哈拉语'],
     'Arabic': ['阿拉伯语'],
-    'Armenian': ['亚美尼亚语'],
+    'Armenian (Eastern)': ['亚美尼亚语（东）'],
+    'Armenian (Western)': ['亚美尼亚语（西）'],
     'Assamese': ['阿萨姆语'],
     'Asturian': ['阿斯图里亚斯语'],
     'Azerbaijani': ['阿塞拜疆语'],
     'Basque': ['巴斯克语'],
     'Belarusian': ['白俄罗斯语'],
     'Bengali': ['孟加拉语'],
-    'Breton': ['布列塔尼语'],
     'Bulgarian': ['保加利亚语'],
     'Burmese': ['缅甸语'],
+    'Buryat (Russia)': ['布里亚特语（俄罗斯）'],
     'Catalan': ['加泰罗尼亚语'],
+    'Chinese (Classical)': ['汉语（文言）'],
     'Chinese (Simplified)': ['汉语（简体）'],
     'Chinese (Traditional)': ['汉语（繁体）'],
+    'Church Slavonic (Old)': ['教会斯拉夫语（古）'],
+    'Coptic': ['科普特语'],
 
     # In names of some language utils (eg. simplemma)
     'Serbo-Croatian': ['塞尔维亚-克罗地亚语'],
@@ -52,21 +56,25 @@ TRS_LANGS = {
     'English (Middle)': ['英语（中古）'],
     'English (United Kingdom)': ['英语（英国）'],
     'English (United States)': ['英语（美国）'],
+    'Erzya': ['埃尔齐亚语'],
     'Esperanto': ['世界语'],
     'Estonian': ['爱沙尼亚语'],
+    'Faroese': ['法罗语'],
     'Finnish': ['芬兰语'],
     'French': ['法语'],
+    'French (Old)': ['法语（古）'],
     'Galician': ['加里西亚语'],
     'Ganda': ['干达语'],
     'Georgian': ['格鲁吉亚语'],
     'German (Austria)': ['德语（奥地利）'],
     'German (Germany)': ['德语（德国）'],
     'German (Switzerland)': ['德语（瑞士）'],
+    'Gothic': ['哥特语'],
     'Greek (Ancient)': ['希腊语（古）'],
     'Greek (Modern)': ['希腊语（现代）'],
     'Gujarati': ['古吉拉特语'],
-    'Hausa': ['豪萨语'],
-    'Hebrew': ['希伯来语'],
+    'Hebrew (Ancient)': ['希伯来语（古）'],
+    'Hebrew (Modern)': ['希伯来语（现代）'],
     'Hindi': ['印地语'],
     'Hungarian': ['匈牙利语'],
     'Icelandic': ['冰岛语'],
@@ -78,8 +86,9 @@ TRS_LANGS = {
     'Kazakh': ['哈萨克语'],
     'Khmer': ['柬埔寨语'],
     'Korean': ['韩语'],
-    'Kurdish': ['库尔德语'],
+    'Kurdish (Kurmanji)': ['库尔德语（库尔曼吉语）'],
     'Kyrgyz': ['吉尔吉斯语'],
+    'Lao': ['老挝语'],
 
     'Serbian (Latin)': ['塞尔维亚语（拉丁）'],
     'Latin': ['拉丁语'],
@@ -87,13 +96,13 @@ TRS_LANGS = {
     'Latvian': ['拉脱维亚语'],
     'Ligurian': ['利古里亚语'],
     'Lithuanian': ['立陶宛语'],
-    'Lugbara': ['卢格巴拉语'],
     'Luxembourgish': ['卢森堡语'],
     'Macedonian': ['马其顿语'],
 
     'Malayalam': ['马拉雅拉姆语'],
     'Malay': ['马来语'],
 
+    'Maltese': ['马耳他语'],
     'Manx': ['马恩语'],
     'Marathi': ['马拉地语'],
     'Meitei': ['曼尼普尔语'],
@@ -104,19 +113,21 @@ TRS_LANGS = {
     'Oriya': ['奥里亚语'],
     'Persian': ['波斯语'],
     'Polish': ['波兰语'],
+    'Pomak': ['波马克语'],
     'Portuguese (Brazil)': ['葡萄牙语（巴西）'],
     'Portuguese (Portugal)': ['葡萄牙语（葡萄牙）'],
     'Punjabi (Gurmukhi)': ['旁遮普语（古木基）'],
     'Romanian': ['罗马尼亚语'],
     'Russian': ['俄语'],
+    'Russian (Old)': ['俄语（古）'],
     'Sámi (Northern)': ['萨米语（北）'],
     'Sanskrit': ['梵语'],
     'Scottish Gaelic': ['苏格兰盖尔语'],
     'Serbian (Cyrillic)': ['塞尔维亚语（西里尔）'],
+    'Sindhi': ['信德语'],
     'Sinhala': ['僧伽罗语'],
     'Slovak': ['斯洛伐克语'],
     'Slovenian': ['斯洛文尼亚语'],
-    'Somali': ['索马里语'],
     'Sorbian (Lower)': ['索布语（下）'],
     'Sorbian (Upper)': ['索布语（上）'],
     'Sotho (Southern)': ['塞索托语'],
@@ -136,8 +147,10 @@ TRS_LANGS = {
     'Turkish': ['土耳其语'],
     'Ukrainian': ['乌克兰语'],
     'Urdu': ['乌尔都语'],
+    'Uyghur': ['维吾尔语'],
     'Vietnamese': ['越南语'],
     'Welsh': ['威尔士语'],
+    'Wolof': ['沃洛夫语'],
     'Yoruba': ['约鲁巴语'],
     'Zulu': ['祖鲁语'],
     'Other languages': ['其他语种'],
@@ -315,11 +328,11 @@ for element_context in soup.select('context'):
             # Languages
             for lang, trs in TRS_LANGS.items():
                 # Only replace language names at the beginning of the text, after hyphens in names of language utils, or after slashes in encoding names
-                if tr.startswith(lang) or f' - {lang}' in tr or f'/{lang}' in tr:
+                if tr.startswith(lang) or f' - {lang} ' in tr or f'/{lang}' in tr:
                     if tr.startswith(lang):
                         tr = tr.replace(lang, trs[0], 1)
                     elif f' - {lang}' in tr:
-                        tr = tr.replace(f' - {lang}', f' - {trs[0]}', 1)
+                        tr = tr.replace(f' - {lang} ', f' - {trs[0]} ', 1)
                     elif f'/{lang}' in tr:
                         tr = tr.replace(f'/{lang}', f'/{trs[0]}', 1)
 
