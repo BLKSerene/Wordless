@@ -41,28 +41,10 @@ if is_macos:
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # Dostoevsky
 datas.extend(PyInstaller.utils.hooks.collect_data_files('dostoevsky'))
-# jieba
-datas.extend(PyInstaller.utils.hooks.collect_data_files('jieba'))
-# khmer-nltk
-datas.extend(PyInstaller.utils.hooks.collect_data_files('khmernltk'))
-# Lingua
-datas.extend(PyInstaller.utils.hooks.collect_data_files('lingua'))
-# opencc-python
-datas.extend(PyInstaller.utils.hooks.collect_data_files('opencc'))
-# python-crfsuite
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pycrfsuite', include_py_files = True))
-# python-mecab-ko
-datas.extend(PyInstaller.utils.hooks.collect_data_files('mecab'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('mecab_ko_dic'))
-# pymorphy3
-datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy3_dicts_ru'))
-datas.extend(PyInstaller.utils.hooks.copy_metadata('pymorphy3_dicts_uk'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy3_dicts_ru'))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pymorphy3_dicts_uk'))
+# LaoNLP
+datas.extend(PyInstaller.utils.hooks.collect_data_files('laonlp'))
 # PyThaiNLP
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
-# simplemma
-datas.extend(PyInstaller.utils.hooks.collect_data_files('simplemma'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
@@ -77,13 +59,8 @@ for package in transformers.dependency_versions_check.pkgs_to_check_at_runtime +
     if package != 'python':
         datas.extend(PyInstaller.utils.hooks.copy_metadata(package))
 
-# SudachiPy
-datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachipy', include_py_files = True))
-datas.extend(PyInstaller.utils.hooks.collect_data_files('sudachidict_core'))
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
-# wordcloud
-datas.extend(PyInstaller.utils.hooks.collect_data_files('wordcloud'))
 
 # Custom data files
 datas.extend([
@@ -116,19 +93,9 @@ datas.extend([
 
 # Hidden imports
 hiddenimports = [
-    # khmer-nltk
-    'sklearn_crfsuite',
-
-    # pymorphy3
-    'pymorphy3_dicts_ru',
-    'pymorphy3_dicts_uk',
-
     # spaCy
     'en_core_web_trf',
     'spacy_alignments',
-
-    # SudachiPy
-    'sudachidict_core',
 
     # Underthesea
     'sklearn.pipeline'
@@ -169,11 +136,6 @@ a = Analysis(
     cipher = block_cipher,
     noarchive = False
 )
-
-# Fix Fontconfig error when the frozen application is running on Ubuntu
-# See: https://github.com/pyinstaller/pyinstaller/issues/3438#issuecomment-883161995
-if is_linux:
-    a.binaries = [x for x in a.binaries if not os.path.basename(x[1]).startswith(("libfontconfig", "libuuid"))]
 
 pyz = PYZ(a.pure, a.zipped_data, cipher = block_cipher)
 
