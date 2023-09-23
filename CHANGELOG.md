@@ -30,6 +30,7 @@
 
 ### ✨ Improvements
 - Utils: Update NLTK's word tokenizers
+- Utils: Update spaCy's sentencizer
 - Work Area: Update Profiler - Lexical Diversity - Mean Segmental TTR
 
 ### ❌ Removals

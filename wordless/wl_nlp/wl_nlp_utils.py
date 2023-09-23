@@ -43,6 +43,7 @@ import sudachipy
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
+from wordless.wl_nlp import wl_sentence_tokenization
 from wordless.wl_utils import wl_conversion, wl_misc, wl_threading
 
 def to_lang_util_code(main, util_type, util_text):
@@ -321,11 +322,13 @@ def init_model_spacy(main, lang, sentencizer_only = False):
     else:
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
+    sentencizer_config = {'punct_chars': list(wl_sentence_tokenization.SENTENCE_TERMINATORS)}
+
     # Sentencizer
     if sentencizer_only:
         if 'spacy_nlp_sentencizer' not in main.__dict__:
             main.__dict__['spacy_nlp_sentencizer'] = spacy.blank('en')
-            main.__dict__['spacy_nlp_sentencizer'].add_pipe('sentencizer')
+            main.__dict__['spacy_nlp_sentencizer'].add_pipe('sentencizer', config = sentencizer_config)
     else:
         if f'spacy_nlp_{lang}' not in main.__dict__:
             # Languages with models
@@ -341,13 +344,13 @@ def init_model_spacy(main, lang, sentencizer_only = False):
                     main.__dict__[f'spacy_nlp_{lang}'].enable_pipe('senter')
 
                 if lang == 'other':
-                    main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+                    main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer', config = sentencizer_config)
             # Languages without models
             else:
                 main.__dict__[f'spacy_nlp_{lang}'] = spacy.blank(wl_conversion.to_iso_639_1(main, lang))
 
                 # Add sentencizer and lemmatizer
-                main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer')
+                main.__dict__[f'spacy_nlp_{lang}'].add_pipe('sentencizer', config = sentencizer_config)
 
                 if lang in LANGS_SPACY_LEMMATIZERS:
                     main.__dict__[f'spacy_nlp_{lang}'].add_pipe('lemmatizer')
