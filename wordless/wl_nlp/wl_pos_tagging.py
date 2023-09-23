@@ -18,6 +18,7 @@
 
 import jieba.posseg
 import khmernltk
+import laonlp
 import nltk
 import pythainlp
 import spacy
@@ -285,6 +286,14 @@ def wl_pos_tag_text(main, text, lang, pos_tagger):
     # Korean
     elif pos_tagger == 'python_mecab_ko_mecab':
         tokens_tagged = main.python_mecab_ko_mecab.pos(text)
+    # Lao
+    elif pos_tagger.startswith('laonlp_'):
+        tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+
+        if pos_tagger == 'laonlp_seqlabeling':
+            tokens_tagged = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
+        if pos_tagger == 'laonlp_yunshan_cup_2020':
+            tokens_tagged = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy3_morphological_analyzer':
         if lang == 'rus':
@@ -346,6 +355,12 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
     # Korean
     elif pos_tagger == 'python_mecab_ko_mecab':
         tokens_tagged = wl_pos_tag_text(main, ' '.join(tokens), lang = 'kor', pos_tagger = 'python_mecab_ko_mecab')
+    # Lao
+    elif pos_tagger.startswith('laonlp_'):
+        if pos_tagger == 'laonlp_seqlabeling':
+            tokens_tagged = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
+        if pos_tagger == 'laonlp_yunshan_cup_2020':
+            tokens_tagged = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy3_morphological_analyzer':
         if lang == 'rus':

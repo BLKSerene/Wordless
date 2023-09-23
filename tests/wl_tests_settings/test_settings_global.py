@@ -150,7 +150,7 @@ class Check_Settings_Global():
 
         for lang_code in settings_word_tokenizers:
             if lang_code != 'other':
-                if lang_code not in ['amh', 'mya', 'lzh', 'zho_cn', 'zho_tw', 'jpn', 'khm', 'tha', 'bod', 'vie']:
+                if lang_code not in ['amh', 'mya', 'lzh', 'zho_cn', 'zho_tw', 'jpn', 'khm', 'lao', 'tha', 'bod', 'vie']:
                     if lang_code not in langs_nltk_word_tokenizers:
                         print(f'''Missing language code "{lang_code}" found for NLTK's tokenizers!''')
 

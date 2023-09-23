@@ -92,6 +92,7 @@ def init_settings_global():
             _tr('init_settings_global', 'Korean'): ['kor', 'ko', 'Koreanic'],
             _tr('init_settings_global', 'Kurdish (Kurmanji)'): ['kmr', 'kmr', 'Indo-European'],
             _tr('init_settings_global', 'Kyrgyz'): ['kir', 'ky', 'Turkic'],
+            _tr('init_settings_global', 'Lao'): ['lao', 'lo', 'Kra-Dai'],
             _tr('init_settings_global', 'Latin'): ['lat', 'la', 'Indo-European'],
             _tr('init_settings_global', 'Latvian'): ['lav', 'lv', 'Indo-European'],
             _tr('init_settings_global', 'Ligurian'): ['lij', 'lij', 'Unclassified'],
@@ -380,6 +381,7 @@ def init_settings_global():
             'sentence_tokenizers': {
                 _tr('init_settings_global', 'botok - Tibetan sentence tokenizer'): 'botok_bod',
                 _tr('init_settings_global', 'khmer-nltk - Khmer sentence tokenizer'): 'khmer_nltk_khm',
+                _tr('init_settings_global', 'LaoNLP - Lao sentence tokenizer'): 'laonlp_lao',
 
                 _tr('init_settings_global', 'NLTK - Czech Punkt sentence tokenizer'): 'nltk_punkt_ces',
                 _tr('init_settings_global', 'NLTK - Danish Punkt sentence tokenizer'): 'nltk_punkt_dan',
@@ -535,6 +537,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'botok - Tibetan word tokenizer'): 'botok_bod',
                 _tr('init_settings_global', 'jieba - Chinese word tokenizer'): 'jieba_zho',
                 _tr('init_settings_global', 'khmer-nltk - Khmer word tokenizer'): 'khmer_nltk_khm',
+                _tr('init_settings_global', 'LaoNLP - Lao word tokenizer'): 'laonlp_lao',
 
                 _tr('init_settings_global', 'NLTK - NIST tokenizer'): 'nltk_nist',
                 _tr('init_settings_global', 'NLTK - NLTK tokenizer'): 'nltk_nltk',
@@ -771,6 +774,9 @@ def init_settings_global():
                 _tr('init_settings_global', 'botok - Tibetan part-of-speech tagger'): 'botok_bod',
                 _tr('init_settings_global', 'jieba - Chinese part-of-speech tagger'): 'jieba_zho',
                 _tr('init_settings_global', 'khmer-nltk - Khmer part-of-speech tagger'): 'khmer_nltk_khm',
+
+                _tr('init_settings_global', 'LaoNLP - SeqLabeling'): 'laonlp_seqlabeling',
+                _tr('init_settings_global', 'LaoNLP - Yunshan Cup 2020'): 'laonlp_yunshan_cup_2020',
 
                 _tr('init_settings_global', 'NLTK - English perceptron part-of-speech tagger'): 'nltk_perceptron_eng',
                 _tr('init_settings_global', 'NLTK - Russian perceptron part-of-speech tagger'): 'nltk_perceptron_rus',
@@ -1060,6 +1066,8 @@ def init_settings_global():
             },
 
             'stop_word_lists': {
+                _tr('init_settings_global', 'LaoNLP - Lao stop word list'): 'laonlp_lao',
+
                 _tr('init_settings_global', 'NLTK - Arabic stop word list'): 'nltk_ara',
                 _tr('init_settings_global', 'NLTK - Azerbaijani stop word list'): 'nltk_aze',
                 _tr('init_settings_global', 'NLTK - Basque stop word list'): 'nltk_eus',
@@ -1478,6 +1486,11 @@ def init_settings_global():
             'kir': [
                 'spacy_sentencizer',
                 'stanza_kir'
+            ],
+
+            'lao': [
+                'laonlp_lao',
+                'spacy_sentencizer'
             ],
 
             'lat': [
@@ -2035,6 +2048,8 @@ def init_settings_global():
                 'stanza_kir'
             ],
 
+            'lao': ['laonlp_lao'],
+
             'lat': [
                 'nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter',
                 'spacy_lat',
@@ -2550,6 +2565,7 @@ def init_settings_global():
 
             'kmr': ['stanza_kmr'],
             'kir': ['stanza_kir'],
+            'lao': ['laonlp_seqlabeling'],
             'lat': ['stanza_lat'],
             'lav': ['stanza_lav'],
             'lij': ['stanza_lij'],
@@ -3028,6 +3044,7 @@ def init_settings_global():
             'ind': ['nltk_ind'],
             'ita': ['nltk_ita'],
             'kaz': ['nltk_kaz'],
+            'lao': ['laonlp_lao'],
             'nep': ['nltk_nep'],
             'nob': ['nltk_nor'],
             'nno': ['nltk_nor'],

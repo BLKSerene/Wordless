@@ -26,6 +26,8 @@ from wordless.wl_tagsets import (
     wl_tagset_jpn_unidic,
     wl_tagset_khm_alt,
     wl_tagset_kor_mecab,
+    wl_tagset_lao_seqlabeling,
+    wl_tagset_lao_yunshan_cup_2020,
     wl_tagset_rus_open_corpora,
     wl_tagset_rus_russian_national_corpus,
     wl_tagset_tha_blackboard,
@@ -1224,6 +1226,7 @@ def init_settings_default(main):
                 'kor': 'spacy_dependency_parser_kor',
                 'kmr': 'stanza_kmr',
                 'kir': 'stanza_kir',
+                'lao': 'laonlp_lao',
                 'lat': 'stanza_lat',
                 'lav': 'stanza_lav',
                 'lij': 'stanza_lij',
@@ -1335,6 +1338,7 @@ def init_settings_default(main):
                 'kor': 'spacy_kor',
                 'kmr': 'stanza_kmr',
                 'kir': 'stanza_kir',
+                'lao': 'laonlp_lao',
                 'lat': 'stanza_lat',
                 'lav': 'stanza_lav',
                 'lij': 'stanza_lij',
@@ -1509,6 +1513,7 @@ def init_settings_default(main):
                     'kor': 'spacy_kor',
                     'kmr': 'stanza_kmr',
                     'kir': 'stanza_kir',
+                    'lao': 'laonlp_seqlabeling',
                     'lat': 'stanza_lat',
                     'lav': 'stanza_lav',
                     'lij': 'stanza_lij',
@@ -1591,6 +1596,11 @@ def init_settings_default(main):
 
                     'kor': {
                         'python_mecab_ko_mecab': wl_tagset_kor_mecab.MAPPINGS
+                    },
+
+                    'lao': {
+                        'laonlp_seqlabeling': wl_tagset_lao_seqlabeling.MAPPINGS,
+                        'laonlp_yunshan_cup_2020': wl_tagset_lao_yunshan_cup_2020.MAPPINGS
                     },
 
                     'rus': {
@@ -1746,6 +1756,7 @@ def init_settings_default(main):
                 'ind': 'nltk_ind',
                 'ita': 'nltk_ita',
                 'kaz': 'nltk_kaz',
+                'lao': 'laonlp_lao',
                 'nep': 'nltk_nep',
                 'nob': 'nltk_nor',
                 'nno': 'nltk_nor',
