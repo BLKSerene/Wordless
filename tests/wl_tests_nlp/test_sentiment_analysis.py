@@ -20,28 +20,16 @@ import pytest
 
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_sentiment_analysis, wl_word_tokenization
-from wordless.wl_utils import wl_misc
-
-is_windows, _, _ = wl_misc.check_os()
 
 main = wl_test_init.Wl_Test_Main()
 wl_test_init.change_default_tokenizers(main)
 
 test_sentiment_analyzers = []
-test_sentiment_analyzers_local = []
 
 for lang, sentiment_analyzers in main.settings_global['sentiment_analyzers'].items():
     for sentiment_analyzer in sentiment_analyzers:
-        if sentiment_analyzer == 'underthesea_vie':
-            test_sentiment_analyzers.append(pytest.param(
-                lang, sentiment_analyzer,
-                marks = pytest.mark.xfail(is_windows, reason = 'https://github.com/undertheseanlp/underthesea/issues/704')
-            ))
-
-            test_sentiment_analyzers_local.append((lang, sentiment_analyzer))
-        elif not sentiment_analyzer.startswith('stanza_'):
+        if not sentiment_analyzer.startswith('stanza_'):
             test_sentiment_analyzers.append((lang, sentiment_analyzer))
-            test_sentiment_analyzers_local.append((lang, sentiment_analyzer))
 
 @pytest.mark.parametrize('lang, sentiment_analyzer', test_sentiment_analyzers)
 def test_sentiment_analyze(lang, sentiment_analyzer):
@@ -92,5 +80,5 @@ def test_sentiment_analyze(lang, sentiment_analyzer):
     assert sentiment_scores_tokenized_tagged == sentiment_scores_tokenized
 
 if __name__ == '__main__':
-    for lang, sentiment_analyzer in test_sentiment_analyzers_local:
+    for lang, sentiment_analyzer in test_sentiment_analyzers:
         test_sentiment_analyze(lang, sentiment_analyzer)
