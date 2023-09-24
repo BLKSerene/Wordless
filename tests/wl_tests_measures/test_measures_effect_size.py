@@ -16,97 +16,213 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import numpy
+
 from tests import wl_test_init
 from wordless.wl_measures import wl_measures_effect_size
 
 main = wl_test_init.Wl_Test_Main()
 
+def assert_zeros(func, result = 0):
+    numpy.testing.assert_array_equal(
+        func(
+            main,
+            numpy.array([0] * 10),
+            numpy.array([0] * 10),
+            numpy.array([0] * 10),
+            numpy.array([0] * 10)
+        ),
+        numpy.array([result] * 10)
+    )
+
 # Reference: Gabrielatos, C., & Marchi, A. (2012, September 13–14). Keyness: Appropriate metrics and practical issues [Conference session]. CADS International Conference 2012, University of Bologna, Italy. (pp. 21-22)
 def test_pct_diff():
-    assert round(wl_measures_effect_size.pct_diff(main, 20, 1, 29954 - 20, 23691 - 1), 2) == 1481.83
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.pct_diff(
+            main,
+            numpy.array([20] * 2),
+            numpy.array([1] * 2),
+            numpy.array([29954 - 20] * 2),
+            numpy.array([23691 - 1] * 2)
+        ), 2),
+        numpy.array([1481.83] * 2)
+    )
 
-    assert wl_measures_effect_size.pct_diff(main, 0, 1, 0, 1) == float('-inf')
-    assert wl_measures_effect_size.pct_diff(main, 1, 0, 0, 1) == float('inf')
-    assert wl_measures_effect_size.pct_diff(main, 0, 0, 0, 0) == 0
+    numpy.testing.assert_array_equal(
+        wl_measures_effect_size.pct_diff(
+            main,
+            numpy.array([0, 1, 0]),
+            numpy.array([1, 0, 0]),
+            numpy.array([0, 0, 0]),
+            numpy.array([1, 1, 0])
+        ),
+        numpy.array([float('-inf'), float('inf'), 0])
+    )
 
 def test_im3():
-    assert wl_measures_effect_size.im3(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.im3)
 
 # Reference: Smadja, F., McKeown, K. R., & Hatzivassiloglou, V. (1996). Translating collocations for bilingual lexicons: A statistical approach. Computational Linguistics, 22(1), pp. 1–38. (p. 13)
 def test_dices_coeff():
-    assert round(wl_measures_effect_size.dices_coeff(main, 130, 3121 - 130, 143 - 130, -1), 2) == 0.08
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.dices_coeff(
+            main,
+            numpy.array([130] * 2),
+            numpy.array([3121 - 130] * 2),
+            numpy.array([143 - 130] * 2),
+            numpy.array([-1] * 2)
+        ), 2),
+        numpy.array([0.08] * 2)
+    )
 
-    assert wl_measures_effect_size.dices_coeff(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.dices_coeff)
 
 # Reference: Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities. (p. 471)
 def test_diff_coeff():
-    assert round(wl_measures_effect_size.diff_coeff(main, 18, 35, 1000000 - 18, 1000000 - 35), 2) == -0.32
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.diff_coeff(
+            main,
+            numpy.array([18] * 2),
+            numpy.array([35] * 2),
+            numpy.array([1000000 - 18] * 2),
+            numpy.array([1000000 - 35] * 2)
+        ), 2),
+        numpy.array([-0.32] * 2)
+    )
 
-    assert wl_measures_effect_size.diff_coeff(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.diff_coeff)
 
 def test_jaccard_index():
-    assert wl_measures_effect_size.jaccard_index(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.jaccard_index)
 
 # Reference: Kilgarriff, A. (2009). Simple maths for keywords. In M. Mahlberg, V. González-Díaz, & C. Smith (Eds.), Proceedings of the Corpus Linguistics Conference 2009 (p. 171). University of Liverpool.
 def test_kilgarriffs_ratio():
-    assert round(wl_measures_effect_size.kilgarriffs_ratio(main, 35, 263, 112289776, 1559716979), 4) == 1.1224
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.kilgarriffs_ratio(
+            main,
+            numpy.array([35] * 2),
+            numpy.array([263] * 2),
+            numpy.array([112289776] * 2),
+            numpy.array([1559716979] * 2)
+        ), 4),
+        numpy.array([1.1224] * 2)
+    )
 
-    assert wl_measures_effect_size.kilgarriffs_ratio(main, 0, 0, 0, 0) == 1
+    assert_zeros(wl_measures_effect_size.kilgarriffs_ratio, result = 1)
 
 # Reference: Hardie, A. (2014, April 28). Log ratio: An informal introduction. ESRC Centre for Corpus Approaches to Social Science (CASS). http://cass.lancs.ac.uk/log-ratio-an-informal-introduction/.
 def test_log_ratio():
-    assert wl_measures_effect_size.log_ratio(main, 1, 1, 1000000 - 1, 1000000 - 1) == 0
+    numpy.testing.assert_array_equal(
+        wl_measures_effect_size.log_ratio(
+            main,
+            numpy.array([1] * 2),
+            numpy.array([1] * 2),
+            numpy.array([1000000 - 1] * 2),
+            numpy.array([1000000 - 1] * 2)
+        ),
+        numpy.array([0] * 2)
+    )
 
-    assert wl_measures_effect_size.log_ratio(main, 0, 1, 0, 1) == float('-inf')
-    assert wl_measures_effect_size.log_ratio(main, 1, 0, 0, 1) == float('inf')
-    assert wl_measures_effect_size.log_ratio(main, 0, 0, 0, 0) == 0
+    numpy.testing.assert_array_equal(
+        wl_measures_effect_size.log_ratio(
+            main,
+            numpy.array([0, 1, 0]),
+            numpy.array([1, 0, 0]),
+            numpy.array([0, 0, 0]),
+            numpy.array([1, 1, 0])
+        ),
+        numpy.array([float('-inf'), float('inf'), 0])
+    )
 
 def test_lfmd():
-    assert wl_measures_effect_size.lfmd(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.lfmd)
 
 def test_log_dice():
-    assert wl_measures_effect_size.log_dice(main, 0, 0, 0, 0) == 14
+    assert_zeros(wl_measures_effect_size.log_dice, result = 14)
 
 def test_mi_log_f():
-    assert wl_measures_effect_size.mi_log_f(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.mi_log_f)
 
 # Reference: Pedersen, T. (1998). Dependent bigram identification. In Proceedings of the Fifteenth National Conference on Artificial Intelligence (p. 1197). AAAI Press.
 def test_min_sensitivity():
-    assert round(wl_measures_effect_size.min_sensitivity(main, 17, 240, 1001, 1298742), 3) == 0.017
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.min_sensitivity(
+            main,
+            numpy.array([17] * 2),
+            numpy.array([240] * 2),
+            numpy.array([1001] * 2),
+            numpy.array([1298742] * 2)
+        ), 3),
+        numpy.array([0.017] * 2)
+    )
 
-    assert wl_measures_effect_size.min_sensitivity(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.min_sensitivity)
 
 def test_md():
-    assert wl_measures_effect_size.md(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.md)
 
 def test_me():
-    assert wl_measures_effect_size.me(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.me)
 
 def test_mi():
-    assert wl_measures_effect_size.mi(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.mi)
 
 # Reference: Pojanapunya, P., & Todd, R. W. (2016). Log-likelihood and odds ratio keyness statistics for different purposes of keyword analysis. Corpus Linguistics and Linguistic Theory, 15(1), pp. 133–167. https://doi.org/10.1515/cllt-2015-0030 (p. 154)
 def test_odds_ratio():
-    assert round(wl_measures_effect_size.odds_ratio(main, 16217, 735, 2796938 - 16217, 2087946 - 735), 1) == 16.6
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.odds_ratio(
+            main,
+            numpy.array([16217] * 2, dtype = float),
+            numpy.array([735] * 2, dtype = float),
+            numpy.array([2796938 - 16217] * 2, dtype = float),
+            numpy.array([2087946 - 735] * 2, dtype = float)
+        ), 1),
+        numpy.array([16.6] * 2)
+    )
 
-    assert wl_measures_effect_size.odds_ratio(main, 0, 1, 0, 1) == float('-inf')
-    assert wl_measures_effect_size.odds_ratio(main, 1, 0, 0, 1) == float('inf')
-    assert wl_measures_effect_size.odds_ratio(main, 0, 0, 0, 0) == 0
+    numpy.testing.assert_array_equal(
+        wl_measures_effect_size.odds_ratio(
+            main,
+            numpy.array([0, 1, 0]),
+            numpy.array([1, 0, 0]),
+            numpy.array([0, 0, 0]),
+            numpy.array([1, 1, 0])
+        ),
+        numpy.array([float('-inf'), float('inf'), 0])
+    )
 
 # Reference: Church, K. W., & Hanks, P. (1990). Word association norms, mutual information, and lexicography. Computational Linguistics, 16(1), 22–29. (p. 24)
 def test_pmi():
-    assert round(wl_measures_effect_size.pmi(main, 8, 1105 - 8, 44 - 8, 15000000 - 1105 - 44 + 8), 1) == 11.3
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.pmi(
+            main,
+            numpy.array([8] * 2),
+            numpy.array([1105 - 8] * 2),
+            numpy.array([44 - 8] * 2),
+            numpy.array([15000000 - 1105 - 44 + 8] * 2)
+        ), 1),
+        numpy.array([11.3] * 2)
+    )
 
-    assert wl_measures_effect_size.pmi(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.pmi)
 
 def test_poisson_collocation_measure():
-    assert wl_measures_effect_size.poisson_collocation_measure(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.poisson_collocation_measure)
 
 # Reference: Church, K. W., & Gale, W. A. (1991, September 29–October 1). Concordances for parallel text [Paper presentation]. Using Corpora: Seventh Annual Conference of the UW Centre for the New OED and Text Research, St. Catherine's College, Oxford, United Kingdom.
 def test_squared_phi_coeff():
-    assert round(wl_measures_effect_size.squared_phi_coeff(main, 31950, 12004, 4793, 848330), 2) == 0.62
+    numpy.testing.assert_array_equal(
+        numpy.round(wl_measures_effect_size.squared_phi_coeff(
+            main,
+            numpy.array([31950] * 2, dtype = float),
+            numpy.array([12004] * 2, dtype = float),
+            numpy.array([4793] * 2, dtype = float),
+            numpy.array([848330] * 2, dtype = float)
+        ), 2),
+        numpy.array([0.62] * 2)
+    )
 
-    assert wl_measures_effect_size.squared_phi_coeff(main, 0, 0, 0, 0) == 0
+    assert_zeros(wl_measures_effect_size.squared_phi_coeff)
 
 if __name__ == '__main__':
     test_pct_diff()

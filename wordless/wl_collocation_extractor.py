@@ -1152,6 +1152,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
             func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
 
             collocations_all = self.collocations_freqs_files[-1].keys()
+            num_collocations_all = len(collocations_all)
             # Used for z-score (Berry-Rogghe)
             span = (abs(window_left) + abs(window_right)) / 2
 
@@ -1163,53 +1164,65 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 collocates_stats_file = {}
 
                 if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
-                    c1xs = {}
-                    cx1s = {}
-                    cxxs = {}
+                    o1xs = {}
+                    ox1s = {}
+                    oxxs = {}
 
                     for ngram_size, collocations_freqs in collocations_freqs_file_all.items():
-                        c1xs[ngram_size] = collections.Counter()
-                        cx1s[ngram_size] = collections.Counter()
+                        o1xs[ngram_size] = collections.Counter()
+                        ox1s[ngram_size] = collections.Counter()
 
-                        # C1x & Cx1
                         for (node, collocate), freq in collocations_freqs.items():
-                            c1xs[ngram_size][collocate] += freq
-                            cx1s[ngram_size][node] += freq
+                            o1xs[ngram_size][collocate] += freq
+                            ox1s[ngram_size][node] += freq
 
-                        # Cxx
-                        cxxs[ngram_size] = sum(collocations_freqs.values())
+                        oxxs[ngram_size] = sum(collocations_freqs.values())
 
-                    for node, collocate in collocations_all:
+                    o11s = numpy.empty(shape = num_collocations_all, dtype = float)
+                    o12s = numpy.empty(shape = num_collocations_all, dtype = float)
+                    o21s = numpy.empty(shape = num_collocations_all, dtype = float)
+                    o22s = numpy.empty(shape = num_collocations_all, dtype = float)
+
+                    for i, (node, collocate) in enumerate(collocations_all):
                         len_node = len(node)
 
-                        c11 = sum(collocations_freqs_file.get((node, collocate), [0]))
-                        c12 = c1xs[len_node][collocate] - c11
-                        c21 = cx1s[len_node][node] - c11
-                        c22 = cxxs[len_node] - c11 - c12 - c21
+                        o11s[i] = sum(collocations_freqs_file.get((node, collocate), [0]))
+                        o12s[i] = o1xs[len_node][collocate] - o11s[i]
+                        o21s[i] = ox1s[len_node][node] - o11s[i]
+                        o22s[i] = oxxs[len_node] - o11s[i] - o12s[i] - o21s[i]
 
-                        # Test Statistic & p-value
-                        if test_statistical_significance == 'none':
-                            collocates_stats_file[(node, collocate)] = [None, None]
+                    # Test Statistic & p-value
+                    if test_statistical_significance == 'none':
+                        test_stats = [None] * num_collocations_all
+                        p_vals = [None] * num_collocations_all
+                    else:
+                        if test_statistical_significance == 'z_score_berry_rogghe':
+                            test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s, span)
                         else:
-                            if test_statistical_significance == 'z_score_berry_rogghe':
-                                collocates_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22, span))
-                            else:
-                                collocates_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+                            test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s)
 
-                        # Bayes Factor
-                        if measure_bayes_factor == 'none':
-                            collocates_stats_file[(node, collocate)].append(None)
-                        else:
-                            collocates_stats_file[(node, collocate)].append(func_bayes_factor(self.main, c11, c12, c21, c22))
+                    # Bayes Factor
+                    if measure_bayes_factor == 'none':
+                        bayes_factors = [None] * num_collocations_all
+                    else:
+                        bayes_factors = func_bayes_factor(self.main, o11s, o12s, o21s, o22s)
 
-                        # Effect Size
-                        if measure_effect_size == 'none':
-                            collocates_stats_file[(node, collocate)].append(None)
-                        else:
-                            collocates_stats_file[(node, collocate)].append(func_effect_size(self.main, c11, c12, c21, c22))
+                    # Effect Size
+                    if measure_effect_size == 'none':
+                        effect_sizes = [None] * num_collocations_all
+                    else:
+                        effect_sizes = func_effect_size(self.main, o11s, o12s, o21s, o22s)
+
+                    for i, (node, collocate) in enumerate(collocations_all):
+                        collocates_stats_file[(node, collocate)] = [
+                            test_stats[i],
+                            p_vals[i],
+                            bayes_factors[i],
+                            effect_sizes[i]
+                        ]
                 else:
                     collocates_stats_file = {
-                        (node, collocate): [None, None, None, None]
+                        (node, collocate): [None] * 4
                         for node, collocate in collocations_all
                     }
 
