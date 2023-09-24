@@ -21,7 +21,7 @@ botok
 charset-normalizer
 jieba
 khmer-nltk
-laonlp[anyascii]
+laonlp
 lingua-language-detector
 nltk
 pyphen

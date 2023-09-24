@@ -29,7 +29,7 @@
 4 |[Dostoevsky](https://github.com/bureaucratic-labs/dostoevsky)      |0.6.0 |Anna Rogers, Alexey Romanov, Anna Rumshisky,<br>Svitlana Volkova, Mikhail Gronas, Alex Gribov|[MIT](https://github.com/bureaucratic-labs/dostoevsky/blob/master/LICENSE)
 5 |[jieba](https://github.com/fxsjy/jieba)                            |0.42.1|孫君意|[MIT](https://github.com/fxsjy/jieba/blob/master/LICENSE)
 6 |[khmer-nltk](https://github.com/VietHoang1512/khmer-nltk)          |1.6   |Phan Viet Hoang|[Apache-2.0](https://github.com/VietHoang1512/khmer-nltk/blob/main/LICENSE)
-7 |[LaoNLP](https://github.com/wannaphong/LaoNLP)                     |1.1.1 |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/wannaphong/LaoNLP/blob/master/LICENSE)
+7 |[LaoNLP](https://github.com/wannaphong/LaoNLP)                     |1.1.2 |Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/wannaphong/LaoNLP/blob/master/LICENSE)
 8 |[Lingua](https://github.com/pemistahl/lingua-py)                   |1.3.2 |Peter M. Stahl|[Apache-2.0](https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt)
 9 |[Matplotlib](https://matplotlib.org/)                              |3.8.0 |Matplotlib 開發團隊|[Matplotlib](https://matplotlib.org/stable/users/project/license.html)
 10|[NetworkX](https://networkx.org/)                                  |3.1   |NetworkX 開發人員, Aric Hagberg, Dan Schult,<br>Pieter Swart|[BSD-3-Clause](https://github.com/networkx/networkx/blob/main/LICENSE.txt)
