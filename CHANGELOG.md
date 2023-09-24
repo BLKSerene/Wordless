@@ -29,6 +29,7 @@
 - Work Area: Add Profiler - Lexical Diversity - Corrected TTR / Fisher's Index of Diversity / Herdan's Vₘ / HD-D / LogTTR / Measure of Textual Lexical Diversity / Moving-average TTR / Popescu-Mačutek-Altmann's B₁ / Popescu-Mačutek-Altmann's B₂ / Popescu-Mačutek-Altmann's B₃ / Popescu-Mačutek-Altmann's B₄ / Popescu-Mačutek-Altmann's B₅ / Popescu's R₁ / Popescu's R₂ / Popescu's R₃ / Popescu's R₄ / Repeat Rate / Root TTR / Shannon Entropy / Simpleson's l / vocd-D / Yule's Characteristic K / Yule's Index of Diversity
 
 ### ✨ Improvements
+- Utils: Speed up tests of statistical significance, measures of Bayes factor, and measures of effect size
 - Utils: Update NLTK's word tokenizers
 - Utils: Update spaCy's sentencizer
 - Work Area: Update Profiler - Lexical Diversity - Mean Segmental TTR

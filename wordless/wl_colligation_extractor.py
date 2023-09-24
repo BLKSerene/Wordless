@@ -1155,6 +1155,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
             func_effect_size = self.main.settings_global['measures_effect_size'][measure_effect_size]['func']
 
             colligations_all = self.colligations_freqs_files[-1].keys()
+            num_colligations_all = len(colligations_all)
             # Used for z-score (Berry-Rogghe)
             span = (abs(window_left) + abs(window_right)) / 2
 
@@ -1165,53 +1166,65 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
             ):
                 if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
                     colligations_stats_file = {}
-                    c1xs = collections.Counter()
-                    cx1s = collections.Counter()
-                    cxxs = {}
+                    o1xs = collections.Counter()
+                    ox1s = collections.Counter()
+                    oxxs = {}
 
                     for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
-                        c1xs[ngram_size] = collections.Counter()
-                        cx1s[ngram_size] = collections.Counter()
+                        o1xs[ngram_size] = collections.Counter()
+                        ox1s[ngram_size] = collections.Counter()
 
-                        # C1x & Cx1
                         for (node, collocate), freq in colligations_freqs.items():
-                            c1xs[ngram_size][collocate] += freq
-                            cx1s[ngram_size][node] += freq
+                            o1xs[ngram_size][collocate] += freq
+                            ox1s[ngram_size][node] += freq
 
-                        # Cxx
-                        cxxs[ngram_size] = sum(colligations_freqs.values())
+                        oxxs[ngram_size] = sum(colligations_freqs.values())
 
-                    for node, collocate in colligations_all:
+                    o11s = numpy.empty(shape = num_colligations_all, dtype = float)
+                    o12s = numpy.empty(shape = num_colligations_all, dtype = float)
+                    o21s = numpy.empty(shape = num_colligations_all, dtype = float)
+                    o22s = numpy.empty(shape = num_colligations_all, dtype = float)
+
+                    for i, (node, collocate) in enumerate(colligations_all):
                         len_node = len(node)
 
-                        c11 = sum(colligations_freqs_file.get((node, collocate), [0]))
-                        c12 = c1xs[len_node][collocate] - c11
-                        c21 = cx1s[len_node][node] - c11
-                        c22 = cxxs[len_node] - c11 - c12 - c21
+                        o11s[i] = sum(colligations_freqs_file.get((node, collocate), [0]))
+                        o12s[i] = o1xs[len_node][collocate] - o11s[i]
+                        o21s[i] = ox1s[len_node][node] - o11s[i]
+                        o22s[i] = oxxs[len_node] - o11s[i] - o12s[i] - o21s[i]
 
-                        # Test Statistic & p-value
-                        if test_statistical_significance == 'none':
-                            colligations_stats_file[(node, collocate)] = [None, None]
+                    # Test Statistic & p-value
+                    if test_statistical_significance == 'none':
+                        test_stats = [None] * num_colligations_all
+                        p_vals = [None] * num_colligations_all
+                    else:
+                        if test_statistical_significance == 'z_score_berry_rogghe':
+                            test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s, span)
                         else:
-                            if test_statistical_significance == 'z_score_berry_rogghe':
-                                colligations_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22, span))
-                            else:
-                                colligations_stats_file[(node, collocate)] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+                            test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s)
 
-                        # Bayes Factor
-                        if measure_bayes_factor == 'none':
-                            colligations_stats_file[(node, collocate)].append(None)
-                        else:
-                            colligations_stats_file[(node, collocate)].append(func_bayes_factor(self.main, c11, c12, c21, c22))
+                    # Bayes Factor
+                    if measure_bayes_factor == 'none':
+                        bayes_factors = [None] * num_colligations_all
+                    else:
+                        bayes_factors = func_bayes_factor(self.main, o11s, o12s, o21s, o22s)
 
-                        # Effect Size
-                        if measure_effect_size == 'none':
-                            colligations_stats_file[(node, collocate)].append(None)
-                        else:
-                            colligations_stats_file[(node, collocate)].append(func_effect_size(self.main, c11, c12, c21, c22))
+                    # Effect Size
+                    if measure_effect_size == 'none':
+                        effect_sizes = [None] * num_colligations_all
+                    else:
+                        effect_sizes = func_effect_size(self.main, o11s, o12s, o21s, o22s)
+
+                    for i, (node, collocate) in enumerate(colligations_all):
+                        colligations_stats_file[(node, collocate)] = [
+                            test_stats[i],
+                            p_vals[i],
+                            bayes_factors[i],
+                            effect_sizes[i]
+                        ]
                 else:
                     colligations_stats_file = {
-                        (node, collocate): [None, None, None, None]
+                        (node, collocate): [None] * 4
                         for node, collocate in colligations_all
                     }
 

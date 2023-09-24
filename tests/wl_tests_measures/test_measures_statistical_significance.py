@@ -16,83 +16,181 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import numpy
+
 from tests import wl_test_init
 from wordless.wl_measures import wl_measures_statistical_significance
 
 main = wl_test_init.Wl_Test_Main()
+settings = main.settings_custom['measures']['statistical_significance']
 
 def test_get_freqs_marginal():
-    assert wl_measures_statistical_significance.get_freqs_marginal(1, 2, 3, 4) == (3, 7, 4, 6)
-    assert wl_measures_statistical_significance.get_freqs_marginal(0, 0, 1, 2) == (0, 3, 1, 2)
-    assert wl_measures_statistical_significance.get_freqs_marginal(0, 0, 0, 0) == (0, 0, 0, 0)
+    numpy.testing.assert_array_equal(wl_measures_statistical_significance.get_freqs_marginal(
+        numpy.array([1, 0, 0]),
+        numpy.array([2, 0, 0]),
+        numpy.array([3, 1, 0]),
+        numpy.array([4, 2, 0])
+    ), (
+        numpy.array([3, 0, 0]),
+        numpy.array([7, 3, 0]),
+        numpy.array([4, 1, 0]),
+        numpy.array([6, 2, 0])
+    ))
 
 def test_get_freqs_expected():
-    assert wl_measures_statistical_significance.get_freqs_expected(1, 2, 3, 4) == (1.2, 1.8, 2.8, 4.2)
-    assert wl_measures_statistical_significance.get_freqs_expected(0, 0, 1, 2) == (0, 0, 1, 2)
-    assert wl_measures_statistical_significance.get_freqs_expected(0, 0, 0, 0) == (0, 0, 0, 0)
+    numpy.testing.assert_array_equal(wl_measures_statistical_significance.get_freqs_expected(
+        numpy.array([1, 0, 0]),
+        numpy.array([2, 0, 0]),
+        numpy.array([3, 1, 0]),
+        numpy.array([4, 2, 0])
+    ), (
+        numpy.array([1.2, 0, 0]),
+        numpy.array([1.8, 0, 0]),
+        numpy.array([2.8, 1, 0]),
+        numpy.array([4.2, 2, 0])
+    ))
 
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
 def test_fishers_exact_test():
-    # Two-tailed
-    main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction'] = 'Two-tailed'
+    settings['fishers_exact_test']['direction'] = 'Two-tailed'
+    test_stats, p_vals = wl_measures_statistical_significance.fishers_exact_test(
+        main,
+        numpy.array([1] * 2),
+        numpy.array([3] * 2),
+        numpy.array([3] * 2),
+        numpy.array([1] * 2)
+    )
+    assert test_stats == [None] * 2
+    numpy.testing.assert_array_equal(numpy.round(p_vals, 3), numpy.array([0.486] * 2))
 
-    assert round(wl_measures_statistical_significance.fishers_exact_test(main, 1, 3, 3, 1)[1], 3) == 0.486
+    settings['fishers_exact_test']['direction'] = 'Left-tailed'
+    test_stats, p_vals = wl_measures_statistical_significance.fishers_exact_test(
+        main,
+        numpy.array([1] * 2),
+        numpy.array([3] * 2),
+        numpy.array([3] * 2),
+        numpy.array([1] * 2)
+    )
+    assert test_stats == [None] * 2
+    numpy.testing.assert_array_equal(numpy.round(p_vals, 3), numpy.array([0.243] * 2))
 
-    # Left-tailed
-    main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction'] = 'Left-tailed'
+    settings['fishers_exact_test']['direction'] = 'Right-tailed'
+    test_stats, p_vals = wl_measures_statistical_significance.fishers_exact_test(
+        main,
+        numpy.array([1] * 2),
+        numpy.array([3] * 2),
+        numpy.array([3] * 2),
+        numpy.array([1] * 2)
+    )
+    assert test_stats == [None] * 2
+    numpy.testing.assert_array_equal(numpy.round(p_vals, 3), numpy.array([0.986] * 2))
 
-    assert round(wl_measures_statistical_significance.fishers_exact_test(main, 1, 3, 3, 1)[1], 3) == 0.243
-
-    # Right-tailed
-    main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction'] = 'Right-tailed'
-
-    assert round(wl_measures_statistical_significance.fishers_exact_test(main, 1, 3, 3, 1)[1], 3) == 0.986
-
-    assert wl_measures_statistical_significance.fishers_exact_test(main, 0, 0, 0, 0)[1] == 1
+    test_stats, p_vals = wl_measures_statistical_significance.fishers_exact_test(
+        main,
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2)
+    )
+    assert test_stats == [None] * 2
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
 # References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. (p. 72)
 def test_log_likelihood_ratio_test():
-    main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']['apply_correction'] = False
+    settings['log_likelihood_ratio_test']['apply_correction'] = False
+    gs, _ = wl_measures_statistical_significance.log_likelihood_ratio_test(
+        main,
+        numpy.array([10] * 2),
+        numpy.array([0] * 2),
+        numpy.array([3] * 2),
+        numpy.array([31764] * 2)
+    )
+    numpy.testing.assert_array_equal(numpy.round(gs, 2), numpy.array([167.23] * 2))
 
-    assert round(wl_measures_statistical_significance.log_likelihood_ratio_test(main, 10, 0, 3, 31764)[0], 2) == 167.23
-
-    assert wl_measures_statistical_significance.log_likelihood_ratio_test(main, 1, 1, 1, 1) == (0, 1)
-    assert wl_measures_statistical_significance.log_likelihood_ratio_test(main, 0, 0, 0, 0) == (0, 1)
+    gs, p_vals = wl_measures_statistical_significance.log_likelihood_ratio_test(
+        main,
+        numpy.array([1, 0]),
+        numpy.array([1, 0]),
+        numpy.array([1, 0]),
+        numpy.array([1, 0])
+    )
+    numpy.testing.assert_array_equal(gs, numpy.array([0, 0]))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1, 1]))
 
 # References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil (p. 238)
 def test_mann_whitney_u_test():
-    u1 = wl_measures_statistical_significance.mann_whitney_u_test(
+    u1s, _ = wl_measures_statistical_significance.mann_whitney_u_test(
         main,
-        [12, 15, 18, 24, 88],
-        [3, 3, 13, 27, 33]
-    )[0]
+        numpy.array([[12, 15, 18, 24, 88]] * 2),
+        numpy.array([[3, 3, 13, 27, 33]] * 2)
+    )
 
-    assert 5 * (5 + 1) / 2 + u1 == 31
+    numpy.testing.assert_array_equal(5 * (5 + 1) / 2 + u1s, numpy.array([31] * 2))
 
-    assert wl_measures_statistical_significance.mann_whitney_u_test(main, [0] * 5, [0] * 5) == (12.5, 1)
+    numpy.testing.assert_array_equal(
+        wl_measures_statistical_significance.mann_whitney_u_test(
+            main,
+            numpy.array([[0] * 5] * 2),
+            numpy.array([[0] * 5] * 2)
+        ),
+        (numpy.array([12.5] * 2), numpy.array([1] * 2))
+    )
 
 # References:
 #     Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74. (p. 73)
 #     Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188-200). The South–Central Regional SAS Users' Group. (p. 10)
 def test_pearsons_chi_squared_test():
-    main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = False
+    settings['pearsons_chi_squared_test']['apply_correction'] = False
+    chi2s, _ = wl_measures_statistical_significance.pearsons_chi_squared_test(
+        main,
+        numpy.array([3] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([31774] * 2)
+    )
+    numpy.testing.assert_array_equal(numpy.round(chi2s), numpy.array([31777] * 2))
 
-    assert round(wl_measures_statistical_significance.pearsons_chi_squared_test(main, 3, 0, 0, 31774)[0], 0) == 31777
+    settings['pearsons_chi_squared_test']['apply_correction'] = True
+    chi2s, p_vals = wl_measures_statistical_significance.pearsons_chi_squared_test(
+        main,
+        numpy.array([1] * 2),
+        numpy.array([3] * 2),
+        numpy.array([3] * 2),
+        numpy.array([1] * 2)
+    )
+    numpy.testing.assert_array_equal(chi2s, numpy.array([0.5] * 2))
+    numpy.testing.assert_array_equal(numpy.round(p_vals, 2), numpy.array([0.48] * 2))
 
-    # With Yates's correction for continuity
-    main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction'] = True
-
-    assert wl_measures_statistical_significance.pearsons_chi_squared_test(main, 1, 3, 3, 1)[0] == 0.5
-    assert round(wl_measures_statistical_significance.pearsons_chi_squared_test(main, 1, 3, 3, 1)[1], 2) == 0.48
-
-    assert wl_measures_statistical_significance.pearsons_chi_squared_test(main, 0, 0, 0, 0) == (0, 1)
+    chi2s, p_vals = wl_measures_statistical_significance.pearsons_chi_squared_test(
+        main,
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2)
+    )
+    numpy.testing.assert_array_equal(chi2s, numpy.array([0] * 2))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
 # Manning, C. D., & Schütze, H. (1999). Foundations of statistical natural language processing. MIT Press. (pp. 164-165)
 def test_students_t_test_1_sample():
-    assert round(wl_measures_statistical_significance.students_t_test_1_sample(main, 8, 15828 - 8, 4675 - 8, 14307668 - 15828 - 4675 + 8)[0], 6) == 0.999932
+    t_stats, _ = wl_measures_statistical_significance.students_t_test_1_sample(
+        main,
+        numpy.array([8] * 2),
+        numpy.array([15828 - 8] * 2),
+        numpy.array([4675 - 8] * 2),
+        numpy.array([14307668 - 15828 - 4675 + 8] * 2)
+    )
+    numpy.testing.assert_array_equal(numpy.round(t_stats, 6), numpy.array([0.999932] * 2))
 
-    assert wl_measures_statistical_significance.students_t_test_1_sample(main, 0, 1, 1, 2) == (0, 1)
-    assert wl_measures_statistical_significance.students_t_test_1_sample(main, 0, 0, 0, 0) == (0, 1)
+    t_stats, p_vals = wl_measures_statistical_significance.students_t_test_1_sample(
+        main,
+        numpy.array([0, 0]),
+        numpy.array([1, 1]),
+        numpy.array([1, 1]),
+        numpy.array([2, 1])
+    )
+    numpy.testing.assert_array_equal(t_stats, numpy.array([0, 0]))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1, 1]))
 
 def test__students_t_test_2_sample_alt():
     assert wl_measures_statistical_significance._students_t_test_2_sample_alt('Two-tailed') == 'two-sided'
@@ -100,19 +198,55 @@ def test__students_t_test_2_sample_alt():
     assert wl_measures_statistical_significance._students_t_test_2_sample_alt('Right-tailed') == 'greater'
 
 def test_students_t_test_2_sample():
-    assert wl_measures_statistical_significance.students_t_test_2_sample(main, [0] * 5, [0] * 5) == (0, 1)
+    t_stats, p_vals = wl_measures_statistical_significance.students_t_test_2_sample(
+        main,
+        numpy.array([[0] * 5] * 2),
+        numpy.array([[0] * 5] * 2)
+    )
+
+    numpy.testing.assert_array_equal(t_stats, numpy.array([0] * 2))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
 def test_welchs_t_test():
-    assert wl_measures_statistical_significance.welchs_t_test(main, [0] * 5, [0] * 5) == (0, 1)
+    t_stats, p_vals = wl_measures_statistical_significance.welchs_t_test(
+        main,
+        numpy.array([[0] * 5] * 2),
+        numpy.array([[0] * 5] * 2)
+    )
+
+    numpy.testing.assert_array_equal(t_stats, numpy.array([0] * 2))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
 def test__z_score_p_val():
-    assert wl_measures_statistical_significance._z_score_p_val(0, 'Two-tailed') == 1
+    numpy.testing.assert_array_equal(
+        wl_measures_statistical_significance._z_score_p_val(numpy.array([0] * 2), 'Two-tailed'),
+        numpy.array([1] * 2)
+    )
 
 def test_z_score():
-    assert wl_measures_statistical_significance.z_score(main, 0, 0, 0, 0) == (0, 1)
+    z_scores, p_vals = wl_measures_statistical_significance.z_score(
+        main,
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2)
+    )
+
+    numpy.testing.assert_array_equal(z_scores, numpy.array([0] * 2))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
 def test_z_score_berry_rogghe():
-    assert wl_measures_statistical_significance.z_score_berry_rogghe(main, 0, 0, 0, 0, 5) == (0, 1)
+    z_scores, p_vals = wl_measures_statistical_significance.z_score_berry_rogghe(
+        main,
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        numpy.array([0] * 2),
+        span = 5
+    )
+
+    numpy.testing.assert_array_equal(z_scores, numpy.array([0] * 2))
+    numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
 if __name__ == '__main__':
     test_get_freqs_marginal()
@@ -123,8 +257,11 @@ if __name__ == '__main__':
     test_mann_whitney_u_test()
     test_pearsons_chi_squared_test()
     test_students_t_test_1_sample()
+
     test__students_t_test_2_sample_alt()
     test_students_t_test_2_sample()
+    test_welchs_t_test()
+
     test__z_score_p_val()
     test_z_score()
     test_z_score_berry_rogghe()

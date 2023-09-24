@@ -16,6 +16,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import numpy
+
 from tests import wl_test_init
 from wordless.wl_measures import wl_measure_utils
 
@@ -94,6 +96,36 @@ def test_to_freqs_sections_bayes_factor():
         measure_bayes_factor = 'students_t_test_2_sample'
     ) == FREQS_SECTIONS_2_SAMPLE_RELATIVE
 
+def test_numpy_divide():
+    numpy.testing.assert_array_equal(
+        wl_measure_utils.numpy_divide(numpy.array([1] * 10), numpy.array([0] * 10)),
+        numpy.array([0] * 10)
+    )
+    numpy.testing.assert_array_equal(
+        wl_measure_utils.numpy_divide(numpy.array([1] * 10), numpy.array([0] * 10), default = 1),
+        numpy.array([1] * 10)
+    )
+
+def test_numpy_log():
+    numpy.testing.assert_array_equal(
+        wl_measure_utils.numpy_log(numpy.array([0] * 10)),
+        numpy.array([0] * 10)
+    )
+    numpy.testing.assert_array_equal(
+        wl_measure_utils.numpy_log(numpy.array([0] * 10), default = 1),
+        numpy.array([1] * 10)
+    )
+
+def test_numpy_log2():
+    numpy.testing.assert_array_equal(
+        wl_measure_utils.numpy_log2(numpy.array([0] * 10)),
+        numpy.array([0] * 10)
+    )
+    numpy.testing.assert_array_equal(
+        wl_measure_utils.numpy_log2(numpy.array([0] * 10), default = 1),
+        numpy.array([1] * 10)
+    )
+
 if __name__ == '__main__':
     test_to_measure_code()
     test_to_measure_text()
@@ -105,3 +137,7 @@ if __name__ == '__main__':
     test_to_freqs_sections_2_sample()
     test_to_freqs_sections_statistical_significance()
     test_to_freqs_sections_bayes_factor()
+
+    test_numpy_divide()
+    test_numpy_log()
+    test_numpy_log2()

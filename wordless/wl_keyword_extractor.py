@@ -758,6 +758,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             keywords_freq_file_ref = self.keywords_freq_files[0]
             keywords_all = self.keywords_freq_files[-1].keys()
+            num_keywords_all = len(keywords_all)
 
             for i, text in enumerate(texts):
                 if any((func_statistical_significance, func_bayes_factor, func_effect_size)):
@@ -785,38 +786,78 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                             measure_bayes_factor = measure_bayes_factor
                         )
 
-                    for token in keywords_all:
-                        c11 = keywords_freq_file_observed.get(token, 0)
-                        c12 = keywords_freq_file_ref.get(token, 0)
-                        c21 = len_tokens_observed - c11
-                        c22 = len_tokens_ref - c12
+                    o11s = numpy.empty(shape = num_keywords_all, dtype = float)
+                    o12s = numpy.empty(shape = num_keywords_all, dtype = float)
+                    o21s = numpy.empty(shape = num_keywords_all, dtype = float)
+                    o22s = numpy.empty(shape = num_keywords_all, dtype = float)
 
-                        # Test Statistic & p-value
-                        if test_statistical_significance == 'none':
-                            keywords_stats_file[token] = [None, None]
-                        else:
-                            if to_sections_statistical_significance:
-                                keywords_stats_file[token] = list(func_statistical_significance(self.main, *freqs_sections_tokens_statistical_significance[token]))
-                            else:
-                                keywords_stats_file[token] = list(func_statistical_significance(self.main, c11, c12, c21, c22))
+                    for i, token in enumerate(keywords_all):
+                        o11s[i] = keywords_freq_file_observed.get(token, 0)
+                        o12s[i] = keywords_freq_file_ref.get(token, 0)
+                        o21s[i] = len_tokens_observed - o11s[i]
+                        o22s[i] = len_tokens_ref - o12s[i]
 
-                        # Bayes Factor
-                        if measure_bayes_factor == 'none':
-                            keywords_stats_file[token].append(None)
-                        else:
-                            if to_sections_bayes_factor:
-                                keywords_stats_file[token].append(func_bayes_factor(self.main, *freqs_sections_tokens_bayes_factor[token]))
-                            else:
-                                keywords_stats_file[token].append(func_bayes_factor(self.main, c11, c12, c21, c22))
+                    if to_sections_statistical_significance:
+                        freqs_x1s_statistical_significance = []
+                        freqs_x2s_statistical_significance = []
 
-                        # Effect Size
-                        if measure_effect_size == 'none':
-                            keywords_stats_file[token].append(None)
+                        for token in keywords_all:
+                            freqs_x1, freqs_x2 = freqs_sections_tokens_statistical_significance[token]
+
+                            freqs_x1s_statistical_significance.append(freqs_x1)
+                            freqs_x2s_statistical_significance.append(freqs_x2)
+
+                        freqs_x1s_statistical_significance = numpy.array(freqs_x1s_statistical_significance, dtype = float)
+                        freqs_x2s_statistical_significance = numpy.array(freqs_x2s_statistical_significance, dtype = float)
+
+                    if to_sections_bayes_factor:
+                        freqs_x1s_bayes_factor = []
+                        freqs_x2s_bayes_factor = []
+
+                        for token in keywords_all:
+                            freqs_x1, freqs_x2 = freqs_sections_tokens_bayes_factor[token]
+
+                            freqs_x1s_bayes_factor.append(freqs_x1)
+                            freqs_x2s_bayes_factor.append(freqs_x2)
+
+                        freqs_x1s_bayes_factor = numpy.array(freqs_x1s_bayes_factor, dtype = float)
+                        freqs_x2s_bayes_factor = numpy.array(freqs_x2s_bayes_factor, dtype = float)
+
+                    # Test Statistic & p-value
+                    if test_statistical_significance == 'none':
+                        test_stats = [None] * num_keywords_all
+                        p_vals = [None] * num_keywords_all
+                    else:
+                        if to_sections_statistical_significance:
+                            test_stats, p_vals = func_statistical_significance(self.main, freqs_x1s_statistical_significance, freqs_x2s_statistical_significance)
                         else:
-                            keywords_stats_file[token].append(func_effect_size(self.main, c11, c12, c21, c22))
+                            test_stats, p_vals = func_statistical_significance(self.main, o11s, o12s, o21s, o22s)
+
+                    # Bayes Factor
+                    if measure_bayes_factor == 'none':
+                        bayes_factors = [None] * num_keywords_all
+                    else:
+                        if to_sections_bayes_factor:
+                            bayes_factors = func_bayes_factor(self.main, freqs_x1s_bayes_factor, freqs_x2s_bayes_factor)
+                        else:
+                            bayes_factors = func_bayes_factor(self.main, o11s, o12s, o21s, o22s)
+
+                    # Effect Size
+                    if measure_effect_size == 'none':
+                        effect_sizes = [None] * num_keywords_all
+                    else:
+                        effect_sizes = func_effect_size(self.main, o11s, o12s, o21s, o22s)
+
+                    for i, token in enumerate(keywords_all):
+                        keywords_stats_file[token] = [
+                            test_stats[i],
+                            p_vals[i],
+                            bayes_factors[i],
+                            effect_sizes[i]
+                        ]
                 else:
                     keywords_stats_file = {
-                        token: [None, None, None, None]
+                        token: [None] * 4
                         for token in keywords_all
                     }
 

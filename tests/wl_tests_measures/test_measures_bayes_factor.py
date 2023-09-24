@@ -16,16 +16,34 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import numpy
+
 from tests import wl_test_init
 from wordless.wl_measures import wl_measures_bayes_factor
 
 main = wl_test_init.Wl_Test_Main()
 
 def test_bayes_factor_log_likelihood_ratio_test():
-    assert wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test(main, 0, 0, 0, 0) == 0
+    numpy.testing.assert_array_equal(
+        wl_measures_bayes_factor.bayes_factor_log_likelihood_ratio_test(
+            main,
+            numpy.array([0] * 2),
+            numpy.array([0] * 2),
+            numpy.array([0] * 2),
+            numpy.array([0] * 2)
+        ),
+        numpy.array([0] * 2)
+    )
 
 def test_bayes_factor_students_t_test_2_sample():
-    assert wl_measures_bayes_factor.bayes_factor_students_t_test_2_sample(main, [0] * 5, [0] * 5) == 0
+    numpy.testing.assert_array_equal(
+        wl_measures_bayes_factor.bayes_factor_students_t_test_2_sample(
+            main,
+            numpy.array([[0] * 5] * 2),
+            numpy.array([[0] * 5] * 2),
+        ),
+        numpy.array([0] * 2)
+    )
 
 if __name__ == '__main__':
     test_bayes_factor_log_likelihood_ratio_test()
