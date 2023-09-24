@@ -18,6 +18,7 @@
 
 import collections
 
+import numpy
 from PyQt5.QtCore import QCoreApplication
 
 from wordless.wl_nlp import wl_nlp_utils
@@ -118,3 +119,21 @@ def to_freqs_sections_bayes_factor(main, items_to_search, items_x1, items_x2, me
         use_data = main.settings_custom['measures']['bayes_factor']['students_t_test_2_sample']['use_data']
 
     return to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_sub_sections, use_data)
+
+def numpy_divide(a, b, default = 0):
+    if default:
+        return numpy.divide(a, b, out = numpy.full_like(b, default, dtype = float), where = b > 0)
+    else:
+        return numpy.divide(a, b, out = numpy.zeros_like(b, dtype = float), where = b > 0)
+
+def numpy_log(a, default = 0):
+    if default:
+        return numpy.log(a, out = numpy.full_like(a, default, dtype = float), where = a > 0)
+    else:
+        return numpy.log(a, out = numpy.zeros_like(a, dtype = float), where = a > 0)
+
+def numpy_log2(a, default = 0):
+    if default:
+        return numpy.log2(a, out = numpy.full_like(a, default, dtype = float), where = a > 0)
+    else:
+        return numpy.log2(a, out = numpy.zeros_like(a, dtype = float), where = a > 0)

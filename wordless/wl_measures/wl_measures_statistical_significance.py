@@ -16,53 +16,53 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# pylint: disable=unused-variable, unused-argument
+# pylint: disable=unused-argument
 
 import numpy
 from PyQt5.QtCore import QCoreApplication
 import scipy.stats
 
+from wordless.wl_measures import wl_measure_utils
+
 _tr = QCoreApplication.translate
 
-def get_freqs_marginal(c11, c12, c21, c22):
-    freqs = numpy.array([[c11, c12], [c21, c22]], dtype = numpy.int64)
-    m1, m2 = scipy.stats.contingency.margins(freqs) # pylint: disable=unbalanced-tuple-unpacking
+def get_freqs_marginal(o11s, o12s, o21s, o22s):
+    o1xs = o11s + o12s
+    o2xs = o21s + o22s
+    ox1s = o11s + o21s
+    ox2s = o12s + o22s
 
-    c1x = int(m1[0][0])
-    c2x = int(m1[1][0])
-    cx1 = int(m2[0][0])
-    cx2 = int(m2[0][1])
+    return o1xs, o2xs, ox1s, ox2s
 
-    return c1x, c2x, cx1, cx2
+def get_freqs_expected(o11s, o12s, o21s, o22s):
+    o1xs, o2xs, ox1s, ox2s = get_freqs_marginal(o11s, o12s, o21s, o22s)
+    oxxs = o1xs + o2xs
 
-def get_freqs_expected(c11, c12, c21, c22):
-    freqs = numpy.array([[c11, c12], [c21, c22]], dtype = numpy.int64)
+    e11s = wl_measure_utils.numpy_divide(o1xs * ox1s, oxxs)
+    e12s = wl_measure_utils.numpy_divide(o1xs * ox2s, oxxs)
+    e21s = wl_measure_utils.numpy_divide(o2xs * ox1s, oxxs)
+    e22s = wl_measure_utils.numpy_divide(o2xs * ox2s, oxxs)
 
-    if numpy.sum(freqs) > 0:
-        freqs_expected = scipy.stats.contingency.expected_freq(freqs)
-    else:
-        freqs_expected = [[0, 0], [0, 0]]
-
-    e11 = float(freqs_expected[0][0])
-    e12 = float(freqs_expected[0][1])
-    e21 = float(freqs_expected[1][0])
-    e22 = float(freqs_expected[1][1])
-
-    return e11, e12, e21, e22
+    return e11s, e12s, e21s, e22s
 
 # Do not over-correct when the difference between observed and expected value is small than 0.5
 # Reference: https://github.com/scipy/scipy/issues/13875
-def yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22):
-    c11 = c11 + min(0.5, numpy.abs(e11 - c11)) if e11 > c11 else c11 - min(0.5, numpy.abs(e11 - c11))
-    c12 = c12 + min(0.5, numpy.abs(e12 - c12)) if e12 > c12 else c12 - min(0.5, numpy.abs(e12 - c12))
-    c21 = c21 + min(0.5, numpy.abs(e21 - c21)) if e21 > c21 else c21 - min(0.5, numpy.abs(e21 - c21))
-    c22 = c22 + min(0.5, numpy.abs(e22 - c22)) if e22 > c22 else c22 - min(0.5, numpy.abs(e22 - c22))
+def yatess_correction(o11s, o12s, o21s, o22s, e11s, e12s, e21s, e22s):
+    e_o_diffs_11 = e11s - o11s
+    e_o_diffs_12 = e12s - o12s
+    e_o_diffs_21 = e21s - o21s
+    e_o_diffs_22 = e22s - o22s
 
-    return c11, c12, c21, c22
+    o11s = numpy.where(numpy.abs(e_o_diffs_11) > 0.5, o11s + 0.5 * numpy.sign(e_o_diffs_11), e11s)
+    o12s = numpy.where(numpy.abs(e_o_diffs_12) > 0.5, o12s + 0.5 * numpy.sign(e_o_diffs_12), e12s)
+    o21s = numpy.where(numpy.abs(e_o_diffs_21) > 0.5, o21s + 0.5 * numpy.sign(e_o_diffs_21), e21s)
+    o22s = numpy.where(numpy.abs(e_o_diffs_22) > 0.5, o22s + 0.5 * numpy.sign(e_o_diffs_22), e22s)
+
+    return o11s, o12s, o21s, o22s
 
 # Fisher's Exact Test
 # References: Pedersen, T. (1996). Fishing for exactness. In T. Winn (Ed.), Proceedings of the Sixth Annual South-Central Regional SAS Users' Group Conference (pp. 188–200). The South–Central Regional SAS Users' Group.
-def fishers_exact_test(main, c11, c12, c21, c22):
+def fishers_exact_test(main, o11s, o12s, o21s, o22s):
     direction = main.settings_custom['measures']['statistical_significance']['fishers_exact_test']['direction']
 
     if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
@@ -72,45 +72,39 @@ def fishers_exact_test(main, c11, c12, c21, c22):
     elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
         alternative = 'greater'
 
-    p_val = scipy.stats.fisher_exact([[c11, c12], [c21, c22]], alternative = alternative)[1]
+    p_vals = numpy.array([
+        scipy.stats.fisher_exact([[o11, o12], [o21, o22]], alternative = alternative)[1]
+        for o11, o12, o21, o22 in zip(o11s, o12s, o21s, o22s)
+    ])
 
-    return None, p_val
+    return [None] * len(p_vals), p_vals
 
 # Log-likelihood Ratio
 # References: Dunning, T. E. (1993). Accurate methods for the statistics of surprise and coincidence. Computational Linguistics, 19(1), 61–74.
-def log_likelihood_ratio_test(main, c11, c12, c21, c22):
+def log_likelihood_ratio_test(main, o11s, o12s, o21s, o22s):
     apply_correction = main.settings_custom['measures']['statistical_significance']['log_likelihood_ratio_test']['apply_correction']
 
-    if c11 and c12 and c21 and c22:
-        log_likelihood_ratio, p_val, _, _ = scipy.stats.chi2_contingency(
-            [[c11, c12], [c21, c22]],
-            correction = apply_correction,
-            lambda_='log-likelihood'
-        )
-    else:
-        e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
+    e11s, e12s, e21s, e22s = get_freqs_expected(o11s, o12s, o21s, o22s)
 
-        if apply_correction:
-            c11, c12, c21, c22 = yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22)
+    if apply_correction:
+        o11s, o12s, o21s, o22s = yatess_correction(o11s, o12s, o21s, o22s, e11s, e12s, e21s, e22s)
 
-        log_likelihood_ratio_11 = c11 * numpy.log(c11 / e11) if c11 else 0
-        log_likelihood_ratio_12 = c12 * numpy.log(c12 / e12) if c12 else 0
-        log_likelihood_ratio_21 = c21 * numpy.log(c21 / e21) if c21 else 0
-        log_likelihood_ratio_22 = c22 * numpy.log(c22 / e22) if c22 else 0
+    gs_11 = o11s * wl_measure_utils.numpy_log(wl_measure_utils.numpy_divide(o11s, e11s))
+    gs_12 = o12s * wl_measure_utils.numpy_log(wl_measure_utils.numpy_divide(o12s, e12s))
+    gs_21 = o21s * wl_measure_utils.numpy_log(wl_measure_utils.numpy_divide(o21s, e21s))
+    gs_22 = o22s * wl_measure_utils.numpy_log(wl_measure_utils.numpy_divide(o22s, e22s))
 
-        log_likelihood_ratio = 2 * (
-            log_likelihood_ratio_11
-            + log_likelihood_ratio_12
-            + log_likelihood_ratio_21
-            + log_likelihood_ratio_22
-        )
-        p_val = scipy.stats.distributions.chi2.sf(log_likelihood_ratio, 1)
+    gs = 2 * (gs_11 + gs_12 + gs_21 + gs_22)
+    p_vals = numpy.array([
+        scipy.stats.distributions.chi2.sf(g, 1)
+        for g in gs
+    ])
 
-    return log_likelihood_ratio, p_val
+    return gs, p_vals
 
 # Mann-Whitney U Test
 # References: Kilgarriff, A. (2001). Comparing corpora. International Journal of Corpus Linguistics, 6(1), 232–263. https://doi.org/10.1075/ijcl.6.1.05kil
-def mann_whitney_u_test(main, freqs_x1, freqs_x2):
+def mann_whitney_u_test(main, freqs_x1s, freqs_x2s):
     direction = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['direction']
     apply_correction = main.settings_custom['measures']['statistical_significance']['mann_whitney_u_test']['apply_correction']
 
@@ -121,60 +115,69 @@ def mann_whitney_u_test(main, freqs_x1, freqs_x2):
     elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
         alternative = 'greater'
 
-    u1, p = scipy.stats.mannwhitneyu(
-        freqs_x1, freqs_x2,
-        use_continuity = apply_correction,
-        alternative = alternative
-    )
+    num_types = len(freqs_x1s)
+    u1s = numpy.empty(shape = num_types, dtype = numpy.float64)
+    p_vals = numpy.empty(shape = num_types, dtype = numpy.float64)
 
-    return u1, p
+    for i, (freqs_x1, freqs_x2) in enumerate(zip(freqs_x1s, freqs_x2s)):
+        u1, p_val = scipy.stats.mannwhitneyu(
+            freqs_x1, freqs_x2,
+            use_continuity = apply_correction,
+            alternative = alternative
+        )
+
+        u1s[i] = u1
+        p_vals[i] = p_val
+
+    return u1s, p_vals
 
 # Pearson's Chi-squared Test
 # References:
 #     Hofland, K., & Johanson, S. (1982). Word frequencies in British and American English. Norwegian Computing Centre for the Humanities.
 #     Oakes, M. P. (1998). Statistics for Corpus Linguistics. Edinburgh University Press.
-def pearsons_chi_squared_test(main, c11, c12, c21, c22):
+def pearsons_chi_squared_test(main, o11s, o12s, o21s, o22s):
     apply_correction = main.settings_custom['measures']['statistical_significance']['pearsons_chi_squared_test']['apply_correction']
 
-    if c11 and c12 and c21 and c22:
-        chi_squared, p_val, _, _ = scipy.stats.chi2_contingency(
-            [[c11, c12], [c21, c22]],
-            correction = apply_correction
-        )
-    else:
-        e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
+    e11s, e12s, e21s, e22s = get_freqs_expected(o11s, o12s, o21s, o22s)
 
-        if apply_correction:
-            c11, c12, c21, c22 = yatess_correction(c11, c12, c21, c22, e11, e12, e21, e22)
+    if apply_correction:
+        o11s, o12s, o21s, o22s = yatess_correction(o11s, o12s, o21s, o22s, e11s, e12s, e21s, e22s)
 
-        chi_squared_11 = (c11 - e11) ** 2 / e11 if e11 else 0
-        chi_squared_12 = (c12 - e12) ** 2 / e12 if e12 else 0
-        chi_squared_21 = (c21 - e21) ** 2 / e21 if e21 else 0
-        chi_squared_22 = (c22 - e22) ** 2 / e22 if e22 else 0
+    chi2s_11 = wl_measure_utils.numpy_divide((o11s - e11s) ** 2, e11s)
+    chi2s_12 = wl_measure_utils.numpy_divide((o12s - e12s) ** 2, e12s)
+    chi2s_21 = wl_measure_utils.numpy_divide((o21s - e21s) ** 2, e21s)
+    chi2s_22 = wl_measure_utils.numpy_divide((o22s - e22s) ** 2, e22s)
 
-        chi_squared = chi_squared_11 + chi_squared_12 + chi_squared_21 + chi_squared_22
-        p_val = scipy.stats.distributions.chi2.sf(chi_squared, 1)
+    chi2s = chi2s_11 + chi2s_12 + chi2s_21 + chi2s_22
+    p_vals = numpy.array([
+        scipy.stats.distributions.chi2.sf(chi2, 1)
+        for chi2 in chi2s
+    ])
 
-    return chi_squared, p_val
+    return chi2s, p_vals
 
 # Student's t-test (1-sample)
 # References: Church, K., Gale, W., Hanks, P., & Hindle, D. (1991). Using statistics in lexical analysis. In U. Zernik (Ed.), Lexical acquisition: Exploiting on-line resources to build a lexicon (pp. 115–164). Psychology Press.
-def students_t_test_1_sample(main, c11, c12, c21, c22):
+def students_t_test_1_sample(main, o11s, o12s, o21s, o22s):
     direction = main.settings_custom['measures']['statistical_significance']['students_t_test_1_sample']['direction']
 
-    cxx = c11 + c12 + c21 + c22
-    e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
+    oxxs = o11s + o12s + o21s + o22s
+    e11s, _, _, _ = get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    t_stat = (c11 - e11) / numpy.sqrt(c11 * (1 - c11 / cxx)) if c11 else 0
+    t_stats = wl_measure_utils.numpy_divide(o11s - e11s, numpy.sqrt(o11s * (1 - wl_measure_utils.numpy_divide(o11s, oxxs))))
+    p_vals = numpy.empty_like(t_stats)
 
     if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
-        p_val = scipy.stats.distributions.t.sf(numpy.abs(t_stat), cxx - 1) * 2 if cxx > 1 else 1
+        for i, (oxx, t_stat) in enumerate(zip(oxxs, t_stats)):
+            p_vals[i] = scipy.stats.distributions.t.sf(numpy.abs(t_stat), oxx - 1) * 2 if oxx > 1 else 1
     elif direction == _tr('wl_measures_statistical_significance', 'Left-tailed'):
-        p_val = scipy.stats.distributions.t.cdf(t_stat, cxx - 1) if cxx > 1 else 1
+        for i, (oxx, t_stat) in enumerate(zip(oxxs, t_stats)):
+            p_vals[i] = scipy.stats.distributions.t.cdf(t_stat, oxx - 1) if oxx > 1 else 1
     elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
-        p_val = scipy.stats.distributions.t.sf(t_stat, cxx - 1) if cxx > 1 else 1
+        for i, (oxx, t_stat) in enumerate(zip(oxxs, t_stats)):
+            p_vals[i] = scipy.stats.distributions.t.sf(t_stat, oxx - 1) if oxx > 1 else 1
 
-    return t_stat, p_val
+    return t_stats, p_vals
 
 def _students_t_test_2_sample_alt(direction):
     if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
@@ -188,70 +191,86 @@ def _students_t_test_2_sample_alt(direction):
 
 # Student's t-test (2-sample)
 # References: Paquot, M., & Bestgen, Y. (2009). Distinctive words in academic writing: A comparison of three statistical tests for keyword extraction. Language and Computers, 68, 247–269.
-def students_t_test_2_sample(main, freqs_x1, freqs_x2):
+def students_t_test_2_sample(main, freqs_x1s, freqs_x2s):
     direction = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['direction']
     alt = _students_t_test_2_sample_alt(direction)
 
-    if any(freqs_x1) or any(freqs_x2):
-        t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = True, alternative = alt)
-    else:
-        t_stat = 0
-        p_val = 1
+    num_types = len(freqs_x1s)
+    t_stats = numpy.empty(shape = num_types, dtype = numpy.float64)
+    p_vals = numpy.empty(shape = num_types, dtype = numpy.float64)
 
-    return t_stat, p_val
+    for i, (freqs_x1, freqs_x2) in enumerate(zip(freqs_x1s, freqs_x2s)):
+        if any(freqs_x1) or any(freqs_x2):
+            t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = True, alternative = alt)
+        else:
+            t_stat = 0
+            p_val = 1
 
-def welchs_t_test(main, freqs_x1, freqs_x2):
+        t_stats[i] = t_stat
+        p_vals[i] = p_val
+
+    return t_stats, p_vals
+
+def welchs_t_test(main, freqs_x1s, freqs_x2s):
     direction = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['direction']
     alt = _students_t_test_2_sample_alt(direction)
 
-    if any(freqs_x1) or any(freqs_x2):
-        t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = False, alternative = alt)
-    else:
-        t_stat = 0
-        p_val = 1
+    num_types = len(freqs_x1s)
+    t_stats = numpy.empty(shape = num_types, dtype = numpy.float64)
+    p_vals = numpy.empty(shape = num_types, dtype = numpy.float64)
 
-    return t_stat, p_val
+    for i, (freqs_x1, freqs_x2) in enumerate(zip(freqs_x1s, freqs_x2s)):
+        if any(freqs_x1) or any(freqs_x2):
+            t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = False, alternative = alt)
+        else:
+            t_stat = 0
+            p_val = 1
 
-def _z_score_p_val(z_score, direction):
+        t_stats[i] = t_stat
+        p_vals[i] = p_val
+
+    return t_stats, p_vals
+
+def _z_score_p_val(z_scores, direction):
+    p_vals = numpy.empty_like(z_scores)
+
     if direction == _tr('wl_measures_statistical_significance', 'Two-tailed'):
-        p_val = scipy.stats.distributions.norm.sf(numpy.abs(z_score)) * 2
+        for i, z_score in enumerate(z_scores):
+            p_vals[i] = scipy.stats.distributions.norm.sf(numpy.abs(z_score)) * 2
     elif direction == _tr('wl_measures_statistical_significance', 'Left-tailed'):
-        p_val = scipy.stats.distributions.norm.cdf(z_score)
+        for i, z_score in enumerate(z_scores):
+            p_vals[i] = scipy.stats.distributions.norm.cdf(z_score)
     elif direction == _tr('wl_measures_statistical_significance', 'Right-tailed'):
-        p_val = scipy.stats.distributions.norm.sf(z_score)
+        for i, z_score in enumerate(z_scores):
+            p_vals[i] = scipy.stats.distributions.norm.sf(z_score)
 
-    return p_val
+    return p_vals
 
 # z-score
 # References: Dennis, S. F. (1964). The construction of a thesaurus automatically from a sample of text. In M. E. Stevens, V. E. Giuliano, & L. B. Heilprin (Eds.), Proceedings of the symposium on statistical association methods for mechanized documentation (pp. 61–148). National Bureau of Standards.
-def z_score(main, c11, c12, c21, c22):
+def z_score(main, o11s, o12s, o21s, o22s):
     direction = main.settings_custom['measures']['statistical_significance']['z_score']['direction']
 
-    cxx = c11 + c12 + c21 + c22
-    e11, e12, e21, e22 = get_freqs_expected(c11, c12, c21, c22)
+    oxxs = o11s + o12s + o21s + o22s
+    e11s, _, _, _ = get_freqs_expected(o11s, o12s, o21s, o22s)
 
-    z_score = (c11 - e11) / numpy.sqrt(e11 * (1 - e11 / cxx)) if cxx and e11 and 1 - e11 / cxx else 0
-    p_val = _z_score_p_val(z_score, direction)
+    z_scores = wl_measure_utils.numpy_divide(o11s - e11s, numpy.sqrt(e11s * (1 - wl_measure_utils.numpy_divide(e11s, oxxs))))
+    p_vals = _z_score_p_val(z_scores, direction)
 
-    return z_score, p_val
+    return z_scores, p_vals
 
 # z-score (Berry-Rogghe)
 # References: Berry-Rogghe, G. L. M. (1973). The computation of collocations and their relevance in lexical studies. In A. J. Aiken, R. W. Bailey, & N. Hamilton-Smith (Eds.), The computer and literary studies (pp. 103–112). Edinburgh University Press.
-def z_score_berry_rogghe(main, c11, c12, c21, c22, span):
+def z_score_berry_rogghe(main, o11s, o12s, o21s, o22s, span):
     direction = main.settings_custom['measures']['statistical_significance']['z_score_berry_rogghe']['direction']
 
-    c1x, c2x, cx1, cx2 = get_freqs_marginal(c11, c12, c21, c22)
+    o1xs, o2xs, ox1s, _ = get_freqs_marginal(o11s, o12s, o21s, o22s)
 
-    z = c1x + c2x
-    fn = c1x
-    fc = cx1
-    k = c11
-    s = span
+    zs = o1xs + o2xs
+    ps = wl_measure_utils.numpy_divide(ox1s, zs - o1xs, default = 1)
+    es = ps * o1xs * span
 
-    p = fc / (z - fn) if z - fn else 1
-    e = p * fn * s
+    z_scores = wl_measure_utils.numpy_divide(o11s - es, numpy.sqrt(es * (1 - ps)))
+    p_vals = _z_score_p_val(z_scores, direction)
 
-    z_score = (k - e) / numpy.sqrt(e * (1 - p)) if e and 1 - p else 0
-    p_val = _z_score_p_val(z_score, direction)
-
-    return z_score, p_val
+    return z_scores, p_vals
