@@ -62,17 +62,8 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
             test_word_tokenizers.append((lang, word_tokenizer))
             test_word_tokenizers_local.append((lang, word_tokenizer))
 
-print(test_word_tokenizers)
-
 @pytest.mark.parametrize('lang, word_tokenizer', test_word_tokenizers)
 def test_word_tokenize(lang, word_tokenizer):
-    # Do not use spaCy's or Stanza's models for sentence tokenization
-    if (
-        lang in main.settings_global['sentence_tokenizers']
-        and 'spacy_sentencizer' in main.settings_global['sentence_tokenizers'][lang]
-    ):
-        main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang] = 'spacy_sentencizer'
-
     sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
     tokens = wl_word_tokenization.wl_word_tokenize_flat(
         main,
@@ -209,7 +200,7 @@ def test_word_tokenize(lang, word_tokenizer):
         ]:
             assert tokens == ['日本語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注釈', '2', ']', '、', '英語', ':', 'Japanese', 'language', '）', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だっ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住者', 'を', '含む', '日本人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
         elif word_tokenizer == 'wordless_jpn_kanji':
-            assert tokens == ['日', '本', '語', '（にほんご', '、', 'にっぽん', 'ご', '[', '注', '釈', '2', ']', '、', '英', '語', ':', 'Japanese', 'language', '）は', '、', '日', '本', '国', '内', 'や', '、', 'かつて', 'の', '日', '本', '領', 'だっ', 'た', '国', '、', 'そして', '国', '外', '移', '民', 'や', '移', '住', '者', 'を', '含', 'む', '日', '本', '人', '同', '士', 'の', '間', 'で', '使', '用', 'さ', 'れ', 'て', 'いる', '言', '語', '。']
+            assert tokens == ['日', '本', '語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注', '釈', '2', ']', '、', '英', '語', ':', 'Japanese', 'language', '）', 'は', '、', '日', '本', '国', '内', 'や', '、', 'かつて', 'の', '日', '本', '領', 'だっ', 'た', '国', '、', 'そして', '国', '外', '移', '民', 'や', '移', '住', '者', 'を', '含', 'む', '日', '本', '人', '同', '士', 'の', '間', 'で', '使', '用', 'さ', 'れ', 'て', 'いる', '言', '語', '。']
         else:
             tests_lang_util_skipped = True
     elif lang == 'kan':
@@ -352,6 +343,33 @@ def test_word_tokenize(lang, word_tokenizer):
     if tests_lang_util_skipped:
         raise wl_test_init.Wl_Exception_Tests_Lang_Util_Skipped(word_tokenizer)
 
+def test_char_tokenizers():
+    for lang, char_tokenizer in zip(
+        ('zho_cn', 'jpn'),
+        ('wordless_zho_char', 'wordless_jpn_kanji')
+    ):
+        if lang == 'zho_cn':
+            sentence = '英国全称是United Kingdom of Great Britain，由四个部分组成：England、Scotland、Wales和Northern Ireland'
+        elif lang == 'jpn':
+            sentence = '''The meaning of "天気がいいから、散歩しましょう。" is: The weather is good so let's take a walk.'''
+
+        tokens = wl_word_tokenization.wl_word_tokenize_flat(
+            main,
+            text = sentence,
+            lang = lang,
+            word_tokenizer = char_tokenizer
+        )
+
+        print(f'{lang} / {char_tokenizer}:')
+        print(f'{tokens}\n')
+
+        if lang == 'zho_cn':
+            assert tokens == ['英', '国', '全', '称', '是', 'United', 'Kingdom', 'of', 'Great', 'Britain', '，', '由', '四', '个', '部', '分', '组', '成', '：', 'England', '、', 'Scotland', '、', 'Wales', '和', 'Northern', 'Ireland']
+        elif lang == 'jpn':
+            assert tokens == ['The', 'meaning', 'of', '``', '天', '気', 'が', 'いい', 'から', '、', '散', '歩', 'し', 'ましょう', '。', '``', 'is', ':', 'The', 'weather', 'is', 'good', 'so', 'let', "'s", 'take', 'a', 'walk', '.']
+
 if __name__ == '__main__':
     for lang, word_tokenizer in test_word_tokenizers_local:
         test_word_tokenize(lang, word_tokenizer)
+
+    test_char_tokenizers()

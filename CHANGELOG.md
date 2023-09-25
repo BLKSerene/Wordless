@@ -32,6 +32,8 @@
 - Utils: Speed up tests of statistical significance, measures of Bayes factor, and measures of effect size
 - Utils: Update NLTK's word tokenizers
 - Utils: Update spaCy's sentencizer
+- Utils: Update Wordless's Chinese character tokenizer and Japanese kanji tokenizer
+- Utils: Update Wordless's Chinese, Japanese, and Tibetan word detokenizer
 - Work Area: Update Profiler - Lexical Diversity - Mean Segmental TTR
 
 ### ❌ Removals
