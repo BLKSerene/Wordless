@@ -36,11 +36,6 @@ def test_is_punc():
     assert wl_checks_tokens.is_punc('.')
     assert not wl_checks_tokens.is_punc('a.')
 
-def test_is_eng():
-    assert wl_checks_tokens.is_eng('a')
-    assert wl_checks_tokens.is_eng('_')
-    assert not wl_checks_tokens.is_eng('测')
-
 def test_is_han():
     assert wl_checks_tokens.is_han('测')
     assert not wl_checks_tokens.is_han('a')
@@ -77,7 +72,6 @@ if __name__ == '__main__':
     test_is_num()
     test_is_punc()
 
-    test_is_eng()
     test_is_han()
     test_is_kana()
     test_is_tibetan()

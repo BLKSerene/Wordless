@@ -37,107 +37,92 @@ def wl_word_detokenize(main, tokens, lang):
 
     # Chinese
     if lang.startswith('zho_'):
-        non_cjk_start = 0
+        text_temp = []
 
-        for i, token in enumerate(tokens):
-            if i >= non_cjk_start:
-                if (
-                    wl_checks_tokens.has_han(token)
-                    or all(map(str.isnumeric, token))
-                ):
-                    text += token
+        for token in tokens:
+            if wl_checks_tokens.has_han(token):
+                if text_temp:
+                    text += wl_word_detokenize(
+                        main, text_temp,
+                        lang = 'other'
+                    )
 
-                    non_cjk_start += 1
-                else:
-                    # Non-Chinese
-                    for j, _ in enumerate(tokens[i:]):
-                        if (
-                            i + j + 1 == len(tokens)
-                            or wl_checks_tokens.has_han(tokens[i + j + 1])
-                        ):
-                            text += wl_word_detokenize(
-                                main,
-                                tokens = tokens[non_cjk_start : i + j + 1],
-                                lang = 'other'
-                            )
+                    text_temp.clear()
 
-                            non_cjk_start = i + j + 1
+                text += token
+            # Other languages
+            else:
+                text_temp.append(token)
 
-                            break
+        if text_temp:
+            text += wl_word_detokenize(
+                main, text_temp,
+                lang = 'other'
+            )
     # Japanese
     elif lang == 'jpn':
-        non_cjk_start = 0
+        text_temp = []
 
-        for i, token in enumerate(tokens):
-            if i < non_cjk_start:
-                continue
-
+        for token in tokens:
             if (
                 wl_checks_tokens.has_han(token)
                 or wl_checks_tokens.has_kana(token)
-                or all((char.isnumeric() for char in token))
             ):
+                if text_temp:
+                    text += wl_word_detokenize(
+                        main, text_temp,
+                        lang = 'other'
+                    )
+
+                    text_temp.clear()
+
                 text += token
-
-                non_cjk_start = i + 1
             else:
-                # Non-Japanese
-                for j, _ in enumerate(tokens[i:]):
-                    if (
-                        i + j + 1 == len(tokens)
-                        or wl_checks_tokens.has_han(tokens[i + j + 1])
-                        or wl_checks_tokens.has_kana(tokens[i + j + 1])
-                    ):
-                        text += wl_word_detokenize(
-                            main,
-                            tokens = tokens[non_cjk_start : i + j + 1],
-                            lang = 'other'
-                        )
+                text_temp.append(token)
 
-                        non_cjk_start = i + j + 1
-
-                        break
+        if text_temp:
+            text += wl_word_detokenize(
+                main, text_temp,
+                lang = 'other'
+            )
     # Thai
     elif lang == 'tha':
         text = pythainlp.tokenize.word_detokenize(pythainlp.tokenize.clause_tokenize(tokens))
     # Tibetan
     elif lang == 'bod':
-        non_tibetan_start = 0
+        text_temp = []
 
-        for i, token in enumerate(tokens):
-            if i < non_tibetan_start:
-                continue
-
+        for token in tokens:
             if wl_checks_tokens.has_tibetan(token):
-                # Check for Tibetan Mark Shad
-                # See: https://w3c.github.io/tlreq/#section_breaks
-                if i > 0 and text[-1] == '།' and token[0] == '།':
+                if text_temp:
+                    text += ' ' + wl_word_detokenize(
+                        main, text_temp,
+                        lang = 'other'
+                    ) + ' '
+
+                    text_temp.clear()
+
+                # See: https://w3c.github.io/tlreq/#whitespace
+                if token[0] == '།' and text and text[-1] in ['།', 'ཀ', 'ག']:
+                    text += ' ' + token
+                elif token[0] != '།' and text and text[-1] in ['།', '༎'] and text[-3] not in ['།', 'ཀ', 'ག']:
                     text += ' ' + token
                 else:
                     text += token
-
-                non_tibetan_start = i + 1
+            # Other languages
             else:
-                # Non-Tibetan
-                for j, _ in enumerate(tokens[i:]):
-                    if (
-                        i + j + 1 == len(tokens)
-                        or wl_checks_tokens.has_tibetan(tokens[i + j + 1])
-                    ):
-                        text += wl_word_detokenize(
-                            main,
-                            tokens = tokens[non_tibetan_start : i + j + 1],
-                            lang = 'other'
-                        )
+                text_temp.append(token)
 
-                        non_tibetan_start = i + j + 1
-
-                        break
-    # Other Languages
+        if text_temp:
+            text += wl_word_detokenize(
+                main, text_temp,
+                lang = 'other'
+            )
+    # Other languages
     else:
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
         text = main.__dict__[f'sacremoses_moses_detokenizer_{lang}'].detokenize(tokens)
 
-    text = re.sub(r'\s{2,}', ' ', text)
+    text = re.sub(r'\s{2,}', ' ', text).strip()
 
-    return text.strip()
+    return text

@@ -16,125 +16,112 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+# References:
+#     https://www.unicode.org/charts/nameslist/
+#     https://en.wikipedia.org/wiki/Unicode_block
+#     https://www.unicode.org/charts/index.html
 UNICODE_HAN = [
-    # CJK Radicals Supplement:
-    #     https://en.wikipedia.org/wiki/CJK_Radicals_Supplement
-    (0x2E80, 0x2EFF),
-    # Kangxi Radicals:
-    #     https://en.wikipedia.org/wiki/Kangxi_radical#Unicode
-    (0x2F00, 0X2FDF),
+    # CJK Radicals Supplement
+    (0x2E80, 0x2E99), (0x2E9B, 0x2EF3),
+    # Kangxi Radicals
+    (0x2F00, 0X2FD5),
     # Ideographic Description Characters
-    #     https://en.wikipedia.org/wiki/Ideographic_Description_Characters_(Unicode_block)
     (0x2FF0, 0x2FFF),
-    # CJK Symbols and Punctuation:
-    #     https://en.wikipedia.org/wiki/CJK_Symbols_and_Punctuation
-    (0x3000, 0x302D), (0x3030, 0x3030), (0x3036, 0x303F),
+    # CJK Symbols and Punctuation
+    (0x3000, 0x3003), (0x3005, 0x302D), (0x3030, 0x3030), (0x3036, 0x303F),
     # Bopomofo
-    #     https://en.wikipedia.org/wiki/Bopomofo_(Unicode_block)
-    (0x3100, 0x312F),
-    # Kanbun:
-    #     https://en.wikipedia.org/wiki/Kanbun_(Unicode_block)
+    (0x3105, 0x312F),
+    # Kanbun
     (0x3190, 0x319F),
-    # Bopomofo Extended:
-    #     https://en.wikipedia.org/wiki/Bopomofo_Extended
+    # Bopomofo Extended
     (0x31A0, 0x31BF),
     # CJK Strokes
-    #     https://en.wikipedia.org/wiki/CJK_Strokes_(Unicode_block)
-    (0x31C0, 0x31EF),
-    # Enclosed CJK Letters and Months:
-    #     https://en.wikipedia.org/wiki/Enclosed_CJK_Letters_and_Months
-    (0x3220, 0x325F), (0x3280, 0x32CF),
-    # CJK Compatibility:
-    #     https://en.wikipedia.org/wiki/CJK_Compatibility
+    (0x31C0, 0x31E3), (0x31EF, 0x31EF),
+    # Enclosed CJK Letters and Months
+    (0x3220, 0x325F), (0x3280, 0x32CF), (0x32FF, 0x32FF),
+    # CJK Compatibility
     (0x3358, 0x33FF),
-    # CJK Unified Ideographs Extension A:
-    #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_A
+    # CJK Unified Ideographs Extension A
     (0x3400, 0x4DBF),
-    # Yijing Hexagram Symbols:
-    #     https://en.wikipedia.org/wiki/Yijing_Hexagram_Symbols
+    # Yijing Hexagram Symbols
     (0x4DC0, 0x4DFF),
-    # CJK Unified Ideographs:
-    #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block)
+    # CJK Unified Ideographs
     (0x4E00, 0x9FFF),
-
-    # Yi Syllables:
-    #     https://en.wikipedia.org/wiki/Yi_Syllables
-    (0xA000, 0xA48F),
-    # Yi Radicals:
-    #     https://en.wikipedia.org/wiki/Yi_Radicals
-    (0xA490, 0xA4CF),
-    # Phags-pa:
-    #     https://en.wikipedia.org/wiki/Fraser_alphabet
-    (0xA840, 0xA87F),
-    # CJK Compatibility Ideographs:
-    #     https://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs
-    (0xF900, 0xFAFF),
-    # CJK Compatibility Forms:
-    #     https://en.wikipedia.org/wiki/CJK_Compatibility_Forms
+    # Yi Syllables
+    (0xA000, 0xA48C),
+    # Yi Radicals
+    (0xA490, 0xA4C6),
+    # Phags-pa
+    (0xA840, 0xA877),
+    # CJK Compatibility Ideographs
+    (0xF900, 0xFA6D), (0xFA70, 0xFAD9),
+    # CJK Compatibility Forms
     (0xFE30, 0xFE4F),
+    # Halfwidth and Fullwidth Forms
+    (0xFF01, 0xFF0F), (0xFF1A, 0xFF1F), (0xFF3B, 0xFF40), (0xFF5B, 0xFF64),
 
-    # Ideographic Symbols and Punctuation:
-    #     https://en.wikipedia.org/wiki/Ideographic_Symbols_and_Punctuation
-    (0x16FE0, 0x16FFF),
-    # Tangut:
-    #     https://en.wikipedia.org/wiki/Tangut_(Unicode_block)
-    (0x17000, 0x187FF),
-    # Tangut Components:
-    #     https://en.wikipedia.org/wiki/Tangut_Components
+    # Ideographic Symbols and Punctuation
+    (0x16FE0, 0x16FE4), (0x16FF0, 0x16FF1),
+    # Tangut
+    (0x17000, 0x187F7),
+    # Tangut Components
     (0x18800, 0x18AFF),
-    # Nushu:
-    #     https://en.wikipedia.org/wiki/Nushu_(Unicode_block)
-    (0x1B170, 0x1B2FF),
+    # Khitan Small Script
+    (0x18B00, 0x18CD5),
+    # Tangut Supplement
+    (0x18D00, 0x18D08),
+    # Nushu
+    (0x1B170, 0x1B2FB),
+    # Enclosed Ideographic Supplement
+    (0x1F210, 0x1F23B), (0x1F240, 0x1F248), (0x1F250, 0x1F251), (0x1F260, 0x1F265),
 
-    # CJK Unified Ideographs Extension B:
-    #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_B
+    # CJK Unified Ideographs Extension B
     (0x20000, 0x2A6DF),
-    # CJK Unified Ideographs Extension C:
-    #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_C
-    (0x2A700, 0x2B73F),
-    # CJK Unified Ideographs Extension D:
-    #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_D
-    (0x2B740, 0x2B81F),
-    # CJK Unified Ideographs Extension E:
-    #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_E
-    (0x2B820, 0x2CEAF),
-    # CJK Unified Ideographs Extension F:
-    #     https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_Extension_F
-    (0x2CEB0, 0x2EBEF),
-    # CJK Compatibility Ideographs Supplement:
-    #     https://en.wikipedia.org/wiki/CJK_Compatibility_Ideographs_Supplement
-    (0x2F800, 0x2FA1F)
+    # CJK Unified Ideographs Extension C
+    (0x2A700, 0x2B739),
+    # CJK Unified Ideographs Extension D
+    (0x2B740, 0x2B81D),
+    # CJK Unified Ideographs Extension E
+    (0x2B820, 0x2CEA1),
+    # CJK Unified Ideographs Extension F
+    (0x2CEB0, 0x2EBE0),
+    # CJK Unified Ideographs Extension I
+    (0x2EBF0, 0x2EE5D),
+    # CJK Compatibility Ideographs Supplement
+    (0x2F800, 0x2FA1D),
+
+    # CJK Unified Ideographs Extension G
+    (0x30000, 0x3134A),
+    # CJK Unified Ideographs Extension H
+    (0x31350, 0x323AF)
 ]
 
 UNICODE_KANA = [
-    # CJK Symbols and Punctuation:
-    #     https://en.wikipedia.org/wiki/CJK_Symbols_and_Punctuation
+    # CJK Symbols and Punctuation
     (0x3031, 0x3035),
-    # Hiragana:
-    #     https://en.wikipedia.org/wiki/Hiragana_(Unicode_block)
-    (0x3040, 0x309F),
-    # Katakana:
-    #     https://en.wikipedia.org/wiki/Katakana_(Unicode_block)
+    # Hiragana
+    (0x3041, 0x3096), (0x3099, 0x309F),
+    # Katakana
     (0x30A0, 0x30FF),
-    # Katakana Phonetic Extensions:
-    #     https://en.wikipedia.org/wiki/Katakana_Phonetic_Extensions
+    # Katakana Phonetic Extensions
     (0x31F0, 0x31FF),
-    # Enclosed CJK Letters and Months:
-    #     https://en.wikipedia.org/wiki/Enclosed_CJK_Letters_and_Months
+    # Enclosed CJK Letters and Months
     (0x32D0, 0x32FE),
-    # CJK Compatibility:
-    #     https://en.wikipedia.org/wiki/CJK_Compatibility
+    # CJK Compatibility
     (0x3300, 0x3357),
-    # Halfwidth and Fullwidth Forms:
-    #     https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms#In_Unicode
+    # Halfwidth and Fullwidth Forms
     (0xFF65, 0xFF9F),
 
-    # Kana Supplement:
-    #     https://en.wikipedia.org/wiki/Kana_Supplement
+    # Kana Extended-B
+    (0x1AFF0, 0x1AFF3), (0x1AFF5, 0x1AFFB), (0x1AFFD, 0x1AFFE),
+    # Kana Supplement
     (0x1B000, 0x1B0FF),
-    # Kana Extended-A:
-    #     https://en.wikipedia.org/wiki/Kana_Extended-A
-    (0x1B100, 0x1B12F)
+    # Kana Extended-A
+    (0x1B100, 0x1B122),
+    # Small Kana Extension
+    (0x1B132, 0x1B132), (0x1B150, 0x1B152), (0x1B155, 0x1B155), (0x1B164, 0x1B167),
+    # Enclosed Ideographic Supplement
+    (0x1F200, 0x1F202)
 ]
 
 # At least one letter or numeral
@@ -153,26 +140,24 @@ def is_num(token):
 def is_punc(token):
     return token and not any((char.isalnum() for char in token))
 
-# Unicode Blocks: https://en.wikipedia.org/wiki/Unicode_block
-def is_eng(char):
-    # Basic Latin:
-    #     https://en.wikipedia.org/wiki/Basic_Latin_(Unicode_block)
-    return 0x0000 <= ord(char) <= 0x007F
-
 def is_han(char):
+    char_ord = ord(char)
+
     return any((
-        unicode_start <= ord(char) <= unicode_end
+        unicode_start <= char_ord <= unicode_end
         for unicode_start, unicode_end in UNICODE_HAN
     ))
 
 def is_kana(char):
+    char_ord = ord(char)
+
     return any((
-        unicode_start <= ord(char) <= unicode_end
+        unicode_start <= char_ord <= unicode_end
         for unicode_start, unicode_end in UNICODE_KANA
     ))
 
 def is_tibetan(char):
-    # Tibetan: https://en.wikipedia.org/wiki/Tibetan_(Unicode_block)
+    # Tibetan
     return 0x0F00 <= ord(char) <= 0x0FFF
 
 def has_han(token):
