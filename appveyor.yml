@@ -59,15 +59,15 @@ for:
 
     # Run tests
     test_script:
-      - pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
-      - pytest tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
+      - pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
+      - pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-      - pytest tests/wl_tests_nlp/test_word_tokenization.py
-      - pytest tests/wl_tests_nlp/test_pos_tagging.py
-      - pytest tests/wl_tests_nlp/test_lemmatization.py
+      - pytest tests/tests_nlp/test_word_tokenization.py
+      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_lemmatization.py
 
-      - pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-      - pytest --ignore=tests/wl_tests_nlp
+      - pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
+      - pytest --ignore=tests/tests_nlp
 
   # macOS
   -
@@ -86,15 +86,15 @@ for:
 
     # Run tests
     test_script:
-      - pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
-      - pytest tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
+      - pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
+      - pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-      - pytest tests/wl_tests_nlp/test_word_tokenization.py
-      - pytest tests/wl_tests_nlp/test_pos_tagging.py
-      - pytest tests/wl_tests_nlp/test_lemmatization.py
+      - pytest tests/tests_nlp/test_word_tokenization.py
+      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_lemmatization.py
 
-      - pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_syl_tokenization.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-      - pytest --ignore=tests/wl_tests_nlp
+      - pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_syl_tokenization.py --ignore=tests/tests_nlp/test_lemmatization.py
+      - pytest --ignore=tests/tests_nlp
 
   # Ubuntu
   -
@@ -116,12 +116,12 @@ for:
       # Fix PyQt
       - export QT_QPA_PLATFORM=offscreen
 
-      - pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
-      - pytest tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
+      - pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
+      - pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-      - pytest tests/wl_tests_nlp/test_word_tokenization.py
-      - pytest tests/wl_tests_nlp/test_pos_tagging.py
-      - pytest tests/wl_tests_nlp/test_lemmatization.py
+      - pytest tests/tests_nlp/test_word_tokenization.py
+      - pytest tests/tests_nlp/test_pos_tagging.py
+      - pytest tests/tests_nlp/test_lemmatization.py
 
-      - pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-      - pytest --ignore=tests/wl_tests_nlp
+      - pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
+      - pytest --ignore=tests/tests_nlp --ignore=tests/tests_settings

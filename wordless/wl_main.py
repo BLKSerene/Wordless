@@ -90,6 +90,8 @@ from wordless.wl_widgets import wl_boxes, wl_editors, wl_labels, wl_layouts, wl_
 
 _tr = QCoreApplication.translate
 
+is_windows, is_macos, is_linux = wl_misc.check_os()
+
 class Wl_Loading(QSplashScreen):
     def __init__(self):
         super().__init__(QPixmap(wl_paths.get_path_img('wl_loading.png')))
@@ -226,10 +228,10 @@ class Wl_Main(QMainWindow):
         # Menu
         self.init_menu()
 
-        # Work Area & File Area
+        # Work area & File area
         self.init_central_widget()
 
-        # Status Bar
+        # Status bar
         self.statusBar().showMessage(self.tr('Ready!'))
 
         self.statusBar().setFixedHeight(30)
@@ -1233,7 +1235,6 @@ if __name__ == '__main__':
     os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', ui_scaling)
 
     wl_app = QApplication(sys.argv)
-    is_windows, is_macos, is_linux = wl_misc.check_os()
 
     # Translations
     if os.path.exists('wl_settings_display_lang.pickle'):
