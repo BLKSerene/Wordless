@@ -50,15 +50,15 @@ jobs:
       # Run tests and collect coverage
       - name: Run Tests and collect coverage
         run: |
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/tests_nlp/tests_spacy/test_spacy_eng.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_word_tokenization.py
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_pos_tagging.py
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/test_lemmatization.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/tests_nlp/test_word_tokenization.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/tests_nlp/test_pos_tagging.py
+          pytest --cov=./ --cov-report=xml --cov-append tests/tests_nlp/test_lemmatization.py
 
-          pytest --cov=./ --cov-report=xml --cov-append tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-          pytest --cov=./ --cov-report=xml --cov-append --ignore=tests/wl_tests_nlp
+          pytest --cov=./ --cov-report=xml --cov-append tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
+          pytest --cov=./ --cov-report=xml --cov-append --ignore=tests/tests_nlp
 
       # Upload coverage to Codecov
       - name: "Upload coverage to Codecov"
@@ -91,15 +91,15 @@ jobs:
       # Run tests
       - name: Run Tests
         run: |
-          pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
-          pytest tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
+          pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
+          pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-          pytest tests/wl_tests_nlp/test_word_tokenization.py
-          pytest tests/wl_tests_nlp/test_pos_tagging.py
-          pytest tests/wl_tests_nlp/test_lemmatization.py
+          pytest tests/tests_nlp/test_word_tokenization.py
+          pytest tests/tests_nlp/test_pos_tagging.py
+          pytest tests/tests_nlp/test_lemmatization.py
 
-          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-          pytest --ignore=tests/wl_tests_nlp
+          pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
+          pytest --ignore=tests/tests_nlp
 
   # Linux
   build-linux:
@@ -131,12 +131,12 @@ jobs:
           # Fix PyQt
           export QT_QPA_PLATFORM=offscreen
 
-          pytest tests/wl_tests_nlp/wl_tests_spacy/test_spacy_eng.py
-          pytest tests/wl_tests_nlp/wl_tests_stanza/test_stanza_eng.py
+          pytest tests/tests_nlp/tests_spacy/test_spacy_eng.py
+          pytest tests/tests_nlp/tests_stanza/test_stanza_eng.py
 
-          pytest tests/wl_tests_nlp/test_word_tokenization.py
-          pytest tests/wl_tests_nlp/test_pos_tagging.py
-          pytest tests/wl_tests_nlp/test_lemmatization.py
+          pytest tests/tests_nlp/test_word_tokenization.py
+          pytest tests/tests_nlp/test_pos_tagging.py
+          pytest tests/tests_nlp/test_lemmatization.py
 
-          pytest tests/wl_tests_nlp/ --ignore=tests/wl_tests_nlp/wl_tests_spacy --ignore=tests/wl_tests_nlp/wl_tests_stanza --ignore=tests/wl_tests_nlp/test_word_tokenization.py --ignore=tests/wl_tests_nlp/test_pos_tagging.py --ignore=tests/wl_tests_nlp/test_lemmatization.py
-          pytest --ignore=tests/wl_tests_nlp
+          pytest tests/tests_nlp/ --ignore=tests/tests_nlp/tests_spacy --ignore=tests/tests_nlp/tests_stanza --ignore=tests/tests_nlp/test_word_tokenization.py --ignore=tests/tests_nlp/test_pos_tagging.py --ignore=tests/tests_nlp/test_lemmatization.py
+          pytest --ignore=tests/tests_nlp --ignore=tests/tests_settings

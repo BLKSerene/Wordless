@@ -389,13 +389,15 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.combo_box_tagsets_pos_tagger.currentTextChanged.emit('')
 
     def preview_pos_tagger_changed(self):
-        preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][self.settings_custom['preview_settings']['preview_lang']]
+        preview_lang = self.settings_custom['preview_settings']['preview_lang']
 
-        preview_pos_tagger = wl_nlp_utils.to_lang_util_code(
+        self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang] = wl_nlp_utils.to_lang_util_code(
             self.main,
             util_type = 'pos_taggers',
             util_text = self.combo_box_tagsets_pos_tagger.currentText()
         )
+
+        preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
 
         if not preview_pos_tagger.startswith('spacy_') and not preview_pos_tagger.startswith('stanza_'):
             self.combo_box_tagsets_lang.setEnabled(False)

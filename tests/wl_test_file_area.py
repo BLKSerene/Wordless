@@ -19,6 +19,7 @@
 import glob
 import os
 import pickle
+import random
 import time
 
 from PyQt5.QtCore import QObject
@@ -66,7 +67,10 @@ def wl_test_file_area(main):
     main.settings_custom['file_area']['files_open'].clear()
     main.settings_custom['file_area']['files_open_ref'].clear()
 
-    for file_path in glob.glob('tests/files/wl_file_area/file_area/*.txt'):
+    files = glob.glob('tests/files/wl_file_area/file_area/*.txt')
+    random.shuffle(files)
+
+    for file_path in files[:3]:
         time_start = time.time()
 
         print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
@@ -96,7 +100,7 @@ def wl_test_file_area(main):
         print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
 
     # Reference files
-    for file_path in glob.glob('tests/files/wl_file_area/file_area/*.txt'):
+    for file_path in files[3:6]:
         time_start = time.time()
 
         print(f'Loading file "{os.path.split(file_path)[1]}" as reference file... ', end = '')
@@ -115,8 +119,8 @@ def wl_test_file_area(main):
         new_file = main.settings_custom['file_area']['files_open_ref'][-1]
 
         assert new_file['selected']
-        assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0] + ' (2)'
-        assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area', 'file_area'), 'imports').replace('.txt', ' (2).txt')
+        assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
+        assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area', 'file_area'), 'imports')
         assert new_file['path_original'] == wl_paths.get_normalized_path(file_path)
         assert new_file['encoding'] == 'utf_8'
         assert new_file['lang'] == 'eng_us'

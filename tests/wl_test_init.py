@@ -24,25 +24,27 @@ import random
 import sys
 
 from PyQt5.QtCore import QObject
-from PyQt5.QtWidgets import QApplication, QStatusBar, QWidget
+from PyQt5.QtWidgets import QApplication, QMainWindow, QStatusBar
 
 from tests import wl_test_file_area
 from wordless import wl_file_area
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_settings import wl_settings_default, wl_settings_global
+from wordless.wl_utils import wl_misc
 
 SEARCH_TERMS = ['be']
 
 # An instance of QApplication must be created before any instance of QWidget
 wl_app = QApplication(sys.argv)
 
-class Wl_Test_Main(QWidget):
+class Wl_Test_Main(QMainWindow):
     def __init__(self):
         super().__init__()
 
         self.app = wl_app
 
-        # Email
+        self.threads_check_updates = []
+        self.ver = wl_misc.get_wl_ver()
         self.email = 'blkserene@gmail.com'
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
 
