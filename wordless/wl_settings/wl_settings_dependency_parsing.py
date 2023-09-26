@@ -113,10 +113,6 @@ class Wl_Settings_Dependency_Parsing(wl_settings.Wl_Settings_Node):
         self.layout().setContentsMargins(6, 4, 6, 4)
         self.layout().setRowStretch(1, 1)
 
-    def dependency_parser_changed(self, lang):
-        if lang == self.settings_custom['preview']['preview_lang']:
-            self.preview_results_changed()
-
     def preview_changed(self):
         self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_preview_lang.currentText())
         self.settings_custom['preview']['preview_samples'] = self.text_edit_preview_samples.toPlainText()
