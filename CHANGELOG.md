@@ -45,6 +45,7 @@
 - Dependencies: Add Stanza
 - Dependencies: Remove stopword
 - Dependencies: Upgrade khmer-nltk to 1.6
+- Dependencies: Upgrade Lingua to 1.3.3
 - Dependencies: Upgrade Matplotlib to 3.8.0
 - Dependencies: Upgrade NumPy to 1.26.0
 - Dependencies: Upgrade Underthesea to 6.8.0
