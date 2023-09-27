@@ -47,7 +47,7 @@ def test_flatten_list():
     assert list(wl_misc.flatten_list([1, 2, [3, 4, [5, 6]]])) == [1, 2, 3, 4, 5, 6]
 
 def test_get_linux_distro():
-    assert wl_misc.get_linux_distro() in ['ubuntu', 'debian']
+    assert wl_misc.get_linux_distro() == 'ubuntu'
 
 def test_get_wl_ver():
     assert re.search(r'^[0-9]+\.[0-9]+\.[0-9]$', str(wl_misc.get_wl_ver()))

@@ -69,7 +69,10 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
             for sentence in nlp(sentence_input).sentences:
                 sentiments.append(sentence.sentiment)
 
-            sentiment_scores.append(collections.Counter(sentiments).most_common(1)[0][0] - 1)
+            if sentiments:
+                sentiment_scores.append(collections.Counter(sentiments).most_common(1)[0][0] - 1)
+            else:
+                sentiment_scores.append(0)
 
     # Russian
     elif sentiment_analyzer == 'dostoevsky_rus':
@@ -122,7 +125,10 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer, tagged):
                 for sentence in doc.sentences:
                     sentiments.append(sentence.sentiment)
 
-            sentiment_scores.append(collections.Counter(sentiments).most_common(1)[0][0] - 1)
+            if sentiments:
+                sentiment_scores.append(collections.Counter(sentiments).most_common(1)[0][0] - 1)
+            else:
+                sentiment_scores.append(0)
     else:
         inputs = [' '.join(tokens) for tokens in inputs]
 

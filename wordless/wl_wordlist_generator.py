@@ -470,7 +470,7 @@ class Wl_Table_Wordlist_Generator(wl_tables.Wl_Table_Data_Filter_Search):
 
                             for lang, syllabified_form in tokens_syllabification[token].items():
                                 lang_text = wl_conversion.to_lang_text(self.main, lang)
-                                token_syllabified_forms.append(f'{syllabified_form} ({lang_text})')
+                                token_syllabified_forms.append(f'{syllabified_form} [{lang_text}]')
 
                             tokens_syllabified = ', '.join(token_syllabified_forms)
 

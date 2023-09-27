@@ -30,6 +30,8 @@ import requests
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QMainWindow
 
+from wordless.wl_utils import wl_paths
+
 _tr = QCoreApplication.translate
 
 def change_file_owner_to_user(file_path):
@@ -76,20 +78,21 @@ def flatten_list(list_to_flatten):
             yield item
 
 def get_linux_distro():
-    if 'Ubuntu' in platform.version():
-        return 'ubuntu'
-    elif 'Debian' in platform.version():
-        return 'debian'
+    try:
+        os_release = platform.freedesktop_os_release()
     # Default to Ubuntu if undetermined
-    else:
-        return 'ubuntu'
+    except OSError:
+        os_release = {'ID': 'ubuntu'}
+
+    return os_release['ID']
+
 
 def get_wl_ver():
     wl_ver = '1.0.0'
 
     try:
         # Version file is generated on Windows
-        with open('VERSION', 'r', encoding = 'utf_8', newline = '\r\n') as f:
+        with open(wl_paths.get_path_file('VERSION'), 'r', encoding = 'utf_8', newline = '\r\n') as f:
             for line in f:
                 if line.strip() and not line.startswith('#'):
                     wl_ver = line.strip()

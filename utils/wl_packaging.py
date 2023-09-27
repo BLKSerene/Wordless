@@ -35,11 +35,11 @@ time_start = time.time()
 print_with_elapsed_time('Start packaging...')
 
 if is_windows:
-    subprocess.run(['python', '-m', 'PyInstaller', '--clean', '--noconfirm', 'wl_packaging.spec'], check = True)
+    subprocess.run(['python', '-m', 'PyInstaller', '-y', '--clean', 'wl_packaging.spec'], check = True)
 elif is_macos:
-    subprocess.run(['python3', '-m', 'PyInstaller', '--clean', '--noconfirm', 'wl_packaging.spec'], check = True)
+    subprocess.run(['python3', '-m', 'PyInstaller', '-y', '--clean', 'wl_packaging.spec'], check = True)
 elif is_linux:
-    subprocess.run(['python3.10', '-m', 'PyInstaller', '--clean', '--noconfirm', 'wl_packaging.spec'], check = True)
+    subprocess.run(['python3.10', '-m', 'PyInstaller', '-y', '--clean', 'wl_packaging.spec'], check = True)
 
 # Create folders
 if is_windows or is_linux:
@@ -52,19 +52,11 @@ elif is_macos:
 if is_linux:
     # Fix GLib-GIO-ERROR, Gtk-WARNING, and many other errors/warnings on Linux
     # See: https://github.com/pyinstaller/pyinstaller/issues/7506
-    os.remove('dist/Wordless/libgtk-3.so.0')
-    os.remove('dist/Wordless/libstdc++.so.6')
-
-    # Generate shell file
-    with open('dist/Wordless/Wordless.sh', 'w', encoding = 'utf_8') as f:
-        f.write('#!/bin/bash\n')
-        f.write('./Wordless\n')
-
-    # Allow executing file as program
-    subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless.sh'], check = True)
+    os.remove('dist/Wordless/libs/libgtk-3.so.0')
+    os.remove('dist/Wordless/libs/libstdc++.so.6')
 
     # Generate .desktop file
-    subprocess.run(['python3.10', '-m', 'PyInstaller', '--clean', '--noconfirm', 'linux_create_shortcut.py'], check = True)
+    subprocess.run(['python3.10', '-m', 'PyInstaller', '-y', '--clean', 'linux_create_shortcut.py', '--contents-directory', 'libs'], check = True)
     shutil.copyfile('dist/linux_create_shortcut/linux_create_shortcut', 'dist/Wordless/Wordless - Create Shortcut')
     subprocess.run(['chmod', '+x', 'dist/Wordless/Wordless - Create Shortcut'], check = True)
 

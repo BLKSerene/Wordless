@@ -32,19 +32,20 @@ def test_get_normalized_dir():
     assert wl_paths.get_normalized_dir('a') != 'a'
     assert wl_paths.get_normalized_dir('a/b/c') != 'a/b/c'
 
-def test__get_path():
-    assert 'a' + os.path.sep + 'b' in wl_paths._get_path('a', 'b')
+def test_get_path_file():
+    assert wl_paths.get_path_file('')
+    assert wl_paths.get_path_file('a', 'b', 'c').endswith(os.path.sep.join(['a', 'b', 'c']))
 
 def test_get_path_data():
-    assert 'data' + os.path.sep + 'a' in wl_paths.get_path_data('a')
+    assert wl_paths.get_path_data('a').endswith(os.path.sep.join(['data', 'a']))
 
 def test_get_path_img():
-    assert 'imgs' + os.path.sep + 'a' in wl_paths.get_path_img('a')
+    assert wl_paths.get_path_img('a').endswith(os.path.sep.join(['imgs', 'a']))
 
 if __name__ == '__main__':
     test_get_normalized_path()
     test_get_normalized_dir()
 
-    test__get_path()
+    test_get_path_file()
     test_get_path_data()
     test_get_path_img()
