@@ -48,6 +48,7 @@
 - Dependencies: Upgrade Lingua to 1.3.3
 - Dependencies: Upgrade Matplotlib to 3.8.0
 - Dependencies: Upgrade NumPy to 1.26.0
+- Dependencies: Upgrade SciPy to 1.11.2
 - Dependencies: Upgrade Underthesea to 6.8.0
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - 08/18/2023
