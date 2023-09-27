@@ -368,6 +368,8 @@ def wl_dependency_parse_fig_tokens(
 
     if tagged:
         inputs, tags = wl_matching.split_tokens_tags(main, inputs)
+    else:
+        tags = [''] * len(inputs)
 
     options = {
         'fine_grained': show_fine_grained_pos_tags,

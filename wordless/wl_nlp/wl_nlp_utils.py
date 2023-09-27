@@ -44,7 +44,7 @@ import sudachipy
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_nlp import wl_sentence_tokenization
-from wordless.wl_utils import wl_conversion, wl_misc, wl_threading
+from wordless.wl_utils import wl_conversion, wl_misc, wl_paths, wl_threading
 
 def to_lang_util_code(main, util_type, util_text):
     return main.settings_global['mapping_lang_utils'][util_type][util_text]
@@ -139,6 +139,11 @@ LANGS_STANZA_DEPENDENCY_PARSERS = LANGS_STANZA_POS_TAGGERS
 LANGS_STANZA_SENTIMENT_ANALYZERS = ['zho_cn', 'eng', 'deu', 'mar', 'spa', 'vie']
 
 def check_models(main, langs, lang_utils = None):
+    def update_gui_stanza(main, err_msg):
+        if not wl_checks_work_area.check_results_download_model(main, err_msg):
+            nonlocal models_ok
+            models_ok = False
+
     models_ok = True
     langs = list(langs)
 
@@ -159,51 +164,85 @@ def check_models(main, langs, lang_utils = None):
             ]:
                 if lang in settings:
                     lang_utils[-1].append(settings[lang])
+                elif settings in [
+                    main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
+                    main.settings_custom['word_tokenization']['word_tokenizer_settings']
+                ]:
+                    lang_utils[-1].append(settings['other'])
 
     for lang, utils in zip(langs, lang_utils):
-        if any((util.startswith('spacy_') for util in utils)):
-            if lang == 'nno':
-                lang = 'nob'
-            else:
-                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-        elif any((util.startswith('stanza_') for util in utils)):
-            if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
-                lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+        for i, util in enumerate(utils):
+            if util == 'default_sentence_tokenizer':
+                if lang in main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']:
+                    utils[i] = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'][lang]
+                else:
+                    utils[i] = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']['other']
+            elif util == 'default_word_tokenizer':
+                if lang in main.settings_custom['word_tokenization']['word_tokenizer_settings']:
+                    utils[i] = main.settings_custom['word_tokenization']['word_tokenizer_settings'][lang]
+                else:
+                    utils[i] = main.settings_custom['word_tokenization']['word_tokenizer_settings']['other']
+            elif util == 'default_pos_tagger':
+                if lang in main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers']:
+                    utils[i] = main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang]
+            elif util == 'default_lemmatizer':
+                if lang in main.settings_custom['lemmatization']['lemmatizer_settings']:
+                    utils[i] = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
+            elif util == 'default_dependency_parser':
+                if lang in main.settings_custom['dependency_parsing']['dependency_parser_settings']:
+                    utils[i] = main.settings_custom['dependency_parsing']['dependency_parser_settings']
+            elif util == 'default_sentiment_analyzer':
+                if lang in main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']:
+                    utils[i] = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']
 
-        if (
-            any((util.startswith('spacy_') for util in utils))
-            and lang in LANGS_SPACY
-        ):
-            model_name = LANGS_SPACY[lang]
+    for lang, utils in zip(langs, lang_utils):
+        for util in utils:
+            if util.startswith('spacy_'):
+                if lang == 'nno':
+                    lang = 'nob'
+                else:
+                    lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+            elif util.startswith('stanza_'):
+                if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+                    lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-            try:
-                importlib.import_module(model_name)
-            except ModuleNotFoundError:
-                worker_download_model = Wl_Worker_Download_Model_Spacy(
-                    main,
-                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
-                    update_gui = lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(main, err_msg, model_name),
-                    model_name = model_name
-                )
-
-                wl_threading.Wl_Thread(worker_download_model).start_worker()
+            if (
+                util.startswith('spacy_')
+                and lang in LANGS_SPACY
+            ):
+                model_name = LANGS_SPACY[lang]
 
                 try:
                     importlib.import_module(model_name)
                 except ModuleNotFoundError:
-                    models_ok = False
-        elif (
-            any((util.startswith('stanza_') for util in utils))
-            and lang in LANGS_STANZA_TOKENIZERS
-        ):
-            worker_download_model = Wl_Worker_Download_Model_Stanza(
-                main,
-                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
-                update_gui = lambda err_msg: wl_checks_work_area.check_results_download_model(main, err_msg),
-                lang = lang
-            )
+                    worker_download_model = Wl_Worker_Download_Model_Spacy(
+                        main,
+                        dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
+                        update_gui = lambda err_msg, model_name = model_name: wl_checks_work_area.check_results_download_model(main, err_msg, model_name),
+                        model_name = model_name
+                    )
 
-            wl_threading.Wl_Thread(worker_download_model).start_worker()
+                    wl_threading.Wl_Thread(worker_download_model).start_worker()
+
+                    try:
+                        importlib.import_module(model_name)
+                    except ModuleNotFoundError:
+                        models_ok = False
+            elif (
+                util.startswith('stanza_')
+                and lang in LANGS_STANZA_TOKENIZERS
+            ):
+                worker_download_model = Wl_Worker_Download_Model_Stanza(
+                    main,
+                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
+                    update_gui = lambda err_msg: update_gui_stanza(main, err_msg),
+                    lang = lang
+                )
+
+                wl_threading.Wl_Thread(worker_download_model).start_worker()
+
+            if not models_ok:
+                break
 
         if not models_ok:
             break
@@ -247,7 +286,7 @@ class Wl_Worker_Download_Model_Spacy(wl_threading.Wl_Worker):
                     self.progress_updated.emit(self.tr('Downloading model...'))
 
                 if getattr(sys, '_MEIPASS', False):
-                    pip.main(['install', '--target', '.', '--no-deps', model_url])
+                    pip.main(['install', '--target', wl_paths.get_path_file(''), '--no-deps', model_url])
                 else:
                     pip.main(['install', model_url])
 
@@ -275,7 +314,7 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
 
             # Change the directory for Stanza's downloaded models when the application is frozen
             if getattr(sys, '_MEIPASS', False):
-                model_dir = './stanza_resources'
+                model_dir = wl_paths.get_path_file('stanza_resources')
             else:
                 model_dir = stanza.resources.common.DEFAULT_MODEL_DIR
 
@@ -390,10 +429,18 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
         else:
             lang_stanza = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
-        if tokenized:
-            main.__dict__[f'stanza_nlp_{lang}'] = stanza.Pipeline(lang_stanza, processors = processors, download_method = None, tokenize_pretokenized = True)
+        if getattr(sys, '_MEIPASS', False):
+            model_dir = wl_paths.get_path_file('stanza_resources')
         else:
-            main.__dict__[f'stanza_nlp_{lang}'] = stanza.Pipeline(lang_stanza, processors = processors, download_method = None)
+            model_dir = stanza.resources.common.DEFAULT_MODEL_DIR
+
+        main.__dict__[f'stanza_nlp_{lang}'] = stanza.Pipeline(
+            lang = lang_stanza,
+            dir = model_dir,
+            processors = processors,
+            download_method = None,
+            tokenize_pretokenized = tokenized
+        )
 
 def init_sudachipy_word_tokenizer(main):
     if 'sudachipy_word_tokenizer' not in main.__dict__:

@@ -871,7 +871,7 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                         [
                             0, 11, 22,
                             33, 44,
-                            55, 66
+                            66, 88
                         ], [
                             len_paras_sentences, len_paras_sentence_segs, len_paras_tokens,
                             len_sentences, len_sentence_segs,
@@ -903,13 +903,8 @@ class Wl_Table_Profiler_Lens(Wl_Table_Profiler):
                     # Token/Type Length in Syllables
                     # Syllable Length in Characters
                     for row, lens in zip(
-                        [
-                            77, 88,
-                            99
-                        ], [
-                            len_tokens_syls, len_types_syls,
-                            len_syls
-                        ]
+                        [55, 77, 99],
+                        [len_tokens_syls, len_types_syls, len_syls]
                     ):
                         if file_lang in self.main.settings_global['syl_tokenizers']:
                             if lens.any():

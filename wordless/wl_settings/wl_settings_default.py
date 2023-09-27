@@ -57,6 +57,8 @@ elif is_linux:
         DEFAULT_FONT_FAMILY = 'Ubuntu'
     elif linux_distro == 'debian':
         DEFAULT_FONT_FAMILY = 'DejaVu'
+    elif linux_distro == 'arch':
+        DEFAULT_FONT_FAMILY = 'Noto Sans'
 
 # Font size
 if is_windows:
@@ -1901,7 +1903,7 @@ def init_settings_default(main):
             },
 
             'preview': {
-                'preview_lang': 'rus',
+                'preview_lang': 'eng_us',
                 'preview_samples': '',
                 'preview_sentiment_score': '0',
             }

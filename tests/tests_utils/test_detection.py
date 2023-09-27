@@ -62,7 +62,7 @@ def check_encodings_detected(test_file_dir, encodings, text):
         assert encoding_detected_text
 
 def test_detection_encoding():
-    test_file_dir = 'tests/wl_tests_utils/_files_encoding_detection'
+    test_file_dir = 'tests/tests_utils/_files_detection_encoding'
 
     os.makedirs(test_file_dir, exist_ok = True)
 
@@ -288,7 +288,7 @@ def test_detection_encoding():
 
 # Language detection
 def test_detection_lang():
-    test_file_dir = 'tests/wl_tests_utils/_files_encoding_detection'
+    test_file_dir = 'tests/tests_utils/_files_detection_lang'
 
     os.makedirs(test_file_dir, exist_ok = True)
 

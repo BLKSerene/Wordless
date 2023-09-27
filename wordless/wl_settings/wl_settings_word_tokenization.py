@@ -142,7 +142,7 @@ class Wl_Settings_Word_Tokenization(wl_settings.Wl_Settings_Node):
             if wl_nlp_utils.check_models(
                 self.main,
                 langs = [self.settings_custom['preview']['preview_lang']],
-                lang_utils = [[word_tokenizer]]
+                lang_utils = [['default_sentence_tokenizer', word_tokenizer]]
             ):
                 worker_preview_word_tokenizer = Wl_Worker_Preview_Word_Tokenizer(
                     self.main,

@@ -55,21 +55,6 @@ import underthesea.file_utils
 # Use Qt backend for Matplotlib
 matplotlib.use('Qt5Agg')
 
-# Modify paths of data files when frozen
-if getattr(sys, '_MEIPASS', False):
-    # botok
-    botok.config.DEFAULT_BASE_PATH = os.path.join('pybo', 'dialect_packs')
-    # NLTK
-    nltk.data.path = ['nltk_data']
-    # PyThaiNLP
-    PYTHAINLP_DEFAULT_DATA_DIR = os.path.realpath(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR)
-    pythainlp.corpus._CORPUS_DB_PATH = os.path.join(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR, pythainlp.corpus._CORPUS_DB_FILENAME)
-    pythainlp.tools.path.get_pythainlp_data_path = lambda: PYTHAINLP_DEFAULT_DATA_DIR
-    # spaCy-pkuseg
-    spacy_pkuseg.config.pkuseg_home = '.pkuseg'
-    # Underthesea
-    underthesea.file_utils.UNDERTHESEA_FOLDER = '.underthesea'
-
 from wordless import (
     wl_file_area,
     wl_profiler,
@@ -87,6 +72,21 @@ from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_settings import wl_settings, wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc, wl_paths, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_editors, wl_labels, wl_layouts, wl_tables
+
+# Modify paths of data files when frozen
+if getattr(sys, '_MEIPASS', False):
+    # botok
+    botok.config.DEFAULT_BASE_PATH = wl_paths.get_path_file('pybo', 'dialect_packs')
+    # NLTK
+    nltk.data.path = [wl_paths.get_path_file('nltk_data')]
+    # PyThaiNLP
+    PYTHAINLP_DEFAULT_DATA_DIR = os.path.realpath(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR)
+    pythainlp.corpus._CORPUS_DB_PATH = wl_paths.get_path_file(pythainlp.tools.PYTHAINLP_DEFAULT_DATA_DIR, pythainlp.corpus._CORPUS_DB_FILENAME)
+    pythainlp.tools.path.get_pythainlp_data_path = lambda: PYTHAINLP_DEFAULT_DATA_DIR
+    # spaCy-pkuseg
+    spacy_pkuseg.config.pkuseg_home = wl_paths.get_path_file('.pkuseg')
+    # Underthesea
+    underthesea.file_utils.UNDERTHESEA_FOLDER = wl_paths.get_path_file('.underthesea')
 
 _tr = QCoreApplication.translate
 
@@ -187,7 +187,7 @@ class Wl_Main(QMainWindow):
         self.email_html = '<a href="mailto:blkserene@gmail.com">blkserene@gmail.com</a>'
 
         # Icon
-        self.setWindowIcon(QIcon('imgs/wl_icon.ico'))
+        self.setWindowIcon(QIcon(wl_paths.get_path_img('wl_icon.ico')))
         # Title
         self.setWindowTitle(f'Wordless {self.ver}')
 
@@ -858,7 +858,7 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         # Load acknowledgments
         acks = []
 
-        with open(self.tr('ACKNOWLEDGMENTS.md'), 'r', encoding = 'utf_8') as f:
+        with open(wl_paths.get_path_file(self.tr('ACKNOWLEDGMENTS.md')), 'r', encoding = 'utf_8') as f:
             for line in f:
                 if re.search(r'^[1-9]\d*\s*\|', line):
                     _, name, ver, authors, proj_license = line.split('|')
@@ -1070,7 +1070,7 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
         changelog = []
 
         try:
-            with open('CHANGELOG.md', 'r', encoding = 'utf_8') as f:
+            with open(wl_paths.get_path_file('CHANGELOG.md'), 'r', encoding = 'utf_8') as f:
                 for line in f:
                     # Changelog headers
                     if line.startswith('## '):
@@ -1245,7 +1245,7 @@ if __name__ == '__main__':
 
     if display_lang != 'eng_us':
         translator = QTranslator()
-        translator.load(f'trs/{display_lang}.qm')
+        translator.load(wl_paths.get_path_file('trs', f'{display_lang}.qm'))
 
         wl_app.installTranslator(translator)
 

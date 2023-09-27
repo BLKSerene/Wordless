@@ -23,7 +23,7 @@ import zipfile
 
 import requests
 
-PYINSTALLER_VER = '5.13.0'
+PYINSTALLER_VER = '6.0.0'
 
 # Fetch codes
 print(f'Downloading PyInstaller {PYINSTALLER_VER}... ', end = '')
@@ -48,37 +48,44 @@ subprocess.run(['python3', 'waf', 'all'], check = True)
 
 os.chdir('..')
 
-# codesign does not work properly on OS X 10.11
-with open('PyInstaller/building/utils.py', 'r+', encoding = 'utf_8') as f:
-    pyinstaller_building_utils = f.read()
-    pyinstaller_building_utils = pyinstaller_building_utils.replace(
-        'osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)',
-        '# osxutils.sign_binary(cachedfile, codesign_identity, entitlements_file)'
-    )
-
-    f.seek(0)
-    f.write(pyinstaller_building_utils)
-
+# Skip codesign
 with open('PyInstaller/building/api.py', 'r+', encoding = 'utf_8') as f:
-    pyinstaller_building_api = f.read()
-    pyinstaller_building_api = pyinstaller_building_api.replace(
+    codes = f.read()
+    codes = codes.replace(
         'osxutils.remove_signature_from_binary(build_name)',
         '# osxutils.remove_signature_from_binary(build_name)'
     )
 
     f.seek(0)
-    f.write(pyinstaller_building_api)
+    f.write(codes)
 
-# Fix Underthesea
-with open('PyInstaller/utils/osx.py', 'r+', encoding = 'utf_8') as f:
-    pyinstaller_utils_osx = f.read()
-    pyinstaller_utils_osx = pyinstaller_utils_osx.replace(
-        'p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)\n    if p.returncode:',
-        'p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)\n    if p.returncode and False:'
+with open('PyInstaller/building/utils.py', 'r+', encoding = 'utf_8') as f:
+    codes = f.read()
+    codes = codes.replace(
+        'osxutils.sign_binary(cached_name, codesign_identity, entitlements_file)',
+        '# osxutils.sign_binary(cached_name, codesign_identity, entitlements_file)'
     )
 
     f.seek(0)
-    f.write(pyinstaller_utils_osx)
+    f.write(codes)
+
+with open('PyInstaller/utils/osx.py', 'r+', encoding = 'utf_8') as f:
+    codes = f.read()
+
+    # Fix "Could not find Info.plist" for PyQt
+    codes = codes.replace(
+        'if not info_plist_src_top.is_file():',
+        'if not info_plist_src_top.is_file():\n                continue'
+    )
+
+    # Skip install_name_tool
+    codes = codes.replace(
+        'cmd_args = ["install_name_tool", *install_name_tool_args, filename]\n    p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)\n    if p.returncode:',
+        'cmd_args = ["install_name_tool", *install_name_tool_args, filename]\n    p = subprocess.run(cmd_args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True)\n    if p.returncode and False:'
+    )
+
+    f.seek(0)
+    f.write(codes)
 
 # Install recompiled version of PyInstaller
 os.chdir('..')

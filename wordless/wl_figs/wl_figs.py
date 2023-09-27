@@ -135,7 +135,7 @@ def generate_word_cloud(main, data_file_items, fig_settings):
     if settings['font_settings']['font'] == 'Droid Sans Mono':
         font_path = wordcloud.wordcloud.FONT_PATH
     elif settings['font_settings']['font'] == 'GNU Unifont':
-        font_path = wl_paths.get_path_data('unifont-15.0.01.ttf')
+        font_path = wl_paths.get_path_data('unifont-15.1.02.otf')
     elif settings['font_settings']['font'] == _tr('wl_figs', 'Custom'):
         font_path = settings['font_settings']['font_path']
 

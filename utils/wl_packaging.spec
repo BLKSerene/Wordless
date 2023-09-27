@@ -21,12 +21,11 @@ import PyInstaller
 import pymorphy3
 import pythainlp
 import spacy_pkuseg
+import stanza
 import transformers
 import underthesea.file_utils
 
 import wl_utils
-
-block_cipher = None
 
 binaries = []
 datas = []
@@ -41,10 +40,6 @@ if is_macos:
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # Dostoevsky
 datas.extend(PyInstaller.utils.hooks.collect_data_files('dostoevsky'))
-# LaoNLP
-datas.extend(PyInstaller.utils.hooks.collect_data_files('laonlp'))
-# PyThaiNLP
-datas.extend(PyInstaller.utils.hooks.collect_data_files('pythainlp'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
@@ -71,7 +66,7 @@ datas.extend([
     # spaCy-pkuseg
     (spacy_pkuseg.config.pkuseg_home, '.pkuseg'),
     # Stanza
-    (f'{stanza.resources.common.DEFAULT_MODEL_DIR}/resources.json', 'stanza_resources/resources.json'),
+    (f'{stanza.resources.common.DEFAULT_MODEL_DIR}/resources.json', 'stanza_resources/'),
     (f'{stanza.resources.common.DEFAULT_MODEL_DIR}/en', 'stanza_resources/en'),
     # Underthesea
     (underthesea.file_utils.UNDERTHESEA_FOLDER, '.underthesea'),
@@ -112,15 +107,13 @@ with open(pymorphy3.opencorpora_dict.wrapper.__file__, 'r+', encoding = 'utf_8')
     f.seek(0)
     f.write(pymorphy3_opencorpora_dict_wrapper)
 
-# Exclusions
-excludes = []
-
 # Icons
 if is_windows or is_linux:
     icon = '../imgs/wl_icon.ico'
 elif is_macos:
     icon = '../imgs/wl_icon.icns'
 
+# Template: https://github.com/pyinstaller/pyinstaller/blob/develop/PyInstaller/building/templates.py
 a = Analysis(
     ['../wordless/wl_main.py'],
     pathex = [],
@@ -130,14 +123,11 @@ a = Analysis(
     hookspath = [],
     hooksconfig = {},
     runtime_hooks = [],
-    excludes = excludes,
-    win_no_prefer_redirects = False,
-    win_private_assemblies = False,
-    cipher = block_cipher,
+    excludes = [],
     noarchive = False
 )
 
-pyz = PYZ(a.pure, a.zipped_data, cipher = block_cipher)
+pyz = PYZ(a.pure)
 
 exe = EXE(
     pyz,
@@ -155,7 +145,9 @@ exe = EXE(
     target_arch = None,
     codesign_identity = None,
     entitlements_file = None,
-    icon = icon
+    # Additional options
+    icon = icon,
+    contents_directory='libs'
 )
 
 # Collect data files

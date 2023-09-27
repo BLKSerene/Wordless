@@ -147,16 +147,16 @@ class Wl_Settings_Pos_Tagging(wl_settings.Wl_Settings_Node):
                 util_text = self.table_pos_taggers.model().item(row, 1).text()
             )
 
-            if self.checkbox_to_universal_pos_tags.isChecked():
-                tagset = 'universal'
-            else:
-                tagset = 'raw'
-
             if wl_nlp_utils.check_models(
                 self.main,
                 langs = [self.settings_custom['preview']['preview_lang']],
-                lang_utils = [[pos_tagger]]
+                lang_utils = [['default_word_tokenizer', pos_tagger]]
             ):
+                if self.checkbox_to_universal_pos_tags.isChecked():
+                    tagset = 'universal'
+                else:
+                    tagset = 'raw'
+
                 worker_preview_pos_tagger = Wl_Worker_Preview_Pos_Tagger(
                     self.main,
                     update_gui = self.update_gui,
