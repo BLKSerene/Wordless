@@ -17,6 +17,7 @@
 # ----------------------------------------------------------------------
 
 import os
+import sys
 
 def get_normalized_path(path):
     path = os.path.realpath(path)
@@ -29,13 +30,16 @@ def get_normalized_dir(path):
 
     return os.path.dirname(path)
 
-def _get_path(dir_name, file_name):
-    path = os.path.join(dir_name, file_name)
+def get_path_file(*paths):
+    if getattr(sys, '_MEIPASS', False):
+        path = os.path.join(sys._MEIPASS, *paths)
+    else:
+        path = os.path.join(*paths)
 
     return get_normalized_path(path)
 
 def get_path_data(file_name):
-    return _get_path('data', file_name)
+    return get_path_file('data', file_name)
 
 def get_path_img(file_name):
-    return _get_path('imgs', file_name)
+    return get_path_file('imgs', file_name)

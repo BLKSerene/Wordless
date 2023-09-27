@@ -132,24 +132,35 @@ class Wl_Settings_Syl_Tokenization(wl_settings.Wl_Settings_Node):
 
             self.button_show_preview.setText(self.tr('Processing...'))
 
-            syl_tokenizer = wl_nlp_utils.to_lang_util_code(
+            if wl_nlp_utils.check_models(
                 self.main,
-                util_type = 'syl_tokenizers',
-                util_text = self.table_syl_tokenizers.model().item(row, 1).text()
-            )
+                langs = [self.settings_custom['preview']['preview_lang']],
+                lang_utils = [['default_word_tokenizer']]
+            ):
+                syl_tokenizer = wl_nlp_utils.to_lang_util_code(
+                    self.main,
+                    util_type = 'syl_tokenizers',
+                    util_text = self.table_syl_tokenizers.model().item(row, 1).text()
+                )
 
-            worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
-                self.main,
-                update_gui = self.update_gui,
-                syl_tokenizer = syl_tokenizer
-            )
+                worker_preview_syl_tokenizer = Wl_Worker_Preview_Syl_Tokenizer(
+                    self.main,
+                    update_gui = self.update_gui,
+                    syl_tokenizer = syl_tokenizer
+                )
 
-            self.thread_preview_syl_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_syl_tokenizer)
-            self.thread_preview_syl_tokenizer.start_worker()
+                self.thread_preview_syl_tokenizer = wl_threading.Wl_Thread_No_Progress(worker_preview_syl_tokenizer)
+                self.thread_preview_syl_tokenizer.start_worker()
+            else:
+                self.update_gui_err()
 
     def update_gui(self, preview_results):
-        self.button_show_preview.setText(self.tr('Show preview'))
         self.text_edit_preview_results.setPlainText('\n'.join(preview_results))
+
+        self.update_gui_err()
+
+    def update_gui_err(self):
+        self.button_show_preview.setText(self.tr('Show preview'))
 
         row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
 

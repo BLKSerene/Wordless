@@ -202,6 +202,8 @@ def check_results_download_model(main, err_msg, model_name = '', test = False):
 
         wl_status_bar_msg_err_download_model(main)
 
+        results_ok = False
+
     return results_ok
 
 def check_err_table(main, err_msg, test = False):

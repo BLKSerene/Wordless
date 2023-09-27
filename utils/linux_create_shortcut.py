@@ -24,10 +24,12 @@ import wl_utils
 wl_ver = wl_utils.get_wl_ver()
 
 path_wl = os.path.split(globals()['__file__'])[0]
+path_exec = os.path.join(os.path.split(path_wl)[0], 'Wordless')
 path_icon = os.path.join(path_wl, 'imgs', 'wl_icon.ico')
 path_desktop = os.path.expanduser('~/.local/share/applications/Wordless.desktop')
 
-# Reference: https://askubuntu.com/a/680699
+os.makedirs(os.path.expanduser('~/.local/share/applications'), exist_ok = True)
+
 with open(path_desktop, 'w', encoding = 'utf_8') as f:
     f.write(f'''
         [Desktop Entry]
@@ -36,9 +38,9 @@ with open(path_desktop, 'w', encoding = 'utf_8') as f:
         Version={wl_ver}
         Encoding=UTF-8
         Path={path_wl}
-        Exec=bash -c "./Wordless.sh; $SHELL"
+        Exec={path_exec}
         Icon={path_icon}
-        Terminal=true
+        Terminal=false
     ''')
 
 # Allow excuting file as program

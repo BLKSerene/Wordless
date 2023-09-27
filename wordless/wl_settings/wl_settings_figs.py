@@ -28,6 +28,7 @@ from PyQt5.QtGui import QFont, QPixmap
 from PyQt5.QtWidgets import QCheckBox, QDesktopWidget, QGroupBox, QLabel, QLineEdit
 
 from wordless.wl_settings import wl_settings
+from wordless.wl_utils import wl_paths
 from wordless.wl_widgets import wl_boxes, wl_buttons, wl_layouts
 
 _tr = QCoreApplication.translate
@@ -325,11 +326,12 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
                 orientation = 'horizontal'
             )
 
-            fig.savefig('imgs/_matplotlib_colormap.png', bbox_inches = 'tight', pad_inches = 0)
+            path_colormap_temp = wl_paths.get_path_img('_matplotlib_colormap.png')
+            fig.savefig(path_colormap_temp, bbox_inches = 'tight', pad_inches = 0)
             matplotlib.pyplot.close()
 
-            self.label_font_color_colormap.setPixmap(QPixmap('imgs/_matplotlib_colormap.png'))
-            os.remove('imgs/_matplotlib_colormap.png')
+            self.label_font_color_colormap.setPixmap(QPixmap(path_colormap_temp))
+            os.remove(path_colormap_temp)
 
     def load_settings(self, defaults = False):
         if defaults:

@@ -20,6 +20,7 @@ from PyQt5.QtCore import QCoreApplication, Qt
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QDialog, QPlainTextEdit, QPushButton, QTextEdit, QWidget
 
+from wordless.wl_utils import wl_paths
 from wordless.wl_widgets import wl_buttons
 
 _tr = QCoreApplication.translate
@@ -47,7 +48,7 @@ class Wl_Dialog(QDialog):
                 self.setFixedHeight(height)
 
         self.setWindowTitle(title)
-        self.setWindowIcon(QIcon('imgs/wl_icon.ico'))
+        self.setWindowIcon(QIcon(wl_paths.get_path_img('wl_icon.ico')))
 
         if not resizable:
             self.setWindowFlag(Qt.MSWindowsFixedSizeDialogHint, True)
