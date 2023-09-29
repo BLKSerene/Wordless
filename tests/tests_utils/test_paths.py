@@ -35,6 +35,7 @@ def test_get_normalized_dir():
 def test_get_path_file():
     assert wl_paths.get_path_file('')
     assert wl_paths.get_path_file('a', 'b', 'c').endswith(os.path.sep.join(['a', 'b', 'c']))
+    assert wl_paths.get_path_file('a', '..', 'b').endswith('b')
 
 def test_get_path_data():
     assert wl_paths.get_path_data('a').endswith(os.path.sep.join(['data', 'a']))

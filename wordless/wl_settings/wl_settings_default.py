@@ -68,6 +68,11 @@ elif is_macos:
 elif is_linux:
     DEFAULT_FONT_SIZE = 11
 
+# Directories for imports and exports
+DEFAULT_DIR_WORDLESS = wl_paths.get_path_file('', internal = False)
+DEFAULT_DIR_IMPS = wl_paths.get_path_file('imports', internal = False)
+DEFAULT_DIR_EXPS = wl_paths.get_path_file('exports', internal = False)
+
 def init_settings_default(main):
     desktop_widget = QDesktopWidget()
 
@@ -1098,41 +1103,41 @@ def init_settings_default(main):
             # Settings - General - Import
             'imp': {
                 'files': {
-                    'default_path': wl_paths.get_normalized_path('.')
+                    'default_path': DEFAULT_DIR_WORDLESS
                 },
 
                 'search_terms': {
-                    'default_path': wl_paths.get_normalized_path('.'),
+                    'default_path': DEFAULT_DIR_WORDLESS,
                     'default_encoding': 'utf_8',
                     'detect_encodings': True
                 },
 
                 'stop_words': {
-                    'default_path': wl_paths.get_normalized_path('.'),
+                    'default_path': DEFAULT_DIR_WORDLESS,
                     'default_encoding': 'utf_8',
                     'detect_encodings': True
                 },
 
                 'temp_files': {
-                    'default_path': wl_paths.get_normalized_path('imports/'),
+                    'default_path': DEFAULT_DIR_IMPS,
                 }
             },
 
             # Settings - General - Export
             'exp': {
                 'tables': {
-                    'default_path': wl_paths.get_normalized_path('exports/'),
+                    'default_path': DEFAULT_DIR_EXPS,
                     'default_type': _tr('wl_settings_default', 'Excel workbooks (*.xlsx)'),
                     'default_encoding': 'utf_8'
                 },
 
                 'search_terms': {
-                    'default_path': wl_paths.get_normalized_path('exports/'),
+                    'default_path': DEFAULT_DIR_EXPS,
                     'default_encoding': 'utf_8'
                 },
 
                 'stop_words': {
-                    'default_path': wl_paths.get_normalized_path('exports/'),
+                    'default_path': DEFAULT_DIR_EXPS,
                     'default_encoding': 'utf_8'
                 }
             }

@@ -126,7 +126,7 @@ class Wl_Settings_Measures_Readability(wl_settings.Wl_Settings_Node):
         self.combo_box_re_variant_spa = wl_boxes.Wl_Combo_Box(self)
 
         self.combo_box_re_variant_nld.addItems([
-            self.tr("Brouwer's Leesindex A"),
+            "Brouwer's Leesindex A",
             'Douma',
         ])
         self.combo_box_re_variant_spa.addItems([

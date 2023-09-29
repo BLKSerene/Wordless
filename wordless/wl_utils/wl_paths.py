@@ -19,6 +19,8 @@
 import os
 import sys
 
+from wordless.wl_utils import wl_misc
+
 def get_normalized_path(path):
     path = os.path.realpath(path)
     path = os.path.normpath(path)
@@ -30,9 +32,17 @@ def get_normalized_dir(path):
 
     return os.path.dirname(path)
 
-def get_path_file(*paths):
+def get_path_file(*paths, internal = True):
     if getattr(sys, '_MEIPASS', False):
-        path = os.path.join(sys._MEIPASS, *paths)
+        is_windows, is_macos, is_linux = wl_misc.check_os()
+
+        if internal:
+            path = os.path.join(sys._MEIPASS, *paths)
+        else:
+            if is_windows or is_linux:
+                path = os.path.join(sys._MEIPASS, '..', *paths)
+            elif is_macos:
+                path = os.path.join(sys._MEIPASS, '..', 'MacOS', *paths)
     else:
         path = os.path.join(*paths)
 

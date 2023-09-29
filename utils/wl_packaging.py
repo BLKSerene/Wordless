@@ -46,8 +46,8 @@ if is_windows or is_linux:
     os.makedirs('dist/Wordless/imports')
     os.makedirs('dist/Wordless/exports')
 elif is_macos:
-    os.makedirs('dist/Wordless.app/Contents/Macos/imports')
-    os.makedirs('dist/Wordless.app/Contents/Macos/exports')
+    os.makedirs('dist/Wordless.app/Contents/MacOS/imports')
+    os.makedirs('dist/Wordless.app/Contents/MacOS/exports')
 
 if is_linux:
     # Fix GLib-GIO-ERROR, Gtk-WARNING, and many other errors/warnings on Linux
@@ -73,23 +73,25 @@ elif is_macos:
 if is_windows:
     subprocess.run([os.path.join(os.getcwd(), 'Wordless.exe')], check = True)
 elif is_macos:
-    subprocess.run([os.path.join(os.getcwd(), 'Wordless.app/Contents/Macos/Wordless')], check = True)
+    subprocess.run([os.path.join(os.getcwd(), 'Wordless.app/Contents/MacOS/Wordless')], check = True)
 elif is_linux:
     subprocess.run(['./Wordless'], check = True)
 
 # Remove custom settings file
 if is_windows or is_linux:
-    if os.path.exists('wl_settings.pickle'):
-        os.remove('wl_settings.pickle')
-
-    if os.path.exists('wl_settings_display_lang.pickle'):
-        os.remove('wl_settings_display_lang.pickle')
+    files_settings = [
+        'wl_settings.pickle',
+        'wl_settings_display_lang.pickle'
+    ]
 elif is_macos:
-    if os.path.exists('Wordless.app/Contents/Macos/wl_settings.pickle'):
-        os.remove('Wordless.app/Contents/Macos/wl_settings.pickle')
+    files_settings = [
+        'Wordless.app/Contents/MacOS/wl_settings.pickle',
+        'Wordless.app/Contents/MacOS/wl_settings_display_lang.pickle'
+    ]
 
-    if os.path.exists('Wordless.app/Contents/Macos/wl_settings_display_lang.pickle'):
-        os.remove('Wordless.app/Contents/Macos/wl_settings_display_lang.pickle')
+for file_settings in files_settings:
+    if os.path.exists(file_settings):
+        os.remove(file_settings)
 
 print_with_elapsed_time('Tests passed!')
 

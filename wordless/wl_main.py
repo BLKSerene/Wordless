@@ -197,8 +197,8 @@ class Wl_Main(QMainWindow):
         self.settings_default = wl_settings_default.init_settings_default(self)
 
         # Custom settings
-        if os.path.exists('wl_settings.pickle'):
-            with open('wl_settings.pickle', 'rb') as f:
+        if os.path.exists(file_settings):
+            with open(file_settings, 'rb') as f:
                 settings_custom = pickle.load(f)
 
             if wl_checks_misc.check_custom_settings(settings_custom, self.settings_default):
@@ -208,8 +208,8 @@ class Wl_Main(QMainWindow):
         else:
             self.settings_custom = copy.deepcopy(self.settings_default)
 
-        if os.path.exists('wl_settings_display_lang.pickle'):
-            with open('wl_settings_display_lang.pickle', 'rb') as f:
+        if os.path.exists(file_settings_display_lang):
+            with open(file_settings_display_lang, 'rb') as f:
                 self.settings_custom['menu']['prefs']['display_lang'] = pickle.load(f)
 
         # Global settings
@@ -385,15 +385,17 @@ class Wl_Main(QMainWindow):
             if action.isChecked():
                 if action.lang != self.settings_custom['menu']['prefs']['display_lang']:
                     if wl_dialogs_misc.Wl_Dialog_Restart_Required(self).exec_() == QDialog.Accepted:
-                        with open('wl_settings_display_lang.pickle', 'wb') as f:
+                        with open(file_settings_display_lang, 'wb') as f:
                             pickle.dump(action.lang, f)
 
                         # Remove settings file
-                        if os.path.exists('wl_settings.pickle'):
-                            os.remove('wl_settings.pickle')
+                        if os.path.exists(file_settings):
+                            os.remove(file_settings)
 
                         # Remove file caches
-                        for file in glob.glob('imports/*.*'):
+                        for file in glob.glob(os.path.join(
+                            self.settings_custom['general']['imp']['temp_files']['default_path'], '*.*'
+                        )):
                             os.remove(file)
 
                         self.restart(save_settings = False)
@@ -587,7 +589,7 @@ class Wl_Main(QMainWindow):
         # Layouts
         self.settings_custom['menu']['prefs']['layouts']['central_widget'] = self.centralWidget().sizes()
 
-        with open('wl_settings.pickle', 'wb') as f:
+        with open(file_settings, 'wb') as f:
             pickle.dump(self.settings_custom, f)
 
     def restart(self, save_settings = True):
@@ -598,9 +600,9 @@ class Wl_Main(QMainWindow):
 
         if getattr(sys, '_MEIPASS', False):
             if is_windows:
-                subprocess.Popen([wl_paths.get_normalized_path('Wordless.exe')])
+                subprocess.Popen([wl_paths.get_path_file('Wordless.exe', internal = False)])
             elif is_macos or is_linux:
-                subprocess.Popen([wl_paths.get_normalized_path('Wordless')])
+                subprocess.Popen([wl_paths.get_path_file('Wordless', internal = False)])
         else:
             if is_windows:
                 subprocess.Popen(['python', '-m', 'wordless.wl_main'])
@@ -1218,9 +1220,12 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_info.layout().setColumnStretch(1, 5)
 
 if __name__ == '__main__':
+    file_settings = wl_paths.get_path_file('wl_settings.pickle', internal = False)
+    file_settings_display_lang = wl_paths.get_path_file('wl_settings_display_lang.pickle', internal = False)
+
     # UI scaling
-    if os.path.exists('wl_settings.pickle'):
-        with open('wl_settings.pickle', 'rb') as f:
+    if os.path.exists(file_settings):
+        with open(file_settings, 'rb') as f:
             settings_custom = pickle.load(f)
 
         ui_scaling = settings_custom['general']['ui_settings']['interface_scaling']
@@ -1237,8 +1242,8 @@ if __name__ == '__main__':
     wl_app = QApplication(sys.argv)
 
     # Translations
-    if os.path.exists('wl_settings_display_lang.pickle'):
-        with open('wl_settings_display_lang.pickle', 'rb') as f:
+    if os.path.exists(file_settings_display_lang):
+        with open(file_settings_display_lang, 'rb') as f:
             display_lang = pickle.load(f)
     else:
         display_lang = 'eng_us'

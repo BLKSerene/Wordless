@@ -117,7 +117,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
                     if lang == 'jpn':
                         docs.append(''.join(tokens))
                     else:
-                        docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens)))
+                        docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens)))
 
                 for doc in nlp.pipe(docs):
                     if tagset in ['default', 'raw']:
