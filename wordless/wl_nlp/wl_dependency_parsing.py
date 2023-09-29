@@ -27,6 +27,7 @@ import spacy
 from wordless.wl_checks import wl_checks_misc
 from wordless.wl_dialogs import wl_msg_boxes
 from wordless.wl_nlp import wl_matching, wl_nlp_utils
+from wordless.wl_settings import wl_settings_default
 from wordless.wl_utils import wl_conversion, wl_misc, wl_paths
 
 _tr = QCoreApplication.translate
@@ -105,11 +106,11 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser, tagged):
 
         with nlp.select_pipes(disable = [
             pipeline
-            for pipeline in ['tagger', 'morphologizer', 'lemmatizer', 'attribute_ruler', 'senter', 'sentencizer']
+            for pipeline in ['senter', 'sentencizer']
             if nlp.has_pipe(pipeline)
         ]):
             for doc in nlp.pipe([
-                spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens))
+                spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens))
                 for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser)
             ]):
                 for token in doc:
@@ -392,7 +393,7 @@ def wl_dependency_parse_fig_tokens(
             lens_docs = []
 
             for tokens in wl_nlp_utils.split_token_list(main, inputs, dependency_parser):
-                docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [False] * len(tokens)))
+                docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens)))
 
                 # Record length of each section
                 if tagged:
@@ -480,7 +481,7 @@ def wl_dependency_parse_fig_tokens(
     return htmls
 
 def wl_show_dependency_graphs(main, htmls, show_in_separate_tab):
-    DIR_PATH = 'exports/_dependency_parsing_figs'
+    DIR_PATH = os.path.join(wl_settings_default.DEFAULT_DIR_EXPS, '_dependency_parsing_figs')
 
     # Clean cache
     if os.path.exists(DIR_PATH):
