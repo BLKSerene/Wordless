@@ -49,6 +49,7 @@
 - Dependencies: Upgrade Matplotlib to 3.8.0
 - Dependencies: Upgrade NumPy to 1.26.0
 - Dependencies: Upgrade PyInstaller to 6.0
+- Dependencies: Upgrade pymorphy3 to 1.2.1
 - Dependencies: Upgrade SciPy to 1.11.2
 - Dependencies: Upgrade Underthesea to 6.8.0
 
