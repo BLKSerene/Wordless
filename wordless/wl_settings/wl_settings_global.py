@@ -2565,7 +2565,12 @@ def init_settings_global():
 
             'kmr': ['stanza_kmr'],
             'kir': ['stanza_kir'],
-            'lao': ['laonlp_seqlabeling'],
+
+            'lao': [
+                'laonlp_seqlabeling',
+                'laonlp_yunshan_cup_2020'
+            ],
+
             'lat': ['stanza_lat'],
             'lav': ['stanza_lav'],
             'lij': ['stanza_lij'],

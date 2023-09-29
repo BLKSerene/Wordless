@@ -595,8 +595,8 @@ def test_lorge_readability_index():
     print(f'\tother/12: {lorge_other_12}')
 
     assert lorge_eng_0 == 'text_too_short'
-    assert lorge_eng_12_corrected == 12 / 3 * 0.06 + 1 / 12 * 0.1 + 2 / 12 * 0.1 + 1.99
-    assert lorge_eng_12 == 12 / 3 * 0.07 + 1 / 12 * 13.01 + 2 / 12 * 10.73 + 1.6126
+    assert lorge_eng_12_corrected == 12 / 3 * 0.06 + 2 / 12 * 0.1 + 2 / 12 * 0.1 + 1.99
+    assert lorge_eng_12 == 12 / 3 * 0.07 + 2 / 12 * 13.01 + 2 / 12 * 10.73 + 1.6126
     assert lorge_tha_12 != 'no_support'
     assert lorge_other_12 == 'no_support'
 

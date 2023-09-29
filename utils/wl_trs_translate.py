@@ -61,8 +61,10 @@ TRS_LANGS = {
     'Estonian': ['爱沙尼亚语'],
     'Faroese': ['法罗语'],
     'Finnish': ['芬兰语'],
-    'French': ['法语'],
+
     'French (Old)': ['法语（古）'],
+    'French': ['法语'],
+
     'Galician': ['加里西亚语'],
     'Ganda': ['干达语'],
     'Georgian': ['格鲁吉亚语'],
@@ -108,6 +110,7 @@ TRS_LANGS = {
     'Meitei': ['曼尼普尔语'],
     'Mongolian': ['蒙古语'],
     'Nepali': ['尼泊尔语'],
+    'Nigerian Pidgin': ['尼日利亚皮钦语'],
     'Norwegian Bokmål': ['书面挪威语'],
     'Norwegian Nynorsk': ['新挪威语'],
     'Oriya': ['奥里亚语'],
@@ -118,8 +121,10 @@ TRS_LANGS = {
     'Portuguese (Portugal)': ['葡萄牙语（葡萄牙）'],
     'Punjabi (Gurmukhi)': ['旁遮普语（古木基）'],
     'Romanian': ['罗马尼亚语'],
-    'Russian': ['俄语'],
+
     'Russian (Old)': ['俄语（古）'],
+    'Russian': ['俄语'],
+
     'Sámi (Northern)': ['萨米语（北）'],
     'Sanskrit': ['梵语'],
     'Scottish Gaelic': ['苏格兰盖尔语'],
@@ -324,26 +329,28 @@ for element_context in soup.select('context'):
             or ('type' in element_tr.attrs and element_tr['type'] != 'obsolete')
         ):
             tr = element_src.text
+            tr_raw = tr
 
             # Languages
             for lang, trs in TRS_LANGS.items():
-                # Only replace language names at the beginning of the text, after hyphens in names of language utils, or after slashes in encoding names
-                if tr.startswith(lang) or f' - {lang} ' in tr or f'/{lang}' in tr:
-                    if tr.startswith(lang):
-                        tr = tr.replace(lang, trs[0], 1)
-                    elif f' - {lang}' in tr:
-                        tr = tr.replace(f' - {lang} ', f' - {trs[0]} ', 1)
-                    elif f'/{lang}' in tr:
-                        tr = tr.replace(f'/{lang}', f'/{trs[0]}', 1)
-
-                    tr_hit = True
+                # Language names
+                if tr == lang:
+                    tr = trs[0]
+                # Encoding names
+                elif tr.startswith(f'{lang} ('):
+                    tr = tr.replace(f'{lang} (', f'{trs[0]} (', 1)
+                elif tr.startswith(f'{lang}/'):
+                    tr = tr.replace(f'{lang}/', f'{trs[0]}/', 1)
+                elif f'/{lang} (' in tr:
+                    tr = tr.replace(f'/{lang} (', f'/{trs[0]} (', 1)
+                # Names of language utils
+                elif f' - {lang} ' in tr:
+                    tr = tr.replace(f' - {lang} ', f' - {trs[0]} ', 1)
 
             # Encodings
             for encoding, trs in TRS_ENCODINGS.items():
                 if encoding in tr:
                     tr = tr.replace(encoding, trs[0])
-
-                    tr_hit = True
 
                     break
 
@@ -351,8 +358,6 @@ for element_context in soup.select('context'):
             for file_type, trs in TRS_FILE_TYPES.items():
                 if tr == file_type:
                     tr = trs[0]
-
-                    tr_hit = True
 
                     break
 
@@ -365,8 +370,6 @@ for element_context in soup.select('context'):
                     elif tr.endswith(util):
                         tr = tr.replace(util, trs[0], 1)
 
-                    tr_hit = True
-
                     break
 
             # Misc
@@ -374,20 +377,14 @@ for element_context in soup.select('context'):
                 if tr == item:
                     tr = trs[0]
 
-                    tr_hit = True
-
                     break
 
             # Exceptions
-            if any((text in tr for text in [
-                '语 variant:'
-            ])):
-                tr = tr.replace('语 variant:', '语变体：')
-
+            if any((text in tr for text in [])):
                 # Flag translation as unfinished to be reviewed manually
                 unfinished = True
 
-            if tr_hit:
+            if tr_raw != tr:
                 # Do not replace parentheses in file type filters
                 if element_src.text not in TRS_FILE_TYPES:
                     # Parentheses
