@@ -50,7 +50,7 @@
 - Dependencies: Upgrade NumPy to 1.26.0
 - Dependencies: Upgrade PyInstaller to 6.0
 - Dependencies: Upgrade pymorphy3 to 1.2.1
-- Dependencies: Upgrade SciPy to 1.11.2
+- Dependencies: Upgrade SciPy to 1.11.3
 - Dependencies: Upgrade Underthesea to 6.8.0
 
 ## [3.3.0](https://github.com/BLKSerene/Wordless/releases/tag/3.3.0) - 08/18/2023
