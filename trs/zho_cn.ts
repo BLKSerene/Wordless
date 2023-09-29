@@ -169,85 +169,90 @@
 <context>
     <name>Wl_Dialog_About</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="1182"/>
+        <location filename="../wordless/wl_main.py" line="1186"/>
         <source>About Wordless</source>
         <translation>关于 Wordless</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1190"/>
+        <location filename="../wordless/wl_main.py" line="1193"/>
         <source>
-                &lt;div style=&quot;text-align: center;&quot;&gt;
-                    &lt;h2&gt;Wordless {}&lt;/h2&gt;
-                    &lt;div&gt;
-                        An Integrated Corpus Tool with Multilingual Support&lt;br&gt;
-                        for the Study of Language, Literature, and Translation
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            </source>
-        <translation>
-                &lt;div style=&quot;text-align: center;&quot;&gt;
-                    &lt;h2&gt;Wordless {}&lt;/h2&gt;
-                    &lt;div&gt;
-                        一款拥有多语种支持的语料库集成工具&lt;br&gt;
-                        可用于语言学、文学及翻译研究
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            </translation>
+            &lt;div style=&quot;text-align: center;&quot;&gt;
+                &lt;h2&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Wordless&lt;/h2&gt;
+                &lt;div&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Version {}&lt;/div&gt;
+            &lt;/div&gt;
+        </source>
+        <translation>            &lt;div style=&quot;text-align: center;&quot;&gt;
+                &lt;h2&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;Wordless&lt;/h2&gt;
+                &lt;div&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;版本 {}&lt;/div&gt;
+            &lt;/div&gt;
+        </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1202"/>
+        <location filename="../wordless/wl_main.py" line="1200"/>
         <source>
-                &lt;hr&gt;
-                &lt;div style=&quot;text-align: center;&quot;&gt;
-                    Copyright (C) 2018-2023&amp;nbsp;&amp;nbsp;Ye Lei (叶磊)&lt;br&gt;
-                    Licensed Under GNU GPLv3&lt;br&gt;
-                    All Other Rights Reserved
-                &lt;/div&gt;
-            </source>
+            &lt;div style=&quot;text-align: center;&quot;&gt;
+                An Integrated Corpus Tool with Multilingual Support&lt;br&gt;
+                for the Study of Language, Literature, and Translation
+            &lt;/div&gt;
+
+            &lt;hr&gt;
+
+            &lt;div style=&quot;text-align: center;&quot;&gt;
+                Copyright (C) 2018-2023&amp;nbsp;&amp;nbsp;Ye Lei (叶磊)&lt;br&gt;
+                Licensed Under GNU GPLv3&lt;br&gt;
+                All Other Rights Reserved
+            &lt;/div&gt;
+        </source>
         <translation>
-                &lt;hr&gt;
-                &lt;div style=&quot;text-align: center;&quot;&gt;
-                    Copyright (C) 2018-2023&amp;nbsp;&amp;nbsp;叶磊&lt;br&gt;
-                    基于 GNU GPLv3 开源许可&lt;br&gt;
-                    保留所有其他权利
-                &lt;/div&gt;
-            </translation>
+            &lt;div style=&quot;text-align: center;&quot;&gt;
+                一款拥有多语种支持的语料库集成工具&lt;br&gt;
+                可用于语言学、文学及翻译研究
+            &lt;/div&gt;
+
+            &lt;hr&gt;
+
+            &lt;div style=&quot;text-align: center;&quot;&gt;
+                版权所有 (C) 2018-2023&amp;nbsp;&amp;nbsp;Ye Lei (叶磊)&lt;br&gt;
+                基于 GNU GPLv3 协议&lt;br&gt;
+                保留其他所有权利
+            &lt;/div&gt;
+        </translation>
     </message>
 </context>
 <context>
     <name>Wl_Dialog_Acks</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="879"/>
+        <location filename="../wordless/wl_main.py" line="883"/>
         <source>Name</source>
         <translation>名称</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="879"/>
+        <location filename="../wordless/wl_main.py" line="883"/>
         <source>Version</source>
         <translation>版本</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="879"/>
+        <location filename="../wordless/wl_main.py" line="883"/>
         <source>Authors</source>
         <translation>作者</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="879"/>
+        <location filename="../wordless/wl_main.py" line="883"/>
         <source>License</source>
         <translation>许可</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="848"/>
+        <location filename="../wordless/wl_main.py" line="852"/>
         <source>Acknowledgments</source>
         <translation>致谢</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="859"/>
+        <location filename="../wordless/wl_main.py" line="863"/>
         <source>ACKNOWLEDGMENTS.md</source>
         <translation>ACKNOWLEDGMENTS_zho_cn.md</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="871"/>
+        <location filename="../wordless/wl_main.py" line="875"/>
         <source>
                 &lt;div&gt;
                     As Wordless stands on the shoulders of giants, I hereby extend my sincere gratitude to the following open-source projects without which this project would not have been possible:
@@ -263,7 +268,7 @@
 <context>
     <name>Wl_Dialog_Changelog</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="1061"/>
+        <location filename="../wordless/wl_main.py" line="1065"/>
         <source>Changelog</source>
         <translation>更新日志</translation>
     </message>
@@ -271,17 +276,17 @@
 <context>
     <name>Wl_Dialog_Check_Updates</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="918"/>
+        <location filename="../wordless/wl_main.py" line="922"/>
         <source>Check for updates on startup</source>
         <translation>启动时检查更新</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="974"/>
+        <location filename="../wordless/wl_main.py" line="978"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="967"/>
+        <location filename="../wordless/wl_main.py" line="971"/>
         <source>
                 &lt;div&gt;
                     Checking for updates...
@@ -294,7 +299,7 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="987"/>
+        <location filename="../wordless/wl_main.py" line="991"/>
         <source>
                         &lt;div&gt;
                             Hooray, you are using the latest version of Wordless!
@@ -307,7 +312,7 @@
                     </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="994"/>
+        <location filename="../wordless/wl_main.py" line="998"/>
         <source>
                     &lt;div&gt;
                         A network error has occurred, please check your network settings and try again or &lt;a href=&quot;https://github.com/BLKSerene/Wordless/releases&quot;&gt;check for updates manually&lt;/a&gt;.
@@ -320,17 +325,17 @@
                 </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="1001"/>
+        <location filename="../wordless/wl_main.py" line="1005"/>
         <source>OK</source>
         <translation>确认</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="905"/>
+        <location filename="../wordless/wl_main.py" line="909"/>
         <source>Check for Updates</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="980"/>
+        <location filename="../wordless/wl_main.py" line="984"/>
         <source>
                         &lt;div&gt;
                             Wordless {} is out, click &lt;a href=&quot;https://github.com/BLKSerene/Wordless#download&quot;&gt;&lt;b&gt;HERE&lt;/b&gt;&lt;/a&gt; to download the latest version of Wordless.
@@ -343,27 +348,27 @@
                     </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="915"/>
+        <location filename="../wordless/wl_main.py" line="919"/>
         <source>Current version: </source>
         <translation>当前版本：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="919"/>
+        <location filename="../wordless/wl_main.py" line="923"/>
         <source>Try again</source>
         <translation>重试</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="972"/>
+        <location filename="../wordless/wl_main.py" line="976"/>
         <source>Latest version: Checking...</source>
         <translation>最新版本：查询中……</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="992"/>
+        <location filename="../wordless/wl_main.py" line="996"/>
         <source>Latest version: </source>
         <translation>最新版本：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="999"/>
+        <location filename="../wordless/wl_main.py" line="1003"/>
         <source>Latest version: Network error</source>
         <translation>最新版本：网络错误</translation>
     </message>
@@ -371,27 +376,27 @@
 <context>
     <name>Wl_Dialog_Citing</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="717"/>
+        <location filename="../wordless/wl_main.py" line="721"/>
         <source>Citing</source>
         <translation>引用</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="734"/>
+        <location filename="../wordless/wl_main.py" line="738"/>
         <source>Select citation system:</source>
         <translation>选择引用体系：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="737"/>
+        <location filename="../wordless/wl_main.py" line="741"/>
         <source>APA (7th edition)</source>
         <translation>APA（第七版）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="737"/>
+        <location filename="../wordless/wl_main.py" line="741"/>
         <source>MLA (8th edition)</source>
         <translation>MLA（第八版）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="725"/>
+        <location filename="../wordless/wl_main.py" line="729"/>
         <source>
                 &lt;div&gt;
                     If you are going to publish a work that uses Wordless, please cite as follows.
@@ -453,7 +458,7 @@
 <context>
     <name>Wl_Dialog_Confirm_Exit</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="135"/>
+        <location filename="../wordless/wl_main.py" line="137"/>
         <source>
                 &lt;div&gt;
                     Are you sure you want to exit Wordless?
@@ -472,22 +477,22 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="147"/>
+        <location filename="../wordless/wl_main.py" line="149"/>
         <source>Always confirm on exit</source>
         <translation>关闭时总是提示确认</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="148"/>
+        <location filename="../wordless/wl_main.py" line="150"/>
         <source>Exit</source>
         <translation>退出</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="149"/>
+        <location filename="../wordless/wl_main.py" line="151"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="128"/>
+        <location filename="../wordless/wl_main.py" line="130"/>
         <source>Exit Wordless</source>
         <translation>退出 Wordless</translation>
     </message>
@@ -523,7 +528,7 @@
 <context>
     <name>Wl_Dialog_Donating</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="782"/>
+        <location filename="../wordless/wl_main.py" line="786"/>
         <source>
                 &lt;div&gt;
                     If you would like to support the development of Wordless, you may donate via &lt;a href=&quot;https://www.paypal.com/&quot;&gt;PayPal&lt;/a&gt;, &lt;a href=&quot;https://global.alipay.com/&quot;&gt;Alipay&lt;/a&gt;, or &lt;a href=&quot;https://pay.weixin.qq.com/index.php/public/wechatpay_en&quot;&gt;WeChat Pay&lt;/a&gt;.
@@ -536,22 +541,22 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="790"/>
+        <location filename="../wordless/wl_main.py" line="794"/>
         <source>Donating via:</source>
         <translation>赞助途径：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="830"/>
+        <location filename="../wordless/wl_main.py" line="834"/>
         <source>Alipay</source>
         <translation>支付宝</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="834"/>
+        <location filename="../wordless/wl_main.py" line="838"/>
         <source>WeChat Pay</source>
         <translation>微信支付</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="776"/>
+        <location filename="../wordless/wl_main.py" line="780"/>
         <source>Donating</source>
         <translation>赞助</translation>
     </message>
@@ -582,12 +587,12 @@
 <context>
     <name>Wl_Dialog_Need_Help</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="614"/>
+        <location filename="../wordless/wl_main.py" line="618"/>
         <source>Need Help?</source>
         <translation>需要帮助？</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="621"/>
+        <location filename="../wordless/wl_main.py" line="625"/>
         <source>
                 &lt;div&gt;
                     If you have any questions, find software bugs, need to provide feedback, or want to submit feature requests, you may seek support from the open-source community or contact me directly via any of the support channels listed below.
@@ -600,62 +605,62 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="630"/>
+        <location filename="../wordless/wl_main.py" line="634"/>
         <source>Support Channel</source>
         <translation>支持渠道</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="630"/>
+        <location filename="../wordless/wl_main.py" line="634"/>
         <source>Information</source>
         <translation>信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="647"/>
+        <location filename="../wordless/wl_main.py" line="651"/>
         <source>&lt;a href=&quot;https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md&quot;&gt;Documentation&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md&quot;&gt;文档&lt;/a&gt;</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="669"/>
+        <location filename="../wordless/wl_main.py" line="673"/>
         <source>&lt;a href=&quot;https://github.com/BLKSerene/Wordless/issues&quot;&gt;Gihub Issues&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="680"/>
+        <location filename="../wordless/wl_main.py" line="684"/>
         <source>&lt;a href=&quot;https://github.com/BLKSerene/Wordless/discussions&quot;&gt;Gihub Discussions&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="643"/>
+        <location filename="../wordless/wl_main.py" line="647"/>
         <source>Official documentation</source>
         <translation>官方文档</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="654"/>
+        <location filename="../wordless/wl_main.py" line="658"/>
         <source>Tutorial videos</source>
         <translation>视频教程</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="665"/>
+        <location filename="../wordless/wl_main.py" line="669"/>
         <source>Bug reports</source>
         <translation>Bug 提交</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="676"/>
+        <location filename="../wordless/wl_main.py" line="680"/>
         <source>Usage questions</source>
         <translation>使用问题</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="687"/>
+        <location filename="../wordless/wl_main.py" line="691"/>
         <source>Email support</source>
         <translation>邮件咨询</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="696"/>
+        <location filename="../wordless/wl_main.py" line="700"/>
         <source>&lt;a href=&quot;https://www.wechat.com/en/&quot;&gt;WeChat&lt;/a&gt; official account</source>
         <translation>&lt;a href=&quot;https://www.wechat.com/en/&quot;&gt;微信&lt;/a&gt;公众号</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="658"/>
+        <location filename="../wordless/wl_main.py" line="662"/>
         <source>&lt;a href=&quot;https://www.youtube.com/@BLKSerene&quot;&gt;YouTube&lt;/a&gt; | &lt;a href=&quot;https://space.bilibili.com/34963752/video&quot;&gt;bilibili&lt;/a&gt;</source>
         <translation>&lt;a href=&quot;https://www.youtube.com/@BLKSerene&quot;&gt;YouTube&lt;/a&gt; | &lt;a href=&quot;https://space.bilibili.com/34963752/video&quot;&gt;B 站&lt;/a&gt;</translation>
     </message>
@@ -663,12 +668,12 @@
 <context>
     <name>Wl_Dialog_Preview_Settings</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_dependency_parsing.py" line="272"/>
+        <location filename="../wordless/wl_settings/wl_settings_dependency_parsing.py" line="268"/>
         <source>coarse-grained</source>
         <translation>粗分</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_dependency_parsing.py" line="270"/>
+        <location filename="../wordless/wl_settings/wl_settings_dependency_parsing.py" line="266"/>
         <source>fine-grained</source>
         <translation>细分</translation>
     </message>
@@ -969,27 +974,27 @@
 <context>
     <name>Wl_Dialog_Settings</name>
     <message>
-        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="191"/>
+        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="192"/>
         <source>Save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="192"/>
+        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="193"/>
         <source>Cancel</source>
         <translation>取消</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="126"/>
+        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="127"/>
         <source>OK</source>
         <translation>确认</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="153"/>
+        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="154"/>
         <source>Copy</source>
         <translation>复制</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="154"/>
+        <location filename="../wordless/wl_dialogs/wl_dialogs.py" line="155"/>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
@@ -997,7 +1002,7 @@
 <context>
     <name>Wl_Loading</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="101"/>
+        <location filename="../wordless/wl_main.py" line="103"/>
         <source>Initializing Wordless...</source>
         <translation>初始化 Wordless……</translation>
     </message>
@@ -1005,242 +1010,242 @@
 <context>
     <name>Wl_Main</name>
     <message>
-        <location filename="../wordless/wl_main.py" line="192"/>
+        <location filename="../wordless/wl_main.py" line="194"/>
         <source>Loading settings...</source>
         <translation>载入设置……</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="216"/>
+        <location filename="../wordless/wl_main.py" line="218"/>
         <source>Initializing main window...</source>
         <translation>初始化主窗体……</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="233"/>
+        <location filename="../wordless/wl_main.py" line="235"/>
         <source>Ready!</source>
         <translation>就绪！</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="246"/>
+        <location filename="../wordless/wl_main.py" line="248"/>
         <source>Starting Wordless...</source>
         <translation>启动 Wordless……</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="274"/>
+        <location filename="../wordless/wl_main.py" line="276"/>
         <source>&amp;File</source>
         <translation>文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="275"/>
+        <location filename="../wordless/wl_main.py" line="277"/>
         <source>&amp;Preferences</source>
         <translation>偏好</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="276"/>
+        <location filename="../wordless/wl_main.py" line="278"/>
         <source>&amp;Help</source>
         <translation>帮助</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="279"/>
+        <location filename="../wordless/wl_main.py" line="281"/>
         <source>&amp;Open Files...</source>
         <translation>打开文件...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="281"/>
+        <location filename="../wordless/wl_main.py" line="283"/>
         <source>Open files</source>
         <translation>打开文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="282"/>
+        <location filename="../wordless/wl_main.py" line="284"/>
         <source>Open &amp;Folder...</source>
         <translation>打开文件夹...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="283"/>
+        <location filename="../wordless/wl_main.py" line="285"/>
         <source>Open all files in the folder</source>
         <translation>打开文件夹下的所有文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="284"/>
+        <location filename="../wordless/wl_main.py" line="286"/>
         <source>&amp;Reopen Closed Files</source>
         <translation>重新打开已关闭文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="285"/>
+        <location filename="../wordless/wl_main.py" line="287"/>
         <source>Reopen closed files</source>
         <translation>重新打开已经关闭的文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="289"/>
+        <location filename="../wordless/wl_main.py" line="291"/>
         <source>S&amp;elect All</source>
         <translation>全选</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="291"/>
+        <location filename="../wordless/wl_main.py" line="293"/>
         <source>Select all files</source>
         <translation>勾选所有文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="292"/>
+        <location filename="../wordless/wl_main.py" line="294"/>
         <source>&amp;Deselect All</source>
         <translation>取消选中所有</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="294"/>
+        <location filename="../wordless/wl_main.py" line="296"/>
         <source>Deselect all files</source>
         <translation>取消勾选所有文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="295"/>
+        <location filename="../wordless/wl_main.py" line="297"/>
         <source>&amp;Invert Selection</source>
         <translation>反选</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="297"/>
+        <location filename="../wordless/wl_main.py" line="299"/>
         <source>Invert file selection</source>
         <translation>反向勾选文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="301"/>
+        <location filename="../wordless/wl_main.py" line="303"/>
         <source>&amp;Close Selected</source>
         <translation>关闭选中</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="303"/>
+        <location filename="../wordless/wl_main.py" line="305"/>
         <source>Close selected file(s)</source>
         <translation>关闭已选中的文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="304"/>
+        <location filename="../wordless/wl_main.py" line="306"/>
         <source>C&amp;lose All</source>
         <translation>关闭所有</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="306"/>
+        <location filename="../wordless/wl_main.py" line="308"/>
         <source>Close all files</source>
         <translation>关闭所有文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="310"/>
+        <location filename="../wordless/wl_main.py" line="312"/>
         <source>&amp;Exit...</source>
         <translation>退出...</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="312"/>
+        <location filename="../wordless/wl_main.py" line="314"/>
         <source>Exit the program</source>
         <translation>退出程序</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="316"/>
+        <location filename="../wordless/wl_main.py" line="318"/>
         <source>&amp;Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="317"/>
+        <location filename="../wordless/wl_main.py" line="319"/>
         <source>Change settings</source>
         <translation>更改设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="319"/>
+        <location filename="../wordless/wl_main.py" line="321"/>
         <source>&amp;Display Language</source>
         <translation>显示语言</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="339"/>
+        <location filename="../wordless/wl_main.py" line="341"/>
         <source>&amp;Reset Layouts</source>
         <translation>重置布局</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="340"/>
+        <location filename="../wordless/wl_main.py" line="342"/>
         <source>Reset layouts</source>
         <translation>重置布局</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="345"/>
+        <location filename="../wordless/wl_main.py" line="347"/>
         <source>&amp;Show Status Bar</source>
         <translation>显示状态栏</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="347"/>
+        <location filename="../wordless/wl_main.py" line="349"/>
         <source>Show/Hide the status bar</source>
         <translation>显示/隐藏状态栏</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="355"/>
+        <location filename="../wordless/wl_main.py" line="357"/>
         <source>&amp;Citing</source>
         <translation>引用</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="356"/>
+        <location filename="../wordless/wl_main.py" line="358"/>
         <source>Show information about citing</source>
         <translation>显示引用信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="364"/>
+        <location filename="../wordless/wl_main.py" line="366"/>
         <source>&amp;Acknowledgments</source>
         <translation>致谢</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="365"/>
+        <location filename="../wordless/wl_main.py" line="367"/>
         <source>Show acknowldgments</source>
         <translation>显示致谢</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="351"/>
+        <location filename="../wordless/wl_main.py" line="353"/>
         <source>&amp;Need Help?</source>
         <translation>需要帮助？</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="353"/>
+        <location filename="../wordless/wl_main.py" line="355"/>
         <source>Show help information</source>
         <translation>显示帮助信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="361"/>
+        <location filename="../wordless/wl_main.py" line="363"/>
         <source>&amp;Donating</source>
         <translation>赞助</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="362"/>
+        <location filename="../wordless/wl_main.py" line="364"/>
         <source>Show information about donating</source>
         <translation>显示赞助相关信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="370"/>
+        <location filename="../wordless/wl_main.py" line="372"/>
         <source>Check &amp;for Updates</source>
         <translation>检查更新</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="371"/>
+        <location filename="../wordless/wl_main.py" line="373"/>
         <source>Check for updates of Wordless</source>
         <translation>检查 Wordless 更新</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="373"/>
+        <location filename="../wordless/wl_main.py" line="375"/>
         <source>C&amp;hangelog</source>
         <translation>更新日志</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="374"/>
+        <location filename="../wordless/wl_main.py" line="376"/>
         <source>Show Changelog</source>
         <translation>显示更新日志</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="376"/>
+        <location filename="../wordless/wl_main.py" line="378"/>
         <source>About &amp;Wordless</source>
         <translation>关于 Wordless</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="377"/>
+        <location filename="../wordless/wl_main.py" line="379"/>
         <source>Show information about Wordless</source>
         <translation>显示 Wordless 的相关信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="405"/>
+        <location filename="../wordless/wl_main.py" line="409"/>
         <source>Reset Layouts</source>
         <translation>重置布局</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="405"/>
+        <location filename="../wordless/wl_main.py" line="409"/>
         <source>
                 &lt;div&gt;Do you want to reset all layouts to their default settings?&lt;/div&gt;
             </source>
@@ -1249,57 +1254,57 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="492"/>
+        <location filename="../wordless/wl_main.py" line="496"/>
         <source>Profiler</source>
         <translation>分析工具</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="496"/>
+        <location filename="../wordless/wl_main.py" line="500"/>
         <source>Concordancer</source>
         <translation>索引工具</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="500"/>
+        <location filename="../wordless/wl_main.py" line="504"/>
         <source>Parallel Concordancer</source>
         <translation>平行索引工具</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="508"/>
+        <location filename="../wordless/wl_main.py" line="512"/>
         <source>Wordlist Generator</source>
         <translation>词表生成器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="512"/>
+        <location filename="../wordless/wl_main.py" line="516"/>
         <source>N-gram Generator</source>
         <translation>n 元组生成器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="516"/>
+        <location filename="../wordless/wl_main.py" line="520"/>
         <source>Collocation Extractor</source>
         <translation>搭配抽取器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="520"/>
+        <location filename="../wordless/wl_main.py" line="524"/>
         <source>Colligation Extractor</source>
         <translation>类联接抽取器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="540"/>
+        <location filename="../wordless/wl_main.py" line="544"/>
         <source>Keyword Extractor</source>
         <translation>关键词抽取器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="460"/>
+        <location filename="../wordless/wl_main.py" line="464"/>
         <source>Observed Files</source>
         <translation>观察文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="461"/>
+        <location filename="../wordless/wl_main.py" line="465"/>
         <source>Reference Files</source>
         <translation>参照文件</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_main.py" line="504"/>
+        <location filename="../wordless/wl_main.py" line="508"/>
         <source>Dependency Parser</source>
         <translation>依存分析器</translation>
     </message>
@@ -1372,22 +1377,22 @@
         <translation>统计方法</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings.py" line="183"/>
+        <location filename="../wordless/wl_settings/wl_settings.py" line="184"/>
         <source>Dispersion</source>
         <translation>分布</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings.py" line="184"/>
+        <location filename="../wordless/wl_settings/wl_settings.py" line="185"/>
         <source>Adjusted Frequency</source>
         <translation>调整频数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings.py" line="185"/>
+        <location filename="../wordless/wl_settings/wl_settings.py" line="186"/>
         <source>Statistical Significance</source>
         <translation>统计显著性</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings.py" line="187"/>
+        <location filename="../wordless/wl_settings/wl_settings.py" line="188"/>
         <source>Effect Size</source>
         <translation>效应量</translation>
     </message>
@@ -1438,19 +1443,14 @@
         <translation>词性标注</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings.py" line="186"/>
+        <location filename="../wordless/wl_settings/wl_settings.py" line="187"/>
         <source>Bayes Factor</source>
         <translation>贝叶斯因子</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings.py" line="189"/>
+        <location filename="../wordless/wl_settings/wl_settings.py" line="190"/>
         <source>Tables</source>
         <translation>表格</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings.py" line="190"/>
-        <source>Profiler</source>
-        <translation>分析工具</translation>
     </message>
     <message>
         <location filename="../wordless/wl_settings/wl_settings.py" line="179"/>
@@ -1492,6 +1492,11 @@
         <source>Sentiment Analysis</source>
         <translation>情感分析</translation>
     </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings.py" line="183"/>
+        <source>Lexical Diversity</source>
+        <translation>词汇多样性</translation>
+    </message>
 </context>
 <context>
     <name>Wl_Settings_Dependency_Parsing</name>
@@ -1526,12 +1531,12 @@
         <translation>预览设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_dependency_parsing.py" line="172"/>
+        <location filename="../wordless/wl_settings/wl_settings_dependency_parsing.py" line="168"/>
         <source>Show preview</source>
         <translation>显示预览</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_dependency_parsing.py" line="138"/>
+        <location filename="../wordless/wl_settings/wl_settings_dependency_parsing.py" line="134"/>
         <source>Processing...</source>
         <translation>处理中……</translation>
     </message>
@@ -1539,12 +1544,12 @@
 <context>
     <name>Wl_Settings_Figs_Line_Charts</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="97"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="98"/>
         <source>General Settings</source>
         <translation>全局设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="99"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="100"/>
         <source>Font:</source>
         <translation>字体：</translation>
     </message>
@@ -1552,132 +1557,132 @@
 <context>
     <name>Wl_Settings_Figs_Network_Graphs</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="427"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="429"/>
         <source>Node Settings</source>
         <translation>节点设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="429"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="431"/>
         <source>Node shape:</source>
         <translation>节点形状：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="431"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="433"/>
         <source>Node size:</source>
         <translation>节点大小：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="433"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="435"/>
         <source>Node color:</source>
         <translation>节点颜色：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="435"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="437"/>
         <source>Node opacity:</source>
         <translation>节点不透明度：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="453"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="455"/>
         <source>Node Label Settings</source>
         <translation>节点标签设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="535"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="537"/>
         <source>Label font:</source>
         <translation>标签字体：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="537"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="539"/>
         <source>Label font size:</source>
         <translation>标签字体大小：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="539"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="541"/>
         <source>Label font weight:</source>
         <translation>标签字体粗细：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="541"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="543"/>
         <source>Label font color:</source>
         <translation>标签字体颜色：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="543"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="545"/>
         <source>Label opacity:</source>
         <translation>标签不透明度：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="481"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="483"/>
         <source>Edge Settings</source>
         <translation>边设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="483"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="485"/>
         <source>Connection style:</source>
         <translation>连接样式：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="485"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="487"/>
         <source>Edge width:</source>
         <translation>边的宽度：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="486"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="488"/>
         <source>Minimum</source>
         <translation>最小</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="487"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="489"/>
         <source>Maximum</source>
         <translation>最大</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="492"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="494"/>
         <source>Edge style:</source>
         <translation>边的样式：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="494"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="496"/>
         <source>Edge color:</source>
         <translation>边的颜色：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="496"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="498"/>
         <source>Edge opacity:</source>
         <translation>边的不透明度：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="498"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="500"/>
         <source>Arrow style:</source>
         <translation>箭头样式：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="500"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="502"/>
         <source>Arrow size:</source>
         <translation>箭头大小：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="530"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="532"/>
         <source>Edge Label Settings</source>
         <translation>边的标签设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="532"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="534"/>
         <source>Label position:</source>
         <translation>标签位置：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="534"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="536"/>
         <source>Rotate labels to lie parallel to edges</source>
         <translation>旋转标签使其与边平行</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="564"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="566"/>
         <source>Advanced Settings</source>
         <translation>高级设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="566"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="568"/>
         <source>Layout:</source>
         <translation>布局：</translation>
     </message>
@@ -1685,112 +1690,112 @@
 <context>
     <name>Wl_Settings_Figs_Word_Clouds</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="145"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="146"/>
         <source>Font Settings</source>
         <translation>字体设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="149"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="150"/>
         <source>Font:</source>
         <translation>字体：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="152"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="153"/>
         <source>Select Font</source>
         <translation>选择字体</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="159"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="160"/>
         <source>Font size:</source>
         <translation>字体大小：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="160"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="161"/>
         <source>Minimum</source>
         <translation>最小</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="161"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="162"/>
         <source>Maximum</source>
         <translation>最大</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="166"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="167"/>
         <source>Relative scaling:</source>
         <translation>相对缩放：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="169"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="170"/>
         <source>Font color:</source>
         <translation>字体颜色：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="370"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="372"/>
         <source>Custom</source>
         <translation>自定义</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="311"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="312"/>
         <source>Monochrome</source>
         <translation>单色</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="314"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="315"/>
         <source>Colormap</source>
         <translation>色谱</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="191"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="192"/>
         <source>Auto</source>
         <translation>自动</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="229"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="230"/>
         <source>Background Settings</source>
         <translation>背景设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="231"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="232"/>
         <source>Background color:</source>
         <translation>背景颜色：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="245"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="246"/>
         <source>Mask Settings</source>
         <translation>蒙版设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="248"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="249"/>
         <source>Mask path:</source>
         <translation>蒙版路径：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="250"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="251"/>
         <source>Select Mask</source>
         <translation>选择蒙版</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="256"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="257"/>
         <source>Contour width:</source>
         <translation>轮廓宽度：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="258"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="259"/>
         <source>Contour color:</source>
         <translation>轮廓颜色：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="278"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="279"/>
         <source>Advanced Settings</source>
         <translation>高级设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="280"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="281"/>
         <source>Prefer horizontal:</source>
         <translation>水平优先度：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="282"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="283"/>
         <source>Allow repeated words</source>
         <translation>允许重复单词</translation>
     </message>
@@ -2081,7 +2086,7 @@
 <context>
     <name>Wl_Settings_Measures_Adjusted_Freq</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="424"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="606"/>
         <source>General Settings</source>
         <translation>全局设置</translation>
     </message>
@@ -2089,17 +2094,17 @@
 <context>
     <name>Wl_Settings_Measures_Bayes_Factor</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="742"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="924"/>
         <source>Log-likelihood Ratio Test</source>
         <translation>对数似然比检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="744"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="926"/>
         <source>Apply Yates&apos;s correction for continuity</source>
         <translation>应用耶茨连续性校正</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="750"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="932"/>
         <source>Student&apos;s t-test (2-sample)</source>
         <translation>学生 t 检验（双样本）</translation>
     </message>
@@ -2107,17 +2112,17 @@
 <context>
     <name>Wl_Settings_Measures_Dispersion</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="365"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="547"/>
         <source>General Settings</source>
         <translation>全局设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="380"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="562"/>
         <source>Gries&apos;s DP</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="382"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="564"/>
         <source>Apply normalization</source>
         <translation>应用归一化</translation>
     </message>
@@ -2125,14 +2130,87 @@
 <context>
     <name>Wl_Settings_Measures_Effect_Size</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="823"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="1005"/>
         <source>Kilgarriff&apos;s Ratio</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="825"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="1007"/>
         <source>Smoothing parameter:</source>
         <translation>平滑系数：</translation>
+    </message>
+</context>
+<context>
+    <name>Wl_Settings_Measures_Lexical_Diversity</name>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="365"/>
+        <source>HD-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="381"/>
+        <source>Sample size:</source>
+        <translation>样本大小：</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="379"/>
+        <source>LogTTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="399"/>
+        <source>Mean Segmental TTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="401"/>
+        <source>Number of tokens in each segment:</source>
+        <translation>各部分中形符数：</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="413"/>
+        <source>Measure of Textual Lexical Diversity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="415"/>
+        <source>Factor size:</source>
+        <translation>因子大小：</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="428"/>
+        <source>Moving-average TTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="430"/>
+        <source>Window size:</source>
+        <translation>窗口大小：</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="442"/>
+        <source>Repeat Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="461"/>
+        <source>Use data:</source>
+        <translation>使用数据：</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="464"/>
+        <source>Rank-frequency distribution</source>
+        <translation>频数排序分布</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="464"/>
+        <source>Frequency spectrum</source>
+        <translation>频数谱</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="459"/>
+        <source>Shannon Entropy</source>
+        <translation>香农熵</translation>
     </message>
 </context>
 <context>
@@ -2175,7 +2253,7 @@
     <message>
         <location filename="../wordless/wl_settings/wl_settings_measures.py" line="62"/>
         <source>Cloze criterion score:</source>
-        <translation type="unfinished"></translation>
+        <translation>完型填空标准分：</translation>
     </message>
     <message>
         <location filename="../wordless/wl_settings/wl_settings_measures.py" line="75"/>
@@ -2215,17 +2293,12 @@
     <message>
         <location filename="../wordless/wl_settings/wl_settings_measures.py" line="123"/>
         <source>Dutch variant:</source>
-        <translation type="unfinished">荷兰语变体：</translation>
+        <translation>荷兰语变体：</translation>
     </message>
     <message>
         <location filename="../wordless/wl_settings/wl_settings_measures.py" line="125"/>
         <source>Spanish variant:</source>
-        <translation type="unfinished">西班牙语变体：</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="128"/>
-        <source>Brouwer&apos;s Leesindex A</source>
-        <translation>Brouwer Leesindex A</translation>
+        <translation>西班牙语变体：</translation>
     </message>
     <message>
         <location filename="../wordless/wl_settings/wl_settings_measures.py" line="149"/>
@@ -2245,7 +2318,7 @@
     <message>
         <location filename="../wordless/wl_settings/wl_settings_measures.py" line="159"/>
         <source>English variant:</source>
-        <translation type="unfinished">英语变体：</translation>
+        <translation>英语变体：</translation>
     </message>
     <message>
         <location filename="../wordless/wl_settings/wl_settings_measures.py" line="162"/>
@@ -2291,57 +2364,57 @@
 <context>
     <name>Wl_Settings_Measures_Statistical_Significance</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="469"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="651"/>
         <source>Fisher&apos;s Exact Test</source>
         <translation>费希尔精确检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="483"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="665"/>
         <source>Log-likelihood Ratio Test</source>
         <translation>对数似然比检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="529"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="711"/>
         <source>Apply Yates&apos;s correction for continuity</source>
         <translation>应用耶茨连续性校正</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="491"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="673"/>
         <source>Mann-Whitney U Test</source>
         <translation>曼惠特尼 U 检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="507"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="689"/>
         <source>Apply continuity correction</source>
         <translation>应用连续性校正</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="527"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="709"/>
         <source>Pearson&apos;s Chi-squared Test</source>
         <translation>皮尔森卡方检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="535"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="717"/>
         <source>Student&apos;s t-test (1-sample)</source>
         <translation>学生 t 检验（单样本）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="549"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="731"/>
         <source>Student&apos;s t-test (2-sample)</source>
         <translation>学生 t 检验（双样本）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="582"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="764"/>
         <source>Welch&apos;s t-test</source>
         <translation>Welch t 检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="615"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="797"/>
         <source>z-score</source>
         <translation>z 值</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="629"/>
+        <location filename="../wordless/wl_settings/wl_settings_measures.py" line="811"/>
         <source>z-score (Berry-Rogghe)</source>
         <translation>z 值（Berry-Rogghe）</translation>
     </message>
@@ -2432,17 +2505,17 @@
         <translation>示例</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="405"/>
+        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="409"/>
         <source>Fetching data...</source>
         <translation>获取数据中……</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="469"/>
+        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="473"/>
         <source>Reset Mappings</source>
         <translation>重置映射</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="469"/>
+        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="473"/>
         <source>
                 &lt;div&gt;Do you want to reset all mappings to their default settings?&lt;/div&gt;
                 &lt;div&gt;&lt;b&gt;Note: This will only affect the mapping settings in the currently shown table.&lt;/b&gt;&lt;/div&gt;
@@ -2453,12 +2526,12 @@
             </translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="480"/>
+        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="484"/>
         <source>Reset All Mappings</source>
         <translation>重置所有映射</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="480"/>
+        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="484"/>
         <source>
                 &lt;div&gt;Do you want to reset all mappings to their default settings?&lt;/div&gt;
                 &lt;div&gt;&lt;b&gt;Warning: This will affect the mapping settings in all tables!&lt;/b&gt;&lt;/div&gt;
@@ -2479,7 +2552,7 @@
         <translation>重置所有</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="446"/>
+        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="450"/>
         <source>Number of part-of-speech tags: </source>
         <translation>词性标签数：</translation>
     </message>
@@ -2631,7 +2704,7 @@
         <translation>选择语种：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_syl_tokenization.py" line="151"/>
+        <location filename="../wordless/wl_settings/wl_settings_syl_tokenization.py" line="163"/>
         <source>Show preview</source>
         <translation>显示预览</translation>
     </message>
@@ -2677,42 +2750,42 @@
 <context>
     <name>Wl_Settings_Tables_Concordancer</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="150"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="107"/>
         <source>Sorting Settings</source>
         <translation>排序设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="152"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="109"/>
         <source>Highlight colors:</source>
         <translation>高亮颜色：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="153"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="110"/>
         <source>Level 1 / Node:</source>
         <translation>第1级/节点：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="155"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="112"/>
         <source>Level 2:</source>
         <translation>第2级：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="157"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="114"/>
         <source>Level 3:</source>
         <translation>第3级：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="159"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="116"/>
         <source>Level 4:</source>
         <translation>第4级：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="161"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="118"/>
         <source>Level 5:</source>
         <translation>第5级：</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="163"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="120"/>
         <source>Level 6:</source>
         <translation>第6级：</translation>
     </message>
@@ -2720,27 +2793,14 @@
 <context>
     <name>Wl_Settings_Tables_Parallel_Concordancer</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="223"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="180"/>
         <source>Color Settings</source>
         <translation>颜色设置</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="225"/>
+        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="182"/>
         <source>Search term color:</source>
         <translation>检索项颜色：</translation>
-    </message>
-</context>
-<context>
-    <name>Wl_Settings_Tables_Profiler</name>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="107"/>
-        <source>General Settings</source>
-        <translation>全局设置</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_tables.py" line="109"/>
-        <source>Number of tokens in each section when calculating standardized type-token ratio:</source>
-        <translation>计算标准化类符形符比时各部分中的形符数：</translation>
     </message>
 </context>
 <context>
@@ -3629,47 +3689,47 @@ Frequency %</source>
 <context>
     <name>Wl_Table_Profiler_Len_Breakdown</name>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="961"/>
+        <location filename="../wordless/wl_profiler.py" line="974"/>
         <source>Total</source>
         <translation>合计</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="990"/>
+        <location filename="../wordless/wl_profiler.py" line="1003"/>
         <source>Count of {}-token-long Sentences</source>
         <translation>{}个形符长的句子数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="994"/>
+        <location filename="../wordless/wl_profiler.py" line="1007"/>
         <source>Count of {}-token-long Sentences %</source>
         <translation>{}个形符长的句子数%</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="1026"/>
+        <location filename="../wordless/wl_profiler.py" line="1039"/>
         <source>Count of {}-token-long Sentence Segment</source>
         <translation>{}个形符长的句段数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="1030"/>
+        <location filename="../wordless/wl_profiler.py" line="1043"/>
         <source>Count of {}-token-long Sentence Segment %</source>
         <translation>{}个形符长的句段数%</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="1098"/>
+        <location filename="../wordless/wl_profiler.py" line="1111"/>
         <source>Count of {}-character-long Tokens</source>
         <translation>{}个字符长的形符数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="1102"/>
+        <location filename="../wordless/wl_profiler.py" line="1115"/>
         <source>Count of {}-character-long Tokens %</source>
         <translation>{}个字符长的形符数%</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="1062"/>
+        <location filename="../wordless/wl_profiler.py" line="1075"/>
         <source>Count of {}-syllables-long Tokens</source>
         <translation>{}个音节长的形符数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="1066"/>
+        <location filename="../wordless/wl_profiler.py" line="1079"/>
         <source>Count of {}-syllables-long Tokens %</source>
         <translation>{}个音节长的形符数%</translation>
     </message>
@@ -3677,14 +3737,22 @@ Frequency %</source>
 <context>
     <name>Wl_Table_Profiler_Lens</name>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="821"/>
+        <location filename="../wordless/wl_profiler.py" line="839"/>
         <source>Total</source>
         <translation>合计</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="920"/>
+        <location filename="../wordless/wl_profiler.py" line="933"/>
         <source>No language support</source>
         <translation>无语种支持</translation>
+    </message>
+</context>
+<context>
+    <name>Wl_Table_Profiler_Lexical_Diversity</name>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="636"/>
+        <source>Total</source>
+        <translation>合计</translation>
     </message>
 </context>
 <context>
@@ -3703,14 +3771,6 @@ Frequency %</source>
         <location filename="../wordless/wl_profiler.py" line="436"/>
         <source>Text is too short</source>
         <translation>文件过短</translation>
-    </message>
-</context>
-<context>
-    <name>Wl_Table_Profiler_Ttrs</name>
-    <message>
-        <location filename="../wordless/wl_profiler.py" line="613"/>
-        <source>Total</source>
-        <translation>合计</translation>
     </message>
 </context>
 <context>
@@ -3986,7 +4046,7 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Colligation_Extractor_Fig</name>
     <message>
-        <location filename="../wordless/wl_colligation_extractor.py" line="1241"/>
+        <location filename="../wordless/wl_colligation_extractor.py" line="1254"/>
         <source>Rendering figure...</source>
         <translation>渲染图表中……</translation>
     </message>
@@ -3994,7 +4054,7 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Colligation_Extractor_Table</name>
     <message>
-        <location filename="../wordless/wl_colligation_extractor.py" line="1230"/>
+        <location filename="../wordless/wl_colligation_extractor.py" line="1243"/>
         <source>Rendering table...</source>
         <translation>渲染表格中……</translation>
     </message>
@@ -4002,7 +4062,7 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Collocation_Extractor_Fig</name>
     <message>
-        <location filename="../wordless/wl_collocation_extractor.py" line="1239"/>
+        <location filename="../wordless/wl_collocation_extractor.py" line="1252"/>
         <source>Rendering figure...</source>
         <translation>渲染图表中……</translation>
     </message>
@@ -4010,7 +4070,7 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Collocation_Extractor_Table</name>
     <message>
-        <location filename="../wordless/wl_collocation_extractor.py" line="1228"/>
+        <location filename="../wordless/wl_collocation_extractor.py" line="1241"/>
         <source>Rendering table...</source>
         <translation>渲染表格中……</translation>
     </message>
@@ -4087,32 +4147,45 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Dependency_Parser</name>
     <message>
-        <location filename="../wordless/wl_dependency_parser.py" line="558"/>
+        <location filename="../wordless/wl_dependency_parser.py" line="559"/>
         <source>Rendering table...</source>
         <translation>渲染表格中……</translation>
     </message>
 </context>
 <context>
-    <name>Wl_Worker_Download_Spacy_Model</name>
+    <name>Wl_Worker_Download_Model_Spacy</name>
     <message>
-        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="165"/>
+        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="262"/>
         <source>Fetching model information...</source>
         <translation>获取模型信息中……</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="189"/>
+        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="284"/>
+        <source>Downloading model ({:.2f} MB)...</source>
+        <translation>下载模型中（{:.2f} MB）……</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="286"/>
         <source>Downloading model...</source>
         <translation>下载模型中……</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="203"/>
+        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="300"/>
         <source>Download completed successfully.</source>
         <translation>模型下载完毕。</translation>
     </message>
+</context>
+<context>
+    <name>Wl_Worker_Download_Model_Stanza</name>
     <message>
-        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="187"/>
-        <source>Downloading model ({:.2f} MB)...</source>
-        <translation>下载模型中（{:.2f} MB）……</translation>
+        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="313"/>
+        <source>Downloading model...</source>
+        <translation>下载模型中……</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_nlp/wl_nlp_utils.py" line="355"/>
+        <source>Download completed successfully.</source>
+        <translation>模型下载完毕。</translation>
     </message>
 </context>
 <context>
@@ -4131,7 +4204,7 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Fetch_Data_Tagsets</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="536"/>
+        <location filename="../wordless/wl_settings/wl_settings_pos_tagging.py" line="540"/>
         <source>Updating table...</source>
         <translation>更新表格中……</translation>
     </message>
@@ -4139,7 +4212,7 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Keyword_Extractor_Fig</name>
     <message>
-        <location filename="../wordless/wl_keyword_extractor.py" line="846"/>
+        <location filename="../wordless/wl_keyword_extractor.py" line="887"/>
         <source>Rendering figure...</source>
         <translation>渲染图表中……</translation>
     </message>
@@ -4147,7 +4220,7 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Keyword_Extractor_Table</name>
     <message>
-        <location filename="../wordless/wl_keyword_extractor.py" line="835"/>
+        <location filename="../wordless/wl_keyword_extractor.py" line="876"/>
         <source>Rendering table...</source>
         <translation>渲染表格中……</translation>
     </message>
@@ -4184,7 +4257,7 @@ Frequency %</source>
 <context>
     <name>Wl_Worker_Profiler_Table</name>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="1325"/>
+        <location filename="../wordless/wl_profiler.py" line="1348"/>
         <source>Rendering table...</source>
         <translation>渲染表格中……</translation>
     </message>
@@ -4718,11 +4791,6 @@ Frequency</source>
         <translation>计数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="79"/>
-        <source>Type-token Ratios</source>
-        <translation>类符形符比</translation>
-    </message>
-    <message>
         <location filename="../wordless/wl_profiler.py" line="80"/>
         <source>Lengths</source>
         <translation>长度</translation>
@@ -4731,6 +4799,11 @@ Frequency</source>
         <location filename="../wordless/wl_profiler.py" line="81"/>
         <source>Length Breakdown</source>
         <translation>细分长度</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="79"/>
+        <source>Lexical Diversity</source>
+        <translation>词汇多样性</translation>
     </message>
 </context>
 <context>
@@ -4793,154 +4866,6 @@ Frequency</source>
     </message>
 </context>
 <context>
-    <name>init_settings_default</name>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="889"/>
-        <source>None</source>
-        <translation>无</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1014"/>
-        <source>Total</source>
-        <translation>合计</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="603"/>
-        <source>Frequency</source>
-        <translation>频数</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1067"/>
-        <source>General</source>
-        <translation>全局</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1171"/>
-        <source>Non-embedded</source>
-        <translation>非嵌入式</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1158"/>
-        <source>Header</source>
-        <translation>头</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1163"/>
-        <source>Embedded</source>
-        <translation>嵌入式</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1164"/>
-        <source>Others</source>
-        <translation>其他</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1168"/>
-        <source>Paragraph</source>
-        <translation>段落</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1169"/>
-        <source>Sentence</source>
-        <translation>句子</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1171"/>
-        <source>Word</source>
-        <translation>单词</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="73"/>
-        <source>Profiler</source>
-        <translation>分析工具</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="208"/>
-        <source>Token</source>
-        <translation>形符</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="229"/>
-        <source>File</source>
-        <translation>文件</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="230"/>
-        <source>Ascending</source>
-        <translation>升序</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1003"/>
-        <source>p-value</source>
-        <translation>p 值</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1890"/>
-        <source>Two-tailed</source>
-        <translation>双尾</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="72"/>
-        <source>Observed Files</source>
-        <translation>观察文件</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="86"/>
-        <source>APA (7th edition)</source>
-        <translation>APA（第七版）</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="109"/>
-        <source>Counts</source>
-        <translation>计数</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="230"/>
-        <source>Token no.</source>
-        <translation>形符序号</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1001"/>
-        <source>Line chart</source>
-        <translation>折线图</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1121"/>
-        <source>Excel workbooks (*.xlsx)</source>
-        <translation>Excel 工作簿 (*.xlsx)</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1163"/>
-        <source>Part of speech</source>
-        <translation>词性</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1889"/>
-        <source>Relative frequency</source>
-        <translation>相对频数</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1922"/>
-        <source>Colormap</source>
-        <translation>色谱</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1759"/>
-        <source>Policy one</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1775"/>
-        <source>New</source>
-        <translation>新版</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1783"/>
-        <source>Original</source>
-        <translation>原版</translation>
-    </message>
-</context>
-<context>
     <name>init_settings_global</name>
     <message>
         <location filename="../wordless/wl_settings/wl_settings_global.py" line="35"/>
@@ -4963,44 +4888,34 @@ Frequency</source>
         <translation>阿拉伯语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="39"/>
-        <source>Armenian</source>
-        <translation>亚美尼亚语</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="40"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="41"/>
         <source>Assamese</source>
         <translation>阿萨姆语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="41"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="42"/>
         <source>Asturian</source>
         <translation>阿斯图里亚斯语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="42"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="43"/>
         <source>Azerbaijani</source>
         <translation>阿塞拜疆语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="43"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="44"/>
         <source>Basque</source>
         <translation>巴斯克语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="44"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="45"/>
         <source>Belarusian</source>
         <translation>白俄罗斯语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="45"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="46"/>
         <source>Bengali</source>
         <translation>孟加拉语</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="46"/>
-        <source>Breton</source>
-        <translation>布列塔尼语</translation>
     </message>
     <message>
         <location filename="../wordless/wl_settings/wl_settings_global.py" line="47"/>
@@ -5008,1007 +4923,982 @@ Frequency</source>
         <translation>保加利亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="49"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="50"/>
         <source>Catalan</source>
         <translation>加泰罗尼亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="50"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="52"/>
         <source>Chinese (Simplified)</source>
         <translation>汉语（简体）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="51"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="53"/>
         <source>Chinese (Traditional)</source>
         <translation>汉语（繁体）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="52"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="56"/>
         <source>Croatian</source>
         <translation>克罗地亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="53"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="57"/>
         <source>Czech</source>
         <translation>捷克语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="54"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="58"/>
         <source>Danish</source>
         <translation>丹麦语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="55"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="59"/>
         <source>Dutch</source>
         <translation>荷兰语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="57"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="61"/>
         <source>English (United Kingdom)</source>
         <translation>英语（英国）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="58"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="62"/>
         <source>English (United States)</source>
         <translation>英语（美国）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="59"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="64"/>
         <source>Esperanto</source>
         <translation>世界语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="60"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="65"/>
         <source>Estonian</source>
         <translation>爱沙尼亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="61"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="67"/>
         <source>Finnish</source>
         <translation>芬兰语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="62"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="68"/>
         <source>French</source>
         <translation>法语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="63"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="70"/>
         <source>Galician</source>
         <translation>加里西亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="66"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="73"/>
         <source>German (Austria)</source>
         <translation>德语（奥地利）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="67"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="74"/>
         <source>German (Germany)</source>
         <translation>德语（德国）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="68"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="75"/>
         <source>German (Switzerland)</source>
         <translation>德语（瑞士）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="69"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="77"/>
         <source>Greek (Ancient)</source>
         <translation>希腊语（古）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="70"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="78"/>
         <source>Greek (Modern)</source>
         <translation>希腊语（现代）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="71"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="79"/>
         <source>Gujarati</source>
         <translation>古吉拉特语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="72"/>
-        <source>Hausa</source>
-        <translation>豪萨语</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="73"/>
-        <source>Hebrew</source>
-        <translation>希伯来语</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="74"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="82"/>
         <source>Hindi</source>
         <translation>印地语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="75"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="83"/>
         <source>Hungarian</source>
         <translation>匈牙利语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="76"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="84"/>
         <source>Icelandic</source>
         <translation>冰岛语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="77"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="85"/>
         <source>Indonesian</source>
         <translation>印度尼西亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="78"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="86"/>
         <source>Irish</source>
         <translation>爱尔兰语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="79"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="87"/>
         <source>Italian</source>
         <translation>意大利语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="80"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="88"/>
         <source>Japanese</source>
         <translation>日语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="81"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="89"/>
         <source>Kannada</source>
         <translation>卡纳达语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="82"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="90"/>
         <source>Kazakh</source>
         <translation>哈萨克语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="84"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="92"/>
         <source>Korean</source>
         <translation>韩语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="85"/>
-        <source>Kurdish</source>
-        <translation>库尔德语</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="86"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="94"/>
         <source>Kyrgyz</source>
         <translation>吉尔吉斯语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="87"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="96"/>
         <source>Latin</source>
         <translation>拉丁语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="88"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="97"/>
         <source>Latvian</source>
         <translation>拉脱维亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="89"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="98"/>
         <source>Ligurian</source>
         <translation>利古里亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="90"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="99"/>
         <source>Lithuanian</source>
         <translation>立陶宛语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="92"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="100"/>
         <source>Luxembourgish</source>
         <translation>卢森堡语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="93"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="101"/>
         <source>Macedonian</source>
         <translation>马其顿语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="94"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="102"/>
         <source>Malay</source>
         <translation>马来语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="95"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="103"/>
         <source>Malayalam</source>
         <translation>马拉雅拉姆语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="96"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="105"/>
         <source>Manx</source>
         <translation>马恩语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="97"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="106"/>
         <source>Marathi</source>
         <translation>马拉地语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="98"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="107"/>
         <source>Meitei</source>
         <translation>曼尼普尔语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="99"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="108"/>
         <source>Mongolian</source>
         <translation>蒙古语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="100"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="109"/>
         <source>Nepali</source>
         <translation>尼泊尔语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="101"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="111"/>
         <source>Norwegian Bokmål</source>
         <translation>书面挪威语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="102"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="112"/>
         <source>Norwegian Nynorsk</source>
         <translation>新挪威语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="103"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="113"/>
         <source>Oriya</source>
         <translation>奥里亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="104"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="114"/>
         <source>Persian</source>
         <translation>波斯语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="105"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="115"/>
         <source>Polish</source>
         <translation>波兰语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="106"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="117"/>
         <source>Portuguese (Brazil)</source>
         <translation>葡萄牙语（巴西）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="107"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="118"/>
         <source>Portuguese (Portugal)</source>
         <translation>葡萄牙语（葡萄牙）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="109"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="120"/>
         <source>Romanian</source>
         <translation>罗马尼亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="110"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="121"/>
         <source>Russian</source>
         <translation>俄语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="112"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="124"/>
         <source>Sanskrit</source>
         <translation>梵语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="113"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="125"/>
         <source>Scottish Gaelic</source>
         <translation>苏格兰盖尔语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="114"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="126"/>
         <source>Serbian (Cyrillic)</source>
         <translation>塞尔维亚语（西里尔）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="115"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="127"/>
         <source>Serbian (Latin)</source>
         <translation>塞尔维亚语（拉丁）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="116"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="129"/>
         <source>Sinhala</source>
         <translation>僧伽罗语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="117"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="130"/>
         <source>Slovak</source>
         <translation>斯洛伐克语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="118"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="131"/>
         <source>Slovenian</source>
         <translation>斯洛文尼亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="119"/>
-        <source>Somali</source>
-        <translation>索马里语</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="122"/>
-        <source>Sotho (Southern)</source>
-        <translation>塞索托语</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="123"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="134"/>
         <source>Spanish</source>
         <translation>西班牙语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="124"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="135"/>
         <source>Swahili</source>
         <translation>斯瓦西里语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="125"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="136"/>
         <source>Swedish</source>
         <translation>瑞典语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="126"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="137"/>
         <source>Tagalog</source>
         <translation>他加禄语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="127"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="138"/>
         <source>Tajik</source>
         <translation>塔吉克语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="128"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="139"/>
         <source>Tamil</source>
         <translation>泰米尔语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="129"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="140"/>
         <source>Tatar</source>
         <translation>鞑靼语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="130"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="141"/>
         <source>Telugu</source>
         <translation>泰卢固语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="131"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="142"/>
         <source>Tetun Dili</source>
         <translation>帝力德顿语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="132"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="143"/>
         <source>Thai</source>
         <translation>泰语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="133"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="144"/>
         <source>Tibetan</source>
         <translation>藏语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="134"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="145"/>
         <source>Tigrinya</source>
         <translation>提格雷尼亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="135"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="146"/>
         <source>Tswana</source>
         <translation>茨瓦纳语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="136"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="147"/>
         <source>Turkish</source>
         <translation>土耳其语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="137"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="148"/>
         <source>Ukrainian</source>
         <translation>乌克兰语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="138"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="149"/>
         <source>Urdu</source>
         <translation>乌尔都语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="139"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="151"/>
         <source>Vietnamese</source>
         <translation>越南语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="140"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="152"/>
         <source>Welsh</source>
         <translation>威尔士语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="141"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="154"/>
         <source>Yoruba</source>
         <translation>约鲁巴语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="142"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="155"/>
         <source>Zulu</source>
         <translation>祖鲁语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="160"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="173"/>
         <source>Arabic (CP720)</source>
         <translation>阿拉伯语（CP720）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="161"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="174"/>
         <source>Arabic (CP864)</source>
         <translation>阿拉伯语（CP864）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="162"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="175"/>
         <source>Arabic (ISO-8859-6)</source>
         <translation>阿拉伯语（ISO-8859-6）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="163"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="176"/>
         <source>Arabic (Mac OS Arabic)</source>
         <translation>阿拉伯语（Mac OS Arabic）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="164"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="177"/>
         <source>Arabic (Windows-1256)</source>
         <translation>阿拉伯语（Windows-1256）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="172"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="185"/>
         <source>Chinese (GB18030)</source>
         <translation>汉语（GB18030）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="173"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="186"/>
         <source>Chinese (GBK)</source>
         <translation>汉语（GBK）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="175"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="188"/>
         <source>Chinese (Simplified) (GB2312)</source>
         <translation>汉语（简体）（GB2312）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="176"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="189"/>
         <source>Chinese (Simplified) (HZ)</source>
         <translation>汉语（简体）（HZ）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="178"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="191"/>
         <source>Chinese (Traditional) (Big-5)</source>
         <translation>汉语（繁体）（Big-5）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="179"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="192"/>
         <source>Chinese (Traditional) (Big5-HKSCS)</source>
         <translation>汉语（繁体）（Big5-HKSCS）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="180"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="193"/>
         <source>Chinese (Traditional) (CP950)</source>
         <translation>汉语（繁体）（CP950）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="182"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="195"/>
         <source>Croatian (Mac OS Croatian)</source>
         <translation>克罗地亚语（Mac OS Croatian）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="184"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="197"/>
         <source>Cyrillic (CP855)</source>
         <translation>西里尔（CP855）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="185"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="198"/>
         <source>Cyrillic (CP866)</source>
         <translation>西里尔（CP866）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="186"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="199"/>
         <source>Cyrillic (ISO-8859-5)</source>
         <translation>西里尔（ISO-8859-5）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="187"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="200"/>
         <source>Cyrillic (Mac OS Cyrillic)</source>
         <translation>西里尔（Mac OS Cyrillic）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="188"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="201"/>
         <source>Cyrillic (Windows-1251)</source>
         <translation>西里尔（Windows-1251）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="190"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="203"/>
         <source>English (ASCII)</source>
         <translation>英语（ASCII）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="191"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="204"/>
         <source>English (EBCDIC 037)</source>
         <translation>英语（EBCDIC 037）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="192"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="205"/>
         <source>English (CP437)</source>
         <translation>英语（CP437）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="194"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="207"/>
         <source>European (HP Roman-8)</source>
         <translation>欧洲（HP Roman-8）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="196"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="209"/>
         <source>European (Central) (CP852)</source>
         <translation>欧洲（中部）（CP852）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="197"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="210"/>
         <source>European (Central) (ISO-8859-2)</source>
         <translation>欧洲（中部）（ISO-8859-2）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="198"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="211"/>
         <source>European (Central) (Mac OS Central European)</source>
         <translation>欧洲（中部）（Mac OS Central European）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="199"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="212"/>
         <source>European (Central) (Windows-1250)</source>
         <translation>欧洲（中部）（Windows-1250）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="201"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="214"/>
         <source>European (Northern) (ISO-8859-4)</source>
         <translation>欧洲（北部）（ISO-8859-4）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="203"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="216"/>
         <source>European (Southern) (ISO-8859-3)</source>
         <translation>欧洲（南部）（ISO-8859-3）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="207"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="220"/>
         <source>European (Western) (EBCDIC 500)</source>
         <translation>欧洲（西部）（EBCDIC 500）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="208"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="221"/>
         <source>European (Western) (CP850)</source>
         <translation>欧洲（西部）（CP850）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="209"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="222"/>
         <source>European (Western) (CP858)</source>
         <translation>欧洲（西部）（CP858）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="210"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="223"/>
         <source>European (Western) (CP1140)</source>
         <translation>欧洲（西部）（CP1140）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="211"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="224"/>
         <source>European (Western) (ISO-8859-1)</source>
         <translation>欧洲（西部）（ISO-8859-1）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="212"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="225"/>
         <source>European (Western) (ISO-8859-15)</source>
         <translation>欧洲（西部）（ISO-8859-15）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="213"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="226"/>
         <source>European (Western) (Mac OS Roman)</source>
         <translation>欧洲（西部）（Mac OS Roman）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="214"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="227"/>
         <source>European (Western) (Windows-1252)</source>
         <translation>欧洲（西部）（Windows-1252）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="216"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="229"/>
         <source>French (CP863)</source>
         <translation>法语（CP863）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="218"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="231"/>
         <source>German (EBCDIC 273)</source>
         <translation>德语（EBCDIC 273）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="220"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="233"/>
         <source>Greek (CP737)</source>
         <translation>希腊语（CP737）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="221"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="234"/>
         <source>Greek (CP869)</source>
         <translation>希腊语（CP869）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="222"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="235"/>
         <source>Greek (CP875)</source>
         <translation>希腊语（CP875）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="223"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="236"/>
         <source>Greek (ISO-8859-7)</source>
         <translation>希腊语（ISO-8859-7）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="224"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="237"/>
         <source>Greek (Mac OS Greek)</source>
         <translation>希腊语（Mac OS Greek）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="225"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="238"/>
         <source>Greek (Windows-1253)</source>
         <translation>希腊语（Windows-1253）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="227"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="240"/>
         <source>Hebrew (CP856)</source>
         <translation>希伯来语（CP856）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="228"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="241"/>
         <source>Hebrew (CP862)</source>
         <translation>希伯来语（CP862）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="229"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="242"/>
         <source>Hebrew (EBCDIC 424)</source>
         <translation>希伯来语（EBCDIC 424）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="230"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="243"/>
         <source>Hebrew (ISO-8859-8)</source>
         <translation>希伯来语（ISO-8859-8）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="231"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="244"/>
         <source>Hebrew (Windows-1255)</source>
         <translation>希伯来语（Windows-1255）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="233"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="246"/>
         <source>Icelandic (CP861)</source>
         <translation>冰岛语（CP861）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="234"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="247"/>
         <source>Icelandic (Mac OS Icelandic)</source>
         <translation>冰岛语（Mac OS Icelandic）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="236"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="249"/>
         <source>Japanese (CP932)</source>
         <translation>日语（CP932）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="237"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="250"/>
         <source>Japanese (EUC-JP)</source>
         <translation>日语（EUC-JP）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="238"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="251"/>
         <source>Japanese (EUC-JIS-2004)</source>
         <translation>日语（EUC-JIS-2004）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="239"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="252"/>
         <source>Japanese (EUC-JISx0213)</source>
         <translation>日语（EUC-JISx0213）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="240"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="253"/>
         <source>Japanese (ISO-2022-JP)</source>
         <translation>日语（ISO-2022-JP）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="241"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="254"/>
         <source>Japanese (ISO-2022-JP-1)</source>
         <translation>日语（ISO-2022-JP-1）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="242"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="255"/>
         <source>Japanese (ISO-2022-JP-2)</source>
         <translation>日语（ISO-2022-JP-2）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="243"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="256"/>
         <source>Japanese (ISO-2022-JP-2004)</source>
         <translation>日语（ISO-2022-JP-2004）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="244"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="257"/>
         <source>Japanese (ISO-2022-JP-3)</source>
         <translation>日语（ISO-2022-JP-3）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="245"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="258"/>
         <source>Japanese (ISO-2022-JP-EXT)</source>
         <translation>日语（ISO-2022-JP-EXT）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="246"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="259"/>
         <source>Japanese (Shift_JIS)</source>
         <translation>日语（Shift_JIS）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="247"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="260"/>
         <source>Japanese (Shift_JIS-2004)</source>
         <translation>日语（Shift_JIS-2004）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="248"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="261"/>
         <source>Japanese (Shift_JISx0213)</source>
         <translation>日语（Shift_JISx0213）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="250"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="263"/>
         <source>Kazakh (KZ-1048)</source>
         <translation>哈萨克语（KZ-1048）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="251"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="264"/>
         <source>Kazakh (PTCP154)</source>
         <translation>哈萨克语（PTCP154）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="253"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="266"/>
         <source>Korean (EUC-KR)</source>
         <translation>韩语（EUC-KR）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="254"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="267"/>
         <source>Korean (ISO-2022-KR)</source>
         <translation>韩语（ISO-2022-KR）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="255"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="268"/>
         <source>Korean (JOHAB)</source>
         <translation>韩语（JOHAB）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="256"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="269"/>
         <source>Korean (UHC)</source>
         <translation>韩语（UHC）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="261"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="274"/>
         <source>Persian/Urdu (Mac OS Farsi)</source>
         <translation>波斯语/乌尔都语（Mac OS Farsi）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="263"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="276"/>
         <source>Portuguese (CP860)</source>
         <translation>葡萄牙语（CP860）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="265"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="278"/>
         <source>Romanian (Mac OS Romanian)</source>
         <translation>罗马尼亚语（Mac OS Romanian）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="267"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="280"/>
         <source>Russian (KOI8-R)</source>
         <translation>俄语（KOI8-R）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="269"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="282"/>
         <source>Tajik (KOI8-T)</source>
         <translation>塔吉克语（KOI8-T）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="271"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="284"/>
         <source>Thai (CP874)</source>
         <translation>泰语（CP874）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="272"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="285"/>
         <source>Thai (ISO-8859-11)</source>
         <translation>泰语（ISO-8859-11）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="275"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="288"/>
         <source>Turkish (CP857)</source>
         <translation>土耳其语（CP857）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="276"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="289"/>
         <source>Turkish (EBCDIC 1026)</source>
         <translation>土耳其语（EBCDIC 1026）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="277"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="290"/>
         <source>Turkish (ISO-8859-9)</source>
         <translation>土耳其语（ISO-8859-9）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="278"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="291"/>
         <source>Turkish (Mac OS Turkish)</source>
         <translation>土耳其语（Mac OS Turkish）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="279"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="292"/>
         <source>Turkish (Windows-1254)</source>
         <translation>土耳其语（Windows-1254）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="281"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="294"/>
         <source>Ukrainian (CP1125)</source>
         <translation>乌克兰语（CP1125）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="282"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="295"/>
         <source>Ukrainian (KOI8-U)</source>
         <translation>乌克兰语（KOI8-U）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="284"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="297"/>
         <source>Urdu (CP1006)</source>
         <translation>乌尔都语（CP1006）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="286"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="299"/>
         <source>Vietnamese (CP1258)</source>
         <translation>越南语（CP1258）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="435"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="449"/>
         <source>spaCy - Sentencizer</source>
         <translation>spaCy - 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2131"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3329"/>
         <source>Student&apos;s t-test (1-sample)</source>
         <translation>学生 t 检验（单样本）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2360"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3558"/>
         <source>z-score</source>
         <translation>z 值</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2129"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3327"/>
         <source>Mann-Whitney U Test</source>
         <translation>曼惠特尼 U 检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2141"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3339"/>
         <source>Student&apos;s t-test (2-sample)</source>
         <translation>学生 t 检验（双样本）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2304"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3502"/>
         <source>Log-likelihood Ratio</source>
         <translation>对数似然比</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2344"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3542"/>
         <source>t-statistic</source>
         <translation>t 值</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2408"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3606"/>
         <source>Dice&apos;s Coefficient</source>
         <translation>Dice 系数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2418"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3616"/>
         <source>Jaccard Index</source>
         <translation>雅卡尔指数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="120"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="132"/>
         <source>Sorbian (Lower)</source>
         <translation>索布语（下）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="121"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="133"/>
         <source>Sorbian (Upper)</source>
         <translation>索布语（上）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2145"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3343"/>
         <source>None</source>
         <translation>无</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2133"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3331"/>
         <source>Welch&apos;s t-test</source>
         <translation>Welch t 检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2135"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3333"/>
         <source>z-score (Berry-Rogghe)</source>
         <translation>z 值（Berry-Rogghe）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2193"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3391"/>
         <source>Carroll&apos;s D₂</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2199"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3397"/>
         <source>Gries&apos;s DP</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2205"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3403"/>
         <source>Juilland&apos;s D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2211"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3409"/>
         <source>Lyne&apos;s D₃</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2217"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3415"/>
         <source>Rosengren&apos;s S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2110"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3308"/>
         <source>Zhang&apos;s Distributional Consistency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2223"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3421"/>
         <source>Zhang&apos;s DC</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2261"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3459"/>
         <source>Engwall&apos;s FM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2267"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3465"/>
         <source>Juilland&apos;s U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2273"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3471"/>
         <source>Kromer&apos;s UR</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2279"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3477"/>
         <source>Rosengren&apos;s KF</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2413"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3611"/>
         <source>Difference Coefficient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2428"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3626"/>
         <source>Kilgarriff&apos;s Ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2438"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3636"/>
         <source>Log Ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2448"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3646"/>
         <source>Minimum Sensitivity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2478"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3676"/>
         <source>Poisson Collocation Measure</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6018,2549 +5908,4349 @@ Frequency</source>
         <translation>缅甸语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="56"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="60"/>
         <source>English (Middle)</source>
         <translation>英语（中古）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="64"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="71"/>
         <source>Ganda</source>
         <translation>干达语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="65"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="72"/>
         <source>Georgian</source>
         <translation>格鲁吉亚语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="91"/>
-        <source>Lugbara</source>
-        <translation>卢格巴拉语</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="108"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="119"/>
         <source>Punjabi (Gurmukhi)</source>
         <translation>旁遮普语（古木基）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="111"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="123"/>
         <source>Sámi (Northern)</source>
         <translation>萨米语（北）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="144"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="157"/>
         <source>Other languages</source>
         <translation>其他语种</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="150"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="163"/>
         <source>All languages (UTF-8 without BOM)</source>
         <translation>所有语种（UTF-8 无签名）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="151"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="164"/>
         <source>All languages (UTF-8 with BOM)</source>
         <translation>所有语种（UTF-8 带签名）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="152"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="165"/>
         <source>All languages (UTF-16 with BOM)</source>
         <translation>所有语种（UTF-16 带签名）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="153"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="166"/>
         <source>All languages (UTF-16BE without BOM)</source>
         <translation>所有语种（UTF-16 大端无签名）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="154"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="167"/>
         <source>All languages (UTF-16LE without BOM)</source>
         <translation>所有语种（UTF-16 小端无签名）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="155"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="168"/>
         <source>All languages (UTF-32 with BOM)</source>
         <translation>所有语种（UTF-32 带签名）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="156"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="169"/>
         <source>All languages (UTF-32BE without BOM)</source>
         <translation>所有语种（UTF-32 大端无签名）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="157"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="170"/>
         <source>All languages (UTF-32LE without BOM)</source>
         <translation>所有语种（UTF-32 小端无签名）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="158"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="171"/>
         <source>All languages (UTF-7)</source>
         <translation>所有语种（UTF-7）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="166"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="179"/>
         <source>Baltic languages (CP775)</source>
         <translation>波罗的海诸语（CP775）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="167"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="180"/>
         <source>Baltic languages (ISO-8859-13)</source>
         <translation>波罗的海诸语（ISO-8859-13）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="168"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="181"/>
         <source>Baltic languages (Windows-1257)</source>
         <translation>波罗的海诸语（Windows-1257）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="170"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="183"/>
         <source>Celtic languages (ISO-8859-14)</source>
         <translation>凯尔特语（ISO-8859-14）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="205"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="218"/>
         <source>European (Southeastern) (ISO-8859-16)</source>
         <translation>欧洲（东南部）（ISO-8859-16）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="258"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="271"/>
         <source>Nordic languages (CP865)</source>
         <translation>北欧诸语（CP865）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="259"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="272"/>
         <source>Nordic languages (ISO-8859-10)</source>
         <translation>北欧诸语（ISO-8859-10）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="273"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="286"/>
         <source>Thai (TIS-620)</source>
         <translation>泰语（TIS-620）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="308"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="321"/>
         <source>CSV files (*.csv)</source>
         <translation>CSV 文件 (*.csv)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="309"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="322"/>
         <source>Excel workbooks (*.xlsx)</source>
         <translation>Excel 工作簿 (*.xlsx)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="294"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="307"/>
         <source>HTML pages (*.htm; *.html)</source>
         <translation>HTML 页面 (*.htm; *.html)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="295"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="308"/>
         <source>PDF files (*.pdf)</source>
         <translation>PDF 文件 (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="296"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="309"/>
         <source>Text files (*.txt)</source>
         <translation>文本文件 (*.txt)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="297"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="310"/>
         <source>Translation memory files (*.tmx)</source>
         <translation>翻译记忆库文件 (*.tmx)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="313"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="326"/>
         <source>Word documents (*.docx)</source>
         <translation>Word 文档 (*.docx)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="299"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="312"/>
         <source>XML files (*.xml)</source>
         <translation>XML 文件 (*.xml)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="362"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="375"/>
         <source>All files (*.*)</source>
         <translation>所有文件 (*.*)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="317"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="330"/>
         <source>OpenType fonts (*.otf)</source>
         <translation>OpenType 字体 (*.otf)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="318"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="331"/>
         <source>TrueType fonts (*.ttf)</source>
         <translation>TrueType 字体 (*.ttf)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="325"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="338"/>
         <source>Blizzard mipmap format (*.blp)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="326"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="339"/>
         <source>Windows bitmaps (*.bmp)</source>
         <translation>Windows 位图 (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="327"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="340"/>
         <source>Window cursor files (*.cur)</source>
         <translation>Window 光标文件 (*.cur)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="328"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="341"/>
         <source>Multi-page PCX files (*.dcx)</source>
         <translation>多页 PCX 文件 (*.dcx)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="329"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="342"/>
         <source>DirectDraw surface (*.dds)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="330"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="343"/>
         <source>Device-independent bitmaps (*.dib)</source>
         <translation>设备无关位图 (*.dib)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="331"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="344"/>
         <source>Encapsulated PostScript (*.eps, *.ps)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="332"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="345"/>
         <source>Flexible image transport system (*.fit, *.fits)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="333"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="346"/>
         <source>Autodesk animation files (*.flc, *.fli)</source>
         <translation>Autodesk 动画文件 (*.flc, *.fli)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="334"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="347"/>
         <source>Fox Engine textures (*.ftex)</source>
         <translation>Fox Engine 纹理 (*.ftex)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="335"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="348"/>
         <source>GIMP brush files (*.gbr)</source>
         <translation>GIMP 笔刷文件 (*.gbr)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="336"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="349"/>
         <source>Graphics interchange format (*.gif)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="337"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="350"/>
         <source>Apple icon images (*.icns)</source>
         <translation>苹果图标图片 (*.icns)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="338"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="351"/>
         <source>Windows icon files (*.ico)</source>
         <translation>Windows 图标文件 (*.ico)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="339"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="352"/>
         <source>IPTC/NAA newsphoto files (*.iim)</source>
         <translation>IPTC/NAA newsphoto 文件 (*.iim)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="340"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="353"/>
         <source>IM files (*.im)</source>
         <translation>IM 文件 (*.im)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="341"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="354"/>
         <source>Image Tools image files (*)</source>
         <translation>Image Tools 图像文件 (*)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="342"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="355"/>
         <source>JPEG files (*.jfif, *.jpe, *.jpeg, *.jpg)</source>
         <translation>JPEG 文件 (*.jfif, *.jpe, *.jpeg, *.jpg)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="343"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="356"/>
         <source>JPEG 2000 files (*.j2c, *.j2k, *.jp2, *.jpc, *.jpf, *.jpx)</source>
         <translation>JPEG 2000 文件 (*.j2c, *.j2k, *.jp2, *.jpc, *.jpf, *.jpx)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="344"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="357"/>
         <source>McIDAS area files (*)</source>
         <translation>McIDAS area 文件 (*)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="346"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="359"/>
         <source>PhotoCD files (*.pcd)</source>
         <translation>PhotoCD 文件 (*.pcd)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="347"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="360"/>
         <source>Picture exchange (*.pcx)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="348"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="361"/>
         <source>PIXAR raster files (*.pxr)</source>
         <translation>PIXAR 栅格文件 (*.pxr)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="349"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="362"/>
         <source>Portable network graphics (*.apng, *.png)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="350"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="363"/>
         <source>Portable pixmap format (*.pbm, *.pgm, *.pnm, *.ppm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="351"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="364"/>
         <source>Photoshop PSD files (*.psd)</source>
         <translation>Photoshop PSD 文件 (*.psd)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="352"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="365"/>
         <source>Sun raster files (*.ras)</source>
         <translation>Sun 栅格文件 (*.ras)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="353"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="366"/>
         <source>Silicon graphics images (*.bw, *.rgb, *.rgba, *.sgi)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="354"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="367"/>
         <source>SPIDER files (*)</source>
         <translation>SPIDER 文件 (*)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="355"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="368"/>
         <source>Truevision TGA (*.icb, *.tga, *.vda, *.vst)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="356"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="369"/>
         <source>TIFF files (*.tif, *.tiff)</source>
         <translation>TIFF 文件 (*.tif, *.tiff)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="357"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="370"/>
         <source>WebP files (*.webp)</source>
         <translation>WebP 文件 (*.webp)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="358"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="371"/>
         <source>Windows metafiles (*.emf, *.wmf)</source>
         <translation>Windows 元文件 (*.emf, *.wmf)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="359"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="372"/>
         <source>X bitmaps (*.xbm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="360"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="373"/>
         <source>X pixmaps (*.xpm)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="361"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="374"/>
         <source>XV thumbnails (*)</source>
         <translation>XV 缩略图 (*)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="369"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="382"/>
         <source>botok - Tibetan sentence tokenizer</source>
         <translation>botok - 藏语分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="372"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="386"/>
         <source>NLTK - Czech Punkt sentence tokenizer</source>
         <translation>NLTK - 捷克语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="373"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="387"/>
         <source>NLTK - Danish Punkt sentence tokenizer</source>
         <translation>NLTK - 丹麦语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="374"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="388"/>
         <source>NLTK - Dutch Punkt sentence tokenizer</source>
         <translation>NLTK - 荷兰语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="375"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="389"/>
         <source>NLTK - English Punkt sentence tokenizer</source>
         <translation>NLTK - 英语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="376"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="390"/>
         <source>NLTK - Estonian Punkt sentence tokenizer</source>
         <translation>NLTK - 爱沙尼亚语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="377"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="391"/>
         <source>NLTK - Finnish Punkt sentence tokenizer</source>
         <translation>NLTK - 芬兰语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="378"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="392"/>
         <source>NLTK - French Punkt sentence tokenizer</source>
         <translation>NLTK - 法语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="379"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="393"/>
         <source>NLTK - German Punkt sentence tokenizer</source>
         <translation>NLTK - 德语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="380"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="394"/>
         <source>NLTK - Greek Punkt sentence tokenizer</source>
         <translation>NLTK - 希腊语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="381"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="395"/>
         <source>NLTK - Italian Punkt sentence tokenizer</source>
         <translation>NLTK - 意大利语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="382"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="396"/>
         <source>NLTK - Malayalam Punkt sentence tokenizer</source>
         <translation>NLTK - 马拉雅拉姆语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="383"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="397"/>
         <source>NLTK - Norwegian Punkt sentence tokenizer</source>
         <translation>NLTK - 挪威语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="384"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="398"/>
         <source>NLTK - Polish Punkt sentence tokenizer</source>
         <translation>NLTK - 波兰语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="385"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="399"/>
         <source>NLTK - Portuguese Punkt sentence tokenizer</source>
         <translation>NLTK - 葡萄牙语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="386"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="400"/>
         <source>NLTK - Russian Punkt sentence tokenizer</source>
         <translation>NLTK - 俄语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="387"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="401"/>
         <source>NLTK - Slovenian Punkt sentence tokenizer</source>
         <translation>NLTK - 斯洛文尼亚语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="388"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="402"/>
         <source>NLTK - Spanish Punkt sentence tokenizer</source>
         <translation>NLTK - 西班牙语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="389"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="403"/>
         <source>NLTK - Swedish Punkt sentence tokenizer</source>
         <translation>NLTK - 瑞典语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="390"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="404"/>
         <source>NLTK - Turkish Punkt sentence tokenizer</source>
         <translation>NLTK - 土耳其语 Punkt 分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="420"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="434"/>
         <source>spaCy - Croatian sentence recognizer</source>
         <translation>spaCy - 克罗地亚语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="421"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="435"/>
         <source>spaCy - Dutch sentence recognizer</source>
         <translation>spaCy - 荷兰语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="422"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="436"/>
         <source>spaCy - Finnish sentence recognizer</source>
         <translation>spaCy - 芬兰语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="423"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="437"/>
         <source>spaCy - Greek (Modern) sentence recognizer</source>
         <translation>spaCy - 希腊语（现代）句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="424"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="438"/>
         <source>spaCy - Italian sentence recognizer</source>
         <translation>spaCy - 意大利语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="426"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="440"/>
         <source>spaCy - Lithuanian sentence recognizer</source>
         <translation>spaCy - 立陶宛语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="427"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="441"/>
         <source>spaCy - Macedonian sentence recognizer</source>
         <translation>spaCy - 马其顿语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="428"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="442"/>
         <source>spaCy - Norwegian Bokmål sentence recognizer</source>
         <translation>spaCy - 书面挪威语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="429"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="443"/>
         <source>spaCy - Polish sentence recognizer</source>
         <translation>spaCy - 波兰语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="430"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="444"/>
         <source>spaCy - Portuguese sentence recognizer</source>
         <translation>spaCy - 葡萄牙语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="431"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="445"/>
         <source>spaCy - Romanian sentence recognizer</source>
         <translation>spaCy - 罗马尼亚语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="432"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="446"/>
         <source>spaCy - Russian sentence recognizer</source>
         <translation>spaCy - 俄语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="433"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="447"/>
         <source>spaCy - Swedish sentence recognizer</source>
         <translation>spaCy - 瑞典语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="437"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="533"/>
         <source>Underthesea - Vietnamese sentence tokenizer</source>
         <translation>Underthesea - 越南语分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="441"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="537"/>
         <source>botok - Tibetan word tokenizer</source>
         <translation>botok - 藏语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="442"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="538"/>
         <source>jieba - Chinese word tokenizer</source>
         <translation>jieba - 汉语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="445"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="542"/>
         <source>NLTK - NIST tokenizer</source>
         <translation>NLTK - NIST 分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="446"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="543"/>
         <source>NLTK - NLTK tokenizer</source>
         <translation>NLTK - NLTK 分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="447"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="544"/>
         <source>NLTK - Penn Treebank tokenizer</source>
         <translation>NLTK - 宾州树库分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="448"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="545"/>
         <source>NLTK - Regular-expression tokenizer</source>
         <translation>NLTK - 正则表达式分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="449"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="546"/>
         <source>NLTK - Tok-tok tokenizer</source>
         <translation>NLTK - Tok-tok 分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="450"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="547"/>
         <source>NLTK - Twitter tokenizer</source>
         <translation>NLTK - 推特分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="452"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="549"/>
         <source>pkuseg - Chinese word tokenizer</source>
         <translation>pkuseg - 汉语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="454"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="551"/>
         <source>PyThaiNLP - Longest matching</source>
         <translation>PyThaiNLP - 最长匹配</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="455"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="552"/>
         <source>PyThaiNLP - Maximum matching</source>
         <translation>PyThaiNLP - 最大匹配</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="456"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="553"/>
         <source>PyThaiNLP - Maximum matching + TCC</source>
         <translation>PyThaiNLP - 最大匹配 + TCC</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="460"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="557"/>
         <source>Sacremoses - Moses tokenizer</source>
         <translation>Sacremoses - Moses 分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="462"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="559"/>
         <source>spaCy - Afrikaans word tokenizer</source>
         <translation>spaCy - 南非语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="463"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="560"/>
         <source>spaCy - Albanian word tokenizer</source>
         <translation>spaCy - 阿尔巴尼亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="464"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="561"/>
         <source>spaCy - Amharic word tokenizer</source>
         <translation>spaCy - 阿姆哈拉语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="465"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="562"/>
         <source>spaCy - Arabic word tokenizer</source>
         <translation>spaCy - 阿拉伯语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="466"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="563"/>
         <source>spaCy - Armenian word tokenizer</source>
-        <translation>spaCy - 亚美尼亚语分词器</translation>
+        <translation>spaCy - Armenian 分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="467"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="564"/>
         <source>spaCy - Azerbaijani word tokenizer</source>
         <translation>spaCy - 阿塞拜疆语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="468"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="565"/>
         <source>spaCy - Basque word tokenizer</source>
         <translation>spaCy - 巴斯克语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="469"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="566"/>
         <source>spaCy - Bengali word tokenizer</source>
         <translation>spaCy - 孟加拉语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="470"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="567"/>
         <source>spaCy - Bulgarian word tokenizer</source>
         <translation>spaCy - 保加利亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="471"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="568"/>
         <source>spaCy - Catalan word tokenizer</source>
         <translation>spaCy - 加泰罗尼亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="472"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="569"/>
         <source>spaCy - Chinese word tokenizer</source>
         <translation>spaCy - 汉语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="473"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="570"/>
         <source>spaCy - Croatian word tokenizer</source>
         <translation>spaCy - 克罗地亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="474"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="571"/>
         <source>spaCy - Czech word tokenizer</source>
         <translation>spaCy - 捷克语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="475"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="572"/>
         <source>spaCy - Danish word tokenizer</source>
         <translation>spaCy - 丹麦语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="476"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="573"/>
         <source>spaCy - Dutch word tokenizer</source>
         <translation>spaCy - 荷兰语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="477"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="574"/>
         <source>spaCy - English word tokenizer</source>
         <translation>spaCy - 英语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="478"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="575"/>
         <source>spaCy - Estonian word tokenizer</source>
         <translation>spaCy - 爱沙尼亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="479"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="576"/>
         <source>spaCy - Finnish word tokenizer</source>
         <translation>spaCy - 芬兰语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="480"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="577"/>
         <source>spaCy - French word tokenizer</source>
         <translation>spaCy - 法语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="481"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="578"/>
         <source>spaCy - Ganda word tokenizer</source>
         <translation>spaCy - 干达语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="482"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="579"/>
         <source>spaCy - German word tokenizer</source>
         <translation>spaCy - 德语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="483"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="580"/>
         <source>spaCy - Greek (Ancient) word tokenizer</source>
         <translation>spaCy - 希腊语（古）分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="484"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="581"/>
         <source>spaCy - Greek (Modern) word tokenizer</source>
         <translation>spaCy - 希腊语（现代）分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="485"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="582"/>
         <source>spaCy - Gujarati word tokenizer</source>
         <translation>spaCy - 古吉拉特语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="486"/>
-        <source>spaCy - Hebrew word tokenizer</source>
-        <translation>spaCy - 希伯来语分词器</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="487"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="584"/>
         <source>spaCy - Hindi word tokenizer</source>
         <translation>spaCy - 印地语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="488"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="585"/>
         <source>spaCy - Hungarian word tokenizer</source>
         <translation>spaCy - 匈牙利语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="489"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="586"/>
         <source>spaCy - Icelandic word tokenizer</source>
         <translation>spaCy - 冰岛语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="490"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="587"/>
         <source>spaCy - Indonesian word tokenizer</source>
         <translation>spaCy - 印度尼西亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="491"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="588"/>
         <source>spaCy - Irish word tokenizer</source>
         <translation>spaCy - 爱尔兰语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="492"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="589"/>
         <source>spaCy - Italian word tokenizer</source>
         <translation>spaCy - 意大利语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="493"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="590"/>
         <source>spaCy - Japanese word tokenizer</source>
         <translation>spaCy - 日语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="494"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="591"/>
         <source>spaCy - Kannada word tokenizer</source>
         <translation>spaCy - 卡纳达语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="496"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="593"/>
         <source>spaCy - Kyrgyz word tokenizer</source>
         <translation>spaCy - 吉尔吉斯语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="497"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="594"/>
         <source>spaCy - Latin word tokenizer</source>
         <translation>spaCy - 拉丁语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="498"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="595"/>
         <source>spaCy - Latvian word tokenizer</source>
         <translation>spaCy - 拉脱维亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="499"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="596"/>
         <source>spaCy - Ligurian word tokenizer</source>
         <translation>spaCy - 利古里亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="500"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="597"/>
         <source>spaCy - Lithuanian word tokenizer</source>
         <translation>spaCy - 立陶宛语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="501"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="598"/>
         <source>spaCy - Luxembourgish word tokenizer</source>
         <translation>spaCy - 卢森堡语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="502"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="599"/>
         <source>spaCy - Macedonian word tokenizer</source>
         <translation>spaCy - 马其顿语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="504"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="601"/>
         <source>spaCy - Malayalam word tokenizer</source>
         <translation>spaCy - 马拉雅拉姆语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="505"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="602"/>
         <source>spaCy - Marathi word tokenizer</source>
         <translation>spaCy - 马拉地语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="506"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="603"/>
         <source>spaCy - Nepali word tokenizer</source>
         <translation>spaCy - 尼泊尔语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="507"/>
-        <source>spaCy - Norwegian word tokenizer</source>
-        <translation>spaCy - 挪威语分词器</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="508"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="605"/>
         <source>spaCy - Persian word tokenizer</source>
         <translation>spaCy - 波斯语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="509"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="606"/>
         <source>spaCy - Polish word tokenizer</source>
         <translation>spaCy - 波兰语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="510"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="607"/>
         <source>spaCy - Portuguese word tokenizer</source>
         <translation>spaCy - 葡萄牙语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="511"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="608"/>
         <source>spaCy - Romanian word tokenizer</source>
         <translation>spaCy - 罗马尼亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="512"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="609"/>
         <source>spaCy - Russian word tokenizer</source>
         <translation>spaCy - 俄语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="513"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="610"/>
         <source>spaCy - Sanskrit word tokenizer</source>
         <translation>spaCy - 梵语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="514"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="611"/>
         <source>spaCy - Serbian word tokenizer</source>
         <translation>spaCy - 塞尔维亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="515"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="612"/>
         <source>spaCy - Sinhala word tokenizer</source>
         <translation>spaCy - 僧伽罗语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="516"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="613"/>
         <source>spaCy - Slovak word tokenizer</source>
         <translation>spaCy - 斯洛伐克语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="517"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="614"/>
         <source>spaCy - Slovenian word tokenizer</source>
         <translation>spaCy - 斯洛文尼亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="518"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="615"/>
         <source>spaCy - Sorbian (Lower) word tokenizer</source>
         <translation>spaCy - 索布语（下）分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="519"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="616"/>
         <source>spaCy - Sorbian (Upper) word tokenizer</source>
         <translation>spaCy - 索布语（上）分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="520"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="617"/>
         <source>spaCy - Spanish word tokenizer</source>
         <translation>spaCy - 西班牙语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="521"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="618"/>
         <source>spaCy - Swedish word tokenizer</source>
         <translation>spaCy - 瑞典语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="522"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="619"/>
         <source>spaCy - Tagalog word tokenizer</source>
         <translation>spaCy - 他加禄语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="523"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="620"/>
         <source>spaCy - Tamil word tokenizer</source>
         <translation>spaCy - 泰米尔语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="524"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="621"/>
         <source>spaCy - Tatar word tokenizer</source>
         <translation>spaCy - 鞑靼语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="525"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="622"/>
         <source>spaCy - Telugu word tokenizer</source>
         <translation>spaCy - 泰卢固语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="526"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="623"/>
         <source>spaCy - Tigrinya word tokenizer</source>
         <translation>spaCy - 提格雷尼亚语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="527"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="624"/>
         <source>spaCy - Tswana word tokenizer</source>
         <translation>spaCy - 茨瓦纳语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="528"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="625"/>
         <source>spaCy - Turkish word tokenizer</source>
         <translation>spaCy - 土耳其语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="529"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="626"/>
         <source>spaCy - Ukrainian word tokenizer</source>
         <translation>spaCy - 乌克兰语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="530"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="627"/>
         <source>spaCy - Urdu word tokenizer</source>
         <translation>spaCy - 乌尔都语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="531"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="628"/>
         <source>spaCy - Yoruba word tokenizer</source>
         <translation>spaCy - 约鲁巴语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="533"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="712"/>
         <source>SudachiPy - Japanese word tokenizer (split mode A)</source>
         <translation>SudachiPy - 日语分词器（切分模式 A）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="534"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="713"/>
         <source>SudachiPy - Japanese word tokenizer (split mode B)</source>
         <translation>SudachiPy - 日语分词器（切分模式 B）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="535"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="714"/>
         <source>SudachiPy - Japanese word tokenizer (split mode C)</source>
         <translation>SudachiPy - 日语分词器（切分模式 C）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="537"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="716"/>
         <source>Underthesea - Vietnamese word tokenizer</source>
         <translation>Underthesea - 越南语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="539"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="718"/>
         <source>Wordless - Chinese character tokenizer</source>
         <translation>Wordless - 汉语分字器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="540"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="719"/>
         <source>Wordless - Japanese kanji tokenizer</source>
         <translation>Wordless - 日语分字器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="544"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="723"/>
         <source>NLTK - Legality syllable tokenizer</source>
         <translation>NLTK - 合法性分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="545"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="724"/>
         <source>NLTK - Sonority sequencing syllable tokenizer</source>
         <translation>NLTK - 响度顺序分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="547"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="726"/>
         <source>Pyphen - Afrikaans syllable tokenizer</source>
         <translation>Pyphen - 南非语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="548"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="727"/>
         <source>Pyphen - Albanian syllable tokenizer</source>
         <translation>Pyphen - 阿尔巴尼亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="549"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="728"/>
         <source>Pyphen - Belarusian syllable tokenizer</source>
         <translation>Pyphen - 白俄罗斯语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="550"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="729"/>
         <source>Pyphen - Bulgarian syllable tokenizer</source>
         <translation>Pyphen - 保加利亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="551"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="730"/>
         <source>Pyphen - Catalan syllable tokenizer</source>
         <translation>Pyphen - 加泰罗尼亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="552"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="731"/>
         <source>Pyphen - Croatian syllable tokenizer</source>
         <translation>Pyphen - 克罗地亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="553"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="732"/>
         <source>Pyphen - Czech syllable tokenizer</source>
         <translation>Pyphen - 捷克语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="554"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="733"/>
         <source>Pyphen - Danish syllable tokenizer</source>
         <translation>Pyphen - 丹麦语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="555"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="734"/>
         <source>Pyphen - Dutch syllable tokenizer</source>
         <translation>Pyphen - 荷兰语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="556"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="735"/>
         <source>Pyphen - English (United Kingdom) syllable tokenizer</source>
         <translation>Pyphen - 英语（英国）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="557"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="736"/>
         <source>Pyphen - English (United States) syllable tokenizer</source>
         <translation>Pyphen - 英语（美国）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="558"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="737"/>
         <source>Pyphen - Esperanto syllable tokenizer</source>
         <translation>Pyphen - 世界语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="559"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="738"/>
         <source>Pyphen - Estonian syllable tokenizer</source>
         <translation>Pyphen - 爱沙尼亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="560"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="739"/>
         <source>Pyphen - French syllable tokenizer</source>
         <translation>Pyphen - 法语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="561"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="740"/>
         <source>Pyphen - Galician syllable tokenizer</source>
         <translation>Pyphen - 加里西亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="562"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="741"/>
         <source>Pyphen - German (Austria) syllable tokenizer</source>
         <translation>Pyphen - 德语（奥地利）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="563"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="742"/>
         <source>Pyphen - German (Germany) syllable tokenizer</source>
         <translation>Pyphen - 德语（德国）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="564"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="743"/>
         <source>Pyphen - German (Switzerland) syllable tokenizer</source>
         <translation>Pyphen - 德语（瑞士）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="565"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="744"/>
         <source>Pyphen - Greek (Modern) syllable tokenizer</source>
         <translation>Pyphen - 希腊语（现代）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="566"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="745"/>
         <source>Pyphen - Hungarian syllable tokenizer</source>
         <translation>Pyphen - 匈牙利语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="567"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="746"/>
         <source>Pyphen - Icelandic syllable tokenizer</source>
         <translation>Pyphen - 冰岛语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="568"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="747"/>
         <source>Pyphen - Indonesian syllable tokenizer</source>
         <translation>Pyphen - 印度尼西亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="569"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="748"/>
         <source>Pyphen - Italian syllable tokenizer</source>
         <translation>Pyphen - 意大利语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="570"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="749"/>
         <source>Pyphen - Lithuanian syllable tokenizer</source>
         <translation>Pyphen - 立陶宛语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="571"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="750"/>
         <source>Pyphen - Latvian syllable tokenizer</source>
         <translation>Pyphen - 拉脱维亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="572"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="751"/>
         <source>Pyphen - Mongolian syllable tokenizer</source>
         <translation>Pyphen - 蒙古语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="573"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="752"/>
         <source>Pyphen - Norwegian Bokmål syllable tokenizer</source>
         <translation>Pyphen - 书面挪威语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="574"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="753"/>
         <source>Pyphen - Norwegian Nynorsk syllable tokenizer</source>
         <translation>Pyphen - 新挪威语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="575"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="754"/>
         <source>Pyphen - Polish syllable tokenizer</source>
         <translation>Pyphen - 波兰语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="576"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="755"/>
         <source>Pyphen - Portuguese (Brazil) syllable tokenizer</source>
         <translation>Pyphen - 葡萄牙语（巴西）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="577"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="756"/>
         <source>Pyphen - Portuguese (Portugal) syllable tokenizer</source>
         <translation>Pyphen - 葡萄牙语（葡萄牙）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="578"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="757"/>
         <source>Pyphen - Romanian syllable tokenizer</source>
         <translation>Pyphen - 罗马尼亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="579"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="758"/>
         <source>Pyphen - Russian syllable tokenizer</source>
         <translation>Pyphen - 俄语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="580"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="759"/>
         <source>Pyphen - Serbian (Cyrillic) syllable tokenizer</source>
         <translation>Pyphen - 塞尔维亚语（西里尔）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="581"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="760"/>
         <source>Pyphen - Serbian (Latin) syllable tokenizer</source>
         <translation>Pyphen - 塞尔维亚语（拉丁）分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="582"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="761"/>
         <source>Pyphen - Slovak syllable tokenizer</source>
         <translation>Pyphen - 斯洛伐克语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="583"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="762"/>
         <source>Pyphen - Slovenian syllable tokenizer</source>
         <translation>Pyphen - 斯洛文尼亚语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="584"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="763"/>
         <source>Pyphen - Spanish syllable tokenizer</source>
         <translation>Pyphen - 西班牙语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="585"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="764"/>
         <source>Pyphen - Swedish syllable tokenizer</source>
         <translation>Pyphen - 瑞典语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="586"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="765"/>
         <source>Pyphen - Telugu syllable tokenizer</source>
         <translation>Pyphen - 泰卢固语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="587"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="766"/>
         <source>Pyphen - Thai syllable tokenizer</source>
         <translation>Pyphen - 泰语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="588"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="767"/>
         <source>Pyphen - Ukrainian syllable tokenizer</source>
         <translation>Pyphen - 乌克兰语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="589"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="768"/>
         <source>Pyphen - Zulu syllable tokenizer</source>
         <translation>Pyphen - 祖鲁语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="591"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="770"/>
         <source>PyThaiNLP - Thai syllable tokenizer</source>
         <translation>PyThaiNLP - 泰语分音节器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="595"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="774"/>
         <source>botok - Tibetan part-of-speech tagger</source>
         <translation>botok - 藏语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="596"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="775"/>
         <source>jieba - Chinese part-of-speech tagger</source>
         <translation>jieba - 汉语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="599"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="781"/>
         <source>NLTK - English perceptron part-of-speech tagger</source>
         <translation>NLTK - 英语感知机词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="600"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="782"/>
         <source>NLTK - Russian perceptron part-of-speech tagger</source>
         <translation>NLTK - 俄语感知机词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="641"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="902"/>
         <source>pymorphy3 - Morphological analyzer</source>
         <translation>pymorphy3 - 形态分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="606"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="788"/>
         <source>PyThaiNLP - Perceptron part-of-speech tagger (ORCHID)</source>
         <translation>PyThaiNLP - 感知机词性标注器（ORCHID）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="607"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="789"/>
         <source>PyThaiNLP - Perceptron part-of-speech tagger (PUD)</source>
         <translation>PyThaiNLP - 感知机词性标注器（PUD）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="609"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="791"/>
         <source>spaCy - Catalan part-of-speech tagger</source>
         <translation>spaCy - 加泰罗尼亚语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="610"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="792"/>
         <source>spaCy - Chinese part-of-speech tagger</source>
         <translation>spaCy - 汉语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="611"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="793"/>
         <source>spaCy - Croatian part-of-speech tagger</source>
         <translation>spaCy - 克罗地亚语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="612"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="794"/>
         <source>spaCy - Danish part-of-speech tagger</source>
         <translation>spaCy - 丹麦语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="613"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="795"/>
         <source>spaCy - Dutch part-of-speech tagger</source>
         <translation>spaCy - 荷兰语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="614"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="796"/>
         <source>spaCy - English part-of-speech tagger</source>
         <translation>spaCy - 英语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="615"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="797"/>
         <source>spaCy - Finnish part-of-speech tagger</source>
         <translation>spaCy - 芬兰语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="616"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="798"/>
         <source>spaCy - French part-of-speech tagger</source>
         <translation>spaCy - 法语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="617"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="799"/>
         <source>spaCy - German part-of-speech tagger</source>
         <translation>spaCy - 德语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="618"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="800"/>
         <source>spaCy - Greek (Modern) part-of-speech tagger</source>
         <translation>spaCy - 希腊语（现代）词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="619"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="801"/>
         <source>spaCy - Italian part-of-speech tagger</source>
         <translation>spaCy - 意大利语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="620"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="802"/>
         <source>spaCy - Japanese part-of-speech tagger</source>
         <translation>spaCy - 日语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="622"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="804"/>
         <source>spaCy - Lithuanian part-of-speech tagger</source>
         <translation>spaCy - 立陶宛语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="623"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="805"/>
         <source>spaCy - Macedonian part-of-speech tagger</source>
         <translation>spaCy - 马其顿语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="624"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="806"/>
         <source>spaCy - Norwegian Bokmål part-of-speech tagger</source>
         <translation>spaCy - 书面挪威语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="625"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="807"/>
         <source>spaCy - Polish part-of-speech tagger</source>
         <translation>spaCy - 波兰语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="626"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="808"/>
         <source>spaCy - Portuguese part-of-speech tagger</source>
         <translation>spaCy - 葡萄牙语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="627"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="809"/>
         <source>spaCy - Romanian part-of-speech tagger</source>
         <translation>spaCy - 罗马尼亚语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="628"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="810"/>
         <source>spaCy - Russian part-of-speech tagger</source>
         <translation>spaCy - 俄语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="630"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="812"/>
         <source>spaCy - Spanish part-of-speech tagger</source>
         <translation>spaCy - 西班牙语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="631"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="813"/>
         <source>spaCy - Swedish part-of-speech tagger</source>
         <translation>spaCy - 瑞典语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="632"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="814"/>
         <source>spaCy - Ukrainian part-of-speech tagger</source>
         <translation>spaCy - 乌克兰语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="634"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="895"/>
         <source>SudachiPy - Japanese part-of-speech tagger</source>
         <translation>SudachiPy - 日语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="635"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="896"/>
         <source>Underthesea - Vietnamese part-of-speech tagger</source>
         <translation>Underthesea - 越南语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="639"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="900"/>
         <source>botok - Tibetan lemmatizer</source>
         <translation>botok - 藏语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="640"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="901"/>
         <source>NLTK - WordNet lemmatizer</source>
         <translation>NLTK - WordNet 词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="643"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="904"/>
         <source>simplemma - Albanian lemmatizer</source>
         <translation>simplemma - 阿尔巴尼亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="644"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="905"/>
         <source>simplemma - Armenian lemmatizer</source>
-        <translation>simplemma - 亚美尼亚语词形还原器</translation>
+        <translation>simplemma - Armenian 词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="645"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="906"/>
         <source>simplemma - Asturian lemmatizer</source>
         <translation>simplemma - 阿斯图里亚斯语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="646"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="907"/>
         <source>simplemma - Bulgarian lemmatizer</source>
         <translation>simplemma - 保加利亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="647"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="908"/>
         <source>simplemma - Catalan lemmatizer</source>
         <translation>simplemma - 加泰罗尼亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="648"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="909"/>
         <source>simplemma - Czech lemmatizer</source>
         <translation>simplemma - 捷克语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="649"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="910"/>
         <source>simplemma - Danish lemmatizer</source>
         <translation>simplemma - 丹麦语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="650"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="911"/>
         <source>simplemma - Dutch lemmatizer</source>
         <translation>simplemma - 荷兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="651"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="912"/>
         <source>simplemma - English lemmatizer</source>
         <translation>simplemma - 英语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="652"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="913"/>
         <source>simplemma - English (Middle) lemmatizer</source>
         <translation>simplemma - 英语（中古）词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="653"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="914"/>
         <source>simplemma - Estonian lemmatizer</source>
         <translation>simplemma - 爱沙尼亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="654"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="915"/>
         <source>simplemma - Finnish lemmatizer</source>
         <translation>simplemma - 芬兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="655"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="916"/>
         <source>simplemma - French lemmatizer</source>
         <translation>simplemma - 法语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="656"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="917"/>
         <source>simplemma - Galician lemmatizer</source>
         <translation>simplemma - 加里西亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="657"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="918"/>
         <source>simplemma - Georgian lemmatizer</source>
         <translation>simplemma - 格鲁吉亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="658"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="919"/>
         <source>simplemma - German lemmatizer</source>
         <translation>simplemma - 德语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="659"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="920"/>
         <source>simplemma - Greek (Modern) lemmatizer</source>
         <translation>simplemma - 希腊语（现代）词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="660"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="921"/>
         <source>simplemma - Hindi lemmatizer</source>
         <translation>simplemma - 印地语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="661"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="922"/>
         <source>simplemma - Hungarian lemmatizer</source>
         <translation>simplemma - 匈牙利语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="662"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="923"/>
         <source>simplemma - Icelandic lemmatizer</source>
         <translation>simplemma - 冰岛语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="663"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="924"/>
         <source>simplemma - Indonesian lemmatizer</source>
         <translation>simplemma - 印度尼西亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="664"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="925"/>
         <source>simplemma - Irish lemmatizer</source>
         <translation>simplemma - 爱尔兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="665"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="926"/>
         <source>simplemma - Italian lemmatizer</source>
         <translation>simplemma - 意大利语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="666"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="927"/>
         <source>simplemma - Latin lemmatizer</source>
         <translation>simplemma - 拉丁语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="667"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="928"/>
         <source>simplemma - Latvian lemmatizer</source>
         <translation>simplemma - 拉脱维亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="668"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="929"/>
         <source>simplemma - Lithuanian lemmatizer</source>
         <translation>simplemma - 立陶宛语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="669"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="930"/>
         <source>simplemma - Luxembourgish lemmatizer</source>
         <translation>simplemma - 卢森堡语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="670"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="931"/>
         <source>simplemma - Macedonian lemmatizer</source>
         <translation>simplemma - 马其顿语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="671"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="932"/>
         <source>simplemma - Malay lemmatizer</source>
         <translation>simplemma - 马来语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="672"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="933"/>
         <source>simplemma - Manx lemmatizer</source>
         <translation>simplemma - 马恩语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="673"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="934"/>
         <source>simplemma - Norwegian Bokmål lemmatizer</source>
         <translation>simplemma - 书面挪威语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="674"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="935"/>
         <source>simplemma - Norwegian Nynorsk lemmatizer</source>
         <translation>simplemma - 新挪威语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="675"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="936"/>
         <source>simplemma - Persian lemmatizer</source>
         <translation>simplemma - 波斯语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="676"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="937"/>
         <source>simplemma - Polish lemmatizer</source>
         <translation>simplemma - 波兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="677"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="938"/>
         <source>simplemma - Portuguese lemmatizer</source>
         <translation>simplemma - 葡萄牙语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="678"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="939"/>
         <source>simplemma - Romanian lemmatizer</source>
         <translation>simplemma - 罗马尼亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="679"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="940"/>
         <source>simplemma - Russian lemmatizer</source>
         <translation>simplemma - 俄语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="680"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="941"/>
         <source>simplemma - Sámi (Northern) lemmatizer</source>
         <translation>simplemma - 萨米语（北）词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="681"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="942"/>
         <source>simplemma - Scottish Gaelic lemmatizer</source>
         <translation>simplemma - 苏格兰盖尔语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="682"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="943"/>
         <source>simplemma - Serbo-Croatian lemmatizer</source>
         <translation>simplemma - 塞尔维亚-克罗地亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="683"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="944"/>
         <source>simplemma - Slovak lemmatizer</source>
         <translation>simplemma - 斯洛伐克语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="684"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="945"/>
         <source>simplemma - Slovenian lemmatizer</source>
         <translation>simplemma - 斯洛文尼亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="685"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="946"/>
         <source>simplemma - Spanish lemmatizer</source>
         <translation>simplemma - 西班牙语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="686"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="947"/>
         <source>simplemma - Swahili lemmatizer</source>
         <translation>simplemma - 斯瓦西里语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="687"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="948"/>
         <source>simplemma - Swedish lemmatizer</source>
         <translation>simplemma - 瑞典语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="688"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="949"/>
         <source>simplemma - Tagalog lemmatizer</source>
         <translation>simplemma - 他加禄语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="689"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="950"/>
         <source>simplemma - Turkish lemmatizer</source>
         <translation>simplemma - 土耳其语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="690"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="951"/>
         <source>simplemma - Ukrainian lemmatizer</source>
         <translation>simplemma - 乌克兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="691"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="952"/>
         <source>simplemma - Welsh lemmatizer</source>
         <translation>simplemma - 威尔士语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="693"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="954"/>
         <source>spaCy - Bengali lemmatizer</source>
         <translation>spaCy - 孟加拉语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="694"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="955"/>
         <source>spaCy - Catalan lemmatizer</source>
         <translation>spaCy - 加泰罗尼亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="695"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="956"/>
         <source>spaCy - Croatian lemmatizer</source>
         <translation>spaCy - 克罗地亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="696"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="957"/>
         <source>spaCy - Czech lemmatizer</source>
         <translation>spaCy - 捷克语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="697"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="958"/>
         <source>spaCy - Danish lemmatizer</source>
         <translation>spaCy - 丹麦语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="698"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="959"/>
         <source>spaCy - Dutch lemmatizer</source>
         <translation>spaCy - 荷兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="699"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="960"/>
         <source>spaCy - English lemmatizer</source>
         <translation>spaCy - 英语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="700"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="961"/>
         <source>spaCy - Finnish lemmatizer</source>
         <translation>spaCy - 芬兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="701"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="962"/>
         <source>spaCy - French lemmatizer</source>
         <translation>spaCy - 法语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="702"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="963"/>
         <source>spaCy - German lemmatizer</source>
         <translation>spaCy - 德语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="703"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="964"/>
         <source>spaCy - Greek (Ancient) lemmatizer</source>
         <translation>spaCy - 希腊语（古）词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="704"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="965"/>
         <source>spaCy - Greek (Modern) lemmatizer</source>
         <translation>spaCy - 希腊语（现代）词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="705"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="966"/>
         <source>spaCy - Hungarian lemmatizer</source>
         <translation>spaCy - 匈牙利语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="706"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="967"/>
         <source>spaCy - Indonesian lemmatizer</source>
         <translation>spaCy - 印度尼西亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="707"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="968"/>
         <source>spaCy - Irish lemmatizer</source>
         <translation>spaCy - 爱尔兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="708"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="969"/>
         <source>spaCy - Italian lemmatizer</source>
         <translation>spaCy - 意大利语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="709"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="970"/>
         <source>spaCy - Japanese lemmatizer</source>
         <translation>spaCy - 日语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="711"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="972"/>
         <source>spaCy - Lithuanian lemmatizer</source>
         <translation>spaCy - 立陶宛语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="712"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="973"/>
         <source>spaCy - Luxembourgish lemmatizer</source>
         <translation>spaCy - 卢森堡语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="713"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="974"/>
         <source>spaCy - Macedonian lemmatizer</source>
         <translation>spaCy - 马其顿语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="714"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="975"/>
         <source>spaCy - Norwegian Bokmål lemmatizer</source>
         <translation>spaCy - 书面挪威语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="715"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="976"/>
         <source>spaCy - Persian lemmatizer</source>
         <translation>spaCy - 波斯语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="716"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="977"/>
         <source>spaCy - Polish lemmatizer</source>
         <translation>spaCy - 波兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="717"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="978"/>
         <source>spaCy - Portuguese lemmatizer</source>
         <translation>spaCy - 葡萄牙语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="718"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="979"/>
         <source>spaCy - Romanian lemmatizer</source>
         <translation>spaCy - 罗马尼亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="719"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="980"/>
         <source>spaCy - Russian lemmatizer</source>
         <translation>spaCy - 俄语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="720"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="981"/>
         <source>spaCy - Serbian lemmatizer</source>
         <translation>spaCy - 塞尔维亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="722"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="983"/>
         <source>spaCy - Spanish lemmatizer</source>
         <translation>spaCy - 西班牙语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="723"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="984"/>
         <source>spaCy - Swedish lemmatizer</source>
         <translation>spaCy - 瑞典语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="724"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="985"/>
         <source>spaCy - Tagalog lemmatizer</source>
         <translation>spaCy - 他加禄语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="725"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="986"/>
         <source>spaCy - Turkish lemmatizer</source>
         <translation>spaCy - 土耳其语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="726"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="987"/>
         <source>spaCy - Ukrainian lemmatizer</source>
         <translation>spaCy - 乌克兰语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="727"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="988"/>
         <source>spaCy - Urdu lemmatizer</source>
         <translation>spaCy - 乌尔都语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="729"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1065"/>
         <source>SudachiPy - Japanese lemmatizer</source>
         <translation>SudachiPy - 日语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="733"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1071"/>
         <source>NLTK - Arabic stop word list</source>
         <translation>NLTK - 阿拉伯语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="734"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1072"/>
         <source>NLTK - Azerbaijani stop word list</source>
         <translation>NLTK - 阿塞拜疆语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="735"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1073"/>
         <source>NLTK - Basque stop word list</source>
         <translation>NLTK - 巴斯克语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="736"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1074"/>
         <source>NLTK - Bengali stop word list</source>
         <translation>NLTK - 孟加拉语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="737"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1075"/>
         <source>NLTK - Catalan stop word list</source>
         <translation>NLTK - 加泰罗尼亚语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="738"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1076"/>
         <source>NLTK - Chinese (Simplified) stop word list</source>
         <translation>NLTK - 汉语（简体）停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="739"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1077"/>
         <source>NLTK - Chinese (Traditional) stop word list</source>
         <translation>NLTK - 汉语（繁体）停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="740"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1078"/>
         <source>NLTK - Danish stop word list</source>
         <translation>NLTK - 丹麦语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="741"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1079"/>
         <source>NLTK - Dutch stop word list</source>
         <translation>NLTK - 荷兰语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="742"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1080"/>
         <source>NLTK - English stop word list</source>
         <translation>NLTK - 英语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="743"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1081"/>
         <source>NLTK - Finnish stop word list</source>
         <translation>NLTK - 芬兰语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="744"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1082"/>
         <source>NLTK - French stop word list</source>
         <translation>NLTK - 法语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="745"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1083"/>
         <source>NLTK - German stop word list</source>
         <translation>NLTK - 德语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="746"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1084"/>
         <source>NLTK - Greek (Modern) stop word list</source>
         <translation>NLTK - 希腊语（现代）停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="747"/>
-        <source>NLTK - Hebrew stop word list</source>
-        <translation>NLTK - 希伯来语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="748"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1086"/>
         <source>NLTK - Hungarian stop word list</source>
         <translation>NLTK - 匈牙利语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="749"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1087"/>
         <source>NLTK - Indonesian stop word list</source>
         <translation>NLTK - 印度尼西亚语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="750"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1088"/>
         <source>NLTK - Italian stop word list</source>
         <translation>NLTK - 意大利语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="751"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1089"/>
         <source>NLTK - Kazakh stop word list</source>
         <translation>NLTK - 哈萨克语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="752"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1090"/>
         <source>NLTK - Nepali stop word list</source>
         <translation>NLTK - 尼泊尔语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="753"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1091"/>
         <source>NLTK - Norwegian stop word list</source>
         <translation>NLTK - 挪威语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="754"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1092"/>
         <source>NLTK - Portuguese stop word list</source>
         <translation>NLTK - 葡萄牙语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="755"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1093"/>
         <source>NLTK - Romanian stop word list</source>
         <translation>NLTK - 罗马尼亚语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="756"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1094"/>
         <source>NLTK - Russian stop word list</source>
         <translation>NLTK - 俄语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="757"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1095"/>
         <source>NLTK - Slovenian stop word list</source>
         <translation>NLTK - 斯洛文尼亚语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="758"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1096"/>
         <source>NLTK - Spanish stop word list</source>
         <translation>NLTK - 西班牙语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="759"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1097"/>
         <source>NLTK - Swedish stop word list</source>
         <translation>NLTK - 瑞典语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="760"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1098"/>
         <source>NLTK - Tajik stop word list</source>
         <translation>NLTK - 塔吉克语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="761"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1099"/>
         <source>NLTK - Turkish stop word list</source>
         <translation>NLTK - 土耳其语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="763"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1101"/>
         <source>PyThaiNLP - Thai stop word list</source>
         <translation>PyThaiNLP - 泰语停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="765"/>
-        <source>stopword - Afrikaans stop word list</source>
-        <translation>stopword - 南非语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="766"/>
-        <source>stopword - Arabic stop word list</source>
-        <translation>stopword - 阿拉伯语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="767"/>
-        <source>stopword - Armenian stop word list</source>
-        <translation>stopword - 亚美尼亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="768"/>
-        <source>stopword - Basque stop word list</source>
-        <translation>stopword - 巴斯克语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="769"/>
-        <source>stopword - Bengali stop word list</source>
-        <translation>stopword - 孟加拉语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="770"/>
-        <source>stopword - Breton stop word list</source>
-        <translation>stopword - 布列塔尼语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="771"/>
-        <source>stopword - Bulgarian stop word list</source>
-        <translation>stopword - 保加利亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="773"/>
-        <source>stopword - Catalan stop word list</source>
-        <translation>stopword - 加泰罗尼亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="774"/>
-        <source>stopword - Chinese (Simplified) stop word list</source>
-        <translation>stopword - 汉语（简体）停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="775"/>
-        <source>stopword - Chinese (Traditional) stop word list</source>
-        <translation>stopword - 汉语（繁体）停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="776"/>
-        <source>stopword - Croatian stop word list</source>
-        <translation>stopword - 克罗地亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="777"/>
-        <source>stopword - Czech stop word list</source>
-        <translation>stopword - 捷克语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="778"/>
-        <source>stopword - Danish stop word list</source>
-        <translation>stopword - 丹麦语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="779"/>
-        <source>stopword - Dutch stop word list</source>
-        <translation>stopword - 荷兰语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="780"/>
-        <source>stopword - English stop word list</source>
-        <translation>stopword - 英语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="781"/>
-        <source>stopword - Esperanto stop word list</source>
-        <translation>stopword - 世界语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="782"/>
-        <source>stopword - Estonian stop word list</source>
-        <translation>stopword - 爱沙尼亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="783"/>
-        <source>stopword - Finnish stop word list</source>
-        <translation>stopword - 芬兰语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="784"/>
-        <source>stopword - French stop word list</source>
-        <translation>stopword - 法语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="785"/>
-        <source>stopword - Galician stop word list</source>
-        <translation>stopword - 加里西亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="786"/>
-        <source>stopword - German stop word list</source>
-        <translation>stopword - 德语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="787"/>
-        <source>stopword - Greek (Modern) stop word list</source>
-        <translation>stopword - 希腊语（现代）停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="788"/>
-        <source>stopword - Gujarati stop word list</source>
-        <translation>stopword - 古吉拉特语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="789"/>
-        <source>stopword - Hausa stop word list</source>
-        <translation>stopword - 豪萨语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="790"/>
-        <source>stopword - Hebrew stop word list</source>
-        <translation>stopword - 希伯来语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="791"/>
-        <source>stopword - Hindi stop word list</source>
-        <translation>stopword - 印地语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="792"/>
-        <source>stopword - Hungarian stop word list</source>
-        <translation>stopword - 匈牙利语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="793"/>
-        <source>stopword - Indonesian stop word list</source>
-        <translation>stopword - 印度尼西亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="794"/>
-        <source>stopword - Irish stop word list</source>
-        <translation>stopword - 爱尔兰语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="795"/>
-        <source>stopword - Italian stop word list</source>
-        <translation>stopword - 意大利语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="796"/>
-        <source>stopword - Japanese stop word list</source>
-        <translation>stopword - 日语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="797"/>
-        <source>stopword - Korean stop word list</source>
-        <translation>stopword - 韩语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="798"/>
-        <source>stopword - Kurdish stop word list</source>
-        <translation>stopword - 库尔德语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="799"/>
-        <source>stopword - Latin stop word list</source>
-        <translation>stopword - 拉丁语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="800"/>
-        <source>stopword - Latvian stop word list</source>
-        <translation>stopword - 拉脱维亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="801"/>
-        <source>stopword - Lithuanian stop word list</source>
-        <translation>stopword - 立陶宛语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="802"/>
-        <source>stopword - Lugbara stop word list</source>
-        <translation>stopword - 卢格巴拉语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="803"/>
-        <source>stopword - Malay stop word list</source>
-        <translation>stopword - 马来语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="804"/>
-        <source>stopword - Marathi stop word list</source>
-        <translation>stopword - 马拉地语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="805"/>
-        <source>stopword - Norwegian Bokmål stop word list</source>
-        <translation>stopword - 书面挪威语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="806"/>
-        <source>stopword - Persian stop word list</source>
-        <translation>stopword - 波斯语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="807"/>
-        <source>stopword - Polish stop word list</source>
-        <translation>stopword - 波兰语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="808"/>
-        <source>stopword - Portuguese (Brazil) stop word list</source>
-        <translation>stopword - 葡萄牙语（巴西）停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="809"/>
-        <source>stopword - Portuguese (Portugal) stop word list</source>
-        <translation>stopword - 葡萄牙语（葡萄牙）停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="810"/>
-        <source>stopword - Punjabi (Gurmukhi) stop word list</source>
-        <translation>stopword - 旁遮普语（古木基）停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="811"/>
-        <source>stopword - Romanian stop word list</source>
-        <translation>stopword - 罗马尼亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="812"/>
-        <source>stopword - Russian stop word list</source>
-        <translation>stopword - 俄语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="813"/>
-        <source>stopword - Slovak stop word list</source>
-        <translation>stopword - 斯洛伐克语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="814"/>
-        <source>stopword - Slovenian stop word list</source>
-        <translation>stopword - 斯洛文尼亚语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="815"/>
-        <source>stopword - Somali stop word list</source>
-        <translation>stopword - 索马里语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="816"/>
-        <source>stopword - Sotho (Southern) stop word list</source>
-        <translation>stopword - 塞索托语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="817"/>
-        <source>stopword - Spanish stop word list</source>
-        <translation>stopword - 西班牙语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="818"/>
-        <source>stopword - Swahili stop word list</source>
-        <translation>stopword - 斯瓦西里语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="819"/>
-        <source>stopword - Swedish stop word list</source>
-        <translation>stopword - 瑞典语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="820"/>
-        <source>stopword - Tagalog stop word list</source>
-        <translation>stopword - 他加禄语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="821"/>
-        <source>stopword - Thai stop word list</source>
-        <translation>stopword - 泰语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="822"/>
-        <source>stopword - Turkish stop word list</source>
-        <translation>stopword - 土耳其语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="823"/>
-        <source>stopword - Ukrainian stop word list</source>
-        <translation>stopword - 乌克兰语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="824"/>
-        <source>stopword - Urdu stop word list</source>
-        <translation>stopword - 乌尔都语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="825"/>
-        <source>stopword - Vietnamese stop word list</source>
-        <translation>stopword - 越南语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="826"/>
-        <source>stopword - Yoruba stop word list</source>
-        <translation>stopword - 约鲁巴语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="827"/>
-        <source>stopword - Zulu stop word list</source>
-        <translation>stopword - 祖鲁语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="829"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1103"/>
         <source>Custom stop word list</source>
         <translation>自定义停用词表</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="833"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1107"/>
         <source>spaCy - Catalan dependency parser</source>
         <translation>spaCy - 加泰罗尼亚语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="834"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1108"/>
         <source>spaCy - Chinese dependency parser</source>
         <translation>spaCy - 汉语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="835"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1109"/>
         <source>spaCy - Croatian dependency parser</source>
         <translation>spaCy - 克罗地亚语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="836"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1110"/>
         <source>spaCy - Danish dependency parser</source>
         <translation>spaCy - 丹麦语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="837"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1111"/>
         <source>spaCy - Dutch dependency parser</source>
         <translation>spaCy - 荷兰语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="838"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1112"/>
         <source>spaCy - English dependency parser</source>
         <translation>spaCy - 英语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="839"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1113"/>
         <source>spaCy - Finnish dependency parser</source>
         <translation>spaCy - 芬兰语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="840"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1114"/>
         <source>spaCy - French dependency parser</source>
         <translation>spaCy - 法语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="841"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1115"/>
         <source>spaCy - German dependency parser</source>
         <translation>spaCy - 德语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="842"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1116"/>
         <source>spaCy - Greek (Modern) dependency parser</source>
         <translation>spaCy - 希腊语（现代）依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="843"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1117"/>
         <source>spaCy - Italian dependency parser</source>
         <translation>spaCy - 意大利语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="844"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1118"/>
         <source>spaCy - Japanese dependency parser</source>
         <translation>spaCy - 日语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="846"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1120"/>
         <source>spaCy - Lithuanian dependency parser</source>
         <translation>spaCy - 立陶宛语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="847"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1121"/>
         <source>spaCy - Macedonian dependency parser</source>
         <translation>spaCy - 马其顿语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="848"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1122"/>
         <source>spaCy - Norwegian Bokmål dependency parser</source>
         <translation>spaCy - 书面挪威语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="849"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1123"/>
         <source>spaCy - Polish dependency parser</source>
         <translation>spaCy - 波兰语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="850"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1124"/>
         <source>spaCy - Portuguese dependency parser</source>
         <translation>spaCy - 葡萄牙语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="851"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1125"/>
         <source>spaCy - Romanian dependency parser</source>
         <translation>spaCy - 罗马尼亚语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="852"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1126"/>
         <source>spaCy - Russian dependency parser</source>
         <translation>spaCy - 俄语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="854"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1128"/>
         <source>spaCy - Spanish dependency parser</source>
         <translation>spaCy - 西班牙语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="855"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1129"/>
         <source>spaCy - Swedish dependency parser</source>
         <translation>spaCy - 瑞典语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="856"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1130"/>
         <source>spaCy - Ukrainian dependency parser</source>
         <translation>spaCy - 乌克兰语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2115"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3313"/>
         <source>Average logarithmic distance</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2116"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3314"/>
         <source>Average reduced frequency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2117"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3315"/>
         <source>Average waiting time</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2255"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3453"/>
         <source>Carroll&apos;s Uₘ</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2127"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3325"/>
         <source>Fisher&apos;s exact test</source>
         <translation>费希尔精确检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2140"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3338"/>
         <source>Log-likelihood ratio test</source>
         <translation>对数似然比检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2130"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3328"/>
         <source>Pearson&apos;s chi-squared test</source>
         <translation>皮尔森卡方检验</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2147"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3345"/>
         <source>Cubic association ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2148"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3346"/>
         <source>Dice&apos;s coefficient</source>
         <translation>Dice 系数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2149"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3347"/>
         <source>Difference coefficient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2150"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3348"/>
         <source>Jaccard index</source>
         <translation>雅卡尔指数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2151"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3349"/>
         <source>Log-frequency biased MD</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2152"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3350"/>
         <source>Kilgarriff&apos;s ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2154"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3352"/>
         <source>Log ratio</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2156"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3354"/>
         <source>Minimum sensitivity</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2157"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3355"/>
         <source>Mutual dependency</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2158"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3356"/>
         <source>Mutual expectation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2159"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3357"/>
         <source>Mutual information</source>
         <translation>互信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2160"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3358"/>
         <source>Odds ratio</source>
         <translation>比值比</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2161"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3359"/>
         <source>Pointwise mutual information</source>
         <translation>点互信息</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2162"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3360"/>
         <source>Poisson collocation measure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="2163"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="3361"/>
         <source>Squared phi coefficient</source>
         <translation>Phi 系数的平方</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="345"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="358"/>
         <source>Microsoft Paint files (*.msp)</source>
         <translation>Microsoft Paint 文件 (*.msp)</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="772"/>
-        <source>stopword - Burmese stop word list</source>
-        <translation>stopword - 缅甸语停用词表</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="83"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="91"/>
         <source>Khmer</source>
         <translation>柬埔寨语</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="370"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="383"/>
         <source>khmer-nltk - Khmer sentence tokenizer</source>
         <translation>khmer-nltk - 柬埔寨语分句器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="845"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1119"/>
         <source>spaCy - Korean dependency parser</source>
         <translation>spaCy - 韩语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="853"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1127"/>
         <source>spaCy - Slovenian dependency parser</source>
         <translation>spaCy - 斯洛文尼亚语依存分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="425"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="439"/>
         <source>spaCy - Korean sentence recognizer</source>
         <translation>spaCy - 韩语句子识别器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="443"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="539"/>
         <source>khmer-nltk - Khmer word tokenizer</source>
         <translation>khmer-nltk - 柬埔寨语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="495"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="592"/>
         <source>spaCy - Korean word tokenizer</source>
         <translation>spaCy - 韩语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="503"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="600"/>
         <source>spaCy - Malay word tokenizer</source>
         <translation>spaCy - 马来语分词器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="597"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="776"/>
         <source>khmer-nltk - Khmer part-of-speech tagger</source>
         <translation>khmer-nltk - 柬埔寨语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="605"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="787"/>
         <source>PyThaiNLP - Perceptron part-of-speech tagger (Blackboard)</source>
         <translation>PyThaiNLP - 感知机词性标注器（Blackboard）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="621"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="803"/>
         <source>spaCy - Korean part-of-speech tagger</source>
         <translation>spaCy - 韩语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="629"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="811"/>
         <source>spaCy - Slovenian part-of-speech tagger</source>
         <translation>spaCy - 斯洛文尼亚语词性标注器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="710"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="971"/>
         <source>spaCy - Korean lemmatizer</source>
         <translation>spaCy - 韩语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="721"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="982"/>
         <source>spaCy - Slovenian lemmatizer</source>
         <translation>spaCy - 斯洛文尼亚语词形还原器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="860"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1213"/>
         <source>Dostoevsky - Russian sentiment analyzer</source>
         <translation>Dostoevsky - 俄语情感分析器</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_global.py" line="861"/>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1222"/>
         <source>Underthesea - Vietnamese sentiment analyzer</source>
         <translation>Underthesea - 越南语情感分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="39"/>
+        <source>Armenian (Eastern)</source>
+        <translation>亚美尼亚语（东）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="40"/>
+        <source>Armenian (Western)</source>
+        <translation>亚美尼亚语（西）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="49"/>
+        <source>Buryat (Russia)</source>
+        <translation>布里亚特语（俄罗斯）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="51"/>
+        <source>Chinese (Classical)</source>
+        <translation>汉语（文言）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="54"/>
+        <source>Church Slavonic (Old)</source>
+        <translation>教会斯拉夫语（古）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="55"/>
+        <source>Coptic</source>
+        <translation>科普特语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="63"/>
+        <source>Erzya</source>
+        <translation>埃尔齐亚语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="66"/>
+        <source>Faroese</source>
+        <translation>法罗语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="69"/>
+        <source>French (Old)</source>
+        <translation>法语（古）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="76"/>
+        <source>Gothic</source>
+        <translation>哥特语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="80"/>
+        <source>Hebrew (Ancient)</source>
+        <translation>希伯来语（古）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="81"/>
+        <source>Hebrew (Modern)</source>
+        <translation>希伯来语（现代）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="93"/>
+        <source>Kurdish (Kurmanji)</source>
+        <translation>库尔德语（库尔曼吉语）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="95"/>
+        <source>Lao</source>
+        <translation>老挝语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="104"/>
+        <source>Maltese</source>
+        <translation>马耳他语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="110"/>
+        <source>Nigerian Pidgin</source>
+        <translation>尼日利亚皮钦语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="116"/>
+        <source>Pomak</source>
+        <translation>波马克语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="122"/>
+        <source>Russian (Old)</source>
+        <translation>俄语（古）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="128"/>
+        <source>Sindhi</source>
+        <translation>信德语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="150"/>
+        <source>Uyghur</source>
+        <translation>维吾尔语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="153"/>
+        <source>Wolof</source>
+        <translation>沃洛夫语</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="384"/>
+        <source>LaoNLP - Lao sentence tokenizer</source>
+        <translation>LaoNLP - 老挝语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="451"/>
+        <source>Stanza - Afrikaans sentence tokenizer</source>
+        <translation>Stanza - 南非语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="452"/>
+        <source>Stanza - Arabic sentence tokenizer</source>
+        <translation>Stanza - 阿拉伯语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="453"/>
+        <source>Stanza - Armenian (Eastern) sentence tokenizer</source>
+        <translation>Stanza - 亚美尼亚语（东）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="454"/>
+        <source>Stanza - Armenian (Western) sentence tokenizer</source>
+        <translation>Stanza - 亚美尼亚语（西）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="455"/>
+        <source>Stanza - Basque sentence tokenizer</source>
+        <translation>Stanza - 巴斯克语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="456"/>
+        <source>Stanza - Belarusian sentence tokenizer</source>
+        <translation>Stanza - 白俄罗斯语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="457"/>
+        <source>Stanza - Bulgarian sentence tokenizer</source>
+        <translation>Stanza - 保加利亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="458"/>
+        <source>Stanza - Burmese sentence tokenizer</source>
+        <translation>Stanza - 缅甸语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="459"/>
+        <source>Stanza - Buryat (Russia) sentence tokenizer</source>
+        <translation>Stanza - 布里亚特语（俄罗斯）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="460"/>
+        <source>Stanza - Catalan sentence tokenizer</source>
+        <translation>Stanza - 加泰罗尼亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="461"/>
+        <source>Stanza - Chinese (Classical) sentence tokenizer</source>
+        <translation>Stanza - 汉语（文言）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="462"/>
+        <source>Stanza - Chinese (Simplified) sentence tokenizer</source>
+        <translation>Stanza - 汉语（简体）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="463"/>
+        <source>Stanza - Chinese (Traditional) sentence tokenizer</source>
+        <translation>Stanza - 汉语（繁体）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="464"/>
+        <source>Stanza - Church Slavonic (Old) sentence tokenizer</source>
+        <translation>Stanza - 教会斯拉夫语（古）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="465"/>
+        <source>Stanza - Coptic sentence tokenizer</source>
+        <translation>Stanza - 科普特语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="466"/>
+        <source>Stanza - Croatian sentence tokenizer</source>
+        <translation>Stanza - 克罗地亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="467"/>
+        <source>Stanza - Czech sentence tokenizer</source>
+        <translation>Stanza - 捷克语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="468"/>
+        <source>Stanza - Danish sentence tokenizer</source>
+        <translation>Stanza - 丹麦语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="469"/>
+        <source>Stanza - Dutch sentence tokenizer</source>
+        <translation>Stanza - 荷兰语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="470"/>
+        <source>Stanza - English sentence tokenizer</source>
+        <translation>Stanza - 英语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="471"/>
+        <source>Stanza - Erzya sentence tokenizer</source>
+        <translation>Stanza - 埃尔齐亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="472"/>
+        <source>Stanza - Estonian sentence tokenizer</source>
+        <translation>Stanza - 爱沙尼亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="473"/>
+        <source>Stanza - Faroese sentence tokenizer</source>
+        <translation>Stanza - 法罗语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="474"/>
+        <source>Stanza - Finnish sentence tokenizer</source>
+        <translation>Stanza - 芬兰语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="475"/>
+        <source>Stanza - French sentence tokenizer</source>
+        <translation>Stanza - 法语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="476"/>
+        <source>Stanza - French (Old) sentence tokenizer</source>
+        <translation>Stanza - 法语（古）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="477"/>
+        <source>Stanza - Galician sentence tokenizer</source>
+        <translation>Stanza - 加里西亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="478"/>
+        <source>Stanza - German sentence tokenizer</source>
+        <translation>Stanza - 德语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="479"/>
+        <source>Stanza - Gothic sentence tokenizer</source>
+        <translation>Stanza - 哥特语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="480"/>
+        <source>Stanza - Greek (Ancient) sentence tokenizer</source>
+        <translation>Stanza - 希腊语（古）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="481"/>
+        <source>Stanza - Greek (Modern) sentence tokenizer</source>
+        <translation>Stanza - 希腊语（现代）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="482"/>
+        <source>Stanza - Hebrew (Ancient) sentence tokenizer</source>
+        <translation>Stanza - 希伯来语（古）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="483"/>
+        <source>Stanza - Hebrew (Modern) sentence tokenizer</source>
+        <translation>Stanza - 希伯来语（现代）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="484"/>
+        <source>Stanza - Hindi sentence tokenizer</source>
+        <translation>Stanza - 印地语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="485"/>
+        <source>Stanza - Hungarian sentence tokenizer</source>
+        <translation>Stanza - 匈牙利语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="486"/>
+        <source>Stanza - Icelandic sentence tokenizer</source>
+        <translation>Stanza - 冰岛语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="487"/>
+        <source>Stanza - Indonesian sentence tokenizer</source>
+        <translation>Stanza - 印度尼西亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="488"/>
+        <source>Stanza - Irish sentence tokenizer</source>
+        <translation>Stanza - 爱尔兰语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="489"/>
+        <source>Stanza - Italian sentence tokenizer</source>
+        <translation>Stanza - 意大利语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="490"/>
+        <source>Stanza - Japanese sentence tokenizer</source>
+        <translation>Stanza - 日语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="491"/>
+        <source>Stanza - Kazakh sentence tokenizer</source>
+        <translation>Stanza - 哈萨克语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="492"/>
+        <source>Stanza - Korean sentence tokenizer</source>
+        <translation>Stanza - 韩语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="493"/>
+        <source>Stanza - Kurdish (Kurmanji) sentence tokenizer</source>
+        <translation>Stanza - 库尔德语（库尔曼吉语）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="494"/>
+        <source>Stanza - Kyrgyz sentence tokenizer</source>
+        <translation>Stanza - 吉尔吉斯语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="495"/>
+        <source>Stanza - Latin sentence tokenizer</source>
+        <translation>Stanza - 拉丁语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="496"/>
+        <source>Stanza - Latvian sentence tokenizer</source>
+        <translation>Stanza - 拉脱维亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="497"/>
+        <source>Stanza - Ligurian sentence tokenizer</source>
+        <translation>Stanza - 利古里亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="498"/>
+        <source>Stanza - Lithuanian sentence tokenizer</source>
+        <translation>Stanza - 立陶宛语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="499"/>
+        <source>Stanza - Maltese sentence tokenizer</source>
+        <translation>Stanza - 马耳他语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="500"/>
+        <source>Stanza - Manx sentence tokenizer</source>
+        <translation>Stanza - 马恩语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="501"/>
+        <source>Stanza - Marathi sentence tokenizer</source>
+        <translation>Stanza - 马拉地语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="502"/>
+        <source>Stanza - Nigerian Pidgin sentence tokenizer</source>
+        <translation>Stanza - 尼日利亚皮钦语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="503"/>
+        <source>Stanza - Norwegian Bokmål sentence tokenizer</source>
+        <translation>Stanza - 书面挪威语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="504"/>
+        <source>Stanza - Norwegian Nynorsk sentence tokenizer</source>
+        <translation>Stanza - 新挪威语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="505"/>
+        <source>Stanza - Persian sentence tokenizer</source>
+        <translation>Stanza - 波斯语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="506"/>
+        <source>Stanza - Polish sentence tokenizer</source>
+        <translation>Stanza - 波兰语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="507"/>
+        <source>Stanza - Pomak sentence tokenizer</source>
+        <translation>Stanza - 波马克语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="508"/>
+        <source>Stanza - Portuguese sentence tokenizer</source>
+        <translation>Stanza - 葡萄牙语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="509"/>
+        <source>Stanza - Romanian sentence tokenizer</source>
+        <translation>Stanza - 罗马尼亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="510"/>
+        <source>Stanza - Russian sentence tokenizer</source>
+        <translation>Stanza - 俄语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="511"/>
+        <source>Stanza - Russian (Old) sentence tokenizer</source>
+        <translation>Stanza - 俄语（古）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="512"/>
+        <source>Stanza - Sámi (Northern) sentence tokenizer</source>
+        <translation>Stanza - 萨米语（北）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="513"/>
+        <source>Stanza - Sanskrit sentence tokenizer</source>
+        <translation>Stanza - 梵语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="514"/>
+        <source>Stanza - Scottish Gaelic sentence tokenizer</source>
+        <translation>Stanza - 苏格兰盖尔语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="515"/>
+        <source>Stanza - Serbian (Latin) sentence tokenizer</source>
+        <translation>Stanza - 塞尔维亚语（拉丁）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="516"/>
+        <source>Stanza - Sindhi sentence tokenizer</source>
+        <translation>Stanza - 信德语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="517"/>
+        <source>Stanza - Slovak sentence tokenizer</source>
+        <translation>Stanza - 斯洛伐克语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="518"/>
+        <source>Stanza - Slovenian sentence tokenizer</source>
+        <translation>Stanza - 斯洛文尼亚语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="519"/>
+        <source>Stanza - Sorbian (Upper) sentence tokenizer</source>
+        <translation>Stanza - 索布语（上）分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="520"/>
+        <source>Stanza - Spanish sentence tokenizer</source>
+        <translation>Stanza - 西班牙语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="521"/>
+        <source>Stanza - Swedish sentence tokenizer</source>
+        <translation>Stanza - 瑞典语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="522"/>
+        <source>Stanza - Tamil sentence tokenizer</source>
+        <translation>Stanza - 泰米尔语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="523"/>
+        <source>Stanza - Telugu sentence tokenizer</source>
+        <translation>Stanza - 泰卢固语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="524"/>
+        <source>Stanza - Thai sentence tokenizer</source>
+        <translation>Stanza - 泰语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="525"/>
+        <source>Stanza - Turkish sentence tokenizer</source>
+        <translation>Stanza - 土耳其语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="526"/>
+        <source>Stanza - Ukrainian sentence tokenizer</source>
+        <translation>Stanza - 乌克兰语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="527"/>
+        <source>Stanza - Urdu sentence tokenizer</source>
+        <translation>Stanza - 乌尔都语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="528"/>
+        <source>Stanza - Uyghur sentence tokenizer</source>
+        <translation>Stanza - 维吾尔语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="529"/>
+        <source>Stanza - Vietnamese sentence tokenizer</source>
+        <translation>Stanza - 越南语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="530"/>
+        <source>Stanza - Welsh sentence tokenizer</source>
+        <translation>Stanza - 威尔士语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="531"/>
+        <source>Stanza - Wolof sentence tokenizer</source>
+        <translation>Stanza - 沃洛夫语分句器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="540"/>
+        <source>LaoNLP - Lao word tokenizer</source>
+        <translation>LaoNLP - 老挝语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="583"/>
+        <source>spaCy - Hebrew (Modern) word tokenizer</source>
+        <translation>spaCy - 希伯来语（现代）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="604"/>
+        <source>spaCy - Norwegian Bokmål word tokenizer</source>
+        <translation>spaCy - 书面挪威语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="630"/>
+        <source>Stanza - Afrikaans word tokenizer</source>
+        <translation>Stanza - 南非语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="631"/>
+        <source>Stanza - Arabic word tokenizer</source>
+        <translation>Stanza - 阿拉伯语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="632"/>
+        <source>Stanza - Armenian (Eastern) word tokenizer</source>
+        <translation>Stanza - 亚美尼亚语（东）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="633"/>
+        <source>Stanza - Armenian (Western) word tokenizer</source>
+        <translation>Stanza - 亚美尼亚语（西）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="634"/>
+        <source>Stanza - Basque word tokenizer</source>
+        <translation>Stanza - 巴斯克语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="635"/>
+        <source>Stanza - Belarusian word tokenizer</source>
+        <translation>Stanza - 白俄罗斯语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="636"/>
+        <source>Stanza - Bulgarian word tokenizer</source>
+        <translation>Stanza - 保加利亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="637"/>
+        <source>Stanza - Burmese word tokenizer</source>
+        <translation>Stanza - 缅甸语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="638"/>
+        <source>Stanza - Buryat (Russia) word tokenizer</source>
+        <translation>Stanza - 布里亚特语（俄罗斯）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="639"/>
+        <source>Stanza - Catalan word tokenizer</source>
+        <translation>Stanza - 加泰罗尼亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="640"/>
+        <source>Stanza - Chinese (Classical) word tokenizer</source>
+        <translation>Stanza - 汉语（文言）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="641"/>
+        <source>Stanza - Chinese (Simplified) word tokenizer</source>
+        <translation>Stanza - 汉语（简体）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="642"/>
+        <source>Stanza - Chinese (Traditional) word tokenizer</source>
+        <translation>Stanza - 汉语（繁体）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="643"/>
+        <source>Stanza - Church Slavonic (Old) word tokenizer</source>
+        <translation>Stanza - 教会斯拉夫语（古）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="644"/>
+        <source>Stanza - Coptic word tokenizer</source>
+        <translation>Stanza - 科普特语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="645"/>
+        <source>Stanza - Croatian word tokenizer</source>
+        <translation>Stanza - 克罗地亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="646"/>
+        <source>Stanza - Czech word tokenizer</source>
+        <translation>Stanza - 捷克语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="647"/>
+        <source>Stanza - Danish word tokenizer</source>
+        <translation>Stanza - 丹麦语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="648"/>
+        <source>Stanza - Dutch word tokenizer</source>
+        <translation>Stanza - 荷兰语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="649"/>
+        <source>Stanza - English word tokenizer</source>
+        <translation>Stanza - 英语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="650"/>
+        <source>Stanza - Erzya word tokenizer</source>
+        <translation>Stanza - 埃尔齐亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="651"/>
+        <source>Stanza - Estonian word tokenizer</source>
+        <translation>Stanza - 爱沙尼亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="652"/>
+        <source>Stanza - Faroese word tokenizer</source>
+        <translation>Stanza - 法罗语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="653"/>
+        <source>Stanza - Finnish word tokenizer</source>
+        <translation>Stanza - 芬兰语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="654"/>
+        <source>Stanza - French word tokenizer</source>
+        <translation>Stanza - 法语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="655"/>
+        <source>Stanza - French (Old) word tokenizer</source>
+        <translation>Stanza - 法语（古）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="656"/>
+        <source>Stanza - Galician word tokenizer</source>
+        <translation>Stanza - 加里西亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="657"/>
+        <source>Stanza - German word tokenizer</source>
+        <translation>Stanza - 德语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="658"/>
+        <source>Stanza - Gothic word tokenizer</source>
+        <translation>Stanza - 哥特语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="659"/>
+        <source>Stanza - Greek (Ancient) word tokenizer</source>
+        <translation>Stanza - 希腊语（古）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="660"/>
+        <source>Stanza - Greek (Modern) word tokenizer</source>
+        <translation>Stanza - 希腊语（现代）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="661"/>
+        <source>Stanza - Hebrew (Ancient) word tokenizer</source>
+        <translation>Stanza - 希伯来语（古）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="662"/>
+        <source>Stanza - Hebrew (Modern) word tokenizer</source>
+        <translation>Stanza - 希伯来语（现代）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="663"/>
+        <source>Stanza - Hindi word tokenizer</source>
+        <translation>Stanza - 印地语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="664"/>
+        <source>Stanza - Hungarian word tokenizer</source>
+        <translation>Stanza - 匈牙利语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="665"/>
+        <source>Stanza - Icelandic word tokenizer</source>
+        <translation>Stanza - 冰岛语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="666"/>
+        <source>Stanza - Indonesian word tokenizer</source>
+        <translation>Stanza - 印度尼西亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="667"/>
+        <source>Stanza - Irish word tokenizer</source>
+        <translation>Stanza - 爱尔兰语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="668"/>
+        <source>Stanza - Italian word tokenizer</source>
+        <translation>Stanza - 意大利语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="669"/>
+        <source>Stanza - Japanese word tokenizer</source>
+        <translation>Stanza - 日语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="670"/>
+        <source>Stanza - Kazakh word tokenizer</source>
+        <translation>Stanza - 哈萨克语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="671"/>
+        <source>Stanza - Korean word tokenizer</source>
+        <translation>Stanza - 韩语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="672"/>
+        <source>Stanza - Kurdish (Kurmanji) word tokenizer</source>
+        <translation>Stanza - 库尔德语（库尔曼吉语）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="673"/>
+        <source>Stanza - Kyrgyz word tokenizer</source>
+        <translation>Stanza - 吉尔吉斯语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="674"/>
+        <source>Stanza - Latin word tokenizer</source>
+        <translation>Stanza - 拉丁语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="675"/>
+        <source>Stanza - Latvian word tokenizer</source>
+        <translation>Stanza - 拉脱维亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="676"/>
+        <source>Stanza - Ligurian word tokenizer</source>
+        <translation>Stanza - 利古里亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="677"/>
+        <source>Stanza - Lithuanian word tokenizer</source>
+        <translation>Stanza - 立陶宛语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="678"/>
+        <source>Stanza - Maltese word tokenizer</source>
+        <translation>Stanza - 马耳他语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="679"/>
+        <source>Stanza - Manx word tokenizer</source>
+        <translation>Stanza - 马恩语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="680"/>
+        <source>Stanza - Marathi word tokenizer</source>
+        <translation>Stanza - 马拉地语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="681"/>
+        <source>Stanza - Nigerian Pidgin word tokenizer</source>
+        <translation>Stanza - 尼日利亚皮钦语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="682"/>
+        <source>Stanza - Norwegian Bokmål word tokenizer</source>
+        <translation>Stanza - 书面挪威语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="683"/>
+        <source>Stanza - Norwegian Nynorsk word tokenizer</source>
+        <translation>Stanza - 新挪威语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="684"/>
+        <source>Stanza - Persian word tokenizer</source>
+        <translation>Stanza - 波斯语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="685"/>
+        <source>Stanza - Polish word tokenizer</source>
+        <translation>Stanza - 波兰语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="686"/>
+        <source>Stanza - Pomak word tokenizer</source>
+        <translation>Stanza - 波马克语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="687"/>
+        <source>Stanza - Portuguese word tokenizer</source>
+        <translation>Stanza - 葡萄牙语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="688"/>
+        <source>Stanza - Romanian word tokenizer</source>
+        <translation>Stanza - 罗马尼亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="689"/>
+        <source>Stanza - Russian word tokenizer</source>
+        <translation>Stanza - 俄语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="690"/>
+        <source>Stanza - Russian (Old) word tokenizer</source>
+        <translation>Stanza - 俄语（古）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="691"/>
+        <source>Stanza - Sámi (Northern) word tokenizer</source>
+        <translation>Stanza - 萨米语（北）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="692"/>
+        <source>Stanza - Sanskrit word tokenizer</source>
+        <translation>Stanza - 梵语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="693"/>
+        <source>Stanza - Scottish Gaelic word tokenizer</source>
+        <translation>Stanza - 苏格兰盖尔语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="694"/>
+        <source>Stanza - Serbian (Latin) word tokenizer</source>
+        <translation>Stanza - 塞尔维亚语（拉丁）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="695"/>
+        <source>Stanza - Sindhi word tokenizer</source>
+        <translation>Stanza - 信德语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="696"/>
+        <source>Stanza - Slovak word tokenizer</source>
+        <translation>Stanza - 斯洛伐克语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="697"/>
+        <source>Stanza - Slovenian word tokenizer</source>
+        <translation>Stanza - 斯洛文尼亚语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="698"/>
+        <source>Stanza - Sorbian (Upper) word tokenizer</source>
+        <translation>Stanza - 索布语（上）分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="699"/>
+        <source>Stanza - Spanish word tokenizer</source>
+        <translation>Stanza - 西班牙语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="700"/>
+        <source>Stanza - Swedish word tokenizer</source>
+        <translation>Stanza - 瑞典语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="701"/>
+        <source>Stanza - Tamil word tokenizer</source>
+        <translation>Stanza - 泰米尔语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="702"/>
+        <source>Stanza - Telugu word tokenizer</source>
+        <translation>Stanza - 泰卢固语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="703"/>
+        <source>Stanza - Thai word tokenizer</source>
+        <translation>Stanza - 泰语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="704"/>
+        <source>Stanza - Turkish word tokenizer</source>
+        <translation>Stanza - 土耳其语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="705"/>
+        <source>Stanza - Ukrainian word tokenizer</source>
+        <translation>Stanza - 乌克兰语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="706"/>
+        <source>Stanza - Urdu word tokenizer</source>
+        <translation>Stanza - 乌尔都语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="707"/>
+        <source>Stanza - Uyghur word tokenizer</source>
+        <translation>Stanza - 维吾尔语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="708"/>
+        <source>Stanza - Vietnamese word tokenizer</source>
+        <translation>Stanza - 越南语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="709"/>
+        <source>Stanza - Welsh word tokenizer</source>
+        <translation>Stanza - 威尔士语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="710"/>
+        <source>Stanza - Wolof word tokenizer</source>
+        <translation>Stanza - 沃洛夫语分词器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="778"/>
+        <source>LaoNLP - SeqLabeling</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="779"/>
+        <source>LaoNLP - Yunshan Cup 2020</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="816"/>
+        <source>Stanza - Afrikaans part-of-speech tagger</source>
+        <translation>Stanza - 南非语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="817"/>
+        <source>Stanza - Arabic part-of-speech tagger</source>
+        <translation>Stanza - 阿拉伯语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="818"/>
+        <source>Stanza - Armenian (Eastern) part-of-speech tagger</source>
+        <translation>Stanza - 亚美尼亚语（东）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="819"/>
+        <source>Stanza - Armenian (Western) part-of-speech tagger</source>
+        <translation>Stanza - 亚美尼亚语（西）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="820"/>
+        <source>Stanza - Basque part-of-speech tagger</source>
+        <translation>Stanza - 巴斯克语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="821"/>
+        <source>Stanza - Belarusian part-of-speech tagger</source>
+        <translation>Stanza - 白俄罗斯语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="822"/>
+        <source>Stanza - Bulgarian part-of-speech tagger</source>
+        <translation>Stanza - 保加利亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="823"/>
+        <source>Stanza - Buryat (Russia) part-of-speech tagger</source>
+        <translation>Stanza - 布里亚特语（俄罗斯）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="824"/>
+        <source>Stanza - Catalan part-of-speech tagger</source>
+        <translation>Stanza - 加泰罗尼亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="825"/>
+        <source>Stanza - Chinese (Classical) part-of-speech tagger</source>
+        <translation>Stanza - 汉语（文言）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="826"/>
+        <source>Stanza - Chinese (Simplified) part-of-speech tagger</source>
+        <translation>Stanza - 汉语（简体）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="827"/>
+        <source>Stanza - Chinese (Traditional) part-of-speech tagger</source>
+        <translation>Stanza - 汉语（繁体）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="828"/>
+        <source>Stanza - Church Slavonic (Old) part-of-speech tagger</source>
+        <translation>Stanza - 教会斯拉夫语（古）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="829"/>
+        <source>Stanza - Coptic part-of-speech tagger</source>
+        <translation>Stanza - 科普特语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="830"/>
+        <source>Stanza - Croatian part-of-speech tagger</source>
+        <translation>Stanza - 克罗地亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="831"/>
+        <source>Stanza - Czech part-of-speech tagger</source>
+        <translation>Stanza - 捷克语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="832"/>
+        <source>Stanza - Danish part-of-speech tagger</source>
+        <translation>Stanza - 丹麦语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="833"/>
+        <source>Stanza - Dutch part-of-speech tagger</source>
+        <translation>Stanza - 荷兰语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="834"/>
+        <source>Stanza - English part-of-speech tagger</source>
+        <translation>Stanza - 英语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="835"/>
+        <source>Stanza - Erzya part-of-speech tagger</source>
+        <translation>Stanza - 埃尔齐亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="836"/>
+        <source>Stanza - Estonian part-of-speech tagger</source>
+        <translation>Stanza - 爱沙尼亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="837"/>
+        <source>Stanza - Faroese part-of-speech tagger</source>
+        <translation>Stanza - 法罗语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="838"/>
+        <source>Stanza - Finnish part-of-speech tagger</source>
+        <translation>Stanza - 芬兰语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="839"/>
+        <source>Stanza - French part-of-speech tagger</source>
+        <translation>Stanza - 法语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="840"/>
+        <source>Stanza - French (Old) part-of-speech tagger</source>
+        <translation>Stanza - 法语（古）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="841"/>
+        <source>Stanza - Galician part-of-speech tagger</source>
+        <translation>Stanza - 加里西亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="842"/>
+        <source>Stanza - German part-of-speech tagger</source>
+        <translation>Stanza - 德语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="843"/>
+        <source>Stanza - Gothic part-of-speech tagger</source>
+        <translation>Stanza - 哥特语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="844"/>
+        <source>Stanza - Greek (Ancient) part-of-speech tagger</source>
+        <translation>Stanza - 希腊语（古）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="845"/>
+        <source>Stanza - Greek (Modern) part-of-speech tagger</source>
+        <translation>Stanza - 希腊语（现代）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="846"/>
+        <source>Stanza - Hebrew (Ancient) part-of-speech tagger</source>
+        <translation>Stanza - 希伯来语（古）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="847"/>
+        <source>Stanza - Hebrew (Modern) part-of-speech tagger</source>
+        <translation>Stanza - 希伯来语（现代）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="848"/>
+        <source>Stanza - Hindi part-of-speech tagger</source>
+        <translation>Stanza - 印地语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="849"/>
+        <source>Stanza - Hungarian part-of-speech tagger</source>
+        <translation>Stanza - 匈牙利语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="850"/>
+        <source>Stanza - Icelandic part-of-speech tagger</source>
+        <translation>Stanza - 冰岛语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="851"/>
+        <source>Stanza - Indonesian part-of-speech tagger</source>
+        <translation>Stanza - 印度尼西亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="852"/>
+        <source>Stanza - Irish part-of-speech tagger</source>
+        <translation>Stanza - 爱尔兰语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="853"/>
+        <source>Stanza - Italian part-of-speech tagger</source>
+        <translation>Stanza - 意大利语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="854"/>
+        <source>Stanza - Japanese part-of-speech tagger</source>
+        <translation>Stanza - 日语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="855"/>
+        <source>Stanza - Kazakh part-of-speech tagger</source>
+        <translation>Stanza - 哈萨克语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="856"/>
+        <source>Stanza - Korean part-of-speech tagger</source>
+        <translation>Stanza - 韩语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="857"/>
+        <source>Stanza - Kurdish (Kurmanji) part-of-speech tagger</source>
+        <translation>Stanza - 库尔德语（库尔曼吉语）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="858"/>
+        <source>Stanza - Kyrgyz part-of-speech tagger</source>
+        <translation>Stanza - 吉尔吉斯语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="859"/>
+        <source>Stanza - Latin part-of-speech tagger</source>
+        <translation>Stanza - 拉丁语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="860"/>
+        <source>Stanza - Latvian part-of-speech tagger</source>
+        <translation>Stanza - 拉脱维亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="861"/>
+        <source>Stanza - Ligurian part-of-speech tagger</source>
+        <translation>Stanza - 利古里亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="862"/>
+        <source>Stanza - Lithuanian part-of-speech tagger</source>
+        <translation>Stanza - 立陶宛语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="863"/>
+        <source>Stanza - Maltese part-of-speech tagger</source>
+        <translation>Stanza - 马耳他语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="864"/>
+        <source>Stanza - Manx part-of-speech tagger</source>
+        <translation>Stanza - 马恩语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="865"/>
+        <source>Stanza - Marathi part-of-speech tagger</source>
+        <translation>Stanza - 马拉地语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="866"/>
+        <source>Stanza - Nigerian Pidgin part-of-speech tagger</source>
+        <translation>Stanza - 尼日利亚皮钦语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="867"/>
+        <source>Stanza - Norwegian Bokmål part-of-speech tagger</source>
+        <translation>Stanza - 书面挪威语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="868"/>
+        <source>Stanza - Norwegian Nynorsk part-of-speech tagger</source>
+        <translation>Stanza - 新挪威语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="869"/>
+        <source>Stanza - Persian part-of-speech tagger</source>
+        <translation>Stanza - 波斯语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="870"/>
+        <source>Stanza - Polish part-of-speech tagger</source>
+        <translation>Stanza - 波兰语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="871"/>
+        <source>Stanza - Pomak part-of-speech tagger</source>
+        <translation>Stanza - 波马克语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="872"/>
+        <source>Stanza - Portuguese part-of-speech tagger</source>
+        <translation>Stanza - 葡萄牙语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="873"/>
+        <source>Stanza - Romanian part-of-speech tagger</source>
+        <translation>Stanza - 罗马尼亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="874"/>
+        <source>Stanza - Russian part-of-speech tagger</source>
+        <translation>Stanza - 俄语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="875"/>
+        <source>Stanza - Russian (Old) part-of-speech tagger</source>
+        <translation>Stanza - 俄语（古）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="876"/>
+        <source>Stanza - Sámi (Northern) part-of-speech tagger</source>
+        <translation>Stanza - 萨米语（北）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="877"/>
+        <source>Stanza - Sanskrit part-of-speech tagger</source>
+        <translation>Stanza - 梵语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="878"/>
+        <source>Stanza - Scottish Gaelic part-of-speech tagger</source>
+        <translation>Stanza - 苏格兰盖尔语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="879"/>
+        <source>Stanza - Serbian (Latin) part-of-speech tagger</source>
+        <translation>Stanza - 塞尔维亚语（拉丁）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="880"/>
+        <source>Stanza - Slovak part-of-speech tagger</source>
+        <translation>Stanza - 斯洛伐克语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="881"/>
+        <source>Stanza - Slovenian part-of-speech tagger</source>
+        <translation>Stanza - 斯洛文尼亚语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="882"/>
+        <source>Stanza - Sorbian (Upper) part-of-speech tagger</source>
+        <translation>Stanza - 索布语（上）词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="883"/>
+        <source>Stanza - Spanish part-of-speech tagger</source>
+        <translation>Stanza - 西班牙语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="884"/>
+        <source>Stanza - Swedish part-of-speech tagger</source>
+        <translation>Stanza - 瑞典语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="885"/>
+        <source>Stanza - Tamil part-of-speech tagger</source>
+        <translation>Stanza - 泰米尔语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="886"/>
+        <source>Stanza - Telugu part-of-speech tagger</source>
+        <translation>Stanza - 泰卢固语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="887"/>
+        <source>Stanza - Turkish part-of-speech tagger</source>
+        <translation>Stanza - 土耳其语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="888"/>
+        <source>Stanza - Ukrainian part-of-speech tagger</source>
+        <translation>Stanza - 乌克兰语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="889"/>
+        <source>Stanza - Urdu part-of-speech tagger</source>
+        <translation>Stanza - 乌尔都语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="890"/>
+        <source>Stanza - Uyghur part-of-speech tagger</source>
+        <translation>Stanza - 维吾尔语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="891"/>
+        <source>Stanza - Vietnamese part-of-speech tagger</source>
+        <translation>Stanza - 越南语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="892"/>
+        <source>Stanza - Welsh part-of-speech tagger</source>
+        <translation>Stanza - 威尔士语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="893"/>
+        <source>Stanza - Wolof part-of-speech tagger</source>
+        <translation>Stanza - 沃洛夫语词性标注器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="990"/>
+        <source>Stanza - Afrikaans lemmatizer</source>
+        <translation>Stanza - 南非语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="991"/>
+        <source>Stanza - Arabic lemmatizer</source>
+        <translation>Stanza - 阿拉伯语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="992"/>
+        <source>Stanza - Armenian (Eastern) lemmatizer</source>
+        <translation>Stanza - 亚美尼亚语（东）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="993"/>
+        <source>Stanza - Armenian (Western) lemmatizer</source>
+        <translation>Stanza - 亚美尼亚语（西）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="994"/>
+        <source>Stanza - Basque lemmatizer</source>
+        <translation>Stanza - 巴斯克语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="995"/>
+        <source>Stanza - Belarusian lemmatizer</source>
+        <translation>Stanza - 白俄罗斯语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="996"/>
+        <source>Stanza - Bulgarian lemmatizer</source>
+        <translation>Stanza - 保加利亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="997"/>
+        <source>Stanza - Buryat (Russia) lemmatizer</source>
+        <translation>Stanza - 布里亚特语（俄罗斯）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="998"/>
+        <source>Stanza - Catalan lemmatizer</source>
+        <translation>Stanza - 加泰罗尼亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="999"/>
+        <source>Stanza - Chinese (Classical) lemmatizer</source>
+        <translation>Stanza - 汉语（文言）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1000"/>
+        <source>Stanza - Chinese (Simplified) lemmatizer</source>
+        <translation>Stanza - 汉语（简体）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1001"/>
+        <source>Stanza - Chinese (Traditional) lemmatizer</source>
+        <translation>Stanza - 汉语（繁体）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1002"/>
+        <source>Stanza - Church Slavonic (Old) lemmatizer</source>
+        <translation>Stanza - 教会斯拉夫语（古）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1003"/>
+        <source>Stanza - Coptic lemmatizer</source>
+        <translation>Stanza - 科普特语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1004"/>
+        <source>Stanza - Croatian lemmatizer</source>
+        <translation>Stanza - 克罗地亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1005"/>
+        <source>Stanza - Czech lemmatizer</source>
+        <translation>Stanza - 捷克语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1006"/>
+        <source>Stanza - Danish lemmatizer</source>
+        <translation>Stanza - 丹麦语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1007"/>
+        <source>Stanza - Dutch lemmatizer</source>
+        <translation>Stanza - 荷兰语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1008"/>
+        <source>Stanza - English lemmatizer</source>
+        <translation>Stanza - 英语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1009"/>
+        <source>Stanza - Erzya lemmatizer</source>
+        <translation>Stanza - 埃尔齐亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1010"/>
+        <source>Stanza - Estonian lemmatizer</source>
+        <translation>Stanza - 爱沙尼亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1011"/>
+        <source>Stanza - Finnish lemmatizer</source>
+        <translation>Stanza - 芬兰语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1012"/>
+        <source>Stanza - French lemmatizer</source>
+        <translation>Stanza - 法语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1013"/>
+        <source>Stanza - French (Old) lemmatizer</source>
+        <translation>Stanza - 法语（古）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1014"/>
+        <source>Stanza - Galician lemmatizer</source>
+        <translation>Stanza - 加里西亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1015"/>
+        <source>Stanza - German lemmatizer</source>
+        <translation>Stanza - 德语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1016"/>
+        <source>Stanza - Gothic lemmatizer</source>
+        <translation>Stanza - 哥特语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1017"/>
+        <source>Stanza - Greek (Ancient) lemmatizer</source>
+        <translation>Stanza - 希腊语（古）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1018"/>
+        <source>Stanza - Greek (Modern) lemmatizer</source>
+        <translation>Stanza - 希腊语（现代）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1019"/>
+        <source>Stanza - Hebrew (Ancient) lemmatizer</source>
+        <translation>Stanza - 希伯来语（古）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1020"/>
+        <source>Stanza - Hebrew (Modern) lemmatizer</source>
+        <translation>Stanza - 希伯来语（现代）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1021"/>
+        <source>Stanza - Hindi lemmatizer</source>
+        <translation>Stanza - 印地语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1022"/>
+        <source>Stanza - Hungarian lemmatizer</source>
+        <translation>Stanza - 匈牙利语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1023"/>
+        <source>Stanza - Icelandic lemmatizer</source>
+        <translation>Stanza - 冰岛语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1024"/>
+        <source>Stanza - Indonesian lemmatizer</source>
+        <translation>Stanza - 印度尼西亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1025"/>
+        <source>Stanza - Irish lemmatizer</source>
+        <translation>Stanza - 爱尔兰语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1026"/>
+        <source>Stanza - Italian lemmatizer</source>
+        <translation>Stanza - 意大利语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1027"/>
+        <source>Stanza - Japanese lemmatizer</source>
+        <translation>Stanza - 日语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1028"/>
+        <source>Stanza - Kazakh lemmatizer</source>
+        <translation>Stanza - 哈萨克语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1029"/>
+        <source>Stanza - Korean lemmatizer</source>
+        <translation>Stanza - 韩语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1030"/>
+        <source>Stanza - Kurdish (Kurmanji) lemmatizer</source>
+        <translation>Stanza - 库尔德语（库尔曼吉语）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1031"/>
+        <source>Stanza - Kyrgyz lemmatizer</source>
+        <translation>Stanza - 吉尔吉斯语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1032"/>
+        <source>Stanza - Latin lemmatizer</source>
+        <translation>Stanza - 拉丁语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1033"/>
+        <source>Stanza - Latvian lemmatizer</source>
+        <translation>Stanza - 拉脱维亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1034"/>
+        <source>Stanza - Ligurian lemmatizer</source>
+        <translation>Stanza - 利古里亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1035"/>
+        <source>Stanza - Lithuanian lemmatizer</source>
+        <translation>Stanza - 立陶宛语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1036"/>
+        <source>Stanza - Manx lemmatizer</source>
+        <translation>Stanza - 马恩语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1037"/>
+        <source>Stanza - Marathi lemmatizer</source>
+        <translation>Stanza - 马拉地语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1038"/>
+        <source>Stanza - Nigerian Pidgin lemmatizer</source>
+        <translation>Stanza - 尼日利亚皮钦语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1039"/>
+        <source>Stanza - Norwegian Bokmål lemmatizer</source>
+        <translation>Stanza - 书面挪威语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1040"/>
+        <source>Stanza - Norwegian Nynorsk lemmatizer</source>
+        <translation>Stanza - 新挪威语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1041"/>
+        <source>Stanza - Persian lemmatizer</source>
+        <translation>Stanza - 波斯语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1042"/>
+        <source>Stanza - Polish lemmatizer</source>
+        <translation>Stanza - 波兰语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1043"/>
+        <source>Stanza - Pomak lemmatizer</source>
+        <translation>Stanza - 波马克语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1044"/>
+        <source>Stanza - Portuguese lemmatizer</source>
+        <translation>Stanza - 葡萄牙语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1045"/>
+        <source>Stanza - Romanian lemmatizer</source>
+        <translation>Stanza - 罗马尼亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1046"/>
+        <source>Stanza - Russian lemmatizer</source>
+        <translation>Stanza - 俄语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1047"/>
+        <source>Stanza - Russian (Old) lemmatizer</source>
+        <translation>Stanza - 俄语（古）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1048"/>
+        <source>Stanza - Sámi (Northern) lemmatizer</source>
+        <translation>Stanza - 萨米语（北）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1049"/>
+        <source>Stanza - Sanskrit lemmatizer</source>
+        <translation>Stanza - 梵语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1050"/>
+        <source>Stanza - Scottish Gaelic lemmatizer</source>
+        <translation>Stanza - 苏格兰盖尔语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1051"/>
+        <source>Stanza - Serbian (Latin) lemmatizer</source>
+        <translation>Stanza - 塞尔维亚语（拉丁）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1052"/>
+        <source>Stanza - Slovak lemmatizer</source>
+        <translation>Stanza - 斯洛伐克语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1053"/>
+        <source>Stanza - Slovenian lemmatizer</source>
+        <translation>Stanza - 斯洛文尼亚语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1054"/>
+        <source>Stanza - Sorbian (Upper) lemmatizer</source>
+        <translation>Stanza - 索布语（上）词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1055"/>
+        <source>Stanza - Spanish lemmatizer</source>
+        <translation>Stanza - 西班牙语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1056"/>
+        <source>Stanza - Swedish lemmatizer</source>
+        <translation>Stanza - 瑞典语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1057"/>
+        <source>Stanza - Tamil lemmatizer</source>
+        <translation>Stanza - 泰米尔语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1058"/>
+        <source>Stanza - Turkish lemmatizer</source>
+        <translation>Stanza - 土耳其语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1059"/>
+        <source>Stanza - Ukrainian lemmatizer</source>
+        <translation>Stanza - 乌克兰语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1060"/>
+        <source>Stanza - Urdu lemmatizer</source>
+        <translation>Stanza - 乌尔都语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1061"/>
+        <source>Stanza - Uyghur lemmatizer</source>
+        <translation>Stanza - 维吾尔语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1062"/>
+        <source>Stanza - Welsh lemmatizer</source>
+        <translation>Stanza - 威尔士语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1063"/>
+        <source>Stanza - Wolof lemmatizer</source>
+        <translation>Stanza - 沃洛夫语词形还原器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1069"/>
+        <source>LaoNLP - Lao stop word list</source>
+        <translation>LaoNLP - 老挝语停用词表</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1085"/>
+        <source>NLTK - Hebrew (Modern) stop word list</source>
+        <translation>NLTK - 希伯来语（现代）停用词表</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1132"/>
+        <source>Stanza - Afrikaans dependency parser</source>
+        <translation>Stanza - 南非语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1133"/>
+        <source>Stanza - Arabic dependency parser</source>
+        <translation>Stanza - 阿拉伯语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1134"/>
+        <source>Stanza - Armenian (Eastern) dependency parser</source>
+        <translation>Stanza - 亚美尼亚语（东）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1135"/>
+        <source>Stanza - Armenian (Western) dependency parser</source>
+        <translation>Stanza - 亚美尼亚语（西）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1136"/>
+        <source>Stanza - Basque dependency parser</source>
+        <translation>Stanza - 巴斯克语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1137"/>
+        <source>Stanza - Belarusian dependency parser</source>
+        <translation>Stanza - 白俄罗斯语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1138"/>
+        <source>Stanza - Bulgarian dependency parser</source>
+        <translation>Stanza - 保加利亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1139"/>
+        <source>Stanza - Buryat (Russia) dependency parser</source>
+        <translation>Stanza - 布里亚特语（俄罗斯）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1140"/>
+        <source>Stanza - Catalan dependency parser</source>
+        <translation>Stanza - 加泰罗尼亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1141"/>
+        <source>Stanza - Chinese (Classical) dependency parser</source>
+        <translation>Stanza - 汉语（文言）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1142"/>
+        <source>Stanza - Chinese (Simplified) dependency parser</source>
+        <translation>Stanza - 汉语（简体）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1143"/>
+        <source>Stanza - Chinese (Traditional) dependency parser</source>
+        <translation>Stanza - 汉语（繁体）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1144"/>
+        <source>Stanza - Church Slavonic (Old) dependency parser</source>
+        <translation>Stanza - 教会斯拉夫语（古）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1145"/>
+        <source>Stanza - Coptic dependency parser</source>
+        <translation>Stanza - 科普特语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1146"/>
+        <source>Stanza - Croatian dependency parser</source>
+        <translation>Stanza - 克罗地亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1147"/>
+        <source>Stanza - Czech dependency parser</source>
+        <translation>Stanza - 捷克语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1148"/>
+        <source>Stanza - Danish dependency parser</source>
+        <translation>Stanza - 丹麦语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1149"/>
+        <source>Stanza - Dutch dependency parser</source>
+        <translation>Stanza - 荷兰语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1150"/>
+        <source>Stanza - English dependency parser</source>
+        <translation>Stanza - 英语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1151"/>
+        <source>Stanza - Erzya dependency parser</source>
+        <translation>Stanza - 埃尔齐亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1152"/>
+        <source>Stanza - Estonian dependency parser</source>
+        <translation>Stanza - 爱沙尼亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1153"/>
+        <source>Stanza - Faroese dependency parser</source>
+        <translation>Stanza - 法罗语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1154"/>
+        <source>Stanza - Finnish dependency parser</source>
+        <translation>Stanza - 芬兰语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1155"/>
+        <source>Stanza - French dependency parser</source>
+        <translation>Stanza - 法语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1156"/>
+        <source>Stanza - French (Old) dependency parser</source>
+        <translation>Stanza - 法语（古）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1157"/>
+        <source>Stanza - Galician dependency parser</source>
+        <translation>Stanza - 加里西亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1158"/>
+        <source>Stanza - German dependency parser</source>
+        <translation>Stanza - 德语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1159"/>
+        <source>Stanza - Gothic dependency parser</source>
+        <translation>Stanza - 哥特语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1160"/>
+        <source>Stanza - Greek (Ancient) dependency parser</source>
+        <translation>Stanza - 希腊语（古）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1161"/>
+        <source>Stanza - Greek (Modern) dependency parser</source>
+        <translation>Stanza - 希腊语（现代）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1162"/>
+        <source>Stanza - Hebrew (Ancient) dependency parser</source>
+        <translation>Stanza - 希伯来语（古）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1163"/>
+        <source>Stanza - Hebrew (Modern) dependency parser</source>
+        <translation>Stanza - 希伯来语（现代）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1164"/>
+        <source>Stanza - Hindi dependency parser</source>
+        <translation>Stanza - 印地语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1165"/>
+        <source>Stanza - Hungarian dependency parser</source>
+        <translation>Stanza - 匈牙利语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1166"/>
+        <source>Stanza - Icelandic dependency parser</source>
+        <translation>Stanza - 冰岛语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1167"/>
+        <source>Stanza - Indonesian dependency parser</source>
+        <translation>Stanza - 印度尼西亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1168"/>
+        <source>Stanza - Irish dependency parser</source>
+        <translation>Stanza - 爱尔兰语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1169"/>
+        <source>Stanza - Italian dependency parser</source>
+        <translation>Stanza - 意大利语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1170"/>
+        <source>Stanza - Japanese dependency parser</source>
+        <translation>Stanza - 日语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1171"/>
+        <source>Stanza - Kazakh dependency parser</source>
+        <translation>Stanza - 哈萨克语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1172"/>
+        <source>Stanza - Korean dependency parser</source>
+        <translation>Stanza - 韩语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1173"/>
+        <source>Stanza - Kurdish (Kurmanji) dependency parser</source>
+        <translation>Stanza - 库尔德语（库尔曼吉语）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1174"/>
+        <source>Stanza - Kyrgyz dependency parser</source>
+        <translation>Stanza - 吉尔吉斯语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1175"/>
+        <source>Stanza - Latin dependency parser</source>
+        <translation>Stanza - 拉丁语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1176"/>
+        <source>Stanza - Latvian dependency parser</source>
+        <translation>Stanza - 拉脱维亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1177"/>
+        <source>Stanza - Ligurian dependency parser</source>
+        <translation>Stanza - 利古里亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1178"/>
+        <source>Stanza - Lithuanian dependency parser</source>
+        <translation>Stanza - 立陶宛语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1179"/>
+        <source>Stanza - Maltese dependency parser</source>
+        <translation>Stanza - 马耳他语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1180"/>
+        <source>Stanza - Manx dependency parser</source>
+        <translation>Stanza - 马恩语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1181"/>
+        <source>Stanza - Marathi dependency parser</source>
+        <translation>Stanza - 马拉地语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1182"/>
+        <source>Stanza - Nigerian Pidgin dependency parser</source>
+        <translation>Stanza - 尼日利亚皮钦语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1183"/>
+        <source>Stanza - Norwegian Bokmål dependency parser</source>
+        <translation>Stanza - 书面挪威语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1184"/>
+        <source>Stanza - Norwegian Nynorsk dependency parser</source>
+        <translation>Stanza - 新挪威语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1185"/>
+        <source>Stanza - Persian dependency parser</source>
+        <translation>Stanza - 波斯语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1186"/>
+        <source>Stanza - Polish dependency parser</source>
+        <translation>Stanza - 波兰语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1187"/>
+        <source>Stanza - Pomak dependency parser</source>
+        <translation>Stanza - 波马克语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1188"/>
+        <source>Stanza - Portuguese dependency parser</source>
+        <translation>Stanza - 葡萄牙语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1189"/>
+        <source>Stanza - Romanian dependency parser</source>
+        <translation>Stanza - 罗马尼亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1190"/>
+        <source>Stanza - Russian dependency parser</source>
+        <translation>Stanza - 俄语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1191"/>
+        <source>Stanza - Russian (Old) dependency parser</source>
+        <translation>Stanza - 俄语（古）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1192"/>
+        <source>Stanza - Sámi (Northern) dependency parser</source>
+        <translation>Stanza - 萨米语（北）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1193"/>
+        <source>Stanza - Sanskrit dependency parser</source>
+        <translation>Stanza - 梵语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1194"/>
+        <source>Stanza - Scottish Gaelic dependency parser</source>
+        <translation>Stanza - 苏格兰盖尔语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1195"/>
+        <source>Stanza - Serbian (Latin) dependency parser</source>
+        <translation>Stanza - 塞尔维亚语（拉丁）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1196"/>
+        <source>Stanza - Slovak dependency parser</source>
+        <translation>Stanza - 斯洛伐克语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1197"/>
+        <source>Stanza - Slovenian dependency parser</source>
+        <translation>Stanza - 斯洛文尼亚语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1198"/>
+        <source>Stanza - Sorbian (Upper) dependency parser</source>
+        <translation>Stanza - 索布语（上）依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1199"/>
+        <source>Stanza - Spanish dependency parser</source>
+        <translation>Stanza - 西班牙语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1200"/>
+        <source>Stanza - Swedish dependency parser</source>
+        <translation>Stanza - 瑞典语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1201"/>
+        <source>Stanza - Tamil dependency parser</source>
+        <translation>Stanza - 泰米尔语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1202"/>
+        <source>Stanza - Telugu dependency parser</source>
+        <translation>Stanza - 泰卢固语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1203"/>
+        <source>Stanza - Turkish dependency parser</source>
+        <translation>Stanza - 土耳其语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1204"/>
+        <source>Stanza - Ukrainian dependency parser</source>
+        <translation>Stanza - 乌克兰语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1205"/>
+        <source>Stanza - Urdu dependency parser</source>
+        <translation>Stanza - 乌尔都语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1206"/>
+        <source>Stanza - Uyghur dependency parser</source>
+        <translation>Stanza - 维吾尔语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1207"/>
+        <source>Stanza - Vietnamese dependency parser</source>
+        <translation>Stanza - 越南语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1208"/>
+        <source>Stanza - Welsh dependency parser</source>
+        <translation>Stanza - 威尔士语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1209"/>
+        <source>Stanza - Wolof dependency parser</source>
+        <translation>Stanza - 沃洛夫语依存分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1215"/>
+        <source>Stanza - Chinese (Simplified) sentiment analyzer</source>
+        <translation>Stanza - 汉语（简体）情感分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1216"/>
+        <source>Stanza - German sentiment analyzer</source>
+        <translation>Stanza - 德语情感分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1217"/>
+        <source>Stanza - English sentiment analyzer</source>
+        <translation>Stanza - 英语情感分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1218"/>
+        <source>Stanza - Marathi sentiment analyzer</source>
+        <translation>Stanza - 马拉地语情感分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1219"/>
+        <source>Stanza - Spanish sentiment analyzer</source>
+        <translation>Stanza - 西班牙语情感分析器</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_global.py" line="1220"/>
+        <source>Stanza - Vietnamese sentiment analyzer</source>
+        <translation>Stanza - 越南语情感分析器</translation>
     </message>
 </context>
 <context>
@@ -8808,12 +10498,12 @@ Frequency</source>
 <context>
     <name>wl_conversion</name>
     <message>
-        <location filename="../wordless/wl_utils/wl_conversion.py" line="116"/>
+        <location filename="../wordless/wl_utils/wl_conversion.py" line="119"/>
         <source>Yes</source>
         <translation>是</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_utils/wl_conversion.py" line="118"/>
+        <location filename="../wordless/wl_utils/wl_conversion.py" line="121"/>
         <source>No</source>
         <translation>否</translation>
     </message>
@@ -8821,12 +10511,12 @@ Frequency</source>
 <context>
     <name>wl_dependency_parsing</name>
     <message>
-        <location filename="../wordless/wl_nlp/wl_dependency_parsing.py" line="301"/>
+        <location filename="../wordless/wl_nlp/wl_dependency_parsing.py" line="491"/>
         <source>Dependency Graphs Generated Successfully</source>
         <translation>成功生成依存图</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_nlp/wl_dependency_parsing.py" line="301"/>
+        <location filename="../wordless/wl_nlp/wl_dependency_parsing.py" line="491"/>
         <source>
             &lt;div&gt;Dependency graphs has been successfully generated and exported under folder: {}&lt;/div&gt;
 
@@ -9153,14 +10843,27 @@ Frequency</source>
 <context>
     <name>wl_measure_utils</name>
     <message>
-        <location filename="../wordless/wl_measures/wl_measure_utils.py" line="72"/>
+        <location filename="../wordless/wl_measures/wl_measure_utils.py" line="73"/>
         <source>Absolute frequency</source>
         <translation>绝对频数</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_measures/wl_measure_utils.py" line="84"/>
+        <location filename="../wordless/wl_measures/wl_measure_utils.py" line="85"/>
         <source>Relative frequency</source>
         <translation>相对频数</translation>
+    </message>
+</context>
+<context>
+    <name>wl_measures_lexical_diversity</name>
+    <message>
+        <location filename="../wordless/wl_measures/wl_measures_lexical_diversity.py" line="383"/>
+        <source>Rank-frequency distribution</source>
+        <translation>频数排序分布</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_measures/wl_measures_lexical_diversity.py" line="386"/>
+        <source>Frequency spectrum</source>
+        <translation>频数谱</translation>
     </message>
 </context>
 <context>
@@ -9186,11 +10889,6 @@ Frequency</source>
         <translation>新版</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_measures/wl_measures_readability.py" line="580"/>
-        <source>Brouwer&apos;s Leesindex A</source>
-        <translation>Brouwer Leesindex A</translation>
-    </message>
-    <message>
         <location filename="../wordless/wl_measures/wl_measures_readability.py" line="814"/>
         <source>Navy</source>
         <translation>海军版</translation>
@@ -9199,17 +10897,17 @@ Frequency</source>
 <context>
     <name>wl_measures_statistical_significance</name>
     <message>
-        <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="216"/>
+        <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="237"/>
         <source>Two-tailed</source>
         <translation>双尾</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="218"/>
+        <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="240"/>
         <source>Left-tailed</source>
         <translation>左尾</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="220"/>
+        <location filename="../wordless/wl_measures/wl_measures_statistical_significance.py" line="243"/>
         <source>Right-tailed</source>
         <translation>右尾</translation>
     </message>
@@ -9217,22 +10915,22 @@ Frequency</source>
 <context>
     <name>wl_misc</name>
     <message>
-        <location filename="../wordless/wl_utils/wl_misc.py" line="117"/>
+        <location filename="../wordless/wl_utils/wl_misc.py" line="121"/>
         <source>minute</source>
         <translation>分</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_utils/wl_misc.py" line="117"/>
+        <location filename="../wordless/wl_utils/wl_misc.py" line="121"/>
         <source>minutes</source>
         <translation>分</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_utils/wl_misc.py" line="118"/>
+        <location filename="../wordless/wl_utils/wl_misc.py" line="122"/>
         <source>(In {} {} {:.2f} seconds)</source>
         <translation>（耗时 {} {} {:.2f} 秒）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_utils/wl_misc.py" line="121"/>
+        <location filename="../wordless/wl_utils/wl_misc.py" line="125"/>
         <source>(In</source>
         <translation>（耗时</translation>
     </message>
@@ -9400,562 +11098,557 @@ Frequency</source>
         <translation>字符数%</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="588"/>
+        <location filename="../wordless/wl_profiler.py" line="609"/>
         <source>Type-token Ratio</source>
         <translation>类符形符比</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="589"/>
-        <source>Type-token Ratio (Standardized)</source>
-        <translation>类符形符比（标准化）</translation>
-    </message>
-    <message>
-        <location filename="../wordless/wl_profiler.py" line="644"/>
+        <location filename="../wordless/wl_profiler.py" line="662"/>
         <source>Paragraph Length in Sentences (Mean)</source>
         <translation>段落长（单位：句子）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="645"/>
+        <location filename="../wordless/wl_profiler.py" line="663"/>
         <source>Paragraph Length in Sentences (Standard Deviation)</source>
         <translation>段落长（单位：句子）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="646"/>
+        <location filename="../wordless/wl_profiler.py" line="664"/>
         <source>Paragraph Length in Sentences (Variance)</source>
         <translation>段落长（单位：句子）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="647"/>
+        <location filename="../wordless/wl_profiler.py" line="665"/>
         <source>Paragraph Length in Sentences (Minimum)</source>
         <translation>段落长（单位：句子）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="648"/>
+        <location filename="../wordless/wl_profiler.py" line="666"/>
         <source>Paragraph Length in Sentences (25th Percentile)</source>
         <translation>段落长（单位：句子）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="649"/>
+        <location filename="../wordless/wl_profiler.py" line="667"/>
         <source>Paragraph Length in Sentences (Median)</source>
         <translation>段落长（单位：句子）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="650"/>
+        <location filename="../wordless/wl_profiler.py" line="668"/>
         <source>Paragraph Length in Sentences (75th Percentile)</source>
         <translation>段落长（单位：句子）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="651"/>
+        <location filename="../wordless/wl_profiler.py" line="669"/>
         <source>Paragraph Length in Sentences (Maximum)</source>
         <translation>段落长（单位：句子）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="652"/>
+        <location filename="../wordless/wl_profiler.py" line="670"/>
         <source>Paragraph Length in Sentences (Range)</source>
         <translation>段落长（单位：句子）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="653"/>
+        <location filename="../wordless/wl_profiler.py" line="671"/>
         <source>Paragraph Length in Sentences (Interquartile Range)</source>
         <translation>段落长（单位：句子）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="654"/>
+        <location filename="../wordless/wl_profiler.py" line="672"/>
         <source>Paragraph Length in Sentences (Modes)</source>
         <translation>段落长（单位：句子）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="658"/>
+        <location filename="../wordless/wl_profiler.py" line="676"/>
         <source>Paragraph Length in Sentence Segments (Mean)</source>
         <translation>段落长（单位：句段）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="659"/>
+        <location filename="../wordless/wl_profiler.py" line="677"/>
         <source>Paragraph Length in Sentence Segments (Standard Deviation)</source>
         <translation>段落长（单位：句段）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="660"/>
+        <location filename="../wordless/wl_profiler.py" line="678"/>
         <source>Paragraph Length in Sentence Segments (Variance)</source>
         <translation>段落长（单位：句段）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="661"/>
+        <location filename="../wordless/wl_profiler.py" line="679"/>
         <source>Paragraph Length in Sentence Segments (Minimum)</source>
         <translation>段落长（单位：句段）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="662"/>
+        <location filename="../wordless/wl_profiler.py" line="680"/>
         <source>Paragraph Length in Sentence Segments (25th Percentile)</source>
         <translation>段落长（单位：句段）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="663"/>
+        <location filename="../wordless/wl_profiler.py" line="681"/>
         <source>Paragraph Length in Sentence Segments (Median)</source>
         <translation>段落长（单位：句段）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="664"/>
+        <location filename="../wordless/wl_profiler.py" line="682"/>
         <source>Paragraph Length in Sentence Segments (75th Percentile)</source>
         <translation>段落长（单位：句段）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="665"/>
+        <location filename="../wordless/wl_profiler.py" line="683"/>
         <source>Paragraph Length in Sentence Segments (Maximum)</source>
         <translation>段落长（单位：句段）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="666"/>
+        <location filename="../wordless/wl_profiler.py" line="684"/>
         <source>Paragraph Length in Sentence Segments (Range)</source>
         <translation>段落长（单位：句段）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="667"/>
+        <location filename="../wordless/wl_profiler.py" line="685"/>
         <source>Paragraph Length in Sentence Segments (Interquartile Range)</source>
         <translation>段落长（单位：句段）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="668"/>
+        <location filename="../wordless/wl_profiler.py" line="686"/>
         <source>Paragraph Length in Sentence Segments (Modes)</source>
         <translation>段落长（单位：句段）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="672"/>
+        <location filename="../wordless/wl_profiler.py" line="690"/>
         <source>Paragraph Length in Tokens (Mean)</source>
         <translation>段落长（单位：形符）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="673"/>
+        <location filename="../wordless/wl_profiler.py" line="691"/>
         <source>Paragraph Length in Tokens (Standard Deviation)</source>
         <translation>段落长（单位：形符）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="674"/>
+        <location filename="../wordless/wl_profiler.py" line="692"/>
         <source>Paragraph Length in Tokens (Variance)</source>
         <translation>段落长（单位：形符）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="675"/>
+        <location filename="../wordless/wl_profiler.py" line="693"/>
         <source>Paragraph Length in Tokens (Minimum)</source>
         <translation>段落长（单位：形符）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="676"/>
+        <location filename="../wordless/wl_profiler.py" line="694"/>
         <source>Paragraph Length in Tokens (25th Percentile)</source>
         <translation>段落长（单位：形符）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="677"/>
+        <location filename="../wordless/wl_profiler.py" line="695"/>
         <source>Paragraph Length in Tokens (Median)</source>
         <translation>段落长（单位：形符）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="678"/>
+        <location filename="../wordless/wl_profiler.py" line="696"/>
         <source>Paragraph Length in Tokens (75th Percentile)</source>
         <translation>段落长（单位：形符）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="679"/>
+        <location filename="../wordless/wl_profiler.py" line="697"/>
         <source>Paragraph Length in Tokens (Maximum)</source>
         <translation>段落长（单位：形符）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="680"/>
+        <location filename="../wordless/wl_profiler.py" line="698"/>
         <source>Paragraph Length in Tokens (Range)</source>
         <translation>段落长（单位：形符）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="681"/>
+        <location filename="../wordless/wl_profiler.py" line="699"/>
         <source>Paragraph Length in Tokens (Interquartile Range)</source>
         <translation>段落长（单位：形符）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="682"/>
+        <location filename="../wordless/wl_profiler.py" line="700"/>
         <source>Paragraph Length in Tokens (Modes)</source>
         <translation>段落长（单位：形符）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="686"/>
+        <location filename="../wordless/wl_profiler.py" line="704"/>
         <source>Sentence Length in Tokens (Mean)</source>
         <translation>句长（单位：形符）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="687"/>
+        <location filename="../wordless/wl_profiler.py" line="705"/>
         <source>Sentence Length in Tokens (Standard Deviation)</source>
         <translation>句长（单位：形符）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="688"/>
+        <location filename="../wordless/wl_profiler.py" line="706"/>
         <source>Sentence Length in Tokens (Variance)</source>
         <translation>句长（单位：形符）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="689"/>
+        <location filename="../wordless/wl_profiler.py" line="707"/>
         <source>Sentence Length in Tokens (Minimum)</source>
         <translation>句长（单位：形符）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="690"/>
+        <location filename="../wordless/wl_profiler.py" line="708"/>
         <source>Sentence Length in Tokens (25th Percentile)</source>
         <translation>句长（单位：形符）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="691"/>
+        <location filename="../wordless/wl_profiler.py" line="709"/>
         <source>Sentence Length in Tokens (Median)</source>
         <translation>句长（单位：形符）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="692"/>
+        <location filename="../wordless/wl_profiler.py" line="710"/>
         <source>Sentence Length in Tokens (75th Percentile)</source>
         <translation>句长（单位：形符）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="693"/>
+        <location filename="../wordless/wl_profiler.py" line="711"/>
         <source>Sentence Length in Tokens (Maximum)</source>
         <translation>句长（单位：形符）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="694"/>
+        <location filename="../wordless/wl_profiler.py" line="712"/>
         <source>Sentence Length in Tokens (Range)</source>
         <translation>句长（单位：形符）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="695"/>
+        <location filename="../wordless/wl_profiler.py" line="713"/>
         <source>Sentence Length in Tokens (Interquartile Range)</source>
         <translation>句长（单位：形符）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="696"/>
+        <location filename="../wordless/wl_profiler.py" line="714"/>
         <source>Sentence Length in Tokens (Modes)</source>
         <translation>句长（单位：形符）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="700"/>
+        <location filename="../wordless/wl_profiler.py" line="718"/>
         <source>Sentence Segment Length in Tokens (Mean)</source>
         <translation>句段长（单位：形符）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="701"/>
+        <location filename="../wordless/wl_profiler.py" line="719"/>
         <source>Sentence Segment Length in Tokens (Standard Deviation)</source>
         <translation>句段长（单位：形符）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="702"/>
+        <location filename="../wordless/wl_profiler.py" line="720"/>
         <source>Sentence Segment Length in Tokens (Variance)</source>
         <translation>句段长（单位：形符）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="703"/>
+        <location filename="../wordless/wl_profiler.py" line="721"/>
         <source>Sentence Segment Length in Tokens (Minimum)</source>
         <translation>句段长（单位：形符）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="704"/>
+        <location filename="../wordless/wl_profiler.py" line="722"/>
         <source>Sentence Segment Length in Tokens (25th Percentile)</source>
         <translation>句段长（单位：形符）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="705"/>
+        <location filename="../wordless/wl_profiler.py" line="723"/>
         <source>Sentence Segment Length in Tokens (Median)</source>
         <translation>句段长（单位：形符）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="706"/>
+        <location filename="../wordless/wl_profiler.py" line="724"/>
         <source>Sentence Segment Length in Tokens (75th Percentile)</source>
         <translation>句段长（单位：形符）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="707"/>
+        <location filename="../wordless/wl_profiler.py" line="725"/>
         <source>Sentence Segment Length in Tokens (Maximum)</source>
         <translation>句段长（单位：形符）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="708"/>
+        <location filename="../wordless/wl_profiler.py" line="726"/>
         <source>Sentence Segment Length in Tokens (Range)</source>
         <translation>句段长（单位：形符）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="709"/>
+        <location filename="../wordless/wl_profiler.py" line="727"/>
         <source>Sentence Segment Length in Tokens (Interquartile Range)</source>
         <translation>句段长（单位：形符）（四分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="710"/>
+        <location filename="../wordless/wl_profiler.py" line="728"/>
         <source>Sentence Segment Length in Tokens (Modes)</source>
         <translation>句段长（单位：形符）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="714"/>
+        <location filename="../wordless/wl_profiler.py" line="732"/>
         <source>Token Length in Syllables (Mean)</source>
         <translation>形符长（单位：音节）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="715"/>
+        <location filename="../wordless/wl_profiler.py" line="733"/>
         <source>Token Length in Syllables (Standard Deviation)</source>
         <translation>形符长（单位：音节）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="716"/>
+        <location filename="../wordless/wl_profiler.py" line="734"/>
         <source>Token Length in Syllables (Variance)</source>
         <translation>形符长（单位：音节）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="717"/>
+        <location filename="../wordless/wl_profiler.py" line="735"/>
         <source>Token Length in Syllables (Minimum)</source>
         <translation>形符长（单位：音节）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="718"/>
+        <location filename="../wordless/wl_profiler.py" line="736"/>
         <source>Token Length in Syllables (25th Percentile)</source>
         <translation>形符长（单位：音节）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="719"/>
+        <location filename="../wordless/wl_profiler.py" line="737"/>
         <source>Token Length in Syllables (Median)</source>
         <translation>形符长（单位：音节）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="720"/>
+        <location filename="../wordless/wl_profiler.py" line="738"/>
         <source>Token Length in Syllables (75th Percentile)</source>
         <translation>形符长（单位：音节）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="721"/>
+        <location filename="../wordless/wl_profiler.py" line="739"/>
         <source>Token Length in Syllables (Maximum)</source>
         <translation>形符长（单位：音节）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="722"/>
+        <location filename="../wordless/wl_profiler.py" line="740"/>
         <source>Token Length in Syllables (Range)</source>
         <translation>形符长（单位：音节）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="723"/>
+        <location filename="../wordless/wl_profiler.py" line="741"/>
         <source>Token Length in Syllables (Interquartile Range)</source>
         <translation>形符长（单位：音节）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="724"/>
+        <location filename="../wordless/wl_profiler.py" line="742"/>
         <source>Token Length in Syllables (Modes)</source>
         <translation>形符长（单位：音节）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="728"/>
+        <location filename="../wordless/wl_profiler.py" line="746"/>
         <source>Token Length in Characters (Mean)</source>
         <translation>形符长（单位：字符）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="729"/>
+        <location filename="../wordless/wl_profiler.py" line="747"/>
         <source>Token Length in Characters (Standard Deviation)</source>
         <translation>形符长（单位：字符）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="730"/>
+        <location filename="../wordless/wl_profiler.py" line="748"/>
         <source>Token Length in Characters (Variance)</source>
         <translation>形符长（单位：字符）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="731"/>
+        <location filename="../wordless/wl_profiler.py" line="749"/>
         <source>Token Length in Characters (Minimum)</source>
         <translation>形符长（单位：字符）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="732"/>
+        <location filename="../wordless/wl_profiler.py" line="750"/>
         <source>Token Length in Characters (25th Percentile)</source>
         <translation>形符长（单位：字符）（25分位值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="733"/>
+        <location filename="../wordless/wl_profiler.py" line="751"/>
         <source>Token Length in Characters (Median)</source>
         <translation>形符长（单位：字符）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="734"/>
+        <location filename="../wordless/wl_profiler.py" line="752"/>
         <source>Token Length in Characters (75th Percentile)</source>
         <translation>形符长（单位：字符）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="735"/>
+        <location filename="../wordless/wl_profiler.py" line="753"/>
         <source>Token Length in Characters (Maximum)</source>
         <translation>形符长（单位：字符）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="736"/>
+        <location filename="../wordless/wl_profiler.py" line="754"/>
         <source>Token Length in Characters (Range)</source>
         <translation>形符长（单位：字符）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="737"/>
+        <location filename="../wordless/wl_profiler.py" line="755"/>
         <source>Token Length in Characters (Interquartile Range)</source>
         <translation>形符长（单位：字符）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="738"/>
+        <location filename="../wordless/wl_profiler.py" line="756"/>
         <source>Token Length in Characters (Modes)</source>
         <translation>形符长（单位：字符）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="742"/>
+        <location filename="../wordless/wl_profiler.py" line="760"/>
         <source>Type Length in Syllables (Mean)</source>
         <translation>类符长（单位：音节）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="743"/>
+        <location filename="../wordless/wl_profiler.py" line="761"/>
         <source>Type Length in Syllables (Standard Deviation)</source>
         <translation>类符长（单位：音节）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="744"/>
+        <location filename="../wordless/wl_profiler.py" line="762"/>
         <source>Type Length in Syllables (Variance)</source>
         <translation>类符长（单位：音节）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="745"/>
+        <location filename="../wordless/wl_profiler.py" line="763"/>
         <source>Type Length in Syllables (Minimum)</source>
         <translation>类符长（单位：音节）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="746"/>
+        <location filename="../wordless/wl_profiler.py" line="764"/>
         <source>Type Length in Syllables (25th Percentile)</source>
         <translation>类符长（单位：音节）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="747"/>
+        <location filename="../wordless/wl_profiler.py" line="765"/>
         <source>Type Length in Syllables (Median)</source>
         <translation>类符长（单位：音节）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="748"/>
+        <location filename="../wordless/wl_profiler.py" line="766"/>
         <source>Type Length in Syllables (75th Percentile)</source>
         <translation>类符长（单位：音节）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="749"/>
+        <location filename="../wordless/wl_profiler.py" line="767"/>
         <source>Type Length in Syllables (Maximum)</source>
         <translation>类符长（单位：音节）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="750"/>
+        <location filename="../wordless/wl_profiler.py" line="768"/>
         <source>Type Length in Syllables (Range)</source>
         <translation>类符长（单位：音节）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="751"/>
+        <location filename="../wordless/wl_profiler.py" line="769"/>
         <source>Type Length in Syllables (Interquartile Range)</source>
         <translation>类符长（单位：音节）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="752"/>
+        <location filename="../wordless/wl_profiler.py" line="770"/>
         <source>Type Length in Syllables (Modes)</source>
         <translation>类符长（单位：音节）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="756"/>
+        <location filename="../wordless/wl_profiler.py" line="774"/>
         <source>Type Length in Characters (Mean)</source>
         <translation>类符长（单位：字符）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="757"/>
+        <location filename="../wordless/wl_profiler.py" line="775"/>
         <source>Type Length in Characters (Standard Deviation)</source>
         <translation>类符长（单位：字符）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="758"/>
+        <location filename="../wordless/wl_profiler.py" line="776"/>
         <source>Type Length in Characters (Variance)</source>
         <translation>类符长（单位：字符）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="759"/>
+        <location filename="../wordless/wl_profiler.py" line="777"/>
         <source>Type Length in Characters (Minimum)</source>
         <translation>类符长（单位：字符）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="760"/>
+        <location filename="../wordless/wl_profiler.py" line="778"/>
         <source>Type Length in Characters (25th Percentile)</source>
         <translation>类符长（单位：字符）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="761"/>
+        <location filename="../wordless/wl_profiler.py" line="779"/>
         <source>Type Length in Characters (Median)</source>
         <translation>类符长（单位：字符）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="762"/>
+        <location filename="../wordless/wl_profiler.py" line="780"/>
         <source>Type Length in Characters (75th Percentile)</source>
         <translation>类符长（单位：字符）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="763"/>
+        <location filename="../wordless/wl_profiler.py" line="781"/>
         <source>Type Length in Characters (Maximum)</source>
         <translation>类符长（单位：字符）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="764"/>
+        <location filename="../wordless/wl_profiler.py" line="782"/>
         <source>Type Length in Characters (Range)</source>
         <translation>类符长（单位：字符）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="765"/>
+        <location filename="../wordless/wl_profiler.py" line="783"/>
         <source>Type Length in Characters (Interquartile Range)</source>
         <translation>类符长（单位：字符）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="766"/>
+        <location filename="../wordless/wl_profiler.py" line="784"/>
         <source>Type Length in Characters (Modes)</source>
         <translation>类符长（单位：字符）（众数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="770"/>
+        <location filename="../wordless/wl_profiler.py" line="788"/>
         <source>Syllable Length in Characters (Mean)</source>
         <translation>音节长（单位：字符）（均值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="771"/>
+        <location filename="../wordless/wl_profiler.py" line="789"/>
         <source>Syllable Length in Characters (Standard Deviation)</source>
         <translation>音节长（单位：字符）（标准差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="772"/>
+        <location filename="../wordless/wl_profiler.py" line="790"/>
         <source>Syllable Length in Characters (Variance)</source>
         <translation>音节长（单位：字符）（方差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="773"/>
+        <location filename="../wordless/wl_profiler.py" line="791"/>
         <source>Syllable Length in Characters (Minimum)</source>
         <translation>音节长（单位：字符）（最小值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="774"/>
+        <location filename="../wordless/wl_profiler.py" line="792"/>
         <source>Syllable Length in Characters (25th Percentile)</source>
         <translation>音节长（单位：字符）（25分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="775"/>
+        <location filename="../wordless/wl_profiler.py" line="793"/>
         <source>Syllable Length in Characters (Median)</source>
         <translation>音节长（单位：字符）（中位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="776"/>
+        <location filename="../wordless/wl_profiler.py" line="794"/>
         <source>Syllable Length in Characters (75th Percentile)</source>
         <translation>音节长（单位：字符）（75分位数）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="777"/>
+        <location filename="../wordless/wl_profiler.py" line="795"/>
         <source>Syllable Length in Characters (Maximum)</source>
         <translation>音节长（单位：字符）（最大值）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="778"/>
+        <location filename="../wordless/wl_profiler.py" line="796"/>
         <source>Syllable Length in Characters (Range)</source>
         <translation>音节长（单位：字符）（极差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="779"/>
+        <location filename="../wordless/wl_profiler.py" line="797"/>
         <source>Syllable Length in Characters (Interquartile Range)</source>
         <translation>音节长（单位：字符）（四分位差）</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_profiler.py" line="780"/>
+        <location filename="../wordless/wl_profiler.py" line="798"/>
         <source>Syllable Length in Characters (Modes)</source>
         <translation>音节长（单位：字符）（众数）</translation>
     </message>
@@ -10062,6 +11755,126 @@ Frequency</source>
     <message>
         <location filename="../wordless/wl_profiler.py" line="398"/>
         <source>Wheeler &amp; Smith&apos;s Readability Formula</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="588"/>
+        <source>Corrected TTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="589"/>
+        <source>Fisher&apos;s Index of Diversity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="590"/>
+        <source>Herdan&apos;s Vₘ</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="591"/>
+        <source>HD-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="592"/>
+        <source>LogTTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="593"/>
+        <source>Mean Segmental TTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="594"/>
+        <source>Measure of Textual Lexical Diversity</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="595"/>
+        <source>Moving-average TTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="596"/>
+        <source>Popescu-Mačutek-Altmann&apos;s B₁</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="597"/>
+        <source>Popescu-Mačutek-Altmann&apos;s B₂</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="598"/>
+        <source>Popescu-Mačutek-Altmann&apos;s B₃</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="599"/>
+        <source>Popescu-Mačutek-Altmann&apos;s B₄</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="600"/>
+        <source>Popescu-Mačutek-Altmann&apos;s B₅</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="601"/>
+        <source>Popescu&apos;s R₁</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="602"/>
+        <source>Popescu&apos;s R₂</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="603"/>
+        <source>Popescu&apos;s R₃</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="604"/>
+        <source>Popescu&apos;s R₄</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="605"/>
+        <source>Repeat Rate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="606"/>
+        <source>Root TTR</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="607"/>
+        <source>Shannon Entropy</source>
+        <translation>香农熵</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="608"/>
+        <source>Simpson&apos;s l</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="610"/>
+        <source>vocd-D</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="611"/>
+        <source>Yule&apos;s Characteristic K</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_profiler.py" line="612"/>
+        <source>Yule&apos;s Index of Diversity</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -10186,214 +11999,367 @@ Frequency</source>
     </message>
 </context>
 <context>
+    <name>wl_settings_default</name>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="81"/>
+        <source>Observed Files</source>
+        <translation>观察文件</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="82"/>
+        <source>Profiler</source>
+        <translation>分析工具</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="95"/>
+        <source>APA (7th edition)</source>
+        <translation>APA（第七版）</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="118"/>
+        <source>Counts</source>
+        <translation>计数</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="217"/>
+        <source>Token</source>
+        <translation>形符</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="238"/>
+        <source>File</source>
+        <translation>文件</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="239"/>
+        <source>Ascending</source>
+        <translation>升序</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="239"/>
+        <source>Token no.</source>
+        <translation>形符序号</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1010"/>
+        <source>Line chart</source>
+        <translation>折线图</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1023"/>
+        <source>Total</source>
+        <translation>合计</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="612"/>
+        <source>Frequency</source>
+        <translation>频数</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="898"/>
+        <source>None</source>
+        <translation>无</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1012"/>
+        <source>p-value</source>
+        <translation>p 值</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1076"/>
+        <source>General</source>
+        <translation>全局</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1130"/>
+        <source>Excel workbooks (*.xlsx)</source>
+        <translation>Excel 工作簿 (*.xlsx)</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1180"/>
+        <source>Non-embedded</source>
+        <translation>非嵌入式</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1167"/>
+        <source>Header</source>
+        <translation>头</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1172"/>
+        <source>Embedded</source>
+        <translation>嵌入式</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1172"/>
+        <source>Part of speech</source>
+        <translation>词性</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1173"/>
+        <source>Others</source>
+        <translation>其他</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1177"/>
+        <source>Paragraph</source>
+        <translation>段落</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1178"/>
+        <source>Sentence</source>
+        <translation>句子</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1180"/>
+        <source>Word</source>
+        <translation>单词</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1956"/>
+        <source>Policy one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1972"/>
+        <source>New</source>
+        <translation>新版</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="1980"/>
+        <source>Original</source>
+        <translation>原版</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="2041"/>
+        <source>Rank-frequency distribution</source>
+        <translation>频数排序分布</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="2118"/>
+        <source>Two-tailed</source>
+        <translation>双尾</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="2117"/>
+        <source>Relative frequency</source>
+        <translation>相对频数</translation>
+    </message>
+    <message>
+        <location filename="../wordless/wl_settings/wl_settings_default.py" line="2150"/>
+        <source>Colormap</source>
+        <translation>色谱</translation>
+    </message>
+</context>
+<context>
     <name>wl_settings_figs</name>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="36"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="37"/>
         <source>Square</source>
         <translation>方形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="37"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="38"/>
         <source>Circle</source>
         <translation>圆形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="38"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="39"/>
         <source>Triangle up</source>
         <translation>朝上三角形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="39"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="40"/>
         <source>Triangle right</source>
         <translation>朝右三角形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="40"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="41"/>
         <source>Triangle down</source>
         <translation>朝下三角形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="41"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="42"/>
         <source>Triangle left</source>
         <translation>朝左三角形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="42"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="43"/>
         <source>Thin diamond</source>
         <translation>薄菱形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="43"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="44"/>
         <source>Pentagon</source>
         <translation>五角形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="44"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="45"/>
         <source>Hexagon</source>
         <translation>六边形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="45"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="46"/>
         <source>Octagon</source>
         <translation>八边形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="48"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="49"/>
         <source>Arc3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="49"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="50"/>
         <source>Arc</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="50"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="51"/>
         <source>Angle3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="51"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="52"/>
         <source>Angle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="52"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="53"/>
         <source>Bar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="55"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="56"/>
         <source>Solid</source>
         <translation>实线</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="56"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="57"/>
         <source>Dashed</source>
         <translation>虚线</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="57"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="58"/>
         <source>Dash-dotted</source>
         <translation>点画线</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="58"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="59"/>
         <source>Dotted</source>
         <translation>点线</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="61"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="62"/>
         <source>Curve</source>
         <translation>圆弧</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="62"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="63"/>
         <source>Curve A</source>
         <translation>圆弧 A</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="63"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="64"/>
         <source>Curve B</source>
         <translation>圆弧 B</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="64"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="65"/>
         <source>Curve AB</source>
         <translation>圆弧 AB</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="65"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="66"/>
         <source>Curve filled A</source>
         <translation>实心圆弧 A</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="66"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="67"/>
         <source>Curve filled B</source>
         <translation>实心圆弧 B</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="67"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="68"/>
         <source>Curve filled AB</source>
         <translation>实心圆弧 AB</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="68"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="69"/>
         <source>Bracket A</source>
         <translation>方括号 A</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="69"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="70"/>
         <source>Bracket B</source>
         <translation>方括号 B</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="70"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="71"/>
         <source>Bracket AB</source>
         <translation>方括号 AB</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="71"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="72"/>
         <source>Bar AB</source>
         <translation>横条 AB</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="72"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="73"/>
         <source>Bracket curve</source>
         <translation>方括号加圆弧</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="73"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="74"/>
         <source>Simple</source>
         <translation>朴素</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="74"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="75"/>
         <source>Fancy</source>
         <translation>绚丽</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="75"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="76"/>
         <source>Wedge</source>
         <translation>楔形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="78"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="79"/>
         <source>Circular</source>
         <translation>环形</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="79"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="80"/>
         <source>Kamada-Kawai</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="80"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="81"/>
         <source>Planar</source>
         <translation>平面</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="81"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="82"/>
         <source>Random</source>
         <translation>随机</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="82"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="83"/>
         <source>Shell</source>
         <translation>同心</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="83"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="84"/>
         <source>Spring</source>
         <translation>弹簧</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="84"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="85"/>
         <source>Spectral</source>
         <translation>谱图</translation>
     </message>
     <message>
-        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="85"/>
+        <location filename="../wordless/wl_settings/wl_settings_figs.py" line="86"/>
         <source>Spiral</source>
         <translation>螺旋</translation>
     </message>

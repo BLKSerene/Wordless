@@ -577,7 +577,7 @@ def re_flesch(main, text):
                             - 77 * (text.num_syls / text.num_words)
                             - 0.93 * (text.num_words / text.num_sentences)
                         )
-                    elif settings['variant_nld'] == _tr('wl_measures_readability', "Brouwer's Leesindex A"):
+                    elif settings['variant_nld'] == "Brouwer's Leesindex A":
                         re = (
                             195
                             - (200 / 3) * (text.num_syls / text.num_words)
