@@ -69,27 +69,38 @@ Wordless is an integrated corpus tool with multilingual support for the study of
 
 ## Download
 
-The latest version (**3.3.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, and **Ubuntu 18.04 or later**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
+The latest version (**3.4.0**) of Wordless supports **Windows 7/8/8.1/10/11**, **macOS 10.11 or later**, and **Ubuntu 18.04 or later**, all **64-bit only**. Both Intel-based and Apple Silicon-based Macs are supported.
 
 For a detailed changelog, please see [CHANGELOG.md](/CHANGELOG.md).
 
 Release|Remarks
 -------|-------
-[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/3.3.0/wordless_3.3.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
-[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.3.0/wordless_3.3.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
-[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.3.0/wordless_3.3.0_linux.tar.gz)|1. Extract all files<br>2. Double-click **Wordless/Wordless** to run<br>3. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
+[Latest Release for Windows](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_windows.zip)|1. Extract all files<br>2. Double-click **Wordless/Wordless.exe** to run
+[Latest Release for macOS](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_macos.zip)|1. Extract all files<br>2. Double-click **Wordless.app** to run
+[Latest Release for Linux](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_linux.tar.gz)|1. Extract all files<br>2. Double-click **Wordless/Wordless** to run<br>3. [Optional] Double-click **Wordless/Wordless - Create Shortucut** to create a shortcut in **Show Applications**
 [Past Releases](https://github.com/BLKSerene/Wordless/releases)|Not recommended
-[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.3.0)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
+[Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.4.0)|For Chinese users with unstable connections to Github (**PASSWORD: wdls**)
 
-**Note 1:** It is recommended that the path to Wordless **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.<br>
-
-**Note 2:** If your Mac says that **“Wordless” is damaged and can’t be opened**, please open **Terminal** (Launchpad → Other) and run:<br>
-
-    xattr -rc /Applications/Wordless.app
-
-remember to replace **/Applications/Wordless.app** with the actual path of Wordless on your computer (you could drag **Wordless.app** to the **Terminal**). Then, **run Wordless again** (the warning prompted in Terminal could be ignored if the program could be successfully opened).<br>
-
-**Note 3:** If the Linux version won't open after double-clicking, please try **executing the program with the sudo command in terminal**. If the program is still not running, please **contact the author for support**.
+> [!IMPORTANT]
+> **Note 1:** It is recommended that the path to Wordless **not contain any non-ASCII chatacters, such as Chinese characters and letters with diacritics**.
+> 
+> **Note 2:** If your Mac says that **“Wordless” is damaged and can’t be opened**, please open **Terminal** (Launchpad → Other) and run:
+> 
+> <code>xattr -rc /Applications/Wordless.app</code><br>
+> 
+> remember to replace **/Applications/Wordless.app** with the actual path of Wordless on your computer (you could drag **Wordless.app** to the **Terminal**). Then, **run Wordless again** (the warning prompted in Terminal could be ignored if the program could be successfully opened).
+> 
+> **Note 3:** While opening corpora in languages other than English in *Wordless*, extra model files might need to be downloaded from the internet. If you encounter a **Network Error** dialog while downloading the model, chances are that it's a literal network error, so you just need to check your internet connections following the instructions in the error message and try downloading the model once more.
+> 
+> Users in China, where connections to Github and Hugging Face Hub are unstable, are recommended to use a proxy and set properly the settings in **Menu - Preferences - Settings - General - Proxy Settings**. Alternatively, Chinese users can choose to manually download model files from [Baidu Netdisk](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F). The steps of installing models are as follows:
+> 
+> 1. Check the error message displayed in the **Network Error** dialog. If **stanza** is found in the error message, you need a *Stanza* model, otherwise you need a *spaCy* model.
+> 2. Download model files for the language of your corpus from the above link and **extract all files**.
+> 3. For Windows and Linux users, put *spaCy* models under **Wordless/libs** and *Stanza* models under **Wordless/libs/stanza_resources**. For macOS users, right click on **Wordless.app**, select **Show Package Contents**, then put *spaCy* models under **Contents/Frameworks** and *Stanza* models under **Contents/Frameworks/stanza_resources**.
+> 4. If your corpora are in different languages or both *spaCy* and *Stanza* models are required, repeat step 1 ~ 3 until the **Network Error** dialog disappears.
+> 5. Try opening corpora in *Wordless* again, the model downloading process should be skipped now.
+> 
+> If the problem persists or the model you need is missing from the above link, please contact the author for further support.
 
 ## Need Help?
 
@@ -110,11 +121,11 @@ If you are going to publish a work that uses Wordless, please cite as follows.
 
 APA (7th edition):
 
-<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.3.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.4.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
 MLA (8th edition):
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 3.3.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>, version 3.4.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## License
 
