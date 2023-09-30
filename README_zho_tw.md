@@ -69,27 +69,37 @@ Wordless 是一款擁有多語種支援的語料庫整合工具，其可用於�
 
 ## 下載
 
-Wordless 最新版（**3.3.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**及 **Ubuntu 18.04 或更高版本**，均僅支援**64位作業系統**。英特爾和 Apple 晶片的蘋果電腦均有支援。
+Wordless 最新版（**3.4.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.11 或更高版本**及 **Ubuntu 18.04 或更高版本**，均僅支援**64位作業系統**。英特爾和 Apple 晶片的蘋果電腦均有支援。
 
 如需完整的更新日誌，請參閱 [CHANGELOG.md](/CHANGELOG.md)（待翻譯）。
 
 版本|備註
 ----|---
-[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.3.0/wordless_3.3.0_windows.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
-[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.3.0/wordless_3.3.0_macos.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless.app**
-[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.3.0/wordless_3.3.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 雙擊執行**Wordless/Wordless**<br>3. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
+[Windows 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_windows.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless/Wordless.exe**
+[macOS 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_macos.zip)|1. 解壓縮所有檔案<br>2. 雙擊執行 **Wordless.app**
+[Linux 最新版](https://github.com/BLKSerene/Wordless/releases/download/3.4.0/wordless_3.4.0_linux.tar.gz)|1. 解壓縮所有檔案<br>2. 雙擊執行**Wordless/Wordless**<br>3. [可選] 雙擊 **Wordless/Wordless - Create Shortucut** 在**顯示應用程式**中建立一個快捷方式
 [歷史版本](https://github.com/BLKSerene/Wordless/releases)|不推薦
-[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.3.0)|中國使用者若 Github 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
+[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2FWordless%203.4.0)|中國大陸使用者若 Github 連線不穩定可嘗試該下載連結（**提取碼：wdls**）
 
-**備註 1**：Wordless 的路徑中**不建議包含任何非 ASCII 字元，如漢字和帶變音記號的字母等**。
-
-**備註 2**：macOS 系統使用者如遇提示 **“Wordless”已損壞，無法開啟**，請開啟**終端**（啟動臺 → 其他）後執行：
-
-    xattr -rc /Applications/Wordless.app
-
-請注意將 **/Applications/Wordless.app** 替換為 Wordless 在電腦上的實際存放路徑（可直接拖拽 **Wordless.app** 檔案至**終端**中）。然後，**再次執行 Wordless**（若程式可成功執行，終端中提示的警告可忽略）。
-
-**備註 3**：如果 Linux 版本雙擊後無法執行，請嘗試**在終端中使用 sudo 命令執行程式**。如果程式仍然無法執行，請**聯絡作者尋求幫助**。
+> [!IMPORTANT]
+> **備註 1**：Wordless 的路徑中**不建議包含任何非 ASCII 字元，如漢字和帶變音記號的字母等**。
+> 
+> **備註 2**：macOS 系統使用者如遇提示 **“Wordless”已損壞，無法開啟**，請開啟**終端**（啟動臺 → 其他）後執行：
+> 
+> <code>xattr -rc /Applications/Wordless.app</code><br>
+> 請注意將 **/Applications/Wordless.app** 替換為 Wordless 在電腦上的實際存放路徑（可直接拖拽 **Wordless.app** 檔案至**終端**中）。然後，**再次執行 Wordless**（若程式可成功執行，終端中提示的警告可忽略）。
+> 
+> **備註 3:** 在 *Wordless* 中開啟除英語外語種的語料庫時，可能需要從網上下載額外的模型檔案。如果出現**網路錯誤**對話方塊，那麼大機率是字面意義上的網路錯誤，所以只需要按照錯誤資訊中的指示檢查網路連線，然後再次嘗試下載模型即可。
+> 
+> 中國大陸和 Github 以及 Hugging Face Hub 的連線不穩定，因此建議使用者建議使用代理並在**選單 - 偏好 - 設定 - 全域性 - 代理設定**中進行設定。或者也可以手動從[百度網盤](https://pan.baidu.com/s/1--ZzABrDQBZlZagWlVQMbg?pwd=wdls#list/path=%2FWordless%2Fmodels&parentPath=%2F)下載模型檔案。模型的安裝步驟如下：
+> 
+> 1. 檢視**網路錯誤**對話方塊中的錯誤資訊。如果錯誤資訊中能找到 **stanza** 的字樣，那麼你需要的是 *Stanza* 模型，否則你需要的是 *spaCy* 模型。
+> 2. 從上方連結中下載你的語料庫語種所對應的模型檔案然後**將所有檔案解壓出來**。
+> 3. Windows 以及 Linux 使用者需將 *spaCy* 模型置於 **Wordless/libs** 目錄下，將 *Stanza* 模型置於 **Wordless/libs/stanza_resources** 目錄下。 蘋果系統使用者需右鍵單擊 **Wordless.app** 圖示，選擇 **顯示套件內容（Show Package Contents）**，然後將 *spaCy* 模型置於 **Contents/Frameworks** 目錄下，將 *Stanza* 模型置於 **Contents/Frameworks/stanza_resources**目錄下。
+> 4. 如果你的語料庫有多個語種或者 *spaCy* 和 *Stanza* 模型都需要，那麼重複步驟 1 ~ 3 直至**網路錯誤**的對話方塊不再出現為止。
+> 5. 再次嘗試在 *Wordless* 中開啟你的語料庫，此時應該會跳過模型下載過程。
+> 
+> 如果問題仍然存在或者上述連結中沒有你需要的模型，請聯絡作者以尋求更多幫助。
 
 ## 需要幫助？
 
@@ -110,11 +120,11 @@ Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 
 APA（第7版）：
 
-<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.3.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
+<pre><code>Ye, L. (2023). <i>Wordless</i> (Version 3.4.0) [Computer software]. Github. https://github.com/BLKSerene/Wordless</code></pre>
 
 MLA（第8版）：
 
-<pre><code>Ye Lei. <i>Wordless</i>, version 3.3.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+<pre><code>Ye Lei. <i>Wordless</i>, version 3.4.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
 
 ## 許可
 
