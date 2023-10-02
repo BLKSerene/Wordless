@@ -248,16 +248,10 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
             tag: tag_universal
             for tag, tag_universal, _, _ in main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]
         }
-        tokens_tagged = list(tokens_tagged)
-
-        # Issue warnings if any tag is missing from the mapping table
-        for _, tag in tokens_tagged:
-            if tag not in mappings:
-                print(f'Warning: tag "{tag}" is missing from the {wl_conversion.to_lang_text(main, lang)} mapping table!')
 
         tokens_tagged = [
             (token, mappings.get(tag, 'X'))
-            for token, tag in tokens_tagged
+            for token, tag in list(tokens_tagged)
         ]
 
     return tokens_tagged

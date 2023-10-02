@@ -38,7 +38,8 @@ pymorphy3-dicts-ru
 pymorphy3-dicts-uk
 
 ## spaCy
-spacy[lookups,transformers]
+spacy
+spacy-lookups-data
 spacy-pkuseg
 
 ## SudachiPy
@@ -69,4 +70,4 @@ wordcloud
 torch
 
 # spaCy models
-en_core_web_trf-3.6.1-py3-none-any.whl
+en_core_web_trf-3.7.2-py3-none-any.whl

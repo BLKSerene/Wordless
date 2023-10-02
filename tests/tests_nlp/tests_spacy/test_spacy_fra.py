@@ -19,7 +19,7 @@
 from tests.tests_nlp.tests_spacy import test_spacy
 
 def test_spacy_fra():
-    results_pos_tag = [('Le', 'DET'), ('français', 'PROPN'), ('est', 'AUX'), ('une', 'DET'), ('langue', 'NOUN'), ('indo-européenne', 'ADJ'), ('de', 'ADP'), ('la', 'DET'), ('famille', 'NOUN'), ('des', 'ADP'), ('langues', 'NOUN'), ('romanes', 'ADJ'), ('dont', 'PRON'), ('les', 'DET'), ('locuteurs', 'NOUN'), ('sont', 'AUX'), ('appelés', 'VERB'), ('francophones', 'ADJ'), ('.', 'PUNCT')]
+    results_pos_tag = [('Le', 'DET'), ('français', 'NOUN'), ('est', 'AUX'), ('une', 'DET'), ('langue', 'NOUN'), ('indo-européenne', 'ADJ'), ('de', 'ADP'), ('la', 'DET'), ('famille', 'NOUN'), ('des', 'ADP'), ('langues', 'NOUN'), ('romanes', 'ADJ'), ('dont', 'PRON'), ('les', 'DET'), ('locuteurs', 'NOUN'), ('sont', 'AUX'), ('appelés', 'VERB'), ('francophones', 'ADJ'), ('.', 'PUNCT')]
 
     test_spacy.wl_test_spacy(
         lang = 'fra',
@@ -28,7 +28,7 @@ def test_spacy_fra():
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
         results_lemmatize = ['le', 'français', 'être', 'un', 'langue', 'indo-européen', 'de', 'le', 'famille', 'de', 'langue', 'roman', 'dont', 'le', 'locuteur', 'être', 'appeler', 'francophone', '.'],
-        results_dependency_parse = [('Le', 'français', 'det', 1), ('français', 'langue', 'nsubj', 3), ('est', 'langue', 'cop', 2), ('une', 'langue', 'det', 1), ('langue', 'langue', 'ROOT', 0), ('indo-européenne', 'langue', 'amod', -1), ('de', 'famille', 'case', 2), ('la', 'famille', 'det', 1), ('famille', 'langue', 'nmod', -4), ('des', 'langues', 'case', 1), ('langues', 'famille', 'nmod', -2), ('romanes', 'langues', 'amod', -1), ('dont', 'appelés', 'iobj', 4), ('les', 'locuteurs', 'det', 1), ('locuteurs', 'appelés', 'nsubj:pass', 2), ('sont', 'appelés', 'aux:pass', 1), ('appelés', 'langues', 'acl:relcl', -6), ('francophones', 'appelés', 'xcomp', -1), ('.', 'langue', 'punct', -14)]
+        results_dependency_parse = [('Le', 'français', 'det', 1), ('français', 'langue', 'nsubj', 3), ('est', 'langue', 'cop', 2), ('une', 'langue', 'det', 1), ('langue', 'langue', 'ROOT', 0), ('indo-européenne', 'langue', 'amod', -1), ('de', 'famille', 'case', 2), ('la', 'famille', 'det', 1), ('famille', 'langue', 'nmod', -4), ('des', 'langues', 'case', 1), ('langues', 'famille', 'nmod', -2), ('romanes', 'langues', 'amod', -1), ('dont', 'locuteurs', 'nmod', 2), ('les', 'locuteurs', 'det', 1), ('locuteurs', 'appelés', 'nsubj:pass', 2), ('sont', 'appelés', 'aux:pass', 1), ('appelés', 'langue', 'acl:relcl', -12), ('francophones', 'appelés', 'xcomp', -1), ('.', 'langue', 'punct', -14)]
     )
 
 if __name__ == '__main__':

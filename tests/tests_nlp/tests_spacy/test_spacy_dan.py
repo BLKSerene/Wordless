@@ -19,11 +19,11 @@
 from tests.tests_nlp.tests_spacy import test_spacy
 
 def test_spacy_dan():
-    results_pos_tag = [('Dansk', 'ADJ'), ('er', 'AUX'), ('et', 'DET'), ('østnordisk', 'ADJ'), ('sprog', 'NOUN'), ('indenfor', 'ADP'), ('den', 'DET'), ('germanske', 'ADJ'), ('gren', 'NOUN'), ('af', 'ADP'), ('den', 'DET'), ('indoeuropæiske', 'ADJ'), ('sprogfamilie', 'NOUN'), ('.', 'PUNCT')]
+    results_pos_tag = [('Dansk', 'NOUN'), ('er', 'AUX'), ('et', 'DET'), ('østnordisk', 'ADJ'), ('sprog', 'NOUN'), ('indenfor', 'ADP'), ('den', 'DET'), ('germanske', 'ADJ'), ('gren', 'NOUN'), ('af', 'ADP'), ('den', 'DET'), ('indoeuropæiske', 'ADJ'), ('sprogfamilie', 'NOUN'), ('.', 'PUNCT')]
 
     test_spacy.wl_test_spacy(
         lang = 'dan',
-        results_sentence_tokenize_trf = ['Dansk er et østnordisk sprog indenfor den germanske gren af den indoeuropæiske sprogfamilie.', 'Det danske sprog tales af ca. seks millioner mennesker, hovedsageligt i Danmark, men også i Sydslesvig (i Flensborg ca. 20 %), på Færøerne og Grønland.[1]', 'Dansk er tæt beslægtet med norsk, svensk og islandsk, og sproghistorisk har dansk været stærkt påvirket af plattysk.'],
+        results_sentence_tokenize_trf = ['Dansk er et østnordisk sprog indenfor den germanske gren af den indoeuropæiske sprogfamilie.', 'Det danske sprog tales af ca. seks millioner mennesker, hovedsageligt i Danmark, men også i Sydslesvig, på Færøerne og Grønland.[1] Dansk er tæt beslægtet med norsk, svensk og islandsk, og sproghistorisk har dansk været stærkt påvirket af plattysk.'],
         results_word_tokenize = ['Dansk', 'er', 'et', 'østnordisk', 'sprog', 'indenfor', 'den', 'germanske', 'gren', 'af', 'den', 'indoeuropæiske', 'sprogfamilie', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
