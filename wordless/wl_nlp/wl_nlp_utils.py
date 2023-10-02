@@ -140,14 +140,14 @@ LANGS_STANZA_SENTIMENT_ANALYZERS = ['zho_cn', 'eng', 'deu', 'mar', 'spa', 'vie']
 
 def check_models(main, langs, lang_utils = None):
     def update_gui_stanza(main, err_msg):
-        if not wl_checks_work_area.check_results_download_model(main, err_msg):
-            nonlocal models_ok
-            models_ok = False
+        nonlocal models_ok
+
+        models_ok = wl_checks_work_area.check_results_download_model(main, err_msg)
 
     models_ok = True
     langs = list(langs)
 
-    # Check all language utilities if language utility is not specified
+    # Check all language utilities if not specified
     if lang_utils is None:
         lang_utils = []
 
@@ -190,27 +190,29 @@ def check_models(main, langs, lang_utils = None):
                     utils[i] = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
             elif util == 'default_dependency_parser':
                 if lang in main.settings_custom['dependency_parsing']['dependency_parser_settings']:
-                    utils[i] = main.settings_custom['dependency_parsing']['dependency_parser_settings']
+                    utils[i] = main.settings_custom['dependency_parsing']['dependency_parser_settings'][lang]
             elif util == 'default_sentiment_analyzer':
                 if lang in main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']:
-                    utils[i] = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']
+                    utils[i] = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][lang]
 
     for lang, utils in zip(langs, lang_utils):
         for util in utils:
             if util.startswith('spacy_'):
                 if lang == 'nno':
-                    lang = 'nob'
+                    lang_spacy = 'nob'
                 else:
-                    lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+                    lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
             elif util.startswith('stanza_'):
                 if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
-                    lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+                    lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+                else:
+                    lang_stanza = lang
 
             if (
                 util.startswith('spacy_')
-                and lang in LANGS_SPACY
+                and lang_spacy in LANGS_SPACY
             ):
-                model_name = LANGS_SPACY[lang]
+                model_name = LANGS_SPACY[lang_spacy]
 
                 try:
                     importlib.import_module(model_name)
@@ -230,13 +232,13 @@ def check_models(main, langs, lang_utils = None):
                         models_ok = False
             elif (
                 util.startswith('stanza_')
-                and lang in LANGS_STANZA_TOKENIZERS
+                and lang_stanza in LANGS_STANZA_TOKENIZERS
             ):
                 worker_download_model = Wl_Worker_Download_Model_Stanza(
                     main,
                     dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
                     update_gui = lambda err_msg: update_gui_stanza(main, err_msg),
-                    lang = lang
+                    lang = lang_stanza
                 )
 
                 wl_threading.Wl_Thread(worker_download_model).start_worker()

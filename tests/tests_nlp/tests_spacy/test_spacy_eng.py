@@ -18,22 +18,24 @@
 
 from tests.tests_nlp.tests_spacy import test_spacy
 
+results_word_tokenize = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', '.']
+
 def test_spacy_eng():
     test_spacy.wl_test_spacy(
         lang = 'eng_us',
-        results_sentence_tokenize_trf = ['English is a West Germanic language in the Indo-European language family that originated in early medieval England.[3][4][5]', 'It is the most spoken language in the world[6] and the third most spoken native language in the world, after Standard Chinese and Spanish.[7]', 'Today, English is the primary language of the Anglosphere, which is usually defined as the United States, the United Kingdom, Canada, Australia, and New Zealand.', 'English is also the primary language of the Republic of Ireland, although it is not typically included within the Anglosphere.'],
-        results_word_tokenize = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England.[3][4][5', ']'],
-        results_pos_tag = [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'JJ'), ('Germanic', 'JJ'), ('language', 'NN'), ('in', 'IN'), ('the', 'DT'), ('Indo', 'JJ'), ('-', 'JJ'), ('European', 'JJ'), ('language', 'NN'), ('family', 'NN'), ('that', 'WDT'), ('originated', 'VBD'), ('in', 'IN'), ('early', 'JJ'), ('medieval', 'JJ'), ('England.[3][4][5', 'CD'), (']', '-RRB-')],
-        results_pos_tag_universal = [('English', 'PROPN'), ('is', 'AUX'), ('a', 'DET'), ('West', 'ADJ'), ('Germanic', 'ADJ'), ('language', 'NOUN'), ('in', 'ADP'), ('the', 'DET'), ('Indo', 'ADJ'), ('-', 'ADJ'), ('European', 'ADJ'), ('language', 'NOUN'), ('family', 'NOUN'), ('that', 'PRON'), ('originated', 'VERB'), ('in', 'ADP'), ('early', 'ADJ'), ('medieval', 'ADJ'), ('England.[3][4][5', 'NUM'), (']', 'PUNCT')],
-        results_lemmatize = ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'indo', '-', 'european', 'language', 'family', 'that', 'originate', 'in', 'early', 'medieval', 'england.[3][4][5', ']'],
-        results_dependency_parse = [('English', 'is', 'nsubj', 1), ('is', 'is', 'ROOT', 0), ('a', 'language', 'det', 3), ('West', 'Germanic', 'amod', 1), ('Germanic', 'language', 'amod', 1), ('language', 'is', 'attr', -4), ('in', 'language', 'prep', -1), ('the', 'family', 'det', 5), ('Indo', 'family', 'amod', 4), ('-', 'family', 'amod', 3), ('European', 'family', 'amod', 2), ('language', 'family', 'compound', 1), ('family', 'in', 'pobj', -6), ('that', 'originated', 'nsubj', 1), ('originated', 'family', 'relcl', -2), ('in', 'originated', 'prep', -1), ('early', 'medieval', 'amod', 1), ('medieval', 'England.[3][4][5', 'amod', 1), ('England.[3][4][5', 'in', 'pobj', -3), (']', 'is', 'punct', -18)]
+        results_sentence_tokenize_trf = ['English is a West Germanic language in the Indo-European language family.', 'Originating in early medieval England,[3][4][5] today English is both the most spoken language in the world[6] and the third most spoken native language, after Mandarin Chinese and Spanish.[7]', 'English is the most widely learned second language and is either the official language or one of the official languages in 59 sovereign states.', 'There are more people who have learned English as a second language than there are native speakers.', 'As of 2005, it was estimated that there were over two billion speakers of English.[8]'],
+        results_word_tokenize = results_word_tokenize,
+        results_pos_tag = [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'JJ'), ('Germanic', 'JJ'), ('language', 'NN'), ('in', 'IN'), ('the', 'DT'), ('Indo', 'JJ'), ('-', 'JJ'), ('European', 'JJ'), ('language', 'NN'), ('family', 'NN'), ('.', '.')],
+        results_pos_tag_universal = [('English', 'PROPN'), ('is', 'AUX'), ('a', 'DET'), ('West', 'ADJ'), ('Germanic', 'ADJ'), ('language', 'NOUN'), ('in', 'ADP'), ('the', 'DET'), ('Indo', 'ADJ'), ('-', 'ADJ'), ('European', 'ADJ'), ('language', 'NOUN'), ('family', 'NOUN'), ('.', 'PUNCT')],
+        results_lemmatize = ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'indo', '-', 'european', 'language', 'family', '.'],
+        results_dependency_parse = [('English', 'is', 'nsubj', 1), ('is', 'is', 'ROOT', 0), ('a', 'language', 'det', 3), ('West', 'Germanic', 'amod', 1), ('Germanic', 'language', 'amod', 1), ('language', 'is', 'attr', -4), ('in', 'is', 'prep', -5), ('the', 'family', 'det', 5), ('Indo', 'language', 'amod', 3), ('-', 'language', 'amod', 2), ('European', 'language', 'amod', 1), ('language', 'family', 'compound', 1), ('family', 'in', 'pobj', -6), ('.', 'is', 'punct', -12)]
     )
 
 def test_spacy_other():
     test_spacy.wl_test_spacy(
         lang = 'other',
-        results_sentence_tokenize_trf = ['English is a West Germanic language in the Indo-European language family that originated in early medieval England.[3][4][5] It is the most spoken language in the world[6] and the third most spoken native language in the world, after Standard Chinese and Spanish.[7] Today, English is the primary language of the Anglosphere, which is usually defined as the United States, the United Kingdom, Canada, Australia, and New Zealand.', 'English is also the primary language of the Republic of Ireland, although it is not typically included within the Anglosphere.'],
-        results_word_tokenize = ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England.[3][4][5', ']']
+        results_sentence_tokenize_trf = ['English is a West Germanic language in the Indo-European language family.', 'Originating in early medieval England,[3][4][5] today English is both the most spoken language in the world[6] and the third most spoken native language, after Mandarin Chinese and Spanish.[7] English is the most widely learned second language and is either the official language or one of the official languages in 59 sovereign states.', 'There are more people who have learned English as a second language than there are native speakers.', 'As of 2005, it was estimated that there were over two billion speakers of English.[8]'],
+        results_word_tokenize = results_word_tokenize
     )
 
 if __name__ == '__main__':

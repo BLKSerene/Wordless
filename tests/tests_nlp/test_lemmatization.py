@@ -141,9 +141,9 @@ def test_lemmatize(lang, lemmatizer):
         assert lemmas == ['Forrþrihht', 'anan', 'see', 'timen', 'comm', 'þatt', 'eure', 'Drihhtin', 'wollde', 'been', 'borenn', 'in', 'þiss', 'middellærd', 'forr', 'all', 'mannkinne', 'neden', 'hem', 'chæs', 'him', 'sonne', 'kinnessmenn', 'all', 'swillke', 'summ', 'hem', 'wollde', 'and', 'whær', 'hem', 'wollde', 'borenn', 'been', 'hem', 'chæs', 'all', 'att', 'his', 'willen', '.']
     elif lang.startswith('eng_'):
         if lemmatizer == 'nltk_wordnet':
-            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', 'that', 'originate', 'in', 'early', 'medieval', 'England.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
+            assert lemmas == ['English', 'be', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', '.']
         elif lemmatizer == 'simplemma_eng':
-            assert lemmas == ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', 'that', 'originate', 'in', 'early', 'medieval', 'England.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
+            assert lemmas == ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', '.']
         else:
             tests_lang_util_skipped = True
     elif lang == 'est':
@@ -188,9 +188,9 @@ def test_lemmatize(lang, lemmatizer):
         else:
             tests_lang_util_skipped = True
     elif lang == 'ita':
-        assert lemmas == ["L'italiano", '(', '[', 'itaˈljaːno', ']', '[', 'nota', '1', ']', 'ascoltare', '[', '?', '·info', ']', ')', 'essere', 'uno', 'lingua', 'romanza', 'parlato', 'principalmente', 'in', 'Italia', '.']
+        assert lemmas == ["L'italiano", '(', '[', 'itaˈljaːno', ']', '[', 'nota', '1', ']', 'ascoltaⓘ', ')', 'essere', 'uno', 'lingua', 'romanza', 'parlato', 'principalmente', 'in', 'Italia', '.']
     elif lang == 'jpn':
-        assert lemmas == ['日本語', '(', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注釈', '2', ']', '、', '英語', ':', 'Japanese', 'language', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住者', 'を', '含む', '日本人', '同士', 'の', '間', 'で', '使用', 'する', 'れる', 'て', 'いる', '言語', '。']
+        assert lemmas == ['日本語', '(', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注釈', '2', ']', ')', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住者', 'を', '含む', '日本人', '同士', 'の', '間', 'で', '使用', 'する', 'れる', 'て', 'いる', '言語', '。']
     elif lang == 'kor':
         assert lemmas == ['한국어', '(', '韓國語', ')', '는', '대한민+국과', '조선민주주의인민공화국+의', '공용어이다', '.']
     elif lang == 'lat':
@@ -213,7 +213,7 @@ def test_lemmatize(lang, lemmatizer):
     elif lang == 'glv':
         assert lemmas == ['She', 'Gaelg', '(', 'graït', ':', '/gɪlg/', ')', 'çhengey', 'Gaelagh', 'Mannin', '.']
     elif lang == 'nob':
-        assert lemmas == ['bokmål', 'være', 'enn', 'varietet', 'av', 'norsk', 'skriftspråk', '.']
+        assert lemmas == ['bokmål', 'være', 'enn', 'av', 'to', 'offisiell', 'målform', 'av', 'norsk', 'skriftspråk', ',', 'hvorav', 'den', 'annen', 'være', 'nynorsk', '.']
     elif lang == 'nno':
         assert lemmas == ['nynorsk', ',', 'føra', '1929', 'offisiell', 'kall', 'landsmål', ',', 'vera', 'sidan', 'jamstillingsvedtaket', 'av', '12', '.', 'mai', '1885', 'ein', 'av', 'den', 'to', 'offisiell', 'målformene', 'av', 'norsk', ';', 'den', 'annan', 'forme', 'vera', 'bokmål', '.']
     elif lang == 'fas':
@@ -231,9 +231,9 @@ def test_lemmatize(lang, lemmatizer):
         assert lemmas == ['limbă', 'român', 'fi', 'el', 'limbă', 'indo-european', 'din', 'grup', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbă', 'romanice', '.']
     elif lang == 'rus':
         if lemmatizer == 'simplemma_rus':
-            assert lemmas == ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковый', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
+            assert lemmas == ['Ру́сский', 'язы́к', '(', 'МФА', ':', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'ⓘ', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковый', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
         elif lemmatizer == 'pymorphy3_morphological_analyzer':
-            assert lemmas == ['ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'информация', 'о', 'файл', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковой', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
+            assert lemmas == ['ру́сский', 'язы́к', '(', 'мфа', ':', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'ⓘ', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянский', 'группа', 'славянский', 'ветвь', 'индоевропейский', 'языковой', 'семья', ',', 'национальный', 'язык', 'русский', 'народ', '.']
         else:
             tests_lang_util_skipped = True
     elif lang == 'sme':

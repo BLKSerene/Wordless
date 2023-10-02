@@ -22,7 +22,6 @@ import pymorphy3
 import pythainlp
 import spacy_pkuseg
 import stanza
-import transformers
 import underthesea.file_utils
 
 import wl_utils
@@ -41,18 +40,17 @@ datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
 # Dostoevsky
 datas.extend(PyInstaller.utils.hooks.collect_data_files('dostoevsky'))
 # spaCy
+datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))
+# Fix spaCy lookups data
+# See: https://github.com/explosion/spaCy/discussions/9416
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_lookups_data'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_lookups_data', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy_pkuseg'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('en_core_web_trf'))
-datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_transformers'))
+datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy_curated_transformers'))
+datas.extend(PyInstaller.utils.hooks.collect_data_files('curated_transformers', include_py_files = True))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('pip', include_py_files = True))
-
-# Metadata required by Transformers
-for package in transformers.dependency_versions_check.pkgs_to_check_at_runtime + ['torch']:
-    if package != 'python':
-        datas.extend(PyInstaller.utils.hooks.copy_metadata(package))
 
 # Underthesea
 datas.extend(PyInstaller.utils.hooks.collect_data_files('underthesea'))
@@ -90,7 +88,7 @@ datas.extend([
 hiddenimports = [
     # spaCy
     'en_core_web_trf',
-    'spacy_alignments',
+    'spacy_curated_transformers',
 
     # Underthesea
     'sklearn.pipeline'

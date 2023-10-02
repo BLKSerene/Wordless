@@ -222,7 +222,7 @@ def test_match_tokens():
     assert wl_matching.match_tokens(
         main,
         search_terms = ['take'],
-        tokens = ['take', 'takes', 'taked', 'taken', 'taking', 'test'],
+        tokens = ['take', 'takes', 'took', 'taken', 'taking', 'test'],
         lang = 'eng_us',
         tagged = False,
         settings = init_search_settings(match_whole_words = True)
@@ -230,21 +230,21 @@ def test_match_tokens():
 
     assert wl_matching.match_tokens(
         main,
-        search_terms = ['taked'],
-        tokens = ['take', 'takes', 'taked', 'taken', 'taking', 'test'],
+        search_terms = ['takes'],
+        tokens = ['take', 'takes', 'took', 'taken', 'taking', 'test'],
         lang = 'eng_us',
         tagged = False,
         settings = init_search_settings(match_inflected_forms = True)
-    ) == set(['take', 'takes', 'taked', 'taken', 'taking'])
+    ) == set(['take', 'takes', 'taken'])
 
     assert wl_matching.match_tokens(
         main,
-        search_terms = ['take[dn]'],
-        tokens = ['take', 'takes', 'taked', 'taken', 'taking', 'test'],
+        search_terms = ['take[sn]'],
+        tokens = ['take', 'takes', 'took', 'taken', 'taking', 'test'],
         lang = 'eng_us',
         tagged = False,
         settings = init_search_settings(use_regex = True)
-    ) == set(['taked', 'taken'])
+    ) == set(['takes', 'taken'])
 
     assert wl_matching.match_tokens(
         main,
