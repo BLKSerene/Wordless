@@ -139,16 +139,10 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'nld':
         assert tokens == ['Het', 'Nederlands', 'is', 'een', 'West-Germaanse', 'taal', ',', 'de', 'meest', 'gebruikte', 'taal', 'in', 'Nederland', 'en', 'België', ',', 'de', 'officiële', 'taal', 'van', 'Suriname', 'en', 'een', 'van', 'de', 'drie', 'officiële', 'talen', 'van', 'België', '.']
     elif lang.startswith('eng_') or lang == 'other':
-        if word_tokenizer == 'nltk_nist':
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England', '.', '[3]', '[', '4]', '[', '5]']
-        elif word_tokenizer in ['nltk_nltk', 'nltk_penn_treebank']:
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
-        elif word_tokenizer == 'nltk_regex':
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England', '.[', '3', '][', '4', '][', '5', ']']
-        elif word_tokenizer == 'nltk_tok_tok':
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England.[', '3', ']', '[', '4', ']', '[', '5', ']']
-        elif word_tokenizer in ['nltk_twitter', 'sacremoses_moses']:
-            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', 'that', 'originated', 'in', 'early', 'medieval', 'England', '.', '[', '3', ']', '[', '4', ']', '[', '5', ']']
+        if word_tokenizer in ['nltk_nist', 'nltk_regex']:
+            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo', '-', 'European', 'language', 'family', '.']
+        elif word_tokenizer in ['nltk_nltk', 'nltk_penn_treebank', 'nltk_tok_tok', 'nltk_twitter', 'sacremoses_moses']:
+            assert tokens == ['English', 'is', 'a', 'West', 'Germanic', 'language', 'in', 'the', 'Indo-European', 'language', 'family', '.']
         else:
             tests_lang_util_skipped = True
     elif lang == 'est':
@@ -190,17 +184,17 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'gle':
         assert tokens == ['Is', 'ceann', 'de', 'na', 'teangacha', 'Ceilteacha', 'í', 'an', 'Ghaeilge', '(', 'nó', 'Gaeilge', 'na', 'hÉireann', 'mar', 'a', 'thugtar', 'uirthi', 'corruair', ')', ',', 'agus', 'ceann', 'de', 'na', 'trí', 'cinn', 'de', 'theangacha', 'Ceilteacha', 'ar', 'a', 'dtugtar', 'na', 'teangacha', 'Gaelacha', '(', 'Gaeilge', ',', 'Gaeilge', 'Mhanann', 'agus', 'Gaeilge', 'na', 'hAlban', ')', 'go', 'háirithe', '.']
     elif lang == 'ita':
-        assert tokens == ["L'", 'italiano', '(', '[', 'itaˈljaːno', ']', '[', 'Nota', '1', ']', 'ascolta', '[', '?', '·', 'info', ']', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
+        assert tokens == ["L'", 'italiano', '(', '[', 'itaˈljaːno', ']', '[', 'Nota', '1', ']', 'ascoltaⓘ', ')', 'è', 'una', 'lingua', 'romanza', 'parlata', 'principalmente', 'in', 'Italia', '.']
     elif lang == 'jpn':
         if word_tokenizer == 'sudachipy_jpn_split_mode_a':
-            assert tokens == ['日本', '語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注釈', '2', ']', '、', '英語', ':', 'Japanese', 'language', '）', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だっ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住', '者', 'を', '含む', '日本', '人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
+            assert tokens == ['日本', '語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注釈', '2', ']', '）', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だっ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住', '者', 'を', '含む', '日本', '人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
         elif word_tokenizer in [
             'sudachipy_jpn_split_mode_b',
             'sudachipy_jpn_split_mode_c'
         ]:
-            assert tokens == ['日本語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注釈', '2', ']', '、', '英語', ':', 'Japanese', 'language', '）', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だっ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住者', 'を', '含む', '日本人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
+            assert tokens == ['日本語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注釈', '2', ']', '）', 'は', '、', '日本', '国', '内', 'や', '、', 'かつて', 'の', '日本', '領', 'だっ', 'た', '国', '、', 'そして', '国外', '移民', 'や', '移住者', 'を', '含む', '日本人', '同士', 'の', '間', 'で', '使用', 'さ', 'れ', 'て', 'いる', '言語', '。']
         elif word_tokenizer == 'wordless_jpn_kanji':
-            assert tokens == ['日', '本', '語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注', '釈', '2', ']', '、', '英', '語', ':', 'Japanese', 'language', '）', 'は', '、', '日', '本', '国', '内', 'や', '、', 'かつて', 'の', '日', '本', '領', 'だっ', 'た', '国', '、', 'そして', '国', '外', '移', '民', 'や', '移', '住', '者', 'を', '含', 'む', '日', '本', '人', '同', '士', 'の', '間', 'で', '使', '用', 'さ', 'れ', 'て', 'いる', '言', '語', '。']
+            assert tokens == ['日', '本', '語', '（', 'にほん', 'ご', '、', 'にっぽん', 'ご', '[', '注', '釈', '2', ']', '）', 'は', '、', '日', '本', '国', '内', 'や', '、', 'かつて', 'の', '日', '本', '領', 'だっ', 'た', '国', '、', 'そして', '国', '外', '移', '民', 'や', '移', '住', '者', 'を', '含', 'む', '日', '本', '人', '同', '士', 'の', '間', 'で', '使', '用', 'さ', 'れ', 'て', 'いる', '言', '語', '。']
         else:
             tests_lang_util_skipped = True
     elif lang == 'kan':
@@ -267,9 +261,9 @@ def test_word_tokenize(lang, word_tokenizer):
         assert tokens == ['Limba', 'română', 'este', 'o', 'limbă', 'indo-europeană', 'din', 'grupul', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbilor', 'romanice', '.']
     elif lang == 'rus':
         if word_tokenizer == 'nltk_tok_tok':
-            assert tokens == ['Ру́сский', 'язы́к', '(', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'Информация', 'о', 'файле', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянской', 'группы', 'славянской', 'ветви', 'индоевропейской', 'языковой', 'семьи', ',', 'национальный', 'язык', 'русского', 'народа', '.']
+            assert tokens == ['Ру́сский', 'язы́к', '(', 'МФА', ':', '[', 'ˈruskʲɪi̯', 'jɪˈzɨk', ']', 'ⓘ', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянской', 'группы', 'славянской', 'ветви', 'индоевропейской', 'языковой', 'семьи', ',', 'национальный', 'язык', 'русского', 'народа', '.']
         elif word_tokenizer == 'sacremoses_moses':
-            assert tokens == ['Ру', '́', 'сский', 'язы', '́', 'к', '(', '[', 'ˈruskʲɪi', '̯', 'jɪˈzɨk', ']', 'Информация', 'о', 'файле', 'слушать', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянской', 'группы', 'славянской', 'ветви', 'индоевропейской', 'языковой', 'семьи', ',', 'национальный', 'язык', 'русского', 'народа', '.']
+            assert tokens == ['Ру', '́', 'сский', 'язы', '́', 'к', '(', 'МФА', ':', '[', 'ˈruskʲɪi', '̯', 'jɪˈzɨk', ']', 'ⓘ', ')', '[', '~', '3', ']', '[', '⇨', ']', '—', 'язык', 'восточнославянской', 'группы', 'славянской', 'ветви', 'индоевропейской', 'языковой', 'семьи', ',', 'национальный', 'язык', 'русского', 'народа', '.']
         else:
             tests_lang_util_skipped = True
     elif lang == 'san':

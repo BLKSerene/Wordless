@@ -66,7 +66,7 @@ def test_word_detokenize(lang):
     if lang.startswith('zho_'):
         assert text == '英国全称是United Kingdom of Great Britain，由四个部分组成：England、Scotland、Wales和Northern Ireland'
     elif lang in ['eng_us', 'other']:
-        assert text == 'English is a West Germanic language in the Indo-European language family that originated in early medieval England. [3] [4] [5]'
+        assert text == 'English is a West Germanic language in the Indo-European language family.'
     elif lang == 'jpn':
         assert text == '''The meaning of "天気がいいから、散歩しましょう。"is: The weather is good so let 's take a walk.'''
     elif lang == 'tha':

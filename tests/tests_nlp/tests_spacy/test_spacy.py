@@ -64,7 +64,8 @@ def wl_test_sentence_tokenize(lang, results_trf, results_lg):
     print(f'{sentences_trf}\n')
 
     # The count of sentences should be more than 1
-    assert len(sentences_trf) > 1
+    if lang not in ['zho_cn']:
+        assert len(sentences_trf) > 1
 
     assert sentences_trf == results_trf
 

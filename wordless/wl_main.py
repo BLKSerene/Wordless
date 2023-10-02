@@ -89,8 +89,22 @@ if getattr(sys, '_MEIPASS', False):
     underthesea.file_utils.UNDERTHESEA_FOLDER = wl_paths.get_path_file('.underthesea')
 
 _tr = QCoreApplication.translate
-
 is_windows, is_macos, is_linux = wl_misc.check_os()
+
+file_settings = wl_paths.get_path_file('wl_settings.pickle', internal = False)
+file_settings_display_lang = wl_paths.get_path_file('wl_settings_display_lang.pickle', internal = False)
+
+if os.path.exists(file_settings):
+    with open(file_settings, 'rb') as f:
+        settings_custom = pickle.load(f)
+
+    ui_scaling = settings_custom['general']['ui_settings']['interface_scaling']
+    global_font_family = settings_custom['general']['ui_settings']['font_family']
+    global_font_size = settings_custom['general']['ui_settings']['font_size']
+else:
+    ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
+    global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
+    global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
 
 class Wl_Loading(QSplashScreen):
     def __init__(self):
@@ -1220,22 +1234,6 @@ class Wl_Dialog_About(wl_dialogs.Wl_Dialog_Info):
         self.wrapper_info.layout().setColumnStretch(1, 5)
 
 if __name__ == '__main__':
-    file_settings = wl_paths.get_path_file('wl_settings.pickle', internal = False)
-    file_settings_display_lang = wl_paths.get_path_file('wl_settings_display_lang.pickle', internal = False)
-
-    # UI scaling
-    if os.path.exists(file_settings):
-        with open(file_settings, 'rb') as f:
-            settings_custom = pickle.load(f)
-
-        ui_scaling = settings_custom['general']['ui_settings']['interface_scaling']
-        global_font_family = settings_custom['general']['ui_settings']['font_family']
-        global_font_size = settings_custom['general']['ui_settings']['font_size']
-    else:
-        ui_scaling = wl_settings_default.DEFAULT_INTERFACE_SCALING
-        global_font_family = wl_settings_default.DEFAULT_FONT_FAMILY
-        global_font_size = wl_settings_default.DEFAULT_FONT_SIZE
-
     # Environment variables for QT should be set before QApplication is created
     os.environ['QT_SCALE_FACTOR'] = re.sub(r'([0-9]{2})%$', r'.\1', ui_scaling)
 

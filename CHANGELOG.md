@@ -18,6 +18,13 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
+## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - ??/??/2023
+### 📌 Bugfixes
+- Utils: Fix downloading of Stanza models
+
+### ⏫ Dependency Changes
+- Dependencies: Upgrade spaCy to 3.7.2
+
 ## [3.4.0](https://github.com/BLKSerene/Wordless/releases/tag/3.4.0) - 09/30/2023
 ### 🎉 New Features
 - Settings: Add Settings - Measures - Lexical Diversity
