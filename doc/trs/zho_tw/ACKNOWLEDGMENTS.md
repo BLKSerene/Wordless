@@ -1,5 +1,5 @@
 <!--
-# Wordless: Acknowledgments - Chinese (Traditional)
+# Wordless: README - Acknowledgments - Chinese (Traditional)
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify

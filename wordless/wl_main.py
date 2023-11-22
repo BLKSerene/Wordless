@@ -378,7 +378,7 @@ class Wl_Main(QMainWindow):
         self.action_help_donating.setStatusTip(self.tr('Show information about donating'))
         self.action_help_donating.triggered.connect(self.help_donating)
         self.action_help_acks = self.menu_help.addAction(self.tr('&Acknowledgments'))
-        self.action_help_acks.setStatusTip(self.tr('Show acknowldgments'))
+        self.action_help_acks.setStatusTip(self.tr('Show acknowledgments'))
         self.action_help_acks.triggered.connect(self.help_acks)
 
         self.menu_help.addSeparator()

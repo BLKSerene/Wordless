@@ -28,7 +28,7 @@ def test_spacy_eng():
         results_pos_tag = [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'JJ'), ('Germanic', 'JJ'), ('language', 'NN'), ('in', 'IN'), ('the', 'DT'), ('Indo', 'JJ'), ('-', 'JJ'), ('European', 'JJ'), ('language', 'NN'), ('family', 'NN'), ('.', '.')],
         results_pos_tag_universal = [('English', 'PROPN'), ('is', 'AUX'), ('a', 'DET'), ('West', 'ADJ'), ('Germanic', 'ADJ'), ('language', 'NOUN'), ('in', 'ADP'), ('the', 'DET'), ('Indo', 'ADJ'), ('-', 'ADJ'), ('European', 'ADJ'), ('language', 'NOUN'), ('family', 'NOUN'), ('.', 'PUNCT')],
         results_lemmatize = ['English', 'be', 'a', 'west', 'germanic', 'language', 'in', 'the', 'indo', '-', 'european', 'language', 'family', '.'],
-        results_dependency_parse = [('English', 'is', 'nsubj', 1), ('is', 'is', 'ROOT', 0), ('a', 'language', 'det', 3), ('West', 'Germanic', 'amod', 1), ('Germanic', 'language', 'amod', 1), ('language', 'is', 'attr', -4), ('in', 'is', 'prep', -5), ('the', 'family', 'det', 5), ('Indo', 'language', 'amod', 3), ('-', 'language', 'amod', 2), ('European', 'language', 'amod', 1), ('language', 'family', 'compound', 1), ('family', 'in', 'pobj', -6), ('.', 'is', 'punct', -12)]
+        results_dependency_parse = [('English', 'is', 'nsubj', 1), ('is', 'is', 'ROOT', 0), ('a', 'language', 'det', 3), ('West', 'Germanic', 'amod', 1), ('Germanic', 'language', 'amod', 1), ('language', 'is', 'attr', -4), ('in', 'language', 'prep', -1), ('the', 'family', 'det', 5), ('Indo', 'language', 'amod', 3), ('-', 'language', 'amod', 2), ('European', 'language', 'amod', 1), ('language', 'family', 'compound', 1), ('family', 'in', 'pobj', -6), ('.', 'is', 'punct', -12)]
     )
 
 def test_spacy_other():
