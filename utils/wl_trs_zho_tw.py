@@ -35,8 +35,8 @@ for element_context in soup.select('context'):
         element_trans = element_message.select_one('translation')
 
         # Language-specific files
-        if element_src.text == 'ACKNOWLEDGMENTS.md':
-            element_trans.string = 'ACKNOWLEDGMENTS_zho_tw.md'
+        if element_src.text == 'doc/trs/zho_cn/ACKNOWLEDGMENTS.md':
+            element_trans.string = 'doc/trs/zho_tw/ACKNOWLEDGMENTS.md'
         else:
             element_trans.string = cc.convert(element_trans.text)
 

@@ -60,7 +60,7 @@
 <br>
 
 <div align="center">
-    <a href="/README_zho_cn.md">中文（简体）</a> | <b>中文（繁體）</b> | <a href="https://github.com/BLKSerene/Wordless#readme">English</a>
+    <a href="/doc/trs/zho_cn/README.md">中文（简体）</a> | <b>中文（繁體）</b> | <a href="https://github.com/BLKSerene/Wordless#readme">English</a>
 </div>
 
 <br>
@@ -107,7 +107,7 @@ Wordless 最新版（**3.4.0**）支援 **Windows 7/8/8.1/10/11**、**macOS 10.1
 
 支援渠道|資訊
 -------|----
-官方文檔|[文檔](/doc/doc_eng.md)（待翻譯）
+官方文檔|[文檔](/doc/doc.md)（待翻譯）
 影片教程|[YouTube](https://www.youtube.com/@BLKSerene) \| [B站](https://space.bilibili.com/34963752/video)
 Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 使用疑問|[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
@@ -125,6 +125,10 @@ APA（第7版）：
 MLA（第8版）：
 
 <pre><code>Ye Lei. <i>Wordless</i>, version 3.4.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+
+## 使用 *Wordless* 的成果
+
+如需詳情，請點擊[此處](/doc/trs/zho_tw/WORKS_USING_WORDLESS.md).
 
 ## 許可
 
@@ -147,7 +151,7 @@ MLA（第8版）：
 
 ## 貢獻
 
-詳情請參閱 [CONTRIBUTING_zho_tw.md](/CONTRIBUTING_zho_tw.md)。
+如需詳情，請點擊[此處](/doc/trs/zho_tw/CONTRIBUTING.md)。
 
 ## 贊助
 
@@ -159,4 +163,4 @@ PayPal|支付寶|微信支付
 
 ## 致謝
 
-詳情請參閱 [ACKNOWLEDGMENTS_zho_tw.md](/ACKNOWLEDGMENTS_zho_tw.md)。
+如需詳情，請點擊[此處](/doc/trs/zho_tw/ACKNOWLEDGMENTS.md)。

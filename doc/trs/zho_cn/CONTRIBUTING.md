@@ -1,5 +1,5 @@
 <!--
-# Wordless: Contributing - Chinese (Traditional)
+# Wordless: README - Contributing - Chinese (Simplified)
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,6 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-如果你有意助力 Wordless 的開發工作，你可以在 Github 上提交 [pull requests](https://github.com/BLKSerene/Wordless/pulls) 來幫助修復程式錯誤、改善效能或實現新功能。
+如果你有意助力 Wordless 的开发工作，你可以在 Github 上提交 [pull requests](https://github.com/BLKSerene/Wordless/pulls) 来帮助修复程序错误、改善性能或实现新功能。
 
-此外，你還可以在 Github 上撰寫[百科](https://github.com/BLKSerene/Wordless/wiki)、製作影片教程、或幫助將使用者介面及[文檔](/doc/doc_eng.md)翻譯為其他語言。
+此外，你还可以在 Github 上撰写[百科](https://github.com/BLKSerene/Wordless/wiki)、制作视频教程、或帮助将用户界面及[文档](/doc/doc_eng.md)翻译为其他语言。
