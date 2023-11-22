@@ -70,4 +70,4 @@ wordcloud
 torch
 
 # spaCy models
-en_core_web_trf-3.7.2-py3-none-any.whl
+en_core_web_trf-3.7.3-py3-none-any.whl

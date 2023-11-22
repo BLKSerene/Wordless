@@ -235,7 +235,7 @@ def test_match_tokens():
         lang = 'eng_us',
         tagged = False,
         settings = init_search_settings(match_inflected_forms = True)
-    ) == set(['take', 'takes', 'taken'])
+    ) == set(['take', 'takes', 'taken', 'taking'])
 
     assert wl_matching.match_tokens(
         main,

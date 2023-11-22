@@ -60,7 +60,7 @@
 <br>
 
 <div align="center">
-    <a href="/README_zho_cn.md">中文 (简体)</a> | <a href="/README_zho_tw.md">中文 (繁體)</a> | <b>English</b>
+    <a href="/doc/trs/zho_cn/README.md">中文 (简体)</a> | <a href="/doc/trs/zho_tw/README.md">中文 (繁體)</a> | <b>English</b>
 </div>
 
 <br>
@@ -108,7 +108,7 @@ If you have any questions, find software bugs, need to provide feedback, or want
 
 Support Channel       |Information
 ----------------------|-----------
-Official documentation|[Documentation](/doc/doc_eng.md)
+Official documentation|[Documentation](/doc/doc.md)
 Tutorial videos       |[YouTube](https://www.youtube.com/@BLKSerene) \| [bilibili](https://space.bilibili.com/34963752/video)
 Bug reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 Usage questions       |[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
@@ -126,6 +126,9 @@ APA (7th edition):
 MLA (8th edition):
 
 <pre><code>Ye Lei. <i>Wordless</i>, version 3.4.0, 2023. <i>Github</i>, https://github.com/BLKSerene/Wordless.</code></pre>
+
+## Works Using *Wordless*
+For details, please click [HERE](/WORKS_USING_WORDLESS.md).
 
 ## License
 
@@ -148,7 +151,7 @@ MLA (8th edition):
 
 ## Contributing
 
-For more details, please refer to [CONTRIBUTING.md](/CONTRIBUTING.md).
+For details, please click [HERE](/CONTRIBUTING.md).
 
 ## Donating
 
@@ -160,4 +163,4 @@ PayPal|Alipay|WeChat Pay
 
 ## Acknowledgments
 
-For more details, please refer to [ACKNOWLEDGMENTS.md](/ACKNOWLEDGMENTS.md).
+For details, please click [HERE](/ACKNOWLEDGMENTS.md).
