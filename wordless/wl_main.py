@@ -25,7 +25,6 @@ import re
 import subprocess
 import sys
 import time
-import traceback
 
 # Fix working directory on macOS
 if getattr(sys, '_MEIPASS', False) and platform.system() == 'Darwin':
@@ -1085,110 +1084,107 @@ class Wl_Dialog_Changelog(wl_dialogs.Wl_Dialog_Info):
 
         changelog = []
 
-        try:
-            with open(wl_paths.get_path_file('CHANGELOG.md'), 'r', encoding = 'utf_8') as f:
-                for line in f:
-                    # Changelog headers
-                    if line.startswith('## '):
-                        release_ver = re.search(r'(?<=\[)[^\]]+?(?=\])', line).group()
-                        release_link = re.search(r'(?<=\()[^\)]+?(?=\))', line).group()
-                        release_date = re.search(r'(?<=\- )[0-9?]{2}/[0-9?]{2}/[0-9?]{4}', line).group()
+        with open(wl_paths.get_path_file('CHANGELOG.md'), 'r', encoding = 'utf_8') as f:
+            for line in f:
+                # Changelog headers
+                if line.startswith('## '):
+                    release_ver = re.search(r'(?<=\[)[^\]]+?(?=\])', line).group()
+                    release_link = re.search(r'(?<=\()[^\)]+?(?=\))', line).group()
+                    release_date = re.search(r'(?<=\- )[0-9?]{2}/[0-9?]{2}/[0-9?]{4}', line).group()
 
-                        changelog.append({
-                            'release_ver': release_ver,
-                            'release_link': release_link,
-                            'release_date': release_date,
-                            'changelog_sections': []
-                        })
+                    changelog.append({
+                        'release_ver': release_ver,
+                        'release_link': release_link,
+                        'release_date': release_date,
+                        'changelog_sections': []
+                    })
 
-                    # Changelog section headers
-                    elif line.startswith('### '):
-                        changelog[-1]['changelog_sections'].append({
-                            'section_header': line.replace('###', '').strip(),
-                            'section_list': []
-                        })
-                    # Changelog section lists
-                    elif line.startswith('- '):
-                        line = re.sub(r'^- ', r'', line).strip()
+                # Changelog section headers
+                elif line.startswith('### '):
+                    changelog[-1]['changelog_sections'].append({
+                        'section_header': line.replace('###', '').strip(),
+                        'section_list': []
+                    })
+                # Changelog section lists
+                elif line.startswith('- '):
+                    line = re.sub(r'^- ', r'', line).strip()
 
-                        changelog[-1]['changelog_sections'][-1]['section_list'].append(line)
+                    changelog[-1]['changelog_sections'][-1]['section_list'].append(line)
 
-            font_size_custom = main.settings_custom['general']['ui_settings']['font_size']
+        font_size_custom = main.settings_custom['general']['ui_settings']['font_size']
 
-            changelog_text = f'''
-                <head>
-                    <style>
-                        * {{
-                            outline: none;
-                            margin: 0;
-                            border: 0;
-                            padding: 0;
+        changelog_text = f'''
+            <head>
+                <style>
+                    * {{
+                        outline: none;
+                        margin: 0;
+                        border: 0;
+                        padding: 0;
 
-                            text-align: justify;
-                        }}
+                        text-align: justify;
+                    }}
 
-                        ul {{
-                            line-height: 120%;
-                            margin-bottom: 10px;
-                        }}
+                    ul {{
+                        line-height: 120%;
+                        margin-bottom: 10px;
+                    }}
 
-                        li {{
-                            margin-left: -30px;
-                        }}
+                    li {{
+                        margin-left: -30px;
+                    }}
 
-                        .changelog {{
-                            margin-bottom: 5px;
-                        }}
+                    .changelog {{
+                        margin-bottom: 5px;
+                    }}
 
-                        .changelog-header {{
-                            margin-bottom: 3px;
-                            font-size: {font_size_custom}pt;
-                            font-weight: bold;
-                        }}
+                    .changelog-header {{
+                        margin-bottom: 3px;
+                        font-size: {font_size_custom}pt;
+                        font-weight: bold;
+                    }}
 
-                        .changelog-section-header {{
-                            margin-bottom: 5px;
-                            font-size: {font_size_custom}pt;
-                            font-weight: bold;
-                        }}
-                    </style>
-                </head>
-                <body>
+                    .changelog-section-header {{
+                        margin-bottom: 5px;
+                        font-size: {font_size_custom}pt;
+                        font-weight: bold;
+                    }}
+                </style>
+            </head>
+            <body>
+        '''
+
+        for release in changelog:
+            changelog_text += f'''
+                <div class="changelog">
+                    <div class="changelog-header"><a href="{release['release_link']}">{release['release_ver']}</a> - {release['release_date']}</div>
+                    <hr>
             '''
 
-            for release in changelog:
+            for changelog_section in release['changelog_sections']:
                 changelog_text += f'''
-                    <div class="changelog">
-                        <div class="changelog-header"><a href="{release['release_link']}">{release['release_ver']}</a> - {release['release_date']}</div>
-                        <hr>
+                    <div class="changelog-section">
+                        <div class="changelog-section-header">{changelog_section['section_header']}</div>
+                        <ul>
                 '''
 
-                for changelog_section in release['changelog_sections']:
+                for item in changelog_section['section_list']:
                     changelog_text += f'''
-                        <div class="changelog-section">
-                            <div class="changelog-section-header">{changelog_section['section_header']}</div>
-                            <ul>
-                    '''
-
-                    for item in changelog_section['section_list']:
-                        changelog_text += f'''
-                            <li>{item}</li>
-                        '''
-
-                    changelog_text += '''
-                            </ul>
-                        </div>
+                        <li>{item}</li>
                     '''
 
                 changelog_text += '''
+                        </ul>
                     </div>
                 '''
 
             changelog_text += '''
-                </body>
+                </div>
             '''
-        except (FileNotFoundError, PermissionError):
-            changelog_text = traceback.format_exc()
+
+        changelog_text += '''
+            </body>
+        '''
 
         text_edit_changelog = wl_editors.Wl_Text_Browser(self)
         text_edit_changelog.setHtml(changelog_text)

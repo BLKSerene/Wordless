@@ -33,17 +33,11 @@ def check_os():
     return is_windows, is_macos, is_linux
 
 def get_wl_ver():
-    wl_ver = '1.0.0'
+    with open('../VERSION', 'r', encoding = 'utf_8') as f:
+        for line in f:
+            if line.strip() and not line.startswith('#'):
+                wl_ver = line.strip()
 
-    try:
-        # Version file is generated on Windows
-        with open('../VERSION', 'r', encoding = 'utf_8', newline = '\r\n') as f:
-            for line in f:
-                if line.strip() and not line.startswith('#'):
-                    wl_ver = line.strip()
-
-                    break
-    except (FileNotFoundError, PermissionError):
-        pass
+                break
 
     return wl_ver

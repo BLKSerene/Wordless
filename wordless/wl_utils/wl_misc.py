@@ -88,18 +88,12 @@ def get_linux_distro():
 
 
 def get_wl_ver():
-    wl_ver = '1.0.0'
+    with open(wl_paths.get_path_file('VERSION'), 'r', encoding = 'utf_8') as f:
+        for line in f:
+            if line.strip() and not line.startswith('#'):
+                wl_ver = line.strip()
 
-    try:
-        # Version file is generated on Windows
-        with open(wl_paths.get_path_file('VERSION'), 'r', encoding = 'utf_8', newline = '\r\n') as f:
-            for line in f:
-                if line.strip() and not line.startswith('#'):
-                    wl_ver = line.strip()
-
-                    break
-    except (FileNotFoundError, PermissionError):
-        pass
+                break
 
     return packaging.version.Version(wl_ver)
 
