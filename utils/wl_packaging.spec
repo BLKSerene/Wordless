@@ -76,9 +76,9 @@ datas.extend([
     # Translation
     ('../trs', 'trs'),
     # Misc
-    ('../ACKNOWLEDGMENTS.md', '.'),
-    ('../doc/trs/zho_cn/ACKNOWLEDGMENTS.md', 'doc/trs/zho_cn'),
-    ('../doc/trs/zho_tw/ACKNOWLEDGMENTS.md', 'doc/trs/zho_tw'),
+    ('../ACKS.md', '.'),
+    ('../doc/trs/zho_cn/ACKS.md', 'doc/trs/zho_cn'),
+    ('../doc/trs/zho_tw/ACKS.md', 'doc/trs/zho_tw'),
     ('../CHANGELOG.md', '.'),
     ('../LICENSE.txt', '.'),
     ('../VERSION', '.')

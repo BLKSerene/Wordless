@@ -309,7 +309,7 @@ TRS_MISC = {
     'Figure Settings': ['图表设置'],
 
     # Language-specific files
-    'ACKNOWLEDGMENTS.md': ['doc/trs/zho_cn/ACKNOWLEDGMENTS.md']
+    'ACKS.md': ['doc/trs/zho_cn/ACKS.md']
 }
 
 with open('../trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:

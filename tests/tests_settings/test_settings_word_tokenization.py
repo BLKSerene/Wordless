@@ -20,6 +20,7 @@ from tests import wl_test_init
 from wordless.wl_settings import wl_settings_word_tokenization
 
 main = wl_test_init.Wl_Test_Main()
+wl_test_init.change_default_tokenizers(main)
 
 def test_wl_settings_word_tokenization():
     settings_word_tokenization = wl_settings_word_tokenization.Wl_Settings_Word_Tokenization(main)
