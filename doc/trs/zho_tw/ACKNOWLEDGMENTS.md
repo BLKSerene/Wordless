@@ -50,7 +50,7 @@
 25|[SciPy](https://scipy.org/scipylib/)|1.11.3|SciPy 開發人員|[BSD-3-Clause](https://github.com/scipy/scipy/blob/main/LICENSE.txt)
 26|[simplemma](https://github.com/adbar/simplemma)|0.9.1|Adrien Barbaresi|[MIT](https://github.com/adbar/simplemma/blob/main/LICENSE)
 27|[spaCy](https://spacy.io/)|3.7.2|Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann|[MIT](https://github.com/explosion/spaCy/blob/master/LICENSE)
-28|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|0.0.32|羅睿軒, 許晶晶, 任宣丞, 張藝, 張之遠, 位冰鎮, 孫栩<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
+28|[spacy-pkuseg](https://github.com/explosion/spacy-pkuseg)|0.0.33|羅睿軒, 許晶晶, 任宣丞, 張藝, 張之遠, 位冰鎮, 孫栩<br>Adriane Boyd, Ines Montani|[MIT](https://github.com/explosion/spacy-pkuseg/blob/master/LICENSE)
 29|[Stanza](https://github.com/stanfordnlp/stanza)|1.5.1|齊鵬, 張宇浩, 張鈺暉,<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
 30|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)|0.6.7|Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 31|[Underthesea](https://undertheseanlp.com/)|6.8.0|Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
