@@ -535,7 +535,6 @@ def init_settings_global():
 
             'word_tokenizers': {
                 _tr('init_settings_global', 'botok - Tibetan word tokenizer'): 'botok_bod',
-                _tr('init_settings_global', 'jieba - Chinese word tokenizer'): 'jieba_zho',
                 _tr('init_settings_global', 'khmer-nltk - Khmer word tokenizer'): 'khmer_nltk_khm',
                 _tr('init_settings_global', 'LaoNLP - Lao word tokenizer'): 'laonlp_lao',
 
@@ -772,7 +771,6 @@ def init_settings_global():
 
             'pos_taggers': {
                 _tr('init_settings_global', 'botok - Tibetan part-of-speech tagger'): 'botok_bod',
-                _tr('init_settings_global', 'jieba - Chinese part-of-speech tagger'): 'jieba_zho',
                 _tr('init_settings_global', 'khmer-nltk - Khmer part-of-speech tagger'): 'khmer_nltk_khm',
 
                 _tr('init_settings_global', 'LaoNLP - SeqLabeling'): 'laonlp_seqlabeling',
@@ -1809,14 +1807,12 @@ def init_settings_global():
 
             'lzh': ['stanza_lzh'],
             'zho_cn': [
-                'jieba_zho',
                 'pkuseg_zho',
                 'spacy_zho',
                 'stanza_zho_cn',
                 'wordless_zho_char'
             ],
             'zho_tw': [
-                'jieba_zho',
                 'pkuseg_zho',
                 'spacy_zho',
                 'stanza_zho_tw',
@@ -2456,12 +2452,10 @@ def init_settings_global():
 
             'lzh': ['stanza_lzh'],
             'zho_cn': [
-                'jieba_zho',
                 'spacy_zho',
                 'stanza_zho_cn'
             ],
             'zho_tw': [
-                'jieba_zho',
                 'spacy_zho',
                 'stanza_zho_tw'
             ],

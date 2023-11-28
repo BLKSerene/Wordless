@@ -19,7 +19,6 @@
 # NLP
 botok
 charset-normalizer
-jieba
 khmer-nltk
 laonlp
 lingua-language-detector

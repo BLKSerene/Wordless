@@ -56,8 +56,6 @@ for lang, word_tokenizers in main.settings_global['word_tokenizers'].items():
                     and word_tokenizer not in ['nltk_nist', 'nltk_nltk', 'nltk_regex', 'nltk_twitter']
                 )
             )
-            # The Korean blank model for sentencizer requires mecab-ko which would be replaced by python-mecab-ko in the upcoming spaCy 4.0
-            and lang != 'kor'
         ):
             test_word_tokenizers.append((lang, word_tokenizer))
             test_word_tokenizers_local.append((lang, word_tokenizer))
@@ -113,18 +111,14 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang == 'cat':
         assert tokens == ['El', 'català', '(', 'denominació', 'oficial', 'a', 'Catalunya', ',', 'a', 'les', 'Illes', 'Balears', ',', 'a', 'Andorra', ',', 'a', 'la', 'ciutat', 'de', 'l', "'", 'Alguer', 'i', 'tradicional', 'a', 'Catalunya', 'del', 'Nord', ')', 'o', 'valencià', '(', 'denominació', 'oficial', 'al', 'País', 'Valencià', 'i', 'tradicional', 'al', 'Carxe', ')', 'és', 'una', 'llengua', 'romànica', 'parlada', 'a', 'Catalunya', ',', 'el', 'País', 'Valencià', '(', 'tret', 'd', "'", 'algunes', 'comarques', 'i', 'localitats', 'de', 'l', "'", 'interior', ')', ',', 'les', 'Illes', 'Balears', '(', 'on', 'també', 'rep', 'el', 'nom', 'de', 'mallorquí', ',', 'menorquí', ',', 'eivissenc', 'o', 'formenterer', 'segons', 'l', "'", 'illa', ')', ',', 'Andorra', ',', 'la', 'Franja', 'de', 'Ponent', '(', 'a', 'l', "'", 'Aragó', ')', ',', 'la', 'ciutat', 'de', 'l', "'", 'Alguer', '(', 'a', 'l', "'", 'illa', 'de', 'Sardenya', ')', ',', 'la', 'Catalunya', 'del', 'Nord', ',', '[', '8', ']', 'el', 'Carxe', '(', 'un', 'petit', 'territori', 'de', 'Múrcia', 'habitat', 'per', 'pobladors', 'valencians', ')', ',', '[', '9', ']', '[', '10', ']', 'i', 'en', 'comunitats', 'arreu', 'del', 'món', '(', 'entre', 'les', 'quals', 'destaca', 'la', 'de', 'l', "'", 'Argentina', ',', 'amb', '200.000', 'parlants', ')', '.', '[', '11', ']']
     elif lang == 'zho_cn':
-        if word_tokenizer == 'jieba_zho':
-            assert tokens == ['汉语', '又称', '中文', '、', '华语', '[', '6', ']', '、', '唐话', '[', '7', ']', '，', '概指', '由', '上', '古汉语', '（', '先秦', '雅言', '）', '发展', '而', '来', '、', '书面', '使用', '汉字', '的', '分析语', '，', '为', '汉藏语系', '最大', '的', '一支', '语族', '。']
-        elif word_tokenizer == 'pkuseg_zho':
+        if word_tokenizer == 'pkuseg_zho':
             assert tokens == ['汉语', '又', '称', '中文', '、', '华语', '[', '6', ']', '、', '唐', '话[', '7]', '，', '概指', '由', '上古', '汉语', '（', '先秦', '雅言', '）', '发展', '而', '来', '、', '书面', '使用', '汉字', '的', '分析语', '，', '为', '汉藏', '语系', '最', '大', '的', '一', '支', '语族', '。']
         elif word_tokenizer == 'wordless_zho_char':
             assert tokens == ['汉', '语', '又', '称', '中', '文', '、', '华', '语', '[', '6', ']', '、', '唐', '话', '[', '7', ']', '，', '概', '指', '由', '上', '古', '汉', '语', '（', '先', '秦', '雅', '言', '）', '发', '展', '而', '来', '、', '书', '面', '使', '用', '汉', '字', '的', '分', '析', '语', '，', '为', '汉', '藏', '语', '系', '最', '大', '的', '一', '支', '语', '族', '。']
         else:
             tests_lang_util_skipped = True
     elif lang == 'zho_tw':
-        if word_tokenizer == 'jieba_zho':
-            assert tokens == ['漢語', '又', '稱', '中文', '、', '華語', '[', '6', ']', '、', '唐話', '[', '7', ']', '，', '概指', '由', '上古', '漢語', '（', '先秦', '雅言', '）', '發展', '而', '來', '、', '書面', '使用', '漢字', '的', '分析', '語', '，', '為漢藏', '語系', '最大', '的', '一支', '語族', '。']
-        elif word_tokenizer == 'pkuseg_zho':
+        if word_tokenizer == 'pkuseg_zho':
             assert tokens == ['漢語', '又', '稱', '中文', '、', '華', '語[', '6', ']', '、', '唐', '話[', '7]', '，', '概指', '由', '上古', '漢語', '（', '先秦', '雅言', '）', '發展', '而', '來', '、', '書面', '使用', '漢字', '的', '分析', '語', '，', '為漢', '藏語系', '最', '大', '的', '一', '支', '語族', '。']
         elif word_tokenizer == 'wordless_zho_char':
             assert tokens == ['漢', '語', '又', '稱', '中', '文', '、', '華', '語', '[', '6', ']', '、', '唐', '話', '[', '7', ']', '，', '概', '指', '由', '上', '古', '漢', '語', '（', '先', '秦', '雅', '言', '）', '發', '展', '而', '來', '、', '書', '面', '使', '用', '漢', '字', '的', '分', '析', '語', '，', '為', '漢', '藏', '語', '系', '最', '大', '的', '一', '支', '語', '族', '。']
@@ -201,9 +195,8 @@ def test_word_tokenize(lang, word_tokenizer):
         assert tokens == ['ದ್ರಾವಿಡ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಪ್ರಾಮುಖ್ಯವುಳ್ಳ', 'ಭಾಷೆಯೂ', 'ಭಾರತದ', 'ಪುರಾತನವಾದ', 'ಭಾಷೆಗಳಲ್ಲಿ', 'ಒಂದೂ', 'ಆಗಿರುವ', 'ಕನ್ನಡ', 'ಭಾಷೆಯನ್ನು', 'ಅದರ', 'ವಿವಿಧ', 'ರೂಪಗಳಲ್ಲಿ', 'ಸುಮಾರು', '೪೫', 'ದಶಲಕ್ಷ', 'ಜನರು', 'ಆಡು', 'ನುಡಿಯಾಗಿ', 'ಬಳಸುತ್ತಲಿದ್ದಾರೆ', '.']
     elif lang == 'khm':
         assert tokens == ['ភាសា', 'ខ្មែរ', 'គឺជា', 'ភាសា', 'កំណើត', 'របស់', 'ជនជាតិ', 'ខ្មែរ', 'និង', 'ជា', 'ភាសា', 'ផ្លូវការ', 'របស់', 'ប្រទេស', 'កម្ពុជា', '។']
-    # To be tested when spaCy 4.0 is released
     elif lang == 'kor':
-        assert tokens == [] # pylint: disable=use-implicit-booleaness-not-comparison
+        assert tokens == ['세계', '여러', '지역', '에', '한', '민족', '인구', '가', '거주', '하', '게', '되', '면서', '전', '세계', '각지', '에서', '한국어', '가', '사용', '되', '고', '있', '다', '.']
     elif lang == 'kir':
         assert tokens == ['Кыргыз', 'тили', '—', 'Кыргыз', 'Республикасынын', 'мамлекеттик', 'тили', ',', 'түрк', 'тилдеринин', 'курамына', ',', 'анын', 'ичинде', 'кыргыз-кыпчак', 'же', 'тоо-алтай', 'тобуна', 'кирет', '.']
     elif lang == 'lao':

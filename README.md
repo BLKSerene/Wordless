@@ -163,4 +163,4 @@ PayPal|Alipay|WeChat Pay
 
 ## Acknowledgments
 
-For details, please click [HERE](/ACKNOWLEDGMENTS.md).
+For details, please click [HERE](/ACKS.md).

@@ -33,8 +33,7 @@ from wordless.wl_tagsets import (
     wl_tagset_tha_blackboard,
     wl_tagset_tha_orchid,
     wl_tagset_bod_botok,
-    wl_tagset_vie_underthesea,
-    wl_tagset_zho_jieba
+    wl_tagset_vie_underthesea
 )
 from wordless.wl_utils import wl_misc, wl_paths
 
@@ -1579,13 +1578,6 @@ def init_settings_default(main):
                 },
 
                 'mapping_settings': {
-                    'zho_cn': {
-                        'jieba_zho': wl_tagset_zho_jieba.MAPPINGS
-                    },
-                    'zho_tw': {
-                        'jieba_zho': wl_tagset_zho_jieba.MAPPINGS
-                    },
-
                     'eng_gb': {
                         'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.MAPPINGS,
                     },

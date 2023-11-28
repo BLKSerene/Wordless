@@ -163,4 +163,4 @@ PayPal|支付寶|微信支付
 
 ## 致謝
 
-如需詳情，請點擊[此處](/doc/trs/zho_tw/ACKNOWLEDGMENTS.md)。
+如需詳情，請點擊[此處](/doc/trs/zho_tw/ACKS.md)。
