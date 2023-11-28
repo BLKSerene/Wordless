@@ -24,7 +24,7 @@ As Wordless stands on the shoulders of giants, I hereby extend my sincere gratit
 -----:|----|:-----:|-------|:-----:
 1|[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/)|4.12.2|Leonard Richardson|[MIT](https://git.launchpad.net/beautifulsoup/tree/LICENSE)
 2|[Botok](https://github.com/OpenPecha/Botok)|0.8.12|Hélios Drupchen Hildt|[Apache-2.0](https://github.com/OpenPecha/Botok/blob/master/LICENSE)
-3|[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.2.0|TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
+3|[Charset Normalizer](https://github.com/Ousret/charset_normalizer)|3.3.2|TAHRI Ahmed R.|[MIT](https://github.com/Ousret/charset_normalizer/blob/master/LICENSE)
 4|[Dostoevsky](https://github.com/bureaucratic-labs/dostoevsky)|0.6.0|Anna Rogers, Alexey Romanov, Anna Rumshisky,<br>Svitlana Volkova, Mikhail Gronas, Alex Gribov|[MIT](https://github.com/bureaucratic-labs/dostoevsky/blob/master/LICENSE)
 5|[khmer-nltk](https://github.com/VietHoang1512/khmer-nltk)|1.6|Phan Viet Hoang|[Apache-2.0](https://github.com/VietHoang1512/khmer-nltk/blob/main/LICENSE)
 6|[LaoNLP](https://github.com/wannaphong/LaoNLP)|1.1.3|Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)|[Apache-2.0](https://github.com/wannaphong/LaoNLP/blob/master/LICENSE)

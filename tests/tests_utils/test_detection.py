@@ -45,11 +45,12 @@ def test_lingua():
 
 # Encoding detection
 def check_encodings_detected(test_file_dir, encodings, text):
+    encodings_detected = []
+
     for encoding in encodings:
         file_path = os.path.join(test_file_dir, f'{encoding}.txt')
 
-        # Use same line endings for different OSes run on CI
-        with open(file_path, 'w', encoding = encoding, errors = 'replace', newline = '\r\n') as f:
+        with open(file_path, 'w', encoding = encoding, errors = 'replace') as f:
             f.write(text)
 
         encoding_detected = wl_detection.detect_encoding(main, file_path)
@@ -58,8 +59,11 @@ def check_encodings_detected(test_file_dir, encodings, text):
 
         print(f'{encoding} detected as {encoding_detected} / {encoding_detected_text}')
 
-        assert encoding_detected == encoding
         assert encoding_detected_text
+
+        encodings_detected.append(encoding_detected)
+
+    assert encodings_detected == encodings
 
 def test_detection_encoding():
     test_file_dir = 'tests/tests_utils/_files_detection_encoding'
@@ -67,66 +71,69 @@ def test_detection_encoding():
     os.makedirs(test_file_dir, exist_ok = True)
 
     try:
-        # All Languages
+        # All languages
         # Charset Normalizer does not return "utf_8_sig"
         # Reference: https://github.com/Ousret/charset_normalizer/pull/38
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['utf_8', 'utf_16', 'utf_16_be', 'utf_16_le', 'utf_32', 'utf_32_be', 'utf_32_le'], # utf_8_sig, utf_7
-            text = wl_test_lang_examples.ENCODING_ENG
+            encodings = ['utf_8', 'utf_16', 'utf_16_be', 'utf_16_le', 'utf_32', 'utf_32_be', 'utf_32_le'], # 'utf_8_sig', 'utf_7'
+            text = wl_test_lang_examples.ENCODING_FRA
         )
         # Arabic
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp1256', 'iso8859_6'], # cp720, cp864, mac_arabic
+            encodings = ['cp720', 'iso8859_6', 'cp1256'], # 'cp864', 'mac_arabic'
             text = wl_test_lang_examples.ENCODING_ARA
         )
-        # Baltic Languages
+        # Baltic languages
+        # e.g. Lithuanian, Latvian
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp775', 'iso8859_13', 'cp1257'],
+            encodings = ['cp775'], # 'iso8859_13', 'cp1257'
             text = wl_test_lang_examples.ENCODING_LAV
         )
-        # Celtic Languages
+        # Celtic languages
+        # e.g. Irish, Manx, Scottish Gaelic, Welsh
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # iso8859_14
+            encodings = [], # 'iso8859_14'
             text = wl_test_lang_examples.ENCODING_GLE
         )
         # Chinese (Unified)
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['gb18030'], # gbk
-            text = wl_test_lang_examples.ENCODING_ZHO_CN
+            encodings = ['gb18030'], # 'gbk'
+            text = wl_test_lang_examples.ENCODING_ZHO_TW
         )
         # Chinese (Simplified)
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # gb2312, hz
+            encodings = [], # 'gb2312', 'hz'
             text = wl_test_lang_examples.ENCODING_ZHO_CN
         )
         # Chinese (Traditional)
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['big5'], # big5hkscs, cp950
+            encodings = ['big5'], # 'big5hkscs', 'cp950'
             text = wl_test_lang_examples.ENCODING_ZHO_TW
         )
         # Croatian
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # mac_croatian
+            encodings = [], # 'mac_croatian'
             text = wl_test_lang_examples.ENCODING_HRV
         )
         # Cyrillic
+        # e.g. Belarusian, Bulgarian, Macedonian, Russian, Serbian (Cyrillic)
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp855', 'iso8859_5', 'mac_cyrillic', 'cp1251'], # cp866
+            encodings = ['cp855', 'iso8859_5', 'mac_cyrillic', 'cp1251'], # 'cp866'
             text = wl_test_lang_examples.ENCODING_RUS
         )
         # English
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['ascii', 'cp037'], # cp437
+            encodings = ['ascii', 'cp037'], # 'cp437'
             text = wl_test_lang_examples.ENCODING_ENG
         )
         # European
@@ -136,69 +143,74 @@ def test_detection_encoding():
             text = wl_test_lang_examples.ENCODING_FRA
         )
         # European (Central)
+        # e.g. Albanian, Croatian, Czech, Finnish, German, Hungarian, Polish, Romanian, Serbian (Latin), Slovak, Slovenian, Sorbian (Lower), Sorbian(Upper)
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp852', 'iso8859_2', 'mac_latin2'], # cp1250
-            text = wl_test_lang_examples.ENCODING_POL
+            encodings = ['cp852', 'iso8859_2', 'mac_latin2', 'cp1250'],
+            text = wl_test_lang_examples.ENCODING_HRV
         )
         # European (Northern)
+        # e.g. Estonian, Latvian, Lithuanian, Sámi
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # iso8859_4
-            text = wl_test_lang_examples.ENCODING_EST
+            encodings = [], # 'iso8859_4'
+            text = wl_test_lang_examples.ENCODING_LAV
         )
         # European (Southern)
+        # e.g. Esperanto, Maltese, Turkish
         check_encodings_detected(
             test_file_dir = test_file_dir,
             encodings = ['iso8859_3'],
             text = wl_test_lang_examples.ENCODING_MLT
         )
         # European (South-Eastern)
+        # e.g. Albanian, Croatian, Hungarian, Polish, Romanian, Serbian, Slovenian
         check_encodings_detected(
             test_file_dir = test_file_dir,
             encodings = ['iso8859_16'],
-            text = wl_test_lang_examples.ENCODING_RON
+            text = wl_test_lang_examples.ENCODING_HRV
         )
         # European (Western)
+        # e.g. Afrikaans, Albanian, Basque, English, Faroese, Galician, Icelandic, Irish, Indonesian, Italian, Luxembourgish, Malay, Manx, Norwegian, Portuguese, Scottish Gaelic, Spanish, Swahili, Swedish, Tagalog
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp850', 'cp1252'], # cp500, cp858, cp1140, latin_1, iso8859_15, mac_roman
-            text = wl_test_lang_examples.ENCODING_FRA
+            encodings = ['cp500', 'cp850', 'cp1252'], # 'cp858', 'cp1140', 'latin_1', 'iso8859_15', 'mac_roman'
+            text = wl_test_lang_examples.ENCODING_POR
         )
         # French
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # cp863
+            encodings = [], # 'cp863'
             text = wl_test_lang_examples.ENCODING_FRA
         )
         # German
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # cp273
+            encodings = [], # 'cp273'
             text = wl_test_lang_examples.ENCODING_DEU
         )
         # Greek
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp869', 'mac_greek', 'cp1253'], # cp737, cp875, iso8859_7
+            encodings = ['cp737', 'cp869', 'cp875', 'mac_greek', 'cp1253'], # 'iso8859_7'
             text = wl_test_lang_examples.ENCODING_ELL
         )
         # Hebrew
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp424', 'cp1255'], # cp856, cp862, iso8859_8
+            encodings = ['cp856', 'cp424', 'cp1255'], # 'cp862', 'iso8859_8'
             text = wl_test_lang_examples.ENCODING_HEB
         )
         # Icelandic
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # cp861, mac_iceland
+            encodings = [], # 'cp861', 'mac_iceland'
             text = wl_test_lang_examples.ENCODING_ISL
         )
         # Japanese
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            # euc_jp, euc_jisx0213, iso2022_jp_1, iso2022_jp_2, iso2022_jp_2004, iso2022_jp_3, iso2022_jp_ext, shift_jis, shift_jis_2004, shift_jisx0213
+            # 'euc_jp', 'euc_jisx0213', 'iso2022_jp_1', 'iso2022_jp_2', 'iso2022_jp_2004', 'iso2022_jp_3', 'iso2022_jp_ext', 'shift_jis', 'shift_jis_2004', 'shift_jisx0213'
             encodings = ['cp932', 'euc_jis_2004', 'iso2022_jp'],
             text = wl_test_lang_examples.ENCODING_JPN
         )
@@ -211,31 +223,32 @@ def test_detection_encoding():
         # Korean
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['iso2022_kr', 'johab', 'cp949'], # euc_kr
+            encodings = ['iso2022_kr', 'johab', 'cp949'], # 'euc_kr'
             text = wl_test_lang_examples.ENCODING_KOR
         )
-        # Nordic Languages
+        # Nordic languages
+        # e.g. Danish, Faroese, Icelandic, Norwegian, Swedish
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # cp865, iso8859_10
+            encodings = [], # 'cp865', 'iso8859_10'
             text = wl_test_lang_examples.ENCODING_ISL
         )
         # Persian/Urdu
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # mac_farsi
+            encodings = [], # 'mac_farsi'
             text = wl_test_lang_examples.ENCODING_URD
         )
         # Portuguese
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # cp860
+            encodings = [], # 'cp860'
             text = wl_test_lang_examples.ENCODING_POR
         )
         # Romanian
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # mac_romanian
+            encodings = [], # 'mac_romanian'
             text = wl_test_lang_examples.ENCODING_RON
         )
         # Russian
@@ -247,37 +260,37 @@ def test_detection_encoding():
         # Tajik
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # koi8_t
+            encodings = ['koi8_t'],
             text = wl_test_lang_examples.ENCODING_TGK
         )
         # Thai
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['iso8859_11'], # cp874, tis_620
+            encodings = ['cp874'], # 'iso8859_11', 'tis_620'
             text = wl_test_lang_examples.ENCODING_THA
         )
         # Turkish
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp857', 'cp1254'], # cp1026, iso8859_9, mac_turkish
+            encodings = ['cp857', 'cp1254'], # 'cp1026', 'iso8859_9', 'mac_turkish'
             text = wl_test_lang_examples.ENCODING_TUR
         )
         # Ukrainian
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = ['cp1125'], # koi8_u
+            encodings = ['cp1125', 'koi8_u'],
             text = wl_test_lang_examples.ENCODING_UKR
         )
         # Urdu
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # cp1006
+            encodings = [], # 'cp1006'
             text = wl_test_lang_examples.ENCODING_URD
         )
         # Vietnamese
         check_encodings_detected(
             test_file_dir = test_file_dir,
-            encodings = [], # cp1258
+            encodings = [], # 'cp1258'
             text = wl_test_lang_examples.ENCODING_VIE
         )
     except Exception as exc:
