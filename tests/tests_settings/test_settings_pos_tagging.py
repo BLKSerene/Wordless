@@ -21,6 +21,7 @@ from wordless.wl_settings import wl_settings_pos_tagging
 from wordless.wl_widgets import wl_layouts
 
 main = wl_test_init.Wl_Test_Main()
+wl_test_init.change_default_tokenizers(main)
 
 def test_wl_settings_pos_tagging():
     settings_pos_tagging = wl_settings_pos_tagging.Wl_Settings_Pos_Tagging(main)

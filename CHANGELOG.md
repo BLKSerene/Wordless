@@ -23,6 +23,7 @@
 - Utils: Fix downloading of Stanza models
 
 ### ⏫ Dependency Changes
+- Dependencies: Remove jieba
 - Dependencies: Upgrade LaoNLP to 1.1.3
 - Dependencies: Upgrade PyQt to 5.15.10
 - Dependencies: Upgrade spaCy to 3.7.2

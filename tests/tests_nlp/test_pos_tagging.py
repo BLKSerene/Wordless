@@ -39,11 +39,7 @@ for lang, pos_taggers in main.settings_global['pos_taggers'].items():
             ))
 
             test_pos_taggers_local.append((lang, pos_tagger))
-        # The Korean blank model for sentencizer requires mecab-ko which would be replaced by python-mecab-ko in the upcoming spaCy 4.0
-        elif (
-            not pos_tagger.startswith(('spacy_', 'stanza_'))
-            and lang != 'kor'
-        ):
+        elif not pos_tagger.startswith(('spacy_', 'stanza_')):
             test_pos_taggers.append((lang, pos_tagger))
             test_pos_taggers_local.append((lang, pos_tagger))
 
@@ -116,13 +112,7 @@ def test_pos_tag(lang, pos_tagger):
 
     tests_lang_util_skipped = False
 
-    if lang == 'zho_cn':
-        assert tokens_tagged == [('汉语', 'nz'), ('又称', 'n'), ('中文', 'nz'), ('、', 'x'), ('华语', 'nz'), ('[', 'x'), ('6', 'x'), (']', 'x'), ('、', 'x'), ('唐', 'nr'), ('话', 'n'), ('[', 'x'), ('7', 'x'), (']', 'x'), ('，', 'x'), ('概指', 'n'), ('由', 'p'), ('上', 'f'), ('古汉语', 'nr'), ('（', 'x'), ('先秦', 't'), ('雅言', 'nr'), ('）', 'x'), ('发展', 'vn'), ('而', 'c'), ('来', 'v'), ('、', 'x'), ('书面', 'n'), ('使用', 'v'), ('汉字', 'nz'), ('的', 'uj'), ('分析语', 'n'), ('，', 'x'), ('为', 'p'), ('汉藏语系', 'nz'), ('最大', 'a'), ('的', 'uj'), ('一支', 'm'), ('语族', 'n'), ('。', 'x')]
-        assert tokens_tagged_universal == [('汉语', 'PROPN'), ('又称', 'NOUN'), ('中文', 'PROPN'), ('、', 'PUNCT/SYM'), ('华语', 'PROPN'), ('[', 'PUNCT/SYM'), ('6', 'PUNCT/SYM'), (']', 'PUNCT/SYM'), ('、', 'PUNCT/SYM'), ('唐', 'PRONP'), ('话', 'NOUN'), ('[', 'PUNCT/SYM'), ('7', 'PUNCT/SYM'), (']', 'PUNCT/SYM'), ('，', 'PUNCT/SYM'), ('概指', 'NOUN'), ('由', 'ADP'), ('上', 'ADP'), ('古汉语', 'PRONP'), ('（', 'PUNCT/SYM'), ('先秦', 'NOUN'), ('雅言', 'PRONP'), ('）', 'PUNCT/SYM'), ('发展', 'VERB'), ('而', 'CONJ'), ('来', 'VERB'), ('、', 'PUNCT/SYM'), ('书面', 'NOUN'), ('使用', 'VERB'), ('汉字', 'PROPN'), ('的', 'PART'), ('分析语', 'NOUN'), ('，', 'PUNCT/SYM'), ('为', 'ADP'), ('汉藏语系', 'PROPN'), ('最大', 'ADJ'), ('的', 'PART'), ('一支', 'NUM'), ('语族', 'NOUN'), ('。', 'PUNCT/SYM')]
-    elif lang == 'zho_tw':
-        assert tokens_tagged == [('漢語', 'nz'), ('又', 'd'), ('稱', 'v'), ('中文', 'nz'), ('、', 'x'), ('華語', 'nz'), ('[', 'x'), ('6', 'x'), (']', 'x'), ('、', 'x'), ('唐', 'nr'), ('話', 'n'), ('[', 'x'), ('7', 'x'), (']', 'x'), ('，', 'x'), ('概指', 'n'), ('由', 'p'), ('上古', 'ns'), ('漢語', 'nz'), ('（', 'x'), ('先秦', 't'), ('雅言', 'nr'), ('）', 'x'), ('發展', 'vn'), ('而', 'c'), ('來', 'v'), ('、', 'x'), ('書面', 'n'), ('使用', 'v'), ('漢字', 'nz'), ('的', 'uj'), ('分析', 'vn'), ('語', 'x'), ('，', 'x'), ('為', 'p'), ('漢藏語', 'nz'), ('系', 'n'), ('最大', 'a'), ('的', 'uj'), ('一支', 'm'), ('語族', 'n'), ('。', 'x')]
-        assert tokens_tagged_universal == [('漢語', 'PROPN'), ('又', 'ADV'), ('稱', 'VERB'), ('中文', 'PROPN'), ('、', 'PUNCT/SYM'), ('華語', 'PROPN'), ('[', 'PUNCT/SYM'), ('6', 'PUNCT/SYM'), (']', 'PUNCT/SYM'), ('、', 'PUNCT/SYM'), ('唐', 'PRONP'), ('話', 'NOUN'), ('[', 'PUNCT/SYM'), ('7', 'PUNCT/SYM'), (']', 'PUNCT/SYM'), ('，', 'PUNCT/SYM'), ('概指', 'NOUN'), ('由', 'ADP'), ('上古', 'PROPN'), ('漢語', 'PROPN'), ('（', 'PUNCT/SYM'), ('先秦', 'NOUN'), ('雅言', 'PRONP'), ('）', 'PUNCT/SYM'), ('發展', 'VERB'), ('而', 'CONJ'), ('來', 'VERB'), ('、', 'PUNCT/SYM'), ('書面', 'NOUN'), ('使用', 'VERB'), ('漢字', 'PROPN'), ('的', 'PART'), ('分析', 'VERB'), ('語', 'PUNCT/SYM'), ('，', 'PUNCT/SYM'), ('為', 'ADP'), ('漢藏語', 'PROPN'), ('系', 'NOUN'), ('最大', 'ADJ'), ('的', 'PART'), ('一支', 'NUM'), ('語族', 'NOUN'), ('。', 'PUNCT/SYM')]
-    elif lang.startswith('eng_'):
+    if lang.startswith('eng_'):
         assert tokens_tagged == [('English', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('West', 'NNP'), ('Germanic', 'NNP'), ('language', 'NN'), ('in', 'IN'), ('the', 'DT'), ('Indo-European', 'JJ'), ('language', 'NN'), ('family', 'NN'), ('.', '.')]
         assert tokens_tagged_universal == [('English', 'PROPN'), ('is', 'VERB'), ('a', 'DET'), ('West', 'PROPN'), ('Germanic', 'PROPN'), ('language', 'NOUN'), ('in', 'ADP/SCONJ'), ('the', 'DET'), ('Indo-European', 'ADJ'), ('language', 'NOUN'), ('family', 'NOUN'), ('.', 'PUNCT')]
     elif lang == 'jpn':
@@ -131,10 +121,9 @@ def test_pos_tag(lang, pos_tagger):
     elif lang == 'khm':
         assert tokens_tagged == [('ភាសា', 'n'), ('ខ្មែរ', 'n'), ('គឺជា', 'v'), ('ភាសា', 'n'), ('កំណើត', 'n'), ('របស់', 'o'), ('ជនជាតិ', 'n'), ('ខ្មែរ', 'n'), ('និង', 'o'), ('ជា', 'v'), ('ភាសា', 'n'), ('ផ្លូវការ', 'n'), ('របស់', 'o'), ('ប្រទេស', 'n'), ('កម្ពុជា', 'n'), ('។', '.')]
         assert tokens_tagged_universal == [('ភាសា', 'NOUN'), ('ខ្មែរ', 'NOUN'), ('គឺជា', 'VERB'), ('ភាសា', 'NOUN'), ('កំណើត', 'NOUN'), ('របស់', 'PART'), ('ជនជាតិ', 'NOUN'), ('ខ្មែរ', 'NOUN'), ('និង', 'PART'), ('ជា', 'VERB'), ('ភាសា', 'NOUN'), ('ផ្លូវការ', 'NOUN'), ('របស់', 'PART'), ('ប្រទេស', 'NOUN'), ('កម្ពុជា', 'NOUN'), ('។', 'PUNCT')]
-    # To be tested when spaCy 4.0 is released
     elif lang == 'kor':
-        assert tokens_tagged == []
-        assert tokens_tagged_universal == []
+        assert tokens_tagged == [('세계', 'NNG'), ('여러', 'MM'), ('지역', 'NNG'), ('에', 'JKB'), ('한', 'MM'), ('민족', 'NNG'), ('인구', 'NNG'), ('가', 'JKS'), ('거주', 'NNG'), ('하', 'XSA'), ('게', 'EC'), ('되', 'VV'), ('면서', 'EC'), ('전', 'MM'), ('세계', 'NNG'), ('각지', 'NNG'), ('에서', 'JKB'), ('한국어', 'NNG'), ('가', 'JKS'), ('사용', 'NNG'), ('되', 'VV'), ('고', 'EC'), ('있', 'VX'), ('다', 'EF'), ('.', 'SF')]
+        assert tokens_tagged_universal == [('세계', 'NOUN'), ('여러', 'DET'), ('지역', 'NOUN'), ('에', 'ADP'), ('한', 'DET'), ('민족', 'NOUN'), ('인구', 'NOUN'), ('가', 'ADP'), ('거주', 'NOUN'), ('하', 'X'), ('게', 'X'), ('되', 'VERB'), ('면서', 'X'), ('전', 'DET'), ('세계', 'NOUN'), ('각지', 'NOUN'), ('에서', 'ADP'), ('한국어', 'NOUN'), ('가', 'ADP'), ('사용', 'NOUN'), ('되', 'VERB'), ('고', 'X'), ('있', 'AUX'), ('다', 'X'), ('.', 'PUNCT')]
     elif lang == 'lao':
         if pos_tagger == 'laonlp_seqlabeling':
             assert tokens_tagged == [('ພາສາລາວ', 'N'), ('(', 'V'), ('Lao', 'PRN'), (':', 'PUNCT'), ('ລາວ', 'PRS'), (',', 'PUNCT'), ('[', 'PUNCT'), ('l', 'PRN'), ('áː', 'PRN'), ('w', 'PRN'), (']', 'PUNCT'), ('ຫຼື', 'COJ'), ('ພາສາລາວ', 'PRN'), (',', 'PUNCT'), ('[', 'N'), ('p', 'PRN'), ('ʰáː', 'PRN'), ('s', 'PRN'), ('ǎː', 'PRN'), ('l', 'PRN'), ('áː', 'PRN'), ('w', 'PRN'), ('])', 'PRN'), ('ເປັນ', 'V'), ('ພາສາ', 'N'), ('ຕະກູນ', 'PRN'), ('ໄທ', 'PRN'), ('-', 'PUNCT'), ('ກະໄດ', 'N'), ('ຂອງ', 'PRE'), ('ຄົນ', 'N'), ('ລາວ', 'PRS'), ('ໂດຍ', 'PRE'), ('ມີ', 'V'), ('ຄົນ', 'N'), ('ເວົ້າ', 'V'), ('ໃນປະເທດລາວ', 'N'), ('ເຊິ່ງ', 'REL'), ('ເປັນ', 'V'), ('ພາສາ', 'N'), ('ລັດຖະການ', 'N'), ('ຂອງ', 'PRE'), ('ສາທາລະນະລັດ', 'N'), ('ປະຊາທິປະໄຕ', 'N'), ('ປະຊາຊົນ', 'N'), ('ລາວ', 'PRS'), ('ຂອງ', 'PRE'), ('ປະຊາກອນ', 'N'), ('ປະມານ', 'IBQ'), ('7', 'V'), ('ລ້ານ', 'N'), ('ຄົນ', 'N'), ('ແລະ', 'COJ'), ('ໃນ', 'PRE'), ('ພື້ນທີ່', 'N'), ('ພາກ', 'N'), ('ຕາເວັນອອກສຽງ', 'N'), ('ເໜືອ', 'PRN'), ('ຂອງ', 'PRE'), ('ປະເທດໄທ', 'PRN'), ('ທີ່ມີ', 'V'), ('ຄົນ', 'N'), ('ເວົ້າ', 'V'), ('ປະມານ', 'IBQ'), ('23', 'V'), ('ລ້ານ', 'N'), ('ຄົນ', 'N'), ('ທາງ', 'PRE'), ('ລັດຖະບານ', 'N'), ('ປະເທດໄທ', 'PRN'), ('ມີການສະໜັບສະໜຸນ', 'V'), ('ໃຫ້', 'PVA'), ('ເອີ້ນ', 'V'), ('ພາສາລາວ', 'N'), ('ຖິ່ນ', 'N'), ('ໄທ', 'PRN'), ('ວ່າ', 'COJ'), ('ພາສາລາວ', 'PRN'), ('ຖິ່ນ', 'PRN'), ('ອີສານ', 'N'), ('ນອກຈາກ', 'PRE'), ('ນີ້', 'DMN'), (',', 'PUNCT'), ('ຢູ່', 'PRE'), ('ທາງ', 'N'), ('ພາກ', 'N'), ('ຕາເວັນອອກສຽງ', 'N'), ('ເໜືອ', 'N'), ('ຂອງ', 'PRE'), ('ປະເທດກຳປູເຈຍ', 'N'), ('ກໍ', 'IAC'), ('ມີ', 'V'), ('ຄົນ', 'N'), ('ເວົ້າ', 'V'), ('ພາສາລາວ', 'N'), ('ຄືກັນ', 'ADJ'), ('.', 'PUNCT')]

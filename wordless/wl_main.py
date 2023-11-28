@@ -873,17 +873,17 @@ class Wl_Dialog_Acks(wl_dialogs.Wl_Dialog_Info):
         # Load acknowledgments
         acks = []
 
-        with open(wl_paths.get_path_file(self.tr('ACKNOWLEDGMENTS.md')), 'r', encoding = 'utf_8') as f:
+        with open(wl_paths.get_path_file(self.tr('ACKS.md')), 'r', encoding = 'utf_8') as f:
             for line in f:
                 if re.search(r'^[1-9]\d*\s*\|', line):
-                    _, name, ver, authors, proj_license = line.split('|')
+                    _, proj_name, proj_ver, proj_authors, proj_license = line.split('|')
 
-                    name = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', name.strip())
-                    ver = ver.strip()
-                    authors = authors.strip()
+                    proj_name = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', proj_name.strip())
+                    proj_ver = proj_ver.strip()
+                    proj_authors = proj_authors.strip()
                     proj_license = re.sub(r'^\[(.+)\]\((.+)\)$', r'<a href="\2">\1</a>', proj_license.strip())
 
-                    acks.append([name, ver, authors, proj_license])
+                    acks.append([proj_name, proj_ver, proj_authors, proj_license])
 
         self.label_acks = wl_labels.Wl_Label_Dialog(
             self.tr('''

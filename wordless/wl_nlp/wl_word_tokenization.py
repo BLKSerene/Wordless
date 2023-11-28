@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import jieba
 import khmernltk
 import laonlp
 import pythainlp
@@ -109,10 +108,7 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 elif lang.startswith('zho_'):
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = lang)
 
-                    if word_tokenizer == 'jieba_zho':
-                        for sentence in sentences:
-                            tokens_multilevel[-1].append(jieba.lcut(sentence))
-                    elif word_tokenizer == 'pkuseg_zho':
+                    if word_tokenizer == 'pkuseg_zho':
                         for sentence in sentences:
                             tokens_multilevel[-1].append(main.pkuseg_word_tokenizer.cut(sentence))
                     elif word_tokenizer == 'wordless_zho_char':
