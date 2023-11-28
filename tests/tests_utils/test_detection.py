@@ -33,15 +33,15 @@ def test_lingua():
         for lang in main.settings_global['langs']
     }
     langs_exceptions = {'bokmal', 'nynorsk', 'slovene'}
-    langs_extra = []
+    langs_extra = set()
 
-    for lang in dir(lingua.Language):
-        if not lang.startswith('__') and lang.lower() not in langs | langs_exceptions:
-            langs_extra.append(lang)
+    for lang in lingua.Language.all(): # pylint: disable=no-member
+        if lang.name.lower() not in langs | langs_exceptions:
+            langs_extra.add(lang.name)
 
     print(f"Extra languages: {', '.join(langs_extra)}\n")
 
-    assert langs_extra == ['BOSNIAN', 'MAORI', 'SHONA', 'SOMALI', 'SOTHO', 'TSONGA', 'XHOSA']
+    assert langs_extra == {'BOSNIAN', 'MAORI', 'SHONA', 'SOMALI', 'SOTHO', 'TSONGA', 'XHOSA'}
 
 # Encoding detection
 def check_encodings_detected(test_file_dir, encodings, text):
