@@ -51,6 +51,7 @@ def detect_encoding(main, file_path):
 
     return encoding
 
+# pylint: disable=no-member
 lingua_detector = lingua.LanguageDetectorBuilder.from_all_languages_without(
     lingua.Language.BOSNIAN,
     lingua.Language.MAORI,
@@ -66,22 +67,22 @@ def detect_lang_text(main, text):
 
     lang = lingua_detector.detect_language_of(text)
 
-    if lang is lingua.Language.CHINESE:
+    if lang.name == 'CHINESE':
         converter = opencc.OpenCC('t2s')
 
         if converter.convert(text) == text:
             lang_code = 'zho_cn'
         else:
             lang_code = 'zho_tw'
-    elif lang is lingua.Language.ENGLISH:
+    elif lang.name == 'ENGLISH':
         lang_code = 'eng_us'
-    elif lang is lingua.Language.GERMAN:
+    elif lang.name == 'GERMAN':
         lang_code = 'deu_de'
-    elif lang is lingua.Language.PUNJABI:
+    elif lang.name == 'PUNJABI':
         lang_code = 'pan_guru'
-    elif lang is lingua.Language.PORTUGUESE:
+    elif lang.name == 'PORTUGUESE':
         lang_code = 'por_pt'
-    elif lang is lingua.Language.SERBIAN:
+    elif lang.name == 'SERBIAN':
         lang_code = 'srp_cyrl'
     # No results
     elif lang is None:
