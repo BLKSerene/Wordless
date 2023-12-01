@@ -42,20 +42,25 @@ def fishers_index_of_diversity(main, tokens):
     num_tokens = len(tokens)
     num_types = len(set(tokens))
 
-    alpha = -(
-        (num_tokens * num_types)
-        / (
-            num_tokens
-            * scipy.special.lambertw(-(
-                numpy.exp(-(num_types / num_tokens))
-                * num_types
-                / num_tokens
-            ), -1)
-            + num_types
-        )
+    lambertw_x = -(
+        numpy.exp(-(num_types / num_tokens))
+        * num_types
+        / num_tokens
     )
 
-    return alpha.real
+    if lambertw_x > -numpy.exp(-1):
+        alpha = -(
+            (num_tokens * num_types)
+            / (
+                num_tokens
+                * scipy.special.lambertw(lambertw_x, -1).real
+                + num_types
+            )
+        )
+    else:
+        alpha = 0
+
+    return alpha
 
 # Herdan's Vₘ
 # Reference: Herdan, G. (1955). A new derivation and interpretation of Yule's ‘Characteristic’ K. Zeitschrift für Angewandte Mathematik und Physik (ZAMP), 6(4), 332–339. https://doi.org/10.1007/BF01587632
@@ -80,6 +85,10 @@ def hdd(main, tokens):
     num_tokens = len(tokens)
     tokens_freqs = collections.Counter(tokens)
     ttrs = numpy.empty(len(list(tokens_freqs)))
+
+    # Short texts
+    if num_tokens < sample_size:
+        sample_size = num_tokens
 
     for i, freq in enumerate(tokens_freqs.values()):
         ttrs[i] = scipy.stats.hypergeom.pmf(k = 0, M = num_tokens, n = freq, N = sample_size)
@@ -176,7 +185,10 @@ def mtld(main, tokens):
                 if factor_size < 1:
                     num_factors += (1 - ttr) / (1 - factor_size)
 
-        mtlds[i] = num_tokens / num_factors
+        if num_factors:
+            mtlds[i] = num_tokens / num_factors
+        else:
+            mtlds[i] = 0
 
     return numpy.mean(mtlds)
 
@@ -220,7 +232,12 @@ def popescu_macutek_altmanns_b1_b2_b3_b4_b5(main, tokens):
     l_max = numpy.sqrt(numpy.square(freqs[0] - 1) + 1) + num_types - 2
 
     b1 = l / l_max
-    b2 = (l - l_min) / (l_max - l_min)
+
+    if (divisor := l_max - l_min):
+        b2 = (l - l_min) / divisor
+    else:
+        b2 = 0
+
     b3 = (num_types - 1) / l
     b4 = (freqs[0] - 1) / l
     b5 = freqs_nums_types[1] / l
@@ -288,7 +305,11 @@ def popescus_r2(main, tokens):
         c_min = cs[i_min]
         freq_max = freqs[i_max]
         freq_min = freqs[i_min]
-        k = (c_min * freq_max - c_max * freq_min) / (c_min - c_max)
+
+        if (divisor := c_min - c_max):
+            k = (c_min * freq_max - c_max * freq_min) / divisor
+        else:
+            k = 0
 
     g_k = numpy.sum([num_types for freq, num_types in freqs_nums_types if freq <= numpy.floor(k)]) / num_types_all
     r2 = g_k - numpy.square(k) / (2 * num_types_all)
@@ -464,6 +485,10 @@ def yules_index_of_diversity(main, tokens):
     nums_types = numpy.array(list(freqs_nums_types.values()))
 
     s2 = numpy.sum(nums_types * numpy.square(freqs))
-    index_of_diversity = (num_tokens ** 2) / (s2 - num_tokens)
+
+    if (divisor := s2 - num_tokens):
+        index_of_diversity = (num_tokens ** 2) / divisor
+    else:
+        index_of_diversity = 0
 
     return index_of_diversity

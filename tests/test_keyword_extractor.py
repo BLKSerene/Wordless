@@ -19,7 +19,6 @@
 # pylint: disable=unsupported-assignment-operation
 
 import itertools
-import re
 
 from tests import wl_test_init
 from wordless import wl_keyword_extractor
@@ -28,11 +27,10 @@ from wordless.wl_dialogs import wl_dialogs_misc
 def test_keyword_extractor():
     main = wl_test_init.Wl_Test_Main()
 
-    # Do not test Fisher's exact test since it is too computationally expensive
     tests_statistical_significance = [
         test_statistical_significance
         for test_statistical_significance, vals in main.settings_global['tests_statistical_significance'].items()
-        if vals['keyword_extractor'] and test_statistical_significance != 'fishers_exact_test'
+        if vals['keyword_extractor']
     ]
     measures_bayes_factor = [
         measure_bayes_factor
@@ -48,37 +46,32 @@ def test_keyword_extractor():
         fillvalue = 'none'
     )):
         # Single observed file & single reference file
-        if i % 10 in [0, 3, 6, 9]:
-            wl_test_init.select_random_files(main, num_files = 1)
-            wl_test_init.select_random_files_ref(main, num_files = 1)
+        if i % 5 == 0:
+            wl_test_init.select_test_files(main, no_files = [0])
+            wl_test_init.select_test_files(main, no_files = [0], ref = True)
         # Single observed file & multiple reference files
-        elif i % 10 in [1, 4, 7]:
-            wl_test_init.select_random_files(main, num_files = 1)
-            wl_test_init.select_random_files_ref(main, num_files = 2)
+        elif i % 5 == 1:
+            wl_test_init.select_test_files(main, no_files = [0])
+            wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
         # Multiple observed files & single reference file
-        if i % 10 in [2, 5]:
-            wl_test_init.select_random_files(main, num_files = 2)
-            wl_test_init.select_random_files_ref(main, num_files = 1)
+        elif i % 5 == 2:
+            wl_test_init.select_test_files(main, no_files = [1, 2])
+            wl_test_init.select_test_files(main, no_files = [0], ref = True)
         # Multiple observed files & multiple reference files
-        elif i % 10 == 8:
-            wl_test_init.select_random_files(main, num_files = 2)
-            wl_test_init.select_random_files_ref(main, num_files = 2)
-
-        file_names_observed = [
-            re.search(r'(?<=\)\. ).+?$', file_name).group()
-            for file_name in main.wl_file_area.get_selected_file_names()
-        ]
-        file_names_ref = [
-            re.search(r'(?<=\)\. ).+?$', file_name).group()
-            for file_name in main.wl_file_area_ref.get_selected_file_names()
-        ]
+        elif i % 5 == 3:
+            wl_test_init.select_test_files(main, no_files = [1, 2])
+            wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
+        # TTR = 1
+        elif i % 5 == 4:
+            wl_test_init.select_test_files(main, no_files = [3])
+            wl_test_init.select_test_files(main, no_files = [0], ref = True)
 
         main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance'] = test_statistical_significance
         main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor'] = measure_bayes_factor
         main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size'] = measure_effect_size
 
-        print(f"Observed files: {' | '.join(file_names_observed)}")
-        print(f"Reference files: {' | '.join(file_names_ref)}")
+        print(f"Observed Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
+        print(f"Reference Files: {' | '.join(wl_test_init.get_test_file_names(main, ref = True))}")
         print(f"Test of statistical significance: {main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance']}")
         print(f"Measure of Bayes factor: {main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size']}")

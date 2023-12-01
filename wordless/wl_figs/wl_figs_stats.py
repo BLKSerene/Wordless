@@ -24,11 +24,11 @@ from wordless.wl_utils import wl_sorting
 _tr = QCoreApplication.translate
 
 def wl_fig_stats(main, stat_files_items, tab):
-    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_fig_stats', 'Total')]
+    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_figs_stats', 'Total')]
     fig_settings = main.settings_custom[tab]['fig_settings']
     col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
 
-    if fig_settings['use_data'] == _tr('wl_fig_stats', 'p-value'):
+    if fig_settings['use_data'] == _tr('wl_figs_stats', 'p-value'):
         stat_files_items = wl_sorting.sorted_freq_files_items(
             stat_files_items,
             sort_by_col = col_sort_by_file,
@@ -41,15 +41,15 @@ def wl_fig_stats(main, stat_files_items, tab):
         )
 
     # Line Chart
-    if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Line chart'):
+    if fig_settings['graph_type'] == _tr('wl_figs_stats', 'Line chart'):
         if tab == 'wordlist_generator':
-            label_x = _tr('wl_fig_stats', 'Token')
+            label_x = _tr('wl_figs_stats', 'Token')
         elif tab == 'ngram_generator':
-            label_x = _tr('wl_fig_stats', 'N-gram')
+            label_x = _tr('wl_figs_stats', 'N-gram')
         elif tab in ['collocation_extractor', 'colligation_extractor']:
-            label_x = _tr('wl_fig_stats', 'Collocate')
+            label_x = _tr('wl_figs_stats', 'Collocate')
         elif tab == 'keyword_extractor':
-            label_x = _tr('wl_fig_stats', 'Keyword')
+            label_x = _tr('wl_figs_stats', 'Keyword')
 
         wl_figs.generate_line_chart(
             main, stat_files_items,
@@ -64,8 +64,8 @@ def wl_fig_stats(main, stat_files_items, tab):
         ]
 
         # Word Cloud
-        if fig_settings['graph_type'] == _tr('wl_fig_stats', 'Word cloud'):
+        if fig_settings['graph_type'] == _tr('wl_figs_stats', 'Word cloud'):
             wl_figs.generate_word_cloud(main, stat_file_items, fig_settings = fig_settings)
         # Network Graph
-        elif fig_settings['graph_type'] == _tr('wl_fig_stats', 'Network graph'):
+        elif fig_settings['graph_type'] == _tr('wl_figs_stats', 'Network graph'):
             wl_figs.generate_network_graph(main, stat_file_items, fig_settings = fig_settings)
