@@ -16,8 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import re
-
 from tests import wl_test_init
 from wordless import wl_concordancer
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -30,23 +28,21 @@ def test_concordancer():
     main.settings_custom['concordancer']['search_settings']['multi_search_mode'] = True
     main.settings_custom['concordancer']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i in range(2):
+    for i in range(3):
         # Single file
-        if i % 2 == 0:
-            wl_test_init.select_random_files(main, num_files = 1)
+        if i == 0:
+            wl_test_init.select_test_files(main, no_files = [0])
         # Multiple files
-        elif i % 2 == 1:
-            wl_test_init.select_random_files(main, num_files = 2)
+        elif i == 1:
+            wl_test_init.select_test_files(main, no_files = [1, 2])
+        # TTR = 1
+        elif i == 2:
+            wl_test_init.select_test_files(main, no_files = [3])
 
         global main_global # pylint: disable=global-statement
         main_global = main
 
-        files_selected = [
-            re.search(r'(?<=\)\. ).+?$', file_name).group()
-            for file_name in main.wl_file_area.get_selected_file_names()
-        ]
-
-        print(f"Files: {' | '.join(files_selected)}")
+        print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
         wl_concordancer.Wl_Worker_Concordancer_Table(
             main,
@@ -78,18 +74,14 @@ def update_gui_table(err_msg, concordance_lines):
         no_para, len_paras = concordance_line[7]
         file_name = concordance_line[8]
 
-        # Left
-        assert left_text
-        assert left_text_raw
-        assert left_text_search
         # Node
         assert node_text
         assert node_text_raw
         assert node_text_search
-        # Right
-        assert right_text
-        assert right_text_raw
-        assert right_text_search
+        # Left & Right
+        assert left_text or right_text
+        assert left_text_raw or right_text_raw
+        assert left_text_search or right_text_search
 
         # Sentiment
         assert sentiment == 'No language support' or -1 <= sentiment <= 1

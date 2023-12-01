@@ -16,8 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import re
-
 from tests import wl_test_init
 from wordless import wl_dependency_parser
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -30,23 +28,21 @@ def test_dependency_parser():
     main.settings_custom['dependency_parser']['search_settings']['multi_search_mode'] = True
     main.settings_custom['dependency_parser']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i in range(2):
+    for i in range(3):
         # Single file
-        if i % 2 == 0:
-            wl_test_init.select_random_files(main, num_files = 1)
+        if i == 0:
+            wl_test_init.select_test_files(main, no_files = [0])
         # Multiple files
-        elif i % 2 == 1:
-            wl_test_init.select_random_files(main, num_files = 2)
+        elif i == 1:
+            wl_test_init.select_test_files(main, no_files = [1, 2])
+        # TTR = 1
+        elif i == 2:
+            wl_test_init.select_test_files(main, no_files = [3])
 
         global main_global # pylint: disable=global-statement
         main_global = main
 
-        files_selected = [
-            re.search(r'(?<=\)\. ).+?$', file_name).group()
-            for file_name in main.wl_file_area.get_selected_file_names()
-        ]
-
-        print(f"Files: {' | '.join(files_selected)}")
+        print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
         wl_dependency_parser.Wl_Worker_Dependency_Parser(
             main,
