@@ -16,8 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import re
-
 from tests import wl_test_init
 from wordless import wl_concordancer_parallel
 from wordless.wl_dialogs import wl_dialogs_misc
@@ -28,15 +26,13 @@ def test_concordancer_parallel():
     main.settings_custom['concordancer_parallel']['search_settings']['multi_search_mode'] = True
     main.settings_custom['concordancer_parallel']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for _ in range(2):
-        wl_test_init.select_random_files(main, num_files = 3)
+    for i in range(2):
+        if i == 0:
+            wl_test_init.select_test_files(main, no_files = [0, 1, 2])
+        elif i == 1:
+            wl_test_init.select_test_files(main, no_files = [1, 2, 3])
 
-        files_selected = [
-            re.search(r'(?<=\)\. ).+?$', file_name).group()
-            for file_name in main.wl_file_area.get_selected_file_names()
-        ]
-
-        print(f"Files: {' | '.join(files_selected)}")
+        print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 
         wl_concordancer_parallel.Wl_Worker_Concordancer_Parallel_Table(
             main,

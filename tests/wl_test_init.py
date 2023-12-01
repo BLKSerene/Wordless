@@ -20,7 +20,7 @@ import copy
 import glob
 import os
 import pickle
-import random
+import re
 import sys
 
 from PyQt5.QtCore import QObject
@@ -32,7 +32,7 @@ from wordless.wl_checks import wl_checks_misc
 from wordless.wl_settings import wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc
 
-SEARCH_TERMS = ['be']
+SEARCH_TERMS = ['is']
 
 # An instance of QApplication must be created before any instance of QWidget
 wl_app = QApplication(sys.argv)
@@ -107,33 +107,42 @@ class Wl_Exception_Tests_Lang_Util_Skipped(Exception):
         super().__init__(f'Tests for language utility "{lang_util}" is skipped!')
 
 # Select files randomly
-def select_random_files(main, num_files):
-    files = main.settings_custom['file_area']['files_open']
+def select_test_files(main, no_files, ref = False):
+    no_files = set(no_files)
 
-    if not files:
-        wl_test_file_area.wl_test_file_area(main)
-
+    if ref:
+        files = main.settings_custom['file_area']['files_open_ref']
+    else:
         files = main.settings_custom['file_area']['files_open']
 
-    for file in files:
-        file['selected'] = False
-
-    for file in random.sample(files, num_files):
-        file['selected'] = True # pylint: disable=unsupported-assignment-operation
-
-def select_random_files_ref(main, num_files):
-    files = main.settings_custom['file_area']['files_open_ref']
-
     if not files:
         wl_test_file_area.wl_test_file_area(main)
 
-        files = main.settings_custom['file_area']['files_open_ref']
+        if ref:
+            files = main.settings_custom['file_area']['files_open_ref']
+        else:
+            files = main.settings_custom['file_area']['files_open']
 
     for file in files:
         file['selected'] = False
 
-    for file in random.sample(files, num_files):
-        file['selected'] = True # pylint: disable=unsupported-assignment-operation
+    for i, file in enumerate(files):
+        if i in no_files:
+            file['selected'] = True
+
+def get_test_file_names(main, ref = False):
+    if ref:
+        file_names = [
+            re.search(r'(?<= )[^\.]+?$', file_name).group()
+            for file_name in main.wl_file_area_ref.get_selected_file_names()
+        ]
+    else:
+        file_names = [
+            re.search(r'(?<= )[^\.]+?$', file_name).group()
+            for file_name in main.wl_file_area.get_selected_file_names()
+        ]
+
+    return file_names
 
 # Clean cached files
 def clean_import_caches():

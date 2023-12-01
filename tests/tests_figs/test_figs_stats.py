@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 import random
-import re
 
 from tests import wl_test_init
 from wordless.wl_figs import wl_figs_stats
@@ -70,7 +69,7 @@ def test_wl_fig_stats():
                         random.uniform(0, val_max)
                     ]
 
-            wl_test_init.select_random_files(main, num_files = 2)
+            wl_test_init.select_test_files(main, no_files = [0, 1])
 
             fig_settings = main.settings_custom[tab]['fig_settings']
             fig_settings['graph_type'] = graph_type
@@ -79,12 +78,7 @@ def test_wl_fig_stats():
             fig_settings['use_cumulative'] = random.choice([True, False])
             fig_settings['use_pct'] = random.choice([True, False])
 
-            files_selected = [
-                re.search(r'(?<=\[)[a-z_]+(?=\])', file_name).group()
-                for file_name in main.wl_file_area.get_selected_file_names()
-            ]
-
-            print(f"Files: {', '.join(files_selected)}")
+            print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
             print(f"Graph type: {fig_settings['graph_type']}")
             print(f"Sort by file: {fig_settings['sort_by_file']}")
             print(f"Use data: {fig_settings['use_data']}")

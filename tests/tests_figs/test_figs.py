@@ -39,7 +39,7 @@ def test_get_data_ranks():
 
 def test_generate_line_chart():
     main = wl_test_init.Wl_Test_Main()
-    wl_test_init.select_random_files(main, num_files = 2)
+    wl_test_init.select_test_files(main, no_files = [0, 1])
 
     global main_global # pylint: disable=global-statement
     main_global = main

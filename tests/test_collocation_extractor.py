@@ -17,7 +17,6 @@
 # ----------------------------------------------------------------------
 
 import itertools
-import re
 
 from tests import wl_test_init
 from wordless import wl_collocation_extractor
@@ -29,11 +28,10 @@ def test_collocation_extractor():
     main.settings_custom['collocation_extractor']['search_settings']['multi_search_mode'] = True
     main.settings_custom['collocation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    # Do not test Fisher's exact test since it is too computationally expensive
     tests_statistical_significance = [
         test_statistical_significance
         for test_statistical_significance, vals in main.settings_global['tests_statistical_significance'].items()
-        if vals['collocation_extractor'] and test_statistical_significance != 'fishers_exact_test'
+        if vals['collocation_extractor']
     ]
     measures_bayes_factor = [
         measure_bayes_factor
@@ -49,22 +47,20 @@ def test_collocation_extractor():
         fillvalue = 'none'
     )):
         # Single file
-        if i % 3 in [0, 2]:
-            wl_test_init.select_random_files(main, num_files = 1)
+        if i % 3 == 0:
+            wl_test_init.select_test_files(main, no_files = [0])
         # Multiple files
         elif i % 3 == 1:
-            wl_test_init.select_random_files(main, num_files = 2)
-
-        files_selected = [
-            re.search(r'(?<=\)\. ).+?$', file_name).group()
-            for file_name in main.wl_file_area.get_selected_file_names()
-        ]
+            wl_test_init.select_test_files(main, no_files = [1, 2])
+        # TTR = 1
+        elif i % 3 == 2:
+            wl_test_init.select_test_files(main, no_files = [3])
 
         main.settings_custom['collocation_extractor']['generation_settings']['test_statistical_significance'] = test_statistical_significance
         main.settings_custom['collocation_extractor']['generation_settings']['measure_bayes_factor'] = measure_bayes_factor
         main.settings_custom['collocation_extractor']['generation_settings']['measure_effect_size'] = measure_effect_size
 
-        print(f"Files: {' | '.join(files_selected)}")
+        print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
         print(f"Test of statistical significance: {main.settings_custom['collocation_extractor']['generation_settings']['test_statistical_significance']}")
         print(f"Measure of Bayes factor: {main.settings_custom['collocation_extractor']['generation_settings']['measure_bayes_factor']}")
         print(f"Measure of effect size: {main.settings_custom['collocation_extractor']['generation_settings']['measure_effect_size']}")

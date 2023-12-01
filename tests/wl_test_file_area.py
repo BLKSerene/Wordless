@@ -29,6 +29,10 @@ from wordless import wl_file_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_utils import wl_paths
 
+NUM_FILES_OBSERVED = 3
+NUM_FILES_REF = 3
+NUM_FILES_ALL = NUM_FILES_OBSERVED + NUM_FILES_REF
+
 def wl_test_file_area(main):
     def open_file(err_msg, files_to_open):
         assert not err_msg
@@ -67,43 +71,20 @@ def wl_test_file_area(main):
     main.settings_custom['file_area']['files_open'].clear()
     main.settings_custom['file_area']['files_open_ref'].clear()
 
-    files = glob.glob('tests/files/wl_file_area/file_area/*.txt')
+    files = glob.glob('tests/files/file_area/*.txt')
     random.shuffle(files)
 
-    for file_path in files[:3]:
+    for i, file_path in enumerate(files + glob.glob('tests/files/file_area/misc/*.txt')):
         time_start = time.time()
 
         print(f'Loading file "{os.path.split(file_path)[1]}"... ', end = '')
 
-        table = QObject()
-        table.files_to_open = []
-
-        wl_file_area.Wl_Worker_Add_Files(
-            main,
-            dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
-            update_gui = open_file,
-            file_paths = [file_path],
-            table = table
-        ).run()
-
-        new_file = main.settings_custom['file_area']['files_open'][-1]
-
-        assert new_file['selected']
-        assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
-        assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area', 'file_area'), 'imports')
-        assert new_file['path_original'] == wl_paths.get_normalized_path(file_path)
-        assert new_file['encoding'] == 'utf_8'
-        assert new_file['lang'] == 'eng_us'
-        assert not new_file['tokenized']
-        assert not new_file['tagged']
-
-        print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
-
-    # Reference files
-    for file_path in files[3:6]:
-        time_start = time.time()
-
-        print(f'Loading file "{os.path.split(file_path)[1]}" as reference file... ', end = '')
+        # Observed files
+        if i < NUM_FILES_OBSERVED or i >= NUM_FILES_ALL:
+            worker_update_gui = open_file
+        # Reference files
+        elif NUM_FILES_OBSERVED <= i < NUM_FILES_ALL:
+            worker_update_gui = open_file_ref
 
         table = QObject()
         table.files_to_open = []
@@ -111,18 +92,37 @@ def wl_test_file_area(main):
         wl_file_area.Wl_Worker_Add_Files(
             main,
             dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress(main, text = ''),
-            update_gui = open_file_ref,
+            update_gui = worker_update_gui,
             file_paths = [file_path],
             table = table
         ).run()
 
-        new_file = main.settings_custom['file_area']['files_open_ref'][-1]
+        if i < NUM_FILES_OBSERVED or i >= NUM_FILES_ALL:
+            new_file = main.settings_custom['file_area']['files_open'][-1]
+        elif NUM_FILES_OBSERVED <= i < NUM_FILES_ALL:
+            new_file = main.settings_custom['file_area']['files_open_ref'][-1]
 
         assert new_file['selected']
         assert new_file['name'] == new_file['name_old'] == os.path.splitext(os.path.split(file_path)[-1])[0]
-        assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(os.path.join('tests', 'files', 'wl_file_area', 'file_area'), 'imports')
+
+        if i < NUM_FILES_ALL:
+            assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(
+                os.path.join('tests', 'files', 'file_area'),
+                'imports'
+            )
+        else:
+            assert new_file['path'] == wl_paths.get_normalized_path(file_path).replace(
+                os.path.join('tests', 'files', 'file_area', 'misc'),
+                'imports'
+            )
+
         assert new_file['path_original'] == wl_paths.get_normalized_path(file_path)
-        assert new_file['encoding'] == 'utf_8'
+
+        if i < NUM_FILES_ALL:
+            assert new_file['encoding'] == 'utf_8'
+        else:
+            assert new_file['encoding'] == 'ascii'
+
         assert new_file['lang'] == 'eng_us'
         assert not new_file['tokenized']
         assert not new_file['tagged']
