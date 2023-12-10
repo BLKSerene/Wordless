@@ -46,24 +46,24 @@ def test_keyword_extractor():
         fillvalue = 'none'
     )):
         # Single observed file & single reference file
-        if i % 5 == 0:
+        if i % 6 == 0:
             wl_test_init.select_test_files(main, no_files = [0])
             wl_test_init.select_test_files(main, no_files = [0], ref = True)
         # Single observed file & multiple reference files
-        elif i % 5 == 1:
+        elif i % 6 == 1:
             wl_test_init.select_test_files(main, no_files = [0])
             wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
         # Multiple observed files & single reference file
-        elif i % 5 == 2:
+        elif i % 6 == 2:
             wl_test_init.select_test_files(main, no_files = [1, 2])
             wl_test_init.select_test_files(main, no_files = [0], ref = True)
         # Multiple observed files & multiple reference files
-        elif i % 5 == 3:
+        elif i % 6 == 3:
             wl_test_init.select_test_files(main, no_files = [1, 2])
             wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
-        # TTR = 1
-        elif i % 5 == 4:
-            wl_test_init.select_test_files(main, no_files = [3])
+        # Miscellaneous
+        else:
+            wl_test_init.select_test_files(main, no_files = [i % 6 - 1])
             wl_test_init.select_test_files(main, no_files = [0], ref = True)
 
         main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance'] = test_statistical_significance

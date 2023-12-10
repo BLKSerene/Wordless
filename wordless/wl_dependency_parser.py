@@ -535,7 +535,8 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                         offset_end = offsets_sentences[no_sentence]
 
                                     sentence_display = text.tokens_flat_punc_marks_merged[offsets_sentences[no_sentence - 1]:offset_end]
-                                    sentence_search = sentence
+                                    # Remove empty tokens for searching in results
+                                    sentence_search = [token for token in sentence if token]
 
                                     # Head
                                     results[-1].append(head)

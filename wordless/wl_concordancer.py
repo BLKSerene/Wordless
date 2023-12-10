@@ -777,7 +777,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                                     len_context_right += len_token_next
 
-                                # Search in Results (Left & Right)
+                                # Search in results (Left & Right)
                                 text_search_left = copy.deepcopy(context_left)
                                 text_search_right = copy.deepcopy(context_right)
 
@@ -821,7 +821,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 context_left = text.tokens_flat_punc_marks_merged[max(0, i - width_left_token) : i]
                                 context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : i + len_search_term + width_right_token]
 
-                                # Search in Results (Left & Right)
+                                # Search in results (Left & Right)
                                 if settings['token_settings']['punc_marks']:
                                     text_search_left = copy.deepcopy(context_left)
                                     text_search_right = copy.deepcopy(context_right)
@@ -858,13 +858,17 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 context_left = text.tokens_flat_punc_marks_merged[offset_start:i]
                                 context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : offset_end]
 
-                                # Search in Results (Left & Right)
+                                # Search in results (Left & Right)
                                 if settings['token_settings']['punc_marks']:
                                     text_search_left = copy.deepcopy(context_left)
                                     text_search_right = copy.deepcopy(context_right)
                                 else:
                                     text_search_left = tokens[offset_start:i]
                                     text_search_right = tokens[i + len_search_term : offset_end]
+
+                            # Remove empty tokens for searching in results
+                            text_search_left = [token for token in text_search_left if token]
+                            text_search_right = [token for token in text_search_right if token]
 
                             context_left = wl_nlp_utils.escape_tokens(context_left)
                             context_right = wl_nlp_utils.escape_tokens(context_right)

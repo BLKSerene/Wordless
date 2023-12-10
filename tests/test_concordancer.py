@@ -28,16 +28,16 @@ def test_concordancer():
     main.settings_custom['concordancer']['search_settings']['multi_search_mode'] = True
     main.settings_custom['concordancer']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
-    for i in range(3):
+    for i in range(4):
         # Single file
         if i == 0:
             wl_test_init.select_test_files(main, no_files = [0])
         # Multiple files
         elif i == 1:
             wl_test_init.select_test_files(main, no_files = [1, 2])
-        # TTR = 1
-        elif i == 2:
-            wl_test_init.select_test_files(main, no_files = [3])
+        # Miscellaneous
+        else:
+            wl_test_init.select_test_files(main, no_files = [i + 1])
 
         global main_global # pylint: disable=global-statement
         main_global = main
@@ -80,8 +80,14 @@ def update_gui_table(err_msg, concordance_lines):
         assert node_text_search
         # Left & Right
         assert left_text or right_text
+        assert left_text == [] or all(left_text)
+        assert right_text == [] or all(right_text)
         assert left_text_raw or right_text_raw
+        assert left_text_raw == [] or all(left_text_raw)
+        assert right_text_raw == [] or all(right_text_raw)
         assert left_text_search or right_text_search
+        assert left_text_search == [] or all(left_text_search)
+        assert right_text_search == [] or all(right_text_search)
 
         # Sentiment
         assert sentiment == 'No language support' or -1 <= sentiment <= 1

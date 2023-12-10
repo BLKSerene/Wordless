@@ -96,6 +96,9 @@ def wl_dependency_parse_text(main, inputs, lang, dependency_parser):
 def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser, tagged):
     dependencies = []
 
+    # Discard empty tokens since they are useless for dependency parsing and spacy.tokens.Doc does not accept empty strings
+    inputs = [token for token in inputs if token]
+
     if tagged:
         inputs, tags = wl_matching.split_tokens_tags(main, inputs)
 
@@ -142,7 +145,6 @@ def wl_dependency_parse_tokens(main, inputs, lang, dependency_parser, tagged):
                         token.head - token.id if token.head > 0 else 0
                     ))
 
-    # Put back tokens and tags
     if tagged:
         for i, dependency in enumerate(dependencies):
             token, head, dependency_relation, dependency_dist = dependency
