@@ -30,7 +30,7 @@ def test_concordancer_parallel():
         if i == 0:
             wl_test_init.select_test_files(main, no_files = [0, 1, 2])
         elif i == 1:
-            wl_test_init.select_test_files(main, no_files = [1, 2, 3])
+            wl_test_init.select_test_files(main, no_files = [1, 2, 3, 4])
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 

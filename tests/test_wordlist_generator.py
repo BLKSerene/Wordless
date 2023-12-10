@@ -36,14 +36,14 @@ def test_wordlist_generator():
         fillvalue = 'none'
     )):
         # Single file
-        if i % 3 == 0:
+        if i % 4 == 0:
             wl_test_init.select_test_files(main, no_files = [0])
         # Multiple files
-        elif i % 3 == 1:
+        elif i % 4 == 1:
             wl_test_init.select_test_files(main, no_files = [1, 2])
-        # TTR = 1
-        elif i % 3 == 2:
-            wl_test_init.select_test_files(main, no_files = [3])
+        # Miscellaneous
+        else:
+            wl_test_init.select_test_files(main, no_files = [i % 4 + 1])
 
         global main_global # pylint: disable=global-statement
         main_global = main

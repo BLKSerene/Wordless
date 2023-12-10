@@ -21,6 +21,7 @@
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - ??/??/2023
 ### 📌 Bugfixes
 - Utils: Fix downloading of Stanza models
+- Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark
 
 ### ⏫ Dependency Changes
 - Dependencies: Remove jieba
@@ -128,7 +129,7 @@
 
 ### 📌 Bugfixes
 - Work Area: Remove all invalid XML characters when exporting tables to Excel workbooks
-- Work Area: Fix Parallel Concordancer - Search Settings - Search for additions and deletions
+- Work Area: Fix Parallel Concordancer - searching for additions and deletions
 
 ### ⏫ Dependency Changes
 - Dependencies: Add python-mecab-ko

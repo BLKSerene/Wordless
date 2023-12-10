@@ -32,16 +32,16 @@ main_global = None
 def test_profiler():
     main = wl_test_init.Wl_Test_Main()
 
-    for i in range(3):
+    for i in range(4):
         # Single file
         if i == 0:
             wl_test_init.select_test_files(main, no_files = [0])
         # Multiple files
         elif i == 1:
             wl_test_init.select_test_files(main, no_files = [1, 2])
-        # TTR = 1
-        elif i == 2:
-            wl_test_init.select_test_files(main, no_files = [3])
+        # Miscellaneous
+        else:
+            wl_test_init.select_test_files(main, no_files = [i + 1])
 
         global main_global # pylint: disable=global-statement
         main_global = main
