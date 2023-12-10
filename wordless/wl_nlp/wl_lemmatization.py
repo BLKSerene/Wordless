@@ -157,16 +157,16 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
     return lemmas
 
 def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
-    empty_offsets = []
     lemma_tokens = []
     lemmas = []
+    empty_offsets = []
 
     if tagged:
         inputs, tags = wl_matching.split_tokens_tags(main, inputs)
     else:
         tags = [''] * len(inputs)
 
-    # Record positions of empty tokens and tags
+    # Record positions of empty tokens and tags since spacy.tokens.Doc does not accept empty strings
     for i, token in reversed(list(enumerate(inputs))):
         if not token.strip():
             empty_offsets.append(i)
