@@ -108,7 +108,7 @@ Wordless 最新版（**3.4.0**）支持 **Windows 7/8/8.1/10/11**、**macOS 10.1
 
 支持渠道|信息
 -------|----
-官方文档|[文档](/doc/doc.md)（待翻译）
+官方文档|[稳定版](https://github.com/BLKSerene/Wordless/blob/3.4.0/doc/doc_eng.md) \| [开发版](/doc/doc.md)
 视频教程|[YouTube](https://www.youtube.com/@BLKSerene) \| [B站](https://space.bilibili.com/34963752/video)
 Bug 提交|[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 使用疑问|[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)
