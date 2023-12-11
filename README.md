@@ -108,7 +108,7 @@ If you have any questions, find software bugs, need to provide feedback, or want
 
 Support Channel       |Information
 ----------------------|-----------
-Official documentation|[Documentation](/doc/doc.md)
+Official documentation|[Stable Version](https://github.com/BLKSerene/Wordless/blob/3.4.0/doc/doc_eng.md) \| [Development Version](/doc/doc.md)
 Tutorial videos       |[YouTube](https://www.youtube.com/@BLKSerene) \| [bilibili](https://space.bilibili.com/34963752/video)
 Bug reports           |[Github Issues](https://github.com/BLKSerene/Wordless/issues)
 Usage questions       |[Github Discussions](https://github.com/BLKSerene/Wordless/discussions)

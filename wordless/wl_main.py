@@ -664,7 +664,7 @@ class Wl_Dialog_Need_Help(wl_dialogs.Wl_Dialog_Info):
         self.table_need_help.setIndexWidget(
             self.table_need_help.model().index(0, 1),
             wl_labels.Wl_Label_Html(self.tr(
-                '<a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc_eng.md">Documentation</a>'
+                f'<a href="https://github.com/BLKSerene/Wordless/blob/{self.main.ver}/doc/doc.md">Stable Version</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/doc.md">Development Version</a>'
             ), self)
         )
 
