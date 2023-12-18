@@ -28,6 +28,7 @@
 - Dependencies: Upgrade Charset Normalizer to 3.3.2
 - Dependencies: Upgrade LaoNLP to 1.1.3
 - Dependencies: Upgrade Lingua to 2.0.1
+- Dependencies: Upgrade pymorphy3 to 1.3.1
 - Dependencies: Upgrade PyQt to 5.15.10
 - Dependencies: Upgrade spaCy to 3.7.2
 - Dependencies: Upgrade spacy-pkuseg to 0.0.33
