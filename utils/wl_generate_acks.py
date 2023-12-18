@@ -58,7 +58,7 @@ ACKS = [
     ['python-docx', 'https://github.com/python-openxml/python-docx', '1.1.0', 'Steve Canny', 'MIT', 'https://github.com/python-openxml/python-docx/blob/master/LICENSE'],
     ['python-mecab-ko', 'https://github.com/jonghwanhyeon/python-mecab-ko', '1.3.3', 'Jonghwan Hyeon', 'BSD-3-Clause', 'https://github.com/jonghwanhyeon/python-mecab-ko/blob/main/LICENSE'],
     ['Requests', 'https://github.com/psf/requests', '2.31.0', 'Kenneth Reitz', 'Apache-2.0', 'https://github.com/psf/requests/blob/main/LICENSE'],
-    ['Sacremoses', 'https://github.com/alvations/sacremoses', '0.0.53', 'Liling Tan', 'MIT', 'https://github.com/alvations/sacremoses/blob/master/LICENSE'],
+    ['Sacremoses', 'https://github.com/hplt-project/sacremoses', '0.1.1', 'Liling Tan, Jelmer van der Linde', 'MIT', 'https://github.com/hplt-project/sacremoses/blob/master/LICENSE'],
     ['SciPy', 'https://scipy.org/scipylib/', '1.11.3', 'SciPy Developers', 'BSD-3-Clause', 'https://github.com/scipy/scipy/blob/main/LICENSE.txt'],
     ['simplemma', 'https://github.com/adbar/simplemma', '0.9.1', 'Adrien Barbaresi', 'MIT', 'https://github.com/adbar/simplemma/blob/main/LICENSE'],
     ['spaCy', 'https://spacy.io/', '3.7.2', "Matthew Honnibal, Ines Montani, Sofie Van Landeghem,<br>Adriane Boyd, Paul O'Leary McCann", 'MIT', 'https://github.com/explosion/spaCy/blob/master/LICENSE'],
