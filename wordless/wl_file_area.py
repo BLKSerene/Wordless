@@ -26,11 +26,6 @@ import traceback
 
 import bs4
 import docx
-from docx.document import Document
-from docx.oxml.table import CT_Tbl
-from docx.oxml.text.paragraph import CT_P
-from docx.table import _Cell, Table
-from docx.text.paragraph import Paragraph
 import openpyxl
 import pypdf
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, QItemSelection, QRect, Qt
@@ -839,19 +834,20 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
 
                         new_file['text'] = soup.get_text()
                     # Word documents
+                    # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
                     elif file_ext == '.docx':
                         lines = []
                         doc = docx.Document(file_path)
 
-                        for block in self.iter_block_items(doc):
-                            if isinstance(block, docx.text.paragraph.Paragraph):
-                                lines.append(block.text)
-                            elif isinstance(block, docx.table.Table):
-                                for row in self.iter_visual_cells(block):
-                                    cells = []
-
-                                    for cell in row:
-                                        cells.append(' '.join([item.text for item in self.iter_cell_items(cell)]))
+                        for item in doc.iter_inner_content():
+                            if isinstance(item, docx.text.paragraph.Paragraph):
+                                lines.append(item.text)
+                            elif isinstance(item, docx.table.Table):
+                                for row in self.iter_visual_cells(item):
+                                    cells = [
+                                        ' '.join([cell_item.text for cell_item in self.iter_block_items(cell)])
+                                        for cell in row
+                                    ]
 
                                     lines.append('\t'.join(cells))
 
@@ -935,57 +931,31 @@ class Wl_Worker_Add_Files(wl_threading.Wl_Worker):
         self.progress_updated.emit(self.tr('Updating table...'))
         self.worker_done.emit(err_msg, new_files)
 
-    # Reference: https://github.com/python-openxml/python-docx/issues/276
-    def iter_block_items(self, parent):
-        """
-        Yield each paragraph and table child within *parent*, in document order.
-        Each returned value is an instance of either Table or Paragraph. *parent*
-        would most commonly be a reference to a main Document object, but
-        also works for a _Cell object, which itself can contain paragraphs and tables.
-        """
-        if isinstance(parent, Document):
-            parent_elm = parent.element.body
-        elif isinstance(parent, _Cell):
-            parent_elm = parent._tc
-        else:
-            raise ValueError("something's not right")
+    # Reference: https://github.com/python-openxml/python-docx/issues/40#issuecomment-1793226714
+    def iter_block_items(self, blkcntnr):
+        for item in blkcntnr.iter_inner_content():
+            if isinstance(item, docx.text.paragraph.Paragraph):
+                yield item
+            elif isinstance(item, docx.table.Table):
+                for row in self.iter_visual_cells(item):
+                    for cell in row:
+                        yield from self.iter_block_items(cell)
 
-        for child in parent_elm.iterchildren():
-            if isinstance(child, CT_P):
-                yield Paragraph(child, parent)
-            elif isinstance(child, CT_Tbl):
-                yield Table(child, parent)
-
-    def iter_cell_items(self, parent):
-        parent_elm = parent._tc
-
-        for child in parent_elm.iterchildren():
-            if isinstance(child, CT_P):
-                yield Paragraph(child, parent)
-            elif isinstance(child, CT_Tbl):
-                table = Table(child, parent)
-
-                for row in table.rows:
-                    for cell in row.cells:
-                        yield from self.iter_cell_items(cell)
-
-    # Reference: https://github.com/python-openxml/python-docx/issues/40
+    # Reference: https://github.com/python-openxml/python-docx/issues/344#issuecomment-271390490
     def iter_visual_cells(self, table):
-        prior_tcs = []
         visual_cells = []
+        prior_tcs = set()
 
         for row in table.rows:
             visual_cells.append([])
 
             for cell in row.cells:
-                this_tc = cell._tc
-
-                if this_tc in prior_tcs:  # skip cells pointing to same `<w:tc>` element
+                if cell._tc in prior_tcs: # skip cells pointing to same `<w:tc>` element
                     continue
                 else:
-                    prior_tcs.append(this_tc)
-
                     visual_cells[-1].append(cell)
+
+                    prior_tcs.add(cell._tc)
 
         return visual_cells
 
