@@ -66,7 +66,7 @@ ACKS = [
     ['Stanza', 'https://github.com/stanfordnlp/stanza', '1.5.1', 'Peng Qi (齐鹏), Yuhao Zhang (张宇浩),<br>Yuhui Zhang (张钰晖), Jason Bolton,<br>Tim Dozat, John Bauer', 'Apache-2.0', 'https://github.com/stanfordnlp/stanza/blob/main/LICENSE'],
     ['SudachiPy', 'https://github.com/WorksApplications/sudachi.rs', '0.6.7', 'Works Applications Co., Ltd.', 'Apache-2.0', 'https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE'],
     ['Underthesea', 'https://undertheseanlp.com/', '6.8.0', 'Vu Anh', 'GPL-3.0-or-later', 'https://github.com/undertheseanlp/underthesea/blob/main/LICENSE'],
-    ['wordcloud', 'https://github.com/amueller/word_cloud', '1.9.2', 'Andreas Christian Müller', 'MIT', 'https://github.com/amueller/word_cloud/blob/main/LICENSE']
+    ['wordcloud', 'https://github.com/amueller/word_cloud', '1.9.3', 'Andreas Christian Müller', 'MIT', 'https://github.com/amueller/word_cloud/blob/main/LICENSE']
 ]
 ACKS_TRS = {
     'Matplotlib Development Team': [

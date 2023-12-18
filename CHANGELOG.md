@@ -33,6 +33,7 @@
 - Dependencies: Upgrade python-docx to 1.1.0
 - Dependencies: Upgrade spaCy to 3.7.2
 - Dependencies: Upgrade spacy-pkuseg to 0.0.33
+- Dependencies: Upgrade wordcloud to 1.9.3
 
 ## [3.4.0](https://github.com/BLKSerene/Wordless/releases/tag/3.4.0) - 09/30/2023
 ### 🎉 New Features
