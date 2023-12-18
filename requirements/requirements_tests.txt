@@ -26,7 +26,7 @@ lingua-language-detector == 2.0.2
 nltk == 3.8.1
 pyphen == 0.14.0
 pythainlp == 4.0.2
-sacremoses == 0.0.53
+sacremoses == 0.1.1
 simplemma == 0.9.1
 stanza == 1.5.1
 underthesea == 6.8.0
