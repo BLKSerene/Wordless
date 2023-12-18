@@ -36,7 +36,7 @@ python-mecab-ko == 1.3.3
 python-mecab-ko-dic == 2.1.1.post2
 
 ## pymorphy3
-pymorphy3 == 1.2.1
+pymorphy3 == 1.3.1
 pymorphy3-dicts-ru == 2.4.417150.4580142
 pymorphy3-dicts-uk == 2.4.1.1.1663094765
 
