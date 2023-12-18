@@ -36,7 +36,7 @@
 12|[opencc-python](https://github.com/yichen0831/opencc-python)|0.1.7|郭家宝, Yicheng Huang|[Apache-2.0](https://github.com/yichen0831/opencc-python/blob/master/LICENSE.txt)
 13|[openpyxl](https://foss.heptapod.net/openpyxl/openpyxl)|3.1.2|Eric Gazoni, Charlie Clark|[MIT](https://foss.heptapod.net/openpyxl/openpyxl/-/blob/branch/3.1/LICENCE.rst)
 14|[PyInstaller](http://www.pyinstaller.org/)|6.0|Hartmut Goebel, Jasper Harrison, Bryan A. Jones,<br>Brénainn Woodsend, Rok Mandeljc|[Bootloader-exception](https://github.com/pyinstaller/pyinstaller/blob/develop/COPYING.txt)
-15|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)|1.2.1|Mikhail Korobov, Danylo Halaiko|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
+15|[pymorphy3](https://github.com/no-plagiarism/pymorphy3)|1.3.1|Mikhail Korobov, Danylo Halaiko|[MIT](https://github.com/no-plagiarism/pymorphy3/blob/master/LICENSE.txt)
 16|[pypdf](https://github.com/py-pdf/pypdf)|3.16.2|Mathieu Fenniak, Ashish Kulkarni, Steve Witham, Martin Thoma|[BSD-3-Clause](https://github.com/py-pdf/pypdf/blob/main/LICENSE)
 17|[Pyphen](https://pyphen.org/)|0.14.0|Guillaume Ayoub|[GPL-2.0-or-later/LGPL-2.1-or-later/MPL-1.1](https://github.com/Kozea/Pyphen/blob/master/LICENSE)
 18|[PyQt](https://riverbankcomputing.com/software/pyqt/)|5.15.10|Riverbank Computing|[Commercial-License/GPL-3.0-only](https://www.riverbankcomputing.com/static/Docs/PyQt5/introduction.html#license)
