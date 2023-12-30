@@ -875,6 +875,7 @@ def init_settings_global():
                 _tr('init_settings_global', 'Stanza - Sanskrit part-of-speech tagger'): 'stanza_san',
                 _tr('init_settings_global', 'Stanza - Scottish Gaelic part-of-speech tagger'): 'stanza_gla',
                 _tr('init_settings_global', 'Stanza - Serbian (Latin) part-of-speech tagger'): 'stanza_srp_latn',
+                _tr('init_settings_global', 'Stanza - Sindhi part-of-speech tagger'): 'stanza_snd',
                 _tr('init_settings_global', 'Stanza - Slovak part-of-speech tagger'): 'stanza_slk',
                 _tr('init_settings_global', 'Stanza - Slovenian part-of-speech tagger'): 'stanza_slv',
                 _tr('init_settings_global', 'Stanza - Sorbian (Upper) part-of-speech tagger'): 'stanza_hsb',
@@ -1724,7 +1725,8 @@ def init_settings_global():
 
             'other': [
                 'nltk_punkt_eng',
-                'spacy_sentencizer'
+                'spacy_sentencizer',
+                'stanza_eng'
             ]
         },
 
@@ -2622,6 +2624,7 @@ def init_settings_global():
             'san': ['stanza_san'],
             'gla': ['stanza_gla'],
             'srp_latn': ['stanza_srp_latn'],
+            'snd': ['stanza_snd'],
             'slk': ['stanza_slk'],
 
             'slv': [

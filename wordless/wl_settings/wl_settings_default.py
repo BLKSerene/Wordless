@@ -1543,6 +1543,7 @@ def init_settings_default(main):
                     'san': 'stanza_san',
                     'gla': 'stanza_gla',
                     'srp_latn': 'stanza_srp_latn',
+                    'snd': 'stanza_snd',
                     'slk': 'stanza_slk',
                     'slv': 'spacy_slv',
                     'hsb': 'stanza_hsb',

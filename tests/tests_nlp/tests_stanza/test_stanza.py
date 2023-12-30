@@ -42,20 +42,20 @@ def wl_test_stanza(
     else:
         lang_stanza = lang
 
-    if lang_stanza in wl_nlp_utils.LANGS_STANZA_TOKENIZERS:
+    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'word_tokenizers'):
         wl_test_sentence_tokenize(lang, results_sentence_tokenize)
         wl_test_word_tokenize(lang, results_word_tokenize)
 
-    if lang_stanza in wl_nlp_utils.LANGS_STANZA_POS_TAGGERS:
+    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'pos_taggers'):
         wl_test_pos_tag(lang, results_pos_tag, results_pos_tag_universal)
 
-    if lang_stanza in wl_nlp_utils.LANGS_STANZA_LEMMATIZERS:
+    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'lemmatizers'):
         wl_test_lemmatize(lang, results_lemmatize)
 
-    if lang_stanza in wl_nlp_utils.LANGS_STANZA_DEPENDENCY_PARSERS:
+    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'dependency_parsers'):
         wl_test_dependency_parse(lang, results_dependency_parse)
 
-    if lang_stanza in wl_nlp_utils.LANGS_STANZA_SENTIMENT_ANALYZERS:
+    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'sentiment_analyzers'):
         wl_test_sentiment_analyze(lang, results_sentiment_analayze)
 
 def wl_test_get_lang_util(main, lang):
