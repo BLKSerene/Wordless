@@ -104,39 +104,14 @@ LANGS_SPACY_LEMMATIZERS = [
     'tur', 'urd'
 ]
 
-LANGS_STANZA_TOKENIZERS = [
-    'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'mya', 'bxr', 'cat',
-    'lzh', 'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng',
-    'myv', 'est', 'fao', 'fin', 'fra', 'fro', 'glg', 'deu', 'got', 'grc',
-    'ell', 'hbo', 'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn',
-    'kaz', 'kor', 'kmr', 'kir', 'lat', 'lav', 'lij', 'lit', 'mlt', 'glv',
-    'mar', 'pcm', 'nob', 'nno', 'fas', 'pol', 'qpm', 'por', 'ron', 'rus',
-    'orv', 'sme', 'san', 'gla', 'srp_latn', 'snd', 'slk', 'slv', 'hsb', 'spa',
-    'swe', 'tam', 'tel', 'tha', 'tur', 'ukr', 'urd', 'uig', 'vie', 'cym',
-    'wol', 'other'
-]
-LANGS_STANZA_POS_TAGGERS = [
-    'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
-    'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng', 'myv',
-    'est', 'fao', 'fin', 'fra', 'fro', 'glg', 'deu', 'got', 'grc', 'ell',
-    'hbo', 'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz',
-    'kor', 'kmr', 'kir', 'lat', 'lav', 'lij', 'lit', 'mlt', 'glv', 'mar',
-    'pcm', 'nob', 'nno', 'fas', 'pol', 'qpm', 'por', 'ron', 'rus', 'orv',
-    'sme', 'san', 'gla', 'srp_latn', 'slk', 'slv', 'hsb', 'spa', 'swe', 'tam',
-    'tel', 'tur', 'ukr', 'urd', 'uig', 'vie', 'cym', 'wol'
-]
-LANGS_STANZA_LEMMATIZERS = [
-    'afr', 'ara', 'hye', 'hyw', 'eus', 'bel', 'bul', 'bxr', 'cat', 'lzh',
-    'zho_cn', 'zho_tw', 'chu', 'cop', 'hrv', 'ces', 'dan', 'nld', 'eng', 'myv',
-    'est', 'fin', 'fra', 'fro', 'glg', 'deu', 'got', 'grc', 'ell', 'hbo',
-    'heb', 'hin', 'hun', 'isl', 'ind', 'gle', 'ita', 'jpn', 'kaz', 'kor',
-    'kmr', 'kir', 'lat', 'lav', 'lij', 'lit', 'glv', 'mar', 'pcm', 'nob',
-    'nno', 'fas', 'pol', 'qpm', 'por', 'ron', 'rus', 'orv', 'sme', 'san',
-    'gla', 'srp_latn', 'slk', 'slv', 'hsb', 'spa', 'swe', 'tam', 'tur', 'ukr',
-    'urd', 'uig', 'cym', 'wol'
-]
-LANGS_STANZA_DEPENDENCY_PARSERS = LANGS_STANZA_POS_TAGGERS
-LANGS_STANZA_SENTIMENT_ANALYZERS = ['zho_cn', 'eng', 'deu', 'mar', 'spa', 'vie']
+def get_langs_stanza(main, util_type):
+    langs_stanza = set()
+
+    for lang_code, lang_utils in main.settings_global[util_type].items():
+        if any(('stanza' in lang_util for lang_util in lang_utils)):
+            langs_stanza.add(lang_code)
+
+    return langs_stanza
 
 def check_models(main, langs, lang_utils = None):
     def update_gui_stanza(main, err_msg):
@@ -203,10 +178,7 @@ def check_models(main, langs, lang_utils = None):
                 else:
                     lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
             elif util.startswith('stanza_'):
-                if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
-                    lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
-                else:
-                    lang_stanza = lang
+                lang_stanza = lang
 
             if (
                 util.startswith('spacy_')
@@ -232,7 +204,7 @@ def check_models(main, langs, lang_utils = None):
                         models_ok = False
             elif (
                 util.startswith('stanza_')
-                and lang_stanza in LANGS_STANZA_TOKENIZERS
+                and lang_stanza in get_langs_stanza(main, util_type = 'word_tokenizers')
             ):
                 worker_download_model = Wl_Worker_Download_Model_Stanza(
                     main,
@@ -322,15 +294,15 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
 
             processors = []
 
-            if self.lang in LANGS_STANZA_TOKENIZERS:
+            if self.lang in get_langs_stanza(self.main, util_type = 'word_tokenizers'):
                 processors.append('tokenize')
-            if self.lang in LANGS_STANZA_POS_TAGGERS:
+            if self.lang in get_langs_stanza(self.main, util_type = 'pos_taggers'):
                 processors.append('pos')
-            if self.lang in LANGS_STANZA_LEMMATIZERS:
+            if self.lang in get_langs_stanza(self.main, util_type = 'lemmatizers'):
                 processors.append('lemma')
-            if self.lang in LANGS_STANZA_DEPENDENCY_PARSERS:
+            if self.lang in get_langs_stanza(self.main, util_type = 'dependency_parsers'):
                 processors.append('depparse')
-            if self.lang in LANGS_STANZA_SENTIMENT_ANALYZERS:
+            if self.lang in get_langs_stanza(self.main, util_type = 'sentiment_analyzers'):
                 processors.append('sentiment')
 
             if self.lang == 'zho_cn':
@@ -347,6 +319,7 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
             stanza.download(
                 lang = lang_stanza,
                 model_dir = model_dir,
+                package = 'default',
                 processors = processors,
                 proxies = wl_misc.wl_get_proxies(self.main),
                 download_json = False
@@ -413,7 +386,7 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
         processors = ['tokenize', 'sentiment']
 
     if (
-        lang in LANGS_STANZA_TOKENIZERS
+        lang in get_langs_stanza(main, util_type = 'word_tokenizers')
         and (
             f'stanza_nlp_{lang}' not in main.__dict__
             or set(processors) != set(main.__dict__[f'stanza_nlp_{lang}'].processors)
@@ -439,6 +412,7 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
         main.__dict__[f'stanza_nlp_{lang}'] = stanza.Pipeline(
             lang = lang_stanza,
             dir = model_dir,
+            package = 'default',
             processors = processors,
             download_method = None,
             tokenize_pretokenized = tokenized
