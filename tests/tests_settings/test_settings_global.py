@@ -28,6 +28,7 @@ import spacy
 import spacy_lookups_data
 
 from tests import wl_test_init
+from wordless.wl_nlp import wl_nlp_utils
 from wordless.wl_settings import wl_settings_global
 from wordless.wl_utils import wl_conversion
 
@@ -332,6 +333,13 @@ class Check_Settings_Global():
                     langs.append(lang_code)
 
             self.check_missing_extra_langs(langs_supported, langs, f"Stanza's {msg_lang_util}")
+
+        assert set(langs_stanza_sentence_tokenizers) | {'other'} == wl_nlp_utils.get_langs_stanza(main, util_type = 'sentence_tokenizers')
+        assert set(langs_stanza_word_tokenizers) | {'other'} == wl_nlp_utils.get_langs_stanza(main, util_type = 'word_tokenizers')
+        assert set(langs_stanza_pos_taggers) == wl_nlp_utils.get_langs_stanza(main, util_type = 'pos_taggers')
+        assert set(langs_stanza_lemmatizers) == wl_nlp_utils.get_langs_stanza(main, util_type = 'lemmatizers')
+        assert set(langs_stanza_dependency_parsers) == wl_nlp_utils.get_langs_stanza(main, util_type = 'dependency_parsers')
+        assert set(langs_stanza_sentiment_analyzers) == wl_nlp_utils.get_langs_stanza(main, util_type = 'sentiment_analyzers')
 
         # Check for missing and extra languages
         settings_langs = [lang[0] for lang in settings_global['langs'].values()]
