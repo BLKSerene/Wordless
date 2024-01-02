@@ -23,7 +23,7 @@ from wordless.wl_nlp import (
 )
 from wordless.wl_utils import wl_conversion
 
-main = wl_test_init.Wl_Test_Main()
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'spacy')
 
 def wl_test_spacy(
     lang,

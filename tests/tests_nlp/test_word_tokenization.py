@@ -24,8 +24,7 @@ from wordless.wl_utils import wl_misc
 
 _, is_macos, _ = wl_misc.check_os()
 
-main = wl_test_init.Wl_Test_Main()
-wl_test_init.change_default_tokenizers(main)
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 test_word_tokenizers = []
 test_word_tokenizers_local = []
@@ -234,8 +233,8 @@ def test_word_tokenize(lang, word_tokenizer):
             assert tokens == ['मराठी', 'भाषा', 'ही', 'इंडो', '-', 'युरोपीय', 'भाषाकुळातील', 'एक', 'भाषा', 'आहे', '.']
         else:
             tests_lang_util_skipped = True
-    elif lang == 'mni':
-        assert tokens == ['ꯃꯤꯇꯩꯂꯣꯟ', 'ꯍꯥꯏꯕꯁꯤ', 'ꯏꯟꯗꯤꯌꯥ', 'ꯑꯋꯥꯡ-ꯅꯣꯡꯄꯣꯛꯇ', 'ꯂꯩꯕ', 'ꯃꯅꯤꯄꯨꯔꯗ', 'ꯃꯔꯨꯑꯣꯏꯅ', 'ꯉꯥꯡꯅꯕ', 'ꯇꯤꯕꯦꯇꯣ-ꯕꯔꯃꯟ', 'ꯀꯥꯡꯂꯨꯞꯇ', 'ꯆꯤꯡꯕ', 'ꯂꯣꯟ', 'ꯑꯃꯅꯤ', '꯫', 'ꯚꯥꯔꯠ', 'ꯂꯩꯉꯥꯛꯅꯥ', 'ꯁꯛꯈꯪꯂꯕ', 'ꯂꯣꯟ', '꯲꯲', 'ꯁꯤꯡꯒꯤ', 'ꯃꯅꯨꯡꯗ', 'ꯃꯤꯇꯩꯂꯣꯟꯁꯤꯁꯨ', 'ꯑꯃꯅꯤ', '꯫', 'ꯃꯤꯇꯩꯂꯣꯟ', 'ꯑꯁꯤ', 'ꯏꯟꯗꯤꯌꯥꯒꯤ', 'ꯁ', '꯭', 'ꯇꯦꯠ', 'ꯑꯣꯏꯔꯤꯕ', 'ꯑꯁꯥꯝ', 'ꯑꯃꯁꯨꯡ', 'ꯇ', '꯭', 'ꯔꯤꯄꯨꯔꯥ', 'ꯑꯃꯗꯤ', 'ꯑꯇꯩ', 'ꯂꯩꯕꯥꯛꯁꯤꯡꯗ', 'ꯍꯥꯏꯕꯗꯤ', 'ꯕꯥꯡꯂꯥꯗꯦꯁ', 'ꯑꯃꯁꯨꯡ', 'ꯑꯋꯥꯗꯁꯨ', 'ꯉꯥꯡꯅꯩ', '꯫', 'ꯏꯪ', 'ꯀꯨꯝꯖ', '꯲꯰꯱꯱', 'ꯒꯤ', 'ꯃꯤꯀꯣꯛ', 'ꯊꯤꯕꯗ', 'ꯃꯤꯇꯩꯂꯣꯟꯕꯨ', 'ꯏꯃꯥꯂꯣꯟ', 'ꯑꯣꯢꯅ', 'ꯉꯥꯡꯕꯒꯤ', 'ꯃꯤꯁꯤꯡ', 'ꯂꯤꯆꯥ', '꯱꯸', 'ꯃꯨꯛ', 'ꯁꯨꯢ', '꯫']
+    elif lang == 'mni_mtei':
+        assert tokens == ['ꯃꯤꯇꯩꯂꯣꯟ', '(', 'ꯃꯤꯇꯩꯂꯣꯜ', ')', 'ꯅꯠꯇ', '꯭', 'ꯔꯒ', 'ꯃꯩꯇꯩꯂꯣꯟ', '(', 'ꯃꯩꯇꯩꯂꯣꯜ', ')', 'ꯅꯠꯇ', '꯭', 'ꯔꯒ', 'ꯃꯅꯤꯄꯨꯔꯤ', 'ꯂꯣꯟ', '(', 'ꯃꯅꯤꯄꯨꯔꯤ', 'ꯂꯣꯜ', ')', 'ꯑꯁꯤ', 'ꯑꯋꯥꯡ-ꯅꯣꯡꯄꯣꯛ', 'ꯏꯟꯗꯤꯌꯥꯒꯤ', 'ꯃꯅꯤꯄꯨꯔꯗ', 'ꯃꯄꯨꯡ', 'ꯑꯣꯢꯅ', 'ꯉꯥꯡꯅꯕ', 'ꯂꯣꯟ', 'ꯑꯃꯅꯤ', '꯫']
     elif lang == 'nep':
         assert tokens == ['नेपाली', 'भाषा', '(', 'अन्तर्राष्ट्रिय', 'ध्वन्यात्मक', 'वर्णमाला', '[', 'neˈpali', 'bʱaʂa', ']', ')', 'नेपालको', 'सम्पर्क', 'भाषा', 'तथा', 'भारत', ',', 'भुटान', 'र', 'म्यानमारको', 'केही', 'भागमा', 'मातृभाषाको', 'रूपमा', 'बोलिने', 'भाषा', 'हो', '।']
     elif lang == 'nob':
@@ -249,7 +248,7 @@ def test_word_tokenize(lang, word_tokenizer):
     elif lang.startswith('por_'):
         assert tokens == ['A', 'língua', 'portuguesa', ',', 'também', 'designada', 'português', ',', 'é', 'uma', 'língua', 'indo-europeia', 'românica', 'flexiva', 'ocidental', 'originada', 'no', 'galego-português', 'falado', 'no', 'Reino', 'da', 'Galiza', 'e', 'no', 'norte', 'de', 'Portugal', '.']
     elif lang == 'pan_guru':
-        assert tokens == ['ਪੰਜਾਬੀ', 'ਭਾਸ਼ਾ', '/', 'pʌnˈdʒɑːbi', '/', '(', 'ਸ਼ਾਹਮੁਖੀ', ':', '\u200e', 'پنجابی', '\u200e', ')', '(', 'ਗੁਰਮੁਖੀ', ':', 'ਪੰਜਾਬੀ', ')', 'ਪੰਜਾਬ', 'ਦੀ', 'ਭਾਸ਼ਾ', ',', 'ਜਿਸ', 'ਨੂੰ', 'ਪੰਜਾਬ', 'ਖੇਤਰ', 'ਦੇ', 'ਵਸਨੀਕ', 'ਜਾਂ', 'ਸੰਬੰਧਿਤ', 'ਲੋਕ', 'ਬੋਲਦੇ', 'ਹਨ', '।', '[', '1', ']']
+        assert tokens == ['ਪੰਜਾਬੀ', 'ਭਾਸ਼ਾ', '(', 'ਸ਼ਾਹਮੁਖੀ', ':', '\u200e', 'پنجابی', ',', 'ਪੰਜਾਬੀ', ')', 'ਪੰਜਾਬ', 'ਦੀ', 'ਭਾਸ਼ਾ', 'ਹੈ', ',', 'ਜਿਸ', 'ਨੂੰ', 'ਪੰਜਾਬ', 'ਖੇਤਰ', 'ਦੇ', 'ਵਸਨੀਕ', 'ਜਾਂ', 'ਸੰਬੰਧਿਤ', 'ਲੋਕ', 'ਬੋਲਦੇ', 'ਹਨ', '।', '[', '18', ']']
     elif lang == 'ron':
         assert tokens == ['Limba', 'română', 'este', 'o', 'limbă', 'indo-europeană', 'din', 'grupul', 'italic', 'și', 'din', 'subgrupul', 'oriental', 'al', 'limbilor', 'romanice', '.']
     elif lang == 'rus':

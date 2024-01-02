@@ -46,7 +46,6 @@ LANG_TEXTS_NLTK = {
     'ita': 'italian',
     'mal': 'malayalam',
     'nob': 'norwegian',
-    'nno': 'norwegian',
     'pol': 'polish',
     'por_br': 'portuguese',
     'por_pt': 'portuguese',

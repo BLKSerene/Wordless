@@ -30,6 +30,7 @@ sacremoses == 0.1.1
 simplemma == 0.9.1
 stanza == 1.7.0
 underthesea == 6.8.0
+vaderSentiment == 3.3.2
 
 ## python-mecab-ko
 python-mecab-ko == 1.3.3

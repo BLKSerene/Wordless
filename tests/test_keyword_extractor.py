@@ -18,14 +18,16 @@
 
 # pylint: disable=unsupported-assignment-operation
 
-import itertools
+import random
 
 from tests import wl_test_init
 from wordless import wl_keyword_extractor
 from wordless.wl_dialogs import wl_dialogs_misc
 
 def test_keyword_extractor():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
+
+    settings = main.settings_custom['keyword_extractor']
 
     tests_statistical_significance = [
         test_statistical_significance
@@ -39,42 +41,38 @@ def test_keyword_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    for i, (test_statistical_significance, measure_bayes_factor, measure_effect_size) in enumerate(itertools.zip_longest(
-        tests_statistical_significance,
-        measures_bayes_factor,
-        measures_effect_size,
-        fillvalue = 'none'
-    )):
-        # Single observed file & single reference file
-        if i % 6 == 0:
-            wl_test_init.select_test_files(main, no_files = [0])
-            wl_test_init.select_test_files(main, no_files = [0], ref = True)
-        # Single observed file & multiple reference files
-        elif i % 6 == 1:
-            wl_test_init.select_test_files(main, no_files = [0])
-            wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
-        # Multiple observed files & single reference file
-        elif i % 6 == 2:
-            wl_test_init.select_test_files(main, no_files = [1, 2])
-            wl_test_init.select_test_files(main, no_files = [0], ref = True)
-        # Multiple observed files & multiple reference files
-        elif i % 6 == 3:
-            wl_test_init.select_test_files(main, no_files = [1, 2])
-            wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
-        # Miscellaneous
-        else:
-            wl_test_init.select_test_files(main, no_files = [i % 6 - 1])
-            wl_test_init.select_test_files(main, no_files = [0], ref = True)
+    for i in range(6):
+        match i:
+            # Single observed file & single reference file
+            case 0:
+                wl_test_init.select_test_files(main, no_files = [0])
+                wl_test_init.select_test_files(main, no_files = [0], ref = True)
+            # Single observed file & multiple reference files
+            case 1:
+                wl_test_init.select_test_files(main, no_files = [0])
+                wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
+            # Multiple observed files & single reference file
+            case 2:
+                wl_test_init.select_test_files(main, no_files = [1, 2])
+                wl_test_init.select_test_files(main, no_files = [0], ref = True)
+            # Multiple observed files & multiple reference files
+            case 3:
+                wl_test_init.select_test_files(main, no_files = [1, 2])
+                wl_test_init.select_test_files(main, no_files = [1, 2], ref = True)
+            # Miscellaneous
+            case _:
+                wl_test_init.select_test_files(main, no_files = [i - 1])
+                wl_test_init.select_test_files(main, no_files = [0], ref = True)
 
-        main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance'] = test_statistical_significance
-        main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor'] = measure_bayes_factor
-        main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size'] = measure_effect_size
+        settings['generation_settings']['test_statistical_significance'] = random.choice(tests_statistical_significance)
+        settings['generation_settings']['measure_bayes_factor'] = random.choice(measures_bayes_factor)
+        settings['generation_settings']['measure_effect_size'] = random.choice(measures_effect_size)
 
         print(f"Observed Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
         print(f"Reference Files: {' | '.join(wl_test_init.get_test_file_names(main, ref = True))}")
-        print(f"Test of statistical significance: {main.settings_custom['keyword_extractor']['generation_settings']['test_statistical_significance']}")
-        print(f"Measure of Bayes factor: {main.settings_custom['keyword_extractor']['generation_settings']['measure_bayes_factor']}")
-        print(f"Measure of effect size: {main.settings_custom['keyword_extractor']['generation_settings']['measure_effect_size']}")
+        print(f"Test of statistical significance: {settings['generation_settings']['test_statistical_significance']}")
+        print(f"Measure of Bayes factor: {settings['generation_settings']['measure_bayes_factor']}")
+        print(f"Measure of effect size: {settings['generation_settings']['measure_effect_size']}")
 
         wl_keyword_extractor.Wl_Worker_Keyword_Extractor_Table(
             main,

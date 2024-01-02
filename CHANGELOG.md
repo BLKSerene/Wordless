@@ -18,12 +18,17 @@
 
 <div align="center"><h1>📄 Changelog</h1></div>
 
-## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - ??/??/2023
+## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - ??/??/2024
+### 🎉 New Features
+- Utils: Add Stanza's Sindhi part-of-speech tagger
+- Utils: Add VADER's sentiment analyzers
+
 ### 📌 Bugfixes
 - Utils: Fix downloading of Stanza models
 - Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark
 
 ### ⏫ Dependency Changes
+- Dependencies: Add VADER
 - Dependencies: Remove jieba
 - Dependencies: Upgrade Charset Normalizer to 3.3.2
 - Dependencies: Upgrade LaoNLP to 1.1.3
@@ -41,10 +46,7 @@
 ### 🎉 New Features
 - Settings: Add Settings - Measures - Lexical Diversity
 - Utils: Add LaoNLP's Lao sentence tokenizer, word tokenizer, part-of-speech taggers, and stop word list
-- Utils: Add Stanza's Chinese (Simplified), English, German, Marathi, Spanish, and Vietnamese sentiment analyzer
-- Utils: Add Stanza's Afrikaans, Arabic, Armenian (Eastern), Armenian (Western), Basque, Belarusian, Bulgarian, Burmese, Buryat (Russia), Catalan, Chinese (Classical), Chinese (Simplified), Chinese (Traditional), Church Slavonic (Old), Coptic, Croatian, Czech, Danish, Dutch, English, Erzya, Estonian, Faroese, Finnish, French, French (Old), Galician, German, Gothic, Greek (Ancient), Greek (Modern), Hebrew (Ancient), Hebrew (Modern), Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish (Kurmanji), Kyrgyz, Latin, Latvian, Ligurian, Lithuanian, Maltese, Manx, Marathi, Nigerian Pidgin, Norwegian Bokmål, Norwegian Nynorsk, Persian, Polish, Pomak, Portuguese, Romanian, Russian, Russian (Old), Sámi (Northern), Sanskrit, Scottish Gaelic, Serbian (Latin), Sindhi, Slovak, Slovenian, Sorbian (Upper), Spanish, Swedish, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uyghur, Vietnamese, Welsh, and Wolof sentence tokenizers / word tokenizers
-- Utils: Add Stanza's Afrikaans, Arabic, Armenian (Eastern), Armenian (Western), Basque, Belarusian, Bulgarian, Buryat (Russia), Catalan, Chinese (Classical), Chinese (Simplified), Chinese (Traditional), Church Slavonic (Old), Coptic, Croatian, Czech, Danish, Dutch, English, Erzya, Estonian, Faroese, Finnish, French, French (Old), Galician, German, Gothic, Greek (Ancient), Greek (Modern), Hebrew (Ancient), Hebrew (Modern), Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish (Kurmanji), Kyrgyz, Latin, Latvian, Ligurian, Lithuanian, Maltese, Manx, Marathi, Nigerian Pidgin, Norwegian Bokmål, Norwegian Nynorsk, Persian, Polish, Pomak, Portuguese, Romanian, Russian, Russian (Old), Sámi (Northern), Sanskrit, Scottish Gaelic, Serbian (Latin), Slovak, Slovenian, Sorbian (Upper), Spanish, Swedish, Tamil, Telugu, Turkish, Ukrainian, Urdu, Uyghur, Vietnamese, Welsh, and Wolof part-of-speech taggers / dependency parsers
-- Utils: Add Stanza's Afrikaans, Arabic, Armenian (Eastern), Armenian (Western), Basque, Belarusian, Bulgarian, Buryat (Russia), Catalan, Chinese (Classical), Chinese (Simplified), Chinese (Traditional), Church Slavonic (Old), Coptic, Croatian, Czech, Danish, Dutch, English, Erzya, Estonian, Finnish, French, French (Old), Galician, German, Gothic, Greek (Ancient), Greek (Modern), Hebrew (Ancient), Hebrew (Modern), Hindi, Hungarian, Icelandic, Indonesian, Irish, Italian, Japanese, Kazakh, Korean, Kurdish (Kurmanji), Kyrgyz, Latin, Latvian, Ligurian, Lithuanian, Manx, Marathi, Nigerian Pidgin, Norwegian Bokmål, Norwegian Nynorsk, Persian, Polish, Pomak, Portuguese, Romanian, Russian, Russian (Old), Sámi (Northern), Sanskrit, Scottish Gaelic, Serbian (Latin), Slovak, Slovenian, Sorbian (Upper), Spanish, Swedish, Tamil, Turkish, Ukrainian, Urdu, Uyghur, Welsh, and Wolof lemmatizers
+- Utils: Add Stanza's sentence tokenizers, word tokenizers, part-of-speech taggers, lemmatizers, dependency parsers, and sentiment analyzers
 - Work Area: Add Profiler - Lexical Diversity - Corrected TTR / Fisher's Index of Diversity / Herdan's Vₘ / HD-D / LogTTR / Measure of Textual Lexical Diversity / Moving-average TTR / Popescu-Mačutek-Altmann's B₁ / Popescu-Mačutek-Altmann's B₂ / Popescu-Mačutek-Altmann's B₃ / Popescu-Mačutek-Altmann's B₄ / Popescu-Mačutek-Altmann's B₅ / Popescu's R₁ / Popescu's R₂ / Popescu's R₃ / Popescu's R₄ / Repeat Rate / Root TTR / Shannon Entropy / Simpleson's l / vocd-D / Yule's Characteristic K / Yule's Index of Diversity
 
 ### ✨ Improvements

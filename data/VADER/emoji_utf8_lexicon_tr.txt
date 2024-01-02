@@ -1,0 +1,3570 @@
+😀	sırıtan yüz
+😁	gülen gözlerle ışıldayan yüz
+😂	sevinç gözyaşlarıyla karşı karşıya
+🤣	yerde yuvarlanarak gülüyorum
+😃	iri gözlü sırıtan yüz
+😄	gülen gözlerle sırıtan yüz
+😅	terden sırıtan yüz
+😆	sırıtan şaşı yüz
+😉	göz kırpan yüz
+😊	gülen gözlerle gülen yüz
+😋	yemeğin tadını çıkaran yüz
+😎	güneş gözlüğü ile gülen yüz
+😍	kalp gözlü gülen yüz
+😘	öpücük gönderen yüz
+🥰	3 kalpli gülen yüz
+😗	öpüşen yüz
+😙	gülen gözlerle yüz öpmek
+😚	gözleri kapalı öpüşen yüz
+☺️	Gülen yüz
+☺	Gülen yüz
+🙂	hafifçe gülen yüz
+🤗	sarılma yüz
+🤩	yıldız çarpmış
+🤔	düşünen yüz
+🤨	kaşını kaldırmış yüz
+😐	nötr yüz
+😑	ifadesiz yüz
+😶	ağızsız yüz
+🙄	dönen gözlerle yüz
+😏	sırıtan yüz
+😣	azimli yüz
+😥	üzgün ama rahatlamış yüz
+😮	ağzı açık yüz
+🤐	fermuar ağızlı yüz
+😯	sessiz yüz
+😪	uykulu yüz
+😫	yorgun yüz
+😴	uyuyan yüz
+😌	rahatlamış yüz
+😛	dil ile yüz
+😜	diliyle göz kırpan yüz
+😝	dil ile yüzü kısmak
+🤤	salya akan yüz
+😒	eğlenmeyen yüz
+😓	terden mahzun yüz
+😔	dalgın yüz
+😕	şaşkın yüz
+🙃	ters yüz
+🤑	para ağızlı yüz
+😲	şaşkın yüz
+☹️	kaşlarını çatan yüz
+☹	kaşlarını çatan yüz
+🙁	hafifçe kaşlarını çatan yüz
+😖	şaşkın yüz
+😞	hayal kırıklığına uğramış yüz
+😟	endişeli yüz
+😤	burnundan buhar çıkan yüz
+😢	ağlayan yüz
+😭	yüksek sesle ağlayan yüz
+😦	ağzı açık, çatık yüz
+😧	acı dolu yüz
+😨	korkulu yüz
+😩	yorgun yüz
+🤯	patlayan kafa
+😬	yüzünü buruşturan yüz
+😰	terli endişeli yüz
+😱	korku içinde çığlık atan yüz
+🥵	sıcak yüz
+🥶	soğuk yüz
+😳	kızarık surat
+🤪	çılgın yüz
+😵	baş dönmesi
+😡	somurtkan yüz
+😠	kızgın surat
+🤬	ağzında semboller olan yüz
+😷	tıbbi maskeli yüz
+🤒	termometre ile yüz
+🤕	baş bandajlı yüz
+🤢	mide bulandırıcı yüz
+🤮	yüz kusma
+🤧	hapşıran yüz
+😇	halo ile gülümseyen yüz
+🤠	kovboy şapkası yüz
+🥳	parti yüzü
+🥴	sersem yüz
+🥺	yalvaran yüz
+🤥	yalan söyleyen yüz
+🤫	suskun yüz
+🤭	el ağzı üzerinde yüz
+🧐	tek gözlük ile yüz
+🤓	inek yüzü
+😈	boynuzlu gülümseyen yüz
+👿	boynuzlu kızgın yüz
+🤡	Palyaço yüzü
+👹	dev
+👺	goblin
+💀	kafatası
+☠️	kurukafa ve kırık kemikler
+☠	kurukafa ve kırık kemikler
+👻	hayalet
+👽	yabancı
+👾	uzaylı canavar
+🤖	robot yüz
+💩	kaka yığını
+😺	sırıtan kedi yüzü
+😸	gülümseyen gözlerle sırıtan kedi yüzü
+😹	sevinç gözyaşları döken kedi yüzü
+😻	kalp gözlü gülümseyen kedi yüzü
+😼	alaycı bir gülümsemeyle kedi surat
+😽	kedi yüzünü öpmek
+🙀	yorgun kedi suratı
+😿	ağlayan kedi suratı
+😾	somurtan kedi suratı
+🙈	kötülük görmeyen maymun
+🙉	kötülüğü duymayan maymun
+🙊	kötülükten bahsetme maymun
+🏻	açık cilt tonu
+🏼	orta açık cilt tonu
+🏽	orta cilt tonu
+🏾	orta koyu cilt tonu
+🏿	koyu cilt tonu
+👶	Bebek
+👶🏻	bebek: açık cilt tonu
+👶🏼	bebek: orta açık cilt tonu
+👶🏽	bebek: orta cilt tonu
+👶🏾	bebek: orta koyu cilt tonu
+👶🏿	bebek: koyu cilt tonu
+🧒	çocuk
+🧒🏻	çocuk: açık cilt tonu
+🧒🏼	çocuk: orta açık cilt tonu
+🧒🏽	çocuk: orta cilt tonu
+🧒🏾	çocuk: orta koyu cilt tonu
+🧒🏿	çocuk: koyu cilt tonu
+👦	erkek çocuk
+👦🏻	oğlan: açık cilt tonu
+👦🏼	oğlan: orta açık cilt tonu
+👦🏽	oğlan: orta cilt tonu
+👦🏾	oğlan: orta koyu cilt tonu
+👦🏿	oğlan: koyu cilt tonu
+👧	kız
+👧🏻	kız: açık cilt tonu
+👧🏼	kız: orta açık cilt tonu
+👧🏽	kız: orta cilt tonu
+👧🏾	kız: orta koyu cilt tonu
+👧🏿	kız: koyu cilt tonu
+🧑	yetişkin
+🧑🏻	yetişkin: açık cilt tonu
+🧑🏼	yetişkin: orta açık cilt tonu
+🧑🏽	yetişkin: orta cilt tonu
+🧑🏾	yetişkin: orta koyu cilt tonu
+🧑🏿	yetişkin: koyu cilt tonu
+👨	Adam
+👨🏻	erkek: açık cilt tonu
+👨🏼	erkek: orta açık cilt tonu
+👨🏽	erkek: orta cilt tonu
+👨🏾	erkek: orta koyu cilt tonu
+👨🏿	erkek: koyu cilt tonu
+👩	kadın
+👩🏻	kadın: açık cilt tonu
+👩🏼	kadın: orta açık cilt tonu
+👩🏽	kadın: orta cilt tonu
+👩🏾	kadın: orta koyu cilt tonu
+👩🏿	kadın: koyu cilt tonu
+🧓	yaşlı yetişkin
+🧓🏻	yaşlı yetişkin: açık cilt tonu
+🧓🏼	yaşlı yetişkin: orta açık cilt tonu
+🧓🏽	yaşlı yetişkin: orta cilt tonu
+🧓🏾	yaşlı yetişkin: orta koyu cilt tonu
+🧓🏿	yaşlı yetişkin: koyu cilt tonu
+👴	yaşlı adam
+👴🏻	yaşlı adam: açık cilt tonu
+👴🏼	yaşlı adam: orta açık cilt tonu
+👴🏽	yaşlı adam: orta cilt tonu
+👴🏾	yaşlı adam: orta koyu cilt tonu
+👴🏿	yaşlı adam: koyu cilt tonu
+👵	yaşlı kadın
+👵🏻	yaşlı kadın: açık cilt tonu
+👵🏼	yaşlı kadın: orta açık cilt tonu
+👵🏽	yaşlı kadın: orta cilt tonu
+👵🏾	yaşlı kadın: orta koyu cilt tonu
+👵🏿	yaşlı kadın: koyu cilt tonu
+👨‍⚕️	erkek sağlık çalışanı
+👨‍⚕	erkek sağlık çalışanı
+👨🏻‍⚕️	erkek sağlık çalışanı: açık cilt tonu
+👨🏻‍⚕	erkek sağlık çalışanı: açık cilt tonu
+👨🏼‍⚕️	erkek sağlık çalışanı: orta açık cilt tonu
+👨🏼‍⚕	erkek sağlık çalışanı: orta açık cilt tonu
+👨🏽‍⚕️	erkek sağlık çalışanı: orta cilt tonu
+👨🏽‍⚕	erkek sağlık çalışanı: orta cilt tonu
+👨🏾‍⚕️	erkek sağlık çalışanı: orta koyu cilt tonu
+👨🏾‍⚕	erkek sağlık çalışanı: orta koyu cilt tonu
+👨🏿‍⚕️	erkek sağlık çalışanı: koyu cilt tonu
+👨🏿‍⚕	erkek sağlık çalışanı: koyu cilt tonu
+👩‍⚕️	kadın sağlık çalışanı
+👩‍⚕	kadın sağlık çalışanı
+👩🏻‍⚕️	kadın sağlık çalışanı: açık cilt tonu
+👩🏻‍⚕	kadın sağlık çalışanı: açık cilt tonu
+👩🏼‍⚕️	kadın sağlık çalışanı: orta açık cilt tonu
+👩🏼‍⚕	kadın sağlık çalışanı: orta açık cilt tonu
+👩🏽‍⚕️	kadın sağlık çalışanı: orta cilt tonu
+👩🏽‍⚕	kadın sağlık çalışanı: orta cilt tonu
+👩🏾‍⚕️	kadın sağlık çalışanı: orta koyu cilt tonu
+👩🏾‍⚕	kadın sağlık çalışanı: orta koyu cilt tonu
+👩🏿‍⚕️	kadın sağlık çalışanı: koyu cilt tonu
+👩🏿‍⚕	kadın sağlık çalışanı: koyu cilt tonu
+👨‍🎓	erkek öğrenci
+👨🏻‍🎓	erkek öğrenci: açık cilt tonu
+👨🏼‍🎓	erkek öğrenci: orta açık cilt tonu
+👨🏽‍🎓	erkek öğrenci: orta cilt tonu
+👨🏾‍🎓	erkek öğrenci: orta koyu cilt tonu
+👨🏿‍🎓	erkek öğrenci: koyu cilt tonu
+👩‍🎓	kadın öğrenci
+👩🏻‍🎓	kadın öğrenci: açık cilt tonu
+👩🏼‍🎓	kadın öğrenci: orta açık cilt tonu
+👩🏽‍🎓	kadın öğrenci: orta cilt tonu
+👩🏾‍🎓	kadın öğrenci: orta koyu cilt tonu
+👩🏿‍🎓	kadın öğrenci: koyu cilt tonu
+👨‍🏫	erkek öğretmen
+👨🏻‍🏫	erkek öğretmen: açık cilt tonu
+👨🏼‍🏫	erkek öğretmen: orta açık cilt tonu
+👨🏽‍🏫	erkek öğretmen: orta cilt tonu
+👨🏾‍🏫	erkek öğretmen: orta koyu cilt tonu
+👨🏿‍🏫	erkek öğretmen: koyu cilt tonu
+👩‍🏫	kadın öğretmen
+👩🏻‍🏫	kadın öğretmen: açık cilt tonu
+👩🏼‍🏫	kadın öğretmen: orta açık cilt tonu
+👩🏽‍🏫	kadın öğretmen: orta cilt tonu
+👩🏾‍🏫	kadın öğretmen: orta koyu cilt tonu
+👩🏿‍🏫	kadın öğretmen: koyu cilt tonu
+👨‍⚖️	adam yargıç
+👨‍⚖	adam yargıç
+👨🏻‍⚖️	erkek yargıç: açık cilt tonu
+👨🏻‍⚖	erkek yargıç: açık cilt tonu
+👨🏼‍⚖️	erkek yargıç: orta açık cilt tonu
+👨🏼‍⚖	erkek yargıç: orta açık cilt tonu
+👨🏽‍⚖️	erkek yargıç: orta cilt tonu
+👨🏽‍⚖	erkek yargıç: orta cilt tonu
+👨🏾‍⚖️	erkek yargıç: orta koyu cilt tonu
+👨🏾‍⚖	erkek yargıç: orta koyu cilt tonu
+👨🏿‍⚖️	erkek yargıç: koyu cilt tonu
+👨🏿‍⚖	erkek yargıç: koyu cilt tonu
+👩‍⚖️	kadın yargıç
+👩‍⚖	kadın yargıç
+👩🏻‍⚖️	kadın yargıç: açık cilt tonu
+👩🏻‍⚖	kadın yargıç: açık cilt tonu
+👩🏼‍⚖️	kadın yargıç: orta açık cilt tonu
+👩🏼‍⚖	kadın yargıç: orta açık cilt tonu
+👩🏽‍⚖️	kadın yargıç: orta cilt tonu
+👩🏽‍⚖	kadın yargıç: orta cilt tonu
+👩🏾‍⚖️	kadın yargıç: orta koyu cilt tonu
+👩🏾‍⚖	kadın yargıç: orta koyu cilt tonu
+👩🏿‍⚖️	kadın yargıç: koyu cilt tonu
+👩🏿‍⚖	kadın yargıç: koyu cilt tonu
+👨‍🌾	adam çiftçi
+👨🏻‍🌾	erkek çiftçi: açık cilt tonu
+👨🏼‍🌾	erkek çiftçi: orta açık cilt tonu
+👨🏽‍🌾	erkek çiftçi: orta cilt tonu
+👨🏾‍🌾	erkek çiftçi: orta koyu cilt tonu
+👨🏿‍🌾	erkek çiftçi: koyu cilt tonu
+👩‍🌾	kadın çiftçi
+👩🏻‍🌾	kadın çiftçi: açık cilt tonu
+👩🏼‍🌾	kadın çiftçi: orta açık cilt tonu
+👩🏽‍🌾	kadın çiftçi: orta cilt tonu
+👩🏾‍🌾	kadın çiftçi: orta koyu cilt tonu
+👩🏿‍🌾	kadın çiftçi: koyu cilt tonu
+👨‍🍳	adam aşçı
+👨🏻‍🍳	erkek aşçı: açık cilt tonu
+👨🏼‍🍳	erkek aşçı: orta açık cilt tonu
+👨🏽‍🍳	erkek aşçı: orta cilt tonu
+👨🏾‍🍳	erkek aşçı: orta koyu cilt tonu
+👨🏿‍🍳	erkek aşçı: koyu cilt tonu
+👩‍🍳	kadın aşçı
+👩🏻‍🍳	kadın aşçı: açık cilt tonu
+👩🏼‍🍳	kadın aşçı: orta açık cilt tonu
+👩🏽‍🍳	kadın aşçı: orta cilt tonu
+👩🏾‍🍳	kadın aşçı: orta koyu cilt tonu
+👩🏿‍🍳	kadın aşçı: koyu cilt tonu
+👨‍🔧	adam tamirci
+👨🏻‍🔧	erkek tamirci: açık cilt tonu
+👨🏼‍🔧	tamirci adam: orta açık cilt tonu
+👨🏽‍🔧	tamirci adam: orta cilt tonu
+👨🏾‍🔧	tamirci adam: orta koyu cilt tonu
+👨🏿‍🔧	erkek tamirci: koyu cilt tonu
+👩‍🔧	kadın tamirci
+👩🏻‍🔧	kadın tamirci: açık cilt tonu
+👩🏼‍🔧	kadın tamirci: orta açık cilt tonu
+👩🏽‍🔧	kadın tamirci: orta cilt tonu
+👩🏾‍🔧	kadın tamirci: orta koyu cilt tonu
+👩🏿‍🔧	kadın tamirci: koyu cilt tonu
+👨‍🏭	adam fabrika işçisi
+👨🏻‍🏭	erkek fabrika işçisi: açık cilt tonu
+👨🏼‍🏭	erkek fabrika işçisi: orta açık cilt tonu
+👨🏽‍🏭	erkek fabrika işçisi: orta cilt tonu
+👨🏾‍🏭	erkek fabrika işçisi: orta koyu cilt tonu
+👨🏿‍🏭	erkek fabrika işçisi: koyu cilt tonu
+👩‍🏭	kadın fabrika işçisi
+👩🏻‍🏭	kadın fabrika işçisi: açık cilt tonu
+👩🏼‍🏭	kadın fabrika işçisi: orta açık cilt tonu
+👩🏽‍🏭	kadın fabrika işçisi: orta cilt tonu
+👩🏾‍🏭	kadın fabrika işçisi: orta koyu cilt tonu
+👩🏿‍🏭	kadın fabrika işçisi: koyu cilt tonu
+👨‍💼	adam ofis çalışanı
+👨🏻‍💼	erkek ofis çalışanı: açık cilt tonu
+👨🏼‍💼	erkek ofis çalışanı: orta açık cilt tonu
+👨🏽‍💼	erkek ofis çalışanı: orta cilt tonu
+👨🏾‍💼	erkek ofis çalışanı: orta koyu cilt tonu
+👨🏿‍💼	erkek ofis çalışanı: koyu cilt tonu
+👩‍💼	kadın ofis çalışanı
+👩🏻‍💼	kadın ofis çalışanı: açık cilt tonu
+👩🏼‍💼	kadın ofis çalışanı: orta açık cilt tonu
+👩🏽‍💼	kadın ofis çalışanı: orta cilt tonu
+👩🏾‍💼	kadın ofis çalışanı: orta koyu cilt tonu
+👩🏿‍💼	kadın ofis çalışanı: koyu cilt tonu
+👨‍🔬	adam bilim adamı
+👨🏻‍🔬	erkek bilim adamı: açık cilt tonu
+👨🏼‍🔬	erkek bilim adamı: orta açık cilt tonu
+👨🏽‍🔬	erkek bilim adamı: orta cilt tonu
+👨🏾‍🔬	erkek bilim adamı: orta koyu cilt tonu
+👨🏿‍🔬	erkek bilim adamı: koyu cilt tonu
+👩‍🔬	kadın bilim adamı
+👩🏻‍🔬	kadın bilim adamı: açık cilt tonu
+👩🏼‍🔬	kadın bilim adamı: orta açık cilt tonu
+👩🏽‍🔬	kadın bilim adamı: orta cilt tonu
+👩🏾‍🔬	kadın bilim adamı: orta koyu cilt tonu
+👩🏿‍🔬	kadın bilim adamı: koyu cilt tonu
+👨‍💻	adam teknoloji uzmanı
+👨🏻‍💻	erkek teknoloji uzmanı: açık cilt tonu
+👨🏼‍💻	erkek teknoloji uzmanı: orta açık cilt tonu
+👨🏽‍💻	erkek teknoloji uzmanı: orta cilt tonu
+👨🏾‍💻	erkek teknoloji uzmanı: orta koyu cilt tonu
+👨🏿‍💻	erkek teknoloji uzmanı: koyu cilt tonu
+👩‍💻	kadın teknoloji uzmanı
+👩🏻‍💻	kadın teknoloji uzmanı: açık cilt tonu
+👩🏼‍💻	kadın teknoloji uzmanı: orta açık cilt tonu
+👩🏽‍💻	kadın teknoloji uzmanı: orta cilt tonu
+👩🏾‍💻	kadın teknoloji uzmanı: orta koyu cilt tonu
+👩🏿‍💻	kadın teknoloji uzmanı: koyu cilt tonu
+👨‍🎤	adam şarkıcı
+👨🏻‍🎤	erkek şarkıcı: açık cilt tonu
+👨🏼‍🎤	erkek şarkıcı: orta açık cilt tonu
+👨🏽‍🎤	erkek şarkıcı: orta cilt tonu
+👨🏾‍🎤	erkek şarkıcı: orta koyu cilt tonu
+👨🏿‍🎤	erkek şarkıcı: koyu cilt tonu
+👩‍🎤	kadın şarkıcı
+👩🏻‍🎤	kadın şarkıcı: açık cilt tonu
+👩🏼‍🎤	kadın şarkıcı: orta açık cilt tonu
+👩🏽‍🎤	kadın şarkıcı: orta cilt tonu
+👩🏾‍🎤	kadın şarkıcı: orta koyu cilt tonu
+👩🏿‍🎤	kadın şarkıcı: koyu cilt tonu
+👨‍🎨	adam sanatçı
+👨🏻‍🎨	erkek sanatçı: açık cilt tonu
+👨🏼‍🎨	erkek sanatçı: orta açık cilt tonu
+👨🏽‍🎨	erkek sanatçı: orta cilt tonu
+👨🏾‍🎨	erkek sanatçı: orta koyu cilt tonu
+👨🏿‍🎨	erkek sanatçı: koyu cilt tonu
+👩‍🎨	kadın sanatçı
+👩🏻‍🎨	kadın sanatçı: açık cilt tonu
+👩🏼‍🎨	kadın sanatçı: orta açık cilt tonu
+👩🏽‍🎨	kadın sanatçı: orta cilt tonu
+👩🏾‍🎨	kadın sanatçı: orta koyu cilt tonu
+👩🏿‍🎨	kadın sanatçı: koyu cilt tonu
+👨‍✈️	erkek pilot
+👨‍✈	erkek pilot
+👨🏻‍✈️	erkek pilot: açık cilt tonu
+👨🏻‍✈	erkek pilot: açık cilt tonu
+👨🏼‍✈️	erkek pilot: orta açık cilt tonu
+👨🏼‍✈	erkek pilot: orta açık cilt tonu
+👨🏽‍✈️	erkek pilot: orta cilt tonu
+👨🏽‍✈	erkek pilot: orta cilt tonu
+👨🏾‍✈️	erkek pilot: orta koyu cilt tonu
+👨🏾‍✈	erkek pilot: orta koyu cilt tonu
+👨🏿‍✈️	erkek pilot: koyu cilt tonu
+👨🏿‍✈	erkek pilot: koyu cilt tonu
+👩‍✈️	kadın pilot
+👩‍✈	kadın pilot
+👩🏻‍✈️	kadın pilot: açık cilt tonu
+👩🏻‍✈	kadın pilot: açık cilt tonu
+👩🏼‍✈️	kadın pilot: orta açık cilt tonu
+👩🏼‍✈	kadın pilot: orta açık cilt tonu
+👩🏽‍✈️	kadın pilot: orta cilt tonu
+👩🏽‍✈	kadın pilot: orta cilt tonu
+👩🏾‍✈️	kadın pilot: orta koyu cilt tonu
+👩🏾‍✈	kadın pilot: orta koyu cilt tonu
+👩🏿‍✈️	kadın pilot: koyu cilt tonu
+👩🏿‍✈	kadın pilot: koyu cilt tonu
+👨‍🚀	adam astronot
+👨🏻‍🚀	erkek astronot: açık cilt tonu
+👨🏼‍🚀	erkek astronot: orta açık cilt tonu
+👨🏽‍🚀	erkek astronot: orta cilt tonu
+👨🏾‍🚀	erkek astronot: orta koyu cilt tonu
+👨🏿‍🚀	erkek astronot: koyu cilt tonu
+👩‍🚀	kadın astronot
+👩🏻‍🚀	kadın astronot: açık cilt tonu
+👩🏼‍🚀	kadın astronot: orta açık cilt tonu
+👩🏽‍🚀	kadın astronot: orta cilt tonu
+👩🏾‍🚀	kadın astronot: orta koyu cilt tonu
+👩🏿‍🚀	kadın astronot: koyu cilt tonu
+👨‍🚒	adam itfaiyeci
+👨🏻‍🚒	erkek itfaiyeci: açık cilt tonu
+👨🏼‍🚒	erkek itfaiyeci: orta açık cilt tonu
+👨🏽‍🚒	erkek itfaiyeci: orta cilt tonu
+👨🏾‍🚒	erkek itfaiyeci: orta koyu cilt tonu
+👨🏿‍🚒	erkek itfaiyeci: koyu cilt tonu
+👩‍🚒	kadın itfaiyeci
+👩🏻‍🚒	kadın itfaiyeci: açık cilt tonu
+👩🏼‍🚒	kadın itfaiyeci: orta açık cilt tonu
+👩🏽‍🚒	kadın itfaiyeci: orta cilt tonu
+👩🏾‍🚒	kadın itfaiyeci: orta koyu cilt tonu
+👩🏿‍🚒	kadın itfaiyeci: koyu cilt tonu
+👮	polis memuru
+👮🏻	polis memuru: açık cilt tonu
+👮🏼	polis memuru: orta açık cilt tonu
+👮🏽	polis memuru: orta cilt tonu
+👮🏾	polis memuru: orta koyu cilt tonu
+👮🏿	polis memuru: koyu cilt tonu
+👮‍♂️	adam polis memuru
+👮‍♂	adam polis memuru
+👮🏻‍♂️	erkek polis memuru: açık cilt tonu
+👮🏻‍♂	erkek polis memuru: açık cilt tonu
+👮🏼‍♂️	erkek polis memuru: orta açık cilt tonu
+👮🏼‍♂	erkek polis memuru: orta açık cilt tonu
+👮🏽‍♂️	erkek polis memuru: orta cilt tonu
+👮🏽‍♂	erkek polis memuru: orta cilt tonu
+👮🏾‍♂️	erkek polis memuru: orta koyu cilt tonu
+👮🏾‍♂	erkek polis memuru: orta koyu cilt tonu
+👮🏿‍♂️	erkek polis memuru: koyu cilt tonu
+👮🏿‍♂	erkek polis memuru: koyu cilt tonu
+👮‍♀️	kadın polis memuru
+👮‍♀	kadın polis memuru
+👮🏻‍♀️	kadın polis memuru: açık cilt tonu
+👮🏻‍♀	kadın polis memuru: açık cilt tonu
+👮🏼‍♀️	kadın polis memuru: orta açık cilt tonu
+👮🏼‍♀	kadın polis memuru: orta açık cilt tonu
+👮🏽‍♀️	kadın polis memuru: orta cilt tonu
+👮🏽‍♀	kadın polis memuru: orta cilt tonu
+👮🏾‍♀️	kadın polis memuru: orta koyu cilt tonu
+👮🏾‍♀	kadın polis memuru: orta koyu cilt tonu
+👮🏿‍♀️	kadın polis memuru: koyu cilt tonu
+👮🏿‍♀	kadın polis memuru: koyu cilt tonu
+🕵️	dedektif
+🕵	dedektif
+🕵🏻	dedektif: açık cilt tonu
+🕵🏼	dedektif: orta açık cilt tonu
+🕵🏽	dedektif: orta cilt tonu
+🕵🏾	dedektif: orta koyu cilt tonu
+🕵🏿	dedektif: koyu cilt tonu
+🕵️‍♂️	adam dedektif
+🕵‍♂️	adam dedektif
+🕵️‍♂	adam dedektif
+🕵‍♂	adam dedektif
+🕵🏻‍♂️	erkek dedektif: açık cilt tonu
+🕵🏻‍♂	erkek dedektif: açık cilt tonu
+🕵🏼‍♂️	erkek dedektif: orta açık cilt tonu
+🕵🏼‍♂	erkek dedektif: orta açık cilt tonu
+🕵🏽‍♂️	erkek dedektif: orta cilt tonu
+🕵🏽‍♂	erkek dedektif: orta cilt tonu
+🕵🏾‍♂️	erkek dedektif: orta koyu cilt tonu
+🕵🏾‍♂	erkek dedektif: orta koyu cilt tonu
+🕵🏿‍♂️	erkek dedektif: koyu cilt tonu
+🕵🏿‍♂	erkek dedektif: koyu cilt tonu
+🕵️‍♀️	kadın dedektif
+🕵‍♀️	kadın dedektif
+🕵️‍♀	kadın dedektif
+🕵‍♀	kadın dedektif
+🕵🏻‍♀️	kadın dedektif: açık cilt tonu
+🕵🏻‍♀	kadın dedektif: açık cilt tonu
+🕵🏼‍♀️	kadın dedektif: orta açık cilt tonu
+🕵🏼‍♀	kadın dedektif: orta açık cilt tonu
+🕵🏽‍♀️	kadın dedektif: orta cilt tonu
+🕵🏽‍♀	kadın dedektif: orta cilt tonu
+🕵🏾‍♀️	kadın dedektif: orta koyu cilt tonu
+🕵🏾‍♀	kadın dedektif: orta koyu cilt tonu
+🕵🏿‍♀️	kadın dedektif: koyu cilt tonu
+🕵🏿‍♀	kadın dedektif: koyu cilt tonu
+💂	koruma
+💂🏻	koruma: açık cilt tonu
+💂🏼	koruma: orta açık cilt tonu
+💂🏽	koruma: orta cilt tonu
+💂🏾	koruma: orta koyu cilt tonu
+💂🏿	koruma: koyu cilt tonu
+💂‍♂️	adam muhafız
+💂‍♂	adam muhafız
+💂🏻‍♂️	adam muhafız: açık cilt tonu
+💂🏻‍♂	adam muhafız: açık cilt tonu
+💂🏼‍♂️	adam muhafız: orta açık cilt tonu
+💂🏼‍♂	adam muhafız: orta açık cilt tonu
+💂🏽‍♂️	adam muhafız: orta cilt tonu
+💂🏽‍♂	adam muhafız: orta cilt tonu
+💂🏾‍♂️	adam muhafız: orta koyu cilt tonu
+💂🏾‍♂	adam muhafız: orta koyu cilt tonu
+💂🏿‍♂️	adam muhafız: koyu cilt tonu
+💂🏿‍♂	adam muhafız: koyu cilt tonu
+💂‍♀️	kadın muhafız
+💂‍♀	kadın muhafız
+💂🏻‍♀️	kadın gardiyan: açık cilt tonu
+💂🏻‍♀	kadın gardiyan: açık cilt tonu
+💂🏼‍♀️	kadın gardiyan: orta açık cilt tonu
+💂🏼‍♀	kadın gardiyan: orta açık cilt tonu
+💂🏽‍♀️	kadın gardiyan: orta cilt tonu
+💂🏽‍♀	kadın gardiyan: orta cilt tonu
+💂🏾‍♀️	kadın gardiyan: orta koyu cilt tonu
+💂🏾‍♀	kadın gardiyan: orta koyu cilt tonu
+💂🏿‍♀️	kadın gardiyan: koyu cilt tonu
+💂🏿‍♀	kadın gardiyan: koyu cilt tonu
+👷	inşaat işçisi
+👷🏻	inşaat işçisi: açık cilt tonu
+👷🏼	inşaat işçisi: orta açık cilt tonu
+👷🏽	inşaat işçisi: orta cilt tonu
+👷🏾	inşaat işçisi: orta koyu cilt tonu
+👷🏿	inşaat işçisi: koyu cilt tonu
+👷‍♂️	adam inşaat işçisi
+👷‍♂	adam inşaat işçisi
+👷🏻‍♂️	erkek inşaat işçisi: açık cilt tonu
+👷🏻‍♂	erkek inşaat işçisi: açık cilt tonu
+👷🏼‍♂️	erkek inşaat işçisi: orta açık cilt tonu
+👷🏼‍♂	erkek inşaat işçisi: orta açık cilt tonu
+👷🏽‍♂️	erkek inşaat işçisi: orta cilt tonu
+👷🏽‍♂	erkek inşaat işçisi: orta cilt tonu
+👷🏾‍♂️	erkek inşaat işçisi: orta koyu cilt tonu
+👷🏾‍♂	erkek inşaat işçisi: orta koyu cilt tonu
+👷🏿‍♂️	erkek inşaat işçisi: koyu cilt tonu
+👷🏿‍♂	erkek inşaat işçisi: koyu cilt tonu
+👷‍♀️	kadın inşaat işçisi
+👷‍♀	kadın inşaat işçisi
+👷🏻‍♀️	kadın inşaat işçisi: açık cilt tonu
+👷🏻‍♀	kadın inşaat işçisi: açık cilt tonu
+👷🏼‍♀️	kadın inşaat işçisi: orta açık cilt tonu
+👷🏼‍♀	kadın inşaat işçisi: orta açık cilt tonu
+👷🏽‍♀️	kadın inşaat işçisi: orta cilt tonu
+👷🏽‍♀	kadın inşaat işçisi: orta cilt tonu
+👷🏾‍♀️	kadın inşaat işçisi: orta koyu cilt tonu
+👷🏾‍♀	kadın inşaat işçisi: orta koyu cilt tonu
+👷🏿‍♀️	kadın inşaat işçisi: koyu cilt tonu
+👷🏿‍♀	kadın inşaat işçisi: koyu cilt tonu
+🤴	prens
+🤴🏻	prens: açık cilt tonu
+🤴🏼	prens: orta açık cilt tonu
+🤴🏽	prens: orta cilt tonu
+🤴🏾	prens: orta koyu cilt tonu
+🤴🏿	prens: koyu cilt tonu
+👸	prenses
+👸🏻	prenses: açık cilt tonu
+👸🏼	prenses: orta açık cilt tonu
+👸🏽	prenses: orta cilt tonu
+👸🏾	prenses: orta koyu cilt tonu
+👸🏿	prenses: koyu cilt tonu
+👳	türban takan kişi
+👳🏻	türban takan kişi: açık cilt tonu
+👳🏼	türban takan kişi: orta açık cilt tonu
+👳🏽	türban takan kişi: orta cilt tonu
+👳🏾	türban takan kişi: orta koyu cilt tonu
+👳🏿	türban takan kişi: koyu cilt tonu
+👳‍♂️	türban takan adam
+👳‍♂	türban takan adam
+👳🏻‍♂️	türban takan erkek: açık cilt tonu
+👳🏻‍♂	türban takan erkek: açık cilt tonu
+👳🏼‍♂️	türban takan erkek: orta açık cilt tonu
+👳🏼‍♂	türban takan erkek: orta açık cilt tonu
+👳🏽‍♂️	türban takan erkek: orta cilt tonu
+👳🏽‍♂	türban takan erkek: orta cilt tonu
+👳🏾‍♂️	türban takan erkek: orta koyu cilt tonu
+👳🏾‍♂	türban takan erkek: orta koyu cilt tonu
+👳🏿‍♂️	türban takan erkek: koyu cilt tonu
+👳🏿‍♂	türban takan erkek: koyu cilt tonu
+👳‍♀️	türban takan kadın
+👳‍♀	türban takan kadın
+👳🏻‍♀️	türban takan kadın: açık cilt tonu
+👳🏻‍♀	türban takan kadın: açık cilt tonu
+👳🏼‍♀️	türban takan kadın: orta açık cilt tonu
+👳🏼‍♀	türban takan kadın: orta açık cilt tonu
+👳🏽‍♀️	türban takan kadın: orta cilt tonu
+👳🏽‍♀	türban takan kadın: orta cilt tonu
+👳🏾‍♀️	türban takan kadın: orta koyu cilt tonu
+👳🏾‍♀	türban takan kadın: orta koyu cilt tonu
+👳🏿‍♀️	türban takan kadın: koyu cilt tonu
+👳🏿‍♀	türban takan kadın: koyu cilt tonu
+👲	Çin şapkalı adam
+👲🏻	Çin şapkalı adam: açık cilt tonu
+👲🏼	Çin şapkalı adam: orta açık cilt tonu
+👲🏽	Çin şapkalı adam: orta cilt tonu
+👲🏾	Çin şapkalı adam: orta koyu cilt tonu
+👲🏿	Çin şapkalı adam: koyu cilt tonu
+🧕	başörtülü kadın
+🧕🏻	başörtülü kadın: açık cilt tonu
+🧕🏼	başörtülü kadın: orta açık cilt tonu
+🧕🏽	başörtülü kadın: orta cilt tonu
+🧕🏾	başörtülü kadın: orta koyu cilt tonu
+🧕🏿	başörtülü kadın: koyu cilt tonu
+🧔	sakallı kişi
+🧔🏻	sakallı kişi: açık cilt tonu
+🧔🏼	sakallı kişi: orta açık cilt tonu
+🧔🏽	sakallı kişi: orta cilt tonu
+🧔🏾	sakallı kişi: orta koyu cilt tonu
+🧔🏿	sakallı kişi: koyu cilt tonu
+👱	sarı saçlı kimse
+👱🏻	sarı saçlı kişi: açık cilt tonu
+👱🏼	sarı saçlı kişi: orta açık cilt tonu
+👱🏽	sarı saçlı kişi: orta cilt tonu
+👱🏾	sarı saçlı kişi: orta koyu cilt tonu
+👱🏿	sarı saçlı kişi: koyu cilt tonu
+👱‍♂️	sarı saçlı adam
+👱‍♂	sarı saçlı adam
+👱🏻‍♂️	sarı saçlı adam: açık cilt tonu
+👱🏻‍♂	sarı saçlı adam: açık cilt tonu
+👱🏼‍♂️	sarı saçlı adam: orta açık cilt tonu
+👱🏼‍♂	sarı saçlı adam: orta açık cilt tonu
+👱🏽‍♂️	sarı saçlı adam: orta cilt tonu
+👱🏽‍♂	sarı saçlı adam: orta cilt tonu
+👱🏾‍♂️	sarı saçlı adam: orta koyu cilt tonu
+👱🏾‍♂	sarı saçlı adam: orta koyu cilt tonu
+👱🏿‍♂️	sarı saçlı adam: koyu cilt tonu
+👱🏿‍♂	sarı saçlı adam: koyu cilt tonu
+👱‍♀️	sarı saçlı kadın
+👱‍♀	sarı saçlı kadın
+👱🏻‍♀️	sarı saçlı kadın: açık cilt tonu
+👱🏻‍♀	sarı saçlı kadın: açık cilt tonu
+👱🏼‍♀️	sarı saçlı kadın: orta açık cilt tonu
+👱🏼‍♀	sarı saçlı kadın: orta açık cilt tonu
+👱🏽‍♀️	sarı saçlı kadın: orta cilt tonu
+👱🏽‍♀	sarı saçlı kadın: orta cilt tonu
+👱🏾‍♀️	sarı saçlı kadın: orta koyu cilt tonu
+👱🏾‍♀	sarı saçlı kadın: orta koyu cilt tonu
+👱🏿‍♀️	sarı saçlı kadın: koyu cilt tonu
+👱🏿‍♀	sarı saçlı kadın: koyu cilt tonu
+👨‍🦰	adam, kızıl saçlı
+👨🏻‍🦰	erkek, kızıl saçlı: açık cilt tonu
+👨🏼‍🦰	erkek, kızıl saçlı: orta açık cilt tonu
+👨🏽‍🦰	erkek, kızıl saçlı: orta cilt tonu
+👨🏾‍🦰	erkek, kızıl saçlı: orta koyu cilt tonu
+👨🏿‍🦰	erkek, kızıl saçlı: koyu cilt tonu
+👩‍🦰	kadın, kızıl saçlı
+👩🏻‍🦰	kadın, kızıl saçlı: açık cilt tonu
+👩🏼‍🦰	kadın, kızıl saçlı: orta açık cilt tonu
+👩🏽‍🦰	kadın, kızıl saçlı: orta cilt tonu
+👩🏾‍🦰	kadın, kızıl saçlı: orta koyu cilt tonu
+👩🏿‍🦰	kadın, kızıl saçlı: koyu cilt tonu
+👨‍🦱	adam, kıvırcık saçlı
+👨🏻‍🦱	erkek, kıvırcık saçlı: açık cilt tonu
+👨🏼‍🦱	erkek, kıvırcık saçlı: orta açık cilt tonu
+👨🏽‍🦱	erkek, kıvırcık saçlı: orta cilt tonu
+👨🏾‍🦱	erkek, kıvırcık saçlı: orta koyu cilt tonu
+👨🏿‍🦱	erkek, kıvırcık saçlı: koyu cilt tonu
+👩‍🦱	kadın, kıvırcık saçlı
+👩🏻‍🦱	kadın, kıvırcık saçlı: açık cilt tonu
+👩🏼‍🦱	kadın, kıvırcık saçlı: orta açık cilt tonu
+👩🏽‍🦱	kadın, kıvırcık saçlı: orta cilt tonu
+👩🏾‍🦱	kadın, kıvırcık saçlı: orta koyu cilt tonu
+👩🏿‍🦱	kadın, kıvırcık saçlı: koyu cilt tonu
+👨‍🦲	adam, kel
+👨🏻‍🦲	erkek, kel: açık cilt tonu
+👨🏼‍🦲	erkek, kel: orta açık cilt tonu
+👨🏽‍🦲	erkek, kel: orta cilt tonu
+👨🏾‍🦲	erkek, kel: orta koyu cilt tonu
+👨🏿‍🦲	erkek, kel: koyu cilt tonu
+👩‍🦲	kadın, kel
+👩🏻‍🦲	kadın, kel: açık cilt tonu
+👩🏼‍🦲	kadın, kel: orta açık cilt tonu
+👩🏽‍🦲	kadın, kel: orta cilt tonu
+👩🏾‍🦲	kadın, kel: orta koyu cilt tonu
+👩🏿‍🦲	kadın, kel: koyu cilt tonu
+👨‍🦳	adam, beyaz saçlı
+👨🏻‍🦳	erkek, beyaz saçlı: açık cilt tonu
+👨🏼‍🦳	erkek, beyaz saçlı: orta açık cilt tonu
+👨🏽‍🦳	erkek, beyaz saçlı: orta cilt tonu
+👨🏾‍🦳	erkek, beyaz saçlı: orta koyu cilt tonu
+👨🏿‍🦳	erkek, beyaz saçlı: koyu cilt tonu
+👩‍🦳	kadın, beyaz saçlı
+👩🏻‍🦳	kadın, beyaz saçlı: açık cilt tonu
+👩🏼‍🦳	kadın, beyaz saçlı: orta açık cilt tonu
+👩🏽‍🦳	kadın, beyaz saçlı: orta cilt tonu
+👩🏾‍🦳	kadın, beyaz saçlı: orta koyu cilt tonu
+👩🏿‍🦳	kadın, beyaz saçlı: koyu cilt tonu
+🤵	smokinli adam
+🤵🏻	smokinli adam: açık cilt tonu
+🤵🏼	smokinli adam: orta açık cilt tonu
+🤵🏽	smokinli adam: orta cilt tonu
+🤵🏾	smokinli adam: orta koyu cilt tonu
+🤵🏿	smokinli adam: koyu cilt tonu
+👰	duvaklı gelin
+👰🏻	duvaklı gelin: açık cilt tonu
+👰🏼	duvaklı gelin: orta açık cilt tonu
+👰🏽	duvaklı gelin: orta cilt tonu
+👰🏾	duvaklı gelin: orta koyu cilt tonu
+👰🏿	duvaklı gelin: koyu cilt tonu
+🤰	hamile kadın
+🤰🏻	hamile kadın: açık cilt tonu
+🤰🏼	hamile kadın: orta açık cilt tonu
+🤰🏽	hamile kadın: orta cilt tonu
+🤰🏾	hamile kadın: orta koyu cilt tonu
+🤰🏿	hamile kadın: koyu cilt tonu
+🤱	Emzirme
+🤱🏻	emzirme: açık cilt tonu
+🤱🏼	emzirme: orta açık cilt tonu
+🤱🏽	emzirme: orta cilt tonu
+🤱🏾	emzirme: orta koyu cilt tonu
+🤱🏿	emzirme: koyu cilt tonu
+👼	bebek melek
+👼🏻	bebek melek: açık cilt tonu
+👼🏼	bebek melek: orta açık cilt tonu
+👼🏽	bebek melek: orta cilt tonu
+👼🏾	bebek melek: orta koyu cilt tonu
+👼🏿	bebek melek: koyu cilt tonu
+🎅	Noel Baba
+🎅🏻	Noel Baba: açık cilt tonu
+🎅🏼	Noel Baba: orta açık cilt tonu
+🎅🏽	Noel Baba: orta cilt tonu
+🎅🏾	Noel Baba: orta koyu cilt tonu
+🎅🏿	Noel Baba: koyu cilt tonu
+🤶	Bayan Claus
+🤶🏻	Bayan Claus: açık cilt tonu
+🤶🏼	Bayan Claus: orta açık cilt tonu
+🤶🏽	Bayan Claus: orta cilt tonu
+🤶🏾	Bayan Claus: orta koyu cilt tonu
+🤶🏿	Bayan Claus: koyu cilt tonu
+🦸	süper kahraman
+🦸🏻	süper kahraman: açık cilt tonu
+🦸🏼	süper kahraman: orta açık cilt tonu
+🦸🏽	süper kahraman: orta cilt tonu
+🦸🏾	süper kahraman: orta koyu cilt tonu
+🦸🏿	süper kahraman: koyu cilt tonu
+🦸‍♀️	kadın süper kahraman
+🦸‍♀	kadın süper kahraman
+🦸🏻‍♀️	kadın süper kahraman: açık cilt tonu
+🦸🏻‍♀	kadın süper kahraman: açık cilt tonu
+🦸🏼‍♀️	kadın süper kahraman: orta açık cilt tonu
+🦸🏼‍♀	kadın süper kahraman: orta açık cilt tonu
+🦸🏽‍♀️	kadın süper kahraman: orta cilt tonu
+🦸🏽‍♀	kadın süper kahraman: orta cilt tonu
+🦸🏾‍♀️	kadın süper kahraman: orta koyu cilt tonu
+🦸🏾‍♀	kadın süper kahraman: orta koyu cilt tonu
+🦸🏿‍♀️	kadın süper kahraman: koyu cilt tonu
+🦸🏿‍♀	kadın süper kahraman: koyu cilt tonu
+🦸‍♂️	adam süper kahraman
+🦸‍♂	adam süper kahraman
+🦸🏻‍♂️	erkek süper kahraman: açık cilt tonu
+🦸🏻‍♂	erkek süper kahraman: açık cilt tonu
+🦸🏼‍♂️	erkek süper kahraman: orta açık cilt tonu
+🦸🏼‍♂	erkek süper kahraman: orta açık cilt tonu
+🦸🏽‍♂️	erkek süper kahraman: orta cilt tonu
+🦸🏽‍♂	erkek süper kahraman: orta cilt tonu
+🦸🏾‍♂️	erkek süper kahraman: orta koyu cilt tonu
+🦸🏾‍♂	erkek süper kahraman: orta koyu cilt tonu
+🦸🏿‍♂️	erkek süper kahraman: koyu cilt tonu
+🦸🏿‍♂	erkek süper kahraman: koyu cilt tonu
+🦹	süper kötü adam
+🦹🏻	süper kötü adam: açık cilt tonu
+🦹🏼	süper kötü adam: orta açık cilt tonu
+🦹🏽	süper kötü adam: orta cilt tonu
+🦹🏾	süper kötü adam: orta koyu cilt tonu
+🦹🏿	süper kötü adam: koyu cilt tonu
+🦹‍♀️	kadın süper kötü adam
+🦹‍♀	kadın süper kötü adam
+🦹🏻‍♀️	kadın süper kötü adam: açık cilt tonu
+🦹🏻‍♀	kadın süper kötü adam: açık cilt tonu
+🦹🏼‍♀️	kadın süper kötü adam: orta açık cilt tonu
+🦹🏼‍♀	kadın süper kötü adam: orta açık cilt tonu
+🦹🏽‍♀️	kadın süper kötü adam: orta cilt tonu
+🦹🏽‍♀	kadın süper kötü adam: orta cilt tonu
+🦹🏾‍♀️	kadın süper kötü adam: orta koyu cilt tonu
+🦹🏾‍♀	kadın süper kötü adam: orta koyu cilt tonu
+🦹🏿‍♀️	kadın süper kötü adam: koyu cilt tonu
+🦹🏿‍♀	kadın süper kötü adam: koyu cilt tonu
+🦹‍♂️	adam süper kötü adam
+🦹‍♂	adam süper kötü adam
+🦹🏻‍♂️	erkek süper kötü adam: açık cilt tonu
+🦹🏻‍♂	erkek süper kötü adam: açık cilt tonu
+🦹🏼‍♂️	süper kötü adam: orta açık cilt tonu
+🦹🏼‍♂	süper kötü adam: orta açık cilt tonu
+🦹🏽‍♂️	süper kötü adam: orta cilt tonu
+🦹🏽‍♂	süper kötü adam: orta cilt tonu
+🦹🏾‍♂️	süper kötü adam: orta koyu cilt tonu
+🦹🏾‍♂	süper kötü adam: orta koyu cilt tonu
+🦹🏿‍♂️	erkek süper kötü adam: koyu cilt tonu
+🦹🏿‍♂	erkek süper kötü adam: koyu cilt tonu
+🧙	büyücü
+🧙🏻	büyücü: açık cilt tonu
+🧙🏼	büyücü: orta açık cilt tonu
+🧙🏽	büyücü: orta cilt tonu
+🧙🏾	büyücü: orta koyu cilt tonu
+🧙🏿	büyücü: koyu cilt tonu
+🧙‍♀️	kadın büyücü
+🧙‍♀	kadın büyücü
+🧙🏻‍♀️	kadın büyücü: açık cilt tonu
+🧙🏻‍♀	kadın büyücü: açık cilt tonu
+🧙🏼‍♀️	kadın büyücü: orta açık cilt tonu
+🧙🏼‍♀	kadın büyücü: orta açık cilt tonu
+🧙🏽‍♀️	kadın büyücü: orta cilt tonu
+🧙🏽‍♀	kadın büyücü: orta cilt tonu
+🧙🏾‍♀️	kadın büyücü: orta koyu cilt tonu
+🧙🏾‍♀	kadın büyücü: orta koyu cilt tonu
+🧙🏿‍♀️	kadın büyücü: koyu cilt tonu
+🧙🏿‍♀	kadın büyücü: koyu cilt tonu
+🧙‍♂️	adam büyücü
+🧙‍♂	adam büyücü
+🧙🏻‍♂️	erkek büyücü: açık cilt tonu
+🧙🏻‍♂	erkek büyücü: açık cilt tonu
+🧙🏼‍♂️	erkek büyücü: orta açık cilt tonu
+🧙🏼‍♂	erkek büyücü: orta açık cilt tonu
+🧙🏽‍♂️	erkek büyücü: orta cilt tonu
+🧙🏽‍♂	erkek büyücü: orta cilt tonu
+🧙🏾‍♂️	erkek büyücü: orta koyu cilt tonu
+🧙🏾‍♂	erkek büyücü: orta koyu cilt tonu
+🧙🏿‍♂️	erkek büyücü: koyu cilt tonu
+🧙🏿‍♂	erkek büyücü: koyu cilt tonu
+🧚	peri
+🧚🏻	peri: açık cilt tonu
+🧚🏼	peri: orta açık cilt tonu
+🧚🏽	peri: orta cilt tonu
+🧚🏾	peri: orta koyu cilt tonu
+🧚🏿	peri: koyu cilt tonu
+🧚‍♀️	kadın peri
+🧚‍♀	kadın peri
+🧚🏻‍♀️	kadın peri: açık cilt tonu
+🧚🏻‍♀	kadın peri: açık cilt tonu
+🧚🏼‍♀️	kadın peri: orta açık cilt tonu
+🧚🏼‍♀	kadın peri: orta açık cilt tonu
+🧚🏽‍♀️	kadın peri: orta cilt tonu
+🧚🏽‍♀	kadın peri: orta cilt tonu
+🧚🏾‍♀️	kadın peri: orta koyu cilt tonu
+🧚🏾‍♀	kadın peri: orta koyu cilt tonu
+🧚🏿‍♀️	kadın peri: koyu cilt tonu
+🧚🏿‍♀	kadın peri: koyu cilt tonu
+🧚‍♂️	adam peri
+🧚‍♂	adam peri
+🧚🏻‍♂️	erkek peri: açık cilt tonu
+🧚🏻‍♂	erkek peri: açık cilt tonu
+🧚🏼‍♂️	erkek peri: orta açık cilt tonu
+🧚🏼‍♂	erkek peri: orta açık cilt tonu
+🧚🏽‍♂️	erkek peri: orta cilt tonu
+🧚🏽‍♂	erkek peri: orta cilt tonu
+🧚🏾‍♂️	erkek peri: orta koyu cilt tonu
+🧚🏾‍♂	erkek peri: orta koyu cilt tonu
+🧚🏿‍♂️	erkek peri: koyu cilt tonu
+🧚🏿‍♂	erkek peri: koyu cilt tonu
+🧛	vampir
+🧛🏻	vampir: açık cilt tonu
+🧛🏼	vampir: orta açık cilt tonu
+🧛🏽	vampir: orta cilt tonu
+🧛🏾	vampir: orta koyu cilt tonu
+🧛🏿	vampir: koyu cilt tonu
+🧛‍♀️	kadın vampir
+🧛‍♀	kadın vampir
+🧛🏻‍♀️	kadın vampir: açık cilt tonu
+🧛🏻‍♀	kadın vampir: açık cilt tonu
+🧛🏼‍♀️	kadın vampir: orta açık cilt tonu
+🧛🏼‍♀	kadın vampir: orta açık cilt tonu
+🧛🏽‍♀️	kadın vampir: orta cilt tonu
+🧛🏽‍♀	kadın vampir: orta cilt tonu
+🧛🏾‍♀️	kadın vampir: orta koyu cilt tonu
+🧛🏾‍♀	kadın vampir: orta koyu cilt tonu
+🧛🏿‍♀️	kadın vampir: koyu cilt tonu
+🧛🏿‍♀	kadın vampir: koyu cilt tonu
+🧛‍♂️	adam vampir
+🧛‍♂	adam vampir
+🧛🏻‍♂️	erkek vampir: açık cilt tonu
+🧛🏻‍♂	erkek vampir: açık cilt tonu
+🧛🏼‍♂️	erkek vampir: orta açık cilt tonu
+🧛🏼‍♂	erkek vampir: orta açık cilt tonu
+🧛🏽‍♂️	erkek vampir: orta cilt tonu
+🧛🏽‍♂	erkek vampir: orta cilt tonu
+🧛🏾‍♂️	erkek vampir: orta koyu cilt tonu
+🧛🏾‍♂	erkek vampir: orta koyu cilt tonu
+🧛🏿‍♂️	erkek vampir: koyu cilt tonu
+🧛🏿‍♂	erkek vampir: koyu cilt tonu
+🧜	deniz insanı
+🧜🏻	merperson: açık cilt tonu
+🧜🏼	merperson: orta açık cilt tonu
+🧜🏽	merperson: orta cilt tonu
+🧜🏾	merperson: orta koyu cilt tonu
+🧜🏿	merperson: koyu cilt tonu
+🧜‍♀️	Deniz Kızı
+🧜‍♀	Deniz Kızı
+🧜🏻‍♀️	deniz kızı: açık cilt tonu
+🧜🏻‍♀	deniz kızı: açık cilt tonu
+🧜🏼‍♀️	deniz kızı: orta açık cilt tonu
+🧜🏼‍♀	deniz kızı: orta açık cilt tonu
+🧜🏽‍♀️	deniz kızı: orta cilt tonu
+🧜🏽‍♀	deniz kızı: orta cilt tonu
+🧜🏾‍♀️	deniz kızı: orta koyu cilt tonu
+🧜🏾‍♀	deniz kızı: orta koyu cilt tonu
+🧜🏿‍♀️	deniz kızı: koyu cilt tonu
+🧜🏿‍♀	deniz kızı: koyu cilt tonu
+🧜‍♂️	deniz adamı
+🧜‍♂	deniz adamı
+🧜🏻‍♂️	deniz adamı: açık cilt tonu
+🧜🏻‍♂	deniz adamı: açık cilt tonu
+🧜🏼‍♂️	deniz adamı: orta açık cilt tonu
+🧜🏼‍♂	deniz adamı: orta açık cilt tonu
+🧜🏽‍♂️	deniz adamı: orta cilt tonu
+🧜🏽‍♂	deniz adamı: orta cilt tonu
+🧜🏾‍♂️	deniz adamı: orta koyu cilt tonu
+🧜🏾‍♂	deniz adamı: orta koyu cilt tonu
+🧜🏿‍♂️	deniz adamı: koyu cilt tonu
+🧜🏿‍♂	deniz adamı: koyu cilt tonu
+🧝	elf
+🧝🏻	elf: açık cilt tonu
+🧝🏼	elf: orta açık cilt tonu
+🧝🏽	elf: orta cilt tonu
+🧝🏾	elf: orta koyu cilt tonu
+🧝🏿	elf: koyu cilt tonu
+🧝‍♀️	kadın elf
+🧝‍♀	kadın elf
+🧝🏻‍♀️	kadın elf: açık cilt tonu
+🧝🏻‍♀	kadın elf: açık cilt tonu
+🧝🏼‍♀️	kadın elf: orta açık cilt tonu
+🧝🏼‍♀	kadın elf: orta açık cilt tonu
+🧝🏽‍♀️	kadın elf: orta cilt tonu
+🧝🏽‍♀	kadın elf: orta cilt tonu
+🧝🏾‍♀️	kadın elf: orta koyu cilt tonu
+🧝🏾‍♀	kadın elf: orta koyu cilt tonu
+🧝🏿‍♀️	kadın elf: koyu cilt tonu
+🧝🏿‍♀	kadın elf: koyu cilt tonu
+🧝‍♂️	adam elf
+🧝‍♂	adam elf
+🧝🏻‍♂️	erkek elf: açık cilt tonu
+🧝🏻‍♂	erkek elf: açık cilt tonu
+🧝🏼‍♂️	erkek elf: orta açık cilt tonu
+🧝🏼‍♂	erkek elf: orta açık cilt tonu
+🧝🏽‍♂️	erkek elf: orta cilt tonu
+🧝🏽‍♂	erkek elf: orta cilt tonu
+🧝🏾‍♂️	erkek elf: orta koyu cilt tonu
+🧝🏾‍♂	erkek elf: orta koyu cilt tonu
+🧝🏿‍♂️	erkek elf: koyu cilt tonu
+🧝🏿‍♂	erkek elf: koyu cilt tonu
+🧞	cin
+🧞‍♀️	kadın cin
+🧞‍♀	kadın cin
+🧞‍♂️	adam cin
+🧞‍♂	adam cin
+🧟	zombi
+🧟‍♀️	kadın zombi
+🧟‍♀	kadın zombi
+🧟‍♂️	adam zombi
+🧟‍♂	adam zombi
+🙍	kaşlarını çatan kişi
+🙍🏻	kaşlarını çatan kişi: açık cilt tonu
+🙍🏼	kaşlarını çatan kişi: orta açık cilt tonu
+🙍🏽	kaşlarını çatan kişi: orta cilt tonu
+🙍🏾	kaşlarını çatan kişi: orta koyu cilt tonu
+🙍🏿	kaşlarını çatan kişi: koyu cilt tonu
+🙍‍♂️	adam kaşlarını çattı
+🙍‍♂	adam kaşlarını çattı
+🙍🏻‍♂️	kaşlarını çatan adam: açık cilt tonu
+🙍🏻‍♂	kaşlarını çatan adam: açık cilt tonu
+🙍🏼‍♂️	kaşlarını çatan adam: orta açık cilt tonu
+🙍🏼‍♂	kaşlarını çatan adam: orta açık cilt tonu
+🙍🏽‍♂️	kaşlarını çatan adam: orta cilt tonu
+🙍🏽‍♂	kaşlarını çatan adam: orta cilt tonu
+🙍🏾‍♂️	kaşlarını çatan adam: orta koyu cilt tonu
+🙍🏾‍♂	kaşlarını çatan adam: orta koyu cilt tonu
+🙍🏿‍♂️	kaşlarını çatan adam: koyu cilt tonu
+🙍🏿‍♂	kaşlarını çatan adam: koyu cilt tonu
+🙍‍♀️	kadın kaşlarını çattı
+🙍‍♀	kadın kaşlarını çattı
+🙍🏻‍♀️	kaşlarını çatan kadın: açık cilt tonu
+🙍🏻‍♀	kaşlarını çatan kadın: açık cilt tonu
+🙍🏼‍♀️	kaşlarını çatan kadın: orta açık cilt tonu
+🙍🏼‍♀	kaşlarını çatan kadın: orta açık cilt tonu
+🙍🏽‍♀️	kaşlarını çatan kadın: orta cilt tonu
+🙍🏽‍♀	kaşlarını çatan kadın: orta cilt tonu
+🙍🏾‍♀️	kaşlarını çatan kadın: orta koyu cilt tonu
+🙍🏾‍♀	kaşlarını çatan kadın: orta koyu cilt tonu
+🙍🏿‍♀️	kaşlarını çatan kadın: koyu cilt tonu
+🙍🏿‍♀	kaşlarını çatan kadın: koyu cilt tonu
+🙎	somurtan kişi
+🙎🏻	somurtan kişi: açık cilt tonu
+🙎🏼	somurtan kişi: orta açık cilt tonu
+🙎🏽	somurtan kişi: orta cilt tonu
+🙎🏾	somurtan kişi: orta koyu cilt tonu
+🙎🏿	somurtan kişi: koyu cilt tonu
+🙎‍♂️	somurtan adam
+🙎‍♂	somurtan adam
+🙎🏻‍♂️	somurtan adam: açık cilt tonu
+🙎🏻‍♂	somurtan adam: açık cilt tonu
+🙎🏼‍♂️	somurtan adam: orta açık cilt tonu
+🙎🏼‍♂	somurtan adam: orta açık cilt tonu
+🙎🏽‍♂️	somurtan adam: orta cilt tonu
+🙎🏽‍♂	somurtan adam: orta cilt tonu
+🙎🏾‍♂️	somurtan adam: orta koyu cilt tonu
+🙎🏾‍♂	somurtan adam: orta koyu cilt tonu
+🙎🏿‍♂️	somurtan adam: koyu cilt tonu
+🙎🏿‍♂	somurtan adam: koyu cilt tonu
+🙎‍♀️	kadın somurtarak
+🙎‍♀	kadın somurtarak
+🙎🏻‍♀️	somurtan kadın: açık cilt tonu
+🙎🏻‍♀	somurtan kadın: açık cilt tonu
+🙎🏼‍♀️	somurtan kadın: orta açık cilt tonu
+🙎🏼‍♀	somurtan kadın: orta açık cilt tonu
+🙎🏽‍♀️	somurtan kadın: orta cilt tonu
+🙎🏽‍♀	somurtan kadın: orta cilt tonu
+🙎🏾‍♀️	somurtan kadın: orta koyu cilt tonu
+🙎🏾‍♀	somurtan kadın: orta koyu cilt tonu
+🙎🏿‍♀️	somurtan kadın: koyu cilt tonu
+🙎🏿‍♀	somurtan kadın: koyu cilt tonu
+🙅	HAYIR işareti yapan kişi
+🙅🏻	HAYIR işareti yapan kişi: açık cilt tonu
+🙅🏼	HAYIR işareti yapan kişi: orta açık cilt tonu
+🙅🏽	HAYIR işareti yapan kişi: orta cilt tonu
+🙅🏾	HAYIR hareketi yapan kişi: orta koyu cilt tonu
+🙅🏿	HAYIR işareti yapan kişi: koyu cilt tonu
+🙅‍♂️	Hayır işareti yapan adam
+🙅‍♂	Hayır işareti yapan adam
+🙅🏻‍♂️	HAYIR işareti yapan adam: açık cilt tonu
+🙅🏻‍♂	HAYIR işareti yapan adam: açık cilt tonu
+🙅🏼‍♂️	HAYIR işareti yapan adam: orta açık cilt tonu
+🙅🏼‍♂	HAYIR işareti yapan adam: orta açık cilt tonu
+🙅🏽‍♂️	HAYIR işareti yapan adam: orta cilt tonu
+🙅🏽‍♂	HAYIR işareti yapan adam: orta cilt tonu
+🙅🏾‍♂️	HAYIR işareti yapan adam: orta koyu cilt tonu
+🙅🏾‍♂	HAYIR işareti yapan adam: orta koyu cilt tonu
+🙅🏿‍♂️	HAYIR işareti yapan adam: koyu cilt tonu
+🙅🏿‍♂	HAYIR işareti yapan adam: koyu cilt tonu
+🙅‍♀️	Hayır işareti yapan kadın
+🙅‍♀	Hayır işareti yapan kadın
+🙅🏻‍♀️	Hayır hareketi yapan kadın: açık cilt tonu
+🙅🏻‍♀	Hayır hareketi yapan kadın: açık cilt tonu
+🙅🏼‍♀️	HAYIR işareti yapan kadın: orta açık cilt tonu
+🙅🏼‍♀	HAYIR işareti yapan kadın: orta açık cilt tonu
+🙅🏽‍♀️	HAYIR işareti yapan kadın: orta cilt tonu
+🙅🏽‍♀	HAYIR işareti yapan kadın: orta cilt tonu
+🙅🏾‍♀️	HAYIR işareti yapan kadın: orta koyu cilt tonu
+🙅🏾‍♀	HAYIR işareti yapan kadın: orta koyu cilt tonu
+🙅🏿‍♀️	Hayır hareketi yapan kadın: koyu cilt tonu
+🙅🏿‍♀	Hayır hareketi yapan kadın: koyu cilt tonu
+🙆	Tamam işareti yapan kişi
+🙆🏻	Tamam hareketi yapan kişi: açık cilt tonu
+🙆🏼	Tamam hareketi yapan kişi: orta açık cilt tonu
+🙆🏽	Tamam hareketi yapan kişi: orta cilt tonu
+🙆🏾	Tamam hareketi yapan kişi: orta koyu cilt tonu
+🙆🏿	Tamam hareketi yapan kişi: koyu cilt tonu
+🙆‍♂️	Tamam işareti yapan adam
+🙆‍♂	Tamam işareti yapan adam
+🙆🏻‍♂️	Tamam hareketi yapan adam: açık cilt tonu
+🙆🏻‍♂	Tamam hareketi yapan adam: açık cilt tonu
+🙆🏼‍♂️	Tamam hareketi yapan adam: orta açık cilt tonu
+🙆🏼‍♂	Tamam hareketi yapan adam: orta açık cilt tonu
+🙆🏽‍♂️	Tamam hareketi yapan adam: orta cilt tonu
+🙆🏽‍♂	Tamam hareketi yapan adam: orta cilt tonu
+🙆🏾‍♂️	Tamam hareketi yapan adam: orta koyu cilt tonu
+🙆🏾‍♂	Tamam hareketi yapan adam: orta koyu cilt tonu
+🙆🏿‍♂️	Tamam hareketi yapan adam: koyu cilt tonu
+🙆🏿‍♂	Tamam hareketi yapan adam: koyu cilt tonu
+🙆‍♀️	Tamam işareti yapan kadın
+🙆‍♀	Tamam işareti yapan kadın
+🙆🏻‍♀️	Tamam hareketi yapan kadın: açık cilt tonu
+🙆🏻‍♀	Tamam hareketi yapan kadın: açık cilt tonu
+🙆🏼‍♀️	Tamam hareketi yapan kadın: orta açık cilt tonu
+🙆🏼‍♀	Tamam hareketi yapan kadın: orta açık cilt tonu
+🙆🏽‍♀️	Tamam hareketi yapan kadın: orta cilt tonu
+🙆🏽‍♀	Tamam hareketi yapan kadın: orta cilt tonu
+🙆🏾‍♀️	Tamam hareketi yapan kadın: orta koyu cilt tonu
+🙆🏾‍♀	Tamam hareketi yapan kadın: orta koyu cilt tonu
+🙆🏿‍♀️	Tamam hareketi yapan kadın: koyu cilt tonu
+🙆🏿‍♀	Tamam hareketi yapan kadın: koyu cilt tonu
+💁	elini yana yatıran kişi
+💁🏻	elini yana yatıran kişi: açık cilt tonu
+💁🏼	elini yana yatıran kişi: orta açık cilt tonu
+💁🏽	elini yana yatıran kişi: orta cilt tonu
+💁🏾	elini yana yatıran kişi: orta koyu cilt tonu
+💁🏿	elini yana yatıran kişi: koyu cilt tonu
+💁‍♂️	adam elini deviriyor
+💁‍♂	adam elini deviriyor
+💁🏻‍♂️	elini yana yatıran adam: açık cilt tonu
+💁🏻‍♂	elini yana yatıran adam: açık cilt tonu
+💁🏼‍♂️	elini yana yatıran adam: orta açık cilt tonu
+💁🏼‍♂	elini yana yatıran adam: orta açık cilt tonu
+💁🏽‍♂️	elini yana yatıran adam: orta cilt tonu
+💁🏽‍♂	elini yana yatıran adam: orta cilt tonu
+💁🏾‍♂️	elini yana yatıran adam: orta koyu cilt tonu
+💁🏾‍♂	elini yana yatıran adam: orta koyu cilt tonu
+💁🏿‍♂️	elini yana yatıran adam: koyu cilt tonu
+💁🏿‍♂	elini yana yatıran adam: koyu cilt tonu
+💁‍♀️	kadın elini devirdi
+💁‍♀	kadın elini devirdi
+💁🏻‍♀️	elini yana yatıran kadın: açık cilt tonu
+💁🏻‍♀	elini yana yatıran kadın: açık cilt tonu
+💁🏼‍♀️	elini yana yatıran kadın: orta açık cilt tonu
+💁🏼‍♀	elini yana yatıran kadın: orta açık cilt tonu
+💁🏽‍♀️	elini yana yatıran kadın: orta cilt tonu
+💁🏽‍♀	elini yana yatıran kadın: orta cilt tonu
+💁🏾‍♀️	elini yana yatıran kadın: orta koyu cilt tonu
+💁🏾‍♀	elini yana yatıran kadın: orta koyu cilt tonu
+💁🏿‍♀️	elini yana yatıran kadın: koyu cilt tonu
+💁🏿‍♀	elini yana yatıran kadın: koyu cilt tonu
+🙋	elini kaldıran kişi
+🙋🏻	elini kaldıran kişi: açık cilt tonu
+🙋🏼	elini kaldıran kişi: orta açık cilt tonu
+🙋🏽	elini kaldıran kişi: orta cilt tonu
+🙋🏾	elini kaldıran kişi: orta koyu cilt tonu
+🙋🏿	elini kaldıran kişi: koyu cilt tonu
+🙋‍♂️	adam elini kaldırıyor
+🙋‍♂	adam elini kaldırıyor
+🙋🏻‍♂️	elini kaldıran adam: açık cilt tonu
+🙋🏻‍♂	elini kaldıran adam: açık cilt tonu
+🙋🏼‍♂️	elini kaldıran adam: orta açık cilt tonu
+🙋🏼‍♂	elini kaldıran adam: orta açık cilt tonu
+🙋🏽‍♂️	elini kaldıran adam: orta cilt tonu
+🙋🏽‍♂	elini kaldıran adam: orta cilt tonu
+🙋🏾‍♂️	elini kaldıran adam: orta koyu cilt tonu
+🙋🏾‍♂	elini kaldıran adam: orta koyu cilt tonu
+🙋🏿‍♂️	elini kaldıran adam: koyu cilt tonu
+🙋🏿‍♂	elini kaldıran adam: koyu cilt tonu
+🙋‍♀️	elini kaldıran kadın
+🙋‍♀	elini kaldıran kadın
+🙋🏻‍♀️	elini kaldıran kadın: açık cilt tonu
+🙋🏻‍♀	elini kaldıran kadın: açık cilt tonu
+🙋🏼‍♀️	elini kaldıran kadın: orta açık cilt tonu
+🙋🏼‍♀	elini kaldıran kadın: orta açık cilt tonu
+🙋🏽‍♀️	elini kaldıran kadın: orta cilt tonu
+🙋🏽‍♀	elini kaldıran kadın: orta cilt tonu
+🙋🏾‍♀️	elini kaldıran kadın: orta koyu cilt tonu
+🙋🏾‍♀	elini kaldıran kadın: orta koyu cilt tonu
+🙋🏿‍♀️	elini kaldıran kadın: koyu cilt tonu
+🙋🏿‍♀	elini kaldıran kadın: koyu cilt tonu
+🙇	eğilen kişi
+🙇🏻	eğilen kişi: açık cilt tonu
+🙇🏼	eğilen kişi: orta açık cilt tonu
+🙇🏽	eğilen kişi: orta cilt tonu
+🙇🏾	eğilen kişi: orta koyu cilt tonu
+🙇🏿	eğilen kişi: koyu cilt tonu
+🙇‍♂️	eğilen adam
+🙇‍♂	eğilen adam
+🙇🏻‍♂️	eğilen adam: açık cilt tonu
+🙇🏻‍♂	eğilen adam: açık cilt tonu
+🙇🏼‍♂️	eğilen adam: orta açık cilt tonu
+🙇🏼‍♂	eğilen adam: orta açık cilt tonu
+🙇🏽‍♂️	eğilen adam: orta cilt tonu
+🙇🏽‍♂	eğilen adam: orta cilt tonu
+🙇🏾‍♂️	eğilen adam: orta koyu cilt tonu
+🙇🏾‍♂	eğilen adam: orta koyu cilt tonu
+🙇🏿‍♂️	eğilen adam: koyu cilt tonu
+🙇🏿‍♂	eğilen adam: koyu cilt tonu
+🙇‍♀️	eğilen kadın
+🙇‍♀	eğilen kadın
+🙇🏻‍♀️	eğilen kadın: açık cilt tonu
+🙇🏻‍♀	eğilen kadın: açık cilt tonu
+🙇🏼‍♀️	eğilen kadın: orta açık cilt tonu
+🙇🏼‍♀	eğilen kadın: orta açık cilt tonu
+🙇🏽‍♀️	eğilen kadın: orta cilt tonu
+🙇🏽‍♀	eğilen kadın: orta cilt tonu
+🙇🏾‍♀️	eğilen kadın: orta koyu cilt tonu
+🙇🏾‍♀	eğilen kadın: orta koyu cilt tonu
+🙇🏿‍♀️	eğilen kadın: koyu cilt tonu
+🙇🏿‍♀	eğilen kadın: koyu cilt tonu
+🤦	Yüzünü kapatan kişi
+🤦🏻	yüzünü avuçlayan kişi: açık cilt tonu
+🤦🏼	yüzünü avuçlayan kişi: orta açık cilt tonu
+🤦🏽	yüzünü avuçlayan kişi: orta cilt tonu
+🤦🏾	yüzünü avuçlayan kişi: orta koyu cilt tonu
+🤦🏿	yüzünü avuçlayan kişi: koyu cilt tonu
+🤦‍♂️	yüzünü kapatan adam
+🤦‍♂	yüzünü kapatan adam
+🤦🏻‍♂️	yüzünü kapatan erkek: açık cilt tonu
+🤦🏻‍♂	yüzünü kapatan erkek: açık cilt tonu
+🤦🏼‍♂️	yüzünü avuçlayan erkek: orta açık cilt tonu
+🤦🏼‍♂	yüzünü avuçlayan erkek: orta açık cilt tonu
+🤦🏽‍♂️	yüzünü kapatan erkek: orta cilt tonu
+🤦🏽‍♂	yüzünü kapatan erkek: orta cilt tonu
+🤦🏾‍♂️	yüzünü avuçlayan erkek: orta koyu cilt tonu
+🤦🏾‍♂	yüzünü avuçlayan erkek: orta koyu cilt tonu
+🤦🏿‍♂️	yüzünü avuçlayan erkek: koyu cilt tonu
+🤦🏿‍♂	yüzünü avuçlayan erkek: koyu cilt tonu
+🤦‍♀️	yüzünü kapatan kadın
+🤦‍♀	yüzünü kapatan kadın
+🤦🏻‍♀️	yüzünü avuçlayan kadın: açık cilt tonu
+🤦🏻‍♀	yüzünü avuçlayan kadın: açık cilt tonu
+🤦🏼‍♀️	yüzünü avuçlayan kadın: orta açık cilt tonu
+🤦🏼‍♀	yüzünü avuçlayan kadın: orta açık cilt tonu
+🤦🏽‍♀️	yüzünü avuçlayan kadın: orta cilt tonu
+🤦🏽‍♀	yüzünü avuçlayan kadın: orta cilt tonu
+🤦🏾‍♀️	yüzünü avuçlayan kadın: orta koyu cilt tonu
+🤦🏾‍♀	yüzünü avuçlayan kadın: orta koyu cilt tonu
+🤦🏿‍♀️	yüzünü avuçlayan kadın: koyu cilt tonu
+🤦🏿‍♀	yüzünü avuçlayan kadın: koyu cilt tonu
+🤷	omuz silken kişi
+🤷🏻	omuz silken kişi: açık cilt tonu
+🤷🏼	omuz silken kişi: orta açık cilt tonu
+🤷🏽	omuz silken kişi: orta cilt tonu
+🤷🏾	omuz silken kişi: orta koyu cilt tonu
+🤷🏿	omuz silken kişi: koyu cilt tonu
+🤷‍♂️	adam omuz silkiyor
+🤷‍♂	adam omuz silkiyor
+🤷🏻‍♂️	omuz silken adam: açık cilt tonu
+🤷🏻‍♂	omuz silken adam: açık cilt tonu
+🤷🏼‍♂️	omuz silken adam: orta açık cilt tonu
+🤷🏼‍♂	omuz silken adam: orta açık cilt tonu
+🤷🏽‍♂️	omuz silken adam: orta cilt tonu
+🤷🏽‍♂	omuz silken adam: orta cilt tonu
+🤷🏾‍♂️	omuz silken adam: orta koyu cilt tonu
+🤷🏾‍♂	omuz silken adam: orta koyu cilt tonu
+🤷🏿‍♂️	omuz silken adam: koyu cilt tonu
+🤷🏿‍♂	omuz silken adam: koyu cilt tonu
+🤷‍♀️	kadın omuz silkiyor
+🤷‍♀	kadın omuz silkiyor
+🤷🏻‍♀️	omuz silken kadın: açık cilt tonu
+🤷🏻‍♀	omuz silken kadın: açık cilt tonu
+🤷🏼‍♀️	omuz silken kadın: orta açık cilt tonu
+🤷🏼‍♀	omuz silken kadın: orta açık cilt tonu
+🤷🏽‍♀️	omuz silken kadın: orta cilt tonu
+🤷🏽‍♀	omuz silken kadın: orta cilt tonu
+🤷🏾‍♀️	omuz silken kadın: orta koyu cilt tonu
+🤷🏾‍♀	omuz silken kadın: orta koyu cilt tonu
+🤷🏿‍♀️	omuz silken kadın: koyu cilt tonu
+🤷🏿‍♀	omuz silken kadın: koyu cilt tonu
+💆	masaj yaptıran kişi
+💆🏻	masaj yaptıran kişi: açık cilt tonu
+💆🏼	masaj yaptıran kişi: orta açık cilt tonu
+💆🏽	masaj yaptıran kişi: orta cilt tonu
+💆🏾	masaj yaptıran kişi: orta koyu cilt tonu
+💆🏿	masaj yaptıran kişi: koyu cilt tonu
+💆‍♂️	masaj yaptıran adam
+💆‍♂	masaj yaptıran adam
+💆🏻‍♂️	masaj yaptıran erkek: açık cilt tonu
+💆🏻‍♂	masaj yaptıran erkek: açık cilt tonu
+💆🏼‍♂️	masaj yaptıran erkek: orta açık cilt tonu
+💆🏼‍♂	masaj yaptıran erkek: orta açık cilt tonu
+💆🏽‍♂️	masaj yaptıran erkek: orta cilt tonu
+💆🏽‍♂	masaj yaptıran erkek: orta cilt tonu
+💆🏾‍♂️	masaj yaptıran erkek: orta koyu cilt tonu
+💆🏾‍♂	masaj yaptıran erkek: orta koyu cilt tonu
+💆🏿‍♂️	masaj yaptıran erkek: koyu cilt tonu
+💆🏿‍♂	masaj yaptıran erkek: koyu cilt tonu
+💆‍♀️	masaj yaptıran kadın
+💆‍♀	masaj yaptıran kadın
+💆🏻‍♀️	masaj yaptıran kadın: açık cilt tonu
+💆🏻‍♀	masaj yaptıran kadın: açık cilt tonu
+💆🏼‍♀️	masaj yaptıran kadın: orta açık cilt tonu
+💆🏼‍♀	masaj yaptıran kadın: orta açık cilt tonu
+💆🏽‍♀️	masaj yaptıran kadın: orta cilt tonu
+💆🏽‍♀	masaj yaptıran kadın: orta cilt tonu
+💆🏾‍♀️	masaj yaptıran kadın: orta koyu cilt tonu
+💆🏾‍♀	masaj yaptıran kadın: orta koyu cilt tonu
+💆🏿‍♀️	masaj yaptıran kadın: koyu cilt tonu
+💆🏿‍♀	masaj yaptıran kadın: koyu cilt tonu
+💇	saçını kestiren kişi
+💇🏻	saçını kestiren kişi: açık cilt tonu
+💇🏼	saçını kestiren kişi: orta açık cilt tonu
+💇🏽	saçını kestiren kişi: orta cilt tonu
+💇🏾	saç kestiren kişi: orta koyu cilt tonu
+💇🏿	saçını kestiren kişi: koyu cilt tonu
+💇‍♂️	saçını kestiren adam
+💇‍♂	saçını kestiren adam
+💇🏻‍♂️	saçını kestiren erkek: açık cilt tonu
+💇🏻‍♂	saçını kestiren erkek: açık cilt tonu
+💇🏼‍♂️	saçını kestiren erkek: orta açık cilt tonu
+💇🏼‍♂	saçını kestiren erkek: orta açık cilt tonu
+💇🏽‍♂️	saçını kestiren adam: orta cilt tonu
+💇🏽‍♂	saçını kestiren adam: orta cilt tonu
+💇🏾‍♂️	saçını kestiren erkek: orta koyu cilt tonu
+💇🏾‍♂	saçını kestiren erkek: orta koyu cilt tonu
+💇🏿‍♂️	saçını kestiren erkek: koyu cilt tonu
+💇🏿‍♂	saçını kestiren erkek: koyu cilt tonu
+💇‍♀️	saçını kestiren kadın
+💇‍♀	saçını kestiren kadın
+💇🏻‍♀️	saçını kestiren kadın: açık cilt tonu
+💇🏻‍♀	saçını kestiren kadın: açık cilt tonu
+💇🏼‍♀️	saçını kestiren kadın: orta açık cilt tonu
+💇🏼‍♀	saçını kestiren kadın: orta açık cilt tonu
+💇🏽‍♀️	saçını kestiren kadın: orta cilt tonu
+💇🏽‍♀	saçını kestiren kadın: orta cilt tonu
+💇🏾‍♀️	saçını kestiren kadın: orta koyu cilt tonu
+💇🏾‍♀	saçını kestiren kadın: orta koyu cilt tonu
+💇🏿‍♀️	saçını kestiren kadın: koyu cilt tonu
+💇🏿‍♀	saçını kestiren kadın: koyu cilt tonu
+🚶	yürüyen kişi
+🚶🏻	yürüyen kişi: açık cilt tonu
+🚶🏼	yürüyen kişi: orta açık cilt tonu
+🚶🏽	yürüyen kişi: orta cilt tonu
+🚶🏾	yürüyen kişi: orta koyu cilt tonu
+🚶🏿	yürüyen kişi: koyu cilt tonu
+🚶‍♂️	yürüyen adam
+🚶‍♂	yürüyen adam
+🚶🏻‍♂️	yürüyen adam: açık cilt tonu
+🚶🏻‍♂	yürüyen adam: açık cilt tonu
+🚶🏼‍♂️	yürüyen adam: orta açık cilt tonu
+🚶🏼‍♂	yürüyen adam: orta açık cilt tonu
+🚶🏽‍♂️	yürüyen adam: orta cilt tonu
+🚶🏽‍♂	yürüyen adam: orta cilt tonu
+🚶🏾‍♂️	yürüyen adam: orta koyu cilt tonu
+🚶🏾‍♂	yürüyen adam: orta koyu cilt tonu
+🚶🏿‍♂️	yürüyen adam: koyu cilt tonu
+🚶🏿‍♂	yürüyen adam: koyu cilt tonu
+🚶‍♀️	yürüyen kadın
+🚶‍♀	yürüyen kadın
+🚶🏻‍♀️	yürüyen kadın: açık cilt tonu
+🚶🏻‍♀	yürüyen kadın: açık cilt tonu
+🚶🏼‍♀️	yürüyen kadın: orta açık cilt tonu
+🚶🏼‍♀	yürüyen kadın: orta açık cilt tonu
+🚶🏽‍♀️	yürüyen kadın: orta cilt tonu
+🚶🏽‍♀	yürüyen kadın: orta cilt tonu
+🚶🏾‍♀️	yürüyen kadın: orta koyu cilt tonu
+🚶🏾‍♀	yürüyen kadın: orta koyu cilt tonu
+🚶🏿‍♀️	yürüyen kadın: koyu cilt tonu
+🚶🏿‍♀	yürüyen kadın: koyu cilt tonu
+🏃	koşan kişi
+🏃🏻	koşan kişi: açık cilt tonu
+🏃🏼	koşan kişi: orta açık cilt tonu
+🏃🏽	koşan kişi: orta cilt tonu
+🏃🏾	koşan kişi: orta koyu cilt tonu
+🏃🏿	koşan kişi: koyu cilt tonu
+🏃‍♂️	koşan adam
+🏃‍♂	koşan adam
+🏃🏻‍♂️	koşan adam: açık cilt tonu
+🏃🏻‍♂	koşan adam: açık cilt tonu
+🏃🏼‍♂️	koşan adam: orta açık cilt tonu
+🏃🏼‍♂	koşan adam: orta açık cilt tonu
+🏃🏽‍♂️	koşan adam: orta cilt tonu
+🏃🏽‍♂	koşan adam: orta cilt tonu
+🏃🏾‍♂️	koşan adam: orta koyu cilt tonu
+🏃🏾‍♂	koşan adam: orta koyu cilt tonu
+🏃🏿‍♂️	koşan adam: koyu cilt tonu
+🏃🏿‍♂	koşan adam: koyu cilt tonu
+🏃‍♀️	koşan kadın
+🏃‍♀	koşan kadın
+🏃🏻‍♀️	koşan kadın: açık cilt tonu
+🏃🏻‍♀	koşan kadın: açık cilt tonu
+🏃🏼‍♀️	koşan kadın: orta açık cilt tonu
+🏃🏼‍♀	koşan kadın: orta açık cilt tonu
+🏃🏽‍♀️	koşan kadın: orta cilt tonu
+🏃🏽‍♀	koşan kadın: orta cilt tonu
+🏃🏾‍♀️	koşan kadın: orta koyu cilt tonu
+🏃🏾‍♀	koşan kadın: orta koyu cilt tonu
+🏃🏿‍♀️	koşan kadın: koyu cilt tonu
+🏃🏿‍♀	koşan kadın: koyu cilt tonu
+💃	dans eden kadın
+💃🏻	dans eden kadın: açık cilt tonu
+💃🏼	dans eden kadın: orta açık cilt tonu
+💃🏽	dans eden kadın: orta cilt tonu
+💃🏾	dans eden kadın: orta koyu cilt tonu
+💃🏿	dans eden kadın: koyu cilt tonu
+🕺	dans eden adam
+🕺🏻	dans eden adam: açık cilt tonu
+🕺🏼	dans eden adam: orta açık cilt tonu
+🕺🏽	dans eden adam: orta cilt tonu
+🕺🏾	dans eden adam: orta koyu cilt tonu
+🕺🏿	dans eden adam: koyu cilt tonu
+👯	tavşan kulaklı insanlar
+👯‍♂️	tavşan kulaklı erkekler
+👯‍♂	tavşan kulaklı erkekler
+👯‍♀️	tavşan kulaklı kadınlar
+👯‍♀	tavşan kulaklı kadınlar
+🧖	buhar odasındaki kişi
+🧖🏻	buhar odasındaki kişi: açık cilt tonu
+🧖🏼	buhar odasındaki kişi: orta açık cilt tonu
+🧖🏽	buhar odasındaki kişi: orta cilt tonu
+🧖🏾	buhar odasındaki kişi: orta koyu cilt tonu
+🧖🏿	buhar odasındaki kişi: koyu cilt tonu
+🧖‍♀️	buhar odasındaki kadın
+🧖‍♀	buhar odasındaki kadın
+🧖🏻‍♀️	buhar odasındaki kadın: açık cilt tonu
+🧖🏻‍♀	buhar odasındaki kadın: açık cilt tonu
+🧖🏼‍♀️	buhar odasındaki kadın: orta açık cilt tonu
+🧖🏼‍♀	buhar odasındaki kadın: orta açık cilt tonu
+🧖🏽‍♀️	buhar odasındaki kadın: orta cilt tonu
+🧖🏽‍♀	buhar odasındaki kadın: orta cilt tonu
+🧖🏾‍♀️	buhar odasındaki kadın: orta koyu cilt tonu
+🧖🏾‍♀	buhar odasındaki kadın: orta koyu cilt tonu
+🧖🏿‍♀️	buhar odasındaki kadın: koyu cilt tonu
+🧖🏿‍♀	buhar odasındaki kadın: koyu cilt tonu
+🧖‍♂️	buhar odasındaki adam
+🧖‍♂	buhar odasındaki adam
+🧖🏻‍♂️	buhar odasındaki adam: açık cilt tonu
+🧖🏻‍♂	buhar odasındaki adam: açık cilt tonu
+🧖🏼‍♂️	buhar odasındaki adam: orta açık cilt tonu
+🧖🏼‍♂	buhar odasındaki adam: orta açık cilt tonu
+🧖🏽‍♂️	buhar odasındaki adam: orta cilt tonu
+🧖🏽‍♂	buhar odasındaki adam: orta cilt tonu
+🧖🏾‍♂️	buhar odasındaki adam: orta koyu cilt tonu
+🧖🏾‍♂	buhar odasındaki adam: orta koyu cilt tonu
+🧖🏿‍♂️	buhar odasındaki adam: koyu cilt tonu
+🧖🏿‍♂	buhar odasındaki adam: koyu cilt tonu
+🧗	tırmanan kişi
+🧗🏻	tırmanan kişi: açık cilt tonu
+🧗🏼	tırmanan kişi: orta açık cilt tonu
+🧗🏽	tırmanan kişi: orta cilt tonu
+🧗🏾	tırmanan kişi: orta koyu cilt tonu
+🧗🏿	tırmanan kişi: koyu cilt tonu
+🧗‍♀️	tırmanan kadın
+🧗‍♀	tırmanan kadın
+🧗🏻‍♀️	tırmanan kadın: açık cilt tonu
+🧗🏻‍♀	tırmanan kadın: açık cilt tonu
+🧗🏼‍♀️	tırmanan kadın: orta açık cilt tonu
+🧗🏼‍♀	tırmanan kadın: orta açık cilt tonu
+🧗🏽‍♀️	tırmanan kadın: orta cilt tonu
+🧗🏽‍♀	tırmanan kadın: orta cilt tonu
+🧗🏾‍♀️	tırmanan kadın: orta koyu cilt tonu
+🧗🏾‍♀	tırmanan kadın: orta koyu cilt tonu
+🧗🏿‍♀️	tırmanan kadın: koyu cilt tonu
+🧗🏿‍♀	tırmanan kadın: koyu cilt tonu
+🧗‍♂️	adam tırmanıyor
+🧗‍♂	adam tırmanıyor
+🧗🏻‍♂️	tırmanan adam: açık cilt tonu
+🧗🏻‍♂	tırmanan adam: açık cilt tonu
+🧗🏼‍♂️	tırmanan adam: orta açık cilt tonu
+🧗🏼‍♂	tırmanan adam: orta açık cilt tonu
+🧗🏽‍♂️	tırmanan adam: orta cilt tonu
+🧗🏽‍♂	tırmanan adam: orta cilt tonu
+🧗🏾‍♂️	tırmanan adam: orta koyu cilt tonu
+🧗🏾‍♂	tırmanan adam: orta koyu cilt tonu
+🧗🏿‍♂️	tırmanan adam: koyu cilt tonu
+🧗🏿‍♂	tırmanan adam: koyu cilt tonu
+🧘	lotus pozisyonundaki kişi
+🧘🏻	lotus pozisyonundaki kişi: açık cilt tonu
+🧘🏼	lotus pozisyonundaki kişi: orta açık cilt tonu
+🧘🏽	lotus pozisyonundaki kişi: orta cilt tonu
+🧘🏾	lotus pozisyonundaki kişi: orta koyu cilt tonu
+🧘🏿	lotus pozisyonundaki kişi: koyu cilt tonu
+🧘‍♀️	lotus pozisyonundaki kadın
+🧘‍♀	lotus pozisyonundaki kadın
+🧘🏻‍♀️	lotus pozisyonundaki kadın: açık cilt tonu
+🧘🏻‍♀	lotus pozisyonundaki kadın: açık cilt tonu
+🧘🏼‍♀️	lotus pozisyonundaki kadın: orta açık cilt tonu
+🧘🏼‍♀	lotus pozisyonundaki kadın: orta açık cilt tonu
+🧘🏽‍♀️	lotus pozisyonundaki kadın: orta cilt tonu
+🧘🏽‍♀	lotus pozisyonundaki kadın: orta cilt tonu
+🧘🏾‍♀️	lotus pozisyonundaki kadın: orta koyu cilt tonu
+🧘🏾‍♀	lotus pozisyonundaki kadın: orta koyu cilt tonu
+🧘🏿‍♀️	lotus pozisyonundaki kadın: koyu cilt tonu
+🧘🏿‍♀	lotus pozisyonundaki kadın: koyu cilt tonu
+🧘‍♂️	lotus pozisyonundaki adam
+🧘‍♂	lotus pozisyonundaki adam
+🧘🏻‍♂️	lotus pozisyonundaki adam: açık cilt tonu
+🧘🏻‍♂	lotus pozisyonundaki adam: açık cilt tonu
+🧘🏼‍♂️	lotus pozisyonundaki adam: orta açık cilt tonu
+🧘🏼‍♂	lotus pozisyonundaki adam: orta açık cilt tonu
+🧘🏽‍♂️	lotus pozisyonundaki adam: orta cilt tonu
+🧘🏽‍♂	lotus pozisyonundaki adam: orta cilt tonu
+🧘🏾‍♂️	lotus pozisyonundaki adam: orta koyu cilt tonu
+🧘🏾‍♂	lotus pozisyonundaki adam: orta koyu cilt tonu
+🧘🏿‍♂️	lotus pozisyonundaki adam: koyu cilt tonu
+🧘🏿‍♂	lotus pozisyonundaki adam: koyu cilt tonu
+🛀	banyo yapan kişi
+🛀🏻	banyo yapan kişi: açık cilt tonu
+🛀🏼	banyo yapan kişi: orta açık cilt tonu
+🛀🏽	banyo yapan kişi: orta cilt tonu
+🛀🏾	banyo yapan kişi: orta koyu cilt tonu
+🛀🏿	banyo yapan kişi: koyu cilt tonu
+🛌	yataktaki kişi
+🛌🏻	yataktaki kişi: açık cilt tonu
+🛌🏼	yataktaki kişi: orta açık cilt tonu
+🛌🏽	yataktaki kişi: orta cilt tonu
+🛌🏾	yataktaki kişi: orta koyu cilt tonu
+🛌🏿	yataktaki kişi: koyu cilt tonu
+🕴️	havaya uçan takım elbiseli adam
+🕴	havaya uçan takım elbiseli adam
+🕴🏻	havalanan takım elbiseli adam: açık cilt tonu
+🕴🏼	havalanan takım elbiseli adam: orta açık cilt tonu
+🕴🏽	havalanan takım elbiseli adam: orta cilt tonu
+🕴🏾	havalanan takım elbiseli adam: orta koyu cilt tonu
+🕴🏿	havalanan takım elbiseli adam: koyu cilt tonu
+🗣️	konuşan kafa
+🗣	konuşan kafa
+👤	siluet halinde büstü
+👥	siluet halindeki büstler
+🤺	kişi eskrim
+🏇	at yarışı
+🏇🏻	at yarışı: açık cilt tonu
+🏇🏼	at yarışı: orta açık cilt tonu
+🏇🏽	at yarışı: orta cilt tonu
+🏇🏾	at yarışı: orta koyu cilt tonu
+🏇🏿	at yarışı: koyu cilt tonu
+⛷️	kayakçı
+⛷	kayakçı
+🏂	kayakçı
+🏂🏻	snowboardcu: açık cilt tonu
+🏂🏼	snowboardcu: orta açık cilt tonu
+🏂🏽	snowboardcu: orta cilt tonu
+🏂🏾	snowboardcu: orta koyu cilt tonu
+🏂🏿	snowboardcu: koyu cilt tonu
+🏌️	Golf oynayan kişi
+🏌	Golf oynayan kişi
+🏌🏻	golf oynayan kişi: açık cilt tonu
+🏌🏼	golf oynayan kişi: orta açık cilt tonu
+🏌🏽	golf oynayan kişi: orta cilt tonu
+🏌🏾	golf oynayan kişi: orta koyu cilt tonu
+🏌🏿	golf oynayan kişi: koyu cilt tonu
+🏌️‍♂️	golf oynayan adam
+🏌‍♂️	golf oynayan adam
+🏌️‍♂	golf oynayan adam
+🏌‍♂	golf oynayan adam
+🏌🏻‍♂️	golf oynayan erkek: açık cilt tonu
+🏌🏻‍♂	golf oynayan erkek: açık cilt tonu
+🏌🏼‍♂️	golf oynayan erkek: orta açık cilt tonu
+🏌🏼‍♂	golf oynayan erkek: orta açık cilt tonu
+🏌🏽‍♂️	golf oynayan erkek: orta cilt tonu
+🏌🏽‍♂	golf oynayan erkek: orta cilt tonu
+🏌🏾‍♂️	golf oynayan erkek: orta koyu cilt tonu
+🏌🏾‍♂	golf oynayan erkek: orta koyu cilt tonu
+🏌🏿‍♂️	golf oynayan erkek: koyu cilt tonu
+🏌🏿‍♂	golf oynayan erkek: koyu cilt tonu
+🏌️‍♀️	golf oynayan kadın
+🏌‍♀️	golf oynayan kadın
+🏌️‍♀	golf oynayan kadın
+🏌‍♀	golf oynayan kadın
+🏌🏻‍♀️	golf oynayan kadın: açık cilt tonu
+🏌🏻‍♀	golf oynayan kadın: açık cilt tonu
+🏌🏼‍♀️	golf oynayan kadın: orta açık cilt tonu
+🏌🏼‍♀	golf oynayan kadın: orta açık cilt tonu
+🏌🏽‍♀️	golf oynayan kadın: orta cilt tonu
+🏌🏽‍♀	golf oynayan kadın: orta cilt tonu
+🏌🏾‍♀️	golf oynayan kadın: orta koyu cilt tonu
+🏌🏾‍♀	golf oynayan kadın: orta koyu cilt tonu
+🏌🏿‍♀️	golf oynayan kadın: koyu cilt tonu
+🏌🏿‍♀	golf oynayan kadın: koyu cilt tonu
+🏄	sörf yapan kişi
+🏄🏻	sörf yapan kişi: açık cilt tonu
+🏄🏼	sörf yapan kişi: orta açık cilt tonu
+🏄🏽	sörf yapan kişi: orta cilt tonu
+🏄🏾	sörf yapan kişi: orta koyu cilt tonu
+🏄🏿	sörf yapan kişi: koyu cilt tonu
+🏄‍♂️	sörf yapan adam
+🏄‍♂	sörf yapan adam
+🏄🏻‍♂️	sörf yapan adam: açık cilt tonu
+🏄🏻‍♂	sörf yapan adam: açık cilt tonu
+🏄🏼‍♂️	sörf yapan adam: orta açık cilt tonu
+🏄🏼‍♂	sörf yapan adam: orta açık cilt tonu
+🏄🏽‍♂️	sörf yapan adam: orta cilt tonu
+🏄🏽‍♂	sörf yapan adam: orta cilt tonu
+🏄🏾‍♂️	sörf yapan adam: orta koyu cilt tonu
+🏄🏾‍♂	sörf yapan adam: orta koyu cilt tonu
+🏄🏿‍♂️	sörf yapan adam: koyu cilt tonu
+🏄🏿‍♂	sörf yapan adam: koyu cilt tonu
+🏄‍♀️	sörf yapan kadın
+🏄‍♀	sörf yapan kadın
+🏄🏻‍♀️	sörf yapan kadın: açık cilt tonu
+🏄🏻‍♀	sörf yapan kadın: açık cilt tonu
+🏄🏼‍♀️	sörf yapan kadın: orta açık cilt tonu
+🏄🏼‍♀	sörf yapan kadın: orta açık cilt tonu
+🏄🏽‍♀️	sörf yapan kadın: orta cilt tonu
+🏄🏽‍♀	sörf yapan kadın: orta cilt tonu
+🏄🏾‍♀️	sörf yapan kadın: orta koyu cilt tonu
+🏄🏾‍♀	sörf yapan kadın: orta koyu cilt tonu
+🏄🏿‍♀️	sörf yapan kadın: koyu cilt tonu
+🏄🏿‍♀	sörf yapan kadın: koyu cilt tonu
+🚣	kişi kürek teknesi
+🚣🏻	kürek çeken kişi: açık cilt tonu
+🚣🏼	kürek çeken kişi: orta açık cilt tonu
+🚣🏽	kürek çeken kişi: orta cilt tonu
+🚣🏾	teknede kürek çeken kişi: orta koyu cilt tonu
+🚣🏿	teknede kürek çeken kişi: koyu cilt tonu
+🚣‍♂️	kürek çeken adam
+🚣‍♂	kürek çeken adam
+🚣🏻‍♂️	kürek çeken adam: açık cilt tonu
+🚣🏻‍♂	kürek çeken adam: açık cilt tonu
+🚣🏼‍♂️	kürek çeken adam: orta açık cilt tonu
+🚣🏼‍♂	kürek çeken adam: orta açık cilt tonu
+🚣🏽‍♂️	kürek çeken adam: orta cilt tonu
+🚣🏽‍♂	kürek çeken adam: orta cilt tonu
+🚣🏾‍♂️	kürek çeken adam: orta koyu cilt tonu
+🚣🏾‍♂	kürek çeken adam: orta koyu cilt tonu
+🚣🏿‍♂️	teknede kürek çeken erkek: koyu cilt tonu
+🚣🏿‍♂	teknede kürek çeken erkek: koyu cilt tonu
+🚣‍♀️	kürek çeken kadın
+🚣‍♀	kürek çeken kadın
+🚣🏻‍♀️	kürek çeken kadın: açık cilt tonu
+🚣🏻‍♀	kürek çeken kadın: açık cilt tonu
+🚣🏼‍♀️	kürek çeken kadın: orta açık cilt tonu
+🚣🏼‍♀	kürek çeken kadın: orta açık cilt tonu
+🚣🏽‍♀️	kürek çeken kadın: orta cilt tonu
+🚣🏽‍♀	kürek çeken kadın: orta cilt tonu
+🚣🏾‍♀️	teknede kürek çeken kadın: orta koyu cilt tonu
+🚣🏾‍♀	teknede kürek çeken kadın: orta koyu cilt tonu
+🚣🏿‍♀️	teknede kürek çeken kadın: koyu cilt tonu
+🚣🏿‍♀	teknede kürek çeken kadın: koyu cilt tonu
+🏊	yüzen kişi
+🏊🏻	yüzen kişi: açık cilt tonu
+🏊🏼	yüzen kişi: orta açık cilt tonu
+🏊🏽	yüzen kişi: orta cilt tonu
+🏊🏾	yüzen kişi: orta koyu cilt tonu
+🏊🏿	yüzen kişi: koyu cilt tonu
+🏊‍♂️	yüzen adam
+🏊‍♂	yüzen adam
+🏊🏻‍♂️	yüzen erkek: açık cilt tonu
+🏊🏻‍♂	yüzen erkek: açık cilt tonu
+🏊🏼‍♂️	yüzen erkek: orta açık cilt tonu
+🏊🏼‍♂	yüzen erkek: orta açık cilt tonu
+🏊🏽‍♂️	yüzen erkek: orta cilt tonu
+🏊🏽‍♂	yüzen erkek: orta cilt tonu
+🏊🏾‍♂️	yüzen adam: orta koyu cilt tonu
+🏊🏾‍♂	yüzen adam: orta koyu cilt tonu
+🏊🏿‍♂️	yüzen erkek: koyu cilt tonu
+🏊🏿‍♂	yüzen erkek: koyu cilt tonu
+🏊‍♀️	yüzen kadın
+🏊‍♀	yüzen kadın
+🏊🏻‍♀️	yüzen kadın: açık cilt tonu
+🏊🏻‍♀	yüzen kadın: açık cilt tonu
+🏊🏼‍♀️	yüzen kadın: orta açık cilt tonu
+🏊🏼‍♀	yüzen kadın: orta açık cilt tonu
+🏊🏽‍♀️	yüzen kadın: orta cilt tonu
+🏊🏽‍♀	yüzen kadın: orta cilt tonu
+🏊🏾‍♀️	yüzen kadın: orta koyu cilt tonu
+🏊🏾‍♀	yüzen kadın: orta koyu cilt tonu
+🏊🏿‍♀️	yüzen kadın: koyu cilt tonu
+🏊🏿‍♀	yüzen kadın: koyu cilt tonu
+⛹️	top sektiren kişi
+⛹	top sektiren kişi
+⛹🏻	topu sektiren kişi: açık cilt tonu
+⛹🏼	topu sektiren kişi: orta açık cilt tonu
+⛹🏽	topu sektiren kişi: orta cilt tonu
+⛹🏾	topu sektiren kişi: orta koyu cilt tonu
+⛹🏿	topu sektiren kişi: koyu cilt tonu
+⛹️‍♂️	top sektiren adam
+⛹‍♂️	top sektiren adam
+⛹️‍♂	top sektiren adam
+⛹‍♂	top sektiren adam
+⛹🏻‍♂️	top sektiren adam: açık cilt tonu
+⛹🏻‍♂	top sektiren adam: açık cilt tonu
+⛹🏼‍♂️	top sektiren adam: orta açık cilt tonu
+⛹🏼‍♂	top sektiren adam: orta açık cilt tonu
+⛹🏽‍♂️	top sektiren adam: orta cilt tonu
+⛹🏽‍♂	top sektiren adam: orta cilt tonu
+⛹🏾‍♂️	top sektiren adam: orta koyu cilt tonu
+⛹🏾‍♂	top sektiren adam: orta koyu cilt tonu
+⛹🏿‍♂️	top sektiren adam: koyu cilt tonu
+⛹🏿‍♂	top sektiren adam: koyu cilt tonu
+⛹️‍♀️	top sektiren kadın
+⛹‍♀️	top sektiren kadın
+⛹️‍♀	top sektiren kadın
+⛹‍♀	top sektiren kadın
+⛹🏻‍♀️	top sektiren kadın: açık cilt tonu
+⛹🏻‍♀	top sektiren kadın: açık cilt tonu
+⛹🏼‍♀️	top sektiren kadın: orta açık cilt tonu
+⛹🏼‍♀	top sektiren kadın: orta açık cilt tonu
+⛹🏽‍♀️	top sektiren kadın: orta cilt tonu
+⛹🏽‍♀	top sektiren kadın: orta cilt tonu
+⛹🏾‍♀️	top sektiren kadın: orta koyu cilt tonu
+⛹🏾‍♀	top sektiren kadın: orta koyu cilt tonu
+⛹🏿‍♀️	top sektiren kadın: koyu cilt tonu
+⛹🏿‍♀	top sektiren kadın: koyu cilt tonu
+🏋️	ağırlık kaldıran kişi
+🏋	ağırlık kaldıran kişi
+🏋🏻	ağırlık kaldıran kişi: açık cilt tonu
+🏋🏼	ağırlık kaldıran kişi: orta açık cilt tonu
+🏋🏽	ağırlık kaldıran kişi: orta cilt tonu
+🏋🏾	ağırlık kaldıran kişi: orta koyu cilt tonu
+🏋🏿	ağırlık kaldıran kişi: koyu cilt tonu
+🏋️‍♂️	ağırlık kaldıran adam
+🏋‍♂️	ağırlık kaldıran adam
+🏋️‍♂	ağırlık kaldıran adam
+🏋‍♂	ağırlık kaldıran adam
+🏋🏻‍♂️	ağırlık kaldıran erkek: açık cilt tonu
+🏋🏻‍♂	ağırlık kaldıran erkek: açık cilt tonu
+🏋🏼‍♂️	ağırlık kaldıran erkek: orta açık cilt tonu
+🏋🏼‍♂	ağırlık kaldıran erkek: orta açık cilt tonu
+🏋🏽‍♂️	ağırlık kaldıran erkek: orta cilt tonu
+🏋🏽‍♂	ağırlık kaldıran erkek: orta cilt tonu
+🏋🏾‍♂️	ağırlık kaldıran erkek: orta koyu cilt tonu
+🏋🏾‍♂	ağırlık kaldıran erkek: orta koyu cilt tonu
+🏋🏿‍♂️	ağırlık kaldıran erkek: koyu cilt tonu
+🏋🏿‍♂	ağırlık kaldıran erkek: koyu cilt tonu
+🏋️‍♀️	ağırlık kaldıran kadın
+🏋‍♀️	ağırlık kaldıran kadın
+🏋️‍♀	ağırlık kaldıran kadın
+🏋‍♀	ağırlık kaldıran kadın
+🏋🏻‍♀️	ağırlık kaldıran kadın: açık cilt tonu
+🏋🏻‍♀	ağırlık kaldıran kadın: açık cilt tonu
+🏋🏼‍♀️	ağırlık kaldıran kadın: orta açık cilt tonu
+🏋🏼‍♀	ağırlık kaldıran kadın: orta açık cilt tonu
+🏋🏽‍♀️	ağırlık kaldıran kadın: orta cilt tonu
+🏋🏽‍♀	ağırlık kaldıran kadın: orta cilt tonu
+🏋🏾‍♀️	ağırlık kaldıran kadın: orta koyu cilt tonu
+🏋🏾‍♀	ağırlık kaldıran kadın: orta koyu cilt tonu
+🏋🏿‍♀️	ağırlık kaldıran kadın: koyu cilt tonu
+🏋🏿‍♀	ağırlık kaldıran kadın: koyu cilt tonu
+🚴	Bisiklete binen kişi
+🚴🏻	bisiklet süren kişi: açık cilt tonu
+🚴🏼	bisiklet süren kişi: orta açık cilt tonu
+🚴🏽	bisiklet süren kişi: orta cilt tonu
+🚴🏾	bisiklet süren kişi: orta koyu cilt tonu
+🚴🏿	bisiklet süren kişi: koyu cilt tonu
+🚴‍♂️	bisiklete binen adam
+🚴‍♂	bisiklete binen adam
+🚴🏻‍♂️	bisiklet süren erkek: açık cilt tonu
+🚴🏻‍♂	bisiklet süren erkek: açık cilt tonu
+🚴🏼‍♂️	bisiklet süren erkek: orta açık cilt tonu
+🚴🏼‍♂	bisiklet süren erkek: orta açık cilt tonu
+🚴🏽‍♂️	bisiklet süren erkek: orta cilt tonu
+🚴🏽‍♂	bisiklet süren erkek: orta cilt tonu
+🚴🏾‍♂️	bisiklet süren erkek: orta koyu cilt tonu
+🚴🏾‍♂	bisiklet süren erkek: orta koyu cilt tonu
+🚴🏿‍♂️	bisiklet süren erkek: koyu cilt tonu
+🚴🏿‍♂	bisiklet süren erkek: koyu cilt tonu
+🚴‍♀️	bisiklete binen kadın
+🚴‍♀	bisiklete binen kadın
+🚴🏻‍♀️	bisiklet süren kadın: açık cilt tonu
+🚴🏻‍♀	bisiklet süren kadın: açık cilt tonu
+🚴🏼‍♀️	bisiklet süren kadın: orta açık cilt tonu
+🚴🏼‍♀	bisiklet süren kadın: orta açık cilt tonu
+🚴🏽‍♀️	bisiklet süren kadın: orta cilt tonu
+🚴🏽‍♀	bisiklet süren kadın: orta cilt tonu
+🚴🏾‍♀️	bisiklet süren kadın: orta koyu cilt tonu
+🚴🏾‍♀	bisiklet süren kadın: orta koyu cilt tonu
+🚴🏿‍♀️	bisiklet süren kadın: koyu cilt tonu
+🚴🏿‍♀	bisiklet süren kadın: koyu cilt tonu
+🚵	kişi dağ bisikleti
+🚵🏻	dağ bisikleti süren kişi: açık cilt tonu
+🚵🏼	dağ bisikleti süren kişi: orta açık cilt tonu
+🚵🏽	dağ bisikleti süren kişi: orta cilt tonu
+🚵🏾	dağ bisikleti süren kişi: orta koyu cilt tonu
+🚵🏿	dağ bisikleti süren kişi: koyu cilt tonu
+🚵‍♂️	adam dağ bisikleti
+🚵‍♂	adam dağ bisikleti
+🚵🏻‍♂️	dağ bisikleti süren erkek: açık cilt tonu
+🚵🏻‍♂	dağ bisikleti süren erkek: açık cilt tonu
+🚵🏼‍♂️	dağ bisikleti süren erkek: orta açık cilt tonu
+🚵🏼‍♂	dağ bisikleti süren erkek: orta açık cilt tonu
+🚵🏽‍♂️	dağ bisikleti süren erkek: orta cilt tonu
+🚵🏽‍♂	dağ bisikleti süren erkek: orta cilt tonu
+🚵🏾‍♂️	dağ bisikleti süren erkek: orta koyu cilt tonu
+🚵🏾‍♂	dağ bisikleti süren erkek: orta koyu cilt tonu
+🚵🏿‍♂️	dağ bisikleti süren erkek: koyu cilt tonu
+🚵🏿‍♂	dağ bisikleti süren erkek: koyu cilt tonu
+🚵‍♀️	kadın dağ bisikleti
+🚵‍♀	kadın dağ bisikleti
+🚵🏻‍♀️	dağ bisikleti süren kadın: açık cilt tonu
+🚵🏻‍♀	dağ bisikleti süren kadın: açık cilt tonu
+🚵🏼‍♀️	dağ bisikletine binen kadın: orta açık cilt tonu
+🚵🏼‍♀	dağ bisikletine binen kadın: orta açık cilt tonu
+🚵🏽‍♀️	dağ bisikletine binen kadın: orta cilt tonu
+🚵🏽‍♀	dağ bisikletine binen kadın: orta cilt tonu
+🚵🏾‍♀️	dağ bisikletine binen kadın: orta koyu cilt tonu
+🚵🏾‍♀	dağ bisikletine binen kadın: orta koyu cilt tonu
+🚵🏿‍♀️	dağ bisikleti süren kadın: koyu cilt tonu
+🚵🏿‍♀	dağ bisikleti süren kadın: koyu cilt tonu
+🏎️	yarış arabası
+🏎	yarış arabası
+🏍️	motosiklet
+🏍	motosiklet
+🤸	takla atan kişi
+🤸🏻	takla atan kişi: açık cilt tonu
+🤸🏼	takla atan kişi: orta açık cilt tonu
+🤸🏽	takla atan kişi: orta cilt tonu
+🤸🏾	takla atan kişi: orta koyu cilt tonu
+🤸🏿	takla atan kişi: koyu cilt tonu
+🤸‍♂️	adam takla atıyor
+🤸‍♂	adam takla atıyor
+🤸🏻‍♂️	takla atan adam: açık cilt tonu
+🤸🏻‍♂	takla atan adam: açık cilt tonu
+🤸🏼‍♂️	takla atan adam: orta açık cilt tonu
+🤸🏼‍♂	takla atan adam: orta açık cilt tonu
+🤸🏽‍♂️	takla atan adam: orta cilt tonu
+🤸🏽‍♂	takla atan adam: orta cilt tonu
+🤸🏾‍♂️	takla atan adam: orta koyu cilt tonu
+🤸🏾‍♂	takla atan adam: orta koyu cilt tonu
+🤸🏿‍♂️	takla atan erkek: koyu cilt tonu
+🤸🏿‍♂	takla atan erkek: koyu cilt tonu
+🤸‍♀️	takla atan kadın
+🤸‍♀	takla atan kadın
+🤸🏻‍♀️	takla atan kadın: açık cilt tonu
+🤸🏻‍♀	takla atan kadın: açık cilt tonu
+🤸🏼‍♀️	takla atan kadın: orta açık cilt tonu
+🤸🏼‍♀	takla atan kadın: orta açık cilt tonu
+🤸🏽‍♀️	takla atan kadın: orta cilt tonu
+🤸🏽‍♀	takla atan kadın: orta cilt tonu
+🤸🏾‍♀️	takla atan kadın: orta koyu cilt tonu
+🤸🏾‍♀	takla atan kadın: orta koyu cilt tonu
+🤸🏿‍♀️	takla atan kadın: koyu cilt tonu
+🤸🏿‍♀	takla atan kadın: koyu cilt tonu
+🤼	insanlar güreş
+🤼‍♂️	erkekler güreş
+🤼‍♂	erkekler güreş
+🤼‍♀️	kadınlar güreş
+🤼‍♀	kadınlar güreş
+🤽	sutopu oynayan kişi
+🤽🏻	sutopu oynayan kişi: açık cilt tonu
+🤽🏼	sutopu oynayan kişi: orta açık cilt tonu
+🤽🏽	sutopu oynayan kişi: orta cilt tonu
+🤽🏾	sutopu oynayan kişi: orta koyu cilt tonu
+🤽🏿	sutopu oynayan kişi: koyu cilt tonu
+🤽‍♂️	sutopu oynayan adam
+🤽‍♂	sutopu oynayan adam
+🤽🏻‍♂️	su topu oynayan adam: açık cilt tonu
+🤽🏻‍♂	su topu oynayan adam: açık cilt tonu
+🤽🏼‍♂️	su topu oynayan adam: orta açık cilt tonu
+🤽🏼‍♂	su topu oynayan adam: orta açık cilt tonu
+🤽🏽‍♂️	su topu oynayan adam: orta cilt tonu
+🤽🏽‍♂	su topu oynayan adam: orta cilt tonu
+🤽🏾‍♂️	sutopu oynayan adam: orta koyu cilt tonu
+🤽🏾‍♂	sutopu oynayan adam: orta koyu cilt tonu
+🤽🏿‍♂️	su topu oynayan adam: koyu cilt tonu
+🤽🏿‍♂	su topu oynayan adam: koyu cilt tonu
+🤽‍♀️	sutopu oynayan kadın
+🤽‍♀	sutopu oynayan kadın
+🤽🏻‍♀️	su topu oynayan kadın: açık cilt tonu
+🤽🏻‍♀	su topu oynayan kadın: açık cilt tonu
+🤽🏼‍♀️	su topu oynayan kadın: orta açık cilt tonu
+🤽🏼‍♀	su topu oynayan kadın: orta açık cilt tonu
+🤽🏽‍♀️	su topu oynayan kadın: orta cilt tonu
+🤽🏽‍♀	su topu oynayan kadın: orta cilt tonu
+🤽🏾‍♀️	su topu oynayan kadın: orta koyu cilt tonu
+🤽🏾‍♀	su topu oynayan kadın: orta koyu cilt tonu
+🤽🏿‍♀️	su topu oynayan kadın: koyu cilt tonu
+🤽🏿‍♀	su topu oynayan kadın: koyu cilt tonu
+🤾	hentbol oynayan kişi
+🤾🏻	hentbol oynayan kişi: açık cilt tonu
+🤾🏼	hentbol oynayan kişi: orta açık cilt tonu
+🤾🏽	hentbol oynayan kişi: orta cilt tonu
+🤾🏾	hentbol oynayan kişi: orta koyu cilt tonu
+🤾🏿	hentbol oynayan kişi: koyu cilt tonu
+🤾‍♂️	hentbol oynayan adam
+🤾‍♂	hentbol oynayan adam
+🤾🏻‍♂️	hentbol oynayan adam: açık cilt tonu
+🤾🏻‍♂	hentbol oynayan adam: açık cilt tonu
+🤾🏼‍♂️	hentbol oynayan adam: orta açık cilt tonu
+🤾🏼‍♂	hentbol oynayan adam: orta açık cilt tonu
+🤾🏽‍♂️	hentbol oynayan adam: orta cilt tonu
+🤾🏽‍♂	hentbol oynayan adam: orta cilt tonu
+🤾🏾‍♂️	hentbol oynayan adam: orta koyu cilt tonu
+🤾🏾‍♂	hentbol oynayan adam: orta koyu cilt tonu
+🤾🏿‍♂️	hentbol oynayan adam: koyu cilt tonu
+🤾🏿‍♂	hentbol oynayan adam: koyu cilt tonu
+🤾‍♀️	hentbol oynayan kadın
+🤾‍♀	hentbol oynayan kadın
+🤾🏻‍♀️	hentbol oynayan kadın: açık cilt tonu
+🤾🏻‍♀	hentbol oynayan kadın: açık cilt tonu
+🤾🏼‍♀️	hentbol oynayan kadın: orta açık cilt tonu
+🤾🏼‍♀	hentbol oynayan kadın: orta açık cilt tonu
+🤾🏽‍♀️	hentbol oynayan kadın: orta cilt tonu
+🤾🏽‍♀	hentbol oynayan kadın: orta cilt tonu
+🤾🏾‍♀️	hentbol oynayan kadın: orta koyu cilt tonu
+🤾🏾‍♀	hentbol oynayan kadın: orta koyu cilt tonu
+🤾🏿‍♀️	hentbol oynayan kadın: koyu cilt tonu
+🤾🏿‍♀	hentbol oynayan kadın: koyu cilt tonu
+🤹	Hokkabazlık yapan kişi
+🤹🏻	hokkabazlık yapan kişi: açık cilt tonu
+🤹🏼	hokkabazlık yapan kişi: orta açık cilt tonu
+🤹🏽	hokkabazlık yapan kişi: orta cilt tonu
+🤹🏾	hokkabazlık yapan kişi: orta koyu cilt tonu
+🤹🏿	hokkabazlık yapan kişi: koyu cilt tonu
+🤹‍♂️	hokkabazlık yapan adam
+🤹‍♂	hokkabazlık yapan adam
+🤹🏻‍♂️	hokkabazlık yapan adam: açık cilt tonu
+🤹🏻‍♂	hokkabazlık yapan adam: açık cilt tonu
+🤹🏼‍♂️	hokkabazlık yapan erkek: orta açık cilt tonu
+🤹🏼‍♂	hokkabazlık yapan erkek: orta açık cilt tonu
+🤹🏽‍♂️	hokkabazlık yapan adam: orta cilt tonu
+🤹🏽‍♂	hokkabazlık yapan adam: orta cilt tonu
+🤹🏾‍♂️	hokkabazlık yapan adam: orta koyu cilt tonu
+🤹🏾‍♂	hokkabazlık yapan adam: orta koyu cilt tonu
+🤹🏿‍♂️	hokkabazlık yapan adam: koyu cilt tonu
+🤹🏿‍♂	hokkabazlık yapan erkek: koyu cilt tonu
+🤹‍♀️	hokkabazlık yapan kadın
+🤹‍♀	hokkabazlık yapan kadın
+🤹🏻‍♀️	hokkabazlık yapan kadın: açık cilt tonu
+🤹🏻‍♀	hokkabazlık yapan kadın: açık cilt tonu
+🤹🏼‍♀️	hokkabazlık yapan kadın: orta açık cilt tonu
+🤹🏼‍♀	hokkabazlık yapan kadın: orta açık cilt tonu
+🤹🏽‍♀️	hokkabazlık yapan kadın: orta cilt tonu
+🤹🏽‍♀	hokkabazlık yapan kadın: orta cilt tonu
+🤹🏾‍♀️	hokkabazlık yapan kadın: orta koyu cilt tonu
+🤹🏾‍♀	hokkabazlık yapan kadın: orta koyu cilt tonu
+🤹🏿‍♀️	hokkabazlık yapan kadın: koyu cilt tonu
+🤹🏿‍♀	hokkabazlık yapan kadın: koyu cilt tonu
+👫	erkek ve kadın el ele tutuşuyor
+👬	iki adam el ele tutuşuyor
+👭	iki kadın el ele tutuşuyor
+💏	öpücük
+👩‍❤️‍💋‍👨	öpücük: kadın, erkek
+👩‍❤‍💋‍👨	öpücük: kadın, erkek
+👨‍❤️‍💋‍👨	öpücük: dostum, dostum
+👨‍❤‍💋‍👨	öpücük: dostum, dostum
+👩‍❤️‍💋‍👩	öpücük: kadın, kadın
+👩‍❤‍💋‍👩	öpücük: kadın, kadın
+💑	kalpli çift
+👩‍❤️‍👨	kalpli çift: kadın, erkek
+👩‍❤‍👨	kalpli çift: kadın, erkek
+👨‍❤️‍👨	kalpli çift: dostum, dostum
+👨‍❤‍👨	kalpli çift: dostum, dostum
+👩‍❤️‍👩	kalpli çift: kadın, kadın
+👩‍❤‍👩	kalpli çift: kadın, kadın
+👪	aile
+👨‍👩‍👦	aile: erkek, kadın, oğlan
+👨‍👩‍👧	aile: erkek, kadın, kız
+👨‍👩‍👧‍👦	aile: erkek, kadın, kız, oğlan
+👨‍👩‍👦‍👦	aile: erkek, kadın, oğlan, oğlan
+👨‍👩‍👧‍👧	aile: erkek, kadın, kız, kız
+👨‍👨‍👦	aile: erkek, erkek, oğlan
+👨‍👨‍👧	aile: erkek, erkek, kız
+👨‍👨‍👧‍👦	aile: erkek, erkek, kız, oğlan
+👨‍👨‍👦‍👦	aile: erkek, erkek, oğlan, oğlan
+👨‍👨‍👧‍👧	aile: erkek, erkek, kız, kız
+👩‍👩‍👦	aile: kadın, kadın, oğlan
+👩‍👩‍👧	aile: kadın, kadın, kız
+👩‍👩‍👧‍👦	aile: kadın, kadın, kız, oğlan
+👩‍👩‍👦‍👦	aile: kadın, kadın, oğlan, oğlan
+👩‍👩‍👧‍👧	aile: kadın, kadın, kız, kız
+👨‍👦	aile: erkek, oğlan
+👨‍👦‍👦	aile: erkek, oğlan, oğlan
+👨‍👧	aile: erkek, kız
+👨‍👧‍👦	aile: erkek, kız, oğlan
+👨‍👧‍👧	aile: erkek, kız, kız
+👩‍👦	aile: kadın, oğlan
+👩‍👦‍👦	aile: kadın, oğlan, oğlan
+👩‍👧	aile: kadın, kız
+👩‍👧‍👦	aile: kadın, kız, oğlan
+👩‍👧‍👧	aile: kadın, kız, kız
+🤳	özçekim
+🤳🏻	selfie: açık cilt tonu
+🤳🏼	selfie: orta açık cilt tonu
+🤳🏽	selfie: orta cilt tonu
+🤳🏾	selfie: orta koyu cilt tonu
+🤳🏿	selfie: koyu cilt tonu
+💪	bükülmüş biceps
+💪🏻	esnetilmiş pazı: açık cilt tonu
+💪🏼	esnetilmiş pazı: orta açık cilt tonu
+💪🏽	esnetilmiş pazı: orta cilt tonu
+💪🏾	esnetilmiş pazı: orta koyu cilt tonu
+💪🏿	esnetilmiş pazı: koyu cilt tonu
+🦵	bacak
+🦵🏻	bacak: açık cilt tonu
+🦵🏼	bacak: orta açık cilt tonu
+🦵🏽	bacak: orta cilt tonu
+🦵🏾	bacak: orta koyu cilt tonu
+🦵🏿	bacak: koyu cilt tonu
+🦶	ayak
+🦶🏻	ayak: açık cilt tonu
+🦶🏼	ayak: orta açık cilt tonu
+🦶🏽	ayak: orta cilt tonu
+🦶🏾	ayak: orta koyu cilt tonu
+🦶🏿	ayak: koyu cilt tonu
+👈	elinin tersiyle solu gösteren işaret parmağı
+👈🏻	elinin tersiyle solu gösteren işaret parmağı: açık cilt tonu
+👈🏼	elinin tersiyle solu gösteren işaret parmağı: orta açık cilt tonu
+👈🏽	elinin tersiyle solu gösteren işaret parmağı: orta cilt tonu
+👈🏾	elinin tersiyle solu gösteren işaret parmağı: orta koyu cilt tonu
+👈🏿	elinin tersiyle solu gösteren işaret parmağı: koyu cilt tonu
+👉	elinin tersiyle sağı gösteren işaret parmağı
+👉🏻	elinin tersiyle sağı gösteren işaret parmağı: açık cilt tonu
+👉🏼	elinin tersiyle sağı gösteren işaret parmağı: orta açık cilt tonu
+👉🏽	elinin tersiyle sağı gösteren işaret parmağı: orta cilt tonu
+👉🏾	elinin tersiyle sağı gösteren işaret parmağı: orta koyu cilt tonu
+👉🏿	elinin tersiyle sağı gösteren işaret parmağı: koyu cilt tonu
+☝️	yukarıyı gösteren indeks
+☝	yukarıyı gösteren indeks
+☝🏻	yukarıyı gösteren işaret parmağı: açık cilt tonu
+☝🏼	yukarıyı gösteren işaret parmağı: orta açık cilt tonu
+☝🏽	yukarıyı gösteren işaret parmağı: orta cilt tonu
+☝🏾	yukarıyı gösteren işaret parmağı: orta koyu cilt tonu
+☝🏿	yukarıyı gösteren işaret parmağı: koyu cilt tonu
+👆	arka el işareti yukarıyı gösteriyor
+👆🏻	elinin tersiyle yukarıyı gösteren işaret parmağı: açık cilt tonu
+👆🏼	elinin tersiyle yukarıyı gösteren işaret parmağı: orta açık cilt tonu
+👆🏽	elinin tersiyle yukarıyı gösteren işaret parmağı: orta cilt tonu
+👆🏾	elinin tersiyle yukarıyı gösteren işaret parmağı: orta koyu cilt tonu
+👆🏿	elinin tersiyle yukarıyı gösteren işaret parmağı: koyu cilt tonu
+🖕	orta parmak
+🖕🏻	orta parmak: açık cilt tonu
+🖕🏼	orta parmak: orta açık cilt tonu
+🖕🏽	orta parmak: orta cilt tonu
+🖕🏾	orta parmak: orta koyu cilt tonu
+🖕🏿	orta parmak: koyu cilt tonu
+👇	elin arkası işaret parmağı aşağıyı gösteriyor
+👇🏻	elinin tersiyle aşağıyı gösteren işaret parmağı: açık cilt tonu
+👇🏼	elinin tersiyle aşağıyı gösteren işaret parmağı: orta açık cilt tonu
+👇🏽	elinin tersiyle aşağıyı gösteren işaret parmağı: orta cilt tonu
+👇🏾	elinin tersiyle aşağıyı gösteren işaret parmağı: orta koyu cilt tonu
+👇🏿	elinin tersiyle aşağıyı gösteren işaret parmağı: koyu cilt tonu
+✌️	zafer eli
+✌	zafer eli
+✌🏻	zafer eli: açık cilt tonu
+✌🏼	zafer eli: orta açık cilt tonu
+✌🏽	zafer eli: orta cilt tonu
+✌🏾	zafer eli: orta koyu cilt tonu
+✌🏿	zafer eli: koyu cilt tonu
+🤞	çapraz parmaklar
+🤞🏻	çapraz parmaklar: açık cilt tonu
+🤞🏼	çapraz parmaklar: orta açık cilt tonu
+🤞🏽	çapraz parmaklar: orta cilt tonu
+🤞🏾	çapraz parmaklar: orta koyu cilt tonu
+🤞🏿	çapraz parmaklar: koyu cilt tonu
+🖖	Vulkan selamı
+🖖🏻	Vulkan selamı: açık cilt tonu
+🖖🏼	Vulkan selamı: orta açık cilt tonu
+🖖🏽	Vulkan selamı: orta cilt tonu
+🖖🏾	Vulkan selamı: orta koyu cilt tonu
+🖖🏿	Vulkan selamı: koyu cilt tonu
+🤘	boynuz işareti
+🤘🏻	boynuz işareti: açık cilt tonu
+🤘🏼	boynuz işareti: orta açık cilt tonu
+🤘🏽	boynuz işareti: orta cilt tonu
+🤘🏾	boynuz işareti: orta koyu cilt tonu
+🤘🏿	boynuz işareti: koyu cilt tonu
+🤙	beni ara el
+🤙🏻	beni ara el: açık cilt tonu
+🤙🏼	beni ara el: orta açık cilt tonu
+🤙🏽	beni ara el: orta cilt tonu
+🤙🏾	beni ara el: orta koyu cilt tonu
+🤙🏿	beni ara el: koyu cilt tonu
+🖐️	parmakları açık el
+🖐	parmakları açık el
+🖐🏻	parmakları açık el: açık cilt tonu
+🖐🏼	parmakları açık el: orta açık cilt tonu
+🖐🏽	parmakları açık el: orta cilt tonu
+🖐🏾	parmakları açık el: orta koyu cilt tonu
+🖐🏿	parmakları açık el: koyu cilt tonu
+✋	el kaldırdı
+✋🏻	elini kaldırdı: açık cilt tonu
+✋🏼	el kaldırma: orta açık cilt tonu
+✋🏽	kaldırılmış el: orta cilt tonu
+✋🏾	el kaldırma: orta koyu cilt tonu
+✋🏿	elini kaldırdı: koyu cilt tonu
+👌	tamam el
+👌🏻	Tamam el: açık cilt tonu
+👌🏼	Tamam el: orta açık cilt tonu
+👌🏽	Tamam el: orta cilt tonu
+👌🏾	Tamam eli: orta koyu cilt tonu
+👌🏿	Tamam el: koyu cilt tonu
+👍	başparmak havaya
+👍🏻	başparmak yukarıya: açık cilt tonu
+👍🏼	başparmak yukarıya: orta açık cilt tonu
+👍🏽	başparmak yukarıya: orta cilt tonu
+👍🏾	başparmak yukarı: orta koyu cilt tonu
+👍🏿	başparmak yukarıya: koyu cilt tonu
+👎	başparmak aşağı
+👎🏻	başparmak aşağı: açık cilt tonu
+👎🏼	başparmak aşağı: orta açık cilt tonu
+👎🏽	başparmak aşağı: orta cilt tonu
+👎🏾	başparmak aşağı: orta koyu cilt tonu
+👎🏿	başparmak aşağı: koyu cilt tonu
+✊	yumruk kaldırdı
+✊🏻	kaldırılmış yumruk: açık cilt tonu
+✊🏼	kaldırılmış yumruk: orta açık cilt tonu
+✊🏽	kaldırılmış yumruk: orta cilt tonu
+✊🏾	kaldırılmış yumruk: orta koyu cilt tonu
+✊🏿	kaldırılmış yumruk: koyu cilt tonu
+👊	yaklaşan yumruk
+👊🏻	yaklaşan yumruk: açık cilt tonu
+👊🏼	yaklaşan yumruk: orta açık cilt tonu
+👊🏽	yaklaşan yumruk: orta cilt tonu
+👊🏾	yaklaşan yumruk: orta koyu cilt tonu
+👊🏿	yaklaşan yumruk: koyu cilt tonu
+🤛	sola bakan yumruk
+🤛🏻	sola bakan yumruk: açık cilt tonu
+🤛🏼	sola bakan yumruk: orta açık cilt tonu
+🤛🏽	sola bakan yumruk: orta cilt tonu
+🤛🏾	sola bakan yumruk: orta koyu cilt tonu
+🤛🏿	sola bakan yumruk: koyu cilt tonu
+🤜	sağa bakan yumruk
+🤜🏻	sağa bakan yumruk: açık cilt tonu
+🤜🏼	sağa bakan yumruk: orta açık cilt tonu
+🤜🏽	sağa bakan yumruk: orta cilt tonu
+🤜🏾	sağa bakan yumruk: orta koyu cilt tonu
+🤜🏿	sağa bakan yumruk: koyu cilt tonu
+🤚	elin arkasını kaldırdı
+🤚🏻	elin arkası kaldırılmış: açık cilt tonu
+🤚🏼	elin arkası kaldırılmış: orta açık cilt tonu
+🤚🏽	elin arkası kaldırılmış: orta cilt tonu
+🤚🏾	elin arkası kaldırılmış: orta koyu cilt tonu
+🤚🏿	elin arkası kaldırılmış: koyu cilt tonu
+👋	el sallamak
+👋🏻	el sallayan: açık cilt tonu
+👋🏼	el sallayan: orta açık cilt tonu
+👋🏽	el sallayan: orta cilt tonu
+👋🏾	el sallayan: orta koyu cilt tonu
+👋🏿	el sallayan: koyu cilt tonu
+🤟	seni seviyorum hareketi
+🤟🏻	seni seviyorum hareketi: açık cilt tonu
+🤟🏼	seni seviyorum hareketi: orta açık cilt tonu
+🤟🏽	seni seviyorum hareketi: orta cilt tonu
+🤟🏾	seni seviyorum hareketi: orta koyu cilt tonu
+🤟🏿	seni seviyorum hareketi: koyu cilt tonu
+✍️	el yazısı
+✍	el yazısı
+✍🏻	yazan el: açık cilt tonu
+✍🏼	yazan el: orta açık cilt tonu
+✍🏽	yazan el: orta cilt tonu
+✍🏾	yazan el: orta koyu cilt tonu
+✍🏿	yazan el: koyu cilt tonu
+👏	elleri çırpmak
+👏🏻	alkışlayan eller: açık cilt tonu
+👏🏼	alkışlayan eller: orta açık cilt tonu
+👏🏽	alkışlayan eller: orta cilt tonu
+👏🏾	alkışlayan eller: orta koyu cilt tonu
+👏🏿	alkışlayan eller: koyu cilt tonu
+👐	eller açık
+👐🏻	eller açık: açık cilt tonu
+👐🏼	eller açık: orta açık cilt tonu
+👐🏽	eller açık: orta cilt tonu
+👐🏾	eller açık: orta koyu cilt tonu
+👐🏿	eller açık: koyu cilt tonu
+🙌	el kaldırmak
+🙌🏻	elleri kaldırmak: açık cilt tonu
+🙌🏼	Elleri kaldırmak: orta açık cilt tonu
+🙌🏽	elleri kaldırmak: orta cilt tonu
+🙌🏾	elleri kaldırmak: orta koyu cilt tonu
+🙌🏿	ellerini kaldırmak: koyu cilt tonu
+🤲	avuç içi bir arada
+🤲🏻	avuç içi bir arada: açık cilt tonu
+🤲🏼	avuçlar bitişik: orta açık cilt tonu
+🤲🏽	avuçlar bitişik: orta cilt tonu
+🤲🏾	avuçlar bitişik: orta koyu cilt tonu
+🤲🏿	avuçlar bitişik: koyu cilt tonu
+🙏	katlanmış eller
+🙏🏻	kavuşturulmuş eller: açık cilt tonu
+🙏🏼	kavuşturulmuş eller: orta açık cilt tonu
+🙏🏽	kavuşturulmuş eller: orta cilt tonu
+🙏🏾	kavuşturulmuş eller: orta koyu cilt tonu
+🙏🏿	kavuşturulmuş eller: koyu cilt tonu
+🤝	tokalaşma
+💅	tırnak cilası
+💅🏻	oje: açık cilt tonu
+💅🏼	oje: orta açık cilt tonu
+💅🏽	oje: orta cilt tonu
+💅🏾	oje: orta koyu cilt tonu
+💅🏿	oje: koyu cilt tonu
+👂	kulak
+👂🏻	kulak: açık cilt tonu
+👂🏼	kulak: orta açık cilt tonu
+👂🏽	kulak: orta cilt tonu
+👂🏾	kulak: orta koyu cilt tonu
+👂🏿	kulak: koyu cilt tonu
+👃	burun
+👃🏻	burun: açık cilt tonu
+👃🏼	burun: orta açık cilt tonu
+👃🏽	burun: orta cilt tonu
+👃🏾	burun: orta koyu cilt tonu
+👃🏿	burun: koyu cilt tonu
+🦰	Kızıl saçlı
+🦱	kıvırcık saçlı
+🦲	kel
+🦳	beyaz saçlı
+👣	ayak izi
+👀	gözler
+👁️	göz
+👁	göz
+👁️‍🗨️	konuşma balonundaki göz
+👁‍🗨️	konuşma balonundaki göz
+👁️‍🗨	konuşma balonundaki göz
+👁‍🗨	konuşma balonundaki göz
+🧠	beyin
+🦴	kemik
+🦷	diş
+👅	dil
+👄	ağız
+💋	öpücük izi
+💘	oklu kalp
+❤️	kırmızı kalp
+❤	kırmızı kalp
+💓	çarpan kalp
+💔	kırık kalp
+💕	iki kalp
+💖	köpüklü kalp
+💗	büyüyen kalp
+💙	Mavi kalp
+💚	yeşil kalp
+💛	sarı kalp
+🧡	turuncu kalp
+💜	Mor Kalp
+🖤	Kara Yürek
+💝	kurdele ile kalp
+💞	dönen kalpler
+💟	kalp dekorasyon
+❣️	ağır kalp ünlemi
+❣	ağır kalp ünlemi
+💌	Aşk mektubu
+💤	zzz
+💢	öfke sembolü
+💣	bomba
+💥	çarpışma
+💦	ter damlacıkları
+💨	hızla uzaklaşmak
+💫	başı dönmek
+💬	konuşma balonu
+🗨️	sol konuşma balonu
+🗨	sol konuşma balonu
+🗯️	sağ öfke balonu
+🗯	sağ öfke balonu
+💭	düşünce balonu
+🕳️	delik
+🕳	delik
+👓	gözlük
+🕶️	Güneş gözlüğü
+🕶	Güneş gözlüğü
+🥽	gözlük
+🥼	laboratuvar önlüğü
+👔	kravat
+👕	tişört
+👖	kot
+🧣	atkı
+🧤	eldivenler
+🧥	kaban
+🧦	çorap
+👗	elbise
+👘	kimono
+👙	bikini
+👚	kadın kıyafetleri
+👛	el çantası
+👜	el çantası
+👝	el çantası
+🛍️	alışveriş çantaları
+🛍	alışveriş çantaları
+🎒	okul sırt çantası
+👞	erkek ayakkabısı
+👟	koşu ayakkabısı
+🥾	yürüyüş botu
+🥿	kadının düz ayakkabısı
+👠	yüksek topuklu ayakkabı
+👡	kadın sandaleti
+👢	kadın çizmesi
+👑	taç
+👒	kadın şapkası
+🎩	silindir şapka
+🎓	mezuniyet kepi
+🧢	faturalandırılan sınır
+⛑️	kurtarma görevlisi kaskı
+⛑	kurtarma görevlisi kaskı
+📿	tespih
+💄	ruj
+💍	yüzük
+💎	değerli taş
+🐵	maymun surat
+🐒	maymun
+🦍	goril
+🐶	köpek yüzü
+🐕	köpek
+🐩	kaniş
+🐺	Kurt yüzü
+🦊	tilki yüzü
+🦝	rakun
+🐱	kedi surat
+🐈	kedi
+🦁	aslan yüzü
+🐯	kaplan yüzü
+🐅	kaplan
+🐆	leopar
+🐴	At yüzü
+🐎	atış
+🦄	tek boynuzlu at yüzü
+🦓	zebra
+🦌	geyik
+🐮	inek yüzü
+🐂	öküz
+🐃	manda
+🐄	inek
+🐷	domuz suratlı
+🐖	domuz
+🐗	domuz
+🐽	Domuz burnu
+🐏	Veri deposu
+🐑	koyun
+🐐	keçi
+🐪	deve
+🐫	iki kamburlu deve
+🦙	lama
+🦒	zürafa
+🐘	fil
+🦏	gergedan
+🦛	su aygırı
+🐭	fare yüzü
+🐁	fare
+🐀	fare
+🐹	hamster yüzü
+🐰	tavşan yüzü
+🐇	tavşan
+🐿️	sincap
+🐿	sincap
+🦔	kirpi
+🦇	yarasa
+🐻	ayı yüzü
+🐨	koala
+🐼	panda yüzü
+🦘	kanguru
+🦡	porsuk
+🐾	Pati izleri
+🦃	Türkiye
+🐔	tavuk
+🐓	horoz
+🐣	kuluçkadan çıkan civciv
+🐤	civciv
+🐥	öne bakan civciv
+🐦	kuş
+🐧	penguen
+🕊️	güvercin
+🕊	güvercin
+🦅	kartal
+🦆	ördek
+🦢	kuğu
+🦉	baykuş
+🦚	tavuskuşu
+🦜	papağan
+🐸	kurbağa yüzü
+🐊	timsah
+🐢	kaplumbağa
+🦎	kertenkele
+🐍	yılan
+🐲	ejderha yüzü
+🐉	Ejderha
+🦕	sauropod
+🦖	T-Rex
+🐳	fışkırtan balina
+🐋	balina
+🐬	Yunus
+🐟	balık
+🐠	tropikal balık
+🐡	balon balığı
+🦈	köpek balığı
+🐙	ahtapot
+🐚	sarmal kabuk
+🦀	yengeç
+🦞	Istakoz
+🦐	karides
+🦑	kalamar
+🐌	salyangoz
+🦋	kelebek
+🐛	böcek
+🐜	karınca
+🐝	bal arısı
+🐞	hanım böceği
+🦗	kriket
+🕷️	örümcek
+🕷	örümcek
+🕸️	örümcek ağı
+🕸	örümcek ağı
+🦂	akrep
+🦟	sivrisinek
+🦠	mikrop
+💐	buket
+🌸	Kiraz çiçeği
+💮	Beyaz çiçek
+🏵️	rozet
+🏵	rozet
+🌹	gül
+🥀	solmuş çiçek
+🌺	ebegümeci
+🌻	ayçiçeği
+🌼	çiçek
+🌷	Lale
+🌱	fide
+🌲	yaprak dökmeyen ağaç
+🌳	Yaprak döken ağaç
+🌴	Palmiye
+🌵	kaktüs
+🌾	pirinç demet
+🌿	bitki
+☘️	yonca
+☘	yonca
+🍀	dört yapraklı yonca
+🍁	akçaağaç yaprağı
+🍂	düşen yaprak
+🍃	rüzgarda uçuşan yaprak
+🍇	üzüm
+🍈	kavun
+🍉	karpuz
+🍊	mandalina
+🍋	limon
+🍌	muz
+🍍	ananas
+🥭	Mango
+🍎	kırmızı elma
+🍏	yeşil Elma
+🍐	armut
+🍑	şeftali
+🍒	kirazlar
+🍓	çilek
+🥝	kivi meyvesi
+🍅	domates
+🥥	Hindistan cevizi
+🥑	avokado
+🍆	patlıcan
+🥔	patates
+🥕	havuç
+🌽	mısır koçanı
+🌶️	acı biber
+🌶	acı biber
+🥒	salatalık
+🥬	Yaprak yeşili
+🥦	brokoli
+🍄	mantar
+🥜	yer fıstığı
+🌰	kestane
+🍞	ekmek
+🥐	kruvasan
+🥖	baget ekmeği
+🥨	Çubuk kraker
+🥯	simit
+🥞	krep
+🧀	peynir kama
+🍖	kemikli et
+🍗	kümes hayvanı bacağı
+🥩	et kesimi
+🥓	domuz pastırması
+🍔	Hamburger
+🍟	patates kızartması
+🍕	Pizza
+🌭	sosisli sandviç
+🥪	sandviç
+🌮	tako
+🌯	burrito
+🥙	doldurulmuş gözleme
+🥚	Yumurta
+🍳	yemek pişirmek
+🥘	sığ yemek kabı
+🍲	yemek kabı
+🥣	kaşıklı kase
+🥗	yeşil salata
+🍿	patlamış mısır
+🧂	tuz
+🥫	konserve
+🍱	bento kutusu
+🍘	pirinç kraker
+🍙	pirinç topu
+🍚	Pişmiş pirinç
+🍛	körili pilav
+🍜	buharda pişirme kabı
+🍝	Spagetti
+🍠	kavrulmuş tatlı patates
+🍢	oden
+🍣	Suşi
+🍤	kızarmış karides
+🍥	girdaplı balık köftesi
+🥮	ay çöreği
+🍡	Dango
+🥟	hamur tatlısı
+🥠	Şans kurabiyesi
+🥡	paket kutusu
+🍦	yumuşak dondurma
+🍧	traşlanmış buz
+🍨	dondurma
+🍩	tatlı çörek
+🍪	kurabiye
+🎂	doğumgünü pastası
+🍰	kurabiye
+🧁	kek
+🥧	turta
+🍫	çikolata
+🍬	Şeker
+🍭	lolipop
+🍮	muhallebi
+🍯	bal küpü
+🍼	biberon
+🥛	bir bardak süt
+☕	Sıcak içecek
+🍵	kulpsuz çay fincanı
+🍶	hatır
+🍾	patlayan mantarlı şişe
+🍷	şarap bardağı
+🍸	kokteyl Bardağı
+🍹	tropikal içecek
+🍺	Bira kupası
+🍻	tıngırdayan bira kupaları
+🥂	bardakları tokuşturmak
+🥃	bardak cam
+🥤	samanlı bardak
+🥢	yemek çubukları
+🍽️	çatal ve bıçak ile plaka
+🍽	çatal ve bıçak ile plaka
+🍴	çatal ve bıçak
+🥄	kaşık
+🔪	mutfak bıçağı
+🏺	amfora
+🌍	Avrupa-Afrika'yı gösteren küre
+🌎	Amerika kıtasını gösteren küre
+🌏	Asya-Avustralya'yı gösteren küre
+🌐	meridyenleri olan küre
+🗺️	Dünya haritası
+🗺	Dünya haritası
+🗾	Japonya haritası
+🧭	pusula
+🏔️	Karla kaplı dağ
+🏔	Karla kaplı dağ
+⛰️	dağ
+⛰	dağ
+🌋	yanardağ
+🗻	Fuji Dağı
+🏕️	kamp yapmak
+🏕	kamp yapmak
+🏖️	şemsiyeli plaj
+🏖	şemsiyeli plaj
+🏜️	çöl
+🏜	çöl
+🏝️	çöl ada
+🏝	çöl ada
+🏞️	Ulusal park
+🏞	Ulusal park
+🏟️	stadyum
+🏟	stadyum
+🏛️	klasik bina
+🏛	klasik bina
+🏗️	bina inşaatı
+🏗	bina inşaatı
+🧱	tuğla
+🏘️	evler
+🏘	evler
+🏚️	sahipsiz ev
+🏚	sahipsiz ev
+🏠	ev
+🏡	bahçeli ev
+🏢	Ofis binası
+🏣	Japon postanesi
+🏤	Postane
+🏥	hastane
+🏦	banka
+🏨	otel
+🏩	Aşk oteli
+🏪	market
+🏫	okul
+🏬	büyük mağaza
+🏭	fabrika
+🏯	Japon kalesi
+🏰	kale
+💒	düğün
+🗼	Tokyo Kulesi
+🗽	Özgürlük Heykeli
+⛪	kilise
+🕌	cami
+🕍	sinagog
+⛩️	Shinto tapınağı
+⛩	Shinto tapınağı
+🕋	Kabe
+⛲	Çeşme
+⛺	çadır
+🌁	sisli
+🌃	yıldızlarla gece
+🏙️	Şehir manzarası
+🏙	Şehir manzarası
+🌄	dağların üzerinden gün doğumu
+🌅	gündoğumu
+🌆	alacakaranlıkta şehir manzarası
+🌇	gün batımı
+🌉	gece köprüsü
+♨️	Kaplıcalar
+♨	Kaplıcalar
+🌌	Samanyolu
+🎠	atlıkarınca atı
+🎡	dönme dolap
+🎢	lunapark hız treni
+💈	berber direği
+🎪	sirk çadırı
+🚂	lokomotif
+🚃	demiryolu vagonu
+🚄	yüksek Hızlı Tren
+🚅	HIZLI TREN
+🚆	tren
+🚇	metro
+🚈	hafif raylı
+🚉	istasyon
+🚊	tramvay
+🚝	tek raylı ray
+🚞	dağ demiryolu
+🚋	tramvay arabası
+🚌	otobüs
+🚍	yaklaşan otobüs
+🚎	troleybüs
+🚐	minibüs
+🚑	ambulans
+🚒	itfaiye aracı
+🚓	polis arabası
+🚔	yaklaşan polis arabası
+🚕	taksi
+🚖	yaklaşan taksi
+🚗	otomobil
+🚘	yaklaşan otomobil
+🚙	spor amaçlı araç
+🚚	teslimat kamyonu
+🚛	mafsallı kamyon
+🚜	traktör
+🚲	bisiklet
+🛴	tekme scooter
+🛹	kaykay
+🛵	motorlu scooter
+🚏	otobüs durağı
+🛣️	otoyol
+🛣	otoyol
+🛤️	demiryolu yolu
+🛤	demiryolu yolu
+🛢️	yağ varili
+🛢	yağ varili
+⛽	benzin pompası
+🚨	polis arabası ışığı
+🚥	yatay trafik ışığı
+🚦	dikey trafik ışığı
+🛑	dur işareti
+🚧	yapı
+⚓	Çapa
+⛵	yelkenli
+🛶	kano
+🚤	sürat teknesi
+🛳️	Yolcu gemisi
+🛳	Yolcu gemisi
+⛴️	feribot
+⛴	feribot
+🛥️	motorlu tekne
+🛥	motorlu tekne
+🚢	gemi
+✈️	uçak
+✈	uçak
+🛩️	küçük uçak
+🛩	küçük uçak
+🛫	uçak kalkışı
+🛬	uçağın gelişi
+💺	koltuk
+🚁	helikopter
+🚟	asma demiryolu
+🚠	dağ teleferiği
+🚡	hava tramvayı
+🛰️	uydu
+🛰	uydu
+🚀	roket
+🛸	uçan daire
+🛎️	komi çanı
+🛎	komi çanı
+🧳	bagaj
+⌛	kum saati bitti
+⏳	kum saati tamamlanmadı
+⌚	kol saati
+⏰	alarm saati
+⏱️	kronometre
+⏱	kronometre
+⏲️	zamanlayıcı saati
+⏲	zamanlayıcı saati
+🕰️	şömine rafı saati
+🕰	şömine rafı saati
+🕛	saat on iki
+🕧	on iki otuz
+🕐	saat bir
+🕜	otuzda biri
+🕑	saat iki
+🕝	iki otuz
+🕒	saat üç
+🕞	Üç otuz
+🕓	saat dört
+🕟	dört otuz
+🕔	saat beş
+🕠	Beş otuz
+🕕	saat altı
+🕡	altı otuz
+🕖	saat yedi
+🕢	yedi otuz
+🕗	saat sekiz
+🕣	sekiz otuz
+🕘	saat dokuz
+🕤	Dokuz otuz
+🕙	saat on
+🕥	on otuz
+🕚	saat onbir
+🕦	onbir otuz
+🌑	yeni Ay
+🌒	Hilal büyüyen ay
+🌓	ilk dördün ay
+🌔	büyüyen ay
+🌕	Dolunay
+🌖	küçülen kambur ay
+🌗	son çeyrek ay
+🌘	azalan hilal
+🌙	Hilal
+🌚	yeni ay yüzü
+🌛	ilk dördün ay yüzü
+🌜	son çeyreğin ay yüzü
+🌡️	termometre
+🌡	termometre
+☀️	güneş
+☀	güneş
+🌝	dolunay yüzü
+🌞	yüzü olan güneş
+⭐	yıldız
+🌟	parlayan yıldız
+🌠	kayan yıldız
+☁️	bulut
+☁	bulut
+⛅	bulutun arkasında güneş
+⛈️	Şimşek ve yağmurlu bulut
+⛈	Şimşek ve yağmurlu bulut
+🌤️	küçük bulutun arkasında güneş
+🌤	küçük bulutun arkasında güneş
+🌥️	büyük bulutun arkasında güneş
+🌥	büyük bulutun arkasında güneş
+🌦️	yağmur bulutunun arkasında güneş
+🌦	yağmur bulutunun arkasında güneş
+🌧️	yağmurlu bulut
+🌧	yağmurlu bulut
+🌨️	karlı bulut
+🌨	karlı bulut
+🌩️	yıldırım ile bulut
+🌩	yıldırım ile bulut
+🌪️	kasırga
+🌪	kasırga
+🌫️	sis
+🌫	sis
+🌬️	rüzgar yüzü
+🌬	rüzgar yüzü
+🌀	siklon
+🌈	gökkuşağı
+🌂	kapalı şemsiye
+☂️	şemsiye
+☂	şemsiye
+☔	yağmur damlaları ile şemsiye
+⛱️	yerde şemsiye
+⛱	yerde şemsiye
+⚡	yüksek voltaj
+❄️	kar tanesi
+❄	kar tanesi
+☃️	kardan adam
+☃	kardan adam
+⛄	karsız kardan adam
+☄️	kuyruklu yıldız
+☄	kuyruklu yıldız
+🔥	ateş
+💧	damlacık
+🌊	su dalgası
+🎃	jack-o-fener
+🎄	Noel ağacı
+🎆	havai fişek
+🎇	maytap
+🧨	havai fişek
+✨	parıldıyor
+🎈	balon
+🎉	parti patlatıcısı
+🎊	konfeti topu
+🎋	tanabata ağacı
+🎍	Çam dekorasyonu
+🎎	Japon bebekleri
+🎏	sazan flama
+🎐	Rüzgar çanı
+🎑	ay izleme töreni
+🧧	kırmızı zarf
+🎀	kurdele
+🎁	sarılmış hediye
+🎗️	hatırlatma şeridi
+🎗	hatırlatma şeridi
+🎟️	Giriş biletleri
+🎟	Giriş biletleri
+🎫	bilet
+🎖️	askeri madalya
+🎖	askeri madalya
+🏆	ganimet
+🏅	spor madalyası
+🥇	1.lik madalyası
+🥈	2.lik madalyası
+🥉	3.lük madalyası
+⚽	Futbol topu
+⚾	beyzbol
+🥎	softbol
+🏀	Basketbol
+🏐	voleybol
+🏈	Amerikan futbolu
+🏉	Ragbi futbolu
+🎾	tenis
+🥏	uçan Disk
+🎳	bowling
+🏏	kriket oyunu
+🏑	çim Hokeyi
+🏒	buz Hokeyi
+🥍	lakros
+🏓	masa Tenisi
+🏸	badminton
+🥊	Boks eldiveni
+🥋	dövüş sanatları üniforması
+🥅	gol ağı
+⛳	delikteki bayrak
+⛸️	buz pateni
+⛸	buz pateni
+🎣	olta kamışı
+🎽	koşu tişörtü
+🎿	kayaklar
+🛷	kızak
+🥌	kıvırma taşı
+🎯	direk vuruş
+🎱	havuz 8 top
+🔮	Kristal top
+🧿	nazar muska
+🎮	video oyunu
+🕹️	oyun kolu
+🕹	oyun kolu
+🎰	kumar makinesi
+🎲	oyun ölmek
+🧩	yapboz
+🧸	Oyuncak ayı
+♠️	maça takımı
+♠	maça takımı
+♥️	kalp takım elbise
+♥	kalp takım elbise
+♦️	elmas takım elbise
+♦	elmas takım elbise
+♣️	kulüp kıyafeti
+♣	kulüp kıyafeti
+♟️	satranç piyonu
+♟	satranç piyonu
+🃏	joker
+🀄	mahjong kırmızı ejderha
+🎴	çiçek oyun kartları
+🎭	Performans sanatları
+🖼️	Çerçeveli resim
+🖼	Çerçeveli resim
+🎨	sanatçı paleti
+🧵	iplik
+🧶	iplik
+🔇	sessiz hoparlör
+🔈	hoparlör düşük ses seviyesi
+🔉	hoparlör orta ses seviyesi
+🔊	hoparlör yüksek ses
+📢	hoparlör
+📣	megafon
+📯	posta kornası
+🔔	zil
+🔕	eğik çizgi ile çan
+🎼	müzikal puanı
+🎵	müzik notası
+🎶	Müzik notaları
+🎙️	stüdyo mikrofonu
+🎙	stüdyo mikrofonu
+🎚️	seviye kaydırıcısı
+🎚	seviye kaydırıcısı
+🎛️	kontrol düğmeleri
+🎛	kontrol düğmeleri
+🎤	mikrofon
+🎧	kulaklık
+📻	radyo
+🎷	saksafon
+🎸	gitar
+🎹	müzikal klavye
+🎺	trompet
+🎻	keman
+🥁	davul
+📱	cep telefonu
+📲	oklu cep telefonu
+☎️	telefon
+☎	telefon
+📞	telefon alıcısı
+📟	çağrı cihazı
+📠	faks makinesi
+🔋	pil
+🔌	Elektrik prizi
+💻	dizüstü bilgisayar
+🖥️	masaüstü bilgisayar
+🖥	masaüstü bilgisayar
+🖨️	yazıcı
+🖨	yazıcı
+⌨️	tuş takımı
+⌨	tuş takımı
+🖱️	Bilgisayar faresi
+🖱	Bilgisayar faresi
+🖲️	topunu
+🖲	topunu
+💽	bilgisayar diski
+💾	disket
+💿	optik disk
+📀	DVD
+🧮	abaküs
+🎥	film kamerası
+🎞️	film çerçeveleri
+🎞	film çerçeveleri
+📽️	film projektörü
+📽	film projektörü
+🎬	klaket tahtası
+📺	televizyon
+📷	kamera
+📸	flaşlı kamera
+📹	video kamera
+📼	video kaset
+🔍	büyüteç sola eğik
+🔎	büyüteç sağa eğik
+🕯️	mum
+🕯	mum
+💡	ampul
+🔦	el feneri
+🏮	kırmızı kağıt fener
+📔	dekoratif kapaklı defter
+📕	kapalı kitap
+📖	açık kitap
+📗	yeşil Kitap
+📘	Mavi Kitap
+📙	turuncu kitap
+📚	kitabın
+📓	not defteri
+📒	defter
+📃	kıvrılmış sayfa
+📜	taslak
+📄	sayfa yukarıya dönük
+📰	gazete
+🗞️	katlanmış gazete
+🗞	katlanmış gazete
+📑	yer imi sekmeleri
+🔖	yer imi
+🏷️	etiket
+🏷	etiket
+💰	para çantası
+💴	yen banknot
+💵	dolarlık banknot
+💶	euro banknot
+💷	pound banknot
+💸	kanatlı para
+💳	kredi kartı
+🧾	fiş
+💹	yen ile artan grafik
+💱	döviz değişimi
+💲	ağır dolar işareti
+✉️	mektup
+✉	mektup
+📧	e-posta
+📨	gelen zarf
+📩	oklu zarf
+📤	giden kutusu tepsisi
+📥	gelen kutusu tepsisi
+📦	paket
+📫	bayrağı kaldırılmış kapalı posta kutusu
+📪	bayrağı indirilmiş kapalı posta kutusu
+📬	bayrağı kaldırılmış posta kutusunu aç
+📭	bayrağı indirilmiş posta kutusunu aç
+📮	posta kutusu
+🗳️	oy pusulası ile oy sandığı
+🗳	oy pusulası ile oy sandığı
+✏️	kalem
+✏	kalem
+✒️	siyah uç
+✒	siyah uç
+🖋️	dolma kalem
+🖋	dolma kalem
+🖊️	dolma kalem
+🖊	dolma kalem
+🖌️	boya fırçası
+🖌	boya fırçası
+🖍️	pastel boya
+🖍	pastel boya
+📝	hafıza
+💼	iş çantası
+📁	dosya klasörü
+📂	dosya klasörünü aç
+🗂️	kart dizini bölücüler
+🗂	kart dizini bölücüler
+📅	takvim
+📆	yırtılma takvimi
+🗒️	spiral not defteri
+🗒	spiral not defteri
+🗓️	sarmal takvim
+🗓	sarmal takvim
+📇	kartvizit indeksi
+📈	grafik artıyor
+📉	grafik azalıyor
+📊	grafik çubuğu
+📋	pano
+📌	raptiye
+📍	yuvarlak raptiye
+📎	Ataç
+🖇️	bağlantılı ataçlar
+🖇	bağlantılı ataçlar
+📏	düz cetvel
+📐	üçgen cetvel
+✂️	makas
+✂	makas
+🗃️	kart dosya kutusu
+🗃	kart dosya kutusu
+🗄️	dosya dolabı
+🗄	dosya dolabı
+🗑️	çöp sepeti
+🗑	çöp sepeti
+🔒	kilitli
+🔓	kilidi açık
+🔏	kalemle kilitlendi
+🔐	anahtarla kilitlendi
+🔑	anahtar
+🗝️	eski anahtar
+🗝	eski anahtar
+🔨	çekiç
+⛏️	seçmek
+⛏	seçmek
+⚒️	çekiç ve kazma
+⚒	çekiç ve kazma
+🛠️	çekiç ve İngiliz anahtarı
+🛠	çekiç ve İngiliz anahtarı
+🗡️	hançer
+🗡	hançer
+⚔️	çapraz kılıçlar
+⚔	çapraz kılıçlar
+🔫	tabanca
+🏹	yay ve ok
+🛡️	kalkan
+🛡	kalkan
+🔧	İngiliz anahtarı
+🔩	somun ve cıvata
+⚙️	vites
+⚙	vites
+🗜️	kelepçe
+🗜	kelepçe
+⚖️	denge ölçeği
+⚖	denge ölçeği
+🔗	bağlantı
+⛓️	zincirler
+⛓	zincirler
+🧰	alet kutusu
+🧲	mıknatıs
+⚗️	imbik
+⚗	imbik
+🧪	Test tüpü
+🧫	Petri kabı
+🧬	DNA
+🔬	mikroskop
+🔭	teleskop
+📡	uydu anteni
+💉	şırınga
+💊	hap
+🚪	kapı
+🛏️	yatak
+🛏	yatak
+🛋️	kanepe ve lamba
+🛋	kanepe ve lamba
+🚽	tuvalet
+🚿	duş
+🛁	küvet
+🧴	losyon şişesi
+🧷	emniyet pimi
+🧹	süpürge
+🧺	sepet
+🧻	kağıt rulosu
+🧼	sabun
+🧽	sünger
+🧯	yangın söndürücü
+🛒	alışveriş Sepeti
+🚬	sigara
+⚰️	tabut
+⚰	tabut
+⚱️	ölünün küllerinin saklandığı kap
+⚱	ölünün küllerinin saklandığı kap
+🗿	Moai
+🏧	ATM işareti
+🚮	çöp kutusu tabelası
+🚰	içme suyu
+♿	tekerlekli sandalye sembolü
+🚹	Erkekler odası
+🚺	kadınlar odası
+🚻	tuvalet
+🚼	bebek sembolü
+🚾	tuvalet
+🛂	pasaport kontrolü
+🛃	gümrük
+🛄	bagaj teslim yeri
+🛅	sol bagaj
+⚠️	uyarı
+⚠	uyarı
+🚸	Çocuklar geçiyor
+⛔	Girilmez
+🚫	yasak
+🚳	Bisiklet giremez
+🚭	Sigara İçmek Yasaktır
+🚯	Çöp atmak yasak
+🚱	içilemez su
+🚷	Yaya giremez
+📵	cep telefonu yok
+🔞	on sekiz yaşın altında kimse yok
+☢️	radyoaktif
+☢	radyoaktif
+☣️	biyolojik tehlike
+☣	biyolojik tehlike
+⬆️	yukarı ok
+⬆	yukarı ok
+↗️	sağ yukarı ok
+↗	sağ yukarı ok
+➡️	sağ ok
+➡	sağ ok
+↘️	sağ aşağı ok
+↘	sağ aşağı ok
+⬇️	aşağı ok
+⬇	aşağı ok
+↙️	sol aşağı ok
+↙	sol aşağı ok
+⬅️	sol ok
+⬅	sol ok
+↖️	sol yukarı ok
+↖	sol yukarı ok
+↕️	yukarı-aşağı ok
+↕	yukarı-aşağı ok
+↔️	sol-sağ ok
+↔	sol-sağ ok
+↩️	sola doğru kıvrılan sağ ok
+↩	sola doğru kıvrılan sağ ok
+↪️	sağa doğru kıvrılan sol ok
+↪	sağa doğru kıvrılan sol ok
+⤴️	yukarı doğru kıvrılan sağ ok
+⤴	yukarı doğru kıvrılan sağ ok
+⤵️	aşağı doğru kıvrılan sağ ok
+⤵	aşağı doğru kıvrılan sağ ok
+🔃	saat yönünde dikey oklar
+🔄	saat yönünün tersine oklar düğmesi
+🔙	GERİ ok
+🔚	SON oku
+🔛	AÇIK oku
+🔜	YAKINDA ok
+🔝	ÜST ok
+🛐	ibadet yeri
+⚛️	atom sembolü
+⚛	atom sembolü
+🕉️	om
+🕉	om
+✡️	David'in yıldızı
+✡	David'in yıldızı
+☸️	dharma çarkı
+☸	dharma çarkı
+☯️	yin Yang
+☯	yin Yang
+✝️	Latin haçı
+✝	Latin haçı
+☦️	ortodoks haçı
+☦	ortodoks haçı
+☪️	yıldız ve hilal
+☪	yıldız ve hilal
+☮️	Barış sembolü
+☮	Barış sembolü
+🕎	menora
+🔯	noktalı altı köşeli yıldız
+♈	Koç burcu
+♉	Boğa burcu
+♊	İkizler burcu
+♋	Kanser
+♌	Aslan
+♍	Başak
+♎	Terazi
+♏	Akrep
+♐	yay Burcu
+♑	Oğlak
+♒	Kova
+♓	balık Burcu
+⛎	Yılancı
+🔀	Parçaları karıştır düğmesi
+🔁	tekrarla düğmesi
+🔂	tek düğmeyi tekrarla
+▶️	oynatma düğmesi
+▶	oynatma düğmesi
+⏩	hızlı ileri sarma düğmesi
+⏭️	sonraki parça düğmesi
+⏭	sonraki parça düğmesi
+⏯️	oynat veya duraklat düğmesi
+⏯	oynat veya duraklat düğmesi
+◀️	geri düğmesi
+◀	geri düğmesi
+⏪	hızlı geri alma düğmesi
+⏮️	son parça düğmesi
+⏮	son parça düğmesi
+🔼	yukarı düğmesi
+⏫	hızlı yukarı düğmesi
+🔽	aşağı düğmesi
+⏬	hızlı aşağı düğmesi
+⏸️	duraklatma düğmesi
+⏸	duraklatma düğmesi
+⏹️	durdurma düğmesi
+⏹	durdurma düğmesi
+⏺️	kayıt düğmesi
+⏺	kayıt düğmesi
+⏏️	çıkarma düğmesi
+⏏	çıkarma düğmesi
+🎦	sinema
+🔅	karartma düğmesi
+🔆	parlak düğme
+📶	anten çubukları
+📳	titreşim modu
+📴	cep telefonu kapalı
+♀️	kadın işareti
+♀	kadın işareti
+♂️	erkek işareti
+♂	erkek işareti
+⚕️	tıbbi sembol
+⚕	tıbbi sembol
+♾️	sonsuzluk
+♾	sonsuzluk
+♻️	geri dönüşüm sembolü
+♻	geri dönüşüm sembolü
+⚜️	zambak çiçeği
+⚜	zambak çiçeği
+🔱	üç çatallı amblem
+📛	yaka kartı
+🔰	Yeni başlayanlar için Japonca sembolü
+⭕	ağır büyük daire
+✅	beyaz ağır onay işareti
+☑️	çek ile oy sandığı
+☑	çek ile oy sandığı
+✔️	ağır onay işareti
+✔	ağır onay işareti
+✖️	ağır çarpma x
+✖	ağır çarpma x
+❌	çarpı işareti
+❎	çapraz işaret düğmesi
+➕	ağır artı işareti
+➖	ağır eksi işareti
+➗	ağır bölünme işareti
+➰	kıvırcık döngü
+➿	çift kıvırcık döngü
+〽️	parça değiştirme işareti
+〽	parça değiştirme işareti
+✳️	sekiz kollu yıldız işareti
+✳	sekiz kollu yıldız işareti
+✴️	sekiz köşeli yıldız
+✴	sekiz köşeli yıldız
+❇️	ışıltı
+❇	ışıltı
+‼️	çift ünlem işareti
+‼	çift ünlem işareti
+⁉️	ünlem soru işareti
+⁉	ünlem soru işareti
+❓	soru işareti
+❔	beyaz soru işareti
+❕	beyaz ünlem işareti
+❗	ünlem işareti
+〰️	dalgalı çizgi
+〰	dalgalı çizgi
+©️	telif hakkı
+©	telif hakkı
+®️	kayıtlı
+®	kayıtlı
+™️	marka
+™	marka
+#️⃣	klavye tuşu: #
+#⃣	klavye tuşu: #
+*️⃣	klavye tuşu: *
+*⃣	klavye tuşu: *
+0️⃣	klavye tuşu: 0
+0⃣	klavye tuşu: 0
+1️⃣	klavye tuşu: 1
+1⃣	klavye tuşu: 1
+2️⃣	klavye tuşu: 2
+2⃣	klavye tuşu: 2
+3️⃣	klavye tuşu: 3
+3⃣	klavye tuşu: 3
+4️⃣	klavye tuşu: 4
+4⃣	klavye tuşu: 4
+5️⃣	klavye tuşu: 5
+5⃣	klavye tuşu: 5
+6️⃣	klavye tuşu: 6
+6⃣	klavye tuşu: 6
+7️⃣	klavye tuşu: 7
+7⃣	klavye tuşu: 7
+8️⃣	klavye tuşu: 8
+8⃣	klavye tuşu: 8
+9️⃣	klavye tuşu: 9
+9⃣	klavye tuşu: 9
+🔟	klavye tuşu: 10
+💯	yüz puan
+🔠	Latince büyük harf girişi
+🔡	Latince küçük harf girişi
+🔢	sayıları gir
+🔣	giriş sembolleri
+🔤	Latin harflerini girin
+🅰️	Bir düğme (kan grubu)
+🅰	Bir düğme (kan grubu)
+🆎	AB düğmesi (kan grubu)
+🅱️	B düğmesi (kan grubu)
+🅱	B düğmesi (kan grubu)
+🆑	CL düğmesi
+🆒	SOĞUTMA düğmesi
+🆓	ÜCRETSİZ düğmesi
+ℹ️	bilgi
+ℹ	bilgi
+🆔	Kimlik düğmesi
+Ⓜ️	daire içine alınmış M
+Ⓜ	daire içine alınmış M
+🆕	YENİ düğmesi
+🆖	NG düğmesi
+🅾️	O düğmesi (kan grubu)
+🅾	O düğmesi (kan grubu)
+🆗	Tamam düğmesi
+🅿️	P düğmesi
+🅿	P düğmesi
+🆘	Acil durum düğmesi
+🆙	YUKARI düğmesi
+🆚	VS düğmesi
+🈁	Japonca "burada" düğmesi
+🈂️	Japonca "servis ücreti" düğmesi
+🈂	Japonca "servis ücreti" düğmesi
+🈷️	Japonca "aylık tutar" düğmesi
+🈷	Japonca "aylık tutar" düğmesi
+🈶	Japonca "ücretsiz değil" düğmesi
+🈯	Japonca "ayrılmış" düğmesi
+🉐	Japonca "pazarlık" düğmesi
+🈹	Japonca "indirim" düğmesi
+🈚	Japonca "ücretsiz" düğmesi
+🈲	Japonca "yasaklanmış" düğmesi
+🉑	Japonca "kabul edilebilir" düğmesi
+🈸	Japonca "uygulama" düğmesi
+🈴	Japonca "geçme notu" düğmesi
+🈳	Japonca "boşluk" düğmesi
+㊗️	Japonca "tebrikler" düğmesi
+㊗	Japonca "tebrikler" düğmesi
+㊙️	Japonca "gizli" düğmesi
+㊙	Japonca "gizli" düğmesi
+🈺	Japonca "iş için açık" düğmesi
+🈵	Japonca “boş yer yok” butonu
+▪️	siyah küçük kare
+▪	siyah küçük kare
+▫️	beyaz küçük kare
+▫	beyaz küçük kare
+◻️	beyaz orta kare
+◻	beyaz orta kare
+◼️	siyah orta kare
+◼	siyah orta kare
+◽	beyaz orta-küçük kare
+◾	siyah orta-küçük kare
+⬛	siyah büyük kare
+⬜	beyaz büyük kare
+🔶	büyük turuncu elmas
+🔷	büyük mavi elmas
+🔸	küçük turuncu elmas
+🔹	küçük mavi elmas
+🔺	kırmızı üçgen yukarı dönük
+🔻	kırmızı üçgen aşağı dönük
+💠	noktalı elmas
+🔘	Radyo düğmesi
+🔲	siyah kare düğme
+🔳	beyaz kare düğme
+⚪	beyaz daire
+⚫	siyah daire
+🔴	kırmızı daire
+🔵	mavi daire
+🏁	damalı bayrak
+🚩	üçgen bayrak
+🎌	çapraz bayraklar
+🏴	siyah bayrak
+🏳️	Beyaz Bayrak
+🏳	Beyaz Bayrak
+🏳️‍🌈	gökkuşağı bayrağı
+🏳‍🌈	gökkuşağı bayrağı
+🏴‍☠️	korsan bayrağı
+🏴‍☠	korsan bayrağı
+🇦🇨	Yükselme adası
+🇦🇩	Andorra
+🇦🇪	Birleşik Arap Emirlikleri
+🇦🇫	Afganistan
+🇦🇬	Antigua ve Barbuda
+🇦🇮	Anguilla
+🇦🇱	Arnavutluk
+🇦🇲	Ermenistan
+🇦🇴	Angola
+🇦🇶	Antarktika
+🇦🇷	Arjantin
+🇦🇸	Amerikan Samoası
+🇦🇹	Avusturya
+🇦🇺	Avustralya
+🇦🇼	Aruba
+🇦🇽	Aland adaları
+🇦🇿	Azerbaycan
+🇧🇦	Bosna-Hersek
+🇧🇧	Barbados
+🇧🇩	Bangladeş
+🇧🇪	Belçika
+🇧🇫	Burkina Faso
+🇧🇬	Bulgaristan
+🇧🇭	Bahreyn
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	Aziz Barthélemy
+🇧🇲	Bermuda
+🇧🇳	Brunei
+🇧🇴	Bolivya
+🇧🇶	Karayip Hollandası
+🇧🇷	Brezilya
+🇧🇸	Bahamalar
+🇧🇹	Butan
+🇧🇻	Bouvet Adası
+🇧🇼	Botsvana
+🇧🇾	Belarus
+🇧🇿	Belize
+🇨🇦	Kanada
+🇨🇨	Cocos (Keeling) Adaları
+🇨🇩	Kongo - Kinşasa
+🇨🇫	Orta Afrika Cumhuriyeti
+🇨🇬	Kongo - Brazzaville
+🇨🇭	İsviçre
+🇨🇮	Fildişi Sahili
+🇨🇰	Cook Adaları
+🇨🇱	Şili
+🇨🇲	Kamerun
+🇨🇳	Çin
+🇨🇴	Kolombiya
+🇨🇵	Clipperton Adası
+🇨🇷	Kosta Rika
+🇨🇺	Küba
+🇨🇻	Yeşil Burun Adaları
+🇨🇼	Curacao
+🇨🇽	Noel Adası
+🇨🇾	Kıbrıs
+🇨🇿	Çekya
+🇩🇪	Almanya
+🇩🇬	Diego Garcia
+🇩🇯	Cibuti
+🇩🇰	Danimarka
+🇩🇲	Dominika
+🇩🇴	Dominik Cumhuriyeti
+🇩🇿	Cezayir
+🇪🇦	Ceuta ve Melilla
+🇪🇨	Ekvador
+🇪🇪	Estonya
+🇪🇬	Mısır
+🇪🇭	Batı Sahra
+🇪🇷	Eritre
+🇪🇸	ispanya
+🇪🇹	Etiyopya
+🇪🇺	Avrupa Birliği
+🇫🇮	Finlandiya
+🇫🇯	Fiji
+🇫🇰	Falkland adaları
+🇫🇲	Mikronezya
+🇫🇴	Faroe Adaları
+🇫🇷	Fransa
+🇬🇦	Gabon
+🇬🇧	Birleşik Krallık
+🇬🇩	Grenada
+🇬🇪	Gürcistan
+🇬🇫	Fransız Guyanası
+🇬🇬	Guernsey
+🇬🇭	Gana
+🇬🇮	Cebelitarık
+🇬🇱	Grönland
+🇬🇲	Gambiya
+🇬🇳	Gine
+🇬🇵	Guadeloupe
+🇬🇶	Ekvator Ginesi
+🇬🇷	Yunanistan
+🇬🇸	Güney Georgia ve Güney Sandviç Adaları
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Gine-Bissau
+🇬🇾	Guyana
+🇭🇰	Hong Kong SAR Çin
+🇭🇲	Heard ve McDonald Adaları
+🇭🇳	Honduras
+🇭🇷	Hırvatistan
+🇭🇹	Haiti
+🇭🇺	Macaristan
+🇮🇨	Kanarya Adaları
+🇮🇩	Endonezya
+🇮🇪	İrlanda
+🇮🇱	İsrail
+🇮🇲	Man Adası
+🇮🇳	Hindistan
+🇮🇴	Britanya Hint Okyanusu Bölgesi
+🇮🇶	Irak
+🇮🇷	İran
+🇮🇸	İzlanda
+🇮🇹	İtalya
+🇯🇪	Jersey
+🇯🇲	Jamaika
+🇯🇴	Ürdün
+🇯🇵	Japonya
+🇰🇪	Kenya
+🇰🇬	Kırgızistan
+🇰🇭	Kamboçya
+🇰🇮	Kiribati
+🇰🇲	Komorlar
+🇰🇳	St. Kitts ve Nevis
+🇰🇵	Kuzey Kore
+🇰🇷	Güney Kore
+🇰🇼	Kuveyt
+🇰🇾	Cayman Adaları
+🇰🇿	Kazakistan
+🇱🇦	Laos
+🇱🇧	Lübnan
+🇱🇨	Aziz Lucia
+🇱🇮	Lihtenştayn
+🇱🇰	Sri Lanka
+🇱🇷	Liberya
+🇱🇸	Lesoto
+🇱🇹	Litvanya
+🇱🇺	Lüksemburg
+🇱🇻	Letonya
+🇱🇾	Libya
+🇲🇦	Fas
+🇲🇨	Monako
+🇲🇩	Moldova
+🇲🇪	Karadağ
+🇲🇫	Aziz Martin
+🇲🇬	Madagaskar
+🇲🇭	Marşal Adaları
+🇲🇰	Makedonya
+🇲🇱	Mali
+🇲🇲	Myanmar (Burma)
+🇲🇳	Moğolistan
+🇲🇴	Makao SAR Çin
+🇲🇵	Kuzey Mariana Adaları
+🇲🇶	Martinik
+🇲🇷	Moritanya
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mauritius
+🇲🇻	Maldivler
+🇲🇼	Malawi
+🇲🇽	Meksika
+🇲🇾	Malezya
+🇲🇿	Mozambik
+🇳🇦	Namibya
+🇳🇨	Yeni Kaledonya
+🇳🇪	Nijer
+🇳🇫	Norfolk Adası
+🇳🇬	Nijerya
+🇳🇮	Nikaragua
+🇳🇱	Hollanda
+🇳🇴	Norveç
+🇳🇵	Nepal
+🇳🇷	Nauru'lu
+🇳🇺	Niue
+🇳🇿	Yeni Zelanda
+🇴🇲	Umman
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Fransız Polinezyası
+🇵🇬	Papua Yeni Gine
+🇵🇭	Filipinler
+🇵🇰	Pakistan
+🇵🇱	Polonya
+🇵🇲	St.Pierre ve Miquelon
+🇵🇳	Pitcairn Adaları
+🇵🇷	Porto Riko
+🇵🇸	Filistin Bölgesi
+🇵🇹	Portekiz
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Katar
+🇷🇪	Réunion
+🇷🇴	Romanya
+🇷🇸	Sırbistan
+🇷🇺	Rusya
+🇷🇼	Ruanda
+🇸🇦	Suudi Arabistan
+🇸🇧	Solomon Adaları
+🇸🇨	Seyşeller
+🇸🇩	Sudan
+🇸🇪	İsveç
+🇸🇬	Singapur
+🇸🇭	Aziz Helena
+🇸🇮	Slovenya
+🇸🇯	Svalbard ve Jan Mayen
+🇸🇰	Slovakya
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somali
+🇸🇷	Surinam
+🇸🇸	Güney Sudan
+🇸🇹	São Tomé ve Príncipe
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Suriye
+🇸🇿	Svaziland
+🇹🇦	Tristan da Cunha
+🇹🇨	Turks ve Caicos Adaları
+🇹🇩	Çad
+🇹🇫	Fransız Güney Toprakları
+🇹🇬	Gitmek
+🇹🇭	Tayland
+🇹🇯	Tacikistan
+🇹🇰	Tokelau
+🇹🇱	Doğu Timor
+🇹🇲	Türkmenistan
+🇹🇳	Tunus
+🇹🇴	Tonga
+🇹🇷	Türkiye
+🇹🇹	Trinidad & Tobago
+🇹🇻	Tuvalu
+🇹🇼	Tayvan
+🇹🇿	Tanzanya
+🇺🇦	Ukrayna
+🇺🇬	Uganda
+🇺🇲	ABD Dış Adaları
+🇺🇳	Birleşmiş Milletler
+🇺🇸	Amerika Birleşik Devletleri
+🇺🇾	Uruguay
+🇺🇿	Özbekistan
+🇻🇦	Vatikan Şehri
+🇻🇨	St.Vincent ve Grenadinler
+🇻🇪	Venezuela
+🇻🇬	Britanya Virjin Adaları
+🇻🇮	Amerika Birleşik Devletleri Virgin Adaları
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis ve Futuna
+🇼🇸	Samoa
+🇽🇰	Kosova
+🇾🇪	Yemen
+🇾🇹	Mayotte
+🇿🇦	Güney Afrika
+🇿🇲	Zambiya
+🇿🇼	Zimbabve
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	İngiltere
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	İskoçya
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Galler

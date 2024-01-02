@@ -1,0 +1,3570 @@
+😀	muigav nägu
+😁	särav nägu naeratavate silmadega
+😂	nägu rõõmupisaratega
+🤣	ukerdas naerdes põrandal
+😃	naeratav nägu suurte silmadega
+😄	naeratav nägu naeratavate silmadega
+😅	irvitav nägu higist
+😆	irvitav kissitav nägu
+😉	pilgutav nägu
+😊	naeratav nägu naeratavate silmadega
+😋	nägu maitsemas toitu
+😎	naeratav nägu päikeseprillidega
+😍	naeratav nägu südame-silmadega
+😘	nägu puhub suudlust
+🥰	naeratav nägu 3 südamega
+😗	suudlevat nägu
+😙	suudlev nägu naeratavate silmadega
+😚	suudlev nägu suletud silmadega
+☺️	naeratav nägu
+☺	naeratav nägu
+🙂	kergelt naeratav nägu
+🤗	kallistav nägu
+🤩	tähte löönud
+🤔	mõtlev nägu
+🤨	nägu kergitatud kulmuga
+😐	neutraalne nägu
+😑	ilmetu nägu
+😶	nägu ilma suuta
+🙄	pööritavate silmadega nägu
+😏	muigav nägu
+😣	visa nägu
+😥	kurb, kuid kergendatud nägu
+😮	avatud suuga nägu
+🤐	lukuga-suu nägu
+😯	vaikne nägu
+😪	unine nägu
+😫	väsinud nägu
+😴	magav nägu
+😌	kergendatud nägu
+😛	nägu keelega
+😜	pilgutav nägu keelega
+😝	kissitav nägu keelega
+🤤	sulistav nägu
+😒	naljatu nägu
+😓	allavajunud nägu higist
+😔	mõtlik nägu
+😕	segaduses nägu
+🙃	tagurpidi nägu
+🤑	raha-suu nägu
+😲	imestunud nägu
+☹️	kortsutav nägu
+☹	kortsutav nägu
+🙁	kergelt kortsutatud nägu
+😖	segaduses nägu
+😞	pettunud nägu
+😟	murelik nägu
+😤	nägu auruga ninast
+😢	nutt nägu
+😭	valjult nutt nägu
+😦	kortsutav nägu avatud suuga
+😧	ahastav nägu
+😨	kartlik nägu
+😩	väsinud nägu
+🤯	plahvatav pea
+😬	grimasseeriv nägu
+😰	murelik nägu higiga
+😱	nägu karjudes hirmust
+🥵	kuum nägu
+🥶	külm nägu
+😳	punetav nägu
+🤪	loll nägu
+😵	uimane nägu
+😡	punnis nägu
+😠	vihane nägu
+🤬	nägu sümbolitega suul
+😷	nägu meditsiinilise maskiga
+🤒	nägu termomeetriga
+🤕	nägu peasidemega
+🤢	iiveldatud nägu
+🤮	nägu oksendamine
+🤧	aevastav nägu
+😇	haloga naeratav nägu
+🤠	kauboi mütsi nägu
+🥳	pidulik nägu
+🥴	udune nägu
+🥺	paluv nägu
+🤥	lamav nägu
+🤫	vaikiv nägu
+🤭	nägu käsi suu ees
+🧐	nägu monokliga
+🤓	nohiku nägu
+😈	sarvedega naeratav nägu
+👿	vihane sarvedega nägu
+🤡	klouni nägu
+👹	ogre
+👺	goblin
+💀	kolju
+☠️	kolju ja ristluud
+☠	kolju ja ristluud
+👻	kummitus
+👽	tulnukas
+👾	tulnukas koletis
+🤖	roboti nägu
+💩	hunnik kakat
+😺	irvitav kassi nägu
+😸	irvitav kassi nägu naeratavate silmadega
+😹	kassi nägu rõõmupisaratega
+😻	naeratav kassi nägu südame-silmadega
+😼	kiisu naeratusega kassinägu
+😽	suudlev kassi nägu
+🙀	väsinud kassi nägu
+😿	nuttev kassi nägu
+😾	punnis kassi nägu
+🙈	ei näe kurja ahvi
+🙉	kuule-ei-kurja ahv
+🙊	ei räägi kurja ahv
+🏻	hele nahatoon
+🏼	keskmiselt hele nahatoon
+🏽	keskmine nahatoon
+🏾	keskmiselt tume nahatoon
+🏿	tume nahatoon
+👶	beebi
+👶🏻	beebi: hele nahatoon
+👶🏼	beebi: keskmiselt hele nahatoon
+👶🏽	beebi: keskmine nahatoon
+👶🏾	beebi: keskmiselt tume nahatoon
+👶🏿	beebi: tume nahatoon
+🧒	laps
+🧒🏻	laps: hele nahatoon
+🧒🏼	laps: keskmiselt hele nahatoon
+🧒🏽	laps: keskmine nahatoon
+🧒🏾	laps: keskmiselt tume nahatoon
+🧒🏿	laps: tume nahatoon
+👦	poiss
+👦🏻	poiss: hele nahatoon
+👦🏼	poiss: keskmiselt hele nahatoon
+👦🏽	poiss: keskmine nahatoon
+👦🏾	poiss: keskmiselt tume nahatoon
+👦🏿	poiss: tume nahatoon
+👧	tüdruk
+👧🏻	tüdruk: hele nahatoon
+👧🏼	tüdruk: keskmiselt hele nahatoon
+👧🏽	tüdruk: keskmine nahatoon
+👧🏾	tüdruk: keskmiselt tume nahatoon
+👧🏿	tüdruk: tume nahatoon
+🧑	täiskasvanud
+🧑🏻	täiskasvanud: hele nahatoon
+🧑🏼	täiskasvanud: keskmiselt hele nahatoon
+🧑🏽	täiskasvanud: keskmine nahatoon
+🧑🏾	täiskasvanud: keskmiselt tume nahatoon
+🧑🏿	täiskasvanud: tume nahatoon
+👨	mees
+👨🏻	mees: hele nahatoon
+👨🏼	mees: keskmiselt hele nahatoon
+👨🏽	mees: keskmine nahatoon
+👨🏾	mees: keskmiselt tume nahatoon
+👨🏿	mees: tume nahatoon
+👩	naine
+👩🏻	naine: hele nahatoon
+👩🏼	naine: keskmiselt hele nahatoon
+👩🏽	naine: keskmine nahatoon
+👩🏾	naine: keskmiselt tume nahatoon
+👩🏿	naine: tume nahatoon
+🧓	vanem täiskasvanu
+🧓🏻	vanem täiskasvanu: hele nahatoon
+🧓🏼	vanem täiskasvanu: keskmiselt hele nahatoon
+🧓🏽	vanem täiskasvanu: keskmine nahatoon
+🧓🏾	vanem täiskasvanu: keskmiselt tume nahatoon
+🧓🏿	vanem täiskasvanu: tume nahatoon
+👴	vana mees
+👴🏻	vanamees: hele nahatoon
+👴🏼	vanamees: keskmiselt hele nahatoon
+👴🏽	vanamees: keskmine nahatoon
+👴🏾	vanamees: keskmiselt tume nahatoon
+👴🏿	vanamees: tume nahatoon
+👵	vana naine
+👵🏻	vana naine: hele nahatoon
+👵🏼	vana naine: keskmiselt hele nahatoon
+👵🏽	vana naine: keskmine nahatoon
+👵🏾	vana naine: keskmiselt tume nahatoon
+👵🏿	vana naine: tume nahatoon
+👨‍⚕️	mees tervishoiutöötaja
+👨‍⚕	mees tervishoiutöötaja
+👨🏻‍⚕️	mees tervishoiutöötaja: hele nahatoon
+👨🏻‍⚕	mees tervishoiutöötaja: hele nahatoon
+👨🏼‍⚕️	mees tervishoiutöötaja: keskmiselt hele nahatoon
+👨🏼‍⚕	mees tervishoiutöötaja: keskmiselt hele nahatoon
+👨🏽‍⚕️	mees tervishoiutöötaja: keskmine nahatoon
+👨🏽‍⚕	mees tervishoiutöötaja: keskmine nahatoon
+👨🏾‍⚕️	mees tervishoiutöötaja: keskmiselt tume nahatoon
+👨🏾‍⚕	mees tervishoiutöötaja: keskmiselt tume nahatoon
+👨🏿‍⚕️	mees tervishoiutöötaja: tume nahatoon
+👨🏿‍⚕	mees tervishoiutöötaja: tume nahatoon
+👩‍⚕️	naistervishoiutöötaja
+👩‍⚕	naistervishoiutöötaja
+👩🏻‍⚕️	naistervishoiutöötaja: hele nahatoon
+👩🏻‍⚕	naistervishoiutöötaja: hele nahatoon
+👩🏼‍⚕️	naistervishoiutöötaja: keskmiselt hele nahatoon
+👩🏼‍⚕	naistervishoiutöötaja: keskmiselt hele nahatoon
+👩🏽‍⚕️	naistervishoiutöötaja: keskmine nahatoon
+👩🏽‍⚕	naistervishoiutöötaja: keskmine nahatoon
+👩🏾‍⚕️	naistervishoiutöötaja: keskmiselt tume nahatoon
+👩🏾‍⚕	naistervishoiutöötaja: keskmiselt tume nahatoon
+👩🏿‍⚕️	naistervishoiutöötaja: tume nahatoon
+👩🏿‍⚕	naistervishoiutöötaja: tume nahatoon
+👨‍🎓	meesõpilane
+👨🏻‍🎓	meesõpilane: hele nahatoon
+👨🏼‍🎓	meesõpilane: keskmiselt hele nahatoon
+👨🏽‍🎓	meesõpilane: keskmine nahatoon
+👨🏾‍🎓	meesõpilane: keskmiselt tume nahatoon
+👨🏿‍🎓	meesõpilane: tume nahatoon
+👩‍🎓	naisüliõpilane
+👩🏻‍🎓	naisõpilane: hele nahatoon
+👩🏼‍🎓	naisõpilane: keskmiselt hele nahatoon
+👩🏽‍🎓	naisõpilane: keskmine nahatoon
+👩🏾‍🎓	naisõpilane: keskmiselt tume nahatoon
+👩🏿‍🎓	naisõpilane: tume nahatoon
+👨‍🏫	mees õpetaja
+👨🏻‍🏫	meesõpetaja: hele nahatoon
+👨🏼‍🏫	meesõpetaja: keskmiselt hele nahatoon
+👨🏽‍🏫	meesõpetaja: keskmine nahatoon
+👨🏾‍🏫	meesõpetaja: keskmiselt tume nahatoon
+👨🏿‍🏫	meesõpetaja: tume nahatoon
+👩‍🏫	naisõpetaja
+👩🏻‍🏫	naisõpetaja: hele nahatoon
+👩🏼‍🏫	naisõpetaja: keskmiselt hele nahatoon
+👩🏽‍🏫	naisõpetaja: keskmine nahatoon
+👩🏾‍🏫	naisõpetaja: keskmiselt tume nahatoon
+👩🏿‍🏫	naisõpetaja: tume nahatoon
+👨‍⚖️	mees kohtunik
+👨‍⚖	mees kohtunik
+👨🏻‍⚖️	meeskohtunik: hele nahatoon
+👨🏻‍⚖	meeskohtunik: hele nahatoon
+👨🏼‍⚖️	meeskohtunik: keskmiselt hele nahatoon
+👨🏼‍⚖	meeskohtunik: keskmiselt hele nahatoon
+👨🏽‍⚖️	meeskohtunik: keskmine nahatoon
+👨🏽‍⚖	meeskohtunik: keskmine nahatoon
+👨🏾‍⚖️	meeskohtunik: keskmiselt tume nahatoon
+👨🏾‍⚖	meeskohtunik: keskmiselt tume nahatoon
+👨🏿‍⚖️	meeskohtunik: tume nahatoon
+👨🏿‍⚖	meeskohtunik: tume nahatoon
+👩‍⚖️	naiskohtunik
+👩‍⚖	naiskohtunik
+👩🏻‍⚖️	naine kohtunik: hele nahatoon
+👩🏻‍⚖	naine kohtunik: hele nahatoon
+👩🏼‍⚖️	naine kohtunik: keskmiselt hele nahatoon
+👩🏼‍⚖	naine kohtunik: keskmiselt hele nahatoon
+👩🏽‍⚖️	naine kohtunik: keskmine nahatoon
+👩🏽‍⚖	naine kohtunik: keskmine nahatoon
+👩🏾‍⚖️	naine kohtunik: keskmiselt tume nahatoon
+👩🏾‍⚖	naine kohtunik: keskmiselt tume nahatoon
+👩🏿‍⚖️	naine kohtunik: tume nahatoon
+👩🏿‍⚖	naine kohtunik: tume nahatoon
+👨‍🌾	mees põllumees
+👨🏻‍🌾	mees farmer: hele nahatoon
+👨🏼‍🌾	mees farmer: keskmiselt hele nahatoon
+👨🏽‍🌾	mees farmer: keskmine nahatoon
+👨🏾‍🌾	mees farmer: keskmiselt tume nahatoon
+👨🏿‍🌾	mees farmer: tume nahatoon
+👩‍🌾	naistalunik
+👩🏻‍🌾	talunaine: hele nahatoon
+👩🏼‍🌾	naisfarmer: keskmiselt hele nahatoon
+👩🏽‍🌾	naisfarmer: keskmine nahatoon
+👩🏾‍🌾	naisfarmer: keskmiselt tume nahatoon
+👩🏿‍🌾	talunaine: tume nahatoon
+👨‍🍳	mees kokk
+👨🏻‍🍳	mees kokk: hele nahatoon
+👨🏼‍🍳	mees kokk: keskmiselt hele nahatoon
+👨🏽‍🍳	mees kokk: keskmine nahatoon
+👨🏾‍🍳	mees kokk: keskmiselt tume nahatoon
+👨🏿‍🍳	mees kokk: tume nahatoon
+👩‍🍳	naine kokk
+👩🏻‍🍳	naine kokk: hele nahatoon
+👩🏼‍🍳	naine kokk: keskmiselt hele nahatoon
+👩🏽‍🍳	naine kokk: keskmine nahatoon
+👩🏾‍🍳	naine kokk: keskmiselt tume nahatoon
+👩🏿‍🍳	naine kokk: tume nahatoon
+👨‍🔧	meesmehaanik
+👨🏻‍🔧	meesmehaanik: hele nahatoon
+👨🏼‍🔧	meesmehaanik: keskmiselt hele nahatoon
+👨🏽‍🔧	meesmehaanik: keskmine nahatoon
+👨🏾‍🔧	meesmehaanik: keskmiselt tume nahatoon
+👨🏿‍🔧	meesmehaanik: tume nahatoon
+👩‍🔧	naismehaanik
+👩🏻‍🔧	naismehaanik: hele nahatoon
+👩🏼‍🔧	naismehaanik: keskmiselt hele nahatoon
+👩🏽‍🔧	naismehaanik: keskmine nahatoon
+👩🏾‍🔧	naismehaanik: keskmiselt tume nahatoon
+👩🏿‍🔧	naismehaanik: tume nahatoon
+👨‍🏭	mees vabrikutööline
+👨🏻‍🏭	mees tehase töötaja: hele nahatoon
+👨🏼‍🏭	mees tehase töötaja: keskmiselt hele nahatoon
+👨🏽‍🏭	mees tehase töötaja: keskmine nahatoon
+👨🏾‍🏭	mees tehase töötaja: keskmiselt tume nahatoon
+👨🏿‍🏭	mees tehase töötaja: tume nahatoon
+👩‍🏭	naine vabrikutööline
+👩🏻‍🏭	naistehase töötaja: hele nahatoon
+👩🏼‍🏭	naistehase töötaja: keskmiselt hele nahatoon
+👩🏽‍🏭	naistehase töötaja: keskmine nahatoon
+👩🏾‍🏭	tehasetööline naine: keskmiselt tume nahatoon
+👩🏿‍🏭	naine tehasetööline: tume nahatoon
+👨‍💼	mees kontoritöötaja
+👨🏻‍💼	mees kontoritöötaja: hele nahatoon
+👨🏼‍💼	meeskontoritöötaja: keskmiselt hele nahatoon
+👨🏽‍💼	mees kontoritöötaja: keskmine nahatoon
+👨🏾‍💼	meeskontoritöötaja: keskmiselt tume nahatoon
+👨🏿‍💼	mees kontoritöötaja: tume nahatoon
+👩‍💼	naine kontoritöötaja
+👩🏻‍💼	naine kontoritöötaja: hele nahatoon
+👩🏼‍💼	naiskontoritöötaja: keskmiselt hele nahatoon
+👩🏽‍💼	naine kontoritöötaja: keskmine nahatoon
+👩🏾‍💼	naiskontoritöötaja: keskmiselt tume nahatoon
+👩🏿‍💼	naine kontoritöötaja: tume nahatoon
+👨‍🔬	meesteadlane
+👨🏻‍🔬	meesteadlane: hele nahatoon
+👨🏼‍🔬	meesteadlane: keskmiselt hele nahatoon
+👨🏽‍🔬	meesteadlane: keskmine nahatoon
+👨🏾‍🔬	meesteadlane: keskmiselt tume nahatoon
+👨🏿‍🔬	meesteadlane: tume nahatoon
+👩‍🔬	naisteadlane
+👩🏻‍🔬	naisteadlane: hele nahatoon
+👩🏼‍🔬	naisteadlane: keskmiselt hele nahatoon
+👩🏽‍🔬	naisteadlane: keskmine nahatoon
+👩🏾‍🔬	naisteadlane: keskmiselt tume nahatoon
+👩🏿‍🔬	naisteadlane: tume nahatoon
+👨‍💻	meestehnoloog
+👨🏻‍💻	meestehnoloog: hele nahatoon
+👨🏼‍💻	meestehnoloog: keskmiselt hele nahatoon
+👨🏽‍💻	meestehnoloog: keskmine nahatoon
+👨🏾‍💻	meestehnoloog: keskmiselt tume nahatoon
+👨🏿‍💻	meestehnoloog: tume nahatoon
+👩‍💻	naistehnoloog
+👩🏻‍💻	naistehnoloog: hele nahatoon
+👩🏼‍💻	naistehnoloog: keskmiselt hele nahatoon
+👩🏽‍💻	naistehnoloog: keskmine nahatoon
+👩🏾‍💻	naistehnoloog: keskmiselt tume nahatoon
+👩🏿‍💻	naistehnoloog: tume nahatoon
+👨‍🎤	mees laulja
+👨🏻‍🎤	meeslaulja: hele nahatoon
+👨🏼‍🎤	meeslaulja: keskmiselt hele nahatoon
+👨🏽‍🎤	meeslaulja: keskmine nahatoon
+👨🏾‍🎤	meeslaulja: keskmiselt tume nahatoon
+👨🏿‍🎤	meeslaulja: tume nahatoon
+👩‍🎤	naislaulja
+👩🏻‍🎤	naislaulja: hele nahatoon
+👩🏼‍🎤	naislaulja: keskmiselt hele nahatoon
+👩🏽‍🎤	naislaulja: keskmine nahatoon
+👩🏾‍🎤	naislaulja: keskmiselt tume nahatoon
+👩🏿‍🎤	naislaulja: tume nahatoon
+👨‍🎨	mees kunstnik
+👨🏻‍🎨	meeskunstnik: hele nahatoon
+👨🏼‍🎨	meeskunstnik: keskmiselt hele nahatoon
+👨🏽‍🎨	meeskunstnik: keskmine nahatoon
+👨🏾‍🎨	meeskunstnik: keskmiselt tume nahatoon
+👨🏿‍🎨	meeskunstnik: tume nahatoon
+👩‍🎨	naiskunstnik
+👩🏻‍🎨	naiskunstnik: hele nahatoon
+👩🏼‍🎨	naiskunstnik: keskmiselt hele nahatoon
+👩🏽‍🎨	naiskunstnik: keskmine nahatoon
+👩🏾‍🎨	naiskunstnik: keskmiselt tume nahatoon
+👩🏿‍🎨	naiskunstnik: tume nahatoon
+👨‍✈️	mees piloot
+👨‍✈	mees piloot
+👨🏻‍✈️	meespiloot: hele nahatoon
+👨🏻‍✈	meespiloot: hele nahatoon
+👨🏼‍✈️	meespiloot: keskmiselt hele nahatoon
+👨🏼‍✈	meespiloot: keskmiselt hele nahatoon
+👨🏽‍✈️	meespiloot: keskmine nahatoon
+👨🏽‍✈	meespiloot: keskmine nahatoon
+👨🏾‍✈️	meespiloot: keskmiselt tume nahatoon
+👨🏾‍✈	meespiloot: keskmiselt tume nahatoon
+👨🏿‍✈️	meespiloot: tume nahatoon
+👨🏿‍✈	meespiloot: tume nahatoon
+👩‍✈️	naispiloot
+👩‍✈	naispiloot
+👩🏻‍✈️	naispiloot: hele nahatoon
+👩🏻‍✈	naispiloot: hele nahatoon
+👩🏼‍✈️	naispiloot: keskmiselt hele nahatoon
+👩🏼‍✈	naispiloot: keskmiselt hele nahatoon
+👩🏽‍✈️	naispiloot: keskmine nahatoon
+👩🏽‍✈	naispiloot: keskmine nahatoon
+👩🏾‍✈️	naispiloot: keskmiselt tume nahatoon
+👩🏾‍✈	naispiloot: keskmiselt tume nahatoon
+👩🏿‍✈️	naispiloot: tume nahatoon
+👩🏿‍✈	naispiloot: tume nahatoon
+👨‍🚀	mees astronaut
+👨🏻‍🚀	mees astronaut: hele nahatoon
+👨🏼‍🚀	meesastronaut: keskmiselt hele nahatoon
+👨🏽‍🚀	mees astronaut: keskmine nahatoon
+👨🏾‍🚀	meesastronaut: keskmiselt tume nahatoon
+👨🏿‍🚀	mees astronaut: tume nahatoon
+👩‍🚀	naine astronaut
+👩🏻‍🚀	naine astronaut: hele nahatoon
+👩🏼‍🚀	naisastronaut: keskmiselt hele nahatoon
+👩🏽‍🚀	naine astronaut: keskmine nahatoon
+👩🏾‍🚀	naine astronaut: keskmiselt tume nahatoon
+👩🏿‍🚀	naine astronaut: tume nahatoon
+👨‍🚒	mees tuletõrjuja
+👨🏻‍🚒	mees tuletõrjuja: hele nahatoon
+👨🏼‍🚒	mees tuletõrjuja: keskmiselt hele nahatoon
+👨🏽‍🚒	mees tuletõrjuja: keskmine nahatoon
+👨🏾‍🚒	mees tuletõrjuja: keskmiselt tume nahatoon
+👨🏿‍🚒	mees tuletõrjuja: tume nahatoon
+👩‍🚒	naine tuletõrjuja
+👩🏻‍🚒	naine tuletõrjuja: hele nahatoon
+👩🏼‍🚒	naine tuletõrjuja: keskmiselt hele nahatoon
+👩🏽‍🚒	naine tuletõrjuja: keskmine nahatoon
+👩🏾‍🚒	naine tuletõrjuja: keskmiselt tume nahatoon
+👩🏿‍🚒	naine tuletõrjuja: tume nahatoon
+👮	politseinik
+👮🏻	politseinik: hele nahatoon
+👮🏼	politseinik: keskmiselt hele nahatoon
+👮🏽	politseinik: keskmine nahatoon
+👮🏾	politseinik: keskmiselt tume nahatoon
+👮🏿	politseinik: tume nahatoon
+👮‍♂️	meespolitseinik
+👮‍♂	meespolitseinik
+👮🏻‍♂️	meespolitseinik: hele nahatoon
+👮🏻‍♂	meespolitseinik: hele nahatoon
+👮🏼‍♂️	meespolitseinik: keskmiselt hele nahatoon
+👮🏼‍♂	meespolitseinik: keskmiselt hele nahatoon
+👮🏽‍♂️	meespolitseinik: keskmine nahatoon
+👮🏽‍♂	meespolitseinik: keskmine nahatoon
+👮🏾‍♂️	meespolitseinik: keskmiselt tume nahatoon
+👮🏾‍♂	meespolitseinik: keskmiselt tume nahatoon
+👮🏿‍♂️	meespolitseinik: tume nahatoon
+👮🏿‍♂	meespolitseinik: tume nahatoon
+👮‍♀️	naispolitseinik
+👮‍♀	naispolitseinik
+👮🏻‍♀️	naispolitseinik: hele nahatoon
+👮🏻‍♀	naispolitseinik: hele nahatoon
+👮🏼‍♀️	naispolitseinik: keskmiselt hele nahatoon
+👮🏼‍♀	naispolitseinik: keskmiselt hele nahatoon
+👮🏽‍♀️	naispolitseinik: keskmine nahatoon
+👮🏽‍♀	naispolitseinik: keskmine nahatoon
+👮🏾‍♀️	naispolitseinik: keskmiselt tume nahatoon
+👮🏾‍♀	naispolitseinik: keskmiselt tume nahatoon
+👮🏿‍♀️	naispolitseinik: tume nahatoon
+👮🏿‍♀	naispolitseinik: tume nahatoon
+🕵️	detektiiv
+🕵	detektiiv
+🕵🏻	detektiiv: hele nahatoon
+🕵🏼	detektiiv: keskmiselt hele nahatoon
+🕵🏽	detektiiv: keskmine nahatoon
+🕵🏾	detektiiv: keskmiselt tume nahatoon
+🕵🏿	detektiiv: tume nahatoon
+🕵️‍♂️	meesdetektiiv
+🕵‍♂️	meesdetektiiv
+🕵️‍♂	meesdetektiiv
+🕵‍♂	meesdetektiiv
+🕵🏻‍♂️	meesdetektiiv: hele nahatoon
+🕵🏻‍♂	meesdetektiiv: hele nahatoon
+🕵🏼‍♂️	meesdetektiiv: keskmiselt hele nahatoon
+🕵🏼‍♂	meesdetektiiv: keskmiselt hele nahatoon
+🕵🏽‍♂️	meesdetektiiv: keskmine nahatoon
+🕵🏽‍♂	meesdetektiiv: keskmine nahatoon
+🕵🏾‍♂️	meesdetektiiv: keskmiselt tume nahatoon
+🕵🏾‍♂	meesdetektiiv: keskmiselt tume nahatoon
+🕵🏿‍♂️	meesdetektiiv: tume nahatoon
+🕵🏿‍♂	meesdetektiiv: tume nahatoon
+🕵️‍♀️	naisdetektiiv
+🕵‍♀️	naisdetektiiv
+🕵️‍♀	naisdetektiiv
+🕵‍♀	naisdetektiiv
+🕵🏻‍♀️	naisdetektiiv: hele nahatoon
+🕵🏻‍♀	naisdetektiiv: hele nahatoon
+🕵🏼‍♀️	naisdetektiiv: keskmiselt hele nahatoon
+🕵🏼‍♀	naisdetektiiv: keskmiselt hele nahatoon
+🕵🏽‍♀️	naisdetektiiv: keskmine nahatoon
+🕵🏽‍♀	naisdetektiiv: keskmine nahatoon
+🕵🏾‍♀️	naisdetektiiv: keskmiselt tume nahatoon
+🕵🏾‍♀	naisdetektiiv: keskmiselt tume nahatoon
+🕵🏿‍♀️	naisdetektiiv: tume nahatoon
+🕵🏿‍♀	naisdetektiiv: tume nahatoon
+💂	valvur
+💂🏻	valvur: hele nahatoon
+💂🏼	valvur: keskmiselt hele nahatoon
+💂🏽	valvur: keskmine nahatoon
+💂🏾	valvur: keskmiselt tume nahatoon
+💂🏿	valvur: tume nahatoon
+💂‍♂️	mees valvur
+💂‍♂	mees valvur
+💂🏻‍♂️	meesvalvur: hele nahatoon
+💂🏻‍♂	meesvalvur: hele nahatoon
+💂🏼‍♂️	meeskaitse: keskmiselt hele nahatoon
+💂🏼‍♂	meeskaitse: keskmiselt hele nahatoon
+💂🏽‍♂️	meeskaitse: keskmine nahatoon
+💂🏽‍♂	meeskaitse: keskmine nahatoon
+💂🏾‍♂️	meeskaitse: keskmiselt tume nahatoon
+💂🏾‍♂	meeskaitse: keskmiselt tume nahatoon
+💂🏿‍♂️	meesvalvur: tume nahatoon
+💂🏿‍♂	meesvalvur: tume nahatoon
+💂‍♀️	naine valvur
+💂‍♀	naine valvur
+💂🏻‍♀️	naine valvur: hele nahatoon
+💂🏻‍♀	naine valvur: hele nahatoon
+💂🏼‍♀️	naine valvur: keskmiselt hele nahatoon
+💂🏼‍♀	naine valvur: keskmiselt hele nahatoon
+💂🏽‍♀️	naine valvur: keskmine nahatoon
+💂🏽‍♀	naine valvur: keskmine nahatoon
+💂🏾‍♀️	naine valvur: keskmiselt tume nahatoon
+💂🏾‍♀	naine valvur: keskmiselt tume nahatoon
+💂🏿‍♀️	naine valvur: tume nahatoon
+💂🏿‍♀	naine valvur: tume nahatoon
+👷	ehitustööline
+👷🏻	ehitustööline: hele nahatoon
+👷🏼	ehitustööline: keskmiselt hele nahatoon
+👷🏽	ehitustööline: keskmine nahatoon
+👷🏾	ehitustööline: keskmiselt tume nahatoon
+👷🏿	ehitustööline: tume nahatoon
+👷‍♂️	mees ehitustööline
+👷‍♂	mees ehitustööline
+👷🏻‍♂️	mees ehitustööline: hele nahatoon
+👷🏻‍♂	mees ehitustööline: hele nahatoon
+👷🏼‍♂️	mees ehitustööline: keskmiselt hele nahatoon
+👷🏼‍♂	mees ehitustööline: keskmiselt hele nahatoon
+👷🏽‍♂️	mees ehitustööline: keskmine nahatoon
+👷🏽‍♂	mees ehitustööline: keskmine nahatoon
+👷🏾‍♂️	mees ehitustööline: keskmiselt tume nahatoon
+👷🏾‍♂	mees ehitustööline: keskmiselt tume nahatoon
+👷🏿‍♂️	mees ehitustööline: tume nahatoon
+👷🏿‍♂	mees ehitustööline: tume nahatoon
+👷‍♀️	naine ehitustööline
+👷‍♀	naine ehitustööline
+👷🏻‍♀️	naine ehitustööline: hele nahatoon
+👷🏻‍♀	naine ehitustööline: hele nahatoon
+👷🏼‍♀️	naine ehitustööline: keskmiselt hele nahatoon
+👷🏼‍♀	naine ehitustööline: keskmiselt hele nahatoon
+👷🏽‍♀️	naine ehitustööline: keskmine nahatoon
+👷🏽‍♀	naine ehitustööline: keskmine nahatoon
+👷🏾‍♀️	naine ehitustööline: keskmiselt tume nahatoon
+👷🏾‍♀	naine ehitustööline: keskmiselt tume nahatoon
+👷🏿‍♀️	naine ehitustööline: tume nahatoon
+👷🏿‍♀	naine ehitustööline: tume nahatoon
+🤴	prints
+🤴🏻	prints: hele nahatoon
+🤴🏼	prints: keskmiselt hele nahatoon
+🤴🏽	prints: keskmine nahatoon
+🤴🏾	prints: keskmiselt tume nahatoon
+🤴🏿	prints: tume nahatoon
+👸	printsess
+👸🏻	printsess: hele nahatoon
+👸🏼	printsess: keskmiselt hele nahatoon
+👸🏽	printsess: keskmine nahatoon
+👸🏾	printsess: keskmiselt tume nahatoon
+👸🏿	printsess: tume nahatoon
+👳	turbanit kandev inimene
+👳🏻	turbanit kandev inimene: hele nahatoon
+👳🏼	turbanit kandev inimene: keskmiselt hele nahatoon
+👳🏽	turbanit kandev inimene: keskmine nahatoon
+👳🏾	turbanit kandev inimene: keskmiselt tume nahatoon
+👳🏿	turbanit kandev inimene: tume nahatoon
+👳‍♂️	turbanit kandev mees
+👳‍♂	turbanit kandev mees
+👳🏻‍♂️	turbanit kandev mees: hele nahatoon
+👳🏻‍♂	turbanit kandev mees: hele nahatoon
+👳🏼‍♂️	turbanit kandev mees: keskmiselt hele nahatoon
+👳🏼‍♂	turbanit kandev mees: keskmiselt hele nahatoon
+👳🏽‍♂️	turbanit kandev mees: keskmine nahatoon
+👳🏽‍♂	turbanit kandev mees: keskmine nahatoon
+👳🏾‍♂️	turbanit kandev mees: keskmiselt tume nahatoon
+👳🏾‍♂	turbanit kandev mees: keskmiselt tume nahatoon
+👳🏿‍♂️	turbanit kandev mees: tume nahatoon
+👳🏿‍♂	turbanit kandev mees: tume nahatoon
+👳‍♀️	turbanit kandev naine
+👳‍♀	turbanit kandev naine
+👳🏻‍♀️	turbanit kandev naine: hele nahatoon
+👳🏻‍♀	turbanit kandev naine: hele nahatoon
+👳🏼‍♀️	turbanit kandev naine: keskmiselt hele nahatoon
+👳🏼‍♀	turbanit kandev naine: keskmiselt hele nahatoon
+👳🏽‍♀️	turbanit kandev naine: keskmine nahatoon
+👳🏽‍♀	turbanit kandev naine: keskmine nahatoon
+👳🏾‍♀️	turbanit kandev naine: keskmiselt tume nahatoon
+👳🏾‍♀	turbanit kandev naine: keskmiselt tume nahatoon
+👳🏿‍♀️	turbanit kandev naine: tume nahatoon
+👳🏿‍♀	turbanit kandev naine: tume nahatoon
+👲	mees hiina mütsiga
+👲🏻	Hiina mütsiga mees: hele nahatoon
+👲🏼	Hiina mütsiga mees: keskmiselt hele nahatoon
+👲🏽	Hiina mütsiga mees: keskmine nahatoon
+👲🏾	Hiina mütsiga mees: keskmiselt tume nahatoon
+👲🏿	Hiina mütsiga mees: tume nahatoon
+🧕	naine pearätiga
+🧕🏻	pearätiga naine: hele nahatoon
+🧕🏼	pearätiga naine: keskmiselt hele nahatoon
+🧕🏽	pearätiga naine: keskmine nahatoon
+🧕🏾	pearätiga naine: keskmiselt tume nahatoon
+🧕🏿	pearätiga naine: tume nahatoon
+🧔	habemega inimene
+🧔🏻	habemega inimene: hele nahatoon
+🧔🏼	habemega inimene: keskmiselt hele nahatoon
+🧔🏽	habemega inimene: keskmine nahatoon
+🧔🏾	habemega inimene: keskmiselt tume nahatoon
+🧔🏿	habemega inimene: tume nahatoon
+👱	blondi juustega inimene
+👱🏻	blondi juustega inimene: hele nahatoon
+👱🏼	blondi juustega inimene: keskmiselt hele nahatoon
+👱🏽	blondi juustega inimene: keskmine nahatoon
+👱🏾	blondi juustega inimene: keskmiselt tume nahatoon
+👱🏿	blondi juustega inimene: tume nahatoon
+👱‍♂️	blondi juustega mees
+👱‍♂	blondi juustega mees
+👱🏻‍♂️	blondi juustega mees: hele nahatoon
+👱🏻‍♂	blondi juustega mees: hele nahatoon
+👱🏼‍♂️	blondi juustega mees: keskmiselt hele nahatoon
+👱🏼‍♂	blondi juustega mees: keskmiselt hele nahatoon
+👱🏽‍♂️	blondi juustega mees: keskmine nahatoon
+👱🏽‍♂	blondi juustega mees: keskmine nahatoon
+👱🏾‍♂️	blondi juustega mees: keskmiselt tume nahatoon
+👱🏾‍♂	blondi juustega mees: keskmiselt tume nahatoon
+👱🏿‍♂️	blondi juustega mees: tume nahatoon
+👱🏿‍♂	blondi juustega mees: tume nahatoon
+👱‍♀️	blondi juustega naine
+👱‍♀	blondi juustega naine
+👱🏻‍♀️	blondi juustega naine: hele nahatoon
+👱🏻‍♀	blondi juustega naine: hele nahatoon
+👱🏼‍♀️	blondi juustega naine: keskmiselt hele nahatoon
+👱🏼‍♀	blondi juustega naine: keskmiselt hele nahatoon
+👱🏽‍♀️	blondi juustega naine: keskmine nahatoon
+👱🏽‍♀	blondi juustega naine: keskmine nahatoon
+👱🏾‍♀️	blondi juustega naine: keskmiselt tume nahatoon
+👱🏾‍♀	blondi juustega naine: keskmiselt tume nahatoon
+👱🏿‍♀️	blondi juustega naine: tume nahatoon
+👱🏿‍♀	blondi juustega naine: tume nahatoon
+👨‍🦰	mees, punaste juustega
+👨🏻‍🦰	mees, punaste juustega: hele nahatoon
+👨🏼‍🦰	mees, punaste juustega: keskmiselt hele nahatoon
+👨🏽‍🦰	mees, punaste juustega: keskmine nahatoon
+👨🏾‍🦰	mees, punaste juustega: keskmiselt tume nahatoon
+👨🏿‍🦰	mees, punaste juustega: tume nahatoon
+👩‍🦰	naine, punaste juustega
+👩🏻‍🦰	naine, punaste juustega: hele nahatoon
+👩🏼‍🦰	naine, punaste juustega: keskmiselt hele nahatoon
+👩🏽‍🦰	naine, punaste juustega: keskmine nahatoon
+👩🏾‍🦰	naine, punaste juustega: keskmiselt tume nahatoon
+👩🏿‍🦰	naine, punaste juustega: tume nahatoon
+👨‍🦱	mees, lokkis juustega
+👨🏻‍🦱	mees, lokkis juustega: hele nahatoon
+👨🏼‍🦱	mees, lokkis juustega: keskmiselt hele nahatoon
+👨🏽‍🦱	mees, lokkis juustega: keskmine nahatoon
+👨🏾‍🦱	mees, lokkis juustega: keskmiselt tume nahatoon
+👨🏿‍🦱	mees, lokkis juustega: tume nahatoon
+👩‍🦱	naine, lokkis juustega
+👩🏻‍🦱	naine, lokkis juustega: hele nahatoon
+👩🏼‍🦱	naine, lokkis juustega: keskmiselt hele nahatoon
+👩🏽‍🦱	naine, lokkis juustega: keskmine nahatoon
+👩🏾‍🦱	naine, lokkis juustega: keskmiselt tume nahatoon
+👩🏿‍🦱	naine, lokkis juustega: tume nahatoon
+👨‍🦲	mees, kiilakas
+👨🏻‍🦲	mees, kiilakas: hele nahatoon
+👨🏼‍🦲	mees, kiilakas: keskmiselt hele nahatoon
+👨🏽‍🦲	mees, kiilas: keskmine nahatoon
+👨🏾‍🦲	mees, kiilakas: keskmiselt tume nahatoon
+👨🏿‍🦲	mees, kiilakas: tume nahatoon
+👩‍🦲	naine, kiilakas
+👩🏻‍🦲	naine, kiilakas: hele nahatoon
+👩🏼‍🦲	naine, kiilakas: keskmiselt hele nahatoon
+👩🏽‍🦲	naine, kiilakas: keskmine nahatoon
+👩🏾‍🦲	naine, kiilakas: keskmiselt tume nahatoon
+👩🏿‍🦲	naine, kiilakas: tume nahatoon
+👨‍🦳	mees, valge juustega
+👨🏻‍🦳	mees, valgekarvaline: hele nahatoon
+👨🏼‍🦳	mees, valgekarvaline: keskmiselt hele nahatoon
+👨🏽‍🦳	mees, valgekarvaline: keskmine nahatoon
+👨🏾‍🦳	mees, valgekarvaline: keskmiselt tume nahatoon
+👨🏿‍🦳	mees, valgekarvaline: tume nahatoon
+👩‍🦳	naine, valge juustega
+👩🏻‍🦳	naine, valgete juustega: hele nahatoon
+👩🏼‍🦳	naine, valgete juustega: keskmiselt hele nahatoon
+👩🏽‍🦳	naine, valgete juustega: keskmine nahatoon
+👩🏾‍🦳	naine, valgete juustega: keskmiselt tume nahatoon
+👩🏿‍🦳	naine, valge juustega: tume nahatoon
+🤵	mees smokingis
+🤵🏻	mees smokingis: hele nahatoon
+🤵🏼	mees smokingis: keskmiselt hele nahatoon
+🤵🏽	mees smokingis: keskmine nahatoon
+🤵🏾	mees smokingis: keskmiselt tume nahatoon
+🤵🏿	mees smokingis: tume nahatoon
+👰	pruut looriga
+👰🏻	pruut looriga: hele nahatoon
+👰🏼	pruut looriga: keskmiselt hele nahatoon
+👰🏽	pruut looriga: keskmine nahatoon
+👰🏾	pruut looriga: keskmiselt tume nahatoon
+👰🏿	pruut looriga: tume nahatoon
+🤰	rase naine
+🤰🏻	rase naine: hele nahatoon
+🤰🏼	rase naine: keskmiselt hele nahatoon
+🤰🏽	rase naine: keskmine nahatoon
+🤰🏾	rase naine: keskmiselt tume nahatoon
+🤰🏿	rase naine: tume nahatoon
+🤱	rinnaga toitmine
+🤱🏻	imetamine: hele nahatoon
+🤱🏼	rinnaga toitmine: keskmiselt hele nahatoon
+🤱🏽	rinnaga toitmine: keskmine nahatoon
+🤱🏾	rinnaga toitmine: keskmiselt tume nahatoon
+🤱🏿	imetamine: tume nahatoon
+👼	beebi ingel
+👼🏻	baby ingel: hele nahatoon
+👼🏼	baby ingel: keskmiselt hele nahatoon
+👼🏽	baby ingel: keskmine nahatoon
+👼🏾	baby ingel: keskmiselt tume nahatoon
+👼🏿	baby ingel: tume nahatoon
+🎅	jõuluvana
+🎅🏻	Jõuluvana: hele nahatoon
+🎅🏼	Jõuluvana: keskmiselt hele nahatoon
+🎅🏽	Jõuluvana: keskmine nahatoon
+🎅🏾	Jõuluvana: keskmiselt tume nahatoon
+🎅🏿	Jõuluvana: tume nahatoon
+🤶	Proua Claus
+🤶🏻	Proua Claus: hele nahatoon
+🤶🏼	Proua Claus: keskmiselt hele nahatoon
+🤶🏽	Proua Claus: keskmine nahatoon
+🤶🏾	Proua Claus: keskmiselt tume nahatoon
+🤶🏿	Proua Claus: tume nahatoon
+🦸	superkangelane
+🦸🏻	superkangelane: hele nahatoon
+🦸🏼	superkangelane: keskmiselt hele nahatoon
+🦸🏽	superkangelane: keskmine nahatoon
+🦸🏾	superkangelane: keskmiselt tume nahatoon
+🦸🏿	superkangelane: tume nahatoon
+🦸‍♀️	naine superkangelane
+🦸‍♀	naine superkangelane
+🦸🏻‍♀️	naine superkangelane: hele nahatoon
+🦸🏻‍♀	naine superkangelane: hele nahatoon
+🦸🏼‍♀️	naine superkangelane: keskmiselt hele nahatoon
+🦸🏼‍♀	naine superkangelane: keskmiselt hele nahatoon
+🦸🏽‍♀️	naine superkangelane: keskmine nahatoon
+🦸🏽‍♀	naine superkangelane: keskmine nahatoon
+🦸🏾‍♀️	naine superkangelane: keskmiselt tume nahatoon
+🦸🏾‍♀	naine superkangelane: keskmiselt tume nahatoon
+🦸🏿‍♀️	naine superkangelane: tume nahatoon
+🦸🏿‍♀	naine superkangelane: tume nahatoon
+🦸‍♂️	mees superkangelane
+🦸‍♂	mees superkangelane
+🦸🏻‍♂️	mees superkangelane: hele nahatoon
+🦸🏻‍♂	mees superkangelane: hele nahatoon
+🦸🏼‍♂️	mees superkangelane: keskmiselt hele nahatoon
+🦸🏼‍♂	mees superkangelane: keskmiselt hele nahatoon
+🦸🏽‍♂️	mees superkangelane: keskmine nahatoon
+🦸🏽‍♂	mees superkangelane: keskmine nahatoon
+🦸🏾‍♂️	mees superkangelane: keskmiselt tume nahatoon
+🦸🏾‍♂	mees superkangelane: keskmiselt tume nahatoon
+🦸🏿‍♂️	mees superkangelane: tume nahatoon
+🦸🏿‍♂	mees superkangelane: tume nahatoon
+🦹	superkurikael
+🦹🏻	supervillain: hele nahatoon
+🦹🏼	supervillain: keskmiselt hele nahatoon
+🦹🏽	supervillain: keskmine nahatoon
+🦹🏾	supervillain: keskmiselt tume nahatoon
+🦹🏿	supervillain: tume nahatoon
+🦹‍♀️	naine superkurikael
+🦹‍♀	naine superkurikael
+🦹🏻‍♀️	naine superkurikael: hele nahatoon
+🦹🏻‍♀	naine superkurikael: hele nahatoon
+🦹🏼‍♀️	naine superkurikael: keskmiselt hele nahatoon
+🦹🏼‍♀	naine superkurikael: keskmiselt hele nahatoon
+🦹🏽‍♀️	naine superkurikael: keskmine nahatoon
+🦹🏽‍♀	naine superkurikael: keskmine nahatoon
+🦹🏾‍♀️	naine superkurikael: keskmiselt tume nahatoon
+🦹🏾‍♀	naine superkurikael: keskmiselt tume nahatoon
+🦹🏿‍♀️	naine superkurikael: tume nahatoon
+🦹🏿‍♀	naine superkurikael: tume nahatoon
+🦹‍♂️	mees superkurikael
+🦹‍♂	mees superkurikael
+🦹🏻‍♂️	mees superkurikael: hele nahatoon
+🦹🏻‍♂	mees superkurikael: hele nahatoon
+🦹🏼‍♂️	mees superkurikael: keskmiselt hele nahatoon
+🦹🏼‍♂	mees superkurikael: keskmiselt hele nahatoon
+🦹🏽‍♂️	mees superkurikael: keskmine nahatoon
+🦹🏽‍♂	mees superkurikael: keskmine nahatoon
+🦹🏾‍♂️	mees superkurikael: keskmiselt tume nahatoon
+🦹🏾‍♂	mees superkurikael: keskmiselt tume nahatoon
+🦹🏿‍♂️	mees superkurikael: tume nahatoon
+🦹🏿‍♂	mees superkurikael: tume nahatoon
+🧙	maag
+🧙🏻	maag: hele nahatoon
+🧙🏼	maag: keskmiselt hele nahatoon
+🧙🏽	maag: keskmine nahatoon
+🧙🏾	maag: keskmiselt tume nahatoon
+🧙🏿	maag: tume nahatoon
+🧙‍♀️	naine maag
+🧙‍♀	naine maag
+🧙🏻‍♀️	naine maag: hele nahatoon
+🧙🏻‍♀	naine maag: hele nahatoon
+🧙🏼‍♀️	naine maag: keskmiselt hele nahatoon
+🧙🏼‍♀	naine maag: keskmiselt hele nahatoon
+🧙🏽‍♀️	naine maag: keskmine nahatoon
+🧙🏽‍♀	naine maag: keskmine nahatoon
+🧙🏾‍♀️	naine maag: keskmiselt tume nahatoon
+🧙🏾‍♀	naine maag: keskmiselt tume nahatoon
+🧙🏿‍♀️	naine maag: tume nahatoon
+🧙🏿‍♀	naine maag: tume nahatoon
+🧙‍♂️	mees maag
+🧙‍♂	mees maag
+🧙🏻‍♂️	meesmaag: hele nahatoon
+🧙🏻‍♂	meesmaag: hele nahatoon
+🧙🏼‍♂️	meesmaag: keskmiselt hele nahatoon
+🧙🏼‍♂	meesmaag: keskmiselt hele nahatoon
+🧙🏽‍♂️	meesmaag: keskmine nahatoon
+🧙🏽‍♂	meesmaag: keskmine nahatoon
+🧙🏾‍♂️	meesmaag: keskmiselt tume nahatoon
+🧙🏾‍♂	meesmaag: keskmiselt tume nahatoon
+🧙🏿‍♂️	meesmaag: tume nahatoon
+🧙🏿‍♂	meesmaag: tume nahatoon
+🧚	haldjas
+🧚🏻	haldjas: hele nahatoon
+🧚🏼	haldjas: keskmiselt hele nahatoon
+🧚🏽	haldjas: keskmine nahatoon
+🧚🏾	haldjas: keskmiselt tume nahatoon
+🧚🏿	haldjas: tume nahatoon
+🧚‍♀️	naise haldjas
+🧚‍♀	naise haldjas
+🧚🏻‍♀️	naisehaldjas: hele nahatoon
+🧚🏻‍♀	naisehaldjas: hele nahatoon
+🧚🏼‍♀️	naisehaldjas: keskmiselt hele nahatoon
+🧚🏼‍♀	naisehaldjas: keskmiselt hele nahatoon
+🧚🏽‍♀️	naine haldjas: keskmine nahatoon
+🧚🏽‍♀	naine haldjas: keskmine nahatoon
+🧚🏾‍♀️	naisehaldjas: keskmiselt tume nahatoon
+🧚🏾‍♀	naisehaldjas: keskmiselt tume nahatoon
+🧚🏿‍♀️	naine haldjas: tume nahatoon
+🧚🏿‍♀	naine haldjas: tume nahatoon
+🧚‍♂️	mees haldjas
+🧚‍♂	mees haldjas
+🧚🏻‍♂️	meeshaldjas: hele nahatoon
+🧚🏻‍♂	meeshaldjas: hele nahatoon
+🧚🏼‍♂️	meeshaldjas: keskmiselt hele nahatoon
+🧚🏼‍♂	meeshaldjas: keskmiselt hele nahatoon
+🧚🏽‍♂️	meeshaldjas: keskmine nahatoon
+🧚🏽‍♂	meeshaldjas: keskmine nahatoon
+🧚🏾‍♂️	meeshaldjas: keskmiselt tume nahatoon
+🧚🏾‍♂	meeshaldjas: keskmiselt tume nahatoon
+🧚🏿‍♂️	meeshaldjas: tume nahatoon
+🧚🏿‍♂	meeshaldjas: tume nahatoon
+🧛	vampiir
+🧛🏻	vampiir: hele nahatoon
+🧛🏼	vampiir: keskmiselt hele nahatoon
+🧛🏽	vampiir: keskmine nahatoon
+🧛🏾	vampiir: keskmiselt tume nahatoon
+🧛🏿	vampiir: tume nahatoon
+🧛‍♀️	naine vampiir
+🧛‍♀	naine vampiir
+🧛🏻‍♀️	naine vampiir: hele nahatoon
+🧛🏻‍♀	naine vampiir: hele nahatoon
+🧛🏼‍♀️	naine vampiir: keskmiselt hele nahatoon
+🧛🏼‍♀	naine vampiir: keskmiselt hele nahatoon
+🧛🏽‍♀️	naine vampiir: keskmine nahatoon
+🧛🏽‍♀	naine vampiir: keskmine nahatoon
+🧛🏾‍♀️	naine vampiir: keskmiselt tume nahatoon
+🧛🏾‍♀	naine vampiir: keskmiselt tume nahatoon
+🧛🏿‍♀️	naine vampiir: tume nahatoon
+🧛🏿‍♀	naine vampiir: tume nahatoon
+🧛‍♂️	mees vampiir
+🧛‍♂	mees vampiir
+🧛🏻‍♂️	mees vampiir: hele nahatoon
+🧛🏻‍♂	mees vampiir: hele nahatoon
+🧛🏼‍♂️	mees vampiir: keskmiselt hele nahatoon
+🧛🏼‍♂	mees vampiir: keskmiselt hele nahatoon
+🧛🏽‍♂️	mees vampiir: keskmine nahatoon
+🧛🏽‍♂	mees vampiir: keskmine nahatoon
+🧛🏾‍♂️	mees vampiir: keskmiselt tume nahatoon
+🧛🏾‍♂	mees vampiir: keskmiselt tume nahatoon
+🧛🏿‍♂️	mees vampiir: tume nahatoon
+🧛🏿‍♂	mees vampiir: tume nahatoon
+🧜	merperson
+🧜🏻	merperson: hele nahatoon
+🧜🏼	merperson: keskmiselt hele nahatoon
+🧜🏽	merperson: keskmine nahatoon
+🧜🏾	merperson: keskmiselt tume nahatoon
+🧜🏿	merperson: tume nahatoon
+🧜‍♀️	merineitsi
+🧜‍♀	merineitsi
+🧜🏻‍♀️	merineitsi: hele nahatoon
+🧜🏻‍♀	merineitsi: hele nahatoon
+🧜🏼‍♀️	merineitsi: keskmiselt hele nahatoon
+🧜🏼‍♀	merineitsi: keskmiselt hele nahatoon
+🧜🏽‍♀️	merineitsi: keskmine nahatoon
+🧜🏽‍♀	merineitsi: keskmine nahatoon
+🧜🏾‍♀️	merineitsi: keskmiselt tume nahatoon
+🧜🏾‍♀	merineitsi: keskmiselt tume nahatoon
+🧜🏿‍♀️	merineitsi: tume nahatoon
+🧜🏿‍♀	merineitsi: tume nahatoon
+🧜‍♂️	merimees
+🧜‍♂	merimees
+🧜🏻‍♂️	merimees: hele nahatoon
+🧜🏻‍♂	merimees: hele nahatoon
+🧜🏼‍♂️	merimees: keskmiselt hele nahatoon
+🧜🏼‍♂	merimees: keskmiselt hele nahatoon
+🧜🏽‍♂️	merimees: keskmine nahatoon
+🧜🏽‍♂	merimees: keskmine nahatoon
+🧜🏾‍♂️	merimees: keskmiselt tume nahatoon
+🧜🏾‍♂	merimees: keskmiselt tume nahatoon
+🧜🏿‍♂️	merimees: tume nahatoon
+🧜🏿‍♂	merimees: tume nahatoon
+🧝	päkapikk
+🧝🏻	päkapikk: hele nahatoon
+🧝🏼	päkapikk: keskmiselt hele nahatoon
+🧝🏽	päkapikk: keskmine nahatoon
+🧝🏾	päkapikk: keskmiselt tume nahatoon
+🧝🏿	päkapikk: tume nahatoon
+🧝‍♀️	naispäkapikk
+🧝‍♀	naispäkapikk
+🧝🏻‍♀️	naispäkapikk: hele nahatoon
+🧝🏻‍♀	naispäkapikk: hele nahatoon
+🧝🏼‍♀️	naispäkapikk: keskmiselt hele nahatoon
+🧝🏼‍♀	naispäkapikk: keskmiselt hele nahatoon
+🧝🏽‍♀️	naispäkapikk: keskmine nahatoon
+🧝🏽‍♀	naispäkapikk: keskmine nahatoon
+🧝🏾‍♀️	naispäkapikk: keskmiselt tume nahatoon
+🧝🏾‍♀	naispäkapikk: keskmiselt tume nahatoon
+🧝🏿‍♀️	naispäkapikk: tume nahatoon
+🧝🏿‍♀	naispäkapikk: tume nahatoon
+🧝‍♂️	meespäkapikk
+🧝‍♂	meespäkapikk
+🧝🏻‍♂️	meespäkapikk: hele nahatoon
+🧝🏻‍♂	meespäkapikk: hele nahatoon
+🧝🏼‍♂️	meespäkapikk: keskmiselt hele nahatoon
+🧝🏼‍♂	meespäkapikk: keskmiselt hele nahatoon
+🧝🏽‍♂️	meespäkapikk: keskmine nahatoon
+🧝🏽‍♂	meespäkapikk: keskmine nahatoon
+🧝🏾‍♂️	meespäkapikk: keskmiselt tume nahatoon
+🧝🏾‍♂	meespäkapikk: keskmiselt tume nahatoon
+🧝🏿‍♂️	meespäkapikk: tume nahatoon
+🧝🏿‍♂	meespäkapikk: tume nahatoon
+🧞	džinn
+🧞‍♀️	naiste džinn
+🧞‍♀	naiste džinn
+🧞‍♂️	mees džinn
+🧞‍♂	mees džinn
+🧟	zombi
+🧟‍♀️	naine zombi
+🧟‍♀	naine zombi
+🧟‍♂️	mees zombi
+🧟‍♂	mees zombi
+🙍	inimene kortsutab kulmu
+🙍🏻	isik kortsutab kulmu: hele nahatoon
+🙍🏼	isik kortsutab kulmu: keskmiselt hele nahatoon
+🙍🏽	isik kortsutab kulmu: keskmine nahatoon
+🙍🏾	isik kortsutab kulmu: keskmiselt tume nahatoon
+🙍🏿	isik kortsutab kulmu: tume nahatoon
+🙍‍♂️	mees kortsutab kulmu
+🙍‍♂	mees kortsutab kulmu
+🙍🏻‍♂️	mees kortsutab kulmu: hele nahatoon
+🙍🏻‍♂	mees kortsutab kulmu: hele nahatoon
+🙍🏼‍♂️	mees kortsutab kulmu: keskmiselt hele nahatoon
+🙍🏼‍♂	mees kortsutab kulmu: keskmiselt hele nahatoon
+🙍🏽‍♂️	mees kortsutab kulmu: keskmine nahatoon
+🙍🏽‍♂	mees kortsutab kulmu: keskmine nahatoon
+🙍🏾‍♂️	mees kortsutab kulmu: keskmiselt tume nahatoon
+🙍🏾‍♂	mees kortsutab kulmu: keskmiselt tume nahatoon
+🙍🏿‍♂️	mees kortsutab kulmu: tume nahatoon
+🙍🏿‍♂	mees kortsutab kulmu: tume nahatoon
+🙍‍♀️	naine kulmu kortsutades
+🙍‍♀	naine kulmu kortsutades
+🙍🏻‍♀️	naine kortsutab kulmu: hele nahatoon
+🙍🏻‍♀	naine kortsutab kulmu: hele nahatoon
+🙍🏼‍♀️	naine kortsutab kulmu: keskmiselt hele nahatoon
+🙍🏼‍♀	naine kortsutab kulmu: keskmiselt hele nahatoon
+🙍🏽‍♀️	naine kortsutab kulmu: keskmine nahatoon
+🙍🏽‍♀	naine kortsutab kulmu: keskmine nahatoon
+🙍🏾‍♀️	naine kortsutab kulmu: keskmiselt tume nahatoon
+🙍🏾‍♀	naine kortsutab kulmu: keskmiselt tume nahatoon
+🙍🏿‍♀️	naine kortsutab kulmu: tume nahatoon
+🙍🏿‍♀	naine kortsutab kulmu: tume nahatoon
+🙎	posutav inimene
+🙎🏻	isik punnitab: hele nahatoon
+🙎🏼	isik punnitab: keskmiselt hele nahatoon
+🙎🏽	isik punnitab: keskmine nahatoon
+🙎🏾	isik punnitab: keskmiselt tume nahatoon
+🙎🏿	isik punnitab: tume nahatoon
+🙎‍♂️	mees potsatab
+🙎‍♂	mees potsatab
+🙎🏻‍♂️	mees potsatab: hele nahatoon
+🙎🏻‍♂	mees potsatab: hele nahatoon
+🙎🏼‍♂️	mees potsatab: keskmiselt hele nahatoon
+🙎🏼‍♂	mees potsatab: keskmiselt hele nahatoon
+🙎🏽‍♂️	mees potsatab: keskmine nahatoon
+🙎🏽‍♂	mees potsatab: keskmine nahatoon
+🙎🏾‍♂️	mees potsatab: keskmiselt tume nahatoon
+🙎🏾‍♂	mees potsatab: keskmiselt tume nahatoon
+🙎🏿‍♂️	mees potsatab: tume nahatoon
+🙎🏿‍♂	mees potsatab: tume nahatoon
+🙎‍♀️	naine potsatab
+🙎‍♀	naine potsatab
+🙎🏻‍♀️	naine punnitab: hele nahatoon
+🙎🏻‍♀	naine punnitab: hele nahatoon
+🙎🏼‍♀️	naine punnitab: keskmiselt hele nahatoon
+🙎🏼‍♀	naine punnitab: keskmiselt hele nahatoon
+🙎🏽‍♀️	naine punnitab: keskmine nahatoon
+🙎🏽‍♀	naine punnitab: keskmine nahatoon
+🙎🏾‍♀️	naine punnitab: keskmiselt tume nahatoon
+🙎🏾‍♀	naine punnitab: keskmiselt tume nahatoon
+🙎🏿‍♀️	naine punnitab: tume nahatoon
+🙎🏿‍♀	naine punnitab: tume nahatoon
+🙅	inimene viipab EI
+🙅🏻	inimene viipab EI: hele nahatoon
+🙅🏼	inimene viipega EI: keskmiselt hele nahatoon
+🙅🏽	inimene viipab EI: keskmine nahatoon
+🙅🏾	inimene viipega EI: keskmiselt tume nahatoon
+🙅🏿	inimene viipab EI: tume nahatoon
+🙅‍♂️	mees viipab EI
+🙅‍♂	mees viipab EI
+🙅🏻‍♂️	mees žestikuleerib EI: hele nahatoon
+🙅🏻‍♂	mees žestikuleerib EI: hele nahatoon
+🙅🏼‍♂️	mees žestikuleerib EI: keskmiselt hele nahatoon
+🙅🏼‍♂	mees žestikuleerib EI: keskmiselt hele nahatoon
+🙅🏽‍♂️	mees žestikuleerib EI: keskmine nahatoon
+🙅🏽‍♂	mees žestikuleerib EI: keskmine nahatoon
+🙅🏾‍♂️	mees žestikuleerib EI: keskmiselt tume nahatoon
+🙅🏾‍♂	mees žestikuleerib EI: keskmiselt tume nahatoon
+🙅🏿‍♂️	mees žestikuleerib EI: tume nahatoon
+🙅🏿‍♂	mees žestikuleerib EI: tume nahatoon
+🙅‍♀️	naine žestikuleerib EI
+🙅‍♀	naine žestikuleerib EI
+🙅🏻‍♀️	naine žestikuleerib EI: hele nahatoon
+🙅🏻‍♀	naine žestikuleerib EI: hele nahatoon
+🙅🏼‍♀️	naine žestikuleerib EI: keskmiselt hele nahatoon
+🙅🏼‍♀	naine žestikuleerib EI: keskmiselt hele nahatoon
+🙅🏽‍♀️	naine žestikuleerib EI: keskmine nahatoon
+🙅🏽‍♀	naine žestikuleerib EI: keskmine nahatoon
+🙅🏾‍♀️	naine žestikuleerib EI: keskmiselt tume nahatoon
+🙅🏾‍♀	naine žestikuleerib EI: keskmiselt tume nahatoon
+🙅🏿‍♀️	naine žestikuleerib EI: tume nahatoon
+🙅🏿‍♀	naine žestikuleerib EI: tume nahatoon
+🙆	inimene viipab OK
+🙆🏻	inimene žestikuleerib OK: hele nahatoon
+🙆🏼	inimene žestikuleerib OK: keskmiselt hele nahatoon
+🙆🏽	inimene žestikuleerib OK: keskmine nahatoon
+🙆🏾	inimene žestikuleerib OK: keskmiselt tume nahatoon
+🙆🏿	inimene žestikuleerib OK: tume nahatoon
+🙆‍♂️	mees žestikuleerib OK
+🙆‍♂	mees žestikuleerib OK
+🙆🏻‍♂️	mees žestikuleerib OK: hele nahatoon
+🙆🏻‍♂	mees žestikuleerib OK: hele nahatoon
+🙆🏼‍♂️	mees žestikuleerib OK: keskmiselt hele nahatoon
+🙆🏼‍♂	mees žestikuleerib OK: keskmiselt hele nahatoon
+🙆🏽‍♂️	mees žestikuleerib OK: keskmine nahatoon
+🙆🏽‍♂	mees žestikuleerib OK: keskmine nahatoon
+🙆🏾‍♂️	mees žestikuleerib OK: keskmiselt tume nahatoon
+🙆🏾‍♂	mees žestikuleerib OK: keskmiselt tume nahatoon
+🙆🏿‍♂️	mees žestikuleerib OK: tume nahatoon
+🙆🏿‍♂	mees žestikuleerib OK: tume nahatoon
+🙆‍♀️	naine žestikuleerib OK
+🙆‍♀	naine žestikuleerib OK
+🙆🏻‍♀️	naine žestikuleerib OK: hele nahatoon
+🙆🏻‍♀	naine žestikuleerib OK: hele nahatoon
+🙆🏼‍♀️	naine žestikuleerib OK: keskmiselt hele nahatoon
+🙆🏼‍♀	naine žestikuleerib OK: keskmiselt hele nahatoon
+🙆🏽‍♀️	naine žestikuleerib OK: keskmine nahatoon
+🙆🏽‍♀	naine žestikuleerib OK: keskmine nahatoon
+🙆🏾‍♀️	naine žestikuleerib OK: keskmiselt tume nahatoon
+🙆🏾‍♀	naine žestikuleerib OK: keskmiselt tume nahatoon
+🙆🏿‍♀️	naine žestikuleerib OK: tume nahatoon
+🙆🏿‍♀	naine žestikuleerib OK: tume nahatoon
+💁	inimene kallutab kätt
+💁🏻	inimene kallutab kätt: hele nahatoon
+💁🏼	inimene kallutab kätt: keskmiselt hele nahatoon
+💁🏽	isik kallutab kätt: keskmine nahatoon
+💁🏾	inimene kallutab kätt: keskmiselt tume nahatoon
+💁🏿	inimene kallutab kätt: tume nahatoon
+💁‍♂️	mees kallutab kätt
+💁‍♂	mees kallutab kätt
+💁🏻‍♂️	mees kallutab kätt: hele nahatoon
+💁🏻‍♂	mees kallutab kätt: hele nahatoon
+💁🏼‍♂️	mees kallutab kätt: keskmiselt hele nahatoon
+💁🏼‍♂	mees kallutab kätt: keskmiselt hele nahatoon
+💁🏽‍♂️	mees kallutab kätt: keskmine nahatoon
+💁🏽‍♂	mees kallutab kätt: keskmine nahatoon
+💁🏾‍♂️	mees kallutab kätt: keskmiselt tume nahatoon
+💁🏾‍♂	mees kallutab kätt: keskmiselt tume nahatoon
+💁🏿‍♂️	mees kallutab kätt: tume nahatoon
+💁🏿‍♂	mees kallutab kätt: tume nahatoon
+💁‍♀️	naine kallutab kätt
+💁‍♀	naine kallutab kätt
+💁🏻‍♀️	naine kallutab kätt: hele nahatoon
+💁🏻‍♀	naine kallutab kätt: hele nahatoon
+💁🏼‍♀️	naine kallutab kätt: keskmiselt hele nahatoon
+💁🏼‍♀	naine kallutab kätt: keskmiselt hele nahatoon
+💁🏽‍♀️	naine kallutab kätt: keskmine nahatoon
+💁🏽‍♀	naine kallutab kätt: keskmine nahatoon
+💁🏾‍♀️	naine kallutab kätt: keskmiselt tume nahatoon
+💁🏾‍♀	naine kallutab kätt: keskmiselt tume nahatoon
+💁🏿‍♀️	naine kallutab kätt: tume nahatoon
+💁🏿‍♀	naine kallutab kätt: tume nahatoon
+🙋	kätt tõstev inimene
+🙋🏻	isik tõstab kätt: hele nahatoon
+🙋🏼	kätt tõstev inimene: keskmiselt hele nahatoon
+🙋🏽	isik tõstab kätt: keskmine nahatoon
+🙋🏾	isik tõstab kätt: keskmiselt tume nahatoon
+🙋🏿	isik tõstab kätt: tume nahatoon
+🙋‍♂️	mees tõstab kätt
+🙋‍♂	mees tõstab kätt
+🙋🏻‍♂️	mees tõstab kätt: hele nahatoon
+🙋🏻‍♂	mees tõstab kätt: hele nahatoon
+🙋🏼‍♂️	mees tõstab kätt: keskmiselt hele nahatoon
+🙋🏼‍♂	mees tõstab kätt: keskmiselt hele nahatoon
+🙋🏽‍♂️	mees tõstab kätt: keskmine nahatoon
+🙋🏽‍♂	mees tõstab kätt: keskmine nahatoon
+🙋🏾‍♂️	mees tõstab kätt: keskmiselt tume nahatoon
+🙋🏾‍♂	mees tõstab kätt: keskmiselt tume nahatoon
+🙋🏿‍♂️	mees tõstab kätt: tume nahatoon
+🙋🏿‍♂	mees tõstab kätt: tume nahatoon
+🙋‍♀️	naine tõstab kätt
+🙋‍♀	naine tõstab kätt
+🙋🏻‍♀️	naine tõstab kätt: hele nahatoon
+🙋🏻‍♀	naine tõstab kätt: hele nahatoon
+🙋🏼‍♀️	naine tõstab kätt: keskmiselt hele nahatoon
+🙋🏼‍♀	naine tõstab kätt: keskmiselt hele nahatoon
+🙋🏽‍♀️	naine tõstab kätt: keskmine nahatoon
+🙋🏽‍♀	naine tõstab kätt: keskmine nahatoon
+🙋🏾‍♀️	naine tõstab kätt: keskmiselt tume nahatoon
+🙋🏾‍♀	naine tõstab kätt: keskmiselt tume nahatoon
+🙋🏿‍♀️	naine tõstab kätt: tume nahatoon
+🙋🏿‍♀	naine tõstab kätt: tume nahatoon
+🙇	inimene kummardab
+🙇🏻	inimene kummardub: hele nahatoon
+🙇🏼	inimene kummardub: keskmiselt hele nahatoon
+🙇🏽	inimene kummardub: keskmine nahatoon
+🙇🏾	inimene kummardub: keskmiselt tume nahatoon
+🙇🏿	inimene kummardub: tume nahatoon
+🙇‍♂️	mees kummardamas
+🙇‍♂	mees kummardamas
+🙇🏻‍♂️	mees kummardub: hele nahatoon
+🙇🏻‍♂	mees kummardub: hele nahatoon
+🙇🏼‍♂️	mees kummardub: keskmiselt hele nahatoon
+🙇🏼‍♂	mees kummardub: keskmiselt hele nahatoon
+🙇🏽‍♂️	mees kummardub: keskmine nahatoon
+🙇🏽‍♂	mees kummardub: keskmine nahatoon
+🙇🏾‍♂️	mees kummardub: keskmiselt tume nahatoon
+🙇🏾‍♂	mees kummardub: keskmiselt tume nahatoon
+🙇🏿‍♂️	mees kummardub: tume nahatoon
+🙇🏿‍♂	mees kummardub: tume nahatoon
+🙇‍♀️	naine kummardab
+🙇‍♀	naine kummardab
+🙇🏻‍♀️	naine kummardub: hele nahatoon
+🙇🏻‍♀	naine kummardub: hele nahatoon
+🙇🏼‍♀️	naine kummardub: keskmiselt hele nahatoon
+🙇🏼‍♀	naine kummardub: keskmiselt hele nahatoon
+🙇🏽‍♀️	naine kummardub: keskmine nahatoon
+🙇🏽‍♀	naine kummardub: keskmine nahatoon
+🙇🏾‍♀️	naine kummardub: keskmiselt tume nahatoon
+🙇🏾‍♀	naine kummardub: keskmiselt tume nahatoon
+🙇🏿‍♀️	naine kummardub: tume nahatoon
+🙇🏿‍♀	naine kummardub: tume nahatoon
+🤦	isik facepalming
+🤦🏻	isik facepalming: hele nahatoon
+🤦🏼	inimese näopalsam: keskmiselt hele nahatoon
+🤦🏽	isik facepalming: keskmine nahatoon
+🤦🏾	inimese näopalsam: keskmiselt tume nahatoon
+🤦🏿	isik facepalming: tume nahatoon
+🤦‍♂️	mees facepalming
+🤦‍♂	mees facepalming
+🤦🏻‍♂️	mees facepalming: hele nahatoon
+🤦🏻‍♂	mees facepalming: hele nahatoon
+🤦🏼‍♂️	mees facepalming: keskmiselt hele nahatoon
+🤦🏼‍♂	mees facepalming: keskmiselt hele nahatoon
+🤦🏽‍♂️	mees facepalming: keskmine nahatoon
+🤦🏽‍♂	mees facepalming: keskmine nahatoon
+🤦🏾‍♂️	mehe näopalmimine: keskmiselt tume nahatoon
+🤦🏾‍♂	mehe näopalmimine: keskmiselt tume nahatoon
+🤦🏿‍♂️	mees facepalming: tume nahatoon
+🤦🏿‍♂	mees facepalming: tume nahatoon
+🤦‍♀️	naise nägu palmine
+🤦‍♀	naise nägu palmine
+🤦🏻‍♀️	naise nägu palmine: hele nahatoon
+🤦🏻‍♀	naise nägu palmine: hele nahatoon
+🤦🏼‍♀️	naise näopalmimine: keskmiselt hele nahatoon
+🤦🏼‍♀	naise näopalmimine: keskmiselt hele nahatoon
+🤦🏽‍♀️	naise näopalmimine: keskmine nahatoon
+🤦🏽‍♀	naise näopalmimine: keskmine nahatoon
+🤦🏾‍♀️	naise näopalsam: keskmiselt tume nahatoon
+🤦🏾‍♀	naise näopalsam: keskmiselt tume nahatoon
+🤦🏿‍♀️	naise nägu palmine: tume nahatoon
+🤦🏿‍♀	naise nägu palmine: tume nahatoon
+🤷	inimene kehitab õlgu
+🤷🏻	inimene kehitab õlgu: hele nahatoon
+🤷🏼	inimene kehitab õlgu: keskmiselt hele nahatoon
+🤷🏽	inimene kehitab õlgu: keskmine nahatoon
+🤷🏾	õlgu kehitav inimene: keskmiselt tume nahatoon
+🤷🏿	inimene kehitab õlgu: tume nahatoon
+🤷‍♂️	mees kehitab õlgu
+🤷‍♂	mees kehitab õlgu
+🤷🏻‍♂️	mees kehitab õlgu: hele nahatoon
+🤷🏻‍♂	mees kehitab õlgu: hele nahatoon
+🤷🏼‍♂️	mees kehitab õlgu: keskmiselt hele nahatoon
+🤷🏼‍♂	mees kehitab õlgu: keskmiselt hele nahatoon
+🤷🏽‍♂️	mees kehitab õlgu: keskmine nahatoon
+🤷🏽‍♂	mees kehitab õlgu: keskmine nahatoon
+🤷🏾‍♂️	mees kehitab õlgu: keskmiselt tume nahatoon
+🤷🏾‍♂	mees kehitab õlgu: keskmiselt tume nahatoon
+🤷🏿‍♂️	mees kehitab õlgu: tume nahatoon
+🤷🏿‍♂	mees kehitab õlgu: tume nahatoon
+🤷‍♀️	naine kehitab õlgu
+🤷‍♀	naine kehitab õlgu
+🤷🏻‍♀️	naine kehitab õlgu: hele nahatoon
+🤷🏻‍♀	naine kehitab õlgu: hele nahatoon
+🤷🏼‍♀️	naine kehitab õlgu: keskmiselt hele nahatoon
+🤷🏼‍♀	naine kehitab õlgu: keskmiselt hele nahatoon
+🤷🏽‍♀️	naine kehitab õlgu: keskmine nahatoon
+🤷🏽‍♀	naine kehitab õlgu: keskmine nahatoon
+🤷🏾‍♀️	naine kehitab õlgu: keskmiselt tume nahatoon
+🤷🏾‍♀	naine kehitab õlgu: keskmiselt tume nahatoon
+🤷🏿‍♀️	naine kehitab õlgu: tume nahatoon
+🤷🏿‍♀	naine kehitab õlgu: tume nahatoon
+💆	massaaži saav inimene
+💆🏻	massaaži saav inimene: hele nahatoon
+💆🏼	massaaži saav inimene: keskmiselt hele nahatoon
+💆🏽	massaaži saav inimene: keskmine nahatoon
+💆🏾	massaaži saav inimene: keskmiselt tume nahatoon
+💆🏿	massaaži saav inimene: tume nahatoon
+💆‍♂️	mees saab massaaži
+💆‍♂	mees saab massaaži
+💆🏻‍♂️	massaaži saav mees: hele nahatoon
+💆🏻‍♂	massaaži saav mees: hele nahatoon
+💆🏼‍♂️	massaaži saav mees: keskmiselt hele nahatoon
+💆🏼‍♂	massaaži saav mees: keskmiselt hele nahatoon
+💆🏽‍♂️	massaaži saav mees: keskmine nahatoon
+💆🏽‍♂	massaaži saav mees: keskmine nahatoon
+💆🏾‍♂️	massaaži saav mees: keskmiselt tume nahatoon
+💆🏾‍♂	massaaži saav mees: keskmiselt tume nahatoon
+💆🏿‍♂️	mees saab massaaži: tume nahatoon
+💆🏿‍♂	mees saab massaaži: tume nahatoon
+💆‍♀️	naine saab massaaži
+💆‍♀	naine saab massaaži
+💆🏻‍♀️	massaaži saav naine: hele nahatoon
+💆🏻‍♀	massaaži saav naine: hele nahatoon
+💆🏼‍♀️	massaaži saav naine: keskmiselt hele nahatoon
+💆🏼‍♀	massaaži saav naine: keskmiselt hele nahatoon
+💆🏽‍♀️	massaaži saav naine: keskmine nahatoon
+💆🏽‍♀	massaaži saav naine: keskmine nahatoon
+💆🏾‍♀️	massaaži saav naine: keskmiselt tume nahatoon
+💆🏾‍♀	massaaži saav naine: keskmiselt tume nahatoon
+💆🏿‍♀️	massaaži saav naine: tume nahatoon
+💆🏿‍♀	massaaži saav naine: tume nahatoon
+💇	inimene lõikab soengut
+💇🏻	juukseid lõikav inimene: hele nahatoon
+💇🏼	juukseid lõikav inimene: keskmiselt hele nahatoon
+💇🏽	juukseid lõikav inimene: keskmine nahatoon
+💇🏾	juukselõikav inimene: keskmiselt tume nahatoon
+💇🏿	juukseid lõikav inimene: tume nahatoon
+💇‍♂️	mees lõikab soengut
+💇‍♂	mees lõikab soengut
+💇🏻‍♂️	mees lõikab soengut: hele nahatoon
+💇🏻‍♂	mees lõikab soengut: hele nahatoon
+💇🏼‍♂️	mees lõikab soengut: keskmiselt hele nahatoon
+💇🏼‍♂	mees lõikab soengut: keskmiselt hele nahatoon
+💇🏽‍♂️	mees lõikamas soengut: keskmine nahatoon
+💇🏽‍♂	mees lõikamas soengut: keskmine nahatoon
+💇🏾‍♂️	mees lõikab soengut: keskmiselt tume nahatoon
+💇🏾‍♂	mees lõikab soengut: keskmiselt tume nahatoon
+💇🏿‍♂️	mees lõikab soengut: tume nahatoon
+💇🏿‍♂	mees lõikab soengut: tume nahatoon
+💇‍♀️	naine soengut lõikamas
+💇‍♀	naine soengut lõikamas
+💇🏻‍♀️	naine lõikamas soengut: hele nahatoon
+💇🏻‍♀	naine lõikamas soengut: hele nahatoon
+💇🏼‍♀️	naine lõikamas soengut: keskmiselt hele nahatoon
+💇🏼‍♀	naine lõikamas soengut: keskmiselt hele nahatoon
+💇🏽‍♀️	naine lõikamas soengut: keskmine nahatoon
+💇🏽‍♀	naine lõikamas soengut: keskmine nahatoon
+💇🏾‍♀️	naine lõikamas soengut: keskmiselt tume nahatoon
+💇🏾‍♀	naine lõikamas soengut: keskmiselt tume nahatoon
+💇🏿‍♀️	naine lõikamas soengut: tume nahatoon
+💇🏿‍♀	naine lõikamas soengut: tume nahatoon
+🚶	kõndiv inimene
+🚶🏻	kõndiv inimene: hele nahatoon
+🚶🏼	kõndiv inimene: keskmiselt hele nahatoon
+🚶🏽	kõndiv inimene: keskmine nahatoon
+🚶🏾	kõndiv inimene: keskmiselt tume nahatoon
+🚶🏿	kõndiv inimene: tume nahatoon
+🚶‍♂️	mees kõndimas
+🚶‍♂	mees kõndimas
+🚶🏻‍♂️	kõndiv mees: hele nahatoon
+🚶🏻‍♂	kõndiv mees: hele nahatoon
+🚶🏼‍♂️	kõndiv mees: keskmiselt hele nahatoon
+🚶🏼‍♂	kõndiv mees: keskmiselt hele nahatoon
+🚶🏽‍♂️	kõndiv mees: keskmine nahatoon
+🚶🏽‍♂	kõndiv mees: keskmine nahatoon
+🚶🏾‍♂️	kõndiv mees: keskmiselt tume nahatoon
+🚶🏾‍♂	kõndiv mees: keskmiselt tume nahatoon
+🚶🏿‍♂️	kõndiv mees: tume nahatoon
+🚶🏿‍♂	kõndiv mees: tume nahatoon
+🚶‍♀️	naine kõndimas
+🚶‍♀	naine kõndimas
+🚶🏻‍♀️	kõndiv naine: hele nahatoon
+🚶🏻‍♀	kõndiv naine: hele nahatoon
+🚶🏼‍♀️	kõndiv naine: keskmiselt hele nahatoon
+🚶🏼‍♀	kõndiv naine: keskmiselt hele nahatoon
+🚶🏽‍♀️	kõndiv naine: keskmine nahatoon
+🚶🏽‍♀	kõndiv naine: keskmine nahatoon
+🚶🏾‍♀️	kõndiv naine: keskmiselt tume nahatoon
+🚶🏾‍♀	kõndiv naine: keskmiselt tume nahatoon
+🚶🏿‍♀️	kõndiv naine: tume nahatoon
+🚶🏿‍♀	kõndiv naine: tume nahatoon
+🏃	jooksev inimene
+🏃🏻	jooksev inimene: hele nahatoon
+🏃🏼	jooksev inimene: keskmiselt hele nahatoon
+🏃🏽	jooksev inimene: keskmine nahatoon
+🏃🏾	jooksev inimene: keskmiselt tume nahatoon
+🏃🏿	jooksev inimene: tume nahatoon
+🏃‍♂️	mees jooksmas
+🏃‍♂	mees jooksmas
+🏃🏻‍♂️	jooksev mees: hele nahatoon
+🏃🏻‍♂	jooksev mees: hele nahatoon
+🏃🏼‍♂️	jooksev mees: keskmiselt hele nahatoon
+🏃🏼‍♂	jooksev mees: keskmiselt hele nahatoon
+🏃🏽‍♂️	jooksev mees: keskmine nahatoon
+🏃🏽‍♂	jooksev mees: keskmine nahatoon
+🏃🏾‍♂️	jooksev mees: keskmiselt tume nahatoon
+🏃🏾‍♂	jooksev mees: keskmiselt tume nahatoon
+🏃🏿‍♂️	jooksev mees: tume nahatoon
+🏃🏿‍♂	jooksev mees: tume nahatoon
+🏃‍♀️	naine jooksmas
+🏃‍♀	naine jooksmas
+🏃🏻‍♀️	jooksev naine: hele nahatoon
+🏃🏻‍♀	jooksev naine: hele nahatoon
+🏃🏼‍♀️	jooksev naine: keskmiselt hele nahatoon
+🏃🏼‍♀	jooksev naine: keskmiselt hele nahatoon
+🏃🏽‍♀️	jooksev naine: keskmine nahatoon
+🏃🏽‍♀	jooksev naine: keskmine nahatoon
+🏃🏾‍♀️	jooksev naine: keskmiselt tume nahatoon
+🏃🏾‍♀	jooksev naine: keskmiselt tume nahatoon
+🏃🏿‍♀️	jooksev naine: tume nahatoon
+🏃🏿‍♀	jooksev naine: tume nahatoon
+💃	naine tantsimas
+💃🏻	tantsiv naine: hele nahatoon
+💃🏼	tantsiv naine: keskmiselt hele nahatoon
+💃🏽	tantsiv naine: keskmine nahatoon
+💃🏾	tantsiv naine: keskmiselt tume nahatoon
+💃🏿	tantsiv naine: tume nahatoon
+🕺	mees tantsimas
+🕺🏻	tantsiv mees: hele nahatoon
+🕺🏼	mees tantsib: keskmiselt hele nahatoon
+🕺🏽	mees tantsib: keskmine nahatoon
+🕺🏾	mees tantsib: keskmiselt tume nahatoon
+🕺🏿	tantsiv mees: tume nahatoon
+👯	jänkukõrvadega inimesed
+👯‍♂️	jänkukõrvadega mehed
+👯‍♂	jänkukõrvadega mehed
+👯‍♀️	jänkukõrvadega naised
+👯‍♀	jänkukõrvadega naised
+🧖	inimene leiliruumis
+🧖🏻	inimene leiliruumis: hele nahatoon
+🧖🏼	inimene leiliruumis: keskmiselt hele nahatoon
+🧖🏽	inimene leiliruumis: keskmine nahatoon
+🧖🏾	inimene leiliruumis: keskmiselt tume nahatoon
+🧖🏿	inimene leiliruumis: tume nahatoon
+🧖‍♀️	naine leiliruumis
+🧖‍♀	naine leiliruumis
+🧖🏻‍♀️	naine leiliruumis: hele nahatoon
+🧖🏻‍♀	naine leiliruumis: hele nahatoon
+🧖🏼‍♀️	naine leiliruumis: keskmiselt hele nahatoon
+🧖🏼‍♀	naine leiliruumis: keskmiselt hele nahatoon
+🧖🏽‍♀️	naine leiliruumis: keskmine nahatoon
+🧖🏽‍♀	naine leiliruumis: keskmine nahatoon
+🧖🏾‍♀️	naine leiliruumis: keskmiselt tume nahatoon
+🧖🏾‍♀	naine leiliruumis: keskmiselt tume nahatoon
+🧖🏿‍♀️	naine leiliruumis: tume nahatoon
+🧖🏿‍♀	naine leiliruumis: tume nahatoon
+🧖‍♂️	mees leiliruumis
+🧖‍♂	mees leiliruumis
+🧖🏻‍♂️	mees leiliruumis: hele nahatoon
+🧖🏻‍♂	mees leiliruumis: hele nahatoon
+🧖🏼‍♂️	mees leiliruumis: keskmiselt hele nahatoon
+🧖🏼‍♂	mees leiliruumis: keskmiselt hele nahatoon
+🧖🏽‍♂️	mees leiliruumis: keskmine nahatoon
+🧖🏽‍♂	mees leiliruumis: keskmine nahatoon
+🧖🏾‍♂️	mees leiliruumis: keskmiselt tume nahatoon
+🧖🏾‍♂	mees leiliruumis: keskmiselt tume nahatoon
+🧖🏿‍♂️	mees leiliruumis: tume nahatoon
+🧖🏿‍♂	mees leiliruumis: tume nahatoon
+🧗	roniv inimene
+🧗🏻	roniv inimene: hele nahatoon
+🧗🏼	roniv inimene: keskmiselt hele nahatoon
+🧗🏽	roniv inimene: keskmine nahatoon
+🧗🏾	roniv inimene: keskmiselt tume nahatoon
+🧗🏿	roniv inimene: tume nahatoon
+🧗‍♀️	naine ronimas
+🧗‍♀	naine ronimas
+🧗🏻‍♀️	naine ronimas: hele nahatoon
+🧗🏻‍♀	naine ronimas: hele nahatoon
+🧗🏼‍♀️	naine ronimas: keskmiselt hele nahatoon
+🧗🏼‍♀	naine ronimas: keskmiselt hele nahatoon
+🧗🏽‍♀️	roniv naine: keskmine nahatoon
+🧗🏽‍♀	roniv naine: keskmine nahatoon
+🧗🏾‍♀️	naine ronimas: keskmiselt tume nahatoon
+🧗🏾‍♀	naine ronimas: keskmiselt tume nahatoon
+🧗🏿‍♀️	naine ronimas: tume nahatoon
+🧗🏿‍♀	naine ronimas: tume nahatoon
+🧗‍♂️	mees ronimas
+🧗‍♂	mees ronimas
+🧗🏻‍♂️	mees ronimas: hele nahatoon
+🧗🏻‍♂	mees ronimas: hele nahatoon
+🧗🏼‍♂️	roniv mees: keskmiselt hele nahatoon
+🧗🏼‍♂	roniv mees: keskmiselt hele nahatoon
+🧗🏽‍♂️	roniv mees: keskmine nahatoon
+🧗🏽‍♂	roniv mees: keskmine nahatoon
+🧗🏾‍♂️	roniv mees: keskmiselt tume nahatoon
+🧗🏾‍♂	roniv mees: keskmiselt tume nahatoon
+🧗🏿‍♂️	mees ronimas: tume nahatoon
+🧗🏿‍♂	mees ronimas: tume nahatoon
+🧘	inimene lootoseasendis
+🧘🏻	inimene lootoseasendis: hele nahatoon
+🧘🏼	inimene lootoseasendis: keskmiselt hele nahatoon
+🧘🏽	inimene lootoseasendis: keskmine nahatoon
+🧘🏾	inimene lootoseasendis: keskmiselt tume nahatoon
+🧘🏿	inimene lootoseasendis: tume nahatoon
+🧘‍♀️	naine lootoseasendis
+🧘‍♀	naine lootoseasendis
+🧘🏻‍♀️	naine lootoseasendis: hele nahatoon
+🧘🏻‍♀	naine lootoseasendis: hele nahatoon
+🧘🏼‍♀️	naine lootoseasendis: keskmiselt hele nahatoon
+🧘🏼‍♀	naine lootoseasendis: keskmiselt hele nahatoon
+🧘🏽‍♀️	naine lootoseasendis: keskmine nahatoon
+🧘🏽‍♀	naine lootoseasendis: keskmine nahatoon
+🧘🏾‍♀️	naine lootoseasendis: keskmiselt tume nahatoon
+🧘🏾‍♀	naine lootoseasendis: keskmiselt tume nahatoon
+🧘🏿‍♀️	naine lootoseasendis: tume nahatoon
+🧘🏿‍♀	naine lootoseasendis: tume nahatoon
+🧘‍♂️	mees lootoseasendis
+🧘‍♂	mees lootoseasendis
+🧘🏻‍♂️	mees lootoseasendis: hele nahatoon
+🧘🏻‍♂	mees lootoseasendis: hele nahatoon
+🧘🏼‍♂️	mees lootoseasendis: keskmiselt hele nahatoon
+🧘🏼‍♂	mees lootoseasendis: keskmiselt hele nahatoon
+🧘🏽‍♂️	mees lootoseasendis: keskmine nahatoon
+🧘🏽‍♂	mees lootoseasendis: keskmine nahatoon
+🧘🏾‍♂️	mees lootoseasendis: keskmiselt tume nahatoon
+🧘🏾‍♂	mees lootoseasendis: keskmiselt tume nahatoon
+🧘🏿‍♂️	mees lootoseasendis: tume nahatoon
+🧘🏿‍♂	mees lootoseasendis: tume nahatoon
+🛀	vannis käiv inimene
+🛀🏻	vannis käiv inimene: hele nahatoon
+🛀🏼	vannis käiv inimene: keskmiselt hele nahatoon
+🛀🏽	vannis käiv inimene: keskmine nahatoon
+🛀🏾	vannis käiv inimene: keskmiselt tume nahatoon
+🛀🏿	vannis käiv inimene: tume nahatoon
+🛌	inimene voodis
+🛌🏻	inimene voodis: hele nahatoon
+🛌🏼	inimene voodis: keskmiselt hele nahatoon
+🛌🏽	inimene voodis: keskmine nahatoon
+🛌🏾	inimene voodis: keskmiselt tume nahatoon
+🛌🏿	inimene voodis: tume nahatoon
+🕴️	ülikonnas mees leviteerib
+🕴	ülikonnas mees leviteerib
+🕴🏻	ülikonnas mees leviteerib: hele nahatoon
+🕴🏼	ülikonnas mees leviteeriv: keskmiselt hele nahatoon
+🕴🏽	ülikonnas mees leviteeruv: keskmine nahatoon
+🕴🏾	ülikonnas mees leviteeruv: keskmiselt tume nahatoon
+🕴🏿	ülikonnas mees levib: tume nahatoon
+🗣️	kõnelev pea
+🗣	kõnelev pea
+👤	siluetiga büst
+👥	siluetiga rinnad
+🤺	inimene vehklemine
+🏇	traavivõistlused
+🏇🏻	hobuste võiduajamine: hele nahatoon
+🏇🏼	hobuste võiduajamine: keskmiselt hele nahatoon
+🏇🏽	hobuste võiduajamine: keskmine nahatoon
+🏇🏾	hobuste võiduajamine: keskmiselt tume nahatoon
+🏇🏿	hobuste võiduajamine: tume nahatoon
+⛷️	suusataja
+⛷	suusataja
+🏂	lumelaudur
+🏂🏻	lumelaudur: hele nahatoon
+🏂🏼	lumelaudur: keskmiselt hele nahatoon
+🏂🏽	lumelaudur: keskmine nahatoon
+🏂🏾	lumelaudur: keskmiselt tume nahatoon
+🏂🏿	lumelaudur: tume nahatoon
+🏌️	golfi mängiv inimene
+🏌	golfi mängiv inimene
+🏌🏻	golfi mängiv inimene: hele nahatoon
+🏌🏼	golfimängija: keskmiselt hele nahatoon
+🏌🏽	golfimängija: keskmine nahatoon
+🏌🏾	golfimängija: keskmiselt tume nahatoon
+🏌🏿	golfi mängiv inimene: tume nahatoon
+🏌️‍♂️	mees golfi mängimas
+🏌‍♂️	mees golfi mängimas
+🏌️‍♂	mees golfi mängimas
+🏌‍♂	mees golfi mängimas
+🏌🏻‍♂️	golfi mängiv mees: hele nahatoon
+🏌🏻‍♂	golfi mängiv mees: hele nahatoon
+🏌🏼‍♂️	mees golfi mängiv: keskmiselt hele nahatoon
+🏌🏼‍♂	mees golfi mängiv: keskmiselt hele nahatoon
+🏌🏽‍♂️	mees golfi mängiv: keskmine nahatoon
+🏌🏽‍♂	mees golfi mängiv: keskmine nahatoon
+🏌🏾‍♂️	mees golfi mängiv: keskmiselt tume nahatoon
+🏌🏾‍♂	mees golfi mängiv: keskmiselt tume nahatoon
+🏌🏿‍♂️	mees golfi mängiv: tume nahatoon
+🏌🏿‍♂	mees golfi mängiv: tume nahatoon
+🏌️‍♀️	naine golfi mängimas
+🏌‍♀️	naine golfi mängimas
+🏌️‍♀	naine golfi mängimas
+🏌‍♀	naine golfi mängimas
+🏌🏻‍♀️	golfi mängiv naine: hele nahatoon
+🏌🏻‍♀	golfi mängiv naine: hele nahatoon
+🏌🏼‍♀️	golfi mängiv naine: keskmiselt hele nahatoon
+🏌🏼‍♀	golfi mängiv naine: keskmiselt hele nahatoon
+🏌🏽‍♀️	golfi mängiv naine: keskmine nahatoon
+🏌🏽‍♀	golfi mängiv naine: keskmine nahatoon
+🏌🏾‍♀️	golfi mängiv naine: keskmiselt tume nahatoon
+🏌🏾‍♀	golfi mängiv naine: keskmiselt tume nahatoon
+🏌🏿‍♀️	golfi mängiv naine: tume nahatoon
+🏌🏿‍♀	golfi mängiv naine: tume nahatoon
+🏄	surfav inimene
+🏄🏻	surfav inimene: hele nahatoon
+🏄🏼	surfav inimene: keskmiselt hele nahatoon
+🏄🏽	surfav inimene: keskmine nahatoon
+🏄🏾	surfav inimene: keskmiselt tume nahatoon
+🏄🏿	surfav inimene: tume nahatoon
+🏄‍♂️	mees surfamas
+🏄‍♂	mees surfamas
+🏄🏻‍♂️	surfav mees: hele nahatoon
+🏄🏻‍♂	surfav mees: hele nahatoon
+🏄🏼‍♂️	surfav mees: keskmiselt hele nahatoon
+🏄🏼‍♂	surfav mees: keskmiselt hele nahatoon
+🏄🏽‍♂️	surfav mees: keskmine nahatoon
+🏄🏽‍♂	surfav mees: keskmine nahatoon
+🏄🏾‍♂️	surfav mees: keskmiselt tume nahatoon
+🏄🏾‍♂	surfav mees: keskmiselt tume nahatoon
+🏄🏿‍♂️	surfav mees: tume nahatoon
+🏄🏿‍♂	surfav mees: tume nahatoon
+🏄‍♀️	naine surfamas
+🏄‍♀	naine surfamas
+🏄🏻‍♀️	surfav naine: hele nahatoon
+🏄🏻‍♀	surfav naine: hele nahatoon
+🏄🏼‍♀️	surfav naine: keskmiselt hele nahatoon
+🏄🏼‍♀	surfav naine: keskmiselt hele nahatoon
+🏄🏽‍♀️	surfav naine: keskmine nahatoon
+🏄🏽‍♀	surfav naine: keskmine nahatoon
+🏄🏾‍♀️	surfav naine: keskmiselt tume nahatoon
+🏄🏾‍♀	surfav naine: keskmiselt tume nahatoon
+🏄🏿‍♀️	surfav naine: tume nahatoon
+🏄🏿‍♀	surfav naine: tume nahatoon
+🚣	inimese sõudepaat
+🚣🏻	inimese sõudepaat: hele nahatoon
+🚣🏼	inimese sõudepaat: keskmiselt hele nahatoon
+🚣🏽	inimese sõudepaat: keskmine nahatoon
+🚣🏾	inimese sõudepaat: keskmiselt tume nahatoon
+🚣🏿	inimese sõudepaat: tume nahatoon
+🚣‍♂️	mees sõudepaat
+🚣‍♂	mees sõudepaat
+🚣🏻‍♂️	mees sõudepaat: hele nahatoon
+🚣🏻‍♂	mees sõudepaat: hele nahatoon
+🚣🏼‍♂️	mees sõudepaat: keskmiselt hele nahatoon
+🚣🏼‍♂	mees sõudepaat: keskmiselt hele nahatoon
+🚣🏽‍♂️	mees sõudepaat: keskmine nahatoon
+🚣🏽‍♂	mees sõudepaat: keskmine nahatoon
+🚣🏾‍♂️	mees sõudepaat: keskmiselt tume nahatoon
+🚣🏾‍♂	mees sõudepaat: keskmiselt tume nahatoon
+🚣🏿‍♂️	mees sõudepaat: tume nahatoon
+🚣🏿‍♂	mees sõudepaat: tume nahatoon
+🚣‍♀️	naine sõudepaat
+🚣‍♀	naine sõudepaat
+🚣🏻‍♀️	naine sõudepaat: hele nahatoon
+🚣🏻‍♀	naine sõudepaat: hele nahatoon
+🚣🏼‍♀️	naine sõudepaat: keskmiselt hele nahatoon
+🚣🏼‍♀	naine sõudepaat: keskmiselt hele nahatoon
+🚣🏽‍♀️	naine sõudepaat: keskmine nahatoon
+🚣🏽‍♀	naine sõudepaat: keskmine nahatoon
+🚣🏾‍♀️	naine sõudepaat: keskmiselt tume nahatoon
+🚣🏾‍♀	naine sõudepaat: keskmiselt tume nahatoon
+🚣🏿‍♀️	naine sõudepaat: tume nahatoon
+🚣🏿‍♀	naine sõudepaat: tume nahatoon
+🏊	inimene ujumas
+🏊🏻	ujuv inimene: hele nahatoon
+🏊🏼	ujuv inimene: keskmiselt hele nahatoon
+🏊🏽	ujuv inimene: keskmine nahatoon
+🏊🏾	ujuv inimene: keskmiselt tume nahatoon
+🏊🏿	ujuv inimene: tume nahatoon
+🏊‍♂️	mees ujumas
+🏊‍♂	mees ujumas
+🏊🏻‍♂️	mees ujumas: hele nahatoon
+🏊🏻‍♂	mees ujumas: hele nahatoon
+🏊🏼‍♂️	mees ujumine: keskmiselt hele nahatoon
+🏊🏼‍♂	mees ujumine: keskmiselt hele nahatoon
+🏊🏽‍♂️	mees ujumine: keskmine nahatoon
+🏊🏽‍♂	mees ujumine: keskmine nahatoon
+🏊🏾‍♂️	mees ujumas: keskmiselt tume nahatoon
+🏊🏾‍♂	mees ujumas: keskmiselt tume nahatoon
+🏊🏿‍♂️	mees ujumas: tume nahatoon
+🏊🏿‍♂	mees ujumas: tume nahatoon
+🏊‍♀️	naine ujumas
+🏊‍♀	naine ujumas
+🏊🏻‍♀️	naine ujumas: hele nahatoon
+🏊🏻‍♀	naine ujumas: hele nahatoon
+🏊🏼‍♀️	naine ujumine: keskmiselt hele nahatoon
+🏊🏼‍♀	naine ujumine: keskmiselt hele nahatoon
+🏊🏽‍♀️	naine ujumine: keskmine nahatoon
+🏊🏽‍♀	naine ujumine: keskmine nahatoon
+🏊🏾‍♀️	naine ujumas: keskmiselt tume nahatoon
+🏊🏾‍♀	naine ujumas: keskmiselt tume nahatoon
+🏊🏿‍♀️	naine ujumas: tume nahatoon
+🏊🏿‍♀	naine ujumas: tume nahatoon
+⛹️	inimene põrkab palli
+⛹	inimene põrkab palli
+⛹🏻	põrkab pall: hele nahatoon
+⛹🏼	põrkav pall: keskmiselt hele nahatoon
+⛹🏽	põrkav pall: keskmine nahatoon
+⛹🏾	põrkav pall: keskmiselt tume nahatoon
+⛹🏿	põrkab pall: tume nahatoon
+⛹️‍♂️	mees põrkab pall
+⛹‍♂️	mees põrkab pall
+⛹️‍♂	mees põrkab pall
+⛹‍♂	mees põrkab pall
+⛹🏻‍♂️	meeste põrkepall: hele nahatoon
+⛹🏻‍♂	meeste põrkepall: hele nahatoon
+⛹🏼‍♂️	meeste põrkepall: keskmiselt hele nahatoon
+⛹🏼‍♂	meeste põrkepall: keskmiselt hele nahatoon
+⛹🏽‍♂️	meeste põrkepall: keskmine nahatoon
+⛹🏽‍♂	meeste põrkepall: keskmine nahatoon
+⛹🏾‍♂️	meeste põrkepall: keskmiselt tume nahatoon
+⛹🏾‍♂	meeste põrkepall: keskmiselt tume nahatoon
+⛹🏿‍♂️	mees põrkab pall: tume nahatoon
+⛹🏿‍♂	mees põrkab pall: tume nahatoon
+⛹️‍♀️	naine põrkab pall
+⛹‍♀️	naine põrkab pall
+⛹️‍♀	naine põrkab pall
+⛹‍♀	naine põrkab pall
+⛹🏻‍♀️	naine põrkab pall: hele nahatoon
+⛹🏻‍♀	naine põrkab pall: hele nahatoon
+⛹🏼‍♀️	naine põrkab pall: keskmiselt hele nahatoon
+⛹🏼‍♀	naine põrkab pall: keskmiselt hele nahatoon
+⛹🏽‍♀️	naine põrkab pall: keskmine nahatoon
+⛹🏽‍♀	naine põrkab pall: keskmine nahatoon
+⛹🏾‍♀️	naine põrkab pall: keskmiselt tume nahatoon
+⛹🏾‍♀	naine põrkab pall: keskmiselt tume nahatoon
+⛹🏿‍♀️	naine põrkab pall: tume nahatoon
+⛹🏿‍♀	naine põrkab pall: tume nahatoon
+🏋️	raskusi tõstev inimene
+🏋	raskusi tõstev inimene
+🏋🏻	raskusi tõstev inimene: hele nahatoon
+🏋🏼	raskusi tõstev inimene: keskmiselt hele nahatoon
+🏋🏽	raskusi tõstev inimene: keskmine nahatoon
+🏋🏾	raskusi tõstev inimene: keskmiselt tume nahatoon
+🏋🏿	raskusi tõstev inimene: tume nahatoon
+🏋️‍♂️	mees tõstab raskusi
+🏋‍♂️	mees tõstab raskusi
+🏋️‍♂	mees tõstab raskusi
+🏋‍♂	mees tõstab raskusi
+🏋🏻‍♂️	raskusi tõstev mees: hele nahatoon
+🏋🏻‍♂	raskusi tõstev mees: hele nahatoon
+🏋🏼‍♂️	mees tõstab raskusi: keskmiselt hele nahatoon
+🏋🏼‍♂	mees tõstab raskusi: keskmiselt hele nahatoon
+🏋🏽‍♂️	mees tõstab raskusi: keskmine nahatoon
+🏋🏽‍♂	mees tõstab raskusi: keskmine nahatoon
+🏋🏾‍♂️	mees tõstab raskusi: keskmiselt tume nahatoon
+🏋🏾‍♂	mees tõstab raskusi: keskmiselt tume nahatoon
+🏋🏿‍♂️	raskusi tõstev mees: tume nahatoon
+🏋🏿‍♂	raskusi tõstev mees: tume nahatoon
+🏋️‍♀️	naine tõstab raskusi
+🏋‍♀️	naine tõstab raskusi
+🏋️‍♀	naine tõstab raskusi
+🏋‍♀	naine tõstab raskusi
+🏋🏻‍♀️	raskusi tõstev naine: hele nahatoon
+🏋🏻‍♀	raskusi tõstev naine: hele nahatoon
+🏋🏼‍♀️	raskusi tõstev naine: keskmiselt hele nahatoon
+🏋🏼‍♀	raskusi tõstev naine: keskmiselt hele nahatoon
+🏋🏽‍♀️	raskusi tõstev naine: keskmine nahatoon
+🏋🏽‍♀	raskusi tõstev naine: keskmine nahatoon
+🏋🏾‍♀️	raskusi tõstev naine: keskmiselt tume nahatoon
+🏋🏾‍♀	raskusi tõstev naine: keskmiselt tume nahatoon
+🏋🏿‍♀️	raskusi tõstev naine: tume nahatoon
+🏋🏿‍♀	raskusi tõstev naine: tume nahatoon
+🚴	inimene jalgrattaga sõitmas
+🚴🏻	jalgrattasõit: hele nahatoon
+🚴🏼	jalgrattasõit: keskmiselt hele nahatoon
+🚴🏽	jalgrattasõit: keskmine nahatoon
+🚴🏾	jalgrattasõit: keskmiselt tume nahatoon
+🚴🏿	jalgrattaga sõitev inimene: tume nahatoon
+🚴‍♂️	mees jalgrattaga
+🚴‍♂	mees jalgrattaga
+🚴🏻‍♂️	mees jalgrattaga: hele nahatoon
+🚴🏻‍♂	mees jalgrattaga: hele nahatoon
+🚴🏼‍♂️	mees jalgrattaga: keskmiselt hele nahatoon
+🚴🏼‍♂	mees jalgrattaga: keskmiselt hele nahatoon
+🚴🏽‍♂️	mees jalgrattasõit: keskmine nahatoon
+🚴🏽‍♂	mees jalgrattasõit: keskmine nahatoon
+🚴🏾‍♂️	mees jalgrattaga: keskmiselt tume nahatoon
+🚴🏾‍♂	mees jalgrattaga: keskmiselt tume nahatoon
+🚴🏿‍♂️	mees jalgrattaga: tume nahatoon
+🚴🏿‍♂	mees jalgrattaga: tume nahatoon
+🚴‍♀️	naine jalgrattaga
+🚴‍♀	naine jalgrattaga
+🚴🏻‍♀️	naine jalgrattaga: hele nahatoon
+🚴🏻‍♀	naine jalgrattaga: hele nahatoon
+🚴🏼‍♀️	naine jalgrattaga: keskmiselt hele nahatoon
+🚴🏼‍♀	naine jalgrattaga: keskmiselt hele nahatoon
+🚴🏽‍♀️	naine jalgrattaga: keskmine nahatoon
+🚴🏽‍♀	naine jalgrattaga: keskmine nahatoon
+🚴🏾‍♀️	naine jalgrattaga: keskmiselt tume nahatoon
+🚴🏾‍♀	naine jalgrattaga: keskmiselt tume nahatoon
+🚴🏿‍♀️	naine jalgrattaga: tume nahatoon
+🚴🏿‍♀	naine jalgrattaga: tume nahatoon
+🚵	inimene mägirattasõit
+🚵🏻	inimene mägirattasõit: hele nahatoon
+🚵🏼	inimene mägirattasõit: keskmiselt hele nahatoon
+🚵🏽	inimene mägirattasõit: keskmine nahatoon
+🚵🏾	inimene mägirattasõit: keskmiselt tume nahatoon
+🚵🏿	inimene mägirattasõit: tume nahatoon
+🚵‍♂️	mees mägirattasõit
+🚵‍♂	mees mägirattasõit
+🚵🏻‍♂️	mees mägirattasõit: hele nahatoon
+🚵🏻‍♂	mees mägirattasõit: hele nahatoon
+🚵🏼‍♂️	mees mägirattasõit: keskmiselt hele nahatoon
+🚵🏼‍♂	mees mägirattasõit: keskmiselt hele nahatoon
+🚵🏽‍♂️	mees mägirattasõit: keskmine nahatoon
+🚵🏽‍♂	mees mägirattasõit: keskmine nahatoon
+🚵🏾‍♂️	mees mägirattasõit: keskmiselt tume nahatoon
+🚵🏾‍♂	mees mägirattasõit: keskmiselt tume nahatoon
+🚵🏿‍♂️	mees mägirattasõit: tume nahatoon
+🚵🏿‍♂	mees mägirattasõit: tume nahatoon
+🚵‍♀️	naine maastikurattaga
+🚵‍♀	naine maastikurattaga
+🚵🏻‍♀️	naine mägirattasõit: hele nahatoon
+🚵🏻‍♀	naine mägirattasõit: hele nahatoon
+🚵🏼‍♀️	naine mägirattasõit: keskmiselt hele nahatoon
+🚵🏼‍♀	naine mägirattasõit: keskmiselt hele nahatoon
+🚵🏽‍♀️	naine mägirattasõit: keskmine nahatoon
+🚵🏽‍♀	naine mägirattasõit: keskmine nahatoon
+🚵🏾‍♀️	naine mägirattasõit: keskmiselt tume nahatoon
+🚵🏾‍♀	naine mägirattasõit: keskmiselt tume nahatoon
+🚵🏿‍♀️	naine mägirattasõit: tume nahatoon
+🚵🏿‍♀	naine mägirattasõit: tume nahatoon
+🏎️	võidusõiduauto
+🏎	võidusõiduauto
+🏍️	mootorratas
+🏍	mootorratas
+🤸	inimene vankriga sõitmas
+🤸🏻	isik käruga: hele nahatoon
+🤸🏼	isik käruga: keskmiselt hele nahatoon
+🤸🏽	isik käruga: keskmine nahatoon
+🤸🏾	isik käruga: keskmiselt tume nahatoon
+🤸🏿	isik käruga: tume nahatoon
+🤸‍♂️	mees käruga
+🤸‍♂	mees käruga
+🤸🏻‍♂️	mees käruga: hele nahatoon
+🤸🏻‍♂	mees käruga: hele nahatoon
+🤸🏼‍♂️	mees käru: keskmiselt hele nahatoon
+🤸🏼‍♂	mees käru: keskmiselt hele nahatoon
+🤸🏽‍♂️	mees käru: keskmine nahatoon
+🤸🏽‍♂	mees käru: keskmine nahatoon
+🤸🏾‍♂️	mees käru: keskmiselt tume nahatoon
+🤸🏾‍♂	mees käru: keskmiselt tume nahatoon
+🤸🏿‍♂️	mees vankriga: tume nahatoon
+🤸🏿‍♂	mees vankriga: tume nahatoon
+🤸‍♀️	naine käruga
+🤸‍♀	naine käruga
+🤸🏻‍♀️	naine käruga: hele nahatoon
+🤸🏻‍♀	naine käruga: hele nahatoon
+🤸🏼‍♀️	naine käruga: keskmiselt hele nahatoon
+🤸🏼‍♀	naine käruga: keskmiselt hele nahatoon
+🤸🏽‍♀️	naine käruga: keskmine nahatoon
+🤸🏽‍♀	naine käruga: keskmine nahatoon
+🤸🏾‍♀️	naine käruga: keskmiselt tume nahatoon
+🤸🏾‍♀	naine käruga: keskmiselt tume nahatoon
+🤸🏿‍♀️	naine käruga: tume nahatoon
+🤸🏿‍♀	naine käruga: tume nahatoon
+🤼	inimesed maadlemas
+🤼‍♂️	mehed maadlemas
+🤼‍♂	mehed maadlemas
+🤼‍♀️	naiste maadlus
+🤼‍♀	naiste maadlus
+🤽	veepalli mängiv inimene
+🤽🏻	veepalli mängiv inimene: hele nahatoon
+🤽🏼	veepalli mängiv inimene: keskmiselt hele nahatoon
+🤽🏽	veepalli mängiv inimene: keskmine nahatoon
+🤽🏾	veepalli mängiv inimene: keskmiselt tume nahatoon
+🤽🏿	veepalli mängiv inimene: tume nahatoon
+🤽‍♂️	mees mängib veepalli
+🤽‍♂	mees mängib veepalli
+🤽🏻‍♂️	veepalli mängiv mees: hele nahatoon
+🤽🏻‍♂	veepalli mängiv mees: hele nahatoon
+🤽🏼‍♂️	veepalli mängiv mees: keskmiselt hele nahatoon
+🤽🏼‍♂	veepalli mängiv mees: keskmiselt hele nahatoon
+🤽🏽‍♂️	mees, kes mängib veepalli: keskmine nahatoon
+🤽🏽‍♂	mees, kes mängib veepalli: keskmine nahatoon
+🤽🏾‍♂️	veepalli mängiv mees: keskmiselt tume nahatoon
+🤽🏾‍♂	veepalli mängiv mees: keskmiselt tume nahatoon
+🤽🏿‍♂️	veepalli mängiv mees: tume nahatoon
+🤽🏿‍♂	veepalli mängiv mees: tume nahatoon
+🤽‍♀️	naine mängib veepalli
+🤽‍♀	naine mängib veepalli
+🤽🏻‍♀️	naine, kes mängib veepalli: hele nahatoon
+🤽🏻‍♀	naine, kes mängib veepalli: hele nahatoon
+🤽🏼‍♀️	naine, kes mängib veepalli: keskmiselt hele nahatoon
+🤽🏼‍♀	naine, kes mängib veepalli: keskmiselt hele nahatoon
+🤽🏽‍♀️	naine, kes mängib veepalli: keskmine nahatoon
+🤽🏽‍♀	naine, kes mängib veepalli: keskmine nahatoon
+🤽🏾‍♀️	naine, kes mängib veepalli: keskmiselt tume nahatoon
+🤽🏾‍♀	naine, kes mängib veepalli: keskmiselt tume nahatoon
+🤽🏿‍♀️	naine, kes mängib veepalli: tume nahatoon
+🤽🏿‍♀	naine, kes mängib veepalli: tume nahatoon
+🤾	käsipalli mängiv inimene
+🤾🏻	käsipalli mängiv inimene: hele nahatoon
+🤾🏼	käsipalli mängiv inimene: keskmiselt hele nahatoon
+🤾🏽	käsipalli mängiv inimene: keskmine nahatoon
+🤾🏾	käsipalli mängiv inimene: keskmiselt tume nahatoon
+🤾🏿	käsipalli mängiv inimene: tume nahatoon
+🤾‍♂️	mees mängib käsipalli
+🤾‍♂	mees mängib käsipalli
+🤾🏻‍♂️	käsipalli mängiv mees: hele nahatoon
+🤾🏻‍♂	käsipalli mängiv mees: hele nahatoon
+🤾🏼‍♂️	käsipalli mängiv mees: keskmiselt hele nahatoon
+🤾🏼‍♂	käsipalli mängiv mees: keskmiselt hele nahatoon
+🤾🏽‍♂️	mees, kes mängib käsipalli: keskmine nahatoon
+🤾🏽‍♂	mees, kes mängib käsipalli: keskmine nahatoon
+🤾🏾‍♂️	käsipalli mängiv mees: keskmiselt tume nahatoon
+🤾🏾‍♂	käsipalli mängiv mees: keskmiselt tume nahatoon
+🤾🏿‍♂️	käsipalli mängiv mees: tume nahatoon
+🤾🏿‍♂	käsipalli mängiv mees: tume nahatoon
+🤾‍♀️	naine käsipalli mängimas
+🤾‍♀	naine käsipalli mängimas
+🤾🏻‍♀️	käsipalli mängiv naine: hele nahatoon
+🤾🏻‍♀	käsipalli mängiv naine: hele nahatoon
+🤾🏼‍♀️	käsipalli mängiv naine: keskmiselt hele nahatoon
+🤾🏼‍♀	käsipalli mängiv naine: keskmiselt hele nahatoon
+🤾🏽‍♀️	käsipalli mängiv naine: keskmine nahatoon
+🤾🏽‍♀	käsipalli mängiv naine: keskmine nahatoon
+🤾🏾‍♀️	käsipalli mängiv naine: keskmiselt tume nahatoon
+🤾🏾‍♀	käsipalli mängiv naine: keskmiselt tume nahatoon
+🤾🏿‍♀️	käsipalli mängiv naine: tume nahatoon
+🤾🏿‍♀	käsipalli mängiv naine: tume nahatoon
+🤹	žongleeriv inimene
+🤹🏻	žongleeriv inimene: hele nahatoon
+🤹🏼	žongleeriv inimene: keskmiselt hele nahatoon
+🤹🏽	žongleeriv inimene: keskmine nahatoon
+🤹🏾	žongleeriv inimene: keskmiselt tume nahatoon
+🤹🏿	žongleeriv inimene: tume nahatoon
+🤹‍♂️	mees žongleerimas
+🤹‍♂	mees žongleerimas
+🤹🏻‍♂️	mees žongleerimine: hele nahatoon
+🤹🏻‍♂	mees žongleerimine: hele nahatoon
+🤹🏼‍♂️	meeste žongleerimine: keskmiselt hele nahatoon
+🤹🏼‍♂	meeste žongleerimine: keskmiselt hele nahatoon
+🤹🏽‍♂️	mees žongleerimine: keskmine nahatoon
+🤹🏽‍♂	mees žongleerimine: keskmine nahatoon
+🤹🏾‍♂️	mees žongleerimine: keskmiselt tume nahatoon
+🤹🏾‍♂	mees žongleerimine: keskmiselt tume nahatoon
+🤹🏿‍♂️	mees žongleerib: tume nahatoon
+🤹🏿‍♂	mees žongleerib: tume nahatoon
+🤹‍♀️	naine žongleerib
+🤹‍♀	naine žongleerib
+🤹🏻‍♀️	naine žongleerib: hele nahatoon
+🤹🏻‍♀	naine žongleerib: hele nahatoon
+🤹🏼‍♀️	naine žongleerib: keskmiselt hele nahatoon
+🤹🏼‍♀	naine žongleerib: keskmiselt hele nahatoon
+🤹🏽‍♀️	naine žongleerib: keskmine nahatoon
+🤹🏽‍♀	naine žongleerib: keskmine nahatoon
+🤹🏾‍♀️	naine žongleerib: keskmiselt tume nahatoon
+🤹🏾‍♀	naine žongleerib: keskmiselt tume nahatoon
+🤹🏿‍♀️	naine žongleerib: tume nahatoon
+🤹🏿‍♀	naine žongleerib: tume nahatoon
+👫	mees ja naine hoiavad käest kinni
+👬	kaks meest käest kinni hoidmas
+👭	kaks naist hoiavad käest kinni
+💏	suudlema
+👩‍❤️‍💋‍👨	suudlus: naine, mees
+👩‍❤‍💋‍👨	suudlus: naine, mees
+👨‍❤️‍💋‍👨	suudlus: mees, mees
+👨‍❤‍💋‍👨	suudlus: mees, mees
+👩‍❤️‍💋‍👩	suudlus: naine, naine
+👩‍❤‍💋‍👩	suudlus: naine, naine
+💑	paar südamega
+👩‍❤️‍👨	südamega paar: naine, mees
+👩‍❤‍👨	südamega paar: naine, mees
+👨‍❤️‍👨	paar südamega: mees, mees
+👨‍❤‍👨	paar südamega: mees, mees
+👩‍❤️‍👩	südamega paar: naine, naine
+👩‍❤‍👩	südamega paar: naine, naine
+👪	perekond
+👨‍👩‍👦	perekond: mees, naine, poiss
+👨‍👩‍👧	perekond: mees, naine, tüdruk
+👨‍👩‍👧‍👦	perekond: mees, naine, tüdruk, poiss
+👨‍👩‍👦‍👦	perekond: mees, naine, poiss, poiss
+👨‍👩‍👧‍👧	perekond: mees, naine, tüdruk, tüdruk
+👨‍👨‍👦	perekond: mees, mees, poiss
+👨‍👨‍👧	perekond: mees, mees, tüdruk
+👨‍👨‍👧‍👦	perekond: mees, mees, tüdruk, poiss
+👨‍👨‍👦‍👦	perekond: mees, mees, poiss, poiss
+👨‍👨‍👧‍👧	perekond: mees, mees, tüdruk, tüdruk
+👩‍👩‍👦	perekond: naine, naine, poiss
+👩‍👩‍👧	perekond: naine, naine, tüdruk
+👩‍👩‍👧‍👦	perekond: naine, naine, tüdruk, poiss
+👩‍👩‍👦‍👦	perekond: naine, naine, poiss, poiss
+👩‍👩‍👧‍👧	perekond: naine, naine, tüdruk, tüdruk
+👨‍👦	perekond: mees, poiss
+👨‍👦‍👦	perekond: mees, poiss, poiss
+👨‍👧	perekond: mees, tüdruk
+👨‍👧‍👦	perekond: mees, tüdruk, poiss
+👨‍👧‍👧	perekond: mees, tüdruk, tüdruk
+👩‍👦	perekond: naine, poiss
+👩‍👦‍👦	perekond: naine, poiss, poiss
+👩‍👧	perekond: naine, tüdruk
+👩‍👧‍👦	perekond: naine, tüdruk, poiss
+👩‍👧‍👧	perekond: naine, tüdruk, tüdruk
+🤳	selfie
+🤳🏻	selfie: hele nahatoon
+🤳🏼	selfie: keskmiselt hele nahatoon
+🤳🏽	selfie: keskmine nahatoon
+🤳🏾	selfie: keskmiselt tume nahatoon
+🤳🏿	selfie: tume nahatoon
+💪	painutatud biitseps
+💪🏻	painutatud biitseps: hele nahatoon
+💪🏼	painutatud biitseps: keskmiselt hele nahatoon
+💪🏽	painutatud biitseps: keskmine nahatoon
+💪🏾	painutatud biitseps: keskmiselt tume nahatoon
+💪🏿	painutatud biitseps: tume nahatoon
+🦵	jalg
+🦵🏻	jalg: hele nahatoon
+🦵🏼	jalg: keskmiselt hele nahatoon
+🦵🏽	jalg: keskmine nahatoon
+🦵🏾	jalg: keskmiselt tume nahatoon
+🦵🏿	jalg: tume nahatoon
+🦶	jalg
+🦶🏻	jalg: hele nahatoon
+🦶🏼	jalg: keskmiselt hele nahatoon
+🦶🏽	jalg: keskmine nahatoon
+🦶🏾	jalg: keskmiselt tume nahatoon
+🦶🏿	jalg: tume nahatoon
+👈	tagakäe indeks osutab vasakule
+👈🏻	tagakäe indeks osutab vasakule: hele nahatoon
+👈🏼	tagakäe indeks osutab vasakule: keskmiselt hele nahatoon
+👈🏽	tagakäe indeks osutab vasakule: keskmine nahatoon
+👈🏾	vasakule osutav tagakäe indeks: keskmiselt tume nahatoon
+👈🏿	tagakäe indeks osutab vasakule: tume nahatoon
+👉	tagakäe indeks, mis näitab paremale
+👉🏻	tagakäe indeks paremale: hele nahatoon
+👉🏼	tagakäe indeks paremale: keskmiselt hele nahatoon
+👉🏽	tagakäe indeks paremale: keskmine nahatoon
+👉🏾	tagakäe indeks paremale: keskmiselt tume nahatoon
+👉🏿	tagakäe indeks paremale: tume nahatoon
+☝️	indeks ülespoole
+☝	indeks ülespoole
+☝🏻	indeks ülespoole: hele nahatoon
+☝🏼	indeks ülespoole: keskmiselt hele nahatoon
+☝🏽	indeks ülespoole: keskmine nahatoon
+☝🏾	indeks ülespoole: keskmiselt tume nahatoon
+☝🏿	indeks ülespoole: tume nahatoon
+👆	tagantkäe indeks, mis näitab üles
+👆🏻	ülespoole suunatud tagakäe indeks: hele nahatoon
+👆🏼	ülespoole suunatud tagakäe indeks: keskmiselt hele nahatoon
+👆🏽	ülespoole suunatud tagakäe indeks: keskmine nahatoon
+👆🏾	ülespoole suunatud tagakäe indeks: keskmiselt tume nahatoon
+👆🏿	ülespoole suunatud tagakäe indeks: tume nahatoon
+🖕	keskmine sõrm
+🖕🏻	keskmine sõrm: hele nahatoon
+🖕🏼	keskmine sõrm: keskmiselt hele nahatoon
+🖕🏽	keskmine sõrm: keskmine nahatoon
+🖕🏾	keskmine sõrm: keskmiselt tume nahatoon
+🖕🏿	keskmine sõrm: tume nahatoon
+👇	allapoole suunatud tagakäe indeks
+👇🏻	allapoole suunatud tagakäe indeks: hele nahatoon
+👇🏼	allapoole suunatud tagakäe indeks: keskmiselt hele nahatoon
+👇🏽	allapoole suunatud tagakäe indeks: keskmine nahatoon
+👇🏾	allapoole suunatud tagakäe indeks: keskmiselt tume nahatoon
+👇🏿	allapoole suunatud tagakäe indeks: tume nahatoon
+✌️	võidukäsi
+✌	võidukäsi
+✌🏻	võidukäsi: hele nahatoon
+✌🏼	võidukäsi: keskmiselt hele nahatoon
+✌🏽	võidukäsi: keskmine nahatoon
+✌🏾	võidukäsi: keskmiselt tume nahatoon
+✌🏿	võidukäsi: tume nahatoon
+🤞	ristatud sõrmed
+🤞🏻	ristatud sõrmed: hele nahatoon
+🤞🏼	ristatud sõrmed: keskmiselt hele nahatoon
+🤞🏽	ristatud sõrmed: keskmine nahatoon
+🤞🏾	ristatud sõrmed: keskmiselt tume nahatoon
+🤞🏿	ristatud sõrmed: tume nahatoon
+🖖	vulkaani tervitus
+🖖🏻	vulkaani tervitus: hele nahatoon
+🖖🏼	vulkaani saluut: keskmiselt hele nahatoon
+🖖🏽	vulkaani tervitus: keskmine nahatoon
+🖖🏾	vulkaani saluut: keskmiselt tume nahatoon
+🖖🏿	vulkaani tervitus: tume nahatoon
+🤘	sarvede märk
+🤘🏻	sarvede tunnus: hele nahatoon
+🤘🏼	sarvede tunnus: keskmiselt hele nahatoon
+🤘🏽	sarvede tunnus: keskmine nahatoon
+🤘🏾	sarvede märk: keskmiselt tume nahatoon
+🤘🏿	sarvede märk: tume nahatoon
+🤙	kutsu mind käeks
+🤙🏻	kutsu mind käeks: hele nahatoon
+🤙🏼	kutsu mind käeks: keskmiselt hele nahatoon
+🤙🏽	kutsu mind käeks: keskmine nahatoon
+🤙🏾	kutsu mind käeks: keskmiselt tume nahatoon
+🤙🏿	kutsu mind käeks: tume nahatoon
+🖐️	laiali sirutatud sõrmedega käsi
+🖐	laiali sirutatud sõrmedega käsi
+🖐🏻	laiali sirutatud sõrmedega käsi: hele nahatoon
+🖐🏼	laiali sirutatud sõrmedega käsi: keskmiselt hele nahatoon
+🖐🏽	laiali sirutatud sõrmedega käsi: keskmine nahatoon
+🖐🏾	laiali sirutatud sõrmedega käsi: keskmiselt tume nahatoon
+🖐🏿	laiali sirutatud sõrmedega käsi: tume nahatoon
+✋	tõstetud käsi
+✋🏻	tõstetud käsi: hele nahatoon
+✋🏼	tõstetud käsi: keskmiselt hele nahatoon
+✋🏽	tõstetud käsi: keskmine nahatoon
+✋🏾	tõstetud käsi: keskmiselt tume nahatoon
+✋🏿	tõstetud käsi: tume nahatoon
+👌	OK käsi
+👌🏻	OK käsi: hele nahatoon
+👌🏼	OK käsi: keskmiselt hele nahatoon
+👌🏽	OK käsi: keskmine nahatoon
+👌🏾	OK käsi: keskmiselt tume nahatoon
+👌🏿	OK käsi: tume nahatoon
+👍	pöidlad üles
+👍🏻	pöidlad püsti: hele nahatoon
+👍🏼	pöidlad üles: keskmiselt hele nahatoon
+👍🏽	pöidlad üles: keskmine nahatoon
+👍🏾	pöidlad üles: keskmiselt tume nahatoon
+👍🏿	pöidlad püsti: tume nahatoon
+👎	pöidlad allapoole
+👎🏻	pöidlad alla: hele nahatoon
+👎🏼	pöidlad alla: keskmiselt hele nahatoon
+👎🏽	pöidlad allapoole: keskmine nahatoon
+👎🏾	pöidlad alla: keskmiselt tume nahatoon
+👎🏿	pöidlad alla: tume nahatoon
+✊	tõstetud rusikas
+✊🏻	tõstetud rusikas: hele nahatoon
+✊🏼	tõstetud rusikas: keskmiselt hele nahatoon
+✊🏽	tõstetud rusikas: keskmine nahatoon
+✊🏾	tõstetud rusikas: keskmiselt tume nahatoon
+✊🏿	tõstetud rusikas: tume nahatoon
+👊	vastutulev rusikas
+👊🏻	vastutulev rusikas: hele nahatoon
+👊🏼	vastutulev rusikas: keskmiselt hele nahatoon
+👊🏽	vastutulev rusikas: keskmine nahatoon
+👊🏾	vastutulev rusikas: keskmiselt tume nahatoon
+👊🏿	vastutulev rusikas: tume nahatoon
+🤛	vasakpoolne rusikas
+🤛🏻	vasakpoolne rusikas: hele nahatoon
+🤛🏼	vasakpoolne rusikas: keskmiselt hele nahatoon
+🤛🏽	vasakpoolne rusikas: keskmine nahatoon
+🤛🏾	vasakpoolne rusikas: keskmiselt tume nahatoon
+🤛🏿	vasakpoolne rusikas: tume nahatoon
+🤜	paremale suunatud rusikas
+🤜🏻	parempoolne rusikas: hele nahatoon
+🤜🏼	parempoolne rusikas: keskmiselt hele nahatoon
+🤜🏽	parempoolne rusikas: keskmine nahatoon
+🤜🏾	parempoolne rusikas: keskmiselt tume nahatoon
+🤜🏿	parempoolne rusikas: tume nahatoon
+🤚	tõstetud käeselg
+🤚🏻	tõstetud käeselg: hele nahatoon
+🤚🏼	tõstetud käeselg: keskmiselt hele nahatoon
+🤚🏽	tõstetud käeselg: keskmine nahatoon
+🤚🏾	tõstetud käeselg: keskmiselt tume nahatoon
+🤚🏿	tõstetud käeselg: tume nahatoon
+👋	vehkiv käsi
+👋🏻	vehkiv käsi: hele nahatoon
+👋🏼	vehkiv käsi: keskmiselt hele nahatoon
+👋🏽	vehkiv käsi: keskmine nahatoon
+👋🏾	vehkiv käsi: keskmiselt tume nahatoon
+👋🏿	vehkiv käsi: tume nahatoon
+🤟	armastan sind žest
+🤟🏻	armastan sind: hele nahatoon
+🤟🏼	armastan sind žest: keskmiselt hele nahatoon
+🤟🏽	armastan sind žest: keskmine nahatoon
+🤟🏾	armastan sind žest: keskmiselt tume nahatoon
+🤟🏿	armastan sind: tume nahatoon
+✍️	kirjutav käsi
+✍	kirjutav käsi
+✍🏻	kirjutuskäsi: hele nahatoon
+✍🏼	kirjutuskäsi: keskmiselt hele nahatoon
+✍🏽	kirjutav käsi: keskmine nahatoon
+✍🏾	kirjutamiskäsi: keskmiselt tume nahatoon
+✍🏿	kirjutamiskäsi: tume nahatoon
+👏	plaksutavad käsi
+👏🏻	käteplaksutamine: hele nahatoon
+👏🏼	käteplaksutamine: keskmiselt hele nahatoon
+👏🏽	käteplaksutamine: keskmine nahatoon
+👏🏾	käteplaksutamine: keskmiselt tume nahatoon
+👏🏿	käteplaksutamine: tume nahatoon
+👐	avatud käed
+👐🏻	avatud käed: hele nahatoon
+👐🏼	avatud käed: keskmiselt hele nahatoon
+👐🏽	avatud käed: keskmine nahatoon
+👐🏾	avatud käed: keskmiselt tume nahatoon
+👐🏿	avatud käed: tume nahatoon
+🙌	käte tõstmine
+🙌🏻	käte tõstmine: hele nahatoon
+🙌🏼	käte tõstmine: keskmiselt hele nahatoon
+🙌🏽	käte tõstmine: keskmine nahatoon
+🙌🏾	käte tõstmine: keskmiselt tume nahatoon
+🙌🏿	käte tõstmine: tume nahatoon
+🤲	peopesad kokku
+🤲🏻	peopesad koos: hele nahatoon
+🤲🏼	peopesad koos: keskmiselt hele nahatoon
+🤲🏽	peopesad koos: keskmine nahatoon
+🤲🏾	peopesad koos: keskmiselt tume nahatoon
+🤲🏿	peopesad koos: tume nahatoon
+🙏	käed kokku pandud
+🙏🏻	käed kokku pandud: hele nahatoon
+🙏🏼	käed kokku pandud: keskmiselt hele nahatoon
+🙏🏽	käed kokku pandud: keskmine nahatoon
+🙏🏾	käed kokku pandud: keskmiselt tume nahatoon
+🙏🏿	käed kokku pandud: tume nahatoon
+🤝	käepigistus
+💅	küünelakk
+💅🏻	küünelakk: hele nahatoon
+💅🏼	küünelakk: keskmiselt hele nahatoon
+💅🏽	küünelakk: keskmine nahatoon
+💅🏾	küünelakk: keskmiselt tume nahatoon
+💅🏿	küünelakk: tume nahatoon
+👂	kõrva
+👂🏻	kõrv: hele nahatoon
+👂🏼	kõrv: keskmiselt hele nahatoon
+👂🏽	kõrv: keskmine nahatoon
+👂🏾	kõrv: keskmiselt tume nahatoon
+👂🏿	kõrv: tume nahatoon
+👃	nina
+👃🏻	nina: hele nahatoon
+👃🏼	nina: keskmiselt hele nahatoon
+👃🏽	nina: keskmine nahatoon
+👃🏾	nina: keskmiselt tume nahatoon
+👃🏿	nina: tume nahatoon
+🦰	punaste juustega
+🦱	lokkis juustega
+🦲	kiilakas
+🦳	valgekarvaline
+👣	jalajäljed
+👀	silmad
+👁️	silma
+👁	silma
+👁️‍🗨️	silm kõnemullis
+👁‍🗨️	silm kõnemullis
+👁️‍🗨	silm kõnemullis
+👁‍🗨	silm kõnemullis
+🧠	aju
+🦴	luu
+🦷	hammas
+👅	keel
+👄	suu
+💋	suudlusmärk
+💘	noolega süda
+❤️	punane süda
+❤	punane süda
+💓	tuksuv süda
+💔	murtud süda
+💕	kaks südant
+💖	sädelev süda
+💗	kasvav süda
+💙	sinine süda
+💚	roheline süda
+💛	kollane süda
+🧡	oranž süda
+💜	lilla süda
+🖤	must süda
+💝	süda lindiga
+💞	pöörlevad südamed
+💟	südame kaunistus
+❣️	raske südamehüüu
+❣	raske südamehüüu
+💌	armastuskiri
+💤	zzz
+💢	viha sümbol
+💣	pomm
+💥	kokkupõrge
+💦	higipiisad
+💨	tormab minema
+💫	uimane
+💬	kõneõhupall
+🗨️	vasak kõnemull
+🗨	vasak kõnemull
+🗯️	õige viha mull
+🗯	õige viha mull
+💭	mõtteõhupall
+🕳️	auk
+🕳	auk
+👓	prillid
+🕶️	päikeseprillid
+🕶	päikeseprillid
+🥽	kaitseprillid
+🥼	laborikittel
+👔	lips
+👕	t-särk
+👖	teksad
+🧣	sall
+🧤	kindad
+🧥	mantel
+🧦	sokid
+👗	kleit
+👘	kimono
+👙	bikiinid
+👚	naise riided
+👛	rahakott
+👜	käekott
+👝	sidurikott
+🛍️	ostukotid
+🛍	ostukotid
+🎒	kooli seljakott
+👞	mehe kinga
+👟	jooksujalats
+🥾	matkasaabas
+🥿	naiste lamedad kingad
+👠	kõrge kontsaga king
+👡	naiste sandaal
+👢	naise saabas
+👑	kroon
+👒	naise müts
+🎩	silindrit
+🎓	lõpumüts
+🧢	arveldatud ülempiir
+⛑️	päästetöötaja kiiver
+⛑	päästetöötaja kiiver
+📿	palvehelmed
+💄	huulepulk
+💍	ring
+💎	kalliskivi
+🐵	ahvi nägu
+🐒	ahv
+🦍	gorilla
+🐶	koera nägu
+🐕	koer
+🐩	puudel
+🐺	hundi nägu
+🦊	rebase nägu
+🦝	pesukaru
+🐱	kassi nägu
+🐈	kass
+🦁	lõvi nägu
+🐯	tiigri nägu
+🐅	tiiger
+🐆	leopard
+🐴	hobuse nägu
+🐎	hobune
+🦄	ükssarviku nägu
+🦓	sebra
+🦌	hirved
+🐮	lehma nägu
+🐂	härg
+🐃	vesipühvel
+🐄	lehm
+🐷	sea nägu
+🐖	siga
+🐗	metssiga
+🐽	sea nina
+🐏	ram
+🐑	ute
+🐐	kits
+🐪	kaamel
+🐫	kahe küüruga kaamel
+🦙	laama
+🦒	kaelkirjak
+🐘	elevant
+🦏	ninasarvik
+🦛	jõehobu
+🐭	hiire nägu
+🐁	hiir
+🐀	rott
+🐹	hamstri nägu
+🐰	jänese nägu
+🐇	Jänes
+🐿️	vöötohatis
+🐿	vöötohatis
+🦔	siil
+🦇	nahkhiir
+🐻	karu nägu
+🐨	koaala
+🐼	panda nägu
+🦘	känguru
+🦡	mäger
+🐾	käpa jäljed
+🦃	kalkun
+🐔	kana
+🐓	kukk
+🐣	kooruv tibu
+🐤	beebitibu
+🐥	näoga näoga beebitibu
+🐦	lind
+🐧	pingviin
+🕊️	tuvi
+🕊	tuvi
+🦅	kotkas
+🦆	part
+🦢	luik
+🦉	öökull
+🦚	paabulind
+🦜	papagoi
+🐸	konna nägu
+🐊	krokodill
+🐢	kilpkonn
+🦎	sisalik
+🐍	madu
+🐲	draakoni nägu
+🐉	draakon
+🦕	sauropod
+🦖	T-Rex
+🐳	purskav vaal
+🐋	vaal
+🐬	delfiin
+🐟	kala
+🐠	troopiline kala
+🐡	blowfish
+🦈	hai
+🐙	kaheksajalg
+🐚	spiraalne kest
+🦀	krabi
+🦞	homaar
+🦐	krevetid
+🦑	kalmaar
+🐌	tigu
+🦋	liblikas
+🐛	viga
+🐜	ant
+🐝	mesilane
+🐞	leedi mardikas
+🦗	kriket
+🕷️	ämblik
+🕷	ämblik
+🕸️	ämblikuvõrk
+🕸	ämblikuvõrk
+🦂	skorpion
+🦟	sääsk
+🦠	mikroob
+💐	kimp
+🌸	kirsiõis
+💮	valge lill
+🏵️	rosett
+🏵	rosett
+🌹	roos
+🥀	närbunud lill
+🌺	hibisk
+🌻	päevalill
+🌼	õitsema
+🌷	tulp
+🌱	seemik
+🌲	igihaljas puu
+🌳	lehtpuu
+🌴	palmipuu
+🌵	kaktus
+🌾	nibu riisi
+🌿	ürt
+☘️	rätik
+☘	rätik
+🍀	neljaleheline ristikhein
+🍁	vahtraleht
+🍂	langenud leht
+🍃	lehed tuules lehvimas
+🍇	viinamarjad
+🍈	melon
+🍉	arbuus
+🍊	mandariin
+🍋	sidrun
+🍌	banaan
+🍍	ananass
+🥭	mango
+🍎	punane õun
+🍏	roheline õun
+🍐	pirn
+🍑	virsik
+🍒	kirsid
+🍓	maasikas
+🥝	kiivi
+🍅	tomat
+🥥	kookospähkel
+🥑	avokaado
+🍆	baklažaan
+🥔	kartul
+🥕	porgand
+🌽	maisikõrv
+🌶️	kuum pipar
+🌶	kuum pipar
+🥒	kurk
+🥬	lehtroheline
+🥦	brokkoli
+🍄	seen
+🥜	maapähklid
+🌰	kastan
+🍞	leib
+🥐	croissant
+🥖	baguette leib
+🥨	kringel
+🥯	bagel
+🥞	pannkoogid
+🧀	juustu viil
+🍖	liha kondiga
+🍗	linnujalg
+🥩	lõigatud liha
+🥓	peekon
+🍔	hamburger
+🍟	friikartulid
+🍕	pitsa
+🌭	hot dog
+🥪	võileib
+🌮	taco
+🌯	burrito
+🥙	täidetud vormileib
+🥚	muna
+🍳	kokkamine
+🥘	madal toidupann
+🍲	pott toitu
+🥣	kauss lusikaga
+🥗	roheline salat
+🍿	popkorn
+🧂	soola
+🥫	konserv
+🍱	bento kast
+🍘	riisi kreeker
+🍙	riisipall
+🍚	keedetud riis
+🍛	karri riis
+🍜	aurutamisnõu
+🍝	spagetid
+🍠	röstitud maguskartul
+🍢	oden
+🍣	sushi
+🍤	praetud krevetid
+🍥	kalakook keerisega
+🥮	kuu kook
+🍡	dango
+🥟	pelmeen
+🥠	õnneküpsis
+🥡	väljavõtmiskarp
+🍦	pehme jäätis
+🍧	raseeritud jää
+🍨	jäätis
+🍩	sõõrik
+🍪	küpsis
+🎂	sünnipäevatort
+🍰	kook
+🧁	tassikook
+🥧	pirukas
+🍫	šokolaaditahvel
+🍬	kommid
+🍭	pulgakomm
+🍮	vanillikaste
+🍯	meepott
+🍼	lutipudel
+🥛	klaas piima
+☕	kuum jook
+🍵	teetass ilma käepidemeta
+🍶	huvides
+🍾	potsatava korgiga pudel
+🍷	veini klaas
+🍸	kokteiliklaas
+🍹	troopiline jook
+🍺	õllekruus
+🍻	kõlisevad õllekruusid
+🥂	klaaside kõlksumine
+🥃	trumli klaas
+🥤	tass õlgedega
+🥢	söögipulgad
+🍽️	kahvel ja nuga koos plaadiga
+🍽	kahvel ja nuga koos plaadiga
+🍴	kahvel ja nuga
+🥄	lusikas
+🔪	köögi nuga
+🏺	amfora
+🌍	maakera, mis näitab Euroopa-Aafrikat
+🌎	maakera, mis näitab Ameerikat
+🌏	maakera, mis näitab Aasia-Austraaliat
+🌐	maakera meridiaanidega
+🗺️	maailmakaart
+🗺	maailmakaart
+🗾	Jaapani kaart
+🧭	kompass
+🏔️	lumine mägi
+🏔	lumine mägi
+⛰️	mägi
+⛰	mägi
+🌋	vulkaan
+🗻	Fuji mägi
+🏕️	telkimine
+🏕	telkimine
+🏖️	rand vihmavarjuga
+🏖	rand vihmavarjuga
+🏜️	kõrb
+🏜	kõrb
+🏝️	kõrbe saar
+🏝	kõrbe saar
+🏞️	rahvuspark
+🏞	rahvuspark
+🏟️	staadion
+🏟	staadion
+🏛️	klassikaline hoone
+🏛	klassikaline hoone
+🏗️	hoone ehitus
+🏗	hoone ehitus
+🧱	tellised
+🏘️	majad
+🏘	majad
+🏚️	mahajäetud maja
+🏚	mahajäetud maja
+🏠	maja
+🏡	maja aiaga
+🏢	büroohoone
+🏣	Jaapani postkontor
+🏤	postkontor
+🏥	haiglasse
+🏦	pank
+🏨	hotell
+🏩	armastuse hotell
+🏪	lähikauplus
+🏫	kool
+🏬	kaubamaja
+🏭	tehas
+🏯	Jaapani loss
+🏰	loss
+💒	pulmad
+🗼	Tokyo torn
+🗽	Vabadussammas
+⛪	kirik
+🕌	mošee
+🕍	sünagoog
+⛩️	šinto pühamu
+⛩	šinto pühamu
+🕋	kaaba
+⛲	purskkaev
+⛺	telk
+🌁	udune
+🌃	öö tähtedega
+🏙️	linnapilti
+🏙	linnapilti
+🌄	päikesetõus mägede kohal
+🌅	päikesetõus
+🌆	linnapilt õhtuhämaruses
+🌇	päikeseloojang
+🌉	sild öösel
+♨️	kuumaveeallikates
+♨	kuumaveeallikates
+🌌	Linnutee
+🎠	karusselli hobune
+🎡	vaateratas
+🎢	Ameerika mäed
+💈	juuksuri pulk
+🎪	tsirkuse telk
+🚂	vedur
+🚃	raudteevagun
+🚄	kiirrong
+🚅	kiirrong
+🚆	rong
+🚇	metroo
+🚈	kergrööbas
+🚉	jaam
+🚊	tramm
+🚝	monorelss
+🚞	mägiraudtee
+🚋	trammi auto
+🚌	buss
+🚍	lähenev buss
+🚎	trollibuss
+🚐	väikebuss
+🚑	kiirabi
+🚒	tuletõrjeauto
+🚓	politseiauto
+🚔	vastutulev politseiauto
+🚕	takso
+🚖	vastutulev takso
+🚗	auto
+🚘	vastutulev auto
+🚙	sportlik tarbesõiduk
+🚚	tarneauto
+🚛	liigendveoauto
+🚜	traktor
+🚲	jalgratas
+🛴	tõukeratas
+🛹	rula
+🛵	tõukeratas
+🚏	bussipeatus
+🛣️	kiirtee
+🛣	kiirtee
+🛤️	raudtee rööbastee
+🛤	raudtee rööbastee
+🛢️	õli trummel
+🛢	õli trummel
+⛽	kütusepump
+🚨	politseiauto tuli
+🚥	horisontaalne foor
+🚦	vertikaalne foor
+🛑	stoppmärk
+🚧	Ehitus
+⚓	ankur
+⛵	purjekas
+🛶	kanuu
+🚤	kiirpaat
+🛳️	reisilaev
+🛳	reisilaev
+⛴️	parvlaev
+⛴	parvlaev
+🛥️	mootorpaat
+🛥	mootorpaat
+🚢	laev
+✈️	lennuk
+✈	lennuk
+🛩️	väike lennuk
+🛩	väike lennuk
+🛫	lennuki väljumine
+🛬	lennuki saabumine
+💺	iste
+🚁	helikopter
+🚟	rippraudtee
+🚠	mägi köistee
+🚡	õhutrammitee
+🛰️	satelliit
+🛰	satelliit
+🚀	rakett
+🛸	lendav taldrik
+🛎️	kellukell
+🛎	kellukell
+🧳	pagas
+⌛	liivakell tehtud
+⏳	liivakell tegemata
+⌚	vaata
+⏰	Äratuskell
+⏱️	stopper
+⏱	stopper
+⏲️	taimeri kell
+⏲	taimeri kell
+🕰️	kaminasimsiga kell
+🕰	kaminasimsiga kell
+🕛	kell kaksteist
+🕧	kaksteist kolmkümmend
+🕐	kell üks
+🕜	üks kolmkümmend
+🕑	kell kaks
+🕝	kaks kolmkümmend
+🕒	kell kolm
+🕞	kolm kolmkümmend
+🕓	kell neli
+🕟	neli kolmkümmend
+🕔	kell viis
+🕠	viis kolmkümmend
+🕕	kell kuus
+🕡	pool kuus
+🕖	kell seitse
+🕢	seitse kolmkümmend
+🕗	kell kaheksa
+🕣	pool kaheksa
+🕘	kell üheksa
+🕤	üheksa kolmkümmend
+🕙	kell kümme
+🕥	kümme kolmkümmend
+🕚	kell üksteist
+🕦	üksteist kolmkümmend
+🌑	uus kuu
+🌒	kasvav poolkuu
+🌓	esimene veerand kuu
+🌔	kasvav suur kuu
+🌕	täiskuu
+🌖	kahanev gibbous moon
+🌗	viimane veerand kuu
+🌘	kahanev poolkuu
+🌙	poolkuu
+🌚	noorkuu nägu
+🌛	esimene veerand kuu nägu
+🌜	viimase veerandi kuu nägu
+🌡️	termomeeter
+🌡	termomeeter
+☀️	päike
+☀	päike
+🌝	täiskuu nägu
+🌞	päike näoga
+⭐	täht
+🌟	helendav täht
+🌠	langev täht
+☁️	pilv
+☁	pilv
+⛅	päike pilve taga
+⛈️	pilv koos välgu ja vihmaga
+⛈	pilv koos välgu ja vihmaga
+🌤️	päike väikese pilve taga
+🌤	päike väikese pilve taga
+🌥️	päike suure pilve taga
+🌥	päike suure pilve taga
+🌦️	päike vihmapilve taga
+🌦	päike vihmapilve taga
+🌧️	pilv vihmaga
+🌧	pilv vihmaga
+🌨️	pilv lumega
+🌨	pilv lumega
+🌩️	pilv välguga
+🌩	pilv välguga
+🌪️	tornaado
+🌪	tornaado
+🌫️	udu
+🌫	udu
+🌬️	tuule nägu
+🌬	tuule nägu
+🌀	tsüklon
+🌈	vikerkaar
+🌂	kinnine vihmavari
+☂️	vihmavari
+☂	vihmavari
+☔	vihmapiiskadega vihmavari
+⛱️	vihmavari maas
+⛱	vihmavari maas
+⚡	kõrgepinge
+❄️	lumehelves
+❄	lumehelves
+☃️	lumememm
+☃	lumememm
+⛄	lumememm ilma lumeta
+☄️	komeet
+☄	komeet
+🔥	tulekahju
+💧	tilk
+🌊	vee laine
+🎃	jack-o-latern
+🎄	jõulupuu
+🎆	ilutulestik
+🎇	säraküünal
+🧨	paugutaja
+✨	sädeleb
+🎈	õhupall
+🎉	pidu popper
+🎊	konfetipall
+🎋	tanabata puu
+🎍	männi kaunistus
+🎎	Jaapani nukud
+🎏	karpkala streamer
+🎐	tuulekell
+🎑	kuu vaatamise tseremoonia
+🧧	punane ümbrik
+🎀	Pael
+🎁	pakitud kingitus
+🎗️	meeldetuletuslint
+🎗	meeldetuletuslint
+🎟️	sissepääsupiletid
+🎟	sissepääsupiletid
+🎫	pilet
+🎖️	sõjaline medal
+🎖	sõjaline medal
+🏆	trofee
+🏅	spordimedal
+🥇	I koha medal
+🥈	2. koha medal
+🥉	3. koha medal
+⚽	Jalgpall
+⚾	pesapall
+🥎	softball
+🏀	korvpalli
+🏐	võrkpall
+🏈	Ameerika jalgpall
+🏉	ragbi jalgpall
+🎾	tennis
+🥏	lendav ketas
+🎳	bowling
+🏏	kriketimäng
+🏑	maahoki
+🏒	jäähoki
+🥍	lakrossi
+🏓	lauatennis
+🏸	sulgpall
+🥊	poksikinnas
+🥋	võitluskunstide vormiriietus
+🥅	väravavõrk
+⛳	lipp augus
+⛸️	uisk
+⛸	uisk
+🎣	kalapuuk
+🎽	jooksusärk
+🎿	suusad
+🛷	kelk
+🥌	lokikivi
+🎯	otsetabamus
+🎱	piljard 8 palli
+🔮	kristallkuul
+🧿	nazari amulett
+🎮	videomäng
+🕹️	juhtkangi
+🕹	juhtkangi
+🎰	mänguautomaat
+🎲	mängu surra
+🧩	pusle
+🧸	kaisukaru
+♠️	labidaülikond
+♠	labidaülikond
+♥️	südame ülikond
+♥	südame ülikond
+♦️	teemantülikond
+♦	teemantülikond
+♣️	klubi ülikond
+♣	klubi ülikond
+♟️	male ettur
+♟	male ettur
+🃏	naljamees
+🀄	mahjong punane draakon
+🎴	lillede mängukaardid
+🎭	etenduskunstid
+🖼️	raamitud pilt
+🖼	raamitud pilt
+🎨	kunstniku palett
+🧵	niit
+🧶	lõng
+🔇	vaigistatud kõlar
+🔈	kõlari madal helitugevus
+🔉	kõlar keskmise helitugevusega
+🔊	kõlari kõrge helitugevus
+📢	valjuhääldi
+📣	megafon
+📯	postisarv
+🔔	kelluke
+🔕	kaldkriipsuga kelluke
+🎼	muusikaline partituur
+🎵	muusikaline noot
+🎶	noodid
+🎙️	stuudio mikrofon
+🎙	stuudio mikrofon
+🎚️	taseme liugur
+🎚	taseme liugur
+🎛️	juhtnupud
+🎛	juhtnupud
+🎤	mikrofon
+🎧	kõrvaklapid
+📻	raadio
+🎷	saksofon
+🎸	kitarr
+🎹	muusikaline klaviatuur
+🎺	trompet
+🎻	viiul
+🥁	trumm
+📱	mobiiltelefon
+📲	noolega mobiiltelefon
+☎️	telefon
+☎	telefon
+📞	telefoni vastuvõtja
+📟	piipar
+📠	faksiaparaat
+🔋	aku
+🔌	elektripistik
+💻	sülearvuti
+🖥️	lauaarvuti
+🖥	lauaarvuti
+🖨️	printer
+🖨	printer
+⌨️	klaviatuur
+⌨	klaviatuur
+🖱️	arvutihiir
+🖱	arvutihiir
+🖲️	juhtkuul
+🖲	juhtkuul
+💽	arvuti ketas
+💾	flopiketas
+💿	optiline ketas
+📀	dvd
+🧮	aabits
+🎥	filmikaamera
+🎞️	filmikaadrid
+🎞	filmikaadrid
+📽️	filmiprojektor
+📽	filmiprojektor
+🎬	plaksulaud
+📺	televiisor
+📷	kaamera
+📸	kaamera koos välguga
+📹	videokaamera
+📼	videokassett
+🔍	suurendusklaas vasakule kallutatud
+🔎	suurendusklaas paremale kallutatud
+🕯️	küünal
+🕯	küünal
+💡	lambipirn
+🔦	taskulamp
+🏮	punane paberist latern
+📔	dekoratiivse kaanega märkmik
+📕	suletud raamat
+📖	avatud raamat
+📗	roheline raamat
+📘	sinine raamat
+📙	oranž raamat
+📚	raamatuid
+📓	märkmik
+📒	pearaamat
+📃	lokiga leht
+📜	kerige
+📄	leht ülespoole
+📰	ajaleht
+🗞️	kokkurullitud ajaleht
+🗞	kokkurullitud ajaleht
+📑	järjehoidjate vahelehed
+🔖	järjehoidja
+🏷️	silt
+🏷	silt
+💰	rahakott
+💴	jeeni pangatäht
+💵	dollari pangatäht
+💶	euro pangatäht
+💷	naelane pangatäht
+💸	tiibadega raha
+💳	krediitkaart
+🧾	kviitung
+💹	diagramm kasvab jeeniga
+💱	Valuutavahetus
+💲	raske dollari märk
+✉️	ümbrik
+✉	ümbrik
+📧	e-mail
+📨	sissetulev ümbrik
+📩	noolega ümbrik
+📤	väljamineku salv
+📥	postkasti salv
+📦	pakett
+📫	suletud postkast ülestõstetud lipuga
+📪	suletud postkast langetatud lipuga
+📬	avatud postkast ülestõstetud lipuga
+📭	avatud postkast langetatud lipuga
+📮	postkast
+🗳️	hääletuskast hääletussedeliga
+🗳	hääletuskast hääletussedeliga
+✏️	pliiats
+✏	pliiats
+✒️	must nib
+✒	must nib
+🖋️	täitesulepea
+🖋	täitesulepea
+🖊️	pliiats
+🖊	pliiats
+🖌️	pintsel
+🖌	pintsel
+🖍️	värvipliiats
+🖍	värvipliiats
+📝	memo
+💼	kohver
+📁	faili kaust
+📂	ava failikaust
+🗂️	kartoteegijagajad
+🗂	kartoteegijagajad
+📅	kalender
+📆	ärarebitav kalender
+🗒️	spiraalne märkmik
+🗒	spiraalne märkmik
+🗓️	spiraalkalender
+🗓	spiraalkalender
+📇	kartoteek
+📈	diagramm suureneb
+📉	diagramm väheneb
+📊	tulpdiagramm
+📋	lõikelaud
+📌	nööpnõel
+📍	ümmargune nööpnõel
+📎	kirjaklamber
+🖇️	lingitud kirjaklambrid
+🖇	lingitud kirjaklambrid
+📏	sirge joonlaud
+📐	kolmnurkne joonlaud
+✂️	käärid
+✂	käärid
+🗃️	kaardi failikast
+🗃	kaardi failikast
+🗄️	failikapp
+🗄	failikapp
+🗑️	prügikorv
+🗑	prügikorv
+🔒	lukus
+🔓	lukustamata
+🔏	lukustatud pliiatsiga
+🔐	võtmega lukustatud
+🔑	võti
+🗝️	vana võti
+🗝	vana võti
+🔨	haamer
+⛏️	korjama
+⛏	korjama
+⚒️	haamer ja vali
+⚒	haamer ja vali
+🛠️	haamer ja mutrivõti
+🛠	haamer ja mutrivõti
+🗡️	pistoda
+🗡	pistoda
+⚔️	ristatud mõõgad
+⚔	ristatud mõõgad
+🔫	püstol
+🏹	vibu ja nool
+🛡️	kilp
+🛡	kilp
+🔧	mutrivõti
+🔩	mutter ja polt
+⚙️	käik
+⚙	käik
+🗜️	klamber
+🗜	klamber
+⚖️	tasakaalu skaala
+⚖	tasakaalu skaala
+🔗	link
+⛓️	ketid
+⛓	ketid
+🧰	tööriistakast
+🧲	magnet
+⚗️	alembic
+⚗	alembic
+🧪	katseklaas
+🧫	petri tassis
+🧬	DNA
+🔬	mikroskoop
+🔭	teleskoop
+📡	satelliidi antenn
+💉	süstal
+💊	tablett
+🚪	uks
+🛏️	voodi
+🛏	voodi
+🛋️	diivan ja lamp
+🛋	diivan ja lamp
+🚽	tualettruum
+🚿	dušš
+🛁	vann
+🧴	losjooni pudel
+🧷	haaknõel
+🧹	luud
+🧺	korv
+🧻	paberirull
+🧼	seep
+🧽	käsn
+🧯	tulekustuti
+🛒	Ostukorv
+🚬	sigaret
+⚰️	kirstu
+⚰	kirstu
+⚱️	matuseurn
+⚱	matuseurn
+🗿	moai
+🏧	Pangaautomaadi silt
+🚮	prügikasti märk
+🚰	joogivesi
+♿	ratastooli sümbol
+🚹	meeste tualett
+🚺	naiste tuba
+🚻	tualettruum
+🚼	beebi sümbol
+🚾	Vesivoodi
+🛂	passikontroll
+🛃	kombed
+🛄	pagasi kättesaamine
+🛅	jäetud pagas
+⚠️	hoiatus
+⚠	hoiatus
+🚸	lapsed ületavad
+⛔	sissepääs puudub
+🚫	keelatud
+🚳	pole jalgrattaid
+🚭	Suitsetamine keelatud
+🚯	ei mingit prügi
+🚱	joogikõlbmatu vesi
+🚷	jalakäijaid pole
+📵	pole mobiiltelefone
+🔞	mitte keegi alla kaheksateistkümne
+☢️	radioaktiivsed
+☢	radioaktiivsed
+☣️	biooht
+☣	biooht
+⬆️	nool üles
+⬆	nool üles
+↗️	nool üles-paremale
+↗	nool üles-paremale
+➡️	parem nool
+➡	parem nool
+↘️	nool alla-paremale
+↘	nool alla-paremale
+⬇️	alla nool
+⬇	alla nool
+↙️	nool alla-vasakule
+↙	nool alla-vasakule
+⬅️	vasak nool
+⬅	vasak nool
+↖️	üles-vasak nool
+↖	üles-vasak nool
+↕️	üles-alla nool
+↕	üles-alla nool
+↔️	vasak-parem nool
+↔	vasak-parem nool
+↩️	vasakule kaarduv paremnool
+↩	vasakule kaarduv paremnool
+↪️	paremale kaarduv vasak nool
+↪	paremale kaarduv vasak nool
+⤴️	üles kaarduv paremnool
+⤴	üles kaarduv paremnool
+⤵️	alla kaarduv paremnool
+⤵	alla kaarduv paremnool
+🔃	päripäeva vertikaalsed nooled
+🔄	vastupäeva nooled
+🔙	TAGASI nool
+🔚	LÕPP nool
+🔛	ON nool
+🔜	VARSTI nool
+🔝	TOP nool
+🛐	jumalateenistuse koht
+⚛️	aatomi sümbol
+⚛	aatomi sümbol
+🕉️	om
+🕉	om
+✡️	Taaveti täht
+✡	Taaveti täht
+☸️	dharma ratas
+☸	dharma ratas
+☯️	yin yang
+☯	yin yang
+✝️	ladina rist
+✝	ladina rist
+☦️	õigeusu rist
+☦	õigeusu rist
+☪️	täht ja poolkuu
+☪	täht ja poolkuu
+☮️	rahu sümbol
+☮	rahu sümbol
+🕎	menorah
+🔯	täpiline kuueharuline täht
+♈	Jäär
+♉	Sõnn
+♊	Kaksikud
+♋	Vähk
+♌	Leo
+♍	Neitsi
+♎	Kaalud
+♏	Skorpion
+♐	Ambur
+♑	Kaljukits
+♒	Veevalaja
+♓	Kalad
+⛎	Ophiuchus
+🔀	lugude segamise nupp
+🔁	kordamisnupp
+🔂	korrake ühte nuppu
+▶️	esitusnupp
+▶	esitusnupp
+⏩	edasikerimise nupp
+⏭️	järgmise loo nupp
+⏭	järgmise loo nupp
+⏯️	esituse või pausi nupp
+⏯	esituse või pausi nupp
+◀️	tagurpidi nupp
+◀	tagurpidi nupp
+⏪	kiire tagasikäigu nupp
+⏮️	viimase raja nupp
+⏮	viimase raja nupp
+🔼	ülespoole nuppu
+⏫	kiirnupp
+🔽	allapoole nuppu
+⏬	kiiralla nupp
+⏸️	pausi nupp
+⏸	pausi nupp
+⏹️	stopp nupp
+⏹	stopp nupp
+⏺️	salvestamise nupp
+⏺	salvestamise nupp
+⏏️	väljutusnupp
+⏏	väljutusnupp
+🎦	kino
+🔅	hämaras nupp
+🔆	hele nupp
+📶	antennivardad
+📳	vibratsioonirežiim
+📴	mobiiltelefon väljas
+♀️	naissoost märk
+♀	naissoost märk
+♂️	meessoost märk
+♂	meessoost märk
+⚕️	meditsiiniline sümbol
+⚕	meditsiiniline sümbol
+♾️	lõpmatus
+♾	lõpmatus
+♻️	taaskasutamise sümbol
+♻	taaskasutamise sümbol
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	kolmharkne embleem
+📛	nimemärk
+🔰	Jaapani sümbol algajale
+⭕	raske suur ring
+✅	valge raske linnuke
+☑️	tšekiga valimiskast
+☑	tšekiga valimiskast
+✔️	raske linnuke
+✔	raske linnuke
+✖️	raske korrutis x
+✖	raske korrutis x
+❌	ristimärk
+❎	ristimärgi nupp
+➕	raske plussmärk
+➖	raske miinusmärk
+➗	raske divisjoni märk
+➰	lokkis silmus
+➿	kahekordne lokkis aas
+〽️	osa vaheldusmärk
+〽	osa vaheldusmärk
+✳️	kaheksa kodaraga tärn
+✳	kaheksa kodaraga tärn
+✴️	kaheksaharuline täht
+✴	kaheksaharuline täht
+❇️	särama
+❇	särama
+‼️	kahekordne hüüumärk
+‼	kahekordne hüüumärk
+⁉️	hüüumärk küsimärk
+⁉	hüüumärk küsimärk
+❓	küsimärk
+❔	valge küsimärk
+❕	valge hüüumärk
+❗	hüüumärk
+〰️	laineline kriips
+〰	laineline kriips
+©️	autoriõigus
+©	autoriõigus
+®️	registreeritud
+®	registreeritud
+™️	kaubamärk
+™	kaubamärk
+#️⃣	klahvikate: #
+#⃣	klahvikate: #
+*️⃣	klahvikate: *
+*⃣	klahvikate: *
+0️⃣	klahvikate: 0
+0⃣	klahvikate: 0
+1️⃣	klahvikate: 1
+1⃣	klahvikate: 1
+2️⃣	klahvikate: 2
+2⃣	klahvikate: 2
+3️⃣	klahvikate: 3
+3⃣	klahvikate: 3
+4️⃣	klahvikate: 4
+4⃣	klahvikate: 4
+5️⃣	klahvikate: 5
+5⃣	klahvikate: 5
+6️⃣	klahvikate: 6
+6⃣	klahvikate: 6
+7️⃣	klahvikate: 7
+7⃣	klahvikate: 7
+8️⃣	klahvikate: 8
+8⃣	klahvikate: 8
+9️⃣	klahvikate: 9
+9⃣	klahvikate: 9
+🔟	klahvikate: 10
+💯	sada punkti
+🔠	sisestus ladina suurtähtedega
+🔡	sisestus ladina väiketähtedega
+🔢	sisestage numbrid
+🔣	sisestussümbolid
+🔤	sisestage ladina tähed
+🅰️	Nupp (veregrupp)
+🅰	Nupp (veregrupp)
+🆎	AB nupp (veregrupp)
+🅱️	B nupp (veregrupp)
+🅱	B nupp (veregrupp)
+🆑	CL nupp
+🆒	COOL nupp
+🆓	TASUTA nupp
+ℹ️	teavet
+ℹ	teavet
+🆔	ID nupp
+Ⓜ️	tegi ringi M
+Ⓜ	tegi ringi M
+🆕	UUS nupp
+🆖	NG nupp
+🅾️	O nupp (veregrupp)
+🅾	O nupp (veregrupp)
+🆗	OK nupp
+🅿️	P nupp
+🅿	P nupp
+🆘	SOS nupp
+🆙	UP nupp
+🆚	VS nupp
+🈁	Jaapani nupp "siin".
+🈂️	Jaapani nupp "teenustasu".
+🈂	Jaapani nupp "teenustasu".
+🈷️	Jaapani nupp "igakuine summa".
+🈷	Jaapani nupp "igakuine summa".
+🈶	Jaapani nupp "mitte tasuta".
+🈯	Jaapani nupp "reserveeritud".
+🉐	Jaapani nupp "sooduspakkumine".
+🈹	Jaapani nupp "allahindlus".
+🈚	Jaapani nupp "tasuta".
+🈲	Jaapani nupp "keelatud".
+🉑	Jaapani nupp "vastuvõetav".
+🈸	Jaapani nupp "rakendus".
+🈴	Jaapani nupp "hinne sooritamine".
+🈳	Jaapani nupp "vaba töökoht".
+㊗️	Jaapani nupp "Palju õnne".
+㊗	Jaapani nupp "Palju õnne".
+㊙️	Jaapani nupp "salajane".
+㊙	Jaapani nupp "salajane".
+🈺	Jaapani nupp "avatud äritegevuseks".
+🈵	Jaapani nupp "vabu kohti pole".
+▪️	must väike ruut
+▪	must väike ruut
+▫️	valge väike ruut
+▫	valge väike ruut
+◻️	valge keskmine ruut
+◻	valge keskmine ruut
+◼️	must keskmine ruut
+◼	must keskmine ruut
+◽	valge keskmine-väike ruut
+◾	must keskmine-väike ruut
+⬛	must suur ruut
+⬜	valge suur ruut
+🔶	suur oranž teemant
+🔷	suur sinine teemant
+🔸	väike oranž teemant
+🔹	väike sinine teemant
+🔺	punane kolmnurk suunatud üles
+🔻	punane kolmnurk suunatud alla
+💠	täpiga teemant
+🔘	Raadio nupp
+🔲	must ruudu nupp
+🔳	valge ruudu nupp
+⚪	valge ring
+⚫	must ring
+🔴	punane ring
+🔵	sinine ring
+🏁	ruuduline lipp
+🚩	kolmnurkne lipp
+🎌	ristatud lipud
+🏴	must lipp
+🏳️	valge lipp
+🏳	valge lipp
+🏳️‍🌈	vikerkaare lipp
+🏳‍🌈	vikerkaare lipp
+🏴‍☠️	piraadi lipp
+🏴‍☠	piraadi lipp
+🇦🇨	Ascensioni saar
+🇦🇩	Andorra
+🇦🇪	Araabia Ühendemiraadid
+🇦🇫	Afganistan
+🇦🇬	Antigua ja Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albaania
+🇦🇲	Armeenia
+🇦🇴	Angola
+🇦🇶	Antarktika
+🇦🇷	Argentina
+🇦🇸	Ameerika Samoa
+🇦🇹	Austria
+🇦🇺	Austraalia
+🇦🇼	Aruba
+🇦🇽	Ahvenamaa
+🇦🇿	Aserbaidžaan
+🇧🇦	Bosnia ja Hertsegoviina
+🇧🇧	Barbados
+🇧🇩	Bangladesh
+🇧🇪	Belgia
+🇧🇫	Burkina Faso
+🇧🇬	Bulgaaria
+🇧🇭	Bahrein
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	Püha Barthélemy
+🇧🇲	Bermuda
+🇧🇳	Brunei
+🇧🇴	Boliivia
+🇧🇶	Kariibi mere Holland
+🇧🇷	Brasiilia
+🇧🇸	Bahama
+🇧🇹	Bhutan
+🇧🇻	Bouvet' saar
+🇧🇼	Botswana
+🇧🇾	Valgevene
+🇧🇿	Belize
+🇨🇦	Kanada
+🇨🇨	Kookose (Keelingi) saared
+🇨🇩	Kongo – Kinshasa
+🇨🇫	Kesk-Aafrika Vabariik
+🇨🇬	Kongo – Brazzaville
+🇨🇭	Šveits
+🇨🇮	Côte d’Ivoire
+🇨🇰	Cooki saared
+🇨🇱	Tšiili
+🇨🇲	Kamerun
+🇨🇳	Hiina
+🇨🇴	Kolumbia
+🇨🇵	Clippertoni saar
+🇨🇷	Costa Rica
+🇨🇺	Kuuba
+🇨🇻	Roheneemesaared
+🇨🇼	Curaçao
+🇨🇽	Jõulusaar
+🇨🇾	Küpros
+🇨🇿	Tšehhi
+🇩🇪	Saksamaa
+🇩🇬	Diego Garcia
+🇩🇯	Djibouti
+🇩🇰	Taani
+🇩🇲	Dominica
+🇩🇴	Dominikaani Vabariik
+🇩🇿	Alžeeria
+🇪🇦	Ceuta ja Melilla
+🇪🇨	Ecuador
+🇪🇪	Eesti
+🇪🇬	Egiptus
+🇪🇭	Lääne-Sahara
+🇪🇷	Eritrea
+🇪🇸	Hispaania
+🇪🇹	Etioopia
+🇪🇺	Euroopa Liit
+🇫🇮	Soome
+🇫🇯	Fidži
+🇫🇰	Falklandi saared
+🇫🇲	Mikroneesia
+🇫🇴	Fääri saared
+🇫🇷	Prantsusmaa
+🇬🇦	Gabon
+🇬🇧	Ühendkuningriik
+🇬🇩	Grenada
+🇬🇪	Gruusia
+🇬🇫	Prantsuse Guajaana
+🇬🇬	Guernsey
+🇬🇭	Ghana
+🇬🇮	Gibraltar
+🇬🇱	Gröönimaa
+🇬🇲	Gambia
+🇬🇳	Guinea
+🇬🇵	Guadeloupe
+🇬🇶	Ekvatoriaalne Guinea
+🇬🇷	Kreeka
+🇬🇸	Lõuna-Georgia ja Lõuna-Sandwichi saared
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinea-Bissau
+🇬🇾	Guajaana
+🇭🇰	Hongkongi erihalduspiirkond Hiina
+🇭🇲	Heardi ja McDonaldi saared
+🇭🇳	Honduras
+🇭🇷	Horvaatia
+🇭🇹	Haiti
+🇭🇺	Ungari
+🇮🇨	Kanaari saared
+🇮🇩	Indoneesia
+🇮🇪	Iirimaa
+🇮🇱	Iisrael
+🇮🇲	Mani saar
+🇮🇳	India
+🇮🇴	Briti India ookeani territoorium
+🇮🇶	Iraak
+🇮🇷	Iraan
+🇮🇸	Island
+🇮🇹	Itaalia
+🇯🇪	Jersey
+🇯🇲	Jamaica
+🇯🇴	Jordaania
+🇯🇵	Jaapan
+🇰🇪	Keenia
+🇰🇬	Kõrgõzstan
+🇰🇭	Kambodža
+🇰🇮	Kiribati
+🇰🇲	Komoorid
+🇰🇳	St Kitts ja Nevis
+🇰🇵	Põhja-Korea
+🇰🇷	Lõuna-Korea
+🇰🇼	Kuveit
+🇰🇾	Kaimani saared
+🇰🇿	Kasahstan
+🇱🇦	Laos
+🇱🇧	Liibanon
+🇱🇨	Püha Lucia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Libeeria
+🇱🇸	Lesotho
+🇱🇹	Leedu
+🇱🇺	Luksemburg
+🇱🇻	Läti
+🇱🇾	Liibüa
+🇲🇦	Maroko
+🇲🇨	Monaco
+🇲🇩	Moldova
+🇲🇪	Montenegro
+🇲🇫	Püha Martin
+🇲🇬	Madagaskar
+🇲🇭	Marshalli saared
+🇲🇰	Makedoonia
+🇲🇱	Mali
+🇲🇲	Myanmar (Birma)
+🇲🇳	Mongoolia
+🇲🇴	Macau SAR Hiina
+🇲🇵	Põhja-Mariaanid
+🇲🇶	Martinique
+🇲🇷	Mauritaania
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mauritius
+🇲🇻	Maldiivid
+🇲🇼	Malawi
+🇲🇽	Mehhiko
+🇲🇾	Malaisia
+🇲🇿	Mosambiik
+🇳🇦	Namiibia
+🇳🇨	Uus-Kaledoonia
+🇳🇪	Niger
+🇳🇫	Norfolki saar
+🇳🇬	Nigeeria
+🇳🇮	Nicaragua
+🇳🇱	Holland
+🇳🇴	Norra
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Uus-Meremaa
+🇴🇲	Omaan
+🇵🇦	Panama
+🇵🇪	Peruu
+🇵🇫	Prantsuse Polüneesia
+🇵🇬	Paapua Uus-Guinea
+🇵🇭	Filipiinid
+🇵🇰	Pakistan
+🇵🇱	Poola
+🇵🇲	St Pierre ja Miquelon
+🇵🇳	Pitcairni saared
+🇵🇷	Puerto Rico
+🇵🇸	Palestiina alad
+🇵🇹	Portugal
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Katar
+🇷🇪	Réunion
+🇷🇴	Rumeenia
+🇷🇸	Serbia
+🇷🇺	Venemaa
+🇷🇼	Rwanda
+🇸🇦	Saudi Araabia
+🇸🇧	Saalomoni saared
+🇸🇨	Seišellid
+🇸🇩	Sudaan
+🇸🇪	Rootsi
+🇸🇬	Singapur
+🇸🇭	Püha Helena
+🇸🇮	Sloveenia
+🇸🇯	Svalbard ja Jan Mayen
+🇸🇰	Slovakkia
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somaalia
+🇸🇷	Suriname
+🇸🇸	Lõuna-Sudaan
+🇸🇹	São Tomé ja Príncipe
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Süüria
+🇸🇿	Svaasimaa
+🇹🇦	Tristan da Cunha
+🇹🇨	Turksi ja Caicose saared
+🇹🇩	Tšaad
+🇹🇫	Prantsuse lõunaterritooriumid
+🇹🇬	Minema
+🇹🇭	Tai
+🇹🇯	Tadžikistan
+🇹🇰	Tokelau
+🇹🇱	Ida-Timor
+🇹🇲	Türkmenistan
+🇹🇳	Tuneesia
+🇹🇴	Tonga
+🇹🇷	Türgi
+🇹🇹	Trinidad ja Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taiwan
+🇹🇿	Tansaania
+🇺🇦	Ukraina
+🇺🇬	Uganda
+🇺🇲	USA äärepoolsed saared
+🇺🇳	Ühendrahvad
+🇺🇸	Ühendriigid
+🇺🇾	Uruguay
+🇺🇿	Usbekistan
+🇻🇦	Vatikan
+🇻🇨	St Vincent ja Grenadiinid
+🇻🇪	Venezuela
+🇻🇬	Briti Neitsisaared
+🇻🇮	USA Neitsisaared
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis ja Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Jeemen
+🇾🇹	Mayotte
+🇿🇦	Lõuna-Aafrika
+🇿🇲	Sambia
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Inglismaa
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Šotimaa
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Wales

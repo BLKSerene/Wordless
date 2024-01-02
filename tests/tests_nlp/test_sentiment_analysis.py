@@ -21,14 +21,16 @@ import pytest
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_sentiment_analysis, wl_word_tokenization
 
-main = wl_test_init.Wl_Test_Main()
-wl_test_init.change_default_tokenizers(main)
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 test_sentiment_analyzers = []
 
 for lang, sentiment_analyzers in main.settings_global['sentiment_analyzers'].items():
     for sentiment_analyzer in sentiment_analyzers:
-        if not sentiment_analyzer.startswith('stanza_'):
+        if (
+            lang not in ['mya']
+            and not sentiment_analyzer.startswith('stanza_')
+        ):
             test_sentiment_analyzers.append((lang, sentiment_analyzer))
 
 @pytest.mark.parametrize('lang, sentiment_analyzer', test_sentiment_analyzers)

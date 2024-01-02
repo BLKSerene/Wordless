@@ -30,7 +30,7 @@ from PyQt5.QtWidgets import QDialog, QGroupBox, QPushButton, QStackedWidget, QTa
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_measures import wl_measures_lexical_diversity, wl_measures_misc, wl_measures_readability
-from wordless.wl_nlp import wl_texts, wl_token_preprocessing
+from wordless.wl_nlp import wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -1163,7 +1163,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
             for file in files:
                 text = copy.deepcopy(file['text'])
-                text = wl_token_preprocessing.wl_preprocess_tokens_profiler(
+                text = wl_token_processing.wl_process_tokens_profiler(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )

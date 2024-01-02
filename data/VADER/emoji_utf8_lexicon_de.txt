@@ -1,0 +1,3570 @@
+😀	grinsendes Gesicht
+😁	strahlendes Gesicht mit lächelnden Augen
+😂	Gesicht mit Freudentränen
+🤣	lachend auf dem Boden wälzend
+😃	grinsendes Gesicht mit großen Augen
+😄	grinsendes Gesicht mit lächelnden Augen
+😅	grinsendes Gesicht mit Schweiß
+😆	grinsendes, zusammengekniffenes Gesicht
+😉	zwinkerndes Gesicht
+😊	lächelndes Gesicht mit lächelnden Augen
+😋	Gesicht genießen Essen
+😎	lächelndes Gesicht mit Sonnenbrille
+😍	lächelndes Gesicht mit Herzaugen
+😘	Gesicht bläst einen Kuss zu
+🥰	lächelndes Gesicht mit 3 Herzen
+😗	küssendes Gesicht
+😙	küssendes Gesicht mit lächelnden Augen
+😚	küssendes Gesicht mit geschlossenen Augen
+☺️	lächelndes Gesicht
+☺	lächelndes Gesicht
+🙂	leicht lächelndes Gesicht
+🤗	Gesicht umarmen
+🤩	sternenklar
+🤔	denkendes Gesicht
+🤨	Gesicht mit hochgezogener Augenbraue
+😐	neutrales Gesicht
+😑	ausdrucksloses Gesicht
+😶	Gesicht ohne Mund
+🙄	Gesicht mit rollenden Augen
+😏	grinsendes Gesicht
+😣	ausdauerndes Gesicht
+😥	trauriges, aber erleichtertes Gesicht
+😮	Gesicht mit offenem Mund
+🤐	Reißverschluss-Mundfläche
+😯	gedämpftes Gesicht
+😪	verschlafenes Gesicht
+😫	müdes Gesicht
+😴	schlafendes Gesicht
+😌	erleichtertes Gesicht
+😛	Gesicht mit Zunge
+😜	zwinkerndes Gesicht mit Zunge
+😝	schielendes Gesicht mit Zunge
+🤤	sabberndes Gesicht
+😒	unbeeindrucktes Gesicht
+😓	niedergeschlagenes Gesicht mit Schweiß
+😔	nachdenkliches Gesicht
+😕	verwirrtes Gesicht
+🙃	auf dem Kopf stehendes Gesicht
+🤑	Geldmundgesicht
+😲	erstauntes Gesicht
+☹️	Stirnrunzelndes Gesicht
+☹	Stirnrunzelndes Gesicht
+🙁	leicht stirnrunzelndes Gesicht
+😖	verwirrtes Gesicht
+😞	enttäuschtes Gesicht
+😟	besorgtes Gesicht
+😤	Gesicht mit Dampf aus der Nase
+😢	weinendes Gesicht
+😭	laut weinendes Gesicht
+😦	Stirnrunzelndes Gesicht mit offenem Mund
+😧	gequältes Gesicht
+😨	ängstliches Gesicht
+😩	müdes Gesicht
+🤯	explodierender Kopf
+😬	grimassierendes Gesicht
+😰	besorgtes Gesicht mit Schweiß
+😱	Gesicht schreit vor Angst
+🥵	heißes Gesicht
+🥶	kaltes Gesicht
+😳	errötetes Gesicht
+🤪	verrücktes Gesicht
+😵	schwindliges Gesicht
+😡	schmollendes Gesicht
+😠	wütendes Gesicht
+🤬	Gesicht mit Symbolen auf dem Mund
+😷	Gesicht mit medizinischer Maske
+🤒	Gesicht mit Thermometer
+🤕	Gesicht mit Kopfverband
+🤢	Übelkeit im Gesicht
+🤮	Erbrechen im Gesicht
+🤧	niesendes Gesicht
+😇	lächelndes Gesicht mit Heiligenschein
+🤠	Cowboyhut-Gesicht
+🥳	Partygesicht
+🥴	benommenes Gesicht
+🥺	flehendes Gesicht
+🤥	lügendes Gesicht
+🤫	schweigsames Gesicht
+🤭	Gesicht mit der Hand vor dem Mund
+🧐	Gesicht mit Monokel
+🤓	Nerd-Gesicht
+😈	lächelndes Gesicht mit Hörnern
+👿	wütendes Gesicht mit Hörnern
+🤡	Clowngesicht
+👹	Oger
+👺	Kobold
+💀	Schädel
+☠️	Totenkopf
+☠	Totenkopf
+👻	Geist
+👽	Außerirdischer
+👾	außerirdisches Monster
+🤖	Robotergesicht
+💩	Haufen Kot
+😺	grinsendes Katzengesicht
+😸	grinsendes Katzengesicht mit lächelnden Augen
+😹	Katzengesicht mit Freudentränen
+😻	lächelndes Katzengesicht mit Herzaugen
+😼	Katzengesicht mit schiefem Lächeln
+😽	Katzengesicht küssen
+🙀	müdes Katzengesicht
+😿	weinendes Katzengesicht
+😾	schmollendes Katzengesicht
+🙈	Affe, der nichts Böses sieht
+🙉	Affe, der nichts Böses hört
+🙊	Nichts Böses sagender Affe
+🏻	heller Hautton
+🏼	mittelheller Hautton
+🏽	mittlerer Hautton
+🏾	mitteldunkler Hautton
+🏿	dunkler Hautton
+👶	Baby
+👶🏻	Baby: heller Hautton
+👶🏼	Baby: mittelheller Hautton
+👶🏽	Baby: mittlerer Hautton
+👶🏾	Baby: mitteldunkler Hautton
+👶🏿	Baby: dunkler Hautton
+🧒	Kind
+🧒🏻	Kind: heller Hautton
+🧒🏼	Kind: mittelheller Hautton
+🧒🏽	Kind: mittlerer Hautton
+🧒🏾	Kind: mitteldunkler Hautton
+🧒🏿	Kind: dunkler Hautton
+👦	Junge
+👦🏻	Junge: helle Hautfarbe
+👦🏼	Junge: mittelheller Hautton
+👦🏽	Junge: mittlerer Hautton
+👦🏾	Junge: mitteldunkle Hautfarbe
+👦🏿	Junge: dunkle Hautfarbe
+👧	Mädchen
+👧🏻	Mädchen: helle Hautfarbe
+👧🏼	Mädchen: mittelheller Hautton
+👧🏽	Mädchen: mittlerer Hautton
+👧🏾	Mädchen: mitteldunkler Hautton
+👧🏿	Mädchen: dunkle Hautfarbe
+🧑	Erwachsene
+🧑🏻	Erwachsener: heller Hautton
+🧑🏼	Erwachsener: mittelheller Hautton
+🧑🏽	Erwachsener: mittlerer Hautton
+🧑🏾	Erwachsener: mitteldunkler Hautton
+🧑🏿	Erwachsener: dunkler Hautton
+👨	Mann
+👨🏻	Mann: helle Hautfarbe
+👨🏼	Mann: mittelheller Hautton
+👨🏽	Mann: mittlerer Hautton
+👨🏾	Mann: mitteldunkle Hautfarbe
+👨🏿	Mann: dunkle Hautfarbe
+👩	Frau
+👩🏻	Frau: helle Hautfarbe
+👩🏼	Frau: mittelheller Hautton
+👩🏽	Frau: mittlerer Hautton
+👩🏾	Frau: mitteldunkler Hautton
+👩🏿	Frau: dunkle Hautfarbe
+🧓	älterer Erwachsener
+🧓🏻	älterer Erwachsener: heller Hautton
+🧓🏼	älterer Erwachsener: mittelheller Hautton
+🧓🏽	älterer Erwachsener: mittlerer Hautton
+🧓🏾	älterer Erwachsener: mitteldunkler Hautton
+🧓🏿	älterer Erwachsener: dunkler Hautton
+👴	Alter Mann
+👴🏻	Alter Mann: helle Hautfarbe
+👴🏼	Alter Mann: mittelhelle Hautfarbe
+👴🏽	Alter Mann: mittlere Hautfarbe
+👴🏾	Alter Mann: mitteldunkle Hautfarbe
+👴🏿	Alter Mann: dunkle Hautfarbe
+👵	alte Frau
+👵🏻	alte Frau: helle Hautfarbe
+👵🏼	alte Frau: mittelhelle Hautfarbe
+👵🏽	alte Frau: mittlere Hautfarbe
+👵🏾	alte Frau: mitteldunkle Hautfarbe
+👵🏿	alte Frau: dunkle Hautfarbe
+👨‍⚕️	Mann, Gesundheitshelfer
+👨‍⚕	Mann, Gesundheitshelfer
+👨🏻‍⚕️	Mann im Gesundheitswesen: helle Hautfarbe
+👨🏻‍⚕	Mann im Gesundheitswesen: helle Hautfarbe
+👨🏼‍⚕️	Mann im Gesundheitswesen: mittelhelle Hautfarbe
+👨🏼‍⚕	Mann im Gesundheitswesen: mittelhelle Hautfarbe
+👨🏽‍⚕️	Mann im Gesundheitswesen: mittlere Hautfarbe
+👨🏽‍⚕	Mann im Gesundheitswesen: mittlere Hautfarbe
+👨🏾‍⚕️	Mann im Gesundheitswesen: mitteldunkle Hautfarbe
+👨🏾‍⚕	Mann im Gesundheitswesen: mitteldunkle Hautfarbe
+👨🏿‍⚕️	Mann im Gesundheitswesen: dunkle Hautfarbe
+👨🏿‍⚕	Mann im Gesundheitswesen: dunkle Hautfarbe
+👩‍⚕️	Frau im Gesundheitswesen
+👩‍⚕	Frau im Gesundheitswesen
+👩🏻‍⚕️	Gesundheitshelferin: helle Hautfarbe
+👩🏻‍⚕	Gesundheitshelferin: helle Hautfarbe
+👩🏼‍⚕️	Frau im Gesundheitswesen: mittelhelle Hautfarbe
+👩🏼‍⚕	Frau im Gesundheitswesen: mittelhelle Hautfarbe
+👩🏽‍⚕️	Gesundheitshelferin: mittlere Hautfarbe
+👩🏽‍⚕	Gesundheitshelferin: mittlere Hautfarbe
+👩🏾‍⚕️	Gesundheitshelferin: mitteldunkle Hautfarbe
+👩🏾‍⚕	Gesundheitshelferin: mitteldunkle Hautfarbe
+👩🏿‍⚕️	Gesundheitshelferin: dunkle Hautfarbe
+👩🏿‍⚕	Gesundheitshelferin: dunkle Hautfarbe
+👨‍🎓	Mann Student
+👨🏻‍🎓	Student: helle Hautfarbe
+👨🏼‍🎓	männlicher Student: mittelhelle Hautfarbe
+👨🏽‍🎓	Männlicher Student: mittlere Hautfarbe
+👨🏾‍🎓	männlicher Student: mitteldunkle Hautfarbe
+👨🏿‍🎓	Männlicher Student: dunkle Hautfarbe
+👩‍🎓	Studentin
+👩🏻‍🎓	Studentin: helle Hautfarbe
+👩🏼‍🎓	Studentin: mittelhelle Hautfarbe
+👩🏽‍🎓	Studentin: mittlere Hautfarbe
+👩🏾‍🎓	Studentin: mitteldunkle Hautfarbe
+👩🏿‍🎓	Studentin: dunkle Hautfarbe
+👨‍🏫	Mann Lehrer
+👨🏻‍🏫	männlicher Lehrer: helle Hautfarbe
+👨🏼‍🏫	männlicher Lehrer: mittelhelle Hautfarbe
+👨🏽‍🏫	männlicher Lehrer: mittlere Hautfarbe
+👨🏾‍🏫	männlicher Lehrer: mitteldunkle Hautfarbe
+👨🏿‍🏫	männlicher Lehrer: dunkle Hautfarbe
+👩‍🏫	Frau Lehrerin
+👩🏻‍🏫	Lehrerin: helle Hautfarbe
+👩🏼‍🏫	Lehrerin: mittelhelle Hautfarbe
+👩🏽‍🏫	Lehrerin: mittlere Hautfarbe
+👩🏾‍🏫	Lehrerin: mitteldunkle Hautfarbe
+👩🏿‍🏫	Lehrerin: dunkle Hautfarbe
+👨‍⚖️	Mann Richter
+👨‍⚖	Mann Richter
+👨🏻‍⚖️	Mann Richter: helle Hautfarbe
+👨🏻‍⚖	Mann Richter: helle Hautfarbe
+👨🏼‍⚖️	Mann Richter: mittelhelle Hautfarbe
+👨🏼‍⚖	Mann Richter: mittelhelle Hautfarbe
+👨🏽‍⚖️	Mann Richter: mittlere Hautfarbe
+👨🏽‍⚖	Mann Richter: mittlere Hautfarbe
+👨🏾‍⚖️	Mann Richter: mitteldunkle Hautfarbe
+👨🏾‍⚖	Mann Richter: mitteldunkle Hautfarbe
+👨🏿‍⚖️	Mann Richter: dunkle Hautfarbe
+👨🏿‍⚖	Mann Richter: dunkle Hautfarbe
+👩‍⚖️	Richterin
+👩‍⚖	Richterin
+👩🏻‍⚖️	Richterin: helle Hautfarbe
+👩🏻‍⚖	Richterin: helle Hautfarbe
+👩🏼‍⚖️	Richterin: mittelhelle Hautfarbe
+👩🏼‍⚖	Richterin: mittelhelle Hautfarbe
+👩🏽‍⚖️	Richterin: mittlere Hautfarbe
+👩🏽‍⚖	Richterin: mittlere Hautfarbe
+👩🏾‍⚖️	Richterin: mitteldunkle Hautfarbe
+👩🏾‍⚖	Richterin: mitteldunkle Hautfarbe
+👩🏿‍⚖️	Richterin: dunkle Hautfarbe
+👩🏿‍⚖	Richterin: dunkle Hautfarbe
+👨‍🌾	Mann Bauer
+👨🏻‍🌾	Mann Bauer: helle Hautfarbe
+👨🏼‍🌾	Mann Bauer: mittelhelle Hautfarbe
+👨🏽‍🌾	Mann Bauer: mittlere Hautfarbe
+👨🏾‍🌾	Mann Bauer: mitteldunkle Hautfarbe
+👨🏿‍🌾	Mann Bauer: dunkle Hautfarbe
+👩‍🌾	Bäuerin
+👩🏻‍🌾	Bäuerin: helle Hautfarbe
+👩🏼‍🌾	Bäuerin: mittelhelle Hautfarbe
+👩🏽‍🌾	Bäuerin: mittlere Hautfarbe
+👩🏾‍🌾	Bäuerin: mitteldunkle Hautfarbe
+👩🏿‍🌾	Bäuerin: dunkle Hautfarbe
+👨‍🍳	Mann Koch
+👨🏻‍🍳	Mann Koch: helle Hautfarbe
+👨🏼‍🍳	Mann Koch: mittelhelle Hautfarbe
+👨🏽‍🍳	Koch: mittlere Hautfarbe
+👨🏾‍🍳	Mann Koch: mitteldunkle Hautfarbe
+👨🏿‍🍳	Mann Koch: dunkle Hautfarbe
+👩‍🍳	Frau Köchin
+👩🏻‍🍳	Köchin: helle Hautfarbe
+👩🏼‍🍳	Köchin: mittelhelle Hautfarbe
+👩🏽‍🍳	Köchin: mittlere Hautfarbe
+👩🏾‍🍳	Köchin: mitteldunkle Hautfarbe
+👩🏿‍🍳	Köchin: dunkle Hautfarbe
+👨‍🔧	Mann Mechaniker
+👨🏻‍🔧	Mann, Mechaniker: helle Hautfarbe
+👨🏼‍🔧	Mann, Mechaniker: mittelhelle Hautfarbe
+👨🏽‍🔧	Mann, Mechaniker: mittlere Hautfarbe
+👨🏾‍🔧	Mann Mechaniker: mitteldunkle Hautfarbe
+👨🏿‍🔧	Mann, Mechaniker: dunkle Hautfarbe
+👩‍🔧	Mechanikerin
+👩🏻‍🔧	Mechanikerin: helle Hautfarbe
+👩🏼‍🔧	Mechanikerin: mittelhelle Hautfarbe
+👩🏽‍🔧	Mechanikerin: mittlere Hautfarbe
+👩🏾‍🔧	Mechanikerin: mitteldunkle Hautfarbe
+👩🏿‍🔧	Mechanikerin: dunkle Hautfarbe
+👨‍🏭	Mann Fabrikarbeiter
+👨🏻‍🏭	Mann Fabrikarbeiter: helle Hautfarbe
+👨🏼‍🏭	Mann Fabrikarbeiter: mittelhelle Hautfarbe
+👨🏽‍🏭	Mann Fabrikarbeiter: mittlere Hautfarbe
+👨🏾‍🏭	Mann Fabrikarbeiter: mitteldunkle Hautfarbe
+👨🏿‍🏭	Mann Fabrikarbeiter: dunkle Hautfarbe
+👩‍🏭	Fabrikarbeiterin
+👩🏻‍🏭	Fabrikarbeiterin: helle Hautfarbe
+👩🏼‍🏭	Fabrikarbeiterin: mittelhelle Hautfarbe
+👩🏽‍🏭	Fabrikarbeiterin: mittlere Hautfarbe
+👩🏾‍🏭	Fabrikarbeiterin: mitteldunkle Hautfarbe
+👩🏿‍🏭	Fabrikarbeiterin: dunkle Hautfarbe
+👨‍💼	Mann, Büroangestellter
+👨🏻‍💼	Mann, Büroangestellter: helle Hautfarbe
+👨🏼‍💼	Mann, Büroangestellter: mittelhelle Hautfarbe
+👨🏽‍💼	Mann, Büroangestellter: mittlere Hautfarbe
+👨🏾‍💼	Mann, Büroangestellter: mitteldunkle Hautfarbe
+👨🏿‍💼	Mann im Büro: dunkle Hautfarbe
+👩‍💼	Büroangestellte Frau
+👩🏻‍💼	Büroangestellte: helle Hautfarbe
+👩🏼‍💼	Büroangestellte: mittelhelle Hautfarbe
+👩🏽‍💼	Büroangestellte: mittlere Hautfarbe
+👩🏾‍💼	Büroangestellte: mitteldunkle Hautfarbe
+👩🏿‍💼	Büroangestellte: dunkle Hautfarbe
+👨‍🔬	Mann Wissenschaftler
+👨🏻‍🔬	Wissenschaftler: helle Hautfarbe
+👨🏼‍🔬	Wissenschaftler: mittelhelle Hautfarbe
+👨🏽‍🔬	Wissenschaftler: mittlere Hautfarbe
+👨🏾‍🔬	männlicher Wissenschaftler: mitteldunkle Hautfarbe
+👨🏿‍🔬	Wissenschaftler: dunkle Hautfarbe
+👩‍🔬	Wissenschaftlerin
+👩🏻‍🔬	Wissenschaftlerin: helle Hautfarbe
+👩🏼‍🔬	Wissenschaftlerin: mittelhelle Hautfarbe
+👩🏽‍🔬	Wissenschaftlerin: mittlere Hautfarbe
+👩🏾‍🔬	Wissenschaftlerin: mitteldunkle Hautfarbe
+👩🏿‍🔬	Wissenschaftlerin: dunkle Hautfarbe
+👨‍💻	Mann Technologe
+👨🏻‍💻	Mann Technologe: helle Hautfarbe
+👨🏼‍💻	Mann Technologe: mittelhelle Hautfarbe
+👨🏽‍💻	Mann Technologe: mittlere Hautfarbe
+👨🏾‍💻	Mann Technologe: mitteldunkle Hautfarbe
+👨🏿‍💻	Mann Technologe: dunkle Hautfarbe
+👩‍💻	Frau Technologin
+👩🏻‍💻	Technologin: helle Hautfarbe
+👩🏼‍💻	Technologin: mittelhelle Hautfarbe
+👩🏽‍💻	Technologin: mittlere Hautfarbe
+👩🏾‍💻	Technologin: mitteldunkle Hautfarbe
+👩🏿‍💻	Technologin: dunkle Hautfarbe
+👨‍🎤	Mann Sänger
+👨🏻‍🎤	Sänger: helle Hautfarbe
+👨🏼‍🎤	Sänger: mittelhelle Hautfarbe
+👨🏽‍🎤	Sänger: mittlere Hautfarbe
+👨🏾‍🎤	Sänger: mitteldunkle Hautfarbe
+👨🏿‍🎤	Sänger: dunkle Hautfarbe
+👩‍🎤	Sängerin
+👩🏻‍🎤	Sängerin: helle Hautfarbe
+👩🏼‍🎤	Sängerin: mittelhelle Hautfarbe
+👩🏽‍🎤	Sängerin: mittlere Hautfarbe
+👩🏾‍🎤	Sängerin: mitteldunkle Hautfarbe
+👩🏿‍🎤	Sängerin: dunkle Hautfarbe
+👨‍🎨	Mann Künstler
+👨🏻‍🎨	Mann Künstler: helle Hautfarbe
+👨🏼‍🎨	Mann Künstler: mittelhelle Hautfarbe
+👨🏽‍🎨	Mann Künstler: mittlere Hautfarbe
+👨🏾‍🎨	Mann Künstler: mitteldunkle Hautfarbe
+👨🏿‍🎨	Mann Künstler: dunkle Hautfarbe
+👩‍🎨	Künstlerin
+👩🏻‍🎨	Künstlerin: helle Hautfarbe
+👩🏼‍🎨	Künstlerin: mittelheller Hautton
+👩🏽‍🎨	Künstlerin: mittlere Hautfarbe
+👩🏾‍🎨	Künstlerin: mitteldunkle Hautfarbe
+👩🏿‍🎨	Künstlerin: dunkle Hautfarbe
+👨‍✈️	Mann Pilot
+👨‍✈	Mann Pilot
+👨🏻‍✈️	männlicher Pilot: helle Hautfarbe
+👨🏻‍✈	männlicher Pilot: helle Hautfarbe
+👨🏼‍✈️	männlicher Pilot: mittelhelle Hautfarbe
+👨🏼‍✈	männlicher Pilot: mittelhelle Hautfarbe
+👨🏽‍✈️	männlicher Pilot: mittlere Hautfarbe
+👨🏽‍✈	männlicher Pilot: mittlere Hautfarbe
+👨🏾‍✈️	Mann Pilot: mitteldunkle Hautfarbe
+👨🏾‍✈	Mann Pilot: mitteldunkle Hautfarbe
+👨🏿‍✈️	Mann Pilot: dunkle Hautfarbe
+👨🏿‍✈	Mann Pilot: dunkle Hautfarbe
+👩‍✈️	Pilotin
+👩‍✈	Pilotin
+👩🏻‍✈️	Pilotin: helle Hautfarbe
+👩🏻‍✈	Pilotin: helle Hautfarbe
+👩🏼‍✈️	Pilotin: mittelhelle Hautfarbe
+👩🏼‍✈	Pilotin: mittelhelle Hautfarbe
+👩🏽‍✈️	Pilotin: mittlere Hautfarbe
+👩🏽‍✈	Pilotin: mittlere Hautfarbe
+👩🏾‍✈️	Pilotin: mitteldunkle Hautfarbe
+👩🏾‍✈	Pilotin: mitteldunkle Hautfarbe
+👩🏿‍✈️	Pilotin: dunkle Hautfarbe
+👩🏿‍✈	Pilotin: dunkle Hautfarbe
+👨‍🚀	Mann Astronaut
+👨🏻‍🚀	Mann Astronaut: helle Hautfarbe
+👨🏼‍🚀	Mann Astronaut: mittelhelle Hautfarbe
+👨🏽‍🚀	Mann Astronaut: mittlere Hautfarbe
+👨🏾‍🚀	Mann Astronaut: mitteldunkle Hautfarbe
+👨🏿‍🚀	Mann Astronaut: dunkle Hautfarbe
+👩‍🚀	Astronautin
+👩🏻‍🚀	Astronautin: helle Hautfarbe
+👩🏼‍🚀	Astronautin: mittelhelle Hautfarbe
+👩🏽‍🚀	Astronautin: mittlere Hautfarbe
+👩🏾‍🚀	Astronautin: mitteldunkle Hautfarbe
+👩🏿‍🚀	Astronautin: dunkle Hautfarbe
+👨‍🚒	Mann Feuerwehrmann
+👨🏻‍🚒	Feuerwehrmann: helle Hautfarbe
+👨🏼‍🚒	Feuerwehrmann: mittelhelle Hautfarbe
+👨🏽‍🚒	Feuerwehrmann: mittlere Hautfarbe
+👨🏾‍🚒	Mann Feuerwehrmann: mitteldunkle Hautfarbe
+👨🏿‍🚒	Mann Feuerwehrmann: dunkle Hautfarbe
+👩‍🚒	Feuerwehrfrau
+👩🏻‍🚒	Feuerwehrfrau: helle Hautfarbe
+👩🏼‍🚒	Feuerwehrfrau: mittelhelle Hautfarbe
+👩🏽‍🚒	Feuerwehrfrau: mittlere Hautfarbe
+👩🏾‍🚒	Feuerwehrfrau: mitteldunkle Hautfarbe
+👩🏿‍🚒	Feuerwehrfrau: dunkle Hautfarbe
+👮	Polizist
+👮🏻	Polizist: helle Hautfarbe
+👮🏼	Polizist: mittelhelle Hautfarbe
+👮🏽	Polizist: mittlere Hautfarbe
+👮🏾	Polizist: mitteldunkle Hautfarbe
+👮🏿	Polizist: dunkle Hautfarbe
+👮‍♂️	Mann Polizist
+👮‍♂	Mann Polizist
+👮🏻‍♂️	Mann Polizist: helle Hautfarbe
+👮🏻‍♂	Mann Polizist: helle Hautfarbe
+👮🏼‍♂️	Mann Polizist: mittelhelle Hautfarbe
+👮🏼‍♂	Mann Polizist: mittelhelle Hautfarbe
+👮🏽‍♂️	Polizist: mittlere Hautfarbe
+👮🏽‍♂	Polizist: mittlere Hautfarbe
+👮🏾‍♂️	Mann Polizist: mitteldunkle Hautfarbe
+👮🏾‍♂	Mann Polizist: mitteldunkle Hautfarbe
+👮🏿‍♂️	Mann Polizist: dunkle Hautfarbe
+👮🏿‍♂	Mann Polizist: dunkle Hautfarbe
+👮‍♀️	Polizistin
+👮‍♀	Polizistin
+👮🏻‍♀️	Polizistin: helle Hautfarbe
+👮🏻‍♀	Polizistin: helle Hautfarbe
+👮🏼‍♀️	Polizistin: mittelhelle Hautfarbe
+👮🏼‍♀	Polizistin: mittelhelle Hautfarbe
+👮🏽‍♀️	Polizistin: mittlere Hautfarbe
+👮🏽‍♀	Polizistin: mittlere Hautfarbe
+👮🏾‍♀️	Polizistin: mitteldunkle Hautfarbe
+👮🏾‍♀	Polizistin: mitteldunkle Hautfarbe
+👮🏿‍♀️	Polizistin: dunkle Hautfarbe
+👮🏿‍♀	Polizistin: dunkle Hautfarbe
+🕵️	Detektiv
+🕵	Detektiv
+🕵🏻	Detektiv: helle Hautfarbe
+🕵🏼	Detektiv: mittelhelle Hautfarbe
+🕵🏽	Detektiv: mittlere Hautfarbe
+🕵🏾	Detektiv: mitteldunkle Hautfarbe
+🕵🏿	Detektiv: dunkle Hautfarbe
+🕵️‍♂️	Mann, Detektiv
+🕵‍♂️	Mann, Detektiv
+🕵️‍♂	Mann, Detektiv
+🕵‍♂	Mann, Detektiv
+🕵🏻‍♂️	Detektiv: helle Hautfarbe
+🕵🏻‍♂	Detektiv: helle Hautfarbe
+🕵🏼‍♂️	Detektiv: mittelhelle Hautfarbe
+🕵🏼‍♂	Detektiv: mittelhelle Hautfarbe
+🕵🏽‍♂️	Detektiv: mittlere Hautfarbe
+🕵🏽‍♂	Detektiv: mittlere Hautfarbe
+🕵🏾‍♂️	Detektiv: mitteldunkle Hautfarbe
+🕵🏾‍♂	Detektiv: mitteldunkle Hautfarbe
+🕵🏿‍♂️	Detektiv: dunkle Hautfarbe
+🕵🏿‍♂	Detektiv: dunkle Hautfarbe
+🕵️‍♀️	Frau Detektiv
+🕵‍♀️	Frau Detektiv
+🕵️‍♀	Frau Detektiv
+🕵‍♀	Frau Detektiv
+🕵🏻‍♀️	Detektivin: helle Hautfarbe
+🕵🏻‍♀	Detektivin: helle Hautfarbe
+🕵🏼‍♀️	Detektivin: mittelhelle Hautfarbe
+🕵🏼‍♀	Detektivin: mittelhelle Hautfarbe
+🕵🏽‍♀️	Detektivin: mittlere Hautfarbe
+🕵🏽‍♀	Detektivin: mittlere Hautfarbe
+🕵🏾‍♀️	Detektivin: mitteldunkle Hautfarbe
+🕵🏾‍♀	Detektivin: mitteldunkle Hautfarbe
+🕵🏿‍♀️	Detektivin: dunkle Hautfarbe
+🕵🏿‍♀	Detektivin: dunkle Hautfarbe
+💂	bewachen
+💂🏻	Schutz: heller Hautton
+💂🏼	Schutz: mittelheller Hautton
+💂🏽	Schutz: mittlerer Hautton
+💂🏾	Schutz: mitteldunkler Hautton
+💂🏿	Schutz: dunkler Hautton
+💂‍♂️	Mann Wache
+💂‍♂	Mann Wache
+💂🏻‍♂️	Mann: heller Hautton
+💂🏻‍♂	Mann: heller Hautton
+💂🏼‍♂️	Männerschutz: mittelhelle Hautfarbe
+💂🏼‍♂	Männerschutz: mittelhelle Hautfarbe
+💂🏽‍♂️	Mann: mittlere Hautfarbe
+💂🏽‍♂	Mann: mittlere Hautfarbe
+💂🏾‍♂️	Mannschutz: mitteldunkle Hautfarbe
+💂🏾‍♂	Mannschutz: mitteldunkle Hautfarbe
+💂🏿‍♂️	Mannschutz: dunkle Hautfarbe
+💂🏿‍♂	Mannschutz: dunkle Hautfarbe
+💂‍♀️	Frau Wache
+💂‍♀	Frau Wache
+💂🏻‍♀️	Wächterin: helle Hautfarbe
+💂🏻‍♀	Wächterin: helle Hautfarbe
+💂🏼‍♀️	Wächterin: mittelhelle Hautfarbe
+💂🏼‍♀	Wächterin: mittelhelle Hautfarbe
+💂🏽‍♀️	Wächterin: mittlere Hautfarbe
+💂🏽‍♀	Wächterin: mittlere Hautfarbe
+💂🏾‍♀️	Wächterin: mitteldunkle Hautfarbe
+💂🏾‍♀	Wächterin: mitteldunkle Hautfarbe
+💂🏿‍♀️	Wächterin: dunkle Hautfarbe
+💂🏿‍♀	Wächterin: dunkle Hautfarbe
+👷	Bauarbeiter
+👷🏻	Bauarbeiter: helle Hautfarbe
+👷🏼	Bauarbeiter: mittelhelle Hautfarbe
+👷🏽	Bauarbeiter: mittlere Hautfarbe
+👷🏾	Bauarbeiter: mitteldunkle Hautfarbe
+👷🏿	Bauarbeiter: dunkle Hautfarbe
+👷‍♂️	Mann Bauarbeiter
+👷‍♂	Mann Bauarbeiter
+👷🏻‍♂️	Mann, Bauarbeiter: helle Hautfarbe
+👷🏻‍♂	Mann, Bauarbeiter: helle Hautfarbe
+👷🏼‍♂️	Mann, Bauarbeiter: mittelhelle Hautfarbe
+👷🏼‍♂	Mann, Bauarbeiter: mittelhelle Hautfarbe
+👷🏽‍♂️	Mann, Bauarbeiter: mittlere Hautfarbe
+👷🏽‍♂	Mann, Bauarbeiter: mittlere Hautfarbe
+👷🏾‍♂️	Mann, Bauarbeiter: mitteldunkle Hautfarbe
+👷🏾‍♂	Mann, Bauarbeiter: mitteldunkle Hautfarbe
+👷🏿‍♂️	Mann, Bauarbeiter: dunkle Hautfarbe
+👷🏿‍♂	Mann, Bauarbeiter: dunkle Hautfarbe
+👷‍♀️	Bauarbeiterin
+👷‍♀	Bauarbeiterin
+👷🏻‍♀️	Bauarbeiterin: helle Hautfarbe
+👷🏻‍♀	Bauarbeiterin: helle Hautfarbe
+👷🏼‍♀️	Bauarbeiterin: mittelhelle Hautfarbe
+👷🏼‍♀	Bauarbeiterin: mittelhelle Hautfarbe
+👷🏽‍♀️	Bauarbeiterin: mittlere Hautfarbe
+👷🏽‍♀	Bauarbeiterin: mittlere Hautfarbe
+👷🏾‍♀️	Bauarbeiterin: mitteldunkle Hautfarbe
+👷🏾‍♀	Bauarbeiterin: mitteldunkle Hautfarbe
+👷🏿‍♀️	Bauarbeiterin: dunkle Hautfarbe
+👷🏿‍♀	Bauarbeiterin: dunkle Hautfarbe
+🤴	Prinz
+🤴🏻	Prinz: heller Hautton
+🤴🏼	Prinz: mittelheller Hautton
+🤴🏽	Prinz: mittlerer Hautton
+🤴🏾	Prinz: mitteldunkler Hautton
+🤴🏿	Prinz: dunkler Hautton
+👸	Prinzessin
+👸🏻	Prinzessin: helle Hautfarbe
+👸🏼	Prinzessin: mittelheller Hautton
+👸🏽	Prinzessin: mittlerer Hautton
+👸🏾	Prinzessin: mitteldunkler Hautton
+👸🏿	Prinzessin: dunkler Hautton
+👳	Person mit Turban
+👳🏻	Person mit Turban: helle Hautfarbe
+👳🏼	Person mit Turban: mittelhelle Hautfarbe
+👳🏽	Person mit Turban: mittlere Hautfarbe
+👳🏾	Person mit Turban: mitteldunkle Hautfarbe
+👳🏿	Person mit Turban: dunkle Hautfarbe
+👳‍♂️	Mann mit Turban
+👳‍♂	Mann mit Turban
+👳🏻‍♂️	Mann mit Turban: helle Hautfarbe
+👳🏻‍♂	Mann mit Turban: helle Hautfarbe
+👳🏼‍♂️	Mann mit Turban: mittelhelle Hautfarbe
+👳🏼‍♂	Mann mit Turban: mittelhelle Hautfarbe
+👳🏽‍♂️	Mann mit Turban: mittlere Hautfarbe
+👳🏽‍♂	Mann mit Turban: mittlere Hautfarbe
+👳🏾‍♂️	Mann mit Turban: mitteldunkle Hautfarbe
+👳🏾‍♂	Mann mit Turban: mitteldunkle Hautfarbe
+👳🏿‍♂️	Mann mit Turban: dunkle Hautfarbe
+👳🏿‍♂	Mann mit Turban: dunkle Hautfarbe
+👳‍♀️	Frau mit Turban
+👳‍♀	Frau mit Turban
+👳🏻‍♀️	Frau mit Turban: helle Hautfarbe
+👳🏻‍♀	Frau mit Turban: helle Hautfarbe
+👳🏼‍♀️	Frau mit Turban: mittelhelle Hautfarbe
+👳🏼‍♀	Frau mit Turban: mittelhelle Hautfarbe
+👳🏽‍♀️	Frau mit Turban: mittlere Hautfarbe
+👳🏽‍♀	Frau mit Turban: mittlere Hautfarbe
+👳🏾‍♀️	Frau mit Turban: mitteldunkle Hautfarbe
+👳🏾‍♀	Frau mit Turban: mitteldunkle Hautfarbe
+👳🏿‍♀️	Frau mit Turban: dunkle Hautfarbe
+👳🏿‍♀	Frau mit Turban: dunkle Hautfarbe
+👲	Mann mit chinesischer Mütze
+👲🏻	Mann mit chinesischer Mütze: helle Hautfarbe
+👲🏼	Mann mit chinesischer Mütze: mittelhelle Hautfarbe
+👲🏽	Mann mit chinesischer Mütze: mittlere Hautfarbe
+👲🏾	Mann mit chinesischer Mütze: mitteldunkle Hautfarbe
+👲🏿	Mann mit chinesischer Mütze: dunkle Hautfarbe
+🧕	Frau mit Kopftuch
+🧕🏻	Frau mit Kopftuch: helle Hautfarbe
+🧕🏼	Frau mit Kopftuch: mittelheller Hautton
+🧕🏽	Frau mit Kopftuch: mittlere Hautfarbe
+🧕🏾	Frau mit Kopftuch: mitteldunkler Hautton
+🧕🏿	Frau mit Kopftuch: dunkle Hautfarbe
+🧔	bärtiger Mensch
+🧔🏻	bärtige Person: helle Hautfarbe
+🧔🏼	bärtige Person: mittelheller Hautton
+🧔🏽	bärtige Person: mittlere Hautfarbe
+🧔🏾	bärtige Person: mitteldunkler Hautton
+🧔🏿	bärtige Person: dunkle Hautfarbe
+👱	blondhaarige Person
+👱🏻	Blonde Person: helle Hautfarbe
+👱🏼	blondhaarige Person: mittelheller Hautton
+👱🏽	Blonde Person: mittlerer Hautton
+👱🏾	blondhaarige Person: mitteldunkler Hautton
+👱🏿	blondhaarige Person: dunkler Hautton
+👱‍♂️	blondhaariger Mann
+👱‍♂	blondhaariger Mann
+👱🏻‍♂️	blondhaariger Mann: helle Hautfarbe
+👱🏻‍♂	blondhaariger Mann: helle Hautfarbe
+👱🏼‍♂️	blondhaariger Mann: mittelhelle Hautfarbe
+👱🏼‍♂	blondhaariger Mann: mittelhelle Hautfarbe
+👱🏽‍♂️	blondhaariger Mann: mittlerer Hautton
+👱🏽‍♂	blondhaariger Mann: mittlerer Hautton
+👱🏾‍♂️	blondhaariger Mann: mitteldunkler Hautton
+👱🏾‍♂	blondhaariger Mann: mitteldunkler Hautton
+👱🏿‍♂️	blondhaariger Mann: dunkle Hautfarbe
+👱🏿‍♂	blondhaariger Mann: dunkle Hautfarbe
+👱‍♀️	blondhaarige Frau
+👱‍♀	blondhaarige Frau
+👱🏻‍♀️	Blonde Frau: helle Hautfarbe
+👱🏻‍♀	Blonde Frau: helle Hautfarbe
+👱🏼‍♀️	Blonde Frau: mittelheller Hautton
+👱🏼‍♀	Blonde Frau: mittelheller Hautton
+👱🏽‍♀️	Blonde Frau: mittlerer Hautton
+👱🏽‍♀	Blonde Frau: mittlerer Hautton
+👱🏾‍♀️	Blonde Frau: mitteldunkler Hautton
+👱🏾‍♀	Blonde Frau: mitteldunkler Hautton
+👱🏿‍♀️	Blonde Frau: dunkle Hautfarbe
+👱🏿‍♀	Blonde Frau: dunkle Hautfarbe
+👨‍🦰	Mann, rothaarig
+👨🏻‍🦰	Mann, rothaarig: helle Hautfarbe
+👨🏼‍🦰	Mann, rothaarig: mittelheller Hautton
+👨🏽‍🦰	Mann, rothaarig: mittlerer Hautton
+👨🏾‍🦰	Mann, rothaarig: mitteldunkler Hautton
+👨🏿‍🦰	Mann, rothaarig: dunkle Hautfarbe
+👩‍🦰	Frau, rothaarig
+👩🏻‍🦰	Frau, rothaarig: helle Hautfarbe
+👩🏼‍🦰	Frau, rothaarig: mittelheller Hautton
+👩🏽‍🦰	Frau, rothaarig: mittlerer Hautton
+👩🏾‍🦰	Frau, rothaarig: mitteldunkler Hautton
+👩🏿‍🦰	Frau, rothaarig: dunkle Hautfarbe
+👨‍🦱	Mann, lockiges Haar
+👨🏻‍🦱	Mann, lockiges Haar: helle Hautfarbe
+👨🏼‍🦱	Mann, lockiges Haar: mittelheller Hautton
+👨🏽‍🦱	Mann, lockiges Haar: mittlerer Hautton
+👨🏾‍🦱	Mann, lockiges Haar: mitteldunkler Hautton
+👨🏿‍🦱	Mann, lockiges Haar: dunkler Hautton
+👩‍🦱	Frau, lockiges Haar
+👩🏻‍🦱	Frau, lockiges Haar: helle Hautfarbe
+👩🏼‍🦱	Frau, lockiges Haar: mittelheller Hautton
+👩🏽‍🦱	Frau, lockiges Haar: mittlerer Hautton
+👩🏾‍🦱	Frau, lockiges Haar: mitteldunkler Hautton
+👩🏿‍🦱	Frau, lockiges Haar: dunkle Hautfarbe
+👨‍🦲	Mann, kahlköpfig
+👨🏻‍🦲	Mann, Glatze: helle Hautfarbe
+👨🏼‍🦲	Mann, kahlköpfig: mittelheller Hautton
+👨🏽‍🦲	Mann, Glatze: mittlerer Hautton
+👨🏾‍🦲	Mann, Glatze: mitteldunkler Hautton
+👨🏿‍🦲	Mann, Glatze: dunkle Hautfarbe
+👩‍🦲	Frau, kahl
+👩🏻‍🦲	Frau, kahlköpfig: helle Hautfarbe
+👩🏼‍🦲	Frau, kahlköpfig: mittelheller Hautton
+👩🏽‍🦲	Frau, kahlköpfig: mittlerer Hautton
+👩🏾‍🦲	Frau, kahlköpfig: mitteldunkler Hautton
+👩🏿‍🦲	Frau, kahlköpfig: dunkle Hautfarbe
+👨‍🦳	Mann, weißhaarig
+👨🏻‍🦳	Mann, weißhaarig: helle Hautfarbe
+👨🏼‍🦳	Mann, weißhaarig: mittelheller Hautton
+👨🏽‍🦳	Mann, weißhaarig: mittlerer Hautton
+👨🏾‍🦳	Mann, weißhaarig: mitteldunkler Hautton
+👨🏿‍🦳	Mann, weißhaarig: dunkler Hautton
+👩‍🦳	Frau, weißhaarig
+👩🏻‍🦳	Frau, weißhaarig: helle Hautfarbe
+👩🏼‍🦳	Frau, weißhaarig: mittelheller Hautton
+👩🏽‍🦳	Frau, weißhaarig: mittlerer Hautton
+👩🏾‍🦳	Frau, weißhaarig: mitteldunkler Hautton
+👩🏿‍🦳	Frau, weißhaarig: dunkle Hautfarbe
+🤵	Mann im Smoking
+🤵🏻	Mann im Smoking: helle Hautfarbe
+🤵🏼	Mann im Smoking: mittelhelle Hautfarbe
+🤵🏽	Mann im Smoking: mittlere Hautfarbe
+🤵🏾	Mann im Smoking: mitteldunkle Hautfarbe
+🤵🏿	Mann im Smoking: dunkle Hautfarbe
+👰	Braut mit Schleier
+👰🏻	Braut mit Schleier: helle Hautfarbe
+👰🏼	Braut mit Schleier: mittelheller Hautton
+👰🏽	Braut mit Schleier: mittlerer Hautton
+👰🏾	Braut mit Schleier: mitteldunkler Hautton
+👰🏿	Braut mit Schleier: dunkle Hautfarbe
+🤰	schwangere Frau
+🤰🏻	Schwangere: heller Hautton
+🤰🏼	Schwangere: mittelheller Hautton
+🤰🏽	Schwangere: mittlerer Hautton
+🤰🏾	Schwangere: mitteldunkler Hautton
+🤰🏿	Schwangere: dunkle Hautfarbe
+🤱	Stillen
+🤱🏻	Stillzeit: heller Hautton
+🤱🏼	Stillzeit: mittelheller Hautton
+🤱🏽	Stillzeit: mittlerer Hautton
+🤱🏾	Stillzeit: mitteldunkler Hautton
+🤱🏿	Stillzeit: dunkler Hautton
+👼	Baby Engel
+👼🏻	Baby-Engel: heller Hautton
+👼🏼	Baby-Engel: mittelheller Hautton
+👼🏽	Baby-Engel: mittlerer Hautton
+👼🏾	Baby-Engel: mitteldunkler Hautton
+👼🏿	Baby-Engel: dunkler Hautton
+🎅	Weihnachtsmann
+🎅🏻	Weihnachtsmann: heller Hautton
+🎅🏼	Weihnachtsmann: mittelheller Hautton
+🎅🏽	Weihnachtsmann: mittlerer Hautton
+🎅🏾	Weihnachtsmann: mitteldunkler Hautton
+🎅🏿	Weihnachtsmann: dunkler Hautton
+🤶	Frau Claus
+🤶🏻	Frau Claus: helle Hautfarbe
+🤶🏼	Frau Claus: mittelheller Hautton
+🤶🏽	Frau Claus: mittlerer Hautton
+🤶🏾	Frau Claus: mitteldunkler Hautton
+🤶🏿	Frau Claus: dunkle Hautfarbe
+🦸	Superheld
+🦸🏻	Superheld: heller Hautton
+🦸🏼	Superheld: mittelheller Hautton
+🦸🏽	Superheld: mittlerer Hautton
+🦸🏾	Superheld: mitteldunkler Hautton
+🦸🏿	Superheld: dunkler Hautton
+🦸‍♀️	Superheldin
+🦸‍♀	Superheldin
+🦸🏻‍♀️	Superheldin: helle Hautfarbe
+🦸🏻‍♀	Superheldin: helle Hautfarbe
+🦸🏼‍♀️	Superheldin: mittelhelle Hautfarbe
+🦸🏼‍♀	Superheldin: mittelhelle Hautfarbe
+🦸🏽‍♀️	Superheldin: mittlere Hautfarbe
+🦸🏽‍♀	Superheldin: mittlere Hautfarbe
+🦸🏾‍♀️	Superheldin: mitteldunkle Hautfarbe
+🦸🏾‍♀	Superheldin: mitteldunkle Hautfarbe
+🦸🏿‍♀️	Superheldin: dunkle Hautfarbe
+🦸🏿‍♀	Superheldin: dunkle Hautfarbe
+🦸‍♂️	Mann Superheld
+🦸‍♂	Mann Superheld
+🦸🏻‍♂️	Mann Superheld: helle Hautfarbe
+🦸🏻‍♂	Mann Superheld: helle Hautfarbe
+🦸🏼‍♂️	Mann Superheld: mittelhelle Hautfarbe
+🦸🏼‍♂	Mann Superheld: mittelhelle Hautfarbe
+🦸🏽‍♂️	Mann Superheld: mittlere Hautfarbe
+🦸🏽‍♂	Mann Superheld: mittlere Hautfarbe
+🦸🏾‍♂️	Mann Superheld: mitteldunkle Hautfarbe
+🦸🏾‍♂	Mann Superheld: mitteldunkle Hautfarbe
+🦸🏿‍♂️	Mann Superheld: dunkle Hautfarbe
+🦸🏿‍♂	Mann Superheld: dunkle Hautfarbe
+🦹	Superschurke
+🦹🏻	Superschurke: helle Hautfarbe
+🦹🏼	Superschurke: mittelheller Hautton
+🦹🏽	Superschurke: mittlere Hautfarbe
+🦹🏾	Superschurke: mitteldunkler Hautton
+🦹🏿	Superschurke: dunkle Hautfarbe
+🦹‍♀️	Frau Superschurke
+🦹‍♀	Frau Superschurke
+🦹🏻‍♀️	Superschurke: helle Hautfarbe
+🦹🏻‍♀	Superschurke: helle Hautfarbe
+🦹🏼‍♀️	Superschurke: mittelhelle Hautfarbe
+🦹🏼‍♀	Superschurke: mittelhelle Hautfarbe
+🦹🏽‍♀️	Superschurke: mittlere Hautfarbe
+🦹🏽‍♀	Superschurke: mittlere Hautfarbe
+🦹🏾‍♀️	Superschurke: mitteldunkle Hautfarbe
+🦹🏾‍♀	Superschurke: mitteldunkle Hautfarbe
+🦹🏿‍♀️	Superschurke: dunkle Hautfarbe
+🦹🏿‍♀	Superschurke: dunkle Hautfarbe
+🦹‍♂️	Mann Superschurke
+🦹‍♂	Mann Superschurke
+🦹🏻‍♂️	Mann Superschurke: helle Hautfarbe
+🦹🏻‍♂	Mann Superschurke: helle Hautfarbe
+🦹🏼‍♂️	Mann Superschurke: mittelhelle Hautfarbe
+🦹🏼‍♂	Mann Superschurke: mittelhelle Hautfarbe
+🦹🏽‍♂️	Mann Superschurke: mittlere Hautfarbe
+🦹🏽‍♂	Mann Superschurke: mittlere Hautfarbe
+🦹🏾‍♂️	Mann Superschurke: mitteldunkle Hautfarbe
+🦹🏾‍♂	Mann Superschurke: mitteldunkle Hautfarbe
+🦹🏿‍♂️	Mann Superschurke: dunkle Hautfarbe
+🦹🏿‍♂	Mann Superschurke: dunkle Hautfarbe
+🧙	Magier
+🧙🏻	Magier: helle Hautfarbe
+🧙🏼	Magier: mittelheller Hautton
+🧙🏽	Magier: mittlerer Hautton
+🧙🏾	Magier: mitteldunkler Hautton
+🧙🏿	Magier: dunkler Hautton
+🧙‍♀️	Frau Magier
+🧙‍♀	Frau Magier
+🧙🏻‍♀️	Magierin: helle Hautfarbe
+🧙🏻‍♀	Magierin: helle Hautfarbe
+🧙🏼‍♀️	Magierin: mittelhelle Hautfarbe
+🧙🏼‍♀	Magierin: mittelhelle Hautfarbe
+🧙🏽‍♀️	Magierin: mittlere Hautfarbe
+🧙🏽‍♀	Magierin: mittlere Hautfarbe
+🧙🏾‍♀️	Magierin: mitteldunkle Hautfarbe
+🧙🏾‍♀	Magierin: mitteldunkle Hautfarbe
+🧙🏿‍♀️	Magierin: dunkle Hautfarbe
+🧙🏿‍♀	Magierin: dunkle Hautfarbe
+🧙‍♂️	Mann Magier
+🧙‍♂	Mann Magier
+🧙🏻‍♂️	männlicher Magier: helle Hautfarbe
+🧙🏻‍♂	männlicher Magier: helle Hautfarbe
+🧙🏼‍♂️	männlicher Magier: mittelhelle Hautfarbe
+🧙🏼‍♂	männlicher Magier: mittelhelle Hautfarbe
+🧙🏽‍♂️	männlicher Magier: mittlere Hautfarbe
+🧙🏽‍♂	männlicher Magier: mittlere Hautfarbe
+🧙🏾‍♂️	männlicher Magier: mitteldunkle Hautfarbe
+🧙🏾‍♂	männlicher Magier: mitteldunkle Hautfarbe
+🧙🏿‍♂️	männlicher Magier: dunkle Hautfarbe
+🧙🏿‍♂	männlicher Magier: dunkle Hautfarbe
+🧚	Fee
+🧚🏻	Fee: heller Hautton
+🧚🏼	Fee: mittelheller Hautton
+🧚🏽	Fee: mittlerer Hautton
+🧚🏾	Fee: mitteldunkler Hautton
+🧚🏿	Fee: dunkler Hautton
+🧚‍♀️	Frau Fee
+🧚‍♀	Frau Fee
+🧚🏻‍♀️	Frau Fee: helle Hautfarbe
+🧚🏻‍♀	Frau Fee: helle Hautfarbe
+🧚🏼‍♀️	Frau Fee: mittelheller Hautton
+🧚🏼‍♀	Frau Fee: mittelheller Hautton
+🧚🏽‍♀️	Frau Fee: mittlere Hautfarbe
+🧚🏽‍♀	Frau Fee: mittlere Hautfarbe
+🧚🏾‍♀️	Frau Fee: mitteldunkler Hautton
+🧚🏾‍♀	Frau Fee: mitteldunkler Hautton
+🧚🏿‍♀️	Frau Fee: dunkle Hautfarbe
+🧚🏿‍♀	Frau Fee: dunkle Hautfarbe
+🧚‍♂️	Mann Fee
+🧚‍♂	Mann Fee
+🧚🏻‍♂️	Feenmann: helle Hautfarbe
+🧚🏻‍♂	Feenmann: helle Hautfarbe
+🧚🏼‍♂️	Feenmann: mittelheller Hautton
+🧚🏼‍♂	Feenmann: mittelheller Hautton
+🧚🏽‍♂️	Feenmann: mittlerer Hautton
+🧚🏽‍♂	Feenmann: mittlerer Hautton
+🧚🏾‍♂️	Feenmann: mitteldunkler Hautton
+🧚🏾‍♂	Feenmann: mitteldunkler Hautton
+🧚🏿‍♂️	Mann Fee: dunkle Hautfarbe
+🧚🏿‍♂	Mann Fee: dunkle Hautfarbe
+🧛	Vampir
+🧛🏻	Vampir: heller Hautton
+🧛🏼	Vampir: mittelheller Hautton
+🧛🏽	Vampir: mittlerer Hautton
+🧛🏾	Vampir: mitteldunkler Hautton
+🧛🏿	Vampir: dunkler Hautton
+🧛‍♀️	Frau Vampir
+🧛‍♀	Frau Vampir
+🧛🏻‍♀️	Vampirfrau: helle Hautfarbe
+🧛🏻‍♀	Vampirfrau: helle Hautfarbe
+🧛🏼‍♀️	Vampirfrau: mittelheller Hautton
+🧛🏼‍♀	Vampirfrau: mittelheller Hautton
+🧛🏽‍♀️	Vampirfrau: mittlerer Hautton
+🧛🏽‍♀	Vampirfrau: mittlerer Hautton
+🧛🏾‍♀️	Vampirfrau: mitteldunkler Hautton
+🧛🏾‍♀	Vampirfrau: mitteldunkler Hautton
+🧛🏿‍♀️	Frau Vampir: dunkle Hautfarbe
+🧛🏿‍♀	Frau Vampir: dunkle Hautfarbe
+🧛‍♂️	Mann Vampir
+🧛‍♂	Mann Vampir
+🧛🏻‍♂️	Mann Vampir: helle Hautfarbe
+🧛🏻‍♂	Mann Vampir: helle Hautfarbe
+🧛🏼‍♂️	Mann Vampir: mittelheller Hautton
+🧛🏼‍♂	Mann Vampir: mittelheller Hautton
+🧛🏽‍♂️	Mann Vampir: mittlerer Hautton
+🧛🏽‍♂	Mann Vampir: mittlerer Hautton
+🧛🏾‍♂️	Mann Vampir: mitteldunkler Hautton
+🧛🏾‍♂	Mann Vampir: mitteldunkler Hautton
+🧛🏿‍♂️	Mann Vampir: dunkle Hautfarbe
+🧛🏿‍♂	Mann Vampir: dunkle Hautfarbe
+🧜	Meermensch
+🧜🏻	Wassermann: helle Hautfarbe
+🧜🏼	Wassermann: mittelheller Hautton
+🧜🏽	Wassermann: mittlerer Hautton
+🧜🏾	Wassermann: mitteldunkle Hautfarbe
+🧜🏿	Wassermann: dunkler Hautton
+🧜‍♀️	Meerjungfrau
+🧜‍♀	Meerjungfrau
+🧜🏻‍♀️	Meerjungfrau: heller Hautton
+🧜🏻‍♀	Meerjungfrau: heller Hautton
+🧜🏼‍♀️	Meerjungfrau: mittelheller Hautton
+🧜🏼‍♀	Meerjungfrau: mittelheller Hautton
+🧜🏽‍♀️	Meerjungfrau: mittlerer Hautton
+🧜🏽‍♀	Meerjungfrau: mittlerer Hautton
+🧜🏾‍♀️	Meerjungfrau: mitteldunkler Hautton
+🧜🏾‍♀	Meerjungfrau: mitteldunkler Hautton
+🧜🏿‍♀️	Meerjungfrau: dunkler Hautton
+🧜🏿‍♀	Meerjungfrau: dunkler Hautton
+🧜‍♂️	Meermann
+🧜‍♂	Meermann
+🧜🏻‍♂️	Wassermann: heller Hautton
+🧜🏻‍♂	Wassermann: heller Hautton
+🧜🏼‍♂️	Wassermann: mittelheller Hautton
+🧜🏼‍♂	Wassermann: mittelheller Hautton
+🧜🏽‍♂️	Wassermann: mittlerer Hautton
+🧜🏽‍♂	Wassermann: mittlerer Hautton
+🧜🏾‍♂️	Wassermann: mitteldunkler Hautton
+🧜🏾‍♂	Wassermann: mitteldunkler Hautton
+🧜🏿‍♂️	Wassermann: dunkler Hautton
+🧜🏿‍♂	Wassermann: dunkler Hautton
+🧝	Elf
+🧝🏻	Elf: heller Hautton
+🧝🏼	Elf: mittelheller Hautton
+🧝🏽	Elf: mittlerer Hautton
+🧝🏾	Elf: mitteldunkler Hautton
+🧝🏿	Elf: dunkler Hautton
+🧝‍♀️	Frau Elfe
+🧝‍♀	Frau Elfe
+🧝🏻‍♀️	Frau Elfe: helle Hautfarbe
+🧝🏻‍♀	Frau Elfe: helle Hautfarbe
+🧝🏼‍♀️	Frau Elfe: mittelhelle Hautfarbe
+🧝🏼‍♀	Frau Elfe: mittelhelle Hautfarbe
+🧝🏽‍♀️	Frau Elfe: mittlere Hautfarbe
+🧝🏽‍♀	Frau Elfe: mittlere Hautfarbe
+🧝🏾‍♀️	Frau Elfe: mitteldunkler Hautton
+🧝🏾‍♀	Frau Elfe: mitteldunkler Hautton
+🧝🏿‍♀️	Frau Elfe: dunkle Hautfarbe
+🧝🏿‍♀	Frau Elfe: dunkle Hautfarbe
+🧝‍♂️	Mann Elf
+🧝‍♂	Mann Elf
+🧝🏻‍♂️	Mann-Elf: helle Hautfarbe
+🧝🏻‍♂	Mann-Elf: helle Hautfarbe
+🧝🏼‍♂️	Mann-Elf: mittelheller Hautton
+🧝🏼‍♂	Mann-Elf: mittelheller Hautton
+🧝🏽‍♂️	Mann-Elf: mittlerer Hautton
+🧝🏽‍♂	Mann-Elf: mittlerer Hautton
+🧝🏾‍♂️	Mann-Elf: mitteldunkler Hautton
+🧝🏾‍♂	Mann-Elf: mitteldunkler Hautton
+🧝🏿‍♂️	Mann-Elf: dunkle Hautfarbe
+🧝🏿‍♂	Mann-Elf: dunkle Hautfarbe
+🧞	Geist
+🧞‍♀️	Frauengeist
+🧞‍♀	Frauengeist
+🧞‍♂️	Mann, Geist
+🧞‍♂	Mann, Geist
+🧟	Zombie
+🧟‍♀️	Frau Zombie
+🧟‍♀	Frau Zombie
+🧟‍♂️	Mann-Zombie
+🧟‍♂	Mann-Zombie
+🙍	Person runzelt die Stirn
+🙍🏻	Stirnrunzelnde Person: helle Hautfarbe
+🙍🏼	Stirnrunzelnde Person: mittelhelle Hautfarbe
+🙍🏽	Stirnrunzelnde Person: mittlere Hautfarbe
+🙍🏾	Stirnrunzelnde Person: mitteldunkle Hautfarbe
+🙍🏿	Stirnrunzelnde Person: dunkle Hautfarbe
+🙍‍♂️	Mann runzelt die Stirn
+🙍‍♂	Mann runzelt die Stirn
+🙍🏻‍♂️	Mann runzelt die Stirn: helle Hautfarbe
+🙍🏻‍♂	Mann runzelt die Stirn: helle Hautfarbe
+🙍🏼‍♂️	Stirnrunzelnder Mann: mittelhelle Hautfarbe
+🙍🏼‍♂	Stirnrunzelnder Mann: mittelhelle Hautfarbe
+🙍🏽‍♂️	Stirnrunzelnder Mann: mittlere Hautfarbe
+🙍🏽‍♂	Stirnrunzelnder Mann: mittlere Hautfarbe
+🙍🏾‍♂️	Stirnrunzelnder Mann: mitteldunkle Hautfarbe
+🙍🏾‍♂	Stirnrunzelnder Mann: mitteldunkle Hautfarbe
+🙍🏿‍♂️	Mann runzelt die Stirn: dunkle Hautfarbe
+🙍🏿‍♂	Mann runzelt die Stirn: dunkle Hautfarbe
+🙍‍♀️	Frau runzelt die Stirn
+🙍‍♀	Frau runzelt die Stirn
+🙍🏻‍♀️	Stirnrunzelnde Frau: helle Hautfarbe
+🙍🏻‍♀	Stirnrunzelnde Frau: helle Hautfarbe
+🙍🏼‍♀️	Stirnrunzelnde Frau: mittelheller Hautton
+🙍🏼‍♀	Stirnrunzelnde Frau: mittelheller Hautton
+🙍🏽‍♀️	Stirnrunzelnde Frau: mittlere Hautfarbe
+🙍🏽‍♀	Stirnrunzelnde Frau: mittlere Hautfarbe
+🙍🏾‍♀️	Stirnrunzelnde Frau: mitteldunkle Hautfarbe
+🙍🏾‍♀	Stirnrunzelnde Frau: mitteldunkle Hautfarbe
+🙍🏿‍♀️	Stirnrunzelnde Frau: dunkle Hautfarbe
+🙍🏿‍♀	Stirnrunzelnde Frau: dunkle Hautfarbe
+🙎	schmollende Person
+🙎🏻	Schmollende Person: helle Hautfarbe
+🙎🏼	Schmollende Person: mittelheller Hautton
+🙎🏽	Schmollende Person: mittlere Hautfarbe
+🙎🏾	Schmollende Person: mitteldunkle Hautfarbe
+🙎🏿	Schmollende Person: dunkle Hautfarbe
+🙎‍♂️	Mann schmollt
+🙎‍♂	Mann schmollt
+🙎🏻‍♂️	Schmollender Mann: helle Hautfarbe
+🙎🏻‍♂	Schmollender Mann: helle Hautfarbe
+🙎🏼‍♂️	Schmollender Mann: mittelheller Hautton
+🙎🏼‍♂	Schmollender Mann: mittelheller Hautton
+🙎🏽‍♂️	Schmollender Mann: mittlere Hautfarbe
+🙎🏽‍♂	Schmollender Mann: mittlere Hautfarbe
+🙎🏾‍♂️	Schmollender Mann: mitteldunkle Hautfarbe
+🙎🏾‍♂	Schmollender Mann: mitteldunkle Hautfarbe
+🙎🏿‍♂️	Schmollender Mann: dunkle Hautfarbe
+🙎🏿‍♂	Schmollender Mann: dunkle Hautfarbe
+🙎‍♀️	schmollende Frau
+🙎‍♀	schmollende Frau
+🙎🏻‍♀️	schmollende Frau: helle Hautfarbe
+🙎🏻‍♀	schmollende Frau: helle Hautfarbe
+🙎🏼‍♀️	schmollende Frau: mittelheller Hautton
+🙎🏼‍♀	schmollende Frau: mittelheller Hautton
+🙎🏽‍♀️	schmollende Frau: mittlere Hautfarbe
+🙎🏽‍♀	schmollende Frau: mittlere Hautfarbe
+🙎🏾‍♀️	schmollende Frau: mitteldunkle Hautfarbe
+🙎🏾‍♀	schmollende Frau: mitteldunkle Hautfarbe
+🙎🏿‍♀️	schmollende Frau: dunkle Hautfarbe
+🙎🏿‍♀	schmollende Frau: dunkle Hautfarbe
+🙅	Person gestikuliert NEIN
+🙅🏻	Person gestikuliert NEIN: helle Hautfarbe
+🙅🏼	NEIN gestikulierende Person: mittelhelle Hautfarbe
+🙅🏽	Person gestikuliert NEIN: mittlere Hautfarbe
+🙅🏾	Person, die NEIN zeigt: mitteldunkle Hautfarbe
+🙅🏿	Person gestikuliert NEIN: dunkle Hautfarbe
+🙅‍♂️	Mann gestikuliert NEIN
+🙅‍♂	Mann gestikuliert NEIN
+🙅🏻‍♂️	Mann gestikuliert NEIN: helle Hautfarbe
+🙅🏻‍♂	Mann gestikuliert NEIN: helle Hautfarbe
+🙅🏼‍♂️	Mann gestikuliert NEIN: mittelhelle Hautfarbe
+🙅🏼‍♂	Mann gestikuliert NEIN: mittelhelle Hautfarbe
+🙅🏽‍♂️	Mann gestikuliert NEIN: mittlere Hautfarbe
+🙅🏽‍♂	Mann gestikuliert NEIN: mittlere Hautfarbe
+🙅🏾‍♂️	Mann gestikuliert NEIN: mitteldunkle Hautfarbe
+🙅🏾‍♂	Mann gestikuliert NEIN: mitteldunkle Hautfarbe
+🙅🏿‍♂️	Mann gestikuliert NEIN: dunkle Hautfarbe
+🙅🏿‍♂	Mann gestikuliert NEIN: dunkle Hautfarbe
+🙅‍♀️	Frau gestikuliert NEIN
+🙅‍♀	Frau gestikuliert NEIN
+🙅🏻‍♀️	Frau gestikuliert NEIN: helle Hautfarbe
+🙅🏻‍♀	Frau gestikuliert NEIN: helle Hautfarbe
+🙅🏼‍♀️	Frau gestikuliert NEIN: mittelhelle Hautfarbe
+🙅🏼‍♀	Frau gestikuliert NEIN: mittelhelle Hautfarbe
+🙅🏽‍♀️	Frau gestikuliert NEIN: mittlere Hautfarbe
+🙅🏽‍♀	Frau gestikuliert NEIN: mittlere Hautfarbe
+🙅🏾‍♀️	Frau gestikuliert NEIN: mitteldunkle Hautfarbe
+🙅🏾‍♀	Frau gestikuliert NEIN: mitteldunkle Hautfarbe
+🙅🏿‍♀️	Frau gestikuliert NEIN: dunkle Hautfarbe
+🙅🏿‍♀	Frau gestikuliert NEIN: dunkle Hautfarbe
+🙆	Person gestikuliert OK
+🙆🏻	Gestikulierende Person: OK: helle Hautfarbe
+🙆🏼	Gestikulierende Person OK: mittelhelle Hautfarbe
+🙆🏽	Gestikulierende Person: OK: mittlere Hautfarbe
+🙆🏾	Gestikulierende Person OK: mitteldunkle Hautfarbe
+🙆🏿	Person gestikuliert OK: dunkle Hautfarbe
+🙆‍♂️	Mann gestikuliert OK
+🙆‍♂	Mann gestikuliert OK
+🙆🏻‍♂️	Mann gestikuliert OK: helle Hautfarbe
+🙆🏻‍♂	Mann gestikuliert OK: helle Hautfarbe
+🙆🏼‍♂️	Mann gestikuliert OK: mittelhelle Hautfarbe
+🙆🏼‍♂	Mann gestikuliert OK: mittelhelle Hautfarbe
+🙆🏽‍♂️	Mann gestikuliert OK: mittlere Hautfarbe
+🙆🏽‍♂	Mann gestikuliert OK: mittlere Hautfarbe
+🙆🏾‍♂️	Mann gestikuliert OK: mitteldunkle Hautfarbe
+🙆🏾‍♂	Mann gestikuliert OK: mitteldunkle Hautfarbe
+🙆🏿‍♂️	Mann gestikuliert OK: dunkle Hautfarbe
+🙆🏿‍♂	Mann gestikuliert OK: dunkle Hautfarbe
+🙆‍♀️	Frau gestikuliert OK
+🙆‍♀	Frau gestikuliert OK
+🙆🏻‍♀️	Frau gestikuliert OK: helle Hautfarbe
+🙆🏻‍♀	Frau gestikuliert OK: helle Hautfarbe
+🙆🏼‍♀️	Frau gestikuliert OK: mittelhelle Hautfarbe
+🙆🏼‍♀	Frau gestikuliert OK: mittelhelle Hautfarbe
+🙆🏽‍♀️	Frau gestikuliert OK: mittlere Hautfarbe
+🙆🏽‍♀	Frau gestikuliert OK: mittlere Hautfarbe
+🙆🏾‍♀️	Frau gestikuliert OK: mitteldunkle Hautfarbe
+🙆🏾‍♀	Frau gestikuliert OK: mitteldunkle Hautfarbe
+🙆🏿‍♀️	Frau gestikuliert OK: dunkle Hautfarbe
+🙆🏿‍♀	Frau gestikuliert OK: dunkle Hautfarbe
+💁	Person, die Hand kippt
+💁🏻	Person, die die Hand kippt: helle Hautfarbe
+💁🏼	Person, die die Hand tippt: mittelhelle Hautfarbe
+💁🏽	Person, die die Hand kippt: mittlere Hautfarbe
+💁🏾	Person, die die Hand tippt: mitteldunkle Hautfarbe
+💁🏿	Person, die die Hand kippt: dunkle Hautfarbe
+💁‍♂️	Mann kippt Hand
+💁‍♂	Mann kippt Hand
+💁🏻‍♂️	Mann kippt die Hand: helle Hautfarbe
+💁🏻‍♂	Mann kippt die Hand: helle Hautfarbe
+💁🏼‍♂️	Mann kippt die Hand: mittelhelle Hautfarbe
+💁🏼‍♂	Mann kippt die Hand: mittelhelle Hautfarbe
+💁🏽‍♂️	Mann kippt die Hand: mittlere Hautfarbe
+💁🏽‍♂	Mann kippt die Hand: mittlere Hautfarbe
+💁🏾‍♂️	Mann tippt die Hand: mitteldunkle Hautfarbe
+💁🏾‍♂	Mann tippt die Hand: mitteldunkle Hautfarbe
+💁🏿‍♂️	Mann kippt die Hand: dunkle Hautfarbe
+💁🏿‍♂	Mann kippt die Hand: dunkle Hautfarbe
+💁‍♀️	Frau kippt Hand
+💁‍♀	Frau kippt Hand
+💁🏻‍♀️	Frau kippt die Hand: helle Hautfarbe
+💁🏻‍♀	Frau kippt die Hand: helle Hautfarbe
+💁🏼‍♀️	Frau tippt mit der Hand: mittelhelle Hautfarbe
+💁🏼‍♀	Frau tippt mit der Hand: mittelhelle Hautfarbe
+💁🏽‍♀️	Frau tippt die Hand: mittlere Hautfarbe
+💁🏽‍♀	Frau tippt die Hand: mittlere Hautfarbe
+💁🏾‍♀️	Frau tippt mit der Hand: mitteldunkle Hautfarbe
+💁🏾‍♀	Frau tippt mit der Hand: mitteldunkle Hautfarbe
+💁🏿‍♀️	Frau kippt die Hand: dunkle Hautfarbe
+💁🏿‍♀	Frau kippt die Hand: dunkle Hautfarbe
+🙋	Person hebt die Hand
+🙋🏻	Person, die die Hand hebt: helle Hautfarbe
+🙋🏼	Hand hebende Person: mittelhelle Hautfarbe
+🙋🏽	Person, die die Hand hebt: mittlere Hautfarbe
+🙋🏾	Hand hebende Person: mitteldunkle Hautfarbe
+🙋🏿	Person, die die Hand hebt: dunkle Hautfarbe
+🙋‍♂️	Mann hebt die Hand
+🙋‍♂	Mann hebt die Hand
+🙋🏻‍♂️	Mann hebt die Hand: helle Hautfarbe
+🙋🏻‍♂	Mann hebt die Hand: helle Hautfarbe
+🙋🏼‍♂️	Mann hebt die Hand: mittelhelle Hautfarbe
+🙋🏼‍♂	Mann hebt die Hand: mittelhelle Hautfarbe
+🙋🏽‍♂️	Mann hebt die Hand: mittlere Hautfarbe
+🙋🏽‍♂	Mann hebt die Hand: mittlere Hautfarbe
+🙋🏾‍♂️	Mann hebt die Hand: mitteldunkle Hautfarbe
+🙋🏾‍♂	Mann hebt die Hand: mitteldunkle Hautfarbe
+🙋🏿‍♂️	Mann hebt die Hand: dunkle Hautfarbe
+🙋🏿‍♂	Mann hebt die Hand: dunkle Hautfarbe
+🙋‍♀️	Frau hebt die Hand
+🙋‍♀	Frau hebt die Hand
+🙋🏻‍♀️	Frau hebt die Hand: helle Hautfarbe
+🙋🏻‍♀	Frau hebt die Hand: helle Hautfarbe
+🙋🏼‍♀️	Frau hebt die Hand: mittelhelle Hautfarbe
+🙋🏼‍♀	Frau hebt die Hand: mittelhelle Hautfarbe
+🙋🏽‍♀️	Frau hebt die Hand: mittlere Hautfarbe
+🙋🏽‍♀	Frau hebt die Hand: mittlere Hautfarbe
+🙋🏾‍♀️	Frau hebt die Hand: mitteldunkle Hautfarbe
+🙋🏾‍♀	Frau hebt die Hand: mitteldunkle Hautfarbe
+🙋🏿‍♀️	Frau hebt die Hand: dunkle Hautfarbe
+🙋🏿‍♀	Frau hebt die Hand: dunkle Hautfarbe
+🙇	Person, die sich verbeugt
+🙇🏻	Verbeugende Person: helle Hautfarbe
+🙇🏼	Verbeugende Person: mittelhelle Hautfarbe
+🙇🏽	Verbeugende Person: mittlere Hautfarbe
+🙇🏾	Verbeugende Person: mitteldunkle Hautfarbe
+🙇🏿	Verbeugende Person: dunkle Hautfarbe
+🙇‍♂️	Mann verbeugt sich
+🙇‍♂	Mann verbeugt sich
+🙇🏻‍♂️	Mann verbeugt sich: helle Hautfarbe
+🙇🏻‍♂	Mann verbeugt sich: helle Hautfarbe
+🙇🏼‍♂️	Verbeugender Mann: mittelhelle Hautfarbe
+🙇🏼‍♂	Verbeugender Mann: mittelhelle Hautfarbe
+🙇🏽‍♂️	Verbeugender Mann: mittlere Hautfarbe
+🙇🏽‍♂	Verbeugender Mann: mittlere Hautfarbe
+🙇🏾‍♂️	Verbeugender Mann: mitteldunkle Hautfarbe
+🙇🏾‍♂	Verbeugender Mann: mitteldunkle Hautfarbe
+🙇🏿‍♂️	Mann verbeugt sich: dunkle Hautfarbe
+🙇🏿‍♂	Mann verbeugt sich: dunkle Hautfarbe
+🙇‍♀️	Frau verbeugt sich
+🙇‍♀	Frau verbeugt sich
+🙇🏻‍♀️	Frau verbeugt sich: helle Hautfarbe
+🙇🏻‍♀	Frau verbeugt sich: helle Hautfarbe
+🙇🏼‍♀️	Verbeugende Frau: mittelhelle Hautfarbe
+🙇🏼‍♀	Verbeugende Frau: mittelhelle Hautfarbe
+🙇🏽‍♀️	Frau verbeugt sich: mittlere Hautfarbe
+🙇🏽‍♀	Frau verbeugt sich: mittlere Hautfarbe
+🙇🏾‍♀️	Verbeugende Frau: mitteldunkle Hautfarbe
+🙇🏾‍♀	Verbeugende Frau: mitteldunkle Hautfarbe
+🙇🏿‍♀️	Frau verbeugt sich: dunkle Hautfarbe
+🙇🏿‍♀	Frau verbeugt sich: dunkle Hautfarbe
+🤦	Person, die sich ins Gesicht fasst
+🤦🏻	Anfassende Person: helle Hautfarbe
+🤦🏼	Person, die sich ins Gesicht fasst: mittelhelle Hautfarbe
+🤦🏽	Person, die sich ins Gesicht fasst: mittlere Hautfarbe
+🤦🏾	Anfassende Person: mitteldunkle Hautfarbe
+🤦🏿	Anfassende Person: dunkle Hautfarbe
+🤦‍♂️	Mann fasst sich ins Gesicht
+🤦‍♂	Mann fasst sich ins Gesicht
+🤦🏻‍♂️	Mann fasst sich ins Gesicht: helle Hautfarbe
+🤦🏻‍♂	Mann fasst sich ins Gesicht: helle Hautfarbe
+🤦🏼‍♂️	Mann, der sich an die Gesichter fasst: mittelheller Hautton
+🤦🏼‍♂	Mann, der sich an die Gesichter fasst: mittelheller Hautton
+🤦🏽‍♂️	Mann, der sich an die Gesichter fasst: mittlere Hautfarbe
+🤦🏽‍♂	Mann, der sich an die Gesichter fasst: mittlere Hautfarbe
+🤦🏾‍♂️	Mann fasst sich ins Gesicht: mitteldunkle Hautfarbe
+🤦🏾‍♂	Mann fasst sich ins Gesicht: mitteldunkle Hautfarbe
+🤦🏿‍♂️	Mann fasst sich ins Gesicht: dunkle Hautfarbe
+🤦🏿‍♂	Mann fasst sich ins Gesicht: dunkle Hautfarbe
+🤦‍♀️	Frau fasst sich ins Gesicht
+🤦‍♀	Frau fasst sich ins Gesicht
+🤦🏻‍♀️	Anfassende Frau: helle Hautfarbe
+🤦🏻‍♀	Anfassende Frau: helle Hautfarbe
+🤦🏼‍♀️	Anfassende Frau: mittelhelle Hautfarbe
+🤦🏼‍♀	Anfassende Frau: mittelhelle Hautfarbe
+🤦🏽‍♀️	Anfassende Frau: mittlere Hautfarbe
+🤦🏽‍♀	Anfassende Frau: mittlere Hautfarbe
+🤦🏾‍♀️	Anfassende Frau: mitteldunkle Hautfarbe
+🤦🏾‍♀	Anfassende Frau: mitteldunkle Hautfarbe
+🤦🏿‍♀️	Anfassende Frau: dunkle Hautfarbe
+🤦🏿‍♀	Anfassende Frau: dunkle Hautfarbe
+🤷	Person zuckt mit den Schultern
+🤷🏻	Schulterzuckende Person: helle Hautfarbe
+🤷🏼	Schulterzuckende Person: mittelhelle Hautfarbe
+🤷🏽	Schulterzuckende Person: mittlere Hautfarbe
+🤷🏾	Schulterzuckende Person: mitteldunkle Hautfarbe
+🤷🏿	Schulterzuckende Person: dunkle Hautfarbe
+🤷‍♂️	Mann zuckt mit den Schultern
+🤷‍♂	Mann zuckt mit den Schultern
+🤷🏻‍♂️	Mann zuckt mit den Schultern: helle Hautfarbe
+🤷🏻‍♂	Mann zuckt mit den Schultern: helle Hautfarbe
+🤷🏼‍♂️	Mann zuckt mit den Schultern: mittelhelle Hautfarbe
+🤷🏼‍♂	Mann zuckt mit den Schultern: mittelhelle Hautfarbe
+🤷🏽‍♂️	Mann zuckt mit den Schultern: mittlere Hautfarbe
+🤷🏽‍♂	Mann zuckt mit den Schultern: mittlere Hautfarbe
+🤷🏾‍♂️	Mann zuckt mit den Schultern: mitteldunkle Hautfarbe
+🤷🏾‍♂	Mann zuckt mit den Schultern: mitteldunkle Hautfarbe
+🤷🏿‍♂️	Mann zuckt mit den Schultern: dunkle Hautfarbe
+🤷🏿‍♂	Mann zuckt mit den Schultern: dunkle Hautfarbe
+🤷‍♀️	Frau zuckt mit den Schultern
+🤷‍♀	Frau zuckt mit den Schultern
+🤷🏻‍♀️	Achselzuckende Frau: helle Hautfarbe
+🤷🏻‍♀	Achselzuckende Frau: helle Hautfarbe
+🤷🏼‍♀️	Achselzuckende Frau: mittelhelle Hautfarbe
+🤷🏼‍♀	Achselzuckende Frau: mittelhelle Hautfarbe
+🤷🏽‍♀️	Achselzuckende Frau: mittlere Hautfarbe
+🤷🏽‍♀	Achselzuckende Frau: mittlere Hautfarbe
+🤷🏾‍♀️	Achselzuckende Frau: mitteldunkle Hautfarbe
+🤷🏾‍♀	Achselzuckende Frau: mitteldunkle Hautfarbe
+🤷🏿‍♀️	Achselzuckende Frau: dunkle Hautfarbe
+🤷🏿‍♀	Achselzuckende Frau: dunkle Hautfarbe
+💆	Person bekommt Massage
+💆🏻	Person, die eine Massage erhält: helle Hautfarbe
+💆🏼	Person, die eine Massage erhält: mittelhelle Hautfarbe
+💆🏽	Person, die eine Massage erhält: mittlere Hautfarbe
+💆🏾	Person, die eine Massage erhält: mitteldunkle Hautfarbe
+💆🏿	Person, die eine Massage erhält: dunkle Hautfarbe
+💆‍♂️	Mann bekommt Massage
+💆‍♂	Mann bekommt Massage
+💆🏻‍♂️	Mann bekommt Massage: helle Hautfarbe
+💆🏻‍♂	Mann bekommt Massage: helle Hautfarbe
+💆🏼‍♂️	Mann lässt sich massieren: mittelhelle Hautfarbe
+💆🏼‍♂	Mann lässt sich massieren: mittelhelle Hautfarbe
+💆🏽‍♂️	Mann bekommt Massage: mittlere Hautfarbe
+💆🏽‍♂	Mann bekommt Massage: mittlere Hautfarbe
+💆🏾‍♂️	Mann lässt sich massieren: mitteldunkle Hautfarbe
+💆🏾‍♂	Mann lässt sich massieren: mitteldunkle Hautfarbe
+💆🏿‍♂️	Mann bekommt Massage: dunkle Hautfarbe
+💆🏿‍♂	Mann bekommt Massage: dunkle Hautfarbe
+💆‍♀️	Frau bekommt Massage
+💆‍♀	Frau bekommt Massage
+💆🏻‍♀️	Frau bekommt Massage: helle Hautfarbe
+💆🏻‍♀	Frau bekommt Massage: helle Hautfarbe
+💆🏼‍♀️	Frau lässt sich massieren: mittelhelle Hautfarbe
+💆🏼‍♀	Frau lässt sich massieren: mittelhelle Hautfarbe
+💆🏽‍♀️	Frau bekommt Massage: mittlere Hautfarbe
+💆🏽‍♀	Frau bekommt Massage: mittlere Hautfarbe
+💆🏾‍♀️	Frau bekommt Massage: mitteldunkle Hautfarbe
+💆🏾‍♀	Frau bekommt Massage: mitteldunkle Hautfarbe
+💆🏿‍♀️	Frau bekommt Massage: dunkle Hautfarbe
+💆🏿‍♀	Frau bekommt Massage: dunkle Hautfarbe
+💇	Person, die sich die Haare schneiden lässt
+💇🏻	Person, die sich die Haare schneiden lässt: helle Hautfarbe
+💇🏼	Person, die sich die Haare schneiden lässt: mittelhelle Hautfarbe
+💇🏽	Person, die sich die Haare schneiden lässt: mittlere Hautfarbe
+💇🏾	Person, die sich die Haare schneiden lässt: mitteldunkle Hautfarbe
+💇🏿	Person, die sich die Haare schneiden lässt: dunkle Hautfarbe
+💇‍♂️	Mann lässt sich die Haare schneiden
+💇‍♂	Mann lässt sich die Haare schneiden
+💇🏻‍♂️	Mann lässt sich die Haare schneiden: helle Hautfarbe
+💇🏻‍♂	Mann lässt sich die Haare schneiden: helle Hautfarbe
+💇🏼‍♂️	Mann lässt sich die Haare schneiden: mittelhelle Hautfarbe
+💇🏼‍♂	Mann lässt sich die Haare schneiden: mittelhelle Hautfarbe
+💇🏽‍♂️	Mann lässt sich die Haare schneiden: mittlere Hautfarbe
+💇🏽‍♂	Mann lässt sich die Haare schneiden: mittlere Hautfarbe
+💇🏾‍♂️	Mann lässt sich die Haare schneiden: mitteldunkle Hautfarbe
+💇🏾‍♂	Mann lässt sich die Haare schneiden: mitteldunkle Hautfarbe
+💇🏿‍♂️	Mann lässt sich die Haare schneiden: dunkle Hautfarbe
+💇🏿‍♂	Mann lässt sich die Haare schneiden: dunkle Hautfarbe
+💇‍♀️	Frau lässt sich die Haare schneiden
+💇‍♀	Frau lässt sich die Haare schneiden
+💇🏻‍♀️	Frau lässt sich die Haare schneiden: helle Hautfarbe
+💇🏻‍♀	Frau lässt sich die Haare schneiden: helle Hautfarbe
+💇🏼‍♀️	Frau lässt sich die Haare schneiden: mittelhelle Hautfarbe
+💇🏼‍♀	Frau lässt sich die Haare schneiden: mittelhelle Hautfarbe
+💇🏽‍♀️	Frau lässt sich die Haare schneiden: mittlere Hautfarbe
+💇🏽‍♀	Frau lässt sich die Haare schneiden: mittlere Hautfarbe
+💇🏾‍♀️	Frau lässt sich die Haare schneiden: mitteldunkle Hautfarbe
+💇🏾‍♀	Frau lässt sich die Haare schneiden: mitteldunkle Hautfarbe
+💇🏿‍♀️	Frau lässt sich die Haare schneiden: dunkle Hautfarbe
+💇🏿‍♀	Frau lässt sich die Haare schneiden: dunkle Hautfarbe
+🚶	Person, die geht
+🚶🏻	Gehende Person: helle Hautfarbe
+🚶🏼	Gehende Person: mittelhelle Hautfarbe
+🚶🏽	Gehende Person: mittlere Hautfarbe
+🚶🏾	Gehende Person: mitteldunkle Hautfarbe
+🚶🏿	Gehende Person: dunkle Hautfarbe
+🚶‍♂️	Mann geht
+🚶‍♂	Mann geht
+🚶🏻‍♂️	Gehender Mann: helle Hautfarbe
+🚶🏻‍♂	Gehender Mann: helle Hautfarbe
+🚶🏼‍♂️	Gehender Mann: mittelhelle Hautfarbe
+🚶🏼‍♂	Gehender Mann: mittelhelle Hautfarbe
+🚶🏽‍♂️	Gehender Mann: mittlere Hautfarbe
+🚶🏽‍♂	Gehender Mann: mittlere Hautfarbe
+🚶🏾‍♂️	Gehender Mann: mitteldunkle Hautfarbe
+🚶🏾‍♂	Gehender Mann: mitteldunkle Hautfarbe
+🚶🏿‍♂️	Gehender Mann: dunkle Hautfarbe
+🚶🏿‍♂	Gehender Mann: dunkle Hautfarbe
+🚶‍♀️	Frau geht
+🚶‍♀	Frau geht
+🚶🏻‍♀️	Gehende Frau: helle Hautfarbe
+🚶🏻‍♀	Gehende Frau: helle Hautfarbe
+🚶🏼‍♀️	Gehende Frau: mittelhelle Hautfarbe
+🚶🏼‍♀	Gehende Frau: mittelhelle Hautfarbe
+🚶🏽‍♀️	Gehende Frau: mittlere Hautfarbe
+🚶🏽‍♀	Gehende Frau: mittlere Hautfarbe
+🚶🏾‍♀️	Gehende Frau: mitteldunkle Hautfarbe
+🚶🏾‍♀	Gehende Frau: mitteldunkle Hautfarbe
+🚶🏿‍♀️	Gehende Frau: dunkle Hautfarbe
+🚶🏿‍♀	Gehende Frau: dunkle Hautfarbe
+🏃	Person läuft
+🏃🏻	Laufende Person: helle Hautfarbe
+🏃🏼	Laufende Person: mittelhelle Hautfarbe
+🏃🏽	Laufende Person: mittlere Hautfarbe
+🏃🏾	Laufende Person: mitteldunkle Hautfarbe
+🏃🏿	Laufende Person: dunkle Hautfarbe
+🏃‍♂️	Mann rennt
+🏃‍♂	Mann rennt
+🏃🏻‍♂️	Laufender Mann: helle Hautfarbe
+🏃🏻‍♂	Laufender Mann: helle Hautfarbe
+🏃🏼‍♂️	Laufender Mann: mittelhelle Hautfarbe
+🏃🏼‍♂	Laufender Mann: mittelhelle Hautfarbe
+🏃🏽‍♂️	Laufender Mann: mittlere Hautfarbe
+🏃🏽‍♂	Laufender Mann: mittlere Hautfarbe
+🏃🏾‍♂️	Laufender Mann: mitteldunkle Hautfarbe
+🏃🏾‍♂	Laufender Mann: mitteldunkle Hautfarbe
+🏃🏿‍♂️	Laufender Mann: dunkle Hautfarbe
+🏃🏿‍♂	Laufender Mann: dunkle Hautfarbe
+🏃‍♀️	Frau läuft
+🏃‍♀	Frau läuft
+🏃🏻‍♀️	Laufende Frau: helle Hautfarbe
+🏃🏻‍♀	Laufende Frau: helle Hautfarbe
+🏃🏼‍♀️	Laufende Frau: mittelhelle Hautfarbe
+🏃🏼‍♀	Laufende Frau: mittelhelle Hautfarbe
+🏃🏽‍♀️	Laufende Frau: mittlere Hautfarbe
+🏃🏽‍♀	Laufende Frau: mittlere Hautfarbe
+🏃🏾‍♀️	Laufende Frau: mitteldunkle Hautfarbe
+🏃🏾‍♀	Laufende Frau: mitteldunkle Hautfarbe
+🏃🏿‍♀️	Laufende Frau: dunkle Hautfarbe
+🏃🏿‍♀	Laufende Frau: dunkle Hautfarbe
+💃	Frau tanzt
+💃🏻	Tanzende Frau: helle Hautfarbe
+💃🏼	Tanzende Frau: mittelhelle Hautfarbe
+💃🏽	Tanzende Frau: mittlere Hautfarbe
+💃🏾	Tanzende Frau: mitteldunkle Hautfarbe
+💃🏿	Tanzende Frau: dunkle Hautfarbe
+🕺	Mann tanzt
+🕺🏻	Tanzender Mann: helle Hautfarbe
+🕺🏼	Tanzender Mann: mittelhelle Hautfarbe
+🕺🏽	Tanzender Mann: mittlere Hautfarbe
+🕺🏾	Tanzender Mann: mitteldunkle Hautfarbe
+🕺🏿	Tanzender Mann: dunkle Hautfarbe
+👯	Menschen mit Hasenohren
+👯‍♂️	Männer mit Hasenohren
+👯‍♂	Männer mit Hasenohren
+👯‍♀️	Frauen mit Hasenohren
+👯‍♀	Frauen mit Hasenohren
+🧖	Person in dampfendem Raum
+🧖🏻	Person im Dampfraum: helle Hautfarbe
+🧖🏼	Person im Dampfraum: mittelhelle Hautfarbe
+🧖🏽	Person im Dampfraum: mittlere Hautfarbe
+🧖🏾	Person in feuchtem Raum: mitteldunkle Hautfarbe
+🧖🏿	Person im Dampfraum: dunkle Hautfarbe
+🧖‍♀️	Frau in dampfendem Raum
+🧖‍♀	Frau in dampfendem Raum
+🧖🏻‍♀️	Frau in dampfendem Raum: helle Hautfarbe
+🧖🏻‍♀	Frau in dampfendem Raum: helle Hautfarbe
+🧖🏼‍♀️	Frau in dampfendem Raum: mittelhelle Hautfarbe
+🧖🏼‍♀	Frau in dampfendem Raum: mittelhelle Hautfarbe
+🧖🏽‍♀️	Frau in dampfendem Raum: mittlere Hautfarbe
+🧖🏽‍♀	Frau in dampfendem Raum: mittlere Hautfarbe
+🧖🏾‍♀️	Frau in dampfendem Raum: mitteldunkle Hautfarbe
+🧖🏾‍♀	Frau in dampfendem Raum: mitteldunkle Hautfarbe
+🧖🏿‍♀️	Frau in dampfendem Raum: dunkle Hautfarbe
+🧖🏿‍♀	Frau in dampfendem Raum: dunkle Hautfarbe
+🧖‍♂️	Mann in dampfendem Raum
+🧖‍♂	Mann in dampfendem Raum
+🧖🏻‍♂️	Mann in dampfendem Raum: helle Hautfarbe
+🧖🏻‍♂	Mann in dampfendem Raum: helle Hautfarbe
+🧖🏼‍♂️	Mann in dampfendem Raum: mittelhelle Hautfarbe
+🧖🏼‍♂	Mann in dampfendem Raum: mittelhelle Hautfarbe
+🧖🏽‍♂️	Mann in dampfendem Raum: mittlere Hautfarbe
+🧖🏽‍♂	Mann in dampfendem Raum: mittlere Hautfarbe
+🧖🏾‍♂️	Mann in dampfendem Raum: mitteldunkle Hautfarbe
+🧖🏾‍♂	Mann in dampfendem Raum: mitteldunkle Hautfarbe
+🧖🏿‍♂️	Mann in dampfendem Raum: dunkle Hautfarbe
+🧖🏿‍♂	Mann in dampfendem Raum: dunkle Hautfarbe
+🧗	Person, die klettert
+🧗🏻	Kletternde Person: helle Hautfarbe
+🧗🏼	Kletternde Person: mittelhelle Hautfarbe
+🧗🏽	Kletternde Person: mittlere Hautfarbe
+🧗🏾	Kletternde Person: mitteldunkle Hautfarbe
+🧗🏿	Kletternde Person: dunkle Hautfarbe
+🧗‍♀️	Frau klettert
+🧗‍♀	Frau klettert
+🧗🏻‍♀️	Kletternde Frau: helle Hautfarbe
+🧗🏻‍♀	Kletternde Frau: helle Hautfarbe
+🧗🏼‍♀️	Kletternde Frau: mittelhelle Hautfarbe
+🧗🏼‍♀	Kletternde Frau: mittelhelle Hautfarbe
+🧗🏽‍♀️	Kletternde Frau: mittlere Hautfarbe
+🧗🏽‍♀	Kletternde Frau: mittlere Hautfarbe
+🧗🏾‍♀️	Kletternde Frau: mitteldunkle Hautfarbe
+🧗🏾‍♀	Kletternde Frau: mitteldunkle Hautfarbe
+🧗🏿‍♀️	Kletternde Frau: dunkle Hautfarbe
+🧗🏿‍♀	Kletternde Frau: dunkle Hautfarbe
+🧗‍♂️	Mann klettert
+🧗‍♂	Mann klettert
+🧗🏻‍♂️	Kletternder Mann: helle Hautfarbe
+🧗🏻‍♂	Kletternder Mann: helle Hautfarbe
+🧗🏼‍♂️	Kletternder Mann: mittelhelle Hautfarbe
+🧗🏼‍♂	Kletternder Mann: mittelhelle Hautfarbe
+🧗🏽‍♂️	Kletternder Mann: mittlere Hautfarbe
+🧗🏽‍♂	Kletternder Mann: mittlere Hautfarbe
+🧗🏾‍♂️	Kletternder Mann: mitteldunkle Hautfarbe
+🧗🏾‍♂	Kletternder Mann: mitteldunkle Hautfarbe
+🧗🏿‍♂️	Kletternder Mann: dunkle Hautfarbe
+🧗🏿‍♂	Kletternder Mann: dunkle Hautfarbe
+🧘	Person im Lotussitz
+🧘🏻	Person im Lotussitz: helle Hautfarbe
+🧘🏼	Person im Lotussitz: mittelhelle Hautfarbe
+🧘🏽	Person im Lotussitz: mittlere Hautfarbe
+🧘🏾	Person im Lotussitz: mitteldunkle Hautfarbe
+🧘🏿	Person im Lotussitz: dunkle Hautfarbe
+🧘‍♀️	Frau im Lotussitz
+🧘‍♀	Frau im Lotussitz
+🧘🏻‍♀️	Frau im Lotussitz: helle Hautfarbe
+🧘🏻‍♀	Frau im Lotussitz: helle Hautfarbe
+🧘🏼‍♀️	Frau im Lotussitz: mittelhelle Hautfarbe
+🧘🏼‍♀	Frau im Lotussitz: mittelhelle Hautfarbe
+🧘🏽‍♀️	Frau im Lotussitz: mittlere Hautfarbe
+🧘🏽‍♀	Frau im Lotussitz: mittlere Hautfarbe
+🧘🏾‍♀️	Frau im Lotussitz: mitteldunkle Hautfarbe
+🧘🏾‍♀	Frau im Lotussitz: mitteldunkle Hautfarbe
+🧘🏿‍♀️	Frau im Lotussitz: dunkle Hautfarbe
+🧘🏿‍♀	Frau im Lotussitz: dunkle Hautfarbe
+🧘‍♂️	Mann im Lotussitz
+🧘‍♂	Mann im Lotussitz
+🧘🏻‍♂️	Mann im Lotussitz: helle Hautfarbe
+🧘🏻‍♂	Mann im Lotussitz: helle Hautfarbe
+🧘🏼‍♂️	Mann im Lotussitz: mittelhelle Hautfarbe
+🧘🏼‍♂	Mann im Lotussitz: mittelhelle Hautfarbe
+🧘🏽‍♂️	Mann im Lotussitz: mittlere Hautfarbe
+🧘🏽‍♂	Mann im Lotussitz: mittlere Hautfarbe
+🧘🏾‍♂️	Mann im Lotussitz: mitteldunkle Hautfarbe
+🧘🏾‍♂	Mann im Lotussitz: mitteldunkle Hautfarbe
+🧘🏿‍♂️	Mann im Lotussitz: dunkle Hautfarbe
+🧘🏿‍♂	Mann im Lotussitz: dunkle Hautfarbe
+🛀	Person, die ein Bad nimmt
+🛀🏻	Badende Person: helle Hautfarbe
+🛀🏼	Badende Person: mittelhelle Hautfarbe
+🛀🏽	Badende Person: mittlere Hautfarbe
+🛀🏾	Badende Person: mitteldunkle Hautfarbe
+🛀🏿	Badende Person: dunkle Hautfarbe
+🛌	Person im Bett
+🛌🏻	Person im Bett: helle Hautfarbe
+🛌🏼	Person im Bett: mittelhelle Hautfarbe
+🛌🏽	Person im Bett: mittlere Hautfarbe
+🛌🏾	Person im Bett: mitteldunkle Hautfarbe
+🛌🏿	Person im Bett: dunkle Hautfarbe
+🕴️	Mann im Anzug schwebt
+🕴	Mann im Anzug schwebt
+🕴🏻	Mann im Anzug schwebt: helle Hautfarbe
+🕴🏼	Mann im Anzug schwebt: mittelhelle Hautfarbe
+🕴🏽	Mann im Anzug schwebt: mittlere Hautfarbe
+🕴🏾	Mann im Anzug schwebt: mitteldunkle Hautfarbe
+🕴🏿	Mann im Anzug schwebt: dunkle Hautfarbe
+🗣️	sprechender Kopf
+🗣	sprechender Kopf
+👤	Büste in Silhouette
+👥	Büsten in Silhouette
+🤺	Person beim Fechten
+🏇	Pferderennen
+🏇🏻	Pferderennen: helle Hautfarbe
+🏇🏼	Pferderennen: mittelheller Hautton
+🏇🏽	Pferderennen: mittlere Hautfarbe
+🏇🏾	Pferderennen: mitteldunkler Hautton
+🏇🏿	Pferderennen: dunkle Hautfarbe
+⛷️	Skifahrer
+⛷	Skifahrer
+🏂	Snowboarder
+🏂🏻	Snowboarder: helle Hautfarbe
+🏂🏼	Snowboarder: mittelheller Hautton
+🏂🏽	Snowboarder: mittlerer Hautton
+🏂🏾	Snowboarder: mitteldunkle Hautfarbe
+🏂🏿	Snowboarder: dunkle Hautfarbe
+🏌️	Person, die Golf spielt
+🏌	Person, die Golf spielt
+🏌🏻	Golf spielende Person: helle Hautfarbe
+🏌🏼	Golf spielende Person: mittelhelle Hautfarbe
+🏌🏽	Golf spielende Person: mittlere Hautfarbe
+🏌🏾	Golf spielende Person: mitteldunkle Hautfarbe
+🏌🏿	Golf spielende Person: dunkle Hautfarbe
+🏌️‍♂️	Mann beim Golfen
+🏌‍♂️	Mann beim Golfen
+🏌️‍♂	Mann beim Golfen
+🏌‍♂	Mann beim Golfen
+🏌🏻‍♂️	Mann beim Golfen: helle Hautfarbe
+🏌🏻‍♂	Mann beim Golfen: helle Hautfarbe
+🏌🏼‍♂️	Mann beim Golfen: mittelhelle Hautfarbe
+🏌🏼‍♂	Mann beim Golfen: mittelhelle Hautfarbe
+🏌🏽‍♂️	Mann beim Golfen: mittlere Hautfarbe
+🏌🏽‍♂	Mann beim Golfen: mittlere Hautfarbe
+🏌🏾‍♂️	Mann beim Golfen: mitteldunkle Hautfarbe
+🏌🏾‍♂	Mann beim Golfen: mitteldunkle Hautfarbe
+🏌🏿‍♂️	Mann beim Golfen: dunkle Hautfarbe
+🏌🏿‍♂	Mann beim Golfen: dunkle Hautfarbe
+🏌️‍♀️	Frau beim Golfen
+🏌‍♀️	Frau beim Golfen
+🏌️‍♀	Frau beim Golfen
+🏌‍♀	Frau beim Golfen
+🏌🏻‍♀️	Frau beim Golfen: helle Hautfarbe
+🏌🏻‍♀	Frau beim Golfen: helle Hautfarbe
+🏌🏼‍♀️	Frau beim Golfen: mittelhelle Hautfarbe
+🏌🏼‍♀	Frau beim Golfen: mittelhelle Hautfarbe
+🏌🏽‍♀️	Frau beim Golfen: mittlere Hautfarbe
+🏌🏽‍♀	Frau beim Golfen: mittlere Hautfarbe
+🏌🏾‍♀️	Frau beim Golfen: mitteldunkle Hautfarbe
+🏌🏾‍♀	Frau beim Golfen: mitteldunkle Hautfarbe
+🏌🏿‍♀️	Frau beim Golfen: dunkle Hautfarbe
+🏌🏿‍♀	Frau beim Golfen: dunkle Hautfarbe
+🏄	Person surft
+🏄🏻	Surfende Person: helle Hautfarbe
+🏄🏼	Surfende Person: mittelhelle Hautfarbe
+🏄🏽	Surfende Person: mittlere Hautfarbe
+🏄🏾	Surfende Person: mitteldunkle Hautfarbe
+🏄🏿	Surfende Person: dunkle Hautfarbe
+🏄‍♂️	Mann surft
+🏄‍♂	Mann surft
+🏄🏻‍♂️	Mann beim Surfen: helle Hautfarbe
+🏄🏻‍♂	Mann beim Surfen: helle Hautfarbe
+🏄🏼‍♂️	Mann beim Surfen: mittelhelle Hautfarbe
+🏄🏼‍♂	Mann beim Surfen: mittelhelle Hautfarbe
+🏄🏽‍♂️	Mann beim Surfen: mittlere Hautfarbe
+🏄🏽‍♂	Mann beim Surfen: mittlere Hautfarbe
+🏄🏾‍♂️	Mann beim Surfen: mitteldunkle Hautfarbe
+🏄🏾‍♂	Mann beim Surfen: mitteldunkle Hautfarbe
+🏄🏿‍♂️	Mann beim Surfen: dunkle Hautfarbe
+🏄🏿‍♂	Mann beim Surfen: dunkle Hautfarbe
+🏄‍♀️	Frau surft
+🏄‍♀	Frau surft
+🏄🏻‍♀️	Frau beim Surfen: helle Hautfarbe
+🏄🏻‍♀	Frau beim Surfen: helle Hautfarbe
+🏄🏼‍♀️	Surfende Frau: mittelhelle Hautfarbe
+🏄🏼‍♀	Surfende Frau: mittelhelle Hautfarbe
+🏄🏽‍♀️	Surfende Frau: mittlere Hautfarbe
+🏄🏽‍♀	Surfende Frau: mittlere Hautfarbe
+🏄🏾‍♀️	Surfende Frau: mitteldunkle Hautfarbe
+🏄🏾‍♀	Surfende Frau: mitteldunkle Hautfarbe
+🏄🏿‍♀️	Frau beim Surfen: dunkle Hautfarbe
+🏄🏿‍♀	Frau beim Surfen: dunkle Hautfarbe
+🚣	Person Ruderboot
+🚣🏻	Person im Ruderboot: helle Hautfarbe
+🚣🏼	Person im Ruderboot: mittelhelle Hautfarbe
+🚣🏽	Person im Ruderboot: mittlere Hautfarbe
+🚣🏾	Person im Ruderboot: mitteldunkle Hautfarbe
+🚣🏿	Person im Ruderboot: dunkle Hautfarbe
+🚣‍♂️	Mann Ruderboot
+🚣‍♂	Mann Ruderboot
+🚣🏻‍♂️	Mann im Ruderboot: helle Hautfarbe
+🚣🏻‍♂	Mann im Ruderboot: helle Hautfarbe
+🚣🏼‍♂️	Mann im Ruderboot: mittelhelle Hautfarbe
+🚣🏼‍♂	Mann im Ruderboot: mittelhelle Hautfarbe
+🚣🏽‍♂️	Mann im Ruderboot: mittlere Hautfarbe
+🚣🏽‍♂	Mann im Ruderboot: mittlere Hautfarbe
+🚣🏾‍♂️	Mann im Ruderboot: mitteldunkle Hautfarbe
+🚣🏾‍♂	Mann im Ruderboot: mitteldunkle Hautfarbe
+🚣🏿‍♂️	Mann im Ruderboot: dunkle Hautfarbe
+🚣🏿‍♂	Mann im Ruderboot: dunkle Hautfarbe
+🚣‍♀️	Frau Ruderboot
+🚣‍♀	Frau Ruderboot
+🚣🏻‍♀️	Frau im Ruderboot: helle Hautfarbe
+🚣🏻‍♀	Frau im Ruderboot: helle Hautfarbe
+🚣🏼‍♀️	Frau im Ruderboot: mittelhelle Hautfarbe
+🚣🏼‍♀	Frau im Ruderboot: mittelhelle Hautfarbe
+🚣🏽‍♀️	Frau im Ruderboot: mittlere Hautfarbe
+🚣🏽‍♀	Frau im Ruderboot: mittlere Hautfarbe
+🚣🏾‍♀️	Frau im Ruderboot: mitteldunkle Hautfarbe
+🚣🏾‍♀	Frau im Ruderboot: mitteldunkle Hautfarbe
+🚣🏿‍♀️	Frau im Ruderboot: dunkle Hautfarbe
+🚣🏿‍♀	Frau im Ruderboot: dunkle Hautfarbe
+🏊	Person schwimmt
+🏊🏻	Schwimmende Person: helle Hautfarbe
+🏊🏼	Schwimmende Person: mittelhelle Hautfarbe
+🏊🏽	Schwimmende Person: mittlere Hautfarbe
+🏊🏾	Schwimmende Person: mitteldunkle Hautfarbe
+🏊🏿	Schwimmende Person: dunkle Hautfarbe
+🏊‍♂️	Mann schwimmt
+🏊‍♂	Mann schwimmt
+🏊🏻‍♂️	Schwimmender Mann: helle Hautfarbe
+🏊🏻‍♂	Schwimmender Mann: helle Hautfarbe
+🏊🏼‍♂️	Schwimmender Mann: mittelhelle Hautfarbe
+🏊🏼‍♂	Schwimmender Mann: mittelhelle Hautfarbe
+🏊🏽‍♂️	Schwimmender Mann: mittlere Hautfarbe
+🏊🏽‍♂	Schwimmender Mann: mittlere Hautfarbe
+🏊🏾‍♂️	Schwimmender Mann: mitteldunkle Hautfarbe
+🏊🏾‍♂	Schwimmender Mann: mitteldunkle Hautfarbe
+🏊🏿‍♂️	Schwimmender Mann: dunkle Hautfarbe
+🏊🏿‍♂	Schwimmender Mann: dunkle Hautfarbe
+🏊‍♀️	Frau schwimmen
+🏊‍♀	Frau schwimmen
+🏊🏻‍♀️	Schwimmende Frau: helle Hautfarbe
+🏊🏻‍♀	Schwimmende Frau: helle Hautfarbe
+🏊🏼‍♀️	Schwimmende Frau: mittelhelle Hautfarbe
+🏊🏼‍♀	Schwimmende Frau: mittelhelle Hautfarbe
+🏊🏽‍♀️	Schwimmende Frau: mittlere Hautfarbe
+🏊🏽‍♀	Schwimmende Frau: mittlere Hautfarbe
+🏊🏾‍♀️	Schwimmende Frau: mitteldunkle Hautfarbe
+🏊🏾‍♀	Schwimmende Frau: mitteldunkle Hautfarbe
+🏊🏿‍♀️	Schwimmende Frau: dunkle Hautfarbe
+🏊🏿‍♀	Schwimmende Frau: dunkle Hautfarbe
+⛹️	Person, die einen Ball springt
+⛹	Person, die einen Ball springt
+⛹🏻	Ball springende Person: helle Hautfarbe
+⛹🏼	Ball springende Person: mittelhelle Hautfarbe
+⛹🏽	Ball springende Person: mittlere Hautfarbe
+⛹🏾	Ball springende Person: mitteldunkle Hautfarbe
+⛹🏿	Ball springende Person: dunkle Hautfarbe
+⛹️‍♂️	Mann springt mit Ball
+⛹‍♂️	Mann springt mit Ball
+⛹️‍♂	Mann springt mit Ball
+⛹‍♂	Mann springt mit Ball
+⛹🏻‍♂️	Mann springt mit Ball: helle Hautfarbe
+⛹🏻‍♂	Mann springt mit Ball: helle Hautfarbe
+⛹🏼‍♂️	Mann, der Ball springt: mittelhelle Hautfarbe
+⛹🏼‍♂	Mann, der Ball springt: mittelhelle Hautfarbe
+⛹🏽‍♂️	Mann, der einen Ball springt: mittlere Hautfarbe
+⛹🏽‍♂	Mann, der einen Ball springt: mittlere Hautfarbe
+⛹🏾‍♂️	Mann, der Ball springt: mitteldunkle Hautfarbe
+⛹🏾‍♂	Mann, der Ball springt: mitteldunkle Hautfarbe
+⛹🏿‍♂️	Mann springt mit Ball: dunkle Hautfarbe
+⛹🏿‍♂	Mann springt mit Ball: dunkle Hautfarbe
+⛹️‍♀️	Frau springt mit dem Ball
+⛹‍♀️	Frau springt mit dem Ball
+⛹️‍♀	Frau springt mit dem Ball
+⛹‍♀	Frau springt mit dem Ball
+⛹🏻‍♀️	Ballspringende Frau: helle Hautfarbe
+⛹🏻‍♀	Ballspringende Frau: helle Hautfarbe
+⛹🏼‍♀️	Ballspringende Frau: mittelhelle Hautfarbe
+⛹🏼‍♀	Ballspringende Frau: mittelhelle Hautfarbe
+⛹🏽‍♀️	Ballspringende Frau: mittlere Hautfarbe
+⛹🏽‍♀	Ballspringende Frau: mittlere Hautfarbe
+⛹🏾‍♀️	Ballspringende Frau: mitteldunkle Hautfarbe
+⛹🏾‍♀	Ballspringende Frau: mitteldunkle Hautfarbe
+⛹🏿‍♀️	Ballspringende Frau: dunkle Hautfarbe
+⛹🏿‍♀	Ballspringende Frau: dunkle Hautfarbe
+🏋️	Person, die Gewichte hebt
+🏋	Person, die Gewichte hebt
+🏋🏻	Gewichthebende Person: helle Hautfarbe
+🏋🏼	Gewichthebende Person: mittelhelle Hautfarbe
+🏋🏽	Gewichthebende Person: mittlere Hautfarbe
+🏋🏾	Gewichthebende Person: mitteldunkle Hautfarbe
+🏋🏿	Gewichthebende Person: dunkle Hautfarbe
+🏋️‍♂️	Mann hebt Gewichte
+🏋‍♂️	Mann hebt Gewichte
+🏋️‍♂	Mann hebt Gewichte
+🏋‍♂	Mann hebt Gewichte
+🏋🏻‍♂️	Mann, der Gewichte hebt: helle Hautfarbe
+🏋🏻‍♂	Mann, der Gewichte hebt: helle Hautfarbe
+🏋🏼‍♂️	Mann, der Gewichte hebt: mittelhelle Hautfarbe
+🏋🏼‍♂	Mann, der Gewichte hebt: mittelhelle Hautfarbe
+🏋🏽‍♂️	Mann, der Gewichte hebt: mittlere Hautfarbe
+🏋🏽‍♂	Mann, der Gewichte hebt: mittlere Hautfarbe
+🏋🏾‍♂️	Mann, der Gewichte hebt: mitteldunkle Hautfarbe
+🏋🏾‍♂	Mann, der Gewichte hebt: mitteldunkle Hautfarbe
+🏋🏿‍♂️	Mann, der Gewichte hebt: dunkle Hautfarbe
+🏋🏿‍♂	Mann, der Gewichte hebt: dunkle Hautfarbe
+🏋️‍♀️	Frau hebt Gewichte
+🏋‍♀️	Frau hebt Gewichte
+🏋️‍♀	Frau hebt Gewichte
+🏋‍♀	Frau hebt Gewichte
+🏋🏻‍♀️	Frau beim Gewichtheben: helle Hautfarbe
+🏋🏻‍♀	Frau beim Gewichtheben: helle Hautfarbe
+🏋🏼‍♀️	Gewichthebende Frau: mittelhelle Hautfarbe
+🏋🏼‍♀	Gewichthebende Frau: mittelhelle Hautfarbe
+🏋🏽‍♀️	Gewichthebende Frau: mittlere Hautfarbe
+🏋🏽‍♀	Gewichthebende Frau: mittlere Hautfarbe
+🏋🏾‍♀️	Gewichthebende Frau: mitteldunkle Hautfarbe
+🏋🏾‍♀	Gewichthebende Frau: mitteldunkle Hautfarbe
+🏋🏿‍♀️	Frau beim Gewichtheben: dunkle Hautfarbe
+🏋🏿‍♀	Frau beim Gewichtheben: dunkle Hautfarbe
+🚴	Person, die Fahrrad fährt
+🚴🏻	Radfahrende Person: helle Hautfarbe
+🚴🏼	Radfahrende Person: mittelhelle Hautfarbe
+🚴🏽	Radfahrende Person: mittlere Hautfarbe
+🚴🏾	Radfahrende Person: mitteldunkle Hautfarbe
+🚴🏿	Radfahrende Person: dunkle Hautfarbe
+🚴‍♂️	Mann, Radfahren
+🚴‍♂	Mann, Radfahren
+🚴🏻‍♂️	Mann beim Radfahren: helle Hautfarbe
+🚴🏻‍♂	Mann beim Radfahren: helle Hautfarbe
+🚴🏼‍♂️	Mann beim Radfahren: mittelhelle Hautfarbe
+🚴🏼‍♂	Mann beim Radfahren: mittelhelle Hautfarbe
+🚴🏽‍♂️	Mann beim Radfahren: mittlere Hautfarbe
+🚴🏽‍♂	Mann beim Radfahren: mittlere Hautfarbe
+🚴🏾‍♂️	Mann beim Radfahren: mitteldunkle Hautfarbe
+🚴🏾‍♂	Mann beim Radfahren: mitteldunkle Hautfarbe
+🚴🏿‍♂️	Mann beim Radfahren: dunkle Hautfarbe
+🚴🏿‍♂	Mann beim Radfahren: dunkle Hautfarbe
+🚴‍♀️	Frau Radfahren
+🚴‍♀	Frau Radfahren
+🚴🏻‍♀️	Radfahrerin: helle Hautfarbe
+🚴🏻‍♀	Radfahrerin: helle Hautfarbe
+🚴🏼‍♀️	Radfahrerin: mittelhelle Hautfarbe
+🚴🏼‍♀	Radfahrerin: mittelhelle Hautfarbe
+🚴🏽‍♀️	Radfahrerin: mittlere Hautfarbe
+🚴🏽‍♀	Radfahrerin: mittlere Hautfarbe
+🚴🏾‍♀️	Radfahrerin: mitteldunkle Hautfarbe
+🚴🏾‍♀	Radfahrerin: mitteldunkle Hautfarbe
+🚴🏿‍♀️	Radfahrerin: dunkle Hautfarbe
+🚴🏿‍♀	Radfahrerin: dunkle Hautfarbe
+🚵	Person Mountainbiken
+🚵🏻	Person beim Mountainbiken: helle Hautfarbe
+🚵🏼	Person beim Mountainbiken: mittelhelle Hautfarbe
+🚵🏽	Person beim Mountainbiken: mittlere Hautfarbe
+🚵🏾	Person beim Mountainbiken: mitteldunkle Hautfarbe
+🚵🏿	Person beim Mountainbiken: dunkle Hautfarbe
+🚵‍♂️	Mann Mountainbiken
+🚵‍♂	Mann Mountainbiken
+🚵🏻‍♂️	Mann beim Mountainbiken: helle Hautfarbe
+🚵🏻‍♂	Mann beim Mountainbiken: helle Hautfarbe
+🚵🏼‍♂️	Mann beim Mountainbiken: mittelhelle Hautfarbe
+🚵🏼‍♂	Mann beim Mountainbiken: mittelhelle Hautfarbe
+🚵🏽‍♂️	Mann beim Mountainbiken: mittlere Hautfarbe
+🚵🏽‍♂	Mann beim Mountainbiken: mittlere Hautfarbe
+🚵🏾‍♂️	Mann beim Mountainbiken: mitteldunkle Hautfarbe
+🚵🏾‍♂	Mann beim Mountainbiken: mitteldunkle Hautfarbe
+🚵🏿‍♂️	Mann beim Mountainbiken: dunkle Hautfarbe
+🚵🏿‍♂	Mann beim Mountainbiken: dunkle Hautfarbe
+🚵‍♀️	Frau Mountainbiken
+🚵‍♀	Frau Mountainbiken
+🚵🏻‍♀️	Frau beim Mountainbiken: helle Hautfarbe
+🚵🏻‍♀	Frau beim Mountainbiken: helle Hautfarbe
+🚵🏼‍♀️	Frau beim Mountainbiken: mittelhelle Hautfarbe
+🚵🏼‍♀	Frau beim Mountainbiken: mittelhelle Hautfarbe
+🚵🏽‍♀️	Mountainbikerin: mittlere Hautfarbe
+🚵🏽‍♀	Mountainbikerin: mittlere Hautfarbe
+🚵🏾‍♀️	Frau beim Mountainbiken: mitteldunkle Hautfarbe
+🚵🏾‍♀	Frau beim Mountainbiken: mitteldunkle Hautfarbe
+🚵🏿‍♀️	Frau beim Mountainbiken: dunkle Hautfarbe
+🚵🏿‍♀	Frau beim Mountainbiken: dunkle Hautfarbe
+🏎️	Rennauto
+🏎	Rennauto
+🏍️	Motorrad
+🏍	Motorrad
+🤸	Person, die Rad schlägt
+🤸🏻	Rad schlagende Person: helle Hautfarbe
+🤸🏼	Rad schlagende Person: mittelhelle Hautfarbe
+🤸🏽	Rad schlagende Person: mittlere Hautfarbe
+🤸🏾	Rad schlagende Person: mitteldunkle Hautfarbe
+🤸🏿	Rad schlagende Person: dunkle Hautfarbe
+🤸‍♂️	Mann beim Radschlagen
+🤸‍♂	Mann beim Radschlagen
+🤸🏻‍♂️	Rad schlagender Mann: helle Hautfarbe
+🤸🏻‍♂	Rad schlagender Mann: helle Hautfarbe
+🤸🏼‍♂️	Rad schlagender Mann: mittelhelle Hautfarbe
+🤸🏼‍♂	Rad schlagender Mann: mittelhelle Hautfarbe
+🤸🏽‍♂️	Rad schlagender Mann: mittlere Hautfarbe
+🤸🏽‍♂	Rad schlagender Mann: mittlere Hautfarbe
+🤸🏾‍♂️	Rad schlagender Mann: mitteldunkle Hautfarbe
+🤸🏾‍♂	Rad schlagender Mann: mitteldunkle Hautfarbe
+🤸🏿‍♂️	Rad schlagender Mann: dunkle Hautfarbe
+🤸🏿‍♂	Rad schlagender Mann: dunkle Hautfarbe
+🤸‍♀️	Frau beim Radschlagen
+🤸‍♀	Frau beim Radschlagen
+🤸🏻‍♀️	Rad schlagende Frau: helle Hautfarbe
+🤸🏻‍♀	Rad schlagende Frau: helle Hautfarbe
+🤸🏼‍♀️	Rad schlagende Frau: mittelhelle Hautfarbe
+🤸🏼‍♀	Rad schlagende Frau: mittelhelle Hautfarbe
+🤸🏽‍♀️	Rad schlagende Frau: mittlere Hautfarbe
+🤸🏽‍♀	Rad schlagende Frau: mittlere Hautfarbe
+🤸🏾‍♀️	Rad schlagende Frau: mitteldunkle Hautfarbe
+🤸🏾‍♀	Rad schlagende Frau: mitteldunkle Hautfarbe
+🤸🏿‍♀️	Rad schlagende Frau: dunkle Hautfarbe
+🤸🏿‍♀	Rad schlagende Frau: dunkle Hautfarbe
+🤼	Menschen ringen
+🤼‍♂️	Männer ringen
+🤼‍♂	Männer ringen
+🤼‍♀️	Frauen ringen
+🤼‍♀	Frauen ringen
+🤽	Person, die Wasserball spielt
+🤽🏻	Person, die Wasserball spielt: helle Hautfarbe
+🤽🏼	Person, die Wasserball spielt: mittelhelle Hautfarbe
+🤽🏽	Person, die Wasserball spielt: mittlere Hautfarbe
+🤽🏾	Person, die Wasserball spielt: mitteldunkle Hautfarbe
+🤽🏿	Person, die Wasserball spielt: dunkle Hautfarbe
+🤽‍♂️	Mann spielt Wasserball
+🤽‍♂	Mann spielt Wasserball
+🤽🏻‍♂️	Mann spielt Wasserball: helle Hautfarbe
+🤽🏻‍♂	Mann spielt Wasserball: helle Hautfarbe
+🤽🏼‍♂️	Mann spielt Wasserball: mittelhelle Hautfarbe
+🤽🏼‍♂	Mann spielt Wasserball: mittelhelle Hautfarbe
+🤽🏽‍♂️	Mann spielt Wasserball: mittlere Hautfarbe
+🤽🏽‍♂	Mann spielt Wasserball: mittlere Hautfarbe
+🤽🏾‍♂️	Mann spielt Wasserball: mitteldunkle Hautfarbe
+🤽🏾‍♂	Mann spielt Wasserball: mitteldunkle Hautfarbe
+🤽🏿‍♂️	Mann spielt Wasserball: dunkle Hautfarbe
+🤽🏿‍♂	Mann spielt Wasserball: dunkle Hautfarbe
+🤽‍♀️	Frau spielt Wasserball
+🤽‍♀	Frau spielt Wasserball
+🤽🏻‍♀️	Frau spielt Wasserball: helle Hautfarbe
+🤽🏻‍♀	Frau spielt Wasserball: helle Hautfarbe
+🤽🏼‍♀️	Frau spielt Wasserball: mittelhelle Hautfarbe
+🤽🏼‍♀	Frau spielt Wasserball: mittelhelle Hautfarbe
+🤽🏽‍♀️	Frau spielt Wasserball: mittlere Hautfarbe
+🤽🏽‍♀	Frau spielt Wasserball: mittlere Hautfarbe
+🤽🏾‍♀️	Frau spielt Wasserball: mitteldunkle Hautfarbe
+🤽🏾‍♀	Frau spielt Wasserball: mitteldunkle Hautfarbe
+🤽🏿‍♀️	Frau spielt Wasserball: dunkle Hautfarbe
+🤽🏿‍♀	Frau spielt Wasserball: dunkle Hautfarbe
+🤾	Person, die Handball spielt
+🤾🏻	Handball spielende Person: helle Hautfarbe
+🤾🏼	Handball spielende Person: mittelhelle Hautfarbe
+🤾🏽	Handball spielende Person: mittlere Hautfarbe
+🤾🏾	Handball spielende Person: mitteldunkle Hautfarbe
+🤾🏿	Handball spielende Person: dunkle Hautfarbe
+🤾‍♂️	Mann spielt Handball
+🤾‍♂	Mann spielt Handball
+🤾🏻‍♂️	Mann spielt Handball: helle Hautfarbe
+🤾🏻‍♂	Mann spielt Handball: helle Hautfarbe
+🤾🏼‍♂️	Mann spielt Handball: mittelhelle Hautfarbe
+🤾🏼‍♂	Mann spielt Handball: mittelhelle Hautfarbe
+🤾🏽‍♂️	Mann spielt Handball: mittlere Hautfarbe
+🤾🏽‍♂	Mann spielt Handball: mittlere Hautfarbe
+🤾🏾‍♂️	Mann spielt Handball: mitteldunkle Hautfarbe
+🤾🏾‍♂	Mann spielt Handball: mitteldunkle Hautfarbe
+🤾🏿‍♂️	Mann spielt Handball: dunkle Hautfarbe
+🤾🏿‍♂	Mann spielt Handball: dunkle Hautfarbe
+🤾‍♀️	Frau spielt Handball
+🤾‍♀	Frau spielt Handball
+🤾🏻‍♀️	Frau spielt Handball: helle Hautfarbe
+🤾🏻‍♀	Frau spielt Handball: helle Hautfarbe
+🤾🏼‍♀️	Frau spielt Handball: mittelhelle Hautfarbe
+🤾🏼‍♀	Frau spielt Handball: mittelhelle Hautfarbe
+🤾🏽‍♀️	Frau spielt Handball: mittlere Hautfarbe
+🤾🏽‍♀	Frau spielt Handball: mittlere Hautfarbe
+🤾🏾‍♀️	Handball spielende Frau: mitteldunkle Hautfarbe
+🤾🏾‍♀	Handball spielende Frau: mitteldunkle Hautfarbe
+🤾🏿‍♀️	Frau spielt Handball: dunkle Hautfarbe
+🤾🏿‍♀	Frau spielt Handball: dunkle Hautfarbe
+🤹	Person, die jongliert
+🤹🏻	Jonglierende Person: helle Hautfarbe
+🤹🏼	Jonglierende Person: mittelhelle Hautfarbe
+🤹🏽	Jonglierende Person: mittlere Hautfarbe
+🤹🏾	Jonglierende Person: mitteldunkle Hautfarbe
+🤹🏿	Jonglierende Person: dunkle Hautfarbe
+🤹‍♂️	Mann jongliert
+🤹‍♂	Mann jongliert
+🤹🏻‍♂️	Jonglierender Mann: helle Hautfarbe
+🤹🏻‍♂	Jonglierender Mann: helle Hautfarbe
+🤹🏼‍♂️	Jonglierender Mann: mittelhelle Hautfarbe
+🤹🏼‍♂	Jonglierender Mann: mittelhelle Hautfarbe
+🤹🏽‍♂️	Jonglierender Mann: mittlere Hautfarbe
+🤹🏽‍♂	Jonglierender Mann: mittlere Hautfarbe
+🤹🏾‍♂️	Jonglierender Mann: mitteldunkle Hautfarbe
+🤹🏾‍♂	Jonglierender Mann: mitteldunkle Hautfarbe
+🤹🏿‍♂️	Jonglierender Mann: dunkle Hautfarbe
+🤹🏿‍♂	Jonglierender Mann: dunkle Hautfarbe
+🤹‍♀️	Frau jongliert
+🤹‍♀	Frau jongliert
+🤹🏻‍♀️	Jonglierende Frau: helle Hautfarbe
+🤹🏻‍♀	Jonglierende Frau: helle Hautfarbe
+🤹🏼‍♀️	Jonglierende Frau: mittelhelle Hautfarbe
+🤹🏼‍♀	Jonglierende Frau: mittelhelle Hautfarbe
+🤹🏽‍♀️	Jonglierende Frau: mittlere Hautfarbe
+🤹🏽‍♀	Jonglierende Frau: mittlere Hautfarbe
+🤹🏾‍♀️	Jonglierende Frau: mitteldunkle Hautfarbe
+🤹🏾‍♀	Jonglierende Frau: mitteldunkle Hautfarbe
+🤹🏿‍♀️	Jonglierende Frau: dunkle Hautfarbe
+🤹🏿‍♀	Jonglierende Frau: dunkle Hautfarbe
+👫	Mann und Frau halten sich an den Händen
+👬	zwei Männer halten sich an den Händen
+👭	zwei Frauen halten sich an den Händen
+💏	Kuss
+👩‍❤️‍💋‍👨	Kuss: Frau, Mann
+👩‍❤‍💋‍👨	Kuss: Frau, Mann
+👨‍❤️‍💋‍👨	Kuss: Mann, Mann
+👨‍❤‍💋‍👨	Kuss: Mann, Mann
+👩‍❤️‍💋‍👩	Kuss: Frau, Frau
+👩‍❤‍💋‍👩	Kuss: Frau, Frau
+💑	Paar mit Herz
+👩‍❤️‍👨	Paar mit Herz: Frau, Mann
+👩‍❤‍👨	Paar mit Herz: Frau, Mann
+👨‍❤️‍👨	Paar mit Herz: Mann, Mann
+👨‍❤‍👨	Paar mit Herz: Mann, Mann
+👩‍❤️‍👩	Paar mit Herz: Frau, Frau
+👩‍❤‍👩	Paar mit Herz: Frau, Frau
+👪	Familie
+👨‍👩‍👦	Familie: Mann, Frau, Junge
+👨‍👩‍👧	Familie: Mann, Frau, Mädchen
+👨‍👩‍👧‍👦	Familie: Mann, Frau, Mädchen, Junge
+👨‍👩‍👦‍👦	Familie: Mann, Frau, Junge, Junge
+👨‍👩‍👧‍👧	Familie: Mann, Frau, Mädchen, Mädchen
+👨‍👨‍👦	Familie: Mann, Mann, Junge
+👨‍👨‍👧	Familie: Mann, Mann, Mädchen
+👨‍👨‍👧‍👦	Familie: Mann, Mann, Mädchen, Junge
+👨‍👨‍👦‍👦	Familie: Mann, Mann, Junge, Junge
+👨‍👨‍👧‍👧	Familie: Mann, Mann, Mädchen, Mädchen
+👩‍👩‍👦	Familie: Frau, Frau, Junge
+👩‍👩‍👧	Familie: Frau, Frau, Mädchen
+👩‍👩‍👧‍👦	Familie: Frau, Frau, Mädchen, Junge
+👩‍👩‍👦‍👦	Familie: Frau, Frau, Junge, Junge
+👩‍👩‍👧‍👧	Familie: Frau, Frau, Mädchen, Mädchen
+👨‍👦	Familie: Mann, Junge
+👨‍👦‍👦	Familie: Mann, Junge, Junge
+👨‍👧	Familie: Mann, Mädchen
+👨‍👧‍👦	Familie: Mann, Mädchen, Junge
+👨‍👧‍👧	Familie: Mann, Mädchen, Mädchen
+👩‍👦	Familie: Frau, Junge
+👩‍👦‍👦	Familie: Frau, Junge, Junge
+👩‍👧	Familie: Frau, Mädchen
+👩‍👧‍👦	Familie: Frau, Mädchen, Junge
+👩‍👧‍👧	Familie: Frau, Mädchen, Mädchen
+🤳	Selfie
+🤳🏻	Selfie: heller Hautton
+🤳🏼	Selfie: mittelheller Hautton
+🤳🏽	Selfie: mittlerer Hautton
+🤳🏾	Selfie: mitteldunkler Hautton
+🤳🏿	Selfie: dunkler Hautton
+💪	gebeugter Bizeps
+💪🏻	Gebeugter Bizeps: heller Hautton
+💪🏼	Gebeugter Bizeps: mittelheller Hautton
+💪🏽	Gebeugter Bizeps: mittlerer Hautton
+💪🏾	Gebeugter Bizeps: mitteldunkler Hautton
+💪🏿	Gebeugter Bizeps: dunkler Hautton
+🦵	Bein
+🦵🏻	Bein: heller Hautton
+🦵🏼	Bein: mittelheller Hautton
+🦵🏽	Bein: mittlerer Hautton
+🦵🏾	Bein: mitteldunkler Hautton
+🦵🏿	Bein: dunkler Hautton
+🦶	Fuß
+🦶🏻	Fuß: heller Hautton
+🦶🏼	Fuß: mittelheller Hautton
+🦶🏽	Fuß: mittlerer Hautton
+🦶🏾	Fuß: mitteldunkler Hautton
+🦶🏿	Fuß: dunkler Hautton
+👈	Der Zeigefinger der Rückhand zeigt nach links
+👈🏻	Nach links zeigender Zeigefinger der Rückhand: helle Hautfarbe
+👈🏼	Nach links zeigender Zeigefinger der Rückhand: mittelhelle Hautfarbe
+👈🏽	Nach links zeigender Zeigefinger der Rückhand: mittlere Hautfarbe
+👈🏾	Nach links zeigender Zeigefinger der Rückhand: mitteldunkle Hautfarbe
+👈🏿	Nach links zeigender Zeigefinger der Rückhand: dunkle Hautfarbe
+👉	Der Zeigefinger der Rückhand zeigt nach rechts
+👉🏻	Der Zeigefinger der Rückhand zeigt nach rechts: helle Hautfarbe
+👉🏼	Rückhandzeiger zeigt nach rechts: mittelhelle Hautfarbe
+👉🏽	Der Zeigefinger der Rückhand zeigt nach rechts: mittlere Hautfarbe
+👉🏾	Rückhandzeiger zeigt nach rechts: mitteldunkler Hautton
+👉🏿	Rückhandzeiger zeigt nach rechts: dunkle Hautfarbe
+☝️	Index zeigt nach oben
+☝	Index zeigt nach oben
+☝🏻	Zeigefinger nach oben: heller Hautton
+☝🏼	Index zeigt nach oben: mittelheller Hautton
+☝🏽	Index zeigt nach oben: mittlerer Hautton
+☝🏾	Zeigefinger nach oben: mitteldunkler Hautton
+☝🏿	Zeigefinger nach oben: dunkler Hautton
+👆	Der Zeigefinger der Rückhand zeigt nach oben
+👆🏻	Nach oben zeigender Zeigefinger der Rückhand: helle Hautfarbe
+👆🏼	Hinterhandzeiger zeigt nach oben: mittelheller Hautton
+👆🏽	Rückhandzeiger zeigt nach oben: mittlerer Hautton
+👆🏾	Hinterhandzeiger zeigt nach oben: mitteldunkle Hautfarbe
+👆🏿	Nach oben zeigender Zeigefinger der Rückhand: dunkle Hautfarbe
+🖕	Mittelfinger
+🖕🏻	Mittelfinger: heller Hautton
+🖕🏼	Mittelfinger: mittelheller Hautton
+🖕🏽	Mittelfinger: mittlerer Hautton
+🖕🏾	Mittelfinger: mitteldunkler Hautton
+🖕🏿	Mittelfinger: dunkler Hautton
+👇	Der Zeigefinger der Rückhand zeigt nach unten
+👇🏻	Nach unten zeigender Zeigefinger der Rückhand: helle Hautfarbe
+👇🏼	Hinterhandzeiger nach unten: mittelheller Hautton
+👇🏽	Hinterhandzeiger zeigt nach unten: mittlerer Hautton
+👇🏾	Hinterhandzeiger zeigt nach unten: mitteldunkler Hautton
+👇🏿	Hinterhandzeiger zeigt nach unten: dunkle Hautfarbe
+✌️	Siegeshand
+✌	Siegeshand
+✌🏻	Siegeshand: helle Hautfarbe
+✌🏼	Siegeshand: mittelheller Hautton
+✌🏽	Siegeshand: mittlere Hautfarbe
+✌🏾	Siegeshand: mitteldunkle Hautfarbe
+✌🏿	Siegeshand: dunkle Hautfarbe
+🤞	gekreuzte Finger
+🤞🏻	gekreuzte daumen: heller hautton
+🤞🏼	gekreuzte Daumen: mittelheller Hautton
+🤞🏽	gekreuzte daumen: mittlerer hautton
+🤞🏾	gekreuzte Daumen: mitteldunkler Hautton
+🤞🏿	gekreuzte daumen: dunkle hautfarbe
+🖖	vulkanischer Gruß
+🖖🏻	Vulkanischer Gruß: heller Hautton
+🖖🏼	Vulkanischer Gruß: mittelheller Hautton
+🖖🏽	Vulkanischer Gruß: mittlerer Hautton
+🖖🏾	Vulkanischer Gruß: mitteldunkler Hautton
+🖖🏿	Vulkanischer Gruß: dunkler Hautton
+🤘	Zeichen der Hörner
+🤘🏻	Zeichen der Hörner: heller Hautton
+🤘🏼	Zeichen der Hörner: mittelheller Hautton
+🤘🏽	Zeichen der Hörner: mittlerer Hautton
+🤘🏾	Zeichen der Hörner: mitteldunkler Hautton
+🤘🏿	Zeichen der Hörner: dunkler Hautton
+🤙	Nenn mich Hand
+🤙🏻	Nenn mich Hand: helle Hautfarbe
+🤙🏼	Nenn mich Hand: mittelheller Hautton
+🤙🏽	Nenn mich Hand: mittlerer Hautton
+🤙🏾	Nenn mich Hand: mitteldunkler Hautton
+🤙🏿	Nenn mich Hand: dunkle Hautfarbe
+🖐️	Hand mit gespreizten Fingern
+🖐	Hand mit gespreizten Fingern
+🖐🏻	Hand mit gespreizten Fingern: helle Hautfarbe
+🖐🏼	Hand mit gespreizten Fingern: mittelheller Hautton
+🖐🏽	Hand mit gespreizten Fingern: mittlerer Hautton
+🖐🏾	Hand mit gespreizten Fingern: mitteldunkler Hautton
+🖐🏿	Hand mit gespreizten Fingern: dunkle Hautfarbe
+✋	erhobene Hand
+✋🏻	erhobene Hand: helle Hautfarbe
+✋🏼	erhobene Hand: mittelheller Hautton
+✋🏽	erhobene Hand: mittlerer Hautton
+✋🏾	erhobene Hand: mitteldunkler Hautton
+✋🏿	erhobene Hand: dunkle Hautfarbe
+👌	OK, Hand
+👌🏻	OK Hand: heller Hautton
+👌🏼	OK Hand: mittelheller Hautton
+👌🏽	OK Hand: mittlerer Hautton
+👌🏾	OK Hand: mitteldunkler Hautton
+👌🏿	OK Hand: dunkler Hautton
+👍	Daumen hoch
+👍🏻	Daumen hoch: heller Hautton
+👍🏼	Daumen hoch: mittelheller Hautton
+👍🏽	Daumen hoch: mittlerer Hautton
+👍🏾	Daumen hoch: mitteldunkler Hautton
+👍🏿	Daumen hoch: dunkler Hautton
+👎	Daumen runter
+👎🏻	Daumen nach unten: heller Hautton
+👎🏼	Daumen nach unten: mittelheller Hautton
+👎🏽	Daumen nach unten: mittlerer Hautton
+👎🏾	Daumen nach unten: mitteldunkler Hautton
+👎🏿	Daumen nach unten: dunkler Hautton
+✊	erhobene Faust
+✊🏻	erhobene Faust: helle Hautfarbe
+✊🏼	erhobene Faust: mittelheller Hautton
+✊🏽	erhobene Faust: mittlerer Hautton
+✊🏾	erhobene Faust: mitteldunkler Hautton
+✊🏿	erhobene Faust: dunkle Hautfarbe
+👊	entgegenkommende Faust
+👊🏻	entgegenkommende Faust: helle Hautfarbe
+👊🏼	entgegenkommende Faust: mittelheller Hautton
+👊🏽	entgegenkommende Faust: mittlere Hautfarbe
+👊🏾	entgegenkommende Faust: mitteldunkle Hautfarbe
+👊🏿	entgegenkommende Faust: dunkle Hautfarbe
+🤛	nach links gerichtete Faust
+🤛🏻	Faust nach links: helle Hautfarbe
+🤛🏼	Nach links zeigende Faust: mittelheller Hautton
+🤛🏽	Nach links zeigende Faust: mittlerer Hautton
+🤛🏾	Nach links zeigende Faust: mitteldunkler Hautton
+🤛🏿	Nach links zeigende Faust: dunkle Hautfarbe
+🤜	nach rechts gerichtete Faust
+🤜🏻	Faust nach rechts: helle Hautfarbe
+🤜🏼	Faust nach rechts: mittelheller Hautton
+🤜🏽	Faust nach rechts: mittlerer Hautton
+🤜🏾	Faust nach rechts: mitteldunkler Hautton
+🤜🏿	Faust nach rechts: dunkle Hautfarbe
+🤚	erhobenen Handrücken
+🤚🏻	erhobener Handrücken: heller Hautton
+🤚🏼	erhobener Handrücken: mittelheller Hautton
+🤚🏽	erhobener Handrücken: mittlerer Hautton
+🤚🏾	erhobener Handrücken: mitteldunkler Hautton
+🤚🏿	erhobener Handrücken: dunkler Hautton
+👋	winkende Hand
+👋🏻	Winkende Hand: helle Hautfarbe
+👋🏼	Winkende Hand: mittelheller Hautton
+👋🏽	Winkende Hand: mittlerer Hautton
+👋🏾	Winkende Hand: mitteldunkler Hautton
+👋🏿	Winkende Hand: dunkle Hautfarbe
+🤟	Ich liebe dich
+🤟🏻	Liebesgeste: helle Hautfarbe
+🤟🏼	Liebesgeste: mittelhelle Hautfarbe
+🤟🏽	Liebesgeste: mittlere Hautfarbe
+🤟🏾	Liebesgeste: mitteldunkle Hautfarbe
+🤟🏿	Liebesgeste: dunkle Hautfarbe
+✍️	Schreibhand
+✍	Schreibhand
+✍🏻	Schreibhand: helle Hautfarbe
+✍🏼	Schreibhand: mittelhelle Hautfarbe
+✍🏽	Schreibhand: mittlere Hautfarbe
+✍🏾	Schreibhand: mitteldunkler Hautton
+✍🏿	Schreibhand: dunkle Hautfarbe
+👏	klatschende Hände
+👏🏻	klatschende Hände: helle Hautfarbe
+👏🏼	klatschende Hände: mittelhelle Hautfarbe
+👏🏽	klatschende Hände: mittlere Hautfarbe
+👏🏾	klatschende Hände: mitteldunkle Hautfarbe
+👏🏿	klatschende Hände: dunkle Hautfarbe
+👐	offene Hände
+👐🏻	offene Hände: heller Hautton
+👐🏼	offene Hände: mittelheller Hautton
+👐🏽	offene Hände: mittlerer Hautton
+👐🏾	offene Hände: mitteldunkler Hautton
+👐🏿	offene Hände: dunkler Hautton
+🙌	Hände heben
+🙌🏻	Hände heben: helle Hautfarbe
+🙌🏼	Hände heben: mittelheller Hautton
+🙌🏽	Hände heben: mittlerer Hautton
+🙌🏾	Hände heben: mitteldunkler Hautton
+🙌🏿	Hände heben: dunkle Hautfarbe
+🤲	Handflächen nach oben zusammen
+🤲🏻	Handflächen nach oben: heller Hautton
+🤲🏼	Handflächen nach oben: mittelheller Hautton
+🤲🏽	Handflächen nach oben: mittlerer Hautton
+🤲🏾	Handflächen nach oben: mitteldunkler Hautton
+🤲🏿	Handflächen nach oben: dunkler Hautton
+🙏	gefaltete Hände
+🙏🏻	gefaltete Hände: helle Hautfarbe
+🙏🏼	gefaltete Hände: mittelheller Hautton
+🙏🏽	gefaltete Hände: mittlerer Hautton
+🙏🏾	gefaltete Hände: mitteldunkler Hautton
+🙏🏿	gefaltete Hände: dunkle Hautfarbe
+🤝	Händedruck
+💅	Nagelpolitur
+💅🏻	Nagellack: heller Hautton
+💅🏼	Nagellack: mittelheller Hautton
+💅🏽	Nagellack: mittlerer Hautton
+💅🏾	Nagellack: mitteldunkler Hautton
+💅🏿	Nagellack: dunkler Hautton
+👂	Ohr
+👂🏻	Ohr: heller Hautton
+👂🏼	Ohr: mittelheller Hautton
+👂🏽	Ohr: mittlerer Hautton
+👂🏾	Ohr: mitteldunkler Hautton
+👂🏿	Ohr: dunkler Hautton
+👃	Nase
+👃🏻	Nase: heller Hautton
+👃🏼	Nase: mittelheller Hautton
+👃🏽	Nase: mittlerer Hautton
+👃🏾	Nase: mitteldunkler Hautton
+👃🏿	Nase: dunkler Hautton
+🦰	rothaarig
+🦱	lockiges Haar
+🦲	kahl
+🦳	weißhaarig
+👣	Fußabdrücke
+👀	Augen
+👁️	Auge
+👁	Auge
+👁️‍🗨️	Auge in Sprechblase
+👁‍🗨️	Auge in Sprechblase
+👁️‍🗨	Auge in Sprechblase
+👁‍🗨	Auge in Sprechblase
+🧠	Gehirn
+🦴	Knochen
+🦷	Zahn
+👅	Zunge
+👄	Mund
+💋	Knutschfleck
+💘	Herz mit Pfeil
+❤️	rotes Herz
+❤	rotes Herz
+💓	schlagendes Herz
+💔	gebrochenes Herz
+💕	zwei Herzen
+💖	funkelndes Herz
+💗	wachsendes Herz
+💙	blaues Herz
+💚	grünes Herz
+💛	gelbes Herz
+🧡	orangefarbenes Herz
+💜	Lila Herz
+🖤	schwarzes Herz
+💝	Herz mit Band
+💞	sich drehende Herzen
+💟	Herzdekoration
+❣️	Schweren Herzens Ausruf
+❣	Schweren Herzens Ausruf
+💌	Liebesbrief
+💤	zzz
+💢	Wut-Symbol
+💣	Bombe
+💥	Kollision
+💦	Schweißtropfen
+💨	davonrennend
+💫	schwindlig
+💬	Sprechblase
+🗨️	linke Sprechblase
+🗨	linke Sprechblase
+🗯️	rechte Wutblase
+🗯	rechte Wutblase
+💭	Gedankenballon
+🕳️	Loch
+🕳	Loch
+👓	Gläser
+🕶️	Sonnenbrille
+🕶	Sonnenbrille
+🥽	Brille
+🥼	Laborkittel
+👔	Krawatte
+👕	T-Shirt
+👖	Jeans
+🧣	Schal
+🧤	Handschuhe
+🧥	Mantel
+🧦	Socken
+👗	Kleid
+👘	Kimono
+👙	Bikini
+👚	Frauenkleidung
+👛	Geldbeutel
+👜	Handtasche
+👝	Unterarmtasche
+🛍️	Einkaufstüten
+🛍	Einkaufstüten
+🎒	Schulrucksack
+👞	Herrenschuh
+👟	Laufschuh
+🥾	Wanderstiefel
+🥿	flacher Damenschuh
+👠	hochhackige Schuhe
+👡	Damensandale
+👢	Damenstiefel
+👑	Krone
+👒	Damenhut
+🎩	Zylinder
+🎓	Abschlusskappe
+🧢	in Rechnung gestellte Obergrenze
+⛑️	Helm des Rettungshelfers
+⛑	Helm des Rettungshelfers
+📿	Gebetsperlen
+💄	Lippenstift
+💍	Ring
+💎	Edelstein
+🐵	Affengesicht
+🐒	Affe
+🦍	Gorilla
+🐶	Hundegesicht
+🐕	Hund
+🐩	Pudel
+🐺	Wolfsgesicht
+🦊	Fuchsgesicht
+🦝	Waschbär
+🐱	Katzengesicht
+🐈	Katze
+🦁	Löwengesicht
+🐯	Tigergesicht
+🐅	Tiger
+🐆	Leopard
+🐴	Pferdegesicht
+🐎	Pferd
+🦄	Einhorngesicht
+🦓	Zebra
+🦌	Reh
+🐮	Kuhgesicht
+🐂	Ochse
+🐃	Wasserbüffel
+🐄	Kuh
+🐷	Schweinegesicht
+🐖	Schwein
+🐗	Eber
+🐽	Schweinenase
+🐏	RAM
+🐑	Mutterschaf
+🐐	Ziege
+🐪	Kamel
+🐫	zweihöckriges Kamel
+🦙	Lama
+🦒	Giraffe
+🐘	Elefant
+🦏	Nashorn
+🦛	Nilpferd
+🐭	Mausgesicht
+🐁	Maus
+🐀	Ratte
+🐹	Hamstergesicht
+🐰	Kaninchengesicht
+🐇	Kaninchen
+🐿️	Streifenhörnchen
+🐿	Streifenhörnchen
+🦔	Igel
+🦇	Schläger
+🐻	Bärengesicht
+🐨	Koala
+🐼	Panda-Gesicht
+🦘	Känguru
+🦡	Dachs
+🐾	Pfotenabdrücke
+🦃	Truthahn
+🐔	Huhn
+🐓	Hahn
+🐣	schlüpfendes Küken
+🐤	Küken
+🐥	nach vorne gerichtetes Küken
+🐦	Vogel
+🐧	Pinguin
+🕊️	Taube
+🕊	Taube
+🦅	Adler
+🦆	Ente
+🦢	Schwan
+🦉	Eule
+🦚	Pfau
+🦜	Papagei
+🐸	Froschgesicht
+🐊	Krokodil
+🐢	Schildkröte
+🦎	Eidechse
+🐍	Schlange
+🐲	Drachengesicht
+🐉	Drachen
+🦕	Sauropoden
+🦖	T-Rex
+🐳	spuckender Wal
+🐋	Wal
+🐬	Delfin
+🐟	Fisch
+🐠	tropischer Fisch
+🐡	Kugelfisch
+🦈	Hai
+🐙	Oktopus
+🐚	Spiralhülle
+🦀	Krabbe
+🦞	Hummer
+🦐	Garnele
+🦑	Tintenfisch
+🐌	Schnecke
+🦋	Schmetterling
+🐛	Insekt
+🐜	Ameise
+🐝	Honigbiene
+🐞	Marienkäfer
+🦗	Kricket
+🕷️	Spinne
+🕷	Spinne
+🕸️	Spinnennetz
+🕸	Spinnennetz
+🦂	Skorpion
+🦟	Moskito
+🦠	Mikrobe
+💐	Strauß
+🌸	Kirschblüte
+💮	weiße Blume
+🏵️	Rosette
+🏵	Rosette
+🌹	Rose
+🥀	verwelkte Blume
+🌺	Hibiskus
+🌻	Sonnenblume
+🌼	Blüte
+🌷	Tulpe
+🌱	Sämling
+🌲	immergrüner Baum
+🌳	Laubbaum
+🌴	Palme
+🌵	Kaktus
+🌾	Bündel Reis
+🌿	Kraut
+☘️	Kleeblatt
+☘	Kleeblatt
+🍀	vierblättriges Kleeblatt
+🍁	Ahornblatt
+🍂	gefallenes Blatt
+🍃	Blatt flattert im Wind
+🍇	Trauben
+🍈	Melone
+🍉	Wassermelone
+🍊	Mandarine
+🍋	Zitrone
+🍌	Banane
+🍍	Ananas
+🥭	Mango
+🍎	roter Apfel
+🍏	grüner Apfel
+🍐	Birne
+🍑	Pfirsich
+🍒	Kirschen
+🍓	Erdbeere
+🥝	Kiwi
+🍅	Tomate
+🥥	Kokosnuss
+🥑	Avocado
+🍆	Aubergine
+🥔	Kartoffel
+🥕	Karotte
+🌽	Kornähre
+🌶️	scharfer Pfeffer
+🌶	scharfer Pfeffer
+🥒	Gurke
+🥬	Blattgrün
+🥦	Brokkoli
+🍄	Pilz
+🥜	Erdnüsse
+🌰	Kastanie
+🍞	brot
+🥐	Croissant
+🥖	Baguettebrot
+🥨	Brezel
+🥯	Bagel
+🥞	Pfannkuchen
+🧀	Käse Keil
+🍖	Fleisch mit Knochen
+🍗	Geflügelkeule
+🥩	Stück Fleisch
+🥓	Speck
+🍔	Hamburger
+🍟	Pommes frites
+🍕	Pizza
+🌭	Hotdog
+🥪	Sandwich
+🌮	Taco
+🌯	Burrito
+🥙	gefülltes Fladenbrot
+🥚	Ei
+🍳	Kochen
+🥘	flache Pfanne mit Essen
+🍲	Topf mit Essen
+🥣	Schüssel mit Löffel
+🥗	grüner Salat
+🍿	Popcorn
+🧂	Salz
+🥫	Dosen Essen
+🍱	Bento-Box
+🍘	Reis-Cracker
+🍙	Reisbällchen
+🍚	gekochter Reis
+🍛	Curryreis
+🍜	Dampfschüssel
+🍝	Spaghetti
+🍠	geröstete Süßkartoffel
+🍢	oden
+🍣	Sushi
+🍤	gebratene Garnelen
+🍥	Fischfrikadelle mit Strudel
+🥮	Mondkuchen
+🍡	Verdammt
+🥟	Knödel
+🥠	Glückskeks
+🥡	Mitnahmebox
+🍦	Softeis
+🍧	geraspeltes Eis
+🍨	Eiscreme
+🍩	Krapfen
+🍪	Plätzchen
+🎂	Geburtstagskuchen
+🍰	Shortcake
+🧁	Cupcake
+🥧	Kuchen
+🍫	Schokoladenriegel
+🍬	Süßigkeiten
+🍭	Lutscher
+🍮	Vanillesoße
+🍯	Honigtopf
+🍼	Babyflasche
+🥛	Ein Glas Milch
+☕	heisses Getränk
+🍵	Teetasse ohne Henkel
+🍶	willen
+🍾	Flasche mit knallendem Korken
+🍷	Weinglas
+🍸	Cocktail Glas
+🍹	tropisches Getränk
+🍺	Bierkrug
+🍻	klirrende Bierkrüge
+🥂	klirrende Gläser
+🥃	Becherglas
+🥤	Tasse mit Strohhalm
+🥢	Essstäbchen
+🍽️	Gabel und Messer mit Teller
+🍽	Gabel und Messer mit Teller
+🍴	Gabel und Messer
+🥄	Löffel
+🔪	Küchenmesser
+🏺	Amphora
+🌍	Globus, der Europa-Afrika zeigt
+🌎	Globus, der Amerika zeigt
+🌏	Globus mit Asien-Australien
+🌐	Globus mit Meridianen
+🗺️	Weltkarte
+🗺	Weltkarte
+🗾	Karte von Japan
+🧭	Kompass
+🏔️	schneebedeckter Berg
+🏔	schneebedeckter Berg
+⛰️	Berg
+⛰	Berg
+🌋	Vulkan
+🗻	Berg Fuji
+🏕️	Camping
+🏕	Camping
+🏖️	Strand mit Sonnenschirm
+🏖	Strand mit Sonnenschirm
+🏜️	Wüste
+🏜	Wüste
+🏝️	einsame Insel
+🏝	einsame Insel
+🏞️	Nationalpark
+🏞	Nationalpark
+🏟️	Stadion
+🏟	Stadion
+🏛️	klassisches Gebäude
+🏛	klassisches Gebäude
+🏗️	Bauen & Konstruktion
+🏗	Bauen & Konstruktion
+🧱	Ziegel
+🏘️	Häuser
+🏘	Häuser
+🏚️	verfallenes Haus
+🏚	verfallenes Haus
+🏠	Haus
+🏡	Haus mit Garten
+🏢	Bürogebäude
+🏣	Japanisches Postamt
+🏤	Postamt
+🏥	Krankenhaus
+🏦	Bank
+🏨	Hotel
+🏩	Liebeshotel
+🏪	Gemischtwarenladen
+🏫	Schule
+🏬	Kaufhaus
+🏭	Fabrik
+🏯	Japanisches Schloss
+🏰	Schloss
+💒	Hochzeit
+🗼	Tokyo Turm
+🗽	Freiheitsstatue
+⛪	Kirche
+🕌	Moschee
+🕍	Synagoge
+⛩️	Shinto-Schrein
+⛩	Shinto-Schrein
+🕋	Kaaba
+⛲	Brunnen
+⛺	Zelt
+🌁	nebelig
+🌃	Nacht mit Sternen
+🏙️	Stadtbild
+🏙	Stadtbild
+🌄	Sonnenaufgang über den Bergen
+🌅	Sonnenaufgang
+🌆	Stadtbild in der Abenddämmerung
+🌇	Sonnenuntergang
+🌉	Brücke bei Nacht
+♨️	heiße Quellen
+♨	heiße Quellen
+🌌	Milchstraße
+🎠	Karussellpferd
+🎡	Riesenrad
+🎢	Achterbahn
+💈	Friseurstange
+🎪	Zirkuszelt
+🚂	Lokomotive
+🚃	Eisenbahnwaggon
+🚄	Hochgeschwindigkeitszug
+🚅	Schnellzug
+🚆	Zug
+🚇	Metro
+🚈	Stadtbahn
+🚉	Bahnhof
+🚊	Straßenbahn
+🚝	Einschienenbahn
+🚞	Bergbahn
+🚋	Straßenbahnwagen
+🚌	Bus
+🚍	entgegenkommender Bus
+🚎	Obus
+🚐	Kleinbus
+🚑	Krankenwagen
+🚒	Feuerwehrauto
+🚓	Polizeiauto
+🚔	entgegenkommendes Polizeiauto
+🚕	Taxi
+🚖	entgegenkommendes Taxi
+🚗	Automobil
+🚘	entgegenkommendes Auto
+🚙	Sport Utility Vehicle
+🚚	Lieferwagen
+🚛	Sattelschlepper
+🚜	Traktor
+🚲	Fahrrad
+🛴	Tretroller
+🛹	Skateboard
+🛵	Motorroller
+🚏	Bushaltestelle
+🛣️	Autobahn
+🛣	Autobahn
+🛤️	Bahnstrecke
+🛤	Bahnstrecke
+🛢️	Ölfaß
+🛢	Ölfaß
+⛽	Benzinpumpe
+🚨	Polizeiautolicht
+🚥	horizontale Ampel
+🚦	vertikale Ampel
+🛑	Stoppschild
+🚧	Konstruktion
+⚓	Anker
+⛵	Segelboot
+🛶	Kanu
+🚤	Schnellboot
+🛳️	Passagierschiff
+🛳	Passagierschiff
+⛴️	Fähre
+⛴	Fähre
+🛥️	Motorboot
+🛥	Motorboot
+🚢	Schiff
+✈️	Flugzeug
+✈	Flugzeug
+🛩️	kleines Flugzeug
+🛩	kleines Flugzeug
+🛫	Abflug des Flugzeugs
+🛬	Flugzeugankunft
+💺	Sitz
+🚁	Hubschrauber
+🚟	Schwebebahn
+🚠	Bergbahn
+🚡	Pendelbahn
+🛰️	Satellit
+🛰	Satellit
+🚀	Rakete
+🛸	fliegende Untertasse
+🛎️	Hotelpage
+🛎	Hotelpage
+🧳	Gepäck
+⌛	Sanduhr fertig
+⏳	Sanduhr nicht fertig
+⌚	betrachten
+⏰	Wecker
+⏱️	Stoppuhr
+⏱	Stoppuhr
+⏲️	Zeitschaltuhr
+⏲	Zeitschaltuhr
+🕰️	Kaminuhr
+🕰	Kaminuhr
+🕛	zwölf Uhr
+🕧	zwölf dreißig
+🕐	Ein Uhr
+🕜	ein Uhr dreißig
+🕑	zwei Uhr
+🕝	zwei Uhr dreißig
+🕒	drei Uhr
+🕞	halb drei
+🕓	vier Uhr
+🕟	halb fünf
+🕔	Fünf Uhr
+🕠	fünf dreißig
+🕕	sechs Uhr
+🕡	halb sieben
+🕖	sieben Uhr
+🕢	halb acht
+🕗	acht Uhr
+🕣	halb neun
+🕘	neun Uhr
+🕤	neun dreißig
+🕙	zehn Uhr
+🕥	zehn dreißig
+🕚	elf Uhr
+🕦	Elf uhr dreißig
+🌑	Neumond
+🌒	zunehmender Halbmond
+🌓	Mond im ersten Viertel
+🌔	zunehmender Mond
+🌕	Vollmond
+🌖	abnehmender Halbmond
+🌗	Mond im letzten Viertel
+🌘	abnehmender Halbmond
+🌙	Halbmond
+🌚	Neumondgesicht
+🌛	Mondgesicht im ersten Viertel
+🌜	Mondgesicht im letzten Viertel
+🌡️	Thermometer
+🌡	Thermometer
+☀️	Sonne
+☀	Sonne
+🌝	Vollmondgesicht
+🌞	Sonne mit Gesicht
+⭐	Stern
+🌟	leuchtender Stern
+🌠	Sternschnuppe
+☁️	Wolke
+☁	Wolke
+⛅	Sonne hinter Wolke
+⛈️	Wolke mit Blitz und Regen
+⛈	Wolke mit Blitz und Regen
+🌤️	Sonne hinter kleiner Wolke
+🌤	Sonne hinter kleiner Wolke
+🌥️	Sonne hinter großer Wolke
+🌥	Sonne hinter großer Wolke
+🌦️	Sonne hinter Regenwolke
+🌦	Sonne hinter Regenwolke
+🌧️	Wolke mit Regen
+🌧	Wolke mit Regen
+🌨️	Wolke mit Schnee
+🌨	Wolke mit Schnee
+🌩️	Wolke mit Blitz
+🌩	Wolke mit Blitz
+🌪️	Tornado
+🌪	Tornado
+🌫️	Nebel
+🌫	Nebel
+🌬️	Windgesicht
+🌬	Windgesicht
+🌀	Zyklon
+🌈	Regenbogen
+🌂	geschlossener Regenschirm
+☂️	Regenschirm
+☂	Regenschirm
+☔	Regenschirm mit Regentropfen
+⛱️	Regenschirm am Boden
+⛱	Regenschirm am Boden
+⚡	Hochspannung
+❄️	Schneeflocke
+❄	Schneeflocke
+☃️	Schneemann
+☃	Schneemann
+⛄	Schneemann ohne Schnee
+☄️	Komet
+☄	Komet
+🔥	Feuer
+💧	Tröpfchen
+🌊	Wasserwelle
+🎃	Kürbislaterne
+🎄	Weihnachtsbaum
+🎆	Feuerwerk
+🎇	Wunderkerze
+🧨	Feuerwerkskörper
+✨	funkelt
+🎈	Ballon
+🎉	Party-Popper
+🎊	Konfetti-Kugel
+🎋	Tanabata-Baum
+🎍	Kieferndekoration
+🎎	Japanische Puppen
+🎏	Karpfenstreamer
+🎐	Windspiel
+🎑	Mondbeobachtungszeremonie
+🧧	roter Umschlag
+🎀	Schleife
+🎁	verpacktes Geschenk
+🎗️	Erinnerungsband
+🎗	Erinnerungsband
+🎟️	Eintrittskarten
+🎟	Eintrittskarten
+🎫	Fahrkarte
+🎖️	Militärmedaille
+🎖	Militärmedaille
+🏆	Trophäe
+🏅	Sportmedaille
+🥇	Medaille für den 1. Platz
+🥈	Medaille für den 2. Platz
+🥉	Medaille für den 3. Platz
+⚽	Fußball
+⚾	Baseball
+🥎	weicher Ball
+🏀	Basketball
+🏐	Volleyball
+🏈	amerikanischer Fußball
+🏉	Rugby Fußball
+🎾	Tennis
+🥏	fliegende Scheibe
+🎳	Bowling
+🏏	Cricket-Spiel
+🏑	Feldhockey
+🏒	Eishockey
+🥍	Lacrosse
+🏓	Tischtennis
+🏸	Badminton
+🥊	Boxhandschuh
+🥋	Kampfsportuniform
+🥅	Tornetz
+⛳	Flagge im Loch
+⛸️	Eislaufen
+⛸	Eislaufen
+🎣	Angel
+🎽	Laufshirt
+🎿	Skier
+🛷	Schlitten
+🥌	Curlingstein
+🎯	Direkter Treffer
+🎱	Pool 8 Bälle
+🔮	Kristallkugel
+🧿	Nazar-Amulett
+🎮	Videospiel
+🕹️	Joystick
+🕹	Joystick
+🎰	Einarmiger Bandit
+🎲	Spielwürfel
+🧩	Puzzle
+🧸	Teddybär
+♠️	Spatenanzug
+♠	Spatenanzug
+♥️	Herzanzug
+♥	Herzanzug
+♦️	Diamantanzug
+♦	Diamantanzug
+♣️	Clubanzug
+♣	Clubanzug
+♟️	Schachbauer
+♟	Schachbauer
+🃏	Joker
+🀄	Mahjong roter Drache
+🎴	Blumenspielkarten
+🎭	darstellende Künste
+🖼️	gerahmtes Bild
+🖼	gerahmtes Bild
+🎨	Künstlerpalette
+🧵	Faden
+🧶	Garn
+🔇	stummgeschalteter Lautsprecher
+🔈	Lautstärke des Lautsprechers niedrig
+🔉	Lautsprecher mittlere Lautstärke
+🔊	Lautsprecher hohe Lautstärke
+📢	Lautsprecher
+📣	Megaphon
+📯	Posthorn
+🔔	Glocke
+🔕	Glocke mit Schrägstrich
+🎼	Partitur
+🎵	Musik Note
+🎶	Musiknoten
+🎙️	Studiomikrofon
+🎙	Studiomikrofon
+🎚️	Level-Schieberegler
+🎚	Level-Schieberegler
+🎛️	Bedienknöpfe
+🎛	Bedienknöpfe
+🎤	Mikrofon
+🎧	Kopfhörer
+📻	Radio
+🎷	Saxophon
+🎸	Gitarre
+🎹	Musiktastatur
+🎺	Trompete
+🎻	Geige
+🥁	Trommel
+📱	Mobiltelefon
+📲	Mobiltelefon mit Pfeil
+☎️	Telefon
+☎	Telefon
+📞	Telefonhörer
+📟	Pager
+📠	Faxgerät
+🔋	Batterie
+🔌	Stecker
+💻	Laptop-Computer
+🖥️	Desktop-Computer
+🖥	Desktop-Computer
+🖨️	Drucker
+🖨	Drucker
+⌨️	Tastatur
+⌨	Tastatur
+🖱️	Computermaus
+🖱	Computermaus
+🖲️	Trackball
+🖲	Trackball
+💽	Computerfestplatte
+💾	Diskette
+💿	optische Platte
+📀	DVD
+🧮	Abakus
+🎥	Filmkamera
+🎞️	Filmrahmen
+🎞	Filmrahmen
+📽️	Filmprojektor
+📽	Filmprojektor
+🎬	Klappbrett
+📺	Fernsehen
+📷	Kamera
+📸	Kamera mit Blitz
+📹	Videokamera
+📼	Video Kassette
+🔍	Lupe nach links geneigt
+🔎	Lupe nach rechts geneigt
+🕯️	Kerze
+🕯	Kerze
+💡	die Glühbirne
+🔦	Taschenlampe
+🏮	rote Papierlaterne
+📔	Notizbuch mit dekorativem Einband
+📕	geschlossenes Buch
+📖	offenes Buch
+📗	grünes Buch
+📘	blaues Buch
+📙	orangefarbenes Buch
+📚	Bücher
+📓	Notizbuch
+📒	Hauptbuch
+📃	Seite mit Curl
+📜	scrollen
+📄	Seite nach oben
+📰	Zeitung
+🗞️	zusammengerollte Zeitung
+🗞	zusammengerollte Zeitung
+📑	Lesezeichen-Registerkarten
+🔖	Lesezeichen
+🏷️	Etikett
+🏷	Etikett
+💰	Geldtasche
+💴	Yen-Banknote
+💵	Dollar-Banknote
+💶	Euro-Banknote
+💷	Pfund-Banknote
+💸	Geld mit Flügeln
+💳	Kreditkarte
+🧾	Quittung
+💹	Diagramm steigt mit dem Yen
+💱	Geldwechsel
+💲	schweres Dollarzeichen
+✉️	Umschlag
+✉	Umschlag
+📧	Email
+📨	eingehender Umschlag
+📩	Umschlag mit Pfeil
+📤	Postausgangsfach
+📥	Posteingangsfach
+📦	Paket
+📫	Geschlossener Briefkasten mit erhobener Flagge
+📪	Geschlossener Briefkasten mit gesenkter Fahne
+📬	Offener Briefkasten mit erhobener Flagge
+📭	Offener Briefkasten mit gesenkter Fahne
+📮	Briefkasten
+🗳️	Wahlurne mit Stimmzettel
+🗳	Wahlurne mit Stimmzettel
+✏️	Bleistift
+✏	Bleistift
+✒️	schwarze Feder
+✒	schwarze Feder
+🖋️	Füller
+🖋	Füller
+🖊️	Stift
+🖊	Stift
+🖌️	Pinsel
+🖌	Pinsel
+🖍️	Wachsmalstift
+🖍	Wachsmalstift
+📝	Memo
+💼	Aktentasche
+📁	Aktenordner
+📂	Dateiordner öffnen
+🗂️	Kartei-Teiler
+🗂	Kartei-Teiler
+📅	Kalender
+📆	Abreißkalender
+🗒️	Spiralnotizblock
+🗒	Spiralnotizblock
+🗓️	Spiralkalender
+🗓	Spiralkalender
+📇	Kartei
+📈	Diagramm erhöht
+📉	Diagramm abnehmend
+📊	Balkendiagramm
+📋	Zwischenablage
+📌	Reißzwecke
+📍	runde Reißzwecke
+📎	Büroklammer
+🖇️	verbundene Büroklammern
+🖇	verbundene Büroklammern
+📏	gerades Lineal
+📐	dreieckiges Lineal
+✂️	Schere
+✂	Schere
+🗃️	Karteikasten
+🗃	Karteikasten
+🗄️	Aktenschrank
+🗄	Aktenschrank
+🗑️	Papierkorb
+🗑	Papierkorb
+🔒	gesperrt
+🔓	entsperrt
+🔏	mit Stift verschlossen
+🔐	mit Schlüssel verschlossen
+🔑	Schlüssel
+🗝️	alter Schlüssel
+🗝	alter Schlüssel
+🔨	Hammer
+⛏️	wählen
+⛏	wählen
+⚒️	Hammer und Spitzhacke
+⚒	Hammer und Spitzhacke
+🛠️	Hammer und Schraubenschlüssel
+🛠	Hammer und Schraubenschlüssel
+🗡️	Dolch
+🗡	Dolch
+⚔️	gekreuzte Schwerter
+⚔	gekreuzte Schwerter
+🔫	Pistole
+🏹	Pfeil und Bogen
+🛡️	Schild
+🛡	Schild
+🔧	Schlüssel
+🔩	Schraube und Mutter
+⚙️	Gang
+⚙	Gang
+🗜️	Klemme
+🗜	Klemme
+⚖️	Balkenwaage
+⚖	Balkenwaage
+🔗	Verknüpfung
+⛓️	Ketten
+⛓	Ketten
+🧰	Werkzeugkasten
+🧲	Magnet
+⚗️	Destillierkolben
+⚗	Destillierkolben
+🧪	Reagenzglas
+🧫	Petrischale
+🧬	DNA
+🔬	Mikroskop
+🔭	Fernrohr
+📡	Satellitenantenne
+💉	Spritze
+💊	Pille
+🚪	Tür
+🛏️	Bett
+🛏	Bett
+🛋️	Couch und Lampe
+🛋	Couch und Lampe
+🚽	Toilette
+🚿	Dusche
+🛁	Badewanne
+🧴	Lotionsflasche
+🧷	Sicherheitsnadel
+🧹	Besen
+🧺	Korb
+🧻	Papierrolle
+🧼	Seife
+🧽	Schwamm
+🧯	Feuerlöscher
+🛒	Einkaufswagen
+🚬	Zigarette
+⚰️	Sarg
+⚰	Sarg
+⚱️	Bestattungsurne
+⚱	Bestattungsurne
+🗿	moai
+🏧	Geldautomatenschild
+🚮	Müll im Mülleimer-Schild
+🚰	Trinkwasser
+♿	Rollstuhlsymbol
+🚹	Männerzimmer
+🚺	Frauenzimmer
+🚻	Toilette
+🚼	Baby-Symbol
+🚾	Toilette
+🛂	Passkontrolle
+🛃	Zoll
+🛄	Gepäckausgabe
+🛅	Zurückgelassenes Gepäck
+⚠️	Warnung
+⚠	Warnung
+🚸	Kinder kreuzen
+⛔	Kein Einlass
+🚫	verboten
+🚳	Keine Fahrräder
+🚭	Rauchen verboten
+🚯	Müllabladen verboten
+🚱	nicht trinkbares Wasser
+🚷	Keine Fußgänger
+📵	keine Mobiltelefone
+🔞	niemand unter achtzehn
+☢️	radioaktiv
+☢	radioaktiv
+☣️	Biogefährdung
+☣	Biogefährdung
+⬆️	Aufwärtspfeil
+⬆	Aufwärtspfeil
+↗️	Pfeil nach oben rechts
+↗	Pfeil nach oben rechts
+➡️	rechter Pfeil
+➡	rechter Pfeil
+↘️	Pfeil nach unten rechts
+↘	Pfeil nach unten rechts
+⬇️	Pfeil nach unten
+⬇	Pfeil nach unten
+↙️	Pfeil nach unten links
+↙	Pfeil nach unten links
+⬅️	linker Pfeil
+⬅	linker Pfeil
+↖️	Pfeil nach oben links
+↖	Pfeil nach oben links
+↕️	Auf-Ab-Pfeil
+↕	Auf-Ab-Pfeil
+↔️	Links-Rechts-Pfeil
+↔	Links-Rechts-Pfeil
+↩️	Der rechte Pfeil biegt nach links ab
+↩	Der rechte Pfeil biegt nach links ab
+↪️	Der linke Pfeil krümmt sich nach rechts
+↪	Der linke Pfeil krümmt sich nach rechts
+⤴️	Der rechte Pfeil krümmt sich nach oben
+⤴	Der rechte Pfeil krümmt sich nach oben
+⤵️	Der rechte Pfeil krümmt sich nach unten
+⤵	Der rechte Pfeil krümmt sich nach unten
+🔃	vertikale Pfeile im Uhrzeigersinn
+🔄	Pfeiltaste gegen den Uhrzeigersinn
+🔙	ZURÜCK-Pfeil
+🔚	ENDE-Pfeil
+🔛	EIN-Pfeil
+🔜	BALD Pfeil
+🔝	Pfeil nach oben
+🛐	Anbetungsstätte
+⚛️	Atomsymbol
+⚛	Atomsymbol
+🕉️	om
+🕉	om
+✡️	Davidstern
+✡	Davidstern
+☸️	Rad des Dharma
+☸	Rad des Dharma
+☯️	Yin-Yang
+☯	Yin-Yang
+✝️	lateinisches Kreuz
+✝	lateinisches Kreuz
+☦️	Orthodoxes Kreuz
+☦	Orthodoxes Kreuz
+☪️	Stern und Halbmond
+☪	Stern und Halbmond
+☮️	Friedenszeichen
+☮	Friedenszeichen
+🕎	Menora
+🔯	gepunkteter sechszackiger Stern
+♈	Widder
+♉	Stier
+♊	Zwillinge
+♋	Krebs
+♌	Löwe
+♍	Jungfrau
+♎	Waage
+♏	Skorpion
+♐	Schütze
+♑	Steinbock
+♒	Wassermann
+♓	Fische
+⛎	Ophiuchus
+🔀	Klicken Sie auf die Schaltfläche „Titel mischen“.
+🔁	Wiederholen-Taste
+🔂	Einzelne Taste wiederholen
+▶️	Play-Taste
+▶	Play-Taste
+⏩	Schnellvorlauf-Taste
+⏭️	Nächster Titel
+⏭	Nächster Titel
+⏯️	Wiedergabe- oder Pause-Taste
+⏯	Wiedergabe- oder Pause-Taste
+◀️	Rückwärtstaste
+◀	Rückwärtstaste
+⏪	Schnellrücklauftaste
+⏮️	Taste für den letzten Titel
+⏮	Taste für den letzten Titel
+🔼	Aufwärts-Taste
+⏫	Schnellauf-Taste
+🔽	Abwärtstaste
+⏬	Schnell-Ab-Taste
+⏸️	Pause-Taste
+⏸	Pause-Taste
+⏹️	Stopp-Taste
+⏹	Stopp-Taste
+⏺️	Aufnahmetaste
+⏺	Aufnahmetaste
+⏏️	Auswurftaste
+⏏	Auswurftaste
+🎦	Kino
+🔅	Dimmtaste
+🔆	heller Knopf
+📶	Antennenstäbe
+📳	Vibrationsmodus
+📴	Handy aus
+♀️	weibliches Zeichen
+♀	weibliches Zeichen
+♂️	männliches Zeichen
+♂	männliches Zeichen
+⚕️	medizinisches Symbol
+⚕	medizinisches Symbol
+♾️	Unendlichkeit
+♾	Unendlichkeit
+♻️	Recycling-Symbol
+♻	Recycling-Symbol
+⚜️	Lilie
+⚜	Lilie
+🔱	Dreizack-Emblem
+📛	Namensschild
+🔰	Japanisches Symbol für Anfänger
+⭕	schwerer großer Kreis
+✅	weißes schweres Häkchen
+☑️	Wahlurne mit Scheck
+☑	Wahlurne mit Scheck
+✔️	schweres Häkchen
+✔	schweres Häkchen
+✖️	starke Multiplikation x
+✖	starke Multiplikation x
+❌	Kreuzmarke
+❎	Kreuzmarkierungstaste
+➕	schweres Pluszeichen
+➖	schweres Minuszeichen
+➗	schweres Divisionsschild
+➰	lockige Schleife
+➿	doppelte lockige Schleife
+〽️	Teilwechselmarkierung
+〽	Teilwechselmarkierung
+✳️	achtspeichiger Stern
+✳	achtspeichiger Stern
+✴️	achtzackiger Stern
+✴	achtzackiger Stern
+❇️	funkeln
+❇	funkeln
+‼️	doppeltes Ausrufezeichen
+‼	doppeltes Ausrufezeichen
+⁉️	Ausrufezeichen Fragezeichen
+⁉	Ausrufezeichen Fragezeichen
+❓	Fragezeichen
+❔	weißes Fragezeichen
+❕	weißes Ausrufezeichen
+❗	Ausrufezeichen
+〰️	gewellter Strich
+〰	gewellter Strich
+©️	Urheberrechte ©
+©	Urheberrechte ©
+®️	Eingetragen
+®	Eingetragen
+™️	Marke
+™	Marke
+#️⃣	Tastenkappe: #
+#⃣	Tastenkappe: #
+*️⃣	Tastenkappe: *
+*⃣	Tastenkappe: *
+0️⃣	Tastenkappe: 0
+0⃣	Tastenkappe: 0
+1️⃣	Tastenkappe: 1
+1⃣	Tastenkappe: 1
+2️⃣	Tastenkappe: 2
+2⃣	Tastenkappe: 2
+3️⃣	Tastenkappe: 3
+3⃣	Tastenkappe: 3
+4️⃣	Tastenkappe: 4
+4⃣	Tastenkappe: 4
+5️⃣	Tastenkappe: 5
+5⃣	Tastenkappe: 5
+6️⃣	Tastenkappe: 6
+6⃣	Tastenkappe: 6
+7️⃣	Tastenkappe: 7
+7⃣	Tastenkappe: 7
+8️⃣	Tastenkappe: 8
+8⃣	Tastenkappe: 8
+9️⃣	Tastenkappe: 9
+9⃣	Tastenkappe: 9
+🔟	Tastenkappe: 10
+💯	Hundert Punkte
+🔠	Geben Sie lateinische Großbuchstaben ein
+🔡	Geben Sie lateinische Kleinbuchstaben ein
+🔢	Zahlen eingeben
+🔣	Eingabesymbole
+🔤	Geben Sie lateinische Buchstaben ein
+🅰️	Ein Knopf (Blutgruppe)
+🅰	Ein Knopf (Blutgruppe)
+🆎	AB-Taste (Blutgruppe)
+🅱️	B-Knopf (Blutgruppe)
+🅱	B-Knopf (Blutgruppe)
+🆑	CL-Taste
+🆒	COOL-Taste
+🆓	FREE-Taste
+ℹ️	Information
+ℹ	Information
+🆔	ID-Taste
+Ⓜ️	eingekreist M
+Ⓜ	eingekreist M
+🆕	Schaltfläche NEU
+🆖	NG-Taste
+🅾️	O-Knopf (Blutgruppe)
+🅾	O-Knopf (Blutgruppe)
+🆗	OK-Taste
+🅿️	P-Taste
+🅿	P-Taste
+🆘	SOS-Taste
+🆙	UP-Taste
+🆚	VS-Taste
+🈁	Japanischer „Hier“-Button
+🈂️	Japanische Schaltfläche „Servicegebühr“.
+🈂	Japanische Schaltfläche „Servicegebühr“.
+🈷️	Japanische Schaltfläche „Monatsbetrag“.
+🈷	Japanische Schaltfläche „Monatsbetrag“.
+🈶	Japanischer „nicht kostenlos“-Button
+🈯	Japanische Schaltfläche „Reserviert“.
+🉐	Japanischer „Schnäppchen“-Button
+🈹	Japanischer „Rabatt“-Button
+🈚	Japanischer „Kostenlos“-Button
+🈲	Japanische „verbotene“ Schaltfläche
+🉑	Japanische Schaltfläche „akzeptabel“.
+🈸	Japanische Schaltfläche „Bewerbung“.
+🈴	Japanische Schaltfläche „Bestehen der Note“.
+🈳	Japanische Schaltfläche „Stellenangebot“.
+㊗️	Japanischer „Glückwunsch“-Button
+㊗	Japanischer „Glückwunsch“-Button
+㊙️	Japanischer „Geheim“-Button
+㊙	Japanischer „Geheim“-Button
+🈺	Japanischer „Open for Business“-Button
+🈵	Japanischer „Keine freie Stelle“-Button
+▪️	schwarzes kleines Quadrat
+▪	schwarzes kleines Quadrat
+▫️	weißes kleines Quadrat
+▫	weißes kleines Quadrat
+◻️	weißes mittleres Quadrat
+◻	weißes mittleres Quadrat
+◼️	schwarzes mittleres Quadrat
+◼	schwarzes mittleres Quadrat
+◽	weißes mittelgroßes Quadrat
+◾	schwarzes mittelgroßes Quadrat
+⬛	schwarzes großes Quadrat
+⬜	weißes großes Quadrat
+🔶	großer orangefarbener Diamant
+🔷	großer blauer Diamant
+🔸	kleiner orangefarbener Diamant
+🔹	kleiner blauer Diamant
+🔺	rotes Dreieck zeigt nach oben
+🔻	rotes Dreieck zeigt nach unten
+💠	Diamant mit einem Punkt
+🔘	Radio knopf
+🔲	schwarzer quadratischer Knopf
+🔳	weißer quadratischer Knopf
+⚪	weißer Kreis
+⚫	schwarzer Kreis
+🔴	roter Kreis
+🔵	blauer Kreis
+🏁	Zielflagge
+🚩	dreieckige Flagge
+🎌	gekreuzte Fahnen
+🏴	schwarze Flagge
+🏳️	weiße Flagge
+🏳	weiße Flagge
+🏳️‍🌈	Regenbogenfahne
+🏳‍🌈	Regenbogenfahne
+🏴‍☠️	Piratenflagge
+🏴‍☠	Piratenflagge
+🇦🇨	Ascension-Insel
+🇦🇩	Andorra
+🇦🇪	Vereinigte Arabische Emirate
+🇦🇫	Afghanistan
+🇦🇬	Antigua und Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albanien
+🇦🇲	Armenien
+🇦🇴	Angola
+🇦🇶	Antarktis
+🇦🇷	Argentinien
+🇦🇸	Amerikanischen Samoa-Inseln
+🇦🇹	Österreich
+🇦🇺	Australien
+🇦🇼	Aruba
+🇦🇽	Åland-Inseln
+🇦🇿	Aserbaidschan
+🇧🇦	Bosnien und Herzegowina
+🇧🇧	Barbados
+🇧🇩	Bangladesch
+🇧🇪	Belgien
+🇧🇫	Burkina Faso
+🇧🇬	Bulgarien
+🇧🇭	Bahrain
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	St. Barthélemy
+🇧🇲	Bermuda
+🇧🇳	Brunei
+🇧🇴	Bolivien
+🇧🇶	Karibische Niederlande
+🇧🇷	Brasilien
+🇧🇸	Bahamas
+🇧🇹	Bhutan
+🇧🇻	Bouvetinsel
+🇧🇼	Botswana
+🇧🇾	Weißrussland
+🇧🇿	Belize
+🇨🇦	Kanada
+🇨🇨	Kokosinseln (Keelinginseln).
+🇨🇩	Kongo – Kinshasa
+🇨🇫	Zentralafrikanische Republik
+🇨🇬	Kongo – Brazzaville
+🇨🇭	Schweiz
+🇨🇮	Elfenbeinküste
+🇨🇰	Cookinseln
+🇨🇱	Chile
+🇨🇲	Kamerun
+🇨🇳	China
+🇨🇴	Kolumbien
+🇨🇵	Clipperton-Insel
+🇨🇷	Costa Rica
+🇨🇺	Kuba
+🇨🇻	Kap Verde
+🇨🇼	Curacao
+🇨🇽	Weihnachtsinsel
+🇨🇾	Zypern
+🇨🇿	Tschechien
+🇩🇪	Deutschland
+🇩🇬	Diego Garcia
+🇩🇯	Dschibuti
+🇩🇰	Dänemark
+🇩🇲	Dominica
+🇩🇴	Dominikanische Republik
+🇩🇿	Algerien
+🇪🇦	Ceuta und Melilla
+🇪🇨	Ecuador
+🇪🇪	Estland
+🇪🇬	Ägypten
+🇪🇭	Westsahara
+🇪🇷	Eritrea
+🇪🇸	Spanien
+🇪🇹	Äthiopien
+🇪🇺	europäische Union
+🇫🇮	Finnland
+🇫🇯	Fidschi
+🇫🇰	Falkland Inseln
+🇫🇲	Mikronesien
+🇫🇴	Färöer Inseln
+🇫🇷	Frankreich
+🇬🇦	Gabun
+🇬🇧	Großbritannien
+🇬🇩	Grenada
+🇬🇪	Georgia
+🇬🇫	Französisch-Guayana
+🇬🇬	Guernsey
+🇬🇭	Ghana
+🇬🇮	Gibraltar
+🇬🇱	Grönland
+🇬🇲	Gambia
+🇬🇳	Guinea
+🇬🇵	Guadeloupe
+🇬🇶	Äquatorialguinea
+🇬🇷	Griechenland
+🇬🇸	Südgeorgien und Südliche Sandwichinseln
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinea-Bissau
+🇬🇾	Guyana
+🇭🇰	Sonderverwaltungszone Hongkong
+🇭🇲	Heard- und McDonald-Inseln
+🇭🇳	Honduras
+🇭🇷	Kroatien
+🇭🇹	Haiti
+🇭🇺	Ungarn
+🇮🇨	Kanarische Inseln
+🇮🇩	Indonesien
+🇮🇪	Irland
+🇮🇱	Israel
+🇮🇲	Isle of Man
+🇮🇳	Indien
+🇮🇴	Britisches Territorium des Indischen Ozeans
+🇮🇶	Irak
+🇮🇷	Iran
+🇮🇸	Island
+🇮🇹	Italien
+🇯🇪	Jersey
+🇯🇲	Jamaika
+🇯🇴	Jordanien
+🇯🇵	Japan
+🇰🇪	Kenia
+🇰🇬	Kirgisistan
+🇰🇭	Kambodscha
+🇰🇮	Kiribati
+🇰🇲	Komoren
+🇰🇳	St. Kitts und Nevis
+🇰🇵	Nord Korea
+🇰🇷	Südkorea
+🇰🇼	Kuwait
+🇰🇾	Cayman Inseln
+🇰🇿	Kasachstan
+🇱🇦	Laos
+🇱🇧	Libanon
+🇱🇨	St. Lucia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Liberia
+🇱🇸	Lesotho
+🇱🇹	Litauen
+🇱🇺	Luxemburg
+🇱🇻	Lettland
+🇱🇾	Libyen
+🇲🇦	Marokko
+🇲🇨	Monaco
+🇲🇩	Moldawien
+🇲🇪	Montenegro
+🇲🇫	St. Martin
+🇲🇬	Madagaskar
+🇲🇭	Marshallinseln
+🇲🇰	Mazedonien
+🇲🇱	Mali
+🇲🇲	Myanmar (Burma)
+🇲🇳	Mongolei
+🇲🇴	Sonderverwaltungszone Macau, China
+🇲🇵	Nördliche Marianneninseln
+🇲🇶	Martinique
+🇲🇷	Mauretanien
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mauritius
+🇲🇻	Malediven
+🇲🇼	Malawi
+🇲🇽	Mexiko
+🇲🇾	Malaysia
+🇲🇿	Mosambik
+🇳🇦	Namibia
+🇳🇨	Neu-Kaledonien
+🇳🇪	Niger
+🇳🇫	Norfolkinsel
+🇳🇬	Nigeria
+🇳🇮	Nicaragua
+🇳🇱	Niederlande
+🇳🇴	Norwegen
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Neuseeland
+🇴🇲	Oman
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Französisch Polynesien
+🇵🇬	Papua Neu-Guinea
+🇵🇭	Philippinen
+🇵🇰	Pakistan
+🇵🇱	Polen
+🇵🇲	St. Pierre und Miquelon
+🇵🇳	Pitcairninseln
+🇵🇷	Puerto Rico
+🇵🇸	Palästinensische Gebiete
+🇵🇹	Portugal
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Katar
+🇷🇪	Wiedervereinigung
+🇷🇴	Rumänien
+🇷🇸	Serbien
+🇷🇺	Russland
+🇷🇼	Ruanda
+🇸🇦	Saudi-Arabien
+🇸🇧	Salomon-Inseln
+🇸🇨	Seychellen
+🇸🇩	Sudan
+🇸🇪	Schweden
+🇸🇬	Singapur
+🇸🇭	St. Helena
+🇸🇮	Slowenien
+🇸🇯	Spitzbergen und Jan Mayen
+🇸🇰	Slowakei
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somalia
+🇸🇷	Surinam
+🇸🇸	Südsudan
+🇸🇹	São Tomé und Príncipe
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Syrien
+🇸🇿	Swasiland
+🇹🇦	Tristan da Cunha
+🇹🇨	Turks- und Caicosinseln
+🇹🇩	Tschad
+🇹🇫	Südfranzösische Territorien
+🇹🇬	Gehen
+🇹🇭	Thailand
+🇹🇯	Tadschikistan
+🇹🇰	Tokelau
+🇹🇱	Timor-Leste
+🇹🇲	Turkmenistan
+🇹🇳	Tunesien
+🇹🇴	Tonga
+🇹🇷	Truthahn
+🇹🇹	Trinidad & Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taiwan
+🇹🇿	Tansania
+🇺🇦	Ukraine
+🇺🇬	Uganda
+🇺🇲	Vorgelagerte Inseln der USA
+🇺🇳	Vereinte Nationen
+🇺🇸	Vereinigte Staaten
+🇺🇾	Uruguay
+🇺🇿	Usbekistan
+🇻🇦	Vatikanstadt
+🇻🇨	St. Vincent und die Grenadinen
+🇻🇪	Venezuela
+🇻🇬	Britische Jungferninseln
+🇻🇮	US Jungferninseln
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis und Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Jemen
+🇾🇹	Mayotte
+🇿🇦	Südafrika
+🇿🇲	Sambia
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	England
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Schottland
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Wales

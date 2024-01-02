@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------
-# Wordless: NLP - Token preprocessing
+# Wordless: NLP - Token processing
 # Copyright (C) 2018-2023  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_lemmatization, wl_pos_tagging, wl_stop_word_lists, wl_syl_tokenization, wl_word_detokenization
 from wordless.wl_utils import wl_misc
 
-def wl_preprocess_tokens(main, text, token_settings):
+def wl_process_tokens(main, text, token_settings):
     settings = copy.deepcopy(token_settings)
 
     if not settings['words']:
@@ -194,11 +194,11 @@ def wl_preprocess_tokens(main, text, token_settings):
 
     return text
 
-def wl_preprocess_tokens_profiler(main, text, token_settings):
+def wl_process_tokens_profiler(main, text, token_settings):
     # Punctuation marks must be preserved for some readability measures (e.g. Wheeler & Smith's Readability Formula)
     text.tokens_multilevel_with_puncs = copy.deepcopy(text.tokens_multilevel)
 
-    text = wl_preprocess_tokens(main, text, token_settings)
+    text = wl_process_tokens(main, text, token_settings)
 
     # Remove empty tokens, sentence segments, sentences, and paragraphs
     text.tokens_multilevel = [
@@ -250,7 +250,7 @@ def wl_preprocess_tokens_profiler(main, text, token_settings):
 
     return text
 
-def wl_preprocess_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
+def wl_process_tokens_concordancer(main, text, token_settings, preserve_blank_lines = False):
     settings = copy.deepcopy(token_settings)
     tokens_flat = text.get_tokens_flat()
 
@@ -366,8 +366,8 @@ def wl_preprocess_tokens_concordancer(main, text, token_settings, preserve_blank
 
     return text
 
-def wl_preprocess_tokens_colligation_extractor(main, text, token_settings):
-    text = wl_preprocess_tokens(main, text, token_settings)
+def wl_process_tokens_colligation_extractor(main, text, token_settings):
+    text = wl_process_tokens(main, text, token_settings)
 
     # Use tags Only
     if token_settings['use_tags']:

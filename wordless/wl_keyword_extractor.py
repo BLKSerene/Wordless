@@ -30,7 +30,7 @@ from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
 from wordless.wl_figs import wl_figs, wl_figs_freqs, wl_figs_stats
 from wordless.wl_measures import wl_measure_utils
-from wordless.wl_nlp import wl_texts, wl_token_preprocessing
+from wordless.wl_nlp import wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_sorting, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -694,7 +694,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
             for file_ref in files_ref:
                 text = copy.deepcopy(file_ref['text'])
-                text = wl_token_preprocessing.wl_preprocess_tokens(
+                text = wl_token_processing.wl_process_tokens(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -711,7 +711,7 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             # Frequency (Observed files)
             for file_observed in files_observed:
                 text = copy.deepcopy(file_observed['text'])
-                text = wl_token_preprocessing.wl_preprocess_tokens(
+                text = wl_token_processing.wl_process_tokens(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )

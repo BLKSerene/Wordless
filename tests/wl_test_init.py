@@ -32,13 +32,13 @@ from wordless.wl_checks import wl_checks_misc
 from wordless.wl_settings import wl_settings_default, wl_settings_global
 from wordless.wl_utils import wl_misc
 
-SEARCH_TERMS = ['is']
+SEARCH_TERMS = ['take']
 
 # An instance of QApplication must be created before any instance of QWidget
 wl_app = QApplication(sys.argv)
 
 class Wl_Test_Main(QMainWindow):
-    def __init__(self):
+    def __init__(self, switch_lang_utils = 'default'):
         super().__init__()
 
         self.app = wl_app
@@ -64,7 +64,15 @@ class Wl_Test_Main(QMainWindow):
             self.settings_custom = copy.deepcopy(self.settings_default)
 
         # Global settings
-        self.settings_global = wl_settings_global.init_settings_global()
+        self.settings_global = wl_settings_global.SETTINGS_GLOBAL
+
+        match switch_lang_utils:
+            case 'fast':
+                self.switch_lang_utils_fast()
+            case 'spacy':
+                self.switch_lang_utils_spacy()
+            case 'stanza':
+                self.switch_lang_utils_stanza()
 
         # Status bar
         self.status_bar = QStatusBar()
@@ -97,6 +105,107 @@ class Wl_Test_Main(QMainWindow):
 
     def statusBar(self):
         return self.status_bar
+
+    def switch_lang_utils_fast(self):
+        settings_custom_sentence_tokenizers = self.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']
+        settings_global_sentence_tokenizers = self.settings_global['sentence_tokenizers']
+        settings_custom_word_tokenizers = self.settings_custom['word_tokenization']['word_tokenizer_settings']
+        settings_global_word_tokenizers = self.settings_global['word_tokenizers']
+        settings_custom_lemmatizers = self.settings_custom['lemmatization']['lemmatizer_settings']
+        settings_global_lemmatizers = self.settings_global['lemmatizers']
+        settings_custom_sentiment_analyzers = self.settings_custom['sentiment_analysis']['sentiment_analyzer_settings']
+        settings_global_sentiment_analyzers = self.settings_global['sentiment_analyzers']
+
+        for lang in settings_custom_sentence_tokenizers:
+            if 'spacy_sentencizer' in settings_global_sentence_tokenizers[lang]:
+                settings_custom_sentence_tokenizers[lang] = 'spacy_sentencizer'
+
+        for lang in settings_custom_word_tokenizers:
+            if 'nltk_nltk' in settings_global_word_tokenizers[lang]:
+                settings_custom_word_tokenizers[lang] = 'nltk_nltk'
+            elif 'pkuseg_zho' in settings_global_word_tokenizers[lang]:
+                settings_custom_word_tokenizers[lang] = 'pkuseg_zho'
+            elif 'sudachipy_jpn_split_mode_a' in settings_global_word_tokenizers[lang]:
+                settings_custom_word_tokenizers[lang] = 'sudachipy_jpn_split_mode_a'
+            else:
+                for lang_util in settings_global_word_tokenizers[lang]:
+                    if lang_util.startswith('spacy_'):
+                        settings_custom_word_tokenizers[lang] = lang_util
+
+                        break
+
+        for lang in settings_custom_lemmatizers:
+            for lang_util in settings_global_lemmatizers[lang]:
+                if lang_util.startswith('simplemma_'):
+                    settings_custom_lemmatizers[lang] = lang_util
+
+                    break
+
+        for lang in settings_custom_sentiment_analyzers:
+            for lang_util in settings_global_sentiment_analyzers[lang]:
+                if lang_util.startswith('vader_'):
+                    settings_custom_sentiment_analyzers[lang] = lang_util
+
+                    break
+
+    def switch_lang_utils_spacy(self):
+        settings_custom_sentence_tokenizers = self.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']
+        settings_global_sentence_tokenizers = self.settings_global['sentence_tokenizers']
+
+        for lang in settings_custom_sentence_tokenizers:
+            if 'spacy_sentencizer' in settings_global_sentence_tokenizers[lang]:
+                settings_custom_sentence_tokenizers[lang] = 'spacy_sentencizer'
+
+        for settings_custom, settings_global in [
+            (
+                self.settings_custom['word_tokenization']['word_tokenizer_settings'],
+                self.settings_global['word_tokenizers']
+            ), (
+                self.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'],
+                self.settings_global['pos_taggers']
+            ), (
+                self.settings_custom['lemmatization']['lemmatizer_settings'],
+                self.settings_global['lemmatizers']
+            ), (
+                self.settings_custom['dependency_parsing']['dependency_parser_settings'],
+                self.settings_global['dependency_parsers']
+            )
+        ]:
+            for lang in settings_custom:
+                for lang_util in settings_global[lang]:
+                    if lang_util.startswith('spacy_'):
+                        settings_custom[lang] = lang_util
+
+                        break
+
+    def switch_lang_utils_stanza(self):
+        for settings_custom, settings_global in [
+            (
+                self.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
+                self.settings_global['sentence_tokenizers']
+            ), (
+                self.settings_custom['word_tokenization']['word_tokenizer_settings'],
+                self.settings_global['word_tokenizers']
+            ), (
+                self.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'],
+                self.settings_global['pos_taggers']
+            ), (
+                self.settings_custom['lemmatization']['lemmatizer_settings'],
+                self.settings_global['lemmatizers']
+            ), (
+                self.settings_custom['dependency_parsing']['dependency_parser_settings'],
+                self.settings_global['dependency_parsers']
+            ), (
+                self.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'],
+                self.settings_global['sentiment_analyzers']
+            )
+        ]:
+            for lang in settings_custom:
+                for lang_util in settings_global[lang]:
+                    if lang_util.startswith('stanza_'):
+                        settings_custom[lang] = lang_util
+
+                        break
 
 class Wl_Exception_Tests_Lang_Skipped(Exception):
     def __init__(self, lang):
@@ -148,59 +257,3 @@ def get_test_file_names(main, ref = False):
 def clean_import_caches():
     for file in glob.glob('imports/*.*'):
         os.remove(file)
-
-def change_default_tokenizers(main):
-    settings_custom_sentence_tokenization = main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings']
-    settings_global_sentence_tokenizers = main.settings_global['sentence_tokenizers']
-    settings_custom_word_tokenization = main.settings_custom['word_tokenization']['word_tokenizer_settings']
-    settings_global_word_tokenizers = main.settings_global['word_tokenizers']
-
-    for lang in settings_custom_sentence_tokenization:
-        for lang_util in settings_global_sentence_tokenizers[lang]:
-            if lang_util == 'spacy_sentencizer':
-                settings_custom_sentence_tokenization[lang] = lang_util
-
-                break
-
-    for lang in settings_custom_word_tokenization:
-        if 'nltk_nltk' in settings_global_word_tokenizers[lang]:
-            settings_custom_word_tokenization[lang] = 'nltk_nltk'
-        elif 'pkuseg_zho' in settings_global_word_tokenizers[lang]:
-            settings_custom_word_tokenization[lang] = 'pkuseg_zho'
-        elif 'sudachipy_jpn_split_mode_a' in settings_global_word_tokenizers[lang]:
-            settings_custom_word_tokenization[lang] = 'sudachipy_jpn_split_mode_a'
-        else:
-            for lang_util in settings_global_word_tokenizers[lang]:
-                if lang_util.startswith('spacy_'):
-                    settings_custom_word_tokenization[lang] = lang_util
-
-                    break
-
-def change_default_lang_utils_stanza(main):
-    for settings_custom, settings_global in [
-        (
-            main.settings_custom['sentence_tokenization']['sentence_tokenizer_settings'],
-            main.settings_global['sentence_tokenizers']
-        ), (
-            main.settings_custom['word_tokenization']['word_tokenizer_settings'],
-            main.settings_global['word_tokenizers']
-        ), (
-            main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'],
-            main.settings_global['pos_taggers']
-        ), (
-            main.settings_custom['lemmatization']['lemmatizer_settings'],
-            main.settings_global['lemmatizers']
-        ), (
-            main.settings_custom['dependency_parsing']['dependency_parser_settings'],
-            main.settings_global['dependency_parsers']
-        ), (
-            main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'],
-            main.settings_global['sentiment_analyzers']
-        )
-    ]:
-        for lang in settings_custom:
-            for lang_util in settings_global[lang]:
-                if lang_util.startswith('stanza_'):
-                    settings_custom[lang] = lang_util
-
-                    break

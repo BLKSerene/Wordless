@@ -50,12 +50,13 @@ def check_os():
     is_macos = False
     is_linux = False
 
-    if platform.system() == 'Windows':
-        is_windows = True
-    elif platform.system() == 'Darwin':
-        is_macos = True
-    elif platform.system() == 'Linux':
-        is_linux = True
+    match platform.system():
+        case 'Windows':
+            is_windows = True
+        case 'Darwin':
+            is_macos = True
+        case 'Linux':
+            is_linux = True
 
     return is_windows, is_macos, is_linux
 
