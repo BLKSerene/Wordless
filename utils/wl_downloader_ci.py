@@ -16,25 +16,23 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import platform
 import subprocess
 
 import nltk
 import spacy
 import stanza
 
-import wl_trs_utils
-
 # Download Dostoevsky model
-is_windows, is_macos, is_linux = wl_trs_utils.check_os()
 commands = ['dostoevsky', 'download', 'fasttext-social-network-model']
 
-if is_windows:
+if platform.system() == 'Windows':
     subprocess.run(['python', '-m'] + commands, check = True)
 else:
     try:
-        if is_macos:
+        if platform.system() == 'Darwin':
             subprocess.run(['python3', '-m'] + commands, check = True)
-        elif is_linux:
+        elif platform.system() == 'Linux':
             subprocess.run(['python3.10', '-m'] + commands, check = True)
     except subprocess.CalledProcessError:
         subprocess.run(['python', '-m'] + commands, check = True)

@@ -22,8 +22,7 @@ from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_checks import wl_checks_tokens
 from wordless.wl_nlp import wl_syl_tokenization, wl_word_tokenization
 
-main = wl_test_init.Wl_Test_Main()
-wl_test_init.change_default_tokenizers(main)
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 test_syl_tokenizers = []
 

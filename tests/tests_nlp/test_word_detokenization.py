@@ -24,8 +24,7 @@ from wordless.wl_utils import wl_misc
 
 _, is_macos, _ = wl_misc.check_os()
 
-main = wl_test_init.Wl_Test_Main()
-wl_test_init.change_default_tokenizers(main)
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 test_langs = (
     ['zho_cn', 'zho_tw', 'eng_us', 'jpn', 'tha']

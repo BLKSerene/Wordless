@@ -21,8 +21,7 @@ import pytest
 from tests import wl_test_init, wl_test_lang_examples
 from wordless.wl_nlp import wl_dependency_parsing, wl_word_tokenization
 
-main = wl_test_init.Wl_Test_Main()
-wl_test_init.change_default_tokenizers(main)
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 test_dependency_parsers = []
 

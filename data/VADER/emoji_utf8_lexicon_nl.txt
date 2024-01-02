@@ -1,0 +1,3570 @@
+😀	grijnzend gezicht
+😁	stralend gezicht met lachende ogen
+😂	gezicht met tranen van vreugde
+🤣	rollend over de vloer van het lachen
+😃	grijnzend gezicht met grote ogen
+😄	grijnzend gezicht met lachende ogen
+😅	grijnzend gezicht met zweet
+😆	grijnzend scheel gezicht
+😉	knipogend gezicht
+😊	lachend gezicht met lachende ogen
+😋	gezicht genieten van eten
+😎	lachend gezicht met zonnebril
+😍	lachend gezicht met hartogen
+😘	gezicht een kus blazen
+🥰	lachend gezicht met 3 harten
+😗	kussend gezicht
+😙	kussend gezicht met lachende ogen
+😚	kussend gezicht met gesloten ogen
+☺️	lachend gezicht
+☺	lachend gezicht
+🙂	lichtjes lachend gezicht
+🤗	knuffelend gezicht
+🤩	door sterren getroffen
+🤔	denkend gezicht
+🤨	gezicht met opgetrokken wenkbrauw
+😐	neutraal gezicht
+😑	uitdrukkingsloos gezicht
+😶	gezicht zonder mond
+🙄	gezicht met rollende ogen
+😏	grijnzend gezicht
+😣	volhardend gezicht
+😥	verdrietig maar opgelucht gezicht
+😮	gezicht met open mond
+🤐	gezicht met ritssluiting
+😯	verstild gezicht
+😪	slaperig gezicht
+😫	vermoeid gezicht
+😴	slapend gezicht
+😌	opgelucht gezicht
+😛	gezicht met tong
+😜	knipogend gezicht met tong
+😝	loensend gezicht met tong
+🤤	kwijlend gezicht
+😒	ongeamuseerd gezicht
+😓	neergeslagen gezicht met zweet
+😔	peinzend gezicht
+😕	verward gezicht
+🙃	ondersteboven gezicht
+🤑	geldmondig gezicht
+😲	verbaasd gezicht
+☹️	fronsend gezicht
+☹	fronsend gezicht
+🙁	licht fronsend gezicht
+😖	verbijsterd gezicht
+😞	teleurgesteld gezicht
+😟	bezorgd gezicht
+😤	gezicht met stoom uit de neus
+😢	huilend gezicht
+😭	luid huilend gezicht
+😦	fronsend gezicht met open mond
+😧	gekweld gezicht
+😨	angstig gezicht
+😩	vermoeid gezicht
+🤯	exploderende kop
+😬	grimmig gezicht
+😰	angstig gezicht met zweet
+😱	gezicht schreeuwend van angst
+🥵	heet gezicht
+🥶	koud gezicht
+😳	rood gezicht
+🤪	zielig gezicht
+😵	duizelig gezicht
+😡	pruilend gezicht
+😠	boos gezicht
+🤬	gezicht met symbolen op de mond
+😷	gezicht met medisch masker
+🤒	gezicht met thermometer
+🤕	gezicht met hoofdbandage
+🤢	misselijk gezicht
+🤮	gezicht braken
+🤧	niezend gezicht
+😇	lachend gezicht met halo
+🤠	cowboyhoed gezicht
+🥳	feestend gezicht
+🥴	wazig gezicht
+🥺	smekend gezicht
+🤥	liegend gezicht
+🤫	zwijgend gezicht
+🤭	gezicht met hand voor mond
+🧐	gezicht met monocle
+🤓	nerd gezicht
+😈	lachend gezicht met hoorns
+👿	boos gezicht met hoorns
+🤡	clownsgezicht
+👹	boeman
+👺	kobold
+💀	schedel
+☠️	schedel en gekruiste beenderen
+☠	schedel en gekruiste beenderen
+👻	spook
+👽	buitenaards wezen
+👾	buitenaards monster
+🤖	robot-gezicht
+💩	stapel poep
+😺	grijnzend kattengezicht
+😸	grijnzend kattengezicht met lachende ogen
+😹	kattengezicht met tranen van vreugde
+😻	lachend kattengezicht met hartogen
+😼	kattengezicht met wrange glimlach
+😽	kussend kattengezicht
+🙀	vermoeid kattengezicht
+😿	huilend kattengezicht
+😾	pruilend kattengezicht
+🙈	Zie geen kwaad aap
+🙉	hoor-geen-kwaad aap
+🙊	spreek geen kwaad aap
+🏻	lichte huidskleur
+🏼	medium-lichte huidskleur
+🏽	gemiddelde huidskleur
+🏾	middeldonkere huidskleur
+🏿	donkere huidskleur
+👶	Baby
+👶🏻	baby: lichte huidskleur
+👶🏼	baby: lichtgetinte huidskleur
+👶🏽	baby: medium huidskleur
+👶🏾	baby: donkergetinte huidskleur
+👶🏿	baby: donkere huidskleur
+🧒	kind
+🧒🏻	kind: lichte huidskleur
+🧒🏼	kind: lichtgetinte huidskleur
+🧒🏽	kind: getinte huidskleur
+🧒🏾	kind: donkergetinte huidskleur
+🧒🏿	kind: donkere huidskleur
+👦	jongen
+👦🏻	jongen: lichte huidskleur
+👦🏼	jongen: lichtgetinte huidskleur
+👦🏽	jongen: getinte huidskleur
+👦🏾	jongen: donkergetinte huidskleur
+👦🏿	jongen: donkere huidskleur
+👧	meisje
+👧🏻	meisje: lichte huidskleur
+👧🏼	meisje: lichtgetinte huidskleur
+👧🏽	meisje: getinte huidskleur
+👧🏾	meisje: donkergetinte huidskleur
+👧🏿	meisje: donkere huidskleur
+🧑	volwassen
+🧑🏻	volwassene: lichte huidskleur
+🧑🏼	volwassene: lichtgetinte huidskleur
+🧑🏽	volwassene: medium huidskleur
+🧑🏾	volwassene: donkergetinte huidskleur
+🧑🏿	volwassene: donkere huidskleur
+👨	man
+👨🏻	man: lichte huidskleur
+👨🏼	man: lichtgetinte huidskleur
+👨🏽	man: getinte huidskleur
+👨🏾	man: donkergetinte huidskleur
+👨🏿	man: donkere huidskleur
+👩	vrouw
+👩🏻	vrouw: lichte huidskleur
+👩🏼	vrouw: lichtgetinte huidskleur
+👩🏽	vrouw: getinte huidskleur
+👩🏾	vrouw: donkergetinte huidskleur
+👩🏿	vrouw: donkere huidskleur
+🧓	oudere volwassene
+🧓🏻	oudere volwassene: lichte huidskleur
+🧓🏼	oudere volwassene: lichtgetinte huidskleur
+🧓🏽	oudere volwassene: medium huidskleur
+🧓🏾	oudere volwassene: mediumdonkere huidskleur
+🧓🏿	oudere volwassene: donkere huidskleur
+👴	oude man
+👴🏻	oude man: lichte huidskleur
+👴🏼	oude man: lichtgetinte huidskleur
+👴🏽	oude man: getinte huidskleur
+👴🏾	oude man: donkergetinte huidskleur
+👴🏿	oude man: donkere huidskleur
+👵	oude vrouw
+👵🏻	oude vrouw: lichte huidskleur
+👵🏼	oude vrouw: lichtgetinte huidskleur
+👵🏽	oude vrouw: getinte huidskleur
+👵🏾	oude vrouw: donkergetinte huidskleur
+👵🏿	oude vrouw: donkere huidskleur
+👨‍⚕️	mannelijke gezondheidswerker
+👨‍⚕	mannelijke gezondheidswerker
+👨🏻‍⚕️	mannelijke gezondheidswerker: lichte huidskleur
+👨🏻‍⚕	mannelijke gezondheidswerker: lichte huidskleur
+👨🏼‍⚕️	gezondheidswerker man: lichtgetinte huidskleur
+👨🏼‍⚕	gezondheidswerker man: lichtgetinte huidskleur
+👨🏽‍⚕️	gezondheidswerker man: getinte huidskleur
+👨🏽‍⚕	gezondheidswerker man: getinte huidskleur
+👨🏾‍⚕️	mannelijke gezondheidswerker: donkergetinte huidskleur
+👨🏾‍⚕	mannelijke gezondheidswerker: donkergetinte huidskleur
+👨🏿‍⚕️	mannelijke gezondheidswerker: donkere huidskleur
+👨🏿‍⚕	mannelijke gezondheidswerker: donkere huidskleur
+👩‍⚕️	vrouwelijke gezondheidswerker
+👩‍⚕	vrouwelijke gezondheidswerker
+👩🏻‍⚕️	vrouwelijke gezondheidswerker: lichte huidskleur
+👩🏻‍⚕	vrouwelijke gezondheidswerker: lichte huidskleur
+👩🏼‍⚕️	vrouwelijke gezondheidswerker: lichtgetinte huidskleur
+👩🏼‍⚕	vrouwelijke gezondheidswerker: lichtgetinte huidskleur
+👩🏽‍⚕️	vrouwelijke gezondheidswerker: getinte huidskleur
+👩🏽‍⚕	vrouwelijke gezondheidswerker: getinte huidskleur
+👩🏾‍⚕️	vrouwelijke gezondheidswerker: donkergetinte huidskleur
+👩🏾‍⚕	vrouwelijke gezondheidswerker: donkergetinte huidskleur
+👩🏿‍⚕️	vrouwelijke gezondheidswerker: donkere huidskleur
+👩🏿‍⚕	vrouwelijke gezondheidswerker: donkere huidskleur
+👨‍🎓	mens student
+👨🏻‍🎓	man student: lichte huidskleur
+👨🏼‍🎓	man student: lichtgetinte huidskleur
+👨🏽‍🎓	man student: getinte huidskleur
+👨🏾‍🎓	man student: donkergetinte huidskleur
+👨🏿‍🎓	man student: donkere huidskleur
+👩‍🎓	studente
+👩🏻‍🎓	studente: lichte huidskleur
+👩🏼‍🎓	studente: lichtgetinte huidskleur
+👩🏽‍🎓	studente: getinte huidskleur
+👩🏾‍🎓	studente: donkergetinte huidskleur
+👩🏿‍🎓	studente: donkere huidskleur
+👨‍🏫	mens leraar
+👨🏻‍🏫	man leraar: lichte huidskleur
+👨🏼‍🏫	man leraar: lichtgetinte huidskleur
+👨🏽‍🏫	man leraar: getinte huidskleur
+👨🏾‍🏫	man leraar: donkergetinte huidskleur
+👨🏿‍🏫	man leraar: donkere huidskleur
+👩‍🏫	vrouwelijke leraar
+👩🏻‍🏫	vrouwelijke lerares: lichte huidskleur
+👩🏼‍🏫	vrouwelijke lerares: lichtgetinte huidskleur
+👩🏽‍🏫	vrouwelijke lerares: getinte huidskleur
+👩🏾‍🏫	vrouwelijke lerares: donkergetinte huidskleur
+👩🏿‍🏫	vrouwelijke lerares: donkere huidskleur
+👨‍⚖️	mens rechter
+👨‍⚖	mens rechter
+👨🏻‍⚖️	man keurmeester: lichte huidskleur
+👨🏻‍⚖	man keurmeester: lichte huidskleur
+👨🏼‍⚖️	jurylid: lichtgetinte huidskleur
+👨🏼‍⚖	jurylid: lichtgetinte huidskleur
+👨🏽‍⚖️	man keurmeester: getinte huidskleur
+👨🏽‍⚖	man keurmeester: getinte huidskleur
+👨🏾‍⚖️	man keurmeester: donkergetinte huidskleur
+👨🏾‍⚖	man keurmeester: donkergetinte huidskleur
+👨🏿‍⚖️	man keurmeester: donkere huidskleur
+👨🏿‍⚖	man keurmeester: donkere huidskleur
+👩‍⚖️	vrouw rechter
+👩‍⚖	vrouw rechter
+👩🏻‍⚖️	vrouwelijke keurmeester: lichte huidskleur
+👩🏻‍⚖	vrouwelijke keurmeester: lichte huidskleur
+👩🏼‍⚖️	vrouwelijke keurmeester: lichtgetinte huidskleur
+👩🏼‍⚖	vrouwelijke keurmeester: lichtgetinte huidskleur
+👩🏽‍⚖️	vrouwelijke keurmeester: getinte huidskleur
+👩🏽‍⚖	vrouwelijke keurmeester: getinte huidskleur
+👩🏾‍⚖️	vrouwelijke keurmeester: donkergetinte huidskleur
+👩🏾‍⚖	vrouwelijke keurmeester: donkergetinte huidskleur
+👩🏿‍⚖️	vrouwelijke keurmeester: donkere huidskleur
+👩🏿‍⚖	vrouwelijke keurmeester: donkere huidskleur
+👨‍🌾	mens boer
+👨🏻‍🌾	man boer: lichte huidskleur
+👨🏼‍🌾	man boer: lichtgetinte huidskleur
+👨🏽‍🌾	man boer: getinte huidskleur
+👨🏾‍🌾	man boer: donkergetinte huidskleur
+👨🏿‍🌾	man boer: donkere huidskleur
+👩‍🌾	vrouwelijke boerin
+👩🏻‍🌾	boerin: lichte huidskleur
+👩🏼‍🌾	boerin: lichtgetinte huidskleur
+👩🏽‍🌾	boerin: getinte huidskleur
+👩🏾‍🌾	boerin: donkergetinte huidskleur
+👩🏿‍🌾	boerin: donkere huidskleur
+👨‍🍳	mannen kok
+👨🏻‍🍳	man kok: lichte huidskleur
+👨🏼‍🍳	man kok: lichtgetinte huidskleur
+👨🏽‍🍳	man kok: getinte huidskleur
+👨🏾‍🍳	man kok: donkergetinte huidskleur
+👨🏿‍🍳	man kok: donkere huidskleur
+👩‍🍳	vrouw kok
+👩🏻‍🍳	kokkin: lichte huidskleur
+👩🏼‍🍳	vrouwelijke kok: lichtgetinte huidskleur
+👩🏽‍🍳	vrouwelijke kok: getinte huidskleur
+👩🏾‍🍳	vrouwelijke kok: donkergetinte huidskleur
+👩🏿‍🍳	kokkin: donkere huidskleur
+👨‍🔧	mens monteur
+👨🏻‍🔧	man monteur: lichte huidskleur
+👨🏼‍🔧	man monteur: lichtgetinte huidskleur
+👨🏽‍🔧	man monteur: getinte huidskleur
+👨🏾‍🔧	man monteur: donkergetinte huidskleur
+👨🏿‍🔧	man monteur: donkere huidskleur
+👩‍🔧	vrouw monteur
+👩🏻‍🔧	vrouwelijke monteur: lichte huidskleur
+👩🏼‍🔧	vrouwelijke monteur: lichtgetinte huidskleur
+👩🏽‍🔧	vrouwelijke monteur: getinte huidskleur
+👩🏾‍🔧	vrouwelijke monteur: donkergetinte huidskleur
+👩🏿‍🔧	vrouwelijke monteur: donkere huidskleur
+👨‍🏭	man fabrieksarbeider
+👨🏻‍🏭	man fabrieksarbeider: lichte huidskleur
+👨🏼‍🏭	man fabrieksarbeider: lichtgetinte huidskleur
+👨🏽‍🏭	man fabrieksarbeider: getinte huidskleur
+👨🏾‍🏭	man fabrieksarbeider: donkergetinte huidskleur
+👨🏿‍🏭	man fabrieksarbeider: donkere huidskleur
+👩‍🏭	vrouw fabrieksarbeider
+👩🏻‍🏭	vrouw fabrieksarbeider: lichte huidskleur
+👩🏼‍🏭	vrouwelijke fabrieksarbeider: lichtgetinte huidskleur
+👩🏽‍🏭	vrouwelijke fabrieksarbeider: getinte huidskleur
+👩🏾‍🏭	vrouwelijke fabrieksarbeider: donkergetinte huidskleur
+👩🏿‍🏭	vrouw fabrieksarbeider: donkere huidskleur
+👨‍💼	man kantoormedewerker
+👨🏻‍💼	man kantoormedewerker: lichte huidskleur
+👨🏼‍💼	man kantoormedewerker: lichtgetinte huidskleur
+👨🏽‍💼	man kantoormedewerker: getinte huidskleur
+👨🏾‍💼	man kantoormedewerker: donkergetinte huidskleur
+👨🏿‍💼	man kantoormedewerker: donkere huidskleur
+👩‍💼	vrouw kantoormedewerker
+👩🏻‍💼	vrouwelijke kantoormedewerker: lichte huidskleur
+👩🏼‍💼	vrouwelijke kantoormedewerker: lichtgetinte huidskleur
+👩🏽‍💼	vrouwelijke kantoormedewerker: getinte huidskleur
+👩🏾‍💼	vrouwelijke kantoormedewerker: donkergetinte huidskleur
+👩🏿‍💼	vrouwelijke kantoormedewerker: donkere huidskleur
+👨‍🔬	mens wetenschapper
+👨🏻‍🔬	man wetenschapper: lichte huidskleur
+👨🏼‍🔬	man wetenschapper: lichtgetinte huidskleur
+👨🏽‍🔬	man wetenschapper: getinte huidskleur
+👨🏾‍🔬	man wetenschapper: donkergetinte huidskleur
+👨🏿‍🔬	man wetenschapper: donkere huidskleur
+👩‍🔬	vrouwelijke wetenschapper
+👩🏻‍🔬	vrouwelijke wetenschapper: lichte huidskleur
+👩🏼‍🔬	vrouwelijke wetenschapper: lichtgetinte huidskleur
+👩🏽‍🔬	vrouwelijke wetenschapper: getinte huidskleur
+👩🏾‍🔬	vrouwelijke wetenschapper: donkergetinte huidskleur
+👩🏿‍🔬	vrouwelijke wetenschapper: donkere huidskleur
+👨‍💻	mens technoloog
+👨🏻‍💻	man technoloog: lichte huidskleur
+👨🏼‍💻	mannelijke technoloog: lichtgetinte huidskleur
+👨🏽‍💻	man technoloog: getinte huidskleur
+👨🏾‍💻	mannelijke technoloog: donkergetinte huidskleur
+👨🏿‍💻	man technoloog: donkere huidskleur
+👩‍💻	vrouwelijke technoloog
+👩🏻‍💻	vrouwelijke technoloog: lichte huidskleur
+👩🏼‍💻	vrouwelijke technoloog: lichtgetinte huidskleur
+👩🏽‍💻	vrouwelijke technoloog: getinte huidskleur
+👩🏾‍💻	vrouwelijke technoloog: donkergetinte huidskleur
+👩🏿‍💻	vrouwelijke technoloog: donkere huidskleur
+👨‍🎤	mannelijke zanger
+👨🏻‍🎤	man zanger: lichte huidskleur
+👨🏼‍🎤	mannelijke zanger: lichtgetinte huidskleur
+👨🏽‍🎤	man zanger: getinte huidskleur
+👨🏾‍🎤	mannelijke zanger: donkergetinte huidskleur
+👨🏿‍🎤	man zanger: donkere huidskleur
+👩‍🎤	zangeres
+👩🏻‍🎤	zangeres: lichte huidskleur
+👩🏼‍🎤	zangeres: lichtgetinte huidskleur
+👩🏽‍🎤	zangeres: getinte huidskleur
+👩🏾‍🎤	zangeres: donkergetinte huidskleur
+👩🏿‍🎤	zangeres: donkere huidskleur
+👨‍🎨	mens kunstenaar
+👨🏻‍🎨	man kunstenaar: lichte huidskleur
+👨🏼‍🎨	man kunstenaar: lichtgetinte huidskleur
+👨🏽‍🎨	man kunstenaar: getinte huidskleur
+👨🏾‍🎨	man kunstenaar: donkergetinte huidskleur
+👨🏿‍🎨	man kunstenaar: donkere huidskleur
+👩‍🎨	vrouwelijke kunstenaar
+👩🏻‍🎨	vrouwelijke artiest: lichte huidskleur
+👩🏼‍🎨	vrouwelijke artiest: lichtgetinte huidskleur
+👩🏽‍🎨	vrouwelijke artiest: getinte huidskleur
+👩🏾‍🎨	vrouwelijke artiest: donkergetinte huidskleur
+👩🏿‍🎨	vrouwelijke artiest: donkere huidskleur
+👨‍✈️	mens piloot
+👨‍✈	mens piloot
+👨🏻‍✈️	man piloot: lichte huidskleur
+👨🏻‍✈	man piloot: lichte huidskleur
+👨🏼‍✈️	man piloot: lichtgetinte huidskleur
+👨🏼‍✈	man piloot: lichtgetinte huidskleur
+👨🏽‍✈️	man piloot: getinte huidskleur
+👨🏽‍✈	man piloot: getinte huidskleur
+👨🏾‍✈️	man piloot: donkergetinte huidskleur
+👨🏾‍✈	man piloot: donkergetinte huidskleur
+👨🏿‍✈️	man piloot: donkere huidskleur
+👨🏿‍✈	man piloot: donkere huidskleur
+👩‍✈️	vrouwelijke piloot
+👩‍✈	vrouwelijke piloot
+👩🏻‍✈️	vrouwelijke piloot: lichte huidskleur
+👩🏻‍✈	vrouwelijke piloot: lichte huidskleur
+👩🏼‍✈️	vrouwelijke piloot: lichtgetinte huidskleur
+👩🏼‍✈	vrouwelijke piloot: lichtgetinte huidskleur
+👩🏽‍✈️	vrouwelijke piloot: getinte huidskleur
+👩🏽‍✈	vrouwelijke piloot: getinte huidskleur
+👩🏾‍✈️	vrouwelijke piloot: donkergetinte huidskleur
+👩🏾‍✈	vrouwelijke piloot: donkergetinte huidskleur
+👩🏿‍✈️	vrouwelijke piloot: donkere huidskleur
+👩🏿‍✈	vrouwelijke piloot: donkere huidskleur
+👨‍🚀	mens astronaut
+👨🏻‍🚀	man astronaut: lichte huidskleur
+👨🏼‍🚀	man astronaut: lichtgetinte huidskleur
+👨🏽‍🚀	man astronaut: getinte huidskleur
+👨🏾‍🚀	man astronaut: donkergetinte huidskleur
+👨🏿‍🚀	man astronaut: donkere huidskleur
+👩‍🚀	vrouwelijke astronaut
+👩🏻‍🚀	vrouwelijke astronaut: lichte huidskleur
+👩🏼‍🚀	vrouwelijke astronaut: lichtgetinte huidskleur
+👩🏽‍🚀	vrouwelijke astronaut: getinte huidskleur
+👩🏾‍🚀	vrouwelijke astronaut: donkergetinte huidskleur
+👩🏿‍🚀	vrouwelijke astronaut: donkere huidskleur
+👨‍🚒	mens brandweerman
+👨🏻‍🚒	man brandweerman: lichte huidskleur
+👨🏼‍🚒	man brandweerman: lichtgetinte huidskleur
+👨🏽‍🚒	man brandweerman: getinte huidskleur
+👨🏾‍🚒	man brandweerman: donkergetinte huidskleur
+👨🏿‍🚒	man brandweerman: donkere huidskleur
+👩‍🚒	vrouw brandweerman
+👩🏻‍🚒	vrouw brandweerman: lichte huidskleur
+👩🏼‍🚒	vrouwelijke brandweerman: lichtgetinte huidskleur
+👩🏽‍🚒	vrouw brandweerman: getinte huidskleur
+👩🏾‍🚒	vrouwelijke brandweerman: donkergetinte huidskleur
+👩🏿‍🚒	vrouw brandweerman: donkere huidskleur
+👮	politie agent
+👮🏻	politieagent: lichte huidskleur
+👮🏼	politieagent: lichtgetinte huidskleur
+👮🏽	politieagent: getinte huidskleur
+👮🏾	politieagent: donkergetinte huidskleur
+👮🏿	politieagent: donkere huidskleur
+👮‍♂️	mens politieagent
+👮‍♂	mens politieagent
+👮🏻‍♂️	man politieagent: lichte huidskleur
+👮🏻‍♂	man politieagent: lichte huidskleur
+👮🏼‍♂️	man politieagent: lichtgetinte huidskleur
+👮🏼‍♂	man politieagent: lichtgetinte huidskleur
+👮🏽‍♂️	man politieagent: getinte huidskleur
+👮🏽‍♂	man politieagent: getinte huidskleur
+👮🏾‍♂️	man politieagent: donkergetinte huidskleur
+👮🏾‍♂	man politieagent: donkergetinte huidskleur
+👮🏿‍♂️	man politieagent: donkere huidskleur
+👮🏿‍♂	man politieagent: donkere huidskleur
+👮‍♀️	vrouwelijke politieagent
+👮‍♀	vrouwelijke politieagent
+👮🏻‍♀️	vrouwelijke politieagent: lichte huidskleur
+👮🏻‍♀	vrouwelijke politieagent: lichte huidskleur
+👮🏼‍♀️	vrouwelijke politieagent: lichtgetinte huidskleur
+👮🏼‍♀	vrouwelijke politieagent: lichtgetinte huidskleur
+👮🏽‍♀️	vrouwelijke politieagent: getinte huidskleur
+👮🏽‍♀	vrouwelijke politieagent: getinte huidskleur
+👮🏾‍♀️	vrouwelijke politieagent: donkergetinte huidskleur
+👮🏾‍♀	vrouwelijke politieagent: donkergetinte huidskleur
+👮🏿‍♀️	vrouwelijke politieagent: donkere huidskleur
+👮🏿‍♀	vrouwelijke politieagent: donkere huidskleur
+🕵️	detective
+🕵	detective
+🕵🏻	detective: lichte huidskleur
+🕵🏼	detective: lichtgetinte huidskleur
+🕵🏽	detective: getinte huidskleur
+🕵🏾	detective: donkergetinte huidskleur
+🕵🏿	detective: donkere huidskleur
+🕵️‍♂️	mannelijke rechercheur
+🕵‍♂️	mannelijke rechercheur
+🕵️‍♂	mannelijke rechercheur
+🕵‍♂	mannelijke rechercheur
+🕵🏻‍♂️	man detective: lichte huidskleur
+🕵🏻‍♂	man detective: lichte huidskleur
+🕵🏼‍♂️	mannelijke detective: lichtgetinte huidskleur
+🕵🏼‍♂	mannelijke detective: lichtgetinte huidskleur
+🕵🏽‍♂️	mannelijke detective: getinte huidskleur
+🕵🏽‍♂	mannelijke detective: getinte huidskleur
+🕵🏾‍♂️	mannelijke detective: donkergetinte huidskleur
+🕵🏾‍♂	mannelijke detective: donkergetinte huidskleur
+🕵🏿‍♂️	man detective: donkere huidskleur
+🕵🏿‍♂	man detective: donkere huidskleur
+🕵️‍♀️	vrouwelijke rechercheur
+🕵‍♀️	vrouwelijke rechercheur
+🕵️‍♀	vrouwelijke rechercheur
+🕵‍♀	vrouwelijke rechercheur
+🕵🏻‍♀️	vrouwelijke detective: lichte huidskleur
+🕵🏻‍♀	vrouwelijke detective: lichte huidskleur
+🕵🏼‍♀️	vrouwelijke detective: lichtgetinte huidskleur
+🕵🏼‍♀	vrouwelijke detective: lichtgetinte huidskleur
+🕵🏽‍♀️	vrouwelijke detective: getinte huidskleur
+🕵🏽‍♀	vrouwelijke detective: getinte huidskleur
+🕵🏾‍♀️	vrouwelijke detective: donkergetinte huidskleur
+🕵🏾‍♀	vrouwelijke detective: donkergetinte huidskleur
+🕵🏿‍♀️	vrouwelijke detective: donkere huidskleur
+🕵🏿‍♀	vrouwelijke detective: donkere huidskleur
+💂	bewaker
+💂🏻	bewaker: lichte huidskleur
+💂🏼	bewaker: lichtgetinte huidskleur
+💂🏽	bewaker: medium huidskleur
+💂🏾	bewaker: donkergetinte huidskleur
+💂🏿	bewaker: donkere huidskleur
+💂‍♂️	man bewaker
+💂‍♂	man bewaker
+💂🏻‍♂️	bewaker: lichte huidskleur
+💂🏻‍♂	bewaker: lichte huidskleur
+💂🏼‍♂️	bewaker: lichtgetinte huidskleur
+💂🏼‍♂	bewaker: lichtgetinte huidskleur
+💂🏽‍♂️	bewaker: getinte huidskleur
+💂🏽‍♂	bewaker: getinte huidskleur
+💂🏾‍♂️	bewaker: donkergetinte huidskleur
+💂🏾‍♂	bewaker: donkergetinte huidskleur
+💂🏿‍♂️	bewaker: donkere huidskleur
+💂🏿‍♂	bewaker: donkere huidskleur
+💂‍♀️	vrouw bewaker
+💂‍♀	vrouw bewaker
+💂🏻‍♀️	vrouwelijke bewaker: lichte huidskleur
+💂🏻‍♀	vrouwelijke bewaker: lichte huidskleur
+💂🏼‍♀️	vrouwelijke bewaker: lichtgetinte huidskleur
+💂🏼‍♀	vrouwelijke bewaker: lichtgetinte huidskleur
+💂🏽‍♀️	vrouwelijke bewaker: getinte huidskleur
+💂🏽‍♀	vrouwelijke bewaker: getinte huidskleur
+💂🏾‍♀️	vrouwelijke bewaker: donkergetinte huidskleur
+💂🏾‍♀	vrouwelijke bewaker: donkergetinte huidskleur
+💂🏿‍♀️	vrouwelijke bewaker: donkere huidskleur
+💂🏿‍♀	vrouwelijke bewaker: donkere huidskleur
+👷	Bouwvakker
+👷🏻	bouwvakker: lichte huidskleur
+👷🏼	bouwvakker: lichtgetinte huidskleur
+👷🏽	bouwvakker: getinte huidskleur
+👷🏾	bouwvakker: donkergetinte huidskleur
+👷🏿	bouwvakker: donkere huidskleur
+👷‍♂️	man bouwvakker
+👷‍♂	man bouwvakker
+👷🏻‍♂️	man bouwvakker: lichte huidskleur
+👷🏻‍♂	man bouwvakker: lichte huidskleur
+👷🏼‍♂️	man bouwvakker: lichtgetinte huidskleur
+👷🏼‍♂	man bouwvakker: lichtgetinte huidskleur
+👷🏽‍♂️	man bouwvakker: getinte huidskleur
+👷🏽‍♂	man bouwvakker: getinte huidskleur
+👷🏾‍♂️	man bouwvakker: donkergetinte huidskleur
+👷🏾‍♂	man bouwvakker: donkergetinte huidskleur
+👷🏿‍♂️	man bouwvakker: donkere huidskleur
+👷🏿‍♂	man bouwvakker: donkere huidskleur
+👷‍♀️	vrouw bouwvakker
+👷‍♀	vrouw bouwvakker
+👷🏻‍♀️	vrouwelijke bouwvakker: lichte huidskleur
+👷🏻‍♀	vrouwelijke bouwvakker: lichte huidskleur
+👷🏼‍♀️	vrouwelijke bouwvakker: lichtgetinte huidskleur
+👷🏼‍♀	vrouwelijke bouwvakker: lichtgetinte huidskleur
+👷🏽‍♀️	vrouwelijke bouwvakker: getinte huidskleur
+👷🏽‍♀	vrouwelijke bouwvakker: getinte huidskleur
+👷🏾‍♀️	vrouwelijke bouwvakker: donkergetinte huidskleur
+👷🏾‍♀	vrouwelijke bouwvakker: donkergetinte huidskleur
+👷🏿‍♀️	vrouwelijke bouwvakker: donkere huidskleur
+👷🏿‍♀	vrouwelijke bouwvakker: donkere huidskleur
+🤴	prins
+🤴🏻	prins: lichte huidskleur
+🤴🏼	prins: lichtgetinte huidskleur
+🤴🏽	prins: medium huidskleur
+🤴🏾	prins: mediumdonkere huidskleur
+🤴🏿	prins: donkere huidskleur
+👸	prinses
+👸🏻	prinses: lichte huidskleur
+👸🏼	prinses: lichtgetinte huidskleur
+👸🏽	prinses: getinte huidskleur
+👸🏾	prinses: donkergetinte huidskleur
+👸🏿	prinses: donkere huidskleur
+👳	persoon die een tulband draagt
+👳🏻	persoon die tulband draagt: lichte huidskleur
+👳🏼	persoon die een tulband draagt: lichtgetinte huidskleur
+👳🏽	persoon die tulband draagt: getinte huidskleur
+👳🏾	persoon die tulband draagt: donkergetinte huidskleur
+👳🏿	persoon die tulband draagt: donkere huidskleur
+👳‍♂️	man met tulband
+👳‍♂	man met tulband
+👳🏻‍♂️	man met tulband: lichte huidskleur
+👳🏻‍♂	man met tulband: lichte huidskleur
+👳🏼‍♂️	man met tulband: lichtgetinte huidskleur
+👳🏼‍♂	man met tulband: lichtgetinte huidskleur
+👳🏽‍♂️	man met tulband: getinte huidskleur
+👳🏽‍♂	man met tulband: getinte huidskleur
+👳🏾‍♂️	man met tulband: donkergetinte huidskleur
+👳🏾‍♂	man met tulband: donkergetinte huidskleur
+👳🏿‍♂️	man met tulband: donkere huidskleur
+👳🏿‍♂	man met tulband: donkere huidskleur
+👳‍♀️	vrouw met tulband
+👳‍♀	vrouw met tulband
+👳🏻‍♀️	vrouw met tulband: lichte huidskleur
+👳🏻‍♀	vrouw met tulband: lichte huidskleur
+👳🏼‍♀️	vrouw met tulband: lichtgetinte huidskleur
+👳🏼‍♀	vrouw met tulband: lichtgetinte huidskleur
+👳🏽‍♀️	vrouw met tulband: getinte huidskleur
+👳🏽‍♀	vrouw met tulband: getinte huidskleur
+👳🏾‍♀️	vrouw met tulband: donkergetinte huidskleur
+👳🏾‍♀	vrouw met tulband: donkergetinte huidskleur
+👳🏿‍♀️	vrouw met tulband: donkere huidskleur
+👳🏿‍♀	vrouw met tulband: donkere huidskleur
+👲	man met Chinese pet
+👲🏻	man met Chinese pet: lichte huidskleur
+👲🏼	man met Chinese pet: lichtgetinte huidskleur
+👲🏽	man met Chinese pet: getinte huidskleur
+👲🏾	man met Chinese pet: donkergetinte huidskleur
+👲🏿	man met Chinese pet: donkere huidskleur
+🧕	vrouw met hoofddoek
+🧕🏻	vrouw met hoofddoek: lichte huidskleur
+🧕🏼	vrouw met hoofddoek: lichtgetinte huidskleur
+🧕🏽	vrouw met hoofddoek: getinte huidskleur
+🧕🏾	vrouw met hoofddoek: donkergetinte huidskleur
+🧕🏿	vrouw met hoofddoek: donkere huidskleur
+🧔	bebaarde persoon
+🧔🏻	bebaarde persoon: lichte huidskleur
+🧔🏼	persoon met baard: lichtgetinte huidskleur
+🧔🏽	bebaarde persoon: getinte huidskleur
+🧔🏾	persoon met baard: donkergetinte huidskleur
+🧔🏿	bebaarde persoon: donkere huidskleur
+👱	blondharige persoon
+👱🏻	blondharig persoon: lichte huidskleur
+👱🏼	blondharig persoon: lichtgetinte huidskleur
+👱🏽	blondharig persoon: getinte huidskleur
+👱🏾	blondharig persoon: donkergetinte huidskleur
+👱🏿	blondharig persoon: donkere huidskleur
+👱‍♂️	blondharige man
+👱‍♂	blondharige man
+👱🏻‍♂️	blondharige man: lichte huidskleur
+👱🏻‍♂	blondharige man: lichte huidskleur
+👱🏼‍♂️	blondharige man: lichtgetinte huidskleur
+👱🏼‍♂	blondharige man: lichtgetinte huidskleur
+👱🏽‍♂️	blondharige man: getinte huidskleur
+👱🏽‍♂	blondharige man: getinte huidskleur
+👱🏾‍♂️	blondharige man: donkergetinte huidskleur
+👱🏾‍♂	blondharige man: donkergetinte huidskleur
+👱🏿‍♂️	blondharige man: donkere huidskleur
+👱🏿‍♂	blondharige man: donkere huidskleur
+👱‍♀️	blondharige vrouw
+👱‍♀	blondharige vrouw
+👱🏻‍♀️	blondharige vrouw: lichte huidskleur
+👱🏻‍♀	blondharige vrouw: lichte huidskleur
+👱🏼‍♀️	blondharige vrouw: lichtgetinte huidskleur
+👱🏼‍♀	blondharige vrouw: lichtgetinte huidskleur
+👱🏽‍♀️	blondharige vrouw: getinte huidskleur
+👱🏽‍♀	blondharige vrouw: getinte huidskleur
+👱🏾‍♀️	blondharige vrouw: donkergetinte huidskleur
+👱🏾‍♀	blondharige vrouw: donkergetinte huidskleur
+👱🏿‍♀️	blondharige vrouw: donkere huidskleur
+👱🏿‍♀	blondharige vrouw: donkere huidskleur
+👨‍🦰	man, roodharig
+👨🏻‍🦰	man, roodharig: lichte huidskleur
+👨🏼‍🦰	man, roodharig: lichtgetinte huidskleur
+👨🏽‍🦰	man, roodharig: getinte huidskleur
+👨🏾‍🦰	man, roodharig: donkergetinte huidskleur
+👨🏿‍🦰	man, roodharig: donkere huidskleur
+👩‍🦰	vrouw, roodharig
+👩🏻‍🦰	vrouw, roodharig: lichte huidskleur
+👩🏼‍🦰	vrouw, roodharig: lichtgetinte huidskleur
+👩🏽‍🦰	vrouw, roodharig: getinte huidskleur
+👩🏾‍🦰	vrouw, roodharig: donkergetinte huidskleur
+👩🏿‍🦰	vrouw, roodharig: donkere huidskleur
+👨‍🦱	man, krullend haar
+👨🏻‍🦱	man, krullend haar: lichte huidskleur
+👨🏼‍🦱	man, krullend haar: lichtgetinte huidskleur
+👨🏽‍🦱	man, krullend haar: getinte huidskleur
+👨🏾‍🦱	man, krullend haar: donkergetinte huidskleur
+👨🏿‍🦱	man, krullend haar: donkere huidskleur
+👩‍🦱	vrouw, krullend haar
+👩🏻‍🦱	vrouw, krullend haar: lichte huidskleur
+👩🏼‍🦱	vrouw, krullend haar: lichtgetinte huidskleur
+👩🏽‍🦱	vrouw, krullend haar: getinte huidskleur
+👩🏾‍🦱	vrouw, krullend haar: donkergetinte huidskleur
+👩🏿‍🦱	vrouw, krullend haar: donkere huidskleur
+👨‍🦲	mens, kaal
+👨🏻‍🦲	man, kaal: lichte huidskleur
+👨🏼‍🦲	man, kaal: lichtgetinte huidskleur
+👨🏽‍🦲	man, kaal: getinte huidskleur
+👨🏾‍🦲	man, kaal: donkergetinte huidskleur
+👨🏿‍🦲	man, kaal: donkere huidskleur
+👩‍🦲	vrouw, kaal
+👩🏻‍🦲	vrouw, kaal: lichte huidskleur
+👩🏼‍🦲	vrouw, kaal: lichtgetinte huidskleur
+👩🏽‍🦲	vrouw, kaal: getinte huidskleur
+👩🏾‍🦲	vrouw, kaal: donkergetinte huidskleur
+👩🏿‍🦲	vrouw, kaal: donkere huidskleur
+👨‍🦳	man, witharig
+👨🏻‍🦳	man, wit haar: lichte huidskleur
+👨🏼‍🦳	man, witharig: lichtgetinte huidskleur
+👨🏽‍🦳	man, witharig: getinte huidskleur
+👨🏾‍🦳	man, wit haar: donkergetinte huidskleur
+👨🏿‍🦳	man, wit haar: donkere huidskleur
+👩‍🦳	vrouw, witharig
+👩🏻‍🦳	vrouw, witharig: lichte huidskleur
+👩🏼‍🦳	vrouw, witharig: lichtgetinte huidskleur
+👩🏽‍🦳	vrouw, witharig: getinte huidskleur
+👩🏾‍🦳	vrouw, witharig: donkergetinte huidskleur
+👩🏿‍🦳	vrouw, witharig: donkere huidskleur
+🤵	man in smoking
+🤵🏻	man in smoking: lichte huidskleur
+🤵🏼	man in smoking: lichtgetinte huidskleur
+🤵🏽	man in smoking: getinte huidskleur
+🤵🏾	man in smoking: donkergetinte huidskleur
+🤵🏿	man in smoking: donkere huidskleur
+👰	bruid met sluier
+👰🏻	bruid met sluier: lichte huidskleur
+👰🏼	bruid met sluier: lichtgetinte huidskleur
+👰🏽	bruid met sluier: getinte huidskleur
+👰🏾	bruid met sluier: donkergetinte huidskleur
+👰🏿	bruid met sluier: donkere huidskleur
+🤰	zwangere vrouw
+🤰🏻	zwangere vrouw: lichte huidskleur
+🤰🏼	zwangere vrouw: lichtgetinte huidskleur
+🤰🏽	zwangere vrouw: getinte huidskleur
+🤰🏾	zwangere vrouw: donkergetinte huidskleur
+🤰🏿	zwangere vrouw: donkere huidskleur
+🤱	borstvoeding
+🤱🏻	borstvoeding: lichte huidskleur
+🤱🏼	borstvoeding: lichtgetinte huidskleur
+🤱🏽	borstvoeding: medium huidskleur
+🤱🏾	borstvoeding: donkergetinte huidskleur
+🤱🏿	borstvoeding: donkere huidskleur
+👼	baby Engel
+👼🏻	babyengel: lichte huidskleur
+👼🏼	baby engel: lichtgetinte huidskleur
+👼🏽	baby engel: getinte huidskleur
+👼🏾	babyengel: donkergetinte huidskleur
+👼🏿	babyengel: donkere huidskleur
+🎅	Kerstman
+🎅🏻	Kerstman: lichte huidskleur
+🎅🏼	Kerstman: lichtgetinte huidskleur
+🎅🏽	Kerstman: getinte huidskleur
+🎅🏾	Kerstman: donkergetinte huidskleur
+🎅🏿	Kerstman: donkere huidskleur
+🤶	Mevrouw Claus
+🤶🏻	Mevrouw Claus: lichte huidskleur
+🤶🏼	Mevrouw Claus: lichtgetinte huidskleur
+🤶🏽	Mevrouw Claus: getinte huidskleur
+🤶🏾	Mevrouw Claus: donkergetinte huidskleur
+🤶🏿	Mevrouw Claus: donkere huidskleur
+🦸	superheld
+🦸🏻	superheld: lichte huidskleur
+🦸🏼	superheld: lichtgetinte huidskleur
+🦸🏽	superheld: getinte huidskleur
+🦸🏾	superheld: donkergetinte huidskleur
+🦸🏿	superheld: donkere huidskleur
+🦸‍♀️	vrouwelijke superheld
+🦸‍♀	vrouwelijke superheld
+🦸🏻‍♀️	vrouwelijke superheld: lichte huidskleur
+🦸🏻‍♀	vrouwelijke superheld: lichte huidskleur
+🦸🏼‍♀️	vrouwelijke superheld: lichtgetinte huidskleur
+🦸🏼‍♀	vrouwelijke superheld: lichtgetinte huidskleur
+🦸🏽‍♀️	vrouwelijke superheld: getinte huidskleur
+🦸🏽‍♀	vrouwelijke superheld: getinte huidskleur
+🦸🏾‍♀️	vrouwelijke superheld: donkergetinte huidskleur
+🦸🏾‍♀	vrouwelijke superheld: donkergetinte huidskleur
+🦸🏿‍♀️	vrouwelijke superheld: donkere huidskleur
+🦸🏿‍♀	vrouwelijke superheld: donkere huidskleur
+🦸‍♂️	mannelijke superheld
+🦸‍♂	mannelijke superheld
+🦸🏻‍♂️	man superheld: lichte huidskleur
+🦸🏻‍♂	man superheld: lichte huidskleur
+🦸🏼‍♂️	mannelijke superheld: lichtgetinte huidskleur
+🦸🏼‍♂	mannelijke superheld: lichtgetinte huidskleur
+🦸🏽‍♂️	mannelijke superheld: getinte huidskleur
+🦸🏽‍♂	mannelijke superheld: getinte huidskleur
+🦸🏾‍♂️	mannelijke superheld: donkergetinte huidskleur
+🦸🏾‍♂	mannelijke superheld: donkergetinte huidskleur
+🦸🏿‍♂️	man superheld: donkere huidskleur
+🦸🏿‍♂	man superheld: donkere huidskleur
+🦹	superschurk
+🦹🏻	superschurk: lichte huidskleur
+🦹🏼	superschurk: lichtgetinte huidskleur
+🦹🏽	superschurk: getinte huidskleur
+🦹🏾	superschurk: donkergetinte huidskleur
+🦹🏿	superschurk: donkere huidskleur
+🦹‍♀️	vrouw superschurk
+🦹‍♀	vrouw superschurk
+🦹🏻‍♀️	vrouw superschurk: lichte huidskleur
+🦹🏻‍♀	vrouw superschurk: lichte huidskleur
+🦹🏼‍♀️	vrouwelijke superschurk: lichtgetinte huidskleur
+🦹🏼‍♀	vrouwelijke superschurk: lichtgetinte huidskleur
+🦹🏽‍♀️	vrouwelijke superschurk: getinte huidskleur
+🦹🏽‍♀	vrouwelijke superschurk: getinte huidskleur
+🦹🏾‍♀️	vrouwelijke superschurk: donkergetinte huidskleur
+🦹🏾‍♀	vrouwelijke superschurk: donkergetinte huidskleur
+🦹🏿‍♀️	vrouw superschurk: donkere huidskleur
+🦹🏿‍♀	vrouw superschurk: donkere huidskleur
+🦹‍♂️	mens superschurk
+🦹‍♂	mens superschurk
+🦹🏻‍♂️	man superschurk: lichte huidskleur
+🦹🏻‍♂	man superschurk: lichte huidskleur
+🦹🏼‍♂️	man superschurk: lichtgetinte huidskleur
+🦹🏼‍♂	man superschurk: lichtgetinte huidskleur
+🦹🏽‍♂️	man superschurk: getinte huidskleur
+🦹🏽‍♂	man superschurk: getinte huidskleur
+🦹🏾‍♂️	man superschurk: donkergetinte huidskleur
+🦹🏾‍♂	man superschurk: donkergetinte huidskleur
+🦹🏿‍♂️	man superschurk: donkere huidskleur
+🦹🏿‍♂	man superschurk: donkere huidskleur
+🧙	magiër
+🧙🏻	magiër: lichte huidskleur
+🧙🏼	magiër: lichtgetinte huidskleur
+🧙🏽	magiër: medium huidskleur
+🧙🏾	magiër: medium-donkere huidskleur
+🧙🏿	magiër: donkere huidskleur
+🧙‍♀️	vrouw magiër
+🧙‍♀	vrouw magiër
+🧙🏻‍♀️	vrouw magiër: lichte huidskleur
+🧙🏻‍♀	vrouw magiër: lichte huidskleur
+🧙🏼‍♀️	vrouwelijke magiër: lichtgetinte huidskleur
+🧙🏼‍♀	vrouwelijke magiër: lichtgetinte huidskleur
+🧙🏽‍♀️	vrouwelijke magiër: getinte huidskleur
+🧙🏽‍♀	vrouwelijke magiër: getinte huidskleur
+🧙🏾‍♀️	vrouwelijke magiër: donkergetinte huidskleur
+🧙🏾‍♀	vrouwelijke magiër: donkergetinte huidskleur
+🧙🏿‍♀️	vrouw magiër: donkere huidskleur
+🧙🏿‍♀	vrouw magiër: donkere huidskleur
+🧙‍♂️	man magiër
+🧙‍♂	man magiër
+🧙🏻‍♂️	man magiër: lichte huidskleur
+🧙🏻‍♂	man magiër: lichte huidskleur
+🧙🏼‍♂️	man magiër: lichtgetinte huidskleur
+🧙🏼‍♂	man magiër: lichtgetinte huidskleur
+🧙🏽‍♂️	man magiër: getinte huidskleur
+🧙🏽‍♂	man magiër: getinte huidskleur
+🧙🏾‍♂️	man magiër: donkergetinte huidskleur
+🧙🏾‍♂	man magiër: donkergetinte huidskleur
+🧙🏿‍♂️	man magiër: donkere huidskleur
+🧙🏿‍♂	man magiër: donkere huidskleur
+🧚	fee
+🧚🏻	fee: lichte huidskleur
+🧚🏼	fee: lichtgetinte huidskleur
+🧚🏽	fee: getinte huidskleur
+🧚🏾	fee: donkergetinte huidskleur
+🧚🏿	fee: donkere huidskleur
+🧚‍♀️	vrouw fee
+🧚‍♀	vrouw fee
+🧚🏻‍♀️	vrouwenfee: lichte huidskleur
+🧚🏻‍♀	vrouwenfee: lichte huidskleur
+🧚🏼‍♀️	vrouwenfee: lichtgetinte huidskleur
+🧚🏼‍♀	vrouwenfee: lichtgetinte huidskleur
+🧚🏽‍♀️	vrouwenfee: getinte huidskleur
+🧚🏽‍♀	vrouwenfee: getinte huidskleur
+🧚🏾‍♀️	vrouwenfee: donkergetinte huidskleur
+🧚🏾‍♀	vrouwenfee: donkergetinte huidskleur
+🧚🏿‍♀️	vrouwenfee: donkere huidskleur
+🧚🏿‍♀	vrouwenfee: donkere huidskleur
+🧚‍♂️	mens fee
+🧚‍♂	mens fee
+🧚🏻‍♂️	man fee: lichte huidskleur
+🧚🏻‍♂	man fee: lichte huidskleur
+🧚🏼‍♂️	mannenfee: lichtgetinte huidskleur
+🧚🏼‍♂	mannenfee: lichtgetinte huidskleur
+🧚🏽‍♂️	man fee: getinte huidskleur
+🧚🏽‍♂	man fee: getinte huidskleur
+🧚🏾‍♂️	mannenfee: donkergetinte huidskleur
+🧚🏾‍♂	mannenfee: donkergetinte huidskleur
+🧚🏿‍♂️	man fee: donkere huidskleur
+🧚🏿‍♂	man fee: donkere huidskleur
+🧛	vampier
+🧛🏻	vampier: lichte huidskleur
+🧛🏼	vampier: lichtgetinte huidskleur
+🧛🏽	vampier: getinte huidskleur
+🧛🏾	vampier: donkergetinte huidskleur
+🧛🏿	vampier: donkere huidskleur
+🧛‍♀️	vrouwelijke vampier
+🧛‍♀	vrouwelijke vampier
+🧛🏻‍♀️	vrouwelijke vampier: lichte huidskleur
+🧛🏻‍♀	vrouwelijke vampier: lichte huidskleur
+🧛🏼‍♀️	vrouwelijke vampier: lichtgetinte huidskleur
+🧛🏼‍♀	vrouwelijke vampier: lichtgetinte huidskleur
+🧛🏽‍♀️	vrouwelijke vampier: getinte huidskleur
+🧛🏽‍♀	vrouwelijke vampier: getinte huidskleur
+🧛🏾‍♀️	vrouwelijke vampier: donkergetinte huidskleur
+🧛🏾‍♀	vrouwelijke vampier: donkergetinte huidskleur
+🧛🏿‍♀️	vrouwelijke vampier: donkere huidskleur
+🧛🏿‍♀	vrouwelijke vampier: donkere huidskleur
+🧛‍♂️	mens vampier
+🧛‍♂	mens vampier
+🧛🏻‍♂️	man vampier: lichte huidskleur
+🧛🏻‍♂	man vampier: lichte huidskleur
+🧛🏼‍♂️	man vampier: lichtgetinte huidskleur
+🧛🏼‍♂	man vampier: lichtgetinte huidskleur
+🧛🏽‍♂️	man vampier: getinte huidskleur
+🧛🏽‍♂	man vampier: getinte huidskleur
+🧛🏾‍♂️	man vampier: donkergetinte huidskleur
+🧛🏾‍♂	man vampier: donkergetinte huidskleur
+🧛🏿‍♂️	man vampier: donkere huidskleur
+🧛🏿‍♂	man vampier: donkere huidskleur
+🧜	meerpersoon
+🧜🏻	meerpersoon: lichte huidskleur
+🧜🏼	merperson: lichtgetinte huidskleur
+🧜🏽	meerpersoon: getinte huidskleur
+🧜🏾	meerpersoon: donkergetinte huidskleur
+🧜🏿	meerpersoon: donkere huidskleur
+🧜‍♀️	meermin
+🧜‍♀	meermin
+🧜🏻‍♀️	zeemeermin: lichte huidskleur
+🧜🏻‍♀	zeemeermin: lichte huidskleur
+🧜🏼‍♀️	zeemeermin: lichtgetinte huidskleur
+🧜🏼‍♀	zeemeermin: lichtgetinte huidskleur
+🧜🏽‍♀️	zeemeermin: getinte huidskleur
+🧜🏽‍♀	zeemeermin: getinte huidskleur
+🧜🏾‍♀️	zeemeermin: donkergetinte huidskleur
+🧜🏾‍♀	zeemeermin: donkergetinte huidskleur
+🧜🏿‍♀️	zeemeermin: donkere huidskleur
+🧜🏿‍♀	zeemeermin: donkere huidskleur
+🧜‍♂️	meerman
+🧜‍♂	meerman
+🧜🏻‍♂️	meerman: lichte huidskleur
+🧜🏻‍♂	meerman: lichte huidskleur
+🧜🏼‍♂️	meerman: lichtgetinte huidskleur
+🧜🏼‍♂	meerman: lichtgetinte huidskleur
+🧜🏽‍♂️	meerman: medium huidskleur
+🧜🏽‍♂	meerman: medium huidskleur
+🧜🏾‍♂️	meerman: donkergetinte huidskleur
+🧜🏾‍♂	meerman: donkergetinte huidskleur
+🧜🏿‍♂️	meerman: donkere huidskleur
+🧜🏿‍♂	meerman: donkere huidskleur
+🧝	elf
+🧝🏻	elf: lichte huidskleur
+🧝🏼	elf: lichtgetinte huidskleur
+🧝🏽	elf: getinte huidskleur
+🧝🏾	elf: donkergetinte huidskleur
+🧝🏿	elf: donkere huidskleur
+🧝‍♀️	vrouw elf
+🧝‍♀	vrouw elf
+🧝🏻‍♀️	vrouwenelf: lichte huidskleur
+🧝🏻‍♀	vrouwenelf: lichte huidskleur
+🧝🏼‍♀️	vrouwelijke elf: lichtgetinte huidskleur
+🧝🏼‍♀	vrouwelijke elf: lichtgetinte huidskleur
+🧝🏽‍♀️	vrouwelijke elf: getinte huidskleur
+🧝🏽‍♀	vrouwelijke elf: getinte huidskleur
+🧝🏾‍♀️	vrouwelijke elf: donkergetinte huidskleur
+🧝🏾‍♀	vrouwelijke elf: donkergetinte huidskleur
+🧝🏿‍♀️	vrouwenelf: donkere huidskleur
+🧝🏿‍♀	vrouwenelf: donkere huidskleur
+🧝‍♂️	mens elf
+🧝‍♂	mens elf
+🧝🏻‍♂️	man elf: lichte huidskleur
+🧝🏻‍♂	man elf: lichte huidskleur
+🧝🏼‍♂️	man elf: lichtgetinte huidskleur
+🧝🏼‍♂	man elf: lichtgetinte huidskleur
+🧝🏽‍♂️	man elf: getinte huidskleur
+🧝🏽‍♂	man elf: getinte huidskleur
+🧝🏾‍♂️	man elf: donkergetinte huidskleur
+🧝🏾‍♂	man elf: donkergetinte huidskleur
+🧝🏿‍♂️	man elf: donkere huidskleur
+🧝🏿‍♂	man elf: donkere huidskleur
+🧞	geest
+🧞‍♀️	vrouw geest
+🧞‍♀	vrouw geest
+🧞‍♂️	mens geest
+🧞‍♂	mens geest
+🧟	zombie
+🧟‍♀️	vrouwenzombie
+🧟‍♀	vrouwenzombie
+🧟‍♂️	menselijke zombie
+🧟‍♂	menselijke zombie
+🙍	persoon fronst
+🙍🏻	fronsende persoon: lichte huidskleur
+🙍🏼	fronsende persoon: lichtgetinte huidskleur
+🙍🏽	fronsende persoon: getinte huidskleur
+🙍🏾	fronsende persoon: donkergetinte huidskleur
+🙍🏿	fronsende persoon: donkere huidskleur
+🙍‍♂️	fronsende man
+🙍‍♂	fronsende man
+🙍🏻‍♂️	man fronst: lichte huidskleur
+🙍🏻‍♂	man fronst: lichte huidskleur
+🙍🏼‍♂️	fronsende man: lichtgetinte huidskleur
+🙍🏼‍♂	fronsende man: lichtgetinte huidskleur
+🙍🏽‍♂️	fronsende man: getinte huidskleur
+🙍🏽‍♂	fronsende man: getinte huidskleur
+🙍🏾‍♂️	fronsende man: donkergetinte huidskleur
+🙍🏾‍♂	fronsende man: donkergetinte huidskleur
+🙍🏿‍♂️	fronsende man: donkere huidskleur
+🙍🏿‍♂	fronsende man: donkere huidskleur
+🙍‍♀️	fronsende vrouw
+🙍‍♀	fronsende vrouw
+🙍🏻‍♀️	fronsende vrouw: lichte huidskleur
+🙍🏻‍♀	fronsende vrouw: lichte huidskleur
+🙍🏼‍♀️	fronsende vrouw: lichtgetinte huidskleur
+🙍🏼‍♀	fronsende vrouw: lichtgetinte huidskleur
+🙍🏽‍♀️	fronsende vrouw: getinte huidskleur
+🙍🏽‍♀	fronsende vrouw: getinte huidskleur
+🙍🏾‍♀️	fronsende vrouw: donkergetinte huidskleur
+🙍🏾‍♀	fronsende vrouw: donkergetinte huidskleur
+🙍🏿‍♀️	fronsende vrouw: donkere huidskleur
+🙍🏿‍♀	fronsende vrouw: donkere huidskleur
+🙎	persoon pruilen
+🙎🏻	pruilende persoon: lichte huidskleur
+🙎🏼	pruilende persoon: lichtgetinte huidskleur
+🙎🏽	pruilende persoon: getinte huidskleur
+🙎🏾	pruilende persoon: donkergetinte huidskleur
+🙎🏿	pruilende persoon: donkere huidskleur
+🙎‍♂️	man pruilt
+🙎‍♂	man pruilt
+🙎🏻‍♂️	pruilende man: lichte huidskleur
+🙎🏻‍♂	pruilende man: lichte huidskleur
+🙎🏼‍♂️	pruilende man: lichtgetinte huidskleur
+🙎🏼‍♂	pruilende man: lichtgetinte huidskleur
+🙎🏽‍♂️	pruilende man: getinte huidskleur
+🙎🏽‍♂	pruilende man: getinte huidskleur
+🙎🏾‍♂️	pruilende man: donkergetinte huidskleur
+🙎🏾‍♂	pruilende man: donkergetinte huidskleur
+🙎🏿‍♂️	pruilende man: donkere huidskleur
+🙎🏿‍♂	pruilende man: donkere huidskleur
+🙎‍♀️	vrouw pruilen
+🙎‍♀	vrouw pruilen
+🙎🏻‍♀️	pruilende vrouw: lichte huidskleur
+🙎🏻‍♀	pruilende vrouw: lichte huidskleur
+🙎🏼‍♀️	pruilende vrouw: lichtgetinte huidskleur
+🙎🏼‍♀	pruilende vrouw: lichtgetinte huidskleur
+🙎🏽‍♀️	pruilende vrouw: getinte huidskleur
+🙎🏽‍♀	pruilende vrouw: getinte huidskleur
+🙎🏾‍♀️	pruilende vrouw: donkergetinte huidskleur
+🙎🏾‍♀	pruilende vrouw: donkergetinte huidskleur
+🙎🏿‍♀️	pruilende vrouw: donkere huidskleur
+🙎🏿‍♀	pruilende vrouw: donkere huidskleur
+🙅	persoon die NEE gebaart
+🙅🏻	persoon die NEE gebaart: lichte huidskleur
+🙅🏼	persoon die NEE-gebaar maakt: lichtgetinte huidskleur
+🙅🏽	persoon die NEE-gebaar maakt: getinte huidskleur
+🙅🏾	persoon die NEE gebaart: donkergetinte huidskleur
+🙅🏿	persoon die NEE gebaart: donkere huidskleur
+🙅‍♂️	man gebaart NEE
+🙅‍♂	man gebaart NEE
+🙅🏻‍♂️	man gebaart NEE: lichte huidskleur
+🙅🏻‍♂	man gebaart NEE: lichte huidskleur
+🙅🏼‍♂️	man gebaart NEE: lichtgetinte huidskleur
+🙅🏼‍♂	man gebaart NEE: lichtgetinte huidskleur
+🙅🏽‍♂️	man gebaart NEE: getinte huidskleur
+🙅🏽‍♂	man gebaart NEE: getinte huidskleur
+🙅🏾‍♂️	man gebaart NEE: donkergetinte huidskleur
+🙅🏾‍♂	man gebaart NEE: donkergetinte huidskleur
+🙅🏿‍♂️	man gebaart NEE: donkere huidskleur
+🙅🏿‍♂	man gebaart NEE: donkere huidskleur
+🙅‍♀️	vrouw gebaart NEE
+🙅‍♀	vrouw gebaart NEE
+🙅🏻‍♀️	vrouw gebaart NEE: lichte huidskleur
+🙅🏻‍♀	vrouw gebaart NEE: lichte huidskleur
+🙅🏼‍♀️	vrouw die NEE gebaart: lichtgetinte huidskleur
+🙅🏼‍♀	vrouw die NEE gebaart: lichtgetinte huidskleur
+🙅🏽‍♀️	vrouw die NEE gebaart: getinte huidskleur
+🙅🏽‍♀	vrouw die NEE gebaart: getinte huidskleur
+🙅🏾‍♀️	vrouw die NEE gebaart: donkergetinte huidskleur
+🙅🏾‍♀	vrouw die NEE gebaart: donkergetinte huidskleur
+🙅🏿‍♀️	vrouw gebaart NEE: donkere huidskleur
+🙅🏿‍♀	vrouw gebaart NEE: donkere huidskleur
+🙆	persoon die OK gebaart
+🙆🏻	persoon die OK-gebaar maakt: lichte huidskleur
+🙆🏼	persoon die OK-gebaar maakt: lichtgetinte huidskleur
+🙆🏽	persoon die OK-gebaar maakt: getinte huidskleur
+🙆🏾	persoon die OK-gebaar maakt: donkergetinte huidskleur
+🙆🏿	persoon die OK-gebaar maakt: donkere huidskleur
+🙆‍♂️	man gebaart OK
+🙆‍♂	man gebaart OK
+🙆🏻‍♂️	man gebaart OK: lichte huidskleur
+🙆🏻‍♂	man gebaart OK: lichte huidskleur
+🙆🏼‍♂️	man die OK-gebaar maakt: lichtgetinte huidskleur
+🙆🏼‍♂	man die OK-gebaar maakt: lichtgetinte huidskleur
+🙆🏽‍♂️	man die OK-gebaar maakt: getinte huidskleur
+🙆🏽‍♂	man die OK-gebaar maakt: getinte huidskleur
+🙆🏾‍♂️	man die OK-gebaar maakt: donkergetinte huidskleur
+🙆🏾‍♂	man die OK-gebaar maakt: donkergetinte huidskleur
+🙆🏿‍♂️	man gebaart OK: donkere huidskleur
+🙆🏿‍♂	man gebaart OK: donkere huidskleur
+🙆‍♀️	vrouw gebaart OK
+🙆‍♀	vrouw gebaart OK
+🙆🏻‍♀️	vrouw die OK-gebaar maakt: lichte huidskleur
+🙆🏻‍♀	vrouw die OK-gebaar maakt: lichte huidskleur
+🙆🏼‍♀️	vrouw die OK-gebaar maakt: lichtgetinte huidskleur
+🙆🏼‍♀	vrouw die OK-gebaar maakt: lichtgetinte huidskleur
+🙆🏽‍♀️	vrouw die OK-gebaar maakt: getinte huidskleur
+🙆🏽‍♀	vrouw die OK-gebaar maakt: getinte huidskleur
+🙆🏾‍♀️	vrouw die OK-gebaar maakt: donkergetinte huidskleur
+🙆🏾‍♀	vrouw die OK-gebaar maakt: donkergetinte huidskleur
+🙆🏿‍♀️	vrouw die OK-gebaar maakt: donkere huidskleur
+🙆🏿‍♀	vrouw die OK-gebaar maakt: donkere huidskleur
+💁	persoon die de hand geeft
+💁🏻	persoon die de hand kantelt: lichte huidskleur
+💁🏼	persoon die de hand kantelt: lichtgetinte huidskleur
+💁🏽	persoon die de hand kantelt: getinte huidskleur
+💁🏾	persoon die de hand kantelt: donkergetinte huidskleur
+💁🏿	persoon die de hand kantelt: donkere huidskleur
+💁‍♂️	man kantelt de hand
+💁‍♂	man kantelt de hand
+💁🏻‍♂️	man met kantelende hand: lichte huidskleur
+💁🏻‍♂	man met kantelende hand: lichte huidskleur
+💁🏼‍♂️	man met kantelende hand: lichtgetinte huidskleur
+💁🏼‍♂	man met kantelende hand: lichtgetinte huidskleur
+💁🏽‍♂️	man met kantelende hand: getinte huidskleur
+💁🏽‍♂	man met kantelende hand: getinte huidskleur
+💁🏾‍♂️	man met kantelende hand: donkergetinte huidskleur
+💁🏾‍♂	man met kantelende hand: donkergetinte huidskleur
+💁🏿‍♂️	man met kantelende hand: donkere huidskleur
+💁🏿‍♂	man met kantelende hand: donkere huidskleur
+💁‍♀️	vrouw die de hand kantelt
+💁‍♀	vrouw die de hand kantelt
+💁🏻‍♀️	vrouw met kantelende hand: lichte huidskleur
+💁🏻‍♀	vrouw met kantelende hand: lichte huidskleur
+💁🏼‍♀️	vrouw met kantelende hand: lichtgetinte huidskleur
+💁🏼‍♀	vrouw met kantelende hand: lichtgetinte huidskleur
+💁🏽‍♀️	vrouw met kantelende hand: getinte huidskleur
+💁🏽‍♀	vrouw met kantelende hand: getinte huidskleur
+💁🏾‍♀️	vrouw met kantelende hand: donkergetinte huidskleur
+💁🏾‍♀	vrouw met kantelende hand: donkergetinte huidskleur
+💁🏿‍♀️	vrouw met kantelende hand: donkere huidskleur
+💁🏿‍♀	vrouw met kantelende hand: donkere huidskleur
+🙋	persoon die zijn hand opsteekt
+🙋🏻	persoon die de hand opsteekt: lichte huidskleur
+🙋🏼	persoon die de hand opsteekt: lichtgetinte huidskleur
+🙋🏽	persoon die de hand opsteekt: getinte huidskleur
+🙋🏾	persoon die de hand opsteekt: donkergetinte huidskleur
+🙋🏿	persoon die de hand opsteekt: donkere huidskleur
+🙋‍♂️	man hand opsteken
+🙋‍♂	man hand opsteken
+🙋🏻‍♂️	man steekt hand op: lichte huidskleur
+🙋🏻‍♂	man steekt hand op: lichte huidskleur
+🙋🏼‍♂️	man met opgeheven hand: lichtgetinte huidskleur
+🙋🏼‍♂	man met opgeheven hand: lichtgetinte huidskleur
+🙋🏽‍♂️	man met opgeheven hand: getinte huidskleur
+🙋🏽‍♂	man met opgeheven hand: getinte huidskleur
+🙋🏾‍♂️	man steekt hand op: donkergetinte huidskleur
+🙋🏾‍♂	man steekt hand op: donkergetinte huidskleur
+🙋🏿‍♂️	man steekt hand op: donkere huidskleur
+🙋🏿‍♂	man steekt hand op: donkere huidskleur
+🙋‍♀️	vrouw hand opsteken
+🙋‍♀	vrouw hand opsteken
+🙋🏻‍♀️	vrouw steekt hand op: lichte huidskleur
+🙋🏻‍♀	vrouw steekt hand op: lichte huidskleur
+🙋🏼‍♀️	vrouw met opgeheven hand: lichtgetinte huidskleur
+🙋🏼‍♀	vrouw met opgeheven hand: lichtgetinte huidskleur
+🙋🏽‍♀️	vrouw met opgeheven hand: getinte huidskleur
+🙋🏽‍♀	vrouw met opgeheven hand: getinte huidskleur
+🙋🏾‍♀️	vrouw met opgeheven hand: donkergetinte huidskleur
+🙋🏾‍♀	vrouw met opgeheven hand: donkergetinte huidskleur
+🙋🏿‍♀️	vrouw steekt hand op: donkere huidskleur
+🙋🏿‍♀	vrouw steekt hand op: donkere huidskleur
+🙇	persoon buigt
+🙇🏻	buigende persoon: lichte huidskleur
+🙇🏼	buigende persoon: lichtgetinte huidskleur
+🙇🏽	buigende persoon: getinte huidskleur
+🙇🏾	buigende persoon: donkergetinte huidskleur
+🙇🏿	buigende persoon: donkere huidskleur
+🙇‍♂️	mens buigt
+🙇‍♂	mens buigt
+🙇🏻‍♂️	buigende man: lichte huidskleur
+🙇🏻‍♂	buigende man: lichte huidskleur
+🙇🏼‍♂️	buigende man: lichtgetinte huidskleur
+🙇🏼‍♂	buigende man: lichtgetinte huidskleur
+🙇🏽‍♂️	buigende man: getinte huidskleur
+🙇🏽‍♂	buigende man: getinte huidskleur
+🙇🏾‍♂️	buigende man: donkergetinte huidskleur
+🙇🏾‍♂	buigende man: donkergetinte huidskleur
+🙇🏿‍♂️	buigende man: donkere huidskleur
+🙇🏿‍♂	buigende man: donkere huidskleur
+🙇‍♀️	vrouw buigen
+🙇‍♀	vrouw buigen
+🙇🏻‍♀️	buigende vrouw: lichte huidskleur
+🙇🏻‍♀	buigende vrouw: lichte huidskleur
+🙇🏼‍♀️	buigende vrouw: lichtgetinte huidskleur
+🙇🏼‍♀	buigende vrouw: lichtgetinte huidskleur
+🙇🏽‍♀️	buigende vrouw: getinte huidskleur
+🙇🏽‍♀	buigende vrouw: getinte huidskleur
+🙇🏾‍♀️	buigende vrouw: donkergetinte huidskleur
+🙇🏾‍♀	buigende vrouw: donkergetinte huidskleur
+🙇🏿‍♀️	buigende vrouw: donkere huidskleur
+🙇🏿‍♀	buigende vrouw: donkere huidskleur
+🤦	persoon facepalmen
+🤦🏻	persoon facepalming: lichte huidskleur
+🤦🏼	persoon facepalming: lichtgetinte huidskleur
+🤦🏽	persoon facepalming: getinte huidskleur
+🤦🏾	persoon facepalming: donkergetinte huidskleur
+🤦🏿	persoon facepalming: donkere huidskleur
+🤦‍♂️	man facepalmen
+🤦‍♂	man facepalmen
+🤦🏻‍♂️	man facepalming: lichte huidskleur
+🤦🏻‍♂	man facepalming: lichte huidskleur
+🤦🏼‍♂️	man facepalming: lichtgetinte huidskleur
+🤦🏼‍♂	man facepalming: lichtgetinte huidskleur
+🤦🏽‍♂️	facepalming voor mannen: getinte huidskleur
+🤦🏽‍♂	facepalming voor mannen: getinte huidskleur
+🤦🏾‍♂️	man facepalming: donkergetinte huidskleur
+🤦🏾‍♂	man facepalming: donkergetinte huidskleur
+🤦🏿‍♂️	man facepalming: donkere huidskleur
+🤦🏿‍♂	man facepalming: donkere huidskleur
+🤦‍♀️	vrouw facepalmen
+🤦‍♀	vrouw facepalmen
+🤦🏻‍♀️	vrouw facepalming: lichte huidskleur
+🤦🏻‍♀	vrouw facepalming: lichte huidskleur
+🤦🏼‍♀️	vrouw facepalming: lichtgetinte huidskleur
+🤦🏼‍♀	vrouw facepalming: lichtgetinte huidskleur
+🤦🏽‍♀️	vrouw facepalming: getinte huidskleur
+🤦🏽‍♀	vrouw facepalming: getinte huidskleur
+🤦🏾‍♀️	vrouw facepalming: donkergetinte huidskleur
+🤦🏾‍♀	vrouw facepalming: donkergetinte huidskleur
+🤦🏿‍♀️	vrouw facepalming: donkere huidskleur
+🤦🏿‍♀	vrouw facepalming: donkere huidskleur
+🤷	persoon haalt zijn schouders op
+🤷🏻	persoon die zijn schouders ophaalt: lichte huidskleur
+🤷🏼	persoon die zijn schouders ophaalt: lichtgetinte huidskleur
+🤷🏽	persoon die zijn schouders ophaalt: getinte huidskleur
+🤷🏾	persoon die zijn schouders ophaalt: donkergetinte huidskleur
+🤷🏿	persoon die zijn schouders ophaalt: donkere huidskleur
+🤷‍♂️	man haalt zijn schouders op
+🤷‍♂	man haalt zijn schouders op
+🤷🏻‍♂️	man haalt zijn schouders op: lichte huidskleur
+🤷🏻‍♂	man haalt zijn schouders op: lichte huidskleur
+🤷🏼‍♂️	man haalt zijn schouders op: lichtgetinte huidskleur
+🤷🏼‍♂	man haalt zijn schouders op: lichtgetinte huidskleur
+🤷🏽‍♂️	man haalt zijn schouders op: getinte huidskleur
+🤷🏽‍♂	man haalt zijn schouders op: getinte huidskleur
+🤷🏾‍♂️	man haalt zijn schouders op: donkergetinte huidskleur
+🤷🏾‍♂	man haalt zijn schouders op: donkergetinte huidskleur
+🤷🏿‍♂️	man haalt zijn schouders op: donkere huidskleur
+🤷🏿‍♂	man haalt zijn schouders op: donkere huidskleur
+🤷‍♀️	vrouw haalt haar schouders op
+🤷‍♀	vrouw haalt haar schouders op
+🤷🏻‍♀️	vrouw haalt haar schouders op: lichte huidskleur
+🤷🏻‍♀	vrouw haalt haar schouders op: lichte huidskleur
+🤷🏼‍♀️	vrouw haalt haar schouders op: lichtgetinte huidskleur
+🤷🏼‍♀	vrouw haalt haar schouders op: lichtgetinte huidskleur
+🤷🏽‍♀️	vrouw haalt haar schouders op: getinte huidskleur
+🤷🏽‍♀	vrouw haalt haar schouders op: getinte huidskleur
+🤷🏾‍♀️	vrouw haalt haar schouders op: donkergetinte huidskleur
+🤷🏾‍♀	vrouw haalt haar schouders op: donkergetinte huidskleur
+🤷🏿‍♀️	vrouw haalt haar schouders op: donkere huidskleur
+🤷🏿‍♀	vrouw haalt haar schouders op: donkere huidskleur
+💆	persoon die massage krijgt
+💆🏻	persoon die massage krijgt: lichte huidskleur
+💆🏼	persoon die massage krijgt: lichtgetinte huidskleur
+💆🏽	persoon die massage krijgt: getinte huidskleur
+💆🏾	persoon die massage krijgt: donkergetinte huidskleur
+💆🏿	persoon die massage krijgt: donkere huidskleur
+💆‍♂️	man krijgt massage
+💆‍♂	man krijgt massage
+💆🏻‍♂️	man krijgt massage: lichte huidskleur
+💆🏻‍♂	man krijgt massage: lichte huidskleur
+💆🏼‍♂️	man krijgt massage: lichtgetinte huidskleur
+💆🏼‍♂	man krijgt massage: lichtgetinte huidskleur
+💆🏽‍♂️	man krijgt massage: getinte huidskleur
+💆🏽‍♂	man krijgt massage: getinte huidskleur
+💆🏾‍♂️	man krijgt massage: donkergetinte huidskleur
+💆🏾‍♂	man krijgt massage: donkergetinte huidskleur
+💆🏿‍♂️	man krijgt massage: donkere huidskleur
+💆🏿‍♂	man krijgt massage: donkere huidskleur
+💆‍♀️	vrouw krijgt massage
+💆‍♀	vrouw krijgt massage
+💆🏻‍♀️	vrouw krijgt massage: lichte huidskleur
+💆🏻‍♀	vrouw krijgt massage: lichte huidskleur
+💆🏼‍♀️	vrouw die massage krijgt: lichtgetinte huidskleur
+💆🏼‍♀	vrouw die massage krijgt: lichtgetinte huidskleur
+💆🏽‍♀️	vrouw die massage krijgt: getinte huidskleur
+💆🏽‍♀	vrouw die massage krijgt: getinte huidskleur
+💆🏾‍♀️	vrouw die massage krijgt: donkergetinte huidskleur
+💆🏾‍♀	vrouw die massage krijgt: donkergetinte huidskleur
+💆🏿‍♀️	vrouw krijgt massage: donkere huidskleur
+💆🏿‍♀	vrouw krijgt massage: donkere huidskleur
+💇	persoon die wordt geknipt
+💇🏻	persoon die wordt geknipt: lichte huidskleur
+💇🏼	persoon die wordt geknipt: lichtgetinte huidskleur
+💇🏽	persoon die wordt geknipt: getinte huidskleur
+💇🏾	persoon die wordt geknipt: donkergetinte huidskleur
+💇🏿	persoon die wordt geknipt: donkere huidskleur
+💇‍♂️	man krijgt kapsel
+💇‍♂	man krijgt kapsel
+💇🏻‍♂️	man krijgt kapsel: lichte huidskleur
+💇🏻‍♂	man krijgt kapsel: lichte huidskleur
+💇🏼‍♂️	man krijgt kapsel: lichtgetinte huidskleur
+💇🏼‍♂	man krijgt kapsel: lichtgetinte huidskleur
+💇🏽‍♂️	man krijgt een knipbeurt: getinte huidskleur
+💇🏽‍♂	man krijgt een knipbeurt: getinte huidskleur
+💇🏾‍♂️	man krijgt kapsel: donkergetinte huidskleur
+💇🏾‍♂	man krijgt kapsel: donkergetinte huidskleur
+💇🏿‍♂️	man krijgt kapsel: donkere huidskleur
+💇🏿‍♂	man krijgt kapsel: donkere huidskleur
+💇‍♀️	vrouw krijgt kapsel
+💇‍♀	vrouw krijgt kapsel
+💇🏻‍♀️	vrouw die wordt geknipt: lichte huidskleur
+💇🏻‍♀	vrouw die wordt geknipt: lichte huidskleur
+💇🏼‍♀️	vrouw die wordt geknipt: lichtgetinte huidskleur
+💇🏼‍♀	vrouw die wordt geknipt: lichtgetinte huidskleur
+💇🏽‍♀️	vrouw die wordt geknipt: getinte huidskleur
+💇🏽‍♀	vrouw die wordt geknipt: getinte huidskleur
+💇🏾‍♀️	vrouw die wordt geknipt: donkergetinte huidskleur
+💇🏾‍♀	vrouw die wordt geknipt: donkergetinte huidskleur
+💇🏿‍♀️	vrouw krijgt kapsel: donkere huidskleur
+💇🏿‍♀	vrouw krijgt kapsel: donkere huidskleur
+🚶	persoon lopen
+🚶🏻	wandelende persoon: lichte huidskleur
+🚶🏼	wandelende persoon: lichtgetinte huidskleur
+🚶🏽	wandelende persoon: getinte huidskleur
+🚶🏾	wandelende persoon: donkergetinte huidskleur
+🚶🏿	lopende persoon: donkere huidskleur
+🚶‍♂️	mens lopen
+🚶‍♂	mens lopen
+🚶🏻‍♂️	lopende man: lichte huidskleur
+🚶🏻‍♂	lopende man: lichte huidskleur
+🚶🏼‍♂️	lopende man: lichtgetinte huidskleur
+🚶🏼‍♂	lopende man: lichtgetinte huidskleur
+🚶🏽‍♂️	lopende man: getinte huidskleur
+🚶🏽‍♂	lopende man: getinte huidskleur
+🚶🏾‍♂️	man lopend: donkergetinte huidskleur
+🚶🏾‍♂	man lopend: donkergetinte huidskleur
+🚶🏿‍♂️	lopende man: donkere huidskleur
+🚶🏿‍♂	lopende man: donkere huidskleur
+🚶‍♀️	vrouw lopen
+🚶‍♀	vrouw lopen
+🚶🏻‍♀️	lopende vrouw: lichte huidskleur
+🚶🏻‍♀	lopende vrouw: lichte huidskleur
+🚶🏼‍♀️	lopende vrouw: lichtgetinte huidskleur
+🚶🏼‍♀	lopende vrouw: lichtgetinte huidskleur
+🚶🏽‍♀️	lopende vrouw: getinte huidskleur
+🚶🏽‍♀	lopende vrouw: getinte huidskleur
+🚶🏾‍♀️	lopende vrouw: donkergetinte huidskleur
+🚶🏾‍♀	lopende vrouw: donkergetinte huidskleur
+🚶🏿‍♀️	lopende vrouw: donkere huidskleur
+🚶🏿‍♀	lopende vrouw: donkere huidskleur
+🏃	persoon loopt
+🏃🏻	rennende persoon: lichte huidskleur
+🏃🏼	rennende persoon: lichtgetinte huidskleur
+🏃🏽	rennende persoon: getinte huidskleur
+🏃🏾	rennende persoon: donkergetinte huidskleur
+🏃🏿	rennende persoon: donkere huidskleur
+🏃‍♂️	mens loopt
+🏃‍♂	mens loopt
+🏃🏻‍♂️	rennende man: lichte huidskleur
+🏃🏻‍♂	rennende man: lichte huidskleur
+🏃🏼‍♂️	rennende man: lichtgetinte huidskleur
+🏃🏼‍♂	rennende man: lichtgetinte huidskleur
+🏃🏽‍♂️	rennende man: getinte huidskleur
+🏃🏽‍♂	rennende man: getinte huidskleur
+🏃🏾‍♂️	rennende man: donkergetinte huidskleur
+🏃🏾‍♂	rennende man: donkergetinte huidskleur
+🏃🏿‍♂️	rennende man: donkere huidskleur
+🏃🏿‍♂	rennende man: donkere huidskleur
+🏃‍♀️	vrouw loopt
+🏃‍♀	vrouw loopt
+🏃🏻‍♀️	rennende vrouw: lichte huidskleur
+🏃🏻‍♀	rennende vrouw: lichte huidskleur
+🏃🏼‍♀️	rennende vrouw: lichtgetinte huidskleur
+🏃🏼‍♀	rennende vrouw: lichtgetinte huidskleur
+🏃🏽‍♀️	lopende vrouw: getinte huidskleur
+🏃🏽‍♀	lopende vrouw: getinte huidskleur
+🏃🏾‍♀️	rennende vrouw: donkergetinte huidskleur
+🏃🏾‍♀	rennende vrouw: donkergetinte huidskleur
+🏃🏿‍♀️	rennende vrouw: donkere huidskleur
+🏃🏿‍♀	rennende vrouw: donkere huidskleur
+💃	vrouw dansen
+💃🏻	dansende vrouw: lichte huidskleur
+💃🏼	dansende vrouw: lichtgetinte huidskleur
+💃🏽	dansende vrouw: getinte huidskleur
+💃🏾	dansende vrouw: donkergetinte huidskleur
+💃🏿	dansende vrouw: donkere huidskleur
+🕺	mens danst
+🕺🏻	dansende man: lichte huidskleur
+🕺🏼	dansende man: lichtgetinte huidskleur
+🕺🏽	dansende man: getinte huidskleur
+🕺🏾	dansende man: donkergetinte huidskleur
+🕺🏿	dansende man: donkere huidskleur
+👯	mensen met konijnenoren
+👯‍♂️	mannen met konijnenoren
+👯‍♂	mannen met konijnenoren
+👯‍♀️	vrouwen met konijnenoren
+👯‍♀	vrouwen met konijnenoren
+🧖	persoon in stomende kamer
+🧖🏻	persoon in stomende kamer: lichte huidskleur
+🧖🏼	persoon in een stomende kamer: lichtgetinte huidskleur
+🧖🏽	persoon in stomende kamer: getinte huidskleur
+🧖🏾	persoon in een stomende kamer: donkergetinte huidskleur
+🧖🏿	persoon in stomende kamer: donkere huidskleur
+🧖‍♀️	vrouw in stomende kamer
+🧖‍♀	vrouw in stomende kamer
+🧖🏻‍♀️	vrouw in stomende kamer: lichte huidskleur
+🧖🏻‍♀	vrouw in stomende kamer: lichte huidskleur
+🧖🏼‍♀️	vrouw in stomende kamer: lichtgetinte huidskleur
+🧖🏼‍♀	vrouw in stomende kamer: lichtgetinte huidskleur
+🧖🏽‍♀️	vrouw in stomende kamer: getinte huidskleur
+🧖🏽‍♀	vrouw in stomende kamer: getinte huidskleur
+🧖🏾‍♀️	vrouw in stomende kamer: donkergetinte huidskleur
+🧖🏾‍♀	vrouw in stomende kamer: donkergetinte huidskleur
+🧖🏿‍♀️	vrouw in stomende kamer: donkere huidskleur
+🧖🏿‍♀	vrouw in stomende kamer: donkere huidskleur
+🧖‍♂️	man in stomende kamer
+🧖‍♂	man in stomende kamer
+🧖🏻‍♂️	man in stomende kamer: lichte huidskleur
+🧖🏻‍♂	man in stomende kamer: lichte huidskleur
+🧖🏼‍♂️	man in stomende kamer: lichtgetinte huidskleur
+🧖🏼‍♂	man in stomende kamer: lichtgetinte huidskleur
+🧖🏽‍♂️	man in stomende kamer: getinte huidskleur
+🧖🏽‍♂	man in stomende kamer: getinte huidskleur
+🧖🏾‍♂️	man in stomende kamer: donkergetinte huidskleur
+🧖🏾‍♂	man in stomende kamer: donkergetinte huidskleur
+🧖🏿‍♂️	man in stomende kamer: donkere huidskleur
+🧖🏿‍♂	man in stomende kamer: donkere huidskleur
+🧗	persoon klimmen
+🧗🏻	persoon die klimt: lichte huidskleur
+🧗🏼	klimmer: lichtgetinte huidskleur
+🧗🏽	klimmer: getinte huidskleur
+🧗🏾	persoon die klimt: donkergetinte huidskleur
+🧗🏿	klimmende persoon: donkere huidskleur
+🧗‍♀️	vrouw klimmen
+🧗‍♀	vrouw klimmen
+🧗🏻‍♀️	vrouw klimmen: lichte huidskleur
+🧗🏻‍♀	vrouw klimmen: lichte huidskleur
+🧗🏼‍♀️	vrouw klimmen: lichtgetinte huidskleur
+🧗🏼‍♀	vrouw klimmen: lichtgetinte huidskleur
+🧗🏽‍♀️	vrouw klimmen: getinte huidskleur
+🧗🏽‍♀	vrouw klimmen: getinte huidskleur
+🧗🏾‍♀️	vrouw klimmend: donkergetinte huidskleur
+🧗🏾‍♀	vrouw klimmend: donkergetinte huidskleur
+🧗🏿‍♀️	vrouw klimmend: donkere huidskleur
+🧗🏿‍♀	vrouw klimmend: donkere huidskleur
+🧗‍♂️	mens klimmen
+🧗‍♂	mens klimmen
+🧗🏻‍♂️	man klimmen: lichte huidskleur
+🧗🏻‍♂	man klimmen: lichte huidskleur
+🧗🏼‍♂️	man klimmen: lichtgetinte huidskleur
+🧗🏼‍♂	man klimmen: lichtgetinte huidskleur
+🧗🏽‍♂️	klimmende man: getinte huidskleur
+🧗🏽‍♂	klimmende man: getinte huidskleur
+🧗🏾‍♂️	man klimmend: donkergetinte huidskleur
+🧗🏾‍♂	man klimmend: donkergetinte huidskleur
+🧗🏿‍♂️	man klimmend: donkere huidskleur
+🧗🏿‍♂	man klimmend: donkere huidskleur
+🧘	persoon in lotushouding
+🧘🏻	persoon in lotushouding: lichte huidskleur
+🧘🏼	persoon in lotushouding: lichtgetinte huidskleur
+🧘🏽	persoon in lotushouding: getinte huidskleur
+🧘🏾	persoon in lotushouding: donkergetinte huidskleur
+🧘🏿	persoon in lotushouding: donkere huidskleur
+🧘‍♀️	vrouw in lotushouding
+🧘‍♀	vrouw in lotushouding
+🧘🏻‍♀️	vrouw in lotushouding: lichte huidskleur
+🧘🏻‍♀	vrouw in lotushouding: lichte huidskleur
+🧘🏼‍♀️	vrouw in lotushouding: lichtgetinte huidskleur
+🧘🏼‍♀	vrouw in lotushouding: lichtgetinte huidskleur
+🧘🏽‍♀️	vrouw in lotushouding: getinte huidskleur
+🧘🏽‍♀	vrouw in lotushouding: getinte huidskleur
+🧘🏾‍♀️	vrouw in lotushouding: donkergetinte huidskleur
+🧘🏾‍♀	vrouw in lotushouding: donkergetinte huidskleur
+🧘🏿‍♀️	vrouw in lotushouding: donkere huidskleur
+🧘🏿‍♀	vrouw in lotushouding: donkere huidskleur
+🧘‍♂️	man in lotushouding
+🧘‍♂	man in lotushouding
+🧘🏻‍♂️	man in lotushouding: lichte huidskleur
+🧘🏻‍♂	man in lotushouding: lichte huidskleur
+🧘🏼‍♂️	man in lotushouding: lichtgetinte huidskleur
+🧘🏼‍♂	man in lotushouding: lichtgetinte huidskleur
+🧘🏽‍♂️	man in lotushouding: getinte huidskleur
+🧘🏽‍♂	man in lotushouding: getinte huidskleur
+🧘🏾‍♂️	man in lotushouding: donkergetinte huidskleur
+🧘🏾‍♂	man in lotushouding: donkergetinte huidskleur
+🧘🏿‍♂️	man in lotushouding: donkere huidskleur
+🧘🏿‍♂	man in lotushouding: donkere huidskleur
+🛀	persoon die een bad neemt
+🛀🏻	persoon die een bad neemt: lichte huidskleur
+🛀🏼	persoon die een bad neemt: lichtgetinte huidskleur
+🛀🏽	persoon die in bad gaat: getinte huidskleur
+🛀🏾	persoon die een bad neemt: donkergetinte huidskleur
+🛀🏿	persoon die een bad neemt: donkere huidskleur
+🛌	persoon in bed
+🛌🏻	persoon in bed: lichte huidskleur
+🛌🏼	persoon in bed: lichtgetinte huidskleur
+🛌🏽	persoon in bed: getinte huidskleur
+🛌🏾	persoon in bed: donkergetinte huidskleur
+🛌🏿	persoon in bed: donkere huidskleur
+🕴️	man in pak zwevend
+🕴	man in pak zwevend
+🕴🏻	man in pak zwevend: lichte huidskleur
+🕴🏼	man in pak zwevend: lichtgetinte huidskleur
+🕴🏽	man in pak zwevend: getinte huidskleur
+🕴🏾	man in pak zwevend: donkergetinte huidskleur
+🕴🏿	man in pak zwevend: donkere huidskleur
+🗣️	sprekend hoofd
+🗣	sprekend hoofd
+👤	buste in silhouet
+👥	bustes in silhouet
+🤺	persoon hekwerk
+🏇	paardenracen
+🏇🏻	paardenrennen: lichte huidskleur
+🏇🏼	paardenraces: lichtgetinte huidskleur
+🏇🏽	paardenraces: getinte huidskleur
+🏇🏾	paardenraces: donkergetinte huidskleur
+🏇🏿	paardenrennen: donkere huidskleur
+⛷️	skiër
+⛷	skiër
+🏂	snowboarder
+🏂🏻	snowboarder: lichte huidskleur
+🏂🏼	snowboarder: lichtgetinte huidskleur
+🏂🏽	snowboarder: medium huidskleur
+🏂🏾	snowboarder: donkergetinte huidskleur
+🏂🏿	snowboarder: donkere huidskleur
+🏌️	persoon golfen
+🏌	persoon golfen
+🏌🏻	persoon die golft: lichte huidskleur
+🏌🏼	persoon die golft: lichtgetinte huidskleur
+🏌🏽	persoon die golft: getinte huidskleur
+🏌🏾	persoon die golft: donkergetinte huidskleur
+🏌🏿	persoon die golft: donkere huidskleur
+🏌️‍♂️	man golfen
+🏌‍♂️	man golfen
+🏌️‍♂	man golfen
+🏌‍♂	man golfen
+🏌🏻‍♂️	man golfen: lichte huidskleur
+🏌🏻‍♂	man golfen: lichte huidskleur
+🏌🏼‍♂️	man die golft: lichtgetinte huidskleur
+🏌🏼‍♂	man die golft: lichtgetinte huidskleur
+🏌🏽‍♂️	man die golft: getinte huidskleur
+🏌🏽‍♂	man die golft: getinte huidskleur
+🏌🏾‍♂️	man die golft: donkergetinte huidskleur
+🏌🏾‍♂	man die golft: donkergetinte huidskleur
+🏌🏿‍♂️	man die golft: donkere huidskleur
+🏌🏿‍♂	man die golft: donkere huidskleur
+🏌️‍♀️	vrouw golfen
+🏌‍♀️	vrouw golfen
+🏌️‍♀	vrouw golfen
+🏌‍♀	vrouw golfen
+🏌🏻‍♀️	vrouw die golft: lichte huidskleur
+🏌🏻‍♀	vrouw die golft: lichte huidskleur
+🏌🏼‍♀️	vrouw die golft: lichtgetinte huidskleur
+🏌🏼‍♀	vrouw die golft: lichtgetinte huidskleur
+🏌🏽‍♀️	vrouw die golft: getinte huidskleur
+🏌🏽‍♀	vrouw die golft: getinte huidskleur
+🏌🏾‍♀️	vrouw die golft: donkergetinte huidskleur
+🏌🏾‍♀	vrouw die golft: donkergetinte huidskleur
+🏌🏿‍♀️	golfende vrouw: donkere huidskleur
+🏌🏿‍♀	golfende vrouw: donkere huidskleur
+🏄	persoon surfen
+🏄🏻	persoon die surft: lichte huidskleur
+🏄🏼	persoon die surft: lichtgetinte huidskleur
+🏄🏽	persoon die surft: getinte huidskleur
+🏄🏾	persoon die surft: donkergetinte huidskleur
+🏄🏿	persoon die surft: donkere huidskleur
+🏄‍♂️	man surfen
+🏄‍♂	man surfen
+🏄🏻‍♂️	man surfen: lichte huidskleur
+🏄🏻‍♂	man surfen: lichte huidskleur
+🏄🏼‍♂️	man die surft: lichtgetinte huidskleur
+🏄🏼‍♂	man die surft: lichtgetinte huidskleur
+🏄🏽‍♂️	man die surft: getinte huidskleur
+🏄🏽‍♂	man die surft: getinte huidskleur
+🏄🏾‍♂️	man die surft: donkergetinte huidskleur
+🏄🏾‍♂	man die surft: donkergetinte huidskleur
+🏄🏿‍♂️	man aan het surfen: donkere huidskleur
+🏄🏿‍♂	man aan het surfen: donkere huidskleur
+🏄‍♀️	vrouw surfen
+🏄‍♀	vrouw surfen
+🏄🏻‍♀️	vrouw aan het surfen: lichte huidskleur
+🏄🏻‍♀	vrouw aan het surfen: lichte huidskleur
+🏄🏼‍♀️	vrouw die surft: lichtgetinte huidskleur
+🏄🏼‍♀	vrouw die surft: lichtgetinte huidskleur
+🏄🏽‍♀️	vrouw die surft: getinte huidskleur
+🏄🏽‍♀	vrouw die surft: getinte huidskleur
+🏄🏾‍♀️	vrouw die surft: donkergetinte huidskleur
+🏄🏾‍♀	vrouw die surft: donkergetinte huidskleur
+🏄🏿‍♀️	vrouw aan het surfen: donkere huidskleur
+🏄🏿‍♀	vrouw aan het surfen: donkere huidskleur
+🚣	persoon roeiboot
+🚣🏻	persoon roeiboot: lichte huidskleur
+🚣🏼	persoon roeiboot: lichtgetinte huidskleur
+🚣🏽	persoon roeiboot: getinte huidskleur
+🚣🏾	persoon roeiboot: donkergetinte huidskleur
+🚣🏿	persoon roeiboot: donkere huidskleur
+🚣‍♂️	man roeiboot
+🚣‍♂	man roeiboot
+🚣🏻‍♂️	man roeiboot: lichte huidskleur
+🚣🏻‍♂	man roeiboot: lichte huidskleur
+🚣🏼‍♂️	man roeiboot: lichtgetinte huidskleur
+🚣🏼‍♂	man roeiboot: lichtgetinte huidskleur
+🚣🏽‍♂️	man roeiboot: getinte huidskleur
+🚣🏽‍♂	man roeiboot: getinte huidskleur
+🚣🏾‍♂️	man roeiboot: donkergetinte huidskleur
+🚣🏾‍♂	man roeiboot: donkergetinte huidskleur
+🚣🏿‍♂️	man roeiboot: donkere huidskleur
+🚣🏿‍♂	man roeiboot: donkere huidskleur
+🚣‍♀️	vrouw roeiboot
+🚣‍♀	vrouw roeiboot
+🚣🏻‍♀️	vrouw roeiboot: lichte huidskleur
+🚣🏻‍♀	vrouw roeiboot: lichte huidskleur
+🚣🏼‍♀️	dames roeiboot: lichtgetinte huidskleur
+🚣🏼‍♀	dames roeiboot: lichtgetinte huidskleur
+🚣🏽‍♀️	dames roeiboot: getinte huidskleur
+🚣🏽‍♀	dames roeiboot: getinte huidskleur
+🚣🏾‍♀️	vrouw in roeiboot: donkergetinte huidskleur
+🚣🏾‍♀	vrouw in roeiboot: donkergetinte huidskleur
+🚣🏿‍♀️	vrouw roeiboot: donkere huidskleur
+🚣🏿‍♀	vrouw roeiboot: donkere huidskleur
+🏊	persoon zwemmen
+🏊🏻	persoon die zwemt: lichte huidskleur
+🏊🏼	persoon die zwemt: lichtgetinte huidskleur
+🏊🏽	persoon die zwemt: getinte huidskleur
+🏊🏾	persoon die zwemt: donkergetinte huidskleur
+🏊🏿	persoon die zwemt: donkere huidskleur
+🏊‍♂️	man zwemmen
+🏊‍♂	man zwemmen
+🏊🏻‍♂️	man zwemmend: lichte huidskleur
+🏊🏻‍♂	man zwemmend: lichte huidskleur
+🏊🏼‍♂️	man zwemmend: lichtgetinte huidskleur
+🏊🏼‍♂	man zwemmend: lichtgetinte huidskleur
+🏊🏽‍♂️	man zwemmend: getinte huidskleur
+🏊🏽‍♂	man zwemmend: getinte huidskleur
+🏊🏾‍♂️	man zwemmend: donkergetinte huidskleur
+🏊🏾‍♂	man zwemmend: donkergetinte huidskleur
+🏊🏿‍♂️	man zwemmend: donkere huidskleur
+🏊🏿‍♂	man zwemmend: donkere huidskleur
+🏊‍♀️	vrouw zwemmen
+🏊‍♀	vrouw zwemmen
+🏊🏻‍♀️	vrouw zwemmen: lichte huidskleur
+🏊🏻‍♀	vrouw zwemmen: lichte huidskleur
+🏊🏼‍♀️	vrouw die zwemt: lichtgetinte huidskleur
+🏊🏼‍♀	vrouw die zwemt: lichtgetinte huidskleur
+🏊🏽‍♀️	vrouw zwemmen: getinte huidskleur
+🏊🏽‍♀	vrouw zwemmen: getinte huidskleur
+🏊🏾‍♀️	vrouw die zwemt: donkergetinte huidskleur
+🏊🏾‍♀	vrouw die zwemt: donkergetinte huidskleur
+🏊🏿‍♀️	vrouw die zwemt: donkere huidskleur
+🏊🏿‍♀	vrouw die zwemt: donkere huidskleur
+⛹️	persoon stuiterende bal
+⛹	persoon stuiterende bal
+⛹🏻	persoon stuiterende bal: lichte huidskleur
+⛹🏼	stuiterbal voor personen: lichtgetinte huidskleur
+⛹🏽	persoon stuiterbal: getinte huidskleur
+⛹🏾	stuiterbal persoon: donkergetinte huidskleur
+⛹🏿	persoon stuiterende bal: donkere huidskleur
+⛹️‍♂️	man stuiterende bal
+⛹‍♂️	man stuiterende bal
+⛹️‍♂	man stuiterende bal
+⛹‍♂	man stuiterende bal
+⛹🏻‍♂️	Stuiterende bal man: lichte huidskleur
+⛹🏻‍♂	Stuiterende bal man: lichte huidskleur
+⛹🏼‍♂️	Stuiterende bal voor mannen: lichtgetinte huidskleur
+⛹🏼‍♂	Stuiterende bal voor mannen: lichtgetinte huidskleur
+⛹🏽‍♂️	Stuiterende bal voor mannen: getinte huidskleur
+⛹🏽‍♂	Stuiterende bal voor mannen: getinte huidskleur
+⛹🏾‍♂️	Stuiterende bal man: donkergetinte huidskleur
+⛹🏾‍♂	Stuiterende bal man: donkergetinte huidskleur
+⛹🏿‍♂️	Stuiterende bal man: donkere huidskleur
+⛹🏿‍♂	Stuiterende bal man: donkere huidskleur
+⛹️‍♀️	vrouw stuiterende bal
+⛹‍♀️	vrouw stuiterende bal
+⛹️‍♀	vrouw stuiterende bal
+⛹‍♀	vrouw stuiterende bal
+⛹🏻‍♀️	stuiterbal vrouw: lichte huidskleur
+⛹🏻‍♀	stuiterbal vrouw: lichte huidskleur
+⛹🏼‍♀️	Stuiterende bal voor vrouwen: lichtgetinte huidskleur
+⛹🏼‍♀	Stuiterende bal voor vrouwen: lichtgetinte huidskleur
+⛹🏽‍♀️	stuiterbal vrouw: getinte huidskleur
+⛹🏽‍♀	stuiterbal vrouw: getinte huidskleur
+⛹🏾‍♀️	stuiterende bal vrouw: donkergetinte huidskleur
+⛹🏾‍♀	stuiterende bal vrouw: donkergetinte huidskleur
+⛹🏿‍♀️	stuiterende bal vrouw: donkere huidskleur
+⛹🏿‍♀	stuiterende bal vrouw: donkere huidskleur
+🏋️	persoon die gewichten optilt
+🏋	persoon die gewichten optilt
+🏋🏻	persoon die gewichten heft: lichte huidskleur
+🏋🏼	persoon die gewichten heft: lichtgetinte huidskleur
+🏋🏽	persoon die gewichten heft: getinte huidskleur
+🏋🏾	persoon die gewichten heft: donkergetinte huidskleur
+🏋🏿	persoon die gewichten heft: donkere huidskleur
+🏋️‍♂️	man gewichtheffen
+🏋‍♂️	man gewichtheffen
+🏋️‍♂	man gewichtheffen
+🏋‍♂	man gewichtheffen
+🏋🏻‍♂️	man gewichtheffen: lichte huidskleur
+🏋🏻‍♂	man gewichtheffen: lichte huidskleur
+🏋🏼‍♂️	man die gewichten heft: lichtgetinte huidskleur
+🏋🏼‍♂	man die gewichten heft: lichtgetinte huidskleur
+🏋🏽‍♂️	man die gewichten heft: getinte huidskleur
+🏋🏽‍♂	man die gewichten heft: getinte huidskleur
+🏋🏾‍♂️	man die gewichten heft: donkergetinte huidskleur
+🏋🏾‍♂	man die gewichten heft: donkergetinte huidskleur
+🏋🏿‍♂️	man gewichtheffen: donkere huidskleur
+🏋🏿‍♂	man gewichtheffen: donkere huidskleur
+🏋️‍♀️	vrouw gewichtheffen
+🏋‍♀️	vrouw gewichtheffen
+🏋️‍♀	vrouw gewichtheffen
+🏋‍♀	vrouw gewichtheffen
+🏋🏻‍♀️	vrouw gewichtheffen: lichte huidskleur
+🏋🏻‍♀	vrouw gewichtheffen: lichte huidskleur
+🏋🏼‍♀️	vrouw die gewichten heft: lichtgetinte huidskleur
+🏋🏼‍♀	vrouw die gewichten heft: lichtgetinte huidskleur
+🏋🏽‍♀️	vrouw die gewichten heft: getinte huidskleur
+🏋🏽‍♀	vrouw die gewichten heft: getinte huidskleur
+🏋🏾‍♀️	vrouw die gewichten heft: donkergetinte huidskleur
+🏋🏾‍♀	vrouw die gewichten heft: donkergetinte huidskleur
+🏋🏿‍♀️	vrouw gewichtheffen: donkere huidskleur
+🏋🏿‍♀	vrouw gewichtheffen: donkere huidskleur
+🚴	persoon fietsen
+🚴🏻	persoon die fietst: lichte huidskleur
+🚴🏼	persoon die fietst: lichtgetinte huidskleur
+🚴🏽	persoon die fietst: getinte huidskleur
+🚴🏾	persoon die fietst: donkergetinte huidskleur
+🚴🏿	persoon die fietst: donkere huidskleur
+🚴‍♂️	mens fietsen
+🚴‍♂	mens fietsen
+🚴🏻‍♂️	man fietsen: lichte huidskleur
+🚴🏻‍♂	man fietsen: lichte huidskleur
+🚴🏼‍♂️	fietsen voor mannen: lichtgetinte huidskleur
+🚴🏼‍♂	fietsen voor mannen: lichtgetinte huidskleur
+🚴🏽‍♂️	man fietsen: getinte huidskleur
+🚴🏽‍♂	man fietsen: getinte huidskleur
+🚴🏾‍♂️	man fietsen: donkergetinte huidskleur
+🚴🏾‍♂	man fietsen: donkergetinte huidskleur
+🚴🏿‍♂️	man fietsen: donkere huidskleur
+🚴🏿‍♂	man fietsen: donkere huidskleur
+🚴‍♀️	vrouw fietsen
+🚴‍♀	vrouw fietsen
+🚴🏻‍♀️	vrouw fietsen: lichte huidskleur
+🚴🏻‍♀	vrouw fietsen: lichte huidskleur
+🚴🏼‍♀️	fietsende vrouw: lichtgetinte huidskleur
+🚴🏼‍♀	fietsende vrouw: lichtgetinte huidskleur
+🚴🏽‍♀️	vrouw fietsen: getinte huidskleur
+🚴🏽‍♀	vrouw fietsen: getinte huidskleur
+🚴🏾‍♀️	fietsende vrouw: donkergetinte huidskleur
+🚴🏾‍♀	fietsende vrouw: donkergetinte huidskleur
+🚴🏿‍♀️	vrouw fietsen: donkere huidskleur
+🚴🏿‍♀	vrouw fietsen: donkere huidskleur
+🚵	persoon mountainbiken
+🚵🏻	persoon mountainbiken: lichte huidskleur
+🚵🏼	persoon die mountainbiket: lichtgetinte huidskleur
+🚵🏽	persoon mountainbiken: getinte huidskleur
+🚵🏾	persoon die mountainbiket: donkergetinte huidskleur
+🚵🏿	persoon mountainbiken: donkere huidskleur
+🚵‍♂️	man mountainbiken
+🚵‍♂	man mountainbiken
+🚵🏻‍♂️	man mountainbiken: lichte huidskleur
+🚵🏻‍♂	man mountainbiken: lichte huidskleur
+🚵🏼‍♂️	mountainbiken voor mannen: lichtgetinte huidskleur
+🚵🏼‍♂	mountainbiken voor mannen: lichtgetinte huidskleur
+🚵🏽‍♂️	man mountainbiken: getinte huidskleur
+🚵🏽‍♂	man mountainbiken: getinte huidskleur
+🚵🏾‍♂️	man mountainbiken: donkergetinte huidskleur
+🚵🏾‍♂	man mountainbiken: donkergetinte huidskleur
+🚵🏿‍♂️	man mountainbiken: donkere huidskleur
+🚵🏿‍♂	man mountainbiken: donkere huidskleur
+🚵‍♀️	vrouw mountainbiken
+🚵‍♀	vrouw mountainbiken
+🚵🏻‍♀️	vrouw mountainbiken: lichte huidskleur
+🚵🏻‍♀	vrouw mountainbiken: lichte huidskleur
+🚵🏼‍♀️	vrouw mountainbiken: lichtgetinte huidskleur
+🚵🏼‍♀	vrouw mountainbiken: lichtgetinte huidskleur
+🚵🏽‍♀️	vrouw mountainbiken: getinte huidskleur
+🚵🏽‍♀	vrouw mountainbiken: getinte huidskleur
+🚵🏾‍♀️	vrouw mountainbiken: donkergetinte huidskleur
+🚵🏾‍♀	vrouw mountainbiken: donkergetinte huidskleur
+🚵🏿‍♀️	vrouw mountainbiken: donkere huidskleur
+🚵🏿‍♀	vrouw mountainbiken: donkere huidskleur
+🏎️	race auto
+🏎	race auto
+🏍️	motorfiets
+🏍	motorfiets
+🤸	persoon die een radslag maakt
+🤸🏻	persoon die een radslag maakt: lichte huidskleur
+🤸🏼	persoon die een radslag maakt: lichtgetinte huidskleur
+🤸🏽	persoon die een radslag maakt: getinte huidskleur
+🤸🏾	persoon die een radslag maakt: donkergetinte huidskleur
+🤸🏿	persoon die een radslag maakt: donkere huidskleur
+🤸‍♂️	man radslagen
+🤸‍♂	man radslagen
+🤸🏻‍♂️	man die een radslag maakt: lichte huidskleur
+🤸🏻‍♂	man die een radslag maakt: lichte huidskleur
+🤸🏼‍♂️	man die een radslag maakt: lichtgetinte huidskleur
+🤸🏼‍♂	man die een radslag maakt: lichtgetinte huidskleur
+🤸🏽‍♂️	man die een radslag maakt: getinte huidskleur
+🤸🏽‍♂	man die een radslag maakt: getinte huidskleur
+🤸🏾‍♂️	man die een radslag maakt: donkergetinte huidskleur
+🤸🏾‍♂	man die een radslag maakt: donkergetinte huidskleur
+🤸🏿‍♂️	man die een radslag maakt: donkere huidskleur
+🤸🏿‍♂	man die een radslag maakt: donkere huidskleur
+🤸‍♀️	vrouw die een radslag maakt
+🤸‍♀	vrouw die een radslag maakt
+🤸🏻‍♀️	vrouw die een radslag maakt: lichte huidskleur
+🤸🏻‍♀	vrouw die een radslag maakt: lichte huidskleur
+🤸🏼‍♀️	vrouw die een radslag maakt: lichtgetinte huidskleur
+🤸🏼‍♀	vrouw die een radslag maakt: lichtgetinte huidskleur
+🤸🏽‍♀️	vrouw die een radslag maakt: getinte huidskleur
+🤸🏽‍♀	vrouw die een radslag maakt: getinte huidskleur
+🤸🏾‍♀️	vrouw die een radslag maakt: donkergetinte huidskleur
+🤸🏾‍♀	vrouw die een radslag maakt: donkergetinte huidskleur
+🤸🏿‍♀️	vrouw die een radslag maakt: donkere huidskleur
+🤸🏿‍♀	vrouw die een radslag maakt: donkere huidskleur
+🤼	mensen worstelen
+🤼‍♂️	mannen worstelen
+🤼‍♂	mannen worstelen
+🤼‍♀️	vrouwen worstelen
+🤼‍♀	vrouwen worstelen
+🤽	persoon die waterpolo speelt
+🤽🏻	persoon die waterpolo speelt: lichte huidskleur
+🤽🏼	persoon die waterpolo speelt: lichtgetinte huidskleur
+🤽🏽	persoon die waterpolo speelt: getinte huidskleur
+🤽🏾	persoon die waterpolo speelt: donkergetinte huidskleur
+🤽🏿	persoon die waterpolo speelt: donkere huidskleur
+🤽‍♂️	man die waterpolo speelt
+🤽‍♂	man die waterpolo speelt
+🤽🏻‍♂️	man die waterpolo speelt: lichte huidskleur
+🤽🏻‍♂	man die waterpolo speelt: lichte huidskleur
+🤽🏼‍♂️	man die waterpolo speelt: lichtgetinte huidskleur
+🤽🏼‍♂	man die waterpolo speelt: lichtgetinte huidskleur
+🤽🏽‍♂️	man die waterpolo speelt: getinte huidskleur
+🤽🏽‍♂	man die waterpolo speelt: getinte huidskleur
+🤽🏾‍♂️	man die waterpolo speelt: donkergetinte huidskleur
+🤽🏾‍♂	man die waterpolo speelt: donkergetinte huidskleur
+🤽🏿‍♂️	man die waterpolo speelt: donkere huidskleur
+🤽🏿‍♂	man die waterpolo speelt: donkere huidskleur
+🤽‍♀️	vrouw die waterpolo speelt
+🤽‍♀	vrouw die waterpolo speelt
+🤽🏻‍♀️	vrouw die waterpolo speelt: lichte huidskleur
+🤽🏻‍♀	vrouw die waterpolo speelt: lichte huidskleur
+🤽🏼‍♀️	vrouw die waterpolo speelt: lichtgetinte huidskleur
+🤽🏼‍♀	vrouw die waterpolo speelt: lichtgetinte huidskleur
+🤽🏽‍♀️	vrouw die waterpolo speelt: getinte huidskleur
+🤽🏽‍♀	vrouw die waterpolo speelt: getinte huidskleur
+🤽🏾‍♀️	vrouw die waterpolo speelt: donkergetinte huidskleur
+🤽🏾‍♀	vrouw die waterpolo speelt: donkergetinte huidskleur
+🤽🏿‍♀️	vrouw die waterpolo speelt: donkere huidskleur
+🤽🏿‍♀	vrouw die waterpolo speelt: donkere huidskleur
+🤾	persoon die handbal speelt
+🤾🏻	persoon die handbal speelt: lichte huidskleur
+🤾🏼	persoon die handbal speelt: lichtgetinte huidskleur
+🤾🏽	persoon die handbal speelt: getinte huidskleur
+🤾🏾	persoon die handbal speelt: donkergetinte huidskleur
+🤾🏿	persoon die handbal speelt: donkere huidskleur
+🤾‍♂️	man handbal spelen
+🤾‍♂	man handbal spelen
+🤾🏻‍♂️	man die handbal speelt: lichte huidskleur
+🤾🏻‍♂	man die handbal speelt: lichte huidskleur
+🤾🏼‍♂️	man die handbal speelt: lichtgetinte huidskleur
+🤾🏼‍♂	man die handbal speelt: lichtgetinte huidskleur
+🤾🏽‍♂️	man die handbal speelt: getinte huidskleur
+🤾🏽‍♂	man die handbal speelt: getinte huidskleur
+🤾🏾‍♂️	man die handbal speelt: donkergetinte huidskleur
+🤾🏾‍♂	man die handbal speelt: donkergetinte huidskleur
+🤾🏿‍♂️	man die handbal speelt: donkere huidskleur
+🤾🏿‍♂	man die handbal speelt: donkere huidskleur
+🤾‍♀️	vrouw die handbal speelt
+🤾‍♀	vrouw die handbal speelt
+🤾🏻‍♀️	vrouw die handbal speelt: lichte huidskleur
+🤾🏻‍♀	vrouw die handbal speelt: lichte huidskleur
+🤾🏼‍♀️	vrouw die handbal speelt: lichtgetinte huidskleur
+🤾🏼‍♀	vrouw die handbal speelt: lichtgetinte huidskleur
+🤾🏽‍♀️	vrouw die handbal speelt: getinte huidskleur
+🤾🏽‍♀	vrouw die handbal speelt: getinte huidskleur
+🤾🏾‍♀️	vrouw die handbal speelt: donkergetinte huidskleur
+🤾🏾‍♀	vrouw die handbal speelt: donkergetinte huidskleur
+🤾🏿‍♀️	vrouw die handbal speelt: donkere huidskleur
+🤾🏿‍♀	vrouw die handbal speelt: donkere huidskleur
+🤹	persoon jongleren
+🤹🏻	persoon die jongleert: lichte huidskleur
+🤹🏼	persoon die jongleert: lichtgetinte huidskleur
+🤹🏽	persoon die jongleert: getinte huidskleur
+🤹🏾	persoon die jongleert: donkergetinte huidskleur
+🤹🏿	persoon die jongleert: donkere huidskleur
+🤹‍♂️	man jongleren
+🤹‍♂	man jongleren
+🤹🏻‍♂️	man jongleren: lichte huidskleur
+🤹🏻‍♂	man jongleren: lichte huidskleur
+🤹🏼‍♂️	man die jongleert: lichtgetinte huidskleur
+🤹🏼‍♂	man die jongleert: lichtgetinte huidskleur
+🤹🏽‍♂️	man die jongleert: getinte huidskleur
+🤹🏽‍♂	man die jongleert: getinte huidskleur
+🤹🏾‍♂️	man die jongleert: donkergetinte huidskleur
+🤹🏾‍♂	man die jongleert: donkergetinte huidskleur
+🤹🏿‍♂️	man jongleren: donkere huidskleur
+🤹🏿‍♂	man jongleren: donkere huidskleur
+🤹‍♀️	vrouw jongleren
+🤹‍♀	vrouw jongleren
+🤹🏻‍♀️	vrouw jongleren: lichte huidskleur
+🤹🏻‍♀	vrouw jongleren: lichte huidskleur
+🤹🏼‍♀️	vrouw die jongleert: lichtgetinte huidskleur
+🤹🏼‍♀	vrouw die jongleert: lichtgetinte huidskleur
+🤹🏽‍♀️	vrouw die jongleert: getinte huidskleur
+🤹🏽‍♀	vrouw die jongleert: getinte huidskleur
+🤹🏾‍♀️	vrouw die jongleert: donkergetinte huidskleur
+🤹🏾‍♀	vrouw die jongleert: donkergetinte huidskleur
+🤹🏿‍♀️	vrouw die jongleert: donkere huidskleur
+🤹🏿‍♀	vrouw die jongleert: donkere huidskleur
+👫	man en vrouw hand in hand
+👬	twee mannen hand in hand
+👭	twee vrouwen hand in hand
+💏	kus
+👩‍❤️‍💋‍👨	kus: vrouw, man
+👩‍❤‍💋‍👨	kus: vrouw, man
+👨‍❤️‍💋‍👨	kus: man, man
+👨‍❤‍💋‍👨	kus: man, man
+👩‍❤️‍💋‍👩	kus: vrouw, vrouw
+👩‍❤‍💋‍👩	kus: vrouw, vrouw
+💑	koppel met hart
+👩‍❤️‍👨	koppel met hart: vrouw, man
+👩‍❤‍👨	koppel met hart: vrouw, man
+👨‍❤️‍👨	koppel met hart: man, man
+👨‍❤‍👨	koppel met hart: man, man
+👩‍❤️‍👩	koppel met hart: vrouw, vrouw
+👩‍❤‍👩	koppel met hart: vrouw, vrouw
+👪	familie
+👨‍👩‍👦	familie: man, vrouw, jongen
+👨‍👩‍👧	familie: man, vrouw, meisje
+👨‍👩‍👧‍👦	familie: man, vrouw, meisje, jongen
+👨‍👩‍👦‍👦	familie: man, vrouw, jongen, jongen
+👨‍👩‍👧‍👧	familie: man, vrouw, meisje, meisje
+👨‍👨‍👦	familie: man, man, jongen
+👨‍👨‍👧	familie: man, man, meisje
+👨‍👨‍👧‍👦	familie: man, man, meisje, jongen
+👨‍👨‍👦‍👦	familie: man, man, jongen, jongen
+👨‍👨‍👧‍👧	familie: man, man, meisje, meisje
+👩‍👩‍👦	familie: vrouw, vrouw, jongen
+👩‍👩‍👧	familie: vrouw, vrouw, meisje
+👩‍👩‍👧‍👦	familie: vrouw, vrouw, meisje, jongen
+👩‍👩‍👦‍👦	familie: vrouw, vrouw, jongen, jongen
+👩‍👩‍👧‍👧	familie: vrouw, vrouw, meisje, meisje
+👨‍👦	familie: man, jongen
+👨‍👦‍👦	familie: man, jongen, jongen
+👨‍👧	familie: man, meisje
+👨‍👧‍👦	familie: man, meisje, jongen
+👨‍👧‍👧	familie: man, meisje, meisje
+👩‍👦	familie: vrouw, jongen
+👩‍👦‍👦	familie: vrouw, jongen, jongen
+👩‍👧	familie: vrouw, meisje
+👩‍👧‍👦	familie: vrouw, meisje, jongen
+👩‍👧‍👧	familie: vrouw, meisje, meisje
+🤳	selfie
+🤳🏻	selfie: lichte huidskleur
+🤳🏼	selfie: lichtgetinte huidskleur
+🤳🏽	selfie: getinte huidskleur
+🤳🏾	selfie: donkergetinte huidskleur
+🤳🏿	selfie: donkere huidskleur
+💪	gebogen biceps
+💪🏻	gebogen biceps: lichte huidskleur
+💪🏼	gebogen biceps: lichtgetinte huidskleur
+💪🏽	gebogen biceps: getinte huidskleur
+💪🏾	gebogen biceps: donkergetinte huidskleur
+💪🏿	gebogen biceps: donkere huidskleur
+🦵	been
+🦵🏻	been: lichte huidskleur
+🦵🏼	been: lichtgetinte huidskleur
+🦵🏽	been: getinte huidskleur
+🦵🏾	been: donkergetinte huidskleur
+🦵🏿	been: donkere huidskleur
+🦶	voet
+🦶🏻	voet: lichte huidskleur
+🦶🏼	voet: lichtgetinte huidskleur
+🦶🏽	voet: getinte huidskleur
+🦶🏾	voet: donkergetinte huidskleur
+🦶🏿	voet: donkere huidskleur
+👈	achterkant van de hand wijst naar links
+👈🏻	achterhand naar links wijzende wijsvinger: lichte huidskleur
+👈🏼	achterhand naar links wijzende wijsvinger: lichtgetinte huidskleur
+👈🏽	achterhand naar links wijzende wijsvinger: getinte huidskleur
+👈🏾	achterhand naar links wijzende wijsvinger: mediumdonkere huidskleur
+👈🏿	achterhand naar links wijzende wijsvinger: donkere huidskleur
+👉	achterkant van de hand wijst naar rechts
+👉🏻	achterhand naar rechts wijzende wijsvinger: lichte huidskleur
+👉🏼	achterhand naar rechts wijzende wijsvinger: lichtgetinte huidskleur
+👉🏽	achterhand naar rechts wijzende wijsvinger: getinte huidskleur
+👉🏾	achterhand naar rechts wijzende wijsvinger: mediumdonkere huidskleur
+👉🏿	achterhand naar rechts wijzende wijsvinger: donkere huidskleur
+☝️	index naar boven gericht
+☝	index naar boven gericht
+☝🏻	wijsvinger naar boven: lichte huidskleur
+☝🏼	wijsvinger naar boven: lichtgetinte huidskleur
+☝🏽	wijsvinger naar boven: medium huidskleur
+☝🏾	wijsvinger naar boven: mediumdonkere huidskleur
+☝🏿	wijsvinger naar boven: donkere huidskleur
+👆	backhand-index naar boven gericht
+👆🏻	achterhand wijsvinger naar boven gericht: lichte huidskleur
+👆🏼	achterhand naar boven wijzende wijsvinger: lichtgetinte huidskleur
+👆🏽	achterhand naar boven wijzende wijsvinger: getinte huidskleur
+👆🏾	achterhand naar boven wijzende wijsvinger: donkergetinte huidskleur
+👆🏿	achterhand naar boven wijzende wijsvinger: donkere huidskleur
+🖕	middelvinger
+🖕🏻	middelvinger: lichte huidskleur
+🖕🏼	middelvinger: lichtgetinte huidskleur
+🖕🏽	middelvinger: medium huidskleur
+🖕🏾	middelvinger: donkergetinte huidskleur
+🖕🏿	middelvinger: donkere huidskleur
+👇	backhand-index naar beneden gericht
+👇🏻	achterhand naar beneden wijzende wijsvinger: lichte huidskleur
+👇🏼	achterhand naar beneden wijzende wijsvinger: lichtgetinte huidskleur
+👇🏽	achterhand naar beneden wijzende wijsvinger: getinte huidskleur
+👇🏾	achterhand naar beneden wijzende wijsvinger: donkergetinte huidskleur
+👇🏿	achterhand naar beneden wijzende wijsvinger: donkere huidskleur
+✌️	overwinningshand
+✌	overwinningshand
+✌🏻	overwinningshand: lichte huidskleur
+✌🏼	overwinningshand: lichtgetinte huidskleur
+✌🏽	overwinningshand: getinte huidskleur
+✌🏾	overwinningshand: donkergetinte huidskleur
+✌🏿	overwinningshand: donkere huidskleur
+🤞	duimen
+🤞🏻	gekruiste vingers: lichte huidskleur
+🤞🏼	gekruiste vingers: lichtgetinte huidskleur
+🤞🏽	gekruiste vingers: getinte huidskleur
+🤞🏾	gekruiste vingers: donkergetinte huidskleur
+🤞🏿	gekruiste vingers: donkere huidskleur
+🖖	Vulcan groet
+🖖🏻	Vulcan groet: lichte huidskleur
+🖖🏼	vulcan salute: lichtgetinte huidskleur
+🖖🏽	Vulcan groet: getinte huidskleur
+🖖🏾	vulcan saluut: donkergetinte huidskleur
+🖖🏿	Vulcan groet: donkere huidskleur
+🤘	teken van de hoorns
+🤘🏻	teken van de hoorns: lichte huidskleur
+🤘🏼	teken van de hoorns: lichtgetinte huidskleur
+🤘🏽	teken van de hoorns: getinte huidskleur
+🤘🏾	teken van de hoorns: donkergetinte huidskleur
+🤘🏿	teken van de hoorns: donkere huidskleur
+🤙	noem mij een hand
+🤙🏻	bel me hand: lichte huidskleur
+🤙🏼	bel me hand: lichtgetinte huidskleur
+🤙🏽	bel me hand: getinte huidskleur
+🤙🏾	bel me met de hand: donkergetinte huidskleur
+🤙🏿	bel me hand: donkere huidskleur
+🖐️	hand met gespreide vingers
+🖐	hand met gespreide vingers
+🖐🏻	hand met gespreide vingers: lichte huidskleur
+🖐🏼	hand met gespreide vingers: lichtgetinte huidskleur
+🖐🏽	hand met gespreide vingers: medium huidskleur
+🖐🏾	hand met gespreide vingers: mediumdonkere huidskleur
+🖐🏿	hand met gespreide vingers: donkere huidskleur
+✋	opgeheven hand
+✋🏻	opgeheven hand: lichte huidskleur
+✋🏼	opgeheven hand: lichtgetinte huidskleur
+✋🏽	opgeheven hand: getinte huidskleur
+✋🏾	opgeheven hand: donkergetinte huidskleur
+✋🏿	opgeheven hand: donkere huidskleur
+👌	Oké handje
+👌🏻	OK hand: lichte huidskleur
+👌🏼	OK hand: lichtgetinte huidskleur
+👌🏽	OK hand: medium huidskleur
+👌🏾	OK hand: medium-donkere huidskleur
+👌🏿	OK hand: donkere huidskleur
+👍	duimen omhoog
+👍🏻	duim omhoog: lichte huidskleur
+👍🏼	duim omhoog: lichtgetinte huidskleur
+👍🏽	duim omhoog: getinte huidskleur
+👍🏾	duim omhoog: donkergetinte huidskleur
+👍🏿	duim omhoog: donkere huidskleur
+👎	duimen omlaag
+👎🏻	duim omlaag: lichte huidskleur
+👎🏼	duim omlaag: lichtgetinte huidskleur
+👎🏽	duim omlaag: getinte huidskleur
+👎🏾	duim omlaag: donkergetinte huidskleur
+👎🏿	duim omlaag: donkere huidskleur
+✊	opgeheven vuist
+✊🏻	opgeheven vuist: lichte huidskleur
+✊🏼	opgeheven vuist: lichtgetinte huidskleur
+✊🏽	opgeheven vuist: getinte huidskleur
+✊🏾	opgeheven vuist: donkergetinte huidskleur
+✊🏿	opgeheven vuist: donkere huidskleur
+👊	naderende vuist
+👊🏻	tegemoetkomende vuist: lichte huidskleur
+👊🏼	tegemoetkomende vuist: lichtgetinte huidskleur
+👊🏽	tegemoetkomende vuist: getinte huidskleur
+👊🏾	tegemoetkomende vuist: donkergetinte huidskleur
+👊🏿	tegemoetkomende vuist: donkere huidskleur
+🤛	naar links gerichte vuist
+🤛🏻	naar links gerichte vuist: lichte huidskleur
+🤛🏼	naar links gerichte vuist: lichtgetinte huidskleur
+🤛🏽	naar links gerichte vuist: getinte huidskleur
+🤛🏾	naar links gerichte vuist: donkergetinte huidskleur
+🤛🏿	naar links gerichte vuist: donkere huidskleur
+🤜	naar rechts gerichte vuist
+🤜🏻	naar rechts gerichte vuist: lichte huidskleur
+🤜🏼	naar rechts gerichte vuist: lichtgetinte huidskleur
+🤜🏽	naar rechts gerichte vuist: getinte huidskleur
+🤜🏾	naar rechts gerichte vuist: donkergetinte huidskleur
+🤜🏿	naar rechts gerichte vuist: donkere huidskleur
+🤚	handrug omhoog
+🤚🏻	opgeheven handrug: lichte huidskleur
+🤚🏼	opgeheven handrug: lichtgetinte huidskleur
+🤚🏽	opgeheven handrug: getinte huidskleur
+🤚🏾	opgeheven handrug: donkergetinte huidskleur
+🤚🏿	opgeheven handrug: donkere huidskleur
+👋	zwaaiende hand
+👋🏻	zwaaiende hand: lichte huidskleur
+👋🏼	zwaaiende hand: lichtgetinte huidskleur
+👋🏽	zwaaiende hand: getinte huidskleur
+👋🏾	zwaaiende hand: donkergetinte huidskleur
+👋🏿	zwaaiende hand: donkere huidskleur
+🤟	hou van jou gebaar
+🤟🏻	hou van je gebaar: lichte huidskleur
+🤟🏼	hou van je gebaar: lichtgetinte huidskleur
+🤟🏽	hou van je gebaar: getinte huidskleur
+🤟🏾	hou van je gebaar: donkergetinte huidskleur
+🤟🏿	hou van je gebaar: donkere huidskleur
+✍️	schrijvende hand
+✍	schrijvende hand
+✍🏻	schrijvende hand: lichte huidskleur
+✍🏼	schrijvende hand: lichtgetinte huidskleur
+✍🏽	schrijvende hand: getinte huidskleur
+✍🏾	schrijvende hand: donkergetinte huidskleur
+✍🏿	schrijvende hand: donkere huidskleur
+👏	klappende handen
+👏🏻	klappende handen: lichte huidskleur
+👏🏼	klappende handen: lichtgetinte huidskleur
+👏🏽	klappende handen: getinte huidskleur
+👏🏾	klappende handen: donkergetinte huidskleur
+👏🏿	klappende handen: donkere huidskleur
+👐	open handen
+👐🏻	open handen: lichte huidskleur
+👐🏼	open handen: lichtgetinte huidskleur
+👐🏽	open handen: medium huidskleur
+👐🏾	open handen: donkergetinte huidskleur
+👐🏿	open handen: donkere huidskleur
+🙌	handen opsteken
+🙌🏻	handen opsteken: lichte huidskleur
+🙌🏼	handen opsteken: lichtgetinte huidskleur
+🙌🏽	handen opsteken: getinte huidskleur
+🙌🏾	handen opsteken: donkergetinte huidskleur
+🙌🏿	handen opsteken: donkere huidskleur
+🤲	handpalmen naar elkaar toe
+🤲🏻	handpalmen tegen elkaar: lichte huidskleur
+🤲🏼	handpalmen tegen elkaar: lichtgetinte huidskleur
+🤲🏽	handpalmen tegen elkaar: getinte huidskleur
+🤲🏾	handpalmen tegen elkaar: donkergetinte huidskleur
+🤲🏿	handpalmen tegen elkaar: donkere huidskleur
+🙏	gevouwen handen
+🙏🏻	gevouwen handen: lichte huidskleur
+🙏🏼	gevouwen handen: lichtgetinte huidskleur
+🙏🏽	gevouwen handen: getinte huidskleur
+🙏🏾	gevouwen handen: donkergetinte huidskleur
+🙏🏿	gevouwen handen: donkere huidskleur
+🤝	handdruk
+💅	nagellak
+💅🏻	nagellak: lichte huidskleur
+💅🏼	nagellak: medium-lichte huidskleur
+💅🏽	nagellak: medium huidskleur
+💅🏾	nagellak: medium-donkere huidskleur
+💅🏿	nagellak: donkere huidskleur
+👂	oor
+👂🏻	oor: lichte huidskleur
+👂🏼	oor: lichtgetinte huidskleur
+👂🏽	oor: medium huidskleur
+👂🏾	oor: donkergetinte huidskleur
+👂🏿	oor: donkere huidskleur
+👃	neus
+👃🏻	neus: lichte huidskleur
+👃🏼	neus: lichtgetinte huidskleur
+👃🏽	neus: medium huidskleur
+👃🏾	neus: medium-donkere huidskleur
+👃🏿	neus: donkere huidskleur
+🦰	roodharig
+🦱	krullend haar
+🦲	kaal
+🦳	witharig
+👣	voetafdrukken
+👀	ogen
+👁️	oog
+👁	oog
+👁️‍🗨️	oog in tekstballon
+👁‍🗨️	oog in tekstballon
+👁️‍🗨	oog in tekstballon
+👁‍🗨	oog in tekstballon
+🧠	brein
+🦴	bot
+🦷	tand
+👅	tong
+👄	mond
+💋	kusteken
+💘	hart met pijl
+❤️	rood hart
+❤	rood hart
+💓	kloppend hart
+💔	gebroken hart
+💕	twee harten
+💖	sprankelend hart
+💗	groeiend hart
+💙	blauw hart
+💚	groen hart
+💛	geel hart
+🧡	oranje hart
+💜	paars hart
+🖤	zwart hart
+💝	hart met lint
+💞	draaiende harten
+💟	hart decoratie
+❣️	zware hartuitroep
+❣	zware hartuitroep
+💌	liefdesbrief
+💤	zzz
+💢	woede symbool
+💣	bom
+💥	botsing
+💦	zweetdruppels
+💨	weg rennen
+💫	duizelig
+💬	spraakballon
+🗨️	linker tekstballon
+🗨	linker tekstballon
+🗯️	juiste woedebubbel
+🗯	juiste woedebubbel
+💭	gedachteballon
+🕳️	gat
+🕳	gat
+👓	bril
+🕶️	zonnebril
+🕶	zonnebril
+🥽	stofbril
+🥼	Lab jas
+👔	stropdas
+👕	t-shirt
+👖	jeans
+🧣	sjaal
+🧤	handschoenen
+🧥	jas
+🧦	sokken
+👗	jurk
+👘	kimono
+👙	bikini
+👚	vrouwenkleding
+👛	tas
+👜	handtas
+👝	clutch tas
+🛍️	boodschappentassen
+🛍	boodschappentassen
+🎒	schoolrugzak
+👞	mannenschoen
+👟	ren schoen
+🥾	wandelschoen
+🥿	platte damesschoen
+👠	schoen met hoge hakken
+👡	damessandaal
+👢	dameslaars
+👑	kroon
+👒	vrouwenhoed
+🎩	hoge hoed
+🎓	afstudeer pet
+🧢	gefactureerde kap
+⛑️	helm van de reddingswerker
+⛑	helm van de reddingswerker
+📿	gebed kralen
+💄	lippenstift
+💍	ring
+💎	edelsteen steen
+🐵	apen gezicht
+🐒	aap
+🦍	gorilla
+🐶	honden gezicht
+🐕	hond
+🐩	poedel
+🐺	wolfsgezicht
+🦊	vos gezicht
+🦝	wasbeer
+🐱	Kat gezicht
+🐈	kat
+🦁	leeuw gezicht
+🐯	tijger gezicht
+🐅	tijger
+🐆	luipaard
+🐴	paarden gezicht
+🐎	paard
+🦄	eenhoorn gezicht
+🦓	zebra
+🦌	hert
+🐮	koe gezicht
+🐂	os
+🐃	water Buffel
+🐄	koe
+🐷	varkenskop
+🐖	varken
+🐗	zwijn
+🐽	varkensneus
+🐏	ram
+🐑	ooi
+🐐	geit
+🐪	kameel
+🐫	kameel met twee bulten
+🦙	lama
+🦒	giraffe
+🐘	olifant
+🦏	neushoorn
+🦛	nijlpaard
+🐭	muis gezicht
+🐁	muis
+🐀	Rat
+🐹	hamster gezicht
+🐰	konijn gezicht
+🐇	konijn
+🐿️	aardeekhoorn
+🐿	aardeekhoorn
+🦔	egel
+🦇	knuppel
+🐻	gezicht dragen
+🐨	koala
+🐼	panda-gezicht
+🦘	kangoeroe
+🦡	das
+🐾	pootafdrukken
+🦃	kalkoen
+🐔	kip
+🐓	haan
+🐣	uitkomend kuiken
+🐤	baby kuiken
+🐥	naar voren gericht kuikentje
+🐦	vogel
+🐧	pinguïn
+🕊️	duif
+🕊	duif
+🦅	adelaar
+🦆	eend
+🦢	zwaan
+🦉	uil
+🦚	pauw
+🦜	papegaai
+🐸	kikker gezicht
+🐊	krokodil
+🐢	schildpad
+🦎	hagedis
+🐍	slang
+🐲	draken gezicht
+🐉	draak
+🦕	sauropode
+🦖	T-Rex
+🐳	spuitende walvis
+🐋	walvis
+🐬	dolfijn
+🐟	vis
+🐠	tropische vis
+🐡	kogelvis
+🦈	haai
+🐙	Octopus
+🐚	spiraalvormige schaal
+🦀	krab
+🦞	kreeft
+🦐	garnaal
+🦑	inktvis
+🐌	slak
+🦋	vlinder
+🐛	beestje
+🐜	mier
+🐝	honingbij
+🐞	lieveheersbeestje
+🦗	krekel
+🕷️	spin
+🕷	spin
+🕸️	spinnenweb
+🕸	spinnenweb
+🦂	schorpioen
+🦟	mug
+🦠	microbe
+💐	boeket
+🌸	kersenbloesem
+💮	witte bloem
+🏵️	rozet
+🏵	rozet
+🌹	roos
+🥀	verwelkte bloem
+🌺	hibiscus
+🌻	zonnebloem
+🌼	bloesem
+🌷	tulp
+🌱	zaailing
+🌲	groenblijvende boom
+🌳	loofboom
+🌴	palmboom
+🌵	cactus
+🌾	rijstvel
+🌿	kruid
+☘️	klaver
+☘	klaver
+🍀	Klavertje vier
+🍁	esdoorn blad
+🍂	gevallen blad
+🍃	blad wappert in de wind
+🍇	druiven
+🍈	meloen
+🍉	watermeloen
+🍊	mandarijn
+🍋	citroen
+🍌	banaan
+🍍	ananas
+🥭	mango
+🍎	rode appel
+🍏	groene appel
+🍐	Peer
+🍑	perzik
+🍒	kersen
+🍓	aardbei
+🥝	kiwifruit
+🍅	tomaat
+🥥	kokosnoot
+🥑	avocado
+🍆	aubergine
+🥔	aardappel
+🥕	wortel
+🌽	korenaar
+🌶️	hete peper
+🌶	hete peper
+🥒	komkommer
+🥬	bladgroen
+🥦	broccoli
+🍄	paddestoel
+🥜	pinda's
+🌰	kastanje
+🍞	brood
+🥐	croissant
+🥖	stokbrood
+🥨	krakeling
+🥯	bagel
+🥞	pannekoeken
+🧀	kaas wig
+🍖	vlees op bot
+🍗	gevogelte been
+🥩	stukje vlees
+🥓	spek
+🍔	Hamburger
+🍟	Franse frietjes
+🍕	pizza
+🌭	hotdog
+🥪	sandwich
+🌮	taco
+🌯	burrito
+🥙	gevuld platbrood
+🥚	ei
+🍳	koken
+🥘	ondiepe pan met voedsel
+🍲	pot met eten
+🥣	kom met lepel
+🥗	groene salade
+🍿	popcorn
+🧂	zout
+🥫	ingeblikt voedsel
+🍱	bento-box
+🍘	rijstwafel
+🍙	rijstbal
+🍚	gekookte rijst
+🍛	curryrijst
+🍜	stomende kom
+🍝	spaghetti
+🍠	geroosterde zoete aardappel
+🍢	oden
+🍣	sushi
+🍤	gefrituurde garnaal
+🍥	viskoekjes met swirl
+🥮	maan taart
+🍡	dango
+🥟	knoedel
+🥠	gelukskoekje
+🥡	meeneemdoos
+🍦	zacht ijs
+🍧	geschoren ijs
+🍨	ijsje
+🍩	donut
+🍪	koekje
+🎂	verjaardagstaart
+🍰	zandkoekje
+🧁	koekje
+🥧	taart
+🍫	chocoladereep
+🍬	snoep
+🍭	lolly
+🍮	vla
+🍯	honingpot
+🍼	Baby flesje
+🥛	glas melk
+☕	warme drank
+🍵	theekopje zonder handvat
+🍶	belang
+🍾	fles met knallende kurk
+🍷	wijnglas
+🍸	cocktailglas
+🍹	tropisch drankje
+🍺	bierglas
+🍻	rammelende bierpullen
+🥂	rammelende glazen
+🥃	tuimelaar glas
+🥤	beker met rietje
+🥢	eetstokjes
+🍽️	vork en mes met bord
+🍽	vork en mes met bord
+🍴	vork en mes
+🥄	lepel
+🔪	keukenmes
+🏺	amfora
+🌍	wereldbol met Europa-Afrika
+🌎	wereldbol met Amerika
+🌏	wereldbol met Azië-Australië
+🌐	wereldbol met meridianen
+🗺️	wereldkaart
+🗺	wereldkaart
+🗾	kaart van Japan
+🧭	kompas
+🏔️	met sneeuw bedekte berg
+🏔	met sneeuw bedekte berg
+⛰️	berg
+⛰	berg
+🌋	vulkaan
+🗻	berg fuji op
+🏕️	camping
+🏕	camping
+🏖️	strand met parasol
+🏖	strand met parasol
+🏜️	woestijn
+🏜	woestijn
+🏝️	onbewoond eiland
+🏝	onbewoond eiland
+🏞️	Nationaal Park
+🏞	Nationaal Park
+🏟️	stadion
+🏟	stadion
+🏛️	klassiek gebouw
+🏛	klassiek gebouw
+🏗️	bouwconstructie
+🏗	bouwconstructie
+🧱	bakstenen
+🏘️	huizen
+🏘	huizen
+🏚️	verlaten huis
+🏚	verlaten huis
+🏠	huis
+🏡	huis met tuin
+🏢	kantoorgebouw
+🏣	Japans postkantoor
+🏤	Postkantoor
+🏥	ziekenhuis
+🏦	bank
+🏨	hotel
+🏩	liefdeshotel
+🏪	gemakswinkel
+🏫	school
+🏬	warenhuis
+🏭	fabriek
+🏯	Japans kasteel
+🏰	kasteel
+💒	bruiloft
+🗼	Tokyo toren
+🗽	Vrijheidsbeeld
+⛪	kerk
+🕌	moskee
+🕍	synagoge
+⛩️	Shinto altaar
+⛩	Shinto altaar
+🕋	kaaba
+⛲	fontein
+⛺	tent
+🌁	mistig
+🌃	nacht met sterren
+🏙️	stadsgezicht
+🏙	stadsgezicht
+🌄	zonsopgang boven bergen
+🌅	zonsopkomst
+🌆	stadsgezicht in de schemering
+🌇	zonsondergang
+🌉	brug bij nacht
+♨️	warmwaterbronnen
+♨	warmwaterbronnen
+🌌	Melkweg
+🎠	carrousel paard
+🎡	reuzenrad
+🎢	achtbaan
+💈	kapper paal
+🎪	circustent
+🚂	locomotief
+🚃	spoorweg auto
+🚄	hogesnelheidstrein
+🚅	kogel trein
+🚆	trein
+🚇	metro
+🚈	licht rails
+🚉	station
+🚊	tram
+🚝	monorail
+🚞	bergspoorlijn
+🚋	tram auto
+🚌	bus
+🚍	tegemoetkomende bus
+🚎	trolleybus
+🚐	minibus
+🚑	ambulance
+🚒	brandweerwagen
+🚓	politieauto
+🚔	tegemoetkomende politieauto
+🚕	taxi
+🚖	tegemoetkomende taxi
+🚗	auto
+🚘	tegemoetkomende auto
+🚙	SUV
+🚚	vrachtwagen
+🚛	gelede vrachtwagen
+🚜	tractor
+🚲	fiets
+🛴	scooter
+🛹	skateboard
+🛵	motor scooter
+🚏	Bushalte
+🛣️	snelweg
+🛣	snelweg
+🛤️	Spoorweg
+🛤	Spoorweg
+🛢️	olie vat
+🛢	olie vat
+⛽	benzine pomp
+🚨	politie auto licht
+🚥	horizontaal verkeerslicht
+🚦	verticaal verkeerslicht
+🛑	stopteken
+🚧	bouw
+⚓	anker
+⛵	zeilboot
+🛶	kano
+🚤	speedboot
+🛳️	passagiersschip
+🛳	passagiersschip
+⛴️	veerboot
+⛴	veerboot
+🛥️	motorboot
+🛥	motorboot
+🚢	schip
+✈️	vliegtuig
+✈	vliegtuig
+🛩️	klein vliegtuig
+🛩	klein vliegtuig
+🛫	vertrek van het vliegtuig
+🛬	aankomst van het vliegtuig
+💺	zitplaats
+🚁	helikopter
+🚟	hangbaan
+🚠	berg kabelbaan
+🚡	luchttram
+🛰️	satelliet
+🛰	satelliet
+🚀	raket
+🛸	vliegende schotel
+🛎️	piccolo bel
+🛎	piccolo bel
+🧳	bagage
+⌛	zandloper klaar
+⏳	zandloper niet gedaan
+⌚	horloge
+⏰	wekker
+⏱️	stopwatch
+⏱	stopwatch
+⏲️	timer klok
+⏲	timer klok
+🕰️	schoorsteenmantel klok
+🕰	schoorsteenmantel klok
+🕛	twaalf uur
+🕧	half een
+🕐	een uur
+🕜	half één
+🕑	twee uur
+🕝	half drie
+🕒	drie uur
+🕞	half vier
+🕓	vier uur
+🕟	half vijf
+🕔	vijf uur
+🕠	vijf dertig
+🕕	zes uur
+🕡	halfzeven
+🕖	zeven uur
+🕢	zeven dertig
+🕗	acht uur
+🕣	acht uur dertig
+🕘	negen uur
+🕤	half tien
+🕙	tien uur
+🕥	half elf
+🕚	elf uur
+🕦	elf dertig
+🌑	nieuwe maan
+🌒	wassende maansikkel
+🌓	eerste kwartier maan
+🌔	wassende maan
+🌕	volle maan
+🌖	afnemende maan
+🌗	laatste kwartier
+🌘	afnemende maansikkel
+🌙	halve maan
+🌚	nieuwe maan gezicht
+🌛	eerste kwartier gezicht
+🌜	laatste kwartier gezicht
+🌡️	thermometer
+🌡	thermometer
+☀️	zon
+☀	zon
+🌝	gezicht van de volle maan
+🌞	zon met gezicht
+⭐	ster
+🌟	gloeiende ster
+🌠	vallende ster
+☁️	wolk
+☁	wolk
+⛅	zon achter wolk
+⛈️	wolk met bliksem en regen
+⛈	wolk met bliksem en regen
+🌤️	zon achter kleine wolk
+🌤	zon achter kleine wolk
+🌥️	zon achter grote wolk
+🌥	zon achter grote wolk
+🌦️	zon achter regenwolk
+🌦	zon achter regenwolk
+🌧️	wolk met regen
+🌧	wolk met regen
+🌨️	wolk met sneeuw
+🌨	wolk met sneeuw
+🌩️	wolk met bliksem
+🌩	wolk met bliksem
+🌪️	tornado
+🌪	tornado
+🌫️	mist
+🌫	mist
+🌬️	wind gezicht
+🌬	wind gezicht
+🌀	cycloon
+🌈	regenboog
+🌂	gesloten paraplu
+☂️	paraplu
+☂	paraplu
+☔	paraplu met regendruppels
+⛱️	paraplu op de grond
+⛱	paraplu op de grond
+⚡	hoog voltage
+❄️	sneeuwvlok
+❄	sneeuwvlok
+☃️	sneeuwman
+☃	sneeuwman
+⛄	sneeuwpop zonder sneeuw
+☄️	komeet
+☄	komeet
+🔥	vuur
+💧	druppel
+🌊	watergolf
+🎃	jack-o-lantern
+🎄	kerstboom
+🎆	vuurwerk
+🎇	sterretje
+🧨	vuurwerk
+✨	schittert
+🎈	ballon
+🎉	Feestknaller
+🎊	confettibal
+🎋	tanabata-boom
+🎍	grenen decoratie
+🎎	Japanse poppen
+🎏	karper streamer
+🎐	windgong
+🎑	ceremonie voor het bekijken van de maan
+🧧	rode envelop
+🎀	lintje
+🎁	ingepakt cadeau
+🎗️	herinneringslint
+🎗	herinneringslint
+🎟️	toegangskaarten
+🎟	toegangskaarten
+🎫	ticket
+🎖️	militaire medaille
+🎖	militaire medaille
+🏆	trofee
+🏅	sport medaille
+🥇	1e plaats medaille
+🥈	2e plaats medaille
+🥉	3e plaats medaille
+⚽	voetbal
+⚾	basketbal
+🥎	softbal
+🏀	basketbal
+🏐	volleybal
+🏈	Amerikaans voetbal
+🏉	rugbyvoetbal
+🎾	tennis
+🥏	vliegende schijf
+🎳	bowling
+🏏	cricketspel
+🏑	veld hockey
+🏒	ijshockey
+🥍	lacrosse
+🏓	pingpong
+🏸	badminton
+🥊	Bokshandschoen
+🥋	vechtsport uniform
+🥅	doel netto
+⛳	vlag in gat
+⛸️	schaatsen
+⛸	schaatsen
+🎣	hengel
+🎽	hardloopshirt
+🎿	ski's
+🛷	slee
+🥌	krullende steen
+🎯	voltreffer
+🎱	zwembad 8 bal
+🔮	kristallen bol
+🧿	nazar-amulet
+🎮	videogame
+🕹️	bedieningshendel
+🕹	bedieningshendel
+🎰	gokautomaat
+🎲	spel sterven
+🧩	puzzel
+🧸	knuffelbeer
+♠️	schoppen pak
+♠	schoppen pak
+♥️	hart pak
+♥	hart pak
+♦️	diamant pak
+♦	diamant pak
+♣️	clubpak
+♣	clubpak
+♟️	schaak pion
+♟	schaak pion
+🃏	grappenmaker
+🀄	Mahjong rode draak
+🎴	speelkaarten met bloemen
+🎭	uitvoerende kunst
+🖼️	ingelijste foto
+🖼	ingelijste foto
+🎨	kunstenaarspalet
+🧵	draad
+🧶	garen
+🔇	gedempte luidspreker
+🔈	luidspreker laag volume
+🔉	luidspreker gemiddeld volume
+🔊	luidspreker hoog volume
+📢	luidspreker
+📣	megafoon
+📯	posthoorn
+🔔	klok
+🔕	bel met schuine streep
+🎼	muzikale partituur
+🎵	muziek noot
+🎶	muziek noten
+🎙️	studiomicrofoon
+🎙	studiomicrofoon
+🎚️	niveau schuifregelaar
+🎚	niveau schuifregelaar
+🎛️	bedieningsknoppen
+🎛	bedieningsknoppen
+🎤	microfoon
+🎧	hoofdtelefoon
+📻	radio
+🎷	saxofoon
+🎸	gitaar
+🎹	muzikaal toetsenbord
+🎺	trompet
+🎻	viool
+🥁	trommel
+📱	mobiele telefoon
+📲	mobiele telefoon met pijl
+☎️	telefoon
+☎	telefoon
+📞	telefoon ontvanger
+📟	pieper
+📠	fax apparaat
+🔋	accu
+🔌	stekker
+💻	laptopcomputer
+🖥️	desktop computer
+🖥	desktop computer
+🖨️	printer
+🖨	printer
+⌨️	toetsenbord
+⌨	toetsenbord
+🖱️	computermuis
+🖱	computermuis
+🖲️	trackbal
+🖲	trackbal
+💽	computerschijf
+💾	diskette
+💿	optische schijf
+📀	DVD
+🧮	telraam
+🎥	film camera
+🎞️	filmframes
+🎞	filmframes
+📽️	filmprojector
+📽	filmprojector
+🎬	klepel bord
+📺	televisie
+📷	camera
+📸	camera met flits
+📹	videocamera
+📼	video cassette
+🔍	vergrootglas naar links gekanteld
+🔎	vergrootglas naar rechts gekanteld
+🕯️	kaars
+🕯	kaars
+💡	gloeilamp
+🔦	zaklamp
+🏮	rode papieren lantaarn
+📔	notitieboekje met decoratieve omslag
+📕	gesloten boek
+📖	open boek
+📗	groen boek
+📘	blauw boek
+📙	oranje boek
+📚	boeken
+📓	notitieboekje
+📒	grootboek
+📃	pagina met krul
+📜	rol
+📄	pagina naar boven gericht
+📰	krant
+🗞️	opgerolde krant
+🗞	opgerolde krant
+📑	bladwijzertabbladen
+🔖	bladwijzer
+🏷️	etiket
+🏷	etiket
+💰	geldtas
+💴	yen-bankbiljet
+💵	dollarbiljet
+💶	eurobankbiljet
+💷	pond bankbiljet
+💸	geld met vleugels
+💳	kredietkaart
+🧾	ontvangst
+💹	grafiek stijgend met de yen
+💱	wisselkantoor
+💲	zwaar dollarteken
+✉️	envelop
+✉	envelop
+📧	e-mail
+📨	binnenkomende envelop
+📩	envelop met pijl
+📤	lade voor uitgaande post
+📥	Postvak IN
+📦	pakket
+📫	gesloten brievenbus met opgeheven vlag
+📪	gesloten brievenbus met neergelaten vlag
+📬	Open brievenbus met opgeheven vlag
+📭	Open brievenbus met neergelaten vlag
+📮	brievenbus
+🗳️	stembus met stembiljet
+🗳	stembus met stembiljet
+✏️	potlood
+✏	potlood
+✒️	zwarte punt
+✒	zwarte punt
+🖋️	Vulpen
+🖋	Vulpen
+🖊️	pen
+🖊	pen
+🖌️	penseel
+🖌	penseel
+🖍️	krijt
+🖍	krijt
+📝	memo
+💼	aktentas
+📁	bestandsmap
+📂	bestandsmap openen
+🗂️	kaartindexverdelers
+🗂	kaartindexverdelers
+📅	kalender
+📆	afscheurkalender
+🗒️	spiraalvormig notitieblok
+🗒	spiraalvormig notitieblok
+🗓️	spiraalvormige kalender
+🗓	spiraalvormige kalender
+📇	kaart index
+📈	grafiek toeneemt
+📉	grafiek afnemend
+📊	staafdiagram
+📋	klembord
+📌	punaise
+📍	ronde punaise
+📎	paperclip
+🖇️	gekoppelde paperclips
+🖇	gekoppelde paperclips
+📏	rechte liniaal
+📐	driehoekige liniaal
+✂️	schaar
+✂	schaar
+🗃️	kaart archiefdoos
+🗃	kaart archiefdoos
+🗄️	archiefkast
+🗄	archiefkast
+🗑️	prullenbak
+🗑	prullenbak
+🔒	op slot
+🔓	ontgrendeld
+🔏	vergrendeld met pen
+🔐	afgesloten met sleutel
+🔑	sleutel
+🗝️	oude sleutel
+🗝	oude sleutel
+🔨	hamer
+⛏️	kies
+⛏	kies
+⚒️	hamer en pikhouweel
+⚒	hamer en pikhouweel
+🛠️	hamer en moersleutel
+🛠	hamer en moersleutel
+🗡️	dolk
+🗡	dolk
+⚔️	gekruiste zwaarden
+⚔	gekruiste zwaarden
+🔫	pistool
+🏹	pijl en boog
+🛡️	schild
+🛡	schild
+🔧	moersleutel
+🔩	moer en bout
+⚙️	versnelling
+⚙	versnelling
+🗜️	klem
+🗜	klem
+⚖️	weegschaal
+⚖	weegschaal
+🔗	koppeling
+⛓️	kettingen
+⛓	kettingen
+🧰	gereedschapskist
+🧲	magneet
+⚗️	alambiek
+⚗	alambiek
+🧪	reageerbuis
+🧫	petrischaaltje
+🧬	dna
+🔬	microscoop
+🔭	telescoop
+📡	satelliet antenne
+💉	spuit
+💊	pil
+🚪	deur
+🛏️	bed
+🛏	bed
+🛋️	bank en lamp
+🛋	bank en lamp
+🚽	toilet
+🚿	douche
+🛁	bad
+🧴	lotion fles
+🧷	veiligheidsspeld
+🧹	bezem
+🧺	mand
+🧻	rol papier
+🧼	zeep
+🧽	spons
+🧯	Brandblusser
+🛒	winkelmand
+🚬	sigaret
+⚰️	kist
+⚰	kist
+⚱️	begrafenis urn
+⚱	begrafenis urn
+🗿	Moai
+🏧	ATM-teken
+🚮	zwerfvuil in bakteken
+🚰	drinkwater
+♿	rolstoel symbool
+🚹	herentoilet
+🚺	dameskamer
+🚻	toilet
+🚼	baby-symbool
+🚾	waterkast
+🛂	paspoort controle
+🛃	douane
+🛄	Bagage afhalen
+🛅	achtergelaten bagage
+⚠️	waarschuwing
+⚠	waarschuwing
+🚸	kinderen oversteken
+⛔	geen toegang
+🚫	verboden
+🚳	geen fietsen
+🚭	niet roken
+🚯	geen zwerfvuil
+🚱	niet-drinkbaar water
+🚷	geen voetgangers
+📵	geen mobiele telefoons
+🔞	niemand onder de achttien
+☢️	radioactief
+☢	radioactief
+☣️	biologisch gevaar
+☣	biologisch gevaar
+⬆️	pijltje omhoog
+⬆	pijltje omhoog
+↗️	pijl naar rechts
+↗	pijl naar rechts
+➡️	rechter pijl
+➡	rechter pijl
+↘️	pijl naar rechts
+↘	pijl naar rechts
+⬇️	pijl naar beneden
+⬇	pijl naar beneden
+↙️	pijl-omlaag
+↙	pijl-omlaag
+⬅️	linker pijl
+⬅	linker pijl
+↖️	pijl-links omhoog
+↖	pijl-links omhoog
+↕️	pijl omhoog-omlaag
+↕	pijl omhoog-omlaag
+↔️	pijl-links-rechts
+↔	pijl-links-rechts
+↩️	pijl naar rechts buigt naar links
+↩	pijl naar rechts buigt naar links
+↪️	pijl naar links buigt naar rechts
+↪	pijl naar links buigt naar rechts
+⤴️	pijl naar rechts buigt omhoog
+⤴	pijl naar rechts buigt omhoog
+⤵️	pijl naar rechts buigt naar beneden
+⤵	pijl naar rechts buigt naar beneden
+🔃	verticale pijlen met de klok mee
+🔄	pijltjesknop tegen de klok in
+🔙	TERUG pijl
+🔚	EINDE pijl
+🔛	AAN pijl
+🔜	BINNENKORT pijl
+🔝	BOVEN pijl
+🛐	gebedsruimte
+⚛️	atoom symbool
+⚛	atoom symbool
+🕉️	om
+🕉	om
+✡️	ster van David
+✡	ster van David
+☸️	wiel van dharma
+☸	wiel van dharma
+☯️	Yin Yang
+☯	Yin Yang
+✝️	Latijns kruis
+✝	Latijns kruis
+☦️	orthodox kruis
+☦	orthodox kruis
+☪️	ster en halve maan
+☪	ster en halve maan
+☮️	vredessymbool
+☮	vredessymbool
+🕎	menora
+🔯	gestippelde zespuntige ster
+♈	Ram
+♉	Stier
+♊	Tweeling
+♋	Kanker
+♌	Leeuw
+♍	Maagd
+♎	Weegschaal
+♏	Schorpioen
+♐	Boogschutter
+♑	Steenbok
+♒	Waterman
+♓	Vissen
+⛎	Ophiuchus
+🔀	knop voor het afspelen van nummers in willekeurige volgorde
+🔁	herhaalknop
+🔂	herhaal enkele knop
+▶️	afspeelknop
+▶	afspeelknop
+⏩	knop voor snel vooruitspoelen
+⏭️	volgende track-knop
+⏭	volgende track-knop
+⏯️	afspeel- of pauzeknop
+⏯	afspeel- of pauzeknop
+◀️	omgekeerde knop
+◀	omgekeerde knop
+⏪	snel achteruit knop
+⏮️	laatste track-knop
+⏮	laatste track-knop
+🔼	knop naar boven
+⏫	knop snel omhoog
+🔽	knop naar beneden
+⏬	knop snel omlaag
+⏸️	pauzeknop
+⏸	pauzeknop
+⏹️	stop knop
+⏹	stop knop
+⏺️	opnameknop
+⏺	opnameknop
+⏏️	uitwerpknop
+⏏	uitwerpknop
+🎦	bioscoop
+🔅	dim-knop
+🔆	heldere knop
+📶	antenne balken
+📳	vibratiemodus
+📴	mobiele telefoon uit
+♀️	vrouwelijk teken
+♀	vrouwelijk teken
+♂️	mannelijk teken
+♂	mannelijk teken
+⚕️	medisch symbool
+⚕	medisch symbool
+♾️	oneindigheid
+♾	oneindigheid
+♻️	recycling symbool
+♻	recycling symbool
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	drietand embleem
+📛	naambadge
+🔰	Japans symbool voor beginner
+⭕	zware grote cirkel
+✅	wit zwaar vinkje
+☑️	stembus met cheque
+☑	stembus met cheque
+✔️	zwaar vinkje
+✔	zwaar vinkje
+✖️	zware vermenigvuldiging x
+✖	zware vermenigvuldiging x
+❌	kruisteken
+❎	kruismarkeringsknop
+➕	zwaar plusteken
+➖	zwaar minteken
+➗	zwaar divisieteken
+➰	gekrulde lus
+➿	dubbele gekrulde lus
+〽️	merkteken voor onderdeelafwisseling
+〽	merkteken voor onderdeelafwisseling
+✳️	achtspaaks sterretje
+✳	achtspaaks sterretje
+✴️	achtpuntige ster
+✴	achtpuntige ster
+❇️	fonkeling
+❇	fonkeling
+‼️	dubbel uitroepteken
+‼	dubbel uitroepteken
+⁉️	uitroep vraagteken
+⁉	uitroep vraagteken
+❓	vraagteken
+❔	wit vraagteken
+❕	wit uitroepteken
+❗	uitroepteken
+〰️	golvend streepje
+〰	golvend streepje
+©️	auteursrechten
+©	auteursrechten
+®️	geregistreerd
+®	geregistreerd
+™️	handelsmerk
+™	handelsmerk
+#️⃣	toetskap: #
+#⃣	toetskap: #
+*️⃣	toetskap: *
+*⃣	toetskap: *
+0️⃣	toetskap: 0
+0⃣	toetskap: 0
+1️⃣	toetskap: 1
+1⃣	toetskap: 1
+2️⃣	toetskap: 2
+2⃣	toetskap: 2
+3️⃣	toetskap: 3
+3⃣	toetskap: 3
+4️⃣	toetskap: 4
+4⃣	toetskap: 4
+5️⃣	toetskap: 5
+5⃣	toetskap: 5
+6️⃣	toetskap: 6
+6⃣	toetskap: 6
+7️⃣	toetskap: 7
+7⃣	toetskap: 7
+8️⃣	toetskap: 8
+8⃣	toetskap: 8
+9️⃣	toetskap: 9
+9⃣	toetskap: 9
+🔟	toetskap: 10
+💯	honderd punten
+🔠	Latijnse hoofdletters invoeren
+🔡	invoer Latijnse kleine letters
+🔢	cijfers invoeren
+🔣	symbolen invoeren
+🔤	Latijnse letters invoeren
+🅰️	Een knop (bloedgroep)
+🅰	Een knop (bloedgroep)
+🆎	AB-knop (bloedgroep)
+🅱️	B-knop (bloedgroep)
+🅱	B-knop (bloedgroep)
+🆑	CL-knop
+🆒	KOEL-knop
+🆓	GRATIS knop
+ℹ️	informatie
+ℹ	informatie
+🆔	ID-knop
+Ⓜ️	omcirkelde M
+Ⓜ	omcirkelde M
+🆕	NIEUWE knop
+🆖	NG-knop
+🅾️	O-knop (bloedgroep)
+🅾	O-knop (bloedgroep)
+🆗	OK-knop
+🅿️	P-knop
+🅿	P-knop
+🆘	SOS-knop
+🆙	OMHOOG-knop
+🆚	VS-knop
+🈁	Japanse ‘hier’-knop
+🈂️	Japanse knop 'servicekosten'
+🈂	Japanse knop 'servicekosten'
+🈷️	Japanse knop 'maandelijks bedrag'
+🈷	Japanse knop 'maandelijks bedrag'
+🈶	Japanse knop 'niet gratis'
+🈯	Japanse "gereserveerd" knop
+🉐	Japanse 'koopje'-knop
+🈹	Japanse 'kortings'-knop
+🈚	Japanse "gratis" knop
+🈲	Japanse “verboden” knop
+🉑	Japanse knop 'acceptabel'
+🈸	Japanse ‘applicatie’-knop
+🈴	Japanse knop voor 'voldoende cijfer'
+🈳	Japanse ‘vacature’-knop
+㊗️	Japanse 'gefeliciteerd'-knop
+㊗	Japanse 'gefeliciteerd'-knop
+㊙️	Japanse “geheime” knop
+㊙	Japanse “geheime” knop
+🈺	Japanse knop 'open voor zaken'
+🈵	Japanse knop 'geen vacature'
+▪️	zwart klein vierkant
+▪	zwart klein vierkant
+▫️	wit klein vierkant
+▫	wit klein vierkant
+◻️	wit middelgroot vierkant
+◻	wit middelgroot vierkant
+◼️	zwart middelgroot vierkant
+◼	zwart middelgroot vierkant
+◽	wit middelgroot vierkant
+◾	zwart middelgroot vierkant
+⬛	zwart groot vierkant
+⬜	wit groot vierkant
+🔶	grote oranje diamant
+🔷	grote blauwe diamant
+🔸	kleine oranje diamant
+🔹	kleine blauwe diamant
+🔺	rode driehoek wijst naar boven
+🔻	rode driehoek naar beneden gericht
+💠	diamant met een stip
+🔘	Radio knop
+🔲	zwarte vierkante knop
+🔳	witte vierkante knop
+⚪	witte cirkel
+⚫	zwarte cirkel
+🔴	rode cirkel
+🔵	blauwe cirkel
+🏁	geblokte vlag
+🚩	driehoekige vlag
+🎌	gekruiste vlaggen
+🏴	zwarte vlag
+🏳️	witte vlag
+🏳	witte vlag
+🏳️‍🌈	regenboog vlag
+🏳‍🌈	regenboog vlag
+🏴‍☠️	piraten vlag
+🏴‍☠	piraten vlag
+🇦🇨	Ascension-eiland
+🇦🇩	Andorra
+🇦🇪	Verenigde Arabische Emiraten
+🇦🇫	Afghanistan
+🇦🇬	Antigua en Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albanië
+🇦🇲	Armenië
+🇦🇴	Angola
+🇦🇶	Antarctica
+🇦🇷	Argentinië
+🇦🇸	Amerikaans Samoa
+🇦🇹	Oostenrijk
+🇦🇺	Australië
+🇦🇼	Aruba
+🇦🇽	Aland-eilanden
+🇦🇿	Azerbeidzjan
+🇧🇦	Bosnië & Herzegovina
+🇧🇧	Barbados
+🇧🇩	Bangladesh
+🇧🇪	België
+🇧🇫	Burkina Faso
+🇧🇬	Bulgarije
+🇧🇭	Bahrein
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	St. Barthélemy
+🇧🇲	Bermuda
+🇧🇳	Brunei
+🇧🇴	Bolivia
+🇧🇶	Caribisch Nederland
+🇧🇷	Brazilië
+🇧🇸	Bahamas
+🇧🇹	Bhutan
+🇧🇻	Bouvet-eiland
+🇧🇼	Botswana
+🇧🇾	Wit-Rusland
+🇧🇿	Belize
+🇨🇦	Canada
+🇨🇨	Cocoseilanden (Keeling).
+🇨🇩	Congo-Kinshasa
+🇨🇫	Centraal Afrikaanse Republiek
+🇨🇬	Congo-Brazzaville
+🇨🇭	Zwitserland
+🇨🇮	Ivoorkust
+🇨🇰	Cook Eilanden
+🇨🇱	Chili
+🇨🇲	Kameroen
+🇨🇳	China
+🇨🇴	Colombia
+🇨🇵	Clipperton-eiland
+🇨🇷	Costa Rica
+🇨🇺	Cuba
+🇨🇻	Kaapverdië
+🇨🇼	Curacao
+🇨🇽	Kersteiland
+🇨🇾	Cyprus
+🇨🇿	Tsjechië
+🇩🇪	Duitsland
+🇩🇬	Diego Garcia
+🇩🇯	Djibouti
+🇩🇰	Denemarken
+🇩🇲	Dominica
+🇩🇴	Dominicaanse Republiek
+🇩🇿	Algerije
+🇪🇦	Ceuta en Melilla
+🇪🇨	Ecuador
+🇪🇪	Estland
+🇪🇬	Egypte
+🇪🇭	Westelijke Sahara
+🇪🇷	Eritrea
+🇪🇸	Spanje
+🇪🇹	Ethiopië
+🇪🇺	Europeese Unie
+🇫🇮	Finland
+🇫🇯	Fiji
+🇫🇰	Falkland Eilanden
+🇫🇲	Micronesië
+🇫🇴	Faeröer eilanden
+🇫🇷	Frankrijk
+🇬🇦	Gabon
+🇬🇧	Verenigd Koninkrijk
+🇬🇩	Grenada
+🇬🇪	Georgië
+🇬🇫	Frans-Guyana
+🇬🇬	Guernsey
+🇬🇭	Ghana
+🇬🇮	Gibraltar
+🇬🇱	Groenland
+🇬🇲	Gambia
+🇬🇳	Guinea
+🇬🇵	Guadeloupe
+🇬🇶	Equatoriaal-Guinea
+🇬🇷	Griekenland
+🇬🇸	Zuid-Georgië en Zuid-Sandwicheilanden
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinee-Bissau
+🇬🇾	Guyana
+🇭🇰	Hongkong SAR China
+🇭🇲	Heard- en McDonaldeilanden
+🇭🇳	Honduras
+🇭🇷	Kroatië
+🇭🇹	Haïti
+🇭🇺	Hongarije
+🇮🇨	Canarische eilanden
+🇮🇩	Indonesië
+🇮🇪	Ierland
+🇮🇱	Israël
+🇮🇲	Eiland Man
+🇮🇳	Indië
+🇮🇴	Brits-Indisch oceaan gebied
+🇮🇶	Irak
+🇮🇷	Iran
+🇮🇸	IJsland
+🇮🇹	Italië
+🇯🇪	Jersey
+🇯🇲	Jamaica
+🇯🇴	Jordanië
+🇯🇵	Japan
+🇰🇪	Kenia
+🇰🇬	Kirgizië
+🇰🇭	Cambodja
+🇰🇮	Kiribati
+🇰🇲	Comoren
+🇰🇳	St. Kitts en Nevis
+🇰🇵	Noord Korea
+🇰🇷	Zuid-Korea
+🇰🇼	Koeweit
+🇰🇾	Kaaiman Eilanden
+🇰🇿	Kazachstan
+🇱🇦	Laos
+🇱🇧	Libanon
+🇱🇨	St Lucia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Liberia
+🇱🇸	Lesotho
+🇱🇹	Litouwen
+🇱🇺	Luxemburg
+🇱🇻	Letland
+🇱🇾	Libië
+🇲🇦	Marokko
+🇲🇨	Monaco
+🇲🇩	Moldavië
+🇲🇪	Montenegro
+🇲🇫	Sint Maarten
+🇲🇬	Madagascar
+🇲🇭	Marshall eilanden
+🇲🇰	Macedonië
+🇲🇱	Mali
+🇲🇲	Myanmar (Birma)
+🇲🇳	Mongolië
+🇲🇴	Macau SAR China
+🇲🇵	noordelijke Mariana eilanden
+🇲🇶	Martinique
+🇲🇷	Mauritanië
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mauritius
+🇲🇻	Maldiven
+🇲🇼	Malawi
+🇲🇽	Mexico
+🇲🇾	Maleisië
+🇲🇿	Mozambique
+🇳🇦	Namibië
+🇳🇨	Nieuw-Caledonië
+🇳🇪	Niger
+🇳🇫	Norfolkeiland
+🇳🇬	Nigeria
+🇳🇮	Nicaragua
+🇳🇱	Nederland
+🇳🇴	Noorwegen
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Nieuw-Zeeland
+🇴🇲	Oman
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Frans-Polynesië
+🇵🇬	Papoea-Nieuw-Guinea
+🇵🇭	Filippijnen
+🇵🇰	Pakistan
+🇵🇱	Polen
+🇵🇲	St. Pierre & Miquelon
+🇵🇳	Pitcairneilanden
+🇵🇷	Puerto Rico
+🇵🇸	Palestijnse grondgebieden
+🇵🇹	Portugal
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Katar
+🇷🇪	Bijeenkomst
+🇷🇴	Roemenië
+🇷🇸	Servië
+🇷🇺	Rusland
+🇷🇼	Rwanda
+🇸🇦	Saoedi-Arabië
+🇸🇧	Solomon eilanden
+🇸🇨	Seychellen
+🇸🇩	Soedan
+🇸🇪	Zweden
+🇸🇬	Singapore
+🇸🇭	Sint-Helena
+🇸🇮	Slovenië
+🇸🇯	Spitsbergen en Jan Mayen
+🇸🇰	Slowakije
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somalië
+🇸🇷	Suriname
+🇸🇸	Zuid Soedan
+🇸🇹	Sao Tomé en Principe
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Syrië
+🇸🇿	Swaziland
+🇹🇦	Tristan da Cunha
+🇹🇨	Turks- en Caicoseilanden
+🇹🇩	Tsjaad
+🇹🇫	Franse zuidelijke gebieden
+🇹🇬	Gaan
+🇹🇭	Thailand
+🇹🇯	Tadzjikistan
+🇹🇰	Tokelau
+🇹🇱	Oost-Timor
+🇹🇲	Turkmenistan
+🇹🇳	Tunesië
+🇹🇴	Tonga
+🇹🇷	Kalkoen
+🇹🇹	Trinidad & Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taiwan
+🇹🇿	Tanzania
+🇺🇦	Oekraïne
+🇺🇬	Oeganda
+🇺🇲	Amerikaanse afgelegen eilanden
+🇺🇳	Verenigde Naties
+🇺🇸	Verenigde Staten
+🇺🇾	Uruguay
+🇺🇿	Oezbekistan
+🇻🇦	Vaticaanstad
+🇻🇨	St. Vincent en de Grenadines
+🇻🇪	Venezuela
+🇻🇬	Britse Maagdeneilanden
+🇻🇮	Amerikaanse Maagdeneilanden
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis & Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Jemen
+🇾🇹	Mayotte
+🇿🇦	Zuid-Afrika
+🇿🇲	Zambia
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Engeland
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Schotland
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Wales

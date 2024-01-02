@@ -1,0 +1,3570 @@
+😀	jilmaygan yuz
+😁	jilmayib turgan ko'zlari bilan porlayotgan yuz
+😂	quvonch ko'z yoshlari bilan yuz
+🤣	polda dumalab kulib
+😃	katta ko'zlari bilan jilmaygan yuz
+😄	jilmaygan ko'zlari bilan jilmaygan yuz
+😅	terdan jilmaygan yuz
+😆	jilmaygan ko'zlarini qisib qo'ygan yuz
+😉	ko'z qisib qo'ygan yuz
+😊	tabassumli ko'zlar bilan tabassum
+😋	ovqatdan lazzatlanadigan yuz
+😎	quyoshdan saqlaydigan ko'zoynakli tabassumli yuz
+😍	yurak ko'zlari bilan kulayotgan yuz
+😘	yuz o'padi
+🥰	3 ta yurakli tabassumli yuz
+😗	o'padigan yuz
+😙	jilmaygan ko'zlari bilan o'payotgan yuz
+😚	yopiq ko'zlari bilan o'padigan yuz
+☺️	jilmaygan yuz
+☺	jilmaygan yuz
+🙂	biroz jilmaygan yuz
+🤗	quchoqlagan yuz
+🤩	yulduzli
+🤔	fikrlaydigan yuz
+🤨	ko'tarilgan qoshli yuz
+😐	neytral yuz
+😑	ifodasiz yuz
+😶	og'izsiz yuz
+🙄	ko'zlari aylanayotgan yuz
+😏	jilmaygan yuz
+😣	sabrli yuz
+😥	g'amgin, ammo yengil tortilgan yuz
+😮	ochiq og'iz bilan yuz
+🤐	fermuarli og'iz yuzi
+😯	jim yuz
+😪	uyqusiragan yuz
+😫	charchagan yuz
+😴	uxlayotgan yuz
+😌	yengillashgan yuz
+😛	til bilan yuz
+😜	til bilan ko'z qisib qo'ygan yuz
+😝	til bilan qisiq yuz
+🤤	oqayotgan yuz
+😒	bezovtalanmagan yuz
+😓	terga botgan yuz
+😔	o'ychan yuz
+😕	chalkash yuz
+🙃	teskari yuz
+🤑	pul og'iz yuzi
+😲	hayratda qolgan yuz
+☹️	qovog'i chimirgan yuz
+☹	qovog'i chimirgan yuz
+🙁	biroz qovog'ini chimirgan yuz
+😖	chalkash yuz
+😞	hafsalasi pir bo'lgan yuz
+😟	tashvishli yuz
+😤	burundan bug 'bilan yuz
+😢	yig'layotgan yuz
+😭	baland ovozda yig'layotgan yuz
+😦	ochiq og'iz bilan qoshlarini chimirgan yuz
+😧	alamli yuz
+😨	qo'rqinchli yuz
+😩	charchagan yuz
+🤯	portlovchi bosh
+😬	jimirlagan yuz
+😰	xavotirli yuz ter bilan
+😱	qo'rquvdan qichqirayotgan yuz
+🥵	issiq yuz
+🥶	sovuq yuz
+😳	qizarib ketgan yuz
+🤪	noaniq yuz
+😵	bosh aylanishi
+😡	qichqiruvchi yuz
+😠	g'azablangan yuz
+🤬	og'zida belgilar bilan yuz
+😷	tibbiy niqob bilan yuz
+🤒	termometr bilan yuz
+🤕	bosh bandaj bilan yuz
+🤢	ko'ngil aynigan yuz
+🤮	yuz qusish
+🤧	hapşırma yuzi
+😇	halo bilan jilmaygan yuz
+🤠	kovboy shlyapasi yuzi
+🥳	ziyofat yuzi
+🥴	xira yuz
+🥺	iltimos qiluvchi yuz
+🤥	yolg'on yuz
+🤫	jimirlagan yuz
+🤭	qo'lni og'ziga tutgan yuz
+🧐	monokl bilan yuz
+🤓	nodon yuz
+😈	shoxli jilmaygan yuz
+👿	shoxli g'azablangan yuz
+🤡	masxaraboz yuz
+👹	ogre
+👺	goblin
+💀	bosh suyagi
+☠️	bosh suyagi va ko'ndalang suyaklar
+☠	bosh suyagi va ko'ndalang suyaklar
+👻	sharpa
+👽	begona
+👾	begona yirtqich hayvon
+🤖	robot yuzi
+💩	axlat uyumi
+😺	jilmaygan mushuk yuzi
+😸	jilmaygan ko'zlari bilan mushuk yuzi
+😹	quvonch ko'z yoshlari bilan mushuk yuzi
+😻	yurak ko'zlari bilan jilmaygan mushuk yuzi
+😼	achchiq tabassum bilan mushuk yuzi
+😽	o'pish mushuk yuzi
+🙀	charchagan mushuk yuzi
+😿	yig'layotgan mushuk yuzi
+😾	mushuk yuzini so'kib
+🙈	ko'r-yomon maymun
+🙉	eshitmoq-yomon-yomon maymun
+🙊	gapirmaydigan maymun
+🏻	ochiq teri rangi
+🏼	o'rtacha och teri rangi
+🏽	o'rtacha teri rangi
+🏾	o'rtacha to'q teri rangi
+🏿	qora teri rangi
+👶	chaqaloq
+👶🏻	chaqaloq: ochiq teri rangi
+👶🏼	chaqaloq: o'rtacha och teri rangi
+👶🏽	chaqaloq: o'rtacha teri rangi
+👶🏾	chaqaloq: o'rtacha to'q teri rangi
+👶🏿	chaqaloq: qora teri rangi
+🧒	bola
+🧒🏻	bola: ochiq teri rangi
+🧒🏼	bola: o'rtacha och teri rangi
+🧒🏽	bola: o'rtacha teri rangi
+🧒🏾	bola: o'rtacha to'q teri rangi
+🧒🏿	bola: qora teri rangi
+👦	yigit
+👦🏻	bola: ochiq teri rangi
+👦🏼	O'g'il bola: o'rta-ochiq teri rangi
+👦🏽	O'g'il bola: o'rtacha teri rangi
+👦🏾	O'g'il bola: o'rta-to'q teri rangi
+👦🏿	O'g'il: qora teri
+👧	qiz
+👧🏻	qiz: ochiq teri rangi
+👧🏼	qiz: o'rtacha och teri rangi
+👧🏽	qiz: o'rtacha teri rangi
+👧🏾	qiz: o'rtacha to'q teri rangi
+👧🏿	qiz: qora teri
+🧑	kattalar
+🧑🏻	kattalar: ochiq teri rangi
+🧑🏼	kattalar: o'rtacha och teri rangi
+🧑🏽	kattalar: o'rtacha teri rangi
+🧑🏾	kattalar: o'rtacha to'q teri rangi
+🧑🏿	kattalar: qora teri rangi
+👨	kishi
+👨🏻	erkak: ochiq teri rangi
+👨🏼	erkak: o'rtacha och teri rangi
+👨🏽	erkak: o'rtacha teri rangi
+👨🏾	erkak: o'rtacha to'q teri rangi
+👨🏿	erkak: qora teri rangi
+👩	ayol
+👩🏻	ayol: ochiq teri rangi
+👩🏼	ayol: o'rtacha och teri rangi
+👩🏽	ayol: o'rtacha teri rangi
+👩🏾	ayol: o'rtacha to'q teri rangi
+👩🏿	ayol: qora teri rangi
+🧓	yoshi katta
+🧓🏻	yoshi kattalar: ochiq teri rangi
+🧓🏼	yoshi kattalar: o'rtacha och teri rangi
+🧓🏽	yoshi kattalar: o'rtacha teri rangi
+🧓🏾	yoshi kattalar: o'rtacha to'q teri rangi
+🧓🏿	yoshi kattalar: qora teri rangi
+👴	keksa
+👴🏻	keksa odam: ochiq teri rangi
+👴🏼	keksa odam: o'rtacha och teri tonu
+👴🏽	keksa odam: o'rtacha teri rangi
+👴🏾	keksa odam: o'rtacha to'q teri rangi
+👴🏿	keksa odam: qora teri
+👵	qari ayol
+👵🏻	kampir: ochiq teri rangi
+👵🏼	keksa ayol: o'rtacha och teri tonu
+👵🏽	keksa ayol: o'rtacha teri rangi
+👵🏾	keksa ayol: o'rtacha to'q teri rangi
+👵🏿	keksa ayol: to'q teri
+👨‍⚕️	erkak sog'liqni saqlash xodimi
+👨‍⚕	erkak sog'liqni saqlash xodimi
+👨🏻‍⚕️	erkak tibbiyot xodimi: ochiq teri rangi
+👨🏻‍⚕	erkak tibbiyot xodimi: ochiq teri rangi
+👨🏼‍⚕️	erkak sog'liqni saqlash xodimi: o'rtacha och teri rangi
+👨🏼‍⚕	erkak sog'liqni saqlash xodimi: o'rtacha och teri rangi
+👨🏽‍⚕️	erkak tibbiyot xodimi: o'rtacha teri rangi
+👨🏽‍⚕	erkak tibbiyot xodimi: o'rtacha teri rangi
+👨🏾‍⚕️	erkak sog'liqni saqlash xodimi: o'rtacha to'q teri rangi
+👨🏾‍⚕	erkak sog'liqni saqlash xodimi: o'rtacha to'q teri rangi
+👨🏿‍⚕️	erkak sog'liqni saqlash xodimi: qora teri rangi
+👨🏿‍⚕	erkak sog'liqni saqlash xodimi: qora teri rangi
+👩‍⚕️	ayol tibbiyot xodimi
+👩‍⚕	ayol tibbiyot xodimi
+👩🏻‍⚕️	ayol tibbiyot xodimi: ochiq teri rangi
+👩🏻‍⚕	ayol tibbiyot xodimi: ochiq teri rangi
+👩🏼‍⚕️	ayol tibbiyot xodimi: o'rtacha och teri rangi
+👩🏼‍⚕	ayol tibbiyot xodimi: o'rtacha och teri rangi
+👩🏽‍⚕️	ayol tibbiyot xodimi: o'rtacha teri rangi
+👩🏽‍⚕	ayol tibbiyot xodimi: o'rtacha teri rangi
+👩🏾‍⚕️	ayol tibbiyot xodimi: o'rtacha to'q teri rangi
+👩🏾‍⚕	ayol tibbiyot xodimi: o'rtacha to'q teri rangi
+👩🏿‍⚕️	ayol tibbiyot xodimi: qora teri rangi
+👩🏿‍⚕	ayol tibbiyot xodimi: qora teri rangi
+👨‍🎓	erkak talaba
+👨🏻‍🎓	erkak talaba: ochiq teri rangi
+👨🏼‍🎓	erkak talaba: o'rtacha och teri rangi
+👨🏽‍🎓	erkak talaba: o‘rta teri rangi
+👨🏾‍🎓	erkak talaba: o‘rta-to‘q teri rangi
+👨🏿‍🎓	erkak talaba: qora teri rangi
+👩‍🎓	talaba ayol
+👩🏻‍🎓	talaba ayol: ochiq teri rangi
+👩🏼‍🎓	talaba ayol: o'rtacha och teri rangi
+👩🏽‍🎓	talaba ayol: o‘rtacha teri rangi
+👩🏾‍🎓	talaba ayol: o‘rta-to‘q teri rangi
+👩🏿‍🎓	ayol talaba: qora teri rangi
+👨‍🏫	erkak o'qituvchi
+👨🏻‍🏫	erkak o'qituvchi: ochiq teri rangi
+👨🏼‍🏫	erkak o'qituvchi: o'rtacha och teri rangi
+👨🏽‍🏫	erkak o'qituvchi: o'rta teri rangi
+👨🏾‍🏫	erkak o'qituvchi: o'rtacha to'q teri rangi
+👨🏿‍🏫	erkak o'qituvchi: qora teri rangi
+👩‍🏫	ayol o'qituvchi
+👩🏻‍🏫	ayol o'qituvchi: ochiq teri rangi
+👩🏼‍🏫	ayol o'qituvchi: o'rtacha och teri rangi
+👩🏽‍🏫	ayol o'qituvchi: o'rta teri
+👩🏾‍🏫	ayol o'qituvchi: o'rtacha to'q teri rangi
+👩🏿‍🏫	ayol o'qituvchi: qora teri rangi
+👨‍⚖️	odam hakam
+👨‍⚖	odam hakam
+👨🏻‍⚖️	erkak hakam: ochiq teri rangi
+👨🏻‍⚖	erkak hakam: ochiq teri rangi
+👨🏼‍⚖️	erkak hakam: o'rta-och teri rangi
+👨🏼‍⚖	erkak hakam: o'rta-och teri rangi
+👨🏽‍⚖️	erkak hakam: o‘rta teri
+👨🏽‍⚖	erkak hakam: o‘rta teri
+👨🏾‍⚖️	erkak hakam: o‘rta-to‘q teri tonu
+👨🏾‍⚖	erkak hakam: o‘rta-to‘q teri tonu
+👨🏿‍⚖️	erkak hakam: to'q teri
+👨🏿‍⚖	erkak hakam: to'q teri
+👩‍⚖️	ayol sudya
+👩‍⚖	ayol sudya
+👩🏻‍⚖️	ayol sudya: ochiq teri rangi
+👩🏻‍⚖	ayol sudya: ochiq teri rangi
+👩🏼‍⚖️	ayol sudya: o'rta-ochiq teri rangi
+👩🏼‍⚖	ayol sudya: o'rta-ochiq teri rangi
+👩🏽‍⚖️	ayol sudya: o‘rta teri
+👩🏽‍⚖	ayol sudya: o‘rta teri
+👩🏾‍⚖️	ayol sudya: o‘rta-to‘q teri tonu
+👩🏾‍⚖	ayol sudya: o‘rta-to‘q teri tonu
+👩🏿‍⚖️	ayol hakam: to'q teri
+👩🏿‍⚖	ayol hakam: to'q teri
+👨‍🌾	dehqon odam
+👨🏻‍🌾	dehqon odam: ochiq teri rangi
+👨🏼‍🌾	dehqon odam: o'rta-och teri rangi
+👨🏽‍🌾	dehqon odam: o‘rta teri rangi
+👨🏾‍🌾	dehqon odam: o‘rtacha to‘q teri tonu
+👨🏿‍🌾	dehqon odam: to'q teri
+👩‍🌾	fermer ayol
+👩🏻‍🌾	Fermer ayol: ochiq teri rangi
+👩🏼‍🌾	dehqon ayol: o'rtacha och teri rangi
+👩🏽‍🌾	dehqon ayol: o‘rta teri
+👩🏾‍🌾	dehqon ayol: o‘rta-to‘q teri
+👩🏿‍🌾	fermer ayol: to'q teri
+👨‍🍳	odam oshpaz
+👨🏻‍🍳	erkak oshpaz: ochiq teri rangi
+👨🏼‍🍳	erkak oshpaz: o‘rta-och teri rangi
+👨🏽‍🍳	erkak oshpaz: o‘rta teri
+👨🏾‍🍳	erkak oshpaz: o‘rta-to‘q teri rangi
+👨🏿‍🍳	erkak oshpaz: qora teri rangi
+👩‍🍳	ayol oshpaz
+👩🏻‍🍳	oshpaz ayol: ochiq teri rangi
+👩🏼‍🍳	ayol oshpaz: o'rtacha och teri rangi
+👩🏽‍🍳	oshpaz ayol: o‘rta teri rangi
+👩🏾‍🍳	oshpaz ayol: o'rta-to'q teri rangi
+👩🏿‍🍳	ayol oshpaz: qora teri rangi
+👨‍🔧	odam mexanik
+👨🏻‍🔧	erkak mexanik: ochiq teri rangi
+👨🏼‍🔧	erkak mexanik: o'rta-och teri rangi
+👨🏽‍🔧	erkak mexanik: o‘rta teri
+👨🏾‍🔧	erkak mexanik: o‘rta-to‘q teri
+👨🏿‍🔧	erkak mexanik: to'q teri
+👩‍🔧	ayol mexanik
+👩🏻‍🔧	Mexanik ayol: ochiq teri rangi
+👩🏼‍🔧	Mexanik ayol: o'rtacha och teri tonu
+👩🏽‍🔧	ayol mexanik: o'rta teri
+👩🏾‍🔧	Mexanik ayol: o'rta-to'q teri
+👩🏿‍🔧	ayol mexanik: to'q teri
+👨‍🏭	zavod ishchisi
+👨🏻‍🏭	erkak fabrika ishchisi: ochiq teri rangi
+👨🏼‍🏭	erkak fabrika ishchisi: o'rtacha och teri rangi
+👨🏽‍🏭	erkak fabrika ishchisi: o'rta teri rangi
+👨🏾‍🏭	erkak fabrika ishchisi: o'rtacha to'q teri rangi
+👨🏿‍🏭	erkak fabrika ishchisi: qora tanli
+👩‍🏭	ayol zavod ishchisi
+👩🏻‍🏭	ayol fabrika ishchisi: ochiq teri rangi
+👩🏼‍🏭	ayol fabrika ishchisi: o'rta-ochiq teri rangi
+👩🏽‍🏭	ayol fabrika ishchisi: o'rta teri
+👩🏾‍🏭	ayol fabrika ishchisi: o'rtacha to'q teri
+👩🏿‍🏭	ayol fabrika ishchisi: qora teri
+👨‍💼	odam ofis xodimi
+👨🏻‍💼	erkak ofis xodimi: ochiq teri rangi
+👨🏼‍💼	erkak ofis xodimi: o'rta-ochiq teri rangi
+👨🏽‍💼	erkak ofis xodimi: o'rta teri
+👨🏾‍💼	erkak ofis xodimi: o'rtacha to'q teri
+👨🏿‍💼	erkak ofis xodimi: to'q teri
+👩‍💼	ayol ofis xodimi
+👩🏻‍💼	ayol ofis ishchisi: ochiq teri
+👩🏼‍💼	ayol ofis ishchisi: o'rta-ochiq teri rangi
+👩🏽‍💼	ayol ofis ishchisi: o'rta teri
+👩🏾‍💼	ayol ofis xodimi: o'rta-to'q teri
+👩🏿‍💼	ayol ofis ishchisi: to'q teri
+👨‍🔬	odam olim
+👨🏻‍🔬	erkak olim: ochiq teri rangi
+👨🏼‍🔬	erkak olim: o'rtacha och teri rangi
+👨🏽‍🔬	erkak olim: o'rta teri rangi
+👨🏾‍🔬	erkak olim: o'rtacha to'q teri rangi
+👨🏿‍🔬	erkak olim: qora teri rangi
+👩‍🔬	ayol olim
+👩🏻‍🔬	ayol olim: ochiq teri rangi
+👩🏼‍🔬	ayol olim: o'rtacha och teri rangi
+👩🏽‍🔬	ayol olim: o'rtacha teri rangi
+👩🏾‍🔬	ayol olim: o'rtacha to'q teri rangi
+👩🏿‍🔬	ayol olim: qora teri rangi
+👨‍💻	odam texnolog
+👨🏻‍💻	texnolog erkak: ochiq teri rangi
+👨🏼‍💻	texnolog erkak: o'rtacha och teri rangi
+👨🏽‍💻	texnolog erkak: o'rta teri rangi
+👨🏾‍💻	texnolog erkak: o'rtacha to'q teri rangi
+👨🏿‍💻	texnolog erkak: qora teri rangi
+👩‍💻	ayol texnolog
+👩🏻‍💻	texnolog ayol: ochiq teri rangi
+👩🏼‍💻	texnolog ayol: o'rta-ochiq teri rangi
+👩🏽‍💻	texnolog ayol: o'rta teri rangi
+👩🏾‍💻	texnolog ayol: o'rtacha to'q teri tonu
+👩🏿‍💻	texnolog ayol: to'q teri
+👨‍🎤	erkak qo'shiqchi
+👨🏻‍🎤	erkak qo'shiqchi: ochiq teri ohangi
+👨🏼‍🎤	erkak qo'shiqchi: o'rta-ochiq teri rangi
+👨🏽‍🎤	erkak qo'shiqchi: o'rta teri
+👨🏾‍🎤	erkak qo'shiqchi: o'rtacha to'q teri
+👨🏿‍🎤	erkak qo'shiqchi: to'q teri ohangi
+👩‍🎤	ayol qo'shiqchi
+👩🏻‍🎤	ayol qo'shiqchi: ochiq teri ohangi
+👩🏼‍🎤	ayol qo'shiqchi: o'rta-och teri rangi
+👩🏽‍🎤	ayol qo'shiqchi: o'rta teri
+👩🏾‍🎤	ayol qo'shiqchi: o'rtacha to'q teri
+👩🏿‍🎤	ayol qo'shiqchi: to'q teri ohangi
+👨‍🎨	rassom odam
+👨🏻‍🎨	erkak rassom: ochiq teri rangi
+👨🏼‍🎨	erkak rassom: o‘rta-och teri rangi
+👨🏽‍🎨	erkak rassom: o‘rta teri
+👨🏾‍🎨	erkak rassom: o‘rta-to‘q teri
+👨🏿‍🎨	erkak rassom: to'q teri
+👩‍🎨	ayol rassom
+👩🏻‍🎨	ayol rassom: ochiq teri rangi
+👩🏼‍🎨	ayol rassom: o'rtacha och teri rangi
+👩🏽‍🎨	ayol rassom: o'rta teri
+👩🏾‍🎨	ayol rassom: o'rta-to'q teri
+👩🏿‍🎨	ayol rassom: to'q teri
+👨‍✈️	erkak uchuvchi
+👨‍✈	erkak uchuvchi
+👨🏻‍✈️	erkak uchuvchi: ochiq teri ohangi
+👨🏻‍✈	erkak uchuvchi: ochiq teri ohangi
+👨🏼‍✈️	erkak uchuvchi: o'rta och teri rangi
+👨🏼‍✈	erkak uchuvchi: o'rta och teri rangi
+👨🏽‍✈️	erkak uchuvchi: o‘rta teri
+👨🏽‍✈	erkak uchuvchi: o‘rta teri
+👨🏾‍✈️	erkak uchuvchi: o‘rta-to‘q teri
+👨🏾‍✈	erkak uchuvchi: o‘rta-to‘q teri
+👨🏿‍✈️	erkak uchuvchi: to'q teri
+👨🏿‍✈	erkak uchuvchi: to'q teri
+👩‍✈️	ayol uchuvchi
+👩‍✈	ayol uchuvchi
+👩🏻‍✈️	uchuvchi ayol: och teri tonu
+👩🏻‍✈	uchuvchi ayol: och teri tonu
+👩🏼‍✈️	ayol uchuvchi: o'rta och teri rangi
+👩🏼‍✈	ayol uchuvchi: o'rta och teri rangi
+👩🏽‍✈️	uchuvchi ayol: o‘rta teri
+👩🏽‍✈	uchuvchi ayol: o‘rta teri
+👩🏾‍✈️	uchuvchi ayol: o'rta-to'q teri
+👩🏾‍✈	uchuvchi ayol: o'rta-to'q teri
+👩🏿‍✈️	ayol uchuvchi: to'q teri
+👩🏿‍✈	ayol uchuvchi: to'q teri
+👨‍🚀	odam kosmonavt
+👨🏻‍🚀	erkak kosmonavt: ochiq teri ohangi
+👨🏼‍🚀	odam kosmonavt: o'rta och teri rangi
+👨🏽‍🚀	erkak kosmonavt: o‘rta teri
+👨🏾‍🚀	erkak kosmonavt: o‘rta to‘q teri ohangi
+👨🏿‍🚀	odam kosmonavt: to'q teri
+👩‍🚀	ayol kosmonavt
+👩🏻‍🚀	ayol kosmonavt: ochiq teri ohangi
+👩🏼‍🚀	ayol kosmonavt: o‘rta-ochiq teri rangi
+👩🏽‍🚀	ayol kosmonavt: o‘rta teri
+👩🏾‍🚀	ayol kosmonavt: o‘rta to‘q teri
+👩🏿‍🚀	ayol kosmonavt: to'q teri
+👨‍🚒	odam o't o'chiruvchi
+👨🏻‍🚒	erkak o't o'chiruvchi: ochiq teri ohangi
+👨🏼‍🚒	erkak o‘t o‘chiruvchi: o‘rta-och teri rangi
+👨🏽‍🚒	erkak o't o'chiruvchi: o'rta teri
+👨🏾‍🚒	erkak o't o'chiruvchi: o'rtacha to'q teri
+👨🏿‍🚒	erkak o't o'chiruvchi: to'q teri
+👩‍🚒	ayol o't o'chiruvchi
+👩🏻‍🚒	ayol o't o'chiruvchi: och teri ohangi
+👩🏼‍🚒	ayol o't o'chiruvchi: o'rta-och teri rangi
+👩🏽‍🚒	o't o'chiruvchi ayol: o'rta teri
+👩🏾‍🚒	ayol o't o'chiruvchi: o'rta-to'q teri
+👩🏿‍🚒	ayol o't o'chiruvchi: to'q teri
+👮	militsiya hodimi
+👮🏻	politsiya xodimi: ochiq teri rangi
+👮🏼	politsiya xodimi: o'rta-ochiq teri rangi
+👮🏽	politsiyachi: o‘rta teri
+👮🏾	politsiyachi: o'rta-to'q teri
+👮🏿	politsiya xodimi: to'q teri
+👮‍♂️	erkak politsiyachi
+👮‍♂	erkak politsiyachi
+👮🏻‍♂️	erkak politsiyachi: ochiq teri ohangi
+👮🏻‍♂	erkak politsiyachi: ochiq teri ohangi
+👮🏼‍♂️	erkak politsiyachi: o‘rta-ochiq teri rangi
+👮🏼‍♂	erkak politsiyachi: o‘rta-ochiq teri rangi
+👮🏽‍♂️	erkak politsiyachi: o‘rta teri
+👮🏽‍♂	erkak politsiyachi: o‘rta teri
+👮🏾‍♂️	erkak politsiyachi: o‘rta-to‘q teri
+👮🏾‍♂	erkak politsiyachi: o‘rta-to‘q teri
+👮🏿‍♂️	erkak politsiyachi: to'q teri
+👮🏿‍♂	erkak politsiyachi: to'q teri
+👮‍♀️	ayol politsiyachi
+👮‍♀	ayol politsiyachi
+👮🏻‍♀️	ayol politsiyachi: ochiq teri ohangi
+👮🏻‍♀	ayol politsiyachi: ochiq teri ohangi
+👮🏼‍♀️	ayol politsiyachi: o'rta-ochiq teri rangi
+👮🏼‍♀	ayol politsiyachi: o'rta-ochiq teri rangi
+👮🏽‍♀️	ayol politsiyachi: o‘rta teri
+👮🏽‍♀	ayol politsiyachi: o‘rta teri
+👮🏾‍♀️	ayol politsiyachi: o'rta-to'q teri
+👮🏾‍♀	ayol politsiyachi: o'rta-to'q teri
+👮🏿‍♀️	ayol politsiyachi: to'q teri
+👮🏿‍♀	ayol politsiyachi: to'q teri
+🕵️	detektiv
+🕵	detektiv
+🕵🏻	detektiv: ochiq teri ohangi
+🕵🏼	detektiv: o'rtacha och teri rangi
+🕵🏽	detektiv: o‘rta teri tonu
+🕵🏾	detektiv: o‘rta-to‘q teri rangi
+🕵🏿	detektiv: qora teri
+🕵️‍♂️	odam detektiv
+🕵‍♂️	odam detektiv
+🕵️‍♂	odam detektiv
+🕵‍♂	odam detektiv
+🕵🏻‍♂️	detektiv erkak: ochiq teri ohangi
+🕵🏻‍♂	detektiv erkak: ochiq teri ohangi
+🕵🏼‍♂️	detektiv erkak: o‘rta och teri tonu
+🕵🏼‍♂	detektiv erkak: o‘rta och teri tonu
+🕵🏽‍♂️	detektiv erkak: o‘rta teri
+🕵🏽‍♂	detektiv erkak: o‘rta teri
+🕵🏾‍♂️	erkak detektiv: o‘rta-to‘q teri
+🕵🏾‍♂	erkak detektiv: o‘rta-to‘q teri
+🕵🏿‍♂️	detektiv odam: to'q teri
+🕵🏿‍♂	detektiv odam: to'q teri
+🕵️‍♀️	detektiv ayol
+🕵‍♀️	detektiv ayol
+🕵️‍♀	detektiv ayol
+🕵‍♀	detektiv ayol
+🕵🏻‍♀️	detektiv ayol: ochiq teri ohangi
+🕵🏻‍♀	detektiv ayol: ochiq teri ohangi
+🕵🏼‍♀️	detektiv ayol: oʻrtacha och teri rangi
+🕵🏼‍♀	detektiv ayol: oʻrtacha och teri rangi
+🕵🏽‍♀️	detektiv ayol: o‘rta teri
+🕵🏽‍♀	detektiv ayol: o‘rta teri
+🕵🏾‍♀️	detektiv ayol: oʻrtacha toʻq teri
+🕵🏾‍♀	detektiv ayol: oʻrtacha toʻq teri
+🕵🏿‍♀️	detektiv ayol: to'q teri
+🕵🏿‍♀	detektiv ayol: to'q teri
+💂	qo'riqchi
+💂🏻	qo'riqchi: ochiq teri rangi
+💂🏼	qo'riqchi: o'rtacha och teri rangi
+💂🏽	qo'riqchi: o'rtacha teri rangi
+💂🏾	qo'riqchi: o'rtacha to'q teri rangi
+💂🏿	qo'riqchi: to'q teri rangi
+💂‍♂️	odam qo'riqchi
+💂‍♂	odam qo'riqchi
+💂🏻‍♂️	erkak qorovul: ochiq teri tonu
+💂🏻‍♂	erkak qorovul: ochiq teri tonu
+💂🏼‍♂️	erkak qorovul: o'rtacha och teri rangi
+💂🏼‍♂	erkak qorovul: o'rtacha och teri rangi
+💂🏽‍♂️	erkak qorovul: o'rta teri
+💂🏽‍♂	erkak qorovul: o'rta teri
+💂🏾‍♂️	erkak qorovul: o'rta-to'q teri
+💂🏾‍♂	erkak qorovul: o'rta-to'q teri
+💂🏿‍♂️	erkak qorovul: to'q teri
+💂🏿‍♂	erkak qorovul: to'q teri
+💂‍♀️	ayol qo'riqchi
+💂‍♀	ayol qo'riqchi
+💂🏻‍♀️	ayol qorovul: och teri tonu
+💂🏻‍♀	ayol qorovul: och teri tonu
+💂🏼‍♀️	ayol qorovul: o'rtacha och teri rangi
+💂🏼‍♀	ayol qorovul: o'rtacha och teri rangi
+💂🏽‍♀️	qorovul ayol: o'rta teri
+💂🏽‍♀	qorovul ayol: o'rta teri
+💂🏾‍♀️	ayol qorovul: o'rta-to'q teri
+💂🏾‍♀	ayol qorovul: o'rta-to'q teri
+💂🏿‍♀️	ayol qorovul: to'q teri
+💂🏿‍♀	ayol qorovul: to'q teri
+👷	qurilish ishchi
+👷🏻	qurilish ishchisi: ochiq teri rangi
+👷🏼	qurilish ishchisi: o'rtacha och teri rangi
+👷🏽	qurilish ishchisi: o'rtacha teri rangi
+👷🏾	qurilish ishchisi: o'rtacha to'q teri rangi
+👷🏿	qurilish ishchisi: qora tanli
+👷‍♂️	erkak qurilish ishchisi
+👷‍♂	erkak qurilish ishchisi
+👷🏻‍♂️	erkak qurilish ishchisi: ochiq teri rangi
+👷🏻‍♂	erkak qurilish ishchisi: ochiq teri rangi
+👷🏼‍♂️	erkak qurilish ishchisi: o'rta-ochiq teri rangi
+👷🏼‍♂	erkak qurilish ishchisi: o'rta-ochiq teri rangi
+👷🏽‍♂️	erkak qurilish ishchisi: o‘rta teri
+👷🏽‍♂	erkak qurilish ishchisi: o‘rta teri
+👷🏾‍♂️	erkak qurilish ishchisi: o'rta-to'q teri
+👷🏾‍♂	erkak qurilish ishchisi: o'rta-to'q teri
+👷🏿‍♂️	qurilish ishchisi: qora teri
+👷🏿‍♂	qurilish ishchisi: qora teri
+👷‍♀️	ayol qurilish ishchisi
+👷‍♀	ayol qurilish ishchisi
+👷🏻‍♀️	ayol qurilish ishchisi: ochiq teri rangi
+👷🏻‍♀	ayol qurilish ishchisi: ochiq teri rangi
+👷🏼‍♀️	ayol qurilish ishchisi: o'rta-ochiq teri rangi
+👷🏼‍♀	ayol qurilish ishchisi: o'rta-ochiq teri rangi
+👷🏽‍♀️	qurilishchi ayol: o'rta teri
+👷🏽‍♀	qurilishchi ayol: o'rta teri
+👷🏾‍♀️	ayol qurilish ishchisi: o'rtacha to'q teri
+👷🏾‍♀	ayol qurilish ishchisi: o'rtacha to'q teri
+👷🏿‍♀️	ayol qurilish ishchisi: qora teri
+👷🏿‍♀	ayol qurilish ishchisi: qora teri
+🤴	shahzoda
+🤴🏻	shahzoda: ochiq teri rangi
+🤴🏼	shahzoda: o'rtacha och teri rangi
+🤴🏽	shahzoda: o'rtacha teri rangi
+🤴🏾	shahzoda: o'rtacha to'q teri tonu
+🤴🏿	shahzoda: to'q teri
+👸	malika
+👸🏻	malika: ochiq teri rangi
+👸🏼	malika: o'rtacha och teri rangi
+👸🏽	malika: o'rtacha teri rangi
+👸🏾	malika: o'rtacha to'q teri rangi
+👸🏿	malika: to'q teri
+👳	salla kiygan odam
+👳🏻	salla kiygan odam: ochiq teri rangi
+👳🏼	salla kiygan odam: o'rtacha och teri tonu
+👳🏽	salla kiygan odam: o'rta teri tonu
+👳🏾	salla kiygan odam: oʻrtacha toʻq teri tonu
+👳🏿	salla kiygan odam: qora teri
+👳‍♂️	salla kiygan odam
+👳‍♂	salla kiygan odam
+👳🏻‍♂️	salla kiygan erkak: ochiq teri tonu
+👳🏻‍♂	salla kiygan erkak: ochiq teri tonu
+👳🏼‍♂️	salla kiygan erkak: o'rta-och teri rangi
+👳🏼‍♂	salla kiygan erkak: o'rta-och teri rangi
+👳🏽‍♂️	salla kiygan erkak: o‘rta teri tonu
+👳🏽‍♂	salla kiygan erkak: o‘rta teri tonu
+👳🏾‍♂️	salla kiygan erkak: oʻrtacha toʻq teri tonu
+👳🏾‍♂	salla kiygan erkak: oʻrtacha toʻq teri tonu
+👳🏿‍♂️	salla kiygan erkak: to'q teri
+👳🏿‍♂	salla kiygan erkak: to'q teri
+👳‍♀️	salla kiygan ayol
+👳‍♀	salla kiygan ayol
+👳🏻‍♀️	salla kiygan ayol: ochiq teri rangi
+👳🏻‍♀	salla kiygan ayol: ochiq teri rangi
+👳🏼‍♀️	salla kiygan ayol: o'rtacha och teri tonu
+👳🏼‍♀	salla kiygan ayol: o'rtacha och teri tonu
+👳🏽‍♀️	salla kiygan ayol: o'rta teri
+👳🏽‍♀	salla kiygan ayol: o'rta teri
+👳🏾‍♀️	salla kiygan ayol: o'rtacha to'q teri tonu
+👳🏾‍♀	salla kiygan ayol: o'rtacha to'q teri tonu
+👳🏿‍♀️	salla kiygan ayol: to'q teri
+👳🏿‍♀	salla kiygan ayol: to'q teri
+👲	Xitoy qalpoqli odam
+👲🏻	xitoy qalpoqli erkak: ochiq teri rangi
+👲🏼	xitoy qalpoqli erkak: o'rtacha och teri tonu
+👲🏽	xitoy qalpoqli erkak: o‘rta teri
+👲🏾	xitoy qalpoqli erkak: oʻrtacha toʻq teri tonu
+👲🏿	Xitoy qalpoqli erkak: to'q teri
+🧕	ro'molli ayol
+🧕🏻	ro'molli ayol: ochiq teri to'ni
+🧕🏼	ro'molli ayol: o'rta-ochiq teri rangi
+🧕🏽	ro'molli ayol: o'rta teri
+🧕🏾	ro'molli ayol: o'rta-to'q teri
+🧕🏿	ro'molli ayol: to'q teri
+🧔	soqolli odam
+🧔🏻	soqolli odam: ochiq teri rangi
+🧔🏼	soqolli odam: o'rtacha och teri tonu
+🧔🏽	soqolli odam: o'rtacha teri rangi
+🧔🏾	soqolli odam: o'rtacha to'q teri rangi
+🧔🏿	soqolli odam: qora tanli
+👱	sariq sochli odam
+👱🏻	sarg'ish sochli odam: ochiq teri rangi
+👱🏼	sarg'ish sochli odam: o'rtacha och teri tonu
+👱🏽	sarg'ish sochli odam: o'rtacha teri rangi
+👱🏾	sarg'ish sochli odam: o'rtacha to'q teri rangi
+👱🏿	sarg'ish sochli odam: to'q teri
+👱‍♂️	sariq sochli odam
+👱‍♂	sariq sochli odam
+👱🏻‍♂️	sarg'ish sochli erkak: ochiq teri rangi
+👱🏻‍♂	sarg'ish sochli erkak: ochiq teri rangi
+👱🏼‍♂️	sarg'ish sochli erkak: o'rtacha och teri tonu
+👱🏼‍♂	sarg'ish sochli erkak: o'rtacha och teri tonu
+👱🏽‍♂️	sarg'ish sochli erkak: o'rta teri
+👱🏽‍♂	sarg'ish sochli erkak: o'rta teri
+👱🏾‍♂️	sarg'ish sochli erkak: o'rtacha to'q teri tonu
+👱🏾‍♂	sarg'ish sochli erkak: o'rtacha to'q teri tonu
+👱🏿‍♂️	sarg'ish sochli erkak: to'q teri
+👱🏿‍♂	sarg'ish sochli erkak: to'q teri
+👱‍♀️	sariq sochli ayol
+👱‍♀	sariq sochli ayol
+👱🏻‍♀️	sarg'ish sochli ayol: ochiq teri
+👱🏻‍♀	sarg'ish sochli ayol: ochiq teri
+👱🏼‍♀️	sarg'ish sochli ayol: o'rtacha och teri tonu
+👱🏼‍♀	sarg'ish sochli ayol: o'rtacha och teri tonu
+👱🏽‍♀️	sarg'ish sochli ayol: o'rta teri
+👱🏽‍♀	sarg'ish sochli ayol: o'rta teri
+👱🏾‍♀️	sarg'ish sochli ayol: o'rtacha to'q teri rangi
+👱🏾‍♀	sarg'ish sochli ayol: o'rtacha to'q teri rangi
+👱🏿‍♀️	sariq sochli ayol: to'q teri
+👱🏿‍♀	sariq sochli ayol: to'q teri
+👨‍🦰	erkak, qizil sochli
+👨🏻‍🦰	erkak, qizil sochli: ochiq teri rangi
+👨🏼‍🦰	erkak, qizg'ish sochli: o'rta och teri to'ni
+👨🏽‍🦰	erkak, qizil sochli: o'rta teri
+👨🏾‍🦰	erkak, qizil sochli: o'rta-to'q teri
+👨🏿‍🦰	erkak, qizil sochli: qora teri
+👩‍🦰	ayol, qizil sochli
+👩🏻‍🦰	ayol, qizil sochli: ochiq teri
+👩🏼‍🦰	ayol, qizil sochli: o'rta och teri to'ni
+👩🏽‍🦰	ayol, qizil sochli: o'rta teri
+👩🏾‍🦰	ayol, qizil sochli: o'rtacha to'q teri
+👩🏿‍🦰	ayol, qizil sochli: to'q teri
+👨‍🦱	jingalak sochli erkak
+👨🏻‍🦱	erkak, jingalak sochli: ochiq teri rangi
+👨🏼‍🦱	erkak, jingalak sochli: o‘rta och teri to‘ni
+👨🏽‍🦱	erkak, jingalak sochli: o‘rta teri
+👨🏾‍🦱	erkak, jingalak sochli: o‘rtacha to‘q teri
+👨🏿‍🦱	erkak, jingalak sochli: qora teri
+👩‍🦱	jingalak sochli ayol
+👩🏻‍🦱	ayol, jingalak sochli: ochiq teri rangi
+👩🏼‍🦱	ayol, jingalak sochli: o'rtacha och teri rangi
+👩🏽‍🦱	ayol, jingalak sochli: o'rta teri
+👩🏾‍🦱	ayol, jingalak sochli: o'rtacha to'q teri
+👩🏿‍🦱	ayol, jingalak sochli: qora teri
+👨‍🦲	odam, kal
+👨🏻‍🦲	erkak, kal: ochiq teri rangi
+👨🏼‍🦲	erkak, kal: o'rtacha och teri rangi
+👨🏽‍🦲	erkak, kal: o‘rtacha teri tonu
+👨🏾‍🦲	erkak, kal: o‘rtacha to‘q teri tonu
+👨🏿‍🦲	erkak, kal: to'q teri
+👩‍🦲	ayol, kal
+👩🏻‍🦲	ayol, kal: ochiq teri rangi
+👩🏼‍🦲	ayol, kal: o'rtacha och teri rangi
+👩🏽‍🦲	ayol, kal: o'rtacha teri tonu
+👩🏾‍🦲	ayol, kal: o'rtacha to'q teri tonu
+👩🏿‍🦲	ayol, kal: to'q teri
+👨‍🦳	erkak, oq sochli
+👨🏻‍🦳	erkak, oq sochli: ochiq teri rangi
+👨🏼‍🦳	erkak, oq sochli: o'rta-och teri
+👨🏽‍🦳	erkak, oq sochli: o'rta teri
+👨🏾‍🦳	erkak, oq sochli: o'rtacha to'q teri
+👨🏿‍🦳	erkak, oq sochli: qora teri
+👩‍🦳	ayol, oq sochli
+👩🏻‍🦳	ayol, oq sochli: ochiq teri rangi
+👩🏼‍🦳	ayol, oq sochli: o'rta-och teri
+👩🏽‍🦳	ayol, oq sochli: o'rta teri
+👩🏾‍🦳	ayol, oq sochli: o'rtacha to'q teri
+👩🏿‍🦳	ayol, oq sochli: to'q teri
+🤵	smokingdagi odam
+🤵🏻	smokingdagi erkak: ochiq teri tonu
+🤵🏼	smokingdagi erkak: o'rta och teri tonu
+🤵🏽	smokingdagi erkak: o‘rta teri
+🤵🏾	smokingdagi erkak: oʻrtacha toʻq teri tonu
+🤵🏿	smokingdagi erkak: to'q teri
+👰	pardali kelin
+👰🏻	pardali kelin: ochiq teri tonu
+👰🏼	pardali kelin: o'rta-ochiq teri rangi
+👰🏽	pardali kelin: o'rta teri
+👰🏾	pardali kelin: o‘rta-to‘q teri
+👰🏿	pardali kelin: to'q teri
+🤰	homilador ayol
+🤰🏻	homilador ayol: ochiq teri rangi
+🤰🏼	homilador ayol: o'rtacha och teri rangi
+🤰🏽	homilador ayol: o'rtacha teri rangi
+🤰🏾	homilador ayol: o'rtacha to'q teri rangi
+🤰🏿	homilador ayol: qora teri rangi
+🤱	emizish
+🤱🏻	emizish: ochiq teri rangi
+🤱🏼	emizish: o'rtacha och teri rangi
+🤱🏽	emizish: o'rtacha teri rangi
+🤱🏾	emizish: o'rta-to'q teri rangi
+🤱🏿	emizish: qora teri rangi
+👼	chaqaloq farishta
+👼🏻	chaqaloq farishta: ochiq teri rangi
+👼🏼	chaqaloq farishtasi: o'rtacha och teri rangi
+👼🏽	chaqaloq farishta: o'rtacha teri rangi
+👼🏾	chaqaloq farishtasi: o'rtacha to'q teri rangi
+👼🏿	chaqaloq farishtasi: qora teri rangi
+🎅	qor bobo, Santa Klaus
+🎅🏻	Santa Klaus: ochiq teri rangi
+🎅🏼	Santa Klaus: o'rtacha och teri rangi
+🎅🏽	Santa Klaus: o'rtacha teri rangi
+🎅🏾	Santa Klaus: o'rtacha to'q teri rangi
+🎅🏿	Santa Klaus: qora teri rangi
+🤶	Klaus xonim
+🤶🏻	Klaus xonim: ochiq teri rangi
+🤶🏼	Klaus xonim: o'rta-ochiq teri rangi
+🤶🏽	Klaus xonim: o'rtacha teri rangi
+🤶🏾	Missis Klaus: o'rtacha to'q teri rangi
+🤶🏿	Klaus xonim: qora teri rangi
+🦸	super qahramon
+🦸🏻	super qahramon: ochiq teri rangi
+🦸🏼	superqahramon: o‘rta-ochiq teri rangi
+🦸🏽	superqahramon: o‘rta teri rangi
+🦸🏾	superqahramon: o‘rta-to‘q teri rangi
+🦸🏿	super qahramon: to'q teri
+🦸‍♀️	ayol super qahramon
+🦸‍♀	ayol super qahramon
+🦸🏻‍♀️	ayol superqahramon: ochiq teri rangi
+🦸🏻‍♀	ayol superqahramon: ochiq teri rangi
+🦸🏼‍♀️	ayol superqahramon: o‘rta-ochiq teri rangi
+🦸🏼‍♀	ayol superqahramon: o‘rta-ochiq teri rangi
+🦸🏽‍♀️	ayol superqahramon: o‘rta teri rangi
+🦸🏽‍♀	ayol superqahramon: o‘rta teri rangi
+🦸🏾‍♀️	ayol superqahramon: oʻrtacha toʻq teri rangi
+🦸🏾‍♀	ayol superqahramon: oʻrtacha toʻq teri rangi
+🦸🏿‍♀️	ayol super qahramon: to'q teri
+🦸🏿‍♀	ayol super qahramon: to'q teri
+🦸‍♂️	odam super qahramon
+🦸‍♂	odam super qahramon
+🦸🏻‍♂️	erkak superqahramon: ochiq teri ohangi
+🦸🏻‍♂	erkak superqahramon: ochiq teri ohangi
+🦸🏼‍♂️	erkak superqahramon: o‘rtacha och teri rangi
+🦸🏼‍♂	erkak superqahramon: o‘rtacha och teri rangi
+🦸🏽‍♂️	erkak superqahramon: o‘rta teri rangi
+🦸🏽‍♂	erkak superqahramon: o‘rta teri rangi
+🦸🏾‍♂️	erkak superqahramon: o‘rta-to‘q teri ohangi
+🦸🏾‍♂	erkak superqahramon: o‘rta-to‘q teri ohangi
+🦸🏿‍♂️	erkak superqahramon: qora teri ohangi
+🦸🏿‍♂	erkak superqahramon: qora teri ohangi
+🦹	nazoratchi
+🦹🏻	supervlain: ochiq teri rangi
+🦹🏼	supervillain: o'rtacha och teri rangi
+🦹🏽	supervlain: o'rtacha teri rangi
+🦹🏾	supervillain: o'rtacha to'q teri tonu
+🦹🏿	supervlain: to'q teri
+🦹‍♀️	ayol nazoratchi
+🦹‍♀	ayol nazoratchi
+🦹🏻‍♀️	ayol supervlain: ochiq teri rangi
+🦹🏻‍♀	ayol supervlain: ochiq teri rangi
+🦹🏼‍♀️	ayol supervlain: o'rtacha och teri rangi
+🦹🏼‍♀	ayol supervlain: o'rtacha och teri rangi
+🦹🏽‍♀️	Ayol zolim: o‘rta teri
+🦹🏽‍♀	Ayol zolim: o‘rta teri
+🦹🏾‍♀️	ayol supervlain: oʻrtacha toʻq teri tonu
+🦹🏾‍♀	ayol supervlain: oʻrtacha toʻq teri tonu
+🦹🏿‍♀️	ayol supervlain: to'q teri
+🦹🏿‍♀	ayol supervlain: to'q teri
+🦹‍♂️	odam nazoratchi
+🦹‍♂	odam nazoratchi
+🦹🏻‍♂️	erkak supervlain: ochiq teri ohangi
+🦹🏻‍♂	erkak supervlain: ochiq teri ohangi
+🦹🏼‍♂️	erkak supervlain: o‘rtacha och teri tonu
+🦹🏼‍♂	erkak supervlain: o‘rtacha och teri tonu
+🦹🏽‍♂️	erkak zolim: o‘rta teri
+🦹🏽‍♂	erkak zolim: o‘rta teri
+🦹🏾‍♂️	erkak supervlain: oʻrtacha toʻq teri tonu
+🦹🏾‍♂	erkak supervlain: oʻrtacha toʻq teri tonu
+🦹🏿‍♂️	erkak supervillain: to'q teri
+🦹🏿‍♂	erkak supervillain: to'q teri
+🧙	sehrgar
+🧙🏻	mage: ochiq teri rangi
+🧙🏼	mage: o'rtacha och teri rangi
+🧙🏽	mage: o'rtacha teri rangi
+🧙🏾	mage: o'rtacha to'q teri rangi
+🧙🏿	sehrgar: qora teri rangi
+🧙‍♀️	ayol sehrgar
+🧙‍♀	ayol sehrgar
+🧙🏻‍♀️	ayol sehrgar: ochiq teri rangi
+🧙🏻‍♀	ayol sehrgar: ochiq teri rangi
+🧙🏼‍♀️	ayol sehrgar: o'rtacha och teri rangi
+🧙🏼‍♀	ayol sehrgar: o'rtacha och teri rangi
+🧙🏽‍♀️	ayol sehrgar: o'rtacha teri rangi
+🧙🏽‍♀	ayol sehrgar: o'rtacha teri rangi
+🧙🏾‍♀️	ayol sehrgar: o'rtacha to'q teri rangi
+🧙🏾‍♀	ayol sehrgar: o'rtacha to'q teri rangi
+🧙🏿‍♀️	ayol sehrgar: to'q teri
+🧙🏿‍♀	ayol sehrgar: to'q teri
+🧙‍♂️	odam sehrgar
+🧙‍♂	odam sehrgar
+🧙🏻‍♂️	erkak sehrgar: ochiq teri rangi
+🧙🏻‍♂	erkak sehrgar: ochiq teri rangi
+🧙🏼‍♂️	odam mage: o'rtacha och teri rangi
+🧙🏼‍♂	odam mage: o'rtacha och teri rangi
+🧙🏽‍♂️	erkak sehrgar: o'rtacha teri rangi
+🧙🏽‍♂	erkak sehrgar: o'rtacha teri rangi
+🧙🏾‍♂️	erkak sehrgar: o'rtacha to'q teri rangi
+🧙🏾‍♂	erkak sehrgar: o'rtacha to'q teri rangi
+🧙🏿‍♂️	erkak sehrgar: to'q teri rangi
+🧙🏿‍♂	erkak sehrgar: to'q teri rangi
+🧚	peri
+🧚🏻	peri: ochiq teri rangi
+🧚🏼	peri: o'rtacha och teri rangi
+🧚🏽	peri: o'rtacha teri rangi
+🧚🏾	peri: o'rtacha to'q teri rangi
+🧚🏿	peri: qora teri rangi
+🧚‍♀️	ayol peri
+🧚‍♀	ayol peri
+🧚🏻‍♀️	ayol peri: ochiq teri rangi
+🧚🏻‍♀	ayol peri: ochiq teri rangi
+🧚🏼‍♀️	ayol peri: o'rtacha och teri rangi
+🧚🏼‍♀	ayol peri: o'rtacha och teri rangi
+🧚🏽‍♀️	Peri ayol: o'rta teri rangi
+🧚🏽‍♀	Peri ayol: o'rta teri rangi
+🧚🏾‍♀️	ayol peri: o'rtacha to'q teri rangi
+🧚🏾‍♀	ayol peri: o'rtacha to'q teri rangi
+🧚🏿‍♀️	ayol peri: to'q teri
+🧚🏿‍♀	ayol peri: to'q teri
+🧚‍♂️	odam peri
+🧚‍♂	odam peri
+🧚🏻‍♂️	odam peri: ochiq teri rangi
+🧚🏻‍♂	odam peri: ochiq teri rangi
+🧚🏼‍♂️	odam peri: o'rtacha och teri rangi
+🧚🏼‍♂	odam peri: o'rtacha och teri rangi
+🧚🏽‍♂️	erkak pari: o‘rta teri rangi
+🧚🏽‍♂	erkak pari: o‘rta teri rangi
+🧚🏾‍♂️	odam peri: o'rtacha to'q teri rangi
+🧚🏾‍♂	odam peri: o'rtacha to'q teri rangi
+🧚🏿‍♂️	odam peri: to'q teri rangi
+🧚🏿‍♂	odam peri: to'q teri rangi
+🧛	vampir
+🧛🏻	vampir: ochiq teri rangi
+🧛🏼	vampir: o'rtacha och teri rangi
+🧛🏽	vampir: o'rtacha teri rangi
+🧛🏾	vampir: o'rtacha to'q teri rangi
+🧛🏿	vampir: qora teri rangi
+🧛‍♀️	ayol vampir
+🧛‍♀	ayol vampir
+🧛🏻‍♀️	ayol vampir: ochiq teri rangi
+🧛🏻‍♀	ayol vampir: ochiq teri rangi
+🧛🏼‍♀️	ayol vampir: o'rtacha och teri rangi
+🧛🏼‍♀	ayol vampir: o'rtacha och teri rangi
+🧛🏽‍♀️	ayol vampiri: o'rta teri rangi
+🧛🏽‍♀	ayol vampiri: o'rta teri rangi
+🧛🏾‍♀️	ayol vampiri: o'rta-to'q teri rangi
+🧛🏾‍♀	ayol vampiri: o'rtacha to'q teri rangi
+🧛🏿‍♀️	ayol vampir: to'q teri
+🧛🏿‍♀	ayol vampir: to'q teri
+🧛‍♂️	odam vampir
+🧛‍♂	odam vampir
+🧛🏻‍♂️	erkak vampir: ochiq teri rangi
+🧛🏻‍♂	erkak vampir: ochiq teri rangi
+🧛🏼‍♂️	erkak vampir: o'rta-ochiq teri rangi
+🧛🏼‍♂	erkak vampir: o'rta-ochiq teri rangi
+🧛🏽‍♂️	erkak vampir: o'rta teri tonu
+🧛🏽‍♂	erkak vampir: o'rta teri tonu
+🧛🏾‍♂️	erkak vampiri: o'rtacha to'q teri rangi
+🧛🏾‍♂	erkak vampiri: o'rtacha to'q teri rangi
+🧛🏿‍♂️	erkak vampir: to'q teri
+🧛🏿‍♂	erkak vampir: to'q teri
+🧜	savdogar
+🧜🏻	merperson: ochiq teri rangi
+🧜🏼	merperson: o'rtacha och teri rangi
+🧜🏽	merperson: o'rtacha teri rangi
+🧜🏾	merperson: o'rtacha to'q teri rangi
+🧜🏿	merperson: qora teri rangi
+🧜‍♀️	suv parisi
+🧜‍♀	suv parisi
+🧜🏻‍♀️	suv parisi: ochiq teri rangi
+🧜🏻‍♀	suv parisi: ochiq teri rangi
+🧜🏼‍♀️	suv parisi: o'rtacha och teri rangi
+🧜🏼‍♀	suv parisi: o'rtacha och teri rangi
+🧜🏽‍♀️	suv parisi: o‘rtacha teri rangi
+🧜🏽‍♀	suv parisi: o‘rtacha teri rangi
+🧜🏾‍♀️	suv parisi: o‘rtacha to‘q teri rangi
+🧜🏾‍♀	suv parisi: o‘rtacha to‘q teri rangi
+🧜🏿‍♀️	suv parisi: to'q teri
+🧜🏿‍♀	suv parisi: to'q teri
+🧜‍♂️	merman
+🧜‍♂	merman
+🧜🏻‍♂️	merman: ochiq teri rangi
+🧜🏻‍♂	merman: ochiq teri rangi
+🧜🏼‍♂️	merman: o'rtacha och teri rangi
+🧜🏼‍♂	merman: o'rtacha och teri rangi
+🧜🏽‍♂️	merman: o'rtacha teri rangi
+🧜🏽‍♂	merman: o'rtacha teri rangi
+🧜🏾‍♂️	merman: o'rtacha to'q teri rangi
+🧜🏾‍♂	merman: o'rtacha to'q teri rangi
+🧜🏿‍♂️	merman: to'q teri rangi
+🧜🏿‍♂	merman: to'q teri rangi
+🧝	elf
+🧝🏻	elf: ochiq teri rangi
+🧝🏼	elf: o'rtacha och teri rangi
+🧝🏽	elf: o'rtacha teri rangi
+🧝🏾	elf: o'rtacha to'q teri rangi
+🧝🏿	elf: to'q teri rangi
+🧝‍♀️	ayol elf
+🧝‍♀	ayol elf
+🧝🏻‍♀️	ayol elf: ochiq teri rangi
+🧝🏻‍♀	ayol elf: ochiq teri rangi
+🧝🏼‍♀️	ayol elf: o'rtacha och teri rangi
+🧝🏼‍♀	ayol elf: o'rtacha och teri rangi
+🧝🏽‍♀️	ayol elf: o'rta teri rangi
+🧝🏽‍♀	ayol elf: o'rta teri rangi
+🧝🏾‍♀️	ayol elf: oʻrtacha toʻq teri tonu
+🧝🏾‍♀	ayol elf: oʻrtacha toʻq teri tonu
+🧝🏿‍♀️	ayol elf: to'q teri
+🧝🏿‍♀	ayol elf: to'q teri
+🧝‍♂️	odam elf
+🧝‍♂	odam elf
+🧝🏻‍♂️	odam elf: ochiq teri rangi
+🧝🏻‍♂	odam elf: ochiq teri rangi
+🧝🏼‍♂️	odam elf: o'rtacha och teri rangi
+🧝🏼‍♂	odam elf: o'rtacha och teri rangi
+🧝🏽‍♂️	odam elf: o'rta teri rangi
+🧝🏽‍♂	odam elf: o'rta teri rangi
+🧝🏾‍♂️	odam elf: oʻrtacha toʻq teri tonu
+🧝🏾‍♂	odam elf: oʻrtacha toʻq teri tonu
+🧝🏿‍♂️	odam elf: to'q teri
+🧝🏿‍♂	odam elf: to'q teri
+🧞	jin
+🧞‍♀️	ayol jin
+🧞‍♀	ayol jin
+🧞‍♂️	odam jin
+🧞‍♂	odam jin
+🧟	zombi
+🧟‍♀️	ayol zombi
+🧟‍♀	ayol zombi
+🧟‍♂️	odam zombi
+🧟‍♂	odam zombi
+🙍	qoshlarini chimirgan odam
+🙍🏻	qovog'ini chimirgan odam: ochiq teri rangi
+🙍🏼	qovog'ini chimirgan odam: o'rtacha och teri rangi
+🙍🏽	qovog'ini chimirgan odam: o'rtacha teri tonu
+🙍🏾	qovog'ini chimirgan odam: o'rta-to'q teri rangi
+🙍🏿	qovog'ini chimirgan odam: qora teri rangi
+🙍‍♂️	qoshlarini chimirgan odam
+🙍‍♂	qoshlarini chimirgan odam
+🙍🏻‍♂️	qovog'ini chimirgan erkak: ochiq teri rangi
+🙍🏻‍♂	qovog'ini chimirgan erkak: ochiq teri rangi
+🙍🏼‍♂️	qovog'ini chimirgan erkak: o'rtacha och teri tonu
+🙍🏼‍♂	qovog'ini chimirgan erkak: o'rtacha och teri tonu
+🙍🏽‍♂️	qovog‘ini chimirayotgan erkak: o‘rta teri tonu
+🙍🏽‍♂	qovog‘ini chimirayotgan erkak: o‘rta teri tonu
+🙍🏾‍♂️	qovog'ini chimirgan erkak: o'rta-to'q teri
+🙍🏾‍♂	qovog'ini chimirgan erkak: o'rta-to'q teri
+🙍🏿‍♂️	qovog'ini chimirgan erkak: to'q teri
+🙍🏿‍♂	qovog'ini chimirgan erkak: to'q teri
+🙍‍♀️	ayol qoshlarini chimirdi
+🙍‍♀	ayol qoshlarini chimirdi
+🙍🏻‍♀️	qoshlarini chimirgan ayol: ochiq teri tonu
+🙍🏻‍♀	qoshlarini chimirgan ayol: ochiq teri tonu
+🙍🏼‍♀️	qoshlarini chimirgan ayol: o'rtacha och teri tonu
+🙍🏼‍♀	qoshlarini chimirgan ayol: o'rtacha och teri tonu
+🙍🏽‍♀️	qoshlarini chimirgan ayol: o'rtacha teri tonu
+🙍🏽‍♀	qoshlarini chimirgan ayol: o'rtacha teri tonu
+🙍🏾‍♀️	qoshlarini chimirgan ayol: o'rtacha to'q teri tonu
+🙍🏾‍♀	qoshlarini chimirgan ayol: o'rtacha to'q teri tonu
+🙍🏿‍♀️	qoshlarini chimirgan ayol: qora teri
+🙍🏿‍♀	qoshlarini chimirgan ayol: qora teri
+🙎	so'kib turgan odam
+🙎🏻	baqirayotgan odam: ochiq teri rangi
+🙎🏼	so‘kib turgan odam: o‘rta-och teri rangi
+🙎🏽	baqirayotgan odam: o‘rta teri tonu
+🙎🏾	so‘kib turgan odam: o‘rta-to‘q teri rangi
+🙎🏿	so'kib turgan odam: qora teri
+🙎‍♂️	so'kib turgan odam
+🙎‍♂	so'kib turgan odam
+🙎🏻‍♂️	so‘kib turgan erkak: ochiq teri tonu
+🙎🏻‍♂	so‘kib turgan erkak: ochiq teri tonu
+🙎🏼‍♂️	so‘kib turgan erkak: o‘rta-och teri rangi
+🙎🏼‍♂	so‘kib turgan erkak: o‘rta-och teri rangi
+🙎🏽‍♂️	so‘kib turgan erkak: o‘rta teri
+🙎🏽‍♂	so‘kib turgan erkak: o‘rta teri
+🙎🏾‍♂️	so‘kayotgan erkak: o‘rta-to‘q teri tonu
+🙎🏾‍♂	so‘kayotgan erkak: o‘rta-to‘q teri tonu
+🙎🏿‍♂️	so‘kib turgan erkak: to‘q teri
+🙎🏿‍♂	so‘kib turgan erkak: to‘q teri
+🙎‍♀️	ayol qichqirmoqda
+🙎‍♀	ayol qichqirmoqda
+🙎🏻‍♀️	so‘kib turgan ayol: ochiq teri rangi
+🙎🏻‍♀	so‘kib turgan ayol: ochiq teri rangi
+🙎🏼‍♀️	so‘kib turgan ayol: o‘rta-och teri rangi
+🙎🏼‍♀	so‘kib turgan ayol: o‘rta-och teri rangi
+🙎🏽‍♀️	so‘kib turgan ayol: o‘rta teri
+🙎🏽‍♀	so‘kib turgan ayol: o‘rta teri
+🙎🏾‍♀️	so‘kib turgan ayol: o‘rta-to‘q teri
+🙎🏾‍♀	so‘kib turgan ayol: o‘rta-to‘q teri
+🙎🏿‍♀️	so‘kib turgan ayol: to‘q teri
+🙎🏿‍♀	so‘kib turgan ayol: to‘q teri
+🙅	YO‘Q deb ishora qilayotgan odam
+🙅🏻	YO‘Q deb ishora qilayotgan odam: ochiq teri rangi
+🙅🏼	YO‘Q deb ishora qilayotgan odam: o‘rta-ochiq teri rangi
+🙅🏽	YO‘Q deb ishora qilayotgan odam: o‘rta teri rangi
+🙅🏾	YO‘Q deb ishora qilayotgan odam: o‘rtacha to‘q teri rangi
+🙅🏿	YO‘Q deb ishora qilayotgan odam: to‘q teri
+🙅‍♂️	YO‘Q deb ishora qilayotgan erkak
+🙅‍♂	YO‘Q deb ishora qilayotgan erkak
+🙅🏻‍♂️	YO‘Q deb ishora qilayotgan erkak: ochiq teri ohangi
+🙅🏻‍♂	YO‘Q deb ishora qilayotgan erkak: ochiq teri ohangi
+🙅🏼‍♂️	YO‘Q deyotgan erkak: o‘rta-ochiq teri rangi
+🙅🏼‍♂	YO‘Q deyotgan erkak: o‘rta-ochiq teri rangi
+🙅🏽‍♂️	YO‘Q demoqda: o‘rta teri
+🙅🏽‍♂	YO‘Q demoqda: o‘rta teri
+🙅🏾‍♂️	YO‘Q demoqda: o‘rta-to‘q teri tonu
+🙅🏾‍♂	YO‘Q demoqda: o‘rta-to‘q teri tonu
+🙅🏿‍♂️	“YO‘Q” ishorasi bilan erkak: qora teri
+🙅🏿‍♂	“YO‘Q” ishorasi bilan erkak: qora teri
+🙅‍♀️	ayol YO‘Q deb ishora qilmoqda
+🙅‍♀	ayol YO‘Q deb ishora qilmoqda
+🙅🏻‍♀️	ayol YO‘Q demoqda: ochiq teri ohangi
+🙅🏻‍♀	ayol YO‘Q demoqda: ochiq teri ohangi
+🙅🏼‍♀️	YO‘Q demoqda: o‘rta-ochiq teri rangi
+🙅🏼‍♀	YO‘Q demoqda: o‘rta-ochiq teri rangi
+🙅🏽‍♀️	YO‘Q demoqda ayol: o‘rta teri
+🙅🏽‍♀	YO‘Q demoqda ayol: o‘rta teri
+🙅🏾‍♀️	ayol YO‘Q demoqda: o‘rta-to‘q teri
+🙅🏾‍♀	ayol YO‘Q demoqda: o‘rta-to‘q teri
+🙅🏿‍♀️	ayol YO‘Q demoqda: to‘q teri
+🙅🏿‍♀	ayol YO‘Q demoqda: to‘q teri
+🙆	“OK” ishorasi bilan odam
+🙆🏻	“OK” ishorasi bilan ishora qilayotgan odam: ochiq teri ohangi
+🙆🏼	“OK” ishorasini bildirayotgan odam: o‘rta-ochiq teri tonu
+🙆🏽	“OK” ishorasini qilayotgan odam: o‘rta teri
+🙆🏾	“OK” ishorasi bilan ishora qilayotgan odam: o‘rta-to‘q teri rangi
+🙆🏿	“OK” ishorasi bilan ishora qilayotgan odam: to‘q teri
+🙆‍♂️	“OK” ishorasi bilan odam
+🙆‍♂	“OK” ishorasi bilan odam
+🙆🏻‍♂️	“OK” ishorasini qilayotgan erkak: ochiq teri ohangi
+🙆🏻‍♂	“OK” ishorasini qilayotgan erkak: ochiq teri ohangi
+🙆🏼‍♂️	“OK” ishorasini qilayotgan erkak: o‘rta-ochiq teri tonu
+🙆🏼‍♂	“OK” ishorasini qilayotgan erkak: o‘rta-ochiq teri tonu
+🙆🏽‍♂️	“OK” ishorasi bilan erkak: o‘rta teri
+🙆🏽‍♂	“OK” ishorasi bilan erkak: o‘rta teri
+🙆🏾‍♂️	“OK” ishorasini qilayotgan erkak: o‘rta-to‘q teri
+🙆🏾‍♂	“OK” ishorasini qilayotgan erkak: o‘rta-to‘q teri
+🙆🏿‍♂️	“OK” ishorasini qilayotgan erkak: qora teri
+🙆🏿‍♂	“OK” ishorasini qilayotgan erkak: qora teri
+🙆‍♀️	“OK” ishorasi bilan ayol
+🙆‍♀	“OK” ishorasi bilan ayol
+🙆🏻‍♀️	“OK” ishorasini qilayotgan ayol: ochiq teri ohangi
+🙆🏻‍♀	“OK” ishorasini qilayotgan ayol: ochiq teri ohangi
+🙆🏼‍♀️	“OK” imo-ishorasini bildirayotgan ayol: o‘rta-ochiq teri rangi
+🙆🏼‍♀	“OK” imo-ishorasini bildirayotgan ayol: o‘rta-ochiq teri tonu
+🙆🏽‍♀️	“OK” ishorasi bilan ayol: o‘rta teri
+🙆🏽‍♀	“OK” ishorasi bilan ayol: o‘rta teri
+🙆🏾‍♀️	“OK” ishorasini qilayotgan ayol: o‘rta-to‘q teri
+🙆🏾‍♀	“OK” ishorasini qilayotgan ayol: o‘rta-to‘q teri
+🙆🏿‍♀️	“OK” ishorasi bilan ayol: qora teri
+🙆🏿‍♀	“OK” ishorasi bilan ayol: qora teri
+💁	qo'lini silkitgan odam
+💁🏻	qo'lini egayotgan odam: och teri tonu
+💁🏼	qo'lini ag'dargan odam: o'rtacha och teri tonu
+💁🏽	qo‘lini egayotgan odam: o‘rta teri
+💁🏾	qo'lini egayotgan odam: o'rta-to'q teri tonu
+💁🏿	qo'lini egayotgan odam: to'q teri
+💁‍♂️	qo'l silkitayotgan odam
+💁‍♂	qo'l silkitayotgan odam
+💁🏻‍♂️	qo'lini egayotgan erkak: ochiq teri tonu
+💁🏻‍♂	qo'lini chayqalayotgan erkak: ochiq teri
+💁🏼‍♂️	qo'lini ag'dargan odam: o'rtacha och teri tonu
+💁🏼‍♂	qo'lini ag'dargan odam: o'rtacha och teri tonu
+💁🏽‍♂️	qo‘lini chayqalayotgan erkak: o‘rta teri
+💁🏽‍♂	qo‘lini chayqalayotgan erkak: o‘rta teri
+💁🏾‍♂️	qo'lini chayqalayotgan erkak: o'rta-to'q teri
+💁🏾‍♂	qo'lini chayqalayotgan erkak: o'rta-to'q teri
+💁🏿‍♂️	qo'lini egayotgan odam: to'q teri
+💁🏿‍♂	qo'lini egayotgan odam: to'q teri
+💁‍♀️	ayol qo'lini silkitadi
+💁‍♀	ayol qo'lini silkitadi
+💁🏻‍♀️	qo'lini egayotgan ayol: ochiq teri rangi
+💁🏻‍♀	qo'lini egayotgan ayol: ochiq teri rangi
+💁🏼‍♀️	qo'lini egayotgan ayol: o'rtacha och teri tonu
+💁🏼‍♀	qo'lini egayotgan ayol: o'rtacha och teri tonu
+💁🏽‍♀️	qo‘lini egayotgan ayol: o‘rta teri
+💁🏽‍♀	qo‘lini egayotgan ayol: o‘rta teri
+💁🏾‍♀️	qo'lini egayotgan ayol: o'rta-to'q teri
+💁🏾‍♀	qo'lini egayotgan ayol: o'rta-to'q teri
+💁🏿‍♀️	ayol qo'lini chayqadi: to'q teri
+💁🏿‍♀	ayol qo'lini chayqadi: to'q teri
+🙋	qo'l ko'targan odam
+🙋🏻	qo'l ko'targan odam: ochiq teri tonu
+🙋🏼	qo'l ko'targan odam: o'rtacha och teri tonu
+🙋🏽	qo‘l ko‘tarayotgan odam: o‘rta teri tonu
+🙋🏾	qo'l ko'targan odam: o'rta-to'q teri tonu
+🙋🏿	qo'l ko'targan odam: to'q teri
+🙋‍♂️	qo'l ko'tarayotgan odam
+🙋‍♂	qo'l ko'tarayotgan odam
+🙋🏻‍♂️	qo'l ko'tarayotgan erkak: ochiq teri tonu
+🙋🏻‍♂	qo'l ko'tarayotgan erkak: ochiq teri tonu
+🙋🏼‍♂️	qo'l ko'tarayotgan erkak: o'rtacha och teri tonu
+🙋🏼‍♂	qo'l ko'tarayotgan erkak: o'rtacha och teri tonu
+🙋🏽‍♂️	qo'l ko'tarayotgan erkak: o'rta teri
+🙋🏽‍♂	qo'l ko'tarayotgan erkak: o'rta teri
+🙋🏾‍♂️	qo‘l ko‘tarayotgan erkak: o‘rta-to‘q teri tonu
+🙋🏾‍♂	qo‘l ko‘tarayotgan erkak: o‘rta-to‘q teri tonu
+🙋🏿‍♂️	qo'l ko'tarayotgan odam: to'q teri
+🙋🏿‍♂	qo'l ko'tarayotgan odam: to'q teri
+🙋‍♀️	qo'l ko'tarayotgan ayol
+🙋‍♀	qo'l ko'tarayotgan ayol
+🙋🏻‍♀️	qo'l ko'tarayotgan ayol: ochiq teri tonu
+🙋🏻‍♀	qo'l ko'tarayotgan ayol: ochiq teri tonu
+🙋🏼‍♀️	qo'l ko'tarayotgan ayol: o'rtacha och teri tonu
+🙋🏼‍♀	qo'l ko'tarayotgan ayol: o'rtacha och teri tonu
+🙋🏽‍♀️	qo‘l ko‘tarayotgan ayol: o‘rta teri tonu
+🙋🏽‍♀	qo‘l ko‘tarayotgan ayol: o‘rta teri tonu
+🙋🏾‍♀️	qo‘l ko‘tarayotgan ayol: o‘rta-to‘q teri tonu
+🙋🏾‍♀	qo‘l ko‘tarayotgan ayol: o‘rta-to‘q teri tonu
+🙋🏿‍♀️	qo'l ko'tarayotgan ayol: to'q teri
+🙋🏿‍♀	qo'l ko'tarayotgan ayol: to'q teri
+🙇	odam ta'zim qiladi
+🙇🏻	ta’zim qilgan odam: ochiq teri rangi
+🙇🏼	ta’zim qilgan odam: o‘rta-och teri rangi
+🙇🏽	ta’zim qilgan odam: o‘rta teri
+🙇🏾	ta’zim qilgan odam: o‘rta-to‘q teri rangi
+🙇🏿	ta’zim qilgan odam: to‘q teri
+🙇‍♂️	odam ta'zim qiladi
+🙇‍♂	odam ta'zim qiladi
+🙇🏻‍♂️	ta’zim qilgan erkak: ochiq teri rangi
+🙇🏻‍♂	ta’zim qilgan erkak: ochiq teri rangi
+🙇🏼‍♂️	erkak ta’zim: o‘rta och teri rangi
+🙇🏼‍♂	erkak ta’zim: o‘rta och teri rangi
+🙇🏽‍♂️	ta’zim qilayotgan erkak: o‘rta teri
+🙇🏽‍♂	ta’zim qilayotgan erkak: o‘rta teri
+🙇🏾‍♂️	ta’zim qilgan erkak: o‘rta-to‘q teri
+🙇🏾‍♂	ta’zim qilgan erkak: o‘rta-to‘q teri
+🙇🏿‍♂️	egilgan odam: to‘q teri
+🙇🏿‍♂	egilgan odam: to‘q teri
+🙇‍♀️	ayol ta'zim qiladi
+🙇‍♀	ayol ta'zim qiladi
+🙇🏻‍♀️	ta’zim qilgan ayol: ochiq teri rangi
+🙇🏻‍♀	ta’zim qilgan ayol: ochiq teri rangi
+🙇🏼‍♀️	ta’zim qilgan ayol: o‘rta-och teri rangi
+🙇🏼‍♀	ta’zim qilgan ayol: o‘rta-och teri rangi
+🙇🏽‍♀️	ta’zim qilgan ayol: o‘rta teri
+🙇🏽‍♀	ta’zim qilgan ayol: o‘rta teri
+🙇🏾‍♀️	ta’zim qilgan ayol: o‘rta to‘q teri tonu
+🙇🏾‍♀	ta’zim qilgan ayol: o‘rta to‘q teri tonu
+🙇🏿‍♀️	ta’zim qilgan ayol: to‘q teri
+🙇🏿‍♀	ta’zim qilgan ayol: to‘q teri
+🤦	odamning yuzini burish
+🤦🏻	odamning yuzini qo'l bilan silash: ochiq teri rangi
+🤦🏼	yuz terisi: o'rtacha och teri tonu
+🤦🏽	yuz terisi: o‘rtacha teri tonu
+🤦🏾	odamning yuzi: oʻrtacha toʻq teri tonu
+🤦🏿	odam yuzini silab qo'yish: to'q teri rangi
+🤦‍♂️	odam yuzini burish
+🤦‍♂	odam yuzini burish
+🤦🏻‍♂️	erkak yuziga: och teri rangi
+🤦🏻‍♂	erkak yuziga: och teri rangi
+🤦🏼‍♂️	erkak yuziga: oʻrtacha och teri tonu
+🤦🏼‍♂	erkak yuziga: oʻrtacha och teri tonu
+🤦🏽‍♂️	erkaklar yuziga: o‘rta teri tonusi
+🤦🏽‍♂	erkaklar yuziga: o‘rta teri tonusi
+🤦🏾‍♂️	erkak yuziga: oʻrtacha toʻq teri tonu
+🤦🏾‍♂	erkak yuziga: oʻrtacha toʻq teri tonu
+🤦🏿‍♂️	erkak yuziga: qora teri rangi
+🤦🏿‍♂	erkak yuziga: qora teri rangi
+🤦‍♀️	ayol yuzini burish
+🤦‍♀	ayol yuzini burish
+🤦🏻‍♀️	ayol yuzini qo'l bilan o'rash: ochiq teri rangi
+🤦🏻‍♀	ayol yuzini qo'l bilan o'rash: ochiq teri rangi
+🤦🏼‍♀️	ayol yuziga: o'rtacha och teri rangi
+🤦🏼‍♀	ayol yuziga: o'rtacha och teri rangi
+🤦🏽‍♀️	ayol yuz terisi: o‘rtacha teri rangi
+🤦🏽‍♀	ayol yuz terisi: o‘rtacha teri rangi
+🤦🏾‍♀️	ayol yuzi: oʻrtacha toʻq teri rangi
+🤦🏾‍♀	ayol yuzi: oʻrtacha toʻq teri rangi
+🤦🏿‍♀️	ayol yuzini palmalash: to'q teri
+🤦🏿‍♀	ayol yuzini palmalash: to'q teri
+🤷	elka qisayotgan odam
+🤷🏻	elka qisayotgan odam: ochiq teri tonu
+🤷🏼	yelka qisayotgan odam: o'rtacha och teri tonu
+🤷🏽	elka qisayotgan odam: o‘rta teri tonu
+🤷🏾	elka qisayotgan odam: o‘rta-qora teri tonu
+🤷🏿	elka qisayotgan odam: qora teri tonu
+🤷‍♂️	erkak yelka qisib
+🤷‍♂	erkak yelka qisib
+🤷🏻‍♂️	yelka qisayotgan erkak: ochiq teri rangi
+🤷🏻‍♂	yelka qisayotgan erkak: ochiq teri rangi
+🤷🏼‍♂️	yelka qisayotgan erkak: o‘rtacha och teri tonu
+🤷🏼‍♂	yelka qisayotgan erkak: o‘rtacha och teri tonu
+🤷🏽‍♂️	yelka qisayotgan erkak: o‘rta teri rangi
+🤷🏽‍♂	yelka qisayotgan erkak: o‘rta teri rangi
+🤷🏾‍♂️	yelka qisayotgan erkak: o‘rta-qora teri tonu
+🤷🏾‍♂	yelka qisayotgan erkak: o‘rta-qora teri tonu
+🤷🏿‍♂️	yelka qisayotgan erkak: qora teri
+🤷🏿‍♂	yelka qisayotgan erkak: qora teri
+🤷‍♀️	ayol yelka qisib
+🤷‍♀	ayol yelka qisib
+🤷🏻‍♀️	ayol yelka qismoqda: ochiq teri tonu
+🤷🏻‍♀	ayol yelka qismoqda: ochiq teri tonu
+🤷🏼‍♀️	yelka qisib turgan ayol: o‘rtacha och teri tonu
+🤷🏼‍♀	yelka qisib turgan ayol: o‘rtacha och teri tonu
+🤷🏽‍♀️	yelka qisib turgan ayol: o‘rta teri tonu
+🤷🏽‍♀	yelka qisib turgan ayol: o‘rta teri tonu
+🤷🏾‍♀️	yelka qisib turgan ayol: o‘rta-qora teri tonu
+🤷🏾‍♀	yelka qisib turgan ayol: o‘rta-qora teri tonu
+🤷🏿‍♀️	ayol yelka qismoqda: qora teri tonu
+🤷🏿‍♀	ayol yelka qismoqda: qora teri tonu
+💆	odam massaj oladi
+💆🏻	massaj olayotgan odam: ochiq teri rangi
+💆🏼	massaj olayotgan odam: o'rtacha och teri rangi
+💆🏽	massaj olayotgan odam: o'rtacha teri rangi
+💆🏾	massaj olayotgan odam: o'rtacha to'q teri rangi
+💆🏿	massaj olayotgan odam: qora teri rangi
+💆‍♂️	odam massaj oladi
+💆‍♂	odam massaj oladi
+💆🏻‍♂️	massaj olayotgan erkak: ochiq teri tonu
+💆🏻‍♂	massaj olayotgan erkak: ochiq teri tonu
+💆🏼‍♂️	massaj olayotgan erkak: o'rta-ochiq teri rangi
+💆🏼‍♂	massaj olayotgan erkak: o'rta-ochiq teri rangi
+💆🏽‍♂️	massaj olayotgan erkak: o'rta teri tonu
+💆🏽‍♂	massaj olayotgan erkak: o'rta teri tonu
+💆🏾‍♂️	massaj olayotgan erkak: o'rta-to'q teri rangi
+💆🏾‍♂	massaj olayotgan erkak: o'rta-to'q teri rangi
+💆🏿‍♂️	massaj olayotgan odam: qora teri rangi
+💆🏿‍♂	massaj olayotgan odam: qora teri rangi
+💆‍♀️	ayol massaj oladi
+💆‍♀	ayol massaj oladi
+💆🏻‍♀️	massaj olayotgan ayol: ochiq teri rangi
+💆🏻‍♀	massaj olayotgan ayol: ochiq teri rangi
+💆🏼‍♀️	massaj olayotgan ayol: o'rtacha och teri rangi
+💆🏼‍♀	massaj olayotgan ayol: o'rtacha och teri rangi
+💆🏽‍♀️	massaj olayotgan ayol: o'rtacha teri rangi
+💆🏽‍♀	massaj olayotgan ayol: o'rtacha teri rangi
+💆🏾‍♀️	massaj olayotgan ayol: o'rtacha to'q teri tonu
+💆🏾‍♀	massaj olayotgan ayol: o'rtacha to'q teri tonu
+💆🏿‍♀️	massaj olayotgan ayol: to'q teri rangi
+💆🏿‍♀	massaj olayotgan ayol: to'q teri rangi
+💇	soch oldirayotgan odam
+💇🏻	soch oldirayotgan odam: ochiq teri rangi
+💇🏼	soch olayotgan odam: o'rtacha och teri rangi
+💇🏽	soch olayotgan odam: o'rta teri tonu
+💇🏾	soch olayotgan odam: o'rtacha to'q teri tonu
+💇🏿	soch olayotgan odam: qora teri tonu
+💇‍♂️	erkak soch oldirish
+💇‍♂	erkak soch oldirish
+💇🏻‍♂️	soch olayotgan erkak: ochiq teri tonu
+💇🏻‍♂	soch olayotgan erkak: ochiq teri tonu
+💇🏼‍♂️	soch olayotgan erkak: o'rtacha och teri tonu
+💇🏼‍♂	soch olayotgan erkak: o'rtacha och teri tonu
+💇🏽‍♂️	soch olayotgan erkak: o'rta teri tonu
+💇🏽‍♂	soch olayotgan erkak: o'rta teri tonu
+💇🏾‍♂️	soch olayotgan erkak: oʻrta-toʻq teri tonu
+💇🏾‍♂	soch olayotgan erkak: oʻrta-toʻq teri tonu
+💇🏿‍♂️	soch olayotgan erkak: to'q teri
+💇🏿‍♂	soch olayotgan erkak: to'q teri
+💇‍♀️	soch oldirayotgan ayol
+💇‍♀	soch oldirayotgan ayol
+💇🏻‍♀️	soch olayotgan ayol: ochiq teri tonu
+💇🏻‍♀	soch olayotgan ayol: ochiq teri tonu
+💇🏼‍♀️	soch olayotgan ayol: o'rtacha och teri tonu
+💇🏼‍♀	soch olayotgan ayol: o'rtacha och teri tonu
+💇🏽‍♀️	soch olayotgan ayol: o'rta teri tonu
+💇🏽‍♀	soch olayotgan ayol: o'rta teri tonu
+💇🏾‍♀️	soch olayotgan ayol: o'rtacha to'q teri rangi
+💇🏾‍♀	soch olayotgan ayol: o'rtacha to'q teri rangi
+💇🏿‍♀️	soch olayotgan ayol: to'q teri
+💇🏿‍♀	soch olayotgan ayol: to'q teri
+🚶	yurgan odam
+🚶🏻	yurgan odam: ochiq teri rangi
+🚶🏼	yurgan odam: o'rtacha och teri rangi
+🚶🏽	yurgan odam: o'rtacha teri tonu
+🚶🏾	yurgan odam: o'rtacha to'q teri tonu
+🚶🏿	yurgan odam: qora teri tonu
+🚶‍♂️	yurgan odam
+🚶‍♂	yurgan odam
+🚶🏻‍♂️	yurgan odam: ochiq teri tonu
+🚶🏻‍♂	yurgan odam: ochiq teri tonu
+🚶🏼‍♂️	yurgan odam: o'rtacha och teri tonu
+🚶🏼‍♂	yurgan odam: o'rtacha och teri tonu
+🚶🏽‍♂️	yurgan erkak: o‘rta teri tonu
+🚶🏽‍♂	yurgan erkak: o‘rta teri tonu
+🚶🏾‍♂️	yurgan odam: o‘rtacha to‘q teri tonu
+🚶🏾‍♂	yurgan odam: o‘rtacha to‘q teri tonu
+🚶🏿‍♂️	yurgan odam: qora teri tonu
+🚶🏿‍♂	yurgan odam: qora teri tonu
+🚶‍♀️	yurgan ayol
+🚶‍♀	yurgan ayol
+🚶🏻‍♀️	yurgan ayol: ochiq teri tonu
+🚶🏻‍♀	yurgan ayol: ochiq teri tonu
+🚶🏼‍♀️	yurgan ayol: o'rtacha och teri tonu
+🚶🏼‍♀	yurgan ayol: o'rtacha och teri tonu
+🚶🏽‍♀️	yurgan ayol: o'rta teri tonu
+🚶🏽‍♀	yurgan ayol: o'rta teri tonu
+🚶🏾‍♀️	yurgan ayol: o'rtacha to'q teri tonu
+🚶🏾‍♀	yurgan ayol: o'rtacha to'q teri tonu
+🚶🏿‍♀️	yurgan ayol: to'q teri
+🚶🏿‍♀	yurgan ayol: to'q teri
+🏃	yugurayotgan odam
+🏃🏻	yugurayotgan odam: ochiq teri rangi
+🏃🏼	yugurayotgan odam: o'rtacha och teri rangi
+🏃🏽	yugurayotgan odam: o‘rta teri tonu
+🏃🏾	yugurayotgan odam: o'rtacha to'q teri tonu
+🏃🏿	yugurayotgan odam: qora teri rangi
+🏃‍♂️	yugurayotgan odam
+🏃‍♂	yugurayotgan odam
+🏃🏻‍♂️	yugurayotgan erkak: ochiq teri rangi
+🏃🏻‍♂	yugurayotgan erkak: ochiq teri rangi
+🏃🏼‍♂️	yugurayotgan erkak: o‘rtacha och teri tonu
+🏃🏼‍♂	yugurayotgan erkak: o‘rtacha och teri tonu
+🏃🏽‍♂️	yugurayotgan erkak: o‘rta teri
+🏃🏽‍♂	yugurayotgan erkak: o‘rta teri
+🏃🏾‍♂️	yugurayotgan erkak: o‘rtacha to‘q teri tonu
+🏃🏾‍♂	yugurayotgan erkak: o‘rtacha to‘q teri tonu
+🏃🏿‍♂️	yugurayotgan erkak: to‘q teri
+🏃🏿‍♂	yugurayotgan erkak: to‘q teri
+🏃‍♀️	yugurayotgan ayol
+🏃‍♀	yugurayotgan ayol
+🏃🏻‍♀️	yugurayotgan ayol: ochiq teri rangi
+🏃🏻‍♀	yugurayotgan ayol: ochiq teri rangi
+🏃🏼‍♀️	yugurayotgan ayol: o'rtacha och teri tonu
+🏃🏼‍♀	yugurayotgan ayol: o'rtacha och teri tonu
+🏃🏽‍♀️	yugurayotgan ayol: o‘rta teri rangi
+🏃🏽‍♀	yugurayotgan ayol: o‘rta teri rangi
+🏃🏾‍♀️	yugurayotgan ayol: o‘rtacha to‘q teri tonu
+🏃🏾‍♀	yugurayotgan ayol: o‘rtacha to‘q teri tonu
+🏃🏿‍♀️	yugurayotgan ayol: qora teri
+🏃🏿‍♀	yugurayotgan ayol: qora teri
+💃	raqsga tushgan ayol
+💃🏻	raqsga tushayotgan ayol: ochiq teri tonu
+💃🏼	raqsga tushayotgan ayol: o'rtacha och teri tonu
+💃🏽	raqs tushayotgan ayol: o‘rta teri tonu
+💃🏾	raqsga tushayotgan ayol: o‘rtacha to‘q teri tonu
+💃🏿	raqsga tushayotgan ayol: to'q teri
+🕺	raqsga tushayotgan odam
+🕺🏻	raqs tushayotgan erkak: ochiq teri tonu
+🕺🏼	raqs tushayotgan erkak: o‘rta-ochiq teri tonu
+🕺🏽	raqs tushayotgan erkak: o‘rta teri tonu
+🕺🏾	raqsga tushayotgan erkak: o‘rtacha to‘q teri tonu
+🕺🏿	raqsga tushayotgan erkak: to‘q teri ohangi
+👯	quyon quloqlari bo'lgan odamlar
+👯‍♂️	quyon quloqli erkaklar
+👯‍♂	quyon quloqli erkaklar
+👯‍♀️	quyon quloqli ayollar
+👯‍♀	quyon quloqli ayollar
+🧖	bug'li xonada odam
+🧖🏻	bug'li xonada bo'lgan odam: ochiq teri rangi
+🧖🏼	bug'li xonada bo'lgan odam: o'rtacha och teri tonu
+🧖🏽	bug‘li xonada bo‘lgan odam: o‘rta teri tonu
+🧖🏾	bug'li xonada bo'lgan odam: o'rtacha to'q teri tonu
+🧖🏿	bug'li xonada odam: to'q teri tonu
+🧖‍♀️	bug'li xonada ayol
+🧖‍♀	bug'li xonada ayol
+🧖🏻‍♀️	bug'li xonada ayol: ochiq teri tonu
+🧖🏻‍♀	bug'li xonada ayol: ochiq teri tonu
+🧖🏼‍♀️	bug'li xonadagi ayol: o'rtacha och teri tonu
+🧖🏼‍♀	bug'li xonadagi ayol: o'rtacha och teri tonu
+🧖🏽‍♀️	bug‘li xonadagi ayol: o‘rta teri
+🧖🏽‍♀	bug‘li xonadagi ayol: o‘rta teri
+🧖🏾‍♀️	bug'li xonadagi ayol: o'rta-to'q teri
+🧖🏾‍♀	bug'li xonadagi ayol: o'rta-to'q teri
+🧖🏿‍♀️	bug'li xonada ayol: to'q teri
+🧖🏿‍♀	bug'li xonada ayol: to'q teri
+🧖‍♂️	bug'li xonada odam
+🧖‍♂	bug'li xonada odam
+🧖🏻‍♂️	bug'li xonada odam: ochiq teri tonu
+🧖🏻‍♂	bug'li xonada odam: ochiq teri tonu
+🧖🏼‍♂️	bug'li xonada odam: o'rtacha och teri tonu
+🧖🏼‍♂	bug'li xonada odam: o'rtacha och teri tonu
+🧖🏽‍♂️	bug‘li xonadagi odam: o‘rta teri
+🧖🏽‍♂	bug‘li xonadagi odam: o‘rta teri
+🧖🏾‍♂️	bug‘li xonadagi odam: o‘rta-to‘q teri tonu
+🧖🏾‍♂	bug‘li xonadagi odam: o‘rta-to‘q teri tonu
+🧖🏿‍♂️	bug'li xonada odam: to'q teri
+🧖🏿‍♂	bug'li xonada odam: to'q teri
+🧗	toqqa chiqadigan odam
+🧗🏻	toqqa chiqayotgan odam: och teri tonu
+🧗🏼	toqqa chiqadigan odam: o'rta-och teri rangi
+🧗🏽	toqqa chiqayotgan odam: o'rta teri tonu
+🧗🏾	toqqa chiqayotgan odam: o'rta-to'q teri rangi
+🧗🏿	toqqa chiqadigan odam: to'q teri
+🧗‍♀️	toqqa chiqadigan ayol
+🧗‍♀	toqqa chiqadigan ayol
+🧗🏻‍♀️	toqqa chiqayotgan ayol: och teri tonu
+🧗🏻‍♀	toqqa chiqayotgan ayol: och teri tonu
+🧗🏼‍♀️	toqqa chiqayotgan ayol: o'rtacha och teri tonu
+🧗🏼‍♀	toqqa chiqayotgan ayol: o'rtacha och teri tonu
+🧗🏽‍♀️	toqqa chiqayotgan ayol: o'rta teri
+🧗🏽‍♀	toqqa chiqayotgan ayol: o'rta teri
+🧗🏾‍♀️	toqqa chiqayotgan ayol: o'rta-to'q teri
+🧗🏾‍♀	toqqa chiqayotgan ayol: o'rta-to'q teri
+🧗🏿‍♀️	toqqa chiqayotgan ayol: to'q teri
+🧗🏿‍♀	toqqa chiqayotgan ayol: to'q teri
+🧗‍♂️	toqqa chiqadigan odam
+🧗‍♂	toqqa chiqadigan odam
+🧗🏻‍♂️	toqqa chiqayotgan odam: och teri tonu
+🧗🏻‍♂	toqqa chiqayotgan odam: och teri tonu
+🧗🏼‍♂️	toqqa chiqadigan odam: o'rta-och teri rangi
+🧗🏼‍♂	toqqa chiqadigan odam: o'rta-och teri rangi
+🧗🏽‍♂️	toqqa chiqadigan odam: o'rta teri
+🧗🏽‍♂	toqqa chiqadigan odam: o'rta teri
+🧗🏾‍♂️	toqqa chiqadigan odam: o'rta-to'q teri
+🧗🏾‍♂	toqqa chiqadigan odam: o'rta-to'q teri
+🧗🏿‍♂️	toqqa chiqadigan odam: to'q teri
+🧗🏿‍♂	toqqa chiqadigan odam: to'q teri
+🧘	lotus holatidagi odam
+🧘🏻	lotus holatidagi odam: ochiq teri rangi
+🧘🏼	lotus pozitsiyasidagi odam: o'rta-ochiq teri rangi
+🧘🏽	lotus pozitsiyasidagi odam: o'rtacha teri rangi
+🧘🏾	lotus pozitsiyasidagi odam: o'rtacha to'q teri rangi
+🧘🏿	lotus pozitsiyasidagi odam: qora teri tonu
+🧘‍♀️	lotus holatidagi ayol
+🧘‍♀	lotus holatidagi ayol
+🧘🏻‍♀️	lotus holatidagi ayol: ochiq teri rangi
+🧘🏻‍♀	lotus holatidagi ayol: ochiq teri rangi
+🧘🏼‍♀️	lotus pozitsiyasida ayol: o'rta-ochiq teri rangi
+🧘🏼‍♀	lotus pozitsiyasida ayol: o'rta-ochiq teri rangi
+🧘🏽‍♀️	lotus pozitsiyasidagi ayol: o'rta teri rangi
+🧘🏽‍♀	lotus pozitsiyasidagi ayol: o'rta teri rangi
+🧘🏾‍♀️	lotus pozitsiyasidagi ayol: o'rta-to'q teri rangi
+🧘🏾‍♀	lotus pozitsiyasidagi ayol: o'rta-to'q teri rangi
+🧘🏿‍♀️	lotus pozitsiyasida ayol: qora teri tonu
+🧘🏿‍♀	lotus pozitsiyasida ayol: qora teri tonu
+🧘‍♂️	lotus holatidagi odam
+🧘‍♂	lotus holatidagi odam
+🧘🏻‍♂️	lotus holatidagi odam: ochiq teri rangi
+🧘🏻‍♂	lotus holatidagi odam: ochiq teri rangi
+🧘🏼‍♂️	lotus pozitsiyasida odam: o'rta-ochiq teri rangi
+🧘🏼‍♂	lotus pozitsiyasida odam: o'rta-ochiq teri rangi
+🧘🏽‍♂️	lotus pozitsiyasidagi odam: o'rta teri rangi
+🧘🏽‍♂	lotus pozitsiyasidagi odam: o'rta teri rangi
+🧘🏾‍♂️	lotus pozitsiyasidagi odam: o'rta-to'q teri rangi
+🧘🏾‍♂	lotus pozitsiyasidagi odam: o'rta-to'q teri rangi
+🧘🏿‍♂️	lotus pozitsiyasidagi odam: to'q teri
+🧘🏿‍♂	lotus pozitsiyasidagi odam: to'q teri
+🛀	hammom olayotgan odam
+🛀🏻	vanna qabul qilayotgan odam: ochiq teri rangi
+🛀🏼	vanna qabul qilayotgan odam: o'rta-ochiq teri rangi
+🛀🏽	vanna qabul qilayotgan odam: o‘rta teri tonu
+🛀🏾	hammomni qabul qilayotgan odam: o'rtacha to'q teri rangi
+🛀🏿	vanna qabul qilayotgan odam: qora teri tonu
+🛌	yotoqdagi odam
+🛌🏻	to'shakda yotgan odam: ochiq teri rangi
+🛌🏼	to'shakda yotgan odam: o'rtacha och teri rangi
+🛌🏽	to'shakda yotgan odam: o'rtacha teri rangi
+🛌🏾	to'shakda yotgan odam: o'rtacha to'q teri rangi
+🛌🏿	to'shakda yotgan odam: to'q teri rangi
+🕴️	kostyum kiygan odam ko'tarilmoqda
+🕴	kostyum kiygan odam ko'tarilmoqda
+🕴🏻	Kostyum kiygan erkak: ochiq teri
+🕴🏼	Kostyumdagi erkak: o'rta-och teri to'ni
+🕴🏽	Kostyumdagi erkak: o‘rta teri
+🕴🏾	Kostyum kiygan erkak: oʻrta-toʻq teri
+🕴🏿	Kostyum kiygan erkak: to'q teri
+🗣️	gapiradigan bosh
+🗣	gapiradigan bosh
+👤	siluetdagi byust
+👥	siluetdagi byustlar
+🤺	shaxs qilichbozlik
+🏇	ot poygasi
+🏇🏻	ot poygasi: ochiq teri ohangi
+🏇🏼	ot poygasi: o'rtacha och teri rangi
+🏇🏽	ot poygasi: o'rta teri tonu
+🏇🏾	ot poygasi: o'rtacha to'q teri tonu
+🏇🏿	ot poygasi: to'q teri
+⛷️	chang'ichi
+⛷	chang'ichi
+🏂	snoubordchi
+🏂🏻	snoubordchi: ochiq teri rangi
+🏂🏼	snoubordchi: o'rtacha och teri rangi
+🏂🏽	snoubordchi: o'rta teri rangi
+🏂🏾	snoubordchi: o'rtacha to'q teri rangi
+🏂🏿	snoubordchi: to'q teri
+🏌️	golf o'ynaydigan odam
+🏌	golf o'ynaydigan odam
+🏌🏻	golf o'ynayotgan odam: ochiq teri ohangi
+🏌🏼	golf o'ynayotgan odam: o'rtacha och teri rangi
+🏌🏽	golf oʻynayotgan odam: oʻrta teri
+🏌🏾	golf oʻynayotgan odam: oʻrta-toʻq teri
+🏌🏿	golf o'ynayotgan odam: to'q teri
+🏌️‍♂️	golf o'ynaydigan odam
+🏌‍♂️	golf o'ynaydigan odam
+🏌️‍♂	golf o'ynaydigan odam
+🏌‍♂	golf o'ynaydigan odam
+🏌🏻‍♂️	golf oʻynayotgan erkak: ochiq teri ohangi
+🏌🏻‍♂	golf oʻynayotgan erkak: ochiq teri ohangi
+🏌🏼‍♂️	golf oʻynayotgan erkak: oʻrta och teri tonu
+🏌🏼‍♂	golf oʻynayotgan erkak: oʻrta och teri tonu
+🏌🏽‍♂️	golf o‘ynayotgan erkak: o‘rta teri
+🏌🏽‍♂	golf o‘ynayotgan erkak: o‘rta teri
+🏌🏾‍♂️	golf oʻynayotgan erkak: oʻrta-toʻq teri tonu
+🏌🏾‍♂	golf oʻynayotgan erkak: oʻrta-toʻq teri tonu
+🏌🏿‍♂️	golf o'ynayotgan odam: to'q teri
+🏌🏿‍♂	golf o'ynayotgan odam: to'q teri
+🏌️‍♀️	golf o'ynayotgan ayol
+🏌‍♀️	golf o'ynayotgan ayol
+🏌️‍♀	golf o'ynayotgan ayol
+🏌‍♀	golf o'ynayotgan ayol
+🏌🏻‍♀️	golf o'ynayotgan ayol: ochiq teri tonu
+🏌🏻‍♀	golf o'ynayotgan ayol: ochiq teri tonu
+🏌🏼‍♀️	golf o'ynayotgan ayol: o'rta och teri rangi
+🏌🏼‍♀	golf o'ynayotgan ayol: o'rta och teri rangi
+🏌🏽‍♀️	golf o‘ynayotgan ayol: o‘rta teri
+🏌🏽‍♀	golf o‘ynayotgan ayol: o‘rta teri
+🏌🏾‍♀️	golf oʻynayotgan ayol: oʻrta-toʻq teri
+🏌🏾‍♀	golf oʻynayotgan ayol: oʻrta-toʻq teri
+🏌🏿‍♀️	golf o'ynayotgan ayol: to'q teri
+🏌🏿‍♀	golf o'ynayotgan ayol: to'q teri
+🏄	bemaqsad odam
+🏄🏻	bemaqsad odam: ochiq teri tonu
+🏄🏼	bemaqsad odam: o'rta och teri tonu
+🏄🏽	bemaqsad odam: o‘rta teri
+🏄🏾	bemaqsad odam: o‘rta-to‘q teri tonu
+🏄🏿	bemaqsad odam: to'q teri
+🏄‍♂️	odam bemaqsad
+🏄‍♂	odam bemaqsad
+🏄🏻‍♂️	bemaqsad odam: ochiq teri tonu
+🏄🏻‍♂	bemaqsad odam: ochiq teri tonu
+🏄🏼‍♂️	bemaqsad odam: o‘rta och teri tonu
+🏄🏼‍♂	bemaqsad odam: o‘rta och teri tonu
+🏄🏽‍♂️	bemaqsad odam: o‘rta teri
+🏄🏽‍♂	bemaqsad odam: o‘rta teri
+🏄🏾‍♂️	bemaqsad odam: o‘rta to‘q teri tonu
+🏄🏾‍♂	bemaqsad odam: o‘rta to‘q teri tonu
+🏄🏿‍♂️	bemaqsad odam: to‘q teri
+🏄🏿‍♂	bemaqsad odam: to‘q teri
+🏄‍♀️	bemaqsad ayol
+🏄‍♀	bemaqsad ayol
+🏄🏻‍♀️	bemaqsad ayol: ochiq teri tonu
+🏄🏻‍♀	bemaqsad ayol: ochiq teri tonu
+🏄🏼‍♀️	bemaqsadchi ayol: o‘rta och teri tonu
+🏄🏼‍♀	bemaqsadchi ayol: o‘rta och teri tonu
+🏄🏽‍♀️	bemaqsadchi ayol: o‘rta teri
+🏄🏽‍♀	bemaqsadchi ayol: o‘rta teri
+🏄🏾‍♀️	bemaqsadchi ayol: o‘rta-to‘q teri
+🏄🏾‍♀	bemaqsadchi ayol: o‘rta-to‘q teri
+🏄🏿‍♀️	bemaqsad ayol: to'q teri
+🏄🏿‍♀	bemaqsad ayol: to'q teri
+🚣	odam eshkak eshuvchi qayiq
+🚣🏻	odam eshkak eshish kemasi: ochiq teri rangi
+🚣🏼	eshkak eshish kemasi: o'rta-och teri to'ni
+🚣🏽	eshkak eshish qayig‘i: o‘rta teri
+🚣🏾	eshkak eshish qayig‘i: o‘rta-to‘q teri
+🚣🏿	eshkak eshish kemasi: to'q teri
+🚣‍♂️	eshkak eydigan odam
+🚣‍♂	eshkak eydigan odam
+🚣🏻‍♂️	eshkak eshuvchi qayiq: och teri rangi
+🚣🏻‍♂	eshkak eshuvchi qayiq: och teri rangi
+🚣🏼‍♂️	eshkak eshish qayig‘i: o‘rta-och teri
+🚣🏼‍♂	eshkak eshish qayig‘i: o‘rta-och teri
+🚣🏽‍♂️	eshkak eshish kemasi: o‘rta teri
+🚣🏽‍♂	eshkak eshish kemasi: o‘rta teri
+🚣🏾‍♂️	eshkak eshish kemasi: o‘rta-to‘q teri
+🚣🏾‍♂	eshkak eshish kemasi: o‘rta-to‘q teri
+🚣🏿‍♂️	eshkak eshish kemasi: to'q teri
+🚣🏿‍♂	eshkak eshish kemasi: to'q teri
+🚣‍♀️	ayol eshkak eshuvchi qayiq
+🚣‍♀	ayol eshkak eshuvchi qayiq
+🚣🏻‍♀️	ayol eshkak eshish qayig‘i: ochiq teri tonu
+🚣🏻‍♀	ayol eshkak eshish qayig‘i: ochiq teri tonu
+🚣🏼‍♀️	ayol eshkak eshish qayig'i: o'rta-ochiq teri rangi
+🚣🏼‍♀	ayol eshkak eshish qayig'i: o'rta-ochiq teri rangi
+🚣🏽‍♀️	ayol qayiqda: o‘rta teri
+🚣🏽‍♀	ayol qayiqda: o‘rta teri
+🚣🏾‍♀️	eshkak eshuvchi ayol: o‘rta-to‘q teri
+🚣🏾‍♀	eshkak eshuvchi ayol: o‘rta-to‘q teri
+🚣🏿‍♀️	eshkak eshuvchi ayol: to'q teri
+🚣🏿‍♀	eshkak eshuvchi ayol: to'q teri
+🏊	suzuvchi odam
+🏊🏻	suzayotgan odam: ochiq teri rangi
+🏊🏼	suzayotgan odam: o'rtacha och teri rangi
+🏊🏽	suzayotgan odam: o'rta teri tonu
+🏊🏾	suzayotgan odam: o'rtacha to'q teri rangi
+🏊🏿	suzayotgan odam: qora teri tonu
+🏊‍♂️	suzayotgan odam
+🏊‍♂	suzayotgan odam
+🏊🏻‍♂️	suzayotgan erkak: och teri tonu
+🏊🏻‍♂	suzayotgan erkak: och teri tonu
+🏊🏼‍♂️	suzuvchi erkak: o'rta-ochiq teri tonu
+🏊🏼‍♂	suzuvchi erkak: o'rta-ochiq teri tonu
+🏊🏽‍♂️	suzayotgan erkak: o‘rta teri tonu
+🏊🏽‍♂	suzayotgan erkak: o‘rta teri tonu
+🏊🏾‍♂️	suzayotgan erkak: o‘rta-to‘q teri tonu
+🏊🏾‍♂	suzayotgan erkak: o‘rta-to‘q teri tonu
+🏊🏿‍♂️	suzayotgan erkak: to'q teri
+🏊🏿‍♂	suzayotgan erkak: to'q teri
+🏊‍♀️	suzuvchi ayol
+🏊‍♀	suzuvchi ayol
+🏊🏻‍♀️	suzayotgan ayol: och teri tonu
+🏊🏻‍♀	suzayotgan ayol: och teri tonu
+🏊🏼‍♀️	suzayotgan ayol: o'rta-ochiq teri rangi
+🏊🏼‍♀	suzayotgan ayol: o'rta-ochiq teri rangi
+🏊🏽‍♀️	suzayotgan ayol: o‘rta teri tonu
+🏊🏽‍♀	suzayotgan ayol: o‘rta teri tonu
+🏊🏾‍♀️	suzayotgan ayol: o'rtacha to'q teri tonu
+🏊🏾‍♀	suzayotgan ayol: o'rtacha to'q teri tonu
+🏊🏿‍♀️	suzayotgan ayol: to'q teri
+🏊🏿‍♀	suzayotgan ayol: to'q teri
+⛹️	to'pni sakrab turgan odam
+⛹	to'pni sakrab turgan odam
+⛹🏻	to'pni sakrab turgan odam: ochiq teri ohangi
+⛹🏼	to'pni sakrab o'tayotgan odam: o'rta-och teri rangi
+⛹🏽	to'pni sakrab turgan odam: o'rta teri
+⛹🏾	to'pni sakrab turgan odam: o'rta-to'q teri
+⛹🏿	to'pni sakragan odam: to'q teri
+⛹️‍♂️	to'pni sakrab turgan odam
+⛹‍♂️	to'pni sakrab turgan odam
+⛹️‍♂	to'pni sakrab turgan odam
+⛹‍♂	to'pni sakrab turgan odam
+⛹🏻‍♂️	to'pni sakrab o'tayotgan odam: ochiq teri ohangi
+⛹🏻‍♂	to'pni sakrab o'tayotgan odam: ochiq teri ohangi
+⛹🏼‍♂️	to'pni sakrab o'tayotgan odam: o'rta-och teri rangi
+⛹🏼‍♂	to'pni sakrab o'tayotgan odam: o'rta-och teri rangi
+⛹🏽‍♂️	to'p tepayotgan erkak: o'rta teri
+⛹🏽‍♂	to'p tepayotgan erkak: o'rta teri
+⛹🏾‍♂️	to'pni sakrab turgan erkak: o'rta-to'q teri
+⛹🏾‍♂	to'pni sakrab turgan erkak: o'rta-to'q teri
+⛹🏿‍♂️	to'pni sakragan odam: to'q teri
+⛹🏿‍♂	to'pni sakragan odam: to'q teri
+⛹️‍♀️	to'pni sakrab turgan ayol
+⛹‍♀️	to'pni sakrab turgan ayol
+⛹️‍♀	to'pni sakrab turgan ayol
+⛹‍♀	to'pni sakrab turgan ayol
+⛹🏻‍♀️	to'pni sakrab turgan ayol: ochiq teri ohangi
+⛹🏻‍♀	to'pni sakrab turgan ayol: ochiq teri ohangi
+⛹🏼‍♀️	to'pni sakrab turgan ayol: o'rta-ochiq teri rangi
+⛹🏼‍♀	to'pni sakrab turgan ayol: o'rta-ochiq teri rangi
+⛹🏽‍♀️	to'pni sakrab turgan ayol: o'rta teri
+⛹🏽‍♀	to'pni sakrab turgan ayol: o'rta teri
+⛹🏾‍♀️	to'pni sakrab turgan ayol: o'rta-to'q teri
+⛹🏾‍♀	to'pni sakrab turgan ayol: o'rta-to'q teri
+⛹🏿‍♀️	to'pni sakrab turgan ayol: to'q teri
+⛹🏿‍♀	to'pni sakrab turgan ayol: to'q teri
+🏋️	og'irlikni ko'taradigan odam
+🏋	og'irlikni ko'taradigan odam
+🏋🏻	og'irlikni ko'tarayotgan odam: ochiq teri rangi
+🏋🏼	og'irlik ko'tarayotgan odam: o'rta-ochiq teri rangi
+🏋🏽	og'irlikni ko'tarayotgan odam: o'rtacha teri rangi
+🏋🏾	og'irlikni ko'tarayotgan odam: o'rta-qora teri tonu
+🏋🏿	og'irlikni ko'tarayotgan odam: qora teri tonu
+🏋️‍♂️	og'irlikni ko'taradigan odam
+🏋‍♂️	og'irlikni ko'taradigan odam
+🏋️‍♂	og'irlikni ko'taradigan odam
+🏋‍♂	og'irlikni ko'taradigan odam
+🏋🏻‍♂️	og'irlikni ko'tarayotgan odam: ochiq teri rangi
+🏋🏻‍♂	og'irlikni ko'tarayotgan odam: ochiq teri rangi
+🏋🏼‍♂️	og'irlikni ko'tarayotgan odam: o'rta-ochiq teri rangi
+🏋🏼‍♂	og'irlikni ko'tarayotgan odam: o'rta-ochiq teri rangi
+🏋🏽‍♂️	og'irlik ko'tarayotgan erkak: o'rta teri tonu
+🏋🏽‍♂	og'irlik ko'tarayotgan erkak: o'rta teri tonu
+🏋🏾‍♂️	og'irlik ko'tarayotgan odam: o'rta-to'q teri tonu
+🏋🏾‍♂	og'irlik ko'tarayotgan odam: o'rta-to'q teri tonu
+🏋🏿‍♂️	og'irlikni ko'tarayotgan odam: to'q teri
+🏋🏿‍♂	og'irlikni ko'tarayotgan odam: to'q teri
+🏋️‍♀️	og'irlikni ko'tarayotgan ayol
+🏋‍♀️	og'irlikni ko'tarayotgan ayol
+🏋️‍♀	og'irlikni ko'tarayotgan ayol
+🏋‍♀	og'irlikni ko'tarayotgan ayol
+🏋🏻‍♀️	og'irlikni ko'tarayotgan ayol: ochiq teri rangi
+🏋🏻‍♀	og'irlikni ko'tarayotgan ayol: ochiq teri rangi
+🏋🏼‍♀️	og'irlikni ko'tarayotgan ayol: o'rtacha och teri tonu
+🏋🏼‍♀	og'irlikni ko'tarayotgan ayol: o'rtacha och teri tonu
+🏋🏽‍♀️	og'irlikni ko'tarayotgan ayol: o'rta teri rangi
+🏋🏽‍♀	og'irlikni ko'tarayotgan ayol: o'rta teri rangi
+🏋🏾‍♀️	og'irlikni ko'tarayotgan ayol: o'rtacha to'q teri rangi
+🏋🏾‍♀	og'irlikni ko'tarayotgan ayol: o'rtacha to'q teri rangi
+🏋🏿‍♀️	og'irlikni ko'tarayotgan ayol: to'q teri
+🏋🏿‍♀	og'irlikni ko'tarayotgan ayol: to'q teri
+🚴	odam velosipedda
+🚴🏻	velosiped haydaydigan odam: ochiq teri tonu
+🚴🏼	velosiped minadigan odam: o'rta-ochiq teri rangi
+🚴🏽	velosipedda yurgan odam: o‘rta teri tonu
+🚴🏾	velosipedda yurgan odam: oʻrtacha toʻq teri rangi
+🚴🏿	velosipedda yurgan odam: to'q teri
+🚴‍♂️	odam velosipedda
+🚴‍♂	odam velosipedda
+🚴🏻‍♂️	velosiped haydayotgan erkak: ochiq teri rangi
+🚴🏻‍♂	velosiped haydayotgan erkak: ochiq teri rangi
+🚴🏼‍♂️	velosiped haydayotgan erkak: o‘rtacha och teri tonu
+🚴🏼‍♂	velosiped haydayotgan erkak: o‘rtacha och teri tonu
+🚴🏽‍♂️	velosiped haydayotgan erkak: o‘rta teri
+🚴🏽‍♂	velosiped haydayotgan erkak: o‘rta teri
+🚴🏾‍♂️	velosipedchi erkak: o‘rta-to‘q teri tonu
+🚴🏾‍♂	velosipedchi erkak: o‘rta-to‘q teri tonu
+🚴🏿‍♂️	velosiped haydayotgan erkak: qora teri
+🚴🏿‍♂	velosiped haydayotgan erkak: qora teri
+🚴‍♀️	ayol velosipedda
+🚴‍♀	ayol velosipedda
+🚴🏻‍♀️	velosipedchi ayol: ochiq teri rangi
+🚴🏻‍♀	velosipedchi ayol: ochiq teri rangi
+🚴🏼‍♀️	velosiped haydayotgan ayol: o‘rta-ochiq teri rangi
+🚴🏼‍♀	velosiped haydayotgan ayol: o‘rta-ochiq teri rangi
+🚴🏽‍♀️	Velosipedchi ayol: o‘rta teri rangi
+🚴🏽‍♀	Velosipedchi ayol: o‘rta teri rangi
+🚴🏾‍♀️	Velosipedchi ayol: oʻrtacha toʻq teri tonu
+🚴🏾‍♀	Velosipedchi ayol: oʻrtacha toʻq teri tonu
+🚴🏿‍♀️	velosiped haydayotgan ayol: to'q teri
+🚴🏿‍♀	velosiped haydayotgan ayol: to'q teri
+🚵	odam tog 'velosipedi
+🚵🏻	tog 'velosipedida odam: ochiq teri ohangi
+🚵🏼	tog 'velosipedida odam: o'rtacha och teri rangi
+🚵🏽	tog 'velosipedi: o'rta teri
+🚵🏾	odam tog 'velosipedi: o'rta-to'q teri rangi
+🚵🏿	odam tog 'velosipedi: to'q teri
+🚵‍♂️	odam tog'da velosipedda
+🚵‍♂	odam tog'da velosipedda
+🚵🏻‍♂️	tog 'velosipedi: ochiq teri ohangi
+🚵🏻‍♂	tog 'velosipedi: ochiq teri ohangi
+🚵🏼‍♂️	tog 'velosipedida odam: o'rtacha och teri to'ni
+🚵🏼‍♂	tog 'velosipedida odam: o'rtacha och teri to'ni
+🚵🏽‍♂️	tog 'velosipedi: o'rta teri
+🚵🏽‍♂	tog 'velosipedi: o'rta teri
+🚵🏾‍♂️	tog 'velosipedchi erkak: o'rta-to'q teri
+🚵🏾‍♂	tog 'velosipedchi erkak: o'rta-to'q teri
+🚵🏿‍♂️	tog 'velosipedi: to'q teri
+🚵🏿‍♂	tog 'velosipedi: to'q teri
+🚵‍♀️	ayol tog 'velosipedida
+🚵‍♀	ayol tog 'velosipedida
+🚵🏻‍♀️	tog 'velosipedchi ayol: ochiq teri ohangi
+🚵🏻‍♀	tog 'velosipedchi ayol: ochiq teri ohangi
+🚵🏼‍♀️	tog 'velosipedchi ayol: o'rtacha och teri tonu
+🚵🏼‍♀	tog 'velosipedchi ayol: o'rtacha och teri tonu
+🚵🏽‍♀️	tog 'velosipedchi ayol: o'rta teri
+🚵🏽‍♀	tog 'velosipedchi ayol: o'rta teri
+🚵🏾‍♀️	tog 'velosipedchi ayol: o'rtacha to'q teri
+🚵🏾‍♀	tog 'velosipedchi ayol: o'rtacha to'q teri
+🚵🏿‍♀️	tog 'velosipedchi ayol: to'q teri
+🚵🏿‍♀	tog 'velosipedchi ayol: to'q teri
+🏎️	poyga mashinasi
+🏎	poyga mashinasi
+🏍️	mototsikl
+🏍	mototsikl
+🤸	aravachada yurgan odam
+🤸🏻	odam aravachalari: ochiq teri rangi
+🤸🏼	odam aravachasi: o'rta-ochiq teri tonu
+🤸🏽	odam aravachalari: o‘rta teri rangi
+🤸🏾	odam aravachasi: oʻrta-toʻq teri tonu
+🤸🏿	odam aravachalari: to'q teri
+🤸‍♂️	aravada yurgan odam
+🤸‍♂	aravada yurgan odam
+🤸🏻‍♂️	Erkak aravachalar: ochiq teri ohangi
+🤸🏻‍♂	Erkak aravachalar: ochiq teri ohangi
+🤸🏼‍♂️	Erkak aravachalar: o‘rta-ochiq teri rangi
+🤸🏼‍♂	Erkak aravachalar: o‘rta-ochiq teri rangi
+🤸🏽‍♂️	Erkak aravachada: o‘rta teri
+🤸🏽‍♂	Erkak aravachada: o‘rta teri
+🤸🏾‍♂️	odam aravachalari: o‘rta-to‘q teri tonu
+🤸🏾‍♂	odam aravachalari: o‘rta-to‘q teri rangi
+🤸🏿‍♂️	odam aravachalari: to‘q teri
+🤸🏿‍♂	odam aravachalari: to‘q teri
+🤸‍♀️	aravada aylanib yurgan ayol
+🤸‍♀	aravada aylanib yurgan ayol
+🤸🏻‍♀️	aravachada yurgan ayol: och teri tonu
+🤸🏻‍♀	aravachada yurgan ayol: och teri tonu
+🤸🏼‍♀️	ayol aravachalar: o‘rta-ochiq teri tonu
+🤸🏼‍♀	ayol aravachalar: o‘rta-ochiq teri tonu
+🤸🏽‍♀️	aylanayotgan ayol: o‘rta teri rangi
+🤸🏽‍♀	aylanayotgan ayol: o‘rta teri rangi
+🤸🏾‍♀️	ayol aravachalar: o‘rta-to‘q teri tonu
+🤸🏾‍♀	ayol aravachalar: o‘rta-to‘q teri tonu
+🤸🏿‍♀️	aylanib yurgan ayol: to'q teri
+🤸🏿‍♀	aylanib yurgan ayol: to'q teri
+🤼	kurashayotgan odamlar
+🤼‍♂️	erkaklar kurashi
+🤼‍♂	erkaklar kurashi
+🤼‍♀️	ayollar kurashi
+🤼‍♀	ayollar kurashi
+🤽	suv polosi o'ynayotgan odam
+🤽🏻	suv polosi oʻynayotgan odam: ochiq teri ohangi
+🤽🏼	suv polosi oʻynayotgan odam: oʻrta-och teri tonu
+🤽🏽	suv polosi oʻynayotgan odam: oʻrta teri
+🤽🏾	suv polosini oʻynayotgan odam: oʻrta-toʻq teri tonu
+🤽🏿	suv polosi oʻynayotgan odam: toʻq teri
+🤽‍♂️	suv polosi o'ynayotgan odam
+🤽‍♂	suv polosi o'ynayotgan odam
+🤽🏻‍♂️	suv polosi oʻynayotgan erkak: ochiq teri ohangi
+🤽🏻‍♂	suv polosi oʻynayotgan erkak: ochiq teri ohangi
+🤽🏼‍♂️	suv polosini o‘ynayotgan erkak: o‘rta-och teri tonu
+🤽🏼‍♂	suv polosini o‘ynayotgan erkak: o‘rta-och teri tonu
+🤽🏽‍♂️	suv polosini o‘ynayotgan erkak: o‘rta teri
+🤽🏽‍♂	suv polosini o‘ynayotgan erkak: o‘rta teri
+🤽🏾‍♂️	suv polosini o‘ynayotgan erkak: o‘rta-to‘q teri tonu
+🤽🏾‍♂	suv polosini o‘ynayotgan erkak: o‘rta-to‘q teri tonu
+🤽🏿‍♂️	suv polosini oʻynayotgan erkak: toʻq teri
+🤽🏿‍♂	suv polosini oʻynayotgan erkak: toʻq teri
+🤽‍♀️	suv polosi o'ynayotgan ayol
+🤽‍♀	suv polosi o'ynayotgan ayol
+🤽🏻‍♀️	suv polosini oʻynayotgan ayol: ochiq teri ohangi
+🤽🏻‍♀	suv polosini oʻynayotgan ayol: ochiq teri ohangi
+🤽🏼‍♀️	suv polosini o‘ynayotgan ayol: o‘rta-ochiq teri rangi
+🤽🏼‍♀	suv polosini o‘ynayotgan ayol: o‘rta-ochiq teri rangi
+🤽🏽‍♀️	suv polosini o‘ynayotgan ayol: o‘rta teri
+🤽🏽‍♀	suv polosini o‘ynayotgan ayol: o‘rta teri
+🤽🏾‍♀️	suv polosini o‘ynayotgan ayol: o‘rta-to‘q teri
+🤽🏾‍♀	suv polosini o‘ynayotgan ayol: o‘rta-to‘q teri
+🤽🏿‍♀️	suv polosini oʻynayotgan ayol: toʻq teri
+🤽🏿‍♀	suv polosini oʻynayotgan ayol: toʻq teri
+🤾	gandbol o'ynagan odam
+🤾🏻	qo‘l to‘pi o‘ynayotgan odam: ochiq teri ohangi
+🤾🏼	qo‘l to‘pi o‘ynayotgan odam: o‘rta-ochiq teri rangi
+🤾🏽	qo‘l to‘pi o‘ynayotgan odam: o‘rta teri
+🤾🏾	qo‘l to‘pi o‘ynayotgan odam: o‘rta-to‘q teri
+🤾🏿	qo‘l to‘pi o‘ynayotgan odam: to‘q teri
+🤾‍♂️	gandbol o'ynagan odam
+🤾‍♂	gandbol o'ynagan odam
+🤾🏻‍♂️	qo‘l to‘pi o‘ynayotgan erkak: ochiq teri ohangi
+🤾🏻‍♂	qo‘l to‘pi o‘ynayotgan erkak: ochiq teri ohangi
+🤾🏼‍♂️	qo‘l to‘pi o‘ynayotgan erkak: o‘rta-och teri tonu
+🤾🏼‍♂	qo‘l to‘pi o‘ynayotgan erkak: o‘rta-och teri tonu
+🤾🏽‍♂️	qo‘l to‘pi o‘ynayotgan erkak: o‘rta teri
+🤾🏽‍♂	qo‘l to‘pi o‘ynayotgan erkak: o‘rta teri
+🤾🏾‍♂️	qo‘l to‘pi o‘ynayotgan erkak: o‘rta-to‘q teri
+🤾🏾‍♂	qo‘l to‘pi o‘ynayotgan erkak: o‘rta-to‘q teri
+🤾🏿‍♂️	qo‘l to‘pi o‘ynayotgan erkak: to‘q teri
+🤾🏿‍♂	qo‘l to‘pi o‘ynayotgan erkak: to‘q teri
+🤾‍♀️	gandbol o'ynayotgan ayol
+🤾‍♀	gandbol o'ynayotgan ayol
+🤾🏻‍♀️	qo‘l to‘pi o‘ynayotgan ayol: ochiq teri ohangi
+🤾🏻‍♀	qo‘l to‘pi o‘ynayotgan ayol: ochiq teri ohangi
+🤾🏼‍♀️	qo‘l to‘pi o‘ynayotgan ayol: o‘rta-ochiq teri rangi
+🤾🏼‍♀	qo‘l to‘pi o‘ynayotgan ayol: o‘rta-ochiq teri rangi
+🤾🏽‍♀️	qo‘l to‘pi o‘ynayotgan ayol: o‘rta teri
+🤾🏽‍♀	qo‘l to‘pi o‘ynayotgan ayol: o‘rta teri
+🤾🏾‍♀️	qo‘l to‘pi o‘ynayotgan ayol: o‘rta-to‘q teri
+🤾🏾‍♀	qo‘l to‘pi o‘ynayotgan ayol: o‘rta-to‘q teri
+🤾🏿‍♀️	gandbol oʻynayotgan ayol: toʻq teri
+🤾🏿‍♀	gandbol oʻynayotgan ayol: toʻq teri
+🤹	jonglyor odam
+🤹🏻	jonglyor odam: ochiq teri tonu
+🤹🏼	jonglyor odam: o'rtacha och teri tonu
+🤹🏽	jonglyor: o‘rta teri
+🤹🏾	jonglyor odam: o'rta-to'q teri
+🤹🏿	jonglyor odam: qora teri
+🤹‍♂️	odam jonglyor
+🤹‍♂	odam jonglyor
+🤹🏻‍♂️	erkak jonglyor: ochiq teri tonu
+🤹🏻‍♂	erkak jonglyor: ochiq teri tonu
+🤹🏼‍♂️	erkak jonglyor: o‘rta-ochiq teri rangi
+🤹🏼‍♂	erkak jonglyor: o‘rta-ochiq teri rangi
+🤹🏽‍♂️	erkak jonglyor: o‘rta teri
+🤹🏽‍♂	erkak jonglyor: o‘rta teri
+🤹🏾‍♂️	erkak jonglyor: o‘rta-to‘q teri
+🤹🏾‍♂	erkak jonglyor: o‘rta-to‘q teri
+🤹🏿‍♂️	odam jonglyor: to'q teri
+🤹🏿‍♂	odam jonglyor: to'q teri
+🤹‍♀️	jonglyor ayol
+🤹‍♀	jonglyor ayol
+🤹🏻‍♀️	jonglyor ayol: ochiq teri tonu
+🤹🏻‍♀	jonglyor ayol: ochiq teri tonu
+🤹🏼‍♀️	jonglyor ayol: o'rtacha och teri tonu
+🤹🏼‍♀	jonglyor ayol: o'rtacha och teri tonu
+🤹🏽‍♀️	jonglyor ayol: o‘rta teri
+🤹🏽‍♀	jonglyor ayol: o‘rta teri
+🤹🏾‍♀️	jonglyor ayol: o‘rta-to‘q teri
+🤹🏾‍♀	jonglyor ayol: o‘rta-to‘q teri
+🤹🏿‍♀️	jonglyor ayol: to'q teri
+🤹🏿‍♀	jonglyor ayol: to'q teri
+👫	qo'llarini ushlab turgan erkak va ayol
+👬	qo'llarini ushlab turgan ikki erkak
+👭	qo'llarini ushlab turgan ikki ayol
+💏	o'pish
+👩‍❤️‍💋‍👨	o'pish: ayol, erkak
+👩‍❤‍💋‍👨	o'pish: ayol, erkak
+👨‍❤️‍💋‍👨	o'pish: erkak, erkak
+👨‍❤‍💋‍👨	o'pish: erkak, erkak
+👩‍❤️‍💋‍👩	o'pish: ayol, ayol
+👩‍❤‍💋‍👩	o'pish: ayol, ayol
+💑	yurak bilan juftlik
+👩‍❤️‍👨	yurak bilan juftlik: ayol, erkak
+👩‍❤‍👨	yurak bilan juftlik: ayol, erkak
+👨‍❤️‍👨	yurak bilan juftlik: odam, erkak
+👨‍❤‍👨	yurak bilan juftlik: odam, erkak
+👩‍❤️‍👩	yurak bilan juftlik: ayol, ayol
+👩‍❤‍👩	yurak bilan juftlik: ayol, ayol
+👪	oila
+👨‍👩‍👦	oila: erkak, ayol, bola
+👨‍👩‍👧	oila: erkak, ayol, qiz
+👨‍👩‍👧‍👦	oila: erkak, ayol, qiz, bola
+👨‍👩‍👦‍👦	oila: erkak, ayol, o'g'il, bola
+👨‍👩‍👧‍👧	oila: erkak, ayol, qiz, qiz
+👨‍👨‍👦	oila: erkak, erkak, bola
+👨‍👨‍👧	oila: erkak, erkak, qiz
+👨‍👨‍👧‍👦	oila: erkak, erkak, qiz, bola
+👨‍👨‍👦‍👦	oila: erkak, erkak, o'g'il, bola
+👨‍👨‍👧‍👧	oila: erkak, erkak, qiz, qiz
+👩‍👩‍👦	oila: ayol, ayol, bola
+👩‍👩‍👧	oila: ayol, ayol, qiz
+👩‍👩‍👧‍👦	oila: ayol, ayol, qiz, bola
+👩‍👩‍👦‍👦	oila: ayol, ayol, o'g'il, bola
+👩‍👩‍👧‍👧	oila: ayol, ayol, qiz, qiz
+👨‍👦	oila: erkak, bola
+👨‍👦‍👦	oila: erkak, o'g'il, bola
+👨‍👧	oila: erkak, qiz
+👨‍👧‍👦	oila: erkak, qiz, o'g'il
+👨‍👧‍👧	oila: erkak, qiz, qiz
+👩‍👦	oila: ayol, bola
+👩‍👦‍👦	oila: ayol, o'g'il, bola
+👩‍👧	oila: ayol, qiz
+👩‍👧‍👦	oila: ayol, qiz, o'g'il
+👩‍👧‍👧	oila: ayol, qiz, qiz
+🤳	selfi
+🤳🏻	selfi: ochiq teri rangi
+🤳🏼	selfi: oʻrtacha och teri rangi
+🤳🏽	selfi: o‘rtacha teri rangi
+🤳🏾	selfi: oʻrta-toʻq teri tonu
+🤳🏿	selfi: to‘q teri
+💪	egilgan biceps
+💪🏻	egilgan biceps: ochiq teri rangi
+💪🏼	egilgan biceps: o'rtacha och teri rangi
+💪🏽	egilgan biceps: o'rtacha teri rangi
+💪🏾	egilgan biceps: o'rtacha to'q teri rangi
+💪🏿	egilgan biceps: qora teri rangi
+🦵	oyoq
+🦵🏻	oyoq: ochiq teri rangi
+🦵🏼	oyoq: o'rtacha och teri rangi
+🦵🏽	oyoq: o'rtacha teri rangi
+🦵🏾	oyoq: o'rtacha to'q teri rangi
+🦵🏿	oyoq: qora teri rangi
+🦶	oyoq
+🦶🏻	oyoq: ochiq teri rangi
+🦶🏼	oyoq: o'rtacha och teri rangi
+🦶🏽	oyoq: o'rtacha teri rangi
+🦶🏾	oyoq: o'rtacha to'q teri rangi
+🦶🏿	oyoq: qora teri rangi
+👈	chapga ishora qiluvchi orqa qo'l ko'rsatkichi
+👈🏻	Chapga ishora qiluvchi orqa qo'l ko'rsatkichi: ochiq teri rangi
+👈🏼	Chapga ishora qiluvchi orqa qoʻl koʻrsatkichi: oʻrtacha och teri tonu
+👈🏽	Chapga ishora qiluvchi orqa qo‘l ko‘rsatkichi: o‘rta teri tonu
+👈🏾	Chapga ishora qiluvchi orqa qoʻl koʻrsatkichi: oʻrtacha toʻq teri tonu
+👈🏿	Chapga ishora qiluvchi orqa qoʻl koʻrsatkichi: toʻq teri
+👉	orqa qo'l ko'rsatkichi o'ngga ishora qiladi
+👉🏻	Oʻngga ishora qiluvchi orqa qoʻl koʻrsatkichi: ochiq teri tonu
+👉🏼	Oʻngga ishora qiluvchi orqa qoʻl koʻrsatkichi: oʻrtacha och teri tonu
+👉🏽	Oʻngga ishora qiluvchi orqa qoʻl koʻrsatkichi: oʻrta teri tonu
+👉🏾	Oʻngga ishora qiluvchi orqa qoʻl koʻrsatkichi: oʻrtacha toʻq teri tonu
+👉🏿	O'ngga ishora qiluvchi orqa qo'l ko'rsatkichi: to'q teri
+☝️	yuqoriga ishora qiluvchi indeks
+☝	yuqoriga ishora qiluvchi indeks
+☝🏻	yuqoriga qaragan indeks: ochiq teri rangi
+☝🏼	yuqoriga qaragan indeks: o'rtacha och teri tonu
+☝🏽	yuqoriga qaragan indeks: o'rtacha teri tonu
+☝🏾	yuqoriga qaragan indeks: o'rtacha to'q teri rangi
+☝🏿	yuqoriga qaragan indeks: qora teri rangi
+👆	orqa qo'l ko'rsatkichi yuqoriga qaratilgan
+👆🏻	orqa qo'l ko'rsatkichi yuqoriga qaragan: ochiq teri rangi
+👆🏼	orqa qoʻl koʻrsatkichi yuqoriga qaragan: oʻrtacha och teri tonu
+👆🏽	orqa qoʻl koʻrsatkichi yuqoriga qaragan: oʻrtacha teri tonu
+👆🏾	orqa qo'l ko'rsatkichi yuqoriga qaragan: o'rtacha to'q teri rangi
+👆🏿	orqa qo'l ko'rsatkichi yuqoriga qaragan: to'q teri
+🖕	o'rta barmoq
+🖕🏻	o'rta barmoq: ochiq teri rangi
+🖕🏼	o'rta barmoq: o'rtacha och teri rangi
+🖕🏽	o'rta barmoq: o'rtacha teri rangi
+🖕🏾	o'rta barmoq: o'rtacha to'q teri rangi
+🖕🏿	o'rta barmoq: qora teri rangi
+👇	orqa qo'l ko'rsatkichi pastga qaratilgan
+👇🏻	orqa qo'l ko'rsatkichi pastga qaragan: ochiq teri tonu
+👇🏼	orqa qo'l ko'rsatkichi pastga qaragan: o'rtacha och teri rangi
+👇🏽	orqa qo'l ko'rsatkichi pastga qaragan: o'rta teri rangi
+👇🏾	orqa qo'l ko'rsatkichi pastga qaragan: o'rtacha to'q teri rangi
+👇🏿	pastga qaragan orqa qo'l ko'rsatkichi: qora teri rangi
+✌️	g'alaba qo'li
+✌	g'alaba qo'li
+✌🏻	g'alaba qo'li: och teri tonu
+✌🏼	g'alaba qo'li: o'rta-ochiq teri rangi
+✌🏽	g'alaba qo'li: o'rta teri rangi
+✌🏾	g'alaba qo'li: o'rtacha to'q teri rangi
+✌🏿	g'alaba qo'li: to'q teri rangi
+🤞	kesishgan barmoqlar
+🤞🏻	kesishgan barmoqlar: ochiq teri rangi
+🤞🏼	kesishgan barmoqlar: o'rtacha och teri rangi
+🤞🏽	kesishgan barmoqlar: o'rtacha teri tonu
+🤞🏾	kesishgan barmoqlar: o'rtacha to'q teri rangi
+🤞🏿	kesishgan barmoqlar: qora teri rangi
+🖖	vulqon salom
+🖖🏻	vulqon salomlash: ochiq teri rangi
+🖖🏼	vulqon salom: oʻrta-och teri tonu
+🖖🏽	vulqon salom: o‘rta teri tonu
+🖖🏾	vulqon salomi: oʻrtacha toʻq teri tonu
+🖖🏿	vulqon salom: toʻq teri ohangi
+🤘	shoxlarning belgisi
+🤘🏻	shoxlar belgisi: ochiq teri rangi
+🤘🏼	shoxlar belgisi: o'rtacha och teri rangi
+🤘🏽	shoxlar belgisi: o'rtacha teri rangi
+🤘🏾	shoxlar belgisi: o'rtacha to'q teri rangi
+🤘🏿	shoxlar belgisi: qora teri rangi
+🤙	qo'limni chaqir
+🤙🏻	menga qo'l qo'ng'iroq qiling: ochiq teri rangi
+🤙🏼	menga qo'l qo'ng'iroq qiling: o'rtacha och teri rangi
+🤙🏽	meni qo'l deb chaqir: o'rta teri
+🤙🏾	menga qo'l qo'ng'iroq qiling: o'rtacha to'q teri rangi
+🤙🏿	menga qo'l qo'ng'iroq qiling: qora teri rangi
+🖐️	qo'l barmoqlari yoyilgan
+🖐	qo'l barmoqlari yoyilgan
+🖐🏻	barmoqlari yoyilgan qo‘l: ochiq teri tonu
+🖐🏼	qo‘l barmoqlarini yoyib: o‘rta och teri tonu
+🖐🏽	qo‘l barmoqlari yoyilgan: o‘rta teri
+🖐🏾	qo‘l barmoqlarini yoygan holda: o‘rta-to‘q teri rangi
+🖐🏿	qo'l barmoqlari yoyilgan: to'q teri
+✋	ko'tarilgan qo'l
+✋🏻	ko'tarilgan qo'l: ochiq teri tonu
+✋🏼	ko'tarilgan qo'l: o'rtacha och teri rangi
+✋🏽	ko'tarilgan qo'l: o'rtacha teri tonu
+✋🏾	ko'tarilgan qo'l: o'rtacha to'q teri tonu
+✋🏿	ko'tarilgan qo'l: to'q teri
+👌	OK qo'l
+👌🏻	OK qo'l: ochiq teri rangi
+👌🏼	OK qo'l: o'rtacha och teri rangi
+👌🏽	OK qo'l: o'rtacha teri tonu
+👌🏾	OK qo'l: o'rtacha to'q teri rangi
+👌🏿	OK qo'l: qora teri rangi
+👍	Barakalla
+👍🏻	bosh barmog‘ini yuqoriga ko‘tardi: ochiq teri rangi
+👍🏼	bosh barmog‘ini yuqoriga ko‘targan: o‘rta-ochiq teri rangi
+👍🏽	bosh barmog'ini yuqoriga ko'targan: o'rtacha teri rangi
+👍🏾	bosh barmog‘i yuqoriga: o‘rtacha to‘q teri tonu
+👍🏿	bosh barmog'ini yuqoriga ko'tarish: qora teri tonu
+👎	bosh barmoqlarini pastga tushiradi
+👎🏻	bosh barmog‘i pastga: ochiq teri tonusi
+👎🏼	bosh barmog‘i pastga: o‘rta-ochiq teri rangi
+👎🏽	bosh barmog‘i pastga: o‘rta teri tonusi
+👎🏾	bosh barmog‘i pastga: o‘rtacha to‘q teri rangi
+👎🏿	bosh barmog'i pastga: to'q teri rangi
+✊	ko'tarilgan musht
+✊🏻	ko'tarilgan musht: ochiq teri rangi
+✊🏼	ko'tarilgan musht: o'rtacha och teri tonu
+✊🏽	ko'tarilgan musht: o'rtacha teri tonu
+✊🏾	ko'tarilgan musht: o'rta-to'q teri rangi
+✊🏿	ko'tarilgan musht: to'q teri
+👊	kelayotgan musht
+👊🏻	yaqinlashib kelayotgan musht: och teri rangi
+👊🏼	yaqinlashib kelayotgan musht: o‘rtacha och teri tonu
+👊🏽	yaqinlashib kelayotgan musht: o‘rtacha teri rangi
+👊🏾	yaqinlashib kelayotgan musht: o‘rtacha to‘q teri tonu
+👊🏿	kelayotgan musht: to'q teri
+🤛	chapga qaragan musht
+🤛🏻	chapga qaragan musht: ochiq teri tonu
+🤛🏼	chapga qaragan musht: o'rtacha och teri rangi
+🤛🏽	chapga qaragan musht: o'rta teri to'ni
+🤛🏾	musht chapga qaragan: o'rta-to'q teri rangi
+🤛🏿	chapga qaragan musht: to'q teri
+🤜	o'ngga qaragan musht
+🤜🏻	o'ngga qaragan musht: ochiq teri rangi
+🤜🏼	o'ngga qaragan musht: o'rtacha och teri tonu
+🤜🏽	o'ngga qaragan musht: o'rta teri
+🤜🏾	o'ngga qaragan musht: o'rtacha to'q teri rangi
+🤜🏿	o'ngga qaragan musht: to'q teri
+🤚	qo'lning orqa tomoniga ko'tarilgan
+🤚🏻	qo'l orqasi ko'tarilgan: ochiq teri tonu
+🤚🏼	qo'l orqasi ko'tarilgan: o'rtacha och teri tonu
+🤚🏽	qo'l orqasi ko'tarilgan: o'rtacha teri tonu
+🤚🏾	qo'lning orqa tomoni ko'tarilgan: o'rta-to'q teri tonu
+🤚🏿	qo'lning orqa tomoni ko'tarilgan: to'q teri
+👋	qo'l silkitib
+👋🏻	qo'l silkitib: och teri tonu
+👋🏼	qo'l silkitib: o'rtacha och teri tonu
+👋🏽	qo‘l silkitib: o‘rta teri
+👋🏾	silkitayotgan qo‘l: o‘rta to‘q teri tonu
+👋🏿	qo'l silkitib: to'q teri
+🤟	seni sevaman ishorasi
+🤟🏻	seni sevaman ishorasi: ochiq teri tonu
+🤟🏼	Seni sevaman imo-ishorasi: oʻrtacha och teri tonu
+🤟🏽	Seni sevaman imo-ishorasi: o‘rta teri
+🤟🏾	Seni sevaman imo-ishorasi: oʻrtacha toʻq teri tonu
+🤟🏿	seni sevaman imo-ishorasi: qora teri tonu
+✍️	yozuvchi qo'l
+✍	yozuvchi qo'l
+✍🏻	yozuvchi qo'l: ochiq teri rangi
+✍🏼	yozuvchi qo'l: o'rtacha och teri tonu
+✍🏽	yozuvchi qo‘l: o‘rta teri
+✍🏾	yozuvchi qoʻl: oʻrtacha toʻq teri tonu
+✍🏿	yozuvchi qo'l: to'q teri
+👏	qo'l urish
+👏🏻	qarsak chalish: ochiq teri rangi
+👏🏼	qarsak chalish: o'rtacha och teri tonu
+👏🏽	qarsak chalish: o‘rta teri
+👏🏾	qarsak chalayotgan qo‘llar: o‘rta-to‘q teri tonu
+👏🏿	qarsak chalish: qora teri
+👐	ochiq qo'llar
+👐🏻	ochiq qo'llar: ochiq teri rangi
+👐🏼	ochiq qo'llar: o'rtacha och teri tonu
+👐🏽	ochiq qo'llar: o'rtacha teri tonu
+👐🏾	ochiq qo'llar: o'rtacha to'q teri rangi
+👐🏿	ochiq qo'llar: qora teri
+🙌	qo'llarni ko'tarish
+🙌🏻	qo'llarni ko'tarish: ochiq teri rangi
+🙌🏼	qo'llarni ko'tarish: o'rtacha och teri rangi
+🙌🏽	qo'llarni ko'tarish: o'rtacha teri rangi
+🙌🏾	qo'llarni ko'tarish: o'rtacha to'q teri tonu
+🙌🏿	qo'llarni ko'tarish: qora teri rangi
+🤲	kaftlaringizni birga ko'taring
+🤲🏻	kaftlar birga yuqoriga ko‘tariladi: ochiq teri rangi
+🤲🏼	kaftlar birga yuqoriga ko‘tariladi: teri rangi o‘rtacha
+🤲🏽	kaftlar birga yuqoriga ko‘tariladi: o‘rta teri rangi
+🤲🏾	kaftlar yuqoriga ko‘tariladi: o‘rta-to‘q teri rangi
+🤲🏿	kaftlar birga yuqoriga ko'tariladi: to'q teri
+🙏	buklangan qo'llar
+🙏🏻	buklangan qo'llar: ochiq teri tonu
+🙏🏼	buklangan qo'llar: o'rtacha och teri tonu
+🙏🏽	buklangan qo'llar: o'rta teri tonu
+🙏🏾	buklangan qo'llar: o'rtacha to'q teri rangi
+🙏🏿	buklangan qo'llar: qora teri tonu
+🤝	qo'l siqish
+💅	tirnoq bo'yog'i
+💅🏻	tirnoq bo'yog'i: ochiq teri rangi
+💅🏼	tirnoq bo'yog'i: o'rtacha och teri rangi
+💅🏽	tirnoq bo'yog'i: o'rtacha teri rangi
+💅🏾	tirnoq bo'yog'i: o'rtacha to'q teri rangi
+💅🏿	tirnoq bo'yog'i: qora teri rangi
+👂	quloq
+👂🏻	quloq: ochiq teri rangi
+👂🏼	quloq: o'rtacha och teri rangi
+👂🏽	quloq: o'rtacha teri rangi
+👂🏾	quloq: o'rtacha to'q teri rangi
+👂🏿	quloq: qora teri rangi
+👃	burun
+👃🏻	burun: ochiq teri rangi
+👃🏼	burun: o'rtacha och teri rangi
+👃🏽	burun: o'rtacha teri rangi
+👃🏾	burun: o'rtacha to'q teri rangi
+👃🏿	burun: qora teri rangi
+🦰	qizil sochli
+🦱	jingalak sochli
+🦲	kal
+🦳	oq sochli
+👣	oyoq izlari
+👀	ko'zlar
+👁️	ko'z
+👁	ko'z
+👁️‍🗨️	nutq pufakchasidagi ko'z
+👁‍🗨️	nutq pufakchasidagi ko'z
+👁️‍🗨	nutq pufakchasidagi ko'z
+👁‍🗨	nutq pufakchasidagi ko'z
+🧠	miya
+🦴	suyak
+🦷	tish
+👅	til
+👄	og'iz
+💋	o'pish belgisi
+💘	o'q bilan yurak
+❤️	qizil yurak
+❤	qizil yurak
+💓	yurak urishi
+💔	singan yurak
+💕	ikki yurak
+💖	yorqin yurak
+💗	o'sib borayotgan yurak
+💙	ko'k yurak
+💚	yashil yurak
+💛	sariq yurak
+🧡	apelsin yurak
+💜	binafsha yurak
+🖤	qora yurak
+💝	tasma bilan yurak
+💞	aylanuvchi yuraklar
+💟	yurak bezaklari
+❣️	og'ir yurak nidosi
+❣	og'ir yurak nidosi
+💌	sevgi maktubi
+💤	zzz
+💢	g'azab belgisi
+💣	bomba
+💥	to'qnashuv
+💦	ter tomchilari
+💨	yugurib ketish
+💫	Bosh aylanishi
+💬	nutq baloni
+🗨️	chap nutq pufakchasi
+🗨	chap nutq pufakchasi
+🗯️	to'g'ri g'azab pufakchasi
+🗯	to'g'ri g'azab pufakchasi
+💭	fikr shari
+🕳️	teshik
+🕳	teshik
+👓	ko'zoynak
+🕶️	quyoshdan saqlaydigan ko'zoynaklar
+🕶	quyoshdan saqlaydigan ko'zoynaklar
+🥽	ko'zoynak
+🥼	laboratoriya xalati
+👔	galstuk
+👕	futbolka
+👖	jinsi shimlar
+🧣	sharf
+🧤	qo'lqop
+🧥	palto
+🧦	paypoq
+👗	kiyinish
+👘	kimono
+👙	bikini
+👚	ayol kiyimlari
+👛	hamyon
+👜	qo'l sumkasi
+👝	debriyaj sumkasi
+🛍️	xarid qilish paketlari
+🛍	xarid qilish paketlari
+🎒	maktab xaltasi
+👞	erkak poyabzali
+👟	yugurish poyabzali
+🥾	piyoda botinkasi
+🥿	ayolning tekis tuflisi
+👠	baland poshnali poyabzal
+👡	ayol sandal
+👢	ayol etik
+👑	toj
+👒	ayol shlyapasi
+🎩	yuqori shlyapa
+🎓	bitiruv qopqog'i
+🧢	hisoblangan qopqoq
+⛑️	qutqaruvchining dubulg'asi
+⛑	qutqaruvchining dubulg'asi
+📿	namoz boncuklari
+💄	lab bo'yog'i
+💍	uzuk
+💎	qimmatbaho tosh
+🐵	maymun yuzi
+🐒	maymun
+🦍	gorilla
+🐶	it yuzi
+🐕	it
+🐩	pudel
+🐺	bo'ri yuzi
+🦊	tulki yuzi
+🦝	yenot
+🐱	mushuk yuzi
+🐈	mushuk
+🦁	sher yuzi
+🐯	yo'lbars yuzi
+🐅	yo'lbars
+🐆	leopard
+🐴	ot yuzi
+🐎	ot
+🦄	yagona shoxli yuz
+🦓	zebra
+🦌	kiyik
+🐮	sigir yuzi
+🐂	ho'kiz
+🐃	suv bufalosi
+🐄	sigir
+🐷	cho'chqa yuzi
+🐖	cho'chqa
+🐗	to'ng'iz
+🐽	cho'chqa burni
+🐏	Ram
+🐑	qo'y
+🐐	echki
+🐪	tuya
+🐫	ikki dumli tuya
+🦙	lama
+🦒	Jirafa
+🐘	fil
+🦏	karkidon
+🦛	begemot
+🐭	sichqonchaning yuzi
+🐁	sichqoncha
+🐀	kalamush
+🐹	hamster yuzi
+🐰	quyon yuzi
+🐇	quyon
+🐿️	chipmunk
+🐿	chipmunk
+🦔	kirpi
+🦇	yarasa
+🐻	ayiq yuzi
+🐨	koala
+🐼	panda yuzi
+🦘	kenguru
+🦡	bo'rsiq
+🐾	panja izlari
+🦃	kurka
+🐔	tovuq
+🐓	xo'roz
+🐣	tuxumdan chiqqan jo'ja
+🐤	chaqaloq jo'ja
+🐥	old tomonga qaragan chaqaloq jo'jasi
+🐦	qush
+🐧	pingvin
+🕊️	kaptar
+🕊	kaptar
+🦅	burgut
+🦆	o'rdak
+🦢	oqqush
+🦉	boyqush
+🦚	tovus
+🦜	to'tiqush
+🐸	qurbaqa yuzi
+🐊	timsoh
+🐢	toshbaqa
+🦎	kaltakesak
+🐍	ilon
+🐲	ajdaho yuzi
+🐉	ajdaho
+🦕	sauropod
+🦖	T-Rex
+🐳	o'tkir kit
+🐋	kit
+🐬	delfin
+🐟	baliq
+🐠	tropik baliq
+🐡	puflash baliqlari
+🦈	nahang
+🐙	sakkizoyoq
+🐚	spiral qobiq
+🦀	dengiz qisqichbaqasi
+🦞	katta dengiz qisqichbagasi
+🦐	mayda qisqichbaqa
+🦑	Kalmar
+🐌	salyangoz
+🦋	kapalak
+🐛	xato
+🐜	chumoli
+🐝	Asalari
+🐞	xonim qo'ng'iz
+🦗	kriket
+🕷️	o'rgimchak
+🕷	o'rgimchak
+🕸️	o'rgimchak to'ri
+🕸	o'rgimchak to'ri
+🦂	chayon
+🦟	chivin
+🦠	mikrob
+💐	guldasta
+🌸	olcha guli
+💮	oq gul
+🏵️	rozet
+🏵	rozet
+🌹	atirgul
+🥀	so'lib qolgan gul
+🌺	gibiskus
+🌻	kungaboqar
+🌼	gullash
+🌷	lola
+🌱	ko'chat
+🌲	doim yashil daraxt
+🌳	bargli daraxt
+🌴	palma daraxti
+🌵	kaktus
+🌾	guruch bo'lagi
+🌿	o't
+☘️	shamrok
+☘	shamrok
+🍀	to'rt bargli yonca
+🍁	zarang yaprog'i
+🍂	tushgan barg
+🍃	shamolda miltillovchi barglar
+🍇	uzum
+🍈	qovun
+🍉	tarvuz
+🍊	mandarin
+🍋	limon
+🍌	banan
+🍍	ananas
+🥭	mango
+🍎	qizil olma
+🍏	yashil olma
+🍐	nok
+🍑	shaftoli
+🍒	gilos
+🍓	qulupnay
+🥝	kivi mevasi
+🍅	pomidor
+🥥	kokos
+🥑	avokado
+🍆	baqlajon
+🥔	kartoshka
+🥕	sabzi
+🌽	makkajo'xori boshi
+🌶️	achchiq qalampir
+🌶	achchiq qalampir
+🥒	bodring
+🥬	bargli yashil
+🥦	brokkoli
+🍄	qo'ziqorin
+🥜	yeryong'oq
+🌰	kashtan
+🍞	non
+🥐	kruvasan
+🥖	baget non
+🥨	simit
+🥯	simit
+🥞	krep
+🧀	pishloq bo'lagi
+🍖	suyak ustidagi go'sht
+🍗	parranda oyog'i
+🥩	go'sht kesilgan
+🥓	Bekon
+🍔	gamburger
+🍟	fri kartoshkasi
+🍕	pizza
+🌭	Xot-dog
+🥪	sendvich
+🌮	taco
+🌯	burrito
+🥙	to'ldirilgan yassi non
+🥚	tuxum
+🍳	pishirish
+🥘	sayoz ovqat idishi
+🍲	ovqat solingan idish
+🥣	qoshiq bilan piyola
+🥗	yashil salat
+🍿	Popkorn istaysizmi
+🧂	tuz
+🥫	konserva
+🍱	bento qutisi
+🍘	guruch kraker
+🍙	guruch to'pi
+🍚	pishirilgan guruch
+🍛	kori guruch
+🍜	bug'lash idishi
+🍝	spagetti
+🍠	qovurilgan shirin kartoshka
+🍢	oden
+🍣	sushi
+🍤	qovurilgan qisqichbaqalar
+🍥	aylanali baliq keki
+🥮	oy keki
+🍡	dango
+🥟	chuchvara
+🥠	omad kuki
+🥡	olib ketish qutisi
+🍦	yumshoq muzqaymoq
+🍧	maydalangan muz
+🍨	muzqaymoq
+🍩	Ponchik
+🍪	cookie
+🎂	tug'ilgan kun keki
+🍰	tort
+🧁	kek
+🥧	pirog
+🍫	shokolat bo'lakchasi
+🍬	shirinlik
+🍭	lolipop
+🍮	qaymoq
+🍯	asal idishi
+🍼	chaqaloq shishasi
+🥛	stakan sut
+☕	issiq ichimlik
+🍵	dastasiz choy piyola
+🍶	uchun
+🍾	tiqilib qolgan shisha
+🍷	vino stakan
+🍸	kokteyl stakan
+🍹	tropik ichimlik
+🍺	pivo krujkasi
+🍻	pivo krujkalari chalinmoqda
+🥂	taqillatgan ko'zoynaklar
+🥃	stakan stakan
+🥤	somon bilan stakan
+🥢	tayoqchalar
+🍽️	plastinka bilan vilkalar va pichoq
+🍽	plastinka bilan vilkalar va pichoq
+🍴	vilka va pichoq
+🥄	qoshiq
+🔪	oshxona pichog'i
+🏺	amfora
+🌍	Evropa-Afrikani ko'rsatadigan globus
+🌎	Amerikani ko'rsatuvchi globus
+🌏	Osiyo-Avstraliyani ko'rsatadigan globus
+🌐	meridianlar bilan globus
+🗺️	dunyo xaritasi
+🗺	dunyo xaritasi
+🗾	Yaponiya xaritasi
+🧭	kompas
+🏔️	qorli tog'
+🏔	qorli tog'
+⛰️	tog
+⛰	tog
+🌋	vulqon
+🗻	fuji tog'i
+🏕️	lager
+🏕	lager
+🏖️	soyabon bilan plyaj
+🏖	soyabon bilan plyaj
+🏜️	cho'l
+🏜	cho'l
+🏝️	cho'l orol
+🏝	cho'l orol
+🏞️	milliy bog
+🏞	milliy bog
+🏟️	stadion
+🏟	stadion
+🏛️	klassik bino
+🏛	klassik bino
+🏗️	bino qurilishi
+🏗	bino qurilishi
+🧱	g'ishtlar
+🏘️	uylar
+🏘	uylar
+🏚️	qarovsiz uy
+🏚	qarovsiz uy
+🏠	uy
+🏡	bog'li uy
+🏢	ofis binosi
+🏣	Yaponiya pochta bo'limi
+🏤	pochta
+🏥	kasalxona
+🏦	bank
+🏨	mehmonxona
+🏩	sevgi mehmonxonasi
+🏪	qulay Do'kon
+🏫	maktab
+🏬	Do'kon
+🏭	zavod
+🏯	Yapon qal'asi
+🏰	qal'a
+💒	to'y
+🗼	Tokio minorasi
+🗽	Ozodlik haykali
+⛪	cherkov
+🕌	masjid
+🕍	sinagoga
+⛩️	shinto ziyoratgohi
+⛩	shinto ziyoratgohi
+🕋	ka'ba
+⛲	favvora
+⛺	chodir
+🌁	tumanli
+🌃	yulduzlar bilan tun
+🏙️	shahar manzarasi
+🏙	shahar manzarasi
+🌄	tog'lar ustida quyosh chiqishi
+🌅	quyosh chiqishi
+🌆	qorong'uda shahar manzarasi
+🌇	quyosh botishi
+🌉	tunda ko'prik
+♨️	issiq buloqlar
+♨	issiq buloqlar
+🌌	Somon yo'li
+🎠	karusel ot
+🎡	aylanma g'ildirak
+🎢	g'ildiratma hayinchak
+💈	sartarosh ustuni
+🎪	sirk chodiri
+🚂	lokomotiv
+🚃	temir yo'l vagoni
+🚄	tezyurar poyezd
+🚅	o'q poezdi
+🚆	poyezd
+🚇	metro
+🚈	engil temir yo'l
+🚉	stantsiya
+🚊	tramvay
+🚝	monorels
+🚞	tog 'temir yo'li
+🚋	tramvay mashinasi
+🚌	avtobus
+🚍	kelayotgan avtobus
+🚎	trolleybus
+🚐	mikroavtobus
+🚑	tez yordam mashinasi
+🚒	yong'in mashinasi
+🚓	politsiya mashinasi
+🚔	yaqinlashib kelayotgan politsiya mashinasi
+🚕	taksi
+🚖	kelayotgan taksi
+🚗	avtomobil
+🚘	kelayotgan avtomobil
+🚙	sport uchun foydali avtomobil
+🚚	yetkazib berish yuk mashinasi
+🚛	yuk mashinasi
+🚜	traktor
+🚲	velosiped
+🛴	skuter
+🛹	skeytbord
+🛵	motorli skuter
+🚏	Avtobus bekati
+🛣️	avtomobil yo'li
+🛣	avtomobil yo'li
+🛤️	temir yo'l
+🛤	temir yo'l
+🛢️	yog 'baraban
+🛢	yog 'baraban
+⛽	yonilg'i pompasi
+🚨	politsiya mashinasi chiroq
+🚥	gorizontal svetofor
+🚦	vertikal svetofor
+🛑	to'xtash belgisi
+🚧	qurilish
+⚓	langar
+⛵	yelkanli qayiq
+🛶	kanoe
+🚤	tezyurar qayiq
+🛳️	yo'lovchi kemasi
+🛳	yo'lovchi kemasi
+⛴️	parom
+⛴	parom
+🛥️	motorli qayiq
+🛥	motorli qayiq
+🚢	kema
+✈️	samolyot
+✈	samolyot
+🛩️	kichik samolyot
+🛩	kichik samolyot
+🛫	samolyotning uchishi
+🛬	samolyot kelishi
+💺	o'rindiq
+🚁	vertolyot
+🚟	osma temir yo'l
+🚠	tog'li kanat yo'li
+🚡	havo tramvayi
+🛰️	sun'iy yo'ldosh
+🛰	sun'iy yo'ldosh
+🚀	raketa
+🛸	uchar likopcha
+🛎️	qo'ng'iroq qo'ng'irog'i
+🛎	qo'ng'iroq qo'ng'irog'i
+🧳	bagaj
+⌛	qum soati bajarildi
+⏳	qum soati bajarilmadi
+⌚	tomosha qiling
+⏰	budilnik
+⏱️	sekundomer
+⏱	sekundomer
+⏲️	taymer soati
+⏲	taymer soati
+🕰️	mantelli soat
+🕰	mantelli soat
+🕛	soat o'n ikki
+🕧	o'n ikki o'ttiz
+🕐	soat bir
+🕜	bir o'ttiz
+🕑	soat ikki
+🕝	ikki o'ttiz
+🕒	soat uch
+🕞	uch-o'ttiz
+🕓	soat to'rt
+🕟	to'rt-o'ttiz
+🕔	soat besh
+🕠	besh-o'ttiz
+🕕	soat olti
+🕡	olti o'ttiz
+🕖	soat yetti
+🕢	yetti o'ttiz
+🕗	soat sakkiz
+🕣	sakkiz-o'ttiz
+🕘	soat to'qqiz
+🕤	to'qqiz o'ttiz
+🕙	soat o'n
+🕥	o'n o'ttiz
+🕚	soat o'n bir
+🕦	o'n bir o'ttiz
+🌑	Yangi oy
+🌒	o'sib borayotgan yarim oy
+🌓	birinchi chorak oy
+🌔	o'sib borayotgan gibbous oy
+🌕	to'linoy
+🌖	so'nayotgan oy
+🌗	oxirgi chorak oy
+🌘	so'nib borayotgan yarim oy
+🌙	yarim oy
+🌚	yangi oy yuzi
+🌛	birinchi chorak oy yuzi
+🌜	oxirgi chorak oy yuzi
+🌡️	termometr
+🌡	termometr
+☀️	quyosh
+☀	quyosh
+🌝	to'lin oy yuzi
+🌞	yuz bilan quyosh
+⭐	Yulduz
+🌟	porlayotgan yulduz
+🌠	qulayotgan Yulduz
+☁️	bulut
+☁	bulut
+⛅	bulut ortida quyosh
+⛈️	chaqmoq va yomg'irli bulut
+⛈	chaqmoq va yomg'irli bulut
+🌤️	kichik bulut ortida quyosh
+🌤	kichik bulut ortida quyosh
+🌥️	katta bulut ortida quyosh
+🌥	katta bulut ortida quyosh
+🌦️	yomg'ir buluti ortida quyosh
+🌦	yomg'ir buluti ortida quyosh
+🌧️	yomg'irli bulut
+🌧	yomg'irli bulut
+🌨️	qor bilan bulut
+🌨	qor bilan bulut
+🌩️	chaqmoqli bulut
+🌩	chaqmoqli bulut
+🌪️	tornado
+🌪	tornado
+🌫️	tuman
+🌫	tuman
+🌬️	shamol yuzi
+🌬	shamol yuzi
+🌀	siklon
+🌈	kamalak
+🌂	yopiq soyabon
+☂️	soyabon
+☂	soyabon
+☔	yomg'ir tomchilari bilan soyabon
+⛱️	yerdagi soyabon
+⛱	yerdagi soyabon
+⚡	yuqori kuchlanish
+❄️	qor parchasi
+❄	qor parchasi
+☃️	qordan odam
+☃	qordan odam
+⛄	qorsiz qor odam
+☄️	kometa
+☄	kometa
+🔥	olov
+💧	tomchi
+🌊	suv to'lqini
+🎃	jack-o-lantern
+🎄	Rojdestvo daraxti
+🎆	otashinlar
+🎇	uchqun
+🧨	petarda
+✨	uchqunlar
+🎈	shar
+🎉	partiya popper
+🎊	konfeti to'pi
+🎋	tanabata daraxti
+🎍	qarag'ay bezaklari
+🎎	Yapon qo'g'irchoqlari
+🎏	sazan oqimi
+🎐	shamol qo'ng'irog'i
+🎑	Oyni ko'rish marosimi
+🧧	qizil konvert
+🎀	lenta
+🎁	o'ralgan sovg'a
+🎗️	eslatma lentasi
+🎗	eslatma lentasi
+🎟️	kirish chiptalari
+🎟	kirish chiptalari
+🎫	chipta
+🎖️	harbiy medal
+🎖	harbiy medal
+🏆	kubok
+🏅	sport medali
+🥇	1-o'rin medali
+🥈	2-o'rin medali
+🥉	3-o'rin medali
+⚽	futbol to'pi
+⚾	beysbol
+🥎	softbol
+🏀	basketbol
+🏐	voleybol
+🏈	amerika futboli
+🏉	regbi futboli
+🎾	tennis
+🥏	uchuvchi disk
+🎳	bouling
+🏏	kriket o'yini
+🏑	dala xokkeyi
+🏒	muzli xokkey
+🥍	lakros
+🏓	stol tennisi
+🏸	badminton
+🥊	boks qo'lqop
+🥋	jang san'ati formasi
+🥅	gol to'ri
+⛳	teshikda bayroq
+⛸️	konkida uchish
+⛸	konkida uchish
+🎣	baliq ovlash ustuni
+🎽	yugurish ko'ylak
+🎿	chang'i
+🛷	chana
+🥌	jingalak tosh
+🎯	to'g'ridan-to'g'ri zarba
+🎱	basseyn 8 to'pi
+🔮	kristall shar
+🧿	nazar tumori
+🎮	video O'YIN
+🕹️	joystik
+🕹	joystik
+🎰	o'yin mashinasi
+🎲	o'yin o'ladi
+🧩	jigsa
+🧸	ayiqcha Teddi
+♠️	belkurak kostyumi
+♠	belkurak kostyumi
+♥️	yurak kostyumi
+♥	yurak kostyumi
+♦️	olmos kostyum
+♦	olmos kostyum
+♣️	klub kostyumi
+♣	klub kostyumi
+♟️	shaxmat piyodasi
+♟	shaxmat piyodasi
+🃏	hazilkash
+🀄	mahjong qizil ajdaho
+🎴	gul o'ynash kartalari
+🎭	ijro san'ati
+🖼️	ramkali rasm
+🖼	ramkali rasm
+🎨	rassom palitrasi
+🧵	ip
+🧶	ip
+🔇	ovozsiz karnay
+🔈	karnay past ovozi
+🔉	karnay o'rtacha ovoz balandligi
+🔊	karnay baland ovoz
+📢	karnay
+📣	megafon
+📯	pochta shoxi
+🔔	qo'ng'iroq
+🔕	chiziqli qo'ng'iroq
+🎼	musiqiy partitura
+🎵	musiqiy nota
+🎶	musiqiy notalar
+🎙️	studiya mikrofoni
+🎙	studiya mikrofoni
+🎚️	darajali slayder
+🎚	darajali slayder
+🎛️	boshqaruv tugmalari
+🎛	boshqaruv tugmalari
+🎤	mikrofon
+🎧	eshitish vositasi
+📻	radio
+🎷	saksafon
+🎸	gitara
+🎹	musiqiy klaviatura
+🎺	truba
+🎻	skripka
+🥁	baraban
+📱	Mobil telefon
+📲	o'q bilan mobil telefon
+☎️	telefon
+☎	telefon
+📞	telefon qabul qiluvchisi
+📟	peyjer
+📠	Faks apparati
+🔋	batareya
+🔌	elektr vilkasi
+💻	noutbuk kompyuter
+🖥️	ish stoli kompyuter
+🖥	ish stoli kompyuter
+🖨️	printer
+🖨	printer
+⌨️	klaviatura
+⌨	klaviatura
+🖱️	kompyuter sichqonchasi
+🖱	kompyuter sichqonchasi
+🖲️	trekbol
+🖲	trekbol
+💽	kompyuter diski
+💾	floppi disk
+💿	optik disk
+📀	dvd
+🧮	abak
+🎥	kino kamerasi
+🎞️	kino ramkalari
+🎞	kino ramkalari
+📽️	kino proyektori
+📽	kino proyektori
+🎬	qisqichbaqasimon taxta
+📺	televizor
+📷	kamera
+📸	fleshli kamera
+📹	video kamera
+📼	videokasseta
+🔍	lupa chapga egilgan
+🔎	lupa o'ngga egilgan
+🕯️	sham
+🕯	sham
+💡	chiroq lampasi
+🔦	chiroq
+🏮	qizil qog'oz chiroq
+📔	dekorativ qopqoqli daftar
+📕	yopiq kitob
+📖	ochiq kitob
+📗	yashil kitob
+📘	ko'k kitob
+📙	apelsin kitob
+📚	kitoblar
+📓	daftar
+📒	daftar
+📃	jingalak bilan sahifa
+📜	aylantiring
+📄	sahifa yuqoriga qaragan
+📰	gazeta
+🗞️	o'ralgan gazeta
+🗞	o'ralgan gazeta
+📑	xatcho'p yorliqlari
+🔖	xatcho'p
+🏷️	yorliq
+🏷	yorliq
+💰	pul sumkasi
+💴	yen banknotasi
+💵	dollar banknotasi
+💶	evro banknotasi
+💷	funtlik banknot
+💸	qanotli pul
+💳	kredit kartasi
+🧾	kvitansiya
+💹	yen bilan ortib borayotgan grafik
+💱	valyuta ayirboshlash
+💲	og'ir dollar belgisi
+✉️	konvert
+✉	konvert
+📧	elektron pochta
+📨	kiruvchi konvert
+📩	o'q bilan konvert
+📤	chiqish qutisi tepsisi
+📥	kirish qutisi tepsisi
+📦	paket
+📫	bayroq ko'tarilgan yopiq pochta qutisi
+📪	bayroq tushirilgan yopiq pochta qutisi
+📬	bayroq ko'tarilgan ochiq pochta qutisi
+📭	tushirilgan bayroq bilan ochiq pochta qutisi
+📮	pochta qutisi
+🗳️	byulleten bilan saylov qutisi
+🗳	byulleten bilan saylov qutisi
+✏️	qalam
+✏	qalam
+✒️	qora uchi
+✒	qora uchi
+🖋️	favvora qalam
+🖋	favvora qalam
+🖊️	qalam
+🖊	qalam
+🖌️	bo'yoq cho'tkasi
+🖌	bo'yoq cho'tkasi
+🖍️	qalam
+🖍	qalam
+📝	eslatma
+💼	portfel
+📁	fayl papkasi
+📂	fayl papkasini oching
+🗂️	karta indekslarini ajratuvchilar
+🗂	karta indekslarini ajratuvchilar
+📅	kalendar
+📆	yirtib tashlash taqvimi
+🗒️	spiral bloknot
+🗒	spiral bloknot
+🗓️	spiral kalendar
+🗓	spiral kalendar
+📇	karta indeksi
+📈	diagramma ortib bormoqda
+📉	diagrammaning pasayishi
+📊	ustunli diagramma
+📋	almashish buferi
+📌	surish
+📍	dumaloq surish
+📎	qog'oz qisqichi
+🖇️	bog'langan qog'oz qisqichlari
+🖇	bog'langan qog'oz qisqichlari
+📏	tekis hukmdor
+📐	uchburchak o'lchagich
+✂️	qaychi
+✂	qaychi
+🗃️	karta fayl qutisi
+🗃	karta fayl qutisi
+🗄️	fayl shkafi
+🗄	fayl shkafi
+🗑️	chiqindi savati
+🗑	chiqindi savati
+🔒	qulflangan
+🔓	qulfdan chiqarilgan
+🔏	qalam bilan qulflangan
+🔐	kalit bilan qulflangan
+🔑	kalit
+🗝️	eski kalit
+🗝	eski kalit
+🔨	bolg'a
+⛏️	tanlash
+⛏	tanlash
+⚒️	bolg'a va tanlash
+⚒	bolg'a va tanlash
+🛠️	bolg'a va kalit
+🛠	bolg'a va kalit
+🗡️	xanjar
+🗡	xanjar
+⚔️	o'zaro qilichlar
+⚔	o'zaro qilichlar
+🔫	to'pponcha
+🏹	kamon va o'q
+🛡️	qalqon
+🛡	qalqon
+🔧	kalit
+🔩	yong'oq va murvat
+⚙️	tishli
+⚙	tishli
+🗜️	qisqich
+🗜	qisqich
+⚖️	balans shkalasi
+⚖	balans shkalasi
+🔗	havola
+⛓️	zanjirlar
+⛓	zanjirlar
+🧰	asboblar qutisi
+🧲	magnit
+⚗️	alembik
+⚗	alembik
+🧪	probirka
+🧫	petri idishi
+🧬	dna
+🔬	mikroskop
+🔭	teleskop
+📡	sun'iy yo'ldosh antennasi
+💉	shprits
+💊	hap
+🚪	eshik
+🛏️	yotoq
+🛏	yotoq
+🛋️	divan va chiroq
+🛋	divan va chiroq
+🚽	hojatxona
+🚿	dush
+🛁	vanna
+🧴	loson shishasi
+🧷	xavfsizlik pin
+🧹	supurgi
+🧺	savat
+🧻	qog'oz rulosi
+🧼	sovun
+🧽	shimgich
+🧯	yong'inga qarshi
+🛒	xarid savati
+🚬	sigaret
+⚰️	tobut
+⚰	tobut
+⚱️	dafn urnasi
+⚱	dafn urnasi
+🗿	moai
+🏧	ATM belgisi
+🚮	axlat qutisi belgisi
+🚰	ichimlik suvi
+♿	nogironlar aravachasi belgisi
+🚹	erkaklar xonasi
+🚺	ayollar xonasi
+🚻	hojatxona
+🚼	chaqaloq ramzi
+🚾	suv shkafi
+🛂	pasport nazorati
+🛃	Bojxona
+🛄	bagaj da'vosi
+🛅	chap bagaj
+⚠️	ogohlantirish
+⚠	ogohlantirish
+🚸	bolalar o'tish
+⛔	Kirish taqiqlangan
+🚫	taqiqlangan
+🚳	Velosipedlar taqiqlangan
+🚭	Chekish taqiqlangan
+🚯	axlat yo'q
+🚱	ichimlik bo'lmagan suv
+🚷	Piyodalarning harakatlanishi taqiqlangan
+📵	mobil telefonlar yo'q
+🔞	o'n sakkiz yoshga to'lmagan hech kim
+☢️	radioaktiv
+☢	radioaktiv
+☣️	bioxavf
+☣	bioxavf
+⬆️	yuqoriga strelka
+⬆	yuqoriga strelka
+↗️	yuqoriga o'ngga o'q
+↗	yuqoriga o'ngga o'q
+➡️	o'ng strelka
+➡	o'ng strelka
+↘️	pastga - o'ngga strelka
+↘	pastga - o'ngga strelka
+⬇️	pastga o'q
+⬇	pastga o'q
+↙️	pastga-chapga strelka
+↙	pastga-chapga strelka
+⬅️	chap strelka
+⬅	chap strelka
+↖️	yuqoriga-chapga strelka
+↖	yuqoriga-chapga strelka
+↕️	yuqoriga-pastga strelka
+↕	yuqoriga-pastga strelka
+↔️	chap-o'ng strelka
+↔	chap-o'ng strelka
+↩️	chapga egilgan o'ng strelka
+↩	chapga egilgan o'ng strelka
+↪️	chap strelka o'ngga egiladi
+↪	chap strelka o'ngga egiladi
+⤴️	yuqoriga egilgan o'ng strelka
+⤴	yuqoriga egilgan o'ng strelka
+⤵️	pastga egilgan o'ng strelka
+⤵	pastga egilgan o'ng strelka
+🔃	soat yo'nalishi bo'yicha vertikal o'qlar
+🔄	soat miliga teskari strelkalar tugmasi
+🔙	ORQA strelkasi
+🔚	END strelkasi
+🔛	ON strelkasi
+🔜	SOON strelkasi
+🔝	YUQORI strelka
+🛐	ibodat joyi
+⚛️	atom belgisi
+⚛	atom belgisi
+🕉️	om
+🕉	om
+✡️	Dovud yulduzi
+✡	Dovud yulduzi
+☸️	dharma g'ildiragi
+☸	dharma g'ildiragi
+☯️	yin yang
+☯	yin yang
+✝️	lotin xochi
+✝	lotin xochi
+☦️	pravoslav xoch
+☦	pravoslav xoch
+☪️	yulduz va yarim oy
+☪	yulduz va yarim oy
+☮️	tinchlik ramzi
+☮	tinchlik ramzi
+🕎	menora
+🔯	nuqtali olti burchakli yulduz
+♈	Qo'y
+♉	Toros
+♊	Egizaklar
+♋	Saraton
+♌	Arslon
+♍	Bokira
+♎	Tarozi
+♏	Chayon
+♐	Sagittarius
+♑	Uloq
+♒	Kova
+♓	Baliqlar
+⛎	Ophiuchus
+🔀	treklarni aralashtirish tugmasi
+🔁	takrorlash tugmasi
+🔂	bitta tugmani takrorlang
+▶️	o'ynash tugmasi
+▶	o'ynash tugmasi
+⏩	oldinga siljish tugmasi
+⏭️	keyingi trek tugmasi
+⏭	keyingi trek tugmasi
+⏯️	o'ynatish yoki to'xtatib turish tugmasi
+⏯	o'ynatish yoki to'xtatib turish tugmasi
+◀️	teskari tugma
+◀	teskari tugma
+⏪	tez teskari tugma
+⏮️	oxirgi trek tugmasi
+⏮	oxirgi trek tugmasi
+🔼	yuqoriga tugmasi
+⏫	tezlashtirish tugmasi
+🔽	pastga qarab tugma
+⏬	tez pastga tushirish tugmasi
+⏸️	pauza tugmasi
+⏸	pauza tugmasi
+⏹️	to'xtatish tugmasi
+⏹	to'xtatish tugmasi
+⏺️	yozib olish tugmasi
+⏺	yozib olish tugmasi
+⏏️	chiqarish tugmasi
+⏏	chiqarish tugmasi
+🎦	kino
+🔅	xira tugma
+🔆	yorqin tugma
+📶	antenna panjaralari
+📳	tebranish rejimi
+📴	mobil telefon o'chirilgan
+♀️	ayol belgisi
+♀	ayol belgisi
+♂️	erkak belgisi
+♂	erkak belgisi
+⚕️	tibbiy belgi
+⚕	tibbiy belgi
+♾️	cheksizlik
+♾	cheksizlik
+♻️	qayta ishlash belgisi
+♻	qayta ishlash belgisi
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	trident emblemasi
+📛	nom nishoni
+🔰	Yangi boshlanuvchilar uchun yapon ramzi
+⭕	og'ir katta doira
+✅	oq og'ir tasdiq belgisi
+☑️	chek bilan saylov qutisi
+☑	chek bilan saylov qutisi
+✔️	og'ir tasdiq belgisi
+✔	og'ir tasdiq belgisi
+✖️	og'ir ko'paytirish x
+✖	og'ir ko'paytirish x
+❌	xoch belgisi
+❎	xoch belgisi tugmasi
+➕	og'ir ortiqcha belgisi
+➖	og'ir minus belgisi
+➗	og'ir bo'linish belgisi
+➰	jingalak halqa
+➿	er-xotin jingalak halqa
+〽️	qismni almashtirish belgisi
+〽	qismni almashtirish belgisi
+✳️	sakkiz qirrali yulduzcha
+✳	sakkiz qirrali yulduzcha
+✴️	sakkiz qirrali yulduz
+✴	sakkiz qirrali yulduz
+❇️	porlash
+❇	porlash
+‼️	qo'sh undov belgisi
+‼	qo'sh undov belgisi
+⁉️	undov savol belgisi
+⁉	undov savol belgisi
+❓	so'roq belgisi
+❔	oq savol belgisi
+❕	oq undov belgisi
+❗	undov belgisi
+〰️	to'lqinli chiziq
+〰	to'lqinli chiziq
+©️	mualliflik huquqi
+©	mualliflik huquqi
+®️	Ro'yxatga olingan
+®	Ro'yxatga olingan
+™️	savdo belgisi
+™	savdo belgisi
+#️⃣	Klaviatura tugmasi: #
+#⃣	Klaviatura tugmasi: #
+*️⃣	Klaviatura tugmasi: *
+*⃣	Klaviatura tugmasi: *
+0️⃣	Klaviatura tugmasi: 0
+0⃣	Klaviatura tugmasi: 0
+1️⃣	Klaviatura tugmasi: 1
+1⃣	Klaviatura tugmasi: 1
+2️⃣	Klaviatura tugmasi: 2
+2⃣	Klaviatura tugmasi: 2
+3️⃣	Klaviatura tugmasi: 3
+3⃣	Klaviatura tugmasi: 3
+4️⃣	Klaviatura tugmasi: 4
+4⃣	Klaviatura tugmasi: 4
+5️⃣	Klaviatura tugmasi: 5
+5⃣	Klaviatura tugmasi: 5
+6️⃣	Klaviatura tugmasi: 6
+6⃣	Klaviatura tugmasi: 6
+7️⃣	Klaviatura tugmasi: 7
+7⃣	Klaviatura tugmasi: 7
+8️⃣	Klaviatura tugmasi: 8
+8⃣	Klaviatura tugmasi: 8
+9️⃣	Klaviatura tugmasi: 9
+9⃣	Klaviatura tugmasi: 9
+🔟	Klaviatura tugmasi: 10
+💯	yuz ball
+🔠	lotin bosh harfini kiriting
+🔡	lotin kichik harfini kiriting
+🔢	raqamlarni kiriting
+🔣	kiritish belgilari
+🔤	lotin harflarini kiriting
+🅰️	Tugma (qon turi)
+🅰	Tugma (qon turi)
+🆎	AB tugmasi (qon guruhi)
+🅱️	B tugmasi (qon guruhi)
+🅱	B tugmasi (qon guruhi)
+🆑	CL tugmasi
+🆒	COOL tugmasi
+🆓	BEPUL tugmasi
+ℹ️	ma `lumot
+ℹ	ma `lumot
+🆔	ID tugmasi
+Ⓜ️	aylana M
+Ⓜ	aylana M
+🆕	YANGI tugma
+🆖	NG tugmasi
+🅾️	O tugmasi (qon guruhi)
+🅾	O tugmasi (qon guruhi)
+🆗	OK tugmasi
+🅿️	P tugmasi
+🅿	P tugmasi
+🆘	SOS tugmasi
+🆙	UP tugmasi
+🆚	VS tugmasi
+🈁	Yaponcha “bu yerda” tugmasi
+🈂️	Yaponcha "xizmat to'lovi" tugmasi
+🈂	Yaponcha "xizmat to'lovi" tugmasi
+🈷️	Yaponcha “oylik miqdor” tugmasi
+🈷	Yaponcha “oylik miqdor” tugmasi
+🈶	Yaponcha "bepul emas" tugmasi
+🈯	Yaponcha "zahiralangan" tugmasi
+🉐	Yaponcha “savdolashish” tugmasi
+🈹	Yaponcha "chegirma" tugmasi
+🈚	Yaponcha "bepul" tugmasi
+🈲	Yaponcha "taqiqlangan" tugmasi
+🉑	Yaponcha "qabul qilinadi" tugmasi
+🈸	Yaponcha “ilova” tugmasi
+🈴	Yaponcha "o'tish bahosi" tugmasi
+🈳	Yaponcha “vakansiya” tugmasi
+㊗️	Yaponcha "tabriklar" tugmasi
+㊗	Yaponcha "tabriklar" tugmasi
+㊙️	Yaponcha "sir" tugmasi
+㊙	Yaponcha "sir" tugmasi
+🈺	Yaponcha "biznes uchun ochiq" tugmasi
+🈵	Yaponcha "bo'sh joy yo'q" tugmasi
+▪️	qora kichik kvadrat
+▪	qora kichik kvadrat
+▫️	oq kichik kvadrat
+▫	oq kichik kvadrat
+◻️	oq o'rta kvadrat
+◻	oq o'rta kvadrat
+◼️	qora o'rta kvadrat
+◼	qora o'rta kvadrat
+◽	oq o'rta-kichik kvadrat
+◾	qora o'rta-kichik kvadrat
+⬛	qora katta kvadrat
+⬜	oq katta kvadrat
+🔶	katta apelsin olmos
+🔷	katta ko'k olmos
+🔸	kichik apelsin olmos
+🔹	kichik ko'k olmos
+🔺	yuqoriga qaragan qizil uchburchak
+🔻	qizil uchburchak pastga qaragan
+💠	nuqta bilan olmos
+🔘	radio tugmasi
+🔲	qora kvadrat tugmasi
+🔳	oq kvadrat tugmasi
+⚪	oq doira
+⚫	qora doira
+🔴	qizil doira
+🔵	ko'k doira
+🏁	katakli bayroq
+🚩	uchburchak bayroq
+🎌	kesib o'tgan bayroqlar
+🏴	qora bayroq
+🏳️	oq bayroq
+🏳	oq bayroq
+🏳️‍🌈	kamalak bayrog'i
+🏳‍🌈	kamalak bayrog'i
+🏴‍☠️	pirat bayrog'i
+🏴‍☠	pirat bayrog'i
+🇦🇨	Ascension oroli
+🇦🇩	Andorra
+🇦🇪	Birlashgan Arab Amirliklari
+🇦🇫	Afg'oniston
+🇦🇬	Antigua va Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albaniya
+🇦🇲	Armaniston
+🇦🇴	Angola
+🇦🇶	Antarktida
+🇦🇷	Argentina
+🇦🇸	Amerika Samoasi
+🇦🇹	Avstriya
+🇦🇺	Avstraliya
+🇦🇼	Aruba
+🇦🇽	Aland orollari
+🇦🇿	Ozarbayjon
+🇧🇦	Bosniya va Gertsegovina
+🇧🇧	Barbados
+🇧🇩	Bangladesh
+🇧🇪	Belgiya
+🇧🇫	Burkina-Faso
+🇧🇬	Bolgariya
+🇧🇭	Bahrayn
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	Sent-Bartelemi
+🇧🇲	Bermud orollari
+🇧🇳	Bruney
+🇧🇴	Boliviya
+🇧🇶	Karib dengizi Niderlandiya
+🇧🇷	Braziliya
+🇧🇸	Bagama orollari
+🇧🇹	Butan
+🇧🇻	Buvet oroli
+🇧🇼	Botsvana
+🇧🇾	Belarus
+🇧🇿	Beliz
+🇨🇦	Kanada
+🇨🇨	Kokos (Kiling) orollari
+🇨🇩	Kongo - Kinshasa
+🇨🇫	Markaziy Afrika Respublikasi
+🇨🇬	Kongo - Brazzavil
+🇨🇭	Shveytsariya
+🇨🇮	Kot-d'Ivuar
+🇨🇰	Kuk orollari
+🇨🇱	Chili
+🇨🇲	Kamerun
+🇨🇳	Xitoy
+🇨🇴	Kolumbiya
+🇨🇵	Klipperton oroli
+🇨🇷	Kosta-Rika
+🇨🇺	Kuba
+🇨🇻	Kabo-Verde
+🇨🇼	Kyurasao
+🇨🇽	Rojdestvo oroli
+🇨🇾	Kipr
+🇨🇿	Chexiya
+🇩🇪	Germaniya
+🇩🇬	Diego Garsiya
+🇩🇯	Jibuti
+🇩🇰	Daniya
+🇩🇲	Dominika
+🇩🇴	Dominika Respublikasi
+🇩🇿	Jazoir
+🇪🇦	Seuta va Melilla
+🇪🇨	Ekvador
+🇪🇪	Estoniya
+🇪🇬	Misr
+🇪🇭	G'arbiy Sahara
+🇪🇷	Eritreya
+🇪🇸	Ispaniya
+🇪🇹	Efiopiya
+🇪🇺	Yevropa Ittifoqi
+🇫🇮	Finlyandiya
+🇫🇯	Fiji
+🇫🇰	Folklend orollari
+🇫🇲	Mikroneziya
+🇫🇴	Farer orollari
+🇫🇷	Fransiya
+🇬🇦	Gabon
+🇬🇧	Birlashgan Qirollik
+🇬🇩	Grenada
+🇬🇪	Gruziya
+🇬🇫	Fransuz Gvianasi
+🇬🇬	Gernsi
+🇬🇭	Gana
+🇬🇮	Gibraltar
+🇬🇱	Grenlandiya
+🇬🇲	Gambiya
+🇬🇳	Gvineya
+🇬🇵	Gvadelupa
+🇬🇶	Ekvatorial Gvineya
+🇬🇷	Gretsiya
+🇬🇸	Janubiy Jorjiya va Janubiy Sandvich orollari
+🇬🇹	Gvatemala
+🇬🇺	Guam
+🇬🇼	Gvineya-Bisau
+🇬🇾	Gayana
+🇭🇰	Gonkong SAR Xitoy
+🇭🇲	Heard va Makdonald orollari
+🇭🇳	Gonduras
+🇭🇷	Xorvatiya
+🇭🇹	Gaiti
+🇭🇺	Vengriya
+🇮🇨	Kanar orollari
+🇮🇩	Indoneziya
+🇮🇪	Irlandiya
+🇮🇱	Isroil
+🇮🇲	Man oroli
+🇮🇳	Hindiston
+🇮🇴	Britaniya Hind okeani hududi
+🇮🇶	Iroq
+🇮🇷	Eron
+🇮🇸	Islandiya
+🇮🇹	Italiya
+🇯🇪	Jersi
+🇯🇲	Yamayka
+🇯🇴	Iordaniya
+🇯🇵	Yaponiya
+🇰🇪	Keniya
+🇰🇬	Qirg'iziston
+🇰🇭	Kambodja
+🇰🇮	Kiribati
+🇰🇲	Komor orollari
+🇰🇳	Sent-Kitts va Nevis
+🇰🇵	Shimoliy Koreya
+🇰🇷	Janubiy Koreya
+🇰🇼	Quvayt
+🇰🇾	Kayman orollari
+🇰🇿	Qozog'iston
+🇱🇦	Laos
+🇱🇧	Livan
+🇱🇨	Sent-Lyusiya
+🇱🇮	Lixtenshteyn
+🇱🇰	Shri-Lanka
+🇱🇷	Liberiya
+🇱🇸	Lesoto
+🇱🇹	Litva
+🇱🇺	Lyuksemburg
+🇱🇻	Latviya
+🇱🇾	Liviya
+🇲🇦	Marokash
+🇲🇨	Monako
+🇲🇩	Moldova
+🇲🇪	Chernogoriya
+🇲🇫	Sent-Martin
+🇲🇬	Madagaskar
+🇲🇭	Marshall orollari
+🇲🇰	Makedoniya
+🇲🇱	Mali
+🇲🇲	Myanma (Birma)
+🇲🇳	Mo'g'uliston
+🇲🇴	Aomin SAR Xitoy
+🇲🇵	Shimoliy Mariana orollari
+🇲🇶	Martinika
+🇲🇷	Mavritaniya
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mavrikiy
+🇲🇻	Maldiv orollari
+🇲🇼	Malavi
+🇲🇽	Meksika
+🇲🇾	Malayziya
+🇲🇿	Mozambik
+🇳🇦	Namibiya
+🇳🇨	Yangi Kaledoniya
+🇳🇪	Niger
+🇳🇫	Norfolk oroli
+🇳🇬	Nigeriya
+🇳🇮	Nikaragua
+🇳🇱	Niderlandiya
+🇳🇴	Norvegiya
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Yangi Zelandiya
+🇴🇲	Ummon
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Fransuz Polineziyasi
+🇵🇬	Papua-Yangi Gvineya
+🇵🇭	Filippin
+🇵🇰	Pokiston
+🇵🇱	Polsha
+🇵🇲	Sent-Pyer va Mikelon
+🇵🇳	Pitkern orollari
+🇵🇷	Puerto-Riko
+🇵🇸	Falastin hududlari
+🇵🇹	Portugaliya
+🇵🇼	Palau
+🇵🇾	Paragvay
+🇶🇦	Qatar
+🇷🇪	Reunion
+🇷🇴	Ruminiya
+🇷🇸	Serbiya
+🇷🇺	Rossiya
+🇷🇼	Ruanda
+🇸🇦	Saudiya Arabistoni
+🇸🇧	Solomon orollari
+🇸🇨	Seyshel orollari
+🇸🇩	Sudan
+🇸🇪	Shvetsiya
+🇸🇬	Singapur
+🇸🇭	Muqaddas Yelena
+🇸🇮	Sloveniya
+🇸🇯	Svalbard va Yan Mayen
+🇸🇰	Slovakiya
+🇸🇱	Syerra-Leone
+🇸🇲	San-Marino
+🇸🇳	Senegal
+🇸🇴	Somali
+🇸🇷	Surinam
+🇸🇸	Janubiy Sudan
+🇸🇹	San-Tome va Prinsipi
+🇸🇻	El Salvador
+🇸🇽	Sint-Marten
+🇸🇾	Suriya
+🇸🇿	Svazilend
+🇹🇦	Tristan da Kunya
+🇹🇨	Turks va Kaykos orollari
+🇹🇩	Chad
+🇹🇫	Frantsiyaning janubiy hududlari
+🇹🇬	Bormoq
+🇹🇭	Tailand
+🇹🇯	Tojikiston
+🇹🇰	Tokelau
+🇹🇱	Timor-Sharqiy
+🇹🇲	Turkmaniston
+🇹🇳	Tunis
+🇹🇴	Tonga
+🇹🇷	kurka
+🇹🇹	Trinidad va Tobago
+🇹🇻	Tuvalu
+🇹🇼	Tayvan
+🇹🇿	Tanzaniya
+🇺🇦	Ukraina
+🇺🇬	Uganda
+🇺🇲	AQShning chetdagi orollari
+🇺🇳	Birlashgan Millatlar Tashkiloti
+🇺🇸	Qo'shma Shtatlar
+🇺🇾	Urugvay
+🇺🇿	O'zbekiston
+🇻🇦	Vatikan shahri
+🇻🇨	Sent-Vinsent va Grenadin orollari
+🇻🇪	Venesuela
+🇻🇬	Britaniya Virjiniya orollari
+🇻🇮	AQSh Virjiniya orollari
+🇻🇳	Vetnam
+🇻🇺	Vanuatu
+🇼🇫	Uollis va Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Yaman
+🇾🇹	Mayotte
+🇿🇦	Janubiy Afrika
+🇿🇲	Zambiya
+🇿🇼	Zimbabve
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Angliya
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Shotlandiya
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Uels

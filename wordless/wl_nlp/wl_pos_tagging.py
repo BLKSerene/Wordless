@@ -156,86 +156,12 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
         if (token_clean := token.strip())
     ]
 
-    # Make sure that tokenization is not modified during POS tagging
     if not isinstance(inputs, str):
-        i_tokens = 0
-        i_tokens_tagged = 0
+        tokens_tagged_tokens = [item[0] for item in tokens_tagged]
+        tokens_tagged_tags = [item[1] for item in tokens_tagged]
+        tokens_tagged_tags = wl_nlp_utils.align_tokens(inputs, tokens_tagged_tokens, tokens_tagged_tags)
 
-        len_tokens = len(inputs)
-        len_tokens_tagged = len(tokens_tagged)
-
-        if len_tokens != len_tokens_tagged:
-            tokens_tagged_modified = []
-
-            while i_tokens < len_tokens and i_tokens_tagged < len_tokens_tagged:
-                # Different token
-                if len(inputs[i_tokens]) != len(tokens_tagged[i_tokens_tagged][0]):
-                    tokens_temp = [inputs[i_tokens]]
-                    tokens_tagged_temp = [tokens_tagged[i_tokens_tagged][0]]
-                    tags_temp = [tokens_tagged[i_tokens_tagged][1]]
-
-                    # Align tokens
-                    while i_tokens < len_tokens - 1 or i_tokens_tagged < len_tokens_tagged - 1:
-                        if lang in ['zho_cn', 'zho_tw', 'khm', 'jpn', 'kor', 'tha', 'bod']:
-                            len_tokens_temp = sum((len(token) for token in tokens_temp))
-                            len_tokens_tagged_temp = sum((len(token) for token in tokens_tagged_temp))
-                        else:
-                            # Compare length in characters with whitespace
-                            len_tokens_temp = len(' '.join(tokens_temp))
-                            len_tokens_tagged_temp = len(' '.join(tokens_tagged_temp))
-
-                        if len_tokens_temp > len_tokens_tagged_temp:
-                            tokens_tagged_temp.append(tokens_tagged[i_tokens_tagged + 1][0])
-                            tags_temp.append(tokens_tagged[i_tokens_tagged + 1][1])
-
-                            i_tokens_tagged += 1
-                        elif len_tokens_temp < len_tokens_tagged_temp:
-                            tokens_temp.append(inputs[i_tokens + 1])
-
-                            i_tokens += 1
-                        else:
-                            len_tokens_temp_tokens = len(tokens_temp)
-                            len_tokens_tagged_temp_tokens = len(tokens_tagged_temp)
-
-                            if len_tokens_temp_tokens > len_tokens_tagged_temp_tokens:
-                                tags_temp.extend([tags_temp[-1]] * (len_tokens_temp_tokens - len_tokens_tagged_temp_tokens))
-                            elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
-                                tags_temp = tags_temp[:len_tokens_temp_tokens]
-
-                            tokens_tagged_modified.extend(list(zip(tokens_temp, tags_temp)))
-
-                            tokens_temp = []
-                            tokens_tagged_temp = []
-                            tags_temp = []
-
-                            break
-
-                    if tokens_temp:
-                        len_tokens_temp_tokens = len(tokens_temp)
-                        len_tokens_tagged_temp_tokens = len(tokens_tagged_temp)
-
-                        if len_tokens_temp_tokens > len_tokens_tagged_temp_tokens:
-                            tags_temp.extend([tags_temp[-1]] * (len_tokens_temp_tokens - len_tokens_tagged_temp_tokens))
-                        elif len_tokens_temp_tokens < len_tokens_tagged_temp_tokens:
-                            tags_temp = tags_temp[:len_tokens_temp_tokens]
-
-                        tokens_tagged_modified.extend(list(zip(tokens_temp, tags_temp)))
-                else:
-                    tokens_tagged_modified.append((inputs[i_tokens], tokens_tagged[i_tokens_tagged][1]))
-
-                i_tokens += 1
-                i_tokens_tagged += 1
-
-            len_tokens_tagged_modified = len(tokens_tagged_modified)
-
-            if len_tokens < len_tokens_tagged_modified:
-                tokens_tagged = tokens_tagged_modified[:len_tokens]
-            elif len_tokens > len_tokens_tagged_modified:
-                tokens_tagged = tokens_tagged_modified + [tokens_tagged_modified[-1]] * (len_tokens - len_tokens_tagged_modified)
-            else:
-                tokens_tagged = tokens_tagged_modified.copy()
-        else:
-            tokens_tagged = [(token, token_tagged[1]) for token, token_tagged in zip(inputs, tokens_tagged)]
+        tokens_tagged = list(zip(inputs, tokens_tagged_tags))
 
         # Insert empty tokens after alignment of input and output
         for empty_offset in sorted(empty_offsets):

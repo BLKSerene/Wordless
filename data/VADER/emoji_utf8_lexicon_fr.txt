@@ -1,0 +1,3570 @@
+😀	visage souriant
+😁	visage rayonnant aux yeux souriants
+😂	visage avec des larmes de joie
+🤣	roulant sur le sol en riant
+😃	visage souriant avec de grands yeux
+😄	visage souriant avec des yeux souriants
+😅	visage souriant avec de la sueur
+😆	visage souriant et plissant les yeux
+😉	visage clignotant
+😊	visage souriant aux yeux souriants
+😋	visage savourant la nourriture
+😎	visage souriant avec des lunettes de soleil
+😍	visage souriant avec des yeux de coeur
+😘	visage envoyant un baiser
+🥰	visage souriant avec 3 coeurs
+😗	embrasser le visage
+😙	embrasser le visage avec des yeux souriants
+😚	embrasser le visage avec les yeux fermés
+☺️	visage souriant
+☺	visage souriant
+🙂	visage légèrement souriant
+🤗	visage étreignant
+🤩	frappé par les étoiles
+🤔	visage pensant
+🤨	visage avec un sourcil levé
+😐	visage neutre
+😑	visage sans expression
+😶	visage sans bouche
+🙄	visage aux yeux roulants
+😏	visage souriant
+😣	visage persévérant
+😥	visage triste mais soulagé
+😮	visage avec bouche ouverte
+🤐	visage à fermeture éclair
+😯	visage silencieux
+😪	visage endormi
+😫	visage fatigué
+😴	visage endormi
+😌	visage soulagé
+😛	visage avec la langue
+😜	visage clignant de la langue
+😝	visage louchant avec la langue
+🤤	visage baveux
+😒	visage peu amusé
+😓	visage abattu et en sueur
+😔	visage pensif
+😕	visage confus
+🙃	visage à l'envers
+🤑	visage de bouche à argent
+😲	visage étonné
+☹️	visage renfrogné
+☹	visage renfrogné
+🙁	visage légèrement renfrogné
+😖	visage confus
+😞	visage déçu
+😟	visage inquiet
+😤	visage avec de la vapeur du nez
+😢	visage qui pleure
+😭	visage qui pleure fort
+😦	visage renfrogné avec la bouche ouverte
+😧	visage angoissé
+😨	visage craintif
+😩	visage fatigué
+🤯	tête qui explose
+😬	visage grimaçant
+😰	visage anxieux avec de la sueur
+😱	visage criant de peur
+🥵	visage chaud
+🥶	visage froid
+😳	visage rougi
+🤪	visage loufoque
+😵	visage étourdi
+😡	visage boudeur
+😠	Visage énervé
+🤬	visage avec des symboles sur la bouche
+😷	visage avec masque médical
+🤒	visage avec thermomètre
+🤕	visage avec un bandeau
+🤢	visage nauséeux
+🤮	visage vomissant
+🤧	visage qui éternue
+😇	visage souriant avec halo
+🤠	visage de chapeau de cowboy
+🥳	visage de fête
+🥴	visage étourdi
+🥺	visage suppliant
+🤥	visage couché
+🤫	faire taire le visage
+🤭	visage avec la main sur la bouche
+🧐	visage avec monocle
+🤓	visage de nerd
+😈	visage souriant avec des cornes
+👿	visage en colère avec des cornes
+🤡	visage de clown
+👹	ogre
+👺	lutin
+💀	crâne
+☠️	crâne et os croisés
+☠	crâne et os croisés
+👻	fantôme
+👽	extraterrestre
+👾	monstre extraterrestre
+🤖	visage de robot
+💩	tas de caca
+😺	visage de chat souriant
+😸	visage de chat souriant avec des yeux souriants
+😹	visage de chat avec des larmes de joie
+😻	visage de chat souriant avec des yeux de coeur
+😼	visage de chat avec un sourire ironique
+😽	embrasser le visage d'un chat
+🙀	visage de chat fatigué
+😿	visage de chat qui pleure
+😾	tête de chat qui fait la moue
+🙈	singe qui ne voit aucun mal
+🙉	singe qui n'entend rien
+🙊	singe qui ne parle pas de mal
+🏻	teint clair
+🏼	teint moyen-clair
+🏽	teint moyen
+🏾	teint moyen-foncé
+🏿	teint foncé
+👶	bébé
+👶🏻	bébé : peau claire
+👶🏼	bébé : peau moyennement claire
+👶🏽	bébé : peau légèrement mate
+👶🏾	bébé : peau légèrement mate
+👶🏿	bébé : peau foncée
+🧒	enfant
+🧒🏻	enfant : peau claire
+🧒🏼	enfant : peau moyennement claire
+🧒🏽	enfant : peau légèrement mate
+🧒🏾	enfant : peau légèrement mate
+🧒🏿	enfant : peau foncée
+👦	garçon
+👦🏻	garçon : peau claire
+👦🏼	garçon : peau moyennement claire
+👦🏽	garçon : peau légèrement mate
+👦🏾	garçon : peau légèrement mate
+👦🏿	garçon : peau foncée
+👧	fille
+👧🏻	fille : peau claire
+👧🏼	fille : peau légèrement mate
+👧🏽	fille : peau légèrement mate
+👧🏾	fille : peau légèrement mate
+👧🏿	fille : peau foncée
+🧑	adulte
+🧑🏻	adulte : peau claire
+🧑🏼	adulte : peau moyennement claire
+🧑🏽	adulte : peau légèrement mate
+🧑🏾	adulte : peau légèrement mate
+🧑🏿	adulte : peau foncée
+👨	homme
+👨🏻	homme : peau claire
+👨🏼	homme : peau moyennement claire
+👨🏽	homme : peau légèrement mate
+👨🏾	homme : peau légèrement mate
+👨🏿	homme : peau foncée
+👩	femme
+👩🏻	femme : peau claire
+👩🏼	femme : peau moyennement claire
+👩🏽	femme : peau légèrement mate
+👩🏾	femme : peau légèrement mate
+👩🏿	femme : peau foncée
+🧓	adulte plus âgé
+🧓🏻	personne âgée : peau claire
+🧓🏼	personne âgée : peau moyennement claire
+🧓🏽	personne âgée : peau légèrement mate
+🧓🏾	personne âgée : peau légèrement mate
+🧓🏿	personne âgée : peau foncée
+👴	vieil homme
+👴🏻	vieil homme : peau claire
+👴🏼	vieil homme : peau moyennement claire
+👴🏽	vieil homme : peau légèrement mate
+👴🏾	vieil homme : peau légèrement mate
+👴🏿	vieil homme : peau foncée
+👵	vieille femme
+👵🏻	vieille femme : peau claire
+👵🏼	vieille femme : peau légèrement mate
+👵🏽	vieille femme : peau légèrement mate
+👵🏾	vieille femme : peau légèrement mate
+👵🏿	vieille femme : peau foncée
+👨‍⚕️	homme, agent de santé
+👨‍⚕	homme, agent de santé
+👨🏻‍⚕️	agent de santé homme : peau claire
+👨🏻‍⚕	agent de santé homme : peau claire
+👨🏼‍⚕️	agent de santé homme : peau légèrement mate
+👨🏼‍⚕	agent de santé homme : peau légèrement mate
+👨🏽‍⚕️	agent de santé homme : peau légèrement mate
+👨🏽‍⚕	agent de santé homme : peau légèrement mate
+👨🏾‍⚕️	agent de santé homme : peau légèrement mate
+👨🏾‍⚕	agent de santé homme : peau légèrement mate
+👨🏿‍⚕️	agent de santé homme : peau foncée
+👨🏿‍⚕	agent de santé homme : peau foncée
+👩‍⚕️	femme agent de santé
+👩‍⚕	femme agent de santé
+👩🏻‍⚕️	agent de santé : peau claire
+👩🏻‍⚕	agent de santé : peau claire
+👩🏼‍⚕️	agent de santé : peau légèrement mate
+👩🏼‍⚕	agent de santé : peau légèrement mate
+👩🏽‍⚕️	agent de santé : peau légèrement mate
+👩🏽‍⚕	agent de santé : peau légèrement mate
+👩🏾‍⚕️	agent de santé : peau légèrement mate
+👩🏾‍⚕	agent de santé : peau légèrement mate
+👩🏿‍⚕️	agent de santé : peau foncée
+👩🏿‍⚕	agent de santé : peau foncée
+👨‍🎓	homme étudiant
+👨🏻‍🎓	étudiant : peau claire
+👨🏼‍🎓	étudiant : peau moyennement claire
+👨🏽‍🎓	étudiant : peau légèrement mate
+👨🏾‍🎓	étudiant : peau légèrement mate
+👨🏿‍🎓	étudiant : peau foncée
+👩‍🎓	étudiante
+👩🏻‍🎓	étudiante : peau claire
+👩🏼‍🎓	étudiante : peau légèrement mate
+👩🏽‍🎓	étudiante : peau légèrement mate
+👩🏾‍🎓	étudiante : peau légèrement mate
+👩🏿‍🎓	étudiante : peau foncée
+👨‍🏫	homme enseignant
+👨🏻‍🏫	professeur : peau claire
+👨🏼‍🏫	professeur : peau légèrement mate
+👨🏽‍🏫	professeur : peau légèrement mate
+👨🏾‍🏫	professeur : peau légèrement mate
+👨🏿‍🏫	professeur : peau foncée
+👩‍🏫	femme enseignante
+👩🏻‍🏫	enseignante : peau claire
+👩🏼‍🏫	enseignante : peau légèrement mate
+👩🏽‍🏫	enseignante : peau légèrement mate
+👩🏾‍🏫	enseignante : peau légèrement mate
+👩🏿‍🏫	enseignante : peau foncée
+👨‍⚖️	homme juge
+👨‍⚖	homme juge
+👨🏻‍⚖️	juge homme : peau claire
+👨🏻‍⚖	juge homme : peau claire
+👨🏼‍⚖️	juge homme : peau légèrement mate
+👨🏼‍⚖	juge homme : peau légèrement mate
+👨🏽‍⚖️	juge homme : peau légèrement mate
+👨🏽‍⚖	juge homme : peau légèrement mate
+👨🏾‍⚖️	juge homme : peau légèrement mate
+👨🏾‍⚖	juge homme : peau légèrement mate
+👨🏿‍⚖️	juge homme : peau foncée
+👨🏿‍⚖	juge homme : peau foncée
+👩‍⚖️	femme juge
+👩‍⚖	femme juge
+👩🏻‍⚖️	femme juge : peau claire
+👩🏻‍⚖	femme juge : peau claire
+👩🏼‍⚖️	femme juge : peau légèrement mate
+👩🏼‍⚖	femme juge : peau légèrement mate
+👩🏽‍⚖️	femme juge : peau légèrement mate
+👩🏽‍⚖	femme juge : peau légèrement mate
+👩🏾‍⚖️	femme juge : peau légèrement mate
+👩🏾‍⚖	femme juge : peau légèrement mate
+👩🏿‍⚖️	femme juge : peau foncée
+👩🏿‍⚖	femme juge : peau foncée
+👨‍🌾	homme agriculteur
+👨🏻‍🌾	agriculteur : peau claire
+👨🏼‍🌾	agriculteur : peau légèrement mate
+👨🏽‍🌾	agriculteur : peau légèrement mate
+👨🏾‍🌾	agriculteur : peau légèrement mate
+👨🏿‍🌾	agriculteur : peau foncée
+👩‍🌾	agricultrice
+👩🏻‍🌾	agricultrice : peau claire
+👩🏼‍🌾	agricultrice : peau légèrement mate
+👩🏽‍🌾	agricultrice : peau légèrement mate
+👩🏾‍🌾	agricultrice : peau légèrement mate
+👩🏿‍🌾	agricultrice : peau foncée
+👨‍🍳	homme cuisinier
+👨🏻‍🍳	homme cuisinier : peau claire
+👨🏼‍🍳	homme cuisinier : peau légèrement mate
+👨🏽‍🍳	homme cuisinier : peau légèrement mate
+👨🏾‍🍳	homme cuisinier : peau légèrement mate
+👨🏿‍🍳	homme cuisinier : peau foncée
+👩‍🍳	femme cuisinière
+👩🏻‍🍳	femme cuisinière : peau claire
+👩🏼‍🍳	femme cuisinière : peau légèrement mate
+👩🏽‍🍳	femme cuisinière : peau légèrement mate
+👩🏾‍🍳	femme cuisinière : peau légèrement mate
+👩🏿‍🍳	femme cuisinière : peau foncée
+👨‍🔧	homme mécanicien
+👨🏻‍🔧	mécanicien homme : peau claire
+👨🏼‍🔧	mécanicien homme : peau légèrement mate
+👨🏽‍🔧	mécanicien homme : peau légèrement mate
+👨🏾‍🔧	mécanicien homme : peau légèrement mate
+👨🏿‍🔧	mécanicien homme : peau foncée
+👩‍🔧	femme mécanicien
+👩🏻‍🔧	femme mécanicienne : peau claire
+👩🏼‍🔧	femme mécanicienne : peau légèrement mate
+👩🏽‍🔧	femme mécanicienne : peau légèrement mate
+👩🏾‍🔧	femme mécanicienne : peau légèrement mate
+👩🏿‍🔧	femme mécanicienne : peau foncée
+👨‍🏭	ouvrier d'usine
+👨🏻‍🏭	ouvrier d'usine : peau claire
+👨🏼‍🏭	ouvrier d'usine : peau légèrement mate
+👨🏽‍🏭	ouvrier d'usine : peau légèrement mate
+👨🏾‍🏭	ouvrier d'usine : peau légèrement mate
+👨🏿‍🏭	ouvrier d'usine : peau foncée
+👩‍🏭	ouvrière d'usine
+👩🏻‍🏭	ouvrière d'usine : peau claire
+👩🏼‍🏭	ouvrière d'usine : peau légèrement mate
+👩🏽‍🏭	ouvrière d'usine : peau légèrement mate
+👩🏾‍🏭	ouvrière d'usine : peau légèrement mate
+👩🏿‍🏭	ouvrière d'usine : peau foncée
+👨‍💼	homme, employé bureau
+👨🏻‍💼	homme employé de bureau : peau légèrement mate
+👨🏼‍💼	homme employé de bureau : peau légèrement mate
+👨🏽‍💼	employé de bureau : peau légèrement mate
+👨🏾‍💼	homme employé de bureau : peau légèrement mate
+👨🏿‍💼	employé de bureau : peau foncée
+👩‍💼	femme employée de bureau
+👩🏻‍💼	employée de bureau : peau claire
+👩🏼‍💼	employée de bureau : peau légèrement mate
+👩🏽‍💼	employée de bureau : peau légèrement mate
+👩🏾‍💼	employée de bureau : peau légèrement mate
+👩🏿‍💼	employée de bureau : peau foncée
+👨‍🔬	homme scientifique
+👨🏻‍🔬	homme scientifique : peau claire
+👨🏼‍🔬	homme scientifique : peau légèrement mate
+👨🏽‍🔬	homme scientifique : peau légèrement mate
+👨🏾‍🔬	homme scientifique : peau légèrement mate
+👨🏿‍🔬	homme scientifique : peau foncée
+👩‍🔬	femme scientifique
+👩🏻‍🔬	femme scientifique : peau claire
+👩🏼‍🔬	femme scientifique : peau légèrement mate
+👩🏽‍🔬	femme scientifique : peau légèrement mate
+👩🏾‍🔬	femme scientifique : peau légèrement mate
+👩🏿‍🔬	femme scientifique : peau foncée
+👨‍💻	homme technologue
+👨🏻‍💻	technologue homme : peau claire
+👨🏼‍💻	technologue homme : peau légèrement mate
+👨🏽‍💻	technologue homme : peau légèrement mate
+👨🏾‍💻	technologue homme : peau légèrement mate
+👨🏿‍💻	technologue homme : peau foncée
+👩‍💻	femme technologue
+👩🏻‍💻	femme technologue : peau claire
+👩🏼‍💻	femme technologue : peau légèrement mate
+👩🏽‍💻	femme technologue : peau légèrement mate
+👩🏾‍💻	femme technologue : peau légèrement mate
+👩🏿‍💻	femme technologue : peau foncée
+👨‍🎤	homme chanteur
+👨🏻‍🎤	homme chanteur : peau claire
+👨🏼‍🎤	homme chanteur : peau légèrement mate
+👨🏽‍🎤	homme chanteur : peau légèrement mate
+👨🏾‍🎤	homme chanteur : peau légèrement mate
+👨🏿‍🎤	chanteur : peau foncée
+👩‍🎤	chanteuse
+👩🏻‍🎤	chanteuse : peau claire
+👩🏼‍🎤	chanteuse : peau légèrement mate
+👩🏽‍🎤	chanteuse : peau légèrement mate
+👩🏾‍🎤	chanteuse : peau légèrement mate
+👩🏿‍🎤	chanteuse : peau foncée
+👨‍🎨	homme artiste
+👨🏻‍🎨	artiste homme : peau claire
+👨🏼‍🎨	homme artiste : peau légèrement mate
+👨🏽‍🎨	artiste homme : peau légèrement mate
+👨🏾‍🎨	artiste homme : peau légèrement mate
+👨🏿‍🎨	artiste homme : peau foncée
+👩‍🎨	femme artiste
+👩🏻‍🎨	artiste femme : peau claire
+👩🏼‍🎨	femme artiste : peau légèrement mate
+👩🏽‍🎨	artiste femme : peau légèrement mate
+👩🏾‍🎨	artiste femme : peau légèrement mate
+👩🏿‍🎨	artiste femme : peau foncée
+👨‍✈️	homme pilote
+👨‍✈	homme pilote
+👨🏻‍✈️	homme pilote : peau claire
+👨🏻‍✈	homme pilote : peau claire
+👨🏼‍✈️	homme pilote : peau légèrement mate
+👨🏼‍✈	homme pilote : peau légèrement mate
+👨🏽‍✈️	homme pilote : peau légèrement mate
+👨🏽‍✈	homme pilote : peau légèrement mate
+👨🏾‍✈️	homme pilote : peau légèrement mate
+👨🏾‍✈	homme pilote : peau légèrement mate
+👨🏿‍✈️	homme pilote : peau foncée
+👨🏿‍✈	homme pilote : peau foncée
+👩‍✈️	femme pilote
+👩‍✈	femme pilote
+👩🏻‍✈️	femme pilote : peau claire
+👩🏻‍✈	femme pilote : peau claire
+👩🏼‍✈️	femme pilote : peau légèrement mate
+👩🏼‍✈	femme pilote : peau légèrement mate
+👩🏽‍✈️	femme pilote : peau légèrement mate
+👩🏽‍✈	femme pilote : peau légèrement mate
+👩🏾‍✈️	femme pilote : peau légèrement mate
+👩🏾‍✈	femme pilote : peau légèrement mate
+👩🏿‍✈️	femme pilote : peau foncée
+👩🏿‍✈	femme pilote : peau foncée
+👨‍🚀	homme astronaute
+👨🏻‍🚀	homme astronaute : peau claire
+👨🏼‍🚀	homme astronaute : peau légèrement mate
+👨🏽‍🚀	homme astronaute : peau légèrement mate
+👨🏾‍🚀	homme astronaute : peau légèrement mate
+👨🏿‍🚀	homme astronaute : peau foncée
+👩‍🚀	femme astronaute
+👩🏻‍🚀	femme astronaute : peau claire
+👩🏼‍🚀	femme astronaute : peau légèrement mate
+👩🏽‍🚀	femme astronaute : peau légèrement mate
+👩🏾‍🚀	femme astronaute : peau légèrement mate
+👩🏿‍🚀	femme astronaute : peau foncée
+👨‍🚒	homme pompier
+👨🏻‍🚒	pompier homme : peau claire
+👨🏼‍🚒	pompier homme : peau légèrement mate
+👨🏽‍🚒	pompier homme : peau légèrement mate
+👨🏾‍🚒	pompier homme : peau légèrement mate
+👨🏿‍🚒	homme pompier : peau foncée
+👩‍🚒	femme pompier
+👩🏻‍🚒	femme pompier : peau claire
+👩🏼‍🚒	femme pompier : peau légèrement mate
+👩🏽‍🚒	femme pompier : peau légèrement mate
+👩🏾‍🚒	femme pompier : peau légèrement mate
+👩🏿‍🚒	femme pompier : peau foncée
+👮	officier de police
+👮🏻	policier : peau claire
+👮🏼	policier : peau légèrement mate
+👮🏽	policier : peau légèrement mate
+👮🏾	policier : peau légèrement mate
+👮🏿	policier : peau foncée
+👮‍♂️	homme policier
+👮‍♂	homme policier
+👮🏻‍♂️	homme policier : peau claire
+👮🏻‍♂	homme policier : peau claire
+👮🏼‍♂️	homme policier : peau légèrement mate
+👮🏼‍♂	homme policier : peau légèrement mate
+👮🏽‍♂️	homme policier : peau légèrement mate
+👮🏽‍♂	homme policier : peau légèrement mate
+👮🏾‍♂️	homme policier : peau légèrement mate
+👮🏾‍♂	homme policier : peau légèrement mate
+👮🏿‍♂️	homme policier : peau foncée
+👮🏿‍♂	homme policier : peau foncée
+👮‍♀️	femme policier
+👮‍♀	femme policier
+👮🏻‍♀️	femme policière : peau claire
+👮🏻‍♀	femme policière : peau claire
+👮🏼‍♀️	femme policière : peau légèrement mate
+👮🏼‍♀	femme policière : peau légèrement mate
+👮🏽‍♀️	femme policière : peau légèrement mate
+👮🏽‍♀	femme policière : peau légèrement mate
+👮🏾‍♀️	femme policière : peau légèrement mate
+👮🏾‍♀	femme policière : peau légèrement mate
+👮🏿‍♀️	femme policière : peau foncée
+👮🏿‍♀	femme policière : peau foncée
+🕵️	détective
+🕵	détective
+🕵🏻	détective : peau claire
+🕵🏼	détective : peau légèrement mate
+🕵🏽	détective : peau légèrement mate
+🕵🏾	détective : peau légèrement mate
+🕵🏿	détective : peau foncée
+🕵️‍♂️	homme détective
+🕵‍♂️	homme détective
+🕵️‍♂	homme détective
+🕵‍♂	homme détective
+🕵🏻‍♂️	homme détective : peau claire
+🕵🏻‍♂	homme détective : peau claire
+🕵🏼‍♂️	homme détective : peau légèrement mate
+🕵🏼‍♂	homme détective : peau légèrement mate
+🕵🏽‍♂️	homme détective : peau légèrement mate
+🕵🏽‍♂	homme détective : peau légèrement mate
+🕵🏾‍♂️	homme détective : peau légèrement mate
+🕵🏾‍♂	homme détective : peau légèrement mate
+🕵🏿‍♂️	homme détective : peau foncée
+🕵🏿‍♂	homme détective : peau foncée
+🕵️‍♀️	femme détective
+🕵‍♀️	femme détective
+🕵️‍♀	femme détective
+🕵‍♀	femme détective
+🕵🏻‍♀️	femme détective : peau claire
+🕵🏻‍♀	femme détective : peau claire
+🕵🏼‍♀️	femme détective : peau légèrement mate
+🕵🏼‍♀	femme détective : peau légèrement mate
+🕵🏽‍♀️	femme détective : peau légèrement mate
+🕵🏽‍♀	femme détective : peau légèrement mate
+🕵🏾‍♀️	femme détective : peau légèrement mate
+🕵🏾‍♀	femme détective : peau légèrement mate
+🕵🏿‍♀️	femme détective : peau foncée
+🕵🏿‍♀	femme détective : peau foncée
+💂	garde
+💂🏻	garde : peau claire
+💂🏼	garde : peau moyennement claire
+💂🏽	garde : peau légèrement mate
+💂🏾	garde : peau légèrement mate
+💂🏿	garde : peau foncée
+💂‍♂️	homme garde
+💂‍♂	homme garde
+💂🏻‍♂️	garde homme : peau claire
+💂🏻‍♂	garde homme : peau claire
+💂🏼‍♂️	garde homme : peau légèrement mate
+💂🏼‍♂	garde homme : peau légèrement mate
+💂🏽‍♂️	garde homme : peau légèrement mate
+💂🏽‍♂	garde homme : peau légèrement mate
+💂🏾‍♂️	garde homme : peau légèrement mate
+💂🏾‍♂	garde homme : peau légèrement mate
+💂🏿‍♂️	garde homme : peau foncée
+💂🏿‍♂	garde homme : peau foncée
+💂‍♀️	femme garde
+💂‍♀	femme garde
+💂🏻‍♀️	garde femme : peau claire
+💂🏻‍♀	garde femme : peau claire
+💂🏼‍♀️	garde femme : peau légèrement mate
+💂🏼‍♀	garde femme : peau légèrement mate
+💂🏽‍♀️	garde femme : peau légèrement mate
+💂🏽‍♀	garde femme : peau légèrement mate
+💂🏾‍♀️	garde femme : peau légèrement mate
+💂🏾‍♀	garde femme : peau légèrement mate
+💂🏿‍♀️	femme de garde : peau foncée
+💂🏿‍♀	femme de garde : peau foncée
+👷	ouvrier du batiment
+👷🏻	ouvrier du bâtiment : peau claire
+👷🏼	ouvrier du bâtiment : peau légèrement mate
+👷🏽	ouvrier du bâtiment : peau légèrement mate
+👷🏾	ouvrier du bâtiment : peau légèrement mate
+👷🏿	ouvrier du bâtiment : peau foncée
+👷‍♂️	homme, ouvrier construction
+👷‍♂	homme, ouvrier construction
+👷🏻‍♂️	homme ouvrier du bâtiment : peau légèrement mate
+👷🏻‍♂	homme ouvrier du bâtiment : peau légèrement mate
+👷🏼‍♂️	homme ouvrier du bâtiment : peau légèrement mate
+👷🏼‍♂	homme ouvrier du bâtiment : peau légèrement mate
+👷🏽‍♂️	homme ouvrier du bâtiment : peau légèrement mate
+👷🏽‍♂	homme ouvrier du bâtiment : peau légèrement mate
+👷🏾‍♂️	homme ouvrier du bâtiment : peau légèrement mate
+👷🏾‍♂	homme ouvrier du bâtiment : peau légèrement mate
+👷🏿‍♂️	homme ouvrier du bâtiment : peau foncée
+👷🏿‍♂	homme ouvrier du bâtiment : peau foncée
+👷‍♀️	femme, ouvrier du bâtiment
+👷‍♀	femme, ouvrier du bâtiment
+👷🏻‍♀️	ouvrière du bâtiment : peau claire
+👷🏻‍♀	ouvrière du bâtiment : peau claire
+👷🏼‍♀️	ouvrière du bâtiment : peau légèrement mate
+👷🏼‍♀	ouvrière du bâtiment : peau légèrement mate
+👷🏽‍♀️	ouvrière du bâtiment : peau légèrement mate
+👷🏽‍♀	ouvrière du bâtiment : peau légèrement mate
+👷🏾‍♀️	ouvrière du bâtiment : peau légèrement mate
+👷🏾‍♀	ouvrière du bâtiment : peau légèrement mate
+👷🏿‍♀️	ouvrière du bâtiment : peau foncée
+👷🏿‍♀	ouvrière du bâtiment : peau foncée
+🤴	prince
+🤴🏻	prince : peau claire
+🤴🏼	prince : peau moyennement claire
+🤴🏽	prince : peau légèrement mate
+🤴🏾	prince : peau légèrement mate
+🤴🏿	prince : peau foncée
+👸	princesse
+👸🏻	princesse : peau claire
+👸🏼	princesse : peau légèrement mate
+👸🏽	princesse : peau légèrement mate
+👸🏾	princesse : peau légèrement mate
+👸🏿	princesse : peau foncée
+👳	personne portant un turban
+👳🏻	personne portant un turban : peau claire
+👳🏼	personne portant un turban : peau légèrement mate
+👳🏽	personne portant un turban : peau légèrement mate
+👳🏾	personne portant un turban : peau légèrement mate
+👳🏿	personne portant un turban : peau foncée
+👳‍♂️	homme portant un turban
+👳‍♂	homme portant un turban
+👳🏻‍♂️	homme portant un turban : peau claire
+👳🏻‍♂	homme portant un turban : peau claire
+👳🏼‍♂️	homme portant un turban : peau légèrement mate
+👳🏼‍♂	homme portant un turban : peau légèrement mate
+👳🏽‍♂️	homme portant un turban : peau légèrement mate
+👳🏽‍♂	homme portant un turban : peau légèrement mate
+👳🏾‍♂️	homme portant un turban : peau légèrement mate
+👳🏾‍♂	homme portant un turban : peau légèrement mate
+👳🏿‍♂️	homme portant un turban : peau foncée
+👳🏿‍♂	homme portant un turban : peau foncée
+👳‍♀️	femme portant un turban
+👳‍♀	femme portant un turban
+👳🏻‍♀️	femme portant un turban : peau claire
+👳🏻‍♀	femme portant un turban : peau claire
+👳🏼‍♀️	femme portant un turban : peau légèrement mate
+👳🏼‍♀	femme portant un turban : peau légèrement mate
+👳🏽‍♀️	femme portant un turban : peau légèrement mate
+👳🏽‍♀	femme portant un turban : peau légèrement mate
+👳🏾‍♀️	femme portant un turban : peau légèrement mate
+👳🏾‍♀	femme portant un turban : peau légèrement mate
+👳🏿‍♀️	femme portant un turban : peau foncée
+👳🏿‍♀	femme portant un turban : peau foncée
+👲	homme avec une casquette chinoise
+👲🏻	homme à casquette chinoise : peau claire
+👲🏼	homme à casquette chinoise : peau légèrement mate
+👲🏽	homme à casquette chinoise : peau légèrement mate
+👲🏾	homme à casquette chinoise : peau légèrement mate
+👲🏿	homme avec une casquette chinoise : peau foncée
+🧕	femme avec foulard
+🧕🏻	femme avec un foulard : peau claire
+🧕🏼	femme avec un foulard : peau légèrement mate
+🧕🏽	femme avec un foulard : peau légèrement mate
+🧕🏾	femme avec un foulard : peau légèrement mate
+🧕🏿	femme avec un foulard : peau foncée
+🧔	personne barbue
+🧔🏻	personne barbue : peau claire
+🧔🏼	personne barbue : peau légèrement mate
+🧔🏽	personne barbue : peau légèrement mate
+🧔🏾	personne barbue : peau légèrement mate
+🧔🏿	personne barbue : peau foncée
+👱	personne aux cheveux blonds
+👱🏻	personne blonde : peau claire
+👱🏼	personne aux cheveux blonds : peau moyennement claire
+👱🏽	personne blonde : peau légèrement mate
+👱🏾	personne aux cheveux blonds : peau légèrement mate
+👱🏿	personne aux cheveux blonds : peau foncée
+👱‍♂️	homme aux cheveux blonds
+👱‍♂	homme aux cheveux blonds
+👱🏻‍♂️	homme blond : peau claire
+👱🏻‍♂	homme blond : peau claire
+👱🏼‍♂️	homme blond : peau légèrement mate
+👱🏼‍♂	homme blond : peau légèrement mate
+👱🏽‍♂️	homme blond : peau légèrement mate
+👱🏽‍♂	homme blond : peau légèrement mate
+👱🏾‍♂️	homme blond : peau légèrement mate
+👱🏾‍♂	homme blond : peau légèrement mate
+👱🏿‍♂️	homme blond : peau foncée
+👱🏿‍♂	homme blond : peau foncée
+👱‍♀️	femme aux cheveux blonds
+👱‍♀	femme aux cheveux blonds
+👱🏻‍♀️	femme blonde : peau claire
+👱🏻‍♀	femme blonde : peau claire
+👱🏼‍♀️	femme blonde : peau légèrement mate
+👱🏼‍♀	femme blonde : peau légèrement mate
+👱🏽‍♀️	femme blonde : peau légèrement mate
+👱🏽‍♀	femme blonde : peau légèrement mate
+👱🏾‍♀️	femme blonde : peau légèrement mate
+👱🏾‍♀	femme blonde : peau légèrement mate
+👱🏿‍♀️	femme blonde : peau foncée
+👱🏿‍♀	femme blonde : peau foncée
+👨‍🦰	homme, cheveux roux
+👨🏻‍🦰	homme, cheveux roux : peau claire
+👨🏼‍🦰	homme, cheveux roux : peau légèrement mate
+👨🏽‍🦰	homme, cheveux roux : peau légèrement mate
+👨🏾‍🦰	homme, cheveux roux : peau légèrement mate
+👨🏿‍🦰	homme, cheveux roux : peau foncée
+👩‍🦰	femme, cheveux roux
+👩🏻‍🦰	femme, cheveux roux : peau claire
+👩🏼‍🦰	femme, cheveux roux : peau légèrement mate
+👩🏽‍🦰	femme, cheveux roux : peau légèrement mate
+👩🏾‍🦰	femme, cheveux roux : peau légèrement mate
+👩🏿‍🦰	femme, cheveux roux : peau foncée
+👨‍🦱	homme, cheveux bouclés
+👨🏻‍🦱	homme, cheveux bouclés : peau claire
+👨🏼‍🦱	homme, cheveux bouclés : peau légèrement mate
+👨🏽‍🦱	homme, cheveux bouclés : peau légèrement mate
+👨🏾‍🦱	homme, cheveux bouclés : peau légèrement mate
+👨🏿‍🦱	homme, cheveux bouclés : peau foncée
+👩‍🦱	femme, cheveux bouclés
+👩🏻‍🦱	femme, cheveux bouclés : peau claire
+👩🏼‍🦱	femme, cheveux bouclés : peau légèrement mate
+👩🏽‍🦱	femme, cheveux bouclés : peau légèrement mate
+👩🏾‍🦱	femme, cheveux bouclés : peau légèrement mate
+👩🏿‍🦱	femme, cheveux bouclés : peau foncée
+👨‍🦲	homme, chauve
+👨🏻‍🦲	homme, chauve : peau claire
+👨🏼‍🦲	homme, chauve : peau légèrement mate
+👨🏽‍🦲	homme chauve : peau légèrement mate
+👨🏾‍🦲	homme, chauve : peau légèrement mate
+👨🏿‍🦲	homme, chauve : peau foncée
+👩‍🦲	femme, chauve
+👩🏻‍🦲	femme, chauve : peau claire
+👩🏼‍🦲	femme, chauve : peau légèrement mate
+👩🏽‍🦲	femme, chauve : peau légèrement mate
+👩🏾‍🦲	femme, chauve : peau légèrement mate
+👩🏿‍🦲	femme, chauve : peau foncée
+👨‍🦳	homme, cheveux blancs
+👨🏻‍🦳	homme, cheveux blancs : peau claire
+👨🏼‍🦳	homme, cheveux blancs : peau légèrement mate
+👨🏽‍🦳	homme, cheveux blancs : peau légèrement mate
+👨🏾‍🦳	homme, cheveux blancs : peau légèrement mate
+👨🏿‍🦳	homme, cheveux blancs : peau foncée
+👩‍🦳	femme, cheveux blancs
+👩🏻‍🦳	femme, cheveux blancs : peau claire
+👩🏼‍🦳	femme, cheveux blancs : peau légèrement mate
+👩🏽‍🦳	femme, cheveux blancs : peau légèrement mate
+👩🏾‍🦳	femme, cheveux blancs : peau légèrement mate
+👩🏿‍🦳	femme, cheveux blancs : peau foncée
+🤵	homme en smoking
+🤵🏻	homme en smoking : peau claire
+🤵🏼	homme en smoking : peau légèrement mate
+🤵🏽	homme en smoking : peau légèrement mate
+🤵🏾	homme en smoking : peau légèrement mate
+🤵🏿	homme en smoking : peau foncée
+👰	mariée avec voile
+👰🏻	mariée avec voile : peau claire
+👰🏼	mariée avec voile : peau légèrement mate
+👰🏽	mariée avec voile : peau légèrement mate
+👰🏾	mariée avec voile : peau légèrement mate
+👰🏿	mariée avec voile : peau foncée
+🤰	femme enceinte
+🤰🏻	femme enceinte : peau claire
+🤰🏼	femme enceinte : peau légèrement mate
+🤰🏽	femme enceinte : peau légèrement mate
+🤰🏾	femme enceinte : peau légèrement mate
+🤰🏿	femme enceinte : peau foncée
+🤱	allaitement maternel
+🤱🏻	allaitement : peau claire
+🤱🏼	allaitement : peau moyennement claire
+🤱🏽	allaitement : peau légèrement mate
+🤱🏾	allaitement : peau légèrement mate
+🤱🏿	allaitement : peau foncée
+👼	bébé ange
+👼🏻	bébé ange : peau claire
+👼🏼	bébé ange : peau moyennement claire
+👼🏽	bébé ange : peau légèrement mate
+👼🏾	bébé ange : peau légèrement mate
+👼🏿	bébé ange : peau foncée
+🎅	le père Noël
+🎅🏻	Père Noël : peau claire
+🎅🏼	Père Noël : peau légèrement mate
+🎅🏽	Père Noël : peau légèrement mate
+🎅🏾	Père Noël : peau légèrement mate
+🎅🏿	Père Noël : peau foncée
+🤶	Mme Noël
+🤶🏻	Mère Noël : peau claire
+🤶🏼	Mère Noël : peau légèrement mate
+🤶🏽	Mère Noël : peau légèrement mate
+🤶🏾	Mère Noël : peau légèrement mate
+🤶🏿	Mère Noël : peau foncée
+🦸	super-héros
+🦸🏻	super-héros : peau claire
+🦸🏼	super-héros : peau légèrement mate
+🦸🏽	super-héros : peau légèrement mate
+🦸🏾	super-héros : peau légèrement mate
+🦸🏿	super-héros : peau foncée
+🦸‍♀️	femme super-héros
+🦸‍♀	femme super-héros
+🦸🏻‍♀️	super-héros femme : peau claire
+🦸🏻‍♀	super-héros femme : peau claire
+🦸🏼‍♀️	femme super-héroïne : peau légèrement mate
+🦸🏼‍♀	femme super-héroïne : peau légèrement mate
+🦸🏽‍♀️	super-héros femme : peau légèrement mate
+🦸🏽‍♀	super-héros femme : peau légèrement mate
+🦸🏾‍♀️	femme super-héroïne : peau légèrement mate
+🦸🏾‍♀	femme super-héroïne : peau légèrement mate
+🦸🏿‍♀️	super-héros femme : peau foncée
+🦸🏿‍♀	super-héros femme : peau foncée
+🦸‍♂️	homme super-héros
+🦸‍♂	homme super-héros
+🦸🏻‍♂️	super-héros homme : peau claire
+🦸🏻‍♂	super-héros homme : peau claire
+🦸🏼‍♂️	homme super-héros : peau légèrement mate
+🦸🏼‍♂	homme super-héros : peau légèrement mate
+🦸🏽‍♂️	super héros homme : peau légèrement mate
+🦸🏽‍♂	super héros homme : peau légèrement mate
+🦸🏾‍♂️	homme super-héros : peau légèrement mate
+🦸🏾‍♂	homme super-héros : peau légèrement mate
+🦸🏿‍♂️	super-héros homme : peau foncée
+🦸🏿‍♂	super-héros homme : peau foncée
+🦹	super-vilain
+🦹🏻	super-vilain : peau claire
+🦹🏼	super-vilain : peau légèrement mate
+🦹🏽	super-vilain : peau légèrement mate
+🦹🏾	super-vilain : peau légèrement mate
+🦹🏿	super-vilain : peau foncée
+🦹‍♀️	femme super-vilain
+🦹‍♀	femme super-vilain
+🦹🏻‍♀️	super-vilain femme : peau claire
+🦹🏻‍♀	super-vilain femme : peau claire
+🦹🏼‍♀️	femme super-vilain : peau légèrement mate
+🦹🏼‍♀	femme super-vilain : peau légèrement mate
+🦹🏽‍♀️	super-vilain femme : peau légèrement mate
+🦹🏽‍♀	super-vilain femme : peau légèrement mate
+🦹🏾‍♀️	super-vilain femme : peau légèrement mate
+🦹🏾‍♀	super-vilain femme : peau légèrement mate
+🦹🏿‍♀️	super-vilain femme : peau foncée
+🦹🏿‍♀	super-vilain femme : peau foncée
+🦹‍♂️	homme super-vilain
+🦹‍♂	homme super-vilain
+🦹🏻‍♂️	homme super-vilain : peau claire
+🦹🏻‍♂	homme super-vilain : peau claire
+🦹🏼‍♂️	homme super-vilain : peau légèrement mate
+🦹🏼‍♂	homme super-vilain : peau légèrement mate
+🦹🏽‍♂️	homme super-vilain : peau légèrement mate
+🦹🏽‍♂	homme super-vilain : peau légèrement mate
+🦹🏾‍♂️	homme super-vilain : peau légèrement mate
+🦹🏾‍♂	homme super-vilain : peau légèrement mate
+🦹🏿‍♂️	homme super-vilain : peau foncée
+🦹🏿‍♂	homme super-vilain : peau foncée
+🧙	mage
+🧙🏻	image : peau claire
+🧙🏼	mage : peau moyennement claire
+🧙🏽	image : peau légèrement mate
+🧙🏾	mage : peau légèrement mate
+🧙🏿	image : peau foncée
+🧙‍♀️	femme mage
+🧙‍♀	femme mage
+🧙🏻‍♀️	femme mage : peau claire
+🧙🏻‍♀	femme mage : peau claire
+🧙🏼‍♀️	femme mage : peau légèrement mate
+🧙🏼‍♀	femme mage : peau légèrement mate
+🧙🏽‍♀️	femme mage : peau légèrement mate
+🧙🏽‍♀	femme mage : peau légèrement mate
+🧙🏾‍♀️	femme mage : peau légèrement mate
+🧙🏾‍♀	femme mage : peau légèrement mate
+🧙🏿‍♀️	femme mage : peau foncée
+🧙🏿‍♀	femme mage : peau foncée
+🧙‍♂️	homme mage
+🧙‍♂	homme mage
+🧙🏻‍♂️	homme mage : peau claire
+🧙🏻‍♂	homme mage : peau claire
+🧙🏼‍♂️	homme mage : peau légèrement mate
+🧙🏼‍♂	homme mage : peau légèrement mate
+🧙🏽‍♂️	homme mage : peau légèrement mate
+🧙🏽‍♂	homme mage : peau légèrement mate
+🧙🏾‍♂️	homme mage : peau légèrement mate
+🧙🏾‍♂	homme mage : peau légèrement mate
+🧙🏿‍♂️	homme mage : peau foncée
+🧙🏿‍♂	homme mage : peau foncée
+🧚	fée
+🧚🏻	fée : peau claire
+🧚🏼	fée : peau moyennement claire
+🧚🏽	fée : peau légèrement mate
+🧚🏾	fée : peau légèrement mate
+🧚🏿	fée : peau foncée
+🧚‍♀️	femme fée
+🧚‍♀	femme fée
+🧚🏻‍♀️	fée femme : peau claire
+🧚🏻‍♀	fée femme : peau claire
+🧚🏼‍♀️	femme fée : peau légèrement mate
+🧚🏼‍♀	femme fée : peau légèrement mate
+🧚🏽‍♀️	fée femme : peau légèrement mate
+🧚🏽‍♀	fée femme : peau légèrement mate
+🧚🏾‍♀️	femme fée : peau légèrement mate
+🧚🏾‍♀	femme fée : peau légèrement mate
+🧚🏿‍♀️	femme fée : peau foncée
+🧚🏿‍♀	femme fée : peau foncée
+🧚‍♂️	homme fée
+🧚‍♂	homme fée
+🧚🏻‍♂️	homme fée : peau claire
+🧚🏻‍♂	homme fée : peau claire
+🧚🏼‍♂️	homme fée : peau légèrement mate
+🧚🏼‍♂	homme fée : peau légèrement mate
+🧚🏽‍♂️	homme fée : peau légèrement mate
+🧚🏽‍♂	homme fée : peau légèrement mate
+🧚🏾‍♂️	homme fée : peau légèrement mate
+🧚🏾‍♂	homme fée : peau légèrement mate
+🧚🏿‍♂️	homme fée : peau foncée
+🧚🏿‍♂	homme fée : peau foncée
+🧛	vampire
+🧛🏻	vampire : peau claire
+🧛🏼	vampire : peau moyennement claire
+🧛🏽	vampire : peau légèrement mate
+🧛🏾	vampire : peau légèrement mate
+🧛🏿	vampire : peau foncée
+🧛‍♀️	femme vampire
+🧛‍♀	femme vampire
+🧛🏻‍♀️	femme vampire : peau claire
+🧛🏻‍♀	femme vampire : peau claire
+🧛🏼‍♀️	femme vampire : peau légèrement mate
+🧛🏼‍♀	femme vampire : peau légèrement mate
+🧛🏽‍♀️	femme vampire : peau légèrement mate
+🧛🏽‍♀	femme vampire : peau légèrement mate
+🧛🏾‍♀️	femme vampire : peau légèrement mate
+🧛🏾‍♀	femme vampire : peau légèrement mate
+🧛🏿‍♀️	femme vampire : peau foncée
+🧛🏿‍♀	femme vampire : peau foncée
+🧛‍♂️	homme, vampire
+🧛‍♂	homme, vampire
+🧛🏻‍♂️	homme vampire : peau claire
+🧛🏻‍♂	homme vampire : peau claire
+🧛🏼‍♂️	homme vampire : peau légèrement mate
+🧛🏼‍♂	homme vampire : peau légèrement mate
+🧛🏽‍♂️	homme vampire : peau légèrement mate
+🧛🏽‍♂	homme vampire : peau légèrement mate
+🧛🏾‍♂️	homme vampire : peau légèrement mate
+🧛🏾‍♂	homme vampire : peau légèrement mate
+🧛🏿‍♂️	homme vampire : peau foncée
+🧛🏿‍♂	homme vampire : peau foncée
+🧜	triton
+🧜🏻	triton : peau claire
+🧜🏼	sirène : peau légèrement mate
+🧜🏽	triton : peau légèrement mate
+🧜🏾	sirène : peau légèrement mate
+🧜🏿	triton : peau foncée
+🧜‍♀️	sirène
+🧜‍♀	sirène
+🧜🏻‍♀️	sirène : peau claire
+🧜🏻‍♀	sirène : peau claire
+🧜🏼‍♀️	sirène : peau moyennement claire
+🧜🏼‍♀	sirène : peau moyennement claire
+🧜🏽‍♀️	sirène : peau légèrement mate
+🧜🏽‍♀	sirène : peau légèrement mate
+🧜🏾‍♀️	sirène : peau légèrement mate
+🧜🏾‍♀	sirène : peau légèrement mate
+🧜🏿‍♀️	sirène : peau foncée
+🧜🏿‍♀	sirène : peau foncée
+🧜‍♂️	triton
+🧜‍♂	triton
+🧜🏻‍♂️	triton : peau claire
+🧜🏻‍♂	triton : peau claire
+🧜🏼‍♂️	triton : peau légèrement mate
+🧜🏼‍♂	triton : peau légèrement mate
+🧜🏽‍♂️	triton : peau légèrement mate
+🧜🏽‍♂	triton : peau légèrement mate
+🧜🏾‍♂️	triton : peau légèrement mate
+🧜🏾‍♂	triton : peau légèrement mate
+🧜🏿‍♂️	triton : peau foncée
+🧜🏿‍♂	triton : peau foncée
+🧝	elfe
+🧝🏻	elfe : peau claire
+🧝🏼	elfe : peau moyennement claire
+🧝🏽	elfe : peau légèrement mate
+🧝🏾	elfe : peau légèrement mate
+🧝🏿	elfe : peau foncée
+🧝‍♀️	femme elfe
+🧝‍♀	femme elfe
+🧝🏻‍♀️	elfe : peau claire
+🧝🏻‍♀	elfe : peau claire
+🧝🏼‍♀️	elfe : peau légèrement mate
+🧝🏼‍♀	elfe : peau légèrement mate
+🧝🏽‍♀️	elfe : peau légèrement mate
+🧝🏽‍♀	elfe : peau légèrement mate
+🧝🏾‍♀️	elfe : peau légèrement mate
+🧝🏾‍♀	elfe : peau légèrement mate
+🧝🏿‍♀️	elfe : peau foncée
+🧝🏿‍♀	elfe : peau foncée
+🧝‍♂️	homme elfe
+🧝‍♂	homme elfe
+🧝🏻‍♂️	homme elfe : peau claire
+🧝🏻‍♂	homme elfe : peau claire
+🧝🏼‍♂️	homme elfe : peau légèrement mate
+🧝🏼‍♂	homme elfe : peau légèrement mate
+🧝🏽‍♂️	homme elfe : peau légèrement mate
+🧝🏽‍♂	homme elfe : peau légèrement mate
+🧝🏾‍♂️	homme elfe : peau légèrement mate
+🧝🏾‍♂	homme elfe : peau légèrement mate
+🧝🏿‍♂️	homme elfe : peau foncée
+🧝🏿‍♂	homme elfe : peau foncée
+🧞	génie
+🧞‍♀️	femme génie
+🧞‍♀	femme génie
+🧞‍♂️	homme génie
+🧞‍♂	homme génie
+🧟	zombi
+🧟‍♀️	femme zombie
+🧟‍♀	femme zombie
+🧟‍♂️	homme zombie
+🧟‍♂	homme zombie
+🙍	personne fronçant les sourcils
+🙍🏻	personne fronçant les sourcils : peau claire
+🙍🏼	personne fronçant les sourcils : peau légèrement mate
+🙍🏽	personne fronçant les sourcils : peau légèrement mate
+🙍🏾	personne fronçant les sourcils : peau légèrement mate
+🙍🏿	personne fronçant les sourcils : peau foncée
+🙍‍♂️	homme fronçant les sourcils
+🙍‍♂	homme fronçant les sourcils
+🙍🏻‍♂️	homme fronçant les sourcils : peau claire
+🙍🏻‍♂	homme fronçant les sourcils : peau claire
+🙍🏼‍♂️	homme fronçant les sourcils : peau légèrement mate
+🙍🏼‍♂	homme fronçant les sourcils : peau légèrement mate
+🙍🏽‍♂️	homme fronçant les sourcils : peau légèrement mate
+🙍🏽‍♂	homme fronçant les sourcils : peau légèrement mate
+🙍🏾‍♂️	homme fronçant les sourcils : peau légèrement mate
+🙍🏾‍♂	homme fronçant les sourcils : peau légèrement mate
+🙍🏿‍♂️	homme fronçant les sourcils : peau foncée
+🙍🏿‍♂	homme fronçant les sourcils : peau foncée
+🙍‍♀️	femme fronçant les sourcils
+🙍‍♀	femme fronçant les sourcils
+🙍🏻‍♀️	femme fronçant les sourcils : peau claire
+🙍🏻‍♀	femme fronçant les sourcils : peau claire
+🙍🏼‍♀️	femme fronçant les sourcils : peau légèrement mate
+🙍🏼‍♀	femme fronçant les sourcils : peau légèrement mate
+🙍🏽‍♀️	femme fronçant les sourcils : peau légèrement mate
+🙍🏽‍♀	femme fronçant les sourcils : peau légèrement mate
+🙍🏾‍♀️	femme fronçant les sourcils : peau légèrement mate
+🙍🏾‍♀	femme fronçant les sourcils : peau légèrement mate
+🙍🏿‍♀️	femme fronçant les sourcils : peau foncée
+🙍🏿‍♀	femme fronçant les sourcils : peau foncée
+🙎	personne qui fait la moue
+🙎🏻	personne qui fait la moue : peau claire
+🙎🏼	personne qui fait la moue : peau légèrement mate
+🙎🏽	personne qui fait la moue : peau légèrement mate
+🙎🏾	personne qui fait la moue : peau légèrement mate
+🙎🏿	personne qui fait la moue : peau foncée
+🙎‍♂️	homme qui fait la moue
+🙎‍♂	homme qui fait la moue
+🙎🏻‍♂️	homme qui fait la moue : peau claire
+🙎🏻‍♂	homme qui fait la moue : peau claire
+🙎🏼‍♂️	homme qui fait la moue : peau légèrement mate
+🙎🏼‍♂	homme qui fait la moue : peau légèrement mate
+🙎🏽‍♂️	homme qui fait la moue : peau légèrement mate
+🙎🏽‍♂	homme qui fait la moue : peau légèrement mate
+🙎🏾‍♂️	homme qui fait la moue : peau légèrement mate
+🙎🏾‍♂	homme qui fait la moue : peau légèrement mate
+🙎🏿‍♂️	homme qui fait la moue : peau foncée
+🙎🏿‍♂	homme qui fait la moue : peau foncée
+🙎‍♀️	femme qui fait la moue
+🙎‍♀	femme qui fait la moue
+🙎🏻‍♀️	femme qui fait la moue : peau claire
+🙎🏻‍♀	femme qui fait la moue : peau claire
+🙎🏼‍♀️	femme qui fait la moue : peau légèrement mate
+🙎🏼‍♀	femme qui fait la moue : peau légèrement mate
+🙎🏽‍♀️	femme qui fait la moue : peau légèrement mate
+🙎🏽‍♀	femme qui fait la moue : peau légèrement mate
+🙎🏾‍♀️	femme qui fait la moue : peau légèrement mate
+🙎🏾‍♀	femme qui fait la moue : peau légèrement mate
+🙎🏿‍♀️	femme qui fait la moue : peau foncée
+🙎🏿‍♀	femme qui fait la moue : peau foncée
+🙅	personne qui fait un geste NON
+🙅🏻	personne faisant un geste NON : peau claire
+🙅🏼	personne faisant un geste NON : peau légèrement mate
+🙅🏽	personne faisant un geste NON : peau légèrement mate
+🙅🏾	personne faisant un geste NON : peau légèrement mate
+🙅🏿	personne faisant un geste NON : peau foncée
+🙅‍♂️	homme faisant un geste NON
+🙅‍♂	homme faisant un geste NON
+🙅🏻‍♂️	homme faisant un geste NON : peau claire
+🙅🏻‍♂	homme faisant un geste NON : peau claire
+🙅🏼‍♂️	homme faisant un geste NON : peau légèrement mate
+🙅🏼‍♂	homme faisant un geste NON : peau légèrement mate
+🙅🏽‍♂️	homme faisant signe NON : peau légèrement mate
+🙅🏽‍♂	homme faisant signe NON : peau légèrement mate
+🙅🏾‍♂️	homme faisant signe NON : peau légèrement mate
+🙅🏾‍♂	homme faisant signe NON : peau légèrement mate
+🙅🏿‍♂️	homme faisant un geste NON : peau foncée
+🙅🏿‍♂	homme faisant un geste NON : peau foncée
+🙅‍♀️	femme faisant un geste NON
+🙅‍♀	femme faisant un geste NON
+🙅🏻‍♀️	femme faisant un geste NON : peau claire
+🙅🏻‍♀	femme faisant un geste NON : peau claire
+🙅🏼‍♀️	femme faisant un geste NON : peau légèrement mate
+🙅🏼‍♀	femme faisant un geste NON : peau légèrement mate
+🙅🏽‍♀️	femme faisant signe NON : peau légèrement mate
+🙅🏽‍♀	femme faisant signe NON : peau légèrement mate
+🙅🏾‍♀️	femme faisant un geste NON : peau légèrement mate
+🙅🏾‍♀	femme faisant un geste NON : peau légèrement mate
+🙅🏿‍♀️	femme faisant signe NON : peau foncée
+🙅🏿‍♀	femme faisant signe NON : peau foncée
+🙆	personne qui fait signe OK
+🙆🏻	personne faisant un geste OK : peau claire
+🙆🏼	personne faisant un geste OK : peau légèrement mate
+🙆🏽	personne faisant un geste OK : peau légèrement mate
+🙆🏾	personne faisant un geste OK : peau légèrement mate
+🙆🏿	personne faisant un geste OK : peau foncée
+🙆‍♂️	homme faisant signe OK
+🙆‍♂	homme faisant signe OK
+🙆🏻‍♂️	homme faisant un geste OK : peau claire
+🙆🏻‍♂	homme faisant un geste OK : peau claire
+🙆🏼‍♂️	homme faisant un geste OK : peau légèrement mate
+🙆🏼‍♂	homme faisant un geste OK : peau légèrement mate
+🙆🏽‍♂️	homme faisant un geste OK : peau légèrement mate
+🙆🏽‍♂	homme faisant un geste OK : peau légèrement mate
+🙆🏾‍♂️	homme faisant un geste OK : peau légèrement mate
+🙆🏾‍♂	homme faisant un geste OK : peau légèrement mate
+🙆🏿‍♂️	homme faisant un geste OK : peau foncée
+🙆🏿‍♂	homme faisant un geste OK : peau foncée
+🙆‍♀️	femme faisant un geste OK
+🙆‍♀	femme faisant un geste OK
+🙆🏻‍♀️	femme faisant un geste OK : peau claire
+🙆🏻‍♀	femme faisant un geste OK : peau claire
+🙆🏼‍♀️	femme faisant un geste OK : peau légèrement mate
+🙆🏼‍♀	femme faisant un geste OK : peau légèrement mate
+🙆🏽‍♀️	femme faisant signe OK : peau légèrement mate
+🙆🏽‍♀	femme faisant signe OK : peau légèrement mate
+🙆🏾‍♀️	femme faisant signe OK : peau légèrement mate
+🙆🏾‍♀	femme faisant signe OK : peau légèrement mate
+🙆🏿‍♀️	femme faisant un geste OK : peau foncée
+🙆🏿‍♀	femme faisant un geste OK : peau foncée
+💁	personne qui donne un pourboire
+💁🏻	personne qui tend la main : peau légèrement mate
+💁🏼	personne qui tend la main : peau légèrement mate
+💁🏽	personne qui tend la main : peau légèrement mate
+💁🏾	personne qui tend la main : peau légèrement mate
+💁🏿	personne qui tend la main : peau foncée
+💁‍♂️	homme qui tend la main
+💁‍♂	homme qui tend la main
+💁🏻‍♂️	homme qui tend la main : peau claire
+💁🏻‍♂	homme qui tend la main : peau claire
+💁🏼‍♂️	homme qui tend la main : peau légèrement mate
+💁🏼‍♂	homme qui tend la main : peau légèrement mate
+💁🏽‍♂️	homme qui tend la main : peau légèrement mate
+💁🏽‍♂	homme qui tend la main : peau légèrement mate
+💁🏾‍♂️	homme qui tend la main : peau légèrement mate
+💁🏾‍♂	homme qui tend la main : peau légèrement mate
+💁🏿‍♂️	homme qui tend la main : peau foncée
+💁🏿‍♂	homme qui tend la main : peau foncée
+💁‍♀️	femme qui penche la main
+💁‍♀	femme qui penche la main
+💁🏻‍♀️	femme qui tend la main : peau claire
+💁🏻‍♀	femme qui tend la main : peau claire
+💁🏼‍♀️	femme qui tend la main : peau légèrement mate
+💁🏼‍♀	femme qui tend la main : peau légèrement mate
+💁🏽‍♀️	femme qui tend la main : peau légèrement mate
+💁🏽‍♀	femme qui tend la main : peau légèrement mate
+💁🏾‍♀️	femme qui tend la main : peau légèrement mate
+💁🏾‍♀	femme qui tend la main : peau légèrement mate
+💁🏿‍♀️	femme qui tend la main : peau foncée
+💁🏿‍♀	femme qui tend la main : peau foncée
+🙋	personne qui lève la main
+🙋🏻	personne qui lève la main : peau claire
+🙋🏼	personne qui lève la main : peau légèrement mate
+🙋🏽	personne qui lève la main : peau légèrement mate
+🙋🏾	personne qui lève la main : peau légèrement mate
+🙋🏿	personne qui lève la main : peau foncée
+🙋‍♂️	homme levant la main
+🙋‍♂	homme levant la main
+🙋🏻‍♂️	homme levant la main : peau claire
+🙋🏻‍♂	homme levant la main : peau claire
+🙋🏼‍♂️	homme levant la main : peau légèrement mate
+🙋🏼‍♂	homme levant la main : peau légèrement mate
+🙋🏽‍♂️	homme levant la main : peau légèrement mate
+🙋🏽‍♂	homme levant la main : peau légèrement mate
+🙋🏾‍♂️	homme levant la main : peau légèrement mate
+🙋🏾‍♂	homme levant la main : peau légèrement mate
+🙋🏿‍♂️	homme levant la main : peau foncée
+🙋🏿‍♂	homme levant la main : peau foncée
+🙋‍♀️	femme levant la main
+🙋‍♀	femme levant la main
+🙋🏻‍♀️	femme levant la main : peau claire
+🙋🏻‍♀	femme levant la main : peau claire
+🙋🏼‍♀️	femme levant la main : peau légèrement mate
+🙋🏼‍♀	femme levant la main : peau légèrement mate
+🙋🏽‍♀️	femme levant la main : peau légèrement mate
+🙋🏽‍♀	femme levant la main : peau légèrement mate
+🙋🏾‍♀️	femme levant la main : peau légèrement mate
+🙋🏾‍♀	femme levant la main : peau légèrement mate
+🙋🏿‍♀️	femme levant la main : peau foncée
+🙋🏿‍♀	femme levant la main : peau foncée
+🙇	personne qui s'incline
+🙇🏻	personne qui s'incline : peau claire
+🙇🏼	personne qui s'incline : peau légèrement mate
+🙇🏽	personne qui s'incline : peau légèrement mate
+🙇🏾	personne qui s'incline : peau légèrement mate
+🙇🏿	personne qui s'incline : peau foncée
+🙇‍♂️	homme s'inclinant
+🙇‍♂	homme s'inclinant
+🙇🏻‍♂️	homme s'inclinant : peau claire
+🙇🏻‍♂	homme s'inclinant : peau claire
+🙇🏼‍♂️	homme s'inclinant : peau légèrement mate
+🙇🏼‍♂	homme s'inclinant : peau légèrement mate
+🙇🏽‍♂️	homme s'inclinant : peau légèrement mate
+🙇🏽‍♂	homme s'inclinant : peau légèrement mate
+🙇🏾‍♂️	homme qui s'incline : peau légèrement mate
+🙇🏾‍♂	homme qui s'incline : peau légèrement mate
+🙇🏿‍♂️	homme qui s'incline : peau foncée
+🙇🏿‍♂	homme qui s'incline : peau foncée
+🙇‍♀️	femme s'inclinant
+🙇‍♀	femme s'inclinant
+🙇🏻‍♀️	femme s'inclinant : peau claire
+🙇🏻‍♀	femme s'inclinant : peau claire
+🙇🏼‍♀️	femme s'inclinant : peau légèrement mate
+🙇🏼‍♀	femme s'inclinant : peau légèrement mate
+🙇🏽‍♀️	femme s'inclinant : peau légèrement mate
+🙇🏽‍♀	femme s'inclinant : peau légèrement mate
+🙇🏾‍♀️	femme s'inclinant : peau légèrement mate
+🙇🏾‍♀	femme s'inclinant : peau légèrement mate
+🙇🏿‍♀️	femme s'inclinant : peau foncée
+🙇🏿‍♀	femme s'inclinant : peau foncée
+🤦	personne qui fait un facepalming
+🤦🏻	personne faisant un facepalming : peau claire
+🤦🏼	personne faisant un facepalming : peau légèrement mate
+🤦🏽	personne faisant un facepalming : peau légèrement mate
+🤦🏾	personne faisant un facepalming : peau légèrement mate
+🤦🏿	personne faisant un facepalming : peau foncée
+🤦‍♂️	homme facepalming
+🤦‍♂	homme facepalming
+🤦🏻‍♂️	homme facepalming : peau claire
+🤦🏻‍♂	homme facepalming : peau claire
+🤦🏼‍♂️	homme facepalming : peau légèrement mate
+🤦🏼‍♂	homme facepalming : peau légèrement mate
+🤦🏽‍♂️	homme facepalming : peau légèrement mate
+🤦🏽‍♂	homme facepalming : peau légèrement mate
+🤦🏾‍♂️	homme facepalming : peau légèrement mate
+🤦🏾‍♂	homme facepalming : peau légèrement mate
+🤦🏿‍♂️	homme facepalming : peau foncée
+🤦🏿‍♂	homme facepalming : peau foncée
+🤦‍♀️	femme, faire facepalming
+🤦‍♀	femme, faire facepalming
+🤦🏻‍♀️	femme facepalming : peau claire
+🤦🏻‍♀	femme facepalming : peau claire
+🤦🏼‍♀️	femme facepalming : peau légèrement mate
+🤦🏼‍♀	femme facepalming : peau légèrement mate
+🤦🏽‍♀️	femme facepalming : peau légèrement mate
+🤦🏽‍♀	femme facepalming : peau légèrement mate
+🤦🏾‍♀️	femme facepalming : peau légèrement mate
+🤦🏾‍♀	femme facepalming : peau légèrement mate
+🤦🏿‍♀️	femme facepalming : peau foncée
+🤦🏿‍♀	femme facepalming : peau foncée
+🤷	personne qui hausse les épaules
+🤷🏻	personne qui hausse les épaules : peau claire
+🤷🏼	personne haussant les épaules : peau légèrement mate
+🤷🏽	personne qui hausse les épaules : peau légèrement mate
+🤷🏾	personne qui hausse les épaules : peau légèrement mate
+🤷🏿	personne qui hausse les épaules : peau foncée
+🤷‍♂️	homme haussant les épaules
+🤷‍♂	homme haussant les épaules
+🤷🏻‍♂️	homme haussant les épaules : peau claire
+🤷🏻‍♂	homme haussant les épaules : peau claire
+🤷🏼‍♂️	homme haussant les épaules : peau légèrement mate
+🤷🏼‍♂	homme haussant les épaules : peau légèrement mate
+🤷🏽‍♂️	homme haussant les épaules : peau légèrement mate
+🤷🏽‍♂	homme haussant les épaules : peau légèrement mate
+🤷🏾‍♂️	homme haussant les épaules : peau légèrement mate
+🤷🏾‍♂	homme haussant les épaules : peau légèrement mate
+🤷🏿‍♂️	homme haussant les épaules : peau foncée
+🤷🏿‍♂	homme haussant les épaules : peau foncée
+🤷‍♀️	femme haussant les épaules
+🤷‍♀	femme haussant les épaules
+🤷🏻‍♀️	femme haussant les épaules : peau claire
+🤷🏻‍♀	femme haussant les épaules : peau claire
+🤷🏼‍♀️	femme haussant les épaules : peau légèrement mate
+🤷🏼‍♀	femme haussant les épaules : peau légèrement mate
+🤷🏽‍♀️	femme haussant les épaules : peau légèrement mate
+🤷🏽‍♀	femme haussant les épaules : peau légèrement mate
+🤷🏾‍♀️	femme haussant les épaules : peau légèrement mate
+🤷🏾‍♀	femme haussant les épaules : peau légèrement mate
+🤷🏿‍♀️	femme haussant les épaules : peau foncée
+🤷🏿‍♀	femme haussant les épaules : peau foncée
+💆	personne qui se fait masser
+💆🏻	personne se faisant masser : peau claire
+💆🏼	personne se faisant masser : peau légèrement mate
+💆🏽	personne se faisant masser : peau légèrement mate
+💆🏾	personne se faisant masser : peau légèrement mate
+💆🏿	personne se faisant masser : peau foncée
+💆‍♂️	homme se faisant masser
+💆‍♂	homme se faisant masser
+💆🏻‍♂️	homme se faisant masser : peau claire
+💆🏻‍♂	homme se faisant masser : peau claire
+💆🏼‍♂️	homme se faisant masser : peau légèrement mate
+💆🏼‍♂	homme se faisant masser : peau légèrement mate
+💆🏽‍♂️	homme se faisant masser : peau légèrement mate
+💆🏽‍♂	homme se faisant masser : peau légèrement mate
+💆🏾‍♂️	homme se faisant masser : peau légèrement mate
+💆🏾‍♂	homme se faisant masser : peau légèrement mate
+💆🏿‍♂️	homme se faisant masser : peau foncée
+💆🏿‍♂	homme se faisant masser : peau foncée
+💆‍♀️	femme se faisant masser
+💆‍♀	femme se faisant masser
+💆🏻‍♀️	femme se faisant masser : peau claire
+💆🏻‍♀	femme se faisant masser : peau claire
+💆🏼‍♀️	femme se faisant masser : peau légèrement mate
+💆🏼‍♀	femme se faisant masser : peau légèrement mate
+💆🏽‍♀️	femme se faisant masser : peau légèrement mate
+💆🏽‍♀	femme se faisant masser : peau légèrement mate
+💆🏾‍♀️	femme se faisant masser : peau légèrement mate
+💆🏾‍♀	femme se faisant masser : peau légèrement mate
+💆🏿‍♀️	femme se faisant masser : peau foncée
+💆🏿‍♀	femme se faisant masser : peau foncée
+💇	personne qui se fait couper les cheveux
+💇🏻	personne qui se fait couper les cheveux : peau claire
+💇🏼	personne qui se fait couper les cheveux : peau légèrement mate
+💇🏽	personne qui se fait couper les cheveux : peau légèrement mate
+💇🏾	personne qui se fait couper les cheveux : peau légèrement mate
+💇🏿	personne qui se fait couper les cheveux : peau foncée
+💇‍♂️	homme se faisant couper les cheveux
+💇‍♂	homme se faisant couper les cheveux
+💇🏻‍♂️	homme se faisant couper les cheveux : peau claire
+💇🏻‍♂	homme se faisant couper les cheveux : peau claire
+💇🏼‍♂️	homme se faisant couper les cheveux : peau légèrement mate
+💇🏼‍♂	homme se faisant couper les cheveux : peau légèrement mate
+💇🏽‍♂️	homme se faisant couper les cheveux : peau légèrement mate
+💇🏽‍♂	homme se faisant couper les cheveux : peau légèrement mate
+💇🏾‍♂️	homme se faisant couper les cheveux : peau légèrement mate
+💇🏾‍♂	homme se faisant couper les cheveux : peau légèrement mate
+💇🏿‍♂️	homme se faisant couper les cheveux : peau foncée
+💇🏿‍♂	homme se faisant couper les cheveux : peau foncée
+💇‍♀️	femme se faisant couper les cheveux
+💇‍♀	femme se faisant couper les cheveux
+💇🏻‍♀️	femme se faisant couper les cheveux : peau claire
+💇🏻‍♀	femme se faisant couper les cheveux : peau claire
+💇🏼‍♀️	femme se faisant couper les cheveux : peau légèrement mate
+💇🏼‍♀	femme se faisant couper les cheveux : peau légèrement mate
+💇🏽‍♀️	femme se faisant couper les cheveux : peau légèrement mate
+💇🏽‍♀	femme se faisant couper les cheveux : peau légèrement mate
+💇🏾‍♀️	femme se faisant couper les cheveux : peau légèrement mate
+💇🏾‍♀	femme se faisant couper les cheveux : peau légèrement mate
+💇🏿‍♀️	femme se faisant couper les cheveux : peau foncée
+💇🏿‍♀	femme se faisant couper les cheveux : peau foncée
+🚶	personne qui marche
+🚶🏻	personne qui marche : peau claire
+🚶🏼	personne qui marche : peau légèrement mate
+🚶🏽	personne qui marche : peau légèrement mate
+🚶🏾	personne qui marche : peau légèrement mate
+🚶🏿	personne qui marche : peau foncée
+🚶‍♂️	homme qui marche
+🚶‍♂	homme qui marche
+🚶🏻‍♂️	homme qui marche : peau claire
+🚶🏻‍♂	homme qui marche : peau claire
+🚶🏼‍♂️	homme qui marche : peau légèrement mate
+🚶🏼‍♂	homme qui marche : peau légèrement mate
+🚶🏽‍♂️	homme qui marche : peau légèrement mate
+🚶🏽‍♂	homme qui marche : peau légèrement mate
+🚶🏾‍♂️	homme qui marche : peau légèrement mate
+🚶🏾‍♂	homme qui marche : peau légèrement mate
+🚶🏿‍♂️	homme qui marche : peau foncée
+🚶🏿‍♂	homme qui marche : peau foncée
+🚶‍♀️	femme qui marche
+🚶‍♀	femme qui marche
+🚶🏻‍♀️	femme qui marche : peau claire
+🚶🏻‍♀	femme qui marche : peau claire
+🚶🏼‍♀️	femme qui marche : peau légèrement mate
+🚶🏼‍♀	femme qui marche : peau légèrement mate
+🚶🏽‍♀️	femme qui marche : peau légèrement mate
+🚶🏽‍♀	femme qui marche : peau légèrement mate
+🚶🏾‍♀️	femme qui marche : peau légèrement mate
+🚶🏾‍♀	femme qui marche : peau légèrement mate
+🚶🏿‍♀️	femme qui marche : peau foncée
+🚶🏿‍♀	femme qui marche : peau foncée
+🏃	personne qui court
+🏃🏻	personne qui court : peau claire
+🏃🏼	personne qui court : peau légèrement mate
+🏃🏽	personne qui court : peau légèrement mate
+🏃🏾	personne qui court : peau légèrement mate
+🏃🏿	personne qui court : peau foncée
+🏃‍♂️	homme qui court
+🏃‍♂	homme qui court
+🏃🏻‍♂️	homme qui court : peau claire
+🏃🏻‍♂	homme qui court : peau claire
+🏃🏼‍♂️	homme qui court : peau légèrement mate
+🏃🏼‍♂	homme qui court : peau légèrement mate
+🏃🏽‍♂️	homme qui court : peau légèrement mate
+🏃🏽‍♂	homme qui court : peau légèrement mate
+🏃🏾‍♂️	homme qui court : peau légèrement mate
+🏃🏾‍♂	homme qui court : peau légèrement mate
+🏃🏿‍♂️	homme qui court : peau foncée
+🏃🏿‍♂	homme qui court : peau foncée
+🏃‍♀️	femme qui court
+🏃‍♀	femme qui court
+🏃🏻‍♀️	femme qui court : peau claire
+🏃🏻‍♀	femme qui court : peau claire
+🏃🏼‍♀️	femme qui court : peau légèrement mate
+🏃🏼‍♀	femme qui court : peau légèrement mate
+🏃🏽‍♀️	femme qui court : peau légèrement mate
+🏃🏽‍♀	femme qui court : peau légèrement mate
+🏃🏾‍♀️	femme qui court : peau légèrement mate
+🏃🏾‍♀	femme qui court : peau légèrement mate
+🏃🏿‍♀️	femme qui court : peau foncée
+🏃🏿‍♀	femme qui court : peau foncée
+💃	femme qui danse
+💃🏻	femme qui danse : peau claire
+💃🏼	femme qui danse : peau légèrement mate
+💃🏽	femme qui danse : peau légèrement mate
+💃🏾	femme qui danse : peau légèrement mate
+💃🏿	femme qui danse : peau foncée
+🕺	homme qui danse
+🕺🏻	homme qui danse : peau claire
+🕺🏼	homme qui danse : peau légèrement mate
+🕺🏽	homme qui danse : peau légèrement mate
+🕺🏾	homme qui danse : peau légèrement mate
+🕺🏿	homme qui danse : peau foncée
+👯	les gens avec des oreilles de lapin
+👯‍♂️	hommes avec des oreilles de lapin
+👯‍♂	hommes avec des oreilles de lapin
+👯‍♀️	femmes avec des oreilles de lapin
+👯‍♀	femmes avec des oreilles de lapin
+🧖	personne dans un hammam
+🧖🏻	personne dans un hammam : peau claire
+🧖🏼	personne dans un hammam : peau légèrement mate
+🧖🏽	personne dans un hammam : peau légèrement mate
+🧖🏾	personne dans un hammam : peau légèrement mate
+🧖🏿	personne dans un hammam : peau foncée
+🧖‍♀️	femme dans un hammam
+🧖‍♀	femme dans un hammam
+🧖🏻‍♀️	femme dans un hammam : peau claire
+🧖🏻‍♀	femme dans un hammam : peau claire
+🧖🏼‍♀️	femme dans un hammam : peau légèrement mate
+🧖🏼‍♀	femme dans un hammam : peau légèrement mate
+🧖🏽‍♀️	femme dans un hammam : peau légèrement mate
+🧖🏽‍♀	femme dans un hammam : peau légèrement mate
+🧖🏾‍♀️	femme dans un hammam : peau légèrement mate
+🧖🏾‍♀	femme dans un hammam : peau légèrement mate
+🧖🏿‍♀️	femme dans un hammam : peau foncée
+🧖🏿‍♀	femme dans un hammam : peau foncée
+🧖‍♂️	homme dans une pièce hammamée
+🧖‍♂	homme dans une pièce hammamée
+🧖🏻‍♂️	homme dans un hammam : peau claire
+🧖🏻‍♂	homme dans un hammam : peau claire
+🧖🏼‍♂️	homme dans un hammam : peau légèrement mate
+🧖🏼‍♂	homme dans un hammam : peau légèrement mate
+🧖🏽‍♂️	homme dans un hammam : peau légèrement mate
+🧖🏽‍♂	homme dans un hammam : peau légèrement mate
+🧖🏾‍♂️	homme dans un hammam : peau légèrement mate
+🧖🏾‍♂	homme dans un hammam : peau légèrement mate
+🧖🏿‍♂️	homme dans un hammam : peau foncée
+🧖🏿‍♂	homme dans un hammam : peau foncée
+🧗	personne qui grimpe
+🧗🏻	personne qui grimpe : peau claire
+🧗🏼	personne qui grimpe : peau légèrement mate
+🧗🏽	personne qui grimpe : peau légèrement mate
+🧗🏾	personne qui grimpe : peau légèrement mate
+🧗🏿	personne qui grimpe : peau foncée
+🧗‍♀️	femme escalade
+🧗‍♀	femme escalade
+🧗🏻‍♀️	femme qui grimpe : peau claire
+🧗🏻‍♀	femme qui grimpe : peau claire
+🧗🏼‍♀️	femme qui grimpe : peau moyennement claire
+🧗🏼‍♀	femme qui grimpe : peau moyennement claire
+🧗🏽‍♀️	femme qui grimpe : peau légèrement mate
+🧗🏽‍♀	femme qui grimpe : peau légèrement mate
+🧗🏾‍♀️	femme qui grimpe : peau légèrement mate
+🧗🏾‍♀	femme qui grimpe : peau légèrement mate
+🧗🏿‍♀️	femme qui grimpe : peau foncée
+🧗🏿‍♀	femme qui grimpe : peau foncée
+🧗‍♂️	homme qui grimpe
+🧗‍♂	homme qui grimpe
+🧗🏻‍♂️	homme qui grimpe : peau claire
+🧗🏻‍♂	homme qui grimpe : peau claire
+🧗🏼‍♂️	homme qui grimpe : peau moyennement claire
+🧗🏼‍♂	homme qui grimpe : peau moyennement claire
+🧗🏽‍♂️	homme qui grimpe : peau légèrement mate
+🧗🏽‍♂	homme qui grimpe : peau légèrement mate
+🧗🏾‍♂️	homme qui grimpe : peau légèrement mate
+🧗🏾‍♂	homme qui grimpe : peau légèrement mate
+🧗🏿‍♂️	homme qui grimpe : peau foncée
+🧗🏿‍♂	homme qui grimpe : peau foncée
+🧘	personne en position du lotus
+🧘🏻	personne en position du lotus : peau claire
+🧘🏼	personne en position du lotus : peau légèrement mate
+🧘🏽	personne en position du lotus : peau légèrement mate
+🧘🏾	personne en position du lotus : peau légèrement mate
+🧘🏿	personne en position du lotus : peau foncée
+🧘‍♀️	femme en position du lotus
+🧘‍♀	femme en position du lotus
+🧘🏻‍♀️	femme en position du lotus : peau claire
+🧘🏻‍♀	femme en position du lotus : peau claire
+🧘🏼‍♀️	femme en position du lotus : peau légèrement mate
+🧘🏼‍♀	femme en position du lotus : peau légèrement mate
+🧘🏽‍♀️	femme en position du lotus : peau légèrement mate
+🧘🏽‍♀	femme en position du lotus : peau légèrement mate
+🧘🏾‍♀️	femme en position du lotus : peau légèrement mate
+🧘🏾‍♀	femme en position du lotus : peau légèrement mate
+🧘🏿‍♀️	femme en position du lotus : peau foncée
+🧘🏿‍♀	femme en position du lotus : peau foncée
+🧘‍♂️	homme en position du lotus
+🧘‍♂	homme en position du lotus
+🧘🏻‍♂️	homme en position du lotus : peau claire
+🧘🏻‍♂	homme en position du lotus : peau claire
+🧘🏼‍♂️	homme en position du lotus : peau légèrement mate
+🧘🏼‍♂	homme en position du lotus : peau légèrement mate
+🧘🏽‍♂️	homme en position du lotus : peau légèrement mate
+🧘🏽‍♂	homme en position du lotus : peau légèrement mate
+🧘🏾‍♂️	homme en position du lotus : peau légèrement mate
+🧘🏾‍♂	homme en position du lotus : peau légèrement mate
+🧘🏿‍♂️	homme en position du lotus : peau foncée
+🧘🏿‍♂	homme en position du lotus : peau foncée
+🛀	personne qui prend un bain
+🛀🏻	personne prenant un bain : peau claire
+🛀🏼	personne prenant un bain : peau légèrement mate
+🛀🏽	personne prenant un bain : peau légèrement mate
+🛀🏾	personne prenant un bain : peau légèrement mate
+🛀🏿	personne prenant un bain : peau foncée
+🛌	personne au lit
+🛌🏻	personne au lit : peau claire
+🛌🏼	personne au lit : peau légèrement mate
+🛌🏽	personne au lit : peau légèrement mate
+🛌🏾	personne au lit : peau légèrement mate
+🛌🏿	personne au lit : peau foncée
+🕴️	homme en costume en lévitation
+🕴	homme en costume en lévitation
+🕴🏻	homme en costume en lévitation : peau claire
+🕴🏼	homme en costume en lévitation : peau légèrement mate
+🕴🏽	homme en costume en lévitation : peau légèrement mate
+🕴🏾	homme en costume en lévitation : peau légèrement mate
+🕴🏿	homme en costume en lévitation : peau foncée
+🗣️	tête parlante
+🗣	tête parlante
+👤	buste en silhouette
+👥	bustes en silhouette
+🤺	personne, clôture
+🏇	course de chevaux
+🏇🏻	courses hippiques : peau claire
+🏇🏼	courses hippiques : peau moyennement claire
+🏇🏽	courses hippiques : peau légèrement mate
+🏇🏾	courses hippiques : peau légèrement mate
+🏇🏿	courses hippiques : peau foncée
+⛷️	skieur
+⛷	skieur
+🏂	snowboarder
+🏂🏻	snowboardeur : peau claire
+🏂🏼	snowboardeur : peau légèrement mate
+🏂🏽	snowboardeur : peau légèrement mate
+🏂🏾	snowboardeur : peau légèrement mate
+🏂🏿	snowboardeur : peau foncée
+🏌️	personne jouant au golf
+🏌	personne jouant au golf
+🏌🏻	personne jouant au golf : peau claire
+🏌🏼	personne jouant au golf : peau légèrement mate
+🏌🏽	personne jouant au golf : peau légèrement mate
+🏌🏾	personne jouant au golf : peau légèrement mate
+🏌🏿	personne jouant au golf : peau foncée
+🏌️‍♂️	homme jouant au golf
+🏌‍♂️	homme jouant au golf
+🏌️‍♂	homme jouant au golf
+🏌‍♂	homme jouant au golf
+🏌🏻‍♂️	homme jouant au golf : peau claire
+🏌🏻‍♂	homme jouant au golf : peau claire
+🏌🏼‍♂️	homme jouant au golf : peau légèrement mate
+🏌🏼‍♂	homme jouant au golf : peau légèrement mate
+🏌🏽‍♂️	homme jouant au golf : peau légèrement mate
+🏌🏽‍♂	homme jouant au golf : peau légèrement mate
+🏌🏾‍♂️	homme jouant au golf : peau légèrement mate
+🏌🏾‍♂	homme jouant au golf : peau légèrement mate
+🏌🏿‍♂️	homme jouant au golf : peau foncée
+🏌🏿‍♂	homme jouant au golf : peau foncée
+🏌️‍♀️	femme jouant au golf
+🏌‍♀️	femme jouant au golf
+🏌️‍♀	femme jouant au golf
+🏌‍♀	femme jouant au golf
+🏌🏻‍♀️	femme jouant au golf : peau claire
+🏌🏻‍♀	femme jouant au golf : peau claire
+🏌🏼‍♀️	femme jouant au golf : peau légèrement mate
+🏌🏼‍♀	femme jouant au golf : peau légèrement mate
+🏌🏽‍♀️	femme jouant au golf : peau légèrement mate
+🏌🏽‍♀	femme jouant au golf : peau légèrement mate
+🏌🏾‍♀️	femme jouant au golf : peau légèrement mate
+🏌🏾‍♀	femme jouant au golf : peau légèrement mate
+🏌🏿‍♀️	femme jouant au golf : peau foncée
+🏌🏿‍♀	femme jouant au golf : peau foncée
+🏄	personne qui surfe
+🏄🏻	personne surfant : peau claire
+🏄🏼	personne surfant : peau légèrement mate
+🏄🏽	personne surfant : peau légèrement mate
+🏄🏾	personne surfant : peau légèrement mate
+🏄🏿	personne surfant : peau foncée
+🏄‍♂️	homme surfant
+🏄‍♂	homme surfant
+🏄🏻‍♂️	homme surfant : peau claire
+🏄🏻‍♂	homme surfant : peau claire
+🏄🏼‍♂️	homme surfant : peau légèrement mate
+🏄🏼‍♂	homme surfant : peau légèrement mate
+🏄🏽‍♂️	homme surfant : peau légèrement mate
+🏄🏽‍♂	homme surfant : peau légèrement mate
+🏄🏾‍♂️	homme surfant : peau légèrement mate
+🏄🏾‍♂	homme surfant : peau légèrement mate
+🏄🏿‍♂️	homme surfant : peau foncée
+🏄🏿‍♂	homme surfant : peau foncée
+🏄‍♀️	femme surfant
+🏄‍♀	femme surfant
+🏄🏻‍♀️	femme surfant : peau claire
+🏄🏻‍♀	femme surfant : peau claire
+🏄🏼‍♀️	femme surfant : peau légèrement mate
+🏄🏼‍♀	femme surfant : peau légèrement mate
+🏄🏽‍♀️	femme surfant : peau légèrement mate
+🏄🏽‍♀	femme surfant : peau légèrement mate
+🏄🏾‍♀️	femme surfant : peau légèrement mate
+🏄🏾‍♀	femme surfant : peau légèrement mate
+🏄🏿‍♀️	femme surfant : peau foncée
+🏄🏿‍♀	femme surfant : peau foncée
+🚣	personne, bateau à rames
+🚣🏻	personne ramant un bateau : peau claire
+🚣🏼	personne ramant un bateau : peau légèrement mate
+🚣🏽	personne ramant sur un bateau : peau légèrement mate
+🚣🏾	personne ramant sur un bateau : peau légèrement mate
+🚣🏿	personne ramant un bateau : peau foncée
+🚣‍♂️	homme, bateau à rames
+🚣‍♂	homme, bateau à rames
+🚣🏻‍♂️	homme ramant un bateau : peau claire
+🚣🏻‍♂	homme ramant un bateau : peau claire
+🚣🏼‍♂️	homme ramant un bateau : peau moyennement claire
+🚣🏼‍♂	homme ramant un bateau : peau moyennement claire
+🚣🏽‍♂️	homme ramant un bateau : peau légèrement mate
+🚣🏽‍♂	homme ramant un bateau : peau légèrement mate
+🚣🏾‍♂️	homme ramant un bateau : peau légèrement mate
+🚣🏾‍♂	homme ramant un bateau : peau légèrement mate
+🚣🏿‍♂️	homme ramant un bateau : peau foncée
+🚣🏿‍♂	homme ramant un bateau : peau foncée
+🚣‍♀️	bateau à rames femme
+🚣‍♀	bateau à rames femme
+🚣🏻‍♀️	femme, bateau à rames : peau claire
+🚣🏻‍♀	femme, bateau à rames : peau claire
+🚣🏼‍♀️	femme ramant un bateau : peau légèrement mate
+🚣🏼‍♀	femme ramant un bateau : peau légèrement mate
+🚣🏽‍♀️	femme, bateau à rames : peau légèrement mate
+🚣🏽‍♀	femme, bateau à rames : peau légèrement mate
+🚣🏾‍♀️	Femme ramant un bateau : peau légèrement mate
+🚣🏾‍♀	Femme ramant un bateau : peau légèrement mate
+🚣🏿‍♀️	femme, bateau à rames : peau foncée
+🚣🏿‍♀	femme, bateau à rames : peau foncée
+🏊	personne qui nage
+🏊🏻	personne qui nage : peau claire
+🏊🏼	personne qui nage : peau légèrement mate
+🏊🏽	personne qui nage : peau légèrement mate
+🏊🏾	personne qui nage : peau légèrement mate
+🏊🏿	personne qui nage : peau foncée
+🏊‍♂️	homme nageant
+🏊‍♂	homme nageant
+🏊🏻‍♂️	homme nageant : peau claire
+🏊🏻‍♂	homme nageant : peau claire
+🏊🏼‍♂️	homme nageant : peau légèrement mate
+🏊🏼‍♂	homme nageant : peau légèrement mate
+🏊🏽‍♂️	homme nageant : peau légèrement mate
+🏊🏽‍♂	homme nageant : peau légèrement mate
+🏊🏾‍♂️	homme nageant : peau légèrement mate
+🏊🏾‍♂	homme nageant : peau légèrement mate
+🏊🏿‍♂️	homme nageant : peau foncée
+🏊🏿‍♂	homme nageant : peau foncée
+🏊‍♀️	femme nageant
+🏊‍♀	femme nageant
+🏊🏻‍♀️	femme nageant : peau claire
+🏊🏻‍♀	femme nageant : peau claire
+🏊🏼‍♀️	femme nageant : peau légèrement mate
+🏊🏼‍♀	femme nageant : peau légèrement mate
+🏊🏽‍♀️	femme nageant : peau légèrement mate
+🏊🏽‍♀	femme nageant : peau légèrement mate
+🏊🏾‍♀️	femme nageant : peau légèrement mate
+🏊🏾‍♀	femme nageant : peau légèrement mate
+🏊🏿‍♀️	femme nageant : peau foncée
+🏊🏿‍♀	femme nageant : peau foncée
+⛹️	personne qui fait rebondir une balle
+⛹	personne qui fait rebondir une balle
+⛹🏻	personne qui rebondit sur une balle : peau claire
+⛹🏼	personne qui rebondit sur une balle : peau légèrement mate
+⛹🏽	personne qui rebondit sur une balle : peau légèrement mate
+⛹🏾	personne qui rebondit sur une balle : peau légèrement mate
+⛹🏿	personne qui rebondit sur une balle : peau foncée
+⛹️‍♂️	homme, balle rebondissante
+⛹‍♂️	homme, balle rebondissante
+⛹️‍♂	homme, balle rebondissante
+⛹‍♂	homme, balle rebondissante
+⛹🏻‍♂️	homme qui rebondit avec une balle : peau claire
+⛹🏻‍♂	homme qui rebondit avec une balle : peau claire
+⛹🏼‍♂️	homme qui rebondit avec une balle : peau moyennement claire
+⛹🏼‍♂	homme qui rebondit avec une balle : peau moyennement claire
+⛹🏽‍♂️	homme qui rebondit avec une balle : peau légèrement mate
+⛹🏽‍♂	homme qui rebondit avec une balle : peau légèrement mate
+⛹🏾‍♂️	homme qui rebondit avec une balle : peau légèrement mate
+⛹🏾‍♂	homme qui rebondit avec une balle : peau légèrement mate
+⛹🏿‍♂️	homme qui rebondit avec une balle : peau foncée
+⛹🏿‍♂	homme qui rebondit avec une balle : peau foncée
+⛹️‍♀️	femme, balle rebondissante
+⛹‍♀️	femme, balle rebondissante
+⛹️‍♀	femme, balle rebondissante
+⛹‍♀	femme, balle rebondissante
+⛹🏻‍♀️	femme qui rebondit avec une balle : peau claire
+⛹🏻‍♀	femme qui rebondit avec une balle : peau claire
+⛹🏼‍♀️	femme qui rebondit avec une balle : peau moyennement claire
+⛹🏼‍♀	femme qui rebondit avec une balle : peau moyennement claire
+⛹🏽‍♀️	femme qui rebondit avec une balle : peau légèrement mate
+⛹🏽‍♀	femme qui rebondit avec une balle : peau légèrement mate
+⛹🏾‍♀️	femme qui rebondit avec une balle : peau légèrement mate
+⛹🏾‍♀	femme qui rebondit avec une balle : peau légèrement mate
+⛹🏿‍♀️	femme qui rebondit avec une balle : peau foncée
+⛹🏿‍♀	femme qui rebondit avec une balle : peau foncée
+🏋️	personne qui soulève des poids
+🏋	personne qui soulève des poids
+🏋🏻	personne qui soulève des poids : peau claire
+🏋🏼	personne qui soulève des poids : peau légèrement mate
+🏋🏽	personne qui soulève des poids : peau légèrement mate
+🏋🏾	personne qui soulève des poids : peau légèrement mate
+🏋🏿	personne qui soulève des poids : peau foncée
+🏋️‍♂️	homme soulevant des poids
+🏋‍♂️	homme soulevant des poids
+🏋️‍♂	homme soulevant des poids
+🏋‍♂	homme soulevant des poids
+🏋🏻‍♂️	homme soulevant des poids : peau claire
+🏋🏻‍♂	homme soulevant des poids : peau claire
+🏋🏼‍♂️	homme soulevant des poids : peau légèrement mate
+🏋🏼‍♂	homme soulevant des poids : peau légèrement mate
+🏋🏽‍♂️	homme soulevant des poids : peau légèrement mate
+🏋🏽‍♂	homme soulevant des poids : peau légèrement mate
+🏋🏾‍♂️	homme soulevant des poids : peau légèrement mate
+🏋🏾‍♂	homme soulevant des poids : peau légèrement mate
+🏋🏿‍♂️	homme soulevant des poids : peau foncée
+🏋🏿‍♂	homme soulevant des poids : peau foncée
+🏋️‍♀️	femme soulevant des poids
+🏋‍♀️	femme soulevant des poids
+🏋️‍♀	femme soulevant des poids
+🏋‍♀	femme soulevant des poids
+🏋🏻‍♀️	femme soulevant des poids : peau claire
+🏋🏻‍♀	femme soulevant des poids : peau claire
+🏋🏼‍♀️	femme soulevant des poids : peau légèrement mate
+🏋🏼‍♀	femme soulevant des poids : peau légèrement mate
+🏋🏽‍♀️	femme soulevant des poids : peau légèrement mate
+🏋🏽‍♀	femme soulevant des poids : peau légèrement mate
+🏋🏾‍♀️	femme soulevant des poids : peau légèrement mate
+🏋🏾‍♀	femme soulevant des poids : peau légèrement mate
+🏋🏿‍♀️	femme soulevant des poids : peau foncée
+🏋🏿‍♀	femme soulevant des poids : peau foncée
+🚴	personne faisant du vélo
+🚴🏻	personne faisant du vélo : peau claire
+🚴🏼	personne faisant du vélo : peau moyennement claire
+🚴🏽	personne faisant du vélo : peau légèrement mate
+🚴🏾	personne faisant du vélo : peau légèrement mate
+🚴🏿	personne faisant du vélo : peau foncée
+🚴‍♂️	homme faisant du vélo
+🚴‍♂	homme faisant du vélo
+🚴🏻‍♂️	homme faisant du vélo : peau claire
+🚴🏻‍♂	homme faisant du vélo : peau claire
+🚴🏼‍♂️	homme faisant du vélo : peau légèrement mate
+🚴🏼‍♂	homme faisant du vélo : peau légèrement mate
+🚴🏽‍♂️	homme faisant du vélo : peau légèrement mate
+🚴🏽‍♂	homme faisant du vélo : peau légèrement mate
+🚴🏾‍♂️	homme faisant du vélo : peau légèrement mate
+🚴🏾‍♂	homme faisant du vélo : peau légèrement mate
+🚴🏿‍♂️	homme faisant du vélo : peau foncée
+🚴🏿‍♂	homme faisant du vélo : peau foncée
+🚴‍♀️	femme faisant du vélo
+🚴‍♀	femme faisant du vélo
+🚴🏻‍♀️	femme faisant du vélo : peau claire
+🚴🏻‍♀	femme faisant du vélo : peau claire
+🚴🏼‍♀️	femme faisant du vélo : peau légèrement mate
+🚴🏼‍♀	femme faisant du vélo : peau légèrement mate
+🚴🏽‍♀️	femme faisant du vélo : peau légèrement mate
+🚴🏽‍♀	femme faisant du vélo : peau légèrement mate
+🚴🏾‍♀️	femme faisant du vélo : peau légèrement mate
+🚴🏾‍♀	femme faisant du vélo : peau légèrement mate
+🚴🏿‍♀️	femme faisant du vélo : peau foncée
+🚴🏿‍♀	femme faisant du vélo : peau foncée
+🚵	personne faisant du VTT
+🚵🏻	personne faisant du VTT : peau claire
+🚵🏼	personne faisant du VTT : peau légèrement mate
+🚵🏽	personne faisant du VTT : peau légèrement mate
+🚵🏾	personne faisant du VTT : peau légèrement mate
+🚵🏿	personne faisant du VTT : peau foncée
+🚵‍♂️	homme faisant du vélo de montagne
+🚵‍♂	homme faisant du vélo de montagne
+🚵🏻‍♂️	homme VTT : peau claire
+🚵🏻‍♂	homme VTT : peau claire
+🚵🏼‍♂️	VTT homme : peau moyennement claire
+🚵🏼‍♂	VTT homme : peau moyennement claire
+🚵🏽‍♂️	homme faisant du VTT : peau légèrement mate
+🚵🏽‍♂	homme faisant du VTT : peau légèrement mate
+🚵🏾‍♂️	homme faisant du VTT : peau légèrement mate
+🚵🏾‍♂	homme faisant du VTT : peau légèrement mate
+🚵🏿‍♂️	homme faisant du VTT : peau foncée
+🚵🏿‍♂	homme faisant du VTT : peau foncée
+🚵‍♀️	femme faisant du vélo de montagne
+🚵‍♀	femme faisant du vélo de montagne
+🚵🏻‍♀️	femme faisant du VTT : peau claire
+🚵🏻‍♀	femme faisant du VTT : peau claire
+🚵🏼‍♀️	femme faisant du VTT : peau légèrement mate
+🚵🏼‍♀	femme faisant du VTT : peau légèrement mate
+🚵🏽‍♀️	femme faisant du VTT : peau légèrement mate
+🚵🏽‍♀	femme faisant du VTT : peau légèrement mate
+🚵🏾‍♀️	femme faisant du VTT : peau légèrement mate
+🚵🏾‍♀	femme faisant du VTT : peau légèrement mate
+🚵🏿‍♀️	femme faisant du VTT : peau foncée
+🚵🏿‍♀	femme faisant du VTT : peau foncée
+🏎️	voiture de course
+🏎	voiture de course
+🏍️	moto
+🏍	moto
+🤸	personne faisant la roue
+🤸🏻	personne faisant la roue : peau claire
+🤸🏼	personne faisant la roue : peau légèrement mate
+🤸🏽	personne faisant la roue : peau légèrement mate
+🤸🏾	personne faisant la roue : peau légèrement mate
+🤸🏿	personne faisant la roue : peau foncée
+🤸‍♂️	homme faisant la roue
+🤸‍♂	homme faisant la roue
+🤸🏻‍♂️	homme faisant la roue : peau claire
+🤸🏻‍♂	homme faisant la roue : peau claire
+🤸🏼‍♂️	homme faisant la roue : peau légèrement mate
+🤸🏼‍♂	homme faisant la roue : peau légèrement mate
+🤸🏽‍♂️	homme faisant la roue : peau légèrement mate
+🤸🏽‍♂	homme faisant la roue : peau légèrement mate
+🤸🏾‍♂️	homme faisant la roue : peau légèrement mate
+🤸🏾‍♂	homme faisant la roue : peau légèrement mate
+🤸🏿‍♂️	homme faisant la roue : peau foncée
+🤸🏿‍♂	homme faisant la roue : peau foncée
+🤸‍♀️	femme faisant la roue
+🤸‍♀	femme faisant la roue
+🤸🏻‍♀️	femme faisant la roue : peau claire
+🤸🏻‍♀	femme faisant la roue : peau claire
+🤸🏼‍♀️	femme faisant la roue : peau légèrement mate
+🤸🏼‍♀	femme faisant la roue : peau légèrement mate
+🤸🏽‍♀️	femme faisant la roue : peau légèrement mate
+🤸🏽‍♀	femme faisant la roue : peau légèrement mate
+🤸🏾‍♀️	femme faisant la roue : peau légèrement mate
+🤸🏾‍♀	femme faisant la roue : peau légèrement mate
+🤸🏿‍♀️	femme faisant la roue : peau foncée
+🤸🏿‍♀	femme faisant la roue : peau foncée
+🤼	les gens luttent
+🤼‍♂️	hommes luttant
+🤼‍♂	hommes luttant
+🤼‍♀️	lutte féminine
+🤼‍♀	lutte féminine
+🤽	personne jouant au water-polo
+🤽🏻	personne jouant au water-polo : peau claire
+🤽🏼	personne jouant au water-polo : peau légèrement mate
+🤽🏽	personne jouant au water-polo : peau légèrement mate
+🤽🏾	personne jouant au water-polo : peau légèrement mate
+🤽🏿	personne jouant au water-polo : peau foncée
+🤽‍♂️	homme jouant au water-polo
+🤽‍♂	homme jouant au water-polo
+🤽🏻‍♂️	homme jouant au water-polo : peau claire
+🤽🏻‍♂	homme jouant au water-polo : peau claire
+🤽🏼‍♂️	homme jouant au water-polo : peau légèrement mate
+🤽🏼‍♂	homme jouant au water-polo : peau légèrement mate
+🤽🏽‍♂️	homme jouant au water-polo : peau légèrement mate
+🤽🏽‍♂	homme jouant au water-polo : peau légèrement mate
+🤽🏾‍♂️	homme jouant au water-polo : peau légèrement mate
+🤽🏾‍♂	homme jouant au water-polo : peau légèrement mate
+🤽🏿‍♂️	homme jouant au water-polo : peau foncée
+🤽🏿‍♂	homme jouant au water-polo : peau foncée
+🤽‍♀️	femme jouant au water-polo
+🤽‍♀	femme jouant au water-polo
+🤽🏻‍♀️	femme jouant au water-polo : peau claire
+🤽🏻‍♀	femme jouant au water-polo : peau claire
+🤽🏼‍♀️	femme jouant au water-polo : peau légèrement mate
+🤽🏼‍♀	femme jouant au water-polo : peau légèrement mate
+🤽🏽‍♀️	femme jouant au water-polo : peau légèrement mate
+🤽🏽‍♀	femme jouant au water-polo : peau légèrement mate
+🤽🏾‍♀️	femme jouant au water-polo : peau légèrement mate
+🤽🏾‍♀	femme jouant au water-polo : peau légèrement mate
+🤽🏿‍♀️	femme jouant au water-polo : peau foncée
+🤽🏿‍♀	femme jouant au water-polo : peau foncée
+🤾	personne jouant au handball
+🤾🏻	personne jouant au handball : peau claire
+🤾🏼	personne jouant au handball : peau légèrement mate
+🤾🏽	personne jouant au handball : peau légèrement mate
+🤾🏾	personne jouant au handball : peau légèrement mate
+🤾🏿	personne jouant au handball : peau foncée
+🤾‍♂️	homme jouant au handball
+🤾‍♂	homme jouant au handball
+🤾🏻‍♂️	homme jouant au handball : peau claire
+🤾🏻‍♂	homme jouant au handball : peau claire
+🤾🏼‍♂️	homme jouant au handball : peau légèrement mate
+🤾🏼‍♂	homme jouant au handball : peau légèrement mate
+🤾🏽‍♂️	homme jouant au handball : peau légèrement mate
+🤾🏽‍♂	homme jouant au handball : peau légèrement mate
+🤾🏾‍♂️	homme jouant au handball : peau légèrement mate
+🤾🏾‍♂	homme jouant au handball : peau légèrement mate
+🤾🏿‍♂️	homme jouant au handball : peau foncée
+🤾🏿‍♂	homme jouant au handball : peau foncée
+🤾‍♀️	femme jouant au handball
+🤾‍♀	femme jouant au handball
+🤾🏻‍♀️	femme jouant au handball : peau claire
+🤾🏻‍♀	femme jouant au handball : peau claire
+🤾🏼‍♀️	femme jouant au handball : peau légèrement mate
+🤾🏼‍♀	femme jouant au handball : peau légèrement mate
+🤾🏽‍♀️	femme jouant au handball : peau légèrement mate
+🤾🏽‍♀	femme jouant au handball : peau légèrement mate
+🤾🏾‍♀️	femme jouant au handball : peau légèrement mate
+🤾🏾‍♀	femme jouant au handball : peau légèrement mate
+🤾🏿‍♀️	femme jouant au handball : peau foncée
+🤾🏿‍♀	femme jouant au handball : peau foncée
+🤹	personne qui jongle
+🤹🏻	personne qui jongle : peau claire
+🤹🏼	personne qui jongle : peau légèrement mate
+🤹🏽	personne qui jongle : peau légèrement mate
+🤹🏾	personne qui jongle : peau légèrement mate
+🤹🏿	personne qui jongle : peau foncée
+🤹‍♂️	homme jonglant
+🤹‍♂	homme jonglant
+🤹🏻‍♂️	homme jonglant : peau claire
+🤹🏻‍♂	homme jonglant : peau claire
+🤹🏼‍♂️	homme jonglant : peau moyennement claire
+🤹🏼‍♂	homme jonglant : peau moyennement claire
+🤹🏽‍♂️	homme jonglant : peau légèrement mate
+🤹🏽‍♂	homme jonglant : peau légèrement mate
+🤹🏾‍♂️	homme jonglant : peau légèrement mate
+🤹🏾‍♂	homme jonglant : peau légèrement mate
+🤹🏿‍♂️	homme jonglant : peau foncée
+🤹🏿‍♂	homme jonglant : peau foncée
+🤹‍♀️	femme jonglant
+🤹‍♀	femme jonglant
+🤹🏻‍♀️	femme jonglant : peau claire
+🤹🏻‍♀	femme jonglant : peau claire
+🤹🏼‍♀️	femme jonglant : peau moyennement claire
+🤹🏼‍♀	femme jonglant : peau moyennement claire
+🤹🏽‍♀️	femme jonglant : peau légèrement mate
+🤹🏽‍♀	femme jonglant : peau légèrement mate
+🤹🏾‍♀️	femme jonglant : peau légèrement mate
+🤹🏾‍♀	femme jonglant : peau légèrement mate
+🤹🏿‍♀️	femme jonglant : peau foncée
+🤹🏿‍♀	femme jonglant : peau foncée
+👫	homme et femme se tenant la main
+👬	deux hommes se tenant la main
+👭	deux femmes se tenant la main
+💏	baiser
+👩‍❤️‍💋‍👨	baiser : femme, homme
+👩‍❤‍💋‍👨	baiser : femme, homme
+👨‍❤️‍💋‍👨	bisou : mec, mec
+👨‍❤‍💋‍👨	bisou : mec, mec
+👩‍❤️‍💋‍👩	baiser : femme, femme
+👩‍❤‍💋‍👩	baiser : femme, femme
+💑	couple avec coeur
+👩‍❤️‍👨	couple avec coeur : femme, homme
+👩‍❤‍👨	couple avec coeur : femme, homme
+👨‍❤️‍👨	couple avec coeur : homme, homme
+👨‍❤‍👨	couple avec coeur : homme, homme
+👩‍❤️‍👩	couple avec coeur : femme, femme
+👩‍❤‍👩	couple avec coeur : femme, femme
+👪	famille
+👨‍👩‍👦	famille : homme, femme, garçon
+👨‍👩‍👧	famille : homme, femme, fille
+👨‍👩‍👧‍👦	famille : homme, femme, fille, garçon
+👨‍👩‍👦‍👦	famille : homme, femme, garçon, garçon
+👨‍👩‍👧‍👧	famille : homme, femme, fille, fille
+👨‍👨‍👦	famille : homme, homme, garçon
+👨‍👨‍👧	famille : homme, homme, fille
+👨‍👨‍👧‍👦	famille : homme, homme, fille, garçon
+👨‍👨‍👦‍👦	famille : homme, homme, garçon, garçon
+👨‍👨‍👧‍👧	famille : homme, homme, fille, fille
+👩‍👩‍👦	famille : femme, femme, garçon
+👩‍👩‍👧	famille : femme, femme, fille
+👩‍👩‍👧‍👦	famille : femme, femme, fille, garçon
+👩‍👩‍👦‍👦	famille : femme, femme, garçon, garçon
+👩‍👩‍👧‍👧	famille : femme, femme, fille, fille
+👨‍👦	famille : homme, garçon
+👨‍👦‍👦	famille : homme, garçon, garçon
+👨‍👧	famille : homme, fille
+👨‍👧‍👦	famille : homme, fille, garçon
+👨‍👧‍👧	famille : homme, fille, fille
+👩‍👦	famille : femme, garçon
+👩‍👦‍👦	famille : femme, garçon, garçon
+👩‍👧	famille : femme, fille
+👩‍👧‍👦	famille : femme, fille, garçon
+👩‍👧‍👧	famille : femme, fille, fille
+🤳	selfie
+🤳🏻	selfie : peau claire
+🤳🏼	selfie : peau légèrement mate
+🤳🏽	selfie : peau légèrement mate
+🤳🏾	selfie : peau légèrement mate
+🤳🏿	selfie : peau foncée
+💪	biceps fléchis
+💪🏻	biceps fléchis : peau claire
+💪🏼	biceps fléchis : peau moyennement claire
+💪🏽	biceps fléchis : peau légèrement mate
+💪🏾	biceps fléchis : peau légèrement mate
+💪🏿	biceps fléchis : peau foncée
+🦵	jambe
+🦵🏻	jambe : peau claire
+🦵🏼	jambe : peau moyennement claire
+🦵🏽	jambe : peau légèrement mate
+🦵🏾	jambe : peau légèrement mate
+🦵🏿	jambe : peau foncée
+🦶	pied
+🦶🏻	pied : peau claire
+🦶🏼	pied : peau moyennement claire
+🦶🏽	pied : peau légèrement mate
+🦶🏾	pied : peau légèrement mate
+🦶🏿	pied : peau foncée
+👈	index du revers pointant vers la gauche
+👈🏻	index du revers pointant vers la gauche : peau légèrement mate
+👈🏼	index du revers pointant vers la gauche : peau légèrement mate
+👈🏽	index du revers pointant vers la gauche : peau légèrement mate
+👈🏾	index du revers pointant vers la gauche : peau légèrement mate
+👈🏿	index du revers pointant vers la gauche : peau foncée
+👉	index du revers pointant vers la droite
+👉🏻	index du revers pointant vers la droite : peau légèrement mate
+👉🏼	index du revers pointant vers la droite : peau légèrement mate
+👉🏽	index du revers pointant vers la droite : peau légèrement mate
+👉🏾	index du revers pointant vers la droite : peau légèrement mate
+👉🏿	index du revers pointant vers la droite : peau foncée
+☝️	index pointant vers le haut
+☝	index pointant vers le haut
+☝🏻	index pointant vers le haut : peau claire
+☝🏼	index pointant vers le haut : peau moyennement claire
+☝🏽	index pointant vers le haut : peau légèrement mate
+☝🏾	index pointant vers le haut : peau légèrement mate
+☝🏿	index pointant vers le haut : peau foncée
+👆	index du revers pointant vers le haut
+👆🏻	index du revers pointant vers le haut : peau légèrement mate
+👆🏼	index du revers pointé vers le haut : peau légèrement mate
+👆🏽	index du revers pointé vers le haut : peau légèrement mate
+👆🏾	index du revers pointé vers le haut : peau légèrement mate
+👆🏿	index du revers pointant vers le haut : peau foncée
+🖕	majeur
+🖕🏻	majeur : peau claire
+🖕🏼	majeur : peau moyennement claire
+🖕🏽	majeur : peau légèrement mate
+🖕🏾	majeur : peau légèrement mate
+🖕🏿	majeur : peau foncée
+👇	index du revers pointant vers le bas
+👇🏻	index du revers pointant vers le bas : peau légèrement mate
+👇🏼	index du revers pointé vers le bas : peau légèrement mate
+👇🏽	index du revers pointé vers le bas : peau légèrement mate
+👇🏾	index du revers pointé vers le bas : peau légèrement mate
+👇🏿	index du revers pointant vers le bas : peau foncée
+✌️	main de victoire
+✌	main de victoire
+✌🏻	main de la victoire : peau claire
+✌🏼	main de la victoire : peau moyennement claire
+✌🏽	main de la victoire : peau légèrement mate
+✌🏾	main de la victoire : peau légèrement mate
+✌🏿	main de la victoire : peau foncée
+🤞	doigts croisés
+🤞🏻	doigts croisés : peau claire
+🤞🏼	doigts croisés : peau moyennement claire
+🤞🏽	doigts croisés : peau légèrement mate
+🤞🏾	doigts croisés : peau légèrement mate
+🤞🏿	doigts croisés : peau foncée
+🖖	salut vulcain
+🖖🏻	salut vulcain : peau claire
+🖖🏼	salut vulcain : peau légèrement mate
+🖖🏽	salut vulcain : peau légèrement mate
+🖖🏾	salut vulcain : peau légèrement mate
+🖖🏿	salut vulcain : peau foncée
+🤘	signe des cornes
+🤘🏻	signe des cornes : peau claire
+🤘🏼	signe des cornes : peau moyennement claire
+🤘🏽	signe des cornes : peau légèrement mate
+🤘🏾	signe des cornes : peau légèrement mate
+🤘🏿	signe des cornes : peau foncée
+🤙	appelle-moi la main
+🤙🏻	appelle-moi la main : peau claire
+🤙🏼	appelle-moi la main : peau légèrement mate
+🤙🏽	appelle-moi la main : peau légèrement mate
+🤙🏾	appelle-moi la main : peau légèrement mate
+🤙🏿	appelle-moi la main : peau foncée
+🖐️	main avec les doigts écartés
+🖐	main avec les doigts écartés
+🖐🏻	main avec les doigts écartés : peau claire
+🖐🏼	main avec les doigts écartés : peau légèrement mate
+🖐🏽	main avec les doigts écartés : peau légèrement mate
+🖐🏾	main avec les doigts écartés : peau légèrement mate
+🖐🏿	main avec les doigts écartés : peau foncée
+✋	main levée
+✋🏻	main levée : peau claire
+✋🏼	main levée : peau légèrement mate
+✋🏽	main levée : peau légèrement mate
+✋🏾	main levée : peau légèrement mate
+✋🏿	main levée : peau foncée
+👌	OK la main
+👌🏻	Main OK : peau claire
+👌🏼	Main OK : peau moyennement claire
+👌🏽	Main OK : peau légèrement mate
+👌🏾	Main OK : peau légèrement mate
+👌🏿	Main OK : peau foncée
+👍	pouces vers le haut
+👍🏻	pouce levé : peau claire
+👍🏼	pouce levé : peau légèrement mate
+👍🏽	pouce levé : peau légèrement mate
+👍🏾	pouce levé : peau légèrement mate
+👍🏿	pouce levé : peau foncée
+👎	pouces vers le bas
+👎🏻	pouce vers le bas : peau claire
+👎🏼	pouce vers le bas : peau légèrement mate
+👎🏽	pouce vers le bas : peau légèrement mate
+👎🏾	pouce vers le bas : peau légèrement mate
+👎🏿	pouce vers le bas : peau foncée
+✊	poing levé
+✊🏻	poing levé : peau claire
+✊🏼	poing levé : peau moyennement claire
+✊🏽	poing levé : peau légèrement mate
+✊🏾	poing levé : peau légèrement mate
+✊🏿	poing levé : peau foncée
+👊	poing venant en sens inverse
+👊🏻	poing venant en sens inverse : peau claire
+👊🏼	poing venant en sens inverse : peau moyennement claire
+👊🏽	poing venant en sens inverse : peau légèrement mate
+👊🏾	poing venant en sens inverse : peau légèrement mate
+👊🏿	poing venant en sens inverse : peau foncée
+🤛	poing vers la gauche
+🤛🏻	poing vers la gauche : peau claire
+🤛🏼	poing gauche : peau moyennement claire
+🤛🏽	poing gauche : peau légèrement mate
+🤛🏾	poing gauche : peau légèrement mate
+🤛🏿	poing orienté vers la gauche : peau foncée
+🤜	poing vers la droite
+🤜🏻	poing droit : peau claire
+🤜🏼	poing droit : peau moyennement claire
+🤜🏽	poing droit : peau légèrement mate
+🤜🏾	poing droit : peau légèrement mate
+🤜🏿	poing droit : peau foncée
+🤚	dos de la main levé
+🤚🏻	dos de la main relevé : peau claire
+🤚🏼	dos de la main relevé : peau légèrement mate
+🤚🏽	dos de la main relevé : peau légèrement mate
+🤚🏾	dos de la main relevé : peau légèrement mate
+🤚🏿	dos de la main relevé : peau foncée
+👋	agitant la main
+👋🏻	agitant la main : peau claire
+👋🏼	on agite la main : peau légèrement mate
+👋🏽	on agite la main : peau légèrement mate
+👋🏾	on agite la main : peau légèrement mate
+👋🏿	agitant la main : peau foncée
+🤟	geste d'amour
+🤟🏻	geste d'amour : peau claire
+🤟🏼	geste d'amour : peau moyennement claire
+🤟🏽	geste d'amour : peau légèrement mate
+🤟🏾	geste d'amour : peau légèrement mate
+🤟🏿	geste d'amour : peau foncée
+✍️	main qui écrit
+✍	main qui écrit
+✍🏻	main qui écrit : peau claire
+✍🏼	main qui écrit : peau moyennement claire
+✍🏽	main qui écrit : peau légèrement mate
+✍🏾	main qui écrit : peau légèrement mate
+✍🏿	main qui écrit : peau foncée
+👏	applaudir
+👏🏻	applaudir : peau claire
+👏🏼	applaudir : peau moyennement claire
+👏🏽	applaudir : peau légèrement mate
+👏🏾	applaudir : peau légèrement mate
+👏🏿	applaudir : peau foncée
+👐	mains ouvertes
+👐🏻	mains ouvertes : peau claire
+👐🏼	mains ouvertes : peau moyennement claire
+👐🏽	mains ouvertes : peau légèrement mate
+👐🏾	mains ouvertes : peau légèrement mate
+👐🏿	mains ouvertes : peau foncée
+🙌	lever la main
+🙌🏻	lever la main : peau claire
+🙌🏼	lever les mains : peau légèrement mate
+🙌🏽	lever la main : peau légèrement mate
+🙌🏾	lever les mains : peau légèrement mate
+🙌🏿	lever les mains : peau foncée
+🤲	paumes vers le haut ensemble
+🤲🏻	paumes jointes : peau légèrement mate
+🤲🏼	paumes jointes : peau légèrement mate
+🤲🏽	paumes jointes : peau légèrement mate
+🤲🏾	paumes jointes : peau légèrement mate
+🤲🏿	paumes jointes : peau foncée
+🙏	mains jointes
+🙏🏻	mains jointes : peau claire
+🙏🏼	mains jointes : peau moyennement claire
+🙏🏽	mains jointes : peau légèrement mate
+🙏🏾	mains jointes : peau légèrement mate
+🙏🏿	mains jointes : peau foncée
+🤝	poignée de main
+💅	vernis à ongle
+💅🏻	vernis à ongles : peau claire
+💅🏼	vernis à ongles : peau moyennement claire
+💅🏽	vernis à ongles : peau légèrement mate
+💅🏾	vernis à ongles : peau légèrement mate
+💅🏿	vernis à ongles : peau foncée
+👂	oreille
+👂🏻	oreille : peau claire
+👂🏼	oreille : peau moyennement claire
+👂🏽	oreille : peau légèrement mate
+👂🏾	oreille : peau légèrement mate
+👂🏿	oreille : peau foncée
+👃	nez
+👃🏻	nez : peau claire
+👃🏼	nez : peau moyennement claire
+👃🏽	nez : peau légèrement mate
+👃🏾	nez : peau légèrement mate
+👃🏿	nez : peau foncée
+🦰	aux cheveux roux
+🦱	aux cheveux bouclés
+🦲	chauve
+🦳	aux cheveux blancs
+👣	empreintes
+👀	yeux
+👁️	œil
+👁	œil
+👁️‍🗨️	oeil dans une bulle
+👁‍🗨️	oeil dans une bulle
+👁️‍🗨	oeil dans une bulle
+👁‍🗨	oeil dans une bulle
+🧠	cerveau
+🦴	os
+🦷	dent
+👅	langue
+👄	bouche
+💋	suçon
+💘	coeur avec flèche
+❤️	coeur rouge
+❤	coeur rouge
+💓	cœur battant
+💔	coeur brisé
+💕	deux coeurs
+💖	coeur pétillant
+💗	coeur en pleine croissance
+💙	coeur bleu
+💚	coeur vert
+💛	coeur jaune
+🧡	coeur orange
+💜	cœur violet
+🖤	coeur noir
+💝	coeur avec ruban
+💞	coeurs tournants
+💟	décoration coeur
+❣️	exclamation du cœur lourd
+❣	exclamation du cœur lourd
+💌	lettre d'amour
+💤	zzz
+💢	symbole de colère
+💣	bombe
+💥	collision
+💦	gouttelettes de sueur
+💨	s'enfuir
+💫	vertigineux
+💬	bulle
+🗨️	bulle de gauche
+🗨	bulle de gauche
+🗯️	bulle de colère droite
+🗯	bulle de colère droite
+💭	ballon de pensée
+🕳️	trou
+🕳	trou
+👓	lunettes
+🕶️	des lunettes de soleil
+🕶	des lunettes de soleil
+🥽	des lunettes de protection
+🥼	blouse de laboratoire
+👔	cravate
+👕	T-shirt
+👖	jeans
+🧣	foulard
+🧤	gants
+🧥	manteau
+🧦	chaussettes
+👗	robe
+👘	kimono
+👙	bikini
+👚	vêtements de femme
+👛	bourse
+👜	Sac à main
+👝	pochette
+🛍️	sacs à provisions
+🛍	sacs à provisions
+🎒	sac à dos d'école
+👞	chaussure d'homme
+👟	chaussure de course
+🥾	Chaussures de randonnée
+🥿	chaussure plate pour femme
+👠	chaussure à talons hauts
+👡	sandale femme
+👢	botte de femme
+👑	couronne
+👒	chapeau de femme
+🎩	haut-de-forme
+🎓	casquette de graduation
+🧢	plafond facturé
+⛑️	casque de secouriste
+⛑	casque de secouriste
+📿	chapelet de prière
+💄	rouge à lèvres
+💍	anneau
+💎	pierre précieuse
+🐵	visage de singe
+🐒	singe
+🦍	gorille
+🐶	tête de chien
+🐕	chien
+🐩	caniche
+🐺	visage de loup
+🦊	visage de renard
+🦝	raton laveur
+🐱	tête de chat
+🐈	chat
+🦁	visage de lion
+🐯	visage de tigre
+🐅	tigre
+🐆	léopard
+🐴	visage de cheval
+🐎	cheval
+🦄	visage de licorne
+🦓	zèbre
+🦌	cerf
+🐮	visage de vache
+🐂	bœuf
+🐃	buffles d'eau
+🐄	vache
+🐷	face de cochon
+🐖	cochon
+🐗	sanglier
+🐽	nez de cochon
+🐏	RAM
+🐑	Éwé
+🐐	chèvre
+🐪	chameau
+🐫	chameau à deux bosses
+🦙	lama
+🦒	girafe
+🐘	éléphant
+🦏	rhinocéros
+🦛	hippopotame
+🐭	visage de souris
+🐁	souris
+🐀	rat
+🐹	visage de hamster
+🐰	visage de lapin
+🐇	lapin
+🐿️	tamia
+🐿	tamia
+🦔	hérisson
+🦇	chauve souris
+🐻	visage d'ours
+🐨	koala
+🐼	visage de panda
+🦘	kangourou
+🦡	blaireau
+🐾	empreintes de pattes
+🦃	dinde
+🐔	poulet
+🐓	coq
+🐣	poussin en train d'éclore
+🐤	poussin
+🐥	poussin de face
+🐦	oiseau
+🐧	manchot
+🕊️	Colombe
+🕊	Colombe
+🦅	aigle
+🦆	canard
+🦢	cygne
+🦉	hibou
+🦚	paon
+🦜	perroquet
+🐸	visage de grenouille
+🐊	crocodile
+🐢	tortue
+🦎	lézard
+🐍	serpent
+🐲	visage de dragon
+🐉	dragon
+🦕	sauropode
+🦖	T-Rex
+🐳	baleine jaillissante
+🐋	baleine
+🐬	dauphin
+🐟	poisson
+🐠	poisson tropical
+🐡	poisson-globe
+🦈	requin
+🐙	pieuvre
+🐚	coque en spirale
+🦀	crabe
+🦞	homard
+🦐	crevette
+🦑	calmar
+🐌	escargot
+🦋	papillon
+🐛	bogue
+🐜	fourmi
+🐝	abeille
+🐞	coccinelle
+🦗	criquet
+🕷️	araignée
+🕷	araignée
+🕸️	toile d'araignée
+🕸	toile d'araignée
+🦂	Scorpion
+🦟	moustique
+🦠	microbe
+💐	bouquet
+🌸	fleur de cerisier
+💮	fleur blanche
+🏵️	rosette
+🏵	rosette
+🌹	rose
+🥀	fleur fanée
+🌺	hibiscus
+🌻	tournesol
+🌼	fleurir
+🌷	tulipe
+🌱	semis
+🌲	arbre à feuilles persistantes
+🌳	arbre à feuilles caduques
+🌴	palmier
+🌵	cactus
+🌾	gerbe de riz
+🌿	herbe
+☘️	trèfle
+☘	trèfle
+🍀	trèfle à quatre feuilles
+🍁	feuille d'érable
+🍂	feuille tombée
+🍃	feuille flottant au vent
+🍇	raisins
+🍈	melon
+🍉	pastèque
+🍊	Tangerine
+🍋	citron
+🍌	banane
+🍍	ananas
+🥭	mangue
+🍎	pomme rouge
+🍏	pomme verte
+🍐	poire
+🍑	pêche
+🍒	cerises
+🍓	fraise
+🥝	kiwi
+🍅	tomate
+🥥	noix de coco
+🥑	avocat
+🍆	aubergine
+🥔	pomme de terre
+🥕	carotte
+🌽	épi de maïs
+🌶️	piment
+🌶	piment
+🥒	concombre
+🥬	vert feuillu
+🥦	brocoli
+🍄	champignon
+🥜	cacahuètes
+🌰	châtaigne
+🍞	pain
+🥐	croissant
+🥖	pain baguette
+🥨	bretzel
+🥯	beignet
+🥞	Crêpes
+🧀	coin de fromage
+🍖	viande sur os
+🍗	cuisse de volaille
+🥩	morceau de viande
+🥓	lard
+🍔	Hamburger
+🍟	frites
+🍕	pizza
+🌭	Hot-dog
+🥪	sandwich
+🌮	taco
+🌯	burrito
+🥙	pain plat farci
+🥚	œuf
+🍳	cuisson
+🥘	plat peu profond de nourriture
+🍲	pot de nourriture
+🥣	bol avec cuillère
+🥗	salade verte
+🍿	Popcorn
+🧂	sel
+🥫	nourriture en boîte
+🍱	boîte à bento
+🍘	galette de riz
+🍙	balle de riz
+🍚	riz cuit
+🍛	riz au curry
+🍜	bol fumant
+🍝	spaghetti
+🍠	patate douce rôtie
+🍢	oden
+🍣	Sushi
+🍤	crevette frite
+🍥	galette de poisson avec tourbillon
+🥮	gâteau de lune
+🍡	dango
+🥟	boulette
+🥠	biscuit chinois
+🥡	boîte à emporter
+🍦	glace molle
+🍧	glace pilée
+🍨	glace
+🍩	Donut
+🍪	biscuit
+🎂	gâteau d'anniversaire
+🍰	gâteau sablé
+🧁	petit gâteau
+🥧	tarte
+🍫	barre de chocolat
+🍬	bonbons
+🍭	sucette
+🍮	Crème
+🍯	pot de miel
+🍼	biberon
+🥛	verre de lait
+☕	boisson chaude
+🍵	tasse à thé sans anse
+🍶	saké
+🍾	bouteille avec bouchon qui éclate
+🍷	verre de vin
+🍸	verre à cocktail
+🍹	boisson tropicale
+🍺	chope à Biere
+🍻	chopes à bière tintantes
+🥂	tinter les verres
+🥃	verre à gobelet
+🥤	tasse avec de la paille
+🥢	baguettes
+🍽️	fourchette et couteau avec assiette
+🍽	fourchette et couteau avec assiette
+🍴	fourchette et couteau
+🥄	cuillère
+🔪	couteau de cuisine
+🏺	amphore
+🌍	globe montrant l'Europe-Afrique
+🌎	globe montrant les Amériques
+🌏	globe montrant l'Asie-Australie
+🌐	globe avec méridiens
+🗺️	carte du monde
+🗺	carte du monde
+🗾	carte du Japon
+🧭	boussole
+🏔️	montagne au sommet enneigé
+🏔	montagne au sommet enneigé
+⛰️	montagne
+⛰	montagne
+🌋	volcan
+🗻	Mont Fuji
+🏕️	camping
+🏕	camping
+🏖️	plage avec parasol
+🏖	plage avec parasol
+🏜️	désert
+🏜	désert
+🏝️	île déserte
+🏝	île déserte
+🏞️	parc national
+🏞	parc national
+🏟️	stade
+🏟	stade
+🏛️	bâtiment classique
+🏛	bâtiment classique
+🏗️	construction de bâtiments
+🏗	construction de bâtiments
+🧱	briques
+🏘️	Maisons
+🏘	Maisons
+🏚️	maison abandonnée
+🏚	maison abandonnée
+🏠	maison
+🏡	maison avec jardin
+🏢	immeuble de bureaux
+🏣	Bureau de poste japonais
+🏤	bureau de poste
+🏥	hôpital
+🏦	banque
+🏨	hôtel
+🏩	hôtel d'amour
+🏪	épicerie
+🏫	école
+🏬	grand magasin
+🏭	usine
+🏯	Château japonais
+🏰	château
+💒	mariage
+🗼	Tour de Tokyo
+🗽	Statue de la Liberté
+⛪	église
+🕌	mosquée
+🕍	synagogue
+⛩️	shintoïste
+⛩	shintoïste
+🕋	Kaaba
+⛲	Fontaine
+⛺	tente
+🌁	brumeux
+🌃	nuit avec des étoiles
+🏙️	paysage urbain
+🏙	paysage urbain
+🌄	lever de soleil sur les montagnes
+🌅	lever du soleil
+🌆	paysage urbain au crépuscule
+🌇	coucher de soleil
+🌉	pont la nuit
+♨️	sources chaudes
+♨	sources chaudes
+🌌	voie Lactée
+🎠	cheval de carrousel
+🎡	grande roue
+🎢	montagnes russes
+💈	enseigne de coiffeur
+🎪	chapiteau de cirque
+🚂	locomotive
+🚃	wagon de chemin de fer
+🚄	train à grande vitesse
+🚅	train à grande vitesse
+🚆	former
+🚇	métro
+🚈	métro léger
+🚉	gare
+🚊	tram
+🚝	monorail
+🚞	chemin de fer de montagne
+🚋	voiture de tramway
+🚌	bus
+🚍	bus venant en sens inverse
+🚎	trolleybus
+🚐	minibus
+🚑	ambulance
+🚒	camion de pompier
+🚓	voiture de police
+🚔	voiture de police venant en sens inverse
+🚕	Taxi
+🚖	taxi venant en sens inverse
+🚗	voiture
+🚘	automobile venant en sens inverse
+🚙	Véhicule de sport
+🚚	Camion de livraison
+🚛	camion articulé
+🚜	tracteur
+🚲	vélo
+🛴	trottinette
+🛹	planche à roulette
+🛵	scooter
+🚏	arrêt de bus
+🛣️	autoroute
+🛣	autoroute
+🛤️	voie ferrée
+🛤	voie ferrée
+🛢️	bidon d'huile
+🛢	bidon d'huile
+⛽	pompe à carburant
+🚨	phare de voiture de police
+🚥	feu de circulation horizontal
+🚦	feu de circulation vertical
+🛑	panneau stop
+🚧	construction
+⚓	ancre
+⛵	voilier
+🛶	canoë
+🚤	vedette
+🛳️	navire à passagers
+🛳	navire à passagers
+⛴️	traversier
+⛴	traversier
+🛥️	bateau à moteur
+🛥	bateau à moteur
+🚢	bateau
+✈️	avion
+✈	avion
+🛩️	petit avion
+🛩	petit avion
+🛫	départ de l'avion
+🛬	arrivée de l'avion
+💺	siège
+🚁	hélicoptère
+🚟	chemin de fer suspendu
+🚠	téléphérique de montagne
+🚡	tramway aérien
+🛰️	Satellite
+🛰	Satellite
+🚀	fusée
+🛸	soucoupe volante
+🛎️	cloche de chasseur
+🛎	cloche de chasseur
+🧳	bagage
+⌛	sablier terminé
+⏳	le sablier n'est pas terminé
+⌚	montre
+⏰	réveil
+⏱️	chronomètre
+⏱	chronomètre
+⏲️	horloge minuterie
+⏲	horloge minuterie
+🕰️	horloge de cheminée
+🕰	horloge de cheminée
+🕛	douze heures
+🕧	douze trente
+🕐	une heure
+🕜	une heure et demi
+🕑	deux heures
+🕝	deux heures et demie
+🕒	trois heures
+🕞	trois heures et demie
+🕓	Quatre heures
+🕟	quatre heures et demie
+🕔	cinq heures
+🕠	cinq heures et demie
+🕕	six heures
+🕡	six heures et demie
+🕖	Sept heures
+🕢	sept heure et demi
+🕗	huit heures
+🕣	huit trente
+🕘	neuf heures
+🕤	Neuf heures et demi
+🕙	dix heures
+🕥	1030
+🕚	onze heures
+🕦	1130
+🌑	nouvelle lune
+🌒	croissant de lune croissant
+🌓	premier quartier de lune
+🌔	lune gibbeuse croissante
+🌕	pleine lune
+🌖	lune gibbeuse décroissante
+🌗	dernier quartier de lune
+🌘	croissant de lune décroissant
+🌙	croissant de lune
+🌚	visage de nouvelle lune
+🌛	visage du premier quartier de lune
+🌜	visage du dernier quartier de lune
+🌡️	thermomètre
+🌡	thermomètre
+☀️	soleil
+☀	soleil
+🌝	visage de pleine lune
+🌞	soleil avec visage
+⭐	étoile
+🌟	étoile brillante
+🌠	étoile filante
+☁️	nuage
+☁	nuage
+⛅	soleil derrière un nuage
+⛈️	nuage avec éclairs et pluie
+⛈	nuage avec éclairs et pluie
+🌤️	soleil derrière un petit nuage
+🌤	soleil derrière un petit nuage
+🌥️	soleil derrière un gros nuage
+🌥	soleil derrière un gros nuage
+🌦️	soleil derrière un nuage de pluie
+🌦	soleil derrière un nuage de pluie
+🌧️	nuage avec pluie
+🌧	nuage avec pluie
+🌨️	nuage avec de la neige
+🌨	nuage avec de la neige
+🌩️	nuage avec des éclairs
+🌩	nuage avec des éclairs
+🌪️	tornade
+🌪	tornade
+🌫️	brouillard
+🌫	brouillard
+🌬️	face au vent
+🌬	face au vent
+🌀	cyclone
+🌈	arc-en-ciel
+🌂	parapluie fermé
+☂️	parapluie
+☂	parapluie
+☔	parapluie avec des gouttes de pluie
+⛱️	parapluie au sol
+⛱	parapluie au sol
+⚡	haute tension
+❄️	flocon de neige
+❄	flocon de neige
+☃️	bonhomme de neige
+☃	bonhomme de neige
+⛄	bonhomme de neige sans neige
+☄️	comète
+☄	comète
+🔥	feu
+💧	gouttelette
+🌊	vague d'eau
+🎃	citrouille d'Halloween
+🎄	Sapin de Noël
+🎆	feux d'artifice
+🎇	cierge magique
+🧨	pétard
+✨	scintille
+🎈	ballon
+🎉	bombe de table
+🎊	boule de confettis
+🎋	arbre tanabata
+🎍	décoration en pin
+🎎	poupées japonaises
+🎏	streamer de carpe
+🎐	carillon à vent
+🎑	cérémonie d'observation de la lune
+🧧	enveloppe rouge
+🎀	ruban
+🎁	cadeau emballé
+🎗️	ruban de rappel
+🎗	ruban de rappel
+🎟️	billets d'entrée
+🎟	billets d'entrée
+🎫	billet
+🎖️	médaille militaire
+🎖	médaille militaire
+🏆	trophée
+🏅	médaille sportive
+🥇	Médaille de la 1ère place
+🥈	Médaille de la 2ème place
+🥉	Médaille de la 3ème place
+⚽	ballon de football
+⚾	base-ball
+🥎	balle molle
+🏀	basket-ball
+🏐	volley-ball
+🏈	football américain
+🏉	rugby-football
+🎾	tennis
+🥏	disque volant
+🎳	bowling
+🏏	jeu de cricket
+🏑	Hockey sur gazon
+🏒	hockey sur glace
+🥍	lacrosse
+🏓	ping pong
+🏸	badminton
+🥊	gant de boxe
+🥋	uniforme d'arts martiaux
+🥅	filet de but
+⛳	drapeau dans le trou
+⛸️	patin à glace
+⛸	patin à glace
+🎣	canne à pêche
+🎽	chemise de course
+🎿	des skis
+🛷	traîneau
+🥌	pierre à friser
+🎯	coup direct
+🎱	billard 8 balles
+🔮	boule de cristal
+🧿	amulette de Nazar
+🎮	jeu vidéo
+🕹️	manette
+🕹	manette
+🎰	machine à sous
+🎲	jeu mourir
+🧩	scie sauteuse
+🧸	ours en peluche
+♠️	combinaison de pique
+♠	combinaison de pique
+♥️	costume de coeur
+♥	costume de coeur
+♦️	costume de diamant
+♦	costume de diamant
+♣️	costume de club
+♣	costume de club
+♟️	pion d'échecs
+♟	pion d'échecs
+🃏	joker
+🀄	mahjong dragon rouge
+🎴	cartes à jouer fleurs
+🎭	arts performants
+🖼️	photo encadrée
+🖼	photo encadrée
+🎨	palette d'artiste
+🧵	fil
+🧶	fil
+🔇	haut-parleur coupé
+🔈	haut-parleur faible volume
+🔉	haut-parleur volume moyen
+🔊	haut-parleur à volume élevé
+📢	haut-parleur
+📣	mégaphone
+📯	klaxon postal
+🔔	cloche
+🔕	cloche avec barre oblique
+🎼	partition musicale
+🎵	note musicale
+🎶	notes de musique
+🎙️	micro de studio
+🎙	micro de studio
+🎚️	curseur de niveau
+🎚	curseur de niveau
+🎛️	boutons de commande
+🎛	boutons de commande
+🎤	microphone
+🎧	casque de musique
+📻	radio
+🎷	saxophone
+🎸	guitare
+🎹	clavier musical
+🎺	trompette
+🎻	violon
+🥁	tambour
+📱	téléphone mobile
+📲	téléphone portable avec flèche
+☎️	Téléphone
+☎	Téléphone
+📞	récepteur téléphonique
+📟	téléavertisseur
+📠	télécopieur
+🔋	batterie
+🔌	Prise électrique
+💻	ordinateur portable
+🖥️	ordinateur de bureau
+🖥	ordinateur de bureau
+🖨️	imprimante
+🖨	imprimante
+⌨️	clavier
+⌨	clavier
+🖱️	souris d'ordinateur
+🖱	souris d'ordinateur
+🖲️	boule de commande
+🖲	boule de commande
+💽	disque informatique
+💾	disquette
+💿	disque optique
+📀	DVD
+🧮	abaque
+🎥	caméra de cinéma
+🎞️	cadres de films
+🎞	cadres de films
+📽️	projecteur de film
+📽	projecteur de film
+🎬	clap
+📺	télévision
+📷	caméra
+📸	appareil photo avec flash
+📹	caméra vidéo
+📼	cassette vidéo
+🔍	loupe inclinée vers la gauche
+🔎	loupe inclinée vers la droite
+🕯️	bougie
+🕯	bougie
+💡	ampoule
+🔦	lampe de poche
+🏮	lanterne en papier rouge
+📔	carnet avec couverture décorative
+📕	livre fermé
+📖	livre ouvert
+📗	livre vert
+📘	livre bleu
+📙	livre orange
+📚	livres
+📓	carnet de notes
+📒	registre
+📃	page avec boucle
+📜	faire défiler
+📄	page vers le haut
+📰	journal
+🗞️	journal enroulé
+🗞	journal enroulé
+📑	onglets de favoris
+🔖	signet
+🏷️	étiquette
+🏷	étiquette
+💰	Sac d'argent
+💴	billet de banque en yens
+💵	billet de banque en dollars
+💶	billet en euros
+💷	billet de banque livre
+💸	argent avec des ailes
+💳	carte de crédit
+🧾	reçu
+💹	graphique augmentant avec le yen
+💱	échange de devises
+💲	signe du dollar lourd
+✉️	enveloppe
+✉	enveloppe
+📧	e-mail
+📨	enveloppe entrante
+📩	enveloppe avec flèche
+📤	bac d'envoi
+📥	bac de réception
+📦	emballer
+📫	boîte aux lettres fermée avec drapeau levé
+📪	boîte aux lettres fermée avec drapeau abaissé
+📬	boîte aux lettres ouverte avec drapeau levé
+📭	boîte aux lettres ouverte avec drapeau abaissé
+📮	boîte aux lettres
+🗳️	urne avec bulletin de vote
+🗳	urne avec bulletin de vote
+✏️	crayon
+✏	crayon
+✒️	plume noire
+✒	plume noire
+🖋️	stylo plume
+🖋	stylo plume
+🖊️	stylo
+🖊	stylo
+🖌️	pinceau
+🖌	pinceau
+🖍️	crayon
+🖍	crayon
+📝	note
+💼	mallette
+📁	dossier de fichiers
+📂	ouvrir le dossier de fichiers
+🗂️	séparateurs de fiches
+🗂	séparateurs de fiches
+📅	calendrier
+📆	calendrier détachable
+🗒️	bloc-notes à spirale
+🗒	bloc-notes à spirale
+🗓️	calendrier en spirale
+🗓	calendrier en spirale
+📇	Indice de la carte
+📈	graphique croissant
+📉	graphique décroissant
+📊	diagramme à bandes
+📋	presse-papiers
+📌	punaise
+📍	punaise ronde
+📎	trombone
+🖇️	trombones liés
+🖇	trombones liés
+📏	règle droite
+📐	règle triangulaire
+✂️	ciseaux
+✂	ciseaux
+🗃️	boîte à fiches
+🗃	boîte à fiches
+🗄️	classeur
+🗄	classeur
+🗑️	corbeille
+🗑	corbeille
+🔒	fermé à clé
+🔓	débloqué
+🔏	verrouillé avec un stylo
+🔐	verrouillé avec clé
+🔑	clé
+🗝️	vieille clé
+🗝	vieille clé
+🔨	marteau
+⛏️	prendre
+⛏	prendre
+⚒️	marteau et pioche
+⚒	marteau et pioche
+🛠️	marteau et clé
+🛠	marteau et clé
+🗡️	dague
+🗡	dague
+⚔️	épées croisées
+⚔	épées croisées
+🔫	pistolet
+🏹	arc et des flèches
+🛡️	bouclier
+🛡	bouclier
+🔧	clé
+🔩	boulon et écrou
+⚙️	engrenage
+⚙	engrenage
+🗜️	serrer
+🗜	serrer
+⚖️	balance
+⚖	balance
+🔗	lien
+⛓️	Chaînes
+⛓	Chaînes
+🧰	boîte à outils
+🧲	aimant
+⚗️	alambic
+⚗	alambic
+🧪	tube à essai
+🧫	pain béni
+🧬	ADN
+🔬	microscope
+🔭	télescope
+📡	antenne satellite
+💉	seringue
+💊	pilule
+🚪	porte
+🛏️	lit
+🛏	lit
+🛋️	canapé et lampe
+🛋	canapé et lampe
+🚽	toilettes
+🚿	douche
+🛁	baignoire
+🧴	bouteille de lotion
+🧷	épingle de sûreté
+🧹	balai
+🧺	panier
+🧻	rouleau de papier
+🧼	savon
+🧽	éponge
+🧯	extincteur d'incendie
+🛒	panier
+🚬	cigarette
+⚰️	cercueil
+⚰	cercueil
+⚱️	urne funéraire
+⚱	urne funéraire
+🗿	moaï
+🏧	Signe de guichet automatique
+🚮	signe de détritus dans la poubelle
+🚰	eau potable
+♿	symbole de fauteuil roulant
+🚹	la Chambre des hommes
+🚺	chambre des femmes
+🚻	salle de repos
+🚼	symbole de bébé
+🚾	WC
+🛂	contrôle des passeports
+🛃	douane
+🛄	récupération des bagages
+🛅	consigne à bagages
+⚠️	avertissement
+⚠	avertissement
+🚸	enfants traversant
+⛔	Entrée interdite
+🚫	interdit
+🚳	Bicyclettes interdites
+🚭	Interdiction de fumer
+🚯	pas de déchets
+🚱	eau non potable
+🚷	Pas de piétons
+📵	pas de téléphones portables
+🔞	personne de moins de dix-huit ans
+☢️	radioactif
+☢	radioactif
+☣️	Danger biologique
+☣	Danger biologique
+⬆️	flèche vers le haut
+⬆	flèche vers le haut
+↗️	flèche vers le haut vers la droite
+↗	flèche vers le haut vers la droite
+➡️	flèche droite
+➡	flèche droite
+↘️	flèche vers le bas à droite
+↘	flèche vers le bas à droite
+⬇️	flèche vers le bas
+⬇	flèche vers le bas
+↙️	flèche vers le bas à gauche
+↙	flèche vers le bas à gauche
+⬅️	Flèche gauche
+⬅	Flèche gauche
+↖️	flèche haut-gauche
+↖	flèche haut-gauche
+↕️	flèche haut-bas
+↕	flèche haut-bas
+↔️	flèche gauche-droite
+↔	flèche gauche-droite
+↩️	flèche droite courbée vers la gauche
+↩	flèche droite courbée vers la gauche
+↪️	flèche gauche courbée vers la droite
+↪	flèche gauche courbée vers la droite
+⤴️	flèche droite qui s'incurve vers le haut
+⤴	flèche droite qui s'incurve vers le haut
+⤵️	flèche droite courbée vers le bas
+⤵	flèche droite courbée vers le bas
+🔃	flèches verticales dans le sens des aiguilles d'une montre
+🔄	bouton flèches dans le sens inverse des aiguilles d'une montre
+🔙	Flèche RETOUR
+🔚	Flèche FIN
+🔛	Flèche ON
+🔜	BIENTÔT flèche
+🔝	Flèche HAUT
+🛐	lieu de culte
+⚛️	symbole de l'atome
+⚛	symbole de l'atome
+🕉️	oh
+🕉	oh
+✡️	étoile de David
+✡	étoile de David
+☸️	roue du dharma
+☸	roue du dharma
+☯️	yin yang
+☯	yin yang
+✝️	croix latine
+✝	croix latine
+☦️	croix orthodoxe
+☦	croix orthodoxe
+☪️	étoile et croissant
+☪	étoile et croissant
+☮️	symbole de la paix
+☮	symbole de la paix
+🕎	menorah
+🔯	étoile à six branches en pointillés
+♈	Bélier
+♉	Taureau
+♊	Gémeaux
+♋	Cancer
+♌	Leo
+♍	Vierge
+♎	Balance
+♏	Scorpion
+♐	Sagittaire
+♑	Capricorne
+♒	Verseau
+♓	Poissons
+⛎	Ophiuchus
+🔀	bouton de lecture aléatoire des pistes
+🔁	bouton de répétition
+🔂	répéter un seul bouton
+▶️	Bouton jouer
+▶	Bouton jouer
+⏩	bouton d'avance rapide
+⏭️	bouton de la piste suivante
+⏭	bouton de la piste suivante
+⏯️	bouton lecture ou pause
+⏯	bouton lecture ou pause
+◀️	bouton marche arrière
+◀	bouton marche arrière
+⏪	bouton de retour rapide
+⏮️	bouton de la dernière piste
+⏮	bouton de la dernière piste
+🔼	bouton vers le haut
+⏫	bouton d'augmentation rapide
+🔽	bouton vers le bas
+⏬	bouton de descente rapide
+⏸️	bouton pause
+⏸	bouton pause
+⏹️	bouton d'arrêt
+⏹	bouton d'arrêt
+⏺️	bouton d'enregistrement
+⏺	bouton d'enregistrement
+⏏️	bouton d'éjection
+⏏	bouton d'éjection
+🎦	cinéma
+🔅	bouton d'atténuation
+🔆	bouton lumineux
+📶	barres d'antenne
+📳	mode vibreur
+📴	téléphone portable éteint
+♀️	signe féminin
+♀	signe féminin
+♂️	signe masculin
+♂	signe masculin
+⚕️	symbole médical
+⚕	symbole médical
+♾️	infini
+♾	infini
+♻️	symbole de recyclage
+♻	symbole de recyclage
+⚜️	fleur de lys
+⚜	fleur de lys
+🔱	emblème du trident
+📛	badge
+🔰	Symbole japonais pour débutant
+⭕	grand cercle lourd
+✅	coche épaisse blanche
+☑️	urne avec chèque
+☑	urne avec chèque
+✔️	grosse coche
+✔	grosse coche
+✖️	multiplication lourde x
+✖	multiplication lourde x
+❌	marque de croix
+❎	bouton de croix
+➕	signe plus lourd
+➖	signe moins lourd
+➗	signe de division lourde
+➰	boucle bouclée
+➿	double boucle bouclée
+〽️	marque d'alternance de pièce
+〽	marque d'alternance de pièce
+✳️	astérisque à huit branches
+✳	astérisque à huit branches
+✴️	étoile à huit branches
+✴	étoile à huit branches
+❇️	scintillait
+❇	scintillait
+‼️	double point d'exclamation
+‼	double point d'exclamation
+⁉️	point d'interrogation d'exclamation
+⁉	point d'interrogation d'exclamation
+❓	point d'interrogation
+❔	point d'interrogation blanc
+❕	point d'exclamation blanc
+❗	point d'exclamation
+〰️	tiret ondulé
+〰	tiret ondulé
+©️	droits d'auteur
+©	droits d'auteur
+®️	inscrit
+®	inscrit
+™️	marque déposée
+™	marque déposée
+#️⃣	touche : #
+#⃣	touche : #
+*️⃣	touche : *
+*⃣	touche : *
+0️⃣	touche : 0
+0⃣	touche : 0
+1️⃣	touche : 1
+1⃣	touche : 1
+2️⃣	touche : 2
+2⃣	touche : 2
+3️⃣	touche : 3
+3⃣	touche : 3
+4️⃣	touche : 4
+4⃣	touche : 4
+5️⃣	touche : 5
+5⃣	touche : 5
+6️⃣	touche: 6
+6⃣	touche: 6
+7️⃣	touche : 7
+7⃣	touche : 7
+8️⃣	touche : 8
+8⃣	touche : 8
+9️⃣	touche : 9
+9⃣	touche : 9
+🔟	touche : 10
+💯	cent points
+🔠	saisir une majuscule latine
+🔡	saisir des minuscules latines
+🔢	saisir des nombres
+🔣	symboles d'entrée
+🔤	saisir des lettres latines
+🅰️	Un bouton (groupe sanguin)
+🅰	Un bouton (groupe sanguin)
+🆎	Bouton AB (groupe sanguin)
+🅱️	Bouton B (groupe sanguin)
+🅱	Bouton B (groupe sanguin)
+🆑	Bouton CL
+🆒	Bouton REFROIDISSEMENT
+🆓	Bouton GRATUIT
+ℹ️	information
+ℹ	information
+🆔	Bouton d'identification
+Ⓜ️	M encerclé
+Ⓜ	M encerclé
+🆕	Bouton NOUVEAU
+🆖	Bouton MAUVAIS
+🅾️	Bouton O (groupe sanguin)
+🅾	Bouton O (groupe sanguin)
+🆗	Bouton OK
+🅿️	Bouton P
+🅿	Bouton P
+🆘	Bouton SOS
+🆙	Bouton HAUT
+🆚	Bouton VS
+🈁	Bouton japonais « ici »
+🈂️	Bouton japonais « frais de service »
+🈂	Bouton japonais « frais de service »
+🈷️	Bouton japonais « montant mensuel »
+🈷	Bouton japonais « montant mensuel »
+🈶	Bouton japonais « payant »
+🈯	Bouton japonais « réservé »
+🉐	Bouton japonais « bonne affaire »
+🈹	Bouton japonais « remise »
+🈚	Bouton japonais « gratuit »
+🈲	Bouton japonais « interdit »
+🉑	Bouton japonais « acceptable »
+🈸	Bouton japonais « application »
+🈴	Bouton japonais « note de passage »
+🈳	Bouton japonais « poste vacant »
+㊗️	Bouton japonais « félicitations »
+㊗	Bouton japonais « félicitations »
+㊙️	Bouton « secret » japonais
+㊙	Bouton « secret » japonais
+🈺	Bouton japonais « ouvert aux affaires »
+🈵	Bouton japonais « pas de poste vacant »
+▪️	petit carré noir
+▪	petit carré noir
+▫️	petit carré blanc
+▫	petit carré blanc
+◻️	carré moyen blanc
+◻	carré moyen blanc
+◼️	carré moyen noir
+◼	carré moyen noir
+◽	carré blanc moyen-petit
+◾	carré noir moyen-petit
+⬛	grand carré noir
+⬜	grand carré blanc
+🔶	gros diamant orange
+🔷	gros diamant bleu
+🔸	petit diamant orange
+🔹	petit diamant bleu
+🔺	triangle rouge pointé vers le haut
+🔻	triangle rouge pointé vers le bas
+💠	diamant avec un point
+🔘	bouton radio
+🔲	bouton carré noir
+🔳	bouton carré blanc
+⚪	cercle blanc
+⚫	cercle noir
+🔴	Cercle rouge
+🔵	cercle bleu
+🏁	drapeau à damier
+🚩	drapeau triangulaire
+🎌	drapeaux croisés
+🏴	drapeau noir
+🏳️	drapeau blanc
+🏳	drapeau blanc
+🏳️‍🌈	drapeau arc-en-ciel
+🏳‍🌈	drapeau arc-en-ciel
+🏴‍☠️	drapeau pirate
+🏴‍☠	drapeau pirate
+🇦🇨	Île de l'Ascension
+🇦🇩	Andorre
+🇦🇪	Emirats Arabes Unis
+🇦🇫	Afghanistan
+🇦🇬	Antigua-et-Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albanie
+🇦🇲	Arménie
+🇦🇴	Angola
+🇦🇶	Antarctique
+🇦🇷	Argentine
+🇦🇸	Samoa américaines
+🇦🇹	L'Autriche
+🇦🇺	Australie
+🇦🇼	Aruba
+🇦🇽	Iles Aland
+🇦🇿	Azerbaïdjan
+🇧🇦	Bosnie-Herzégovine
+🇧🇧	Barbade
+🇧🇩	Bangladesh
+🇧🇪	Belgique
+🇧🇫	Burkina Faso
+🇧🇬	Bulgarie
+🇧🇭	Bahreïn
+🇧🇮	Burundi
+🇧🇯	Bénin
+🇧🇱	Saint-Barthélemy
+🇧🇲	Bermudes
+🇧🇳	Brunéi
+🇧🇴	Bolivie
+🇧🇶	Pays-Bas caribéens
+🇧🇷	Brésil
+🇧🇸	Bahamas
+🇧🇹	Bhoutan
+🇧🇻	Île Bouvet
+🇧🇼	Botswana
+🇧🇾	Biélorussie
+🇧🇿	Bélize
+🇨🇦	Canada
+🇨🇨	Îles Cocos (Keeling)
+🇨🇩	Congo-Kinshasa
+🇨🇫	République centrafricaine
+🇨🇬	Congo-Brazzaville
+🇨🇭	Suisse
+🇨🇮	Côte d'Ivoire
+🇨🇰	les Îles Cook
+🇨🇱	Chili
+🇨🇲	Cameroun
+🇨🇳	Chine
+🇨🇴	Colombie
+🇨🇵	Île Clipperton
+🇨🇷	Costa Rica
+🇨🇺	Cuba
+🇨🇻	Cap-Vert
+🇨🇼	Curacao
+🇨🇽	L'île de noël
+🇨🇾	Chypre
+🇨🇿	Tchéquie
+🇩🇪	Allemagne
+🇩🇬	Diego García
+🇩🇯	Djibouti
+🇩🇰	Danemark
+🇩🇲	Dominique
+🇩🇴	République dominicaine
+🇩🇿	Algérie
+🇪🇦	Ceuta et Melilla
+🇪🇨	Équateur
+🇪🇪	Estonie
+🇪🇬	Egypte
+🇪🇭	Sahara occidental
+🇪🇷	Érythrée
+🇪🇸	Espagne
+🇪🇹	Ethiopie
+🇪🇺	Union européenne
+🇫🇮	Finlande
+🇫🇯	Fidji
+🇫🇰	les îles Falkland
+🇫🇲	Micronésie
+🇫🇴	Îles Féroé
+🇫🇷	France
+🇬🇦	Gabon
+🇬🇧	Royaume-Uni
+🇬🇩	Grenade
+🇬🇪	Géorgie
+🇬🇫	Guyane Française
+🇬🇬	Guernesey
+🇬🇭	Ghana
+🇬🇮	Gibraltar
+🇬🇱	Groenland
+🇬🇲	Gambie
+🇬🇳	Guinée
+🇬🇵	Guadeloupe
+🇬🇶	Guinée Équatoriale
+🇬🇷	Grèce
+🇬🇸	Géorgie du Sud et îles Sandwich du Sud
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinée-Bissau
+🇬🇾	Guyane
+🇭🇰	RAS chinoise de Hong Kong
+🇭🇲	Îles Heard et McDonald
+🇭🇳	Honduras
+🇭🇷	Croatie
+🇭🇹	Haïti
+🇭🇺	Hongrie
+🇮🇨	les îles Canaries
+🇮🇩	Indonésie
+🇮🇪	Irlande
+🇮🇱	Israël
+🇮🇲	île de Man
+🇮🇳	Inde
+🇮🇴	Territoire britannique de l'océan Indien
+🇮🇶	Irak
+🇮🇷	L'Iran
+🇮🇸	Islande
+🇮🇹	Italie
+🇯🇪	Jersey
+🇯🇲	Jamaïque
+🇯🇴	Jordan
+🇯🇵	Japon
+🇰🇪	Kenya
+🇰🇬	Kirghizistan
+🇰🇭	Cambodge
+🇰🇮	Kiribati
+🇰🇲	Comores
+🇰🇳	Saint-Kitts-et-Nevis
+🇰🇵	Corée du Nord
+🇰🇷	Corée du Sud
+🇰🇼	Koweit
+🇰🇾	Îles Caïmans
+🇰🇿	Kazakhstan
+🇱🇦	Laos
+🇱🇧	Liban
+🇱🇨	Sainte Lucie
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Libéria
+🇱🇸	Lesotho
+🇱🇹	Lituanie
+🇱🇺	Luxembourg
+🇱🇻	Lettonie
+🇱🇾	Libye
+🇲🇦	Maroc
+🇲🇨	Monaco
+🇲🇩	Moldavie
+🇲🇪	Monténégro
+🇲🇫	Saint-Martin
+🇲🇬	Madagascar
+🇲🇭	Iles Marshall
+🇲🇰	Macédoine
+🇲🇱	Mali
+🇲🇲	Myanmar (Birmanie)
+🇲🇳	Mongolie
+🇲🇴	RAS de Macao Chine
+🇲🇵	Îles Mariannes du Nord
+🇲🇶	Martinique
+🇲🇷	Mauritanie
+🇲🇸	Montserrat
+🇲🇹	Malte
+🇲🇺	Maurice
+🇲🇻	Maldives
+🇲🇼	Malawi
+🇲🇽	Mexique
+🇲🇾	Malaisie
+🇲🇿	Mozambique
+🇳🇦	Namibie
+🇳🇨	Nouvelle Calédonie
+🇳🇪	Niger
+🇳🇫	l'ile de Norfolk
+🇳🇬	Nigeria
+🇳🇮	Nicaragua
+🇳🇱	Pays-Bas
+🇳🇴	Norvège
+🇳🇵	Népal
+🇳🇷	Nauru
+🇳🇺	Nioué
+🇳🇿	Nouvelle-Zélande
+🇴🇲	Oman
+🇵🇦	Panama
+🇵🇪	Pérou
+🇵🇫	Polynésie française
+🇵🇬	Papouasie Nouvelle Guinée
+🇵🇭	Philippines
+🇵🇰	Pakistan
+🇵🇱	Pologne
+🇵🇲	Saint-Pierre et Miquelon
+🇵🇳	Îles Pitcairn
+🇵🇷	Porto Rico
+🇵🇸	Territoires palestiniens
+🇵🇹	le Portugal
+🇵🇼	Palaos
+🇵🇾	Paraguay
+🇶🇦	Qatar
+🇷🇪	Réunion
+🇷🇴	Roumanie
+🇷🇸	Serbie
+🇷🇺	Russie
+🇷🇼	Rwanda
+🇸🇦	Arabie Saoudite
+🇸🇧	Les îles Salomon
+🇸🇨	les Seychelles
+🇸🇩	Soudan
+🇸🇪	Suède
+🇸🇬	Singapour
+🇸🇭	Sainte-Hélène
+🇸🇮	Slovénie
+🇸🇯	Svalbard et Jan Mayen
+🇸🇰	Slovaquie
+🇸🇱	Sierra Leone
+🇸🇲	Saint Marin
+🇸🇳	Sénégal
+🇸🇴	Somalie
+🇸🇷	Surinam
+🇸🇸	Soudan du sud
+🇸🇹	Sao Tomé-et-Principe
+🇸🇻	Le Salvador
+🇸🇽	Saint-Martin
+🇸🇾	Syrie
+🇸🇿	Swaziland
+🇹🇦	Tristan de Cunha
+🇹🇨	Îles Turques et Caïques
+🇹🇩	Tchad
+🇹🇫	Terres australes françaises
+🇹🇬	Aller
+🇹🇭	Thaïlande
+🇹🇯	Tadjikistan
+🇹🇰	Tokélaou
+🇹🇱	Timor-Leste
+🇹🇲	Turkménistan
+🇹🇳	Tunisie
+🇹🇴	Tonga
+🇹🇷	Turquie
+🇹🇹	Trinité-et-Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taïwan
+🇹🇿	Tanzanie
+🇺🇦	Ukraine
+🇺🇬	Ouganda
+🇺🇲	Îles éloignées des États-Unis
+🇺🇳	Les Nations Unies
+🇺🇸	États-Unis
+🇺🇾	Uruguay
+🇺🇿	Ouzbékistan
+🇻🇦	Cité du Vatican
+🇻🇨	Saint-Vincent-et-les Grenadines
+🇻🇪	Venezuela
+🇻🇬	Îles Vierges britanniques
+🇻🇮	Îles Vierges américaines
+🇻🇳	Viêt Nam
+🇻🇺	Vanuatu
+🇼🇫	Wallis-et-Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Yémen
+🇾🇹	Mayotte
+🇿🇦	Afrique du Sud
+🇿🇲	Zambie
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Angleterre
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Écosse
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Pays de Galles

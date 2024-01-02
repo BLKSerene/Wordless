@@ -1,0 +1,3570 @@
+😀	šklebící se obličej
+😁	rozzářená tvář s usměvavýma očima
+😂	tvář se slzami radosti
+🤣	válel se po podlaze smíchy
+😃	šklebící se obličej s velkýma očima
+😄	šklebící se obličej s usměvavýma očima
+😅	šklebící se obličej s potem
+😆	šklebící se šilhavý obličej
+😉	mrkací tvář
+😊	usmívající se tvář s usměvavýma očima
+😋	tvář chutnající jídlo
+😎	usmívající se tvář se slunečními brýlemi
+😍	usmívající se tvář s očima srdce
+😘	tvář fouká polibek
+🥰	usmívající se tvář s 3 srdce
+😗	líbající tvář
+😙	líbající tvář s usměvavýma očima
+😚	líbající tvář se zavřenýma očima
+☺️	usměvavá tvář
+☺	usměvavá tvář
+🙂	mírně usměvavý obličej
+🤗	objímání obličeje
+🤩	hvězdný
+🤔	myslící tvář
+🤨	obličej se zvednutým obočím
+😐	neutrální tvář
+😑	bezvýrazná tvář
+😶	obličej bez úst
+🙄	obličej s vykulenýma očima
+😏	usměvavý obličej
+😣	vytrvalá tvář
+😥	smutný, ale úlevný obličej
+😮	tvář s otevřenými ústy
+🤐	zip-ústa obličej
+😯	ztichlý obličej
+😪	ospalý obličej
+😫	unavený obličej
+😴	spící tvář
+😌	úlevný obličej
+😛	obličej s jazykem
+😜	mrkající obličej jazykem
+😝	mžourající obličej jazykem
+🤤	slintající obličej
+😒	nepobavený obličej
+😓	sklopená tvář potem
+😔	zamyšlený obličej
+😕	zmatený obličej
+🙃	vzhůru nohama obličej
+🤑	peníze-ústa tvář
+😲	udivený obličej
+☹️	zamračený obličej
+☹	zamračený obličej
+🙁	mírně zamračený obličej
+😖	zmatený obličej
+😞	zklamaný obličej
+😟	ustaraný obličej
+😤	obličej s párou z nosu
+😢	plačící tvář
+😭	hlasitě plačící tvář
+😦	zamračený obličej s otevřenými ústy
+😧	utrápená tvář
+😨	ustrašená tvář
+😩	unavený obličej
+🤯	explodující hlava
+😬	šklebící se obličej
+😰	úzkostná tvář s potem
+😱	tvář křičící strachem
+🥵	horká tvář
+🥶	chladný obličej
+😳	zarudlý obličej
+🤪	bláznivý obličej
+😵	závrať obličej
+😡	našpulený obličej
+😠	naštvaný obličej
+🤬	tvář se symboly na ústech
+😷	obličej s lékařskou maskou
+🤒	obličej s teploměrem
+🤕	obličej s obvazem hlavy
+🤢	nevolný obličej
+🤮	tvář zvracení
+🤧	kýchající obličej
+😇	usmívající se tvář s halo
+🤠	obličej kovbojského klobouku
+🥳	párty tvář
+🥴	mdlý obličej
+🥺	prosebná tvář
+🤥	ležící tvář
+🤫	tlumící obličej
+🤭	obličej s rukou přes ústa
+🧐	obličej s monoklem
+🤓	blbeček obličej
+😈	usmívající se tvář s rohy
+👿	rozzlobený obličej s rohy
+🤡	tvář klauna
+👹	zlobr
+👺	šotek
+💀	lebka
+☠️	lebka a zkřížené hnáty
+☠	lebka a zkřížené hnáty
+👻	duch
+👽	mimozemšťan
+👾	mimozemské monstrum
+🤖	robot tvář
+💩	hromada hovínka
+😺	šklebící se kočičí tvář
+😸	šklebící se kočičí tvář s usměvavýma očima
+😹	kočičí tvář se slzami radosti
+😻	usmívající se kočičí tvář s očima srdce
+😼	kočičí tvář s ironickým úsměvem
+😽	líbání kočičí tvář
+🙀	unavený kočičí obličej
+😿	plačící kočičí tvář
+😾	našpulená kočičí tvář
+🙈	nevidomá opice
+🙉	neslyšící opice
+🙊	mluvit-no-zlo opice
+🏻	světlý tón pleti
+🏼	středně světlý tón pleti
+🏽	střední tón pleti
+🏾	středně tmavý odstín pleti
+🏿	tmavý odstín pleti
+👶	dítě
+👶🏻	dítě: světlý tón pleti
+👶🏼	dítě: středně světlý tón pleti
+👶🏽	dítě: střední tón pleti
+👶🏾	dítě: středně tmavý odstín pleti
+👶🏿	dítě: tmavý odstín pleti
+🧒	dítě
+🧒🏻	dítě: světlý tón pleti
+🧒🏼	dítě: středně světlý tón pleti
+🧒🏽	dítě: střední odstín pleti
+🧒🏾	dítě: středně tmavý odstín pleti
+🧒🏿	dítě: tmavý odstín pleti
+👦	chlapec
+👦🏻	chlapec: světlý odstín pleti
+👦🏼	chlapec: středně světlý odstín pleti
+👦🏽	chlapec: střední odstín pleti
+👦🏾	chlapec: středně tmavý odstín pleti
+👦🏿	chlapec: tmavý odstín pleti
+👧	dívka
+👧🏻	dívka: světlý odstín pleti
+👧🏼	dívka: středně světlý odstín pleti
+👧🏽	dívka: střední odstín pleti
+👧🏾	dívka: středně tmavý odstín pleti
+👧🏿	dívka: tmavý odstín pleti
+🧑	dospělý
+🧑🏻	dospělý: světlý tón pleti
+🧑🏼	dospělý: středně světlý tón pleti
+🧑🏽	dospělý: střední tón pleti
+🧑🏾	dospělý: středně tmavý odstín pleti
+🧑🏿	dospělý: tmavý odstín pleti
+👨	muž
+👨🏻	muž: světlý odstín pleti
+👨🏼	muž: středně světlý odstín pleti
+👨🏽	muž: střední odstín pleti
+👨🏾	muž: středně tmavý odstín pleti
+👨🏿	muž: tmavý odstín pleti
+👩	žena
+👩🏻	žena: světlý odstín pleti
+👩🏼	žena: středně světlý tón pleti
+👩🏽	žena: střední odstín pleti
+👩🏾	žena: středně tmavý odstín pleti
+👩🏿	žena: tmavý odstín pleti
+🧓	starší dospělý
+🧓🏻	starší dospělý: světlý odstín pleti
+🧓🏼	starší dospělý: středně světlý tón pleti
+🧓🏽	starší dospělý: střední tón pleti
+🧓🏾	starší dospělý: středně tmavý odstín pleti
+🧓🏿	starší dospělý: tmavý odstín pleti
+👴	starý muž
+👴🏻	starý muž: světlý odstín pleti
+👴🏼	starý muž: středně světlý odstín pleti
+👴🏽	starý muž: střední odstín pleti
+👴🏾	starý muž: středně tmavý odstín pleti
+👴🏿	starý muž: tmavý odstín pleti
+👵	stará žena
+👵🏻	stará žena: světlý odstín pleti
+👵🏼	stará žena: středně světlý odstín pleti
+👵🏽	stará žena: střední odstín pleti
+👵🏾	stará žena: středně tmavý odstín pleti
+👵🏿	stará žena: tmavý odstín pleti
+👨‍⚕️	muž zdravotnický pracovník
+👨‍⚕	muž zdravotnický pracovník
+👨🏻‍⚕️	muž zdravotní pracovník: světlý tón pleti
+👨🏻‍⚕	muž zdravotní pracovník: světlý tón pleti
+👨🏼‍⚕️	muž zdravotní pracovník: středně světlý tón pleti
+👨🏼‍⚕	muž zdravotní pracovník: středně světlý tón pleti
+👨🏽‍⚕️	muž zdravotní pracovník: střední tón pleti
+👨🏽‍⚕	muž zdravotní pracovník: střední tón pleti
+👨🏾‍⚕️	muž zdravotní pracovník: středně tmavý odstín pleti
+👨🏾‍⚕	muž zdravotní pracovník: středně tmavý odstín pleti
+👨🏿‍⚕️	muž zdravotní pracovník: tmavý odstín pleti
+👨🏿‍⚕	muž zdravotní pracovník: tmavý odstín pleti
+👩‍⚕️	žena zdravotnický pracovník
+👩‍⚕	žena zdravotnický pracovník
+👩🏻‍⚕️	zdravotnický pracovník: světlý tón pleti
+👩🏻‍⚕	zdravotnický pracovník: světlý tón pleti
+👩🏼‍⚕️	zdravotnický pracovník: středně světlý tón pleti
+👩🏼‍⚕	zdravotnický pracovník: středně světlý tón pleti
+👩🏽‍⚕️	zdravotnický pracovník: střední tón pleti
+👩🏽‍⚕	zdravotnický pracovník: střední tón pleti
+👩🏾‍⚕️	zdravotnický pracovník: středně tmavý odstín pleti
+👩🏾‍⚕	zdravotnický pracovník: středně tmavý odstín pleti
+👩🏿‍⚕️	zdravotnický pracovník: tmavý odstín pleti
+👩🏿‍⚕	zdravotnický pracovník: tmavý odstín pleti
+👨‍🎓	muž student
+👨🏻‍🎓	muž student: světlý odstín pleti
+👨🏼‍🎓	muž student: středně světlý odstín pleti
+👨🏽‍🎓	muž student: střední odstín pleti
+👨🏾‍🎓	muž student: středně tmavý odstín pleti
+👨🏿‍🎓	muž student: tmavý odstín pleti
+👩‍🎓	studentka
+👩🏻‍🎓	studentka: světlý odstín pleti
+👩🏼‍🎓	studentka: středně světlý odstín pleti
+👩🏽‍🎓	studentka: střední odstín pleti
+👩🏾‍🎓	studentka: středně tmavý odstín pleti
+👩🏿‍🎓	studentka: tmavý odstín pleti
+👨‍🏫	muž učitel
+👨🏻‍🏫	muž učitel: světlý odstín pleti
+👨🏼‍🏫	muž učitel: středně světlý odstín pleti
+👨🏽‍🏫	muž učitel: střední odstín pleti
+👨🏾‍🏫	muž učitel: středně tmavý odstín pleti
+👨🏿‍🏫	muž učitel: tmavý odstín pleti
+👩‍🏫	žena učitelka
+👩🏻‍🏫	učitelka: světlý odstín pleti
+👩🏼‍🏫	učitelka: středně světlý odstín pleti
+👩🏽‍🏫	učitelka: střední odstín pleti
+👩🏾‍🏫	učitelka: středně tmavý odstín pleti
+👩🏿‍🏫	učitelka: tmavý odstín pleti
+👨‍⚖️	muž soudce
+👨‍⚖	muž soudce
+👨🏻‍⚖️	muž soudce: světlý odstín pleti
+👨🏻‍⚖	muž soudce: světlý odstín pleti
+👨🏼‍⚖️	muž soudce: středně světlý odstín pleti
+👨🏼‍⚖	muž soudce: středně světlý odstín pleti
+👨🏽‍⚖️	muž soudce: střední tón pleti
+👨🏽‍⚖	muž soudce: střední tón pleti
+👨🏾‍⚖️	muž soudce: středně tmavý odstín pleti
+👨🏾‍⚖	muž soudce: středně tmavý odstín pleti
+👨🏿‍⚖️	muž soudce: tmavý odstín pleti
+👨🏿‍⚖	muž soudce: tmavý odstín pleti
+👩‍⚖️	žena soudkyně
+👩‍⚖	žena soudkyně
+👩🏻‍⚖️	soudkyně: světlý odstín pleti
+👩🏻‍⚖	soudkyně: světlý odstín pleti
+👩🏼‍⚖️	rozhodčí: středně světlý odstín pleti
+👩🏼‍⚖	rozhodčí: středně světlý odstín pleti
+👩🏽‍⚖️	žena rozhodčí: střední odstín pleti
+👩🏽‍⚖	žena rozhodčí: střední odstín pleti
+👩🏾‍⚖️	rozhodčí: středně tmavý odstín pleti
+👩🏾‍⚖	rozhodčí: středně tmavý odstín pleti
+👩🏿‍⚖️	soudkyně: tmavý odstín pleti
+👩🏿‍⚖	soudkyně: tmavý odstín pleti
+👨‍🌾	muž farmář
+👨🏻‍🌾	muž farmář: světlý odstín pleti
+👨🏼‍🌾	muž farmář: středně světlý odstín pleti
+👨🏽‍🌾	muž farmář: střední tón pleti
+👨🏾‍🌾	muž farmář: středně tmavý odstín pleti
+👨🏿‍🌾	muž farmář: tmavý odstín pleti
+👩‍🌾	žena farmářka
+👩🏻‍🌾	farmářka: světlý odstín pleti
+👩🏼‍🌾	farmářka: středně světlý tón pleti
+👩🏽‍🌾	farmářka: střední tón pleti
+👩🏾‍🌾	farmářka: středně tmavý odstín pleti
+👩🏿‍🌾	farmářka: tmavý odstín pleti
+👨‍🍳	muž kuchař
+👨🏻‍🍳	muž kuchař: světlý odstín pleti
+👨🏼‍🍳	muž kuchař: středně světlý tón pleti
+👨🏽‍🍳	muž kuchař: střední tón pleti
+👨🏾‍🍳	muž kuchař: středně tmavý odstín pleti
+👨🏿‍🍳	muž kuchař: tmavý odstín pleti
+👩‍🍳	žena kuchařka
+👩🏻‍🍳	kuchařka: světlý odstín pleti
+👩🏼‍🍳	kuchařka: středně světlý odstín pleti
+👩🏽‍🍳	kuchařka: střední odstín pleti
+👩🏾‍🍳	kuchařka: středně tmavý odstín pleti
+👩🏿‍🍳	žena kuchařka: tmavý odstín pleti
+👨‍🔧	muž mechanik
+👨🏻‍🔧	muž mechanik: světlý odstín pleti
+👨🏼‍🔧	muž mechanik: středně světlý odstín pleti
+👨🏽‍🔧	muž mechanik: střední odstín pleti
+👨🏾‍🔧	muž mechanik: středně tmavý odstín pleti
+👨🏿‍🔧	muž mechanik: tmavý odstín pleti
+👩‍🔧	žena mechanik
+👩🏻‍🔧	žena mechanik: světlý odstín pleti
+👩🏼‍🔧	žena mechanik: středně světlý odstín pleti
+👩🏽‍🔧	žena mechanik: střední odstín pleti
+👩🏾‍🔧	žena mechanik: středně tmavý odstín pleti
+👩🏿‍🔧	žena mechanik: tmavý odstín pleti
+👨‍🏭	muž tovární dělník
+👨🏻‍🏭	muž tovární dělník: světlý odstín pleti
+👨🏼‍🏭	muž tovární dělník: středně světlý odstín pleti
+👨🏽‍🏭	muž tovární dělník: střední odstín pleti
+👨🏾‍🏭	muž tovární dělník: středně tmavý odstín pleti
+👨🏿‍🏭	muž tovární dělník: tmavý odstín pleti
+👩‍🏭	žena tovární dělník
+👩🏻‍🏭	žena tovární dělník: světlý odstín pleti
+👩🏼‍🏭	žena tovární dělnice: středně světlý odstín pleti
+👩🏽‍🏭	žena tovární dělník: střední odstín pleti
+👩🏾‍🏭	žena tovární dělnice: středně tmavý odstín pleti
+👩🏿‍🏭	žena tovární dělník: tmavý odstín pleti
+👨‍💼	muž úřednice
+👨🏻‍💼	muž administrativní pracovník: světlý tón pleti
+👨🏼‍💼	muž administrativní pracovník: středně světlý odstín pleti
+👨🏽‍💼	muž administrativní pracovník: střední tón pleti
+👨🏾‍💼	muž administrativní pracovník: středně tmavý odstín pleti
+👨🏿‍💼	muž administrativní pracovník: tmavý odstín pleti
+👩‍💼	žena úřednice
+👩🏻‍💼	žena úřednice: světlý odstín pleti
+👩🏼‍💼	úřednice: středně světlý odstín pleti
+👩🏽‍💼	úřednice: střední odstín pleti
+👩🏾‍💼	úřednice: středně tmavý odstín pleti
+👩🏿‍💼	žena úřednice: tmavý odstín pleti
+👨‍🔬	muž vědec
+👨🏻‍🔬	muž vědec: světlý tón pleti
+👨🏼‍🔬	muž vědec: středně světlý tón pleti
+👨🏽‍🔬	muž vědec: střední tón pleti
+👨🏾‍🔬	muž vědec: středně tmavý odstín pleti
+👨🏿‍🔬	muž vědec: tmavý odstín pleti
+👩‍🔬	žena vědec
+👩🏻‍🔬	vědecká žena: světlý tón pleti
+👩🏼‍🔬	vědecká žena: středně světlý tón pleti
+👩🏽‍🔬	vědecká žena: střední tón pleti
+👩🏾‍🔬	vědecká žena: středně tmavý odstín pleti
+👩🏿‍🔬	vědecká žena: tmavý odstín pleti
+👨‍💻	člověk technolog
+👨🏻‍💻	muž technolog: světlý odstín pleti
+👨🏼‍💻	muž technolog: středně světlý odstín pleti
+👨🏽‍💻	muž technolog: střední tón pleti
+👨🏾‍💻	muž technolog: středně tmavý odstín pleti
+👨🏿‍💻	muž technolog: tmavý odstín pleti
+👩‍💻	žena technolog
+👩🏻‍💻	žena technolog: světlý tón pleti
+👩🏼‍💻	žena technolog: středně světlý tón pleti
+👩🏽‍💻	žena technolog: střední tón pleti
+👩🏾‍💻	žena technolog: středně tmavý odstín pleti
+👩🏿‍💻	žena technolog: tmavý odstín pleti
+👨‍🎤	muž zpěvák
+👨🏻‍🎤	muž zpěvák: světlý odstín pleti
+👨🏼‍🎤	muž zpěvák: středně světlý odstín pleti
+👨🏽‍🎤	muž zpěvák: střední odstín pleti
+👨🏾‍🎤	muž zpěvák: středně tmavý odstín pleti
+👨🏿‍🎤	muž zpěvák: tmavý odstín pleti
+👩‍🎤	zpěvačka
+👩🏻‍🎤	zpěvačka: světlý odstín pleti
+👩🏼‍🎤	zpěvačka: středně světlý odstín pleti
+👩🏽‍🎤	zpěvačka: střední odstín pleti
+👩🏾‍🎤	zpěvačka: středně tmavý odstín pleti
+👩🏿‍🎤	zpěvačka: tmavý odstín pleti
+👨‍🎨	muž umělec
+👨🏻‍🎨	muž umělec: světlý odstín pleti
+👨🏼‍🎨	muž umělec: středně světlý odstín pleti
+👨🏽‍🎨	muž umělec: střední odstín pleti
+👨🏾‍🎨	muž umělec: středně tmavý odstín pleti
+👨🏿‍🎨	muž umělec: tmavý odstín pleti
+👩‍🎨	umělkyně
+👩🏻‍🎨	umělkyně: světlý odstín pleti
+👩🏼‍🎨	umělkyně: středně světlý odstín pleti
+👩🏽‍🎨	umělkyně: střední odstín pleti
+👩🏾‍🎨	umělkyně: středně tmavý odstín pleti
+👩🏿‍🎨	umělkyně: tmavý odstín pleti
+👨‍✈️	muž pilot
+👨‍✈	muž pilot
+👨🏻‍✈️	muž pilot: světlý odstín pleti
+👨🏻‍✈	muž pilot: světlý odstín pleti
+👨🏼‍✈️	muž pilot: středně světlý odstín pleti
+👨🏼‍✈	muž pilot: středně světlý odstín pleti
+👨🏽‍✈️	muž pilot: střední odstín pleti
+👨🏽‍✈	muž pilot: střední odstín pleti
+👨🏾‍✈️	muž pilot: středně tmavý odstín pleti
+👨🏾‍✈	muž pilot: středně tmavý odstín pleti
+👨🏿‍✈️	muž pilot: tmavý odstín pleti
+👨🏿‍✈	muž pilot: tmavý odstín pleti
+👩‍✈️	žena pilotka
+👩‍✈	žena pilotka
+👩🏻‍✈️	pilotka: světlý odstín pleti
+👩🏻‍✈	pilotka: světlý odstín pleti
+👩🏼‍✈️	pilotka: středně světlý odstín pleti
+👩🏼‍✈	pilotka: středně světlý odstín pleti
+👩🏽‍✈️	pilotka: střední odstín pleti
+👩🏽‍✈	pilotka: střední odstín pleti
+👩🏾‍✈️	pilotka: středně tmavý odstín pleti
+👩🏾‍✈	pilotka: středně tmavý odstín pleti
+👩🏿‍✈️	pilotka: tmavý odstín pleti
+👩🏿‍✈	pilotka: tmavý odstín pleti
+👨‍🚀	muž astronaut
+👨🏻‍🚀	muž astronaut: světlý odstín pleti
+👨🏼‍🚀	muž astronaut: středně světlý odstín pleti
+👨🏽‍🚀	muž astronaut: střední odstín pleti
+👨🏾‍🚀	muž astronaut: středně tmavý odstín pleti
+👨🏿‍🚀	muž astronaut: tmavý odstín pleti
+👩‍🚀	žena astronautka
+👩🏻‍🚀	astronautka: světlý odstín pleti
+👩🏼‍🚀	astronautka: středně světlý odstín pleti
+👩🏽‍🚀	astronautka: střední odstín pleti
+👩🏾‍🚀	žena astronautka: středně tmavý odstín pleti
+👩🏿‍🚀	astronautka: tmavý odstín pleti
+👨‍🚒	muž hasič
+👨🏻‍🚒	muž hasič: světlý odstín pleti
+👨🏼‍🚒	muž hasič: středně světlý odstín pleti
+👨🏽‍🚒	muž hasič: střední odstín pleti
+👨🏾‍🚒	muž hasič: středně tmavý odstín pleti
+👨🏿‍🚒	muž hasič: tmavý odstín pleti
+👩‍🚒	žena hasička
+👩🏻‍🚒	žena hasička: světlý odstín pleti
+👩🏼‍🚒	žena hasička: středně světlý odstín pleti
+👩🏽‍🚒	žena hasička: střední odstín pleti
+👩🏾‍🚒	žena hasička: středně tmavý odstín pleti
+👩🏿‍🚒	žena hasička: tmavý odstín pleti
+👮	policejní důstojník
+👮🏻	policista: světlý odstín pleti
+👮🏼	policista: středně světlý odstín pleti
+👮🏽	policista: střední odstín pleti
+👮🏾	policista: středně tmavý odstín pleti
+👮🏿	policista: tmavý odstín pleti
+👮‍♂️	muž policista
+👮‍♂	muž policista
+👮🏻‍♂️	muž policista: světlý odstín pleti
+👮🏻‍♂	muž policista: světlý odstín pleti
+👮🏼‍♂️	muž policista: středně světlý odstín pleti
+👮🏼‍♂	muž policista: středně světlý odstín pleti
+👮🏽‍♂️	muž policista: střední odstín pleti
+👮🏽‍♂	muž policista: střední odstín pleti
+👮🏾‍♂️	muž policista: středně tmavý odstín pleti
+👮🏾‍♂	muž policista: středně tmavý odstín pleti
+👮🏿‍♂️	muž policista: tmavý odstín pleti
+👮🏿‍♂	muž policista: tmavý odstín pleti
+👮‍♀️	žena policistka
+👮‍♀	žena policistka
+👮🏻‍♀️	žena policistka: světlý odstín pleti
+👮🏻‍♀	žena policistka: světlý odstín pleti
+👮🏼‍♀️	žena policistka: středně světlý odstín pleti
+👮🏼‍♀	žena policistka: středně světlý odstín pleti
+👮🏽‍♀️	žena policistka: střední odstín pleti
+👮🏽‍♀	žena policistka: střední odstín pleti
+👮🏾‍♀️	žena policistka: středně tmavý odstín pleti
+👮🏾‍♀	žena policistka: středně tmavý odstín pleti
+👮🏿‍♀️	žena policistka: tmavý odstín pleti
+👮🏿‍♀	žena policistka: tmavý odstín pleti
+🕵️	detektivní
+🕵	detektivní
+🕵🏻	detektiv: světlý odstín pleti
+🕵🏼	detektiv: středně světlý odstín pleti
+🕵🏽	detektiv: střední odstín pleti
+🕵🏾	detektiv: středně tmavý odstín pleti
+🕵🏿	detektiv: tmavý odstín pleti
+🕵️‍♂️	muž detektiv
+🕵‍♂️	muž detektiv
+🕵️‍♂	muž detektiv
+🕵‍♂	muž detektiv
+🕵🏻‍♂️	mužský detektiv: světlý odstín pleti
+🕵🏻‍♂	mužský detektiv: světlý odstín pleti
+🕵🏼‍♂️	muž detektiv: středně světlý odstín pleti
+🕵🏼‍♂	muž detektiv: středně světlý odstín pleti
+🕵🏽‍♂️	mužský detektiv: střední odstín pleti
+🕵🏽‍♂	mužský detektiv: střední odstín pleti
+🕵🏾‍♂️	muž detektiv: středně tmavý odstín pleti
+🕵🏾‍♂	muž detektiv: středně tmavý odstín pleti
+🕵🏿‍♂️	muž detektiv: tmavý odstín pleti
+🕵🏿‍♂	muž detektiv: tmavý odstín pleti
+🕵️‍♀️	žena detektiv
+🕵‍♀️	žena detektiv
+🕵️‍♀	žena detektiv
+🕵‍♀	žena detektiv
+🕵🏻‍♀️	žena detektiv: světlý odstín pleti
+🕵🏻‍♀	žena detektiv: světlý odstín pleti
+🕵🏼‍♀️	žena detektiv: středně světlý odstín pleti
+🕵🏼‍♀	žena detektiv: středně světlý odstín pleti
+🕵🏽‍♀️	žena detektiv: střední odstín pleti
+🕵🏽‍♀	žena detektiv: střední odstín pleti
+🕵🏾‍♀️	žena detektiv: středně tmavý odstín pleti
+🕵🏾‍♀	žena detektiv: středně tmavý odstín pleti
+🕵🏿‍♀️	žena detektiv: tmavý odstín pleti
+🕵🏿‍♀	žena detektiv: tmavý odstín pleti
+💂	hlídat
+💂🏻	ochrana: světlý odstín pleti
+💂🏼	chránič: středně světlý tón pleti
+💂🏽	chránič: střední odstín pleti
+💂🏾	chránič: středně tmavý odstín pleti
+💂🏿	stráž: tmavý odstín pleti
+💂‍♂️	muž stráž
+💂‍♂	muž stráž
+💂🏻‍♂️	mužský strážce: světlý odstín pleti
+💂🏻‍♂	mužský strážce: světlý odstín pleti
+💂🏼‍♂️	mužský strážce: středně světlý tón pleti
+💂🏼‍♂	mužský strážce: středně světlý tón pleti
+💂🏽‍♂️	mužský strážce: střední odstín pleti
+💂🏽‍♂	mužský strážce: střední odstín pleti
+💂🏾‍♂️	mužský strážce: středně tmavý odstín pleti
+💂🏾‍♂	mužský strážce: středně tmavý odstín pleti
+💂🏿‍♂️	mužský strážce: tmavý odstín pleti
+💂🏿‍♂	mužský strážce: tmavý odstín pleti
+💂‍♀️	strážkyně
+💂‍♀	strážkyně
+💂🏻‍♀️	žena stráž: světlý odstín pleti
+💂🏻‍♀	žena stráž: světlý odstín pleti
+💂🏼‍♀️	dámský strážce: středně světlý tón pleti
+💂🏼‍♀	dámský strážce: středně světlý tón pleti
+💂🏽‍♀️	žena stráž: střední odstín pleti
+💂🏽‍♀	žena stráž: střední odstín pleti
+💂🏾‍♀️	dámský strážce: středně tmavý odstín pleti
+💂🏾‍♀	dámský strážce: středně tmavý odstín pleti
+💂🏿‍♀️	strážkyně: tmavý odstín pleti
+💂🏿‍♀	strážkyně: tmavý odstín pleti
+👷	stavební dělník
+👷🏻	stavební dělník: světlý odstín pleti
+👷🏼	stavební dělník: středně světlý odstín pleti
+👷🏽	stavební dělník: střední odstín pleti
+👷🏾	stavební dělník: středně tmavý odstín pleti
+👷🏿	stavební dělník: tmavý odstín pleti
+👷‍♂️	muž stavební dělník
+👷‍♂	muž stavební dělník
+👷🏻‍♂️	muž stavební dělník: světlý odstín pleti
+👷🏻‍♂	muž stavební dělník: světlý odstín pleti
+👷🏼‍♂️	muž stavební dělník: středně světlý odstín pleti
+👷🏼‍♂	muž stavební dělník: středně světlý odstín pleti
+👷🏽‍♂️	muž stavební dělník: střední odstín pleti
+👷🏽‍♂	muž stavební dělník: střední odstín pleti
+👷🏾‍♂️	muž stavební dělník: středně tmavý odstín pleti
+👷🏾‍♂	muž stavební dělník: středně tmavý odstín pleti
+👷🏿‍♂️	muž stavební dělník: tmavý odstín pleti
+👷🏿‍♂	muž stavební dělník: tmavý odstín pleti
+👷‍♀️	žena stavební dělník
+👷‍♀	žena stavební dělník
+👷🏻‍♀️	žena stavební dělník: světlý odstín pleti
+👷🏻‍♀	žena stavební dělník: světlý odstín pleti
+👷🏼‍♀️	žena stavební dělník: středně světlý odstín pleti
+👷🏼‍♀	žena stavební dělník: středně světlý odstín pleti
+👷🏽‍♀️	žena stavební dělník: střední tón pleti
+👷🏽‍♀	žena stavební dělník: střední tón pleti
+👷🏾‍♀️	žena stavební dělník: středně tmavý odstín pleti
+👷🏾‍♀	žena stavební dělník: středně tmavý odstín pleti
+👷🏿‍♀️	žena stavební dělník: tmavý odstín pleti
+👷🏿‍♀	žena stavební dělník: tmavý odstín pleti
+🤴	princ
+🤴🏻	princ: světlý odstín pleti
+🤴🏼	princ: středně světlý odstín pleti
+🤴🏽	princ: střední odstín pleti
+🤴🏾	princ: středně tmavý odstín pleti
+🤴🏿	princ: tmavý odstín pleti
+👸	princezna
+👸🏻	princezna: světlý odstín pleti
+👸🏼	princezna: středně světlý odstín pleti
+👸🏽	princezna: střední odstín pleti
+👸🏾	princezna: středně tmavý odstín pleti
+👸🏿	princezna: tmavý odstín pleti
+👳	osoba na sobě turban
+👳🏻	osoba v turbanu: světlý odstín pleti
+👳🏼	osoba s turbanem: středně světlý odstín pleti
+👳🏽	osoba s turbanem: střední odstín pleti
+👳🏾	osoba s turbanem: středně tmavý odstín pleti
+👳🏿	osoba v turbanu: tmavý odstín pleti
+👳‍♂️	muž na sobě turban
+👳‍♂	muž na sobě turban
+👳🏻‍♂️	muž v turbanu: světlý odstín pleti
+👳🏻‍♂	muž v turbanu: světlý odstín pleti
+👳🏼‍♂️	muž v turbanu: středně světlý odstín pleti
+👳🏼‍♂	muž v turbanu: středně světlý odstín pleti
+👳🏽‍♂️	muž v turbanu: střední odstín pleti
+👳🏽‍♂	muž v turbanu: střední odstín pleti
+👳🏾‍♂️	muž v turbanu: středně tmavý odstín pleti
+👳🏾‍♂	muž v turbanu: středně tmavý odstín pleti
+👳🏿‍♂️	muž v turbanu: tmavý odstín pleti
+👳🏿‍♂	muž v turbanu: tmavý odstín pleti
+👳‍♀️	žena nosí turban
+👳‍♀	žena nosí turban
+👳🏻‍♀️	žena nosí turban: světlý odstín pleti
+👳🏻‍♀	žena nosí turban: světlý odstín pleti
+👳🏼‍♀️	žena v turbanu: středně světlý tón pleti
+👳🏼‍♀	žena v turbanu: středně světlý tón pleti
+👳🏽‍♀️	žena nosí turban: střední odstín pleti
+👳🏽‍♀	žena nosí turban: střední odstín pleti
+👳🏾‍♀️	žena v turbanu: středně tmavý odstín pleti
+👳🏾‍♀	žena v turbanu: středně tmavý odstín pleti
+👳🏿‍♀️	žena nosí turban: tmavý odstín pleti
+👳🏿‍♀	žena nosí turban: tmavý odstín pleti
+👲	muž s čínskou čepicí
+👲🏻	muž s čínskou čepicí: světlý odstín pleti
+👲🏼	muž s čínskou čepicí: středně světlý odstín pleti
+👲🏽	muž s čínskou čepicí: střední odstín pleti
+👲🏾	muž s čínskou čepicí: středně tmavý odstín pleti
+👲🏿	muž s čínskou čepicí: tmavý odstín pleti
+🧕	žena s šátkem
+🧕🏻	žena s šátkem: světlý odstín pleti
+🧕🏼	žena s šátkem: středně světlý tón pleti
+🧕🏽	žena s šátkem: střední odstín pleti
+🧕🏾	žena s šátkem: středně tmavý odstín pleti
+🧕🏿	žena s šátkem: tmavý odstín pleti
+🧔	vousatý člověk
+🧔🏻	vousatý člověk: světlý odstín pleti
+🧔🏼	vousatý člověk: středně světlý odstín pleti
+🧔🏽	vousatý člověk: střední odstín pleti
+🧔🏾	vousatý člověk: středně tmavý odstín pleti
+🧔🏿	vousatý člověk: tmavý odstín pleti
+👱	plavovlasý člověk
+👱🏻	blondýnka: světlý odstín pleti
+👱🏼	blondýnka: středně světlý odstín pleti
+👱🏽	blondýnka: střední odstín pleti
+👱🏾	blondýnka: středně tmavý odstín pleti
+👱🏿	blondýnka: tmavý odstín pleti
+👱‍♂️	plavovlasý muž
+👱‍♂	plavovlasý muž
+👱🏻‍♂️	plavovlasý muž: světlý odstín pleti
+👱🏻‍♂	plavovlasý muž: světlý odstín pleti
+👱🏼‍♂️	plavovlasý muž: středně světlý odstín pleti
+👱🏼‍♂	plavovlasý muž: středně světlý odstín pleti
+👱🏽‍♂️	plavovlasý muž: střední odstín pleti
+👱🏽‍♂	plavovlasý muž: střední odstín pleti
+👱🏾‍♂️	plavovlasý muž: středně tmavý odstín pleti
+👱🏾‍♂	plavovlasý muž: středně tmavý odstín pleti
+👱🏿‍♂️	plavovlasý muž: tmavý odstín pleti
+👱🏿‍♂	plavovlasý muž: tmavý odstín pleti
+👱‍♀️	blond vlasy žena
+👱‍♀	blond vlasy žena
+👱🏻‍♀️	blond vlasy: světlý odstín pleti
+👱🏻‍♀	blond vlasy: světlý odstín pleti
+👱🏼‍♀️	blond vlasy: středně světlý tón pleti
+👱🏼‍♀	blond vlasy: středně světlý tón pleti
+👱🏽‍♀️	blond vlasy: střední odstín pleti
+👱🏽‍♀	blond vlasy: střední odstín pleti
+👱🏾‍♀️	blond vlasy: středně tmavý odstín pleti
+👱🏾‍♀	blond vlasy: středně tmavý odstín pleti
+👱🏿‍♀️	blond vlasy: tmavý odstín pleti
+👱🏿‍♀	blond vlasy: tmavý odstín pleti
+👨‍🦰	muž, zrzavé vlasy
+👨🏻‍🦰	muž, zrzavé vlasy: světlý odstín pleti
+👨🏼‍🦰	muž, zrzavé vlasy: středně světlý odstín pleti
+👨🏽‍🦰	muž, zrzavé vlasy: střední odstín pleti
+👨🏾‍🦰	muž, zrzavé vlasy: středně tmavý odstín pleti
+👨🏿‍🦰	muž, zrzavé vlasy: tmavý odstín pleti
+👩‍🦰	žena, červené vlasy
+👩🏻‍🦰	žena, červené vlasy: světlý odstín pleti
+👩🏼‍🦰	žena, zrzavé vlasy: středně světlý odstín pleti
+👩🏽‍🦰	žena, zrzavé vlasy: střední odstín pleti
+👩🏾‍🦰	žena, zrzavé vlasy: středně tmavý odstín pleti
+👩🏿‍🦰	žena, červené vlasy: tmavý odstín pleti
+👨‍🦱	muž, kudrnaté vlasy
+👨🏻‍🦱	muž, kudrnaté vlasy: světlý odstín pleti
+👨🏼‍🦱	muž, kudrnaté vlasy: středně světlý odstín pleti
+👨🏽‍🦱	muž, kudrnaté vlasy: střední odstín pleti
+👨🏾‍🦱	muž, kudrnaté vlasy: středně tmavý odstín pleti
+👨🏿‍🦱	muž, kudrnaté vlasy: tmavý odstín pleti
+👩‍🦱	žena, kudrnaté vlasy
+👩🏻‍🦱	žena, kudrnaté vlasy: světlý odstín pleti
+👩🏼‍🦱	žena, kudrnaté vlasy: středně světlý tón pleti
+👩🏽‍🦱	žena, kudrnaté vlasy: střední odstín pleti
+👩🏾‍🦱	žena, kudrnaté vlasy: středně tmavý odstín pleti
+👩🏿‍🦱	žena, kudrnaté vlasy: tmavý odstín pleti
+👨‍🦲	muž, plešatý
+👨🏻‍🦲	muž, plešatý: světlý odstín pleti
+👨🏼‍🦲	muž, plešatý: středně světlý odstín pleti
+👨🏽‍🦲	muž, plešatý: střední odstín pleti
+👨🏾‍🦲	muž, plešatý: středně tmavý odstín pleti
+👨🏿‍🦲	muž, plešatý: tmavý odstín pleti
+👩‍🦲	žena, plešatá
+👩🏻‍🦲	žena, plešatá: světlý odstín pleti
+👩🏼‍🦲	žena, plešatá: středně světlý odstín pleti
+👩🏽‍🦲	žena, plešatá: střední odstín pleti
+👩🏾‍🦲	žena, plešatá: středně tmavý odstín pleti
+👩🏿‍🦲	žena, plešatá: tmavý odstín pleti
+👨‍🦳	muž, bílé vlasy
+👨🏻‍🦳	muž, bílé vlasy: světlý odstín pleti
+👨🏼‍🦳	muž, bílé vlasy: středně světlý odstín pleti
+👨🏽‍🦳	muž, bílé vlasy: střední odstín pleti
+👨🏾‍🦳	muž, bílé vlasy: středně tmavý odstín pleti
+👨🏿‍🦳	muž, bílé vlasy: tmavý odstín pleti
+👩‍🦳	žena, bílé vlasy
+👩🏻‍🦳	žena, bílé vlasy: světlý odstín pleti
+👩🏼‍🦳	žena, bílé vlasy: středně světlý tón pleti
+👩🏽‍🦳	žena, bílé vlasy: střední odstín pleti
+👩🏾‍🦳	žena, bílé vlasy: středně tmavý odstín pleti
+👩🏿‍🦳	žena, bílé vlasy: tmavý odstín pleti
+🤵	muž ve smokingu
+🤵🏻	muž ve smokingu: světlý odstín pleti
+🤵🏼	muž ve smokingu: středně světlý odstín pleti
+🤵🏽	muž ve smokingu: střední odstín pleti
+🤵🏾	muž ve smokingu: středně tmavý odstín pleti
+🤵🏿	muž ve smokingu: tmavý odstín pleti
+👰	nevěsta se závojem
+👰🏻	nevěsta se závojem: světlý tón pleti
+👰🏼	nevěsta se závojem: středně světlý tón pleti
+👰🏽	nevěsta se závojem: střední odstín pleti
+👰🏾	nevěsta se závojem: středně tmavý odstín pleti
+👰🏿	nevěsta se závojem: tmavý odstín pleti
+🤰	těhotná žena
+🤰🏻	těhotná žena: světlý tón pleti
+🤰🏼	těhotná žena: středně světlý tón pleti
+🤰🏽	těhotná žena: střední tón pleti
+🤰🏾	těhotná žena: středně tmavý odstín pleti
+🤰🏿	těhotná žena: tmavý odstín pleti
+🤱	kojení
+🤱🏻	kojení: světlý tón pleti
+🤱🏼	kojení: středně světlý tón pleti
+🤱🏽	kojení: střední tón pleti
+🤱🏾	kojení: středně tmavý odstín pleti
+🤱🏿	kojení: tmavý odstín pleti
+👼	andělíček
+👼🏻	andělíček: světlý odstín pleti
+👼🏼	baby angel: středně světlý tón pleti
+👼🏽	baby angel: střední tón pleti
+👼🏾	baby angel: středně tmavý odstín pleti
+👼🏿	andělíček: tmavý odstín pleti
+🎅	Ježíšek
+🎅🏻	Santa Claus: světlý odstín pleti
+🎅🏼	Santa Claus: středně světlý odstín pleti
+🎅🏽	Santa Claus: střední odstín pleti
+🎅🏾	Santa Claus: středně tmavý odstín pleti
+🎅🏿	Santa Claus: tmavý odstín pleti
+🤶	paní Clausová
+🤶🏻	Paní Clausová: světlý odstín pleti
+🤶🏼	Paní Clausová: středně světlý odstín pleti
+🤶🏽	Paní Clausová: střední odstín pleti
+🤶🏾	Paní Clausová: středně tmavý odstín pleti
+🤶🏿	Paní Clausová: tmavý odstín pleti
+🦸	super hrdina
+🦸🏻	superhrdina: světlý odstín pleti
+🦸🏼	superhrdina: středně světlý odstín pleti
+🦸🏽	superhrdina: střední odstín pleti
+🦸🏾	superhrdina: středně tmavý odstín pleti
+🦸🏿	superhrdina: tmavý odstín pleti
+🦸‍♀️	žena superhrdinka
+🦸‍♀	žena superhrdinka
+🦸🏻‍♀️	žena superhrdinka: světlý odstín pleti
+🦸🏻‍♀	žena superhrdinka: světlý odstín pleti
+🦸🏼‍♀️	žena superhrdinka: středně světlý odstín pleti
+🦸🏼‍♀	žena superhrdinka: středně světlý odstín pleti
+🦸🏽‍♀️	žena superhrdinka: střední odstín pleti
+🦸🏽‍♀	žena superhrdinka: střední odstín pleti
+🦸🏾‍♀️	žena superhrdinka: středně tmavý odstín pleti
+🦸🏾‍♀	žena superhrdinka: středně tmavý odstín pleti
+🦸🏿‍♀️	žena superhrdinka: tmavý odstín pleti
+🦸🏿‍♀	žena superhrdinka: tmavý odstín pleti
+🦸‍♂️	muž superhrdina
+🦸‍♂	muž superhrdina
+🦸🏻‍♂️	muž superhrdina: světlý odstín pleti
+🦸🏻‍♂	muž superhrdina: světlý odstín pleti
+🦸🏼‍♂️	muž superhrdina: středně světlý odstín pleti
+🦸🏼‍♂	muž superhrdina: středně světlý odstín pleti
+🦸🏽‍♂️	muž superhrdina: střední odstín pleti
+🦸🏽‍♂	muž superhrdina: střední odstín pleti
+🦸🏾‍♂️	muž superhrdina: středně tmavý odstín pleti
+🦸🏾‍♂	muž superhrdina: středně tmavý odstín pleti
+🦸🏿‍♂️	muž superhrdina: tmavý odstín pleti
+🦸🏿‍♂	muž superhrdina: tmavý odstín pleti
+🦹	superpadouch
+🦹🏻	superpadouch: světlý odstín pleti
+🦹🏼	supervillain: středně světlý odstín pleti
+🦹🏽	supervillain: střední odstín pleti
+🦹🏾	supervillain: středně tmavý odstín pleti
+🦹🏿	superpadouch: tmavý odstín pleti
+🦹‍♀️	žena superpadoucha
+🦹‍♀	žena superpadoucha
+🦹🏻‍♀️	žena superpadouch: světlý odstín pleti
+🦹🏻‍♀	žena superpadouch: světlý odstín pleti
+🦹🏼‍♀️	žena superpadouch: středně světlý odstín pleti
+🦹🏼‍♀	žena superpadouch: středně světlý odstín pleti
+🦹🏽‍♀️	žena superpadouch: střední odstín pleti
+🦹🏽‍♀	žena superpadouch: střední odstín pleti
+🦹🏾‍♀️	žena superpadouch: středně tmavý odstín pleti
+🦹🏾‍♀	žena superpadouch: středně tmavý odstín pleti
+🦹🏿‍♀️	žena superpadouch: tmavý odstín pleti
+🦹🏿‍♀	žena superpadouch: tmavý odstín pleti
+🦹‍♂️	muž superpadouch
+🦹‍♂	muž superpadouch
+🦹🏻‍♂️	muž superpadouch: světlý odstín pleti
+🦹🏻‍♂	muž superpadouch: světlý odstín pleti
+🦹🏼‍♂️	muž superpadouch: středně světlý odstín pleti
+🦹🏼‍♂	muž superpadouch: středně světlý odstín pleti
+🦹🏽‍♂️	muž superpadouch: střední odstín pleti
+🦹🏽‍♂	muž superpadouch: střední odstín pleti
+🦹🏾‍♂️	muž superpadouch: středně tmavý odstín pleti
+🦹🏾‍♂	muž superpadouch: středně tmavý odstín pleti
+🦹🏿‍♂️	muž superpadouch: tmavý odstín pleti
+🦹🏿‍♂	muž superpadouch: tmavý odstín pleti
+🧙	kouzelník
+🧙🏻	mág: světlý odstín pleti
+🧙🏼	mág: středně světlý odstín pleti
+🧙🏽	mág: střední odstín pleti
+🧙🏾	mág: středně tmavý odstín pleti
+🧙🏿	mág: tmavý odstín pleti
+🧙‍♀️	žena mág
+🧙‍♀	žena mág
+🧙🏻‍♀️	mág: světlý odstín pleti
+🧙🏻‍♀	mág: světlý odstín pleti
+🧙🏼‍♀️	mág: středně světlý tón pleti
+🧙🏼‍♀	mág: středně světlý tón pleti
+🧙🏽‍♀️	mág: střední odstín pleti
+🧙🏽‍♀	mág: střední odstín pleti
+🧙🏾‍♀️	mág: středně tmavý odstín pleti
+🧙🏾‍♀	mág: středně tmavý odstín pleti
+🧙🏿‍♀️	mág: tmavý odstín pleti
+🧙🏿‍♀	mág: tmavý odstín pleti
+🧙‍♂️	muž mág
+🧙‍♂	muž mág
+🧙🏻‍♂️	muž mág: světlý odstín pleti
+🧙🏻‍♂	muž mág: světlý odstín pleti
+🧙🏼‍♂️	muž mág: středně světlý odstín pleti
+🧙🏼‍♂	muž mág: středně světlý odstín pleti
+🧙🏽‍♂️	muž mág: střední odstín pleti
+🧙🏽‍♂	muž mág: střední odstín pleti
+🧙🏾‍♂️	muž mág: středně tmavý odstín pleti
+🧙🏾‍♂	muž mág: středně tmavý odstín pleti
+🧙🏿‍♂️	muž mág: tmavý odstín pleti
+🧙🏿‍♂	muž mág: tmavý odstín pleti
+🧚	víla
+🧚🏻	víla: světlý odstín pleti
+🧚🏼	víla: středně světlý odstín pleti
+🧚🏽	víla: střední odstín pleti
+🧚🏾	víla: středně tmavý odstín pleti
+🧚🏿	víla: tmavý odstín pleti
+🧚‍♀️	ženská víla
+🧚‍♀	ženská víla
+🧚🏻‍♀️	ženská víla: světlý odstín pleti
+🧚🏻‍♀	ženská víla: světlý odstín pleti
+🧚🏼‍♀️	ženská víla: středně světlý odstín pleti
+🧚🏼‍♀	ženská víla: středně světlý odstín pleti
+🧚🏽‍♀️	ženská víla: střední odstín pleti
+🧚🏽‍♀	ženská víla: střední odstín pleti
+🧚🏾‍♀️	ženská víla: středně tmavý odstín pleti
+🧚🏾‍♀	ženská víla: středně tmavý odstín pleti
+🧚🏿‍♀️	ženská víla: tmavý odstín pleti
+🧚🏿‍♀	ženská víla: tmavý odstín pleti
+🧚‍♂️	mužská víla
+🧚‍♂	mužská víla
+🧚🏻‍♂️	mužská víla: světlý odstín pleti
+🧚🏻‍♂	mužská víla: světlý odstín pleti
+🧚🏼‍♂️	mužská víla: středně světlý odstín pleti
+🧚🏼‍♂	mužská víla: středně světlý odstín pleti
+🧚🏽‍♂️	mužská víla: střední odstín pleti
+🧚🏽‍♂	mužská víla: střední odstín pleti
+🧚🏾‍♂️	mužská víla: středně tmavý odstín pleti
+🧚🏾‍♂	mužská víla: středně tmavý odstín pleti
+🧚🏿‍♂️	mužská víla: tmavý odstín pleti
+🧚🏿‍♂	mužská víla: tmavý odstín pleti
+🧛	upír
+🧛🏻	upír: světlý odstín pleti
+🧛🏼	upír: středně světlý odstín pleti
+🧛🏽	upír: střední odstín pleti
+🧛🏾	upír: středně tmavý odstín pleti
+🧛🏿	upír: tmavý odstín pleti
+🧛‍♀️	žena upír
+🧛‍♀	žena upír
+🧛🏻‍♀️	upíří žena: světlý odstín pleti
+🧛🏻‍♀	upíří žena: světlý odstín pleti
+🧛🏼‍♀️	upíří žena: středně světlý odstín pleti
+🧛🏼‍♀	upíří žena: středně světlý odstín pleti
+🧛🏽‍♀️	upíří žena: střední odstín pleti
+🧛🏽‍♀	upíří žena: střední odstín pleti
+🧛🏾‍♀️	upíří žena: středně tmavý odstín pleti
+🧛🏾‍♀	upíří žena: středně tmavý odstín pleti
+🧛🏿‍♀️	upíří žena: tmavý odstín pleti
+🧛🏿‍♀	upíří žena: tmavý odstín pleti
+🧛‍♂️	muž upír
+🧛‍♂	muž upír
+🧛🏻‍♂️	muž upír: světlý odstín pleti
+🧛🏻‍♂	muž upír: světlý odstín pleti
+🧛🏼‍♂️	muž upír: středně světlý odstín pleti
+🧛🏼‍♂	muž upír: středně světlý odstín pleti
+🧛🏽‍♂️	muž upír: střední odstín pleti
+🧛🏽‍♂	muž upír: střední odstín pleti
+🧛🏾‍♂️	muž upír: středně tmavý odstín pleti
+🧛🏾‍♂	muž upír: středně tmavý odstín pleti
+🧛🏿‍♂️	muž upír: tmavý odstín pleti
+🧛🏿‍♂	muž upír: tmavý odstín pleti
+🧜	merperson
+🧜🏻	merperson: světlý odstín pleti
+🧜🏼	merperson: středně světlý tón pleti
+🧜🏽	merperson: střední odstín pleti
+🧜🏾	merperson: středně tmavý odstín pleti
+🧜🏿	merperson: tmavý odstín pleti
+🧜‍♀️	mořská panna
+🧜‍♀	mořská panna
+🧜🏻‍♀️	mořská panna: světlý odstín pleti
+🧜🏻‍♀	mořská panna: světlý odstín pleti
+🧜🏼‍♀️	mořská panna: středně světlý odstín pleti
+🧜🏼‍♀	mořská panna: středně světlý odstín pleti
+🧜🏽‍♀️	mořská panna: střední odstín pleti
+🧜🏽‍♀	mořská panna: střední odstín pleti
+🧜🏾‍♀️	mořská panna: středně tmavý odstín pleti
+🧜🏾‍♀	mořská panna: středně tmavý odstín pleti
+🧜🏿‍♀️	mořská panna: tmavý odstín pleti
+🧜🏿‍♀	mořská panna: tmavý odstín pleti
+🧜‍♂️	mořský muž
+🧜‍♂	mořský muž
+🧜🏻‍♂️	merman: světlý odstín pleti
+🧜🏻‍♂	merman: světlý odstín pleti
+🧜🏼‍♂️	merman: středně světlý odstín pleti
+🧜🏼‍♂	merman: středně světlý odstín pleti
+🧜🏽‍♂️	merman: střední odstín pleti
+🧜🏽‍♂	merman: střední odstín pleti
+🧜🏾‍♂️	merman: středně tmavý odstín pleti
+🧜🏾‍♂	merman: středně tmavý odstín pleti
+🧜🏿‍♂️	mořan: tmavý odstín pleti
+🧜🏿‍♂	mořan: tmavý odstín pleti
+🧝	Elf
+🧝🏻	elf: světlý odstín pleti
+🧝🏼	elf: středně světlý tón pleti
+🧝🏽	elf: střední odstín pleti
+🧝🏾	elf: středně tmavý odstín pleti
+🧝🏿	elf: tmavý odstín pleti
+🧝‍♀️	žena elfka
+🧝‍♀	žena elfka
+🧝🏻‍♀️	elfka: světlý odstín pleti
+🧝🏻‍♀	elfka: světlý odstín pleti
+🧝🏼‍♀️	elfka: středně světlý tón pleti
+🧝🏼‍♀	elfka: středně světlý tón pleti
+🧝🏽‍♀️	elfka: střední odstín pleti
+🧝🏽‍♀	elfka: střední odstín pleti
+🧝🏾‍♀️	elfka: středně tmavý odstín pleti
+🧝🏾‍♀	elfka: středně tmavý odstín pleti
+🧝🏿‍♀️	elfka: tmavý odstín pleti
+🧝🏿‍♀	elfka: tmavý odstín pleti
+🧝‍♂️	muž elf
+🧝‍♂	muž elf
+🧝🏻‍♂️	muž elf: světlý odstín pleti
+🧝🏻‍♂	muž elf: světlý odstín pleti
+🧝🏼‍♂️	muž elf: středně světlý odstín pleti
+🧝🏼‍♂	muž elf: středně světlý odstín pleti
+🧝🏽‍♂️	muž elf: střední odstín pleti
+🧝🏽‍♂	muž elf: střední odstín pleti
+🧝🏾‍♂️	muž elf: středně tmavý odstín pleti
+🧝🏾‍♂	muž elf: středně tmavý odstín pleti
+🧝🏿‍♂️	muž elf: tmavý odstín pleti
+🧝🏿‍♂	muž elf: tmavý odstín pleti
+🧞	džin
+🧞‍♀️	žena džin
+🧞‍♀	žena džin
+🧞‍♂️	muž džin
+🧞‍♂	muž džin
+🧟	zombie
+🧟‍♀️	žena zombie
+🧟‍♀	žena zombie
+🧟‍♂️	muž zombie
+🧟‍♂	muž zombie
+🙍	člověk se mračí
+🙍🏻	mračící se osoba: světlý odstín pleti
+🙍🏼	mračící se osoba: středně světlý odstín pleti
+🙍🏽	mračící se osoba: střední odstín pleti
+🙍🏾	mračící se osoba: středně tmavý odstín pleti
+🙍🏿	mračící se osoba: tmavý odstín pleti
+🙍‍♂️	muž se mračil
+🙍‍♂	muž se mračil
+🙍🏻‍♂️	muž se mračil: světlý odstín pleti
+🙍🏻‍♂	muž se mračil: světlý odstín pleti
+🙍🏼‍♂️	muž se mračí: středně světlý odstín pleti
+🙍🏼‍♂	muž se mračí: středně světlý odstín pleti
+🙍🏽‍♂️	zamračený muž: střední odstín pleti
+🙍🏽‍♂	zamračený muž: střední odstín pleti
+🙍🏾‍♂️	zamračený muž: středně tmavý odstín pleti
+🙍🏾‍♂	zamračený muž: středně tmavý odstín pleti
+🙍🏿‍♂️	muž se mračil: tmavý odstín pleti
+🙍🏿‍♂	muž se mračil: tmavý odstín pleti
+🙍‍♀️	žena se mračí
+🙍‍♀	žena se mračí
+🙍🏻‍♀️	žena se mračí: světlý odstín pleti
+🙍🏻‍♀	žena se mračí: světlý odstín pleti
+🙍🏼‍♀️	žena se mračí: středně světlý tón pleti
+🙍🏼‍♀	žena se mračí: středně světlý tón pleti
+🙍🏽‍♀️	žena se mračí: střední odstín pleti
+🙍🏽‍♀	žena se mračí: střední odstín pleti
+🙍🏾‍♀️	žena se mračí: středně tmavý odstín pleti
+🙍🏾‍♀	žena se mračí: středně tmavý odstín pleti
+🙍🏿‍♀️	žena se mračí: tmavý odstín pleti
+🙍🏿‍♀	žena se mračí: tmavý odstín pleti
+🙎	osoba našpulená
+🙎🏻	našpulená osoba: světlý odstín pleti
+🙎🏼	našpulená osoba: středně světlý tón pleti
+🙎🏽	našpulená osoba: střední odstín pleti
+🙎🏾	našpulená osoba: středně tmavý odstín pleti
+🙎🏿	našpulená osoba: tmavý odstín pleti
+🙎‍♂️	muž našpulený
+🙎‍♂	muž našpulený
+🙎🏻‍♂️	muž našpulený: světlý odstín pleti
+🙎🏻‍♂	muž našpulený: světlý odstín pleti
+🙎🏼‍♂️	muž našpulený: středně světlý tón pleti
+🙎🏼‍♂	muž našpulený: středně světlý tón pleti
+🙎🏽‍♂️	muž našpulený: střední odstín pleti
+🙎🏽‍♂	muž našpulený: střední odstín pleti
+🙎🏾‍♂️	muž našpulený: středně tmavý odstín pleti
+🙎🏾‍♂	muž našpulený: středně tmavý odstín pleti
+🙎🏿‍♂️	muž našpulený: tmavý odstín pleti
+🙎🏿‍♂	muž našpulený: tmavý odstín pleti
+🙎‍♀️	žena našpulená
+🙎‍♀	žena našpulená
+🙎🏻‍♀️	žena našpulená: světlý odstín pleti
+🙎🏻‍♀	žena našpulená: světlý odstín pleti
+🙎🏼‍♀️	žena našpulená: středně světlý tón pleti
+🙎🏼‍♀	žena našpulená: středně světlý tón pleti
+🙎🏽‍♀️	žena našpulená: střední odstín pleti
+🙎🏽‍♀	žena našpulená: střední odstín pleti
+🙎🏾‍♀️	žena našpulená: středně tmavý odstín pleti
+🙎🏾‍♀	žena našpulená: středně tmavý odstín pleti
+🙎🏿‍♀️	žena našpulená: tmavý odstín pleti
+🙎🏿‍♀	žena našpulená: tmavý odstín pleti
+🙅	osoba gestikuluje NE
+🙅🏻	osoba gestikuluje NE: světlý odstín pleti
+🙅🏼	osoba gestikuluje NE: středně světlý odstín pleti
+🙅🏽	osoba gestikuluje NE: střední odstín pleti
+🙅🏾	osoba gestikuluje NE: středně tmavý odstín pleti
+🙅🏿	osoba gestikuluje NE: tmavý odstín pleti
+🙅‍♂️	muž ukázal NE
+🙅‍♂	muž ukázal NE
+🙅🏻‍♂️	muž ukázal NE: světlý odstín pleti
+🙅🏻‍♂	muž ukázal NE: světlý odstín pleti
+🙅🏼‍♂️	muž ukázal NE: středně světlý odstín pleti
+🙅🏼‍♂	muž ukázal NE: středně světlý odstín pleti
+🙅🏽‍♂️	muž ukázal NE: střední odstín pleti
+🙅🏽‍♂	muž ukázal NE: střední odstín pleti
+🙅🏾‍♂️	muž ukázal NE: středně tmavý odstín pleti
+🙅🏾‍♂	muž ukázal NE: středně tmavý odstín pleti
+🙅🏿‍♂️	muž ukázal NE: tmavý odstín pleti
+🙅🏿‍♂	muž ukázal NE: tmavý odstín pleti
+🙅‍♀️	žena ukazuje NE
+🙅‍♀	žena ukazuje NE
+🙅🏻‍♀️	žena ukazuje NE: světlý odstín pleti
+🙅🏻‍♀	žena ukazuje NE: světlý odstín pleti
+🙅🏼‍♀️	žena gestikuluje NE: středně světlý odstín pleti
+🙅🏼‍♀	žena gestikuluje NE: středně světlý odstín pleti
+🙅🏽‍♀️	žena gestikuluje NE: střední odstín pleti
+🙅🏽‍♀	žena gestikuluje NE: střední odstín pleti
+🙅🏾‍♀️	žena gestikuluje NE: středně tmavý odstín pleti
+🙅🏾‍♀	žena gestikuluje NE: středně tmavý odstín pleti
+🙅🏿‍♀️	žena ukazuje NE: tmavý odstín pleti
+🙅🏿‍♀	žena ukazuje NE: tmavý odstín pleti
+🙆	osoba gestikuluje OK
+🙆🏻	osoba gestikuluje OK: světlý odstín pleti
+🙆🏼	osoba gestikuluje OK: středně světlý odstín pleti
+🙆🏽	osoba gestikuluje OK: střední odstín pleti
+🙆🏾	osoba gestikuluje OK: středně tmavý odstín pleti
+🙆🏿	osoba gestikuluje OK: tmavý odstín pleti
+🙆‍♂️	muž ukázal OK
+🙆‍♂	muž ukázal OK
+🙆🏻‍♂️	muž ukázal OK: světlý odstín pleti
+🙆🏻‍♂	muž ukázal OK: světlý odstín pleti
+🙆🏼‍♂️	muž gestikuluje OK: středně světlý odstín pleti
+🙆🏼‍♂	muž gestikuluje OK: středně světlý odstín pleti
+🙆🏽‍♂️	muž ukázal OK: střední odstín pleti
+🙆🏽‍♂	muž ukázal OK: střední odstín pleti
+🙆🏾‍♂️	muž ukázal OK: středně tmavý odstín pleti
+🙆🏾‍♂	muž ukázal OK: středně tmavý odstín pleti
+🙆🏿‍♂️	muž ukázal OK: tmavý odstín pleti
+🙆🏿‍♂	muž ukázal OK: tmavý odstín pleti
+🙆‍♀️	žena gestikulovala OK
+🙆‍♀	žena gestikulovala OK
+🙆🏻‍♀️	žena ukazuje OK: světlý odstín pleti
+🙆🏻‍♀	žena ukazuje OK: světlý odstín pleti
+🙆🏼‍♀️	žena gestikuluje OK: středně světlý odstín pleti
+🙆🏼‍♀	žena gestikuluje OK: středně světlý odstín pleti
+🙆🏽‍♀️	žena gestikuluje OK: střední odstín pleti
+🙆🏽‍♀	žena gestikuluje OK: střední odstín pleti
+🙆🏾‍♀️	žena gestikuluje OK: středně tmavý odstín pleti
+🙆🏾‍♀	žena gestikuluje OK: středně tmavý odstín pleti
+🙆🏿‍♀️	žena ukazuje OK: tmavý odstín pleti
+🙆🏿‍♀	žena ukazuje OK: tmavý odstín pleti
+💁	osoba sklápějící ruku
+💁🏻	překlápěcí ruka: světlý odstín pleti
+💁🏼	překlápěcí ruka: středně světlý odstín pleti
+💁🏽	překlápěcí ruka: střední odstín pleti
+💁🏾	překlápěcí ruka: středně tmavý odstín pleti
+💁🏿	osoba naklánějící se ruka: tmavý odstín pleti
+💁‍♂️	muž sklápěcí ruku
+💁‍♂	muž sklápěcí ruku
+💁🏻‍♂️	muž sklápěcí ruka: světlý odstín pleti
+💁🏻‍♂	muž sklápěcí ruka: světlý odstín pleti
+💁🏼‍♂️	muž sklápěcí ruka: středně světlý odstín pleti
+💁🏼‍♂	muž sklápěcí ruka: středně světlý odstín pleti
+💁🏽‍♂️	muž sklápěcí ruka: střední odstín pleti
+💁🏽‍♂	muž sklápěcí ruka: střední odstín pleti
+💁🏾‍♂️	muž sklápěcí ruka: středně tmavý odstín pleti
+💁🏾‍♂	muž sklápěcí ruka: středně tmavý odstín pleti
+💁🏿‍♂️	muž sklápěcí ruka: tmavý odstín pleti
+💁🏿‍♂	muž sklápěcí ruka: tmavý odstín pleti
+💁‍♀️	žena sklápěcí ruku
+💁‍♀	žena sklápěcí ruku
+💁🏻‍♀️	žena sklápěcí ruka: světlý odstín pleti
+💁🏻‍♀	žena sklápěcí ruka: světlý odstín pleti
+💁🏼‍♀️	žena sklápěcí ruka: středně světlý tón pleti
+💁🏼‍♀	žena sklápěcí ruka: středně světlý tón pleti
+💁🏽‍♀️	žena sklápěcí ruka: střední tón pleti
+💁🏽‍♀	žena sklápěcí ruka: střední tón pleti
+💁🏾‍♀️	žena sklápějící ruku: středně tmavý odstín pleti
+💁🏾‍♀	žena sklápějící ruku: středně tmavý odstín pleti
+💁🏿‍♀️	žena sklápěcí ruka: tmavý odstín pleti
+💁🏿‍♀	žena sklápěcí ruka: tmavý odstín pleti
+🙋	osoba zvedající ruku
+🙋🏻	osoba zvedající ruku: světlý odstín pleti
+🙋🏼	osoba zvedající ruku: středně světlý odstín pleti
+🙋🏽	osoba zvedající ruku: střední odstín pleti
+🙋🏾	osoba zvedající ruku: středně tmavý odstín pleti
+🙋🏿	osoba zvedající ruku: tmavý odstín pleti
+🙋‍♂️	muž zvedl ruku
+🙋‍♂	muž zvedl ruku
+🙋🏻‍♂️	muž zvedl ruku: světlý odstín pleti
+🙋🏻‍♂	muž zvedl ruku: světlý odstín pleti
+🙋🏼‍♂️	muž zvedl ruku: středně světlý odstín pleti
+🙋🏼‍♂	muž zvedl ruku: středně světlý odstín pleti
+🙋🏽‍♂️	muž zvedl ruku: střední odstín pleti
+🙋🏽‍♂	muž zvedl ruku: střední odstín pleti
+🙋🏾‍♂️	muž zvedl ruku: středně tmavý odstín pleti
+🙋🏾‍♂	muž zvedl ruku: středně tmavý odstín pleti
+🙋🏿‍♂️	muž zvedl ruku: tmavý odstín pleti
+🙋🏿‍♂	muž zvedl ruku: tmavý odstín pleti
+🙋‍♀️	žena zvedla ruku
+🙋‍♀	žena zvedla ruku
+🙋🏻‍♀️	žena zvedla ruku: světlý odstín pleti
+🙋🏻‍♀	žena zvedla ruku: světlý odstín pleti
+🙋🏼‍♀️	žena zvedající ruku: středně světlý tón pleti
+🙋🏼‍♀	žena zvedající ruku: středně světlý tón pleti
+🙋🏽‍♀️	žena zvedla ruku: střední tón pleti
+🙋🏽‍♀	žena zvedla ruku: střední tón pleti
+🙋🏾‍♀️	žena zvedající ruku: středně tmavý odstín pleti
+🙋🏾‍♀	žena zvedající ruku: středně tmavý odstín pleti
+🙋🏿‍♀️	žena zvedla ruku: tmavý odstín pleti
+🙋🏿‍♀	žena zvedla ruku: tmavý odstín pleti
+🙇	osoba se uklonila
+🙇🏻	osoba uklánějící se: světlý odstín pleti
+🙇🏼	osoba uklánějící se: středně světlý odstín pleti
+🙇🏽	osoba uklánějící se: střední odstín pleti
+🙇🏾	osoba uklánějící se: středně tmavý odstín pleti
+🙇🏿	osoba uklánějící se: tmavý odstín pleti
+🙇‍♂️	muž se uklonil
+🙇‍♂	muž se uklonil
+🙇🏻‍♂️	muž se uklonil: světlý odstín pleti
+🙇🏻‍♂	muž se uklonil: světlý odstín pleti
+🙇🏼‍♂️	muž se uklání: středně světlý odstín pleti
+🙇🏼‍♂	muž se uklání: středně světlý odstín pleti
+🙇🏽‍♂️	muž se uklání: střední odstín pleti
+🙇🏽‍♂	muž se uklání: střední odstín pleti
+🙇🏾‍♂️	muž se uklání: středně tmavý odstín pleti
+🙇🏾‍♂	muž se uklání: středně tmavý odstín pleti
+🙇🏿‍♂️	muž se uklonil: tmavý odstín pleti
+🙇🏿‍♂	muž se uklonil: tmavý odstín pleti
+🙇‍♀️	žena se uklonila
+🙇‍♀	žena se uklonila
+🙇🏻‍♀️	žena se uklání: světlý odstín pleti
+🙇🏻‍♀	žena se uklání: světlý odstín pleti
+🙇🏼‍♀️	žena se uklání: středně světlý odstín pleti
+🙇🏼‍♀	žena se uklání: středně světlý odstín pleti
+🙇🏽‍♀️	žena se uklání: střední odstín pleti
+🙇🏽‍♀	žena se uklání: střední odstín pleti
+🙇🏾‍♀️	žena se uklání: středně tmavý odstín pleti
+🙇🏾‍♀	žena se uklání: středně tmavý odstín pleti
+🙇🏿‍♀️	žena se uklání: tmavý odstín pleti
+🙇🏿‍♀	žena se uklání: tmavý odstín pleti
+🤦	osoba facepalming
+🤦🏻	facepalming osoby: světlý tón pleti
+🤦🏼	facepalming: středně světlý tón pleti
+🤦🏽	facepalming: střední tón pleti
+🤦🏾	person facepalming: středně tmavý odstín pleti
+🤦🏿	facepalming osoby: tmavý odstín pleti
+🤦‍♂️	muž facepalming
+🤦‍♂	muž facepalming
+🤦🏻‍♂️	muž facepalming: světlý tón pleti
+🤦🏻‍♂	muž facepalming: světlý tón pleti
+🤦🏼‍♂️	muž facepalming: středně světlý tón pleti
+🤦🏼‍♂	muž facepalming: středně světlý tón pleti
+🤦🏽‍♂️	muž facepalming: střední tón pleti
+🤦🏽‍♂	muž facepalming: střední tón pleti
+🤦🏾‍♂️	muž facepalming: středně tmavý odstín pleti
+🤦🏾‍♂	muž facepalming: středně tmavý odstín pleti
+🤦🏿‍♂️	muž facepalming: tmavý odstín pleti
+🤦🏿‍♂	muž facepalming: tmavý odstín pleti
+🤦‍♀️	žena facepalming
+🤦‍♀	žena facepalming
+🤦🏻‍♀️	žena facepalming: světlý tón pleti
+🤦🏻‍♀	žena facepalming: světlý tón pleti
+🤦🏼‍♀️	žena facepalming: středně světlý tón pleti
+🤦🏼‍♀	žena facepalming: středně světlý tón pleti
+🤦🏽‍♀️	žena facepalming: střední tón pleti
+🤦🏽‍♀	žena facepalming: střední tón pleti
+🤦🏾‍♀️	žena facepalming: středně tmavý odstín pleti
+🤦🏾‍♀	žena facepalming: středně tmavý odstín pleti
+🤦🏿‍♀️	žena facepalming: tmavý odstín pleti
+🤦🏿‍♀	žena facepalming: tmavý odstín pleti
+🤷	osoba krčí rameny
+🤷🏻	osoba krčící rameny: světlý odstín pleti
+🤷🏼	osoba krčící rameny: středně světlý tón pleti
+🤷🏽	osoba krčící rameny: střední odstín pleti
+🤷🏾	osoba krčící rameny: středně tmavý odstín pleti
+🤷🏿	osoba krčící rameny: tmavý odstín pleti
+🤷‍♂️	muž krčí rameny
+🤷‍♂	muž krčí rameny
+🤷🏻‍♂️	muž krčí rameny: světlý odstín pleti
+🤷🏻‍♂	muž krčí rameny: světlý odstín pleti
+🤷🏼‍♂️	muž krčí rameny: středně světlý tón pleti
+🤷🏼‍♂	muž krčí rameny: středně světlý tón pleti
+🤷🏽‍♂️	muž krčí rameny: střední odstín pleti
+🤷🏽‍♂	muž krčí rameny: střední odstín pleti
+🤷🏾‍♂️	muž krčí rameny: středně tmavý odstín pleti
+🤷🏾‍♂	muž krčí rameny: středně tmavý odstín pleti
+🤷🏿‍♂️	muž krčí rameny: tmavý odstín pleti
+🤷🏿‍♂	muž krčí rameny: tmavý odstín pleti
+🤷‍♀️	žena krčí rameny
+🤷‍♀	žena krčí rameny
+🤷🏻‍♀️	žena krčí rameny: světlý odstín pleti
+🤷🏻‍♀	žena krčí rameny: světlý odstín pleti
+🤷🏼‍♀️	žena krčí rameny: středně světlý tón pleti
+🤷🏼‍♀	žena krčí rameny: středně světlý tón pleti
+🤷🏽‍♀️	žena krčí rameny: střední tón pleti
+🤷🏽‍♀	žena krčí rameny: střední tón pleti
+🤷🏾‍♀️	woman shrugging: medium-dark skin tone
+🤷🏾‍♀	woman shrugging: medium-dark skin tone
+🤷🏿‍♀️	woman shrugging: dark skin tone
+🤷🏿‍♀	woman shrugging: dark skin tone
+💆	osoba, která dostává masáž
+💆🏻	person getting massage: light skin tone
+💆🏼	person getting massage: medium-light skin tone
+💆🏽	person getting massage: medium skin tone
+💆🏾	person getting massage: medium-dark skin tone
+💆🏿	person getting massage: dark skin tone
+💆‍♂️	muž dostává masáž
+💆‍♂	muž dostává masáž
+💆🏻‍♂️	man getting massage: light skin tone
+💆🏻‍♂	man getting massage: light skin tone
+💆🏼‍♂️	man getting massage: medium-light skin tone
+💆🏼‍♂	man getting massage: medium-light skin tone
+💆🏽‍♂️	man getting massage: medium skin tone
+💆🏽‍♂	man getting massage: medium skin tone
+💆🏾‍♂️	man getting massage: medium-dark skin tone
+💆🏾‍♂	muž dostává masáž: středně tmavý odstín pleti
+💆🏿‍♂️	muž dostává masáž: tmavý odstín pleti
+💆🏿‍♂	muž dostává masáž: tmavý odstín pleti
+💆‍♀️	žena dostává masáž
+💆‍♀	žena dostává masáž
+💆🏻‍♀️	žena dostává masáž: světlý tón pleti
+💆🏻‍♀	žena dostává masáž: světlý tón pleti
+💆🏼‍♀️	žena dostává masáž: středně světlý tón pleti
+💆🏼‍♀	žena dostává masáž: středně světlý tón pleti
+💆🏽‍♀️	žena dostává masáž: střední tón pleti
+💆🏽‍♀	žena dostává masáž: střední tón pleti
+💆🏾‍♀️	žena dostává masáž: středně tmavý odstín pleti
+💆🏾‍♀	žena dostává masáž: středně tmavý odstín pleti
+💆🏿‍♀️	žena dostává masáž: tmavý odstín pleti
+💆🏿‍♀	žena dostává masáž: tmavý odstín pleti
+💇	člověk se ostříhá
+💇🏻	ostříhaná osoba: světlý odstín pleti
+💇🏼	ostříhaná osoba: středně světlý odstín pleti
+💇🏽	ostříhaná osoba: střední odstín pleti
+💇🏾	ostříhaná osoba: středně tmavý odstín pleti
+💇🏿	ostříhaná osoba: tmavý odstín pleti
+💇‍♂️	muž se ostříhat
+💇‍♂	muž se ostříhat
+💇🏻‍♂️	muž se ostříhá: světlý odstín pleti
+💇🏻‍♂	muž se ostříhá: světlý odstín pleti
+💇🏼‍♂️	muž se ostříhá: středně světlý odstín pleti
+💇🏼‍♂	muž se ostříhá: středně světlý odstín pleti
+💇🏽‍♂️	muž se ostříhá: střední tón pleti
+💇🏽‍♂	muž se ostříhá: střední tón pleti
+💇🏾‍♂️	muž se ostříhá: středně tmavý odstín pleti
+💇🏾‍♂	muž se ostříhá: středně tmavý odstín pleti
+💇🏿‍♂️	muž se ostříhá: tmavý odstín pleti
+💇🏿‍♂	muž se ostříhá: tmavý odstín pleti
+💇‍♀️	žena ostříhat
+💇‍♀	žena ostříhat
+💇🏻‍♀️	žena se ostříhá: světlý odstín pleti
+💇🏻‍♀	žena se ostříhá: světlý odstín pleti
+💇🏼‍♀️	žena se ostříhá: středně světlý tón pleti
+💇🏼‍♀	žena se ostříhá: středně světlý tón pleti
+💇🏽‍♀️	žena se ostříhá: střední tón pleti
+💇🏽‍♀	žena se ostříhá: střední tón pleti
+💇🏾‍♀️	žena se ostříhá: středně tmavý odstín pleti
+💇🏾‍♀	žena se ostříhá: středně tmavý odstín pleti
+💇🏿‍♀️	žena se ostříhá: tmavý odstín pleti
+💇🏿‍♀	žena se ostříhá: tmavý odstín pleti
+🚶	člověk chodící
+🚶🏻	chodící osoba: světlý tón pleti
+🚶🏼	chodící osoba: středně světlý tón pleti
+🚶🏽	chodící osoba: střední odstín pleti
+🚶🏾	chodící osoba: středně tmavý odstín pleti
+🚶🏿	chodící osoba: tmavý odstín pleti
+🚶‍♂️	muž chodící
+🚶‍♂	muž chodící
+🚶🏻‍♂️	muž chodící: světlý tón pleti
+🚶🏻‍♂	muž chodící: světlý tón pleti
+🚶🏼‍♂️	muž chodící: středně světlý tón pleti
+🚶🏼‍♂	muž chodící: středně světlý tón pleti
+🚶🏽‍♂️	muž chodící: střední odstín pleti
+🚶🏽‍♂	muž chodící: střední odstín pleti
+🚶🏾‍♂️	muž chodící: středně tmavý odstín pleti
+🚶🏾‍♂	muž chodící: středně tmavý odstín pleti
+🚶🏿‍♂️	muž chodící: tmavý odstín pleti
+🚶🏿‍♂	muž chodící: tmavý odstín pleti
+🚶‍♀️	žena chůze
+🚶‍♀	žena chůze
+🚶🏻‍♀️	žena chodí: světlý tón pleti
+🚶🏻‍♀	žena chodí: světlý tón pleti
+🚶🏼‍♀️	žena chodí: středně světlý tón pleti
+🚶🏼‍♀	žena chodí: středně světlý tón pleti
+🚶🏽‍♀️	žena chodí: střední tón pleti
+🚶🏽‍♀	žena chodí: střední tón pleti
+🚶🏾‍♀️	žena chodí: středně tmavý odstín pleti
+🚶🏾‍♀	žena chodí: středně tmavý odstín pleti
+🚶🏿‍♀️	žena chodí: tmavý odstín pleti
+🚶🏿‍♀	žena chodí: tmavý odstín pleti
+🏃	běžící osoba
+🏃🏻	běžící osoba: světlý odstín pleti
+🏃🏼	běžící osoba: středně světlý odstín pleti
+🏃🏽	běžící osoba: střední odstín pleti
+🏃🏾	běžící osoba: středně tmavý odstín pleti
+🏃🏿	běžící osoba: tmavý odstín pleti
+🏃‍♂️	muž běží
+🏃‍♂	muž běží
+🏃🏻‍♂️	muž běží: světlý odstín pleti
+🏃🏻‍♂	muž běží: světlý odstín pleti
+🏃🏼‍♂️	muž běží: středně světlý odstín pleti
+🏃🏼‍♂	muž běží: středně světlý odstín pleti
+🏃🏽‍♂️	muž běží: střední odstín pleti
+🏃🏽‍♂	muž běží: střední odstín pleti
+🏃🏾‍♂️	muž běží: středně tmavý odstín pleti
+🏃🏾‍♂	muž běží: středně tmavý odstín pleti
+🏃🏿‍♂️	muž běží: tmavý odstín pleti
+🏃🏿‍♂	muž běží: tmavý odstín pleti
+🏃‍♀️	žena běží
+🏃‍♀	žena běží
+🏃🏻‍♀️	žena běží: světlý tón pleti
+🏃🏻‍♀	žena běží: světlý tón pleti
+🏃🏼‍♀️	žena běží: středně světlý odstín pleti
+🏃🏼‍♀	žena běží: středně světlý odstín pleti
+🏃🏽‍♀️	žena běží: střední odstín pleti
+🏃🏽‍♀	žena běží: střední odstín pleti
+🏃🏾‍♀️	žena běží: středně tmavý odstín pleti
+🏃🏾‍♀	žena běží: středně tmavý odstín pleti
+🏃🏿‍♀️	žena běží: tmavý odstín pleti
+🏃🏿‍♀	žena běží: tmavý odstín pleti
+💃	žena tančí
+💃🏻	žena tančí: světlý odstín pleti
+💃🏼	tančící žena: středně světlý odstín pleti
+💃🏽	žena tančí: střední odstín pleti
+💃🏾	tančící žena: středně tmavý odstín pleti
+💃🏿	žena tančí: tmavý odstín pleti
+🕺	muž tančí
+🕺🏻	muž tančí: světlý odstín pleti
+🕺🏼	tančící muž: středně světlý odstín pleti
+🕺🏽	tančící muž: střední odstín pleti
+🕺🏾	tančící muž: středně tmavý odstín pleti
+🕺🏿	muž tančí: tmavý odstín pleti
+👯	lidé se zaječíma ušima
+👯‍♂️	muži se zaječíma ušima
+👯‍♂	muži se zaječíma ušima
+👯‍♀️	ženy s ušima
+👯‍♀	ženy s ušima
+🧖	osoba v zapařené místnosti
+🧖🏻	osoba v zapařené místnosti: světlý odstín pleti
+🧖🏼	osoba v zapařené místnosti: středně světlý tón pleti
+🧖🏽	osoba v zapařené místnosti: střední odstín pleti
+🧖🏾	osoba v zapařené místnosti: středně tmavý odstín pleti
+🧖🏿	osoba v zapařené místnosti: tmavý odstín pleti
+🧖‍♀️	žena v zapařené místnosti
+🧖‍♀	žena v zapařené místnosti
+🧖🏻‍♀️	žena v zapařené místnosti: světlý tón pleti
+🧖🏻‍♀	žena v zapařené místnosti: světlý tón pleti
+🧖🏼‍♀️	žena v zapařené místnosti: středně světlý tón pleti
+🧖🏼‍♀	žena v zapařené místnosti: středně světlý tón pleti
+🧖🏽‍♀️	žena v zapařené místnosti: střední tón pleti
+🧖🏽‍♀	žena v zapařené místnosti: střední tón pleti
+🧖🏾‍♀️	žena v zapařené místnosti: středně tmavý odstín pleti
+🧖🏾‍♀	žena v zapařené místnosti: středně tmavý odstín pleti
+🧖🏿‍♀️	žena v zapařené místnosti: tmavý odstín pleti
+🧖🏿‍♀	žena v zapařené místnosti: tmavý odstín pleti
+🧖‍♂️	muž v zapařené místnosti
+🧖‍♂	muž v zapařené místnosti
+🧖🏻‍♂️	muž v zapařené místnosti: světlý odstín pleti
+🧖🏻‍♂	muž v zapařené místnosti: světlý odstín pleti
+🧖🏼‍♂️	muž v zapařené místnosti: středně světlý odstín pleti
+🧖🏼‍♂	muž v zapařené místnosti: středně světlý odstín pleti
+🧖🏽‍♂️	muž v zapařené místnosti: střední odstín pleti
+🧖🏽‍♂	muž v zapařené místnosti: střední odstín pleti
+🧖🏾‍♂️	muž v zapařené místnosti: středně tmavý odstín pleti
+🧖🏾‍♂	muž v zapařené místnosti: středně tmavý odstín pleti
+🧖🏿‍♂️	muž v zapařené místnosti: tmavý odstín pleti
+🧖🏿‍♂	muž v zapařené místnosti: tmavý odstín pleti
+🧗	osoba lezení
+🧗🏻	osoba lezení: světlý odstín pleti
+🧗🏼	osoba lezení: středně světlý odstín pleti
+🧗🏽	osoba lezení: střední odstín pleti
+🧗🏾	osoba lezení: středně tmavý odstín pleti
+🧗🏿	osoba lezení: tmavý odstín pleti
+🧗‍♀️	žena lezení
+🧗‍♀	žena lezení
+🧗🏻‍♀️	žena lezení: světlý odstín pleti
+🧗🏻‍♀	žena lezení: světlý odstín pleti
+🧗🏼‍♀️	žena lezení: středně světlý tón pleti
+🧗🏼‍♀	žena lezení: středně světlý tón pleti
+🧗🏽‍♀️	žena lezení: střední odstín pleti
+🧗🏽‍♀	žena lezení: střední odstín pleti
+🧗🏾‍♀️	žena lezení: středně tmavý odstín pleti
+🧗🏾‍♀	žena lezení: středně tmavý odstín pleti
+🧗🏿‍♀️	žena lezení: tmavý odstín pleti
+🧗🏿‍♀	žena lezení: tmavý odstín pleti
+🧗‍♂️	muž lezení
+🧗‍♂	muž lezení
+🧗🏻‍♂️	muž lezení: světlý odstín pleti
+🧗🏻‍♂	muž lezení: světlý odstín pleti
+🧗🏼‍♂️	muž lezení: středně světlý odstín pleti
+🧗🏼‍♂	muž lezení: středně světlý odstín pleti
+🧗🏽‍♂️	muž lezení: střední odstín pleti
+🧗🏽‍♂	muž lezení: střední odstín pleti
+🧗🏾‍♂️	muž lezení: středně tmavý odstín pleti
+🧗🏾‍♂	muž lezení: středně tmavý odstín pleti
+🧗🏿‍♂️	muž lezení: tmavý odstín pleti
+🧗🏿‍♂	muž lezení: tmavý odstín pleti
+🧘	osoba v lotosové pozici
+🧘🏻	osoba v lotosové pozici: světlý odstín pleti
+🧘🏼	osoba v lotosové pozici: středně světlý tón pleti
+🧘🏽	osoba v lotosové pozici: střední tón pleti
+🧘🏾	osoba v lotosové pozici: středně tmavý odstín pleti
+🧘🏿	osoba v lotosové pozici: tmavý odstín pleti
+🧘‍♀️	žena v lotosové pozici
+🧘‍♀	žena v lotosové pozici
+🧘🏻‍♀️	žena v lotosové pozici: světlý tón pleti
+🧘🏻‍♀	žena v lotosové pozici: světlý tón pleti
+🧘🏼‍♀️	žena v lotosové pozici: středně světlý tón pleti
+🧘🏼‍♀	žena v lotosové pozici: středně světlý tón pleti
+🧘🏽‍♀️	žena v lotosové pozici: střední tón pleti
+🧘🏽‍♀	žena v lotosové pozici: střední tón pleti
+🧘🏾‍♀️	žena v lotosové pozici: středně tmavý odstín pleti
+🧘🏾‍♀	žena v lotosové pozici: středně tmavý odstín pleti
+🧘🏿‍♀️	žena v lotosové pozici: tmavý odstín pleti
+🧘🏿‍♀	žena v lotosové pozici: tmavý odstín pleti
+🧘‍♂️	muž v lotosové pozici
+🧘‍♂	muž v lotosové pozici
+🧘🏻‍♂️	muž v lotosové pozici: světlý tón pleti
+🧘🏻‍♂	muž v lotosové pozici: světlý tón pleti
+🧘🏼‍♂️	muž v lotosové pozici: středně světlý tón pleti
+🧘🏼‍♂	muž v lotosové pozici: středně světlý tón pleti
+🧘🏽‍♂️	muž v lotosové pozici: střední tón pleti
+🧘🏽‍♂	muž v lotosové pozici: střední tón pleti
+🧘🏾‍♂️	muž v lotosové pozici: středně tmavý odstín pleti
+🧘🏾‍♂	muž v lotosové pozici: středně tmavý odstín pleti
+🧘🏿‍♂️	muž v lotosové pozici: tmavý odstín pleti
+🧘🏿‍♂	muž v lotosové pozici: tmavý odstín pleti
+🛀	osoba ve vaně
+🛀🏻	osoba při koupeli: světlý tón pleti
+🛀🏼	osoba při koupeli: středně světlý tón pleti
+🛀🏽	osoba při koupeli: střední tón pleti
+🛀🏾	osoba při koupeli: středně tmavý odstín pleti
+🛀🏿	osoba při koupeli: tmavý odstín pleti
+🛌	osoba v posteli
+🛌🏻	osoba v posteli: světlý odstín pleti
+🛌🏼	osoba v posteli: středně světlý odstín pleti
+🛌🏽	osoba v posteli: střední odstín pleti
+🛌🏾	osoba v posteli: středně tmavý odstín pleti
+🛌🏿	osoba v posteli: tmavý odstín pleti
+🕴️	muž v obleku levitující
+🕴	muž v obleku levitující
+🕴🏻	muž v obleku levitující: světlý odstín pleti
+🕴🏼	muž v obleku levitující: středně světlý odstín pleti
+🕴🏽	muž v obleku levitující: střední odstín pleti
+🕴🏾	muž v obleku levitující: středně tmavý odstín pleti
+🕴🏿	muž v obleku levitující: tmavý odstín pleti
+🗣️	mluvící hlava
+🗣	mluvící hlava
+👤	poprsí v siluetě
+👥	poprsí v siluetě
+🤺	oplocení osoby
+🏇	koňské dostihy
+🏇🏻	koňské dostihy: světlý odstín pleti
+🏇🏼	koňské dostihy: středně světlý odstín pleti
+🏇🏽	koňské dostihy: střední odstín pleti
+🏇🏾	koňské dostihy: středně tmavý odstín pleti
+🏇🏿	koňské dostihy: tmavý odstín pleti
+⛷️	lyžař
+⛷	lyžař
+🏂	snowboardista
+🏂🏻	snowboardista: světlý odstín pleti
+🏂🏼	snowboardista: středně světlý odstín pleti
+🏂🏽	snowboardista: střední odstín pleti
+🏂🏾	snowboardista: středně tmavý odstín pleti
+🏂🏿	snowboardista: tmavý odstín pleti
+🏌️	člověk golf
+🏌	člověk golf
+🏌🏻	osoba golf: světlý odstín pleti
+🏌🏼	osoba golf: středně světlý odstín pleti
+🏌🏽	osoba golf: střední odstín pleti
+🏌🏾	golfová osoba: středně tmavý odstín pleti
+🏌🏿	osoba golf: tmavý odstín pleti
+🏌️‍♂️	muž golf
+🏌‍♂️	muž golf
+🏌️‍♂	muž golf
+🏌‍♂	muž golf
+🏌🏻‍♂️	muž golf: světlý odstín pleti
+🏌🏻‍♂	muž golf: světlý odstín pleti
+🏌🏼‍♂️	muž golf: středně světlý odstín pleti
+🏌🏼‍♂	muž golf: středně světlý odstín pleti
+🏌🏽‍♂️	muž golf: střední odstín pleti
+🏌🏽‍♂	muž golf: střední odstín pleti
+🏌🏾‍♂️	muž golf: středně tmavý odstín pleti
+🏌🏾‍♂	muž golf: středně tmavý odstín pleti
+🏌🏿‍♂️	muž golf: tmavý odstín pleti
+🏌🏿‍♂	muž golf: tmavý odstín pleti
+🏌️‍♀️	žena golf
+🏌‍♀️	žena golf
+🏌️‍♀	žena golf
+🏌‍♀	žena golf
+🏌🏻‍♀️	žena golf: světlý odstín pleti
+🏌🏻‍♀	žena golf: světlý odstín pleti
+🏌🏼‍♀️	žena golf: středně světlý tón pleti
+🏌🏼‍♀	žena golf: středně světlý tón pleti
+🏌🏽‍♀️	žena golf: střední odstín pleti
+🏌🏽‍♀	žena golf: střední odstín pleti
+🏌🏾‍♀️	žena golf: středně tmavý odstín pleti
+🏌🏾‍♀	žena golf: středně tmavý odstín pleti
+🏌🏿‍♀️	žena golf: tmavý odstín pleti
+🏌🏿‍♀	žena golf: tmavý odstín pleti
+🏄	člověk surfuje
+🏄🏻	osoba surfující: světlý odstín pleti
+🏄🏼	osoba surfující: středně světlý odstín pleti
+🏄🏽	osoba surfující: střední odstín pleti
+🏄🏾	osoba surfující: středně tmavý odstín pleti
+🏄🏿	osoba surfující: tmavý odstín pleti
+🏄‍♂️	muž surfování
+🏄‍♂	muž surfování
+🏄🏻‍♂️	muž surfování: světlý odstín pleti
+🏄🏻‍♂	muž surfování: světlý odstín pleti
+🏄🏼‍♂️	muž surfování: středně světlý odstín pleti
+🏄🏼‍♂	muž surfování: středně světlý odstín pleti
+🏄🏽‍♂️	muž surfování: střední odstín pleti
+🏄🏽‍♂	muž surfování: střední odstín pleti
+🏄🏾‍♂️	muž surfující: středně tmavý odstín pleti
+🏄🏾‍♂	muž surfující: středně tmavý odstín pleti
+🏄🏿‍♂️	muž surfování: tmavý odstín pleti
+🏄🏿‍♂	muž surfování: tmavý odstín pleti
+🏄‍♀️	žena surfování
+🏄‍♀	žena surfování
+🏄🏻‍♀️	žena surfování: světlý odstín pleti
+🏄🏻‍♀	žena surfování: světlý odstín pleti
+🏄🏼‍♀️	žena surfující: středně světlý odstín pleti
+🏄🏼‍♀	žena surfující: středně světlý odstín pleti
+🏄🏽‍♀️	žena surfující: střední odstín pleti
+🏄🏽‍♀	žena surfující: střední odstín pleti
+🏄🏾‍♀️	žena surfující: středně tmavý odstín pleti
+🏄🏾‍♀	žena surfující: středně tmavý odstín pleti
+🏄🏿‍♀️	žena surfování: tmavý odstín pleti
+🏄🏿‍♀	žena surfování: tmavý odstín pleti
+🚣	osoba veslice
+🚣🏻	osoba veslice: světlý odstín pleti
+🚣🏼	osoba veslice: středně světlý odstín pleti
+🚣🏽	osoba veslice: střední odstín pleti
+🚣🏾	osoba veslice: středně tmavý odstín pleti
+🚣🏿	osoba veslice: tmavý odstín pleti
+🚣‍♂️	muž veslice
+🚣‍♂	muž veslice
+🚣🏻‍♂️	muž veslice: světlý odstín pleti
+🚣🏻‍♂	muž veslice: světlý odstín pleti
+🚣🏼‍♂️	mužská veslice: středně světlý odstín pleti
+🚣🏼‍♂	mužská veslice: středně světlý odstín pleti
+🚣🏽‍♂️	mužská veslice: střední odstín pleti
+🚣🏽‍♂	mužská veslice: střední odstín pleti
+🚣🏾‍♂️	mužská veslice: středně tmavý odstín pleti
+🚣🏾‍♂	mužská veslice: středně tmavý odstín pleti
+🚣🏿‍♂️	muž veslice: tmavý odstín pleti
+🚣🏿‍♂	muž veslice: tmavý odstín pleti
+🚣‍♀️	žena veslice
+🚣‍♀	žena veslice
+🚣🏻‍♀️	žena veslice: světlý odstín pleti
+🚣🏻‍♀	žena veslice: světlý odstín pleti
+🚣🏼‍♀️	ženská veslice: středně světlý odstín pleti
+🚣🏼‍♀	ženská veslice: středně světlý odstín pleti
+🚣🏽‍♀️	ženská veslice: střední odstín pleti
+🚣🏽‍♀	ženská veslice: střední odstín pleti
+🚣🏾‍♀️	ženská veslice: středně tmavý odstín pleti
+🚣🏾‍♀	ženská veslice: středně tmavý odstín pleti
+🚣🏿‍♀️	žena veslice: tmavý odstín pleti
+🚣🏿‍♀	žena veslice: tmavý odstín pleti
+🏊	osoba plavání
+🏊🏻	plavající osoba: světlý odstín pleti
+🏊🏼	plavající osoba: středně světlý tón pleti
+🏊🏽	plavající osoba: střední tón pleti
+🏊🏾	plavající osoba: středně tmavý odstín pleti
+🏊🏿	plavající osoba: tmavý odstín pleti
+🏊‍♂️	muž plavání
+🏊‍♂	muž plavání
+🏊🏻‍♂️	muž plavání: světlý tón pleti
+🏊🏻‍♂	muž plavání: světlý tón pleti
+🏊🏼‍♂️	muž plavání: středně světlý tón pleti
+🏊🏼‍♂	muž plavání: středně světlý tón pleti
+🏊🏽‍♂️	muž plavání: střední tón pleti
+🏊🏽‍♂	muž plavání: střední tón pleti
+🏊🏾‍♂️	muž plavání: středně tmavý odstín pleti
+🏊🏾‍♂	muž plavání: středně tmavý odstín pleti
+🏊🏿‍♂️	muž plavání: tmavý odstín pleti
+🏊🏿‍♂	muž plavání: tmavý odstín pleti
+🏊‍♀️	žena plavání
+🏊‍♀	žena plavání
+🏊🏻‍♀️	žena plavání: světlý tón pleti
+🏊🏻‍♀	žena plavání: světlý tón pleti
+🏊🏼‍♀️	plavání ženy: středně světlý tón pleti
+🏊🏼‍♀	plavání ženy: středně světlý tón pleti
+🏊🏽‍♀️	plavání ženy: střední tón pleti
+🏊🏽‍♀	plavání ženy: střední tón pleti
+🏊🏾‍♀️	plavání ženy: středně tmavý odstín pleti
+🏊🏾‍♀	plavání ženy: středně tmavý odstín pleti
+🏊🏿‍♀️	plavání ženy: tmavý odstín pleti
+🏊🏿‍♀	plavání ženy: tmavý odstín pleti
+⛹️	osoba skákací míč
+⛹	osoba skákací míč
+⛹🏻	skákací míč osoby: světlý odstín pleti
+⛹🏼	skákací míč osoby: středně světlý odstín pleti
+⛹🏽	skákací míč osoby: střední odstín pleti
+⛹🏾	skákací míč osoby: středně tmavý odstín pleti
+⛹🏿	osoba skákací míč: tmavý odstín pleti
+⛹️‍♂️	muž skákací míč
+⛹‍♂️	muž skákací míč
+⛹️‍♂	muž skákací míč
+⛹‍♂	muž skákací míč
+⛹🏻‍♂️	muž skákací míč: světlý odstín pleti
+⛹🏻‍♂	muž skákací míč: světlý odstín pleti
+⛹🏼‍♂️	mužský skákací míč: středně světlý odstín pleti
+⛹🏼‍♂	mužský skákací míč: středně světlý odstín pleti
+⛹🏽‍♂️	mužský skákací míč: střední odstín pleti
+⛹🏽‍♂	mužský skákací míč: střední odstín pleti
+⛹🏾‍♂️	mužský skákací míč: středně tmavý odstín pleti
+⛹🏾‍♂	mužský skákací míč: středně tmavý odstín pleti
+⛹🏿‍♂️	muž skákací míč: tmavý odstín pleti
+⛹🏿‍♂	muž skákací míč: tmavý odstín pleti
+⛹️‍♀️	žena skákací míč
+⛹‍♀️	žena skákací míč
+⛹️‍♀	žena skákací míč
+⛹‍♀	žena skákací míč
+⛹🏻‍♀️	žena skákací míč: světlý odstín pleti
+⛹🏻‍♀	žena skákací míč: světlý odstín pleti
+⛹🏼‍♀️	skákací míč pro ženy: středně světlý odstín pleti
+⛹🏼‍♀	skákací míč pro ženy: středně světlý odstín pleti
+⛹🏽‍♀️	žena skákací míč: střední odstín pleti
+⛹🏽‍♀	žena skákací míč: střední odstín pleti
+⛹🏾‍♀️	žena skákací míč: středně tmavý odstín pleti
+⛹🏾‍♀	žena skákací míč: středně tmavý odstín pleti
+⛹🏿‍♀️	žena skákací míč: tmavý odstín pleti
+⛹🏿‍♀	žena skákací míč: tmavý odstín pleti
+🏋️	osoba zvedání závaží
+🏋	osoba zvedání závaží
+🏋🏻	osoba zvedající závaží: světlý tón pleti
+🏋🏼	osoba zvedající závaží: středně světlý tón pleti
+🏋🏽	osoba zvedající závaží: střední tón pleti
+🏋🏾	osoba zvedající závaží: středně tmavý odstín pleti
+🏋🏿	osoba zvedající závaží: tmavý odstín pleti
+🏋️‍♂️	muž zvedání závaží
+🏋‍♂️	muž zvedání závaží
+🏋️‍♂	muž zvedání závaží
+🏋‍♂	muž zvedání závaží
+🏋🏻‍♂️	muž zvedání závaží: světlý tón pleti
+🏋🏻‍♂	muž zvedání závaží: světlý tón pleti
+🏋🏼‍♂️	muž zvedající činky: středně světlý tón pleti
+🏋🏼‍♂	muž zvedající činky: středně světlý tón pleti
+🏋🏽‍♂️	muž zvedání závaží: střední tón pleti
+🏋🏽‍♂	muž zvedání závaží: střední tón pleti
+🏋🏾‍♂️	muž zvedající činky: středně tmavý odstín pleti
+🏋🏾‍♂	muž zvedající činky: středně tmavý odstín pleti
+🏋🏿‍♂️	muž zvedání závaží: tmavý odstín pleti
+🏋🏿‍♂	muž zvedání závaží: tmavý odstín pleti
+🏋️‍♀️	žena zvedání závaží
+🏋‍♀️	žena zvedání závaží
+🏋️‍♀	žena zvedání závaží
+🏋‍♀	žena zvedání závaží
+🏋🏻‍♀️	žena zvedání závaží: světlý tón pleti
+🏋🏻‍♀	žena zvedání závaží: světlý tón pleti
+🏋🏼‍♀️	žena zvedání závaží: středně světlý tón pleti
+🏋🏼‍♀	žena zvedání závaží: středně světlý tón pleti
+🏋🏽‍♀️	žena zvedání závaží: střední tón pleti
+🏋🏽‍♀	žena zvedání závaží: střední tón pleti
+🏋🏾‍♀️	žena zvedání závaží: středně tmavý odstín pleti
+🏋🏾‍♀	žena zvedání závaží: středně tmavý odstín pleti
+🏋🏿‍♀️	žena zvedání závaží: tmavý odstín pleti
+🏋🏿‍♀	žena zvedání závaží: tmavý odstín pleti
+🚴	osoba na kole
+🚴🏻	osoba na kole: světlý odstín pleti
+🚴🏼	osoba na kole: středně světlý odstín pleti
+🚴🏽	osoba na kole: střední odstín pleti
+🚴🏾	osoba na kole: středně tmavý odstín pleti
+🚴🏿	osoba na kole: tmavý odstín pleti
+🚴‍♂️	muž na kole
+🚴‍♂	muž na kole
+🚴🏻‍♂️	muž na kole: světlý odstín pleti
+🚴🏻‍♂	muž na kole: světlý odstín pleti
+🚴🏼‍♂️	muž na kole: středně světlý odstín pleti
+🚴🏼‍♂	muž na kole: středně světlý odstín pleti
+🚴🏽‍♂️	muž na kole: střední odstín pleti
+🚴🏽‍♂	muž na kole: střední odstín pleti
+🚴🏾‍♂️	muž na kole: středně tmavý odstín pleti
+🚴🏾‍♂	muž na kole: středně tmavý odstín pleti
+🚴🏿‍♂️	muž na kole: tmavý odstín pleti
+🚴🏿‍♂	muž na kole: tmavý odstín pleti
+🚴‍♀️	žena na kole
+🚴‍♀	žena na kole
+🚴🏻‍♀️	žena na kole: světlý odstín pleti
+🚴🏻‍♀	žena na kole: světlý odstín pleti
+🚴🏼‍♀️	žena na kole: středně světlý odstín pleti
+🚴🏼‍♀	žena na kole: středně světlý odstín pleti
+🚴🏽‍♀️	žena na kole: střední odstín pleti
+🚴🏽‍♀	žena na kole: střední odstín pleti
+🚴🏾‍♀️	žena na kole: středně tmavý odstín pleti
+🚴🏾‍♀	žena na kole: středně tmavý odstín pleti
+🚴🏿‍♀️	žena na kole: tmavý odstín pleti
+🚴🏿‍♀	žena na kole: tmavý odstín pleti
+🚵	osoba na horském kole
+🚵🏻	osoba na horském kole: světlý odstín pleti
+🚵🏼	osoba na horském kole: středně světlý odstín pleti
+🚵🏽	osoba na horském kole: střední odstín pleti
+🚵🏾	osoba na horském kole: středně tmavý odstín pleti
+🚵🏿	osoba na horském kole: tmavý odstín pleti
+🚵‍♂️	muž na horském kole
+🚵‍♂	muž na horském kole
+🚵🏻‍♂️	muž na horském kole: světlý odstín pleti
+🚵🏻‍♂	muž na horském kole: světlý odstín pleti
+🚵🏼‍♂️	muž na horském kole: středně světlý odstín pleti
+🚵🏼‍♂	muž na horském kole: středně světlý odstín pleti
+🚵🏽‍♂️	muž na horském kole: střední odstín pleti
+🚵🏽‍♂	muž na horském kole: střední odstín pleti
+🚵🏾‍♂️	muž na horském kole: středně tmavý odstín pleti
+🚵🏾‍♂	muž na horském kole: středně tmavý odstín pleti
+🚵🏿‍♂️	muž na horském kole: tmavý odstín pleti
+🚵🏿‍♂	muž na horském kole: tmavý odstín pleti
+🚵‍♀️	žena na horském kole
+🚵‍♀	žena na horském kole
+🚵🏻‍♀️	žena na horském kole: světlý odstín pleti
+🚵🏻‍♀	žena na horském kole: světlý odstín pleti
+🚵🏼‍♀️	žena na horském kole: středně světlý odstín pleti
+🚵🏼‍♀	žena na horském kole: středně světlý odstín pleti
+🚵🏽‍♀️	žena na horském kole: střední odstín pleti
+🚵🏽‍♀	žena na horském kole: střední odstín pleti
+🚵🏾‍♀️	žena na horském kole: středně tmavý odstín pleti
+🚵🏾‍♀	žena na horském kole: středně tmavý odstín pleti
+🚵🏿‍♀️	žena na horském kole: tmavý odstín pleti
+🚵🏿‍♀	žena na horském kole: tmavý odstín pleti
+🏎️	závodní auto
+🏎	závodní auto
+🏍️	motocykl
+🏍	motocykl
+🤸	osoba přehánějící se
+🤸🏻	osoba, která se pohybuje: světlý odstín pleti
+🤸🏼	váhavý člověk: středně světlý odstín pleti
+🤸🏽	náklonnost osoby: střední odstín pleti
+🤸🏾	osoba: středně tmavý odstín pleti
+🤸🏿	převoz: tmavý odstín pleti
+🤸‍♂️	muž přehánějící se
+🤸‍♂	muž přehánějící se
+🤸🏻‍♂️	muž přehánějící se: světlý odstín pleti
+🤸🏻‍♂	muž přehánějící se: světlý odstín pleti
+🤸🏼‍♂️	muž překotný: středně světlý odstín pleti
+🤸🏼‍♂	muž překotný: středně světlý odstín pleti
+🤸🏽‍♂️	mužský převoz: střední odstín pleti
+🤸🏽‍♂	mužský převoz: střední odstín pleti
+🤸🏾‍♂️	mužský tahák: středně tmavý odstín pleti
+🤸🏾‍♂	mužský tahák: středně tmavý odstín pleti
+🤸🏿‍♂️	muž přehánějící se: tmavý odstín pleti
+🤸🏿‍♂	muž přehánějící se: tmavý odstín pleti
+🤸‍♀️	žena přehánějící se
+🤸‍♀	žena přehánějící se
+🤸🏻‍♀️	žena před sebou: světlý odstín pleti
+🤸🏻‍♀	žena před sebou: světlý odstín pleti
+🤸🏼‍♀️	ženská povaha: středně světlý odstín pleti
+🤸🏼‍♀	ženská povaha: středně světlý odstín pleti
+🤸🏽‍♀️	žena před sebou: střední odstín pleti
+🤸🏽‍♀	žena před sebou: střední odstín pleti
+🤸🏾‍♀️	žena před sebou: středně tmavý odstín pleti
+🤸🏾‍♀	žena před sebou: středně tmavý odstín pleti
+🤸🏿‍♀️	žena před sebou: tmavý odstín pleti
+🤸🏿‍♀	žena před sebou: tmavý odstín pleti
+🤼	lidé zápasí
+🤼‍♂️	muži zápasí
+🤼‍♂	muži zápasí
+🤼‍♀️	ženský zápas
+🤼‍♀	ženský zápas
+🤽	člověk hraje vodní pólo
+🤽🏻	osoba hrající vodní pólo: světlý odstín pleti
+🤽🏼	osoba hrající vodní pólo: středně světlý odstín pleti
+🤽🏽	osoba hrající vodní pólo: střední odstín pleti
+🤽🏾	osoba hrající vodní pólo: středně tmavý odstín pleti
+🤽🏿	osoba hrající vodní pólo: tmavý odstín pleti
+🤽‍♂️	muž hraje vodní pólo
+🤽‍♂	muž hraje vodní pólo
+🤽🏻‍♂️	muž hrající vodní pólo: světlý odstín pleti
+🤽🏻‍♂	muž hrající vodní pólo: světlý odstín pleti
+🤽🏼‍♂️	muž hrající vodní pólo: středně světlý odstín pleti
+🤽🏼‍♂	muž hrající vodní pólo: středně světlý odstín pleti
+🤽🏽‍♂️	muž hrající vodní pólo: střední odstín pleti
+🤽🏽‍♂	muž hrající vodní pólo: střední odstín pleti
+🤽🏾‍♂️	muž hrající vodní pólo: středně tmavý odstín pleti
+🤽🏾‍♂	muž hrající vodní pólo: středně tmavý odstín pleti
+🤽🏿‍♂️	muž hrající vodní pólo: tmavý odstín pleti
+🤽🏿‍♂	muž hrající vodní pólo: tmavý odstín pleti
+🤽‍♀️	žena hraje vodní pólo
+🤽‍♀	žena hraje vodní pólo
+🤽🏻‍♀️	žena hrající vodní pólo: světlý odstín pleti
+🤽🏻‍♀	žena hrající vodní pólo: světlý odstín pleti
+🤽🏼‍♀️	žena hrající vodní pólo: středně světlý odstín pleti
+🤽🏼‍♀	žena hrající vodní pólo: středně světlý odstín pleti
+🤽🏽‍♀️	žena hrající vodní pólo: střední odstín pleti
+🤽🏽‍♀	žena hrající vodní pólo: střední odstín pleti
+🤽🏾‍♀️	žena hrající vodní pólo: středně tmavý odstín pleti
+🤽🏾‍♀	žena hrající vodní pólo: středně tmavý odstín pleti
+🤽🏿‍♀️	žena hrající vodní pólo: tmavý odstín pleti
+🤽🏿‍♀	žena hrající vodní pólo: tmavý odstín pleti
+🤾	člověk hraje házenou
+🤾🏻	osoba hrající házenou: světlý odstín pleti
+🤾🏼	osoba hrající házenou: středně světlý odstín pleti
+🤾🏽	osoba hrající házenou: střední odstín pleti
+🤾🏾	osoba hrající házenou: středně tmavý odstín pleti
+🤾🏿	osoba hrající házenou: tmavý odstín pleti
+🤾‍♂️	muž hraje házenou
+🤾‍♂	muž hraje házenou
+🤾🏻‍♂️	muž hrající házenou: světlý odstín pleti
+🤾🏻‍♂	muž hrající házenou: světlý odstín pleti
+🤾🏼‍♂️	muž hrající házenou: středně světlý odstín pleti
+🤾🏼‍♂	muž hrající házenou: středně světlý odstín pleti
+🤾🏽‍♂️	muž hrající házenou: střední odstín pleti
+🤾🏽‍♂	muž hrající házenou: střední odstín pleti
+🤾🏾‍♂️	muž hrající házenou: středně tmavý odstín pleti
+🤾🏾‍♂	muž hrající házenou: středně tmavý odstín pleti
+🤾🏿‍♂️	muž hrající házenou: tmavý odstín pleti
+🤾🏿‍♂	muž hrající házenou: tmavý odstín pleti
+🤾‍♀️	žena hraje házenou
+🤾‍♀	žena hraje házenou
+🤾🏻‍♀️	žena hrající házenou: světlý odstín pleti
+🤾🏻‍♀	žena hrající házenou: světlý odstín pleti
+🤾🏼‍♀️	žena hrající házenou: středně světlý odstín pleti
+🤾🏼‍♀	žena hrající házenou: středně světlý odstín pleti
+🤾🏽‍♀️	žena hrající házenou: střední odstín pleti
+🤾🏽‍♀	žena hrající házenou: střední odstín pleti
+🤾🏾‍♀️	žena hrající házenou: středně tmavý odstín pleti
+🤾🏾‍♀	žena hrající házenou: středně tmavý odstín pleti
+🤾🏿‍♀️	žena hrající házenou: tmavý odstín pleti
+🤾🏿‍♀	žena hrající házenou: tmavý odstín pleti
+🤹	člověk žongluje
+🤹🏻	osoba, která žongluje: světlý odstín pleti
+🤹🏼	osoba, která žongluje: středně světlý odstín pleti
+🤹🏽	osoba, která žongluje: střední odstín pleti
+🤹🏾	osoba žonglující: středně tmavý odstín pleti
+🤹🏿	osoba žonglování: tmavý odstín pleti
+🤹‍♂️	muž žonglování
+🤹‍♂	muž žonglování
+🤹🏻‍♂️	muž žonglování: světlý odstín pleti
+🤹🏻‍♂	muž žonglování: světlý odstín pleti
+🤹🏼‍♂️	mužské žonglování: středně světlý odstín pleti
+🤹🏼‍♂	mužské žonglování: středně světlý odstín pleti
+🤹🏽‍♂️	mužské žonglování: střední odstín pleti
+🤹🏽‍♂	mužské žonglování: střední odstín pleti
+🤹🏾‍♂️	muž žonglování: středně tmavý odstín pleti
+🤹🏾‍♂	muž žonglování: středně tmavý odstín pleti
+🤹🏿‍♂️	muž žonglování: tmavý odstín pleti
+🤹🏿‍♂	muž žonglování: tmavý odstín pleti
+🤹‍♀️	žena žonglování
+🤹‍♀	žena žonglování
+🤹🏻‍♀️	žena žonglování: světlý odstín pleti
+🤹🏻‍♀	žena žonglování: světlý odstín pleti
+🤹🏼‍♀️	žonglování: středně světlý odstín pleti
+🤹🏼‍♀	žonglování: středně světlý odstín pleti
+🤹🏽‍♀️	žena žonglování: střední odstín pleti
+🤹🏽‍♀	žena žonglování: střední odstín pleti
+🤹🏾‍♀️	žonglování: středně tmavý odstín pleti
+🤹🏾‍♀	žonglování: středně tmavý odstín pleti
+🤹🏿‍♀️	žena žonglování: tmavý odstín pleti
+🤹🏿‍♀	žena žonglování: tmavý odstín pleti
+👫	muž a žena drží za ruce
+👬	dva muži držící se za ruce
+👭	dvě ženy držící se za ruce
+💏	polibek
+👩‍❤️‍💋‍👨	polibek: žena, muž
+👩‍❤‍💋‍👨	polibek: žena, muž
+👨‍❤️‍💋‍👨	polibek: člověče, člověče
+👨‍❤‍💋‍👨	polibek: člověče, člověče
+👩‍❤️‍💋‍👩	polibek: žena, žena
+👩‍❤‍💋‍👩	polibek: žena, žena
+💑	pár se srdcem
+👩‍❤️‍👨	pár se srdcem: žena, muž
+👩‍❤‍👨	pár se srdcem: žena, muž
+👨‍❤️‍👨	pár se srdcem: muž, muž
+👨‍❤‍👨	pár se srdcem: muž, muž
+👩‍❤️‍👩	pár se srdcem: žena, žena
+👩‍❤‍👩	pár se srdcem: žena, žena
+👪	rodina
+👨‍👩‍👦	rodina: muž, žena, chlapec
+👨‍👩‍👧	rodina: muž, žena, dívka
+👨‍👩‍👧‍👦	rodina: muž, žena, dívka, chlapec
+👨‍👩‍👦‍👦	rodina: muž, žena, chlapec, chlapec
+👨‍👩‍👧‍👧	rodina: muž, žena, dívka, dívka
+👨‍👨‍👦	rodina: muž, muž, chlapec
+👨‍👨‍👧	rodina: muž, muž, dívka
+👨‍👨‍👧‍👦	rodina: muž, muž, dívka, chlapec
+👨‍👨‍👦‍👦	rodina: muž, muž, chlapec, chlapec
+👨‍👨‍👧‍👧	rodina: muž, muž, dívka, dívka
+👩‍👩‍👦	rodina: žena, žena, chlapec
+👩‍👩‍👧	rodina: žena, žena, dívka
+👩‍👩‍👧‍👦	rodina: žena, žena, dívka, chlapec
+👩‍👩‍👦‍👦	rodina: žena, žena, chlapec, chlapec
+👩‍👩‍👧‍👧	rodina: žena, žena, dívka, dívka
+👨‍👦	rodina: muž, chlapec
+👨‍👦‍👦	rodina: muž, chlapec, chlapec
+👨‍👧	rodina: muž, dívka
+👨‍👧‍👦	rodina: muž, dívka, chlapec
+👨‍👧‍👧	rodina: muž, dívka, dívka
+👩‍👦	rodina: žena, chlapec
+👩‍👦‍👦	rodina: žena, chlapec, chlapec
+👩‍👧	rodina: žena, dívka
+👩‍👧‍👦	rodina: žena, dívka, chlapec
+👩‍👧‍👧	rodina: žena, dívka, dívka
+🤳	selfie
+🤳🏻	selfie: světlý odstín pleti
+🤳🏼	selfie: středně světlý odstín pleti
+🤳🏽	selfie: střední odstín pleti
+🤳🏾	selfie: středně tmavý odstín pleti
+🤳🏿	selfie: tmavý odstín pleti
+💪	ohnuté bicepsy
+💪🏻	ohnuté bicepsy: světlý tón pleti
+💪🏼	ohnuté bicepsy: středně světlý tón pleti
+💪🏽	ohnuté bicepsy: střední tón pleti
+💪🏾	flektovaný biceps: středně tmavý odstín pleti
+💪🏿	ohnuté bicepsy: tmavý odstín pleti
+🦵	noha
+🦵🏻	noha: světlý odstín pleti
+🦵🏼	noha: středně světlý tón pleti
+🦵🏽	noha: střední odstín pleti
+🦵🏾	noha: středně tmavý odstín pleti
+🦵🏿	noha: tmavý odstín pleti
+🦶	chodidlo
+🦶🏻	chodidlo: světlý tón pleti
+🦶🏼	chodidlo: středně světlý tón pleti
+🦶🏽	chodidlo: střední tón pleti
+🦶🏾	chodidlo: středně tmavý odstín pleti
+🦶🏿	chodidlo: tmavý odstín pleti
+👈	bekhendový index směřující doleva
+👈🏻	ukazováček směřující doleva: světlý odstín pleti
+👈🏼	ukazováček směřující doleva: středně světlý odstín pleti
+👈🏽	ukazováček směřující doleva: střední odstín pleti
+👈🏾	ukazováček směřující doleva: středně tmavý odstín pleti
+👈🏿	ukazováček směřující doleva: tmavý odstín pleti
+👉	bekhendový index směřující doprava
+👉🏻	backhand index směřující doprava: světlý odstín pleti
+👉🏼	backhand index směřující doprava: středně světlý tón pleti
+👉🏽	ukazováček směřující vpravo: střední odstín pleti
+👉🏾	backhand index směřující doprava: středně tmavý odstín pleti
+👉🏿	backhand index směřující doprava: tmavý odstín pleti
+☝️	index směřující nahoru
+☝	index směřující nahoru
+☝🏻	index směřující nahoru: světlý tón pleti
+☝🏼	index směřující nahoru: středně světlý tón pleti
+☝🏽	index směřující nahoru: střední tón pleti
+☝🏾	index směřující nahoru: středně tmavý odstín pleti
+☝🏿	index směřující nahoru: tmavý odstín pleti
+👆	bekhendový index směřující nahoru
+👆🏻	backhand index směřující nahoru: světlý odstín pleti
+👆🏼	backhand index směřující nahoru: středně světlý tón pleti
+👆🏽	backhand index směřující nahoru: střední tón pleti
+👆🏾	backhand index směřující nahoru: středně tmavý odstín pleti
+👆🏿	backhand index směřující nahoru: tmavý odstín pleti
+🖕	prostředníček
+🖕🏻	prostředníček: světlý tón pleti
+🖕🏼	prostředníček: středně světlý tón pleti
+🖕🏽	prostředníček: střední odstín pleti
+🖕🏾	prostředníček: středně tmavý odstín pleti
+🖕🏿	prostředníček: tmavý odstín pleti
+👇	bekhendový index směřující dolů
+👇🏻	backhand index směřující dolů: světlý odstín pleti
+👇🏼	backhand index směřující dolů: středně světlý tón pleti
+👇🏽	backhand index směřující dolů: střední tón pleti
+👇🏾	backhand index směřující dolů: středně tmavý odstín pleti
+👇🏿	backhand index směřující dolů: tmavý odstín pleti
+✌️	vítězná ruka
+✌	vítězná ruka
+✌🏻	vítězná ruka: světlý odstín pleti
+✌🏼	vítězná ruka: středně světlý tón pleti
+✌🏽	vítězná ruka: střední odstín pleti
+✌🏾	vítězná ruka: středně tmavý odstín pleti
+✌🏿	vítězná ruka: tmavý odstín pleti
+🤞	zkřížené prsty
+🤞🏻	zkřížené prsty: světlý odstín pleti
+🤞🏼	zkřížené prsty: středně světlý tón pleti
+🤞🏽	zkřížené prsty: střední tón pleti
+🤞🏾	zkřížené prsty: středně tmavý odstín pleti
+🤞🏿	zkřížené prsty: tmavý odstín pleti
+🖖	vulkánský pozdrav
+🖖🏻	vulkánský pozdrav: světlý odstín pleti
+🖖🏼	vulkánský pozdrav: středně světlý tón pleti
+🖖🏽	vulkánský pozdrav: střední tón pleti
+🖖🏾	vulkánský pozdrav: středně tmavý odstín pleti
+🖖🏿	vulkánský pozdrav: tmavý odstín pleti
+🤘	znamení rohů
+🤘🏻	znamení rohů: světlý odstín pleti
+🤘🏼	znamení rohů: středně světlý odstín pleti
+🤘🏽	znamení rohů: střední odstín pleti
+🤘🏾	znak rohů: středně tmavý odstín pleti
+🤘🏿	znamení rohů: tmavý odstín pleti
+🤙	zavolej mi ruku
+🤙🏻	zavolej mi ruku: světlý odstín pleti
+🤙🏼	call me hand: středně světlý tón pleti
+🤙🏽	call me hand: střední odstín pleti
+🤙🏾	call me hand: středně tmavý odstín pleti
+🤙🏿	zavolej mi ruku: tmavý odstín pleti
+🖐️	ruka s roztaženými prsty
+🖐	ruka s roztaženými prsty
+🖐🏻	ruka s roztaženými prsty: světlý odstín pleti
+🖐🏼	ruka s roztaženými prsty: středně světlý odstín pleti
+🖐🏽	ruka s roztaženými prsty: střední odstín pleti
+🖐🏾	ruka s roztaženými prsty: středně tmavý odstín pleti
+🖐🏿	ruka s roztaženými prsty: tmavý odstín pleti
+✋	zdviženou ruku
+✋🏻	zvednutá ruka: světlý odstín pleti
+✋🏼	zvednutá ruka: středně světlý tón pleti
+✋🏽	zvednutá ruka: střední tón pleti
+✋🏾	zvednutá ruka: středně tmavý odstín pleti
+✋🏿	zvednutá ruka: tmavý odstín pleti
+👌	OK ruka
+👌🏻	OK ruka: světlý tón pleti
+👌🏼	OK ruka: středně světlý tón pleti
+👌🏽	OK ruka: střední tón pleti
+👌🏾	OK ruka: středně tmavý odstín pleti
+👌🏿	OK ruka: tmavý odstín pleti
+👍	palec nahoru
+👍🏻	palec nahoru: světlý odstín pleti
+👍🏼	palec nahoru: středně světlý odstín pleti
+👍🏽	palec nahoru: střední odstín pleti
+👍🏾	palec nahoru: středně tmavý odstín pleti
+👍🏿	palec nahoru: tmavý odstín pleti
+👎	palec dolů
+👎🏻	palec dolů: světlý tón pleti
+👎🏼	palec dolů: středně světlý tón pleti
+👎🏽	palec dolů: střední odstín pleti
+👎🏾	palec dolů: středně tmavý odstín pleti
+👎🏿	palec dolů: tmavý odstín pleti
+✊	zvednutá pěst
+✊🏻	zvednutá pěst: světlý odstín pleti
+✊🏼	zvednutá pěst: středně světlý odstín pleti
+✊🏽	zvednutá pěst: střední odstín pleti
+✊🏾	zvednutá pěst: středně tmavý odstín pleti
+✊🏿	zvednutá pěst: tmavý odstín pleti
+👊	blížící se pěst
+👊🏻	blížící se pěst: světlý odstín pleti
+👊🏼	blížící se pěst: středně světlý tón pleti
+👊🏽	blížící se pěst: střední odstín pleti
+👊🏾	blížící se pěst: středně tmavý odstín pleti
+👊🏿	blížící se pěst: tmavý odstín pleti
+🤛	levou pěstí
+🤛🏻	pěst směřující doleva: světlý odstín pleti
+🤛🏼	pěst směřující doleva: středně světlý tón pleti
+🤛🏽	pěst směřující doleva: střední odstín pleti
+🤛🏾	pěst směřující doleva: středně tmavý odstín pleti
+🤛🏿	pěst směřující doleva: tmavý odstín pleti
+🤜	pěstí směřující vpravo
+🤜🏻	pěst směřující vpravo: světlý tón pleti
+🤜🏼	pěst směřující vpravo: středně světlý tón pleti
+🤜🏽	pěst směřující vpravo: střední tón pleti
+🤜🏾	pěst směřující vpravo: středně tmavý odstín pleti
+🤜🏿	pěst směřující vpravo: tmavý odstín pleti
+🤚	zvednutý hřbet ruky
+🤚🏻	zvednutý hřbet ruky: světlý odstín pleti
+🤚🏼	zvednutý hřbet ruky: středně světlý odstín pleti
+🤚🏽	zvednutý hřbet ruky: střední tón pleti
+🤚🏾	zvednutý hřbet ruky: středně tmavý odstín pleti
+🤚🏿	zvednutý hřbet ruky: tmavý odstín pleti
+👋	mávající rukou
+👋🏻	mávající rukou: světlý odstín pleti
+👋🏼	mávající rukou: středně světlý odstín pleti
+👋🏽	mávající rukou: střední odstín pleti
+👋🏾	mávající rukou: středně tmavý odstín pleti
+👋🏿	mávající rukou: tmavý odstín pleti
+🤟	gesto lásky
+🤟🏻	gesto lásky: světlý odstín pleti
+🤟🏼	gesto lásky: středně světlý odstín pleti
+🤟🏽	gesto lásky: střední odstín pleti
+🤟🏾	gesto love-you: středně tmavý odstín pleti
+🤟🏿	gesto lásky: tmavý odstín pleti
+✍️	psací rukou
+✍	psací rukou
+✍🏻	psací ruka: světlý odstín pleti
+✍🏼	psací ruka: středně světlý odstín pleti
+✍🏽	psací ruka: střední odstín pleti
+✍🏾	psací ruka: středně tmavý odstín pleti
+✍🏿	psací ruka: tmavý odstín pleti
+👏	tleskání rukama
+👏🏻	tleskající ruce: světlý odstín pleti
+👏🏼	tleskající ruce: středně světlý tón pleti
+👏🏽	tleskající ruce: střední tón pleti
+👏🏾	tleskající ruce: středně tmavý odstín pleti
+👏🏿	tleskající ruce: tmavý odstín pleti
+👐	otevřené ruce
+👐🏻	otevřené ruce: světlý tón pleti
+👐🏼	otevřené ruce: středně světlý tón pleti
+👐🏽	otevřené ruce: střední tón pleti
+👐🏾	otevřené ruce: středně tmavý odstín pleti
+👐🏿	otevřené ruce: tmavý odstín pleti
+🙌	zvedání rukou
+🙌🏻	zvedání rukou: světlý tón pleti
+🙌🏼	zvedání rukou: středně světlý tón pleti
+🙌🏽	zvedání rukou: střední tón pleti
+🙌🏾	zvedání rukou: středně tmavý odstín pleti
+🙌🏿	zvedání rukou: tmavý odstín pleti
+🤲	dlaně nahoru k sobě
+🤲🏻	dlaně nahoru k sobě: světlý tón pleti
+🤲🏼	dlaně nahoru k sobě: středně světlý tón pleti
+🤲🏽	dlaně nahoru k sobě: střední tón pleti
+🤲🏾	dlaně nahoru k sobě: středně tmavý odstín pleti
+🤲🏿	dlaně nahoru k sobě: tmavý odstín pleti
+🙏	sepjatýma rukama
+🙏🏻	sepjaté ruce: světlý odstín pleti
+🙏🏼	sepjaté ruce: středně světlý tón pleti
+🙏🏽	sepjaté ruce: střední tón pleti
+🙏🏾	sepjaté ruce: středně tmavý odstín pleti
+🙏🏿	sepjaté ruce: tmavý odstín pleti
+🤝	podání ruky
+💅	lak na nehty
+💅🏻	lak na nehty: světlý odstín pleti
+💅🏼	lak na nehty: středně světlý odstín pleti
+💅🏽	lak na nehty: střední odstín pleti
+💅🏾	lak na nehty: středně tmavý odstín pleti
+💅🏿	lak na nehty: tmavý odstín pleti
+👂	ucho
+👂🏻	ucho: světlý odstín pleti
+👂🏼	ucho: středně světlý tón pleti
+👂🏽	ucho: střední odstín pleti
+👂🏾	ucho: středně tmavý odstín pleti
+👂🏿	ucho: tmavý odstín pleti
+👃	nos
+👃🏻	nos: světlý odstín pleti
+👃🏼	nos: středně světlý tón pleti
+👃🏽	nos: střední tón pleti
+👃🏾	nos: středně tmavý odstín pleti
+👃🏿	nos: tmavý odstín pleti
+🦰	zrzavý
+🦱	kudrnatý
+🦲	plešatý
+🦳	bělovlasý
+👣	stopy
+👀	oči
+👁️	oko
+👁	oko
+👁️‍🗨️	oko v bublině
+👁‍🗨️	oko v bublině
+👁️‍🗨	oko v bublině
+👁‍🗨	oko v bublině
+🧠	mozek
+🦴	kost
+🦷	zub
+👅	jazyk
+👄	pusa
+💋	otisk rtů
+💘	srdce s šipkou
+❤️	červené srdce
+❤	červené srdce
+💓	tlukoucí srdce
+💔	zlomené srdce
+💕	dvě srdce
+💖	jiskřivé srdce
+💗	rostoucí srdce
+💙	modré srdce
+💚	zelené srdce
+💛	žluté srdce
+🧡	oranžové srdce
+💜	fialové srdce
+🖤	černé srdce
+💝	srdce s mašlí
+💞	otáčející se srdce
+💟	dekorace srdce
+❣️	těžké srdce výkřik
+❣	těžké srdce výkřik
+💌	milostný dopis
+💤	zzz
+💢	symbol hněvu
+💣	bombardovat
+💥	kolize
+💦	kapky potu
+💨	utíkat pryč
+💫	závratě
+💬	řečový balónek
+🗨️	levá bublina
+🗨	levá bublina
+🗯️	bublina pravého hněvu
+🗯	bublina pravého hněvu
+💭	myšlenkový balón
+🕳️	otvor
+🕳	otvor
+👓	brýle
+🕶️	sluneční brýle
+🕶	sluneční brýle
+🥽	ochranné brýle
+🥼	laboratorní plášť
+👔	vázanka
+👕	tričko
+👖	džíny
+🧣	šátek
+🧤	rukavice
+🧥	kabát
+🧦	ponožky
+👗	šaty
+👘	kimono
+👙	bikiny
+👚	ženské oblečení
+👛	peněženka
+👜	kabelka
+👝	spojková taška
+🛍️	nákupní tašky
+🛍	nákupní tašky
+🎒	školní batoh
+👞	mužská bota
+👟	běžecká bota
+🥾	turistická bota
+🥿	ženská plochá bota
+👠	bota na vysokém podpatku
+👡	dámský sandál
+👢	dámská bota
+👑	koruna
+👒	ženský klobouk
+🎩	cylindr
+🎓	promoční čepice
+🧢	účtovaný strop
+⛑️	přilba záchranáře
+⛑	přilba záchranáře
+📿	modlitební korálky
+💄	rtěnka
+💍	prsten
+💎	drahokam
+🐵	opičí obličej
+🐒	opice
+🦍	gorila
+🐶	psí obličej
+🐕	Pes
+🐩	pudl
+🐺	vlčí tvář
+🦊	liščí tvář
+🦝	mýval
+🐱	kočičí tvář
+🐈	kočka
+🦁	lví tvář
+🐯	tygří tvář
+🐅	tygr
+🐆	leopard
+🐴	koňská tvář
+🐎	kůň
+🦄	obličej jednorožce
+🦓	zebra
+🦌	Jelen
+🐮	kravský obličej
+🐂	vůl
+🐃	vodní buvol
+🐄	kráva
+🐷	prasečí tvář
+🐖	prase
+🐗	kanec
+🐽	prasečí nos
+🐏	RAM
+🐑	ovce
+🐐	koza
+🐪	velbloud
+🐫	dvouhrbý velbloud
+🦙	lama
+🦒	žirafa
+🐘	slon
+🦏	nosorožec
+🦛	hroch
+🐭	myší obličej
+🐁	myš
+🐀	krysa
+🐹	křeččí obličej
+🐰	králičí tvář
+🐇	králičí
+🐿️	chipmunk
+🐿	chipmunk
+🦔	ježek
+🦇	netopýr
+🐻	medvědí tvář
+🐨	koala
+🐼	tvář pandy
+🦘	klokan
+🦡	jezevec
+🐾	otisky tlapek
+🦃	krocan
+🐔	kuře
+🐓	kohout
+🐣	líhnoucí se mládě
+🐤	mládě kuřátko
+🐥	kuřátko směřující dopředu
+🐦	pták
+🐧	tučňák
+🕊️	holubice
+🕊	holubice
+🦅	orel
+🦆	kachna
+🦢	labuť
+🦉	sova
+🦚	páv
+🦜	Papoušek
+🐸	žabí obličej
+🐊	krokodýl
+🐢	želva
+🦎	ještěrka
+🐍	had
+🐲	dračí tvář
+🐉	drak
+🦕	sauropod
+🦖	T rex
+🐳	chrlí velryba
+🐋	velryba
+🐬	delfín
+🐟	Ryba
+🐠	tropická ryba
+🐡	blowfish
+🦈	žralok
+🐙	chobotnice
+🐚	spirálový plášť
+🦀	krab
+🦞	humr
+🦐	krevety
+🦑	oliheň
+🐌	hlemýžď
+🦋	motýl
+🐛	Chyba
+🐜	mravenec
+🐝	včelí med
+🐞	paní brouk
+🦗	kriket
+🕷️	pavouk
+🕷	pavouk
+🕸️	pavoučí síť
+🕸	pavoučí síť
+🦂	Štír
+🦟	komár
+🦠	mikrob
+💐	kytice
+🌸	Třešňový květ
+💮	bílá květina
+🏵️	růžice
+🏵	růžice
+🌹	růže
+🥀	zvadlý květ
+🌺	ibišek
+🌻	slunečnice
+🌼	květ
+🌷	tulipán
+🌱	sazenice
+🌲	vždy zelený strom
+🌳	listnatý strom
+🌴	palma
+🌵	kaktus
+🌾	svazek rýže
+🌿	bylina
+☘️	trojlístek
+☘	trojlístek
+🍀	čtyř lístek
+🍁	Javorový list
+🍂	spadaný list
+🍃	listí vlající ve větru
+🍇	hrozny
+🍈	meloun
+🍉	vodní meloun
+🍊	mandarinka
+🍋	citrón
+🍌	banán
+🍍	ananas
+🥭	mango
+🍎	červené jablko
+🍏	zelené jablko
+🍐	hruška
+🍑	broskev
+🍒	třešně
+🍓	jahoda
+🥝	kiwi
+🍅	rajče
+🥥	kokosový ořech
+🥑	avokádo
+🍆	lilek
+🥔	brambor
+🥕	mrkev
+🌽	Klas kukuřice
+🌶️	pálivá paprička
+🌶	pálivá paprička
+🥒	okurka
+🥬	listová zelená
+🥦	brokolice
+🍄	houba
+🥜	arašídy
+🌰	Kaštan
+🍞	chléb
+🥐	rohlík
+🥖	bagetový chléb
+🥨	preclík
+🥯	bagel
+🥞	palačinky
+🧀	sýrový klínek
+🍖	maso na kosti
+🍗	drůbeží stehno
+🥩	řez masa
+🥓	slanina
+🍔	hamburger
+🍟	hranolky
+🍕	pizza
+🌭	párek v rohlíku
+🥪	sendvič
+🌮	taco
+🌯	burrito
+🥙	plněný mazanec
+🥚	vejce
+🍳	vaření
+🥘	mělká pánev s jídlem
+🍲	hrnec jídla
+🥣	miska s lžičkou
+🥗	zelený salát
+🍿	popcorn
+🧂	sůl
+🥫	konzervy
+🍱	bento box
+🍘	rýžový krekr
+🍙	rýžová koule
+🍚	vařená rýže
+🍛	kari rýže
+🍜	napařovací mísa
+🍝	špagety
+🍠	pečené sladké brambory
+🍢	oden
+🍣	sushi
+🍤	smažená kreveta
+🍥	rybí dort s vírem
+🥮	měsíční koláč
+🍡	dango
+🥟	knedlík
+🥠	sušenka štěstí
+🥡	vyndavací krabice
+🍦	měkká zmrzlina
+🍧	ledová drť
+🍨	zmrzlina
+🍩	Kobliha
+🍪	cookie
+🎂	narozeninový dort
+🍰	koláček
+🧁	košíček
+🥧	koláč
+🍫	tabulka čokolády
+🍬	bonbón
+🍭	lízátko
+🍮	pudink
+🍯	hrnec medu
+🍼	dětská láhev
+🥛	sklenice mléka
+☕	horký nápoj
+🍵	šálek bez ouška
+🍶	saké
+🍾	láhev s praskajícím korkem
+🍷	sklenice na víno
+🍸	koktejlové sklenice
+🍹	tropický nápoj
+🍺	džbánek na pivo
+🍻	cinkající půllitry
+🥂	cinkání sklenic
+🥃	sklenice sklenice
+🥤	šálek se slámou
+🥢	tyčinky
+🍽️	vidlička a nůž s deskou
+🍽	vidlička a nůž s deskou
+🍴	Vidlička a nůž
+🥄	lžíce
+🔪	kuchyňský nůž
+🏺	amfora
+🌍	zeměkoule zobrazující evropu afriku
+🌎	zeměkoule zobrazující ameriku
+🌏	zeměkoule zobrazující Asii a Austrálii
+🌐	zeměkoule s poledníky
+🗺️	mapa světa
+🗺	mapa světa
+🗾	mapa Japonska
+🧭	kompas
+🏔️	zasněžená hora
+🏔	zasněžená hora
+⛰️	hora
+⛰	hora
+🌋	sopka
+🗻	hora fuji
+🏕️	kempování
+🏕	kempování
+🏖️	pláž s deštníkem
+🏖	pláž s deštníkem
+🏜️	poušť
+🏜	poušť
+🏝️	opuštěný ostrov
+🏝	opuštěný ostrov
+🏞️	národní park
+🏞	národní park
+🏟️	stadión
+🏟	stadión
+🏛️	klasická budova
+🏛	klasická budova
+🏗️	stavba budovy
+🏗	stavba budovy
+🧱	cihly
+🏘️	domy
+🏘	domy
+🏚️	opuštěný dům
+🏚	opuštěný dům
+🏠	Dům
+🏡	dům se zahradou
+🏢	kancelářská budova
+🏣	Japonská pošta
+🏤	pošta
+🏥	NEMOCNICE
+🏦	banka
+🏨	hotel
+🏩	milovat hotel
+🏪	Večerka
+🏫	škola
+🏬	obchodní dům
+🏭	továrna
+🏯	Japonský hrad
+🏰	hrad
+💒	svatba
+🗼	Tokijská věž
+🗽	Socha svobody
+⛪	kostel
+🕌	mešita
+🕍	synagoga
+⛩️	šintoistická svatyně
+⛩	šintoistická svatyně
+🕋	kaaba
+⛲	kašna
+⛺	stan
+🌁	mlhavý
+🌃	noc s hvězdami
+🏙️	panoráma města
+🏙	panoráma města
+🌄	východ slunce nad horami
+🌅	svítání
+🌆	panoráma města za soumraku
+🌇	západ slunce
+🌉	most v noci
+♨️	horké prameny
+♨	horké prameny
+🌌	mléčná dráha
+🎠	kolotočový kůň
+🎡	Ruské kolo
+🎢	horská dráha
+💈	holičská tyč
+🎪	cirkusový stan
+🚂	lokomotiva
+🚃	železniční vůz
+🚄	vysokorychlostní vlak
+🚅	rychlovlak
+🚆	vlak
+🚇	metro
+🚈	lehká kolej
+🚉	stanice
+🚊	tramvaj
+🚝	jednokolejka
+🚞	horská dráha
+🚋	tramvajový vůz
+🚌	autobus
+🚍	protijedoucí autobus
+🚎	trolejbus
+🚐	minibus
+🚑	záchranná služba
+🚒	hasičská stříkačka
+🚓	policejní auto
+🚔	přijíždějící policejní auto
+🚕	taxi
+🚖	protijedoucí taxi
+🚗	automobil
+🚘	protijedoucí automobil
+🚙	sportovní užitkové vozidlo
+🚚	dodávkový vůz
+🚛	tahač s návěsem
+🚜	traktor
+🚲	jízdní kolo
+🛴	koloběžka
+🛹	skateboard
+🛵	motorový skútr
+🚏	ZASTÁVKA
+🛣️	dálnice
+🛣	dálnice
+🛤️	železnice
+🛤	železnice
+🛢️	olejový buben
+🛢	olejový buben
+⛽	palivové čerpadlo
+🚨	světlo policejního auta
+🚥	horizontální semafor
+🚦	vertikální semafor
+🛑	stopka
+🚧	konstrukce
+⚓	Kotva
+⛵	plachetnice
+🛶	kánoe
+🚤	motorový člun
+🛳️	osobní loď
+🛳	osobní loď
+⛴️	trajekt
+⛴	trajekt
+🛥️	motorový člun
+🛥	motorový člun
+🚢	loď
+✈️	letoun
+✈	letoun
+🛩️	malé letadlo
+🛩	malé letadlo
+🛫	odlet letadla
+🛬	přílet letadla
+💺	sedadlo
+🚁	helikoptéra
+🚟	závěsná železnice
+🚠	horská lanovka
+🚡	lanovka
+🛰️	družice
+🛰	družice
+🚀	raketa
+🛸	létající talíř
+🛎️	zvonek poslíček
+🛎	zvonek poslíček
+🧳	zavazadlo
+⌛	přesýpací hodiny hotové
+⏳	přesýpací hodiny neudělané
+⌚	hodinky
+⏰	budík
+⏱️	stopky
+⏱	stopky
+⏲️	časovač hodiny
+⏲	časovač hodiny
+🕰️	krbové hodiny
+🕰	krbové hodiny
+🕛	dvanáct hodin
+🕧	dvanáct třicet
+🕐	jedna hodina
+🕜	jedna třicet
+🕑	dvě hodiny
+🕝	dva třicet
+🕒	tři hodiny
+🕞	tři třicet
+🕓	čtyři hodiny
+🕟	čtyři třicet
+🕔	pět hodin
+🕠	půl šesté
+🕕	šest hodin
+🕡	šest třicet
+🕖	sedm hodin
+🕢	sedm třicet
+🕗	osm hodin
+🕣	osm třicet
+🕘	devět
+🕤	devět třicet
+🕙	deset
+🕥	půl jedenácté
+🕚	jedenáct hodin
+🕦	jedenáct třicet
+🌑	nový měsíc
+🌒	dorůstající srpek měsíce
+🌓	první čtvrt měsíce
+🌔	dorůstající gibbous měsíc
+🌕	úplněk
+🌖	ubývající gibbous měsíc
+🌗	poslední čtvrt měsíce
+🌘	ubývající srpek měsíce
+🌙	srpek měsíce
+🌚	tvář novoluní
+🌛	tvář první čtvrtiny měsíce
+🌜	tvář poslední čtvrtiny měsíce
+🌡️	teploměr
+🌡	teploměr
+☀️	slunce
+☀	slunce
+🌝	tvář úplňku
+🌞	slunce s tváří
+⭐	hvězda
+🌟	zářící hvězda
+🌠	padající hvězda
+☁️	mrak
+☁	mrak
+⛅	slunce za mrakem
+⛈️	mrak s blesky a deštěm
+⛈	mrak s blesky a deštěm
+🌤️	slunce za malým mrakem
+🌤	slunce za malým mrakem
+🌥️	slunce za velkým mrakem
+🌥	slunce za velkým mrakem
+🌦️	slunce za dešťovým mrakem
+🌦	slunce za dešťovým mrakem
+🌧️	mrak s deštěm
+🌧	mrak s deštěm
+🌨️	mrak se sněhem
+🌨	mrak se sněhem
+🌩️	mrak s bleskem
+🌩	mrak s bleskem
+🌪️	tornádo
+🌪	tornádo
+🌫️	mlha
+🌫	mlha
+🌬️	tvář větru
+🌬	tvář větru
+🌀	cyklón
+🌈	duha
+🌂	uzavřený deštník
+☂️	deštník
+☂	deštník
+☔	deštník s kapkami deště
+⛱️	deštník na zemi
+⛱	deštník na zemi
+⚡	vysokého napětí
+❄️	sněhová vločka
+❄	sněhová vločka
+☃️	sněhulák
+☃	sněhulák
+⛄	sněhulák bez sněhu
+☄️	kometa
+☄	kometa
+🔥	oheň
+💧	kapička
+🌊	vodní vlna
+🎃	Haloweenská dýně
+🎄	vánoční strom
+🎆	ohňostroj
+🎇	prskavka
+🧨	petarda
+✨	jiskří
+🎈	balón
+🎉	party popper
+🎊	konfetová koule
+🎋	strom tanabata
+🎍	dekorace z borovice
+🎎	Japonské panenky
+🎏	kaprový streamer
+🎐	zvonkohra větru
+🎑	obřad pozorování měsíce
+🧧	červená obálka
+🎀	stuha
+🎁	zabalený dárek
+🎗️	upomínková stuha
+🎗	upomínková stuha
+🎟️	vstupenky
+🎟	vstupenky
+🎫	lístek
+🎖️	vojenská medaile
+🎖	vojenská medaile
+🏆	trofej
+🏅	sportovní medaili
+🥇	1. místo medaile
+🥈	2. místo medaile
+🥉	3. místo medaile
+⚽	fotbalový míč
+⚾	baseball
+🥎	softball
+🏀	Basketball
+🏐	volejbal
+🏈	americký fotbal
+🏉	ragbyový fotbal
+🎾	tenis
+🥏	létající disk
+🎳	kuželky
+🏏	kriketová hra
+🏑	pozemní hokej
+🏒	lední hokej
+🥍	lakros
+🏓	ping pong
+🏸	badminton
+🥊	boxerské rukavice
+🥋	uniforma bojových umění
+🥅	branková síť
+⛳	vlajka v díře
+⛸️	bruslit
+⛸	bruslit
+🎣	rybářský prut
+🎽	běžecké triko
+🎿	lyže
+🛷	sáně
+🥌	curlingový kámen
+🎯	přímý zásah
+🎱	bazén 8 míčků
+🔮	Křišťálová koule
+🧿	nazarský amulet
+🎮	video hra
+🕹️	joystick
+🕹	joystick
+🎰	automat
+🎲	hra zemřít
+🧩	vykružovačka
+🧸	Medvídek
+♠️	pikový oblek
+♠	pikový oblek
+♥️	srdíčkový oblek
+♥	srdíčkový oblek
+♦️	diamantový oblek
+♦	diamantový oblek
+♣️	klubový oblek
+♣	klubový oblek
+♟️	šachový pěšec
+♟	šachový pěšec
+🃏	žolík
+🀄	mahjong červený drak
+🎴	květinové hrací karty
+🎭	múzických umění
+🖼️	zarámovaný obrázek
+🖼	zarámovaný obrázek
+🎨	umělecká paleta
+🧵	vlákno
+🧶	příze
+🔇	ztlumený reproduktor
+🔈	nízká hlasitost reproduktoru
+🔉	reproduktor střední hlasitost
+🔊	vysoká hlasitost reproduktoru
+📢	reproduktor
+📣	megafon
+📯	poštovní roh
+🔔	zvonek
+🔕	zvonek s lomítkem
+🎼	hudební skóre
+🎵	hudební nota
+🎶	hudební noty
+🎙️	studiový mikrofon
+🎙	studiový mikrofon
+🎚️	jezdec úrovně
+🎚	jezdec úrovně
+🎛️	ovládací knoflíky
+🎛	ovládací knoflíky
+🎤	mikrofon
+🎧	sluchátka
+📻	rádio
+🎷	saxofon
+🎸	kytara
+🎹	hudební klávesnice
+🎺	trubka
+🎻	housle
+🥁	buben
+📱	mobilní telefon
+📲	mobilní telefon s šipkou
+☎️	telefon
+☎	telefon
+📞	telefonní sluchátko
+📟	pager
+📠	fax
+🔋	baterie
+🔌	elektrická zástrčka
+💻	přenosný počítač
+🖥️	stolní počítač
+🖥	stolní počítač
+🖨️	tiskárna
+🖨	tiskárna
+⌨️	klávesnice
+⌨	klávesnice
+🖱️	počítačová myš
+🖱	počítačová myš
+🖲️	trackball
+🖲	trackball
+💽	počítačový disk
+💾	disketa
+💿	optický disk
+📀	DVD
+🧮	počitadlo
+🎥	filmová kamera
+🎞️	filmové rámečky
+🎞	filmové rámečky
+📽️	filmový projektor
+📽	filmový projektor
+🎬	klapka deska
+📺	televize
+📷	Fotoaparát
+📸	fotoaparát s bleskem
+📹	videokamera
+📼	video kazeta
+🔍	lupa nakloněná doleva
+🔎	lupa nakloněná doprava
+🕯️	svíčka
+🕯	svíčka
+💡	žárovka
+🔦	svítilna
+🏮	červená papírová lucerna
+📔	zápisník s ozdobným přebalem
+📕	zavřená kniha
+📖	otevřená kniha
+📗	zelená kniha
+📘	modrá kniha
+📙	oranžová kniha
+📚	knihy
+📓	notebook
+📒	účetní kniha
+📃	stránka se zvlněním
+📜	svitek
+📄	stranou nahoru
+📰	noviny
+🗞️	srolované noviny
+🗞	srolované noviny
+📑	záložky záložek
+🔖	záložka do knihy
+🏷️	označení
+🏷	označení
+💰	pytel na peníze
+💴	jenová bankovka
+💵	dolarová bankovka
+💶	eurobankovka
+💷	librová bankovka
+💸	peníze s křídly
+💳	kreditní karta
+🧾	účtenka
+💹	graf roste s jenem
+💱	směnárna
+💲	těžký znak dolaru
+✉️	obálka
+✉	obálka
+📧	e-mailem
+📨	příchozí obálka
+📩	obálka s šipkou
+📤	přihrádka k odeslání
+📥	zásobník doručené pošty
+📦	balík
+📫	uzavřená poštovní schránka se vztyčenou vlajkou
+📪	zavřená poštovní schránka se sníženým praporkem
+📬	otevřít poštovní schránku se vztyčenou vlajkou
+📭	otevřít poštovní schránku se sníženým praporkem
+📮	poštovní schránka
+🗳️	volební urna s hlasovacím lístkem
+🗳	volební urna s hlasovacím lístkem
+✏️	tužka
+✏	tužka
+✒️	černý hrot
+✒	černý hrot
+🖋️	plnicí pero
+🖋	plnicí pero
+🖊️	pero
+🖊	pero
+🖌️	štětec
+🖌	štětec
+🖍️	pastelka
+🖍	pastelka
+📝	poznámka
+💼	aktovka
+📁	složka
+📂	otevřít složku se soubory
+🗂️	oddělovače kartotéky
+🗂	oddělovače kartotéky
+📅	kalendář
+📆	trhací kalendář
+🗒️	spirálový poznámkový blok
+🗒	spirálový poznámkový blok
+🗓️	spirálový kalendář
+🗓	spirálový kalendář
+📇	kartotéka
+📈	graf se zvyšuje
+📉	graf klesá
+📊	sloupcový graf
+📋	Schránka
+📌	připínáček
+📍	kulatý připínáček
+📎	kancelářská svorka
+🖇️	spojené kancelářské sponky
+🖇	spojené kancelářské sponky
+📏	rovné pravítko
+📐	trojúhelníkové pravítko
+✂️	nůžky
+✂	nůžky
+🗃️	kartotéka
+🗃	kartotéka
+🗄️	kartotéka
+🗄	kartotéka
+🗑️	odpadkový koš
+🗑	odpadkový koš
+🔒	uzamčeno
+🔓	odemčený
+🔏	uzamčen perem
+🔐	zamčené klíčem
+🔑	klíč
+🗝️	starý klíč
+🗝	starý klíč
+🔨	kladivo
+⛏️	výběr
+⛏	výběr
+⚒️	kladivo a krumpáč
+⚒	kladivo a krumpáč
+🛠️	kladivo a klíč
+🛠	kladivo a klíč
+🗡️	dýka
+🗡	dýka
+⚔️	zkřížené meče
+⚔	zkřížené meče
+🔫	pistole
+🏹	luk a šíp
+🛡️	štít
+🛡	štít
+🔧	klíč
+🔩	matice a šroubu
+⚙️	Ozubené kolo
+⚙	Ozubené kolo
+🗜️	svorka
+🗜	svorka
+⚖️	bilanční stupnice
+⚖	bilanční stupnice
+🔗	odkaz
+⛓️	řetězy
+⛓	řetězy
+🧰	sada nástrojů
+🧲	magnet
+⚗️	alembický
+⚗	alembický
+🧪	zkumavka
+🧫	Petriho miska
+🧬	dna
+🔬	mikroskop
+🔭	dalekohled
+📡	satelitní anténa
+💉	stříkačka
+💊	pilulka
+🚪	dveře
+🛏️	postel
+🛏	postel
+🛋️	pohovka a lampa
+🛋	pohovka a lampa
+🚽	toaleta
+🚿	sprcha
+🛁	vana
+🧴	lahvička s pleťovou vodou
+🧷	spínací špendlík
+🧹	koště
+🧺	košík
+🧻	role papíru
+🧼	mýdlo
+🧽	houba na mytí
+🧯	hasicí přístroj
+🛒	nákupní košík
+🚬	cigareta
+⚰️	rakev
+⚰	rakev
+⚱️	pohřební urna
+⚱	pohřební urna
+🗿	moai
+🏧	Značka bankomatu
+🚮	smetí v bin znamení
+🚰	pitná voda
+♿	symbol invalidního vozíku
+🚹	pánské toalety
+🚺	dámský pokoj
+🚻	toaleta
+🚼	symbol dítěte
+🚾	toaleta
+🛂	pasová kontrola
+🛃	celní
+🛄	výdej zavazadel
+🛅	opuštěné zavazadlo
+⚠️	Varování
+⚠	Varování
+🚸	přechod dětí
+⛔	VSTUP ZAKÁZÁN
+🚫	zakázáno
+🚳	žádná kola
+🚭	KOUŘENÍ ZAKÁZÁNO
+🚯	zákaz skládky
+🚱	nepitná voda
+🚷	žádní chodci
+📵	žádné mobilní telefony
+🔞	nikdo mladší osmnácti let
+☢️	radioaktivní
+☢	radioaktivní
+☣️	biologické nebezpečí
+☣	biologické nebezpečí
+⬆️	šipka nahoru
+⬆	šipka nahoru
+↗️	šipka nahoru-pravá
+↗	šipka nahoru-pravá
+➡️	šipka vpravo
+➡	šipka vpravo
+↘️	šipka vpravo dolů
+↘	šipka vpravo dolů
+⬇️	šipka dolů
+⬇	šipka dolů
+↙️	šipka dolů-vlevo
+↙	šipka dolů-vlevo
+⬅️	šipka vlevo
+⬅	šipka vlevo
+↖️	šipka nahoru-doleva
+↖	šipka nahoru-doleva
+↕️	šipka nahoru-dolů
+↕	šipka nahoru-dolů
+↔️	šipka doleva-doprava
+↔	šipka doleva-doprava
+↩️	šipka vpravo zakřivená doleva
+↩	šipka vpravo zakřivená doleva
+↪️	šipka doleva zakřivující doprava
+↪	šipka doleva zakřivující doprava
+⤴️	šipka vpravo zakřivení nahoru
+⤴	šipka vpravo zakřivení nahoru
+⤵️	šipka vpravo zakřivená dolů
+⤵	šipka vpravo zakřivená dolů
+🔃	svislé šipky ve směru hodinových ručiček
+🔄	tlačítko se šipkami proti směru hodinových ručiček
+🔙	šipka ZPĚT
+🔚	Šipka END
+🔛	Šipka ON
+🔜	BRZY šipka
+🔝	TOP šipka
+🛐	místo uctívání
+⚛️	symbol atomu
+⚛	symbol atomu
+🕉️	om
+🕉	om
+✡️	Davidova hvězda
+✡	Davidova hvězda
+☸️	kolo dharmy
+☸	kolo dharmy
+☯️	Yin Yang
+☯	Yin Yang
+✝️	latinský kříž
+✝	latinský kříž
+☦️	pravoslavný kříž
+☦	pravoslavný kříž
+☪️	hvězda a půlměsíc
+☪	hvězda a půlměsíc
+☮️	symbol míru
+☮	symbol míru
+🕎	menora
+🔯	tečkovaná šesticípá hvězda
+♈	Beran
+♉	Býk
+♊	Blíženci
+♋	Rakovina
+♌	Lev
+♍	Panna
+♎	Váhy
+♏	Štír
+♐	Střelec
+♑	Kozoroh
+♒	Vodnář
+♓	Ryby
+⛎	Ophiuchus
+🔀	tlačítko náhodného přehrávání skladeb
+🔁	tlačítko opakovat
+🔂	opakovat jedno tlačítko
+▶️	tlačítko přehrávání
+▶	tlačítko přehrávání
+⏩	tlačítko rychlého posunu vpřed
+⏭️	tlačítko další skladba
+⏭	tlačítko další skladba
+⏯️	tlačítko přehrávání nebo pauzy
+⏯	tlačítko přehrávání nebo pauzy
+◀️	tlačítko zpětného chodu
+◀	tlačítko zpětného chodu
+⏪	tlačítko rychlého zpětného chodu
+⏮️	tlačítko poslední stopy
+⏮	tlačítko poslední stopy
+🔼	tlačítko nahoru
+⏫	tlačítko zrychlení
+🔽	tlačítko dolů
+⏬	tlačítko rychlého dolů
+⏸️	tlačítko pauza
+⏸	tlačítko pauza
+⏹️	tlačítko stop
+⏹	tlačítko stop
+⏺️	tlačítko nahrávání
+⏺	tlačítko nahrávání
+⏏️	tlačítko pro vysunutí
+⏏	tlačítko pro vysunutí
+🎦	kino
+🔅	ztlumit tlačítko
+🔆	světlé tlačítko
+📶	anténní tyče
+📳	vibrační režim
+📴	mobilní telefon vypnutý
+♀️	ženské znamení
+♀	ženské znamení
+♂️	mužské znamení
+♂	mužské znamení
+⚕️	lékařský symbol
+⚕	lékařský symbol
+♾️	nekonečno
+♾	nekonečno
+♻️	symbol recyklace
+♻	symbol recyklace
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	znak trojzubec
+📛	jmenovka
+🔰	Japonský symbol pro začátečníky
+⭕	těžký velký kruh
+✅	bílé těžké zaškrtnutí
+☑️	volební urna s šekem
+☑	volební urna s šekem
+✔️	silné zaškrtnutí
+✔	silné zaškrtnutí
+✖️	těžké násobení x
+✖	těžké násobení x
+❌	křížová značka
+❎	tlačítko křížové značky
+➕	těžké znaménko plus
+➖	těžké znaménko mínus
+➗	znamení těžké divize
+➰	kudrnatá smyčka
+➿	dvojitá kudrnatá smyčka
+〽️	část střídavá značka
+〽	část střídavá značka
+✳️	osmiramenná hvězdička
+✳	osmiramenná hvězdička
+✴️	osmicípá hvězda
+✴	osmicípá hvězda
+❇️	Jiskra
+❇	Jiskra
+‼️	dvojitý vykřičník
+‼	dvojitý vykřičník
+⁉️	vykřičník otazník
+⁉	vykřičník otazník
+❓	otazník
+❔	bílý otazník
+❕	bílý vykřičník
+❗	vykřičník
+〰️	zvlněná čárka
+〰	zvlněná čárka
+©️	autorská práva
+©	autorská práva
+®️	registrovaný
+®	registrovaný
+™️	ochranná známka
+™	ochranná známka
+#️⃣	klíčenka: #
+#⃣	klíčenka: #
+*️⃣	klíčenka: *
+*⃣	klíčenka: *
+0️⃣	klávesa: 0
+0⃣	klávesa: 0
+1️⃣	klíčenka: 1
+1⃣	klíčenka: 1
+2️⃣	klíčenka: 2
+2⃣	klíčenka: 2
+3️⃣	klíčenka: 3
+3⃣	klíčenka: 3
+4️⃣	klíčenka: 4
+4⃣	klíčenka: 4
+5️⃣	klíčenka: 5
+5⃣	klíčenka: 5
+6️⃣	klíčenka: 6
+6⃣	klíčenka: 6
+7️⃣	klíčenka: 7
+7⃣	klíčenka: 7
+8️⃣	klíčenka: 8
+8⃣	klíčenka: 8
+9️⃣	klíčenka: 9
+9⃣	klíčenka: 9
+🔟	klíčenka: 10
+💯	sto bodů
+🔠	zadávání velkých písmen latinky
+🔡	zadejte malá písmena latinky
+🔢	vstupní čísla
+🔣	vstupní symboly
+🔤	zadávat latinská písmena
+🅰️	Tlačítko (krevní skupina)
+🅰	Tlačítko (krevní skupina)
+🆎	Tlačítko AB (krevní skupina)
+🅱️	Tlačítko B (krevní skupina)
+🅱	Tlačítko B (krevní skupina)
+🆑	tlačítko CL
+🆒	tlačítko COOL
+🆓	Tlačítko ZDARMA
+ℹ️	informace
+ℹ	informace
+🆔	ID tlačítko
+Ⓜ️	zakroužkovaný M
+Ⓜ	zakroužkovaný M
+🆕	NOVÉ tlačítko
+🆖	tlačítko NG
+🅾️	Tlačítko O (krevní skupina)
+🅾	Tlačítko O (krevní skupina)
+🆗	tlačítko OK
+🅿️	Tlačítko P
+🅿	Tlačítko P
+🆘	SOS tlačítko
+🆙	tlačítko NAHORU
+🆚	Tlačítko VS
+🈁	Japonské tlačítko „zde“.
+🈂️	Japonské tlačítko „servisní poplatek“.
+🈂	Japonské tlačítko „servisní poplatek“.
+🈷️	Japonské tlačítko „měsíční částka“.
+🈷	Japonské tlačítko „měsíční částka“.
+🈶	Japonské tlačítko „není zdarma“.
+🈯	Japonské tlačítko „rezervováno“.
+🉐	Japonské tlačítko „výhodná smlouva“.
+🈹	Japonské tlačítko „sleva“.
+🈚	Japonské tlačítko „zdarma“.
+🈲	Japonské tlačítko „zakázané“.
+🉑	Japonské tlačítko „přijatelné“.
+🈸	Japonské tlačítko „aplikace“.
+🈴	Japonské tlačítko pro úspěšné složení
+🈳	Japonské tlačítko „volné místo“.
+㊗️	Japonské tlačítko „blahopřání“.
+㊗	Japonské tlačítko „blahopřání“.
+㊙️	Japonské tlačítko „tajné“.
+㊙	Japonské tlačítko „tajné“.
+🈺	Japonské tlačítko „otevřeno pro podnikání“.
+🈵	Japonské tlačítko „žádné volné místo“.
+▪️	černý malý čtverec
+▪	černý malý čtverec
+▫️	bílý malý čtverec
+▫	bílý malý čtverec
+◻️	bílý střední čtverec
+◻	bílý střední čtverec
+◼️	černý střední čtverec
+◼	černý střední čtverec
+◽	bílý středně malý čtverec
+◾	černý středně malý čtverec
+⬛	černý velký čtverec
+⬜	bílý velký čtverec
+🔶	velký oranžový diamant
+🔷	velký modrý diamant
+🔸	malý oranžový diamant
+🔹	malý modrý diamant
+🔺	červený trojúhelník směřující nahoru
+🔻	červený trojúhelník směřující dolů
+💠	diamant s tečkou
+🔘	přepínač
+🔲	černé čtvercové tlačítko
+🔳	bílé čtvercové tlačítko
+⚪	bílý kruh
+⚫	černý kruh
+🔴	červený kruh
+🔵	modrý kruh
+🏁	šachovnicová vlajka
+🚩	trojúhelníková vlajka
+🎌	zkřížené vlajky
+🏴	Černá vlajka
+🏳️	bílá vlajka
+🏳	bílá vlajka
+🏳️‍🌈	duhová vlajka
+🏳‍🌈	duhová vlajka
+🏴‍☠️	pirátská vlajka
+🏴‍☠	pirátská vlajka
+🇦🇨	Ostrov Ascension
+🇦🇩	Andorra
+🇦🇪	Spojené arabské emiráty
+🇦🇫	Afghánistán
+🇦🇬	Antigua a Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albánie
+🇦🇲	Arménie
+🇦🇴	Angola
+🇦🇶	Antarktida
+🇦🇷	Argentina
+🇦🇸	Americká Samoa
+🇦🇹	Rakousko
+🇦🇺	Austrálie
+🇦🇼	Aruba
+🇦🇽	Alandské ostrovy
+🇦🇿	Ázerbajdžán
+🇧🇦	Bosna a Hercegovina
+🇧🇧	Barbados
+🇧🇩	Bangladéš
+🇧🇪	Belgie
+🇧🇫	Burkina Faso
+🇧🇬	Bulharsko
+🇧🇭	Bahrajn
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	Svatý Bartoloměj
+🇧🇲	Bermudy
+🇧🇳	Brunej
+🇧🇴	Bolívie
+🇧🇶	Karibské Nizozemsko
+🇧🇷	Brazílie
+🇧🇸	Bahamy
+🇧🇹	Bhútán
+🇧🇻	Bouvetův ostrov
+🇧🇼	Botswana
+🇧🇾	Bělorusko
+🇧🇿	Belize
+🇨🇦	Kanada
+🇨🇨	Kokosové (Keelingovy) ostrovy
+🇨🇩	Kongo - Kinshasa
+🇨🇫	Středoafrická republika
+🇨🇬	Kongo – Brazzaville
+🇨🇭	Švýcarsko
+🇨🇮	Pobřeží slonoviny
+🇨🇰	Cookovy ostrovy
+🇨🇱	Chile
+🇨🇲	Kamerun
+🇨🇳	Čína
+🇨🇴	Kolumbie
+🇨🇵	Ostrov Clipperton
+🇨🇷	Kostarika
+🇨🇺	Kuba
+🇨🇻	Kapverdy
+🇨🇼	Curaçao
+🇨🇽	Vánoční ostrov
+🇨🇾	Kypr
+🇨🇿	Česko
+🇩🇪	Německo
+🇩🇬	Diego Garcia
+🇩🇯	Džibutsko
+🇩🇰	Dánsko
+🇩🇲	Dominika
+🇩🇴	Dominikánská republika
+🇩🇿	Alžírsko
+🇪🇦	Ceuta a Melilla
+🇪🇨	Ekvádor
+🇪🇪	Estonsko
+🇪🇬	Egypt
+🇪🇭	západní Sahara
+🇪🇷	Eritrea
+🇪🇸	Španělsko
+🇪🇹	Etiopie
+🇪🇺	Evropská unie
+🇫🇮	Finsko
+🇫🇯	Fidži
+🇫🇰	Falklandy
+🇫🇲	Mikronésie
+🇫🇴	Faerské ostrovy
+🇫🇷	Francie
+🇬🇦	Gabon
+🇬🇧	Spojené království
+🇬🇩	Grenada
+🇬🇪	Gruzie
+🇬🇫	Francouzská Guyana
+🇬🇬	Guernsey
+🇬🇭	Ghana
+🇬🇮	Gibraltar
+🇬🇱	Grónsko
+🇬🇲	Gambie
+🇬🇳	Guinea
+🇬🇵	Guadeloupe
+🇬🇶	Rovníková Guinea
+🇬🇷	Řecko
+🇬🇸	Jižní Georgie a Jižní Sandwichovy ostrovy
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinea-Bissau
+🇬🇾	Guyana
+🇭🇰	Hong Kong SAR Čína
+🇭🇲	Heardovy a McDonaldovy ostrovy
+🇭🇳	Honduras
+🇭🇷	Chorvatsko
+🇭🇹	Haiti
+🇭🇺	Maďarsko
+🇮🇨	Kanárské ostrovy
+🇮🇩	Indonésie
+🇮🇪	Irsko
+🇮🇱	Izrael
+🇮🇲	Ostrov Man
+🇮🇳	Indie
+🇮🇴	Britské indickooceánské území
+🇮🇶	Irák
+🇮🇷	Írán
+🇮🇸	Island
+🇮🇹	Itálie
+🇯🇪	Trikot
+🇯🇲	Jamaica
+🇯🇴	Jordán
+🇯🇵	Japonsko
+🇰🇪	Keňa
+🇰🇬	Kyrgyzstán
+🇰🇭	Kambodža
+🇰🇮	Kiribati
+🇰🇲	Komory
+🇰🇳	Svatý Kryštof a Nevis
+🇰🇵	Severní Korea
+🇰🇷	Jižní Korea
+🇰🇼	Kuvajt
+🇰🇾	Kajmanské ostrovy
+🇰🇿	Kazachstán
+🇱🇦	Laos
+🇱🇧	Libanon
+🇱🇨	Svatá Lucie
+🇱🇮	Lichtenštejnsko
+🇱🇰	Srí Lanka
+🇱🇷	Libérie
+🇱🇸	Lesotho
+🇱🇹	Litva
+🇱🇺	Lucembursko
+🇱🇻	Lotyšsko
+🇱🇾	Libye
+🇲🇦	Maroko
+🇲🇨	Monako
+🇲🇩	Moldavsko
+🇲🇪	Černá Hora
+🇲🇫	Svatý Martin
+🇲🇬	Madagaskar
+🇲🇭	Marshallovy ostrovy
+🇲🇰	Makedonie
+🇲🇱	Mali
+🇲🇲	Myanmar (Barma)
+🇲🇳	Mongolsko
+🇲🇴	Macao SAR Čína
+🇲🇵	Severní Mariany
+🇲🇶	Martinik
+🇲🇷	Mauritánie
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mauricius
+🇲🇻	Maledivy
+🇲🇼	Malawi
+🇲🇽	Mexiko
+🇲🇾	Malajsie
+🇲🇿	Mosambik
+🇳🇦	Namibie
+🇳🇨	Nová Kaledonie
+🇳🇪	Niger
+🇳🇫	Ostrov Norfolk
+🇳🇬	Nigérie
+🇳🇮	Nikaragua
+🇳🇱	Holandsko
+🇳🇴	Norsko
+🇳🇵	Nepál
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Nový Zéland
+🇴🇲	Omán
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Francouzská Polynésie
+🇵🇬	Papua-Nová Guinea
+🇵🇭	Filipíny
+🇵🇰	Pákistán
+🇵🇱	Polsko
+🇵🇲	St. Pierre a Miquelon
+🇵🇳	Pitcairnovy ostrovy
+🇵🇷	Portoriko
+🇵🇸	Palestinská území
+🇵🇹	Portugalsko
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Katar
+🇷🇪	Shledání
+🇷🇴	Rumunsko
+🇷🇸	Srbsko
+🇷🇺	Rusko
+🇷🇼	Rwanda
+🇸🇦	Saudská arábie
+🇸🇧	Solomonovy ostrovy
+🇸🇨	Seychely
+🇸🇩	Súdán
+🇸🇪	Švédsko
+🇸🇬	Singapur
+🇸🇭	Svatá Helena
+🇸🇮	Slovinsko
+🇸🇯	Svalbard & Jan Mayen
+🇸🇰	Slovensko
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somálsko
+🇸🇷	Surinam
+🇸🇸	jižní Súdán
+🇸🇹	Svatý Tomáš a Princův ostrov
+🇸🇻	El Salvador
+🇸🇽	Svatý Martin
+🇸🇾	Sýrie
+🇸🇿	Svazijsko
+🇹🇦	Tristan da Cunha
+🇹🇨	Ostrovy Turks a Caicos
+🇹🇩	Čad
+🇹🇫	Francouzská jižní území
+🇹🇬	Jít
+🇹🇭	Thajsko
+🇹🇯	Tádžikistán
+🇹🇰	Tokelau
+🇹🇱	Východní Timor
+🇹🇲	Turkmenistán
+🇹🇳	Tunisko
+🇹🇴	Tonga
+🇹🇷	krocan
+🇹🇹	Trinidad a Tobago
+🇹🇻	Tuvalu
+🇹🇼	Tchaj-wan
+🇹🇿	Tanzanie
+🇺🇦	Ukrajina
+🇺🇬	Uganda
+🇺🇲	Odlehlé ostrovy USA
+🇺🇳	Spojené národy
+🇺🇸	Spojené státy
+🇺🇾	Uruguay
+🇺🇿	Uzbekistán
+🇻🇦	Vatikán
+🇻🇨	Svatý Vincenc a Grenadiny
+🇻🇪	Venezuela
+🇻🇬	Britské Panenské ostrovy
+🇻🇮	Americké Panenské ostrovy
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis & Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Jemen
+🇾🇹	Mayotte
+🇿🇦	Jižní Afrika
+🇿🇲	Zambie
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Anglie
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Skotsko
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Wales

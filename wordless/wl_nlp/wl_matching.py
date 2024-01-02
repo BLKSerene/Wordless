@@ -188,7 +188,7 @@ def match_tokens(
         # Match inflected forms of search terms and search results
         if settings['match_inflected_forms']:
             lemmas_search = wl_lemmatization.wl_lemmatize(main, tokens_search, lang, tagged = tagged)
-            lemmas_matched = wl_lemmatization.wl_lemmatize(main, set([*search_terms, *search_results]), lang, tagged = tagged)
+            lemmas_matched = wl_lemmatization.wl_lemmatize(main, {*search_terms, *search_results}, lang, tagged = tagged)
 
             for lemma_matched in set(lemmas_matched):
                 # Always match literal strings

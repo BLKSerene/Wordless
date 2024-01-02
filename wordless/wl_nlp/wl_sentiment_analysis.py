@@ -19,12 +19,21 @@
 # pylint: disable=unused-argument
 
 import collections
+import importlib
 
 import dostoevsky.models
 import underthesea
+import vaderSentiment.vaderSentiment
 
-from wordless.wl_nlp import wl_matching, wl_nlp_utils
-from wordless.wl_utils import wl_conversion
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_word_tokenization
+from wordless.wl_utils import wl_conversion, wl_paths
+
+VADER_EXCEPTIONS_ENG = [
+    vaderSentiment.vaderSentiment.NEGATE,
+    vaderSentiment.vaderSentiment.BOOSTER_DICT,
+    vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS,
+    vaderSentiment.vaderSentiment.SPECIAL_CASES
+]
 
 def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default', tagged = False):
     if sentiment_analyzer == 'default':
@@ -55,7 +64,7 @@ class Dostoevsky_Tokenizer:
 def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
     sentiment_scores = []
 
-    # Stanza:
+    # Stanza
     if sentiment_analyzer.startswith('stanza_'):
         if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
             lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -73,7 +82,44 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
                 sentiment_scores.append(collections.Counter(sentiments).most_common(1)[0][0] - 1)
             else:
                 sentiment_scores.append(0)
+    # VADER
+    elif sentiment_analyzer.startswith('vader_'):
+        match lang:
+            case 'hyw':
+                lang_vader = 'hy'
+            case 'zho_cn' | 'zho_tw' | 'srp_cyrl' | 'srp_latn' | 'mni_mtei':
+                lang_vader = wl_conversion.to_iso_639_1(main, lang)
+            case _:
+                lang_vader = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
+        if lang.startswith('eng_'):
+            (
+                vaderSentiment.vaderSentiment.NEGATE,
+                vaderSentiment.vaderSentiment.BOOSTER_DICT,
+                vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS,
+                vaderSentiment.vaderSentiment.SPECIAL_CASES
+            ) = VADER_EXCEPTIONS_ENG
+        else:
+            vader_exceptions = importlib.import_module(f'data.VADER.exceptions_{lang_vader}')
+
+            vaderSentiment.vaderSentiment.NEGATE = vader_exceptions.NEGATE
+            vaderSentiment.vaderSentiment.BOOSTER_DICT = vader_exceptions.BOOSTER_DICT
+            vaderSentiment.vaderSentiment.SENTIMENT_LADEN_IDIOMS = vader_exceptions.SENTIMENT_LADEN_IDIOMS
+            vaderSentiment.vaderSentiment.SPECIAL_CASES = vader_exceptions.SPECIAL_CASES
+
+        if lang.startswith('eng_'):
+            analyzer = vaderSentiment.vaderSentiment.SentimentIntensityAnalyzer()
+        else:
+            analyzer = vaderSentiment.vaderSentiment.SentimentIntensityAnalyzer(
+                lexicon_file = wl_paths.get_path_data('VADER', f'vader_lexicon_{lang_vader}.txt'),
+                emoji_lexicon = wl_paths.get_path_data('VADER', f'emoji_utf8_lexicon_{lang_vader}.txt')
+            )
+
+        for sentence in inputs:
+            if lang in wl_nlp_utils.LANGS_WITHOUT_SPACES:
+                sentence = ' '.join(wl_word_tokenization.wl_word_tokenize_flat(main, sentence, lang))
+
+            sentiment_scores.append(analyzer.polarity_scores(sentence)['compound'])
     # Russian
     elif sentiment_analyzer == 'dostoevsky_rus':
         model = dostoevsky.models.FastTextSocialNetworkModel(tokenizer = Dostoevsky_Tokenizer())

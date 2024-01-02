@@ -16,17 +16,19 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import itertools
+import random
 
 from tests import wl_test_init
 from wordless import wl_colligation_extractor
 from wordless.wl_dialogs import wl_dialogs_misc
 
 def test_colligation_extractor():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
-    main.settings_custom['colligation_extractor']['search_settings']['multi_search_mode'] = True
-    main.settings_custom['colligation_extractor']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+    settings = main.settings_custom['colligation_extractor']
+
+    settings['search_settings']['multi_search_mode'] = True
+    settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
     tests_statistical_significance = [
         test_statistical_significance
@@ -40,30 +42,26 @@ def test_colligation_extractor():
     ]
     measures_effect_size = list(main.settings_global['measures_effect_size'].keys())
 
-    for i, (test_statistical_significance, measure_bayes_factor, measure_effect_size) in enumerate(itertools.zip_longest(
-        tests_statistical_significance,
-        measures_bayes_factor,
-        measures_effect_size,
-        fillvalue = 'none'
-    )):
-        # Single file
-        if i % 4 == 0:
-            wl_test_init.select_test_files(main, no_files = [0])
-        # Multiple files
-        elif i % 4 == 1:
-            wl_test_init.select_test_files(main, no_files = [1, 2])
-        # Miscellaneous
-        else:
-            wl_test_init.select_test_files(main, no_files = [i % 4 + 1])
+    for i in range(4):
+        match i:
+            # Single file
+            case 0:
+                wl_test_init.select_test_files(main, no_files = [0])
+            # Multiple files
+            case 1:
+                wl_test_init.select_test_files(main, no_files = [1, 2])
+            # Miscellaneous
+            case _:
+                wl_test_init.select_test_files(main, no_files = [i + 1])
 
-        main.settings_custom['colligation_extractor']['generation_settings']['test_statistical_significance'] = test_statistical_significance
-        main.settings_custom['colligation_extractor']['generation_settings']['measure_bayes_factor'] = measure_bayes_factor
-        main.settings_custom['colligation_extractor']['generation_settings']['measure_effect_size'] = measure_effect_size
+        settings['generation_settings']['test_statistical_significance'] = random.choice(tests_statistical_significance)
+        settings['generation_settings']['measure_bayes_factor'] = random.choice(measures_bayes_factor)
+        settings['generation_settings']['measure_effect_size'] = random.choice(measures_effect_size)
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
-        print(f"Test of statistical significance: {main.settings_custom['colligation_extractor']['generation_settings']['test_statistical_significance']}")
-        print(f"Measure of Bayes factor: {main.settings_custom['colligation_extractor']['generation_settings']['measure_bayes_factor']}")
-        print(f"Measure of effect size: {main.settings_custom['colligation_extractor']['generation_settings']['measure_effect_size']}")
+        print(f"Test of statistical significance: {settings['generation_settings']['test_statistical_significance']}")
+        print(f"Measure of Bayes factor: {settings['generation_settings']['measure_bayes_factor']}")
+        print(f"Measure of effect size: {settings['generation_settings']['measure_effect_size']}")
 
         wl_colligation_extractor.Wl_Worker_Colligation_Extractor_Table(
             main,

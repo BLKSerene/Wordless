@@ -22,24 +22,24 @@ import shutil
 import subprocess
 import time
 
-import wl_utils
+from wordless.wl_utils import wl_misc
 
 def print_with_elapsed_time(message):
     print(f'[{datetime.timedelta(seconds = round(time.time() - time_start))}] {message}')
 
-is_windows, is_macos, is_linux = wl_utils.check_os()
-wl_ver = wl_utils.get_wl_ver()
+is_windows, is_macos, is_linux = wl_misc.check_os()
+wl_ver = wl_misc.get_wl_ver()
 time_start = time.time()
 
 # Package
 print_with_elapsed_time('Start packaging...')
 
 if is_windows:
-    subprocess.run(['python', '-m', 'PyInstaller', '-y', '--clean', 'wl_packaging.spec'], check = True)
+    subprocess.run(['python', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
 elif is_macos:
-    subprocess.run(['python3', '-m', 'PyInstaller', '-y', '--clean', 'wl_packaging.spec'], check = True)
+    subprocess.run(['python3', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
 elif is_linux:
-    subprocess.run(['python3.10', '-m', 'PyInstaller', '-y', '--clean', 'wl_packaging.spec'], check = True)
+    subprocess.run(['python3.10', '-m', 'PyInstaller', '-y', '--clean', 'utils/wl_packaging.spec'], check = True)
 
 # Create folders
 if is_windows or is_linux:

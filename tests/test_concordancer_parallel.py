@@ -21,16 +21,19 @@ from wordless import wl_concordancer_parallel
 from wordless.wl_dialogs import wl_dialogs_misc
 
 def test_concordancer_parallel():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
-    main.settings_custom['concordancer_parallel']['search_settings']['multi_search_mode'] = True
-    main.settings_custom['concordancer_parallel']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+    settings = main.settings_custom['concordancer_parallel']
+
+    settings['search_settings']['multi_search_mode'] = True
+    settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
     for i in range(2):
-        if i == 0:
-            wl_test_init.select_test_files(main, no_files = [0, 1, 2])
-        elif i == 1:
-            wl_test_init.select_test_files(main, no_files = [1, 2, 3, 4])
+        match i:
+            case 0:
+                wl_test_init.select_test_files(main, no_files = [0, 1, 2])
+            case 1:
+                wl_test_init.select_test_files(main, no_files = [1, 2, 3, 4])
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
 

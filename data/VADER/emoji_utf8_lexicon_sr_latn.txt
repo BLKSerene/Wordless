@@ -1,0 +1,3570 @@
+😀	nasmejano lice
+😁	ozareno lice sa nasmejanim očima
+😂	lice sa suzama radosnicama
+🤣	valjanje od smeha
+😃	nasmešeno lice sa velikim očima
+😄	nasmejano lice sa nasmejanim očima
+😅	nacereno lice od znoja
+😆	cereće se žmirkasto lice
+😉	namigujući lice
+😊	nasmejano lice sa nasmejanim očima
+😋	lice koje uživa u hrani
+😎	nasmejano lice sa sunčanim naočarima
+😍	nasmejano lice sa očima srca
+😘	lice duva poljubac
+🥰	nasmejano lice sa 3 srca
+😗	ljubeći lice
+😙	ljubeće lice sa nasmejanim očima
+😚	ljubeće lice sa zatvorenim očima
+☺️	nasmejano lice
+☺	nasmejano lice
+🙂	blago nasmejano lice
+🤗	grleće lice
+🤩	zvezdani
+🤔	misleće lice
+🤨	lice sa podignutom obrvom
+😐	neutralno lice
+😑	bezizražajno lice
+😶	lice bez usta
+🙄	lice sa prevrnutim očima
+😏	nasmejano lice
+😣	istrajno lice
+😥	tužno ali olakšano lice
+😮	lice sa otvorenim ustima
+🤐	rajsferšlus-usta lice
+😯	prigušeno lice
+😪	pospano lice
+😫	umorno lice
+😴	usnulo lice
+😌	rasterećeno lice
+😛	lice sa jezikom
+😜	namigujući lice jezikom
+😝	žmureno lice jezikom
+🤤	slinavo lice
+😒	nezadovoljno lice
+😓	oboreno lice od znoja
+😔	zamišljeno lice
+😕	zbunjeno lice
+🙃	naopako lice
+🤑	novac-usta lice
+😲	začuđeno lice
+☹️	namršteno lice
+☹	namršteno lice
+🙁	blago namršteno lice
+😖	zbunjeno lice
+😞	razočarano lice
+😟	zabrinuto lice
+😤	lice sa parom iz nosa
+😢	uplakano lice
+😭	glasno uplakano lice
+😦	namršteno lice sa otvorenim ustima
+😧	mučno lice
+😨	bojažljivo lice
+😩	umorno lice
+🤯	eksplodirajuća glava
+😬	grimase lice
+😰	uznemireno lice od znoja
+😱	lice koje vrišti od straha
+🥵	vrelo lice
+🥶	hladno lice
+😳	zajapureno lice
+🤪	ludo lice
+😵	vrtoglavo lice
+😡	naduveno lice
+😠	ljutito lice
+🤬	lice sa simbolima na ustima
+😷	lice sa medicinskom maskom
+🤒	lice sa termometrom
+🤕	lice sa zavojem za glavu
+🤢	mučno lice
+🤮	lice povraćanje
+🤧	kijavo lice
+😇	nasmejano lice sa oreolom
+🤠	kaubojski šešir lice
+🥳	lice za zabavu
+🥴	omamljeno lice
+🥺	molećivo lice
+🤥	lažljivog lica
+🤫	ušuškano lice
+🤭	lice sa rukom preko usta
+🧐	lice sa monoklom
+🤓	štrebersko lice
+😈	nasmejano lice sa rogovima
+👿	ljuto lice sa rogovima
+🤡	klovnovsko lice
+👹	ogre
+👺	goblin
+💀	Lobanja
+☠️	Lobanja i kosti
+☠	Lobanja i kosti
+👻	duh
+👽	vanzemaljac
+👾	vanzemaljsko čudovište
+🤖	lice robota
+💩	gomila izmeta
+😺	nasmejano mačje lice
+😸	nasmejano mačje lice sa nasmejanim očima
+😹	mačje lice sa suzama radosnicama
+😻	nasmejano mačje lice sa srčanim očima
+😼	mačje lice sa iskrivljenim osmehom
+😽	ljubi mačje lice
+🙀	umorno mačje lice
+😿	plačljivo mačje lice
+😾	naduveno mačje lice
+🙈	neviđeni zli majmun
+🙉	čuj-ne-zli majmun
+🙊	ne govori zao majmun
+🏻	svetli ton kože
+🏼	srednje svetla boja kože
+🏽	srednji ton kože
+🏾	srednje tamni ton kože
+🏿	tamni ton kože
+👶	beba
+👶🏻	beba: svetla koža
+👶🏼	beba: srednje svetla koža
+👶🏽	beba: srednja boja kože
+👶🏾	beba: srednje tamna koža
+👶🏿	beba: tamna koža
+🧒	dete
+🧒🏻	dete: svetla koža
+🧒🏼	dete: srednje svetla koža
+🧒🏽	dete: srednja boja kože
+🧒🏾	dete: srednje tamna koža
+🧒🏿	dete: tamna koža
+👦	dečko
+👦🏻	dečak: svetla koža
+👦🏼	dečak: srednje svetla koža
+👦🏽	dečak: srednja boja kože
+👦🏾	dečak: srednje tamna koža
+👦🏿	dečak: tamna koža
+👧	devojka
+👧🏻	devojka: svetla koža
+👧🏼	devojka: srednje svetla koža
+👧🏽	devojka: srednji ten
+👧🏾	devojka: srednje tamna koža
+👧🏿	devojka: tamna koža
+🧑	odrasla osoba
+🧑🏻	odrasla osoba: svetla koža
+🧑🏼	odrasla osoba: srednje svetla koža
+🧑🏽	odrasla osoba: srednja boja kože
+🧑🏾	odrasla osoba: srednje tamna koža
+🧑🏿	odrasla osoba: tamna koža
+👨	čovek
+👨🏻	muškarac: svetla koža
+👨🏼	muškarac: srednje svetla koža
+👨🏽	muškarac: srednja boja kože
+👨🏾	muškarac: srednje tamna koža
+👨🏿	muškarac: tamna koža
+👩	žena
+👩🏻	žena: svetla koža
+👩🏼	žena: srednje svetla koža
+👩🏽	žena: srednji ten
+👩🏾	žena: srednje tamna koža
+👩🏿	žena: tamna koža
+🧓	starija odrasla osoba
+🧓🏻	starija osoba: svetla koža
+🧓🏼	starija odrasla osoba: srednje svetla koža
+🧓🏽	starija osoba: srednja boja kože
+🧓🏾	starija odrasla osoba: srednje tamna koža
+🧓🏿	starija osoba: tamna koža
+👴	starac
+👴🏻	starac: svetla koža
+👴🏼	starac: srednje svetla koža
+👴🏽	starac: srednji ten
+👴🏾	starac: srednje tamna koža
+👴🏿	starac: tamna koža
+👵	starica
+👵🏻	starica: svetla koža
+👵🏼	starica: srednje svetla koža
+👵🏽	starica: srednji ten
+👵🏾	starica: srednje tamna koža
+👵🏿	starica: tamna koža
+👨‍⚕️	čovek zdravstveni radnik
+👨‍⚕	čovek zdravstveni radnik
+👨🏻‍⚕️	muškarac zdravstveni radnik: svetla koža
+👨🏻‍⚕	muškarac zdravstveni radnik: svetla koža
+👨🏼‍⚕️	muškarac zdravstveni radnik: srednje svetla koža
+👨🏼‍⚕	muškarac zdravstveni radnik: srednje svetla koža
+👨🏽‍⚕️	muškarac zdravstveni radnik: srednji ten
+👨🏽‍⚕	muškarac zdravstveni radnik: srednji ten
+👨🏾‍⚕️	muškarac zdravstveni radnik: srednje tamna koža
+👨🏾‍⚕	muškarac zdravstveni radnik: srednje tamna koža
+👨🏿‍⚕️	muškarac zdravstveni radnik: tamna koža
+👨🏿‍⚕	muškarac zdravstveni radnik: tamna koža
+👩‍⚕️	žena zdravstveni radnik
+👩‍⚕	žena zdravstveni radnik
+👩🏻‍⚕️	žena zdravstveni radnik: svetla koža
+👩🏻‍⚕	žena zdravstveni radnik: svetla koža
+👩🏼‍⚕️	zdravstveni radnik: srednje svetla koža
+👩🏼‍⚕	zdravstveni radnik: srednje svetla koža
+👩🏽‍⚕️	žena zdravstveni radnik: srednji ten
+👩🏽‍⚕	žena zdravstveni radnik: srednji ten
+👩🏾‍⚕️	žena zdravstveni radnik: srednje tamna koža
+👩🏾‍⚕	žena zdravstveni radnik: srednje tamna koža
+👩🏿‍⚕️	žena zdravstveni radnik: tamna koža
+👩🏿‍⚕	žena zdravstveni radnik: tamna koža
+👨‍🎓	čovek student
+👨🏻‍🎓	student: svetla koža
+👨🏼‍🎓	student: srednje svetla koža
+👨🏽‍🎓	student: srednji ten
+👨🏾‍🎓	student: srednje tamna koža
+👨🏿‍🎓	student: tamna koža
+👩‍🎓	studentkinja
+👩🏻‍🎓	studentkinja: svetla koža
+👩🏼‍🎓	studentkinja: srednje svetla koža
+👩🏽‍🎓	studentkinja: srednji ten
+👩🏾‍🎓	studentkinja: srednje tamna koža
+👩🏿‍🎓	studentkinja: tamna koža
+👨‍🏫	čovek učitelj
+👨🏻‍🏫	muškarac učitelj: svetla koža
+👨🏼‍🏫	muškarac učitelj: srednje svetla koža
+👨🏽‍🏫	muškarac učitelj: srednji ten kože
+👨🏾‍🏫	muškarac učitelj: srednje tamna koža
+👨🏿‍🏫	muškarac učitelj: tamna koža
+👩‍🏫	žena učiteljica
+👩🏻‍🏫	žena učiteljica: svetla koža
+👩🏼‍🏫	žena učiteljica: srednje svetla koža
+👩🏽‍🏫	žena učiteljica: srednji ten kože
+👩🏾‍🏫	žena učiteljica: srednje tamna koža
+👩🏿‍🏫	žena učiteljica: tamna koža
+👨‍⚖️	čovek sudija
+👨‍⚖	čovek sudija
+👨🏻‍⚖️	čovek sudija: svetla koža
+👨🏻‍⚖	čovek sudija: svetla koža
+👨🏼‍⚖️	sudija: srednje svetla koža
+👨🏼‍⚖	sudija: srednje svetla koža
+👨🏽‍⚖️	muškarac sudija: srednji ten kože
+👨🏽‍⚖	muškarac sudija: srednji ten kože
+👨🏾‍⚖️	muškarac sudija: srednje tamna koža
+👨🏾‍⚖	muškarac sudija: srednje tamna koža
+👨🏿‍⚖️	čovek sudija: tamna koža
+👨🏿‍⚖	čovek sudija: tamna koža
+👩‍⚖️	žena sudija
+👩‍⚖	žena sudija
+👩🏻‍⚖️	žena sudija: svetla koža
+👩🏻‍⚖	žena sudija: svetla koža
+👩🏼‍⚖️	žena sudija: srednje svetla koža
+👩🏼‍⚖	žena sudija: srednje svetla koža
+👩🏽‍⚖️	žena sudija: srednji ten
+👩🏽‍⚖	žena sudija: srednji ten
+👩🏾‍⚖️	žena sudija: srednje tamna koža
+👩🏾‍⚖	žena sudija: srednje tamna koža
+👩🏿‍⚖️	žena sudija: tamna koža
+👩🏿‍⚖	žena sudija: tamna koža
+👨‍🌾	čovek zemljoradnik
+👨🏻‍🌾	muškarac farmer: svetla koža
+👨🏼‍🌾	muškarac farmer: srednje svetla koža
+👨🏽‍🌾	muškarac farmer: srednja boja kože
+👨🏾‍🌾	muškarac farmer: srednje tamna koža
+👨🏿‍🌾	muškarac farmer: tamna koža
+👩‍🌾	žena zemljoradnik
+👩🏻‍🌾	žena farmer: svetla koža
+👩🏼‍🌾	žena farmer: srednje svetla koža
+👩🏽‍🌾	žena farmer: srednja boja kože
+👩🏾‍🌾	žena farmer: srednje tamna koža
+👩🏿‍🌾	žena farmer: tamna koža
+👨‍🍳	čovek kuvar
+👨🏻‍🍳	kuvar: svetla koža
+👨🏼‍🍳	kuvar: srednje svetla koža
+👨🏽‍🍳	kuvar: srednja boja kože
+👨🏾‍🍳	kuvar: srednje tamna koža
+👨🏿‍🍳	kuvar: tamna koža
+👩‍🍳	žena kuvarica
+👩🏻‍🍳	kuvarica: svetla koža
+👩🏼‍🍳	kuvarica: srednje svetla koža
+👩🏽‍🍳	žena kuvarica: srednja boja kože
+👩🏾‍🍳	kuvarica: srednje tamna koža
+👩🏿‍🍳	žena kuvarica: tamna koža
+👨‍🔧	čovek mehaničar
+👨🏻‍🔧	čovek mehaničar: svetla koža
+👨🏼‍🔧	čovek mehaničar: srednje svetla koža
+👨🏽‍🔧	čovek mehaničar: srednja boja kože
+👨🏾‍🔧	čovek mehaničar: srednje tamna koža
+👨🏿‍🔧	čovek mehaničar: tamna koža
+👩‍🔧	žena mehaničar
+👩🏻‍🔧	žena mehaničar: svetla koža
+👩🏼‍🔧	žena mehaničar: srednje svetla koža
+👩🏽‍🔧	žena mehaničar: srednja boja kože
+👩🏾‍🔧	žena mehaničar: srednje tamna koža
+👩🏿‍🔧	žena mehaničar: tamna koža
+👨‍🏭	čovek fabrički radnik
+👨🏻‍🏭	čovek fabrički radnik: svetla koža
+👨🏼‍🏭	čovek fabrički radnik: srednje svetla koža
+👨🏽‍🏭	čovek fabrički radnik: srednja boja kože
+👨🏾‍🏭	radnik u fabrici: srednje tamna koža
+👨🏿‍🏭	čovek fabrički radnik: tamna koža
+👩‍🏭	žena radnica u fabrici
+👩🏻‍🏭	žena u fabrici: svetla koža
+👩🏼‍🏭	žena u fabrici: srednje svetla koža
+👩🏽‍🏭	žena u fabrici: srednji ten
+👩🏾‍🏭	žena u fabrici: srednje tamna koža
+👩🏿‍🏭	žena u fabrici: tamna koža
+👨‍💼	čovek kancelarijski radnik
+👨🏻‍💼	muškarac kancelarijski radnik: svetla koža
+👨🏼‍💼	muškarac kancelarijski radnik: srednje svetla koža
+👨🏽‍💼	muškarac kancelarijski radnik: srednja boja kože
+👨🏾‍💼	muškarac kancelarijski radnik: srednje tamna koža
+👨🏿‍💼	muškarac kancelarijski radnik: tamna koža
+👩‍💼	žena kancelarijski radnik
+👩🏻‍💼	žena kancelarijski radnik: svetla koža
+👩🏼‍💼	žena kancelarijski radnik: srednje svetla koža
+👩🏽‍💼	žena kancelarijski radnik: srednja boja kože
+👩🏾‍💼	žena kancelarijski radnik: srednje tamna koža
+👩🏿‍💼	žena kancelarijski radnik: tamna koža
+👨‍🔬	čovek naučnik
+👨🏻‍🔬	čovek naučnik: svetla koža
+👨🏼‍🔬	naučnik: srednje svetla koža
+👨🏽‍🔬	muškarac naučnik: srednji ten kože
+👨🏾‍🔬	čovek naučnik: srednje tamna koža
+👨🏿‍🔬	čovek naučnik: tamna koža
+👩‍🔬	žena naučnica
+👩🏻‍🔬	žena naučnica: svetla koža
+👩🏼‍🔬	žena naučnica: srednje svetla koža
+👩🏽‍🔬	žena naučnica: srednji ten kože
+👩🏾‍🔬	žena naučnica: srednje tamna koža
+👩🏿‍🔬	žena naučnica: tamna koža
+👨‍💻	čovek tehnolog
+👨🏻‍💻	čovek tehnolog: svetla koža
+👨🏼‍💻	muškarac tehnolog: srednje svetla koža
+👨🏽‍💻	muškarac tehnolog: srednja boja kože
+👨🏾‍💻	muškarac tehnolog: srednje tamna koža
+👨🏿‍💻	čovek tehnolog: tamna koža
+👩‍💻	žena tehnolog
+👩🏻‍💻	žena tehnolog: svetla koža
+👩🏼‍💻	žena tehnolog: srednje svetla koža
+👩🏽‍💻	žena tehnolog: srednja boja kože
+👩🏾‍💻	žena tehnolog: srednje tamna koža
+👩🏿‍💻	žena tehnolog: tamna koža
+👨‍🎤	čovek pevač
+👨🏻‍🎤	muškarac pevač: svetla koža
+👨🏼‍🎤	muškarac pevač: srednje svetla koža
+👨🏽‍🎤	muškarac pevač: srednji ten
+👨🏾‍🎤	muškarac pevač: srednje tamna koža
+👨🏿‍🎤	muškarac pevač: tamna koža
+👩‍🎤	žena pevačica
+👩🏻‍🎤	pevačica: svetla koža
+👩🏼‍🎤	pevačica: srednje svetla koža
+👩🏽‍🎤	pevačica: srednji ten
+👩🏾‍🎤	pevačica: srednje tamna koža
+👩🏿‍🎤	pevačica: tamna koža
+👨‍🎨	čovek umetnik
+👨🏻‍🎨	čovek umetnik: svetla koža
+👨🏼‍🎨	muškarac umetnik: srednje svetla koža
+👨🏽‍🎨	muškarac umetnik: srednja boja kože
+👨🏾‍🎨	muškarac umetnik: srednje tamna koža
+👨🏿‍🎨	čovek umetnik: tamna koža
+👩‍🎨	žena umetnica
+👩🏻‍🎨	žena umetnica: svetla koža
+👩🏼‍🎨	žena umetnica: srednje svetla koža
+👩🏽‍🎨	žena umetnica: srednji ten
+👩🏾‍🎨	žena umetnica: srednje tamna koža
+👩🏿‍🎨	žena umetnica: tamna koža
+👨‍✈️	čovek pilot
+👨‍✈	čovek pilot
+👨🏻‍✈️	čovek pilot: svetla koža
+👨🏻‍✈	čovek pilot: svetla koža
+👨🏼‍✈️	čovek pilot: srednje svetla koža
+👨🏼‍✈	čovek pilot: srednje svetla koža
+👨🏽‍✈️	muškarac pilot: srednja boja kože
+👨🏽‍✈	muškarac pilot: srednja boja kože
+👨🏾‍✈️	čovek pilot: srednje tamna koža
+👨🏾‍✈	čovek pilot: srednje tamna koža
+👨🏿‍✈️	čovek pilot: tamna koža
+👨🏿‍✈	čovek pilot: tamna koža
+👩‍✈️	žena pilot
+👩‍✈	žena pilot
+👩🏻‍✈️	žena pilot: svetla koža
+👩🏻‍✈	žena pilot: svetla koža
+👩🏼‍✈️	žena pilot: srednje svetla koža
+👩🏼‍✈	žena pilot: srednje svetla koža
+👩🏽‍✈️	žena pilot: srednja boja kože
+👩🏽‍✈	žena pilot: srednja boja kože
+👩🏾‍✈️	žena pilot: srednje tamna koža
+👩🏾‍✈	žena pilot: srednje tamna koža
+👩🏿‍✈️	žena pilot: tamna koža
+👩🏿‍✈	žena pilot: tamna koža
+👨‍🚀	čovek astronaut
+👨🏻‍🚀	čovek astronaut: svetla koža
+👨🏼‍🚀	čovek astronaut: srednje svetla boja kože
+👨🏽‍🚀	čovek astronaut: srednja boja kože
+👨🏾‍🚀	čovek astronaut: srednje tamna koža
+👨🏿‍🚀	čovek astronaut: tamna koža
+👩‍🚀	žena astronaut
+👩🏻‍🚀	žena astronaut: svetla koža
+👩🏼‍🚀	žena astronaut: srednje svetla koža
+👩🏽‍🚀	žena astronaut: srednja boja kože
+👩🏾‍🚀	žena astronaut: srednje tamna koža
+👩🏿‍🚀	žena astronaut: tamna koža
+👨‍🚒	čovek vatrogasac
+👨🏻‍🚒	muškarac vatrogasac: svetla koža
+👨🏼‍🚒	muškarac vatrogasac: srednje svetla koža
+👨🏽‍🚒	muškarac vatrogasac: srednja boja kože
+👨🏾‍🚒	muškarac vatrogasac: srednje tamna koža
+👨🏿‍🚒	muškarac vatrogasac: tamna koža
+👩‍🚒	žena vatrogasac
+👩🏻‍🚒	žena vatrogasac: svetla koža
+👩🏼‍🚒	žena vatrogasac: srednje svetla koža
+👩🏽‍🚒	žena vatrogasac: srednji ten
+👩🏾‍🚒	žena vatrogasac: srednje tamna koža
+👩🏿‍🚒	žena vatrogasac: tamna koža
+👮	policajac
+👮🏻	policajac: svetla koža
+👮🏼	policajac: srednje svetla koža
+👮🏽	policajac: srednji ten
+👮🏾	policajac: srednje tamna koža
+👮🏿	policajac: tamna koža
+👮‍♂️	muškarac policajac
+👮‍♂	muškarac policajac
+👮🏻‍♂️	muškarac policajac: svetla koža
+👮🏻‍♂	muškarac policajac: svetla koža
+👮🏼‍♂️	muškarac policajac: srednje svetla koža
+👮🏼‍♂	muškarac policajac: srednje svetla koža
+👮🏽‍♂️	muškarac policajac: srednja boja kože
+👮🏽‍♂	muškarac policajac: srednja boja kože
+👮🏾‍♂️	muškarac policajac: srednje tamna koža
+👮🏾‍♂	muškarac policajac: srednje tamna koža
+👮🏿‍♂️	muškarac policajac: tamna koža
+👮🏿‍♂	muškarac policajac: tamna koža
+👮‍♀️	žena policajac
+👮‍♀	žena policajac
+👮🏻‍♀️	žena policajac: svetla koža
+👮🏻‍♀	žena policajac: svetla koža
+👮🏼‍♀️	žena policajac: srednje svetla koža
+👮🏼‍♀	žena policajac: srednje svetla koža
+👮🏽‍♀️	žena policajac: srednja boja kože
+👮🏽‍♀	žena policajac: srednja boja kože
+👮🏾‍♀️	žena policajac: srednje tamna koža
+👮🏾‍♀	žena policajac: srednje tamna koža
+👮🏿‍♀️	žena policajac: tamna koža
+👮🏿‍♀	žena policajac: tamna koža
+🕵️	detektiv
+🕵	detektiv
+🕵🏻	detektiv: svetla koža
+🕵🏼	detektiv: srednje svetla koža
+🕵🏽	detektiv: srednji ten
+🕵🏾	detektiv: srednje tamna koža
+🕵🏿	detektiv: tamna koža
+🕵️‍♂️	čovek detektiv
+🕵‍♂️	čovek detektiv
+🕵️‍♂	čovek detektiv
+🕵‍♂	čovek detektiv
+🕵🏻‍♂️	detektiv: svetla koža
+🕵🏻‍♂	detektiv: svetla koža
+🕵🏼‍♂️	detektiv: srednje svetla koža
+🕵🏼‍♂	detektiv: srednje svetla koža
+🕵🏽‍♂️	detektiv: srednji ten
+🕵🏽‍♂	detektiv: srednji ten
+🕵🏾‍♂️	detektiv: srednje tamna koža
+🕵🏾‍♂	detektiv: srednje tamna koža
+🕵🏿‍♂️	detektiv: tamna koža
+🕵🏿‍♂	detektiv: tamna koža
+🕵️‍♀️	žena detektiv
+🕵‍♀️	žena detektiv
+🕵️‍♀	žena detektiv
+🕵‍♀	žena detektiv
+🕵🏻‍♀️	detektivka: svetla koža
+🕵🏻‍♀	detektivka: svetla koža
+🕵🏼‍♀️	detektivka: srednje svetla koža
+🕵🏼‍♀	detektivka: srednje svetla koža
+🕵🏽‍♀️	detektivka: srednji ten
+🕵🏽‍♀	detektivka: srednji ten
+🕵🏾‍♀️	detektivka: srednje tamna koža
+🕵🏾‍♀	detektivka: srednje tamna koža
+🕵🏿‍♀️	detektivka: tamna koža
+🕵🏿‍♀	detektivka: tamna koža
+💂	stražar
+💂🏻	čuvar: svetla koža
+💂🏼	čuvar: srednje svetla koža
+💂🏽	čuvar: srednji ten
+💂🏾	čuvar: srednje tamna koža
+💂🏿	čuvar: tamna koža
+💂‍♂️	čovek stražar
+💂‍♂	čovek stražar
+💂🏻‍♂️	čovek čuvar: svetla koža
+💂🏻‍♂	čovek čuvar: svetla koža
+💂🏼‍♂️	muškarac čuvar: srednje svetla koža
+💂🏼‍♂	muškarac čuvar: srednje svetla koža
+💂🏽‍♂️	muškarac čuvar: srednja boja kože
+💂🏽‍♂	muškarac čuvar: srednja boja kože
+💂🏾‍♂️	muškarac čuvar: srednje tamna koža
+💂🏾‍♂	muškarac čuvar: srednje tamna koža
+💂🏿‍♂️	muškarac čuvar: tamna koža
+💂🏿‍♂	muškarac čuvar: tamna koža
+💂‍♀️	žena čuvar
+💂‍♀	žena čuvar
+💂🏻‍♀️	žena čuvar: svetla koža
+💂🏻‍♀	žena čuvar: svetla koža
+💂🏼‍♀️	žena čuvar: srednje svetla koža
+💂🏼‍♀	žena čuvar: srednje svetla koža
+💂🏽‍♀️	žena čuvar: srednja boja kože
+💂🏽‍♀	žena čuvar: srednja boja kože
+💂🏾‍♀️	žena čuvar: srednje tamna koža
+💂🏾‍♀	žena čuvar: srednje tamna koža
+💂🏿‍♀️	žena čuvar: tamna koža
+💂🏿‍♀	žena čuvar: tamna koža
+👷	građavinac
+👷🏻	građevinski radnik: svetla koža
+👷🏼	građevinski radnik: srednje svetla koža
+👷🏽	građevinski radnik: srednji ten kože
+👷🏾	građevinski radnik: srednje tamna koža
+👷🏿	građevinski radnik: tamna koža
+👷‍♂️	čovek građevinski radnik
+👷‍♂	čovek građevinski radnik
+👷🏻‍♂️	čovek građevinski radnik: svetla koža
+👷🏻‍♂	čovek građevinski radnik: svetla koža
+👷🏼‍♂️	muškarac građevinski radnik: srednje svetla koža
+👷🏼‍♂	muškarac građevinski radnik: srednje svetla koža
+👷🏽‍♂️	muškarac građevinski radnik: srednja boja kože
+👷🏽‍♂	muškarac građevinski radnik: srednja boja kože
+👷🏾‍♂️	muškarac građevinski radnik: srednje tamna koža
+👷🏾‍♂	muškarac građevinski radnik: srednje tamna koža
+👷🏿‍♂️	muškarac građevinski radnik: tamna koža
+👷🏿‍♂	muškarac građevinski radnik: tamna koža
+👷‍♀️	žena građevinski radnik
+👷‍♀	žena građevinski radnik
+👷🏻‍♀️	žena građevinski radnik: svetla koža
+👷🏻‍♀	žena građevinski radnik: svetla koža
+👷🏼‍♀️	žena građevinski radnik: srednje svetla koža
+👷🏼‍♀	žena građevinski radnik: srednje svetla koža
+👷🏽‍♀️	žena građevinski radnik: srednja boja kože
+👷🏽‍♀	žena građevinski radnik: srednja boja kože
+👷🏾‍♀️	žena građevinski radnik: srednje tamna koža
+👷🏾‍♀	žena građevinski radnik: srednje tamna koža
+👷🏿‍♀️	žena građevinski radnik: tamna koža
+👷🏿‍♀	žena građevinski radnik: tamna koža
+🤴	knez
+🤴🏻	princ: svetla koža
+🤴🏼	princ: srednje svetla koža
+🤴🏽	princ: srednji ten
+🤴🏾	princ: srednje tamna koža
+🤴🏿	princ: tamna koža
+👸	princeza
+👸🏻	princeza: svetla koža
+👸🏼	princeza: srednje svetla koža
+👸🏽	princeza: srednja boja kože
+👸🏾	princeza: srednje tamna koža
+👸🏿	princeza: tamna koža
+👳	osoba koja nosi turban
+👳🏻	osoba koja nosi turban: svetla koža
+👳🏼	osoba koja nosi turban: srednje svetla koža
+👳🏽	osoba koja nosi turban: srednja boja kože
+👳🏾	osoba koja nosi turban: srednje tamna koža
+👳🏿	osoba koja nosi turban: tamna koža
+👳‍♂️	čovek koji nosi turban
+👳‍♂	čovek koji nosi turban
+👳🏻‍♂️	muškarac koji nosi turban: svetla koža
+👳🏻‍♂	muškarac koji nosi turban: svetla koža
+👳🏼‍♂️	muškarac koji nosi turban: srednje svetla koža
+👳🏼‍♂	muškarac koji nosi turban: srednje svetla koža
+👳🏽‍♂️	muškarac koji nosi turban: srednja boja kože
+👳🏽‍♂	muškarac koji nosi turban: srednja boja kože
+👳🏾‍♂️	muškarac koji nosi turban: srednje tamna koža
+👳🏾‍♂	muškarac koji nosi turban: srednje tamna koža
+👳🏿‍♂️	muškarac koji nosi turban: tamna koža
+👳🏿‍♂	muškarac koji nosi turban: tamna koža
+👳‍♀️	žena koja nosi turban
+👳‍♀	žena koja nosi turban
+👳🏻‍♀️	žena koja nosi turban: svetla koža
+👳🏻‍♀	žena koja nosi turban: svetla koža
+👳🏼‍♀️	žena koja nosi turban: srednje svetla koža
+👳🏼‍♀	žena koja nosi turban: srednje svetla koža
+👳🏽‍♀️	žena koja nosi turban: srednja boja kože
+👳🏽‍♀	žena koja nosi turban: srednja boja kože
+👳🏾‍♀️	žena koja nosi turban: srednje tamna koža
+👳🏾‍♀	žena koja nosi turban: srednje tamna koža
+👳🏿‍♀️	žena koja nosi turban: tamna koža
+👳🏿‍♀	žena koja nosi turban: tamna koža
+👲	čovek sa kineskom kapom
+👲🏻	čovek sa kineskom kapom: svetla koža
+👲🏼	muškarac sa kineskom kapom: srednje svetla koža
+👲🏽	čovek sa kineskom kapom: srednja boja kože
+👲🏾	čovek sa kineskom kapom: srednje tamna koža
+👲🏿	čovek sa kineskom kapom: tamna koža
+🧕	žena sa maramom
+🧕🏻	žena sa maramom: svetla koža
+🧕🏼	žena sa maramom: srednje svetla koža
+🧕🏽	žena sa maramom: srednji ten
+🧕🏾	žena sa maramom: srednje tamna koža
+🧕🏿	žena sa maramom: tamna koža
+🧔	bradata osoba
+🧔🏻	bradata osoba: svetla koža
+🧔🏼	bradata osoba: srednje svetla koža
+🧔🏽	bradata osoba: srednji ten
+🧔🏾	bradata osoba: srednje tamna koža
+🧔🏿	bradata osoba: tamna koža
+👱	plavokosa osoba
+👱🏻	plavokosa osoba: svetla koža
+👱🏼	plavokosa osoba: srednje svetla koža
+👱🏽	plavokosa osoba: srednji ten
+👱🏾	plavokosa osoba: srednje tamna koža
+👱🏿	plavokosa osoba: tamna koža
+👱‍♂️	čovek plave kose
+👱‍♂	čovek plave kose
+👱🏻‍♂️	plavokos muškarac: svetla koža
+👱🏻‍♂	plavokos muškarac: svetla koža
+👱🏼‍♂️	plavokos muškarac: srednje svetla koža
+👱🏼‍♂	plavokos muškarac: srednje svetla koža
+👱🏽‍♂️	plavokos muškarac: srednji ten
+👱🏽‍♂	plavokos muškarac: srednji ten
+👱🏾‍♂️	plavokos muškarac: srednje tamna koža
+👱🏾‍♂	plavokos muškarac: srednje tamna koža
+👱🏿‍♂️	plavokos muškarac: tamna koža
+👱🏿‍♂	plavokos muškarac: tamna koža
+👱‍♀️	plavokosa žena
+👱‍♀	plavokosa žena
+👱🏻‍♀️	plavokosa žena: svetla koža
+👱🏻‍♀	plavokosa žena: svetla koža
+👱🏼‍♀️	plavokosa žena: srednje svetla koža
+👱🏼‍♀	plavokosa žena: srednje svetla koža
+👱🏽‍♀️	plavokosa žena: srednji ten
+👱🏽‍♀	plavokosa žena: srednji ten
+👱🏾‍♀️	plavokosa žena: srednje tamna koža
+👱🏾‍♀	plavokosa žena: srednje tamna koža
+👱🏿‍♀️	plavokosa žena: tamna koža
+👱🏿‍♀	plavokosa žena: tamna koža
+👨‍🦰	muškarac, crvene kose
+👨🏻‍🦰	muškarac, crvene kose: svetla koža
+👨🏼‍🦰	muškarac, crvene kose: srednje svetla koža
+👨🏽‍🦰	muškarac, crvene kose: srednja boja kože
+👨🏾‍🦰	muškarac, crvene kose: srednje tamna koža
+👨🏿‍🦰	muškarac, crvene kose: tamna koža
+👩‍🦰	žena, crvenokosa
+👩🏻‍🦰	žena, crvenokosa: svetla koža
+👩🏼‍🦰	žena, crvenokosa: srednje svetla koža
+👩🏽‍🦰	žena, crvenokosa: srednji ten
+👩🏾‍🦰	žena, crvenokosa: srednje tamna koža
+👩🏿‍🦰	žena, crvenokosa: tamna koža
+👨‍🦱	muškarac, kovrdžave kose
+👨🏻‍🦱	muškarac, kovrdžave kose: svetla koža
+👨🏼‍🦱	muškarac, kovrdžave kose: srednje svetla koža
+👨🏽‍🦱	muškarac, kovrdžave kose: srednje boje kože
+👨🏾‍🦱	muškarac, kovrdžave kose: srednje tamna koža
+👨🏿‍🦱	muškarac, kovrdžava kosa: tamna koža
+👩‍🦱	žena, kovrdžave kose
+👩🏻‍🦱	žena, kovrdžave kose: svetla koža
+👩🏼‍🦱	žena, kovrdžave kose: srednje svetla koža
+👩🏽‍🦱	žena, kovrdžave kose: srednja boja kože
+👩🏾‍🦱	žena, kovrdžava kosa: srednje tamna koža
+👩🏿‍🦱	žena, kovrdžave kose: tamna koža
+👨‍🦲	čovek, ćelav
+👨🏻‍🦲	muškarac, ćelav: svetla koža
+👨🏼‍🦲	muškarac, ćelav: srednje svetla koža
+👨🏽‍🦲	muškarac, ćelav: srednji ten
+👨🏾‍🦲	muškarac, ćelav: srednje tamna koža
+👨🏿‍🦲	muškarac, ćelav: tamna koža
+👩‍🦲	žena, ćelava
+👩🏻‍🦲	žena, ćelava: svetla koža
+👩🏼‍🦲	žena, ćelava: srednje svetla koža
+👩🏽‍🦲	žena, ćelava: srednji ten
+👩🏾‍🦲	žena, ćelava: srednje tamna koža
+👩🏿‍🦲	žena, ćelava: tamna koža
+👨‍🦳	čovek, bele kose
+👨🏻‍🦳	muškarac, bele kose: svetla koža
+👨🏼‍🦳	muškarac, sede kose: srednje svetla koža
+👨🏽‍🦳	muškarac, sede kose: srednje boje kože
+👨🏾‍🦳	muškarac, bele kose: srednje tamna koža
+👨🏿‍🦳	muškarac, bele kose: tamna koža
+👩‍🦳	žena, bele kose
+👩🏻‍🦳	žena, sede kose: svetla koža
+👩🏼‍🦳	žena, sede kose: srednje svetla koža
+👩🏽‍🦳	žena, bela kosa: srednja boja kože
+👩🏾‍🦳	žena, sede kose: srednje tamna koža
+👩🏿‍🦳	žena, bela kosa: tamna koža
+🤵	čovek u smokingu
+🤵🏻	čovek u smokingu: svetla koža
+🤵🏼	muškarac u smokingu: srednje svetla koža
+🤵🏽	muškarac u smokingu: srednja boja kože
+🤵🏾	čovek u smokingu: srednje tamna koža
+🤵🏿	čovek u smokingu: tamna koža
+👰	nevesta sa velom
+👰🏻	mlada sa velom: svetla koža
+👰🏼	mlada sa velom: srednje svetla koža
+👰🏽	mlada sa velom: srednji ten
+👰🏾	mlada sa velom: srednje tamna koža
+👰🏿	mlada sa velom: tamna koža
+🤰	trudnica
+🤰🏻	trudnica: svetla koža
+🤰🏼	trudnica: srednje svetla koža
+🤰🏽	trudnica: srednji ten
+🤰🏾	trudnica: srednje tamna koža
+🤰🏿	trudnica: tamna koža
+🤱	dojenje
+🤱🏻	dojenje: svetla koža
+🤱🏼	dojenje: srednje svetla koža
+🤱🏽	dojenje: srednji ten
+🤱🏾	dojenje: srednje tamna koža
+🤱🏿	dojenje: tamna koža
+👼	beba anđeo
+👼🏻	beba anđeo: svetla koža
+👼🏼	beba anđeo: srednje svetla koža
+👼🏽	beba anđeo: srednja boja kože
+👼🏾	beba anđeo: srednje tamna koža
+👼🏿	beba anđeo: tamna koža
+🎅	deda Mraz
+🎅🏻	Deda Mraz: svetla koža
+🎅🏼	Deda Mraz: srednje svetla koža
+🎅🏽	Deda Mraz: srednja boja kože
+🎅🏾	Deda Mraz: srednje tamna koža
+🎅🏿	Deda Mraz: tamna koža
+🤶	gospođo Claus
+🤶🏻	Gospođa Mraz: svetla koža
+🤶🏼	Gospođa Claus: srednje svetla koža
+🤶🏽	Gospođa Mraz: srednji ten
+🤶🏾	Gospođa Claus: srednje tamna koža
+🤶🏿	Gospođa Mraz: tamna koža
+🦸	superheroj
+🦸🏻	superheroj: svetla koža
+🦸🏼	superheroj: srednje svetla boja kože
+🦸🏽	superheroj: srednja boja kože
+🦸🏾	superheroj: srednje tamna koža
+🦸🏿	superheroj: tamna koža
+🦸‍♀️	žena superheroj
+🦸‍♀	žena superheroj
+🦸🏻‍♀️	žena superheroj: svetla koža
+🦸🏻‍♀	žena superheroj: svetla koža
+🦸🏼‍♀️	žena superheroj: srednje svetla koža
+🦸🏼‍♀	žena superheroj: srednje svetla koža
+🦸🏽‍♀️	žena superheroj: srednja boja kože
+🦸🏽‍♀	žena superheroj: srednja boja kože
+🦸🏾‍♀️	žena superheroj: srednje tamna koža
+🦸🏾‍♀	žena superheroj: srednje tamna koža
+🦸🏿‍♀️	žena superheroj: tamna koža
+🦸🏿‍♀	žena superheroj: tamna koža
+🦸‍♂️	čovek superheroj
+🦸‍♂	čovek superheroj
+🦸🏻‍♂️	čovek superheroj: svetla koža
+🦸🏻‍♂	čovek superheroj: svetla koža
+🦸🏼‍♂️	čovek superheroj: srednje svetla koža
+🦸🏼‍♂	čovek superheroj: srednje svetla koža
+🦸🏽‍♂️	čovek superheroj: srednja boja kože
+🦸🏽‍♂	čovek superheroj: srednja boja kože
+🦸🏾‍♂️	čovek superheroj: srednje tamna koža
+🦸🏾‍♂	čovek superheroj: srednje tamna koža
+🦸🏿‍♂️	čovek superheroj: tamna koža
+🦸🏿‍♂	čovek superheroj: tamna koža
+🦹	superzlikovac
+🦹🏻	superzlikovac: svetla koža
+🦹🏼	superzlikovac: srednje svetla boja kože
+🦹🏽	superzlikovac: srednja boja kože
+🦹🏾	superzlikovac: srednje tamna koža
+🦹🏿	superzlikovac: tamna koža
+🦹‍♀️	žena superzlikovac
+🦹‍♀	žena superzlikovac
+🦹🏻‍♀️	žena superzlikovac: svetla koža
+🦹🏻‍♀	žena superzlikovac: svetla koža
+🦹🏼‍♀️	žena superzlikovac: srednje svetla koža
+🦹🏼‍♀	žena superzlikovac: srednje svetla koža
+🦹🏽‍♀️	žena superzlikovac: srednja boja kože
+🦹🏽‍♀	žena superzlikovac: srednja boja kože
+🦹🏾‍♀️	žena superzlikovac: srednje tamna koža
+🦹🏾‍♀	žena superzlikovac: srednje tamna koža
+🦹🏿‍♀️	žena superzlikovac: tamna koža
+🦹🏿‍♀	žena superzlikovac: tamna koža
+🦹‍♂️	čovek superzlikovac
+🦹‍♂	čovek superzlikovac
+🦹🏻‍♂️	čovek superzlikovac: svetla koža
+🦹🏻‍♂	čovek superzlikovac: svetla koža
+🦹🏼‍♂️	čovek superzlikovac: srednje svetla koža
+🦹🏼‍♂	čovek superzlikovac: srednje svetla koža
+🦹🏽‍♂️	čovek superzlikovac: srednja boja kože
+🦹🏽‍♂	čovek superzlikovac: srednja boja kože
+🦹🏾‍♂️	čovek superzlikovac: srednje tamna koža
+🦹🏾‍♂	čovek superzlikovac: srednje tamna koža
+🦹🏿‍♂️	čovek superzlikovac: tamna koža
+🦹🏿‍♂	čovek superzlikovac: tamna koža
+🧙	mage
+🧙🏻	mag: svetla koža
+🧙🏼	mag: srednje svetla koža
+🧙🏽	mag: srednja boja kože
+🧙🏾	mag: srednje tamna koža
+🧙🏿	mag: tamna koža
+🧙‍♀️	žena mag
+🧙‍♀	žena mag
+🧙🏻‍♀️	žena mag: svetla koža
+🧙🏻‍♀	žena mag: svetla koža
+🧙🏼‍♀️	žena mag: srednje svetla boja kože
+🧙🏼‍♀	žena mag: srednje svetla boja kože
+🧙🏽‍♀️	žena mag: srednja boja kože
+🧙🏽‍♀	žena mag: srednja boja kože
+🧙🏾‍♀️	žena mag: srednje tamna koža
+🧙🏾‍♀	žena mag: srednje tamna koža
+🧙🏿‍♀️	žena mag: tamna koža
+🧙🏿‍♀	žena mag: tamna koža
+🧙‍♂️	čovek mag
+🧙‍♂	čovek mag
+🧙🏻‍♂️	čovek mag: svetla koža
+🧙🏻‍♂	čovek mag: svetla koža
+🧙🏼‍♂️	mag: srednje svetla koža
+🧙🏼‍♂	mag: srednje svetla koža
+🧙🏽‍♂️	čovek mag: srednja boja kože
+🧙🏽‍♂	čovek mag: srednja boja kože
+🧙🏾‍♂️	mag: srednje tamna koža
+🧙🏾‍♂	mag: srednje tamna koža
+🧙🏿‍♂️	čovek mag: tamna koža
+🧙🏿‍♂	čovek mag: tamna koža
+🧚	vila
+🧚🏻	vila: svetla koža
+🧚🏼	vila: srednje svetla koža
+🧚🏽	vila: srednji ten
+🧚🏾	vila: srednje tamna koža
+🧚🏿	vila: tamna koža
+🧚‍♀️	žena vila
+🧚‍♀	žena vila
+🧚🏻‍♀️	žena vila: svetla koža
+🧚🏻‍♀	žena vila: svetla koža
+🧚🏼‍♀️	žena vila: srednje svetla koža
+🧚🏼‍♀	žena vila: srednje svetla koža
+🧚🏽‍♀️	žena vila: srednji ten
+🧚🏽‍♀	žena vila: srednji ten
+🧚🏾‍♀️	žena vila: srednje tamna koža
+🧚🏾‍♀	žena vila: srednje tamna koža
+🧚🏿‍♀️	žena vila: tamna koža
+🧚🏿‍♀	žena vila: tamna koža
+🧚‍♂️	čovek vila
+🧚‍♂	čovek vila
+🧚🏻‍♂️	čovek vila: svetla koža
+🧚🏻‍♂	čovek vila: svetla koža
+🧚🏼‍♂️	čovek vila: srednje svetla koža
+🧚🏼‍♂	čovek vila: srednje svetla koža
+🧚🏽‍♂️	čovek vila: srednja boja kože
+🧚🏽‍♂	čovek vila: srednja boja kože
+🧚🏾‍♂️	čovek vila: srednje tamna koža
+🧚🏾‍♂	čovek vila: srednje tamna koža
+🧚🏿‍♂️	čovek vila: tamna koža
+🧚🏿‍♂	čovek vila: tamna koža
+🧛	vampir
+🧛🏻	vampir: svetla koža
+🧛🏼	vampir: srednje svetla koža
+🧛🏽	vampir: srednja boja kože
+🧛🏾	vampir: srednje tamna koža
+🧛🏿	vampir: tamna koža
+🧛‍♀️	žena vampir
+🧛‍♀	žena vampir
+🧛🏻‍♀️	žena vampir: svetla koža
+🧛🏻‍♀	žena vampir: svetla koža
+🧛🏼‍♀️	žena vampir: srednje svetla koža
+🧛🏼‍♀	žena vampir: srednje svetla koža
+🧛🏽‍♀️	žena vampir: srednja boja kože
+🧛🏽‍♀	žena vampir: srednja boja kože
+🧛🏾‍♀️	žena vampir: srednje tamna koža
+🧛🏾‍♀	žena vampir: srednje tamna koža
+🧛🏿‍♀️	žena vampir: tamna koža
+🧛🏿‍♀	žena vampir: tamna koža
+🧛‍♂️	čovek vampir
+🧛‍♂	čovek vampir
+🧛🏻‍♂️	muškarac vampir: svetla koža
+🧛🏻‍♂	muškarac vampir: svetla koža
+🧛🏼‍♂️	muškarac vampir: srednje svetla koža
+🧛🏼‍♂	muškarac vampir: srednje svetla koža
+🧛🏽‍♂️	muškarac vampir: srednja boja kože
+🧛🏽‍♂	muškarac vampir: srednja boja kože
+🧛🏾‍♂️	muškarac vampir: srednje tamna koža
+🧛🏾‍♂	muškarac vampir: srednje tamna koža
+🧛🏿‍♂️	muškarac vampir: tamna koža
+🧛🏿‍♂	muškarac vampir: tamna koža
+🧜	merperson
+🧜🏻	Merperson: svetla koža
+🧜🏼	Merperson: srednje svetla koža
+🧜🏽	Merperson: srednja boja kože
+🧜🏾	Merperson: srednje tamna koža
+🧜🏿	Merperson: tamna koža
+🧜‍♀️	sirena
+🧜‍♀	sirena
+🧜🏻‍♀️	sirena: svetla koža
+🧜🏻‍♀	sirena: svetla koža
+🧜🏼‍♀️	sirena: srednje svetla koža
+🧜🏼‍♀	sirena: srednje svetla koža
+🧜🏽‍♀️	sirena: srednji ten
+🧜🏽‍♀	sirena: srednji ten
+🧜🏾‍♀️	sirena: srednje tamna koža
+🧜🏾‍♀	sirena: srednje tamna koža
+🧜🏿‍♀️	sirena: tamna koža
+🧜🏿‍♀	sirena: tamna koža
+🧜‍♂️	merman
+🧜‍♂	merman
+🧜🏻‍♂️	merman: svetla koža
+🧜🏻‍♂	merman: svetla koža
+🧜🏼‍♂️	merman: srednje svetla koža
+🧜🏼‍♂	merman: srednje svetla koža
+🧜🏽‍♂️	merman: srednja boja kože
+🧜🏽‍♂	merman: srednja boja kože
+🧜🏾‍♂️	merman: srednje tamna koža
+🧜🏾‍♂	merman: srednje tamna koža
+🧜🏿‍♂️	merman: tamna koža
+🧜🏿‍♂	merman: tamna koža
+🧝	elf
+🧝🏻	vilenjak: svetla koža
+🧝🏼	vilenjak: srednje svetla boja kože
+🧝🏽	vilenjak: srednja boja kože
+🧝🏾	vilenjak: srednje tamna koža
+🧝🏿	vilenjak: tamna koža
+🧝‍♀️	žena vilenjak
+🧝‍♀	žena vilenjak
+🧝🏻‍♀️	žena vilenjak: svetla koža
+🧝🏻‍♀	žena vilenjak: svetla koža
+🧝🏼‍♀️	žena vilenjak: srednje svetla koža
+🧝🏼‍♀	žena vilenjak: srednje svetla koža
+🧝🏽‍♀️	žena vilenjak: srednja boja kože
+🧝🏽‍♀	žena vilenjak: srednja boja kože
+🧝🏾‍♀️	žena vilenjak: srednje tamna koža
+🧝🏾‍♀	žena vilenjak: srednje tamna koža
+🧝🏿‍♀️	žena vilenjak: tamna koža
+🧝🏿‍♀	žena vilenjak: tamna koža
+🧝‍♂️	čovek vilenjak
+🧝‍♂	čovek vilenjak
+🧝🏻‍♂️	čovek vilenjak: svetla koža
+🧝🏻‍♂	čovek vilenjak: svetla koža
+🧝🏼‍♂️	vilenjak: srednje svetla boja kože
+🧝🏼‍♂	vilenjak: srednje svetla boja kože
+🧝🏽‍♂️	čovek vilenjak: srednja boja kože
+🧝🏽‍♂	čovek vilenjak: srednja boja kože
+🧝🏾‍♂️	čovek vilenjak: srednje tamna koža
+🧝🏾‍♂	čovek vilenjak: srednje tamna koža
+🧝🏿‍♂️	čovek vilenjak: tamna koža
+🧝🏿‍♂	čovek vilenjak: tamna koža
+🧞	genie
+🧞‍♀️	žena duh
+🧞‍♀	žena duh
+🧞‍♂️	man genie
+🧞‍♂	man genie
+🧟	zombi
+🧟‍♀️	žena zombi
+🧟‍♀	žena zombi
+🧟‍♂️	čovek zombi
+🧟‍♂	čovek zombi
+🙍	osoba namrštena
+🙍🏻	namrštena osoba: svetla koža
+🙍🏼	osoba koja se namršti: srednje svetla boja kože
+🙍🏽	namrštena osoba: srednji ten
+🙍🏾	namrštena osoba: srednje tamna koža
+🙍🏿	mrštena osoba: tamna koža
+🙍‍♂️	čovek namršten
+🙍‍♂	čovek namršten
+🙍🏻‍♂️	čovek namršten: svetla koža
+🙍🏻‍♂	čovek namršten: svetla koža
+🙍🏼‍♂️	čovek namršten: srednje svetla boja kože
+🙍🏼‍♂	čovek namršten: srednje svetla boja kože
+🙍🏽‍♂️	čovek namršten: srednji ten
+🙍🏽‍♂	čovek namršten: srednji ten
+🙍🏾‍♂️	čovek namršten: srednje tamna koža
+🙍🏾‍♂	čovek namršten: srednje tamna koža
+🙍🏿‍♂️	čovek namršten: tamna koža
+🙍🏿‍♂	čovek namršten: tamna koža
+🙍‍♀️	žena namrštena
+🙍‍♀	žena namrštena
+🙍🏻‍♀️	žena namrštena: svetla koža
+🙍🏻‍♀	žena namrštena: svetla koža
+🙍🏼‍♀️	žena namrštena: srednje svetla koža
+🙍🏼‍♀	žena namrštena: srednje svetla koža
+🙍🏽‍♀️	žena namrštena: srednji ten
+🙍🏽‍♀	žena namrštena: srednji ten
+🙍🏾‍♀️	žena namrštena: srednje tamna koža
+🙍🏾‍♀	žena namrštena: srednje tamna koža
+🙍🏿‍♀️	žena namrštena: tamna koža
+🙍🏿‍♀	žena namrštena: tamna koža
+🙎	osoba koja se duri
+🙎🏻	osoba koja se duri: svetla koža
+🙎🏼	osoba koja se duri: srednje svetla boja kože
+🙎🏽	osoba koja se duri: srednja boja kože
+🙎🏾	osoba koja se duri: srednje tamna koža
+🙎🏿	osoba koja se duri: tamna koža
+🙎‍♂️	čovek duri se
+🙎‍♂	čovek duri se
+🙎🏻‍♂️	čovek koji se duri: svetla koža
+🙎🏻‍♂	čovek koji se duri: svetla koža
+🙎🏼‍♂️	muškarac koji se duri: srednje svetla koža
+🙎🏼‍♂	muškarac koji se duri: srednje svetla koža
+🙎🏽‍♂️	muškarac koji se duri: srednja boja kože
+🙎🏽‍♂	muškarac koji se duri: srednja boja kože
+🙎🏾‍♂️	čovek koji se duri: srednje tamna koža
+🙎🏾‍♂	čovek koji se duri: srednje tamna koža
+🙎🏿‍♂️	čovek koji se duri: tamna koža
+🙎🏿‍♂	čovek koji se duri: tamna koža
+🙎‍♀️	žena se duri
+🙎‍♀	žena se duri
+🙎🏻‍♀️	žena koja se duri: svetla koža
+🙎🏻‍♀	žena koja se duri: svetla koža
+🙎🏼‍♀️	žena koja se duri: srednje svetla koža
+🙎🏼‍♀	žena koja se duri: srednje svetla koža
+🙎🏽‍♀️	žena koja se duri: srednji ten
+🙎🏽‍♀	žena koja se duri: srednji ten
+🙎🏾‍♀️	žena koja se duri: srednje tamna koža
+🙎🏾‍♀	žena koja se duri: srednje tamna koža
+🙎🏿‍♀️	žena koja se duri: tamna koža
+🙎🏿‍♀	žena koja se duri: tamna koža
+🙅	osoba koja gestikulira NE
+🙅🏻	osoba koja gestikulira NE: svetla koža
+🙅🏼	osoba koja gestikulira NE: srednje svetla boja kože
+🙅🏽	osoba koja gestikulira NE: srednji ten kože
+🙅🏾	osoba koja gestikulira NE: srednje tamna koža
+🙅🏿	osoba koja gestikulira NE: tamna koža
+🙅‍♂️	čovek koji gestikulira NE
+🙅‍♂	čovek koji gestikulira NE
+🙅🏻‍♂️	muškarac koji gestikulira NE: svetla koža
+🙅🏻‍♂	muškarac koji gestikulira NE: svetla koža
+🙅🏼‍♂️	muškarac koji gestikulira NE: srednje svetla boja kože
+🙅🏼‍♂	muškarac koji gestikulira NE: srednje svetla boja kože
+🙅🏽‍♂️	muškarac koji gestikulira NE: srednja boja kože
+🙅🏽‍♂	muškarac koji gestikulira NE: srednja boja kože
+🙅🏾‍♂️	muškarac koji gestikulira NE: srednje tamna koža
+🙅🏾‍♂	muškarac koji gestikulira NE: srednje tamna koža
+🙅🏿‍♂️	muškarac koji gestikulira NE: tamna koža
+🙅🏿‍♂	muškarac koji gestikulira NE: tamna koža
+🙅‍♀️	žena koja gestikulira NE
+🙅‍♀	žena koja gestikulira NE
+🙅🏻‍♀️	žena koja gestikulira NE: svetla koža
+🙅🏻‍♀	žena koja gestikulira NE: svetla koža
+🙅🏼‍♀️	žena koja pokazuje NE: srednje svetla boja kože
+🙅🏼‍♀	žena koja pokazuje NE: srednje svetla boja kože
+🙅🏽‍♀️	žena koja gestikulira NE: srednji ten
+🙅🏽‍♀	žena koja gestikulira NE: srednji ten
+🙅🏾‍♀️	žena pokazuje NE: srednje tamna koža
+🙅🏾‍♀	žena pokazuje NE: srednje tamna koža
+🙅🏿‍♀️	žena koja gestikulira NE: tamna koža
+🙅🏿‍♀	žena koja gestikulira NE: tamna koža
+🙆	osoba koja gestikulira OK
+🙆🏻	osoba koja gestikulira OK: svetla koža
+🙆🏼	osoba koja gestikulira OK: srednje svetla boja kože
+🙆🏽	osoba koja gestikulira OK: srednja boja kože
+🙆🏾	osoba koja gestikulira OK: srednje tamna koža
+🙆🏿	osoba koja gestikulira OK: tamna koža
+🙆‍♂️	čovek gestikulira OK
+🙆‍♂	čovek gestikulira OK
+🙆🏻‍♂️	muškarac koji gestikulira OK: svetla koža
+🙆🏻‍♂	muškarac koji gestikulira OK: svetla koža
+🙆🏼‍♂️	muškarac koji gestikulira OK: srednje svetla boja kože
+🙆🏼‍♂	muškarac koji gestikulira OK: srednje svetla boja kože
+🙆🏽‍♂️	muškarac koji gestikulira OK: srednja boja kože
+🙆🏽‍♂	muškarac koji gestikulira OK: srednja boja kože
+🙆🏾‍♂️	muškarac koji gestikulira OK: srednje tamna koža
+🙆🏾‍♂	muškarac koji gestikulira OK: srednje tamna koža
+🙆🏿‍♂️	muškarac koji gestikulira OK: tamna koža
+🙆🏿‍♂	muškarac koji gestikulira OK: tamna koža
+🙆‍♀️	žena gestikulira OK
+🙆‍♀	žena gestikulira OK
+🙆🏻‍♀️	žena gestikulira OK: svetla koža
+🙆🏻‍♀	žena gestikulira OK: svetla koža
+🙆🏼‍♀️	žena pokazuje OK: srednje svetla boja kože
+🙆🏼‍♀	žena pokazuje OK: srednje svetla boja kože
+🙆🏽‍♀️	žena gestikulira OK: srednja boja kože
+🙆🏽‍♀	žena gestikulira OK: srednja boja kože
+🙆🏾‍♀️	žena pokazuje OK: srednje tamna koža
+🙆🏾‍♀	žena pokazuje OK: srednje tamna koža
+🙆🏿‍♀️	žena gestikulira OK: tamna koža
+🙆🏿‍♀	žena gestikulira OK: tamna koža
+💁	osoba koja prebacuje ruku
+💁🏻	osoba koja prebacuje ruku: svetla koža
+💁🏼	osoba koja prebacuje ruku: srednje svetla boja kože
+💁🏽	osoba koja prebacuje ruku: srednja boja kože
+💁🏾	osoba koja prebacuje ruku: srednje tamna koža
+💁🏿	osoba koja prebacuje ruku: tamna koža
+💁‍♂️	čovek prebacuje ruku
+💁‍♂	čovek prebacuje ruku
+💁🏻‍♂️	čovek koji prebacuje ruku: svetla koža
+💁🏻‍♂	čovek koji prebacuje ruku: svetla koža
+💁🏼‍♂️	muškarac koji se okreće rukom: srednje svetla koža
+💁🏼‍♂	muškarac koji se okreće rukom: srednje svetla koža
+💁🏽‍♂️	čovek koji prebacuje ruku: srednja boja kože
+💁🏽‍♂	čovek koji prebacuje ruku: srednja boja kože
+💁🏾‍♂️	čovek koji prebacuje ruku: srednje tamna koža
+💁🏾‍♂	čovek koji prebacuje ruku: srednje tamna koža
+💁🏿‍♂️	čovek koji prebacuje ruku: tamna koža
+💁🏿‍♂	čovek koji prebacuje ruku: tamna koža
+💁‍♀️	žena prebacuje ruku
+💁‍♀	žena prebacuje ruku
+💁🏻‍♀️	žena koja prebacuje ruku: svetla koža
+💁🏻‍♀	žena koja prebacuje ruku: svetla koža
+💁🏼‍♀️	žena koja prebacuje ruku: srednje svetla koža
+💁🏼‍♀	žena koja prebacuje ruku: srednje svetla koža
+💁🏽‍♀️	žena koja prebacuje ruku: srednja boja kože
+💁🏽‍♀	žena koja prebacuje ruku: srednja boja kože
+💁🏾‍♀️	žena koja prebacuje ruku: srednje tamna koža
+💁🏾‍♀	žena koja prebacuje ruku: srednje tamna koža
+💁🏿‍♀️	žena koja prebacuje ruku: tamna koža
+💁🏿‍♀	žena koja prebacuje ruku: tamna koža
+🙋	osoba koja podiže ruku
+🙋🏻	osoba koja podiže ruku: svetla koža
+🙋🏼	osoba koja podiže ruku: srednje svetla boja kože
+🙋🏽	osoba koja podiže ruku: srednji ten
+🙋🏾	osoba koja podiže ruku: srednje tamna koža
+🙋🏿	osoba koja podiže ruku: tamna koža
+🙋‍♂️	čovek podiže ruku
+🙋‍♂	čovek podiže ruku
+🙋🏻‍♂️	čovek koji podiže ruku: svetla koža
+🙋🏻‍♂	čovek koji podiže ruku: svetla koža
+🙋🏼‍♂️	muškarac koji podiže ruku: srednje svetla boja kože
+🙋🏼‍♂	muškarac koji podiže ruku: srednje svetla boja kože
+🙋🏽‍♂️	muškarac koji podiže ruku: srednja boja kože
+🙋🏽‍♂	muškarac koji podiže ruku: srednja boja kože
+🙋🏾‍♂️	muškarac koji podiže ruku: srednje tamna koža
+🙋🏾‍♂	muškarac koji podiže ruku: srednje tamna koža
+🙋🏿‍♂️	čovek koji podiže ruku: tamna koža
+🙋🏿‍♂	čovek koji podiže ruku: tamna koža
+🙋‍♀️	žena diže ruku
+🙋‍♀	žena diže ruku
+🙋🏻‍♀️	žena koja podiže ruku: svetla koža
+🙋🏻‍♀	žena koja podiže ruku: svetla koža
+🙋🏼‍♀️	žena koja podiže ruku: srednje svetla boja kože
+🙋🏼‍♀	žena koja podiže ruku: srednje svetla boja kože
+🙋🏽‍♀️	žena koja podiže ruku: srednji ten
+🙋🏽‍♀	žena koja podiže ruku: srednji ten
+🙋🏾‍♀️	žena koja podiže ruku: srednje tamna koža
+🙋🏾‍♀	žena koja podiže ruku: srednje tamna koža
+🙋🏿‍♀️	žena koja podiže ruku: tamna koža
+🙋🏿‍♀	žena koja podiže ruku: tamna koža
+🙇	osoba koja se klanja
+🙇🏻	osoba koja se klanja: svetla koža
+🙇🏼	osoba koja se klanja: srednje svetla boja kože
+🙇🏽	osoba koja se klanja: srednji ten
+🙇🏾	osoba koja se klanja: srednje tamna koža
+🙇🏿	osoba koja se klanja: tamna koža
+🙇‍♂️	čovek klanjajući se
+🙇‍♂	čovek klanjajući se
+🙇🏻‍♂️	čovek se klanja: svetla koža
+🙇🏻‍♂	čovek se klanja: svetla koža
+🙇🏼‍♂️	muškarac koji se klanja: srednje svetla koža
+🙇🏼‍♂	muškarac koji se klanja: srednje svetla koža
+🙇🏽‍♂️	muškarac se klanja: srednji ten
+🙇🏽‍♂	muškarac se klanja: srednji ten
+🙇🏾‍♂️	muškarac koji se klanja: srednje tamna koža
+🙇🏾‍♂	muškarac koji se klanja: srednje tamna koža
+🙇🏿‍♂️	čovek se klanja: tamna koža
+🙇🏿‍♂	čovek se klanja: tamna koža
+🙇‍♀️	žena se klanja
+🙇‍♀	žena se klanja
+🙇🏻‍♀️	žena se klanja: svetla koža
+🙇🏻‍♀	žena se klanja: svetla koža
+🙇🏼‍♀️	žena koja se klanja: srednje svetla koža
+🙇🏼‍♀	žena koja se klanja: srednje svetla koža
+🙇🏽‍♀️	žena se klanja: srednji ten
+🙇🏽‍♀	žena se klanja: srednji ten
+🙇🏾‍♀️	žena se klanja: srednje tamna koža
+🙇🏾‍♀	žena se klanja: srednje tamna koža
+🙇🏿‍♀️	žena koja se klanja: tamna koža
+🙇🏿‍♀	žena koja se klanja: tamna koža
+🤦	osoba facepalming
+🤦🏻	lice licem dlanom: svetla koža
+🤦🏼	lice licem dlanom: srednje svetla boja kože
+🤦🏽	lice licem dlanom: srednja boja kože
+🤦🏾	lice licem dlanom: srednje tamna koža
+🤦🏿	lice licem dlanom: tamna koža
+🤦‍♂️	man facepalming
+🤦‍♂	man facepalming
+🤦🏻‍♂️	čovek licem dlanom: svetla koža
+🤦🏻‍♂	čovek licem dlanom: svetla koža
+🤦🏼‍♂️	muškarac facepalming: srednje svetla boja kože
+🤦🏼‍♂	muškarac facepalming: srednje svetla boja kože
+🤦🏽‍♂️	muškarac facepalming: srednja boja kože
+🤦🏽‍♂	muškarac facepalming: srednja boja kože
+🤦🏾‍♂️	muškarac facepalming: srednje tamna koža
+🤦🏾‍♂	muškarac facepalming: srednje tamna koža
+🤦🏿‍♂️	muškarac licem dlanom: tamna koža
+🤦🏿‍♂	muškarac licem dlanom: tamna koža
+🤦‍♀️	žena facepalming
+🤦‍♀	žena facepalming
+🤦🏻‍♀️	žena facepalming: svetla koža
+🤦🏻‍♀	žena facepalming: svetla koža
+🤦🏼‍♀️	žena facepalming: srednje svetla koža
+🤦🏼‍♀	žena facepalming: srednje svetla koža
+🤦🏽‍♀️	žena facepalming: srednji ton kože
+🤦🏽‍♀	žena facepalming: srednji ton kože
+🤦🏾‍♀️	žena facepalming: srednje tamna koža
+🤦🏾‍♀	žena facepalming: srednje tamna koža
+🤦🏿‍♀️	žena facepalming: tamna koža
+🤦🏿‍♀	žena facepalming: tamna koža
+🤷	osoba koja sleže ramenima
+🤷🏻	osoba koja sleže ramenima: svetla koža
+🤷🏼	osoba koja sleže ramenima: srednje svetla boja kože
+🤷🏽	osoba koja sleže ramenima: srednji ten
+🤷🏾	osoba koja sleže ramenima: srednje tamna koža
+🤷🏿	osoba koja sleže ramenima: tamna koža
+🤷‍♂️	čovek sleže ramenima
+🤷‍♂	čovek sleže ramenima
+🤷🏻‍♂️	čovek sleže ramenima: svetla koža
+🤷🏻‍♂	čovek sleže ramenima: svetla koža
+🤷🏼‍♂️	muškarac sleže ramenima: srednje svetla boja kože
+🤷🏼‍♂	muškarac sleže ramenima: srednje svetla boja kože
+🤷🏽‍♂️	muškarac sleže ramenima: srednja boja kože
+🤷🏽‍♂	muškarac sleže ramenima: srednja boja kože
+🤷🏾‍♂️	muškarac sleže ramenima: srednje tamna koža
+🤷🏾‍♂	muškarac sleže ramenima: srednje tamna koža
+🤷🏿‍♂️	muškarac sleže ramenima: tamna koža
+🤷🏿‍♂	muškarac sleže ramenima: tamna koža
+🤷‍♀️	žena sleže ramenima
+🤷‍♀	žena sleže ramenima
+🤷🏻‍♀️	žena sleže ramenima: svetla koža
+🤷🏻‍♀	žena sleže ramenima: svetla koža
+🤷🏼‍♀️	žena sleže ramenima: srednje svetla boja kože
+🤷🏼‍♀	žena sleže ramenima: srednje svetla boja kože
+🤷🏽‍♀️	žena sleže ramenima: srednji ten
+🤷🏽‍♀	žena sleže ramenima: srednji ten
+🤷🏾‍♀️	žena sleže ramenima: srednje tamna koža
+🤷🏾‍♀	žena sleže ramenima: srednje tamna koža
+🤷🏿‍♀️	žena sleže ramenima: tamna koža
+🤷🏿‍♀	žena sleže ramenima: tamna koža
+💆	osoba koja se masira
+💆🏻	osoba na masaži: svetla koža
+💆🏼	osoba na masaži: srednje svetla koža
+💆🏽	osoba koja se masira: srednji ton kože
+💆🏾	osoba koja se masira: srednje tamna koža
+💆🏿	osoba koja se masira: tamna koža
+💆‍♂️	čovek dobija masažu
+💆‍♂	čovek dobija masažu
+💆🏻‍♂️	čovek na masaži: svetla koža
+💆🏻‍♂	čovek na masaži: svetla koža
+💆🏼‍♂️	muškarac na masaži: srednje svetla koža
+💆🏼‍♂	muškarac na masaži: srednje svetla koža
+💆🏽‍♂️	muškarac na masaži: srednji ton kože
+💆🏽‍♂	muškarac na masaži: srednji ton kože
+💆🏾‍♂️	čovek na masaži: srednje tamna koža
+💆🏾‍♂	čovek na masaži: srednje tamna koža
+💆🏿‍♂️	čovek na masaži: tamna koža
+💆🏿‍♂	čovek na masaži: tamna koža
+💆‍♀️	žena na masaži
+💆‍♀	žena na masaži
+💆🏻‍♀️	žena na masaži: svetla koža
+💆🏻‍♀	žena na masaži: svetla koža
+💆🏼‍♀️	žena na masaži: srednje svetla koža
+💆🏼‍♀	žena na masaži: srednje svetla koža
+💆🏽‍♀️	žena na masaži: srednja boja kože
+💆🏽‍♀	žena na masaži: srednja boja kože
+💆🏾‍♀️	žena na masaži: srednje tamna koža
+💆🏾‍♀	žena na masaži: srednje tamna koža
+💆🏿‍♀️	žena na masaži: tamna koža
+💆🏿‍♀	žena na masaži: tamna koža
+💇	osoba koja se šiša
+💇🏻	osoba koja se šiša: svetla koža
+💇🏼	osoba koja se šiša: srednje svetla koža
+💇🏽	osoba koja se šiša: srednji ten
+💇🏾	osoba koja se šiša: srednje tamna koža
+💇🏿	osoba koja se šiša: tamna koža
+💇‍♂️	čovek se šiša
+💇‍♂	čovek se šiša
+💇🏻‍♂️	muškarac koji se šiša: svetla koža
+💇🏻‍♂	muškarac koji se šiša: svetla koža
+💇🏼‍♂️	muškarac koji se šiša: srednje svetla koža
+💇🏼‍♂	muškarac koji se šiša: srednje svetla koža
+💇🏽‍♂️	muškarac koji se šiša: srednji ten
+💇🏽‍♂	muškarac koji se šiša: srednji ten
+💇🏾‍♂️	muškarac koji se šiša: srednje tamna koža
+💇🏾‍♂	muškarac koji se šiša: srednje tamna koža
+💇🏿‍♂️	muškarac se šiša: tamna koža
+💇🏿‍♂	muškarac se šiša: tamna koža
+💇‍♀️	žena se šiša
+💇‍♀	žena se šiša
+💇🏻‍♀️	žena koja se šiša: svetla koža
+💇🏻‍♀	žena koja se šiša: svetla koža
+💇🏼‍♀️	žena koja se šiša: srednje svetla koža
+💇🏼‍♀	žena koja se šiša: srednje svetla koža
+💇🏽‍♀️	žena koja se šiša: srednji ten
+💇🏽‍♀	žena koja se šiša: srednji ten
+💇🏾‍♀️	žena koja se šiša: srednje tamna koža
+💇🏾‍♀	žena koja se šiša: srednje tamna koža
+💇🏿‍♀️	žena koja se šiša: tamna koža
+💇🏿‍♀	žena koja se šiša: tamna koža
+🚶	osoba koja hoda
+🚶🏻	osoba koja hoda: svetla koža
+🚶🏼	osoba koja hoda: srednje svetla boja kože
+🚶🏽	osoba koja hoda: srednja boja kože
+🚶🏾	osoba koja hoda: srednje tamna koža
+🚶🏿	osoba koja hoda: tamna koža
+🚶‍♂️	čovek hoda
+🚶‍♂	čovek hoda
+🚶🏻‍♂️	muškarac koji hoda: svetla koža
+🚶🏻‍♂	muškarac koji hoda: svetla koža
+🚶🏼‍♂️	muškarac koji hoda: srednje svetla koža
+🚶🏼‍♂	muškarac koji hoda: srednje svetla koža
+🚶🏽‍♂️	muškarac koji hoda: srednja boja kože
+🚶🏽‍♂	muškarac koji hoda: srednja boja kože
+🚶🏾‍♂️	muškarac koji hoda: srednje tamna koža
+🚶🏾‍♂	muškarac koji hoda: srednje tamna koža
+🚶🏿‍♂️	muškarac koji hoda: tamna koža
+🚶🏿‍♂	muškarac koji hoda: tamna koža
+🚶‍♀️	žena hoda
+🚶‍♀	žena hoda
+🚶🏻‍♀️	žena koja hoda: svetla koža
+🚶🏻‍♀	žena koja hoda: svetla koža
+🚶🏼‍♀️	žena koja hoda: srednje svetla koža
+🚶🏼‍♀	žena koja hoda: srednje svetla koža
+🚶🏽‍♀️	žena koja hoda: srednja boja kože
+🚶🏽‍♀	žena koja hoda: srednja boja kože
+🚶🏾‍♀️	žena koja hoda: srednje tamna koža
+🚶🏾‍♀	žena koja hoda: srednje tamna koža
+🚶🏿‍♀️	žena koja hoda: tamna koža
+🚶🏿‍♀	žena koja hoda: tamna koža
+🏃	osoba koja trči
+🏃🏻	osoba koja trči: svetla koža
+🏃🏼	osoba koja trči: srednje svetla koža
+🏃🏽	osoba koja trči: srednja boja kože
+🏃🏾	osoba koja trči: srednje tamna koža
+🏃🏿	osoba koja trči: tamna koža
+🏃‍♂️	čovek trči
+🏃‍♂	čovek trči
+🏃🏻‍♂️	čovek trči: svetla koža
+🏃🏻‍♂	čovek trči: svetla koža
+🏃🏼‍♂️	muškarac koji trči: srednje svetla boja kože
+🏃🏼‍♂	muškarac koji trči: srednje svetla boja kože
+🏃🏽‍♂️	muškarac trči: srednja boja kože
+🏃🏽‍♂	muškarac trči: srednja boja kože
+🏃🏾‍♂️	muškarac trči: srednje tamna koža
+🏃🏾‍♂	muškarac trči: srednje tamna koža
+🏃🏿‍♂️	čovek trči: tamna koža
+🏃🏿‍♂	čovek trči: tamna koža
+🏃‍♀️	žena trči
+🏃‍♀	žena trči
+🏃🏻‍♀️	žena trči: svetla koža
+🏃🏻‍♀	žena trči: svetla koža
+🏃🏼‍♀️	žena koja trči: srednje svetla koža
+🏃🏼‍♀	žena koja trči: srednje svetla koža
+🏃🏽‍♀️	žena trči: srednja boja kože
+🏃🏽‍♀	žena trči: srednja boja kože
+🏃🏾‍♀️	žena koja trči: srednje tamna koža
+🏃🏾‍♀	žena koja trči: srednje tamna koža
+🏃🏿‍♀️	žena trči: tamna koža
+🏃🏿‍♀	žena trči: tamna koža
+💃	žena koja pleše
+💃🏻	žena koja pleše: svetla koža
+💃🏼	žena koja pleše: srednje svetla koža
+💃🏽	žena koja pleše: srednji ten
+💃🏾	žena koja pleše: srednje tamna koža
+💃🏿	žena koja pleše: tamna koža
+🕺	čovek pleše
+🕺🏻	muškarac koji pleše: svetla koža
+🕺🏼	muškarac koji pleše: srednje svetla boja kože
+🕺🏽	muškarac koji pleše: srednja boja kože
+🕺🏾	muškarac koji pleše: srednje tamna koža
+🕺🏿	muškarac koji pleše: tamna koža
+👯	ljudi sa zečjim ušima
+👯‍♂️	muškarci sa zečjim ušima
+👯‍♂	muškarci sa zečjim ušima
+👯‍♀️	žene sa zečjim ušima
+👯‍♀	žene sa zečjim ušima
+🧖	osoba u parnoj sobi
+🧖🏻	osoba u parnoj sobi: svetla koža
+🧖🏼	osoba u parnoj sobi: srednje svetla boja kože
+🧖🏽	osoba u parnoj sobi: srednja boja kože
+🧖🏾	osoba u parnoj sobi: srednje tamna koža
+🧖🏿	osoba u parnoj sobi: tamna koža
+🧖‍♀️	žena u parnoj sobi
+🧖‍♀	žena u parnoj sobi
+🧖🏻‍♀️	žena u parnoj sobi: svetla koža
+🧖🏻‍♀	žena u parnoj sobi: svetla koža
+🧖🏼‍♀️	žena u parnoj sobi: srednje svetla koža
+🧖🏼‍♀	žena u parnoj sobi: srednje svetla koža
+🧖🏽‍♀️	žena u parnoj sobi: srednja boja kože
+🧖🏽‍♀	žena u parnoj sobi: srednja boja kože
+🧖🏾‍♀️	žena u parnoj sobi: srednje tamna koža
+🧖🏾‍♀	žena u parnoj sobi: srednje tamna koža
+🧖🏿‍♀️	žena u parnoj sobi: tamna koža
+🧖🏿‍♀	žena u parnoj sobi: tamna koža
+🧖‍♂️	čovek u parnoj sobi
+🧖‍♂	čovek u parnoj sobi
+🧖🏻‍♂️	čovek u parnoj sobi: svetla koža
+🧖🏻‍♂	čovek u parnoj sobi: svetla koža
+🧖🏼‍♂️	čovek u sobi sa parom: srednje svetla koža
+🧖🏼‍♂	čovek u sobi sa parom: srednje svetla koža
+🧖🏽‍♂️	čovek u parnoj sobi: srednja boja kože
+🧖🏽‍♂	čovek u parnoj sobi: srednja boja kože
+🧖🏾‍♂️	čovek u sobi sa parom: srednje tamna koža
+🧖🏾‍♂	čovek u sobi sa parom: srednje tamna koža
+🧖🏿‍♂️	čovek u parnoj sobi: tamna koža
+🧖🏿‍♂	čovek u parnoj sobi: tamna koža
+🧗	osoba koja se penje
+🧗🏻	osoba koja se penje: svetla koža
+🧗🏼	osoba koja se penje: srednje svetla koža
+🧗🏽	osoba koja se penje: srednji ten
+🧗🏾	osoba koja se penje: srednje tamna koža
+🧗🏿	osoba koja se penje: tamna koža
+🧗‍♀️	žena penjanje
+🧗‍♀	žena penjanje
+🧗🏻‍♀️	žena penjanje: svetla koža
+🧗🏻‍♀	žena penjanje: svetla koža
+🧗🏼‍♀️	žena penjanje: srednje svetla koža
+🧗🏼‍♀	žena penjanje: srednje svetla koža
+🧗🏽‍♀️	žena penjanje: srednji ten
+🧗🏽‍♀	žena penjanje: srednji ten
+🧗🏾‍♀️	žena penjanje: srednje tamna koža
+🧗🏾‍♀	žena penjanje: srednje tamna koža
+🧗🏿‍♀️	žena penjanje: tamna koža
+🧗🏿‍♀	žena penjanje: tamna koža
+🧗‍♂️	čovek penjanje
+🧗‍♂	čovek penjanje
+🧗🏻‍♂️	čovek penjanje: svetla koža
+🧗🏻‍♂	čovek penjanje: svetla koža
+🧗🏼‍♂️	muškarac penjanje: srednje svetla boja kože
+🧗🏼‍♂	muškarac penjanje: srednje svetla boja kože
+🧗🏽‍♂️	muškarac penjanje: srednja boja kože
+🧗🏽‍♂	muškarac penjanje: srednja boja kože
+🧗🏾‍♂️	muškarac penjanje: srednje tamna koža
+🧗🏾‍♂	muškarac penjanje: srednje tamna koža
+🧗🏿‍♂️	muškarac penjanje: tamna koža
+🧗🏿‍♂	muškarac penjanje: tamna koža
+🧘	osoba u položaju lotosa
+🧘🏻	osoba u položaju lotosa: svetla koža
+🧘🏼	osoba u položaju lotosa: srednje svetla koža
+🧘🏽	osoba u položaju lotosa: srednja boja kože
+🧘🏾	osoba u položaju lotosa: srednje tamna koža
+🧘🏿	osoba u položaju lotosa: tamna koža
+🧘‍♀️	žena u položaju lotosa
+🧘‍♀	žena u položaju lotosa
+🧘🏻‍♀️	žena u položaju lotosa: svetla koža
+🧘🏻‍♀	žena u položaju lotosa: svetla koža
+🧘🏼‍♀️	žena u položaju lotosa: srednje svetla koža
+🧘🏼‍♀	žena u položaju lotosa: srednje svetla koža
+🧘🏽‍♀️	žena u položaju lotosa: srednji ten
+🧘🏽‍♀	žena u položaju lotosa: srednji ten
+🧘🏾‍♀️	žena u položaju lotosa: srednje tamna koža
+🧘🏾‍♀	žena u položaju lotosa: srednje tamna koža
+🧘🏿‍♀️	žena u položaju lotosa: tamna koža
+🧘🏿‍♀	žena u položaju lotosa: tamna koža
+🧘‍♂️	čovek u položaju lotosa
+🧘‍♂	čovek u položaju lotosa
+🧘🏻‍♂️	čovek u položaju lotosa: svetla koža
+🧘🏻‍♂	čovek u položaju lotosa: svetla koža
+🧘🏼‍♂️	muškarac u položaju lotosa: srednje svetla koža
+🧘🏼‍♂	muškarac u položaju lotosa: srednje svetla koža
+🧘🏽‍♂️	muškarac u položaju lotosa: srednja boja kože
+🧘🏽‍♂	muškarac u položaju lotosa: srednja boja kože
+🧘🏾‍♂️	muškarac u položaju lotosa: srednje tamna koža
+🧘🏾‍♂	muškarac u položaju lotosa: srednje tamna koža
+🧘🏿‍♂️	muškarac u položaju lotosa: tamna koža
+🧘🏿‍♂	muškarac u položaju lotosa: tamna koža
+🛀	osoba koja se kupa
+🛀🏻	osoba koja se kupa: svetla koža
+🛀🏼	osoba koja se kupa: srednje svetla koža
+🛀🏽	osoba koja se kupa: srednja boja kože
+🛀🏾	osoba koja se kupa: srednje tamna koža
+🛀🏿	osoba koja se kupa: tamna koža
+🛌	osoba u krevetu
+🛌🏻	osoba u krevetu: svetla koža
+🛌🏼	osoba u krevetu: srednje svetla boja kože
+🛌🏽	osoba u krevetu: srednji ten
+🛌🏾	osoba u krevetu: srednje tamna koža
+🛌🏿	osoba u krevetu: tamna koža
+🕴️	čovek u odelu levitira
+🕴	čovek u odelu levitira
+🕴🏻	čovek u odelu koji levitira: svetla koža
+🕴🏼	čovek u odelu koji levitira: srednje svetla koža
+🕴🏽	čovek u odelu koji levitira: srednji ten kože
+🕴🏾	čovek u odelu koji levitira: srednje tamna koža
+🕴🏿	čovek u odelu koji levitira: tamna koža
+🗣️	govorna glava
+🗣	govorna glava
+👤	bista u silueti
+👥	poprsja u silueti
+🤺	lice mačevanje
+🏇	konjske trke
+🏇🏻	konjske trke: svetla koža
+🏇🏼	konjske trke: srednje svetla boja kože
+🏇🏽	konjske trke: srednji ten
+🏇🏾	konjske trke: srednje tamna koža
+🏇🏿	konjske trke: tamna koža
+⛷️	skijaš
+⛷	skijaš
+🏂	snouborder
+🏂🏻	snouborder: svetla koža
+🏂🏼	snouborder: srednje svetla koža
+🏂🏽	snouborder: srednja boja kože
+🏂🏾	snouborder: srednje tamna koža
+🏂🏿	snouborder: tamna koža
+🏌️	osoba koja igra golf
+🏌	osoba koja igra golf
+🏌🏻	osoba koja igra golf: svetla koža
+🏌🏼	osoba koja igra golf: srednje svetla koža
+🏌🏽	osoba koja igra golf: srednja boja kože
+🏌🏾	osoba koja igra golf: srednje tamna koža
+🏌🏿	osoba koja igra golf: tamna koža
+🏌️‍♂️	čovek golf
+🏌‍♂️	čovek golf
+🏌️‍♂	čovek golf
+🏌‍♂	čovek golf
+🏌🏻‍♂️	muškarac koji igra golf: svetla koža
+🏌🏻‍♂	muškarac koji igra golf: svetla koža
+🏌🏼‍♂️	muškarac koji igra golf: srednje svetla koža
+🏌🏼‍♂	muškarac koji igra golf: srednje svetla koža
+🏌🏽‍♂️	muškarac koji igra golf: srednja boja kože
+🏌🏽‍♂	muškarac koji igra golf: srednja boja kože
+🏌🏾‍♂️	muškarac koji igra golf: srednje tamna koža
+🏌🏾‍♂	muškarac koji igra golf: srednje tamna koža
+🏌🏿‍♂️	muškarac koji igra golf: tamna koža
+🏌🏿‍♂	muškarac koji igra golf: tamna koža
+🏌️‍♀️	žena koja igra golf
+🏌‍♀️	žena koja igra golf
+🏌️‍♀	žena koja igra golf
+🏌‍♀	žena koja igra golf
+🏌🏻‍♀️	žena koja igra golf: svetla koža
+🏌🏻‍♀	žena koja igra golf: svetla koža
+🏌🏼‍♀️	žena koja igra golf: srednje svetla koža
+🏌🏼‍♀	žena koja igra golf: srednje svetla koža
+🏌🏽‍♀️	žena koja igra golf: srednja boja kože
+🏌🏽‍♀	žena koja igra golf: srednja boja kože
+🏌🏾‍♀️	žena koja igra golf: srednje tamna koža
+🏌🏾‍♀	žena koja igra golf: srednje tamna koža
+🏌🏿‍♀️	žena koja igra golf: tamna koža
+🏌🏿‍♀	žena koja igra golf: tamna koža
+🏄	osoba koja surfuje
+🏄🏻	osoba koja surfuje: svetla koža
+🏄🏼	osoba koja surfuje: srednje svetla koža
+🏄🏽	osoba koja surfuje: srednja boja kože
+🏄🏾	osoba koja surfuje: srednje tamna koža
+🏄🏿	osoba koja surfuje: tamna koža
+🏄‍♂️	čovek surfuje
+🏄‍♂	čovek surfuje
+🏄🏻‍♂️	muškarac koji surfuje: svetla koža
+🏄🏻‍♂	muškarac koji surfuje: svetla koža
+🏄🏼‍♂️	muškarac koji surfuje: srednje svetla koža
+🏄🏼‍♂	muškarac koji surfuje: srednje svetla koža
+🏄🏽‍♂️	muškarac koji surfuje: srednja boja kože
+🏄🏽‍♂	muškarac koji surfuje: srednja boja kože
+🏄🏾‍♂️	muškarac koji surfuje: srednje tamna koža
+🏄🏾‍♂	muškarac koji surfuje: srednje tamna koža
+🏄🏿‍♂️	muškarac koji surfuje: tamna koža
+🏄🏿‍♂	muškarac koji surfuje: tamna koža
+🏄‍♀️	žena surfuje
+🏄‍♀	žena surfuje
+🏄🏻‍♀️	žena surfuje: svetla koža
+🏄🏻‍♀	žena surfuje: svetla koža
+🏄🏼‍♀️	žena koja surfuje: srednje svetla koža
+🏄🏼‍♀	žena koja surfuje: srednje svetla koža
+🏄🏽‍♀️	žena koja surfuje: srednja boja kože
+🏄🏽‍♀	žena koja surfuje: srednja boja kože
+🏄🏾‍♀️	žena koja surfuje: srednje tamna koža
+🏄🏾‍♀	žena koja surfuje: srednje tamna koža
+🏄🏿‍♀️	žena surfa: tamna koža
+🏄🏿‍♀	žena surfa: tamna koža
+🚣	osoba veslački čamac
+🚣🏻	osoba čamac na vesla: svetla koža
+🚣🏼	osoba veslački čamac: srednje svetla koža
+🚣🏽	osoba čamac na vesla: srednja boja kože
+🚣🏾	osoba veslački čamac: srednje tamna koža
+🚣🏿	osoba čamac na vesla: tamna koža
+🚣‍♂️	čovek veslački čamac
+🚣‍♂	čovek veslački čamac
+🚣🏻‍♂️	veslački čamac: svetla koža
+🚣🏻‍♂	veslački čamac: svetla koža
+🚣🏼‍♂️	veslački čamac: srednje svetla koža
+🚣🏼‍♂	veslački čamac: srednje svetla koža
+🚣🏽‍♂️	veslački čamac: srednja boja kože
+🚣🏽‍♂	veslački čamac: srednja boja kože
+🚣🏾‍♂️	veslački čamac: srednje tamna koža
+🚣🏾‍♂	veslački čamac: srednje tamna koža
+🚣🏿‍♂️	veslački čamac: tamna koža
+🚣🏿‍♂	veslački čamac: tamna koža
+🚣‍♀️	žena veslački čamac
+🚣‍♀	žena veslački čamac
+🚣🏻‍♀️	žena čamac na vesla: svetla koža
+🚣🏻‍♀	žena čamac na vesla: svetla koža
+🚣🏼‍♀️	žena čamac na vesla: srednje svetla koža
+🚣🏼‍♀	žena čamac na vesla: srednje svetla koža
+🚣🏽‍♀️	žena čamac na vesla: srednja boja kože
+🚣🏽‍♀	žena čamac na vesla: srednja boja kože
+🚣🏾‍♀️	žena čamac na vesla: srednje tamna koža
+🚣🏾‍♀	žena čamac na vesla: srednje tamna koža
+🚣🏿‍♀️	žena čamac na vesla: tamna koža
+🚣🏿‍♀	žena čamac na vesla: tamna koža
+🏊	osoba koja pliva
+🏊🏻	osoba koja pliva: svetla koža
+🏊🏼	osoba koja pliva: srednje svetla boja kože
+🏊🏽	osoba koja pliva: srednja boja kože
+🏊🏾	osoba koja pliva: srednje tamna koža
+🏊🏿	osoba koja pliva: tamna koža
+🏊‍♂️	čovek pliva
+🏊‍♂	čovek pliva
+🏊🏻‍♂️	muškarac koji pliva: svetla koža
+🏊🏻‍♂	muškarac koji pliva: svetla koža
+🏊🏼‍♂️	muškarac koji pliva: srednje svetla koža
+🏊🏼‍♂	muškarac koji pliva: srednje svetla koža
+🏊🏽‍♂️	muškarac koji pliva: srednja boja kože
+🏊🏽‍♂	muškarac koji pliva: srednja boja kože
+🏊🏾‍♂️	muškarac koji pliva: srednje tamna koža
+🏊🏾‍♂	muškarac koji pliva: srednje tamna koža
+🏊🏿‍♂️	muškarac koji pliva: tamna koža
+🏊🏿‍♂	muškarac koji pliva: tamna koža
+🏊‍♀️	žena koja pliva
+🏊‍♀	žena koja pliva
+🏊🏻‍♀️	žena pliva: svetla koža
+🏊🏻‍♀	žena pliva: svetla koža
+🏊🏼‍♀️	žena koja pliva: srednje svetla koža
+🏊🏼‍♀	žena koja pliva: srednje svetla koža
+🏊🏽‍♀️	žena koja pliva: srednja boja kože
+🏊🏽‍♀	žena koja pliva: srednja boja kože
+🏊🏾‍♀️	žena koja pliva: srednje tamna koža
+🏊🏾‍♀	žena koja pliva: srednje tamna koža
+🏊🏿‍♀️	žena koja pliva: tamna koža
+🏊🏿‍♀	žena koja pliva: tamna koža
+⛹️	osoba koja odbija loptu
+⛹	osoba koja odbija loptu
+⛹🏻	osoba koja odbija loptu: svetla koža
+⛹🏼	osoba koja odbija loptu: srednje svetla boja kože
+⛹🏽	osoba koja odbija loptu: srednja boja kože
+⛹🏾	osoba koja odbija loptu: srednje tamna koža
+⛹🏿	osoba koja odbija loptu: tamna koža
+⛹️‍♂️	čovek odbija loptu
+⛹‍♂️	čovek odbija loptu
+⛹️‍♂	čovek odbija loptu
+⛹‍♂	čovek odbija loptu
+⛹🏻‍♂️	muškarac koji odbija loptu: svetla koža
+⛹🏻‍♂	muškarac koji odbija loptu: svetla koža
+⛹🏼‍♂️	muškarac koji odbija loptu: srednje svetla koža
+⛹🏼‍♂	muškarac koji odbija loptu: srednje svetla koža
+⛹🏽‍♂️	muškarac koji odbija loptu: srednja boja kože
+⛹🏽‍♂	muškarac koji odbija loptu: srednja boja kože
+⛹🏾‍♂️	muškarac koji odbija loptu: srednje tamna koža
+⛹🏾‍♂	muškarac koji odbija loptu: srednje tamna koža
+⛹🏿‍♂️	muškarac koji odbija loptu: tamna koža
+⛹🏿‍♂	muškarac koji odbija loptu: tamna koža
+⛹️‍♀️	žena koja odbija loptu
+⛹‍♀️	žena koja odbija loptu
+⛹️‍♀	žena koja odbija loptu
+⛹‍♀	žena koja odbija loptu
+⛹🏻‍♀️	žena koja odbija loptu: svetla koža
+⛹🏻‍♀	žena koja odbija loptu: svetla koža
+⛹🏼‍♀️	žena koja odbija loptu: srednje svetla koža
+⛹🏼‍♀	žena koja odbija loptu: srednje svetla koža
+⛹🏽‍♀️	žena koja odbija loptu: srednja boja kože
+⛹🏽‍♀	žena koja odbija loptu: srednja boja kože
+⛹🏾‍♀️	žena koja odbija loptu: srednje tamna koža
+⛹🏾‍♀	žena koja odbija loptu: srednje tamna koža
+⛹🏿‍♀️	žena koja odbija loptu: tamna koža
+⛹🏿‍♀	žena koja odbija loptu: tamna koža
+🏋️	osoba koja diže tegove
+🏋	osoba koja diže tegove
+🏋🏻	osoba koja diže tegove: svetla koža
+🏋🏼	osoba koja diže tegove: srednje svetla boja kože
+🏋🏽	osoba koja diže tegove: srednja boja kože
+🏋🏾	osoba koja diže tegove: srednje tamna koža
+🏋🏿	osoba koja diže tegove: tamna koža
+🏋️‍♂️	čovek koji diže tegove
+🏋‍♂️	čovek koji diže tegove
+🏋️‍♂	čovek koji diže tegove
+🏋‍♂	čovek koji diže tegove
+🏋🏻‍♂️	čovek koji diže tegove: svetla koža
+🏋🏻‍♂	čovek koji diže tegove: svetla koža
+🏋🏼‍♂️	muškarac koji diže tegove: srednje svetla boja kože
+🏋🏼‍♂	muškarac koji diže tegove: srednje svetla boja kože
+🏋🏽‍♂️	muškarac koji diže tegove: srednja boja kože
+🏋🏽‍♂	muškarac koji diže tegove: srednja boja kože
+🏋🏾‍♂️	muškarac koji diže tegove: srednje tamna koža
+🏋🏾‍♂	muškarac koji diže tegove: srednje tamna koža
+🏋🏿‍♂️	muškarac koji diže tegove: tamna koža
+🏋🏿‍♂	muškarac koji diže tegove: tamna koža
+🏋️‍♀️	žena koja diže tegove
+🏋‍♀️	žena koja diže tegove
+🏋️‍♀	žena koja diže tegove
+🏋‍♀	žena koja diže tegove
+🏋🏻‍♀️	žena koja diže tegove: svetla koža
+🏋🏻‍♀	žena koja diže tegove: svetla koža
+🏋🏼‍♀️	žena koja diže tegove: srednje svetla koža
+🏋🏼‍♀	žena koja diže tegove: srednje svetla koža
+🏋🏽‍♀️	žena koja diže tegove: srednja boja kože
+🏋🏽‍♀	žena koja diže tegove: srednja boja kože
+🏋🏾‍♀️	žena koja diže tegove: srednje tamna koža
+🏋🏾‍♀	žena koja diže tegove: srednje tamna koža
+🏋🏿‍♀️	žena koja diže tegove: tamna koža
+🏋🏿‍♀	žena koja diže tegove: tamna koža
+🚴	osoba biciklizam
+🚴🏻	osoba koja vozi bicikl: svetla koža
+🚴🏼	osoba koja vozi bicikl: srednje svetla koža
+🚴🏽	osoba koja vozi bicikl: srednja boja kože
+🚴🏾	osoba koja vozi bicikl: srednje tamna koža
+🚴🏿	osoba koja vozi bicikl: tamna koža
+🚴‍♂️	čovek biciklizam
+🚴‍♂	čovek biciklizam
+🚴🏻‍♂️	muškarac biciklizam: svetla koža
+🚴🏻‍♂	muškarac biciklizam: svetla koža
+🚴🏼‍♂️	muškarac biciklizam: srednje svetla koža
+🚴🏼‍♂	muškarac biciklizam: srednje svetla koža
+🚴🏽‍♂️	muškarac biciklizam: srednja boja kože
+🚴🏽‍♂	muškarac biciklizam: srednja boja kože
+🚴🏾‍♂️	muškarac koji vozi bicikl: srednje tamna koža
+🚴🏾‍♂	muškarac koji vozi bicikl: srednje tamna koža
+🚴🏿‍♂️	muškarac koji vozi bicikl: tamna koža
+🚴🏿‍♂	muškarac koji vozi bicikl: tamna koža
+🚴‍♀️	žena biciklizam
+🚴‍♀	žena biciklizam
+🚴🏻‍♀️	žena biciklizam: svetla koža
+🚴🏻‍♀	žena biciklizam: svetla koža
+🚴🏼‍♀️	žena biciklizam: srednje svetla koža
+🚴🏼‍♀	žena biciklizam: srednje svetla koža
+🚴🏽‍♀️	žena biciklizam: srednja boja kože
+🚴🏽‍♀	žena biciklizam: srednja boja kože
+🚴🏾‍♀️	žena biciklizam: srednje tamna koža
+🚴🏾‍♀	žena biciklizam: srednje tamna koža
+🚴🏿‍♀️	žena biciklizam: tamna koža
+🚴🏿‍♀	žena biciklizam: tamna koža
+🚵	osoba brdski biciklizam
+🚵🏻	osoba brdski biciklizam: svetla koža
+🚵🏼	osoba brdski biciklizam: srednje svetla koža
+🚵🏽	osoba brdski biciklizam: srednja boja kože
+🚵🏾	osoba brdski biciklizam: srednje tamna koža
+🚵🏿	osoba brdski biciklizam: tamna koža
+🚵‍♂️	čovek brdski biciklizam
+🚵‍♂	čovek brdski biciklizam
+🚵🏻‍♂️	muškarac brdski biciklizam: svetla koža
+🚵🏻‍♂	muškarac brdski biciklizam: svetla koža
+🚵🏼‍♂️	muškarac brdski biciklizam: srednje svetla koža
+🚵🏼‍♂	muškarac brdski biciklizam: srednje svetla koža
+🚵🏽‍♂️	muškarac brdski biciklizam: srednja boja kože
+🚵🏽‍♂	muškarac brdski biciklizam: srednja boja kože
+🚵🏾‍♂️	muškarac brdski biciklizam: srednje tamna koža
+🚵🏾‍♂	muškarac brdski biciklizam: srednje tamna koža
+🚵🏿‍♂️	muškarac brdski biciklizam: tamna koža
+🚵🏿‍♂	muškarac brdski biciklizam: tamna koža
+🚵‍♀️	žena brdski biciklizam
+🚵‍♀	žena brdski biciklizam
+🚵🏻‍♀️	žena planinski biciklizam: svetla koža
+🚵🏻‍♀	žena planinski biciklizam: svetla koža
+🚵🏼‍♀️	žena planinski biciklizam: srednje svetla koža
+🚵🏼‍♀	žena planinski biciklizam: srednje svetla koža
+🚵🏽‍♀️	žena planinski biciklizam: srednja boja kože
+🚵🏽‍♀	žena planinski biciklizam: srednja boja kože
+🚵🏾‍♀️	žena planinski biciklizam: srednje tamna koža
+🚵🏾‍♀	žena planinski biciklizam: srednje tamna koža
+🚵🏿‍♀️	žena planinski biciklizam: tamna koža
+🚵🏿‍♀	žena planinski biciklizam: tamna koža
+🏎️	trkački automobil
+🏎	trkački automobil
+🏍️	motocikl
+🏍	motocikl
+🤸	osoba cartvheeling
+🤸🏻	osoba koja vozi kola: svetla koža
+🤸🏼	osoba koja vozi kola: srednje svetla koža
+🤸🏽	osoba koja vozi kola: srednji ten
+🤸🏾	osoba koja vozi kola: srednje tamna koža
+🤸🏿	osoba koja vozi kola: tamna koža
+🤸‍♂️	man cartvheeling
+🤸‍♂	man cartvheeling
+🤸🏻‍♂️	čovek vozi kola: svetla koža
+🤸🏻‍♂	čovek vozi kola: svetla koža
+🤸🏼‍♂️	muškarac vozi kola: srednje svetla koža
+🤸🏼‍♂	muškarac vozi kola: srednje svetla koža
+🤸🏽‍♂️	muškarac vozi kola: srednja boja kože
+🤸🏽‍♂	muškarac vozi kola: srednja boja kože
+🤸🏾‍♂️	muškarac vozi kola: srednje tamna koža
+🤸🏾‍♂	muškarac vozi kola: srednje tamna koža
+🤸🏿‍♂️	čovek vozi kola: tamna koža
+🤸🏿‍♂	čovek vozi kola: tamna koža
+🤸‍♀️	žena kartvheeling
+🤸‍♀	žena kartvheeling
+🤸🏻‍♀️	žena koja vozi kola: svetla koža
+🤸🏻‍♀	žena koja vozi kola: svetla koža
+🤸🏼‍♀️	žena koja vozi kola: srednje svetla koža
+🤸🏼‍♀	žena koja vozi kola: srednje svetla koža
+🤸🏽‍♀️	žena koja vozi kola: srednji ten
+🤸🏽‍♀	žena koja vozi kola: srednji ten
+🤸🏾‍♀️	žena koja vozi kola: srednje tamna koža
+🤸🏾‍♀	žena koja vozi kola: srednje tamna koža
+🤸🏿‍♀️	žena koja vozi kola: tamna koža
+🤸🏿‍♀	žena koja vozi kola: tamna koža
+🤼	ljudi koji se bore
+🤼‍♂️	muškarci rvanje
+🤼‍♂	muškarci rvanje
+🤼‍♀️	rvanje žena
+🤼‍♀	rvanje žena
+🤽	osoba koja igra vaterpolo
+🤽🏻	osoba koja igra vaterpolo: svetla koža
+🤽🏼	osoba koja igra vaterpolo: srednje svetla koža
+🤽🏽	osoba koja igra vaterpolo: srednja boja kože
+🤽🏾	osoba koja igra vaterpolo: srednje tamna koža
+🤽🏿	osoba koja igra vaterpolo: tamna koža
+🤽‍♂️	čovek igra vaterpolo
+🤽‍♂	čovek igra vaterpolo
+🤽🏻‍♂️	čovek koji igra vaterpolo: svetla koža
+🤽🏻‍♂	čovek koji igra vaterpolo: svetla koža
+🤽🏼‍♂️	muškarac koji igra vaterpolo: srednje svetla koža
+🤽🏼‍♂	muškarac koji igra vaterpolo: srednje svetla koža
+🤽🏽‍♂️	muškarac koji igra vaterpolo: srednja boja kože
+🤽🏽‍♂	muškarac koji igra vaterpolo: srednja boja kože
+🤽🏾‍♂️	muškarac koji igra vaterpolo: srednje tamna koža
+🤽🏾‍♂	muškarac koji igra vaterpolo: srednje tamna koža
+🤽🏿‍♂️	muškarac koji igra vaterpolo: tamna koža
+🤽🏿‍♂	muškarac koji igra vaterpolo: tamna koža
+🤽‍♀️	žena koja igra vaterpolo
+🤽‍♀	žena koja igra vaterpolo
+🤽🏻‍♀️	žena koja igra vaterpolo: svetla koža
+🤽🏻‍♀	žena koja igra vaterpolo: svetla koža
+🤽🏼‍♀️	žena koja igra vaterpolo: srednje svetla koža
+🤽🏼‍♀	žena koja igra vaterpolo: srednje svetla koža
+🤽🏽‍♀️	žena koja igra vaterpolo: srednja boja kože
+🤽🏽‍♀	žena koja igra vaterpolo: srednja boja kože
+🤽🏾‍♀️	žena koja igra vaterpolo: srednje tamna koža
+🤽🏾‍♀	žena koja igra vaterpolo: srednje tamna koža
+🤽🏿‍♀️	žena koja igra vaterpolo: tamna koža
+🤽🏿‍♀	žena koja igra vaterpolo: tamna koža
+🤾	osoba koja igra rukomet
+🤾🏻	osoba koja igra rukomet: svetla koža
+🤾🏼	osoba koja igra rukomet: srednje svetla koža
+🤾🏽	osoba koja igra rukomet: srednja boja kože
+🤾🏾	osoba koja igra rukomet: srednje tamna koža
+🤾🏿	osoba koja igra rukomet: tamna koža
+🤾‍♂️	čovek igra rukomet
+🤾‍♂	čovek igra rukomet
+🤾🏻‍♂️	čovek koji igra rukomet: svetla koža
+🤾🏻‍♂	čovek koji igra rukomet: svetla koža
+🤾🏼‍♂️	muškarac koji igra rukomet: srednje svetla boja kože
+🤾🏼‍♂	muškarac koji igra rukomet: srednje svetla boja kože
+🤾🏽‍♂️	muškarac koji igra rukomet: srednja boja kože
+🤾🏽‍♂	muškarac koji igra rukomet: srednja boja kože
+🤾🏾‍♂️	muškarac koji igra rukomet: srednje tamna koža
+🤾🏾‍♂	muškarac koji igra rukomet: srednje tamna koža
+🤾🏿‍♂️	muškarac koji igra rukomet: tamna koža
+🤾🏿‍♂	muškarac koji igra rukomet: tamna koža
+🤾‍♀️	žena koja igra rukomet
+🤾‍♀	žena koja igra rukomet
+🤾🏻‍♀️	žena koja igra rukomet: svetla koža
+🤾🏻‍♀	žena koja igra rukomet: svetla koža
+🤾🏼‍♀️	žena koja igra rukomet: srednje svetla koža
+🤾🏼‍♀	žena koja igra rukomet: srednje svetla koža
+🤾🏽‍♀️	žena koja igra rukomet: srednja boja kože
+🤾🏽‍♀	žena koja igra rukomet: srednja boja kože
+🤾🏾‍♀️	žena koja igra rukomet: srednje tamna koža
+🤾🏾‍♀	žena koja igra rukomet: srednje tamna koža
+🤾🏿‍♀️	žena koja igra rukomet: tamna koža
+🤾🏿‍♀	žena koja igra rukomet: tamna koža
+🤹	osoba koja žonglira
+🤹🏻	osoba koja žonglira: svetla koža
+🤹🏼	osoba koja žonglira: srednje svetla boja kože
+🤹🏽	osoba koja žonglira: srednji ten
+🤹🏾	osoba koja žonglira: srednje tamna koža
+🤹🏿	osoba koja žonglira: tamna koža
+🤹‍♂️	čovek žonglira
+🤹‍♂	čovek žonglira
+🤹🏻‍♂️	muškarac koji žonglira: svetla koža
+🤹🏻‍♂	muškarac koji žonglira: svetla koža
+🤹🏼‍♂️	muškarac koji žonglira: srednje svetla koža
+🤹🏼‍♂	muškarac koji žonglira: srednje svetla koža
+🤹🏽‍♂️	muškarac koji žonglira: srednja boja kože
+🤹🏽‍♂	muškarac koji žonglira: srednja boja kože
+🤹🏾‍♂️	muškarac koji žonglira: srednje tamna koža
+🤹🏾‍♂	muškarac koji žonglira: srednje tamna koža
+🤹🏿‍♂️	muškarac koji žonglira: tamna koža
+🤹🏿‍♂	muškarac koji žonglira: tamna koža
+🤹‍♀️	žena žongliranje
+🤹‍♀	žena žongliranje
+🤹🏻‍♀️	žena koja žonglira: svetla koža
+🤹🏻‍♀	žena koja žonglira: svetla koža
+🤹🏼‍♀️	žena koja žonglira: srednje svetla koža
+🤹🏼‍♀	žena koja žonglira: srednje svetla koža
+🤹🏽‍♀️	žena koja žonglira: srednji ten
+🤹🏽‍♀	žena koja žonglira: srednji ten
+🤹🏾‍♀️	žena koja žonglira: srednje tamna koža
+🤹🏾‍♀	žena koja žonglira: srednje tamna koža
+🤹🏿‍♀️	žena koja žonglira: tamna koža
+🤹🏿‍♀	žena koja žonglira: tamna koža
+👫	muškarac i žena držeći se za ruke
+👬	dva muškarca koji se drže za ruke
+👭	dve žene koje se drže za ruke
+💏	poljubac
+👩‍❤️‍💋‍👨	poljubac: žena, muškarac
+👩‍❤‍💋‍👨	poljubac: žena, muškarac
+👨‍❤️‍💋‍👨	poljubac: čovek, čovek
+👨‍❤‍💋‍👨	poljubac: čovek, čovek
+👩‍❤️‍💋‍👩	poljubac: žena, žena
+👩‍❤‍💋‍👩	poljubac: žena, žena
+💑	par sa srcem
+👩‍❤️‍👨	par sa srcem: žena, muškarac
+👩‍❤‍👨	par sa srcem: žena, muškarac
+👨‍❤️‍👨	par sa srcem: čovek, čovek
+👨‍❤‍👨	par sa srcem: čovek, čovek
+👩‍❤️‍👩	par sa srcem: žena, žena
+👩‍❤‍👩	par sa srcem: žena, žena
+👪	porodica
+👨‍👩‍👦	porodica: muškarac, žena, dečak
+👨‍👩‍👧	porodica: muškarac, žena, devojka
+👨‍👩‍👧‍👦	porodica: muškarac, žena, devojka, dečak
+👨‍👩‍👦‍👦	porodica: muškarac, žena, dečak, dečak
+👨‍👩‍👧‍👧	porodica: muškarac, žena, devojka, devojka
+👨‍👨‍👦	porodica: muškarac, muškarac, dečak
+👨‍👨‍👧	porodica: muškarac, muškarac, devojka
+👨‍👨‍👧‍👦	porodica: muškarac, muškarac, devojka, dečak
+👨‍👨‍👦‍👦	porodica: muškarac, muškarac, dečak, dečak
+👨‍👨‍👧‍👧	porodica: muškarac, muškarac, devojka, devojka
+👩‍👩‍👦	porodica: žena, žena, dečak
+👩‍👩‍👧	porodica: žena, žena, devojka
+👩‍👩‍👧‍👦	porodica: žena, žena, devojka, dečak
+👩‍👩‍👦‍👦	porodica: žena, žena, dečak, dečak
+👩‍👩‍👧‍👧	porodica: žena, žena, devojka, devojka
+👨‍👦	porodica: muškarac, dečak
+👨‍👦‍👦	porodica: muškarac, dečak, dečak
+👨‍👧	porodica: muškarac, devojka
+👨‍👧‍👦	porodica: muškarac, devojka, dečak
+👨‍👧‍👧	porodica: muškarac, devojka, devojka
+👩‍👦	porodica: žena, dečak
+👩‍👦‍👦	porodica: žena, dečak, dečak
+👩‍👧	porodica: žena, devojka
+👩‍👧‍👦	porodica: žena, devojka, dečak
+👩‍👧‍👧	porodica: žena, devojka, devojka
+🤳	selfie
+🤳🏻	selfi: svetla koža
+🤳🏼	selfi: srednje svetla boja kože
+🤳🏽	selfi: srednja boja kože
+🤳🏾	selfi: srednje tamna koža
+🤳🏿	selfi: tamna koža
+💪	savijeni bicepsi
+💪🏻	savijeni biceps: svetla koža
+💪🏼	savijeni biceps: srednje svetla boja kože
+💪🏽	savijeni biceps: srednja boja kože
+💪🏾	savijeni biceps: srednje tamna koža
+💪🏿	savijeni biceps: tamna koža
+🦵	noga
+🦵🏻	noga: svetla koža
+🦵🏼	noga: srednje svetla koža
+🦵🏽	noga: srednja boja kože
+🦵🏾	noga: srednje tamna koža
+🦵🏿	noga: tamna koža
+🦶	nogom
+🦶🏻	stopalo: svetla koža
+🦶🏼	stopalo: srednje svetla boja kože
+🦶🏽	stopalo: srednja boja kože
+🦶🏾	stopalo: srednje tamna koža
+🦶🏿	stopalo: tamna koža
+👈	bekhend indeks pokazuje levo
+👈🏻	bekhend indeks pokazuje levo: svetla koža
+👈🏼	bekhend indeks pokazuje levo: srednje svetla boja kože
+👈🏽	bekhend indeks pokazuje levo: srednja boja kože
+👈🏾	bekhend indeks pokazuje levo: srednje tamna koža
+👈🏿	bekhend indeks pokazuje levo: tamna koža
+👉	bekhend indeks pokazuje desno
+👉🏻	bekhend indeks pokazuje desno: svetla koža
+👉🏼	bekhend indeks pokazuje desno: srednje svetla boja kože
+👉🏽	bekhend indeks pokazuje desno: srednja boja kože
+👉🏾	bekhend indeks pokazuje desno: srednje tamna koža
+👉🏿	bekhend indeks pokazuje desno: tamna koža
+☝️	indeks koji pokazuje nagore
+☝	indeks koji pokazuje nagore
+☝🏻	indeks prema gore: svetla koža
+☝🏼	indeks prema gore: srednje svetla boja kože
+☝🏽	indeks usmeren nagore: srednji ten
+☝🏾	indeks prema gore: srednje tamna koža
+☝🏿	indeks prema gore: tamna koža
+👆	bekhend indeks okrenut nagore
+👆🏻	bekhend indeks usmeren nagore: svetla koža
+👆🏼	bekhend indeks usmeren nagore: srednje svetla boja kože
+👆🏽	bekhend indeks usmeren nagore: srednji ten kože
+👆🏾	bekhend indeks usmeren nagore: srednje tamna koža
+👆🏿	bekhend indeks usmeren nagore: tamna koža
+🖕	srednji prst
+🖕🏻	srednji prst: svetla koža
+🖕🏼	srednji prst: srednje svetla boja kože
+🖕🏽	srednji prst: srednja boja kože
+🖕🏾	srednji prst: srednje tamna koža
+🖕🏿	srednji prst: tamna koža
+👇	bekhend indeks okrenut nadole
+👇🏻	bekhend indeks okrenut nadole: svetla koža
+👇🏼	bekhend indeks okrenut nadole: srednje svetla boja kože
+👇🏽	bekhend indeks okrenut nadole: srednja boja kože
+👇🏾	bekhend indeks okrenut nadole: srednje tamna koža
+👇🏿	bekhend indeks usmeren nadole: tamna koža
+✌️	pobednička ruka
+✌	pobednička ruka
+✌🏻	pobednička ruka: svetla koža
+✌🏼	pobednička ruka: srednje svetla koža
+✌🏽	pobednička ruka: srednji ten
+✌🏾	pobednička ruka: srednje tamna koža
+✌🏿	pobednička ruka: tamna koža
+🤞	ukrštenih prstiju
+🤞🏻	ukršteni prsti: svetla koža
+🤞🏼	ukršteni prsti: srednje svetla boja kože
+🤞🏽	ukršteni prsti: srednji ten
+🤞🏾	ukršteni prsti: srednje tamna koža
+🤞🏿	ukršteni prsti: tamna koža
+🖖	vulkanski pozdrav
+🖖🏻	vulkanski pozdrav: svetla koža
+🖖🏼	vulkanski pozdrav: srednje svetla boja kože
+🖖🏽	vulkanski pozdrav: srednji ten
+🖖🏾	vulkanski pozdrav: srednje tamna koža
+🖖🏿	vulkanski pozdrav: tamna koža
+🤘	znak rogova
+🤘🏻	znak rogova: svetla koža
+🤘🏼	znak rogova: srednje svetla boja kože
+🤘🏽	znak rogova: srednji ten
+🤘🏾	znak rogova: srednje tamna koža
+🤘🏿	znak rogova: tamna koža
+🤙	zovi me rukom
+🤙🏻	zovi me rukom: svetla koža
+🤙🏼	zovi me rukom: srednje svetla koža
+🤙🏽	zovi me rukom: srednja boja kože
+🤙🏾	zovi me rukom: srednje tamna koža
+🤙🏿	zovi me rukom: tamna koža
+🖐️	ruka sa raširenim prstima
+🖐	ruka sa raširenim prstima
+🖐🏻	ruka sa raširenim prstima: svetla koža
+🖐🏼	ruka sa raširenim prstima: srednje svetla boja kože
+🖐🏽	ruka sa raširenim prstima: srednji ten
+🖐🏾	ruka sa raširenim prstima: srednje tamna koža
+🖐🏿	ruka sa raširenim prstima: tamna koža
+✋	podignuta ruka
+✋🏻	podignuta ruka: svetla koža
+✋🏼	podignuta ruka: srednje svetla boja kože
+✋🏽	podignuta ruka: srednji ten
+✋🏾	podignuta ruka: srednje tamna koža
+✋🏿	podignuta ruka: tamna koža
+👌	OK ruka
+👌🏻	OK ruka: svetla koža
+👌🏼	OK ruka: srednje svetla koža
+👌🏽	OK ruka: srednja boja kože
+👌🏾	OK ruka: srednje tamna koža
+👌🏿	OK ruka: tamna koža
+👍	znak odobravanja
+👍🏻	palac gore: svetla koža
+👍🏼	palac gore: srednje svetla boja kože
+👍🏽	palac gore: srednji ten
+👍🏾	palac gore: srednje tamna koža
+👍🏿	palac gore: tamna koža
+👎	palac dole
+👎🏻	palac nadole: svetla koža
+👎🏼	palac nadole: srednje svetla boja kože
+👎🏽	palac nadole: srednja boja kože
+👎🏾	palac nadole: srednje tamna koža
+👎🏿	palac nadole: tamna koža
+✊	podignuta pesnica
+✊🏻	podignuta pesnica: svetla koža
+✊🏼	podignuta pesnica: srednje svetla boja kože
+✊🏽	podignuta pesnica: srednji ten
+✊🏾	podignuta pesnica: srednje tamna koža
+✊🏿	podignuta pesnica: tamna koža
+👊	nadolazeća pesnica
+👊🏻	nadolazeća pesnica: svetla koža
+👊🏼	nadolazeća pesnica: srednje svetla koža
+👊🏽	nadolazeća pesnica: srednji ten
+👊🏾	nadolazeća pesnica: srednje tamna koža
+👊🏿	nadolazeća pesnica: tamna koža
+🤛	šaka okrenuta levo
+🤛🏻	pesnica okrenuta levo: svetla koža
+🤛🏼	pesnica okrenuta levo: srednje svetla koža
+🤛🏽	pesnica okrenuta levo: srednja boja kože
+🤛🏾	pesnica okrenuta levo: srednje tamna koža
+🤛🏿	pesnica okrenuta levo: tamna koža
+🤜	pesnica okrenuta udesno
+🤜🏻	pesnica okrenuta desno: svetla koža
+🤜🏼	pesnica okrenuta udesno: srednje svetla koža
+🤜🏽	pesnica okrenuta udesno: srednja boja kože
+🤜🏾	pesnica okrenuta desno: srednje tamna koža
+🤜🏿	pesnica okrenuta desno: tamna koža
+🤚	podignuta nadlanica
+🤚🏻	podignuta nadlanica: svetla koža
+🤚🏼	podignuta nadlanica: srednje svetla koža
+🤚🏽	podignuta nadlanica: srednji ten
+🤚🏾	podignuta nadlanica: srednje tamna koža
+🤚🏿	podignuta nadlanica: tamna koža
+👋	mašući rukom
+👋🏻	mašući rukom: svetla koža
+👋🏼	mašući rukom: srednje svetla boja kože
+👋🏽	maše rukom: srednji ten
+👋🏾	mašući rukom: srednje tamna koža
+👋🏿	maše rukom: tamna koža
+🤟	ljubav-ti gest
+🤟🏻	gest ljubavi prema tebi: svetla koža
+🤟🏼	gest ljubavi prema tebi: srednje svetla boja kože
+🤟🏽	gest ljubavi prema tebi: srednja boja kože
+🤟🏾	gest ljubavi prema tebi: srednje tamna koža
+🤟🏿	gest ljubavi prema tebi: tamna koža
+✍️	ruka pisanja
+✍	ruka pisanja
+✍🏻	ruka pisanja: svetla koža
+✍🏼	ruka pisanja: srednje svetla koža
+✍🏽	ruka pisanja: srednji ten
+✍🏾	ruka pisanja: srednje tamna koža
+✍🏿	ruka pisanja: tamna koža
+👏	pljeskanje rukama
+👏🏻	pljeskanje rukama: svetla koža
+👏🏼	pljeskanje rukama: srednje svetla boja kože
+👏🏽	pljeskanje rukama: srednji ten
+👏🏾	pljeskanje rukama: srednje tamna koža
+👏🏿	pljeskanje rukama: tamna koža
+👐	otvorene ruke
+👐🏻	otvorene ruke: svetla koža
+👐🏼	otvorene ruke: srednje svetla koža
+👐🏽	otvorene ruke: srednja boja kože
+👐🏾	otvorene ruke: srednje tamna koža
+👐🏿	otvorene ruke: tamna koža
+🙌	dizanje ruku
+🙌🏻	podizanje ruku: svetla koža
+🙌🏼	podizanje ruku: srednje svetla boja kože
+🙌🏽	podizanje ruku: srednji ten
+🙌🏾	podizanje ruku: srednje tamna koža
+🙌🏿	podizanje ruku: tamna koža
+🤲	dlanovi nagore zajedno
+🤲🏻	dlanovi nagore zajedno: svetla koža
+🤲🏼	dlanovi zajedno: srednje svetla koža
+🤲🏽	dlanovi zajedno: srednji ten
+🤲🏾	dlanovi zajedno: srednje tamna koža
+🤲🏿	dlanovi nagore zajedno: tamna koža
+🙏	sklopljenih ruku
+🙏🏻	sklopljene ruke: svetla koža
+🙏🏼	sklopljene ruke: srednje svetla boja kože
+🙏🏽	sklopljene ruke: srednja boja kože
+🙏🏾	sklopljene ruke: srednje tamna koža
+🙏🏿	sklopljene ruke: tamna koža
+🤝	rukovanje
+💅	lak za nokte
+💅🏻	lak za nokte: svetla koža
+💅🏼	lak za nokte: srednje svetla koža
+💅🏽	lak za nokte: srednji ton kože
+💅🏾	lak za nokte: srednje tamna koža
+💅🏿	lak za nokte: tamna koža
+👂	uho
+👂🏻	uho: svetla koža
+👂🏼	uho: srednje svetla boja kože
+👂🏽	uho: srednji ten
+👂🏾	uho: srednje tamna koža
+👂🏿	uho: tamna koža
+👃	nos
+👃🏻	nos: svetla koža
+👃🏼	nos: srednje svetla koža
+👃🏽	nos: srednji ten
+👃🏾	nos: srednje tamna koža
+👃🏿	nos: tamna koža
+🦰	crvenokosi
+🦱	kovrdžave kose
+🦲	ćelav
+🦳	sedokosi
+👣	otiske stopala
+👀	oči
+👁️	oko
+👁	oko
+👁️‍🗨️	oko u govornom balončiću
+👁‍🗨️	oko u govornom balončiću
+👁️‍🗨	oko u govornom balončiću
+👁‍🗨	oko u govornom balončiću
+🧠	mozak
+🦴	kost
+🦷	zub
+👅	jezik
+👄	usta
+💋	znak poljupca
+💘	srce sa strelom
+❤️	crveno srce
+❤	crveno srce
+💓	udaranje srca
+💔	slomljeno srce
+💕	dva srca
+💖	iskričavo srce
+💗	rastuće srce
+💙	plavo srce
+💚	zeleno srce
+💛	žuto srce
+🧡	narandžasto srce
+💜	ljubičasto srce
+🖤	crno srce
+💝	srce sa trakom
+💞	okretna srca
+💟	ukras srca
+❣️	teškog srca uzvik
+❣	teškog srca uzvik
+💌	ljubavno pismo
+💤	zzz
+💢	simbol besa
+💣	bomba
+💥	sudara
+💦	kapljice znoja
+💨	odjurivši se
+💫	vrtoglavica
+💬	govorni balon
+🗨️	levi govorni balon
+🗨	levi govorni balon
+🗯️	balon pravog besa
+🗯	balon pravog besa
+💭	misaoni balon
+🕳️	rupa
+🕳	rupa
+👓	naočare
+🕶️	naočare za sunce
+🕶	naočare za sunce
+🥽	zaštitne naočari
+🥼	laboratorijski mantil
+👔	kravata
+👕	majica
+👖	farmerke
+🧣	marama
+🧤	rukavice
+🧥	kaput
+🧦	čarape
+👗	haljina
+👘	kimono
+👙	bikini
+👚	ženska odeća
+👛	torbica
+👜	torbica
+👝	kvačila torba
+🛍️	kese za kupovinu
+🛍	kese za kupovinu
+🎒	školski ranac
+👞	muška cipela
+👟	cipela za trčanje
+🥾	planinarska čizma
+🥿	ženska ravna cipela
+👠	cipela sa visokom potpeticom
+👡	ženska sandale
+👢	ženska čizma
+👑	kruna
+👒	ženski šešir
+🎩	cilindar
+🎓	maturska kapa
+🧢	naplaćena kapa
+⛑️	šlem spasilaca
+⛑	šlem spasilaca
+📿	brojanice
+💄	karmin
+💍	prsten
+💎	Dragi kamen
+🐵	lice majmuna
+🐒	majmun
+🦍	gorila
+🐶	pseće lice
+🐕	pas
+🐩	pudlica
+🐺	vučje lice
+🦊	lisičje lice
+🦝	rakun
+🐱	mačje lice
+🐈	mačka
+🦁	lavlje lice
+🐯	tigrovo lice
+🐅	tigar
+🐆	leopard
+🐴	konjsko lice
+🐎	konj
+🦄	lice jednoroga
+🦓	zebra
+🦌	jelena
+🐮	kravlje lice
+🐂	vol
+🐃	vodeni bivo
+🐄	krava
+🐷	svinjsko lice
+🐖	svinja
+🐗	vepar
+🐽	svinjski nos
+🐏	RAM
+🐑	eve
+🐐	koza
+🐪	Kamila
+🐫	dvogrba kamila
+🦙	lama
+🦒	žirafa
+🐘	slon
+🦏	nosoroga
+🦛	nilski konj
+🐭	mišje lice
+🐁	miš
+🐀	pacov
+🐹	lice hrčka
+🐰	zečje lice
+🐇	zeca
+🐿️	veverica
+🐿	veverica
+🦔	jež
+🦇	šišmiš
+🐻	medvedje lice
+🐨	koala
+🐼	panda face
+🦘	kenguru
+🦡	saletati
+🐾	otisci šapa
+🦃	turska
+🐔	piletina
+🐓	petao
+🐣	izlegao pile
+🐤	beba pile
+🐥	beba pile okrenuta spreda
+🐦	ptica
+🐧	pingvin
+🕊️	golubica
+🕊	golubica
+🦅	orao
+🦆	patka
+🦢	labud
+🦉	sova
+🦚	paun
+🦜	papagaj
+🐸	žablje lice
+🐊	krokodil
+🐢	kornjača
+🦎	gušter
+🐍	zmija
+🐲	lice zmaja
+🐉	zmaj
+🦕	sauropod
+🦖	T-Rek
+🐳	izlivanje kita
+🐋	Kit
+🐬	delfin
+🐟	riba
+🐠	tropska riba
+🐡	blovfish
+🦈	ajkula
+🐙	hobotnica
+🐚	spiralna školjka
+🦀	Kraba
+🦞	jastog
+🦐	škampi
+🦑	lignje
+🐌	puž
+🦋	leptir
+🐛	bug
+🐜	ant
+🐝	pčela
+🐞	dama buba
+🦗	kriket
+🕷️	pauk
+🕷	pauk
+🕸️	paukova mreža
+🕸	paukova mreža
+🦂	škorpion
+🦟	komarac
+🦠	mikroba
+💐	buket
+🌸	cvetanje višanja
+💮	Beli cvet
+🏵️	rozeta
+🏵	rozeta
+🌹	ruža
+🥀	uvenuo cvet
+🌺	hibiskus
+🌻	suncokret
+🌼	cvetati
+🌷	lale
+🌱	sadnica
+🌲	zimzeleno drvo
+🌳	listopadno drvo
+🌴	Palma
+🌵	kaktus
+🌾	snop pirinča
+🌿	trava
+☘️	shamrock
+☘	shamrock
+🍀	detelina sa četiri lista
+🍁	javorov list
+🍂	opalo lišće
+🍃	lišće koje leprša na vetru
+🍇	grožđe
+🍈	dinja
+🍉	lubenica
+🍊	mandarina
+🍋	limun
+🍌	banana
+🍍	ananas
+🥭	mango
+🍎	Crvena jabuka
+🍏	zelena jabuka
+🍐	kruška
+🍑	breskva
+🍒	trešnje
+🍓	jagoda
+🥝	kivi
+🍅	paradajz
+🥥	kokos
+🥑	avokado
+🍆	Plavi patlidžan
+🥔	krompir
+🥕	šargarepa
+🌽	uho kukuruza
+🌶️	ljuta paprika
+🌶	ljuta paprika
+🥒	krastavac
+🥬	lisnato zeleno
+🥦	brokoli
+🍄	pečurka
+🥜	kikiriki
+🌰	kesten
+🍞	hleba
+🥐	kroasan
+🥖	baget hleb
+🥨	pereca
+🥯	Bagel
+🥞	palačinke
+🧀	klin sira
+🍖	meso na kosti
+🍗	živinski krak
+🥩	rez od mesa
+🥓	slanina
+🍔	hamburger
+🍟	pomfrit
+🍕	pica
+🌭	Hot dog
+🥪	sendvič
+🌮	taco
+🌯	burrito
+🥙	punjeni somun
+🥚	jaje
+🍳	kuvanje
+🥘	plitka posuda sa hranom
+🍲	lonac sa hranom
+🥣	posuda sa kašikom
+🥗	zelena salata
+🍿	kokice
+🧂	so
+🥫	konzervirana hrana
+🍱	bento bok
+🍘	kreker od pirinča
+🍙	kugla pirinča
+🍚	kuvani pirinač
+🍛	kari pirinač
+🍜	posuda za paru
+🍝	špageti
+🍠	pečeni slatki krompir
+🍢	oden
+🍣	suši
+🍤	pržene lignje
+🍥	riblji kolač sa vrtlogom
+🥮	Mesec torta
+🍡	dango
+🥟	knedle
+🥠	kolačić sreće
+🥡	kutija za poneti
+🍦	meki sladoled
+🍧	brijani LED
+🍨	Sladoled
+🍩	krofna
+🍪	kolačić
+🎂	rođendanska torta
+🍰	shortcake
+🧁	kolačiću
+🥧	pita
+🍫	čokolada
+🍬	bombone
+🍭	lizalica
+🍮	kremasta krema
+🍯	med lonac
+🍼	Bebi flašice
+🥛	čaša mleka
+☕	topli napitak
+🍵	šoljica bez drške
+🍶	sake
+🍾	flaša sa iskakanjem čepa
+🍷	čaša za vino
+🍸	čaša za koktel
+🍹	tropsko piće
+🍺	krigla piva
+🍻	zveckajuće krigle za pivo
+🥂	zveckanje čaša
+🥃	čaša za čaše
+🥤	čaša sa slamom
+🥢	štapići za jelo
+🍽️	viljuška i nož sa tanjirom
+🍽	viljuška i nož sa tanjirom
+🍴	viljuška i nož
+🥄	kašika
+🔪	kuhinjski nož
+🏺	amfora
+🌍	globus koji prikazuje Evropu-Afriku
+🌎	globus koji pokazuje Ameriku
+🌏	globus koji prikazuje Aziju-Australiju
+🌐	globus sa meridijanima
+🗺️	Mapa svjeta
+🗺	Mapa svjeta
+🗾	karta Japana
+🧭	kompas
+🏔️	planina prekrivena snegom
+🏔	planina prekrivena snegom
+⛰️	planina
+⛰	planina
+🌋	vulkan
+🗻	mount fuji
+🏕️	kampovanje
+🏕	kampovanje
+🏖️	plaža sa suncobranom
+🏖	plaža sa suncobranom
+🏜️	pustinja
+🏜	pustinja
+🏝️	napušteno ostrvo
+🏝	napušteno ostrvo
+🏞️	nacionalni park
+🏞	nacionalni park
+🏟️	stadion
+🏟	stadion
+🏛️	klasična zgrada
+🏛	klasična zgrada
+🏗️	građevinarstvo
+🏗	građevinarstvo
+🧱	cigle
+🏘️	kuće
+🏘	kuće
+🏚️	zapuštena kuća
+🏚	zapuštena kuća
+🏠	kuća
+🏡	kuća sa baštom
+🏢	poslovna zgrada
+🏣	Japanska pošta
+🏤	pošta
+🏥	bolnica
+🏦	banka
+🏨	Hotel
+🏩	ljubavni hotel
+🏪	dragstor
+🏫	škola
+🏬	robna kuća
+🏭	fabrika
+🏯	Japanski zamak
+🏰	zamak
+💒	venčanje
+🗼	Tokio tover
+🗽	Kip Slobode
+⛪	crkva
+🕌	džamija
+🕍	sinagoga
+⛩️	šintoistički hram
+⛩	šintoistički hram
+🕋	kaaba
+⛲	fontana
+⛺	šator
+🌁	maglovito
+🌃	noć sa zvezdama
+🏙️	gradski pejzaž
+🏙	gradski pejzaž
+🌄	izlazak sunca nad planinama
+🌅	izlazak Sunca
+🌆	gradski pejzaž u sumrak
+🌇	Zalazak sunca
+🌉	most noću
+♨️	topli izvori
+♨	topli izvori
+🌌	Mlečni put
+🎠	konj vrteška
+🎡	ferris vheel
+🎢	roller coaster
+💈	oznaka berbernice
+🎪	cirkuski šator
+🚂	lokomotiva
+🚃	železnički vagon
+🚄	voz velike brzine
+🚅	metak voz
+🚆	voz
+🚇	metro
+🚈	laka železnica
+🚉	stanica
+🚊	tramvaj
+🚝	monorail
+🚞	planinska železnica
+🚋	tramvajsko vozilo
+🚌	bus
+🚍	nadolazeći autobus
+🚎	trolejbusa
+🚐	minibus
+🚑	hitna pomoć
+🚒	vatrogasna kola
+🚓	policijski automobil
+🚔	nadolazeći policijski automobil
+🚕	taksi
+🚖	nadolazeći taksi
+🚗	automobilski
+🚘	nadolazeći automobil
+🚙	terensko vozilo
+🚚	dostavni kamion
+🚛	zglobni kamion
+🚜	traktor
+🚲	bicikl
+🛴	skuter
+🛹	skejtbord
+🛵	Vespa
+🚏	autobuska stanica
+🛣️	autoput
+🛣	autoput
+🛤️	Pruga
+🛤	Pruga
+🛢️	Bubanj ulje
+🛢	Bubanj ulje
+⛽	pumpa za gorivo
+🚨	svetlo za policijski automobil
+🚥	horizontalni semafor
+🚦	vertikalni semafor
+🛑	stop znak
+🚧	konstrukcija
+⚓	sidro
+⛵	jedrilica
+🛶	kanu
+🚤	gliser
+🛳️	putnički brod
+🛳	putnički brod
+⛴️	trajekt
+⛴	trajekt
+🛥️	motorni čamac
+🛥	motorni čamac
+🚢	brod
+✈️	avion
+✈	avion
+🛩️	mali avion
+🛩	mali avion
+🛫	polazak aviona
+🛬	dolazak aviona
+💺	sedište
+🚁	helikopter
+🚟	viseća železnica
+🚠	planinska žičara
+🚡	žičara
+🛰️	satelita
+🛰	satelita
+🚀	raketa
+🛸	leteći tanjir
+🛎️	bellhop bell
+🛎	bellhop bell
+🧳	prtljaga
+⌛	peščani sat gotov
+⏳	peščani sat nije urađen
+⌚	gledati
+⏰	budilnik
+⏱️	štoperica
+⏱	štoperica
+⏲️	tajmer sat
+⏲	tajmer sat
+🕰️	sat na kaminu
+🕰	sat na kaminu
+🕛	dvanaest sati
+🕧	dvanaest trideset
+🕐	jedan sat
+🕜	jedan i trideset
+🕑	dva časa
+🕝	dva trideset
+🕒	tri sata
+🕞	tri i trideset
+🕓	četiri sata
+🕟	četiri trideset
+🕔	pet sati
+🕠	pola šest
+🕕	šest sati
+🕡	šest trideset
+🕖	sedam sati
+🕢	sedam i trideset
+🕗	osam sati
+🕣	osam trideset
+🕘	devet sati
+🕤	devet trideset
+🕙	deset sati
+🕥	deset i trideset
+🕚	Jedanaest sati
+🕦	Jedanaest trideset
+🌑	mlad mesec
+🌒	rastući srp
+🌓	prva četvrtina meseca
+🌔	sve veći mesec
+🌕	pun mesec
+🌖	opadajući mesec
+🌗	poslednja četvrtina meseca
+🌘	opadajući srp
+🌙	polumesec
+🌚	lice mladog meseca
+🌛	prva četvrtina mesečevog lica
+🌜	lice poslednje četvrtine meseca
+🌡️	termometar
+🌡	termometar
+☀️	sunce
+☀	sunce
+🌝	lice punog meseca
+🌞	sunce s licem
+⭐	Zvezda
+🌟	svetleća zvezda
+🌠	zvezda padalica
+☁️	oblak
+☁	oblak
+⛅	sunce iza oblaka
+⛈️	oblak sa munjama i kišom
+⛈	oblak sa munjama i kišom
+🌤️	sunce iza malog oblaka
+🌤	sunce iza malog oblaka
+🌥️	sunce iza velikog oblaka
+🌥	sunce iza velikog oblaka
+🌦️	sunce iza kišnog oblaka
+🌦	sunce iza kišnog oblaka
+🌧️	oblak sa kišom
+🌧	oblak sa kišom
+🌨️	oblak sa snegom
+🌨	oblak sa snegom
+🌩️	oblak sa munjama
+🌩	oblak sa munjama
+🌪️	tornado
+🌪	tornado
+🌫️	magla
+🌫	magla
+🌬️	vetar lice
+🌬	vetar lice
+🌀	ciklon
+🌈	duga
+🌂	zatvoreni kišobran
+☂️	kišobran
+☂	kišobran
+☔	kišobran sa kišnim kapima
+⛱️	kišobran na zemlji
+⛱	kišobran na zemlji
+⚡	Visok napon
+❄️	pahuljica
+❄	pahuljica
+☃️	snesko Belic
+☃	snesko Belic
+⛄	snežak bez snega
+☄️	kometa
+☄	kometa
+🔥	vatra
+💧	kapljica
+🌊	vodeni talas
+🎃	jack-o-lantern
+🎄	Jelka
+🎆	vatromet
+🎇	sparkler
+🧨	petarda
+✨	iskri
+🎈	balon
+🎉	parti popper
+🎊	konfeti lopta
+🎋	tanabata drvo
+🎍	ukras od bora
+🎎	Japanske lutke
+🎏	šaran streamer
+🎐	zvono vetra
+🎑	ceremonija posmatranja meseca
+🧧	Crvena koverta
+🎀	traka
+🎁	upakovani poklon
+🎗️	traka za podsetnik
+🎗	traka za podsetnik
+🎟️	ulaznice
+🎟	ulaznice
+🎫	Ulaznica
+🎖️	vojna medalja
+🎖	vojna medalja
+🏆	trofej
+🏅	sportska medalja
+🥇	medalja za 1. mesto
+🥈	2. mesto medalja
+🥉	medalja za 3. mesto
+⚽	fudbalska lopta
+⚾	bejzbol
+🥎	meka lopta
+🏀	Košarka
+🏐	Odbojka
+🏈	američki fudbal
+🏉	ragbi fudbal
+🎾	Tenis
+🥏	leteći disk
+🎳	kuglanje
+🏏	igra kriketa
+🏑	Hokej na travi
+🏒	hokej na ledu
+🥍	lacrosse
+🏓	stoni tenis
+🏸	badminton
+🥊	bokserska rukavica
+🥋	uniforma za borilačke veštine
+🥅	gol mreža
+⛳	zastava u rupi
+⛸️	klizaljke
+⛸	klizaljke
+🎣	pecanje
+🎽	majica za trčanje
+🎿	skije
+🛷	sanke
+🥌	curling stone
+🎯	direktan pogodak
+🎱	bazen 8 lopta
+🔮	kristalna kugla
+🧿	nazar amajlija
+🎮	Video igre
+🕹️	džojstik
+🕹	džojstik
+🎰	automat za kockanje
+🎲	igra umire
+🧩	slagalica
+🧸	meda
+♠️	lopato odelo
+♠	lopato odelo
+♥️	odelo za srce
+♥	odelo za srce
+♦️	dijamantsko odelo
+♦	dijamantsko odelo
+♣️	klub odelo
+♣	klub odelo
+♟️	šahovski pešak
+♟	šahovski pešak
+🃏	joker
+🀄	mahjong crveni zmaj
+🎴	cvetne karte za igranje
+🎭	Izvođenje umetnosti
+🖼️	uramljena slika
+🖼	uramljena slika
+🎨	paleta umetnika
+🧵	konac
+🧶	pređe
+🔇	prigušeni zvučnik
+🔈	zvučnik slabe jačine
+🔉	zvučnik srednje jačine
+🔊	zvučnik velike jačine
+📢	zvučnik
+📣	megafon
+📯	poštanski rog
+🔔	zvono
+🔕	zvono sa kosom crtom
+🎼	muzička partitura
+🎵	Muzička nota
+🎶	muzičke note
+🎙️	studijski mikrofon
+🎙	studijski mikrofon
+🎚️	klizač nivoa
+🎚	klizač nivoa
+🎛️	kontrolna dugmad
+🎛	kontrolna dugmad
+🎤	mikrofon
+🎧	slušalice
+📻	radio
+🎷	saksofon
+🎸	gitara
+🎹	muzička tastatura
+🎺	truba
+🎻	violina
+🥁	bubanj
+📱	mobilni telefon
+📲	mobilni telefon sa strelicom
+☎️	telefon
+☎	telefon
+📞	telefonska slušalica
+📟	pejdžer
+📠	faks mašina
+🔋	baterija
+🔌	električni priključak
+💻	laptop
+🖥️	Desktop računar
+🖥	Desktop računar
+🖨️	štampač
+🖨	štampač
+⌨️	tastatura
+⌨	tastatura
+🖱️	kompjuterski miš
+🖱	kompjuterski miš
+🖲️	trackball
+🖲	trackball
+💽	disk računara
+💾	disketa
+💿	optički disk
+📀	dvd
+🧮	abakus
+🎥	filmska kamera
+🎞️	filmski okviri
+🎞	filmski okviri
+📽️	filmski projektor
+📽	filmski projektor
+🎬	klapper board
+📺	televizija
+📷	Kamera
+📸	kamera sa blicem
+📹	video kamera
+📼	videokaseta
+🔍	lupa nagnuta ulevo
+🔎	lupa nagnuta udesno
+🕯️	sveća
+🕯	sveća
+💡	sijalica
+🔦	baterijska lampa
+🏮	crveni papirni fenjer
+📔	sveska sa ukrasnim koricama
+📕	zatvorena knjiga
+📖	otvorena knjiga
+📗	zelena knjiga
+📘	plava knjiga
+📙	narandžasta knjiga
+📚	knjige
+📓	sveska
+📒	knjiga knjiga
+📃	stranica sa curl
+📜	svitak
+📄	stranica okrenuta nagore
+📰	novine
+🗞️	smotane novine
+🗞	smotane novine
+📑	kartice obeleživača
+🔖	obeleživač
+🏷️	etiketa
+🏷	etiketa
+💰	džak sa parama
+💴	novčanica jena
+💵	dolarska novčanica
+💶	novčanica evra
+💷	novčanica funte
+💸	novac sa krilima
+💳	kreditna kartica
+🧾	priznanica
+💹	grafikon raste sa jenom
+💱	Menjačnica
+💲	težak znak dolara
+✉️	koverat
+✉	koverat
+📧	e-mail
+📨	dolaznu kovertu
+📩	koverat sa strelicom
+📤	kaseta za slanje
+📥	inbok trai
+📦	paket
+📫	zatvoreno poštansko sanduče sa podignutom zastavom
+📪	zatvoreno poštansko sanduče sa spuštenom zastavicom
+📬	otvoreno poštansko sanduče sa podignutom zastavicom
+📭	otvoreno poštansko sanduče sa spuštenom zastavicom
+📮	poštanski sandučić
+🗳️	glasačka kutija sa glasačkim listićem
+🗳	glasačka kutija sa glasačkim listićem
+✏️	olovka
+✏	olovka
+✒️	crno pero
+✒	crno pero
+🖋️	penkalo
+🖋	penkalo
+🖊️	hemijska olovka
+🖊	hemijska olovka
+🖌️	četkica
+🖌	četkica
+🖍️	bojica
+🖍	bojica
+📝	Beleška
+💼	aktovka
+📁	fascikla datoteka
+📂	otvorite fasciklu sa datotekama
+🗂️	kartotečni razdelnici
+🗂	kartotečni razdelnici
+📅	kalendar
+📆	kalendar za otkidanje
+🗒️	spiralna sveska
+🗒	spiralna sveska
+🗓️	spiralni kalendar
+🗓	spiralni kalendar
+📇	indeks-karta
+📈	grafikon povećava
+📉	grafikon opadajući
+📊	dijagram
+📋	clipboard
+📌	pushpin
+📍	okrugla štipaljka
+📎	spajalica
+🖇️	povezane spajalice
+🖇	povezane spajalice
+📏	pravi vladar
+📐	trouglasti vladar
+✂️	makaze
+✂	makaze
+🗃️	kutija za kartoteku
+🗃	kutija za kartoteku
+🗄️	ormar za kartoteku
+🗄	ormar za kartoteku
+🗑️	korpa za otpatke
+🗑	korpa za otpatke
+🔒	zaključan
+🔓	otključana
+🔏	zaključan perom
+🔐	zaključan ključem
+🔑	ključ
+🗝️	stari ključ
+🗝	stari ključ
+🔨	čekić
+⛏️	pokupiti
+⛏	pokupiti
+⚒️	čekić i pijuk
+⚒	čekić i pijuk
+🛠️	čekić i ključ
+🛠	čekić i ključ
+🗡️	bodež
+🗡	bodež
+⚔️	ukrštenih mačeva
+⚔	ukrštenih mačeva
+🔫	pištolj
+🏹	luk i strela
+🛡️	štit
+🛡	štit
+🔧	vrench
+🔩	orah i vijak
+⚙️	zupčanik
+⚙	zupčanik
+🗜️	stezaljka
+🗜	stezaljka
+⚖️	vaga za ravnotežu
+⚖	vaga za ravnotežu
+🔗	link
+⛓️	lancima
+⛓	lancima
+🧰	kutija sa alatima
+🧲	Magnet
+⚗️	alembic
+⚗	alembic
+🧪	epruveta
+🧫	Petri šolja
+🧬	dna
+🔬	mikroskop
+🔭	teleskop
+📡	satelitsku antenu
+💉	špric
+💊	pilula
+🚪	vrata
+🛏️	krevet
+🛏	krevet
+🛋️	kauč i lampa
+🛋	kauč i lampa
+🚽	toalet
+🚿	tuš
+🛁	kada
+🧴	boca za losion
+🧷	zihernadla
+🧹	metla
+🧺	korpa
+🧻	rolna papira
+🧼	sapun
+🧽	sunđer
+🧯	aparat za gašenje požara
+🛒	kolica za kupovinu
+🚬	cigareta
+⚰️	Mrtvački sanduk
+⚰	Mrtvački sanduk
+⚱️	pogrebna urna
+⚱	pogrebna urna
+🗿	moai
+🏧	Znak bankomata
+🚮	smeće u kanti znak
+🚰	pitka voda
+♿	simbol invalidskih kolica
+🚹	Muški toalet
+🚺	ženska soba
+🚻	toalet
+🚼	simbol bebe
+🚾	nužnik
+🛂	pasoška kontrola
+🛃	običaji
+🛄	Hol za preuzimanje prtljaga
+🛅	Levi kofer
+⚠️	upozorenje
+⚠	upozorenje
+🚸	deca prelaze
+⛔	Zabranjen ulaz
+🚫	zabranjeno
+🚳	nema bicikla
+🚭	Zabranjeno pušenje
+🚯	nema zagađivanja
+🚱	voda koja nije za piće
+🚷	nema pešaka
+📵	nema mobilnih telefona
+🔞	niko mlađi od osamnaest godina
+☢️	radioaktivan
+☢	radioaktivan
+☣️	biohazard
+☣	biohazard
+⬆️	Gore strelica
+⬆	Gore strelica
+↗️	strelica gore-desno
+↗	strelica gore-desno
+➡️	strelica udesno
+➡	strelica udesno
+↘️	strelica nadole-desno
+↘	strelica nadole-desno
+⬇️	strelica nadole
+⬇	strelica nadole
+↙️	strelica nadole-levo
+↙	strelica nadole-levo
+⬅️	leva strelica
+⬅	leva strelica
+↖️	strelica gore-levo
+↖	strelica gore-levo
+↕️	strelica gore-dole
+↕	strelica gore-dole
+↔️	strelica levo-desno
+↔	strelica levo-desno
+↩️	strelica udesno krivuda ulevo
+↩	strelica udesno krivuda ulevo
+↪️	strelica nalevo koja krivuda udesno
+↪	strelica nalevo koja krivuda udesno
+⤴️	strelica udesno zakrivljena nagore
+⤴	strelica udesno zakrivljena nagore
+⤵️	strelica udesno zakrivljena nadole
+⤵	strelica udesno zakrivljena nadole
+🔃	vertikalne strelice u smeru kazaljke na satu
+🔄	dugme sa strelicama u smeru suprotnom od kazaljke na satu
+🔙	Strelica NAZAD
+🔚	END strelica
+🔛	ON strelica
+🔜	SOON arrov
+🔝	TOP arrov
+🛐	bogomolja
+⚛️	simbol atoma
+⚛	simbol atoma
+🕉️	om
+🕉	om
+✡️	Davidova zvezda
+✡	Davidova zvezda
+☸️	točak darme
+☸	točak darme
+☯️	Jin Jang
+☯	Jin Jang
+✝️	latinski krst
+✝	latinski krst
+☦️	pravoslavni krst
+☦	pravoslavni krst
+☪️	zvezda i polumesec
+☪	zvezda i polumesec
+☮️	simbol mira
+☮	simbol mira
+🕎	menora
+🔯	tačkasta šestokraka zvezda
+♈	Ovan
+♉	Bik
+♊	Blizanci
+♋	Rak
+♌	Leo
+♍	Devica
+♎	Vaga
+♏	Škorpija
+♐	Strelac
+♑	Jarac
+♒	Vodolija
+♓	Ribe
+⛎	Ophiuchus
+🔀	dugme za mešanje numera
+🔁	dugme za ponavljanje
+🔂	dugme za ponavljanje
+▶️	dugme za reprodukciju
+▶	dugme za reprodukciju
+⏩	dugme za brzo premotavanje unapred
+⏭️	dugme sledeće numere
+⏭	dugme sledeće numere
+⏯️	dugme za reprodukciju ili pauzu
+⏯	dugme za reprodukciju ili pauzu
+◀️	dugme unazad
+◀	dugme unazad
+⏪	dugme za brzo kretanje unazad
+⏮️	dugme poslednje numere
+⏮	dugme poslednje numere
+🔼	dugme nagore
+⏫	dugme za ubrzanje
+🔽	dugme nadole
+⏬	dugme za brzo dole
+⏸️	dugme za pauzu
+⏸	dugme za pauzu
+⏹️	dugme za zaustavljanje
+⏹	dugme za zaustavljanje
+⏺️	dugme za snimanje
+⏺	dugme za snimanje
+⏏️	dugme za izbacivanje
+⏏	dugme za izbacivanje
+🎦	bioskop
+🔅	dugme zatamnjenje
+🔆	svetlo dugme
+📶	antenske šipke
+📳	režim vibracije
+📴	mobilni telefon isključen
+♀️	ženski znak
+♀	ženski znak
+♂️	muški znak
+♂	muški znak
+⚕️	medicinski simbol
+⚕	medicinski simbol
+♾️	beskonačnost
+♾	beskonačnost
+♻️	simbol reciklaže
+♻	simbol reciklaže
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	trozubac amblem
+📛	Ime značka
+🔰	Japanski simbol za početnike
+⭕	težak veliki krug
+✅	bela teška kvačica
+☑️	glasačka kutija sa čekom
+☑	glasačka kutija sa čekom
+✔️	teška kvačica
+✔	teška kvačica
+✖️	teško množenje h
+✖	teško množenje h
+❌	krstić
+❎	dugme krstić
+➕	težak znak plus
+➖	težak znak minusa
+➗	znak teške divizije
+➰	kovrdžava petlja
+➿	dvostruka kovrdžava petlja
+〽️	deo alternaciona oznaka
+〽	deo alternaciona oznaka
+✳️	osmokraka zvezdica
+✳	osmokraka zvezdica
+✴️	osmokraka zvezda
+✴	osmokraka zvezda
+❇️	iskra
+❇	iskra
+‼️	dvostruki uzvičnik
+‼	dvostruki uzvičnik
+⁉️	uzvičnik upitnik
+⁉	uzvičnik upitnik
+❓	Znak pitanja
+❔	beli znak pitanja
+❕	beli znak uzvika
+❗	znak uzvika
+〰️	talasasta crtica
+〰	talasasta crtica
+©️	Autorsko pravo
+©	Autorsko pravo
+®️	registrovan
+®	registrovan
+™️	zaštitni znak
+™	zaštitni znak
+#️⃣	taster: #
+#⃣	taster: #
+*️⃣	taster: *
+*⃣	taster: *
+0️⃣	poklopac tastera: 0
+0⃣	poklopac tastera: 0
+1️⃣	kapica za tastere: 1
+1⃣	kapica za tastere: 1
+2️⃣	kapica za tastere: 2
+2⃣	kapica za tastere: 2
+3️⃣	kapica za tastere: 3
+3⃣	kapica za tastere: 3
+4️⃣	kapica za tastere: 4
+4⃣	kapica za tastere: 4
+5️⃣	kapica za tastere: 5
+5⃣	kapica za tastere: 5
+6️⃣	kapica za tastere: 6
+6⃣	kapica za tastere: 6
+7️⃣	kapica za tastere: 7
+7⃣	kapica za tastere: 7
+8️⃣	kapica za tastere: 8
+8⃣	kapica za tastere: 8
+9️⃣	poklopac ključa: 9
+9⃣	poklopac ključa: 9
+🔟	poklopac ključa: 10
+💯	sto poena
+🔠	unos latinica velikim slovima
+🔡	unos latinica malim slovima
+🔢	unos brojeva
+🔣	ulazni simboli
+🔤	unesite latinična slova
+🅰️	Dugme (krvna grupa)
+🅰	Dugme (krvna grupa)
+🆎	Dugme AB (krvna grupa)
+🅱️	B dugme (krvna grupa)
+🅱	B dugme (krvna grupa)
+🆑	CL dugme
+🆒	COOL dugme
+🆓	BESPLATNO dugme
+ℹ️	informacije
+ℹ	informacije
+🆔	Dugme ID
+Ⓜ️	zaokružio M
+Ⓜ	zaokružio M
+🆕	dugme NOVO
+🆖	Dugme NG
+🅾️	O dugme (krvna grupa)
+🅾	O dugme (krvna grupa)
+🆗	dugme OK
+🅿️	P dugme
+🅿	P dugme
+🆘	SOS dugme
+🆙	dugme GORE
+🆚	Dugme VS
+🈁	Japansko dugme „ovde“.
+🈂️	Japansko dugme „naplata usluge“.
+🈂	Japansko dugme „naplata usluge“.
+🈷️	Japansko dugme „mesečni iznos“.
+🈷	Japansko dugme „mesečni iznos“.
+🈶	Japansko dugme „nije besplatno“.
+🈯	Japansko dugme „rezervisano“.
+🉐	Japansko dugme „povoljni“.
+🈹	Japansko dugme „popust“.
+🈚	Japansko dugme „besplatno“.
+🈲	Japansko „zabranjeno“ dugme
+🉑	Japansko dugme „prihvatljivo“.
+🈸	Japansko dugme „aplikacija“.
+🈴	Japansko dugme „prolazna ocena“.
+🈳	Japansko dugme „slobodno mesto“.
+㊗️	Japansko dugme „čestitam“.
+㊗	Japansko dugme „čestitam“.
+㊙️	Japansko „tajno“ dugme
+㊙	Japansko „tajno“ dugme
+🈺	Japansko dugme „otvoreno za posao“.
+🈵	Japansko dugme „nema slobodnog mesta“.
+▪️	crni mali kvadrat
+▪	crni mali kvadrat
+▫️	beli mali kvadrat
+▫	beli mali kvadrat
+◻️	beli srednji kvadrat
+◻	beli srednji kvadrat
+◼️	crni srednji kvadrat
+◼	crni srednji kvadrat
+◽	beli srednje-mali kvadrat
+◾	crni srednje mali kvadrat
+⬛	crni veliki kvadrat
+⬜	beli veliki kvadrat
+🔶	veliki narandžasti dijamant
+🔷	veliki plavi dijamant
+🔸	mali narandžasti dijamant
+🔹	mali plavi dijamant
+🔺	crveni trougao okrenut prema gore
+🔻	crveni trougao okrenut nadole
+💠	dijamant sa tačkom
+🔘	Radio dugme
+🔲	crno kvadratno dugme
+🔳	belo kvadratno dugme
+⚪	beli krug
+⚫	crni krug
+🔴	crveni krug
+🔵	plavi krug
+🏁	karirana zastava
+🚩	trouglasta zastava
+🎌	ukrštene zastave
+🏴	Crna zastava
+🏳️	bela zastava
+🏳	bela zastava
+🏳️‍🌈	zastava duge
+🏳‍🌈	zastava duge
+🏴‍☠️	gusarska zastava
+🏴‍☠	gusarska zastava
+🇦🇨	Ostrvo Vaznesenje
+🇦🇩	Andora
+🇦🇪	Ujedinjeni arapski Emirati
+🇦🇫	Avganistan
+🇦🇬	Antigva i Barbuda
+🇦🇮	Angvila
+🇦🇱	Albanija
+🇦🇲	Jermenija
+🇦🇴	Angola
+🇦🇶	Antarktika
+🇦🇷	Argentina
+🇦🇸	Američka Samoa
+🇦🇹	Austrija
+🇦🇺	Australija
+🇦🇼	Aruba
+🇦🇽	Alandska ostrva
+🇦🇿	Azerbejdžan
+🇧🇦	Bosna i Hercegovina
+🇧🇧	Barbados
+🇧🇩	Bangladeš
+🇧🇪	Belgija
+🇧🇫	Burkina Faso
+🇧🇬	Bugarska
+🇧🇭	Bahrein
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	St. Barthelemi
+🇧🇲	Bermuda
+🇧🇳	Brunej
+🇧🇴	Bolivija
+🇧🇶	Caribbean Netherlands
+🇧🇷	Brazil
+🇧🇸	Bahami
+🇧🇹	Butan
+🇧🇻	Ostrvo Bouvet
+🇧🇼	Bocvana
+🇧🇾	Belorusija
+🇧🇿	Belize
+🇨🇦	Kanada
+🇨🇨	Kokosova (Kiling) ostrva
+🇨🇩	Kongo - Kinšasa
+🇨🇫	Centralna Afrička Republika
+🇨🇬	Kongo - Brazavil
+🇨🇭	Švajcarska
+🇨🇮	Obala Slonovače
+🇨🇰	Kukova ostrva
+🇨🇱	Čile
+🇨🇲	Kamerun
+🇨🇳	Kina
+🇨🇴	Kolumbija
+🇨🇵	Clipperton Island
+🇨🇷	Kostarika
+🇨🇺	Kuba
+🇨🇻	Cape Verde
+🇨🇼	Curacao
+🇨🇽	Božićno ostrvo
+🇨🇾	Kipar
+🇨🇿	Češka
+🇩🇪	Nemačka
+🇩🇬	Diego Garcia
+🇩🇯	Džibuti
+🇩🇰	Danska
+🇩🇲	Dominika
+🇩🇴	Dominikanska republika
+🇩🇿	Alžir
+🇪🇦	Seuta i Melilja
+🇪🇨	Ekvador
+🇪🇪	Estonia
+🇪🇬	Egipat
+🇪🇭	zapadna Sahara
+🇪🇷	Eritreja
+🇪🇸	Spain
+🇪🇹	Etiopija
+🇪🇺	Evropska unija
+🇫🇮	Finland
+🇫🇯	Fiji
+🇫🇰	Foklandska ostrva
+🇫🇲	Micronesia
+🇫🇴	Farska Ostrva
+🇫🇷	Francuska
+🇬🇦	Gabon
+🇬🇧	Velika Britanija
+🇬🇩	Grenada
+🇬🇪	Georgia
+🇬🇫	Francuska Gvajana
+🇬🇬	Guernsei
+🇬🇭	Gana
+🇬🇮	Gibraltar
+🇬🇱	Grenland
+🇬🇲	Gambija
+🇬🇳	Gvineja
+🇬🇵	Guadeloupe
+🇬🇶	Ekvatorijalna Gvineja
+🇬🇷	Grčka
+🇬🇸	Južna Džordžija i Južna Sendvič ostrva
+🇬🇹	Gvatemala
+🇬🇺	Guam
+🇬🇼	Gvineja Bisao
+🇬🇾	Gvajana
+🇭🇰	Hong Kong SAR Kina
+🇭🇲	Heard & McDonald Islands
+🇭🇳	Honduras
+🇭🇷	Hrvatska
+🇭🇹	Haiti
+🇭🇺	Mađarska
+🇮🇨	Kanarska ostrva
+🇮🇩	Indonesia
+🇮🇪	Irska
+🇮🇱	Izrael
+🇮🇲	Isle of Man
+🇮🇳	Indija
+🇮🇴	Britanska teritorija Indijskog okeana
+🇮🇶	Irak
+🇮🇷	Iran
+🇮🇸	Island
+🇮🇹	Italija
+🇯🇪	Jersei
+🇯🇲	Jamajka
+🇯🇴	Jordan
+🇯🇵	Japan
+🇰🇪	Kenija
+🇰🇬	Kirgistan
+🇰🇭	Kambodža
+🇰🇮	Kiribati
+🇰🇲	Comoros
+🇰🇳	Sent Kits i Nevis
+🇰🇵	Severna Koreja
+🇰🇷	Južna Koreja
+🇰🇼	Kuvait
+🇰🇾	Kajmanska ostrva
+🇰🇿	Kazahstan
+🇱🇦	Laos
+🇱🇧	Liban
+🇱🇨	Sveta Lucija
+🇱🇮	Lihtenštajn
+🇱🇰	Šri Lanka
+🇱🇷	Liberija
+🇱🇸	Lesoto
+🇱🇹	Litvanija
+🇱🇺	Luksemburg
+🇱🇻	Letonija
+🇱🇾	Libija
+🇲🇦	Maroko
+🇲🇨	Monako
+🇲🇩	Moldavija
+🇲🇪	Crna Gora
+🇲🇫	Sveti Martin
+🇲🇬	Madagascar
+🇲🇭	Maršalska ostrva
+🇲🇰	Makedonija
+🇲🇱	Mali
+🇲🇲	Mjanmar (Burma)
+🇲🇳	Mongolija
+🇲🇴	Makao SAR Kina
+🇲🇵	Severna Marijanska ostrva
+🇲🇶	Martinik
+🇲🇷	Mauritanija
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mauricijus
+🇲🇻	Maldivi
+🇲🇼	Malavi
+🇲🇽	Meksiko
+🇲🇾	Malezija
+🇲🇿	Mozambik
+🇳🇦	Namibia
+🇳🇨	Nova Kaledonija
+🇳🇪	Niger
+🇳🇫	ostrvo Norfolk
+🇳🇬	Nigeria
+🇳🇮	Nikaragva
+🇳🇱	Nizozemska
+🇳🇴	Norveška
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Novi Zeland
+🇴🇲	Oman
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Francuska Polinezija
+🇵🇬	Papua Nova Gvineja
+🇵🇭	Filipini
+🇵🇰	Pakistan
+🇵🇱	Poljska
+🇵🇲	Sent Pjer i Mikelon
+🇵🇳	Pitcairn Islands
+🇵🇷	Portoriko
+🇵🇸	Palestinske teritorije
+🇵🇹	Portugal
+🇵🇼	Palau
+🇵🇾	Paragvaj
+🇶🇦	Katar
+🇷🇪	Reunion
+🇷🇴	Rumunija
+🇷🇸	Srbija
+🇷🇺	Rusija
+🇷🇼	Ruanda
+🇸🇦	Saudijska Arabija
+🇸🇧	Solomonska ostrva
+🇸🇨	Sejšeli
+🇸🇩	Sudan
+🇸🇪	Sveden
+🇸🇬	Singapur
+🇸🇭	Sveta Helena
+🇸🇮	Slovenija
+🇸🇯	Svalbard i Jan Majen
+🇸🇰	Slovakia
+🇸🇱	Sijera Leone
+🇸🇲	San-Marino
+🇸🇳	Senegal
+🇸🇴	Somalija
+🇸🇷	Surinam
+🇸🇸	Južni Sudan
+🇸🇹	Sao Tome i Princip
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Sirija
+🇸🇿	Svazilend
+🇹🇦	Tristan da Cunha
+🇹🇨	Ostrva Turks i Kaikos
+🇹🇩	Čad
+🇹🇫	Francuske južne teritorije
+🇹🇬	Da ide
+🇹🇭	Tajland
+🇹🇯	Tadžikistan
+🇹🇰	Tokelau
+🇹🇱	Istočni Timor
+🇹🇲	Turkmenistan
+🇹🇳	Tunis
+🇹🇴	Tonga
+🇹🇷	Turska
+🇹🇹	Trinidad i Tobago
+🇹🇻	Tuvalu
+🇹🇼	Tajvan
+🇹🇿	Tanzanija
+🇺🇦	Ukrajina
+🇺🇬	Uganda
+🇺🇲	Vanjska ostrva SAD
+🇺🇳	Ujedinjene nacije
+🇺🇸	Amerika
+🇺🇾	Urugvaj
+🇺🇿	Uzbekistan
+🇻🇦	Vatikan
+🇻🇨	St. Vincent & Grenadines
+🇻🇪	Venecuela
+🇻🇬	Britanska Devičanska ostrva
+🇻🇮	Američka Devičanska ostrva
+🇻🇳	Vijetnam
+🇻🇺	Vanuatu
+🇼🇫	Vallis & Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Jemen
+🇾🇹	Maiotte
+🇿🇦	Južna Afrika
+🇿🇲	Zambija
+🇿🇼	Zimbabve
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Engleska
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Scotland
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Vels

@@ -1,0 +1,3570 @@
+😀	grinende ansigt
+😁	strålende ansigt med smilende øjne
+😂	ansigt med glædestårer
+🤣	Ruller rundt på gulvet af grin
+😃	grinende ansigt med store øjne
+😄	grinende ansigt med smilende øjne
+😅	grinende ansigt af sved
+😆	grinende skelende ansigt
+😉	blinkende ansigt
+😊	smilende ansigt med smilende øjne
+😋	ansigt, der smager mad
+😎	smilende ansigt med solbriller
+😍	smilende ansigt med hjerteøjne
+😘	ansigt blæser et kys
+🥰	smilende ansigt med 3 hjerter
+😗	kyssende ansigt
+😙	kysse ansigt med smilende øjne
+😚	kysse ansigt med lukkede øjne
+☺️	smilende ansigt
+☺	smilende ansigt
+🙂	lidt smilende ansigt
+🤗	kramme ansigt
+🤩	star-struck
+🤔	tænkende ansigt
+🤨	ansigt med løftede øjenbryn
+😐	neutralt ansigt
+😑	udtryksløst ansigt
+😶	ansigt uden mund
+🙄	ansigt med rullende øjne
+😏	smilende ansigt
+😣	udholdende ansigt
+😥	trist, men lettet ansigt
+😮	ansigt med åben mund
+🤐	lynlås-mund ansigt
+😯	stille ansigt
+😪	søvnigt ansigt
+😫	træt ansigt
+😴	sovende ansigt
+😌	lettet ansigt
+😛	ansigt med tungen
+😜	blinkende ansigt med tungen
+😝	skelende ansigt med tungen
+🤤	savlende ansigt
+😒	umage ansigt
+😓	nedslået ansigt af sved
+😔	eftertænksomt ansigt
+😕	forvirret ansigt
+🙃	ansigtet på hovedet
+🤑	penge-mund ansigt
+😲	forbløffet ansigt
+☹️	rynkende ansigt
+☹	rynkende ansigt
+🙁	let rynkende ansigt
+😖	forvirret ansigt
+😞	skuffet ansigt
+😟	bekymret ansigt
+😤	ansigt med damp fra næsen
+😢	grædende ansigt
+😭	højt grædende ansigt
+😦	rynkende ansigt med åben mund
+😧	fortvivlet ansigt
+😨	frygtsomt ansigt
+😩	trætte ansigt
+🤯	eksploderende hoved
+😬	grimasserende ansigt
+😰	ængsteligt ansigt med sved
+😱	ansigt skrigende af frygt
+🥵	varmt ansigt
+🥶	koldt ansigt
+😳	rødt ansigt
+🤪	skørt ansigt
+😵	svimmel ansigt
+😡	buldrende ansigt
+😠	vredt ansigt
+🤬	ansigt med symboler på munden
+😷	ansigt med medicinsk maske
+🤒	ansigt med termometer
+🤕	ansigt med hovedbandage
+🤢	kvalme ansigt
+🤮	ansigt opkastning
+🤧	nysende ansigt
+😇	smilende ansigt med glorie
+🤠	cowboyhat ansigt
+🥳	festende ansigt
+🥴	sløvt ansigt
+🥺	bedende ansigt
+🤥	liggende ansigt
+🤫	støjsvagt ansigt
+🤭	ansigt med hånden over munden
+🧐	ansigt med monokel
+🤓	nørde ansigt
+😈	smilende ansigt med horn
+👿	vredt ansigt med horn
+🤡	klovne ansigt
+👹	ogre
+👺	nisse
+💀	kranium
+☠️	kranie og krydsben
+☠	kranie og krydsben
+👻	spøgelse
+👽	fremmed
+👾	fremmed monster
+🤖	robot ansigt
+💩	bunke af afføring
+😺	grinende katteansigt
+😸	grinende katteansigt med smilende øjne
+😹	katteansigt med glædestårer
+😻	smilende katteansigt med hjerteøjne
+😼	katteansigt med skævt smil
+😽	kysse katteansigt
+🙀	trætte katteansigt
+😿	grædende katteansigt
+😾	buldrende katteansigt
+🙈	se-ingen-ond abe
+🙉	hør-ingen-ond abe
+🙊	tal-ikke-ondt abe
+🏻	lys hudfarve
+🏼	medium lys hudfarve
+🏽	medium hudtone
+🏾	medium-mørk hudtone
+🏿	mørk hudfarve
+👶	baby
+👶🏻	baby: lys hudfarve
+👶🏼	baby: medium-lys hudfarve
+👶🏽	baby: medium hudfarve
+👶🏾	baby: medium-mørk hudfarve
+👶🏿	baby: mørk hudfarve
+🧒	barn
+🧒🏻	barn: lys hudfarve
+🧒🏼	barn: medium lys hudfarve
+🧒🏽	barn: medium hudfarve
+🧒🏾	barn: medium-mørk hudfarve
+🧒🏿	barn: mørk hudfarve
+👦	dreng
+👦🏻	dreng: lys hudfarve
+👦🏼	dreng: medium lys hudfarve
+👦🏽	dreng: medium hudfarve
+👦🏾	dreng: medium-mørk hudfarve
+👦🏿	dreng: mørk hudfarve
+👧	pige
+👧🏻	pige: lys hudfarve
+👧🏼	pige: medium-lys hudfarve
+👧🏽	pige: medium hudfarve
+👧🏾	pige: medium-mørk hudfarve
+👧🏿	pige: mørk hudfarve
+🧑	voksen
+🧑🏻	voksen: lys hudfarve
+🧑🏼	voksen: medium-lys hudfarve
+🧑🏽	voksen: medium hudfarve
+🧑🏾	voksen: medium-mørk hudfarve
+🧑🏿	voksen: mørk hudfarve
+👨	mand
+👨🏻	mand: lys hudfarve
+👨🏼	mand: medium lys hudfarve
+👨🏽	mand: medium hudfarve
+👨🏾	mand: medium-mørk hudfarve
+👨🏿	mand: mørk hudfarve
+👩	kvinde
+👩🏻	kvinde: lys hudfarve
+👩🏼	kvinde: medium-lys hudfarve
+👩🏽	kvinde: medium hudfarve
+👩🏾	kvinde: medium-mørk hudfarve
+👩🏿	kvinde: mørk hudfarve
+🧓	ældre voksen
+🧓🏻	ældre voksen: lys hudfarve
+🧓🏼	ældre voksen: medium lys hudfarve
+🧓🏽	ældre voksen: medium hudfarve
+🧓🏾	ældre voksen: medium-mørk hudfarve
+🧓🏿	ældre voksen: mørk hudfarve
+👴	gammel mand
+👴🏻	gammel mand: lys hudfarve
+👴🏼	gammel mand: medium-lys hudfarve
+👴🏽	gammel mand: medium hudfarve
+👴🏾	gammel mand: medium-mørk hudfarve
+👴🏿	gammel mand: mørk hudfarve
+👵	gammel dame
+👵🏻	gammel kvinde: lys hudfarve
+👵🏼	gammel kvinde: mellemlys hudfarve
+👵🏽	gammel kvinde: medium hudfarve
+👵🏾	gammel kvinde: medium-mørk hudfarve
+👵🏿	gammel kvinde: mørk hudfarve
+👨‍⚕️	mandlig sundhedsarbejder
+👨‍⚕	mandlig sundhedsarbejder
+👨🏻‍⚕️	mand sundhedsarbejder: lys hudfarve
+👨🏻‍⚕	mand sundhedsarbejder: lys hudfarve
+👨🏼‍⚕️	mandlig sundhedsarbejder: medium-lys hudfarve
+👨🏼‍⚕	mandlig sundhedsarbejder: medium-lys hudfarve
+👨🏽‍⚕️	mandlig sundhedsarbejder: medium hudfarve
+👨🏽‍⚕	mandlig sundhedsarbejder: medium hudfarve
+👨🏾‍⚕️	mandlig sundhedsarbejder: medium-mørk hudfarve
+👨🏾‍⚕	mandlig sundhedsarbejder: medium-mørk hudfarve
+👨🏿‍⚕️	mandlig sundhedsarbejder: mørk hudfarve
+👨🏿‍⚕	mandlig sundhedsarbejder: mørk hudfarve
+👩‍⚕️	kvindelig sundhedsarbejder
+👩‍⚕	kvindelig sundhedsarbejder
+👩🏻‍⚕️	kvindelig sundhedsarbejder: lys hudfarve
+👩🏻‍⚕	kvindelig sundhedsarbejder: lys hudfarve
+👩🏼‍⚕️	kvindelig sundhedsarbejder: mellemlys hudfarve
+👩🏼‍⚕	kvindelig sundhedsarbejder: mellemlys hudfarve
+👩🏽‍⚕️	kvindelig sundhedsarbejder: medium hudfarve
+👩🏽‍⚕	kvindelig sundhedsarbejder: medium hudfarve
+👩🏾‍⚕️	kvindelig sundhedsarbejder: medium-mørk hudfarve
+👩🏾‍⚕	kvindelig sundhedsarbejder: medium-mørk hudfarve
+👩🏿‍⚕️	kvindelig sundhedsarbejder: mørk hudfarve
+👩🏿‍⚕	kvindelig sundhedsarbejder: mørk hudfarve
+👨‍🎓	mand studerende
+👨🏻‍🎓	mand studerende: lys hudfarve
+👨🏼‍🎓	mand studerende: medium-lys hudfarve
+👨🏽‍🎓	mand studerende: medium hudfarve
+👨🏾‍🎓	mand studerende: medium-mørk hudfarve
+👨🏿‍🎓	mand studerende: mørk hudfarve
+👩‍🎓	kvindelig studerende
+👩🏻‍🎓	kvinde studerende: lys hudfarve
+👩🏼‍🎓	kvinde studerende: mellemlys hudfarve
+👩🏽‍🎓	kvinde studerende: medium hudfarve
+👩🏾‍🎓	kvinde studerende: medium-mørk hudfarve
+👩🏿‍🎓	kvinde studerende: mørk hudfarve
+👨‍🏫	mand lærer
+👨🏻‍🏫	mand lærer: lys hudfarve
+👨🏼‍🏫	mandlig lærer: medium-lys hudfarve
+👨🏽‍🏫	mand lærer: medium hudfarve
+👨🏾‍🏫	mandlig lærer: medium-mørk hudfarve
+👨🏿‍🏫	mand lærer: mørk hudfarve
+👩‍🏫	kvindelig lærer
+👩🏻‍🏫	kvindelig lærer: lys hudfarve
+👩🏼‍🏫	kvindelig lærer: medium-lys hudfarve
+👩🏽‍🏫	kvindelig lærer: medium hudfarve
+👩🏾‍🏫	kvindelig lærer: medium-mørk hudfarve
+👩🏿‍🏫	kvindelig lærer: mørk hudfarve
+👨‍⚖️	mand dommer
+👨‍⚖	mand dommer
+👨🏻‍⚖️	mand dommer: lys hudfarve
+👨🏻‍⚖	mand dommer: lys hudfarve
+👨🏼‍⚖️	mandlig dommer: mellemlys hudfarve
+👨🏼‍⚖	mandlig dommer: mellemlys hudfarve
+👨🏽‍⚖️	mandsdommer: medium hudfarve
+👨🏽‍⚖	mandsdommer: medium hudfarve
+👨🏾‍⚖️	mandlig dommer: medium-mørk hudfarve
+👨🏾‍⚖	mandlig dommer: medium-mørk hudfarve
+👨🏿‍⚖️	mand dommer: mørk hudfarve
+👨🏿‍⚖	mand dommer: mørk hudfarve
+👩‍⚖️	kvindelig dommer
+👩‍⚖	kvindelig dommer
+👩🏻‍⚖️	kvindelig dommer: lys hudfarve
+👩🏻‍⚖	kvindelig dommer: lys hudfarve
+👩🏼‍⚖️	kvindelig dommer: mellemlys hudfarve
+👩🏼‍⚖	kvindelig dommer: mellemlys hudfarve
+👩🏽‍⚖️	kvindelig dommer: medium hudfarve
+👩🏽‍⚖	kvindelig dommer: medium hudfarve
+👩🏾‍⚖️	kvindelig dommer: medium-mørk hudfarve
+👩🏾‍⚖	kvindelig dommer: medium-mørk hudfarve
+👩🏿‍⚖️	kvindelig dommer: mørk hudfarve
+👩🏿‍⚖	kvindelig dommer: mørk hudfarve
+👨‍🌾	mand landmand
+👨🏻‍🌾	mand landmand: lys hudfarve
+👨🏼‍🌾	mand landmand: medium-lys hudfarve
+👨🏽‍🌾	mand landmand: medium hudfarve
+👨🏾‍🌾	mand landmand: medium-mørk hudfarve
+👨🏿‍🌾	mand landmand: mørk hudfarve
+👩‍🌾	kvindelig landmand
+👩🏻‍🌾	kvindelig landmand: lys hudfarve
+👩🏼‍🌾	kvindelig landmand: medium-lys hudfarve
+👩🏽‍🌾	kvindelig landmand: medium hudfarve
+👩🏾‍🌾	kvindelig landmand: medium-mørk hudfarve
+👩🏿‍🌾	kvindelig landmand: mørk hudfarve
+👨‍🍳	mand kok
+👨🏻‍🍳	mand kok: lys hudfarve
+👨🏼‍🍳	mand kok: medium-lys hudfarve
+👨🏽‍🍳	mand kok: medium hudfarve
+👨🏾‍🍳	mand kok: medium-mørk hudfarve
+👨🏿‍🍳	mand kok: mørk hudfarve
+👩‍🍳	kvinde kok
+👩🏻‍🍳	kvinde kok: lys hudfarve
+👩🏼‍🍳	kvindelig kok: medium-lys hudfarve
+👩🏽‍🍳	kvinde kok: medium hudfarve
+👩🏾‍🍳	kvindelig kok: medium-mørk hudfarve
+👩🏿‍🍳	kvinde kok: mørk hudfarve
+👨‍🔧	mand mekaniker
+👨🏻‍🔧	mand mekaniker: lys hudfarve
+👨🏼‍🔧	mand mekaniker: medium-lys hudfarve
+👨🏽‍🔧	mand mekaniker: medium hudfarve
+👨🏾‍🔧	mand mekaniker: medium-mørk hudfarve
+👨🏿‍🔧	mand mekaniker: mørk hudfarve
+👩‍🔧	kvindelig mekaniker
+👩🏻‍🔧	kvinde mekaniker: lys hudfarve
+👩🏼‍🔧	kvinde mekaniker: medium-lys hudfarve
+👩🏽‍🔧	kvinde mekaniker: medium hudfarve
+👩🏾‍🔧	kvinde mekaniker: medium-mørk hudfarve
+👩🏿‍🔧	kvinde mekaniker: mørk hudfarve
+👨‍🏭	mandlig fabriksarbejder
+👨🏻‍🏭	mand fabriksarbejder: lys hudfarve
+👨🏼‍🏭	mand fabriksarbejder: medium-lys hudfarve
+👨🏽‍🏭	mand fabriksarbejder: medium hudfarve
+👨🏾‍🏭	mand fabriksarbejder: medium-mørk hudfarve
+👨🏿‍🏭	mand fabriksarbejder: mørk hudfarve
+👩‍🏭	kvindelig fabriksarbejder
+👩🏻‍🏭	kvindelig fabriksarbejder: lys hudfarve
+👩🏼‍🏭	kvindelig fabriksarbejder: medium-lys hudfarve
+👩🏽‍🏭	kvindelig fabriksarbejder: medium hudfarve
+👩🏾‍🏭	kvindelig fabriksarbejder: medium-mørk hudfarve
+👩🏿‍🏭	kvindelig fabriksarbejder: mørk hudfarve
+👨‍💼	mandlig kontormedarbejder
+👨🏻‍💼	mandlig kontormedarbejder: lys hudfarve
+👨🏼‍💼	mandlig kontormedarbejder: medium-lys hudfarve
+👨🏽‍💼	mandlig kontormedarbejder: medium hudfarve
+👨🏾‍💼	mandlig kontormedarbejder: medium-mørk hudfarve
+👨🏿‍💼	mandlig kontormedarbejder: mørk hudfarve
+👩‍💼	kvindelig kontormedarbejder
+👩🏻‍💼	kvindelig kontormedarbejder: lys hudfarve
+👩🏼‍💼	kvindelig kontormedarbejder: medium-lys hudfarve
+👩🏽‍💼	kvindelig kontormedarbejder: medium hudfarve
+👩🏾‍💼	kvindelig kontormedarbejder: medium-mørk hudfarve
+👩🏿‍💼	kvindelig kontormedarbejder: mørk hudfarve
+👨‍🔬	mandlig videnskabsmand
+👨🏻‍🔬	mandlig videnskabsmand: lys hudfarve
+👨🏼‍🔬	mandlig videnskabsmand: medium-lys hudfarve
+👨🏽‍🔬	mandlig videnskabsmand: medium hudfarve
+👨🏾‍🔬	mandlig videnskabsmand: medium-mørk hudfarve
+👨🏿‍🔬	mandlig videnskabsmand: mørk hudfarve
+👩‍🔬	kvindelig videnskabsmand
+👩🏻‍🔬	kvindelig videnskabsmand: lys hudfarve
+👩🏼‍🔬	kvindelig videnskabsmand: medium-lys hudfarve
+👩🏽‍🔬	kvindelig videnskabsmand: medium hudfarve
+👩🏾‍🔬	kvindelig videnskabsmand: medium-mørk hudfarve
+👩🏿‍🔬	kvindelig videnskabsmand: mørk hudfarve
+👨‍💻	mand teknolog
+👨🏻‍💻	mand teknolog: lys hudfarve
+👨🏼‍💻	mand teknolog: medium-lys hudfarve
+👨🏽‍💻	mand teknolog: medium hudfarve
+👨🏾‍💻	mand teknolog: medium-mørk hudfarve
+👨🏿‍💻	mand teknolog: mørk hudfarve
+👩‍💻	kvindelig teknolog
+👩🏻‍💻	kvindelig teknolog: lys hudfarve
+👩🏼‍💻	kvindelig teknolog: medium-lys hudfarve
+👩🏽‍💻	kvindelig teknolog: medium hudfarve
+👩🏾‍💻	kvindelig teknolog: medium-mørk hudfarve
+👩🏿‍💻	kvindelig teknolog: mørk hudfarve
+👨‍🎤	mand sanger
+👨🏻‍🎤	mandssanger: lys hudfarve
+👨🏼‍🎤	mandssanger: mellemlys hudfarve
+👨🏽‍🎤	mandssanger: medium hudfarve
+👨🏾‍🎤	mandssanger: medium-mørk hudfarve
+👨🏿‍🎤	mandssanger: mørk hudfarve
+👩‍🎤	kvindelig sangerinde
+👩🏻‍🎤	kvindelig sanger: lys hudfarve
+👩🏼‍🎤	kvindelig sanger: medium-lys hudfarve
+👩🏽‍🎤	kvindelig sanger: medium hudfarve
+👩🏾‍🎤	kvindelig sanger: medium-mørk hudfarve
+👩🏿‍🎤	kvindelig sanger: mørk hudfarve
+👨‍🎨	mand kunstner
+👨🏻‍🎨	mand kunstner: lys hudfarve
+👨🏼‍🎨	mandlig kunstner: medium-lys hudfarve
+👨🏽‍🎨	mand kunstner: medium hudfarve
+👨🏾‍🎨	mandlig kunstner: medium-mørk hudfarve
+👨🏿‍🎨	mand kunstner: mørk hudfarve
+👩‍🎨	kvindelig kunstner
+👩🏻‍🎨	kvindelig kunstner: lys hudfarve
+👩🏼‍🎨	kvindelig kunstner: mellemlys hudfarve
+👩🏽‍🎨	kvindelig kunstner: medium hudfarve
+👩🏾‍🎨	kvindelig kunstner: medium-mørk hudfarve
+👩🏿‍🎨	kvindelig kunstner: mørk hudfarve
+👨‍✈️	mand pilot
+👨‍✈	mand pilot
+👨🏻‍✈️	mand pilot: lys hudfarve
+👨🏻‍✈	mand pilot: lys hudfarve
+👨🏼‍✈️	mand pilot: medium-lys hudfarve
+👨🏼‍✈	mand pilot: medium-lys hudfarve
+👨🏽‍✈️	mand pilot: medium hudfarve
+👨🏽‍✈	mand pilot: medium hudfarve
+👨🏾‍✈️	mand pilot: medium-mørk hudfarve
+👨🏾‍✈	mand pilot: medium-mørk hudfarve
+👨🏿‍✈️	mand pilot: mørk hudfarve
+👨🏿‍✈	mand pilot: mørk hudfarve
+👩‍✈️	kvindelig pilot
+👩‍✈	kvindelig pilot
+👩🏻‍✈️	kvinde pilot: lys hudfarve
+👩🏻‍✈	kvinde pilot: lys hudfarve
+👩🏼‍✈️	kvinde pilot: medium lys hudfarve
+👩🏼‍✈	kvinde pilot: medium lys hudfarve
+👩🏽‍✈️	kvinde pilot: medium hudfarve
+👩🏽‍✈	kvinde pilot: medium hudfarve
+👩🏾‍✈️	kvinde pilot: medium-mørk hudfarve
+👩🏾‍✈	kvinde pilot: medium-mørk hudfarve
+👩🏿‍✈️	kvinde pilot: mørk hudfarve
+👩🏿‍✈	kvinde pilot: mørk hudfarve
+👨‍🚀	mand astronaut
+👨🏻‍🚀	mand astronaut: lys hudfarve
+👨🏼‍🚀	mandlig astronaut: mellemlys hudfarve
+👨🏽‍🚀	mand astronaut: medium hudfarve
+👨🏾‍🚀	mandlig astronaut: medium-mørk hudfarve
+👨🏿‍🚀	mand astronaut: mørk hudfarve
+👩‍🚀	kvindelig astronaut
+👩🏻‍🚀	kvindelig astronaut: lys hudfarve
+👩🏼‍🚀	kvindelig astronaut: mellemlys hudfarve
+👩🏽‍🚀	kvindelig astronaut: medium hudfarve
+👩🏾‍🚀	kvindelig astronaut: medium-mørk hudfarve
+👩🏿‍🚀	kvindelig astronaut: mørk hudfarve
+👨‍🚒	mand brandmand
+👨🏻‍🚒	mand brandmand: lys hudfarve
+👨🏼‍🚒	brandmand: medium-lys hudfarve
+👨🏽‍🚒	mand brandmand: medium hudfarve
+👨🏾‍🚒	brandmand: medium-mørk hudfarve
+👨🏿‍🚒	mand brandmand: mørk hudfarve
+👩‍🚒	kvindelig brandmand
+👩🏻‍🚒	kvindelig brandmand: lys hudfarve
+👩🏼‍🚒	kvindelig brandmand: medium-lys hudfarve
+👩🏽‍🚒	kvindelig brandmand: medium hudfarve
+👩🏾‍🚒	kvindelig brandmand: medium-mørk hudfarve
+👩🏿‍🚒	kvinde brandmand: mørk hudfarve
+👮	politimand
+👮🏻	politibetjent: lys hudfarve
+👮🏼	politibetjent: mellemlys hudfarve
+👮🏽	politibetjent: medium hudfarve
+👮🏾	politibetjent: medium-mørk hudfarve
+👮🏿	politibetjent: mørk hudfarve
+👮‍♂️	mandlig politibetjent
+👮‍♂	mandlig politibetjent
+👮🏻‍♂️	mand politibetjent: lys hudfarve
+👮🏻‍♂	mand politibetjent: lys hudfarve
+👮🏼‍♂️	mandlig politibetjent: mellemlys hudfarve
+👮🏼‍♂	mandlig politibetjent: mellemlys hudfarve
+👮🏽‍♂️	mand politibetjent: medium hudfarve
+👮🏽‍♂	mand politibetjent: medium hudfarve
+👮🏾‍♂️	mandlig politibetjent: medium-mørk hudfarve
+👮🏾‍♂	mandlig politibetjent: medium-mørk hudfarve
+👮🏿‍♂️	mand politibetjent: mørk hudfarve
+👮🏿‍♂	mand politibetjent: mørk hudfarve
+👮‍♀️	kvindelig politibetjent
+👮‍♀	kvindelig politibetjent
+👮🏻‍♀️	kvindelig politibetjent: lys hudfarve
+👮🏻‍♀	kvindelig politibetjent: lys hudfarve
+👮🏼‍♀️	kvindelig politibetjent: mellemlys hudfarve
+👮🏼‍♀	kvindelig politibetjent: mellemlys hudfarve
+👮🏽‍♀️	kvindelig politibetjent: medium hudfarve
+👮🏽‍♀	kvindelig politibetjent: medium hudfarve
+👮🏾‍♀️	kvindelig politibetjent: medium-mørk hudfarve
+👮🏾‍♀	kvindelig politibetjent: medium-mørk hudfarve
+👮🏿‍♀️	kvindelig politibetjent: mørk hudfarve
+👮🏿‍♀	kvindelig politibetjent: mørk hudfarve
+🕵️	detektiv
+🕵	detektiv
+🕵🏻	detektiv: lys hudfarve
+🕵🏼	detektiv: medium-lys hudfarve
+🕵🏽	detektiv: medium hudfarve
+🕵🏾	detektiv: medium-mørk hudfarve
+🕵🏿	detektiv: mørk hudfarve
+🕵️‍♂️	mand detektiv
+🕵‍♂️	mand detektiv
+🕵️‍♂	mand detektiv
+🕵‍♂	mand detektiv
+🕵🏻‍♂️	mand detektiv: lys hudfarve
+🕵🏻‍♂	mand detektiv: lys hudfarve
+🕵🏼‍♂️	mand detektiv: medium-lys hudfarve
+🕵🏼‍♂	mand detektiv: medium-lys hudfarve
+🕵🏽‍♂️	mand detektiv: medium hudfarve
+🕵🏽‍♂	mand detektiv: medium hudfarve
+🕵🏾‍♂️	mand detektiv: medium-mørk hudfarve
+🕵🏾‍♂	mand detektiv: medium-mørk hudfarve
+🕵🏿‍♂️	mand detektiv: mørk hudfarve
+🕵🏿‍♂	mand detektiv: mørk hudfarve
+🕵️‍♀️	kvindelig detektiv
+🕵‍♀️	kvindelig detektiv
+🕵️‍♀	kvindelig detektiv
+🕵‍♀	kvindelig detektiv
+🕵🏻‍♀️	kvindedetektiv: lys hudfarve
+🕵🏻‍♀	kvindedetektiv: lys hudfarve
+🕵🏼‍♀️	kvindedetektiv: mellemlys hudfarve
+🕵🏼‍♀	kvindedetektiv: mellemlys hudfarve
+🕵🏽‍♀️	kvindedetektiv: medium hudfarve
+🕵🏽‍♀	kvindedetektiv: medium hudfarve
+🕵🏾‍♀️	kvindedetektiv: medium-mørk hudfarve
+🕵🏾‍♀	kvindedetektiv: medium-mørk hudfarve
+🕵🏿‍♀️	kvindedetektiv: mørk hudfarve
+🕵🏿‍♀	kvindedetektiv: mørk hudfarve
+💂	vagt
+💂🏻	guard: lys hudfarve
+💂🏼	guard: medium-lys hudfarve
+💂🏽	guard: medium hudfarve
+💂🏾	guard: medium-mørk hudfarve
+💂🏿	guard: mørk hudfarve
+💂‍♂️	mand vagt
+💂‍♂	mand vagt
+💂🏻‍♂️	mand guard: lys hudfarve
+💂🏻‍♂	mand guard: lys hudfarve
+💂🏼‍♂️	man guard: medium-lys hudfarve
+💂🏼‍♂	man guard: medium-lys hudfarve
+💂🏽‍♂️	man guard: medium hudfarve
+💂🏽‍♂	man guard: medium hudfarve
+💂🏾‍♂️	man guard: medium-mørk hudfarve
+💂🏾‍♂	man guard: medium-mørk hudfarve
+💂🏿‍♂️	mand guard: mørk hudfarve
+💂🏿‍♂	mand guard: mørk hudfarve
+💂‍♀️	kvinde vagt
+💂‍♀	kvinde vagt
+💂🏻‍♀️	kvinde vagt: lys hudfarve
+💂🏻‍♀	kvinde vagt: lys hudfarve
+💂🏼‍♀️	kvinde guard: medium-lys hudfarve
+💂🏼‍♀	kvinde guard: medium-lys hudfarve
+💂🏽‍♀️	kvinde vagt: medium hudfarve
+💂🏽‍♀	kvinde vagt: medium hudfarve
+💂🏾‍♀️	kvinde guard: medium-mørk hudfarve
+💂🏾‍♀	kvinde guard: medium-mørk hudfarve
+💂🏿‍♀️	kvinde vagt: mørk hudfarve
+💂🏿‍♀	kvinde vagt: mørk hudfarve
+👷	bygningsarbejder
+👷🏻	bygningsarbejder: lys hudfarve
+👷🏼	bygningsarbejder: medium-lys hudfarve
+👷🏽	bygningsarbejder: medium hudfarve
+👷🏾	bygningsarbejder: medium-mørk hudfarve
+👷🏿	bygningsarbejder: mørk hudfarve
+👷‍♂️	mand bygningsarbejder
+👷‍♂	mand bygningsarbejder
+👷🏻‍♂️	mand bygningsarbejder: lys hudfarve
+👷🏻‍♂	mand bygningsarbejder: lys hudfarve
+👷🏼‍♂️	mand bygningsarbejder: medium-lys hudfarve
+👷🏼‍♂	mand bygningsarbejder: medium-lys hudfarve
+👷🏽‍♂️	mand bygningsarbejder: medium hudfarve
+👷🏽‍♂	mand bygningsarbejder: medium hudfarve
+👷🏾‍♂️	mand bygningsarbejder: medium-mørk hudfarve
+👷🏾‍♂	mand bygningsarbejder: medium-mørk hudfarve
+👷🏿‍♂️	mand bygningsarbejder: mørk hudfarve
+👷🏿‍♂	mand bygningsarbejder: mørk hudfarve
+👷‍♀️	kvindelig bygningsarbejder
+👷‍♀	kvindelig bygningsarbejder
+👷🏻‍♀️	kvinde bygningsarbejder: lys hudfarve
+👷🏻‍♀	kvinde bygningsarbejder: lys hudfarve
+👷🏼‍♀️	kvindelig bygningsarbejder: medium-lys hudfarve
+👷🏼‍♀	kvindelig bygningsarbejder: medium-lys hudfarve
+👷🏽‍♀️	kvindelig bygningsarbejder: medium hudfarve
+👷🏽‍♀	kvindelig bygningsarbejder: medium hudfarve
+👷🏾‍♀️	kvindelig bygningsarbejder: medium-mørk hudfarve
+👷🏾‍♀	kvindelig bygningsarbejder: medium-mørk hudfarve
+👷🏿‍♀️	kvinde bygningsarbejder: mørk hudfarve
+👷🏿‍♀	kvinde bygningsarbejder: mørk hudfarve
+🤴	prins
+🤴🏻	prins: lys hudfarve
+🤴🏼	prins: medium-lys hudfarve
+🤴🏽	prins: medium hudfarve
+🤴🏾	prins: medium-mørk hudfarve
+🤴🏿	prins: mørk hudfarve
+👸	prinsesse
+👸🏻	prinsesse: lys hudfarve
+👸🏼	prinsesse: medium-lys hudfarve
+👸🏽	prinsesse: medium hudfarve
+👸🏾	prinsesse: medium-mørk hudfarve
+👸🏿	prinsesse: mørk hudfarve
+👳	person iført turban
+👳🏻	person, der bærer turban: lys hudfarve
+👳🏼	person, der bærer turban: medium-lys hudfarve
+👳🏽	person, der bærer turban: medium hudfarve
+👳🏾	person, der bærer turban: medium-mørk hudfarve
+👳🏿	person, der bærer turban: mørk hudfarve
+👳‍♂️	mand iført turban
+👳‍♂	mand iført turban
+👳🏻‍♂️	mand iført turban: lys hudfarve
+👳🏻‍♂	mand iført turban: lys hudfarve
+👳🏼‍♂️	mand iført turban: medium-lys hudfarve
+👳🏼‍♂	mand iført turban: medium-lys hudfarve
+👳🏽‍♂️	mand iført turban: medium hudfarve
+👳🏽‍♂	mand iført turban: medium hudfarve
+👳🏾‍♂️	mand iført turban: medium-mørk hudfarve
+👳🏾‍♂	mand iført turban: medium-mørk hudfarve
+👳🏿‍♂️	mand iført turban: mørk hudfarve
+👳🏿‍♂	mand iført turban: mørk hudfarve
+👳‍♀️	kvinde iført turban
+👳‍♀	kvinde iført turban
+👳🏻‍♀️	kvinde iført turban: lys hudfarve
+👳🏻‍♀	kvinde iført turban: lys hudfarve
+👳🏼‍♀️	kvinde iført turban: medium-lys hudfarve
+👳🏼‍♀	kvinde iført turban: medium-lys hudfarve
+👳🏽‍♀️	kvinde iført turban: medium hudfarve
+👳🏽‍♀	kvinde iført turban: medium hudfarve
+👳🏾‍♀️	kvinde iført turban: medium-mørk hudfarve
+👳🏾‍♀	kvinde iført turban: medium-mørk hudfarve
+👳🏿‍♀️	kvinde iført turban: mørk hudfarve
+👳🏿‍♀	kvinde iført turban: mørk hudfarve
+👲	mand med kinesisk kasket
+👲🏻	mand med kinesisk kasket: lys hudfarve
+👲🏼	mand med kinesisk kasket: medium-lys hudfarve
+👲🏽	mand med kinesisk kasket: medium hudfarve
+👲🏾	mand med kinesisk kasket: medium-mørk hudfarve
+👲🏿	mand med kinesisk kasket: mørk hudfarve
+🧕	kvinde med tørklæde
+🧕🏻	kvinde med tørklæde: lys hudfarve
+🧕🏼	kvinde med tørklæde: medium-lys hudfarve
+🧕🏽	kvinde med tørklæde: medium hudfarve
+🧕🏾	kvinde med tørklæde: medium-mørk hudfarve
+🧕🏿	kvinde med tørklæde: mørk hudfarve
+🧔	skægget person
+🧔🏻	skægget person: lys hudfarve
+🧔🏼	skægget person: medium-lys hudfarve
+🧔🏽	skægget person: medium hudfarve
+🧔🏾	skægget person: medium-mørk hudfarve
+🧔🏿	skægget person: mørk hudfarve
+👱	blondhåret person
+👱🏻	blondhåret person: lys hudfarve
+👱🏼	blondhåret person: medium lys hudfarve
+👱🏽	blondhåret person: medium hudfarve
+👱🏾	blondhåret person: medium-mørk hudfarve
+👱🏿	blondhåret person: mørk hudfarve
+👱‍♂️	blondhåret mand
+👱‍♂	blondhåret mand
+👱🏻‍♂️	blondhåret mand: lys hudfarve
+👱🏻‍♂	blondhåret mand: lys hudfarve
+👱🏼‍♂️	blondhåret mand: medium lys hudfarve
+👱🏼‍♂	blondhåret mand: medium lys hudfarve
+👱🏽‍♂️	blondhåret mand: medium hudfarve
+👱🏽‍♂	blondhåret mand: medium hudfarve
+👱🏾‍♂️	blondhåret mand: medium-mørk hudfarve
+👱🏾‍♂	blondhåret mand: medium-mørk hudfarve
+👱🏿‍♂️	blondhåret mand: mørk hudfarve
+👱🏿‍♂	blondhåret mand: mørk hudfarve
+👱‍♀️	blondhåret kvinde
+👱‍♀	blondhåret kvinde
+👱🏻‍♀️	blondhåret kvinde: lys hudfarve
+👱🏻‍♀	blondhåret kvinde: lys hudfarve
+👱🏼‍♀️	blondhåret kvinde: medium lys hudfarve
+👱🏼‍♀	blondhåret kvinde: medium lys hudfarve
+👱🏽‍♀️	blondhåret kvinde: medium hudfarve
+👱🏽‍♀	blondhåret kvinde: medium hudfarve
+👱🏾‍♀️	blondhåret kvinde: medium-mørk hudfarve
+👱🏾‍♀	blondhåret kvinde: medium-mørk hudfarve
+👱🏿‍♀️	blondhåret kvinde: mørk hudfarve
+👱🏿‍♀	blondhåret kvinde: mørk hudfarve
+👨‍🦰	mand, rødhåret
+👨🏻‍🦰	mand, rødhåret: lys hudfarve
+👨🏼‍🦰	mand, rødhåret: medium-lys hudfarve
+👨🏽‍🦰	mand, rødhåret: medium hudfarve
+👨🏾‍🦰	mand, rødhåret: medium-mørk hudfarve
+👨🏿‍🦰	mand, rødhåret: mørk hudfarve
+👩‍🦰	kvinde, rødhåret
+👩🏻‍🦰	kvinde, rødhåret: lys hudfarve
+👩🏼‍🦰	kvinde, rødhåret: medium-lys hudfarve
+👩🏽‍🦰	kvinde, rødhåret: medium hudfarve
+👩🏾‍🦰	kvinde, rødhåret: medium-mørk hudfarve
+👩🏿‍🦰	kvinde, rødhåret: mørk hudfarve
+👨‍🦱	mand, krøllet hår
+👨🏻‍🦱	mand, krøllet hår: lys hudfarve
+👨🏼‍🦱	mand, krøllet hår: medium-lys hudfarve
+👨🏽‍🦱	mand, krøllet hår: medium hudfarve
+👨🏾‍🦱	mand, krøllet hår: medium-mørk hudfarve
+👨🏿‍🦱	mand, krøllet hår: mørk hudfarve
+👩‍🦱	kvinde, krøllet hår
+👩🏻‍🦱	kvinde, krøllet hår: lys hudfarve
+👩🏼‍🦱	kvinde, krøllet hår: medium lys hudfarve
+👩🏽‍🦱	kvinde, krøllet hår: medium hudfarve
+👩🏾‍🦱	kvinde, krøllet hår: medium-mørk hudfarve
+👩🏿‍🦱	kvinde, krøllet hår: mørk hudfarve
+👨‍🦲	mand, skaldet
+👨🏻‍🦲	mand, skaldet: lys hudfarve
+👨🏼‍🦲	mand, skaldet: medium-lys hudfarve
+👨🏽‍🦲	mand, skaldet: medium hudfarve
+👨🏾‍🦲	mand, skaldet: medium-mørk hudfarve
+👨🏿‍🦲	mand, skaldet: mørk hudfarve
+👩‍🦲	kvinde, skaldet
+👩🏻‍🦲	kvinde, skaldet: lys hudfarve
+👩🏼‍🦲	kvinde, skaldet: medium-lys hudfarve
+👩🏽‍🦲	kvinde, skaldet: medium hudfarve
+👩🏾‍🦲	kvinde, skaldet: medium-mørk hudfarve
+👩🏿‍🦲	kvinde, skaldet: mørk hudfarve
+👨‍🦳	mand, hvidhåret
+👨🏻‍🦳	mand, hvidhåret: lys hudfarve
+👨🏼‍🦳	mand, hvidhåret: medium-lys hudfarve
+👨🏽‍🦳	mand, hvidhåret: medium hudfarve
+👨🏾‍🦳	mand, hvidhåret: medium-mørk hudfarve
+👨🏿‍🦳	mand, hvidhåret: mørk hudfarve
+👩‍🦳	kvinde, hvidhåret
+👩🏻‍🦳	kvinde, hvidhåret: lys hudfarve
+👩🏼‍🦳	kvinde, hvidhåret: medium-lys hudfarve
+👩🏽‍🦳	kvinde, hvidhåret: medium hudfarve
+👩🏾‍🦳	kvinde, hvidhåret: medium-mørk hudfarve
+👩🏿‍🦳	kvinde, hvidhåret: mørk hudfarve
+🤵	mand i smoking
+🤵🏻	mand i smoking: lys hudfarve
+🤵🏼	mand i smoking: medium-lys hudfarve
+🤵🏽	mand i smoking: medium hudfarve
+🤵🏾	mand i smoking: medium-mørk hudfarve
+🤵🏿	mand i smoking: mørk hudfarve
+👰	brud med slør
+👰🏻	brud med slør: lys hudfarve
+👰🏼	brud med slør: medium-lys hudfarve
+👰🏽	brud med slør: medium hudfarve
+👰🏾	brud med slør: medium-mørk hudfarve
+👰🏿	brud med slør: mørk hudfarve
+🤰	gravid kvinde
+🤰🏻	gravid kvinde: lys hudfarve
+🤰🏼	gravid kvinde: medium-lys hudfarve
+🤰🏽	gravid kvinde: medium hudfarve
+🤰🏾	gravid kvinde: medium-mørk hudfarve
+🤰🏿	gravid kvinde: mørk hudfarve
+🤱	amning
+🤱🏻	amning: lys hudfarve
+🤱🏼	amning: medium lys hudfarve
+🤱🏽	amning: medium hudfarve
+🤱🏾	amning: medium-mørk hudfarve
+🤱🏿	amning: mørk hudfarve
+👼	baby engel
+👼🏻	baby engel: lys hudfarve
+👼🏼	baby angel: medium-lys hudfarve
+👼🏽	baby engel: medium hudfarve
+👼🏾	baby angel: medium-mørk hudfarve
+👼🏿	baby engel: mørk hudfarve
+🎅	julemanden
+🎅🏻	Julemanden: lys hudfarve
+🎅🏼	Julemanden: medium-lys hudfarve
+🎅🏽	Julemanden: medium hudfarve
+🎅🏾	Julemanden: medium-mørk hudfarve
+🎅🏿	Julemanden: mørk hudfarve
+🤶	Fru Claus
+🤶🏻	Fru Claus: lys hudfarve
+🤶🏼	Fru Claus: medium-lys hudfarve
+🤶🏽	Fru Claus: medium hudfarve
+🤶🏾	Fru Claus: medium-mørk hudfarve
+🤶🏿	Fru Claus: mørk hudfarve
+🦸	superhelt
+🦸🏻	superhelt: lys hudfarve
+🦸🏼	superhelt: medium-lys hudfarve
+🦸🏽	superhelt: medium hudfarve
+🦸🏾	superhelt: medium-mørk hudfarve
+🦸🏿	superhelt: mørk hudfarve
+🦸‍♀️	kvindelig superhelt
+🦸‍♀	kvindelig superhelt
+🦸🏻‍♀️	kvinde superhelt: lys hudfarve
+🦸🏻‍♀	kvinde superhelt: lys hudfarve
+🦸🏼‍♀️	kvindelig superhelt: medium-lys hudfarve
+🦸🏼‍♀	kvindelig superhelt: medium-lys hudfarve
+🦸🏽‍♀️	kvinde superhelt: medium hudfarve
+🦸🏽‍♀	kvinde superhelt: medium hudfarve
+🦸🏾‍♀️	kvindelig superhelt: medium-mørk hudfarve
+🦸🏾‍♀	kvindelig superhelt: medium-mørk hudfarve
+🦸🏿‍♀️	kvinde superhelt: mørk hudfarve
+🦸🏿‍♀	kvinde superhelt: mørk hudfarve
+🦸‍♂️	mand superhelt
+🦸‍♂	mand superhelt
+🦸🏻‍♂️	mand superhelt: lys hudfarve
+🦸🏻‍♂	mand superhelt: lys hudfarve
+🦸🏼‍♂️	man superhelt: medium-lys hudfarve
+🦸🏼‍♂	man superhelt: medium-lys hudfarve
+🦸🏽‍♂️	mand superhelt: medium hudfarve
+🦸🏽‍♂	mand superhelt: medium hudfarve
+🦸🏾‍♂️	man-superhelt: medium-mørk hudfarve
+🦸🏾‍♂	man-superhelt: medium-mørk hudfarve
+🦸🏿‍♂️	mand superhelt: mørk hudfarve
+🦸🏿‍♂	mand superhelt: mørk hudfarve
+🦹	superskurk
+🦹🏻	superskurk: lys hudfarve
+🦹🏼	superskurk: medium-lys hudfarve
+🦹🏽	superskurk: medium hudfarve
+🦹🏾	superskurk: medium-mørk hudfarve
+🦹🏿	superskurk: mørk hudfarve
+🦹‍♀️	kvinde superskurk
+🦹‍♀	kvinde superskurk
+🦹🏻‍♀️	kvinde superskurk: lys hudfarve
+🦹🏻‍♀	kvinde superskurk: lys hudfarve
+🦹🏼‍♀️	kvinde superskurk: medium lys hudfarve
+🦹🏼‍♀	kvinde superskurk: medium lys hudfarve
+🦹🏽‍♀️	kvinde superskurk: medium hudfarve
+🦹🏽‍♀	kvinde superskurk: medium hudfarve
+🦹🏾‍♀️	kvinde superskurk: medium-mørk hudfarve
+🦹🏾‍♀	kvinde superskurk: medium-mørk hudfarve
+🦹🏿‍♀️	kvinde superskurk: mørk hudfarve
+🦹🏿‍♀	kvinde superskurk: mørk hudfarve
+🦹‍♂️	mand superskurk
+🦹‍♂	mand superskurk
+🦹🏻‍♂️	mand superskurk: lys hudfarve
+🦹🏻‍♂	mand superskurk: lys hudfarve
+🦹🏼‍♂️	man superskurk: medium lys hudfarve
+🦹🏼‍♂	man superskurk: medium lys hudfarve
+🦹🏽‍♂️	mand superskurk: medium hudfarve
+🦹🏽‍♂	mand superskurk: medium hudfarve
+🦹🏾‍♂️	mand superskurk: medium-mørk hudfarve
+🦹🏾‍♂	mand superskurk: medium-mørk hudfarve
+🦹🏿‍♂️	mand superskurk: mørk hudfarve
+🦹🏿‍♂	mand superskurk: mørk hudfarve
+🧙	mage
+🧙🏻	mage: lys hudfarve
+🧙🏼	mage: medium-lys hudfarve
+🧙🏽	mage: medium hudfarve
+🧙🏾	mage: medium-mørk hudfarve
+🧙🏿	mage: mørk hudfarve
+🧙‍♀️	kvinde mage
+🧙‍♀	kvinde mage
+🧙🏻‍♀️	kvinde mage: lys hudfarve
+🧙🏻‍♀	kvinde mage: lys hudfarve
+🧙🏼‍♀️	kvinde mage: medium-lys hudfarve
+🧙🏼‍♀	kvinde mage: medium-lys hudfarve
+🧙🏽‍♀️	kvinde mage: medium hudfarve
+🧙🏽‍♀	kvinde mage: medium hudfarve
+🧙🏾‍♀️	kvinde mage: medium-mørk hudfarve
+🧙🏾‍♀	kvinde mage: medium-mørk hudfarve
+🧙🏿‍♀️	kvinde mage: mørk hudfarve
+🧙🏿‍♀	kvinde mage: mørk hudfarve
+🧙‍♂️	mand mage
+🧙‍♂	mand mage
+🧙🏻‍♂️	mand mage: lys hudfarve
+🧙🏻‍♂	mand mage: lys hudfarve
+🧙🏼‍♂️	mand mage: medium-lys hudfarve
+🧙🏼‍♂	mand mage: medium-lys hudfarve
+🧙🏽‍♂️	mand mage: medium hudfarve
+🧙🏽‍♂	mand mage: medium hudfarve
+🧙🏾‍♂️	mand mage: medium-mørk hudfarve
+🧙🏾‍♂	mand mage: medium-mørk hudfarve
+🧙🏿‍♂️	mand mage: mørk hudfarve
+🧙🏿‍♂	mand mage: mørk hudfarve
+🧚	fe
+🧚🏻	fe: lys hudfarve
+🧚🏼	fe: medium-lys hudfarve
+🧚🏽	fe: medium hudfarve
+🧚🏾	fe: medium-mørk hudfarve
+🧚🏿	fe: mørk hudfarve
+🧚‍♀️	kvinde fe
+🧚‍♀	kvinde fe
+🧚🏻‍♀️	kvinde fe: lys hudfarve
+🧚🏻‍♀	kvinde fe: lys hudfarve
+🧚🏼‍♀️	kvindefe: medium-lys hudfarve
+🧚🏼‍♀	kvindefe: medium-lys hudfarve
+🧚🏽‍♀️	kvinde fe: medium hudfarve
+🧚🏽‍♀	kvinde fe: medium hudfarve
+🧚🏾‍♀️	kvindefe: medium-mørk hudfarve
+🧚🏾‍♀	kvindefe: medium-mørk hudfarve
+🧚🏿‍♀️	kvinde fe: mørk hudfarve
+🧚🏿‍♀	kvinde fe: mørk hudfarve
+🧚‍♂️	mand fe
+🧚‍♂	mand fe
+🧚🏻‍♂️	man fairy: lys hudfarve
+🧚🏻‍♂	man fairy: lys hudfarve
+🧚🏼‍♂️	man fairy: medium-lys hudfarve
+🧚🏼‍♂	man fairy: medium-lys hudfarve
+🧚🏽‍♂️	man fairy: medium hudfarve
+🧚🏽‍♂	man fairy: medium hudfarve
+🧚🏾‍♂️	man fairy: medium-mørk hudfarve
+🧚🏾‍♂	man fairy: medium-mørk hudfarve
+🧚🏿‍♂️	man fairy: mørk hudfarve
+🧚🏿‍♂	man fairy: mørk hudfarve
+🧛	vampyr
+🧛🏻	vampyr: lys hudfarve
+🧛🏼	vampyr: medium-lys hudfarve
+🧛🏽	vampyr: medium hudfarve
+🧛🏾	vampyr: medium-mørk hudfarve
+🧛🏿	vampyr: mørk hudfarve
+🧛‍♀️	kvinde vampyr
+🧛‍♀	kvinde vampyr
+🧛🏻‍♀️	kvinde vampyr: lys hudfarve
+🧛🏻‍♀	kvinde vampyr: lys hudfarve
+🧛🏼‍♀️	kvinde vampyr: medium-lys hudfarve
+🧛🏼‍♀	kvinde vampyr: medium-lys hudfarve
+🧛🏽‍♀️	kvinde vampyr: medium hudfarve
+🧛🏽‍♀	kvinde vampyr: medium hudfarve
+🧛🏾‍♀️	kvinde vampyr: medium-mørk hudfarve
+🧛🏾‍♀	kvinde vampyr: medium-mørk hudfarve
+🧛🏿‍♀️	kvinde vampyr: mørk hudfarve
+🧛🏿‍♀	kvinde vampyr: mørk hudfarve
+🧛‍♂️	mand vampyr
+🧛‍♂	mand vampyr
+🧛🏻‍♂️	mand vampyr: lys hudfarve
+🧛🏻‍♂	mand vampyr: lys hudfarve
+🧛🏼‍♂️	mand vampyr: medium-lys hudfarve
+🧛🏼‍♂	mand vampyr: medium-lys hudfarve
+🧛🏽‍♂️	mand vampyr: medium hudfarve
+🧛🏽‍♂	mand vampyr: medium hudfarve
+🧛🏾‍♂️	mand vampyr: medium-mørk hudfarve
+🧛🏾‍♂	mand vampyr: medium-mørk hudfarve
+🧛🏿‍♂️	mand vampyr: mørk hudfarve
+🧛🏿‍♂	mand vampyr: mørk hudfarve
+🧜	merperson
+🧜🏻	merperson: lys hudfarve
+🧜🏼	merperson: medium-lys hudfarve
+🧜🏽	merperson: medium hudfarve
+🧜🏾	merperson: medium-mørk hudfarve
+🧜🏿	merperson: mørk hudfarve
+🧜‍♀️	havfrue
+🧜‍♀	havfrue
+🧜🏻‍♀️	havfrue: lys hudfarve
+🧜🏻‍♀	havfrue: lys hudfarve
+🧜🏼‍♀️	havfrue: medium-lys hudfarve
+🧜🏼‍♀	havfrue: medium-lys hudfarve
+🧜🏽‍♀️	havfrue: medium hudfarve
+🧜🏽‍♀	havfrue: medium hudfarve
+🧜🏾‍♀️	havfrue: medium-mørk hudfarve
+🧜🏾‍♀	havfrue: medium-mørk hudfarve
+🧜🏿‍♀️	havfrue: mørk hudfarve
+🧜🏿‍♀	havfrue: mørk hudfarve
+🧜‍♂️	havmand
+🧜‍♂	havmand
+🧜🏻‍♂️	havmand: lys hudfarve
+🧜🏻‍♂	havmand: lys hudfarve
+🧜🏼‍♂️	havmand: medium-lys hudfarve
+🧜🏼‍♂	havmand: mellemlys hudfarve
+🧜🏽‍♂️	havmand: medium hudfarve
+🧜🏽‍♂	havmand: medium hudfarve
+🧜🏾‍♂️	havmand: medium-mørk hudfarve
+🧜🏾‍♂	havmand: medium-mørk hudfarve
+🧜🏿‍♂️	havmand: mørk hudfarve
+🧜🏿‍♂	havmand: mørk hudfarve
+🧝	nisse
+🧝🏻	nisse: lys hudfarve
+🧝🏼	nisse: medium-lys hudfarve
+🧝🏽	nisse: medium hudfarve
+🧝🏾	nisse: medium-mørk hudfarve
+🧝🏿	nisse: mørk hudfarve
+🧝‍♀️	kvinde alf
+🧝‍♀	kvinde alf
+🧝🏻‍♀️	kvinde alf: lys hudfarve
+🧝🏻‍♀	kvinde alf: lys hudfarve
+🧝🏼‍♀️	kvindeelver: mellemlys hudfarve
+🧝🏼‍♀	kvindeelver: mellemlys hudfarve
+🧝🏽‍♀️	kvindeelver: medium hudfarve
+🧝🏽‍♀	kvindeelver: medium hudfarve
+🧝🏾‍♀️	kvindeelver: medium-mørk hudfarve
+🧝🏾‍♀	kvindeelver: medium-mørk hudfarve
+🧝🏿‍♀️	kvinde alf: mørk hudfarve
+🧝🏿‍♀	kvinde alf: mørk hudfarve
+🧝‍♂️	mand alf
+🧝‍♂	mand alf
+🧝🏻‍♂️	mand alf: lys hudfarve
+🧝🏻‍♂	mand alf: lys hudfarve
+🧝🏼‍♂️	mandelver: medium-lys hudfarve
+🧝🏼‍♂	mandelver: medium-lys hudfarve
+🧝🏽‍♂️	mand alf: medium hudfarve
+🧝🏽‍♂	mand alf: medium hudfarve
+🧝🏾‍♂️	mandelver: medium-mørk hudfarve
+🧝🏾‍♂	mandelver: medium-mørk hudfarve
+🧝🏿‍♂️	mand alf: mørk hudfarve
+🧝🏿‍♂	mand alf: mørk hudfarve
+🧞	genie
+🧞‍♀️	kvinde genie
+🧞‍♀	kvinde genie
+🧞‍♂️	mand genie
+🧞‍♂	mand genie
+🧟	zombie
+🧟‍♀️	kvinde zombie
+🧟‍♀	kvinde zombie
+🧟‍♂️	mand zombie
+🧟‍♂	mand zombie
+🙍	person rynker panden
+🙍🏻	person, der rynker panden: lys hudfarve
+🙍🏼	person, der rynker panden: medium-lys hudfarve
+🙍🏽	person, der rynker panden: medium hudfarve
+🙍🏾	person, der rynker panden: medium-mørk hudfarve
+🙍🏿	person, der rynker panden: mørk hudfarve
+🙍‍♂️	mand rynker panden
+🙍‍♂	mand rynker panden
+🙍🏻‍♂️	mand rynker panden: lys hudfarve
+🙍🏻‍♂	mand rynker panden: lys hudfarve
+🙍🏼‍♂️	mand, der rynker panden: medium-lys hudfarve
+🙍🏼‍♂	mand, der rynker panden: medium-lys hudfarve
+🙍🏽‍♂️	mand rynker panden: medium hudfarve
+🙍🏽‍♂	mand rynker panden: medium hudfarve
+🙍🏾‍♂️	mand, der rynker panden: medium-mørk hudfarve
+🙍🏾‍♂	mand, der rynker panden: medium-mørk hudfarve
+🙍🏿‍♂️	mand rynker panden: mørk hudfarve
+🙍🏿‍♂	mand rynker panden: mørk hudfarve
+🙍‍♀️	kvinde rynker panden
+🙍‍♀	kvinde rynker panden
+🙍🏻‍♀️	kvinde rynker panden: lys hudfarve
+🙍🏻‍♀	kvinde rynker panden: lys hudfarve
+🙍🏼‍♀️	kvinde, der rynker panden: medium-lys hudfarve
+🙍🏼‍♀	kvinde, der rynker panden: medium-lys hudfarve
+🙍🏽‍♀️	kvinde rynker panden: medium hudfarve
+🙍🏽‍♀	kvinde rynker panden: medium hudfarve
+🙍🏾‍♀️	kvinde rynker panden: medium-mørk hudfarve
+🙍🏾‍♀	kvinde rynker panden: medium-mørk hudfarve
+🙍🏿‍♀️	kvinde rynker panden: mørk hudfarve
+🙍🏿‍♀	kvinde rynker panden: mørk hudfarve
+🙎	person, der buldrer
+🙎🏻	person, der buldrer: lys hudfarve
+🙎🏼	person, der buldrer: medium-lys hudfarve
+🙎🏽	person, der buldrer: medium hudfarve
+🙎🏾	person, der pøser: medium-mørk hudfarve
+🙎🏿	person, der buldrer: mørk hudfarve
+🙎‍♂️	mand, der buldrer
+🙎‍♂	mand, der buldrer
+🙎🏻‍♂️	mand, der buldrer: lys hudfarve
+🙎🏻‍♂	mand, der buldrer: lys hudfarve
+🙎🏼‍♂️	mand, der buldrer: medium-lys hudfarve
+🙎🏼‍♂	mand, der buldrer: medium-lys hudfarve
+🙎🏽‍♂️	mand, der buldrer: medium hudfarve
+🙎🏽‍♂	mand, der buldrer: medium hudfarve
+🙎🏾‍♂️	mand, der buldrer: medium-mørk hudfarve
+🙎🏾‍♂	mand, der buldrer: medium-mørk hudfarve
+🙎🏿‍♂️	mand, der buldrer: mørk hudfarve
+🙎🏿‍♂	mand, der buldrer: mørk hudfarve
+🙎‍♀️	kvinde, der buldrer
+🙎‍♀	kvinde, der buldrer
+🙎🏻‍♀️	kvinde, der buldrer: lys hudfarve
+🙎🏻‍♀	kvinde, der buldrer: lys hudfarve
+🙎🏼‍♀️	kvinde, der buldrer: medium-lys hudfarve
+🙎🏼‍♀	kvinde, der buldrer: medium-lys hudfarve
+🙎🏽‍♀️	kvinde, der buldrer: medium hudfarve
+🙎🏽‍♀	kvinde, der buldrer: medium hudfarve
+🙎🏾‍♀️	kvinde, der buldrer: medium-mørk hudfarve
+🙎🏾‍♀	kvinde, der buldrer: medium-mørk hudfarve
+🙎🏿‍♀️	kvinde, der buldrer: mørk hudfarve
+🙎🏿‍♀	kvinde, der buldrer: mørk hudfarve
+🙅	person, der tegner NEJ
+🙅🏻	person, der gestikulerer NEJ: lys hudfarve
+🙅🏼	person, der gestikulerer NEJ: medium-lys hudfarve
+🙅🏽	person, der gestikulerer NEJ: medium hudfarve
+🙅🏾	person, der gestikulerer NEJ: medium-mørk hudfarve
+🙅🏿	person, der gestikulerer NEJ: mørk hudfarve
+🙅‍♂️	mand tegner NEJ
+🙅‍♂	mand tegner NEJ
+🙅🏻‍♂️	mand, der gestikulerer NEJ: lys hudfarve
+🙅🏻‍♂	mand, der gestikulerer NEJ: lys hudfarve
+🙅🏼‍♂️	mand, der gestikulerer NEJ: medium-lys hudfarve
+🙅🏼‍♂	mand, der gestikulerer NEJ: medium-lys hudfarve
+🙅🏽‍♂️	mand, der gestikulerer NEJ: medium hudfarve
+🙅🏽‍♂	mand, der gestikulerer NEJ: medium hudfarve
+🙅🏾‍♂️	mand, der gestikulerer NEJ: medium-mørk hudfarve
+🙅🏾‍♂	mand, der gestikulerer NEJ: medium-mørk hudfarve
+🙅🏿‍♂️	mand, der gestikulerer NEJ: mørk hudfarve
+🙅🏿‍♂	mand, der gestikulerer NEJ: mørk hudfarve
+🙅‍♀️	kvinde, der gestikulerer NEJ
+🙅‍♀	kvinde, der gestikulerer NEJ
+🙅🏻‍♀️	kvinde, der gestikulerer NEJ: lys hudfarve
+🙅🏻‍♀	kvinde, der gestikulerer NEJ: lys hudfarve
+🙅🏼‍♀️	kvinde, der gestikulerer NEJ: mellemlys hudfarve
+🙅🏼‍♀	kvinde, der gestikulerer NEJ: mellemlys hudfarve
+🙅🏽‍♀️	kvinde, der gestikulerer NEJ: medium hudfarve
+🙅🏽‍♀	kvinde, der gestikulerer NEJ: medium hudfarve
+🙅🏾‍♀️	kvinde, der gestikulerer NEJ: medium-mørk hudfarve
+🙅🏾‍♀	kvinde, der gestikulerer NEJ: medium-mørk hudfarve
+🙅🏿‍♀️	kvinde, der gestikulerer NEJ: mørk hudfarve
+🙅🏿‍♀	kvinde, der gestikulerer NEJ: mørk hudfarve
+🙆	person, der gestikulerer OK
+🙆🏻	person, der gestikulerer OK: lys hudfarve
+🙆🏼	person, der gestikulerer OK: mellemlys hudfarve
+🙆🏽	person, der gestikulerer OK: medium hudfarve
+🙆🏾	person, der gestikulerer OK: medium-mørk hudfarve
+🙆🏿	person, der gestikulerer OK: mørk hudfarve
+🙆‍♂️	mand gestikulerer OK
+🙆‍♂	mand gestikulerer OK
+🙆🏻‍♂️	mand, der gestikulerer OK: lys hudfarve
+🙆🏻‍♂	mand, der gestikulerer OK: lys hudfarve
+🙆🏼‍♂️	mand, der gestikulerer OK: mellemlys hudfarve
+🙆🏼‍♂	mand, der gestikulerer OK: mellemlys hudfarve
+🙆🏽‍♂️	mand, der gestikulerer OK: medium hudfarve
+🙆🏽‍♂	mand, der gestikulerer OK: medium hudfarve
+🙆🏾‍♂️	mand, der gestikulerer OK: medium-mørk hudfarve
+🙆🏾‍♂	mand, der gestikulerer OK: medium-mørk hudfarve
+🙆🏿‍♂️	mand, der gestikulerer OK: mørk hudfarve
+🙆🏿‍♂	mand, der gestikulerer OK: mørk hudfarve
+🙆‍♀️	kvinde, der gestikulerer OK
+🙆‍♀	kvinde, der gestikulerer OK
+🙆🏻‍♀️	kvinde, der gestikulerer OK: lys hudfarve
+🙆🏻‍♀	kvinde, der gestikulerer OK: lys hudfarve
+🙆🏼‍♀️	kvinde, der gestikulerer OK: medium-lys hudfarve
+🙆🏼‍♀	kvinde, der gestikulerer OK: medium-lys hudfarve
+🙆🏽‍♀️	kvinde, der gestikulerer OK: medium hudfarve
+🙆🏽‍♀	kvinde, der gestikulerer OK: medium hudfarve
+🙆🏾‍♀️	kvinde, der gestikulerer OK: medium-mørk hudfarve
+🙆🏾‍♀	kvinde, der gestikulerer OK: medium-mørk hudfarve
+🙆🏿‍♀️	kvinde, der gestikulerer OK: mørk hudfarve
+🙆🏿‍♀	kvinde, der gestikulerer OK: mørk hudfarve
+💁	person giver hånden
+💁🏻	person, der tipper hånden: lys hudfarve
+💁🏼	person, der tipper hånden: medium-lys hudfarve
+💁🏽	person, der tipper hånden: medium hudfarve
+💁🏾	person, der tipper hånden: medium-mørk hudfarve
+💁🏿	person, der tipper hånden: mørk hudfarve
+💁‍♂️	mand vipper hånden
+💁‍♂	mand vipper hånden
+💁🏻‍♂️	mand vipper hånden: lys hudfarve
+💁🏻‍♂	mand vipper hånden: lys hudfarve
+💁🏼‍♂️	mand vipper hånden: medium-lys hudfarve
+💁🏼‍♂	mand vipper hånden: medium-lys hudfarve
+💁🏽‍♂️	mand vipper hånden: medium hudfarve
+💁🏽‍♂	mand vipper hånden: medium hudfarve
+💁🏾‍♂️	mand vipper hånden: medium-mørk hudfarve
+💁🏾‍♂	mand vipper hånden: medium-mørk hudfarve
+💁🏿‍♂️	mand vipper hånden: mørk hudfarve
+💁🏿‍♂	mand vipper hånden: mørk hudfarve
+💁‍♀️	kvinde vipper hånden
+💁‍♀	kvinde vipper hånden
+💁🏻‍♀️	kvinde vipper hånden: lys hudfarve
+💁🏻‍♀	kvinde vipper hånden: lys hudfarve
+💁🏼‍♀️	kvinde vipper hånden: medium-lys hudfarve
+💁🏼‍♀	kvinde vipper hånden: medium-lys hudfarve
+💁🏽‍♀️	kvinde vipper hånden: medium hudfarve
+💁🏽‍♀	kvinde vipper hånden: medium hudfarve
+💁🏾‍♀️	kvinde vipper hånden: medium-mørk hudfarve
+💁🏾‍♀	kvinde vipper hånden: medium-mørk hudfarve
+💁🏿‍♀️	kvinde vipper hånden: mørk hudfarve
+💁🏿‍♀	kvinde vipper hånden: mørk hudfarve
+🙋	person rækker hånden op
+🙋🏻	person, der rækker hånden op: lys hudfarve
+🙋🏼	person, der rækker hånden op: medium-lys hudfarve
+🙋🏽	person, der rækker hånden op: medium hudfarve
+🙋🏾	person, der rækker hånden op: medium-mørk hudfarve
+🙋🏿	person, der rækker hånden op: mørk hudfarve
+🙋‍♂️	mand rækker hånden op
+🙋‍♂	mand rækker hånden op
+🙋🏻‍♂️	mand rækker hånden op: lys hudfarve
+🙋🏻‍♂	mand rækker hånden op: lys hudfarve
+🙋🏼‍♂️	mand rækker hånden op: medium-lys hudfarve
+🙋🏼‍♂	mand rækker hånden op: medium-lys hudfarve
+🙋🏽‍♂️	mand rækker hånden op: medium hudfarve
+🙋🏽‍♂	mand rækker hånden op: medium hudfarve
+🙋🏾‍♂️	mand rækker hånden op: medium-mørk hudfarve
+🙋🏾‍♂	mand rækker hånden op: medium-mørk hudfarve
+🙋🏿‍♂️	mand rækker hånden op: mørk hudfarve
+🙋🏿‍♂	mand rækker hånden op: mørk hudfarve
+🙋‍♀️	kvinde rækker hånden op
+🙋‍♀	kvinde rækker hånden op
+🙋🏻‍♀️	kvinde rækker hånden op: lys hudfarve
+🙋🏻‍♀	kvinde rækker hånden op: lys hudfarve
+🙋🏼‍♀️	kvinde rækker hånden op: mellemlys hudfarve
+🙋🏼‍♀	kvinde rækker hånden op: mellemlys hudfarve
+🙋🏽‍♀️	kvinde rækker hånden op: medium hudfarve
+🙋🏽‍♀	kvinde rækker hånden op: medium hudfarve
+🙋🏾‍♀️	kvinde rækker hånden op: medium-mørk hudfarve
+🙋🏾‍♀	kvinde rækker hånden op: medium-mørk hudfarve
+🙋🏿‍♀️	kvinde rækker hånden op: mørk hudfarve
+🙋🏿‍♀	kvinde rækker hånden op: mørk hudfarve
+🙇	person, der bukker
+🙇🏻	person bukker: lys hudfarve
+🙇🏼	person bukker: medium-lys hudfarve
+🙇🏽	person bukker: medium hudfarve
+🙇🏾	person bukker: medium-mørk hudfarve
+🙇🏿	person bukker: mørk hudfarve
+🙇‍♂️	mand bukker
+🙇‍♂	mand bukker
+🙇🏻‍♂️	mand bukker: lys hudfarve
+🙇🏻‍♂	mand bukker: lys hudfarve
+🙇🏼‍♂️	mand bukker: medium-lys hudfarve
+🙇🏼‍♂	mand bukker: medium-lys hudfarve
+🙇🏽‍♂️	mand bukker: medium hudfarve
+🙇🏽‍♂	mand bukker: medium hudfarve
+🙇🏾‍♂️	mand bukker: medium-mørk hudfarve
+🙇🏾‍♂	mand bukker: medium-mørk hudfarve
+🙇🏿‍♂️	mand bukker: mørk hudfarve
+🙇🏿‍♂	mand bukker: mørk hudfarve
+🙇‍♀️	kvinde bukker
+🙇‍♀	kvinde bukker
+🙇🏻‍♀️	kvinde bukker: lys hudfarve
+🙇🏻‍♀	kvinde bukker: lys hudfarve
+🙇🏼‍♀️	kvinde bukker: medium-lys hudfarve
+🙇🏼‍♀	kvinde bukker: medium-lys hudfarve
+🙇🏽‍♀️	kvinde bukker: medium hudfarve
+🙇🏽‍♀	kvinde bukker: medium hudfarve
+🙇🏾‍♀️	kvinde bukker: medium-mørk hudfarve
+🙇🏾‍♀	kvinde bukker: medium-mørk hudfarve
+🙇🏿‍♀️	kvinde bukker: mørk hudfarve
+🙇🏿‍♀	kvinde bukker: mørk hudfarve
+🤦	person facepalming
+🤦🏻	person facepalming: lys hudfarve
+🤦🏼	person facepalming: medium-lys hudfarve
+🤦🏽	person facepalming: medium hudfarve
+🤦🏾	person facepalming: medium-mørk hudfarve
+🤦🏿	person facepalming: mørk hudfarve
+🤦‍♂️	mand facepalming
+🤦‍♂	mand facepalming
+🤦🏻‍♂️	mand facepalming: lys hudfarve
+🤦🏻‍♂	mand facepalming: lys hudfarve
+🤦🏼‍♂️	mand facepalming: medium-lys hudfarve
+🤦🏼‍♂	mand facepalming: medium-lys hudfarve
+🤦🏽‍♂️	mand facepalming: medium hudfarve
+🤦🏽‍♂	mand facepalming: medium hudfarve
+🤦🏾‍♂️	mand facepalming: medium-mørk hudfarve
+🤦🏾‍♂	mand facepalming: medium-mørk hudfarve
+🤦🏿‍♂️	mand facepalming: mørk hudfarve
+🤦🏿‍♂	mand facepalming: mørk hudfarve
+🤦‍♀️	kvinde facepalming
+🤦‍♀	kvinde facepalming
+🤦🏻‍♀️	kvinde facepalming: lys hudfarve
+🤦🏻‍♀	kvinde facepalming: lys hudfarve
+🤦🏼‍♀️	kvinde facepalming: medium-lys hudfarve
+🤦🏼‍♀	kvinde facepalming: medium-lys hudfarve
+🤦🏽‍♀️	kvinde facepalming: medium hudfarve
+🤦🏽‍♀	kvinde facepalming: medium hudfarve
+🤦🏾‍♀️	kvinde facepalming: medium-mørk hudfarve
+🤦🏾‍♀	kvinde facepalming: medium-mørk hudfarve
+🤦🏿‍♀️	kvinde facepalming: mørk hudfarve
+🤦🏿‍♀	kvinde facepalming: mørk hudfarve
+🤷	person trækker på skuldrene
+🤷🏻	person trækker på skuldrene: lys hudfarve
+🤷🏼	person, der trækker på skuldrene: medium-lys hudfarve
+🤷🏽	person, der trækker på skuldrene: medium hudfarve
+🤷🏾	person trækker på skuldrene: medium-mørk hudfarve
+🤷🏿	person trækker på skuldrene: mørk hudfarve
+🤷‍♂️	mand trækker på skuldrene
+🤷‍♂	mand trækker på skuldrene
+🤷🏻‍♂️	mand trækker på skuldrene: lys hudfarve
+🤷🏻‍♂	mand trækker på skuldrene: lys hudfarve
+🤷🏼‍♂️	mand trækker på skuldrene: medium-lys hudfarve
+🤷🏼‍♂	mand trækker på skuldrene: medium-lys hudfarve
+🤷🏽‍♂️	mand trækker på skuldrene: medium hudfarve
+🤷🏽‍♂	mand trækker på skuldrene: medium hudfarve
+🤷🏾‍♂️	mand trækker på skuldrene: medium-mørk hudfarve
+🤷🏾‍♂	mand trækker på skuldrene: medium-mørk hudfarve
+🤷🏿‍♂️	mand trækker på skuldrene: mørk hudfarve
+🤷🏿‍♂	mand trækker på skuldrene: mørk hudfarve
+🤷‍♀️	kvinde trækker på skuldrene
+🤷‍♀	kvinde trækker på skuldrene
+🤷🏻‍♀️	kvinde trækker på skuldrene: lys hudfarve
+🤷🏻‍♀	kvinde trækker på skuldrene: lys hudfarve
+🤷🏼‍♀️	kvinde trækker på skuldrene: medium-lys hudfarve
+🤷🏼‍♀	kvinde trækker på skuldrene: medium-lys hudfarve
+🤷🏽‍♀️	kvinde trækker på skuldrene: medium hudfarve
+🤷🏽‍♀	kvinde trækker på skuldrene: medium hudfarve
+🤷🏾‍♀️	kvinde trækker på skuldrene: medium-mørk hudfarve
+🤷🏾‍♀	kvinde trækker på skuldrene: medium-mørk hudfarve
+🤷🏿‍♀️	kvinde trækker på skuldrene: mørk hudfarve
+🤷🏿‍♀	kvinde trækker på skuldrene: mørk hudfarve
+💆	person får massage
+💆🏻	person får massage: lys hudfarve
+💆🏼	person, der får massage: medium-lys hudfarve
+💆🏽	person får massage: medium hudfarve
+💆🏾	person får massage: medium-mørk hudfarve
+💆🏿	person får massage: mørk hudfarve
+💆‍♂️	mand får massage
+💆‍♂	mand får massage
+💆🏻‍♂️	mand får massage: lys hudfarve
+💆🏻‍♂	mand får massage: lys hudfarve
+💆🏼‍♂️	mand får massage: medium-lys hudfarve
+💆🏼‍♂	mand får massage: medium-lys hudfarve
+💆🏽‍♂️	mand får massage: medium hudfarve
+💆🏽‍♂	mand får massage: medium hudfarve
+💆🏾‍♂️	mand får massage: medium-mørk hudfarve
+💆🏾‍♂	mand får massage: medium-mørk hudfarve
+💆🏿‍♂️	mand får massage: mørk hudfarve
+💆🏿‍♂	mand får massage: mørk hudfarve
+💆‍♀️	kvinde får massage
+💆‍♀	kvinde får massage
+💆🏻‍♀️	kvinde får massage: lys hudfarve
+💆🏻‍♀	kvinde får massage: lys hudfarve
+💆🏼‍♀️	kvinde får massage: medium-lys hudfarve
+💆🏼‍♀	kvinde får massage: medium-lys hudfarve
+💆🏽‍♀️	kvinde får massage: medium hudfarve
+💆🏽‍♀	kvinde får massage: medium hudfarve
+💆🏾‍♀️	kvinde får massage: medium-mørk hudfarve
+💆🏾‍♀	kvinde får massage: medium-mørk hudfarve
+💆🏿‍♀️	kvinde får massage: mørk hudfarve
+💆🏿‍♀	kvinde får massage: mørk hudfarve
+💇	person, der bliver klippet
+💇🏻	person, der bliver klippet: lys hudfarve
+💇🏼	person, der bliver klippet: medium-lys hudfarve
+💇🏽	person, der bliver klippet: medium hudfarve
+💇🏾	person, der bliver klippet: medium-mørk hudfarve
+💇🏿	person, der bliver klippet: mørk hudfarve
+💇‍♂️	mand bliver klippet
+💇‍♂	mand bliver klippet
+💇🏻‍♂️	mand bliver klippet: lys hudfarve
+💇🏻‍♂	mand bliver klippet: lys hudfarve
+💇🏼‍♂️	mand bliver klippet: medium-lys hudfarve
+💇🏼‍♂	mand bliver klippet: medium-lys hudfarve
+💇🏽‍♂️	mand bliver klippet: medium hudfarve
+💇🏽‍♂	mand bliver klippet: medium hudfarve
+💇🏾‍♂️	mand bliver klippet: medium-mørk hudfarve
+💇🏾‍♂	mand bliver klippet: medium-mørk hudfarve
+💇🏿‍♂️	mand bliver klippet: mørk hudfarve
+💇🏿‍♂	mand bliver klippet: mørk hudfarve
+💇‍♀️	kvinde bliver klippet
+💇‍♀	kvinde bliver klippet
+💇🏻‍♀️	kvinde bliver klippet: lys hudfarve
+💇🏻‍♀	kvinde bliver klippet: lys hudfarve
+💇🏼‍♀️	kvinde bliver klippet: medium-lys hudfarve
+💇🏼‍♀	kvinde bliver klippet: medium-lys hudfarve
+💇🏽‍♀️	kvinde bliver klippet: medium hudfarve
+💇🏽‍♀	kvinde bliver klippet: medium hudfarve
+💇🏾‍♀️	kvinde bliver klippet: medium-mørk hudfarve
+💇🏾‍♀	kvinde bliver klippet: medium-mørk hudfarve
+💇🏿‍♀️	kvinde bliver klippet: mørk hudfarve
+💇🏿‍♀	kvinde bliver klippet: mørk hudfarve
+🚶	person gående
+🚶🏻	person, der går: lys hudfarve
+🚶🏼	person, der går: mellemlys hudfarve
+🚶🏽	person, der går: medium hudfarve
+🚶🏾	person, der går: medium-mørk hudfarve
+🚶🏿	person, der går: mørk hudfarve
+🚶‍♂️	mand gående
+🚶‍♂	mand gående
+🚶🏻‍♂️	mand gående: lys hudfarve
+🚶🏻‍♂	mand gående: lys hudfarve
+🚶🏼‍♂️	mand gående: mellemlys hudfarve
+🚶🏼‍♂	mand gående: mellemlys hudfarve
+🚶🏽‍♂️	mand gående: medium hudfarve
+🚶🏽‍♂	mand gående: medium hudfarve
+🚶🏾‍♂️	mand gående: medium-mørk hudfarve
+🚶🏾‍♂	mand gående: medium-mørk hudfarve
+🚶🏿‍♂️	mand gående: mørk hudfarve
+🚶🏿‍♂	mand gående: mørk hudfarve
+🚶‍♀️	kvinde gående
+🚶‍♀	kvinde gående
+🚶🏻‍♀️	kvinde gående: lys hudfarve
+🚶🏻‍♀	kvinde gående: lys hudfarve
+🚶🏼‍♀️	kvinde gående: mellemlys hudfarve
+🚶🏼‍♀	kvinde gående: mellemlys hudfarve
+🚶🏽‍♀️	kvinde gående: medium hudfarve
+🚶🏽‍♀	kvinde gående: medium hudfarve
+🚶🏾‍♀️	kvinde gående: medium-mørk hudfarve
+🚶🏾‍♀	kvinde gående: medium-mørk hudfarve
+🚶🏿‍♀️	kvinde gående: mørk hudfarve
+🚶🏿‍♀	kvinde gående: mørk hudfarve
+🏃	person, der løber
+🏃🏻	person, der løber: lys hudfarve
+🏃🏼	person, der løber: mellemlys hudfarve
+🏃🏽	person, der løber: medium hudfarve
+🏃🏾	person, der løber: medium-mørk hudfarve
+🏃🏿	person, der løber: mørk hudfarve
+🏃‍♂️	mand løber
+🏃‍♂	mand løber
+🏃🏻‍♂️	mand, der løber: lys hudfarve
+🏃🏻‍♂	mand, der løber: lys hudfarve
+🏃🏼‍♂️	mand, der løber: medium-lys hudfarve
+🏃🏼‍♂	mand, der løber: medium-lys hudfarve
+🏃🏽‍♂️	mand, der løber: medium hudfarve
+🏃🏽‍♂	mand, der løber: medium hudfarve
+🏃🏾‍♂️	mand, der løber: medium-mørk hudfarve
+🏃🏾‍♂	mand, der løber: medium-mørk hudfarve
+🏃🏿‍♂️	mand, der løber: mørk hudfarve
+🏃🏿‍♂	mand, der løber: mørk hudfarve
+🏃‍♀️	kvinde løber
+🏃‍♀	kvinde løber
+🏃🏻‍♀️	kvinde, der løber: lys hudfarve
+🏃🏻‍♀	kvinde, der løber: lys hudfarve
+🏃🏼‍♀️	kvinde, der løber: mellemlys hudfarve
+🏃🏼‍♀	kvinde, der løber: mellemlys hudfarve
+🏃🏽‍♀️	kvinde, der løber: medium hudfarve
+🏃🏽‍♀	kvinde, der løber: medium hudfarve
+🏃🏾‍♀️	kvinde, der løber: medium-mørk hudfarve
+🏃🏾‍♀	kvinde, der løber: medium-mørk hudfarve
+🏃🏿‍♀️	kvinde, der løber: mørk hudfarve
+🏃🏿‍♀	kvinde, der løber: mørk hudfarve
+💃	kvinde danser
+💃🏻	kvinde danser: lys hudfarve
+💃🏼	kvinde danser: medium-lys hudfarve
+💃🏽	kvinde danser: medium hudfarve
+💃🏾	kvinde danser: medium-mørk hudfarve
+💃🏿	kvinde danser: mørk hudfarve
+🕺	mand danser
+🕺🏻	mand, der danser: lys hudfarve
+🕺🏼	mand, der danser: medium-lys hudfarve
+🕺🏽	mand, der danser: medium hudfarve
+🕺🏾	mand, der danser: medium-mørk hudfarve
+🕺🏿	mand, der danser: mørk hudfarve
+👯	mennesker med kaninører
+👯‍♂️	mænd med kaninører
+👯‍♂	mænd med kaninører
+👯‍♀️	kvinder med kaninører
+👯‍♀	kvinder med kaninører
+🧖	person i dampbad
+🧖🏻	person i dampbad: lys hudfarve
+🧖🏼	person i dampbad: medium lys hudfarve
+🧖🏽	person i dampbad: medium hudfarve
+🧖🏾	person i dampbad: medium-mørk hudfarve
+🧖🏿	person i dampbad: mørk hudfarve
+🧖‍♀️	kvinde i dampbad
+🧖‍♀	kvinde i dampbad
+🧖🏻‍♀️	kvinde i dampbad: lys hudfarve
+🧖🏻‍♀	kvinde i dampbad: lys hudfarve
+🧖🏼‍♀️	kvinde i dampbad: medium lys hudfarve
+🧖🏼‍♀	kvinde i dampbad: medium lys hudfarve
+🧖🏽‍♀️	kvinde i dampbad: medium hudfarve
+🧖🏽‍♀	kvinde i dampbad: medium hudfarve
+🧖🏾‍♀️	kvinde i dampbad: medium-mørk hudfarve
+🧖🏾‍♀	kvinde i dampbad: medium-mørk hudfarve
+🧖🏿‍♀️	kvinde i dampbad: mørk hudfarve
+🧖🏿‍♀	kvinde i dampbad: mørk hudfarve
+🧖‍♂️	mand i dampbad
+🧖‍♂	mand i dampbad
+🧖🏻‍♂️	mand i dampbad: lys hudfarve
+🧖🏻‍♂	mand i dampbad: lys hudfarve
+🧖🏼‍♂️	mand i dampbad: medium lys hudfarve
+🧖🏼‍♂	mand i dampbad: medium lys hudfarve
+🧖🏽‍♂️	mand i dampbad: medium hudfarve
+🧖🏽‍♂	mand i dampbad: medium hudfarve
+🧖🏾‍♂️	mand i dampbad: medium-mørk hudfarve
+🧖🏾‍♂	mand i dampbad: medium-mørk hudfarve
+🧖🏿‍♂️	mand i dampbad: mørk hudfarve
+🧖🏿‍♂	mand i dampbad: mørk hudfarve
+🧗	person klatring
+🧗🏻	person klatring: lys hudfarve
+🧗🏼	person klatring: medium-lys hudfarve
+🧗🏽	person klatring: medium hudfarve
+🧗🏾	person klatring: medium-mørk hudfarve
+🧗🏿	person klatring: mørk hudfarve
+🧗‍♀️	kvinde klatring
+🧗‍♀	kvinde klatring
+🧗🏻‍♀️	kvinde klatring: lys hudfarve
+🧗🏻‍♀	kvinde klatring: lys hudfarve
+🧗🏼‍♀️	kvinde klatring: medium-lys hudfarve
+🧗🏼‍♀	kvinde klatring: medium-lys hudfarve
+🧗🏽‍♀️	kvinde klatring: medium hudfarve
+🧗🏽‍♀	kvinde klatring: medium hudfarve
+🧗🏾‍♀️	kvinde klatring: medium-mørk hudfarve
+🧗🏾‍♀	kvinde klatring: medium-mørk hudfarve
+🧗🏿‍♀️	kvinde klatring: mørk hudfarve
+🧗🏿‍♀	kvinde klatring: mørk hudfarve
+🧗‍♂️	mand klatring
+🧗‍♂	mand klatring
+🧗🏻‍♂️	mand klatring: lys hudfarve
+🧗🏻‍♂	mand klatring: lys hudfarve
+🧗🏼‍♂️	mand klatring: medium-lys hudfarve
+🧗🏼‍♂	mand klatring: medium-lys hudfarve
+🧗🏽‍♂️	mand klatring: medium hudfarve
+🧗🏽‍♂	mand klatring: medium hudfarve
+🧗🏾‍♂️	mand klatring: medium-mørk hudfarve
+🧗🏾‍♂	mand klatring: medium-mørk hudfarve
+🧗🏿‍♂️	mand klatring: mørk hudfarve
+🧗🏿‍♂	mand klatring: mørk hudfarve
+🧘	person i lotusstilling
+🧘🏻	person i lotusstilling: lys hudfarve
+🧘🏼	person i lotusstilling: medium lys hudfarve
+🧘🏽	person i lotusstilling: medium hudfarve
+🧘🏾	person i lotusstilling: medium-mørk hudfarve
+🧘🏿	person i lotusstilling: mørk hudfarve
+🧘‍♀️	kvinde i lotusstilling
+🧘‍♀	kvinde i lotusstilling
+🧘🏻‍♀️	kvinde i lotusstilling: lys hudfarve
+🧘🏻‍♀	kvinde i lotusstilling: lys hudfarve
+🧘🏼‍♀️	kvinde i lotusstilling: medium lys hudfarve
+🧘🏼‍♀	kvinde i lotusstilling: medium lys hudfarve
+🧘🏽‍♀️	kvinde i lotusstilling: medium hudfarve
+🧘🏽‍♀	kvinde i lotusstilling: medium hudfarve
+🧘🏾‍♀️	kvinde i lotusstilling: medium-mørk hudfarve
+🧘🏾‍♀	kvinde i lotusstilling: medium-mørk hudfarve
+🧘🏿‍♀️	kvinde i lotusstilling: mørk hudfarve
+🧘🏿‍♀	kvinde i lotusstilling: mørk hudfarve
+🧘‍♂️	mand i lotusstilling
+🧘‍♂	mand i lotusstilling
+🧘🏻‍♂️	mand i lotusstilling: lys hudfarve
+🧘🏻‍♂	mand i lotusstilling: lys hudfarve
+🧘🏼‍♂️	mand i lotusstilling: medium-lys hudfarve
+🧘🏼‍♂	mand i lotusstilling: medium-lys hudfarve
+🧘🏽‍♂️	mand i lotusstilling: medium hudfarve
+🧘🏽‍♂	mand i lotusstilling: medium hudfarve
+🧘🏾‍♂️	mand i lotusstilling: medium-mørk hudfarve
+🧘🏾‍♂	mand i lotusstilling: medium-mørk hudfarve
+🧘🏿‍♂️	mand i lotusstilling: mørk hudfarve
+🧘🏿‍♂	mand i lotusstilling: mørk hudfarve
+🛀	person i bad
+🛀🏻	person, der tager et bad: lys hudfarve
+🛀🏼	person, der tager et bad: medium-lys hudfarve
+🛀🏽	person i bad: medium hudtone
+🛀🏾	person, der tager et bad: medium-mørk hudfarve
+🛀🏿	person i bad: mørk hudfarve
+🛌	person i sengen
+🛌🏻	person i sengen: lys hudfarve
+🛌🏼	person i sengen: medium-lys hudfarve
+🛌🏽	person i sengen: medium hudfarve
+🛌🏾	person i sengen: medium-mørk hudfarve
+🛌🏿	person i sengen: mørk hudfarve
+🕴️	mand i jakkesæt svævende
+🕴	mand i jakkesæt svævende
+🕴🏻	mand i jakkesæt leviterende: lys hudfarve
+🕴🏼	mand i jakkesæt svævende: medium-lys hudfarve
+🕴🏽	mand i jakkesæt leviterende: medium hudfarve
+🕴🏾	mand i jakkesæt leviterende: medium-mørk hudfarve
+🕴🏿	mand i jakkesæt leviterende: mørk hudfarve
+🗣️	talende hoved
+🗣	talende hoved
+👤	buste i silhuet
+👥	buster i silhuet
+🤺	personhegn
+🏇	hestevæddeløb
+🏇🏻	hestevæddeløb: lys hudfarve
+🏇🏼	hestevæddeløb: medium-lys hudfarve
+🏇🏽	hestevæddeløb: medium hudfarve
+🏇🏾	hestevæddeløb: medium-mørk hudfarve
+🏇🏿	hestevæddeløb: mørk hudfarve
+⛷️	skiløber
+⛷	skiløber
+🏂	snowboarder
+🏂🏻	snowboarder: lys hudfarve
+🏂🏼	snowboarder: medium-lys hudfarve
+🏂🏽	snowboarder: medium hudfarve
+🏂🏾	snowboarder: medium-mørk hudfarve
+🏂🏿	snowboarder: mørk hudfarve
+🏌️	person, der spiller golf
+🏌	person, der spiller golf
+🏌🏻	person, der spiller golf: lys hudfarve
+🏌🏼	person, der spiller golf: medium-lys hudfarve
+🏌🏽	person, der spiller golf: medium hudfarve
+🏌🏾	person, der spiller golf: medium-mørk hudfarve
+🏌🏿	person, der spiller golf: mørk hudfarve
+🏌️‍♂️	mand, der spiller golf
+🏌‍♂️	mand, der spiller golf
+🏌️‍♂	mand, der spiller golf
+🏌‍♂	mand, der spiller golf
+🏌🏻‍♂️	mand golf: lys hudfarve
+🏌🏻‍♂	mand golf: lys hudfarve
+🏌🏼‍♂️	mand golf: medium-lys hudfarve
+🏌🏼‍♂	mand golf: medium-lys hudfarve
+🏌🏽‍♂️	mand golf: medium hudfarve
+🏌🏽‍♂	mand golf: medium hudfarve
+🏌🏾‍♂️	mand, der spiller golf: medium-mørk hudfarve
+🏌🏾‍♂	mand, der spiller golf: medium-mørk hudfarve
+🏌🏿‍♂️	mand golf: mørk hudfarve
+🏌🏿‍♂	mand golf: mørk hudfarve
+🏌️‍♀️	kvinde, der spiller golf
+🏌‍♀️	kvinde, der spiller golf
+🏌️‍♀	kvinde, der spiller golf
+🏌‍♀	kvinde, der spiller golf
+🏌🏻‍♀️	kvinde golf: lys hudfarve
+🏌🏻‍♀	kvinde golf: lys hudfarve
+🏌🏼‍♀️	kvinde golf: medium-lys hudfarve
+🏌🏼‍♀	kvinde golf: medium-lys hudfarve
+🏌🏽‍♀️	kvinde golf: medium hudfarve
+🏌🏽‍♀	kvinde golf: medium hudfarve
+🏌🏾‍♀️	kvinde, der spiller golf: medium-mørk hudfarve
+🏌🏾‍♀	kvinde, der spiller golf: medium-mørk hudfarve
+🏌🏿‍♀️	kvinde golf: mørk hudfarve
+🏌🏿‍♀	kvinde golf: mørk hudfarve
+🏄	person, der surfer
+🏄🏻	person, der surfer: lys hudfarve
+🏄🏼	person, der surfer: medium-lys hudfarve
+🏄🏽	person, der surfer: medium hudfarve
+🏄🏾	person, der surfer: medium-mørk hudfarve
+🏄🏿	person, der surfer: mørk hudfarve
+🏄‍♂️	mand surfer
+🏄‍♂	mand surfer
+🏄🏻‍♂️	mand surfer: lys hudfarve
+🏄🏻‍♂	mand surfer: lys hudfarve
+🏄🏼‍♂️	man surfer: medium-lys hudfarve
+🏄🏼‍♂	man surfer: medium-lys hudfarve
+🏄🏽‍♂️	man surfer: medium hudfarve
+🏄🏽‍♂	man surfer: medium hudfarve
+🏄🏾‍♂️	man surfer: medium-mørk hudfarve
+🏄🏾‍♂	man surfer: medium-mørk hudfarve
+🏄🏿‍♂️	mand surfer: mørk hudfarve
+🏄🏿‍♂	mand surfer: mørk hudfarve
+🏄‍♀️	kvinde surfer
+🏄‍♀	kvinde surfer
+🏄🏻‍♀️	kvinde surfer: lys hudfarve
+🏄🏻‍♀	kvinde surfer: lys hudfarve
+🏄🏼‍♀️	kvinde surfer: medium-lys hudfarve
+🏄🏼‍♀	kvinde surfer: medium-lys hudfarve
+🏄🏽‍♀️	kvinde surfer: medium hudfarve
+🏄🏽‍♀	kvinde surfer: medium hudfarve
+🏄🏾‍♀️	kvinde surfer: medium-mørk hudfarve
+🏄🏾‍♀	kvinde surfer: medium-mørk hudfarve
+🏄🏿‍♀️	kvinde surfer: mørk hudfarve
+🏄🏿‍♀	kvinde surfer: mørk hudfarve
+🚣	person robåd
+🚣🏻	person robåd: lys hudfarve
+🚣🏼	person robåd: medium lys hudfarve
+🚣🏽	person robåd: medium hudfarve
+🚣🏾	person robåd: medium-mørk hudfarve
+🚣🏿	person robåd: mørk hudfarve
+🚣‍♂️	mand robåd
+🚣‍♂	mand robåd
+🚣🏻‍♂️	mand robåd: lys hudfarve
+🚣🏻‍♂	mand robåd: lys hudfarve
+🚣🏼‍♂️	mand robåd: medium-lys hudfarve
+🚣🏼‍♂	mand robåd: medium-lys hudfarve
+🚣🏽‍♂️	mand robåd: medium hudfarve
+🚣🏽‍♂	mand robåd: medium hudfarve
+🚣🏾‍♂️	mand robåd: medium-mørk hudfarve
+🚣🏾‍♂	mand robåd: medium-mørk hudfarve
+🚣🏿‍♂️	mand robåd: mørk hudfarve
+🚣🏿‍♂	mand robåd: mørk hudfarve
+🚣‍♀️	kvinde robåd
+🚣‍♀	kvinde robåd
+🚣🏻‍♀️	kvinde robåd: lys hudfarve
+🚣🏻‍♀	kvinde robåd: lys hudfarve
+🚣🏼‍♀️	kvinde robåd: medium lys hudfarve
+🚣🏼‍♀	kvinde robåd: medium lys hudfarve
+🚣🏽‍♀️	kvinde robåd: medium hudfarve
+🚣🏽‍♀	kvinde robåd: medium hudfarve
+🚣🏾‍♀️	kvinde robåd: medium-mørk hudfarve
+🚣🏾‍♀	kvinde robåd: medium-mørk hudfarve
+🚣🏿‍♀️	kvinde robåd: mørk hudfarve
+🚣🏿‍♀	kvinde robåd: mørk hudfarve
+🏊	person svømning
+🏊🏻	person, der svømmer: lys hudfarve
+🏊🏼	person, der svømmer: medium lys hudfarve
+🏊🏽	person, der svømmer: medium hudfarve
+🏊🏾	person, der svømmer: medium-mørk hudfarve
+🏊🏿	person, der svømmer: mørk hudfarve
+🏊‍♂️	mand svømning
+🏊‍♂	mand svømning
+🏊🏻‍♂️	mand svømning: lys hudfarve
+🏊🏻‍♂	mand svømning: lys hudfarve
+🏊🏼‍♂️	mand svømning: medium-lys hudfarve
+🏊🏼‍♂	mand svømning: medium-lys hudfarve
+🏊🏽‍♂️	mand svømning: medium hudfarve
+🏊🏽‍♂	mand svømning: medium hudfarve
+🏊🏾‍♂️	mand svømning: medium-mørk hudfarve
+🏊🏾‍♂	mand svømning: medium-mørk hudfarve
+🏊🏿‍♂️	mand svømning: mørk hudfarve
+🏊🏿‍♂	mand svømning: mørk hudfarve
+🏊‍♀️	kvinde svømning
+🏊‍♀	kvinde svømning
+🏊🏻‍♀️	kvinde svømning: lys hudfarve
+🏊🏻‍♀	kvinde svømning: lys hudfarve
+🏊🏼‍♀️	kvinde svømning: medium-lys hudfarve
+🏊🏼‍♀	kvinde svømning: medium-lys hudfarve
+🏊🏽‍♀️	kvinde svømning: medium hudfarve
+🏊🏽‍♀	kvinde svømning: medium hudfarve
+🏊🏾‍♀️	kvinde svømning: medium-mørk hudfarve
+🏊🏾‍♀	kvinde svømning: medium-mørk hudfarve
+🏊🏿‍♀️	kvinde svømning: mørk hudfarve
+🏊🏿‍♀	kvinde svømning: mørk hudfarve
+⛹️	person hoppende bold
+⛹	person hoppende bold
+⛹🏻	person hoppende bold: lys hudfarve
+⛹🏼	person hoppende bold: medium-lys hudfarve
+⛹🏽	person hoppende bold: medium hudfarve
+⛹🏾	person hoppende bold: medium-mørk hudfarve
+⛹🏿	person hoppende bold: mørk hudfarve
+⛹️‍♂️	mand hoppende bold
+⛹‍♂️	mand hoppende bold
+⛹️‍♂	mand hoppende bold
+⛹‍♂	mand hoppende bold
+⛹🏻‍♂️	mand hoppende bold: lys hudfarve
+⛹🏻‍♂	mand hoppende bold: lys hudfarve
+⛹🏼‍♂️	mand hoppende bold: medium-lys hudfarve
+⛹🏼‍♂	mand hoppende bold: medium-lys hudfarve
+⛹🏽‍♂️	mand hoppende bold: medium hudfarve
+⛹🏽‍♂	mand hoppende bold: medium hudfarve
+⛹🏾‍♂️	mand hoppende bold: medium-mørk hudfarve
+⛹🏾‍♂	mand hoppende bold: medium-mørk hudfarve
+⛹🏿‍♂️	mand hoppende bold: mørk hudfarve
+⛹🏿‍♂	mand hoppende bold: mørk hudfarve
+⛹️‍♀️	kvinde hoppende bold
+⛹‍♀️	kvinde hoppende bold
+⛹️‍♀	kvinde hoppende bold
+⛹‍♀	kvinde hoppende bold
+⛹🏻‍♀️	kvinde hoppende bold: lys hudfarve
+⛹🏻‍♀	kvinde hoppende bold: lys hudfarve
+⛹🏼‍♀️	kvinde hoppende bold: medium-lys hudfarve
+⛹🏼‍♀	kvinde hoppende bold: medium-lys hudfarve
+⛹🏽‍♀️	kvinde hoppende bold: medium hudfarve
+⛹🏽‍♀	kvinde hoppende bold: medium hudfarve
+⛹🏾‍♀️	kvinde hoppende bold: medium-mørk hudfarve
+⛹🏾‍♀	kvinde hoppende bold: medium-mørk hudfarve
+⛹🏿‍♀️	kvinde hoppende bold: mørk hudfarve
+⛹🏿‍♀	kvinde hoppende bold: mørk hudfarve
+🏋️	person løfter vægte
+🏋	person løfter vægte
+🏋🏻	person løfter vægte: lys hudfarve
+🏋🏼	person løfter vægte: medium-lys hudfarve
+🏋🏽	person, der løfter vægte: medium hudtone
+🏋🏾	person løfter vægte: medium-mørk hudfarve
+🏋🏿	person, der løfter vægte: mørk hudfarve
+🏋️‍♂️	mand løfte vægte
+🏋‍♂️	mand løfte vægte
+🏋️‍♂	mand løfte vægte
+🏋‍♂	mand løfte vægte
+🏋🏻‍♂️	mand løfter vægte: lys hudfarve
+🏋🏻‍♂	mand løfter vægte: lys hudfarve
+🏋🏼‍♂️	mand løfter vægte: medium-lys hudfarve
+🏋🏼‍♂	mand løfter vægte: medium-lys hudfarve
+🏋🏽‍♂️	mand løfter vægte: medium hudfarve
+🏋🏽‍♂	mand løfter vægte: medium hudfarve
+🏋🏾‍♂️	mand løfter vægte: medium-mørk hudfarve
+🏋🏾‍♂	mand løfter vægte: medium-mørk hudfarve
+🏋🏿‍♂️	mand løfter vægte: mørk hudfarve
+🏋🏿‍♂	mand løfter vægte: mørk hudfarve
+🏋️‍♀️	kvinde løfte vægte
+🏋‍♀️	kvinde løfte vægte
+🏋️‍♀	kvinde løfte vægte
+🏋‍♀	kvinde løfte vægte
+🏋🏻‍♀️	kvinde løfte vægte: lys hudfarve
+🏋🏻‍♀	kvinde løfte vægte: lys hudfarve
+🏋🏼‍♀️	kvinde, der løfter vægte: medium-lys hudfarve
+🏋🏼‍♀	kvinde, der løfter vægte: medium-lys hudfarve
+🏋🏽‍♀️	kvinde løfte vægte: medium hudfarve
+🏋🏽‍♀	kvinde løfte vægte: medium hudfarve
+🏋🏾‍♀️	kvinde løfter vægte: medium-mørk hudfarve
+🏋🏾‍♀	kvinde løfter vægte: medium-mørk hudfarve
+🏋🏿‍♀️	kvinde løfte vægte: mørk hudfarve
+🏋🏿‍♀	kvinde løfte vægte: mørk hudfarve
+🚴	person på cykel
+🚴🏻	person, der cykler: lys hudfarve
+🚴🏼	person, der cykler: medium-lys hudfarve
+🚴🏽	person, der cykler: medium hudfarve
+🚴🏾	person, der cykler: medium-mørk hudfarve
+🚴🏿	person, der cykler: mørk hudfarve
+🚴‍♂️	mand på cykel
+🚴‍♂	mand på cykel
+🚴🏻‍♂️	mand, der cykler: lys hudfarve
+🚴🏻‍♂	mand, der cykler: lys hudfarve
+🚴🏼‍♂️	man cykler: medium-lys hudfarve
+🚴🏼‍♂	man cykler: medium-lys hudfarve
+🚴🏽‍♂️	man cykler: medium hudfarve
+🚴🏽‍♂	man cykler: medium hudfarve
+🚴🏾‍♂️	man cykler: medium-mørk hudfarve
+🚴🏾‍♂	man cykler: medium-mørk hudfarve
+🚴🏿‍♂️	mand på cykel: mørk hudfarve
+🚴🏿‍♂	mand på cykel: mørk hudfarve
+🚴‍♀️	kvinde på cykel
+🚴‍♀	kvinde på cykel
+🚴🏻‍♀️	kvinde på cykel: lys hudfarve
+🚴🏻‍♀	kvinde på cykel: lys hudfarve
+🚴🏼‍♀️	kvinde på cykel: mellemlys hudfarve
+🚴🏼‍♀	kvinde på cykel: mellemlys hudfarve
+🚴🏽‍♀️	kvinde på cykel: medium hudfarve
+🚴🏽‍♀	kvinde på cykel: medium hudfarve
+🚴🏾‍♀️	kvinde på cykel: medium-mørk hudfarve
+🚴🏾‍♀	kvinde på cykel: medium-mørk hudfarve
+🚴🏿‍♀️	kvinde på cykel: mørk hudfarve
+🚴🏿‍♀	kvinde på cykel: mørk hudfarve
+🚵	person mountainbike
+🚵🏻	person mountainbike: lys hudfarve
+🚵🏼	person mountainbike: medium-lys hudfarve
+🚵🏽	person mountainbike: medium hudfarve
+🚵🏾	person mountainbike: medium-mørk hudfarve
+🚵🏿	person mountainbike: mørk hudfarve
+🚵‍♂️	mand på mountainbike
+🚵‍♂	mand på mountainbike
+🚵🏻‍♂️	mand mountainbike: lys hudfarve
+🚵🏻‍♂	mand mountainbike: lys hudfarve
+🚵🏼‍♂️	mand mountainbike: medium-lys hudfarve
+🚵🏼‍♂	mand mountainbike: medium-lys hudfarve
+🚵🏽‍♂️	mand mountainbike: medium hudfarve
+🚵🏽‍♂	mand mountainbike: medium hudfarve
+🚵🏾‍♂️	mand mountainbike: medium-mørk hudfarve
+🚵🏾‍♂	mand mountainbike: medium-mørk hudfarve
+🚵🏿‍♂️	mand mountainbike: mørk hudfarve
+🚵🏿‍♂	mand mountainbike: mørk hudfarve
+🚵‍♀️	kvinde mountainbike
+🚵‍♀	kvinde mountainbike
+🚵🏻‍♀️	kvinde mountainbike: lys hudfarve
+🚵🏻‍♀	kvinde mountainbike: lys hudfarve
+🚵🏼‍♀️	kvinde mountainbike: medium-lys hudfarve
+🚵🏼‍♀	kvinde mountainbike: medium-lys hudfarve
+🚵🏽‍♀️	kvinde mountainbike: medium hudfarve
+🚵🏽‍♀	kvinde mountainbike: medium hudfarve
+🚵🏾‍♀️	kvinde mountainbike: medium-mørk hudfarve
+🚵🏾‍♀	kvinde mountainbike: medium-mørk hudfarve
+🚵🏿‍♀️	kvinde mountainbike: mørk hudfarve
+🚵🏿‍♀	kvinde mountainbike: mørk hudfarve
+🏎️	Racerbil
+🏎	Racerbil
+🏍️	motorcykel
+🏍	motorcykel
+🤸	person, der kører i vogn
+🤸🏻	person cartwheeling: lys hudfarve
+🤸🏼	person cartwheeling: medium-lys hudfarve
+🤸🏽	person cartwheeling: medium hudfarve
+🤸🏾	person cartwheeling: medium-mørk hudfarve
+🤸🏿	person cartwheeling: mørk hudfarve
+🤸‍♂️	mand, der kører i vogn
+🤸‍♂	mand, der kører i vogn
+🤸🏻‍♂️	mand vognhjul: lys hudfarve
+🤸🏻‍♂	mand vognhjul: lys hudfarve
+🤸🏼‍♂️	mand vognhjul: medium-lys hudfarve
+🤸🏼‍♂	mand vognhjul: medium-lys hudfarve
+🤸🏽‍♂️	mand med vogn: medium hudfarve
+🤸🏽‍♂	mand med vogn: medium hudfarve
+🤸🏾‍♂️	mand med vogn: medium-mørk hudfarve
+🤸🏾‍♂	mand med vogn: medium-mørk hudfarve
+🤸🏿‍♂️	mand i vogn: mørk hudfarve
+🤸🏿‍♂	mand i vogn: mørk hudfarve
+🤸‍♀️	kvinde i vogn
+🤸‍♀	kvinde i vogn
+🤸🏻‍♀️	kvinde på vogn: lys hudfarve
+🤸🏻‍♀	kvinde på vogn: lys hudfarve
+🤸🏼‍♀️	kvinde med vogn: medium-lys hudfarve
+🤸🏼‍♀	kvinde med vogn: medium-lys hudfarve
+🤸🏽‍♀️	kvinde med vogn: medium hudfarve
+🤸🏽‍♀	kvinde med vogn: medium hudfarve
+🤸🏾‍♀️	kvinde i vogn: medium-mørk hudfarve
+🤸🏾‍♀	kvinde i vogn: medium-mørk hudfarve
+🤸🏿‍♀️	kvinde på vogn: mørk hudfarve
+🤸🏿‍♀	kvinde på vogn: mørk hudfarve
+🤼	folk der brydes
+🤼‍♂️	mænd, der bryder
+🤼‍♂	mænd, der bryder
+🤼‍♀️	kvinder i brydning
+🤼‍♀	kvinder i brydning
+🤽	person, der spiller vandpolo
+🤽🏻	person, der spiller vandpolo: lys hudfarve
+🤽🏼	person, der spiller vandpolo: medium-lys hudfarve
+🤽🏽	person, der spiller vandpolo: medium hudfarve
+🤽🏾	person, der spiller vandpolo: medium-mørk hudfarve
+🤽🏿	person, der spiller vandpolo: mørk hudfarve
+🤽‍♂️	mand spiller vandpolo
+🤽‍♂	mand spiller vandpolo
+🤽🏻‍♂️	mand spiller vandpolo: lys hudfarve
+🤽🏻‍♂	mand spiller vandpolo: lys hudfarve
+🤽🏼‍♂️	mand spiller vandpolo: medium-lys hudfarve
+🤽🏼‍♂	mand spiller vandpolo: medium-lys hudfarve
+🤽🏽‍♂️	mand spiller vandpolo: medium hudfarve
+🤽🏽‍♂	mand spiller vandpolo: medium hudfarve
+🤽🏾‍♂️	mand spiller vandpolo: medium-mørk hudfarve
+🤽🏾‍♂	mand spiller vandpolo: medium-mørk hudfarve
+🤽🏿‍♂️	mand spiller vandpolo: mørk hudfarve
+🤽🏿‍♂	mand spiller vandpolo: mørk hudfarve
+🤽‍♀️	kvinde spiller vandpolo
+🤽‍♀	kvinde spiller vandpolo
+🤽🏻‍♀️	kvinde, der spiller vandpolo: lys hudfarve
+🤽🏻‍♀	kvinde, der spiller vandpolo: lys hudfarve
+🤽🏼‍♀️	kvinde, der spiller vandpolo: medium-lys hudfarve
+🤽🏼‍♀	kvinde, der spiller vandpolo: medium-lys hudfarve
+🤽🏽‍♀️	kvinde, der spiller vandpolo: medium hudfarve
+🤽🏽‍♀	kvinde, der spiller vandpolo: medium hudfarve
+🤽🏾‍♀️	kvinde, der spiller vandpolo: medium-mørk hudfarve
+🤽🏾‍♀	kvinde, der spiller vandpolo: medium-mørk hudfarve
+🤽🏿‍♀️	kvinde, der spiller vandpolo: mørk hudfarve
+🤽🏿‍♀	kvinde, der spiller vandpolo: mørk hudfarve
+🤾	person, der spiller håndbold
+🤾🏻	person, der spiller håndbold: lys hudfarve
+🤾🏼	person, der spiller håndbold: medium-lys hudfarve
+🤾🏽	person, der spiller håndbold: medium hudfarve
+🤾🏾	person, der spiller håndbold: medium-mørk hudfarve
+🤾🏿	person, der spiller håndbold: mørk hudfarve
+🤾‍♂️	mand, der spiller håndbold
+🤾‍♂	mand, der spiller håndbold
+🤾🏻‍♂️	mand, der spiller håndbold: lys hudfarve
+🤾🏻‍♂	mand, der spiller håndbold: lys hudfarve
+🤾🏼‍♂️	mand, der spiller håndbold: medium-lys hudfarve
+🤾🏼‍♂	mand, der spiller håndbold: medium-lys hudfarve
+🤾🏽‍♂️	mand, der spiller håndbold: medium hudfarve
+🤾🏽‍♂	mand, der spiller håndbold: medium hudfarve
+🤾🏾‍♂️	mand, der spiller håndbold: medium-mørk hudfarve
+🤾🏾‍♂	mand, der spiller håndbold: medium-mørk hudfarve
+🤾🏿‍♂️	mand spiller håndbold: mørk hudfarve
+🤾🏿‍♂	mand spiller håndbold: mørk hudfarve
+🤾‍♀️	kvinde, der spiller håndbold
+🤾‍♀	kvinde, der spiller håndbold
+🤾🏻‍♀️	kvinde, der spiller håndbold: lys hudfarve
+🤾🏻‍♀	kvinde, der spiller håndbold: lys hudfarve
+🤾🏼‍♀️	kvinde, der spiller håndbold: medium-lys hudfarve
+🤾🏼‍♀	kvinde, der spiller håndbold: medium-lys hudfarve
+🤾🏽‍♀️	kvinde, der spiller håndbold: medium hudfarve
+🤾🏽‍♀	kvinde, der spiller håndbold: medium hudfarve
+🤾🏾‍♀️	kvinde, der spiller håndbold: medium-mørk hudfarve
+🤾🏾‍♀	kvinde, der spiller håndbold: medium-mørk hudfarve
+🤾🏿‍♀️	kvinde, der spiller håndbold: mørk hudfarve
+🤾🏿‍♀	kvinde, der spiller håndbold: mørk hudfarve
+🤹	person, der jonglerer
+🤹🏻	person jonglering: lys hudfarve
+🤹🏼	person jonglering: medium-lys hudfarve
+🤹🏽	person jonglering: medium hudfarve
+🤹🏾	person jonglering: medium-mørk hudfarve
+🤹🏿	person jonglering: mørk hudfarve
+🤹‍♂️	mand jonglerer
+🤹‍♂	mand jonglerer
+🤹🏻‍♂️	mand jonglerer: lys hudfarve
+🤹🏻‍♂	mand jonglerer: lys hudfarve
+🤹🏼‍♂️	man jonglerer: medium-lys hudfarve
+🤹🏼‍♂	man jonglerer: medium-lys hudfarve
+🤹🏽‍♂️	man jonglerer: medium hudfarve
+🤹🏽‍♂	man jonglerer: medium hudfarve
+🤹🏾‍♂️	man jonglerer: medium-mørk hudfarve
+🤹🏾‍♂	man jonglerer: medium-mørk hudfarve
+🤹🏿‍♂️	mand jonglerer: mørk hudfarve
+🤹🏿‍♂	mand jonglerer: mørk hudfarve
+🤹‍♀️	kvinde jonglerer
+🤹‍♀	kvinde jonglerer
+🤹🏻‍♀️	kvinde jonglerer: lys hudfarve
+🤹🏻‍♀	kvinde jonglerer: lys hudfarve
+🤹🏼‍♀️	kvinde jonglerer: medium-lys hudfarve
+🤹🏼‍♀	kvinde jonglerer: medium-lys hudfarve
+🤹🏽‍♀️	kvinde jonglerer: medium hudfarve
+🤹🏽‍♀	kvinde jonglerer: medium hudfarve
+🤹🏾‍♀️	kvinde jonglerer: medium-mørk hudfarve
+🤹🏾‍♀	kvinde jonglerer: medium-mørk hudfarve
+🤹🏿‍♀️	kvinde jonglerer: mørk hudfarve
+🤹🏿‍♀	kvinde jonglerer: mørk hudfarve
+👫	mand og kvinde holder i hånd
+👬	to mænd holder i hånd
+👭	to kvinder holder i hånd
+💏	kys
+👩‍❤️‍💋‍👨	kys: kvinde, mand
+👩‍❤‍💋‍👨	kys: kvinde, mand
+👨‍❤️‍💋‍👨	kys: mand, mand
+👨‍❤‍💋‍👨	kys: mand, mand
+👩‍❤️‍💋‍👩	kys: kvinde, kvinde
+👩‍❤‍💋‍👩	kys: kvinde, kvinde
+💑	par med hjerte
+👩‍❤️‍👨	par med hjerte: kvinde, mand
+👩‍❤‍👨	par med hjerte: kvinde, mand
+👨‍❤️‍👨	par med hjerte: mand, mand
+👨‍❤‍👨	par med hjerte: mand, mand
+👩‍❤️‍👩	par med hjerte: kvinde, kvinde
+👩‍❤‍👩	par med hjerte: kvinde, kvinde
+👪	familie
+👨‍👩‍👦	familie: mand, kvinde, dreng
+👨‍👩‍👧	familie: mand, kvinde, pige
+👨‍👩‍👧‍👦	familie: mand, kvinde, pige, dreng
+👨‍👩‍👦‍👦	familie: mand, kvinde, dreng, dreng
+👨‍👩‍👧‍👧	familie: mand, kvinde, pige, pige
+👨‍👨‍👦	familie: mand, mand, dreng
+👨‍👨‍👧	familie: mand, mand, pige
+👨‍👨‍👧‍👦	familie: mand, mand, pige, dreng
+👨‍👨‍👦‍👦	familie: mand, mand, dreng, dreng
+👨‍👨‍👧‍👧	familie: mand, mand, pige, pige
+👩‍👩‍👦	familie: kvinde, kvinde, dreng
+👩‍👩‍👧	familie: kvinde, kvinde, pige
+👩‍👩‍👧‍👦	familie: kvinde, kvinde, pige, dreng
+👩‍👩‍👦‍👦	familie: kvinde, kvinde, dreng, dreng
+👩‍👩‍👧‍👧	familie: kvinde, kvinde, pige, pige
+👨‍👦	familie: mand, dreng
+👨‍👦‍👦	familie: mand, dreng, dreng
+👨‍👧	familie: mand, pige
+👨‍👧‍👦	familie: mand, pige, dreng
+👨‍👧‍👧	familie: mand, pige, pige
+👩‍👦	familie: kvinde, dreng
+👩‍👦‍👦	familie: kvinde, dreng, dreng
+👩‍👧	familie: kvinde, pige
+👩‍👧‍👦	familie: kvinde, pige, dreng
+👩‍👧‍👧	familie: kvinde, pige, pige
+🤳	selfie
+🤳🏻	selfie: lys hudfarve
+🤳🏼	selfie: medium lys hudfarve
+🤳🏽	selfie: medium hudtone
+🤳🏾	selfie: medium-mørk hudfarve
+🤳🏿	selfie: mørk hudfarve
+💪	bøjede biceps
+💪🏻	bøjede biceps: lys hudfarve
+💪🏼	bøjede biceps: medium-lys hudfarve
+💪🏽	bøjede biceps: medium hudfarve
+💪🏾	bøjede biceps: medium-mørk hudfarve
+💪🏿	bøjede biceps: mørk hudfarve
+🦵	ben
+🦵🏻	ben: lys hudfarve
+🦵🏼	ben: medium lys hudfarve
+🦵🏽	ben: medium hudfarve
+🦵🏾	ben: medium-mørk hudfarve
+🦵🏿	ben: mørk hudfarve
+🦶	fod
+🦶🏻	fod: lys hudfarve
+🦶🏼	fod: medium lys hudfarve
+🦶🏽	fod: medium hudfarve
+🦶🏾	fod: medium-mørk hudfarve
+🦶🏿	fod: mørk hudfarve
+👈	baghåndsindeks, der peger til venstre
+👈🏻	baghåndsindeks, der peger til venstre: lys hudfarve
+👈🏼	baghåndsindeks, der peger til venstre: medium-lys hudfarve
+👈🏽	baghåndsindeks, der peger til venstre: medium hudtone
+👈🏾	baghåndsindeks, der peger til venstre: medium-mørk hudtone
+👈🏿	baghåndsindeks, der peger til venstre: mørk hudfarve
+👉	baghåndsindeks, der peger til højre
+👉🏻	baghåndsindeks, der peger til højre: lys hudfarve
+👉🏼	baghåndsindeks, der peger til højre: medium-lys hudfarve
+👉🏽	baghåndsindeks, der peger til højre: medium hudtone
+👉🏾	baghåndsindeks, der peger til højre: medium-mørk hudtone
+👉🏿	baghåndsindeks, der peger til højre: mørk hudfarve
+☝️	indekset peger opad
+☝	indekset peger opad
+☝🏻	indekset peger opad: lys hudfarve
+☝🏼	indekset peger opad: medium-lys hudfarve
+☝🏽	indekset peger opad: medium hudfarve
+☝🏾	indekset peger opad: medium-mørk hudfarve
+☝🏿	indekset peger opad: mørk hudfarve
+👆	baghåndsindekset peger opad
+👆🏻	baghåndsindeks peger opad: lys hudfarve
+👆🏼	baghåndsindeks, der peger opad: medium-lys hudfarve
+👆🏽	baghåndsindekset peger opad: medium hudtone
+👆🏾	baghåndsindekset peger opad: medium-mørk hudtone
+👆🏿	baghåndsindeks peger opad: mørk hudfarve
+🖕	lange finger
+🖕🏻	langfinger: lys hudfarve
+🖕🏼	langfinger: medium-lys hudfarve
+🖕🏽	langfinger: medium hudfarve
+🖕🏾	langfinger: medium-mørk hudfarve
+🖕🏿	langfinger: mørk hudfarve
+👇	baghåndsindeks peger nedad
+👇🏻	baghåndsindeks, der peger nedad: lys hudfarve
+👇🏼	baghåndsindeks, der peger nedad: medium-lys hudtone
+👇🏽	baghåndsindeks, der peger nedad: medium hudtone
+👇🏾	baghåndsindeks, der peger nedad: medium-mørk hudtone
+👇🏿	baghåndsindeks, der peger nedad: mørk hudfarve
+✌️	sejrs hånd
+✌	sejrs hånd
+✌🏻	sejrshånd: lys hudfarve
+✌🏼	sejrshånd: medium-lys hudfarve
+✌🏽	sejrshånd: medium hudtone
+✌🏾	sejrshånd: medium-mørk hudfarve
+✌🏿	sejrshånd: mørk hudfarve
+🤞	krydsede fingre
+🤞🏻	krydsede fingre: lys hudfarve
+🤞🏼	krydsede fingre: medium-lys hudfarve
+🤞🏽	krydsede fingre: medium hudtone
+🤞🏾	krydsede fingre: medium-mørk hudfarve
+🤞🏿	krydsede fingre: mørk hudfarve
+🖖	vulkan hilsen
+🖖🏻	vulkansalut: lys hudfarve
+🖖🏼	vulcan salut: medium-lys hudfarve
+🖖🏽	vulcan salut: medium hudfarve
+🖖🏾	vulcan salut: medium-mørk hudfarve
+🖖🏿	vulcan salut: mørk hudfarve
+🤘	tegn på hornene
+🤘🏻	tegn på hornene: lys hudfarve
+🤘🏼	tegn på hornene: medium-lys hudfarve
+🤘🏽	tegn på hornene: medium hudfarve
+🤘🏾	tegn på hornene: medium-mørk hudfarve
+🤘🏿	tegn på hornene: mørk hudfarve
+🤙	kald mig hånd
+🤙🏻	kald mig hånd: lys hudfarve
+🤙🏼	kald mig hånd: medium-lys hudfarve
+🤙🏽	kald mig hånd: medium hudfarve
+🤙🏾	kald mig hånd: medium-mørk hudfarve
+🤙🏿	kald mig hånd: mørk hudfarve
+🖐️	hånd med spredte fingre
+🖐	hånd med spredte fingre
+🖐🏻	hånd med spredte fingre: lys hudfarve
+🖐🏼	hånd med spredte fingre: medium-lys hudfarve
+🖐🏽	hånd med spredte fingre: medium hudtone
+🖐🏾	hånd med spredte fingre: medium-mørk hudfarve
+🖐🏿	hånd med spredte fingre: mørk hudfarve
+✋	løftede hånd
+✋🏻	løftet hånd: lys hudfarve
+✋🏼	løftet hånd: medium-lys hudfarve
+✋🏽	løftet hånd: medium hudfarve
+✋🏾	løftet hånd: medium-mørk hudfarve
+✋🏿	løftet hånd: mørk hudfarve
+👌	OK hånd
+👌🏻	OK hånd: lys hudfarve
+👌🏼	OK hånd: medium lys hudfarve
+👌🏽	OK hånd: medium hudfarve
+👌🏾	OK hånd: medium-mørk hudfarve
+👌🏿	OK hånd: mørk hudfarve
+👍	tommel op
+👍🏻	thumbs up: lys hudfarve
+👍🏼	tommelfingeren op: medium-lys hudfarve
+👍🏽	tommelfinger op: medium hudfarve
+👍🏾	tommelfinger op: medium-mørk hudfarve
+👍🏿	tommelfingeren op: mørk hudfarve
+👎	tommelfingeren nedad
+👎🏻	tommelfingeren nedad: lys hudfarve
+👎🏼	tommelfingeren nedad: medium lys hudfarve
+👎🏽	tommelfingeren nedad: medium hudtone
+👎🏾	tommelfingeren nedad: medium-mørk hudtone
+👎🏿	tommelfingeren nedad: mørk hudfarve
+✊	løftet knytnæve
+✊🏻	løftet knytnæve: lys hudfarve
+✊🏼	løftet knytnæve: medium-lys hudfarve
+✊🏽	hævet knytnæve: medium hudtone
+✊🏾	hævet knytnæve: medium-mørk hudfarve
+✊🏿	hævet knytnæve: mørk hudfarve
+👊	modkørende knytnæve
+👊🏻	modkørende knytnæve: lys hudfarve
+👊🏼	modkørende knytnæve: medium-lys hudfarve
+👊🏽	modkørende knytnæve: medium hudtone
+👊🏾	modkørende knytnæve: medium-mørk hudfarve
+👊🏿	modkørende knytnæve: mørk hudfarve
+🤛	venstrevendt knytnæve
+🤛🏻	venstrevendt knytnæve: lys hudfarve
+🤛🏼	venstrevendt knytnæve: medium lys hudfarve
+🤛🏽	venstrevendt knytnæve: medium hudtone
+🤛🏾	venstrevendt knytnæve: medium-mørk hudfarve
+🤛🏿	venstrevendt knytnæve: mørk hudfarve
+🤜	højrevendt knytnæve
+🤜🏻	højrevendt knytnæve: lys hudfarve
+🤜🏼	højrevendt knytnæve: medium lys hudfarve
+🤜🏽	højrevendt knytnæve: medium hudtone
+🤜🏾	højrevendt knytnæve: medium-mørk hudfarve
+🤜🏿	højrevendt knytnæve: mørk hudfarve
+🤚	løftet håndryggen
+🤚🏻	løftet håndryg: lys hudfarve
+🤚🏼	løftet håndryg: medium-lys hudfarve
+🤚🏽	løftet håndryg: medium hudtone
+🤚🏾	løftet håndryg: medium-mørk hudfarve
+🤚🏿	løftet håndryg: mørk hudfarve
+👋	viftende hånd
+👋🏻	viftende hånd: lys hudfarve
+👋🏼	viftende hånd: medium-lys hudfarve
+👋🏽	viftende hånd: medium hudfarve
+👋🏾	viftende hånd: medium-mørk hudfarve
+👋🏿	viftende hånd: mørk hudfarve
+🤟	elsker-dig gestus
+🤟🏻	elsker dig-gest: lys hudfarve
+🤟🏼	elsker-dig-gest: medium-lys hudfarve
+🤟🏽	elsker dig-gest: medium hudtone
+🤟🏾	elsker dig-gest: medium-mørk hudtone
+🤟🏿	elsker-dig gestus: mørk hudfarve
+✍️	skrivehånd
+✍	skrivehånd
+✍🏻	skrivehånd: lys hudfarve
+✍🏼	skrivehånd: medium-lys hudfarve
+✍🏽	skrivehånd: medium hudfarve
+✍🏾	skrivehånd: medium-mørk hudfarve
+✍🏿	skrivehånd: mørk hudfarve
+👏	klappende hænder
+👏🏻	klappende hænder: lys hudfarve
+👏🏼	klappende hænder: medium-lys hudfarve
+👏🏽	klappende hænder: medium hudfarve
+👏🏾	klappende hænder: medium-mørk hudfarve
+👏🏿	klappende hænder: mørk hudfarve
+👐	åbne hænder
+👐🏻	åbne hænder: lys hudfarve
+👐🏼	åbne hænder: medium-lys hudfarve
+👐🏽	åbne hænder: medium hudfarve
+👐🏾	åbne hænder: medium-mørk hudfarve
+👐🏿	åbne hænder: mørk hudfarve
+🙌	række hænder op
+🙌🏻	hæve hænder: lys hudfarve
+🙌🏼	hæve hænder: medium-lys hudfarve
+🙌🏽	hæve hænder: medium hudfarve
+🙌🏾	hæve hænder: medium-mørk hudfarve
+🙌🏿	hæve hænder: mørk hudfarve
+🤲	håndfladerne opad sammen
+🤲🏻	håndfladerne opad sammen: lys hudfarve
+🤲🏼	håndfladerne opad sammen: medium-lys hudfarve
+🤲🏽	håndfladerne opad sammen: medium hudtone
+🤲🏾	håndfladerne opad sammen: medium-mørk hudfarve
+🤲🏿	håndfladerne opad sammen: mørk hudfarve
+🙏	foldede hænder
+🙏🏻	foldede hænder: lys hudfarve
+🙏🏼	foldede hænder: medium-lys hudfarve
+🙏🏽	foldede hænder: medium hudfarve
+🙏🏾	foldede hænder: medium-mørk hudfarve
+🙏🏿	foldede hænder: mørk hudfarve
+🤝	håndtryk
+💅	neglelak
+💅🏻	neglelak: lys hudfarve
+💅🏼	neglelak: medium-lys hudfarve
+💅🏽	neglelak: medium hudfarve
+💅🏾	neglelak: medium-mørk hudfarve
+💅🏿	neglelak: mørk hudfarve
+👂	øre
+👂🏻	øre: lys hudfarve
+👂🏼	øre: medium lys hudfarve
+👂🏽	øre: medium hudfarve
+👂🏾	øre: medium-mørk hudfarve
+👂🏿	øre: mørk hudfarve
+👃	næse
+👃🏻	næse: lys hudfarve
+👃🏼	næse: medium lys hudfarve
+👃🏽	næse: medium hudfarve
+👃🏾	næse: medium-mørk hudfarve
+👃🏿	næse: mørk hudfarve
+🦰	rødhåret
+🦱	krølhåret
+🦲	skaldet
+🦳	hvidhåret
+👣	fodspor
+👀	øjne
+👁️	øje
+👁	øje
+👁️‍🗨️	øje i taleboble
+👁‍🗨️	øje i taleboble
+👁️‍🗨	øje i taleboble
+👁‍🗨	øje i taleboble
+🧠	hjerne
+🦴	knogle
+🦷	tand
+👅	tunge
+👄	mund
+💋	kys mærke
+💘	hjerte med pil
+❤️	rødt hjerte
+❤	rødt hjerte
+💓	bankende hjerte
+💔	knust hjerte
+💕	to hjerter
+💖	glitrende hjerte
+💗	voksende hjerte
+💙	blåt hjerte
+💚	grønt hjerte
+💛	gult hjerte
+🧡	orange hjerte
+💜	lilla hjerte
+🖤	sort hjerte
+💝	hjerte med bånd
+💞	roterende hjerter
+💟	hjerte dekoration
+❣️	tungt hjerte udråb
+❣	tungt hjerte udråb
+💌	kærlighedsbrev
+💤	zzz
+💢	vrede symbol
+💣	bombe
+💥	kollision
+💦	sveddråber
+💨	styrter væk
+💫	svimmel
+💬	taleballon
+🗨️	venstre taleboble
+🗨	venstre taleboble
+🗯️	højre vrede boble
+🗯	højre vrede boble
+💭	tankeballon
+🕳️	hul
+🕳	hul
+👓	briller
+🕶️	solbriller
+🕶	solbriller
+🥽	beskyttelsesbriller
+🥼	Kittel
+👔	slips
+👕	t-shirt
+👖	jeans
+🧣	halstørklæde
+🧤	handsker
+🧥	frakke
+🧦	sokker
+👗	kjole
+👘	kimono
+👙	bikini
+👚	kvindetøj
+👛	pung
+👜	håndtaske
+👝	Lille håndtaske
+🛍️	indkøbsposer
+🛍	indkøbsposer
+🎒	skole rygsæk
+👞	mands sko
+👟	løbesko
+🥾	vandrestøvle
+🥿	kvindes flade sko
+👠	højhælet sko
+👡	kvindes sandal
+👢	kvindestøvle
+👑	krone
+👒	kvindehue
+🎩	høj hat
+🎓	afgangshætte
+🧢	faktureret loft
+⛑️	redningsmands hjelm
+⛑	redningsmands hjelm
+📿	bedekranse
+💄	læbestift
+💍	ring
+💎	ædelsten
+🐵	abe ansigt
+🐒	abe
+🦍	gorilla
+🐶	hundeansigt
+🐕	hund
+🐩	puddel
+🐺	ulveansigt
+🦊	ræveansigt
+🦝	vaskebjørn
+🐱	kattens ansigt
+🐈	kat
+🦁	løveansigt
+🐯	tiger ansigt
+🐅	tiger
+🐆	leopard
+🐴	hestens ansigt
+🐎	hest
+🦄	enhjørning ansigt
+🦓	zebra
+🦌	hjort
+🐮	ko ansigt
+🐂	okse
+🐃	vand bøffel
+🐄	ko
+🐷	griseansigt
+🐖	svin
+🐗	vildsvin
+🐽	grisenæse
+🐏	vædder
+🐑	moderfår
+🐐	ged
+🐪	kamel
+🐫	to-pukkel kamel
+🦙	lama
+🦒	giraf
+🐘	elefant
+🦏	næsehorn
+🦛	flodhest
+🐭	museansigt
+🐁	mus
+🐀	rotte
+🐹	hamster ansigt
+🐰	kanin ansigt
+🐇	kanin
+🐿️	jordegern
+🐿	jordegern
+🦔	pindsvin
+🦇	flagermus
+🐻	bjørneansigt
+🐨	koala
+🐼	panda ansigt
+🦘	kænguru
+🦡	grævling
+🐾	Fodspor
+🦃	Kalkun
+🐔	kylling
+🐓	hane
+🐣	klækkende kylling
+🐤	baby chick
+🐥	fremadvendt babykylling
+🐦	fugl
+🐧	pingvin
+🕊️	due
+🕊	due
+🦅	ørn
+🦆	and
+🦢	Svane
+🦉	ugle
+🦚	påfugl
+🦜	papegøje
+🐸	frøansigt
+🐊	krokodille
+🐢	skildpadde
+🦎	firben
+🐍	slange
+🐲	dragen ansigt
+🐉	trække på
+🦕	sauropod
+🦖	T-Rex
+🐳	sprutende hval
+🐋	hval
+🐬	delfin
+🐟	fisk
+🐠	tropisk fisk
+🐡	blæsefisk
+🦈	haj
+🐙	blæksprutte
+🐚	spiralskal
+🦀	krabbe
+🦞	hummer
+🦐	reje
+🦑	blæksprutte
+🐌	snegl
+🦋	sommerfugl
+🐛	insekt
+🐜	myre
+🐝	honningbi
+🐞	damebille
+🦗	cricket
+🕷️	edderkop
+🕷	edderkop
+🕸️	edderkoppespind
+🕸	edderkoppespind
+🦂	skorpion
+🦟	myg
+🦠	mikrobe
+💐	buket
+🌸	kirsebærblomst
+💮	hvid blomst
+🏵️	roset
+🏵	roset
+🌹	Rose
+🥀	visnet blomst
+🌺	hibiscus
+🌻	solsikke
+🌼	blomst
+🌷	tulipan
+🌱	frøplante
+🌲	stedsegrønt træ
+🌳	løvfældende træ
+🌴	Palme træ
+🌵	kaktus
+🌾	bunke ris
+🌿	urt
+☘️	shamrock
+☘	shamrock
+🍀	firkløver
+🍁	ahorn blad
+🍂	nedfaldne blade
+🍃	blade flagrende i vinden
+🍇	druer
+🍈	melon
+🍉	vandmelon
+🍊	mandarin
+🍋	citron
+🍌	banan
+🍍	ananas
+🥭	mango
+🍎	rødt æble
+🍏	grønt æble
+🍐	pære
+🍑	fersken
+🍒	kirsebær
+🍓	jordbær
+🥝	Kiwi
+🍅	tomat
+🥥	kokosnød
+🥑	avocado
+🍆	aubergine
+🥔	kartoffel
+🥕	gulerod
+🌽	kornøre
+🌶️	varm peber
+🌶	varm peber
+🥒	agurk
+🥬	bladgrønt
+🥦	broccoli
+🍄	champignon
+🥜	jordnødder
+🌰	kastanje
+🍞	brød
+🥐	croissant
+🥖	baguette brød
+🥨	kringle
+🥯	bagel
+🥞	pandekager
+🧀	ostebåd
+🍖	kød på ben
+🍗	fjerkræben
+🥩	udskæring af kød
+🥓	bacon
+🍔	hamburger
+🍟	pommes frites
+🍕	pizza
+🌭	hotdog
+🥪	sandwich
+🌮	taco
+🌯	burrito
+🥙	fyldte fladbrød
+🥚	æg
+🍳	madlavning
+🥘	lavvandet pande mad
+🍲	gryde mad
+🥣	skål med ske
+🥗	Grøn salat
+🍿	popcorn
+🧂	salt
+🥫	dåsemad
+🍱	bento boks
+🍘	riskiks
+🍙	riskugle
+🍚	Kogte ris
+🍛	karry ris
+🍜	dampende skål
+🍝	spaghetti
+🍠	ristet sød kartoffel
+🍢	oden
+🍣	sushi
+🍤	stegte rejer
+🍥	fiskefrikadeller med hvirvel
+🥮	månekage
+🍡	dango
+🥟	dumpling
+🥠	lykkekage
+🥡	takeaway boks
+🍦	blød is
+🍧	barberet is
+🍨	flødeis
+🍩	doughnut
+🍪	cookie
+🎂	fødselsdagskage
+🍰	shortcake
+🧁	cupcake
+🥧	pie
+🍫	chokoladebar
+🍬	slik
+🍭	slikkepind
+🍮	cremecreme
+🍯	honningkrukke
+🍼	sutteflaske
+🥛	glas med mælk
+☕	varm drik
+🍵	tekop uden hank
+🍶	skyld
+🍾	flaske med knaldprop
+🍷	vinglas
+🍸	cocktail glas
+🍹	tropisk drik
+🍺	øl krus
+🍻	klirrende ølkrus
+🥂	klirrende briller
+🥃	tumbler glas
+🥤	kop med sugerør
+🥢	spisepinde
+🍽️	gaffel og kniv med tallerken
+🍽	gaffel og kniv med tallerken
+🍴	gaffel og kniv
+🥄	ske
+🔪	køkkenkniv
+🏺	amfora
+🌍	kloden, der viser Europa-Afrika
+🌎	kloden, der viser Amerika
+🌏	kloden, der viser Asien-Australien
+🌐	globus med meridianer
+🗺️	verdenskort
+🗺	verdenskort
+🗾	kort over Japan
+🧭	kompas
+🏔️	sneklædt bjerg
+🏔	sneklædt bjerg
+⛰️	bjerg
+⛰	bjerg
+🌋	vulkan
+🗻	Fujibjerget
+🏕️	Camping
+🏕	Camping
+🏖️	strand med paraply
+🏖	strand med paraply
+🏜️	ørken
+🏜	ørken
+🏝️	øde ø
+🏝	øde ø
+🏞️	Nationalpark
+🏞	Nationalpark
+🏟️	stadion
+🏟	stadion
+🏛️	klassisk bygning
+🏛	klassisk bygning
+🏗️	bygningskonstruktion
+🏗	bygningskonstruktion
+🧱	mursten
+🏘️	huse
+🏘	huse
+🏚️	nedlagt hus
+🏚	nedlagt hus
+🏠	hus
+🏡	hus med have
+🏢	kontorbygning
+🏣	japansk postkontor
+🏤	postkontor
+🏥	Hospital
+🏦	bank
+🏨	Hotel
+🏩	elsker hotel
+🏪	dagligvarebutik
+🏫	skole
+🏬	stormagasin
+🏭	fabrik
+🏯	japansk slot
+🏰	slot
+💒	bryllup
+🗼	Tokyo tårn
+🗽	Frihedsgudinden
+⛪	kirke
+🕌	moske
+🕍	synagoge
+⛩️	shinto helligdom
+⛩	shinto helligdom
+🕋	kaba
+⛲	springvand
+⛺	telt
+🌁	tåget
+🌃	nat med stjerner
+🏙️	bybilledet
+🏙	bybilledet
+🌄	solopgang over bjerge
+🌅	solopgang
+🌆	bybilledet i skumringen
+🌇	solnedgang
+🌉	bro om natten
+♨️	varme kilder
+♨	varme kilder
+🌌	Mælkevejen
+🎠	karrusel hest
+🎡	pariserhjul
+🎢	rutsjebane
+💈	barbersøjle
+🎪	cirkustelt
+🚂	lokomotiv
+🚃	jernbanevogn
+🚄	lyntog
+🚅	kugletog
+🚆	tog
+🚇	metro
+🚈	letbane
+🚉	station
+🚊	sporvogn
+🚝	monorail
+🚞	bjergbane
+🚋	sporvognsvogn
+🚌	bus
+🚍	modkørende bus
+🚎	trolleybus
+🚐	minibus
+🚑	ambulance
+🚒	brandbil
+🚓	politibil
+🚔	modkørende politibil
+🚕	taxa
+🚖	modkørende taxa
+🚗	automobil
+🚘	modkørende bil
+🚙	sportsvogn
+🚚	varevogn
+🚛	leddelt lastbil
+🚜	traktor
+🚲	cykel
+🛴	sparke scooter
+🛹	skateboard
+🛵	motor scooter
+🚏	busstoppested
+🛣️	motorvej
+🛣	motorvej
+🛤️	jernbanespor
+🛤	jernbanespor
+🛢️	olietromle
+🛢	olietromle
+⛽	brændstofpumpe
+🚨	politibil lys
+🚥	vandret trafiklys
+🚦	lodret trafiklys
+🛑	stopskilt
+🚧	konstruktion
+⚓	anker
+⛵	sejlbåd
+🛶	kano
+🚤	speedbåd
+🛳️	passagerskib
+🛳	passagerskib
+⛴️	færge
+⛴	færge
+🛥️	motorbåd
+🛥	motorbåd
+🚢	skib
+✈️	fly
+✈	fly
+🛩️	lille flyvemaskine
+🛩	lille flyvemaskine
+🛫	flyets afgang
+🛬	flyets ankomst
+💺	sæde
+🚁	helikopter
+🚟	hængende jernbane
+🚠	bjergsvævebane
+🚡	luftsporvej
+🛰️	satellit
+🛰	satellit
+🚀	raket
+🛸	flyvende tallerken
+🛎️	piccoloklokke
+🛎	piccoloklokke
+🧳	bagage
+⌛	timeglas færdigt
+⏳	timeglas ikke udført
+⌚	holde øje
+⏰	vækkeur
+⏱️	stopur
+⏱	stopur
+⏲️	timer ur
+⏲	timer ur
+🕰️	kaminur
+🕰	kaminur
+🕛	klokken tolv
+🕧	tolv tredive
+🕐	klokken et
+🕜	en tredive
+🕑	klokken to
+🕝	to tredive
+🕒	klokken tre
+🕞	halv fire
+🕓	Klokken fire
+🕟	halv fem
+🕔	klokken fem
+🕠	halv seks
+🕕	klokken seks
+🕡	seks tredive
+🕖	klokken syv
+🕢	halv otte
+🕗	klokken otte
+🕣	otte tredive
+🕘	klokken ni
+🕤	halv ti
+🕙	klokken ti
+🕥	ti tredive
+🕚	klokken elleve
+🕦	elleve tredive
+🌑	ny måne
+🌒	voksende halvmåne
+🌓	første kvart måne
+🌔	voksende gibbous måne
+🌕	fuldmåne
+🌖	aftagende gibbous måne
+🌗	sidste kvart måne
+🌘	aftagende halvmåne
+🌙	halvmånen
+🌚	nymåneansigt
+🌛	første kvartal måneansigt
+🌜	sidste kvarters måneansigt
+🌡️	termometer
+🌡	termometer
+☀️	sol
+☀	sol
+🌝	fuldmåne ansigt
+🌞	sol med ansigt
+⭐	stjerne
+🌟	lysende stjerne
+🌠	stjerneskud
+☁️	Sky
+☁	Sky
+⛅	solen bag skyen
+⛈️	sky med lyn og regn
+⛈	sky med lyn og regn
+🌤️	sol bag lille sky
+🌤	sol bag lille sky
+🌥️	sol bag stor sky
+🌥	sol bag stor sky
+🌦️	sol bag regnsky
+🌦	sol bag regnsky
+🌧️	sky med regn
+🌧	sky med regn
+🌨️	sky med sne
+🌨	sky med sne
+🌩️	sky med lyn
+🌩	sky med lyn
+🌪️	tornado
+🌪	tornado
+🌫️	tåge
+🌫	tåge
+🌬️	vind ansigt
+🌬	vind ansigt
+🌀	cyklon
+🌈	regnbue
+🌂	lukket paraply
+☂️	paraply
+☂	paraply
+☔	paraply med regndråber
+⛱️	paraply på jorden
+⛱	paraply på jorden
+⚡	højspænding
+❄️	snefnug
+❄	snefnug
+☃️	snemand
+☃	snemand
+⛄	snemand uden sne
+☄️	komet
+☄	komet
+🔥	brand
+💧	dråbe
+🌊	vandbølge
+🎃	jack-o-lanterne
+🎄	juletræ
+🎆	fyrværkeri
+🎇	stjernekaster
+🧨	fyrværkeri
+✨	funkler
+🎈	ballon
+🎉	festpopper
+🎊	konfetti bold
+🎋	tanabata træ
+🎍	fyr dekoration
+🎎	Japanske dukker
+🎏	karpe streamer
+🎐	vindklokke
+🎑	ceremoni til at se månen
+🧧	rød kuvert
+🎀	bånd
+🎁	indpakket gave
+🎗️	påmindelsesbånd
+🎗	påmindelsesbånd
+🎟️	adgangsbilletter
+🎟	adgangsbilletter
+🎫	billet
+🎖️	militær medalje
+🎖	militær medalje
+🏆	trofæ
+🏅	sportsmedalje
+🥇	1. plads medalje
+🥈	2. plads medalje
+🥉	3. plads medalje
+⚽	fodbold
+⚾	baseball
+🥎	softball
+🏀	basketball
+🏐	volleyball
+🏈	amerikansk fodbold
+🏉	rugby fodbold
+🎾	tennis
+🥏	flyvende skive
+🎳	bowling
+🏏	cricket spil
+🏑	landhockey
+🏒	Ishockey
+🥍	lacrosse
+🏓	bordtennis
+🏸	badminton
+🥊	boksehandske
+🥋	kampsport uniform
+🥅	mål netto
+⛳	flag i hul
+⛸️	skøjte
+⛸	skøjte
+🎣	fiskestang
+🎽	løbetrøje
+🎿	ski
+🛷	slæde
+🥌	krøllesten
+🎯	direkte hit
+🎱	pool 8 bold
+🔮	krystalkugle
+🧿	nazar amulet
+🎮	videospil
+🕹️	joystick
+🕹	joystick
+🎰	spilleautomat
+🎲	spil dø
+🧩	stiksav
+🧸	Bamse
+♠️	spadefarve
+♠	spadefarve
+♥️	hjertedragt
+♥	hjertedragt
+♦️	diamant dragt
+♦	diamant dragt
+♣️	klubdragt
+♣	klubdragt
+♟️	skakbonde
+♟	skakbonde
+🃏	joker
+🀄	mahjong rød drage
+🎴	blomst spillekort
+🎭	scenekunst
+🖼️	indrammet billede
+🖼	indrammet billede
+🎨	kunstner palet
+🧵	tråd
+🧶	garn
+🔇	dæmpet højttaler
+🔈	højttaler lav lydstyrke
+🔉	højttaler medium lydstyrke
+🔊	højttaler høj lydstyrke
+📢	højttaler
+📣	megafon
+📯	posthorn
+🔔	klokke
+🔕	klokke med skråstreg
+🎼	musikalsk partitur
+🎵	musikalsk node
+🎶	musikalske noder
+🎙️	studie mikrofon
+🎙	studie mikrofon
+🎚️	niveauskyder
+🎚	niveauskyder
+🎛️	kontrolknapper
+🎛	kontrolknapper
+🎤	mikrofon
+🎧	hovedtelefoner
+📻	radio
+🎷	saxofon
+🎸	guitar
+🎹	musikalsk keyboard
+🎺	trompet
+🎻	violin
+🥁	tromme
+📱	mobiltelefon
+📲	mobiltelefon med pil
+☎️	telefon
+☎	telefon
+📞	telefonrør
+📟	personsøger
+📠	faxmaskine
+🔋	batteri
+🔌	elektrisk stik
+💻	bærbar computer
+🖥️	stationær computer
+🖥	stationær computer
+🖨️	printer
+🖨	printer
+⌨️	tastatur
+⌨	tastatur
+🖱️	computermus
+🖱	computermus
+🖲️	trackball
+🖲	trackball
+💽	computerens disk
+💾	diskette
+💿	optisk disk
+📀	dvd
+🧮	abacus
+🎥	filmkamera
+🎞️	film rammer
+🎞	film rammer
+📽️	filmprojektor
+📽	filmprojektor
+🎬	klapbræt
+📺	television
+📷	kamera
+📸	kamera med blitz
+📹	video kamera
+📼	videokassette
+🔍	forstørrelsesglas vippet til venstre
+🔎	forstørrelsesglas vippet til højre
+🕯️	lys
+🕯	lys
+💡	lys pære
+🔦	lommelygte
+🏮	rød papirlanterne
+📔	notesbog med dekorativt omslag
+📕	lukket bog
+📖	åben bog
+📗	grøn bog
+📘	blå bog
+📙	orange bog
+📚	bøger
+📓	notesbog
+📒	hovedbog
+📃	side med krølle
+📜	rulle
+📄	siden opad
+📰	avis
+🗞️	sammenrullet avis
+🗞	sammenrullet avis
+📑	bogmærke faner
+🔖	bogmærke
+🏷️	etiket
+🏷	etiket
+💰	pengepose
+💴	yen seddel
+💵	dollarseddel
+💶	euroseddel
+💷	pundseddel
+💸	penge med vinger
+💳	kreditkort
+🧾	Kvittering
+💹	diagrammet stiger med yen
+💱	valutaveksling
+💲	tungt dollartegn
+✉️	kuvert
+✉	kuvert
+📧	e-mail
+📨	indgående kuvert
+📩	kuvert med pil
+📤	udbakke
+📥	indbakkebakke
+📦	pakke
+📫	lukket postkasse med hejst flag
+📪	lukket postkasse med sænket flag
+📬	åben postkasse med hejst flag
+📭	åben postkasse med sænket flag
+📮	Postboks
+🗳️	stemmeurn med stemmeseddel
+🗳	stemmeurn med stemmeseddel
+✏️	blyant
+✏	blyant
+✒️	sort nib
+✒	sort nib
+🖋️	fyldepen
+🖋	fyldepen
+🖊️	pen
+🖊	pen
+🖌️	pensel
+🖌	pensel
+🖍️	farveblyant
+🖍	farveblyant
+📝	notat
+💼	mappe
+📁	Fil og mappe
+📂	åbne mappen
+🗂️	kartotekdelere
+🗂	kartotekdelere
+📅	kalender
+📆	afrivningskalender
+🗒️	spiral notesblok
+🗒	spiral notesblok
+🗓️	spiral kalender
+🗓	spiral kalender
+📇	kartotek
+📈	diagrammet stiger
+📉	diagram aftagende
+📊	søjlediagram
+📋	udklipsholder
+📌	knappenål
+📍	rund knappenål
+📎	Papirklip
+🖇️	sammenkædede papirclips
+🖇	sammenkædede papirclips
+📏	lige lineal
+📐	trekantet lineal
+✂️	saks
+✂	saks
+🗃️	kartotekassen
+🗃	kartotekassen
+🗄️	arkivskab
+🗄	arkivskab
+🗑️	papirkurv
+🗑	papirkurv
+🔒	Låst
+🔓	ulåst
+🔏	låst med pen
+🔐	låst med nøgle
+🔑	nøgle
+🗝️	gammel nøgle
+🗝	gammel nøgle
+🔨	Hammer
+⛏️	plukke
+⛏	plukke
+⚒️	hammer og hakke
+⚒	hammer og hakke
+🛠️	hammer og skruenøgle
+🛠	hammer og skruenøgle
+🗡️	dolk
+🗡	dolk
+⚔️	krydsede sværd
+⚔	krydsede sværd
+🔫	pistol
+🏹	bue og pil
+🛡️	skjold
+🛡	skjold
+🔧	skruenøgle
+🔩	møtrik og bolt
+⚙️	gear
+⚙	gear
+🗜️	klemme
+🗜	klemme
+⚖️	balance skala
+⚖	balance skala
+🔗	link
+⛓️	kæder
+⛓	kæder
+🧰	værktøjskasse
+🧲	magnet
+⚗️	almbic
+⚗	almbic
+🧪	reagensglas
+🧫	petriskål
+🧬	dna
+🔬	mikroskop
+🔭	teleskop
+📡	satellitantenne
+💉	sprøjte
+💊	pille
+🚪	dør
+🛏️	seng
+🛏	seng
+🛋️	sofa og lampe
+🛋	sofa og lampe
+🚽	toilet
+🚿	bruser
+🛁	badekar
+🧴	lotion flaske
+🧷	sikkerhedsnål
+🧹	kost
+🧺	kurv
+🧻	rulle papir
+🧼	sæbe
+🧽	svamp
+🧯	brandslukker
+🛒	indkøbskurv
+🚬	cigaret
+⚰️	kiste
+⚰	kiste
+⚱️	begravelsesurne
+⚱	begravelsesurne
+🗿	moai
+🏧	ATM tegn
+🚮	affald i skraldespand tegn
+🚰	drikkevand
+♿	kørestol symbol
+🚹	herretoilet
+🚺	kvindeværelse
+🚻	Badeværelse
+🚼	baby symbol
+🚾	vandkloset
+🛂	paskontrol
+🛃	skikke
+🛄	bagageudlevering
+🛅	efterladt bagage
+⚠️	advarsel
+⚠	advarsel
+🚸	børn, der krydser
+⛔	Ingen adgang
+🚫	forbudt
+🚳	ingen cykler
+🚭	Rygning forbudt
+🚯	ingen henkastning
+🚱	ikke-drikkevand
+🚷	ingen fodgængere
+📵	ingen mobiltelefoner
+🔞	ingen under atten
+☢️	radioaktiv
+☢	radioaktiv
+☣️	biologisk farlige
+☣	biologisk farlige
+⬆️	pil op
+⬆	pil op
+↗️	pil op til højre
+↗	pil op til højre
+➡️	højre pil
+➡	højre pil
+↘️	pil ned til højre
+↘	pil ned til højre
+⬇️	pil ned
+⬇	pil ned
+↙️	pil ned til venstre
+↙	pil ned til venstre
+⬅️	venstre pil
+⬅	venstre pil
+↖️	pil op til venstre
+↖	pil op til venstre
+↕️	op-ned pil
+↕	op-ned pil
+↔️	venstre-højre pil
+↔	venstre-højre pil
+↩️	højre pil buede til venstre
+↩	højre pil buede til venstre
+↪️	venstre pil, der buer til højre
+↪	venstre pil, der buer til højre
+⤴️	højre pil buede op
+⤴	højre pil buede op
+⤵️	højre pil buer ned
+⤵	højre pil buer ned
+🔃	lodrette pile med uret
+🔄	knappen med pile mod uret
+🔙	TILBAGE pil
+🔚	END pil
+🔛	PÅ pil
+🔜	SNART pil
+🔝	TOP pil
+🛐	sted for tilbedelse
+⚛️	atom symbol
+⚛	atom symbol
+🕉️	om
+🕉	om
+✡️	Davids stjerne
+✡	Davids stjerne
+☸️	dharmaens hjul
+☸	dharmaens hjul
+☯️	yin yang
+☯	yin yang
+✝️	latinsk kors
+✝	latinsk kors
+☦️	ortodokse kors
+☦	ortodokse kors
+☪️	stjerne og halvmåne
+☪	stjerne og halvmåne
+☮️	fred symbol
+☮	fred symbol
+🕎	menorah
+🔯	stiplet sekstakket stjerne
+♈	Vædderen
+♉	Tyren
+♊	tvilling
+♋	Kræft
+♌	Leo
+♍	Jomfruen
+♎	Vægten
+♏	Skorpionen
+♐	Skytten
+♑	Stenbukken
+♒	Vandmanden
+♓	Fiskene
+⛎	Ophiuchus
+🔀	knappen til at blande spor
+🔁	gentag knap
+🔂	gentag enkelt knap
+▶️	afspilningsknappen
+▶	afspilningsknappen
+⏩	hurtig frem-knap
+⏭️	knap til næste spor
+⏭	knap til næste spor
+⏯️	afspil eller pause-knap
+⏯	afspil eller pause-knap
+◀️	omvendt knap
+◀	omvendt knap
+⏪	hurtig tilbage-knap
+⏮️	sidste spor-knap
+⏮	sidste spor-knap
+🔼	opad-knap
+⏫	hurtig op knap
+🔽	nedadgående knap
+⏬	hurtig ned-knap
+⏸️	pause knap
+⏸	pause knap
+⏹️	stop knap
+⏹	stop knap
+⏺️	optageknap
+⏺	optageknap
+⏏️	eject knap
+⏏	eject knap
+🎦	biograf
+🔅	dæmp knap
+🔆	lys knap
+📶	antennestænger
+📳	vibrationstilstand
+📴	mobiltelefon slukket
+♀️	kvindeligt tegn
+♀	kvindeligt tegn
+♂️	mandligt tegn
+♂	mandligt tegn
+⚕️	medicinsk symbol
+⚕	medicinsk symbol
+♾️	uendelighed
+♾	uendelighed
+♻️	genbrugssymbol
+♻	genbrugssymbol
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	trefork emblem
+📛	navneskilt
+🔰	Japansk symbol for begyndere
+⭕	tung stor cirkel
+✅	hvidt kraftigt flueben
+☑️	stemmeurn med check
+☑	stemmeurn med check
+✔️	tungt flueben
+✔	tungt flueben
+✖️	tung multiplikation x
+✖	tung multiplikation x
+❌	krydsmærke
+❎	krydsmærke knap
+➕	tungt plustegn
+➖	tungt minustegn
+➗	tungt delingsskilt
+➰	krøllet løkke
+➿	dobbelt krøllet løkke
+〽️	del vekslende mærke
+〽	del vekslende mærke
+✳️	otte-eget stjerne
+✳	otte-eget stjerne
+✴️	ottetakket stjerne
+✴	ottetakket stjerne
+❇️	glimte
+❇	glimte
+‼️	dobbelt udråbstegn
+‼	dobbelt udråbstegn
+⁉️	udråbstegn
+⁉	udråbstegn
+❓	spørgsmålstegn
+❔	hvidt spørgsmålstegn
+❕	hvidt udråbstegn
+❗	udråbstegn
+〰️	bølget streg
+〰	bølget streg
+©️	ophavsret
+©	ophavsret
+®️	registreret
+®	registreret
+™️	varemærke
+™	varemærke
+#️⃣	tastetryk: #
+#⃣	tastetryk: #
+*️⃣	tastatur: *
+*⃣	tastatur: *
+0️⃣	tastetryk: 0
+0⃣	tastetryk: 0
+1️⃣	tastatur: 1
+1⃣	tastatur: 1
+2️⃣	tastatur: 2
+2⃣	tastatur: 2
+3️⃣	tastatur: 3
+3⃣	tastatur: 3
+4️⃣	tastatur: 4
+4⃣	tastatur: 4
+5️⃣	tastatur: 5
+5⃣	tastatur: 5
+6️⃣	tastatur: 6
+6⃣	tastatur: 6
+7️⃣	tastatur: 7
+7⃣	tastatur: 7
+8️⃣	tastatur: 8
+8⃣	tastatur: 8
+9️⃣	tastetryk: 9
+9⃣	tastetryk: 9
+🔟	tastatur: 10
+💯	hundrede point
+🔠	indtast latinske store bogstaver
+🔡	indtast latin med små bogstaver
+🔢	indtaste tal
+🔣	indtastningssymboler
+🔤	indtast latinske bogstaver
+🅰️	En knap (blodtype)
+🅰	En knap (blodtype)
+🆎	AB knap (blodtype)
+🅱️	B-knap (blodtype)
+🅱	B-knap (blodtype)
+🆑	CL knap
+🆒	COOL knap
+🆓	GRATIS knap
+ℹ️	Information
+ℹ	Information
+🆔	ID knap
+Ⓜ️	kredsede om M
+Ⓜ	kredsede om M
+🆕	NY knap
+🆖	NG knap
+🅾️	O-knap (blodtype)
+🅾	O-knap (blodtype)
+🆗	OK knap
+🅿️	P knap
+🅿	P knap
+🆘	SOS knap
+🆙	OP-knap
+🆚	VS knap
+🈁	Japansk "her"-knap
+🈂️	Japansk "servicegebyr"-knap
+🈂	Japansk "servicegebyr"-knap
+🈷️	Japansk knap "månedligt beløb".
+🈷	Japansk knap "månedligt beløb".
+🈶	Japansk "ikke gratis" knap
+🈯	Japansk "reserveret" knap
+🉐	Japansk "gain"-knap
+🈹	Japansk "rabat" knap
+🈚	Japansk "gratis" knap
+🈲	Japansk "forbudt" knap
+🉑	Japansk "acceptabel" knap
+🈸	Japansk "applikation" knap
+🈴	Japansk "bestået karakter"-knap
+🈳	Japansk "ledig stilling" knap
+㊗️	Japansk "tillykke" knap
+㊗	Japansk "tillykke" knap
+㊙️	Japansk "hemmelig" knap
+㊙	Japansk "hemmelig" knap
+🈺	Japansk "åben for erhvervslivet"-knap
+🈵	Japansk knap "ingen ledig stilling".
+▪️	sort lille firkant
+▪	sort lille firkant
+▫️	hvid lille firkant
+▫	hvid lille firkant
+◻️	hvid medium firkant
+◻	hvid medium firkant
+◼️	sort medium firkant
+◼	sort medium firkant
+◽	hvid mellem-lille firkant
+◾	sort mellem-lille firkant
+⬛	sort stor firkant
+⬜	hvid stor firkant
+🔶	stor orange diamant
+🔷	stor blå diamant
+🔸	lille orange diamant
+🔹	lille blå diamant
+🔺	rød trekant pegede opad
+🔻	rød trekant pegede nedad
+💠	diamant med en prik
+🔘	Radio knap
+🔲	sort firkantet knap
+🔳	hvid firkantet knap
+⚪	hvid cirkel
+⚫	sort cirkel
+🔴	rød cirkel
+🔵	blå cirkel
+🏁	ternet flag
+🚩	trekantet flag
+🎌	krydsede flag
+🏴	sort flag
+🏳️	hvidt flag
+🏳	hvidt flag
+🏳️‍🌈	regnbueflag
+🏳‍🌈	regnbueflag
+🏴‍☠️	pirat flag
+🏴‍☠	pirat flag
+🇦🇨	Ascension Island
+🇦🇩	Andorra
+🇦🇪	Forenede Arabiske Emirater
+🇦🇫	Afghanistan
+🇦🇬	Antigua og Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albanien
+🇦🇲	Armenien
+🇦🇴	Angola
+🇦🇶	Antarktis
+🇦🇷	Argentina
+🇦🇸	Amerikansk Samoa
+🇦🇹	Østrig
+🇦🇺	Australien
+🇦🇼	Aruba
+🇦🇽	Ålandsøerne
+🇦🇿	Aserbajdsjan
+🇧🇦	Bosnien og Hercegovina
+🇧🇧	Barbados
+🇧🇩	Bangladesh
+🇧🇪	Belgien
+🇧🇫	Burkina Faso
+🇧🇬	Bulgarien
+🇧🇭	Bahrain
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	St. Barthélemy
+🇧🇲	Bermuda
+🇧🇳	Brunei
+🇧🇴	Bolivia
+🇧🇶	Caribiske Holland
+🇧🇷	Brasilien
+🇧🇸	Bahamas
+🇧🇹	Bhutan
+🇧🇻	Bouvetøen
+🇧🇼	Botswana
+🇧🇾	Hviderusland
+🇧🇿	Belize
+🇨🇦	Canada
+🇨🇨	Cocos (Keeling) Islands
+🇨🇩	Congo - Kinshasa
+🇨🇫	Den Centralafrikanske Republik
+🇨🇬	Congo - Brazzaville
+🇨🇭	Schweiz
+🇨🇮	Côte d'Ivoire
+🇨🇰	Cookøerne
+🇨🇱	Chile
+🇨🇲	Cameroun
+🇨🇳	Kina
+🇨🇴	Colombia
+🇨🇵	Clipperton Island
+🇨🇷	Costa Rica
+🇨🇺	Cuba
+🇨🇻	Kap Verde
+🇨🇼	Curaçao
+🇨🇽	Juleøen
+🇨🇾	Cypern
+🇨🇿	Tjekkiet
+🇩🇪	Tyskland
+🇩🇬	Diego Garcia
+🇩🇯	Djibouti
+🇩🇰	Danmark
+🇩🇲	Dominica
+🇩🇴	Dominikanske republik
+🇩🇿	Algeriet
+🇪🇦	Ceuta og Melilla
+🇪🇨	Ecuador
+🇪🇪	Estland
+🇪🇬	Egypten
+🇪🇭	Vestsahara
+🇪🇷	Eritrea
+🇪🇸	Spanien
+🇪🇹	Etiopien
+🇪🇺	europæiske Union
+🇫🇮	Finland
+🇫🇯	Fiji
+🇫🇰	Falklandsøerne
+🇫🇲	Mikronesien
+🇫🇴	Færøerne
+🇫🇷	Frankrig
+🇬🇦	Gabon
+🇬🇧	Det Forenede Kongerige
+🇬🇩	Grenada
+🇬🇪	Georgien
+🇬🇫	Fransk Guyana
+🇬🇬	Guernsey
+🇬🇭	Ghana
+🇬🇮	Gibraltar
+🇬🇱	Grønland
+🇬🇲	Gambia
+🇬🇳	Guinea
+🇬🇵	Guadeloupe
+🇬🇶	Ækvatorial Guinea
+🇬🇷	Grækenland
+🇬🇸	South Georgia og South Sandwich Islands
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinea-Bissau
+🇬🇾	Guyana
+🇭🇰	Hong Kong SAR Kina
+🇭🇲	Heard og McDonald-øerne
+🇭🇳	Honduras
+🇭🇷	Kroatien
+🇭🇹	Haiti
+🇭🇺	Ungarn
+🇮🇨	Kanariske øer
+🇮🇩	Indonesien
+🇮🇪	Irland
+🇮🇱	Israel
+🇮🇲	Isle of Man
+🇮🇳	Indien
+🇮🇴	Britisk territorium i det Indiske Ocean
+🇮🇶	Irak
+🇮🇷	Iran
+🇮🇸	Island
+🇮🇹	Italien
+🇯🇪	Jersey
+🇯🇲	Jamaica
+🇯🇴	Jordan
+🇯🇵	Japan
+🇰🇪	Kenya
+🇰🇬	Kirgisistan
+🇰🇭	Cambodja
+🇰🇮	Kiribati
+🇰🇲	Comorerne
+🇰🇳	St. Kitts og Nevis
+🇰🇵	Nordkorea
+🇰🇷	Sydkorea
+🇰🇼	Kuwait
+🇰🇾	Caymanøerne
+🇰🇿	Kasakhstan
+🇱🇦	Laos
+🇱🇧	Libanon
+🇱🇨	St. Lucia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Liberia
+🇱🇸	Lesotho
+🇱🇹	Litauen
+🇱🇺	Luxembourg
+🇱🇻	Letland
+🇱🇾	Libyen
+🇲🇦	Marokko
+🇲🇨	Monaco
+🇲🇩	Moldova
+🇲🇪	Montenegro
+🇲🇫	Sankt Martin
+🇲🇬	Madagaskar
+🇲🇭	Marshalløerne
+🇲🇰	Makedonien
+🇲🇱	Mali
+🇲🇲	Myanmar (Burma)
+🇲🇳	Mongoliet
+🇲🇴	Macau SAR Kina
+🇲🇵	Nordmarianerne
+🇲🇶	Martinique
+🇲🇷	Mauretanien
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mauritius
+🇲🇻	Maldiverne
+🇲🇼	Malawi
+🇲🇽	Mexico
+🇲🇾	Malaysia
+🇲🇿	Mozambique
+🇳🇦	Namibia
+🇳🇨	Ny Kaledonien
+🇳🇪	Niger
+🇳🇫	Norfolk Island
+🇳🇬	Nigeria
+🇳🇮	Nicaragua
+🇳🇱	Holland
+🇳🇴	Norge
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	New Zealand
+🇴🇲	Oman
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Fransk Polynesien
+🇵🇬	Papua Ny Guinea
+🇵🇭	Filippinerne
+🇵🇰	Pakistan
+🇵🇱	Polen
+🇵🇲	St. Pierre & Miquelon
+🇵🇳	Pitcairnøerne
+🇵🇷	Puerto Rico
+🇵🇸	palæstinensiske områder
+🇵🇹	Portugal
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Qatar
+🇷🇪	Genforening
+🇷🇴	Rumænien
+🇷🇸	Serbien
+🇷🇺	Rusland
+🇷🇼	Rwanda
+🇸🇦	Saudi Arabien
+🇸🇧	Salomonøerne
+🇸🇨	Seychellerne
+🇸🇩	Sudan
+🇸🇪	Sverige
+🇸🇬	Singapore
+🇸🇭	Sankt Helena
+🇸🇮	Slovenien
+🇸🇯	Svalbard & Jan Mayen
+🇸🇰	Slovakiet
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somalia
+🇸🇷	Surinam
+🇸🇸	Sydsudan
+🇸🇹	São Tomé og Príncipe
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Syrien
+🇸🇿	Swaziland
+🇹🇦	Tristan da Cunha
+🇹🇨	Turks- og Caicosøerne
+🇹🇩	Tchad
+🇹🇫	franske sydlige territorier
+🇹🇬	At gå
+🇹🇭	Thailand
+🇹🇯	Tadsjikistan
+🇹🇰	Tokelau
+🇹🇱	Timor-Leste
+🇹🇲	Turkmenistan
+🇹🇳	Tunesien
+🇹🇴	Tonga
+🇹🇷	Kalkun
+🇹🇹	Trinidad og Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taiwan
+🇹🇿	Tanzania
+🇺🇦	Ukraine
+🇺🇬	Uganda
+🇺🇲	U.S.A. afsidesliggende øer
+🇺🇳	Forenede Nationer
+🇺🇸	Forenede Stater
+🇺🇾	Uruguay
+🇺🇿	Usbekistan
+🇻🇦	Vatikanet
+🇻🇨	St. Vincent og Grenadinerne
+🇻🇪	Venezuela
+🇻🇬	Britiske Jomfruøer
+🇻🇮	Amerikanske Jomfruøer
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis og Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Yemen
+🇾🇹	Mayotte
+🇿🇦	Sydafrika
+🇿🇲	Zambia
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	England
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Skotland
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Wales

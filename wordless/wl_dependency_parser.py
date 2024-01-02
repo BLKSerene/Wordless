@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_token_preprocessing
+from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -469,7 +469,7 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
 
             for file in self.main.wl_file_area.get_selected_files():
                 text = copy.deepcopy(file['text'])
-                text = wl_token_preprocessing.wl_preprocess_tokens_concordancer(
+                text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )

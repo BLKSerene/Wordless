@@ -30,18 +30,19 @@ from wordless.wl_utils import wl_misc
 main_global = None
 
 def test_profiler():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
     for i in range(4):
-        # Single file
-        if i == 0:
-            wl_test_init.select_test_files(main, no_files = [0])
-        # Multiple files
-        elif i == 1:
-            wl_test_init.select_test_files(main, no_files = [1, 2])
-        # Miscellaneous
-        else:
-            wl_test_init.select_test_files(main, no_files = [i + 1])
+        match i:
+            # Single file
+            case 0:
+                wl_test_init.select_test_files(main, no_files = [0])
+            # Multiple files
+            case 1:
+                wl_test_init.select_test_files(main, no_files = [1, 2])
+            # Miscellaneous
+            case _:
+                wl_test_init.select_test_files(main, no_files = [i + 1])
 
         global main_global # pylint: disable=global-statement
         main_global = main

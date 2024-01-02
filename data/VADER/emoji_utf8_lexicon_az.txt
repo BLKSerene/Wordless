@@ -1,0 +1,3570 @@
+😀	gülən üz
+😁	gülən gözlərlə nur saçan üz
+😂	sevinc göz yaşları ilə üz
+🤣	yerə yuvarlanaraq gülür
+😃	iri gözləri ilə gülümsəyən üz
+😄	gülümsəyən gözlərlə gülümsəyən üz
+😅	tərlə gülən üz
+😆	gülümsəyən gözlərini qıymış üz
+😉	göz qırpan üz
+😊	gülən gözlərlə gülən üz
+😋	yeməyin dadını çəkən üz
+😎	gün eynəyi ilə gülümsəyən üz
+😍	ürək gözləri ilə gülən üz
+😘	öpüş əsən üz
+🥰	3 ürəkli gülən üz
+😗	öpüşən üz
+😙	gülümsəyən gözlərlə öpüşən üz
+😚	qapalı gözlərlə öpüşən üz
+☺️	gülən üz
+☺	gülən üz
+🙂	biraz gülümsəyən üz
+🤗	qucaqlayan üz
+🤩	ulduz vurdu
+🤔	düşünən üz
+🤨	qaldırılmış qaşlı üz
+😐	neytral üz
+😑	ifadəsiz üz
+😶	ağızsız üz
+🙄	yuvarlanan gözlərlə üz
+😏	gülən üz
+😣	səbirli üz
+😥	kədərli, lakin rahatlanmış üz
+😮	açıq ağızla üz
+🤐	fermuarlı ağızlı üz
+😯	susmuş üz
+😪	yuxulu üz
+😫	yorğun üz
+😴	yuxulu üz
+😌	rahatlamış üz
+😛	dil ilə üz
+😜	dil ilə göz qırpan üz
+😝	dili ilə qıyıq üz
+🤤	axan üz
+😒	həyasız üz
+😓	tərləmiş üz
+😔	fikirli üz
+😕	qarışıq üz
+🙃	başıaşağı üz
+🤑	pul-ağız üz
+😲	heyran üz
+☹️	qaşqabaqlı üz
+☹	qaşqabaqlı üz
+🙁	biraz qaşqabaqlı üz
+😖	çaşqın üz
+😞	məyus üz
+😟	narahat üz
+😤	burundan buxarla üz
+😢	ağlayan üz
+😭	yüksək səslə ağlayan üz
+😦	açıq ağızla qaşqabaqlı üz
+😧	kədərli üz
+😨	qorxulu üz
+😩	yorğun üz
+🤯	partlayan baş
+😬	qaşqabaqlı üz
+😰	tərləmiş narahat üz
+😱	qorxudan qışqıran üz
+🥵	isti üz
+🥶	soyuq üz
+😳	qızarmış üz
+🤪	çılğın üz
+😵	başgicəllənən üz
+😡	somurtkan üz
+😠	qəzəbli üz
+🤬	ağızda simvollar olan üz
+😷	tibbi maska ilə üz
+🤒	termometr ilə üz
+🤕	baş sarğı ilə üz
+🤢	ürək bulanması üz
+🤮	üz qusma
+🤧	asqıran üz
+😇	halo ilə gülümsəyən üz
+🤠	kovboy şapkası üzü
+🥳	ziyafət üzü
+🥴	cılız üz
+🥺	yalvaran üz
+🤥	yalançı üz
+🤫	susan üz
+🤭	əli ağzın üstündə olan üz
+🧐	monokl ilə üz
+🤓	nerd üz
+😈	buynuzlu gülən üz
+👿	buynuzlu qəzəbli üz
+🤡	təlxək üz
+👹	div
+👺	goblin
+💀	kəllə
+☠️	kəllə və çarpaz sümüklər
+☠	kəllə və çarpaz sümüklər
+👻	kabus
+👽	yadplanetli
+👾	yadplanetli canavar
+🤖	robot üzü
+💩	poo yığını
+😺	gülümsəyən pişik üzü
+😸	gülümsəyən gözlərlə gülümsəyən pişik üzü
+😹	sevinc göz yaşları ilə pişik üzü
+😻	ürək gözləri ilə gülümsəyən pişik üzü
+😼	istehzalı təbəssümlə pişik üzü
+😽	öpüşən pişik üz
+🙀	yorğun pişik üzü
+😿	ağlayan pişik üzü
+😾	somurtkan pişik üzü
+🙈	şər görməmiş meymun
+🙉	Pis olmayan meymun eşitmək
+🙊	pis danışan meymun
+🏻	açıq dəri tonu
+🏼	orta-açıq dəri tonu
+🏽	orta dəri tonu
+🏾	orta-tünd dəri tonu
+🏿	tünd dəri tonu
+👶	körpə
+👶🏻	körpə: açıq dəri tonu
+👶🏼	körpə: orta-açıq dəri tonu
+👶🏽	körpə: orta dəri tonu
+👶🏾	körpə: orta-tünd dəri tonu
+👶🏿	körpə: tünd dəri tonu
+🧒	uşaq
+🧒🏻	uşaq: açıq dəri tonu
+🧒🏼	uşaq: orta-açıq dəri tonu
+🧒🏽	uşaq: orta dəri tonu
+🧒🏾	uşaq: orta-tünd dəri tonu
+🧒🏿	uşaq: tünd dəri tonu
+👦	oğlan
+👦🏻	oğlan: açıq dəri tonu
+👦🏼	oğlan: orta-açıq dəri tonu
+👦🏽	oğlan: orta dəri tonu
+👦🏾	oğlan: orta-tünd dəri tonu
+👦🏿	oğlan: tünd dəri tonu
+👧	qız
+👧🏻	qız: açıq dəri tonu
+👧🏼	qız: orta-açıq dəri tonu
+👧🏽	qız: orta dəri tonu
+👧🏾	qız: orta-tünd dəri tonu
+👧🏿	qız: tünd dəri tonu
+🧑	yetkin
+🧑🏻	böyüklər: açıq dəri tonu
+🧑🏼	böyüklər: orta-açıq dəri tonu
+🧑🏽	böyüklər: orta dəri tonu
+🧑🏾	böyüklər: orta-tünd dəri tonu
+🧑🏿	böyüklər: tünd dəri tonu
+👨	adam
+👨🏻	kişi: açıq dəri tonu
+👨🏼	kişi: orta-açıq dəri tonu
+👨🏽	kişi: orta dəri tonu
+👨🏾	kişi: orta-tünd dəri tonu
+👨🏿	kişi: tünd dəri tonu
+👩	qadın
+👩🏻	qadın: açıq dəri tonu
+👩🏼	qadın: orta-açıq dəri tonu
+👩🏽	qadın: orta dəri tonu
+👩🏾	qadın: orta-tünd dəri tonu
+👩🏿	qadın: tünd dəri tonu
+🧓	yaşlı yetkin
+🧓🏻	yaşlı yetkin: açıq dəri tonu
+🧓🏼	yaşlı: orta-açıq dəri tonu
+🧓🏽	yaşlı: orta dəri tonu
+🧓🏾	yaşlı yetkin: orta-tünd dəri tonu
+🧓🏿	yaşlı yetkin: tünd dəri tonu
+👴	qoca
+👴🏻	qoca: açıq dəri tonu
+👴🏼	qoca: orta-açıq dəri tonu
+👴🏽	qoca: orta dəri tonu
+👴🏾	qoca: orta-tünd dəri tonu
+👴🏿	qoca: tünd dəri tonu
+👵	yaşlı qadın
+👵🏻	yaşlı qadın: açıq dəri tonu
+👵🏼	yaşlı qadın: orta-açıq dəri tonu
+👵🏽	yaşlı qadın: orta dəri tonu
+👵🏾	yaşlı qadın: orta-tünd dəri tonu
+👵🏿	yaşlı qadın: tünd dəri tonu
+👨‍⚕️	kişi səhiyyə işçisi
+👨‍⚕	kişi səhiyyə işçisi
+👨🏻‍⚕️	kişi tibb işçisi: açıq dəri tonu
+👨🏻‍⚕	kişi tibb işçisi: açıq dəri tonu
+👨🏼‍⚕️	kişi tibb işçisi: orta-açıq dəri tonu
+👨🏼‍⚕	kişi tibb işçisi: orta-açıq dəri tonu
+👨🏽‍⚕️	kişi tibb işçisi: orta dəri tonu
+👨🏽‍⚕	kişi tibb işçisi: orta dəri tonu
+👨🏾‍⚕️	kişi tibb işçisi: orta-tünd dəri tonu
+👨🏾‍⚕	kişi tibb işçisi: orta-tünd dəri tonu
+👨🏿‍⚕️	kişi tibb işçisi: tünd dəri tonu
+👨🏿‍⚕	kişi tibb işçisi: tünd dəri tonu
+👩‍⚕️	qadın tibb işçisi
+👩‍⚕	qadın tibb işçisi
+👩🏻‍⚕️	qadın tibb işçisi: açıq dəri tonu
+👩🏻‍⚕	qadın tibb işçisi: açıq dəri tonu
+👩🏼‍⚕️	qadın tibb işçisi: orta-açıq dəri tonu
+👩🏼‍⚕	qadın tibb işçisi: orta-açıq dəri tonu
+👩🏽‍⚕️	qadın tibb işçisi: orta dəri tonu
+👩🏽‍⚕	qadın tibb işçisi: orta dəri tonu
+👩🏾‍⚕️	qadın tibb işçisi: orta-tünd dəri tonu
+👩🏾‍⚕	qadın tibb işçisi: orta-tünd dəri tonu
+👩🏿‍⚕️	qadın tibb işçisi: tünd dəri tonu
+👩🏿‍⚕	qadın tibb işçisi: tünd dəri tonu
+👨‍🎓	kişi tələbə
+👨🏻‍🎓	kişi tələbə: açıq dəri tonu
+👨🏼‍🎓	kişi tələbə: orta-açıq dəri tonu
+👨🏽‍🎓	kişi tələbə: orta dəri tonu
+👨🏾‍🎓	kişi tələbə: orta-tünd dəri tonu
+👨🏿‍🎓	kişi tələbə: tünd dəri tonu
+👩‍🎓	qadın tələbə
+👩🏻‍🎓	qadın tələbə: açıq dəri tonu
+👩🏼‍🎓	qadın tələbə: orta-açıq dəri tonu
+👩🏽‍🎓	qadın tələbə: orta dəri tonu
+👩🏾‍🎓	qadın tələbə: orta-tünd dəri tonu
+👩🏿‍🎓	qadın tələbə: tünd dəri tonu
+👨‍🏫	kişi müəllim
+👨🏻‍🏫	kişi müəllim: açıq dəri tonu
+👨🏼‍🏫	kişi müəllim: orta-açıq dəri tonu
+👨🏽‍🏫	kişi müəllim: orta dəri tonu
+👨🏾‍🏫	kişi müəllim: orta-tünd dəri tonu
+👨🏿‍🏫	kişi müəllim: tünd dəri tonu
+👩‍🏫	qadın müəllim
+👩🏻‍🏫	qadın müəllim: açıq dəri tonu
+👩🏼‍🏫	qadın müəllim: orta-açıq dəri tonu
+👩🏽‍🏫	qadın müəllim: orta dəri tonu
+👩🏾‍🏫	qadın müəllim: orta-tünd dəri tonu
+👩🏿‍🏫	qadın müəllim: tünd dəri tonu
+👨‍⚖️	kişi hakim
+👨‍⚖	kişi hakim
+👨🏻‍⚖️	kişi hakim: açıq dəri tonu
+👨🏻‍⚖	kişi hakim: açıq dəri tonu
+👨🏼‍⚖️	kişi hakim: orta-açıq dəri tonu
+👨🏼‍⚖	kişi hakim: orta-açıq dəri tonu
+👨🏽‍⚖️	kişi hakim: orta dəri tonu
+👨🏽‍⚖	kişi hakim: orta dəri tonu
+👨🏾‍⚖️	kişi hakim: orta-tünd dəri tonu
+👨🏾‍⚖	kişi hakim: orta-tünd dəri tonu
+👨🏿‍⚖️	kişi hakim: tünd dəri tonu
+👨🏿‍⚖	kişi hakim: tünd dəri tonu
+👩‍⚖️	qadın hakim
+👩‍⚖	qadın hakim
+👩🏻‍⚖️	qadın hakim: açıq dəri tonu
+👩🏻‍⚖	qadın hakim: açıq dəri tonu
+👩🏼‍⚖️	qadın hakim: orta-açıq dəri tonu
+👩🏼‍⚖	qadın hakim: orta-açıq dəri tonu
+👩🏽‍⚖️	qadın hakim: orta dəri tonu
+👩🏽‍⚖	qadın hakim: orta dəri tonu
+👩🏾‍⚖️	qadın hakim: orta-tünd dəri tonu
+👩🏾‍⚖	qadın hakim: orta-tünd dəri tonu
+👩🏿‍⚖️	qadın hakim: tünd dəri tonu
+👩🏿‍⚖	qadın hakim: tünd dəri tonu
+👨‍🌾	kişi fermer
+👨🏻‍🌾	kişi fermer: açıq dəri tonu
+👨🏼‍🌾	kişi fermer: orta-açıq dəri tonu
+👨🏽‍🌾	kişi fermer: orta dəri tonu
+👨🏾‍🌾	kişi fermer: orta-tünd dəri tonu
+👨🏿‍🌾	kişi fermer: tünd dəri tonu
+👩‍🌾	qadın fermer
+👩🏻‍🌾	qadın fermer: açıq dəri tonu
+👩🏼‍🌾	qadın fermer: orta-açıq dəri tonu
+👩🏽‍🌾	qadın fermer: orta dəri tonu
+👩🏾‍🌾	qadın fermer: orta-tünd dəri tonu
+👩🏿‍🌾	qadın fermer: tünd dəri tonu
+👨‍🍳	adam bişirir
+👨🏻‍🍳	kişi aşpaz: açıq dəri tonu
+👨🏼‍🍳	kişi aşpaz: orta-açıq dəri tonu
+👨🏽‍🍳	kişi aşpaz: orta dəri tonu
+👨🏾‍🍳	kişi aşpaz: orta-tünd dəri tonu
+👨🏿‍🍳	kişi aşpaz: tünd dəri tonu
+👩‍🍳	qadın bişirir
+👩🏻‍🍳	qadın aşpaz: açıq dəri tonu
+👩🏼‍🍳	qadın aşpaz: orta-açıq dəri tonu
+👩🏽‍🍳	qadın aşpaz: orta dəri tonu
+👩🏾‍🍳	qadın aşpaz: orta-tünd dəri tonu
+👩🏿‍🍳	qadın aşpaz: tünd dəri tonu
+👨‍🔧	kişi mexanik
+👨🏻‍🔧	kişi mexanik: açıq dəri tonu
+👨🏼‍🔧	kişi mexanik: orta-açıq dəri tonu
+👨🏽‍🔧	kişi mexanik: orta dəri tonu
+👨🏾‍🔧	kişi mexanik: orta-tünd dəri tonu
+👨🏿‍🔧	kişi mexanik: tünd dəri tonu
+👩‍🔧	qadın mexanik
+👩🏻‍🔧	qadın mexanik: açıq dəri tonu
+👩🏼‍🔧	qadın mexanik: orta-açıq dəri tonu
+👩🏽‍🔧	qadın mexanik: orta dəri tonu
+👩🏾‍🔧	qadın mexanik: orta-tünd dəri tonu
+👩🏿‍🔧	qadın mexanik: tünd dəri tonu
+👨‍🏭	adam fabrik işçisi
+👨🏻‍🏭	kişi fabrik işçisi: açıq dəri tonu
+👨🏼‍🏭	kişi fabrik işçisi: orta-açıq dəri tonu
+👨🏽‍🏭	kişi fabrik işçisi: orta dəri tonu
+👨🏾‍🏭	kişi fabrik işçisi: orta-tünd dəri tonu
+👨🏿‍🏭	kişi fabrik işçisi: tünd dəri tonu
+👩‍🏭	qadın fabrik işçisi
+👩🏻‍🏭	qadın fabrik işçisi: açıq dəri tonu
+👩🏼‍🏭	qadın fabrik işçisi: orta-açıq dəri tonu
+👩🏽‍🏭	qadın fabrik işçisi: orta dəri tonu
+👩🏾‍🏭	qadın fabrik işçisi: orta-tünd dəri tonu
+👩🏿‍🏭	qadın fabrik işçisi: tünd dəri tonu
+👨‍💼	adam ofis işçisi
+👨🏻‍💼	kişi ofis işçisi: açıq dəri tonu
+👨🏼‍💼	kişi ofis işçisi: orta-açıq dəri tonu
+👨🏽‍💼	kişi ofis işçisi: orta dəri tonu
+👨🏾‍💼	kişi ofis işçisi: orta-tünd dəri tonu
+👨🏿‍💼	kişi ofis işçisi: tünd dəri tonu
+👩‍💼	qadın ofis işçisi
+👩🏻‍💼	qadın ofis işçisi: açıq dəri tonu
+👩🏼‍💼	qadın ofis işçisi: orta-açıq dəri tonu
+👩🏽‍💼	qadın ofis işçisi: orta dəri tonu
+👩🏾‍💼	qadın ofis işçisi: orta-tünd dəri tonu
+👩🏿‍💼	qadın ofis işçisi: tünd dəri tonu
+👨‍🔬	adam alim
+👨🏻‍🔬	kişi alim: açıq dəri tonu
+👨🏼‍🔬	kişi alim: orta-açıq dəri tonu
+👨🏽‍🔬	kişi alim: orta dəri tonu
+👨🏾‍🔬	kişi alim: orta-tünd dəri tonu
+👨🏿‍🔬	kişi alim: tünd dəri tonu
+👩‍🔬	qadın alim
+👩🏻‍🔬	qadın alim: açıq dəri tonu
+👩🏼‍🔬	qadın alim: orta-açıq dəri tonu
+👩🏽‍🔬	qadın alim: orta dəri tonu
+👩🏾‍🔬	qadın alim: orta-tünd dəri tonu
+👩🏿‍🔬	qadın alim: tünd dəri tonu
+👨‍💻	kişi texnoloq
+👨🏻‍💻	kişi texnoloq: açıq dəri tonu
+👨🏼‍💻	kişi texnoloq: orta-açıq dəri tonu
+👨🏽‍💻	kişi texnoloq: orta dəri tonu
+👨🏾‍💻	kişi texnoloq: orta-tünd dəri tonu
+👨🏿‍💻	kişi texnoloq: tünd dəri tonu
+👩‍💻	qadın texnoloq
+👩🏻‍💻	qadın texnoloq: açıq dəri tonu
+👩🏼‍💻	qadın texnoloq: orta-açıq dəri tonu
+👩🏽‍💻	qadın texnoloq: orta dəri tonu
+👩🏾‍💻	qadın texnoloq: orta-tünd dəri tonu
+👩🏿‍💻	qadın texnoloq: tünd dəri tonu
+👨‍🎤	kişi müğənni
+👨🏻‍🎤	kişi müğənni: açıq dəri tonu
+👨🏼‍🎤	kişi müğənni: orta-açıq dəri tonu
+👨🏽‍🎤	kişi müğənni: orta dəri tonu
+👨🏾‍🎤	kişi müğənni: orta-tünd dəri tonu
+👨🏿‍🎤	kişi müğənni: tünd dəri tonu
+👩‍🎤	qadın müğənni
+👩🏻‍🎤	qadın müğənni: açıq dəri tonu
+👩🏼‍🎤	qadın müğənni: orta-açıq dəri tonu
+👩🏽‍🎤	qadın müğənni: orta dəri tonu
+👩🏾‍🎤	qadın müğənni: orta-tünd dəri tonu
+👩🏿‍🎤	qadın müğənni: tünd dəri tonu
+👨‍🎨	kişi rəssam
+👨🏻‍🎨	kişi rəssam: açıq dəri tonu
+👨🏼‍🎨	kişi rəssam: orta-açıq dəri tonu
+👨🏽‍🎨	kişi rəssam: orta dəri tonu
+👨🏾‍🎨	kişi rəssam: orta-tünd dəri tonu
+👨🏿‍🎨	kişi rəssam: tünd dəri tonu
+👩‍🎨	qadın rəssam
+👩🏻‍🎨	qadın rəssam: açıq dəri tonu
+👩🏼‍🎨	qadın rəssam: orta-açıq dəri tonu
+👩🏽‍🎨	qadın rəssam: orta dəri tonu
+👩🏾‍🎨	qadın rəssam: orta-tünd dəri tonu
+👩🏿‍🎨	qadın rəssam: tünd dəri tonu
+👨‍✈️	adam pilot
+👨‍✈	adam pilot
+👨🏻‍✈️	kişi pilot: açıq dəri tonu
+👨🏻‍✈	kişi pilot: açıq dəri tonu
+👨🏼‍✈️	kişi pilot: orta-açıq dəri tonu
+👨🏼‍✈	kişi pilot: orta-açıq dəri tonu
+👨🏽‍✈️	kişi pilot: orta dəri tonu
+👨🏽‍✈	kişi pilot: orta dəri tonu
+👨🏾‍✈️	kişi pilot: orta-tünd dəri tonu
+👨🏾‍✈	kişi pilot: orta-tünd dəri tonu
+👨🏿‍✈️	kişi pilot: tünd dəri tonu
+👨🏿‍✈	kişi pilot: tünd dəri tonu
+👩‍✈️	qadın pilot
+👩‍✈	qadın pilot
+👩🏻‍✈️	qadın pilot: açıq dəri tonu
+👩🏻‍✈	qadın pilot: açıq dəri tonu
+👩🏼‍✈️	qadın pilot: orta-açıq dəri tonu
+👩🏼‍✈	qadın pilot: orta-açıq dəri tonu
+👩🏽‍✈️	qadın pilot: orta dəri tonu
+👩🏽‍✈	qadın pilot: orta dəri tonu
+👩🏾‍✈️	qadın pilot: orta-tünd dəri tonu
+👩🏾‍✈	qadın pilot: orta-tünd dəri tonu
+👩🏿‍✈️	qadın pilot: tünd dəri tonu
+👩🏿‍✈	qadın pilot: tünd dəri tonu
+👨‍🚀	insan astronavt
+👨🏻‍🚀	kişi astronavt: açıq dəri tonu
+👨🏼‍🚀	kişi astronavt: orta-açıq dəri tonu
+👨🏽‍🚀	kişi astronavt: orta dəri tonu
+👨🏾‍🚀	kişi astronavt: orta-tünd dəri tonu
+👨🏿‍🚀	kişi astronavt: tünd dəri tonu
+👩‍🚀	qadın astronavt
+👩🏻‍🚀	qadın astronavt: açıq dəri tonu
+👩🏼‍🚀	qadın astronavt: orta-açıq dəri tonu
+👩🏽‍🚀	qadın astronavt: orta dəri tonu
+👩🏾‍🚀	qadın astronavt: orta-tünd dəri tonu
+👩🏿‍🚀	qadın astronavt: tünd dəri tonu
+👨‍🚒	adam yanğınsöndürən
+👨🏻‍🚒	kişi yanğınsöndürən: açıq dəri tonu
+👨🏼‍🚒	kişi yanğınsöndürən: orta-açıq dəri tonu
+👨🏽‍🚒	kişi yanğınsöndürən: orta dəri tonu
+👨🏾‍🚒	kişi yanğınsöndürən: orta-tünd dəri tonu
+👨🏿‍🚒	kişi yanğınsöndürən: tünd dəri tonu
+👩‍🚒	qadın yanğınsöndürən
+👩🏻‍🚒	qadın yanğınsöndürən: açıq dəri tonu
+👩🏼‍🚒	qadın yanğınsöndürən: orta-açıq dəri tonu
+👩🏽‍🚒	qadın yanğınsöndürən: orta dəri tonu
+👩🏾‍🚒	qadın yanğınsöndürən: orta-tünd dəri tonu
+👩🏿‍🚒	qadın yanğınsöndürən: tünd dəri tonu
+👮	polis zabiti
+👮🏻	polis məmuru: açıq dəri tonu
+👮🏼	polis məmuru: orta-açıq dəri tonu
+👮🏽	polis məmuru: orta dəri tonu
+👮🏾	polis məmuru: orta-tünd dəri tonu
+👮🏿	polis məmuru: tünd dəri tonu
+👮‍♂️	kişi polis məmuru
+👮‍♂	kişi polis məmuru
+👮🏻‍♂️	kişi polis məmuru: açıq dəri tonu
+👮🏻‍♂	kişi polis məmuru: açıq dəri tonu
+👮🏼‍♂️	kişi polis məmuru: orta-açıq dəri tonu
+👮🏼‍♂	kişi polis məmuru: orta-açıq dəri tonu
+👮🏽‍♂️	kişi polis məmuru: orta dəri tonu
+👮🏽‍♂	kişi polis məmuru: orta dəri tonu
+👮🏾‍♂️	kişi polis məmuru: orta-tünd dəri tonu
+👮🏾‍♂	kişi polis məmuru: orta-tünd dəri tonu
+👮🏿‍♂️	kişi polis məmuru: tünd dəri tonu
+👮🏿‍♂	kişi polis məmuru: tünd dəri tonu
+👮‍♀️	qadın polis məmuru
+👮‍♀	qadın polis məmuru
+👮🏻‍♀️	qadın polis: açıq dəri tonu
+👮🏻‍♀	qadın polis: açıq dəri tonu
+👮🏼‍♀️	qadın polis: orta-açıq dəri tonu
+👮🏼‍♀	qadın polis: orta-açıq dəri tonu
+👮🏽‍♀️	qadın polis: orta dəri tonu
+👮🏽‍♀	qadın polis: orta dəri tonu
+👮🏾‍♀️	qadın polis: orta-tünd dəri tonu
+👮🏾‍♀	qadın polis: orta-tünd dəri tonu
+👮🏿‍♀️	qadın polis: tünd dəri tonu
+👮🏿‍♀	qadın polis: tünd dəri tonu
+🕵️	detektiv
+🕵	detektiv
+🕵🏻	detektiv: açıq dəri tonu
+🕵🏼	detektiv: orta-açıq dəri tonu
+🕵🏽	detektiv: orta dəri tonu
+🕵🏾	detektiv: orta-tünd dəri tonu
+🕵🏿	detektiv: tünd dəri tonu
+🕵️‍♂️	adam detektiv
+🕵‍♂️	adam detektiv
+🕵️‍♂	adam detektiv
+🕵‍♂	adam detektiv
+🕵🏻‍♂️	kişi detektiv: açıq dəri tonu
+🕵🏻‍♂	kişi detektiv: açıq dəri tonu
+🕵🏼‍♂️	kişi detektiv: orta-açıq dəri tonu
+🕵🏼‍♂	kişi detektiv: orta-açıq dəri tonu
+🕵🏽‍♂️	kişi detektiv: orta dəri tonu
+🕵🏽‍♂	kişi detektiv: orta dəri tonu
+🕵🏾‍♂️	kişi detektiv: orta-tünd dəri tonu
+🕵🏾‍♂	kişi detektiv: orta-tünd dəri tonu
+🕵🏿‍♂️	kişi detektiv: tünd dəri tonu
+🕵🏿‍♂	kişi detektiv: tünd dəri tonu
+🕵️‍♀️	qadın detektiv
+🕵‍♀️	qadın detektiv
+🕵️‍♀	qadın detektiv
+🕵‍♀	qadın detektiv
+🕵🏻‍♀️	qadın detektiv: açıq dəri tonu
+🕵🏻‍♀	qadın detektiv: açıq dəri tonu
+🕵🏼‍♀️	qadın detektiv: orta-açıq dəri tonu
+🕵🏼‍♀	qadın detektiv: orta-açıq dəri tonu
+🕵🏽‍♀️	qadın detektiv: orta dəri tonu
+🕵🏽‍♀	qadın detektiv: orta dəri tonu
+🕵🏾‍♀️	qadın detektiv: orta-tünd dəri tonu
+🕵🏾‍♀	qadın detektiv: orta-tünd dəri tonu
+🕵🏿‍♀️	qadın detektiv: tünd dəri tonu
+🕵🏿‍♀	qadın detektiv: tünd dəri tonu
+💂	gözətçi
+💂🏻	gözətçi: açıq dəri tonu
+💂🏼	gözətçi: orta-açıq dəri tonu
+💂🏽	qoruyucu: orta dəri tonu
+💂🏾	gözətçi: orta-tünd dəri tonu
+💂🏿	qoruyucu: tünd dəri tonu
+💂‍♂️	adam qoruyucu
+💂‍♂	adam qoruyucu
+💂🏻‍♂️	kişi qoruyucu: açıq dəri tonu
+💂🏻‍♂	kişi qoruyucu: açıq dəri tonu
+💂🏼‍♂️	kişi qoruyucu: orta-açıq dəri tonu
+💂🏼‍♂	kişi qoruyucu: orta-açıq dəri tonu
+💂🏽‍♂️	kişi qoruyucu: orta dəri tonu
+💂🏽‍♂	kişi qoruyucu: orta dəri tonu
+💂🏾‍♂️	kişi qoruyucu: orta-tünd dəri tonu
+💂🏾‍♂	kişi qoruyucu: orta-tünd dəri tonu
+💂🏿‍♂️	kişi qoruyucu: tünd dəri tonu
+💂🏿‍♂	kişi qoruyucu: tünd dəri tonu
+💂‍♀️	qadın gözətçi
+💂‍♀	qadın gözətçi
+💂🏻‍♀️	qadın gözətçi: açıq dəri tonu
+💂🏻‍♀	qadın gözətçi: açıq dəri tonu
+💂🏼‍♀️	qadın gözətçi: orta-açıq dəri tonu
+💂🏼‍♀	qadın gözətçi: orta-açıq dəri tonu
+💂🏽‍♀️	qadın gözətçi: orta dəri tonu
+💂🏽‍♀	qadın gözətçi: orta dəri tonu
+💂🏾‍♀️	qadın gözətçi: orta-tünd dəri tonu
+💂🏾‍♀	qadın gözətçi: orta-tünd dəri tonu
+💂🏿‍♀️	qadın gözətçi: tünd dəri tonu
+💂🏿‍♀	qadın gözətçi: tünd dəri tonu
+👷	inşaat işçisi
+👷🏻	inşaat işçisi: açıq dəri tonu
+👷🏼	inşaat işçisi: orta-açıq dəri tonu
+👷🏽	inşaat işçisi: orta dəri tonu
+👷🏾	inşaat işçisi: orta-tünd dəri tonu
+👷🏿	inşaat işçisi: tünd dəri tonu
+👷‍♂️	kişi inşaat işçisi
+👷‍♂	kişi inşaat işçisi
+👷🏻‍♂️	kişi inşaat işçisi: açıq dəri tonu
+👷🏻‍♂	kişi inşaat işçisi: açıq dəri tonu
+👷🏼‍♂️	kişi inşaat işçisi: orta-açıq dəri tonu
+👷🏼‍♂	kişi inşaat işçisi: orta-açıq dəri tonu
+👷🏽‍♂️	kişi inşaat işçisi: orta dəri tonu
+👷🏽‍♂	kişi inşaat işçisi: orta dəri tonu
+👷🏾‍♂️	kişi inşaat işçisi: orta-tünd dəri tonu
+👷🏾‍♂	kişi inşaat işçisi: orta-tünd dəri tonu
+👷🏿‍♂️	kişi inşaat işçisi: tünd dəri tonu
+👷🏿‍♂	kişi inşaat işçisi: tünd dəri tonu
+👷‍♀️	qadın inşaat işçisi
+👷‍♀	qadın inşaat işçisi
+👷🏻‍♀️	qadın inşaat işçisi: açıq dəri tonu
+👷🏻‍♀	qadın inşaat işçisi: açıq dəri tonu
+👷🏼‍♀️	qadın inşaat işçisi: orta-açıq dəri tonu
+👷🏼‍♀	qadın inşaat işçisi: orta-açıq dəri tonu
+👷🏽‍♀️	qadın inşaat işçisi: orta dəri tonu
+👷🏽‍♀	qadın inşaat işçisi: orta dəri tonu
+👷🏾‍♀️	qadın inşaat işçisi: orta-tünd dəri tonu
+👷🏾‍♀	qadın inşaat işçisi: orta-tünd dəri tonu
+👷🏿‍♀️	qadın inşaat işçisi: tünd dəri tonu
+👷🏿‍♀	qadın inşaat işçisi: tünd dəri tonu
+🤴	şahzadə
+🤴🏻	şahzadə: açıq dəri tonu
+🤴🏼	şahzadə: orta-açıq dəri tonu
+🤴🏽	şahzadə: orta dəri tonu
+🤴🏾	şahzadə: orta-tünd dəri tonu
+🤴🏿	şahzadə: tünd dəri tonu
+👸	şahzadə
+👸🏻	şahzadə: açıq dəri tonu
+👸🏼	şahzadə: orta-açıq dəri tonu
+👸🏽	şahzadə: orta dəri tonu
+👸🏾	şahzadə: orta-tünd dəri tonu
+👸🏿	şahzadə: tünd dəri tonu
+👳	türban taxan adam
+👳🏻	türban taxan adam: açıq dəri tonu
+👳🏼	türban taxan adam: orta-açıq dəri tonu
+👳🏽	türban taxan adam: orta dəri tonu
+👳🏾	türban taxan adam: orta-tünd dəri tonu
+👳🏿	türban taxan adam: tünd dəri tonu
+👳‍♂️	türbanlı kişi
+👳‍♂	türbanlı kişi
+👳🏻‍♂️	türbanlı kişi: açıq dəri tonu
+👳🏻‍♂	türbanlı kişi: açıq dəri tonu
+👳🏼‍♂️	türbanlı kişi: orta-açıq dəri tonu
+👳🏼‍♂	türbanlı kişi: orta-açıq dəri tonu
+👳🏽‍♂️	türbanlı kişi: orta dəri tonu
+👳🏽‍♂	türbanlı kişi: orta dəri tonu
+👳🏾‍♂️	türbanlı kişi: orta-tünd dəri tonu
+👳🏾‍♂	türbanlı kişi: orta-tünd dəri tonu
+👳🏿‍♂️	türbanlı kişi: tünd dəri tonu
+👳🏿‍♂	türbanlı kişi: tünd dəri tonu
+👳‍♀️	türban taxan qadın
+👳‍♀	türban taxan qadın
+👳🏻‍♀️	türbanlı qadın: açıq dəri tonu
+👳🏻‍♀	türbanlı qadın: açıq dəri tonu
+👳🏼‍♀️	türbanlı qadın: orta-açıq dəri tonu
+👳🏼‍♀	türbanlı qadın: orta-açıq dəri tonu
+👳🏽‍♀️	türbanlı qadın: orta dəri tonu
+👳🏽‍♀	türbanlı qadın: orta dəri tonu
+👳🏾‍♀️	türbanlı qadın: orta-tünd dəri tonu
+👳🏾‍♀	türbanlı qadın: orta-tünd dəri tonu
+👳🏿‍♀️	türbanlı qadın: tünd dəri tonu
+👳🏿‍♀	türbanlı qadın: tünd dəri tonu
+👲	çin papaqlı adam
+👲🏻	çin papaqlı kişi: açıq dəri tonu
+👲🏼	çin papaqlı kişi: orta-açıq dəri tonu
+👲🏽	çin papaqlı kişi: orta dəri tonu
+👲🏾	çin papaqlı kişi: orta-tünd dəri tonu
+👲🏿	çin papaqlı kişi: tünd dəri tonu
+🧕	hicablı qadın
+🧕🏻	çadralı qadın: açıq dəri tonu
+🧕🏼	çadralı qadın: orta-açıq dəri tonu
+🧕🏽	çadralı qadın: orta dəri tonu
+🧕🏾	çadralı qadın: orta-tünd dəri tonu
+🧕🏿	çadralı qadın: tünd dəri tonu
+🧔	saqqallı adam
+🧔🏻	saqqallı adam: açıq dəri tonu
+🧔🏼	saqqallı adam: orta-açıq dəri tonu
+🧔🏽	saqqallı adam: orta dəri tonu
+🧔🏾	saqqallı adam: orta-tünd dəri tonu
+🧔🏿	saqqallı adam: tünd dəri tonu
+👱	sarışın adam
+👱🏻	sarışın: açıq dəri tonu
+👱🏼	sarışın: orta-açıq dəri tonu
+👱🏽	sarışın: orta dəri tonu
+👱🏾	sarışın: orta-tünd dəri tonu
+👱🏿	sarışın: tünd dəri tonu
+👱‍♂️	sarışın kişi
+👱‍♂	sarışın kişi
+👱🏻‍♂️	sarışın kişi: açıq dəri tonu
+👱🏻‍♂	sarışın kişi: açıq dəri tonu
+👱🏼‍♂️	sarışın kişi: orta-açıq dəri tonu
+👱🏼‍♂	sarışın kişi: orta-açıq dəri tonu
+👱🏽‍♂️	sarışın kişi: orta dəri tonu
+👱🏽‍♂	sarışın kişi: orta dəri tonu
+👱🏾‍♂️	sarışın kişi: orta-tünd dəri tonu
+👱🏾‍♂	sarışın kişi: orta-tünd dəri tonu
+👱🏿‍♂️	sarışın kişi: tünd dəri tonu
+👱🏿‍♂	sarışın kişi: tünd dəri tonu
+👱‍♀️	sarışın qadın
+👱‍♀	sarışın qadın
+👱🏻‍♀️	sarışın qadın: açıq dəri tonu
+👱🏻‍♀	sarışın qadın: açıq dəri tonu
+👱🏼‍♀️	sarışın qadın: orta-açıq dəri tonu
+👱🏼‍♀	sarışın qadın: orta-açıq dəri tonu
+👱🏽‍♀️	sarışın qadın: orta dəri tonu
+👱🏽‍♀	sarışın qadın: orta dəri tonu
+👱🏾‍♀️	sarışın qadın: orta-tünd dəri tonu
+👱🏾‍♀	sarışın qadın: orta-tünd dəri tonu
+👱🏿‍♀️	sarışın qadın: tünd dəri tonu
+👱🏿‍♀	sarışın qadın: tünd dəri tonu
+👨‍🦰	kişi, qırmızı saçlı
+👨🏻‍🦰	kişi, qırmızı saçlı: açıq dəri tonu
+👨🏼‍🦰	kişi, qırmızı saçlı: orta-açıq dəri tonu
+👨🏽‍🦰	kişi, qırmızı saçlı: orta dəri tonu
+👨🏾‍🦰	kişi, qırmızı saçlı: orta-tünd dəri tonu
+👨🏿‍🦰	kişi, qırmızı saçlı: tünd dəri tonu
+👩‍🦰	qadın, qırmızı saçlı
+👩🏻‍🦰	qadın, qırmızı saçlı: açıq dəri tonu
+👩🏼‍🦰	qadın, qırmızı saçlı: orta-açıq dəri tonu
+👩🏽‍🦰	qadın, qırmızı saçlı: orta dəri tonu
+👩🏾‍🦰	qadın, qırmızı saçlı: orta-tünd dəri tonu
+👩🏿‍🦰	qadın, qırmızı saçlı: tünd dəri tonu
+👨‍🦱	kişi, buruq saçlı
+👨🏻‍🦱	kişi, buruq saçlı: açıq dəri tonu
+👨🏼‍🦱	kişi, buruq saçlı: orta-açıq dəri tonu
+👨🏽‍🦱	kişi, buruq saçlı: orta dəri tonu
+👨🏾‍🦱	kişi, buruq saçlı: orta-tünd dəri tonu
+👨🏿‍🦱	kişi, buruq saçlı: tünd dəri tonu
+👩‍🦱	buruq saçlı qadın
+👩🏻‍🦱	qadın, buruq saçlı: açıq dəri tonu
+👩🏼‍🦱	qadın, buruq saçlı: orta-açıq dəri tonu
+👩🏽‍🦱	qadın, buruq saçlı: orta dəri tonu
+👩🏾‍🦱	qadın, buruq saçlı: orta-tünd dəri tonu
+👩🏿‍🦱	qadın, buruq saçlı: tünd dəri tonu
+👨‍🦲	kişi, keçəl
+👨🏻‍🦲	kişi, keçəl: açıq dəri tonu
+👨🏼‍🦲	kişi, keçəl: orta-açıq dəri tonu
+👨🏽‍🦲	kişi, keçəl: orta dəri tonu
+👨🏾‍🦲	kişi, keçəl: orta-tünd dəri tonu
+👨🏿‍🦲	kişi, keçəl: tünd dəri tonu
+👩‍🦲	qadın, keçəl
+👩🏻‍🦲	qadın, keçəl: açıq dəri tonu
+👩🏼‍🦲	qadın, keçəl: orta-açıq dəri tonu
+👩🏽‍🦲	qadın, keçəl: orta dəri tonu
+👩🏾‍🦲	qadın, keçəl: orta-tünd dəri tonu
+👩🏿‍🦲	qadın, keçəl: tünd dəri tonu
+👨‍🦳	kişi, ağ saçlı
+👨🏻‍🦳	kişi, ağ saçlı: açıq dəri tonu
+👨🏼‍🦳	kişi, ağ saçlı: orta-açıq dəri tonu
+👨🏽‍🦳	kişi, ağ saçlı: orta dəri tonu
+👨🏾‍🦳	kişi, ağ saçlı: orta-tünd dəri tonu
+👨🏿‍🦳	kişi, ağ saçlı: tünd dəri tonu
+👩‍🦳	qadın, ağ saçlı
+👩🏻‍🦳	qadın, ağ saçlı: açıq dəri tonu
+👩🏼‍🦳	qadın, ağ saçlı: orta-açıq dəri tonu
+👩🏽‍🦳	qadın, ağ saçlı: orta dəri tonu
+👩🏾‍🦳	qadın, ağ saçlı: orta-tünd dəri tonu
+👩🏿‍🦳	qadın, ağ saçlı: tünd dəri tonu
+🤵	smokinli adam
+🤵🏻	smokinli kişi: açıq dəri tonu
+🤵🏼	smokinli kişi: orta-açıq dəri tonu
+🤵🏽	smokinli kişi: orta dəri tonu
+🤵🏾	smokinli kişi: orta-tünd dəri tonu
+🤵🏿	smokinli kişi: tünd dəri tonu
+👰	duvaqlı gəlin
+👰🏻	duvaqlı gəlin: açıq dəri tonu
+👰🏼	duvaqlı gəlin: orta-açıq dəri tonu
+👰🏽	duvaqlı gəlin: orta dəri tonu
+👰🏾	duvaqlı gəlin: orta-tünd dəri tonu
+👰🏿	duvaqlı gəlin: tünd dəri tonu
+🤰	hamilə qadın
+🤰🏻	hamilə qadın: açıq dəri tonu
+🤰🏼	hamilə qadın: orta-açıq dəri tonu
+🤰🏽	hamilə qadın: orta dəri tonu
+🤰🏾	hamilə qadın: orta-tünd dəri tonu
+🤰🏿	hamilə qadın: tünd dəri tonu
+🤱	ana südü ilə qidalanma
+🤱🏻	ana südü ilə qidalanma: açıq dəri tonu
+🤱🏼	ana südü ilə qidalanma: orta-açıq dəri tonu
+🤱🏽	ana südü ilə qidalanma: orta dəri tonu
+🤱🏾	ana südü ilə qidalanma: orta-tünd dəri tonu
+🤱🏿	ana südü ilə qidalanma: tünd dəri tonu
+👼	körpə mələk
+👼🏻	körpə mələk: açıq dəri tonu
+👼🏼	körpə mələk: orta-açıq dəri tonu
+👼🏽	körpə mələk: orta dəri tonu
+👼🏾	körpə mələk: orta-tünd dəri tonu
+👼🏿	körpə mələk: tünd dəri tonu
+🎅	Şaxta baba
+🎅🏻	Santa Claus: açıq dəri tonu
+🎅🏼	Santa Klaus: orta-açıq dəri tonu
+🎅🏽	Santa Klaus: orta dəri tonu
+🎅🏾	Santa Klaus: orta-tünd dəri tonu
+🎅🏿	Santa Claus: tünd dəri tonu
+🤶	Xanım Klaus
+🤶🏻	Xanım Klaus: açıq dəri tonu
+🤶🏼	Xanım Klaus: orta-açıq dəri tonu
+🤶🏽	Xanım Klaus: orta dəri tonu
+🤶🏾	Xanım Klaus: orta-tünd dəri tonu
+🤶🏿	Xanım Klaus: tünd dəri tonu
+🦸	super qəhrəman
+🦸🏻	super qəhrəman: açıq dəri tonu
+🦸🏼	super qəhrəman: orta-açıq dəri tonu
+🦸🏽	super qəhrəman: orta dəri tonu
+🦸🏾	super qəhrəman: orta-tünd dəri tonu
+🦸🏿	super qəhrəman: tünd dəri tonu
+🦸‍♀️	qadın super qəhrəman
+🦸‍♀	qadın super qəhrəman
+🦸🏻‍♀️	qadın superqəhrəman: açıq dəri tonu
+🦸🏻‍♀	qadın superqəhrəman: açıq dəri tonu
+🦸🏼‍♀️	qadın superqəhrəman: orta-açıq dəri tonu
+🦸🏼‍♀	qadın superqəhrəman: orta-açıq dəri tonu
+🦸🏽‍♀️	qadın superqəhrəman: orta dəri tonu
+🦸🏽‍♀	qadın superqəhrəman: orta dəri tonu
+🦸🏾‍♀️	qadın superqəhrəman: orta-tünd dəri tonu
+🦸🏾‍♀	qadın superqəhrəman: orta-tünd dəri tonu
+🦸🏿‍♀️	qadın superqəhrəman: tünd dəri tonu
+🦸🏿‍♀	qadın superqəhrəman: tünd dəri tonu
+🦸‍♂️	kişi super qəhrəman
+🦸‍♂	kişi super qəhrəman
+🦸🏻‍♂️	super qəhrəman kişi: açıq dəri tonu
+🦸🏻‍♂	super qəhrəman kişi: açıq dəri tonu
+🦸🏼‍♂️	kişi superqəhrəmanı: orta-açıq dəri tonu
+🦸🏼‍♂	kişi superqəhrəmanı: orta-açıq dəri tonu
+🦸🏽‍♂️	super qəhrəman kişi: orta dəri tonu
+🦸🏽‍♂	super qəhrəman kişi: orta dəri tonu
+🦸🏾‍♂️	kişi superqəhrəmanı: orta-tünd dəri tonu
+🦸🏾‍♂	kişi superqəhrəmanı: orta-tünd dəri tonu
+🦸🏿‍♂️	super qəhrəman kişi: tünd dəri tonu
+🦸🏿‍♂	super qəhrəman kişi: tünd dəri tonu
+🦹	nəzarətçi
+🦹🏻	supervillain: açıq dəri tonu
+🦹🏼	supervillain: orta-açıq dəri tonu
+🦹🏽	supervillain: orta dəri tonu
+🦹🏾	supervillain: orta-tünd dəri tonu
+🦹🏿	supervillain: tünd dəri tonu
+🦹‍♀️	qadın nəzarətçi
+🦹‍♀	qadın nəzarətçi
+🦹🏻‍♀️	qadın supercani: açıq dəri tonu
+🦹🏻‍♀	qadın supercani: açıq dəri tonu
+🦹🏼‍♀️	qadın supercani: orta-açıq dəri tonu
+🦹🏼‍♀	qadın supercani: orta-açıq dəri tonu
+🦹🏽‍♀️	qadın supercani: orta dəri tonu
+🦹🏽‍♀	qadın supercani: orta dəri tonu
+🦹🏾‍♀️	qadın supercani: orta-tünd dəri tonu
+🦹🏾‍♀	qadın supercani: orta-tünd dəri tonu
+🦹🏿‍♀️	qadın supercani: tünd dəri tonu
+🦹🏿‍♀	qadın supercani: tünd dəri tonu
+🦹‍♂️	kişi nəzarətçi
+🦹‍♂	kişi nəzarətçi
+🦹🏻‍♂️	kişi supercani: açıq dəri tonu
+🦹🏻‍♂	kişi supercani: açıq dəri tonu
+🦹🏼‍♂️	kişi supercani: orta-açıq dəri tonu
+🦹🏼‍♂	kişi supercani: orta-açıq dəri tonu
+🦹🏽‍♂️	kişi supercani: orta dəri tonu
+🦹🏽‍♂	kişi supercani: orta dəri tonu
+🦹🏾‍♂️	kişi supercani: orta-tünd dəri tonu
+🦹🏾‍♂	kişi supercani: orta-tünd dəri tonu
+🦹🏿‍♂️	kişi supercani: tünd dəri tonu
+🦹🏿‍♂	kişi supercani: tünd dəri tonu
+🧙	sehrbaz
+🧙🏻	mage: açıq dəri tonu
+🧙🏼	mage: orta-açıq dəri tonu
+🧙🏽	mage: orta dəri tonu
+🧙🏾	mage: orta-tünd dəri tonu
+🧙🏿	mage: tünd dəri tonu
+🧙‍♀️	qadın sehrbaz
+🧙‍♀	qadın sehrbaz
+🧙🏻‍♀️	qadın sehrbaz: açıq dəri tonu
+🧙🏻‍♀	qadın sehrbaz: açıq dəri tonu
+🧙🏼‍♀️	qadın sehrbaz: orta-açıq dəri tonu
+🧙🏼‍♀	qadın sehrbaz: orta-açıq dəri tonu
+🧙🏽‍♀️	qadın sehrbaz: orta dəri tonu
+🧙🏽‍♀	qadın sehrbaz: orta dəri tonu
+🧙🏾‍♀️	qadın sehrbaz: orta-tünd dəri tonu
+🧙🏾‍♀	qadın sehrbaz: orta-tünd dəri tonu
+🧙🏿‍♀️	qadın sehrbaz: tünd dəri tonu
+🧙🏿‍♀	qadın sehrbaz: tünd dəri tonu
+🧙‍♂️	kişi sehrbaz
+🧙‍♂	kişi sehrbaz
+🧙🏻‍♂️	kişi sehrbaz: açıq dəri tonu
+🧙🏻‍♂	kişi sehrbaz: açıq dəri tonu
+🧙🏼‍♂️	kişi sehrbaz: orta-açıq dəri tonu
+🧙🏼‍♂	kişi sehrbaz: orta-açıq dəri tonu
+🧙🏽‍♂️	kişi sehrbaz: orta dəri tonu
+🧙🏽‍♂	kişi sehrbaz: orta dəri tonu
+🧙🏾‍♂️	kişi sehrbaz: orta-tünd dəri tonu
+🧙🏾‍♂	kişi sehrbaz: orta-tünd dəri tonu
+🧙🏿‍♂️	kişi sehrbaz: tünd dəri tonu
+🧙🏿‍♂	kişi sehrbaz: tünd dəri tonu
+🧚	pəri
+🧚🏻	pəri: açıq dəri tonu
+🧚🏼	pəri: orta-açıq dəri tonu
+🧚🏽	pəri: orta dəri tonu
+🧚🏾	pəri: orta-tünd dəri tonu
+🧚🏿	pəri: tünd dəri tonu
+🧚‍♀️	qadın pəri
+🧚‍♀	qadın pəri
+🧚🏻‍♀️	qadın pəri: açıq dəri tonu
+🧚🏻‍♀	qadın pəri: açıq dəri tonu
+🧚🏼‍♀️	qadın pəri: orta-açıq dəri tonu
+🧚🏼‍♀	qadın pəri: orta-açıq dəri tonu
+🧚🏽‍♀️	qadın pəri: orta dəri tonu
+🧚🏽‍♀	qadın pəri: orta dəri tonu
+🧚🏾‍♀️	qadın pəri: orta-tünd dəri tonu
+🧚🏾‍♀	qadın pəri: orta-tünd dəri tonu
+🧚🏿‍♀️	qadın pəri: tünd dəri tonu
+🧚🏿‍♀	qadın pəri: tünd dəri tonu
+🧚‍♂️	kişi pəri
+🧚‍♂	kişi pəri
+🧚🏻‍♂️	kişi pəri: açıq dəri tonu
+🧚🏻‍♂	kişi pəri: açıq dəri tonu
+🧚🏼‍♂️	kişi pəri: orta-açıq dəri tonu
+🧚🏼‍♂	kişi pəri: orta-açıq dəri tonu
+🧚🏽‍♂️	kişi pəri: orta dəri tonu
+🧚🏽‍♂	kişi pəri: orta dəri tonu
+🧚🏾‍♂️	kişi pəri: orta-tünd dəri tonu
+🧚🏾‍♂	kişi pəri: orta-tünd dəri tonu
+🧚🏿‍♂️	kişi pəri: tünd dəri tonu
+🧚🏿‍♂	kişi pəri: tünd dəri tonu
+🧛	vampir
+🧛🏻	vampir: açıq dəri tonu
+🧛🏼	vampir: orta-açıq dəri tonu
+🧛🏽	vampir: orta dəri tonu
+🧛🏾	vampir: orta-tünd dəri tonu
+🧛🏿	vampir: tünd dəri tonu
+🧛‍♀️	qadın vampir
+🧛‍♀	qadın vampir
+🧛🏻‍♀️	qadın vampir: açıq dəri tonu
+🧛🏻‍♀	qadın vampir: açıq dəri tonu
+🧛🏼‍♀️	qadın vampir: orta-açıq dəri tonu
+🧛🏼‍♀	qadın vampir: orta-açıq dəri tonu
+🧛🏽‍♀️	qadın vampir: orta dəri tonu
+🧛🏽‍♀	qadın vampir: orta dəri tonu
+🧛🏾‍♀️	qadın vampir: orta-tünd dəri tonu
+🧛🏾‍♀	qadın vampir: orta-tünd dəri tonu
+🧛🏿‍♀️	qadın vampir: tünd dəri tonu
+🧛🏿‍♀	qadın vampir: tünd dəri tonu
+🧛‍♂️	insan vampir
+🧛‍♂	insan vampir
+🧛🏻‍♂️	kişi vampir: açıq dəri tonu
+🧛🏻‍♂	kişi vampir: açıq dəri tonu
+🧛🏼‍♂️	kişi vampir: orta-açıq dəri tonu
+🧛🏼‍♂	kişi vampir: orta-açıq dəri tonu
+🧛🏽‍♂️	kişi vampir: orta dəri tonu
+🧛🏽‍♂	kişi vampir: orta dəri tonu
+🧛🏾‍♂️	kişi vampir: orta-tünd dəri tonu
+🧛🏾‍♂	kişi vampir: orta-tünd dəri tonu
+🧛🏿‍♂️	kişi vampir: tünd dəri tonu
+🧛🏿‍♂	kişi vampir: tünd dəri tonu
+🧜	merperson
+🧜🏻	merperson: açıq dəri tonu
+🧜🏼	merperson: orta-açıq dəri tonu
+🧜🏽	merperson: orta dəri tonu
+🧜🏾	merperson: orta-tünd dəri tonu
+🧜🏿	merperson: tünd dəri tonu
+🧜‍♀️	su pərisi
+🧜‍♀	su pərisi
+🧜🏻‍♀️	su pərisi: açıq dəri tonu
+🧜🏻‍♀	su pərisi: açıq dəri tonu
+🧜🏼‍♀️	su pərisi: orta-açıq dəri tonu
+🧜🏼‍♀	su pərisi: orta-açıq dəri tonu
+🧜🏽‍♀️	su pərisi: orta dəri tonu
+🧜🏽‍♀	su pərisi: orta dəri tonu
+🧜🏾‍♀️	su pərisi: orta-tünd dəri tonu
+🧜🏾‍♀	su pərisi: orta-tünd dəri tonu
+🧜🏿‍♀️	su pərisi: tünd dəri tonu
+🧜🏿‍♀	su pərisi: tünd dəri tonu
+🧜‍♂️	merman
+🧜‍♂	merman
+🧜🏻‍♂️	merman: açıq dəri tonu
+🧜🏻‍♂	merman: açıq dəri tonu
+🧜🏼‍♂️	merman: orta-açıq dəri tonu
+🧜🏼‍♂	merman: orta-açıq dəri tonu
+🧜🏽‍♂️	merman: orta dəri tonu
+🧜🏽‍♂	merman: orta dəri tonu
+🧜🏾‍♂️	merman: orta-tünd dəri tonu
+🧜🏾‍♂	merman: orta-tünd dəri tonu
+🧜🏿‍♂️	merman: tünd dəri tonu
+🧜🏿‍♂	merman: tünd dəri tonu
+🧝	elf
+🧝🏻	elf: açıq dəri tonu
+🧝🏼	elf: orta-açıq dəri tonu
+🧝🏽	elf: orta dəri tonu
+🧝🏾	elf: orta-tünd dəri tonu
+🧝🏿	elf: tünd dəri tonu
+🧝‍♀️	qadın elf
+🧝‍♀	qadın elf
+🧝🏻‍♀️	qadın elf: açıq dəri tonu
+🧝🏻‍♀	qadın elf: açıq dəri tonu
+🧝🏼‍♀️	qadın elf: orta-açıq dəri tonu
+🧝🏼‍♀	qadın elf: orta-açıq dəri tonu
+🧝🏽‍♀️	qadın elf: orta dəri tonu
+🧝🏽‍♀	qadın elf: orta dəri tonu
+🧝🏾‍♀️	qadın elf: orta-tünd dəri tonu
+🧝🏾‍♀	qadın elf: orta-tünd dəri tonu
+🧝🏿‍♀️	qadın elf: tünd dəri tonu
+🧝🏿‍♀	qadın elf: tünd dəri tonu
+🧝‍♂️	adam elf
+🧝‍♂	adam elf
+🧝🏻‍♂️	kişi elf: açıq dəri tonu
+🧝🏻‍♂	kişi elf: açıq dəri tonu
+🧝🏼‍♂️	man elf: orta-açıq dəri tonu
+🧝🏼‍♂	man elf: orta-açıq dəri tonu
+🧝🏽‍♂️	kişi elf: orta dəri tonu
+🧝🏽‍♂	kişi elf: orta dəri tonu
+🧝🏾‍♂️	man elf: orta-tünd dəri tonu
+🧝🏾‍♂	man elf: orta-tünd dəri tonu
+🧝🏿‍♂️	kişi elf: tünd dəri tonu
+🧝🏿‍♂	kişi elf: tünd dəri tonu
+🧞	cin
+🧞‍♀️	qadın cin
+🧞‍♀	qadın cin
+🧞‍♂️	insan cin
+🧞‍♂	insan cin
+🧟	zombi
+🧟‍♀️	qadın zombi
+🧟‍♀	qadın zombi
+🧟‍♂️	adam zombi
+🧟‍♂	adam zombi
+🙍	qaşqabaqlı adam
+🙍🏻	qaşqabaqlı adam: açıq dəri tonu
+🙍🏼	qaşqabaqlı adam: orta-açıq dəri tonu
+🙍🏽	qaşqabaqlı adam: orta dəri tonu
+🙍🏾	qaşqabaqlı adam: orta-tünd dəri tonu
+🙍🏿	qaşqabaqlı adam: tünd dəri tonu
+🙍‍♂️	qaşqabaqlı adam
+🙍‍♂	qaşqabaqlı adam
+🙍🏻‍♂️	qaşqabaqlı kişi: açıq dəri tonu
+🙍🏻‍♂	qaşqabaqlı kişi: açıq dəri tonu
+🙍🏼‍♂️	qaşqabaqlı kişi: orta-açıq dəri tonu
+🙍🏼‍♂	qaşqabaqlı kişi: orta-açıq dəri tonu
+🙍🏽‍♂️	qaşqabaqlı kişi: orta dəri tonu
+🙍🏽‍♂	qaşqabaqlı kişi: orta dəri tonu
+🙍🏾‍♂️	qaşqabaqlı kişi: orta-tünd dəri tonu
+🙍🏾‍♂	qaşqabaqlı kişi: orta-tünd dəri tonu
+🙍🏿‍♂️	qaşqabaqlı kişi: tünd dəri tonu
+🙍🏿‍♂	qaşqabaqlı kişi: tünd dəri tonu
+🙍‍♀️	qaşqabaqlı qadın
+🙍‍♀	qaşqabaqlı qadın
+🙍🏻‍♀️	qaşqabaqlı qadın: açıq dəri tonu
+🙍🏻‍♀	qaşqabaqlı qadın: açıq dəri tonu
+🙍🏼‍♀️	qaşqabaqlı qadın: orta-açıq dəri tonu
+🙍🏼‍♀	qaşqabaqlı qadın: orta-açıq dəri tonu
+🙍🏽‍♀️	qaşqabaqlı qadın: orta dəri tonu
+🙍🏽‍♀	qaşqabaqlı qadın: orta dəri tonu
+🙍🏾‍♀️	qaşqabaqlı qadın: orta-tünd dəri tonu
+🙍🏾‍♀	qaşqabaqlı qadın: orta-tünd dəri tonu
+🙍🏿‍♀️	qaşqabaqlı qadın: tünd dəri tonu
+🙍🏿‍♀	qaşqabaqlı qadın: tünd dəri tonu
+🙎	somurtan adam
+🙎🏻	somurtan adam: açıq dəri tonu
+🙎🏼	somurtan adam: orta-açıq dəri tonu
+🙎🏽	somurtan adam: orta dəri tonu
+🙎🏾	somurtan adam: orta-tünd dəri tonu
+🙎🏿	somurtan adam: tünd dəri tonu
+🙎‍♂️	somurtan adam
+🙎‍♂	somurtan adam
+🙎🏻‍♂️	somurtan kişi: açıq dəri tonu
+🙎🏻‍♂	somurtan kişi: açıq dəri tonu
+🙎🏼‍♂️	somurtan kişi: orta-açıq dəri tonu
+🙎🏼‍♂	somurtan kişi: orta-açıq dəri tonu
+🙎🏽‍♂️	somurtan kişi: orta dəri tonu
+🙎🏽‍♂	somurtan kişi: orta dəri tonu
+🙎🏾‍♂️	somurtkan kişi: orta-tünd dəri tonu
+🙎🏾‍♂	somurtkan kişi: orta-tünd dəri tonu
+🙎🏿‍♂️	somurtan kişi: tünd dəri tonu
+🙎🏿‍♂	somurtan kişi: tünd dəri tonu
+🙎‍♀️	somurtlayan qadın
+🙎‍♀	somurtlayan qadın
+🙎🏻‍♀️	somurtan qadın: açıq dəri tonu
+🙎🏻‍♀	somurtan qadın: açıq dəri tonu
+🙎🏼‍♀️	somurtan qadın: orta-açıq dəri tonu
+🙎🏼‍♀	somurtan qadın: orta-açıq dəri tonu
+🙎🏽‍♀️	somurtan qadın: orta dəri tonu
+🙎🏽‍♀	somurtan qadın: orta dəri tonu
+🙎🏾‍♀️	somurtan qadın: orta-tünd dəri tonu
+🙎🏾‍♀	somurtan qadın: orta-tünd dəri tonu
+🙎🏿‍♀️	somurtan qadın: tünd dəri tonu
+🙎🏿‍♀	somurtan qadın: tünd dəri tonu
+🙅	YOX işarəsi ilə adam
+🙅🏻	YOX işarəsi göstərən şəxs: açıq dəri tonu
+🙅🏼	YOX işarəsi edən şəxs: orta-açıq dəri tonu
+🙅🏽	YOX işarəsi göstərən şəxs: orta dəri tonu
+🙅🏾	YOX işarəsi göstərən şəxs: orta-tünd dəri tonu
+🙅🏿	YOX işarəsi göstərən şəxs: tünd dəri tonu
+🙅‍♂️	kişi YOX işarəsi ilə
+🙅‍♂	kişi YOX işarəsi ilə
+🙅🏻‍♂️	YOX işarəsi göstərən kişi: açıq dəri tonu
+🙅🏻‍♂	YOX işarəsi göstərən kişi: açıq dəri tonu
+🙅🏼‍♂️	YOX işarəsi göstərən kişi: orta-açıq dəri tonu
+🙅🏼‍♂	YOX işarəsi göstərən kişi: orta-açıq dəri tonu
+🙅🏽‍♂️	YOX işarəsi göstərən kişi: orta dəri tonu
+🙅🏽‍♂	YOX işarəsi göstərən kişi: orta dəri tonu
+🙅🏾‍♂️	YOX işarəsi göstərən kişi: orta-tünd dəri tonu
+🙅🏾‍♂	YOX işarəsi göstərən kişi: orta-tünd dəri tonu
+🙅🏿‍♂️	YOX işarəsi göstərən kişi: tünd dəri tonu
+🙅🏿‍♂	YOX işarəsi göstərən kişi: tünd dəri tonu
+🙅‍♀️	qadın YOX işarəsi ilə
+🙅‍♀	qadın YOX işarəsi ilə
+🙅🏻‍♀️	YOX işarəsi ilə qadın: açıq dəri tonu
+🙅🏻‍♀	YOX işarəsi ilə qadın: açıq dəri tonu
+🙅🏼‍♀️	YOX işarəsi göstərən qadın: orta-açıq dəri tonu
+🙅🏼‍♀	YOX işarəsi göstərən qadın: orta-açıq dəri tonu
+🙅🏽‍♀️	YOX işarəsi göstərən qadın: orta dəri tonu
+🙅🏽‍♀	YOX işarəsi göstərən qadın: orta dəri tonu
+🙅🏾‍♀️	YOX işarəsi verən qadın: orta-tünd dəri tonu
+🙅🏾‍♀	YOX işarəsi verən qadın: orta-tünd dəri tonu
+🙅🏿‍♀️	YOX işarəsi ilə qadın: tünd dəri tonu
+🙅🏿‍♀	YOX işarəsi ilə qadın: tünd dəri tonu
+🙆	adam OK işarəsi ilə
+🙆🏻	OK işarəsi edən şəxs: açıq dəri tonu
+🙆🏼	"OK" işarəsi verən şəxs: orta-açıq dəri tonu
+🙆🏽	OK işarəsi edən şəxs: orta dəri tonu
+🙆🏾	OK işarəsi edən şəxs: orta-tünd dəri tonu
+🙆🏿	OK işarəsi edən şəxs: tünd dəri tonu
+🙆‍♂️	adam OK işarəsi ilə
+🙆‍♂	adam OK işarəsi ilə
+🙆🏻‍♂️	OK jesti ilə kişi: açıq dəri tonu
+🙆🏻‍♂	OK jesti ilə kişi: açıq dəri tonu
+🙆🏼‍♂️	OK işarəsi verən kişi: orta-açıq dəri tonu
+🙆🏼‍♂	OK işarəsi verən kişi: orta-açıq dəri tonu
+🙆🏽‍♂️	OK jesti ilə kişi: orta dəri tonu
+🙆🏽‍♂	OK jesti ilə kişi: orta dəri tonu
+🙆🏾‍♂️	OK işarəsi edən kişi: orta-tünd dəri tonu
+🙆🏾‍♂	OK işarəsi edən kişi: orta-tünd dəri tonu
+🙆🏿‍♂️	OK jesti ilə kişi: tünd dəri tonu
+🙆🏿‍♂	OK jesti ilə kişi: tünd dəri tonu
+🙆‍♀️	qadın OK işarəsi ilə
+🙆‍♀	qadın OK işarəsi ilə
+🙆🏻‍♀️	OK jesti ilə qadın: açıq dəri tonu
+🙆🏻‍♀	OK jesti ilə qadın: açıq dəri tonu
+🙆🏼‍♀️	OK işarəsi edən qadın: orta-açıq dəri tonu
+🙆🏼‍♀	OK işarəsi edən qadın: orta-açıq dəri tonu
+🙆🏽‍♀️	OK jesti ilə qadın: orta dəri tonu
+🙆🏽‍♀	OK jesti ilə qadın: orta dəri tonu
+🙆🏾‍♀️	OK işarəsi edən qadın: orta-tünd dəri tonu
+🙆🏾‍♀	OK işarəsi edən qadın: orta-tünd dəri tonu
+🙆🏿‍♀️	OK jesti ilə qadın: tünd dəri tonu
+🙆🏿‍♀	OK jesti ilə qadın: tünd dəri tonu
+💁	əl qaldıran adam
+💁🏻	əl qaldıran adam: açıq dəri tonu
+💁🏼	əl qaldıran adam: orta-açıq dəri tonu
+💁🏽	əl qaldıran adam: orta dəri tonu
+💁🏾	əl qaldıran adam: orta-tünd dəri tonu
+💁🏿	əl qaldıran adam: tünd dəri tonu
+💁‍♂️	əl qaldıran adam
+💁‍♂	əl qaldıran adam
+💁🏻‍♂️	əl qaldıran kişi: açıq dəri tonu
+💁🏻‍♂	əl qaldıran kişi: açıq dəri tonu
+💁🏼‍♂️	əl qaldıran kişi: orta-açıq dəri tonu
+💁🏼‍♂	əl qaldıran kişi: orta-açıq dəri tonu
+💁🏽‍♂️	əl qaldıran kişi: orta dəri tonu
+💁🏽‍♂	əl qaldıran kişi: orta dəri tonu
+💁🏾‍♂️	əl qaldıran kişi: orta-tünd dəri tonu
+💁🏾‍♂	əl qaldıran kişi: orta-tünd dəri tonu
+💁🏿‍♂️	əl qaldıran kişi: tünd dəri tonu
+💁🏿‍♂	əl qaldıran kişi: tünd dəri tonu
+💁‍♀️	qadın əl qaldırır
+💁‍♀	qadın əl qaldırır
+💁🏻‍♀️	əl qaldıran qadın: açıq dəri tonu
+💁🏻‍♀	əl qaldıran qadın: açıq dəri tonu
+💁🏼‍♀️	əl qaldıran qadın: orta-açıq dəri tonu
+💁🏼‍♀	əl qaldıran qadın: orta-açıq dəri tonu
+💁🏽‍♀️	əl qaldıran qadın: orta dəri tonu
+💁🏽‍♀	əl qaldıran qadın: orta dəri tonu
+💁🏾‍♀️	əl qaldıran qadın: orta-tünd dəri tonu
+💁🏾‍♀	əl qaldıran qadın: orta-tünd dəri tonu
+💁🏿‍♀️	əl qaldıran qadın: tünd dəri tonu
+💁🏿‍♀	əl qaldıran qadın: tünd dəri tonu
+🙋	əl qaldıran adam
+🙋🏻	əl qaldıran adam: açıq dəri tonu
+🙋🏼	əl qaldıran adam: orta-açıq dəri tonu
+🙋🏽	əl qaldıran adam: orta dəri tonu
+🙋🏾	əl qaldıran şəxs: orta-tünd dəri tonu
+🙋🏿	əl qaldıran adam: tünd dəri tonu
+🙋‍♂️	əl qaldıran adam
+🙋‍♂	əl qaldıran adam
+🙋🏻‍♂️	əl qaldıran kişi: açıq dəri tonu
+🙋🏻‍♂	əl qaldıran kişi: açıq dəri tonu
+🙋🏼‍♂️	əl qaldıran kişi: orta-açıq dəri tonu
+🙋🏼‍♂	əl qaldıran kişi: orta-açıq dəri tonu
+🙋🏽‍♂️	əl qaldıran kişi: orta dəri tonu
+🙋🏽‍♂	əl qaldıran kişi: orta dəri tonu
+🙋🏾‍♂️	əl qaldıran kişi: orta-tünd dəri tonu
+🙋🏾‍♂	əl qaldıran kişi: orta-tünd dəri tonu
+🙋🏿‍♂️	əl qaldıran kişi: tünd dəri tonu
+🙋🏿‍♂	əl qaldıran kişi: tünd dəri tonu
+🙋‍♀️	qadın əl qaldırır
+🙋‍♀	qadın əl qaldırır
+🙋🏻‍♀️	əl qaldıran qadın: açıq dəri tonu
+🙋🏻‍♀	əl qaldıran qadın: açıq dəri tonu
+🙋🏼‍♀️	əl qaldıran qadın: orta-açıq dəri tonu
+🙋🏼‍♀	əl qaldıran qadın: orta-açıq dəri tonu
+🙋🏽‍♀️	əl qaldıran qadın: orta dəri tonu
+🙋🏽‍♀	əl qaldıran qadın: orta dəri tonu
+🙋🏾‍♀️	əl qaldıran qadın: orta-tünd dəri tonu
+🙋🏾‍♀	əl qaldıran qadın: orta-tünd dəri tonu
+🙋🏿‍♀️	əl qaldıran qadın: tünd dəri tonu
+🙋🏿‍♀	əl qaldıran qadın: tünd dəri tonu
+🙇	adam baş əyir
+🙇🏻	təzim edən şəxs: açıq dəri tonu
+🙇🏼	təzim edən şəxs: orta-açıq dəri tonu
+🙇🏽	baş əyən adam: orta dəri tonu
+🙇🏾	təzim edən şəxs: orta-tünd dəri tonu
+🙇🏿	baş əyən adam: tünd dəri tonu
+🙇‍♂️	adam baş əyir
+🙇‍♂	adam baş əyir
+🙇🏻‍♂️	baş əyən kişi: açıq dəri tonu
+🙇🏻‍♂	baş əyən kişi: açıq dəri tonu
+🙇🏼‍♂️	baş əyən kişi: orta-açıq dəri tonu
+🙇🏼‍♂	baş əyən kişi: orta-açıq dəri tonu
+🙇🏽‍♂️	baş əyən kişi: orta dəri tonu
+🙇🏽‍♂	baş əyən kişi: orta dəri tonu
+🙇🏾‍♂️	baş əyən kişi: orta-tünd dəri tonu
+🙇🏾‍♂	baş əyən kişi: orta-tünd dəri tonu
+🙇🏿‍♂️	baş əyən kişi: tünd dəri tonu
+🙇🏿‍♂	baş əyən kişi: tünd dəri tonu
+🙇‍♀️	qadın baş əyir
+🙇‍♀	qadın baş əyir
+🙇🏻‍♀️	baş əyən qadın: açıq dəri tonu
+🙇🏻‍♀	baş əyən qadın: açıq dəri tonu
+🙇🏼‍♀️	baş əyən qadın: orta-açıq dəri tonu
+🙇🏼‍♀	baş əyən qadın: orta-açıq dəri tonu
+🙇🏽‍♀️	baş əyən qadın: orta dəri tonu
+🙇🏽‍♀	baş əyən qadın: orta dəri tonu
+🙇🏾‍♀️	baş əyən qadın: orta-tünd dəri tonu
+🙇🏾‍♀	baş əyən qadın: orta-tünd dəri tonu
+🙇🏿‍♀️	baş əyən qadın: tünd dəri tonu
+🙇🏿‍♀	baş əyən qadın: tünd dəri tonu
+🤦	adamın üzünü ovuşdurması
+🤦🏻	üzünü ovuşduran adam: açıq dəri tonu
+🤦🏼	üzünü ovuşduran adam: orta-açıq dəri tonu
+🤦🏽	üzünü ovuşduran adam: orta dəri tonu
+🤦🏾	üzünü ovuşduran adam: orta-tünd dəri tonu
+🤦🏿	üzünü ovuşduran adam: tünd dəri tonu
+🤦‍♂️	adam üzünü ovuşdurur
+🤦‍♂	adam üzünü ovuşdurur
+🤦🏻‍♂️	kişi üzü: açıq dəri tonu
+🤦🏻‍♂	kişi üzü: açıq dəri tonu
+🤦🏼‍♂️	kişi üzü: orta-açıq dəri tonu
+🤦🏼‍♂	kişi üzü: orta-açıq dəri tonu
+🤦🏽‍♂️	kişi üzünə: orta dəri tonu
+🤦🏽‍♂	kişi üzünə: orta dəri tonu
+🤦🏾‍♂️	kişi üzü: orta-tünd dəri tonu
+🤦🏾‍♂	kişi üzü: orta-tünd dəri tonu
+🤦🏿‍♂️	kişi üzü: tünd dəri tonu
+🤦🏿‍♂	kişi üzü: tünd dəri tonu
+🤦‍♀️	qadın üzünü ovuşdurur
+🤦‍♀	qadın üzünü ovuşdurur
+🤦🏻‍♀️	qadın üzünə: açıq dəri tonu
+🤦🏻‍♀	qadın üzünə: açıq dəri tonu
+🤦🏼‍♀️	qadın üzünü ovuşdurur: orta-açıq dəri tonu
+🤦🏼‍♀	qadın üzünü ovuşdurur: orta-açıq dəri tonu
+🤦🏽‍♀️	qadın üzünə: orta dəri tonu
+🤦🏽‍♀	qadın üzünə: orta dəri tonu
+🤦🏾‍♀️	qadın üzü: orta-tünd dəri tonu
+🤦🏾‍♀	qadın üzü: orta-tünd dəri tonu
+🤦🏿‍♀️	qadın üzünü ovuşdurur: tünd dəri tonu
+🤦🏿‍♀	qadın üzünü ovuşdurur: tünd dəri tonu
+🤷	çiyinlərini çəkən adam
+🤷🏻	çiyinlərini çəkən adam: açıq dəri tonu
+🤷🏼	çiyinlərini çəkən adam: orta-açıq dəri tonu
+🤷🏽	çiyinlərini çəkən adam: orta dəri tonu
+🤷🏾	çiyinlərini çəkən adam: orta-tünd dəri tonu
+🤷🏿	çiyinlərini çəkən şəxs: tünd dəri tonu
+🤷‍♂️	adam çiyinlərini çəkir
+🤷‍♂	adam çiyinlərini çəkir
+🤷🏻‍♂️	çiyinlərini çəkən kişi: açıq dəri tonu
+🤷🏻‍♂	çiyinlərini çəkən kişi: açıq dəri tonu
+🤷🏼‍♂️	çiyinlərini çəkən kişi: orta-açıq dəri tonu
+🤷🏼‍♂	çiyinlərini çəkən kişi: orta-açıq dəri tonu
+🤷🏽‍♂️	çiyinlərini çəkən kişi: orta dəri tonu
+🤷🏽‍♂	çiyinlərini çəkən kişi: orta dəri tonu
+🤷🏾‍♂️	çiyinlərini çəkən kişi: orta-tünd dəri tonu
+🤷🏾‍♂	çiyinlərini çəkən kişi: orta-tünd dəri tonu
+🤷🏿‍♂️	çiyinlərini çəkən kişi: tünd dəri tonu
+🤷🏿‍♂	çiyinlərini çəkən kişi: tünd dəri tonu
+🤷‍♀️	qadın çiyinlərini çəkir
+🤷‍♀	qadın çiyinlərini çəkir
+🤷🏻‍♀️	çiyinlərini çəkən qadın: açıq dəri tonu
+🤷🏻‍♀	çiyinlərini çəkən qadın: açıq dəri tonu
+🤷🏼‍♀️	çiyinlərini çəkən qadın: orta-açıq dəri tonu
+🤷🏼‍♀	çiyinlərini çəkən qadın: orta-açıq dəri tonu
+🤷🏽‍♀️	çiyinlərini çəkən qadın: orta dəri tonu
+🤷🏽‍♀	çiyinlərini çəkən qadın: orta dəri tonu
+🤷🏾‍♀️	çiyinlərini çəkən qadın: orta-tünd dəri tonu
+🤷🏾‍♀	çiyinlərini çəkən qadın: orta-tünd dəri tonu
+🤷🏿‍♀️	çiyinlərini çəkən qadın: tünd dəri tonu
+🤷🏿‍♀	çiyinlərini çəkən qadın: tünd dəri tonu
+💆	masaj edən şəxs
+💆🏻	masaj alan şəxs: açıq dəri tonu
+💆🏼	masaj alan şəxs: orta-açıq dəri tonu
+💆🏽	masaj alan şəxs: orta dəri tonu
+💆🏾	masaj alan şəxs: orta-tünd dəri tonu
+💆🏿	masaj alan şəxs: tünd dəri tonu
+💆‍♂️	adam masaj edir
+💆‍♂	adam masaj edir
+💆🏻‍♂️	masaj alan kişi: açıq dəri tonu
+💆🏻‍♂	masaj alan kişi: açıq dəri tonu
+💆🏼‍♂️	masaj alan kişi: orta-açıq dəri tonu
+💆🏼‍♂	masaj alan kişi: orta-açıq dəri tonu
+💆🏽‍♂️	masaj alan kişi: orta dəri tonu
+💆🏽‍♂	masaj alan kişi: orta dəri tonu
+💆🏾‍♂️	masaj alan kişi: orta-tünd dəri tonu
+💆🏾‍♂	masaj alan kişi: orta-tünd dəri tonu
+💆🏿‍♂️	masaj alan kişi: tünd dəri tonu
+💆🏿‍♂	masaj alan kişi: tünd dəri tonu
+💆‍♀️	qadın masaj edir
+💆‍♀	qadın masaj edir
+💆🏻‍♀️	masaj alan qadın: açıq dəri tonu
+💆🏻‍♀	masaj alan qadın: açıq dəri tonu
+💆🏼‍♀️	masaj alan qadın: orta-açıq dəri tonu
+💆🏼‍♀	masaj alan qadın: orta-açıq dəri tonu
+💆🏽‍♀️	masaj alan qadın: orta dəri tonu
+💆🏽‍♀	masaj alan qadın: orta dəri tonu
+💆🏾‍♀️	masaj alan qadın: orta-tünd dəri tonu
+💆🏾‍♀	masaj alan qadın: orta-tünd dəri tonu
+💆🏿‍♀️	masaj alan qadın: tünd dəri tonu
+💆🏿‍♀	masaj alan qadın: tünd dəri tonu
+💇	saçını kəsdirən adam
+💇🏻	saç kəsdirən şəxs: açıq dəri tonu
+💇🏼	saç kəsdirən şəxs: orta-açıq dəri tonu
+💇🏽	saç kəsdirən şəxs: orta dəri tonu
+💇🏾	saç kəsdirən şəxs: orta-tünd dəri tonu
+💇🏿	saç kəsdirən şəxs: tünd dəri tonu
+💇‍♂️	saçını kəsdirən adam
+💇‍♂	saçını kəsdirən adam
+💇🏻‍♂️	saçını kəsdirən kişi: açıq dəri tonu
+💇🏻‍♂	saçını kəsdirən kişi: açıq dəri tonu
+💇🏼‍♂️	saç kəsdirən kişi: orta-açıq dəri tonu
+💇🏼‍♂	saç kəsdirən kişi: orta-açıq dəri tonu
+💇🏽‍♂️	saçını kəsdirən kişi: orta dəri tonu
+💇🏽‍♂	saçını kəsdirən kişi: orta dəri tonu
+💇🏾‍♂️	saç kəsdirən kişi: orta-tünd dəri tonu
+💇🏾‍♂	saç kəsdirən kişi: orta-tünd dəri tonu
+💇🏿‍♂️	saçını kəsdirən kişi: tünd dəri tonu
+💇🏿‍♂	saçını kəsdirən kişi: tünd dəri tonu
+💇‍♀️	saçını kəsdirən qadın
+💇‍♀	saçını kəsdirən qadın
+💇🏻‍♀️	saç kəsdirən qadın: açıq dəri tonu
+💇🏻‍♀	saç kəsdirən qadın: açıq dəri tonu
+💇🏼‍♀️	saç kəsdirən qadın: orta-açıq dəri tonu
+💇🏼‍♀	saç kəsdirən qadın: orta-açıq dəri tonu
+💇🏽‍♀️	saç kəsdirən qadın: orta dəri tonu
+💇🏽‍♀	saç kəsdirən qadın: orta dəri tonu
+💇🏾‍♀️	saç kəsdirən qadın: orta-tünd dəri tonu
+💇🏾‍♀	saç kəsdirən qadın: orta-tünd dəri tonu
+💇🏿‍♀️	saç kəsdirən qadın: tünd dəri tonu
+💇🏿‍♀	saç kəsdirən qadın: tünd dəri tonu
+🚶	gəzən adam
+🚶🏻	gəzən adam: açıq dəri tonu
+🚶🏼	gəzən adam: orta-açıq dəri tonu
+🚶🏽	gəzən adam: orta dəri tonu
+🚶🏾	gəzən adam: orta-tünd dəri tonu
+🚶🏿	gəzən adam: tünd dəri tonu
+🚶‍♂️	gəzən adam
+🚶‍♂	gəzən adam
+🚶🏻‍♂️	gəzən kişi: açıq dəri tonu
+🚶🏻‍♂	gəzən kişi: açıq dəri tonu
+🚶🏼‍♂️	gəzən kişi: orta-açıq dəri tonu
+🚶🏼‍♂	gəzən kişi: orta-açıq dəri tonu
+🚶🏽‍♂️	gəzən kişi: orta dəri tonu
+🚶🏽‍♂	gəzən kişi: orta dəri tonu
+🚶🏾‍♂️	gəzən kişi: orta-tünd dəri tonu
+🚶🏾‍♂	gəzən kişi: orta-tünd dəri tonu
+🚶🏿‍♂️	gəzən kişi: tünd dəri tonu
+🚶🏿‍♂	gəzən kişi: tünd dəri tonu
+🚶‍♀️	qadın gəzir
+🚶‍♀	qadın gəzir
+🚶🏻‍♀️	gəzən qadın: açıq dəri tonu
+🚶🏻‍♀	gəzən qadın: açıq dəri tonu
+🚶🏼‍♀️	gəzən qadın: orta-açıq dəri tonu
+🚶🏼‍♀	gəzən qadın: orta-açıq dəri tonu
+🚶🏽‍♀️	gəzən qadın: orta dəri tonu
+🚶🏽‍♀	gəzən qadın: orta dəri tonu
+🚶🏾‍♀️	gəzən qadın: orta-tünd dəri tonu
+🚶🏾‍♀	gəzən qadın: orta-tünd dəri tonu
+🚶🏿‍♀️	gəzən qadın: tünd dəri tonu
+🚶🏿‍♀	gəzən qadın: tünd dəri tonu
+🏃	qaçan adam
+🏃🏻	qaçan adam: açıq dəri tonu
+🏃🏼	qaçan adam: orta-açıq dəri tonu
+🏃🏽	qaçan adam: orta dəri tonu
+🏃🏾	qaçan adam: orta-tünd dəri tonu
+🏃🏿	qaçan adam: tünd dəri tonu
+🏃‍♂️	qaçan adam
+🏃‍♂	qaçan adam
+🏃🏻‍♂️	qaçan kişi: açıq dəri tonu
+🏃🏻‍♂	qaçan kişi: açıq dəri tonu
+🏃🏼‍♂️	qaçan kişi: orta-açıq dəri tonu
+🏃🏼‍♂	qaçan kişi: orta-açıq dəri tonu
+🏃🏽‍♂️	qaçan kişi: orta dəri tonu
+🏃🏽‍♂	qaçan kişi: orta dəri tonu
+🏃🏾‍♂️	qaçan kişi: orta-tünd dəri tonu
+🏃🏾‍♂	qaçan kişi: orta-tünd dəri tonu
+🏃🏿‍♂️	qaçan kişi: tünd dəri tonu
+🏃🏿‍♂	qaçan kişi: tünd dəri tonu
+🏃‍♀️	qaçan qadın
+🏃‍♀	qaçan qadın
+🏃🏻‍♀️	qaçan qadın: açıq dəri tonu
+🏃🏻‍♀	qaçan qadın: açıq dəri tonu
+🏃🏼‍♀️	qaçan qadın: orta-açıq dəri tonu
+🏃🏼‍♀	qaçan qadın: orta-açıq dəri tonu
+🏃🏽‍♀️	qaçan qadın: orta dəri tonu
+🏃🏽‍♀	qaçan qadın: orta dəri tonu
+🏃🏾‍♀️	qaçan qadın: orta-tünd dəri tonu
+🏃🏾‍♀	qaçan qadın: orta-tünd dəri tonu
+🏃🏿‍♀️	qaçan qadın: tünd dəri tonu
+🏃🏿‍♀	qaçan qadın: tünd dəri tonu
+💃	qadın rəqs edir
+💃🏻	rəqs edən qadın: açıq dəri tonu
+💃🏼	rəqs edən qadın: orta-açıq dəri tonu
+💃🏽	rəqs edən qadın: orta dəri tonu
+💃🏾	rəqs edən qadın: orta-tünd dəri tonu
+💃🏿	rəqs edən qadın: tünd dəri tonu
+🕺	kişi rəqs edir
+🕺🏻	rəqs edən kişi: açıq dəri tonu
+🕺🏼	rəqs edən kişi: orta-açıq dəri tonu
+🕺🏽	rəqs edən kişi: orta dəri tonu
+🕺🏾	rəqs edən kişi: orta-tünd dəri tonu
+🕺🏿	rəqs edən kişi: tünd dəri tonu
+👯	dovşan qulaqları olan insanlar
+👯‍♂️	dovşan qulaqları olan kişilər
+👯‍♂	dovşan qulaqları olan kişilər
+👯‍♀️	dovşan qulaqları olan qadınlar
+👯‍♀	dovşan qulaqları olan qadınlar
+🧖	buxarlı otaqda adam
+🧖🏻	buxarlı otaqda olan adam: açıq dəri tonu
+🧖🏼	buxarlı otaqda olan adam: orta-açıq dəri tonu
+🧖🏽	buxarlı otaqda olan adam: orta dəri tonu
+🧖🏾	buxarlı otaqda olan adam: orta-tünd dəri tonu
+🧖🏿	buxarlı otaqda olan adam: tünd dəri tonu
+🧖‍♀️	buxarlı otaqda qadın
+🧖‍♀	buxarlı otaqda qadın
+🧖🏻‍♀️	buxarlı otaqda qadın: açıq dəri tonu
+🧖🏻‍♀	buxarlı otaqda qadın: açıq dəri tonu
+🧖🏼‍♀️	buxarlı otaqda qadın: orta-açıq dəri tonu
+🧖🏼‍♀	buxarlı otaqda qadın: orta-açıq dəri tonu
+🧖🏽‍♀️	buxarlı otaqda qadın: orta dəri tonu
+🧖🏽‍♀	buxarlı otaqda qadın: orta dəri tonu
+🧖🏾‍♀️	buxarlı otaqda qadın: orta-tünd dəri tonu
+🧖🏾‍♀	buxarlı otaqda qadın: orta-tünd dəri tonu
+🧖🏿‍♀️	buxarlı otaqda qadın: tünd dəri tonu
+🧖🏿‍♀	buxarlı otaqda qadın: tünd dəri tonu
+🧖‍♂️	buxarlı otaqda adam
+🧖‍♂	buxarlı otaqda adam
+🧖🏻‍♂️	buxarlı otaqda kişi: açıq dəri tonu
+🧖🏻‍♂	buxarlı otaqda kişi: açıq dəri tonu
+🧖🏼‍♂️	buxarlı otaqda kişi: orta-açıq dəri tonu
+🧖🏼‍♂	buxarlı otaqda kişi: orta-açıq dəri tonu
+🧖🏽‍♂️	buxarlı otaqda kişi: orta dəri tonu
+🧖🏽‍♂	buxarlı otaqda kişi: orta dəri tonu
+🧖🏾‍♂️	buxarlı otaqda kişi: orta-tünd dəri tonu
+🧖🏾‍♂	buxarlı otaqda kişi: orta-tünd dəri tonu
+🧖🏿‍♂️	buxarlı otaqda kişi: tünd dəri tonu
+🧖🏿‍♂	buxarlı otaqda kişi: tünd dəri tonu
+🧗	dırmaşan adam
+🧗🏻	dırmaşan adam: açıq dəri tonu
+🧗🏼	dırmaşan adam: orta-açıq dəri tonu
+🧗🏽	dırmaşan adam: orta dəri tonu
+🧗🏾	dırmaşan adam: orta-tünd dəri tonu
+🧗🏿	dırmaşan adam: tünd dəri tonu
+🧗‍♀️	dırmaşan qadın
+🧗‍♀	dırmaşan qadın
+🧗🏻‍♀️	dırmaşan qadın: açıq dəri tonu
+🧗🏻‍♀	dırmaşan qadın: açıq dəri tonu
+🧗🏼‍♀️	dırmaşan qadın: orta-açıq dəri tonu
+🧗🏼‍♀	dırmaşan qadın: orta-açıq dəri tonu
+🧗🏽‍♀️	dırmaşan qadın: orta dəri tonu
+🧗🏽‍♀	dırmaşan qadın: orta dəri tonu
+🧗🏾‍♀️	dırmaşan qadın: orta-tünd dəri tonu
+🧗🏾‍♀	dırmaşan qadın: orta-tünd dəri tonu
+🧗🏿‍♀️	dırmaşan qadın: tünd dəri tonu
+🧗🏿‍♀	dırmaşan qadın: tünd dəri tonu
+🧗‍♂️	dırmaşan adam
+🧗‍♂	dırmaşan adam
+🧗🏻‍♂️	dırmaşan kişi: açıq dəri tonu
+🧗🏻‍♂	dırmaşan kişi: açıq dəri tonu
+🧗🏼‍♂️	dırmaşan kişi: orta-açıq dəri tonu
+🧗🏼‍♂	dırmaşan kişi: orta-açıq dəri tonu
+🧗🏽‍♂️	dırmaşan kişi: orta dəri tonu
+🧗🏽‍♂	dırmaşan kişi: orta dəri tonu
+🧗🏾‍♂️	dırmaşan kişi: orta-tünd dəri tonu
+🧗🏾‍♂	dırmaşan kişi: orta-tünd dəri tonu
+🧗🏿‍♂️	dırmaşan kişi: tünd dəri tonu
+🧗🏿‍♂	dırmaşan kişi: tünd dəri tonu
+🧘	lotus mövqeyində olan şəxs
+🧘🏻	lotus mövqeyində olan şəxs: açıq dəri tonu
+🧘🏼	lotus mövqeyində olan şəxs: orta-açıq dəri tonu
+🧘🏽	lotus mövqeyində olan şəxs: orta dəri tonu
+🧘🏾	lotus mövqeyində olan şəxs: orta-tünd dəri tonu
+🧘🏿	lotus mövqeyində olan şəxs: tünd dəri tonu
+🧘‍♀️	lotus mövqeyində qadın
+🧘‍♀	lotus mövqeyində qadın
+🧘🏻‍♀️	lotus mövqeyində qadın: açıq dəri tonu
+🧘🏻‍♀	lotus mövqeyində qadın: açıq dəri tonu
+🧘🏼‍♀️	lotus mövqeyində qadın: orta-açıq dəri tonu
+🧘🏼‍♀	lotus mövqeyində qadın: orta-açıq dəri tonu
+🧘🏽‍♀️	lotus mövqeyində qadın: orta dəri tonu
+🧘🏽‍♀	lotus mövqeyində qadın: orta dəri tonu
+🧘🏾‍♀️	lotus mövqeyində qadın: orta-tünd dəri tonu
+🧘🏾‍♀	lotus mövqeyində qadın: orta-tünd dəri tonu
+🧘🏿‍♀️	lotus mövqeyində qadın: tünd dəri tonu
+🧘🏿‍♀	lotus mövqeyində qadın: tünd dəri tonu
+🧘‍♂️	lotus mövqeyində olan adam
+🧘‍♂	lotus mövqeyində olan adam
+🧘🏻‍♂️	lotus mövqeyində kişi: açıq dəri tonu
+🧘🏻‍♂	lotus mövqeyində kişi: açıq dəri tonu
+🧘🏼‍♂️	lotus mövqeyində kişi: orta-açıq dəri tonu
+🧘🏼‍♂	lotus mövqeyində kişi: orta-açıq dəri tonu
+🧘🏽‍♂️	lotus mövqeyində kişi: orta dəri tonu
+🧘🏽‍♂	lotus mövqeyində kişi: orta dəri tonu
+🧘🏾‍♂️	lotus mövqeyində kişi: orta-tünd dəri tonu
+🧘🏾‍♂	lotus mövqeyində kişi: orta-tünd dəri tonu
+🧘🏿‍♂️	lotus mövqeyində kişi: tünd dəri tonu
+🧘🏿‍♂	lotus mövqeyində kişi: tünd dəri tonu
+🛀	vanna qəbul edən şəxs
+🛀🏻	vanna qəbul edən şəxs: açıq dəri tonu
+🛀🏼	vanna qəbul edən şəxs: orta-açıq dəri tonu
+🛀🏽	vanna qəbul edən şəxs: orta dəri tonu
+🛀🏾	vanna qəbul edən şəxs: orta-tünd dəri tonu
+🛀🏿	vanna qəbul edən şəxs: tünd dəri tonu
+🛌	yataqda olan adam
+🛌🏻	yataqda olan adam: açıq dəri tonu
+🛌🏼	yataqda olan adam: orta-açıq dəri tonu
+🛌🏽	yataqda olan adam: orta dəri tonu
+🛌🏾	yataqda olan adam: orta-tünd dəri tonu
+🛌🏿	yataqda olan adam: tünd dəri tonu
+🕴️	kostyumlu adam havaya qalxır
+🕴	kostyumlu adam havaya qalxır
+🕴🏻	kostyumlu kişi: açıq dəri tonu
+🕴🏼	kostyumlu kişi: orta-açıq dəri tonu
+🕴🏽	Kostyumlu kişi: orta dəri tonu
+🕴🏾	kostyumlu kişi: orta-tünd dəri tonu
+🕴🏿	havaya qalxan kostyumlu kişi: tünd dəri tonu
+🗣️	danışan baş
+🗣	danışan baş
+👤	siluetdə büstü
+👥	siluetdə büstlər
+🤺	şəxs qılıncoynatma
+🏇	at yarışı
+🏇🏻	at yarışı: açıq dəri tonu
+🏇🏼	at yarışı: orta-açıq dəri tonu
+🏇🏽	at yarışı: orta dəri tonu
+🏇🏾	at yarışı: orta-tünd dəri tonu
+🏇🏿	at yarışı: tünd dəri tonu
+⛷️	xizəkçi
+⛷	xizəkçi
+🏂	snoubordçu
+🏂🏻	snoubordçu: açıq dəri tonu
+🏂🏼	snoubordçu: orta-açıq dəri tonu
+🏂🏽	snoubordçu: orta dəri tonu
+🏂🏾	snoubordçu: orta-tünd dəri tonu
+🏂🏿	snoubordçu: tünd dəri tonu
+🏌️	qolf oynayan adam
+🏌	qolf oynayan adam
+🏌🏻	qolf oynayan adam: açıq dəri tonu
+🏌🏼	qolf oynayan adam: orta-açıq dəri tonu
+🏌🏽	qolf oynayan adam: orta dəri tonu
+🏌🏾	golf oynayan şəxs: orta-tünd dəri tonu
+🏌🏿	qolf oynayan adam: tünd dəri tonu
+🏌️‍♂️	qolf oynayan adam
+🏌‍♂️	qolf oynayan adam
+🏌️‍♂	qolf oynayan adam
+🏌‍♂	qolf oynayan adam
+🏌🏻‍♂️	qolf oynayan kişi: açıq dəri tonu
+🏌🏻‍♂	qolf oynayan kişi: açıq dəri tonu
+🏌🏼‍♂️	qolf oynayan kişi: orta-açıq dəri tonu
+🏌🏼‍♂	qolf oynayan kişi: orta-açıq dəri tonu
+🏌🏽‍♂️	qolf oynayan kişi: orta dəri tonu
+🏌🏽‍♂	qolf oynayan kişi: orta dəri tonu
+🏌🏾‍♂️	qolf oynayan kişi: orta-tünd dəri tonu
+🏌🏾‍♂	qolf oynayan kişi: orta-tünd dəri tonu
+🏌🏿‍♂️	qolf oynayan kişi: tünd dəri tonu
+🏌🏿‍♂	qolf oynayan kişi: tünd dəri tonu
+🏌️‍♀️	qadın golf oynayır
+🏌‍♀️	qadın golf oynayır
+🏌️‍♀	qadın golf oynayır
+🏌‍♀	qadın golf oynayır
+🏌🏻‍♀️	qolf oynayan qadın: açıq dəri tonu
+🏌🏻‍♀	qolf oynayan qadın: açıq dəri tonu
+🏌🏼‍♀️	qolf oynayan qadın: orta-açıq dəri tonu
+🏌🏼‍♀	qolf oynayan qadın: orta-açıq dəri tonu
+🏌🏽‍♀️	qolf oynayan qadın: orta dəri tonu
+🏌🏽‍♀	qolf oynayan qadın: orta dəri tonu
+🏌🏾‍♀️	qolf oynayan qadın: orta-tünd dəri tonu
+🏌🏾‍♀	qolf oynayan qadın: orta-tünd dəri tonu
+🏌🏿‍♀️	qolf oynayan qadın: tünd dəri tonu
+🏌🏿‍♀	qolf oynayan qadın: tünd dəri tonu
+🏄	sörfinq edən şəxs
+🏄🏻	sörfinq edən şəxs: açıq dəri tonu
+🏄🏼	sörfinq edən şəxs: orta-açıq dəri tonu
+🏄🏽	sörfinq edən şəxs: orta dəri tonu
+🏄🏾	sörfinq edən şəxs: orta-tünd dəri tonu
+🏄🏿	sörfinq edən şəxs: tünd dəri tonu
+🏄‍♂️	sörfinq edən adam
+🏄‍♂	sörfinq edən adam
+🏄🏻‍♂️	sörfinq edən kişi: açıq dəri tonu
+🏄🏻‍♂	sörfinq edən kişi: açıq dəri tonu
+🏄🏼‍♂️	sörfinq edən kişi: orta-açıq dəri tonu
+🏄🏼‍♂	sörfinq edən kişi: orta-açıq dəri tonu
+🏄🏽‍♂️	sörfinq edən kişi: orta dəri tonu
+🏄🏽‍♂	sörfinq edən kişi: orta dəri tonu
+🏄🏾‍♂️	sörfinq edən kişi: orta-tünd dəri tonu
+🏄🏾‍♂	sörfinq edən kişi: orta-tünd dəri tonu
+🏄🏿‍♂️	sörfinq edən kişi: tünd dəri tonu
+🏄🏿‍♂	sörfinq edən kişi: tünd dəri tonu
+🏄‍♀️	sörfinq edən qadın
+🏄‍♀	sörfinq edən qadın
+🏄🏻‍♀️	sörfinq edən qadın: açıq dəri tonu
+🏄🏻‍♀	sörfinq edən qadın: açıq dəri tonu
+🏄🏼‍♀️	sörfinq edən qadın: orta-açıq dəri tonu
+🏄🏼‍♀	sörfinq edən qadın: orta-açıq dəri tonu
+🏄🏽‍♀️	sörfinq edən qadın: orta dəri tonu
+🏄🏽‍♀	sörfinq edən qadın: orta dəri tonu
+🏄🏾‍♀️	sörfinq edən qadın: orta-tünd dəri tonu
+🏄🏾‍♀	sörfinq edən qadın: orta-tünd dəri tonu
+🏄🏿‍♀️	sörfinq edən qadın: tünd dəri tonu
+🏄🏿‍♀	sörfinq edən qadın: tünd dəri tonu
+🚣	adam avarçəkən qayıq
+🚣🏻	avarçəkən qayıq: açıq dəri tonu
+🚣🏼	avarçəkən qayıq: orta-açıq dəri tonu
+🚣🏽	avarçəkən qayıq: orta dəri tonu
+🚣🏾	avarçəkən qayıq: orta-tünd dəri tonu
+🚣🏿	avarçəkən qayıq: tünd dəri tonu
+🚣‍♂️	adam avarçəkən qayıq
+🚣‍♂	adam avarçəkən qayıq
+🚣🏻‍♂️	avarçəkən qayıq: açıq dəri tonu
+🚣🏻‍♂	avarçəkən qayıq: açıq dəri tonu
+🚣🏼‍♂️	avarçəkən qayıq: orta-açıq dəri tonu
+🚣🏼‍♂	avarçəkən qayıq: orta-açıq dəri tonu
+🚣🏽‍♂️	avarçəkən qayıq: orta dəri tonu
+🚣🏽‍♂	avarçəkən qayıq: orta dəri tonu
+🚣🏾‍♂️	avarçəkən qayıq: orta-tünd dəri tonu
+🚣🏾‍♂	avarçəkən qayıq: orta-tünd dəri tonu
+🚣🏿‍♂️	avarçəkən qayıq: tünd dəri tonu
+🚣🏿‍♂	avarçəkən qayıq: tünd dəri tonu
+🚣‍♀️	qadın avarçəkən qayıq
+🚣‍♀	qadın avarçəkən qayıq
+🚣🏻‍♀️	qadın avarçəkən qayıq: açıq dəri tonu
+🚣🏻‍♀	qadın avarçəkən qayıq: açıq dəri tonu
+🚣🏼‍♀️	qadın qayıq: orta-açıq dəri tonu
+🚣🏼‍♀	qadın qayıq: orta-açıq dəri tonu
+🚣🏽‍♀️	qadın avarçəkən qayıq: orta dəri tonu
+🚣🏽‍♀	qadın avarçəkən qayıq: orta dəri tonu
+🚣🏾‍♀️	qadın qayıq: orta-tünd dəri tonu
+🚣🏾‍♀	qadın qayıq: orta-tünd dəri tonu
+🚣🏿‍♀️	avarçəkən qadın: tünd dəri tonu
+🚣🏿‍♀	avarçəkən qadın: tünd dəri tonu
+🏊	üzgüçülük edən şəxs
+🏊🏻	üzgüçülük: açıq dəri tonu
+🏊🏼	üzgüçülük: orta-açıq dəri tonu
+🏊🏽	üzgüçülük: orta dəri tonu
+🏊🏾	üzgüçülük: orta-tünd dəri tonu
+🏊🏿	üzgüçülük: tünd dəri tonu
+🏊‍♂️	adam üzgüçülük
+🏊‍♂	adam üzgüçülük
+🏊🏻‍♂️	üzgüçü kişi: açıq dəri tonu
+🏊🏻‍♂	üzgüçü kişi: açıq dəri tonu
+🏊🏼‍♂️	üzgüçü kişi: orta-açıq dəri tonu
+🏊🏼‍♂	üzgüçü kişi: orta-açıq dəri tonu
+🏊🏽‍♂️	üzgüçü kişi: orta dəri tonu
+🏊🏽‍♂	üzgüçü kişi: orta dəri tonu
+🏊🏾‍♂️	üzgüçü kişi: orta-tünd dəri tonu
+🏊🏾‍♂	üzgüçü kişi: orta-tünd dəri tonu
+🏊🏿‍♂️	üzgüçü kişi: tünd dəri tonu
+🏊🏿‍♂	üzgüçü kişi: tünd dəri tonu
+🏊‍♀️	qadın üzgüçülük
+🏊‍♀	qadın üzgüçülük
+🏊🏻‍♀️	üzgüçü qadın: açıq dəri tonu
+🏊🏻‍♀	üzgüçü qadın: açıq dəri tonu
+🏊🏼‍♀️	üzgüçü qadın: orta-açıq dəri tonu
+🏊🏼‍♀	üzgüçü qadın: orta-açıq dəri tonu
+🏊🏽‍♀️	üzgüçü qadın: orta dəri tonu
+🏊🏽‍♀	üzgüçü qadın: orta dəri tonu
+🏊🏾‍♀️	üzgüçü qadın: orta-tünd dəri tonu
+🏊🏾‍♀	üzgüçü qadın: orta-tünd dəri tonu
+🏊🏿‍♀️	üzgüçü qadın: tünd dəri tonu
+🏊🏿‍♀	üzgüçü qadın: tünd dəri tonu
+⛹️	top sıçrayan şəxs
+⛹	top sıçrayan şəxs
+⛹🏻	top sıçrayan adam: açıq dəri tonu
+⛹🏼	top sıçrayan şəxs: orta-açıq dəri tonu
+⛹🏽	top sıçrayan adam: orta dəri tonu
+⛹🏾	top sıçrayan şəxs: orta-tünd dəri tonu
+⛹🏿	top sıçrayan adam: tünd dəri tonu
+⛹️‍♂️	top sıçrayan adam
+⛹‍♂️	top sıçrayan adam
+⛹️‍♂	top sıçrayan adam
+⛹‍♂	top sıçrayan adam
+⛹🏻‍♂️	top sıçrayan kişi: açıq dəri tonu
+⛹🏻‍♂	top sıçrayan kişi: açıq dəri tonu
+⛹🏼‍♂️	top sıçrayan kişi: orta-açıq dəri tonu
+⛹🏼‍♂	top sıçrayan kişi: orta-açıq dəri tonu
+⛹🏽‍♂️	top sıçrayan kişi: orta dəri tonu
+⛹🏽‍♂	top sıçrayan kişi: orta dəri tonu
+⛹🏾‍♂️	top sıçrayan kişi: orta-tünd dəri tonu
+⛹🏾‍♂	top sıçrayan kişi: orta-tünd dəri tonu
+⛹🏿‍♂️	top sıçrayan adam: tünd dəri tonu
+⛹🏿‍♂	top sıçrayan adam: tünd dəri tonu
+⛹️‍♀️	topu sıçrayan qadın
+⛹‍♀️	topu sıçrayan qadın
+⛹️‍♀	topu sıçrayan qadın
+⛹‍♀	topu sıçrayan qadın
+⛹🏻‍♀️	topu sıçrayan qadın: açıq dəri tonu
+⛹🏻‍♀	topu sıçrayan qadın: açıq dəri tonu
+⛹🏼‍♀️	top sıçrayan qadın: orta-açıq dəri tonu
+⛹🏼‍♀	top sıçrayan qadın: orta-açıq dəri tonu
+⛹🏽‍♀️	top sıçrayan qadın: orta dəri tonu
+⛹🏽‍♀	top sıçrayan qadın: orta dəri tonu
+⛹🏾‍♀️	topu sıçrayan qadın: orta-tünd dəri tonu
+⛹🏾‍♀	topu sıçrayan qadın: orta-tünd dəri tonu
+⛹🏿‍♀️	topu sıçrayan qadın: tünd dəri tonu
+⛹🏿‍♀	topu sıçrayan qadın: tünd dəri tonu
+🏋️	ağırlıq qaldıran şəxs
+🏋	ağırlıq qaldıran şəxs
+🏋🏻	ağırlıq qaldıran şəxs: açıq dəri tonu
+🏋🏼	ağırlıq qaldıran şəxs: orta-açıq dəri tonu
+🏋🏽	ağırlıq qaldıran şəxs: orta dəri tonu
+🏋🏾	ağırlıq qaldıran şəxs: orta-tünd dəri tonu
+🏋🏿	ağırlıq qaldıran şəxs: tünd dəri tonu
+🏋️‍♂️	ağırlıq qaldıran adam
+🏋‍♂️	ağırlıq qaldıran adam
+🏋️‍♂	ağırlıq qaldıran adam
+🏋‍♂	ağırlıq qaldıran adam
+🏋🏻‍♂️	ağırlıq qaldıran kişi: açıq dəri tonu
+🏋🏻‍♂	ağırlıq qaldıran kişi: açıq dəri tonu
+🏋🏼‍♂️	ağırlıq qaldıran kişi: orta-açıq dəri tonu
+🏋🏼‍♂	ağırlıq qaldıran kişi: orta-açıq dəri tonu
+🏋🏽‍♂️	ağırlıq qaldıran kişi: orta dəri tonu
+🏋🏽‍♂	ağırlıq qaldıran kişi: orta dəri tonu
+🏋🏾‍♂️	ağırlıq qaldıran kişi: orta-tünd dəri tonu
+🏋🏾‍♂	ağırlıq qaldıran kişi: orta-tünd dəri tonu
+🏋🏿‍♂️	ağırlıq qaldıran kişi: tünd dəri tonu
+🏋🏿‍♂	ağırlıq qaldıran kişi: tünd dəri tonu
+🏋️‍♀️	ağırlıq qaldıran qadın
+🏋‍♀️	ağırlıq qaldıran qadın
+🏋️‍♀	ağırlıq qaldıran qadın
+🏋‍♀	ağırlıq qaldıran qadın
+🏋🏻‍♀️	ağırlıq qaldıran qadın: açıq dəri tonu
+🏋🏻‍♀	ağırlıq qaldıran qadın: açıq dəri tonu
+🏋🏼‍♀️	ağırlıq qaldıran qadın: orta-açıq dəri tonu
+🏋🏼‍♀	ağırlıq qaldıran qadın: orta-açıq dəri tonu
+🏋🏽‍♀️	çəki qaldıran qadın: orta dəri tonu
+🏋🏽‍♀	çəki qaldıran qadın: orta dəri tonu
+🏋🏾‍♀️	çəki qaldıran qadın: orta-tünd dəri tonu
+🏋🏾‍♀	çəki qaldıran qadın: orta-tünd dəri tonu
+🏋🏿‍♀️	çəki qaldıran qadın: tünd dəri tonu
+🏋🏿‍♀	çəki qaldıran qadın: tünd dəri tonu
+🚴	velosiped sürən adam
+🚴🏻	velosiped sürən şəxs: açıq dəri tonu
+🚴🏼	velosiped sürən şəxs: orta-açıq dəri tonu
+🚴🏽	velosiped sürən şəxs: orta dəri tonu
+🚴🏾	velosiped sürən şəxs: orta-tünd dəri tonu
+🚴🏿	velosiped sürən şəxs: tünd dəri tonu
+🚴‍♂️	velosiped sürən adam
+🚴‍♂	velosiped sürən adam
+🚴🏻‍♂️	velosiped sürən kişi: açıq dəri tonu
+🚴🏻‍♂	velosiped sürən kişi: açıq dəri tonu
+🚴🏼‍♂️	velosiped sürən kişi: orta-açıq dəri tonu
+🚴🏼‍♂	velosiped sürən kişi: orta-açıq dəri tonu
+🚴🏽‍♂️	velosiped sürən kişi: orta dəri tonu
+🚴🏽‍♂	velosiped sürən kişi: orta dəri tonu
+🚴🏾‍♂️	velosiped sürən kişi: orta-tünd dəri tonu
+🚴🏾‍♂	velosiped sürən kişi: orta-tünd dəri tonu
+🚴🏿‍♂️	velosiped sürən kişi: tünd dəri tonu
+🚴🏿‍♂	velosiped sürən kişi: tünd dəri tonu
+🚴‍♀️	velosiped sürən qadın
+🚴‍♀	velosiped sürən qadın
+🚴🏻‍♀️	velosiped sürən qadın: açıq dəri tonu
+🚴🏻‍♀	velosiped sürən qadın: açıq dəri tonu
+🚴🏼‍♀️	velosiped sürən qadın: orta-açıq dəri tonu
+🚴🏼‍♀	velosiped sürən qadın: orta-açıq dəri tonu
+🚴🏽‍♀️	velosiped sürən qadın: orta dəri tonu
+🚴🏽‍♀	velosiped sürən qadın: orta dəri tonu
+🚴🏾‍♀️	velosiped sürən qadın: orta-tünd dəri tonu
+🚴🏾‍♀	velosiped sürən qadın: orta-tünd dəri tonu
+🚴🏿‍♀️	velosiped sürən qadın: tünd dəri tonu
+🚴🏿‍♀	velosiped sürən qadın: tünd dəri tonu
+🚵	dağ velosipedi sürən adam
+🚵🏻	dağ velosipedi: açıq dəri tonu
+🚵🏼	dağ velosipedi: orta-açıq dəri tonu
+🚵🏽	dağ velosipedi: orta dəri tonu
+🚵🏾	dağ velosipedi: orta-tünd dəri tonu
+🚵🏿	dağ velosipedi: tünd dəri tonu
+🚵‍♂️	dağ velosipedi sürən adam
+🚵‍♂	dağ velosipedi sürən adam
+🚵🏻‍♂️	dağ velosipedi: açıq dəri tonu
+🚵🏻‍♂	dağ velosipedi: açıq dəri tonu
+🚵🏼‍♂️	kişi dağ velosipedi: orta-açıq dəri tonu
+🚵🏼‍♂	kişi dağ velosipedi: orta-açıq dəri tonu
+🚵🏽‍♂️	dağ velosipedi sürən kişi: orta dəri tonu
+🚵🏽‍♂	dağ velosipedi sürən kişi: orta dəri tonu
+🚵🏾‍♂️	kişi dağ velosipedi: orta-tünd dəri tonu
+🚵🏾‍♂	kişi dağ velosipedi: orta-tünd dəri tonu
+🚵🏿‍♂️	dağ velosipedi sürən kişi: tünd dəri tonu
+🚵🏿‍♂	dağ velosipedi sürən kişi: tünd dəri tonu
+🚵‍♀️	qadın dağ velosipedi
+🚵‍♀	qadın dağ velosipedi
+🚵🏻‍♀️	qadın dağ velosipedi: açıq dəri tonu
+🚵🏻‍♀	qadın dağ velosipedi: açıq dəri tonu
+🚵🏼‍♀️	dağ velosipedçisi qadın: orta-açıq dəri tonu
+🚵🏼‍♀	dağ velosipedçisi qadın: orta-açıq dəri tonu
+🚵🏽‍♀️	dağ velosipedçisi qadın: orta dəri tonu
+🚵🏽‍♀	dağ velosipedçisi qadın: orta dəri tonu
+🚵🏾‍♀️	dağ velosipedçisi qadın: orta-tünd dəri tonu
+🚵🏾‍♀	dağ velosipedçisi qadın: orta-tünd dəri tonu
+🚵🏿‍♀️	qadın dağ velosipedi: tünd dəri tonu
+🚵🏿‍♀	qadın dağ velosipedi: tünd dəri tonu
+🏎️	yarış avtomobili
+🏎	yarış avtomobili
+🏍️	motosiklet
+🏍	motosiklet
+🤸	araba sürən adam
+🤸🏻	adam arabası: açıq dəri tonu
+🤸🏼	adam arabası: orta-açıq dəri tonu
+🤸🏽	adam arabası: orta dəri tonu
+🤸🏾	adam arabası: orta-tünd dəri tonu
+🤸🏿	adam arabası: tünd dəri tonu
+🤸‍♂️	araba sürən adam
+🤸‍♂	araba sürən adam
+🤸🏻‍♂️	kişi arabası: açıq dəri tonu
+🤸🏻‍♂	kişi arabası: açıq dəri tonu
+🤸🏼‍♂️	kişi arabası: orta-açıq dəri tonu
+🤸🏼‍♂	kişi arabası: orta-açıq dəri tonu
+🤸🏽‍♂️	kişi arabası: orta dəri tonu
+🤸🏽‍♂	kişi arabası: orta dəri tonu
+🤸🏾‍♂️	kişi arabası: orta-tünd dəri tonu
+🤸🏾‍♂	kişi arabası: orta-tünd dəri tonu
+🤸🏿‍♂️	kişi arabası: tünd dəri tonu
+🤸🏿‍♂	kişi arabası: tünd dəri tonu
+🤸‍♀️	araba sürən qadın
+🤸‍♀	araba sürən qadın
+🤸🏻‍♀️	qadın arabası: açıq dəri tonu
+🤸🏻‍♀	qadın arabası: açıq dəri tonu
+🤸🏼‍♀️	qadın cartwheeling: orta-açıq dəri tonu
+🤸🏼‍♀	qadın cartwheeling: orta-açıq dəri tonu
+🤸🏽‍♀️	qadın arabası: orta dəri tonu
+🤸🏽‍♀	qadın arabası: orta dəri tonu
+🤸🏾‍♀️	qadın cartwheeling: orta-tünd dəri tonu
+🤸🏾‍♀	qadın cartwheeling: orta-tünd dəri tonu
+🤸🏿‍♀️	qadın arabası: tünd dəri tonu
+🤸🏿‍♀	qadın arabası: tünd dəri tonu
+🤼	güləşən insanlar
+🤼‍♂️	kişi güləş
+🤼‍♂	kişi güləş
+🤼‍♀️	qadın güləşi
+🤼‍♀	qadın güləşi
+🤽	su polosu oynayan adam
+🤽🏻	su polosu oynayan adam: açıq dəri tonu
+🤽🏼	su polosu oynayan şəxs: orta-açıq dəri tonu
+🤽🏽	su polosu oynayan şəxs: orta dəri tonu
+🤽🏾	su polosu oynayan şəxs: orta-tünd dəri tonu
+🤽🏿	su polosu oynayan adam: tünd dəri tonu
+🤽‍♂️	su polosu oynayan adam
+🤽‍♂	su polosu oynayan adam
+🤽🏻‍♂️	su polosu oynayan kişi: açıq dəri tonu
+🤽🏻‍♂	su polosu oynayan kişi: açıq dəri tonu
+🤽🏼‍♂️	su polosu oynayan kişi: orta-açıq dəri tonu
+🤽🏼‍♂	su polosu oynayan kişi: orta-açıq dəri tonu
+🤽🏽‍♂️	su polosu oynayan kişi: orta dəri tonu
+🤽🏽‍♂	su polosu oynayan kişi: orta dəri tonu
+🤽🏾‍♂️	su polosu oynayan kişi: orta-tünd dəri tonu
+🤽🏾‍♂	su polosu oynayan kişi: orta-tünd dəri tonu
+🤽🏿‍♂️	su polosu oynayan kişi: tünd dəri tonu
+🤽🏿‍♂	su polosu oynayan kişi: tünd dəri tonu
+🤽‍♀️	su polosu oynayan qadın
+🤽‍♀	su polosu oynayan qadın
+🤽🏻‍♀️	su polosu oynayan qadın: açıq dəri tonu
+🤽🏻‍♀	su polosu oynayan qadın: açıq dəri tonu
+🤽🏼‍♀️	su polosu oynayan qadın: orta-açıq dəri tonu
+🤽🏼‍♀	su polosu oynayan qadın: orta-açıq dəri tonu
+🤽🏽‍♀️	su polosu oynayan qadın: orta dəri tonu
+🤽🏽‍♀	su polosu oynayan qadın: orta dəri tonu
+🤽🏾‍♀️	su polosu oynayan qadın: orta-tünd dəri tonu
+🤽🏾‍♀	su polosu oynayan qadın: orta-tünd dəri tonu
+🤽🏿‍♀️	su polosu oynayan qadın: tünd dəri tonu
+🤽🏿‍♀	su polosu oynayan qadın: tünd dəri tonu
+🤾	həndbol oynayan şəxs
+🤾🏻	həndbol oynayan adam: açıq dəri tonu
+🤾🏼	həndbol oynayan şəxs: orta-açıq dəri tonu
+🤾🏽	həndbol oynayan şəxs: orta dəri tonu
+🤾🏾	həndbol oynayan şəxs: orta-tünd dəri tonu
+🤾🏿	həndbol oynayan adam: tünd dəri tonu
+🤾‍♂️	həndbol oynayan adam
+🤾‍♂	həndbol oynayan adam
+🤾🏻‍♂️	həndbol oynayan kişi: açıq dəri tonu
+🤾🏻‍♂	həndbol oynayan kişi: açıq dəri tonu
+🤾🏼‍♂️	həndbol oynayan kişi: orta-açıq dəri tonu
+🤾🏼‍♂	həndbol oynayan kişi: orta-açıq dəri tonu
+🤾🏽‍♂️	həndbol oynayan kişi: orta dəri tonu
+🤾🏽‍♂	həndbol oynayan kişi: orta dəri tonu
+🤾🏾‍♂️	həndbol oynayan kişi: orta-tünd dəri tonu
+🤾🏾‍♂	həndbol oynayan kişi: orta-tünd dəri tonu
+🤾🏿‍♂️	həndbol oynayan kişi: tünd dəri tonu
+🤾🏿‍♂	həndbol oynayan kişi: tünd dəri tonu
+🤾‍♀️	həndbol oynayan qadın
+🤾‍♀	həndbol oynayan qadın
+🤾🏻‍♀️	həndbol oynayan qadın: açıq dəri tonu
+🤾🏻‍♀	həndbol oynayan qadın: açıq dəri tonu
+🤾🏼‍♀️	həndbol oynayan qadın: orta-açıq dəri tonu
+🤾🏼‍♀	həndbol oynayan qadın: orta-açıq dəri tonu
+🤾🏽‍♀️	həndbol oynayan qadın: orta dəri tonu
+🤾🏽‍♀	həndbol oynayan qadın: orta dəri tonu
+🤾🏾‍♀️	həndbol oynayan qadın: orta-tünd dəri tonu
+🤾🏾‍♀	həndbol oynayan qadın: orta-tünd dəri tonu
+🤾🏿‍♀️	həndbol oynayan qadın: tünd dəri tonu
+🤾🏿‍♀	həndbol oynayan qadın: tünd dəri tonu
+🤹	hoqqabazlıq edən adam
+🤹🏻	hoqqabaz: açıq dəri tonu
+🤹🏼	hoqqabaz: orta-açıq dəri tonu
+🤹🏽	hoqqabaz: orta dəri tonu
+🤹🏾	hoqqabazlıq edən şəxs: orta-tünd dəri tonu
+🤹🏿	hoqqabaz: tünd dəri tonu
+🤹‍♂️	hoqqabazlıq edən adam
+🤹‍♂	hoqqabazlıq edən adam
+🤹🏻‍♂️	hoqqabazlıq edən kişi: açıq dəri tonu
+🤹🏻‍♂	hoqqabazlıq edən kişi: açıq dəri tonu
+🤹🏼‍♂️	hoqqabazlıq edən kişi: orta-açıq dəri tonu
+🤹🏼‍♂	hoqqabazlıq edən kişi: orta-açıq dəri tonu
+🤹🏽‍♂️	hoqqabazlıq edən kişi: orta dəri tonu
+🤹🏽‍♂	hoqqabazlıq edən kişi: orta dəri tonu
+🤹🏾‍♂️	hoqqabazlıq edən kişi: orta-tünd dəri tonu
+🤹🏾‍♂	hoqqabazlıq edən kişi: orta-tünd dəri tonu
+🤹🏿‍♂️	hoqqabazlıq edən kişi: tünd dəri tonu
+🤹🏿‍♂	hoqqabazlıq edən kişi: tünd dəri tonu
+🤹‍♀️	hoqqabazlıq edən qadın
+🤹‍♀	hoqqabazlıq edən qadın
+🤹🏻‍♀️	hoqqabaz qadın: açıq dəri tonu
+🤹🏻‍♀	hoqqabaz qadın: açıq dəri tonu
+🤹🏼‍♀️	hoqqabaz qadın: orta-açıq dəri tonu
+🤹🏼‍♀	hoqqabaz qadın: orta-açıq dəri tonu
+🤹🏽‍♀️	hoqqabaz qadın: orta dəri tonu
+🤹🏽‍♀	hoqqabaz qadın: orta dəri tonu
+🤹🏾‍♀️	hoqqabaz qadın: orta-tünd dəri tonu
+🤹🏾‍♀	hoqqabaz qadın: orta-tünd dəri tonu
+🤹🏿‍♀️	hoqqabaz qadın: tünd dəri tonu
+🤹🏿‍♀	hoqqabaz qadın: tünd dəri tonu
+👫	kişi və qadın əl-ələ
+👬	əl-ələ tutan iki kişi
+👭	əl-ələ tutan iki qadın
+💏	öpmək
+👩‍❤️‍💋‍👨	öpüş: qadın, kişi
+👩‍❤‍💋‍👨	öpüş: qadın, kişi
+👨‍❤️‍💋‍👨	öpmək: kişi, kişi
+👨‍❤‍💋‍👨	öpmək: kişi, kişi
+👩‍❤️‍💋‍👩	öpüş: qadın, qadın
+👩‍❤‍💋‍👩	öpüş: qadın, qadın
+💑	ürəkli cütlük
+👩‍❤️‍👨	ürəkli cüt: qadın, kişi
+👩‍❤‍👨	ürəkli cüt: qadın, kişi
+👨‍❤️‍👨	ürəkli cüt: kişi, kişi
+👨‍❤‍👨	ürəkli cüt: kişi, kişi
+👩‍❤️‍👩	ürəkli cüt: qadın, qadın
+👩‍❤‍👩	ürəkli cüt: qadın, qadın
+👪	ailə
+👨‍👩‍👦	ailə: kişi, qadın, oğlan
+👨‍👩‍👧	ailə: kişi, qadın, qız
+👨‍👩‍👧‍👦	ailə: kişi, qadın, qız, oğlan
+👨‍👩‍👦‍👦	ailə: kişi, qadın, oğlan, oğlan
+👨‍👩‍👧‍👧	ailə: kişi, qadın, qız, qız
+👨‍👨‍👦	ailə: kişi, kişi, oğlan
+👨‍👨‍👧	ailə: kişi, kişi, qız
+👨‍👨‍👧‍👦	ailə: kişi, kişi, qız, oğlan
+👨‍👨‍👦‍👦	ailə: kişi, kişi, oğlan, oğlan
+👨‍👨‍👧‍👧	ailə: kişi, kişi, qız, qız
+👩‍👩‍👦	ailə: qadın, qadın, oğlan
+👩‍👩‍👧	ailə: qadın, qadın, qız
+👩‍👩‍👧‍👦	ailə: qadın, qadın, qız, oğlan
+👩‍👩‍👦‍👦	ailə: qadın, qadın, oğlan, oğlan
+👩‍👩‍👧‍👧	ailə: qadın, qadın, qız, qız
+👨‍👦	ailə: kişi, oğlan
+👨‍👦‍👦	ailə: kişi, oğlan, oğlan
+👨‍👧	ailə: kişi, qız
+👨‍👧‍👦	ailə: kişi, qız, oğlan
+👨‍👧‍👧	ailə: kişi, qız, qız
+👩‍👦	ailə: qadın, oğlan
+👩‍👦‍👦	ailə: qadın, oğlan, oğlan
+👩‍👧	ailə: qadın, qız
+👩‍👧‍👦	ailə: qadın, qız, oğlan
+👩‍👧‍👧	ailə: qadın, qız, qız
+🤳	selfi
+🤳🏻	selfi: açıq dəri tonu
+🤳🏼	selfi: orta-açıq dəri tonu
+🤳🏽	selfi: orta dəri tonu
+🤳🏾	selfi: orta-tünd dəri tonu
+🤳🏿	selfi: tünd dəri tonu
+💪	əyilmiş biceps
+💪🏻	əyilmiş biceps: açıq dəri tonu
+💪🏼	əyilmiş biceps: orta-açıq dəri tonu
+💪🏽	əyilmiş biceps: orta dəri tonu
+💪🏾	əyilmiş biceps: orta-tünd dəri tonu
+💪🏿	əyilmiş biceps: tünd dəri tonu
+🦵	ayaq
+🦵🏻	ayaq: açıq dəri tonu
+🦵🏼	ayaq: orta-açıq dəri tonu
+🦵🏽	ayaq: orta dəri tonu
+🦵🏾	ayaq: orta-tünd dəri tonu
+🦵🏿	ayaq: tünd dəri tonu
+🦶	ayaq
+🦶🏻	ayaq: açıq dəri tonu
+🦶🏼	ayaq: orta-açıq dəri tonu
+🦶🏽	ayaq: orta dəri tonu
+🦶🏾	ayaq: orta-tünd dəri tonu
+🦶🏿	ayaq: tünd dəri tonu
+👈	sola işarə edən arxa əl indeksi
+👈🏻	sol əlin göstəricisi: açıq dəri tonu
+👈🏼	sol əlin göstəricisi: orta-açıq dəri tonu
+👈🏽	sola baxan əlin işarəsi: orta dəri tonu
+👈🏾	sola işarə edən arxa əl indeksi: orta-tünd dəri tonu
+👈🏿	sol əlin göstəricisi: tünd dəri tonu
+👉	sağa işarə edən arxa əl indeksi
+👉🏻	sağ əlin işarəsi: açıq dəri tonu
+👉🏼	sağ əlin işarəsi: orta-açıq dəri tonu
+👉🏽	sağ əlin işarəsi: orta dəri tonu
+👉🏾	sağ əlin işarəsi: orta-tünd dəri tonu
+👉🏿	sağ əlin işarəsi: tünd dəri tonu
+☝️	yuxarıya işarə edən indeks
+☝	yuxarıya işarə edən indeks
+☝🏻	yuxarı göstərən indeks: açıq dəri tonu
+☝🏼	yuxarı göstərən indeks: orta-açıq dəri tonu
+☝🏽	yuxarı göstərən indeks: orta dəri tonu
+☝🏾	yuxarı göstərən indeks: orta-tünd dəri tonu
+☝🏿	yuxarı göstərən indeks: tünd dəri tonu
+👆	yuxarıya işarə edən arxa əl indeksi
+👆🏻	əlin yuxarı göstəricisi: açıq dəri tonu
+👆🏼	yuxarıya baxan əlin işarəsi: orta-açıq dəri tonu
+👆🏽	yuxarıya baxan əlin işarəsi: orta dəri tonu
+👆🏾	yuxarıya baxan arxa əl indeksi: orta-tünd dəri tonu
+👆🏿	əlin yuxarı göstəricisi: tünd dəri tonu
+🖕	orta barmaq
+🖕🏻	orta barmaq: açıq dəri tonu
+🖕🏼	orta barmaq: orta-açıq dəri tonu
+🖕🏽	orta barmaq: orta dəri tonu
+🖕🏾	orta barmaq: orta-tünd dəri tonu
+🖕🏿	orta barmaq: tünd dəri tonu
+👇	aşağıya işarə edən arxa əl indeksi
+👇🏻	arxa əlin göstəricisi aşağı baxır: açıq dəri tonu
+👇🏼	arxa tərəfdən aşağıya doğru işarəsi: orta-açıq dəri tonu
+👇🏽	aşağıya baxan əlin işarəsi: orta dəri tonu
+👇🏾	aşağıya baxan arxa əl indeksi: orta-tünd dəri tonu
+👇🏿	əlin aşağı göstəricisi: tünd dəri tonu
+✌️	qələbə əli
+✌	qələbə əli
+✌🏻	qələbə əli: açıq dəri tonu
+✌🏼	qələbə əli: orta-açıq dəri tonu
+✌🏽	qələbə əli: orta dəri tonu
+✌🏾	qələbə əli: orta-tünd dəri tonu
+✌🏿	qələbə əli: tünd dəri tonu
+🤞	çarpaz barmaqlar
+🤞🏻	çarpaz barmaqlar: açıq dəri tonu
+🤞🏼	çarpaz barmaqlar: orta-açıq dəri tonu
+🤞🏽	çarpaz barmaqlar: orta dəri tonu
+🤞🏾	çarpaz barmaqlar: orta-tünd dəri tonu
+🤞🏿	çarpaz barmaqlar: tünd dəri tonu
+🖖	vulkan salamı
+🖖🏻	vulkan salamı: açıq dəri tonu
+🖖🏼	vulkan salamı: orta-açıq dəri tonu
+🖖🏽	vulkan salamı: orta dəri tonu
+🖖🏾	vulkan salamı: orta-tünd dəri tonu
+🖖🏿	vulkan salamı: tünd dəri tonu
+🤘	buynuzların əlaməti
+🤘🏻	buynuzların əlaməti: açıq dəri tonu
+🤘🏼	buynuzların əlaməti: orta-açıq dəri tonu
+🤘🏽	buynuzların əlaməti: orta dəri tonu
+🤘🏾	buynuzların əlaməti: orta-tünd dəri tonu
+🤘🏿	buynuzların əlaməti: tünd dəri tonu
+🤙	mənə əl çağır
+🤙🏻	mənə zəng et: açıq dəri tonu
+🤙🏼	mənə zəng et: orta-açıq dəri tonu
+🤙🏽	mənə zəng et: orta dəri tonu
+🤙🏾	mənə zəng et: orta-tünd dəri tonu
+🤙🏿	mənə zəng et: tünd dəri tonu
+🖐️	barmaqları açılmış əl
+🖐	barmaqları açılmış əl
+🖐🏻	barmaqları açılmış əl: açıq dəri tonu
+🖐🏼	barmaqları açılmış əl: orta-açıq dəri tonu
+🖐🏽	barmaqları açılmış əl: orta dəri tonu
+🖐🏾	barmaqları açılmış əl: orta-tünd dəri tonu
+🖐🏿	barmaqları açılmış əl: tünd dəri tonu
+✋	əl qaldırdı
+✋🏻	qaldırılmış əl: açıq dəri tonu
+✋🏼	qaldırılmış əl: orta-açıq dəri tonu
+✋🏽	qaldırılmış əl: orta dəri tonu
+✋🏾	qaldırılmış əl: orta-tünd dəri tonu
+✋🏿	qaldırılmış əl: tünd dəri tonu
+👌	OK əl
+👌🏻	OK əl: açıq dəri tonu
+👌🏼	OK əl: orta-açıq dəri tonu
+👌🏽	OK əl: orta dəri tonu
+👌🏾	OK əl: orta-tünd dəri tonu
+👌🏿	OK əl: tünd dəri tonu
+👍	baş barmaqları yuxarı
+👍🏻	baş barmaqları yuxarı: açıq dəri tonu
+👍🏼	baş barmaqları yuxarı: orta-açıq dəri tonu
+👍🏽	baş barmaqları yuxarı: orta dəri tonu
+👍🏾	baş barmaqları yuxarı: orta-tünd dəri tonu
+👍🏿	baş barmaqları yuxarı: tünd dəri tonu
+👎	baş barmaqlarını aşağı salır
+👎🏻	baş barmaqları aşağı: açıq dəri tonu
+👎🏼	baş barmaqları aşağı: orta-açıq dəri tonu
+👎🏽	baş barmaqları aşağı: orta dəri tonu
+👎🏾	baş barmaq aşağı: orta-tünd dəri tonu
+👎🏿	baş barmaq aşağı: tünd dəri tonu
+✊	yumruq qaldırdı
+✊🏻	qaldırılmış yumruq: açıq dəri tonu
+✊🏼	qaldırılmış yumruq: orta-açıq dəri tonu
+✊🏽	qaldırılmış yumruq: orta dəri tonu
+✊🏾	qaldırılmış yumruq: orta-tünd dəri tonu
+✊🏿	qaldırılmış yumruq: tünd dəri tonu
+👊	yaxınlaşan yumruq
+👊🏻	yaxınlaşan yumruq: açıq dəri tonu
+👊🏼	yaxınlaşan yumruq: orta-açıq dəri tonu
+👊🏽	yaxınlaşan yumruq: orta dəri tonu
+👊🏾	yaxınlaşan yumruq: orta-tünd dəri tonu
+👊🏿	yaxınlaşan yumruq: tünd dəri tonu
+🤛	sola baxan yumruq
+🤛🏻	sola baxan yumruq: açıq dəri tonu
+🤛🏼	sola baxan yumruq: orta-açıq dəri tonu
+🤛🏽	sola baxan yumruq: orta dəri tonu
+🤛🏾	sola baxan yumruq: orta-tünd dəri tonu
+🤛🏿	sola baxan yumruq: tünd dəri tonu
+🤜	sağa baxan yumruq
+🤜🏻	sağa baxan yumruq: açıq dəri tonu
+🤜🏼	sağa baxan yumruq: orta-açıq dəri tonu
+🤜🏽	sağa baxan yumruq: orta dəri tonu
+🤜🏾	sağa baxan yumruq: orta-tünd dəri tonu
+🤜🏿	sağa baxan yumruq: tünd dəri tonu
+🤚	əlin arxası qaldırıldı
+🤚🏻	əlin arxası: açıq dəri tonu
+🤚🏼	əlin arxası: orta-açıq dəri tonu
+🤚🏽	əlin arxası qaldırılmış: orta dəri tonu
+🤚🏾	qaldırılmış əl arxası: orta-tünd dəri tonu
+🤚🏿	əlin arxası: tünd dəri tonu
+👋	yelləyən əl
+👋🏻	yelləyən əl: açıq dəri tonu
+👋🏼	yelləyən əl: orta-açıq dəri tonu
+👋🏽	yelləyən əl: orta dəri tonu
+👋🏾	yelləyən əl: orta-tünd dəri tonu
+👋🏿	yelləyən əl: tünd dəri tonu
+🤟	səni sevirəm jesti
+🤟🏻	səni sevirəm jesti: açıq dəri tonu
+🤟🏼	səni sevirəm jesti: orta-açıq dəri tonu
+🤟🏽	səni sevirəm jesti: orta dəri tonu
+🤟🏾	səni sevirəm jesti: orta-tünd dəri tonu
+🤟🏿	səni sevirəm jesti: tünd dəri tonu
+✍️	yazı əli
+✍	yazı əli
+✍🏻	yazı əli: açıq dəri tonu
+✍🏼	yazı əli: orta-açıq dəri tonu
+✍🏽	yazı əli: orta dəri tonu
+✍🏾	yazı əli: orta-tünd dəri tonu
+✍🏿	yazı əli: tünd dəri tonu
+👏	əl çalmaq
+👏🏻	əl çalmaq: açıq dəri tonu
+👏🏼	əl çalma: orta-açıq dəri tonu
+👏🏽	əl çalma: orta dəri tonu
+👏🏾	əl çalan əllər: orta-tünd dəri tonu
+👏🏿	əl çalmaq: tünd dəri tonu
+👐	açıq əllər
+👐🏻	açıq əllər: açıq dəri tonu
+👐🏼	açıq əllər: orta-açıq dəri tonu
+👐🏽	açıq əllər: orta dəri tonu
+👐🏾	açıq əllər: orta-tünd dəri tonu
+👐🏿	açıq əllər: tünd dəri tonu
+🙌	əlləri qaldırmaq
+🙌🏻	əlləri qaldırmaq: açıq dəri tonu
+🙌🏼	əl qaldırmaq: orta-açıq dəri tonu
+🙌🏽	əllərin qaldırılması: orta dəri tonu
+🙌🏾	əl qaldırmaq: orta-tünd dəri tonu
+🙌🏿	əl qaldırmaq: tünd dəri tonu
+🤲	ovuclarınızı birlikdə yuxarı qaldırın
+🤲🏻	ovuc içi yuxarı qalxır: açıq dəri tonu
+🤲🏼	ovuc içi yuxarı qalxır: orta-açıq dəri tonu
+🤲🏽	ovuc içi yuxarı qalxır: orta dəri tonu
+🤲🏾	ovuc içi yuxarı: orta-tünd dəri tonu
+🤲🏿	ovuc içi yuxarı: tünd dəri tonu
+🙏	qatlanmış əllər
+🙏🏻	qatlanmış əllər: açıq dəri tonu
+🙏🏼	qatlanmış əllər: orta-açıq dəri tonu
+🙏🏽	qatlanmış əllər: orta dəri tonu
+🙏🏾	qatlanmış əllər: orta-tünd dəri tonu
+🙏🏿	qatlanmış əllər: tünd dəri tonu
+🤝	əl sıxma
+💅	Dırnaq lakı
+💅🏻	dırnaq lakı: açıq dəri tonu
+💅🏼	dırnaq lakı: orta-açıq dəri tonu
+💅🏽	dırnaq lakı: orta dəri tonu
+💅🏾	dırnaq lakı: orta-tünd dəri tonu
+💅🏿	dırnaq boyası: tünd dəri tonu
+👂	qulaq
+👂🏻	qulaq: açıq dəri tonu
+👂🏼	qulaq: orta-açıq dəri tonu
+👂🏽	qulaq: orta dəri tonu
+👂🏾	qulaq: orta-tünd dəri tonu
+👂🏿	qulaq: tünd dəri tonu
+👃	burun
+👃🏻	burun: açıq dəri tonu
+👃🏼	burun: orta-açıq dəri tonu
+👃🏽	burun: orta dəri tonu
+👃🏾	burun: orta-tünd dəri tonu
+👃🏿	burun: tünd dəri tonu
+🦰	qırmızı saçlı
+🦱	buruq saçlı
+🦲	keçəl
+🦳	ağ saçlı
+👣	ayaqizi
+👀	gözlər
+👁️	göz
+👁	göz
+👁️‍🗨️	nitq qabarcığında göz
+👁‍🗨️	nitq qabarcığında göz
+👁️‍🗨	nitq qabarcığında göz
+👁‍🗨	nitq qabarcığında göz
+🧠	beyin
+🦴	sümük
+🦷	diş
+👅	dil
+👄	Ağız
+💋	öpüş nişanı
+💘	ox ilə ürək
+❤️	qırmızı ürək
+❤	qırmızı ürək
+💓	döyünən ürək
+💔	qırıq ürək
+💕	iki ürək
+💖	parıldayan ürək
+💗	artan ürək
+💙	mavi ürək
+💚	yaşıl ürək
+💛	sarı ürək
+🧡	narıncı ürək
+💜	bənövşəyi ürək
+🖤	qara ürək
+💝	lent ilə ürək
+💞	fırlanan ürəklər
+💟	ürək bəzəyi
+❣️	ağır ürək nidası
+❣	ağır ürək nidası
+💌	sevgi məktubu
+💤	zzz
+💢	qəzəb simvolu
+💣	bomba
+💥	toqquşma
+💦	tər damcıları
+💨	qaçır
+💫	başgicəllənmə
+💬	nitq balonu
+🗨️	sol nitq balonu
+🗨	sol nitq balonu
+🗯️	sağ qəzəb balonu
+🗯	sağ qəzəb balonu
+💭	fikir balonu
+🕳️	dəlik
+🕳	dəlik
+👓	eynək
+🕶️	günəş eynəyi
+🕶	günəş eynəyi
+🥽	eynək
+🥼	laboratoriya paltarı
+👔	qalstuk
+👕	köynək
+👖	cins şalvar
+🧣	yaylıq
+🧤	əlcəklər
+🧥	palto
+🧦	corablar
+👗	geyin
+👘	kimono
+👙	bikini
+👚	qadın paltarı
+👛	pul kisəsi
+👜	əl çantası
+👝	debriyaj çantası
+🛍️	alış-veriş çantaları
+🛍	alış-veriş çantaları
+🎒	məktəb bel çantası
+👞	kişi ayaqqabısı
+👟	qaçış ayaqqabısı
+🥾	gəzinti çəkməsi
+🥿	qadın düz ayaqqabısı
+👠	hündürdaban ayaqqabı
+👡	qadın sandal
+👢	qadın çəkməsi
+👑	tac
+👒	qadın papağı
+🎩	üst papaq
+🎓	məzun papağı
+🧢	hesablanmış qapaq
+⛑️	xilasedicinin dəbilqəsi
+⛑	xilasedicinin dəbilqəsi
+📿	muncuqlar
+💄	pomada
+💍	üzük
+💎	qiymətli daş
+🐵	meymun üzü
+🐒	meymun
+🦍	qorilla
+🐶	it üzü
+🐕	it
+🐩	pudel
+🐺	canavar üzü
+🦊	tülkü üzü
+🦝	yenot
+🐱	pişik üzü
+🐈	pişik
+🦁	aslan üzü
+🐯	pələng üzü
+🐅	pələng
+🐆	bəbir
+🐴	at üzü
+🐎	at
+🦄	təkbuynuzlu üz
+🦓	zebra
+🦌	maral
+🐮	inək üzü
+🐂	öküz
+🐃	camış
+🐄	inək
+🐷	donuz üzü
+🐖	donuz
+🐗	qaban
+🐽	donuz burnu
+🐏	ram
+🐑	qoyun
+🐐	keçi
+🐪	dəvə
+🐫	iki donqarlı dəvə
+🦙	lama
+🦒	zürafə
+🐘	fil
+🦏	kərgədan
+🦛	begemot
+🐭	siçan üzü
+🐁	siçan
+🐀	siçovul
+🐹	hamster üzü
+🐰	dovşan üzü
+🐇	dovşan
+🐿️	chipmunk
+🐿	chipmunk
+🦔	kirpi
+🦇	yarasa
+🐻	ayı üzü
+🐨	koala
+🐼	panda üzü
+🦘	kenquru
+🦡	porsuq
+🐾	pəncə izləri
+🦃	hindi
+🐔	toyuq
+🐓	xoruz
+🐣	yumurtadan çıxan cücə
+🐤	bala cücə
+🐥	önünə baxan körpə cücə
+🐦	quş
+🐧	pinqvin
+🕊️	göyərçin
+🕊	göyərçin
+🦅	qartal
+🦆	ördək
+🦢	qu quşu
+🦉	bayquş
+🦚	tovuz quşu
+🦜	tutuquşu
+🐸	qurbağa üzü
+🐊	timsah
+🐢	tısbağa
+🦎	kərtənkələ
+🐍	ilan
+🐲	əjdaha siması
+🐉	əjdaha
+🦕	sauropod
+🦖	T-Rex
+🐳	tükürük balina
+🐋	balina
+🐬	delfin
+🐟	balıq
+🐠	tropik balıq
+🐡	zərbə balığı
+🦈	köpək balığı
+🐙	ahtapot
+🐚	spiral qabıq
+🦀	yencək
+🦞	xərçəng
+🦐	karides
+🦑	kalamar
+🐌	ilbiz
+🦋	kəpənək
+🐛	səhv
+🐜	qarışqa
+🐝	bal arısı
+🐞	qadın böcəyi
+🦗	kriket
+🕷️	hörümçək
+🕷	hörümçək
+🕸️	hörümçək toru
+🕸	hörümçək toru
+🦂	əqrəb
+🦟	ağcaqanad
+🦠	mikrob
+💐	buket
+🌸	albalı çiçəyi
+💮	ağ çiçək
+🏵️	rozet
+🏵	rozet
+🌹	gül
+🥀	solmuş çiçək
+🌺	hibiskus
+🌻	günəbaxan
+🌼	çiçək aç
+🌷	lalə
+🌱	şitil
+🌲	həmişəyaşıl ağac
+🌳	yarpaqlı ağac
+🌴	PALMA ağacı
+🌵	kaktus
+🌾	düyü dəstəsi
+🌿	ot
+☘️	şamrok
+☘	şamrok
+🍀	dörd yarpaqlı yonca
+🍁	ağcaqayın yarpağı
+🍂	düşmüş yarpaq
+🍃	yarpaq küləkdə çırpınır
+🍇	üzüm
+🍈	qovun
+🍉	qarpız
+🍊	naringi
+🍋	limon
+🍌	banan
+🍍	ananas
+🥭	manqo
+🍎	qırmızı alma
+🍏	yaşıl alma
+🍐	armud
+🍑	şaftalı
+🍒	gilas
+🍓	çiyələk
+🥝	kivi
+🍅	pomidor
+🥥	kokos
+🥑	avokado
+🍆	badımcan
+🥔	kartof
+🥕	kök
+🌽	qarğıdalı qulağı
+🌶️	isti bibər
+🌶	isti bibər
+🥒	xiyar
+🥬	yarpaqlı yaşıl
+🥦	brokoli
+🍄	göbələk
+🥜	fıstıq
+🌰	şabalıd
+🍞	çörək
+🥐	kruasan
+🥖	baget çörəyi
+🥨	simit
+🥯	simit
+🥞	pancake
+🧀	pendir pazı
+🍖	sümük üzərində ət
+🍗	quş ayağı
+🥩	ət kəsimi
+🥓	donuz
+🍔	hamburger
+🍟	kartof qızartması
+🍕	pizza
+🌭	hot-doq
+🥪	sendviç
+🌮	taco
+🌯	burrito
+🥙	doldurulmuş yastı çörək
+🥚	yumurta
+🍳	yemək bişirmək
+🥘	dayaz yemək qabı
+🍲	yemək qabı
+🥣	qaşıq ilə qab
+🥗	yaşıl salat
+🍿	popkorn
+🧂	duz
+🥫	Konservləşdirilmiş qida
+🍱	bento qutusu
+🍘	düyü kraker
+🍙	düyü topu
+🍚	bişmiş düyü
+🍛	köri düyü
+🍜	buxarlama qabı
+🍝	spagetti
+🍠	qovrulmuş şirin kartof
+🍢	oden
+🍣	suşi
+🍤	qızardılmış karides
+🍥	burulğanlı balıq tortu
+🥮	ay tortu
+🍡	danqo
+🥟	köftə
+🥠	bəxt peçenye
+🥡	götürmə qutusu
+🍦	yumşaq dondurma
+🍧	qırxılmış buz
+🍨	Dondurma
+🍩	donut
+🍪	peçenye
+🎂	Ad günü tortu
+🍰	tort
+🧁	keks
+🥧	pasta
+🍫	şokolad çubuğu
+🍬	konfet
+🍭	lolipop
+🍮	qaymaq
+🍯	bal qabı
+🍼	uşaq butulkası
+🥛	stəkan süd
+☕	isti içki
+🍵	qulpsuz çay fincanı
+🍶	xatirinə
+🍾	mantar ilə şüşə
+🍷	şərab şüşəsi
+🍸	kokteyl şüşəsi
+🍹	tropik içki
+🍺	pivə fincanı
+🍻	cingiltili pivə fincanları
+🥂	cingiltili eynəklər
+🥃	stəkan şüşə
+🥤	saman ilə fincan
+🥢	çubuqlar
+🍽️	boşqab ilə çəngəl və bıçaq
+🍽	boşqab ilə çəngəl və bıçaq
+🍴	çəngəl və bıçaq
+🥄	qaşıq
+🔪	mətbəx bıçağı
+🏺	amfora
+🌍	Avropa-Afrikanı göstərən dünya
+🌎	Amerikanı göstərən qlobus
+🌏	Asiya-Avstraliyanı göstərən qlobus
+🌐	meridianları olan kürə
+🗺️	dünya xəritəsi
+🗺	dünya xəritəsi
+🗾	Yaponiya xəritəsi
+🧭	kompas
+🏔️	qarlı dağ
+🏔	qarlı dağ
+⛰️	dağ
+⛰	dağ
+🌋	vulkan
+🗻	fuji dağı
+🏕️	düşərgə
+🏕	düşərgə
+🏖️	çətir ilə çimərlik
+🏖	çətir ilə çimərlik
+🏜️	səhra
+🏜	səhra
+🏝️	səhra ada
+🏝	səhra ada
+🏞️	milli park
+🏞	milli park
+🏟️	stadion
+🏟	stadion
+🏛️	klassik bina
+🏛	klassik bina
+🏗️	bina tikintisi
+🏗	bina tikintisi
+🧱	kərpic
+🏘️	evlər
+🏘	evlər
+🏚️	sahibsiz ev
+🏚	sahibsiz ev
+🏠	ev
+🏡	bağçası olan ev
+🏢	Ofis binası
+🏣	Yapon poçt şöbəsi
+🏤	poçt şöbəsi
+🏥	xəstəxana
+🏦	bank
+🏨	otel
+🏩	sevgi oteli
+🏪	rahatlıq mağazası
+🏫	məktəb
+🏬	Univermaq
+🏭	zavod
+🏯	Yapon qalası
+🏰	qala
+💒	toy
+🗼	Tokio qülləsi
+🗽	Azadlıq heykəli
+⛪	kilsə
+🕌	məscid
+🕍	sinaqoq
+⛩️	şinto məbədi
+⛩	şinto məbədi
+🕋	kəbə
+⛲	fəvvarə
+⛺	çadır
+🌁	dumanlı
+🌃	ulduzlarla gecə
+🏙️	şəhər mənzərəsi
+🏙	şəhər mənzərəsi
+🌄	dağlar üzərində günəşin doğuşu
+🌅	günəşin doğuşu
+🌆	alacakaranlıqda şəhər mənzərəsi
+🌇	qürub
+🌉	gecə körpü
+♨️	isti bulaqlar
+♨	isti bulaqlar
+🌌	süd Yolu
+🎠	karusel atı
+🎡	Şeytan çarxı
+🎢	roller sahil gəmisi
+💈	bərbər dirəyi
+🎪	sirk çadırı
+🚂	lokomotiv
+🚃	dəmir yolu vaqonu
+🚄	yüksək sürətli qatar
+🚅	güllə qatarı
+🚆	qatar
+🚇	metro
+🚈	yüngül dəmir yolu
+🚉	stansiya
+🚊	tramvay
+🚝	monorels
+🚞	dağ dəmir yolu
+🚋	tramvay maşını
+🚌	avtobus
+🚍	qarşıdan gələn avtobus
+🚎	trolleybus
+🚐	mikroavtobus
+🚑	təcili yardım
+🚒	yanğınsöndürən maşın
+🚓	polis maşını
+🚔	qarşıdan gələn polis maşını
+🚕	taksi
+🚖	qarşıdan gələn taksi
+🚗	avtomobil
+🚘	qarşıdan gələn avtomobil
+🚙	idman avtomobili
+🚚	çatdırılma maşını
+🚛	yük maşını
+🚜	traktor
+🚲	velosiped
+🛴	skuter
+🛹	skeytbord
+🛵	motorlu skuter
+🚏	Avtobus dayanacağı
+🛣️	avtomobil yolu
+🛣	avtomobil yolu
+🛤️	dəmir yolu xətti
+🛤	dəmir yolu xətti
+🛢️	yağ barabanı
+🛢	yağ barabanı
+⛽	yanacaq nasosu
+🚨	polis maşınının işığı
+🚥	üfüqi svetofor
+🚦	şaquli svetofor
+🛑	dayanma işarəsi
+🚧	Tikinti
+⚓	lövbər
+⛵	yelkənli qayıq
+🛶	kanoe
+🚤	sürətli qayıq
+🛳️	sərnişin gəmisi
+🛳	sərnişin gəmisi
+⛴️	bərə
+⛴	bərə
+🛥️	motorlu qayıq
+🛥	motorlu qayıq
+🚢	gəmi
+✈️	təyyarə
+✈	təyyarə
+🛩️	kiçik təyyarə
+🛩	kiçik təyyarə
+🛫	təyyarənin uçuşu
+🛬	təyyarənin gəlişi
+💺	oturacaq
+🚁	helikopter
+🚟	asma dəmir yolu
+🚠	dağ kanat yolu
+🚡	hava tramvay yolu
+🛰️	peyk
+🛰	peyk
+🚀	raket
+🛸	uçan boşqab
+🛎️	zınqırov zəngi
+🛎	zınqırov zəngi
+🧳	baqaj
+⌛	qum saatı düzəldi
+⏳	qum saatı edilməyib
+⌚	izləmək
+⏰	Zəngli saat
+⏱️	saniyəölçən
+⏱	saniyəölçən
+⏲️	taymer saatı
+⏲	taymer saatı
+🕰️	şkaf saatı
+🕰	şkaf saatı
+🕛	on iki saat
+🕧	on iki otuz
+🕐	saat bir
+🕜	bir-otuz
+🕑	saat iki
+🕝	iki otuz
+🕒	saat üç
+🕞	üç otuz
+🕓	saat dörd
+🕟	dörd otuz
+🕔	saat beş
+🕠	beş otuz
+🕕	saat altı
+🕡	altı otuz
+🕖	Yeddi saat
+🕢	yeddi otuz
+🕗	saat səkkiz
+🕣	səkkiz otuz
+🕘	saat doqquz
+🕤	doqquz otuz
+🕙	saat on
+🕥	on otuz
+🕚	saat on bir
+🕦	on bir otuz
+🌑	yeni ay
+🌒	böyüyən aypara
+🌓	birinci rüb ay
+🌔	böyüyən gbbous ay
+🌕	Bütöv ay
+🌖	sönməkdə olan ay
+🌗	son rüb ay
+🌘	azalan aypara
+🌙	Aypara ay
+🌚	yeni ay üzü
+🌛	birinci rüb ay üzü
+🌜	son rüb ay üzü
+🌡️	termometr
+🌡	termometr
+☀️	günəş
+☀	günəş
+🌝	tam ay üzü
+🌞	üz ilə günəş
+⭐	ulduz
+🌟	parlayan ulduz
+🌠	axan ulduz
+☁️	bulud
+☁	bulud
+⛅	bulud arxasında günəş
+⛈️	bulud şimşək və yağış
+⛈	bulud şimşək və yağış
+🌤️	kiçik buludun arxasında günəş
+🌤	kiçik buludun arxasında günəş
+🌥️	böyük buludun arxasında günəş
+🌥	böyük buludun arxasında günəş
+🌦️	yağış buludunun arxasında günəş
+🌦	yağış buludunun arxasında günəş
+🌧️	yağışlı bulud
+🌧	yağışlı bulud
+🌨️	qarlı bulud
+🌨	qarlı bulud
+🌩️	ildırımlı bulud
+🌩	ildırımlı bulud
+🌪️	tornado
+🌪	tornado
+🌫️	duman
+🌫	duman
+🌬️	külək üzü
+🌬	külək üzü
+🌀	siklon
+🌈	göy qurşağı
+🌂	qapalı çətir
+☂️	çətir
+☂	çətir
+☔	yağış damcıları olan çətir
+⛱️	yerdə çətir
+⛱	yerdə çətir
+⚡	yüksək gərginlik
+❄️	qar dənəciyi
+❄	qar dənəciyi
+☃️	qar adamı
+☃	qar adamı
+⛄	qarsız qar adamı
+☄️	kometa
+☄	kometa
+🔥	yanğın
+💧	damcı
+🌊	su dalğası
+🎃	jack-o-lantern
+🎄	Milad ağacı
+🎆	atəşfəşanlıq
+🎇	parıltı
+🧨	fişəng
+✨	parıldayır
+🎈	şar
+🎉	parti popper
+🎊	konfeti topu
+🎋	tanabata ağacı
+🎍	şam bəzəyi
+🎎	Yapon kuklaları
+🎏	sazan axını
+🎐	külək səsi
+🎑	aya baxma mərasimi
+🧧	qırmızı zərf
+🎀	lent
+🎁	bükülmüş hədiyyə
+🎗️	xatırlatma lenti
+🎗	xatırlatma lenti
+🎟️	giriş biletləri
+🎟	giriş biletləri
+🎫	bilet
+🎖️	hərbi medal
+🎖	hərbi medal
+🏆	kubok
+🏅	idman medalı
+🥇	1-ci yer medalı
+🥈	2-ci yer medalı
+🥉	3-cü yer medalı
+⚽	Futbol topu
+⚾	beysbol
+🥎	voleybol
+🏀	Basketbol
+🏐	voleybol
+🏈	amerikan futbolu
+🏉	reqbi futbolu
+🎾	tennis
+🥏	uçan disk
+🎳	boulinq
+🏏	kriket oyunu
+🏑	otüstü xokkey
+🏒	Buz xokkeyı
+🥍	lakros
+🏓	stolüstü tennis
+🏸	badminton
+🥊	boks əlcəyi
+🥋	döyüş sənəti forması
+🥅	qol şəbəkəsi
+⛳	bayraq çuxurda
+⛸️	buz konkisi
+⛸	buz konkisi
+🎣	balıqçılıq dirəyi
+🎽	qaçış köynəyi
+🎿	xizəklər
+🛷	xizək
+🥌	qıvrım daş
+🎯	birbaşa vuruş
+🎱	hovuz 8 top
+🔮	kristal top
+🧿	nəzər amulet
+🎮	Video oyun
+🕹️	joystik
+🕹	joystik
+🎰	slot maşını
+🎲	oyun ölür
+🧩	Yapboz
+🧸	Oyuncaq ayı
+♠️	kürək kostyum
+♠	kürək kostyum
+♥️	ürək kostyumu
+♥	ürək kostyumu
+♦️	brilyant kostyum
+♦	brilyant kostyum
+♣️	klub kostyumu
+♣	klub kostyumu
+♟️	şahmat piyonu
+♟	şahmat piyonu
+🃏	zarafatcıl
+🀄	mahjong qırmızı əjdaha
+🎴	çiçək oyun kartları
+🎭	ifaçılıq sənətləri
+🖼️	çərçivəli şəkil
+🖼	çərçivəli şəkil
+🎨	rəssam palitrası
+🧵	sap
+🧶	iplik
+🔇	səssiz dinamik
+🔈	dinamik aşağı səs
+🔉	dinamik orta səs səviyyəsi
+🔊	dinamik yüksək səs
+📢	dinamik
+📣	meqafon
+📯	poçt buynuz
+🔔	zəng
+🔕	kəsikli zəng
+🎼	musiqi partiturası
+🎵	musiqi notu
+🎶	musiqi notları
+🎙️	studiya mikrofonu
+🎙	studiya mikrofonu
+🎚️	səviyyəli sürüşdürmə
+🎚	səviyyəli sürüşdürmə
+🎛️	nəzarət düymələri
+🎛	nəzarət düymələri
+🎤	mikrofon
+🎧	qulaqlıq
+📻	radio
+🎷	saksafon
+🎸	gitara
+🎹	musiqili klaviatura
+🎺	truba
+🎻	skripka
+🥁	nağara
+📱	mobil telefon
+📲	ox ilə mobil telefon
+☎️	telefon
+☎	telefon
+📞	telefon qəbuledicisi
+📟	peycer
+📠	faks maşın
+🔋	batareya
+🔌	elektrik prizi
+💻	noutbuk kompüter
+🖥️	masa üstü kompüter
+🖥	masa üstü kompüter
+🖨️	Printer
+🖨	Printer
+⌨️	klaviatura
+⌨	klaviatura
+🖱️	Kompüter siçanı
+🖱	Kompüter siçanı
+🖲️	trekbol
+🖲	trekbol
+💽	kompüter diski
+💾	disket
+💿	optik disk
+📀	dvd
+🧮	abak
+🎥	kino kamerası
+🎞️	film çərçivələri
+🎞	film çərçivələri
+📽️	kino proyektoru
+📽	kino proyektoru
+🎬	çırpma lövhəsi
+📺	televiziya
+📷	kamera
+📸	flaşlı kamera
+📹	videokamera
+📼	videokasset
+🔍	böyüdücü şüşə sola əyilmiş
+🔎	böyüdücü şüşə sağa əyilmiş
+🕯️	şam
+🕯	şam
+💡	lampa
+🔦	fənər
+🏮	qırmızı kağız fənər
+📔	dekorativ üzlüklü notebook
+📕	qapalı kitab
+📖	açıq kitab
+📗	yaşıl kitab
+📘	mavi kitab
+📙	narıncı kitab
+📚	Kitablar
+📓	notebook
+📒	dəftər
+📃	qıvrımlı səhifə
+📜	sürüşdürün
+📄	səhifə yuxarı baxır
+📰	qəzet
+🗞️	bükülmüş qəzet
+🗞	bükülmüş qəzet
+📑	nişanlar nişanları
+🔖	əlfəcin
+🏷️	etiket
+🏷	etiket
+💰	pul çantası
+💴	yen əskinas
+💵	dollar əskinas
+💶	avro əskinas
+💷	funt əskinas
+💸	qanadlı pul
+💳	kredit kartı
+🧾	qəbz
+💹	yen ilə artan qrafik
+💱	Valyuta mübadiləsi
+💲	ağır dollar işarəsi
+✉️	zərf
+✉	zərf
+📧	e-poçt
+📨	gələn zərf
+📩	ox ilə zərf
+📤	çıxış qutusu qabı
+📥	gələnlər qutusu qabı
+📦	paket
+📫	qaldırılmış bayraqlı qapalı poçt qutusu
+📪	endirilmiş bayraqlı qapalı poçt qutusu
+📬	qaldırılmış bayraqlı açıq poçt qutusu
+📭	bayraq endirilmiş açıq poçt qutusu
+📮	Poçt qutusu
+🗳️	seçki bülleteni ilə qutu
+🗳	seçki bülleteni ilə qutu
+✏️	qələm
+✏	qələm
+✒️	qara ucluq
+✒	qara ucluq
+🖋️	mürəkkəbli qələm
+🖋	mürəkkəbli qələm
+🖊️	qələm
+🖊	qələm
+🖌️	boya fırçası
+🖌	boya fırçası
+🖍️	karandaş
+🖍	karandaş
+📝	memo
+💼	portfel
+📁	fayl qovluğu
+📂	fayl qovluğunu açın
+🗂️	kart indeksi bölücülər
+🗂	kart indeksi bölücülər
+📅	təqvim
+📆	cırma təqvimi
+🗒️	spiral bloknot
+🗒	spiral bloknot
+🗓️	spiral təqvim
+🗓	spiral təqvim
+📇	kart indeksi
+📈	qrafiki artır
+📉	qrafik azalır
+📊	bar diaqramı
+📋	bufer
+📌	itələyici
+📍	dəyirmi təkan
+📎	kağız sancağı
+🖇️	bağlı kağız klipləri
+🖇	bağlı kağız klipləri
+📏	düz hökmdar
+📐	üçbucaqlı hökmdar
+✂️	qayçı
+✂	qayçı
+🗃️	kart fayl qutusu
+🗃	kart fayl qutusu
+🗄️	fayl şkafı
+🗄	fayl şkafı
+🗑️	zibil səbəti
+🗑	zibil səbəti
+🔒	kilidli
+🔓	kilidi açıldı
+🔏	qələmlə bağlanıb
+🔐	açarla bağlanır
+🔑	açar
+🗝️	köhnə açar
+🗝	köhnə açar
+🔨	çəkic
+⛏️	seçin
+⛏	seçin
+⚒️	çəkic və seçin
+⚒	çəkic və seçin
+🛠️	çəkic və açar
+🛠	çəkic və açar
+🗡️	xəncər
+🗡	xəncər
+⚔️	çarpaz qılınclar
+⚔	çarpaz qılınclar
+🔫	tapança
+🏹	yay və ox
+🛡️	qalxan
+🛡	qalxan
+🔧	açarı
+🔩	qoz və bolt
+⚙️	dişli
+⚙	dişli
+🗜️	sıxac
+🗜	sıxac
+⚖️	balans miqyası
+⚖	balans miqyası
+🔗	keçid
+⛓️	zəncirlər
+⛓	zəncirlər
+🧰	alətlər qutusu
+🧲	maqnit
+⚗️	alembik
+⚗	alembik
+🧪	sınaq borusu
+🧫	petri qabı
+🧬	dna
+🔬	mikroskop
+🔭	teleskop
+📡	peyk antenası
+💉	iynə
+💊	həb
+🚪	qapı
+🛏️	yataq
+🛏	yataq
+🛋️	divan və lampa
+🛋	divan və lampa
+🚽	tualet
+🚿	duş
+🛁	küvet
+🧴	losyon şüşəsi
+🧷	təhlükəsizlik pin
+🧹	süpürgə
+🧺	səbət
+🧻	kağız rulonu
+🧼	sabun
+🧽	süngər
+🧯	yanğın Söndürən
+🛒	Alış-veriş kartı
+🚬	siqaret
+⚰️	tabut
+⚰	tabut
+⚱️	cənazə qabı
+⚱	cənazə qabı
+🗿	moai
+🏧	ATM işarəsi
+🚮	zibil qutusunun işarəsi
+🚰	içməli su
+♿	əlil arabası simvolu
+🚹	kişilərin otağı
+🚺	qadın otağı
+🚻	Ayaqyolu
+🚼	körpə simvolu
+🚾	su şkafı
+🛂	pasport nəzarəti
+🛃	gömrük
+🛄	baqaj iddiası
+🛅	sol baqaj
+⚠️	xəbərdarlıq
+⚠	xəbərdarlıq
+🚸	uşaqlar keçir
+⛔	giriş yoxdur
+🚫	qadağandır
+🚳	velosiped yoxdur
+🚭	siqaret yoxdur
+🚯	zibil yoxdur
+🚱	içilməyən su
+🚷	piyada yoxdur
+📵	cib telefonları yoxdur
+🔞	on səkkizdən aşağı heç kim
+☢️	radioaktiv
+☢	radioaktiv
+☣️	biotəhlükə
+☣	biotəhlükə
+⬆️	yuxarı ox
+⬆	yuxarı ox
+↗️	yuxarı sağ ox
+↗	yuxarı sağ ox
+➡️	sağ ox
+➡	sağ ox
+↘️	aşağı-sağ ox
+↘	aşağı-sağ ox
+⬇️	aşağı ox
+⬇	aşağı ox
+↙️	aşağı sol ox
+↙	aşağı sol ox
+⬅️	sol ox
+⬅	sol ox
+↖️	yuxarı sol ox
+↖	yuxarı sol ox
+↕️	yuxarı-aşağı ox
+↕	yuxarı-aşağı ox
+↔️	sol-sağ ox
+↔	sol-sağ ox
+↩️	sağ ox sola əyilir
+↩	sağ ox sola əyilir
+↪️	sağa əyilmiş sol ox
+↪	sağa əyilmiş sol ox
+⤴️	yuxarı əyilmiş sağ ox
+⤴	yuxarı əyilmiş sağ ox
+⤵️	aşağı əyilmiş sağ ox
+⤵	aşağı əyilmiş sağ ox
+🔃	saat yönünde şaquli oxlar
+🔄	saat yönünün əksinə oxlar düyməsi
+🔙	GERİ ox
+🔚	SON oxu
+🔛	ON oxu
+🔜	TEZLİKLƏ ox
+🔝	TOP ox
+🛐	ibadət yeri
+⚛️	atom simvolu
+⚛	atom simvolu
+🕉️	om
+🕉	om
+✡️	Davidin ulduzu
+✡	Davidin ulduzu
+☸️	dharma çarxı
+☸	dharma çarxı
+☯️	yin yang
+☯	yin yang
+✝️	latın xaçı
+✝	latın xaçı
+☦️	pravoslav xaç
+☦	pravoslav xaç
+☪️	ulduz və aypara
+☪	ulduz və aypara
+☮️	sülh simvolu
+☮	sülh simvolu
+🕎	menora
+🔯	nöqtəli altıbucaqlı ulduz
+♈	Qoç
+♉	Buğa
+♊	Əkizlər
+♋	Xərçəng
+♌	Şir
+♍	Qız bürcü
+♎	Tərəzi
+♏	Əqrəb
+♐	Oxatan
+♑	Oğlaq
+♒	Dolça
+♓	Balıqlar
+⛎	Ophiuchus
+🔀	trekləri qarışdırmaq düyməsi
+🔁	təkrar düyməsi
+🔂	tək düyməni təkrarlayın
+▶️	oynatma düyməsi
+▶	oynatma düyməsi
+⏩	sürətli irəli düyməsi
+⏭️	növbəti trek düyməsi
+⏭	növbəti trek düyməsi
+⏯️	oynat və ya fasilə düyməsini basın
+⏯	oynat və ya fasilə düyməsini basın
+◀️	geri düyməsi
+◀	geri düyməsi
+⏪	sürətli geri düyməsi
+⏮️	son trek düyməsi
+⏮	son trek düyməsi
+🔼	yuxarı düymə
+⏫	sürətləndirmə düyməsi
+🔽	aşağı düymə
+⏬	sürətli aşağı düyməsi
+⏸️	fasilə düyməsi
+⏸	fasilə düyməsi
+⏹️	dayandırmaq düyməsi
+⏹	dayandırmaq düyməsi
+⏺️	qeyd düyməsi
+⏺	qeyd düyməsi
+⏏️	çıxarmaq düyməsi
+⏏	çıxarmaq düyməsi
+🎦	kino
+🔅	tutqun düymə
+🔆	parlaq düymə
+📶	antena çubuqları
+📳	vibrasiya rejimi
+📴	mobil telefon söndürülür
+♀️	qadın işarəsi
+♀	qadın işarəsi
+♂️	kişi işarəsi
+♂	kişi işarəsi
+⚕️	tibbi simvol
+⚕	tibbi simvol
+♾️	sonsuzluq
+♾	sonsuzluq
+♻️	təkrar emal simvolu
+♻	təkrar emal simvolu
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	trident emblemi
+📛	ad nişanı
+🔰	Başlayanlar üçün Yapon simvolu
+⭕	ağır böyük dairə
+✅	ağ ağır onay işarəsi
+☑️	çek ilə seçki qutusu
+☑	çek ilə seçki qutusu
+✔️	ağır onay işarəsi
+✔	ağır onay işarəsi
+✖️	ağır vurma x
+✖	ağır vurma x
+❌	çarpaz işarəsi
+❎	çarpaz işarə düyməsi
+➕	ağır artı işarəsi
+➖	ağır mənfi işarəsi
+➗	ağır bölgü işarəsi
+➰	buruq döngə
+➿	ikiqat buruq döngə
+〽️	hissənin növbə işarəsi
+〽	hissənin növbə işarəsi
+✳️	səkkizguşəli ulduz
+✳	səkkizguşəli ulduz
+✴️	səkkizguşəli ulduz
+✴	səkkizguşəli ulduz
+❇️	parıldamaq
+❇	parıldamaq
+‼️	ikiqat nida işarəsi
+‼	ikiqat nida işarəsi
+⁉️	nida sual işarəsi
+⁉	nida sual işarəsi
+❓	sual işarəsi
+❔	ağ sual işarəsi
+❕	ağ nida işarəsi
+❗	Nida işarəsi
+〰️	dalğalı tire
+〰	dalğalı tire
+©️	müəllif hüququ
+©	müəllif hüququ
+®️	qeydiyyatdan keçmişdir
+®	qeydiyyatdan keçmişdir
+™️	ticarət nişanı
+™	ticarət nişanı
+#️⃣	Klaviatura qapağı: #
+#⃣	Klaviatura qapağı: #
+*️⃣	klaviatura qapağı: *
+*⃣	klaviatura qapağı: *
+0️⃣	Klaviatura qapağı: 0
+0⃣	Klaviatura qapağı: 0
+1️⃣	Klaviatura qapağı: 1
+1⃣	Klaviatura qapağı: 1
+2️⃣	Klaviatura qapağı: 2
+2⃣	Klaviatura qapağı: 2
+3️⃣	Klaviatura qapağı: 3
+3⃣	Klaviatura qapağı: 3
+4️⃣	Klaviatura qapağı: 4
+4⃣	Klaviatura qapağı: 4
+5️⃣	Klaviatura qapağı: 5
+5⃣	Klaviatura qapağı: 5
+6️⃣	Klaviatura qapağı: 6
+6⃣	Klaviatura qapağı: 6
+7️⃣	Klaviatura qapağı: 7
+7⃣	Klaviatura qapağı: 7
+8️⃣	Klaviatura qapağı: 8
+8⃣	Klaviatura qapağı: 8
+9️⃣	Klaviatura qapağı: 9
+9⃣	Klaviatura qapağı: 9
+🔟	Klaviatura qapağı: 10
+💯	yüz xal
+🔠	latın böyük hərfini daxil edin
+🔡	latın kiçik hərfini daxil edin
+🔢	giriş nömrələri
+🔣	giriş simvolları
+🔤	latın hərflərini daxil edin
+🅰️	Düymə (qan növü)
+🅰	Düymə (qan növü)
+🆎	AB düyməsi (qan növü)
+🅱️	B düyməsi (qan növü)
+🅱	B düyməsi (qan növü)
+🆑	CL düyməsi
+🆒	COOL düyməsi
+🆓	PULSUZ düyməsi
+ℹ️	məlumat
+ℹ	məlumat
+🆔	ID düyməsi
+Ⓜ️	dairəvi M
+Ⓜ	dairəvi M
+🆕	YENİ düymə
+🆖	NG düyməsi
+🅾️	O düyməsi (qan növü)
+🅾	O düyməsi (qan növü)
+🆗	OK düyməsi
+🅿️	P düyməsi
+🅿	P düyməsi
+🆘	SOS düyməsi
+🆙	UP düyməsi
+🆚	VS düyməsi
+🈁	Yapon “burada” düyməsi
+🈂️	Yapon "xidmət haqqı" düyməsi
+🈂	Yapon "xidmət haqqı" düyməsi
+🈷️	Yapon “aylıq məbləğ” düyməsi
+🈷	Yapon “aylıq məbləğ” düyməsi
+🈶	Yapon "pulsuz deyil" düyməsi
+🈯	Yaponca "ehtiyat" düyməsi
+🉐	Yapon "sövdələşmə" düyməsi
+🈹	Yapon “endirim” düyməsi
+🈚	Yapon "pulsuz" düyməsi
+🈲	Yapon "qadağan" düyməsi
+🉑	Yapon "məqbul" düyməsi
+🈸	Yapon "tətbiq" düyməsi
+🈴	Yapon “keçid qiyməti” düyməsi
+🈳	Yapon "vakansiya" düyməsi
+㊗️	Yapon "təbriklər" düyməsi
+㊗	Yapon “təbriklər” düyməsi
+㊙️	Yapon "gizli" düyməsi
+㊙	Yapon "gizli" düyməsi
+🈺	Yapon "biznes üçün açıq" düyməsi
+🈵	Yapon "vakansiya yoxdur" düyməsi
+▪️	qara kiçik kvadrat
+▪	qara kiçik kvadrat
+▫️	ağ kiçik kvadrat
+▫	ağ kiçik kvadrat
+◻️	ağ orta kvadrat
+◻	ağ orta kvadrat
+◼️	qara orta kvadrat
+◼	qara orta kvadrat
+◽	ağ orta-kiçik kvadrat
+◾	qara orta-kiçik kvadrat
+⬛	qara böyük kvadrat
+⬜	ağ böyük kvadrat
+🔶	böyük narıncı almaz
+🔷	böyük mavi almaz
+🔸	kiçik narıncı almaz
+🔹	kiçik mavi almaz
+🔺	qırmızı üçbucaq yuxarıya yönəldilib
+🔻	qırmızı üçbucaq aşağıya yönəldilib
+💠	nöqtə ilə almaz
+🔘	radio düyməsi
+🔲	qara kvadrat düyməsi
+🔳	ağ kvadrat düyməsi
+⚪	ağ dairə
+⚫	qara dairə
+🔴	qırmızı dairə
+🔵	mavi dairə
+🏁	damalı bayraq
+🚩	üçbucaqlı bayraq
+🎌	bayraqlar keçdi
+🏴	qara bayraq
+🏳️	ağ bayraq
+🏳	ağ bayraq
+🏳️‍🌈	göy qurşağı bayrağı
+🏳‍🌈	göy qurşağı bayrağı
+🏴‍☠️	pirat bayrağı
+🏴‍☠	pirat bayrağı
+🇦🇨	Yüksəliş adası
+🇦🇩	Andorra
+🇦🇪	Birləşmiş Ərəb Əmirlikləri
+🇦🇫	Əfqanıstan
+🇦🇬	Antiqua və Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albaniya
+🇦🇲	Ermənistan
+🇦🇴	Anqola
+🇦🇶	Antarktida
+🇦🇷	Argentina
+🇦🇸	Amerika Samoası
+🇦🇹	Avstriya
+🇦🇺	Avstraliya
+🇦🇼	Aruba
+🇦🇽	Aland adaları
+🇦🇿	Azərbaycan
+🇧🇦	Bosniya və Herseqovina
+🇧🇧	Barbados
+🇧🇩	Banqladeş
+🇧🇪	Belçika
+🇧🇫	Burkina Faso
+🇧🇬	Bolqarıstan
+🇧🇭	Bəhreyn
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	Müqəddəs Bartelemi
+🇧🇲	Bermud adaları
+🇧🇳	Bruney
+🇧🇴	Boliviya
+🇧🇶	Karib Hollandiyası
+🇧🇷	Braziliya
+🇧🇸	Baham adaları
+🇧🇹	Butan
+🇧🇻	Buvet adası
+🇧🇼	Botsvana
+🇧🇾	Belarusiya
+🇧🇿	Beliz
+🇨🇦	Kanada
+🇨🇨	Kokos (Kiling) adaları
+🇨🇩	Konqo - Kinşasa
+🇨🇫	Mərkəzi Afrika Respublikası
+🇨🇬	Konqo - Brazzavil
+🇨🇭	İsveçrə
+🇨🇮	Kot d'İvuar
+🇨🇰	Kuk adaları
+🇨🇱	Çili
+🇨🇲	Kamerun
+🇨🇳	Çin
+🇨🇴	Kolumbiya
+🇨🇵	Clipperton adası
+🇨🇷	Kosta Rika
+🇨🇺	Kuba
+🇨🇻	Kabo Verde
+🇨🇼	Kurasao
+🇨🇽	Milad adası
+🇨🇾	Kipr
+🇨🇿	Çexiya
+🇩🇪	Almaniya
+🇩🇬	Dieqo Qarsiya
+🇩🇯	Cibuti
+🇩🇰	Danimarka
+🇩🇲	Dominika
+🇩🇴	Dominik respublikası
+🇩🇿	Əlcəzair
+🇪🇦	Seuta və Melilla
+🇪🇨	Ekvador
+🇪🇪	Estoniya
+🇪🇬	Misir
+🇪🇭	Qərbi Sahara
+🇪🇷	Eritreya
+🇪🇸	İspaniya
+🇪🇹	Efiopiya
+🇪🇺	Avropa Birliyi
+🇫🇮	Finlandiya
+🇫🇯	Fici
+🇫🇰	Folklend adaları
+🇫🇲	Mikroneziya
+🇫🇴	Farer adaları
+🇫🇷	Fransa
+🇬🇦	Qabon
+🇬🇧	Birləşmiş Krallıq
+🇬🇩	Qrenada
+🇬🇪	Gürcüstan
+🇬🇫	Fransız Qvianası
+🇬🇬	Gernsey
+🇬🇭	Qana
+🇬🇮	Cəbəllütariq
+🇬🇱	Qrenlandiya
+🇬🇲	Qambiya
+🇬🇳	Qvineya
+🇬🇵	Qvadelupa
+🇬🇶	Ekvatorial Qvineya
+🇬🇷	Yunanıstan
+🇬🇸	Cənubi Corciya və Cənubi Sandviç Adaları
+🇬🇹	Qvatemala
+🇬🇺	Quam
+🇬🇼	Qvineya-Bisau
+🇬🇾	Qayana
+🇭🇰	Honq Konq SAR Çin
+🇭🇲	Heard və McDonald Adaları
+🇭🇳	Honduras
+🇭🇷	Xorvatiya
+🇭🇹	Haiti
+🇭🇺	Macarıstan
+🇮🇨	Kanar adaları
+🇮🇩	İndoneziya
+🇮🇪	İrlandiya
+🇮🇱	İsrail
+🇮🇲	İnsan adası
+🇮🇳	Hindistan
+🇮🇴	Britaniya Hind okeanı ərazisi
+🇮🇶	İraq
+🇮🇷	İran
+🇮🇸	İslandiya
+🇮🇹	İtaliya
+🇯🇪	Cersi
+🇯🇲	Yamayka
+🇯🇴	İordaniya
+🇯🇵	Yaponiya
+🇰🇪	Keniya
+🇰🇬	Qırğızıstan
+🇰🇭	Kamboca
+🇰🇮	Kiribati
+🇰🇲	Komor adaları
+🇰🇳	Sent Kitts və Nevis
+🇰🇵	Simali Koreya
+🇰🇷	Cənubi Koreya
+🇰🇼	Küveyt
+🇰🇾	Kayman adaları
+🇰🇿	Qazaxıstan
+🇱🇦	Laos
+🇱🇧	Livan
+🇱🇨	Müqəddəs Lusiya
+🇱🇮	Lixtenşteyn
+🇱🇰	Şri Lanka
+🇱🇷	Liberiya
+🇱🇸	Lesoto
+🇱🇹	Litva
+🇱🇺	Lüksemburq
+🇱🇻	Latviya
+🇱🇾	Liviya
+🇲🇦	Mərakeş
+🇲🇨	Monako
+🇲🇩	Moldova
+🇲🇪	Monteneqro
+🇲🇫	Müqəddəs Martin
+🇲🇬	Madaqaskar
+🇲🇭	Marşal adaları
+🇲🇰	Makedoniya
+🇲🇱	Mali
+🇲🇲	Myanma (Birma)
+🇲🇳	Monqolustan
+🇲🇴	Makao SAR Çin
+🇲🇵	Şimali Mariana adaları
+🇲🇶	Martinika
+🇲🇷	Mavritaniya
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mavrikiy
+🇲🇻	Maldiv adaları
+🇲🇼	Malavi
+🇲🇽	Meksika
+🇲🇾	Malayziya
+🇲🇿	Mozambik
+🇳🇦	Namibiya
+🇳🇨	Yeni Kaledoniya
+🇳🇪	Niger
+🇳🇫	Norfolk adası
+🇳🇬	Nigeriya
+🇳🇮	Nikaraqua
+🇳🇱	Hollandiya
+🇳🇴	Norveç
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Yeni Zelandiya
+🇴🇲	Oman
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Fransız Polineziyası
+🇵🇬	Papua Yeni Qvineya
+🇵🇭	Filippin
+🇵🇰	Pakistan
+🇵🇱	Polşa
+🇵🇲	Müqəddəs Pierre və Mikelon
+🇵🇳	Pitkern adaları
+🇵🇷	Puerto Riko
+🇵🇸	Fələstin əraziləri
+🇵🇹	Portuqaliya
+🇵🇼	Palau
+🇵🇾	Paraqvay
+🇶🇦	Qətər
+🇷🇪	Reunion
+🇷🇴	Rumıniya
+🇷🇸	Serbiya
+🇷🇺	Rusiya
+🇷🇼	Ruanda
+🇸🇦	Səudiyyə Ərəbistanı
+🇸🇧	Solomon adaları
+🇸🇨	Seyşel adaları
+🇸🇩	Sudan
+🇸🇪	İsveç
+🇸🇬	Sinqapur
+🇸🇭	Müqəddəs Yelena
+🇸🇮	Sloveniya
+🇸🇯	Svalbard və Yan Mayen
+🇸🇰	Slovakiya
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Seneqal
+🇸🇴	Somali
+🇸🇷	Surinam
+🇸🇸	Cənubi Sudan
+🇸🇹	Sao Tome və Prinsipi
+🇸🇻	El Salvador
+🇸🇽	Sint Marten
+🇸🇾	Suriya
+🇸🇿	Svazilend
+🇹🇦	Tristan da Cunha
+🇹🇨	Turks və Kaykos adaları
+🇹🇩	Çad
+🇹🇫	Fransanın cənub əraziləri
+🇹🇬	Getmək
+🇹🇭	Tayland
+🇹🇯	Tacikistan
+🇹🇰	Tokelau
+🇹🇱	Şərqi Timor
+🇹🇲	Türkmənistan
+🇹🇳	Tunis
+🇹🇴	Tonqa
+🇹🇷	Türkiyə
+🇹🇹	Trinidad və Tobaqo
+🇹🇻	tuvalu
+🇹🇼	Tayvan
+🇹🇿	Tanzaniya
+🇺🇦	Ukrayna
+🇺🇬	Uqanda
+🇺🇲	ABŞ-ın kənar adaları
+🇺🇳	Birləşmiş Millətlər
+🇺🇸	Amerika Birləşmiş Ştatları
+🇺🇾	Uruqvay
+🇺🇿	Özbəkistan
+🇻🇦	Vatikan şəhəri
+🇻🇨	Müqəddəs Vinsent və Qrenadinlər
+🇻🇪	Venesuela
+🇻🇬	Britaniya Virgin Adaları
+🇻🇮	ABŞ Virgin Adaları
+🇻🇳	Vyetnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis və Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Yəmən
+🇾🇹	Mayotte
+🇿🇦	Cənubi Afrika
+🇿🇲	Zambiya
+🇿🇼	Zimbabve
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	İngiltərə
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Şotlandiya
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Uels
