@@ -48,8 +48,8 @@ def get_path_file(*paths, internal = True):
 
     return get_normalized_path(path)
 
-def get_path_data(file_name):
-    return get_path_file('data', file_name)
+def get_path_data(*paths):
+    return get_path_file('data', *paths)
 
-def get_path_img(file_name):
-    return get_path_file('imgs', file_name)
+def get_path_img(*paths):
+    return get_path_file('imgs', *paths)

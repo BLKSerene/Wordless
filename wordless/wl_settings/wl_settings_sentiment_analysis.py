@@ -207,7 +207,7 @@ class Wl_Settings_Sentiment_Analysis(wl_settings.Wl_Settings_Node):
         return True
 
 class Wl_Worker_Preview_Sentiment_Analyzer(wl_threading.Wl_Worker_No_Progress):
-    worker_done = pyqtSignal(int)
+    worker_done = pyqtSignal(float)
 
     def run(self):
         preview_lang = self.main.settings_custom['sentiment_analysis']['preview']['preview_lang']

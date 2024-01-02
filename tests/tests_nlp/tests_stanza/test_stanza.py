@@ -23,8 +23,7 @@ from wordless.wl_nlp import (
 )
 from wordless.wl_utils import wl_conversion
 
-main = wl_test_init.Wl_Test_Main()
-wl_test_init.change_default_lang_utils_stanza(main)
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'stanza')
 
 def wl_test_stanza(
     lang,

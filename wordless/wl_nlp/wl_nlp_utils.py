@@ -46,6 +46,8 @@ from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_nlp import wl_sentence_tokenization
 from wordless.wl_utils import wl_conversion, wl_misc, wl_paths, wl_threading
 
+LANGS_WITHOUT_SPACES = ['mya', 'zho_cn', 'zho_tw', 'khm', 'lao', 'jpn', 'tha', 'bod']
+
 def to_lang_util_code(main, util_type, util_text):
     return main.settings_global['mapping_lang_utils'][util_type][util_text]
 
@@ -99,10 +101,6 @@ LANGS_SPACY = {
 
     'other': 'en_core_web_trf'
 }
-LANGS_SPACY_LEMMATIZERS = [
-    'ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl',
-    'tur', 'urd'
-]
 
 def get_langs_stanza(main, util_type):
     langs_stanza = set()
@@ -330,6 +328,11 @@ class Wl_Worker_Download_Model_Stanza(wl_threading.Wl_Worker):
         self.progress_updated.emit(self.tr('Download completed successfully.'))
         self.worker_done.emit(self.err_msg)
 
+LANGS_SPACY_LEMMATIZERS = [
+    'ben', 'ces', 'grc', 'hun', 'ind', 'gle', 'ltz', 'fas', 'srp', 'tgl',
+    'tur', 'urd'
+]
+
 def init_model_spacy(main, lang, sentencizer_only = False):
     if lang == 'nno':
         lang = 'nob'
@@ -371,9 +374,6 @@ def init_model_spacy(main, lang, sentencizer_only = False):
                     main.__dict__[f'spacy_nlp_{lang}'].initialize()
 
 def init_model_stanza(main, lang, lang_util, tokenized = False):
-    if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
-        lang = wl_conversion.remove_lang_code_suffixes(main, lang)
-
     if lang_util in ['sentence_tokenizer', 'word_tokenizer']:
         processors = ['tokenize']
     elif lang_util == 'pos_tagger':
@@ -385,38 +385,40 @@ def init_model_stanza(main, lang, lang_util, tokenized = False):
     elif lang_util == 'sentiment_analyzer':
         processors = ['tokenize', 'sentiment']
 
-    if (
-        lang in get_langs_stanza(main, util_type = 'word_tokenizers')
-        and (
+    if lang in get_langs_stanza(main, util_type = 'word_tokenizers'):
+        if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+            lang = wl_conversion.remove_lang_code_suffixes(main, lang)
+
+        if (
             f'stanza_nlp_{lang}' not in main.__dict__
-            or set(processors) != set(main.__dict__[f'stanza_nlp_{lang}'].processors)
+            # Some language models require 'mwt' by default
+            or set(processors) | {'mwt'} != set(main.__dict__[f'stanza_nlp_{lang}'].processors) | {'mwt'}
             or tokenized != main.__dict__[f'stanza_nlp_{lang}'].kwargs.get('tokenize_pretokenized', False)
-        )
-    ):
-        if lang == 'zho_cn':
-            lang_stanza = 'zh-hans'
-        elif lang == 'zho_tw':
-            lang_stanza = 'zh-hant'
-        elif lang == 'srp_latn':
-            lang_stanza = 'sr'
-        elif lang == 'other':
-            lang_stanza = 'en'
-        else:
-            lang_stanza = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
+        ):
+            if lang == 'zho_cn':
+                lang_stanza = 'zh-hans'
+            elif lang == 'zho_tw':
+                lang_stanza = 'zh-hant'
+            elif lang == 'srp_latn':
+                lang_stanza = 'sr'
+            elif lang == 'other':
+                lang_stanza = 'en'
+            else:
+                lang_stanza = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
-        if getattr(sys, '_MEIPASS', False):
-            model_dir = wl_paths.get_path_file('stanza_resources')
-        else:
-            model_dir = stanza.resources.common.DEFAULT_MODEL_DIR
+            if getattr(sys, '_MEIPASS', False):
+                model_dir = wl_paths.get_path_file('stanza_resources')
+            else:
+                model_dir = stanza.resources.common.DEFAULT_MODEL_DIR
 
-        main.__dict__[f'stanza_nlp_{lang}'] = stanza.Pipeline(
-            lang = lang_stanza,
-            dir = model_dir,
-            package = 'default',
-            processors = processors,
-            download_method = None,
-            tokenize_pretokenized = tokenized
-        )
+            main.__dict__[f'stanza_nlp_{lang}'] = stanza.Pipeline(
+                lang = lang_stanza,
+                dir = model_dir,
+                package = 'default',
+                processors = processors,
+                download_method = None,
+                tokenize_pretokenized = tokenized
+            )
 
 def init_sudachipy_word_tokenizer(main):
     if 'sudachipy_word_tokenizer' not in main.__dict__:
@@ -570,6 +572,88 @@ def init_sentiment_analyzers(main, lang, sentiment_analyzer, tokenized = False):
     # Stanza
     if sentiment_analyzer.startswith('stanza_'):
         init_model_stanza(main, lang, lang_util = 'sentiment_analyzer', tokenized = tokenized)
+
+# Make sure tokenization is not modified during NLP processing
+def align_tokens(tokens_raw, tokens_processed, results, prefer_raw = False):
+    results_modified = []
+
+    tokens_raw = list(tokens_raw)
+
+    i_raw = 0
+    i_processed = 0
+
+    len_raw = len(tokens_raw)
+    len_processed = len(tokens_processed)
+
+    while i_raw < len_raw and i_processed < len_processed:
+        # Different token
+        if len(tokens_raw[i_raw]) != len(tokens_processed[i_processed]):
+            tokens_raw_temp = [tokens_raw[i_raw]]
+            tokens_processed_temp = [tokens_processed[i_processed]]
+            results_temp = [results[i_processed]]
+
+            while i_raw < len_raw - 1 or i_processed < len_processed - 1:
+                len_raw_temp = sum((len(token) for token in tokens_raw_temp))
+                len_processed_temp = sum((len(token) for token in tokens_processed_temp))
+
+                if len_raw_temp < len_processed_temp:
+                    tokens_raw_temp.append(tokens_raw[i_raw + 1])
+
+                    i_raw += 1
+                elif len_raw_temp > len_processed_temp:
+                    tokens_processed_temp.append(tokens_processed[i_processed + 1])
+                    results_temp.append(results[i_processed + 1])
+
+                    i_processed += 1
+                elif len_raw_temp == len_processed_temp:
+                    # eg. lemmatization
+                    if prefer_raw:
+                        # Always use original tokens
+                        results_modified.extend(tokens_raw_temp)
+                    # eg. POS tagging
+                    else:
+                        len_raw_temp_tokens = len(tokens_raw_temp)
+                        len_processed_temp_tokens = len(tokens_processed_temp)
+
+                        # Use results if one-to-one
+                        if len_raw_temp_tokens == len_processed_temp_tokens:
+                            results_modified.extend(results_temp)
+                        # Clip results if one-to-many
+                        elif len_raw_temp_tokens < len_processed_temp_tokens:
+                            results_modified.extend(results_temp[:len_raw_temp_tokens])
+                        # Extend results if many-to-one
+                        elif len_raw_temp_tokens > len_processed_temp_tokens:
+                            results_modified.extend(results_temp)
+                            results_modified.extend([results_temp[-1]] * (len_raw_temp_tokens - len_processed_temp_tokens))
+
+                    tokens_raw_temp.clear()
+                    tokens_processed_temp.clear()
+                    results_temp.clear()
+
+                    break
+
+            # If reaching end of file
+            if tokens_raw_temp:
+                if prefer_raw:
+                    results_modified.extend(tokens_raw_temp)
+                else:
+                    len_raw_temp_tokens = len(tokens_raw_temp)
+                    len_processed_temp_tokens = len(tokens_processed_temp)
+
+                    if len_raw_temp_tokens == len_processed_temp_tokens:
+                        results_modified.extend(results_temp)
+                    elif len_raw_temp_tokens < len_processed_temp_tokens:
+                        results_modified.extend(results_temp[:len_raw_temp_tokens])
+                    elif len_raw_temp_tokens > len_processed_temp_tokens:
+                        results_modified.extend(results_temp)
+                        results_modified.extend([results_temp[-1]] * (len_raw_temp_tokens - len_processed_temp_tokens))
+        else:
+            results_modified.append(results[i_processed])
+
+        i_raw += 1
+        i_processed += 1
+
+    return results_modified
 
 def to_sections(tokens, num_sections):
     len_tokens = len(tokens)

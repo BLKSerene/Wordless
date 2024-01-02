@@ -29,7 +29,6 @@ import spacy_lookups_data
 
 from tests import wl_test_init
 from wordless.wl_nlp import wl_nlp_utils
-from wordless.wl_settings import wl_settings_global
 from wordless.wl_utils import wl_conversion
 
 main = wl_test_init.Wl_Test_Main()
@@ -70,7 +69,7 @@ def add_lang_suffixes(lang_codes):
 
     return lang_codes
 
-class Check_Settings_Global():
+class Check_Settings_Global:
     def __init__(self):
         self.lang_utils_missing = False
         self.lang_utils_extra = False
@@ -354,13 +353,17 @@ class Check_Settings_Global():
             *settings_sentiment_analyzers
         ])
 
+        for lang in settings_langs_lang_utils:
+            if lang not in settings_langs:
+                print(f'Found missing language: {lang}!')
+
+                self.langs_missing = True
+
         for lang in settings_langs:
             if lang not in settings_langs_lang_utils:
                 print(f'Found extra language: {lang}!')
 
-        for lang in settings_langs_lang_utils:
-            if lang not in settings_langs:
-                print(f'Found missing language: {lang}!')
+                self.langs_extra = True
 
         # Check for invalid language utils
         for settings_lang_utils, mapping_lang_utils, msg in [
@@ -409,13 +412,13 @@ class Check_Settings_Global():
             self.check_invalid_default_lang_utils(lang_utils, lang_utils_default, msg)
 
 def test_settings_global():
-    assert wl_settings_global.init_settings_global()
-
     check_settings_global = Check_Settings_Global()
     check_settings_global.check_settings_global()
 
     assert not check_settings_global.lang_utils_missing
     assert not check_settings_global.lang_utils_extra
+    assert not check_settings_global.langs_missing
+    assert not check_settings_global.langs_extra
     assert not check_settings_global.invalid_lang_utils
     assert not check_settings_global.lang_default_missing
     assert not check_settings_global.lang_default_extra

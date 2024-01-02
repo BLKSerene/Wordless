@@ -1,0 +1,3570 @@
+😀	cara somrient
+😁	cara radiant amb ulls somrients
+😂	cara amb llàgrimes d'alegria
+🤣	petant-se de riure
+😃	cara somrient amb grans ulls
+😄	cara somrient amb ulls somrients
+😅	cara somrient de suor
+😆	cara somrient entrebidada
+😉	cara fent l'ullet
+😊	cara somrient amb ulls somrients
+😋	cara assaborint el menjar
+😎	cara somrient amb ulleres de sol
+😍	cara somrient amb ulls de cor
+😘	cara fent un petó
+🥰	cara somrient amb 3 cors
+😗	cara de petons
+😙	cara de petons amb ulls somrients
+😚	cara de petons amb els ulls tancats
+☺️	cara somrient
+☺	cara somrient
+🙂	cara una mica somrient
+🤗	cara abraçada
+🤩	cop d'estrella
+🤔	cara pensant
+🤨	cara amb la cella aixecada
+😐	cara neutra
+😑	cara sense expressió
+😶	cara sense boca
+🙄	cara amb els ulls en blanc
+😏	cara somrient
+😣	cara perseverant
+😥	cara trista però alleujada
+😮	cara amb la boca oberta
+🤐	cara amb cremallera
+😯	cara en silenci
+😪	cara adormida
+😫	cara cansada
+😴	cara adormida
+😌	cara alleujada
+😛	cara amb llengua
+😜	cara fent l'ullet amb la llengua
+😝	cara entrebidada amb la llengua
+🤤	cara bavejant
+😒	cara sense gràcia
+😓	cara abaixada de suor
+😔	cara pensativa
+😕	cara confusa
+🙃	cara cap per avall
+🤑	cara de boca de diners
+😲	cara de sorpresa
+☹️	cara arrugada
+☹	cara arrugada
+🙁	cara lleugerament arrugada
+😖	cara confusa
+😞	cara decepcionada
+😟	cara preocupada
+😤	cara amb vapor del nas
+😢	cara plorant
+😭	cara plorant fort
+😦	cara arrugada amb la boca oberta
+😧	cara angoixada
+😨	cara de por
+😩	cara cansada
+🤯	el cap esclatant
+😬	cara fent ganyotes
+😰	cara angoixada amb suor
+😱	cara cridant de por
+🥵	cara calenta
+🥶	cara freda
+😳	cara enroscada
+🤪	cara estranya
+😵	cara marejada
+😡	cara de puchero
+😠	cara enfadada
+🤬	cara amb símbols a la boca
+😷	cara amb mascareta mèdica
+🤒	cara amb termòmetre
+🤕	cara amb embenat al cap
+🤢	cara de nàusees
+🤮	vòmits a la cara
+🤧	cara d'esternut
+😇	cara somrient amb halo
+🤠	cara de barret de vaquer
+🥳	cara de festa
+🥴	cara desconcertada
+🥺	cara suplicant
+🤥	cara mentida
+🤫	cara que calla
+🤭	cara amb la mà sobre la boca
+🧐	cara amb monòcle
+🤓	cara de nerd
+😈	cara somrient amb banyes
+👿	cara enfadada amb banyes
+🤡	cara de pallasso
+👹	ogre
+👺	follet
+💀	crani
+☠️	crani i ossos creuats
+☠	crani i ossos creuats
+👻	fantasma
+👽	alienígena
+👾	monstre alienígena
+🤖	cara de robot
+💩	munt de caca
+😺	cara de gat somrient
+😸	cara de gat somrient amb ulls somrients
+😹	cara de gat amb llàgrimes d'alegria
+😻	cara de gat somrient amb ulls de cor
+😼	cara de gat amb un somriure irònic
+😽	besant cara de gat
+🙀	cara de gat cansat
+😿	cara de gat plorant
+😾	cara de gat fent pucheros
+🙈	mico sense veure el mal
+🙉	mico sense escoltar
+🙊	mico que no parla malament
+🏻	to de pell clar
+🏼	to de pell mig clar
+🏽	to de pell mitjà
+🏾	to de pell mig fosc
+🏿	to de pell fosc
+👶	nadó
+👶🏻	nadó: pell clara
+👶🏼	nadó: pell mitjana-clara
+👶🏽	nadó: pell mitjana
+👶🏾	nadó: pell fosca mitjana
+👶🏿	nadó: pell fosca
+🧒	nen
+🧒🏻	nen: pell clara
+🧒🏼	nen: pell mitjana-clara
+🧒🏽	nen: pell mitjana
+🧒🏾	nen: pell fosca mitjana
+🧒🏿	nen: pell fosca
+👦	noi
+👦🏻	noi: pell clara
+👦🏼	noi: pell mitjana-clara
+👦🏽	noi: pell mitjana
+👦🏾	noi: to de pell mig fosc
+👦🏿	noi: pell fosca
+👧	noia
+👧🏻	noia: pell clara
+👧🏼	noia: pell mitjana-clara
+👧🏽	noia: pell mitjana
+👧🏾	noia: pell fosca mitjana
+👧🏿	noia: pell fosca
+🧑	adult
+🧑🏻	adult: pell clara
+🧑🏼	adult: pell mitjana-clara
+🧑🏽	adult: pell mitjana
+🧑🏾	adult: pell fosca mitjana
+🧑🏿	adult: pell fosca
+👨	home
+👨🏻	home: pell clara
+👨🏼	home: pell mitjana-clara
+👨🏽	home: pell mitjana
+👨🏾	home: pell fosca mitjana
+👨🏿	home: pell fosca
+👩	dona
+👩🏻	dona: pell clara
+👩🏼	dona: pell mitjana-clara
+👩🏽	dona: pell mitjana
+👩🏾	dona: pell fosca mitjana
+👩🏿	dona: pell fosca
+🧓	adult gran
+🧓🏻	adult gran: pell clara
+🧓🏼	adult gran: pell mitjana-clara
+🧓🏽	adult gran: pell mitjana
+🧓🏾	adult gran: pell mitjana-fosca
+🧓🏿	adult gran: pell fosca
+👴	vell
+👴🏻	vell: pell clara
+👴🏼	vell: pell mitjana-clara
+👴🏽	vell: pell mitjana
+👴🏾	vell: pell mitjana-fosca
+👴🏿	vell: pell fosca
+👵	dona vella
+👵🏻	dona gran: pell clara
+👵🏼	dona gran: pell mitjana-clara
+👵🏽	dona gran: pell mitjana
+👵🏾	dona gran: pell mitjana-fosca
+👵🏿	dona gran: pell fosca
+👨‍⚕️	treballador sanitari de l'home
+👨‍⚕	treballador sanitari de l'home
+👨🏻‍⚕️	personal sanitari: pell clara
+👨🏻‍⚕	personal sanitari: pell clara
+👨🏼‍⚕️	personal sanitari: pell mitjana-clara
+👨🏼‍⚕	personal sanitari: pell mitjana-clara
+👨🏽‍⚕️	personal sanitari: pell mitjana
+👨🏽‍⚕	personal sanitari: pell mitjana
+👨🏾‍⚕️	home sanitari: pell fosca mitjana
+👨🏾‍⚕	home sanitari: pell fosca mitjana
+👨🏿‍⚕️	personal sanitari: pell fosca
+👨🏿‍⚕	personal sanitari: pell fosca
+👩‍⚕️	dona treballadora de salut
+👩‍⚕	dona treballadora de salut
+👩🏻‍⚕️	dona treballadora de la salut: pell clara
+👩🏻‍⚕	dona treballadora de la salut: pell clara
+👩🏼‍⚕️	treballadora sanitària: pell mitjana-clara
+👩🏼‍⚕	treballadora sanitària: pell mitjana-clara
+👩🏽‍⚕️	treballadora sanitària: pell mitjana
+👩🏽‍⚕	treballadora sanitària: pell mitjana
+👩🏾‍⚕️	treballadora sanitària: pell mitjana-fosca
+👩🏾‍⚕	treballadora sanitària: pell mitjana-fosca
+👩🏿‍⚕️	dona treballadora de la salut: pell fosca
+👩🏿‍⚕	dona treballadora de la salut: pell fosca
+👨‍🎓	home estudiant
+👨🏻‍🎓	home estudiant: pell clara
+👨🏼‍🎓	home estudiant: pell mitjana-clara
+👨🏽‍🎓	home estudiant: pell mitjana
+👨🏾‍🎓	home estudiant: pell mitjana-fosca
+👨🏿‍🎓	home estudiant: pell fosca
+👩‍🎓	dona estudiant
+👩🏻‍🎓	dona estudiant: pell clara
+👩🏼‍🎓	estudiant: pell mitjana-clara
+👩🏽‍🎓	estudiant: pell mitjana
+👩🏾‍🎓	estudiant: pell mitjana-fosca
+👩🏿‍🎓	dona estudiant: pell fosca
+👨‍🏫	home professor
+👨🏻‍🏫	home professor: pell clara
+👨🏼‍🏫	home professor: pell mitjana-clara
+👨🏽‍🏫	home professor: pell mitjana
+👨🏾‍🏫	home professor: pell mitjana-fosca
+👨🏿‍🏫	home professor: pell fosca
+👩‍🏫	dona mestra
+👩🏻‍🏫	dona professora: pell clara
+👩🏼‍🏫	dona professora: pell mitjana-clara
+👩🏽‍🏫	dona professora: pell mitjana
+👩🏾‍🏫	dona professora: pell mitjana-fosca
+👩🏿‍🏫	dona professora: pell fosca
+👨‍⚖️	home jutge
+👨‍⚖	home jutge
+👨🏻‍⚖️	jutge home: pell clara
+👨🏻‍⚖	jutge home: pell clara
+👨🏼‍⚖️	jutge home: pell mitjana-clara
+👨🏼‍⚖	jutge home: pell mitjana-clara
+👨🏽‍⚖️	jutge home: pell mitjana
+👨🏽‍⚖	jutge home: pell mitjana
+👨🏾‍⚖️	jutge de l'home: pell mitjana-fosca
+👨🏾‍⚖	jutge de l'home: pell mitjana-fosca
+👨🏿‍⚖️	home jutge: pell fosca
+👨🏿‍⚖	home jutge: pell fosca
+👩‍⚖️	dona jutge
+👩‍⚖	dona jutge
+👩🏻‍⚖️	dona jutge: pell clara
+👩🏻‍⚖	dona jutge: pell clara
+👩🏼‍⚖️	dona jutge: pell mitjana-clara
+👩🏼‍⚖	dona jutge: pell mitjana-clara
+👩🏽‍⚖️	dona jutge: pell mitjana
+👩🏽‍⚖	dona jutge: pell mitjana
+👩🏾‍⚖️	dona jutge: pell mitjana-fosca
+👩🏾‍⚖	dona jutge: pell mitjana-fosca
+👩🏿‍⚖️	dona jutge: pell fosca
+👩🏿‍⚖	dona jutge: pell fosca
+👨‍🌾	home pagès
+👨🏻‍🌾	home pagès: pell clara
+👨🏼‍🌾	home pagès: pell mitjana-clara
+👨🏽‍🌾	home pagès: pell mitjana
+👨🏾‍🌾	home pagès: pell mitjana-fosca
+👨🏿‍🌾	home pagès: pell fosca
+👩‍🌾	dona agricultora
+👩🏻‍🌾	agricultora: pell clara
+👩🏼‍🌾	agricultora: pell mitjana-clara
+👩🏽‍🌾	agricultora: pell mitjana
+👩🏾‍🌾	agricultora: pell fosca mitjana
+👩🏿‍🌾	dona agricultora: pell fosca
+👨‍🍳	home cuiner
+👨🏻‍🍳	home cuiner: pell clara
+👨🏼‍🍳	home cuiner: pell mitjana-clara
+👨🏽‍🍳	home cuiner: pell mitjana
+👨🏾‍🍳	home cuiner: pell mitjana-fosca
+👨🏿‍🍳	home cuiner: pell fosca
+👩‍🍳	dona cuinera
+👩🏻‍🍳	dona cuinera: pell clara
+👩🏼‍🍳	cuinera: pell mitjana-clara
+👩🏽‍🍳	dona cuinera: pell mitjana
+👩🏾‍🍳	cuinera: pell mitjana-fosca
+👩🏿‍🍳	dona cuinera: pell fosca
+👨‍🔧	home mecànic
+👨🏻‍🔧	mecànic home: pell clara
+👨🏼‍🔧	mecànic home: pell mitjana-clara
+👨🏽‍🔧	mecànic home: pell mitjana
+👨🏾‍🔧	mecànic home: pell mitjana-fosca
+👨🏿‍🔧	mecànic home: pell fosca
+👩‍🔧	dona mecànica
+👩🏻‍🔧	dona mecànica: pell clara
+👩🏼‍🔧	dona mecànica: pell mitjana-clara
+👩🏽‍🔧	dona mecànica: pell mitjana
+👩🏾‍🔧	dona mecànica: pell mitjana-fosca
+👩🏿‍🔧	dona mecànica: pell fosca
+👨‍🏭	home treballador de la fàbrica
+👨🏻‍🏭	home treballador de fàbrica: pell clara
+👨🏼‍🏭	home treballador de fàbrica: pell mitjana-clara
+👨🏽‍🏭	home treballador de fàbrica: pell mitjana
+👨🏾‍🏭	home treballador de fàbrica: pell mig fosca
+👨🏿‍🏭	home treballador de fàbrica: pell fosca
+👩‍🏭	dona treballadora de fàbrica
+👩🏻‍🏭	dona treballadora de fàbrica: pell clara
+👩🏼‍🏭	dona treballadora de fàbrica: pell mitjana-clara
+👩🏽‍🏭	dona treballadora de fàbrica: pell mitjana
+👩🏾‍🏭	dona treballadora de fàbrica: pell mitjana-fosca
+👩🏿‍🏭	dona treballadora de fàbrica: pell fosca
+👨‍💼	home treballador d'oficina
+👨🏻‍💼	home treballador d'oficina: pell clara
+👨🏼‍💼	home d'oficina: pell mitjana-clara
+👨🏽‍💼	home treballador d'oficina: pell mitjana
+👨🏾‍💼	home d'oficina: pell fosca mitjana
+👨🏿‍💼	home treballador d'oficina: pell fosca
+👩‍💼	dona treballadora d'oficina
+👩🏻‍💼	dona treballadora d'oficina: pell clara
+👩🏼‍💼	treballadora d'oficina: pell mitjana-clara
+👩🏽‍💼	dona treballadora d'oficina: pell mitjana
+👩🏾‍💼	dona treballadora d'oficina: pell fosca mitjana
+👩🏿‍💼	dona treballadora d'oficina: pell fosca
+👨‍🔬	home científic
+👨🏻‍🔬	home científic: pell clara
+👨🏼‍🔬	home científic: pell mitjana-clara
+👨🏽‍🔬	home científic: pell mitjana
+👨🏾‍🔬	home científic: to de pell mig fosc
+👨🏿‍🔬	home científic: pell fosca
+👩‍🔬	dona científica
+👩🏻‍🔬	dona científica: pell clara
+👩🏼‍🔬	dona científica: pell mitjana-clara
+👩🏽‍🔬	dona científica: pell mitjana
+👩🏾‍🔬	dona científica: pell fosca mitjana
+👩🏿‍🔬	dona científica: pell fosca
+👨‍💻	home tecnòleg
+👨🏻‍💻	home tecnòleg: pell clara
+👨🏼‍💻	home tecnòleg: pell mitjana-clara
+👨🏽‍💻	home tecnòleg: pell mitjana
+👨🏾‍💻	home tecnòleg: pell mitjana-fosca
+👨🏿‍💻	home tecnòleg: pell fosca
+👩‍💻	dona tecnòloga
+👩🏻‍💻	dona tecnòloga: pell clara
+👩🏼‍💻	dona tecnòloga: pell mitjana-clara
+👩🏽‍💻	dona tecnòloga: pell mitjana
+👩🏾‍💻	dona tecnòloga: pell mitjana-fosca
+👩🏿‍💻	dona tecnòloga: pell fosca
+👨‍🎤	home cantant
+👨🏻‍🎤	cantant home: pell clara
+👨🏼‍🎤	cantant home: pell mitjana-clara
+👨🏽‍🎤	cantant home: pell mitjana
+👨🏾‍🎤	cantant home: pell mitjana-fosca
+👨🏿‍🎤	cantant home: pell fosca
+👩‍🎤	dona cantant
+👩🏻‍🎤	dona cantant: pell clara
+👩🏼‍🎤	cantant: pell mitjana-clara
+👩🏽‍🎤	cantant: pell mitjana
+👩🏾‍🎤	cantant: pell mitjana-fosca
+👩🏿‍🎤	dona cantant: pell fosca
+👨‍🎨	home artista
+👨🏻‍🎨	home artista: pell clara
+👨🏼‍🎨	home artista: pell mitjana-clara
+👨🏽‍🎨	artista home: pell mitjana
+👨🏾‍🎨	artista home: pell mitjana-fosca
+👨🏿‍🎨	home artista: pell fosca
+👩‍🎨	dona artista
+👩🏻‍🎨	dona artista: pell clara
+👩🏼‍🎨	dona artista: pell mitjana-clara
+👩🏽‍🎨	dona artista: pell mitjana
+👩🏾‍🎨	dona artista: pell mitjana-fosca
+👩🏿‍🎨	dona artista: pell fosca
+👨‍✈️	pilot home
+👨‍✈	pilot home
+👨🏻‍✈️	pilot home: pell clara
+👨🏻‍✈	pilot home: pell clara
+👨🏼‍✈️	pilot home: pell mitjana-clara
+👨🏼‍✈	pilot home: pell mitjana-clara
+👨🏽‍✈️	pilot home: pell mitjana
+👨🏽‍✈	pilot home: pell mitjana
+👨🏾‍✈️	pilot home: pell fosca mitjana
+👨🏾‍✈	pilot home: pell fosca mitjana
+👨🏿‍✈️	pilot home: pell fosca
+👨🏿‍✈	pilot home: pell fosca
+👩‍✈️	dona pilot
+👩‍✈	dona pilot
+👩🏻‍✈️	dona pilot: pell clara
+👩🏻‍✈	dona pilot: pell clara
+👩🏼‍✈️	dona pilot: pell mitjana-clara
+👩🏼‍✈	dona pilot: pell mitjana-clara
+👩🏽‍✈️	dona pilot: pell mitjana
+👩🏽‍✈	dona pilot: pell mitjana
+👩🏾‍✈️	dona pilot: pell mitjana-fosca
+👩🏾‍✈	dona pilot: pell mitjana-fosca
+👩🏿‍✈️	dona pilot: pell fosca
+👩🏿‍✈	dona pilot: pell fosca
+👨‍🚀	home astronauta
+👨🏻‍🚀	home astronauta: pell clara
+👨🏼‍🚀	home astronauta: pell mitjana-clara
+👨🏽‍🚀	home astronauta: pell mitjana
+👨🏾‍🚀	home astronauta: pell mitjana-fosca
+👨🏿‍🚀	home astronauta: pell fosca
+👩‍🚀	dona astronauta
+👩🏻‍🚀	dona astronauta: pell clara
+👩🏼‍🚀	dona astronauta: pell mitjana-clara
+👩🏽‍🚀	dona astronauta: pell mitjana
+👩🏾‍🚀	dona astronauta: pell fosca mitjana
+👩🏿‍🚀	dona astronauta: pell fosca
+👨‍🚒	home bomber
+👨🏻‍🚒	home bomber: pell clara
+👨🏼‍🚒	bomber home: pell mitjana-clara
+👨🏽‍🚒	home bomber: pell mitjana
+👨🏾‍🚒	bomber home: pell mig fosca
+👨🏿‍🚒	home bomber: pell fosca
+👩‍🚒	dona bombera
+👩🏻‍🚒	dona bombera: pell clara
+👩🏼‍🚒	dona bombera: pell mitjana-clara
+👩🏽‍🚒	dona bombera: pell mitjana
+👩🏾‍🚒	dona bombera: pell mig fosca
+👩🏿‍🚒	dona bombera: pell fosca
+👮	policia
+👮🏻	agent de policia: pell clara
+👮🏼	policia: pell mitjana-clara
+👮🏽	agent de policia: pell mitjana
+👮🏾	policia: pell mig fosca
+👮🏿	agent de policia: pell fosca
+👮‍♂️	home agent de policia
+👮‍♂	home agent de policia
+👮🏻‍♂️	home agent de policia: pell clara
+👮🏻‍♂	home agent de policia: pell clara
+👮🏼‍♂️	home agent de policia: pell mitjana-clara
+👮🏼‍♂	home agent de policia: pell mitjana-clara
+👮🏽‍♂️	home agent de policia: pell mitjana
+👮🏽‍♂	home agent de policia: pell mitjana
+👮🏾‍♂️	home agent de policia: pell fosca mitjana
+👮🏾‍♂	home agent de policia: pell fosca mitjana
+👮🏿‍♂️	home agent de policia: pell fosca
+👮🏿‍♂	home agent de policia: pell fosca
+👮‍♀️	dona policia
+👮‍♀	dona policia
+👮🏻‍♀️	dona policia: pell clara
+👮🏻‍♀	dona policia: pell clara
+👮🏼‍♀️	dona policia: pell mitjana-clara
+👮🏼‍♀	dona policia: pell mitjana-clara
+👮🏽‍♀️	dona policia: pell mitjana
+👮🏽‍♀	dona policia: pell mitjana
+👮🏾‍♀️	dona policia: pell mitjana-fosca
+👮🏾‍♀	dona policia: pell mitjana-fosca
+👮🏿‍♀️	dona policia: pell fosca
+👮🏿‍♀	dona policia: pell fosca
+🕵️	detectiu
+🕵	detectiu
+🕵🏻	detectiu: pell clara
+🕵🏼	detectiu: pell mitjana-clara
+🕵🏽	detectiu: pell mitjana
+🕵🏾	detectiu: pell fosca mitjana
+🕵🏿	detectiu: pell fosca
+🕵️‍♂️	home detectiu
+🕵‍♂️	home detectiu
+🕵️‍♂	home detectiu
+🕵‍♂	home detectiu
+🕵🏻‍♂️	detectiu d'home: pell clara
+🕵🏻‍♂	detectiu d'home: pell clara
+🕵🏼‍♂️	detectiu d'home: pell mitjana-clara
+🕵🏼‍♂	detectiu d'home: pell mitjana-clara
+🕵🏽‍♂️	detectiu home: pell mitjana
+🕵🏽‍♂	detectiu home: pell mitjana
+🕵🏾‍♂️	detectiu d'home: pell fosca mitjana
+🕵🏾‍♂	detectiu d'home: pell fosca mitjana
+🕵🏿‍♂️	detectiu d'home: pell fosca
+🕵🏿‍♂	detectiu d'home: pell fosca
+🕵️‍♀️	dona detectiva
+🕵‍♀️	dona detectiva
+🕵️‍♀	dona detectiva
+🕵‍♀	dona detectiva
+🕵🏻‍♀️	dona detectiva: pell clara
+🕵🏻‍♀	dona detectiva: pell clara
+🕵🏼‍♀️	dona detectiva: pell mitjana-clara
+🕵🏼‍♀	dona detectiva: pell mitjana-clara
+🕵🏽‍♀️	dona detectiva: pell mitjana
+🕵🏽‍♀	dona detectiva: pell mitjana
+🕵🏾‍♀️	dona detectiva: pell fosca mitjana
+🕵🏾‍♀	dona detectiva: pell fosca mitjana
+🕵🏿‍♀️	dona detectiva: pell fosca
+🕵🏿‍♀	dona detectiva: pell fosca
+💂	guàrdia
+💂🏻	guarda: pell clara
+💂🏼	protector: pell mitjana-clara
+💂🏽	guarda: pell mitjana
+💂🏾	protector: to de pell mig fosc
+💂🏿	guarda: pell fosca
+💂‍♂️	guarda home
+💂‍♂	guarda home
+💂🏻‍♂️	guarda home: pell clara
+💂🏻‍♂	guarda home: pell clara
+💂🏼‍♂️	guàrdia d'home: pell mitjana-clara
+💂🏼‍♂	guàrdia d'home: pell mitjana-clara
+💂🏽‍♂️	guàrdia d'home: pell mitjana
+💂🏽‍♂	guàrdia d'home: pell mitjana
+💂🏾‍♂️	guàrdia d'home: pell mig fosca
+💂🏾‍♂	guàrdia d'home: pell mig fosca
+💂🏿‍♂️	guarda home: pell fosca
+💂🏿‍♂	guarda home: pell fosca
+💂‍♀️	dona guarda
+💂‍♀	dona guarda
+💂🏻‍♀️	guarda dona: pell clara
+💂🏻‍♀	guarda dona: pell clara
+💂🏼‍♀️	guarda dona: pell mitjana-clara
+💂🏼‍♀	guarda dona: pell mitjana-clara
+💂🏽‍♀️	guarda dona: pell mitjana
+💂🏽‍♀	guarda dona: pell mitjana
+💂🏾‍♀️	guàrdia dona: pell mitjana-fosca
+💂🏾‍♀	guàrdia dona: pell mitjana-fosca
+💂🏿‍♀️	dona guarda: pell fosca
+💂🏿‍♀	dona guarda: pell fosca
+👷	treballador de la construcció
+👷🏻	treballador de la construcció: pell clara
+👷🏼	treballador de la construcció: pell mitjana-clara
+👷🏽	treballador de la construcció: pell mitjana
+👷🏾	treballador de la construcció: pell fosca mitjana
+👷🏿	treballador de la construcció: pell fosca
+👷‍♂️	home treballador de la construcció
+👷‍♂	home treballador de la construcció
+👷🏻‍♂️	home treballador de la construcció: pell clara
+👷🏻‍♂	home treballador de la construcció: pell clara
+👷🏼‍♂️	home treballador de la construcció: pell mitjana-clara
+👷🏼‍♂	home treballador de la construcció: pell mitjana-clara
+👷🏽‍♂️	home treballador de la construcció: pell mitjana
+👷🏽‍♂	home treballador de la construcció: pell mitjana
+👷🏾‍♂️	home treballador de la construcció: pell fosca mitjana
+👷🏾‍♂	home treballador de la construcció: pell fosca mitjana
+👷🏿‍♂️	home treballador de la construcció: pell fosca
+👷🏿‍♂	home treballador de la construcció: pell fosca
+👷‍♀️	dona treballadora de la construcció
+👷‍♀	dona treballadora de la construcció
+👷🏻‍♀️	dona treballadora de la construcció: pell clara
+👷🏻‍♀	dona treballadora de la construcció: pell clara
+👷🏼‍♀️	obrera de la construcció: pell mitjana-clara
+👷🏼‍♀	obrera de la construcció: pell mitjana-clara
+👷🏽‍♀️	dona treballadora de la construcció: pell mitjana
+👷🏽‍♀	dona treballadora de la construcció: pell mitjana
+👷🏾‍♀️	dona treballadora de la construcció: pell fosca mitjana
+👷🏾‍♀	dona treballadora de la construcció: pell fosca mitjana
+👷🏿‍♀️	dona treballadora de la construcció: pell fosca
+👷🏿‍♀	dona treballadora de la construcció: pell fosca
+🤴	príncep
+🤴🏻	príncep: pell clara
+🤴🏼	príncep: pell mitjana-clara
+🤴🏽	príncep: pell mitjana
+🤴🏾	príncep: pell mitjana-fosca
+🤴🏿	príncep: pell fosca
+👸	princesa
+👸🏻	princesa: pell clara
+👸🏼	princesa: pell mitjana-clara
+👸🏽	princesa: pell mitjana
+👸🏾	princesa: pell mitjana-fosca
+👸🏿	princesa: pell fosca
+👳	persona que porta un turbant
+👳🏻	persona que porta turbant: pell clara
+👳🏼	persona que porta turbant: pell mitjana-clara
+👳🏽	persona que porta turbant: pell mitjana
+👳🏾	persona que porta turbant: pell fosca mitjana
+👳🏿	persona que porta turbant: pell fosca
+👳‍♂️	home amb turbant
+👳‍♂	home amb turbant
+👳🏻‍♂️	home amb turbant: pell clara
+👳🏻‍♂	home amb turbant: pell clara
+👳🏼‍♂️	home amb turbant: pell mitjana-clara
+👳🏼‍♂	home amb turbant: pell mitjana-clara
+👳🏽‍♂️	home amb turbant: pell mitjana
+👳🏽‍♂	home amb turbant: pell mitjana
+👳🏾‍♂️	home amb turbant: pell mitjana-fosca
+👳🏾‍♂	home amb turbant: pell mitjana-fosca
+👳🏿‍♂️	home amb turbant: pell fosca
+👳🏿‍♂	home amb turbant: pell fosca
+👳‍♀️	dona amb turbant
+👳‍♀	dona amb turbant
+👳🏻‍♀️	dona amb turbant: pell clara
+👳🏻‍♀	dona amb turbant: pell clara
+👳🏼‍♀️	dona amb turbant: pell mitjana-clara
+👳🏼‍♀	dona amb turbant: pell mitjana-clara
+👳🏽‍♀️	dona amb turbant: pell mitjana
+👳🏽‍♀	dona amb turbant: pell mitjana
+👳🏾‍♀️	dona amb turbant: pell mitjana-fosca
+👳🏾‍♀	dona amb turbant: pell mitjana-fosca
+👳🏿‍♀️	dona amb turbant: pell fosca
+👳🏿‍♀	dona amb turbant: pell fosca
+👲	home amb gorra xinesa
+👲🏻	home amb gorra xinesa: pell clara
+👲🏼	home amb gorra xinesa: pell mitjana-clara
+👲🏽	home amb gorra xinesa: pell mitjana
+👲🏾	home amb gorra xinesa: pell fosca mitjana
+👲🏿	home amb gorra xinesa: pell fosca
+🧕	dona amb mocador al cap
+🧕🏻	dona amb mocador al cap: pell clara
+🧕🏼	dona amb mocador al cap: pell mitjana-clara
+🧕🏽	dona amb mocador: pell mitjana
+🧕🏾	dona amb mocador: pell mig fosca
+🧕🏿	dona amb mocador: pell fosca
+🧔	persona barbuda
+🧔🏻	persona barbuda: pell clara
+🧔🏼	persona amb barba: pell mitjana-clara
+🧔🏽	persona amb barba: pell mitjana
+🧔🏾	persona amb barba: pell mitjana-fosca
+🧔🏿	persona amb barba: pell fosca
+👱	persona de cabell ros
+👱🏻	persona de cabell ros: pell clara
+👱🏼	persona de cabell ros: pell mitjana-clara
+👱🏽	persona de cabell ros: pell mitjana
+👱🏾	persona de cabell ros: pell mitjana-fosca
+👱🏿	persona de cabell ros: pell fosca
+👱‍♂️	home de cabell ros
+👱‍♂	home de cabell ros
+👱🏻‍♂️	home de cabell ros: pell clara
+👱🏻‍♂	home de cabell ros: pell clara
+👱🏼‍♂️	home de cabell ros: pell mitjana-clara
+👱🏼‍♂	home de cabell ros: pell mitjana-clara
+👱🏽‍♂️	home de cabell ros: pell mitjana
+👱🏽‍♂	home de cabell ros: pell mitjana
+👱🏾‍♂️	home de cabell ros: pell mitjana-fosca
+👱🏾‍♂	home de cabell ros: pell mitjana-fosca
+👱🏿‍♂️	home de cabell ros: pell fosca
+👱🏿‍♂	home de cabell ros: pell fosca
+👱‍♀️	dona de cabell ros
+👱‍♀	dona de cabell ros
+👱🏻‍♀️	dona de cabell ros: pell clara
+👱🏻‍♀	dona de cabell ros: pell clara
+👱🏼‍♀️	dona de cabell ros: pell mitjana-clara
+👱🏼‍♀	dona de cabell ros: pell mitjana-clara
+👱🏽‍♀️	dona de cabell ros: pell mitjana
+👱🏽‍♀	dona de cabell ros: pell mitjana
+👱🏾‍♀️	dona de cabell ros: pell mitjana-fosca
+👱🏾‍♀	dona de cabell ros: pell mitjana-fosca
+👱🏿‍♀️	dona de cabell ros: pell fosca
+👱🏿‍♀	dona de cabell ros: pell fosca
+👨‍🦰	home, pèl roig
+👨🏻‍🦰	home, pèl roig: pell clara
+👨🏼‍🦰	home, pèl roig: pell mitjana-clara
+👨🏽‍🦰	home, pèl roig: pell mitjana
+👨🏾‍🦰	home, pèl roig: pell mitjana-fosca
+👨🏿‍🦰	home, pèl roig: pell fosca
+👩‍🦰	dona, pèl-roja
+👩🏻‍🦰	dona, pèl roig: pell clara
+👩🏼‍🦰	dona, pèl roig: pell mitjana-clara
+👩🏽‍🦰	dona, pèl roig: pell mitjana
+👩🏾‍🦰	dona, pèl roig: pell mitjana-fosca
+👩🏿‍🦰	dona, pèl roig: pell fosca
+👨‍🦱	home, cabell arrissat
+👨🏻‍🦱	home, cabell arrissat: pell clara
+👨🏼‍🦱	home, cabell arrissat: pell mitjana-clara
+👨🏽‍🦱	home, cabell arrissat: pell mitjana
+👨🏾‍🦱	home, cabell arrissat: pell mig fosca
+👨🏿‍🦱	home, cabell arrissat: pell fosca
+👩‍🦱	dona, cabell arrissat
+👩🏻‍🦱	dona, cabell arrissat: pell clara
+👩🏼‍🦱	dona, cabell arrissat: pell mitjana-clara
+👩🏽‍🦱	dona, cabell arrissat: pell mitjana
+👩🏾‍🦱	dona, cabell arrissat: pell mitjana-fosca
+👩🏿‍🦱	dona, cabell arrissat: pell fosca
+👨‍🦲	home, calb
+👨🏻‍🦲	home, calb: pell clara
+👨🏼‍🦲	home, calb: pell mitjana-clara
+👨🏽‍🦲	home, calb: pell mitjana
+👨🏾‍🦲	home, calb: pell mitjana-fosca
+👨🏿‍🦲	home, calb: pell fosca
+👩‍🦲	dona, calba
+👩🏻‍🦲	dona, calba: pell clara
+👩🏼‍🦲	dona, calba: pell mitjana-clara
+👩🏽‍🦲	dona, calba: pell mitjana
+👩🏾‍🦲	dona, calba: pell mitjana-fosca
+👩🏿‍🦲	dona, calba: pell fosca
+👨‍🦳	home, cabell blanc
+👨🏻‍🦳	home, cabell blanc: pell clara
+👨🏼‍🦳	home, cabell blanc: pell mitjana-clara
+👨🏽‍🦳	home, cabell blanc: pell mitjana
+👨🏾‍🦳	home, cabell blanc: pell mitjana-fosca
+👨🏿‍🦳	home, cabell blanc: pell fosca
+👩‍🦳	dona, cabell blanc
+👩🏻‍🦳	dona, cabell blanc: pell clara
+👩🏼‍🦳	dona, cabell blanc: pell mitjana-clara
+👩🏽‍🦳	dona, cabell blanc: pell mitjana
+👩🏾‍🦳	dona, cabell blanc: pell mitjana-fosca
+👩🏿‍🦳	dona, cabell blanc: pell fosca
+🤵	home amb esmòquing
+🤵🏻	home amb esmòquing: pell clara
+🤵🏼	home amb esmòquing: pell mitjana-clara
+🤵🏽	home amb esmòquing: pell mitjana
+🤵🏾	home amb esmòquing: pell mig fosca
+🤵🏿	home amb esmòquing: pell fosca
+👰	núvia amb vel
+👰🏻	núvia amb vel: pell clara
+👰🏼	núvia amb vel: pell mitjana-clara
+👰🏽	núvia amb vel: pell mitjana
+👰🏾	núvia amb vel: pell mitjana-fosca
+👰🏿	núvia amb vel: pell fosca
+🤰	dona embarassada
+🤰🏻	dona embarassada: pell clara
+🤰🏼	dona embarassada: pell mitjana-clara
+🤰🏽	dona embarassada: pell mitjana
+🤰🏾	dona embarassada: pell mitjana-fosca
+🤰🏿	dona embarassada: pell fosca
+🤱	lactància materna
+🤱🏻	lactància materna: pell clara
+🤱🏼	lactància materna: pell mitjana-clara
+🤱🏽	lactància materna: pell mitjana
+🤱🏾	lactància materna: pell mitjana-fosca
+🤱🏿	lactància materna: pell fosca
+👼	petit àngel
+👼🏻	nadó àngel: pell clara
+👼🏼	nadó àngel: pell mitjana-clara
+👼🏽	nadó àngel: pell mitjana
+👼🏾	nadó àngel: pell mitjana-fosca
+👼🏿	nadó àngel: pell fosca
+🎅	Pare Noél
+🎅🏻	Pare Noel: pell clara
+🎅🏼	Pare Noel: pell mitjana-clara
+🎅🏽	Pare Noel: pell mitjana
+🎅🏾	Pare Noel: pell fosca mitjana
+🎅🏿	Pare Noel: pell fosca
+🤶	Senyora Claus
+🤶🏻	Senyora Claus: pell clara
+🤶🏼	Senyora Claus: pell mitjana-clara
+🤶🏽	Senyora Claus: pell mitjana
+🤶🏾	Senyora Claus: pell mitjana-fosca
+🤶🏿	Senyora Claus: pell fosca
+🦸	superheroi
+🦸🏻	superheroi: pell clara
+🦸🏼	superheroi: pell mitjana-clara
+🦸🏽	superheroi: pell mitjana
+🦸🏾	superheroi: pell mitjana-fosca
+🦸🏿	superheroi: pell fosca
+🦸‍♀️	dona superheroïna
+🦸‍♀	dona superheroïna
+🦸🏻‍♀️	dona superheroïna: pell clara
+🦸🏻‍♀	dona superheroïna: pell clara
+🦸🏼‍♀️	dona superheroïna: pell mitjana-clara
+🦸🏼‍♀	dona superheroïna: pell mitjana-clara
+🦸🏽‍♀️	dona superheroïna: pell mitjana
+🦸🏽‍♀	dona superheroïna: pell mitjana
+🦸🏾‍♀️	dona superheroïna: pell fosca mitjana
+🦸🏾‍♀	dona superheroïna: pell fosca mitjana
+🦸🏿‍♀️	dona superheroïna: pell fosca
+🦸🏿‍♀	dona superheroïna: pell fosca
+🦸‍♂️	home superheroi
+🦸‍♂	home superheroi
+🦸🏻‍♂️	home superheroi: pell clara
+🦸🏻‍♂	home superheroi: pell clara
+🦸🏼‍♂️	home superheroi: pell mitjana-clara
+🦸🏼‍♂	home superheroi: pell mitjana-clara
+🦸🏽‍♂️	home superheroi: pell mitjana
+🦸🏽‍♂	home superheroi: pell mitjana
+🦸🏾‍♂️	home superheroi: pell mitjana-fosca
+🦸🏾‍♂	home superheroi: pell mitjana-fosca
+🦸🏿‍♂️	home superheroi: pell fosca
+🦸🏿‍♂	home superheroi: pell fosca
+🦹	superdolent
+🦹🏻	supervillain: pell clara
+🦹🏼	supervillain: pell mitjana-clara
+🦹🏽	supervillano: pell mitjana
+🦹🏾	supervillain: pell mitjana-fosca
+🦹🏿	supervillano: pell fosca
+🦹‍♀️	dona supervillana
+🦹‍♀	dona supervillana
+🦹🏻‍♀️	dona supervillana: pell clara
+🦹🏻‍♀	dona supervillana: pell clara
+🦹🏼‍♀️	dona supervillana: pell mitjana-clara
+🦹🏼‍♀	dona supervillana: pell mitjana-clara
+🦹🏽‍♀️	dona supervillana: pell mitjana
+🦹🏽‍♀	dona supervillana: pell mitjana
+🦹🏾‍♀️	dona supervillana: pell mitjana-fosca
+🦹🏾‍♀	dona supervillana: pell mitjana-fosca
+🦹🏿‍♀️	dona supervillana: pell fosca
+🦹🏿‍♀	dona supervillana: pell fosca
+🦹‍♂️	home supervillano
+🦹‍♂	home supervillano
+🦹🏻‍♂️	home supervillain: pell clara
+🦹🏻‍♂	home supervillain: pell clara
+🦹🏼‍♂️	home supervillain: pell mitjana-clara
+🦹🏼‍♂	home supervillain: pell mitjana-clara
+🦹🏽‍♂️	home supervillain: pell mitjana
+🦹🏽‍♂	home supervillain: pell mitjana
+🦹🏾‍♂️	home supervillain: pell mitjana-fosca
+🦹🏾‍♂	home supervillain: pell mitjana-fosca
+🦹🏿‍♂️	home supervillain: pell fosca
+🦹🏿‍♂	home supervillain: pell fosca
+🧙	mag
+🧙🏻	mag: pell clara
+🧙🏼	mag: pell mitjana-clara
+🧙🏽	mag: pell mitjana
+🧙🏾	mag: pell mitjana-fosca
+🧙🏿	mag: pell fosca
+🧙‍♀️	dona maga
+🧙‍♀	dona maga
+🧙🏻‍♀️	dona maga: pell clara
+🧙🏻‍♀	dona maga: pell clara
+🧙🏼‍♀️	dona maga: pell mitjana-clara
+🧙🏼‍♀	dona maga: pell mitjana-clara
+🧙🏽‍♀️	dona maga: pell mitjana
+🧙🏽‍♀	dona maga: pell mitjana
+🧙🏾‍♀️	dona maga: pell fosca mitjana
+🧙🏾‍♀	dona maga: pell fosca mitjana
+🧙🏿‍♀️	dona maga: pell fosca
+🧙🏿‍♀	dona maga: pell fosca
+🧙‍♂️	home mag
+🧙‍♂	home mag
+🧙🏻‍♂️	home mag: pell clara
+🧙🏻‍♂	home mag: pell clara
+🧙🏼‍♂️	home mag: pell mitjana-clara
+🧙🏼‍♂	home mag: pell mitjana-clara
+🧙🏽‍♂️	home mag: pell mitjana
+🧙🏽‍♂	home mag: pell mitjana
+🧙🏾‍♂️	home mag: pell mitjana-fosca
+🧙🏾‍♂	home mag: pell mitjana-fosca
+🧙🏿‍♂️	home mag: pell fosca
+🧙🏿‍♂	home mag: pell fosca
+🧚	fada
+🧚🏻	fada: pell clara
+🧚🏼	fada: pell mitjana-clara
+🧚🏽	fada: pell mitjana
+🧚🏾	fada: pell fosca mitjana
+🧚🏿	fada: pell fosca
+🧚‍♀️	dona fada
+🧚‍♀	dona fada
+🧚🏻‍♀️	dona fada: pell clara
+🧚🏻‍♀	dona fada: pell clara
+🧚🏼‍♀️	dona fada: pell mitjana-clara
+🧚🏼‍♀	dona fada: pell mitjana-clara
+🧚🏽‍♀️	dona fada: pell mitjana
+🧚🏽‍♀	dona fada: pell mitjana
+🧚🏾‍♀️	dona fada: pell fosca mitjana
+🧚🏾‍♀	dona fada: pell fosca mitjana
+🧚🏿‍♀️	dona fada: pell fosca
+🧚🏿‍♀	dona fada: pell fosca
+🧚‍♂️	home fada
+🧚‍♂	home fada
+🧚🏻‍♂️	home fada: pell clara
+🧚🏻‍♂	home fada: pell clara
+🧚🏼‍♂️	home fada: pell mitjana-clara
+🧚🏼‍♂	home fada: pell mitjana-clara
+🧚🏽‍♂️	home fada: pell mitjana
+🧚🏽‍♂	home fada: pell mitjana
+🧚🏾‍♂️	home fada: pell fosca mitjana
+🧚🏾‍♂	home fada: pell fosca mitjana
+🧚🏿‍♂️	home fada: pell fosca
+🧚🏿‍♂	home fada: pell fosca
+🧛	vampir
+🧛🏻	vampir: pell clara
+🧛🏼	vampir: pell mitjana-clara
+🧛🏽	vampir: pell mitjana
+🧛🏾	vampir: to de pell mig fosc
+🧛🏿	vampir: pell fosca
+🧛‍♀️	dona vampir
+🧛‍♀	dona vampir
+🧛🏻‍♀️	dona vampir: pell clara
+🧛🏻‍♀	dona vampir: pell clara
+🧛🏼‍♀️	dona vampir: pell mitjana-clara
+🧛🏼‍♀	dona vampir: pell mitjana-clara
+🧛🏽‍♀️	dona vampir: pell mitjana
+🧛🏽‍♀	dona vampir: pell mitjana
+🧛🏾‍♀️	dona vampir: pell mitjana-fosca
+🧛🏾‍♀	dona vampir: pell mitjana-fosca
+🧛🏿‍♀️	dona vampir: pell fosca
+🧛🏿‍♀	dona vampir: pell fosca
+🧛‍♂️	home vampir
+🧛‍♂	home vampir
+🧛🏻‍♂️	home vampir: pell clara
+🧛🏻‍♂	home vampir: pell clara
+🧛🏼‍♂️	home vampir: pell mitjana-clara
+🧛🏼‍♂	home vampir: pell mitjana-clara
+🧛🏽‍♂️	home vampir: pell mitjana
+🧛🏽‍♂	home vampir: pell mitjana
+🧛🏾‍♂️	home vampir: pell mitjana-fosca
+🧛🏾‍♂	home vampir: pell mitjana-fosca
+🧛🏿‍♂️	home vampir: pell fosca
+🧛🏿‍♂	home vampir: pell fosca
+🧜	merpersona
+🧜🏻	merperson: pell clara
+🧜🏼	merperson: pell mitjana-clara
+🧜🏽	merperson: pell mitjana
+🧜🏾	merperson: pell mitjana-fosca
+🧜🏿	merperson: pell fosca
+🧜‍♀️	sirena
+🧜‍♀	sirena
+🧜🏻‍♀️	sirena: pell clara
+🧜🏻‍♀	sirena: pell clara
+🧜🏼‍♀️	sirena: pell mitjana-clara
+🧜🏼‍♀	sirena: pell mitjana-clara
+🧜🏽‍♀️	sirena: pell mitjana
+🧜🏽‍♀	sirena: pell mitjana
+🧜🏾‍♀️	sirena: pell mitjana-fosca
+🧜🏾‍♀	sirena: pell mitjana-fosca
+🧜🏿‍♀️	sirena: pell fosca
+🧜🏿‍♀	sirena: pell fosca
+🧜‍♂️	triton
+🧜‍♂	triton
+🧜🏻‍♂️	sirena: pell clara
+🧜🏻‍♂	sirena: pell clara
+🧜🏼‍♂️	sirena: pell mitjana-clara
+🧜🏼‍♂	sirena: pell mitjana-clara
+🧜🏽‍♂️	sirena: pell mitjana
+🧜🏽‍♂	sirena: pell mitjana
+🧜🏾‍♂️	sirena: pell mitjana-fosca
+🧜🏾‍♂	sirena: pell mitjana-fosca
+🧜🏿‍♂️	sirena: pell fosca
+🧜🏿‍♂	sirena: pell fosca
+🧝	elf
+🧝🏻	elf: pell clara
+🧝🏼	elf: pell mitjana-clara
+🧝🏽	elf: pell mitjana
+🧝🏾	elf: pell mitjana-fosca
+🧝🏿	elf: pell fosca
+🧝‍♀️	dona elfa
+🧝‍♀	dona elfa
+🧝🏻‍♀️	dona elfa: pell clara
+🧝🏻‍♀	dona elfa: pell clara
+🧝🏼‍♀️	dona elfa: pell mitjana-clara
+🧝🏼‍♀	dona elfa: pell mitjana-clara
+🧝🏽‍♀️	dona elfa: pell mitjana
+🧝🏽‍♀	dona elfa: pell mitjana
+🧝🏾‍♀️	dona elfa: pell mitjana-fosca
+🧝🏾‍♀	dona elfa: pell mitjana-fosca
+🧝🏿‍♀️	dona elfa: pell fosca
+🧝🏿‍♀	dona elfa: pell fosca
+🧝‍♂️	home elf
+🧝‍♂	home elf
+🧝🏻‍♂️	home elf: pell clara
+🧝🏻‍♂	home elf: pell clara
+🧝🏼‍♂️	elf: pell mitjana-clara
+🧝🏼‍♂	elf: pell mitjana-clara
+🧝🏽‍♂️	elf: pell mitjana
+🧝🏽‍♂	elf: pell mitjana
+🧝🏾‍♂️	elf: pell mitjana-fosca
+🧝🏾‍♂	elf: pell mitjana-fosca
+🧝🏿‍♂️	home elf: pell fosca
+🧝🏿‍♂	home elf: pell fosca
+🧞	geni
+🧞‍♀️	dona genia
+🧞‍♀	dona genia
+🧞‍♂️	home geni
+🧞‍♂	home geni
+🧟	zombi
+🧟‍♀️	dona zombi
+🧟‍♀	dona zombi
+🧟‍♂️	home zombi
+🧟‍♂	home zombi
+🙍	persona arrufant les celles
+🙍🏻	persona arrugada: pell clara
+🙍🏼	persona arrugada: pell mitjana-clara
+🙍🏽	persona arrugada: pell mitjana
+🙍🏾	persona arrugada: pell fosca mitjana
+🙍🏿	persona arrugada: pell fosca
+🙍‍♂️	home arrufant les celles
+🙍‍♂	home arrufant les celles
+🙍🏻‍♂️	home arrugat: pell clara
+🙍🏻‍♂	home arrugat: pell clara
+🙍🏼‍♂️	home arrugat: pell mitjana-clara
+🙍🏼‍♂	home arrugat: pell mitjana-clara
+🙍🏽‍♂️	home arrugat: pell mitjana
+🙍🏽‍♂	home arrugat: pell mitjana
+🙍🏾‍♂️	home arrufat: pell mitjana-fosca
+🙍🏾‍♂	home arrufat: pell mitjana-fosca
+🙍🏿‍♂️	home arrugat: pell fosca
+🙍🏿‍♂	home arrugat: pell fosca
+🙍‍♀️	dona arrugant el front
+🙍‍♀	dona arrugant el front
+🙍🏻‍♀️	dona arrugada: pell clara
+🙍🏻‍♀	dona arrugada: pell clara
+🙍🏼‍♀️	dona arrugada: pell mitjana-clara
+🙍🏼‍♀	dona arrugada: pell mitjana-clara
+🙍🏽‍♀️	dona arrugada: pell mitjana
+🙍🏽‍♀	dona arrugada: pell mitjana
+🙍🏾‍♀️	dona arrugada: pell fosca mitjana
+🙍🏾‍♀	dona arrugada: pell fosca mitjana
+🙍🏿‍♀️	dona arrugada: pell fosca
+🙍🏿‍♀	dona arrugada: pell fosca
+🙎	persona fent pucheros
+🙎🏻	persona fent pucheros: pell clara
+🙎🏼	persona fent pucheros: pell mitjana-clara
+🙎🏽	persona fent pucheros: pell mitjana
+🙎🏾	persona fent pucheros: pell mitjana-fosca
+🙎🏿	persona fent pucheros: pell fosca
+🙎‍♂️	home fent pucheros
+🙎‍♂	home fent pucheros
+🙎🏻‍♂️	home fent pucheros: pell clara
+🙎🏻‍♂	home fent pucheros: pell clara
+🙎🏼‍♂️	home fent pucheros: pell mitjana-clara
+🙎🏼‍♂	home fent pucheros: pell mitjana-clara
+🙎🏽‍♂️	home fent pucheros: pell mitjana
+🙎🏽‍♂	home fent pucheros: pell mitjana
+🙎🏾‍♂️	home fent pucheros: pell mitjana-fosca
+🙎🏾‍♂	home fent pucheros: pell mitjana-fosca
+🙎🏿‍♂️	home fent pucheros: pell fosca
+🙎🏿‍♂	home fent pucheros: pell fosca
+🙎‍♀️	dona fent pucheros
+🙎‍♀	dona fent pucheros
+🙎🏻‍♀️	dona fent pucheros: pell clara
+🙎🏻‍♀	dona fent pucheros: pell clara
+🙎🏼‍♀️	dona fent pucheros: pell mitjana-clara
+🙎🏼‍♀	dona fent pucheros: pell mitjana-clara
+🙎🏽‍♀️	dona fent pucheros: pell mitjana
+🙎🏽‍♀	dona fent pucheros: pell mitjana
+🙎🏾‍♀️	dona fent pucheros: pell mitjana-fosca
+🙎🏾‍♀	dona fent pucheros: pell mitjana-fosca
+🙎🏿‍♀️	dona fent pucheros: pell fosca
+🙎🏿‍♀	dona fent pucheros: pell fosca
+🙅	persona fent un gest de NO
+🙅🏻	persona que fa un gest de NO: pell clara
+🙅🏼	persona que fa un gest de NO: pell mitjana-clara
+🙅🏽	persona que fa un gest de NO: pell mitjana
+🙅🏾	persona que fa un gest de NO: pell fosca mitjana
+🙅🏿	persona que fa un gest de NO: pell fosca
+🙅‍♂️	home fent un gest de NO
+🙅‍♂	home fent un gest de NO
+🙅🏻‍♂️	home gestant NO: pell clara
+🙅🏻‍♂	home gestant NO: pell clara
+🙅🏼‍♂️	home gestant NO: pell mitjana-clara
+🙅🏼‍♂	home gestant NO: pell mitjana-clara
+🙅🏽‍♂️	home gestant NO: pell mitjana
+🙅🏽‍♂	home gestant NO: pell mitjana
+🙅🏾‍♂️	home gestant NO: pell fosca mitjana
+🙅🏾‍♂	home gestant NO: pell fosca mitjana
+🙅🏿‍♂️	home gestant NO: pell fosca
+🙅🏿‍♂	home gestant NO: pell fosca
+🙅‍♀️	dona fent un gest de NO
+🙅‍♀	dona fent un gest de NO
+🙅🏻‍♀️	dona fent un gest de NO: pell clara
+🙅🏻‍♀	dona fent un gest de NO: pell clara
+🙅🏼‍♀️	dona gestant NO: pell mitjana-clara
+🙅🏼‍♀	dona gestant NO: pell mitjana-clara
+🙅🏽‍♀️	dona fent un gest de NO: pell mitjana
+🙅🏽‍♀	dona fent un gest de NO: pell mitjana
+🙅🏾‍♀️	dona gestant NO: pell fosca mitjana
+🙅🏾‍♀	dona gestant NO: pell fosca mitjana
+🙅🏿‍♀️	dona gestant NO: pell fosca
+🙅🏿‍♀	dona gestant NO: pell fosca
+🙆	persona fent un gest d'acord
+🙆🏻	persona que fa un gest d'acord: pell clara
+🙆🏼	persona que fa un gest d'acord: pell mitjana-clara
+🙆🏽	persona que fa un gest d'acord: pell mitjana
+🙆🏾	persona que fa un gest d'acord: pell fosca mitjana
+🙆🏿	persona que fa un gest d'acord: pell fosca
+🙆‍♂️	home fent un gest d'acord
+🙆‍♂	home fent un gest d'acord
+🙆🏻‍♂️	home gestant d'acord: pell clara
+🙆🏻‍♂	home gestant d'acord: pell clara
+🙆🏼‍♂️	home gestant d'acord: pell mitjana-clara
+🙆🏼‍♂	home gestant d'acord: pell mitjana-clara
+🙆🏽‍♂️	home gestant d'acord: pell mitjana
+🙆🏽‍♂	home gestant d'acord: pell mitjana
+🙆🏾‍♂️	home gestant d'acord: pell fosca mitjana
+🙆🏾‍♂	home gestant d'acord: pell fosca mitjana
+🙆🏿‍♂️	home gestant d'acord: pell fosca
+🙆🏿‍♂	home gestant d'acord: pell fosca
+🙆‍♀️	dona gestant d'acord
+🙆‍♀	dona gestant d'acord
+🙆🏻‍♀️	dona gestant d'acord: pell clara
+🙆🏻‍♀	dona gestant d'acord: pell clara
+🙆🏼‍♀️	dona gestant d'acord: pell mitjana-clara
+🙆🏼‍♀	dona gestant d'acord: pell mitjana-clara
+🙆🏽‍♀️	dona gestant d'acord: pell mitjana
+🙆🏽‍♀	dona gestant d'acord: pell mitjana
+🙆🏾‍♀️	dona gestant d'acord: pell fosca mitjana
+🙆🏾‍♀	dona gestant d'acord: pell fosca mitjana
+🙆🏿‍♀️	dona gestant d'acord: pell fosca
+🙆🏿‍♀	dona gestant d'acord: pell fosca
+💁	persona donant la mà
+💁🏻	persona amb la mà inclinada: pell clara
+💁🏼	persona amb la mà inclinada: pell mitjana-clara
+💁🏽	persona amb la mà inclinada: pell mitjana
+💁🏾	persona amb la mà inclinada: pell fosca mitjana
+💁🏿	persona amb la mà inclinada: pell fosca
+💁‍♂️	home donant la mà
+💁‍♂	home donant la mà
+💁🏻‍♂️	home amb la mà inclinada: pell clara
+💁🏻‍♂	home amb la mà inclinada: pell clara
+💁🏼‍♂️	home amb la mà inclinada: pell mitjana-clara
+💁🏼‍♂	home amb la mà inclinada: pell mitjana-clara
+💁🏽‍♂️	home amb la mà inclinada: pell mitjana
+💁🏽‍♂	home amb la mà inclinada: pell mitjana
+💁🏾‍♂️	home amb la mà inclinada: pell mitjana-fosca
+💁🏾‍♂	home amb la mà inclinada: pell mitjana-fosca
+💁🏿‍♂️	home inclinant la mà: pell fosca
+💁🏿‍♂	home inclinant la mà: pell fosca
+💁‍♀️	dona inclinant la mà
+💁‍♀	dona inclinant la mà
+💁🏻‍♀️	dona amb la mà inclinada: pell clara
+💁🏻‍♀	dona amb la mà inclinada: pell clara
+💁🏼‍♀️	dona amb la mà inclinada: pell mitjana-clara
+💁🏼‍♀	dona amb la mà inclinada: pell mitjana-clara
+💁🏽‍♀️	dona amb la mà inclinada: pell mitjana
+💁🏽‍♀	dona amb la mà inclinada: pell mitjana
+💁🏾‍♀️	dona amb la mà inclinada: pell mitjana-fosca
+💁🏾‍♀	dona amb la mà inclinada: pell mitjana-fosca
+💁🏿‍♀️	dona amb la mà inclinada: pell fosca
+💁🏿‍♀	dona amb la mà inclinada: pell fosca
+🙋	persona aixecant la mà
+🙋🏻	persona que aixeca la mà: pell clara
+🙋🏼	persona que aixeca la mà: pell mitjana-clara
+🙋🏽	persona que aixeca la mà: pell mitjana
+🙋🏾	persona que aixeca la mà: pell fosca mitjana
+🙋🏿	persona que aixeca la mà: pell fosca
+🙋‍♂️	home aixecant la mà
+🙋‍♂	home aixecant la mà
+🙋🏻‍♂️	home aixecant la mà: pell clara
+🙋🏻‍♂	home aixecant la mà: pell clara
+🙋🏼‍♂️	home amb la mà aixecada: pell mitjana-clara
+🙋🏼‍♂	home amb la mà aixecada: pell mitjana-clara
+🙋🏽‍♂️	home aixecant la mà: pell mitjana
+🙋🏽‍♂	home aixecant la mà: pell mitjana
+🙋🏾‍♂️	home aixecant la mà: pell fosca mitjana
+🙋🏾‍♂	home aixecant la mà: pell fosca mitjana
+🙋🏿‍♂️	home aixecant la mà: pell fosca
+🙋🏿‍♂	home aixecant la mà: pell fosca
+🙋‍♀️	dona aixecant la mà
+🙋‍♀	dona aixecant la mà
+🙋🏻‍♀️	dona amb la mà aixecada: pell clara
+🙋🏻‍♀	dona amb la mà aixecada: pell clara
+🙋🏼‍♀️	dona amb la mà aixecada: pell mitjana-clara
+🙋🏼‍♀	dona amb la mà aixecada: pell mitjana-clara
+🙋🏽‍♀️	dona amb la mà aixecada: pell mitjana
+🙋🏽‍♀	dona amb la mà aixecada: pell mitjana
+🙋🏾‍♀️	dona amb la mà aixecada: pell fosca mitjana
+🙋🏾‍♀	dona amb la mà aixecada: pell fosca mitjana
+🙋🏿‍♀️	dona aixecant la mà: pell fosca
+🙋🏿‍♀	dona aixecant la mà: pell fosca
+🙇	persona fent una reverència
+🙇🏻	persona fent una reverència: pell clara
+🙇🏼	persona fent una reverència: pell mitjana-clara
+🙇🏽	persona fent una reverència: pell mitjana
+🙇🏾	persona inclinant-se: pell fosca mitjana
+🙇🏿	persona fent una reverència: pell fosca
+🙇‍♂️	home fent una reverència
+🙇‍♂	home fent una reverència
+🙇🏻‍♂️	home fent una reverència: pell clara
+🙇🏻‍♂	home fent una reverència: pell clara
+🙇🏼‍♂️	home inclinat: pell mitjana-clara
+🙇🏼‍♂	home inclinat: pell mitjana-clara
+🙇🏽‍♂️	home fent una reverència: pell mitjana
+🙇🏽‍♂	home fent una reverència: pell mitjana
+🙇🏾‍♂️	home fent una reverència: pell mitjana-fosca
+🙇🏾‍♂	home fent una reverència: pell mitjana-fosca
+🙇🏿‍♂️	home fent una reverència: pell fosca
+🙇🏿‍♂	home fent una reverència: pell fosca
+🙇‍♀️	dona fent una reverència
+🙇‍♀	dona fent una reverència
+🙇🏻‍♀️	dona inclinada: pell clara
+🙇🏻‍♀	dona inclinada: pell clara
+🙇🏼‍♀️	dona inclinada: pell mitjana-clara
+🙇🏼‍♀	dona inclinada: pell mitjana-clara
+🙇🏽‍♀️	dona inclinada: pell mitjana
+🙇🏽‍♀	dona inclinada: pell mitjana
+🙇🏾‍♀️	dona inclinada: pell fosca mitjana
+🙇🏾‍♀	dona inclinada: pell fosca mitjana
+🙇🏿‍♀️	dona inclinada: pell fosca
+🙇🏿‍♀	dona inclinada: pell fosca
+🤦	persona facepalming
+🤦🏻	persona facepalming: pell clara
+🤦🏼	persona facepalming: pell mitjana-clara
+🤦🏽	persona facepalming: pell mitjana
+🤦🏾	persona facepalming: to de pell mig fosc
+🤦🏿	persona facepalming: pell fosca
+🤦‍♂️	home fent palmes de la cara
+🤦‍♂	home fent palmes de la cara
+🤦🏻‍♂️	home facepalming: pell clara
+🤦🏻‍♂	home facepalming: pell clara
+🤦🏼‍♂️	home facepalming: pell mitjana-clara
+🤦🏼‍♂	home facepalming: pell mitjana-clara
+🤦🏽‍♂️	home facepalming: pell mitjana
+🤦🏽‍♂	home facepalming: pell mitjana
+🤦🏾‍♂️	home facepalming: pell mitjana-fosca
+🤦🏾‍♂	home facepalming: pell mitjana-fosca
+🤦🏿‍♂️	home facepalming: pell fosca
+🤦🏿‍♂	home facepalming: pell fosca
+🤦‍♀️	dona fent palmes de la cara
+🤦‍♀	dona fent palmes de la cara
+🤦🏻‍♀️	dona amb palma facial: pell clara
+🤦🏻‍♀	dona amb palma facial: pell clara
+🤦🏼‍♀️	femella facial: pell mitjana-clara
+🤦🏼‍♀	femella facial: pell mitjana-clara
+🤦🏽‍♀️	dona amb palmes facials: pell mitjana
+🤦🏽‍♀	dona amb palmes facials: pell mitjana
+🤦🏾‍♀️	dona amb palmes facials: pell mitjana-fosca
+🤦🏾‍♀	dona amb palmes facials: pell mitjana-fosca
+🤦🏿‍♀️	dona amb palmes facials: pell fosca
+🤦🏿‍♀	dona amb palmes facials: pell fosca
+🤷	persona arronsant les espatlles
+🤷🏻	persona arronsant les espatlles: pell clara
+🤷🏼	persona arronsant les espatlles: pell mitjana-clara
+🤷🏽	persona arronsant les espatlles: pell mitjana
+🤷🏾	persona arronsant les espatlles: pell mitjana-fosca
+🤷🏿	persona arronsant les espatlles: pell fosca
+🤷‍♂️	home arronsant les espatlles
+🤷‍♂	home arronsant les espatlles
+🤷🏻‍♂️	home arronsant les espatlles: pell clara
+🤷🏻‍♂	home arronsant les espatlles: pell clara
+🤷🏼‍♂️	home arronsant les espatlles: pell mitjana-clara
+🤷🏼‍♂	home arronsant les espatlles: pell mitjana-clara
+🤷🏽‍♂️	home arronsant les espatlles: pell mitjana
+🤷🏽‍♂	home arronsant les espatlles: pell mitjana
+🤷🏾‍♂️	home arronsant les espatlles: pell mitjana-fosca
+🤷🏾‍♂	home arronsant les espatlles: pell mitjana-fosca
+🤷🏿‍♂️	home arronsant les espatlles: pell fosca
+🤷🏿‍♂	home arronsant les espatlles: pell fosca
+🤷‍♀️	dona arronsant les espatlles
+🤷‍♀	dona arronsant les espatlles
+🤷🏻‍♀️	dona arronsant les espatlles: pell clara
+🤷🏻‍♀	dona arronsant les espatlles: pell clara
+🤷🏼‍♀️	dona arronsant les espatlles: pell mitjana-clara
+🤷🏼‍♀	dona arronsant les espatlles: pell mitjana-clara
+🤷🏽‍♀️	dona arronsant les espatlles: pell mitjana
+🤷🏽‍♀	dona arronsant les espatlles: pell mitjana
+🤷🏾‍♀️	dona arronsant les espatlles: pell mitjana-fosca
+🤷🏾‍♀	dona arronsant les espatlles: pell mitjana-fosca
+🤷🏿‍♀️	dona arronsant les espatlles: pell fosca
+🤷🏿‍♀	dona arronsant les espatlles: pell fosca
+💆	persona que rep un massatge
+💆🏻	persona que rep un massatge: pell clara
+💆🏼	persona que rep un massatge: pell mitjana-clara
+💆🏽	persona que rep un massatge: pell mitjana
+💆🏾	persona que rep un massatge: pell fosca mitjana
+💆🏿	persona que rep un massatge: pell fosca
+💆‍♂️	home rebent un massatge
+💆‍♂	home rebent un massatge
+💆🏻‍♂️	home que rep un massatge: pell clara
+💆🏻‍♂	home que rep un massatge: pell clara
+💆🏼‍♂️	home que rep un massatge: pell mitjana-clara
+💆🏼‍♂	home que rep un massatge: pell mitjana-clara
+💆🏽‍♂️	home que rep un massatge: pell mitjana
+💆🏽‍♂	home que rep un massatge: pell mitjana
+💆🏾‍♂️	home que rep un massatge: pell fosca mitjana
+💆🏾‍♂	home que rep un massatge: pell fosca mitjana
+💆🏿‍♂️	home que rep un massatge: pell fosca
+💆🏿‍♂	home que rep un massatge: pell fosca
+💆‍♀️	dona rebent un massatge
+💆‍♀	dona rebent un massatge
+💆🏻‍♀️	dona rebent un massatge: pell clara
+💆🏻‍♀	dona rebent un massatge: pell clara
+💆🏼‍♀️	dona rebent un massatge: pell mitjana-clara
+💆🏼‍♀	dona rebent un massatge: pell mitjana-clara
+💆🏽‍♀️	dona rebent massatge: pell mitjana
+💆🏽‍♀	dona rebent massatge: pell mitjana
+💆🏾‍♀️	dona rebent un massatge: pell fosca mitjana
+💆🏾‍♀	dona rebent un massatge: pell fosca mitjana
+💆🏿‍♀️	dona rebent un massatge: pell fosca
+💆🏿‍♀	dona rebent un massatge: pell fosca
+💇	persona que es talla el cabell
+💇🏻	persona que es talla el cabell: pell clara
+💇🏼	persona que es talla el cabell: pell mitjana-clara
+💇🏽	persona que es talla el cabell: pell mitjana
+💇🏾	persona que es talla el cabell: pell mitjana-fosca
+💇🏿	persona que es talla el cabell: pell fosca
+💇‍♂️	home que es talla el cabell
+💇‍♂	home que es talla el cabell
+💇🏻‍♂️	home que es talla el cabell: pell clara
+💇🏻‍♂	home que es talla el cabell: pell clara
+💇🏼‍♂️	home que es talla el cabell: pell mitjana-clara
+💇🏼‍♂	home que es talla el cabell: pell mitjana-clara
+💇🏽‍♂️	home que es talla el cabell: pell mitjana
+💇🏽‍♂	home que es talla el cabell: pell mitjana
+💇🏾‍♂️	home que es talla el cabell: pell fosca mitjana
+💇🏾‍♂	home que es talla el cabell: pell fosca mitjana
+💇🏿‍♂️	home que es talla el cabell: pell fosca
+💇🏿‍♂	home que es talla el cabell: pell fosca
+💇‍♀️	dona que es talla el cabell
+💇‍♀	dona que es talla el cabell
+💇🏻‍♀️	dona que es talla el cabell: pell clara
+💇🏻‍♀	dona que es talla el cabell: pell clara
+💇🏼‍♀️	dona que es talla el cabell: pell mitjana-clara
+💇🏼‍♀	dona que es talla el cabell: pell mitjana-clara
+💇🏽‍♀️	dona que es talla el cabell: pell mitjana
+💇🏽‍♀	dona que es talla el cabell: pell mitjana
+💇🏾‍♀️	dona que es talla el cabell: pell mitjana-fosca
+💇🏾‍♀	dona que es talla el cabell: pell mitjana-fosca
+💇🏿‍♀️	dona que es talla el cabell: pell fosca
+💇🏿‍♀	dona que es talla el cabell: pell fosca
+🚶	persona caminant
+🚶🏻	persona que camina: pell clara
+🚶🏼	persona que camina: pell mitjana-clara
+🚶🏽	persona que camina: pell mitjana
+🚶🏾	persona que camina: pell fosca mitjana
+🚶🏿	persona que camina: pell fosca
+🚶‍♂️	home caminant
+🚶‍♂	home caminant
+🚶🏻‍♂️	home caminant: pell clara
+🚶🏻‍♂	home caminant: pell clara
+🚶🏼‍♂️	home caminant: pell mitjana-clara
+🚶🏼‍♂	home caminant: pell mitjana-clara
+🚶🏽‍♂️	home caminant: pell mitjana
+🚶🏽‍♂	home caminant: pell mitjana
+🚶🏾‍♂️	home caminant: pell mitjana-fosca
+🚶🏾‍♂	home caminant: pell mitjana-fosca
+🚶🏿‍♂️	home caminant: pell fosca
+🚶🏿‍♂	home caminant: pell fosca
+🚶‍♀️	dona caminant
+🚶‍♀	dona caminant
+🚶🏻‍♀️	dona caminant: pell clara
+🚶🏻‍♀	dona caminant: pell clara
+🚶🏼‍♀️	dona caminant: pell mitjana-clara
+🚶🏼‍♀	dona caminant: pell mitjana-clara
+🚶🏽‍♀️	dona caminant: pell mitjana
+🚶🏽‍♀	dona caminant: pell mitjana
+🚶🏾‍♀️	dona caminant: pell fosca mitjana
+🚶🏾‍♀	dona caminant: pell fosca mitjana
+🚶🏿‍♀️	dona caminant: pell fosca
+🚶🏿‍♀	dona caminant: pell fosca
+🏃	persona corrent
+🏃🏻	persona corrent: pell clara
+🏃🏼	persona corrent: pell mitjana-clara
+🏃🏽	persona corrent: pell mitjana
+🏃🏾	persona corrent: pell fosca mitjana
+🏃🏿	persona corrent: pell fosca
+🏃‍♂️	home corrent
+🏃‍♂	home corrent
+🏃🏻‍♂️	home corrent: pell clara
+🏃🏻‍♂	home corrent: pell clara
+🏃🏼‍♂️	home corrent: pell mitjana-clara
+🏃🏼‍♂	home corrent: pell mitjana-clara
+🏃🏽‍♂️	home corrent: pell mitjana
+🏃🏽‍♂	home corrent: pell mitjana
+🏃🏾‍♂️	home corrent: pell fosca mitjana
+🏃🏾‍♂	home corrent: pell fosca mitjana
+🏃🏿‍♂️	home corrent: pell fosca
+🏃🏿‍♂	home corrent: pell fosca
+🏃‍♀️	dona corrent
+🏃‍♀	dona corrent
+🏃🏻‍♀️	dona corrent: pell clara
+🏃🏻‍♀	dona corrent: pell clara
+🏃🏼‍♀️	dona corrent: pell mitjana-clara
+🏃🏼‍♀	dona corrent: pell mitjana-clara
+🏃🏽‍♀️	dona corrent: pell mitjana
+🏃🏽‍♀	dona corrent: pell mitjana
+🏃🏾‍♀️	dona corrent: pell fosca mitjana
+🏃🏾‍♀	dona corrent: pell fosca mitjana
+🏃🏿‍♀️	dona corrent: pell fosca
+🏃🏿‍♀	dona corrent: pell fosca
+💃	dona ballant
+💃🏻	dona ballant: pell clara
+💃🏼	dona ballant: pell mitjana-clara
+💃🏽	dona ballant: pell mitjana
+💃🏾	dona ballant: pell mitjana-fosca
+💃🏿	dona ballant: pell fosca
+🕺	home ballant
+🕺🏻	home ballant: pell clara
+🕺🏼	home ballant: pell mitjana-clara
+🕺🏽	home ballant: pell mitjana
+🕺🏾	home ballant: pell mitjana-fosca
+🕺🏿	home ballant: pell fosca
+👯	persones amb orelles de conill
+👯‍♂️	homes amb orelles de conill
+👯‍♂	homes amb orelles de conill
+👯‍♀️	dones amb orelles de conill
+👯‍♀	dones amb orelles de conill
+🧖	persona a la sala de vapor
+🧖🏻	persona a la sala de vapor: pell clara
+🧖🏼	persona a la sala de vapor: pell mitjana-clara
+🧖🏽	persona a la sala de vapor: pell mitjana
+🧖🏾	persona a la sala de vapor: to de pell mig fosc
+🧖🏿	persona a la sala de vapor: pell fosca
+🧖‍♀️	dona a la sala de vapor
+🧖‍♀	dona a la sala de vapor
+🧖🏻‍♀️	dona a la sala de vapor: pell clara
+🧖🏻‍♀	dona a la sala de vapor: pell clara
+🧖🏼‍♀️	dona a la sala de vapor: pell mitjana-clara
+🧖🏼‍♀	dona a la sala de vapor: pell mitjana-clara
+🧖🏽‍♀️	dona a la sala de vapor: pell mitjana
+🧖🏽‍♀	dona a la sala de vapor: pell mitjana
+🧖🏾‍♀️	dona a la sala de vapor: pell mitjana-fosca
+🧖🏾‍♀	dona a la sala de vapor: pell mitjana-fosca
+🧖🏿‍♀️	dona a la sala de vapor: pell fosca
+🧖🏿‍♀	dona a la sala de vapor: pell fosca
+🧖‍♂️	home a la sala de vapor
+🧖‍♂	home a la sala de vapor
+🧖🏻‍♂️	home a la sala de vapor: pell clara
+🧖🏻‍♂	home a la sala de vapor: pell clara
+🧖🏼‍♂️	home a la sala de vapor: pell mitjana-clara
+🧖🏼‍♂	home a la sala de vapor: pell mitjana-clara
+🧖🏽‍♂️	home a la sala de vapor: pell mitjana
+🧖🏽‍♂	home a la sala de vapor: pell mitjana
+🧖🏾‍♂️	home a la sala de vapor: pell mitjana-fosca
+🧖🏾‍♂	home a la sala de vapor: pell mitjana-fosca
+🧖🏿‍♂️	home a la sala de vapor: pell fosca
+🧖🏿‍♂	home a la sala de vapor: pell fosca
+🧗	persona escalant
+🧗🏻	persona que escala: pell clara
+🧗🏼	persona que escala: pell mitjana-clara
+🧗🏽	persona que escala: pell mitjana
+🧗🏾	persona que escala: pell mitjana-fosca
+🧗🏿	persona que escala: pell fosca
+🧗‍♀️	dona escalant
+🧗‍♀	dona escalant
+🧗🏻‍♀️	dona escalant: pell clara
+🧗🏻‍♀	dona escalant: pell clara
+🧗🏼‍♀️	dona que escala: pell mitjana-clara
+🧗🏼‍♀	dona que escala: pell mitjana-clara
+🧗🏽‍♀️	dona que escala: pell mitjana
+🧗🏽‍♀	dona que escala: pell mitjana
+🧗🏾‍♀️	dona que escala: pell mitjana-fosca
+🧗🏾‍♀	dona que escala: pell mitjana-fosca
+🧗🏿‍♀️	dona que escala: pell fosca
+🧗🏿‍♀	dona que escala: pell fosca
+🧗‍♂️	home escalant
+🧗‍♂	home escalant
+🧗🏻‍♂️	home escalant: pell clara
+🧗🏻‍♂	home escalant: pell clara
+🧗🏼‍♂️	home escalant: pell mitjana-clara
+🧗🏼‍♂	home escalant: pell mitjana-clara
+🧗🏽‍♂️	home escalant: pell mitjana
+🧗🏽‍♂	home escalant: pell mitjana
+🧗🏾‍♂️	home escalant: pell mitjana-fosca
+🧗🏾‍♂	home escalant: pell mitjana-fosca
+🧗🏿‍♂️	home escalant: pell fosca
+🧗🏿‍♂	home escalant: pell fosca
+🧘	persona en posició de lotus
+🧘🏻	persona en posició de lotus: pell clara
+🧘🏼	persona en posició de lotus: pell mitjana-clara
+🧘🏽	persona en posició de lotus: pell mitjana
+🧘🏾	persona en posició de lotus: pell mitjana-fosca
+🧘🏿	persona en posició de lotus: pell fosca
+🧘‍♀️	dona en posició de lotus
+🧘‍♀	dona en posició de lotus
+🧘🏻‍♀️	dona en posició de lotus: pell clara
+🧘🏻‍♀	dona en posició de lotus: pell clara
+🧘🏼‍♀️	dona en posició de lotus: pell mitjana-clara
+🧘🏼‍♀	dona en posició de lotus: pell mitjana-clara
+🧘🏽‍♀️	dona en posició de lotus: pell mitjana
+🧘🏽‍♀	dona en posició de lotus: pell mitjana
+🧘🏾‍♀️	dona en posició de lotus: pell mitjana-fosca
+🧘🏾‍♀	dona en posició de lotus: pell mitjana-fosca
+🧘🏿‍♀️	dona en posició de lotus: pell fosca
+🧘🏿‍♀	dona en posició de lotus: pell fosca
+🧘‍♂️	home en posició de lotus
+🧘‍♂	home en posició de lotus
+🧘🏻‍♂️	home en posició de lotus: pell clara
+🧘🏻‍♂	home en posició de lotus: pell clara
+🧘🏼‍♂️	home en posició de lotus: pell mitjana-clara
+🧘🏼‍♂	home en posició de lotus: pell mitjana-clara
+🧘🏽‍♂️	home en posició de lotus: pell mitjana
+🧘🏽‍♂	home en posició de lotus: pell mitjana
+🧘🏾‍♂️	home en posició de lotus: pell mitjana-fosca
+🧘🏾‍♂	home en posició de lotus: pell mitjana-fosca
+🧘🏿‍♂️	home en posició de lotus: pell fosca
+🧘🏿‍♂	home en posició de lotus: pell fosca
+🛀	persona que es banya
+🛀🏻	persona que pren un bany: pell clara
+🛀🏼	persona que pren el bany: pell mitjana-clara
+🛀🏽	persona que pren un bany: pell mitjana
+🛀🏾	persona que pren el bany: pell fosca mitjana
+🛀🏿	persona que pren un bany: pell fosca
+🛌	persona al llit
+🛌🏻	persona al llit: pell clara
+🛌🏼	persona al llit: pell mitjana-clara
+🛌🏽	persona al llit: pell mitjana
+🛌🏾	persona al llit: pell mitjana-fosca
+🛌🏿	persona al llit: pell fosca
+🕴️	home de vestit levitant
+🕴	home de vestit levitant
+🕴🏻	home de vestit levitant: pell clara
+🕴🏼	home de vestit levitant: pell mitjana-clara
+🕴🏽	home de vestit levitant: pell mitjana
+🕴🏾	home de vestit levitant: pell mitjana-fosca
+🕴🏿	home de vestit levitant: pell fosca
+🗣️	cap parlant
+🗣	cap parlant
+👤	bust en silueta
+👥	busts en silueta
+🤺	persona esgrima
+🏇	les carreres de cavalls
+🏇🏻	curses de cavalls: pell clara
+🏇🏼	curses de cavalls: pell mitjana-clara
+🏇🏽	curses de cavalls: pell mitjana
+🏇🏾	curses de cavalls: pell mitjana-fosca
+🏇🏿	curses de cavalls: pell fosca
+⛷️	esquiador
+⛷	esquiador
+🏂	surf de neu
+🏂🏻	snowboarder: pell clara
+🏂🏼	surf de neu: pell mitjana-clara
+🏂🏽	snowboarder: pell mitjana
+🏂🏾	snowboarder: pell fosca mitjana
+🏂🏿	snowboarder: pell fosca
+🏌️	persona jugant al golf
+🏌	persona jugant al golf
+🏌🏻	persona que juga al golf: pell clara
+🏌🏼	persona que juga al golf: pell mitjana-clara
+🏌🏽	persona que juga al golf: pell mitjana
+🏌🏾	persona que juga al golf: pell fosca mitjana
+🏌🏿	persona que juga al golf: pell fosca
+🏌️‍♂️	home jugant al golf
+🏌‍♂️	home jugant al golf
+🏌️‍♂	home jugant al golf
+🏌‍♂	home jugant al golf
+🏌🏻‍♂️	home golfing: pell clara
+🏌🏻‍♂	home golfing: pell clara
+🏌🏼‍♂️	home golfing: pell mitjana-clara
+🏌🏼‍♂	home golfing: pell mitjana-clara
+🏌🏽‍♂️	home golfista: pell mitjana
+🏌🏽‍♂	home golfista: pell mitjana
+🏌🏾‍♂️	home golfing: pell mitjana-fosca
+🏌🏾‍♂	home golfing: pell mitjana-fosca
+🏌🏿‍♂️	home golfing: pell fosca
+🏌🏿‍♂	home golfing: pell fosca
+🏌️‍♀️	dona jugant al golf
+🏌‍♀️	dona jugant al golf
+🏌️‍♀	dona jugant al golf
+🏌‍♀	dona jugant al golf
+🏌🏻‍♀️	dona golfista: pell clara
+🏌🏻‍♀	dona golfista: pell clara
+🏌🏼‍♀️	dona golfista: pell mitjana-clara
+🏌🏼‍♀	dona golfista: pell mitjana-clara
+🏌🏽‍♀️	dona golfista: pell mitjana
+🏌🏽‍♀	dona golfista: pell mitjana
+🏌🏾‍♀️	dona golfista: pell fosca mitjana
+🏌🏾‍♀	dona golfista: pell fosca mitjana
+🏌🏿‍♀️	dona golfista: pell fosca
+🏌🏿‍♀	dona golfista: pell fosca
+🏄	persona navegant
+🏄🏻	persona navegant: pell clara
+🏄🏼	persona navegant: pell mitjana-clara
+🏄🏽	persona navegant: pell mitjana
+🏄🏾	persona navegant: pell fosca mitjana
+🏄🏿	persona navegant: pell fosca
+🏄‍♂️	home fent surf
+🏄‍♂	home fent surf
+🏄🏻‍♂️	home surfant: pell clara
+🏄🏻‍♂	home surfant: pell clara
+🏄🏼‍♂️	home surfant: pell mitjana-clara
+🏄🏼‍♂	home surfant: pell mitjana-clara
+🏄🏽‍♂️	home surfant: pell mitjana
+🏄🏽‍♂	home surfant: pell mitjana
+🏄🏾‍♂️	home surfant: pell fosca mitjana
+🏄🏾‍♂	home surfant: pell fosca mitjana
+🏄🏿‍♂️	home surfant: pell fosca
+🏄🏿‍♂	home surfant: pell fosca
+🏄‍♀️	dona fent surf
+🏄‍♀	dona fent surf
+🏄🏻‍♀️	dona surfant: pell clara
+🏄🏻‍♀	dona surfant: pell clara
+🏄🏼‍♀️	dona surfant: pell mitjana-clara
+🏄🏼‍♀	dona surfant: pell mitjana-clara
+🏄🏽‍♀️	dona surfant: pell mitjana
+🏄🏽‍♀	dona surfant: pell mitjana
+🏄🏾‍♀️	dona surfant: pell fosca mitjana
+🏄🏾‍♀	dona surfant: pell fosca mitjana
+🏄🏿‍♀️	dona surfant: pell fosca
+🏄🏿‍♀	dona surfant: pell fosca
+🚣	persona amb barca de rem
+🚣🏻	persona barca de rem: pell clara
+🚣🏼	persona vaixell de rem: pell mitjana-clara
+🚣🏽	persona barca de rem: pell mitjana
+🚣🏾	persona vaixell de rem: pell fosca mitjana
+🚣🏿	persona vaixell de rem: pell fosca
+🚣‍♂️	home que rem
+🚣‍♂	home que rem
+🚣🏻‍♂️	home amb barca de rem: pell clara
+🚣🏻‍♂	home amb barca de rem: pell clara
+🚣🏼‍♂️	barca de rem home: pell mitjana-clara
+🚣🏼‍♂	barca de rem home: pell mitjana-clara
+🚣🏽‍♂️	barca de rem home: pell mitjana
+🚣🏽‍♂	barca de rem home: pell mitjana
+🚣🏾‍♂️	home de rems: pell mitjana-fosca
+🚣🏾‍♂	home de rems: pell mitjana-fosca
+🚣🏿‍♂️	home amb barca de rem: pell fosca
+🚣🏿‍♂	home amb barca de rem: pell fosca
+🚣‍♀️	barca de rems de dona
+🚣‍♀	barca de rems de dona
+🚣🏻‍♀️	barca de rems dona: pell clara
+🚣🏻‍♀	barca de rems dona: pell clara
+🚣🏼‍♀️	barca de rems de dona: pell mitjana-clara
+🚣🏼‍♀	barca de rems de dona: pell mitjana-clara
+🚣🏽‍♀️	barca de rems de dona: pell mitjana
+🚣🏽‍♀	barca de rems de dona: pell mitjana
+🚣🏾‍♀️	barca de rems de dona: pell mitjana-fosca
+🚣🏾‍♀	barca de rems de dona: pell mitjana-fosca
+🚣🏿‍♀️	barca de rems de dona: pell fosca
+🚣🏿‍♀	barca de rems de dona: pell fosca
+🏊	persona nedant
+🏊🏻	persona nedant: pell clara
+🏊🏼	persona nedant: pell mitjana-clara
+🏊🏽	persona nedant: pell mitjana
+🏊🏾	persona nedant: pell fosca mitjana
+🏊🏿	persona nedant: pell fosca
+🏊‍♂️	home nedant
+🏊‍♂	home nedant
+🏊🏻‍♂️	home nedant: pell clara
+🏊🏻‍♂	home nedant: pell clara
+🏊🏼‍♂️	home nedant: pell mitjana-clara
+🏊🏼‍♂	home nedant: pell mitjana-clara
+🏊🏽‍♂️	home nedant: pell mitjana
+🏊🏽‍♂	home nedant: pell mitjana
+🏊🏾‍♂️	home nedant: pell fosca mitjana
+🏊🏾‍♂	home nedant: pell fosca mitjana
+🏊🏿‍♂️	home nedant: pell fosca
+🏊🏿‍♂	home nedant: pell fosca
+🏊‍♀️	dona nedant
+🏊‍♀	dona nedant
+🏊🏻‍♀️	dona nedant: pell clara
+🏊🏻‍♀	dona nedant: pell clara
+🏊🏼‍♀️	dona nedant: pell mitjana-clara
+🏊🏼‍♀	dona nedant: pell mitjana-clara
+🏊🏽‍♀️	dona nedant: pell mitjana
+🏊🏽‍♀	dona nedant: pell mitjana
+🏊🏾‍♀️	dona nedant: pell fosca mitjana
+🏊🏾‍♀	dona nedant: pell fosca mitjana
+🏊🏿‍♀️	dona nedant: pell fosca
+🏊🏿‍♀	dona nedant: pell fosca
+⛹️	persona que bota la pilota
+⛹	persona que bota la pilota
+⛹🏻	persona que bota la pilota: pell clara
+⛹🏼	persona que bota la pilota: pell mitjana-clara
+⛹🏽	persona que bota la pilota: pell mitjana
+⛹🏾	persona que bota la pilota: pell fosca mitjana
+⛹🏿	persona que bota la pilota: pell fosca
+⛹️‍♂️	home botant pilota
+⛹‍♂️	home botant pilota
+⛹️‍♂	home botant pilota
+⛹‍♂	home botant pilota
+⛹🏻‍♂️	home botant pilota: pell clara
+⛹🏻‍♂	home botant pilota: pell clara
+⛹🏼‍♂️	home que rebota la pilota: pell mitjana-clara
+⛹🏼‍♂	home que rebota la pilota: pell mitjana-clara
+⛹🏽‍♂️	home botant pilota: pell mitjana
+⛹🏽‍♂	home botant pilota: pell mitjana
+⛹🏾‍♂️	home que rebota la pilota: pell fosca mitjana
+⛹🏾‍♂	home que rebota la pilota: pell fosca mitjana
+⛹🏿‍♂️	home botant pilota: pell fosca
+⛹🏿‍♂	home botant pilota: pell fosca
+⛹️‍♀️	dona botant pilota
+⛹‍♀️	dona botant pilota
+⛹️‍♀	dona botant pilota
+⛹‍♀	dona botant pilota
+⛹🏻‍♀️	dona botant pilota: pell clara
+⛹🏻‍♀	dona que bota la pilota: pell clara
+⛹🏼‍♀️	pilota botant dona: pell mitjana-clara
+⛹🏼‍♀	pilota botant dona: pell mitjana-clara
+⛹🏽‍♀️	pilota botant dona: pell mitjana
+⛹🏽‍♀	pilota botant dona: pell mitjana
+⛹🏾‍♀️	pilota botant dona: pell fosca mitjana
+⛹🏾‍♀	pilota botant dona: pell fosca mitjana
+⛹🏿‍♀️	dona botant pilota: pell fosca
+⛹🏿‍♀	dona botant pilota: pell fosca
+🏋️	persona aixecant peses
+🏋	persona aixecant peses
+🏋🏻	persona aixecant peses: pell clara
+🏋🏼	persona aixecant peses: pell mitjana-clara
+🏋🏽	persona aixecant peses: pell mitjana
+🏋🏾	persona aixecant peses: pell mitjana-fosca
+🏋🏿	persona aixecant peses: pell fosca
+🏋️‍♂️	home aixecant peses
+🏋‍♂️	home aixecant peses
+🏋️‍♂	home aixecant peses
+🏋‍♂	home aixecant peses
+🏋🏻‍♂️	home aixecant peses: pell clara
+🏋🏻‍♂	home aixecant peses: pell clara
+🏋🏼‍♂️	home aixecant peses: pell mitjana-clara
+🏋🏼‍♂	home aixecant peses: pell mitjana-clara
+🏋🏽‍♂️	home aixecant peses: pell mitjana
+🏋🏽‍♂	home aixecant peses: pell mitjana
+🏋🏾‍♂️	home aixecant peses: pell mitjana-fosca
+🏋🏾‍♂	home aixecant peses: pell mitjana-fosca
+🏋🏿‍♂️	home aixecant peses: pell fosca
+🏋🏿‍♂	home aixecant peses: pell fosca
+🏋️‍♀️	dona aixecant peses
+🏋‍♀️	dona aixecant peses
+🏋️‍♀	dona aixecant peses
+🏋‍♀	dona aixecant peses
+🏋🏻‍♀️	dona aixecant peses: pell clara
+🏋🏻‍♀	dona aixecant peses: pell clara
+🏋🏼‍♀️	dona aixecant peses: pell mitjana-clara
+🏋🏼‍♀	dona aixecant peses: pell mitjana-clara
+🏋🏽‍♀️	dona aixecant peses: pell mitjana
+🏋🏽‍♀	dona aixecant peses: pell mitjana
+🏋🏾‍♀️	dona aixecant peses: pell mitjana-fosca
+🏋🏾‍♀	dona aixecant peses: pell mitjana-fosca
+🏋🏿‍♀️	dona aixecant peses: pell fosca
+🏋🏿‍♀	dona aixecant peses: pell fosca
+🚴	persona amb bicicleta
+🚴🏻	persona amb bicicleta: pell clara
+🚴🏼	persona amb bicicleta: pell mitjana-clara
+🚴🏽	persona amb bicicleta: pell mitjana
+🚴🏾	persona amb bicicleta: pell fosca mitjana
+🚴🏿	persona amb bicicleta: pell fosca
+🚴‍♂️	home amb bicicleta
+🚴‍♂	home amb bicicleta
+🚴🏻‍♂️	home amb bicicleta: pell clara
+🚴🏻‍♂	home amb bicicleta: pell clara
+🚴🏼‍♂️	home amb bicicleta: pell mitjana-clara
+🚴🏼‍♂	home amb bicicleta: pell mitjana-clara
+🚴🏽‍♂️	home amb bicicleta: pell mitjana
+🚴🏽‍♂	home amb bicicleta: pell mitjana
+🚴🏾‍♂️	home amb bicicleta: pell fosca mitjana
+🚴🏾‍♂	home amb bicicleta: pell fosca mitjana
+🚴🏿‍♂️	home amb bicicleta: pell fosca
+🚴🏿‍♂	home amb bicicleta: pell fosca
+🚴‍♀️	dona amb bicicleta
+🚴‍♀	dona amb bicicleta
+🚴🏻‍♀️	dona amb bicicleta: pell clara
+🚴🏻‍♀	dona amb bicicleta: pell clara
+🚴🏼‍♀️	dona amb bicicleta: pell mitjana-clara
+🚴🏼‍♀	dona amb bicicleta: pell mitjana-clara
+🚴🏽‍♀️	dona amb bicicleta: pell mitjana
+🚴🏽‍♀	dona amb bicicleta: pell mitjana
+🚴🏾‍♀️	dona amb bicicleta: pell fosca mitjana
+🚴🏾‍♀	dona amb bicicleta: pell fosca mitjana
+🚴🏿‍♀️	dona amb bicicleta: pell fosca
+🚴🏿‍♀	dona amb bicicleta: pell fosca
+🚵	persona amb bicicleta de muntanya
+🚵🏻	persona amb bicicleta de muntanya: pell clara
+🚵🏼	persona amb bicicleta de muntanya: pell mitjana-clara
+🚵🏽	persona amb bicicleta de muntanya: pell mitjana
+🚵🏾	persona amb bicicleta de muntanya: pell mitjana-fosca
+🚵🏿	persona amb bicicleta de muntanya: pell fosca
+🚵‍♂️	home amb bicicleta de muntanya
+🚵‍♂	home amb bicicleta de muntanya
+🚵🏻‍♂️	bicicleta de muntanya home: pell clara
+🚵🏻‍♂	bicicleta de muntanya home: pell clara
+🚵🏼‍♂️	bicicleta de muntanya home: pell mitjana-clara
+🚵🏼‍♂	bicicleta de muntanya home: pell mitjana-clara
+🚵🏽‍♂️	bicicleta de muntanya home: pell mitjana
+🚵🏽‍♂	bicicleta de muntanya home: pell mitjana
+🚵🏾‍♂️	bicicleta de muntanya home: pell fosca mitjana
+🚵🏾‍♂	bicicleta de muntanya home: pell fosca mitjana
+🚵🏿‍♂️	bicicleta de muntanya home: pell fosca
+🚵🏿‍♂	bicicleta de muntanya home: pell fosca
+🚵‍♀️	dona amb bicicleta de muntanya
+🚵‍♀	dona amb bicicleta de muntanya
+🚵🏻‍♀️	dona amb bicicleta de muntanya: pell clara
+🚵🏻‍♀	dona amb bicicleta de muntanya: pell clara
+🚵🏼‍♀️	dona amb bicicleta de muntanya: pell mitjana-clara
+🚵🏼‍♀	dona amb bicicleta de muntanya: pell mitjana-clara
+🚵🏽‍♀️	dona amb bicicleta de muntanya: pell mitjana
+🚵🏽‍♀	dona amb bicicleta de muntanya: pell mitjana
+🚵🏾‍♀️	dona amb bicicleta de muntanya: pell mitjana-fosca
+🚵🏾‍♀	dona amb bicicleta de muntanya: pell mitjana-fosca
+🚵🏿‍♀️	dona amb bicicleta de muntanya: pell fosca
+🚵🏿‍♀	dona amb bicicleta de muntanya: pell fosca
+🏎️	cotxe de carreres
+🏎	cotxe de carreres
+🏍️	moto
+🏍	moto
+🤸	persona que fa la roda de carro
+🤸🏻	persona que fa roda de carro: pell clara
+🤸🏼	persona rodant: pell mitjana-clara
+🤸🏽	persona rodant: pell mitjana
+🤸🏾	persona que fa roda de carro: pell mitjana-fosca
+🤸🏿	persona que gira: pell fosca
+🤸‍♂️	home que fa la roda de carro
+🤸‍♂	home que fa la roda de carro
+🤸🏻‍♂️	home rodant: pell clara
+🤸🏻‍♂	home rodant: pell clara
+🤸🏼‍♂️	home rodant: pell mitjana-clara
+🤸🏼‍♂	home rodant: pell mitjana-clara
+🤸🏽‍♂️	home rodant: pell mitjana
+🤸🏽‍♂	home rodant: pell mitjana
+🤸🏾‍♂️	home rodant: pell mitjana-fosca
+🤸🏾‍♂	home rodant: pell mitjana-fosca
+🤸🏿‍♂️	home rodant: pell fosca
+🤸🏿‍♂	home rodant: pell fosca
+🤸‍♀️	dona que fa roda de carro
+🤸‍♀	dona que fa roda de carro
+🤸🏻‍♀️	dona roda de carro: pell clara
+🤸🏻‍♀	dona roda de carro: pell clara
+🤸🏼‍♀️	dona roda de carro: pell mitjana-clara
+🤸🏼‍♀	dona roda de carro: pell mitjana-clara
+🤸🏽‍♀️	dona roda de carro: pell mitjana
+🤸🏽‍♀	dona roda de carro: pell mitjana
+🤸🏾‍♀️	dona roda de carro: pell mitjana-fosca
+🤸🏾‍♀	dona roda de carro: pell mitjana-fosca
+🤸🏿‍♀️	dona roda de carro: pell fosca
+🤸🏿‍♀	dona roda de carro: pell fosca
+🤼	gent lluitant
+🤼‍♂️	homes lluitant
+🤼‍♂	homes lluitant
+🤼‍♀️	dones lluitant
+🤼‍♀	dones lluitant
+🤽	persona jugant a waterpolo
+🤽🏻	persona que juga a waterpolo: pell clara
+🤽🏼	persona que juga a waterpolo: pell mitjana-clara
+🤽🏽	persona que juga a waterpolo: pell mitjana
+🤽🏾	persona que juga a waterpolo: pell fosca mitjana
+🤽🏿	persona que juga a waterpolo: pell fosca
+🤽‍♂️	home jugant a waterpolo
+🤽‍♂	home jugant a waterpolo
+🤽🏻‍♂️	home jugant a waterpolo: pell clara
+🤽🏻‍♂	home jugant a waterpolo: pell clara
+🤽🏼‍♂️	home jugant a waterpolo: pell mitjana-clara
+🤽🏼‍♂	home jugant a waterpolo: pell mitjana-clara
+🤽🏽‍♂️	home jugant a waterpolo: pell mitjana
+🤽🏽‍♂	home jugant a waterpolo: pell mitjana
+🤽🏾‍♂️	home jugant a waterpolo: pell mig fosca
+🤽🏾‍♂	home jugant a waterpolo: pell mig fosca
+🤽🏿‍♂️	home jugant a waterpolo: pell fosca
+🤽🏿‍♂	home jugant a waterpolo: pell fosca
+🤽‍♀️	dona jugant a waterpolo
+🤽‍♀	dona jugant a waterpolo
+🤽🏻‍♀️	dona jugant a waterpolo: pell clara
+🤽🏻‍♀	dona jugant a waterpolo: pell clara
+🤽🏼‍♀️	dona jugant a waterpolo: pell mitjana-clara
+🤽🏼‍♀	dona jugant a waterpolo: pell mitjana-clara
+🤽🏽‍♀️	dona jugant a waterpolo: pell mitjana
+🤽🏽‍♀	dona jugant a waterpolo: pell mitjana
+🤽🏾‍♀️	dona jugant a waterpolo: pell fosca mitjana
+🤽🏾‍♀	dona jugant a waterpolo: pell fosca mitjana
+🤽🏿‍♀️	dona jugant a waterpolo: pell fosca
+🤽🏿‍♀	dona jugant a waterpolo: pell fosca
+🤾	persona jugant a handbol
+🤾🏻	persona que juga a handbol: pell clara
+🤾🏼	persona que juga a handbol: pell mitjana-clara
+🤾🏽	persona que juga a handbol: pell mitjana
+🤾🏾	persona que juga a handbol: pell mitjana-fosca
+🤾🏿	persona que juga a handbol: pell fosca
+🤾‍♂️	home jugant a handbol
+🤾‍♂	home jugant a handbol
+🤾🏻‍♂️	home jugant a handbol: pell clara
+🤾🏻‍♂	home jugant a handbol: pell clara
+🤾🏼‍♂️	home jugant a handbol: pell mitjana-clara
+🤾🏼‍♂	home jugant a handbol: pell mitjana-clara
+🤾🏽‍♂️	home jugant a handbol: pell mitjana
+🤾🏽‍♂	home jugant a handbol: pell mitjana
+🤾🏾‍♂️	home jugant a handbol: pell mig fosca
+🤾🏾‍♂	home jugant a handbol: pell mig fosca
+🤾🏿‍♂️	home jugant a handbol: pell fosca
+🤾🏿‍♂	home jugant a handbol: pell fosca
+🤾‍♀️	dona jugant a handbol
+🤾‍♀	dona jugant a handbol
+🤾🏻‍♀️	dona jugant a handbol: pell clara
+🤾🏻‍♀	dona jugant a handbol: pell clara
+🤾🏼‍♀️	dona jugant a handbol: pell mitjana-clara
+🤾🏼‍♀	dona jugant a handbol: pell mitjana-clara
+🤾🏽‍♀️	dona jugant a handbol: pell mitjana
+🤾🏽‍♀	dona jugant a handbol: pell mitjana
+🤾🏾‍♀️	dona jugant a handbol: pell mig fosca
+🤾🏾‍♀	dona jugant a handbol: pell mig fosca
+🤾🏿‍♀️	dona jugant a handbol: pell fosca
+🤾🏿‍♀	dona jugant a handbol: pell fosca
+🤹	persona que fa malabars
+🤹🏻	persona que fa malabars: pell clara
+🤹🏼	persona que fa malabars: pell mitjana-clara
+🤹🏽	persona que fa malabars: pell mitjana
+🤹🏾	persona que fa malabars: pell mitjana-fosca
+🤹🏿	persona que fa malabars: pell fosca
+🤹‍♂️	home que fa malabars
+🤹‍♂	home que fa malabars
+🤹🏻‍♂️	home malabars: pell clara
+🤹🏻‍♂	home malabars: pell clara
+🤹🏼‍♂️	home malabars: pell mitjana-clara
+🤹🏼‍♂	home malabars: pell mitjana-clara
+🤹🏽‍♂️	home malabars: pell mitjana
+🤹🏽‍♂	home malabars: pell mitjana
+🤹🏾‍♂️	home malabars: pell mitjana-fosca
+🤹🏾‍♂	home malabars: pell mitjana-fosca
+🤹🏿‍♂️	home malabars: pell fosca
+🤹🏿‍♂	home malabars: pell fosca
+🤹‍♀️	dona que fa malabars
+🤹‍♀	dona que fa malabars
+🤹🏻‍♀️	dona malabarista: pell clara
+🤹🏻‍♀	dona malabarista: pell clara
+🤹🏼‍♀️	dona malabarista: pell mitjana-clara
+🤹🏼‍♀	dona malabarista: pell mitjana-clara
+🤹🏽‍♀️	dona malabarista: pell mitjana
+🤹🏽‍♀	dona malabarista: pell mitjana
+🤹🏾‍♀️	dona malabarista: pell mitjana-fosca
+🤹🏾‍♀	dona malabarista: pell mitjana-fosca
+🤹🏿‍♀️	dona malabarista: pell fosca
+🤹🏿‍♀	dona malabarista: pell fosca
+👫	home i dona agafats de la mà
+👬	dos homes agafats de la mà
+👭	dues dones agafades de la mà
+💏	petó
+👩‍❤️‍💋‍👨	petó: dona, home
+👩‍❤‍💋‍👨	petó: dona, home
+👨‍❤️‍💋‍👨	petó: home, home
+👨‍❤‍💋‍👨	petó: home, home
+👩‍❤️‍💋‍👩	petó: dona, dona
+👩‍❤‍💋‍👩	petó: dona, dona
+💑	parella amb cor
+👩‍❤️‍👨	parella amb cor: dona, home
+👩‍❤‍👨	parella amb cor: dona, home
+👨‍❤️‍👨	parella amb cor: home, home
+👨‍❤‍👨	parella amb cor: home, home
+👩‍❤️‍👩	parella amb cor: dona, dona
+👩‍❤‍👩	parella amb cor: dona, dona
+👪	família
+👨‍👩‍👦	família: home, dona, nen
+👨‍👩‍👧	família: home, dona, nena
+👨‍👩‍👧‍👦	família: home, dona, noia, nen
+👨‍👩‍👦‍👦	família: home, dona, nen, nen
+👨‍👩‍👧‍👧	família: home, dona, noia, noia
+👨‍👨‍👦	família: home, home, nen
+👨‍👨‍👧	família: home, home, noia
+👨‍👨‍👧‍👦	família: home, home, noia, nen
+👨‍👨‍👦‍👦	família: home, home, nen, nen
+👨‍👨‍👧‍👧	família: home, home, noia, noia
+👩‍👩‍👦	família: dona, dona, nen
+👩‍👩‍👧	família: dona, dona, nena
+👩‍👩‍👧‍👦	família: dona, dona, nena, nen
+👩‍👩‍👦‍👦	família: dona, dona, nen, nen
+👩‍👩‍👧‍👧	família: dona, dona, nena, nena
+👨‍👦	família: home, nen
+👨‍👦‍👦	família: home, noi, noi
+👨‍👧	família: home, noia
+👨‍👧‍👦	família: home, noia, noi
+👨‍👧‍👧	família: home, noia, noia
+👩‍👦	família: dona, nen
+👩‍👦‍👦	família: dona, noi, noi
+👩‍👧	família: dona, nena
+👩‍👧‍👦	família: dona, noia, noi
+👩‍👧‍👧	família: dona, nena, nena
+🤳	selfie
+🤳🏻	selfie: pell clara
+🤳🏼	selfie: pell mitjana-clara
+🤳🏽	selfie: pell mitjana
+🤳🏾	selfie: to de pell mig fosc
+🤳🏿	selfie: pell fosca
+💪	bíceps flexionats
+💪🏻	bíceps flexionats: pell clara
+💪🏼	bíceps flexionats: pell mitjana-clara
+💪🏽	bíceps flexionats: pell mitjana
+💪🏾	bíceps flexionats: pell mitjana-fosca
+💪🏿	bíceps flexionats: pell fosca
+🦵	cama
+🦵🏻	cama: pell clara
+🦵🏼	cama: pell mitjana-clara
+🦵🏽	cama: pell mitjana
+🦵🏾	cama: pell mitjana-fosca
+🦵🏿	cama: pell fosca
+🦶	peu
+🦶🏻	peu: pell clara
+🦶🏼	peu: pell mitjana-clara
+🦶🏽	peu: pell mitjana
+🦶🏾	peu: pell mitjana-fosca
+🦶🏿	peu: pell fosca
+👈	índex de revés apuntant a l'esquerra
+👈🏻	índex del revés apuntant a l'esquerra: pell clara
+👈🏼	índex del revés apuntant a l'esquerra: pell mitjana-clara
+👈🏽	índex del revés apuntant a l'esquerra: pell mitjana
+👈🏾	índex del revés apuntant cap a l'esquerra: to de pell mig fosc
+👈🏿	índex del revés apuntant a l'esquerra: pell fosca
+👉	índex de revés apuntant a la dreta
+👉🏻	índex del revés apuntant a la dreta: pell clara
+👉🏼	índex del revés apuntant a la dreta: pell mitjana-clara
+👉🏽	índex del revés apuntant a la dreta: pell mitjana
+👉🏾	índex del revés apuntant a la dreta: pell mitjana-fosca
+👉🏿	índex del revés apuntant a la dreta: pell fosca
+☝️	índex apuntant cap amunt
+☝	índex apuntant cap amunt
+☝🏻	índex cap amunt: pell clara
+☝🏼	índex cap amunt: pell mitjana-clara
+☝🏽	índex cap amunt: pell mitjana
+☝🏾	índex cap amunt: to de pell mig fosc
+☝🏿	índex cap amunt: pell fosca
+👆	índex de revés apuntant cap amunt
+👆🏻	índex del revés apuntant cap amunt: pell clara
+👆🏼	índex del revés apuntant cap amunt: pell mitjana-clara
+👆🏽	índex del revés apuntant cap amunt: pell mitjana
+👆🏾	índex del revés apuntant cap amunt: pell mitjana-fosca
+👆🏿	índex del revés apuntant cap amunt: pell fosca
+🖕	dit del cor
+🖕🏻	dit mitjà: pell clara
+🖕🏼	dit mitjà: pell mitjana-clara
+🖕🏽	dit mitjà: pell mitjana
+🖕🏾	dit mitjà: pell mitjana-fosca
+🖕🏿	dit mitjà: pell fosca
+👇	índex de revés apuntant cap avall
+👇🏻	índex del revés apuntant cap avall: pell clara
+👇🏼	índex del revés apuntant cap avall: pell mitjana-clara
+👇🏽	índex del revés apuntant cap avall: pell mitjana
+👇🏾	índex del revés apuntant cap avall: to de pell mig fosc
+👇🏿	índex del revés apuntant cap avall: pell fosca
+✌️	mà de la victòria
+✌	mà de la victòria
+✌🏻	mà de la victòria: pell clara
+✌🏼	mà de la victòria: pell mitjana-clara
+✌🏽	mà de la victòria: pell mitjana
+✌🏾	mà de la victòria: pell mitjana-fosca
+✌🏿	mà de la victòria: pell fosca
+🤞	els dits creuats
+🤞🏻	dits creuats: pell clara
+🤞🏼	dits creuats: pell mitjana-clara
+🤞🏽	dits creuats: pell mitjana
+🤞🏾	dits creuats: pell mitjana-fosca
+🤞🏿	dits creuats: pell fosca
+🖖	salutació vulcà
+🖖🏻	salutació vulcà: pell clara
+🖖🏼	salutació vulcana: pell mitjana-clara
+🖖🏽	salutació vulcà: pell mitjana
+🖖🏾	salutació vulcana: pell mitjana-fosca
+🖖🏿	salutació vulcà: pell fosca
+🤘	signe de les banyes
+🤘🏻	signe de les banyes: pell clara
+🤘🏼	signe de les banyes: pell mitjana-clara
+🤘🏽	signe de les banyes: pell mitjana
+🤘🏾	signe de les banyes: pell mitjana-fosca
+🤘🏿	signe de les banyes: pell fosca
+🤙	crida'm mà
+🤙🏻	truca'm mà: pell clara
+🤙🏼	crida'm la mà: pell mitjana-clara
+🤙🏽	truca'm mà: pell mitjana
+🤙🏾	crida'm la mà: pell mitjana-fosca
+🤙🏿	truca'm mà: pell fosca
+🖐️	mà amb els dits oberts
+🖐	mà amb els dits oberts
+🖐🏻	mà amb els dits oberts: pell clara
+🖐🏼	mà amb els dits oberts: pell mitjana-clara
+🖐🏽	mà amb els dits oberts: pell mitjana
+🖐🏾	mà amb els dits oberts: pell mitjana-fosca
+🖐🏿	mà amb els dits oberts: pell fosca
+✋	mà aixecada
+✋🏻	mà aixecada: pell clara
+✋🏼	mà aixecada: pell mitjana-clara
+✋🏽	mà aixecada: pell mitjana
+✋🏾	mà alçada: pell mitjana-fosca
+✋🏿	mà aixecada: pell fosca
+👌	Bé mà
+👌🏻	Mà correcta: pell clara
+👌🏼	Mà correcta: pell mitjana-clara
+👌🏽	Mà correcta: pell mitjana
+👌🏾	Mà correcta: pell mitjana-fosca
+👌🏿	Mà d'acord: pell fosca
+👍	polzes amunt
+👍🏻	polze cap amunt: pell clara
+👍🏼	polze cap amunt: pell mitjana-clara
+👍🏽	polze cap amunt: pell mitjana
+👍🏾	polze cap amunt: to de pell mig fosc
+👍🏿	polze cap amunt: pell fosca
+👎	polzes cap avall
+👎🏻	polze cap avall: pell clara
+👎🏼	polze cap avall: to de pell mitjà-clar
+👎🏽	polze cap avall: pell mitjana
+👎🏾	polze cap avall: to de pell mig fosc
+👎🏿	polze cap avall: pell fosca
+✊	puny aixecat
+✊🏻	puny aixecat: pell clara
+✊🏼	puny aixecat: pell mitjana-clara
+✊🏽	puny aixecat: pell mitjana
+✊🏾	puny aixecat: pell mitjana-fosca
+✊🏿	puny aixecat: pell fosca
+👊	puny que s'acosta
+👊🏻	puny que s'acosta: pell clara
+👊🏼	puny que s'acosta: pell mitjana-clara
+👊🏽	puny que s'acosta: pell mitjana
+👊🏾	puny que s'acosta: pell mitjana-fosca
+👊🏿	puny que s'acosta: pell fosca
+🤛	puny a l'esquerra
+🤛🏻	puny a l'esquerra: pell clara
+🤛🏼	puny a l'esquerra: pell mitjana-clara
+🤛🏽	puny a l'esquerra: pell mitjana
+🤛🏾	puny a l'esquerra: pell mitjana-fosca
+🤛🏿	puny a l'esquerra: pell fosca
+🤜	puny de cara a la dreta
+🤜🏻	puny a la dreta: pell clara
+🤜🏼	puny de cara a la dreta: pell mitjana-clara
+🤜🏽	puny de cara a la dreta: pell mitjana
+🤜🏾	puny de cara a la dreta: pell mitjana-fosca
+🤜🏿	puny a la dreta: pell fosca
+🤚	dors de la mà aixecat
+🤚🏻	dors de la mà aixecat: pell clara
+🤚🏼	dors de la mà aixecat: pell mitjana-clara
+🤚🏽	dors de la mà aixecat: pell mitjana
+🤚🏾	dors de la mà aixecat: pell mitjana-fosca
+🤚🏿	dors de la mà aixecat: pell fosca
+👋	agitant la mà
+👋🏻	agitant la mà: pell clara
+👋🏼	mà agitant: pell mitjana-clara
+👋🏽	agitant la mà: pell mitjana
+👋🏾	amb la mà agitant: pell mitjana-fosca
+👋🏿	agitant la mà: pell fosca
+🤟	gest d'estimo
+🤟🏻	gest t'estimo: pell clara
+🤟🏼	gest t'estimo: pell mitjana-clara
+🤟🏽	gest t'estimo: pell mitjana
+🤟🏾	gest t'estimo: pell fosca mitjana
+🤟🏿	gest t'estimo: pell fosca
+✍️	mà escrivint
+✍	mà escrivint
+✍🏻	mà d'escriptura: pell clara
+✍🏼	mà d'escriptura: pell mitjana-clara
+✍🏽	mà d'escriptura: pell mitjana
+✍🏾	mà d'escriptura: pell mitjana-fosca
+✍🏿	mà d'escriptura: pell fosca
+👏	picant de mans
+👏🏻	aplaudiment: pell clara
+👏🏼	aplaudiment: pell mitjana-clara
+👏🏽	aplaudiment: pell mitjana
+👏🏾	aplaudiment: pell mitjana-fosca
+👏🏿	aplaudiment: pell fosca
+👐	mans obertes
+👐🏻	mans obertes: pell clara
+👐🏼	mans obertes: pell mitjana-clara
+👐🏽	mans obertes: pell mitjana
+👐🏾	mans obertes: pell mitjana-fosca
+👐🏿	mans obertes: pell fosca
+🙌	aixecant les mans
+🙌🏻	mans alçades: pell clara
+🙌🏼	mans alçades: pell mitjana-clara
+🙌🏽	mans aixecades: pell mitjana
+🙌🏾	mans alçades: pell fosca mitjana
+🙌🏿	mans alçades: pell fosca
+🤲	palmells cap amunt junts
+🤲🏻	palmells cap amunt junts: pell clara
+🤲🏼	palmells cap amunt junts: pell mitjana-clara
+🤲🏽	palmells cap amunt junts: pell mitjana
+🤲🏾	palmells cap amunt junts: to de pell mig fosc
+🤲🏿	palmells cap amunt junts: pell fosca
+🙏	mans plegades
+🙏🏻	mans plegades: pell clara
+🙏🏼	mans plegades: pell mitjana-clara
+🙏🏽	mans plegades: pell mitjana
+🙏🏾	mans plegades: pell mitjana-fosca
+🙏🏿	mans plegades: pell fosca
+🤝	encaixada de mans
+💅	esmalt per a les ungles
+💅🏻	esmalt d'ungles: pell clara
+💅🏼	esmalt d'ungles: pell mitjana-clara
+💅🏽	esmalt d'ungles: pell mitjana
+💅🏾	esmalt d'ungles: to de pell mig fosc
+💅🏿	esmalt d'ungles: pell fosca
+👂	orella
+👂🏻	orella: pell clara
+👂🏼	oïda: pell mitjana-clara
+👂🏽	orella: pell mitjana
+👂🏾	orella: pell fosca mitjana
+👂🏿	orella: pell fosca
+👃	nas
+👃🏻	nas: pell clara
+👃🏼	nas: pell mitjana-clara
+👃🏽	nas: pell mitjana
+👃🏾	nas: pell mitjana-fosca
+👃🏿	nas: pell fosca
+🦰	pèl-roig
+🦱	cabell arrissat
+🦲	calb
+🦳	pèl blanc
+👣	petjades
+👀	ulls
+👁️	ull
+👁	ull
+👁️‍🗨️	ull a la bafarada
+👁‍🗨️	ull a la bafarada
+👁️‍🗨	ull a la bafarada
+👁‍🗨	ull a la bafarada
+🧠	cervell
+🦴	os
+🦷	dent
+👅	llengua
+👄	boca
+💋	marca de petó
+💘	cor amb fletxa
+❤️	cor vermell
+❤	cor vermell
+💓	cor bategant
+💔	cor trencat
+💕	dos cors
+💖	cor brillant
+💗	cor creixent
+💙	cor blau
+💚	cor verd
+💛	cor groc
+🧡	cor taronja
+💜	cor porpra
+🖤	cor negre
+💝	cor amb cinta
+💞	cors giratoris
+💟	decoració del cor
+❣️	exclamació del cor pesat
+❣	exclamació del cor pesat
+💌	carta d'amor
+💤	zzz
+💢	símbol de la ira
+💣	bomba
+💥	col·lisió
+💦	gotes de suor
+💨	fugint-se
+💫	marejat
+💬	globus de parla
+🗨️	bombolla esquerra
+🗨	bombolla esquerra
+🗯️	bombolla d'ira dreta
+🗯	bombolla d'ira dreta
+💭	globus de pensament
+🕳️	forat
+🕳	forat
+👓	ulleres
+🕶️	ulleres de sol
+🕶	ulleres de sol
+🥽	ulleres de protecció
+🥼	bata de laboratori
+👔	corbata
+👕	samarreta
+👖	texans
+🧣	bufanda
+🧤	guants
+🧥	abric
+🧦	mitjons
+👗	vestit
+👘	quimono
+👙	biquini
+👚	roba de dona
+👛	bossa
+👜	bossa de mà
+👝	bossa d'embragatge
+🛍️	bosses de la compra
+🛍	bosses de la compra
+🎒	motxilla escolar
+👞	sabata d'home
+👟	sabata de running
+🥾	bota de muntanya
+🥿	sabata plana de dona
+👠	sabata de taló alt
+👡	sandàlia de dona
+👢	bota de dona
+👑	corona
+👒	barret de dona
+🎩	barret de copa
+🎓	gorra de graduació
+🧢	tapa facturada
+⛑️	casc de rescatista
+⛑	casc de rescatista
+📿	Rosari
+💄	pintallavis
+💍	anell
+💎	pedra preciosa
+🐵	cara de mico
+🐒	mico
+🦍	goril·la
+🐶	cara de gos
+🐕	gos
+🐩	caniche
+🐺	cara de llop
+🦊	cara de guineu
+🦝	mapache
+🐱	cara de gat
+🐈	gat
+🦁	cara de lleó
+🐯	cara de tigre
+🐅	tigre
+🐆	lleopard
+🐴	cara de cavall
+🐎	cavall
+🦄	cara d'unicorn
+🦓	zebra
+🦌	cérvol
+🐮	cara de vaca
+🐂	bou
+🐃	búfal d'aigua
+🐄	vaca
+🐷	cara de porc
+🐖	porc
+🐗	senglar
+🐽	nas de porc
+🐏	ram
+🐑	ovella
+🐐	cabra
+🐪	camell
+🐫	camell de dues gepes
+🦙	llama
+🦒	girafa
+🐘	elefant
+🦏	rinoceront
+🦛	hipopòtam
+🐭	cara del ratolí
+🐁	ratolí
+🐀	rata
+🐹	cara de hàmster
+🐰	cara de conill
+🐇	conill
+🐿️	esquirol
+🐿	esquirol
+🦔	eriçó
+🦇	ratpenat
+🐻	cara d'ós
+🐨	coala
+🐼	cara de panda
+🦘	cangur
+🦡	teixó
+🐾	empremtes de potes
+🦃	gall dindi
+🐔	pollastre
+🐓	gall
+🐣	pollet que eclosiona
+🐤	pollet
+🐥	pollet de davant
+🐦	ocell
+🐧	pingüí
+🕊️	coloma
+🕊	coloma
+🦅	àguila
+🦆	ànec
+🦢	cigne
+🦉	òliba
+🦚	paó
+🦜	lloro
+🐸	cara de granota
+🐊	cocodril
+🐢	tortuga
+🦎	sargantana
+🐍	serp
+🐲	cara de drac
+🐉	drac
+🦕	sauròpode
+🦖	T-Rex
+🐳	balena brotant
+🐋	balena
+🐬	dofí
+🐟	peixos
+🐠	peixos tropicals
+🐡	peix globus
+🦈	tauró
+🐙	pop
+🐚	closca espiral
+🦀	cranc
+🦞	llagosta
+🦐	gambeta
+🦑	calamar
+🐌	cargol
+🦋	papallona
+🐛	error
+🐜	formiga
+🐝	mel d'abella
+🐞	senyora escarabat
+🦗	cricket
+🕷️	aranya
+🕷	aranya
+🕸️	teranyina
+🕸	teranyina
+🦂	escorpí
+🦟	mosquit
+🦠	microbi
+💐	ram
+🌸	flor de cirerer
+💮	flor blanca
+🏵️	roseta
+🏵	roseta
+🌹	rosa
+🥀	flor marcida
+🌺	hibisc
+🌻	gira-sol
+🌼	flor
+🌷	tulipa
+🌱	plàntula
+🌲	arbre de fulla perenne
+🌳	arbre caducifoli
+🌴	Palmera
+🌵	cactus
+🌾	garrot d'arròs
+🌿	herba
+☘️	trébol
+☘	trébol
+🍀	trèvol de quatre fulles
+🍁	fulla d'auró
+🍂	fulla caiguda
+🍃	fulla aletejant pel vent
+🍇	raïm
+🍈	meló
+🍉	síndria
+🍊	mandarina
+🍋	llimona
+🍌	plàtan
+🍍	pinya
+🥭	mango
+🍎	poma vermella
+🍏	poma verda
+🍐	pera
+🍑	préssec
+🍒	cireres
+🍓	maduixa
+🥝	kiwi
+🍅	tomàquet
+🥥	coco
+🥑	alvocat
+🍆	albergínia
+🥔	patata
+🥕	pastanaga
+🌽	espiga de blat de moro
+🌶️	pebrot picant
+🌶	pebrot picant
+🥒	cogombre
+🥬	verd de fulla
+🥦	bròquil
+🍄	bolet
+🥜	cacauets
+🌰	castanya
+🍞	pa
+🥐	croissant
+🥖	pa de baguette
+🥨	pretzel
+🥯	bagel
+🥞	panqueques
+🧀	falca de formatge
+🍖	carn sobre os
+🍗	cuixa d'au
+🥩	tall de carn
+🥓	cansalada
+🍔	hamburguesa
+🍟	patates fregides
+🍕	pizza
+🌭	gosset calent
+🥪	entrepà
+🌮	tac
+🌯	burrito
+🥙	pa farcit
+🥚	ou
+🍳	cuinar
+🥘	paella poc profunda de menjar
+🍲	pot de menjar
+🥣	bol amb cullera
+🥗	amanida verda
+🍿	crispetes de blat de moro
+🧂	sal
+🥫	aliments enllaunats
+🍱	caixa bento
+🍘	galleta d'arròs
+🍙	bola d'arròs
+🍚	arròs cuit
+🍛	arròs al curri
+🍜	bol de vapor
+🍝	espaguetis
+🍠	moniato rostit
+🍢	oden
+🍣	sushi
+🍤	gambes fregides
+🍥	pastís de peix amb remolí
+🥮	pastís de lluna
+🍡	dango
+🥟	dumpling
+🥠	galeta de la fortuna
+🥡	caixa per emportar
+🍦	gelat suau
+🍧	gel raspat
+🍨	gelat
+🍩	bunyol
+🍪	galeta
+🎂	pastís d'aniversari
+🍰	pastís
+🧁	magdalena
+🥧	pastís
+🍫	barra de xocolata
+🍬	caramels
+🍭	piruleta
+🍮	natilla
+🍯	pot de mel
+🍼	biberó
+🥛	got de llet
+☕	beguda calenta
+🍵	tassa de te sense nansa
+🍶	sake
+🍾	ampolla amb suro esclatant
+🍷	Copa de vi
+🍸	copa de còctel
+🍹	beguda tropical
+🍺	tassa de cervesa
+🍻	tasses de cervesa tintinejant
+🥂	gots tintinejants
+🥃	got de vidre
+🥤	tassa amb palla
+🥢	escuradents
+🍽️	forquilla i ganivet amb plat
+🍽	forquilla i ganivet amb plat
+🍴	forquilla i ganivet
+🥄	cullera
+🔪	ganivet de cuina
+🏺	àmfora
+🌍	Globus que mostra Europa-Àfrica
+🌎	globus terrestre que mostra Amèrica
+🌏	Globus que mostra Àsia-Austràlia
+🌐	globus terrestre amb meridians
+🗺️	mapa del Món
+🗺	mapa del Món
+🗾	mapa del Japó
+🧭	brúixola
+🏔️	muntanya nevada
+🏔	muntanya nevada
+⛰️	muntanya
+⛰	muntanya
+🌋	volcà
+🗻	mont fuji
+🏕️	campament
+🏕	campament
+🏖️	platja amb para-sol
+🏖	platja amb para-sol
+🏜️	desert
+🏜	desert
+🏝️	illa deserta
+🏝	illa deserta
+🏞️	Parc Nacional
+🏞	Parc Nacional
+🏟️	estadi
+🏟	estadi
+🏛️	edifici clàssic
+🏛	edifici clàssic
+🏗️	construcció d'edificis
+🏗	construcció d'edificis
+🧱	maons
+🏘️	cases
+🏘	cases
+🏚️	casa abandonada
+🏚	casa abandonada
+🏠	casa
+🏡	casa amb jardí
+🏢	edifici d'oficines
+🏣	Correus japonesos
+🏤	Oficina de correus
+🏥	hospital
+🏦	banc
+🏨	hotel
+🏩	hotel d'amor
+🏪	botiga de conveniència
+🏫	escola
+🏬	grans magatzems
+🏭	fàbrica
+🏯	castell japonès
+🏰	castell
+💒	casament
+🗼	Torre de Tòquio
+🗽	Estàtua de la Llibertat
+⛪	Església
+🕌	mesquita
+🕍	sinagoga
+⛩️	santuari xintoista
+⛩	santuari xintoista
+🕋	kaaba
+⛲	Font
+⛺	tenda de campanya
+🌁	boira
+🌃	nit amb estrelles
+🏙️	paisatge urbà
+🏙	paisatge urbà
+🌄	sortida de sol sobre muntanyes
+🌅	sortida del sol
+🌆	paisatge urbà al capvespre
+🌇	posta de sol
+🌉	pont a la nit
+♨️	aigües termals
+♨	aigües termals
+🌌	Via Làctea
+🎠	cavall de carrusel
+🎡	roda de ferris
+🎢	muntanya russa
+💈	pal de barber
+🎪	carpa de circ
+🚂	locomotora
+🚃	vagó de ferrocarril
+🚄	tren d'alta velocitat
+🚅	tren bala
+🚆	tren
+🚇	metro
+🚈	tren lleuger
+🚉	estació
+🚊	tramvia
+🚝	monorail
+🚞	ferrocarril de muntanya
+🚋	tramvia
+🚌	autobús
+🚍	autobús que ve
+🚎	troleibús
+🚐	microbús
+🚑	ambulància
+🚒	camió de bombers
+🚓	cotxe de policia
+🚔	cotxe de policia que s'acosta
+🚕	taxi
+🚖	taxi que ve en sentit contrari
+🚗	automòbil
+🚘	automòbil que ve en sentit contrari
+🚙	vehicle utilitari esportiu
+🚚	camió de lliurament
+🚛	camió articulat
+🚜	tractor
+🚲	bicicleta
+🛴	patinet de peu
+🛹	monopatí
+🛵	scooter de motor
+🚏	parada d'autobús
+🛣️	autopista
+🛣	autopista
+🛤️	via del ferrocarril
+🛤	via del ferrocarril
+🛢️	bidó d'oli
+🛢	bidó d'oli
+⛽	bomba del combustible
+🚨	llum del cotxe de la policia
+🚥	semàfor horitzontal
+🚦	semàfor vertical
+🛑	senyal de stop
+🚧	construcció
+⚓	àncora
+⛵	veler
+🛶	canoa
+🚤	llanxa ràpida
+🛳️	vaixell de passatgers
+🛳	vaixell de passatgers
+⛴️	ferri
+⛴	ferri
+🛥️	llanxa motora
+🛥	llanxa motora
+🚢	vaixell
+✈️	avió
+✈	avió
+🛩️	avió petit
+🛩	avió petit
+🛫	sortida de l'avió
+🛬	arribada de l'avió
+💺	seient
+🚁	helicòpter
+🚟	ferrocarril suspès
+🚠	telefèric de muntanya
+🚡	tramvia aeri
+🛰️	satèl·lit
+🛰	satèl·lit
+🚀	coet
+🛸	disc volador
+🛎️	campana de botons
+🛎	campana de botons
+🧳	equipatge
+⌛	rellotge de sorra fet
+⏳	rellotge de sorra no fet
+⌚	veure
+⏰	despertador
+⏱️	cronòmetre
+⏱	cronòmetre
+⏲️	rellotge del temporitzador
+⏲	rellotge del temporitzador
+🕰️	rellotge de xemeneia
+🕰	rellotge de xemeneia
+🕛	les dotze en punt
+🕧	dotze trenta
+🕐	una en punt
+🕜	dos quarts d'una
+🕑	les dues en punt
+🕝	dos quarts de tres
+🕒	les tres en punt
+🕞	tres trenta
+🕓	les quatre en punt
+🕟	quatre quarts de deu
+🕔	les cinc en punt
+🕠	cinc trenta
+🕕	les sis en punt
+🕡	sis trenta
+🕖	les set en punt
+🕢	Dos quarts de vuit
+🕗	les vuit en punt
+🕣	les vuit i mitja
+🕘	les nou en punt
+🕤	dos quarts de deu
+🕙	les deu en punt
+🕥	deu trenta
+🕚	onze en punt
+🕦	onze trenta
+🌑	lluna nova
+🌒	lluna creixent creixent
+🌓	primer quart de lluna
+🌔	lluna gibosa creixent
+🌕	lluna plena
+🌖	lluna gibosa minvant
+🌗	darrer quart de lluna
+🌘	lluna creixent minvant
+🌙	lluna creixent
+🌚	cara de lluna nova
+🌛	cara de lluna del primer quart
+🌜	cara de lluna del darrer quart
+🌡️	termòmetre
+🌡	termòmetre
+☀️	sol
+☀	sol
+🌝	cara de lluna plena
+🌞	sol amb cara
+⭐	estrella
+🌟	estrella brillant
+🌠	estrella fugaç
+☁️	núvol
+☁	núvol
+⛅	sol darrere dels núvols
+⛈️	núvol amb llamps i pluja
+⛈	núvol amb llamps i pluja
+🌤️	sol darrere d'un petit núvol
+🌤	sol darrere d'un petit núvol
+🌥️	sol darrere d'un gran núvol
+🌥	sol darrere d'un gran núvol
+🌦️	sol darrere d'un núvol de pluja
+🌦	sol darrere d'un núvol de pluja
+🌧️	núvol amb pluja
+🌧	núvol amb pluja
+🌨️	núvol amb neu
+🌨	núvol amb neu
+🌩️	núvol amb llamps
+🌩	núvol amb llamps
+🌪️	tornado
+🌪	tornado
+🌫️	boira
+🌫	boira
+🌬️	cara de vent
+🌬	cara de vent
+🌀	cicló
+🌈	arc de Sant Martí
+🌂	paraigua tancat
+☂️	paraigua
+☂	paraigua
+☔	paraigua amb gotes de pluja
+⛱️	paraigua a terra
+⛱	paraigua a terra
+⚡	alt voltatge
+❄️	floc de neu
+❄	floc de neu
+☃️	ninot de neu
+☃	ninot de neu
+⛄	ninot de neu sense neu
+☄️	cometa
+☄	cometa
+🔥	foc
+💧	gota
+🌊	onada d'aigua
+🎃	carbassa de Halloween
+🎄	arbre de Nadal
+🎆	focs artificials
+🎇	espurna
+🧨	petard
+✨	espurnes
+🎈	globus
+🎉	pop de festa
+🎊	bola de confeti
+🎋	arbre tanabata
+🎍	decoració de pi
+🎎	Nines japoneses
+🎏	serpentina de carpa
+🎐	campana de vent
+🎑	cerimònia de visualització de la lluna
+🧧	sobre vermell
+🎀	cinta
+🎁	regal embolicat
+🎗️	cinta de recordatori
+🎗	cinta de recordatori
+🎟️	bitllets d'entrada
+🎟	bitllets d'entrada
+🎫	bitllet
+🎖️	medalla militar
+🎖	medalla militar
+🏆	Trofeu
+🏅	medalla esportiva
+🥇	Medalla de 1r lloc
+🥈	Medalla de 2n lloc
+🥉	Medalla del 3r classificat
+⚽	pilota de futbol
+⚾	beisbol
+🥎	softbol
+🏀	bàsquet
+🏐	voleibol
+🏈	futbol americà
+🏉	futbol de rugbi
+🎾	tennis
+🥏	disc volador
+🎳	bitlles
+🏏	joc de cricket
+🏑	hoquei sobre gespa
+🏒	hoquei sobre gel
+🥍	lacrosse
+🏓	Tenis de taula
+🏸	bàdminton
+🥊	guant de boxa
+🥋	uniforme d'arts marcials
+🥅	porteria net
+⛳	bandera al forat
+⛸️	patinatge sobre gel
+⛸	patinatge sobre gel
+🎣	canya de pescar
+🎽	samarreta de running
+🎿	esquís
+🛷	trineu
+🥌	pedra de curling
+🎯	cop directe
+🎱	bola de billar 8
+🔮	bola de vidre
+🧿	amulet nazar
+🎮	videojoc
+🕹️	joystick
+🕹	joystick
+🎰	escurabutxaques
+🎲	joc morir
+🧩	trencaclosques
+🧸	osset de peluix
+♠️	vestit de pala
+♠	vestit de pala
+♥️	vestit de cor
+♥	vestit de cor
+♦️	vestit de diamants
+♦	vestit de diamants
+♣️	vestit de club
+♣	vestit de club
+♟️	peó d'escacs
+♟	peó d'escacs
+🃏	bromista
+🀄	drac vermell mahjong
+🎴	jugant a cartes de flors
+🎭	les Arts escèniques
+🖼️	imatge emmarcada
+🖼	imatge emmarcada
+🎨	paleta d'artista
+🧵	fil
+🧶	fil
+🔇	altaveu silenciat
+🔈	volum baix de l'altaveu
+🔉	altaveu de volum mitjà
+🔊	altaveu de gran volum
+📢	altaveu
+📣	megàfon
+📯	banya postal
+🔔	timbre
+🔕	campana amb barra
+🎼	partitura musical
+🎵	nota musical
+🎶	notes musicals
+🎙️	micròfon d'estudi
+🎙	micròfon d'estudi
+🎚️	control lliscant de nivell
+🎚	control lliscant de nivell
+🎛️	botons de control
+🎛	botons de control
+🎤	micròfon
+🎧	auriculars
+📻	ràdio
+🎷	saxofon
+🎸	guitarra
+🎹	teclat musical
+🎺	trompeta
+🎻	violí
+🥁	tambor
+📱	telèfon mòbil
+📲	telèfon mòbil amb fletxa
+☎️	telèfon
+☎	telèfon
+📞	receptor telefònic
+📟	paginador
+📠	màquina de fax
+🔋	bateria
+🔌	endoll elèctric
+💻	ordinador portàtil
+🖥️	ordinador d'escriptori
+🖥	ordinador d'escriptori
+🖨️	impressora
+🖨	impressora
+⌨️	teclat
+⌨	teclat
+🖱️	Ratolí de l'ordinador
+🖱	Ratolí de l'ordinador
+🖲️	trackball
+🖲	trackball
+💽	disc de l'ordinador
+💾	disquet
+💿	disc òptic
+📀	dvd
+🧮	àbac
+🎥	càmera de cinema
+🎞️	fotogrames de pel·lícula
+🎞	fotogrames de pel·lícula
+📽️	projector de pel·lícules
+📽	projector de pel·lícules
+🎬	tauler de claquer
+📺	televisió
+📷	càmera
+📸	càmera amb flaix
+📹	càmera de vídeo
+📼	videocassette
+🔍	lupa inclinada a l'esquerra
+🔎	lupa inclinada cap a la dreta
+🕯️	espelma
+🕯	espelma
+💡	bombeta
+🔦	llanterna
+🏮	llanterna de paper vermell
+📔	llibreta amb coberta decorativa
+📕	llibre tancat
+📖	llibre obert
+📗	llibre verd
+📘	llibre blau
+📙	llibre taronja
+📚	llibres
+📓	quadern
+📒	llibre major
+📃	pàgina amb rínxol
+📜	desplaçar-se
+📄	pàgina cap amunt
+📰	diari
+🗞️	diari enrotllat
+🗞	diari enrotllat
+📑	pestanyes d'adreces d'interès
+🔖	marcador
+🏷️	etiqueta
+🏷	etiqueta
+💰	bossa de diners
+💴	bitllet de iens
+💵	bitllet d'un dòlar
+💶	bitllet en euros
+💷	bitllet de lliura
+💸	diners amb ales
+💳	targeta de crèdit
+🧾	rebut
+💹	gràfic augmenta amb el ien
+💱	canvi de divises
+💲	signe de dòlar pesat
+✉️	sobre
+✉	sobre
+📧	correu electrònic
+📨	sobre entrant
+📩	sobre amb fletxa
+📤	safata de sortida
+📥	safata d'entrada
+📦	paquet
+📫	bústia tancada amb bandera aixecada
+📪	bústia tancada amb bandera baixada
+📬	bústia oberta amb bandera aixecada
+📭	bústia oberta amb bandera baixada
+📮	bústia
+🗳️	urna amb papereta
+🗳	urna amb papereta
+✏️	llapis
+✏	llapis
+✒️	punta negra
+✒	punta negra
+🖋️	ploma estilogràfica
+🖋	ploma estilogràfica
+🖊️	bolígraf
+🖊	bolígraf
+🖌️	pinzell
+🖌	pinzell
+🖍️	llapis de color
+🖍	llapis de color
+📝	nota
+💼	maletí
+📁	carpeta d'arxius
+📂	obrir la carpeta de fitxers
+🗂️	divisors d'índex de targetes
+🗂	divisors d'índex de targetes
+📅	calendari
+📆	calendari d'esquinçament
+🗒️	bloc de notes en espiral
+🗒	bloc de notes en espiral
+🗓️	calendari en espiral
+🗓	calendari en espiral
+📇	índex de la targeta
+📈	gràfic augmentant
+📉	gràfic decreixent
+📊	gràfic de barres
+📋	porta-retalls
+📌	xinxeta
+📍	passador rodona
+📎	clip de paper
+🖇️	clips enllaçats
+🖇	clips enllaçats
+📏	regle recta
+📐	regle triangular
+✂️	tisores
+✂	tisores
+🗃️	caixa d'arxiu de la targeta
+🗃	caixa d'arxiu de la targeta
+🗄️	arxivador
+🗄	arxivador
+🗑️	paperera
+🗑	paperera
+🔒	tancat
+🔓	desbloquejat
+🔏	tancat amb ploma
+🔐	tancat amb clau
+🔑	clau
+🗝️	clau antiga
+🗝	clau antiga
+🔨	martell
+⛏️	collir
+⛏	collir
+⚒️	martell i picota
+⚒	martell i picota
+🛠️	martell i clau anglesa
+🛠	martell i clau anglesa
+🗡️	punyal
+🗡	punyal
+⚔️	espases creuades
+⚔	espases creuades
+🔫	pistola
+🏹	arc i fletxa
+🛡️	escut
+🛡	escut
+🔧	clau anglesa
+🔩	femella i cargol
+⚙️	engranatge
+⚙	engranatge
+🗜️	pinça
+🗜	pinça
+⚖️	escala d'equilibri
+⚖	escala d'equilibri
+🔗	enllaç
+⛓️	cadenes
+⛓	cadenes
+🧰	caixa d'eines
+🧲	imant
+⚗️	alambic
+⚗	alambic
+🧪	proveta
+🧫	placa de Petri
+🧬	ADN
+🔬	microscopi
+🔭	telescopi
+📡	antena de satèl·lit
+💉	xeringa
+💊	pastilla
+🚪	porta
+🛏️	llit
+🛏	llit
+🛋️	sofà i llum
+🛋	sofà i llum
+🚽	lavabo
+🚿	dutxa
+🛁	banyera
+🧴	ampolla de loció
+🧷	PIN de seguretat
+🧹	escombra
+🧺	cistella
+🧻	rotllo de paper
+🧼	sabó
+🧽	esponja
+🧯	extintor
+🛒	carret de compra
+🚬	cigarret
+⚰️	taüt
+⚰	taüt
+⚱️	urna funerària
+⚱	urna funerària
+🗿	moai
+🏧	Signe de caixer automàtic
+🚮	senyal d'escombraries a la paperera
+🚰	aigua potable
+♿	símbol de cadira de rodes
+🚹	habitació dels homes
+🚺	habitació de dones
+🚻	lavabo
+🚼	símbol del nadó
+🚾	vàter
+🛂	control de passaport
+🛃	duana
+🛄	reclamació d'equipatge
+🛅	deixar l'equipatge
+⚠️	advertència
+⚠	advertència
+🚸	nens creuant
+⛔	cap entrada
+🚫	prohibit
+🚳	sense bicicletes
+🚭	no fumar
+🚯	sense deixalles
+🚱	aigua no potable
+🚷	sense vianants
+📵	sense telèfons mòbils
+🔞	ningú menor de divuit anys
+☢️	radioactiu
+☢	radioactiu
+☣️	perill biològic
+☣	perill biològic
+⬆️	Fletxa cap amunt
+⬆	Fletxa cap amunt
+↗️	fletxa cap amunt a la dreta
+↗	fletxa cap amunt a la dreta
+➡️	fletxa dreta
+➡	fletxa dreta
+↘️	fletxa cap avall a la dreta
+↘	fletxa cap avall a la dreta
+⬇️	fletxa cap avall
+⬇	fletxa cap avall
+↙️	fletxa cap avall a l'esquerra
+↙	fletxa cap avall a l'esquerra
+⬅️	fletxa esquerra
+⬅	fletxa esquerra
+↖️	fletxa amunt-esquerra
+↖	fletxa amunt-esquerra
+↕️	fletxa amunt-avall
+↕	fletxa amunt-avall
+↔️	fletxa esquerra-dreta
+↔	fletxa esquerra-dreta
+↩️	fletxa dreta corba cap a l'esquerra
+↩	fletxa dreta corba cap a l'esquerra
+↪️	fletxa esquerra corba cap a la dreta
+↪	fletxa esquerra corba cap a la dreta
+⤴️	fletxa dreta cap amunt
+⤴	fletxa dreta cap amunt
+⤵️	fletxa dreta corba cap avall
+⤵	fletxa dreta corba cap avall
+🔃	fletxes verticals en sentit horari
+🔄	botó de fletxes en sentit contrari a les agulles del rellotge
+🔙	fletxa TORNAR
+🔚	fletxa FINAL
+🔛	fletxa ON
+🔜	APROXIMAMENT fletxa
+🔝	fletxa superior
+🛐	lloc de culte
+⚛️	símbol àtom
+⚛	símbol àtom
+🕉️	om
+🕉	om
+✡️	estrella de David
+✡	estrella de David
+☸️	roda del dharma
+☸	roda del dharma
+☯️	Yin Yang
+☯	Yin Yang
+✝️	creu llatina
+✝	creu llatina
+☦️	creu ortodoxa
+☦	creu ortodoxa
+☪️	estrella i mitja lluna
+☪	estrella i mitja lluna
+☮️	símbol de pau
+☮	símbol de pau
+🕎	menorah
+🔯	estrella de sis puntes puntejada
+♈	Àries
+♉	Taure
+♊	Bessons
+♋	Càncer
+♌	Leo
+♍	Verge
+♎	Balança
+♏	Escorpí
+♐	Sagitari
+♑	Capricorn
+♒	Aquari
+♓	Peixos
+⛎	Ofiuc
+🔀	botó de remenar pistes
+🔁	botó de repetició
+🔂	repetir un sol botó
+▶️	botó de reproducció
+▶	botó de reproducció
+⏩	botó d'avançament ràpid
+⏭️	botó de pista següent
+⏭	botó de pista següent
+⏯️	botó de reproducció o pausa
+⏯	botó de reproducció o pausa
+◀️	botó de marxa enrere
+◀	botó de marxa enrere
+⏪	botó de marxa enrere ràpida
+⏮️	botó de l'última pista
+⏮	botó de l'última pista
+🔼	botó cap amunt
+⏫	botó de pujada ràpida
+🔽	botó cap avall
+⏬	botó de baixada ràpida
+⏸️	botó de pausa
+⏸	botó de pausa
+⏹️	botó d'aturada
+⏹	botó d'aturada
+⏺️	botó de gravació
+⏺	botó de gravació
+⏏️	botó d'expulsió
+⏏	botó d'expulsió
+🎦	cinema
+🔅	botó d'atenuació
+🔆	botó brillant
+📶	barres d'antena
+📳	mode de vibració
+📴	telèfon mòbil apagat
+♀️	signe femení
+♀	signe femení
+♂️	signe masculí
+♂	signe masculí
+⚕️	símbol mèdic
+⚕	símbol mèdic
+♾️	infinit
+♾	infinit
+♻️	símbol de reciclatge
+♻	símbol de reciclatge
+⚜️	flor de lis
+⚜	flor de lis
+🔱	emblema del trident
+📛	distintiu de nom
+🔰	Símbol japonès per a principiants
+⭕	cercle gran i pesat
+✅	marca de verificació pesada blanca
+☑️	urna amb xec
+☑	urna amb xec
+✔️	marca de verificació pesada
+✔	marca de verificació pesada
+✖️	multiplicació pesada x
+✖	multiplicació pesada x
+❌	marca de creu
+❎	botó de marca creuada
+➕	signe més pesat
+➖	signe menys pesat
+➗	senyal de divisió pesada
+➰	bucle arrissat
+➿	doble bucle arrissat
+〽️	marca d'alternança de part
+〽	marca d'alternança de part
+✳️	asterisc de vuit radis
+✳	asterisc de vuit radis
+✴️	estrella de vuit puntes
+✴	estrella de vuit puntes
+❇️	espurna
+❇	espurna
+‼️	doble signe d'exclamació
+‼	doble signe d'exclamació
+⁉️	signe d'interrogació d'exclamació
+⁉	signe d'interrogació d'exclamació
+❓	signe d'interrogació
+❔	signe d'interrogació blanc
+❕	signe d'exclamació blanc
+❗	signe d'exclamació
+〰️	guió ondulat
+〰	guió ondulat
+©️	copyright
+©	copyright
+®️	enregistrat
+®	enregistrat
+™️	marca comercial
+™	marca comercial
+#️⃣	tecla de tecla: #
+#⃣	tecla de tecla: #
+*️⃣	tecla de tecla: *
+*⃣	tecla de tecla: *
+0️⃣	tecla de tecla: 0
+0⃣	tecla de tecla: 0
+1️⃣	tecla de tecla: 1
+1⃣	tecla de tecla: 1
+2️⃣	tecla de tecla: 2
+2⃣	tecla de tecla: 2
+3️⃣	tecla de tecla: 3
+3⃣	tecla de tecla: 3
+4️⃣	tecla de tecla: 4
+4⃣	tecla de tecla: 4
+5️⃣	tecla de tecla: 5
+5⃣	tecla de tecla: 5
+6️⃣	tecla de tecla: 6
+6⃣	tecla de tecla: 6
+7️⃣	tecla: 7
+7⃣	tecla: 7
+8️⃣	tecla de tecla: 8
+8⃣	tecla de tecla: 8
+9️⃣	tecla de tecla: 9
+9⃣	tecla de tecla: 9
+🔟	tecla de tecla: 10
+💯	cent punts
+🔠	introduir llatí en majúscula
+🔡	introduir minúscules llatines
+🔢	números d'entrada
+🔣	símbols d'entrada
+🔤	introduir lletres llatines
+🅰️	Un botó (tipus sanguini)
+🅰	Un botó (tipus sanguini)
+🆎	Botó AB (tipus sanguini)
+🅱️	Botó B (grup sanguini)
+🅱	Botó B (grup sanguini)
+🆑	Botó CL
+🆒	Botó COOL
+🆓	Botó GRATIS
+ℹ️	informació
+ℹ	informació
+🆔	botó d'identificació
+Ⓜ️	encerclat M
+Ⓜ	encerclat M
+🆕	botó NOU
+🆖	Botó NG
+🅾️	Botó O (grup sanguini)
+🅾	Botó O (grup sanguini)
+🆗	botó D'acord
+🅿️	Botó P
+🅿	Botó P
+🆘	Botó SOS
+🆙	botó UP
+🆚	Botó VS
+🈁	Botó "aquí" japonès
+🈂️	Botó japonès "càrrec del servei".
+🈂	Botó japonès "càrrec del servei".
+🈷️	Botó japonès "import mensual".
+🈷	Botó japonès "import mensual".
+🈶	Botó japonès "no gratuït".
+🈯	Botó japonès "reservat".
+🉐	Botó "ganga" japonès
+🈹	Botó de "descompte" japonès
+🈚	Botó japonès "gratis".
+🈲	Botó japonès "prohibit".
+🉑	Botó "acceptable" japonès
+🈸	Botó "aplicació" japonès
+🈴	Botó japonès "qualificació aprovada".
+🈳	Botó "vacant" japonès
+㊗️	Botó japonès "felicitats".
+㊗	Botó "felicitats" japonès
+㊙️	Botó "secret" japonès
+㊙	Botó "secret" japonès
+🈺	Botó japonès "obrir per a negocis".
+🈵	Botó japonès "no vacant".
+▪️	petit quadrat negre
+▪	petit quadrat negre
+▫️	petit quadrat blanc
+▫	petit quadrat blanc
+◻️	quadrat mitjà blanc
+◻	quadrat mitjà blanc
+◼️	quadrat mitjà negre
+◼	quadrat mitjà negre
+◽	quadrat blanc mitjà-petit
+◾	quadrat mitjà-petit negre
+⬛	quadrat gran negre
+⬜	quadrat gran blanc
+🔶	gran diamant taronja
+🔷	gran diamant blau
+🔸	petit diamant taronja
+🔹	petit diamant blau
+🔺	triangle vermell apuntat cap amunt
+🔻	triangle vermell apuntat cap avall
+💠	diamant amb un punt
+🔘	botó de ràdio
+🔲	botó quadrat negre
+🔳	botó quadrat blanc
+⚪	cercle blanc
+⚫	cercle negre
+🔴	cercle vermell
+🔵	cercle blau
+🏁	bandera a quadres
+🚩	bandera triangular
+🎌	banderes creuades
+🏴	bandera negre
+🏳️	bandera blanca
+🏳	bandera blanca
+🏳️‍🌈	bandera de l'arc de Sant Martí
+🏳‍🌈	bandera de l'arc de Sant Martí
+🏴‍☠️	bandera pirata
+🏴‍☠	bandera pirata
+🇦🇨	Illa de l'Ascensió
+🇦🇩	Andorra
+🇦🇪	Emirats Àrabs Units
+🇦🇫	Afganistan
+🇦🇬	Antigua i Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albània
+🇦🇲	Armènia
+🇦🇴	Angola
+🇦🇶	Antàrtida
+🇦🇷	Argentina
+🇦🇸	Samoa Americana
+🇦🇹	Àustria
+🇦🇺	Austràlia
+🇦🇼	Aruba
+🇦🇽	Illes Åland
+🇦🇿	Azerbaidjan
+🇧🇦	Bòsnia i Hercegovina
+🇧🇧	Barbados
+🇧🇩	Bangla Desh
+🇧🇪	Bèlgica
+🇧🇫	Burkina Faso
+🇧🇬	Bulgària
+🇧🇭	Bahrain
+🇧🇮	Burundi
+🇧🇯	Benín
+🇧🇱	Sant Barthelemy
+🇧🇲	Bermudes
+🇧🇳	Brunei
+🇧🇴	Bolívia
+🇧🇶	Països Baixos del Carib
+🇧🇷	Brasil
+🇧🇸	Bahames
+🇧🇹	Butan
+🇧🇻	Illa Bouvet
+🇧🇼	Botswana
+🇧🇾	Bielorússia
+🇧🇿	Belize
+🇨🇦	Canadà
+🇨🇨	Illes Cocos (Keeling).
+🇨🇩	Congo - Kinshasa
+🇨🇫	República Centreafricana
+🇨🇬	Congo - Brazzaville
+🇨🇭	Suïssa
+🇨🇮	Costa d'Ivori
+🇨🇰	Illes Cook
+🇨🇱	Xile
+🇨🇲	Camerun
+🇨🇳	Xina
+🇨🇴	Colòmbia
+🇨🇵	Illa Clipperton
+🇨🇷	Costa Rica
+🇨🇺	Cuba
+🇨🇻	Cap Verd
+🇨🇼	Curaçao
+🇨🇽	Illa de Nadal
+🇨🇾	Xipre
+🇨🇿	Txeca
+🇩🇪	Alemanya
+🇩🇬	Diego Garcia
+🇩🇯	Djibouti
+🇩🇰	Dinamarca
+🇩🇲	Dominica
+🇩🇴	República Dominicana
+🇩🇿	Algèria
+🇪🇦	Ceuta i Melilla
+🇪🇨	Equador
+🇪🇪	Estònia
+🇪🇬	Egipte
+🇪🇭	Sàhara Occidental
+🇪🇷	Eritrea
+🇪🇸	Espanya
+🇪🇹	Etiòpia
+🇪🇺	Unió Europea
+🇫🇮	Finlàndia
+🇫🇯	Fiji
+🇫🇰	Illes Malvines
+🇫🇲	Micronèsia
+🇫🇴	Illes Faroe
+🇫🇷	França
+🇬🇦	Gabon
+🇬🇧	Regne Unit
+🇬🇩	Granada
+🇬🇪	Geòrgia
+🇬🇫	Guaiana Francesa
+🇬🇬	Guernsey
+🇬🇭	Ghana
+🇬🇮	Gibraltar
+🇬🇱	Groenlàndia
+🇬🇲	Gàmbia
+🇬🇳	Guinea
+🇬🇵	Guadalupe
+🇬🇶	Guinea Equatorial
+🇬🇷	Grècia
+🇬🇸	Illes Geòrgia del Sud i Sandwich del Sud
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinea Bissau
+🇬🇾	Guyana
+🇭🇰	RAE de Hong Kong Xina
+🇭🇲	Illes Heard i McDonald
+🇭🇳	Hondures
+🇭🇷	Croàcia
+🇭🇹	Haití
+🇭🇺	Hongria
+🇮🇨	Illes Canàries
+🇮🇩	Indonèsia
+🇮🇪	Irlanda
+🇮🇱	Israel
+🇮🇲	illa de l'home
+🇮🇳	Índia
+🇮🇴	Territori Britànic de l'Oceà Índic
+🇮🇶	Iraq
+🇮🇷	Iran
+🇮🇸	Islàndia
+🇮🇹	Itàlia
+🇯🇪	Jersey
+🇯🇲	Jamaica
+🇯🇴	Jordània
+🇯🇵	Japó
+🇰🇪	Kenya
+🇰🇬	Kirguizistan
+🇰🇭	Cambodja
+🇰🇮	Kiribati
+🇰🇲	Comores
+🇰🇳	St. Kitts i Nevis
+🇰🇵	Corea del Nord
+🇰🇷	Corea del Sud
+🇰🇼	Kuwait
+🇰🇾	Illes Caiman
+🇰🇿	Kazakhstan
+🇱🇦	Laos
+🇱🇧	Líban
+🇱🇨	Santa Llúcia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Libèria
+🇱🇸	Lesotho
+🇱🇹	Lituània
+🇱🇺	Luxemburg
+🇱🇻	Letònia
+🇱🇾	Líbia
+🇲🇦	el Marroc
+🇲🇨	Mònaco
+🇲🇩	Moldàvia
+🇲🇪	Montenegro
+🇲🇫	Sant Martí
+🇲🇬	Madagascar
+🇲🇭	Illes Marshall
+🇲🇰	Macedònia
+🇲🇱	Mali
+🇲🇲	Myanmar (Birmania)
+🇲🇳	Mongòlia
+🇲🇴	RAE de Macau Xina
+🇲🇵	Illes Mariannes del Nord
+🇲🇶	Martinica
+🇲🇷	Mauritània
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Maurici
+🇲🇻	Maldives
+🇲🇼	Malawi
+🇲🇽	Mèxic
+🇲🇾	Malàisia
+🇲🇿	Moçambic
+🇳🇦	Namíbia
+🇳🇨	Nova Caledònia
+🇳🇪	Níger
+🇳🇫	Illa Norfolk
+🇳🇬	Nigèria
+🇳🇮	Nicaragua
+🇳🇱	Països Baixos
+🇳🇴	Noruega
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Nova Zelanda
+🇴🇲	Oman
+🇵🇦	Panamà
+🇵🇪	Perú
+🇵🇫	Polinèsia Francesa
+🇵🇬	Papua Nova Guinea
+🇵🇭	Filipines
+🇵🇰	Pakistan
+🇵🇱	Polònia
+🇵🇲	Sant Pere i Miqueló
+🇵🇳	Illes Pitcairn
+🇵🇷	Puerto Rico
+🇵🇸	Territoris Palestins
+🇵🇹	Portugal
+🇵🇼	Palau
+🇵🇾	Paraguai
+🇶🇦	Qatar
+🇷🇪	Reunió
+🇷🇴	Romania
+🇷🇸	Sèrbia
+🇷🇺	Rússia
+🇷🇼	Ruanda
+🇸🇦	Aràbia Saudita
+🇸🇧	Illes Salomó
+🇸🇨	Seychelles
+🇸🇩	Sudan
+🇸🇪	Suècia
+🇸🇬	Singapur
+🇸🇭	Santa Helena
+🇸🇮	Eslovènia
+🇸🇯	Svalbard i Jan Mayen
+🇸🇰	Eslovàquia
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somàlia
+🇸🇷	Surinam
+🇸🇸	Sudan del Sud
+🇸🇹	São Tomé i Príncep
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Síria
+🇸🇿	Swazilàndia
+🇹🇦	Tristan da Cunha
+🇹🇨	Illes Turks i Caicos
+🇹🇩	Txad
+🇹🇫	Territoris del Sud francesos
+🇹🇬	Anar
+🇹🇭	Tailàndia
+🇹🇯	Tadjikistan
+🇹🇰	Tokelau
+🇹🇱	Timor-Leste
+🇹🇲	Turkmenistan
+🇹🇳	Tunísia
+🇹🇴	Tonga
+🇹🇷	Turquia
+🇹🇹	Trinitat i Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taiwan
+🇹🇿	Tanzània
+🇺🇦	Ucraïna
+🇺🇬	Uganda
+🇺🇲	Illes perifèriques dels EUA
+🇺🇳	Nacions Unides
+🇺🇸	Estats Units
+🇺🇾	Uruguai
+🇺🇿	Uzbekistan
+🇻🇦	La ciutat del Vatica
+🇻🇨	Sant Vicenç i les Granadines
+🇻🇪	Veneçuela
+🇻🇬	Illes Verges Britàniques
+🇻🇮	Illes Verges dels EUA
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis i Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Iemen
+🇾🇹	Mayotte
+🇿🇦	Sud-Àfrica
+🇿🇲	Zàmbia
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Anglaterra
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Escòcia
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Gal·les

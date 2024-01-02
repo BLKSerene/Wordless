@@ -30,6 +30,7 @@ sacremoses
 simplemma
 stanza
 underthesea
+vaderSentiment
 
 ## pymorphy3
 pymorphy3

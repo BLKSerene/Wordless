@@ -19,8 +19,7 @@
 from tests import wl_test_init
 from wordless.wl_settings import wl_settings_dependency_parsing
 
-main = wl_test_init.Wl_Test_Main()
-wl_test_init.change_default_tokenizers(main)
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 def test_wl_settings_dependency_parsing():
     settings_dependency_parsing = wl_settings_dependency_parsing.Wl_Settings_Dependency_Parsing(main)

@@ -31,7 +31,7 @@ from PyQt5.QtWidgets import QCheckBox, QLabel, QLineEdit, QGroupBox, QStackedWid
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_preprocessing, wl_sentiment_analysis
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_sentiment_analysis
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
@@ -667,8 +667,10 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
             settings = self.main.settings_custom['concordancer']
 
             for file in self.main.wl_file_area.get_selected_files():
+                concordance_lines_file = []
+
                 text = copy.deepcopy(file['text'])
-                text = wl_token_preprocessing.wl_preprocess_tokens_concordancer(
+                text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )
@@ -710,6 +712,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 len_sentences = len(offsets_sentences)
                 len_sentence_segs = len(offsets_sentence_segs)
                 len_tokens = len(tokens)
+
+                sentiment_inputs = []
 
                 for len_search_term in range(len_search_term_min, len_search_term_max + 1):
                     for i, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
@@ -885,15 +889,7 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
 
                             # Sentiment
                             if text.lang in self.main.settings_global['sentiment_analyzers']:
-                                sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
-                                    self.main,
-                                    inputs = [' '.join([context_left_text, node_text, context_right_text])],
-                                    lang = text.lang
-                                )
-
-                                concordance_line.append(sentiment_scores[0])
-                            else:
-                                concordance_line.append(self.tr('No language support'))
+                                sentiment_inputs.append(' '.join([context_left_text, node_text, context_right_text]))
 
                             # Token No.
                             concordance_line.append([i + 1, len_tokens])
@@ -906,7 +902,22 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             # File
                             concordance_line.append(file['name'])
 
-                            concordance_lines.append(concordance_line)
+                            concordance_lines_file.append(concordance_line)
+
+                if sentiment_inputs:
+                    sentiment_scores = wl_sentiment_analysis.wl_sentiment_analyze(
+                        self.main,
+                        inputs = sentiment_inputs,
+                        lang = text.lang
+                    )
+
+                    for concordance_line, sentiment_score in zip(concordance_lines_file, sentiment_scores):
+                        concordance_line.insert(3, sentiment_score)
+                else:
+                    for concordance_line in concordance_lines_file:
+                        concordance_line.insert(3, self.tr('No language support'))
+
+                concordance_lines.extend(concordance_lines_file)
         except Exception:
             err_msg = traceback.format_exc()
 
@@ -932,7 +943,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
             for file in files:
                 text = copy.deepcopy(file['text'])
-                text = wl_token_preprocessing.wl_preprocess_tokens_concordancer(
+                text = wl_token_processing.wl_process_tokens_concordancer(
                     self.main, text,
                     token_settings = settings['token_settings']
                 )

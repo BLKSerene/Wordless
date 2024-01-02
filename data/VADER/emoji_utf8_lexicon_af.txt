@@ -1,0 +1,3570 @@
+😀	glimlaggende gesig
+😁	stralende gesig met glimlaggende oë
+😂	gesig met trane van blydskap
+🤣	rol op die vloer lag
+😃	glimlaggende gesig met groot oë
+😄	glimlaggende gesig met glimlaggende oë
+😅	glimlaggende gesig met sweet
+😆	grynsende skeel gesig
+😉	knipoog gesig
+😊	glimlaggende gesig met glimlaggende oë
+😋	gesig smul aan kos
+😎	glimlaggende gesig met 'n sonbril
+😍	glimlaggende gesig met hart-oë
+😘	gesig wat 'n soen blaas
+🥰	glimlaggende gesig met 3 harte
+😗	soen gesig
+😙	soen gesig met glimlaggende oë
+😚	soen gesig met toe oë
+☺️	glimlaggende gesig
+☺	glimlaggende gesig
+🙂	effens glimlaggende gesig
+🤗	drukkende gesig
+🤩	sterrevol
+🤔	denkende gesig
+🤨	gesig met geligde wenkbroue
+😐	neutrale gesig
+😑	uitdrukkinglose gesig
+😶	gesig sonder mond
+🙄	gesig met rol oë
+😏	glimlaggende gesig
+😣	volhardende gesig
+😥	hartseer maar verligte gesig
+😮	gesig met oop mond
+🤐	rits-mond gesig
+😯	stil gesig
+😪	slaperige gesig
+😫	moeë gesig
+😴	slapende gesig
+😌	verligte gesig
+😛	gesig met tong
+😜	knipoog gesig met tong
+😝	skeel gesig met tong
+🤤	kwylende gesig
+😒	ongekunstelde gesig
+😓	neerslagtige gesig met sweet
+😔	nadenkende gesig
+😕	verwarde gesig
+🙃	onderstebo gesig
+🤑	geldmond gesig
+😲	verbaasde gesig
+☹️	fronsende gesig
+☹	fronsende gesig
+🙁	effens fronsende gesig
+😖	verwarde gesig
+😞	teleurgestelde gesig
+😟	bekommerde gesig
+😤	gesig met stoom uit die neus
+😢	huilende gesig
+😭	hard huilende gesig
+😦	fronsende gesig met oop mond
+😧	benoude gesig
+😨	bang gesig
+😩	moeë gesig
+🤯	kop ontplof
+😬	grynende gesig
+😰	benoude gesig met sweet
+😱	gesig skree van vrees
+🥵	warm gesig
+🥶	koue gesig
+😳	blosende gesig
+🤪	snaakse gesig
+😵	duiselig gesig
+😡	pruilende gesig
+😠	kwaai gesig
+🤬	gesig met simbole op die mond
+😷	gesig met mediese masker
+🤒	gesig met termometer
+🤕	gesig met kopverband
+🤢	naar gesig
+🤮	gesig braking
+🤧	niesende gesig
+😇	glimlaggende gesig met stralekrans
+🤠	cowboy hoed gesig
+🥳	partytjie gesig
+🥴	woelige gesig
+🥺	smekende gesig
+🤥	leuenagtige gesig
+🤫	stil gesig
+🤭	gesig met hand oor mond
+🧐	gesig met monokel
+🤓	nerd gesig
+😈	glimlaggende gesig met horings
+👿	kwaai gesig met horings
+🤡	nargesig
+👹	ogre
+👺	kabouter
+💀	skedel
+☠️	skedel en gekruiste bene
+☠	skedel en gekruiste bene
+👻	spook
+👽	vreemdeling
+👾	uitheemse monster
+🤖	robot gesig
+💩	hoop poep
+😺	grynsende katgesig
+😸	grynsende katgesig met glimlaggende oë
+😹	katgesig met trane van blydskap
+😻	glimlaggende katgesig met hart-oë
+😼	katgesig met wrang glimlag
+😽	soen kat gesig
+🙀	moeë katgesig
+😿	huilende katgesig
+😾	pruilende katgesig
+🙈	sien-geen-bose aap
+🙉	hoor-geen-kwaad aap
+🙊	praat-geen-kwaad aap
+🏻	ligte velkleur
+🏼	medium-ligte velkleur
+🏽	medium velkleur
+🏾	medium-donker velkleur
+🏿	donker velkleur
+👶	baba
+👶🏻	baba: ligte velkleur
+👶🏼	baba: medium-ligte velkleur
+👶🏽	baba: medium velkleur
+👶🏾	baba: medium-donker velkleur
+👶🏿	baba: donker velkleur
+🧒	kind
+🧒🏻	kind: ligte velkleur
+🧒🏼	kind: medium-ligte velkleur
+🧒🏽	kind: medium velkleur
+🧒🏾	kind: medium-donker velkleur
+🧒🏿	kind: donker velkleur
+👦	seuntjie
+👦🏻	seun: ligte velkleur
+👦🏼	seun: medium-ligte velkleur
+👦🏽	seun: medium velkleur
+👦🏾	seun: medium-donker velkleur
+👦🏿	seun: donker velkleur
+👧	meisie
+👧🏻	meisie: ligte velkleur
+👧🏼	meisie: medium-ligte velkleur
+👧🏽	meisie: medium velkleur
+👧🏾	meisie: medium-donker velkleur
+👧🏿	meisie: donker velkleur
+🧑	volwassene
+🧑🏻	volwassene: ligte velkleur
+🧑🏼	volwasse: medium-ligte velkleur
+🧑🏽	volwassene: medium velkleur
+🧑🏾	volwasse: medium-donker velkleur
+🧑🏿	volwassene: donker velkleur
+👨	man
+👨🏻	man: ligte velkleur
+👨🏼	man: medium-ligte velkleur
+👨🏽	man: medium velkleur
+👨🏾	man: medium-donker velkleur
+👨🏿	man: donker velkleur
+👩	vrou
+👩🏻	vrou: ligte velkleur
+👩🏼	vrou: medium-ligte velkleur
+👩🏽	vrou: medium velkleur
+👩🏾	vrou: medium-donker velkleur
+👩🏿	vrou: donker velkleur
+🧓	ouer volwassene
+🧓🏻	ouer volwassene: ligte velkleur
+🧓🏼	ouer volwassene: medium-ligte velkleur
+🧓🏽	ouer volwassene: medium velkleur
+🧓🏾	ouer volwassene: medium-donker velkleur
+🧓🏿	ouer volwassene: donker velkleur
+👴	ou man
+👴🏻	ou man: ligte velkleur
+👴🏼	ou man: medium-ligte velkleur
+👴🏽	ou man: medium velkleur
+👴🏾	ou man: medium-donker velkleur
+👴🏿	ou man: donker velkleur
+👵	ou vrou
+👵🏻	ou vrou: ligte velkleur
+👵🏼	ou vrou: medium-ligte velkleur
+👵🏽	ou vrou: medium velkleur
+👵🏾	ou vrou: medium-donker velkleur
+👵🏿	ou vrou: donker velkleur
+👨‍⚕️	man gesondheidswerker
+👨‍⚕	man gesondheidswerker
+👨🏻‍⚕️	man gesondheidswerker: ligte velkleur
+👨🏻‍⚕	man gesondheidswerker: ligte velkleur
+👨🏼‍⚕️	manlike gesondheidswerker: medium-ligte velkleur
+👨🏼‍⚕	manlike gesondheidswerker: medium-ligte velkleur
+👨🏽‍⚕️	man gesondheidswerker: medium velkleur
+👨🏽‍⚕	man gesondheidswerker: medium velkleur
+👨🏾‍⚕️	manlike gesondheidswerker: medium-donker velkleur
+👨🏾‍⚕	manlike gesondheidswerker: medium-donker velkleur
+👨🏿‍⚕️	man gesondheidswerker: donker velkleur
+👨🏿‍⚕	man gesondheidswerker: donker velkleur
+👩‍⚕️	vroulike gesondheidswerker
+👩‍⚕	vroulike gesondheidswerker
+👩🏻‍⚕️	vroulike gesondheidswerker: ligte velkleur
+👩🏻‍⚕	vroulike gesondheidswerker: ligte velkleur
+👩🏼‍⚕️	vroulike gesondheidswerker: medium-ligte velkleur
+👩🏼‍⚕	vroulike gesondheidswerker: medium-ligte velkleur
+👩🏽‍⚕️	vroulike gesondheidswerker: medium velkleur
+👩🏽‍⚕	vroulike gesondheidswerker: medium velkleur
+👩🏾‍⚕️	vroulike gesondheidswerker: medium-donker velkleur
+👩🏾‍⚕	vroulike gesondheidswerker: medium-donker velkleur
+👩🏿‍⚕️	vroulike gesondheidswerker: donker velkleur
+👩🏿‍⚕	vroulike gesondheidswerker: donker velkleur
+👨‍🎓	man student
+👨🏻‍🎓	man student: ligte velkleur
+👨🏼‍🎓	manstudent: medium-ligte velkleur
+👨🏽‍🎓	man student: medium velkleur
+👨🏾‍🎓	manstudent: medium-donker velkleur
+👨🏿‍🎓	manstudent: donker velkleur
+👩‍🎓	vroulike student
+👩🏻‍🎓	vrou student: ligte velkleur
+👩🏼‍🎓	vrou student: medium-ligte velkleur
+👩🏽‍🎓	vrou student: medium velkleur
+👩🏾‍🎓	vrou student: medium-donker velkleur
+👩🏿‍🎓	vrou student: donker velkleur
+👨‍🏫	man onderwyser
+👨🏻‍🏫	man onderwyser: ligte velkleur
+👨🏼‍🏫	man onderwyser: medium-ligte velkleur
+👨🏽‍🏫	man onderwyser: medium velkleur
+👨🏾‍🏫	man onderwyser: medium-donker velkleur
+👨🏿‍🏫	man onderwyser: donker velkleur
+👩‍🏫	vroulike onderwyser
+👩🏻‍🏫	vroulike onderwyser: ligte velkleur
+👩🏼‍🏫	vroulike onderwyser: medium-ligte velkleur
+👩🏽‍🏫	vroulike onderwyser: medium velkleur
+👩🏾‍🏫	vroulike onderwyser: medium-donker velkleur
+👩🏿‍🏫	vroulike onderwyser: donker velkleur
+👨‍⚖️	man regter
+👨‍⚖	man regter
+👨🏻‍⚖️	man beoordelaar: ligte velkleur
+👨🏻‍⚖	man beoordelaar: ligte velkleur
+👨🏼‍⚖️	man beoordelaar: medium-ligte velkleur
+👨🏼‍⚖	man beoordelaar: medium-ligte velkleur
+👨🏽‍⚖️	man beoordelaar: medium velkleur
+👨🏽‍⚖	man beoordelaar: medium velkleur
+👨🏾‍⚖️	man beoordelaar: medium-donker velkleur
+👨🏾‍⚖	man beoordelaar: medium-donker velkleur
+👨🏿‍⚖️	man regter: donker velkleur
+👨🏿‍⚖	man regter: donker velkleur
+👩‍⚖️	vroulike regter
+👩‍⚖	vroulike regter
+👩🏻‍⚖️	vrou beoordelaar: ligte velkleur
+👩🏻‍⚖	vrou beoordelaar: ligte velkleur
+👩🏼‍⚖️	vroulike beoordelaar: medium-ligte velkleur
+👩🏼‍⚖	vroulike beoordelaar: medium-ligte velkleur
+👩🏽‍⚖️	vrou beoordelaar: medium velkleur
+👩🏽‍⚖	vrou beoordelaar: medium velkleur
+👩🏾‍⚖️	vroulike beoordelaar: medium-donker velkleur
+👩🏾‍⚖	vroulike beoordelaar: medium-donker velkleur
+👩🏿‍⚖️	vrou regter: donker velkleur
+👩🏿‍⚖	vrou regter: donker velkleur
+👨‍🌾	man boer
+👨🏻‍🌾	man boer: ligte velkleur
+👨🏼‍🌾	man boer: medium-ligte velkleur
+👨🏽‍🌾	man boer: medium velkleur
+👨🏾‍🌾	man boer: medium-donker velkleur
+👨🏿‍🌾	man boer: donker velkleur
+👩‍🌾	vroulike boer
+👩🏻‍🌾	boervrou: ligte velkleur
+👩🏼‍🌾	boervrou: medium-ligte velkleur
+👩🏽‍🌾	boervrou: medium velkleur
+👩🏾‍🌾	boervrou: medium-donker velkleur
+👩🏿‍🌾	boervrou: donker velkleur
+👨‍🍳	man kok
+👨🏻‍🍳	man kok: ligte velkleur
+👨🏼‍🍳	mankok: medium-ligte velkleur
+👨🏽‍🍳	man kok: medium velkleur
+👨🏾‍🍳	mankok: medium-donker velkleur
+👨🏿‍🍳	man kok: donker velkleur
+👩‍🍳	vroulike kok
+👩🏻‍🍳	vroulike kok: ligte velkleur
+👩🏼‍🍳	vroulike kok: medium-ligte velkleur
+👩🏽‍🍳	vroulike kok: medium velkleur
+👩🏾‍🍳	vroulike kok: medium-donker velkleur
+👩🏿‍🍳	vrou kok: donker velkleur
+👨‍🔧	man werktuigkundige
+👨🏻‍🔧	manwerktuigkundige: ligte velkleur
+👨🏼‍🔧	manwerktuigkundige: medium-ligte velkleur
+👨🏽‍🔧	manwerktuigkundige: medium velkleur
+👨🏾‍🔧	manwerktuigkundige: medium-donker velkleur
+👨🏿‍🔧	manwerktuigkundige: donker velkleur
+👩‍🔧	vroulike werktuigkundige
+👩🏻‍🔧	vroulike werktuigkundige: ligte velkleur
+👩🏼‍🔧	vroulike werktuigkundige: medium-ligte velkleur
+👩🏽‍🔧	vroulike werktuigkundige: medium velkleur
+👩🏾‍🔧	vroulike werktuigkundige: medium-donker velkleur
+👩🏿‍🔧	vroulike werktuigkundige: donker velkleur
+👨‍🏭	man fabriekswerker
+👨🏻‍🏭	man fabriekswerker: ligte velkleur
+👨🏼‍🏭	man fabriekswerker: medium-ligte velkleur
+👨🏽‍🏭	man fabriekswerker: medium velkleur
+👨🏾‍🏭	man fabriekswerker: medium-donker velkleur
+👨🏿‍🏭	man fabriekswerker: donker velkleur
+👩‍🏭	vroulike fabriekswerker
+👩🏻‍🏭	vroulike fabriekswerker: ligte velkleur
+👩🏼‍🏭	vroulike fabriekswerker: medium-ligte velkleur
+👩🏽‍🏭	vroulike fabriekswerker: medium velkleur
+👩🏾‍🏭	vroulike fabriekswerker: medium-donker velkleur
+👩🏿‍🏭	vroulike fabriekswerker: donker velkleur
+👨‍💼	manlike kantoorwerker
+👨🏻‍💼	manlike kantoorwerker: ligte velkleur
+👨🏼‍💼	manlike kantoorwerker: medium-ligte velkleur
+👨🏽‍💼	manlike kantoorwerker: medium velkleur
+👨🏾‍💼	manlike kantoorwerker: medium-donker velkleur
+👨🏿‍💼	manlike kantoorwerker: donker velkleur
+👩‍💼	vroulike kantoorwerker
+👩🏻‍💼	vroulike kantoorwerker: ligte velkleur
+👩🏼‍💼	vroulike kantoorwerker: medium-ligte velkleur
+👩🏽‍💼	vroulike kantoorwerker: medium velkleur
+👩🏾‍💼	vroulike kantoorwerker: medium-donker velkleur
+👩🏿‍💼	vroulike kantoorwerker: donker velkleur
+👨‍🔬	manlike wetenskaplike
+👨🏻‍🔬	man wetenskaplike: ligte velkleur
+👨🏼‍🔬	man wetenskaplike: medium-ligte velkleur
+👨🏽‍🔬	man wetenskaplike: medium velkleur
+👨🏾‍🔬	man wetenskaplike: medium-donker velkleur
+👨🏿‍🔬	man wetenskaplike: donker velkleur
+👩‍🔬	vroulike wetenskaplike
+👩🏻‍🔬	vroulike wetenskaplike: ligte velkleur
+👩🏼‍🔬	vroulike wetenskaplike: medium-ligte velkleur
+👩🏽‍🔬	vroulike wetenskaplike: medium velkleur
+👩🏾‍🔬	vroulike wetenskaplike: medium-donker velkleur
+👩🏿‍🔬	vroulike wetenskaplike: donker velkleur
+👨‍💻	man tegnoloog
+👨🏻‍💻	man tegnoloog: ligte velkleur
+👨🏼‍💻	man tegnoloog: medium-ligte velkleur
+👨🏽‍💻	man tegnoloog: medium velkleur
+👨🏾‍💻	man tegnoloog: medium-donker velkleur
+👨🏿‍💻	man tegnoloog: donker velkleur
+👩‍💻	vroulike tegnoloog
+👩🏻‍💻	vroulike tegnoloog: ligte velkleur
+👩🏼‍💻	vroulike tegnoloog: medium-ligte velkleur
+👩🏽‍💻	vroulike tegnoloog: medium velkleur
+👩🏾‍💻	vroulike tegnoloog: medium-donker velkleur
+👩🏿‍💻	vroulike tegnoloog: donker velkleur
+👨‍🎤	man sanger
+👨🏻‍🎤	man sanger: ligte velkleur
+👨🏼‍🎤	mansanger: medium-ligte velkleur
+👨🏽‍🎤	mansanger: medium velkleur
+👨🏾‍🎤	mansanger: medium-donker velkleur
+👨🏿‍🎤	man sanger: donker velkleur
+👩‍🎤	vroulike sangeres
+👩🏻‍🎤	vrou sangeres: ligte velkleur
+👩🏼‍🎤	vroulike sangeres: medium-ligte velkleur
+👩🏽‍🎤	vroulike sanger: medium velkleur
+👩🏾‍🎤	vroulike sangeres: medium-donker velkleur
+👩🏿‍🎤	vrou sangeres: donker velkleur
+👨‍🎨	man kunstenaar
+👨🏻‍🎨	man kunstenaar: ligte velkleur
+👨🏼‍🎨	man kunstenaar: medium-ligte velkleur
+👨🏽‍🎨	man kunstenaar: medium velkleur
+👨🏾‍🎨	man kunstenaar: medium-donker velkleur
+👨🏿‍🎨	man kunstenaar: donker velkleur
+👩‍🎨	vroulike kunstenaar
+👩🏻‍🎨	vroulike kunstenaar: ligte velkleur
+👩🏼‍🎨	vroulike kunstenaar: medium-ligte velkleur
+👩🏽‍🎨	vroulike kunstenaar: medium velkleur
+👩🏾‍🎨	vroulike kunstenaar: medium-donker velkleur
+👩🏿‍🎨	vroulike kunstenaar: donker velkleur
+👨‍✈️	man vlieënier
+👨‍✈	man vlieënier
+👨🏻‍✈️	manvlieënier: ligte velkleur
+👨🏻‍✈	manvlieënier: ligte velkleur
+👨🏼‍✈️	manvlieënier: medium-ligte velkleur
+👨🏼‍✈	manvlieënier: medium-ligte velkleur
+👨🏽‍✈️	manvlieënier: medium velkleur
+👨🏽‍✈	manvlieënier: medium velkleur
+👨🏾‍✈️	manvlieënier: medium-donker velkleur
+👨🏾‍✈	manvlieënier: medium-donker velkleur
+👨🏿‍✈️	manvlieënier: donker velkleur
+👨🏿‍✈	manvlieënier: donker velkleur
+👩‍✈️	vroulike vlieënier
+👩‍✈	vroulike vlieënier
+👩🏻‍✈️	vrou vlieënier: ligte velkleur
+👩🏻‍✈	vrou vlieënier: ligte velkleur
+👩🏼‍✈️	vroulike vlieënier: medium-ligte velkleur
+👩🏼‍✈	vroulike vlieënier: medium-ligte velkleur
+👩🏽‍✈️	vroulike vlieënier: medium velkleur
+👩🏽‍✈	vroulike vlieënier: medium velkleur
+👩🏾‍✈️	vroulike vlieënier: medium-donker velkleur
+👩🏾‍✈	vroulike vlieënier: medium-donker velkleur
+👩🏿‍✈️	vrou vlieënier: donker velkleur
+👩🏿‍✈	vrou vlieënier: donker velkleur
+👨‍🚀	man ruimtevaarder
+👨🏻‍🚀	man ruimtevaarder: ligte velkleur
+👨🏼‍🚀	man ruimtevaarder: medium-ligte velkleur
+👨🏽‍🚀	man ruimtevaarder: medium velkleur
+👨🏾‍🚀	man ruimtevaarder: medium-donker velkleur
+👨🏿‍🚀	man ruimtevaarder: donker velkleur
+👩‍🚀	vroulike ruimtevaarder
+👩🏻‍🚀	vroulike ruimtevaarder: ligte velkleur
+👩🏼‍🚀	vroulike ruimtevaarder: medium-ligte velkleur
+👩🏽‍🚀	vroulike ruimtevaarder: medium velkleur
+👩🏾‍🚀	vroulike ruimtevaarder: medium-donker velkleur
+👩🏿‍🚀	vroulike ruimtevaarder: donker velkleur
+👨‍🚒	man brandweerman
+👨🏻‍🚒	man brandweerman: ligte velkleur
+👨🏼‍🚒	man brandweerman: medium-ligte velkleur
+👨🏽‍🚒	man brandweerman: medium velkleur
+👨🏾‍🚒	man brandweerman: medium-donker velkleur
+👨🏿‍🚒	man brandweerman: donker velkleur
+👩‍🚒	vroulike brandweerman
+👩🏻‍🚒	vroulike brandweerman: ligte velkleur
+👩🏼‍🚒	vroulike brandweerman: medium-ligte velkleur
+👩🏽‍🚒	vroulike brandweerman: medium velkleur
+👩🏾‍🚒	vroulike brandweerman: medium-donker velkleur
+👩🏿‍🚒	vrou brandweerman: donker velkleur
+👮	polisieman
+👮🏻	polisiebeampte: ligte velkleur
+👮🏼	polisiebeampte: medium-ligte velkleur
+👮🏽	polisiebeampte: medium velkleur
+👮🏾	polisiebeampte: medium-donker velkleur
+👮🏿	polisiebeampte: donker velkleur
+👮‍♂️	man polisiebeampte
+👮‍♂	man polisiebeampte
+👮🏻‍♂️	man polisiebeampte: ligte velkleur
+👮🏻‍♂	man polisiebeampte: ligte velkleur
+👮🏼‍♂️	man polisiebeampte: medium-ligte velkleur
+👮🏼‍♂	man polisiebeampte: medium-ligte velkleur
+👮🏽‍♂️	man polisiebeampte: medium velkleur
+👮🏽‍♂	man polisiebeampte: medium velkleur
+👮🏾‍♂️	man polisiebeampte: medium-donker velkleur
+👮🏾‍♂	man polisiebeampte: medium-donker velkleur
+👮🏿‍♂️	man polisiebeampte: donker velkleur
+👮🏿‍♂	man polisiebeampte: donker velkleur
+👮‍♀️	vroulike polisiebeampte
+👮‍♀	vroulike polisiebeampte
+👮🏻‍♀️	vrou polisiebeampte: ligte velkleur
+👮🏻‍♀	vrou polisiebeampte: ligte velkleur
+👮🏼‍♀️	vroulike polisiebeampte: medium-ligte velkleur
+👮🏼‍♀	vroulike polisiebeampte: medium-ligte velkleur
+👮🏽‍♀️	vrou polisiebeampte: medium velkleur
+👮🏽‍♀	vrou polisiebeampte: medium velkleur
+👮🏾‍♀️	vrou polisiebeampte: medium-donker velkleur
+👮🏾‍♀	vrou polisiebeampte: medium-donker velkleur
+👮🏿‍♀️	vrou polisiebeampte: donker velkleur
+👮🏿‍♀	vrou polisiebeampte: donker velkleur
+🕵️	Speurder
+🕵	Speurder
+🕵🏻	speurder: ligte velkleur
+🕵🏼	speurder: medium-ligte velkleur
+🕵🏽	speurder: medium velkleur
+🕵🏾	speurder: medium-donker velkleur
+🕵🏿	speurder: donker velkleur
+🕵️‍♂️	man speurder
+🕵‍♂️	man speurder
+🕵️‍♂	man speurder
+🕵‍♂	man speurder
+🕵🏻‍♂️	man speurder: ligte velkleur
+🕵🏻‍♂	man speurder: ligte velkleur
+🕵🏼‍♂️	man speurder: medium-ligte velkleur
+🕵🏼‍♂	man speurder: medium-ligte velkleur
+🕵🏽‍♂️	man speurder: medium velkleur
+🕵🏽‍♂	man speurder: medium velkleur
+🕵🏾‍♂️	man speurder: medium-donker velkleur
+🕵🏾‍♂	man speurder: medium-donker velkleur
+🕵🏿‍♂️	man speurder: donker velkleur
+🕵🏿‍♂	man speurder: donker velkleur
+🕵️‍♀️	vroulike speurder
+🕵‍♀️	vroulike speurder
+🕵️‍♀	vroulike speurder
+🕵‍♀	vroulike speurder
+🕵🏻‍♀️	vrou speurder: ligte velkleur
+🕵🏻‍♀	vrou speurder: ligte velkleur
+🕵🏼‍♀️	vroulike speurder: medium-ligte velkleur
+🕵🏼‍♀	vroulike speurder: medium-ligte velkleur
+🕵🏽‍♀️	vroulike speurder: medium velkleur
+🕵🏽‍♀	vroulike speurder: medium velkleur
+🕵🏾‍♀️	vroulike speurder: medium-donker velkleur
+🕵🏾‍♀	vroulike speurder: medium-donker velkleur
+🕵🏿‍♀️	vrou speurder: donker velkleur
+🕵🏿‍♀	vrou speurder: donker velkleur
+💂	wag
+💂🏻	wag: ligte velkleur
+💂🏼	wag: medium-ligte velkleur
+💂🏽	wag: medium velkleur
+💂🏾	wag: medium-donker velkleur
+💂🏿	wag: donker velkleur
+💂‍♂️	man wag
+💂‍♂	man wag
+💂🏻‍♂️	man wag: ligte velkleur
+💂🏻‍♂	man wag: ligte velkleur
+💂🏼‍♂️	man wag: medium-ligte velkleur
+💂🏼‍♂	man wag: medium-ligte velkleur
+💂🏽‍♂️	man wag: medium velkleur
+💂🏽‍♂	man wag: medium velkleur
+💂🏾‍♂️	man wag: medium-donker velkleur
+💂🏾‍♂	man wag: medium-donker velkleur
+💂🏿‍♂️	man wag: donker velkleur
+💂🏿‍♂	man wag: donker velkleur
+💂‍♀️	vroulike wag
+💂‍♀	vroulike wag
+💂🏻‍♀️	vrou wag: ligte velkleur
+💂🏻‍♀	vrou wag: ligte velkleur
+💂🏼‍♀️	vroulike wag: medium-ligte velkleur
+💂🏼‍♀	vroulike wag: medium-ligte velkleur
+💂🏽‍♀️	vrou wag: medium velkleur
+💂🏽‍♀	vrou wag: medium velkleur
+💂🏾‍♀️	vrou wag: medium-donker velkleur
+💂🏾‍♀	vrou wag: medium-donker velkleur
+💂🏿‍♀️	vrou wag: donker velkleur
+💂🏿‍♀	vrou wag: donker velkleur
+👷	bouer
+👷🏻	konstruksiewerker: ligte velkleur
+👷🏼	konstruksiewerker: medium-ligte velkleur
+👷🏽	konstruksiewerker: medium velkleur
+👷🏾	konstruksiewerker: medium-donker velkleur
+👷🏿	konstruksiewerker: donker velkleur
+👷‍♂️	man konstruksiewerker
+👷‍♂	man konstruksiewerker
+👷🏻‍♂️	man konstruksiewerker: ligte velkleur
+👷🏻‍♂	man konstruksiewerker: ligte velkleur
+👷🏼‍♂️	manlike konstruksiewerker: medium-ligte velkleur
+👷🏼‍♂	manlike konstruksiewerker: medium-ligte velkleur
+👷🏽‍♂️	manlike konstruksiewerker: medium velkleur
+👷🏽‍♂	manlike konstruksiewerker: medium velkleur
+👷🏾‍♂️	manlike konstruksiewerker: medium-donker velkleur
+👷🏾‍♂	manlike konstruksiewerker: medium-donker velkleur
+👷🏿‍♂️	man konstruksiewerker: donker velkleur
+👷🏿‍♂	man konstruksiewerker: donker velkleur
+👷‍♀️	vroulike konstruksiewerker
+👷‍♀	vroulike konstruksiewerker
+👷🏻‍♀️	vroulike konstruksiewerker: ligte velkleur
+👷🏻‍♀	vroulike konstruksiewerker: ligte velkleur
+👷🏼‍♀️	vroulike konstruksiewerker: medium-ligte velkleur
+👷🏼‍♀	vroulike konstruksiewerker: medium-ligte velkleur
+👷🏽‍♀️	vroulike konstruksiewerker: medium velkleur
+👷🏽‍♀	vroulike konstruksiewerker: medium velkleur
+👷🏾‍♀️	vroulike konstruksiewerker: medium-donker velkleur
+👷🏾‍♀	vroulike konstruksiewerker: medium-donker velkleur
+👷🏿‍♀️	vroulike konstruksiewerker: donker velkleur
+👷🏿‍♀	vroulike konstruksiewerker: donker velkleur
+🤴	prins
+🤴🏻	prins: ligte velkleur
+🤴🏼	prins: medium-ligte velkleur
+🤴🏽	prins: medium velkleur
+🤴🏾	prins: medium-donker velkleur
+🤴🏿	prins: donker velkleur
+👸	prinses
+👸🏻	prinses: ligte velkleur
+👸🏼	prinses: medium-ligte velkleur
+👸🏽	prinses: medium velkleur
+👸🏾	prinses: medium-donker velkleur
+👸🏿	prinses: donker velkleur
+👳	persoon wat tulband dra
+👳🏻	persoon wat tulband dra: ligte velkleur
+👳🏼	persoon wat tulband dra: medium-ligte velkleur
+👳🏽	persoon wat tulband dra: medium velkleur
+👳🏾	persoon wat tulband dra: medium-donker velkleur
+👳🏿	persoon wat tulband dra: donker velkleur
+👳‍♂️	man wat tulband dra
+👳‍♂	man wat tulband dra
+👳🏻‍♂️	man met tulband: ligte velkleur
+👳🏻‍♂	man met tulband: ligte velkleur
+👳🏼‍♂️	man wat tulband dra: medium-ligte velkleur
+👳🏼‍♂	man wat tulband dra: medium-ligte velkleur
+👳🏽‍♂️	man wat tulband dra: medium velkleur
+👳🏽‍♂	man wat tulband dra: medium velkleur
+👳🏾‍♂️	man wat tulband dra: medium-donker velkleur
+👳🏾‍♂	man wat tulband dra: medium-donker velkleur
+👳🏿‍♂️	man met tulband: donker velkleur
+👳🏿‍♂	man met tulband: donker velkleur
+👳‍♀️	vrou wat tulband dra
+👳‍♀	vrou wat tulband dra
+👳🏻‍♀️	vrou wat tulband dra: ligte velkleur
+👳🏻‍♀	vrou wat tulband dra: ligte velkleur
+👳🏼‍♀️	vrou wat tulband dra: medium-ligte velkleur
+👳🏼‍♀	vrou wat tulband dra: medium-ligte velkleur
+👳🏽‍♀️	vrou wat tulband dra: medium velkleur
+👳🏽‍♀	vrou wat tulband dra: medium velkleur
+👳🏾‍♀️	vrou wat tulband dra: medium-donker velkleur
+👳🏾‍♀	vrou wat tulband dra: medium-donker velkleur
+👳🏿‍♀️	vrou wat tulband dra: donker velkleur
+👳🏿‍♀	vrou wat tulband dra: donker velkleur
+👲	man met Chinese pet
+👲🏻	man met Chinese pet: ligte velkleur
+👲🏼	man met Chinese pet: medium-ligte velkleur
+👲🏽	man met Chinese pet: medium velkleur
+👲🏾	man met Chinese pet: medium-donker velkleur
+👲🏿	man met Chinese pet: donker velkleur
+🧕	vrou met kopdoek
+🧕🏻	vrou met kopdoek: ligte velkleur
+🧕🏼	vrou met kopdoek: medium-ligte velkleur
+🧕🏽	vrou met kopdoek: medium velkleur
+🧕🏾	vrou met kopdoek: medium-donker velkleur
+🧕🏿	vrou met kopdoek: donker velkleur
+🧔	bebaarde persoon
+🧔🏻	bebaarde persoon: ligte velkleur
+🧔🏼	bebaarde persoon: medium-ligte velkleur
+🧔🏽	bebaarde persoon: medium velkleur
+🧔🏾	bebaarde persoon: medium-donker velkleur
+🧔🏿	bebaarde persoon: donker velkleur
+👱	blondekop persoon
+👱🏻	blonde hare: ligte velkleur
+👱🏼	blonde hare: medium-ligte velkleur
+👱🏽	blonde hare: medium velkleur
+👱🏾	blonde hare: medium-donker velkleur
+👱🏿	blonde hare: donker velkleur
+👱‍♂️	blondekop man
+👱‍♂	blondekop man
+👱🏻‍♂️	blonde man: ligte velkleur
+👱🏻‍♂	blonde man: ligte velkleur
+👱🏼‍♂️	blonde man: medium-ligte velkleur
+👱🏼‍♂	blonde man: medium-ligte velkleur
+👱🏽‍♂️	man met blonde hare: medium velkleur
+👱🏽‍♂	man met blonde hare: medium velkleur
+👱🏾‍♂️	man met blonde hare: medium-donker velkleur
+👱🏾‍♂	man met blonde hare: medium-donker velkleur
+👱🏿‍♂️	blonde man: donker velkleur
+👱🏿‍♂	blonde man: donker velkleur
+👱‍♀️	blonde hare vrou
+👱‍♀	blonde hare vrou
+👱🏻‍♀️	blonde hare vrou: ligte velkleur
+👱🏻‍♀	blonde hare vrou: ligte velkleur
+👱🏼‍♀️	blonde hare vrou: medium-ligte velkleur
+👱🏼‍♀	blonde hare vrou: medium-ligte velkleur
+👱🏽‍♀️	blonde hare vrou: medium velkleur
+👱🏽‍♀	blonde hare vrou: medium velkleur
+👱🏾‍♀️	blonde hare vrou: medium-donker velkleur
+👱🏾‍♀	blonde hare vrou: medium-donker velkleur
+👱🏿‍♀️	blonde vrou: donker velkleur
+👱🏿‍♀	blonde vrou: donker velkleur
+👨‍🦰	man, rooi hare
+👨🏻‍🦰	man, rooi hare: ligte velkleur
+👨🏼‍🦰	man, rooi hare: medium-ligte velkleur
+👨🏽‍🦰	man, rooi hare: medium velkleur
+👨🏾‍🦰	man, rooi hare: medium-donker velkleur
+👨🏿‍🦰	man, rooi hare: donker velkleur
+👩‍🦰	vrou, rooi hare
+👩🏻‍🦰	vrou, rooi hare: ligte velkleur
+👩🏼‍🦰	vrou, rooi hare: medium-ligte velkleur
+👩🏽‍🦰	vrou, rooi hare: medium velkleur
+👩🏾‍🦰	vrou, rooi hare: medium-donker velkleur
+👩🏿‍🦰	vrou, rooi hare: donker velkleur
+👨‍🦱	man, krulhare
+👨🏻‍🦱	man, krulhare: ligte velkleur
+👨🏼‍🦱	man, krulhare: medium-ligte velkleur
+👨🏽‍🦱	man, krulhare: medium velkleur
+👨🏾‍🦱	man, krulhare: medium-donker velkleur
+👨🏿‍🦱	man, krulhare: donker velkleur
+👩‍🦱	vrou, krulhare
+👩🏻‍🦱	vrou, krulhare: ligte velkleur
+👩🏼‍🦱	vrou, krulhare: medium-ligte velkleur
+👩🏽‍🦱	vrou, krulhare: medium velkleur
+👩🏾‍🦱	vrou, krulhare: medium-donker velkleur
+👩🏿‍🦱	vrou, krulhare: donker velkleur
+👨‍🦲	man, kaalkop
+👨🏻‍🦲	man, bles: ligte velkleur
+👨🏼‍🦲	man, kaal: medium-ligte velkleur
+👨🏽‍🦲	man, kaal: medium velkleur
+👨🏾‍🦲	man, kaal: medium-donker velkleur
+👨🏿‍🦲	man, kaal: donker velkleur
+👩‍🦲	vrou, bles
+👩🏻‍🦲	vrou, kaal: ligte velkleur
+👩🏼‍🦲	vrou, kaal: medium-ligte velkleur
+👩🏽‍🦲	vrou, kaal: medium velkleur
+👩🏾‍🦲	vrou, kaal: medium-donker velkleur
+👩🏿‍🦲	vrou, kaal: donker velkleur
+👨‍🦳	man, wit hare
+👨🏻‍🦳	man, wit hare: ligte velkleur
+👨🏼‍🦳	man, wit hare: medium-ligte velkleur
+👨🏽‍🦳	man, wit hare: medium velkleur
+👨🏾‍🦳	man, wit hare: medium-donker velkleur
+👨🏿‍🦳	man, wit hare: donker velkleur
+👩‍🦳	vrou, wit hare
+👩🏻‍🦳	vrou, wit hare: ligte velkleur
+👩🏼‍🦳	vrou, wit hare: medium-ligte velkleur
+👩🏽‍🦳	vrou, wit hare: medium velkleur
+👩🏾‍🦳	vrou, wit hare: medium-donker velkleur
+👩🏿‍🦳	vrou, wit hare: donker velkleur
+🤵	man in tuxedo
+🤵🏻	man in tuxedo: ligte velkleur
+🤵🏼	man in tuxedo: medium-ligte velkleur
+🤵🏽	man in tuxedo: medium velkleur
+🤵🏾	man in tuxedo: medium-donker velkleur
+🤵🏿	man in tuxedo: donker velkleur
+👰	bruid met sluier
+👰🏻	bruid met sluier: ligte velkleur
+👰🏼	bruid met sluier: medium-ligte velkleur
+👰🏽	bruid met sluier: medium velkleur
+👰🏾	bruid met sluier: medium-donker velkleur
+👰🏿	bruid met sluier: donker velkleur
+🤰	swanger vrou
+🤰🏻	swanger vrou: ligte velkleur
+🤰🏼	swanger vrou: medium-ligte velkleur
+🤰🏽	swanger vrou: medium velkleur
+🤰🏾	swanger vrou: medium-donker velkleur
+🤰🏿	swanger vrou: donker velkleur
+🤱	borsvoeding
+🤱🏻	borsvoeding: ligte velkleur
+🤱🏼	borsvoeding: medium-ligte velkleur
+🤱🏽	borsvoeding: medium velkleur
+🤱🏾	borsvoeding: medium-donker velkleur
+🤱🏿	borsvoeding: donker velkleur
+👼	baba engel
+👼🏻	baba engel: ligte velkleur
+👼🏼	baba engel: medium-ligte velkleur
+👼🏽	baba engel: medium velkleur
+👼🏾	baba engel: medium-donker velkleur
+👼🏿	baba engel: donker velkleur
+🎅	Vader Kersfees
+🎅🏻	Kersvader: ligte velkleur
+🎅🏼	Kersvader: medium-ligte velkleur
+🎅🏽	Kersvader: medium velkleur
+🎅🏾	Kersvader: medium-donker velkleur
+🎅🏿	Kersvader: donker velkleur
+🤶	Mev Claus
+🤶🏻	Mev Claus: ligte velkleur
+🤶🏼	Mev. Claus: medium-ligte velkleur
+🤶🏽	Mev. Claus: medium velkleur
+🤶🏾	Mev. Claus: medium-donker velkleur
+🤶🏿	Mev Claus: donker velkleur
+🦸	superheld
+🦸🏻	superheld: ligte velkleur
+🦸🏼	superheld: medium-ligte velkleur
+🦸🏽	superheld: medium velkleur
+🦸🏾	superheld: medium-donker velkleur
+🦸🏿	superheld: donker velkleur
+🦸‍♀️	vroulike superheld
+🦸‍♀	vroulike superheld
+🦸🏻‍♀️	vroulike superheld: ligte velkleur
+🦸🏻‍♀	vroulike superheld: ligte velkleur
+🦸🏼‍♀️	vroulike superheld: medium-ligte velkleur
+🦸🏼‍♀	vroulike superheld: medium-ligte velkleur
+🦸🏽‍♀️	vroulike superheld: medium velkleur
+🦸🏽‍♀	vroulike superheld: medium velkleur
+🦸🏾‍♀️	vroulike superheld: medium-donker velkleur
+🦸🏾‍♀	vroulike superheld: medium-donker velkleur
+🦸🏿‍♀️	vroulike superheld: donker velkleur
+🦸🏿‍♀	vroulike superheld: donker velkleur
+🦸‍♂️	man superheld
+🦸‍♂	man superheld
+🦸🏻‍♂️	man-superheld: ligte velkleur
+🦸🏻‍♂	man-superheld: ligte velkleur
+🦸🏼‍♂️	man-superheld: medium-ligte velkleur
+🦸🏼‍♂	man-superheld: medium-ligte velkleur
+🦸🏽‍♂️	man-superheld: medium velkleur
+🦸🏽‍♂	man-superheld: medium velkleur
+🦸🏾‍♂️	man-superheld: medium-donker velkleur
+🦸🏾‍♂	man-superheld: medium-donker velkleur
+🦸🏿‍♂️	man-superheld: donker velkleur
+🦸🏿‍♂	man-superheld: donker velkleur
+🦹	superskurk
+🦹🏻	superskurk: ligte velkleur
+🦹🏼	superskurk: medium-ligte velkleur
+🦹🏽	superskurk: medium velkleur
+🦹🏾	superskurk: medium-donker velkleur
+🦹🏿	superskurk: donker velkleur
+🦹‍♀️	vroulike superskurk
+🦹‍♀	vroulike superskurk
+🦹🏻‍♀️	vrou superskurk: ligte velkleur
+🦹🏻‍♀	vrou superskurk: ligte velkleur
+🦹🏼‍♀️	vroulike superskurk: medium-ligte velkleur
+🦹🏼‍♀	vroulike superskurk: medium-ligte velkleur
+🦹🏽‍♀️	vroulike superskurk: medium velkleur
+🦹🏽‍♀	vroulike superskurk: medium velkleur
+🦹🏾‍♀️	vroulike superskurk: medium-donker velkleur
+🦹🏾‍♀	vroulike superskurk: medium-donker velkleur
+🦹🏿‍♀️	vrou superskurk: donker velkleur
+🦹🏿‍♀	vrou superskurk: donker velkleur
+🦹‍♂️	man superskurk
+🦹‍♂	man superskurk
+🦹🏻‍♂️	man superskurk: ligte velkleur
+🦹🏻‍♂	man superskurk: ligte velkleur
+🦹🏼‍♂️	man-superskurk: medium-ligte velkleur
+🦹🏼‍♂	man-superskurk: medium-ligte velkleur
+🦹🏽‍♂️	man superskurk: medium velkleur
+🦹🏽‍♂	man superskurk: medium velkleur
+🦹🏾‍♂️	man-superskurk: medium-donker velkleur
+🦹🏾‍♂	man-superskurk: medium-donker velkleur
+🦹🏿‍♂️	man superskurk: donker velkleur
+🦹🏿‍♂	man superskurk: donker velkleur
+🧙	towenaar
+🧙🏻	towenaar: ligte velkleur
+🧙🏼	towenaar: medium-ligte velkleur
+🧙🏽	towenaar: medium velkleur
+🧙🏾	towenaar: medium-donker velkleur
+🧙🏿	towenaar: donker velkleur
+🧙‍♀️	vroulike towenaar
+🧙‍♀	vroulike towenaar
+🧙🏻‍♀️	vroulike towenaar: ligte velkleur
+🧙🏻‍♀	vroulike towenaar: ligte velkleur
+🧙🏼‍♀️	vroulike towenaar: medium-ligte velkleur
+🧙🏼‍♀	vroulike towenaar: medium-ligte velkleur
+🧙🏽‍♀️	vroulike towenaar: medium velkleur
+🧙🏽‍♀	vroulike towenaar: medium velkleur
+🧙🏾‍♀️	vroulike towenaar: medium-donker velkleur
+🧙🏾‍♀	vroulike towenaar: medium-donker velkleur
+🧙🏿‍♀️	vroulike towenaar: donker velkleur
+🧙🏿‍♀	vroulike towenaar: donker velkleur
+🧙‍♂️	man towenaar
+🧙‍♂	man towenaar
+🧙🏻‍♂️	man towenaar: ligte velkleur
+🧙🏻‍♂	man towenaar: ligte velkleur
+🧙🏼‍♂️	man towenaar: medium-ligte velkleur
+🧙🏼‍♂	man towenaar: medium-ligte velkleur
+🧙🏽‍♂️	man towenaar: medium velkleur
+🧙🏽‍♂	man towenaar: medium velkleur
+🧙🏾‍♂️	man towenaar: medium-donker velkleur
+🧙🏾‍♂	man towenaar: medium-donker velkleur
+🧙🏿‍♂️	man towenaar: donker velkleur
+🧙🏿‍♂	man towenaar: donker velkleur
+🧚	feetjie
+🧚🏻	feetjie: ligte velkleur
+🧚🏼	feetjie: medium-ligte velkleur
+🧚🏽	feetjie: medium velkleur
+🧚🏾	feetjie: medium-donker velkleur
+🧚🏿	feetjie: donker velkleur
+🧚‍♀️	vrou feetjie
+🧚‍♀	vrou feetjie
+🧚🏻‍♀️	vrou fee: ligte velkleur
+🧚🏻‍♀	vrou fee: ligte velkleur
+🧚🏼‍♀️	vroulike feetjie: medium-ligte velkleur
+🧚🏼‍♀	vroulike feetjie: medium-ligte velkleur
+🧚🏽‍♀️	vrou fee: medium velkleur
+🧚🏽‍♀	vrou fee: medium velkleur
+🧚🏾‍♀️	vroulike feetjie: medium-donker velkleur
+🧚🏾‍♀	vroulike feetjie: medium-donker velkleur
+🧚🏿‍♀️	vrou fee: donker velkleur
+🧚🏿‍♀	vrou fee: donker velkleur
+🧚‍♂️	man feetjie
+🧚‍♂	man feetjie
+🧚🏻‍♂️	man feetjie: ligte velkleur
+🧚🏻‍♂	man feetjie: ligte velkleur
+🧚🏼‍♂️	man feetjie: medium-ligte velkleur
+🧚🏼‍♂	man feetjie: medium-ligte velkleur
+🧚🏽‍♂️	man feetjie: medium velkleur
+🧚🏽‍♂	man feetjie: medium velkleur
+🧚🏾‍♂️	man feetjie: medium-donker velkleur
+🧚🏾‍♂	man feetjie: medium-donker velkleur
+🧚🏿‍♂️	man feetjie: donker velkleur
+🧚🏿‍♂	man feetjie: donker velkleur
+🧛	vampier
+🧛🏻	vampier: ligte velkleur
+🧛🏼	vampier: medium-ligte velkleur
+🧛🏽	vampier: medium velkleur
+🧛🏾	vampier: medium-donker velkleur
+🧛🏿	vampier: donker velkleur
+🧛‍♀️	vrou vampier
+🧛‍♀	vrou vampier
+🧛🏻‍♀️	vrou vampier: ligte velkleur
+🧛🏻‍♀	vrou vampier: ligte velkleur
+🧛🏼‍♀️	vroulike vampier: medium-ligte velkleur
+🧛🏼‍♀	vroulike vampier: medium-ligte velkleur
+🧛🏽‍♀️	vroulike vampier: medium velkleur
+🧛🏽‍♀	vroulike vampier: medium velkleur
+🧛🏾‍♀️	vroulike vampier: medium-donker velkleur
+🧛🏾‍♀	vroulike vampier: medium-donker velkleur
+🧛🏿‍♀️	vrou vampier: donker velkleur
+🧛🏿‍♀	vrou vampier: donker velkleur
+🧛‍♂️	man vampier
+🧛‍♂	man vampier
+🧛🏻‍♂️	man vampier: ligte velkleur
+🧛🏻‍♂	man vampier: ligte velkleur
+🧛🏼‍♂️	man vampier: medium-ligte velkleur
+🧛🏼‍♂	man vampier: medium-ligte velkleur
+🧛🏽‍♂️	man vampier: medium velkleur
+🧛🏽‍♂	man vampier: medium velkleur
+🧛🏾‍♂️	man vampier: medium-donker velkleur
+🧛🏾‍♂	man vampier: medium-donker velkleur
+🧛🏿‍♂️	man vampier: donker velkleur
+🧛🏿‍♂	man vampier: donker velkleur
+🧜	meerpersoon
+🧜🏻	meerpersoon: ligte velkleur
+🧜🏼	merperson: medium-ligte velkleur
+🧜🏽	meerpersoon: medium velkleur
+🧜🏾	meerpersoon: medium-donker velkleur
+🧜🏿	meerpersoon: donker velkleur
+🧜‍♀️	meermin
+🧜‍♀	meermin
+🧜🏻‍♀️	meermin: ligte velkleur
+🧜🏻‍♀	meermin: ligte velkleur
+🧜🏼‍♀️	meermin: medium-ligte velkleur
+🧜🏼‍♀	meermin: medium-ligte velkleur
+🧜🏽‍♀️	meermin: medium velkleur
+🧜🏽‍♀	meermin: medium velkleur
+🧜🏾‍♀️	meermin: medium-donker velkleur
+🧜🏾‍♀	meermin: medium-donker velkleur
+🧜🏿‍♀️	meermin: donker velkleur
+🧜🏿‍♀	meermin: donker velkleur
+🧜‍♂️	meerman
+🧜‍♂	meerman
+🧜🏻‍♂️	meerman: ligte velkleur
+🧜🏻‍♂	meerman: ligte velkleur
+🧜🏼‍♂️	meerman: medium-ligte velkleur
+🧜🏼‍♂	meerman: medium-ligte velkleur
+🧜🏽‍♂️	meerman: medium velkleur
+🧜🏽‍♂	meerman: medium velkleur
+🧜🏾‍♂️	meerman: medium-donker velkleur
+🧜🏾‍♂	meerman: medium-donker velkleur
+🧜🏿‍♂️	meerman: donker velkleur
+🧜🏿‍♂	meerman: donker velkleur
+🧝	elf
+🧝🏻	elf: ligte velkleur
+🧝🏼	elf: medium-ligte velkleur
+🧝🏽	elf: medium velkleur
+🧝🏾	elf: medium-donker velkleur
+🧝🏿	elf: donker velkleur
+🧝‍♀️	vrou elf
+🧝‍♀	vrou elf
+🧝🏻‍♀️	vrou-elf: ligte velkleur
+🧝🏻‍♀	vrou-elf: ligte velkleur
+🧝🏼‍♀️	vrou-elf: medium-ligte velkleur
+🧝🏼‍♀	vrou-elf: medium-ligte velkleur
+🧝🏽‍♀️	vrou-elf: medium velkleur
+🧝🏽‍♀	vrou-elf: medium velkleur
+🧝🏾‍♀️	vrou-elf: medium-donker velkleur
+🧝🏾‍♀	vrou-elf: medium-donker velkleur
+🧝🏿‍♀️	vrou-elf: donker velkleur
+🧝🏿‍♀	vrou-elf: donker velkleur
+🧝‍♂️	man elf
+🧝‍♂	man elf
+🧝🏻‍♂️	man elf: ligte velkleur
+🧝🏻‍♂	man elf: ligte velkleur
+🧝🏼‍♂️	man-elf: medium-ligte velkleur
+🧝🏼‍♂	man-elf: medium-ligte velkleur
+🧝🏽‍♂️	man elf: medium velkleur
+🧝🏽‍♂	man elf: medium velkleur
+🧝🏾‍♂️	man-elf: medium-donker velkleur
+🧝🏾‍♂	man-elf: medium-donker velkleur
+🧝🏿‍♂️	man elf: donker velkleur
+🧝🏿‍♂	man elf: donker velkleur
+🧞	genie
+🧞‍♀️	vrou genie
+🧞‍♀	vrou genie
+🧞‍♂️	man genie
+🧞‍♂	man genie
+🧟	zombie
+🧟‍♀️	vrou zombie
+🧟‍♀	vrou zombie
+🧟‍♂️	man zombie
+🧟‍♂	man zombie
+🙍	persoon wat frons
+🙍🏻	persoon wat frons: ligte velkleur
+🙍🏼	persoon wat frons: medium-ligte velkleur
+🙍🏽	persoon wat frons: medium velkleur
+🙍🏾	persoon wat frons: medium-donker velkleur
+🙍🏿	persoon wat frons: donker velkleur
+🙍‍♂️	man wat frons
+🙍‍♂	man wat frons
+🙍🏻‍♂️	man wat frons: ligte velkleur
+🙍🏻‍♂	man wat frons: ligte velkleur
+🙍🏼‍♂️	man wat frons: medium-ligte velkleur
+🙍🏼‍♂	man wat frons: medium-ligte velkleur
+🙍🏽‍♂️	man wat frons: medium velkleur
+🙍🏽‍♂	man wat frons: medium velkleur
+🙍🏾‍♂️	man wat frons: medium-donker velkleur
+🙍🏾‍♂	man wat frons: medium-donker velkleur
+🙍🏿‍♂️	man wat frons: donker velkleur
+🙍🏿‍♂	man wat frons: donker velkleur
+🙍‍♀️	vrou wat frons
+🙍‍♀	vrou wat frons
+🙍🏻‍♀️	vrou frons: ligte velkleur
+🙍🏻‍♀	vrou frons: ligte velkleur
+🙍🏼‍♀️	vrou frons: medium-ligte velkleur
+🙍🏼‍♀	vrou frons: medium-ligte velkleur
+🙍🏽‍♀️	vrou wat frons: medium velkleur
+🙍🏽‍♀	vrou wat frons: medium velkleur
+🙍🏾‍♀️	vrou wat frons: medium-donker velkleur
+🙍🏾‍♀	vrou wat frons: medium-donker velkleur
+🙍🏿‍♀️	vrou wat frons: donker velkleur
+🙍🏿‍♀	vrou wat frons: donker velkleur
+🙎	persoon wat pruil
+🙎🏻	persoon wat pruil: ligte velkleur
+🙎🏼	persoon wat pruil: medium-ligte velkleur
+🙎🏽	persoon wat pruil: medium velkleur
+🙎🏾	persoon wat pruil: medium-donker velkleur
+🙎🏿	persoon wat pruil: donker velkleur
+🙎‍♂️	man wat pruil
+🙎‍♂	man wat pruil
+🙎🏻‍♂️	man wat pruil: ligte velkleur
+🙎🏻‍♂	man wat pruil: ligte velkleur
+🙎🏼‍♂️	man wat pruil: medium-ligte velkleur
+🙎🏼‍♂	man wat pruil: medium-ligte velkleur
+🙎🏽‍♂️	man wat pruil: medium velkleur
+🙎🏽‍♂	man wat pruil: medium velkleur
+🙎🏾‍♂️	man wat pruil: medium-donker velkleur
+🙎🏾‍♂	man wat pruil: medium-donker velkleur
+🙎🏿‍♂️	man wat pruil: donker velkleur
+🙎🏿‍♂	man wat pruil: donker velkleur
+🙎‍♀️	vrou wat pruil
+🙎‍♀	vrou wat pruil
+🙎🏻‍♀️	vrou wat pruil: ligte velkleur
+🙎🏻‍♀	vrou wat pruil: ligte velkleur
+🙎🏼‍♀️	vrou wat pruil: medium-ligte velkleur
+🙎🏼‍♀	vrou wat pruil: medium-ligte velkleur
+🙎🏽‍♀️	vrou wat pruil: medium velkleur
+🙎🏽‍♀	vrou wat pruil: medium velkleur
+🙎🏾‍♀️	vrou wat pruil: medium-donker velkleur
+🙎🏾‍♀	vrou wat pruil: medium-donker velkleur
+🙎🏿‍♀️	vrou wat pruil: donker velkleur
+🙎🏿‍♀	vrou wat pruil: donker velkleur
+🙅	persoon wat NEE beduie
+🙅🏻	persoon wat NEE beduie: ligte velkleur
+🙅🏼	persoon wat NEE beduie: medium-ligte velkleur
+🙅🏽	persoon beduie NEE: medium velkleur
+🙅🏾	persoon wat NEE beduie: medium-donker velkleur
+🙅🏿	persoon wat NEE beduie: donker velkleur
+🙅‍♂️	man beduie NEE
+🙅‍♂	man beduie NEE
+🙅🏻‍♂️	man beduie NEE: ligte velkleur
+🙅🏻‍♂	man beduie NEE: ligte velkleur
+🙅🏼‍♂️	man beduie NEE: medium-ligte velkleur
+🙅🏼‍♂	man beduie NEE: medium-ligte velkleur
+🙅🏽‍♂️	man beduie NEE: medium velkleur
+🙅🏽‍♂	man beduie NEE: medium velkleur
+🙅🏾‍♂️	man beduie NEE: medium-donker velkleur
+🙅🏾‍♂	man beduie NEE: medium-donker velkleur
+🙅🏿‍♂️	man beduie NEE: donker velkleur
+🙅🏿‍♂	man beduie NEE: donker velkleur
+🙅‍♀️	vrou beduie NEE
+🙅‍♀	vrou beduie NEE
+🙅🏻‍♀️	vrou beduie NEE: ligte velkleur
+🙅🏻‍♀	vrou beduie NEE: ligte velkleur
+🙅🏼‍♀️	vrou beduie NEE: medium-ligte velkleur
+🙅🏼‍♀	vrou beduie NEE: medium-ligte velkleur
+🙅🏽‍♀️	vrou beduie NEE: medium velkleur
+🙅🏽‍♀	vrou beduie NEE: medium velkleur
+🙅🏾‍♀️	vrou beduie NEE: medium-donker velkleur
+🙅🏾‍♀	vrou beduie NEE: medium-donker velkleur
+🙅🏿‍♀️	vrou beduie NEE: donker velkleur
+🙅🏿‍♀	vrou beduie NEE: donker velkleur
+🙆	persoon wat OK beduie
+🙆🏻	persoon wat OK beduie: ligte velkleur
+🙆🏼	persoon wat OK beduie: medium-ligte velkleur
+🙆🏽	persoon wat OK beduie: medium velkleur
+🙆🏾	persoon wat OK beduie: medium-donker velkleur
+🙆🏿	persoon wat OK beduie: donker velkleur
+🙆‍♂️	man beduie OK
+🙆‍♂	man beduie OK
+🙆🏻‍♂️	man beduie OK: ligte velkleur
+🙆🏻‍♂	man beduie OK: ligte velkleur
+🙆🏼‍♂️	man beduie OK: medium-ligte velkleur
+🙆🏼‍♂	man beduie OK: medium-ligte velkleur
+🙆🏽‍♂️	man beduie OK: medium velkleur
+🙆🏽‍♂	man beduie OK: medium velkleur
+🙆🏾‍♂️	man beduie OK: medium-donker velkleur
+🙆🏾‍♂	man beduie OK: medium-donker velkleur
+🙆🏿‍♂️	man beduie OK: donker velkleur
+🙆🏿‍♂	man beduie OK: donker velkleur
+🙆‍♀️	vrou beduie OK
+🙆‍♀	vrou beduie OK
+🙆🏻‍♀️	vrou beduie OK: ligte velkleur
+🙆🏻‍♀	vrou beduie OK: ligte velkleur
+🙆🏼‍♀️	vrou beduie OK: medium-ligte velkleur
+🙆🏼‍♀	vrou beduie OK: medium-ligte velkleur
+🙆🏽‍♀️	vrou beduie OK: medium velkleur
+🙆🏽‍♀	vrou beduie OK: medium velkleur
+🙆🏾‍♀️	vrou beduie OK: medium-donker velkleur
+🙆🏾‍♀	vrou beduie OK: medium-donker velkleur
+🙆🏿‍♀️	vrou beduie OK: donker velkleur
+🙆🏿‍♀	vrou beduie OK: donker velkleur
+💁	persoon steek hand
+💁🏻	persoon wat hand opsteek: ligte velkleur
+💁🏼	persoon wat hand opsteek: medium-ligte velkleur
+💁🏽	persoon wat hand opsteek: medium velkleur
+💁🏾	persoon wat hand opsteek: medium-donker velkleur
+💁🏿	persoon wat hand opsteek: donker velkleur
+💁‍♂️	man steek hand
+💁‍♂	man steek hand
+💁🏻‍♂️	man steek hand: ligte velkleur
+💁🏻‍♂	man steek hand: ligte velkleur
+💁🏼‍♂️	man wat hand opsteek: medium-ligte velkleur
+💁🏼‍♂	man wat hand opsteek: medium-ligte velkleur
+💁🏽‍♂️	man steek hand: medium velkleur
+💁🏽‍♂	man steek hand: medium velkleur
+💁🏾‍♂️	man wat hand opsteek: medium-donker velkleur
+💁🏾‍♂	man wat hand opsteek: medium-donker velkleur
+💁🏿‍♂️	man steek hand: donker velkleur
+💁🏿‍♂	man steek hand: donker velkleur
+💁‍♀️	vrou steek hand
+💁‍♀	vrou steek hand
+💁🏻‍♀️	vrou steek hand: ligte velkleur
+💁🏻‍♀	vrou steek hand: ligte velkleur
+💁🏼‍♀️	vrou wat hand opsteek: medium-ligte velkleur
+💁🏼‍♀	vrou wat hand opsteek: medium-ligte velkleur
+💁🏽‍♀️	vrou steek hand: medium velkleur
+💁🏽‍♀	vrou steek hand: medium velkleur
+💁🏾‍♀️	vrou wat hand opsteek: medium-donker velkleur
+💁🏾‍♀	vrou wat hand opsteek: medium-donker velkleur
+💁🏿‍♀️	vrou steek hand: donker velkleur
+💁🏿‍♀	vrou steek hand: donker velkleur
+🙋	persoon wat hand opsteek
+🙋🏻	persoon wat hand opsteek: ligte velkleur
+🙋🏼	persoon wat hand opsteek: medium-ligte velkleur
+🙋🏽	persoon wat hand opsteek: medium velkleur
+🙋🏾	persoon wat hand opsteek: medium-donker velkleur
+🙋🏿	persoon wat hand opsteek: donker velkleur
+🙋‍♂️	man steek hand op
+🙋‍♂	man steek hand op
+🙋🏻‍♂️	man wat hand opsteek: ligte velkleur
+🙋🏻‍♂	man wat hand opsteek: ligte velkleur
+🙋🏼‍♂️	man wat hand opsteek: medium-ligte velkleur
+🙋🏼‍♂	man wat hand opsteek: medium-ligte velkleur
+🙋🏽‍♂️	man wat hand opsteek: medium velkleur
+🙋🏽‍♂	man wat hand opsteek: medium velkleur
+🙋🏾‍♂️	man wat hand opsteek: medium-donker velkleur
+🙋🏾‍♂	man wat hand opsteek: medium-donker velkleur
+🙋🏿‍♂️	man wat hand opsteek: donker velkleur
+🙋🏿‍♂	man wat hand opsteek: donker velkleur
+🙋‍♀️	vrou steek hand op
+🙋‍♀	vrou steek hand op
+🙋🏻‍♀️	vrou wat hand opsteek: ligte velkleur
+🙋🏻‍♀	vrou wat hand opsteek: ligte velkleur
+🙋🏼‍♀️	vrou wat hand opsteek: medium-ligte velkleur
+🙋🏼‍♀	vrou wat hand opsteek: medium-ligte velkleur
+🙋🏽‍♀️	vrou wat hand opsteek: medium velkleur
+🙋🏽‍♀	vrou wat hand opsteek: medium velkleur
+🙋🏾‍♀️	vrou wat hand opsteek: medium-donker velkleur
+🙋🏾‍♀	vrou wat hand opsteek: medium-donker velkleur
+🙋🏿‍♀️	vrou steek hand op: donker velkleur
+🙋🏿‍♀	vrou steek hand op: donker velkleur
+🙇	persoon wat buig
+🙇🏻	persoon wat buig: ligte velkleur
+🙇🏼	persoon wat buig: medium-ligte velkleur
+🙇🏽	persoon wat buig: medium velkleur
+🙇🏾	persoon wat buig: medium-donker velkleur
+🙇🏿	persoon wat buig: donker velkleur
+🙇‍♂️	man buig
+🙇‍♂	man buig
+🙇🏻‍♂️	man buig: ligte velkleur
+🙇🏻‍♂	man buig: ligte velkleur
+🙇🏼‍♂️	man buig: medium-ligte velkleur
+🙇🏼‍♂	man buig: medium-ligte velkleur
+🙇🏽‍♂️	man buig: medium velkleur
+🙇🏽‍♂	man buig: medium velkleur
+🙇🏾‍♂️	man buig: medium-donker velkleur
+🙇🏾‍♂	man buig: medium-donker velkleur
+🙇🏿‍♂️	man buig: donker velkleur
+🙇🏿‍♂	man buig: donker velkleur
+🙇‍♀️	vrou buig
+🙇‍♀	vrou buig
+🙇🏻‍♀️	vrou buig: ligte velkleur
+🙇🏻‍♀	vrou buig: ligte velkleur
+🙇🏼‍♀️	vrou buig: medium-ligte velkleur
+🙇🏼‍♀	vrou buig: medium-ligte velkleur
+🙇🏽‍♀️	vrou buig: medium velkleur
+🙇🏽‍♀	vrou buig: medium velkleur
+🙇🏾‍♀️	vrou buig: medium-donker velkleur
+🙇🏾‍♀	vrou buig: medium-donker velkleur
+🙇🏿‍♀️	vrou buig: donker velkleur
+🙇🏿‍♀	vrou buig: donker velkleur
+🤦	persoon gesigpalm
+🤦🏻	persoon wat gesigpalm: ligte velkleur
+🤦🏼	persoon gesigpalm: medium-ligte velkleur
+🤦🏽	persoon wat gesigpalm: medium velkleur
+🤦🏾	persoon gesigpalm: medium-donker velkleur
+🤦🏿	persoon gesigpalm: donker velkleur
+🤦‍♂️	man gesigpalm
+🤦‍♂	man gesigpalm
+🤦🏻‍♂️	man gesigpalming: ligte velkleur
+🤦🏻‍♂	man gesigpalming: ligte velkleur
+🤦🏼‍♂️	man gesigpalming: medium-ligte velkleur
+🤦🏼‍♂	man gesigpalming: medium-ligte velkleur
+🤦🏽‍♂️	man gesigpalming: medium velkleur
+🤦🏽‍♂	man gesigpalming: medium velkleur
+🤦🏾‍♂️	man gesigpalm: medium-donker velkleur
+🤦🏾‍♂	man gesigpalm: medium-donker velkleur
+🤦🏿‍♂️	man gesigpalming: donker velkleur
+🤦🏿‍♂	man gesigpalming: donker velkleur
+🤦‍♀️	vrou gesigpalm
+🤦‍♀	vrou gesigpalm
+🤦🏻‍♀️	vrou se gesigpalm: ligte velkleur
+🤦🏻‍♀	vrou se gesigpalm: ligte velkleur
+🤦🏼‍♀️	vrou se gesigpalm: medium-ligte velkleur
+🤦🏼‍♀	vrou se gesigpalm: medium-ligte velkleur
+🤦🏽‍♀️	vrou se gesigpalm: medium velkleur
+🤦🏽‍♀	vrou se gesigpalm: medium velkleur
+🤦🏾‍♀️	vrou se gesigpalm: medium-donker velkleur
+🤦🏾‍♀	vrou se gesigpalm: medium-donker velkleur
+🤦🏿‍♀️	vrou gesigpalm: donker velkleur
+🤦🏿‍♀	vrou gesigpalm: donker velkleur
+🤷	persoon wat skouers ophaal
+🤷🏻	persoon wat skouers ophaal: ligte velkleur
+🤷🏼	persoon wat skouers ophaal: medium-ligte velkleur
+🤷🏽	persoon wat skouers ophaal: medium velkleur
+🤷🏾	persoon wat skouers ophaal: medium-donker velkleur
+🤷🏿	persoon wat skouers ophaal: donker velkleur
+🤷‍♂️	man wat sy skouers ophaal
+🤷‍♂	man wat sy skouers ophaal
+🤷🏻‍♂️	man wat skouers ophaal: ligte velkleur
+🤷🏻‍♂	man wat skouers ophaal: ligte velkleur
+🤷🏼‍♂️	man wat skouers ophaal: medium-ligte velkleur
+🤷🏼‍♂	man wat skouers ophaal: medium-ligte velkleur
+🤷🏽‍♂️	man wat skouers ophaal: medium velkleur
+🤷🏽‍♂	man wat skouers ophaal: medium velkleur
+🤷🏾‍♂️	man wat sy skouers ophaal: medium-donker velkleur
+🤷🏾‍♂	man wat sy skouers ophaal: medium-donker velkleur
+🤷🏿‍♂️	man wat sy skouers ophaal: donker velkleur
+🤷🏿‍♂	man wat sy skouers ophaal: donker velkleur
+🤷‍♀️	vrou wat haar skouers ophaal
+🤷‍♀	vrou wat haar skouers ophaal
+🤷🏻‍♀️	vrou wat skouers ophaal: ligte velkleur
+🤷🏻‍♀	vrou wat skouers ophaal: ligte velkleur
+🤷🏼‍♀️	vrou wat skouers ophaal: medium-ligte velkleur
+🤷🏼‍♀	vrou wat skouers ophaal: medium-ligte velkleur
+🤷🏽‍♀️	vrou skouerophaal: medium velkleur
+🤷🏽‍♀	vrou skouerophaal: medium velkleur
+🤷🏾‍♀️	vrou wat haar skouers ophaal: medium-donker velkleur
+🤷🏾‍♀	vrou wat haar skouers ophaal: medium-donker velkleur
+🤷🏿‍♀️	vrou skouerophaal: donker velkleur
+🤷🏿‍♀	vrou skouerophaal: donker velkleur
+💆	persoon wat massering kry
+💆🏻	persoon wat massering kry: ligte velkleur
+💆🏼	persoon wat massering kry: medium-ligte velkleur
+💆🏽	persoon wat massering kry: medium velkleur
+💆🏾	persoon wat massering kry: medium-donker velkleur
+💆🏿	persoon wat massering kry: donker velkleur
+💆‍♂️	man wat massering kry
+💆‍♂	man wat massering kry
+💆🏻‍♂️	man kry massering: ligte velkleur
+💆🏻‍♂	man kry massering: ligte velkleur
+💆🏼‍♂️	man kry massering: medium-ligte velkleur
+💆🏼‍♂	man kry massering: medium-ligte velkleur
+💆🏽‍♂️	man kry massering: medium velkleur
+💆🏽‍♂	man kry massering: medium velkleur
+💆🏾‍♂️	man kry massering: medium-donker velkleur
+💆🏾‍♂	man kry massering: medium-donker velkleur
+💆🏿‍♂️	man kry massering: donker velkleur
+💆🏿‍♂	man kry massering: donker velkleur
+💆‍♀️	vrou wat massering kry
+💆‍♀	vrou wat massering kry
+💆🏻‍♀️	vrou kry massering: ligte velkleur
+💆🏻‍♀	vrou kry massering: ligte velkleur
+💆🏼‍♀️	vrou kry massering: medium-ligte velkleur
+💆🏼‍♀	vrou kry massering: medium-ligte velkleur
+💆🏽‍♀️	vrou kry massering: medium velkleur
+💆🏽‍♀	vrou kry massering: medium velkleur
+💆🏾‍♀️	vrou kry massering: medium-donker velkleur
+💆🏾‍♀	vrou kry massering: medium-donker velkleur
+💆🏿‍♀️	vrou kry massering: donker velkleur
+💆🏿‍♀	vrou kry massering: donker velkleur
+💇	persoon wat haar sny
+💇🏻	persoon wat haar sny: ligte velkleur
+💇🏼	persoon wat haar sny: medium-ligte velkleur
+💇🏽	persoon wat haar sny: medium velkleur
+💇🏾	persoon wat haar sny: medium-donker velkleur
+💇🏿	persoon wat haar sny: donker velkleur
+💇‍♂️	man wat kapsel kry
+💇‍♂	man wat kapsel kry
+💇🏻‍♂️	man kry haarsny: ligte velkleur
+💇🏻‍♂	man kry haarsny: ligte velkleur
+💇🏼‍♂️	man kry haarsny: medium-ligte velkleur
+💇🏼‍♂	man kry haarsny: medium-ligte velkleur
+💇🏽‍♂️	man kry haarsny: medium velkleur
+💇🏽‍♂	man kry haarsny: medium velkleur
+💇🏾‍♂️	man kry haarsny: medium-donker velkleur
+💇🏾‍♂	man kry haarsny: medium-donker velkleur
+💇🏿‍♂️	man kry kapsel: donker velkleur
+💇🏿‍♂	man kry kapsel: donker velkleur
+💇‍♀️	vrou kry haarsny
+💇‍♀	vrou kry haarsny
+💇🏻‍♀️	vrou kry haarsny: ligte velkleur
+💇🏻‍♀	vrou kry haarsny: ligte velkleur
+💇🏼‍♀️	vrou kry haarsny: medium-ligte velkleur
+💇🏼‍♀	vrou kry haarsny: medium-ligte velkleur
+💇🏽‍♀️	vrou kry haarsny: medium velkleur
+💇🏽‍♀	vrou kry haarsny: medium velkleur
+💇🏾‍♀️	vrou kry haarsny: medium-donker velkleur
+💇🏾‍♀	vrou kry haarsny: medium-donker velkleur
+💇🏿‍♀️	vrou kry haarsny: donker velkleur
+💇🏿‍♀	vrou kry haarsny: donker velkleur
+🚶	persoon wat loop
+🚶🏻	persoon wat loop: ligte velkleur
+🚶🏼	persoon wat loop: medium-ligte velkleur
+🚶🏽	persoon wat loop: medium velkleur
+🚶🏾	persoon wat loop: medium-donker velkleur
+🚶🏿	persoon wat loop: donker velkleur
+🚶‍♂️	man loop
+🚶‍♂	man loop
+🚶🏻‍♂️	man loop: ligte velkleur
+🚶🏻‍♂	man loop: ligte velkleur
+🚶🏼‍♂️	man loop: medium-ligte velkleur
+🚶🏼‍♂	man loop: medium-ligte velkleur
+🚶🏽‍♂️	man loop: medium velkleur
+🚶🏽‍♂	man loop: medium velkleur
+🚶🏾‍♂️	man loop: medium-donker velkleur
+🚶🏾‍♂	man loop: medium-donker velkleur
+🚶🏿‍♂️	man loop: donker velkleur
+🚶🏿‍♂	man loop: donker velkleur
+🚶‍♀️	vrou loop
+🚶‍♀	vrou loop
+🚶🏻‍♀️	vrou loop: ligte velkleur
+🚶🏻‍♀	vrou loop: ligte velkleur
+🚶🏼‍♀️	vrou loop: medium-ligte velkleur
+🚶🏼‍♀	vrou loop: medium-ligte velkleur
+🚶🏽‍♀️	vrou loop: medium velkleur
+🚶🏽‍♀	vrou loop: medium velkleur
+🚶🏾‍♀️	vrou loop: medium-donker velkleur
+🚶🏾‍♀	vrou loop: medium-donker velkleur
+🚶🏿‍♀️	vrou loop: donker velkleur
+🚶🏿‍♀	vrou loop: donker velkleur
+🏃	persoon hardloop
+🏃🏻	persoon hardloop: ligte velkleur
+🏃🏼	persoon wat hardloop: medium-ligte velkleur
+🏃🏽	persoon hardloop: medium velkleur
+🏃🏾	persoon wat hardloop: medium-donker velkleur
+🏃🏿	persoon wat hardloop: donker velkleur
+🏃‍♂️	man hardloop
+🏃‍♂	man hardloop
+🏃🏻‍♂️	man hardloop: ligte velkleur
+🏃🏻‍♂	man hardloop: ligte velkleur
+🏃🏼‍♂️	man hardloop: medium-ligte velkleur
+🏃🏼‍♂	man hardloop: medium-ligte velkleur
+🏃🏽‍♂️	man hardloop: medium velkleur
+🏃🏽‍♂	man hardloop: medium velkleur
+🏃🏾‍♂️	man hardloop: medium-donker velkleur
+🏃🏾‍♂	man hardloop: medium-donker velkleur
+🏃🏿‍♂️	man hardloop: donker velkleur
+🏃🏿‍♂	man hardloop: donker velkleur
+🏃‍♀️	vrou hardloop
+🏃‍♀	vrou hardloop
+🏃🏻‍♀️	vrou hardloop: ligte velkleur
+🏃🏻‍♀	vrou hardloop: ligte velkleur
+🏃🏼‍♀️	vrou hardloop: medium-ligte velkleur
+🏃🏼‍♀	vrou hardloop: medium-ligte velkleur
+🏃🏽‍♀️	vrou hardloop: medium velkleur
+🏃🏽‍♀	vrou hardloop: medium velkleur
+🏃🏾‍♀️	vrou hardloop: medium-donker velkleur
+🏃🏾‍♀	vrou hardloop: medium-donker velkleur
+🏃🏿‍♀️	vrou hardloop: donker velkleur
+🏃🏿‍♀	vrou hardloop: donker velkleur
+💃	vrou dans
+💃🏻	vrou dans: ligte velkleur
+💃🏼	vrou wat dans: medium-ligte velkleur
+💃🏽	vrou dans: medium velkleur
+💃🏾	vrou dans: medium-donker velkleur
+💃🏿	vrou dans: donker velkleur
+🕺	man dans
+🕺🏻	man dans: ligte velkleur
+🕺🏼	man dans: medium-ligte velkleur
+🕺🏽	man dans: medium velkleur
+🕺🏾	man dans: medium-donker velkleur
+🕺🏿	man dans: donker velkleur
+👯	mense met hasie-ore
+👯‍♂️	mans met hasie-ore
+👯‍♂	mans met hasie-ore
+👯‍♀️	vroue met hasie-ore
+👯‍♀	vroue met hasie-ore
+🧖	persoon in stoomkamer
+🧖🏻	persoon in stoomkamer: ligte velkleur
+🧖🏼	persoon in stoomkamer: medium-ligte velkleur
+🧖🏽	persoon in stoomkamer: medium velkleur
+🧖🏾	persoon in stoomkamer: medium-donker velkleur
+🧖🏿	persoon in stoomkamer: donker velkleur
+🧖‍♀️	vrou in stoomkamer
+🧖‍♀	vrou in stoomkamer
+🧖🏻‍♀️	vrou in stoomkamer: ligte velkleur
+🧖🏻‍♀	vrou in stoomkamer: ligte velkleur
+🧖🏼‍♀️	vrou in stoomkamer: medium-ligte velkleur
+🧖🏼‍♀	vrou in stoomkamer: medium-ligte velkleur
+🧖🏽‍♀️	vrou in stoomkamer: medium velkleur
+🧖🏽‍♀	vrou in stoomkamer: medium velkleur
+🧖🏾‍♀️	vrou in stoomkamer: medium-donker velkleur
+🧖🏾‍♀	vrou in stoomkamer: medium-donker velkleur
+🧖🏿‍♀️	vrou in stoomkamer: donker velkleur
+🧖🏿‍♀	vrou in stoomkamer: donker velkleur
+🧖‍♂️	man in stoomkamer
+🧖‍♂	man in stoomkamer
+🧖🏻‍♂️	man in stoomkamer: ligte velkleur
+🧖🏻‍♂	man in stoomkamer: ligte velkleur
+🧖🏼‍♂️	man in stoomkamer: medium-ligte velkleur
+🧖🏼‍♂	man in stoomkamer: medium-ligte velkleur
+🧖🏽‍♂️	man in stoomkamer: medium velkleur
+🧖🏽‍♂	man in stoomkamer: medium velkleur
+🧖🏾‍♂️	man in stoomkamer: medium-donker velkleur
+🧖🏾‍♂	man in stoomkamer: medium-donker velkleur
+🧖🏿‍♂️	man in stoomkamer: donker velkleur
+🧖🏿‍♂	man in stoomkamer: donker velkleur
+🧗	persoon wat klim
+🧗🏻	persoon wat klim: ligte velkleur
+🧗🏼	persoon wat klim: medium-ligte velkleur
+🧗🏽	persoon wat klim: medium velkleur
+🧗🏾	persoon wat klim: medium-donker velkleur
+🧗🏿	persoon wat klim: donker velkleur
+🧗‍♀️	vrou wat klim
+🧗‍♀	vrou wat klim
+🧗🏻‍♀️	vrou wat klim: ligte velkleur
+🧗🏻‍♀	vrou wat klim: ligte velkleur
+🧗🏼‍♀️	vrou wat klim: medium-ligte velkleur
+🧗🏼‍♀	vrou wat klim: medium-ligte velkleur
+🧗🏽‍♀️	vrou wat klim: medium velkleur
+🧗🏽‍♀	vrou wat klim: medium velkleur
+🧗🏾‍♀️	vrou wat klim: medium-donker velkleur
+🧗🏾‍♀	vrou wat klim: medium-donker velkleur
+🧗🏿‍♀️	vrou wat klim: donker velkleur
+🧗🏿‍♀	vrou wat klim: donker velkleur
+🧗‍♂️	man klim
+🧗‍♂	man klim
+🧗🏻‍♂️	man wat klim: ligte velkleur
+🧗🏻‍♂	man wat klim: ligte velkleur
+🧗🏼‍♂️	manklim: medium-ligte velkleur
+🧗🏼‍♂	manklim: medium-ligte velkleur
+🧗🏽‍♂️	manklim: medium velkleur
+🧗🏽‍♂	manklim: medium velkleur
+🧗🏾‍♂️	man wat klim: medium-donker velkleur
+🧗🏾‍♂	man wat klim: medium-donker velkleur
+🧗🏿‍♂️	man wat klim: donker velkleur
+🧗🏿‍♂	man wat klim: donker velkleur
+🧘	persoon in lotus posisie
+🧘🏻	persoon in lotusposisie: ligte velkleur
+🧘🏼	persoon in lotusposisie: medium-ligte velkleur
+🧘🏽	persoon in lotusposisie: medium velkleur
+🧘🏾	persoon in lotusposisie: medium-donker velkleur
+🧘🏿	persoon in lotusposisie: donker velkleur
+🧘‍♀️	vrou in lotusposisie
+🧘‍♀	vrou in lotusposisie
+🧘🏻‍♀️	vrou in lotusposisie: ligte velkleur
+🧘🏻‍♀	vrou in lotusposisie: ligte velkleur
+🧘🏼‍♀️	vrou in lotusposisie: medium-ligte velkleur
+🧘🏼‍♀	vrou in lotusposisie: medium-ligte velkleur
+🧘🏽‍♀️	vrou in lotusposisie: medium velkleur
+🧘🏽‍♀	vrou in lotusposisie: medium velkleur
+🧘🏾‍♀️	vrou in lotusposisie: medium-donker velkleur
+🧘🏾‍♀	vrou in lotusposisie: medium-donker velkleur
+🧘🏿‍♀️	vrou in lotusposisie: donker velkleur
+🧘🏿‍♀	vrou in lotusposisie: donker velkleur
+🧘‍♂️	man in lotusposisie
+🧘‍♂	man in lotusposisie
+🧘🏻‍♂️	man in lotusposisie: ligte velkleur
+🧘🏻‍♂	man in lotusposisie: ligte velkleur
+🧘🏼‍♂️	man in lotusposisie: medium-ligte velkleur
+🧘🏼‍♂	man in lotusposisie: medium-ligte velkleur
+🧘🏽‍♂️	man in lotusposisie: medium velkleur
+🧘🏽‍♂	man in lotusposisie: medium velkleur
+🧘🏾‍♂️	man in lotusposisie: medium-donker velkleur
+🧘🏾‍♂	man in lotusposisie: medium-donker velkleur
+🧘🏿‍♂️	man in lotusposisie: donker velkleur
+🧘🏿‍♂	man in lotusposisie: donker velkleur
+🛀	persoon wat bad
+🛀🏻	persoon wat bad: ligte velkleur
+🛀🏼	persoon wat bad: medium-ligte velkleur
+🛀🏽	persoon wat bad: medium velkleur
+🛀🏾	persoon wat bad: medium-donker velkleur
+🛀🏿	persoon wat bad: donker velkleur
+🛌	persoon in die bed
+🛌🏻	persoon in die bed: ligte velkleur
+🛌🏼	persoon in die bed: medium-ligte velkleur
+🛌🏽	persoon in die bed: medium velkleur
+🛌🏾	persoon in die bed: medium-donker velkleur
+🛌🏿	persoon in die bed: donker velkleur
+🕴️	man in pak sweef
+🕴	man in pak sweef
+🕴🏻	man in pak sweef: ligte velkleur
+🕴🏼	man in pak sweef: medium-ligte velkleur
+🕴🏽	man in pak sweef: medium velkleur
+🕴🏾	man in pak sweef: medium-donker velkleur
+🕴🏿	man in pak sweef: donker velkleur
+🗣️	sprekende kop
+🗣	sprekende kop
+👤	borsbeeld in silhoeët
+👥	borsbeelde in silhoeët
+🤺	persoon omheining
+🏇	perderesies
+🏇🏻	perdewedrenne: ligte velkleur
+🏇🏼	perdewedrenne: medium-ligte velkleur
+🏇🏽	perdewedrenne: medium velkleur
+🏇🏾	perdewedrenne: medium-donker velkleur
+🏇🏿	perdewedrenne: donker velkleur
+⛷️	skiër
+⛷	skiër
+🏂	sneeuplankryer
+🏂🏻	snowboarder: ligte velkleur
+🏂🏼	snowboarder: medium-ligte velkleur
+🏂🏽	snowboarder: medium velkleur
+🏂🏾	snowboarder: medium-donker velkleur
+🏂🏿	snowboarder: donker velkleur
+🏌️	persoon wat gholf speel
+🏌	persoon wat gholf speel
+🏌🏻	persoon wat gholf speel: ligte velkleur
+🏌🏼	persoon wat gholf speel: medium-ligte velkleur
+🏌🏽	persoon wat gholf speel: medium velkleur
+🏌🏾	persoon wat gholf speel: medium-donker velkleur
+🏌🏿	persoon wat gholf speel: donker velkleur
+🏌️‍♂️	man wat gholf speel
+🏌‍♂️	man wat gholf speel
+🏌️‍♂	man wat gholf speel
+🏌‍♂	man wat gholf speel
+🏌🏻‍♂️	man wat gholf speel: ligte velkleur
+🏌🏻‍♂	man wat gholf speel: ligte velkleur
+🏌🏼‍♂️	man wat gholf speel: medium-ligte velkleur
+🏌🏼‍♂	man wat gholf speel: medium-ligte velkleur
+🏌🏽‍♂️	man wat gholf speel: medium velkleur
+🏌🏽‍♂	man wat gholf speel: medium velkleur
+🏌🏾‍♂️	man wat gholf speel: medium-donker velkleur
+🏌🏾‍♂	man wat gholf speel: medium-donker velkleur
+🏌🏿‍♂️	man wat gholf speel: donker velkleur
+🏌🏿‍♂	man wat gholf speel: donker velkleur
+🏌️‍♀️	vrou wat gholf speel
+🏌‍♀️	vrou wat gholf speel
+🏌️‍♀	vrou wat gholf speel
+🏌‍♀	vrou wat gholf speel
+🏌🏻‍♀️	vrou wat gholf speel: ligte velkleur
+🏌🏻‍♀	vrou wat gholf speel: ligte velkleur
+🏌🏼‍♀️	vrou wat gholf speel: medium-ligte velkleur
+🏌🏼‍♀	vrou wat gholf speel: medium-ligte velkleur
+🏌🏽‍♀️	vrou wat gholf speel: medium velkleur
+🏌🏽‍♀	vrou wat gholf speel: medium velkleur
+🏌🏾‍♀️	vrou wat gholf speel: medium-donker velkleur
+🏌🏾‍♀	vrou wat gholf speel: medium-donker velkleur
+🏌🏿‍♀️	vrou wat gholf speel: donker velkleur
+🏌🏿‍♀	vrou wat gholf speel: donker velkleur
+🏄	persoon wat branderplankry
+🏄🏻	persoon wat navigeer: ligte velkleur
+🏄🏼	persoon wat navigeer: medium-ligte velkleur
+🏄🏽	persoon wat navigeer: medium velkleur
+🏄🏾	persoon wat navigeer: medium-donker velkleur
+🏄🏿	persoon wat navigeer: donker velkleur
+🏄‍♂️	man branderplankry
+🏄‍♂	man branderplankry
+🏄🏻‍♂️	man wat navigeer: ligte velkleur
+🏄🏻‍♂	man wat navigeer: ligte velkleur
+🏄🏼‍♂️	man wat navigeer: medium-ligte velkleur
+🏄🏼‍♂	man wat navigeer: medium-ligte velkleur
+🏄🏽‍♂️	man wat navigeer: medium velkleur
+🏄🏽‍♂	man wat navigeer: medium velkleur
+🏄🏾‍♂️	man wat navigeer: medium-donker velkleur
+🏄🏾‍♂	man wat navigeer: medium-donker velkleur
+🏄🏿‍♂️	man wat navigeer: donker velkleur
+🏄🏿‍♂	man wat navigeer: donker velkleur
+🏄‍♀️	vrou branderplankry
+🏄‍♀	vrou branderplankry
+🏄🏻‍♀️	vrou navigeer: ligte velkleur
+🏄🏻‍♀	vrou navigeer: ligte velkleur
+🏄🏼‍♀️	vrou navigeer: medium-ligte velkleur
+🏄🏼‍♀	vrou navigeer: medium-ligte velkleur
+🏄🏽‍♀️	vrou navigeer: medium velkleur
+🏄🏽‍♀	vrou navigeer: medium velkleur
+🏄🏾‍♀️	vrou navigeer: medium-donker velkleur
+🏄🏾‍♀	vrou navigeer: medium-donker velkleur
+🏄🏿‍♀️	vrou navigeer: donker velkleur
+🏄🏿‍♀	vrou navigeer: donker velkleur
+🚣	persoon roeiboot
+🚣🏻	persoon roeiboot: ligte velkleur
+🚣🏼	persoon-roeiboot: medium-ligte velkleur
+🚣🏽	persoon roeiboot: medium velkleur
+🚣🏾	persoon-roeiboot: medium-donker velkleur
+🚣🏿	persoon roeiboot: donker velkleur
+🚣‍♂️	man roeiboot
+🚣‍♂	man roeiboot
+🚣🏻‍♂️	man-roeiboot: ligte velkleur
+🚣🏻‍♂	man-roeiboot: ligte velkleur
+🚣🏼‍♂️	man-roeiboot: medium-ligte velkleur
+🚣🏼‍♂	man-roeiboot: medium-ligte velkleur
+🚣🏽‍♂️	man-roeiboot: medium velkleur
+🚣🏽‍♂	man-roeiboot: medium velkleur
+🚣🏾‍♂️	man-roeiboot: medium-donker velkleur
+🚣🏾‍♂	man-roeiboot: medium-donker velkleur
+🚣🏿‍♂️	man-roeiboot: donker velkleur
+🚣🏿‍♂	man-roeiboot: donker velkleur
+🚣‍♀️	vrou roeiboot
+🚣‍♀	vrou roeiboot
+🚣🏻‍♀️	vrou-roeiboot: ligte velkleur
+🚣🏻‍♀	vrou-roeiboot: ligte velkleur
+🚣🏼‍♀️	vrou-roeiboot: medium-ligte velkleur
+🚣🏼‍♀	vrou-roeiboot: medium-ligte velkleur
+🚣🏽‍♀️	vrou-roeiboot: medium velkleur
+🚣🏽‍♀	vrou-roeiboot: medium velkleur
+🚣🏾‍♀️	vrou-roeiboot: medium-donker velkleur
+🚣🏾‍♀	vrou-roeiboot: medium-donker velkleur
+🚣🏿‍♀️	vrou-roeiboot: donker velkleur
+🚣🏿‍♀	vrou-roeiboot: donker velkleur
+🏊	persoon wat swem
+🏊🏻	persoon wat swem: ligte velkleur
+🏊🏼	persoon wat swem: medium-ligte velkleur
+🏊🏽	persoon wat swem: medium velkleur
+🏊🏾	persoon wat swem: medium-donker velkleur
+🏊🏿	persoon wat swem: donker velkleur
+🏊‍♂️	man swem
+🏊‍♂	man swem
+🏊🏻‍♂️	man swem: ligte velkleur
+🏊🏻‍♂	man swem: ligte velkleur
+🏊🏼‍♂️	man swem: medium-ligte velkleur
+🏊🏼‍♂	man swem: medium-ligte velkleur
+🏊🏽‍♂️	man swem: medium velkleur
+🏊🏽‍♂	man swem: medium velkleur
+🏊🏾‍♂️	man wat swem: medium-donker velkleur
+🏊🏾‍♂	man wat swem: medium-donker velkleur
+🏊🏿‍♂️	man swem: donker velkleur
+🏊🏿‍♂	man swem: donker velkleur
+🏊‍♀️	vrou swem
+🏊‍♀	vrou swem
+🏊🏻‍♀️	vrou swem: ligte velkleur
+🏊🏻‍♀	vrou swem: ligte velkleur
+🏊🏼‍♀️	vrou swem: medium-ligte velkleur
+🏊🏼‍♀	vrou swem: medium-ligte velkleur
+🏊🏽‍♀️	vrou swem: medium velkleur
+🏊🏽‍♀	vrou swem: medium velkleur
+🏊🏾‍♀️	vrou wat swem: medium-donker velkleur
+🏊🏾‍♀	vrou wat swem: medium-donker velkleur
+🏊🏿‍♀️	vrou swem: donker velkleur
+🏊🏿‍♀	vrou swem: donker velkleur
+⛹️	persoon hop bal
+⛹	persoon hop bal
+⛹🏻	persoon hop bal: ligte velkleur
+⛹🏼	persoon bons bal: medium-ligte velkleur
+⛹🏽	persoon bons bal: medium velkleur
+⛹🏾	persoon bons bal: medium-donker velkleur
+⛹🏿	persoon bons bal: donker velkleur
+⛹️‍♂️	man bons bal
+⛹‍♂️	man bons bal
+⛹️‍♂	man bons bal
+⛹‍♂	man bons bal
+⛹🏻‍♂️	man bons bal: ligte velkleur
+⛹🏻‍♂	man bons bal: ligte velkleur
+⛹🏼‍♂️	man bons bal: medium-ligte velkleur
+⛹🏼‍♂	man bons bal: medium-ligte velkleur
+⛹🏽‍♂️	man bonsbal: medium velkleur
+⛹🏽‍♂	man bonsbal: medium velkleur
+⛹🏾‍♂️	man bons bal: medium-donker velkleur
+⛹🏾‍♂	man bons bal: medium-donker velkleur
+⛹🏿‍♂️	man bons bal: donker velkleur
+⛹🏿‍♂	man bons bal: donker velkleur
+⛹️‍♀️	vrou bons bal
+⛹‍♀️	vrou bons bal
+⛹️‍♀	vrou bons bal
+⛹‍♀	vrou bons bal
+⛹🏻‍♀️	vrou bonsbal: ligte velkleur
+⛹🏻‍♀	vrou bonsbal: ligte velkleur
+⛹🏼‍♀️	vrou bonsbal: medium-ligte velkleur
+⛹🏼‍♀	vrou bonsbal: medium-ligte velkleur
+⛹🏽‍♀️	vrou bonsbal: medium velkleur
+⛹🏽‍♀	vrou bonsbal: medium velkleur
+⛹🏾‍♀️	vrou bonsbal: medium-donker velkleur
+⛹🏾‍♀	vrou bonsbal: medium-donker velkleur
+⛹🏿‍♀️	vrou bonsbal: donker velkleur
+⛹🏿‍♀	vrou bonsbal: donker velkleur
+🏋️	persoon wat gewigte optel
+🏋	persoon wat gewigte optel
+🏋🏻	persoon wat gewigte optel: ligte velkleur
+🏋🏼	persoon wat gewigte optel: medium-ligte velkleur
+🏋🏽	persoon wat gewigte optel: medium velkleur
+🏋🏾	persoon wat gewigte optel: medium-donker velkleur
+🏋🏿	persoon wat gewigte optel: donker velkleur
+🏋️‍♂️	man wat gewigte optel
+🏋‍♂️	man wat gewigte optel
+🏋️‍♂	man wat gewigte optel
+🏋‍♂	man wat gewigte optel
+🏋🏻‍♂️	man wat gewigte optel: ligte velkleur
+🏋🏻‍♂	man wat gewigte optel: ligte velkleur
+🏋🏼‍♂️	man wat gewigte optel: medium-ligte velkleur
+🏋🏼‍♂	man wat gewigte optel: medium-ligte velkleur
+🏋🏽‍♂️	man wat gewigte optel: medium velkleur
+🏋🏽‍♂	man wat gewigte optel: medium velkleur
+🏋🏾‍♂️	man wat gewigte optel: medium-donker velkleur
+🏋🏾‍♂	man wat gewigte optel: medium-donker velkleur
+🏋🏿‍♂️	man wat gewigte optel: donker velkleur
+🏋🏿‍♂	man wat gewigte optel: donker velkleur
+🏋️‍♀️	vrou wat gewigte optel
+🏋‍♀️	vrou wat gewigte optel
+🏋️‍♀	vrou wat gewigte optel
+🏋‍♀	vrou wat gewigte optel
+🏋🏻‍♀️	vrou wat gewigte optel: ligte velkleur
+🏋🏻‍♀	vrou wat gewigte optel: ligte velkleur
+🏋🏼‍♀️	vrou wat gewigte optel: medium-ligte velkleur
+🏋🏼‍♀	vrou wat gewigte optel: medium-ligte velkleur
+🏋🏽‍♀️	vrou wat gewigte optel: medium velkleur
+🏋🏽‍♀	vrou wat gewigte optel: medium velkleur
+🏋🏾‍♀️	vrou wat gewigte optel: medium-donker velkleur
+🏋🏾‍♀	vrou wat gewigte optel: medium-donker velkleur
+🏋🏿‍♀️	vrou wat gewigte optel: donker velkleur
+🏋🏿‍♀	vrou wat gewigte optel: donker velkleur
+🚴	persoon fietsry
+🚴🏻	persoon wat fietsry: ligte velkleur
+🚴🏼	persoon wat fietsry: medium-ligte velkleur
+🚴🏽	persoon wat fietsry: medium velkleur
+🚴🏾	persoon wat fietsry: medium-donker velkleur
+🚴🏿	persoon wat fietsry: donker velkleur
+🚴‍♂️	man fietsry
+🚴‍♂	man fietsry
+🚴🏻‍♂️	man fietsry: ligte velkleur
+🚴🏻‍♂	man fietsry: ligte velkleur
+🚴🏼‍♂️	man fietsry: medium-ligte velkleur
+🚴🏼‍♂	man fietsry: medium-ligte velkleur
+🚴🏽‍♂️	man fietsry: medium velkleur
+🚴🏽‍♂	man fietsry: medium velkleur
+🚴🏾‍♂️	man fietsry: medium-donker velkleur
+🚴🏾‍♂	man fietsry: medium-donker velkleur
+🚴🏿‍♂️	man fietsry: donker velkleur
+🚴🏿‍♂	man fietsry: donker velkleur
+🚴‍♀️	vrou fietsry
+🚴‍♀	vrou fietsry
+🚴🏻‍♀️	vrou fietsry: ligte velkleur
+🚴🏻‍♀	vrou fietsry: ligte velkleur
+🚴🏼‍♀️	vrou fietsry: medium-ligte velkleur
+🚴🏼‍♀	vrou fietsry: medium-ligte velkleur
+🚴🏽‍♀️	vrou fietsry: medium velkleur
+🚴🏽‍♀	vrou fietsry: medium velkleur
+🚴🏾‍♀️	vrou fietsry: medium-donker velkleur
+🚴🏾‍♀	vrou fietsry: medium-donker velkleur
+🚴🏿‍♀️	vrou fietsry: donker velkleur
+🚴🏿‍♀	vrou fietsry: donker velkleur
+🚵	persoon bergfietsry
+🚵🏻	persoon bergfietsry: ligte velkleur
+🚵🏼	persoon bergfietsry: medium-ligte velkleur
+🚵🏽	persoon bergfietsry: medium velkleur
+🚵🏾	persoon bergfietsry: medium-donker velkleur
+🚵🏿	persoon bergfietsry: donker velkleur
+🚵‍♂️	man bergfietsry
+🚵‍♂	man bergfietsry
+🚵🏻‍♂️	man bergfietsry: ligte velkleur
+🚵🏻‍♂	man bergfietsry: ligte velkleur
+🚵🏼‍♂️	man bergfietsry: medium-ligte velkleur
+🚵🏼‍♂	man bergfietsry: medium-ligte velkleur
+🚵🏽‍♂️	man bergfietsry: medium velkleur
+🚵🏽‍♂	man bergfietsry: medium velkleur
+🚵🏾‍♂️	man bergfietsry: medium-donker velkleur
+🚵🏾‍♂	man bergfietsry: medium-donker velkleur
+🚵🏿‍♂️	man bergfietsry: donker velkleur
+🚵🏿‍♂	man bergfietsry: donker velkleur
+🚵‍♀️	vrou bergfietsry
+🚵‍♀	vrou bergfietsry
+🚵🏻‍♀️	vrou bergfietsry: ligte velkleur
+🚵🏻‍♀	vrou bergfietsry: ligte velkleur
+🚵🏼‍♀️	vrou bergfietsry: medium-ligte velkleur
+🚵🏼‍♀	vrou bergfietsry: medium-ligte velkleur
+🚵🏽‍♀️	vrou bergfietsry: medium velkleur
+🚵🏽‍♀	vrou bergfietsry: medium velkleur
+🚵🏾‍♀️	vrou bergfietsry: medium-donker velkleur
+🚵🏾‍♀	vrou bergfietsry: medium-donker velkleur
+🚵🏿‍♀️	vrou bergfietsry: donker velkleur
+🚵🏿‍♀	vrou bergfietsry: donker velkleur
+🏎️	resiesmotor
+🏎	resiesmotor
+🏍️	motorfiets
+🏍	motorfiets
+🤸	persoon wawiel
+🤸🏻	persoon wawiel: ligte velkleur
+🤸🏼	persoon wawiel: medium-ligte velkleur
+🤸🏽	persoon wawiel: medium velkleur
+🤸🏾	persoon wawiel: medium-donker velkleur
+🤸🏿	persoon wawiel: donker velkleur
+🤸‍♂️	man wat wawiel
+🤸‍♂	man wat wawiel
+🤸🏻‍♂️	man wat karring: ligte velkleur
+🤸🏻‍♂	man wat karring: ligte velkleur
+🤸🏼‍♂️	man-karretjie: medium-ligte velkleur
+🤸🏼‍♂	man-karretjie: medium-ligte velkleur
+🤸🏽‍♂️	man karretjie: medium velkleur
+🤸🏽‍♂	man karretjie: medium velkleur
+🤸🏾‍♂️	man met karretjie: medium-donker velkleur
+🤸🏾‍♂	man met karretjie: medium-donker velkleur
+🤸🏿‍♂️	man karretjie: donker velkleur
+🤸🏿‍♂	man karretjie: donker velkleur
+🤸‍♀️	vrou wat wawiel
+🤸‍♀	vrou wat wawiel
+🤸🏻‍♀️	vrou wat wawiel: ligte velkleur
+🤸🏻‍♀	vrou wat wawiel: ligte velkleur
+🤸🏼‍♀️	vroulike karretjie: medium-ligte velkleur
+🤸🏼‍♀	vroulike karretjie: medium-ligte velkleur
+🤸🏽‍♀️	vrou se karretjie: medium velkleur
+🤸🏽‍♀	vrou se karretjie: medium velkleur
+🤸🏾‍♀️	vroulike karretjie: medium-donker velkleur
+🤸🏾‍♀	vroulike karretjie: medium-donker velkleur
+🤸🏿‍♀️	vrou wawiel: donker velkleur
+🤸🏿‍♀	vrou wawiel: donker velkleur
+🤼	mense wat stoei
+🤼‍♂️	mans wat stoei
+🤼‍♂	mans wat stoei
+🤼‍♀️	vroue stoei
+🤼‍♀	vroue stoei
+🤽	persoon wat waterpolo speel
+🤽🏻	persoon wat waterpolo speel: ligte velkleur
+🤽🏼	persoon wat waterpolo speel: medium-ligte velkleur
+🤽🏽	persoon wat waterpolo speel: medium velkleur
+🤽🏾	persoon wat waterpolo speel: medium-donker velkleur
+🤽🏿	persoon wat waterpolo speel: donker velkleur
+🤽‍♂️	man wat waterpolo speel
+🤽‍♂	man wat waterpolo speel
+🤽🏻‍♂️	man wat waterpolo speel: ligte velkleur
+🤽🏻‍♂	man wat waterpolo speel: ligte velkleur
+🤽🏼‍♂️	man wat waterpolo speel: medium-ligte velkleur
+🤽🏼‍♂	man wat waterpolo speel: medium-ligte velkleur
+🤽🏽‍♂️	man wat waterpolo speel: medium velkleur
+🤽🏽‍♂	man wat waterpolo speel: medium velkleur
+🤽🏾‍♂️	man wat waterpolo speel: medium-donker velkleur
+🤽🏾‍♂	man wat waterpolo speel: medium-donker velkleur
+🤽🏿‍♂️	man wat waterpolo speel: donker velkleur
+🤽🏿‍♂	man wat waterpolo speel: donker velkleur
+🤽‍♀️	vrou wat waterpolo speel
+🤽‍♀	vrou wat waterpolo speel
+🤽🏻‍♀️	vrou wat waterpolo speel: ligte velkleur
+🤽🏻‍♀	vrou wat waterpolo speel: ligte velkleur
+🤽🏼‍♀️	vrou wat waterpolo speel: medium-ligte velkleur
+🤽🏼‍♀	vrou wat waterpolo speel: medium-ligte velkleur
+🤽🏽‍♀️	vrou wat waterpolo speel: medium velkleur
+🤽🏽‍♀	vrou wat waterpolo speel: medium velkleur
+🤽🏾‍♀️	vrou wat waterpolo speel: medium-donker velkleur
+🤽🏾‍♀	vrou wat waterpolo speel: medium-donker velkleur
+🤽🏿‍♀️	vrou wat waterpolo speel: donker velkleur
+🤽🏿‍♀	vrou wat waterpolo speel: donker velkleur
+🤾	persoon wat handbal speel
+🤾🏻	persoon wat handbal speel: ligte velkleur
+🤾🏼	persoon wat handbal speel: medium-ligte velkleur
+🤾🏽	persoon wat handbal speel: medium velkleur
+🤾🏾	persoon wat handbal speel: medium-donker velkleur
+🤾🏿	persoon wat handbal speel: donker velkleur
+🤾‍♂️	man wat handbal speel
+🤾‍♂	man wat handbal speel
+🤾🏻‍♂️	man wat handbal speel: ligte velkleur
+🤾🏻‍♂	man wat handbal speel: ligte velkleur
+🤾🏼‍♂️	man wat handbal speel: medium-ligte velkleur
+🤾🏼‍♂	man wat handbal speel: medium-ligte velkleur
+🤾🏽‍♂️	man wat handbal speel: medium velkleur
+🤾🏽‍♂	man wat handbal speel: medium velkleur
+🤾🏾‍♂️	man wat handbal speel: medium-donker velkleur
+🤾🏾‍♂	man wat handbal speel: medium-donker velkleur
+🤾🏿‍♂️	man wat handbal speel: donker velkleur
+🤾🏿‍♂	man wat handbal speel: donker velkleur
+🤾‍♀️	vrou wat handbal speel
+🤾‍♀	vrou wat handbal speel
+🤾🏻‍♀️	vrou wat handbal speel: ligte velkleur
+🤾🏻‍♀	vrou wat handbal speel: ligte velkleur
+🤾🏼‍♀️	vrou wat handbal speel: medium-ligte velkleur
+🤾🏼‍♀	vrou wat handbal speel: medium-ligte velkleur
+🤾🏽‍♀️	vrou wat handbal speel: medium velkleur
+🤾🏽‍♀	vrou wat handbal speel: medium velkleur
+🤾🏾‍♀️	vrou wat handbal speel: medium-donker velkleur
+🤾🏾‍♀	vrou wat handbal speel: medium-donker velkleur
+🤾🏿‍♀️	vrou wat handbal speel: donker velkleur
+🤾🏿‍♀	vrou wat handbal speel: donker velkleur
+🤹	persoon wat jongleren
+🤹🏻	persoon wat jongleren: ligte velkleur
+🤹🏼	persoon jongleren: medium-ligte velkleur
+🤹🏽	persoon jongleren: medium velkleur
+🤹🏾	persoon jongleren: medium-donker velkleur
+🤹🏿	persoon jongleren: donker velkleur
+🤹‍♂️	man jongleren
+🤹‍♂	man jongleren
+🤹🏻‍♂️	man jongleren: ligte velkleur
+🤹🏻‍♂	man jongleren: ligte velkleur
+🤹🏼‍♂️	man jongleren: medium-ligte velkleur
+🤹🏼‍♂	man jongleren: medium-ligte velkleur
+🤹🏽‍♂️	man jongleren: medium velkleur
+🤹🏽‍♂	man jongleren: medium velkleur
+🤹🏾‍♂️	man jongleren: medium-donker velkleur
+🤹🏾‍♂	man jongleren: medium-donker velkleur
+🤹🏿‍♂️	man jongleren: donker velkleur
+🤹🏿‍♂	man jongleren: donker velkleur
+🤹‍♀️	vrou jongleren
+🤹‍♀	vrou jongleren
+🤹🏻‍♀️	vrou jongleren: ligte velkleur
+🤹🏻‍♀	vrou jongleren: ligte velkleur
+🤹🏼‍♀️	vrou jongleren: medium-ligte velkleur
+🤹🏼‍♀	vrou jongleren: medium-ligte velkleur
+🤹🏽‍♀️	vrou jongleren: medium velkleur
+🤹🏽‍♀	vrou jongleren: medium velkleur
+🤹🏾‍♀️	vrou jongleren: medium-donker velkleur
+🤹🏾‍♀	vrou jongleren: medium-donker velkleur
+🤹🏿‍♀️	vrou jongleren: donker velkleur
+🤹🏿‍♀	vrou jongleren: donker velkleur
+👫	man en vrou wat hande vashou
+👬	twee mans wat hande vashou
+👭	twee vroue wat hande vashou
+💏	soen
+👩‍❤️‍💋‍👨	soen: vrou, man
+👩‍❤‍💋‍👨	soen: vrou, man
+👨‍❤️‍💋‍👨	soen: man, man
+👨‍❤‍💋‍👨	soen: man, man
+👩‍❤️‍💋‍👩	soen: vrou, vrou
+👩‍❤‍💋‍👩	soen: vrou, vrou
+💑	paartjie met hart
+👩‍❤️‍👨	egpaar met hart: vrou, man
+👩‍❤‍👨	egpaar met hart: vrou, man
+👨‍❤️‍👨	egpaar met hart: man, man
+👨‍❤‍👨	egpaar met hart: man, man
+👩‍❤️‍👩	egpaar met hart: vrou, vrou
+👩‍❤‍👩	egpaar met hart: vrou, vrou
+👪	familie
+👨‍👩‍👦	familie: man, vrou, seun
+👨‍👩‍👧	familie: man, vrou, meisie
+👨‍👩‍👧‍👦	familie: man, vrou, meisie, seun
+👨‍👩‍👦‍👦	familie: man, vrou, seun, seun
+👨‍👩‍👧‍👧	familie: man, vrou, meisie, meisie
+👨‍👨‍👦	familie: man, man, seun
+👨‍👨‍👧	familie: man, man, meisie
+👨‍👨‍👧‍👦	familie: man, man, meisie, seun
+👨‍👨‍👦‍👦	familie: man, man, seun, seun
+👨‍👨‍👧‍👧	familie: man, man, meisie, meisie
+👩‍👩‍👦	familie: vrou, vrou, seun
+👩‍👩‍👧	familie: vrou, vrou, meisie
+👩‍👩‍👧‍👦	familie: vrou, vrou, meisie, seun
+👩‍👩‍👦‍👦	familie: vrou, vrou, seun, seun
+👩‍👩‍👧‍👧	familie: vrou, vrou, meisie, meisie
+👨‍👦	familie: man, seun
+👨‍👦‍👦	familie: man, seun, seun
+👨‍👧	familie: man, meisie
+👨‍👧‍👦	familie: man, meisie, seun
+👨‍👧‍👧	familie: man, meisie, meisie
+👩‍👦	gesin: vrou, seun
+👩‍👦‍👦	familie: vrou, seun, seun
+👩‍👧	familie: vrou, meisie
+👩‍👧‍👦	familie: vrou, meisie, seun
+👩‍👧‍👧	familie: vrou, meisie, meisie
+🤳	selfie
+🤳🏻	selfie: ligte velkleur
+🤳🏼	selfie: medium-ligte velkleur
+🤳🏽	selfie: medium velkleur
+🤳🏾	selfie: medium-donker velkleur
+🤳🏿	selfie: donker velkleur
+💪	gebuigde biceps
+💪🏻	gebuigde biseps: ligte velkleur
+💪🏼	gebuigde biseps: medium-ligte velkleur
+💪🏽	gebuigde biseps: medium velkleur
+💪🏾	gebuigde biseps: medium-donker velkleur
+💪🏿	gebuigde biceps: donker velkleur
+🦵	been
+🦵🏻	been: ligte velkleur
+🦵🏼	been: medium-ligte velkleur
+🦵🏽	been: medium velkleur
+🦵🏾	been: medium-donker velkleur
+🦵🏿	been: donker velkleur
+🦶	voet
+🦶🏻	voet: ligte velkleur
+🦶🏼	voet: medium-ligte velkleur
+🦶🏽	voet: medium velkleur
+🦶🏾	voet: medium-donker velkleur
+🦶🏿	voet: donker velkleur
+👈	rughand-indeks wat links wys
+👈🏻	rughand-indeks wat links wys: ligte velkleur
+👈🏼	rughand-indeks wat links wys: medium-ligte velkleur
+👈🏽	rughand-indeks wat links wys: medium velkleur
+👈🏾	rughand-indeks wat links wys: medium-donker velkleur
+👈🏿	rughand-indeks wat links wys: donker velkleur
+👉	rughand-indeks wat regs wys
+👉🏻	rughand-indeks wat regs wys: ligte velkleur
+👉🏼	rughand-indeks wat regs wys: medium-ligte velkleur
+👉🏽	rughand-indeks wat regs wys: medium velkleur
+👉🏾	rughand-indeks wat regs wys: medium-donker velkleur
+👉🏿	rughand-indeks wat regs wys: donker velkleur
+☝️	indeks wat na bo wys
+☝	indeks wat na bo wys
+☝🏻	indeks wat op wys: ligte velkleur
+☝🏼	indeks wat na bo wys: medium-ligte velkleur
+☝🏽	indeks wat na bo wys: medium velkleur
+☝🏾	indeks wat na bo wys: medium-donker velkleur
+☝🏿	indeks wat op wys: donker velkleur
+👆	rughand-indeks wat na bo wys
+👆🏻	rughandindeks wat na bo wys: ligte velkleur
+👆🏼	rughand-indeks wat na bo wys: medium-ligte velkleur
+👆🏽	rughand-indeks wat na bo wys: medium velkleur
+👆🏾	rughand-indeks wat na bo wys: medium-donker velkleur
+👆🏿	rughand-indeks wat op wys: donker velkleur
+🖕	middelvinger
+🖕🏻	middelvinger: ligte velkleur
+🖕🏼	middelvinger: medium-ligte velkleur
+🖕🏽	middelvinger: medium velkleur
+🖕🏾	middelvinger: medium-donker velkleur
+🖕🏿	middelvinger: donker velkleur
+👇	rughand-indeks wat na onder wys
+👇🏻	rughand-indeks wat na onder wys: ligte velkleur
+👇🏼	rughand-indeks wat na onder wys: medium-ligte velkleur
+👇🏽	rughand-indeks wat na onder wys: medium velkleur
+👇🏾	rughand-indeks wat na onder wys: medium-donker velkleur
+👇🏿	rughand-indeks wat na onder wys: donker velkleur
+✌️	oorwinning hand
+✌	oorwinning hand
+✌🏻	oorwinning hand: ligte velkleur
+✌🏼	oorwinningshand: medium-ligte velkleur
+✌🏽	oorwinning hand: medium velkleur
+✌🏾	oorwinningshand: medium-donker velkleur
+✌🏿	oorwinning hand: donker velkleur
+🤞	vingers gekruis
+🤞🏻	gekruiste vingers: ligte velkleur
+🤞🏼	gekruiste vingers: medium-ligte velkleur
+🤞🏽	gekruiste vingers: medium velkleur
+🤞🏾	gekruiste vingers: medium-donker velkleur
+🤞🏿	gekruiste vingers: donker velkleur
+🖖	vulkaansgroet
+🖖🏻	vulkaansgroet: ligte velkleur
+🖖🏼	vulkaansgroet: medium-ligte velkleur
+🖖🏽	vulkaansgroet: medium velkleur
+🖖🏾	vulkaansgroet: medium-donker velkleur
+🖖🏿	vulkaansgroet: donker velkleur
+🤘	teken van die horings
+🤘🏻	teken van die horings: ligte velkleur
+🤘🏼	teken van die horings: medium-ligte velkleur
+🤘🏽	teken van die horings: medium velkleur
+🤘🏾	teken van die horings: medium-donker velkleur
+🤘🏿	teken van die horings: donker velkleur
+🤙	noem my hand
+🤙🏻	noem my hand: ligte velkleur
+🤙🏼	noem my hand: medium-ligte velkleur
+🤙🏽	noem my hand: medium velkleur
+🤙🏾	noem my hand: medium-donker velkleur
+🤙🏿	noem my hand: donker velkleur
+🖐️	hand met vingers gesprei
+🖐	hand met vingers gesprei
+🖐🏻	hand met vingers oopgesprei: ligte velkleur
+🖐🏼	hand met vingers oopgesprei: medium-ligte velkleur
+🖐🏽	hand met vingers oopgesprei: medium velkleur
+🖐🏾	hand met vingers oopgesprei: medium-donker velkleur
+🖐🏿	hand met vingers oopgesprei: donker velkleur
+✋	opgesteekte hand
+✋🏻	opgeligte hand: ligte velkleur
+✋🏼	opgeligte hand: medium-ligte velkleur
+✋🏽	opgeligte hand: medium velkleur
+✋🏾	opgeligte hand: medium-donker velkleur
+✋🏿	opgesteekte hand: donker velkleur
+👌	OK hand
+👌🏻	OK hand: ligte velkleur
+👌🏼	OK hand: medium-ligte velkleur
+👌🏽	OK hand: medium velkleur
+👌🏾	OK hand: medium-donker velkleur
+👌🏿	OK hand: donker velkleur
+👍	duime op
+👍🏻	duime omhoog: ligte velkleur
+👍🏼	duime omhoog: medium-ligte velkleur
+👍🏽	duime omhoog: medium velkleur
+👍🏾	duime omhoog: medium-donker velkleur
+👍🏿	duime omhoog: donker velkleur
+👎	duime af
+👎🏻	duime af: ligte velkleur
+👎🏼	duime af: medium-ligte velkleur
+👎🏽	duime af: medium velkleur
+👎🏾	duime af: medium-donker velkleur
+👎🏿	duime af: donker velkleur
+✊	opgesteekte vuis
+✊🏻	opgehewe vuis: ligte velkleur
+✊🏼	opgehewe vuis: medium-ligte velkleur
+✊🏽	opgehewe vuis: medium velkleur
+✊🏾	opgehewe vuis: medium-donker velkleur
+✊🏿	opgehewe vuis: donker velkleur
+👊	aankomende vuis
+👊🏻	aankomende vuis: ligte velkleur
+👊🏼	aankomende vuis: medium-ligte velkleur
+👊🏽	aankomende vuis: medium velkleur
+👊🏾	aankomende vuis: medium-donker velkleur
+👊🏿	aankomende vuis: donker velkleur
+🤛	linkervuis
+🤛🏻	linkervuis: ligte velkleur
+🤛🏼	linkervuis: medium-ligte velkleur
+🤛🏽	linkervuis: medium velkleur
+🤛🏾	linkervuis: medium-donker velkleur
+🤛🏿	linkervuis: donker velkleur
+🤜	regsgerigte vuis
+🤜🏻	regsgerigte vuis: ligte velkleur
+🤜🏼	regsgerigte vuis: medium-ligte velkleur
+🤜🏽	regsgerigte vuis: medium velkleur
+🤜🏾	regsgerigte vuis: medium-donker velkleur
+🤜🏿	regsgerigte vuis: donker velkleur
+🤚	agterkant van die hand opgelig
+🤚🏻	opgehewe agterkant van die hand: ligte velkleur
+🤚🏼	opgehewe agterkant van die hand: medium-ligte velkleur
+🤚🏽	opgehewe agterkant van die hand: medium velkleur
+🤚🏾	opgehewe agterkant van die hand: medium-donker velkleur
+🤚🏿	opgelig agterkant van die hand: donker velkleur
+👋	waaiende hand
+👋🏻	waaiende hand: ligte velkleur
+👋🏼	wuiwende hand: medium-ligte velkleur
+👋🏽	wuiwende hand: medium velkleur
+👋🏾	wuiwende hand: medium-donker velkleur
+👋🏿	wuiwende hand: donker velkleur
+🤟	lief vir jou gebaar
+🤟🏻	lief vir jou-gebaar: ligte velkleur
+🤟🏼	lief vir jou-gebaar: medium-ligte velkleur
+🤟🏽	lief vir jou-gebaar: medium velkleur
+🤟🏾	lief vir jou-gebaar: medium-donker velkleur
+🤟🏿	lief vir jou-gebaar: donker velkleur
+✍️	skryfhand
+✍	skryfhand
+✍🏻	skryfhand: ligte velkleur
+✍🏼	skryfhand: medium-ligte velkleur
+✍🏽	skryfhand: medium velkleur
+✍🏾	skryfhand: medium-donker velkleur
+✍🏿	skryfhand: donker velkleur
+👏	hande klap
+👏🏻	hande klap: ligte velkleur
+👏🏼	hande klap: medium-ligte velkleur
+👏🏽	hande klap: medium velkleur
+👏🏾	hande klap: medium-donker velkleur
+👏🏿	hande klap: donker velkleur
+👐	oop hande
+👐🏻	oop hande: ligte velkleur
+👐🏼	oop hande: medium-ligte velkleur
+👐🏽	oop hande: medium velkleur
+👐🏾	oop hande: medium-donker velkleur
+👐🏿	oop hande: donker velkleur
+🙌	hande opsteek
+🙌🏻	hande opsteek: ligte velkleur
+🙌🏼	hande opsteek: medium-ligte velkleur
+🙌🏽	hande opsteek: medium velkleur
+🙌🏾	hande opsteek: medium-donker velkleur
+🙌🏿	hande opsteek: donker velkleur
+🤲	palms na bo saam
+🤲🏻	palms na bo saam: ligte velkleur
+🤲🏼	palms na bo saam: medium-ligte velkleur
+🤲🏽	palms na bo saam: medium velkleur
+🤲🏾	palms na bo saam: medium-donker velkleur
+🤲🏿	palms na bo saam: donker velkleur
+🙏	hande gevou
+🙏🏻	hande gevou: ligte velkleur
+🙏🏼	hande gevou: medium-ligte velkleur
+🙏🏽	hande gevou: medium velkleur
+🙏🏾	hande gevou: medium-donker velkleur
+🙏🏿	hande gevou: donker velkleur
+🤝	handdruk
+💅	naelpolitoer
+💅🏻	naellak: ligte velkleur
+💅🏼	naellak: medium-ligte velkleur
+💅🏽	naellak: medium velkleur
+💅🏾	naellak: medium-donker velkleur
+💅🏿	naellak: donker velkleur
+👂	oor
+👂🏻	oor: ligte velkleur
+👂🏼	oor: medium-ligte velkleur
+👂🏽	oor: medium velkleur
+👂🏾	oor: medium-donker velkleur
+👂🏿	oor: donker velkleur
+👃	neus
+👃🏻	neus: ligte velkleur
+👃🏼	neus: medium-ligte velkleur
+👃🏽	neus: medium velkleur
+👃🏾	neus: medium-donker velkleur
+👃🏿	neus: donker velkleur
+🦰	rooi hare
+🦱	krulhare
+🦲	kaal
+🦳	wit hare
+👣	voetspore
+👀	oë
+👁️	oog
+👁	oog
+👁️‍🗨️	oog in spraakborrel
+👁‍🗨️	oog in spraakborrel
+👁️‍🗨	oog in spraakborrel
+👁‍🗨	oog in spraakborrel
+🧠	brein
+🦴	been
+🦷	tand
+👅	tong
+👄	mond
+💋	soen merk
+💘	hart met pyl
+❤️	rooi hart
+❤	rooi hart
+💓	Kloppende hart
+💔	Gebroke hart
+💕	twee harte
+💖	sprankelende hart
+💗	groeiende hart
+💙	blou hart
+💚	groen hart
+💛	geel hart
+🧡	oranje hart
+💜	pers hart
+🖤	swart hart
+💝	hart met lint
+💞	draaiende harte
+💟	hart versiering
+❣️	swaar hart uitroep
+❣	swaar hart uitroep
+💌	liefdesbrief
+💤	zzz
+💢	woede simbool
+💣	bom
+💥	botsing
+💦	sweetdruppels
+💨	wegstorm
+💫	duiselig
+💬	spraakballon
+🗨️	linker spraakborrel
+🗨	linker spraakborrel
+🗯️	regte woede borrel
+🗯	regte woede borrel
+💭	gedagteballon
+🕳️	gat
+🕳	gat
+👓	bril
+🕶️	sonbrille
+🕶	sonbrille
+🥽	bril
+🥼	laboratoriumjas
+👔	das
+👕	t-hemp
+👖	jeans
+🧣	serp
+🧤	handskoene
+🧥	Jas
+🧦	sokkies
+👗	aantrek
+👘	kimono
+👙	bikini
+👚	vrou se klere
+👛	beursie
+👜	handsak
+👝	koppelaar sak
+🛍️	inkopiesakke
+🛍	inkopiesakke
+🎒	skool rugsak
+👞	man se skoen
+👟	hardloopskoen
+🥾	stapskoen
+🥿	vrou se plat skoen
+👠	hoëhakskoen
+👡	vrou se sandaal
+👢	vrou se stewel
+👑	kroon
+👒	vrou se hoed
+🎩	keil
+🎓	gradeplegtigheid pet
+🧢	gefaktureerde pet
+⛑️	reddingswerker se helm
+⛑	reddingswerker se helm
+📿	gebeds krale
+💄	lipstiffie
+💍	ring
+💎	edelsteen
+🐵	aap gesig
+🐒	aap
+🦍	gorilla
+🐶	hond gesig
+🐕	hond
+🐩	poedel
+🐺	wolf gesig
+🦊	jakkals gesig
+🦝	wasbeer
+🐱	kat gesig
+🐈	kat
+🦁	leeu gesig
+🐯	tier gesig
+🐅	tier
+🐆	luiperd
+🐴	perd gesig
+🐎	perd
+🦄	eenhoorn gesig
+🦓	sebra
+🦌	takbokke
+🐮	koei gesig
+🐂	os
+🐃	waterbuffel
+🐄	koei
+🐷	vark gesig
+🐖	vark
+🐗	varke
+🐽	vark neus
+🐏	ram
+🐑	ooi
+🐐	bok
+🐪	kameel
+🐫	twee-bult kameel
+🦙	lama
+🦒	kameelperd
+🐘	olifant
+🦏	renoster
+🦛	seekoei
+🐭	muis gesig
+🐁	muis
+🐀	rot
+🐹	hamster gesig
+🐰	konyn gesig
+🐇	haas
+🐿️	chipmunk
+🐿	chipmunk
+🦔	krimpvarkie
+🦇	kolf
+🐻	gesig dra
+🐨	koala
+🐼	panda gesig
+🦘	kangaroe
+🦡	das
+🐾	pootafdrukke
+🦃	kalkoen
+🐔	hoender
+🐓	haan
+🐣	kuiken wat uitbroei
+🐤	baba kuiken
+🐥	babakuiken wat vooraan wys
+🐦	voël
+🐧	pikkewyn
+🕊️	duif
+🕊	duif
+🦅	arend
+🦆	eend
+🦢	swaan
+🦉	uil
+🦚	pou
+🦜	papegaai
+🐸	padda gesig
+🐊	krokodil
+🐢	skilpad
+🦎	Akkedis
+🐍	slang
+🐲	draak gesig
+🐉	draak
+🦕	sauropod
+🦖	T-Rex
+🐳	spuitende walvis
+🐋	walvis
+🐬	dolfyn
+🐟	vis
+🐠	tropiese visse
+🐡	blaasvis
+🦈	haai
+🐙	seekat
+🐚	spiraaldop
+🦀	krap
+🦞	kreef
+🦐	garnale
+🦑	inkvis
+🐌	slak
+🦋	skoenlapper
+🐛	fout
+🐜	mier
+🐝	heuningby
+🐞	dame kewer
+🦗	krieket
+🕷️	spinnekop
+🕷	spinnekop
+🕸️	spinnerak
+🕸	spinnerak
+🦂	skerpioen
+🦟	muskiet
+🦠	mikrobe
+💐	ruiker
+🌸	kersiebloeisel
+💮	wit blom
+🏵️	roset
+🏵	roset
+🌹	roos
+🥀	verlepte blom
+🌺	hibiskus
+🌻	sonneblom
+🌼	blom
+🌷	tulp
+🌱	saailing
+🌲	immergroen boom
+🌳	bladwisselende boom
+🌴	palmboom
+🌵	kaktus
+🌾	gerf rys
+🌿	kruie
+☘️	klawer
+☘	klawer
+🍀	klawer vier
+🍁	esdoornblaar
+🍂	gevalle blaar
+🍃	blaar wat in die wind fladder
+🍇	druiwe
+🍈	spanspek
+🍉	waatlemoen
+🍊	naartjie
+🍋	suurlemoen
+🍌	piesang
+🍍	pynappel
+🥭	mango
+🍎	rooi appel
+🍏	groen appel
+🍐	peer
+🍑	perske
+🍒	kersies
+🍓	aarbei
+🥝	Kiwi vrug
+🍅	tamatie
+🥥	klapper
+🥑	avokado
+🍆	eiervrug
+🥔	aartappel
+🥕	wortel
+🌽	aar
+🌶️	warm Russie
+🌶	warm Russie
+🥒	komkommer
+🥬	blaargroen
+🥦	broccoli
+🍄	sampioen
+🥜	grondboontjies
+🌰	kastaiingbruin
+🍞	brood
+🥐	croissant
+🥖	baguette brood
+🥨	pretzel
+🥯	bagel
+🥞	pannekoeke
+🧀	kaasskyfie
+🍖	vleis op been
+🍗	pluimvee been
+🥩	sny vleis
+🥓	spek
+🍔	Hamburger
+🍟	slaptjips
+🍕	pizza
+🌭	worsbroodjie
+🥪	toebroodjie
+🌮	taco
+🌯	burrito
+🥙	gevulde platbrood
+🥚	eier
+🍳	kook
+🥘	vlak pan kos
+🍲	pot kos
+🥣	bak met lepel
+🥗	groenslaai
+🍿	springmielies
+🧂	sout
+🥫	blikkieskos
+🍱	bento boks
+🍘	rys kraker
+🍙	rysbal
+🍚	gekookte rys
+🍛	kerrie rys
+🍜	stomende bak
+🍝	spaghetti
+🍠	geroosterde patat
+🍢	oden
+🍣	soesji
+🍤	gebraaide garnale
+🍥	viskoek met swirl
+🥮	maan koek
+🍡	dango
+🥟	kluitjie
+🥠	Fortuin koekie
+🥡	wegneem boks
+🍦	sagte roomys
+🍧	geskeer ys
+🍨	roomys
+🍩	doughnut
+🍪	koekie
+🎂	verjaardagkoek
+🍰	kortkoek
+🧁	kolwyntjie
+🥧	pastei
+🍫	sjokolade stafie
+🍬	lekkergoed
+🍭	suigstokkie
+🍮	vla
+🍯	heuningpot
+🍼	baba bottel
+🥛	Glas melk
+☕	warm drankie
+🍵	teekoppie sonder handvatsel
+🍶	onthalwe
+🍾	bottel met knal kurk
+🍷	wynglas
+🍸	skemerkelkie glas
+🍹	tropiese drankie
+🍺	bierbeker
+🍻	klinkende bierbekers
+🥂	klinkende bril
+🥃	tuimelglas
+🥤	koppie met strooi
+🥢	eetstokkies
+🍽️	vurk en mes met bord
+🍽	vurk en mes met bord
+🍴	vurk en mes
+🥄	lepel
+🔪	kombuismes
+🏺	amfora
+🌍	wêreld wat Europa-Afrika wys
+🌎	wêreld wat Amerikas wys
+🌏	aardbol wat Asië-Australië wys
+🌐	aardbol met meridiane
+🗺️	wêreld kaart
+🗺	wêreld kaart
+🗾	kaart van Japan
+🧭	kompas
+🏔️	sneeubedekte berg
+🏔	sneeubedekte berg
+⛰️	berg
+⛰	berg
+🌋	vulkaan
+🗻	Berg fuji
+🏕️	kampeer
+🏕	kampeer
+🏖️	strand met sambreel
+🏖	strand met sambreel
+🏜️	woestyn
+🏜	woestyn
+🏝️	verlate eiland
+🏝	verlate eiland
+🏞️	Nasionale Park
+🏞	Nasionale Park
+🏟️	stadion
+🏟	stadion
+🏛️	klassieke gebou
+🏛	klassieke gebou
+🏗️	gebou konstruksie
+🏗	gebou konstruksie
+🧱	bakstene
+🏘️	huise
+🏘	huise
+🏚️	verlate huis
+🏚	verlate huis
+🏠	huis
+🏡	huis met tuin
+🏢	kantoorgebou
+🏣	Japannese poskantoor
+🏤	poskantoor
+🏥	hospitaal
+🏦	bank
+🏨	hotel
+🏩	lief vir hotel
+🏪	geriefswinkel
+🏫	skool
+🏬	afdelingswinkel
+🏭	fabriek
+🏯	Japannese kasteel
+🏰	kasteel
+💒	troue
+🗼	Tokio toring
+🗽	Standbeeld van Vryheid
+⛪	kerk
+🕌	moskee
+🕍	sinagoge
+⛩️	shinto-heiligdom
+⛩	shinto-heiligdom
+🕋	kaba
+⛲	fontein
+⛺	tent
+🌁	mistig
+🌃	nag met sterre
+🏙️	stadsbeeld
+🏙	stadsbeeld
+🌄	sonsopkoms oor berge
+🌅	sonsopkoms
+🌆	stadsbeeld teen skemer
+🌇	sonsondergang
+🌉	brug in die nag
+♨️	warmwaterbronne
+♨	warmwaterbronne
+🌌	Melkweg
+🎠	karrouselperd
+🎡	reuzenrad
+🎢	tuimeltrein
+💈	Haarkapper paal
+🎪	sirkus tent
+🚂	lokomotief
+🚃	spoorwa
+🚄	hoëspoed trein
+🚅	sneltrein
+🚆	trein
+🚇	metro
+🚈	ligte spoor
+🚉	stasie
+🚊	trem
+🚝	monorail
+🚞	bergspoorweg
+🚋	trem kar
+🚌	bus
+🚍	aankomende bus
+🚎	trolliebus
+🚐	minibus
+🚑	ambulans
+🚒	Brandweerwa
+🚓	polisiekar
+🚔	aankomende polisiemotor
+🚕	taxi
+🚖	aankomende taxi
+🚗	motor
+🚘	aankomende motor
+🚙	sport nutsvoertuig
+🚚	afleweringsvragmotor
+🚛	geartikuleerde vragmotor
+🚜	trekker
+🚲	fiets
+🛴	skop bromponie
+🛹	skaatsplank
+🛵	motor bromponie
+🚏	busstop
+🛣️	snelweg
+🛣	snelweg
+🛤️	treinspoor
+🛤	treinspoor
+🛢️	olie drom
+🛢	olie drom
+⛽	brandstof pomp
+🚨	polisiemotorlig
+🚥	horisontale verkeerslig
+🚦	vertikale verkeerslig
+🛑	stopteken
+🚧	konstruksie
+⚓	anker
+⛵	seilboot
+🛶	kano
+🚤	spoedboot
+🛳️	passasierskip
+🛳	passasierskip
+⛴️	veerboot
+⛴	veerboot
+🛥️	motorboot
+🛥	motorboot
+🚢	skip
+✈️	vliegtuig
+✈	vliegtuig
+🛩️	klein vliegtuig
+🛩	klein vliegtuig
+🛫	vliegtuig vertrek
+🛬	vliegtuig aankoms
+💺	sitplek
+🚁	helikopter
+🚟	ophang spoorlyn
+🚠	berg kabelbaan
+🚡	lugtram
+🛰️	satelliet
+🛰	satelliet
+🚀	vuurpyl
+🛸	vlieënde piering
+🛎️	klokkie
+🛎	klokkie
+🧳	bagasie
+⌛	uurglas gedoen
+⏳	uurglas nie gedoen nie
+⌚	kyk
+⏰	wekker
+⏱️	stophorlosie
+⏱	stophorlosie
+⏲️	timer klok
+⏲	timer klok
+🕰️	kaggelhorlosie
+🕰	kaggelhorlosie
+🕛	twaalf uur
+🕧	twaalf dertig
+🕐	eenuur
+🕜	een dertig
+🕑	twee uur
+🕝	twee dertig
+🕒	drie-uur
+🕞	drie dertig
+🕓	vieruur
+🕟	vier dertig
+🕔	vyf uur
+🕠	vyf dertig
+🕕	ses uur
+🕡	ses dertig
+🕖	sewe uur
+🕢	half agt
+🕗	agt uur
+🕣	Half nege
+🕘	nege uur
+🕤	nege dertig
+🕙	tienuur
+🕥	tien-dertig
+🕚	elfuur
+🕦	Elf dertig
+🌑	nuwe maan
+🌒	groeiende sekelmaan
+🌓	eerste kwartmaan
+🌔	groeiende gibbous maan
+🌕	volmaan
+🌖	kwynende gibbous maan
+🌗	laaste kwartmaan
+🌘	dalende sekelmaan
+🌙	sekelmaan
+🌚	nuwemaan gesig
+🌛	eerste kwart maan gesig
+🌜	laaste kwart maan gesig
+🌡️	termometer
+🌡	termometer
+☀️	son
+☀	son
+🌝	volmaan gesig
+🌞	son met gesig
+⭐	ster
+🌟	gloeiende ster
+🌠	verskietende ster
+☁️	wolk
+☁	wolk
+⛅	son agter wolk
+⛈️	wolk met weerlig en reën
+⛈	wolk met weerlig en reën
+🌤️	son agter klein wolkie
+🌤	son agter klein wolkie
+🌥️	son agter groot wolk
+🌥	son agter groot wolk
+🌦️	son agter reënwolk
+🌦	son agter reënwolk
+🌧️	wolk met reën
+🌧	wolk met reën
+🌨️	wolk met sneeu
+🌨	wolk met sneeu
+🌩️	wolk met weerlig
+🌩	wolk met weerlig
+🌪️	tornado
+🌪	tornado
+🌫️	mis
+🌫	mis
+🌬️	wind gesig
+🌬	wind gesig
+🌀	sikloon
+🌈	reënboog
+🌂	geslote sambreel
+☂️	sambreel
+☂	sambreel
+☔	sambreel met reëndruppels
+⛱️	sambreel op die grond
+⛱	sambreel op die grond
+⚡	hoë spanning
+❄️	sneeuvlokkie
+❄	sneeuvlokkie
+☃️	sneeuman
+☃	sneeuman
+⛄	sneeuman sonder sneeu
+☄️	komeet
+☄	komeet
+🔥	vuur
+💧	druppel
+🌊	water golf
+🎃	jack-o-lantern
+🎄	Kersfeesboom
+🎆	vuurwerke
+🎇	sprankel
+🧨	vuurwerk
+✨	skitter
+🎈	ballon
+🎉	partytjiepopper
+🎊	konfetti bal
+🎋	tanabata boom
+🎍	denne versiering
+🎎	Japannese poppe
+🎏	karp streamer
+🎐	windklokkie
+🎑	maankykseremonie
+🧧	rooi koevert
+🎀	lint
+🎁	toegedraaide geskenk
+🎗️	herinnering lint
+🎗	herinnering lint
+🎟️	toegangskaartjies
+🎟	toegangskaartjies
+🎫	kaartjie
+🎖️	militêre medalje
+🎖	militêre medalje
+🏆	trofee
+🏅	sport medalje
+🥇	1ste plek medalje
+🥈	2de plek medalje
+🥉	3de plek medalje
+⚽	sokkerbal
+⚾	bofbal
+🥎	sagtebal
+🏀	basketbal
+🏐	vlugbal
+🏈	Amerikaanse voetbal
+🏉	rugby sokker
+🎾	tennis
+🥏	vlieënde skyf
+🎳	boulwerk
+🏏	krieket spel
+🏑	Veldhokkie
+🏒	yshokkie
+🥍	lacrosse
+🏓	tafeltennis
+🏸	pluimbal
+🥊	bokshandskoen
+🥋	gevegskuns uniform
+🥅	doelnet
+⛳	vlag in gat
+⛸️	ysskaats
+⛸	ysskaats
+🎣	visstok
+🎽	hardloop hemp
+🎿	ski's
+🛷	slee
+🥌	krul klip
+🎯	direkte treffer
+🎱	swembad 8 bal
+🔮	kristalbal
+🧿	nazar-amulet
+🎮	video speletjie
+🕹️	joystick
+🕹	joystick
+🎰	slot masjien
+🎲	spel sterf
+🧩	legkaart
+🧸	teddiebeer
+♠️	graafpak
+♠	graafpak
+♥️	hart pak
+♥	hart pak
+♦️	diamant pak
+♦	diamant pak
+♣️	klubpak
+♣	klubpak
+♟️	skaak pion
+♟	skaak pion
+🃏	grapmaker
+🀄	mahjong rooi draak
+🎴	blomme speelkaarte
+🎭	uitvoerende kunste
+🖼️	geraamde prentjie
+🖼	geraamde prentjie
+🎨	kunstenaar palet
+🧵	draad
+🧶	gare
+🔇	gedempte spreker
+🔈	luidspreker lae volume
+🔉	luidspreker medium volume
+🔊	luidspreker hoë volume
+📢	luidspreker
+📣	megafoon
+📯	poshoring
+🔔	klok
+🔕	klok met skuinsstreep
+🎼	musikale partituur
+🎵	musieknoot
+🎶	musieknote
+🎙️	ateljee mikrofoon
+🎙	ateljee mikrofoon
+🎚️	vlak skuif
+🎚	vlak skuif
+🎛️	beheerknoppe
+🎛	beheerknoppe
+🎤	mikrofoon
+🎧	oorfone
+📻	radio
+🎷	saksofoon
+🎸	kitaar
+🎹	musikale klawerbord
+🎺	trompet
+🎻	viool
+🥁	drom
+📱	selfoon
+📲	selfoon met pyl
+☎️	telefoon
+☎	telefoon
+📞	telefoon ontvanger
+📟	pager
+📠	faksmasjien
+🔋	battery
+🔌	elektriese prop
+💻	skootrekenaar
+🖥️	rekenaar
+🖥	rekenaar
+🖨️	drukker
+🖨	drukker
+⌨️	sleutelbord
+⌨	sleutelbord
+🖱️	rekenaar muis
+🖱	rekenaar muis
+🖲️	baanbal
+🖲	baanbal
+💽	rekenaar skyf
+💾	diskette
+💿	optiese skyf
+📀	dvd
+🧮	telraam
+🎥	filmkamera
+🎞️	film rame
+🎞	film rame
+📽️	filmprojektor
+📽	filmprojektor
+🎬	klapperbord
+📺	televisie
+📷	kamera
+📸	kamera met flits
+📹	videokamera
+📼	videokasset
+🔍	vergrootglas links gekantel
+🔎	vergrootglas regs gekantel
+🕯️	kers
+🕯	kers
+💡	gloeilamp
+🔦	flitslig
+🏮	rooi papier lantern
+📔	notaboek met dekoratiewe omslag
+📕	geslote boek
+📖	oop boek
+📗	groen boek
+📘	blou boek
+📙	oranje boek
+📚	boeke
+📓	notaboek
+📒	grootboek
+📃	bladsy met krul
+📜	blaai
+📄	bladsy na bo wys
+📰	koerant
+🗞️	opgerolde koerant
+🗞	opgerolde koerant
+📑	boekmerk-oortjies
+🔖	boekmerk
+🏷️	etiket
+🏷	etiket
+💰	geldsak
+💴	jen banknoot
+💵	dollar banknoot
+💶	euro banknoot
+💷	pond banknoot
+💸	geld met vlerke
+💳	kredietkaart
+🧾	kwitansie
+💹	grafiek wat met jen toeneem
+💱	valuta ruil
+💲	swaar dollarteken
+✉️	koevert
+✉	koevert
+📧	e-pos
+📨	inkomende koevert
+📩	koevert met pyl
+📤	outbox skinkbord
+📥	inboks skinkbord
+📦	pakket
+📫	geslote posbus met gehysde vlag
+📪	geslote posbus met verlaagde vlag
+📬	oop posbus met gehysde vlag
+📭	oop posbus met verlaagde vlag
+📮	Posbus
+🗳️	stembus met stembrief
+🗳	stembus met stembrief
+✏️	potlood
+✏	potlood
+✒️	swart pen
+✒	swart pen
+🖋️	vulpen
+🖋	vulpen
+🖊️	pen
+🖊	pen
+🖌️	verfkwas
+🖌	verfkwas
+🖍️	kryt
+🖍	kryt
+📝	memo
+💼	aktetas
+📁	lêeromslag
+📂	lêergids oopmaak
+🗂️	kaartindeksverdelers
+🗂	kaartindeksverdelers
+📅	kalender
+📆	afskeur kalender
+🗒️	spiraal notaboek
+🗒	spiraal notaboek
+🗓️	spiraalkalender
+🗓	spiraalkalender
+📇	kaartindeks
+📈	grafiek toeneem
+📉	grafiek afneem
+📊	staafgrafiek
+📋	knipbord
+📌	drukpen
+📍	ronde drukpen
+📎	skuifspeld
+🖇️	gekoppelde skuifspelde
+🖇	gekoppelde skuifspelde
+📏	reguit liniaal
+📐	driehoekige liniaal
+✂️	skêr
+✂	skêr
+🗃️	kaart lêer boks
+🗃	kaart lêer boks
+🗄️	lêer kabinet
+🗄	lêer kabinet
+🗑️	vullismandjie
+🗑	vullismandjie
+🔒	gesluit
+🔓	ontsluit
+🔏	met pen gesluit
+🔐	gesluit met sleutel
+🔑	sleutel
+🗝️	ou sleutel
+🗝	ou sleutel
+🔨	hamer
+⛏️	kies
+⛏	kies
+⚒️	hamer en pik
+⚒	hamer en pik
+🛠️	hamer en moersleutel
+🛠	hamer en moersleutel
+🗡️	dolk
+🗡	dolk
+⚔️	gekruisde swaarde
+⚔	gekruisde swaarde
+🔫	pistool
+🏹	pyl en boog
+🛡️	skild
+🛡	skild
+🔧	moersleutel
+🔩	moer en bout
+⚙️	rat
+⚙	rat
+🗜️	klamp
+🗜	klamp
+⚖️	balans skaal
+⚖	balans skaal
+🔗	skakel
+⛓️	kettings
+⛓	kettings
+🧰	gereedskapkas
+🧲	magneet
+⚗️	alembiese
+⚗	alembiese
+🧪	proefbuis
+🧫	petribakkie
+🧬	dna
+🔬	mikroskoop
+🔭	teleskoop
+📡	satelliet antenna
+💉	spuit
+💊	pil
+🚪	deur
+🛏️	bed
+🛏	bed
+🛋️	rusbank en lamp
+🛋	rusbank en lamp
+🚽	toilet
+🚿	stort
+🛁	bad
+🧴	lotion bottel
+🧷	veiligheidspen
+🧹	besem
+🧺	mandjie
+🧻	rol papier
+🧼	seep
+🧽	spons
+🧯	brandblusser
+🛒	inkopiemandjie
+🚬	sigaret
+⚰️	kis
+⚰	kis
+⚱️	begrafnis urn
+⚱	begrafnis urn
+🗿	moai
+🏧	OTM teken
+🚮	rommel in asblik teken
+🚰	drinkbare water
+♿	rolstoel simbool
+🚹	mans kamer
+🚺	vrouekamer
+🚻	badkamer
+🚼	baba simbool
+🚾	badkamer
+🛂	paspoort beheer
+🛃	Doeane
+🛄	bagasie eis
+🛅	bagasie agtergelaat
+⚠️	waarskuwing
+⚠	waarskuwing
+🚸	kinders wat oorsteek
+⛔	geen toegang
+🚫	verbied
+🚳	geen fietse nie
+🚭	nie rook nie
+🚯	geen rommelstrooiing nie
+🚱	nie-drinkbare water
+🚷	geen voetgangers nie
+📵	geen selfone nie
+🔞	niemand onder agtien nie
+☢️	radioaktief
+☢	radioaktief
+☣️	biogevaar
+☣	biogevaar
+⬆️	boontoe-pyltjie
+⬆	boontoe-pyltjie
+↗️	op-regs pyltjie
+↗	op-regs pyltjie
+➡️	regspyl
+➡	regspyl
+↘️	af-regs pyltjie
+↘	af-regs pyltjie
+⬇️	afpyltjie
+⬇	afpyltjie
+↙️	af-links pyltjie
+↙	af-links pyltjie
+⬅️	linkerpyltjie
+⬅	linkerpyltjie
+↖️	op-links pyltjie
+↖	op-links pyltjie
+↕️	op-af-pyltjie
+↕	op-af-pyltjie
+↔️	links-regs pyltjie
+↔	links-regs pyltjie
+↩️	regspyl wat links buig
+↩	regspyl wat links buig
+↪️	linkerpyltjie wat regs buig
+↪	linkerpyltjie wat regs buig
+⤴️	regspyl wat opwaarts buig
+⤴	regspyl wat opwaarts buig
+⤵️	regspyl wat afwaarts buig
+⤵	regspyl wat afwaarts buig
+🔃	kloksgewys vertikale pyle
+🔄	antikloksgewys pyle knoppie
+🔙	TERUG-pyltjie
+🔚	EINDE-pyltjie
+🔛	OP pyl
+🔜	BINNEKORT pyl
+🔝	BO-pyltjie
+🛐	plek van aanbidding
+⚛️	atoom simbool
+⚛	atoom simbool
+🕉️	om
+🕉	om
+✡️	ster van Dawid
+✡	ster van Dawid
+☸️	wiel van dharma
+☸	wiel van dharma
+☯️	jin yang
+☯	jin yang
+✝️	Latynse kruis
+✝	Latynse kruis
+☦️	ortodokse kruis
+☦	ortodokse kruis
+☪️	ster en halfmaan
+☪	ster en halfmaan
+☮️	vrede simbool
+☮	vrede simbool
+🕎	menora
+🔯	gestippelde sespuntige ster
+♈	Ram
+♉	Stier
+♊	Tweeling
+♋	Kanker
+♌	Leeu
+♍	Maagd
+♎	Weegskaal
+♏	Skerpioen
+♐	Boogskutter
+♑	Steenbok
+♒	Waterman
+♓	Visse
+⛎	Ophiuchus
+🔀	skuif snitte-knoppie
+🔁	herhaal knoppie
+🔂	herhaal enkele knoppie
+▶️	speel knoppie
+▶	speel knoppie
+⏩	vinnig vorentoe-knoppie
+⏭️	volgende snit-knoppie
+⏭	volgende snit-knoppie
+⏯️	speel of pouse knoppie
+⏯	speel of pouse knoppie
+◀️	omgekeerde knoppie
+◀	omgekeerde knoppie
+⏪	vinnige terug-knoppie
+⏮️	laaste snit-knoppie
+⏮	laaste snit-knoppie
+🔼	opwaartse knoppie
+⏫	vinnig op-knoppie
+🔽	afwaartse knoppie
+⏬	vinnig af-knoppie
+⏸️	pouse knoppie
+⏸	pouse knoppie
+⏹️	stop knoppie
+⏹	stop knoppie
+⏺️	rekordknoppie
+⏺	rekordknoppie
+⏏️	uitwerp knoppie
+⏏	uitwerp knoppie
+🎦	bioskoop
+🔅	dowwe knoppie
+🔆	helder knoppie
+📶	antenna bars
+📳	vibrasiemodus
+📴	selfoon af
+♀️	vroulike teken
+♀	vroulike teken
+♂️	manlike teken
+♂	manlike teken
+⚕️	mediese simbool
+⚕	mediese simbool
+♾️	oneindigheid
+♾	oneindigheid
+♻️	herwinning simbool
+♻	herwinning simbool
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	drietand embleem
+📛	naamkenteken
+🔰	Japannese simbool vir beginner
+⭕	swaar groot sirkel
+✅	wit swaar regmerkie
+☑️	stembus met tjek
+☑	stembus met tjek
+✔️	swaar regmerkie
+✔	swaar regmerkie
+✖️	swaar vermenigvuldiging x
+✖	swaar vermenigvuldiging x
+❌	kruis merk
+❎	kruismerkknoppie
+➕	swaar plusteken
+➖	swaar minus teken
+➗	swaar verdelingsteken
+➰	krul lus
+➿	dubbele krullus
+〽️	deel wisselmerk
+〽	deel wisselmerk
+✳️	agtspeek asterisk
+✳	agtspeek asterisk
+✴️	agtpuntige ster
+✴	agtpuntige ster
+❇️	vonkel
+❇	vonkel
+‼️	dubbele uitroepteken
+‼	dubbele uitroepteken
+⁉️	uitroep vraagteken
+⁉	uitroep vraagteken
+❓	vraagteken
+❔	wit vraagteken
+❕	wit uitroepteken
+❗	uitroepteken
+〰️	golwende strepie
+〰	golwende strepie
+©️	kopiereg
+©	kopiereg
+®️	geregistreer
+®	geregistreer
+™️	handelsmerk
+™	handelsmerk
+#️⃣	sleutelkap: #
+#⃣	sleutelkap: #
+*️⃣	sleutelkap: *
+*⃣	sleutelkap: *
+0️⃣	sleutelkap: 0
+0⃣	sleutelkap: 0
+1️⃣	sleutelkap: 1
+1⃣	sleutelkap: 1
+2️⃣	sleutelkap: 2
+2⃣	sleutelkap: 2
+3️⃣	sleutelkap: 3
+3⃣	sleutelkap: 3
+4️⃣	sleutelkap: 4
+4⃣	sleutelkap: 4
+5️⃣	sleutelkap: 5
+5⃣	sleutelkap: 5
+6️⃣	sleutelkap: 6
+6⃣	sleutelkap: 6
+7️⃣	sleutelkap: 7
+7⃣	sleutelkap: 7
+8️⃣	sleutelkap: 8
+8⃣	sleutelkap: 8
+9️⃣	sleutelkap: 9
+9⃣	sleutelkap: 9
+🔟	sleutelkap: 10
+💯	honderd punte
+🔠	voer Latynse hoofletters in
+🔡	voer Latynse kleinletters in
+🔢	invoer nommers
+🔣	invoer simbole
+🔤	voer Latynse letters in
+🅰️	'n Knoppie (bloedgroep)
+🅰	'n Knoppie (bloedgroep)
+🆎	AB-knoppie (bloedgroep)
+🅱️	B-knoppie (bloedgroep)
+🅱	B-knoppie (bloedgroep)
+🆑	CL knoppie
+🆒	COOL knoppie
+🆓	GRATIS knoppie
+ℹ️	inligting
+ℹ	inligting
+🆔	ID-knoppie
+Ⓜ️	omkring M
+Ⓜ	omkring M
+🆕	NUWE knoppie
+🆖	NG knoppie
+🅾️	O-knoppie (bloedgroep)
+🅾	O-knoppie (bloedgroep)
+🆗	OK knoppie
+🅿️	P knoppie
+🅿	P knoppie
+🆘	SOS-knoppie
+🆙	OP-knoppie
+🆚	VS-knoppie
+🈁	Japannese "hier" knoppie
+🈂️	Japannese "diensheffing"-knoppie
+🈂	Japannese "diensheffing"-knoppie
+🈷️	Japannese "maandelikse bedrag"-knoppie
+🈷	Japannese "maandelikse bedrag"-knoppie
+🈶	Japannese "nie gratis nie" knoppie
+🈯	Japannese "gereserveerde" knoppie
+🉐	Japannese "winskoop"-knoppie
+🈹	Japannese "afslag" knoppie
+🈚	Japannese "gratis"-knoppie
+🈲	Japannese "verbode" knoppie
+🉑	Japannese "aanvaarbare" knoppie
+🈸	Japannese "toepassing"-knoppie
+🈴	Japannese "slaaggraad"-knoppie
+🈳	Japannese "vakature" knoppie
+㊗️	Japannese "gelukwensing"-knoppie
+㊗	Japannese "gelukwensing"-knoppie
+㊙️	Japannese "geheime" knoppie
+㊙	Japannese "geheime" knoppie
+🈺	Japannese "oop vir besigheid"-knoppie
+🈵	Japannese "geen vakature"-knoppie
+▪️	swart klein vierkant
+▪	swart klein vierkant
+▫️	wit klein vierkant
+▫	wit klein vierkant
+◻️	wit medium vierkant
+◻	wit medium vierkant
+◼️	swart medium vierkant
+◼	swart medium vierkant
+◽	wit medium-klein vierkant
+◾	swart medium-klein vierkant
+⬛	swart groot vierkant
+⬜	wit groot vierkant
+🔶	groot oranje diamant
+🔷	groot blou diamant
+🔸	klein oranje diamant
+🔹	klein blou diamant
+🔺	rooi driehoek na bo wys
+🔻	rooi driehoek wat na onder wys
+💠	diamant met 'n punt
+🔘	radio knoppie
+🔲	swart vierkantige knoppie
+🔳	wit vierkantige knoppie
+⚪	wit sirkel
+⚫	swart sirkel
+🔴	rooi sirkel
+🔵	blou sirkel
+🏁	geruite vlag
+🚩	driehoekige vlag
+🎌	gekruiste vlae
+🏴	Swart vlag
+🏳️	wit vlag
+🏳	wit vlag
+🏳️‍🌈	reënboog vlag
+🏳‍🌈	reënboog vlag
+🏴‍☠️	seerower vlag
+🏴‍☠	seerower vlag
+🇦🇨	Ascension Island
+🇦🇩	Andorra
+🇦🇪	Verenigde Arabiese Emirate
+🇦🇫	Afghanistan
+🇦🇬	Antigua en Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albanië
+🇦🇲	Armenië
+🇦🇴	Angola
+🇦🇶	Antarktika
+🇦🇷	Argentinië
+🇦🇸	Amerikaanse Samoa
+🇦🇹	Oostenryk
+🇦🇺	Australië
+🇦🇼	Aruba
+🇦🇽	Åland-eilande
+🇦🇿	Azerbeidjan
+🇧🇦	Bosnië en Herzegovina
+🇧🇧	Barbados
+🇧🇩	Bangladesj
+🇧🇪	België
+🇧🇫	Burkina Faso
+🇧🇬	Bulgarye
+🇧🇭	Bahrein
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	St Barthélemy
+🇧🇲	Bermuda
+🇧🇳	Brunei
+🇧🇴	Bolivia
+🇧🇶	Karibiese Nederland
+🇧🇷	Brasilië
+🇧🇸	Bahamas
+🇧🇹	Bhoetan
+🇧🇻	Bouvet-eiland
+🇧🇼	Botswana
+🇧🇾	Wit-Rusland
+🇧🇿	Belize
+🇨🇦	Kanada
+🇨🇨	Cocos (Keeling) Eilande
+🇨🇩	Kongo - Kinshasa
+🇨🇫	Sentraal-Afrikaanse Republiek
+🇨🇬	Kongo - Brazzaville
+🇨🇭	Switserland
+🇨🇮	Ivoorkus
+🇨🇰	Cook-eilande
+🇨🇱	Chili
+🇨🇲	Kameroen
+🇨🇳	Sjina
+🇨🇴	Colombia
+🇨🇵	Clipperton-eiland
+🇨🇷	Costa Rica
+🇨🇺	Kuba
+🇨🇻	Kaap Verde
+🇨🇼	Curaçao
+🇨🇽	Kersfees Eiland
+🇨🇾	Ciprus
+🇨🇿	Tsjeggië
+🇩🇪	Duitsland
+🇩🇬	Diego Garcia
+🇩🇯	Djiboeti
+🇩🇰	Denemarke
+🇩🇲	Dominica
+🇩🇴	Dominikaanse Republiek
+🇩🇿	Algerië
+🇪🇦	Ceuta en Melilla
+🇪🇨	Ecuador
+🇪🇪	Estland
+🇪🇬	Egipte
+🇪🇭	Wes-Sahara
+🇪🇷	Eritrea
+🇪🇸	Spanje
+🇪🇹	Ethiopië
+🇪🇺	Europese Unie
+🇫🇮	Finland
+🇫🇯	Fidji
+🇫🇰	Falkland-eilande
+🇫🇲	Mikronesië
+🇫🇴	Faroëreilande
+🇫🇷	Frankryk
+🇬🇦	Gaboen
+🇬🇧	Verenigde Koninkryk
+🇬🇩	Grenada
+🇬🇪	Georgië
+🇬🇫	Frans Guyana
+🇬🇬	Guernsey
+🇬🇭	Ghana
+🇬🇮	Gibraltar
+🇬🇱	Groenland
+🇬🇲	Gambië
+🇬🇳	Guinee
+🇬🇵	Guadeloupe
+🇬🇶	Ekwatoriaal-Guinee
+🇬🇷	Griekeland
+🇬🇸	Suid-Georgië en Suid-Sandwich-eilande
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinee-Bissau
+🇬🇾	Guyana
+🇭🇰	Hong Kong SAR China
+🇭🇲	Heard en McDonald-eilande
+🇭🇳	Honduras
+🇭🇷	Kroasië
+🇭🇹	Haïti
+🇭🇺	Hongarye
+🇮🇨	kanarie Eilande
+🇮🇩	Indonesië
+🇮🇪	Ierland
+🇮🇱	Israel
+🇮🇲	Eiland Man
+🇮🇳	Indië
+🇮🇴	Britse Indiese Oseaan-gebied
+🇮🇶	Irak
+🇮🇷	Iran
+🇮🇸	Ysland
+🇮🇹	Italië
+🇯🇪	Jersey
+🇯🇲	Jamaika
+🇯🇴	Jordaan
+🇯🇵	Japan
+🇰🇪	Kenia
+🇰🇬	Kirgisië
+🇰🇭	Kambodja
+🇰🇮	Kiribati
+🇰🇲	Comore
+🇰🇳	St. Kitts en Nevis
+🇰🇵	Noord-Korea
+🇰🇷	Suid-Korea
+🇰🇼	Koeweit
+🇰🇾	Cayman Eilande
+🇰🇿	Kasakstan
+🇱🇦	Laos
+🇱🇧	Libanon
+🇱🇨	St Lucia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Liberië
+🇱🇸	Lesotho
+🇱🇹	Litaue
+🇱🇺	Luxemburg
+🇱🇻	Letland
+🇱🇾	Libië
+🇲🇦	Marokko
+🇲🇨	Monaco
+🇲🇩	Moldawië
+🇲🇪	Montenegro
+🇲🇫	St Martin
+🇲🇬	Madagaskar
+🇲🇭	Marshall-eilande
+🇲🇰	Masedonië
+🇲🇱	Mali
+🇲🇲	Myanmar (Birma)
+🇲🇳	Mongolië
+🇲🇴	Macau SAR China
+🇲🇵	Noordelike Mariana-eilande
+🇲🇶	Martinique
+🇲🇷	Mauritanië
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Mauritius
+🇲🇻	Maldive
+🇲🇼	Malawi
+🇲🇽	Mexiko
+🇲🇾	Maleisië
+🇲🇿	Mosambiek
+🇳🇦	Namibië
+🇳🇨	Nieu-Kaledonië
+🇳🇪	Niger
+🇳🇫	Norfolk-eiland
+🇳🇬	Nigerië
+🇳🇮	Nicaragua
+🇳🇱	Nederland
+🇳🇴	Noorweë
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Nieu-Seeland
+🇴🇲	Oman
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Frans-Polynesië
+🇵🇬	Papoea-Nieu-Guinee
+🇵🇭	Filippyne
+🇵🇰	Pakistan
+🇵🇱	Pole
+🇵🇲	St Pierre & Miquelon
+🇵🇳	Pitcairn-eilande
+🇵🇷	Puerto Rico
+🇵🇸	Palestynse gebiede
+🇵🇹	Portugal
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Katar
+🇷🇪	Réunion
+🇷🇴	Roemenië
+🇷🇸	Serwië
+🇷🇺	Rusland
+🇷🇼	Rwanda
+🇸🇦	Saoedi-Arabië
+🇸🇧	Salomonseilande
+🇸🇨	Seychelle
+🇸🇩	Soedan
+🇸🇪	Swede
+🇸🇬	Singapoer
+🇸🇭	St Helena
+🇸🇮	Slowenië
+🇸🇯	Svalbard & Jan Mayen
+🇸🇰	Slowakye
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somalië
+🇸🇷	Suriname
+🇸🇸	Suid-Soedan
+🇸🇹	São Tomé en Principe
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Sirië
+🇸🇿	Swaziland
+🇹🇦	Tristan da Cunha
+🇹🇨	Turks- en Caicos-eilande
+🇹🇩	Tsjad
+🇹🇫	Franse suidelike gebiede
+🇹🇬	Togo
+🇹🇭	Thailand
+🇹🇯	Tadjikistan
+🇹🇰	Tokelau
+🇹🇱	Oost-Timor
+🇹🇲	Turkmenistan
+🇹🇳	Tunisië
+🇹🇴	Tonga
+🇹🇷	Turkye
+🇹🇹	Trinidad en Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taiwan
+🇹🇿	Tanzanië
+🇺🇦	Oekraïne
+🇺🇬	Uganda
+🇺🇲	Amerikaanse afgeleë eilande
+🇺🇳	Verenigde Nasies
+🇺🇸	Verenigde State
+🇺🇾	Uruguay
+🇺🇿	Oesbekistan
+🇻🇦	Vatikaanstad
+🇻🇨	St Vincent en Grenadines
+🇻🇪	Venezuela
+🇻🇬	Britse Maagde-eilande
+🇻🇮	Amerikaanse Maagde-eilande
+🇻🇳	Viëtnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis en Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Jemen
+🇾🇹	Mayotte
+🇿🇦	Suid-Afrika
+🇿🇲	Zambië
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Engeland
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Skotland
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Wallis

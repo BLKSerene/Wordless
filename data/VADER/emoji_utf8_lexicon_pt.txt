@@ -1,0 +1,3570 @@
+😀	rosto sorridente
+😁	rosto radiante com olhos sorridentes
+😂	rosto com lágrimas de alegria
+🤣	rolando de rir no chão
+😃	rosto sorridente com olhos grandes
+😄	rosto sorridente com olhos sorridentes
+😅	rosto sorridente com suor
+😆	rosto sorridente e semicerrado
+😉	cara piscando
+😊	rosto sorridente com olhos sorridentes
+😋	rosto saboreando comida
+😎	rosto sorridente com óculos de sol
+😍	rosto sorridente com olhos de coração
+😘	cara mandando um beijo
+🥰	rosto sorridente com 3 corações
+😗	beijando rosto
+😙	beijando o rosto com olhos sorridentes
+😚	beijando o rosto com os olhos fechados
+☺️	rosto sorridente
+☺	rosto sorridente
+🙂	rosto levemente sorridente
+🤗	abraçando o rosto
+🤩	impressionado
+🤔	cara pensante
+🤨	rosto com sobrancelha levantada
+😐	rosto neutro
+😑	rosto inexpressivo
+😶	cara sem boca
+🙄	rosto com olhos revirados
+😏	rosto sorridente
+😣	rosto perseverante
+😥	rosto triste mas aliviado
+😮	rosto com boca aberta
+🤐	rosto com boca de zíper
+😯	rosto calado
+😪	cara de sono
+😫	cara cansada
+😴	cara dormindo
+😌	rosto aliviado
+😛	cara com língua
+😜	piscando o rosto com a língua
+😝	apertando os olhos com a língua
+🤤	cara babando
+😒	cara sem graça
+😓	rosto abatido com suor
+😔	rosto pensativo
+😕	cara confusa
+🙃	cara de cabeça para baixo
+🤑	cara de boca de dinheiro
+😲	rosto surpreso
+☹️	cara carrancuda
+☹	cara carrancuda
+🙁	rosto ligeiramente carrancudo
+😖	cara confusa
+😞	cara decepcionada
+😟	cara preocupada
+😤	rosto com vapor saindo do nariz
+😢	cara chorando
+😭	cara chorando alto
+😦	rosto carrancudo com boca aberta
+😧	rosto angustiado
+😨	cara de medo
+😩	rosto cansado
+🤯	cabeça explodindo
+😬	rosto fazendo careta
+😰	rosto ansioso com suor
+😱	cara gritando de medo
+🥵	cara quente
+🥶	cara fria
+😳	Cara corada
+🤪	cara maluca
+😵	rosto tonto
+😡	cara fazendo beicinho
+😠	cara de bravo
+🤬	rosto com símbolos na boca
+😷	rosto com máscara médica
+🤒	rosto com termômetro
+🤕	rosto com bandagem na cabeça
+🤢	cara enjoada
+🤮	rosto vomitando
+🤧	cara espirrando
+😇	rosto sorridente com halo
+🤠	cara de chapéu de cowboy
+🥳	cara de festa
+🥴	cara tonta
+🥺	rosto suplicante
+🤥	rosto mentiroso
+🤫	cara calada
+🤭	cara com a mão na boca
+🧐	cara com monóculo
+🤓	cara de nerd
+😈	rosto sorridente com chifres
+👿	cara brava com chifres
+🤡	cara de palhaço
+👹	ogro
+👺	duende
+💀	crânio
+☠️	caveira e ossos cruzados
+☠	caveira e ossos cruzados
+👻	fantasma
+👽	estrangeiro
+👾	monstro alienígena
+🤖	cara de robô
+💩	pilha de cocô
+😺	cara de gato sorrindo
+😸	cara de gato sorridente com olhos sorridentes
+😹	cara de gato com lágrimas de alegria
+😻	cara de gato sorridente com olhos de coração
+😼	cara de gato com sorriso irônico
+😽	beijando cara de gato
+🙀	cara de gato cansado
+😿	cara de gato chorando
+😾	cara de gato fazendo beicinho
+🙈	macaco que não vê o mal
+🙉	macaco que não ouve o mal
+🙊	macaco que não fala mal
+🏻	tom de pele claro
+🏼	tom de pele meio claro
+🏽	tom de pele médio
+🏾	tom de pele meio escuro
+🏿	tom de pele escuro
+👶	bebê
+👶🏻	bebê: pele clara
+👶🏼	bebê: pele morena clara
+👶🏽	bebê: pele morena
+👶🏾	bebê: pele morena escura
+👶🏿	bebê: pele escura
+🧒	criança
+🧒🏻	criança: pele clara
+🧒🏼	criança: pele morena clara
+🧒🏽	criança: pele morena
+🧒🏾	criança: pele morena escura
+🧒🏿	criança: pele escura
+👦	garoto
+👦🏻	menino: pele clara
+👦🏼	menino: pele morena clara
+👦🏽	menino: pele morena
+👦🏾	menino: pele morena escura
+👦🏿	menino: pele morena
+👧	garota
+👧🏻	menina: pele clara
+👧🏼	menina: pele morena clara
+👧🏽	menina: pele morena
+👧🏾	menina: pele morena escura
+👧🏿	menina: pele morena
+🧑	adulto
+🧑🏻	adulto: pele clara
+🧑🏼	adulto: pele morena clara
+🧑🏽	adulto: pele morena
+🧑🏾	adulto: pele morena escura
+🧑🏿	adulto: tom de pele escuro
+👨	homem
+👨🏻	homem: pele clara
+👨🏼	homem: pele morena clara
+👨🏽	homem: pele morena
+👨🏾	homem: pele morena escura
+👨🏿	homem: pele escura
+👩	mulher
+👩🏻	mulher: pele clara
+👩🏼	mulher: pele morena clara
+👩🏽	mulher: pele morena
+👩🏾	mulher: pele morena escura
+👩🏿	mulher: pele escura
+🧓	adulto mais velho
+🧓🏻	idoso: pele clara
+🧓🏼	idoso: pele morena clara
+🧓🏽	idoso: pele morena
+🧓🏾	adulto mais velho: pele morena escura
+🧓🏿	idoso: tom de pele escuro
+👴	Velhote
+👴🏻	velho: pele clara
+👴🏼	velho: pele morena clara
+👴🏽	velho: pele morena
+👴🏾	velho: pele morena escura
+👴🏿	velho: pele morena
+👵	velha
+👵🏻	mulher idosa: pele clara
+👵🏼	mulher idosa: pele morena clara
+👵🏽	mulher idosa: pele morena
+👵🏾	mulher idosa: pele morena escura
+👵🏿	mulher idosa: pele escura
+👨‍⚕️	homem, trabalhador de saúde
+👨‍⚕	homem, trabalhador de saúde
+👨🏻‍⚕️	homem, profissional de saúde: pele clara
+👨🏻‍⚕	homem, profissional de saúde: pele clara
+👨🏼‍⚕️	homem, profissional de saúde: pele morena clara
+👨🏼‍⚕	homem, profissional de saúde: pele morena clara
+👨🏽‍⚕️	homem, profissional de saúde: pele morena
+👨🏽‍⚕	homem, profissional de saúde: pele morena
+👨🏾‍⚕️	homem, profissional de saúde: pele morena escura
+👨🏾‍⚕	homem, profissional de saúde: pele morena escura
+👨🏿‍⚕️	homem profissional de saúde: pele escura
+👨🏿‍⚕	homem profissional de saúde: pele escura
+👩‍⚕️	mulher trabalhadora de saúde
+👩‍⚕	mulher trabalhadora de saúde
+👩🏻‍⚕️	profissional de saúde: pele clara
+👩🏻‍⚕	profissional de saúde: pele clara
+👩🏼‍⚕️	profissional de saúde: pele morena clara
+👩🏼‍⚕	profissional de saúde: pele morena clara
+👩🏽‍⚕️	profissional de saúde: pele morena
+👩🏽‍⚕	profissional de saúde: pele morena
+👩🏾‍⚕️	profissional de saúde: pele morena escura
+👩🏾‍⚕	profissional de saúde: pele morena escura
+👩🏿‍⚕️	profissional de saúde: pele escura
+👩🏿‍⚕	profissional de saúde: pele escura
+👨‍🎓	homem estudante
+👨🏻‍🎓	estudante homem: pele clara
+👨🏼‍🎓	estudante homem: pele morena clara
+👨🏽‍🎓	estudante homem: pele morena
+👨🏾‍🎓	homem estudante: pele morena escura
+👨🏿‍🎓	estudante homem: pele escura
+👩‍🎓	estudante
+👩🏻‍🎓	estudante: pele clara
+👩🏼‍🎓	estudante: pele morena clara
+👩🏽‍🎓	estudante: pele morena
+👩🏾‍🎓	estudante: pele morena escura
+👩🏿‍🎓	estudante: pele morena
+👨‍🏫	homem professor
+👨🏻‍🏫	professor homem: pele clara
+👨🏼‍🏫	professor homem: pele morena clara
+👨🏽‍🏫	professor homem: pele morena
+👨🏾‍🏫	professor homem: pele morena escura
+👨🏿‍🏫	professor homem: pele escura
+👩‍🏫	professora
+👩🏻‍🏫	professora: pele clara
+👩🏼‍🏫	professora: pele morena clara
+👩🏽‍🏫	professora: pele morena
+👩🏾‍🏫	professora: pele morena escura
+👩🏿‍🏫	professora: pele escura
+👨‍⚖️	homem juiz
+👨‍⚖	homem juiz
+👨🏻‍⚖️	homem juiz: pele clara
+👨🏻‍⚖	homem juiz: pele clara
+👨🏼‍⚖️	homem juiz: pele morena clara
+👨🏼‍⚖	homem juiz: pele morena clara
+👨🏽‍⚖️	juiz homem: pele morena
+👨🏽‍⚖	juiz homem: pele morena
+👨🏾‍⚖️	homem juiz: pele morena escura
+👨🏾‍⚖	homem juiz: pele morena escura
+👨🏿‍⚖️	homem juiz: pele escura
+👨🏿‍⚖	homem juiz: pele escura
+👩‍⚖️	mulher juíza
+👩‍⚖	mulher juíza
+👩🏻‍⚖️	juíza: pele clara
+👩🏻‍⚖	juíza: pele clara
+👩🏼‍⚖️	juíza: pele morena clara
+👩🏼‍⚖	juíza: pele morena clara
+👩🏽‍⚖️	juíza: pele morena
+👩🏽‍⚖	juíza: pele morena
+👩🏾‍⚖️	juíza: pele morena escura
+👩🏾‍⚖	juíza: pele morena escura
+👩🏿‍⚖️	juíza: pele escura
+👩🏿‍⚖	juíza: pele escura
+👨‍🌾	homem agricultor
+👨🏻‍🌾	homem agricultor: pele clara
+👨🏼‍🌾	homem agricultor: pele morena clara
+👨🏽‍🌾	homem agricultor: pele morena
+👨🏾‍🌾	homem agricultor: pele morena escura
+👨🏿‍🌾	homem agricultor: pele escura
+👩‍🌾	mulher agricultora
+👩🏻‍🌾	mulher agricultora: pele clara
+👩🏼‍🌾	mulher agricultora: pele morena clara
+👩🏽‍🌾	mulher agricultora: pele morena
+👩🏾‍🌾	mulher agricultora: pele morena escura
+👩🏿‍🌾	mulher agricultora: pele escura
+👨‍🍳	homem cozinheiro
+👨🏻‍🍳	homem cozinheiro: pele clara
+👨🏼‍🍳	homem cozinheiro: pele morena clara
+👨🏽‍🍳	cozinheiro homem: pele morena
+👨🏾‍🍳	homem cozinheiro: pele morena escura
+👨🏿‍🍳	homem cozinheiro: pele escura
+👩‍🍳	mulher cozinheira
+👩🏻‍🍳	mulher cozinheira: pele clara
+👩🏼‍🍳	mulher cozinheira: pele morena clara
+👩🏽‍🍳	cozinheira: pele morena
+👩🏾‍🍳	mulher cozinheira: pele morena escura
+👩🏿‍🍳	mulher cozinheira: pele escura
+👨‍🔧	homem mecânico
+👨🏻‍🔧	homem mecânico: pele clara
+👨🏼‍🔧	homem mecânico: pele morena clara
+👨🏽‍🔧	homem mecânico: pele morena
+👨🏾‍🔧	homem mecânico: pele morena escura
+👨🏿‍🔧	homem mecânico: pele escura
+👩‍🔧	mecânica de mulher
+👩🏻‍🔧	mulher mecânica: pele clara
+👩🏼‍🔧	mulher mecânica: pele morena clara
+👩🏽‍🔧	mulher mecânica: pele morena
+👩🏾‍🔧	mulher mecânica: pele morena escura
+👩🏿‍🔧	mulher mecânica: pele morena
+👨‍🏭	homem, operário
+👨🏻‍🏭	homem operário: pele clara
+👨🏼‍🏭	homem operário: pele morena clara
+👨🏽‍🏭	homem operário: pele morena
+👨🏾‍🏭	homem operário: pele morena escura
+👨🏿‍🏭	homem operário: pele escura
+👩‍🏭	mulher operária
+👩🏻‍🏭	operária: pele clara
+👩🏼‍🏭	operária: pele morena clara
+👩🏽‍🏭	operária: pele morena
+👩🏾‍🏭	operária: pele morena escura
+👩🏿‍🏭	mulher operária: pele escura
+👨‍💼	homem, trabalhador de escritório
+👨🏻‍💼	homem trabalhador de escritório: pele clara
+👨🏼‍💼	homem trabalhador de escritório: pele morena clara
+👨🏽‍💼	homem trabalhador de escritório: pele morena
+👨🏾‍💼	homem trabalhador de escritório: pele morena escura
+👨🏿‍💼	homem trabalhador de escritório: pele escura
+👩‍💼	mulher trabalhadora de escritório
+👩🏻‍💼	mulher trabalhadora de escritório: pele clara
+👩🏼‍💼	mulher trabalhadora de escritório: pele morena clara
+👩🏽‍💼	mulher trabalhadora de escritório: pele morena
+👩🏾‍💼	mulher trabalhadora de escritório: pele morena escura
+👩🏿‍💼	mulher trabalhadora de escritório: pele escura
+👨‍🔬	homem cientista
+👨🏻‍🔬	homem cientista: pele clara
+👨🏼‍🔬	homem cientista: pele morena clara
+👨🏽‍🔬	homem cientista: pele morena
+👨🏾‍🔬	homem cientista: pele morena escura
+👨🏿‍🔬	homem cientista: pele escura
+👩‍🔬	mulher cientista
+👩🏻‍🔬	mulher cientista: pele clara
+👩🏼‍🔬	mulher cientista: pele morena clara
+👩🏽‍🔬	mulher cientista: pele morena
+👩🏾‍🔬	mulher cientista: pele morena escura
+👩🏿‍🔬	mulher cientista: pele escura
+👨‍💻	homem tecnólogo
+👨🏻‍💻	homem tecnólogo: pele clara
+👨🏼‍💻	homem tecnólogo: pele morena clara
+👨🏽‍💻	homem tecnólogo: pele morena
+👨🏾‍💻	homem tecnólogo: pele morena escura
+👨🏿‍💻	homem tecnólogo: pele escura
+👩‍💻	mulher tecnóloga
+👩🏻‍💻	mulher tecnóloga: pele clara
+👩🏼‍💻	mulher tecnóloga: pele morena clara
+👩🏽‍💻	mulher tecnóloga: pele morena
+👩🏾‍💻	mulher tecnóloga: pele morena escura
+👩🏿‍💻	mulher tecnóloga: pele morena
+👨‍🎤	homem cantor
+👨🏻‍🎤	homem cantor: pele clara
+👨🏼‍🎤	homem cantor: pele morena clara
+👨🏽‍🎤	homem cantor: pele morena
+👨🏾‍🎤	homem cantor: pele morena escura
+👨🏿‍🎤	homem cantor: pele escura
+👩‍🎤	cantora
+👩🏻‍🎤	cantora: pele clara
+👩🏼‍🎤	cantora: pele morena clara
+👩🏽‍🎤	cantora: pele morena
+👩🏾‍🎤	cantora: pele morena escura
+👩🏿‍🎤	cantora: pele morena
+👨‍🎨	homem artista
+👨🏻‍🎨	homem artista: pele clara
+👨🏼‍🎨	homem artista: pele morena clara
+👨🏽‍🎨	homem artista: pele morena
+👨🏾‍🎨	homem artista: pele morena escura
+👨🏿‍🎨	homem artista: pele escura
+👩‍🎨	mulher artista
+👩🏻‍🎨	mulher artista: pele clara
+👩🏼‍🎨	mulher artista: pele morena clara
+👩🏽‍🎨	mulher artista: pele morena
+👩🏾‍🎨	mulher artista: pele morena escura
+👩🏿‍🎨	mulher artista: pele morena
+👨‍✈️	homem piloto
+👨‍✈	homem piloto
+👨🏻‍✈️	piloto homem: pele clara
+👨🏻‍✈	piloto homem: pele clara
+👨🏼‍✈️	homem piloto: pele morena clara
+👨🏼‍✈	homem piloto: pele morena clara
+👨🏽‍✈️	piloto homem: pele morena
+👨🏽‍✈	piloto homem: pele morena
+👨🏾‍✈️	homem piloto: pele morena escura
+👨🏾‍✈	homem piloto: pele morena escura
+👨🏿‍✈️	piloto homem: pele escura
+👨🏿‍✈	piloto homem: pele escura
+👩‍✈️	mulher piloto
+👩‍✈	mulher piloto
+👩🏻‍✈️	piloto mulher: pele clara
+👩🏻‍✈	piloto mulher: pele clara
+👩🏼‍✈️	piloto mulher: pele morena clara
+👩🏼‍✈	piloto mulher: pele morena clara
+👩🏽‍✈️	piloto mulher: pele morena
+👩🏽‍✈	piloto mulher: pele morena
+👩🏾‍✈️	piloto mulher: pele morena escura
+👩🏾‍✈	piloto mulher: pele morena escura
+👩🏿‍✈️	piloto mulher: pele escura
+👩🏿‍✈	piloto mulher: pele escura
+👨‍🚀	homem astronauta
+👨🏻‍🚀	homem astronauta: pele clara
+👨🏼‍🚀	homem astronauta: pele morena clara
+👨🏽‍🚀	homem astronauta: pele morena
+👨🏾‍🚀	homem astronauta: pele morena escura
+👨🏿‍🚀	homem astronauta: pele escura
+👩‍🚀	mulher astronauta
+👩🏻‍🚀	astronauta mulher: pele clara
+👩🏼‍🚀	astronauta mulher: pele morena clara
+👩🏽‍🚀	astronauta mulher: pele morena
+👩🏾‍🚀	astronauta mulher: pele morena escura
+👩🏿‍🚀	astronauta mulher: pele escura
+👨‍🚒	homem bombeiro
+👨🏻‍🚒	homem bombeiro: pele clara
+👨🏼‍🚒	homem bombeiro: pele morena clara
+👨🏽‍🚒	homem bombeiro: pele morena
+👨🏾‍🚒	homem bombeiro: pele morena escura
+👨🏿‍🚒	homem bombeiro: pele escura
+👩‍🚒	mulher bombeira
+👩🏻‍🚒	mulher bombeira: pele clara
+👩🏼‍🚒	bombeira: pele morena clara
+👩🏽‍🚒	mulher bombeira: pele morena
+👩🏾‍🚒	bombeira: pele morena escura
+👩🏿‍🚒	mulher bombeira: pele escura
+👮	policial
+👮🏻	policial: pele clara
+👮🏼	policial: pele morena clara
+👮🏽	policial: pele morena
+👮🏾	policial: pele morena escura
+👮🏿	policial: pele escura
+👮‍♂️	homem, policial
+👮‍♂	homem, policial
+👮🏻‍♂️	homem policial: pele clara
+👮🏻‍♂	homem policial: pele clara
+👮🏼‍♂️	homem policial: pele morena clara
+👮🏼‍♂	homem policial: pele morena clara
+👮🏽‍♂️	homem policial: pele morena
+👮🏽‍♂	homem policial: pele morena
+👮🏾‍♂️	homem policial: pele morena escura
+👮🏾‍♂	homem policial: pele morena escura
+👮🏿‍♂️	homem policial: pele escura
+👮🏿‍♂	homem policial: pele escura
+👮‍♀️	mulher policial
+👮‍♀	mulher policial
+👮🏻‍♀️	policial mulher: pele clara
+👮🏻‍♀	policial mulher: pele clara
+👮🏼‍♀️	policial mulher: pele morena clara
+👮🏼‍♀	policial mulher: pele morena clara
+👮🏽‍♀️	policial mulher: pele morena
+👮🏽‍♀	policial mulher: pele morena
+👮🏾‍♀️	policial mulher: pele morena escura
+👮🏾‍♀	policial mulher: pele morena escura
+👮🏿‍♀️	policial mulher: pele escura
+👮🏿‍♀	policial mulher: pele escura
+🕵️	detetive
+🕵	detetive
+🕵🏻	detetive: pele clara
+🕵🏼	detetive: pele morena clara
+🕵🏽	detetive: pele morena
+🕵🏾	detetive: pele morena escura
+🕵🏿	detetive: pele escura
+🕵️‍♂️	homem detetive
+🕵‍♂️	homem detetive
+🕵️‍♂	homem detetive
+🕵‍♂	homem detetive
+🕵🏻‍♂️	homem detetive: pele clara
+🕵🏻‍♂	homem detetive: pele clara
+🕵🏼‍♂️	homem detetive: pele morena clara
+🕵🏼‍♂	homem detetive: pele morena clara
+🕵🏽‍♂️	homem detetive: pele morena
+🕵🏽‍♂	homem detetive: pele morena
+🕵🏾‍♂️	homem detetive: pele morena escura
+🕵🏾‍♂	homem detetive: pele morena escura
+🕵🏿‍♂️	homem detetive: pele escura
+🕵🏿‍♂	homem detetive: pele escura
+🕵️‍♀️	mulher detetive
+🕵‍♀️	mulher detetive
+🕵️‍♀	mulher detetive
+🕵‍♀	mulher detetive
+🕵🏻‍♀️	mulher detetive: pele clara
+🕵🏻‍♀	mulher detetive: pele clara
+🕵🏼‍♀️	mulher detetive: pele morena clara
+🕵🏼‍♀	mulher detetive: pele morena clara
+🕵🏽‍♀️	detetive mulher: pele morena
+🕵🏽‍♀	detetive mulher: pele morena
+🕵🏾‍♀️	detetive mulher: pele morena escura
+🕵🏾‍♀	detetive mulher: pele morena escura
+🕵🏿‍♀️	mulher detetive: pele morena
+🕵🏿‍♀	mulher detetive: pele morena
+💂	guarda
+💂🏻	guarda: pele clara
+💂🏼	guarda: pele morena clara
+💂🏽	guarda: pele morena
+💂🏾	guarda: pele morena escura
+💂🏿	guarda: pele escura
+💂‍♂️	homem guarda
+💂‍♂	homem guarda
+💂🏻‍♂️	guarda masculino: pele clara
+💂🏻‍♂	guarda masculino: pele clara
+💂🏼‍♂️	guarda masculino: pele morena clara
+💂🏼‍♂	guarda masculino: pele morena clara
+💂🏽‍♂️	guarda masculino: pele morena
+💂🏽‍♂	guarda masculino: pele morena
+💂🏾‍♂️	guarda masculino: pele morena escura
+💂🏾‍♂	guarda masculino: pele morena escura
+💂🏿‍♂️	guarda homem: pele escura
+💂🏿‍♂	guarda homem: pele escura
+💂‍♀️	guarda feminina
+💂‍♀	guarda feminina
+💂🏻‍♀️	guarda feminina: pele clara
+💂🏻‍♀	guarda feminina: pele clara
+💂🏼‍♀️	guarda feminina: pele morena clara
+💂🏼‍♀	guarda feminina: pele morena clara
+💂🏽‍♀️	guarda feminina: pele morena
+💂🏽‍♀	guarda feminina: pele morena
+💂🏾‍♀️	guarda feminina: pele morena escura
+💂🏾‍♀	guarda feminina: pele morena escura
+💂🏿‍♀️	guarda feminina: pele escura
+💂🏿‍♀	guarda feminina: pele escura
+👷	trabalhador da construção
+👷🏻	trabalhador da construção civil: pele clara
+👷🏼	trabalhador da construção civil: pele morena clara
+👷🏽	trabalhador da construção civil: pele morena
+👷🏾	trabalhador da construção civil: pele morena escura
+👷🏿	trabalhador da construção civil: pele escura
+👷‍♂️	homem, trabalhador da construção civil
+👷‍♂	homem, trabalhador da construção civil
+👷🏻‍♂️	homem trabalhador da construção civil: pele clara
+👷🏻‍♂	homem trabalhador da construção civil: pele clara
+👷🏼‍♂️	homem trabalhador da construção civil: pele morena clara
+👷🏼‍♂	homem trabalhador da construção civil: pele morena clara
+👷🏽‍♂️	homem trabalhador da construção civil: pele morena
+👷🏽‍♂	homem trabalhador da construção civil: pele morena
+👷🏾‍♂️	homem trabalhador da construção civil: pele morena escura
+👷🏾‍♂	homem trabalhador da construção civil: pele morena escura
+👷🏿‍♂️	homem trabalhador da construção civil: pele escura
+👷🏿‍♂	homem trabalhador da construção civil: pele escura
+👷‍♀️	mulher trabalhadora da construção civil
+👷‍♀	mulher trabalhadora da construção civil
+👷🏻‍♀️	mulher trabalhadora da construção civil: pele clara
+👷🏻‍♀	mulher trabalhadora da construção civil: pele clara
+👷🏼‍♀️	mulher trabalhadora da construção civil: pele morena clara
+👷🏼‍♀	mulher trabalhadora da construção civil: pele morena clara
+👷🏽‍♀️	mulher trabalhadora da construção civil: pele morena
+👷🏽‍♀	mulher trabalhadora da construção civil: pele morena
+👷🏾‍♀️	mulher trabalhadora da construção civil: pele morena escura
+👷🏾‍♀	mulher trabalhadora da construção civil: pele morena escura
+👷🏿‍♀️	mulher trabalhadora da construção civil: pele escura
+👷🏿‍♀	mulher trabalhadora da construção civil: pele escura
+🤴	Principe
+🤴🏻	príncipe: pele clara
+🤴🏼	Príncipe: pele morena clara
+🤴🏽	príncipe: pele morena
+🤴🏾	Príncipe: pele morena escura
+🤴🏿	príncipe: pele morena
+👸	princesa
+👸🏻	princesa: pele clara
+👸🏼	princesa: pele morena clara
+👸🏽	Princesa: pele morena
+👸🏾	Princesa: pele morena escura
+👸🏿	princesa: pele morena
+👳	pessoa usando turbante
+👳🏻	pessoa usando turbante: pele clara
+👳🏼	pessoa usando turbante: pele morena clara
+👳🏽	pessoa usando turbante: pele morena
+👳🏾	pessoa usando turbante: pele morena escura
+👳🏿	pessoa usando turbante: pele escura
+👳‍♂️	homem usando turbante
+👳‍♂	homem usando turbante
+👳🏻‍♂️	homem usando turbante: pele clara
+👳🏻‍♂	homem usando turbante: pele clara
+👳🏼‍♂️	homem usando turbante: pele morena clara
+👳🏼‍♂	homem usando turbante: pele morena clara
+👳🏽‍♂️	homem usando turbante: pele morena
+👳🏽‍♂	homem usando turbante: pele morena
+👳🏾‍♂️	homem usando turbante: pele morena escura
+👳🏾‍♂	homem usando turbante: pele morena escura
+👳🏿‍♂️	homem usando turbante: pele escura
+👳🏿‍♂	homem usando turbante: pele escura
+👳‍♀️	mulher usando turbante
+👳‍♀	mulher usando turbante
+👳🏻‍♀️	mulher usando turbante: pele clara
+👳🏻‍♀	mulher usando turbante: pele clara
+👳🏼‍♀️	mulher usando turbante: pele morena clara
+👳🏼‍♀	mulher usando turbante: pele morena clara
+👳🏽‍♀️	mulher usando turbante: pele morena
+👳🏽‍♀	mulher usando turbante: pele morena
+👳🏾‍♀️	mulher usando turbante: pele morena escura
+👳🏾‍♀	mulher usando turbante: pele morena escura
+👳🏿‍♀️	mulher usando turbante: pele escura
+👳🏿‍♀	mulher usando turbante: pele escura
+👲	homem com boné chinês
+👲🏻	homem com boné chinês: pele clara
+👲🏼	homem com boné chinês: pele morena clara
+👲🏽	homem com boné chinês: pele morena
+👲🏾	homem com boné chinês: pele morena escura
+👲🏿	homem com boné chinês: pele escura
+🧕	mulher com lenço na cabeça
+🧕🏻	mulher com lenço na cabeça: pele clara
+🧕🏼	mulher com lenço na cabeça: pele morena clara
+🧕🏽	mulher com lenço na cabeça: pele morena
+🧕🏾	mulher com lenço na cabeça: pele morena escura
+🧕🏿	mulher com lenço na cabeça: pele escura
+🧔	pessoa barbuda
+🧔🏻	pessoa barbuda: pele clara
+🧔🏼	pessoa barbuda: pele morena clara
+🧔🏽	pessoa barbuda: pele morena
+🧔🏾	pessoa barbuda: pele morena escura
+🧔🏿	pessoa barbuda: pele escura
+👱	pessoa de cabelos loiros
+👱🏻	pessoa loira: pele clara
+👱🏼	pessoa loira: pele morena clara
+👱🏽	pessoa loira: pele morena
+👱🏾	pessoa loira: pele morena escura
+👱🏿	pessoa loira: pele morena
+👱‍♂️	homem loiro
+👱‍♂	homem loiro
+👱🏻‍♂️	homem loiro: pele clara
+👱🏻‍♂	homem loiro: pele clara
+👱🏼‍♂️	homem loiro: pele morena clara
+👱🏼‍♂	homem loiro: pele morena clara
+👱🏽‍♂️	homem loiro: pele morena
+👱🏽‍♂	homem loiro: pele morena
+👱🏾‍♂️	homem loiro: pele morena escura
+👱🏾‍♂	homem loiro: pele morena escura
+👱🏿‍♂️	homem loiro: pele morena
+👱🏿‍♂	homem loiro: pele morena
+👱‍♀️	mulher loira
+👱‍♀	mulher loira
+👱🏻‍♀️	mulher loira: pele clara
+👱🏻‍♀	mulher loira: pele clara
+👱🏼‍♀️	mulher loira: pele morena clara
+👱🏼‍♀	mulher loira: pele morena clara
+👱🏽‍♀️	mulher loira: pele morena
+👱🏽‍♀	mulher loira: pele morena
+👱🏾‍♀️	mulher loira: pele morena escura
+👱🏾‍♀	mulher loira: pele morena escura
+👱🏿‍♀️	mulher loira: pele escura
+👱🏿‍♀	mulher loira: pele escura
+👨‍🦰	homem, ruivo
+👨🏻‍🦰	homem, ruivo: pele clara
+👨🏼‍🦰	homem, ruivo: pele morena clara
+👨🏽‍🦰	homem, ruivo: pele morena
+👨🏾‍🦰	homem, ruivo: pele morena escura
+👨🏿‍🦰	homem, ruivo: pele escura
+👩‍🦰	mulher, ruiva
+👩🏻‍🦰	mulher, ruiva: pele clara
+👩🏼‍🦰	mulher, ruiva: pele morena clara
+👩🏽‍🦰	mulher, ruiva: pele morena
+👩🏾‍🦰	mulher, ruiva: pele morena escura
+👩🏿‍🦰	mulher, ruiva: pele escura
+👨‍🦱	homem, cabelos cacheados
+👨🏻‍🦱	homem, cabelos cacheados: pele clara
+👨🏼‍🦱	homem, cabelos cacheados: pele morena clara
+👨🏽‍🦱	homem, cabelos cacheados: pele morena
+👨🏾‍🦱	homem, cabelos cacheados: pele morena escura
+👨🏿‍🦱	homem, cabelos cacheados: pele morena
+👩‍🦱	mulher, cabelos cacheados
+👩🏻‍🦱	mulher, cabelos cacheados: pele clara
+👩🏼‍🦱	mulher, cabelos cacheados: pele morena clara
+👩🏽‍🦱	mulher, cabelos cacheados: pele morena
+👩🏾‍🦱	mulher, cabelos cacheados: pele morena escura
+👩🏿‍🦱	mulher, cabelos cacheados: pele morena
+👨‍🦲	cara, careca
+👨🏻‍🦲	homem, careca: pele clara
+👨🏼‍🦲	homem, careca: pele morena clara
+👨🏽‍🦲	homem, careca: pele morena
+👨🏾‍🦲	homem, careca: pele morena escura
+👨🏿‍🦲	homem, careca: pele escura
+👩‍🦲	mulher, careca
+👩🏻‍🦲	mulher, careca: pele clara
+👩🏼‍🦲	mulher, careca: pele morena clara
+👩🏽‍🦲	mulher, careca: pele morena
+👩🏾‍🦲	mulher, careca: pele morena escura
+👩🏿‍🦲	mulher, careca: pele escura
+👨‍🦳	homem, cabelos brancos
+👨🏻‍🦳	homem, cabelos brancos: pele clara
+👨🏼‍🦳	homem, cabelo branco: pele morena clara
+👨🏽‍🦳	homem, cabelos brancos: pele morena
+👨🏾‍🦳	homem, cabelos brancos: pele morena escura
+👨🏿‍🦳	homem, cabelos brancos: pele escura
+👩‍🦳	mulher, cabelos brancos
+👩🏻‍🦳	mulher, cabelos brancos: pele clara
+👩🏼‍🦳	mulher, cabelos brancos: pele morena clara
+👩🏽‍🦳	mulher, cabelos brancos: pele morena
+👩🏾‍🦳	mulher, cabelos brancos: pele morena escura
+👩🏿‍🦳	mulher, cabelos brancos: pele escura
+🤵	homem de smoking
+🤵🏻	homem de smoking: pele clara
+🤵🏼	homem de smoking: pele morena clara
+🤵🏽	homem de smoking: pele morena
+🤵🏾	homem de smoking: pele morena escura
+🤵🏿	homem de smoking: pele escura
+👰	noiva com véu
+👰🏻	noiva com véu: pele clara
+👰🏼	noiva com véu: pele morena clara
+👰🏽	noiva com véu: pele morena
+👰🏾	noiva com véu: pele morena escura
+👰🏿	noiva com véu: pele morena
+🤰	mulher grávida
+🤰🏻	mulher grávida: pele clara
+🤰🏼	mulher grávida: pele morena clara
+🤰🏽	mulher grávida: pele morena
+🤰🏾	mulher grávida: pele morena escura
+🤰🏿	mulher grávida: pele escura
+🤱	amamentação
+🤱🏻	amamentação: pele clara
+🤱🏼	amamentação: pele morena clara
+🤱🏽	amamentação: pele morena
+🤱🏾	amamentação: pele morena escura
+🤱🏿	amamentação: pele escura
+👼	bebê anjo
+👼🏻	bebê anjo: pele clara
+👼🏼	anjo bebê: pele morena clara
+👼🏽	anjo bebê: pele morena
+👼🏾	bebê anjo: pele morena escura
+👼🏿	bebê anjo: pele morena
+🎅	Papai Noel
+🎅🏻	Papai Noel: pele clara
+🎅🏼	Papai Noel: pele morena clara
+🎅🏽	Papai Noel: pele morena
+🎅🏾	Papai Noel: pele morena escura
+🎅🏿	Papai Noel: pele escura
+🤶	Sra. Noel
+🤶🏻	Senhora Noel: pele clara
+🤶🏼	Senhora Noel: pele morena clara
+🤶🏽	Senhora Noel: pele morena
+🤶🏾	Senhora Noel: pele morena escura
+🤶🏿	Senhora Noel: pele escura
+🦸	Super heroi
+🦸🏻	super-herói: pele clara
+🦸🏼	super-herói: pele morena clara
+🦸🏽	super-herói: pele morena
+🦸🏾	super-herói: pele morena escura
+🦸🏿	super-herói: pele escura
+🦸‍♀️	super-heroína mulher
+🦸‍♀	super-heroína mulher
+🦸🏻‍♀️	super-heroína: pele clara
+🦸🏻‍♀	super-heroína: pele clara
+🦸🏼‍♀️	super-herói mulher: pele morena clara
+🦸🏼‍♀	super-herói mulher: pele morena clara
+🦸🏽‍♀️	super-herói mulher: pele morena
+🦸🏽‍♀	super-herói mulher: pele morena
+🦸🏾‍♀️	super-herói mulher: pele morena escura
+🦸🏾‍♀	super-herói mulher: pele morena escura
+🦸🏿‍♀️	super-herói mulher: pele escura
+🦸🏿‍♀	super-herói mulher: pele escura
+🦸‍♂️	homem super-herói
+🦸‍♂	homem super-herói
+🦸🏻‍♂️	homem super-herói: pele clara
+🦸🏻‍♂	homem super-herói: pele clara
+🦸🏼‍♂️	homem super-herói: pele morena clara
+🦸🏼‍♂	homem super-herói: pele morena clara
+🦸🏽‍♂️	homem super-herói: pele morena
+🦸🏽‍♂	homem super-herói: pele morena
+🦸🏾‍♂️	homem super-herói: pele morena escura
+🦸🏾‍♂	homem super-herói: pele morena escura
+🦸🏿‍♂️	homem super-herói: pele escura
+🦸🏿‍♂	homem super-herói: pele escura
+🦹	Super-vilão
+🦹🏻	supervilão: pele clara
+🦹🏼	supervilão: pele morena clara
+🦹🏽	supervilão: pele morena
+🦹🏾	supervilão: pele morena escura
+🦹🏿	supervilão: pele escura
+🦹‍♀️	mulher supervilã
+🦹‍♀	mulher supervilã
+🦹🏻‍♀️	mulher supervilã: pele clara
+🦹🏻‍♀	mulher supervilã: pele clara
+🦹🏼‍♀️	supervilã feminina: pele morena clara
+🦹🏼‍♀	supervilã feminina: pele morena clara
+🦹🏽‍♀️	supervilã feminina: pele morena
+🦹🏽‍♀	supervilã feminina: pele morena
+🦹🏾‍♀️	supervilã feminina: pele morena escura
+🦹🏾‍♀	supervilã feminina: pele morena escura
+🦹🏿‍♀️	mulher supervilã: pele escura
+🦹🏿‍♀	mulher supervilã: pele escura
+🦹‍♂️	homem supervilão
+🦹‍♂	homem supervilão
+🦹🏻‍♂️	homem supervilão: pele clara
+🦹🏻‍♂	homem supervilão: pele clara
+🦹🏼‍♂️	homem supervilão: pele morena clara
+🦹🏼‍♂	homem supervilão: pele morena clara
+🦹🏽‍♂️	homem supervilão: pele morena
+🦹🏽‍♂	homem supervilão: pele morena
+🦹🏾‍♂️	homem supervilão: pele morena escura
+🦹🏾‍♂	homem supervilão: pele morena escura
+🦹🏿‍♂️	homem supervilão: pele escura
+🦹🏿‍♂	homem supervilão: pele escura
+🧙	mago
+🧙🏻	mago: pele clara
+🧙🏼	mago: pele morena clara
+🧙🏽	mago: pele morena
+🧙🏾	mago: pele morena escura
+🧙🏿	mago: pele escura
+🧙‍♀️	mulher maga
+🧙‍♀	mulher maga
+🧙🏻‍♀️	mulher maga: pele clara
+🧙🏻‍♀	mulher maga: pele clara
+🧙🏼‍♀️	mulher maga: pele morena clara
+🧙🏼‍♀	mulher maga: pele morena clara
+🧙🏽‍♀️	mulher maga: pele morena
+🧙🏽‍♀	mulher maga: pele morena
+🧙🏾‍♀️	mulher maga: pele morena escura
+🧙🏾‍♀	mulher maga: pele morena escura
+🧙🏿‍♀️	mulher maga: pele morena
+🧙🏿‍♀	mulher maga: pele morena
+🧙‍♂️	homem mago
+🧙‍♂	homem mago
+🧙🏻‍♂️	homem mago: pele clara
+🧙🏻‍♂	homem mago: pele clara
+🧙🏼‍♂️	homem mago: pele morena clara
+🧙🏼‍♂	homem mago: pele morena clara
+🧙🏽‍♂️	homem mago: pele morena
+🧙🏽‍♂	homem mago: pele morena
+🧙🏾‍♂️	homem mago: pele morena escura
+🧙🏾‍♂	homem mago: pele morena escura
+🧙🏿‍♂️	homem mago: pele morena
+🧙🏿‍♂	homem mago: pele morena
+🧚	fada
+🧚🏻	fada: pele clara
+🧚🏼	fada: pele morena clara
+🧚🏽	fada: pele morena
+🧚🏾	fada: pele morena escura
+🧚🏿	fada: pele morena
+🧚‍♀️	mulher fada
+🧚‍♀	mulher fada
+🧚🏻‍♀️	mulher fada: pele clara
+🧚🏻‍♀	mulher fada: pele clara
+🧚🏼‍♀️	mulher fada: pele morena clara
+🧚🏼‍♀	mulher fada: pele morena clara
+🧚🏽‍♀️	mulher fada: pele morena
+🧚🏽‍♀	mulher fada: pele morena
+🧚🏾‍♀️	mulher fada: pele morena escura
+🧚🏾‍♀	mulher fada: pele morena escura
+🧚🏿‍♀️	mulher fada: pele escura
+🧚🏿‍♀	mulher fada: pele escura
+🧚‍♂️	homem fada
+🧚‍♂	homem fada
+🧚🏻‍♂️	homem fada: pele clara
+🧚🏻‍♂	homem fada: pele clara
+🧚🏼‍♂️	homem fada: pele morena clara
+🧚🏼‍♂	homem fada: pele morena clara
+🧚🏽‍♂️	homem fada: pele morena
+🧚🏽‍♂	homem fada: pele morena
+🧚🏾‍♂️	homem fada: pele morena escura
+🧚🏾‍♂	homem fada: pele morena escura
+🧚🏿‍♂️	homem fada: pele morena
+🧚🏿‍♂	homem fada: pele morena
+🧛	vampiro
+🧛🏻	vampiro: pele clara
+🧛🏼	vampiro: pele morena clara
+🧛🏽	vampiro: pele morena
+🧛🏾	vampiro: pele morena escura
+🧛🏿	vampiro: pele escura
+🧛‍♀️	mulher vampira
+🧛‍♀	mulher vampira
+🧛🏻‍♀️	mulher vampira: pele clara
+🧛🏻‍♀	mulher vampira: pele clara
+🧛🏼‍♀️	mulher vampira: pele morena clara
+🧛🏼‍♀	mulher vampira: pele morena clara
+🧛🏽‍♀️	mulher vampira: pele morena
+🧛🏽‍♀	mulher vampira: pele morena
+🧛🏾‍♀️	mulher vampira: pele morena escura
+🧛🏾‍♀	mulher vampira: pele morena escura
+🧛🏿‍♀️	mulher vampira: pele morena
+🧛🏿‍♀	mulher vampira: pele morena
+🧛‍♂️	homem vampiro
+🧛‍♂	homem vampiro
+🧛🏻‍♂️	homem vampiro: pele clara
+🧛🏻‍♂	homem vampiro: pele clara
+🧛🏼‍♂️	homem vampiro: pele morena clara
+🧛🏼‍♂	homem vampiro: pele morena clara
+🧛🏽‍♂️	homem vampiro: pele morena
+🧛🏽‍♂	homem vampiro: pele morena
+🧛🏾‍♂️	homem vampiro: pele morena escura
+🧛🏾‍♂	homem vampiro: pele morena escura
+🧛🏿‍♂️	homem vampiro: pele escura
+🧛🏿‍♂	homem vampiro: pele escura
+🧜	sereia
+🧜🏻	sereia: pele clara
+🧜🏼	sereia: pele morena clara
+🧜🏽	sereia: pele morena
+🧜🏾	sereia: pele morena escura
+🧜🏿	sereia: pele escura
+🧜‍♀️	sereia
+🧜‍♀	sereia
+🧜🏻‍♀️	sereia: pele clara
+🧜🏻‍♀	sereia: pele clara
+🧜🏼‍♀️	sereia: pele morena clara
+🧜🏼‍♀	sereia: pele morena clara
+🧜🏽‍♀️	sereia: pele morena
+🧜🏽‍♀	sereia: pele morena
+🧜🏾‍♀️	sereia: pele morena escura
+🧜🏾‍♀	sereia: pele morena escura
+🧜🏿‍♀️	sereia: pele escura
+🧜🏿‍♀	sereia: pele escura
+🧜‍♂️	tritão
+🧜‍♂	tritão
+🧜🏻‍♂️	tritão: pele clara
+🧜🏻‍♂	tritão: pele clara
+🧜🏼‍♂️	tritão: pele morena clara
+🧜🏼‍♂	tritão: pele morena clara
+🧜🏽‍♂️	tritão: pele morena
+🧜🏽‍♂	tritão: pele morena
+🧜🏾‍♂️	tritão: pele morena escura
+🧜🏾‍♂	tritão: pele morena escura
+🧜🏿‍♂️	tritão: pele escura
+🧜🏿‍♂	tritão: pele escura
+🧝	duende
+🧝🏻	elfo: pele clara
+🧝🏼	elfo: pele morena clara
+🧝🏽	elfo: pele morena
+🧝🏾	elfo: pele morena escura
+🧝🏿	elfo: pele escura
+🧝‍♀️	mulher elfa
+🧝‍♀	mulher elfa
+🧝🏻‍♀️	elfa: pele clara
+🧝🏻‍♀	elfa: pele clara
+🧝🏼‍♀️	elfa: pele morena clara
+🧝🏼‍♀	elfa: pele morena clara
+🧝🏽‍♀️	elfa: pele morena
+🧝🏽‍♀	elfa: pele morena
+🧝🏾‍♀️	elfa: pele morena escura
+🧝🏾‍♀	elfa: pele morena escura
+🧝🏿‍♀️	elfa: pele escura
+🧝🏿‍♀	elfa: pele escura
+🧝‍♂️	homem elfo
+🧝‍♂	homem elfo
+🧝🏻‍♂️	homem elfo: pele clara
+🧝🏻‍♂	homem elfo: pele clara
+🧝🏼‍♂️	homem elfo: pele morena clara
+🧝🏼‍♂	homem elfo: pele morena clara
+🧝🏽‍♂️	homem elfo: pele morena
+🧝🏽‍♂	homem elfo: pele morena
+🧝🏾‍♂️	homem elfo: pele morena escura
+🧝🏾‍♂	homem elfo: pele morena escura
+🧝🏿‍♂️	homem elfo: pele escura
+🧝🏿‍♂	homem elfo: pele escura
+🧞	gênio
+🧞‍♀️	mulher gênio
+🧞‍♀	mulher gênio
+🧞‍♂️	homem gênio
+🧞‍♂	homem gênio
+🧟	zumbi
+🧟‍♀️	mulher zumbi
+🧟‍♀	mulher zumbi
+🧟‍♂️	homem zumbi
+🧟‍♂	homem zumbi
+🙍	pessoa franzindo a testa
+🙍🏻	pessoa franzindo a testa: pele clara
+🙍🏼	pessoa franzindo a testa: pele morena clara
+🙍🏽	pessoa franzindo a testa: pele morena
+🙍🏾	pessoa franzindo a testa: pele morena escura
+🙍🏿	pessoa franzindo a testa: pele escura
+🙍‍♂️	homem franzindo a testa
+🙍‍♂	homem franzindo a testa
+🙍🏻‍♂️	homem franzindo a testa: pele clara
+🙍🏻‍♂	homem franzindo a testa: pele clara
+🙍🏼‍♂️	homem franzindo a testa: pele morena clara
+🙍🏼‍♂	homem franzindo a testa: pele morena clara
+🙍🏽‍♂️	homem franzindo a testa: pele morena
+🙍🏽‍♂	homem franzindo a testa: pele morena
+🙍🏾‍♂️	homem franzindo a testa: pele morena escura
+🙍🏾‍♂	homem franzindo a testa: pele morena escura
+🙍🏿‍♂️	homem franzindo a testa: pele escura
+🙍🏿‍♂	homem franzindo a testa: pele escura
+🙍‍♀️	mulher franzindo a testa
+🙍‍♀	mulher franzindo a testa
+🙍🏻‍♀️	mulher franzindo a testa: pele clara
+🙍🏻‍♀	mulher franzindo a testa: pele clara
+🙍🏼‍♀️	mulher franzindo a testa: pele morena clara
+🙍🏼‍♀	mulher franzindo a testa: pele morena clara
+🙍🏽‍♀️	mulher franzindo a testa: pele morena
+🙍🏽‍♀	mulher franzindo a testa: pele morena
+🙍🏾‍♀️	mulher franzindo a testa: pele morena escura
+🙍🏾‍♀	mulher franzindo a testa: pele morena escura
+🙍🏿‍♀️	mulher franzindo a testa: pele escura
+🙍🏿‍♀	mulher franzindo a testa: pele escura
+🙎	pessoa fazendo beicinho
+🙎🏻	pessoa fazendo beicinho: pele clara
+🙎🏼	pessoa fazendo beicinho: pele morena clara
+🙎🏽	pessoa fazendo beicinho: pele morena
+🙎🏾	pessoa fazendo beicinho: pele morena escura
+🙎🏿	pessoa fazendo beicinho: pele escura
+🙎‍♂️	homem fazendo beicinho
+🙎‍♂	homem fazendo beicinho
+🙎🏻‍♂️	homem fazendo beicinho: pele clara
+🙎🏻‍♂	homem fazendo beicinho: pele clara
+🙎🏼‍♂️	homem fazendo beicinho: pele morena clara
+🙎🏼‍♂	homem fazendo beicinho: pele morena clara
+🙎🏽‍♂️	homem fazendo beicinho: pele morena
+🙎🏽‍♂	homem fazendo beicinho: pele morena
+🙎🏾‍♂️	homem fazendo beicinho: pele morena escura
+🙎🏾‍♂	homem fazendo beicinho: pele morena escura
+🙎🏿‍♂️	homem fazendo beicinho: pele escura
+🙎🏿‍♂	homem fazendo beicinho: pele escura
+🙎‍♀️	mulher fazendo beicinho
+🙎‍♀	mulher fazendo beicinho
+🙎🏻‍♀️	mulher fazendo beicinho: pele clara
+🙎🏻‍♀	mulher fazendo beicinho: pele clara
+🙎🏼‍♀️	mulher fazendo beicinho: pele morena clara
+🙎🏼‍♀	mulher fazendo beicinho: pele morena clara
+🙎🏽‍♀️	mulher fazendo beicinho: pele morena
+🙎🏽‍♀	mulher fazendo beicinho: pele morena
+🙎🏾‍♀️	mulher fazendo beicinho: pele morena escura
+🙎🏾‍♀	mulher fazendo beicinho: pele morena escura
+🙎🏿‍♀️	mulher fazendo beicinho: pele escura
+🙎🏿‍♀	mulher fazendo beicinho: pele escura
+🙅	pessoa gesticulando NÃO
+🙅🏻	pessoa gesticulando NÃO: pele clara
+🙅🏼	pessoa gesticulando NÃO: pele morena clara
+🙅🏽	pessoa gesticulando NÃO: pele morena
+🙅🏾	pessoa gesticulando NÃO: pele morena escura
+🙅🏿	pessoa gesticulando NÃO: pele escura
+🙅‍♂️	homem gesticulando NÃO
+🙅‍♂	homem gesticulando NÃO
+🙅🏻‍♂️	homem gesticulando NÃO: pele clara
+🙅🏻‍♂	homem gesticulando NÃO: pele clara
+🙅🏼‍♂️	homem gesticulando NÃO: pele morena clara
+🙅🏼‍♂	homem gesticulando NÃO: pele morena clara
+🙅🏽‍♂️	homem gesticulando NÃO: pele morena
+🙅🏽‍♂	homem gesticulando NÃO: pele morena
+🙅🏾‍♂️	homem gesticulando NÃO: pele morena escura
+🙅🏾‍♂	homem gesticulando NÃO: pele morena escura
+🙅🏿‍♂️	homem gesticulando NÃO: pele escura
+🙅🏿‍♂	homem gesticulando NÃO: pele escura
+🙅‍♀️	mulher gesticulando NÃO
+🙅‍♀	mulher gesticulando NÃO
+🙅🏻‍♀️	mulher gesticulando NÃO: pele clara
+🙅🏻‍♀	mulher gesticulando NÃO: pele clara
+🙅🏼‍♀️	mulher gesticulando NÃO: pele morena clara
+🙅🏼‍♀	mulher gesticulando NÃO: pele morena clara
+🙅🏽‍♀️	mulher gesticulando NÃO: pele morena
+🙅🏽‍♀	mulher gesticulando NÃO: pele morena
+🙅🏾‍♀️	mulher gesticulando NÃO: pele morena escura
+🙅🏾‍♀	mulher gesticulando NÃO: pele morena escura
+🙅🏿‍♀️	mulher gesticulando NÃO: pele escura
+🙅🏿‍♀	mulher gesticulando NÃO: pele escura
+🙆	pessoa gesticulando OK
+🙆🏻	pessoa gesticulando OK: pele clara
+🙆🏼	pessoa gesticulando OK: pele morena clara
+🙆🏽	pessoa gesticulando OK: pele morena
+🙆🏾	pessoa gesticulando OK: pele morena escura
+🙆🏿	pessoa gesticulando OK: pele escura
+🙆‍♂️	homem gesticulando OK
+🙆‍♂	homem gesticulando OK
+🙆🏻‍♂️	homem gesticulando OK: pele clara
+🙆🏻‍♂	homem gesticulando OK: pele clara
+🙆🏼‍♂️	homem gesticulando OK: pele morena clara
+🙆🏼‍♂	homem gesticulando OK: pele morena clara
+🙆🏽‍♂️	homem gesticulando OK: pele morena
+🙆🏽‍♂	homem gesticulando OK: pele morena
+🙆🏾‍♂️	homem gesticulando OK: pele morena escura
+🙆🏾‍♂	homem gesticulando OK: pele morena escura
+🙆🏿‍♂️	homem gesticulando OK: pele escura
+🙆🏿‍♂	homem gesticulando OK: pele escura
+🙆‍♀️	mulher gesticulando OK
+🙆‍♀	mulher gesticulando OK
+🙆🏻‍♀️	mulher gesticulando OK: pele clara
+🙆🏻‍♀	mulher gesticulando OK: pele clara
+🙆🏼‍♀️	mulher gesticulando OK: pele morena clara
+🙆🏼‍♀	mulher gesticulando OK: pele morena clara
+🙆🏽‍♀️	mulher gesticulando OK: pele morena
+🙆🏽‍♀	mulher gesticulando OK: pele morena
+🙆🏾‍♀️	mulher gesticulando OK: pele morena escura
+🙆🏾‍♀	mulher gesticulando OK: pele morena escura
+🙆🏿‍♀️	mulher gesticulando OK: pele escura
+🙆🏿‍♀	mulher gesticulando OK: pele escura
+💁	pessoa inclinando a mão
+💁🏻	pessoa inclinando a mão: pele clara
+💁🏼	pessoa inclinando a mão: pele morena clara
+💁🏽	pessoa inclinando a mão: pele morena
+💁🏾	pessoa inclinando a mão: pele morena escura
+💁🏿	pessoa inclinando a mão: pele escura
+💁‍♂️	homem inclinando a mão
+💁‍♂	homem inclinando a mão
+💁🏻‍♂️	homem inclinando a mão: pele clara
+💁🏻‍♂	homem inclinando a mão: pele clara
+💁🏼‍♂️	homem inclinando a mão: pele morena clara
+💁🏼‍♂	homem inclinando a mão: pele morena clara
+💁🏽‍♂️	homem inclinando a mão: pele morena
+💁🏽‍♂	homem inclinando a mão: pele morena
+💁🏾‍♂️	homem inclinando a mão: pele morena escura
+💁🏾‍♂	homem inclinando a mão: pele morena escura
+💁🏿‍♂️	homem inclinando a mão: pele escura
+💁🏿‍♂	homem inclinando a mão: pele escura
+💁‍♀️	mulher inclinando a mão
+💁‍♀	mulher inclinando a mão
+💁🏻‍♀️	mulher inclinando a mão: pele clara
+💁🏻‍♀	mulher inclinando a mão: pele clara
+💁🏼‍♀️	mulher inclinando a mão: pele morena clara
+💁🏼‍♀	mulher inclinando a mão: pele morena clara
+💁🏽‍♀️	mulher inclinando a mão: pele morena
+💁🏽‍♀	mulher inclinando a mão: pele morena
+💁🏾‍♀️	mulher inclinando a mão: pele morena escura
+💁🏾‍♀	mulher inclinando a mão: pele morena escura
+💁🏿‍♀️	mulher inclinando a mão: pele escura
+💁🏿‍♀	mulher inclinando a mão: pele escura
+🙋	pessoa levantando a mão
+🙋🏻	pessoa levantando a mão: pele clara
+🙋🏼	pessoa levantando a mão: pele morena clara
+🙋🏽	pessoa levantando a mão: pele morena
+🙋🏾	pessoa levantando a mão: pele morena escura
+🙋🏿	pessoa levantando a mão: pele escura
+🙋‍♂️	homem levantando a mão
+🙋‍♂	homem levantando a mão
+🙋🏻‍♂️	homem levantando a mão: pele clara
+🙋🏻‍♂	homem levantando a mão: pele clara
+🙋🏼‍♂️	homem levantando a mão: pele morena clara
+🙋🏼‍♂	homem levantando a mão: pele morena clara
+🙋🏽‍♂️	homem levantando a mão: pele morena
+🙋🏽‍♂	homem levantando a mão: pele morena
+🙋🏾‍♂️	homem levantando a mão: pele morena escura
+🙋🏾‍♂	homem levantando a mão: pele morena escura
+🙋🏿‍♂️	homem levantando a mão: pele escura
+🙋🏿‍♂	homem levantando a mão: pele escura
+🙋‍♀️	mulher levantando a mão
+🙋‍♀	mulher levantando a mão
+🙋🏻‍♀️	mulher levantando a mão: pele clara
+🙋🏻‍♀	mulher levantando a mão: pele clara
+🙋🏼‍♀️	mulher levantando a mão: pele morena clara
+🙋🏼‍♀	mulher levantando a mão: pele morena clara
+🙋🏽‍♀️	mulher levantando a mão: pele morena
+🙋🏽‍♀	mulher levantando a mão: pele morena
+🙋🏾‍♀️	mulher levantando a mão: pele morena escura
+🙋🏾‍♀	mulher levantando a mão: pele morena escura
+🙋🏿‍♀️	mulher levantando a mão: pele escura
+🙋🏿‍♀	mulher levantando a mão: pele escura
+🙇	pessoa se curvando
+🙇🏻	pessoa fazendo uma reverência: pele clara
+🙇🏼	pessoa fazendo uma reverência: pele morena clara
+🙇🏽	pessoa fazendo uma reverência: pele morena
+🙇🏾	pessoa fazendo uma reverência: pele morena escura
+🙇🏿	pessoa fazendo uma reverência: pele escura
+🙇‍♂️	homem se curvando
+🙇‍♂	homem se curvando
+🙇🏻‍♂️	homem se curvando: pele clara
+🙇🏻‍♂	homem se curvando: pele clara
+🙇🏼‍♂️	homem fazendo uma reverência: pele morena clara
+🙇🏼‍♂	homem fazendo uma reverência: pele morena clara
+🙇🏽‍♂️	homem se curvando: pele morena
+🙇🏽‍♂	homem se curvando: pele morena
+🙇🏾‍♂️	homem se curvando: pele morena escura
+🙇🏾‍♂	homem se curvando: pele morena escura
+🙇🏿‍♂️	homem se curvando: pele escura
+🙇🏿‍♂	homem se curvando: pele escura
+🙇‍♀️	mulher se curvando
+🙇‍♀	mulher se curvando
+🙇🏻‍♀️	mulher se curvando: pele clara
+🙇🏻‍♀	mulher se curvando: pele clara
+🙇🏼‍♀️	mulher se curvando: pele morena clara
+🙇🏼‍♀	mulher se curvando: pele morena clara
+🙇🏽‍♀️	mulher se curvando: pele morena
+🙇🏽‍♀	mulher se curvando: pele morena
+🙇🏾‍♀️	mulher se curvando: pele morena escura
+🙇🏾‍♀	mulher se curvando: pele morena escura
+🙇🏿‍♀️	mulher se curvando: pele morena
+🙇🏿‍♀	mulher se curvando: pele morena
+🤦	pessoa fazendo facepal
+🤦🏻	pessoa que faz facepalm: pele clara
+🤦🏼	pessoa com palma facial: pele morena clara
+🤦🏽	pessoa com palma facial: pele morena
+🤦🏾	pessoa que faz facepalm: pele morena escura
+🤦🏿	pessoa fazendo facepalm: pele morena
+🤦‍♂️	homem batendo palmas no rosto
+🤦‍♂	homem batendo palmas no rosto
+🤦🏻‍♂️	homem facepalming: pele clara
+🤦🏻‍♂	homem facepalming: pele clara
+🤦🏼‍♂️	homem facepalming: pele morena clara
+🤦🏼‍♂	homem facepalming: pele morena clara
+🤦🏽‍♂️	homem facepalming: pele morena
+🤦🏽‍♂	homem facepalming: pele morena
+🤦🏾‍♂️	homem facepalming: pele morena escura
+🤦🏾‍♂	homem facepalming: pele morena escura
+🤦🏿‍♂️	homem facepalming: pele escura
+🤦🏿‍♂	homem facepalming: pele escura
+🤦‍♀️	mulher fazendo facepal
+🤦‍♀	mulher fazendo facepal
+🤦🏻‍♀️	mulher fazendo facepalm: pele clara
+🤦🏻‍♀	mulher fazendo facepalm: pele clara
+🤦🏼‍♀️	mulher facepalming: pele morena clara
+🤦🏼‍♀	mulher facepalming: pele morena clara
+🤦🏽‍♀️	mulher fazendo facepalm: pele morena
+🤦🏽‍♀	mulher fazendo facepalm: pele morena
+🤦🏾‍♀️	mulher facepalming: pele morena escura
+🤦🏾‍♀	mulher facepalming: pele morena escura
+🤦🏿‍♀️	mulher fazendo facepalm: pele morena
+🤦🏿‍♀	mulher fazendo facepalm: pele morena
+🤷	pessoa encolhendo os ombros
+🤷🏻	pessoa dando de ombros: pele clara
+🤷🏼	pessoa encolhendo os ombros: pele morena clara
+🤷🏽	pessoa dando de ombros: pele morena
+🤷🏾	pessoa dando de ombros: pele morena escura
+🤷🏿	pessoa dando de ombros: pele escura
+🤷‍♂️	homem encolhendo os ombros
+🤷‍♂	homem encolhendo os ombros
+🤷🏻‍♂️	homem encolhendo os ombros: pele clara
+🤷🏻‍♂	homem encolhendo os ombros: pele clara
+🤷🏼‍♂️	homem encolhendo os ombros: pele morena clara
+🤷🏼‍♂	homem encolhendo os ombros: pele morena clara
+🤷🏽‍♂️	homem encolhendo os ombros: pele morena
+🤷🏽‍♂	homem encolhendo os ombros: pele morena
+🤷🏾‍♂️	homem encolhendo os ombros: pele morena escura
+🤷🏾‍♂	homem encolhendo os ombros: pele morena escura
+🤷🏿‍♂️	homem encolhendo os ombros: pele escura
+🤷🏿‍♂	homem encolhendo os ombros: pele escura
+🤷‍♀️	mulher encolhendo os ombros
+🤷‍♀	mulher encolhendo os ombros
+🤷🏻‍♀️	mulher encolhendo os ombros: pele clara
+🤷🏻‍♀	mulher encolhendo os ombros: pele clara
+🤷🏼‍♀️	mulher encolhendo os ombros: pele morena clara
+🤷🏼‍♀	mulher encolhendo os ombros: pele morena clara
+🤷🏽‍♀️	mulher dando de ombros: pele morena
+🤷🏽‍♀	mulher dando de ombros: pele morena
+🤷🏾‍♀️	mulher encolhendo os ombros: pele morena escura
+🤷🏾‍♀	mulher encolhendo os ombros: pele morena escura
+🤷🏿‍♀️	mulher encolhendo os ombros: pele escura
+🤷🏿‍♀	mulher encolhendo os ombros: pele escura
+💆	pessoa recebendo massagem
+💆🏻	pessoa recebendo massagem: pele clara
+💆🏼	pessoa recebendo massagem: pele morena clara
+💆🏽	pessoa recebendo massagem: pele morena
+💆🏾	pessoa recebendo massagem: pele morena escura
+💆🏿	pessoa recebendo massagem: pele escura
+💆‍♂️	homem recebendo massagem
+💆‍♂	homem recebendo massagem
+💆🏻‍♂️	homem recebendo massagem: pele clara
+💆🏻‍♂	homem recebendo massagem: pele clara
+💆🏼‍♂️	homem recebendo massagem: pele morena clara
+💆🏼‍♂	homem recebendo massagem: pele morena clara
+💆🏽‍♂️	homem recebendo massagem: pele morena
+💆🏽‍♂	homem recebendo massagem: pele morena
+💆🏾‍♂️	homem recebendo massagem: pele morena escura
+💆🏾‍♂	homem recebendo massagem: pele morena escura
+💆🏿‍♂️	homem recebendo massagem: pele escura
+💆🏿‍♂	homem recebendo massagem: pele escura
+💆‍♀️	mulher recebendo massagem
+💆‍♀	mulher recebendo massagem
+💆🏻‍♀️	mulher recebendo massagem: pele clara
+💆🏻‍♀	mulher recebendo massagem: pele clara
+💆🏼‍♀️	mulher recebendo massagem: pele morena clara
+💆🏼‍♀	mulher recebendo massagem: pele morena clara
+💆🏽‍♀️	mulher recebendo massagem: pele morena
+💆🏽‍♀	mulher recebendo massagem: pele morena
+💆🏾‍♀️	mulher recebendo massagem: pele morena escura
+💆🏾‍♀	mulher recebendo massagem: pele morena escura
+💆🏿‍♀️	mulher recebendo massagem: pele escura
+💆🏿‍♀	mulher recebendo massagem: pele escura
+💇	pessoa cortando o cabelo
+💇🏻	pessoa cortando o cabelo: pele clara
+💇🏼	pessoa cortando o cabelo: pele morena clara
+💇🏽	pessoa cortando o cabelo: pele morena
+💇🏾	pessoa cortando o cabelo: pele morena escura
+💇🏿	pessoa cortando o cabelo: pele morena
+💇‍♂️	homem cortando o cabelo
+💇‍♂	homem cortando o cabelo
+💇🏻‍♂️	homem cortando o cabelo: pele clara
+💇🏻‍♂	homem cortando o cabelo: pele clara
+💇🏼‍♂️	homem cortando o cabelo: pele morena clara
+💇🏼‍♂	homem cortando o cabelo: pele morena clara
+💇🏽‍♂️	homem cortando o cabelo: pele morena
+💇🏽‍♂	homem cortando o cabelo: pele morena
+💇🏾‍♂️	homem cortando o cabelo: pele morena escura
+💇🏾‍♂	homem cortando o cabelo: pele morena escura
+💇🏿‍♂️	homem cortando o cabelo: pele escura
+💇🏿‍♂	homem cortando o cabelo: pele escura
+💇‍♀️	mulher cortando o cabelo
+💇‍♀	mulher cortando o cabelo
+💇🏻‍♀️	mulher cortando o cabelo: pele clara
+💇🏻‍♀	mulher cortando o cabelo: pele clara
+💇🏼‍♀️	mulher cortando o cabelo: pele morena clara
+💇🏼‍♀	mulher cortando o cabelo: pele morena clara
+💇🏽‍♀️	mulher cortando o cabelo: pele morena
+💇🏽‍♀	mulher cortando o cabelo: pele morena
+💇🏾‍♀️	mulher cortando o cabelo: pele morena escura
+💇🏾‍♀	mulher cortando o cabelo: pele morena escura
+💇🏿‍♀️	mulher cortando o cabelo: pele escura
+💇🏿‍♀	mulher cortando o cabelo: pele escura
+🚶	pessoa andando
+🚶🏻	pessoa andando: pele clara
+🚶🏼	pessoa andando: pele morena clara
+🚶🏽	pessoa andando: pele morena
+🚶🏾	pessoa andando: pele morena escura
+🚶🏿	pessoa andando: pele escura
+🚶‍♂️	homem andando
+🚶‍♂	homem andando
+🚶🏻‍♂️	homem andando: pele clara
+🚶🏻‍♂	homem andando: pele clara
+🚶🏼‍♂️	homem andando: pele morena clara
+🚶🏼‍♂	homem andando: pele morena clara
+🚶🏽‍♂️	homem andando: pele morena
+🚶🏽‍♂	homem andando: pele morena
+🚶🏾‍♂️	homem andando: pele morena escura
+🚶🏾‍♂	homem andando: pele morena escura
+🚶🏿‍♂️	homem andando: pele escura
+🚶🏿‍♂	homem andando: pele escura
+🚶‍♀️	mulher andando
+🚶‍♀	mulher andando
+🚶🏻‍♀️	mulher andando: pele clara
+🚶🏻‍♀	mulher andando: pele clara
+🚶🏼‍♀️	mulher andando: pele morena clara
+🚶🏼‍♀	mulher andando: pele morena clara
+🚶🏽‍♀️	mulher andando: pele morena
+🚶🏽‍♀	mulher andando: pele morena
+🚶🏾‍♀️	mulher andando: pele morena escura
+🚶🏾‍♀	mulher andando: pele morena escura
+🚶🏿‍♀️	mulher andando: pele escura
+🚶🏿‍♀	mulher andando: pele escura
+🏃	pessoa correndo
+🏃🏻	pessoa correndo: pele clara
+🏃🏼	pessoa correndo: pele morena clara
+🏃🏽	pessoa correndo: pele morena
+🏃🏾	pessoa correndo: pele morena escura
+🏃🏿	pessoa correndo: pele escura
+🏃‍♂️	homem correndo
+🏃‍♂	homem correndo
+🏃🏻‍♂️	homem correndo: pele clara
+🏃🏻‍♂	homem correndo: pele clara
+🏃🏼‍♂️	homem correndo: pele morena clara
+🏃🏼‍♂	homem correndo: pele morena clara
+🏃🏽‍♂️	homem correndo: pele morena
+🏃🏽‍♂	homem correndo: pele morena
+🏃🏾‍♂️	homem correndo: pele morena escura
+🏃🏾‍♂	homem correndo: pele morena escura
+🏃🏿‍♂️	homem correndo: pele escura
+🏃🏿‍♂	homem correndo: pele escura
+🏃‍♀️	mulher correndo
+🏃‍♀	mulher correndo
+🏃🏻‍♀️	mulher correndo: pele clara
+🏃🏻‍♀	mulher correndo: pele clara
+🏃🏼‍♀️	mulher correndo: pele morena clara
+🏃🏼‍♀	mulher correndo: pele morena clara
+🏃🏽‍♀️	mulher correndo: pele morena
+🏃🏽‍♀	mulher correndo: pele morena
+🏃🏾‍♀️	mulher correndo: pele morena escura
+🏃🏾‍♀	mulher correndo: pele morena escura
+🏃🏿‍♀️	mulher correndo: pele escura
+🏃🏿‍♀	mulher correndo: pele escura
+💃	mulher dançando
+💃🏻	mulher dançando: pele clara
+💃🏼	mulher dançando: pele morena clara
+💃🏽	mulher dançando: pele morena
+💃🏾	mulher dançando: pele morena escura
+💃🏿	mulher dançando: pele morena
+🕺	homem dançando
+🕺🏻	homem dançando: pele clara
+🕺🏼	homem dançando: pele morena clara
+🕺🏽	homem dançando: pele morena
+🕺🏾	homem dançando: pele morena escura
+🕺🏿	homem dançando: pele escura
+👯	pessoas com orelhas de coelho
+👯‍♂️	homens com orelhas de coelho
+👯‍♂	homens com orelhas de coelho
+👯‍♀️	mulheres com orelhas de coelho
+👯‍♀	mulheres com orelhas de coelho
+🧖	pessoa em uma sala cheia de vapor
+🧖🏻	pessoa em uma sala úmida: pele clara
+🧖🏼	pessoa em uma sala úmida: pele morena clara
+🧖🏽	pessoa em uma sala úmida: pele morena
+🧖🏾	pessoa em uma sala úmida: pele morena escura
+🧖🏿	pessoa em uma sala úmida: pele escura
+🧖‍♀️	mulher na sala cheia de vapor
+🧖‍♀	mulher na sala cheia de vapor
+🧖🏻‍♀️	mulher em uma sala úmida: pele clara
+🧖🏻‍♀	mulher em uma sala úmida: pele clara
+🧖🏼‍♀️	mulher em uma sala úmida: pele morena clara
+🧖🏼‍♀	mulher em uma sala úmida: pele morena clara
+🧖🏽‍♀️	mulher em uma sala úmida: pele morena
+🧖🏽‍♀	mulher em uma sala úmida: pele morena
+🧖🏾‍♀️	mulher em uma sala úmida: pele morena escura
+🧖🏾‍♀	mulher em uma sala úmida: pele morena escura
+🧖🏿‍♀️	mulher em uma sala úmida: pele escura
+🧖🏿‍♀	mulher em uma sala úmida: pele escura
+🧖‍♂️	homem na sala cheia de vapor
+🧖‍♂	homem na sala cheia de vapor
+🧖🏻‍♂️	homem em uma sala úmida: pele clara
+🧖🏻‍♂	homem em uma sala úmida: pele clara
+🧖🏼‍♂️	homem em uma sala úmida: pele morena clara
+🧖🏼‍♂	homem em uma sala úmida: pele morena clara
+🧖🏽‍♂️	homem em uma sala úmida: pele morena
+🧖🏽‍♂	homem em uma sala úmida: pele morena
+🧖🏾‍♂️	homem em uma sala úmida: pele morena escura
+🧖🏾‍♂	homem em uma sala úmida: pele morena escura
+🧖🏿‍♂️	homem em uma sala úmida: pele escura
+🧖🏿‍♂	homem em uma sala úmida: pele escura
+🧗	pessoa escalando
+🧗🏻	pessoa escalando: pele clara
+🧗🏼	pessoa escalando: pele morena clara
+🧗🏽	pessoa escalando: pele morena
+🧗🏾	pessoa escalando: pele morena escura
+🧗🏿	pessoa escalando: pele morena
+🧗‍♀️	mulher escalando
+🧗‍♀	mulher escalando
+🧗🏻‍♀️	mulher escalando: pele clara
+🧗🏻‍♀	mulher escalando: pele clara
+🧗🏼‍♀️	mulher escalando: pele morena clara
+🧗🏼‍♀	mulher escalando: pele morena clara
+🧗🏽‍♀️	mulher escalando: pele morena
+🧗🏽‍♀	mulher escalando: pele morena
+🧗🏾‍♀️	mulher escalando: pele morena escura
+🧗🏾‍♀	mulher escalando: pele morena escura
+🧗🏿‍♀️	mulher escalando: pele morena
+🧗🏿‍♀	mulher escalando: pele morena
+🧗‍♂️	homem escalando
+🧗‍♂	homem escalando
+🧗🏻‍♂️	homem escalando: pele clara
+🧗🏻‍♂	homem escalando: pele clara
+🧗🏼‍♂️	homem escalando: pele morena clara
+🧗🏼‍♂	homem escalando: pele morena clara
+🧗🏽‍♂️	homem escalando: pele morena
+🧗🏽‍♂	homem escalando: pele morena
+🧗🏾‍♂️	homem escalando: pele morena escura
+🧗🏾‍♂	homem escalando: pele morena escura
+🧗🏿‍♂️	homem escalando: pele morena
+🧗🏿‍♂	homem escalando: pele morena
+🧘	pessoa em posição de lótus
+🧘🏻	pessoa em posição de lótus: pele clara
+🧘🏼	pessoa em posição de lótus: pele morena clara
+🧘🏽	pessoa em posição de lótus: pele morena
+🧘🏾	pessoa em posição de lótus: pele morena escura
+🧘🏿	pessoa em posição de lótus: pele escura
+🧘‍♀️	mulher em posição de lótus
+🧘‍♀	mulher em posição de lótus
+🧘🏻‍♀️	mulher em posição de lótus: pele clara
+🧘🏻‍♀	mulher em posição de lótus: pele clara
+🧘🏼‍♀️	mulher em posição de lótus: pele morena clara
+🧘🏼‍♀	mulher em posição de lótus: pele morena clara
+🧘🏽‍♀️	mulher em posição de lótus: pele morena
+🧘🏽‍♀	mulher em posição de lótus: pele morena
+🧘🏾‍♀️	mulher em posição de lótus: pele morena escura
+🧘🏾‍♀	mulher em posição de lótus: pele morena escura
+🧘🏿‍♀️	mulher em posição de lótus: pele escura
+🧘🏿‍♀	mulher em posição de lótus: pele escura
+🧘‍♂️	homem em posição de lótus
+🧘‍♂	homem em posição de lótus
+🧘🏻‍♂️	homem em posição de lótus: pele clara
+🧘🏻‍♂	homem em posição de lótus: pele clara
+🧘🏼‍♂️	homem em posição de lótus: pele morena clara
+🧘🏼‍♂	homem em posição de lótus: pele morena clara
+🧘🏽‍♂️	homem em posição de lótus: pele morena
+🧘🏽‍♂	homem em posição de lótus: pele morena
+🧘🏾‍♂️	homem em posição de lótus: pele morena escura
+🧘🏾‍♂	homem em posição de lótus: pele morena escura
+🧘🏿‍♂️	homem em posição de lótus: pele escura
+🧘🏿‍♂	homem em posição de lótus: pele escura
+🛀	pessoa tomando banho
+🛀🏻	pessoa tomando banho: pele clara
+🛀🏼	pessoa tomando banho: pele morena clara
+🛀🏽	pessoa tomando banho: pele morena
+🛀🏾	pessoa tomando banho: pele morena escura
+🛀🏿	pessoa tomando banho: pele escura
+🛌	pessoa na cama
+🛌🏻	pessoa na cama: pele clara
+🛌🏼	pessoa na cama: pele morena clara
+🛌🏽	pessoa na cama: pele morena
+🛌🏾	pessoa na cama: pele morena escura
+🛌🏿	pessoa na cama: pele escura
+🕴️	homem de terno levitando
+🕴	homem de terno levitando
+🕴🏻	homem de terno levitando: pele clara
+🕴🏼	homem de terno levitando: pele morena clara
+🕴🏽	homem de terno levitando: pele morena
+🕴🏾	homem de terno levitando: pele morena escura
+🕴🏿	homem de terno levitando: pele escura
+🗣️	cabeça falante
+🗣	cabeça falante
+👤	busto em silhueta
+👥	bustos em silhueta
+🤺	esgrima pessoal
+🏇	corrida de cavalo
+🏇🏻	corrida de cavalos: pele clara
+🏇🏼	corrida de cavalos: pele morena clara
+🏇🏽	corrida de cavalos: pele morena
+🏇🏾	corrida de cavalos: pele morena escura
+🏇🏿	corrida de cavalos: pele escura
+⛷️	esquiador
+⛷	esquiador
+🏂	snowboarder
+🏂🏻	snowboarder: pele clara
+🏂🏼	snowboarder: pele morena clara
+🏂🏽	snowboarder: pele morena
+🏂🏾	snowboarder: pele morena escura
+🏂🏿	snowboarder: pele escura
+🏌️	pessoa jogando golfe
+🏌	pessoa jogando golfe
+🏌🏻	pessoa jogando golfe: pele clara
+🏌🏼	pessoa jogando golfe: pele morena clara
+🏌🏽	pessoa jogando golfe: pele morena
+🏌🏾	pessoa jogando golfe: pele morena escura
+🏌🏿	pessoa jogando golfe: pele escura
+🏌️‍♂️	homem jogando golfe
+🏌‍♂️	homem jogando golfe
+🏌️‍♂	homem jogando golfe
+🏌‍♂	homem jogando golfe
+🏌🏻‍♂️	homem jogando golfe: pele clara
+🏌🏻‍♂	homem jogando golfe: pele clara
+🏌🏼‍♂️	homem jogando golfe: pele morena clara
+🏌🏼‍♂	homem jogando golfe: pele morena clara
+🏌🏽‍♂️	homem jogando golfe: pele morena
+🏌🏽‍♂	homem jogando golfe: pele morena
+🏌🏾‍♂️	homem jogando golfe: pele morena escura
+🏌🏾‍♂	homem jogando golfe: pele morena escura
+🏌🏿‍♂️	homem jogando golfe: pele morena
+🏌🏿‍♂	homem jogando golfe: pele morena
+🏌️‍♀️	mulher jogando golfe
+🏌‍♀️	mulher jogando golfe
+🏌️‍♀	mulher jogando golfe
+🏌‍♀	mulher jogando golfe
+🏌🏻‍♀️	mulher jogando golfe: pele clara
+🏌🏻‍♀	mulher jogando golfe: pele clara
+🏌🏼‍♀️	mulher jogando golfe: pele morena clara
+🏌🏼‍♀	mulher jogando golfe: pele morena clara
+🏌🏽‍♀️	mulher jogando golfe: pele morena
+🏌🏽‍♀	mulher jogando golfe: pele morena
+🏌🏾‍♀️	mulher jogando golfe: pele morena escura
+🏌🏾‍♀	mulher jogando golfe: pele morena escura
+🏌🏿‍♀️	mulher jogando golfe: pele escura
+🏌🏿‍♀	mulher jogando golfe: pele escura
+🏄	pessoa surfando
+🏄🏻	pessoa surfando: pele clara
+🏄🏼	pessoa surfando: pele morena clara
+🏄🏽	pessoa surfando: pele morena
+🏄🏾	pessoa surfando: pele morena escura
+🏄🏿	pessoa surfando: pele escura
+🏄‍♂️	homem surfando
+🏄‍♂	homem surfando
+🏄🏻‍♂️	homem surfando: pele clara
+🏄🏻‍♂	homem surfando: pele clara
+🏄🏼‍♂️	homem surfando: pele morena clara
+🏄🏼‍♂	homem surfando: pele morena clara
+🏄🏽‍♂️	homem surfando: pele morena
+🏄🏽‍♂	homem surfando: pele morena
+🏄🏾‍♂️	homem surfando: pele morena escura
+🏄🏾‍♂	homem surfando: pele morena escura
+🏄🏿‍♂️	homem surfando: pele escura
+🏄🏿‍♂	homem surfando: pele escura
+🏄‍♀️	mulher surfando
+🏄‍♀	mulher surfando
+🏄🏻‍♀️	mulher surfando: pele clara
+🏄🏻‍♀	mulher surfando: pele clara
+🏄🏼‍♀️	mulher surfando: pele morena clara
+🏄🏼‍♀	mulher surfando: pele morena clara
+🏄🏽‍♀️	mulher surfando: pele morena
+🏄🏽‍♀	mulher surfando: pele morena
+🏄🏾‍♀️	mulher surfando: pele morena escura
+🏄🏾‍♀	mulher surfando: pele morena escura
+🏄🏿‍♀️	mulher surfando: pele escura
+🏄🏿‍♀	mulher surfando: pele escura
+🚣	pessoa, barco a remo
+🚣🏻	pessoa em barco a remo: pele clara
+🚣🏼	pessoa em barco a remo: pele morena clara
+🚣🏽	pessoa em barco a remo: pele morena
+🚣🏾	pessoa em barco a remo: pele morena escura
+🚣🏿	pessoa em barco a remo: pele escura
+🚣‍♂️	homem, barco a remo
+🚣‍♂	homem, barco a remo
+🚣🏻‍♂️	homem barco a remo: pele clara
+🚣🏻‍♂	homem barco a remo: pele clara
+🚣🏼‍♂️	homem barco a remo: pele morena clara
+🚣🏼‍♂	homem barco a remo: pele morena clara
+🚣🏽‍♂️	homem barco a remo: pele morena
+🚣🏽‍♂	homem barco a remo: pele morena
+🚣🏾‍♂️	homem barco a remo: pele morena escura
+🚣🏾‍♂	homem barco a remo: pele morena escura
+🚣🏿‍♂️	homem barco a remo: pele escura
+🚣🏿‍♂	homem barco a remo: pele escura
+🚣‍♀️	mulher, barco a remo
+🚣‍♀	mulher, barco a remo
+🚣🏻‍♀️	mulher barco a remo: pele clara
+🚣🏻‍♀	mulher barco a remo: pele clara
+🚣🏼‍♀️	mulher barco a remo: pele morena clara
+🚣🏼‍♀	mulher barco a remo: pele morena clara
+🚣🏽‍♀️	mulher barco a remo: pele morena
+🚣🏽‍♀	mulher barco a remo: pele morena
+🚣🏾‍♀️	mulher barco a remo: pele morena escura
+🚣🏾‍♀	mulher barco a remo: pele morena escura
+🚣🏿‍♀️	mulher barco a remo: pele escura
+🚣🏿‍♀	mulher barco a remo: pele escura
+🏊	pessoa nadando
+🏊🏻	pessoa nadando: pele clara
+🏊🏼	pessoa nadando: pele morena clara
+🏊🏽	pessoa nadando: pele morena
+🏊🏾	pessoa nadando: pele morena escura
+🏊🏿	pessoa nadando: pele escura
+🏊‍♂️	homem nadando
+🏊‍♂	homem nadando
+🏊🏻‍♂️	homem nadando: pele clara
+🏊🏻‍♂	homem nadando: pele clara
+🏊🏼‍♂️	homem nadando: pele morena clara
+🏊🏼‍♂	homem nadando: pele morena clara
+🏊🏽‍♂️	homem nadando: pele morena
+🏊🏽‍♂	homem nadando: pele morena
+🏊🏾‍♂️	homem nadando: pele morena escura
+🏊🏾‍♂	homem nadando: pele morena escura
+🏊🏿‍♂️	homem nadando: pele escura
+🏊🏿‍♂	homem nadando: pele escura
+🏊‍♀️	mulher nadando
+🏊‍♀	mulher nadando
+🏊🏻‍♀️	mulher nadando: pele clara
+🏊🏻‍♀	mulher nadando: pele clara
+🏊🏼‍♀️	mulher nadando: pele morena clara
+🏊🏼‍♀	mulher nadando: pele morena clara
+🏊🏽‍♀️	mulher nadando: pele morena
+🏊🏽‍♀	mulher nadando: pele morena
+🏊🏾‍♀️	mulher nadando: pele morena escura
+🏊🏾‍♀	mulher nadando: pele morena escura
+🏊🏿‍♀️	mulher nadando: pele escura
+🏊🏿‍♀	mulher nadando: pele escura
+⛹️	pessoa quicando bola
+⛹	pessoa quicando bola
+⛹🏻	pessoa quicando bola: pele clara
+⛹🏼	pessoa quicando bola: pele morena clara
+⛹🏽	pessoa quicando bola: pele morena
+⛹🏾	pessoa quicando bola: pele morena escura
+⛹🏿	pessoa quicando bola: pele escura
+⛹️‍♂️	homem quicando bola
+⛹‍♂️	homem quicando bola
+⛹️‍♂	homem quicando bola
+⛹‍♂	homem quicando bola
+⛹🏻‍♂️	homem quicando bola: pele clara
+⛹🏻‍♂	homem quicando bola: pele clara
+⛹🏼‍♂️	homem quicando bola: pele morena clara
+⛹🏼‍♂	homem quicando bola: pele morena clara
+⛹🏽‍♂️	homem quicando bola: pele morena
+⛹🏽‍♂	homem quicando bola: pele morena
+⛹🏾‍♂️	homem quicando bola: pele morena escura
+⛹🏾‍♂	homem quicando bola: pele morena escura
+⛹🏿‍♂️	homem quicando bola: pele escura
+⛹🏿‍♂	homem quicando bola: pele escura
+⛹️‍♀️	mulher quicando bola
+⛹‍♀️	mulher quicando bola
+⛹️‍♀	mulher quicando bola
+⛹‍♀	mulher quicando bola
+⛹🏻‍♀️	mulher quicando bola: pele clara
+⛹🏻‍♀	mulher quicando bola: pele clara
+⛹🏼‍♀️	mulher quicando bola: pele morena clara
+⛹🏼‍♀	mulher quicando bola: pele morena clara
+⛹🏽‍♀️	mulher quicando bola: pele morena
+⛹🏽‍♀	mulher quicando bola: pele morena
+⛹🏾‍♀️	mulher quicando bola: pele morena escura
+⛹🏾‍♀	mulher quicando bola: pele morena escura
+⛹🏿‍♀️	mulher quicando bola: pele escura
+⛹🏿‍♀	mulher quicando bola: pele escura
+🏋️	pessoa levantando pesos
+🏋	pessoa levantando pesos
+🏋🏻	pessoa levantando pesos: pele clara
+🏋🏼	pessoa levantando pesos: pele morena clara
+🏋🏽	pessoa levantando pesos: pele morena
+🏋🏾	pessoa levantando pesos: pele morena escura
+🏋🏿	pessoa levantando pesos: pele escura
+🏋️‍♂️	homem levantando pesos
+🏋‍♂️	homem levantando pesos
+🏋️‍♂	homem levantando pesos
+🏋‍♂	homem levantando pesos
+🏋🏻‍♂️	homem levantando pesos: pele clara
+🏋🏻‍♂	homem levantando pesos: pele clara
+🏋🏼‍♂️	homem levantando pesos: pele morena clara
+🏋🏼‍♂	homem levantando pesos: pele morena clara
+🏋🏽‍♂️	homem levantando pesos: pele morena
+🏋🏽‍♂	homem levantando pesos: pele morena
+🏋🏾‍♂️	homem levantando pesos: pele morena escura
+🏋🏾‍♂	homem levantando pesos: pele morena escura
+🏋🏿‍♂️	homem levantando pesos: pele escura
+🏋🏿‍♂	homem levantando pesos: pele escura
+🏋️‍♀️	mulher levantando pesos
+🏋‍♀️	mulher levantando pesos
+🏋️‍♀	mulher levantando pesos
+🏋‍♀	mulher levantando pesos
+🏋🏻‍♀️	mulher levantando pesos: pele clara
+🏋🏻‍♀	mulher levantando pesos: pele clara
+🏋🏼‍♀️	mulher levantando pesos: pele morena clara
+🏋🏼‍♀	mulher levantando pesos: pele morena clara
+🏋🏽‍♀️	mulher levantando pesos: pele morena
+🏋🏽‍♀	mulher levantando pesos: pele morena
+🏋🏾‍♀️	mulher levantando pesos: pele morena escura
+🏋🏾‍♀	mulher levantando pesos: pele morena escura
+🏋🏿‍♀️	mulher levantando pesos: pele escura
+🏋🏿‍♀	mulher levantando pesos: pele escura
+🚴	pessoa andando de bicicleta
+🚴🏻	pessoa andando de bicicleta: pele clara
+🚴🏼	pessoa andando de bicicleta: pele morena clara
+🚴🏽	pessoa andando de bicicleta: pele morena
+🚴🏾	pessoa andando de bicicleta: pele morena escura
+🚴🏿	pessoa andando de bicicleta: pele morena
+🚴‍♂️	homem andando de bicicleta
+🚴‍♂	homem andando de bicicleta
+🚴🏻‍♂️	homem andando de bicicleta: pele clara
+🚴🏻‍♂	homem andando de bicicleta: pele clara
+🚴🏼‍♂️	homem andando de bicicleta: pele morena clara
+🚴🏼‍♂	homem andando de bicicleta: pele morena clara
+🚴🏽‍♂️	homem andando de bicicleta: pele morena
+🚴🏽‍♂	homem andando de bicicleta: pele morena
+🚴🏾‍♂️	homem andando de bicicleta: pele morena escura
+🚴🏾‍♂	homem andando de bicicleta: pele morena escura
+🚴🏿‍♂️	homem andando de bicicleta: pele morena
+🚴🏿‍♂	homem andando de bicicleta: pele morena
+🚴‍♀️	mulher andando de bicicleta
+🚴‍♀	mulher andando de bicicleta
+🚴🏻‍♀️	mulher andando de bicicleta: pele clara
+🚴🏻‍♀	mulher andando de bicicleta: pele clara
+🚴🏼‍♀️	mulher andando de bicicleta: pele morena clara
+🚴🏼‍♀	mulher andando de bicicleta: pele morena clara
+🚴🏽‍♀️	mulher andando de bicicleta: pele morena
+🚴🏽‍♀	mulher andando de bicicleta: pele morena
+🚴🏾‍♀️	mulher andando de bicicleta: pele morena escura
+🚴🏾‍♀	mulher andando de bicicleta: pele morena escura
+🚴🏿‍♀️	mulher andando de bicicleta: pele morena
+🚴🏿‍♀	mulher andando de bicicleta: pele morena
+🚵	pessoa andando de mountain bike
+🚵🏻	pessoa praticando mountain bike: pele clara
+🚵🏼	pessoa praticando mountain bike: pele morena clara
+🚵🏽	pessoa praticando mountain bike: pele morena
+🚵🏾	pessoa praticando mountain bike: pele morena escura
+🚵🏿	pessoa praticando mountain bike: pele escura
+🚵‍♂️	homem andando de bicicleta de montanha
+🚵‍♂	homem andando de bicicleta de montanha
+🚵🏻‍♂️	homem praticando mountain bike: pele clara
+🚵🏻‍♂	homem praticando mountain bike: pele clara
+🚵🏼‍♂️	homem praticando mountain bike: pele morena clara
+🚵🏼‍♂	homem praticando mountain bike: pele morena clara
+🚵🏽‍♂️	homem praticando mountain bike: pele morena
+🚵🏽‍♂	homem praticando mountain bike: pele morena
+🚵🏾‍♂️	homem praticando mountain bike: pele morena escura
+🚵🏾‍♂	homem praticando mountain bike: pele morena escura
+🚵🏿‍♂️	homem praticando mountain bike: pele morena
+🚵🏿‍♂	homem praticando mountain bike: pele morena
+🚵‍♀️	mulher andando de bicicleta
+🚵‍♀	mulher andando de bicicleta
+🚵🏻‍♀️	mulher praticando mountain bike: pele clara
+🚵🏻‍♀	mulher praticando mountain bike: pele clara
+🚵🏼‍♀️	mulher praticando mountain bike: pele morena clara
+🚵🏼‍♀	mulher praticando mountain bike: pele morena clara
+🚵🏽‍♀️	mulher praticando mountain bike: pele morena
+🚵🏽‍♀	mulher praticando mountain bike: pele morena
+🚵🏾‍♀️	mulher praticando mountain bike: pele morena escura
+🚵🏾‍♀	mulher praticando mountain bike: pele morena escura
+🚵🏿‍♀️	mulher praticando mountain bike: pele morena
+🚵🏿‍♀	mulher praticando mountain bike: pele morena
+🏎️	carro de corrida
+🏎	carro de corrida
+🏍️	motocicleta
+🏍	motocicleta
+🤸	pessoa dando cambalhotas
+🤸🏻	pessoa dando cambalhotas: pele clara
+🤸🏼	pessoa dando cambalhotas: pele morena clara
+🤸🏽	pessoa dando cambalhotas: pele morena
+🤸🏾	pessoa dando cambalhotas: pele morena escura
+🤸🏿	pessoa dando cambalhotas: pele escura
+🤸‍♂️	homem dando cambalhotas
+🤸‍♂	homem dando cambalhotas
+🤸🏻‍♂️	homem cambaleando: pele clara
+🤸🏻‍♂	homem cambaleando: pele clara
+🤸🏼‍♂️	homem cambaleando: pele morena clara
+🤸🏼‍♂	homem cambaleando: pele morena clara
+🤸🏽‍♂️	homem cambaleando: pele morena
+🤸🏽‍♂	homem cambaleando: pele morena
+🤸🏾‍♂️	homem cambaleando: pele morena escura
+🤸🏾‍♂	homem cambaleando: pele morena escura
+🤸🏿‍♂️	homem cambaleando: pele morena
+🤸🏿‍♂	homem cambaleando: pele morena
+🤸‍♀️	mulher dando cambalhotas
+🤸‍♀	mulher dando cambalhotas
+🤸🏻‍♀️	mulher dando cambalhotas: pele clara
+🤸🏻‍♀	mulher dando cambalhotas: pele clara
+🤸🏼‍♀️	mulher cambaleando: pele morena clara
+🤸🏼‍♀	mulher cambaleando: pele morena clara
+🤸🏽‍♀️	mulher dando cambalhotas: pele morena
+🤸🏽‍♀	mulher dando cambalhotas: pele morena
+🤸🏾‍♀️	mulher dando cambalhotas: pele morena escura
+🤸🏾‍♀	mulher dando cambalhotas: pele morena escura
+🤸🏿‍♀️	mulher dando cambalhotas: pele morena
+🤸🏿‍♀	mulher dando cambalhotas: pele morena
+🤼	pessoas lutando
+🤼‍♂️	homens lutando
+🤼‍♂	homens lutando
+🤼‍♀️	mulheres lutando
+🤼‍♀	mulheres lutando
+🤽	pessoa jogando pólo aquático
+🤽🏻	pessoa jogando pólo aquático: pele clara
+🤽🏼	pessoa jogando pólo aquático: pele morena clara
+🤽🏽	pessoa jogando pólo aquático: pele morena
+🤽🏾	pessoa jogando pólo aquático: pele morena escura
+🤽🏿	pessoa jogando pólo aquático: pele escura
+🤽‍♂️	homem jogando pólo aquático
+🤽‍♂	homem jogando pólo aquático
+🤽🏻‍♂️	homem jogando pólo aquático: pele clara
+🤽🏻‍♂	homem jogando pólo aquático: pele clara
+🤽🏼‍♂️	homem jogando pólo aquático: pele morena clara
+🤽🏼‍♂	homem jogando pólo aquático: pele morena clara
+🤽🏽‍♂️	homem jogando pólo aquático: pele morena
+🤽🏽‍♂	homem jogando pólo aquático: pele morena
+🤽🏾‍♂️	homem jogando pólo aquático: pele morena escura
+🤽🏾‍♂	homem jogando pólo aquático: pele morena escura
+🤽🏿‍♂️	homem jogando pólo aquático: pele escura
+🤽🏿‍♂	homem jogando pólo aquático: pele escura
+🤽‍♀️	mulher jogando pólo aquático
+🤽‍♀	mulher jogando pólo aquático
+🤽🏻‍♀️	mulher jogando pólo aquático: pele clara
+🤽🏻‍♀	mulher jogando pólo aquático: pele clara
+🤽🏼‍♀️	mulher jogando pólo aquático: pele morena clara
+🤽🏼‍♀	mulher jogando pólo aquático: pele morena clara
+🤽🏽‍♀️	mulher jogando pólo aquático: pele morena
+🤽🏽‍♀	mulher jogando pólo aquático: pele morena
+🤽🏾‍♀️	mulher jogando pólo aquático: pele morena escura
+🤽🏾‍♀	mulher jogando pólo aquático: pele morena escura
+🤽🏿‍♀️	mulher jogando pólo aquático: pele escura
+🤽🏿‍♀	mulher jogando pólo aquático: pele escura
+🤾	pessoa jogando handebol
+🤾🏻	pessoa jogando handebol: pele clara
+🤾🏼	pessoa jogando handebol: pele morena clara
+🤾🏽	pessoa jogando handebol: pele morena
+🤾🏾	pessoa jogando handebol: pele morena escura
+🤾🏿	pessoa jogando handebol: pele escura
+🤾‍♂️	homem jogando handebol
+🤾‍♂	homem jogando handebol
+🤾🏻‍♂️	homem jogando handebol: pele clara
+🤾🏻‍♂	homem jogando handebol: pele clara
+🤾🏼‍♂️	homem jogando handebol: pele morena clara
+🤾🏼‍♂	homem jogando handebol: pele morena clara
+🤾🏽‍♂️	homem jogando handebol: pele morena
+🤾🏽‍♂	homem jogando handebol: pele morena
+🤾🏾‍♂️	homem jogando handebol: pele morena escura
+🤾🏾‍♂	homem jogando handebol: pele morena escura
+🤾🏿‍♂️	homem jogando handebol: pele escura
+🤾🏿‍♂	homem jogando handebol: pele escura
+🤾‍♀️	mulher jogando handebol
+🤾‍♀	mulher jogando handebol
+🤾🏻‍♀️	mulher jogando handebol: pele clara
+🤾🏻‍♀	mulher jogando handebol: pele clara
+🤾🏼‍♀️	mulher jogando handebol: pele morena clara
+🤾🏼‍♀	mulher jogando handebol: pele morena clara
+🤾🏽‍♀️	mulher jogando handebol: pele morena
+🤾🏽‍♀	mulher jogando handebol: pele morena
+🤾🏾‍♀️	mulher jogando handebol: pele morena escura
+🤾🏾‍♀	mulher jogando handebol: pele morena escura
+🤾🏿‍♀️	mulher jogando handebol: pele escura
+🤾🏿‍♀	mulher jogando handebol: pele escura
+🤹	pessoa fazendo malabarismo
+🤹🏻	malabarismo de pessoa: pele clara
+🤹🏼	malabarismo de pessoa: pele morena clara
+🤹🏽	malabarismo de pessoa: pele morena
+🤹🏾	malabarismo de pessoa: pele morena escura
+🤹🏿	malabarismo de pessoa: pele escura
+🤹‍♂️	homem fazendo malabarismo
+🤹‍♂	homem fazendo malabarismo
+🤹🏻‍♂️	homem fazendo malabarismo: pele clara
+🤹🏻‍♂	homem fazendo malabarismo: pele clara
+🤹🏼‍♂️	malabarismo de homem: pele morena clara
+🤹🏼‍♂	malabarismo de homem: pele morena clara
+🤹🏽‍♂️	homem fazendo malabarismo: pele morena
+🤹🏽‍♂	homem fazendo malabarismo: pele morena
+🤹🏾‍♂️	homem fazendo malabarismo: pele morena escura
+🤹🏾‍♂	homem fazendo malabarismo: pele morena escura
+🤹🏿‍♂️	homem fazendo malabarismo: pele escura
+🤹🏿‍♂	homem fazendo malabarismo: pele escura
+🤹‍♀️	mulher fazendo malabarismo
+🤹‍♀	mulher fazendo malabarismo
+🤹🏻‍♀️	mulher fazendo malabarismo: pele clara
+🤹🏻‍♀	mulher fazendo malabarismo: pele clara
+🤹🏼‍♀️	mulher fazendo malabarismo: pele morena clara
+🤹🏼‍♀	mulher fazendo malabarismo: pele morena clara
+🤹🏽‍♀️	mulher fazendo malabarismo: pele morena
+🤹🏽‍♀	mulher fazendo malabarismo: pele morena
+🤹🏾‍♀️	mulher fazendo malabarismo: pele morena escura
+🤹🏾‍♀	mulher fazendo malabarismo: pele morena escura
+🤹🏿‍♀️	mulher fazendo malabarismo: pele escura
+🤹🏿‍♀	mulher fazendo malabarismo: pele escura
+👫	homem e mulher de mãos dadas
+👬	dois homens de mãos dadas
+👭	duas mulheres de mãos dadas
+💏	beijo
+👩‍❤️‍💋‍👨	beijo: mulher, homem
+👩‍❤‍💋‍👨	beijo: mulher, homem
+👨‍❤️‍💋‍👨	beijo: cara, cara
+👨‍❤‍💋‍👨	beijo: cara, cara
+👩‍❤️‍💋‍👩	beijo: mulher, mulher
+👩‍❤‍💋‍👩	beijo: mulher, mulher
+💑	casal com coração
+👩‍❤️‍👨	casal com coração: mulher, homem
+👩‍❤‍👨	casal com coração: mulher, homem
+👨‍❤️‍👨	casal com coração: cara, cara
+👨‍❤‍👨	casal com coração: cara, cara
+👩‍❤️‍👩	casal com coração: mulher, mulher
+👩‍❤‍👩	casal com coração: mulher, mulher
+👪	família
+👨‍👩‍👦	família: homem, mulher, menino
+👨‍👩‍👧	família: homem, mulher, menina
+👨‍👩‍👧‍👦	família: homem, mulher, menina, menino
+👨‍👩‍👦‍👦	família: homem, mulher, menino, menino
+👨‍👩‍👧‍👧	família: homem, mulher, menina, menina
+👨‍👨‍👦	família: homem, homem, menino
+👨‍👨‍👧	família: homem, homem, menina
+👨‍👨‍👧‍👦	família: homem, homem, menina, menino
+👨‍👨‍👦‍👦	família: homem, homem, menino, menino
+👨‍👨‍👧‍👧	família: homem, homem, menina, menina
+👩‍👩‍👦	família: mulher, mulher, menino
+👩‍👩‍👧	família: mulher, mulher, menina
+👩‍👩‍👧‍👦	família: mulher, mulher, menina, menino
+👩‍👩‍👦‍👦	família: mulher, mulher, menino, menino
+👩‍👩‍👧‍👧	família: mulher, mulher, menina, menina
+👨‍👦	família: homem, menino
+👨‍👦‍👦	família: homem, menino, menino
+👨‍👧	família: homem, menina
+👨‍👧‍👦	família: homem, menina, menino
+👨‍👧‍👧	família: homem, menina, menina
+👩‍👦	família: mulher, menino
+👩‍👦‍👦	família: mulher, menino, menino
+👩‍👧	família: mulher, menina
+👩‍👧‍👦	família: mulher, menina, menino
+👩‍👧‍👧	família: mulher, menina, menina
+🤳	selfie
+🤳🏻	selfie: pele clara
+🤳🏼	selfie: pele morena clara
+🤳🏽	selfie: pele morena
+🤳🏾	selfie: pele morena escura
+🤳🏿	selfie: pele morena
+💪	bíceps flexionado
+💪🏻	bíceps flexionados: pele clara
+💪🏼	bíceps flexionados: pele morena clara
+💪🏽	bíceps flexionados: pele morena
+💪🏾	bíceps flexionados: pele morena escura
+💪🏿	bíceps flexionados: pele escura
+🦵	perna
+🦵🏻	perna: pele clara
+🦵🏼	perna: pele morena clara
+🦵🏽	perna: pele morena
+🦵🏾	perna: pele morena escura
+🦵🏿	perna: pele escura
+🦶	pé
+🦶🏻	pé: pele clara
+🦶🏼	pé: pele morena clara
+🦶🏽	pé: pele morena
+🦶🏾	pé: pele morena escura
+🦶🏿	pé: pele escura
+👈	índice de backhand apontando para a esquerda
+👈🏻	índice de backhand apontando para a esquerda: pele clara
+👈🏼	índice de backhand apontando para a esquerda: pele morena clara
+👈🏽	índice de backhand apontando para a esquerda: pele morena
+👈🏾	índice de backhand apontando para a esquerda: pele morena escura
+👈🏿	índice de backhand apontando para a esquerda: pele escura
+👉	índice de backhand apontando para a direita
+👉🏻	índice de backhand apontando para a direita: pele clara
+👉🏼	índice de backhand apontando para a direita: pele morena clara
+👉🏽	índice de backhand apontando para a direita: pele morena
+👉🏾	índice de backhand apontando para a direita: pele morena escura
+👉🏿	índice de backhand apontando para a direita: pele escura
+☝️	índice apontando para cima
+☝	índice apontando para cima
+☝🏻	índice apontando para cima: pele clara
+☝🏼	índice apontando para cima: pele morena clara
+☝🏽	índice apontando para cima: pele morena
+☝🏾	índice apontando para cima: pele morena escura
+☝🏿	índice apontando para cima: pele escura
+👆	índice de backhand apontando para cima
+👆🏻	índice de backhand apontando para cima: pele clara
+👆🏼	índice de backhand apontando para cima: pele morena clara
+👆🏽	índice de backhand apontando para cima: pele morena
+👆🏾	índice de backhand apontando para cima: pele morena escura
+👆🏿	índice de backhand apontando para cima: pele escura
+🖕	dedo do meio
+🖕🏻	dedo médio: pele clara
+🖕🏼	dedo médio: pele morena clara
+🖕🏽	dedo médio: pele morena
+🖕🏾	dedo médio: pele morena escura
+🖕🏿	dedo médio: pele escura
+👇	índice de backhand apontando para baixo
+👇🏻	índice de backhand apontando para baixo: pele clara
+👇🏼	índice de backhand apontando para baixo: pele morena clara
+👇🏽	índice de backhand apontando para baixo: pele morena
+👇🏾	índice de backhand apontando para baixo: pele morena escura
+👇🏿	índice de backhand apontando para baixo: pele morena
+✌️	mão da vitória
+✌	mão da vitória
+✌🏻	mão da vitória: pele clara
+✌🏼	mão da vitória: pele morena clara
+✌🏽	mão da vitória: pele morena
+✌🏾	mão da vitória: pele morena escura
+✌🏿	mão da vitória: pele morena
+🤞	dedos cruzados
+🤞🏻	dedos cruzados: pele clara
+🤞🏼	dedos cruzados: pele morena clara
+🤞🏽	dedos cruzados: pele morena
+🤞🏾	dedos cruzados: pele morena escura
+🤞🏿	dedos cruzados: pele escura
+🖖	saudação vulcana
+🖖🏻	saudação vulcana: pele clara
+🖖🏼	saudação vulcana: pele morena clara
+🖖🏽	saudação vulcana: pele morena
+🖖🏾	saudação vulcana: pele morena escura
+🖖🏿	saudação vulcana: pele morena
+🤘	sinal dos chifres
+🤘🏻	sinal dos chifres: pele clara
+🤘🏼	sinal dos chifres: pele morena clara
+🤘🏽	sinal dos chifres: pele morena
+🤘🏾	sinal dos chifres: pele morena escura
+🤘🏿	sinal dos chifres: pele escura
+🤙	me chame de mão
+🤙🏻	me chame de mão: pele clara
+🤙🏼	me chame de mão: pele morena clara
+🤙🏽	me chame de mão: pele morena
+🤙🏾	me chame de mão: pele morena escura
+🤙🏿	me chame de mão: pele escura
+🖐️	mão com os dedos abertos
+🖐	mão com os dedos abertos
+🖐🏻	mão com os dedos abertos: pele clara
+🖐🏼	mão com dedos abertos: pele morena clara
+🖐🏽	mão com dedos abertos: pele morena
+🖐🏾	mão com os dedos abertos: pele morena escura
+🖐🏿	mão com os dedos abertos: pele morena
+✋	mão levantada
+✋🏻	mão levantada: pele clara
+✋🏼	mão levantada: pele morena clara
+✋🏽	mão levantada: pele morena
+✋🏾	mão levantada: pele morena escura
+✋🏿	mão levantada: pele escura
+👌	OK mão
+👌🏻	Mão OK: pele clara
+👌🏼	Mão OK: pele morena clara
+👌🏽	Mão OK: pele morena
+👌🏾	Mão OK: pele morena escura
+👌🏿	Mão OK: pele escura
+👍	afirmativo
+👍🏻	polegar para cima: pele clara
+👍🏼	polegar para cima: pele morena clara
+👍🏽	polegar para cima: pele morena
+👍🏾	polegar para cima: pele morena escura
+👍🏿	polegar para cima: pele escura
+👎	polegares para baixo
+👎🏻	polegar para baixo: pele clara
+👎🏼	polegar para baixo: pele morena clara
+👎🏽	polegar para baixo: pele morena
+👎🏾	polegar para baixo: pele morena escura
+👎🏿	polegar para baixo: pele escura
+✊	punho levantado
+✊🏻	punho levantado: pele clara
+✊🏼	punho levantado: pele morena clara
+✊🏽	punho levantado: pele morena
+✊🏾	punho levantado: pele morena escura
+✊🏿	punho levantado: pele escura
+👊	punho que se aproxima
+👊🏻	punho que se aproxima: pele clara
+👊🏼	punho que se aproxima: pele morena clara
+👊🏽	punho que se aproxima: pele morena
+👊🏾	punho que se aproxima: pele morena escura
+👊🏿	punho que se aproxima: pele escura
+🤛	punho voltado para a esquerda
+🤛🏻	punho voltado para a esquerda: pele clara
+🤛🏼	punho voltado para a esquerda: pele morena clara
+🤛🏽	punho voltado para a esquerda: pele morena
+🤛🏾	punho voltado para a esquerda: pele morena escura
+🤛🏿	punho voltado para a esquerda: pele escura
+🤜	punho voltado para a direita
+🤜🏻	punho voltado para a direita: pele clara
+🤜🏼	punho voltado para a direita: pele morena clara
+🤜🏽	punho voltado para a direita: pele morena
+🤜🏾	punho voltado para a direita: pele morena escura
+🤜🏿	punho voltado para a direita: pele escura
+🤚	levantado com as costas da mão
+🤚🏻	dorso da mão levantado: pele clara
+🤚🏼	dorso da mão levantado: pele morena clara
+🤚🏽	dorso da mão levantado: pele morena
+🤚🏾	dorso da mão levantado: pele morena escura
+🤚🏿	dorso da mão levantado: pele escura
+👋	acenando com a mão
+👋🏻	acenando com a mão: pele clara
+👋🏼	acenando com a mão: pele morena clara
+👋🏽	acenando com a mão: pele morena
+👋🏾	acenando com a mão: pele morena escura
+👋🏿	acenando com a mão: pele morena
+🤟	gesto de te amo
+🤟🏻	gesto de te amo: pele clara
+🤟🏼	gesto de te amo: pele morena clara
+🤟🏽	gesto de te amo: pele morena
+🤟🏾	gesto de te amo: pele morena escura
+🤟🏿	gesto de te amo: pele morena
+✍️	mão escrevendo
+✍	mão escrevendo
+✍🏻	mão que escreve: pele clara
+✍🏼	mão que escreve: pele morena clara
+✍🏽	mão que escreve: pele morena
+✍🏾	mão que escreve: pele morena escura
+✍🏿	mão que escreve: pele morena
+👏	mãos de aplauso
+👏🏻	batendo palmas: pele clara
+👏🏼	batendo palmas: pele morena clara
+👏🏽	batendo palmas: pele morena
+👏🏾	batendo palmas: pele morena escura
+👏🏿	batendo palmas: pele escura
+👐	mãos abertas
+👐🏻	mãos abertas: pele clara
+👐🏼	mãos abertas: pele morena clara
+👐🏽	mãos abertas: pele morena
+👐🏾	mãos abertas: pele morena escura
+👐🏿	mãos abertas: pele escura
+🙌	levantando as mãos
+🙌🏻	levantando as mãos: pele clara
+🙌🏼	levantando as mãos: pele morena clara
+🙌🏽	levantando as mãos: pele morena
+🙌🏾	levantando as mãos: pele morena escura
+🙌🏿	levantando as mãos: pele escura
+🤲	palmas para cima juntas
+🤲🏻	palmas para cima juntas: pele clara
+🤲🏼	palmas para cima juntas: pele morena clara
+🤲🏽	palmas para cima juntas: pele morena
+🤲🏾	palmas para cima juntas: pele morena escura
+🤲🏿	palmas para cima juntas: pele escura
+🙏	mãos postas
+🙏🏻	mãos postas: pele clara
+🙏🏼	mãos postas: pele morena clara
+🙏🏽	mãos postas: pele morena
+🙏🏾	mãos postas: pele morena escura
+🙏🏿	mãos postas: pele escura
+🤝	aperto de mão
+💅	esmalte
+💅🏻	esmalte: pele clara
+💅🏼	esmalte: pele morena clara
+💅🏽	esmalte: pele morena
+💅🏾	esmalte: pele morena escura
+💅🏿	esmalte: pele escura
+👂	orelha
+👂🏻	orelha: pele clara
+👂🏼	orelha: pele morena clara
+👂🏽	orelha: pele morena
+👂🏾	orelha: pele morena escura
+👂🏿	orelha: pele escura
+👃	nariz
+👃🏻	nariz: pele clara
+👃🏼	nariz: pele morena clara
+👃🏽	nariz: pele morena
+👃🏾	nariz: pele morena escura
+👃🏿	nariz: pele escura
+🦰	ruivo
+🦱	cabelos cacheados
+🦲	Careca
+🦳	de cabelos brancos
+👣	pegadas
+👀	olhos
+👁️	olho
+👁	olho
+👁️‍🗨️	olho no balão
+👁‍🗨️	olho no balão
+👁️‍🗨	olho no balão
+👁‍🗨	olho no balão
+🧠	cérebro
+🦴	osso
+🦷	dente
+👅	língua
+👄	boca
+💋	marca de beijo
+💘	coração com flecha
+❤️	coração vermelho
+❤	coração vermelho
+💓	coração batendo
+💔	coração partido
+💕	dois corações
+💖	coração brilhante
+💗	coração crescendo
+💙	Coração azul
+💚	coração verde
+💛	coração amarelo
+🧡	coração laranja
+💜	coração roxo
+🖤	coração preto
+💝	coração com fita
+💞	corações giratórios
+💟	decoração de coração
+❣️	exclamação de coração pesado
+❣	exclamação de coração pesado
+💌	carta de amor
+💤	zzz
+💢	símbolo de raiva
+💣	bombear
+💥	colisão
+💦	gotas de suor
+💨	fugindo
+💫	tonto
+💬	balão de fala
+🗨️	balão de fala esquerdo
+🗨	balão de fala esquerdo
+🗯️	bolha de raiva certa
+🗯	bolha de raiva certa
+💭	balão de pensamento
+🕳️	buraco
+🕳	buraco
+👓	copos
+🕶️	oculos de sol
+🕶	oculos de sol
+🥽	óculos
+🥼	bata de laboratório
+👔	gravata
+👕	camiseta
+👖	jeans
+🧣	lenço
+🧤	luvas
+🧥	casaco
+🧦	meias
+👗	vestir
+👘	quimono
+👙	bikini
+👚	roupas de mulher
+👛	bolsa
+👜	Bolsa
+👝	necessaire
+🛍️	sacolas de compras
+🛍	sacolas de compras
+🎒	mochila escolar
+👞	sapato de homem
+👟	tênis de corrida
+🥾	bota de caminhada
+🥿	sapato raso de mulher
+👠	sapato de salto alto
+👡	sandália de mulher
+👢	bota de mulher
+👑	coroa
+👒	chapéu de mulher
+🎩	cartola
+🎓	chapéu de graduação
+🧢	limite faturado
+⛑️	capacete do socorrista
+⛑	capacete do socorrista
+📿	contas de oração
+💄	batom
+💍	anel
+💎	pedra preciosa
+🐵	cara de macaco
+🐒	macaco
+🦍	gorila
+🐶	cara de cachorro
+🐕	cachorro
+🐩	poodle
+🐺	cara de lobo
+🦊	cara de raposa
+🦝	guaxinim
+🐱	cara de Gato
+🐈	gato
+🦁	cara de leão
+🐯	cara de tigre
+🐅	tigre
+🐆	leopardo
+🐴	Cara de cavalo
+🐎	cavalo
+🦄	cara de unicórnio
+🦓	zebra
+🦌	cervo
+🐮	cara de vaca
+🐂	boi
+🐃	búfalo Marinho
+🐄	vaca
+🐷	cara de porco
+🐖	porco
+🐗	javali
+🐽	nariz de porco
+🐏	bater
+🐑	ovelha
+🐐	cabra
+🐪	camelo
+🐫	camelo de duas corcovas
+🦙	lhama
+🦒	girafa
+🐘	elefante
+🦏	rinoceronte
+🦛	hipopótamo
+🐭	cara de rato
+🐁	rato
+🐀	rato
+🐹	cara de hamster
+🐰	cara de coelho
+🐇	coelho
+🐿️	Esquilo
+🐿	Esquilo
+🦔	ouriço
+🦇	bastão
+🐻	cara de urso
+🐨	coala
+🐼	cara de panda
+🦘	canguru
+🦡	texugo
+🐾	pegadas
+🦃	peru
+🐔	frango
+🐓	galo
+🐣	pintinho chocando
+🐤	pintinho
+🐥	pintinho de frente
+🐦	pássaro
+🐧	pinguim
+🕊️	pomba
+🕊	pomba
+🦅	águia
+🦆	pato
+🦢	cisne
+🦉	coruja
+🦚	pavão
+🦜	papagaio
+🐸	cara de sapo
+🐊	crocodilo
+🐢	tartaruga
+🦎	lagarto
+🐍	cobra
+🐲	cara de dragão
+🐉	Dragão
+🦕	saurópode
+🦖	Tiranossauro Rex
+🐳	baleia jorrando
+🐋	baleia
+🐬	golfinho
+🐟	peixe
+🐠	peixe tropical
+🐡	baiacu
+🦈	Tubarão
+🐙	polvo
+🐚	concha espiral
+🦀	caranguejo
+🦞	lagosta
+🦐	camarão
+🦑	lula
+🐌	lesma
+🦋	borboleta
+🐛	erro
+🐜	formiga
+🐝	abelha
+🐞	joaninha
+🦗	Grilo
+🕷️	aranha
+🕷	aranha
+🕸️	teia de aranha
+🕸	teia de aranha
+🦂	escorpião
+🦟	mosquito
+🦠	micróbio
+💐	ramalhete
+🌸	Flor de cerejeira
+💮	Flor branca
+🏵️	roseta
+🏵	roseta
+🌹	rosa
+🥀	flor murcha
+🌺	hibisco
+🌻	girassol
+🌼	florescer
+🌷	tulipa
+🌱	plantinha
+🌲	árvore perene
+🌳	árvore de folhas secas
+🌴	Palmeira
+🌵	cacto
+🌾	molho de arroz
+🌿	erva
+☘️	trevo
+☘	trevo
+🍀	trevo-de-quatro-folhas
+🍁	folha de Carvalho
+🍂	folha caída
+🍃	folhas tremulando ao vento
+🍇	uvas
+🍈	Melão
+🍉	melancia
+🍊	tangerina
+🍋	limão
+🍌	banana
+🍍	abacaxi
+🥭	manga
+🍎	maçã vermelha
+🍏	maçã verde
+🍐	pera
+🍑	pêssego
+🍒	cerejas
+🍓	morango
+🥝	kiwi
+🍅	tomate
+🥥	coco
+🥑	abacate
+🍆	beringela
+🥔	batata
+🥕	cenoura
+🌽	espiga de milho
+🌶️	pimenta picante
+🌶	pimenta picante
+🥒	pepino
+🥬	verde frondoso
+🥦	brócolis
+🍄	cogumelo
+🥜	amendoim
+🌰	castanha
+🍞	pão
+🥐	croissant
+🥖	pão baguete
+🥨	pretzel
+🥯	bagel
+🥞	panquecas
+🧀	fatia de queijo
+🍖	carne com osso
+🍗	perna de frango
+🥩	corte de carne
+🥓	bacon
+🍔	Hamburger
+🍟	batatas fritas
+🍕	pizza
+🌭	cachorro-quente
+🥪	sanduíche
+🌮	taco
+🌯	burrito
+🥙	pão achatado recheado
+🥚	ovo
+🍳	culinária
+🥘	panela rasa de comida
+🍲	pote de comida
+🥣	tigela com colher
+🥗	salada verde
+🍿	Pipoca
+🧂	sal
+🥫	comida enlatada
+🍱	caixa de bento
+🍘	biscoito de arroz
+🍙	bola de arroz
+🍚	arroz cozido
+🍛	arroz com curry
+🍜	tigela fumegante
+🍝	espaguete
+🍠	batata doce assada
+🍢	oden
+🍣	Sushi
+🍤	camarão frito
+🍥	bolo de peixe com redemoinho
+🥮	bolo de lua
+🍡	dango
+🥟	bolinho
+🥠	biscoito da sorte
+🥡	caixa para viagem
+🍦	sorvete macio
+🍧	gelo raspado
+🍨	sorvete
+🍩	rosquinha
+🍪	biscoito
+🎂	bolo de aniversário
+🍰	bolo
+🧁	Bolinho
+🥧	torta
+🍫	Barra de chocolate
+🍬	doce
+🍭	pirulito
+🍮	Quindim
+🍯	pote de mel
+🍼	Mamadeira
+🥛	copo de leite
+☕	bebida quente
+🍵	xícara de chá sem alça
+🍶	interesse
+🍾	garrafa com rolha estourando
+🍷	copo de vinho
+🍸	copo de coquetel
+🍹	bebida tropical
+🍺	Caneca de cerveja
+🍻	canecas de cerveja tilintando
+🥂	copos tilintando
+🥃	copo de vidro
+🥤	copo com canudo
+🥢	pauzinhos
+🍽️	garfo e faca com prato
+🍽	garfo e faca com prato
+🍴	garfo e faca
+🥄	colher
+🔪	faca de cozinha
+🏺	ânfora
+🌍	globo mostrando Europa-África
+🌎	globo mostrando as Américas
+🌏	globo mostrando Ásia-Austrália
+🌐	globo com meridianos
+🗺️	mapa mundial
+🗺	mapa mundial
+🗾	mapa do Japão
+🧭	bússola
+🏔️	montanha coberta de neve
+🏔	montanha coberta de neve
+⛰️	montanha
+⛰	montanha
+🌋	vulcão
+🗻	Monte Fuji
+🏕️	acampamento
+🏕	acampamento
+🏖️	praia com guarda-sol
+🏖	praia com guarda-sol
+🏜️	deserto
+🏜	deserto
+🏝️	ilha deserta
+🏝	ilha deserta
+🏞️	Parque Nacional
+🏞	Parque Nacional
+🏟️	estádio
+🏟	estádio
+🏛️	edifício clássico
+🏛	edifício clássico
+🏗️	construção civil
+🏗	construção civil
+🧱	tijolos
+🏘️	casas
+🏘	casas
+🏚️	casa abandonada
+🏚	casa abandonada
+🏠	casa
+🏡	casa com jardim
+🏢	Prédio comercial
+🏣	Correio japonês
+🏤	correios
+🏥	hospital
+🏦	banco
+🏨	hotel
+🏩	hotel de amor
+🏪	loja de conveniência
+🏫	escola
+🏬	loja de departamento
+🏭	fábrica
+🏯	Castelo japonês
+🏰	castelo
+💒	casamento
+🗼	Torre de Tóquio
+🗽	Estátua da Liberdade
+⛪	igreja
+🕌	mesquita
+🕍	sinagoga
+⛩️	santuário de Xintoísmo
+⛩	santuário de Xintoísmo
+🕋	Caaba
+⛲	fonte
+⛺	barraca
+🌁	enevoado
+🌃	noite com estrelas
+🏙️	paisagem urbana
+🏙	paisagem urbana
+🌄	nascer do sol sobre as montanhas
+🌅	nascer do sol
+🌆	paisagem urbana ao entardecer
+🌇	pôr do sol
+🌉	ponte à noite
+♨️	fontes termais
+♨	fontes termais
+🌌	via Láctea
+🎠	cavalo de carrossel
+🎡	roda gigante
+🎢	montanha russa
+💈	poste de barbeiro
+🎪	tenda de circo
+🚂	locomotiva
+🚃	vagão ferroviário
+🚄	trem de alta velocidade
+🚅	trem-bala
+🚆	trem
+🚇	metrô
+🚈	Veiculo Leve Sobre Trilhos
+🚉	estação
+🚊	eléctrico
+🚝	monotrilho
+🚞	ferrovia de montanha
+🚋	bonde
+🚌	ônibus
+🚍	ônibus que se aproxima
+🚎	trólebus
+🚐	mini onibus
+🚑	ambulância
+🚒	viatura de bombeiros
+🚓	carro da polícia
+🚔	carro da polícia que se aproxima
+🚕	Táxi
+🚖	táxi que se aproxima
+🚗	automóvel
+🚘	automóvel que se aproxima
+🚙	veículo utilitário esportivo
+🚚	Caminhão de entrega
+🚛	caminhão articulado
+🚜	trator
+🚲	bicicleta
+🛴	patinete
+🛹	skate
+🛵	motoneta
+🚏	ponto de ônibus
+🛣️	autoestrada
+🛣	autoestrada
+🛤️	ferrovia
+🛤	ferrovia
+🛢️	tambor de óleo
+🛢	tambor de óleo
+⛽	bomba de combustivel
+🚨	luz do carro da polícia
+🚥	semáforo horizontal
+🚦	semáforo vertical
+🛑	sinal de parada
+🚧	construção
+⚓	âncora
+⛵	barco a vela
+🛶	canoa
+🚤	lancha
+🛳️	navio de passageiros
+🛳	navio de passageiros
+⛴️	balsa
+⛴	balsa
+🛥️	barco a motor
+🛥	barco a motor
+🚢	enviar
+✈️	avião
+✈	avião
+🛩️	pequeno avião
+🛩	pequeno avião
+🛫	partida de avião
+🛬	chegada do avião
+💺	assento
+🚁	helicóptero
+🚟	ferrovia suspensa
+🚠	teleférico de montanha
+🚡	bonde aéreo
+🛰️	satélite
+🛰	satélite
+🚀	foguete
+🛸	disco voador
+🛎️	sino do carregador
+🛎	sino do carregador
+🧳	bagagem
+⌛	ampulheta pronta
+⏳	ampulheta não feita
+⌚	assistir
+⏰	despertador
+⏱️	cronômetro
+⏱	cronômetro
+⏲️	relógio temporizador
+⏲	relógio temporizador
+🕰️	relógio de lareira
+🕰	relógio de lareira
+🕛	doze horas
+🕧	doze trinta
+🕐	uma hora
+🕜	uma e meia
+🕑	duas horas
+🕝	duas e meia
+🕒	três horas
+🕞	três e meia
+🕓	quatro horas
+🕟	quatro e meia
+🕔	cinco horas
+🕠	cinco e meia
+🕕	seis horas
+🕡	seis e Meia
+🕖	sete horas
+🕢	sete e meia
+🕗	oito horas
+🕣	oito e meia
+🕘	nove horas
+🕤	nove e meia
+🕙	dez horas
+🕥	10:30
+🕚	onze horas
+🕦	onze e meia
+🌑	lua Nova
+🌒	lua crescente crescente
+🌓	lua do primeiro quarto
+🌔	lua minguante crescente
+🌕	lua cheia
+🌖	lua minguante minguante
+🌗	último quarto da lua
+🌘	lua crescente minguante
+🌙	lua crescente
+🌚	cara de lua nova
+🌛	rosto de lua crescente
+🌜	rosto da lua minguante
+🌡️	termômetro
+🌡	termômetro
+☀️	sol
+☀	sol
+🌝	cara de lua cheia
+🌞	sol com rosto
+⭐	estrela
+🌟	estrela brilhante
+🌠	estrela cadente
+☁️	nuvem
+☁	nuvem
+⛅	sol atrás da nuvem
+⛈️	nuvem com relâmpagos e chuva
+⛈	nuvem com relâmpagos e chuva
+🌤️	sol atrás de uma pequena nuvem
+🌤	sol atrás de uma pequena nuvem
+🌥️	sol atrás de uma grande nuvem
+🌥	sol atrás de uma grande nuvem
+🌦️	sol atrás da nuvem de chuva
+🌦	sol atrás da nuvem de chuva
+🌧️	nuvem com chuva
+🌧	nuvem com chuva
+🌨️	nuvem com neve
+🌨	nuvem com neve
+🌩️	nuvem com relâmpago
+🌩	nuvem com relâmpago
+🌪️	tornado
+🌪	tornado
+🌫️	névoa
+🌫	névoa
+🌬️	cara de vento
+🌬	cara de vento
+🌀	ciclone
+🌈	arco-íris
+🌂	guarda-chuva fechado
+☂️	guarda-chuva
+☂	guarda-chuva
+☔	guarda-chuva com gotas de chuva
+⛱️	guarda-chuva no chão
+⛱	guarda-chuva no chão
+⚡	alta voltagem
+❄️	floco de neve
+❄	floco de neve
+☃️	boneco de neve
+☃	boneco de neve
+⛄	boneco de neve sem neve
+☄️	cometa
+☄	cometa
+🔥	fogo
+💧	gotícula
+🌊	onda de água
+🎃	jack-o-lanterna
+🎄	árvore de Natal
+🎆	fogos de artifício
+🎇	diamante
+🧨	foguete
+✨	brilha
+🎈	balão
+🎉	popper de festa
+🎊	bola de confete
+🎋	árvore tanabata
+🎍	decoração de pinho
+🎎	Bonecas japonesas
+🎏	serpentina de carpa
+🎐	carrilhão de vento
+🎑	cerimônia de observação da lua
+🧧	envelope vermelho
+🎀	fita
+🎁	presente embrulhado
+🎗️	faixa de lembrete
+🎗	faixa de lembrete
+🎟️	ingressos de admissão
+🎟	ingressos de admissão
+🎫	bilhete
+🎖️	medalha militar
+🎖	medalha militar
+🏆	troféu
+🏅	medalha esportiva
+🥇	Medalha de 1º lugar
+🥈	Medalha de 2º lugar
+🥉	Medalha de 3º lugar
+⚽	bola de futebol
+⚾	beisebol
+🥎	softbol
+🏀	basquetebol
+🏐	voleibol
+🏈	futebol americano
+🏉	futebol de rúgbi
+🎾	tênis
+🥏	disco voador
+🎳	boliche
+🏏	jogo de críquete
+🏑	hóquei em campo
+🏒	Hockey no gelo
+🥍	lacrosse
+🏓	pingue-pongue
+🏸	badminton
+🥊	luva de boxe
+🥋	uniforme de artes marciais
+🥅	rede de gol
+⛳	bandeira no buraco
+⛸️	patins de gelo
+⛸	patins de gelo
+🎣	Vara de pescar
+🎽	camisa de corrida
+🎿	esquis
+🛷	trenó
+🥌	pedra de ondulação
+🎯	ataque direto
+🎱	piscina 8 bola
+🔮	bola de cristal
+🧿	amuleto de nazar
+🎮	videogame
+🕹️	controle de video game
+🕹	controle de video game
+🎰	caça-níqueis
+🎲	jogo morrer
+🧩	quebra-cabeça
+🧸	urso Teddy
+♠️	terno de espada
+♠	terno de espada
+♥️	terno de coração
+♥	terno de coração
+♦️	terno de diamante
+♦	terno de diamante
+♣️	terno de clube
+♣	terno de clube
+♟️	peão de xadrez
+♟	peão de xadrez
+🃏	palhaço
+🀄	dragão vermelho mahjong
+🎴	cartas de jogo de flores
+🎭	Artes performáticas
+🖼️	imagem emoldurada
+🖼	imagem emoldurada
+🎨	paleta de artista
+🧵	fio
+🧶	fio
+🔇	alto-falante silenciado
+🔈	alto-falante volume baixo
+🔉	alto-falante volume médio
+🔊	alto-falante alto volume
+📢	Alto-falante
+📣	megafone
+📯	buzina postal
+🔔	Sino
+🔕	sino com barra
+🎼	pontuação musical
+🎵	nota musical
+🎶	notas musicais
+🎙️	microfone de estúdio
+🎙	microfone de estúdio
+🎚️	controle deslizante de nível
+🎚	controle deslizante de nível
+🎛️	botões de controle
+🎛	botões de controle
+🎤	microfone
+🎧	fone de ouvido
+📻	rádio
+🎷	saxofone
+🎸	guitarra
+🎹	teclado musical
+🎺	trompete
+🎻	violino
+🥁	tambor
+📱	celular
+📲	telefone celular com seta
+☎️	Telefone
+☎	Telefone
+📞	receptor de telefone
+📟	pager
+📠	maquina de fax
+🔋	bateria
+🔌	tomada elétrica
+💻	notebook
+🖥️	computador desktop
+🖥	computador desktop
+🖨️	impressora
+🖨	impressora
+⌨️	teclado
+⌨	teclado
+🖱️	mouse de computador
+🖱	mouse de computador
+🖲️	trackball
+🖲	trackball
+💽	disco de computador
+💾	disquete
+💿	disco óptico
+📀	DVD
+🧮	ábaco
+🎥	câmera cinematográfica
+🎞️	quadros de filme
+🎞	quadros de filme
+📽️	projetor de filme
+📽	projetor de filme
+🎬	claquete
+📺	televisão
+📷	Câmera
+📸	câmera com flash
+📹	câmera de vídeo
+📼	videocassete
+🔍	lupa inclinada para a esquerda
+🔎	lupa inclinada para a direita
+🕯️	vela
+🕯	vela
+💡	lâmpada elétrica
+🔦	lanterna
+🏮	lanterna de papel vermelho
+📔	caderno com capa decorativa
+📕	livro fechado
+📖	abra o livro
+📗	livro verde
+📘	livro Azul
+📙	livro laranja
+📚	livros
+📓	caderno
+📒	livro razão
+📃	página com curvatura
+📜	rolagem
+📄	página voltada para cima
+📰	jornal
+🗞️	jornal enrolado
+🗞	jornal enrolado
+📑	guias de favoritos
+🔖	marca páginas
+🏷️	rótulo
+🏷	rótulo
+💰	Bolsa de dinheiro
+💴	nota de iene
+💵	nota de dólar
+💶	nota de euro
+💷	nota de libra
+💸	dinheiro com asas
+💳	Cartão de crédito
+🧾	recibo
+💹	gráfico aumentando com o iene
+💱	câmbio monetário
+💲	sinal de dólar pesado
+✉️	envelope
+✉	envelope
+📧	e-mail
+📨	envelope de entrada
+📩	envelope com seta
+📤	bandeja de saída
+📥	bandeja da caixa de entrada
+📦	pacote
+📫	caixa de correio fechada com bandeira levantada
+📪	caixa de correio fechada com bandeira abaixada
+📬	caixa de correio aberta com bandeira levantada
+📭	caixa de correio aberta com bandeira abaixada
+📮	caixa postal
+🗳️	urna com cédula
+🗳	urna com cédula
+✏️	lápis
+✏	lápis
+✒️	ponta preta
+✒	ponta preta
+🖋️	caneta tinteiro
+🖋	caneta tinteiro
+🖊️	caneta
+🖊	caneta
+🖌️	pincel
+🖌	pincel
+🖍️	GIS de cera
+🖍	GIS de cera
+📝	memorando
+💼	pasta
+📁	pasta de arquivo
+📂	abrir pasta de arquivos
+🗂️	divisores de índice de cartão
+🗂	divisores de índice de cartão
+📅	calendário
+📆	calendário destacável
+🗒️	bloco de notas espiral
+🗒	bloco de notas espiral
+🗓️	calendário espiral
+🗓	calendário espiral
+📇	fichário
+📈	gráfico aumentando
+📉	gráfico diminuindo
+📊	gráfico de barras
+📋	prancheta
+📌	alfinete
+📍	alfinete redondo
+📎	clipe de papel
+🖇️	clipes de papel vinculados
+🖇	clipes de papel vinculados
+📏	régua reta
+📐	régua triangular
+✂️	tesoura
+✂	tesoura
+🗃️	caixa de arquivo de cartão
+🗃	caixa de arquivo de cartão
+🗄️	arquivo
+🗄	arquivo
+🗑️	cesto de lixo
+🗑	cesto de lixo
+🔒	bloqueado
+🔓	desbloqueado
+🔏	trancado com caneta
+🔐	trancado com chave
+🔑	chave
+🗝️	chave velha
+🗝	chave velha
+🔨	martelo
+⛏️	escolha
+⛏	escolha
+⚒️	martelo e picareta
+⚒	martelo e picareta
+🛠️	martelo e chave inglesa
+🛠	martelo e chave inglesa
+🗡️	punhal
+🗡	punhal
+⚔️	espadas cruzadas
+⚔	espadas cruzadas
+🔫	pistola
+🏹	arco e flecha
+🛡️	escudo
+🛡	escudo
+🔧	chave inglesa
+🔩	porca e parafuso
+⚙️	engrenagem
+⚙	engrenagem
+🗜️	braçadeira
+🗜	braçadeira
+⚖️	escala de equilíbrio
+⚖	escala de equilíbrio
+🔗	link
+⛓️	correntes
+⛓	correntes
+🧰	Caixa de ferramentas
+🧲	magnético
+⚗️	alambique
+⚗	alambique
+🧪	tubo de ensaio
+🧫	placa de Petri
+🧬	ADN
+🔬	microscópio
+🔭	telescópio
+📡	antena de satélite
+💉	seringa
+💊	comprimido
+🚪	porta
+🛏️	cama
+🛏	cama
+🛋️	sofá e luminária
+🛋	sofá e luminária
+🚽	banheiro
+🚿	banho
+🛁	banheira
+🧴	frasco de loção
+🧷	pino de segurança
+🧹	vassoura
+🧺	cesta
+🧻	rolo de papel
+🧼	sabão
+🧽	esponja
+🧯	extintor de incêndio
+🛒	carrinho de compras
+🚬	cigarro
+⚰️	caixão
+⚰	caixão
+⚱️	urna funerária
+⚱	urna funerária
+🗿	moai
+🏧	Sinal de caixa eletrônico
+🚮	lixo no sinal da lixeira
+🚰	água potável
+♿	símbolo de cadeira de rodas
+🚹	quarto de homens
+🚺	quarto feminino
+🚻	banheiro
+🚼	símbolo do bebê
+🚾	armário de água
+🛂	controle de passaporte
+🛃	alfândega
+🛄	retirada de bagagem
+🛅	bagagem esquerda
+⚠️	aviso
+⚠	aviso
+🚸	crianças atravessando
+⛔	Entrada proibida
+🚫	Entrada
+🚳	Proibido Bicicletas
+🚭	Proibido fumar
+🚯	Proibido jogar lixo
+🚱	água não potável
+🚷	Proibido Pedestres
+📵	sem telefones celulares
+🔞	ninguém com menos de dezoito anos
+☢️	radioativo
+☢	radioativo
+☣️	risco biológico
+☣	risco biológico
+⬆️	seta para cima
+⬆	seta para cima
+↗️	seta para cima e para a direita
+↗	seta para cima e para a direita
+➡️	seta direita
+➡	seta direita
+↘️	seta para baixo à direita
+↘	seta para baixo à direita
+⬇️	seta para baixo
+⬇	seta para baixo
+↙️	seta para baixo à esquerda
+↙	seta para baixo à esquerda
+⬅️	seta esquerda
+⬅	seta esquerda
+↖️	seta para cima-esquerda
+↖	seta para cima-esquerda
+↕️	seta para cima e para baixo
+↕	seta para cima e para baixo
+↔️	seta esquerda-direita
+↔	seta esquerda-direita
+↩️	seta para a direita curvando-se para a esquerda
+↩	seta para a direita curvando-se para a esquerda
+↪️	seta para a esquerda curvando-se para a direita
+↪	seta para a esquerda curvando-se para a direita
+⤴️	seta para a direita curvando-se para cima
+⤴	seta para a direita curvando-se para cima
+⤵️	seta para a direita curvando-se para baixo
+⤵	seta para a direita curvando-se para baixo
+🔃	setas verticais no sentido horário
+🔄	botão de setas no sentido anti-horário
+🔙	Seta VOLTAR
+🔚	Seta FIM
+🔛	Seta ON
+🔜	EM BREVE seta
+🔝	Seta PARA CIMA
+🛐	local de culto
+⚛️	símbolo do átomo
+⚛	símbolo do átomo
+🕉️	ah
+🕉	ah
+✡️	estrela de Davi
+✡	estrela de Davi
+☸️	roda do dharma
+☸	roda do dharma
+☯️	yin yang
+☯	yin yang
+✝️	cruz latina
+✝	cruz latina
+☦️	cruz ortodoxa
+☦	cruz ortodoxa
+☪️	estrela e crescente
+☪	estrela e crescente
+☮️	símbolo de paz
+☮	símbolo de paz
+🕎	Menorá
+🔯	estrela pontilhada de seis pontas
+♈	Áries
+♉	Touro
+♊	Gêmeos
+♋	Câncer
+♌	Leão
+♍	Virgem
+♎	Libra
+♏	Escorpião
+♐	Sagitário
+♑	Capricórnio
+♒	Aquário
+♓	Peixes
+⛎	Ophiuchus
+🔀	botão de reprodução aleatória de faixas
+🔁	botão repetir
+🔂	repetir botão único
+▶️	botão de reprodução
+▶	botão de reprodução
+⏩	botão de avanço rápido
+⏭️	botão próxima faixa
+⏭	botão próxima faixa
+⏯️	botão reproduzir ou pausar
+⏯	botão reproduzir ou pausar
+◀️	botão reverso
+◀	botão reverso
+⏪	botão de retrocesso rápido
+⏮️	botão da última faixa
+⏮	botão da última faixa
+🔼	botão para cima
+⏫	botão de aceleração
+🔽	botão para baixo
+⏬	botão de descida rápida
+⏸️	botão de pausa
+⏸	botão de pausa
+⏹️	botão de parada
+⏹	botão de parada
+⏺️	botão de gravação
+⏺	botão de gravação
+⏏️	botão ejetar
+⏏	botão ejetar
+🎦	cinema
+🔅	botão escurecer
+🔆	botão brilhante
+📶	barras de antena
+📳	modo de vibração
+📴	celular desligado
+♀️	sinal feminino
+♀	sinal feminino
+♂️	signo masculino
+♂	signo masculino
+⚕️	símbolo médico
+⚕	símbolo médico
+♾️	infinidade
+♾	infinidade
+♻️	símbolo de reciclagem
+♻	símbolo de reciclagem
+⚜️	flor de lis
+⚜	flor de lis
+🔱	emblema do tridente
+📛	crachá
+🔰	Símbolo japonês para iniciante
+⭕	círculo grande e pesado
+✅	marca de seleção branca pesada
+☑️	urna com cheque
+☑	urna com cheque
+✔️	marca de seleção pesada
+✔	marca de seleção pesada
+✖️	multiplicação pesada x
+✖	multiplicação pesada x
+❌	marca cruzada
+❎	botão de marca cruzada
+➕	sinal de mais pesado
+➖	sinal de menos pesado
+➗	sinal de divisão pesada
+➰	laço encaracolado
+➿	laço encaracolado duplo
+〽️	marca de alternância de parte
+〽	marca de alternância de parte
+✳️	asterisco de oito raios
+✳	asterisco de oito raios
+✴️	estrela de oito pontas
+✴	estrela de oito pontas
+❇️	brilhar
+❇	brilhar
+‼️	ponto de exclamação duplo
+‼	ponto de exclamação duplo
+⁉️	ponto de interrogação de exclamação
+⁉	ponto de interrogação de exclamação
+❓	ponto de interrogação
+❔	ponto de interrogação branco
+❕	ponto de exclamação branco
+❗	ponto de exclamação
+〰️	traço ondulado
+〰	traço ondulado
+©️	direito autoral
+©	direito autoral
+®️	registrado
+®	registrado
+™️	marca comercial
+™	marca comercial
+#️⃣	tecla: #
+#⃣	tecla: #
+*️⃣	tecla: *
+*⃣	tecla: *
+0️⃣	tecla: 0
+0⃣	tecla: 0
+1️⃣	tecla: 1
+1⃣	tecla: 1
+2️⃣	tecla: 2
+2⃣	tecla: 2
+3️⃣	tecla: 3
+3⃣	tecla: 3
+4️⃣	tecla: 4
+4⃣	tecla: 4
+5️⃣	tecla: 5
+5⃣	tecla: 5
+6️⃣	tecla: 6
+6⃣	tecla: 6
+7️⃣	tecla: 7
+7⃣	tecla: 7
+8️⃣	tecla: 8
+8⃣	tecla: 8
+9️⃣	tecla: 9
+9⃣	tecla: 9
+🔟	tecla: 10
+💯	cem pontos
+🔠	entrada latina maiúscula
+🔡	entrada latina minúscula
+🔢	números de entrada
+🔣	símbolos de entrada
+🔤	inserir letras latinas
+🅰️	Um botão (tipo sanguíneo)
+🅰	Um botão (tipo sanguíneo)
+🆎	Botão AB (tipo sanguíneo)
+🅱️	Botão B (tipo sanguíneo)
+🅱	Botão B (tipo sanguíneo)
+🆑	Botão CL
+🆒	Botão FRESCO
+🆓	Botão GRATUITO
+ℹ️	Informação
+ℹ	Informação
+🆔	Botão ID
+Ⓜ️	circulado M
+Ⓜ	circulado M
+🆕	Botão NOVO
+🆖	Botão NG
+🅾️	Botão O (tipo sanguíneo)
+🅾	Botão O (tipo sanguíneo)
+🆗	Botão OK
+🅿️	Botão P
+🅿	Botão P
+🆘	Botão SOS
+🆙	Botão PARA CIMA
+🆚	Botão VS
+🈁	Botão japonês “aqui”
+🈂️	Botão japonês de “taxa de serviço”
+🈂	Botão japonês de “taxa de serviço”
+🈷️	Botão japonês “valor mensal”
+🈷	Botão japonês “valor mensal”
+🈶	Botão japonês “não gratuito”
+🈯	Botão japonês “reservado”
+🉐	Botão japonês de “pechincha”
+🈹	Botão japonês de “desconto”
+🈚	Botão japonês “gratuito”
+🈲	Botão japonês “proibido”
+🉑	Botão japonês “aceitável”
+🈸	Botão de “aplicativo” japonês
+🈴	Botão japonês de “nota de aprovação”
+🈳	Botão de “vaga” japonês
+㊗️	Botão japonês “parabéns”
+㊗	Botão japonês “parabéns”
+㊙️	Botão “secreto” japonês
+㊙	Botão “secreto” japonês
+🈺	Botão japonês “aberto para negócios”
+🈵	Botão japonês “sem vaga”
+▪️	quadrado pequeno preto
+▪	quadrado pequeno preto
+▫️	quadrado pequeno branco
+▫	quadrado pequeno branco
+◻️	quadrado médio branco
+◻	quadrado médio branco
+◼️	quadrado médio preto
+◼	quadrado médio preto
+◽	quadrado branco médio-pequeno
+◾	quadrado preto médio-pequeno
+⬛	quadrado preto grande
+⬜	quadrado grande branco
+🔶	grande diamante laranja
+🔷	grande diamante azul
+🔸	pequeno diamante laranja
+🔹	pequeno diamante azul
+🔺	triângulo vermelho apontado para cima
+🔻	triângulo vermelho apontado para baixo
+💠	diamante com um ponto
+🔘	botao de radio
+🔲	botão quadrado preto
+🔳	botão quadrado branco
+⚪	círculo branco
+⚫	círculo preto
+🔴	círculo vermelho
+🔵	círculo azul
+🏁	bandeira quadriculada
+🚩	bandeira triangular
+🎌	bandeiras cruzadas
+🏴	Bandeira preta
+🏳️	bandeira branca
+🏳	bandeira branca
+🏳️‍🌈	bandeira do arco-íris
+🏳‍🌈	bandeira do arco-íris
+🏴‍☠️	bandeira pirata
+🏴‍☠	bandeira pirata
+🇦🇨	Ilha de Ascensão
+🇦🇩	Andorra
+🇦🇪	Emirados Árabes Unidos
+🇦🇫	Afeganistão
+🇦🇬	Antígua e Barbuda
+🇦🇮	Anguila
+🇦🇱	Albânia
+🇦🇲	Armênia
+🇦🇴	Angola
+🇦🇶	Antártica
+🇦🇷	Argentina
+🇦🇸	Samoa Americana
+🇦🇹	Áustria
+🇦🇺	Austrália
+🇦🇼	Aruba
+🇦🇽	Ilhas Aland
+🇦🇿	Azerbaijão
+🇧🇦	Bósnia e Herzegovina
+🇧🇧	Barbados
+🇧🇩	Bangladesh
+🇧🇪	Bélgica
+🇧🇫	Burkina Faso
+🇧🇬	Bulgária
+🇧🇭	Bahrein
+🇧🇮	Burundi
+🇧🇯	Benim
+🇧🇱	São Bartolomeu
+🇧🇲	Bermudas
+🇧🇳	Brunei
+🇧🇴	Bolívia
+🇧🇶	Holanda caribenha
+🇧🇷	Brasil
+🇧🇸	Bahamas
+🇧🇹	Butão
+🇧🇻	Ilha Bouvet
+🇧🇼	Botsuana
+🇧🇾	Bielorrússia
+🇧🇿	Belize
+🇨🇦	Canadá
+🇨🇨	Ilhas Cocos (Keeling)
+🇨🇩	Congo - Kinshasa
+🇨🇫	República Centro-Africana
+🇨🇬	Congo - Brazavile
+🇨🇭	Suíça
+🇨🇮	Costa do Marfim
+🇨🇰	Ilhas Cook
+🇨🇱	Chile
+🇨🇲	Camarões
+🇨🇳	China
+🇨🇴	Colômbia
+🇨🇵	Ilha de Clipperton
+🇨🇷	Costa Rica
+🇨🇺	Cuba
+🇨🇻	cabo Verde
+🇨🇼	Curaçau
+🇨🇽	Ilha do Natal
+🇨🇾	Chipre
+🇨🇿	Tcheca
+🇩🇪	Alemanha
+🇩🇬	Diego Garcia
+🇩🇯	Djibuti
+🇩🇰	Dinamarca
+🇩🇲	Domínica
+🇩🇴	República Dominicana
+🇩🇿	Argélia
+🇪🇦	Ceuta e Melilha
+🇪🇨	Equador
+🇪🇪	Estônia
+🇪🇬	Egito
+🇪🇭	Saara Ocidental
+🇪🇷	Eritreia
+🇪🇸	Espanha
+🇪🇹	Etiópia
+🇪🇺	União Europeia
+🇫🇮	Finlândia
+🇫🇯	Fiji
+🇫🇰	Ilhas Malvinas
+🇫🇲	Micronésia
+🇫🇴	ilhas Faroe
+🇫🇷	França
+🇬🇦	Gabão
+🇬🇧	Reino Unido
+🇬🇩	Granada
+🇬🇪	Geórgia
+🇬🇫	Guiana Francesa
+🇬🇬	Guernsey
+🇬🇭	Gana
+🇬🇮	Gibraltar
+🇬🇱	Groenlândia
+🇬🇲	Gâmbia
+🇬🇳	Guiné
+🇬🇵	Guadalupe
+🇬🇶	Guiné Equatorial
+🇬🇷	Grécia
+🇬🇸	Geórgia do Sul e Ilhas Sandwich do Sul
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guiné-Bissau
+🇬🇾	Guiana
+🇭🇰	Hong Kong, RAE da China
+🇭🇲	Ilhas Ouvidas e McDonald
+🇭🇳	Honduras
+🇭🇷	Croácia
+🇭🇹	Haiti
+🇭🇺	Hungria
+🇮🇨	Ilhas Canárias
+🇮🇩	Indonésia
+🇮🇪	Irlanda
+🇮🇱	Israel
+🇮🇲	Ilha de Man
+🇮🇳	Índia
+🇮🇴	Território Britânico do Oceano Índico
+🇮🇶	Iraque
+🇮🇷	Irã
+🇮🇸	Islândia
+🇮🇹	Itália
+🇯🇪	Jersey
+🇯🇲	Jamaica
+🇯🇴	Jordânia
+🇯🇵	Japão
+🇰🇪	Quênia
+🇰🇬	Quirguistão
+🇰🇭	Camboja
+🇰🇮	Quiribáti
+🇰🇲	Comores
+🇰🇳	São Cristóvão e Nevis
+🇰🇵	Coréia do Norte
+🇰🇷	Coreia do Sul
+🇰🇼	Kuwait
+🇰🇾	Ilhas Cayman
+🇰🇿	Cazaquistão
+🇱🇦	Laos
+🇱🇧	Líbano
+🇱🇨	Santa Lúcia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Libéria
+🇱🇸	Lesoto
+🇱🇹	Lituânia
+🇱🇺	Luxemburgo
+🇱🇻	Letônia
+🇱🇾	Líbia
+🇲🇦	Marrocos
+🇲🇨	Mônaco
+🇲🇩	Moldávia
+🇲🇪	Montenegro
+🇲🇫	São Martinho
+🇲🇬	Madagáscar
+🇲🇭	Ilhas Marshall
+🇲🇰	Macedônia
+🇲🇱	Mali
+🇲🇲	Mianmar (Birmânia)
+🇲🇳	Mongólia
+🇲🇴	Macau, RAE da China
+🇲🇵	Ilhas Marianas do Norte
+🇲🇶	Martinica
+🇲🇷	Mauritânia
+🇲🇸	Montserrate
+🇲🇹	Malta
+🇲🇺	Maurício
+🇲🇻	Maldivas
+🇲🇼	Maláui
+🇲🇽	México
+🇲🇾	Malásia
+🇲🇿	Moçambique
+🇳🇦	Namíbia
+🇳🇨	Nova Caledônia
+🇳🇪	Níger
+🇳🇫	Ilha Norfolk
+🇳🇬	Nigéria
+🇳🇮	Nicarágua
+🇳🇱	Holanda
+🇳🇴	Noruega
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Nova Zelândia
+🇴🇲	Omã
+🇵🇦	Panamá
+🇵🇪	Peru
+🇵🇫	Polinésia Francesa
+🇵🇬	Papua Nova Guiné
+🇵🇭	Filipinas
+🇵🇰	Paquistão
+🇵🇱	Polônia
+🇵🇲	São Pedro e Miquelon
+🇵🇳	Ilhas Pitcairn
+🇵🇷	Porto Rico
+🇵🇸	Territórios Palestinos
+🇵🇹	Portugal
+🇵🇼	Palau
+🇵🇾	Paraguai
+🇶🇦	Catar
+🇷🇪	Reunião
+🇷🇴	Romênia
+🇷🇸	Sérvia
+🇷🇺	Rússia
+🇷🇼	Ruanda
+🇸🇦	Arábia Saudita
+🇸🇧	Ilhas Salomão
+🇸🇨	Seicheles
+🇸🇩	Sudão
+🇸🇪	Suécia
+🇸🇬	Cingapura
+🇸🇭	Santa Helena
+🇸🇮	Eslovênia
+🇸🇯	Svalbard e Jan Mayen
+🇸🇰	Eslováquia
+🇸🇱	Serra Leoa
+🇸🇲	São Marino
+🇸🇳	Senegal
+🇸🇴	Somália
+🇸🇷	Suriname
+🇸🇸	Sudão do Sul
+🇸🇹	São Tomé e Príncipe
+🇸🇻	El Salvador
+🇸🇽	São Martinho
+🇸🇾	Síria
+🇸🇿	Suazilândia
+🇹🇦	Tristão da Cunha
+🇹🇨	Ilhas Turcas e Caicos
+🇹🇩	Chade
+🇹🇫	Territórios Franceses do Sul
+🇹🇬	Ir
+🇹🇭	Tailândia
+🇹🇯	Tadjiquistão
+🇹🇰	Toquelau
+🇹🇱	Timor-Leste
+🇹🇲	Turcomenistão
+🇹🇳	Tunísia
+🇹🇴	Tonga
+🇹🇷	Peru
+🇹🇹	Trinidad e Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taiwan
+🇹🇿	Tanzânia
+🇺🇦	Ucrânia
+🇺🇬	Uganda
+🇺🇲	Ilhas Distantes dos EUA
+🇺🇳	Nações Unidas
+🇺🇸	Estados Unidos
+🇺🇾	Uruguai
+🇺🇿	Uzbequistão
+🇻🇦	Cidade do Vaticano
+🇻🇨	São Vicente e Granadinas
+🇻🇪	Venezuela
+🇻🇬	Ilhas Virgens Britânicas
+🇻🇮	Ilhas Virgens dos EUA
+🇻🇳	Vietnã
+🇻🇺	Vanuatu
+🇼🇫	Wallis e Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Iémen
+🇾🇹	Maiote
+🇿🇦	África do Sul
+🇿🇲	Zâmbia
+🇿🇼	Zimbábue
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Inglaterra
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Escócia
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	País de Gales

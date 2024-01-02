@@ -52,4 +52,5 @@
 28|[Stanza](https://github.com/stanfordnlp/stanza)|1.7.0|齐鹏, 张宇浩, 张钰晖,<br>Jason Bolton, Tim Dozat, John Bauer|[Apache-2.0](https://github.com/stanfordnlp/stanza/blob/main/LICENSE)
 29|[SudachiPy](https://github.com/WorksApplications/sudachi.rs)|0.6.7|Works Applications Co., Ltd.|[Apache-2.0](https://github.com/WorksApplications/sudachi.rs/blob/develop/LICENSE)
 30|[Underthesea](https://undertheseanlp.com/)|6.8.0|Vu Anh|[GPL-3.0-or-later](https://github.com/undertheseanlp/underthesea/blob/main/LICENSE)
-31|[wordcloud](https://github.com/amueller/word_cloud)|1.9.3|Andreas Christian Müller|[MIT](https://github.com/amueller/word_cloud/blob/main/LICENSE)
+31|[VADER](https://github.com/cjhutto/vaderSentiment)|3.3.2|C.J. Hutto|[MIT](https://github.com/cjhutto/vaderSentiment/blob/master/LICENSE.txt)
+32|[wordcloud](https://github.com/amueller/word_cloud)|1.9.3|Andreas Christian Müller|[MIT](https://github.com/amueller/word_cloud/blob/main/LICENSE)

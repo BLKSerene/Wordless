@@ -51,14 +51,7 @@ def detect_encoding(main, file_path):
 
     return encoding
 
-# pylint: disable=no-member
-lingua_detector = lingua.LanguageDetectorBuilder.from_all_languages_without(
-    lingua.Language.BOSNIAN,
-    lingua.Language.MAORI,
-    lingua.Language.SHONA,
-    lingua.Language.TSONGA,
-    lingua.Language.XHOSA
-).build()
+lingua_detector = lingua.LanguageDetectorBuilder.from_all_languages().build() # pylint: disable=no-member
 
 def detect_lang_text(main, text):
     if not main.settings_custom['files']['auto_detection_settings']['num_lines_no_limit']:

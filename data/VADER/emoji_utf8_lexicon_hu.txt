@@ -1,0 +1,3570 @@
+😀	vigyorgó arc
+😁	mosolygó szemekkel sugárzó arc
+😂	arc az öröm könnyeivel
+🤣	a padlón gurulva nevetni
+😃	vigyorgó arc nagy szemekkel
+😄	vigyorgó arc, mosolygós szemekkel
+😅	izzadságtól vigyorgó arc
+😆	vigyorgó hunyorgó arc
+😉	kacsintó arc
+😊	mosolygó arc, mosolygó szemek
+😋	arca ízlelgeti az ételt
+😎	mosolygó arc napszemüveggel
+😍	mosolygó arc szív-szemekkel
+😘	csókot lehelő arc
+🥰	mosolygó arc 3 szívvel
+😗	csókolózó arc
+😙	mosolygós szemekkel csókolózó arc
+😚	csukott szemmel csókolózó arc
+☺️	mosolygó arc
+☺	mosolygó arc
+🙂	enyhén mosolygó arc
+🤗	átölelő arc
+🤩	sztár ütött
+🤔	gondolkodó arc
+🤨	arc felvont szemöldökkel
+😐	semleges arc
+😑	kifejezéstelen arc
+😶	száj nélküli arc
+🙄	forgó szemű arc
+😏	vigyorgó arc
+😣	kitartó arcát
+😥	szomorú, de megkönnyebbült arc
+😮	nyitott szájú arc
+🤐	cipzáras szájú arc
+😯	elcsuklott arc
+😪	álmos arc
+😫	fáradt arc
+😴	alvó arc
+😌	megkönnyebbült arc
+😛	arc a nyelvvel
+😜	nyelvével kacsintó arc
+😝	hunyorgó arc nyelvvel
+🤤	nyáladzó arc
+😒	szórakozott arc
+😓	lesütött arc verejtéktől
+😔	töprengő arc
+😕	zavart arc
+🙃	fejjel lefelé fordított arc
+🤑	pénzszájú arc
+😲	csodálkozó arc
+☹️	összeráncolt arc
+☹	összeráncolt arc
+🙁	enyhén ráncos arc
+😖	zavart arc
+😞	csalódott arc
+😟	aggódó arc
+😤	arcát gőzzel az orrából
+😢	síró arc
+😭	hangosan síró arc
+😦	homlokráncolt arc tátott szájjal
+😧	gyötrődő arc
+😨	félelmetes arc
+😩	fáradt arc
+🤯	felrobbanó fej
+😬	grimaszolt arc
+😰	izzadt aggodalmas arc
+😱	félelmében sikoltozó arc
+🥵	forró arc
+🥶	hideg arc
+😳	kipirult arc
+🤪	bolond arc
+😵	szédült arc
+😡	duzzogó arc
+😠	mérges arc
+🤬	arc szimbólumokkal a szájon
+😷	arc orvosi maszkkal
+🤒	arc hőmérővel
+🤕	arcát fejkötéssel
+🤢	émelygő arc
+🤮	arc hányás
+🤧	tüsszögő arc
+😇	mosolygó arc glóriával
+🤠	cowboy kalap arc
+🥳	bulizós arc
+🥴	nyűgös arc
+🥺	könyörgő arc
+🤥	hazug arc
+🤫	csitító arc
+🤭	arc a szájon át
+🧐	arca monoklival
+🤓	majom arc
+😈	mosolygó arc szarvakkal
+👿	dühös arc szarvakkal
+🤡	bohóc arc
+👹	emberevő óriás
+👺	kobold
+💀	koponya
+☠️	halálfej
+☠	halálfej
+👻	szellem
+👽	idegen
+👾	idegen szörnyeteg
+🤖	robot arc
+💩	halom kaki
+😺	vigyorgó macskaarc
+😸	vigyorgó macskaarc mosolygó szemekkel
+😹	macska arca örömkönnyekkel
+😻	mosolygós macskaarc szív-szemekkel
+😼	macskaarc fanyar mosollyal
+😽	csókolózó macskaarc
+🙀	fáradt macskaarc
+😿	síró macskaarc
+😾	duzzogó macskaarc
+🙈	nem látni gonosz majom
+🙉	hall-nem-gonosz majom
+🙊	ne beszélj gonosz majom
+🏻	világos bőrtónus
+🏼	közepesen világos bőrtónus
+🏽	közepes bőrtónus
+🏾	közepesen sötét bőrtónus
+🏿	sötét bőrtónus
+👶	baba
+👶🏻	baba: világos bőrtónus
+👶🏼	baba: közepesen világos bőrtónus
+👶🏽	baba: közepes bőrtónus
+👶🏾	baba: közepesen sötét bőrtónus
+👶🏿	baba: sötét bőrtónus
+🧒	gyermek
+🧒🏻	gyermek: világos bőrtónus
+🧒🏼	gyermek: közepesen világos bőrtónus
+🧒🏽	gyermek: közepes bőrtónus
+🧒🏾	gyermek: közepesen sötét bőrtónus
+🧒🏿	gyermek: sötét bőrtónus
+👦	fiú
+👦🏻	fiú: világos bőrtónus
+👦🏼	fiú: közepesen világos bőrtónus
+👦🏽	fiú: közepes bőrtónus
+👦🏾	fiú: közepesen sötét bőrtónus
+👦🏿	fiú: sötét bőrtónus
+👧	lány
+👧🏻	lány: világos bőrtónus
+👧🏼	lány: közepesen világos bőrtónus
+👧🏽	lány: közepes bőrtónus
+👧🏾	lány: közepesen sötét bőrtónus
+👧🏿	lány: sötét bőrtónus
+🧑	felnőtt
+🧑🏻	felnőtt: világos bőrtónus
+🧑🏼	felnőtt: közepesen világos bőrtónus
+🧑🏽	felnőtt: közepes bőrtónus
+🧑🏾	felnőtt: közepesen sötét bőrtónus
+🧑🏿	felnőtt: sötét bőrtónus
+👨	Férfi
+👨🏻	férfi: világos bőrtónus
+👨🏼	férfi: közepesen világos bőrtónus
+👨🏽	férfi: közepes bőrtónus
+👨🏾	férfi: közepesen sötét bőrtónus
+👨🏿	férfi: sötét bőrtónus
+👩	nő
+👩🏻	nő: világos bőrtónus
+👩🏼	nő: közepesen világos bőrtónus
+👩🏽	nő: közepes bőrtónus
+👩🏾	nő: közepesen sötét bőrtónus
+👩🏿	nő: sötét bőrtónus
+🧓	idősebb felnőtt
+🧓🏻	idősebb felnőtt: világos bőrtónus
+🧓🏼	idősebb felnőtt: közepesen világos bőrtónus
+🧓🏽	idősebb felnőtt: közepes bőrtónus
+🧓🏾	idősebb felnőtt: közepesen sötét bőrtónus
+🧓🏿	idősebb felnőtt: sötét bőrtónus
+👴	idős ember
+👴🏻	öreg: világos bőrtónus
+👴🏼	idős férfi: közepesen világos bőrtónus
+👴🏽	öreg: közepes bőrtónus
+👴🏾	öreg: közepesen sötét bőrtónus
+👴🏿	öreg: sötét bőrtónus
+👵	idős nő
+👵🏻	öregasszony: világos bőrtónus
+👵🏼	idős nő: közepesen világos bőrtónus
+👵🏽	öregasszony: közepes bőrtónus
+👵🏾	idős nő: közepesen sötét bőrtónus
+👵🏿	öregasszony: sötét bőrtónus
+👨‍⚕️	férfi egészségügyi dolgozó
+👨‍⚕	férfi egészségügyi dolgozó
+👨🏻‍⚕️	férfi egészségügyi dolgozó: világos bőrtónus
+👨🏻‍⚕	férfi egészségügyi dolgozó: világos bőrtónus
+👨🏼‍⚕️	férfi egészségügyi dolgozó: közepesen világos bőrtónus
+👨🏼‍⚕	férfi egészségügyi dolgozó: közepesen világos bőrtónus
+👨🏽‍⚕️	férfi egészségügyi dolgozó: közepes bőrtónus
+👨🏽‍⚕	férfi egészségügyi dolgozó: közepes bőrtónus
+👨🏾‍⚕️	férfi egészségügyi dolgozó: közepesen sötét bőrtónus
+👨🏾‍⚕	férfi egészségügyi dolgozó: közepesen sötét bőrtónus
+👨🏿‍⚕️	férfi egészségügyi dolgozó: sötét bőrtónus
+👨🏿‍⚕	férfi egészségügyi dolgozó: sötét bőrtónus
+👩‍⚕️	egészségügyi dolgozó nő
+👩‍⚕	egészségügyi dolgozó nő
+👩🏻‍⚕️	nő egészségügyi dolgozó: világos bőrtónus
+👩🏻‍⚕	nő egészségügyi dolgozó: világos bőrtónus
+👩🏼‍⚕️	egészségügyi dolgozó nő: közepesen világos bőrtónus
+👩🏼‍⚕	egészségügyi dolgozó nő: közepesen világos bőrtónus
+👩🏽‍⚕️	nő egészségügyi dolgozó: közepes bőrtónus
+👩🏽‍⚕	nő egészségügyi dolgozó: közepes bőrtónus
+👩🏾‍⚕️	egészségügyi dolgozó nő: közepesen sötét bőrtónus
+👩🏾‍⚕	egészségügyi dolgozó nő: közepesen sötét bőrtónus
+👩🏿‍⚕️	egészségügyi dolgozó nő: sötét bőrtónus
+👩🏿‍⚕	egészségügyi dolgozó nő: sötét bőrtónus
+👨‍🎓	férfi diák
+👨🏻‍🎓	férfi diák: világos bőrtónus
+👨🏼‍🎓	férfi diák: közepesen világos bőrtónus
+👨🏽‍🎓	férfi diák: közepes bőrtónus
+👨🏾‍🎓	férfi diák: közepesen sötét bőrtónus
+👨🏿‍🎓	férfi diák: sötét bőrtónus
+👩‍🎓	diáklány
+👩🏻‍🎓	diáklány: világos bőrtónus
+👩🏼‍🎓	diáklány: közepesen világos bőrtónus
+👩🏽‍🎓	diáklány: közepes bőrtónus
+👩🏾‍🎓	diáklány: közepesen sötét bőrtónus
+👩🏿‍🎓	diáklány: sötét bőrtónus
+👨‍🏫	férfi tanár
+👨🏻‍🏫	férfi tanár: világos bőrtónus
+👨🏼‍🏫	férfi tanár: közepesen világos bőrtónus
+👨🏽‍🏫	férfi tanár: közepes bőrtónus
+👨🏾‍🏫	férfi tanár: közepesen sötét bőrtónus
+👨🏿‍🏫	férfi tanár: sötét bőrtónus
+👩‍🏫	tanárnő
+👩🏻‍🏫	tanárnő: világos bőrtónus
+👩🏼‍🏫	tanárnő: közepesen világos bőrtónus
+👩🏽‍🏫	tanárnő: közepes bőrtónus
+👩🏾‍🏫	tanárnő: közepesen sötét bőrtónus
+👩🏿‍🏫	tanárnő: sötét bőrtónus
+👨‍⚖️	ember bíró
+👨‍⚖	ember bíró
+👨🏻‍⚖️	férfi bíró: világos bőrtónus
+👨🏻‍⚖	férfi bíró: világos bőrtónus
+👨🏼‍⚖️	férfi bíró: közepesen világos bőrtónus
+👨🏼‍⚖	férfi bíró: közepesen világos bőrtónus
+👨🏽‍⚖️	férfi bíró: közepes bőrtónus
+👨🏽‍⚖	férfi bíró: közepes bőrtónus
+👨🏾‍⚖️	férfi bíró: közepesen sötét bőrtónus
+👨🏾‍⚖	férfi bíró: közepesen sötét bőrtónus
+👨🏿‍⚖️	férfi bíró: sötét bőrtónus
+👨🏿‍⚖	férfi bíró: sötét bőrtónus
+👩‍⚖️	nő bíró
+👩‍⚖	nő bíró
+👩🏻‍⚖️	nő bíró: világos bőrtónus
+👩🏻‍⚖	nő bíró: világos bőrtónus
+👩🏼‍⚖️	nő bíró: közepesen világos bőrtónus
+👩🏼‍⚖	nő bíró: közepesen világos bőrtónus
+👩🏽‍⚖️	nő bíró: közepes bőrtónus
+👩🏽‍⚖	nő bíró: közepes bőrtónus
+👩🏾‍⚖️	nő bíró: közepesen sötét bőrtónus
+👩🏾‍⚖	nő bíró: közepesen sötét bőrtónus
+👩🏿‍⚖️	nő bíró: sötét bőrtónus
+👩🏿‍⚖	nő bíró: sötét bőrtónus
+👨‍🌾	férfi gazda
+👨🏻‍🌾	férfi farmer: világos bőrtónus
+👨🏼‍🌾	férfi farmer: közepesen világos bőrtónus
+👨🏽‍🌾	férfi farmer: közepes bőrtónus
+👨🏾‍🌾	férfi farmer: közepesen sötét bőrtónus
+👨🏿‍🌾	férfi farmer: sötét bőrtónus
+👩‍🌾	gazda asszony
+👩🏻‍🌾	farmer nő: világos bőrtónus
+👩🏼‍🌾	farmer nő: közepesen világos bőrtónus
+👩🏽‍🌾	farmer nő: közepes bőrtónus
+👩🏾‍🌾	farmer nő: közepesen sötét bőrtónus
+👩🏿‍🌾	farmer nő: sötét bőrtónus
+👨‍🍳	férfi szakács
+👨🏻‍🍳	férfi szakács: világos bőrtónus
+👨🏼‍🍳	férfi szakács: közepesen világos bőrtónus
+👨🏽‍🍳	férfi szakács: közepes bőrtónus
+👨🏾‍🍳	férfi szakács: közepesen sötét bőrtónus
+👨🏿‍🍳	férfi szakács: sötét bőrtónus
+👩‍🍳	nő szakács
+👩🏻‍🍳	nő szakács: világos bőrtónus
+👩🏼‍🍳	nő szakácsnő: közepesen világos bőrtónus
+👩🏽‍🍳	nő szakács: közepes bőrtónus
+👩🏾‍🍳	nő szakácsnő: közepesen sötét bőrtónus
+👩🏿‍🍳	nő szakács: sötét bőrtónus
+👨‍🔧	férfi szerelő
+👨🏻‍🔧	férfi szerelő: világos bőrtónus
+👨🏼‍🔧	férfi szerelő: közepesen világos bőrtónus
+👨🏽‍🔧	férfi szerelő: közepes bőrtónus
+👨🏾‍🔧	férfi szerelő: közepesen sötét bőrtónus
+👨🏿‍🔧	férfi szerelő: sötét bőrtónus
+👩‍🔧	szerelő nő
+👩🏻‍🔧	női szerelő: világos bőrtónus
+👩🏼‍🔧	női szerelő: közepesen világos bőrtónus
+👩🏽‍🔧	női szerelő: közepes bőrtónus
+👩🏾‍🔧	női szerelő: közepesen sötét bőrtónus
+👩🏿‍🔧	női szerelő: sötét bőrtónus
+👨‍🏭	férfi gyári munkás
+👨🏻‍🏭	férfi gyári munkás: világos bőrtónus
+👨🏼‍🏭	férfi gyári munkás: közepesen világos bőrtónus
+👨🏽‍🏭	férfi gyári munkás: közepes bőrtónus
+👨🏾‍🏭	férfi gyári munkás: közepesen sötét bőrtónus
+👨🏿‍🏭	férfi gyári munkás: sötét bőrtónus
+👩‍🏭	nő gyári munkás
+👩🏻‍🏭	gyári dolgozó nő: világos bőrtónus
+👩🏼‍🏭	gyári dolgozó nő: közepesen világos bőrtónus
+👩🏽‍🏭	gyári dolgozó nő: közepes bőrtónus
+👩🏾‍🏭	gyári dolgozó nő: közepesen sötét bőrtónus
+👩🏿‍🏭	gyári dolgozó nő: sötét bőrtónus
+👨‍💼	férfi irodai dolgozó
+👨🏻‍💼	férfi irodai dolgozó: világos bőrtónus
+👨🏼‍💼	férfi irodai dolgozó: közepesen világos bőrtónus
+👨🏽‍💼	férfi irodai dolgozó: közepes bőrtónus
+👨🏾‍💼	férfi irodai dolgozó: közepesen sötét bőrtónus
+👨🏿‍💼	férfi irodai dolgozó: sötét bőrtónus
+👩‍💼	nő irodai dolgozó
+👩🏻‍💼	nő irodai dolgozó: világos bőrtónus
+👩🏼‍💼	nő irodai dolgozó: közepesen világos bőrtónus
+👩🏽‍💼	nő irodai dolgozó: közepes bőrtónus
+👩🏾‍💼	irodai dolgozó nő: közepesen sötét bőrtónus
+👩🏿‍💼	nő irodai dolgozó: sötét bőrtónus
+👨‍🔬	ember tudós
+👨🏻‍🔬	ember tudós: világos bőrtónus
+👨🏼‍🔬	férfi tudós: közepesen világos bőrtónus
+👨🏽‍🔬	férfi tudós: közepes bőrtónus
+👨🏾‍🔬	férfi tudós: közepesen sötét bőrtónus
+👨🏿‍🔬	ember tudós: sötét bőrtónus
+👩‍🔬	tudós nő
+👩🏻‍🔬	tudós nő: világos bőrtónus
+👩🏼‍🔬	tudós nő: közepesen világos bőrtónus
+👩🏽‍🔬	tudós nő: közepes bőrtónus
+👩🏾‍🔬	tudós nő: közepesen sötét bőrtónus
+👩🏿‍🔬	tudós nő: sötét bőrtónus
+👨‍💻	férfi technológus
+👨🏻‍💻	férfi technológus: világos bőrtónus
+👨🏼‍💻	férfi technológus: közepesen világos bőrtónus
+👨🏽‍💻	férfi technológus: közepes bőrtónus
+👨🏾‍💻	férfi technológus: közepesen sötét bőrtónus
+👨🏿‍💻	férfi technológus: sötét bőrtónus
+👩‍💻	technológus nő
+👩🏻‍💻	technológus nő: világos bőrtónus
+👩🏼‍💻	technológus nő: közepesen világos bőrtónus
+👩🏽‍💻	technológus nő: közepes bőrtónus
+👩🏾‍💻	technológus nő: közepesen sötét bőrtónus
+👩🏿‍💻	technológus nő: sötét bőrtónus
+👨‍🎤	férfi énekes
+👨🏻‍🎤	férfi énekes: világos bőrtónus
+👨🏼‍🎤	férfi énekes: közepesen világos bőrtónus
+👨🏽‍🎤	férfi énekes: közepes bőrtónus
+👨🏾‍🎤	férfi énekes: közepesen sötét bőrtónus
+👨🏿‍🎤	férfi énekes: sötét bőrtónus
+👩‍🎤	énekesnő
+👩🏻‍🎤	énekesnő: világos bőrtónus
+👩🏼‍🎤	énekesnő: közepesen világos bőrtónus
+👩🏽‍🎤	énekesnő: közepes bőrtónus
+👩🏾‍🎤	énekesnő: közepesen sötét bőrtónus
+👩🏿‍🎤	énekesnő: sötét bőrtónus
+👨‍🎨	férfi művész
+👨🏻‍🎨	férfi művész: világos bőrtónus
+👨🏼‍🎨	férfi művész: közepesen világos bőrtónus
+👨🏽‍🎨	férfi művész: közepes bőrtónus
+👨🏾‍🎨	férfi művész: közepesen sötét bőrtónus
+👨🏿‍🎨	férfi művész: sötét bőrtónus
+👩‍🎨	művésznő
+👩🏻‍🎨	művésznő: világos bőrtónus
+👩🏼‍🎨	művésznő: közepesen világos bőrtónus
+👩🏽‍🎨	művésznő: közepes bőrtónus
+👩🏾‍🎨	művésznő: közepesen sötét bőrtónus
+👩🏿‍🎨	művésznő: sötét bőrtónus
+👨‍✈️	férfi pilóta
+👨‍✈	férfi pilóta
+👨🏻‍✈️	férfi pilóta: világos bőrtónus
+👨🏻‍✈	férfi pilóta: világos bőrtónus
+👨🏼‍✈️	férfi pilóta: közepesen világos bőrtónus
+👨🏼‍✈	férfi pilóta: közepesen világos bőrtónus
+👨🏽‍✈️	férfi pilóta: közepes bőrtónus
+👨🏽‍✈	férfi pilóta: közepes bőrtónus
+👨🏾‍✈️	férfi pilóta: közepesen sötét bőrtónus
+👨🏾‍✈	férfi pilóta: közepesen sötét bőrtónus
+👨🏿‍✈️	férfi pilóta: sötét bőrtónus
+👨🏿‍✈	férfi pilóta: sötét bőrtónus
+👩‍✈️	női pilóta
+👩‍✈	női pilóta
+👩🏻‍✈️	női pilóta: világos bőrtónus
+👩🏻‍✈	női pilóta: világos bőrtónus
+👩🏼‍✈️	női pilóta: közepesen világos bőrtónus
+👩🏼‍✈	női pilóta: közepesen világos bőrtónus
+👩🏽‍✈️	női pilóta: közepes bőrtónus
+👩🏽‍✈	női pilóta: közepes bőrtónus
+👩🏾‍✈️	női pilóta: közepesen sötét bőrtónus
+👩🏾‍✈	női pilóta: közepesen sötét bőrtónus
+👩🏿‍✈️	női pilóta: sötét bőrtónus
+👩🏿‍✈	női pilóta: sötét bőrtónus
+👨‍🚀	férfi űrhajós
+👨🏻‍🚀	férfi űrhajós: világos bőrtónus
+👨🏼‍🚀	férfi űrhajós: közepesen világos bőrtónus
+👨🏽‍🚀	férfi űrhajós: közepes bőrtónus
+👨🏾‍🚀	férfi űrhajós: közepesen sötét bőrtónus
+👨🏿‍🚀	férfi űrhajós: sötét bőrtónus
+👩‍🚀	nő űrhajós
+👩🏻‍🚀	űrhajós nő: világos bőrtónus
+👩🏼‍🚀	űrhajós nő: közepesen világos bőrtónus
+👩🏽‍🚀	űrhajós nő: közepes bőrtónus
+👩🏾‍🚀	űrhajós nő: közepesen sötét bőrtónus
+👩🏿‍🚀	űrhajós nő: sötét bőrtónus
+👨‍🚒	férfi tűzoltó
+👨🏻‍🚒	férfi tűzoltó: világos bőrtónus
+👨🏼‍🚒	férfi tűzoltó: közepesen világos bőrtónus
+👨🏽‍🚒	férfi tűzoltó: közepes bőrtónus
+👨🏾‍🚒	férfi tűzoltó: közepesen sötét bőrtónus
+👨🏿‍🚒	férfi tűzoltó: sötét bőrtónus
+👩‍🚒	nő tűzoltó
+👩🏻‍🚒	tűzoltó nő: világos bőrtónus
+👩🏼‍🚒	tűzoltó nő: közepesen világos bőrtónus
+👩🏽‍🚒	tűzoltó nő: közepes bőrtónus
+👩🏾‍🚒	tűzoltó nő: közepesen sötét bőrtónus
+👩🏿‍🚒	tűzoltó nő: sötét bőrtónus
+👮	rendőr
+👮🏻	rendőr: világos bőrtónus
+👮🏼	rendőr: közepesen világos bőrtónus
+👮🏽	rendőr: közepes bőrtónus
+👮🏾	rendőr: közepesen sötét bőrtónus
+👮🏿	rendőr: sötét bőrtónus
+👮‍♂️	férfi rendőr
+👮‍♂	férfi rendőr
+👮🏻‍♂️	férfi rendőr: világos bőrtónus
+👮🏻‍♂	férfi rendőr: világos bőrtónus
+👮🏼‍♂️	férfi rendőr: közepesen világos bőrtónus
+👮🏼‍♂	férfi rendőr: közepesen világos bőrtónus
+👮🏽‍♂️	férfi rendőr: közepes bőrtónus
+👮🏽‍♂	férfi rendőr: közepes bőrtónus
+👮🏾‍♂️	férfi rendőr: közepesen sötét bőrtónus
+👮🏾‍♂	férfi rendőr: közepesen sötét bőrtónus
+👮🏿‍♂️	férfi rendőr: sötét bőrtónus
+👮🏿‍♂	férfi rendőr: sötét bőrtónus
+👮‍♀️	rendőr nő
+👮‍♀	rendőr nő
+👮🏻‍♀️	rendőrnő: világos bőrtónus
+👮🏻‍♀	rendőrnő: világos bőrtónus
+👮🏼‍♀️	rendőrnő: közepesen világos bőrtónus
+👮🏼‍♀	rendőrnő: közepesen világos bőrtónus
+👮🏽‍♀️	rendőrnő: közepes bőrtónus
+👮🏽‍♀	rendőrnő: közepes bőrtónus
+👮🏾‍♀️	rendőrnő: közepesen sötét bőrtónus
+👮🏾‍♀	rendőrnő: közepesen sötét bőrtónus
+👮🏿‍♀️	rendőrnő: sötét bőrtónus
+👮🏿‍♀	rendőrnő: sötét bőrtónus
+🕵️	nyomozó
+🕵	nyomozó
+🕵🏻	nyomozó: világos bőrtónus
+🕵🏼	nyomozó: közepesen világos bőrtónus
+🕵🏽	nyomozó: közepes bőrtónus
+🕵🏾	nyomozó: közepesen sötét bőrtónus
+🕵🏿	nyomozó: sötét bőrtónus
+🕵️‍♂️	férfi nyomozó
+🕵‍♂️	férfi nyomozó
+🕵️‍♂	férfi nyomozó
+🕵‍♂	férfi nyomozó
+🕵🏻‍♂️	férfi nyomozó: világos bőrtónus
+🕵🏻‍♂	férfi nyomozó: világos bőrtónus
+🕵🏼‍♂️	férfi nyomozó: közepesen világos bőrtónus
+🕵🏼‍♂	férfi nyomozó: közepesen világos bőrtónus
+🕵🏽‍♂️	férfi nyomozó: közepes bőrtónus
+🕵🏽‍♂	férfi nyomozó: közepes bőrtónus
+🕵🏾‍♂️	férfi nyomozó: közepesen sötét bőrtónus
+🕵🏾‍♂	férfi nyomozó: közepesen sötét bőrtónus
+🕵🏿‍♂️	férfi nyomozó: sötét bőrtónus
+🕵🏿‍♂	férfi nyomozó: sötét bőrtónus
+🕵️‍♀️	nyomozó nő
+🕵‍♀️	nyomozó nő
+🕵️‍♀	nyomozó nő
+🕵‍♀	nyomozó nő
+🕵🏻‍♀️	nyomozónő: világos bőrtónus
+🕵🏻‍♀	nyomozónő: világos bőrtónus
+🕵🏼‍♀️	nyomozónő: közepesen világos bőrtónus
+🕵🏼‍♀	nyomozónő: közepesen világos bőrtónus
+🕵🏽‍♀️	nyomozónő: közepes bőrtónus
+🕵🏽‍♀	nyomozónő: közepes bőrtónus
+🕵🏾‍♀️	nyomozónő: közepesen sötét bőrtónus
+🕵🏾‍♀	nyomozónő: közepesen sötét bőrtónus
+🕵🏿‍♀️	nyomozónő: sötét bőrtónus
+🕵🏿‍♀	nyomozónő: sötét bőrtónus
+💂	őr
+💂🏻	őr: világos bőrtónus
+💂🏼	védő: közepesen világos bőrtónus
+💂🏽	őr: közepes bőrtónus
+💂🏾	védő: közepesen sötét bőrtónus
+💂🏿	őr: sötét bőrtónus
+💂‍♂️	férfi őr
+💂‍♂	férfi őr
+💂🏻‍♂️	férfi őr: világos bőrtónus
+💂🏻‍♂	férfi őr: világos bőrtónus
+💂🏼‍♂️	férfi őr: közepesen világos bőrtónus
+💂🏼‍♂	férfi őr: közepesen világos bőrtónus
+💂🏽‍♂️	férfi őr: közepes bőrtónus
+💂🏽‍♂	férfi őr: közepes bőrtónus
+💂🏾‍♂️	férfi őr: közepesen sötét bőrtónus
+💂🏾‍♂	férfi őr: közepesen sötét bőrtónus
+💂🏿‍♂️	férfi őr: sötét bőrtónus
+💂🏿‍♂	férfi őr: sötét bőrtónus
+💂‍♀️	nő őr
+💂‍♀	nő őr
+💂🏻‍♀️	női őr: világos bőrtónus
+💂🏻‍♀	női őr: világos bőrtónus
+💂🏼‍♀️	női őr: közepesen világos bőrtónus
+💂🏼‍♀	női őr: közepesen világos bőrtónus
+💂🏽‍♀️	női őr: közepes bőrtónus
+💂🏽‍♀	női őr: közepes bőrtónus
+💂🏾‍♀️	női őr: közepesen sötét bőrtónus
+💂🏾‍♀	női őr: közepesen sötét bőrtónus
+💂🏿‍♀️	női őr: sötét bőrtónus
+💂🏿‍♀	női őr: sötét bőrtónus
+👷	építőipari munkás
+👷🏻	építőmunkás: világos bőrtónus
+👷🏼	építőmunkás: közepesen világos bőrtónus
+👷🏽	építőmunkás: közepes bőrtónus
+👷🏾	építőmunkás: közepesen sötét bőrtónus
+👷🏿	építőmunkás: sötét bőrtónus
+👷‍♂️	férfi építőmunkás
+👷‍♂	férfi építőmunkás
+👷🏻‍♂️	férfi építőmunkás: világos bőrtónus
+👷🏻‍♂	férfi építőmunkás: világos bőrtónus
+👷🏼‍♂️	férfi építőmunkás: közepesen világos bőrtónus
+👷🏼‍♂	férfi építőmunkás: közepesen világos bőrtónus
+👷🏽‍♂️	férfi építőmunkás: közepes bőrtónus
+👷🏽‍♂	férfi építőmunkás: közepes bőrtónus
+👷🏾‍♂️	férfi építőmunkás: közepesen sötét bőrtónus
+👷🏾‍♂	férfi építőmunkás: közepesen sötét bőrtónus
+👷🏿‍♂️	férfi építőmunkás: sötét bőrtónus
+👷🏿‍♂	férfi építőmunkás: sötét bőrtónus
+👷‍♀️	nő építőmunkás
+👷‍♀	nő építőmunkás
+👷🏻‍♀️	építőmunkás nő: világos bőrtónus
+👷🏻‍♀	építőmunkás nő: világos bőrtónus
+👷🏼‍♀️	építőmunkás nő: közepesen világos bőrtónus
+👷🏼‍♀	építőmunkás nő: közepesen világos bőrtónus
+👷🏽‍♀️	építőmunkás nő: közepes bőrtónus
+👷🏽‍♀	építőmunkás nő: közepes bőrtónus
+👷🏾‍♀️	építőmunkás nő: közepesen sötét bőrtónus
+👷🏾‍♀	építőmunkás nő: közepesen sötét bőrtónus
+👷🏿‍♀️	építőmunkás nő: sötét bőrtónus
+👷🏿‍♀	építőmunkás nő: sötét bőrtónus
+🤴	herceg
+🤴🏻	herceg: világos bőrtónus
+🤴🏼	herceg: közepesen világos bőrtónus
+🤴🏽	herceg: közepes bőrtónus
+🤴🏾	herceg: közepesen sötét bőrtónus
+🤴🏿	herceg: sötét bőrtónus
+👸	hercegnő
+👸🏻	hercegnő: világos bőrtónus
+👸🏼	hercegnő: közepesen világos bőrtónus
+👸🏽	hercegnő: közepes bőrtónus
+👸🏾	hercegnő: közepesen sötét bőrtónus
+👸🏿	hercegnő: sötét bőrtónus
+👳	turbánt viselő személy
+👳🏻	turbánt viselő személy: világos bőrtónus
+👳🏼	turbánt viselő személy: közepesen világos bőrtónus
+👳🏽	turbánt viselő személy: közepes bőrtónus
+👳🏾	turbánt viselő személy: közepesen sötét bőrtónus
+👳🏿	turbánt viselő személy: sötét bőrtónus
+👳‍♂️	turbánt viselő férfi
+👳‍♂	turbánt viselő férfi
+👳🏻‍♂️	turbánt viselő férfi: világos bőrtónus
+👳🏻‍♂	turbánt viselő férfi: világos bőrtónus
+👳🏼‍♂️	turbánt viselő férfi: közepesen világos bőrtónus
+👳🏼‍♂	turbánt viselő férfi: közepesen világos bőrtónus
+👳🏽‍♂️	turbánt viselő férfi: közepes bőrtónus
+👳🏽‍♂	turbánt viselő férfi: közepes bőrtónus
+👳🏾‍♂️	turbánt viselő férfi: közepesen sötét bőrtónus
+👳🏾‍♂	turbánt viselő férfi: közepesen sötét bőrtónus
+👳🏿‍♂️	turbánt viselő férfi: sötét bőrtónus
+👳🏿‍♂	turbánt viselő férfi: sötét bőrtónus
+👳‍♀️	turbánt viselő nő
+👳‍♀	turbánt viselő nő
+👳🏻‍♀️	turbánt viselő nő: világos bőrtónus
+👳🏻‍♀	turbánt viselő nő: világos bőrtónus
+👳🏼‍♀️	turbánt viselő nő: közepesen világos bőrtónus
+👳🏼‍♀	turbánt viselő nő: közepesen világos bőrtónus
+👳🏽‍♀️	turbánt viselő nő: közepes bőrtónus
+👳🏽‍♀	turbánt viselő nő: közepes bőrtónus
+👳🏾‍♀️	turbánt viselő nő: közepesen sötét bőrtónus
+👳🏾‍♀	turbánt viselő nő: közepesen sötét bőrtónus
+👳🏿‍♀️	turbánt viselő nő: sötét bőrtónus
+👳🏿‍♀	turbánt viselő nő: sötét bőrtónus
+👲	férfi kínai sapkával
+👲🏻	férfi kínai sapkával: világos bőrtónus
+👲🏼	férfi kínai sapkával: közepesen világos bőrtónus
+👲🏽	férfi kínai sapkával: közepes bőrtónus
+👲🏾	férfi kínai sapkával: közepesen sötét bőrtónus
+👲🏿	férfi kínai sapkával: sötét bőrtónus
+🧕	nő fejkendővel
+🧕🏻	nő fejkendővel: világos bőrtónus
+🧕🏼	nő fejkendővel: közepesen világos bőrtónus
+🧕🏽	nő fejkendővel: közepes bőrtónus
+🧕🏾	nő fejkendővel: közepesen sötét bőrtónus
+🧕🏿	nő fejkendővel: sötét bőrtónus
+🧔	szakállas személy
+🧔🏻	szakállas személy: világos bőrtónus
+🧔🏼	szakállas személy: közepesen világos bőrtónus
+🧔🏽	szakállas személy: közepes bőrtónus
+🧔🏾	szakállas személy: közepesen sötét bőrtónus
+🧔🏿	szakállas személy: sötét bőrtónus
+👱	szőke hajú személy
+👱🏻	szőke hajú személy: világos bőrtónus
+👱🏼	szőke hajú személy: közepesen világos bőrtónus
+👱🏽	szőke hajú személy: közepes bőrtónus
+👱🏾	szőke hajú személy: közepesen sötét bőrtónus
+👱🏿	szőke hajú személy: sötét bőrtónus
+👱‍♂️	szőke hajú férfi
+👱‍♂	szőke hajú férfi
+👱🏻‍♂️	szőke hajú férfi: világos bőrtónus
+👱🏻‍♂	szőke hajú férfi: világos bőrtónus
+👱🏼‍♂️	szőke hajú férfi: közepesen világos bőrtónus
+👱🏼‍♂	szőke hajú férfi: közepesen világos bőrtónus
+👱🏽‍♂️	szőke hajú férfi: közepes bőrtónus
+👱🏽‍♂	szőke hajú férfi: közepes bőrtónus
+👱🏾‍♂️	szőke hajú férfi: közepesen sötét bőrtónus
+👱🏾‍♂	szőke hajú férfi: közepesen sötét bőrtónus
+👱🏿‍♂️	szőke hajú férfi: sötét bőrtónus
+👱🏿‍♂	szőke hajú férfi: sötét bőrtónus
+👱‍♀️	szőke hajú nő
+👱‍♀	szőke hajú nő
+👱🏻‍♀️	szőke hajú nő: világos bőrtónus
+👱🏻‍♀	szőke hajú nő: világos bőrtónus
+👱🏼‍♀️	szőke hajú nő: közepesen világos bőrtónus
+👱🏼‍♀	szőke hajú nő: közepesen világos bőrtónus
+👱🏽‍♀️	szőke hajú nő: közepes bőrtónus
+👱🏽‍♀	szőke hajú nő: közepes bőrtónus
+👱🏾‍♀️	szőke hajú nő: közepesen sötét bőrtónus
+👱🏾‍♀	szőke hajú nő: közepesen sötét bőrtónus
+👱🏿‍♀️	szőke hajú nő: sötét bőrtónus
+👱🏿‍♀	szőke hajú nő: sötét bőrtónus
+👨‍🦰	férfi, vörös hajú
+👨🏻‍🦰	férfi, vörös hajú: világos bőrtónus
+👨🏼‍🦰	férfi, vörös hajú: közepesen világos bőrtónus
+👨🏽‍🦰	férfi, vörös hajú: közepes bőrtónus
+👨🏾‍🦰	férfi, vörös hajú: közepesen sötét bőrtónus
+👨🏿‍🦰	férfi, vörös hajú: sötét bőrtónus
+👩‍🦰	nő, vörös hajú
+👩🏻‍🦰	nő, vörös hajú: világos bőrtónus
+👩🏼‍🦰	nő, vörös hajú: közepesen világos bőrtónus
+👩🏽‍🦰	nő, vörös hajú: közepes bőrtónus
+👩🏾‍🦰	nő, vörös hajú: közepesen sötét bőrtónus
+👩🏿‍🦰	nő, vörös hajú: sötét bőrtónus
+👨‍🦱	férfi, göndör hajú
+👨🏻‍🦱	férfi, göndör hajú: világos bőrtónus
+👨🏼‍🦱	férfi, göndör hajú: közepesen világos bőrtónus
+👨🏽‍🦱	férfi, göndör hajú: közepes bőrtónus
+👨🏾‍🦱	férfi, göndör hajú: közepesen sötét bőrtónus
+👨🏿‍🦱	férfi, göndör hajú: sötét bőrtónus
+👩‍🦱	göndör hajú nő
+👩🏻‍🦱	nő, göndör hajú: világos bőrtónus
+👩🏼‍🦱	nő, göndör hajú: közepesen világos bőrtónus
+👩🏽‍🦱	nő, göndör hajú: közepes bőrtónus
+👩🏾‍🦱	nő, göndör hajú: közepesen sötét bőrtónus
+👩🏿‍🦱	nő, göndör hajú: sötét bőrtónus
+👨‍🦲	férfi, kopasz
+👨🏻‍🦲	férfi, kopasz: világos bőrtónus
+👨🏼‍🦲	férfi, kopasz: közepesen világos bőrtónus
+👨🏽‍🦲	férfi, kopasz: közepes bőrtónus
+👨🏾‍🦲	férfi, kopasz: közepesen sötét bőrtónus
+👨🏿‍🦲	férfi, kopasz: sötét bőrtónus
+👩‍🦲	nő, kopasz
+👩🏻‍🦲	nő, kopasz: világos bőrtónus
+👩🏼‍🦲	nő, kopasz: közepesen világos bőrtónus
+👩🏽‍🦲	nő, kopasz: közepes bőrtónus
+👩🏾‍🦲	nő, kopasz: közepesen sötét bőrtónus
+👩🏿‍🦲	nő, kopasz: sötét bőrtónus
+👨‍🦳	férfi, fehér hajú
+👨🏻‍🦳	férfi, fehér hajú: világos bőrtónus
+👨🏼‍🦳	férfi, fehér hajú: közepesen világos bőrtónus
+👨🏽‍🦳	férfi, fehér hajú: közepes bőrtónus
+👨🏾‍🦳	férfi, fehér hajú: közepesen sötét bőrtónus
+👨🏿‍🦳	férfi, fehér hajú: sötét bőrtónus
+👩‍🦳	nő, fehér hajú
+👩🏻‍🦳	nő, fehér hajú: világos bőrtónus
+👩🏼‍🦳	nő, fehér hajú: közepesen világos bőrtónus
+👩🏽‍🦳	nő, fehér hajú: közepes bőrtónus
+👩🏾‍🦳	nő, fehér hajú: közepesen sötét bőrtónus
+👩🏿‍🦳	nő, fehér hajú: sötét bőrtónus
+🤵	férfi szmokingban
+🤵🏻	szmokingos férfi: világos bőrtónus
+🤵🏼	szmokingos férfi: közepesen világos bőrtónus
+🤵🏽	szmokingos férfi: közepes bőrtónus
+🤵🏾	szmokingos férfi: közepesen sötét bőrtónus
+🤵🏿	szmokingos férfi: sötét bőrtónus
+👰	menyasszony fátyollal
+👰🏻	menyasszony fátyollal: világos bőrtónus
+👰🏼	menyasszony fátyollal: közepesen világos bőrtónus
+👰🏽	menyasszony fátyollal: közepes bőrtónus
+👰🏾	menyasszony fátyollal: közepesen sötét bőrtónus
+👰🏿	menyasszony fátyollal: sötét bőrtónus
+🤰	terhes nő
+🤰🏻	terhes nő: világos bőrtónus
+🤰🏼	terhes nő: közepesen világos bőrtónus
+🤰🏽	terhes nő: közepes bőrtónus
+🤰🏾	terhes nő: közepesen sötét bőrtónus
+🤰🏿	terhes nő: sötét bőrtónus
+🤱	szoptatás
+🤱🏻	szoptatás: világos bőrtónus
+🤱🏼	szoptatás: közepesen világos bőrtónus
+🤱🏽	szoptatás: közepes bőrtónus
+🤱🏾	szoptatás: közepesen sötét bőrtónus
+🤱🏿	szoptatás: sötét bőrtónus
+👼	bébi angyal
+👼🏻	angyal baba: világos bőrtónus
+👼🏼	baby angel: közepesen világos bőrtónus
+👼🏽	baba angyal: közepes bőrtónus
+👼🏾	baby angel: közepesen sötét bőrtónus
+👼🏿	angyal baba: sötét bőrtónus
+🎅	Mikulás
+🎅🏻	Mikulás: világos bőrtónus
+🎅🏼	Mikulás: közepesen világos bőrtónus
+🎅🏽	Mikulás: közepes bőrtónus
+🎅🏾	Mikulás: közepesen sötét bőrtónus
+🎅🏿	Mikulás: sötét bőrtónus
+🤶	Mrs. Claus
+🤶🏻	Mrs. Claus: világos bőrtónus
+🤶🏼	Mrs. Claus: közepesen világos bőrtónus
+🤶🏽	Mrs. Claus: közepes bőrtónus
+🤶🏾	Mrs. Claus: közepesen sötét bőrtónus
+🤶🏿	Mrs. Claus: sötét bőrtónus
+🦸	szuperhős
+🦸🏻	szuperhős: világos bőrtónus
+🦸🏼	szuperhős: közepesen világos bőrtónus
+🦸🏽	szuperhős: közepes bőrtónus
+🦸🏾	szuperhős: közepesen sötét bőrtónus
+🦸🏿	szuperhős: sötét bőrtónus
+🦸‍♀️	női szuperhős
+🦸‍♀	női szuperhős
+🦸🏻‍♀️	női szuperhős: világos bőrtónus
+🦸🏻‍♀	női szuperhős: világos bőrtónus
+🦸🏼‍♀️	női szuperhős: közepesen világos bőrtónus
+🦸🏼‍♀	női szuperhős: közepesen világos bőrtónus
+🦸🏽‍♀️	női szuperhős: közepes bőrtónus
+🦸🏽‍♀	női szuperhős: közepes bőrtónus
+🦸🏾‍♀️	női szuperhős: közepesen sötét bőrtónus
+🦸🏾‍♀	női szuperhős: közepesen sötét bőrtónus
+🦸🏿‍♀️	női szuperhős: sötét bőrtónus
+🦸🏿‍♀	női szuperhős: sötét bőrtónus
+🦸‍♂️	férfi szuperhős
+🦸‍♂	férfi szuperhős
+🦸🏻‍♂️	férfi szuperhős: világos bőrtónus
+🦸🏻‍♂	férfi szuperhős: világos bőrtónus
+🦸🏼‍♂️	férfi szuperhős: közepesen világos bőrtónus
+🦸🏼‍♂	férfi szuperhős: közepesen világos bőrtónus
+🦸🏽‍♂️	férfi szuperhős: közepes bőrtónus
+🦸🏽‍♂	férfi szuperhős: közepes bőrtónus
+🦸🏾‍♂️	férfi szuperhős: közepesen sötét bőrtónus
+🦸🏾‍♂	férfi szuperhős: közepesen sötét bőrtónus
+🦸🏿‍♂️	férfi szuperhős: sötét bőrtónus
+🦸🏿‍♂	férfi szuperhős: sötét bőrtónus
+🦹	szupergonosz
+🦹🏻	szupergonosz: világos bőrtónus
+🦹🏼	szupergonosz: közepesen világos bőrtónus
+🦹🏽	szupergonosz: közepes bőrtónus
+🦹🏾	szupergonosz: közepesen sötét bőrtónus
+🦹🏿	szupergonosz: sötét bőrtónus
+🦹‍♀️	nő szupergonosz
+🦹‍♀	nő szupergonosz
+🦹🏻‍♀️	női szupergonosz: világos bőrtónus
+🦹🏻‍♀	női szupergonosz: világos bőrtónus
+🦹🏼‍♀️	női szupergonosz: közepesen világos bőrtónus
+🦹🏼‍♀	női szupergonosz: közepesen világos bőrtónus
+🦹🏽‍♀️	női szupergonosz: közepes bőrtónus
+🦹🏽‍♀	női szupergonosz: közepes bőrtónus
+🦹🏾‍♀️	női szupergonosz: közepesen sötét bőrtónus
+🦹🏾‍♀	női szupergonosz: közepesen sötét bőrtónus
+🦹🏿‍♀️	női szupergonosz: sötét bőrtónus
+🦹🏿‍♀	női szupergonosz: sötét bőrtónus
+🦹‍♂️	ember szupergonosz
+🦹‍♂	ember szupergonosz
+🦹🏻‍♂️	férfi szupergonosz: világos bőrtónus
+🦹🏻‍♂	férfi szupergonosz: világos bőrtónus
+🦹🏼‍♂️	férfi szupergonosz: közepesen világos bőrtónus
+🦹🏼‍♂	férfi szupergonosz: közepesen világos bőrtónus
+🦹🏽‍♂️	férfi szupergonosz: közepes bőrtónus
+🦹🏽‍♂	férfi szupergonosz: közepes bőrtónus
+🦹🏾‍♂️	férfi szupergonosz: közepesen sötét bőrtónus
+🦹🏾‍♂	férfi szupergonosz: közepesen sötét bőrtónus
+🦹🏿‍♂️	férfi szupergonosz: sötét bőrtónus
+🦹🏿‍♂	férfi szupergonosz: sötét bőrtónus
+🧙	mágus
+🧙🏻	mágus: világos bőrtónus
+🧙🏼	mágus: közepesen világos bőrtónus
+🧙🏽	mágus: közepes bőrtónus
+🧙🏾	mágus: közepesen sötét bőrtónus
+🧙🏿	mágus: sötét bőrtónus
+🧙‍♀️	nő mágus
+🧙‍♀	nő mágus
+🧙🏻‍♀️	női mágus: világos bőrtónus
+🧙🏻‍♀	női mágus: világos bőrtónus
+🧙🏼‍♀️	női mágus: közepesen világos bőrtónus
+🧙🏼‍♀	női mágus: közepesen világos bőrtónus
+🧙🏽‍♀️	női mágus: közepes bőrtónus
+🧙🏽‍♀	női mágus: közepes bőrtónus
+🧙🏾‍♀️	női mágus: közepesen sötét bőrtónus
+🧙🏾‍♀	női mágus: közepesen sötét bőrtónus
+🧙🏿‍♀️	nő mágus: sötét bőrtónus
+🧙🏿‍♀	nő mágus: sötét bőrtónus
+🧙‍♂️	férfi mágus
+🧙‍♂	férfi mágus
+🧙🏻‍♂️	férfi mágus: világos bőrtónus
+🧙🏻‍♂	férfi mágus: világos bőrtónus
+🧙🏼‍♂️	férfi mágus: közepesen világos bőrtónus
+🧙🏼‍♂	férfi mágus: közepesen világos bőrtónus
+🧙🏽‍♂️	férfi mágus: közepes bőrtónus
+🧙🏽‍♂	férfi mágus: közepes bőrtónus
+🧙🏾‍♂️	férfi mágus: közepesen sötét bőrtónus
+🧙🏾‍♂	férfi mágus: közepesen sötét bőrtónus
+🧙🏿‍♂️	férfi mágus: sötét bőrtónus
+🧙🏿‍♂	férfi mágus: sötét bőrtónus
+🧚	tündér
+🧚🏻	tündér: világos bőrtónus
+🧚🏼	tündér: közepesen világos bőrtónus
+🧚🏽	tündér: közepes bőrtónus
+🧚🏾	tündér: közepesen sötét bőrtónus
+🧚🏿	tündér: sötét bőrtónus
+🧚‍♀️	nő tündér
+🧚‍♀	nő tündér
+🧚🏻‍♀️	nőtündér: világos bőrtónus
+🧚🏻‍♀	nőtündér: világos bőrtónus
+🧚🏼‍♀️	nőtündér: közepesen világos bőrtónus
+🧚🏼‍♀	nőtündér: közepesen világos bőrtónus
+🧚🏽‍♀️	nőtündér: közepes bőrtónus
+🧚🏽‍♀	nőtündér: közepes bőrtónus
+🧚🏾‍♀️	nőtündér: közepesen sötét bőrtónus
+🧚🏾‍♀	nőtündér: közepesen sötét bőrtónus
+🧚🏿‍♀️	nőtündér: sötét bőrtónus
+🧚🏿‍♀	nőtündér: sötét bőrtónus
+🧚‍♂️	férfi tündér
+🧚‍♂	férfi tündér
+🧚🏻‍♂️	férfi tündér: világos bőrtónus
+🧚🏻‍♂	férfi tündér: világos bőrtónus
+🧚🏼‍♂️	férfitündér: közepesen világos bőrtónus
+🧚🏼‍♂	férfitündér: közepesen világos bőrtónus
+🧚🏽‍♂️	férfi tündér: közepes bőrtónus
+🧚🏽‍♂	férfi tündér: közepes bőrtónus
+🧚🏾‍♂️	férfi tündér: közepesen sötét bőrtónus
+🧚🏾‍♂	férfi tündér: közepesen sötét bőrtónus
+🧚🏿‍♂️	férfi tündér: sötét bőrtónus
+🧚🏿‍♂	férfi tündér: sötét bőrtónus
+🧛	vámpír
+🧛🏻	vámpír: világos bőrtónus
+🧛🏼	vámpír: közepesen világos bőrtónus
+🧛🏽	vámpír: közepes bőrtónus
+🧛🏾	vámpír: közepesen sötét bőrtónus
+🧛🏿	vámpír: sötét bőrtónus
+🧛‍♀️	nő vámpír
+🧛‍♀	nő vámpír
+🧛🏻‍♀️	nő vámpír: világos bőrtónus
+🧛🏻‍♀	nő vámpír: világos bőrtónus
+🧛🏼‍♀️	női vámpír: közepesen világos bőrtónus
+🧛🏼‍♀	női vámpír: közepesen világos bőrtónus
+🧛🏽‍♀️	nő vámpír: közepes bőrtónus
+🧛🏽‍♀	nő vámpír: közepes bőrtónus
+🧛🏾‍♀️	nő vámpír: közepesen sötét bőrtónus
+🧛🏾‍♀	nő vámpír: közepesen sötét bőrtónus
+🧛🏿‍♀️	nő vámpír: sötét bőrtónus
+🧛🏿‍♀	nő vámpír: sötét bőrtónus
+🧛‍♂️	férfi vámpír
+🧛‍♂	férfi vámpír
+🧛🏻‍♂️	férfi vámpír: világos bőrtónus
+🧛🏻‍♂	férfi vámpír: világos bőrtónus
+🧛🏼‍♂️	férfi vámpír: közepesen világos bőrtónus
+🧛🏼‍♂	férfi vámpír: közepesen világos bőrtónus
+🧛🏽‍♂️	férfi vámpír: közepes bőrtónus
+🧛🏽‍♂	férfi vámpír: közepes bőrtónus
+🧛🏾‍♂️	férfi vámpír: közepesen sötét bőrtónus
+🧛🏾‍♂	férfi vámpír: közepesen sötét bőrtónus
+🧛🏿‍♂️	férfi vámpír: sötét bőrtónus
+🧛🏿‍♂	férfi vámpír: sötét bőrtónus
+🧜	merperson
+🧜🏻	merperson: világos bőrtónus
+🧜🏼	merperson: közepesen világos bőrtónus
+🧜🏽	merperson: közepes bőrtónus
+🧜🏾	merperson: közepesen sötét bőrtónus
+🧜🏿	merperson: sötét bőrtónus
+🧜‍♀️	sellő
+🧜‍♀	sellő
+🧜🏻‍♀️	sellő: világos bőrtónus
+🧜🏻‍♀	sellő: világos bőrtónus
+🧜🏼‍♀️	sellő: közepesen világos bőrtónus
+🧜🏼‍♀	sellő: közepesen világos bőrtónus
+🧜🏽‍♀️	sellő: közepes bőrtónus
+🧜🏽‍♀	sellő: közepes bőrtónus
+🧜🏾‍♀️	sellő: közepesen sötét bőrtónus
+🧜🏾‍♀	sellő: közepesen sötét bőrtónus
+🧜🏿‍♀️	sellő: sötét bőrtónus
+🧜🏿‍♀	sellő: sötét bőrtónus
+🧜‍♂️	férfisellő
+🧜‍♂	férfisellő
+🧜🏻‍♂️	merman: világos bőrtónus
+🧜🏻‍♂	merman: világos bőrtónus
+🧜🏼‍♂️	merman: közepesen világos bőrtónus
+🧜🏼‍♂	merman: közepesen világos bőrtónus
+🧜🏽‍♂️	merman: közepes bőrtónus
+🧜🏽‍♂	merman: közepes bőrtónus
+🧜🏾‍♂️	merman: közepesen sötét bőrtónus
+🧜🏾‍♂	merman: közepesen sötét bőrtónus
+🧜🏿‍♂️	merman: sötét bőrtónus
+🧜🏿‍♂	merman: sötét bőrtónus
+🧝	Manó
+🧝🏻	elf: világos bőrtónus
+🧝🏼	elf: közepesen világos bőrtónus
+🧝🏽	elf: közepes bőrtónus
+🧝🏾	elf: közepesen sötét bőrtónus
+🧝🏿	elf: sötét bőrtónus
+🧝‍♀️	nőmanó
+🧝‍♀	nőmanó
+🧝🏻‍♀️	nőmanó: világos bőrtónus
+🧝🏻‍♀	nőmanó: világos bőrtónus
+🧝🏼‍♀️	nőmanó: közepesen világos bőrtónus
+🧝🏼‍♀	nőmanó: közepesen világos bőrtónus
+🧝🏽‍♀️	nőmanó: közepes bőrtónus
+🧝🏽‍♀	nőmanó: közepes bőrtónus
+🧝🏾‍♀️	nőmanó: közepesen sötét bőrtónus
+🧝🏾‍♀	nőmanó: közepesen sötét bőrtónus
+🧝🏿‍♀️	nőmanó: sötét bőrtónus
+🧝🏿‍♀	nőmanó: sötét bőrtónus
+🧝‍♂️	férfi manó
+🧝‍♂	férfi manó
+🧝🏻‍♂️	férfimanó: világos bőrtónus
+🧝🏻‍♂	férfimanó: világos bőrtónus
+🧝🏼‍♂️	férfimanó: közepesen világos bőrtónus
+🧝🏼‍♂	férfimanó: közepesen világos bőrtónus
+🧝🏽‍♂️	férfimanó: közepes bőrtónus
+🧝🏽‍♂	férfimanó: közepes bőrtónus
+🧝🏾‍♂️	férfimanó: közepesen sötét bőrtónus
+🧝🏾‍♂	férfimanó: közepesen sötét bőrtónus
+🧝🏿‍♂️	férfimanó: sötét bőrtónus
+🧝🏿‍♂	férfimanó: sötét bőrtónus
+🧞	dzsinn
+🧞‍♀️	nő dzsinn
+🧞‍♀	nő dzsinn
+🧞‍♂️	férfi dzsinn
+🧞‍♂	férfi dzsinn
+🧟	zombi
+🧟‍♀️	nő zombi
+🧟‍♀	nő zombi
+🧟‍♂️	ember zombi
+🧟‍♂	ember zombi
+🙍	szemöldökráncolt személy
+🙍🏻	szemöldökráncolt személy: világos bőrtónus
+🙍🏼	szemöldökráncolt személy: közepesen világos bőrtónus
+🙍🏽	szemöldökráncolt személy: közepes bőrtónus
+🙍🏾	szemöldökráncolt személy: közepesen sötét bőrtónus
+🙍🏿	szemöldökráncolt személy: sötét bőrtónus
+🙍‍♂️	férfi a homlokát ráncolva
+🙍‍♂	férfi a homlokát ráncolva
+🙍🏻‍♂️	férfi a homlokát ráncolva: világos bőrtónus
+🙍🏻‍♂	férfi a homlokát ráncolva: világos bőrtónus
+🙍🏼‍♂️	férfi homlokráncolva: közepesen világos bőrtónus
+🙍🏼‍♂	férfi homlokráncolva: közepesen világos bőrtónus
+🙍🏽‍♂️	férfi a homlokát ráncolva: közepes bőrtónus
+🙍🏽‍♂	férfi a homlokát ráncolva: közepes bőrtónus
+🙍🏾‍♂️	férfi a homlokát ráncolva: közepesen sötét bőrtónus
+🙍🏾‍♂	férfi a homlokát ráncolva: közepesen sötét bőrtónus
+🙍🏿‍♂️	férfi a homlokát ráncolva: sötét bőrtónus
+🙍🏿‍♂	férfi a homlokát ráncolva: sötét bőrtónus
+🙍‍♀️	nő a homlokát ráncolva
+🙍‍♀	nő a homlokát ráncolva
+🙍🏻‍♀️	nő homlokát ráncolva: világos bőrtónus
+🙍🏻‍♀	nő homlokát ráncolva: világos bőrtónus
+🙍🏼‍♀️	nő homlokát ráncolva: közepesen világos bőrtónus
+🙍🏼‍♀	nő homlokát ráncolva: közepesen világos bőrtónus
+🙍🏽‍♀️	nő homlokát ráncolva: közepes bőrtónus
+🙍🏽‍♀	nő homlokát ráncolva: közepes bőrtónus
+🙍🏾‍♀️	nő homlokát ráncolva: közepesen sötét bőrtónus
+🙍🏾‍♀	nő homlokát ráncolva: közepesen sötét bőrtónus
+🙍🏿‍♀️	nő homlokát ráncolva: sötét bőrtónus
+🙍🏿‍♀	nő homlokát ráncolva: sötét bőrtónus
+🙎	duzzogó személy
+🙎🏻	duzzadó személy: világos bőrtónus
+🙎🏼	duzzadó személy: közepesen világos bőrtónus
+🙎🏽	duzzadó személy: közepes bőrtónus
+🙎🏾	duzzogó személy: közepesen sötét bőrtónus
+🙎🏿	duzzogó személy: sötét bőrtónus
+🙎‍♂️	duzzogva férfi
+🙎‍♂	duzzogva férfi
+🙎🏻‍♂️	férfi duzzogva: világos bőrtónus
+🙎🏻‍♂	férfi duzzogva: világos bőrtónus
+🙎🏼‍♂️	férfi duzzogva: közepesen világos bőrtónus
+🙎🏼‍♂	férfi duzzogva: közepesen világos bőrtónus
+🙎🏽‍♂️	férfi duzzogva: közepes bőrtónus
+🙎🏽‍♂	férfi duzzogva: közepes bőrtónus
+🙎🏾‍♂️	férfi duzzogva: közepesen sötét bőrtónus
+🙎🏾‍♂	férfi duzzogva: közepesen sötét bőrtónus
+🙎🏿‍♂️	férfi duzzogva: sötét bőrtónus
+🙎🏿‍♂	férfi duzzogva: sötét bőrtónus
+🙎‍♀️	nő duzzogva
+🙎‍♀	nő duzzogva
+🙎🏻‍♀️	nő duzzog: világos bőrtónus
+🙎🏻‍♀	nő duzzog: világos bőrtónus
+🙎🏼‍♀️	duzzogva nő: közepesen világos bőrtónus
+🙎🏼‍♀	duzzogva nő: közepesen világos bőrtónus
+🙎🏽‍♀️	nő duzzog: közepes bőrtónus
+🙎🏽‍♀	nő duzzog: közepes bőrtónus
+🙎🏾‍♀️	duzzogva nő: közepesen sötét bőrtónus
+🙎🏾‍♀	duzzogva nő: közepesen sötét bőrtónus
+🙎🏿‍♀️	duzzogva nő: sötét bőrtónus
+🙎🏿‍♀	duzzogva nő: sötét bőrtónus
+🙅	személy intett NEM
+🙅🏻	személy intett NEM: világos bőrtónus
+🙅🏼	személy intett NEM: közepesen világos bőrtónus
+🙅🏽	személy intett NEM: közepes bőrtónus
+🙅🏾	személy intett NEM: közepesen sötét bőrtónus
+🙅🏿	személy intett NEM: sötét bőrtónus
+🙅‍♂️	férfi intett NEM
+🙅‍♂	férfi intett NEM
+🙅🏻‍♂️	férfi intett NEM: világos bőrtónus
+🙅🏻‍♂	férfi intett NEM: világos bőrtónus
+🙅🏼‍♂️	férfi intett NEM: közepesen világos bőrtónus
+🙅🏼‍♂	férfi intett NEM: közepesen világos bőrtónus
+🙅🏽‍♂️	férfi intett NEM: közepes bőrtónus
+🙅🏽‍♂	férfi intett NEM: közepes bőrtónus
+🙅🏾‍♂️	férfi intett NEM: közepesen sötét bőrtónus
+🙅🏾‍♂	férfi intett NEM: közepesen sötét bőrtónus
+🙅🏿‍♂️	férfi intett NEM: sötét bőrtónus
+🙅🏿‍♂	férfi intett NEM: sötét bőrtónus
+🙅‍♀️	nő intett NEM
+🙅‍♀	nő intett NEM
+🙅🏻‍♀️	nő intett NEM: világos bőrtónus
+🙅🏻‍♀	nő intett NEM: világos bőrtónus
+🙅🏼‍♀️	nő intett NEM: közepesen világos bőrtónus
+🙅🏼‍♀	nő intett NEM: közepesen világos bőrtónus
+🙅🏽‍♀️	nő intett NEM: közepes bőrtónus
+🙅🏽‍♀	nő intett NEM: közepes bőrtónus
+🙅🏾‍♀️	nő intett NEM: közepesen sötét bőrtónus
+🙅🏾‍♀	nő intett NEM: közepesen sötét bőrtónus
+🙅🏿‍♀️	nő intett NEM: sötét bőrtónus
+🙅🏿‍♀	nő intett NEM: sötét bőrtónus
+🙆	személy intett OK
+🙆🏻	személy intett OK: világos bőrtónus
+🙆🏼	személy intett OK: közepesen világos bőrtónus
+🙆🏽	személy intett OK: közepes bőrtónus
+🙆🏾	személy intett OK: közepesen sötét bőrtónus
+🙆🏿	személy intett OK: sötét bőrtónus
+🙆‍♂️	férfi intett OK
+🙆‍♂	férfi intett OK
+🙆🏻‍♂️	férfi intett OK: világos bőrtónus
+🙆🏻‍♂	férfi intett OK: világos bőrtónus
+🙆🏼‍♂️	férfi intett OK: közepesen világos bőrtónus
+🙆🏼‍♂	férfi intett OK: közepesen világos bőrtónus
+🙆🏽‍♂️	férfi intett OK: közepes bőrtónus
+🙆🏽‍♂	férfi intett OK: közepes bőrtónus
+🙆🏾‍♂️	férfi intett OK: közepesen sötét bőrtónus
+🙆🏾‍♂	férfi intett OK: közepesen sötét bőrtónus
+🙆🏿‍♂️	férfi intett OK: sötét bőrtónus
+🙆🏿‍♂	férfi intett OK: sötét bőrtónus
+🙆‍♀️	nő intett OK
+🙆‍♀	nő intett OK
+🙆🏻‍♀️	nő intett OK: világos bőrtónus
+🙆🏻‍♀	nő intett OK: világos bőrtónus
+🙆🏼‍♀️	nő intett OK: közepesen világos bőrtónus
+🙆🏼‍♀	nő intett OK: közepesen világos bőrtónus
+🙆🏽‍♀️	nő intett OK: közepes bőrtónus
+🙆🏽‍♀	nő intett OK: közepes bőrtónus
+🙆🏾‍♀️	nő intett OK: közepesen sötét bőrtónus
+🙆🏾‍♀	nő intett OK: közepesen sötét bőrtónus
+🙆🏿‍♀️	nő intett OK: sötét bőrtónus
+🙆🏿‍♀	nő intett OK: sötét bőrtónus
+💁	személy billenő kezét
+💁🏻	kezet billentő személy: világos bőrtónus
+💁🏼	kezet billentő személy: közepesen világos bőrtónus
+💁🏽	kezet billentő személy: közepes bőrtónus
+💁🏾	kezet billentő személy: közepesen sötét bőrtónus
+💁🏿	kezet billentő személy: sötét bőrtónus
+💁‍♂️	ember billenő kezét
+💁‍♂	ember billenő kezét
+💁🏻‍♂️	férfi billenő kéz: világos bőrtónus
+💁🏻‍♂	férfi billenő kéz: világos bőrtónus
+💁🏼‍♂️	férfi billenő kéz: közepesen világos bőrtónus
+💁🏼‍♂	férfi billenő kéz: közepesen világos bőrtónus
+💁🏽‍♂️	férfi billenő kéz: közepes bőrtónus
+💁🏽‍♂	férfi billenő kéz: közepes bőrtónus
+💁🏾‍♂️	férfi billenő kéz: közepesen sötét bőrtónus
+💁🏾‍♂	férfi billenő kéz: közepesen sötét bőrtónus
+💁🏿‍♂️	férfi billenő kezét: sötét bőrtónus
+💁🏿‍♂	férfi billenő kezét: sötét bőrtónus
+💁‍♀️	nő billenő kezét
+💁‍♀	nő billenő kezét
+💁🏻‍♀️	nő billenő kezét: világos bőrtónus
+💁🏻‍♀	nő billenő kezét: világos bőrtónus
+💁🏼‍♀️	nő billenő kezét: közepesen világos bőrtónus
+💁🏼‍♀	nő billenő kezét: közepesen világos bőrtónus
+💁🏽‍♀️	nő billenő kezét: közepes bőrtónus
+💁🏽‍♀	nő billenő kezét: közepes bőrtónus
+💁🏾‍♀️	nő billenő kezét: közepesen sötét bőrtónus
+💁🏾‍♀	nő billenő kezét: közepesen sötét bőrtónus
+💁🏿‍♀️	nő billenő kezét: sötét bőrtónus
+💁🏿‍♀	nő billenő kezét: sötét bőrtónus
+🙋	kezet emelő személy
+🙋🏻	kezet emelő személy: világos bőrtónus
+🙋🏼	kezet emelő személy: közepesen világos bőrtónus
+🙋🏽	kezet emelő személy: közepes bőrtónus
+🙋🏾	kezet emelő személy: közepesen sötét bőrtónus
+🙋🏿	kezet emelő személy: sötét bőrtónus
+🙋‍♂️	ember felemeli a kezét
+🙋‍♂	ember felemeli a kezét
+🙋🏻‍♂️	kezet emelő férfi: világos bőrtónus
+🙋🏻‍♂	kezet emelő férfi: világos bőrtónus
+🙋🏼‍♂️	kezet emelő férfi: közepesen világos bőrtónus
+🙋🏼‍♂	kezet emelő férfi: közepesen világos bőrtónus
+🙋🏽‍♂️	kezet emelő férfi: közepes bőrtónus
+🙋🏽‍♂	kezet emelő férfi: közepes bőrtónus
+🙋🏾‍♂️	kezet emelő férfi: közepesen sötét bőrtónus
+🙋🏾‍♂	kezet emelő férfi: közepesen sötét bőrtónus
+🙋🏿‍♂️	kezet emelő férfi: sötét bőrtónus
+🙋🏿‍♂	kezet emelő férfi: sötét bőrtónus
+🙋‍♀️	nő felemeli a kezét
+🙋‍♀	nő felemeli a kezét
+🙋🏻‍♀️	nő kezet emel: világos bőrtónus
+🙋🏻‍♀	nő kezet emel: világos bőrtónus
+🙋🏼‍♀️	kezet emelő nő: közepesen világos bőrtónus
+🙋🏼‍♀	kezet emelő nő: közepesen világos bőrtónus
+🙋🏽‍♀️	nő kezet emel: közepes bőrtónus
+🙋🏽‍♀	nő kezet emel: közepes bőrtónus
+🙋🏾‍♀️	nő felemeli a kezét: közepesen sötét bőrtónus
+🙋🏾‍♀	nő felemeli a kezét: közepesen sötét bőrtónus
+🙋🏿‍♀️	nő felemeli a kezét: sötét bőrtónus
+🙋🏿‍♀	nő felemeli a kezét: sötét bőrtónus
+🙇	személy meghajol
+🙇🏻	meghajló személy: világos bőrtónus
+🙇🏼	személy meghajol: közepesen világos bőrtónus
+🙇🏽	személy meghajol: közepes bőrtónus
+🙇🏾	személy meghajol: közepesen sötét bőrtónus
+🙇🏿	személy meghajol: sötét bőrtónus
+🙇‍♂️	ember meghajol
+🙇‍♂	ember meghajol
+🙇🏻‍♂️	férfi meghajol: világos bőrtónus
+🙇🏻‍♂	férfi meghajol: világos bőrtónus
+🙇🏼‍♂️	férfi meghajol: közepesen világos bőrtónus
+🙇🏼‍♂	férfi meghajol: közepesen világos bőrtónus
+🙇🏽‍♂️	férfi meghajol: közepes bőrtónus
+🙇🏽‍♂	férfi meghajol: közepes bőrtónus
+🙇🏾‍♂️	férfi meghajol: közepesen sötét bőrtónus
+🙇🏾‍♂	férfi meghajol: közepesen sötét bőrtónus
+🙇🏿‍♂️	férfi meghajol: sötét bőrtónus
+🙇🏿‍♂	férfi meghajol: sötét bőrtónus
+🙇‍♀️	nő meghajol
+🙇‍♀	nő meghajol
+🙇🏻‍♀️	nő meghajol: világos bőrtónus
+🙇🏻‍♀	nő meghajol: világos bőrtónus
+🙇🏼‍♀️	nő meghajol: közepesen világos bőrtónus
+🙇🏼‍♀	nő meghajol: közepesen világos bőrtónus
+🙇🏽‍♀️	nő meghajol: közepes bőrtónus
+🙇🏽‍♀	nő meghajol: közepes bőrtónus
+🙇🏾‍♀️	nő meghajol: közepesen sötét bőrtónus
+🙇🏾‍♀	nő meghajol: közepesen sötét bőrtónus
+🙇🏿‍♀️	nő meghajol: sötét bőrtónus
+🙇🏿‍♀	nő meghajol: sötét bőrtónus
+🤦	személy facepalming
+🤦🏻	személy facepalming: világos bőrtónus
+🤦🏼	személy facepalming: közepesen világos bőrtónus
+🤦🏽	személy facepalming: közepes bőrtónus
+🤦🏾	személy facepalming: közepesen sötét bőrtónus
+🤦🏿	személy facepalming: sötét bőrtónus
+🤦‍♂️	férfi facepalming
+🤦‍♂	férfi facepalming
+🤦🏻‍♂️	férfi facepalming: világos bőrtónus
+🤦🏻‍♂	férfi facepalming: világos bőrtónus
+🤦🏼‍♂️	férfi facepalming: közepesen világos bőrtónus
+🤦🏼‍♂	férfi facepalming: közepesen világos bőrtónus
+🤦🏽‍♂️	férfi facepalming: közepes bőrtónus
+🤦🏽‍♂	férfi facepalming: közepes bőrtónus
+🤦🏾‍♂️	férfi facepalming: közepesen sötét bőrtónus
+🤦🏾‍♂	férfi facepalming: közepesen sötét bőrtónus
+🤦🏿‍♂️	férfi facepalming: sötét bőrtónus
+🤦🏿‍♂	férfi facepalming: sötét bőrtónus
+🤦‍♀️	nő facepalming
+🤦‍♀	nő facepalming
+🤦🏻‍♀️	nő facepalming: világos bőrtónus
+🤦🏻‍♀	nő facepalming: világos bőrtónus
+🤦🏼‍♀️	női arcpalming: közepesen világos bőrtónus
+🤦🏼‍♀	női arcpalming: közepesen világos bőrtónus
+🤦🏽‍♀️	női arcpalming: közepes bőrtónus
+🤦🏽‍♀	női arcpalming: közepes bőrtónus
+🤦🏾‍♀️	női arcpalming: közepesen sötét bőrtónus
+🤦🏾‍♀	női arcpalming: közepesen sötét bőrtónus
+🤦🏿‍♀️	női arcpalming: sötét bőrtónus
+🤦🏿‍♀	női arcpalming: sötét bőrtónus
+🤷	személy vállat von
+🤷🏻	személy vállat von: világos bőrtónus
+🤷🏼	személy vállat von: közepesen világos bőrtónus
+🤷🏽	vállat vonó személy: közepes bőrtónus
+🤷🏾	személy vállat von: közepesen sötét bőrtónus
+🤷🏿	személy vállat von: sötét bőrtónus
+🤷‍♂️	férfi vállat vont
+🤷‍♂	férfi vállat vont
+🤷🏻‍♂️	férfi vállat von: világos bőrtónus
+🤷🏻‍♂	férfi vállat von: világos bőrtónus
+🤷🏼‍♂️	férfi vállat von: közepesen világos bőrtónus
+🤷🏼‍♂	férfi vállat von: közepesen világos bőrtónus
+🤷🏽‍♂️	férfi vállat von: közepes bőrtónus
+🤷🏽‍♂	férfi vállat von: közepes bőrtónus
+🤷🏾‍♂️	férfi vállat vonva: közepesen sötét bőrtónus
+🤷🏾‍♂	férfi vállat vonva: közepesen sötét bőrtónus
+🤷🏿‍♂️	férfi vállat von: sötét bőrtónus
+🤷🏿‍♂	férfi vállat von: sötét bőrtónus
+🤷‍♀️	nő vállat vont
+🤷‍♀	nő vállat vont
+🤷🏻‍♀️	nő vállat vonva: világos bőrtónus
+🤷🏻‍♀	nő vállat vonva: világos bőrtónus
+🤷🏼‍♀️	nő vállat vonva: közepesen világos bőrtónus
+🤷🏼‍♀	nő vállat vonva: közepesen világos bőrtónus
+🤷🏽‍♀️	nő vállat vonva: közepes bőrtónus
+🤷🏽‍♀	nő vállat vonva: közepes bőrtónus
+🤷🏾‍♀️	nő vállat vonva: közepesen sötét bőrtónus
+🤷🏾‍♀	nő vállat vonva: közepesen sötét bőrtónus
+🤷🏿‍♀️	nő vállat von: sötét bőrtónus
+🤷🏿‍♀	nő vállat von: sötét bőrtónus
+💆	masszázsban részesülő személy
+💆🏻	masszírozó személy: világos bőrtónus
+💆🏼	masszírozó személy: közepesen világos bőrtónus
+💆🏽	masszázsban részesülő személy: közepes bőrtónus
+💆🏾	masszírozó személy: közepesen sötét bőrtónus
+💆🏿	masszírozó személy: sötét bőrtónus
+💆‍♂️	férfi kap masszázst
+💆‍♂	férfi kap masszázst
+💆🏻‍♂️	masszázsban részesülő férfi: világos bőrtónus
+💆🏻‍♂	masszázsban részesülő férfi: világos bőrtónus
+💆🏼‍♂️	masszázsban részesülő férfi: közepesen világos bőrtónus
+💆🏼‍♂	masszázsban részesülő férfi: közepesen világos bőrtónus
+💆🏽‍♂️	masszázsban részesülő férfi: közepes bőrtónus
+💆🏽‍♂	masszázsban részesülő férfi: közepes bőrtónus
+💆🏾‍♂️	masszázsban részesülő férfi: közepesen sötét bőrtónus
+💆🏾‍♂	masszázsban részesülő férfi: közepesen sötét bőrtónus
+💆🏿‍♂️	masszázsban részesülő férfi: sötét bőrtónus
+💆🏿‍♂	masszázsban részesülő férfi: sötét bőrtónus
+💆‍♀️	nő kap masszázst
+💆‍♀	nő kap masszázst
+💆🏻‍♀️	masszázsban részesülő nő: világos bőrtónus
+💆🏻‍♀	masszázsban részesülő nő: világos bőrtónus
+💆🏼‍♀️	masszázsban részesülő nő: közepesen világos bőrtónus
+💆🏼‍♀	masszázsban részesülő nő: közepesen világos bőrtónus
+💆🏽‍♀️	masszázsban részesülő nő: közepes bőrtónus
+💆🏽‍♀	masszázsban részesülő nő: közepes bőrtónus
+💆🏾‍♀️	masszázsban részesülő nő: közepesen sötét bőrtónus
+💆🏾‍♀	masszázsban részesülő nő: közepesen sötét bőrtónus
+💆🏿‍♀️	masszázsban részesülő nő: sötét bőrtónus
+💆🏿‍♀	masszázsban részesülő nő: sötét bőrtónus
+💇	hajvágást kapó személy
+💇🏻	hajvágást végző személy: világos bőrtónus
+💇🏼	hajvágást végző személy: közepesen világos bőrtónus
+💇🏽	hajvágást végző személy: közepes bőrtónus
+💇🏾	hajvágást végző személy: közepesen sötét bőrtónus
+💇🏿	hajvágást végző személy: sötét bőrtónus
+💇‍♂️	férfi hajvágás
+💇‍♂	férfi hajvágás
+💇🏻‍♂️	férfi hajvágás: világos bőrtónus
+💇🏻‍♂	férfi hajvágás: világos bőrtónus
+💇🏼‍♂️	frizurát kapó férfi: közepesen világos bőrtónus
+💇🏼‍♂	frizurát kapó férfi: közepesen világos bőrtónus
+💇🏽‍♂️	frizurát kapó férfi: közepes bőrtónus
+💇🏽‍♂	frizurát kapó férfi: közepes bőrtónus
+💇🏾‍♂️	frizurát kapó férfi: közepesen sötét bőrtónus
+💇🏾‍♂	frizurát kapó férfi: közepesen sötét bőrtónus
+💇🏿‍♂️	férfi hajvágás: sötét bőrtónus
+💇🏿‍♂	férfi hajvágás: sötét bőrtónus
+💇‍♀️	nő egyre fodrász
+💇‍♀	nő egyre fodrász
+💇🏻‍♀️	nő hajvágás: világos bőrtónus
+💇🏻‍♀	nő hajvágás: világos bőrtónus
+💇🏼‍♀️	fodrász nő: közepesen világos bőrtónus
+💇🏼‍♀	fodrász nő: közepesen világos bőrtónus
+💇🏽‍♀️	fodrász nő: közepes bőrtónus
+💇🏽‍♀	fodrász nő: közepes bőrtónus
+💇🏾‍♀️	fodrász nő: közepesen sötét bőrtónus
+💇🏾‍♀	fodrász nő: közepesen sötét bőrtónus
+💇🏿‍♀️	nő hajvágás: sötét bőrtónus
+💇🏿‍♀	nő hajvágás: sötét bőrtónus
+🚶	sétáló személy
+🚶🏻	sétáló személy: világos bőrtónus
+🚶🏼	sétáló személy: közepesen világos bőrtónus
+🚶🏽	sétáló személy: közepes bőrtónus
+🚶🏾	sétáló személy: közepesen sötét bőrtónus
+🚶🏿	sétáló személy: sötét bőrtónus
+🚶‍♂️	sétáló ember
+🚶‍♂	sétáló ember
+🚶🏻‍♂️	sétáló férfi: világos bőrtónus
+🚶🏻‍♂	sétáló férfi: világos bőrtónus
+🚶🏼‍♂️	sétáló férfi: közepesen világos bőrtónus
+🚶🏼‍♂	sétáló férfi: közepesen világos bőrtónus
+🚶🏽‍♂️	sétáló férfi: közepes bőrtónus
+🚶🏽‍♂	sétáló férfi: közepes bőrtónus
+🚶🏾‍♂️	sétáló férfi: közepesen sötét bőrtónus
+🚶🏾‍♂	sétáló férfi: közepesen sötét bőrtónus
+🚶🏿‍♂️	sétáló férfi: sötét bőrtónus
+🚶🏿‍♂	sétáló férfi: sötét bőrtónus
+🚶‍♀️	sétáló nő
+🚶‍♀	sétáló nő
+🚶🏻‍♀️	sétáló nő: világos bőrtónus
+🚶🏻‍♀	sétáló nő: világos bőrtónus
+🚶🏼‍♀️	sétáló nő: közepesen világos bőrtónus
+🚶🏼‍♀	sétáló nő: közepesen világos bőrtónus
+🚶🏽‍♀️	sétáló nő: közepes bőrtónus
+🚶🏽‍♀	sétáló nő: közepes bőrtónus
+🚶🏾‍♀️	sétáló nő: közepesen sötét bőrtónus
+🚶🏾‍♀	sétáló nő: közepesen sötét bőrtónus
+🚶🏿‍♀️	sétáló nő: sötét bőrtónus
+🚶🏿‍♀	sétáló nő: sötét bőrtónus
+🏃	futó személy
+🏃🏻	futó személy: világos bőrtónus
+🏃🏼	futó személy: közepesen világos bőrtónus
+🏃🏽	futó személy: közepes bőrtónus
+🏃🏾	futó személy: közepesen sötét bőrtónus
+🏃🏿	futó személy: sötét bőrtónus
+🏃‍♂️	ember fut
+🏃‍♂	ember fut
+🏃🏻‍♂️	férfi futó: világos bőrtónus
+🏃🏻‍♂	férfi futó: világos bőrtónus
+🏃🏼‍♂️	férfi futó: közepesen világos bőrtónus
+🏃🏼‍♂	férfi futó: közepesen világos bőrtónus
+🏃🏽‍♂️	férfi futó: közepes bőrtónus
+🏃🏽‍♂	férfi futó: közepes bőrtónus
+🏃🏾‍♂️	férfi futó: közepesen sötét bőrtónus
+🏃🏾‍♂	férfi futó: közepesen sötét bőrtónus
+🏃🏿‍♂️	férfi fut: sötét bőrtónus
+🏃🏿‍♂	férfi fut: sötét bőrtónus
+🏃‍♀️	nő fut
+🏃‍♀	nő fut
+🏃🏻‍♀️	futó nő: világos bőrtónus
+🏃🏻‍♀	futó nő: világos bőrtónus
+🏃🏼‍♀️	futó nő: közepesen világos bőrtónus
+🏃🏼‍♀	futó nő: közepesen világos bőrtónus
+🏃🏽‍♀️	futó nő: közepes bőrtónus
+🏃🏽‍♀	futó nő: közepes bőrtónus
+🏃🏾‍♀️	futó nő: közepesen sötét bőrtónus
+🏃🏾‍♀	futó nő: közepesen sötét bőrtónus
+🏃🏿‍♀️	futó nő: sötét bőrtónus
+🏃🏿‍♀	futó nő: sötét bőrtónus
+💃	táncoló nő
+💃🏻	táncoló nő: világos bőrtónus
+💃🏼	táncoló nő: közepesen világos bőrtónus
+💃🏽	táncoló nő: közepes bőrtónus
+💃🏾	táncoló nő: közepesen sötét bőrtónus
+💃🏿	táncoló nő: sötét bőrtónus
+🕺	táncoló férfi
+🕺🏻	táncoló férfi: világos bőrtónus
+🕺🏼	táncoló férfi: közepesen világos bőrtónus
+🕺🏽	táncoló férfi: közepes bőrtónus
+🕺🏾	táncoló férfi: közepesen sötét bőrtónus
+🕺🏿	táncoló férfi: sötét bőrtónus
+👯	nyuszi fülű emberek
+👯‍♂️	nyuszifülű férfiak
+👯‍♂	nyuszifülű férfiak
+👯‍♀️	nyuszi fülű nők
+👯‍♀	nyuszi fülű nők
+🧖	személy a párás szobában
+🧖🏻	személy párás szobában: világos bőrtónus
+🧖🏼	személy párás szobában: közepesen világos bőrtónus
+🧖🏽	személy párás szobában: közepes bőrtónus
+🧖🏾	személy párás szobában: közepesen sötét bőrtónus
+🧖🏿	személy párás szobában: sötét bőrtónus
+🧖‍♀️	nő a párás szobában
+🧖‍♀	nő a párás szobában
+🧖🏻‍♀️	nő párás szobában: világos bőrtónus
+🧖🏻‍♀	nő a párás szobában: világos bőrtónus
+🧖🏼‍♀️	nő párás szobában: közepesen világos bőrtónus
+🧖🏼‍♀	nő párás szobában: közepesen világos bőrtónus
+🧖🏽‍♀️	nő párás szobában: közepes bőrtónus
+🧖🏽‍♀	nő párás szobában: közepes bőrtónus
+🧖🏾‍♀️	nő párás szobában: közepesen sötét bőrtónus
+🧖🏾‍♀	nő párás szobában: közepesen sötét bőrtónus
+🧖🏿‍♀️	nő a párás szobában: sötét bőrtónus
+🧖🏿‍♀	nő a párás szobában: sötét bőrtónus
+🧖‍♂️	férfi a párás szobában
+🧖‍♂	férfi a párás szobában
+🧖🏻‍♂️	férfi párás szobában: világos bőrtónus
+🧖🏻‍♂	férfi párás szobában: világos bőrtónus
+🧖🏼‍♂️	férfi párás szobában: közepesen világos bőrtónus
+🧖🏼‍♂	férfi párás szobában: közepesen világos bőrtónus
+🧖🏽‍♂️	férfi párás szobában: közepes bőrtónus
+🧖🏽‍♂	férfi párás szobában: közepes bőrtónus
+🧖🏾‍♂️	férfi párás szobában: közepesen sötét bőrtónus
+🧖🏾‍♂	férfi párás szobában: közepesen sötét bőrtónus
+🧖🏿‍♂️	férfi a párás szobában: sötét bőrtónus
+🧖🏿‍♂	férfi a párás szobában: sötét bőrtónus
+🧗	mászó személy
+🧗🏻	mászó személy: világos bőrtónus
+🧗🏼	mászó személy: közepesen világos bőrtónus
+🧗🏽	mászó személy: közepes bőrtónus
+🧗🏾	mászó személy: közepesen sötét bőrtónus
+🧗🏿	mászó személy: sötét bőrtónus
+🧗‍♀️	nő hegymászó
+🧗‍♀	nő hegymászó
+🧗🏻‍♀️	nő mászó: világos bőrtónus
+🧗🏻‍♀	nő mászó: világos bőrtónus
+🧗🏼‍♀️	nő mászó: közepesen világos bőrtónus
+🧗🏼‍♀	nő mászó: közepesen világos bőrtónus
+🧗🏽‍♀️	nő mászó: közepes bőrtónus
+🧗🏽‍♀	nő mászó: közepes bőrtónus
+🧗🏾‍♀️	nő mászó: közepesen sötét bőrtónus
+🧗🏾‍♀	nő mászó: közepesen sötét bőrtónus
+🧗🏿‍♀️	nő mászó: sötét bőrtónus
+🧗🏿‍♀	nő mászó: sötét bőrtónus
+🧗‍♂️	ember hegymászó
+🧗‍♂	ember hegymászó
+🧗🏻‍♂️	férfi mászó: világos bőrtónus
+🧗🏻‍♂	férfi mászó: világos bőrtónus
+🧗🏼‍♂️	férfi mászó: közepesen világos bőrtónus
+🧗🏼‍♂	férfi mászó: közepesen világos bőrtónus
+🧗🏽‍♂️	férfi mászó: közepes bőrtónus
+🧗🏽‍♂	férfi mászó: közepes bőrtónus
+🧗🏾‍♂️	férfi mászó: közepesen sötét bőrtónus
+🧗🏾‍♂	férfi mászó: közepesen sötét bőrtónus
+🧗🏿‍♂️	férfi mászó: sötét bőrtónus
+🧗🏿‍♂	férfi mászó: sötét bőrtónus
+🧘	személy lótusz pozícióban
+🧘🏻	személy lótuszállásban: világos bőrtónus
+🧘🏼	személy lótuszállásban: közepesen világos bőrtónus
+🧘🏽	személy lótuszállásban: közepes bőrtónus
+🧘🏾	személy lótuszállásban: közepesen sötét bőrtónus
+🧘🏿	személy lótuszállásban: sötét bőrtónus
+🧘‍♀️	nő lótusz helyzetben
+🧘‍♀	nő lótusz helyzetben
+🧘🏻‍♀️	nő lótusz pózban: világos bőrtónus
+🧘🏻‍♀	nő lótusz pózban: világos bőrtónus
+🧘🏼‍♀️	nő lótusz pózban: közepesen világos bőrtónus
+🧘🏼‍♀	nő lótusz pózban: közepesen világos bőrtónus
+🧘🏽‍♀️	nő lótusz pózban: közepes bőrtónus
+🧘🏽‍♀	nő lótusz pózban: közepes bőrtónus
+🧘🏾‍♀️	nő lótusz pózban: közepesen sötét bőrtónus
+🧘🏾‍♀	nő lótusz pózban: közepesen sötét bőrtónus
+🧘🏿‍♀️	nő lótusz pózban: sötét bőrtónus
+🧘🏿‍♀	nő lótusz pózban: sötét bőrtónus
+🧘‍♂️	férfi lótuszhelyzetben
+🧘‍♂	férfi lótuszhelyzetben
+🧘🏻‍♂️	férfi lótuszállásban: világos bőrtónus
+🧘🏻‍♂	férfi lótuszállásban: világos bőrtónus
+🧘🏼‍♂️	férfi lótuszállásban: közepesen világos bőrtónus
+🧘🏼‍♂	férfi lótuszállásban: közepesen világos bőrtónus
+🧘🏽‍♂️	férfi lótuszállásban: közepes bőrtónus
+🧘🏽‍♂	férfi lótuszállásban: közepes bőrtónus
+🧘🏾‍♂️	férfi lótuszállásban: közepesen sötét bőrtónus
+🧘🏾‍♂	férfi lótuszállásban: közepesen sötét bőrtónus
+🧘🏿‍♂️	férfi lótuszállásban: sötét bőrtónus
+🧘🏿‍♂	férfi lótuszállásban: sötét bőrtónus
+🛀	fürdőző személy
+🛀🏻	fürdőző személy: világos bőrtónus
+🛀🏼	fürdőző személy: közepesen világos bőrtónus
+🛀🏽	fürdőző személy: közepes bőrtónus
+🛀🏾	fürdőző személy: közepesen sötét bőrtónus
+🛀🏿	fürdőző személy: sötét bőrtónus
+🛌	személy az ágyban
+🛌🏻	személy az ágyban: világos bőrtónus
+🛌🏼	személy az ágyban: közepesen világos bőrtónus
+🛌🏽	személy az ágyban: közepes bőrtónus
+🛌🏾	személy az ágyban: közepesen sötét bőrtónus
+🛌🏿	személy az ágyban: sötét bőrtónus
+🕴️	öltönyös férfi lebegő
+🕴	öltönyös férfi lebegő
+🕴🏻	öltönyös férfi lebegő: világos bőrtónus
+🕴🏼	öltönyös férfi lebegő: közepesen világos bőrtónus
+🕴🏽	öltönyös férfi lebegő: közepes bőrtónus
+🕴🏾	öltönyös férfi lebegő: közepesen sötét bőrtónus
+🕴🏿	öltönyös férfi lebegő: sötét bőrtónus
+🗣️	beszélő fej
+🗣	beszélő fej
+👤	mellszobor sziluettben
+👥	mellszobrok a sziluettben
+🤺	személy vívás
+🏇	Lóverseny
+🏇🏻	lóverseny: világos bőrtónus
+🏇🏼	lóverseny: közepesen világos bőrtónus
+🏇🏽	lóverseny: közepes bőrtónus
+🏇🏾	lóverseny: közepesen sötét bőrtónus
+🏇🏿	lóverseny: sötét bőrtónus
+⛷️	síelő
+⛷	síelő
+🏂	snowboardos
+🏂🏻	snowboardos: világos bőrtónus
+🏂🏼	snowboardos: közepesen világos bőrtónus
+🏂🏽	snowboardos: közepes bőrtónus
+🏂🏾	snowboardos: közepesen sötét bőrtónus
+🏂🏿	snowboardos: sötét bőrtónus
+🏌️	golfozó személy
+🏌	golfozó személy
+🏌🏻	golfozó személy: világos bőrtónus
+🏌🏼	golfozó személy: közepesen világos bőrtónus
+🏌🏽	golfozó személy: közepes bőrtónus
+🏌🏾	golfozó személy: közepesen sötét bőrtónus
+🏌🏿	golfozó személy: sötét bőrtónus
+🏌️‍♂️	férfi golfozó
+🏌‍♂️	férfi golfozó
+🏌️‍♂	férfi golfozó
+🏌‍♂	férfi golfozó
+🏌🏻‍♂️	férfi golfozó: világos bőrtónus
+🏌🏻‍♂	férfi golfozó: világos bőrtónus
+🏌🏼‍♂️	férfi golfozó: közepesen világos bőrtónus
+🏌🏼‍♂	férfi golfozó: közepesen világos bőrtónus
+🏌🏽‍♂️	férfi golfozó: közepes bőrtónus
+🏌🏽‍♂	férfi golfozó: közepes bőrtónus
+🏌🏾‍♂️	férfi golfozó: közepesen sötét bőrtónus
+🏌🏾‍♂	férfi golfozó: közepesen sötét bőrtónus
+🏌🏿‍♂️	férfi golfozó: sötét bőrtónus
+🏌🏿‍♂	férfi golfozó: sötét bőrtónus
+🏌️‍♀️	golfozó nő
+🏌‍♀️	golfozó nő
+🏌️‍♀	golfozó nő
+🏌‍♀	golfozó nő
+🏌🏻‍♀️	golfozó nő: világos bőrtónus
+🏌🏻‍♀	golfozó nő: világos bőrtónus
+🏌🏼‍♀️	golfozó nő: közepesen világos bőrtónus
+🏌🏼‍♀	golfozó nő: közepesen világos bőrtónus
+🏌🏽‍♀️	golfozó nő: közepes bőrtónus
+🏌🏽‍♀	golfozó nő: közepes bőrtónus
+🏌🏾‍♀️	golfozó nő: közepesen sötét bőrtónus
+🏌🏾‍♀	golfozó nő: közepesen sötét bőrtónus
+🏌🏿‍♀️	golfozó nő: sötét bőrtónus
+🏌🏿‍♀	golfozó nő: sötét bőrtónus
+🏄	szörfölő személy
+🏄🏻	szörfölő személy: világos bőrtónus
+🏄🏼	személy szörfözés: közepesen világos bőrtónus
+🏄🏽	szörfölő személy: közepes bőrtónus
+🏄🏾	szörfölő személy: közepesen sötét bőrtónus
+🏄🏿	szörfölő személy: sötét bőrtónus
+🏄‍♂️	ember szörfözik
+🏄‍♂	ember szörfözik
+🏄🏻‍♂️	férfi szörfözés: világos bőrtónus
+🏄🏻‍♂	férfi szörfözés: világos bőrtónus
+🏄🏼‍♂️	férfi szörfözés: közepesen világos bőrtónus
+🏄🏼‍♂	férfi szörfözés: közepesen világos bőrtónus
+🏄🏽‍♂️	férfi szörfözés: közepes bőrtónus
+🏄🏽‍♂	férfi szörfözés: közepes bőrtónus
+🏄🏾‍♂️	férfi szörfözés: közepesen sötét bőrtónus
+🏄🏾‍♂	férfi szörfözés: közepesen sötét bőrtónus
+🏄🏿‍♂️	férfi szörfözés: sötét bőrtónus
+🏄🏿‍♂	férfi szörfözés: sötét bőrtónus
+🏄‍♀️	nő szörfözik
+🏄‍♀	nő szörfözik
+🏄🏻‍♀️	szörföző nő: világos bőrtónus
+🏄🏻‍♀	szörföző nő: világos bőrtónus
+🏄🏼‍♀️	szörfös nő: közepesen világos bőrtónus
+🏄🏼‍♀	szörfös nő: közepesen világos bőrtónus
+🏄🏽‍♀️	szörfölő nő: közepes bőrtónus
+🏄🏽‍♀	szörfölő nő: közepes bőrtónus
+🏄🏾‍♀️	szörfölő nő: közepesen sötét bőrtónus
+🏄🏾‍♀	szörföző nő: közepesen sötét bőrtónus
+🏄🏿‍♀️	szörföző nő: sötét bőrtónus
+🏄🏿‍♀	szörfölő nő: sötét bőrtónus
+🚣	személy evezős csónak
+🚣🏻	személy evezős csónak: világos bőrtónus
+🚣🏼	személy evezős csónak: közepesen világos bőrtónus
+🚣🏽	személy evezős csónak: közepes bőrtónus
+🚣🏾	személy evezős csónak: közepesen sötét bőrtónus
+🚣🏿	személy evezős csónak: sötét bőrtónus
+🚣‍♂️	férfi evezős csónak
+🚣‍♂	férfi evezős csónak
+🚣🏻‍♂️	férfi evezős csónak: világos bőrtónus
+🚣🏻‍♂	férfi evezős csónak: világos bőrtónus
+🚣🏼‍♂️	férfi evezős csónak: közepesen világos bőrtónus
+🚣🏼‍♂	férfi evezős csónak: közepesen világos bőrtónus
+🚣🏽‍♂️	férfi evezős csónak: közepes bőrtónus
+🚣🏽‍♂	férfi evezős csónak: közepes bőrtónus
+🚣🏾‍♂️	férfi evezős csónak: közepesen sötét bőrtónus
+🚣🏾‍♂	férfi evezős csónak: közepesen sötét bőrtónus
+🚣🏿‍♂️	férfi evezős csónak: sötét bőrtónus
+🚣🏿‍♂	férfi evezős csónak: sötét bőrtónus
+🚣‍♀️	nő evezős csónak
+🚣‍♀	nő evezős csónak
+🚣🏻‍♀️	női evezős csónak: világos bőrtónus
+🚣🏻‍♀	női evezős csónak: világos bőrtónus
+🚣🏼‍♀️	női evezős csónak: közepesen világos bőrtónus
+🚣🏼‍♀	női evezős csónak: közepesen világos bőrtónus
+🚣🏽‍♀️	női evezős csónak: közepes bőrtónus
+🚣🏽‍♀	női evezős csónak: közepes bőrtónus
+🚣🏾‍♀️	női evezős csónak: közepesen sötét bőrtónus
+🚣🏾‍♀	női evezős csónak: közepesen sötét bőrtónus
+🚣🏿‍♀️	nő evezős csónak: sötét bőrtónus
+🚣🏿‍♀	nő evezős csónak: sötét bőrtónus
+🏊	személy úszik
+🏊🏻	úszó személy: világos bőrtónus
+🏊🏼	úszó személy: közepesen világos bőrtónus
+🏊🏽	úszó személy: közepes bőrtónus
+🏊🏾	úszó személy: közepesen sötét bőrtónus
+🏊🏿	úszó személy: sötét bőrtónus
+🏊‍♂️	ember úszik
+🏊‍♂	ember úszik
+🏊🏻‍♂️	férfi úszás: világos bőrtónus
+🏊🏻‍♂	férfi úszás: világos bőrtónus
+🏊🏼‍♂️	férfi úszás: közepesen világos bőrtónus
+🏊🏼‍♂	férfi úszás: közepesen világos bőrtónus
+🏊🏽‍♂️	férfi úszás: közepes bőrtónus
+🏊🏽‍♂	férfi úszás: közepes bőrtónus
+🏊🏾‍♂️	férfi úszás: közepesen sötét bőrtónus
+🏊🏾‍♂	férfi úszás: közepesen sötét bőrtónus
+🏊🏿‍♂️	úszó férfi: sötét bőrtónus
+🏊🏿‍♂	úszó férfi: sötét bőrtónus
+🏊‍♀️	nő úszás
+🏊‍♀	nő úszás
+🏊🏻‍♀️	úszó nő: világos bőrtónus
+🏊🏻‍♀	úszó nő: világos bőrtónus
+🏊🏼‍♀️	úszó nő: közepesen világos bőrtónus
+🏊🏼‍♀	úszó nő: közepesen világos bőrtónus
+🏊🏽‍♀️	nő úszás: közepes bőrtónus
+🏊🏽‍♀	nő úszás: közepes bőrtónus
+🏊🏾‍♀️	úszó nő: közepesen sötét bőrtónus
+🏊🏾‍♀	úszó nő: közepesen sötét bőrtónus
+🏊🏿‍♀️	úszó nő: sötét bőrtónus
+🏊🏿‍♀	úszó nő: sötét bőrtónus
+⛹️	személy pattogó labdát
+⛹	személy pattogó labdát
+⛹🏻	személy pattogó labda: világos bőrtónus
+⛹🏼	személy pattogó labda: közepesen világos bőrtónus
+⛹🏽	személy pattogó labda: közepes bőrtónus
+⛹🏾	személy pattogó labda: közepesen sötét bőrtónus
+⛹🏿	személy pattogó labda: sötét bőrtónus
+⛹️‍♂️	ember pattogó labdát
+⛹‍♂️	ember pattogó labdát
+⛹️‍♂	ember pattogó labdát
+⛹‍♂	ember pattogó labdát
+⛹🏻‍♂️	férfi pattogó labda: világos bőrtónus
+⛹🏻‍♂	férfi pattogó labda: világos bőrtónus
+⛹🏼‍♂️	férfi pattogó labda: közepesen világos bőrtónus
+⛹🏼‍♂	férfi pattogó labda: közepesen világos bőrtónus
+⛹🏽‍♂️	férfi pattogó labda: közepes bőrtónus
+⛹🏽‍♂	férfi pattogó labda: közepes bőrtónus
+⛹🏾‍♂️	férfi pattogó labda: közepesen sötét bőrtónus
+⛹🏾‍♂	férfi pattogó labda: közepesen sötét bőrtónus
+⛹🏿‍♂️	férfi pattogó labda: sötét bőrtónus
+⛹🏿‍♂	férfi pattogó labda: sötét bőrtónus
+⛹️‍♀️	nő pattogó labdát
+⛹‍♀️	nő pattogó labdát
+⛹️‍♀	nő pattogó labdát
+⛹‍♀	nő pattogó labdát
+⛹🏻‍♀️	nő pattogó labdát: világos bőrtónus
+⛹🏻‍♀	nő pattogó labdát: világos bőrtónus
+⛹🏼‍♀️	nő pattogó labdát: közepesen világos bőrtónus
+⛹🏼‍♀	nő pattogó labdát: közepesen világos bőrtónus
+⛹🏽‍♀️	nő pattogó labdát: közepes bőrtónus
+⛹🏽‍♀	nő pattogó labdát: közepes bőrtónus
+⛹🏾‍♀️	nő pattogó labdát: közepesen sötét bőrtónus
+⛹🏾‍♀	nő pattogó labdát: közepesen sötét bőrtónus
+⛹🏿‍♀️	nő pattogó labdát: sötét bőrtónus
+⛹🏿‍♀	nő pattogó labdát: sötét bőrtónus
+🏋️	súlyemelő személy
+🏋	súlyemelő személy
+🏋🏻	súlyemelő személy: világos bőrtónus
+🏋🏼	súlyemelő személy: közepesen világos bőrtónus
+🏋🏽	súlyemelő személy: közepes bőrtónus
+🏋🏾	súlyemelő személy: közepesen sötét bőrtónus
+🏋🏿	súlyemelő személy: sötét bőrtónus
+🏋️‍♂️	ember súlyzózás
+🏋‍♂️	ember súlyzózás
+🏋️‍♂	ember súlyzózás
+🏋‍♂	ember súlyzózás
+🏋🏻‍♂️	súlyemelő férfi: világos bőrtónus
+🏋🏻‍♂	súlyemelő férfi: világos bőrtónus
+🏋🏼‍♂️	súlyemelő férfi: közepesen világos bőrtónus
+🏋🏼‍♂	súlyemelő férfi: közepesen világos bőrtónus
+🏋🏽‍♂️	súlyemelő férfi: közepes bőrtónus
+🏋🏽‍♂	súlyemelő férfi: közepes bőrtónus
+🏋🏾‍♂️	súlyemelő férfi: közepesen sötét bőrtónus
+🏋🏾‍♂	súlyemelő férfi: közepesen sötét bőrtónus
+🏋🏿‍♂️	súlyzó férfi: sötét bőrtónus
+🏋🏿‍♂	súlyemelő férfi: sötét bőrtónus
+🏋️‍♀️	nő súlyzózás
+🏋‍♀️	nő súlyzózás
+🏋️‍♀	nő súlyzózás
+🏋‍♀	nő súlyzózás
+🏋🏻‍♀️	súlyzó nő: világos bőrtónus
+🏋🏻‍♀	súlyzó nő: világos bőrtónus
+🏋🏼‍♀️	súlyzó nő: közepesen világos bőrtónus
+🏋🏼‍♀	súlyzó nő: közepesen világos bőrtónus
+🏋🏽‍♀️	súlyzó nő: közepes bőrtónus
+🏋🏽‍♀	súlyzó nő: közepes bőrtónus
+🏋🏾‍♀️	súlyzó nő: közepesen sötét bőrtónus
+🏋🏾‍♀	súlyzó nő: közepesen sötét bőrtónus
+🏋🏿‍♀️	súlyzó nő: sötét bőrtónus
+🏋🏿‍♀	súlyzó nő: sötét bőrtónus
+🚴	személy kerékpározás
+🚴🏻	személy kerékpározás: világos bőrtónus
+🚴🏼	személy kerékpározás: közepesen világos bőrtónus
+🚴🏽	személy kerékpározás: közepes bőrtónus
+🚴🏾	személy kerékpározás: közepesen sötét bőrtónus
+🚴🏿	kerékpáros személy: sötét bőrtónus
+🚴‍♂️	bicikliző férfi
+🚴‍♂	bicikliző férfi
+🚴🏻‍♂️	férfi kerékpáros: világos bőrtónus
+🚴🏻‍♂	férfi kerékpáros: világos bőrtónus
+🚴🏼‍♂️	férfi kerékpáros: közepesen világos bőrtónus
+🚴🏼‍♂	férfi kerékpáros: közepesen világos bőrtónus
+🚴🏽‍♂️	férfi kerékpáros: közepes bőrtónus
+🚴🏽‍♂	férfi kerékpáros: közepes bőrtónus
+🚴🏾‍♂️	férfi kerékpáros: közepesen sötét bőrtónus
+🚴🏾‍♂	férfi kerékpáros: közepesen sötét bőrtónus
+🚴🏿‍♂️	férfi kerékpáros: sötét bőrtónus
+🚴🏿‍♂	férfi kerékpáros: sötét bőrtónus
+🚴‍♀️	kerékpáros nő
+🚴‍♀	kerékpáros nő
+🚴🏻‍♀️	kerékpáros nő: világos bőrtónus
+🚴🏻‍♀	kerékpáros nő: világos bőrtónus
+🚴🏼‍♀️	kerékpáros nő: közepesen világos bőrtónus
+🚴🏼‍♀	kerékpáros nő: közepesen világos bőrtónus
+🚴🏽‍♀️	kerékpáros nő: közepes bőrtónus
+🚴🏽‍♀	kerékpáros nő: közepes bőrtónus
+🚴🏾‍♀️	kerékpáros nő: közepesen sötét bőrtónus
+🚴🏾‍♀	kerékpáros nő: közepesen sötét bőrtónus
+🚴🏿‍♀️	kerékpáros nő: sötét bőrtónus
+🚴🏿‍♀	kerékpáros nő: sötét bőrtónus
+🚵	személy hegyi kerékpározás
+🚵🏻	személy hegyi kerékpározás: világos bőrtónus
+🚵🏼	személy hegyi kerékpározás: közepesen világos bőrtónus
+🚵🏽	személy hegyi kerékpározás: közepes bőrtónus
+🚵🏾	személy hegyi kerékpározás: közepesen sötét bőrtónus
+🚵🏿	személy hegyi kerékpározás: sötét bőrtónus
+🚵‍♂️	férfi hegyi kerékpározás
+🚵‍♂	férfi hegyi kerékpározás
+🚵🏻‍♂️	férfi hegyi kerékpározás: világos bőrtónus
+🚵🏻‍♂	férfi hegyi kerékpározás: világos bőrtónus
+🚵🏼‍♂️	férfi hegyi kerékpározás: közepesen világos bőrtónus
+🚵🏼‍♂	férfi hegyi kerékpározás: közepesen világos bőrtónus
+🚵🏽‍♂️	férfi hegyi kerékpározás: közepes bőrtónus
+🚵🏽‍♂	férfi hegyi kerékpározás: közepes bőrtónus
+🚵🏾‍♂️	férfi hegyi kerékpározás: közepesen sötét bőrtónus
+🚵🏾‍♂	férfi hegyi kerékpározás: közepesen sötét bőrtónus
+🚵🏿‍♂️	férfi hegyi kerékpározás: sötét bőrtónus
+🚵🏿‍♂	férfi hegyi kerékpározás: sötét bőrtónus
+🚵‍♀️	nő hegyi kerékpározás
+🚵‍♀	nő hegyi kerékpározás
+🚵🏻‍♀️	hegyi kerékpáros nő: világos bőrtónus
+🚵🏻‍♀	hegyi kerékpáros nő: világos bőrtónus
+🚵🏼‍♀️	hegyi kerékpáros nő: közepesen világos bőrtónus
+🚵🏼‍♀	hegyi kerékpáros nő: közepesen világos bőrtónus
+🚵🏽‍♀️	női hegyi kerékpározás: közepes bőrtónus
+🚵🏽‍♀	női hegyi kerékpározás: közepes bőrtónus
+🚵🏾‍♀️	hegyi kerékpáros nő: közepesen sötét bőrtónus
+🚵🏾‍♀	hegyi kerékpáros nő: közepesen sötét bőrtónus
+🚵🏿‍♀️	hegyi kerékpáros nő: sötét bőrtónus
+🚵🏿‍♀	hegyi kerékpáros nő: sötét bőrtónus
+🏎️	versenyautó
+🏎	versenyautó
+🏍️	motorbicikli
+🏍	motorbicikli
+🤸	személy kocsikázás
+🤸🏻	személy szekér: világos bőrtónus
+🤸🏼	személy kocsikázás: közepesen világos bőrtónus
+🤸🏽	személy kocsikázás: közepes bőrtónus
+🤸🏾	személy kocsikázás: közepesen sötét bőrtónus
+🤸🏿	személy szekér: sötét bőrtónus
+🤸‍♂️	férfi szekér
+🤸‍♂	férfi szekér
+🤸🏻‍♂️	férfi szekér: világos bőrtónus
+🤸🏻‍♂	férfi szekér: világos bőrtónus
+🤸🏼‍♂️	férfi kocsikázás: közepesen világos bőrtónus
+🤸🏼‍♂	férfi kocsikázás: közepesen világos bőrtónus
+🤸🏽‍♂️	férfi kocsikázás: közepes bőrtónus
+🤸🏽‍♂	férfi kocsikázás: közepes bőrtónus
+🤸🏾‍♂️	férfi kocsikázás: közepesen sötét bőrtónus
+🤸🏾‍♂	férfi kocsikázás: közepesen sötét bőrtónus
+🤸🏿‍♂️	férfi szekér: sötét bőrtónus
+🤸🏿‍♂	férfi szekér: sötét bőrtónus
+🤸‍♀️	nő kocsikázás
+🤸‍♀	nő kocsikázás
+🤸🏻‍♀️	női kocsikázás: világos bőrtónus
+🤸🏻‍♀	női kocsikázás: világos bőrtónus
+🤸🏼‍♀️	női kocsikázás: közepesen világos bőrtónus
+🤸🏼‍♀	női kocsikázás: közepesen világos bőrtónus
+🤸🏽‍♀️	női kocsikázás: közepes bőrtónus
+🤸🏽‍♀	női kocsikázás: közepes bőrtónus
+🤸🏾‍♀️	női kocsikázás: közepesen sötét bőrtónus
+🤸🏾‍♀	női kocsikázás: közepesen sötét bőrtónus
+🤸🏿‍♀️	női kocsikázás: sötét bőrtónus
+🤸🏿‍♀	női kocsikázás: sötét bőrtónus
+🤼	birkózó emberek
+🤼‍♂️	birkózó férfiak
+🤼‍♂	birkózó férfiak
+🤼‍♀️	női birkózás
+🤼‍♀	női birkózás
+🤽	vízilabdázó személy
+🤽🏻	vízilabdázó személy: világos bőrtónus
+🤽🏼	vízilabdázó személy: közepesen világos bőrtónus
+🤽🏽	vízilabdázó személy: közepes bőrtónus
+🤽🏾	vízilabdázó személy: közepesen sötét bőrtónus
+🤽🏿	vízilabdázó személy: sötét bőrtónus
+🤽‍♂️	vízilabdázó férfi
+🤽‍♂	vízilabdázó férfi
+🤽🏻‍♂️	vízilabdázó férfi: világos bőrtónus
+🤽🏻‍♂	vízilabdázó férfi: világos bőrtónus
+🤽🏼‍♂️	vízilabdázó férfi: közepesen világos bőrtónus
+🤽🏼‍♂	vízilabdázó férfi: közepesen világos bőrtónus
+🤽🏽‍♂️	vízilabdázó férfi: közepes bőrtónus
+🤽🏽‍♂	vízilabdázó férfi: közepes bőrtónus
+🤽🏾‍♂️	vízilabdázó férfi: közepesen sötét bőrtónus
+🤽🏾‍♂	vízilabdázó férfi: közepesen sötét bőrtónus
+🤽🏿‍♂️	vízilabdázó férfi: sötét bőrtónus
+🤽🏿‍♂	vízilabdázó férfi: sötét bőrtónus
+🤽‍♀️	vízilabdázó nő
+🤽‍♀	vízilabdázó nő
+🤽🏻‍♀️	vízilabdázó nő: világos bőrtónus
+🤽🏻‍♀	vízilabdázó nő: világos bőrtónus
+🤽🏼‍♀️	vízilabdázó nő: közepesen világos bőrtónus
+🤽🏼‍♀	vízilabdázó nő: közepesen világos bőrtónus
+🤽🏽‍♀️	vízilabdázó nő: közepes bőrtónus
+🤽🏽‍♀	vízilabdázó nő: közepes bőrtónus
+🤽🏾‍♀️	vízilabdázó nő: közepesen sötét bőrtónus
+🤽🏾‍♀	vízilabdázó nő: közepesen sötét bőrtónus
+🤽🏿‍♀️	vízilabdázó nő: sötét bőrtónus
+🤽🏿‍♀	vízilabdázó nő: sötét bőrtónus
+🤾	kézilabdázó személy
+🤾🏻	kézilabdázó személy: világos bőrtónus
+🤾🏼	kézilabdázó személy: közepesen világos bőrtónus
+🤾🏽	kézilabdázó személy: közepes bőrtónus
+🤾🏾	kézilabdázó személy: közepesen sötét bőrtónus
+🤾🏿	kézilabdázó személy: sötét bőrtónus
+🤾‍♂️	férfi kézilabdázik
+🤾‍♂	férfi kézilabdázik
+🤾🏻‍♂️	kézilabdázó férfi: világos bőrtónus
+🤾🏻‍♂	kézilabdázó férfi: világos bőrtónus
+🤾🏼‍♂️	kézilabdázó férfi: közepesen világos bőrtónus
+🤾🏼‍♂	kézilabdázó férfi: közepesen világos bőrtónus
+🤾🏽‍♂️	kézilabdázó férfi: közepes bőrtónus
+🤾🏽‍♂	kézilabdázó férfi: közepes bőrtónus
+🤾🏾‍♂️	kézilabdázó férfi: közepesen sötét bőrtónus
+🤾🏾‍♂	kézilabdázó férfi: közepesen sötét bőrtónus
+🤾🏿‍♂️	kézilabdázó férfi: sötét bőrtónus
+🤾🏿‍♂	kézilabdázó férfi: sötét bőrtónus
+🤾‍♀️	kézilabdázó nő
+🤾‍♀	kézilabdázó nő
+🤾🏻‍♀️	kézilabdázó nő: világos bőrtónus
+🤾🏻‍♀	kézilabdázó nő: világos bőrtónus
+🤾🏼‍♀️	kézilabdázó nő: közepesen világos bőrtónus
+🤾🏼‍♀	kézilabdázó nő: közepesen világos bőrtónus
+🤾🏽‍♀️	kézilabdázó nő: közepes bőrtónus
+🤾🏽‍♀	kézilabdázó nő: közepes bőrtónus
+🤾🏾‍♀️	kézilabdázó nő: közepesen sötét bőrtónus
+🤾🏾‍♀	kézilabdázó nő: közepesen sötét bőrtónus
+🤾🏿‍♀️	kézilabdázó nő: sötét bőrtónus
+🤾🏿‍♀	kézilabdázó nő: sötét bőrtónus
+🤹	zsonglőrködő személy
+🤹🏻	zsonglőrködő személy: világos bőrtónus
+🤹🏼	személy zsonglőr: közepesen világos bőrtónus
+🤹🏽	személy zsonglőr: közepes bőrtónus
+🤹🏾	személy zsonglőrködik: közepesen sötét bőrtónus
+🤹🏿	zsonglőrködő személy: sötét bőrtónus
+🤹‍♂️	ember zsonglőrködik
+🤹‍♂	ember zsonglőrködik
+🤹🏻‍♂️	férfi zsonglőrködés: világos bőrtónus
+🤹🏻‍♂	férfi zsonglőrködés: világos bőrtónus
+🤹🏼‍♂️	férfi zsonglőrködés: közepesen világos bőrtónus
+🤹🏼‍♂	férfi zsonglőrködés: közepesen világos bőrtónus
+🤹🏽‍♂️	férfi zsonglőrködés: közepes bőrtónus
+🤹🏽‍♂	férfi zsonglőrködés: közepes bőrtónus
+🤹🏾‍♂️	férfi zsonglőrködés: közepesen sötét bőrtónus
+🤹🏾‍♂	férfi zsonglőrködés: közepesen sötét bőrtónus
+🤹🏿‍♂️	férfi zsonglőrködés: sötét bőrtónus
+🤹🏿‍♂	férfi zsonglőrködés: sötét bőrtónus
+🤹‍♀️	nő zsonglőrködik
+🤹‍♀	nő zsonglőrködik
+🤹🏻‍♀️	nő zsonglőrködik: világos bőrtónus
+🤹🏻‍♀	nő zsonglőrködik: világos bőrtónus
+🤹🏼‍♀️	nő zsonglőrködik: közepesen világos bőrtónus
+🤹🏼‍♀	nő zsonglőrködik: közepesen világos bőrtónus
+🤹🏽‍♀️	nő zsonglőrködik: közepes bőrtónus
+🤹🏽‍♀	nő zsonglőrködik: közepes bőrtónus
+🤹🏾‍♀️	nő zsonglőrködik: közepesen sötét bőrtónus
+🤹🏾‍♀	nő zsonglőrködik: közepesen sötét bőrtónus
+🤹🏿‍♀️	nő zsonglőrködik: sötét bőrtónus
+🤹🏿‍♀	nő zsonglőrködik: sötét bőrtónus
+👫	férfi és nő kézen fogva
+👬	két férfi kézen fogva
+👭	két nő kézen fogva
+💏	csók
+👩‍❤️‍💋‍👨	csók: nő, férfi
+👩‍❤‍💋‍👨	csók: nő, férfi
+👨‍❤️‍💋‍👨	csók: ember, ember
+👨‍❤‍💋‍👨	csók: ember, ember
+👩‍❤️‍💋‍👩	csók: nő, nő
+👩‍❤‍💋‍👩	csók: nő, nő
+💑	pár szívvel
+👩‍❤️‍👨	pár szívvel: nő, férfi
+👩‍❤‍👨	pár szívvel: nő, férfi
+👨‍❤️‍👨	pár szívvel: férfi, férfi
+👨‍❤‍👨	pár szívvel: férfi, férfi
+👩‍❤️‍👩	pár szívvel: nő, nő
+👩‍❤‍👩	pár szívvel: nő, nő
+👪	család
+👨‍👩‍👦	család: férfi, nő, fiú
+👨‍👩‍👧	család: férfi, nő, lány
+👨‍👩‍👧‍👦	család: férfi, nő, lány, fiú
+👨‍👩‍👦‍👦	család: férfi, nő, fiú, fiú
+👨‍👩‍👧‍👧	család: férfi, nő, lány, lány
+👨‍👨‍👦	család: férfi, férfi, fiú
+👨‍👨‍👧	család: férfi, férfi, lány
+👨‍👨‍👧‍👦	család: férfi, férfi, lány, fiú
+👨‍👨‍👦‍👦	család: férfi, férfi, fiú, fiú
+👨‍👨‍👧‍👧	család: férfi, férfi, lány, lány
+👩‍👩‍👦	család: nő, nő, fiú
+👩‍👩‍👧	család: nő, nő, lány
+👩‍👩‍👧‍👦	család: nő, nő, lány, fiú
+👩‍👩‍👦‍👦	család: nő, nő, fiú, fiú
+👩‍👩‍👧‍👧	család: nő, nő, lány, lány
+👨‍👦	család: férfi, fiú
+👨‍👦‍👦	család: férfi, fiú, fiú
+👨‍👧	család: férfi, lány
+👨‍👧‍👦	család: férfi, lány, fiú
+👨‍👧‍👧	család: férfi, lány, lány
+👩‍👦	család: nő, fiú
+👩‍👦‍👦	család: nő, fiú, fiú
+👩‍👧	család: nő, lány
+👩‍👧‍👦	család: nő, lány, fiú
+👩‍👧‍👧	család: nő, lány, lány
+🤳	szelfi
+🤳🏻	szelfi: világos bőrtónus
+🤳🏼	szelfi: közepesen világos bőrtónus
+🤳🏽	szelfi: közepes bőrtónus
+🤳🏾	szelfi: közepesen sötét bőrtónus
+🤳🏿	szelfi: sötét bőrtónus
+💪	hajlított bicepsz
+💪🏻	hajlított bicepsz: világos bőrtónus
+💪🏼	hajlított bicepsz: közepesen világos bőrtónus
+💪🏽	hajlított bicepsz: közepes bőrtónus
+💪🏾	hajlított bicepsz: közepesen sötét bőrtónus
+💪🏿	hajlított bicepsz: sötét bőrtónus
+🦵	láb
+🦵🏻	láb: világos bőrtónus
+🦵🏼	láb: közepesen világos bőrtónus
+🦵🏽	láb: közepes bőrtónus
+🦵🏾	láb: közepesen sötét bőrtónus
+🦵🏿	láb: sötét bőrtónus
+🦶	láb
+🦶🏻	lábfej: világos bőrtónus
+🦶🏼	lábfej: közepesen világos bőrtónus
+🦶🏽	láb: közepes bőrtónus
+🦶🏾	lábfej: közepesen sötét bőrtónus
+🦶🏿	lábfej: sötét bőrtónus
+👈	balra mutató fonák index
+👈🏻	balra mutató hátkézi index: világos bőrtónus
+👈🏼	hátramutató balra mutató: közepesen világos bőrtónus
+👈🏽	balra mutató hátkézi index: közepes bőrtónus
+👈🏾	balra mutató hátkézi index: közepesen sötét bőrtónus
+👈🏿	balra mutató hátkézi index: sötét bőrtónus
+👉	jobbra mutató fonák index
+👉🏻	jobbra mutató hátkézi index: világos bőrtónus
+👉🏼	jobbra mutató hátsó kéz index: közepesen világos bőrtónus
+👉🏽	jobbra mutató hátkézi index: közepes bőrtónus
+👉🏾	jobbra mutató hátsó kéz index: közepesen sötét bőrtónus
+👉🏿	jobbra mutató hátsó kéz index: sötét bőrtónus
+☝️	index felfelé mutat
+☝	index felfelé mutat
+☝🏻	index felfelé: világos bőrtónus
+☝🏼	index felfelé mutat: közepesen világos bőrtónus
+☝🏽	index felfelé: közepes bőrtónus
+☝🏾	index felfelé mutat: közepesen sötét bőrtónus
+☝🏿	index felfelé: sötét bőrtónus
+👆	hátramutató index felfelé mutat
+👆🏻	hátramutató index felfelé: világos bőrtónus
+👆🏼	hátramutató index felfelé: közepesen világos bőrtónus
+👆🏽	hátramutató index felfelé: közepes bőrtónus
+👆🏾	hátramutató index felfelé: közepesen sötét bőrtónus
+👆🏿	hátramutató index felfelé: sötét bőrtónus
+🖕	középső ujj
+🖕🏻	középső ujj: világos bőrtónus
+🖕🏼	középső ujj: közepesen világos bőrtónus
+🖕🏽	középső ujj: közepes bőrtónus
+🖕🏾	középső ujj: közepesen sötét bőrtónus
+🖕🏿	középső ujj: sötét bőrtónus
+👇	hátramutató index lefelé mutat
+👇🏻	hátramutató lefelé mutat: világos bőrtónus
+👇🏼	hátramutató lefelé mutat: közepesen világos bőrtónus
+👇🏽	lefelé mutató hátkéz index: közepes bőrtónus
+👇🏾	lefelé mutató hátkézi index: közepesen sötét bőrtónus
+👇🏿	hátramutató lefelé mutat: sötét bőrtónus
+✌️	győzelmi kéz
+✌	győzelmi kéz
+✌🏻	győzelmi kéz: világos bőrtónus
+✌🏼	győzelmi kéz: közepesen világos bőrtónus
+✌🏽	győzelmi kéz: közepes bőrtónus
+✌🏾	győzelmi kéz: közepesen sötét bőrtónus
+✌🏿	győzelmi kéz: sötét bőrtónus
+🤞	keresztbe tett ujjak
+🤞🏻	keresztbe tett ujjak: világos bőrtónus
+🤞🏼	keresztbe tett ujjak: közepesen világos bőrtónus
+🤞🏽	keresztbe tett ujjak: közepes bőrtónus
+🤞🏾	keresztbe tett ujjak: közepesen sötét bőrtónus
+🤞🏿	keresztbe tett ujjak: sötét bőrtónus
+🖖	vulkáni tisztelgés
+🖖🏻	vulkáni üdvözlet: világos bőrtónus
+🖖🏼	vulkáni üdvözlet: közepesen világos bőrtónus
+🖖🏽	vulkáni üdvözlet: közepes bőrtónus
+🖖🏾	vulkáni üdvözlet: közepesen sötét bőrtónus
+🖖🏿	vulkáni üdvözlet: sötét bőrtónus
+🤘	a szarvak jele
+🤘🏻	a szarvak jele: világos bőrtónus
+🤘🏼	a szarvak jele: közepesen világos bőrtónus
+🤘🏽	a szarvak jele: közepes bőrtónus
+🤘🏾	a szarvak jele: közepesen sötét bőrtónus
+🤘🏿	a szarvak jele: sötét bőrtónus
+🤙	hívj kezem
+🤙🏻	hívj kezem: világos bőrtónus
+🤙🏼	hívj kezem: közepesen világos bőrtónus
+🤙🏽	hívj kezem: közepes bőrtónus
+🤙🏾	hívj kezem: közepesen sötét bőrtónus
+🤙🏿	hívj kezem: sötét bőrtónus
+🖐️	kezét széttárt ujjakkal
+🖐	kezét széttárt ujjakkal
+🖐🏻	széttárt ujjak: világos bőrtónus
+🖐🏼	széttárt ujjak: közepesen világos bőrtónus
+🖐🏽	széttárt ujjak: közepes bőrtónus
+🖐🏾	széttárt ujjak: közepesen sötét bőrtónus
+🖐🏿	széttárt ujjak: sötét bőrtónus
+✋	felemelt kezet
+✋🏻	felemelt kéz: világos bőrtónus
+✋🏼	felemelt kéz: közepesen világos bőrtónus
+✋🏽	felemelt kéz: közepes bőrtónus
+✋🏾	felemelt kéz: közepesen sötét bőrtónus
+✋🏿	felemelt kéz: sötét bőrtónus
+👌	OK kéz
+👌🏻	OK kéz: világos bőrtónus
+👌🏼	OK kéz: közepesen világos bőrtónus
+👌🏽	OK kéz: közepes bőrtónus
+👌🏾	OK kéz: közepesen sötét bőrtónus
+👌🏿	OK kéz: sötét bőrtónus
+👍	remek
+👍🏻	hüvelykujj felfelé: világos bőrtónus
+👍🏼	hüvelykujj felfelé: közepesen világos bőrtónus
+👍🏽	hüvelykujj felfelé: közepes bőrtónus
+👍🏾	hüvelykujj felfelé: közepesen sötét bőrtónus
+👍🏿	hüvelykujj felfelé: sötét bőrtónus
+👎	nem jó
+👎🏻	hüvelykujj lefelé: világos bőrtónus
+👎🏼	hüvelykujj lefelé: közepesen világos bőrtónus
+👎🏽	hüvelykujj lefelé: közepes bőrtónus
+👎🏾	hüvelykujj lefelé: közepesen sötét bőrtónus
+👎🏿	hüvelykujj lefelé: sötét bőrtónus
+✊	felemelt öklét
+✊🏻	felemelt ököl: világos bőrtónus
+✊🏼	felemelt ököl: közepesen világos bőrtónus
+✊🏽	felemelt ököl: közepes bőrtónus
+✊🏾	felemelt ököl: közepesen sötét bőrtónus
+✊🏿	felemelt ököl: sötét bőrtónus
+👊	szembejövő ököllel
+👊🏻	szembejövő ököl: világos bőrtónus
+👊🏼	szembejövő ököl: közepesen világos bőrtónus
+👊🏽	szembejövő ököl: közepes bőrtónus
+👊🏾	szembejövő ököl: közepesen sötét bőrtónus
+👊🏿	szembejövő ököl: sötét bőrtónus
+🤛	balra néző ököl
+🤛🏻	balra néző ököl: világos bőrtónus
+🤛🏼	balra néző ököl: közepesen világos bőrtónus
+🤛🏽	balra néző ököl: közepes bőrtónus
+🤛🏾	balra néző ököl: közepesen sötét bőrtónus
+🤛🏿	balra néző ököl: sötét bőrtónus
+🤜	jobbra néző ököl
+🤜🏻	jobbra néző ököl: világos bőrtónus
+🤜🏼	jobbra néző ököl: közepesen világos bőrtónus
+🤜🏽	jobbra néző ököl: közepes bőrtónus
+🤜🏾	jobbra néző ököl: közepesen sötét bőrtónus
+🤜🏿	jobbra néző ököl: sötét bőrtónus
+🤚	kézhátra emelve
+🤚🏻	felemelt kézfej: világos bőrtónus
+🤚🏼	felemelt kézfej: közepesen világos bőrtónus
+🤚🏽	felemelt kézfej: közepes bőrtónus
+🤚🏾	felemelt kézfej: közepesen sötét bőrtónus
+🤚🏿	felemelt kézfej: sötét bőrtónus
+👋	integető kéz
+👋🏻	integető kéz: világos bőrtónus
+👋🏼	integető kéz: közepesen világos bőrtónus
+👋🏽	integető kéz: közepes bőrtónus
+👋🏾	integető kéz: közepesen sötét bőrtónus
+👋🏿	integető kéz: sötét bőrtónus
+🤟	szeretlek gesztus
+🤟🏻	szeretlek gesztus: világos bőrtónus
+🤟🏼	szeretlek gesztus: közepesen világos bőrtónus
+🤟🏽	szeretlek gesztus: közepes bőrtónus
+🤟🏾	szerető gesztus: közepesen sötét bőrtónus
+🤟🏿	szeretlek gesztus: sötét bőrtónus
+✍️	író kéz
+✍	író kéz
+✍🏻	írókéz: világos bőrtónus
+✍🏼	írókéz: közepesen világos bőrtónus
+✍🏽	írókéz: közepes bőrtónus
+✍🏾	írókéz: közepesen sötét bőrtónus
+✍🏿	írókéz: sötét bőrtónus
+👏	tapsolt kezet
+👏🏻	tapsolás: világos bőrtónus
+👏🏼	tapsolás: közepesen világos bőrtónus
+👏🏽	tapsolás: közepes bőrtónus
+👏🏾	tapsolás: közepesen sötét bőrtónus
+👏🏿	tapsolás: sötét bőrtónus
+👐	nyitott kezek
+👐🏻	nyitott kezek: világos bőrtónus
+👐🏼	nyitott kezek: közepesen világos bőrtónus
+👐🏽	nyitott kezek: közepes bőrtónus
+👐🏾	nyitott kezek: közepesen sötét bőrtónus
+👐🏿	nyitott kezek: sötét bőrtónus
+🙌	kezet emelve
+🙌🏻	kezek felemelése: világos bőrtónus
+🙌🏼	kezek felemelése: közepesen világos bőrtónus
+🙌🏽	kezek felemelése: közepes bőrtónus
+🙌🏾	kezek felemelése: közepesen sötét bőrtónus
+🙌🏿	kezek felemelése: sötét bőrtónus
+🤲	tenyérrel felfelé együtt
+🤲🏻	tenyér felfelé együtt: világos bőrtónus
+🤲🏼	tenyér felfelé együtt: közepesen világos bőrtónus
+🤲🏽	tenyér felfelé együtt: közepes bőrtónus
+🤲🏾	tenyér felfelé együtt: közepesen sötét bőrtónus
+🤲🏿	tenyér felfelé együtt: sötét bőrtónus
+🙏	összekulcsolt kezekkel
+🙏🏻	összekulcsolt kezek: világos bőrtónus
+🙏🏼	összekulcsolt kezek: közepesen világos bőrtónus
+🙏🏽	összekulcsolt kezek: közepes bőrtónus
+🙏🏾	összekulcsolt kezek: közepesen sötét bőrtónus
+🙏🏿	összekulcsolt kezek: sötét bőrtónus
+🤝	kézfogás
+💅	körömlakk
+💅🏻	körömlakk: világos bőrtónus
+💅🏼	körömlakk: közepesen világos bőrtónus
+💅🏽	körömlakk: közepes bőrtónus
+💅🏾	körömlakk: közepesen sötét bőrtónus
+💅🏿	körömlakk: sötét bőrtónus
+👂	fül
+👂🏻	fül: világos bőrtónus
+👂🏼	fül: közepesen világos bőrtónus
+👂🏽	fül: közepes bőrtónus
+👂🏾	fül: közepesen sötét bőrtónus
+👂🏿	fül: sötét bőrtónus
+👃	orr
+👃🏻	orr: világos bőrtónus
+👃🏼	orr: közepesen világos bőrtónus
+👃🏽	orr: közepes bőrtónus
+👃🏾	orr: közepesen sötét bőrtónus
+👃🏿	orr: sötét bőrtónus
+🦰	vöröshajú
+🦱	göndör hajú
+🦲	kopasz
+🦳	fehér hajú
+👣	lábnyomok
+👀	szemek
+👁️	szem
+👁	szem
+👁️‍🗨️	szem a beszédbuborékban
+👁‍🗨️	szem a beszédbuborékban
+👁️‍🗨	szem a beszédbuborékban
+👁‍🗨	szem a beszédbuborékban
+🧠	agy
+🦴	csont
+🦷	fog
+👅	nyelv
+👄	száj
+💋	csóknyom
+💘	szív nyíllal
+❤️	piros szív
+❤	piros szív
+💓	dobogó szív
+💔	összetört szív
+💕	két szív
+💖	csillogó szív
+💗	növekvő szív
+💙	kék szív
+💚	zöld Szív
+💛	sárga szív
+🧡	narancssárga szív
+💜	lila szív
+🖤	fekete szív
+💝	szív szalaggal
+💞	forgó szívek
+💟	szív dekoráció
+❣️	nehéz szív felkiáltás
+❣	nehéz szív felkiáltás
+💌	szerelmes levél
+💤	zzz
+💢	harag szimbólum
+💣	bomba
+💥	ütközés
+💦	verejtékcseppek
+💨	elrohanva
+💫	szédülő
+💬	beszéd lufi
+🗨️	bal szövegbuborék
+🗨	bal szövegbuborék
+🗯️	jobb harag buborék
+🗯	jobb harag buborék
+💭	gondolat léggömb
+🕳️	lyuk
+🕳	lyuk
+👓	szemüveg
+🕶️	napszemüveg
+🕶	napszemüveg
+🥽	védőszemüveg
+🥼	laborköpenyt
+👔	nyakkendő
+👕	póló
+👖	Farmer
+🧣	sál
+🧤	kesztyűt
+🧥	kabát
+🧦	zokni
+👗	ruha
+👘	kimonó
+👙	bikini
+👚	női ruhák
+👛	pénztárca
+👜	kézitáska
+👝	kuplung táska
+🛍️	bevásárló szatyrok
+🛍	bevásárló szatyrok
+🎒	iskolai hátizsák
+👞	férfi cipő
+👟	futócipő
+🥾	túrabakancs
+🥿	női lapos cipő
+👠	magas sarkú cipő
+👡	női szandál
+👢	női csizma
+👑	korona
+👒	női kalap
+🎩	cilinder
+🎓	érettségi sapka
+🧢	számlázott sapka
+⛑️	mentősisak
+⛑	mentősisak
+📿	ima gyöngyök
+💄	ajakrúzs
+💍	gyűrű
+💎	drágakő
+🐵	majom arc
+🐒	majom
+🦍	gorilla
+🐶	kutyafej
+🐕	kutya
+🐩	uszkár
+🐺	farkasarc
+🦊	róka arcát
+🦝	mosómedve
+🐱	macska arca
+🐈	macska
+🦁	oroszlán arcát
+🐯	tigris arc
+🐅	tigris
+🐆	leopárd
+🐴	lóarc
+🐎	ló
+🦄	egyszarvú arc
+🦓	zebra
+🦌	szarvas
+🐮	tehén arcát
+🐂	ökör
+🐃	bivaly
+🐄	tehén
+🐷	disznó arc
+🐖	malac
+🐗	vaddisznó
+🐽	disznóorr
+🐏	ram
+🐑	anyajuh
+🐐	kecske
+🐪	teve
+🐫	kétpúpos teve
+🦙	láma
+🦒	zsiráf
+🐘	elefánt
+🦏	orrszarvú
+🦛	víziló
+🐭	egér arc
+🐁	egér
+🐀	patkány
+🐹	hörcsög arc
+🐰	nyúlarc
+🐇	nyúl
+🐿️	mókus
+🐿	mókus
+🦔	sündisznó
+🦇	denevér
+🐻	medve arcát
+🐨	koala
+🐼	panda arc
+🦘	kenguru
+🦡	borz
+🐾	Mancs nyomok
+🦃	pulyka
+🐔	csirke
+🐓	kakas
+🐣	kikelő fióka
+🐤	bébi csaj
+🐥	előre néző bébi csaj
+🐦	madár
+🐧	pingvin
+🕊️	galamb
+🕊	galamb
+🦅	sas
+🦆	kacsa
+🦢	hattyú
+🦉	bagoly
+🦚	páva
+🦜	papagáj
+🐸	béka arcát
+🐊	krokodil
+🐢	teknősbéka
+🦎	gyík
+🐍	kígyó
+🐲	sárkányarc
+🐉	sárkány
+🦕	sauropod
+🦖	t-Rex
+🐳	kifolyó bálna
+🐋	bálna
+🐬	delfin
+🐟	hal
+🐠	trópusi hal
+🐡	blowfish
+🦈	cápa
+🐙	polip
+🐚	spirálhéj
+🦀	Rák
+🦞	homár
+🦐	garnélarák
+🦑	tintahal
+🐌	csiga
+🦋	pillangó
+🐛	bogár
+🐜	hangya
+🐝	háziméh
+🐞	hölgy bogár
+🦗	krikett
+🕷️	pók
+🕷	pók
+🕸️	pókháló
+🕸	pókháló
+🦂	skorpió
+🦟	szúnyog
+🦠	mikroba
+💐	csokor
+🌸	cseresznyevirág
+💮	fehér virág
+🏵️	rozetta
+🏵	rozetta
+🌹	rózsa
+🥀	fonnyadt virág
+🌺	hibiszkusz
+🌻	napraforgó
+🌼	kivirul
+🌷	tulipán
+🌱	palánta
+🌲	örökzöld fa
+🌳	lombos fa
+🌴	pálmafa
+🌵	kaktusz
+🌾	kagyló rizs
+🌿	növény
+☘️	lóhere
+☘	lóhere
+🍀	négylevelű lóhere
+🍁	juharfalevél
+🍂	lehullott levél
+🍃	levél lobog a szélben
+🍇	szőlő
+🍈	dinnye
+🍉	görögdinnye
+🍊	mandarin
+🍋	citrom
+🍌	banán
+🍍	ananász
+🥭	mangó
+🍎	piros alma
+🍏	zöld alma
+🍐	körte
+🍑	őszibarack
+🍒	cseresznye
+🍓	eper
+🥝	kivi
+🍅	paradicsom
+🥥	kókuszdió
+🥑	avokádó
+🍆	padlizsán
+🥔	burgonya
+🥕	sárgarépa
+🌽	kalász
+🌶️	csípős paprika
+🌶	csípős paprika
+🥒	uborka
+🥬	leveles zöld
+🥦	brokkoli
+🍄	gomba
+🥜	földimogyoró
+🌰	gesztenye
+🍞	kenyér
+🥐	croissant
+🥖	bagett kenyér
+🥨	perec
+🥯	bécsi kifli
+🥞	palacsintát
+🧀	sajt ék
+🍖	hús csonton
+🍗	baromficomb
+🥩	vágott hús
+🥓	szalonna
+🍔	hamburger
+🍟	sult krumpli
+🍕	pizza
+🌭	Hot dog
+🥪	szendvics
+🌮	taco
+🌯	burrito
+🥙	töltött laposkenyér
+🥚	tojás
+🍳	főzés
+🥘	sekély serpenyőben élelmiszer
+🍲	fazék ételt
+🥣	tál kanállal
+🥗	zöldsaláta
+🍿	pattogatott kukorica
+🧂	só
+🥫	konzervek
+🍱	bento doboz
+🍘	rizskekszet
+🍙	rízsgolyó
+🍚	főtt rizs
+🍛	Curry-s rizs
+🍜	gőzölő tál
+🍝	spagetti
+🍠	sült édesburgonya
+🍢	oden
+🍣	sushi
+🍤	sült garnélarák
+🍥	hal sütemény örvényléssel
+🥮	Hold torta
+🍡	dango
+🥟	gombóc
+🥠	szerencsesütit
+🥡	elvihető doboz
+🍦	lágy fagylalt
+🍧	leborotvált jég
+🍨	jégkrém
+🍩	fánk
+🍪	aprósütemény
+🎂	születésnapi torta
+🍰	sütemény
+🧁	muffin
+🥧	pite
+🍫	csokoládé szelet
+🍬	cukorka
+🍭	nyalóka
+🍮	tejsodó
+🍯	méztartó
+🍼	Bébiüveg
+🥛	pohár tej
+☕	forró ital
+🍵	teáscsésze fogantyú nélkül
+🍶	kedvéért
+🍾	palack pattogó dugóval
+🍷	borospohár
+🍸	koktélos pohár
+🍹	trópusi ital
+🍺	söröskorsó
+🍻	csörömpölő söröskorsók
+🥂	poharak koccanása
+🥃	pohár pohár
+🥤	csésze szalmával
+🥢	kínai evőpálcikák
+🍽️	villa és kés tányérral
+🍽	villa és kés tányérral
+🍴	Villa és kés
+🥄	kanál
+🔪	konyhakés
+🏺	amfora
+🌍	Európát-Afrikát mutató földgömb
+🌎	Amerikát mutató földgömb
+🌏	földgömb, amely Ázsiát-Ausztráliát mutatja
+🌐	földgömb meridiánokkal
+🗺️	világtérkép
+🗺	világtérkép
+🗾	Japán térképe
+🧭	iránytű
+🏔️	hófödte hegy
+🏔	hófödte hegy
+⛰️	hegy
+⛰	hegy
+🌋	vulkán
+🗻	Fuji
+🏕️	kemping
+🏕	kemping
+🏖️	strand esernyővel
+🏖	strand esernyővel
+🏜️	sivatag
+🏜	sivatag
+🏝️	lakatlan szigeten
+🏝	lakatlan szigeten
+🏞️	Nemzeti Park
+🏞	Nemzeti Park
+🏟️	stádium
+🏟	stádium
+🏛️	klasszikus épület
+🏛	klasszikus épület
+🏗️	építkezés
+🏗	építkezés
+🧱	téglák
+🏘️	házak
+🏘	házak
+🏚️	elhagyott ház
+🏚	elhagyott ház
+🏠	ház
+🏡	ház kerttel
+🏢	irodaház
+🏣	Japán posta
+🏤	posta
+🏥	kórház
+🏦	bank
+🏨	szálloda
+🏩	szerelem hotel
+🏪	kisbolt
+🏫	iskola
+🏬	áruház
+🏭	gyár
+🏯	japán kastély
+🏰	kastély
+💒	esküvő
+🗼	Tokiói torony
+🗽	Szabadságszobor
+⛪	templom
+🕌	mecset
+🕍	zsinagóga
+⛩️	sintó szentély
+⛩	sintó szentély
+🕋	kaaba
+⛲	szökőkút
+⛺	sátor
+🌁	ködös
+🌃	éjszaka a csillagokkal
+🏙️	városkép
+🏙	városkép
+🌄	napfelkelte a hegyek felett
+🌅	Napkelte
+🌆	városkép alkonyatkor
+🌇	napnyugta
+🌉	híd éjjel
+♨️	meleg források
+♨	meleg források
+🌌	Tejút
+🎠	körhinta ló
+🎡	óriáskerék
+🎢	hullámvasút
+💈	borbélyoszlop
+🎪	cirkuszi sátor
+🚂	mozdony
+🚃	vasúti kocsi
+🚄	gyorsvonat
+🚅	lövedékvonat
+🚆	vonat
+🚇	metró
+🚈	kombínó
+🚉	állomás
+🚊	villamos
+🚝	egysínű vasút
+🚞	hegyi vasút
+🚋	villamos kocsi
+🚌	busz
+🚍	szembejövő busz
+🚎	trolibusz
+🚐	minibusz
+🚑	mentőautó
+🚒	tűzoltó autó
+🚓	rendőrautó
+🚔	szembejövő rendőrautó
+🚕	Taxi
+🚖	szembejövő taxi
+🚗	autó
+🚘	szembejövő autó
+🚙	Sport-haszon jármű
+🚚	szállító teherautó
+🚛	csuklós teherautó
+🚜	traktor
+🚲	kerékpár
+🛴	robogó
+🛹	gördeszka
+🛵	robogó
+🚏	buszmegálló
+🛣️	autópálya
+🛣	autópálya
+🛤️	vasúti sín
+🛤	vasúti sín
+🛢️	olajdob
+🛢	olajdob
+⛽	üzemanyagpumpa
+🚨	rendőrautó lámpa
+🚥	vízszintes közlekedési lámpa
+🚦	függőleges közlekedési lámpa
+🛑	stoptábla
+🚧	Építkezés
+⚓	horgony
+⛵	vitorlás
+🛶	kenu
+🚤	motoros siklócsónak
+🛳️	személyszállító hajó
+🛳	személyszállító hajó
+⛴️	komp
+⛴	komp
+🛥️	motoros csónak
+🛥	motoros csónak
+🚢	hajó
+✈️	repülőgép
+✈	repülőgép
+🛩️	kis repülőgép
+🛩	kis repülőgép
+🛫	repülőgép indulás
+🛬	repülőgép érkezés
+💺	ülés
+🚁	helikopter
+🚟	függővasút
+🚠	hegyi kötélpálya
+🚡	légi villamospálya
+🛰️	műhold
+🛰	műhold
+🚀	rakéta
+🛸	repülő csészealj
+🛎️	csengőharang
+🛎	csengőharang
+🧳	poggyász
+⌛	homokóra kész
+⏳	homokóra nem készült
+⌚	néz
+⏰	ébresztőóra
+⏱️	stopperóra
+⏱	stopperóra
+⏲️	időzítő óra
+⏲	időzítő óra
+🕰️	kandallópárkányos óra
+🕰	kandallópárkányos óra
+🕛	tizenkét óra
+🕧	tizenkettő harminc
+🕐	egy óra
+🕜	Egy harminc
+🕑	két óra
+🕝	kettő harminc
+🕒	három óra
+🕞	három harminc
+🕓	négy óra
+🕟	fél ötkor
+🕔	öt óra
+🕠	öt harminc
+🕕	hat óra
+🕡	hat harminc
+🕖	hét óra
+🕢	fél nyolc
+🕗	nyolc óra
+🕣	Nyolc harminc
+🕘	kilenc óra
+🕤	kilenc harminc
+🕙	tíz óra
+🕥	tíz harminc
+🕚	tizenegy óra
+🕦	1130
+🌑	újhold
+🌒	növekvő félhold
+🌓	első negyed hold
+🌔	növekvő gibbous hold
+🌕	telihold
+🌖	fogyó gibbous hold
+🌗	utolsó negyed hold
+🌘	fogyó félhold
+🌙	félhold
+🌚	újhold arc
+🌛	első negyed holdarca
+🌜	utolsó negyed holdarca
+🌡️	hőmérő
+🌡	hőmérő
+☀️	nap
+☀	nap
+🌝	telihold arcát
+🌞	nap arccal
+⭐	csillag
+🌟	izzó csillag
+🌠	hullócsillag
+☁️	felhő
+☁	felhő
+⛅	nap felhő mögött
+⛈️	felhő villámlás és eső
+⛈	felhő villámlás és eső
+🌤️	nap kis felhő mögött
+🌤	nap kis felhő mögött
+🌥️	nap nagy felhő mögött
+🌥	nap nagy felhő mögött
+🌦️	nap esőfelhő mögött
+🌦	nap esőfelhő mögött
+🌧️	felhő esővel
+🌧	felhő esővel
+🌨️	felhő hóval
+🌨	felhő hóval
+🌩️	felhő villámmal
+🌩	felhő villámmal
+🌪️	tornádó
+🌪	tornádó
+🌫️	köd
+🌫	köd
+🌬️	szél arca
+🌬	szél arca
+🌀	ciklon
+🌈	szivárvány
+🌂	zárt esernyő
+☂️	esernyő
+☂	esernyő
+☔	esernyő esőcseppekkel
+⛱️	esernyő a földön
+⛱	esernyő a földön
+⚡	magasfeszültség
+❄️	hópehely
+❄	hópehely
+☃️	hóember
+☃	hóember
+⛄	hóember hó nélkül
+☄️	üstökös
+☄	üstökös
+🔥	Tűz
+💧	cseppecske
+🌊	hullám
+🎃	töklámpás
+🎄	karácsonyfa
+🎆	tűzijáték
+🎇	csillagszóró
+🧨	petárda
+✨	csillog
+🎈	ballon
+🎉	party popper
+🎊	konfetti labda
+🎋	tanabata fa
+🎍	fenyő díszítés
+🎎	Japán babák
+🎏	ponty streamer
+🎐	harangjáték
+🎑	holdnéző ceremónia
+🧧	piros boríték
+🎀	szalag
+🎁	becsomagolt ajándék
+🎗️	emlékeztető szalag
+🎗	emlékeztető szalag
+🎟️	belépőjegyek
+🎟	belépőjegyek
+🎫	jegy
+🎖️	katonai érem
+🎖	katonai érem
+🏆	trófea
+🏅	sport érem
+🥇	1. helyezett érem
+🥈	2. helyezett érem
+🥉	3. helyezett érem
+⚽	focilabda
+⚾	baseball
+🥎	softball labdajáték
+🏀	kosárlabda
+🏐	röplabda
+🏈	amerikai foci
+🏉	rögbi foci
+🎾	tenisz
+🥏	repülő korong
+🎳	bowling
+🏏	krikett játék
+🏑	gyeplabda
+🏒	jéghoki
+🥍	lacrosse
+🏓	ping pong
+🏸	tollaslabda
+🥊	box kesztyű
+🥋	harcművészeti egyenruha
+🥅	gólháló
+⛳	zászló a lyukban
+⛸️	jégkorcsolya
+⛸	jégkorcsolya
+🎣	horgászbot
+🎽	futóing
+🎿	sílécek
+🛷	szánkó
+🥌	göndörítő kő
+🎯	telitalálat
+🎱	pool 8 labda
+🔮	kristálygömb
+🧿	nazar amulett
+🎮	videojáték
+🕹️	joystick
+🕹	joystick
+🎰	pénzbedobós automata
+🎲	játék hal
+🧩	Lombfűrész
+🧸	Teddi maci
+♠️	ásó öltöny
+♠	ásó öltöny
+♥️	szív öltöny
+♥	szív öltöny
+♦️	gyémánt öltöny
+♦	gyémánt öltöny
+♣️	kluböltöny
+♣	kluböltöny
+♟️	sakk gyalog
+♟	sakk gyalog
+🃏	dzsókerkártya
+🀄	mahjong vörös sárkány
+🎴	virág kártya
+🎭	előadóművészet
+🖼️	bekeretezett kép
+🖼	bekeretezett kép
+🎨	művész paletta
+🧵	cérna
+🧶	fonal
+🔇	elnémított hangszóró
+🔈	hangszóró alacsony hangerő
+🔉	hangszóró közepes hangerő
+🔊	hangszóró nagy hangerő
+📢	hangszóró
+📣	megafon
+📯	postakürt
+🔔	harang
+🔕	csengő perjellel
+🎼	hangjegy
+🎵	Hangjegy
+🎶	hangjegyek
+🎙️	stúdió mikrofon
+🎙	stúdió mikrofon
+🎚️	szintcsúszka
+🎚	szintcsúszka
+🎛️	vezérlőgombok
+🎛	vezérlőgombok
+🎤	mikrofon
+🎧	fejhallgató
+📻	rádió
+🎷	szaxofon
+🎸	gitár
+🎹	zenei billentyűzet
+🎺	trombita
+🎻	hegedű
+🥁	dob
+📱	mobiltelefon
+📲	mobiltelefon nyíllal
+☎️	telefon
+☎	telefon
+📞	telefonkagyló
+📟	pager
+📠	fax
+🔋	akkumulátor
+🔌	elektromos csatlakozó
+💻	laptop
+🖥️	asztali számítógép
+🖥	asztali számítógép
+🖨️	nyomtató
+🖨	nyomtató
+⌨️	billentyűzet
+⌨	billentyűzet
+🖱️	számítógépes egér
+🖱	számítógépes egér
+🖲️	hanyattegér
+🖲	hanyattegér
+💽	számítógépes lemez
+💾	hajlítható lemez
+💿	optikai lemez
+📀	DVD
+🧮	golyós számológép
+🎥	kamera
+🎞️	filmkockák
+🎞	filmkockák
+📽️	filmvetítő
+📽	filmvetítő
+🎬	kereplőtábla
+📺	televízió
+📷	kamera
+📸	fényképezőgép vakuval
+📹	Videókamera
+📼	videokazetta
+🔍	balra dőlt nagyító
+🔎	nagyító jobbra döntve
+🕯️	gyertya
+🕯	gyertya
+💡	izzó körte
+🔦	zseblámpa
+🏮	piros papírlámpás
+📔	jegyzetfüzet dekoratív borítóval
+📕	zárt könyv
+📖	nyitott könyv
+📗	zöld könyv
+📘	kék könyv
+📙	narancssárga könyv
+📚	könyveket
+📓	jegyzetfüzet
+📒	főkönyv
+📃	göndörítő oldal
+📜	tekercs
+📄	oldal felfelé nézzen
+📰	újság
+🗞️	összetekert újság
+🗞	összetekert újság
+📑	könyvjelző lapok
+🔖	könyvjelző
+🏷️	címke
+🏷	címke
+💰	pénzes zsák
+💴	jen bankjegy
+💵	dollár bankjegy
+💶	euróbankjegy
+💷	font bankjegy
+💸	szárnyas pénz
+💳	hitelkártya
+🧾	nyugta
+💹	jennel növekvő diagram
+💱	valutaváltó
+💲	nehéz dollárjel
+✉️	boríték
+✉	boríték
+📧	email
+📨	bejövő boríték
+📩	boríték nyíllal
+📤	kimenő tálca
+📥	beérkező levelek tálcája
+📦	csomag
+📫	zárt postafiók felemelt zászlóval
+📪	zárt postafiók leengedett zászlóval
+📬	nyitott postafiók felemelt zászlóval
+📭	nyitott postafiók leengedett zászlóval
+📮	postaláda
+🗳️	urna szavazólappal
+🗳	urna szavazólappal
+✏️	ceruza
+✏	ceruza
+✒️	fekete tollhegy
+✒	fekete tollhegy
+🖋️	töltőtoll
+🖋	töltőtoll
+🖊️	toll
+🖊	toll
+🖌️	ecset
+🖌	ecset
+🖍️	zsírkréta
+🖍	zsírkréta
+📝	Memo
+💼	aktatáska
+📁	fájl mappa
+📂	fájlmappa megnyitása
+🗂️	kartoték elválasztók
+🗂	kartoték elválasztók
+📅	naptár
+📆	letéphető naptár
+🗒️	spirális jegyzettömb
+🗒	spirális jegyzettömb
+🗓️	spirál naptár
+🗓	spirál naptár
+📇	kártyaindex
+📈	diagram növekszik
+📉	diagram csökkenő
+📊	oszlopdiagram
+📋	vágólap
+📌	rajzszeg
+📍	kerek gombostű
+📎	gémkapocs
+🖇️	linkelt iratkapcsok
+🖇	linkelt iratkapcsok
+📏	egyenes vonalzó
+📐	háromszög vonalzó
+✂️	olló
+✂	olló
+🗃️	kártya irattartó doboz
+🗃	kártya irattartó doboz
+🗄️	irattartó szekrény
+🗄	irattartó szekrény
+🗑️	papírkosár
+🗑	papírkosár
+🔒	zárt
+🔓	feloldva
+🔏	tollal zárva
+🔐	kulccsal zárva
+🔑	kulcs
+🗝️	régi kulcs
+🗝	régi kulcs
+🔨	kalapács
+⛏️	szed
+⛏	szed
+⚒️	kalapács és csákány
+⚒	kalapács és csákány
+🛠️	kalapács és csavarkulcs
+🛠	kalapács és csavarkulcs
+🗡️	tőr
+🗡	tőr
+⚔️	keresztbe tett kardok
+⚔	keresztbe tett kardok
+🔫	pisztoly
+🏹	íj és nyíl
+🛡️	pajzs
+🛡	pajzs
+🔧	csavarkulcs
+🔩	anya és csavar
+⚙️	felszerelés
+⚙	felszerelés
+🗜️	bilincs
+🗜	bilincs
+⚖️	mérleg skála
+⚖	mérleg skála
+🔗	link
+⛓️	láncok
+⛓	láncok
+🧰	Eszköztár
+🧲	mágnes
+⚗️	lombik
+⚗	lombik
+🧪	kémcső
+🧫	petri csésze
+🧬	DNS
+🔬	mikroszkóp
+🔭	távcső
+📡	műholdas antenna
+💉	fecskendő
+💊	tabletta
+🚪	ajtó
+🛏️	ágy
+🛏	ágy
+🛋️	kanapé és lámpa
+🛋	kanapé és lámpa
+🚽	WC
+🚿	zuhany
+🛁	fürdőkád
+🧴	lotion palack
+🧷	biztosítótű
+🧹	seprű
+🧺	kosár
+🧻	papírtekercs
+🧼	szappan
+🧽	szivacs
+🧯	tűzoltó készülék
+🛒	bevásárlókocsi
+🚬	cigaretta
+⚰️	koporsó
+⚰	koporsó
+⚱️	temetési urna
+⚱	temetési urna
+🗿	moai
+🏧	ATM jele
+🚮	alom a bin jel
+🚰	iható víz
+♿	kerekesszék szimbólum
+🚹	férfi mosdó
+🚺	női szoba
+🚻	WC
+🚼	baba szimbólum
+🚾	vízöblítéses vécé
+🛂	útlevél-ellenőrzés
+🛃	vám
+🛄	poggyászkiadó
+🛅	hagyott poggyász
+⚠️	Figyelem
+⚠	Figyelem
+🚸	átkelő gyerekek
+⛔	Belépni tilos
+🚫	tiltott
+🚳	nincs kerékpár
+🚭	Tilos a dohányzás
+🚯	nincs szemetelés
+🚱	nem iható víz
+🚷	nincs gyalogos
+📵	nincs mobiltelefon
+🔞	tizennyolc év alatti senki
+☢️	radioaktív
+☢	radioaktív
+☣️	biológiai veszély
+☣	biológiai veszély
+⬆️	felfelé nyíl
+⬆	felfelé nyíl
+↗️	fel-jobb nyíl
+↗	fel-jobb nyíl
+➡️	jobb nyíl
+➡	jobb nyíl
+↘️	le-jobb nyíl
+↘	le-jobb nyíl
+⬇️	lefele nyíl
+⬇	lefele nyíl
+↙️	le-balra nyíl
+↙	le-balra nyíl
+⬅️	bal nyíl
+⬅	bal nyíl
+↖️	fel-balra nyíl
+↖	fel-balra nyíl
+↕️	fel-le nyíl
+↕	fel-le nyíl
+↔️	bal-jobb nyíl
+↔	bal-jobb nyíl
+↩️	jobbra ívelő nyíl balra
+↩	jobbra ívelő nyíl balra
+↪️	balra nyíl jobbra görbül
+↪	balra nyíl jobbra görbül
+⤴️	felfelé görbülő jobb nyíl
+⤴	felfelé görbülő jobb nyíl
+⤵️	lefelé görbülő jobb nyíl
+⤵	lefelé görbülő jobb nyíl
+🔃	az óramutató járásával megegyező irányú függőleges nyilak
+🔄	az óramutató járásával ellentétes nyilak gomb
+🔙	VISSZA nyíl
+🔚	VÉGE nyíl
+🔛	ON nyílra
+🔜	HAMAROSAN nyíl
+🔝	FELSŐ nyíl
+🛐	istentiszteleti hely
+⚛️	atom szimbólum
+⚛	atom szimbólum
+🕉️	om
+🕉	om
+✡️	Dávid csillaga
+✡	Dávid csillaga
+☸️	dharma kereke
+☸	dharma kereke
+☯️	Yin Yang
+☯	Yin Yang
+✝️	latin kereszt
+✝	latin kereszt
+☦️	ortodox kereszt
+☦	ortodox kereszt
+☪️	csillag és félhold
+☪	csillag és félhold
+☮️	béke szimbóluma
+☮	béke szimbóluma
+🕎	menóra
+🔯	pontozott hatágú csillag
+♈	Kos
+♉	Bika
+♊	Ikrek
+♋	Rák
+♌	Oroszlán
+♍	Szűz
+♎	Mérleg
+♏	Skorpió
+♐	Nyilas
+♑	Bak
+♒	Vízöntő
+♓	Halak
+⛎	Ophiuchus
+🔀	számok véletlenszerű lejátszása gomb
+🔁	ismétlés gomb
+🔂	ismételje meg az egyetlen gombot
+▶️	lejátszás gomb
+▶	lejátszás gomb
+⏩	gyors előretekerés gomb
+⏭️	következő szám gomb
+⏭	következő szám gomb
+⏯️	lejátszás vagy szünet gomb
+⏯	lejátszás vagy szünet gomb
+◀️	hátramenet gomb
+◀	hátramenet gomb
+⏪	gyors hátramenet gomb
+⏮️	utolsó szám gomb
+⏮	utolsó szám gomb
+🔼	felfelé gomb
+⏫	gyors fel gomb
+🔽	lefelé gomb
+⏬	gyors le gombot
+⏸️	szünet gomb
+⏸	szünet gomb
+⏹️	stop gomb
+⏹	stop gomb
+⏺️	felvétel gomb
+⏺	felvétel gomb
+⏏️	kiadó gomb
+⏏	kiadó gomb
+🎦	mozi
+🔅	fényerő gomb
+🔆	fényes gomb
+📶	antennarudak
+📳	vibrációs mód
+📴	mobiltelefon kikapcsolva
+♀️	női jel
+♀	női jel
+♂️	férfi jel
+♂	férfi jel
+⚕️	orvosi szimbólum
+⚕	orvosi szimbólum
+♾️	végtelenség
+♾	végtelenség
+♻️	újrahasznosítási szimbólum
+♻	újrahasznosítási szimbólum
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	háromágú jelkép
+📛	névkitűző
+🔰	Japán szimbólum kezdőknek
+⭕	nehéz nagy kör
+✅	fehér nehéz pipa
+☑️	szavazóurna csekkel
+☑	szavazóurna csekkel
+✔️	nehéz pipa
+✔	nehéz pipa
+✖️	nehéz szorzás x
+✖	nehéz szorzás x
+❌	keresztjel
+❎	keresztjel gomb
+➕	nehéz pluszjel
+➖	nehéz mínusz jel
+➗	nehéz hadosztály jele
+➰	göndör hurok
+➿	dupla göndör hurok
+〽️	rész váltakozó jel
+〽	rész váltakozó jel
+✳️	nyolcküllős csillag
+✳	nyolcküllős csillag
+✴️	nyolcágú csillag
+✴	nyolcágú csillag
+❇️	szikra
+❇	szikra
+‼️	kettős felkiáltójel
+‼	kettős felkiáltójel
+⁉️	felkiáltójel
+⁉	felkiáltójel
+❓	kérdőjel
+❔	fehér kérdőjel
+❕	fehér felkiáltójel
+❗	felkiáltójel
+〰️	hullámos kötőjel
+〰	hullámos kötőjel
+©️	szerzői jog
+©	szerzői jog
+®️	bejegyzett
+®	bejegyzett
+™️	védjegy
+™	védjegy
+#️⃣	billentyűsapka: #
+#⃣	billentyűsapka: #
+*️⃣	billentyűsapka: *
+*⃣	billentyűsapka: *
+0️⃣	billentyűsapka: 0
+0⃣	billentyűsapka: 0
+1️⃣	billentyűsapka: 1
+1⃣	billentyűsapka: 1
+2️⃣	billentyűsapka: 2
+2⃣	billentyűsapka: 2
+3️⃣	billentyűsapka: 3
+3⃣	billentyűsapka: 3
+4️⃣	billentyűsapka: 4
+4⃣	billentyűsapka: 4
+5️⃣	billentyűsapka: 5
+5⃣	billentyűsapka: 5
+6️⃣	billentyűsapka: 6
+6⃣	billentyűsapka: 6
+7️⃣	billentyűsapka: 7
+7⃣	billentyűsapka: 7
+8️⃣	billentyűsapka: 8
+8⃣	billentyűsapka: 8
+9️⃣	billentyűsapka: 9
+9⃣	billentyűsapka: 9
+🔟	billentyűsapka: 10
+💯	száz pont
+🔠	bevitel latin nagybetűvel
+🔡	bevitel latin kisbetűvel
+🔢	beírni a számokat
+🔣	beviteli szimbólumok
+🔤	latin betűk bevitele
+🅰️	Egy gomb (vércsoport)
+🅰	Egy gomb (vércsoport)
+🆎	AB gomb (vércsoport)
+🅱️	B gomb (vércsoport)
+🅱	B gomb (vércsoport)
+🆑	CL gomb
+🆒	COOL gomb
+🆓	INGYENES gomb
+ℹ️	információ
+ℹ	információ
+🆔	ID gomb
+Ⓜ️	karikázta M
+Ⓜ	karikázta M
+🆕	ÚJ gomb
+🆖	NG gomb
+🅾️	O gomb (vércsoport)
+🅾	O gomb (vércsoport)
+🆗	OK gomb
+🅿️	P gomb
+🅿	P gomb
+🆘	SOS gomb
+🆙	FEL gomb
+🆚	VS gomb
+🈁	Japán „itt” gomb
+🈂️	Japán „szolgáltatási díj” gomb
+🈂	Japán „szolgáltatási díj” gomb
+🈷️	Japán „havi összeg” gomb
+🈷	Japán „havi összeg” gomb
+🈶	Japán „nem ingyenes” gomb
+🈯	Japán „fenntartott” gomb
+🉐	Japán „alku” gomb
+🈹	Japán „kedvezmény” gomb
+🈚	Japán „ingyenes” gomb
+🈲	Japán „tiltott” gomb
+🉑	Japán „elfogadható” gomb
+🈸	Japán „alkalmazás” gomb
+🈴	Japán „átmenő osztályzat” gomb
+🈳	Japán „üresedés” gomb
+㊗️	Japán „gratulálok” gomb
+㊗	Japán „gratulálok” gomb
+㊙️	Japán „titkos” gomb
+㊙	Japán „titkos” gomb
+🈺	Japán „nyitott üzletre” gomb
+🈵	Japán „nincs üresedés” gomb
+▪️	fekete kis négyzet
+▪	fekete kis négyzet
+▫️	fehér kis négyzet
+▫	fehér kis négyzet
+◻️	fehér közepes négyzet
+◻	fehér közepes négyzet
+◼️	fekete közepes négyzet
+◼	fekete közepes négyzet
+◽	fehér közepes-kis négyzet
+◾	fekete közepes-kis négyzet
+⬛	fekete nagy négyzet
+⬜	fehér nagy négyzet
+🔶	nagy narancssárga gyémánt
+🔷	nagy kék gyémánt
+🔸	kis narancssárga gyémánt
+🔹	kis kék gyémánt
+🔺	piros háromszög mutatott felfelé
+🔻	piros háromszög lefelé mutatott
+💠	gyémánt ponttal
+🔘	Rádiógomb
+🔲	fekete négyzet gomb
+🔳	fehér négyzet gomb
+⚪	fehér kör
+⚫	fekete kör
+🔴	piros kör
+🔵	kék kör
+🏁	kockás zászló
+🚩	háromszög alakú zászló
+🎌	keresztbe tett zászlókat
+🏴	fekete zászló
+🏳️	fehér zászló
+🏳	fehér zászló
+🏳️‍🌈	szivárvány zászló
+🏳‍🌈	szivárvány zászló
+🏴‍☠️	kalóz zászló
+🏴‍☠	kalóz zászló
+🇦🇨	Ascension-sziget
+🇦🇩	Andorra
+🇦🇪	Egyesült Arab Emírségek
+🇦🇫	Afganisztán
+🇦🇬	Antigua és Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albánia
+🇦🇲	Örményország
+🇦🇴	Angola
+🇦🇶	Antarktisz
+🇦🇷	Argentína
+🇦🇸	Amerikai Szamoa
+🇦🇹	Ausztria
+🇦🇺	Ausztrália
+🇦🇼	Aruba
+🇦🇽	Åland-szigetek
+🇦🇿	Azerbajdzsán
+🇧🇦	Bosznia és Hercegovina
+🇧🇧	Barbados
+🇧🇩	Banglades
+🇧🇪	Belgium
+🇧🇫	Burkina Faso
+🇧🇬	Bulgária
+🇧🇭	Bahrein
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	St. Barthélemy
+🇧🇲	Bermuda
+🇧🇳	Brunei
+🇧🇴	Bolívia
+🇧🇶	karibi Hollandia
+🇧🇷	Brazília
+🇧🇸	Bahamák
+🇧🇹	Bhután
+🇧🇻	Bouvet-sziget
+🇧🇼	Botswana
+🇧🇾	Fehéroroszország
+🇧🇿	Belize
+🇨🇦	Kanada
+🇨🇨	Kókusz (Keeling)-szigetek
+🇨🇩	Kongó – Kinshasa
+🇨🇫	Közép-Afrikai Köztársaság
+🇨🇬	Kongó – Brazzaville
+🇨🇭	Svájc
+🇨🇮	Elefántcsontpart
+🇨🇰	Cook-szigetek
+🇨🇱	Chile
+🇨🇲	Kamerun
+🇨🇳	Kína
+🇨🇴	Colombia
+🇨🇵	Clipperton-sziget
+🇨🇷	Costa Rica
+🇨🇺	Kuba
+🇨🇻	zöld-fok
+🇨🇼	Curaçao
+🇨🇽	Karácsony-sziget
+🇨🇾	Ciprus
+🇨🇿	Csehország
+🇩🇪	Németország
+🇩🇬	Diego Garcia
+🇩🇯	Dzsibuti
+🇩🇰	Dánia
+🇩🇲	Dominika
+🇩🇴	Dominikai Köztársaság
+🇩🇿	Algéria
+🇪🇦	Ceuta és Melilla
+🇪🇨	Ecuador
+🇪🇪	Észtország
+🇪🇬	Egyiptom
+🇪🇭	nyugat-Szahara
+🇪🇷	Eritrea
+🇪🇸	Spanyolország
+🇪🇹	Etiópia
+🇪🇺	Európai Únió
+🇫🇮	Finnország
+🇫🇯	Fidzsi-szigetek
+🇫🇰	Falkland-szigetek
+🇫🇲	Mikronézia
+🇫🇴	Faroe Szigetek
+🇫🇷	Franciaország
+🇬🇦	Gabon
+🇬🇧	Egyesült Királyság
+🇬🇩	Grenada
+🇬🇪	Grúzia
+🇬🇫	Francia Guyana
+🇬🇬	Guernsey
+🇬🇭	Ghána
+🇬🇮	Gibraltár
+🇬🇱	Grönland
+🇬🇲	Gambia
+🇬🇳	Guinea
+🇬🇵	Guadeloupe
+🇬🇶	Egyenlítői-Guinea
+🇬🇷	Görögország
+🇬🇸	Dél-Georgia és Déli Sandwich-szigetek
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Bissau-Guinea
+🇬🇾	Guyana
+🇭🇰	Hongkong KKT Kína
+🇭🇲	Heard és McDonald-szigetek
+🇭🇳	Honduras
+🇭🇷	Horvátország
+🇭🇹	Haiti
+🇭🇺	Magyarország
+🇮🇨	Kanári szigetek
+🇮🇩	Indonézia
+🇮🇪	Írország
+🇮🇱	Izrael
+🇮🇲	Man-sziget
+🇮🇳	India
+🇮🇴	Brit Indiai-óceáni Terület
+🇮🇶	Irak
+🇮🇷	Irán
+🇮🇸	Izland
+🇮🇹	Olaszország
+🇯🇪	Jersey
+🇯🇲	Jamaica
+🇯🇴	Jordánia
+🇯🇵	Japán
+🇰🇪	Kenya
+🇰🇬	Kirgizisztán
+🇰🇭	Kambodzsa
+🇰🇮	Kiribati
+🇰🇲	Comore-szigetek
+🇰🇳	St. Kitts & Nevis
+🇰🇵	Észak Kórea
+🇰🇷	Dél-Korea
+🇰🇼	Kuvait
+🇰🇾	Kajmán-szigetek
+🇰🇿	Kazahsztán
+🇱🇦	Laosz
+🇱🇧	Libanon
+🇱🇨	Szent Lucia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Libéria
+🇱🇸	Lesotho
+🇱🇹	Litvánia
+🇱🇺	Luxemburg
+🇱🇻	Lettország
+🇱🇾	Líbia
+🇲🇦	Marokkó
+🇲🇨	Monaco
+🇲🇩	Moldova
+🇲🇪	Montenegró
+🇲🇫	Szent Márton
+🇲🇬	Madagaszkár
+🇲🇭	Marshall-szigetek
+🇲🇰	Macedónia
+🇲🇱	Mali
+🇲🇲	Mianmar (Burma)
+🇲🇳	Mongólia
+🇲🇴	Makaó KKT Kína
+🇲🇵	Észak Mariana szigetek
+🇲🇶	Martinique
+🇲🇷	Mauritánia
+🇲🇸	Montserrat
+🇲🇹	Málta
+🇲🇺	Mauritius
+🇲🇻	Maldív-szigetek
+🇲🇼	Malawi
+🇲🇽	Mexikó
+🇲🇾	Malaysia
+🇲🇿	Mozambik
+🇳🇦	Namíbia
+🇳🇨	Új-Kaledónia
+🇳🇪	Niger
+🇳🇫	Norfolk-sziget
+🇳🇬	Nigéria
+🇳🇮	Nicaragua
+🇳🇱	Hollandia
+🇳🇴	Norvégia
+🇳🇵	Nepál
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Új Zéland
+🇴🇲	Omán
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Francia Polinézia
+🇵🇬	Pápua Új-Guinea
+🇵🇭	Fülöp-szigetek
+🇵🇰	Pakisztán
+🇵🇱	Lengyelország
+🇵🇲	St. Pierre és Miquelon
+🇵🇳	Pitcairn-szigetek
+🇵🇷	Puerto Rico
+🇵🇸	Palesztin területek
+🇵🇹	Portugália
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Katar
+🇷🇪	Réunion
+🇷🇴	Románia
+🇷🇸	Szerbia
+🇷🇺	Oroszország
+🇷🇼	Ruanda
+🇸🇦	Szaud-Arábia
+🇸🇧	Salamon-szigetek
+🇸🇨	Seychelle-szigetek
+🇸🇩	Szudán
+🇸🇪	Svédország
+🇸🇬	Szingapúr
+🇸🇭	Szent Ilona
+🇸🇮	Szlovénia
+🇸🇯	Svalbard és Jan Mayen
+🇸🇰	Szlovákia
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Szenegál
+🇸🇴	Szomália
+🇸🇷	Suriname
+🇸🇸	Dél Szudán
+🇸🇹	São Tomé és Príncipe
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Szíria
+🇸🇿	Szváziföld
+🇹🇦	Tristan da Cunha
+🇹🇨	Turks és Caicos-szigetek
+🇹🇩	Csád
+🇹🇫	Francia déli területek
+🇹🇬	Menni
+🇹🇭	Thaiföld
+🇹🇯	Tádzsikisztán
+🇹🇰	Tokelau
+🇹🇱	Kelet-Timor
+🇹🇲	Türkmenisztán
+🇹🇳	Tunézia
+🇹🇴	Tonga
+🇹🇷	pulyka
+🇹🇹	Trinidad és Tobago
+🇹🇻	Tuvalu
+🇹🇼	Tajvan
+🇹🇿	Tanzánia
+🇺🇦	Ukrajna
+🇺🇬	Uganda
+🇺🇲	Az Egyesült Államok külső szigetei
+🇺🇳	Egyesült Nemzetek
+🇺🇸	Egyesült Államok
+🇺🇾	Uruguay
+🇺🇿	Üzbegisztán
+🇻🇦	Vatikán város
+🇻🇨	St. Vincent és Grenadine-szigetek
+🇻🇪	Venezuela
+🇻🇬	Brit Virgin szigetek
+🇻🇮	Amerikai Virgin-szigetek
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis és Futuna
+🇼🇸	Szamoa
+🇽🇰	Koszovó
+🇾🇪	Jemen
+🇾🇹	Mayotte
+🇿🇦	Dél-Afrika
+🇿🇲	Zambia
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Anglia
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Skócia
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Wales

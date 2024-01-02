@@ -24,11 +24,11 @@ import spacy_pkuseg
 import stanza
 import underthesea.file_utils
 
-import wl_utils
+from wordless.wl_utils import wl_misc
 
 binaries = []
 datas = []
-is_windows, is_macos, is_linux = wl_utils.check_os()
+is_windows, is_macos, is_linux = wl_misc.check_os()
 
 # Fix PyTorch
 # See: https://github.com/pyinstaller/pyinstaller/issues/7485#issuecomment-1465155018
@@ -163,7 +163,7 @@ coll = COLLECT(
 # Bundle application on macOS
 # Reference: https://pyinstaller.org/en/stable/spec-files.html#spec-file-options-for-a-macos-bundle
 if is_macos:
-    wl_ver = wl_utils.get_wl_ver()
+    wl_ver = wl_misc.get_wl_ver()
 
     app = BUNDLE(
         coll,

@@ -17,24 +17,9 @@
 # ----------------------------------------------------------------------
 
 import glob
-import platform
 import subprocess
 
 import bs4
-
-def check_os():
-    is_windows = False
-    is_macos = False
-    is_linux = False
-
-    if platform.system() == 'Windows':
-        is_windows = True
-    elif platform.system() == 'Darwin':
-        is_macos = True
-    elif platform.system() == 'Linux':
-        is_linux = True
-
-    return is_windows, is_macos, is_linux
 
 # Fix format of ts files
 def fix_ts_format(ts_file):

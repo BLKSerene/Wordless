@@ -1,1 +1,1 @@
-"The first token is a punctuation mark.
+"The first token is a punctuation mark. Take it!

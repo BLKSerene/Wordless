@@ -23,21 +23,24 @@ from wordless.wl_dialogs import wl_dialogs_misc
 main_global = None
 
 def test_dependency_parser():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
-    main.settings_custom['dependency_parser']['search_settings']['multi_search_mode'] = True
-    main.settings_custom['dependency_parser']['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
+    settings = main.settings_custom['dependency_parser']
+
+    settings['search_settings']['multi_search_mode'] = True
+    settings['search_settings']['search_terms'] = wl_test_init.SEARCH_TERMS
 
     for i in range(4):
-        # Single file
-        if i == 0:
-            wl_test_init.select_test_files(main, no_files = [0])
-        # Multiple files
-        elif i == 1:
-            wl_test_init.select_test_files(main, no_files = [1, 2])
-        # Miscellaneous
-        else:
-            wl_test_init.select_test_files(main, no_files = [i + 1])
+        match i:
+            # Single file
+            case 0:
+                wl_test_init.select_test_files(main, no_files = [0])
+            # Multiple files
+            case 1:
+                wl_test_init.select_test_files(main, no_files = [1, 2])
+            # Miscellaneous
+            case _:
+                wl_test_init.select_test_files(main, no_files = [i + 1])
 
         global main_global # pylint: disable=global-statement
         main_global = main

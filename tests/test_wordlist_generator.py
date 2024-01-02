@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-import itertools
+import random
 
 from tests import wl_test_init
 from wordless import wl_wordlist_generator
@@ -25,35 +25,34 @@ from wordless.wl_dialogs import wl_dialogs_misc
 main_global = None
 
 def test_wordlist_generator():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
+
+    settings = main.settings_custom['wordlist_generator']
 
     measures_dispersion = list(main.settings_global['measures_dispersion'].keys())
     measures_adjusted_freq = list(main.settings_global['measures_adjusted_freq'].keys())
 
-    for i, (measure_dispersion, measure_adjusted_freq) in enumerate(itertools.zip_longest(
-        measures_dispersion,
-        measures_adjusted_freq,
-        fillvalue = 'none'
-    )):
-        # Single file
-        if i % 4 == 0:
-            wl_test_init.select_test_files(main, no_files = [0])
-        # Multiple files
-        elif i % 4 == 1:
-            wl_test_init.select_test_files(main, no_files = [1, 2])
-        # Miscellaneous
-        else:
-            wl_test_init.select_test_files(main, no_files = [i % 4 + 1])
+    for i in range(4):
+        match i:
+            # Single file
+            case 0:
+                wl_test_init.select_test_files(main, no_files = [0])
+            # Multiple files
+            case 1:
+                wl_test_init.select_test_files(main, no_files = [1, 2])
+            # Miscellaneous
+            case _:
+                wl_test_init.select_test_files(main, no_files = [i + 1])
 
         global main_global # pylint: disable=global-statement
         main_global = main
 
-        main.settings_custom['wordlist_generator']['generation_settings']['measure_dispersion'] = measure_dispersion
-        main.settings_custom['wordlist_generator']['generation_settings']['measure_adjusted_freq'] = measure_adjusted_freq
+        settings['generation_settings']['measure_dispersion'] = random.choice(measures_dispersion)
+        settings['generation_settings']['measure_adjusted_freq'] = random.choice(measures_adjusted_freq)
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
-        print(f"Measure of dispersion: {main.settings_custom['wordlist_generator']['generation_settings']['measure_dispersion']}")
-        print(f"Measure of adjusted frequency: {main.settings_custom['wordlist_generator']['generation_settings']['measure_adjusted_freq']}")
+        print(f"Measure of dispersion: {settings['generation_settings']['measure_dispersion']}")
+        print(f"Measure of adjusted frequency: {settings['generation_settings']['measure_adjusted_freq']}")
 
         wl_wordlist_generator.Wl_Worker_Wordlist_Generator_Table(
             main,

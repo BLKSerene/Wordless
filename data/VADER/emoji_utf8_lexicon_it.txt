@@ -1,0 +1,3570 @@
+😀	faccia sorridente
+😁	viso raggiante con occhi sorridenti
+😂	viso con lacrime di gioia
+🤣	rotolare a terra ridendo
+😃	faccia sorridente con gli occhi grandi
+😄	viso sorridente con occhi sorridenti
+😅	faccia sorridente con il sudore
+😆	faccia sorridente e socchiusa
+😉	faccia ammiccante
+😊	viso sorridente con occhi sorridenti
+😋	faccia assaporando il cibo
+😎	viso sorridente con occhiali da sole
+😍	viso sorridente con gli occhi a cuore
+😘	viso che manda un bacio
+🥰	faccina sorridente con 3 cuori
+😗	baciare il viso
+😙	baciare il viso con occhi sorridenti
+😚	baciare il viso con gli occhi chiusi
+☺️	faccia sorridente
+☺	faccia sorridente
+🙂	viso leggermente sorridente
+🤗	viso abbracciato
+🤩	colpito dalle stelle
+🤔	faccia pensante
+🤨	viso con sopracciglio alzato
+😐	volto neutro
+😑	volto inespressivo
+😶	faccia senza bocca
+🙄	faccia con gli occhi al cielo
+😏	faccia sorridente
+😣	volto perseverante
+😥	viso triste ma sollevato
+😮	viso con la bocca aperta
+🤐	faccia con cerniera
+😯	faccia silenziosa
+😪	faccia assonnata
+😫	viso stanco
+😴	faccia addormentata
+😌	volto sollevato
+😛	faccia con la lingua
+😜	faccia ammiccante con la lingua
+😝	faccia socchiusa con la lingua
+🤤	faccia sbavante
+😒	faccia per nulla divertita
+😓	viso abbattuto e sudato
+😔	volto pensieroso
+😕	faccia confusa
+🙃	faccia a testa in giù
+🤑	faccia da bocca di soldi
+😲	volto stupito
+☹️	faccia accigliata
+☹	faccia accigliata
+🙁	viso leggermente accigliato
+😖	faccia confusa
+😞	faccia delusa
+😟	faccia preoccupata
+😤	viso con vapore dal naso
+😢	faccia piangente
+😭	faccia che piange forte
+😦	viso accigliato con la bocca aperta
+😧	volto angosciato
+😨	volto spaventoso
+😩	viso stanco
+🤯	testa che esplode
+😬	faccia con una smorfia
+😰	faccia ansiosa con sudore
+😱	faccia che urla di paura
+🥵	faccia calda
+🥶	faccia fredda
+😳	viso arrossato
+🤪	faccia buffa
+😵	faccia stordita
+😡	faccia imbronciata
+😠	faccia arrabbiata
+🤬	faccia con simboli sulla bocca
+😷	viso con maschera medica
+🤒	faccia con il termometro
+🤕	viso con benda sulla testa
+🤢	faccia nauseata
+🤮	vomito in faccia
+🤧	faccia che starnutisce
+😇	volto sorridente con alone
+🤠	faccia da cappello da cowboy
+🥳	faccia festaiola
+🥴	faccia stordita
+🥺	volto implorante
+🤥	faccia bugiarda
+🤫	faccia zitta
+🤭	viso con la mano sulla bocca
+🧐	faccia con monocolo
+🤓	faccia da nerd
+😈	viso sorridente con le corna
+👿	faccia arrabbiata con le corna
+🤡	faccia da clown
+👹	orco
+👺	folletto
+💀	cranio
+☠️	teschio e ossa incrociate
+☠	teschio e ossa incrociate
+👻	fantasma
+👽	alieno
+👾	mostro alieno
+🤖	faccia da robot
+💩	mucchio di cacca
+😺	faccia di gatto sorridente
+😸	faccia di gatto sorridente con occhi sorridenti
+😹	faccia di gatto con lacrime di gioia
+😻	faccia di gatto sorridente con gli occhi a cuore
+😼	faccia di gatto con un sorriso ironico
+😽	baciare la faccia del gatto
+🙀	faccia di gatto stanco
+😿	faccia di gatto che piange
+😾	faccia di gatto imbronciato
+🙈	scimmia che non vede il male
+🙉	scimmia che non sente il male
+🙊	scimmia che non parla male
+🏻	tono della pelle chiara
+🏼	tono della pelle medio-chiaro
+🏽	tono della pelle medio
+🏾	tono della pelle medio-scuro
+🏿	tono della pelle scura
+👶	Bambino
+👶🏻	bambino: carnagione chiara
+👶🏼	bambino: carnagione medio-chiara
+👶🏽	bambino: carnagione media
+👶🏾	bambino: carnagione medio-scura
+👶🏿	bambino: carnagione scura
+🧒	bambino
+🧒🏻	bambino: carnagione chiara
+🧒🏼	bambino: carnagione medio-chiara
+🧒🏽	bambino: carnagione media
+🧒🏾	bambino: carnagione medio-scura
+🧒🏿	bambino: carnagione scura
+👦	ragazzo
+👦🏻	ragazzo: carnagione chiara
+👦🏼	ragazzo: carnagione abbastanza chiara
+👦🏽	ragazzo: carnagione olivastra
+👦🏾	ragazzo: carnagione medio-scura
+👦🏿	ragazzo: carnagione scura
+👧	ragazza
+👧🏻	ragazza: carnagione chiara
+👧🏼	ragazza: carnagione abbastanza chiara
+👧🏽	ragazza: carnagione olivastra
+👧🏾	ragazza: carnagione medio-scura
+👧🏿	ragazza: carnagione scura
+🧑	adulto
+🧑🏻	adulto: carnagione chiara
+🧑🏼	adulto: carnagione medio-chiara
+🧑🏽	adulto: tono della pelle medio
+🧑🏾	adulto: carnagione medio-scura
+🧑🏿	adulto: carnagione scura
+👨	Uomo
+👨🏻	uomo: carnagione chiara
+👨🏼	uomo: carnagione medio-chiara
+👨🏽	uomo: carnagione olivastra
+👨🏾	uomo: carnagione medio-scura
+👨🏿	uomo: carnagione scura
+👩	donna
+👩🏻	donna: carnagione chiara
+👩🏼	donna: carnagione medio-chiara
+👩🏽	donna: carnagione media
+👩🏾	donna: carnagione medio-scura
+👩🏿	donna: carnagione scura
+🧓	adulto più anziano
+🧓🏻	adulto più anziano: carnagione chiara
+🧓🏼	adulto più anziano: carnagione medio-chiara
+🧓🏽	adulto più anziano: tono della pelle medio
+🧓🏾	adulto più anziano: tono della pelle medio-scuro
+🧓🏿	adulto più anziano: carnagione scura
+👴	vecchio uomo
+👴🏻	vecchio: carnagione chiara
+👴🏼	vecchio: carnagione medio-chiara
+👴🏽	vecchio: carnagione olivastra
+👴🏾	uomo anziano: carnagione medio-scura
+👴🏿	vecchio: carnagione scura
+👵	vecchia
+👵🏻	vecchia: carnagione chiara
+👵🏼	vecchia: carnagione medio-chiara
+👵🏽	vecchia: carnagione media
+👵🏾	vecchia: carnagione medio-scura
+👵🏿	vecchia: carnagione scura
+👨‍⚕️	operatore sanitario uomo
+👨‍⚕	operatore sanitario uomo
+👨🏻‍⚕️	operatore sanitario uomo: carnagione chiara
+👨🏻‍⚕	operatore sanitario uomo: carnagione chiara
+👨🏼‍⚕️	operatore sanitario uomo: carnagione abbastanza chiara
+👨🏼‍⚕	operatore sanitario uomo: carnagione abbastanza chiara
+👨🏽‍⚕️	operatore sanitario uomo: carnagione olivastra
+👨🏽‍⚕	operatore sanitario uomo: carnagione olivastra
+👨🏾‍⚕️	operatore sanitario uomo: carnagione medio-scura
+👨🏾‍⚕	operatore sanitario uomo: carnagione medio-scura
+👨🏿‍⚕️	operatore sanitario: carnagione scura
+👨🏿‍⚕	operatore sanitario: carnagione scura
+👩‍⚕️	operatrice sanitaria donna
+👩‍⚕	operatrice sanitaria donna
+👩🏻‍⚕️	operatrice sanitaria: carnagione chiara
+👩🏻‍⚕	operatrice sanitaria: carnagione chiara
+👩🏼‍⚕️	operatrice sanitaria: carnagione abbastanza chiara
+👩🏼‍⚕	operatrice sanitaria: carnagione abbastanza chiara
+👩🏽‍⚕️	operatrice sanitaria: carnagione olivastra
+👩🏽‍⚕	operatrice sanitaria: carnagione olivastra
+👩🏾‍⚕️	operatrice sanitaria: carnagione medio-scura
+👩🏾‍⚕	operatrice sanitaria: carnagione medio-scura
+👩🏿‍⚕️	operatrice sanitaria: carnagione scura
+👩🏿‍⚕	operatrice sanitaria: carnagione scura
+👨‍🎓	studente uomo
+👨🏻‍🎓	studente uomo: carnagione chiara
+👨🏼‍🎓	studente uomo: carnagione abbastanza chiara
+👨🏽‍🎓	studente uomo: carnagione olivastra
+👨🏾‍🎓	studente uomo: carnagione medio-scura
+👨🏿‍🎓	studente: carnagione scura
+👩‍🎓	studentessa
+👩🏻‍🎓	studentessa: carnagione chiara
+👩🏼‍🎓	studentessa: carnagione abbastanza chiara
+👩🏽‍🎓	studentessa: carnagione olivastra
+👩🏾‍🎓	studentessa: carnagione medio-scura
+👩🏿‍🎓	studentessa: carnagione scura
+👨‍🏫	insegnante uomo
+👨🏻‍🏫	insegnante: carnagione chiara
+👨🏼‍🏫	insegnante uomo: carnagione abbastanza chiara
+👨🏽‍🏫	insegnante uomo: carnagione olivastra
+👨🏾‍🏫	insegnante uomo: carnagione abbastanza scura
+👨🏿‍🏫	insegnante: carnagione scura
+👩‍🏫	insegnante donna
+👩🏻‍🏫	insegnante donna: carnagione chiara
+👩🏼‍🏫	insegnante donna: carnagione abbastanza chiara
+👩🏽‍🏫	insegnante donna: carnagione olivastra
+👩🏾‍🏫	insegnante donna: carnagione medio-scura
+👩🏿‍🏫	insegnante donna: carnagione scura
+👨‍⚖️	giudice uomo
+👨‍⚖	giudice uomo
+👨🏻‍⚖️	giudice uomo: carnagione chiara
+👨🏻‍⚖	giudice uomo: carnagione chiara
+👨🏼‍⚖️	giudice uomo: carnagione medio-chiara
+👨🏼‍⚖	giudice uomo: carnagione medio-chiara
+👨🏽‍⚖️	giudice uomo: carnagione media
+👨🏽‍⚖	giudice uomo: carnagione media
+👨🏾‍⚖️	giudice uomo: carnagione medio-scura
+👨🏾‍⚖	giudice uomo: carnagione medio-scura
+👨🏿‍⚖️	giudice uomo: carnagione scura
+👨🏿‍⚖	giudice uomo: carnagione scura
+👩‍⚖️	giudice donna
+👩‍⚖	giudice donna
+👩🏻‍⚖️	giudice donna: carnagione chiara
+👩🏻‍⚖	giudice donna: carnagione chiara
+👩🏼‍⚖️	giudice donna: carnagione abbastanza chiara
+👩🏼‍⚖	giudice donna: carnagione abbastanza chiara
+👩🏽‍⚖️	giudice donna: carnagione olivastra
+👩🏽‍⚖	giudice donna: carnagione olivastra
+👩🏾‍⚖️	giudice donna: carnagione medio-scura
+👩🏾‍⚖	giudice donna: carnagione medio-scura
+👩🏿‍⚖️	giudice donna: carnagione scura
+👩🏿‍⚖	giudice donna: carnagione scura
+👨‍🌾	uomo contadino
+👨🏻‍🌾	contadino: carnagione chiara
+👨🏼‍🌾	contadino: carnagione medio-chiara
+👨🏽‍🌾	contadino: carnagione olivastra
+👨🏾‍🌾	contadino: carnagione medio-scura
+👨🏿‍🌾	contadino: carnagione scura
+👩‍🌾	contadina
+👩🏻‍🌾	contadina: carnagione chiara
+👩🏼‍🌾	contadina: carnagione medio-chiara
+👩🏽‍🌾	contadina: carnagione olivastra
+👩🏾‍🌾	contadina: carnagione medio-scura
+👩🏿‍🌾	contadina: carnagione scura
+👨‍🍳	uomo cuoco
+👨🏻‍🍳	uomo cuoco: carnagione chiara
+👨🏼‍🍳	uomo cuoco: carnagione abbastanza chiara
+👨🏽‍🍳	uomo cuoco: carnagione olivastra
+👨🏾‍🍳	uomo cuoco: carnagione medio-scura
+👨🏿‍🍳	uomo cuoco: carnagione scura
+👩‍🍳	cuoca
+👩🏻‍🍳	cuoca: carnagione chiara
+👩🏼‍🍳	cuoca: carnagione abbastanza chiara
+👩🏽‍🍳	cuoca: carnagione olivastra
+👩🏾‍🍳	cuoca: carnagione medio-scura
+👩🏿‍🍳	cuoca: carnagione scura
+👨‍🔧	meccanico uomo
+👨🏻‍🔧	uomo meccanico: carnagione chiara
+👨🏼‍🔧	uomo meccanico: carnagione abbastanza chiara
+👨🏽‍🔧	meccanico: carnagione olivastra
+👨🏾‍🔧	uomo meccanico: carnagione abbastanza scura
+👨🏿‍🔧	meccanico: carnagione scura
+👩‍🔧	meccanico donna
+👩🏻‍🔧	meccanico: carnagione chiara
+👩🏼‍🔧	meccanico donna: carnagione abbastanza chiara
+👩🏽‍🔧	meccanico donna: carnagione olivastra
+👩🏾‍🔧	meccanico donna: carnagione medio-scura
+👩🏿‍🔧	meccanico donna: carnagione scura
+👨‍🏭	operaio di fabbrica
+👨🏻‍🏭	operaio: carnagione chiara
+👨🏼‍🏭	uomo operaio: carnagione abbastanza chiara
+👨🏽‍🏭	operaio: carnagione olivastra
+👨🏾‍🏭	uomo operaio: carnagione medio-scura
+👨🏿‍🏭	operaio: carnagione scura
+👩‍🏭	operaia
+👩🏻‍🏭	operaia: carnagione chiara
+👩🏼‍🏭	operaia: carnagione abbastanza chiara
+👩🏽‍🏭	operaia: carnagione olivastra
+👩🏾‍🏭	operaia: carnagione medio-scura
+👩🏿‍🏭	operaia: carnagione scura
+👨‍💼	uomo impiegato
+👨🏻‍💼	impiegato: carnagione chiara
+👨🏼‍💼	impiegato uomo: carnagione abbastanza chiara
+👨🏽‍💼	impiegato: carnagione olivastra
+👨🏾‍💼	impiegato uomo: carnagione medio-scura
+👨🏿‍💼	uomo impiegato: carnagione scura
+👩‍💼	donna impiegata
+👩🏻‍💼	impiegata: carnagione chiara
+👩🏼‍💼	impiegata: carnagione abbastanza chiara
+👩🏽‍💼	impiegata: carnagione olivastra
+👩🏾‍💼	impiegata: carnagione medio-scura
+👩🏿‍💼	donna impiegata: carnagione scura
+👨‍🔬	uomo scienziato
+👨🏻‍🔬	scienziato: carnagione chiara
+👨🏼‍🔬	scienziato uomo: carnagione abbastanza chiara
+👨🏽‍🔬	scienziato uomo: carnagione olivastra
+👨🏾‍🔬	scienziato uomo: carnagione abbastanza scura
+👨🏿‍🔬	scienziato: carnagione scura
+👩‍🔬	scienziata
+👩🏻‍🔬	scienziata: carnagione chiara
+👩🏼‍🔬	scienziata: carnagione abbastanza chiara
+👩🏽‍🔬	scienziata: carnagione olivastra
+👩🏾‍🔬	scienziata: carnagione medio-scura
+👩🏿‍🔬	scienziata: carnagione scura
+👨‍💻	tecnologo uomo
+👨🏻‍💻	tecnologo uomo: carnagione chiara
+👨🏼‍💻	tecnologo uomo: carnagione abbastanza chiara
+👨🏽‍💻	tecnologo uomo: carnagione media
+👨🏾‍💻	tecnologo uomo: carnagione medio-scura
+👨🏿‍💻	tecnologo uomo: carnagione scura
+👩‍💻	tecnologa donna
+👩🏻‍💻	tecnologa donna: carnagione chiara
+👩🏼‍💻	tecnologa donna: carnagione medio-chiara
+👩🏽‍💻	tecnologa donna: carnagione media
+👩🏾‍💻	tecnologa donna: carnagione medio-scura
+👩🏿‍💻	tecnologa donna: carnagione scura
+👨‍🎤	cantante uomo
+👨🏻‍🎤	cantante uomo: carnagione chiara
+👨🏼‍🎤	cantante uomo: carnagione abbastanza chiara
+👨🏽‍🎤	cantante uomo: carnagione olivastra
+👨🏾‍🎤	cantante uomo: carnagione abbastanza scura
+👨🏿‍🎤	cantante uomo: carnagione scura
+👩‍🎤	cantante donna
+👩🏻‍🎤	cantante donna: carnagione chiara
+👩🏼‍🎤	cantante donna: carnagione abbastanza chiara
+👩🏽‍🎤	cantante donna: carnagione olivastra
+👩🏾‍🎤	cantante donna: carnagione abbastanza scura
+👩🏿‍🎤	cantante donna: carnagione scura
+👨‍🎨	uomo artista
+👨🏻‍🎨	artista uomo: carnagione chiara
+👨🏼‍🎨	artista uomo: carnagione abbastanza chiara
+👨🏽‍🎨	artista uomo: carnagione olivastra
+👨🏾‍🎨	artista uomo: carnagione medio-scura
+👨🏿‍🎨	artista uomo: carnagione scura
+👩‍🎨	artista donna
+👩🏻‍🎨	artista donna: carnagione chiara
+👩🏼‍🎨	artista donna: carnagione abbastanza chiara
+👩🏽‍🎨	artista donna: carnagione olivastra
+👩🏾‍🎨	artista donna: carnagione medio-scura
+👩🏿‍🎨	artista donna: carnagione scura
+👨‍✈️	pilota uomo
+👨‍✈	pilota uomo
+👨🏻‍✈️	pilota uomo: carnagione chiara
+👨🏻‍✈	pilota uomo: carnagione chiara
+👨🏼‍✈️	pilota uomo: carnagione abbastanza chiara
+👨🏼‍✈	pilota uomo: carnagione abbastanza chiara
+👨🏽‍✈️	pilota uomo: carnagione olivastra
+👨🏽‍✈	pilota uomo: carnagione olivastra
+👨🏾‍✈️	pilota uomo: carnagione abbastanza scura
+👨🏾‍✈	pilota uomo: carnagione abbastanza scura
+👨🏿‍✈️	pilota uomo: carnagione scura
+👨🏿‍✈	pilota uomo: carnagione scura
+👩‍✈️	pilota donna
+👩‍✈	pilota donna
+👩🏻‍✈️	pilota donna: carnagione chiara
+👩🏻‍✈	pilota donna: carnagione chiara
+👩🏼‍✈️	pilota donna: carnagione abbastanza chiara
+👩🏼‍✈	pilota donna: carnagione abbastanza chiara
+👩🏽‍✈️	pilota donna: carnagione olivastra
+👩🏽‍✈	pilota donna: carnagione olivastra
+👩🏾‍✈️	pilota donna: carnagione abbastanza scura
+👩🏾‍✈	pilota donna: carnagione abbastanza scura
+👩🏿‍✈️	pilota donna: carnagione scura
+👩🏿‍✈	pilota donna: carnagione scura
+👨‍🚀	uomo astronauta
+👨🏻‍🚀	astronauta uomo: carnagione chiara
+👨🏼‍🚀	astronauta uomo: carnagione abbastanza chiara
+👨🏽‍🚀	astronauta uomo: carnagione olivastra
+👨🏾‍🚀	astronauta uomo: carnagione abbastanza scura
+👨🏿‍🚀	uomo astronauta: carnagione scura
+👩‍🚀	donna astronauta
+👩🏻‍🚀	astronauta donna: carnagione chiara
+👩🏼‍🚀	astronauta donna: carnagione abbastanza chiara
+👩🏽‍🚀	astronauta donna: carnagione olivastra
+👩🏾‍🚀	astronauta donna: carnagione abbastanza scura
+👩🏿‍🚀	donna astronauta: carnagione scura
+👨‍🚒	uomo pompiere
+👨🏻‍🚒	pompiere uomo: carnagione chiara
+👨🏼‍🚒	pompiere uomo: carnagione abbastanza chiara
+👨🏽‍🚒	pompiere uomo: carnagione olivastra
+👨🏾‍🚒	pompiere uomo: carnagione abbastanza scura
+👨🏿‍🚒	uomo pompiere: carnagione scura
+👩‍🚒	pompiere donna
+👩🏻‍🚒	pompiere donna: carnagione chiara
+👩🏼‍🚒	pompiere donna: carnagione abbastanza chiara
+👩🏽‍🚒	pompiere donna: carnagione olivastra
+👩🏾‍🚒	pompiere donna: carnagione abbastanza scura
+👩🏿‍🚒	pompiere donna: carnagione scura
+👮	poliziotto
+👮🏻	agente di polizia: carnagione chiara
+👮🏼	agente di polizia: carnagione abbastanza chiara
+👮🏽	agente di polizia: carnagione olivastra
+👮🏾	agente di polizia: carnagione abbastanza scura
+👮🏿	agente di polizia: carnagione scura
+👮‍♂️	agente di polizia uomo
+👮‍♂	agente di polizia uomo
+👮🏻‍♂️	agente di polizia uomo: carnagione chiara
+👮🏻‍♂	agente di polizia uomo: carnagione chiara
+👮🏼‍♂️	agente di polizia uomo: carnagione abbastanza chiara
+👮🏼‍♂	agente di polizia uomo: carnagione abbastanza chiara
+👮🏽‍♂️	agente di polizia uomo: carnagione olivastra
+👮🏽‍♂	agente di polizia uomo: carnagione olivastra
+👮🏾‍♂️	agente di polizia uomo: carnagione abbastanza scura
+👮🏾‍♂	agente di polizia uomo: carnagione abbastanza scura
+👮🏿‍♂️	agente di polizia uomo: carnagione scura
+👮🏿‍♂	agente di polizia uomo: carnagione scura
+👮‍♀️	agente di polizia donna
+👮‍♀	agente di polizia donna
+👮🏻‍♀️	agente di polizia donna: carnagione chiara
+👮🏻‍♀	agente di polizia donna: carnagione chiara
+👮🏼‍♀️	agente di polizia donna: carnagione abbastanza chiara
+👮🏼‍♀	agente di polizia donna: carnagione abbastanza chiara
+👮🏽‍♀️	agente di polizia donna: carnagione olivastra
+👮🏽‍♀	agente di polizia donna: carnagione olivastra
+👮🏾‍♀️	agente di polizia donna: carnagione abbastanza scura
+👮🏾‍♀	agente di polizia donna: carnagione abbastanza scura
+👮🏿‍♀️	agente di polizia donna: carnagione scura
+👮🏿‍♀	agente di polizia donna: carnagione scura
+🕵️	detective
+🕵	detective
+🕵🏻	detective: carnagione chiara
+🕵🏼	detective: carnagione abbastanza chiara
+🕵🏽	detective: carnagione olivastra
+🕵🏾	detective: carnagione medio-scura
+🕵🏿	detective: carnagione scura
+🕵️‍♂️	uomo detective
+🕵‍♂️	uomo detective
+🕵️‍♂	uomo detective
+🕵‍♂	uomo detective
+🕵🏻‍♂️	detective uomo: carnagione chiara
+🕵🏻‍♂	detective uomo: carnagione chiara
+🕵🏼‍♂️	detective uomo: carnagione abbastanza chiara
+🕵🏼‍♂	detective uomo: carnagione abbastanza chiara
+🕵🏽‍♂️	detective uomo: carnagione olivastra
+🕵🏽‍♂	detective uomo: carnagione olivastra
+🕵🏾‍♂️	detective uomo: carnagione abbastanza scura
+🕵🏾‍♂	detective uomo: carnagione abbastanza scura
+🕵🏿‍♂️	detective uomo: carnagione scura
+🕵🏿‍♂	detective uomo: carnagione scura
+🕵️‍♀️	detective donna
+🕵‍♀️	detective donna
+🕵️‍♀	detective donna
+🕵‍♀	detective donna
+🕵🏻‍♀️	detective donna: carnagione chiara
+🕵🏻‍♀	detective donna: carnagione chiara
+🕵🏼‍♀️	detective donna: carnagione abbastanza chiara
+🕵🏼‍♀	detective donna: carnagione abbastanza chiara
+🕵🏽‍♀️	detective donna: carnagione olivastra
+🕵🏽‍♀	detective donna: carnagione olivastra
+🕵🏾‍♀️	detective donna: carnagione medio-scura
+🕵🏾‍♀	detective donna: carnagione medio-scura
+🕵🏿‍♀️	detective donna: carnagione scura
+🕵🏿‍♀	detective donna: carnagione scura
+💂	guardia
+💂🏻	guardia: carnagione chiara
+💂🏼	guardia: carnagione medio-chiara
+💂🏽	guardia: tono della pelle medio
+💂🏾	guardia: carnagione medio-scura
+💂🏿	guardia: carnagione scura
+💂‍♂️	guardia dell'uomo
+💂‍♂	guardia dell'uomo
+💂🏻‍♂️	guardia uomo: carnagione chiara
+💂🏻‍♂	guardia uomo: carnagione chiara
+💂🏼‍♂️	man guard: carnagione abbastanza chiara
+💂🏼‍♂	man guard: carnagione abbastanza chiara
+💂🏽‍♂️	guardia uomo: carnagione olivastra
+💂🏽‍♂	guardia uomo: carnagione olivastra
+💂🏾‍♂️	guardia uomo: carnagione medio-scura
+💂🏾‍♂	guardia uomo: carnagione medio-scura
+💂🏿‍♂️	guardia uomo: carnagione scura
+💂🏿‍♂	guardia uomo: carnagione scura
+💂‍♀️	guardia donna
+💂‍♀	guardia donna
+💂🏻‍♀️	guardia donna: carnagione chiara
+💂🏻‍♀	guardia donna: carnagione chiara
+💂🏼‍♀️	guardia donna: carnagione abbastanza chiara
+💂🏼‍♀	guardia donna: carnagione abbastanza chiara
+💂🏽‍♀️	guardia donna: carnagione olivastra
+💂🏽‍♀	guardia donna: carnagione olivastra
+💂🏾‍♀️	guardia donna: carnagione medio-scura
+💂🏾‍♀	guardia donna: carnagione medio-scura
+💂🏿‍♀️	guardia donna: carnagione scura
+💂🏿‍♀	guardia donna: carnagione scura
+👷	operaio edile
+👷🏻	operaio edile: carnagione chiara
+👷🏼	operaio edile: carnagione abbastanza chiara
+👷🏽	operaio edile: carnagione olivastra
+👷🏾	operaio edile: carnagione medio-scura
+👷🏿	operaio edile: carnagione scura
+👷‍♂️	operaio edile uomo
+👷‍♂	operaio edile uomo
+👷🏻‍♂️	operaio edile: carnagione chiara
+👷🏻‍♂	operaio edile: carnagione chiara
+👷🏼‍♂️	uomo operaio edile: carnagione abbastanza chiara
+👷🏼‍♂	uomo operaio edile: carnagione abbastanza chiara
+👷🏽‍♂️	operaio edile: carnagione olivastra
+👷🏽‍♂	operaio edile: carnagione olivastra
+👷🏾‍♂️	uomo operaio edile: carnagione medio-scura
+👷🏾‍♂	uomo operaio edile: carnagione medio-scura
+👷🏿‍♂️	operaio edile uomo: carnagione scura
+👷🏿‍♂	operaio edile uomo: carnagione scura
+👷‍♀️	operaio edile donna
+👷‍♀	operaio edile donna
+👷🏻‍♀️	operaia edile donna: carnagione chiara
+👷🏻‍♀	operaia edile donna: carnagione chiara
+👷🏼‍♀️	operaia edile: carnagione abbastanza chiara
+👷🏼‍♀	operaia edile: carnagione abbastanza chiara
+👷🏽‍♀️	operaia edile: carnagione olivastra
+👷🏽‍♀	operaia edile: carnagione olivastra
+👷🏾‍♀️	operaia edile: carnagione medio-scura
+👷🏾‍♀	operaia edile: carnagione medio-scura
+👷🏿‍♀️	operaia edile donna: carnagione scura
+👷🏿‍♀	operaia edile donna: carnagione scura
+🤴	Principe
+🤴🏻	principe: carnagione chiara
+🤴🏼	principe: carnagione medio-chiara
+🤴🏽	principe: carnagione media
+🤴🏾	principe: carnagione medio-scura
+🤴🏿	principe: carnagione scura
+👸	principessa
+👸🏻	principessa: carnagione chiara
+👸🏼	principessa: carnagione medio-chiara
+👸🏽	principessa: carnagione media
+👸🏾	principessa: carnagione medio-scura
+👸🏿	principessa: carnagione scura
+👳	persona che indossa il turbante
+👳🏻	persona che indossa il turbante: carnagione chiara
+👳🏼	persona che indossa il turbante: carnagione medio-chiara
+👳🏽	persona che indossa il turbante: carnagione media
+👳🏾	persona che indossa il turbante: carnagione medio-scura
+👳🏿	persona che indossa il turbante: carnagione scura
+👳‍♂️	uomo che indossa il turbante
+👳‍♂	uomo che indossa il turbante
+👳🏻‍♂️	uomo con turbante: carnagione chiara
+👳🏻‍♂	uomo con turbante: carnagione chiara
+👳🏼‍♂️	uomo con turbante: carnagione abbastanza chiara
+👳🏼‍♂	uomo con turbante: carnagione abbastanza chiara
+👳🏽‍♂️	uomo con turbante: carnagione olivastra
+👳🏽‍♂	uomo con turbante: carnagione olivastra
+👳🏾‍♂️	uomo con turbante: carnagione medio-scura
+👳🏾‍♂	uomo con turbante: carnagione medio-scura
+👳🏿‍♂️	uomo con turbante: carnagione scura
+👳🏿‍♂	uomo con turbante: carnagione scura
+👳‍♀️	donna che indossa il turbante
+👳‍♀	donna che indossa il turbante
+👳🏻‍♀️	donna con turbante: carnagione chiara
+👳🏻‍♀	donna con turbante: carnagione chiara
+👳🏼‍♀️	donna con turbante: carnagione abbastanza chiara
+👳🏼‍♀	donna con turbante: carnagione abbastanza chiara
+👳🏽‍♀️	donna con turbante: carnagione olivastra
+👳🏽‍♀	donna con turbante: carnagione olivastra
+👳🏾‍♀️	donna con turbante: carnagione medio-scura
+👳🏾‍♀	donna con turbante: carnagione medio-scura
+👳🏿‍♀️	donna che indossa il turbante: carnagione scura
+👳🏿‍♀	donna che indossa il turbante: carnagione scura
+👲	uomo con berretto cinese
+👲🏻	uomo con berretto cinese: carnagione chiara
+👲🏼	uomo con berretto cinese: carnagione abbastanza chiara
+👲🏽	uomo con berretto cinese: carnagione media
+👲🏾	uomo con berretto cinese: carnagione medio-scura
+👲🏿	uomo con berretto cinese: carnagione scura
+🧕	donna con il velo
+🧕🏻	donna con il velo: carnagione chiara
+🧕🏼	donna con foulard: carnagione abbastanza chiara
+🧕🏽	donna con il velo: carnagione media
+🧕🏾	donna con il velo: carnagione medio-scura
+🧕🏿	donna con il velo: carnagione scura
+🧔	persona barbuta
+🧔🏻	persona con la barba: carnagione chiara
+🧔🏼	persona con la barba: carnagione medio-chiara
+🧔🏽	persona con la barba: carnagione media
+🧔🏾	persona con la barba: carnagione medio-scura
+🧔🏿	persona con la barba: carnagione scura
+👱	persona dai capelli biondi
+👱🏻	persona dai capelli biondi: carnagione chiara
+👱🏼	persona dai capelli biondi: carnagione medio-chiara
+👱🏽	persona dai capelli biondi: carnagione media
+👱🏾	persona dai capelli biondi: carnagione medio-scura
+👱🏿	persona dai capelli biondi: carnagione scura
+👱‍♂️	uomo dai capelli biondi
+👱‍♂	uomo dai capelli biondi
+👱🏻‍♂️	uomo dai capelli biondi: carnagione chiara
+👱🏻‍♂	uomo dai capelli biondi: carnagione chiara
+👱🏼‍♂️	uomo dai capelli biondi: carnagione medio-chiara
+👱🏼‍♂	uomo dai capelli biondi: carnagione medio-chiara
+👱🏽‍♂️	uomo dai capelli biondi: carnagione media
+👱🏽‍♂	uomo dai capelli biondi: carnagione media
+👱🏾‍♂️	uomo dai capelli biondi: carnagione medio-scura
+👱🏾‍♂	uomo dai capelli biondi: carnagione medio-scura
+👱🏿‍♂️	uomo dai capelli biondi: carnagione scura
+👱🏿‍♂	uomo dai capelli biondi: carnagione scura
+👱‍♀️	donna dai capelli biondi
+👱‍♀	donna dai capelli biondi
+👱🏻‍♀️	donna dai capelli biondi: carnagione chiara
+👱🏻‍♀	donna dai capelli biondi: carnagione chiara
+👱🏼‍♀️	donna dai capelli biondi: carnagione medio-chiara
+👱🏼‍♀	donna dai capelli biondi: carnagione medio-chiara
+👱🏽‍♀️	donna dai capelli biondi: carnagione media
+👱🏽‍♀	donna dai capelli biondi: carnagione media
+👱🏾‍♀️	donna dai capelli biondi: carnagione medio-scura
+👱🏾‍♀	donna dai capelli biondi: carnagione medio-scura
+👱🏿‍♀️	donna dai capelli biondi: carnagione scura
+👱🏿‍♀	donna dai capelli biondi: carnagione scura
+👨‍🦰	uomo, dai capelli rossi
+👨🏻‍🦰	uomo, capelli rossi: carnagione chiara
+👨🏼‍🦰	uomo, capelli rossi: carnagione medio-chiara
+👨🏽‍🦰	uomo, capelli rossi: carnagione media
+👨🏾‍🦰	uomo, capelli rossi: carnagione medio-scura
+👨🏿‍🦰	uomo dai capelli rossi: carnagione scura
+👩‍🦰	donna, dai capelli rossi
+👩🏻‍🦰	donna, capelli rossi: carnagione chiara
+👩🏼‍🦰	donna, capelli rossi: carnagione medio-chiara
+👩🏽‍🦰	donna, capelli rossi: carnagione media
+👩🏾‍🦰	donna, capelli rossi: carnagione medio-scura
+👩🏿‍🦰	donna, capelli rossi: carnagione scura
+👨‍🦱	uomo, dai capelli ricci
+👨🏻‍🦱	uomo, capelli ricci: carnagione chiara
+👨🏼‍🦱	uomo, capelli ricci: carnagione medio-chiara
+👨🏽‍🦱	uomo, capelli ricci: carnagione media
+👨🏾‍🦱	uomo, capelli ricci: carnagione medio-scura
+👨🏿‍🦱	uomo, capelli ricci: carnagione scura
+👩‍🦱	donna, dai capelli ricci
+👩🏻‍🦱	donna, capelli ricci: carnagione chiara
+👩🏼‍🦱	donna, capelli ricci: carnagione medio-chiara
+👩🏽‍🦱	donna, capelli ricci: carnagione media
+👩🏾‍🦱	donna, capelli ricci: carnagione medio-scura
+👩🏿‍🦱	donna, capelli ricci: carnagione scura
+👨‍🦲	uomo, calvo
+👨🏻‍🦲	uomo calvo: carnagione chiara
+👨🏼‍🦲	uomo calvo: carnagione medio-chiara
+👨🏽‍🦲	uomo calvo: carnagione media
+👨🏾‍🦲	uomo calvo: carnagione medio-scura
+👨🏿‍🦲	uomo calvo: carnagione scura
+👩‍🦲	donna, calva
+👩🏻‍🦲	donna calva: carnagione chiara
+👩🏼‍🦲	donna, calva: carnagione medio-chiara
+👩🏽‍🦲	donna calva: carnagione media
+👩🏾‍🦲	donna calva: carnagione medio-scura
+👩🏿‍🦲	donna calva: carnagione scura
+👨‍🦳	uomo, dai capelli bianchi
+👨🏻‍🦳	uomo, capelli bianchi: carnagione chiara
+👨🏼‍🦳	uomo, capelli bianchi: carnagione medio-chiara
+👨🏽‍🦳	uomo, capelli bianchi: carnagione media
+👨🏾‍🦳	uomo, capelli bianchi: carnagione medio-scura
+👨🏿‍🦳	uomo, capelli bianchi: carnagione scura
+👩‍🦳	donna, dai capelli bianchi
+👩🏻‍🦳	donna, capelli bianchi: carnagione chiara
+👩🏼‍🦳	donna, capelli bianchi: carnagione medio-chiara
+👩🏽‍🦳	donna, capelli bianchi: carnagione media
+👩🏾‍🦳	donna, capelli bianchi: carnagione medio-scura
+👩🏿‍🦳	donna, capelli bianchi: carnagione scura
+🤵	uomo in smoking
+🤵🏻	uomo in smoking: carnagione chiara
+🤵🏼	uomo in smoking: carnagione abbastanza chiara
+🤵🏽	uomo in smoking: carnagione olivastra
+🤵🏾	uomo in smoking: carnagione medio-scura
+🤵🏿	uomo in smoking: carnagione scura
+👰	sposa con velo
+👰🏻	sposa con velo: carnagione chiara
+👰🏼	sposa con velo: carnagione abbastanza chiara
+👰🏽	sposa con velo: carnagione olivastra
+👰🏾	sposa con velo: carnagione medio-scura
+👰🏿	sposa con velo: carnagione scura
+🤰	gestante
+🤰🏻	donna incinta: carnagione chiara
+🤰🏼	donna incinta: carnagione medio-chiara
+🤰🏽	donna incinta: carnagione media
+🤰🏾	donna incinta: carnagione medio-scura
+🤰🏿	donna incinta: carnagione scura
+🤱	l'allattamento al seno
+🤱🏻	allattamento al seno: carnagione chiara
+🤱🏼	allattamento: carnagione medio-chiara
+🤱🏽	allattamento al seno: tono della pelle medio
+🤱🏾	allattamento: carnagione medio-scura
+🤱🏿	allattamento al seno: carnagione scura
+👼	piccolo angelo
+👼🏻	baby angel: carnagione chiara
+👼🏼	baby angel: carnagione abbastanza chiara
+👼🏽	baby angel: carnagione olivastra
+👼🏾	baby angel: carnagione medio-scura
+👼🏿	angelo bambino: carnagione scura
+🎅	Babbo Natale
+🎅🏻	Babbo Natale: carnagione chiara
+🎅🏼	Babbo Natale: carnagione abbastanza chiara
+🎅🏽	Babbo Natale: carnagione olivastra
+🎅🏾	Babbo Natale: carnagione medio-scura
+🎅🏿	Babbo Natale: carnagione scura
+🤶	Signora Claus
+🤶🏻	Signora Claus: carnagione chiara
+🤶🏼	Signora Claus: carnagione abbastanza chiara
+🤶🏽	Signora Claus: carnagione olivastra
+🤶🏾	Signora Claus: carnagione medio-scura
+🤶🏿	Signora Claus: carnagione scura
+🦸	supereroe
+🦸🏻	supereroe: carnagione chiara
+🦸🏼	supereroe: carnagione medio-chiara
+🦸🏽	supereroe: carnagione media
+🦸🏾	supereroe: carnagione medio-scura
+🦸🏿	supereroe: carnagione scura
+🦸‍♀️	supereroe donna
+🦸‍♀	supereroe donna
+🦸🏻‍♀️	supereroe donna: carnagione chiara
+🦸🏻‍♀	supereroe donna: carnagione chiara
+🦸🏼‍♀️	supereroe donna: carnagione abbastanza chiara
+🦸🏼‍♀	supereroe donna: carnagione abbastanza chiara
+🦸🏽‍♀️	supereroe donna: carnagione olivastra
+🦸🏽‍♀	supereroe donna: carnagione olivastra
+🦸🏾‍♀️	supereroe donna: carnagione medio-scura
+🦸🏾‍♀	supereroe donna: carnagione medio-scura
+🦸🏿‍♀️	supereroe donna: carnagione scura
+🦸🏿‍♀	supereroe donna: carnagione scura
+🦸‍♂️	uomo supereroe
+🦸‍♂	uomo supereroe
+🦸🏻‍♂️	supereroe uomo: carnagione chiara
+🦸🏻‍♂	supereroe uomo: carnagione chiara
+🦸🏼‍♂️	supereroe uomo: carnagione abbastanza chiara
+🦸🏼‍♂	supereroe uomo: carnagione abbastanza chiara
+🦸🏽‍♂️	supereroe uomo: carnagione olivastra
+🦸🏽‍♂	supereroe uomo: carnagione olivastra
+🦸🏾‍♂️	supereroe uomo: carnagione abbastanza scura
+🦸🏾‍♂	supereroe uomo: carnagione abbastanza scura
+🦸🏿‍♂️	supereroe uomo: carnagione scura
+🦸🏿‍♂	supereroe uomo: carnagione scura
+🦹	supercattivo
+🦹🏻	supercriminale: carnagione chiara
+🦹🏼	supercriminale: carnagione medio-chiara
+🦹🏽	supercriminale: carnagione media
+🦹🏾	supercriminale: carnagione medio-scura
+🦹🏿	supercriminale: carnagione scura
+🦹‍♀️	donna supercriminale
+🦹‍♀	donna supercriminale
+🦹🏻‍♀️	supercriminale donna: carnagione chiara
+🦹🏻‍♀	supercriminale donna: carnagione chiara
+🦹🏼‍♀️	supercriminale donna: carnagione medio-chiara
+🦹🏼‍♀	supercriminale donna: carnagione medio-chiara
+🦹🏽‍♀️	supercriminale donna: carnagione olivastra
+🦹🏽‍♀	supercriminale donna: carnagione olivastra
+🦹🏾‍♀️	supercriminale donna: carnagione medio-scura
+🦹🏾‍♀	supercriminale donna: carnagione medio-scura
+🦹🏿‍♀️	supercriminale donna: carnagione scura
+🦹🏿‍♀	supercriminale donna: carnagione scura
+🦹‍♂️	uomo supercriminale
+🦹‍♂	uomo supercriminale
+🦹🏻‍♂️	supercriminale uomo: carnagione chiara
+🦹🏻‍♂	supercriminale uomo: carnagione chiara
+🦹🏼‍♂️	supercriminale uomo: carnagione medio-chiara
+🦹🏼‍♂	supercriminale uomo: carnagione medio-chiara
+🦹🏽‍♂️	supercriminale uomo: carnagione olivastra
+🦹🏽‍♂	supercriminale uomo: carnagione olivastra
+🦹🏾‍♂️	supercriminale uomo: carnagione medio-scura
+🦹🏾‍♂	supercriminale uomo: carnagione medio-scura
+🦹🏿‍♂️	supercriminale uomo: carnagione scura
+🦹🏿‍♂	supercriminale uomo: carnagione scura
+🧙	mago
+🧙🏻	mago: carnagione chiara
+🧙🏼	mago: carnagione medio-chiara
+🧙🏽	mago: carnagione media
+🧙🏾	mago: carnagione medio-scura
+🧙🏿	mago: carnagione scura
+🧙‍♀️	donna maga
+🧙‍♀	donna maga
+🧙🏻‍♀️	donna maga: carnagione chiara
+🧙🏻‍♀	donna maga: carnagione chiara
+🧙🏼‍♀️	donna maga: carnagione medio-chiara
+🧙🏼‍♀	donna maga: carnagione medio-chiara
+🧙🏽‍♀️	donna maga: carnagione olivastra
+🧙🏽‍♀	donna maga: carnagione olivastra
+🧙🏾‍♀️	donna maga: carnagione medio-scura
+🧙🏾‍♀	donna maga: carnagione medio-scura
+🧙🏿‍♀️	donna maga: carnagione scura
+🧙🏿‍♀	donna maga: carnagione scura
+🧙‍♂️	uomo mago
+🧙‍♂	uomo mago
+🧙🏻‍♂️	uomo mago: carnagione chiara
+🧙🏻‍♂	uomo mago: carnagione chiara
+🧙🏼‍♂️	uomo mago: carnagione medio-chiara
+🧙🏼‍♂	uomo mago: carnagione medio-chiara
+🧙🏽‍♂️	uomo mago: carnagione media
+🧙🏽‍♂	uomo mago: carnagione media
+🧙🏾‍♂️	uomo mago: carnagione medio-scura
+🧙🏾‍♂	uomo mago: carnagione medio-scura
+🧙🏿‍♂️	uomo mago: carnagione scura
+🧙🏿‍♂	uomo mago: carnagione scura
+🧚	fata
+🧚🏻	fata: carnagione chiara
+🧚🏼	fata: carnagione medio-chiara
+🧚🏽	fata: carnagione media
+🧚🏾	fata: carnagione medio-scura
+🧚🏿	fata: carnagione scura
+🧚‍♀️	fata donna
+🧚‍♀	fata donna
+🧚🏻‍♀️	fata donna: carnagione chiara
+🧚🏻‍♀	fata donna: carnagione chiara
+🧚🏼‍♀️	fata donna: carnagione abbastanza chiara
+🧚🏼‍♀	fata donna: carnagione abbastanza chiara
+🧚🏽‍♀️	fata donna: carnagione olivastra
+🧚🏽‍♀	fata donna: carnagione olivastra
+🧚🏾‍♀️	fata donna: carnagione medio-scura
+🧚🏾‍♀	fata donna: carnagione medio-scura
+🧚🏿‍♀️	fata donna: carnagione scura
+🧚🏿‍♀	fata donna: carnagione scura
+🧚‍♂️	uomo fata
+🧚‍♂	uomo fata
+🧚🏻‍♂️	uomo fata: carnagione chiara
+🧚🏻‍♂	uomo fata: carnagione chiara
+🧚🏼‍♂️	uomo fata: carnagione abbastanza chiara
+🧚🏼‍♂	uomo fata: carnagione abbastanza chiara
+🧚🏽‍♂️	uomo fata: carnagione olivastra
+🧚🏽‍♂	uomo fata: carnagione olivastra
+🧚🏾‍♂️	uomo fata: carnagione medio-scura
+🧚🏾‍♂	uomo fata: carnagione medio-scura
+🧚🏿‍♂️	uomo fata: carnagione scura
+🧚🏿‍♂	uomo fata: carnagione scura
+🧛	vampiro
+🧛🏻	vampiro: carnagione chiara
+🧛🏼	vampiro: carnagione medio-chiara
+🧛🏽	vampiro: carnagione media
+🧛🏾	vampiro: carnagione medio-scura
+🧛🏿	vampiro: carnagione scura
+🧛‍♀️	donna vampiro
+🧛‍♀	donna vampiro
+🧛🏻‍♀️	donna vampira: carnagione chiara
+🧛🏻‍♀	donna vampira: carnagione chiara
+🧛🏼‍♀️	donna vampira: carnagione abbastanza chiara
+🧛🏼‍♀	donna vampira: carnagione abbastanza chiara
+🧛🏽‍♀️	vampiro donna: carnagione olivastra
+🧛🏽‍♀	vampiro donna: carnagione olivastra
+🧛🏾‍♀️	donna vampiro: carnagione medio-scura
+🧛🏾‍♀	donna vampiro: carnagione medio-scura
+🧛🏿‍♀️	donna vampiro: carnagione scura
+🧛🏿‍♀	donna vampiro: carnagione scura
+🧛‍♂️	uomo vampiro
+🧛‍♂	uomo vampiro
+🧛🏻‍♂️	uomo vampiro: carnagione chiara
+🧛🏻‍♂	uomo vampiro: carnagione chiara
+🧛🏼‍♂️	uomo vampiro: carnagione abbastanza chiara
+🧛🏼‍♂	uomo vampiro: carnagione abbastanza chiara
+🧛🏽‍♂️	vampiro uomo: carnagione olivastra
+🧛🏽‍♂	vampiro uomo: carnagione olivastra
+🧛🏾‍♂️	uomo vampiro: carnagione medio-scura
+🧛🏾‍♂	uomo vampiro: carnagione medio-scura
+🧛🏿‍♂️	uomo vampiro: carnagione scura
+🧛🏿‍♂	uomo vampiro: carnagione scura
+🧜	merperson
+🧜🏻	merperson: carnagione chiara
+🧜🏼	sirena: carnagione medio-chiara
+🧜🏽	sirena: carnagione media
+🧜🏾	tritone: carnagione medio-scura
+🧜🏿	merperson: carnagione scura
+🧜‍♀️	sirena
+🧜‍♀	sirena
+🧜🏻‍♀️	sirena: carnagione chiara
+🧜🏻‍♀	sirena: carnagione chiara
+🧜🏼‍♀️	sirena: carnagione abbastanza chiara
+🧜🏼‍♀	sirena: carnagione abbastanza chiara
+🧜🏽‍♀️	sirena: carnagione olivastra
+🧜🏽‍♀	sirena: carnagione olivastra
+🧜🏾‍♀️	sirena: carnagione medio-scura
+🧜🏾‍♀	sirena: carnagione medio-scura
+🧜🏿‍♀️	sirena: carnagione scura
+🧜🏿‍♀	sirena: carnagione scura
+🧜‍♂️	tritone
+🧜‍♂	tritone
+🧜🏻‍♂️	tritone: carnagione chiara
+🧜🏻‍♂	tritone: carnagione chiara
+🧜🏼‍♂️	tritone: carnagione medio-chiara
+🧜🏼‍♂	tritone: carnagione medio-chiara
+🧜🏽‍♂️	tritone: carnagione media
+🧜🏽‍♂	tritone: carnagione media
+🧜🏾‍♂️	tritone: carnagione medio-scura
+🧜🏾‍♂	tritone: carnagione medio-scura
+🧜🏿‍♂️	tritone: carnagione scura
+🧜🏿‍♂	tritone: carnagione scura
+🧝	elfo
+🧝🏻	elfo: carnagione chiara
+🧝🏼	elfo: carnagione medio-chiara
+🧝🏽	elfo: carnagione media
+🧝🏾	elfo: carnagione medio-scura
+🧝🏿	elfo: carnagione scura
+🧝‍♀️	elfo donna
+🧝‍♀	elfo donna
+🧝🏻‍♀️	Elfa Donna: carnagione chiara
+🧝🏻‍♀	Elfa Donna: carnagione chiara
+🧝🏼‍♀️	Elfa donna: carnagione abbastanza chiara
+🧝🏼‍♀	Elfa donna: carnagione abbastanza chiara
+🧝🏽‍♀️	Elfa donna: carnagione olivastra
+🧝🏽‍♀	Elfa donna: carnagione olivastra
+🧝🏾‍♀️	Elfa donna: carnagione medio-scura
+🧝🏾‍♀	Elfa donna: carnagione medio-scura
+🧝🏿‍♀️	Elfa donna: carnagione scura
+🧝🏿‍♀	Elfa donna: carnagione scura
+🧝‍♂️	elfo uomo
+🧝‍♂	elfo uomo
+🧝🏻‍♂️	elfo uomo: carnagione chiara
+🧝🏻‍♂	elfo uomo: carnagione chiara
+🧝🏼‍♂️	elfo uomo: carnagione abbastanza chiara
+🧝🏼‍♂	elfo uomo: carnagione abbastanza chiara
+🧝🏽‍♂️	elfo uomo: carnagione olivastra
+🧝🏽‍♂	elfo uomo: carnagione olivastra
+🧝🏾‍♂️	elfo uomo: carnagione medio-scura
+🧝🏾‍♂	elfo uomo: carnagione medio-scura
+🧝🏿‍♂️	elfo uomo: carnagione scura
+🧝🏿‍♂	elfo uomo: carnagione scura
+🧞	genio
+🧞‍♀️	genio della donna
+🧞‍♀	genio della donna
+🧞‍♂️	genio dell'uomo
+🧞‍♂	genio dell'uomo
+🧟	zombie
+🧟‍♀️	donna zombie
+🧟‍♀	donna zombie
+🧟‍♂️	uomo zombie
+🧟‍♂	uomo zombie
+🙍	persona accigliata
+🙍🏻	persona accigliata: carnagione chiara
+🙍🏼	persona accigliata: carnagione medio-chiara
+🙍🏽	persona accigliata: carnagione media
+🙍🏾	persona accigliata: carnagione medio-scura
+🙍🏿	persona accigliata: carnagione scura
+🙍‍♂️	uomo accigliato
+🙍‍♂	uomo accigliato
+🙍🏻‍♂️	uomo accigliato: carnagione chiara
+🙍🏻‍♂	uomo accigliato: carnagione chiara
+🙍🏼‍♂️	uomo accigliato: carnagione abbastanza chiara
+🙍🏼‍♂	uomo accigliato: carnagione abbastanza chiara
+🙍🏽‍♂️	uomo accigliato: carnagione media
+🙍🏽‍♂	uomo accigliato: carnagione media
+🙍🏾‍♂️	uomo accigliato: carnagione medio-scura
+🙍🏾‍♂	uomo accigliato: carnagione medio-scura
+🙍🏿‍♂️	uomo accigliato: carnagione scura
+🙍🏿‍♂	uomo accigliato: carnagione scura
+🙍‍♀️	donna accigliata
+🙍‍♀	donna accigliata
+🙍🏻‍♀️	donna accigliata: carnagione chiara
+🙍🏻‍♀	donna accigliata: carnagione chiara
+🙍🏼‍♀️	donna accigliata: carnagione medio-chiara
+🙍🏼‍♀	donna accigliata: carnagione medio-chiara
+🙍🏽‍♀️	donna accigliata: carnagione media
+🙍🏽‍♀	donna accigliata: carnagione media
+🙍🏾‍♀️	donna accigliata: carnagione medio-scura
+🙍🏾‍♀	donna accigliata: carnagione medio-scura
+🙍🏿‍♀️	donna accigliata: carnagione scura
+🙍🏿‍♀	donna accigliata: carnagione scura
+🙎	persona imbronciata
+🙎🏻	persona imbronciata: carnagione chiara
+🙎🏼	persona imbronciata: carnagione medio-chiara
+🙎🏽	persona imbronciata: carnagione media
+🙎🏾	persona imbronciata: carnagione medio-scura
+🙎🏿	persona imbronciata: carnagione scura
+🙎‍♂️	uomo imbronciato
+🙎‍♂	uomo imbronciato
+🙎🏻‍♂️	uomo imbronciato: carnagione chiara
+🙎🏻‍♂	uomo imbronciato: carnagione chiara
+🙎🏼‍♂️	uomo imbronciato: carnagione medio-chiara
+🙎🏼‍♂	uomo imbronciato: carnagione medio-chiara
+🙎🏽‍♂️	uomo imbronciato: carnagione media
+🙎🏽‍♂	uomo imbronciato: carnagione media
+🙎🏾‍♂️	uomo imbronciato: carnagione medio-scura
+🙎🏾‍♂	uomo imbronciato: carnagione medio-scura
+🙎🏿‍♂️	uomo imbronciato: carnagione scura
+🙎🏿‍♂	uomo imbronciato: carnagione scura
+🙎‍♀️	donna imbronciata
+🙎‍♀	donna imbronciata
+🙎🏻‍♀️	donna imbronciata: carnagione chiara
+🙎🏻‍♀	donna imbronciata: carnagione chiara
+🙎🏼‍♀️	donna imbronciata: carnagione medio-chiara
+🙎🏼‍♀	donna imbronciata: carnagione medio-chiara
+🙎🏽‍♀️	donna imbronciata: carnagione media
+🙎🏽‍♀	donna imbronciata: carnagione media
+🙎🏾‍♀️	donna imbronciata: carnagione medio-scura
+🙎🏾‍♀	donna imbronciata: carnagione medio-scura
+🙎🏿‍♀️	donna imbronciata: carnagione scura
+🙎🏿‍♀	donna imbronciata: carnagione scura
+🙅	persona che indica NO
+🙅🏻	persona che gesticola NO: carnagione chiara
+🙅🏼	persona che gesticola NO: carnagione abbastanza chiara
+🙅🏽	persona che gesticola NO: carnagione media
+🙅🏾	persona che gesticola NO: carnagione medio-scura
+🙅🏿	persona che gesticola NO: carnagione scura
+🙅‍♂️	uomo che indica NO
+🙅‍♂	uomo che indica NO
+🙅🏻‍♂️	uomo che gesticola NO: carnagione chiara
+🙅🏻‍♂	uomo che gesticola NO: carnagione chiara
+🙅🏼‍♂️	uomo che gesticola NO: carnagione abbastanza chiara
+🙅🏼‍♂	uomo che gesticola NO: carnagione abbastanza chiara
+🙅🏽‍♂️	uomo che gesticola NO: carnagione olivastra
+🙅🏽‍♂	uomo che gesticola NO: carnagione olivastra
+🙅🏾‍♂️	uomo che gesticola NO: carnagione abbastanza scura
+🙅🏾‍♂	uomo che gesticola NO: carnagione abbastanza scura
+🙅🏿‍♂️	uomo che gesticola NO: carnagione scura
+🙅🏿‍♂	uomo che gesticola NO: carnagione scura
+🙅‍♀️	donna che gesticola NO
+🙅‍♀	donna che gesticola NO
+🙅🏻‍♀️	donna che gesticola NO: carnagione chiara
+🙅🏻‍♀	donna che gesticola NO: carnagione chiara
+🙅🏼‍♀️	donna che gesticola NO: carnagione abbastanza chiara
+🙅🏼‍♀	donna che gesticola NO: carnagione abbastanza chiara
+🙅🏽‍♀️	donna che gesticola NO: carnagione olivastra
+🙅🏽‍♀	donna che gesticola NO: carnagione olivastra
+🙅🏾‍♀️	donna che gesticola NO: carnagione medio-scura
+🙅🏾‍♀	donna che gesticola NO: carnagione medio-scura
+🙅🏿‍♀️	donna che gesticola NO: carnagione scura
+🙅🏿‍♀	donna che gesticola NO: carnagione scura
+🙆	persona che gesticola OK
+🙆🏻	persona che gesticola OK: carnagione chiara
+🙆🏼	persona che fa segno di OK: carnagione abbastanza chiara
+🙆🏽	persona che gesticola OK: carnagione olivastra
+🙆🏾	persona che fa segno di OK: carnagione medio-scura
+🙆🏿	persona che gesticola OK: carnagione scura
+🙆‍♂️	uomo che gesticola OK
+🙆‍♂	uomo che gesticola OK
+🙆🏻‍♂️	uomo che gesticola OK: carnagione chiara
+🙆🏻‍♂	uomo che gesticola OK: carnagione chiara
+🙆🏼‍♂️	uomo che fa segno di OK: carnagione abbastanza chiara
+🙆🏼‍♂	uomo che fa segno di OK: carnagione abbastanza chiara
+🙆🏽‍♂️	uomo che gesticola OK: carnagione olivastra
+🙆🏽‍♂	uomo che gesticola OK: carnagione olivastra
+🙆🏾‍♂️	uomo che fa segno di OK: carnagione medio-scura
+🙆🏾‍♂	uomo che fa segno di OK: carnagione medio-scura
+🙆🏿‍♂️	uomo che gesticola OK: carnagione scura
+🙆🏿‍♂	uomo che gesticola OK: carnagione scura
+🙆‍♀️	donna che gesticola OK
+🙆‍♀	donna che gesticola OK
+🙆🏻‍♀️	donna che gesticola OK: carnagione chiara
+🙆🏻‍♀	donna che gesticola OK: carnagione chiara
+🙆🏼‍♀️	donna che fa segno di OK: carnagione abbastanza chiara
+🙆🏼‍♀	donna che fa segno di OK: carnagione abbastanza chiara
+🙆🏽‍♀️	donna che gesticola OK: carnagione olivastra
+🙆🏽‍♀	donna che gesticola OK: carnagione olivastra
+🙆🏾‍♀️	donna che fa segno di OK: carnagione medio-scura
+🙆🏾‍♀	donna che fa segno di OK: carnagione medio-scura
+🙆🏿‍♀️	donna che gesticola OK: carnagione scura
+🙆🏿‍♀	donna che gesticola OK: carnagione scura
+💁	persona che dà la mano
+💁🏻	persona che dà la mano: carnagione chiara
+💁🏼	persona che dà la mano: carnagione abbastanza chiara
+💁🏽	persona che dà la mano: carnagione olivastra
+💁🏾	persona che dà la mano: carnagione medio-scura
+💁🏿	persona che dà la mano: carnagione scura
+💁‍♂️	uomo che inclina la mano
+💁‍♂	uomo che inclina la mano
+💁🏻‍♂️	uomo che inclina la mano: carnagione chiara
+💁🏻‍♂	uomo che inclina la mano: carnagione chiara
+💁🏼‍♂️	uomo che inclina la mano: carnagione abbastanza chiara
+💁🏼‍♂	uomo che inclina la mano: carnagione abbastanza chiara
+💁🏽‍♂️	uomo che inclina la mano: carnagione olivastra
+💁🏽‍♂	uomo che inclina la mano: carnagione olivastra
+💁🏾‍♂️	uomo che inclina la mano: carnagione abbastanza scura
+💁🏾‍♂	uomo che inclina la mano: carnagione abbastanza scura
+💁🏿‍♂️	uomo che inclina la mano: carnagione scura
+💁🏿‍♂	uomo che inclina la mano: carnagione scura
+💁‍♀️	donna che inclina la mano
+💁‍♀	donna che inclina la mano
+💁🏻‍♀️	donna che inclina la mano: carnagione chiara
+💁🏻‍♀	donna che inclina la mano: carnagione chiara
+💁🏼‍♀️	donna che inclina la mano: carnagione abbastanza chiara
+💁🏼‍♀	donna che inclina la mano: carnagione abbastanza chiara
+💁🏽‍♀️	donna con la mancia della mano: carnagione olivastra
+💁🏽‍♀	donna con la mancia della mano: carnagione olivastra
+💁🏾‍♀️	donna che inclina la mano: carnagione abbastanza scura
+💁🏾‍♀	donna che inclina la mano: carnagione abbastanza scura
+💁🏿‍♀️	donna che inclina la mano: carnagione scura
+💁🏿‍♀	donna che inclina la mano: carnagione scura
+🙋	persona che alza la mano
+🙋🏻	persona che alza la mano: carnagione chiara
+🙋🏼	persona che alza la mano: carnagione abbastanza chiara
+🙋🏽	persona che alza la mano: carnagione olivastra
+🙋🏾	persona che alza la mano: carnagione medio-scura
+🙋🏿	persona che alza la mano: carnagione scura
+🙋‍♂️	uomo che alza la mano
+🙋‍♂	uomo che alza la mano
+🙋🏻‍♂️	uomo che alza la mano: carnagione chiara
+🙋🏻‍♂	uomo che alza la mano: carnagione chiara
+🙋🏼‍♂️	uomo che alza la mano: carnagione abbastanza chiara
+🙋🏼‍♂	uomo che alza la mano: carnagione abbastanza chiara
+🙋🏽‍♂️	uomo che alza la mano: carnagione olivastra
+🙋🏽‍♂	uomo che alza la mano: carnagione olivastra
+🙋🏾‍♂️	uomo che alza la mano: carnagione abbastanza scura
+🙋🏾‍♂	uomo che alza la mano: carnagione abbastanza scura
+🙋🏿‍♂️	uomo che alza la mano: carnagione scura
+🙋🏿‍♂	uomo che alza la mano: carnagione scura
+🙋‍♀️	donna che alza la mano
+🙋‍♀	donna che alza la mano
+🙋🏻‍♀️	donna che alza la mano: carnagione chiara
+🙋🏻‍♀	donna che alza la mano: carnagione chiara
+🙋🏼‍♀️	donna che alza la mano: carnagione abbastanza chiara
+🙋🏼‍♀	donna che alza la mano: carnagione abbastanza chiara
+🙋🏽‍♀️	donna che alza la mano: carnagione olivastra
+🙋🏽‍♀	donna che alza la mano: carnagione olivastra
+🙋🏾‍♀️	donna che alza la mano: carnagione abbastanza scura
+🙋🏾‍♀	donna che alza la mano: carnagione abbastanza scura
+🙋🏿‍♀️	donna che alza la mano: carnagione scura
+🙋🏿‍♀	donna che alza la mano: carnagione scura
+🙇	persona che si inchina
+🙇🏻	persona che si inchina: carnagione chiara
+🙇🏼	persona che si inchina: carnagione abbastanza chiara
+🙇🏽	persona che si inchina: carnagione media
+🙇🏾	persona che si inchina: carnagione medio-scura
+🙇🏿	persona che si inchina: carnagione scura
+🙇‍♂️	uomo che si inchina
+🙇‍♂	uomo che si inchina
+🙇🏻‍♂️	uomo che si inchina: carnagione chiara
+🙇🏻‍♂	uomo che si inchina: carnagione chiara
+🙇🏼‍♂️	uomo che si inchina: carnagione abbastanza chiara
+🙇🏼‍♂	uomo che si inchina: carnagione abbastanza chiara
+🙇🏽‍♂️	uomo che si inchina: carnagione olivastra
+🙇🏽‍♂	uomo che si inchina: carnagione olivastra
+🙇🏾‍♂️	uomo che si inchina: carnagione abbastanza scura
+🙇🏾‍♂	uomo che si inchina: carnagione abbastanza scura
+🙇🏿‍♂️	uomo che si inchina: carnagione scura
+🙇🏿‍♂	uomo che si inchina: carnagione scura
+🙇‍♀️	donna che si inchina
+🙇‍♀	donna che si inchina
+🙇🏻‍♀️	donna che si inchina: carnagione chiara
+🙇🏻‍♀	donna che si inchina: carnagione chiara
+🙇🏼‍♀️	donna che si inchina: carnagione abbastanza chiara
+🙇🏼‍♀	donna che si inchina: carnagione abbastanza chiara
+🙇🏽‍♀️	donna che si inchina: carnagione olivastra
+🙇🏽‍♀	donna che si inchina: carnagione olivastra
+🙇🏾‍♀️	donna che si inchina: carnagione medio-scura
+🙇🏾‍♀	donna che si inchina: carnagione medio-scura
+🙇🏿‍♀️	donna che si inchina: carnagione scura
+🙇🏿‍♀	donna che si inchina: carnagione scura
+🤦	persona che fa il facepalming
+🤦🏻	persona che fa facepalming: carnagione chiara
+🤦🏼	persona che esegue il facepalming: carnagione medio-chiara
+🤦🏽	persona che esegue il facepalming: carnagione media
+🤦🏾	persona che esegue il facepalming: carnagione medio-scura
+🤦🏿	persona che fa facepalming: carnagione scura
+🤦‍♂️	uomo che fa il facepalming
+🤦‍♂	uomo che fa il facepalming
+🤦🏻‍♂️	uomo che fa facepalming: carnagione chiara
+🤦🏻‍♂	uomo che fa facepalming: carnagione chiara
+🤦🏼‍♂️	uomo che fa facepalming: carnagione medio-chiara
+🤦🏼‍♂	uomo che fa facepalming: carnagione medio-chiara
+🤦🏽‍♂️	uomo che fa facepalming: carnagione media
+🤦🏽‍♂	uomo che fa facepalming: carnagione media
+🤦🏾‍♂️	uomo che fa facepalming: carnagione medio-scura
+🤦🏾‍♂	uomo che fa facepalming: carnagione medio-scura
+🤦🏿‍♂️	uomo che fa facepalming: carnagione scura
+🤦🏿‍♂	uomo che fa facepalming: carnagione scura
+🤦‍♀️	donna che fa il facepalming
+🤦‍♀	donna che fa il facepalming
+🤦🏻‍♀️	donna che fa il facepalming: carnagione chiara
+🤦🏻‍♀	donna che fa il facepalming: carnagione chiara
+🤦🏼‍♀️	facepalming donna: carnagione medio-chiara
+🤦🏼‍♀	facepalming donna: carnagione medio-chiara
+🤦🏽‍♀️	facepalming donna: carnagione media
+🤦🏽‍♀	facepalming donna: carnagione media
+🤦🏾‍♀️	facepalming donna: carnagione medio-scura
+🤦🏾‍♀	facepalming donna: carnagione medio-scura
+🤦🏿‍♀️	donna che fa facepalming: carnagione scura
+🤦🏿‍♀	donna che fa facepalming: carnagione scura
+🤷	persona che alza le spalle
+🤷🏻	persona che alza le spalle: carnagione chiara
+🤷🏼	persona che alza le spalle: carnagione abbastanza chiara
+🤷🏽	persona che alza le spalle: carnagione media
+🤷🏾	persona che alza le spalle: carnagione medio-scura
+🤷🏿	persona che alza le spalle: carnagione scura
+🤷‍♂️	uomo che alza le spalle
+🤷‍♂	uomo che alza le spalle
+🤷🏻‍♂️	uomo che alza le spalle: carnagione chiara
+🤷🏻‍♂	uomo che alza le spalle: carnagione chiara
+🤷🏼‍♂️	uomo che alza le spalle: carnagione abbastanza chiara
+🤷🏼‍♂	uomo che alza le spalle: carnagione abbastanza chiara
+🤷🏽‍♂️	uomo che alza le spalle: carnagione olivastra
+🤷🏽‍♂	uomo che alza le spalle: carnagione olivastra
+🤷🏾‍♂️	uomo che alza le spalle: carnagione abbastanza scura
+🤷🏾‍♂	uomo che alza le spalle: carnagione abbastanza scura
+🤷🏿‍♂️	uomo che alza le spalle: carnagione scura
+🤷🏿‍♂	uomo che alza le spalle: carnagione scura
+🤷‍♀️	donna che alza le spalle
+🤷‍♀	donna che alza le spalle
+🤷🏻‍♀️	donna che alza le spalle: carnagione chiara
+🤷🏻‍♀	donna che alza le spalle: carnagione chiara
+🤷🏼‍♀️	donna che alza le spalle: carnagione abbastanza chiara
+🤷🏼‍♀	donna che alza le spalle: carnagione abbastanza chiara
+🤷🏽‍♀️	donna che alza le spalle: carnagione olivastra
+🤷🏽‍♀	donna che alza le spalle: carnagione olivastra
+🤷🏾‍♀️	donna che alza le spalle: carnagione medio-scura
+🤷🏾‍♀	donna che alza le spalle: carnagione medio-scura
+🤷🏿‍♀️	donna che alza le spalle: carnagione scura
+🤷🏿‍♀	donna che alza le spalle: carnagione scura
+💆	persona che riceve un massaggio
+💆🏻	persona che riceve il massaggio: carnagione chiara
+💆🏼	persona che riceve il massaggio: carnagione abbastanza chiara
+💆🏽	persona che riceve il massaggio: carnagione olivastra
+💆🏾	persona che riceve il massaggio: carnagione medio-scura
+💆🏿	persona che riceve il massaggio: carnagione scura
+💆‍♂️	uomo che riceve un massaggio
+💆‍♂	uomo che riceve un massaggio
+💆🏻‍♂️	uomo che riceve un massaggio: carnagione chiara
+💆🏻‍♂	uomo che riceve un massaggio: carnagione chiara
+💆🏼‍♂️	uomo che riceve un massaggio: carnagione abbastanza chiara
+💆🏼‍♂	uomo che riceve un massaggio: carnagione abbastanza chiara
+💆🏽‍♂️	uomo che riceve un massaggio: carnagione olivastra
+💆🏽‍♂	uomo che riceve un massaggio: carnagione olivastra
+💆🏾‍♂️	uomo che riceve un massaggio: carnagione abbastanza scura
+💆🏾‍♂	uomo che riceve un massaggio: carnagione abbastanza scura
+💆🏿‍♂️	uomo che riceve un massaggio: carnagione scura
+💆🏿‍♂	uomo che riceve un massaggio: carnagione scura
+💆‍♀️	donna che riceve il massaggio
+💆‍♀	donna che riceve il massaggio
+💆🏻‍♀️	donna che riceve un massaggio: carnagione chiara
+💆🏻‍♀	donna che riceve un massaggio: carnagione chiara
+💆🏼‍♀️	donna che riceve un massaggio: carnagione abbastanza chiara
+💆🏼‍♀	donna che riceve un massaggio: carnagione abbastanza chiara
+💆🏽‍♀️	donna che riceve un massaggio: carnagione olivastra
+💆🏽‍♀	donna che riceve un massaggio: carnagione olivastra
+💆🏾‍♀️	donna che riceve un massaggio: carnagione medio-scura
+💆🏾‍♀	donna che riceve un massaggio: carnagione medio-scura
+💆🏿‍♀️	donna che riceve un massaggio: carnagione scura
+💆🏿‍♀	donna che riceve un massaggio: carnagione scura
+💇	persona che si taglia i capelli
+💇🏻	persona che si taglia i capelli: carnagione chiara
+💇🏼	persona che si taglia i capelli: carnagione medio-chiara
+💇🏽	persona che si taglia i capelli: carnagione media
+💇🏾	persona che si taglia i capelli: carnagione medio-scura
+💇🏿	persona che si taglia i capelli: carnagione scura
+💇‍♂️	uomo che si taglia i capelli
+💇‍♂	uomo che si taglia i capelli
+💇🏻‍♂️	uomo che si taglia i capelli: carnagione chiara
+💇🏻‍♂	uomo che si taglia i capelli: carnagione chiara
+💇🏼‍♂️	uomo che si taglia i capelli: carnagione medio-chiara
+💇🏼‍♂	uomo che si taglia i capelli: carnagione medio-chiara
+💇🏽‍♂️	uomo che si taglia i capelli: carnagione media
+💇🏽‍♂	uomo che si taglia i capelli: carnagione media
+💇🏾‍♂️	uomo che si taglia i capelli: carnagione medio-scura
+💇🏾‍♂	uomo che si taglia i capelli: carnagione medio-scura
+💇🏿‍♂️	uomo che si taglia i capelli: carnagione scura
+💇🏿‍♂	uomo che si taglia i capelli: carnagione scura
+💇‍♀️	donna che si taglia i capelli
+💇‍♀	donna che si taglia i capelli
+💇🏻‍♀️	donna che si taglia i capelli: carnagione chiara
+💇🏻‍♀	donna che si taglia i capelli: carnagione chiara
+💇🏼‍♀️	donna che si taglia i capelli: carnagione medio-chiara
+💇🏼‍♀	donna che si taglia i capelli: carnagione medio-chiara
+💇🏽‍♀️	donna che si taglia i capelli: carnagione media
+💇🏽‍♀	donna che si taglia i capelli: carnagione media
+💇🏾‍♀️	donna che si taglia i capelli: carnagione medio-scura
+💇🏾‍♀	donna che si taglia i capelli: carnagione medio-scura
+💇🏿‍♀️	donna che si taglia i capelli: carnagione scura
+💇🏿‍♀	donna che si taglia i capelli: carnagione scura
+🚶	persona che cammina
+🚶🏻	persona che cammina: carnagione chiara
+🚶🏼	persona che cammina: carnagione medio-chiara
+🚶🏽	persona che cammina: carnagione media
+🚶🏾	persona che cammina: carnagione medio-scura
+🚶🏿	persona che cammina: carnagione scura
+🚶‍♂️	uomo che cammina
+🚶‍♂	uomo che cammina
+🚶🏻‍♂️	uomo che cammina: carnagione chiara
+🚶🏻‍♂	uomo che cammina: carnagione chiara
+🚶🏼‍♂️	uomo che cammina: carnagione abbastanza chiara
+🚶🏼‍♂	uomo che cammina: carnagione abbastanza chiara
+🚶🏽‍♂️	uomo che cammina: carnagione olivastra
+🚶🏽‍♂	uomo che cammina: carnagione olivastra
+🚶🏾‍♂️	uomo che cammina: carnagione abbastanza scura
+🚶🏾‍♂	uomo che cammina: carnagione abbastanza scura
+🚶🏿‍♂️	uomo che cammina: carnagione scura
+🚶🏿‍♂	uomo che cammina: carnagione scura
+🚶‍♀️	donna che cammina
+🚶‍♀	donna che cammina
+🚶🏻‍♀️	donna che cammina: carnagione chiara
+🚶🏻‍♀	donna che cammina: carnagione chiara
+🚶🏼‍♀️	donna che cammina: carnagione abbastanza chiara
+🚶🏼‍♀	donna che cammina: carnagione abbastanza chiara
+🚶🏽‍♀️	donna che cammina: carnagione olivastra
+🚶🏽‍♀	donna che cammina: carnagione olivastra
+🚶🏾‍♀️	donna che cammina: carnagione medio-scura
+🚶🏾‍♀	donna che cammina: carnagione medio-scura
+🚶🏿‍♀️	donna che cammina: carnagione scura
+🚶🏿‍♀	donna che cammina: carnagione scura
+🏃	persona che corre
+🏃🏻	persona che corre: carnagione chiara
+🏃🏼	persona che corre: carnagione abbastanza chiara
+🏃🏽	persona che corre: carnagione olivastra
+🏃🏾	persona che corre: carnagione medio-scura
+🏃🏿	persona che corre: carnagione scura
+🏃‍♂️	uomo che corre
+🏃‍♂	uomo che corre
+🏃🏻‍♂️	uomo che corre: carnagione chiara
+🏃🏻‍♂	uomo che corre: carnagione chiara
+🏃🏼‍♂️	uomo che corre: carnagione abbastanza chiara
+🏃🏼‍♂	uomo che corre: carnagione abbastanza chiara
+🏃🏽‍♂️	uomo che corre: carnagione olivastra
+🏃🏽‍♂	uomo che corre: carnagione olivastra
+🏃🏾‍♂️	uomo che corre: carnagione abbastanza scura
+🏃🏾‍♂	uomo che corre: carnagione abbastanza scura
+🏃🏿‍♂️	uomo che corre: carnagione scura
+🏃🏿‍♂	uomo che corre: carnagione scura
+🏃‍♀️	donna che corre
+🏃‍♀	donna che corre
+🏃🏻‍♀️	donna che corre: carnagione chiara
+🏃🏻‍♀	donna che corre: carnagione chiara
+🏃🏼‍♀️	donna che corre: carnagione abbastanza chiara
+🏃🏼‍♀	donna che corre: carnagione abbastanza chiara
+🏃🏽‍♀️	donna che corre: carnagione olivastra
+🏃🏽‍♀	donna che corre: carnagione olivastra
+🏃🏾‍♀️	donna che corre: carnagione abbastanza scura
+🏃🏾‍♀	donna che corre: carnagione abbastanza scura
+🏃🏿‍♀️	donna che corre: carnagione scura
+🏃🏿‍♀	donna che corre: carnagione scura
+💃	donna che balla
+💃🏻	donna che balla: carnagione chiara
+💃🏼	donna che balla: carnagione abbastanza chiara
+💃🏽	donna che balla: carnagione olivastra
+💃🏾	donna che balla: carnagione abbastanza scura
+💃🏿	donna che balla: carnagione scura
+🕺	uomo che balla
+🕺🏻	uomo che balla: carnagione chiara
+🕺🏼	uomo che balla: carnagione abbastanza chiara
+🕺🏽	uomo che balla: carnagione olivastra
+🕺🏾	uomo che balla: carnagione abbastanza scura
+🕺🏿	uomo che balla: carnagione scura
+👯	persone con orecchie da coniglio
+👯‍♂️	uomini con orecchie da coniglio
+👯‍♂	uomini con orecchie da coniglio
+👯‍♀️	donne con orecchie da coniglio
+👯‍♀	donne con orecchie da coniglio
+🧖	persona nella stanza piena di vapore
+🧖🏻	persona in una stanza piena di vapore: carnagione chiara
+🧖🏼	persona in una stanza piena di vapore: carnagione medio-chiara
+🧖🏽	persona in una stanza piena di vapore: carnagione media
+🧖🏾	persona in una stanza piena di vapore: carnagione medio-scura
+🧖🏿	persona in una stanza piena di vapore: carnagione scura
+🧖‍♀️	donna nella stanza piena di vapore
+🧖‍♀	donna nella stanza piena di vapore
+🧖🏻‍♀️	donna in una stanza piena di vapore: carnagione chiara
+🧖🏻‍♀	donna in una stanza piena di vapore: carnagione chiara
+🧖🏼‍♀️	donna in una stanza piena di vapore: carnagione abbastanza chiara
+🧖🏼‍♀	donna in una stanza piena di vapore: carnagione abbastanza chiara
+🧖🏽‍♀️	donna in una stanza piena di vapore: carnagione olivastra
+🧖🏽‍♀	donna in una stanza piena di vapore: carnagione olivastra
+🧖🏾‍♀️	donna in una stanza piena di vapore: carnagione medio-scura
+🧖🏾‍♀	donna in una stanza piena di vapore: carnagione medio-scura
+🧖🏿‍♀️	donna in una stanza piena di vapore: carnagione scura
+🧖🏿‍♀	donna in una stanza piena di vapore: carnagione scura
+🧖‍♂️	uomo nella stanza piena di vapore
+🧖‍♂	uomo nella stanza piena di vapore
+🧖🏻‍♂️	uomo in una stanza piena di vapore: carnagione chiara
+🧖🏻‍♂	uomo in una stanza piena di vapore: carnagione chiara
+🧖🏼‍♂️	uomo in una stanza piena di vapore: carnagione abbastanza chiara
+🧖🏼‍♂	uomo in una stanza piena di vapore: carnagione abbastanza chiara
+🧖🏽‍♂️	uomo in una stanza piena di vapore: carnagione olivastra
+🧖🏽‍♂	uomo in una stanza piena di vapore: carnagione olivastra
+🧖🏾‍♂️	uomo in una stanza piena di vapore: carnagione medio-scura
+🧖🏾‍♂	uomo in una stanza piena di vapore: carnagione medio-scura
+🧖🏿‍♂️	uomo in una stanza piena di vapore: carnagione scura
+🧖🏿‍♂	uomo in una stanza piena di vapore: carnagione scura
+🧗	persona che si arrampica
+🧗🏻	persona che arrampica: carnagione chiara
+🧗🏼	persona che arrampica: carnagione medio-chiara
+🧗🏽	persona che arrampica: carnagione media
+🧗🏾	persona che arrampica: carnagione medio-scura
+🧗🏿	persona che arrampica: carnagione scura
+🧗‍♀️	donna che si arrampica
+🧗‍♀	donna che si arrampica
+🧗🏻‍♀️	donna che arrampica: carnagione chiara
+🧗🏻‍♀	donna che arrampica: carnagione chiara
+🧗🏼‍♀️	donna arrampicata: carnagione abbastanza chiara
+🧗🏼‍♀	donna arrampicata: carnagione abbastanza chiara
+🧗🏽‍♀️	donna che arrampica: carnagione olivastra
+🧗🏽‍♀	donna che arrampica: carnagione olivastra
+🧗🏾‍♀️	donna che arrampica: carnagione medio-scura
+🧗🏾‍♀	donna che arrampica: carnagione medio-scura
+🧗🏿‍♀️	donna che arrampica: carnagione scura
+🧗🏿‍♀	donna che arrampica: carnagione scura
+🧗‍♂️	uomo che si arrampica
+🧗‍♂	uomo che si arrampica
+🧗🏻‍♂️	uomo che arrampica: carnagione chiara
+🧗🏻‍♂	uomo che arrampica: carnagione chiara
+🧗🏼‍♂️	uomo che arrampica: carnagione abbastanza chiara
+🧗🏼‍♂	uomo che arrampica: carnagione abbastanza chiara
+🧗🏽‍♂️	uomo che arrampica: carnagione olivastra
+🧗🏽‍♂	uomo che arrampica: carnagione olivastra
+🧗🏾‍♂️	uomo che arrampica: carnagione medio-scura
+🧗🏾‍♂	uomo che arrampica: carnagione medio-scura
+🧗🏿‍♂️	uomo che arrampica: carnagione scura
+🧗🏿‍♂	uomo che arrampica: carnagione scura
+🧘	persona nella posizione del loto
+🧘🏻	persona nella posizione del loto: carnagione chiara
+🧘🏼	persona nella posizione del loto: carnagione medio-chiara
+🧘🏽	persona nella posizione del loto: carnagione media
+🧘🏾	persona nella posizione del loto: carnagione medio-scura
+🧘🏿	persona nella posizione del loto: carnagione scura
+🧘‍♀️	donna nella posizione del loto
+🧘‍♀	donna nella posizione del loto
+🧘🏻‍♀️	donna nella posizione del loto: carnagione chiara
+🧘🏻‍♀	donna nella posizione del loto: carnagione chiara
+🧘🏼‍♀️	donna nella posizione del loto: carnagione medio-chiara
+🧘🏼‍♀	donna nella posizione del loto: carnagione medio-chiara
+🧘🏽‍♀️	donna nella posizione del loto: carnagione media
+🧘🏽‍♀	donna nella posizione del loto: carnagione media
+🧘🏾‍♀️	donna nella posizione del loto: carnagione medio-scura
+🧘🏾‍♀	donna nella posizione del loto: carnagione medio-scura
+🧘🏿‍♀️	donna nella posizione del loto: carnagione scura
+🧘🏿‍♀	donna nella posizione del loto: carnagione scura
+🧘‍♂️	uomo nella posizione del loto
+🧘‍♂	uomo nella posizione del loto
+🧘🏻‍♂️	uomo nella posizione del loto: carnagione chiara
+🧘🏻‍♂	uomo nella posizione del loto: carnagione chiara
+🧘🏼‍♂️	uomo nella posizione del loto: carnagione medio-chiara
+🧘🏼‍♂	uomo nella posizione del loto: carnagione medio-chiara
+🧘🏽‍♂️	uomo nella posizione del loto: carnagione media
+🧘🏽‍♂	uomo nella posizione del loto: carnagione media
+🧘🏾‍♂️	uomo nella posizione del loto: carnagione medio-scura
+🧘🏾‍♂	uomo nella posizione del loto: carnagione medio-scura
+🧘🏿‍♂️	uomo nella posizione del loto: carnagione scura
+🧘🏿‍♂	uomo nella posizione del loto: carnagione scura
+🛀	persona che fa il bagno
+🛀🏻	persona che fa il bagno: carnagione chiara
+🛀🏼	persona che fa il bagno: carnagione medio-chiara
+🛀🏽	persona che fa il bagno: carnagione media
+🛀🏾	persona che fa il bagno: carnagione medio-scura
+🛀🏿	persona che fa il bagno: carnagione scura
+🛌	persona a letto
+🛌🏻	persona a letto: carnagione chiara
+🛌🏼	persona a letto: carnagione abbastanza chiara
+🛌🏽	persona a letto: carnagione olivastra
+🛌🏾	persona a letto: carnagione medio-scura
+🛌🏿	persona a letto: carnagione scura
+🕴️	uomo in giacca e cravatta levitante
+🕴	uomo in giacca e cravatta levitante
+🕴🏻	uomo in abito levitante: carnagione chiara
+🕴🏼	uomo in abito levitante: carnagione abbastanza chiara
+🕴🏽	uomo in abito levitante: carnagione olivastra
+🕴🏾	uomo in abito levitante: carnagione medio-scura
+🕴🏿	uomo in abito levitante: carnagione scura
+🗣️	testa parlante
+🗣	testa parlante
+👤	busto in sagoma
+👥	busti in sagoma
+🤺	persona che scherma
+🏇	corsa di cavalli
+🏇🏻	corse di cavalli: carnagione chiara
+🏇🏼	corsa di cavalli: carnagione abbastanza chiara
+🏇🏽	corse di cavalli: carnagione olivastra
+🏇🏾	corse di cavalli: carnagione medio-scura
+🏇🏿	corse di cavalli: carnagione scura
+⛷️	sciatore
+⛷	sciatore
+🏂	snowboarder
+🏂🏻	snowboarder: carnagione chiara
+🏂🏼	snowboarder: carnagione medio-chiara
+🏂🏽	snowboarder: carnagione olivastra
+🏂🏾	snowboarder: carnagione medio-scura
+🏂🏿	snowboarder: carnagione scura
+🏌️	persona che gioca a golf
+🏌	persona che gioca a golf
+🏌🏻	persona che gioca a golf: carnagione chiara
+🏌🏼	persona che gioca a golf: carnagione medio-chiara
+🏌🏽	persona che gioca a golf: carnagione media
+🏌🏾	persona che gioca a golf: carnagione medio-scura
+🏌🏿	persona che gioca a golf: carnagione scura
+🏌️‍♂️	uomo che gioca a golf
+🏌‍♂️	uomo che gioca a golf
+🏌️‍♂	uomo che gioca a golf
+🏌‍♂	uomo che gioca a golf
+🏌🏻‍♂️	uomo che gioca a golf: carnagione chiara
+🏌🏻‍♂	uomo che gioca a golf: carnagione chiara
+🏌🏼‍♂️	uomo che gioca a golf: carnagione abbastanza chiara
+🏌🏼‍♂	uomo che gioca a golf: carnagione abbastanza chiara
+🏌🏽‍♂️	uomo che gioca a golf: carnagione olivastra
+🏌🏽‍♂	uomo che gioca a golf: carnagione olivastra
+🏌🏾‍♂️	uomo che gioca a golf: carnagione medio-scura
+🏌🏾‍♂	uomo che gioca a golf: carnagione medio-scura
+🏌🏿‍♂️	uomo che gioca a golf: carnagione scura
+🏌🏿‍♂	uomo che gioca a golf: carnagione scura
+🏌️‍♀️	donna che gioca a golf
+🏌‍♀️	donna che gioca a golf
+🏌️‍♀	donna che gioca a golf
+🏌‍♀	donna che gioca a golf
+🏌🏻‍♀️	donna che gioca a golf: carnagione chiara
+🏌🏻‍♀	donna che gioca a golf: carnagione chiara
+🏌🏼‍♀️	donna che gioca a golf: carnagione abbastanza chiara
+🏌🏼‍♀	donna che gioca a golf: carnagione abbastanza chiara
+🏌🏽‍♀️	donna che gioca a golf: carnagione olivastra
+🏌🏽‍♀	donna che gioca a golf: carnagione olivastra
+🏌🏾‍♀️	donna che gioca a golf: carnagione medio-scura
+🏌🏾‍♀	donna che gioca a golf: carnagione medio-scura
+🏌🏿‍♀️	donna che gioca a golf: carnagione scura
+🏌🏿‍♀	donna che gioca a golf: carnagione scura
+🏄	persona che fa surf
+🏄🏻	persona che fa surf: carnagione chiara
+🏄🏼	persona che fa surf: carnagione abbastanza chiara
+🏄🏽	persona che fa surf: carnagione olivastra
+🏄🏾	persona che fa surf: carnagione medio-scura
+🏄🏿	persona che fa surf: carnagione scura
+🏄‍♂️	uomo che fa surf
+🏄‍♂	uomo che fa surf
+🏄🏻‍♂️	uomo che fa surf: carnagione chiara
+🏄🏻‍♂	uomo che fa surf: carnagione chiara
+🏄🏼‍♂️	uomo che fa surf: carnagione abbastanza chiara
+🏄🏼‍♂	uomo che fa surf: carnagione abbastanza chiara
+🏄🏽‍♂️	uomo che fa surf: carnagione olivastra
+🏄🏽‍♂	uomo che fa surf: carnagione olivastra
+🏄🏾‍♂️	uomo che fa surf: carnagione abbastanza scura
+🏄🏾‍♂	uomo che fa surf: carnagione abbastanza scura
+🏄🏿‍♂️	uomo che fa surf: carnagione scura
+🏄🏿‍♂	uomo che fa surf: carnagione scura
+🏄‍♀️	donna che fa surf
+🏄‍♀	donna che fa surf
+🏄🏻‍♀️	donna che fa surf: carnagione chiara
+🏄🏻‍♀	donna che fa surf: carnagione chiara
+🏄🏼‍♀️	donna che fa surf: carnagione abbastanza chiara
+🏄🏼‍♀	donna che fa surf: carnagione abbastanza chiara
+🏄🏽‍♀️	donna che fa surf: carnagione olivastra
+🏄🏽‍♀	donna che fa surf: carnagione olivastra
+🏄🏾‍♀️	donna che fa surf: carnagione medio-scura
+🏄🏾‍♀	donna che fa surf: carnagione medio-scura
+🏄🏿‍♀️	donna che fa surf: carnagione scura
+🏄🏿‍♀	donna che fa surf: carnagione scura
+🚣	persona in barca a remi
+🚣🏻	persona in barca a remi: carnagione chiara
+🚣🏼	persona che rema: carnagione abbastanza chiara
+🚣🏽	persona in barca a remi: carnagione olivastra
+🚣🏾	persona in barca a remi: carnagione abbastanza scura
+🚣🏿	persona in barca a remi: carnagione scura
+🚣‍♂️	uomo in barca a remi
+🚣‍♂	uomo in barca a remi
+🚣🏻‍♂️	uomo in barca a remi: carnagione chiara
+🚣🏻‍♂	uomo in barca a remi: carnagione chiara
+🚣🏼‍♂️	uomo in barca a remi: carnagione abbastanza chiara
+🚣🏼‍♂	uomo in barca a remi: carnagione abbastanza chiara
+🚣🏽‍♂️	uomo in barca a remi: carnagione olivastra
+🚣🏽‍♂	uomo in barca a remi: carnagione olivastra
+🚣🏾‍♂️	uomo in barca a remi: carnagione abbastanza scura
+🚣🏾‍♂	uomo in barca a remi: carnagione abbastanza scura
+🚣🏿‍♂️	uomo in barca a remi: carnagione scura
+🚣🏿‍♂	uomo in barca a remi: carnagione scura
+🚣‍♀️	barca a remi donna
+🚣‍♀	barca a remi donna
+🚣🏻‍♀️	donna in barca a remi: carnagione chiara
+🚣🏻‍♀	donna in barca a remi: carnagione chiara
+🚣🏼‍♀️	donna in barca a remi: carnagione abbastanza chiara
+🚣🏼‍♀	donna in barca a remi: carnagione abbastanza chiara
+🚣🏽‍♀️	donna in barca a remi: carnagione olivastra
+🚣🏽‍♀	donna in barca a remi: carnagione olivastra
+🚣🏾‍♀️	donna in barca a remi: carnagione abbastanza scura
+🚣🏾‍♀	donna in barca a remi: carnagione abbastanza scura
+🚣🏿‍♀️	donna in barca a remi: carnagione scura
+🚣🏿‍♀	donna in barca a remi: carnagione scura
+🏊	persona che nuota
+🏊🏻	persona che nuota: carnagione chiara
+🏊🏼	persona che nuota: carnagione medio-chiara
+🏊🏽	persona che nuota: carnagione media
+🏊🏾	persona che nuota: carnagione medio-scura
+🏊🏿	persona che nuota: carnagione scura
+🏊‍♂️	uomo che nuota
+🏊‍♂	uomo che nuota
+🏊🏻‍♂️	uomo che nuota: carnagione chiara
+🏊🏻‍♂	uomo che nuota: carnagione chiara
+🏊🏼‍♂️	uomo che nuota: carnagione abbastanza chiara
+🏊🏼‍♂	uomo che nuota: carnagione abbastanza chiara
+🏊🏽‍♂️	uomo che nuota: carnagione olivastra
+🏊🏽‍♂	uomo che nuota: carnagione olivastra
+🏊🏾‍♂️	uomo che nuota: carnagione medio-scura
+🏊🏾‍♂	uomo che nuota: carnagione medio-scura
+🏊🏿‍♂️	uomo che nuota: carnagione scura
+🏊🏿‍♂	uomo che nuota: carnagione scura
+🏊‍♀️	donna che nuota
+🏊‍♀	donna che nuota
+🏊🏻‍♀️	donna che nuota: carnagione chiara
+🏊🏻‍♀	donna che nuota: carnagione chiara
+🏊🏼‍♀️	donna che nuota: carnagione abbastanza chiara
+🏊🏼‍♀	donna che nuota: carnagione abbastanza chiara
+🏊🏽‍♀️	donna che nuota: carnagione olivastra
+🏊🏽‍♀	donna che nuota: carnagione olivastra
+🏊🏾‍♀️	donna che nuota: carnagione medio-scura
+🏊🏾‍♀	donna che nuota: carnagione medio-scura
+🏊🏿‍♀️	donna che nuota: carnagione scura
+🏊🏿‍♀	donna che nuota: carnagione scura
+⛹️	persona che fa rimbalzare la palla
+⛹	persona che fa rimbalzare la palla
+⛹🏻	persona che fa rimbalzare la palla: carnagione chiara
+⛹🏼	persona che fa rimbalzare la palla: carnagione abbastanza chiara
+⛹🏽	persona che fa rimbalzare la palla: carnagione olivastra
+⛹🏾	persona che fa rimbalzare la palla: carnagione abbastanza scura
+⛹🏿	persona che fa rimbalzare la palla: carnagione scura
+⛹️‍♂️	uomo che rimbalza la palla
+⛹‍♂️	uomo che rimbalza la palla
+⛹️‍♂	uomo che rimbalza la palla
+⛹‍♂	uomo che rimbalza la palla
+⛹🏻‍♂️	uomo che rimbalza: carnagione chiara
+⛹🏻‍♂	uomo che rimbalza: carnagione chiara
+⛹🏼‍♂️	uomo che rimbalza: carnagione abbastanza chiara
+⛹🏼‍♂	uomo che rimbalza: carnagione abbastanza chiara
+⛹🏽‍♂️	uomo che rimbalza: carnagione olivastra
+⛹🏽‍♂	uomo che rimbalza: carnagione olivastra
+⛹🏾‍♂️	uomo che rimbalza: carnagione abbastanza scura
+⛹🏾‍♂	uomo che rimbalza: carnagione abbastanza scura
+⛹🏿‍♂️	uomo che rimbalza: carnagione scura
+⛹🏿‍♂	uomo che rimbalza: carnagione scura
+⛹️‍♀️	donna che rimbalza palla
+⛹‍♀️	donna che rimbalza palla
+⛹️‍♀	donna che rimbalza palla
+⛹‍♀	donna che rimbalza palla
+⛹🏻‍♀️	donna che rimbalza: carnagione chiara
+⛹🏻‍♀	donna che rimbalza: carnagione chiara
+⛹🏼‍♀️	donna che rimbalza: carnagione abbastanza chiara
+⛹🏼‍♀	donna che rimbalza: carnagione abbastanza chiara
+⛹🏽‍♀️	donna che rimbalza: carnagione olivastra
+⛹🏽‍♀	donna che rimbalza: carnagione olivastra
+⛹🏾‍♀️	donna che rimbalza: carnagione abbastanza scura
+⛹🏾‍♀	donna che rimbalza: carnagione abbastanza scura
+⛹🏿‍♀️	donna che rimbalza: carnagione scura
+⛹🏿‍♀	donna che rimbalza: carnagione scura
+🏋️	persona che solleva pesi
+🏋	persona che solleva pesi
+🏋🏻	persona che solleva pesi: carnagione chiara
+🏋🏼	persona che solleva pesi: carnagione abbastanza chiara
+🏋🏽	persona che solleva pesi: carnagione olivastra
+🏋🏾	persona che solleva pesi: carnagione medio-scura
+🏋🏿	persona che solleva pesi: carnagione scura
+🏋️‍♂️	uomo che solleva pesi
+🏋‍♂️	uomo che solleva pesi
+🏋️‍♂	uomo che solleva pesi
+🏋‍♂	uomo che solleva pesi
+🏋🏻‍♂️	uomo che solleva pesi: carnagione chiara
+🏋🏻‍♂	uomo che solleva pesi: carnagione chiara
+🏋🏼‍♂️	uomo che solleva pesi: carnagione abbastanza chiara
+🏋🏼‍♂	uomo che solleva pesi: carnagione abbastanza chiara
+🏋🏽‍♂️	uomo che solleva pesi: carnagione olivastra
+🏋🏽‍♂	uomo che solleva pesi: carnagione olivastra
+🏋🏾‍♂️	uomo che solleva pesi: carnagione abbastanza scura
+🏋🏾‍♂	uomo che solleva pesi: carnagione abbastanza scura
+🏋🏿‍♂️	uomo che solleva pesi: carnagione scura
+🏋🏿‍♂	uomo che solleva pesi: carnagione scura
+🏋️‍♀️	donna che solleva pesi
+🏋‍♀️	donna che solleva pesi
+🏋️‍♀	donna che solleva pesi
+🏋‍♀	donna che solleva pesi
+🏋🏻‍♀️	donna che solleva pesi: carnagione chiara
+🏋🏻‍♀	donna che solleva pesi: carnagione chiara
+🏋🏼‍♀️	donna che solleva pesi: carnagione abbastanza chiara
+🏋🏼‍♀	donna che solleva pesi: carnagione abbastanza chiara
+🏋🏽‍♀️	donna che solleva pesi: carnagione olivastra
+🏋🏽‍♀	donna che solleva pesi: carnagione olivastra
+🏋🏾‍♀️	donna che solleva pesi: carnagione abbastanza scura
+🏋🏾‍♀	donna che solleva pesi: carnagione abbastanza scura
+🏋🏿‍♀️	donna che solleva pesi: carnagione scura
+🏋🏿‍♀	donna che solleva pesi: carnagione scura
+🚴	persona in bicicletta
+🚴🏻	persona in bicicletta: carnagione chiara
+🚴🏼	persona in bicicletta: carnagione medio-chiara
+🚴🏽	persona in bicicletta: carnagione media
+🚴🏾	persona in bicicletta: carnagione medio-scura
+🚴🏿	persona in bicicletta: carnagione scura
+🚴‍♂️	uomo in bicicletta
+🚴‍♂	uomo in bicicletta
+🚴🏻‍♂️	uomo in bicicletta: carnagione chiara
+🚴🏻‍♂	uomo in bicicletta: carnagione chiara
+🚴🏼‍♂️	uomo in bicicletta: carnagione medio-chiara
+🚴🏼‍♂	uomo in bicicletta: carnagione medio-chiara
+🚴🏽‍♂️	uomo in bicicletta: carnagione olivastra
+🚴🏽‍♂	uomo in bicicletta: carnagione olivastra
+🚴🏾‍♂️	uomo in bicicletta: carnagione medio-scura
+🚴🏾‍♂	uomo in bicicletta: carnagione medio-scura
+🚴🏿‍♂️	uomo in bicicletta: carnagione scura
+🚴🏿‍♂	uomo in bicicletta: carnagione scura
+🚴‍♀️	donna in bicicletta
+🚴‍♀	donna in bicicletta
+🚴🏻‍♀️	donna in bicicletta: carnagione chiara
+🚴🏻‍♀	donna in bicicletta: carnagione chiara
+🚴🏼‍♀️	donna in bicicletta: carnagione medio-chiara
+🚴🏼‍♀	donna in bicicletta: carnagione medio-chiara
+🚴🏽‍♀️	donna in bicicletta: carnagione olivastra
+🚴🏽‍♀	donna in bicicletta: carnagione olivastra
+🚴🏾‍♀️	donna in bicicletta: carnagione medio-scura
+🚴🏾‍♀	donna in bicicletta: carnagione medio-scura
+🚴🏿‍♀️	donna in bicicletta: carnagione scura
+🚴🏿‍♀	donna in bicicletta: carnagione scura
+🚵	persona in mountain bike
+🚵🏻	persona che va in mountain bike: carnagione chiara
+🚵🏼	persona che va in mountain bike: carnagione medio-chiara
+🚵🏽	persona che va in mountain bike: carnagione olivastra
+🚵🏾	persona che va in mountain bike: carnagione medio-scura
+🚵🏿	persona che va in mountain bike: carnagione scura
+🚵‍♂️	uomo in mountain bike
+🚵‍♂	uomo in mountain bike
+🚵🏻‍♂️	uomo mountain bike: carnagione chiara
+🚵🏻‍♂	uomo mountain bike: carnagione chiara
+🚵🏼‍♂️	uomo mountain bike: carnagione abbastanza chiara
+🚵🏼‍♂	uomo mountain bike: carnagione abbastanza chiara
+🚵🏽‍♂️	uomo mountain bike: carnagione olivastra
+🚵🏽‍♂	uomo mountain bike: carnagione olivastra
+🚵🏾‍♂️	uomo mountain bike: carnagione medio-scura
+🚵🏾‍♂	uomo mountain bike: carnagione medio-scura
+🚵🏿‍♂️	uomo in mountain bike: carnagione scura
+🚵🏿‍♂	uomo in mountain bike: carnagione scura
+🚵‍♀️	donna in mountain bike
+🚵‍♀	donna in mountain bike
+🚵🏻‍♀️	donna in mountain bike: carnagione chiara
+🚵🏻‍♀	donna in mountain bike: carnagione chiara
+🚵🏼‍♀️	donna mountain bike: carnagione abbastanza chiara
+🚵🏼‍♀	donna mountain bike: carnagione abbastanza chiara
+🚵🏽‍♀️	donna in mountain bike: carnagione olivastra
+🚵🏽‍♀	donna in mountain bike: carnagione olivastra
+🚵🏾‍♀️	donna mountain bike: carnagione medio-scura
+🚵🏾‍♀	donna mountain bike: carnagione medio-scura
+🚵🏿‍♀️	donna in mountain bike: carnagione scura
+🚵🏿‍♀	donna in mountain bike: carnagione scura
+🏎️	macchina da corsa
+🏎	macchina da corsa
+🏍️	motociclo
+🏍	motociclo
+🤸	persona che fa la ruota
+🤸🏻	persona che fa la ruota: carnagione chiara
+🤸🏼	persona che fa la ruota: carnagione medio-chiara
+🤸🏽	persona che fa la ruota: carnagione media
+🤸🏾	persona che fa la ruota: carnagione medio-scura
+🤸🏿	persona che fa la ruota: carnagione scura
+🤸‍♂️	uomo che fa la ruota
+🤸‍♂	uomo che fa la ruota
+🤸🏻‍♂️	uomo che fa la ruota: carnagione chiara
+🤸🏻‍♂	uomo che fa la ruota: carnagione chiara
+🤸🏼‍♂️	uomo che fa la ruota: carnagione abbastanza chiara
+🤸🏼‍♂	uomo che fa la ruota: carnagione abbastanza chiara
+🤸🏽‍♂️	uomo che fa la ruota: carnagione olivastra
+🤸🏽‍♂	uomo che fa la ruota: carnagione olivastra
+🤸🏾‍♂️	uomo che fa la ruota: carnagione medio-scura
+🤸🏾‍♂	uomo che fa la ruota: carnagione medio-scura
+🤸🏿‍♂️	uomo che fa la ruota: carnagione scura
+🤸🏿‍♂	uomo che fa la ruota: carnagione scura
+🤸‍♀️	donna che fa la ruota
+🤸‍♀	donna che fa la ruota
+🤸🏻‍♀️	donna che fa la ruota: carnagione chiara
+🤸🏻‍♀	donna che fa la ruota: carnagione chiara
+🤸🏼‍♀️	donna che fa la ruota: carnagione abbastanza chiara
+🤸🏼‍♀	donna che fa la ruota: carnagione abbastanza chiara
+🤸🏽‍♀️	donna che fa la ruota: carnagione olivastra
+🤸🏽‍♀	donna che fa la ruota: carnagione olivastra
+🤸🏾‍♀️	donna che fa la ruota: carnagione medio-scura
+🤸🏾‍♀	donna che fa la ruota: carnagione medio-scura
+🤸🏿‍♀️	donna che fa la ruota: carnagione scura
+🤸🏿‍♀	donna che fa la ruota: carnagione scura
+🤼	persone che lottano
+🤼‍♂️	uomini che lottano
+🤼‍♂	uomini che lottano
+🤼‍♀️	donne che lottano
+🤼‍♀	donne che lottano
+🤽	persona che gioca a pallanuoto
+🤽🏻	persona che gioca a pallanuoto: carnagione chiara
+🤽🏼	persona che gioca a pallanuoto: carnagione abbastanza chiara
+🤽🏽	persona che gioca a pallanuoto: carnagione olivastra
+🤽🏾	persona che gioca a pallanuoto: carnagione medio-scura
+🤽🏿	persona che gioca a pallanuoto: carnagione scura
+🤽‍♂️	uomo che gioca a pallanuoto
+🤽‍♂	uomo che gioca a pallanuoto
+🤽🏻‍♂️	uomo che gioca a pallanuoto: carnagione chiara
+🤽🏻‍♂	uomo che gioca a pallanuoto: carnagione chiara
+🤽🏼‍♂️	uomo che gioca a pallanuoto: carnagione abbastanza chiara
+🤽🏼‍♂	uomo che gioca a pallanuoto: carnagione abbastanza chiara
+🤽🏽‍♂️	uomo che gioca a pallanuoto: carnagione olivastra
+🤽🏽‍♂	uomo che gioca a pallanuoto: carnagione olivastra
+🤽🏾‍♂️	uomo che gioca a pallanuoto: carnagione abbastanza scura
+🤽🏾‍♂	uomo che gioca a pallanuoto: carnagione abbastanza scura
+🤽🏿‍♂️	uomo che gioca a pallanuoto: carnagione scura
+🤽🏿‍♂	uomo che gioca a pallanuoto: carnagione scura
+🤽‍♀️	donna che gioca a pallanuoto
+🤽‍♀	donna che gioca a pallanuoto
+🤽🏻‍♀️	donna che gioca a pallanuoto: carnagione chiara
+🤽🏻‍♀	donna che gioca a pallanuoto: carnagione chiara
+🤽🏼‍♀️	donna che gioca a pallanuoto: carnagione abbastanza chiara
+🤽🏼‍♀	donna che gioca a pallanuoto: carnagione abbastanza chiara
+🤽🏽‍♀️	donna che gioca a pallanuoto: carnagione olivastra
+🤽🏽‍♀	donna che gioca a pallanuoto: carnagione olivastra
+🤽🏾‍♀️	donna che gioca a pallanuoto: carnagione abbastanza scura
+🤽🏾‍♀	donna che gioca a pallanuoto: carnagione abbastanza scura
+🤽🏿‍♀️	donna che gioca a pallanuoto: carnagione scura
+🤽🏿‍♀	donna che gioca a pallanuoto: carnagione scura
+🤾	persona che gioca a pallamano
+🤾🏻	persona che gioca a pallamano: carnagione chiara
+🤾🏼	persona che gioca a pallamano: carnagione abbastanza chiara
+🤾🏽	persona che gioca a pallamano: carnagione olivastra
+🤾🏾	persona che gioca a pallamano: carnagione abbastanza scura
+🤾🏿	persona che gioca a pallamano: carnagione scura
+🤾‍♂️	uomo che gioca a pallamano
+🤾‍♂	uomo che gioca a pallamano
+🤾🏻‍♂️	uomo che gioca a pallamano: carnagione chiara
+🤾🏻‍♂	uomo che gioca a pallamano: carnagione chiara
+🤾🏼‍♂️	uomo che gioca a pallamano: carnagione abbastanza chiara
+🤾🏼‍♂	uomo che gioca a pallamano: carnagione abbastanza chiara
+🤾🏽‍♂️	uomo che gioca a pallamano: carnagione olivastra
+🤾🏽‍♂	uomo che gioca a pallamano: carnagione olivastra
+🤾🏾‍♂️	uomo che gioca a pallamano: carnagione abbastanza scura
+🤾🏾‍♂	uomo che gioca a pallamano: carnagione abbastanza scura
+🤾🏿‍♂️	uomo che gioca a pallamano: carnagione scura
+🤾🏿‍♂	uomo che gioca a pallamano: carnagione scura
+🤾‍♀️	donna che gioca a pallamano
+🤾‍♀	donna che gioca a pallamano
+🤾🏻‍♀️	donna che gioca a pallamano: carnagione chiara
+🤾🏻‍♀	donna che gioca a pallamano: carnagione chiara
+🤾🏼‍♀️	donna che gioca a pallamano: carnagione abbastanza chiara
+🤾🏼‍♀	donna che gioca a pallamano: carnagione abbastanza chiara
+🤾🏽‍♀️	donna che gioca a pallamano: carnagione olivastra
+🤾🏽‍♀	donna che gioca a pallamano: carnagione olivastra
+🤾🏾‍♀️	donna che gioca a pallamano: carnagione abbastanza scura
+🤾🏾‍♀	donna che gioca a pallamano: carnagione abbastanza scura
+🤾🏿‍♀️	donna che gioca a pallamano: carnagione scura
+🤾🏿‍♀	donna che gioca a pallamano: carnagione scura
+🤹	persona che fa il giocoliere
+🤹🏻	persona che fa giocoliere: carnagione chiara
+🤹🏼	persona che fa giocoliere: carnagione abbastanza chiara
+🤹🏽	persona che fa giocoliere: carnagione olivastra
+🤹🏾	persona che fa giocoliere: carnagione medio-scura
+🤹🏿	persona che fa il giocoliere: carnagione scura
+🤹‍♂️	uomo che fa il giocoliere
+🤹‍♂	uomo che fa il giocoliere
+🤹🏻‍♂️	uomo che fa giocoliere: carnagione chiara
+🤹🏻‍♂	uomo che fa giocoliere: carnagione chiara
+🤹🏼‍♂️	uomo che fa giocoliere: carnagione abbastanza chiara
+🤹🏼‍♂	uomo che fa giocoliere: carnagione abbastanza chiara
+🤹🏽‍♂️	uomo che fa giocoliere: carnagione olivastra
+🤹🏽‍♂	uomo che fa giocoliere: carnagione olivastra
+🤹🏾‍♂️	uomo che fa giocoliere: carnagione abbastanza scura
+🤹🏾‍♂	uomo che fa giocoliere: carnagione abbastanza scura
+🤹🏿‍♂️	uomo che fa giocoliere: carnagione scura
+🤹🏿‍♂	uomo che fa giocoliere: carnagione scura
+🤹‍♀️	donna che fa giocoleria
+🤹‍♀	donna che fa giocoleria
+🤹🏻‍♀️	donna che fa giocoliere: carnagione chiara
+🤹🏻‍♀	donna che fa giocoliere: carnagione chiara
+🤹🏼‍♀️	giocoleria femminile: carnagione abbastanza chiara
+🤹🏼‍♀	giocoleria femminile: carnagione abbastanza chiara
+🤹🏽‍♀️	giocoleria femminile: carnagione olivastra
+🤹🏽‍♀	giocoleria femminile: carnagione olivastra
+🤹🏾‍♀️	giocoleria femminile: carnagione abbastanza scura
+🤹🏾‍♀	giocoleria femminile: carnagione abbastanza scura
+🤹🏿‍♀️	donna che fa giocoliere: carnagione scura
+🤹🏿‍♀	donna che fa giocoliere: carnagione scura
+👫	uomo e donna che si tengono per mano
+👬	due uomini che si tengono per mano
+👭	due donne che si tengono per mano
+💏	bacio
+👩‍❤️‍💋‍👨	bacio: donna, uomo
+👩‍❤‍💋‍👨	bacio: donna, uomo
+👨‍❤️‍💋‍👨	bacio: amico, amico
+👨‍❤‍💋‍👨	bacio: amico, amico
+👩‍❤️‍💋‍👩	bacio: donna, donna
+👩‍❤‍💋‍👩	bacio: donna, donna
+💑	coppia con cuore
+👩‍❤️‍👨	coppia con cuore: donna, uomo
+👩‍❤‍👨	coppia con cuore: donna, uomo
+👨‍❤️‍👨	coppia con cuore: uomo, uomo
+👨‍❤‍👨	coppia con cuore: uomo, uomo
+👩‍❤️‍👩	coppia con cuore: donna, donna
+👩‍❤‍👩	coppia con cuore: donna, donna
+👪	famiglia
+👨‍👩‍👦	famiglia: uomo, donna, ragazzo
+👨‍👩‍👧	famiglia: uomo, donna, ragazza
+👨‍👩‍👧‍👦	famiglia: uomo, donna, ragazza, ragazzo
+👨‍👩‍👦‍👦	famiglia: uomo, donna, ragazzo, ragazzo
+👨‍👩‍👧‍👧	famiglia: uomo, donna, ragazza, ragazza
+👨‍👨‍👦	famiglia: uomo, uomo, ragazzo
+👨‍👨‍👧	famiglia: uomo, uomo, ragazza
+👨‍👨‍👧‍👦	famiglia: uomo, uomo, ragazza, ragazzo
+👨‍👨‍👦‍👦	famiglia: uomo, uomo, ragazzo, ragazzo
+👨‍👨‍👧‍👧	famiglia: uomo, uomo, ragazza, ragazza
+👩‍👩‍👦	famiglia: donna, donna, ragazzo
+👩‍👩‍👧	famiglia: donna, donna, ragazza
+👩‍👩‍👧‍👦	famiglia: donna, donna, ragazza, ragazzo
+👩‍👩‍👦‍👦	famiglia: donna, donna, ragazzo, ragazzo
+👩‍👩‍👧‍👧	famiglia: donna, donna, ragazza, ragazza
+👨‍👦	famiglia: uomo, ragazzo
+👨‍👦‍👦	famiglia: uomo, ragazzo, ragazzo
+👨‍👧	famiglia: uomo, ragazza
+👨‍👧‍👦	famiglia: uomo, ragazza, ragazzo
+👨‍👧‍👧	famiglia: uomo, ragazza, ragazza
+👩‍👦	famiglia: donna, ragazzo
+👩‍👦‍👦	famiglia: donna, ragazzo, ragazzo
+👩‍👧	famiglia: donna, ragazza
+👩‍👧‍👦	famiglia: donna, ragazza, ragazzo
+👩‍👧‍👧	famiglia: donna, ragazza, ragazza
+🤳	autoscatto
+🤳🏻	selfie: carnagione chiara
+🤳🏼	selfie: carnagione medio-chiara
+🤳🏽	selfie: carnagione media
+🤳🏾	selfie: carnagione medio-scura
+🤳🏿	selfie: carnagione scura
+💪	bicipite flesso
+💪🏻	bicipite flesso: carnagione chiara
+💪🏼	bicipite flesso: carnagione medio-chiara
+💪🏽	bicipite flesso: tono della pelle medio
+💪🏾	bicipite flesso: carnagione medio-scura
+💪🏿	bicipite flesso: carnagione scura
+🦵	gamba
+🦵🏻	gamba: carnagione chiara
+🦵🏼	gamba: carnagione medio-chiara
+🦵🏽	gamba: carnagione media
+🦵🏾	gamba: carnagione medio-scura
+🦵🏿	gamba: carnagione scura
+🦶	piede
+🦶🏻	piede: carnagione chiara
+🦶🏼	piede: carnagione medio-chiara
+🦶🏽	piede: carnagione media
+🦶🏾	piede: carnagione medio-scura
+🦶🏿	piede: carnagione scura
+👈	indice del rovescio rivolto a sinistra
+👈🏻	indice del rovescio rivolto a sinistra: carnagione chiara
+👈🏼	indice del rovescio rivolto a sinistra: carnagione medio-chiara
+👈🏽	indice del rovescio rivolto a sinistra: carnagione media
+👈🏾	indice del rovescio rivolto a sinistra: carnagione medio-scura
+👈🏿	indice del rovescio rivolto a sinistra: carnagione scura
+👉	indice del rovescio rivolto a destra
+👉🏻	indice del rovescio rivolto verso destra: carnagione chiara
+👉🏼	indice del rovescio rivolto verso destra: carnagione medio-chiara
+👉🏽	indice del rovescio rivolto verso destra: carnagione media
+👉🏾	indice del rovescio rivolto verso destra: carnagione medio-scura
+👉🏿	indice del rovescio rivolto verso destra: carnagione scura
+☝️	indice rivolto verso l'alto
+☝	indice rivolto verso l'alto
+☝🏻	indice rivolto verso l'alto: carnagione chiara
+☝🏼	indice rivolto verso l'alto: carnagione medio-chiara
+☝🏽	indice rivolto verso l'alto: carnagione media
+☝🏾	indice rivolto verso l'alto: carnagione medio-scura
+☝🏿	indice rivolto verso l'alto: carnagione scura
+👆	indice del rovescio rivolto verso l'alto
+👆🏻	indice del rovescio rivolto verso l'alto: carnagione chiara
+👆🏼	indice del rovescio rivolto verso l'alto: carnagione medio-chiara
+👆🏽	indice del rovescio rivolto verso l'alto: carnagione media
+👆🏾	indice del rovescio rivolto verso l'alto: carnagione medio-scura
+👆🏿	indice del rovescio rivolto verso l'alto: carnagione scura
+🖕	dito medio
+🖕🏻	dito medio: carnagione chiara
+🖕🏼	dito medio: carnagione medio-chiara
+🖕🏽	dito medio: carnagione media
+🖕🏾	dito medio: carnagione medio-scura
+🖕🏿	dito medio: carnagione scura
+👇	indice del rovescio rivolto verso il basso
+👇🏻	indice del rovescio rivolto verso il basso: carnagione chiara
+👇🏼	indice del rovescio rivolto verso il basso: carnagione medio-chiara
+👇🏽	indice del rovescio rivolto verso il basso: carnagione media
+👇🏾	indice del rovescio rivolto verso il basso: carnagione medio-scura
+👇🏿	indice del rovescio rivolto verso il basso: carnagione scura
+✌️	mano della vittoria
+✌	mano della vittoria
+✌🏻	mano della vittoria: carnagione chiara
+✌🏼	mano della vittoria: carnagione abbastanza chiara
+✌🏽	mano della vittoria: carnagione olivastra
+✌🏾	mano della vittoria: carnagione medio-scura
+✌🏿	mano della vittoria: carnagione scura
+🤞	dita incrociate
+🤞🏻	dita incrociate: carnagione chiara
+🤞🏼	dita incrociate: carnagione medio-chiara
+🤞🏽	dita incrociate: carnagione media
+🤞🏾	dita incrociate: carnagione medio-scura
+🤞🏿	dita incrociate: carnagione scura
+🖖	saluto vulcaniano
+🖖🏻	saluto vulcaniano: carnagione chiara
+🖖🏼	saluto vulcaniano: carnagione abbastanza chiara
+🖖🏽	saluto vulcaniano: carnagione media
+🖖🏾	saluto vulcaniano: carnagione medio-scura
+🖖🏿	saluto vulcaniano: carnagione scura
+🤘	segno delle corna
+🤘🏻	segno delle corna: carnagione chiara
+🤘🏼	segno delle corna: carnagione medio-chiara
+🤘🏽	segno delle corna: carnagione media
+🤘🏾	segno delle corna: carnagione medio-scura
+🤘🏿	segno delle corna: carnagione scura
+🤙	chiamami mano
+🤙🏻	chiamami mano: carnagione chiara
+🤙🏼	chiamami mano: carnagione abbastanza chiara
+🤙🏽	chiamami mano: carnagione olivastra
+🤙🏾	chiamami mano: carnagione abbastanza scura
+🤙🏿	chiamami con la mano: carnagione scura
+🖐️	mano con le dita allargate
+🖐	mano con le dita allargate
+🖐🏻	mano con le dita allargate: carnagione chiara
+🖐🏼	mano con le dita allargate: carnagione medio-chiara
+🖐🏽	mano con le dita allargate: carnagione media
+🖐🏾	mano con le dita divaricate: carnagione medio-scura
+🖐🏿	mano con le dita allargate: carnagione scura
+✋	mano alzata
+✋🏻	mano alzata: carnagione chiara
+✋🏼	mano alzata: carnagione medio-chiara
+✋🏽	mano alzata: carnagione media
+✋🏾	mano alzata: carnagione medio-scura
+✋🏿	mano alzata: carnagione scura
+👌	OK mano
+👌🏻	Mano OK: carnagione chiara
+👌🏼	Mano OK: carnagione medio-chiara
+👌🏽	Mano OK: carnagione media
+👌🏾	Mano OK: carnagione medio-scura
+👌🏿	Mano OK: carnagione scura
+👍	pollice su
+👍🏻	pollice in su: carnagione chiara
+👍🏼	pollice in su: carnagione medio-chiara
+👍🏽	pollice in su: carnagione media
+👍🏾	pollice in su: carnagione medio-scura
+👍🏿	pollice in su: carnagione scura
+👎	pollice giù
+👎🏻	pollice verso: carnagione chiara
+👎🏼	pollice verso: carnagione medio-chiara
+👎🏽	pollice verso: carnagione media
+👎🏾	pollice verso: carnagione medio-scura
+👎🏿	pollice verso: carnagione scura
+✊	pugno alzato
+✊🏻	pugno alzato: carnagione chiara
+✊🏼	pugno alzato: carnagione medio-chiara
+✊🏽	pugno alzato: carnagione media
+✊🏾	pugno alzato: carnagione medio-scura
+✊🏿	pugno alzato: carnagione scura
+👊	pugno in arrivo
+👊🏻	pugno in arrivo: carnagione chiara
+👊🏼	pugno in arrivo: carnagione medio-chiara
+👊🏽	pugno in arrivo: carnagione media
+👊🏾	pugno in arrivo: carnagione medio-scura
+👊🏿	pugno in arrivo: carnagione scura
+🤛	pugno rivolto a sinistra
+🤛🏻	pugno rivolto a sinistra: carnagione chiara
+🤛🏼	pugno rivolto a sinistra: carnagione medio-chiara
+🤛🏽	pugno rivolto a sinistra: carnagione media
+🤛🏾	pugno rivolto a sinistra: carnagione medio-scura
+🤛🏿	pugno rivolto a sinistra: carnagione scura
+🤜	pugno rivolto a destra
+🤜🏻	pugno rivolto a destra: carnagione chiara
+🤜🏼	pugno rivolto a destra: carnagione medio-chiara
+🤜🏽	pugno rivolto a destra: carnagione media
+🤜🏾	pugno rivolto a destra: carnagione medio-scura
+🤜🏿	pugno rivolto a destra: carnagione scura
+🤚	dorso della mano alzato
+🤚🏻	dorso della mano alzato: carnagione chiara
+🤚🏼	dorso della mano alzato: carnagione medio-chiara
+🤚🏽	dorso della mano alzato: carnagione media
+🤚🏾	dorso della mano alzato: carnagione medio-scura
+🤚🏿	dorso della mano alzato: carnagione scura
+👋	agitando la mano
+👋🏻	mano che agita: carnagione chiara
+👋🏼	mano che agita: carnagione abbastanza chiara
+👋🏽	mano che agita: carnagione olivastra
+👋🏾	mano che agita: carnagione medio-scura
+👋🏿	mano che agita: carnagione scura
+🤟	gesto d'amore
+🤟🏻	gesto d'amore: carnagione chiara
+🤟🏼	gesto d'amore: carnagione abbastanza chiara
+🤟🏽	gesto d'amore: carnagione olivastra
+🤟🏾	gesto d'amore: carnagione abbastanza scura
+🤟🏿	gesto d'amore: carnagione scura
+✍️	scrivere a mano
+✍	scrivere a mano
+✍🏻	mano che scrive: carnagione chiara
+✍🏼	mano che scrive: carnagione medio-chiara
+✍🏽	mano che scrive: carnagione media
+✍🏾	mano che scrive: carnagione medio-scura
+✍🏿	mano che scrive: carnagione scura
+👏	battendo le mani
+👏🏻	mani che battono: carnagione chiara
+👏🏼	mani che battono: carnagione abbastanza chiara
+👏🏽	mani che battono: carnagione olivastra
+👏🏾	mani che battono: carnagione medio-scura
+👏🏿	mani che battono: carnagione scura
+👐	mani aperte
+👐🏻	mani aperte: carnagione chiara
+👐🏼	mani aperte: carnagione medio-chiara
+👐🏽	mani aperte: carnagione olivastra
+👐🏾	mani aperte: carnagione medio-scura
+👐🏿	mani aperte: carnagione scura
+🙌	alzando le mani
+🙌🏻	mani alzate: carnagione chiara
+🙌🏼	mani alzate: carnagione medio-chiara
+🙌🏽	mani alzate: carnagione olivastra
+🙌🏾	mani alzate: carnagione medio-scura
+🙌🏿	mani alzate: carnagione scura
+🤲	palmi rivolti verso l'alto uniti
+🤲🏻	palmi rivolti verso l'alto: carnagione chiara
+🤲🏼	palmi rivolti verso l'alto uniti: carnagione medio-chiara
+🤲🏽	palmi rivolti verso l'alto uniti: carnagione media
+🤲🏾	palmi rivolti verso l'alto: carnagione medio-scura
+🤲🏿	palmi rivolti verso l'alto: carnagione scura
+🙏	mani giunte
+🙏🏻	mani giunte: carnagione chiara
+🙏🏼	mani giunte: carnagione medio-chiara
+🙏🏽	mani giunte: carnagione media
+🙏🏾	mani giunte: carnagione medio-scura
+🙏🏿	mani giunte: carnagione scura
+🤝	stretta di mano
+💅	smalto per unghie
+💅🏻	smalto per unghie: carnagione chiara
+💅🏼	smalto: carnagione medio-chiara
+💅🏽	smalto: carnagione media
+💅🏾	smalto: carnagione medio-scura
+💅🏿	smalto per unghie: carnagione scura
+👂	orecchio
+👂🏻	orecchio: carnagione chiara
+👂🏼	orecchio: carnagione medio-chiara
+👂🏽	orecchio: tono della pelle medio
+👂🏾	orecchio: carnagione medio-scura
+👂🏿	orecchio: carnagione scura
+👃	naso
+👃🏻	naso: carnagione chiara
+👃🏼	naso: carnagione medio-chiara
+👃🏽	naso: tono della pelle medio
+👃🏾	naso: carnagione medio-scura
+👃🏿	naso: carnagione scura
+🦰	dai capelli rossi
+🦱	dai capelli ricci
+🦲	Calvo
+🦳	dai capelli bianchi
+👣	impronte
+👀	occhi
+👁️	occhio
+👁	occhio
+👁️‍🗨️	occhio nel fumetto
+👁‍🗨️	occhio nel fumetto
+👁️‍🗨	occhio nel fumetto
+👁‍🗨	occhio nel fumetto
+🧠	cervello
+🦴	osso
+🦷	dente
+👅	lingua
+👄	bocca
+💋	segno del bacio
+💘	cuore con freccia
+❤️	cuore rosso
+❤	cuore rosso
+💓	cuore pulsante
+💔	cuore spezzato
+💕	due cuori
+💖	cuore scintillante
+💗	cuore in crescita
+💙	cuore blu
+💚	cuore verde
+💛	cuore giallo
+🧡	cuore arancione
+💜	cuore viola
+🖤	cuore nero
+💝	cuore con nastro
+💞	cuori rotanti
+💟	decorazione del cuore
+❣️	esclamazione dal cuore pesante
+❣	esclamazione dal cuore pesante
+💌	lettera d'amore
+💤	zzz
+💢	simbolo della rabbia
+💣	bomba
+💥	collisione
+💦	goccioline di sudore
+💨	scappando via
+💫	dare le vertigini
+💬	fumetto
+🗨️	fumetto sinistro
+🗨	fumetto sinistro
+🗯️	bolla di rabbia giusta
+🗯	bolla di rabbia giusta
+💭	palloncino di pensieri
+🕳️	buco
+🕳	buco
+👓	occhiali
+🕶️	occhiali da sole
+🕶	occhiali da sole
+🥽	occhiali
+🥼	Camice da laboratorio
+👔	cravatta
+👕	maglietta
+👖	jeans
+🧣	sciarpa
+🧤	guanti
+🧥	cappotto
+🧦	calzini
+👗	vestito
+👘	kimono
+👙	bikini
+👚	abiti da donna
+👛	borsa
+👜	borsetta
+👝	pochette
+🛍️	buste della spesa
+🛍	buste della spesa
+🎒	zaino scolastico
+👞	scarpa da uomo
+👟	scarpe da corsa
+🥾	scarpone da trekking
+🥿	scarpa bassa da donna
+👠	scarpa col tacco alto
+👡	sandalo da donna
+👢	stivale da donna
+👑	corona
+👒	cappello da donna
+🎩	cappello a cilindro
+🎓	cappello di laurea
+🧢	limite fatturato
+⛑️	casco del soccorritore
+⛑	casco del soccorritore
+📿	rosari
+💄	rossetto
+💍	squillo
+💎	pietra preziosa
+🐵	faccia di scimmia
+🐒	scimmia
+🦍	gorilla
+🐶	muso del cane
+🐕	cane
+🐩	barboncino
+🐺	faccia da lupo
+🦊	faccia di volpe
+🦝	procione
+🐱	faccia di gatto
+🐈	gatto
+🦁	faccia di leone
+🐯	faccia di tigre
+🐅	tigre
+🐆	leopardo
+🐴	faccia di cavallo
+🐎	cavallo
+🦄	faccia di unicorno
+🦓	zebra
+🦌	cervo
+🐮	faccia di mucca
+🐂	bue
+🐃	Bufalo d'acqua
+🐄	mucca
+🐷	faccia di maiale
+🐖	maiale
+🐗	cinghiale
+🐽	naso di maiale
+🐏	ariete
+🐑	pecora
+🐐	capra
+🐪	cammello
+🐫	cammello a due gobbe
+🦙	lama
+🦒	giraffa
+🐘	elefante
+🦏	rinoceronte
+🦛	ippopotamo
+🐭	faccia del topo
+🐁	topo
+🐀	ratto
+🐹	faccia da criceto
+🐰	faccia di coniglio
+🐇	coniglio
+🐿️	scoiattolo
+🐿	scoiattolo
+🦔	riccio
+🦇	pipistrello
+🐻	faccia da orso
+🐨	koala
+🐼	faccia da panda
+🦘	canguro
+🦡	tasso
+🐾	impronte di zampe
+🦃	tacchino
+🐔	pollo
+🐓	gallo
+🐣	pulcino da cova
+🐤	pulcino
+🐥	pulcino rivolto in avanti
+🐦	uccello
+🐧	pinguino
+🕊️	colomba
+🕊	colomba
+🦅	aquila
+🦆	anatra
+🦢	cigno
+🦉	gufo
+🦚	pavone
+🦜	pappagallo
+🐸	faccia di rana
+🐊	coccodrillo
+🐢	tartaruga
+🦎	lucertola
+🐍	serpente
+🐲	faccia di drago
+🐉	Drago
+🦕	sauropode
+🦖	T-Rex
+🐳	balena che zampilla
+🐋	balena
+🐬	delfino
+🐟	pescare
+🐠	pesce tropicale
+🐡	pesce palla
+🦈	squalo
+🐙	polpo
+🐚	guscio a spirale
+🦀	granchio
+🦞	aragosta
+🦐	gamberetto
+🦑	calamaro
+🐌	lumaca
+🦋	farfalla
+🐛	insetto
+🐜	formica
+🐝	Ape
+🐞	signora scarabeo
+🦗	cricket
+🕷️	ragno
+🕷	ragno
+🕸️	ragnatela
+🕸	ragnatela
+🦂	scorpione
+🦟	zanzara
+🦠	microbo
+💐	mazzo
+🌸	fiore di ciliegio
+💮	fiore bianco
+🏵️	rosetta
+🏵	rosetta
+🌹	rosa
+🥀	fiore appassito
+🌺	ibisco
+🌻	girasole
+🌼	fiore
+🌷	tulipano
+🌱	piantina
+🌲	albero sempreverde
+🌳	albero deciduo
+🌴	Palma
+🌵	cactus
+🌾	fascio di riso
+🌿	erba
+☘️	trifoglio
+☘	trifoglio
+🍀	Quadrifoglio
+🍁	foglia di acero
+🍂	foglia caduta
+🍃	foglia svolazzante nel vento
+🍇	uva
+🍈	melone
+🍉	anguria
+🍊	mandarino
+🍋	limone
+🍌	banana
+🍍	ananas
+🥭	Mango
+🍎	Mela rossa
+🍏	Mela verde
+🍐	Pera
+🍑	pesca
+🍒	ciliegie
+🍓	fragola
+🥝	kiwi
+🍅	pomodoro
+🥥	noce di cocco
+🥑	avocado
+🍆	melanzana
+🥔	Patata
+🥕	carota
+🌽	Spiga di grano
+🌶️	peperoncino
+🌶	peperoncino
+🥒	cetriolo
+🥬	verde foglia
+🥦	broccoli
+🍄	fungo
+🥜	arachidi
+🌰	Castagna
+🍞	pane
+🥐	brioche
+🥖	pane baguette
+🥨	pretzel
+🥯	bagel
+🥞	Pancakes
+🧀	spicchio di formaggio
+🍖	carne con osso
+🍗	coscia di pollame
+🥩	taglio di carne
+🥓	Bacon
+🍔	Hamburger
+🍟	patatine fritte
+🍕	Pizza
+🌭	hot dog
+🥪	sandwich
+🌮	tacos
+🌯	burrito
+🥙	focaccia ripiena
+🥚	uovo
+🍳	cucinando
+🥘	teglia poco profonda piena di cibo
+🍲	pentola di cibo
+🥣	ciotola con cucchiaio
+🥗	insalata verde
+🍿	Popcorn
+🧂	sale
+🥫	cibo in scatola
+🍱	scatola del bento
+🍘	cracker di riso
+🍙	palla di riso
+🍚	riso cotto
+🍛	riso al curry
+🍜	ciotola per la cottura a vapore
+🍝	spaghetti
+🍠	patata dolce arrostita
+🍢	oden
+🍣	Sushi
+🍤	gamberetto fritto
+🍥	torta di pesce con ricciolo
+🥮	torta di luna
+🍡	dango
+🥟	gnocco
+🥠	biscotto della fortuna
+🥡	scatola da asporto
+🍦	gelato morbido
+🍧	ghiaccio tritato
+🍨	gelato
+🍩	ciambella
+🍪	biscotto
+🎂	torta di compleanno
+🍰	crostata
+🧁	cupcake
+🥧	torta
+🍫	barretta di cioccolato
+🍬	caramella
+🍭	lecca-lecca
+🍮	crema pasticciera
+🍯	vaso di miele
+🍼	biberon
+🥛	bicchiere di latte
+☕	bevanda calda
+🍵	tazza da tè senza manico
+🍶	scopo
+🍾	bottiglia con tappo in sughero
+🍷	bicchiere di vino
+🍸	bicchiere da cocktail
+🍹	bevanda tropicale
+🍺	boccale di birra
+🍻	boccali di birra tintinnanti
+🥂	bicchieri tintinnanti
+🥃	bicchiere di vetro
+🥤	tazza con cannuccia
+🥢	bacchette
+🍽️	forchetta e coltello con piatto
+🍽	forchetta e coltello con piatto
+🍴	forchetta e coltello
+🥄	cucchiaio
+🔪	coltello da cucina
+🏺	anfora
+🌍	globo che mostra l'Europa-Africa
+🌎	globo che mostra le Americhe
+🌏	globo che mostra l'Asia-Australia
+🌐	globo con meridiani
+🗺️	mappa del mondo
+🗺	mappa del mondo
+🗾	mappa del Giappone
+🧭	bussola
+🏔️	montagna innevata
+🏔	montagna innevata
+⛰️	montagna
+⛰	montagna
+🌋	vulcano
+🗻	Monte Fuji
+🏕️	campeggio
+🏕	campeggio
+🏖️	spiaggia con ombrellone
+🏖	spiaggia con ombrellone
+🏜️	deserto
+🏜	deserto
+🏝️	isola deserta
+🏝	isola deserta
+🏞️	Parco Nazionale
+🏞	Parco Nazionale
+🏟️	stadio
+🏟	stadio
+🏛️	edificio classico
+🏛	edificio classico
+🏗️	costruzione di edifici
+🏗	costruzione di edifici
+🧱	mattoni
+🏘️	case
+🏘	case
+🏚️	casa abbandonata
+🏚	casa abbandonata
+🏠	casa
+🏡	casa con giardino
+🏢	edificio per uffici
+🏣	Ufficio postale giapponese
+🏤	ufficio postale
+🏥	Ospedale
+🏦	banca
+🏨	Hotel
+🏩	albergo dell'amore
+🏪	minimarket
+🏫	scuola
+🏬	grande magazzino
+🏭	fabbrica
+🏯	Castello giapponese
+🏰	castello
+💒	nozze
+🗼	Torre di Tokyo
+🗽	Statua della Libertà
+⛪	Chiesa
+🕌	moschea
+🕍	sinagoga
+⛩️	santuario shintoista
+⛩	santuario shintoista
+🕋	kaaba
+⛲	Fontana
+⛺	tenda
+🌁	nebbioso
+🌃	notte con le stelle
+🏙️	paesaggio urbano
+🏙	paesaggio urbano
+🌄	alba sulle montagne
+🌅	alba
+🌆	paesaggio urbano al crepuscolo
+🌇	tramonto
+🌉	ponte di notte
+♨️	sorgenti termali
+♨	sorgenti termali
+🌌	via Lattea
+🎠	cavallo da giostra
+🎡	ruota panoramica
+🎢	montagne russe
+💈	palo del barbiere
+🎪	tendone da circo
+🚂	locomotiva
+🚃	vagone ferroviario
+🚄	treno ad alta velocità
+🚅	treno ad alta velocità
+🚆	treno
+🚇	Metro
+🚈	binario leggero
+🚉	stazione
+🚊	tram
+🚝	monorotaia
+🚞	ferrovia di montagna
+🚋	vagone del tram
+🚌	autobus
+🚍	autobus in arrivo
+🚎	filobus
+🚐	minibus
+🚑	ambulanza
+🚒	autopompa antincendio
+🚓	auto della polizia
+🚔	macchina della polizia in arrivo
+🚕	Taxi
+🚖	taxi in arrivo
+🚗	automobile
+🚘	automobile in arrivo
+🚙	veicolo utilitario sportivo
+🚚	camion delle consegne
+🚛	autoarticolato
+🚜	trattore
+🚲	bicicletta
+🛴	monopattino
+🛹	skateboard
+🛵	motorino
+🚏	fermata dell'autobus
+🛣️	autostrada
+🛣	autostrada
+🛤️	linea ferroviaria
+🛤	linea ferroviaria
+🛢️	tamburo di petrolio
+🛢	tamburo di petrolio
+⛽	pompa di benzina
+🚨	luce dell'auto della polizia
+🚥	semaforo orizzontale
+🚦	semaforo verticale
+🛑	segnale di stop
+🚧	costruzione
+⚓	ancora
+⛵	barca a vela
+🛶	canoa
+🚤	motoscafo
+🛳️	Nave passeggeri
+🛳	Nave passeggeri
+⛴️	traghetto
+⛴	traghetto
+🛥️	barca a motore
+🛥	barca a motore
+🚢	nave
+✈️	aereo
+✈	aereo
+🛩️	piccolo aereo
+🛩	piccolo aereo
+🛫	partenza dell'aereo
+🛬	arrivo dell'aereo
+💺	posto a sedere
+🚁	elicottero
+🚟	ferrovia sospesa
+🚠	funivia di montagna
+🚡	funivia aerea
+🛰️	satellitare
+🛰	satellitare
+🚀	razzo
+🛸	disco volante
+🛎️	campanello del fattorino
+🛎	campanello del fattorino
+🧳	bagaglio
+⌛	clessidra fatta
+⏳	clessidra non eseguita
+⌚	orologio
+⏰	sveglia
+⏱️	cronometro
+⏱	cronometro
+⏲️	orologio temporizzatore
+⏲	orologio temporizzatore
+🕰️	orologio da caminetto
+🕰	orologio da caminetto
+🕛	Mezzogiorno
+🕧	dodici e trenta
+🕐	l'una in punto
+🕜	l'una e mezza
+🕑	le due
+🕝	due e mezza
+🕒	le tre in punto
+🕞	tre e trenta
+🕓	le quattro
+🕟	quattro e mezza
+🕔	sono le cinque
+🕠	cinque e trenta
+🕕	sei in punto
+🕡	sei e mezza
+🕖	sette in punto
+🕢	sette e mezza
+🕗	otto in punto
+🕣	otto e mezza
+🕘	nove in punto
+🕤	nove e mezza
+🕙	dieci
+🕥	dieci e trenta
+🕚	le undici
+🕦	undici e mezza
+🌑	nuova luna
+🌒	luna crescente crescente
+🌓	luna del primo quarto
+🌔	luna gibbosa crescente
+🌕	Luna piena
+🌖	luna gibbosa calante
+🌗	ultimo quarto di luna
+🌘	falce di luna calante
+🌙	Luna crescente
+🌚	faccia di luna nuova
+🌛	faccia di luna del primo quarto
+🌜	faccia dell'ultimo quarto di luna
+🌡️	termometro
+🌡	termometro
+☀️	sole
+☀	sole
+🌝	faccia di luna piena
+🌞	sole con la faccia
+⭐	stella
+🌟	stella luminosa
+🌠	stella cadente
+☁️	nuvola
+☁	nuvola
+⛅	sole dietro la nuvola
+⛈️	nuvola con fulmini e pioggia
+⛈	nuvola con fulmini e pioggia
+🌤️	sole dietro una piccola nuvola
+🌤	sole dietro una piccola nuvola
+🌥️	sole dietro una grande nuvola
+🌥	sole dietro una grande nuvola
+🌦️	sole dietro la nuvola di pioggia
+🌦	sole dietro la nuvola di pioggia
+🌧️	nuvola con pioggia
+🌧	nuvola con pioggia
+🌨️	nuvola con neve
+🌨	nuvola con neve
+🌩️	nuvola con fulmini
+🌩	nuvola con fulmini
+🌪️	tornado
+🌪	tornado
+🌫️	nebbia
+🌫	nebbia
+🌬️	faccia del vento
+🌬	faccia del vento
+🌀	ciclone
+🌈	arcobaleno
+🌂	ombrello chiuso
+☂️	ombrello
+☂	ombrello
+☔	ombrello con gocce di pioggia
+⛱️	ombrellone a terra
+⛱	ombrellone a terra
+⚡	alta tensione
+❄️	fiocco di neve
+❄	fiocco di neve
+☃️	pupazzo di neve
+☃	pupazzo di neve
+⛄	pupazzo di neve senza neve
+☄️	cometa
+☄	cometa
+🔥	fuoco
+💧	gocciolina
+🌊	onda d'acqua
+🎃	jack-o-lantern
+🎄	albero di Natale
+🎆	fuochi d'artificio
+🎇	scintillante
+🧨	petardo
+✨	brilla
+🎈	Palloncino
+🎉	guastafeste
+🎊	palla di coriandoli
+🎋	albero di tanabata
+🎍	decorazione in pino
+🎎	Bambole giapponesi
+🎏	streamer per carpe
+🎐	carillon del vento
+🎑	cerimonia di osservazione della luna
+🧧	busta rossa
+🎀	nastro
+🎁	regalo incartato
+🎗️	nastro di promemoria
+🎗	nastro di promemoria
+🎟️	biglietti d'ingresso
+🎟	biglietti d'ingresso
+🎫	biglietto
+🎖️	medaglia militare
+🎖	medaglia militare
+🏆	trofeo
+🏅	medaglia sportiva
+🥇	Medaglia del 1° posto
+🥈	Medaglia del 2° posto
+🥉	Medaglia del 3° posto
+⚽	palla da calcio
+⚾	baseball
+🥎	softball
+🏀	pallacanestro
+🏐	pallavolo
+🏈	Football americano
+🏉	calcio-rugby
+🎾	tennis
+🥏	disco volante
+🎳	bowling
+🏏	gioco di cricket
+🏑	hockey su prato
+🏒	hockey su ghiaccio
+🥍	lacrosse
+🏓	ping-pong
+🏸	badminton
+🥊	guantoni da boxe
+🥋	uniforme di arti marziali
+🥅	rete della porta
+⛳	bandiera nel buco
+⛸️	pattinaggio sul ghiaccio
+⛸	pattinaggio sul ghiaccio
+🎣	canna da pesca
+🎽	maglietta da corsa
+🎿	sci
+🛷	slitta
+🥌	pietra arricciacapelli
+🎯	colpo diretto
+🎱	piscina 8 palline
+🔮	palla di cristallo
+🧿	amuleto di Nazar
+🎮	video gioco
+🕹️	telecomando da gioco
+🕹	telecomando da gioco
+🎰	slot machine
+🎲	il gioco muore
+🧩	puzzle
+🧸	orsacchiotto di peluche
+♠️	vestito di vanga
+♠	vestito di vanga
+♥️	vestito del cuore
+♥	vestito del cuore
+♦️	abito di diamanti
+♦	abito di diamanti
+♣️	tuta da club
+♣	tuta da club
+♟️	pedina degli scacchi
+♟	pedina degli scacchi
+🃏	burlone
+🀄	mahjong drago rosso
+🎴	carte da gioco floreali
+🎭	arti dello spettacolo
+🖼️	foto incorniciata
+🖼	foto incorniciata
+🎨	tavolozza dell'artista
+🧵	filo
+🧶	filato
+🔇	altoparlante disattivato
+🔈	volume basso dell'altoparlante
+🔉	volume medio dell'altoparlante
+🔊	volume alto dell'altoparlante
+📢	altoparlante
+📣	megafono
+📯	corno postale
+🔔	campana
+🔕	campana con barra
+🎼	punteggio musicale
+🎵	nota musicale
+🎶	note musicali
+🎙️	microfono da studio
+🎙	microfono da studio
+🎚️	cursore di livello
+🎚	cursore di livello
+🎛️	manopole di controllo
+🎛	manopole di controllo
+🎤	microfono
+🎧	cuffia
+📻	Radio
+🎷	sassofono
+🎸	chitarra
+🎹	tastiera musicale
+🎺	tromba
+🎻	violino
+🥁	tamburo
+📱	cellulare
+📲	cellulare con freccia
+☎️	telefono
+☎	telefono
+📞	ricevitore telefonico
+📟	cercapersone
+📠	fax
+🔋	batteria
+🔌	presa di corrente
+💻	computer portatile
+🖥️	computer desktop
+🖥	computer desktop
+🖨️	stampante
+🖨	stampante
+⌨️	tastiera
+⌨	tastiera
+🖱️	mouse del computer
+🖱	mouse del computer
+🖲️	trackball
+🖲	trackball
+💽	disco del computer
+💾	floppy disk
+💿	disco ottico
+📀	DVD
+🧮	abaco
+🎥	cinepresa
+🎞️	fotogrammi di pellicola
+🎞	fotogrammi di pellicola
+📽️	proiettore cinematografico
+📽	proiettore cinematografico
+🎬	ciak
+📺	televisione
+📷	telecamera
+📸	fotocamera con flash
+📹	videocamera
+📼	video cassette
+🔍	lente d'ingrandimento inclinata a sinistra
+🔎	lente d'ingrandimento inclinata a destra
+🕯️	candela
+🕯	candela
+💡	lampadina
+🔦	torcia elettrica
+🏮	lanterna di carta rossa
+📔	quaderno con copertina decorativa
+📕	libro chiuso
+📖	libro aperto
+📗	libro verde
+📘	libro blu
+📙	libro arancione
+📚	libri
+📓	taccuino
+📒	registro
+📃	pagina con arricciatura
+📜	scorrere
+📄	pagina rivolta verso l'alto
+📰	giornale
+🗞️	giornale arrotolato
+🗞	giornale arrotolato
+📑	schede dei segnalibri
+🔖	segnalibro
+🏷️	etichetta
+🏷	etichetta
+💰	portafoglio
+💴	banconota da yen
+💵	banconota da un dollaro
+💶	banconota in euro
+💷	banconota da una sterlina
+💸	soldi con le ali
+💳	carta di credito
+🧾	ricevuta
+💹	grafico in aumento con lo yen
+💱	cambio di valuta
+💲	pesante simbolo del dollaro
+✉️	busta
+✉	busta
+📧	e-mail
+📨	busta in arrivo
+📩	busta con freccia
+📤	vassoio della posta in uscita
+📥	vassoio della posta in arrivo
+📦	pacchetto
+📫	cassetta postale chiusa con bandiera sollevata
+📪	cassetta postale chiusa con bandiera abbassata
+📬	cassetta postale aperta con bandiera sollevata
+📭	cassetta postale aperta con bandiera abbassata
+📮	casella postale
+🗳️	urna elettorale con scheda elettorale
+🗳	urna elettorale con scheda elettorale
+✏️	matita
+✏	matita
+✒️	pennino nero
+✒	pennino nero
+🖋️	penna stilografica
+🖋	penna stilografica
+🖊️	penna
+🖊	penna
+🖌️	pennello
+🖌	pennello
+🖍️	pastello
+🖍	pastello
+📝	promemoria
+💼	valigetta
+📁	cartella di file
+📂	aprire la cartella dei file
+🗂️	divisori per schede
+🗂	divisori per schede
+📅	calendario
+📆	calendario a strappo
+🗒️	blocco note a spirale
+🗒	blocco note a spirale
+🗓️	calendario a spirale
+🗓	calendario a spirale
+📇	indice delle carte
+📈	grafico in aumento
+📉	grafico decrescente
+📊	grafico a barre
+📋	appunti
+📌	puntina da disegno
+📍	puntina da disegno rotonda
+📎	graffetta per fogli
+🖇️	graffette collegate
+🖇	graffette collegate
+📏	righello dritto
+📐	righello triangolare
+✂️	forbici
+✂	forbici
+🗃️	casella di scheda
+🗃	casella di scheda
+🗄️	schedario
+🗄	schedario
+🗑️	cestino
+🗑	cestino
+🔒	bloccato
+🔓	sbloccato
+🔏	chiuso a penna
+🔐	chiuso con chiave
+🔑	chiave
+🗝️	vecchia chiave
+🗝	vecchia chiave
+🔨	martello
+⛏️	scegliere
+⛏	scegliere
+⚒️	martello e piccone
+⚒	martello e piccone
+🛠️	martello e chiave inglese
+🛠	martello e chiave inglese
+🗡️	pugnale
+🗡	pugnale
+⚔️	spade incrociate
+⚔	spade incrociate
+🔫	pistola
+🏹	arco e freccia
+🛡️	scudo
+🛡	scudo
+🔧	chiave inglese
+🔩	dado e bullone
+⚙️	ingranaggio
+⚙	ingranaggio
+🗜️	MORSETTO
+🗜	MORSETTO
+⚖️	scala di equilibrio
+⚖	scala di equilibrio
+🔗	collegamento
+⛓️	Catene
+⛓	Catene
+🧰	cassetta degli attrezzi
+🧲	magnete
+⚗️	alambicco
+⚗	alambicco
+🧪	provetta
+🧫	piastra di Petri
+🧬	dna
+🔬	microscopio
+🔭	telescopio
+📡	antenna satellitare
+💉	siringa
+💊	pillola
+🚪	porta
+🛏️	letto
+🛏	letto
+🛋️	divano e lampada
+🛋	divano e lampada
+🚽	toilette
+🚿	doccia
+🛁	vasca da bagno
+🧴	bottiglia di lozione
+🧷	PIN di sicurezza
+🧹	scopa
+🧺	cestino
+🧻	rotolo di carta
+🧼	sapone
+🧽	spugna
+🧯	Estintore
+🛒	carrello della spesa
+🚬	sigaretta
+⚰️	bara
+⚰	bara
+⚱️	urna funeraria
+⚱	urna funeraria
+🗿	moai
+🏧	Segno di bancomat
+🚮	lettiera nel segno del cestino
+🚰	acqua potabile
+♿	simbolo della sedia a rotelle
+🚹	stanza degli uomini
+🚺	stanza delle donne
+🚻	bagno
+🚼	simbolo del bambino
+🚾	gabinetto
+🛂	controllo del passaporto
+🛃	dogana
+🛄	ritiro bagagli
+🛅	Bagaglio lasciato
+⚠️	avvertimento
+⚠	avvertimento
+🚸	bambini che attraversano
+⛔	Vietato l'accesso
+🚫	proibito
+🚳	No biciclette
+🚭	Vietato fumare
+🚯	niente rifiuti
+🚱	acqua non potabile
+🚷	No pedoni
+📵	niente telefoni cellulari
+🔞	nessuno sotto i diciotto anni
+☢️	radioattivo
+☢	radioattivo
+☣️	rischio biologico
+☣	rischio biologico
+⬆️	freccia su
+⬆	freccia su
+↗️	freccia in alto a destra
+↗	freccia in alto a destra
+➡️	freccia destra
+➡	freccia destra
+↘️	freccia in basso a destra
+↘	freccia in basso a destra
+⬇️	Freccia in giù
+⬇	Freccia in giù
+↙️	freccia in basso a sinistra
+↙	freccia in basso a sinistra
+⬅️	freccia sinistra
+⬅	freccia sinistra
+↖️	freccia in alto a sinistra
+↖	freccia in alto a sinistra
+↕️	freccia su-giù
+↕	freccia su-giù
+↔️	freccia sinistra-destra
+↔	freccia sinistra-destra
+↩️	freccia destra che curva a sinistra
+↩	freccia destra che curva a sinistra
+↪️	freccia sinistra che curva a destra
+↪	freccia sinistra che curva a destra
+⤴️	freccia destra che curva verso l'alto
+⤴	freccia destra che curva verso l'alto
+⤵️	freccia destra che curva verso il basso
+⤵	freccia destra che curva verso il basso
+🔃	frecce verticali in senso orario
+🔄	pulsante frecce in senso antiorario
+🔙	Freccia INDIETRO
+🔚	freccia FINE
+🔛	Freccia ON
+🔜	PRESTO freccia
+🔝	Freccia IN ALTO
+🛐	luogo di culto
+⚛️	simbolo dell'atomo
+⚛	simbolo dell'atomo
+🕉️	ohm
+🕉	ohm
+✡️	stella di Davide
+✡	stella di Davide
+☸️	ruota del dharma
+☸	ruota del dharma
+☯️	Yin Yang
+☯	Yin Yang
+✝️	croce latina
+✝	croce latina
+☦️	croce ortodossa
+☦	croce ortodossa
+☪️	stella e mezzaluna
+☪	stella e mezzaluna
+☮️	simbolo della pace
+☮	simbolo della pace
+🕎	menorah
+🔯	stella a sei punte punteggiata
+♈	Ariete
+♉	Toro
+♊	Gemelli
+♋	Cancro
+♌	Leo
+♍	Vergine
+♎	Libra
+♏	Scorpione
+♐	Sagittario
+♑	Capricorno
+♒	Acquario
+♓	Pesci
+⛎	Ofiuco
+🔀	pulsante di riproduzione casuale delle tracce
+🔁	pulsante di ripetizione
+🔂	ripetere il singolo pulsante
+▶️	pulsante di riproduzione
+▶	pulsante di riproduzione
+⏩	pulsante di avanzamento veloce
+⏭️	pulsante della traccia successiva
+⏭	pulsante della traccia successiva
+⏯️	pulsante di riproduzione o pausa
+⏯	pulsante di riproduzione o pausa
+◀️	pulsante di inversione
+◀	pulsante di inversione
+⏪	pulsante di retromarcia veloce
+⏮️	pulsante dell'ultima traccia
+⏮	pulsante dell'ultima traccia
+🔼	pulsante verso l'alto
+⏫	pulsante di avvio rapido
+🔽	pulsante verso il basso
+⏬	pulsante di discesa veloce
+⏸️	pulsante di pausa
+⏸	pulsante di pausa
+⏹️	pulsante di arresto
+⏹	pulsante di arresto
+⏺️	pulsante di registrazione
+⏺	pulsante di registrazione
+⏏️	pulsante di espulsione
+⏏	pulsante di espulsione
+🎦	cinema
+🔅	pulsante di attenuazione
+🔆	pulsante luminoso
+📶	barre dell'antenna
+📳	modalità di vibrazione
+📴	cellulare spento
+♀️	segno femminile
+♀	segno femminile
+♂️	segno maschile
+♂	segno maschile
+⚕️	simbolo medico
+⚕	simbolo medico
+♾️	infinito
+♾	infinito
+♻️	simbolo del riciclaggio
+♻	simbolo del riciclaggio
+⚜️	giglio
+⚜	giglio
+🔱	emblema del tridente
+📛	tessera con nominativo
+🔰	Simbolo giapponese per principianti
+⭕	cerchio grande e pesante
+✅	segno di spunta bianco pesante
+☑️	urna elettorale con assegno
+☑	urna elettorale con assegno
+✔️	segno di spunta pesante
+✔	segno di spunta pesante
+✖️	moltiplicazione pesante x
+✖	moltiplicazione pesante x
+❌	segno di croce
+❎	pulsante con segno di croce
+➕	segno più pesante
+➖	segno meno pesante
+➗	segno di divisione pesante
+➰	ciclo riccio
+➿	doppio anello riccio
+〽️	segno di alternanza delle parti
+〽	segno di alternanza delle parti
+✳️	asterisco a otto raggi
+✳	asterisco a otto raggi
+✴️	stella a otto punte
+✴	stella a otto punte
+❇️	scintillare
+❇	scintillare
+‼️	doppio punto esclamativo
+‼	doppio punto esclamativo
+⁉️	punto interrogativo esclamativo
+⁉	punto interrogativo esclamativo
+❓	punto interrogativo
+❔	punto interrogativo bianco
+❕	punto esclamativo bianco
+❗	punto esclamativo
+〰️	trattino ondulato
+〰	trattino ondulato
+©️	diritto d'autore
+©	diritto d'autore
+®️	registrato
+®	registrato
+™️	marchio commerciale
+™	marchio commerciale
+#️⃣	tasto: #
+#⃣	tasto: #
+*️⃣	copritasto: *
+*⃣	copritasto: *
+0️⃣	tasto: 0
+0⃣	tasto: 0
+1️⃣	copritasto: 1
+1⃣	copritasto: 1
+2️⃣	copritasto: 2
+2⃣	copritasto: 2
+3️⃣	copritasto: 3
+3⃣	copritasto: 3
+4️⃣	copritasto: 4
+4⃣	copritasto: 4
+5️⃣	copritasto: 5
+5⃣	copritasto: 5
+6️⃣	copritasto: 6
+6⃣	copritasto: 6
+7️⃣	copritasto: 7
+7⃣	copritasto: 7
+8️⃣	copritasto: 8
+8⃣	copritasto: 8
+9️⃣	copritasto: 9
+9⃣	copritasto: 9
+🔟	copritasto: 10
+💯	cento punti
+🔠	inserire il latino in maiuscolo
+🔡	input latino minuscolo
+🔢	inserire i numeri
+🔣	simboli di input
+🔤	inserire lettere latine
+🅰️	Un pulsante (gruppo sanguigno)
+🅰	Un pulsante (gruppo sanguigno)
+🆎	Pulsante AB (gruppo sanguigno)
+🅱️	Tasto B (gruppo sanguigno)
+🅱	Tasto B (gruppo sanguigno)
+🆑	pulsante CL
+🆒	Tasto FREDDO
+🆓	Pulsante GRATUITO
+ℹ️	informazione
+ℹ	informazione
+🆔	pulsante ID
+Ⓜ️	cerchiato M
+Ⓜ	cerchiato M
+🆕	NUOVO pulsante
+🆖	Pulsante NG
+🅾️	Tasto O (gruppo sanguigno)
+🅾	Tasto O (gruppo sanguigno)
+🆗	pulsante OK
+🅿️	pulsante P
+🅿	pulsante P
+🆘	Tasto SOS
+🆙	pulsante SU
+🆚	Pulsante VS
+🈁	Pulsante "qui" giapponese
+🈂️	Pulsante giapponese "costo del servizio".
+🈂	Pulsante giapponese "costo del servizio".
+🈷️	Pulsante giapponese "importo mensile".
+🈷	Pulsante giapponese "importo mensile".
+🈶	Pulsante giapponese "non gratuito".
+🈯	Pulsante "riservato" giapponese
+🉐	Pulsante "affare" giapponese
+🈹	Pulsante "sconto" giapponese
+🈚	Pulsante giapponese "gratuito".
+🈲	Pulsante giapponese "proibito".
+🉑	Pulsante "accettabile" giapponese
+🈸	Pulsante "applicazione" giapponese
+🈴	Pulsante giapponese "promosso".
+🈳	Pulsante giapponese "posto vacante".
+㊗️	Pulsante giapponese "congratulazioni".
+㊗	Pulsante giapponese "congratulazioni".
+㊙️	Pulsante “segreto” giapponese
+㊙	Pulsante “segreto” giapponese
+🈺	Pulsante giapponese “open for business”.
+🈵	Pulsante giapponese "nessun posto vacante".
+▪️	quadratino nero
+▪	quadratino nero
+▫️	quadratino bianco
+▫	quadratino bianco
+◻️	quadrato medio bianco
+◻	quadrato medio bianco
+◼️	quadrato medio nero
+◼	quadrato medio nero
+◽	quadrato medio-piccolo bianco
+◾	quadrato medio-piccolo nero
+⬛	grande quadrato nero
+⬜	grande quadrato bianco
+🔶	grande diamante arancione
+🔷	grande diamante blu
+🔸	piccolo diamante arancione
+🔹	piccolo diamante blu
+🔺	triangolo rosso rivolto verso l'alto
+🔻	triangolo rosso rivolto verso il basso
+💠	diamante con un punto
+🔘	pulsante di opzione
+🔲	pulsante quadrato nero
+🔳	pulsante quadrato bianco
+⚪	cerchio bianco
+⚫	cerchio nero
+🔴	cerchio rosso
+🔵	cerchio blu
+🏁	bandiera a scacchi
+🚩	bandiera triangolare
+🎌	bandiere incrociate
+🏴	Bandiera nera
+🏳️	bandiera bianca
+🏳	bandiera bianca
+🏳️‍🌈	bandiera arcobaleno
+🏳‍🌈	bandiera arcobaleno
+🏴‍☠️	bandiera pirata
+🏴‍☠	bandiera pirata
+🇦🇨	Isola dell'Ascensione
+🇦🇩	Andorra
+🇦🇪	Emirati Arabi Uniti
+🇦🇫	Afghanistan
+🇦🇬	Antigua e Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albania
+🇦🇲	Armenia
+🇦🇴	L'Angola
+🇦🇶	Antartide
+🇦🇷	Argentina
+🇦🇸	Samoa americane
+🇦🇹	Austria
+🇦🇺	Australia
+🇦🇼	Aruba
+🇦🇽	Isole Aland
+🇦🇿	Azerbaigian
+🇧🇦	Bosnia ed Erzegovina
+🇧🇧	Barbados
+🇧🇩	Bangladesh
+🇧🇪	Belgio
+🇧🇫	Burkina Faso
+🇧🇬	Bulgaria
+🇧🇭	Bahrein
+🇧🇮	Burundi
+🇧🇯	Benin
+🇧🇱	San Bartolomeo
+🇧🇲	Bermude
+🇧🇳	Brunei
+🇧🇴	Bolivia
+🇧🇶	Paesi Bassi caraibici
+🇧🇷	Brasile
+🇧🇸	Bahamas
+🇧🇹	Bhutan
+🇧🇻	Isola Bouvet
+🇧🇼	Botswana
+🇧🇾	Bielorussia
+🇧🇿	Belize
+🇨🇦	Canada
+🇨🇨	Isole Cocos (Keeling).
+🇨🇩	Congo-Kinshasa
+🇨🇫	Repubblica Centrafricana
+🇨🇬	Congo-Brazzaville
+🇨🇭	Svizzera
+🇨🇮	Costa d'Avorio
+🇨🇰	Isole Cook
+🇨🇱	Chile
+🇨🇲	Camerun
+🇨🇳	Cina
+🇨🇴	Colombia
+🇨🇵	Isola di Clipperton
+🇨🇷	Costa Rica
+🇨🇺	Cuba
+🇨🇻	capo Verde
+🇨🇼	Curacao
+🇨🇽	Isola di Natale
+🇨🇾	Cipro
+🇨🇿	Cechia
+🇩🇪	Germania
+🇩🇬	Diego Garcia
+🇩🇯	Gibuti
+🇩🇰	Danimarca
+🇩🇲	Dominica
+🇩🇴	Repubblica Dominicana
+🇩🇿	Algeria
+🇪🇦	Ceuta e Melilla
+🇪🇨	Ecuador
+🇪🇪	Estonia
+🇪🇬	Egitto
+🇪🇭	Sahara occidentale
+🇪🇷	Eritrea
+🇪🇸	Spagna
+🇪🇹	Etiopia
+🇪🇺	Unione Europea
+🇫🇮	Finlandia
+🇫🇯	Figi
+🇫🇰	Isole Falkland
+🇫🇲	Micronesia
+🇫🇴	Isole Faroe
+🇫🇷	Francia
+🇬🇦	Gabon
+🇬🇧	Regno Unito
+🇬🇩	Grenada
+🇬🇪	Georgia
+🇬🇫	Guiana francese
+🇬🇬	Guernsey
+🇬🇭	Ghana
+🇬🇮	Gibilterra
+🇬🇱	Groenlandia
+🇬🇲	Gambia
+🇬🇳	Guinea
+🇬🇵	Guadalupa
+🇬🇶	Guinea Equatoriale
+🇬🇷	Grecia
+🇬🇸	Georgia del Sud e Isole Sandwich Meridionali
+🇬🇹	Guatemala
+🇬🇺	Guam
+🇬🇼	Guinea-Bissau
+🇬🇾	Guyana
+🇭🇰	Regione amministrativa speciale di Hong Kong, Cina
+🇭🇲	Isole Heard e McDonald
+🇭🇳	Honduras
+🇭🇷	Croazia
+🇭🇹	Haiti
+🇭🇺	Ungheria
+🇮🇨	isole Canarie
+🇮🇩	Indonesia
+🇮🇪	Irlanda
+🇮🇱	Israele
+🇮🇲	Isola di Man
+🇮🇳	India
+🇮🇴	Territorio britannico dell'Oceano Indiano
+🇮🇶	Iraq
+🇮🇷	Iran
+🇮🇸	Islanda
+🇮🇹	Italia
+🇯🇪	Maglia
+🇯🇲	Giamaica
+🇯🇴	Giordania
+🇯🇵	Giappone
+🇰🇪	Kenia
+🇰🇬	Kirghizistan
+🇰🇭	Cambogia
+🇰🇮	Kiribati
+🇰🇲	Comore
+🇰🇳	Saint Kitts e Nevis
+🇰🇵	Corea del nord
+🇰🇷	Corea del Sud
+🇰🇼	Kuwait
+🇰🇾	Isole Cayman
+🇰🇿	Kazakistan
+🇱🇦	Laos
+🇱🇧	Libano
+🇱🇨	Santa Lucia
+🇱🇮	Liechtenstein
+🇱🇰	Sri Lanka
+🇱🇷	Liberia
+🇱🇸	Lesoto
+🇱🇹	Lituania
+🇱🇺	Lussemburgo
+🇱🇻	Lettonia
+🇱🇾	Libia
+🇲🇦	Marocco
+🇲🇨	Monaco
+🇲🇩	Moldavia
+🇲🇪	Montenegro
+🇲🇫	San Martino
+🇲🇬	Madagascar
+🇲🇭	Isole Marshall
+🇲🇰	Macedonia
+🇲🇱	Mali
+🇲🇲	Myanmar (Birmania)
+🇲🇳	Mongolia
+🇲🇴	RAS di Macao, Cina
+🇲🇵	Isole Marianne settentrionali
+🇲🇶	Martinica
+🇲🇷	La Mauritania
+🇲🇸	Montserrat
+🇲🇹	Malta
+🇲🇺	Maurizio
+🇲🇻	Maldive
+🇲🇼	Malawi
+🇲🇽	Messico
+🇲🇾	Malaysia
+🇲🇿	Mozambico
+🇳🇦	Namibia
+🇳🇨	Nuova Caledonia
+🇳🇪	Niger
+🇳🇫	Isola Norfolk
+🇳🇬	Nigeria
+🇳🇮	Nicaragua
+🇳🇱	Olanda
+🇳🇴	Norvegia
+🇳🇵	Nepal
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Nuova Zelanda
+🇴🇲	Oman
+🇵🇦	Panama
+🇵🇪	Perù
+🇵🇫	Polinesia francese
+🇵🇬	Papua Nuova Guinea
+🇵🇭	Filippine
+🇵🇰	Pakistan
+🇵🇱	Polonia
+🇵🇲	Saint Pierre e Miquelon
+🇵🇳	Isole Pitcairn
+🇵🇷	Porto Rico
+🇵🇸	territori palestinesi
+🇵🇹	Portogallo
+🇵🇼	Palau
+🇵🇾	Paraguay
+🇶🇦	Qatar
+🇷🇪	Riunione
+🇷🇴	Romania
+🇷🇸	Serbia
+🇷🇺	Russia
+🇷🇼	Ruanda
+🇸🇦	Arabia Saudita
+🇸🇧	Isole Salomone
+🇸🇨	Seychelles
+🇸🇩	Sudan
+🇸🇪	Svezia
+🇸🇬	Singapore
+🇸🇭	Sant'Elena
+🇸🇮	Slovenia
+🇸🇯	Svalbard e Jan Mayen
+🇸🇰	Slovacchia
+🇸🇱	Sierra Leone
+🇸🇲	San Marino
+🇸🇳	Senegal
+🇸🇴	Somalia
+🇸🇷	Suriname
+🇸🇸	Sudan del Sud
+🇸🇹	San Tommaso e Principe
+🇸🇻	El Salvador
+🇸🇽	Sint Maarten
+🇸🇾	Siria
+🇸🇿	Swaziland
+🇹🇦	Tristan da Cunha
+🇹🇨	Isole Turks e Caicos
+🇹🇩	Chad
+🇹🇫	Territori della Francia del sud
+🇹🇬	Andare
+🇹🇭	Tailandia
+🇹🇯	Tagikistan
+🇹🇰	Tokelau
+🇹🇱	Timor Est
+🇹🇲	Turkmenistan
+🇹🇳	Tunisia
+🇹🇴	Tonga
+🇹🇷	Tacchino
+🇹🇹	Trinidad & Tobago
+🇹🇻	Tuvalu
+🇹🇼	Taiwan
+🇹🇿	Tanzania
+🇺🇦	Ucraina
+🇺🇬	Uganda
+🇺🇲	Isole periferiche degli Stati Uniti
+🇺🇳	Nazioni Unite
+🇺🇸	stati Uniti
+🇺🇾	Uruguay
+🇺🇿	Uzbekistan
+🇻🇦	Città del Vaticano
+🇻🇨	St. Vincent e Grenadine
+🇻🇪	Venezuela
+🇻🇬	Isole Vergini Britanniche
+🇻🇮	Isole Vergini americane
+🇻🇳	Vietnam
+🇻🇺	Vanuatu
+🇼🇫	Wallis e Futuna
+🇼🇸	Samoa
+🇽🇰	Kosovo
+🇾🇪	Yemen
+🇾🇹	Mayotte
+🇿🇦	Sud Africa
+🇿🇲	Zambia
+🇿🇼	Zimbabwe
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Inghilterra
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Scozia
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Galles

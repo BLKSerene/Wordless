@@ -1,0 +1,3570 @@
+😀	smaidoša seja
+😁	starojoša seja ar smaidošām acīm
+😂	seju ar prieka asarām
+🤣	smiedamies ripinājos uz grīdas
+😃	smaidoša seja ar lielām acīm
+😄	smaidoša seja ar smaidošām acīm
+😅	smaidoša seja ar sviedriem
+😆	smīnoša šķielēta seja
+😉	mirgojoša seja
+😊	smaidoša seja ar smaidošām acīm
+😋	seja baudot ēdienu
+😎	smaidoša seja ar saulesbrillēm
+😍	smaidoša seja ar sirds acīm
+😘	seja pūš skūpstu
+🥰	smaidoša seja ar 3 sirsniņām
+😗	skūpstu seju
+😙	skūpstu seju ar smaidošām acīm
+😚	skūpstīt seju ar aizvērtām acīm
+☺️	smaidoša seja
+☺	smaidoša seja
+🙂	nedaudz smaidoša seja
+🤗	apskaujot seju
+🤩	zvaigžņots
+🤔	domājoša seja
+🤨	seja ar paceltu uzacu
+😐	neitrāla seja
+😑	neizteiksmīga seja
+😶	seja bez mutes
+🙄	seja ar ripošām acīm
+😏	smīnoša seja
+😣	neatlaidīga seja
+😥	skumja, bet atvieglota seja
+😮	seja ar atvērtu muti
+🤐	rāvējslēdzējs-mute seja
+😯	apklususi seja
+😪	miegaina seja
+😫	nogurusi seja
+😴	guļoša seja
+😌	atvieglota seja
+😛	seja ar mēli
+😜	mirgojoša seja ar mēli
+😝	šķielējusi seja ar mēli
+🤤	sūcošu seju
+😒	bēdīga seja
+😓	nomākta seja ar sviedriem
+😔	domīga seja
+😕	apjukusi seja
+🙃	apgrieztu seju
+🤑	nauda-mute seja
+😲	pārsteigta seja
+☹️	sarauktu seju
+☹	sarauktu seju
+🙁	nedaudz saraukta seja
+😖	apmulsusi seja
+😞	vīlusies seja
+😟	satraukta seja
+😤	seju ar tvaiku no deguna
+😢	raudoša seja
+😭	skaļi raudoša seja
+😦	saraukta seja ar atvērtu muti
+😧	nomocīta seja
+😨	bailīga seja
+😩	nogurusi seja
+🤯	sprāgstoša galva
+😬	grimasējošo seju
+😰	satraukta seja ar sviedriem
+😱	bailēs kliedzoša seja
+🥵	karsta seja
+🥶	auksta seja
+😳	piesārtusi seja
+🤪	traka seja
+😵	reiboņa seja
+😡	pukstoša seja
+😠	dusmīga seja
+🤬	seja ar simboliem uz mutes
+😷	seja ar medicīnisko masku
+🤒	seja ar termometru
+🤕	seja ar galvas saiti
+🤢	slikta dūša seja
+🤮	sejas vemšana
+🤧	šķaudoša seja
+😇	smaidoša seja ar oreolu
+🤠	kovboju cepures seja
+🥳	ballīšu seja
+🥴	dusmīga seja
+🥺	lūdzoša seja
+🤥	melo seju
+🤫	klusu seju
+🤭	seja ar roku uz muti
+🧐	seja ar monokli
+🤓	nerda seja
+😈	smaidoša seja ar ragiem
+👿	dusmīga seja ar ragiem
+🤡	klauna seja
+👹	ogre
+👺	goblins
+💀	galvaskauss
+☠️	galvaskauss un sakrustotie kauli
+☠	galvaskauss un sakrustotie kauli
+👻	spoks
+👽	citplanētietis
+👾	citplanētiešu briesmonis
+🤖	robota seja
+💩	kaudze kakā
+😺	smaidoša kaķa seja
+😸	smaidoša kaķa seja ar smaidošām acīm
+😹	kaķa seja ar prieka asarām
+😻	smaidoša kaķa seja ar sirds acīm
+😼	kaķa seja ar īgnu smaidu
+😽	skūpstīja kaķa seju
+🙀	nogurusi kaķa seja
+😿	raudoša kaķa seja
+😾	uzpūtīga kaķa seja
+🙈	tas nav ļauns mērkaķis
+🙉	nedzirdi ļaunu mērkaķi
+🙊	nerunā ļaunu mērkaķis
+🏻	gaišs ādas tonis
+🏼	vidēji gaišs ādas tonis
+🏽	vidējs ādas tonis
+🏾	vidēji tumšs ādas tonis
+🏿	tumšs ādas tonis
+👶	mazulis
+👶🏻	mazulis: gaišs ādas tonis
+👶🏼	mazulis: vidēji gaišs ādas tonis
+👶🏽	mazulis: vidējs ādas tonis
+👶🏾	mazulis: vidēji tumšs ādas tonis
+👶🏿	mazulis: tumšs ādas tonis
+🧒	bērns
+🧒🏻	bērns: gaišs ādas tonis
+🧒🏼	bērns: vidēji gaišs ādas tonis
+🧒🏽	bērns: vidējs ādas tonis
+🧒🏾	bērns: vidēji tumšs ādas tonis
+🧒🏿	bērns: tumšs ādas tonis
+👦	puika
+👦🏻	zēns: gaišs ādas tonis
+👦🏼	zēns: vidēji gaišs ādas tonis
+👦🏽	zēns: vidējs ādas tonis
+👦🏾	zēns: vidēji tumšs ādas tonis
+👦🏿	zēns: tumšs ādas tonis
+👧	meitene
+👧🏻	meitene: gaišs ādas tonis
+👧🏼	meitene: vidēji gaišs ādas tonis
+👧🏽	meitene: vidējs ādas tonis
+👧🏾	meitene: vidēji tumšs ādas tonis
+👧🏿	meitene: tumšs ādas tonis
+🧑	pieaugušais
+🧑🏻	pieaugušais: gaišs ādas tonis
+🧑🏼	pieaugušais: vidēji gaišs ādas tonis
+🧑🏽	pieaugušais: vidējs ādas tonis
+🧑🏾	pieaugušais: vidēji tumšs ādas tonis
+🧑🏿	pieaugušais: tumšs ādas tonis
+👨	vīrietis
+👨🏻	vīrietis: gaišs ādas tonis
+👨🏼	vīrietis: vidēji gaišs ādas tonis
+👨🏽	vīrietis: vidējs ādas tonis
+👨🏾	vīrietis: vidēji tumšs ādas tonis
+👨🏿	vīrietis: tumšs ādas tonis
+👩	sieviete
+👩🏻	sieviete: gaišs ādas tonis
+👩🏼	sieviete: vidēji gaišs ādas tonis
+👩🏽	sieviete: vidējs ādas tonis
+👩🏾	sieviete: vidēji tumšs ādas tonis
+👩🏿	sieviete: tumšs ādas tonis
+🧓	vecāks pieaugušais
+🧓🏻	gados vecāks: gaišs ādas tonis
+🧓🏼	gados vecāks: vidēji gaišs ādas tonis
+🧓🏽	vecāka gadagājuma pieaugušais: vidējs ādas tonis
+🧓🏾	gados vecāks: vidēji tumšs ādas tonis
+🧓🏿	gados vecāks: tumšs ādas tonis
+👴	vecs vīrs
+👴🏻	vecs vīrs: gaišs ādas tonis
+👴🏼	vecs vīrietis: vidēji gaišs ādas tonis
+👴🏽	vecs vīrietis: vidējs ādas tonis
+👴🏾	vecs vīrietis: vidēji tumšs ādas tonis
+👴🏿	vecs vīrs: tumšs ādas tonis
+👵	veca sieviete
+👵🏻	veca sieviete: gaišs ādas tonis
+👵🏼	veca sieviete: vidēji gaišs ādas tonis
+👵🏽	veca sieviete: vidējs ādas tonis
+👵🏾	veca sieviete: vidēji tumšs ādas tonis
+👵🏿	veca sieviete: tumšs ādas tonis
+👨‍⚕️	vīrietis veselības aprūpes darbinieks
+👨‍⚕	vīrietis veselības aprūpes darbinieks
+👨🏻‍⚕️	vīrietis veselības aprūpes darbinieks: gaišs ādas tonis
+👨🏻‍⚕	vīrietis veselības aprūpes darbinieks: gaišs ādas tonis
+👨🏼‍⚕️	vīrietis veselības aprūpes darbinieks: vidēji gaišs ādas tonis
+👨🏼‍⚕	vīrietis veselības aprūpes darbinieks: vidēji gaišs ādas tonis
+👨🏽‍⚕️	vīrietis veselības aprūpes darbinieks: vidējs ādas tonis
+👨🏽‍⚕	vīrietis veselības aprūpes darbinieks: vidējs ādas tonis
+👨🏾‍⚕️	vīrietis veselības aprūpes darbinieks: vidēji tumšs ādas tonis
+👨🏾‍⚕	vīrietis veselības aprūpes darbinieks: vidēji tumšs ādas tonis
+👨🏿‍⚕️	vīrietis veselības aprūpes darbinieks: tumšs ādas tonis
+👨🏿‍⚕	vīrietis veselības aprūpes darbinieks: tumšs ādas tonis
+👩‍⚕️	sieviete veselības darbiniece
+👩‍⚕	sieviete veselības darbiniece
+👩🏻‍⚕️	sieviete veselības darbiniece: gaišs ādas tonis
+👩🏻‍⚕	sieviete veselības darbiniece: gaišs ādas tonis
+👩🏼‍⚕️	sieviete veselības aprūpes darbiniece: vidēji gaišs ādas tonis
+👩🏼‍⚕	sieviete veselības aprūpes darbiniece: vidēji gaišs ādas tonis
+👩🏽‍⚕️	sieviete veselības aprūpes darbiniece: vidējs ādas tonis
+👩🏽‍⚕	sieviete veselības aprūpes darbiniece: vidējs ādas tonis
+👩🏾‍⚕️	sieviete veselības aprūpes darbiniece: vidēji tumšs ādas tonis
+👩🏾‍⚕	sieviete veselības aprūpes darbiniece: vidēji tumšs ādas tonis
+👩🏿‍⚕️	sieviete veselības aprūpes darbiniece: tumšs ādas tonis
+👩🏿‍⚕	sieviete veselības aprūpes darbiniece: tumšs ādas tonis
+👨‍🎓	vīrietis students
+👨🏻‍🎓	vīrietis students: gaišs ādas tonis
+👨🏼‍🎓	vīrietis students: vidēji gaišs ādas tonis
+👨🏽‍🎓	vīrietis students: vidējs ādas tonis
+👨🏾‍🎓	vīrietis students: vidēji tumšs ādas tonis
+👨🏿‍🎓	vīrietis students: tumšs ādas tonis
+👩‍🎓	sieviete studente
+👩🏻‍🎓	sieviete studente: gaišs ādas tonis
+👩🏼‍🎓	sieviete studente: vidēji gaišs ādas tonis
+👩🏽‍🎓	sieviete studente: vidējs ādas tonis
+👩🏾‍🎓	sieviete studente: vidēji tumšs ādas tonis
+👩🏿‍🎓	sieviete studente: tumšs ādas tonis
+👨‍🏫	vīrietis skolotājs
+👨🏻‍🏫	vīrietis skolotājs: gaišs ādas tonis
+👨🏼‍🏫	vīrietis skolotājs: vidēji gaišs ādas tonis
+👨🏽‍🏫	vīrietis skolotājs: vidējs ādas tonis
+👨🏾‍🏫	vīrietis skolotājs: vidēji tumšs ādas tonis
+👨🏿‍🏫	vīrietis skolotājs: tumšs ādas tonis
+👩‍🏫	sieviete skolotāja
+👩🏻‍🏫	sieviete skolotāja: gaišs ādas tonis
+👩🏼‍🏫	sieviete skolotāja: vidēji gaišs ādas tonis
+👩🏽‍🏫	sieviete skolotāja: vidējs ādas tonis
+👩🏾‍🏫	sieviete skolotāja: vidēji tumšs ādas tonis
+👩🏿‍🏫	sieviete skolotāja: tumšs ādas tonis
+👨‍⚖️	vīrietis tiesnesis
+👨‍⚖	vīrietis tiesnesis
+👨🏻‍⚖️	vīrietis tiesnesis: gaišs ādas tonis
+👨🏻‍⚖	vīrietis tiesnesis: gaišs ādas tonis
+👨🏼‍⚖️	vīrietis tiesnesis: vidēji gaišs ādas tonis
+👨🏼‍⚖	vīrietis tiesnesis: vidēji gaišs ādas tonis
+👨🏽‍⚖️	vīrietis tiesnesis: vidējs ādas tonis
+👨🏽‍⚖	vīrietis tiesnesis: vidējs ādas tonis
+👨🏾‍⚖️	vīrietis tiesnesis: vidēji tumšs ādas tonis
+👨🏾‍⚖	vīrietis tiesnesis: vidēji tumšs ādas tonis
+👨🏿‍⚖️	vīrietis tiesnesis: tumšs ādas tonis
+👨🏿‍⚖	vīrietis tiesnesis: tumšs ādas tonis
+👩‍⚖️	sieviete tiesnese
+👩‍⚖	sieviete tiesnese
+👩🏻‍⚖️	sieviete tiesnesis: gaišs ādas tonis
+👩🏻‍⚖	sieviete tiesnesis: gaišs ādas tonis
+👩🏼‍⚖️	sieviete tiesnesis: vidēji gaišs ādas tonis
+👩🏼‍⚖	sieviete tiesnesis: vidēji gaišs ādas tonis
+👩🏽‍⚖️	sieviete tiesnesis: vidējs ādas tonis
+👩🏽‍⚖	sieviete tiesnesis: vidējs ādas tonis
+👩🏾‍⚖️	sieviete tiesnesis: vidēji tumšs ādas tonis
+👩🏾‍⚖	sieviete tiesnesis: vidēji tumšs ādas tonis
+👩🏿‍⚖️	sieviete tiesnesis: tumšs ādas tonis
+👩🏿‍⚖	sieviete tiesnesis: tumšs ādas tonis
+👨‍🌾	cilvēks zemnieks
+👨🏻‍🌾	vīrietis lauksaimnieks: gaišs ādas tonis
+👨🏼‍🌾	vīrietis lauksaimnieks: vidēji gaišs ādas tonis
+👨🏽‍🌾	vīrietis lauksaimnieks: vidējs ādas tonis
+👨🏾‍🌾	vīrietis lauksaimnieks: vidēji tumšs ādas tonis
+👨🏿‍🌾	vīrietis lauksaimnieks: tumšs ādas tonis
+👩‍🌾	sieviete zemniece
+👩🏻‍🌾	sieviete zemniece: gaišs ādas tonis
+👩🏼‍🌾	sieviete zemniece: vidēji gaišs ādas tonis
+👩🏽‍🌾	sieviete zemniece: vidējs ādas tonis
+👩🏾‍🌾	sieviete zemniece: vidēji tumšs ādas tonis
+👩🏿‍🌾	sieviete zemniece: tumšs ādas tonis
+👨‍🍳	vīrietis pavārs
+👨🏻‍🍳	vīrietis pavārs: gaišs ādas tonis
+👨🏼‍🍳	vīrietis pavārs: vidēji gaišs ādas tonis
+👨🏽‍🍳	vīrietis pavārs: vidējs ādas tonis
+👨🏾‍🍳	vīrietis pavārs: vidēji tumšs ādas tonis
+👨🏿‍🍳	vīrietis pavārs: tumšs ādas tonis
+👩‍🍳	sieviete pavāre
+👩🏻‍🍳	sieviete pavāre: gaišs ādas tonis
+👩🏼‍🍳	sieviete pavāre: vidēji gaišs ādas tonis
+👩🏽‍🍳	sieviete pavāre: vidējs ādas tonis
+👩🏾‍🍳	sieviete pavāre: vidēji tumšs ādas tonis
+👩🏿‍🍳	sieviete pavāre: tumšs ādas tonis
+👨‍🔧	vīrietis mehāniķis
+👨🏻‍🔧	vīrietis mehāniķis: gaišs ādas tonis
+👨🏼‍🔧	vīrietis mehāniķis: vidēji gaišs ādas tonis
+👨🏽‍🔧	vīrietis mehāniķis: vidējs ādas tonis
+👨🏾‍🔧	vīrietis mehāniķis: vidēji tumšs ādas tonis
+👨🏿‍🔧	vīrietis mehāniķis: tumšs ādas tonis
+👩‍🔧	sieviete mehāniķe
+👩🏻‍🔧	sieviete mehāniķe: gaišs ādas tonis
+👩🏼‍🔧	sieviete mehāniķe: vidēji gaišs ādas tonis
+👩🏽‍🔧	sieviete mehāniķe: vidējs ādas tonis
+👩🏾‍🔧	sieviete mehāniķe: vidēji tumšs ādas tonis
+👩🏿‍🔧	sieviete mehāniķe: tumšs ādas tonis
+👨‍🏭	vīrietis rūpnīcas strādnieks
+👨🏻‍🏭	vīrietis rūpnīcas strādnieks: gaišs ādas tonis
+👨🏼‍🏭	vīrietis rūpnīcas strādnieks: vidēji gaišs ādas tonis
+👨🏽‍🏭	vīrietis rūpnīcas strādnieks: vidējs ādas tonis
+👨🏾‍🏭	vīrietis rūpnīcas strādnieks: vidēji tumšs ādas tonis
+👨🏿‍🏭	vīrietis rūpnīcas strādnieks: tumšs ādas tonis
+👩‍🏭	sieviete rūpnīcas strādniece
+👩🏻‍🏭	sieviete rūpnīcas darbiniece: gaišs ādas tonis
+👩🏼‍🏭	sieviete rūpnīcā: vidēji gaišs ādas tonis
+👩🏽‍🏭	sieviete rūpnīcas darbiniece: vidējs ādas tonis
+👩🏾‍🏭	sieviete rūpnīcas darbiniece: vidēji tumšs ādas tonis
+👩🏿‍🏭	sieviete rūpnīcas darbiniece: tumšs ādas tonis
+👨‍💼	vīrietis biroja darbinieks
+👨🏻‍💼	vīrietis biroja darbinieks: gaišs ādas tonis
+👨🏼‍💼	vīrietis biroja darbinieks: vidēji gaišs ādas tonis
+👨🏽‍💼	vīrietis biroja darbinieks: vidējs ādas tonis
+👨🏾‍💼	vīrietis biroja darbinieks: vidēji tumšs ādas tonis
+👨🏿‍💼	vīrietis biroja darbinieks: tumšs ādas tonis
+👩‍💼	sieviete biroja darbiniece
+👩🏻‍💼	sieviete biroja darbiniece: gaišs ādas tonis
+👩🏼‍💼	biroja darbiniece: vidēji gaišs ādas tonis
+👩🏽‍💼	sieviete biroja darbiniece: vidējs ādas tonis
+👩🏾‍💼	biroja darbiniece: vidēji tumšs ādas tonis
+👩🏿‍💼	sieviete biroja darbiniece: tumšs ādas tonis
+👨‍🔬	cilvēks zinātnieks
+👨🏻‍🔬	cilvēks zinātnieks: gaišs ādas tonis
+👨🏼‍🔬	cilvēks zinātnieks: vidēji gaišs ādas tonis
+👨🏽‍🔬	cilvēks zinātnieks: vidējs ādas tonis
+👨🏾‍🔬	cilvēks zinātnieks: vidēji tumšs ādas tonis
+👨🏿‍🔬	cilvēks zinātnieks: tumšs ādas tonis
+👩‍🔬	sieviete zinātniece
+👩🏻‍🔬	sieviete zinātniece: gaišs ādas tonis
+👩🏼‍🔬	sieviete zinātniece: vidēji gaišs ādas tonis
+👩🏽‍🔬	sieviete zinātniece: vidējs ādas tonis
+👩🏾‍🔬	sieviete zinātniece: vidēji tumšs ādas tonis
+👩🏿‍🔬	sieviete zinātniece: tumšs ādas tonis
+👨‍💻	vīrietis tehnologs
+👨🏻‍💻	vīrietis tehnologs: gaišs ādas tonis
+👨🏼‍💻	vīrietis tehnologs: vidēji gaišs ādas tonis
+👨🏽‍💻	vīrietis tehnologs: vidējs ādas tonis
+👨🏾‍💻	vīrietis tehnologs: vidēji tumšs ādas tonis
+👨🏿‍💻	vīrietis tehnologs: tumšs ādas tonis
+👩‍💻	sieviete tehnoloģe
+👩🏻‍💻	sieviete tehnoloģe: gaišs ādas tonis
+👩🏼‍💻	sieviete tehnoloģe: vidēji gaišs ādas tonis
+👩🏽‍💻	sieviete tehnoloģe: vidējs ādas tonis
+👩🏾‍💻	sieviete tehnoloģe: vidēji tumšs ādas tonis
+👩🏿‍💻	sieviete tehnoloģe: tumšs ādas tonis
+👨‍🎤	dziedātājs vīrietis
+👨🏻‍🎤	dziedātājs vīrietis: gaišs ādas tonis
+👨🏼‍🎤	vīrietis dziedātājs: vidēji gaišs ādas tonis
+👨🏽‍🎤	dziedātājs vīrietis: vidējs ādas tonis
+👨🏾‍🎤	vīrietis dziedātājs: vidēji tumšs ādas tonis
+👨🏿‍🎤	vīrietis dziedātājs: tumšs ādas tonis
+👩‍🎤	sieviete dziedātāja
+👩🏻‍🎤	dziedātāja sieviete: gaišs ādas tonis
+👩🏼‍🎤	dziedātāja sieviete: vidēji gaišs ādas tonis
+👩🏽‍🎤	dziedātāja sieviete: vidējs ādas tonis
+👩🏾‍🎤	dziedātāja sieviete: vidēji tumšs ādas tonis
+👩🏿‍🎤	dziedātāja sieviete: tumšs ādas tonis
+👨‍🎨	vīrietis mākslinieks
+👨🏻‍🎨	vīrietis mākslinieks: gaišs ādas tonis
+👨🏼‍🎨	mākslinieks vīrietis: vidēji gaišs ādas tonis
+👨🏽‍🎨	vīrietis mākslinieks: vidējs ādas tonis
+👨🏾‍🎨	mākslinieks vīrietis: vidēji tumšs ādas tonis
+👨🏿‍🎨	vīrietis mākslinieks: tumšs ādas tonis
+👩‍🎨	sieviete māksliniece
+👩🏻‍🎨	sieviete māksliniece: gaišs ādas tonis
+👩🏼‍🎨	māksliniece sieviete: vidēji gaišs ādas tonis
+👩🏽‍🎨	sieviete māksliniece: vidējs ādas tonis
+👩🏾‍🎨	māksliniece sieviete: vidēji tumšs ādas tonis
+👩🏿‍🎨	sieviete māksliniece: tumšs ādas tonis
+👨‍✈️	vīrietis pilots
+👨‍✈	vīrietis pilots
+👨🏻‍✈️	vīrietis pilots: gaišs ādas tonis
+👨🏻‍✈	vīrietis pilots: gaišs ādas tonis
+👨🏼‍✈️	vīrietis pilots: vidēji gaišs ādas tonis
+👨🏼‍✈	vīrietis pilots: vidēji gaišs ādas tonis
+👨🏽‍✈️	vīrietis pilots: vidējs ādas tonis
+👨🏽‍✈	vīrietis pilots: vidējs ādas tonis
+👨🏾‍✈️	vīrietis pilots: vidēji tumšs ādas tonis
+👨🏾‍✈	vīrietis pilots: vidēji tumšs ādas tonis
+👨🏿‍✈️	vīrietis pilots: tumšs ādas tonis
+👨🏿‍✈	vīrietis pilots: tumšs ādas tonis
+👩‍✈️	sieviete pilote
+👩‍✈	sieviete pilote
+👩🏻‍✈️	sieviete pilote: gaišs ādas tonis
+👩🏻‍✈	sieviete pilote: gaišs ādas tonis
+👩🏼‍✈️	sieviete pilote: vidēji gaišs ādas tonis
+👩🏼‍✈	sieviete pilote: vidēji gaišs ādas tonis
+👩🏽‍✈️	sieviete pilote: vidējs ādas tonis
+👩🏽‍✈	sieviete pilote: vidējs ādas tonis
+👩🏾‍✈️	sieviete pilote: vidēji tumšs ādas tonis
+👩🏾‍✈	sieviete pilote: vidēji tumšs ādas tonis
+👩🏿‍✈️	sieviete pilote: tumšs ādas tonis
+👩🏿‍✈	sieviete pilote: tumšs ādas tonis
+👨‍🚀	cilvēks astronauts
+👨🏻‍🚀	vīrietis astronauts: gaišs ādas tonis
+👨🏼‍🚀	vīrietis astronauts: vidēji gaišs ādas tonis
+👨🏽‍🚀	vīrietis astronauts: vidējs ādas tonis
+👨🏾‍🚀	vīrietis astronauts: vidēji tumšs ādas tonis
+👨🏿‍🚀	vīrietis astronauts: tumšs ādas tonis
+👩‍🚀	sieviete astronaute
+👩🏻‍🚀	sieviete astronaute: gaišs ādas tonis
+👩🏼‍🚀	sieviete astronaute: vidēji gaišs ādas tonis
+👩🏽‍🚀	sieviete astronaute: vidējs ādas tonis
+👩🏾‍🚀	sieviete astronaute: vidēji tumšs ādas tonis
+👩🏿‍🚀	sieviete astronaute: tumšs ādas tonis
+👨‍🚒	vīrietis ugunsdzēsējs
+👨🏻‍🚒	vīrietis ugunsdzēsējs: gaišs ādas tonis
+👨🏼‍🚒	vīrietis ugunsdzēsējs: vidēji gaišs ādas tonis
+👨🏽‍🚒	vīrietis ugunsdzēsējs: vidējs ādas tonis
+👨🏾‍🚒	vīrietis ugunsdzēsējs: vidēji tumšs ādas tonis
+👨🏿‍🚒	vīrietis ugunsdzēsējs: tumšs ādas tonis
+👩‍🚒	sieviete ugunsdzēsēja
+👩🏻‍🚒	sieviete ugunsdzēsēja: gaišs ādas tonis
+👩🏼‍🚒	sieviete ugunsdzēsēja: vidēji gaišs ādas tonis
+👩🏽‍🚒	sieviete ugunsdzēsēja: vidējs ādas tonis
+👩🏾‍🚒	sieviete ugunsdzēsēja: vidēji tumšs ādas tonis
+👩🏿‍🚒	sieviete ugunsdzēsēja: tumšs ādas tonis
+👮	policists
+👮🏻	policists: gaišs ādas tonis
+👮🏼	policists: vidēji gaišs ādas tonis
+👮🏽	policists: vidējs ādas tonis
+👮🏾	policists: vidēji tumšs ādas tonis
+👮🏿	policists: tumšs ādas tonis
+👮‍♂️	vīrietis policists
+👮‍♂	vīrietis policists
+👮🏻‍♂️	vīrietis policists: gaišs ādas tonis
+👮🏻‍♂	vīrietis policists: gaišs ādas tonis
+👮🏼‍♂️	vīrietis policists: vidēji gaišs ādas tonis
+👮🏼‍♂	vīrietis policists: vidēji gaišs ādas tonis
+👮🏽‍♂️	vīrietis policists: vidējs ādas tonis
+👮🏽‍♂	vīrietis policists: vidējs ādas tonis
+👮🏾‍♂️	vīrietis policists: vidēji tumšs ādas tonis
+👮🏾‍♂	vīrietis policists: vidēji tumšs ādas tonis
+👮🏿‍♂️	vīrietis policists: tumšs ādas tonis
+👮🏿‍♂	vīrietis policists: tumšs ādas tonis
+👮‍♀️	sieviete policiste
+👮‍♀	sieviete policiste
+👮🏻‍♀️	sieviete policiste: gaišs ādas tonis
+👮🏻‍♀	sieviete policiste: gaišs ādas tonis
+👮🏼‍♀️	sieviete policiste: vidēji gaišs ādas tonis
+👮🏼‍♀	sieviete policiste: vidēji gaišs ādas tonis
+👮🏽‍♀️	sieviete policiste: vidējs ādas tonis
+👮🏽‍♀	sieviete policiste: vidējs ādas tonis
+👮🏾‍♀️	sieviete policiste: vidēji tumšs ādas tonis
+👮🏾‍♀	sieviete policiste: vidēji tumšs ādas tonis
+👮🏿‍♀️	sieviete policiste: tumšs ādas tonis
+👮🏿‍♀	sieviete policiste: tumšs ādas tonis
+🕵️	detektīvs
+🕵	detektīvs
+🕵🏻	detektīvs: gaišs ādas tonis
+🕵🏼	detektīvs: vidēji gaišs ādas tonis
+🕵🏽	detektīvs: vidējs ādas tonis
+🕵🏾	detektīvs: vidēji tumšs ādas tonis
+🕵🏿	detektīvs: tumšs ādas tonis
+🕵️‍♂️	vīrietis detektīvs
+🕵‍♂️	vīrietis detektīvs
+🕵️‍♂	vīrietis detektīvs
+🕵‍♂	vīrietis detektīvs
+🕵🏻‍♂️	vīrietis detektīvs: gaišs ādas tonis
+🕵🏻‍♂	vīrietis detektīvs: gaišs ādas tonis
+🕵🏼‍♂️	vīrietis detektīvs: vidēji gaišs ādas tonis
+🕵🏼‍♂	vīrietis detektīvs: vidēji gaišs ādas tonis
+🕵🏽‍♂️	vīrietis detektīvs: vidējs ādas tonis
+🕵🏽‍♂	vīrietis detektīvs: vidējs ādas tonis
+🕵🏾‍♂️	vīrietis detektīvs: vidēji tumšs ādas tonis
+🕵🏾‍♂	vīrietis detektīvs: vidēji tumšs ādas tonis
+🕵🏿‍♂️	vīrietis detektīvs: tumšs ādas tonis
+🕵🏿‍♂	vīrietis detektīvs: tumšs ādas tonis
+🕵️‍♀️	sieviete detektīvs
+🕵‍♀️	sieviete detektīvs
+🕵️‍♀	sieviete detektīvs
+🕵‍♀	sieviete detektīvs
+🕵🏻‍♀️	sieviete detektīvs: gaišs ādas tonis
+🕵🏻‍♀	sieviete detektīvs: gaišs ādas tonis
+🕵🏼‍♀️	sieviete detektīvs: vidēji gaišs ādas tonis
+🕵🏼‍♀	sieviete detektīvs: vidēji gaišs ādas tonis
+🕵🏽‍♀️	sieviete detektīvs: vidējs ādas tonis
+🕵🏽‍♀	sieviete detektīvs: vidējs ādas tonis
+🕵🏾‍♀️	sieviete detektīvs: vidēji tumšs ādas tonis
+🕵🏾‍♀	sieviete detektīvs: vidēji tumšs ādas tonis
+🕵🏿‍♀️	sieviete detektīvs: tumšs ādas tonis
+🕵🏿‍♀	sieviete detektīvs: tumšs ādas tonis
+💂	sargs
+💂🏻	aizsargs: gaišs ādas tonis
+💂🏼	aizsargs: vidēji gaišs ādas tonis
+💂🏽	aizsargs: vidējs ādas tonis
+💂🏾	aizsargs: vidēji tumšs ādas tonis
+💂🏿	aizsargs: tumšs ādas tonis
+💂‍♂️	vīrietis sargs
+💂‍♂	vīrietis sargs
+💂🏻‍♂️	vīrietis aizsargs: gaišs ādas tonis
+💂🏻‍♂	vīrietis aizsargs: gaišs ādas tonis
+💂🏼‍♂️	vīrietis aizsargs: vidēji gaišs ādas tonis
+💂🏼‍♂	vīrietis aizsargs: vidēji gaišs ādas tonis
+💂🏽‍♂️	vīrietis aizsargs: vidējs ādas tonis
+💂🏽‍♂	vīrietis aizsargs: vidējs ādas tonis
+💂🏾‍♂️	vīrietis aizsargs: vidēji tumšs ādas tonis
+💂🏾‍♂	vīrietis aizsargs: vidēji tumšs ādas tonis
+💂🏿‍♂️	vīrietis aizsargs: tumšs ādas tonis
+💂🏿‍♂	vīrietis aizsargs: tumšs ādas tonis
+💂‍♀️	sieviete sargs
+💂‍♀	sieviete sargs
+💂🏻‍♀️	sievietes aizsargs: gaišs ādas tonis
+💂🏻‍♀	sievietes aizsargs: gaišs ādas tonis
+💂🏼‍♀️	sievietes aizsargs: vidēji gaišs ādas tonis
+💂🏼‍♀	sievietes aizsargs: vidēji gaišs ādas tonis
+💂🏽‍♀️	sievietes aizsargs: vidējs ādas tonis
+💂🏽‍♀	sievietes aizsargs: vidējs ādas tonis
+💂🏾‍♀️	sievietes aizsargs: vidēji tumšs ādas tonis
+💂🏾‍♀	sievietes aizsargs: vidēji tumšs ādas tonis
+💂🏿‍♀️	sievietes aizsargs: tumšs ādas tonis
+💂🏿‍♀	sievietes aizsargs: tumšs ādas tonis
+👷	celtnieks
+👷🏻	būvstrādnieks: gaišs ādas tonis
+👷🏼	būvstrādnieks: vidēji gaišs ādas tonis
+👷🏽	būvstrādnieks: vidējs ādas tonis
+👷🏾	būvstrādnieks: vidēji tumšs ādas tonis
+👷🏿	būvstrādnieks: tumšs ādas tonis
+👷‍♂️	vīrietis celtnieks
+👷‍♂	vīrietis celtnieks
+👷🏻‍♂️	vīrietis celtnieks: gaišs ādas tonis
+👷🏻‍♂	vīrietis celtnieks: gaišs ādas tonis
+👷🏼‍♂️	vīrietis celtnieks: vidēji gaišs ādas tonis
+👷🏼‍♂	vīrietis celtnieks: vidēji gaišs ādas tonis
+👷🏽‍♂️	vīrietis celtnieks: vidējs ādas tonis
+👷🏽‍♂	vīrietis celtnieks: vidējs ādas tonis
+👷🏾‍♂️	vīrietis celtnieks: vidēji tumšs ādas tonis
+👷🏾‍♂	vīrietis celtnieks: vidēji tumšs ādas tonis
+👷🏿‍♂️	vīrietis celtnieks: tumšs ādas tonis
+👷🏿‍♂	vīrietis celtnieks: tumšs ādas tonis
+👷‍♀️	sieviete celtniecībā
+👷‍♀	sieviete celtniecībā
+👷🏻‍♀️	sieviete celtniecībā: gaišs ādas tonis
+👷🏻‍♀	sieviete celtniecībā: gaišs ādas tonis
+👷🏼‍♀️	sieviete celtniecībā: vidēji gaišs ādas tonis
+👷🏼‍♀	sieviete celtniecībā: vidēji gaišs ādas tonis
+👷🏽‍♀️	sieviete celtniecībā: vidējs ādas tonis
+👷🏽‍♀	sieviete celtniecībā: vidējs ādas tonis
+👷🏾‍♀️	sieviete celtniecībā: vidēji tumšs ādas tonis
+👷🏾‍♀	sieviete celtniecībā: vidēji tumšs ādas tonis
+👷🏿‍♀️	sieviete celtniecībā: tumšs ādas tonis
+👷🏿‍♀	sieviete celtniecībā: tumšs ādas tonis
+🤴	princis
+🤴🏻	princis: gaišs ādas tonis
+🤴🏼	princis: vidēji gaišs ādas tonis
+🤴🏽	princis: vidējs ādas tonis
+🤴🏾	princis: vidēji tumšs ādas tonis
+🤴🏿	princis: tumšs ādas tonis
+👸	princese
+👸🏻	princese: gaišs ādas tonis
+👸🏼	princese: vidēji gaišs ādas tonis
+👸🏽	princese: vidējs ādas tonis
+👸🏾	princese: vidēji tumšs ādas tonis
+👸🏿	princese: tumšs ādas tonis
+👳	persona, kas valkā turbānu
+👳🏻	persona, kas valkā turbānu: gaišs ādas tonis
+👳🏼	persona, kas valkā turbānu: vidēji gaišs ādas tonis
+👳🏽	persona, kas valkā turbānu: vidējs ādas tonis
+👳🏾	persona, kas valkā turbānu: vidēji tumšs ādas tonis
+👳🏿	persona, kas valkā turbānu: tumšs ādas tonis
+👳‍♂️	vīrietis valkā turbānu
+👳‍♂	vīrietis valkā turbānu
+👳🏻‍♂️	vīrietis valkā turbānu: gaišs ādas tonis
+👳🏻‍♂	vīrietis valkā turbānu: gaišs ādas tonis
+👳🏼‍♂️	vīrietis ar turbānu: vidēji gaišs ādas tonis
+👳🏼‍♂	vīrietis ar turbānu: vidēji gaišs ādas tonis
+👳🏽‍♂️	vīrietis valkā turbānu: vidējs ādas tonis
+👳🏽‍♂	vīrietis valkā turbānu: vidējs ādas tonis
+👳🏾‍♂️	vīrietis ar turbānu: vidēji tumšs ādas tonis
+👳🏾‍♂	vīrietis ar turbānu: vidēji tumšs ādas tonis
+👳🏿‍♂️	vīrietis valkā turbānu: tumšs ādas tonis
+👳🏿‍♂	vīrietis valkā turbānu: tumšs ādas tonis
+👳‍♀️	sieviete, kas valkā turbānu
+👳‍♀	sieviete, kas valkā turbānu
+👳🏻‍♀️	sieviete, kas valkā turbānu: gaišs ādas tonis
+👳🏻‍♀	sieviete, kas valkā turbānu: gaišs ādas tonis
+👳🏼‍♀️	sieviete valkā turbānu: vidēji gaišs ādas tonis
+👳🏼‍♀	sieviete valkā turbānu: vidēji gaišs ādas tonis
+👳🏽‍♀️	sieviete valkā turbānu: vidējs ādas tonis
+👳🏽‍♀	sieviete valkā turbānu: vidējs ādas tonis
+👳🏾‍♀️	sieviete valkā turbānu: vidēji tumšs ādas tonis
+👳🏾‍♀	sieviete valkā turbānu: vidēji tumšs ādas tonis
+👳🏿‍♀️	sieviete, kas valkā turbānu: tumšs ādas tonis
+👳🏿‍♀	sieviete, kas valkā turbānu: tumšs ādas tonis
+👲	vīrietis ar ķīniešu vāciņu
+👲🏻	vīrietis ar ķīniešu vāciņu: gaišs ādas tonis
+👲🏼	vīrietis ar ķīniešu cepuri: vidēji gaišs ādas tonis
+👲🏽	vīrietis ar ķīniešu cepuri: vidējs ādas tonis
+👲🏾	vīrietis ar ķīniešu vāciņu: vidēji tumšs ādas tonis
+👲🏿	vīrietis ar ķīniešu vāciņu: tumšs ādas tonis
+🧕	sieviete ar lakatu
+🧕🏻	sieviete ar lakatu: gaišs ādas tonis
+🧕🏼	sieviete ar lakatu: vidēji gaišs ādas tonis
+🧕🏽	sieviete ar lakatu: vidējs ādas tonis
+🧕🏾	sieviete ar lakatu: vidēji tumšs ādas tonis
+🧕🏿	sieviete ar lakatu: tumšs ādas tonis
+🧔	bārdains cilvēks
+🧔🏻	bārdains cilvēks: gaišs ādas tonis
+🧔🏼	Bārdains cilvēks: vidēji gaišs ādas tonis
+🧔🏽	bārdains cilvēks: vidējs ādas tonis
+🧔🏾	bārdains cilvēks: vidēji tumšs ādas tonis
+🧔🏿	bārdains cilvēks: tumšs ādas tonis
+👱	gaišmatains cilvēks
+👱🏻	gaišmatains cilvēks: gaišs ādas tonis
+👱🏼	blondīne: vidēji gaišs ādas tonis
+👱🏽	gaišmatains cilvēks: vidējs ādas tonis
+👱🏾	blondīne: vidēji tumšs ādas tonis
+👱🏿	blondīne: tumšs ādas tonis
+👱‍♂️	gaišmatains vīrietis
+👱‍♂	gaišmatains vīrietis
+👱🏻‍♂️	gaišmatains vīrietis: gaišs ādas tonis
+👱🏻‍♂	gaišmatains vīrietis: gaišs ādas tonis
+👱🏼‍♂️	gaišmatains vīrietis: vidēji gaišs ādas tonis
+👱🏼‍♂	gaišmatains vīrietis: vidēji gaišs ādas tonis
+👱🏽‍♂️	gaišmatains vīrietis: vidējs ādas tonis
+👱🏽‍♂	gaišmatains vīrietis: vidējs ādas tonis
+👱🏾‍♂️	gaišmatains vīrietis: vidēji tumšs ādas tonis
+👱🏾‍♂	gaišmatains vīrietis: vidēji tumšs ādas tonis
+👱🏿‍♂️	gaišmatains vīrietis: tumšs ādas tonis
+👱🏿‍♂	gaišmatains vīrietis: tumšs ādas tonis
+👱‍♀️	blondīne sieviete
+👱‍♀	blondīne sieviete
+👱🏻‍♀️	blondīne: gaišs ādas tonis
+👱🏻‍♀	blondīne: gaišs ādas tonis
+👱🏼‍♀️	blondīne: vidēji gaišs ādas tonis
+👱🏼‍♀	blondīne: vidēji gaišs ādas tonis
+👱🏽‍♀️	gaišmataina sieviete: vidējs ādas tonis
+👱🏽‍♀	gaišmataina sieviete: vidējs ādas tonis
+👱🏾‍♀️	blondīne: vidēji tumšs ādas tonis
+👱🏾‍♀	blondīne: vidēji tumšs ādas tonis
+👱🏿‍♀️	blondīne: tumšs ādas tonis
+👱🏿‍♀	blondīne: tumšs ādas tonis
+👨‍🦰	vīrietis, rudmatains
+👨🏻‍🦰	vīrietis, rudi mati: gaišs ādas tonis
+👨🏼‍🦰	vīrietis, rudmatains: vidēji gaišs ādas tonis
+👨🏽‍🦰	vīrietis, rudmatains: vidējs ādas tonis
+👨🏾‍🦰	vīrietis, rudmatains: vidēji tumšs ādas tonis
+👨🏿‍🦰	vīrietis, rudmatains: tumšs ādas tonis
+👩‍🦰	sieviete, rudmataina
+👩🏻‍🦰	sieviete, rudmataina: gaišs ādas tonis
+👩🏼‍🦰	sieviete, rudmataina: vidēji gaišs ādas tonis
+👩🏽‍🦰	sieviete, rudmataina: vidējs ādas tonis
+👩🏾‍🦰	sieviete, rudmataina: vidēji tumšs ādas tonis
+👩🏿‍🦰	sieviete, rudmataina: tumšs ādas tonis
+👨‍🦱	vīrietis, cirtaini mati
+👨🏻‍🦱	vīrietis, cirtaini mati: gaišs ādas tonis
+👨🏼‍🦱	vīrietis, cirtaini mati: vidēji gaišs ādas tonis
+👨🏽‍🦱	vīrietis, cirtaini mati: vidējs ādas tonis
+👨🏾‍🦱	vīrietis, cirtaini mati: vidēji tumšs ādas tonis
+👨🏿‍🦱	vīrietis, cirtaini mati: tumšs ādas tonis
+👩‍🦱	sieviete, cirtaini mati
+👩🏻‍🦱	sieviete, cirtaini mati: gaišs ādas tonis
+👩🏼‍🦱	sieviete, cirtaini mati: vidēji gaišs ādas tonis
+👩🏽‍🦱	sieviete, cirtaini mati: vidējs ādas tonis
+👩🏾‍🦱	sieviete, cirtaini mati: vidēji tumšs ādas tonis
+👩🏿‍🦱	sieviete, cirtaini mati: tumšs ādas tonis
+👨‍🦲	vīrietis, kails
+👨🏻‍🦲	vīrietis, kails: gaišs ādas tonis
+👨🏼‍🦲	vīrietis, kails: vidēji gaišs ādas tonis
+👨🏽‍🦲	vīrietis, kails: vidējs ādas tonis
+👨🏾‍🦲	vīrietis, kails: vidēji tumšs ādas tonis
+👨🏿‍🦲	vīrietis, kails: tumšs ādas tonis
+👩‍🦲	sieviete, plika
+👩🏻‍🦲	sieviete, kails: gaišs ādas tonis
+👩🏼‍🦲	sieviete, kails: vidēji gaišs ādas tonis
+👩🏽‍🦲	sieviete, kails: vidējs ādas tonis
+👩🏾‍🦲	sieviete, kails: vidēji tumšs ādas tonis
+👩🏿‍🦲	sieviete, kails: tumšs ādas tonis
+👨‍🦳	vīrietis, balts mati
+👨🏻‍🦳	vīrietis, balti mati: gaišs ādas tonis
+👨🏼‍🦳	vīrietis, balti mati: vidēji gaišs ādas tonis
+👨🏽‍🦳	vīrietis, balti mati: vidējs ādas tonis
+👨🏾‍🦳	vīrietis, balti mati: vidēji tumšs ādas tonis
+👨🏿‍🦳	vīrietis, balti mati: tumšs ādas tonis
+👩‍🦳	sieviete, baltmataina
+👩🏻‍🦳	sieviete, balti mati: gaišs ādas tonis
+👩🏼‍🦳	sieviete, baltmataina: vidēji gaišs ādas tonis
+👩🏽‍🦳	sieviete, baltmataina: vidējs ādas tonis
+👩🏾‍🦳	sieviete, balti mati: vidēji tumšs ādas tonis
+👩🏿‍🦳	sieviete, baltmataina: tumšs ādas tonis
+🤵	vīrietis smokingā
+🤵🏻	vīrietis smokingā: gaišs ādas tonis
+🤵🏼	vīrietis smokingā: vidēji gaišs ādas tonis
+🤵🏽	vīrietis smokingā: vidējs ādas tonis
+🤵🏾	vīrietis smokingā: vidēji tumšs ādas tonis
+🤵🏿	vīrietis smokingā: tumšs ādas tonis
+👰	līgava ar plīvuru
+👰🏻	līgava ar plīvuru: gaišs ādas tonis
+👰🏼	līgava ar plīvuru: vidēji gaišs ādas tonis
+👰🏽	līgava ar plīvuru: vidējs ādas tonis
+👰🏾	līgava ar plīvuru: vidēji tumšs ādas tonis
+👰🏿	līgava ar plīvuru: tumšs ādas tonis
+🤰	sieviete stāvoklī
+🤰🏻	grūtniece: gaišs ādas tonis
+🤰🏼	grūtniece: vidēji gaišs ādas tonis
+🤰🏽	grūtniece: vidējs ādas tonis
+🤰🏾	grūtniece: vidēji tumšs ādas tonis
+🤰🏿	grūtniece: tumšs ādas tonis
+🤱	barošana ar krūti
+🤱🏻	barošana ar krūti: gaišs ādas tonis
+🤱🏼	barošana ar krūti: vidēji gaišs ādas tonis
+🤱🏽	barošana ar krūti: vidējs ādas tonis
+🤱🏾	barošana ar krūti: vidēji tumšs ādas tonis
+🤱🏿	barošana ar krūti: tumšs ādas tonis
+👼	mazulis eņģelis
+👼🏻	eņģeļa mazulis: gaišs ādas tonis
+👼🏼	eņģeļa mazulis: vidēji gaišs ādas tonis
+👼🏽	eņģeļa mazulis: vidējs ādas tonis
+👼🏾	eņģeļa mazulis: vidēji tumšs ādas tonis
+👼🏿	eņģeļa mazulis: tumšs ādas tonis
+🎅	Ziemassvētku vecītis
+🎅🏻	Ziemassvētku vecītis: gaišs ādas tonis
+🎅🏼	Ziemassvētku vecītis: vidēji gaišs ādas tonis
+🎅🏽	Ziemassvētku vecītis: vidējs ādas tonis
+🎅🏾	Ziemassvētku vecītis: vidēji tumšs ādas tonis
+🎅🏿	Ziemassvētku vecītis: tumšs ādas tonis
+🤶	Klausa kundze
+🤶🏻	Claus kundze: gaišs ādas tonis
+🤶🏼	Claus kundze: vidēji gaišs ādas tonis
+🤶🏽	Claus kundze: vidējs ādas tonis
+🤶🏾	Claus kundze: vidēji tumšs ādas tonis
+🤶🏿	Claus kundze: tumšs ādas tonis
+🦸	supervaronis
+🦸🏻	supervaronis: gaišs ādas tonis
+🦸🏼	supervaronis: vidēji gaišs ādas tonis
+🦸🏽	supervaronis: vidējs ādas tonis
+🦸🏾	supervaronis: vidēji tumšs ādas tonis
+🦸🏿	supervaronis: tumšs ādas tonis
+🦸‍♀️	sieviete supervarone
+🦸‍♀	sieviete supervarone
+🦸🏻‍♀️	sievietes supervarone: gaišs ādas tonis
+🦸🏻‍♀	sievietes supervarone: gaišs ādas tonis
+🦸🏼‍♀️	sievietes supervarone: vidēji gaišs ādas tonis
+🦸🏼‍♀	sievietes supervarone: vidēji gaišs ādas tonis
+🦸🏽‍♀️	sievietes supervarone: vidējs ādas tonis
+🦸🏽‍♀	sievietes supervarone: vidējs ādas tonis
+🦸🏾‍♀️	sievietes supervarone: vidēji tumšs ādas tonis
+🦸🏾‍♀	sievietes supervarone: vidēji tumšs ādas tonis
+🦸🏿‍♀️	sievietes supervarone: tumšs ādas tonis
+🦸🏿‍♀	sievietes supervarone: tumšs ādas tonis
+🦸‍♂️	vīrietis supervaronis
+🦸‍♂	vīrietis supervaronis
+🦸🏻‍♂️	vīrietis supervaronis: gaišs ādas tonis
+🦸🏻‍♂	vīrietis supervaronis: gaišs ādas tonis
+🦸🏼‍♂️	supervaronis vīrietis: vidēji gaišs ādas tonis
+🦸🏼‍♂	supervaronis vīrietis: vidēji gaišs ādas tonis
+🦸🏽‍♂️	supervaronis vīrietis: vidējs ādas tonis
+🦸🏽‍♂	supervaronis vīrietis: vidējs ādas tonis
+🦸🏾‍♂️	supervaronis vīrietis: vidēji tumšs ādas tonis
+🦸🏾‍♂	supervaronis vīrietis: vidēji tumšs ādas tonis
+🦸🏿‍♂️	supervaronis vīrietis: tumšs ādas tonis
+🦸🏿‍♂	supervaronis vīrietis: tumšs ādas tonis
+🦹	supernelietis
+🦹🏻	supervillain: gaišs ādas tonis
+🦹🏼	supervillain: vidēji gaišs ādas tonis
+🦹🏽	supervillain: vidējs ādas tonis
+🦹🏾	supervillain: vidēji tumšs ādas tonis
+🦹🏿	supervillain: tumšs ādas tonis
+🦹‍♀️	sieviete superneliete
+🦹‍♀	sieviete superneliete
+🦹🏻‍♀️	sieviete supervillain: gaišs ādas tonis
+🦹🏻‍♀	sieviete supervillain: gaišs ādas tonis
+🦹🏼‍♀️	sieviete supervillain: vidēji gaišs ādas tonis
+🦹🏼‍♀	sieviete supervillain: vidēji gaišs ādas tonis
+🦹🏽‍♀️	sieviete supervillain: vidējs ādas tonis
+🦹🏽‍♀	sieviete supervillain: vidējs ādas tonis
+🦹🏾‍♀️	sieviete supervillain: vidēji tumšs ādas tonis
+🦹🏾‍♀	sieviete supervillain: vidēji tumšs ādas tonis
+🦹🏿‍♀️	sieviete supervillain: tumšs ādas tonis
+🦹🏿‍♀	sieviete supervillain: tumšs ādas tonis
+🦹‍♂️	vīrietis superļaundaris
+🦹‍♂	vīrietis superļaundaris
+🦹🏻‍♂️	vīrietis supervillain: gaišs ādas tonis
+🦹🏻‍♂	vīrietis supervillain: gaišs ādas tonis
+🦹🏼‍♂️	vīrietis supervillain: vidēji gaišs ādas tonis
+🦹🏼‍♂	vīrietis supervillain: vidēji gaišs ādas tonis
+🦹🏽‍♂️	vīrietis supervillain: vidējs ādas tonis
+🦹🏽‍♂	vīrietis supervillain: vidējs ādas tonis
+🦹🏾‍♂️	vīrietis supervillain: vidēji tumšs ādas tonis
+🦹🏾‍♂	vīrietis supervillain: vidēji tumšs ādas tonis
+🦹🏿‍♂️	vīrietis supervillain: tumšs ādas tonis
+🦹🏿‍♂	vīrietis supervillain: tumšs ādas tonis
+🧙	mags
+🧙🏻	mags: gaišs ādas tonis
+🧙🏼	mags: vidēji gaišs ādas tonis
+🧙🏽	mags: vidējs ādas tonis
+🧙🏾	mags: vidēji tumšs ādas tonis
+🧙🏿	mags: tumšs ādas tonis
+🧙‍♀️	sieviete mags
+🧙‍♀	sieviete mags
+🧙🏻‍♀️	sieviete mags: gaišs ādas tonis
+🧙🏻‍♀	sieviete mags: gaišs ādas tonis
+🧙🏼‍♀️	sieviete mags: vidēji gaišs ādas tonis
+🧙🏼‍♀	sieviete mags: vidēji gaišs ādas tonis
+🧙🏽‍♀️	sieviete mags: vidējs ādas tonis
+🧙🏽‍♀	sieviete mags: vidējs ādas tonis
+🧙🏾‍♀️	sievietes mags: vidēji tumšs ādas tonis
+🧙🏾‍♀	sievietes mags: vidēji tumšs ādas tonis
+🧙🏿‍♀️	sieviete mags: tumšs ādas tonis
+🧙🏿‍♀	sieviete mags: tumšs ādas tonis
+🧙‍♂️	cilvēks mags
+🧙‍♂	cilvēks mags
+🧙🏻‍♂️	vīrietis mags: gaišs ādas tonis
+🧙🏻‍♂	vīrietis mags: gaišs ādas tonis
+🧙🏼‍♂️	vīrietis mags: vidēji gaišs ādas tonis
+🧙🏼‍♂	vīrietis mags: vidēji gaišs ādas tonis
+🧙🏽‍♂️	vīrietis mags: vidējs ādas tonis
+🧙🏽‍♂	vīrietis mags: vidējs ādas tonis
+🧙🏾‍♂️	vīrietis mags: vidēji tumšs ādas tonis
+🧙🏾‍♂	vīrietis mags: vidēji tumšs ādas tonis
+🧙🏿‍♂️	vīrietis mags: tumšs ādas tonis
+🧙🏿‍♂	vīrietis mags: tumšs ādas tonis
+🧚	feja
+🧚🏻	pasaka: gaišs ādas tonis
+🧚🏼	pasaka: vidēji gaišs ādas tonis
+🧚🏽	pasaka: vidējs ādas tonis
+🧚🏾	pasaka: vidēji tumšs ādas tonis
+🧚🏿	pasaka: tumšs ādas tonis
+🧚‍♀️	sieviešu feja
+🧚‍♀	sieviešu feja
+🧚🏻‍♀️	sieviešu feja: gaišs ādas tonis
+🧚🏻‍♀	sieviešu feja: gaišs ādas tonis
+🧚🏼‍♀️	sieviešu feja: vidēji gaišs ādas tonis
+🧚🏼‍♀	sieviešu feja: vidēji gaišs ādas tonis
+🧚🏽‍♀️	sieviešu feja: vidējs ādas tonis
+🧚🏽‍♀	sieviešu feja: vidējs ādas tonis
+🧚🏾‍♀️	sieviešu feja: vidēji tumšs ādas tonis
+🧚🏾‍♀	sieviešu feja: vidēji tumšs ādas tonis
+🧚🏿‍♀️	sieviešu feja: tumšs ādas tonis
+🧚🏿‍♀	sieviešu feja: tumšs ādas tonis
+🧚‍♂️	cilvēku feja
+🧚‍♂	cilvēku feja
+🧚🏻‍♂️	vīrietis feja: gaišs ādas tonis
+🧚🏻‍♂	vīrietis feja: gaišs ādas tonis
+🧚🏼‍♂️	vīriešu feja: vidēji gaišs ādas tonis
+🧚🏼‍♂	vīriešu feja: vidēji gaišs ādas tonis
+🧚🏽‍♂️	vīrietis feja: vidējs ādas tonis
+🧚🏽‍♂	vīrietis feja: vidējs ādas tonis
+🧚🏾‍♂️	vīriešu feja: vidēji tumšs ādas tonis
+🧚🏾‍♂	vīriešu feja: vidēji tumšs ādas tonis
+🧚🏿‍♂️	vīrietis feja: tumšs ādas tonis
+🧚🏿‍♂	vīrietis feja: tumšs ādas tonis
+🧛	vampīrs
+🧛🏻	vampīrs: gaišs ādas tonis
+🧛🏼	vampīrs: vidēji gaišs ādas tonis
+🧛🏽	vampīrs: vidējs ādas tonis
+🧛🏾	vampīrs: vidēji tumšs ādas tonis
+🧛🏿	vampīrs: tumšs ādas tonis
+🧛‍♀️	sieviete vampīrs
+🧛‍♀	sieviete vampīrs
+🧛🏻‍♀️	sieviete vampīrs: gaišs ādas tonis
+🧛🏻‍♀	sieviete vampīrs: gaišs ādas tonis
+🧛🏼‍♀️	sieviete vampīrs: vidēji gaišs ādas tonis
+🧛🏼‍♀	sieviete vampīrs: vidēji gaišs ādas tonis
+🧛🏽‍♀️	sieviete vampīrs: vidējs ādas tonis
+🧛🏽‍♀	sieviete vampīrs: vidējs ādas tonis
+🧛🏾‍♀️	sieviete vampīrs: vidēji tumšs ādas tonis
+🧛🏾‍♀	sieviete vampīrs: vidēji tumšs ādas tonis
+🧛🏿‍♀️	sieviete vampīrs: tumšs ādas tonis
+🧛🏿‍♀	sieviete vampīrs: tumšs ādas tonis
+🧛‍♂️	vīrietis vampīrs
+🧛‍♂	vīrietis vampīrs
+🧛🏻‍♂️	vīrietis vampīrs: gaišs ādas tonis
+🧛🏻‍♂	vīrietis vampīrs: gaišs ādas tonis
+🧛🏼‍♂️	vīrietis vampīrs: vidēji gaišs ādas tonis
+🧛🏼‍♂	vīrietis vampīrs: vidēji gaišs ādas tonis
+🧛🏽‍♂️	vīrietis vampīrs: vidējs ādas tonis
+🧛🏽‍♂	vīrietis vampīrs: vidējs ādas tonis
+🧛🏾‍♂️	vīrietis vampīrs: vidēji tumšs ādas tonis
+🧛🏾‍♂	vīrietis vampīrs: vidēji tumšs ādas tonis
+🧛🏿‍♂️	vīrietis vampīrs: tumšs ādas tonis
+🧛🏿‍♂	vīrietis vampīrs: tumšs ādas tonis
+🧜	merperson
+🧜🏻	merperson: gaišs ādas tonis
+🧜🏼	merperson: vidēji gaišs ādas tonis
+🧜🏽	merperson: vidējs ādas tonis
+🧜🏾	merperson: vidēji tumšs ādas tonis
+🧜🏿	merperson: tumšs ādas tonis
+🧜‍♀️	sirēna
+🧜‍♀	sirēna
+🧜🏻‍♀️	sirēna: gaišs ādas tonis
+🧜🏻‍♀	sirēna: gaišs ādas tonis
+🧜🏼‍♀️	sirēna: vidēji gaišs ādas tonis
+🧜🏼‍♀	sirēna: vidēji gaišs ādas tonis
+🧜🏽‍♀️	sirēna: vidējs ādas tonis
+🧜🏽‍♀	sirēna: vidējs ādas tonis
+🧜🏾‍♀️	sirēna: vidēji tumšs ādas tonis
+🧜🏾‍♀	sirēna: vidēji tumšs ādas tonis
+🧜🏿‍♀️	sirēna: tumšs ādas tonis
+🧜🏿‍♀	sirēna: tumšs ādas tonis
+🧜‍♂️	merman
+🧜‍♂	merman
+🧜🏻‍♂️	Merman: gaišs ādas tonis
+🧜🏻‍♂	Merman: gaišs ādas tonis
+🧜🏼‍♂️	Merman: vidēji gaišs ādas tonis
+🧜🏼‍♂	Merman: vidēji gaišs ādas tonis
+🧜🏽‍♂️	Merman: vidējs ādas tonis
+🧜🏽‍♂	Merman: vidējs ādas tonis
+🧜🏾‍♂️	Merman: vidēji tumšs ādas tonis
+🧜🏾‍♂	Merman: vidēji tumšs ādas tonis
+🧜🏿‍♂️	Merman: tumšs ādas tonis
+🧜🏿‍♂	Merman: tumšs ādas tonis
+🧝	elfs
+🧝🏻	elfs: gaišs ādas tonis
+🧝🏼	elfs: vidēji gaišs ādas tonis
+🧝🏽	elfs: vidējs ādas tonis
+🧝🏾	elfs: vidēji tumšs ādas tonis
+🧝🏿	elfs: tumšs ādas tonis
+🧝‍♀️	sieviete elfs
+🧝‍♀	sieviete elfs
+🧝🏻‍♀️	sieviete elfs: gaišs ādas tonis
+🧝🏻‍♀	sieviete elfs: gaišs ādas tonis
+🧝🏼‍♀️	sieviete elfa: vidēji gaišs ādas tonis
+🧝🏼‍♀	sieviete elfa: vidēji gaišs ādas tonis
+🧝🏽‍♀️	sieviete elfs: vidējs ādas tonis
+🧝🏽‍♀	sieviete elfs: vidējs ādas tonis
+🧝🏾‍♀️	sieviete elfa: vidēji tumšs ādas tonis
+🧝🏾‍♀	sieviete elfa: vidēji tumšs ādas tonis
+🧝🏿‍♀️	sieviete elfs: tumšs ādas tonis
+🧝🏿‍♀	sieviete elfs: tumšs ādas tonis
+🧝‍♂️	cilvēks elfs
+🧝‍♂	cilvēks elfs
+🧝🏻‍♂️	vīrietis elfs: gaišs ādas tonis
+🧝🏻‍♂	vīrietis elfs: gaišs ādas tonis
+🧝🏼‍♂️	vīrietis elfs: vidēji gaišs ādas tonis
+🧝🏼‍♂	vīrietis elfs: vidēji gaišs ādas tonis
+🧝🏽‍♂️	vīrietis elfs: vidējs ādas tonis
+🧝🏽‍♂	vīrietis elfs: vidējs ādas tonis
+🧝🏾‍♂️	vīrietis elfs: vidēji tumšs ādas tonis
+🧝🏾‍♂	vīrietis elfs: vidēji tumšs ādas tonis
+🧝🏿‍♂️	vīrietis elfs: tumšs ādas tonis
+🧝🏿‍♂	vīrietis elfs: tumšs ādas tonis
+🧞	džins
+🧞‍♀️	sievietes džins
+🧞‍♀	sievietes džins
+🧞‍♂️	vīrs džins
+🧞‍♂	vīrs džins
+🧟	zombijs
+🧟‍♀️	sieviete zombie
+🧟‍♀	sieviete zombie
+🧟‍♂️	cilvēks zombijs
+🧟‍♂	cilvēks zombijs
+🙍	cilvēks sarauca pieri
+🙍🏻	persona sarauca pieri: gaišs ādas tonis
+🙍🏼	persona sarauca pieri: vidēji gaišs ādas tonis
+🙍🏽	persona sarauca pieri: vidējs ādas tonis
+🙍🏾	persona sarauca pieri: vidēji tumšs ādas tonis
+🙍🏿	persona sarauca pieri: tumšs ādas tonis
+🙍‍♂️	vīrietis sarauca pieri
+🙍‍♂	vīrietis sarauca pieri
+🙍🏻‍♂️	vīrietis saraucis pieri: gaišs ādas tonis
+🙍🏻‍♂	vīrietis saraucis pieri: gaišs ādas tonis
+🙍🏼‍♂️	vīrietis saraucis pieri: vidēji gaišs ādas tonis
+🙍🏼‍♂	vīrietis saraucis pieri: vidēji gaišs ādas tonis
+🙍🏽‍♂️	vīrietis saraucis pieri: vidējs ādas tonis
+🙍🏽‍♂	vīrietis saraucis pieri: vidējs ādas tonis
+🙍🏾‍♂️	vīrietis saraucis pieri: vidēji tumšs ādas tonis
+🙍🏾‍♂	vīrietis saraucis pieri: vidēji tumšs ādas tonis
+🙍🏿‍♂️	vīrietis sarauca pieri: tumšs ādas tonis
+🙍🏿‍♂	vīrietis sarauca pieri: tumšs ādas tonis
+🙍‍♀️	sieviete sarauca pieri
+🙍‍♀	sieviete sarauca pieri
+🙍🏻‍♀️	sieviete sarauca pieri: gaišs ādas tonis
+🙍🏻‍♀	sieviete sarauca pieri: gaišs ādas tonis
+🙍🏼‍♀️	sieviete sarauca pieri: vidēji gaišs ādas tonis
+🙍🏼‍♀	sieviete sarauca pieri: vidēji gaišs ādas tonis
+🙍🏽‍♀️	sieviete sarauca pieri: vidējs ādas tonis
+🙍🏽‍♀	sieviete sarauca pieri: vidējs ādas tonis
+🙍🏾‍♀️	sieviete sarauca pieri: vidēji tumšs ādas tonis
+🙍🏾‍♀	sieviete sarauca pieri: vidēji tumšs ādas tonis
+🙍🏿‍♀️	sieviete sarauca pieri: tumšs ādas tonis
+🙍🏿‍♀	sieviete sarauca pieri: tumšs ādas tonis
+🙎	cilvēks pļāpā
+🙎🏻	cilvēks, kas pūš: gaišs ādas tonis
+🙎🏼	cilvēks, kas pūš: vidēji gaišs ādas tonis
+🙎🏽	cilvēks, kas pūš: vidējs ādas tonis
+🙎🏾	cilvēks, kas pūš: vidēji tumšs ādas tonis
+🙎🏿	cilvēks, kas pļāpā: tumšs ādas tonis
+🙎‍♂️	vīrietis pļāpā
+🙎‍♂	vīrietis pļāpā
+🙎🏻‍♂️	vīrietis pūš: gaišs ādas tonis
+🙎🏻‍♂	vīrietis pūš: gaišs ādas tonis
+🙎🏼‍♂️	vīrietis pūš: vidēji gaišs ādas tonis
+🙎🏼‍♂	vīrietis pūš: vidēji gaišs ādas tonis
+🙎🏽‍♂️	vīrietis pūš: vidējs ādas tonis
+🙎🏽‍♂	vīrietis pūš: vidējs ādas tonis
+🙎🏾‍♂️	vīrietis pūš: vidēji tumšs ādas tonis
+🙎🏾‍♂	vīrietis pūš: vidēji tumšs ādas tonis
+🙎🏿‍♂️	vīrietis pļāpā: tumšs ādas tonis
+🙎🏿‍♂	vīrietis pļāpā: tumšs ādas tonis
+🙎‍♀️	sieviete pļāpā
+🙎‍♀	sieviete pļāpā
+🙎🏻‍♀️	sieviete pļāpā: gaišs ādas tonis
+🙎🏻‍♀	sieviete pļāpā: gaišs ādas tonis
+🙎🏼‍♀️	sieviete pļāpā: vidēji gaišs ādas tonis
+🙎🏼‍♀	sieviete pļāpā: vidēji gaišs ādas tonis
+🙎🏽‍♀️	sieviete pļāpā: vidējs ādas tonis
+🙎🏽‍♀	sieviete pļāpā: vidējs ādas tonis
+🙎🏾‍♀️	sieviete pļāpā: vidēji tumšs ādas tonis
+🙎🏾‍♀	sieviete pļāpā: vidēji tumšs ādas tonis
+🙎🏿‍♀️	sieviete pļāpā: tumšs ādas tonis
+🙎🏿‍♀	sieviete pļāpā: tumšs ādas tonis
+🙅	persona, kas žestikulē NĒ
+🙅🏻	persona, kas žestikulē NĒ: gaišs ādas tonis
+🙅🏼	persona, kas žestikulē NĒ: vidēji gaišs ādas tonis
+🙅🏽	persona, kas žestikulē NĒ: vidējs ādas tonis
+🙅🏾	persona, kas žestikulē NĒ: vidēji tumšs ādas tonis
+🙅🏿	persona, kas žestikulē NĒ: tumšs ādas tonis
+🙅‍♂️	vīrietis ar žestikulāciju NĒ
+🙅‍♂	vīrietis ar žestikulāciju NĒ
+🙅🏻‍♂️	vīrietis, kas žestikulē NĒ: gaišs ādas tonis
+🙅🏻‍♂	vīrietis, kas žestikulē NĒ: gaišs ādas tonis
+🙅🏼‍♂️	vīrietis, kas žestikulē NĒ: vidēji gaišs ādas tonis
+🙅🏼‍♂	vīrietis, kas žestikulē NĒ: vidēji gaišs ādas tonis
+🙅🏽‍♂️	vīrietis, kas žestikulē NĒ: vidējs ādas tonis
+🙅🏽‍♂	vīrietis, kas žestikulē NĒ: vidējs ādas tonis
+🙅🏾‍♂️	vīrietis, kas žestikulē NĒ: vidēji tumšs ādas tonis
+🙅🏾‍♂	vīrietis, kas žestikulē NĒ: vidēji tumšs ādas tonis
+🙅🏿‍♂️	vīrietis, kas žestikulē NĒ: tumšs ādas tonis
+🙅🏿‍♂	vīrietis, kas žestikulē NĒ: tumšs ādas tonis
+🙅‍♀️	sieviete ar žestikulāciju NĒ
+🙅‍♀	sieviete ar žestikulāciju NĒ
+🙅🏻‍♀️	sieviete, kas žestikulē NĒ: gaišs ādas tonis
+🙅🏻‍♀	sieviete, kas žestikulē NĒ: gaišs ādas tonis
+🙅🏼‍♀️	sieviete ar žestiem NĒ: vidēji gaišs ādas tonis
+🙅🏼‍♀	sieviete ar žestiem NĒ: vidēji gaišs ādas tonis
+🙅🏽‍♀️	sieviete, kas žestikulē NĒ: vidējs ādas tonis
+🙅🏽‍♀	sieviete, kas žestikulē NĒ: vidējs ādas tonis
+🙅🏾‍♀️	sieviete ar žestiem NĒ: vidēji tumšs ādas tonis
+🙅🏾‍♀	sieviete ar žestiem NĒ: vidēji tumšs ādas tonis
+🙅🏿‍♀️	sieviete, kas žestikulē NĒ: tumšs ādas tonis
+🙅🏿‍♀	sieviete, kas žestikulē NĒ: tumšs ādas tonis
+🙆	persona ar žestiem labi
+🙆🏻	cilvēks žestikulē OK: gaišs ādas tonis
+🙆🏼	persona ar žestiem Labi: vidēji gaišs ādas tonis
+🙆🏽	cilvēks žestikulē OK: vidējs ādas tonis
+🙆🏾	persona ar žestiem Labi: vidēji tumšs ādas tonis
+🙆🏿	cilvēks žestikulē OK: tumšs ādas tonis
+🙆‍♂️	vīrietis žestikulējot OK
+🙆‍♂	vīrietis žestikulējot OK
+🙆🏻‍♂️	vīrietis žestikulē OK: gaišs ādas tonis
+🙆🏻‍♂	vīrietis žestikulē OK: gaišs ādas tonis
+🙆🏼‍♂️	vīrietis žestikulē OK: vidēji gaišs ādas tonis
+🙆🏼‍♂	vīrietis žestikulē OK: vidēji gaišs ādas tonis
+🙆🏽‍♂️	vīrietis žestikulē OK: vidējs ādas tonis
+🙆🏽‍♂	vīrietis žestikulē OK: vidējs ādas tonis
+🙆🏾‍♂️	vīrietis žestikulē OK: vidēji tumšs ādas tonis
+🙆🏾‍♂	vīrietis žestikulē OK: vidēji tumšs ādas tonis
+🙆🏿‍♂️	vīrietis žestikulē OK: tumšs ādas tonis
+🙆🏿‍♂	vīrietis žestikulē OK: tumšs ādas tonis
+🙆‍♀️	sieviete žestikulējot OK
+🙆‍♀	sieviete žestikulējot OK
+🙆🏻‍♀️	sieviete žestikulē OK: gaišs ādas tonis
+🙆🏻‍♀	sieviete žestikulē OK: gaišs ādas tonis
+🙆🏼‍♀️	sieviete žestikulē OK: vidēji gaišs ādas tonis
+🙆🏼‍♀	sieviete žestikulē OK: vidēji gaišs ādas tonis
+🙆🏽‍♀️	sieviete žestikulē OK: vidējs ādas tonis
+🙆🏽‍♀	sieviete žestikulē OK: vidējs ādas tonis
+🙆🏾‍♀️	sieviete žestikulē OK: vidēji tumšs ādas tonis
+🙆🏾‍♀	sieviete žestikulē OK: vidēji tumšs ādas tonis
+🙆🏿‍♀️	sieviete žestikulē OK: tumšs ādas tonis
+🙆🏿‍♀	sieviete žestikulē OK: tumšs ādas tonis
+💁	cilvēks noliec roku
+💁🏻	persona, kas noliec roku: gaišs ādas tonis
+💁🏼	cilvēks noliek roku: vidēji gaišs ādas tonis
+💁🏽	cilvēks noliek roku: vidējs ādas tonis
+💁🏾	cilvēks noliek roku: vidēji tumšs ādas tonis
+💁🏿	persona, kas noliec roku: tumšs ādas tonis
+💁‍♂️	vīrietis noliec roku
+💁‍♂	vīrietis noliec roku
+💁🏻‍♂️	vīrietis noliek roku: gaišs ādas tonis
+💁🏻‍♂	vīrietis noliek roku: gaišs ādas tonis
+💁🏼‍♂️	vīrietis noliek roku: vidēji gaišs ādas tonis
+💁🏼‍♂	vīrietis noliek roku: vidēji gaišs ādas tonis
+💁🏽‍♂️	vīrietis noliek roku: vidējs ādas tonis
+💁🏽‍♂	vīrietis noliek roku: vidējs ādas tonis
+💁🏾‍♂️	vīrietis noliek roku: vidēji tumšs ādas tonis
+💁🏾‍♂	vīrietis noliek roku: vidēji tumšs ādas tonis
+💁🏿‍♂️	vīrietis, kurš noliec roku: tumšs ādas tonis
+💁🏿‍♂	vīrietis, kurš noliec roku: tumšs ādas tonis
+💁‍♀️	sieviete, kas noliec roku
+💁‍♀	sieviete, kas noliec roku
+💁🏻‍♀️	sieviete, kas noliec roku: gaišs ādas tonis
+💁🏻‍♀	sieviete, kas noliec roku: gaišs ādas tonis
+💁🏼‍♀️	sieviete, kas noliec roku: vidēji gaišs ādas tonis
+💁🏼‍♀	sieviete, kas noliec roku: vidēji gaišs ādas tonis
+💁🏽‍♀️	sieviete, kas noliec roku: vidējs ādas tonis
+💁🏽‍♀	sieviete, kas noliec roku: vidējs ādas tonis
+💁🏾‍♀️	sieviete, kas noliec roku: vidēji tumšs ādas tonis
+💁🏾‍♀	sieviete, kas noliec roku: vidēji tumšs ādas tonis
+💁🏿‍♀️	sieviete, kas noliec roku: tumšs ādas tonis
+💁🏿‍♀	sieviete, kas noliec roku: tumšs ādas tonis
+🙋	persona, kas paceļ roku
+🙋🏻	persona, kas paceļ roku: gaišs ādas tonis
+🙋🏼	persona, kas paceļ roku: vidēji gaišs ādas tonis
+🙋🏽	cilvēks, kas paceļ roku: vidējs ādas tonis
+🙋🏾	persona, kas paceļ roku: vidēji tumšs ādas tonis
+🙋🏿	persona, kas paceļ roku: tumšs ādas tonis
+🙋‍♂️	vīrietis paceļ roku
+🙋‍♂	vīrietis paceļ roku
+🙋🏻‍♂️	vīrietis paceļ roku: gaišs ādas tonis
+🙋🏻‍♂	vīrietis paceļ roku: gaišs ādas tonis
+🙋🏼‍♂️	vīrietis paceļ roku: vidēji gaišs ādas tonis
+🙋🏼‍♂	vīrietis paceļ roku: vidēji gaišs ādas tonis
+🙋🏽‍♂️	vīrietis paceļ roku: vidējs ādas tonis
+🙋🏽‍♂	vīrietis paceļ roku: vidējs ādas tonis
+🙋🏾‍♂️	vīrietis paceļ roku: vidēji tumšs ādas tonis
+🙋🏾‍♂	vīrietis paceļ roku: vidēji tumšs ādas tonis
+🙋🏿‍♂️	vīrietis paceļ roku: tumšs ādas tonis
+🙋🏿‍♂	vīrietis paceļ roku: tumšs ādas tonis
+🙋‍♀️	sieviete paceļ roku
+🙋‍♀	sieviete paceļ roku
+🙋🏻‍♀️	sieviete, kas paceļ roku: gaišs ādas tonis
+🙋🏻‍♀	sieviete, kas paceļ roku: gaišs ādas tonis
+🙋🏼‍♀️	sieviete, kas paceļ roku: vidēji gaišs ādas tonis
+🙋🏼‍♀	sieviete, kas paceļ roku: vidēji gaišs ādas tonis
+🙋🏽‍♀️	sieviete paceļ roku: vidējs ādas tonis
+🙋🏽‍♀	sieviete paceļ roku: vidējs ādas tonis
+🙋🏾‍♀️	sieviete, kas paceļ roku: vidēji tumšs ādas tonis
+🙋🏾‍♀	sieviete, kas paceļ roku: vidēji tumšs ādas tonis
+🙋🏿‍♀️	sieviete, kas paceļ roku: tumšs ādas tonis
+🙋🏿‍♀	sieviete, kas paceļ roku: tumšs ādas tonis
+🙇	cilvēks paklanās
+🙇🏻	cilvēks paklanās: gaišs ādas tonis
+🙇🏼	cilvēks paklanās: vidēji gaišs ādas tonis
+🙇🏽	cilvēks paklanās: vidējs ādas tonis
+🙇🏾	cilvēks paklanās: vidēji tumšs ādas tonis
+🙇🏿	cilvēks paklanās: tumšs ādas tonis
+🙇‍♂️	vīrietis paklanās
+🙇‍♂	vīrietis paklanās
+🙇🏻‍♂️	vīrietis paklanās: gaišs ādas tonis
+🙇🏻‍♂	vīrietis paklanās: gaišs ādas tonis
+🙇🏼‍♂️	vīrietis paklanās: vidēji gaišs ādas tonis
+🙇🏼‍♂	vīrietis paklanās: vidēji gaišs ādas tonis
+🙇🏽‍♂️	vīrietis paklanās: vidējs ādas tonis
+🙇🏽‍♂	vīrietis paklanās: vidējs ādas tonis
+🙇🏾‍♂️	vīrietis paklanās: vidēji tumšs ādas tonis
+🙇🏾‍♂	vīrietis paklanās: vidēji tumšs ādas tonis
+🙇🏿‍♂️	vīrietis paklanās: tumšs ādas tonis
+🙇🏿‍♂	vīrietis paklanās: tumšs ādas tonis
+🙇‍♀️	sieviete paklanās
+🙇‍♀	sieviete paklanās
+🙇🏻‍♀️	sieviete paklanās: gaišs ādas tonis
+🙇🏻‍♀	sieviete paklanās: gaišs ādas tonis
+🙇🏼‍♀️	sieviete paklanās: vidēji gaišs ādas tonis
+🙇🏼‍♀	sieviete paklanās: vidēji gaišs ādas tonis
+🙇🏽‍♀️	sieviete paklanās: vidējs ādas tonis
+🙇🏽‍♀	sieviete paklanās: vidējs ādas tonis
+🙇🏾‍♀️	sieviete paklanās: vidēji tumšs ādas tonis
+🙇🏾‍♀	sieviete paklanās: vidēji tumšs ādas tonis
+🙇🏿‍♀️	sieviete paklanās: tumšs ādas tonis
+🙇🏿‍♀	sieviete paklanās: tumšs ādas tonis
+🤦	persona facepalming
+🤦🏻	personas facepalming: gaišs ādas tonis
+🤦🏼	personas facepalming: vidēji gaišs ādas tonis
+🤦🏽	personas facepalming: vidējs ādas tonis
+🤦🏾	personas facepalming: vidēji tumšs ādas tonis
+🤦🏿	personas facepalming: tumšs ādas tonis
+🤦‍♂️	vīrietis facepalming
+🤦‍♂	vīrietis facepalming
+🤦🏻‍♂️	vīrietis facepalming: gaišs ādas tonis
+🤦🏻‍♂	vīrietis facepalming: gaišs ādas tonis
+🤦🏼‍♂️	vīrietis facepalming: vidēji gaišs ādas tonis
+🤦🏼‍♂	vīrietis facepalming: vidēji gaišs ādas tonis
+🤦🏽‍♂️	vīrietis facepalming: vidējs ādas tonis
+🤦🏽‍♂	vīrietis facepalming: vidējs ādas tonis
+🤦🏾‍♂️	vīrietis facepalming: vidēji tumšs ādas tonis
+🤦🏾‍♂	vīrietis facepalming: vidēji tumšs ādas tonis
+🤦🏿‍♂️	vīrietis facepalming: tumšs ādas tonis
+🤦🏿‍♂	vīrietis facepalming: tumšs ādas tonis
+🤦‍♀️	sieviete facepalming
+🤦‍♀	sieviete facepalming
+🤦🏻‍♀️	sieviete facepalming: gaišs ādas tonis
+🤦🏻‍♀	sieviete facepalming: gaišs ādas tonis
+🤦🏼‍♀️	sieviete facepalming: vidēji gaišs ādas tonis
+🤦🏼‍♀	sieviete facepalming: vidēji gaišs ādas tonis
+🤦🏽‍♀️	sieviete facepalming: vidējs ādas tonis
+🤦🏽‍♀	sieviete facepalming: vidējs ādas tonis
+🤦🏾‍♀️	sievietes sejas palmēšana: vidēji tumšs ādas tonis
+🤦🏾‍♀	sievietes sejas palmēšana: vidēji tumšs ādas tonis
+🤦🏿‍♀️	sieviete facepalming: tumšs ādas tonis
+🤦🏿‍♀	sieviete facepalming: tumšs ādas tonis
+🤷	cilvēks rausta plecus
+🤷🏻	cilvēks rausta plecus: gaišs ādas tonis
+🤷🏼	cilvēks rausta plecus: vidēji gaišs ādas tonis
+🤷🏽	cilvēks rausta plecus: vidējs ādas tonis
+🤷🏾	cilvēks rausta plecus: vidēji tumšs ādas tonis
+🤷🏿	cilvēks rausta plecus: tumšs ādas tonis
+🤷‍♂️	vīrietis rausta plecus
+🤷‍♂	vīrietis rausta plecus
+🤷🏻‍♂️	vīrietis rausta plecus: gaišs ādas tonis
+🤷🏻‍♂	vīrietis rausta plecus: gaišs ādas tonis
+🤷🏼‍♂️	vīrietis rausta plecus: vidēji gaišs ādas tonis
+🤷🏼‍♂	vīrietis rausta plecus: vidēji gaišs ādas tonis
+🤷🏽‍♂️	vīrietis rausta plecus: vidējs ādas tonis
+🤷🏽‍♂	vīrietis rausta plecus: vidējs ādas tonis
+🤷🏾‍♂️	vīrietis rausta plecus: vidēji tumšs ādas tonis
+🤷🏾‍♂	vīrietis rausta plecus: vidēji tumšs ādas tonis
+🤷🏿‍♂️	vīrietis rausta plecus: tumšs ādas tonis
+🤷🏿‍♂	vīrietis rausta plecus: tumšs ādas tonis
+🤷‍♀️	sieviete paraustīja plecus
+🤷‍♀	sieviete paraustīja plecus
+🤷🏻‍♀️	sieviete rausta plecus: gaišs ādas tonis
+🤷🏻‍♀	sieviete rausta plecus: gaišs ādas tonis
+🤷🏼‍♀️	sieviete rausta plecus: vidēji gaišs ādas tonis
+🤷🏼‍♀	sieviete rausta plecus: vidēji gaišs ādas tonis
+🤷🏽‍♀️	sieviete rausta plecus: vidējs ādas tonis
+🤷🏽‍♀	sieviete rausta plecus: vidējs ādas tonis
+🤷🏾‍♀️	sieviete rausta plecus: vidēji tumšs ādas tonis
+🤷🏾‍♀	sieviete rausta plecus: vidēji tumšs ādas tonis
+🤷🏿‍♀️	sieviete rausta plecus: tumšs ādas tonis
+🤷🏿‍♀	sieviete rausta plecus: tumšs ādas tonis
+💆	persona, kas saņem masāžu
+💆🏻	persona, kas saņem masāžu: gaišs ādas tonis
+💆🏼	persona, kas saņem masāžu: vidēji gaišs ādas tonis
+💆🏽	persona, kas saņem masāžu: vidējs ādas tonis
+💆🏾	persona, kas saņem masāžu: vidēji tumšs ādas tonis
+💆🏿	persona, kas saņem masāžu: tumšs ādas tonis
+💆‍♂️	vīrietis saņem masāžu
+💆‍♂	vīrietis saņem masāžu
+💆🏻‍♂️	vīrietis, kurš saņem masāžu: gaišs ādas tonis
+💆🏻‍♂	vīrietis, kurš saņem masāžu: gaišs ādas tonis
+💆🏼‍♂️	vīrietis, kurš saņem masāžu: vidēji gaišs ādas tonis
+💆🏼‍♂	vīrietis, kurš saņem masāžu: vidēji gaišs ādas tonis
+💆🏽‍♂️	vīrietis, kurš saņem masāžu: vidējs ādas tonis
+💆🏽‍♂	vīrietis, kurš saņem masāžu: vidējs ādas tonis
+💆🏾‍♂️	vīrietis, kurš saņem masāžu: vidēji tumšs ādas tonis
+💆🏾‍♂	vīrietis, kurš saņem masāžu: vidēji tumšs ādas tonis
+💆🏿‍♂️	vīrietis, kurš saņem masāžu: tumšs ādas tonis
+💆🏿‍♂	vīrietis, kurš saņem masāžu: tumšs ādas tonis
+💆‍♀️	sieviete saņem masāžu
+💆‍♀	sieviete saņem masāžu
+💆🏻‍♀️	sieviete, kas saņem masāžu: gaišs ādas tonis
+💆🏻‍♀	sieviete, kas saņem masāžu: gaišs ādas tonis
+💆🏼‍♀️	sieviete, kas saņem masāžu: vidēji gaišs ādas tonis
+💆🏼‍♀	sieviete, kas saņem masāžu: vidēji gaišs ādas tonis
+💆🏽‍♀️	sieviete, kas saņem masāžu: vidējs ādas tonis
+💆🏽‍♀	sieviete, kas saņem masāžu: vidējs ādas tonis
+💆🏾‍♀️	sieviete, kas saņem masāžu: vidēji tumšs ādas tonis
+💆🏾‍♀	sieviete, kas saņem masāžu: vidēji tumšs ādas tonis
+💆🏿‍♀️	sieviete, kas saņem masāžu: tumšs ādas tonis
+💆🏿‍♀	sieviete, kas saņem masāžu: tumšs ādas tonis
+💇	persona, kas apgriež matus
+💇🏻	persona, kas griež matus: gaišs ādas tonis
+💇🏼	persona, kas griež matus: vidēji gaišs ādas tonis
+💇🏽	persona, kas griež matus: vidējs ādas tonis
+💇🏾	persona, kas griež matus: vidēji tumšs ādas tonis
+💇🏿	persona, kas griež matus: tumšs ādas tonis
+💇‍♂️	vīrietis griež matus
+💇‍♂	vīrietis griež matus
+💇🏻‍♂️	vīrietis griež matus: gaišs ādas tonis
+💇🏻‍♂	vīrietis griež matus: gaišs ādas tonis
+💇🏼‍♂️	vīrietis griež matus: vidēji gaišs ādas tonis
+💇🏼‍♂	vīrietis griež matus: vidēji gaišs ādas tonis
+💇🏽‍♂️	vīrietis griež matus: vidējs ādas tonis
+💇🏽‍♂	vīrietis griež matus: vidējs ādas tonis
+💇🏾‍♂️	vīrietis griež matus: vidēji tumšs ādas tonis
+💇🏾‍♂	vīrietis griež matus: vidēji tumšs ādas tonis
+💇🏿‍♂️	vīrietis griež matus: tumšs ādas tonis
+💇🏿‍♂	vīrietis griež matus: tumšs ādas tonis
+💇‍♀️	sieviete griež matus
+💇‍♀	sieviete griež matus
+💇🏻‍♀️	sieviete griež matus: gaišs ādas tonis
+💇🏻‍♀	sieviete griež matus: gaišs ādas tonis
+💇🏼‍♀️	sieviete griež matus: vidēji gaišs ādas tonis
+💇🏼‍♀	sieviete griež matus: vidēji gaišs ādas tonis
+💇🏽‍♀️	sieviete griež matus: vidējs ādas tonis
+💇🏽‍♀	sieviete griež matus: vidējs ādas tonis
+💇🏾‍♀️	sieviete griež matus: vidēji tumšs ādas tonis
+💇🏾‍♀	sieviete griež matus: vidēji tumšs ādas tonis
+💇🏿‍♀️	sieviete griež matus: tumšs ādas tonis
+💇🏿‍♀	sieviete griež matus: tumšs ādas tonis
+🚶	cilvēks staigā
+🚶🏻	cilvēks staigā: gaišs ādas tonis
+🚶🏼	cilvēks staigā: vidēji gaišs ādas tonis
+🚶🏽	cilvēks staigā: vidējs ādas tonis
+🚶🏾	cilvēks staigā: vidēji tumšs ādas tonis
+🚶🏿	cilvēks staigā: tumšs ādas tonis
+🚶‍♂️	cilvēks staigā
+🚶‍♂	cilvēks staigā
+🚶🏻‍♂️	vīrietis staigā: gaišs ādas tonis
+🚶🏻‍♂	vīrietis staigā: gaišs ādas tonis
+🚶🏼‍♂️	vīrietis staigā: vidēji gaišs ādas tonis
+🚶🏼‍♂	vīrietis staigā: vidēji gaišs ādas tonis
+🚶🏽‍♂️	vīrietis staigā: vidējs ādas tonis
+🚶🏽‍♂	vīrietis staigā: vidējs ādas tonis
+🚶🏾‍♂️	vīrietis staigā: vidēji tumšs ādas tonis
+🚶🏾‍♂	vīrietis staigā: vidēji tumšs ādas tonis
+🚶🏿‍♂️	vīrietis staigā: tumšs ādas tonis
+🚶🏿‍♂	vīrietis staigā: tumšs ādas tonis
+🚶‍♀️	sieviete staigā
+🚶‍♀	sieviete staigā
+🚶🏻‍♀️	sieviete staigā: gaišs ādas tonis
+🚶🏻‍♀	sieviete staigā: gaišs ādas tonis
+🚶🏼‍♀️	sieviete staigā: vidēji gaišs ādas tonis
+🚶🏼‍♀	sieviete staigā: vidēji gaišs ādas tonis
+🚶🏽‍♀️	sieviete staigā: vidējs ādas tonis
+🚶🏽‍♀	sieviete staigā: vidējs ādas tonis
+🚶🏾‍♀️	sieviete staigā: vidēji tumšs ādas tonis
+🚶🏾‍♀	sieviete staigā: vidēji tumšs ādas tonis
+🚶🏿‍♀️	sieviete staigā: tumšs ādas tonis
+🚶🏿‍♀	sieviete staigā: tumšs ādas tonis
+🏃	cilvēks skrien
+🏃🏻	cilvēks skrien: gaišs ādas tonis
+🏃🏼	cilvēks skrien: vidēji gaišs ādas tonis
+🏃🏽	cilvēks skrien: vidējs ādas tonis
+🏃🏾	cilvēks skrien: vidēji tumšs ādas tonis
+🏃🏿	cilvēks skrien: tumšs ādas tonis
+🏃‍♂️	cilvēks skrien
+🏃‍♂	cilvēks skrien
+🏃🏻‍♂️	vīrietis skrien: gaišs ādas tonis
+🏃🏻‍♂	vīrietis skrien: gaišs ādas tonis
+🏃🏼‍♂️	vīrietis skrien: vidēji gaišs ādas tonis
+🏃🏼‍♂	vīrietis skrien: vidēji gaišs ādas tonis
+🏃🏽‍♂️	vīrietis skrien: vidējs ādas tonis
+🏃🏽‍♂	vīrietis skrien: vidējs ādas tonis
+🏃🏾‍♂️	vīrietis skrien: vidēji tumšs ādas tonis
+🏃🏾‍♂	vīrietis skrien: vidēji tumšs ādas tonis
+🏃🏿‍♂️	vīrietis skrien: tumšs ādas tonis
+🏃🏿‍♂	vīrietis skrien: tumšs ādas tonis
+🏃‍♀️	sieviete skrien
+🏃‍♀	sieviete skrien
+🏃🏻‍♀️	sieviete skrien: gaišs ādas tonis
+🏃🏻‍♀	sieviete skrien: gaišs ādas tonis
+🏃🏼‍♀️	sieviete skrien: vidēji gaišs ādas tonis
+🏃🏼‍♀	sieviete skrien: vidēji gaišs ādas tonis
+🏃🏽‍♀️	sieviete skrien: vidējs ādas tonis
+🏃🏽‍♀	sieviete skrien: vidējs ādas tonis
+🏃🏾‍♀️	sieviete skrien: vidēji tumšs ādas tonis
+🏃🏾‍♀	sieviete skrien: vidēji tumšs ādas tonis
+🏃🏿‍♀️	sieviete skrien: tumšs ādas tonis
+🏃🏿‍♀	sieviete skrien: tumšs ādas tonis
+💃	sieviete dejo
+💃🏻	sieviete dejo: gaišs ādas tonis
+💃🏼	sieviete dejo: vidēji gaišs ādas tonis
+💃🏽	sieviete dejo: vidējs ādas tonis
+💃🏾	sieviete dejo: vidēji tumšs ādas tonis
+💃🏿	sieviete dejo: tumšs ādas tonis
+🕺	vīrietis dejo
+🕺🏻	vīrietis dejo: gaišs ādas tonis
+🕺🏼	vīrietis dejo: vidēji gaišs ādas tonis
+🕺🏽	vīrietis dejo: vidējs ādas tonis
+🕺🏾	vīrietis dejo: vidēji tumšs ādas tonis
+🕺🏿	vīrietis dejo: tumšs ādas tonis
+👯	cilvēki ar zaķa ausīm
+👯‍♂️	vīrieši ar zaķa ausīm
+👯‍♂	vīrieši ar zaķa ausīm
+👯‍♀️	sievietes ar zaķa ausīm
+👯‍♀	sievietes ar zaķa ausīm
+🧖	cilvēks tvaika telpā
+🧖🏻	cilvēks tveicīgā telpā: gaišs ādas tonis
+🧖🏼	cilvēks tveicīgā telpā: vidēji gaišs ādas tonis
+🧖🏽	cilvēks tveicīgā telpā: vidējs ādas tonis
+🧖🏾	cilvēks tveicīgā telpā: vidēji tumšs ādas tonis
+🧖🏿	cilvēks tveicīgā telpā: tumšs ādas tonis
+🧖‍♀️	sieviete tvaika istabā
+🧖‍♀	sieviete tvaika istabā
+🧖🏻‍♀️	sieviete tveicīgā istabā: gaišs ādas tonis
+🧖🏻‍♀	sieviete tveicīgā istabā: gaišs ādas tonis
+🧖🏼‍♀️	sieviete tveicīgā istabā: vidēji gaišs ādas tonis
+🧖🏼‍♀	sieviete tveicīgā istabā: vidēji gaišs ādas tonis
+🧖🏽‍♀️	sieviete tveicīgā istabā: vidējs ādas tonis
+🧖🏽‍♀	sieviete tveicīgā istabā: vidējs ādas tonis
+🧖🏾‍♀️	sieviete tveicīgā istabā: vidēji tumšs ādas tonis
+🧖🏾‍♀	sieviete tveicīgā istabā: vidēji tumšs ādas tonis
+🧖🏿‍♀️	sieviete tveicīgā istabā: tumšs ādas tonis
+🧖🏿‍♀	sieviete tveicīgā istabā: tumšs ādas tonis
+🧖‍♂️	vīrietis tveicīgā istabā
+🧖‍♂	vīrietis tveicīgā istabā
+🧖🏻‍♂️	vīrietis tveicīgā istabā: gaišs ādas tonis
+🧖🏻‍♂	vīrietis tveicīgā istabā: gaišs ādas tonis
+🧖🏼‍♂️	vīrietis tveicīgā telpā: vidēji gaišs ādas tonis
+🧖🏼‍♂	vīrietis tveicīgā telpā: vidēji gaišs ādas tonis
+🧖🏽‍♂️	vīrietis tveicīgā telpā: vidējs ādas tonis
+🧖🏽‍♂	vīrietis tveicīgā telpā: vidējs ādas tonis
+🧖🏾‍♂️	vīrietis tveicīgā telpā: vidēji tumšs ādas tonis
+🧖🏾‍♂	vīrietis tveicīgā telpā: vidēji tumšs ādas tonis
+🧖🏿‍♂️	vīrietis tveicīgā istabā: tumšs ādas tonis
+🧖🏿‍♂	vīrietis tveicīgā istabā: tumšs ādas tonis
+🧗	cilvēks kāpj
+🧗🏻	cilvēks, kas kāpj: gaišs ādas tonis
+🧗🏼	kāpējs: vidēji gaišs ādas tonis
+🧗🏽	cilvēks, kas kāpj: vidējs ādas tonis
+🧗🏾	kāpējs: vidēji tumšs ādas tonis
+🧗🏿	cilvēks, kas kāpj: tumšs ādas tonis
+🧗‍♀️	sieviete kāpšana
+🧗‍♀	sieviete kāpšana
+🧗🏻‍♀️	sieviete kāpšana: gaišs ādas tonis
+🧗🏻‍♀	sieviete kāpšana: gaišs ādas tonis
+🧗🏼‍♀️	sieviete kāpšana: vidēji gaišs ādas tonis
+🧗🏼‍♀	sieviete kāpšana: vidēji gaišs ādas tonis
+🧗🏽‍♀️	sieviete kāpšana: vidējs ādas tonis
+🧗🏽‍♀	sieviete kāpšana: vidējs ādas tonis
+🧗🏾‍♀️	sieviete kāpšana: vidēji tumšs ādas tonis
+🧗🏾‍♀	sieviete kāpšana: vidēji tumšs ādas tonis
+🧗🏿‍♀️	sieviete kāpšana: tumšs ādas tonis
+🧗🏿‍♀	sieviete kāpšana: tumšs ādas tonis
+🧗‍♂️	cilvēks kāpj
+🧗‍♂	cilvēks kāpj
+🧗🏻‍♂️	vīrietis kāpj: gaišs ādas tonis
+🧗🏻‍♂	vīrietis kāpj: gaišs ādas tonis
+🧗🏼‍♂️	vīrietis, kas kāpj: vidēji gaišs ādas tonis
+🧗🏼‍♂	vīrietis, kas kāpj: vidēji gaišs ādas tonis
+🧗🏽‍♂️	vīrietis, kas kāpj: vidējs ādas tonis
+🧗🏽‍♂	vīrietis, kas kāpj: vidējs ādas tonis
+🧗🏾‍♂️	vīrietis, kas kāpj: vidēji tumšs ādas tonis
+🧗🏾‍♂	vīrietis, kas kāpj: vidēji tumšs ādas tonis
+🧗🏿‍♂️	vīrietis kāpj: tumšs ādas tonis
+🧗🏿‍♂	vīrietis kāpj: tumšs ādas tonis
+🧘	persona lotosa pozā
+🧘🏻	persona lotosa pozā: gaišs ādas tonis
+🧘🏼	persona lotosa pozā: vidēji gaišs ādas tonis
+🧘🏽	persona lotosa pozā: vidējs ādas tonis
+🧘🏾	persona lotosa pozā: vidēji tumšs ādas tonis
+🧘🏿	persona lotosa pozā: tumšs ādas tonis
+🧘‍♀️	sieviete lotosa pozā
+🧘‍♀	sieviete lotosa pozā
+🧘🏻‍♀️	sieviete lotosa pozā: gaišs ādas tonis
+🧘🏻‍♀	sieviete lotosa pozā: gaišs ādas tonis
+🧘🏼‍♀️	sieviete lotosa pozā: vidēji gaišs ādas tonis
+🧘🏼‍♀	sieviete lotosa pozā: vidēji gaišs ādas tonis
+🧘🏽‍♀️	sieviete lotosa pozā: vidējs ādas tonis
+🧘🏽‍♀	sieviete lotosa pozā: vidējs ādas tonis
+🧘🏾‍♀️	sieviete lotosa pozā: vidēji tumšs ādas tonis
+🧘🏾‍♀	sieviete lotosa pozā: vidēji tumšs ādas tonis
+🧘🏿‍♀️	sieviete lotosa pozā: tumšs ādas tonis
+🧘🏿‍♀	sieviete lotosa pozā: tumšs ādas tonis
+🧘‍♂️	vīrietis lotosa pozā
+🧘‍♂	vīrietis lotosa pozā
+🧘🏻‍♂️	vīrietis lotosa pozā: gaišs ādas tonis
+🧘🏻‍♂	vīrietis lotosa pozā: gaišs ādas tonis
+🧘🏼‍♂️	vīrietis lotosa pozā: vidēji gaišs ādas tonis
+🧘🏼‍♂	vīrietis lotosa pozā: vidēji gaišs ādas tonis
+🧘🏽‍♂️	vīrietis lotosa pozā: vidējs ādas tonis
+🧘🏽‍♂	vīrietis lotosa pozā: vidējs ādas tonis
+🧘🏾‍♂️	vīrietis lotosa pozā: vidēji tumšs ādas tonis
+🧘🏾‍♂	vīrietis lotosa pozā: vidēji tumšs ādas tonis
+🧘🏿‍♂️	vīrietis lotosa pozā: tumšs ādas tonis
+🧘🏿‍♂	vīrietis lotosa pozā: tumšs ādas tonis
+🛀	persona, kas iet vannā
+🛀🏻	persona, kas iet vannā: gaišs ādas tonis
+🛀🏼	persona, kas iet vannā: vidēji gaišs ādas tonis
+🛀🏽	persona, kas iet vannā: vidējs ādas tonis
+🛀🏾	persona, kas iet vannā: vidēji tumšs ādas tonis
+🛀🏿	persona, kas iet vannā: tumšs ādas tonis
+🛌	cilvēks gultā
+🛌🏻	cilvēks gultā: gaišs ādas tonis
+🛌🏼	cilvēks gultā: vidēji gaišs ādas tonis
+🛌🏽	cilvēks gultā: vidējs ādas tonis
+🛌🏾	cilvēks gultā: vidēji tumšs ādas tonis
+🛌🏿	cilvēks gultā: tumšs ādas tonis
+🕴️	vīrietis uzvalkā levitē
+🕴	vīrietis uzvalkā levitē
+🕴🏻	vīrietis uzvalkā levitē: gaišs ādas tonis
+🕴🏼	vīrietis uzvalkā levitē: vidēji gaišs ādas tonis
+🕴🏽	vīrietis uzvalkā levitē: vidējs ādas tonis
+🕴🏾	vīrietis uzvalkā levitē: vidēji tumšs ādas tonis
+🕴🏿	vīrietis uzvalkā levitē: tumšs ādas tonis
+🗣️	runājoša galva
+🗣	runājoša galva
+👤	krūtis siluetā
+👥	krūšutēli siluetā
+🤺	cilvēku paukošana
+🏇	zirgu skriešanās sacīkstes
+🏇🏻	zirgu skriešanās sacīkstes: gaišs ādas tonis
+🏇🏼	zirgu skriešanās sacīkstes: vidēji gaišs ādas tonis
+🏇🏽	zirgu skriešanās sacīkstes: vidējs ādas tonis
+🏇🏾	zirgu skriešanās sacīkstes: vidēji tumšs ādas tonis
+🏇🏿	zirgu skriešanās sacīkstes: tumšs ādas tonis
+⛷️	slēpotājs
+⛷	slēpotājs
+🏂	snovbordists
+🏂🏻	snovbordists: gaišs ādas tonis
+🏂🏼	snovbordists: vidēji gaišs ādas tonis
+🏂🏽	snovbordists: vidējs ādas tonis
+🏂🏾	snovbordists: vidēji tumšs ādas tonis
+🏂🏿	snovbordists: tumšs ādas tonis
+🏌️	cilvēks spēlē golfu
+🏌	cilvēks spēlē golfu
+🏌🏻	cilvēks, kurš spēlē golfu: gaišs ādas tonis
+🏌🏼	cilvēks, kurš spēlē golfu: vidēji gaišs ādas tonis
+🏌🏽	cilvēks, kurš spēlē golfu: vidējs ādas tonis
+🏌🏾	cilvēks, kurš spēlē golfu: vidēji tumšs ādas tonis
+🏌🏿	cilvēks, kurš spēlē golfu: tumšs ādas tonis
+🏌️‍♂️	vīrietis spēlē golfu
+🏌‍♂️	vīrietis spēlē golfu
+🏌️‍♂	vīrietis spēlē golfu
+🏌‍♂	vīrietis spēlē golfu
+🏌🏻‍♂️	vīrietis, kas spēlē golfu: gaišs ādas tonis
+🏌🏻‍♂	vīrietis, kas spēlē golfu: gaišs ādas tonis
+🏌🏼‍♂️	vīrietis, kas spēlē golfu: vidēji gaišs ādas tonis
+🏌🏼‍♂	vīrietis, kas spēlē golfu: vidēji gaišs ādas tonis
+🏌🏽‍♂️	vīrietis, kurš spēlē golfu: vidējs ādas tonis
+🏌🏽‍♂	vīrietis, kurš spēlē golfu: vidējs ādas tonis
+🏌🏾‍♂️	vīrietis, kas spēlē golfu: vidēji tumšs ādas tonis
+🏌🏾‍♂	vīrietis, kas spēlē golfu: vidēji tumšs ādas tonis
+🏌🏿‍♂️	vīrietis, kas spēlē golfu: tumšs ādas tonis
+🏌🏿‍♂	vīrietis, kas spēlē golfu: tumšs ādas tonis
+🏌️‍♀️	sieviete spēlē golfu
+🏌‍♀️	sieviete spēlē golfu
+🏌️‍♀	sieviete spēlē golfu
+🏌‍♀	sieviete spēlē golfu
+🏌🏻‍♀️	sieviete, kas spēlē golfu: gaišs ādas tonis
+🏌🏻‍♀	sieviete, kas spēlē golfu: gaišs ādas tonis
+🏌🏼‍♀️	sieviete, kas spēlē golfu: vidēji gaišs ādas tonis
+🏌🏼‍♀	sieviete, kas spēlē golfu: vidēji gaišs ādas tonis
+🏌🏽‍♀️	sieviete, kas spēlē golfu: vidējs ādas tonis
+🏌🏽‍♀	sieviete, kas spēlē golfu: vidējs ādas tonis
+🏌🏾‍♀️	sieviete, kas spēlē golfu: vidēji tumšs ādas tonis
+🏌🏾‍♀	sieviete, kas spēlē golfu: vidēji tumšs ādas tonis
+🏌🏿‍♀️	sieviete, kas spēlē golfu: tumšs ādas tonis
+🏌🏿‍♀	sieviete, kas spēlē golfu: tumšs ādas tonis
+🏄	cilvēks sērfo
+🏄🏻	cilvēks sērfo: gaišs ādas tonis
+🏄🏼	cilvēks sērfo: vidēji gaišs ādas tonis
+🏄🏽	cilvēks sērfo: vidējs ādas tonis
+🏄🏾	cilvēks sērfo: vidēji tumšs ādas tonis
+🏄🏿	cilvēks sērfo: tumšs ādas tonis
+🏄‍♂️	vīrietis sērfo
+🏄‍♂	vīrietis sērfo
+🏄🏻‍♂️	vīrietis sērfo: gaišs ādas tonis
+🏄🏻‍♂	vīrietis sērfo: gaišs ādas tonis
+🏄🏼‍♂️	vīrietis sērfo: vidēji gaišs ādas tonis
+🏄🏼‍♂	vīrietis sērfo: vidēji gaišs ādas tonis
+🏄🏽‍♂️	vīrietis sērfo: vidējs ādas tonis
+🏄🏽‍♂	vīrietis sērfo: vidējs ādas tonis
+🏄🏾‍♂️	vīrietis sērfo: vidēji tumšs ādas tonis
+🏄🏾‍♂	vīrietis sērfo: vidēji tumšs ādas tonis
+🏄🏿‍♂️	vīrietis sērfo: tumšs ādas tonis
+🏄🏿‍♂	vīrietis sērfo: tumšs ādas tonis
+🏄‍♀️	sieviete sērfo
+🏄‍♀	sieviete sērfo
+🏄🏻‍♀️	sieviete sērfošanā: gaišs ādas tonis
+🏄🏻‍♀	sieviete sērfošanā: gaišs ādas tonis
+🏄🏼‍♀️	sieviete sērfošanā: vidēji gaišs ādas tonis
+🏄🏼‍♀	sieviete sērfošanā: vidēji gaišs ādas tonis
+🏄🏽‍♀️	sieviete sērfošanā: vidējs ādas tonis
+🏄🏽‍♀	sieviete sērfošanā: vidējs ādas tonis
+🏄🏾‍♀️	sieviete sērfošanā: vidēji tumšs ādas tonis
+🏄🏾‍♀	sieviete sērfošanā: vidēji tumšs ādas tonis
+🏄🏿‍♀️	sieviete sērfo: tumšs ādas tonis
+🏄🏿‍♀	sieviete sērfo: tumšs ādas tonis
+🚣	personu airu laiva
+🚣🏻	personu airu laiva: gaišs ādas tonis
+🚣🏼	personu airu laiva: vidēji gaišs ādas tonis
+🚣🏽	personu airu laiva: vidējs ādas tonis
+🚣🏾	personu airu laiva: vidēji tumšs ādas tonis
+🚣🏿	personu airu laiva: tumšs ādas tonis
+🚣‍♂️	vīrietis airu laiva
+🚣‍♂	vīrietis airu laiva
+🚣🏻‍♂️	vīrietis airu laiva: gaišs ādas tonis
+🚣🏻‍♂	vīrietis airu laiva: gaišs ādas tonis
+🚣🏼‍♂️	vīrietis airu laiva: vidēji gaišs ādas tonis
+🚣🏼‍♂	vīrietis airu laiva: vidēji gaišs ādas tonis
+🚣🏽‍♂️	vīrietis airu laiva: vidējs ādas tonis
+🚣🏽‍♂	vīrietis airu laiva: vidējs ādas tonis
+🚣🏾‍♂️	vīrietis airu laiva: vidēji tumšs ādas tonis
+🚣🏾‍♂	vīrietis airu laiva: vidēji tumšs ādas tonis
+🚣🏿‍♂️	vīrietis airu laiva: tumšs ādas tonis
+🚣🏿‍♂	vīrietis airu laiva: tumšs ādas tonis
+🚣‍♀️	sieviete airu laiva
+🚣‍♀	sieviete airu laiva
+🚣🏻‍♀️	sieviete airu laiva: gaišs ādas tonis
+🚣🏻‍♀	sieviete airu laiva: gaišs ādas tonis
+🚣🏼‍♀️	sieviete airu laiva: vidēji gaišs ādas tonis
+🚣🏼‍♀	sieviete airu laiva: vidēji gaišs ādas tonis
+🚣🏽‍♀️	sieviete airu laiva: vidējs ādas tonis
+🚣🏽‍♀	sieviete airu laiva: vidējs ādas tonis
+🚣🏾‍♀️	sieviete airu laiva: vidēji tumšs ādas tonis
+🚣🏾‍♀	sieviete airu laiva: vidēji tumšs ādas tonis
+🚣🏿‍♀️	sieviete airu laiva: tumšs ādas tonis
+🚣🏿‍♀	sieviete airu laiva: tumšs ādas tonis
+🏊	cilvēks peld
+🏊🏻	peldošs cilvēks: gaišs ādas tonis
+🏊🏼	peldošs cilvēks: vidēji gaišs ādas tonis
+🏊🏽	peldošs cilvēks: vidējs ādas tonis
+🏊🏾	peldošs cilvēks: vidēji tumšs ādas tonis
+🏊🏿	peldošs cilvēks: tumšs ādas tonis
+🏊‍♂️	vīrietis peld
+🏊‍♂	vīrietis peld
+🏊🏻‍♂️	vīrietis peld: gaišs ādas tonis
+🏊🏻‍♂	vīrietis peld: gaišs ādas tonis
+🏊🏼‍♂️	vīrietis peld: vidēji gaišs ādas tonis
+🏊🏼‍♂	vīrietis peld: vidēji gaišs ādas tonis
+🏊🏽‍♂️	vīrietis peld: vidējs ādas tonis
+🏊🏽‍♂	vīrietis peld: vidējs ādas tonis
+🏊🏾‍♂️	vīrietis peld: vidēji tumšs ādas tonis
+🏊🏾‍♂	vīrietis peld: vidēji tumšs ādas tonis
+🏊🏿‍♂️	vīrietis peld: tumšs ādas tonis
+🏊🏿‍♂	vīrietis peld: tumšs ādas tonis
+🏊‍♀️	sieviete peldēšana
+🏊‍♀	sieviete peldēšana
+🏊🏻‍♀️	sieviete peldēšana: gaišs ādas tonis
+🏊🏻‍♀	sieviete peldēšana: gaišs ādas tonis
+🏊🏼‍♀️	sieviete peldēšana: vidēji gaišs ādas tonis
+🏊🏼‍♀	sieviete peldēšana: vidēji gaišs ādas tonis
+🏊🏽‍♀️	sieviete peldēšana: vidējs ādas tonis
+🏊🏽‍♀	sieviete peldēšana: vidējs ādas tonis
+🏊🏾‍♀️	sieviete peldēšana: vidēji tumšs ādas tonis
+🏊🏾‍♀	sieviete peldēšana: vidēji tumšs ādas tonis
+🏊🏿‍♀️	sieviete peldēšana: tumšs ādas tonis
+🏊🏿‍♀	sieviete peldēšana: tumšs ādas tonis
+⛹️	persona, kas atlec bumbiņā
+⛹	persona, kas atlec bumbiņā
+⛹🏻	cilvēks atsitiena bumba: gaišs ādas tonis
+⛹🏼	cilvēks atsitiena bumba: vidēji gaišs ādas tonis
+⛹🏽	cilvēks atsitiena bumba: vidējs ādas tonis
+⛹🏾	persona, kas atlec bumba: vidēji tumšs ādas tonis
+⛹🏿	persona, kas atlec bumba: tumšs ādas tonis
+⛹️‍♂️	vīrietis atsitiena bumba
+⛹‍♂️	vīrietis atsitiena bumba
+⛹️‍♂	vīrietis atsitiena bumba
+⛹‍♂	vīrietis atsitiena bumba
+⛹🏻‍♂️	vīrietis atsitiena bumba: gaišs ādas tonis
+⛹🏻‍♂	vīrietis atsitiena bumba: gaišs ādas tonis
+⛹🏼‍♂️	vīrietis atsitiena bumba: vidēji gaišs ādas tonis
+⛹🏼‍♂	vīrietis atsitiena bumba: vidēji gaišs ādas tonis
+⛹🏽‍♂️	vīrietis atsitiena bumba: vidējs ādas tonis
+⛹🏽‍♂	vīrietis atsitiena bumba: vidējs ādas tonis
+⛹🏾‍♂️	vīrietis atsitiena bumba: vidēji tumšs ādas tonis
+⛹🏾‍♂	vīrietis atsitiena bumba: vidēji tumšs ādas tonis
+⛹🏿‍♂️	vīrietis atsitiena bumba: tumšs ādas tonis
+⛹🏿‍♂	vīrietis atsitiena bumba: tumšs ādas tonis
+⛹️‍♀️	sieviete, kas atlec bumba
+⛹‍♀️	sieviete, kas atlec bumba
+⛹️‍♀	sieviete, kas atlec bumba
+⛹‍♀	sieviete, kas atlec bumba
+⛹🏻‍♀️	sieviete atsitiena bumbiņa: gaišs ādas tonis
+⛹🏻‍♀	sieviete atsitiena bumbiņa: gaišs ādas tonis
+⛹🏼‍♀️	sieviete atsitiena bumbiņa: vidēji gaišs ādas tonis
+⛹🏼‍♀	sieviete atsitiena bumbiņa: vidēji gaišs ādas tonis
+⛹🏽‍♀️	sieviete atsitiena bumbiņa: vidējs ādas tonis
+⛹🏽‍♀	sieviete atsitiena bumbiņa: vidējs ādas tonis
+⛹🏾‍♀️	sieviete atsitiena bumbiņa: vidēji tumšs ādas tonis
+⛹🏾‍♀	sieviete atsitiena bumbiņa: vidēji tumšs ādas tonis
+⛹🏿‍♀️	sieviete, kas atlec bumba: tumšs ādas tonis
+⛹🏿‍♀	sieviete, kas atlec bumba: tumšs ādas tonis
+🏋️	persona, kas ceļ svarus
+🏋	persona, kas ceļ svarus
+🏋🏻	persona, kas ceļ svarus: gaišs ādas tonis
+🏋🏼	persona, kas ceļ svarus: vidēji gaišs ādas tonis
+🏋🏽	persona, kas ceļ svarus: vidējs ādas tonis
+🏋🏾	persona, kas ceļ svarus: vidēji tumšs ādas tonis
+🏋🏿	persona, kas ceļ svarus: tumšs ādas tonis
+🏋️‍♂️	vīrietis cilā svarus
+🏋‍♂️	vīrietis cilā svarus
+🏋️‍♂	vīrietis cilā svarus
+🏋‍♂	vīrietis cilā svarus
+🏋🏻‍♂️	vīrietis cilā svarus: gaišs ādas tonis
+🏋🏻‍♂	vīrietis cilā svarus: gaišs ādas tonis
+🏋🏼‍♂️	vīrietis cilā svarus: vidēji gaišs ādas tonis
+🏋🏼‍♂	vīrietis cilā svarus: vidēji gaišs ādas tonis
+🏋🏽‍♂️	vīrietis cilā svarus: vidējs ādas tonis
+🏋🏽‍♂	vīrietis cilā svarus: vidējs ādas tonis
+🏋🏾‍♂️	vīrietis cilā svarus: vidēji tumšs ādas tonis
+🏋🏾‍♂	vīrietis cilā svarus: vidēji tumšs ādas tonis
+🏋🏿‍♂️	vīrietis cilā svarus: tumšs ādas tonis
+🏋🏿‍♂	vīrietis cilā svarus: tumšs ādas tonis
+🏋️‍♀️	sieviete, kas cilā svarus
+🏋‍♀️	sieviete, kas cilā svarus
+🏋️‍♀	sieviete, kas cilā svarus
+🏋‍♀	sieviete, kas cilā svarus
+🏋🏻‍♀️	sieviete cilā svarus: gaišs ādas tonis
+🏋🏻‍♀	sieviete cilā svarus: gaišs ādas tonis
+🏋🏼‍♀️	sieviete cilā svarus: vidēji gaišs ādas tonis
+🏋🏼‍♀	sieviete cilā svarus: vidēji gaišs ādas tonis
+🏋🏽‍♀️	sieviete cilā svarus: vidējs ādas tonis
+🏋🏽‍♀	sieviete cilā svarus: vidējs ādas tonis
+🏋🏾‍♀️	sieviete, kas cilā svarus: vidēji tumšs ādas tonis
+🏋🏾‍♀	sieviete, kas cilā svarus: vidēji tumšs ādas tonis
+🏋🏿‍♀️	sieviete, kas cilā svarus: tumšs ādas tonis
+🏋🏿‍♀	sieviete, kas cilā svarus: tumšs ādas tonis
+🚴	persona riteņbraukšana
+🚴🏻	cilvēks brauc ar velosipēdu: gaišs ādas tonis
+🚴🏼	cilvēks brauc ar velosipēdu: vidēji gaišs ādas tonis
+🚴🏽	cilvēks brauc ar velosipēdu: vidējs ādas tonis
+🚴🏾	cilvēks brauc ar velosipēdu: vidēji tumšs ādas tonis
+🚴🏿	cilvēks brauc ar velosipēdu: tumšs ādas tonis
+🚴‍♂️	vīrietis riteņbraukšana
+🚴‍♂	vīrietis riteņbraukšana
+🚴🏻‍♂️	vīrietis riteņbraukšanā: gaišs ādas tonis
+🚴🏻‍♂	vīrietis riteņbraukšanā: gaišs ādas tonis
+🚴🏼‍♂️	vīrietis riteņbraukšanā: vidēji gaišs ādas tonis
+🚴🏼‍♂	vīrietis riteņbraukšanā: vidēji gaišs ādas tonis
+🚴🏽‍♂️	vīrietis riteņbraukšanā: vidējs ādas tonis
+🚴🏽‍♂	vīrietis riteņbraukšanā: vidējs ādas tonis
+🚴🏾‍♂️	vīrietis riteņbraukšanā: vidēji tumšs ādas tonis
+🚴🏾‍♂	vīrietis riteņbraukšanā: vidēji tumšs ādas tonis
+🚴🏿‍♂️	vīrietis brauc ar velosipēdu: tumšs ādas tonis
+🚴🏿‍♂	vīrietis brauc ar velosipēdu: tumšs ādas tonis
+🚴‍♀️	sieviete riteņbraukšana
+🚴‍♀	sieviete riteņbraukšana
+🚴🏻‍♀️	sieviete riteņbraukšanā: gaišs ādas tonis
+🚴🏻‍♀	sieviete riteņbraukšanā: gaišs ādas tonis
+🚴🏼‍♀️	sieviete riteņbraukšanā: vidēji gaišs ādas tonis
+🚴🏼‍♀	sieviete riteņbraukšanā: vidēji gaišs ādas tonis
+🚴🏽‍♀️	sieviete riteņbraukšanā: vidējs ādas tonis
+🚴🏽‍♀	sieviete riteņbraukšanā: vidējs ādas tonis
+🚴🏾‍♀️	sieviete riteņbraukšanā: vidēji tumšs ādas tonis
+🚴🏾‍♀	sieviete riteņbraukšanā: vidēji tumšs ādas tonis
+🚴🏿‍♀️	sieviete riteņbraukšanā: tumšs ādas tonis
+🚴🏿‍♀	sieviete riteņbraukšanā: tumšs ādas tonis
+🚵	cilvēks kalnu riteņbraukšanā
+🚵🏻	cilvēks brauc ar kalnu riteņbraukšanu: gaišs ādas tonis
+🚵🏼	cilvēks brauc ar kalnu riteņbraukšanu: vidēji gaišs ādas tonis
+🚵🏽	cilvēks brauc ar kalnu riteņbraukšanu: vidējs ādas tonis
+🚵🏾	cilvēks brauc ar kalnu riteņbraukšanu: vidēji tumšs ādas tonis
+🚵🏿	cilvēks brauc ar kalnu riteņbraukšanu: tumšs ādas tonis
+🚵‍♂️	vīrietis kalnu riteņbraukšanā
+🚵‍♂	vīrietis kalnu riteņbraukšanā
+🚵🏻‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: gaišs ādas tonis
+🚵🏻‍♂	vīrietis, braucot ar kalnu riteņbraukšanu: gaišs ādas tonis
+🚵🏼‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: vidēji gaišs ādas tonis
+🚵🏼‍♂	vīrietis, braucot ar kalnu riteņbraukšanu: vidēji gaišs ādas tonis
+🚵🏽‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: vidējs ādas tonis
+🚵🏽‍♂	vīrietis, braucot ar kalnu riteņbraukšanu: vidējs ādas tonis
+🚵🏾‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: vidēji tumšs ādas tonis
+🚵🏾‍♂	vīrietis, braucot ar kalnu riteņbraukšanu: vidēji tumšs ādas tonis
+🚵🏿‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: tumšs ādas tonis
+🚵🏿‍♂	vīrietis, braucot ar kalnu riteņbraukšanu: tumšs ādas tonis
+🚵‍♀️	sieviete kalnu riteņbraukšanā
+🚵‍♀	sieviete kalnu riteņbraukšanā
+🚵🏻‍♀️	sieviete kalnu riteņbraukšanā: gaišs ādas tonis
+🚵🏻‍♀	sieviete kalnu riteņbraukšanā: gaišs ādas tonis
+🚵🏼‍♀️	sieviete kalnu riteņbraukšanā: vidēji gaišs ādas tonis
+🚵🏼‍♀	sieviete kalnu riteņbraukšanā: vidēji gaišs ādas tonis
+🚵🏽‍♀️	sieviete kalnu riteņbraukšanā: vidējs ādas tonis
+🚵🏽‍♀	sieviete kalnu riteņbraukšanā: vidējs ādas tonis
+🚵🏾‍♀️	sieviete kalnu riteņbraukšanā: vidēji tumšs ādas tonis
+🚵🏾‍♀	sieviete kalnu riteņbraukšanā: vidēji tumšs ādas tonis
+🚵🏿‍♀️	sieviete kalnu riteņbraukšanā: tumšs ādas tonis
+🚵🏿‍♀	sieviete kalnu riteņbraukšanā: tumšs ādas tonis
+🏎️	sacīkšu mašīna
+🏎	sacīkšu mašīna
+🏍️	motocikls
+🏍	motocikls
+🤸	persona, kas brauc ar ratiem
+🤸🏻	persona, kas brauc ratos: gaišs ādas tonis
+🤸🏼	cilvēks ratiņos: vidēji gaišs ādas tonis
+🤸🏽	cilvēks ratiņos: vidējs ādas tonis
+🤸🏾	cilvēks ratiņos: vidēji tumšs ādas tonis
+🤸🏿	cilvēks ratos: tumšs ādas tonis
+🤸‍♂️	vīrietis braukā ar ratiem
+🤸‍♂	vīrietis braukā ar ratiem
+🤸🏻‍♂️	vīrietis ratiņos: gaišs ādas tonis
+🤸🏻‍♂	vīrietis ratiņos: gaišs ādas tonis
+🤸🏼‍♂️	vīrietis ratiņos: vidēji gaišs ādas tonis
+🤸🏼‍♂	vīrietis ratiņos: vidēji gaišs ādas tonis
+🤸🏽‍♂️	vīrietis ratiņos: vidējs ādas tonis
+🤸🏽‍♂	vīrietis ratiņos: vidējs ādas tonis
+🤸🏾‍♂️	vīrietis ratiņos: vidēji tumšs ādas tonis
+🤸🏾‍♂	vīrietis ratiņos: vidēji tumšs ādas tonis
+🤸🏿‍♂️	vīrietis ratos: tumšs ādas tonis
+🤸🏿‍♂	vīrietis ratos: tumšs ādas tonis
+🤸‍♀️	sieviete ratiņos
+🤸‍♀	sieviete ratiņos
+🤸🏻‍♀️	sieviete ratiņos: gaišs ādas tonis
+🤸🏻‍♀	sieviete ratiņos: gaišs ādas tonis
+🤸🏼‍♀️	sieviete ratiņos: vidēji gaišs ādas tonis
+🤸🏼‍♀	sieviete ratiņos: vidēji gaišs ādas tonis
+🤸🏽‍♀️	sieviete ratiņos: vidējs ādas tonis
+🤸🏽‍♀	sieviete ratiņos: vidējs ādas tonis
+🤸🏾‍♀️	sieviete ratiņos: vidēji tumšs ādas tonis
+🤸🏾‍♀	sieviete ratiņos: vidēji tumšs ādas tonis
+🤸🏿‍♀️	sieviete ratiņos: tumšs ādas tonis
+🤸🏿‍♀	sieviete ratiņos: tumšs ādas tonis
+🤼	cilvēki cīnās
+🤼‍♂️	vīriešu cīkstēšanās
+🤼‍♂	vīriešu cīkstēšanās
+🤼‍♀️	sieviešu cīkstēšanās
+🤼‍♀	sieviešu cīkstēšanās
+🤽	persona, kas spēlē ūdens polo
+🤽🏻	persona, kas spēlē ūdenspolo: gaišs ādas tonis
+🤽🏼	persona, kas spēlē ūdenspolo: vidēji gaišs ādas tonis
+🤽🏽	persona, kas spēlē ūdenspolo: vidējs ādas tonis
+🤽🏾	persona, kas spēlē ūdenspolo: vidēji tumšs ādas tonis
+🤽🏿	persona, kas spēlē ūdenspolo: tumšs ādas tonis
+🤽‍♂️	vīrietis spēlē ūdenspolo
+🤽‍♂	vīrietis spēlē ūdenspolo
+🤽🏻‍♂️	vīrietis, kas spēlē ūdenspolo: gaišs ādas tonis
+🤽🏻‍♂	vīrietis, kas spēlē ūdenspolo: gaišs ādas tonis
+🤽🏼‍♂️	vīrietis, kas spēlē ūdenspolo: vidēji gaišs ādas tonis
+🤽🏼‍♂	vīrietis, kas spēlē ūdenspolo: vidēji gaišs ādas tonis
+🤽🏽‍♂️	vīrietis, kas spēlē ūdenspolo: vidējs ādas tonis
+🤽🏽‍♂	vīrietis, kas spēlē ūdenspolo: vidējs ādas tonis
+🤽🏾‍♂️	vīrietis, kas spēlē ūdenspolo: vidēji tumšs ādas tonis
+🤽🏾‍♂	vīrietis, kas spēlē ūdenspolo: vidēji tumšs ādas tonis
+🤽🏿‍♂️	vīrietis, kas spēlē ūdenspolo: tumšs ādas tonis
+🤽🏿‍♂	vīrietis, kas spēlē ūdenspolo: tumšs ādas tonis
+🤽‍♀️	sieviete, kas spēlē ūdens polo
+🤽‍♀	sieviete, kas spēlē ūdens polo
+🤽🏻‍♀️	sieviete, kas spēlē ūdenspolo: gaišs ādas tonis
+🤽🏻‍♀	sieviete, kas spēlē ūdenspolo: gaišs ādas tonis
+🤽🏼‍♀️	sieviete, kas spēlē ūdenspolo: vidēji gaišs ādas tonis
+🤽🏼‍♀	sieviete, kas spēlē ūdenspolo: vidēji gaišs ādas tonis
+🤽🏽‍♀️	sieviete, kas spēlē ūdenspolo: vidējs ādas tonis
+🤽🏽‍♀	sieviete, kas spēlē ūdenspolo: vidējs ādas tonis
+🤽🏾‍♀️	sieviete, kas spēlē ūdenspolo: vidēji tumšs ādas tonis
+🤽🏾‍♀	sieviete, kas spēlē ūdenspolo: vidēji tumšs ādas tonis
+🤽🏿‍♀️	sieviete, kas spēlē ūdenspolo: tumšs ādas tonis
+🤽🏿‍♀	sieviete, kas spēlē ūdenspolo: tumšs ādas tonis
+🤾	persona, kas spēlē handbolu
+🤾🏻	persona, kas spēlē handbolu: gaišs ādas tonis
+🤾🏼	persona, kas spēlē handbolu: vidēji gaišs ādas tonis
+🤾🏽	persona, kas spēlē handbolu: vidējs ādas tonis
+🤾🏾	persona, kas spēlē handbolu: vidēji tumšs ādas tonis
+🤾🏿	persona, kas spēlē handbolu: tumšs ādas tonis
+🤾‍♂️	vīrietis spēlē handbolu
+🤾‍♂	vīrietis spēlē handbolu
+🤾🏻‍♂️	vīrietis, kas spēlē handbolu: gaišs ādas tonis
+🤾🏻‍♂	vīrietis, kas spēlē handbolu: gaišs ādas tonis
+🤾🏼‍♂️	vīrietis, kas spēlē handbolu: vidēji gaišs ādas tonis
+🤾🏼‍♂	vīrietis, kas spēlē handbolu: vidēji gaišs ādas tonis
+🤾🏽‍♂️	vīrietis, kas spēlē handbolu: vidējs ādas tonis
+🤾🏽‍♂	vīrietis, kas spēlē handbolu: vidējs ādas tonis
+🤾🏾‍♂️	vīrietis, kurš spēlē handbolu: vidēji tumšs ādas tonis
+🤾🏾‍♂	vīrietis, kurš spēlē handbolu: vidēji tumšs ādas tonis
+🤾🏿‍♂️	vīrietis, kas spēlē handbolu: tumšs ādas tonis
+🤾🏿‍♂	vīrietis, kas spēlē handbolu: tumšs ādas tonis
+🤾‍♀️	sieviete, kas spēlē handbolu
+🤾‍♀	sieviete, kas spēlē handbolu
+🤾🏻‍♀️	sieviete, kas spēlē handbolu: gaišs ādas tonis
+🤾🏻‍♀	sieviete, kas spēlē handbolu: gaišs ādas tonis
+🤾🏼‍♀️	sieviete, kas spēlē handbolu: vidēji gaišs ādas tonis
+🤾🏼‍♀	sieviete, kas spēlē handbolu: vidēji gaišs ādas tonis
+🤾🏽‍♀️	sieviete, kas spēlē handbolu: vidējs ādas tonis
+🤾🏽‍♀	sieviete, kas spēlē handbolu: vidējs ādas tonis
+🤾🏾‍♀️	sieviete, kas spēlē handbolu: vidēji tumšs ādas tonis
+🤾🏾‍♀	sieviete, kas spēlē handbolu: vidēji tumšs ādas tonis
+🤾🏿‍♀️	sieviete, kas spēlē handbolu: tumšs ādas tonis
+🤾🏿‍♀	sieviete, kas spēlē handbolu: tumšs ādas tonis
+🤹	cilvēks žonglē
+🤹🏻	cilvēks žonglē: gaišs ādas tonis
+🤹🏼	cilvēks žonglē: vidēji gaišs ādas tonis
+🤹🏽	cilvēks žonglē: vidējs ādas tonis
+🤹🏾	cilvēks žonglē: vidēji tumšs ādas tonis
+🤹🏿	cilvēks žonglē: tumšs ādas tonis
+🤹‍♂️	vīrietis žonglē
+🤹‍♂	vīrietis žonglē
+🤹🏻‍♂️	vīrietis žonglē: gaišs ādas tonis
+🤹🏻‍♂	vīrietis žonglē: gaišs ādas tonis
+🤹🏼‍♂️	vīrietis žonglē: vidēji gaišs ādas tonis
+🤹🏼‍♂	vīrietis žonglē: vidēji gaišs ādas tonis
+🤹🏽‍♂️	vīrietis žonglē: vidējs ādas tonis
+🤹🏽‍♂	vīrietis žonglē: vidējs ādas tonis
+🤹🏾‍♂️	vīrietis žonglē: vidēji tumšs ādas tonis
+🤹🏾‍♂	vīrietis žonglē: vidēji tumšs ādas tonis
+🤹🏿‍♂️	vīrietis žonglē: tumšs ādas tonis
+🤹🏿‍♂	vīrietis žonglē: tumšs ādas tonis
+🤹‍♀️	sieviete žonglē
+🤹‍♀	sieviete žonglē
+🤹🏻‍♀️	sieviete žonglē: gaišs ādas tonis
+🤹🏻‍♀	sieviete žonglē: gaišs ādas tonis
+🤹🏼‍♀️	sieviete žonglē: vidēji gaišs ādas tonis
+🤹🏼‍♀	sieviete žonglē: vidēji gaišs ādas tonis
+🤹🏽‍♀️	sieviete žonglē: vidējs ādas tonis
+🤹🏽‍♀	sieviete žonglē: vidējs ādas tonis
+🤹🏾‍♀️	sieviete žonglē: vidēji tumšs ādas tonis
+🤹🏾‍♀	sieviete žonglē: vidēji tumšs ādas tonis
+🤹🏿‍♀️	sieviete žonglē: tumšs ādas tonis
+🤹🏿‍♀	sieviete žonglē: tumšs ādas tonis
+👫	vīrietis un sieviete sadevušies rokās
+👬	divi vīrieši sadevušies rokās
+👭	divas sievietes, kas sadevušās rokās
+💏	skūpsts
+👩‍❤️‍💋‍👨	skūpsts: sieviete, vīrietis
+👩‍❤‍💋‍👨	skūpsts: sieviete, vīrietis
+👨‍❤️‍💋‍👨	skūpsts: vīrietis, vīrietis
+👨‍❤‍💋‍👨	skūpsts: vīrietis, vīrietis
+👩‍❤️‍💋‍👩	skūpsts: sieviete, sieviete
+👩‍❤‍💋‍👩	skūpsts: sieviete, sieviete
+💑	pāris ar sirdi
+👩‍❤️‍👨	pāris ar sirdi: sieviete, vīrietis
+👩‍❤‍👨	pāris ar sirdi: sieviete, vīrietis
+👨‍❤️‍👨	pāris ar sirdi: vīrietis, vīrietis
+👨‍❤‍👨	pāris ar sirdi: vīrietis, vīrietis
+👩‍❤️‍👩	pāris ar sirdi: sieviete, sieviete
+👩‍❤‍👩	pāris ar sirdi: sieviete, sieviete
+👪	ģimene
+👨‍👩‍👦	ģimene: vīrietis, sieviete, zēns
+👨‍👩‍👧	ģimene: vīrietis, sieviete, meitene
+👨‍👩‍👧‍👦	ģimene: vīrietis, sieviete, meitene, zēns
+👨‍👩‍👦‍👦	ģimene: vīrietis, sieviete, zēns, zēns
+👨‍👩‍👧‍👧	ģimene: vīrietis, sieviete, meitene, meitene
+👨‍👨‍👦	ģimene: vīrietis, vīrietis, zēns
+👨‍👨‍👧	ģimene: vīrietis, vīrietis, meitene
+👨‍👨‍👧‍👦	ģimene: vīrietis, vīrietis, meitene, zēns
+👨‍👨‍👦‍👦	ģimene: vīrietis, vīrietis, zēns, zēns
+👨‍👨‍👧‍👧	ģimene: vīrietis, vīrietis, meitene, meitene
+👩‍👩‍👦	ģimene: sieviete, sieviete, zēns
+👩‍👩‍👧	ģimene: sieviete, sieviete, meitene
+👩‍👩‍👧‍👦	ģimene: sieviete, sieviete, meitene, zēns
+👩‍👩‍👦‍👦	ģimene: sieviete, sieviete, zēns, zēns
+👩‍👩‍👧‍👧	ģimene: sieviete, sieviete, meitene, meitene
+👨‍👦	ģimene: vīrietis, zēns
+👨‍👦‍👦	ģimene: vīrietis, zēns, zēns
+👨‍👧	ģimene: vīrietis, meitene
+👨‍👧‍👦	ģimene: vīrietis, meitene, zēns
+👨‍👧‍👧	ģimene: vīrietis, meitene, meitene
+👩‍👦	ģimene: sieviete, zēns
+👩‍👦‍👦	ģimene: sieviete, zēns, zēns
+👩‍👧	ģimene: sieviete, meitene
+👩‍👧‍👦	ģimene: sieviete, meitene, zēns
+👩‍👧‍👧	ģimene: sieviete, meitene, meitene
+🤳	pašbilde
+🤳🏻	Pašbilde: gaišs ādas tonis
+🤳🏼	Pašbilde: vidēji gaišs ādas tonis
+🤳🏽	Pašbilde: vidējs ādas tonis
+🤳🏾	Pašbilde: vidēji tumšs ādas tonis
+🤳🏿	Pašbilde: tumšs ādas tonis
+💪	izliekts bicepss
+💪🏻	izliekts bicepss: gaišs ādas tonis
+💪🏼	izliekts bicepss: vidēji gaišs ādas tonis
+💪🏽	izliekts bicepss: vidējs ādas tonis
+💪🏾	izliekts bicepss: vidēji tumšs ādas tonis
+💪🏿	izliekts bicepss: tumšs ādas tonis
+🦵	kāju
+🦵🏻	kāja: gaišs ādas tonis
+🦵🏼	kāja: vidēji gaišs ādas tonis
+🦵🏽	kāja: vidējs ādas tonis
+🦵🏾	kāja: vidēji tumšs ādas tonis
+🦵🏿	kāja: tumšs ādas tonis
+🦶	pēda
+🦶🏻	pēda: gaišs ādas tonis
+🦶🏼	pēda: vidēji gaišs ādas tonis
+🦶🏽	pēda: vidējs ādas tonis
+🦶🏾	pēda: vidēji tumšs ādas tonis
+🦶🏿	pēda: tumšs ādas tonis
+👈	aizmugures rādītājs, kas norāda pa kreisi
+👈🏻	aizmugures rādītājs, kas vērsts pa kreisi: gaišs ādas tonis
+👈🏼	aizmugures rādītājs, kas vērsts pa kreisi: vidēji gaišs ādas tonis
+👈🏽	aizmugures rādītājs, kas vērsts pa kreisi: vidējs ādas tonis
+👈🏾	aizmugures rādītājs, kas vērsts pa kreisi: vidēji tumšs ādas tonis
+👈🏿	aizmugures rādītājs, kas vērsts pa kreisi: tumšs ādas tonis
+👉	aizmugures rādītājs, kas norāda pa labi
+👉🏻	aizmugures rādītājs, kas vērsts pa labi: gaišs ādas tonis
+👉🏼	aizmugures rādītājs, kas vērsts pa labi: vidēji gaišs ādas tonis
+👉🏽	aizmugures rādītājs, kas vērsts pa labi: vidējs ādas tonis
+👉🏾	aizmugures rādītājs, kas vērsts pa labi: vidēji tumšs ādas tonis
+👉🏿	aizmugures rādītājs, kas vērsts pa labi: tumšs ādas tonis
+☝️	indekss vērsts uz augšu
+☝	indekss vērsts uz augšu
+☝🏻	indekss vērsts uz augšu: gaišs ādas tonis
+☝🏼	indekss vērsts uz augšu: vidēji gaišs ādas tonis
+☝🏽	indekss vērsts uz augšu: vidējs ādas tonis
+☝🏾	indekss vērsts uz augšu: vidēji tumšs ādas tonis
+☝🏿	indekss vērsts uz augšu: tumšs ādas tonis
+👆	aizmugures rādītājs, kas vērsts uz augšu
+👆🏻	aizmugures rādītājs, kas vērsts uz augšu: gaišs ādas tonis
+👆🏼	aizmugures rādītājs, kas vērsts uz augšu: vidēji gaišs ādas tonis
+👆🏽	aizmugures rādītājs, kas vērsts uz augšu: vidējs ādas tonis
+👆🏾	aizmugures rādītājs, kas vērsts uz augšu: vidēji tumšs ādas tonis
+👆🏿	aizmugures rādītājs, kas vērsts uz augšu: tumšs ādas tonis
+🖕	Vidējais pirksts
+🖕🏻	vidējais pirksts: gaišs ādas tonis
+🖕🏼	vidējais pirksts: vidēji gaišs ādas tonis
+🖕🏽	vidējais pirksts: vidējs ādas tonis
+🖕🏾	vidējais pirksts: vidēji tumšs ādas tonis
+🖕🏿	vidējais pirksts: tumšs ādas tonis
+👇	aizmugures rādītājs, kas vērsts uz leju
+👇🏻	aizmugures rādītājs, kas vērsts uz leju: gaišs ādas tonis
+👇🏼	aizmugures rādītājs, kas vērsts uz leju: vidēji gaišs ādas tonis
+👇🏽	aizmugures rādītājs, kas vērsts uz leju: vidējs ādas tonis
+👇🏾	aizmugures rādītājs, kas vērsts uz leju: vidēji tumšs ādas tonis
+👇🏿	aizmugures rādītājs, kas vērsts uz leju: tumšs ādas tonis
+✌️	uzvaras roka
+✌	uzvaras roka
+✌🏻	uzvaras roka: gaišs ādas tonis
+✌🏼	uzvaras roka: vidēji gaišs ādas tonis
+✌🏽	uzvaras roka: vidējs ādas tonis
+✌🏾	uzvaras roka: vidēji tumšs ādas tonis
+✌🏿	uzvaras roka: tumšs ādas tonis
+🤞	sakrustoti pirksti
+🤞🏻	sakrustoti pirksti: gaišs ādas tonis
+🤞🏼	sakrustoti pirksti: vidēji gaišs ādas tonis
+🤞🏽	sakrustoti pirksti: vidējs ādas tonis
+🤞🏾	sakrustoti pirksti: vidēji tumšs ādas tonis
+🤞🏿	sakrustoti pirksti: tumšs ādas tonis
+🖖	vulkāna sveiciens
+🖖🏻	vulkāna salūts: gaišs ādas tonis
+🖖🏼	vulkāna salūts: vidēji gaišs ādas tonis
+🖖🏽	vulkāna salūts: vidējs ādas tonis
+🖖🏾	vulkāna salūts: vidēji tumšs ādas tonis
+🖖🏿	vulkāna salūts: tumšs ādas tonis
+🤘	ragu zīme
+🤘🏻	ragu zīme: gaišs ādas tonis
+🤘🏼	ragu zīme: vidēji gaišs ādas tonis
+🤘🏽	ragu zīme: vidējs ādas tonis
+🤘🏾	ragu zīme: vidēji tumšs ādas tonis
+🤘🏿	ragu zīme: tumšs ādas tonis
+🤙	sauc mani par roku
+🤙🏻	sauc mani par roku: gaišs ādas tonis
+🤙🏼	sauc mani par roku: vidēji gaišs ādas tonis
+🤙🏽	sauc mani par roku: vidējs ādas tonis
+🤙🏾	sauc mani par roku: vidēji tumšs ādas tonis
+🤙🏿	sauc mani par roku: tumšs ādas tonis
+🖐️	roka ar izplestiem pirkstiem
+🖐	roka ar izplestiem pirkstiem
+🖐🏻	roka ar izplestiem pirkstiem: gaišs ādas tonis
+🖐🏼	roka ar izplestiem pirkstiem: vidēji gaišs ādas tonis
+🖐🏽	roka ar izplestiem pirkstiem: vidējs ādas tonis
+🖐🏾	roka ar izplestiem pirkstiem: vidēji tumšs ādas tonis
+🖐🏿	roka ar izplestiem pirkstiem: tumšs ādas tonis
+✋	pacelta roka
+✋🏻	pacelta roka: gaišs ādas tonis
+✋🏼	pacelta roka: vidēji gaišs ādas tonis
+✋🏽	pacelta roka: vidējs ādas tonis
+✋🏾	pacelta roka: vidēji tumšs ādas tonis
+✋🏿	pacelta roka: tumšs ādas tonis
+👌	Laba roka
+👌🏻	Laba roka: gaišs ādas tonis
+👌🏼	Laba roka: vidēji gaišs ādas tonis
+👌🏽	Laba roka: vidējs ādas tonis
+👌🏾	Laba roka: vidēji tumšs ādas tonis
+👌🏿	Laba roka: tumšs ādas tonis
+👍	īkšķus augšā
+👍🏻	īkšķi uz augšu: gaišs ādas tonis
+👍🏼	īkšķi uz augšu: vidēji gaišs ādas tonis
+👍🏽	īkšķi uz augšu: vidējs ādas tonis
+👍🏾	īkšķi uz augšu: vidēji tumšs ādas tonis
+👍🏿	īkšķi uz augšu: tumšs ādas tonis
+👎	īķšķi lejā
+👎🏻	īkšķi uz leju: gaišs ādas tonis
+👎🏼	īkšķi uz leju: vidēji gaišs ādas tonis
+👎🏽	īkšķi uz leju: vidējs ādas tonis
+👎🏾	īkšķi uz leju: vidēji tumšs ādas tonis
+👎🏿	īkšķi uz leju: tumšs ādas tonis
+✊	paceltu dūri
+✊🏻	pacelta dūre: gaišs ādas tonis
+✊🏼	pacelta dūre: vidēji gaišs ādas tonis
+✊🏽	pacelta dūre: vidējs ādas tonis
+✊🏾	pacelta dūre: vidēji tumšs ādas tonis
+✊🏿	pacelta dūre: tumšs ādas tonis
+👊	pretimnākošā dūre
+👊🏻	pretimnākošā dūre: gaišs ādas tonis
+👊🏼	pretimnākošā dūre: vidēji gaišs ādas tonis
+👊🏽	pretimnākošā dūre: vidējs ādas tonis
+👊🏾	pretimnākošā dūre: vidēji tumšs ādas tonis
+👊🏿	pretimnākošā dūre: tumšs ādas tonis
+🤛	pa kreisi vērsta dūre
+🤛🏻	pa kreisi vērsta dūre: gaišs ādas tonis
+🤛🏼	pa kreisi vērsta dūre: vidēji gaišs ādas tonis
+🤛🏽	pa kreisi vērsta dūre: vidējs ādas tonis
+🤛🏾	pa kreisi vērsta dūre: vidēji tumšs ādas tonis
+🤛🏿	pa kreisi vērsta dūre: tumšs ādas tonis
+🤜	pa labi vērsta dūre
+🤜🏻	pa labi vērsta dūre: gaišs ādas tonis
+🤜🏼	pa labi vērsta dūre: vidēji gaišs ādas tonis
+🤜🏽	pa labi vērsta dūre: vidējs ādas tonis
+🤜🏾	pa labi vērsta dūre: vidēji tumšs ādas tonis
+🤜🏿	pa labi vērsta dūre: tumšs ādas tonis
+🤚	pacelta rokas aizmugure
+🤚🏻	pacelta rokas aizmugure: gaišs ādas tonis
+🤚🏼	pacelta plaukstas aizmugure: vidēji gaišs ādas tonis
+🤚🏽	pacelta rokas aizmugure: vidējs ādas tonis
+🤚🏾	pacelta plaukstas aizmugure: vidēji tumšs ādas tonis
+🤚🏿	pacelta plaukstas aizmugure: tumšs ādas tonis
+👋	vicinot roku
+👋🏻	vicina roka: gaišs ādas tonis
+👋🏼	vicina roka: vidēji gaišs ādas tonis
+👋🏽	vicina roka: vidējs ādas tonis
+👋🏾	vicina roka: vidēji tumšs ādas tonis
+👋🏿	vicina roka: tumšs ādas tonis
+🤟	mīlestības žests
+🤟🏻	mīlestības žests: gaišs ādas tonis
+🤟🏼	mīlestības žests: vidēji gaišs ādas tonis
+🤟🏽	mīlestības žests: vidējs ādas tonis
+🤟🏾	mīlestības žests: vidēji tumšs ādas tonis
+🤟🏿	mīlas žests: tumšs ādas tonis
+✍️	rakstoša roka
+✍	rakstoša roka
+✍🏻	rakstīšanas roka: gaišs ādas tonis
+✍🏼	rakstīšanas roka: vidēji gaišs ādas tonis
+✍🏽	rakstīšanas roka: vidējs ādas tonis
+✍🏾	rakstīšanas roka: vidēji tumšs ādas tonis
+✍🏿	rakstīšanas roka: tumšs ādas tonis
+👏	sasit plaukstas
+👏🏻	plaukstas: gaišs ādas tonis
+👏🏼	plaukstas: vidēji gaišs ādas tonis
+👏🏽	plaukstas: vidējs ādas tonis
+👏🏾	plaukstas: vidēji tumšs ādas tonis
+👏🏿	plaukstas: tumšs ādas tonis
+👐	atvērtas rokas
+👐🏻	atvērtas rokas: gaišs ādas tonis
+👐🏼	atvērtas rokas: vidēji gaišs ādas tonis
+👐🏽	atvērtas rokas: vidējs ādas tonis
+👐🏾	atvērtas rokas: vidēji tumšs ādas tonis
+👐🏿	atvērtas rokas: tumšs ādas tonis
+🙌	paceļot rokas
+🙌🏻	paceļot rokas: gaišs ādas tonis
+🙌🏼	paceļot rokas: vidēji gaišs ādas tonis
+🙌🏽	paceļot rokas: vidējs ādas tonis
+🙌🏾	paceļot rokas: vidēji tumšs ādas tonis
+🙌🏿	paceļot rokas: tumšs ādas tonis
+🤲	plaukstas uz augšu kopā
+🤲🏻	plaukstas uz augšu kopā: gaišs ādas tonis
+🤲🏼	plaukstas uz augšu kopā: vidēji gaišs ādas tonis
+🤲🏽	plaukstas uz augšu kopā: vidējs ādas tonis
+🤲🏾	plaukstas uz augšu kopā: vidēji tumšs ādas tonis
+🤲🏿	plaukstas uz augšu kopā: tumšs ādas tonis
+🙏	saliktas rokas
+🙏🏻	saliktas rokas: gaišs ādas tonis
+🙏🏼	saliktas rokas: vidēji gaišs ādas tonis
+🙏🏽	saliktas rokas: vidējs ādas tonis
+🙏🏾	saliktas rokas: vidēji tumšs ādas tonis
+🙏🏿	saliktas rokas: tumšs ādas tonis
+🤝	rokasspiediens
+💅	nagu laka
+💅🏻	nagu laka: gaišs ādas tonis
+💅🏼	nagu laka: vidēji gaišs ādas tonis
+💅🏽	nagu laka: vidējs ādas tonis
+💅🏾	nagu laka: vidēji tumšs ādas tonis
+💅🏿	nagu laka: tumšs ādas tonis
+👂	auss
+👂🏻	auss: gaišs ādas tonis
+👂🏼	auss: vidēji gaišs ādas tonis
+👂🏽	auss: vidējs ādas tonis
+👂🏾	auss: vidēji tumšs ādas tonis
+👂🏿	auss: tumšs ādas tonis
+👃	deguns
+👃🏻	deguns: gaišs ādas tonis
+👃🏼	deguns: vidēji gaišs ādas tonis
+👃🏽	deguns: vidējs ādas tonis
+👃🏾	deguns: vidēji tumšs ādas tonis
+👃🏿	deguns: tumšs ādas tonis
+🦰	rudmatains
+🦱	cirtaini mati
+🦲	kails
+🦳	baltmatains
+👣	pēdu nospiedumi
+👀	acis
+👁️	acs
+👁	acs
+👁️‍🗨️	acs runas burbulī
+👁‍🗨️	acs runas burbulī
+👁️‍🗨	acs runas burbulī
+👁‍🗨	acs runas burbulī
+🧠	smadzenes
+🦴	kaulu
+🦷	zobs
+👅	mēle
+👄	mute
+💋	skūpsta zīme
+💘	sirds ar bultu
+❤️	sarkana sirds
+❤	sarkana sirds
+💓	pukstoša sirds
+💔	salauzta sirds
+💕	divas sirdis
+💖	dzirkstošā sirds
+💗	augoša sirds
+💙	zila sirds
+💚	zaļa sirds
+💛	dzeltena sirds
+🧡	oranža sirds
+💜	purpura sirds
+🖤	melna sirds
+💝	sirds ar lenti
+💞	griežas sirdis
+💟	sirds dekorēšana
+❣️	smags sirds izsauciens
+❣	smags sirds izsauciens
+💌	mīlestības vēstule
+💤	zzz
+💢	dusmu simbols
+💣	bumba
+💥	sadursme
+💦	sviedru pilieni
+💨	metoties prom
+💫	reibst galva
+💬	runas balons
+🗨️	kreisais runas burbulis
+🗨	kreisais runas burbulis
+🗯️	pareizais dusmu burbulis
+🗯	pareizais dusmu burbulis
+💭	domu balons
+🕳️	caurums
+🕳	caurums
+👓	brilles
+🕶️	saulesbrilles
+🕶	saulesbrilles
+🥽	aizsargbrilles
+🥼	laboratorijas mētelis
+👔	kaklasaite
+👕	t-krekls
+👖	džinsi
+🧣	šalle
+🧤	cimdi
+🧥	mētelis
+🧦	zeķes
+👗	kleita
+👘	kimono
+👙	bikini
+👚	sieviešu drēbes
+👛	maku
+👜	rokassomu
+👝	maza rokassomiņa
+🛍️	iepirkumu maisiņi
+🛍	iepirkumu maisiņi
+🎒	skolas mugursoma
+👞	vīrieša kurpe
+👟	skriešanas apavi
+🥾	pārgājienu zābaks
+🥿	sieviešu plakanas kurpes
+👠	augstpapēžu kurpes
+👡	sieviešu sandales
+👢	sievietes zābaks
+👑	kronis
+👒	sieviešu cepure
+🎩	cilindrs
+🎓	izlaiduma vāciņš
+🧢	rēķinu vāciņš
+⛑️	glābšanas darbinieka ķivere
+⛑	glābšanas darbinieka ķivere
+📿	lūgšanu krelles
+💄	lūpu krāsa
+💍	gredzens
+💎	dārgakmens
+🐵	pērtiķa seja
+🐒	mērkaķis
+🦍	gorilla
+🐶	suņa seja
+🐕	suns
+🐩	pūdelis
+🐺	vilka seja
+🦊	lapsas seja
+🦝	jenots
+🐱	kaķa seja
+🐈	kaķis
+🦁	lauvas seja
+🐯	tīģera seja
+🐅	tīģeris
+🐆	leopards
+🐴	zirga seja
+🐎	zirgs
+🦄	vienradža seja
+🦓	zebra
+🦌	brieži
+🐮	govs seja
+🐂	vērsis
+🐃	ūdens bifelis
+🐄	govs
+🐷	cūkas seja
+🐖	cūka
+🐗	kuilis
+🐽	cūkas deguns
+🐏	auns
+🐑	aita
+🐐	kaza
+🐪	kamielis
+🐫	divkupru kamielis
+🦙	lama
+🦒	žirafe
+🐘	zilonis
+🦏	degunradzis
+🦛	nīlzirgs
+🐭	peles seja
+🐁	pele
+🐀	žurka
+🐹	kāmja seja
+🐰	truša seja
+🐇	trusis
+🐿️	burunduks
+🐿	burunduks
+🦔	ezis
+🦇	sikspārnis
+🐻	lāča seja
+🐨	koala
+🐼	pandas seja
+🦘	ķengurs
+🦡	āpsis
+🐾	ķepu nospiedumi
+🦃	tītara
+🐔	cālis
+🐓	gailis
+🐣	perējošs cālis
+🐤	mazulīte
+🐥	uz priekšu vērsts mazulis
+🐦	putns
+🐧	pingvīns
+🕊️	balodis
+🕊	balodis
+🦅	ērglis
+🦆	pīle
+🦢	gulbis
+🦉	pūce
+🦚	pāvs
+🦜	papagailis
+🐸	vardes seja
+🐊	krokodils
+🐢	bruņurupucis
+🦎	ķirzaka
+🐍	čūska
+🐲	pūķa seja
+🐉	pūķis
+🦕	sauropods
+🦖	T-Rex
+🐳	strūklas valis
+🐋	valis
+🐬	delfīns
+🐟	zivis
+🐠	tropu zivis
+🐡	blowfish
+🦈	haizivs
+🐙	astoņkājis
+🐚	spirālveida apvalks
+🦀	krabis
+🦞	omārs
+🦐	garneles
+🦑	kalmārs
+🐌	gliemezis
+🦋	tauriņš
+🐛	kļūda
+🐜	skudra
+🐝	medus bite
+🐞	dāma vabole
+🦗	krikets
+🕷️	zirneklis
+🕷	zirneklis
+🕸️	zirnekļa tīkls
+🕸	zirnekļa tīkls
+🦂	skorpions
+🦟	ods
+🦠	mikrobs
+💐	pušķis
+🌸	ķiršu ziedi
+💮	balts zieds
+🏵️	rozete
+🏵	rozete
+🌹	roze
+🥀	novītusi zieds
+🌺	hibisks
+🌻	saulespuķe
+🌼	uzziedēt
+🌷	tulpe
+🌱	stāds
+🌲	mūžzaļš koks
+🌳	lapu koks
+🌴	palma
+🌵	kaktuss
+🌾	rīsu kūlis
+🌿	garšaugs
+☘️	sēklis
+☘	sēklis
+🍀	Četrlapu āboliņš
+🍁	Kļavas lapa
+🍂	kritusi lapa
+🍃	lapas plīvo vējā
+🍇	vīnogas
+🍈	melone
+🍉	arbūzs
+🍊	mandarīns
+🍋	citronu
+🍌	banāns
+🍍	ananāsu
+🥭	mango
+🍎	sarkans ābols
+🍏	zaļš ābols
+🍐	bumbieris
+🍑	persiku
+🍒	ķirši
+🍓	zemenes
+🥝	kivi
+🍅	tomāts
+🥥	kokosrieksts
+🥑	avokado
+🍆	baklažāns
+🥔	kartupeļi
+🥕	burkāns
+🌽	kukurūzas vārpa
+🌶️	asais pipars
+🌶	asais pipars
+🥒	gurķi
+🥬	lapu zaļš
+🥦	brokoļi
+🍄	sēne
+🥜	zemesrieksti
+🌰	kastanis
+🍞	maize
+🥐	kruasāns
+🥖	bagete maize
+🥨	kliņģeris
+🥯	bagele
+🥞	pankūkas
+🧀	siera ķīlis
+🍖	gaļa uz kauliem
+🍗	mājputnu kāja
+🥩	gaļas izcirtums
+🥓	bekons
+🍔	hamburgers
+🍟	frī kartupeļi
+🍕	pica
+🌭	cīsiņš
+🥪	sviestmaize
+🌮	taco
+🌯	burrito
+🥙	pildīta plātsmaize
+🥚	olu
+🍳	ēdiena gatavošana
+🥘	sekla ēdiena panna
+🍲	ēdiena pods
+🥣	bļoda ar karoti
+🥗	Zaļie salāti
+🍿	popkorns
+🧂	sāls
+🥫	konservi
+🍱	bento kaste
+🍘	rīsu krekers
+🍙	rīsu bumba
+🍚	vārīti rīsi
+🍛	karija rīsi
+🍜	tvaicēšanas bļoda
+🍝	spageti
+🍠	grauzdēti saldie kartupeļi
+🍢	oden
+🍣	suši
+🍤	ceptas garneles
+🍥	zivju kūka ar virpuli
+🥮	Mēness kūka
+🍡	dango
+🥟	klimpas
+🥠	laimes cepums
+🥡	izņemšanas kaste
+🍦	mīksts saldējums
+🍧	noskūts ledus
+🍨	saldējums
+🍩	virtulis
+🍪	cepums
+🎂	dzimšanas dienas kūka
+🍰	kūka
+🧁	kēksiņš
+🥧	pīrāgs
+🍫	šokolādes tāfelīte
+🍬	konfektes
+🍭	konfekte
+🍮	olu krēms
+🍯	medus pods
+🍼	zīdaiņa pudelīte
+🥛	piena glāze
+☕	karstais dzēriens
+🍵	tējas krūze bez roktura
+🍶	dēļ
+🍾	pudele ar izlecošu korķi
+🍷	vīna glāze
+🍸	kokteiļu glāze
+🍹	tropu dzēriens
+🍺	alus krūze
+🍻	šķindošas alus krūzes
+🥂	saskandinot brilles
+🥃	trauka stikls
+🥤	kauss ar salmiem
+🥢	irbulīši
+🍽️	dakša un nazis ar plāksni
+🍽	dakša un nazis ar plāksni
+🍴	dakša un nazis
+🥄	karote
+🔪	virtuves nazis
+🏺	amfora
+🌍	globuss, kurā redzama Eiropa-Āfrika
+🌎	globuss, kas rāda Ameriku
+🌏	globuss, kurā redzama Āzija-Austrālija
+🌐	globuss ar meridiāniem
+🗺️	pasaules karte
+🗺	pasaules karte
+🗾	Japānas karte
+🧭	kompass
+🏔️	sniegots kalns
+🏔	sniegots kalns
+⛰️	kalns
+⛰	kalns
+🌋	vulkāns
+🗻	Fudži kalns
+🏕️	kempings
+🏕	kempings
+🏖️	pludmale ar lietussargu
+🏖	pludmale ar lietussargu
+🏜️	tuksnesis
+🏜	tuksnesis
+🏝️	tuksneša sala
+🏝	tuksneša sala
+🏞️	Nacionālais parks
+🏞	Nacionālais parks
+🏟️	stadions
+🏟	stadions
+🏛️	klasiskā ēka
+🏛	klasiskā ēka
+🏗️	ēku celtniecība
+🏗	ēku celtniecība
+🧱	ķieģeļi
+🏘️	mājas
+🏘	mājas
+🏚️	pamesta māja
+🏚	pamesta māja
+🏠	māja
+🏡	māja ar dārzu
+🏢	biroju ēka
+🏣	Japānas pasta nodaļa
+🏤	pasts
+🏥	slimnīca
+🏦	banka
+🏨	viesnīca
+🏩	mīlestības viesnīca
+🏪	veikals
+🏫	skola
+🏬	universālveikals
+🏭	rūpnīca
+🏯	Japānas pils
+🏰	pils
+💒	kāzas
+🗼	Tokijas tornis
+🗽	Brīvības statuja
+⛪	baznīca
+🕌	mošeja
+🕍	sinagoga
+⛩️	sintoistu svētnīca
+⛩	sintoistu svētnīca
+🕋	kaaba
+⛲	strūklaka
+⛺	telts
+🌁	miglains
+🌃	nakts ar zvaigznēm
+🏙️	pilsētas ainava
+🏙	pilsētas ainava
+🌄	saullēkts pār kalniem
+🌅	saullēkts
+🌆	pilsētas ainava krēslas stundā
+🌇	saulriets
+🌉	tilts naktī
+♨️	karstie avoti
+♨	karstie avoti
+🌌	piena ceļš
+🎠	karuseļa zirgs
+🎡	Panorāmas rats
+🎢	Amerikāņu kalniņi
+💈	friziera stabs
+🎪	cirka telts
+🚂	lokomotīve
+🚃	dzelzceļa vagons
+🚄	ātrvilciens
+🚅	ložu vilciens
+🚆	vilciens
+🚇	metro
+🚈	vieglais dzelzceļš
+🚉	stacija
+🚊	tramvajs
+🚝	monorail
+🚞	kalnu dzelzceļš
+🚋	tramvaja vagons
+🚌	autobuss
+🚍	pretimbraucošais autobuss
+🚎	trolejbuss
+🚐	mikroautobuss
+🚑	ātrā palīdzība
+🚒	ugunsdzēsēju mašīna
+🚓	policijas auto
+🚔	pretim braucošā policijas automašīna
+🚕	taksometrs
+🚖	pretimbraucošais taksometrs
+🚗	automašīna
+🚘	pretimbraucošā automašīna
+🚙	sporta komunālo transportlīdzekli
+🚚	piegādes mašīna
+🚛	šarnīru kravas automašīna
+🚜	traktors
+🚲	velosipēds
+🛴	skrejritenis
+🛹	skrituļdēlis
+🛵	motorollers
+🚏	autobusa pietura
+🛣️	automaģistrāle
+🛣	automaģistrāle
+🛤️	dzelzceļa sliežu ceļš
+🛤	dzelzceļa sliežu ceļš
+🛢️	eļļas mucas
+🛢	eļļas mucas
+⛽	degvielas sūknis
+🚨	policijas mašīnas gaisma
+🚥	horizontālais luksofors
+🚦	vertikālais luksofors
+🛑	Stop zīmi
+🚧	celtniecība
+⚓	enkurs
+⛵	buru laiva
+🛶	kanoe
+🚤	ātrlaiva
+🛳️	pasažieru kuģis
+🛳	pasažieru kuģis
+⛴️	prāmis
+⛴	prāmis
+🛥️	motorlaiva
+🛥	motorlaiva
+🚢	kuģis
+✈️	lidmašīna
+✈	lidmašīna
+🛩️	maza lidmašīna
+🛩	maza lidmašīna
+🛫	lidmašīnas izlidošana
+🛬	lidmašīnas ierašanās
+💺	sēdeklis
+🚁	helikopters
+🚟	piekares dzelzceļš
+🚠	kalnu trošu ceļš
+🚡	gaisa tramvajs
+🛰️	satelīts
+🛰	satelīts
+🚀	raķete
+🛸	lidojošais šķīvītis
+🛎️	bellhop zvans
+🛎	bellhop zvans
+🧳	bagāža
+⌛	smilšu pulkstenis darīts
+⏳	smilšu pulkstenis nav izdarīts
+⌚	skatīties
+⏰	modinātājs
+⏱️	hronometrs
+⏱	hronometrs
+⏲️	taimera pulkstenis
+⏲	taimera pulkstenis
+🕰️	kamīna pulkstenis
+🕰	kamīna pulkstenis
+🕛	pulksten divpadsmit
+🕧	divpadsmit trīsdesmit
+🕐	pulkstens viens
+🕜	viens trīsdesmit
+🕑	pulkstens divi
+🕝	divi trīsdesmit
+🕒	pulksten trīs
+🕞	trīs pusdesmit
+🕓	pulkstens četri
+🕟	četri trīsdesmit
+🕔	pulksten pieci
+🕠	pieci trīsdesmit
+🕕	pulksten seši
+🕡	seši trīsdesmit
+🕖	pulksten septiņi
+🕢	septiņi trīsdesmit
+🕗	pulksten astoņi
+🕣	Astoņi trīsdesmit
+🕘	pulksten deviņi
+🕤	deviņi trīsdesmit
+🕙	pulksten desmitos
+🕥	desmit trīsdesmit
+🕚	vienpadsmitos
+🕦	vienpadsmit trīsdesmit
+🌑	jauns mēness
+🌒	augošs pusmēness
+🌓	pirmais mēness ceturksnis
+🌔	augošs mēness
+🌕	pilnmēness
+🌖	dilstošs mēness
+🌗	pēdējais mēness ceturksnis
+🌘	dilstošs pusmēness
+🌙	pusmēness
+🌚	jauna mēness seja
+🌛	pirmā ceturkšņa mēness seja
+🌜	pēdējā ceturkšņa mēness seja
+🌡️	termometrs
+🌡	termometrs
+☀️	saule
+☀	saule
+🌝	pilnmēness seja
+🌞	saule ar seju
+⭐	zvaigzne
+🌟	kvēlojoša zvaigzne
+🌠	krītoša zvaigzne
+☁️	mākonis
+☁	mākonis
+⛅	saule aiz mākoņa
+⛈️	mākonis ar zibeni un lietu
+⛈	mākonis ar zibeni un lietu
+🌤️	saule aiz maza mākoņa
+🌤	saule aiz maza mākoņa
+🌥️	saule aiz liela mākoņa
+🌥	saule aiz liela mākoņa
+🌦️	saule aiz lietus mākoņa
+🌦	saule aiz lietus mākoņa
+🌧️	mākonis ar lietu
+🌧	mākonis ar lietu
+🌨️	mākonis ar sniegu
+🌨	mākonis ar sniegu
+🌩️	mākonis ar zibeni
+🌩	mākonis ar zibeni
+🌪️	tornado
+🌪	tornado
+🌫️	migla
+🌫	migla
+🌬️	vēja seja
+🌬	vēja seja
+🌀	ciklons
+🌈	varavīksne
+🌂	slēgts lietussargs
+☂️	lietussargs
+☂	lietussargs
+☔	lietussargs ar lietus lāsēm
+⛱️	lietussargs uz zemes
+⛱	lietussargs uz zemes
+⚡	augstsprieguma
+❄️	sniegpārsla
+❄	sniegpārsla
+☃️	sniegavīrs
+☃	sniegavīrs
+⛄	sniegavīrs bez sniega
+☄️	komēta
+☄	komēta
+🔥	uguns
+💧	piliens
+🌊	ūdens vilnis
+🎃	jack-o-latern
+🎄	Ziemassvētku eglīte
+🎆	uguņošana
+🎇	dzirksteļotājs
+🧨	petarde
+✨	dzirksti
+🎈	balons
+🎉	ballīšu popper
+🎊	konfeti bumba
+🎋	tanabata koks
+🎍	priedes dekorēšana
+🎎	Japāņu lelles
+🎏	karpu straume
+🎐	vēja zvans
+🎑	mēness apskates ceremonija
+🧧	sarkana aploksne
+🎀	lente
+🎁	iesaiņota dāvana
+🎗️	atgādinājuma lente
+🎗	atgādinājuma lente
+🎟️	ieejas biļetes
+🎟	ieejas biļetes
+🎫	biļete
+🎖️	militārā medaļa
+🎖	militārā medaļa
+🏆	trofeju
+🏅	sporta medaļa
+🥇	1.vietas medaļa
+🥈	2. vietas medaļa
+🥉	3. vietas medaļa
+⚽	futbola bumba
+⚾	beisbols
+🥎	softbols
+🏀	basketbols
+🏐	volejbols
+🏈	Amerikāņu futbols
+🏉	regbija futbols
+🎾	teniss
+🥏	lidojošs disks
+🎳	boulings
+🏏	kriketa spēle
+🏑	lauka hokejs
+🏒	Hokejs
+🥍	lakross
+🏓	pingpongs
+🏸	badmintons
+🥊	boksa cimds
+🥋	cīņas mākslas formas tērps
+🥅	vārtu tīkls
+⛳	karogs caurumā
+⛸️	slidot
+⛸	slidot
+🎣	makšķerēšanas stabs
+🎽	skriešanas krekls
+🎿	slēpes
+🛷	ragavas
+🥌	kērlinga akmens
+🎯	tiešais trāpījums
+🎱	baseins 8 bumba
+🔮	kristāla bumba
+🧿	nazar amulets
+🎮	video spēle
+🕹️	kursorsviru
+🕹	kursorsviru
+🎰	automāts
+🎲	spēle mirt
+🧩	finierzāģis
+🧸	rotaļu lācītis
+♠️	lāpstas uzvalks
+♠	lāpstas uzvalks
+♥️	sirds uzvalks
+♥	sirds uzvalks
+♦️	dimanta uzvalks
+♦	dimanta uzvalks
+♣️	kluba uzvalks
+♣	kluba uzvalks
+♟️	šaha bandinieks
+♟	šaha bandinieks
+🃏	džokeris
+🀄	madžongs sarkanais pūķis
+🎴	ziedu spēļu kārtis
+🎭	skatuves māksla
+🖼️	ierāmēta bilde
+🖼	ierāmēta bilde
+🎨	mākslinieku palete
+🧵	pavediens
+🧶	dzija
+🔇	izslēgts skaļrunis
+🔈	skaļrunis zems skaļums
+🔉	skaļrunis vidējs skaļums
+🔊	skaļrunis liels skaļums
+📢	skaļrunis
+📣	megafons
+📯	pasta rags
+🔔	zvans
+🔕	zvans ar slīpsvītru
+🎼	mūzikas partitūra
+🎵	mūzikas nots
+🎶	mūzikas notis
+🎙️	studijas mikrofons
+🎙	studijas mikrofons
+🎚️	līmeņa slīdni
+🎚	līmeņa slīdni
+🎛️	vadības pogas
+🎛	vadības pogas
+🎤	mikrofons
+🎧	austiņas
+📻	radio
+🎷	saksofons
+🎸	ģitāra
+🎹	mūzikas tastatūra
+🎺	trompete
+🎻	vijole
+🥁	bungas
+📱	Mobilais telefons
+📲	mobilais tālrunis ar bultiņu
+☎️	telefons
+☎	telefons
+📞	telefona uztvērējs
+📟	peidžeris
+📠	faksa aparāts
+🔋	akumulators
+🔌	elektriskā kontaktdakša
+💻	klēpjdatoru
+🖥️	galddators
+🖥	galddators
+🖨️	printeris
+🖨	printeris
+⌨️	tastatūra
+⌨	tastatūra
+🖱️	Datorpele
+🖱	Datorpele
+🖲️	kursorbumba
+🖲	kursorbumba
+💽	datora disks
+💾	diskete
+💿	optiskais disks
+📀	dvd
+🧮	abakuss
+🎥	filmu kamera
+🎞️	filmu kadri
+🎞	filmu kadri
+📽️	filmu projektors
+📽	filmu projektors
+🎬	klauvēja dēlis
+📺	televīzija
+📷	kameru
+📸	kamera ar zibspuldzi
+📹	videokamera
+📼	videokasete
+🔍	palielināmais stikls noliekts pa kreisi
+🔎	palielināmais stikls noliekts pa labi
+🕯️	svece
+🕯	svece
+💡	spuldze
+🔦	lukturītis
+🏮	sarkana papīra laterna
+📔	piezīmju grāmatiņa ar dekoratīvu vāku
+📕	aizvērta grāmata
+📖	atvērta grāmata
+📗	zaļā grāmata
+📘	zila grāmata
+📙	oranža grāmata
+📚	grāmatas
+📓	piezīmju grāmatiņa
+📒	virsgrāmata
+📃	lapa ar čokurošanos
+📜	ritiniet
+📄	lapa ir vērsta uz augšu
+📰	laikraksts
+🗞️	sarullēta avīze
+🗞	sarullēta avīze
+📑	grāmatzīmju cilnes
+🔖	grāmatzīme
+🏷️	etiķete
+🏷	etiķete
+💰	naudas maiss
+💴	jenu banknote
+💵	dolāru banknote
+💶	eiro banknote
+💷	mārciņas banknote
+💸	nauda ar spārniem
+💳	kredītkarte
+🧾	kvīts
+💹	diagramma pieaug ar jenu
+💱	valūtas maiņa
+💲	smaga dolāra zīme
+✉️	aploksne
+✉	aploksne
+📧	e-pasts
+📨	ienākošā aploksne
+📩	aploksne ar bultiņu
+📤	izsūtnes paplāte
+📥	iesūtnes paplāte
+📦	iepakojums
+📫	slēgta pastkaste ar paceltu karogu
+📪	slēgta pastkaste ar nolaistu karogu
+📬	atvērta pastkaste ar paceltu karogu
+📭	atvērta pastkaste ar nolaistu karogu
+📮	pastkastīte
+🗳️	vēlēšanu kaste ar biļetenu
+🗳	vēlēšanu kaste ar biļetenu
+✏️	zīmulis
+✏	zīmulis
+✒️	melns uzgalis
+✒	melns uzgalis
+🖋️	tintes pildspalva
+🖋	tintes pildspalva
+🖊️	pildspalva
+🖊	pildspalva
+🖌️	otas
+🖌	otas
+🖍️	krītiņš
+🖍	krītiņš
+📝	piezīme
+💼	portfelis
+📁	failu mape
+📂	atvērt failu mapi
+🗂️	kartotēkas sadalītāji
+🗂	kartotēkas sadalītāji
+📅	kalendārs
+📆	noplēšams kalendārs
+🗒️	spirālveida piezīmju grāmatiņa
+🗒	spirālveida piezīmju grāmatiņa
+🗓️	spirālveida kalendārs
+🗓	spirālveida kalendārs
+📇	kartotēkas
+📈	diagramma palielinās
+📉	diagramma samazinās
+📊	joslu diagramma
+📋	starpliktuvē
+📌	spraude
+📍	apaļa spraude
+📎	saspraude
+🖇️	saistītās saspraudes
+🖇	saistītās saspraudes
+📏	taisns lineāls
+📐	trīsstūrveida lineāls
+✂️	šķēres
+✂	šķēres
+🗃️	karšu failu kaste
+🗃	karšu failu kaste
+🗄️	failu kabinets
+🗄	failu kabinets
+🗑️	atkritumu grozs
+🗑	atkritumu grozs
+🔒	bloķēta
+🔓	atslēgts
+🔏	aizslēgts ar pildspalvu
+🔐	aizslēgts ar atslēgu
+🔑	taustiņu
+🗝️	vecā atslēga
+🗝	vecā atslēga
+🔨	āmurs
+⛏️	izvēlēties
+⛏	izvēlēties
+⚒️	āmurs un pick
+⚒	āmurs un pick
+🛠️	āmurs un uzgriežņu atslēga
+🛠	āmurs un uzgriežņu atslēga
+🗡️	duncis
+🗡	duncis
+⚔️	sakrustoti zobeni
+⚔	sakrustoti zobeni
+🔫	pistole
+🏹	loks un bulta
+🛡️	vairogs
+🛡	vairogs
+🔧	uzgriežņu atslēga
+🔩	uzgrieznis un skrūve
+⚙️	rīks
+⚙	rīks
+🗜️	skava
+🗜	skava
+⚖️	līdzsvara skala
+⚖	līdzsvara skala
+🔗	saite
+⛓️	ķēdes
+⛓	ķēdes
+🧰	instrumentu kaste
+🧲	magnēts
+⚗️	alembic
+⚗	alembic
+🧪	mēģene
+🧫	Petri trauciņā
+🧬	DNS
+🔬	mikroskopu
+🔭	teleskops
+📡	satelīta antena
+💉	šļirce
+💊	tablete
+🚪	durvis
+🛏️	gulta
+🛏	gulta
+🛋️	dīvāns un lampa
+🛋	dīvāns un lampa
+🚽	tualete
+🚿	duša
+🛁	vanna
+🧴	losjona pudele
+🧷	saspraužamā adata
+🧹	slota
+🧺	grozs
+🧻	papīra rullis
+🧼	ziepes
+🧽	sūklis
+🧯	ugunsdzēšamais aparāts
+🛒	iepirkšanās ratiņi
+🚬	cigarete
+⚰️	zārks
+⚰	zārks
+⚱️	bēru urna
+⚱	bēru urna
+🗿	moai
+🏧	bankomāta zīme
+🚮	atkritumi atkritumu tvertnē
+🚰	dzeramais ūdens
+♿	ratiņkrēsla simbols
+🚹	vīriešu tualete
+🚺	sieviešu istaba
+🚻	tualete
+🚼	mazuļa simbols
+🚾	tualete
+🛂	pasu kontrole
+🛃	muita
+🛄	bagāžas izsniegšana
+🛅	atstātā bagāža
+⚠️	brīdinājums
+⚠	brīdinājums
+🚸	bērni šķērso
+⛔	Iebraukt aizliegts
+🚫	aizliegts
+🚳	nav velosipēdu
+🚭	smēķēt aizliegts
+🚯	nekādas piegružošanas
+🚱	nedzeramais ūdens
+🚷	nav gājēju
+📵	nav mobilo tālruņu
+🔞	neviens jaunāks par astoņpadsmit
+☢️	radioaktīvs
+☢	radioaktīvs
+☣️	bioloģiskais apdraudējums
+☣	bioloģiskais apdraudējums
+⬆️	augšupvērstā bultiņa
+⬆	augšupvērstā bultiņa
+↗️	bultiņa uz augšu – pa labi
+↗	bultiņa uz augšu – pa labi
+➡️	labā bultiņa
+➡	labā bultiņa
+↘️	lejupvērstā bultiņa
+↘	lejupvērstā bultiņa
+⬇️	lejupvērstā bultiņa
+⬇	lejupvērstā bultiņa
+↙️	lejupvērstā bultiņa pa kreisi
+↙	lejupvērstā bultiņa pa kreisi
+⬅️	kreisā bultiņa
+⬅	kreisā bultiņa
+↖️	augšup-kreisā bultiņa
+↖	augšup-kreisā bultiņa
+↕️	bultiņa uz augšu un uz leju
+↕	bultiņa uz augšu un uz leju
+↔️	kreisā-labā bultiņa
+↔	kreisā-labā bultiņa
+↩️	labā bultiņa, kas izliekta pa kreisi
+↩	labā bultiņa, kas izliekta pa kreisi
+↪️	kreisā bultiņa, kas izliekta pa labi
+↪	kreisā bultiņa, kas izliekta pa labi
+⤴️	labā bultiņa, kas izliekta uz augšu
+⤴	labā bultiņa, kas izliekta uz augšu
+⤵️	labā bultiņa, kas izliekta uz leju
+⤵	labā bultiņa, kas izliekta uz leju
+🔃	vertikālās bultiņas pulksteņrādītāja virzienā
+🔄	pretēji pulksteņrādītāja virzienam vērstas bultiņas
+🔙	ATPAKAĻ bultiņa
+🔚	BEIGAS bultiņa
+🔛	ON bultiņa
+🔜	DRĪZ bultiņa
+🔝	TOP bultiņa
+🛐	kulta vieta
+⚛️	atoma simbols
+⚛	atoma simbols
+🕉️	om
+🕉	om
+✡️	Dāvida zvaigzne
+✡	Dāvida zvaigzne
+☸️	dharmas ritenis
+☸	dharmas ritenis
+☯️	iņ jaņ
+☯	iņ jaņ
+✝️	latīņu krusts
+✝	latīņu krusts
+☦️	pareizticīgo krusts
+☦	pareizticīgo krusts
+☪️	zvaigzne un pusmēness
+☪	zvaigzne un pusmēness
+☮️	miera simbols
+☮	miera simbols
+🕎	menora
+🔯	punktēta sešstaru zvaigzne
+♈	Auns
+♉	Vērsis
+♊	Dvīņi
+♋	Vēzis
+♌	Lauva
+♍	Jaunava
+♎	Svari
+♏	Skorpions
+♐	Strēlnieks
+♑	Mežāzis
+♒	Ūdensvīrs
+♓	Zivis
+⛎	Ophiuchus
+🔀	dziesmu jaukšanas poga
+🔁	atkārtošanas poga
+🔂	atkārtojiet vienu pogu
+▶️	atskaņošanas poga
+▶	atskaņošanas poga
+⏩	ātrās pārtīšanas poga
+⏭️	nākamā ieraksta poga
+⏭	nākamā ieraksta poga
+⏯️	atskaņošanas vai pauzes poga
+⏯	atskaņošanas vai pauzes poga
+◀️	atpakaļgaitas poga
+◀	atpakaļgaitas poga
+⏪	ātrās atpakaļgaitas poga
+⏮️	pēdējā ieraksta poga
+⏮	pēdējā ieraksta poga
+🔼	pogu uz augšu
+⏫	ātrās uzvilkšanas poga
+🔽	pogu uz leju
+⏬	ātrās lejupielādes poga
+⏸️	pauzes poga
+⏸	pauzes poga
+⏹️	apturēšanas poga
+⏹	apturēšanas poga
+⏺️	ierakstīšanas poga
+⏺	ierakstīšanas poga
+⏏️	izstumšanas poga
+⏏	izstumšanas poga
+🎦	kino
+🔅	aptumšošanas poga
+🔆	spilgta poga
+📶	antenu stieņi
+📳	vibrācijas režīms
+📴	mobilais tālrunis izslēgts
+♀️	sievietes zīme
+♀	sievietes zīme
+♂️	vīriešu zīme
+♂	vīriešu zīme
+⚕️	medicīnas simbols
+⚕	medicīnas simbols
+♾️	bezgalība
+♾	bezgalība
+♻️	pārstrādes simbols
+♻	pārstrādes simbols
+⚜️	fleur-de-lis
+⚜	fleur-de-lis
+🔱	trīszaru emblēma
+📛	vārda žetons
+🔰	Japāņu simbols iesācējiem
+⭕	smags liels aplis
+✅	balta smaga atzīme
+☑️	vēlēšanu kaste ar čeku
+☑	vēlēšanu kaste ar čeku
+✔️	smaga atzīme
+✔	smaga atzīme
+✖️	smaga reizināšana x
+✖	smaga reizināšana x
+❌	krusta atzīme
+❎	krusta atzīmes poga
+➕	smaga plus zīme
+➖	smaga mīnusa zīme
+➗	smagās divīzijas zīme
+➰	cirtaini cilpa
+➿	dubultā cirtainā cilpa
+〽️	daļas maiņas zīme
+〽	daļas maiņas zīme
+✳️	astoņu spieķu zvaigznīte
+✳	astoņu spieķu zvaigznīte
+✴️	astoņstaru zvaigzne
+✴	astoņstaru zvaigzne
+❇️	dzirksti
+❇	dzirksti
+‼️	dubultā izsaukuma zīme
+‼	dubultā izsaukuma zīme
+⁉️	izsaukuma jautājuma zīme
+⁉	izsaukuma jautājuma zīme
+❓	jautājuma zīme
+❔	balta jautājuma zīme
+❕	balta izsaukuma zīme
+❗	izsaukuma zīme
+〰️	viļņota svītra
+〰	viļņota svītra
+©️	autortiesības
+©	autortiesības
+®️	reģistrēts
+®	reģistrēts
+™️	preču zīme
+™	preču zīme
+#️⃣	taustiņu vāciņš: #
+#⃣	taustiņu vāciņš: #
+*️⃣	taustiņu vāciņš: *
+*⃣	taustiņu vāciņš: *
+0️⃣	taustiņu vāciņš: 0
+0⃣	taustiņu vāciņš: 0
+1️⃣	taustiņu vāciņš: 1
+1⃣	taustiņu vāciņš: 1
+2️⃣	taustiņu vāciņš: 2
+2⃣	taustiņu vāciņš: 2
+3️⃣	taustiņu vāciņš: 3
+3⃣	taustiņu vāciņš: 3
+4️⃣	taustiņu vāciņš: 4
+4⃣	taustiņu vāciņš: 4
+5️⃣	taustiņu vāciņš: 5
+5⃣	taustiņu vāciņš: 5
+6️⃣	taustiņu vāciņš: 6
+6⃣	taustiņu vāciņš: 6
+7️⃣	taustiņu vāciņš: 7
+7⃣	taustiņu vāciņš: 7
+8️⃣	taustiņu vāciņš: 8
+8⃣	taustiņu vāciņš: 8
+9️⃣	taustiņu vāciņš: 9
+9⃣	taustiņu vāciņš: 9
+🔟	taustiņu vāciņš: 10
+💯	simts punktu
+🔠	ievadiet latīņu lielos burtus
+🔡	ievadiet latīņu mazos burtus
+🔢	ievadiet skaitļus
+🔣	ievades simboli
+🔤	ievadiet latīņu burtus
+🅰️	Poga (asins grupa)
+🅰	Poga (asins grupa)
+🆎	AB poga (asins grupa)
+🅱️	B poga (asins grupa)
+🅱	B poga (asins grupa)
+🆑	CL poga
+🆒	COOL poga
+🆓	BEZMAKSAS poga
+ℹ️	informāciju
+ℹ	informāciju
+🆔	ID poga
+Ⓜ️	riņķoja M
+Ⓜ	riņķoja M
+🆕	JAUNA poga
+🆖	NG poga
+🅾️	O poga (asins grupa)
+🅾	O poga (asins grupa)
+🆗	Labi poga
+🅿️	P poga
+🅿	P poga
+🆘	SOS poga
+🆙	UP poga
+🆚	VS poga
+🈁	Japāņu poga “šeit”.
+🈂️	Japāņu poga “pakalpojuma maksa”.
+🈂	Japāņu poga “pakalpojuma maksa”.
+🈷️	Japāņu poga “ikmēneša summa”.
+🈷	Japāņu poga “ikmēneša summa”.
+🈶	Japāņu poga “nav bez maksas”.
+🈯	Japāņu poga “rezervēta”.
+🉐	Japāņu “kaulēšanās” poga
+🈹	Japāņu “atlaižu” poga
+🈚	Japāņu poga “bez maksas”.
+🈲	Japāņu poga “aizliegts”.
+🉑	Japāņu poga “pieņemama”.
+🈸	Japāņu poga “pieteikums”.
+🈴	Japāņu poga “nokārtota atzīme”.
+🈳	Japāņu poga “vakance”.
+㊗️	Japāņu poga “Apsveicam”.
+㊗	Japāņu poga “Apsveicam”.
+㊙️	Japāņu “slepenā” poga
+㊙	Japāņu “slepenā” poga
+🈺	Japāņu poga “atvērts biznesam”.
+🈵	Japāņu poga “nav brīvas vietas”.
+▪️	melns mazs kvadrāts
+▪	melns mazs kvadrāts
+▫️	balts mazs kvadrāts
+▫	balts mazs kvadrāts
+◻️	balts vidējs kvadrāts
+◻	balts vidējs kvadrāts
+◼️	melns vidējs kvadrāts
+◼	melns vidējs kvadrāts
+◽	balts vidēji mazs kvadrāts
+◾	melns vidēji mazs kvadrāts
+⬛	melns liels kvadrāts
+⬜	balts liels kvadrāts
+🔶	liels oranžs dimants
+🔷	liels zils dimants
+🔸	mazs oranžs dimants
+🔹	mazs zils dimants
+🔺	sarkans trīsstūris vērsts uz augšu
+🔻	sarkans trīsstūris vērsts uz leju
+💠	dimants ar punktu
+🔘	radio poga
+🔲	melna kvadrāta poga
+🔳	balta kvadrātveida poga
+⚪	balts aplis
+⚫	melns aplis
+🔴	sarkans aplis
+🔵	zils aplis
+🏁	rūtainais karogs
+🚩	trīsstūrveida karogs
+🎌	sakrustoti karogi
+🏴	melns karogs
+🏳️	baltais karogs
+🏳	baltais karogs
+🏳️‍🌈	varavīksnes karogs
+🏳‍🌈	varavīksnes karogs
+🏴‍☠️	pirātu karogs
+🏴‍☠	pirātu karogs
+🇦🇨	Debesbraukšanas sala
+🇦🇩	Andora
+🇦🇪	Apvienotie Arābu Emirāti
+🇦🇫	Afganistāna
+🇦🇬	Antigva un Barbuda
+🇦🇮	Anguilla
+🇦🇱	Albānija
+🇦🇲	Armēnija
+🇦🇴	Angola
+🇦🇶	Antarktīda
+🇦🇷	Argentīna
+🇦🇸	amerikāņu Samoa
+🇦🇹	Austrija
+🇦🇺	Austrālija
+🇦🇼	Aruba
+🇦🇽	Ālandu salas
+🇦🇿	Azerbaidžāna
+🇧🇦	Bosnija un Hercegovina
+🇧🇧	Barbadosa
+🇧🇩	Bangladeša
+🇧🇪	Beļģija
+🇧🇫	Burkinafaso
+🇧🇬	Bulgārija
+🇧🇭	Bahreina
+🇧🇮	Burundi
+🇧🇯	Benina
+🇧🇱	Svētā Bartelemija
+🇧🇲	Bermudu salas
+🇧🇳	Bruneja
+🇧🇴	Bolīvija
+🇧🇶	Karību Nīderlande
+🇧🇷	Brazīlija
+🇧🇸	Bahamu salas
+🇧🇹	Butāna
+🇧🇻	Bouvet sala
+🇧🇼	Botsvāna
+🇧🇾	Baltkrievija
+🇧🇿	Beliza
+🇨🇦	Kanāda
+🇨🇨	Kokosu (Kīlinga) salas
+🇨🇩	Kongo - Kinšasa
+🇨🇫	Centrālāfrikas Republika
+🇨🇬	Kongo - Brazavila
+🇨🇭	Šveice
+🇨🇮	Kotdivuāra
+🇨🇰	Kuka salas
+🇨🇱	Čīle
+🇨🇲	Kamerūna
+🇨🇳	Ķīna
+🇨🇴	Kolumbija
+🇨🇵	Klipertona sala
+🇨🇷	Kostarika
+🇨🇺	Kuba
+🇨🇻	Kaboverde
+🇨🇼	Kirasao
+🇨🇽	Ziemassvētku sala
+🇨🇾	Kipra
+🇨🇿	Čehija
+🇩🇪	Vācija
+🇩🇬	Djego Garsija
+🇩🇯	Džibutija
+🇩🇰	Dānija
+🇩🇲	Dominika
+🇩🇴	Dominikānas republika
+🇩🇿	Alžīrija
+🇪🇦	Seūta un Meliļa
+🇪🇨	Ekvadora
+🇪🇪	Igaunija
+🇪🇬	Ēģipte
+🇪🇭	Rietumsahāra
+🇪🇷	Eritreja
+🇪🇸	Spānija
+🇪🇹	Etiopija
+🇪🇺	Eiropas Savienība
+🇫🇮	Somija
+🇫🇯	Fidži
+🇫🇰	Folklenda salas
+🇫🇲	Mikronēzija
+🇫🇴	Fēru salas
+🇫🇷	Francija
+🇬🇦	Gabona
+🇬🇧	Apvienotā Karaliste
+🇬🇩	Grenāda
+🇬🇪	Gruzija
+🇬🇫	Franču Gviāna
+🇬🇬	Gērnsija
+🇬🇭	Gana
+🇬🇮	Gibraltārs
+🇬🇱	Grenlande
+🇬🇲	Gambija
+🇬🇳	Gvineja
+🇬🇵	Gvadelupa
+🇬🇶	Ekvatoriālā Gvineja
+🇬🇷	Grieķija
+🇬🇸	Dienviddžordžija un Dienvidsendviču salas
+🇬🇹	Gvatemala
+🇬🇺	Guama
+🇬🇼	Gvineja-Bisava
+🇬🇾	Gajāna
+🇭🇰	Honkongas SAR Ķīna
+🇭🇲	Hērda un Makdonalda salas
+🇭🇳	Hondurasa
+🇭🇷	Horvātija
+🇭🇹	Haiti
+🇭🇺	Ungārija
+🇮🇨	Kanāriju salas
+🇮🇩	Indonēzija
+🇮🇪	Īrija
+🇮🇱	Izraēla
+🇮🇲	cilvēka sala
+🇮🇳	Indija
+🇮🇴	Britu Indijas okeāna teritorija
+🇮🇶	Irāka
+🇮🇷	Irāna
+🇮🇸	Islande
+🇮🇹	Itālija
+🇯🇪	Džērsija
+🇯🇲	Jamaika
+🇯🇴	Jordānija
+🇯🇵	Japāna
+🇰🇪	Kenija
+🇰🇬	Kirgizstāna
+🇰🇭	Kambodža
+🇰🇮	Kiribati
+🇰🇲	Komoru salas
+🇰🇳	Sentkitsa un Nevisa
+🇰🇵	Ziemeļkoreja
+🇰🇷	Dienvidkoreja
+🇰🇼	Kuveita
+🇰🇾	Kaimanu salas
+🇰🇿	Kazahstāna
+🇱🇦	Laosa
+🇱🇧	Libāna
+🇱🇨	Svētā Lūcija
+🇱🇮	Lihtenšteina
+🇱🇰	Šrilanka
+🇱🇷	Libērija
+🇱🇸	Lesoto
+🇱🇹	Lietuva
+🇱🇺	Luksemburga
+🇱🇻	Latvija
+🇱🇾	Lībija
+🇲🇦	Maroka
+🇲🇨	Monako
+🇲🇩	Moldova
+🇲🇪	Melnkalne
+🇲🇫	Svētais Mārtiņš
+🇲🇬	Madagaskara
+🇲🇭	Māršala salas
+🇲🇰	Maķedonija
+🇲🇱	Mali
+🇲🇲	Mjanma (Birma)
+🇲🇳	Mongolija
+🇲🇴	Makao SAR Ķīna
+🇲🇵	Ziemeļu Marianas salas
+🇲🇶	Martinika
+🇲🇷	Mauritānija
+🇲🇸	Montserrata
+🇲🇹	Malta
+🇲🇺	Maurīcija
+🇲🇻	Maldīvija
+🇲🇼	Malāvija
+🇲🇽	Meksika
+🇲🇾	Malaizija
+🇲🇿	Mozambika
+🇳🇦	Namībija
+🇳🇨	Jaunkaledonija
+🇳🇪	Nigēra
+🇳🇫	Norfolkas sala
+🇳🇬	Nigērija
+🇳🇮	Nikaragva
+🇳🇱	Nīderlande
+🇳🇴	Norvēģija
+🇳🇵	Nepāla
+🇳🇷	Nauru
+🇳🇺	Niue
+🇳🇿	Jaunzēlande
+🇴🇲	Omāna
+🇵🇦	Panama
+🇵🇪	Peru
+🇵🇫	Franču Polinēzija
+🇵🇬	Papua Jaungvineja
+🇵🇭	Filipīnas
+🇵🇰	Pakistāna
+🇵🇱	Polija
+🇵🇲	Senpjērs un Mikelona
+🇵🇳	Pitkērnas salas
+🇵🇷	Puertoriko
+🇵🇸	Palestīnas teritorijas
+🇵🇹	Portugāle
+🇵🇼	Palau
+🇵🇾	Paragvaja
+🇶🇦	Katara
+🇷🇪	Reinjona
+🇷🇴	Rumānija
+🇷🇸	Serbija
+🇷🇺	Krievija
+🇷🇼	Ruanda
+🇸🇦	Saūda Arābija
+🇸🇧	Zālamana salas
+🇸🇨	Seišelu salas
+🇸🇩	Sudāna
+🇸🇪	Zviedrija
+🇸🇬	Singapūra
+🇸🇭	Svētā Helēna
+🇸🇮	Slovēnija
+🇸🇯	Svalbāra un Jans Majens
+🇸🇰	Slovākija
+🇸🇱	Sjerraleone
+🇸🇲	Sanmarīno
+🇸🇳	Senegāla
+🇸🇴	Somālija
+🇸🇷	Surinama
+🇸🇸	Dienvidsudāna
+🇸🇹	Santome un Prinsipi
+🇸🇻	Salvadora
+🇸🇽	Sintmartena
+🇸🇾	Sīrija
+🇸🇿	Svazilenda
+🇹🇦	Tristans da Kunja
+🇹🇨	Tērksas un Kaikosas salas
+🇹🇩	Čada
+🇹🇫	Francijas dienvidu teritorijas
+🇹🇬	Iet
+🇹🇭	Taizeme
+🇹🇯	Tadžikistāna
+🇹🇰	Tokelau
+🇹🇱	Austrumtimora
+🇹🇲	Turkmenistāna
+🇹🇳	Tunisija
+🇹🇴	Tonga
+🇹🇷	Turcija
+🇹🇹	Trinidāda un Tobāgo
+🇹🇻	Tuvalu
+🇹🇼	Taivāna
+🇹🇿	Tanzānija
+🇺🇦	Ukraina
+🇺🇬	Uganda
+🇺🇲	ASV attālās salas
+🇺🇳	Apvienotās Nācijas
+🇺🇸	Savienotās Valstis
+🇺🇾	Urugvaja
+🇺🇿	Uzbekistāna
+🇻🇦	Vatikāna pilsēta
+🇻🇨	Sentvinsenta un Grenadīnas
+🇻🇪	Venecuēla
+🇻🇬	Britu Virdžīnu salas
+🇻🇮	ASV Virdžīnu salas
+🇻🇳	Vjetnama
+🇻🇺	Vanuatu
+🇼🇫	Volisa un Futuna
+🇼🇸	Samoa
+🇽🇰	Kosova
+🇾🇪	Jemena
+🇾🇹	Majota
+🇿🇦	Dienvidāfrika
+🇿🇲	Zambija
+🇿🇼	Zimbabve
+🏴󠁧󠁢󠁥󠁮󠁧󠁿	Anglija
+🏴󠁧󠁢󠁳󠁣󠁴󠁿	Skotija
+🏴󠁧󠁢󠁷󠁬󠁳󠁿	Velsa

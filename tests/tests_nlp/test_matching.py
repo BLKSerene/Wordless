@@ -21,7 +21,7 @@ import re
 from tests import wl_test_init
 from wordless.wl_nlp import wl_matching
 
-main = wl_test_init.Wl_Test_Main()
+main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
 main.settings_custom['files']['tags']['header_tag_settings'].extend([
     ['Non-embedded', 'Header', '< tei Header >', '</ tei Header >'],
@@ -235,7 +235,7 @@ def test_match_tokens():
         lang = 'eng_us',
         tagged = False,
         settings = init_search_settings(match_inflected_forms = True)
-    ) == set(['take', 'takes', 'taken', 'taking'])
+    ) == set(['take', 'takes', 'took', 'taken'])
 
     assert wl_matching.match_tokens(
         main,
@@ -303,7 +303,7 @@ def test_match_ngrams():
 
     assert wl_matching.match_ngrams(
         main,
-        search_terms = ['taking walked'],
+        search_terms = ['took walks'],
         tokens = ['take', 'takes', 'walk', 'walked', 'test'],
         lang = 'eng_us',
         tagged = False,

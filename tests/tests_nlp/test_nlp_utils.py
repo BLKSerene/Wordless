@@ -59,6 +59,14 @@ def test_to_lang_util_texts():
 
         assert list(util_texts) == list(TO_LANG_UTIL_TEXT.values())
 
+def test_get_langs_stanza():
+    assert wl_nlp_utils.get_langs_stanza(main, 'sentence_tokenizers')
+    assert wl_nlp_utils.get_langs_stanza(main, 'word_tokenizers')
+    assert wl_nlp_utils.get_langs_stanza(main, 'pos_taggers')
+    assert wl_nlp_utils.get_langs_stanza(main, 'lemmatizers')
+    assert wl_nlp_utils.get_langs_stanza(main, 'dependency_parsers')
+    assert wl_nlp_utils.get_langs_stanza(main, 'sentiment_analyzers')
+
 def test_check_models():
     assert wl_nlp_utils.check_models(main, langs = ['eng_us', 'eng_gb'])
 
@@ -101,6 +109,88 @@ def test_init_sudachipy_word_tokenizer():
 
     assert 'sudachipy_word_tokenizer' in main.__dict__
 
+def test_init_sentence_tokenizers():
+    wl_nlp_utils.init_sentence_tokenizers(main, 'eng_us', 'spacy_sentencizer')
+    wl_nlp_utils.init_sentence_tokenizers(main, 'eng_us', 'spacy_eng')
+    wl_nlp_utils.init_sentence_tokenizers(main, 'eng_us', 'stanza_eng')
+
+def test_init_word_tokenizers():
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_nist')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_nltk')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_penn_treebank')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_regex')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_tok_tok')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'nltk_twitter')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'sacremoses_moses')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'spacy_eng')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'stanza_eng')
+
+    wl_nlp_utils.init_word_tokenizers(main, 'zho_cn', 'pkuseg_zho')
+    wl_nlp_utils.init_word_tokenizers(main, 'zho_cn', 'wordless_zho_char')
+
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'sudachipy_jpn')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'python_mecab_ko_mecab')
+    wl_nlp_utils.init_word_tokenizers(main, 'eng_us', 'botok_bod')
+
+def test_init_syl_tokenizers():
+    wl_nlp_utils.init_syl_tokenizers(main, 'eng_us', 'nltk_legality')
+    wl_nlp_utils.init_syl_tokenizers(main, 'eng_us', 'nltk_sonority_sequencing')
+    wl_nlp_utils.init_syl_tokenizers(main, 'eng_us', 'pyphen_eng_us')
+
+def test_init_word_detokenizers():
+    wl_nlp_utils.init_word_detokenizers(main, 'eng_us')
+
+def test_init_pos_taggers():
+    wl_nlp_utils.init_pos_taggers(main, 'eng_us', 'sapcy_eng')
+    wl_nlp_utils.init_pos_taggers(main, 'eng_us', 'stanza_eng')
+    wl_nlp_utils.init_pos_taggers(main, 'eng_us', 'stanza_eng', tokenized = True)
+
+    wl_nlp_utils.init_pos_taggers(main, 'jpn', 'sudachipy_jpn')
+    wl_nlp_utils.init_pos_taggers(main, 'kor', 'python_mecab_ko_mecab')
+
+    wl_nlp_utils.init_pos_taggers(main, 'rus', 'pymorphy3_morphological_analyzer')
+    wl_nlp_utils.init_pos_taggers(main, 'ukr', 'pymorphy3_morphological_analyzer')
+
+def test_init_lemmatizers():
+    wl_nlp_utils.init_lemmatizers(main, 'eng_us', 'sapcy_eng')
+    wl_nlp_utils.init_lemmatizers(main, 'eng_us', 'stanza_eng')
+    wl_nlp_utils.init_lemmatizers(main, 'eng_us', 'stanza_eng', tokenized = True)
+
+    wl_nlp_utils.init_lemmatizers(main, 'jpn', 'sudachipy_jpn')
+
+    wl_nlp_utils.init_lemmatizers(main, 'rus', 'pymorphy3_morphological_analyzer')
+    wl_nlp_utils.init_lemmatizers(main, 'ukr', 'pymorphy3_morphological_analyzer')
+
+def test_init_dependency_parsers():
+    wl_nlp_utils.init_dependency_parsers(main, 'eng_us', 'spacy_eng')
+    wl_nlp_utils.init_dependency_parsers(main, 'eng_us', 'stanza_eng')
+    wl_nlp_utils.init_dependency_parsers(main, 'eng_us', 'stanza_eng', tokenized = True)
+
+def test_init_sentiment_analyzers():
+    wl_nlp_utils.init_sentiment_analyzers(main, 'eng_us', 'stanza_eng')
+    wl_nlp_utils.init_sentiment_analyzers(main, 'eng_us', 'stanza_eng', tokenized = True)
+
+def test_align_tokens():
+    assert wl_nlp_utils.align_tokens(['do', "n't"], ['do', "n't"], ['tag1', 'tag2']) == ['tag1', 'tag2']
+    assert wl_nlp_utils.align_tokens(["don't"], ['do', "n't"], ['tag1', 'tag2']) == ['tag1']
+    assert wl_nlp_utils.align_tokens(['do', "n't"], ["don't"], ['tag1']) == ['tag1', 'tag1']
+    assert wl_nlp_utils.align_tokens(['do', "n't"], ['don', "'t"], ['tag1', 'tag2']) == ['tag1', 'tag2']
+
+    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测试', '一下'], ['tag1', 'tag2']) == ['tag1', 'tag2']
+    assert wl_nlp_utils.align_tokens(['测试一下'], ['测试', '一下'], ['tag1', 'tag2']) == ['tag1']
+    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测试一下'], ['tag1']) == ['tag1', 'tag1']
+    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测', '试一下'], ['tag1', 'tag2']) == ['tag1', 'tag2']
+
+    assert wl_nlp_utils.align_tokens(['do', "n't"], ['do', "n't"], ['lemma1', 'lemma2'], prefer_raw = True) == ['lemma1', 'lemma2']
+    assert wl_nlp_utils.align_tokens(["don't"], ['do', "n't"], ['lemma1', 'lemma2'], prefer_raw = True) == ["don't"]
+    assert wl_nlp_utils.align_tokens(['do', "n't"], ["don't"], ['lemma1'], prefer_raw = True) == ['do', "n't"]
+    assert wl_nlp_utils.align_tokens(['do', "n't"], ['don', "'t"], ['lemma1', 'lemma2'], prefer_raw = True) == ['do', "n't"]
+
+    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测试', '一下'], ['lemma1', 'lemma2'], prefer_raw = True) == ['lemma1', 'lemma2']
+    assert wl_nlp_utils.align_tokens(['测试一下'], ['测试', '一下'], ['lemma1', 'lemma2'], prefer_raw = True) == ['测试一下']
+    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测试一下'], ['lemma1'], prefer_raw = True) == ['测试', '一下']
+    assert wl_nlp_utils.align_tokens(['测试', '一下'], ['测', '试一下'], ['lemma1', 'lemma2'], prefer_raw = True) == ['测试', '一下']
+
 def test_to_sections():
     tokens = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
@@ -140,12 +230,12 @@ def test_split_token_list():
     assert len(list(wl_nlp_utils.split_token_list(main, tokens, nlp_util = 'sudachipy_jpn'))) == 5
     assert len(list(wl_nlp_utils.split_token_list(main, tokens, nlp_util = 'test'))) == 10
 
-def test_srp_cyrl_to_latn():
+def test_to_srp_latn():
     tokens_srp_cyrl = wl_test_lang_examples.SENTENCE_SRP_CYRL.split()
 
     assert ' '.join(wl_nlp_utils.to_srp_latn(tokens_srp_cyrl)) == wl_test_lang_examples.SENTENCE_SRP_LATN
 
-def test_srp_latn_to_cyrl():
+def test_to_srp_cyrl():
     tokens_srp_latn = wl_test_lang_examples.SENTENCE_SRP_LATN.split()
 
     assert ' '.join(wl_nlp_utils.to_srp_cyrl(tokens_srp_latn)) == wl_test_lang_examples.SENTENCE_SRP_CYRL
@@ -191,18 +281,30 @@ if __name__ == '__main__':
     test_to_lang_util_text()
     test_to_lang_util_texts()
 
+    test_get_langs_stanza()
     test_check_models()
     test_init_model_spacy()
     test_init_model_stanza()
     test_init_sudachipy_word_tokenizer()
+
+    test_init_sentence_tokenizers()
+    test_init_word_tokenizers()
+    test_init_syl_tokenizers()
+    test_init_word_detokenizers()
+    test_init_pos_taggers()
+    test_init_lemmatizers()
+    test_init_dependency_parsers()
+    test_init_sentiment_analyzers()
+
+    test_align_tokens()
 
     test_to_sections()
     test_to_sections_unequal()
     test_split_token_list()
     test_split_into_chunks_text()
 
-    test_srp_cyrl_to_latn()
-    test_srp_latn_to_cyrl()
+    test_to_srp_latn()
+    test_to_srp_cyrl()
 
     test_ngrams()
     test_everygrams()

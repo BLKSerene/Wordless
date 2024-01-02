@@ -47,7 +47,6 @@ LANG_TEXTS_NLTK = {
     'kaz': 'kazakh',
     'nep': 'nepali',
     'nob': 'norwegian',
-    'nno': 'norwegian',
     'por': 'portuguese',
     'ron': 'romanian',
     'rus': 'russian',
