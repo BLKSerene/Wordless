@@ -357,7 +357,7 @@ TRS_MISC = {
     'ACKS.md': ['doc/trs/zho_cn/ACKS.md']
 }
 
-with open('../trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
+with open('trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
     soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
 
 for element_context in soup.select('context'):
@@ -447,9 +447,9 @@ for element_context in soup.select('context'):
 
                 print(f'Auto-translated "{element_src.text}" into "{tr}".')
 
-with open('../trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
+with open('trs/zho_cn.ts', 'w', encoding = 'utf_8') as f:
     f.write(str(soup))
 
 # Release
-wl_trs_utils.del_obsolete_trans('../trs/zho_cn.ts')
+wl_trs_utils.del_obsolete_trans('trs/zho_cn.ts')
 wl_trs_utils.release_trs()

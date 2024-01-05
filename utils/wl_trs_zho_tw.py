@@ -21,7 +21,7 @@ import opencc
 
 import wl_trs_utils
 
-with open('../trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
+with open('trs/zho_cn.ts', 'r', encoding = 'utf_8') as f:
     soup = bs4.BeautifulSoup(f.read(), features = 'lxml')
 
 cc = opencc.OpenCC('s2twp')
@@ -40,9 +40,9 @@ for element_context in soup.select('context'):
         else:
             element_trans.string = cc.convert(element_trans.text)
 
-with open('../trs/zho_tw.ts', 'w', encoding = 'utf_8') as f:
+with open('trs/zho_tw.ts', 'w', encoding = 'utf_8') as f:
     f.write(str(soup))
 
 # Release
-wl_trs_utils.fix_ts_format('../trs/zho_tw.ts')
+wl_trs_utils.fix_ts_format('trs/zho_tw.ts')
 wl_trs_utils.release_trs()
