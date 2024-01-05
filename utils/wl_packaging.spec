@@ -37,8 +37,6 @@ if is_macos:
 
 # botok
 datas.extend(PyInstaller.utils.hooks.collect_data_files('botok'))
-# Dostoevsky
-datas.extend(PyInstaller.utils.hooks.collect_data_files('dostoevsky'))
 # spaCy
 datas.extend(PyInstaller.utils.hooks.copy_metadata('spacy'))
 datas.extend(PyInstaller.utils.hooks.collect_data_files('spacy.lang', include_py_files = True))

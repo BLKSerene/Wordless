@@ -17,9 +17,9 @@
 # ----------------------------------------------------------------------
 
 FILES = [
-    '../ACKS.md',
-    '../doc/trs/zho_cn/ACKS.md',
-    '../doc/trs/zho_tw/ACKS.md'
+    'ACKS.md',
+    'doc/trs/zho_cn/ACKS.md',
+    'doc/trs/zho_tw/ACKS.md'
 ]
 HEADER_LANGS = ['English', 'Chinese (Simplified)', 'Chinese (Traditional)']
 TITLES = ['Acknowledgments', '致谢', '致謝']
@@ -39,7 +39,6 @@ ACKS = [
     ['Beautiful Soup', 'https://www.crummy.com/software/BeautifulSoup/', '4.12.2', 'Leonard Richardson', 'MIT', 'https://git.launchpad.net/beautifulsoup/tree/LICENSE'],
     ['Botok', 'https://github.com/OpenPecha/Botok', '0.8.12', 'Hélios Drupchen Hildt', 'Apache-2.0', 'https://github.com/OpenPecha/Botok/blob/master/LICENSE'],
     ['Charset Normalizer', 'https://github.com/Ousret/charset_normalizer', '3.3.2', 'TAHRI Ahmed R.', 'MIT', 'https://github.com/Ousret/charset_normalizer/blob/master/LICENSE'],
-    ['Dostoevsky', 'https://github.com/bureaucratic-labs/dostoevsky', '0.6.0', 'Anna Rogers, Alexey Romanov, Anna Rumshisky,<br>Svitlana Volkova, Mikhail Gronas, Alex Gribov', 'MIT', 'https://github.com/bureaucratic-labs/dostoevsky/blob/master/LICENSE'],
     ['khmer-nltk', 'https://github.com/VietHoang1512/khmer-nltk', '1.6', 'Phan Viet Hoang', 'Apache-2.0', 'https://github.com/VietHoang1512/khmer-nltk/blob/main/LICENSE'],
     ['LaoNLP', 'https://github.com/wannaphong/LaoNLP', '1.1.3', 'Wannaphong Phatthiyaphaibun (วรรณพงษ์ ภัททิยไพบูลย์)', 'Apache-2.0', 'https://github.com/wannaphong/LaoNLP/blob/master/LICENSE'],
     ['Lingua', 'https://github.com/pemistahl/lingua-py', '2.0.2', 'Peter M. Stahl', 'Apache-2.0', 'https://github.com/pemistahl/lingua-py/blob/main/LICENSE.txt'],
@@ -106,7 +105,7 @@ for i, (file, header_lang, title, description, col_headers) in enumerate(zip(
     with open(file, 'w', encoding = 'utf_8') as f:
         f.write(f'''<!--
 # Wordless: Acknowledgments - {header_lang}
-# Copyright (C) 2018-2023  Ye Lei (叶磊)
+# Copyright (C) 2018-2024  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

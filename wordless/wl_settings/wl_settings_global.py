@@ -1251,8 +1251,6 @@ SETTINGS_GLOBAL = {
         },
 
         'sentiment_analyzers': {
-            _tr('wl_settings_global', 'Dostoevsky - Russian sentiment analyzer'): 'dostoevsky_rus',
-
             _tr('wl_settings_global', 'Stanza - Chinese (Simplified) sentiment analyzer'): 'stanza_zho_cn',
             _tr('wl_settings_global', 'Stanza - German sentiment analyzer'): 'stanza_deu',
             _tr('wl_settings_global', 'Stanza - English sentiment analyzer'): 'stanza_eng',
@@ -3579,12 +3577,7 @@ SETTINGS_GLOBAL = {
         'pan_guru': ['vader_pan_guru'],
         'que': ['vader_que'],
         'ron': ['vader_ron'],
-
-        'rus': [
-            'dostoevsky_rus',
-            'vader_rus'
-        ],
-
+        'rus': ['vader_rus'],
         'smo': ['vader_smo'],
         'san': ['vader_san'],
         'gla': ['vader_gla'],

@@ -23,19 +23,20 @@ import nltk
 import spacy
 import stanza
 
-# Download Dostoevsky model
-commands = ['dostoevsky', 'download', 'fasttext-social-network-model']
+# Run command line tools on CI
+def run_cli(commands):
+    platform_os = platform.system()
 
-if platform.system() == 'Windows':
-    subprocess.run(['python', '-m'] + commands, check = True)
-else:
-    try:
-        if platform.system() == 'Darwin':
-            subprocess.run(['python3', '-m'] + commands, check = True)
-        elif platform.system() == 'Linux':
-            subprocess.run(['python3.10', '-m'] + commands, check = True)
-    except subprocess.CalledProcessError:
+    if platform_os == 'Windows':
         subprocess.run(['python', '-m'] + commands, check = True)
+    else:
+        try:
+            if platform_os == 'Darwin':
+                subprocess.run(['python3', '-m'] + commands, check = True)
+            elif platform_os == 'Linux':
+                subprocess.run(['python3.10', '-m'] + commands, check = True)
+        except subprocess.CalledProcessError:
+            subprocess.run(['python', '-m'] + commands, check = True)
 
 # Download NLTK data
 # Corpora

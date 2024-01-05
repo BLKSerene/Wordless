@@ -21,7 +21,6 @@
 import collections
 import importlib
 
-import dostoevsky.models
 import underthesea
 import vaderSentiment.vaderSentiment
 
@@ -120,19 +119,6 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
                 sentence = ' '.join(wl_word_tokenization.wl_word_tokenize_flat(main, sentence, lang))
 
             sentiment_scores.append(analyzer.polarity_scores(sentence)['compound'])
-    # Russian
-    elif sentiment_analyzer == 'dostoevsky_rus':
-        model = dostoevsky.models.FastTextSocialNetworkModel(tokenizer = Dostoevsky_Tokenizer())
-
-        for sentiments in model.predict(inputs, k = 5):
-            sentiment = sorted(sentiments.items(), key = lambda item: item[1], reverse = True)[0][0]
-
-            if sentiment == 'positive':
-                sentiment_scores.append(1)
-            elif sentiment == 'negative':
-                sentiment_scores.append(-1)
-            elif sentiment in ['neutral', 'speech', 'skip']:
-                sentiment_scores.append(0)
     # Vietnamese
     elif sentiment_analyzer == 'underthesea_vie':
         for sentence in inputs:
