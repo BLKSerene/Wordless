@@ -1,6 +1,6 @@
 <!--
 # Wordless: README - Chinese (Simplified)
-# Copyright (C) 2018-2023  Ye Lei (叶磊)
+# Copyright (C) 2018-2024  Ye Lei (叶磊)
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -133,7 +133,7 @@ MLA（第8版）：
 
 ## 许可
 
-    Copyright (C) 2018-2023  Ye Lei (叶磊)
+    Copyright (C) 2018-2024  Ye Lei (叶磊)
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
