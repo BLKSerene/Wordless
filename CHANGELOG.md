@@ -27,8 +27,12 @@
 - Utils: Fix downloading of Stanza models
 - Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark
 
+### ❌ Removals
+- Utils: Remove Dostoevsky's Russian sentiment analyzer
+
 ### ⏫ Dependency Changes
 - Dependencies: Add VADER
+- Dependencies: Remove Dostoevsky
 - Dependencies: Remove jieba
 - Dependencies: Upgrade Charset Normalizer to 3.3.2
 - Dependencies: Upgrade LaoNLP to 1.1.3

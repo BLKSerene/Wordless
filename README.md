@@ -51,7 +51,7 @@
         <img src="https://img.shields.io/github/v/release/BLKSerene/Wordless?include_prereleases&label=Release&sort=semver" alt="Release"></a>
     <a href="#download">
         <img src="https://img.shields.io/github/downloads/BLKSerene/Wordless/total?label=Downloads" alt="Downloads"></a>
-    <a href="/LICENSE.txt">
+    <a href="/LICENSE">
         <img src="https://img.shields.io/github/license/BLKSerene/Wordless?label=License" alt="License"></a>
     <a href="https://app.fossa.com/projects/git%2Bgithub.com%2FBLKSerene%2FWordless?ref=badge_shield">
         <img src="https://app.fossa.com/api/projects/git%2Bgithub.com%2FBLKSerene%2FWordless.svg?type=shield" alt="FOSSA Status"></a>

@@ -37,6 +37,6 @@ for syl, freq in sorted(collections.Counter(syls).items(), key = lambda item: it
     if len(freq_syls) >= 1000:
         break
 
-with open('../data/luong_nguyen_dinh_freq_syls_easy_1000.txt', 'w', encoding = 'utf_8') as f:
+with open('data/luong_nguyen_dinh_freq_syls_easy_1000.txt', 'w', encoding = 'utf_8') as f:
     for syl, _ in freq_syls:
         f.write(syl + '\n')

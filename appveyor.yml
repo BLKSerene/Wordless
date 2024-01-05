@@ -53,7 +53,6 @@ for:
       - cmd: set PATH=%PYTHON%;%PYTHON%/Scripts;%PATH%
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements/requirements_tests.txt
-      - pip install --requirement requirements/requirements_no_deps.txt --no-deps
       # Download models and data files
       - python utils/wl_downloader_ci.py
 
@@ -80,7 +79,6 @@ for:
       # Install dependencies
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements/requirements_tests.txt
-      - pip install --requirement requirements/requirements_no_deps.txt --no-deps
       # Download models and data files
       - python utils/wl_downloader_ci.py
 
@@ -107,7 +105,6 @@ for:
       # Install dependencies
       - python -m pip install --upgrade pip setuptools
       - pip install --requirement requirements/requirements_tests.txt
-      - pip install --requirement requirements/requirements_no_deps.txt --no-deps
       # Download models and data files
       - python utils/wl_downloader_ci.py
 

@@ -1988,7 +1988,7 @@ def init_settings_default(main):
                 'pan_guru': 'vader_pan_guru',
                 'que': 'vader_que',
                 'ron': 'vader_ron',
-                'rus': 'dostoevsky_rus',
+                'rus': 'vader_rus',
                 'smo': 'vader_smo',
                 'san': 'vader_san',
                 'gla': 'vader_gla',

@@ -40,7 +40,6 @@ jobs:
           command: |
             pip install --upgrade pip setuptools
             pip install --requirement requirements/requirements_tests.txt
-            pip install --requirement requirements/requirements_no_deps.txt --no-deps
             # Download models and data files
             python utils/wl_downloader_ci.py
           name: Install dependencies
@@ -87,8 +86,6 @@ jobs:
           command: |
             pip3 install --upgrade pip setuptools
             pip3 install --requirement requirements/requirements_tests.txt
-            # Fix permission denied error
-            pip3 install --requirement requirements/requirements_no_deps.txt --no-deps --user
             # Download models and data files
             python3 utils/wl_downloader_ci.py
           name: Install dependencies
@@ -135,7 +132,6 @@ jobs:
           command: |
             pip3.10 install --upgrade pip setuptools
             pip3.10 install --requirement requirements/requirements_tests.txt
-            pip3.10 install --requirement requirements/requirements_no_deps.txt --no-deps
             # Download models and data files
             python3.10 utils/wl_downloader_ci.py
           name: Install dependencies
@@ -186,7 +182,6 @@ jobs:
           command: |
             pip install --upgrade pip setuptools
             pip install --requirement requirements/requirements_tests.txt
-            pip install --requirement requirements/requirements_no_deps.txt --no-deps
             # Download models and data files
             python utils/wl_downloader_ci.py
           name: Install dependencies
