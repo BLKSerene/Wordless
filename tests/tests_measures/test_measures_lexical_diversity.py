@@ -33,6 +33,11 @@ TOKENS_1000 = ['This', 'is', 'a', 'sentence', '.'] * 200
 # Reference: Popescu, I.-I. (2009). Word frequency studies (p. 26). Mouton de Gruyter.
 TOKENS_225 = [1] * 11 + [2, 3] * 9 + [4] * 7 + [5, 6] * 6 + [7, 8] * 5 + list(range(9, 16)) * 4 + list(range(16, 22)) * 3 + list(range(22, 40)) * 2 + list(range(40, 125))
 
+def test_brunets_index():
+    w = wl_measures_lexical_diversity.brunets_index(main, TOKENS_100)
+
+    assert w == numpy.power(100, numpy.power(5, -0.165))
+
 def test_cttr():
     cttr = wl_measures_lexical_diversity.cttr(main, TOKENS_100)
 
@@ -54,6 +59,11 @@ def test_hdd():
     hdd_100 = wl_measures_lexical_diversity.hdd(main, TOKENS_100)
 
     assert hdd_100 == (1 - scipy.stats.hypergeom.pmf(k = 0, M = 100, n = 20, N = 42)) * (1 / 42) * 5
+
+def test_honores_stat():
+    r = wl_measures_lexical_diversity.honores_stat(main, TOKENS_100)
+
+    assert r == 100 * numpy.log(100 / (1 - 0 / 5))
 
 def test_logttr():
     settings['logttr']['variant'] = 'Herdan'
@@ -185,10 +195,12 @@ def test_yules_index_of_diversity():
     assert index_of_diversity == (100 ** 2) / (5 * 20 ** 2 - 100)
 
 if __name__ == '__main__':
+    test_brunets_index()
     test_cttr()
     test_fishers_index_of_diversity()
     test_herdans_vm()
     test_hdd()
+    test_honores_stat()
     test_logttr()
     test_msttr()
     test_mtld()
