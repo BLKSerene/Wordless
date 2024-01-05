@@ -29,6 +29,13 @@ from wordless.wl_nlp import wl_nlp_utils
 
 _tr = QCoreApplication.translate
 
+# Brunét's Index
+# References:
+#     Brunét, E. (1978). Le vocabulaire de Jean Giraudoux: Structure et evolution. Slatkine.
+#     Bucks, R. S., Singh, S., Cuerden, J. M., & Wilcock, G. K. (2000). Analysis of spontaneous, conversational speech in dementia of Alzheimer type: Evaluation of an objective technique for analysing lexical performance. Aphasiology, 14(1), 71–91. https://doi.org/10.1080/026870300401603
+def brunets_index(main, tokens):
+    return numpy.power(len(tokens), numpy.power(len(set(tokens)), -0.165))
+
 # Corrected TTR
 # References:
 #     Carroll, J. B. (1964). Language and thought. Prentice-Hall.
@@ -98,6 +105,23 @@ def hdd(main, tokens):
     ttrs *= 1 / sample_size
 
     return sum(ttrs)
+
+# Honoré's statistic
+# References:
+#     Honoré, A. (1979). Some simple measures of richness of vocabulary. Association of Literary and Linguistic Computing Bulletin, 7(2), 172–177.
+#     Bucks, R. S., Singh, S., Cuerden, J. M., & Wilcock, G. K. (2000). Analysis of spontaneous, conversational speech in dementia of Alzheimer type: Evaluation of an objective technique for analysing lexical performance. Aphasiology, 14(1), 71–91. https://doi.org/10.1080/026870300401603
+def honores_stat(main, tokens):
+    num_tokens = len(tokens)
+    types_freqs = collections.Counter(tokens)
+    num_types = len(types_freqs)
+    freqs_nums_types = collections.Counter(types_freqs.values())
+
+    if (denominator := 1 - freqs_nums_types[1] / num_types):
+        r = 100 * numpy.log(num_tokens / denominator)
+    else:
+        r = 0
+
+    return r
 
 # LogTTR
 # Herdan:

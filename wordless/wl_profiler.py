@@ -1294,15 +1294,17 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                 if self.profiler_tab in ['lexical_diversity', 'all']:
                     if tokens:
                         stats_lexical_diversity = [
+                            wl_measures_lexical_diversity.brunets_index(self.main, tokens),
                             wl_measures_lexical_diversity.cttr(self.main, tokens),
                             wl_measures_lexical_diversity.fishers_index_of_diversity(self.main, tokens),
                             wl_measures_lexical_diversity.herdans_vm(self.main, tokens),
                             wl_measures_lexical_diversity.hdd(self.main, tokens),
+                            wl_measures_lexical_diversity.honores_stat(self.main, tokens),
                             wl_measures_lexical_diversity.logttr(self.main, tokens),
                             wl_measures_lexical_diversity.msttr(self.main, tokens),
                             wl_measures_lexical_diversity.mtld(self.main, tokens),
                             wl_measures_lexical_diversity.mattr(self.main, tokens),
-                            * wl_measures_lexical_diversity.popescu_macutek_altmanns_b1_b2_b3_b4_b5(self.main, tokens),
+                            *wl_measures_lexical_diversity.popescu_macutek_altmanns_b1_b2_b3_b4_b5(self.main, tokens),
                             wl_measures_lexical_diversity.popescus_r1(self.main, tokens),
                             wl_measures_lexical_diversity.popescus_r2(self.main, tokens),
                             wl_measures_lexical_diversity.popescus_r3(self.main, tokens),
@@ -1317,7 +1319,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                             wl_measures_lexical_diversity.yules_index_of_diversity(self.main, tokens)
                         ]
                     else:
-                        stats_lexical_diversity = [0] * 25
+                        stats_lexical_diversity = [0] * 27
                 else:
                     stats_lexical_diversity = None
 

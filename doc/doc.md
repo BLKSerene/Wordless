@@ -1215,6 +1215,9 @@ The following variables would be used in formulas:<br>
 **NumTokens**: Number of tokens<br>
 
 <!--
+Brunét's Index:
+    \text{W} = \text{NumTokens}^{\text{NumTypes}^{-0.165}}
+
 Corrected TTR:
     \text{CTTR} = \frac{\text{NumTypes}}{\sqrt{2 \times \text{NumTokens}}}
 
@@ -1223,6 +1226,9 @@ Fisher's Index of Diversity:
 
 Herdan's Vₘ:
     \text{V}_\text{m} = \frac{\sum_{f = 1}^{\text{f}_\text{max}}(\text{NumTypes}_f \times f^2)}{\text{NumTokens}^2} - \frac{1}{\text{NumTypes}}
+
+Honoré's statistic:
+    \text{R} = 100 \times \ln\frac{\text{NumTokens}}{1 - \frac{\text{NumTypes}_1}{\text{NumTypes}}
 
 LogTTR:
     \begin{align*}
@@ -1281,10 +1287,12 @@ Yule's Index of Diversity:
 
 Measure of Lexical Diversity|Formula
 ---------------------------|-------
+<span id="ref-brunets-index"></span>Brunét's Index<br>([Brunét, 1978](#ref-brunet-1978))|![Formula](/doc/measures/lexical_diversity/brunets_index.svg)
 <span id="ref-cttr"></span>Corrected TTR<br>([Carroll, 1964](#ref-carroll-1964))|![Formula](/doc/measures/lexical_diversity/cttr.svg)
 <span id="ref-fishers-index-of-diversity"></span>Fisher's Index of Diversity<br>([Fisher et al., 1943](#ref-fisher-et-al-1943))|![Formula](/doc/measures/lexical_diversity/fishers_index_of_diversity.svg)<br>where W₋₁ is the -1 branch of the [Lambert W function](https://en.wikipedia.org/wiki/Lambert_W_function)
 <span id="ref-herdans-vm"></span>Herdan's Vₘ<br>([Herdan, 1955](#ref-herdan-1955))|![Formula](/doc/measures/lexical_diversity/herdans_vm.svg)
 <span id="ref-hdd"></span>HD-D<br>([McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see reference.<br>The sample size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → HD-D → Sample size**.
+<span id="ref-honores-stat"></span>Honoré's statistic<br>([Honoré, 1979](#ref-honore-1979))|![Formula](/doc/measures/lexical_diversity/honores_stat.svg)
 <span id="ref-logttr"></span>LogTTR¹<br>(Herdan: [Herdan, 1960, p. 28](#ref-herdan-1960)<br>Somers: [Somers, 1966](#ref-somers-1966)<br>Rubet: [Dugast, 1979](#ref-dugast-1979)<br>Maas: [Maas, 1972](#ref-maas-1972)<br>Dugast: [Dugast, 1978](#ref-dugast-1978); [Dugast, 1979](#ref-dugast-1979))|![Formula](/doc/measures/lexical_diversity/logttr.svg)
 <span id="ref-msttr"></span>Mean Segmental TTR<br>([Johnson, 1944](#ref-johnson-1944))|![Formula](/doc/measures/lexical_diversity/msttr.svg)<br>where **n** is the number of equal-sized segment, the length of which could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Mean Segmental TTR → Number of tokens in each segment**, **NumTypesSegᵢ** is the number of token types in the **i**-th segment, and **NumTokensSegᵢ** is the number of tokens in the **i**-th segment.
 <span id="ref-mtld"></span>Measure of Textual Lexical Diversity<br>([McCarthy, 2005, pp. 95–96, 99–100](#ref-mccarthy-2005); [McCarthy & Jarvis, 2010](#ref-mccarthy-jarvis-2010))|For detailed calculation procedures, see references.<br>The factor size could be modified via **Menu → Preferences → Settings → Measures → Type-token Ratio → Measure of Textual Lexical Diversity → Factor size**.
@@ -1579,6 +1587,8 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-lix) Björnsson, C.-H. (1968). *Läsbarhet*. Liber.
 <span id="ref-brouwer-1963"></span>
 1. [**^**](#ref-re) Brouwer, R. H. M. (1963). Onderzoek naar de leesmoeilijkheid van Nederlands proza. *Paedagogische studiën*, *40*, 454–464. https://objects.library.uu.nl/reader/index.php?obj=1874-205260&lan=en
+<span id="ref-brunet-1978"></span>
+1. [**^**](#ref-brunets-index) Brunét, E. (1978). *Le vocabulaire de Jean Giraudoux: Structure et evolution*. Slatkine.
 <span id="ref-carroll-1964"></span>
 1. [**^**](#ref-cttr) Carroll, J. B. (1964). *Language and thought*. Prentice-Hall.
 <span id="ref-carroll-1970"></span>
@@ -1669,6 +1679,9 @@ Measure of Effect Size|Formula
 1. [**^**](#ref-logttr) Herdan, G. (1960). *Type-token mathematics: A textbook of mathematical linguistics*. Mouton.
 <span id="ref-hofland-johanson-1982"></span>
 1. [**^**](#ref-pearsons-chi-squared-test)[**^**](#ref-diff-coeff) Hofland, K., & Johanson, S. (1982). *Word frequencies in British and American English*. Norwegian Computing Centre for the Humanities.
+<span id="ref-honore-1979"></span>
+1. [**^**](#ref-honores-stat) Honoré, A. (1979). Some simple measures of richness of vocabulary. *Association of Literary and
+Linguistic Computing Bulletin*, *7*(2), 172–177.
 <span id="ref-johnson-1944"></span>
 1. [**^**](#ref-msttr)[**^**](#ref-ttr) Johnson, W. (1944). Studies in language behavior: I. a program of research. *Psychological Monographs*, *56*(2), 1–15. https://doi.org/10.1037/h0093508
 <span id="ref-juilland-chang-rodrigues-1964"></span>

@@ -22,6 +22,7 @@
 ### 🎉 New Features
 - Utils: Add Stanza's Sindhi part-of-speech tagger
 - Utils: Add VADER's sentiment analyzers
+- Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
 
 ### 📌 Bugfixes
 - Utils: Fix downloading of Stanza models
