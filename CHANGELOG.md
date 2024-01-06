@@ -24,6 +24,9 @@
 - Utils: Add VADER's sentiment analyzers
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
 
+### ✨ Improvements
+- Utils: Update custom stop word lists
+
 ### 📌 Bugfixes
 - Utils: Fix downloading of Stanza models
 - Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark

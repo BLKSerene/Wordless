@@ -20,6 +20,7 @@ import networkx
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QDesktopWidget
 
+from wordless.wl_settings import wl_settings_global
 from wordless.wl_tagsets import (
     wl_tagset_universal,
     wl_tagset_eng_penn_treebank,
@@ -2340,7 +2341,12 @@ def init_settings_default(main):
     settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']
 
     # Custom stop word lists
-    for lang in settings_default['stop_word_lists']['stop_word_list_settings']:
-        settings_default['stop_word_lists']['custom_lists'][lang] = []
+    for lang in wl_settings_global.SETTINGS_GLOBAL['langs'].values():
+        lang_code = lang[0]
+
+        if lang_code not in settings_default['stop_word_lists']['stop_word_list_settings']:
+            settings_default['stop_word_lists']['stop_word_list_settings'][lang_code] = 'custom'
+
+        settings_default['stop_word_lists']['custom_lists'][lang_code] = []
 
     return settings_default
