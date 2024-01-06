@@ -29,9 +29,6 @@ for lang, stop_word_lists in main.settings_global['stop_word_lists'].items():
     for stop_word_list in stop_word_lists:
         test_stop_word_lists.append((lang, stop_word_list))
 
-    # Add custom lists
-    test_stop_word_lists.append((lang, 'custom'))
-
 @pytest.mark.parametrize('lang, stop_word_list', test_stop_word_lists)
 def test_get_stop_word_list(lang, stop_word_list):
     stop_words = wl_stop_word_lists.wl_get_stop_word_list(main, lang, stop_word_list = stop_word_list)

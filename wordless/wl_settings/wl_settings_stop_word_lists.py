@@ -63,8 +63,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
                 items = list(wl_nlp_utils.to_lang_util_texts(
                     self.main,
                     util_type = 'stop_word_lists',
-                    # Add custom lists
-                    util_codes = self.settings_global[lang] + ['custom']
+                    util_codes = self.settings_global[lang]
                 )),
                 col = 1
             ))
@@ -125,7 +124,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.settings_custom['preview']['preview_lang'] = wl_conversion.to_lang_code(self.main, self.combo_box_preview_lang.currentText())
 
     def preview_results_changed(self):
-        row = list(self.settings_global.keys()).index(self.settings_custom['preview']['preview_lang'])
+        row = list(self.settings_global).index(self.settings_custom['preview']['preview_lang'])
         lang = wl_conversion.to_lang_code(self.main, self.combo_box_preview_lang.currentText())
         list_stop_words = wl_nlp_utils.to_lang_util_code(
             self.main,
@@ -153,7 +152,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
 
         self.table_stop_word_lists.disable_updates()
 
-        for i, lang in enumerate(settings['stop_word_list_settings']):
+        for i, lang in enumerate(self.settings_global):
             self.table_stop_word_lists.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'stop_word_lists',
@@ -171,7 +170,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
         self.combo_box_preview_lang.currentTextChanged.emit(self.combo_box_preview_lang.currentText())
 
     def apply_settings(self):
-        for i, lang in enumerate(self.settings_custom['stop_word_list_settings']):
+        for i, lang in enumerate(self.settings_global):
             self.settings_custom['stop_word_list_settings'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'stop_word_lists',
