@@ -4054,3 +4054,13 @@ SETTINGS_GLOBAL = {
         '''
     }
 }
+
+# Custom stop word lists (preserve order of language names)
+stop_word_lists = SETTINGS_GLOBAL['stop_word_lists'].copy()
+
+SETTINGS_GLOBAL['stop_word_lists'].clear()
+
+for lang in SETTINGS_GLOBAL['langs'].values():
+    lang_code = lang[0]
+
+    SETTINGS_GLOBAL['stop_word_lists'][lang_code] = stop_word_lists.get(lang_code, []) + ['custom']
