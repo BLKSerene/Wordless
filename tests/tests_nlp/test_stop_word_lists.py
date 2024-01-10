@@ -47,6 +47,11 @@ def test_filter_stop_words():
     assert wl_stop_word_lists.wl_filter_stop_words(main, items = ['a', 'aa'], lang = 'eng_us') == ['aa']
     assert wl_stop_word_lists.wl_filter_stop_words(main, items = [], lang = 'eng_us') == []
 
+    main.settings_custom['stop_word_lists']['stop_word_list_settings']['case_sensitive'] = False
+    assert wl_stop_word_lists.wl_filter_stop_words(main, items = ['A', 'a'], lang = 'eng_us') == []
+    main.settings_custom['stop_word_lists']['stop_word_list_settings']['case_sensitive'] = True
+    assert wl_stop_word_lists.wl_filter_stop_words(main, items = ['A', 'a'], lang = 'eng_us') == ['A']
+
 if __name__ == '__main__':
     for lang, stop_word_list in test_stop_word_lists:
         test_get_stop_word_list(lang, stop_word_list)

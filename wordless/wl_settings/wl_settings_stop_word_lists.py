@@ -19,7 +19,7 @@
 import copy
 
 from PyQt5.QtGui import QStandardItem
-from PyQt5.QtWidgets import QGroupBox, QLabel
+from PyQt5.QtWidgets import QCheckBox, QGroupBox, QLabel
 
 from wordless.wl_nlp import wl_nlp_utils, wl_stop_word_lists
 from wordless.wl_settings import wl_settings
@@ -45,6 +45,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
             ],
             editable = True
         )
+        self.checkbox_case_sensitive = QCheckBox(self.tr('Case-sensitive'), self)
 
         self.table_stop_word_lists.setFixedHeight(370)
         self.table_stop_word_lists.verticalHeader().setHidden(True)
@@ -72,6 +73,7 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
 
         self.group_box_stop_word_list_settings.setLayout(wl_layouts.Wl_Layout())
         self.group_box_stop_word_list_settings.layout().addWidget(self.table_stop_word_lists, 0, 0)
+        self.group_box_stop_word_list_settings.layout().addWidget(self.checkbox_case_sensitive, 1, 0)
 
         # Preview
         self.group_box_preview = QGroupBox(self.tr('Preview'), self)
@@ -156,14 +158,17 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
             self.table_stop_word_lists.model().item(i, 1).setText(wl_nlp_utils.to_lang_util_text(
                 self.main,
                 util_type = 'stop_word_lists',
-                util_code = settings['stop_word_list_settings'][lang]
+                util_code = settings['stop_word_list_settings']['stop_word_lists'][lang]
             ))
 
         self.table_stop_word_lists.enable_updates()
 
+        self.checkbox_case_sensitive.setChecked(settings['stop_word_list_settings']['case_sensitive'])
+
         if not defaults:
             self.combo_box_preview_lang.setCurrentText(wl_conversion.to_lang_text(self.main, settings['preview']['preview_lang']))
 
+        # Custom stop word lists
         if defaults:
             self.settings_custom['custom_lists'] = copy.deepcopy(self.settings_default['custom_lists'])
 
@@ -171,13 +176,18 @@ class Wl_Settings_Stop_Word_Lists(wl_settings.Wl_Settings_Node):
 
     def apply_settings(self):
         for i, lang in enumerate(self.settings_global):
-            self.settings_custom['stop_word_list_settings'][lang] = wl_nlp_utils.to_lang_util_code(
+            self.settings_custom['stop_word_list_settings']['stop_word_lists'][lang] = wl_nlp_utils.to_lang_util_code(
                 self.main,
                 util_type = 'stop_word_lists',
                 util_text = self.table_stop_word_lists.model().item(i, 1).text()
             )
 
-        if self.settings_custom['stop_word_list_settings'][self.settings_custom['preview']['preview_lang']] == 'custom':
-            self.settings_custom['custom_lists'][self.settings_custom['preview']['preview_lang']] = self.list_preview_results.model().stringList()
+        self.settings_custom['stop_word_list_settings']['case_sensitive'] = self.checkbox_case_sensitive.isChecked()
+
+        # Custom stop word lists
+        preview_lang = self.settings_custom['preview']['preview_lang']
+
+        if self.settings_custom['stop_word_list_settings']['stop_word_lists'][preview_lang] == 'custom':
+            self.settings_custom['custom_lists'][preview_lang] = self.list_preview_results.model().stringList()
 
         return True

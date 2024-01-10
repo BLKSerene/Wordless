@@ -131,7 +131,7 @@ class Check_Settings_Global:
         settings_lemmatizers = settings_global['lemmatizers']
         settings_lemmatizers_default = settings_default['lemmatization']['lemmatizer_settings']
         settings_stop_word_lists = settings_global['stop_word_lists']
-        settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_list_settings']
+        settings_stop_word_lists_default = settings_default['stop_word_lists']['stop_word_list_settings']['stop_word_lists']
         settings_dependency_parsers = settings_global['dependency_parsers']
         settings_dependency_parsers_default = settings_default['dependency_parsing']['dependency_parser_settings']
         settings_sentiment_analyzers = settings_global['sentiment_analyzers']
