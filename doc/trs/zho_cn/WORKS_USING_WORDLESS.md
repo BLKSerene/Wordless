@@ -34,8 +34,6 @@
 1. 石红燕. (2022). 语料库语言学视角下的《蜀道难》英译研究. *现代语言学*, *10*(6), 1347–1355. https://doi.org/10.12677/ml.2022.106180
 1. 宋祝, 李玲, & 梁渊. (2021). “构式驱动”读写教学模式下的构式习得研究. *成都师范学院学报*, *37*(3), 51–58.
 1. 陶源. (2021). 基于俄媒语料库的新冠肺炎主题词与疫情变迁研究. *南昌航空大学学报：社会科学*, *23*(1), 114–124.
-1. 王平. (2020). 走向数字时代: 中国美术主题数字化的意义与价值. *美术教育研究*, *2020*(18), 64–67.
-1. 严丹, 张静蓓, & 蔡迎春. (2023). 大学图书馆对数字学术多元成果产出的支持体系构建及推进策略. *图书馆杂志*, *42*(10), 46–54.
 1. Yih, T., & Liu, H. (2023). The meaning distributions on different levels of granularity. *Glottometrics*, *54*, 13–38. https://doi.org/10.53482/2023_54_405
 1. 张武江. (2022). 基于语料库的《密码法》英译研究. *北京电子科技学院学报*, *30*(3), 152–160.
 1. 赵宇霞. (2022). 基于语料库的傅雷翻译风格新探: 语言与情感的融合. *外语电化教学*, *2022*(2), 96–103.
@@ -47,7 +45,7 @@
 1. 沈雅楠. (2020). *On the influence of translator's habitus on translation: A case study of the two English versions of Bian Cheng* [Master's thesis, 上海外国语大学]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGk7eK61V3ne_FsBIfvOoS8kW8plhk60QuBjWp-9ECuNMPhiM5SXrAHsbdBjns45qQSotahrIzXKkrlLpfZtWhYojDpeBtRx1yrO9gr1fTQFxmCRye2D71pRL-1rHeUC5aKPxNMDVfxYpQ==&uniplatform=NZKPT&language=CHS
 1. 严明. (2023). *A comparative study on the translation styles of three English versions of Na Han and Pang Huang* [Master's thesis, 北京外国语大学]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGm-Rs1silP3PF7mbatdKd2tgG-QmgGZ61zyg5BPO3b4ZpCRBPoUQJFOody-wAPizCwhCxIB-2WWqc8fJi2BMfyvgC5DHJyJ8ehTJvnODZhXFfaBXObvjpcZIxXq6eD61kV0aNyFAzKxgQ==&uniplatform=NZKPT&language=CHS
 1. 赵瑾乾. (2023). *义务教育阶段语文教材词语研究* [Master's thesis, 辽宁师范大学]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGn00G83ItuRwxNe9K2MszFejKu1pKy-fk1i33EizT4LW8kNzvkKl9xt4Kjnk6N1OR7hZP8gNuNWMGDPdtAYyuI8SIqfOWcwdZNRQuEea1x1VYpPjm1kSXLIVrjS1gnIMLODthdCBiz4RA==&uniplatform=NZKPT&language=CHS
-
+1. 周一钦. (2023). *《人生》俄译本乡土中国文化形象重构研究* [Master's thesis, 黑龙江大学]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=ACks_bcdpKlVZB2NYTmNVizHGcB_J8zdXzpUwrFBD9mD-lII8VjtClmD8S_303LHkz_0RjJSd79ALt4PmYWJPslFYxPN0a9W3e2X6Gxunrnii3HefbbyOxoFbCD29whp2r0o9v1MsAx7gcye1XD75A==&uniplatform=NZKPT&language=CHS
 
 <div align="center"><h2>博士论文</h2></div>
 

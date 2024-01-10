@@ -21,7 +21,7 @@
 以下列表並非詳盡無遺，僅供參考。如果你知道其他使用了 Wordless 的作品沒有在下方列出，歡迎提供詳細的文獻信息。<br>
 
 <div align="center">
-    <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#期刊文章">期刊文章</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#碩士論文">碩士論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_tw/WORKS_USING_WORDLESS.md#博士論文">博士論文</a>
+    <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_cn/WORKS_USING_WORDLESS.md#期刊文章">期刊文章</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_cn/WORKS_USING_WORDLESS.md#碩士論文">碩士論文</a> | <a href="https://github.com/BLKSerene/Wordless/blob/main/doc/trs/zho_cn/WORKS_USING_WORDLESS.md#博士論文">博士論文</a>
 </div>
 
 <div align="center"><h2>期刊文章</h2></div>
@@ -34,20 +34,18 @@
 1. 石紅燕. (2022). 語料庫語言學視角下的《蜀道難》英譯研究. *現代語言學*, *10*(6), 1347–1355. https://doi.org/10.12677/ml.2022.106180
 1. 宋祝, 李玲, & 梁淵. (2021). “構式驅動”讀寫教學模式下的構式習得研究. *成都師範學院學報*, *37*(3), 51–58.
 1. 陶源. (2021). 基於俄媒語料庫的新冠肺炎主題詞與疫情變遷研究. *南昌航空大學學報：社會科學*, *23*(1), 114–124.
-1. 王平. (2020). 走向數字時代: 中國美術主題數字化的意義與價值. *美術教育研究*, *2020*(18), 64–67.
-1. 嚴丹, 張靜蓓, & 蔡迎春. (2023). 大學圖書館對數字學術多元成果產出的支持體系構建及推進策略. *圖書館雜誌*, *42*(10), 46–54.
 1. Yih, T., & Liu, H. (2023). The meaning distributions on different levels of granularity. *Glottometrics*, *54*, 13–38. https://doi.org/10.53482/2023_54_405
 1. 張武江. (2022). 基於語料庫的《密碼法》英譯研究. *北京電子科技學院學報*, *30*(3), 152–160.
 1. 趙宇霞. (2022). 基於語料庫的傅雷翻譯風格新探: 語言與情感的融合. *外語電化教學*, *2022*(2), 96–103.
 
 <div align="center"><h2>碩士論文</h2></div>
 
-1. 康政. (2023). *Investigating the translator's style: A corpus-based analysis of Howard Goldblatt's style in his English translations of Mo Yan's novels* [Master's thesis, 北京外國語大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGlLA1-e2pir7L8gvEGmJIlFDzWm_AIfZ8GVKLE--YrKDGTL-EojaJLlXTLXfDE8XLGNIsGyoAoU7tO24iMEDUx6619Rp4bUxI3jYOuXKQtTWMyss-7WpFyzwgvBns_kpzOGXuc3MNNExg==&uniplatform=NZKPT&language=CHS
-1. 呂榮. (2020). *A comparative study of acceptability of three English versions of Wenxin Diaolong* [Master's thesis, 武漢理工大學]. 萬方. https://d.wanfangdata.com.cn/thesis/ChJUaGVzaXNOZXdTMjAyMzA5MDESCUQwMjMyMDc1MhoIMjdsMzc4YTM%3D
-1. 沈雅楠. (2020). *On the influence of translator's habitus on translation: A case study of the two English versions of Bian Cheng* [Master's thesis, 上海外國語大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGk7eK61V3ne_FsBIfvOoS8kW8plhk60QuBjWp-9ECuNMPhiM5SXrAHsbdBjns45qQSotahrIzXKkrlLpfZtWhYojDpeBtRx1yrO9gr1fTQFxmCRye2D71pRL-1rHeUC5aKPxNMDVfxYpQ==&uniplatform=NZKPT&language=CHS
-1. 嚴明. (2023). *A comparative study on the translation styles of three English versions of Na Han and Pang Huang* [Master's thesis, 北京外國語大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGm-Rs1silP3PF7mbatdKd2tgG-QmgGZ61zyg5BPO3b4ZpCRBPoUQJFOody-wAPizCwhCxIB-2WWqc8fJi2BMfyvgC5DHJyJ8ehTJvnODZhXFfaBXObvjpcZIxXq6eD61kV0aNyFAzKxgQ==&uniplatform=NZKPT&language=CHS
-1. 趙瑾乾. (2023). *義務教育階段語文教材詞語研究* [Master's thesis, 遼寧師範大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGn00G83ItuRwxNe9K2MszFejKu1pKy-fk1i33EizT4LW8kNzvkKl9xt4Kjnk6N1OR7hZP8gNuNWMGDPdtAYyuI8SIqfOWcwdZNRQuEea1x1VYpPjm1kSXLIVrjS1gnIMLODthdCBiz4RA==&uniplatform=NZKPT&language=CHS
-
+1. 康政. (2023). *Investigating the translator\'s style: A corpus-based analysis of Howard Goldblatt\'s style in his English translations of Mo Yan\'s novels* [Master\'s thesis, 北京外國語大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGlLA1-e2pir7L8gvEGmJIlFDzWm_AIfZ8GVKLE--YrKDGTL-EojaJLlXTLXfDE8XLGNIsGyoAoU7tO24iMEDUx6619Rp4bUxI3jYOuXKQtTWMyss-7WpFyzwgvBns_kpzOGXuc3MNNExg==&uniplatform=NZKPT&language=CHS
+1. 呂榮. (2020). *A comparative study of acceptability of three English versions of Wenxin Diaolong* [Master\'s thesis, 武漢理工大學]. 萬方. https://d.wanfangdata.com.cn/thesis/ChJUaGVzaXNOZXdTMjAyMzA5MDESCUQwMjMyMDc1MhoIMjdsMzc4YTM%3D
+1. 沈雅楠. (2020). *On the influence of translator\'s habitus on translation: A case study of the two English versions of Bian Cheng* [Master\'s thesis, 上海外國語大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGk7eK61V3ne_FsBIfvOoS8kW8plhk60QuBjWp-9ECuNMPhiM5SXrAHsbdBjns45qQSotahrIzXKkrlLpfZtWhYojDpeBtRx1yrO9gr1fTQFxmCRye2D71pRL-1rHeUC5aKPxNMDVfxYpQ==&uniplatform=NZKPT&language=CHS
+1. 嚴明. (2023). *A comparative study on the translation styles of three English versions of Na Han and Pang Huang* [Master\'s thesis, 北京外國語大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGm-Rs1silP3PF7mbatdKd2tgG-QmgGZ61zyg5BPO3b4ZpCRBPoUQJFOody-wAPizCwhCxIB-2WWqc8fJi2BMfyvgC5DHJyJ8ehTJvnODZhXFfaBXObvjpcZIxXq6eD61kV0aNyFAzKxgQ==&uniplatform=NZKPT&language=CHS
+1. 趙瑾乾. (2023). *義務教育階段語文教材詞語研究* [Master\'s thesis, 遼寧師範大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=PT3z46FIkGn00G83ItuRwxNe9K2MszFejKu1pKy-fk1i33EizT4LW8kNzvkKl9xt4Kjnk6N1OR7hZP8gNuNWMGDPdtAYyuI8SIqfOWcwdZNRQuEea1x1VYpPjm1kSXLIVrjS1gnIMLODthdCBiz4RA==&uniplatform=NZKPT&language=CHS
+1. 週一欽. (2023). *《人生》俄譯本鄉土中國文化形象重構研究* [Master\'s thesis, 黑龍江大學]. CNKI. https://kns.cnki.net/kcms2/article/abstract?v=ACks_bcdpKlVZB2NYTmNVizHGcB_J8zdXzpUwrFBD9mD-lII8VjtClmD8S_303LHkz_0RjJSd79ALt4PmYWJPslFYxPN0a9W3e2X6Gxunrnii3HefbbyOxoFbCD29whp2r0o9v1MsAx7gcye1XD75A==&uniplatform=NZKPT&language=CHS
 
 <div align="center"><h2>博士論文</h2></div>
 
