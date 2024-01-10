@@ -150,15 +150,28 @@ def wl_process_tokens(main, text, token_settings):
 
         i_tag = 0
 
-        for para in text.tokens_multilevel:
-            for sentence in para:
-                for sentence_seg in sentence:
-                    for i, token in enumerate(sentence_seg):
-                        if token in stop_words:
-                            sentence_seg[i] = ''
-                            text.tags[i_tag + i] = ''
+        if main.settings_custom['stop_word_lists']['stop_word_list_settings']['case_sensitive']:
+            for para in text.tokens_multilevel:
+                for sentence in para:
+                    for sentence_seg in sentence:
+                        for i, token in enumerate(sentence_seg):
+                            if token in stop_words:
+                                sentence_seg[i] = ''
+                                text.tags[i_tag + i] = ''
 
-                    i_tag += len(sentence_seg)
+                        i_tag += len(sentence_seg)
+        else:
+            stop_words = {token.lower() for token in stop_words}
+
+            for para in text.tokens_multilevel:
+                for sentence in para:
+                    for sentence_seg in sentence:
+                        for i, token in enumerate(sentence_seg):
+                            if token.lower() in stop_words:
+                                sentence_seg[i] = ''
+                                text.tags[i_tag + i] = ''
+
+                        i_tag += len(sentence_seg)
 
     # Ignore tags
     i_token = 0

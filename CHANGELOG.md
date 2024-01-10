@@ -20,6 +20,7 @@
 
 ## [3.5.0](https://github.com/BLKSerene/Wordless/releases/tag/3.5.0) - ??/??/2024
 ### 🎉 New Features
+- Settings: Add Settings - Stop Word Lists - Stop Word List Settings - Case-sensitive
 - Utils: Add Stanza's Sindhi part-of-speech tagger
 - Utils: Add VADER's sentiment analyzers
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic

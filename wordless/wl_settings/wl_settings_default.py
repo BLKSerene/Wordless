@@ -1735,43 +1735,47 @@ def init_settings_default(main):
         # Settings - Stop Word Lists
         'stop_word_lists': {
             'stop_word_list_settings': {
-                'ara': 'nltk_ara',
-                'aze': 'nltk_aze',
-                'eus': 'nltk_eus',
-                'ben': 'nltk_ben',
-                'cat': 'nltk_cat',
-                'zho_cn': 'nltk_zho_cn',
-                'zho_tw': 'nltk_zho_tw',
-                'dan': 'nltk_dan',
-                'nld': 'nltk_nld',
-                'eng_gb': 'nltk_eng',
-                'eng_us': 'nltk_eng',
-                'fin': 'nltk_fin',
-                'fra': 'nltk_fra',
-                'deu_at': 'nltk_deu',
-                'deu_de': 'nltk_deu',
-                'deu_ch': 'nltk_deu',
-                'ell': 'nltk_ell',
-                'heb': 'nltk_heb',
-                'hun': 'nltk_hun',
-                'ind': 'nltk_ind',
-                'ita': 'nltk_ita',
-                'kaz': 'nltk_kaz',
-                'lao': 'laonlp_lao',
-                'nep': 'nltk_nep',
-                'nob': 'nltk_nob',
-                'por_br': 'nltk_por',
-                'por_pt': 'nltk_por',
-                'ron': 'nltk_ron',
-                'rus': 'nltk_rus',
-                'slv': 'nltk_slv',
-                'spa': 'nltk_spa',
-                'swe': 'nltk_swe',
-                'tgk': 'nltk_tgk',
-                'tha': 'pythainlp_tha',
-                'tur': 'nltk_tur',
+                'stop_word_lists': {
+                    'ara': 'nltk_ara',
+                    'aze': 'nltk_aze',
+                    'eus': 'nltk_eus',
+                    'ben': 'nltk_ben',
+                    'cat': 'nltk_cat',
+                    'zho_cn': 'nltk_zho_cn',
+                    'zho_tw': 'nltk_zho_tw',
+                    'dan': 'nltk_dan',
+                    'nld': 'nltk_nld',
+                    'eng_gb': 'nltk_eng',
+                    'eng_us': 'nltk_eng',
+                    'fin': 'nltk_fin',
+                    'fra': 'nltk_fra',
+                    'deu_at': 'nltk_deu',
+                    'deu_de': 'nltk_deu',
+                    'deu_ch': 'nltk_deu',
+                    'ell': 'nltk_ell',
+                    'heb': 'nltk_heb',
+                    'hun': 'nltk_hun',
+                    'ind': 'nltk_ind',
+                    'ita': 'nltk_ita',
+                    'kaz': 'nltk_kaz',
+                    'lao': 'laonlp_lao',
+                    'nep': 'nltk_nep',
+                    'nob': 'nltk_nob',
+                    'por_br': 'nltk_por',
+                    'por_pt': 'nltk_por',
+                    'ron': 'nltk_ron',
+                    'rus': 'nltk_rus',
+                    'slv': 'nltk_slv',
+                    'spa': 'nltk_spa',
+                    'swe': 'nltk_swe',
+                    'tgk': 'nltk_tgk',
+                    'tha': 'pythainlp_tha',
+                    'tur': 'nltk_tur',
 
-                'other': 'custom'
+                    'other': 'custom'
+                },
+
+                'case_sensitive': False,
             },
 
             'custom_lists': {},
@@ -2344,8 +2348,8 @@ def init_settings_default(main):
     for lang in wl_settings_global.SETTINGS_GLOBAL['langs'].values():
         lang_code = lang[0]
 
-        if lang_code not in settings_default['stop_word_lists']['stop_word_list_settings']:
-            settings_default['stop_word_lists']['stop_word_list_settings'][lang_code] = 'custom'
+        if lang_code not in settings_default['stop_word_lists']['stop_word_list_settings']['stop_word_lists']:
+            settings_default['stop_word_lists']['stop_word_list_settings']['stop_word_lists'][lang_code] = 'custom'
 
         settings_default['stop_word_lists']['custom_lists'][lang_code] = []
 

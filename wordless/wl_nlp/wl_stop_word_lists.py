@@ -62,7 +62,7 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
         lang = 'other'
 
     if stop_word_list == 'default':
-        stop_word_list = main.settings_custom['stop_word_lists']['stop_word_list_settings'][lang]
+        stop_word_list = main.settings_custom['stop_word_lists']['stop_word_list_settings']['stop_word_lists'][lang]
 
     stop_words = []
 
@@ -113,10 +113,19 @@ def wl_get_stop_word_list(main, lang, stop_word_list = 'default'):
 def wl_filter_stop_words(main, items, lang):
     stop_word_list = wl_get_stop_word_list(main, lang)
 
-    # Check if the list is empty
-    if items:
-        items_filtered = [token for token in items if token not in stop_word_list]
+    if main.settings_custom['stop_word_lists']['stop_word_list_settings']['case_sensitive']:
+        items_filtered = [
+            token
+            for token in items
+            if token not in stop_word_list
+        ]
     else:
-        items_filtered = []
+        stop_word_list = [token.lower() for token in stop_word_list]
+
+        items_filtered = [
+            token
+            for token in items
+            if token.lower() not in stop_word_list
+        ]
 
     return items_filtered
