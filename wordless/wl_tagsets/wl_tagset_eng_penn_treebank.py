@@ -19,7 +19,7 @@
 # References:
 #     https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
 #     https://github.com/nltk/nltk_data/blob/gh-pages/packages/taggers/universal_tagset.zip
-MAPPINGS = [
+tagset_mapping = [
     ['CC', 'CCONJ', 'Coordinating conjunction', ''],
     ['CD', 'NUM', 'Cardinal number', ''],
     ['CD|RB', 'X', '', ''],

@@ -19,7 +19,7 @@
 # References:
 #     [Dead] http://www.ruscorpora.ru/en/corpora-morph.html
 #     https://github.com/nltk/nltk/pull/2152
-MAPPINGS = [
+tagset_mapping = [
     ['A', 'ADJ', 'Adjective', ''],
 
     ['A=m', 'ADJ', 'Adjective (masculine)', ''],

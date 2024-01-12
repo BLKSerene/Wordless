@@ -20,7 +20,7 @@
 #     https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
 #     https://github.com/PyThaiNLP/pythainlp/blob/dev/pythainlp/tag/blackboard.py
 #     https://bitbucket.org/kaamanita/blackboard-treebank/src/master/Blackboard-Treebank.pdf
-MAPPINGS = [
+tagset_mapping = [
     ['AJ', 'ADJ', 'Adjective: Attribute, modifier, or description of a noun', 'ใหม่, พิเศษ , ก่อน, มาก, สูง'],
     ['AV', 'ADV', 'Adverb: Word that modifies or qualifies an adjective, verb, or another adverb', 'ก่อน, ก็, เล็กน้อย, เลย, สุด'],
     ['AX', 'AUX', 'Auxiliary: Tense, aspect, mood, and voice', 'เป็น, ใช่, คือ, คล้าย'],

@@ -19,7 +19,7 @@
 # References:
 #     https://github.com/PyThaiNLP/pythainlp/blob/dev/docs/api/tag.rst#pythainlptag
 #     https://github.com/PyThaiNLP/pythainlp/blob/dev/pythainlp/tag/orchid.py
-MAPPINGS = [
+tagset_mapping = [
     ['NPRP', 'PROPN', 'Proper noun', 'วินโดวส์ 95, โคโรน่า, โค้ก'],
 
     ['NCNM', 'NOUN/NUM', 'Cardinal number', 'หนึ่ง, สอง, สาม, 1, 2, 10'],
