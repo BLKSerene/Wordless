@@ -26,6 +26,11 @@ import underthesea
 from wordless.wl_nlp import wl_nlp_utils, wl_word_tokenization
 from wordless.wl_utils import wl_conversion
 
+UNIVERSAL_TAGSETS_SPACY = [
+    'spacy_cat', 'spacy_dan', 'spacy_fra', 'spacy_ell', 'spacy_mkd',
+    'spacy_nob', 'spacy_por', 'spacy_rus', 'spacy_spa', 'spacy_ukr'
+]
+
 def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     tokens_tagged = []
 
@@ -168,7 +173,16 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
             tokens_tagged.insert(empty_offset, ('', ''))
 
     # Convert to universal POS tags
-    if not pos_tagger.startswith('spacy_') and not pos_tagger.startswith('stanza_') and tagset == 'universal':
+    if (
+        tagset == 'universal'
+        and (
+            (
+                not pos_tagger.startswith('spacy_')
+                and not pos_tagger.startswith('stanza_')
+            )
+            or pos_tagger in UNIVERSAL_TAGSETS_SPACY
+        )
+    ):
         mappings = {
             tag: tag_universal
             for tag, tag_universal, _, _ in main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]

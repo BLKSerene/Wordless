@@ -17,7 +17,7 @@
 # ----------------------------------------------------------------------
 
 # Reference: https://github.com/undertheseanlp/underthesea/wiki/M%C3%B4-t%E1%BA%A3-d%E1%BB%AF-li%E1%BB%87u-b%C3%A0i-to%C3%A1n-POS-Tag
-MAPPINGS = [
+tagset_mapping = [
     ['A', 'ADJ', 'Tính từ', 'nhiều, hơn, khác, gần, lớn'],
     ['Ab', 'ADJ', 'Tính từ mượn', 'sexy, Peace, đờmi'],
     ['B', 'X', 'Từ mượn', 'karaoke, nilông, fax, oxy'],

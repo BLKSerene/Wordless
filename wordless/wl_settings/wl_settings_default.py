@@ -16,24 +16,35 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import copy
+
 import networkx
 from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtWidgets import QDesktopWidget
 
 from wordless.wl_settings import wl_settings_global
 from wordless.wl_tagsets import (
-    wl_tagset_universal,
+    wl_tagset_cat_universal,
+    wl_tagset_dan_universal,
     wl_tagset_eng_penn_treebank,
+    wl_tagset_eng_universal,
+    wl_tagset_ell_universal,
+    wl_tagset_fra_universal,
     wl_tagset_jpn_unidic,
     wl_tagset_khm_alt,
     wl_tagset_kor_mecab,
     wl_tagset_lao_seqlabeling,
     wl_tagset_lao_yunshan_cup_2020,
+    wl_tagset_nor_universal,
+    wl_tagset_por_universal,
     wl_tagset_rus_open_corpora,
     wl_tagset_rus_russian_national_corpus,
+    wl_tagset_rus_universal,
+    wl_tagset_spa_universal,
     wl_tagset_tha_blackboard,
     wl_tagset_tha_orchid,
     wl_tagset_bod_botok,
+    wl_tagset_ukr_universal,
     wl_tagset_vie_underthesea
 )
 from wordless.wl_utils import wl_misc, wl_paths
@@ -1580,51 +1591,90 @@ def init_settings_default(main):
                 },
 
                 'mapping_settings': {
-                    'eng_gb': {
-                        'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.MAPPINGS,
+                    'cat': {
+                        'spacy_cat': copy.deepcopy(wl_tagset_cat_universal.tagset_mapping)
                     },
+
+                    'dan': {
+                        'spacy_dan': copy.deepcopy(wl_tagset_dan_universal.tagset_mapping)
+                    },
+
+                    'eng_gb': {
+                        'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.tagset_mapping,
+                    },
+
                     'eng_us': {
-                        'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.MAPPINGS,
+                        'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.tagset_mapping,
+                    },
+
+                    'ell': {
+                        'spacy_ell': copy.deepcopy(wl_tagset_ell_universal.tagset_mapping)
+                    },
+
+                    'fra': {
+                        'spacy_fra': copy.deepcopy(wl_tagset_fra_universal.tagset_mapping)
                     },
 
                     'jpn': {
-                        'sudachipy_jpn': wl_tagset_jpn_unidic.MAPPINGS
+                        'sudachipy_jpn': wl_tagset_jpn_unidic.tagset_mapping
                     },
 
                     'khm': {
-                        'khmer_nltk_khm': wl_tagset_khm_alt.MAPPINGS
+                        'khmer_nltk_khm': wl_tagset_khm_alt.tagset_mapping
                     },
 
                     'kor': {
-                        'python_mecab_ko_mecab': wl_tagset_kor_mecab.MAPPINGS
+                        'python_mecab_ko_mecab': wl_tagset_kor_mecab.tagset_mapping
                     },
 
                     'lao': {
-                        'laonlp_seqlabeling': wl_tagset_lao_seqlabeling.MAPPINGS,
-                        'laonlp_yunshan_cup_2020': wl_tagset_lao_yunshan_cup_2020.MAPPINGS
+                        'laonlp_seqlabeling': wl_tagset_lao_seqlabeling.tagset_mapping,
+                        'laonlp_yunshan_cup_2020': wl_tagset_lao_yunshan_cup_2020.tagset_mapping
+                    },
+
+                    'mkd': {
+                        'spacy_mkd': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
+                    'nob': {
+                        'spacy_nob': copy.deepcopy(wl_tagset_nor_universal.tagset_mapping)
+                    },
+
+                    'por_br': {
+                        'spacy_por': copy.deepcopy(wl_tagset_por_universal.tagset_mapping)
+                    },
+
+                    'por_pt': {
+                        'spacy_por': copy.deepcopy(wl_tagset_por_universal.tagset_mapping)
                     },
 
                     'rus': {
-                        'nltk_perceptron_rus': wl_tagset_rus_russian_national_corpus.MAPPINGS,
-                        'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
+                        'nltk_perceptron_rus': wl_tagset_rus_russian_national_corpus.tagset_mapping,
+                        'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.tagset_mapping,
+                        'spacy_rus': copy.deepcopy(wl_tagset_rus_universal.tagset_mapping)
+                    },
+
+                    'spa': {
+                        'spacy_spa': copy.deepcopy(wl_tagset_spa_universal.tagset_mapping)
                     },
 
                     'tha': {
-                        'pythainlp_perceptron_blackboard': wl_tagset_tha_blackboard.MAPPINGS,
-                        'pythainlp_perceptron_orchid': wl_tagset_tha_orchid.MAPPINGS,
-                        'pythainlp_perceptron_pud': wl_tagset_universal.MAPPINGS
+                        'pythainlp_perceptron_blackboard': wl_tagset_tha_blackboard.tagset_mapping,
+                        'pythainlp_perceptron_orchid': wl_tagset_tha_orchid.tagset_mapping,
+                        'pythainlp_perceptron_pud': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
 
                     'bod': {
-                        'botok_bod': wl_tagset_bod_botok.MAPPINGS
+                        'botok_bod': wl_tagset_bod_botok.tagset_mapping
                     },
 
                     'ukr': {
-                        'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.MAPPINGS
+                        'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.tagset_mapping,
+                        'spacy_ukr': copy.deepcopy(wl_tagset_ukr_universal.tagset_mapping)
                     },
 
                     'vie': {
-                        'underthesea_vie': wl_tagset_vie_underthesea.MAPPINGS
+                        'underthesea_vie': wl_tagset_vie_underthesea.tagset_mapping
                     }
                 }
             }
@@ -2342,7 +2392,7 @@ def init_settings_default(main):
     }
 
     # Tagsets
-    settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers']
+    settings_default['pos_tagging']['tagsets']['preview_settings']['preview_pos_tagger'] = settings_default['pos_tagging']['pos_tagger_settings']['pos_taggers'].copy()
 
     # Custom stop word lists
     for lang in wl_settings_global.SETTINGS_GLOBAL['langs'].values():

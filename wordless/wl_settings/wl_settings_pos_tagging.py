@@ -21,8 +21,8 @@ import copy
 from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtGui import QStandardItem
 from PyQt5.QtWidgets import (
-    QCheckBox, QGroupBox, QLabel, QPushButton, QStackedWidget,
-    QTextEdit, QWidget
+    QCheckBox, QGroupBox, QLabel, QPlainTextEdit, QPushButton,
+    QStackedWidget, QTextEdit
 )
 
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
@@ -271,8 +271,6 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
         self.pos_tag_mappings_loaded = False
 
-        self.settings_tagsets = QWidget(self)
-
         # Preview Settings
         self.group_box_preview_settings = QGroupBox(self.tr('Preview Settings:'), self)
 
@@ -316,7 +314,8 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
         self.stacked_widget_num_pos_tags.addWidget(self.label_tagsets_num_pos_tags)
         self.stacked_widget_num_pos_tags.addWidget(self.label_tagsets_uneditable)
 
-        self.table_mappings.setItemDelegate(wl_item_delegates.Wl_Item_Delegate_Combo_Box(
+        self.table_mappings.setItemDelegateForColumn(0, wl_item_delegates.Wl_Item_Delegate_Uneditable(self.table_mappings))
+        self.table_mappings.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Combo_Box(
             parent = self.table_mappings,
             items = [
                 'ADJ',
@@ -338,9 +337,10 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
                 'SYM',
                 'X'
             ],
-            col = 1,
             editable = True
         ))
+        self.table_mappings.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QPlainTextEdit))
+        self.table_mappings.setItemDelegateForColumn(3, wl_item_delegates.Wl_Item_Delegate(self.table_mappings, QPlainTextEdit))
 
         self.button_tagsets_reset.setMinimumWidth(100)
         self.button_tagsets_reset_all.setMinimumWidth(100)
@@ -399,7 +399,12 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
         preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
 
-        if not preview_pos_tagger.startswith('spacy_') and not preview_pos_tagger.startswith('stanza_'):
+        if (
+            (
+                not preview_pos_tagger.startswith('spacy_')
+                and not preview_pos_tagger.startswith('stanza_')
+            ) or preview_pos_tagger in wl_pos_tagging.UNIVERSAL_TAGSETS_SPACY
+        ):
             self.combo_box_tagsets_lang.setEnabled(False)
             self.combo_box_tagsets_pos_tagger.setEnabled(False)
             self.button_tagsets_reset.setEnabled(False)
@@ -464,6 +469,8 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
 
         for i in range(self.table_mappings.model().rowCount()):
             self.table_mappings.model().item(i, 1).setText(mappings[i][1])
+            self.table_mappings.model().item(i, 2).setText(mappings[i][2])
+            self.table_mappings.model().item(i, 3).setText(mappings[i][3])
 
         self.table_mappings.enable_updates()
 
@@ -520,10 +527,12 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             # Mapping Settings
             preview_lang = self.settings_custom['preview_settings']['preview_lang']
             preview_pos_tagger = self.settings_custom['preview_settings']['preview_pos_tagger'][preview_lang]
+            mapping = self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger]
 
             for i in range(self.table_mappings.model().rowCount()):
-                if not preview_pos_tagger.startswith('spacy_'):
-                    self.settings_custom['mapping_settings'][preview_lang][preview_pos_tagger][i][1] = self.table_mappings.model().item(i, 1).text()
+                mapping[i][1] = self.table_mappings.model().item(i, 1).text()
+                mapping[i][2] = self.table_mappings.model().item(i, 2).text()
+                mapping[i][3] = self.table_mappings.model().item(i, 3).text()
 
         return True
 

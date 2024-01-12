@@ -17,7 +17,7 @@
 # ----------------------------------------------------------------------
 
 # Reference: https://pymorphy2.readthedocs.io/en/latest/user/grammemes.html
-MAPPINGS = [
+tagset_mapping = [
     ['NOUN', 'NOUN', 'Noun', 'хомяк'],
     ['ADJF', 'ADJ', 'Adjective (full)', 'хороший'],
     ['ADJS', 'ADJ', 'Adjective (short)', 'хорош'],

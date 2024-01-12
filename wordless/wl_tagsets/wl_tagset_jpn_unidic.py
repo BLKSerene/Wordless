@@ -19,7 +19,7 @@
 # References:
 #     UniDic: https://gist.github.com/masayu-a/e3eee0637c07d4019ec9
 #     spaCy: https://github.com/explosion/spaCy/blob/master/spacy/lang/ja/tag_map.py
-MAPPINGS = [
+tagset_mapping = [
     ['代名詞', 'PRON', 'Pronoun', ''],
     ['副詞', 'ADV', 'Adverb', ''],
     ['助動詞', 'AUX', 'Auxiliary verb', ''],

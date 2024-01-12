@@ -26,6 +26,7 @@
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
 
 ### ✨ Improvements
+- Menu: Allow editing of tagset mapping of spaCy's Catalan, Danish, French, Greek (Modern), Macedonian, Norwegian (Bokmål), Portuguese, Russian, Spanish, and Ukrainian part-of-speech taggers
 - Utils: Update custom stop word lists
 
 ### 📌 Bugfixes
