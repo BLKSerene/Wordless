@@ -17,7 +17,7 @@
 # ----------------------------------------------------------------------
 
 # Reference: https://github.com/Esukhia/botok/blob/master/botok/vars.py
-MAPPINGS = [
+tagset_mapping = [
     ['ADJ', 'ADJ', 'Adjectives', ''],
     ['ADP', 'ADP', 'Adposition', ''],
     ['ADV', 'ADV', 'Adverb', ''],

@@ -17,7 +17,7 @@
 # ----------------------------------------------------------------------
 
 # Reference: https://github.com/FoVNull/SeqLabeling/blob/main/reference/Lao_POS.tsv
-MAPPINGS = [
+tagset_mapping = [
     ['N', 'NOUN', '名词', ''],
     ['TTL', 'NOUN', '称号名词', ''],
     ['PRN', 'PROPN', '专有名词', ''],

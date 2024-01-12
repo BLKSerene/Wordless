@@ -17,7 +17,7 @@
 # ----------------------------------------------------------------------
 
 # Reference: https://www2.nict.go.jp/astrec-att/member/mutiyama/ALT/Khmer-annotation-guideline.pdf
-MAPPINGS = [
+tagset_mapping = [
     ['n', 'NOUN', 'General nouns, can be subjects or objects of tokens tagged by v', ''],
     ['v', 'VERB', 'General verbs, can take tokens tagged by n as arguments', ''],
     ['a', 'ADJ', 'General adjectives, can directly describe or modify tokens tagged by n', ''],
