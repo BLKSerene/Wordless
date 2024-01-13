@@ -26,7 +26,8 @@
 - Work Area: Add Profiler - Lexical Diversity - Brunét's Index / Honoré's statistic
 
 ### ✨ Improvements
-- Menu: Allow editing of tagset mapping of spaCy's Catalan, Danish, French, Greek (Modern), Macedonian, Norwegian (Bokmål), Portuguese, Russian, Spanish, and Ukrainian part-of-speech taggers
+- Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of spaCy's Catalan, Danish, French, Greek (Modern), Macedonian, Norwegian (Bokmål), Portuguese, Russian, Spanish, and Ukrainian part-of-speech taggers
+- Settings: Settings - Part-of-speeach Tagging - Tagsets - Mapping Settings - Allow editing of tagset mapping of Stanza's Armenian (Eastern), Armenian (Western), Basque, Buryat (Russia), Danish, French, Greek (Modern), Hebrew (Modern), Hungarian, Ligurian, Manx, Marathi, Nigerian Pidgin, Pomak, Portuguese, Russian, Sanskrit, Sindhi, Sorbian (Upper), and Telugu part-of-speech taggers
 - Utils: Update custom stop word lists
 
 ### 📌 Bugfixes
@@ -534,12 +535,11 @@
 ### ✨ Improvements
 - File Area: Update Tokenized/Tagged
 - File Area: Update support for XML files
-- Menu: Disable editing of part-of-speech tag mappings for spaCy's part-of-speech taggers
+- Settings: Settings - POS Tagging - Tagsets - Mapping Settings - Disable editing of tagset mapping of spaCy's part-of-speech taggers
 - Settings: Update Settings - Files - Tags
 - Utils: Update botok's Tibetan word tokenizer, part-of-speech tagger, and lemmatizer
 - Utils: Update Chinese (Traditional) stop word lists
 - Utils: Update NLTK's word tokenizers
-- Utils: Update part-of-speech tag mappings for spaCy's part-of-speech taggers
 - Utils: Update PyThaiNLP's CRFCut
 - Utils: Update PyThaiNLP's part-of-speech taggers
 - Utils: Update PyThaiNLP's Thai word tokenizers
@@ -643,7 +643,7 @@
 - Work Area: Add Overview - Count of Clauses / Clause Length / Paragraph/Sentence/Token Length (Standard Deviation)
 
 ### ✨ Improvements
-- Utils: Update part-of-speech tag mappings for pybo's Tibetan part-of-speech tagger
+- Utils: Update tagset mapping of pybo's Tibetan part-of-speech tagger
 - Utils: Update pybo's Tibetan tokenizers, part-of-speech tagger, and lemmatizer
 - Utils: Update PyThaiNLP's Thai stop word list
 - Utils: Update Sacremoses's tokenizers and detokenizer
@@ -681,7 +681,7 @@
 ### ✨ Improvements
 - Misc: Disable mouse wheel events for combo boxes and spin boxes when they are not focused
 - Utils: Update spaCy's sentencizer
-- Utils: Update part-of-speech tag mappings for spaCy's English part-of-speech tagger
+- Utils: Update tagset mapping of spaCy's English part-of-speech tagger
 
 ### 📌 Bugfixes
 - File Area: Fix Open Folder

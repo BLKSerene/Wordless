@@ -39,10 +39,17 @@ def wl_test_spacy(
     wl_test_sentence_tokenize(lang, results_sentence_tokenize_trf, results_sentence_tokenize_lg)
     wl_test_word_tokenize(lang, results_word_tokenize)
 
+    # Tokenized
+    tokens = wl_word_tokenization.wl_word_tokenize_flat(
+        main,
+        text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
+        lang = lang
+    )
+
     if lang != 'other':
-        wl_test_pos_tag(lang, results_pos_tag, results_pos_tag_universal)
-        wl_test_lemmatize(lang, results_lemmatize)
-        wl_test_dependency_parse(lang, results_dependency_parse)
+        wl_test_pos_tag(lang, tokens, results_pos_tag, results_pos_tag_universal)
+        wl_test_lemmatize(lang, tokens, results_lemmatize)
+        wl_test_dependency_parse(lang, tokens, results_dependency_parse)
 
 def wl_test_sentence_tokenize(lang, results_trf, results_lg):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -109,7 +116,7 @@ def wl_test_word_tokenize(lang, results):
 
     assert tokens == results
 
-def wl_test_pos_tag(lang, results, results_universal):
+def wl_test_pos_tag(lang, tokens, results, results_universal):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
     pos_tagger = f'spacy_{lang_no_suffix}'
@@ -130,11 +137,6 @@ def wl_test_pos_tag(lang, results, results_universal):
     )
 
     # Tokenized
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = lang
-    )
     tokens_tagged_tokenized = wl_pos_tagging.wl_pos_tag(
         main,
         inputs = tokens,
@@ -179,7 +181,7 @@ def wl_test_pos_tag(lang, results, results_universal):
 
     assert [token[0] for token in tokens_tagged_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
 
-def wl_test_lemmatize(lang, results):
+def wl_test_lemmatize(lang, tokens, results):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
     lemmatizer = f'spacy_{lang_no_suffix}'
@@ -193,11 +195,6 @@ def wl_test_lemmatize(lang, results):
     )
 
     # Tokenized
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = lang
-    )
     lemmas_tokenized = wl_lemmatization.wl_lemmatize(
         main,
         inputs = tokens,
@@ -240,7 +237,7 @@ def wl_test_lemmatize(lang, results):
 
     assert lemmas_tokenized_long == [str(i) for i in range(101) for j in range(10)]
 
-def wl_test_dependency_parse(lang, results):
+def wl_test_dependency_parse(lang, tokens, results):
     lang_no_suffix = wl_conversion.remove_lang_code_suffixes(main, lang)
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
     dependency_parser = f'spacy_{lang_no_suffix}'
@@ -254,11 +251,6 @@ def wl_test_dependency_parse(lang, results):
     )
 
     # Tokenized
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = lang
-    )
     dependencies_tokenized = wl_dependency_parsing.wl_dependency_parse(
         main,
         inputs = tokens,

@@ -30,6 +30,12 @@ UNIVERSAL_TAGSETS_SPACY = [
     'spacy_cat', 'spacy_dan', 'spacy_fra', 'spacy_ell', 'spacy_mkd',
     'spacy_nob', 'spacy_por', 'spacy_rus', 'spacy_spa', 'spacy_ukr'
 ]
+UNIVERSAL_TAGSETS_STANZA = [
+    'stanza_hye', 'stanza_hyw', 'stanza_eus', 'stanza_bxr', 'stanza_dan',
+    'stanza_fra', 'stanza_ell', 'stanza_heb', 'stanza_hun', 'stanza_lij',
+    'stanza_glv', 'stanza_mar', 'stanza_pcm', 'stanza_qpm', 'stanza_por',
+    'stanza_rus', 'stanza_san', 'stanza_snd', 'stanza_hsb', 'stanza_tel'
+]
 
 def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
     tokens_tagged = []
@@ -181,6 +187,7 @@ def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
                 and not pos_tagger.startswith('stanza_')
             )
             or pos_tagger in UNIVERSAL_TAGSETS_SPACY
+            or pos_tagger in UNIVERSAL_TAGSETS_STANZA
         )
     ):
         mappings = {
