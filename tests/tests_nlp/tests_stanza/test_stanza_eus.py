@@ -19,16 +19,16 @@
 from tests.tests_nlp.tests_stanza import test_stanza
 
 def test_stanza_eus():
-    results_pos_tag = [('Euskara', 'NOUN'), ('Euskal', 'PROPN'), ('Herriko', 'NOUN'), ('hizkuntza', 'NOUN'), ('da', 'AUX'), ('.', 'PUNCT'), ('[8', 'PROPN'), (']', 'PUNCT')]
+    results_pos_tag = [('Euskara', 'NOUN'), ('Euskal', 'PROPN'), ('Herriko', 'NOUN'), ('hizkuntza', 'NOUN'), ('da', 'AUX'), ('.', 'PUNCT'), ('[8]', 'PUNCT')]
 
     test_stanza.wl_test_stanza(
         lang = 'eus',
         results_sentence_tokenize = ['Euskara Euskal Herriko hizkuntza da.', '[8] Hizkuntza bakartua da, ez baitzaio ahaidetasunik aurkitu.', 'Morfologiari dagokionez, hizkuntza eranskari eta ergatiboa da.', 'Euskaraz mintzo direnei euskaldun deritze.', 'Gaur egun, Euskal Herrian bertan ere hizkuntza gutxitua da, lurralde horretan gaztelania eta frantsesa nagusitu baitira.'],
-        results_word_tokenize = ['Euskara', 'Euskal', 'Herriko', 'hizkuntza', 'da', '.', '[8', ']'],
+        results_word_tokenize = ['Euskara', 'Euskal', 'Herriko', 'hizkuntza', 'da', '.', '[8]'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
-        results_lemmatize = ['euskara', 'Euskal', 'herri', 'hizkuntza', 'izan', '.', '[8', ']'],
-        results_dependency_parse = [('Euskara', 'hizkuntza', 'nsubj', 3), ('Euskal', 'Herriko', 'compound', 1), ('Herriko', 'hizkuntza', 'nmod', 1), ('hizkuntza', 'hizkuntza', 'root', 0), ('da', 'hizkuntza', 'cop', -1), ('.', 'hizkuntza', 'punct', -2), ('[8', '[8', 'root', 0), (']', '[8', 'punct', -1)]
+        results_lemmatize = ['euskara', 'Euskal', 'herri', 'hizkuntza', 'izan', '.', '[8]'],
+        results_dependency_parse = [('Euskara', 'hizkuntza', 'nsubj', 3), ('Euskal', 'Herriko', 'compound', 1), ('Herriko', 'hizkuntza', 'nmod', 1), ('hizkuntza', 'hizkuntza', 'root', 0), ('da', 'hizkuntza', 'cop', -1), ('.', 'hizkuntza', 'punct', -2), ('[8]', '[8]', 'root', 0)]
     )
 
 if __name__ == '__main__':

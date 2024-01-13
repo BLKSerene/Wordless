@@ -26,7 +26,7 @@ def test_stanza_ind():
         results_pos_tag = [('Bahasa', 'NSD'), ('Indonesia', 'NSD'), ('adalah', 'O--'), ('bahasa', 'NSD'), ('nasional', 'ASP'), ('dan', 'H--'), ('resmi', 'ASP'), ('di', 'R--'), ('seluruh', 'B--'), ('wilayah', 'NSD'), ('Indonesia', 'NSD'), ('.', 'Z--')],
         results_pos_tag_universal = [('Bahasa', 'PROPN'), ('Indonesia', 'PROPN'), ('adalah', 'AUX'), ('bahasa', 'NOUN'), ('nasional', 'ADJ'), ('dan', 'CCONJ'), ('resmi', 'ADJ'), ('di', 'ADP'), ('seluruh', 'DET'), ('wilayah', 'NOUN'), ('Indonesia', 'PROPN'), ('.', 'PUNCT')],
         results_lemmatize = ['bahasa', 'indonesia', 'adalah', 'bahasa', 'nasional', 'dan', 'resmi', 'di', 'seluruh', 'wilayah', 'indonesia', '.'],
-        results_dependency_parse = [('Bahasa', 'bahasa', 'nsubj', 3), ('Indonesia', 'Bahasa', 'flat', -1), ('adalah', 'bahasa', 'cop', 1), ('bahasa', 'bahasa', 'root', 0), ('nasional', 'bahasa', 'amod', -1), ('dan', 'resmi', 'cc', 1), ('resmi', 'nasional', 'conj', -2), ('di', 'wilayah', 'case', 2), ('seluruh', 'wilayah', 'det', 1), ('wilayah', 'bahasa', 'nmod', -6), ('Indonesia', 'wilayah', 'flat', -1), ('.', 'bahasa', 'punct', -8)]
+        results_dependency_parse = [('Bahasa', 'bahasa', 'nsubj', 3), ('Indonesia', 'Bahasa', 'flat:name', -1), ('adalah', 'bahasa', 'cop', 1), ('bahasa', 'bahasa', 'root', 0), ('nasional', 'bahasa', 'amod', -1), ('dan', 'resmi', 'cc', 1), ('resmi', 'bahasa', 'conj', -3), ('di', 'wilayah', 'case', 2), ('seluruh', 'wilayah', 'det', 1), ('wilayah', 'bahasa', 'nmod', -6), ('Indonesia', 'wilayah', 'nmod', -1), ('.', 'bahasa', 'punct', -8)]
     )
 
 if __name__ == '__main__':

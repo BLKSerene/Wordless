@@ -169,19 +169,13 @@ def check_models(main, langs, lang_utils = None):
                     utils[i] = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][lang]
 
     for lang, utils in zip(langs, lang_utils):
-        for util in utils:
-            if util.startswith('spacy_'):
-                if lang == 'nno':
-                    lang_spacy = 'nob'
-                else:
-                    lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
-            elif util.startswith('stanza_'):
-                lang_stanza = lang
+        if any((util.startswith('spacy_') for util in utils)):
+            if lang == 'nno':
+                lang_spacy = 'nob'
+            else:
+                lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-            if (
-                util.startswith('spacy_')
-                and lang_spacy in LANGS_SPACY
-            ):
+            if lang_spacy in LANGS_SPACY:
                 model_name = LANGS_SPACY[lang_spacy]
 
                 try:
@@ -200,24 +194,22 @@ def check_models(main, langs, lang_utils = None):
                         importlib.import_module(model_name)
                     except ModuleNotFoundError:
                         models_ok = False
-            elif (
-                util.startswith('stanza_')
-                and lang_stanza in get_langs_stanza(main, util_type = 'word_tokenizers')
-            ):
-                worker_download_model = Wl_Worker_Download_Model_Stanza(
-                    main,
-                    dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
-                    update_gui = lambda err_msg: update_gui_stanza(main, err_msg),
-                    lang = lang_stanza
-                )
-
-                wl_threading.Wl_Thread(worker_download_model).start_worker()
-
-            if not models_ok:
-                break
 
         if not models_ok:
             break
+
+        if (
+            any((util.startswith('stanza_') for util in utils))
+            and lang in get_langs_stanza(main, util_type = 'word_tokenizers')
+        ):
+            worker_download_model = Wl_Worker_Download_Model_Stanza(
+                main,
+                dialog_progress = wl_dialogs_misc.Wl_Dialog_Progress_Download_Model(main),
+                update_gui = lambda err_msg: update_gui_stanza(main, err_msg),
+                lang = lang
+            )
+
+            wl_threading.Wl_Thread(worker_download_model).start_worker()
 
     return models_ok
 

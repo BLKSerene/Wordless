@@ -403,7 +403,9 @@ class Wl_Settings_Pos_Tagging_Tagsets(wl_settings.Wl_Settings_Node):
             (
                 not preview_pos_tagger.startswith('spacy_')
                 and not preview_pos_tagger.startswith('stanza_')
-            ) or preview_pos_tagger in wl_pos_tagging.UNIVERSAL_TAGSETS_SPACY
+            )
+            or preview_pos_tagger in wl_pos_tagging.UNIVERSAL_TAGSETS_SPACY
+            or preview_pos_tagger in wl_pos_tagging.UNIVERSAL_TAGSETS_STANZA
         ):
             self.combo_box_tagsets_lang.setEnabled(False)
             self.combo_box_tagsets_pos_tagger.setEnabled(False)

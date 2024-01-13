@@ -29,12 +29,16 @@ from wordless.wl_tagsets import (
     wl_tagset_eng_penn_treebank,
     wl_tagset_eng_universal,
     wl_tagset_ell_universal,
+    wl_tagset_eus_universal,
     wl_tagset_fra_universal,
+    wl_tagset_hun_universal,
+    wl_tagset_hye_universal,
     wl_tagset_jpn_unidic,
     wl_tagset_khm_alt,
     wl_tagset_kor_mecab,
     wl_tagset_lao_seqlabeling,
     wl_tagset_lao_yunshan_cup_2020,
+    wl_tagset_pcm_universal,
     wl_tagset_nor_universal,
     wl_tagset_por_universal,
     wl_tagset_rus_open_corpora,
@@ -1591,28 +1595,53 @@ def init_settings_default(main):
                 },
 
                 'mapping_settings': {
+                    'hye': {
+                        'stanza_hye': copy.deepcopy(wl_tagset_hye_universal.tagset_mapping)                    
+                    },
+                    'hyw': {
+                        'stanza_hyw': copy.deepcopy(wl_tagset_hye_universal.tagset_mapping)
+                    },
+
+                    'eus': {
+                        'stanza_eus': copy.deepcopy(wl_tagset_eus_universal.tagset_mapping)
+                    },
+
+                    'bxr': {
+                        'stanza_bxr': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
                     'cat': {
                         'spacy_cat': copy.deepcopy(wl_tagset_cat_universal.tagset_mapping)
                     },
 
                     'dan': {
-                        'spacy_dan': copy.deepcopy(wl_tagset_dan_universal.tagset_mapping)
+                        'spacy_dan': copy.deepcopy(wl_tagset_dan_universal.tagset_mapping),
+                        'stanza_dan': copy.deepcopy(wl_tagset_dan_universal.tagset_mapping)
                     },
 
                     'eng_gb': {
                         'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.tagset_mapping,
                     },
-
                     'eng_us': {
                         'nltk_perceptron_eng': wl_tagset_eng_penn_treebank.tagset_mapping,
                     },
 
                     'ell': {
-                        'spacy_ell': copy.deepcopy(wl_tagset_ell_universal.tagset_mapping)
+                        'spacy_ell': copy.deepcopy(wl_tagset_ell_universal.tagset_mapping),
+                        'stanza_ell': copy.deepcopy(wl_tagset_ell_universal.tagset_mapping)
                     },
 
                     'fra': {
-                        'spacy_fra': copy.deepcopy(wl_tagset_fra_universal.tagset_mapping)
+                        'spacy_fra': copy.deepcopy(wl_tagset_fra_universal.tagset_mapping),
+                        'stanza_fra': copy.deepcopy(wl_tagset_fra_universal.tagset_mapping)
+                    },
+
+                    'heb': {
+                        'stanza_heb': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
+                    'hun': {
+                        'stanza_hun': copy.deepcopy(wl_tagset_hun_universal.tagset_mapping)
                     },
 
                     'jpn': {
@@ -1632,30 +1661,68 @@ def init_settings_default(main):
                         'laonlp_yunshan_cup_2020': wl_tagset_lao_yunshan_cup_2020.tagset_mapping
                     },
 
+                    'lij': {
+                        'stanza_lij': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
                     'mkd': {
                         'spacy_mkd': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
+                    'glv': {
+                        'stanza_glv': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
+                    'mar': {
+                        'stanza_mar': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
+                    'pcm': {
+                        'stanza_pcm': copy.deepcopy(wl_tagset_pcm_universal.tagset_mapping)
                     },
 
                     'nob': {
                         'spacy_nob': copy.deepcopy(wl_tagset_nor_universal.tagset_mapping)
                     },
 
-                    'por_br': {
-                        'spacy_por': copy.deepcopy(wl_tagset_por_universal.tagset_mapping)
+                    'qpm': {
+                        'stanza_qpm': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
 
+                    'por_br': {
+                        'spacy_por': copy.deepcopy(wl_tagset_por_universal.tagset_mapping),
+                        'stanza_por': copy.deepcopy(wl_tagset_por_universal.tagset_mapping)
+                    },
                     'por_pt': {
-                        'spacy_por': copy.deepcopy(wl_tagset_por_universal.tagset_mapping)
+                        'spacy_por': copy.deepcopy(wl_tagset_por_universal.tagset_mapping),
+                        'stanza_por': copy.deepcopy(wl_tagset_por_universal.tagset_mapping)
                     },
 
                     'rus': {
                         'nltk_perceptron_rus': wl_tagset_rus_russian_national_corpus.tagset_mapping,
                         'pymorphy3_morphological_analyzer': wl_tagset_rus_open_corpora.tagset_mapping,
-                        'spacy_rus': copy.deepcopy(wl_tagset_rus_universal.tagset_mapping)
+                        'spacy_rus': copy.deepcopy(wl_tagset_rus_universal.tagset_mapping),
+                        'stanza_rus': copy.deepcopy(wl_tagset_rus_universal.tagset_mapping)
+                    },
+
+                    'san': {
+                        'stanza_san': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
+                    'snd': {
+                        'stanza_snd': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
+                    },
+
+                    'hsb': {
+                        'stanza_hsb': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
 
                     'spa': {
                         'spacy_spa': copy.deepcopy(wl_tagset_spa_universal.tagset_mapping)
+                    },
+
+                    'tel': {
+                        'stanza_tel': copy.deepcopy(wl_tagset_eng_universal.tagset_mapping)
                     },
 
                     'tha': {
