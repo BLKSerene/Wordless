@@ -19,7 +19,7 @@
 from tests.tests_nlp.tests_stanza import test_stanza
 
 def test_stanza_mar():
-    results_pos_tag = [('मराठी', 'ADJ'), ('भाषा', 'NOUN'), ('ही', 'PART'), ('इंडो', 'NOUN'), ('-', 'PUNCT'), ('युरोपीय', 'ADJ'), ('भाषाकुळातील', 'NOUN'), ('एक', 'DET'), ('भाषा', 'NOUN'), ('आहे', 'AUX'), ('.', 'PUNCT')]
+    results_pos_tag = [('मराठी', 'ADJ'), ('भाषा', 'NOUN'), ('ही', 'PART'), ('इंडो', 'ADJ'), ('-', 'PUNCT'), ('युरोपीय', 'ADJ'), ('भाषाकुळातील', 'NOUN'), ('एक', 'DET'), ('भाषा', 'NOUN'), ('आहे', 'AUX'), ('.', 'PUNCT')]
 
     test_stanza.wl_test_stanza(
         lang = 'mar',
@@ -27,8 +27,8 @@ def test_stanza_mar():
         results_word_tokenize = ['मराठी', 'भाषा', 'ही', 'इंडो', '-', 'युरोपीय', 'भाषाकुळातील', 'एक', 'भाषा', 'आहे', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
-        results_lemmatize = ['मराठी', 'भाष', 'ही', 'इंडो', '-', 'युरोपीय', 'भाषाकुळा', 'एक', 'भाष', 'असणे', '.'],
-        results_dependency_parse = [('मराठी', 'भाषा', 'amod', 1), ('भाषा', 'भाषा', 'nsubj', 7), ('ही', 'भाषा', 'discourse', -1), ('इंडो', 'भाषा', 'obl', 5), ('-', 'युरोपीय', 'punct', 1), ('युरोपीय', 'इंडो', 'amod', -2), ('भाषाकुळातील', 'भाषा', 'obl', 2), ('एक', 'भाषा', 'det', 1), ('भाषा', 'भाषा', 'root', 0), ('आहे', 'भाषा', 'cop', -1), ('.', 'भाषा', 'punct', -2)],
+        results_lemmatize = ['मराठी', 'भाष', 'ही', 'इंडो', '-', 'युरोपीय', 'भाषाकुळळत', 'एक', 'भाष', 'असणे', '.'],
+        results_dependency_parse = [('मराठी', 'भाषा', 'amod', 1), ('भाषा', 'भाषा', 'obl', 7), ('ही', 'भाषा', 'discourse', -1), ('इंडो', 'भाषाकुळातील', 'amod', 3), ('-', 'इंडो', 'punct', -1), ('युरोपीय', 'भाषाकुळातील', 'amod', 1), ('भाषाकुळातील', 'भाषा', 'obl', 2), ('एक', 'भाषा', 'det', 1), ('भाषा', 'भाषा', 'root', 0), ('आहे', 'भाषा', 'cop', -1), ('.', 'भाषा', 'punct', -2)],
         results_sentiment_analayze = [0]
     )
 

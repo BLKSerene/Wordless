@@ -27,8 +27,8 @@ def test_stanza_hsb():
         results_word_tokenize = ['Hornjoserbšćina', 'je', 'zapadosłowjanska', 'rěč', ',', 'kotraž', 'so', 'w', 'Hornjej', 'Łužicy', 'wokoło', 'městow', 'Budyšin', ',', 'Kamjenc', 'a', 'Wojerecy', 'rěči', '.'],
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
-        results_lemmatize = ['hornjoserbšćina', 'być', 'zapadosłowjanski', 'rěč', ',', 'kotryž', 'so', 'w', 'horni', 'Łužica', 'wokoło', 'město', 'Budyšin', ',', 'Kamjenc', 'a', 'Wojerec', 'rěčeć', '.'],
-        results_dependency_parse = [('Hornjoserbšćina', 'rěč', 'nsubj', 3), ('je', 'rěč', 'cop', 2), ('zapadosłowjanska', 'rěč', 'amod', 1), ('rěč', 'rěč', 'root', 0), (',', 'rěči', 'punct', 13), ('kotraž', 'rěči', 'nsubj', 12), ('so', 'rěči', 'expl:pv', 11), ('w', 'Łužicy', 'case', 2), ('Hornjej', 'Łužicy', 'amod', 1), ('Łužicy', 'rěči', 'obl', 8), ('wokoło', 'městow', 'case', 1), ('městow', 'rěči', 'obl', 6), ('Budyšin', 'městow', 'nmod', -1), (',', 'Kamjenc', 'punct', 1), ('Kamjenc', 'městow', 'conj', -3), ('a', 'Wojerecy', 'cc', 1), ('Wojerecy', 'Budyšin', 'conj', -4), ('rěči', 'rěč', 'advcl', -14), ('.', 'rěč', 'punct', -15)]
+        results_lemmatize = ['hornjoserbšćina', 'być', 'zapadosłowjanski', 'rěč', ',', 'kotryž', 'so', 'w', 'horni', 'Łužica', 'wokoło', 'město', 'Budyšin', ',', 'Kamjenc', 'a', 'Wojerecy', 'rěčeć', '.'],
+        results_dependency_parse = [('Hornjoserbšćina', 'rěč', 'nsubj', 3), ('je', 'rěč', 'cop', 2), ('zapadosłowjanska', 'rěč', 'amod', 1), ('rěč', 'rěč', 'root', 0), (',', 'rěči', 'punct', 13), ('kotraž', 'rěči', 'nsubj', 12), ('so', 'rěči', 'expl:pv', 11), ('w', 'Łužicy', 'case', 2), ('Hornjej', 'Łužicy', 'amod', 1), ('Łužicy', 'rěči', 'obl', 8), ('wokoło', 'městow', 'case', 1), ('městow', 'rěči', 'obl', 6), ('Budyšin', 'městow', 'nmod', -1), (',', 'Kamjenc', 'punct', 1), ('Kamjenc', 'Budyšin', 'conj', -2), ('a', 'Wojerecy', 'cc', 1), ('Wojerecy', 'Budyšin', 'conj', -4), ('rěči', 'rěč', 'acl', -14), ('.', 'rěč', 'punct', -15)]
     )
 
 if __name__ == '__main__':

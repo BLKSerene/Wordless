@@ -21,11 +21,11 @@ from tests.tests_nlp.tests_stanza import test_stanza
 def test_stanza_fao():
     test_stanza.wl_test_stanza(
         lang = 'fao',
-        results_sentence_tokenize = ['Føroyskt er høvuðsmálið í Føroyum.', 'Føroyskt er almenna málið í Føroyum, og tað er tjóðarmál føroyinga.', 'Harafturat verður nógv føroyskt tosað í Danmark og Íslandi.', 'Í Føroyum tosa 48.', '000 fólk føroyskt, í Danmark umleið 25.', '000 og í Íslandi umleið 5.', '000, so samlaða talið av fólkum, ið duga føroyskt liggur um 75-80.000.', 'Føroyskt er tí í altjóða høpi eitt lítið mál.', 'Føroyskt mál hevur fýra føll og trý kyn, og grammatiski málbygningurin líkist ógvuliga nógv íslendskum, meðan orðatilfarið og í summum lutum úttalan líkist norska landsmálinum.'],
+        results_sentence_tokenize = ['Føroyskt er høvuðsmálið í Føroyum.', 'Føroyskt er almenna málið í Føroyum, og tað er tjóðarmál føroyinga.', 'Harafturat verður nógv føroyskt tosað í Danmark og Íslandi.', 'Í Føroyum tosa 48.', '000 fólk føroyskt, í Danmark umleið 25.', '000 og í Íslandi umleið 5.000, so samlaða talið av fólkum, ið duga føroyskt liggur um 75-80.', '000.', 'Føroyskt er tí í altjóða høpi eitt lítið mál.', 'Føroyskt mál hevur fýra føll og trý kyn, og grammatiski málbygningurin líkist ógvuliga nógv íslendskum, meðan orðatilfarið og í summum lutum úttalan líkist norska landsmálinum.'],
         results_word_tokenize = ['Føroyskt', 'er', 'høvuðsmálið', 'í', 'Føroyum', '.'],
-        results_pos_tag = [('Føroyskt', 'ADJ-N'), ('er', 'BEPI'), ('høvuðsmálið', 'N-N'), ('í', 'P'), ('Føroyum', 'NS-D'), ('.', '.')],
+        results_pos_tag = [('Føroyskt', 'ADJ-N'), ('er', 'BEPI'), ('høvuðsmálið', 'N-N'), ('í', 'P'), ('Føroyum', 'N-D'), ('.', '.')],
         results_pos_tag_universal = [('Føroyskt', 'ADJ'), ('er', 'AUX'), ('høvuðsmálið', 'NOUN'), ('í', 'ADP'), ('Føroyum', 'NOUN'), ('.', 'PUNCT')],
-        results_dependency_parse = [('Føroyskt', 'Føroyskt', 'root', 0), ('er', 'Føroyskt', 'cop', -1), ('høvuðsmálið', 'Føroyskt', 'obl', -2), ('í', 'Føroyum', 'case', 1), ('Føroyum', 'Føroyskt', 'obl', -4), ('.', 'Føroyum', 'punct', -1)]
+        results_dependency_parse = [('Føroyskt', 'Føroyskt', 'root', 0), ('er', 'Føroyskt', 'cop', -1), ('høvuðsmálið', 'Føroyskt', 'nsubj', -2), ('í', 'Føroyum', 'case', 1), ('Føroyum', 'Føroyskt', 'obl', -4), ('.', 'Føroyum', 'punct', -1)]
     )
 
 if __name__ == '__main__':

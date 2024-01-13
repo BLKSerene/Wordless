@@ -36,32 +36,34 @@ def wl_test_stanza(
 ):
     wl_nlp_utils.check_models(main, langs = [lang], lang_utils = [[wl_test_get_lang_util(main, lang)]])
 
-    if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
-        lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
-    else:
-        lang_stanza = lang
-
-    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'word_tokenizers'):
+    if lang in wl_nlp_utils.get_langs_stanza(main, util_type = 'word_tokenizers'):
         wl_test_sentence_tokenize(lang, results_sentence_tokenize)
         wl_test_word_tokenize(lang, results_word_tokenize)
 
-    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'pos_taggers'):
-        wl_test_pos_tag(lang, results_pos_tag, results_pos_tag_universal)
+    # Tokenized
+    tokens = wl_word_tokenization.wl_word_tokenize_flat(
+        main,
+        text = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}'),
+        lang = lang
+    )
 
-    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'lemmatizers'):
-        wl_test_lemmatize(lang, results_lemmatize)
+    if lang in wl_nlp_utils.get_langs_stanza(main, util_type = 'pos_taggers'):
+        wl_test_pos_tag(lang, tokens, results_pos_tag, results_pos_tag_universal)
 
-    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'dependency_parsers'):
-        wl_test_dependency_parse(lang, results_dependency_parse)
+    if lang in wl_nlp_utils.get_langs_stanza(main, util_type = 'lemmatizers'):
+        wl_test_lemmatize(lang, tokens, results_lemmatize)
 
-    if lang_stanza in wl_nlp_utils.get_langs_stanza(main, util_type = 'sentiment_analyzers'):
-        wl_test_sentiment_analyze(lang, results_sentiment_analayze)
+    if lang in wl_nlp_utils.get_langs_stanza(main, util_type = 'dependency_parsers'):
+        wl_test_dependency_parse(lang, tokens, results_dependency_parse)
+
+    if lang in wl_nlp_utils.get_langs_stanza(main, util_type = 'sentiment_analyzers'):
+        wl_test_sentiment_analyze(lang, tokens, results_sentiment_analayze)
 
 def wl_test_get_lang_util(main, lang):
-    if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
-        lang_util = f'stanza_{wl_conversion.remove_lang_code_suffixes(main, lang)}'
-    else:
+    if lang in ['zho_cn', 'zho_tw', 'srp_latn']:
         lang_util = f'stanza_{lang}'
+    else:
+        lang_util = f'stanza_{wl_conversion.remove_lang_code_suffixes(main, lang)}'
 
     return lang_util
 
@@ -80,7 +82,7 @@ def wl_test_sentence_tokenize(lang, results):
     print(f'{sentences}\n')
 
     # The count of sentences should be more than 1
-    if lang in ['cop', 'fro', 'kaz', 'pcm', 'qpm', 'san', 'srp_latn']:
+    if lang in ['fro', 'kaz', 'pcm', 'qpm']:
         assert len(sentences) == 1
     else:
         assert len(sentences) > 1
@@ -104,7 +106,7 @@ def wl_test_word_tokenize(lang, results):
     # The count of tokens should be more than 1
     assert len(tokens) > 1
     # The count of tokens should be more than the length of tokens split by space
-    if lang in ['chu', 'cop', 'grc', 'pcm', 'orv', 'san', 'tel']:
+    if lang in ['chu', 'cop', 'pcm', 'orv']:
         assert len(tokens) == len(test_sentence.split())
     elif lang == 'vie':
         assert len(tokens) < len(test_sentence.split())
@@ -113,7 +115,7 @@ def wl_test_word_tokenize(lang, results):
 
     assert tokens == results
 
-def wl_test_pos_tag(lang, results, results_universal):
+def wl_test_pos_tag(lang, tokens, results, results_universal):
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
     pos_tagger = wl_test_get_lang_util(main, lang)
 
@@ -133,11 +135,6 @@ def wl_test_pos_tag(lang, results, results_universal):
     )
 
     # Tokenized
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = lang
-    )
     tokens_tagged_tokenized = wl_pos_tagging.wl_pos_tag(
         main,
         inputs = tokens,
@@ -182,7 +179,7 @@ def wl_test_pos_tag(lang, results, results_universal):
 
     assert [token[0] for token in tokens_tagged_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
 
-def wl_test_lemmatize(lang, results):
+def wl_test_lemmatize(lang, tokens, results):
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
     lemmatizer = wl_test_get_lang_util(main, lang)
 
@@ -195,11 +192,6 @@ def wl_test_lemmatize(lang, results):
     )
 
     # Tokenized
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = lang
-    )
     lemmas_tokenized = wl_lemmatization.wl_lemmatize(
         main,
         inputs = tokens,
@@ -241,14 +233,14 @@ def wl_test_lemmatize(lang, results):
     )
 
     if lang in [
-        'bul', 'cop', 'grc', 'ell', 'hin', 'isl', 'lit', 'glv', 'pcm', 'pol',
-        'orv', 'sme', 'san', 'cym'
+        'bul', 'chu', 'cop', 'est', 'got', 'grc', 'ell', 'hin', 'isl', 'lij',
+        'lit', 'glv', 'pcm', 'pol', 'orv', 'sme', 'san', 'tur', 'cym'
     ]:
         assert len(lemmas_tokenized_long) == 101 * 10
     else:
         assert lemmas_tokenized_long == [str(i) for i in range(101) for j in range(10)]
 
-def wl_test_dependency_parse(lang, results):
+def wl_test_dependency_parse(lang, tokens, results):
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
     dependency_parser = wl_test_get_lang_util(main, lang)
 
@@ -261,11 +253,6 @@ def wl_test_dependency_parse(lang, results):
     )
 
     # Tokenized
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = lang
-    )
     dependencies_tokenized = wl_dependency_parsing.wl_dependency_parse(
         main,
         inputs = tokens,
@@ -316,7 +303,7 @@ def wl_test_dependency_parse(lang, results):
 
     assert [dependency[0] for dependency in dependencies_tokenized_long] == [str(i) for i in range(101) for j in range(10)]
 
-def wl_test_sentiment_analyze(lang, results):
+def wl_test_sentiment_analyze(lang, tokens, results):
     test_sentence = getattr(wl_test_lang_examples, f'SENTENCE_{lang.upper()}')
     sentiment_analyzer = wl_test_get_lang_util(main, lang)
 
@@ -329,11 +316,6 @@ def wl_test_sentiment_analyze(lang, results):
     )
 
     # Tokenized
-    tokens = wl_word_tokenization.wl_word_tokenize_flat(
-        main,
-        text = test_sentence,
-        lang = lang
-    )
     sentiment_scores_tokenized = wl_sentiment_analysis.wl_sentiment_analyze(
         main,
         inputs = [tokens],

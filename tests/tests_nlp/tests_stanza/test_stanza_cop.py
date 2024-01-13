@@ -21,9 +21,9 @@ from tests.tests_nlp.tests_stanza import test_stanza
 def test_stanza_cop():
     test_stanza.wl_test_stanza(
         lang = 'cop',
-        results_sentence_tokenize = ['ϭⲟⲗ · ⲛⲉⲛⲧⲁⲩⲕⲗⲏⲣⲟⲛⲟⲙⲉⲓ ⲉⲛⲉϩ ⲛⲧⲙⲛⲧⲣⲣⲟ ⲙⲡⲛⲟⲩⲧⲉ ·'],
+        results_sentence_tokenize = ['ϭⲟⲗ ·', 'ⲛⲉⲛⲧⲁⲩⲕⲗⲏⲣⲟⲛⲟⲙⲉⲓ ⲉⲛⲉϩ ⲛⲧⲙⲛⲧⲣⲣⲟ ⲙⲡⲛⲟⲩⲧⲉ ·'],
         results_word_tokenize = ['ϭⲟⲗ', '·'],
-        results_pos_tag = [('ϭⲟⲗ', 'V'), ('·', 'PUNCT')],
+        results_pos_tag = [('ϭⲟⲗ', 'VIMP'), ('·', 'PUNCT')],
         results_pos_tag_universal = [('ϭⲟⲗ', 'VERB'), ('·', 'PUNCT')],
         results_lemmatize = ['ϭⲟⲗ', '·'],
         results_dependency_parse = [('ϭⲟⲗ', 'ϭⲟⲗ', 'root', 0), ('·', 'ϭⲟⲗ', 'punct', -1)]

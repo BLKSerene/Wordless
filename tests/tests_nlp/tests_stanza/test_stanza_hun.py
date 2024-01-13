@@ -28,7 +28,7 @@ def test_stanza_hun():
         results_pos_tag = results_pos_tag,
         results_pos_tag_universal = results_pos_tag,
         results_lemmatize = ['a', 'magyar', 'nyelv', 'az', 'uráli', 'nyelvcsalád', 'tag', ',', 'a', 'finnugor', 'nyelv', 'közé', 'tartozó', 'ugor', 'nyelv', 'egyike', '.'],
-        results_dependency_parse = [('A', 'nyelv', 'det', 2), ('magyar', 'nyelv', 'amod:att', 1), ('nyelv', 'tagja', 'nsubj', 4), ('az', 'nyelvcsalád', 'det', 2), ('uráli', 'nyelvcsalád', 'amod:att', 1), ('nyelvcsalád', 'tagja', 'nmod:att', 1), ('tagja', 'tagja', 'root', 0), (',', 'egyike', 'punct', 8), ('a', 'finnugor', 'det', 1), ('finnugor', 'nyelvek', 'nmod:att', 1), ('nyelvek', 'tartozó', 'obl', 2), ('közé', 'nyelvek', 'case', -1), ('tartozó', 'nyelvek', 'amod:att', 2), ('ugor', 'nyelvek', 'amod:att', 1), ('nyelvek', 'egyike', 'nmod:att', 1), ('egyike', 'tagja', 'conj', -9), ('.', 'tagja', 'punct', -10)]
+        results_dependency_parse = [('A', 'nyelv', 'det', 2), ('magyar', 'nyelv', 'amod:att', 1), ('nyelv', 'tagja', 'nsubj', 4), ('az', 'nyelvcsalád', 'det', 2), ('uráli', 'nyelvcsalád', 'amod:att', 1), ('nyelvcsalád', 'tagja', 'nmod:att', 1), ('tagja', 'tagja', 'root', 0), (',', 'nyelvek', 'punct', 3), ('a', 'finnugor', 'det', 1), ('finnugor', 'nyelvek', 'nmod:att', 1), ('nyelvek', 'tartozó', 'obl', 2), ('közé', 'nyelvek', 'case', -1), ('tartozó', 'nyelvek', 'amod:att', 2), ('ugor', 'nyelvek', 'amod:att', 1), ('nyelvek', 'egyike', 'nmod:att', 1), ('egyike', 'tagja', 'conj', -9), ('.', 'egyike', 'punct', -1)]
     )
 
 if __name__ == '__main__':

@@ -26,7 +26,7 @@ def test_stanza_gla():
         results_pos_tag = [("'S", 'Wp-i'), ('i', 'Pp3sf'), ('cànan', 'Ncsmn'), ('dùthchasach', 'Aq-smn'), ('na', 'Tdsfg'), ('h-Alba', 'Nt'), ('a', 'Q-r'), ("th'", 'V-p'), ('anns', 'Sp'), ("a'", 'Tdsf'), ('Ghàidhlig', 'Ncsfd'), ('.', 'Fe')],
         results_pos_tag_universal = [("'S", 'AUX'), ('i', 'PRON'), ('cànan', 'NOUN'), ('dùthchasach', 'ADJ'), ('na', 'DET'), ('h-Alba', 'PROPN'), ('a', 'PART'), ("th'", 'VERB'), ('anns', 'ADP'), ("a'", 'DET'), ('Ghàidhlig', 'NOUN'), ('.', 'PUNCT')],
         results_lemmatize = ['is', 'i', 'cànan', 'dùthchasach', 'an', 'Alba', 'a', 'bi', 'an', 'an', 'gàidhlig', '.'],
-        results_dependency_parse = [("'S", 'cànan', 'cop', 2), ('i', "'S", 'fixed', -1), ('cànan', 'cànan', 'root', 0), ('dùthchasach', 'cànan', 'amod', -1), ('na', 'h-Alba', 'det', 1), ('h-Alba', 'cànan', 'nmod', -3), ('a', "th'", 'mark:prt', 1), ("th'", 'cànan', 'csubj:cleft', -5), ('anns', 'Ghàidhlig', 'case', 2), ("a'", 'Ghàidhlig', 'det', 1), ('Ghàidhlig', "th'", 'xcomp:pred', -3), ('.', 'cànan', 'punct', -9)]
+        results_dependency_parse = [("'S", 'cànan', 'cop', 2), ('i', "'S", 'fixed', -1), ('cànan', 'cànan', 'root', 0), ('dùthchasach', 'cànan', 'amod', -1), ('na', 'h-Alba', 'det', 1), ('h-Alba', 'cànan', 'nmod', -3), ('a', "th'", 'nsubj', 1), ("th'", 'cànan', 'csubj:cleft', -5), ('anns', 'Ghàidhlig', 'case', 2), ("a'", 'Ghàidhlig', 'det', 1), ('Ghàidhlig', "th'", 'xcomp:pred', -3), ('.', 'cànan', 'punct', -9)]
     )
 
 if __name__ == '__main__':
