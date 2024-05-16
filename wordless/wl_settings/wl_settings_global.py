@@ -3534,7 +3534,6 @@ SETTINGS_GLOBAL = {
             _tr('wl_settings_global', "Pearson's chi-squared test"): 'pearsons_chi_squared_test',
             _tr('wl_settings_global', "Student's t-test (1-sample)"): 'students_t_test_1_sample',
             _tr('wl_settings_global', "Student's t-test (2-sample)"): 'students_t_test_2_sample',
-            _tr('wl_settings_global', "Welch's t-test"): 'welchs_t_test',
             _tr('wl_settings_global', 'z-score'): 'z_score',
             _tr('wl_settings_global', 'z-score (Berry-Rogghe)'): 'z_score_berry_rogghe'
         },
@@ -3739,14 +3738,6 @@ SETTINGS_GLOBAL = {
         'students_t_test_2_sample': {
             'col_text': _tr('wl_settings_global', 't-statistic'),
             'func': wl_measures_statistical_significance.students_t_test_2_sample,
-            'to_sections': True,
-            'collocation_extractor': False,
-            'keyword_extractor': True
-        },
-
-        'welchs_t_test': {
-            'col_text': _tr('wl_settings_global', 't-statistic'),
-            'func': wl_measures_statistical_significance.welchs_t_test,
             'to_sections': True,
             'collocation_extractor': False,
             'keyword_extractor': True

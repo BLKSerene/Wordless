@@ -760,39 +760,6 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
 
         self.group_box_students_t_test_2_sample.layout().setColumnStretch(2, 1)
 
-        # Welch's t-test
-        self.group_box_welchs_t_test = QGroupBox(self.tr("Welch's t-test"), self)
-
-        (
-            self.label_welchs_t_test_divide_each_file_into,
-            self.spin_box_welchs_t_test_num_sub_sections,
-            self.label_welchs_t_test_sub_sections
-        ) = wl_widgets.wl_widgets_num_sub_sections(self)
-        (
-            self.label_welchs_t_test_use_data,
-            self.combo_box_welchs_t_test_use_data
-        ) = wl_widgets.wl_widgets_use_data_freq(self)
-        (
-            self.label_welchs_t_test_direction,
-            self.combo_box_welchs_t_test_direction
-        ) = wl_widgets.wl_widgets_direction(self)
-
-        layout_welchs_t_test_num_sub_sections = wl_layouts.Wl_Layout()
-        layout_welchs_t_test_num_sub_sections.addWidget(self.label_welchs_t_test_divide_each_file_into, 0, 0)
-        layout_welchs_t_test_num_sub_sections.addWidget(self.spin_box_welchs_t_test_num_sub_sections, 0, 1)
-        layout_welchs_t_test_num_sub_sections.addWidget(self.label_welchs_t_test_sub_sections, 0, 2)
-
-        layout_welchs_t_test_num_sub_sections.setColumnStretch(3, 1)
-
-        self.group_box_welchs_t_test.setLayout(wl_layouts.Wl_Layout())
-        self.group_box_welchs_t_test.layout().addLayout(layout_welchs_t_test_num_sub_sections, 0, 0, 1, 3)
-        self.group_box_welchs_t_test.layout().addWidget(self.label_welchs_t_test_use_data, 1, 0)
-        self.group_box_welchs_t_test.layout().addWidget(self.combo_box_welchs_t_test_use_data, 1, 1)
-        self.group_box_welchs_t_test.layout().addWidget(self.label_welchs_t_test_direction, 2, 0)
-        self.group_box_welchs_t_test.layout().addWidget(self.combo_box_welchs_t_test_direction, 2, 1)
-
-        self.group_box_welchs_t_test.layout().setColumnStretch(2, 1)
-
         # z-score
         self.group_box_z_score = QGroupBox(self.tr('z-score'), self)
 
@@ -828,12 +795,11 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.layout().addWidget(self.group_box_pearsons_chi_squared_test, 3, 0)
         self.layout().addWidget(self.group_box_students_t_test_1_sample, 4, 0)
         self.layout().addWidget(self.group_box_students_t_test_2_sample, 5, 0)
-        self.layout().addWidget(self.group_box_welchs_t_test, 6, 0)
-        self.layout().addWidget(self.group_box_z_score, 7, 0)
-        self.layout().addWidget(self.group_box_z_score_berry_rogghe, 8, 0)
+        self.layout().addWidget(self.group_box_z_score, 6, 0)
+        self.layout().addWidget(self.group_box_z_score_berry_rogghe, 7, 0)
 
         self.layout().setContentsMargins(6, 4, 6, 4)
-        self.layout().setRowStretch(9, 1)
+        self.layout().setRowStretch(8, 1)
 
     def load_settings(self, defaults = False):
         if defaults:
@@ -864,11 +830,6 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.combo_box_students_t_test_2_sample_use_data.setCurrentText(settings['students_t_test_2_sample']['use_data'])
         self.combo_box_students_t_test_2_sample_direction.setCurrentText(settings['students_t_test_2_sample']['direction'])
 
-        # Welch's t-test
-        self.spin_box_welchs_t_test_num_sub_sections.setValue(settings['welchs_t_test']['num_sub_sections'])
-        self.combo_box_welchs_t_test_use_data.setCurrentText(settings['welchs_t_test']['use_data'])
-        self.combo_box_welchs_t_test_direction.setCurrentText(settings['welchs_t_test']['direction'])
-
         # z-score
         self.combo_box_z_score_direction.setCurrentText(settings['z_score']['direction'])
 
@@ -898,11 +859,6 @@ class Wl_Settings_Measures_Statistical_Significance(wl_settings.Wl_Settings_Node
         self.settings_custom['students_t_test_2_sample']['num_sub_sections'] = self.spin_box_students_t_test_2_sample_num_sub_sections.value()
         self.settings_custom['students_t_test_2_sample']['use_data'] = self.combo_box_students_t_test_2_sample_use_data.currentText()
         self.settings_custom['students_t_test_2_sample']['direction'] = self.combo_box_students_t_test_2_sample_direction.currentText()
-
-        # Welch's t-test
-        self.settings_custom['welchs_t_test']['num_sub_sections'] = self.spin_box_welchs_t_test_num_sub_sections.value()
-        self.settings_custom['welchs_t_test']['use_data'] = self.combo_box_welchs_t_test_use_data.currentText()
-        self.settings_custom['welchs_t_test']['direction'] = self.combo_box_welchs_t_test_direction.currentText()
 
         # z-score
         self.settings_custom['z_score']['direction'] = self.combo_box_z_score_direction.currentText()

@@ -107,9 +107,6 @@ def to_freqs_sections_statistical_significance(main, items_to_search, items_x1, 
     elif test_statistical_significance == 'students_t_test_2_sample':
         num_sub_sections = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['num_sub_sections']
         use_data = main.settings_custom['measures']['statistical_significance']['students_t_test_2_sample']['use_data']
-    elif test_statistical_significance == 'welchs_t_test':
-        num_sub_sections = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['num_sub_sections']
-        use_data = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['use_data']
 
     return to_freqs_sections_2_sample(items_to_search, items_x1, items_x2, num_sub_sections, use_data)
 
