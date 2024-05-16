@@ -23,7 +23,7 @@ import sudachipy
 import underthesea
 
 from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization
+from wordless.wl_nlp import wl_nlp_utils, wl_sentence_tokenization, wl_texts
 from wordless.wl_utils import wl_conversion, wl_misc
 
 def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
@@ -79,24 +79,25 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                 if word_tokenizer.startswith('nltk_'):
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang)
 
-                    if word_tokenizer == 'nltk_nist':
-                        for sentence in sentences:
-                            tokens_multilevel[-1].append(main.nltk_nist_tokenizer.international_tokenize(sentence))
-                    elif word_tokenizer == 'nltk_nltk':
-                        for sentence in sentences:
-                            tokens_multilevel[-1].append(main.nltk_nltk_tokenizer.tokenize(sentence))
-                    elif word_tokenizer == 'nltk_penn_treebank':
-                        for sentence in sentences:
-                            tokens_multilevel[-1].append(main.nltk_treebank_tokenizer.tokenize(sentence))
-                    elif word_tokenizer == 'nltk_regex':
-                        for sentence in sentences:
-                            tokens_multilevel[-1].append(main.nltk_regex_tokenizer.tokenize(sentence))
-                    elif word_tokenizer == 'nltk_tok_tok':
-                        for sentence in sentences:
-                            tokens_multilevel[-1].append(main.nltk_toktok_tokenizer.tokenize(sentence))
-                    elif word_tokenizer == 'nltk_twitter':
-                        for sentence in sentences:
-                            tokens_multilevel[-1].append(main.nltk_tweet_tokenizer.tokenize(sentence))
+                    match word_tokenizer:
+                        case 'nltk_nist':
+                            for sentence in sentences:
+                                tokens_multilevel[-1].append(main.nltk_nist_tokenizer.international_tokenize(sentence))
+                        case 'nltk_nltk':
+                            for sentence in sentences:
+                                tokens_multilevel[-1].append(main.nltk_nltk_tokenizer.tokenize(sentence))
+                        case 'nltk_penn_treebank':
+                            for sentence in sentences:
+                                tokens_multilevel[-1].append(main.nltk_treebank_tokenizer.tokenize(sentence))
+                        case 'nltk_regex':
+                            for sentence in sentences:
+                                tokens_multilevel[-1].append(main.nltk_regex_tokenizer.tokenize(sentence))
+                        case 'nltk_tok_tok':
+                            for sentence in sentences:
+                                tokens_multilevel[-1].append(main.nltk_toktok_tokenizer.tokenize(sentence))
+                        case 'nltk_twitter':
+                            for sentence in sentences:
+                                tokens_multilevel[-1].append(main.nltk_tweet_tokenizer.tokenize(sentence))
                 # Sacremoses
                 elif word_tokenizer == 'sacremoses_moses':
                     lang = wl_conversion.remove_lang_code_suffixes(main, lang)
@@ -140,12 +141,13 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                             tokens_multilevel[-1].append(tokens)
                 # Japanese
                 elif word_tokenizer.startswith('sudachipy_jpn'):
-                    if word_tokenizer == 'sudachipy_jpn_split_mode_a':
-                        mode = sudachipy.SplitMode.A
-                    elif word_tokenizer == 'sudachipy_jpn_split_mode_b':
-                        mode = sudachipy.SplitMode.B
-                    elif word_tokenizer == 'sudachipy_jpn_split_mode_c':
-                        mode = sudachipy.SplitMode.C
+                    match word_tokenizer:
+                        case 'sudachipy_jpn_split_mode_a':
+                            mode = sudachipy.SplitMode.A
+                        case 'sudachipy_jpn_split_mode_b':
+                            mode = sudachipy.SplitMode.B
+                        case 'sudachipy_jpn_split_mode_c':
+                            mode = sudachipy.SplitMode.C
 
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = lang)
 
@@ -242,15 +244,16 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = 'tha')
 
                     for sentence in sentences:
-                        if word_tokenizer == 'pythainlp_longest_matching':
-                            tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'longest'))
-                        elif word_tokenizer == 'pythainlp_max_matching':
-                            tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'mm'))
-                        elif word_tokenizer == 'pythainlp_max_matching_tcc':
-                            # Use safe mode by default
-                            tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'newmm-safe'))
-                        elif word_tokenizer == 'pythainlp_nercut':
-                            tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'nercut'))
+                        match word_tokenizer:
+                            case 'pythainlp_longest_matching':
+                                tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'longest'))
+                            case 'pythainlp_max_matching':
+                                tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'mm'))
+                            case 'pythainlp_max_matching_tcc':
+                                # Use safe mode by default
+                                tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'newmm-safe'))
+                            case 'pythainlp_nercut':
+                                tokens_multilevel[-1].append(pythainlp.word_tokenize(sentence, engine = 'nercut'))
                 # Tibetan
                 elif word_tokenizer == 'botok_bod':
                     sentences = wl_sentence_tokenization.wl_sentence_tokenize(main, line, lang = 'bod')
@@ -274,9 +277,12 @@ def wl_word_tokenize(main, text, lang, word_tokenizer = 'default'):
     # Tokenize as sentence segments
     for para in tokens_multilevel:
         for i, sentence in enumerate(para):
-            tokens = [token_clean for token in sentence if (token_clean := token.strip())]
+            para[i] = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, wl_texts.clean_texts(sentence))
 
-            para[i] = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(main, tokens)
+    for para in tokens_multilevel:
+        for sentence in para:
+            for i, sentence_seg in enumerate(sentence):
+                sentence[i] = wl_texts.to_tokens(sentence_seg, lang)
 
     return tokens_multilevel
 

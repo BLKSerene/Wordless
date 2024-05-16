@@ -38,10 +38,10 @@ def test_get_data_ranks():
     assert wl_figs.get_data_ranks(data_files_items, fig_settings) == [(str(i), i) for i in range(50)]
 
 def test_generate_line_chart():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
     wl_test_init.select_test_files(main, no_files = [0, 1])
 
-    global main_global # pylint: disable=global-statement
+    global main_global
     main_global = main
 
     wl_figs.generate_line_chart(

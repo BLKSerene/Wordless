@@ -42,7 +42,7 @@ def test_concordancer():
             case _:
                 wl_test_init.select_test_files(main, no_files = [i + 1])
 
-        global main_global # pylint: disable=global-statement
+        global main_global
         main_global = main
 
         print(f"Files: {' | '.join(wl_test_init.get_test_file_names(main))}")
@@ -66,9 +66,9 @@ def update_gui_table(err_msg, concordance_lines):
     file_names_selected = list(main_global.wl_file_area.get_selected_file_names())
 
     for concordance_line in concordance_lines:
-        left_text, left_text_raw, left_text_search = concordance_line[0]
-        node_text, node_text_raw, node_text_search = concordance_line[1]
-        right_text, right_text_raw, right_text_search = concordance_line[2]
+        left_tokens_raw, left_tokens_search = concordance_line[0]
+        node_tokens_raw, node_tokens_search = concordance_line[1]
+        right_tokens_raw, right_tokens_search = concordance_line[2]
 
         sentiment = concordance_line[3]
         no_token, len_tokens = concordance_line[4]
@@ -78,19 +78,16 @@ def update_gui_table(err_msg, concordance_lines):
         file_name = concordance_line[8]
 
         # Node
-        assert node_text
-        assert node_text_raw
-        assert node_text_search
+        assert node_tokens_raw
+        assert node_tokens_search
+
         # Left & Right
-        assert left_text or right_text
-        assert left_text == [] or all(left_text)
-        assert right_text == [] or all(right_text)
-        assert left_text_raw or right_text_raw
-        assert left_text_raw == [] or all(left_text_raw)
-        assert right_text_raw == [] or all(right_text_raw)
-        assert left_text_search or right_text_search
-        assert left_text_search == [] or all(left_text_search)
-        assert right_text_search == [] or all(right_text_search)
+        assert left_tokens_raw or right_tokens_raw
+        assert left_tokens_raw == [] or all(left_tokens_raw)
+        assert right_tokens_raw == [] or all(right_tokens_raw)
+        assert left_tokens_search or right_tokens_search
+        assert left_tokens_search == [] or all(left_tokens_search)
+        assert right_tokens_search == [] or all(right_tokens_search)
 
         # Sentiment
         assert sentiment == 'No language support' or -1 <= sentiment <= 1

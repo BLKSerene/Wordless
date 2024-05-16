@@ -27,7 +27,7 @@ import scipy
 from PyQt5.QtCore import pyqtSignal, QCoreApplication, Qt
 from PyQt5.QtWidgets import QDialog, QGroupBox, QPushButton, QStackedWidget, QTabWidget
 
-from wordless.wl_checks import wl_checks_work_area
+from wordless.wl_checks import wl_checks_tokens, wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_measures import wl_measures_lexical_diversity, wl_measures_misc, wl_measures_readability
 from wordless.wl_nlp import wl_texts, wl_token_processing
@@ -585,10 +585,12 @@ class Wl_Table_Profiler_Counts(Wl_Table_Profiler):
 class Wl_Table_Profiler_Lexical_Diversity(Wl_Table_Profiler):
     def __init__(self, parent):
         HEADERS_LEXICAL_DIVERSITY = [
+            _tr('wl_profiler', "Brunét's Index"),
             _tr('wl_profiler', 'Corrected TTR'),
             _tr('wl_profiler', "Fisher's Index of Diversity"),
             _tr('wl_profiler', "Herdan's Vₘ"),
             _tr('wl_profiler', 'HD-D'),
+            _tr('wl_profiler', "Honoré's statistic"),
             _tr('wl_profiler', 'LogTTR'),
             _tr('wl_profiler', 'Mean Segmental TTR'),
             _tr('wl_profiler', 'Measure of Textual Lexical Diversity'),
@@ -1162,9 +1164,8 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
             files = list(self.main.wl_file_area.get_selected_files())
 
             for file in files:
-                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_profiler(
-                    self.main, text,
+                    self.main, file['text'],
                     token_settings = settings['token_settings']
                 )
 
@@ -1172,31 +1173,7 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
 
             # Total
             if len(files) > 1:
-                text_total = wl_texts.Wl_Text_Blank()
-
-                # Set language for the combined text only if all texts are in the same language
-                if len({text.lang for text in texts}) == 1:
-                    text_total.lang = texts[0].lang
-                else:
-                    text_total.lang = 'other'
-
-                text_total.tokens_multilevel = [
-                    copy.deepcopy(para)
-                    for text in texts
-                    for para in text.tokens_multilevel
-                ]
-                text_total.tokens_multilevel_with_puncs = [
-                    copy.deepcopy(para)
-                    for text in texts
-                    for para in text.tokens_multilevel_with_puncs
-                ]
-                text_total.syls_tokens = [
-                    syls
-                    for text in texts
-                    for syls in text.syls_tokens
-                ]
-
-                texts.append(text_total)
+                texts.append(wl_texts.Wl_Text_Total(texts))
 
             for text in texts:
                 tokens = text.get_tokens_flat()
@@ -1275,14 +1252,22 @@ class Wl_Worker_Profiler(wl_threading.Wl_Worker):
                         for sentence_seg in sentence
                     ]
 
+                    syls_tokens = text.get_token_properties('syls')
+
+                    # Remove punctuation marks
+                    for i, syls in enumerate(syls_tokens):
+                        syls_tokens[i] = tuple(syl for syl in syls if not wl_checks_tokens.is_punc(syl))
+
+                    syls_tokens = [syls for syls in syls_tokens if syls]
+
                     # Token length
-                    len_tokens_syls = [len(syls) for syls in text.syls_tokens]
+                    len_tokens_syls = [len(syls) for syls in syls_tokens]
                     len_tokens_chars = [len(token) for token in tokens]
                     # Type length
-                    len_types_syls = [len(syls) for syls in {tuple(syls) for syls in text.syls_tokens}]
+                    len_types_syls = [len(syls) for syls in set(syls_tokens)]
                     len_types_chars = [len(token_type) for token_type in set(tokens)]
                     # Syllable length
-                    len_syls = [len(syl) for syls in text.syls_tokens for syl in syls]
+                    len_syls = [len(syl) for syls in syls_tokens for syl in syls]
                 else:
                     len_paras_sentences = len_paras_sentence_segs = len_paras_tokens = None
                     len_sentences = len_sentence_segs = None

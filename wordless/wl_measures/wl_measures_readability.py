@@ -25,7 +25,7 @@ import numpy
 from PyQt5.QtCore import QCoreApplication
 
 from wordless.wl_checks import wl_checks_tokens
-from wordless.wl_nlp import wl_lemmatization, wl_pos_tagging, wl_sentence_tokenization, wl_syl_tokenization
+from wordless.wl_nlp import wl_lemmatization, wl_pos_tagging, wl_sentence_tokenization, wl_syl_tokenization, wl_texts
 from wordless.wl_utils import wl_misc, wl_paths
 
 _tr = QCoreApplication.translate
@@ -42,11 +42,11 @@ def get_nums(main, text):
                 text.words_multilevel[-1].append([])
 
                 for sentence_seg in sentence:
-                    text.words_multilevel[-1][-1].append([
+                    text.words_multilevel[-1][-1].append(wl_texts.to_tokens([
                         token
                         for token in sentence_seg
                         if wl_checks_tokens.is_word_alphanumeric(token)
-                    ])
+                    ], lang = text.lang))
 
         text.sentences = [
             list(wl_misc.flatten_list(sentence))
@@ -63,7 +63,8 @@ def get_nums(main, text):
 
     # Number of syllables
     if 'num_syls' not in text.__dict__ and text.lang in main.settings_global['syl_tokenizers']:
-        text.syls_words = wl_syl_tokenization.wl_syl_tokenize(main, text.words_flat, lang = text.lang)
+        text.words_flat = wl_syl_tokenization.wl_syl_tokenize(main, text.words_flat, lang = text.lang)
+        text.syls_words = wl_texts.get_token_properties(text.words_flat, 'syls')
         text.num_syls = sum((len(syls) for syls in text.syls_words))
 
     # Number of characters
@@ -113,17 +114,17 @@ def get_num_words_syls(syls_words, len_min = 1, len_max = None):
         ))
 
 def get_num_words_pos_tags(main, words, lang, pos_tag):
-    words_tagged = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal')
+    words = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal', force = True)
 
-    return sum((1 for _, pos in words_tagged if pos_tag in pos))
+    return sum((1 for word in words if pos_tag in word.tag))
 
 def get_nums_words_pos_tags(main, words, lang, pos_tags):
     nums = []
 
-    words_tagged = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal')
+    words = wl_pos_tagging.wl_pos_tag(main, words, lang = lang, tagset = 'universal', force = True)
 
     for pos_tag in pos_tags:
-        nums.append(sum((1 for _, pos in words_tagged if pos_tag in pos)))
+        nums.append(sum((1 for word in words if pos_tag in word.tag)))
 
     return nums
 
@@ -788,9 +789,16 @@ def fog_index(main, text):
                     _tr('wl_measures_readability', 'Original'),
                     'Powers-Sumner-Kearl'
                 ]:
-                    words_tagged = wl_pos_tagging.wl_pos_tag(main, text.words_flat, lang = text.lang, tagset = 'universal')
+                    words_tagged = wl_pos_tagging.wl_pos_tag(
+                        main, text.words_flat,
+                        lang = text.lang,
+                        tagset = 'universal',
+                        force = True
+                    )
 
-                    for syls, (word, tag) in zip(text.syls_words, words_tagged):
+                    for syls, word in zip(text.syls_words, words_tagged):
+                        tag = word.tag
+
                         if (
                             'PROPN' not in tag
                             and (
@@ -881,7 +889,10 @@ def lensear_write(main, text):
             sample = text.words_flat[sample_start : sample_start + 100]
 
             num_words_1_syl = 0
-            sysl_sample = wl_syl_tokenization.wl_syl_tokenize(main, sample, lang = text.lang)
+            sysl_sample = wl_texts.get_token_properties(
+                wl_syl_tokenization.wl_syl_tokenize(main, sample, lang = text.lang),
+                'syls'
+            )
 
             for syls in sysl_sample:
                 if len(syls) == 1 and syls[0].lower() not in ['the', 'is', 'are', 'was', 'were']:
@@ -1163,7 +1174,10 @@ def smog_grade(main, text):
             num_words_3_plus_syls = 0
 
             for sentence in sample:
-                syls_words = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
+                syls_words = wl_texts.get_token_properties(
+                    wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang),
+                    'syls'
+                )
 
                 num_words_3_plus_syls += get_num_words_syls(syls_words, len_min = 3)
 
@@ -1234,7 +1248,10 @@ def strain_index(main, text):
             num_syls = 0
 
             for sentence in text.sentences[:3]:
-                syls_words = wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang)
+                syls_words = wl_texts.get_token_properties(
+                    wl_syl_tokenization.wl_syl_tokenize(main, sentence, lang = text.lang),
+                    'syls'
+                )
 
                 num_syls += sum((len(syls) for syls in syls_words))
 
@@ -1313,71 +1330,23 @@ def td(main, text):
 
 # Wheeler & Smith's Readability Formula
 # Reference: Wheeler, L. R., & Smith, E. H. (1954). A practical readability formula for the classroom teacher in the primary grades. Elementary English, 31(7), 397–399.
-UNIT_TERMINATORS = ''.join([
-    # Sentence terminators plus colons and semicolons
-    '\u0021', '\u002E', '\u003A', '\u003B', '\u003F',
-    '\u037E',
-    '\u0589',
-    '\u061B', '\u061D', '\u061E', '\u061F', '\u06D4',
-    '\u0700', '\u0701', '\u0702', '\u0703', '\u0704', '\u0705', '\u0706', '\u0707', '\u0708', '\u0709',
-    '\u07F9',
-    '\u0837', '\u0839', '\u083D', '\u083E',
-    '\u0964', '\u0965',
-    '\u104A', '\u104B',
-    '\u1362', '\u1364', '\u1365', '\u1366', '\u1367', '\u1368',
-    '\u166E',
-    '\u1735', '\u1736',
-    '\u17D4', '\u17D5',
-    '\u1803', '\u1804', '\u1809',
-    '\u1944', '\u1945',
-    '\u1AA8', '\u1AA9', '\u1AAA', '\u1AAB',
-    '\u1B5A', '\u1B5B', '\u1B5E', '\u1B5F', '\u1B7D', '\u1B7E',
-    '\u1C3B', '\u1C3C',
-    '\u1C7E', '\u1C7F',
-    '\u203C', '\u2047', '\u2048', '\u2049', '\u203D',
-    '\u2E2E', '\u2E53', '\u2E54', '\u2E3C',
-    '\u3002',
-    '\uA4FF',
-    '\uA60E', '\uA60F',
-    '\uA6F3', '\uA6F4', '\uA6F6', '\uA6F7',
-    '\uA876', '\uA877',
-    '\uA8CE', '\uA8CF',
-    '\uA92F',
-    '\uA9C8', '\uA9C9',
-    '\uAA5D', '\uAA5E', '\uAA5F',
-    '\uAAF0', '\uAAF1', '\uABEB',
-    '\uFE52', '\uFE54', '\uFE55', '\uFE56', '\uFE57',
-    '\uFF01', '\uFF0E', '\uFF1A', '\uFF1B', '\uFF1F', '\uFF61',
-    '\U00010857',
-    '\U00010A56', '\U00010A57',
-    '\U00010B99', '\U00010B9A',
-    '\U00010F55', '\U00010F56', '\U00010F57', '\U00010F58', '\U00010F59',
-    '\U00010F86', '\U00010F87', '\U00010F88', '\U00010F89',
-    '\U00011047', '\U00011048',
-    '\U000110BE', '\U000110BF', '\U000110C0', '\U000110C1',
-    '\U00011141', '\U00011142', '\U00011143',
-    '\U000111C5', '\U000111C6', '\U000111CD', '\U000111DE', '\U000111DF',
-    '\U00011238', '\U00011239', '\U0001123B', '\U0001123C',
-    '\U000112A9',
-    '\U0001144B', '\U0001144C',
-    '\U000115C2', '\U000115C3', '\U000115C9', '\U000115CA', '\U000115CB', '\U000115CC', '\U000115CD', '\U000115CE', '\U000115CF', '\U000115D0', '\U000115D1', '\U000115D2', '\U000115D3', '\U000115D4', '\U000115D5', '\U000115D6', '\U000115D7',
-    '\U00011641', '\U00011642',
-    '\U0001173C', '\U0001173D', '\U0001173E',
-    '\U00011944', '\U00011946',
-    '\U00011A42', '\U00011A43',
-    '\U00011A9B', '\U00011A9C',
-    '\U00011C41', '\U00011C42',
-    '\U00011EF7', '\U00011EF8',
-    '\U00011F43', '\U00011F44',
+UNIT_TERMINATORS = ''.join(list(wl_sentence_tokenization.SENTENCE_TERMINATORS) + list(dict.fromkeys([
+    # Colons and semicolons: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:name=/COLON/:]%26[:General_Category=/Punctuation/:]
+    '\u003A', '\u003B',
+    '\u061B',
+    '\u0703', '\u0704', '\u0705', '\u0706', '\u0707', '\u0708', '\u0709',
+    '\u1364', '\u1365', '\u1366',
+    '\u1804',
+    '\u204F', '\u205D',
+    '\u2E35',
+    '\uA6F4', '\uA6F6',
+    '\uFE13', '\uFE14',
+    '\uFE54', '\uFE55',
+    '\uFF1A', '\uFF1B',
     '\U00012471', '\U00012472', '\U00012473', '\U00012474',
-    '\U00016A6E', '\U00016A6F',
-    '\U00016AF5',
-    '\U00016B37', '\U00016B38', '\U00016B44',
-    '\U00016E98',
-    '\U0001BC9F',
-    '\U0001DA88', '\U0001DA89', '\U0001DA8A',
+    '\U0001DA89', '\U0001DA8A',
 
-    # Dashes: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Dash%CE%B2=Yes:]
+    # Dashes: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Dash=Yes:]
     '\\\u002D', # The hyphen character needs to be escaped in RegEx square brackets
     '\u058A',
     '\u05BE',
@@ -1393,7 +1362,7 @@ UNIT_TERMINATORS = ''.join([
     '\uFE58', '\uFE63',
     '\uFF0D',
     '\U00010EAD'
-])
+])))
 
 def wheeler_smiths_readability_formula(main, text):
     if text.lang in main.settings_global['syl_tokenizers']:

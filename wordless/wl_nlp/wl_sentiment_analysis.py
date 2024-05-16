@@ -24,7 +24,7 @@ import importlib
 import underthesea
 import vaderSentiment.vaderSentiment
 
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_word_tokenization
+from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_word_tokenization
 from wordless.wl_utils import wl_conversion, wl_paths
 
 VADER_EXCEPTIONS_ENG = [
@@ -34,7 +34,7 @@ VADER_EXCEPTIONS_ENG = [
     vaderSentiment.vaderSentiment.SPECIAL_CASES
 ]
 
-def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default', tagged = False):
+def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default'):
     if sentiment_analyzer == 'default':
         sentiment_analyzer = main.settings_custom['sentiment_analysis']['sentiment_analyzer_settings'][lang]
 
@@ -49,7 +49,7 @@ def wl_sentiment_analyze(main, inputs, lang, sentiment_analyzer = 'default', tag
         if isinstance(inputs[0], str):
             sentiment_scores = wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer)
         else:
-            sentiment_scores = wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer, tagged)
+            sentiment_scores = wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer)
     else:
         sentiment_scores = []
 
@@ -133,11 +133,8 @@ def wl_sentiment_analyze_text(main, inputs, lang, sentiment_analyzer):
 
     return sentiment_scores
 
-def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer, tagged):
+def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer):
     sentiment_scores = []
-
-    if tagged:
-        inputs = [wl_matching.split_tokens_tags(main, tokens)[0] for tokens in inputs]
 
     # Stanza
     if sentiment_analyzer.startswith('stanza_'):
@@ -151,7 +148,7 @@ def wl_sentiment_analyze_tokens(main, inputs, lang, sentiment_analyzer, tagged):
             sentiments = []
 
             for doc in nlp.bulk_process([
-                [tokens]
+                [wl_texts.to_token_texts(tokens)]
                 for tokens in wl_nlp_utils.split_token_list(main, tokens_input, sentiment_analyzer)
             ]):
                 for sentence in doc.sentences:

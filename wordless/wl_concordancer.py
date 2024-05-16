@@ -31,7 +31,7 @@ from PyQt5.QtWidgets import QCheckBox, QLabel, QLineEdit, QGroupBox, QStackedWid
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
 from wordless.wl_figs import wl_figs
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing, wl_sentiment_analysis
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing, wl_sentiment_analysis
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_boxes, wl_labels, wl_layouts, wl_tables, wl_widgets
 
@@ -507,9 +507,9 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                 node_color = self.main.settings_custom['tables']['concordancer']['sorting_settings']['highlight_colors']['lvl_1']
 
                 for i, concordance_line in enumerate(concordance_lines):
-                    left_text, left_text_raw, left_text_search = concordance_line[0]
-                    node_text, node_text_raw, node_text_search = concordance_line[1]
-                    right_text, right_text_raw, right_text_search = concordance_line[2]
+                    left_tokens_raw, left_tokens_search = concordance_line[0]
+                    node_tokens_raw, node_tokens_search = concordance_line[1]
+                    right_tokens_raw, right_tokens_search = concordance_line[2]
 
                     sentiment = concordance_line[3]
                     no_token, len_tokens = concordance_line[4]
@@ -522,7 +522,7 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
                     label_node = wl_labels.Wl_Label_Html(
                         f'''
                             <span style="color: {node_color}; font-weight: bold;">
-                                &nbsp;{node_text}&nbsp;
+                                &nbsp;{' '.join(node_tokens_raw)}&nbsp;
                             </span>
                         ''',
                         self.main
@@ -532,28 +532,28 @@ class Wl_Table_Concordancer(wl_tables.Wl_Table_Data_Sort_Search):
 
                     self.indexWidget(self.model().index(i, 1)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
 
-                    self.indexWidget(self.model().index(i, 1)).text_raw = node_text_raw
-                    self.indexWidget(self.model().index(i, 1)).text_search = node_text_search
+                    self.indexWidget(self.model().index(i, 1)).tokens_raw = node_tokens_raw
+                    self.indexWidget(self.model().index(i, 1)).tokens_search = node_tokens_search
 
                     # Left
                     self.setIndexWidget(
                         self.model().index(i, 0),
-                        wl_labels.Wl_Label_Html(left_text, self.main)
+                        wl_labels.Wl_Label_Html(' '.join(left_tokens_raw), self.main)
                     )
 
                     self.indexWidget(self.model().index(i, 0)).setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
-                    self.indexWidget(self.model().index(i, 0)).text_raw = left_text_raw
-                    self.indexWidget(self.model().index(i, 0)).text_search = left_text_search
+                    self.indexWidget(self.model().index(i, 0)).tokens_raw = left_tokens_raw
+                    self.indexWidget(self.model().index(i, 0)).tokens_search = left_tokens_search
 
                     # Right
                     self.setIndexWidget(
                         self.model().index(i, 2),
-                        wl_labels.Wl_Label_Html(right_text, self.main)
+                        wl_labels.Wl_Label_Html(' '.join(right_tokens_raw), self.main)
                     )
 
-                    self.indexWidget(self.model().index(i, 2)).text_raw = right_text_raw
-                    self.indexWidget(self.model().index(i, 2)).text_search = right_text_search
+                    self.indexWidget(self.model().index(i, 2)).tokens_raw = right_tokens_raw
+                    self.indexWidget(self.model().index(i, 2)).tokens_search = right_tokens_search
 
                     # Sentiment
                     if not isinstance(sentiment, str):
@@ -669,9 +669,8 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
             for file in self.main.wl_file_area.get_selected_files():
                 concordance_lines_file = []
 
-                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_concordancer(
-                    self.main, text,
+                    self.main, file['text'],
                     token_settings = settings['token_settings']
                 )
 
@@ -685,7 +684,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 search_terms = wl_matching.match_search_terms_ngrams(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     search_settings = settings['search_settings']
                 )
@@ -696,7 +694,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 ) = wl_matching.match_search_terms_context(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     context_settings = settings['context_settings']
                 )
@@ -711,7 +708,6 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                 len_paras = len(offsets_paras)
                 len_sentences = len(offsets_sentences)
                 len_sentence_segs = len(offsets_sentence_segs)
-                len_tokens = len(tokens)
 
                 sentiment_inputs = []
 
@@ -734,104 +730,59 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                             no_para = bisect.bisect(offsets_paras, i)
 
                             # Search in Results (Node)
-                            text_search_node = list(ngram)
-
-                            if not settings['token_settings']['punc_marks']:
-                                ngram = text.tokens_flat_punc_marks_merged[i : i + len_search_term]
-
-                            node_text = ' '.join(ngram)
-                            node_text = wl_nlp_utils.escape_text(node_text)
+                            node_tokens_search = list(ngram)
+                            node_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(ngram))
 
                             # Width Unit
                             if settings['generation_settings']['width_unit'] == self.tr('Character'):
                                 len_context_left = 0
                                 len_context_right = 0
 
-                                context_left = []
-                                context_right = []
+                                left_tokens_raw = []
+                                right_tokens_raw = []
 
                                 width_left_char = settings['generation_settings']['width_left_char']
                                 width_right_char = settings['generation_settings']['width_right_char']
 
                                 while len_context_left < width_left_char:
-                                    if i - 1 - len(context_left) < 0:
+                                    if i - 1 - len(left_tokens_raw) < 0:
                                         break
                                     else:
-                                        token_next = tokens[i - 1 - len(context_left)]
+                                        token_next = tokens[i - 1 - len(left_tokens_raw)]
                                         len_token_next = len(token_next)
 
                                     if len_context_left + len_token_next > width_left_char:
-                                        context_left.insert(0, token_next[-(width_left_char - len_context_left):])
+                                        left_tokens_raw.insert(0, wl_texts.set_token_text(
+                                            token_next,
+                                            token_next[-(width_left_char - len_context_left):]
+                                        ))
                                     else:
-                                        context_left.insert(0, token_next)
+                                        left_tokens_raw.insert(0, token_next)
 
                                     len_context_left += len_token_next
 
                                 while len_context_right < width_right_char:
-                                    if i + len_search_term + len(context_right) > len(text.tokens_flat_punc_marks_merged) - 1:
+                                    if i + len_search_term + len(right_tokens_raw) > text.num_tokens - 1:
                                         break
                                     else:
-                                        token_next = tokens[i + len_search_term + len(context_right)]
+                                        token_next = tokens[i + len_search_term + len(right_tokens_raw)]
                                         len_token_next = len(token_next)
 
                                     if len_context_right + len_token_next > width_right_char:
-                                        context_right.append(token_next[: width_right_char - len_context_right])
+                                        right_tokens_raw.append(wl_texts.set_token_text(
+                                            token_next,
+                                            token_next[: width_right_char - len_context_right]
+                                        ))
                                     else:
-                                        context_right.append(token_next)
+                                        right_tokens_raw.append(token_next)
 
                                     len_context_right += len_token_next
-
-                                # Search in results (Left & Right)
-                                text_search_left = copy.deepcopy(context_left)
-                                text_search_right = copy.deepcopy(context_right)
-
-                                if not settings['token_settings']['punc_marks']:
-                                    len_context_leftmost = len(context_left[0])
-                                    len_context_rightmost = len(context_right[-1])
-
-                                    context_left = text.tokens_flat_punc_marks_merged[i - len(context_left): i]
-                                    context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : i + len_search_term + len(context_right)]
-
-                                    # Clip the leftmost and rightmost token in context
-                                    context_leftmost = ''
-                                    context_rightmost = ''
-                                    len_context_leftmost_no_puncs = 0
-                                    len_context_rightmost_no_puncs = 0
-
-                                    for char in reversed(context_left[0]):
-                                        if len_context_leftmost_no_puncs < len_context_leftmost:
-                                            context_leftmost = char + context_leftmost
-
-                                            if char.isalnum():
-                                                len_context_leftmost_no_puncs += 1
-                                        else:
-                                            break
-
-                                    for char in reversed(context_right[-1]):
-                                        if len_context_rightmost_no_puncs < len_context_rightmost:
-                                            context_rightmost += char
-
-                                            if char.isalnum():
-                                                len_context_rightmost_no_puncs += 1
-                                        else:
-                                            break
-
-                                    context_left[0] = context_leftmost
-                                    context_right[-1] = context_rightmost
                             elif settings['generation_settings']['width_unit'] == self.tr('Token'):
                                 width_left_token = settings['generation_settings']['width_left_token']
                                 width_right_token = settings['generation_settings']['width_right_token']
 
-                                context_left = text.tokens_flat_punc_marks_merged[max(0, i - width_left_token) : i]
-                                context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : i + len_search_term + width_right_token]
-
-                                # Search in results (Left & Right)
-                                if settings['token_settings']['punc_marks']:
-                                    text_search_left = copy.deepcopy(context_left)
-                                    text_search_right = copy.deepcopy(context_right)
-                                else:
-                                    text_search_left = tokens[max(0, i - width_left_token) : i]
-                                    text_search_right = tokens[i + len_search_term : i + len_search_term + width_right_token]
+                                left_tokens_raw = tokens[max(0, i - width_left_token) : i]
+                                right_tokens_raw = tokens[i + len_search_term : i + len_search_term + width_right_token]
                             else:
                                 if settings['generation_settings']['width_unit'] == self.tr('Sentence segment'):
                                     width_settings = 'sentence_seg'
@@ -859,40 +810,35 @@ class Wl_Worker_Concordancer_Table(wl_threading.Wl_Worker):
                                 else:
                                     offset_end = offsets_unit[no_unit + width_right]
 
-                                context_left = text.tokens_flat_punc_marks_merged[offset_start:i]
-                                context_right = text.tokens_flat_punc_marks_merged[i + len_search_term : offset_end]
+                                left_tokens_raw = tokens[offset_start:i]
+                                right_tokens_raw = tokens[i + len_search_term : offset_end]
 
-                                # Search in results (Left & Right)
-                                if settings['token_settings']['punc_marks']:
-                                    text_search_left = copy.deepcopy(context_left)
-                                    text_search_right = copy.deepcopy(context_right)
-                                else:
-                                    text_search_left = tokens[offset_start:i]
-                                    text_search_right = tokens[i + len_search_term : offset_end]
+                            # Search in results (Left & Right)
+                            left_tokens_search = copy.deepcopy(left_tokens_raw)
+                            right_tokens_search = copy.deepcopy(right_tokens_raw)
 
                             # Remove empty tokens for searching in results
-                            text_search_left = [token for token in text_search_left if token]
-                            text_search_right = [token for token in text_search_right if token]
+                            left_tokens_search = [token for token in left_tokens_search if token]
+                            right_tokens_search = [token for token in right_tokens_search if token]
 
-                            context_left = wl_nlp_utils.escape_tokens(context_left)
-                            context_right = wl_nlp_utils.escape_tokens(context_right)
-
-                            context_left_text = ' '.join(context_left)
-                            context_right_text = ' '.join(context_right)
+                            left_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(left_tokens_raw))
+                            right_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(right_tokens_raw))
 
                             # Left
-                            concordance_line.append([context_left_text, context_left, text_search_left])
+                            concordance_line.append([left_tokens_raw, left_tokens_search])
                             # Node
-                            concordance_line.append([node_text, list(ngram), text_search_node])
+                            concordance_line.append([node_tokens_raw, node_tokens_search])
                             # Right
-                            concordance_line.append([context_right_text, context_right, text_search_right])
+                            concordance_line.append([right_tokens_raw, right_tokens_search])
 
                             # Sentiment
                             if text.lang in self.main.settings_global['sentiment_analyzers']:
-                                sentiment_inputs.append(' '.join([context_left_text, node_text, context_right_text]))
+                                sentiment_inputs.append(' '.join(
+                                    [*left_tokens_search, *node_tokens_search, *right_tokens_search]
+                                ))
 
                             # Token No.
-                            concordance_line.append([i + 1, len_tokens])
+                            concordance_line.append([i + 1, text.num_tokens])
                             # Sentence Segment No.
                             concordance_line.append([no_sentence_seg, len_sentence_segs])
                             # Sentence No.
@@ -942,16 +888,14 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
             files = sorted(self.main.wl_file_area.get_selected_files(), key = lambda item: item['name'])
 
             for file in files:
-                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_concordancer(
-                    self.main, text,
+                    self.main, file['text'],
                     token_settings = settings['token_settings']
                 )
 
                 search_terms_file = wl_matching.match_search_terms_ngrams(
                     self.main, text.get_tokens_flat(),
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     search_settings = settings['search_settings']
                 )
@@ -960,12 +904,12 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
                 for search_term in search_terms_file:
                     search_terms_total.add(search_term)
-                    search_terms_labels.add(' '.join(search_term))
+                    search_terms_labels.add(' '.join(wl_texts.to_display_texts(search_term)))
 
                 texts.append(text)
 
             len_files = len(files)
-            len_tokens_total = sum((len(text.get_tokens_flat()) for text in texts))
+            len_tokens_total = sum((text.num_tokens for text in texts))
 
             if settings['fig_settings']['sort_results_by'] == self.tr('File'):
                 search_terms_total = sorted(search_terms_total)
@@ -982,15 +926,14 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
 
                         if search_term in search_terms_files[j]:
                             x_start_total = x_start + sum((
-                                len(text.get_tokens_flat())
+                                text.num_tokens
                                 for k, text in enumerate(texts)
                                 if k < j
                             ))
-                            len_tokens = len(tokens)
 
                             for k, ngram in enumerate(wl_nlp_utils.ngrams(tokens, len_search_term)):
                                 if ngram == search_term:
-                                    points.append([x_start + k / len_tokens * len_tokens_total, y_start - j])
+                                    points.append([x_start + k / text.num_tokens * len_tokens_total, y_start - j])
                                     # Total
                                     points.append([x_start_total + k, 0])
             elif settings['fig_settings']['sort_results_by'] == self.tr('Search term'):
@@ -1003,7 +946,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     for j, text in enumerate(texts):
                         if search_term in search_terms_files[j]:
                             x_start = sum((
-                                len(text.get_tokens_flat())
+                                text.num_tokens
                                 for k, text in enumerate(texts)
                                 if k < j
                             )) + j + 2
@@ -1017,7 +960,7 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                 x_tick_labels = ['']
 
                 if settings['fig_settings']['sort_results_by'] == self.tr('File'):
-                    len_tokens_total = sum((len(text.get_tokens_flat()) for text in texts))
+                    len_tokens_total = sum((text.num_tokens for text in texts))
 
                     for i, search_term in enumerate(search_terms_total):
                         x_tick_start = len_tokens_total * i + i + 1
@@ -1038,7 +981,6 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                     labels.append(list(range(len(files) + 1)))
                     labels.append([self.tr('Total')] + [file['name'] for file in reversed(files)])
                     labels.append(len(files) + 1)
-
                 elif settings['fig_settings']['sort_results_by'] == self.tr('Search term'):
                     len_search_terms_total = len(search_terms_total)
 
@@ -1046,15 +988,15 @@ class Wl_Worker_Concordancer_Fig(wl_threading.Wl_Worker):
                         tokens = text.get_tokens_flat()
 
                         x_tick_start = sum((
-                            len(text.get_tokens_flat())
+                            text.num_tokens
                             for j, text in enumerate(texts)
                             if j < i
                         )) + j + 1
 
                         # 1/2
-                        x_ticks.append(x_tick_start + len(tokens) / 2)
+                        x_ticks.append(x_tick_start + text.num_tokens / 2)
                         # Divider
-                        x_ticks.append(x_tick_start + len(tokens) + 1)
+                        x_ticks.append(x_tick_start + text.num_tokens + 1)
 
                     for file in files:
                         # 1/2

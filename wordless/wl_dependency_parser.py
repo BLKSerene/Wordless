@@ -29,7 +29,7 @@ from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc
-from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_token_processing
+from wordless.wl_nlp import wl_dependency_parsing, wl_matching, wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_layouts, wl_tables, wl_widgets
 
@@ -383,12 +383,12 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
 
                 for i, (
                     head, dependent, dependency_relation, dependency_len,
-                    sentence_display, sentence_search,
+                    sentence_tokens_raw, sentence_tokens_search,
                     no_sentence, len_sentences, file
                 ) in enumerate(results):
                     # Head
                     self.model().setItem(i, 0, wl_tables.Wl_Table_Item(head))
-                    # Dependant
+                    # Dependent
                     self.model().setItem(i, 1, wl_tables.Wl_Table_Item(dependent))
                     # Dependency Relation
                     self.model().setItem(i, 2, wl_tables.Wl_Table_Item(dependency_relation))
@@ -396,9 +396,9 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                     self.set_item_num(i, 3, dependency_len)
                     self.set_item_num(i, 4, numpy.abs(dependency_len))
                     # Sentence
-                    self.model().setItem(i, 5, wl_tables.Wl_Table_Item(' '.join(sentence_display)))
-                    self.model().item(i, 5).text_display = sentence_display
-                    self.model().item(i, 5).text_search = sentence_search
+                    self.model().setItem(i, 5, wl_tables.Wl_Table_Item(' '.join(sentence_tokens_raw)))
+                    self.model().item(i, 5).tokens_raw = sentence_tokens_raw
+                    self.model().item(i, 5).tokens_search = sentence_tokens_search
                     # Sentence No.
                     self.set_item_num(i, 6, no_sentence)
                     self.set_item_num(i, 7, no_sentence, len_sentences)
@@ -424,7 +424,7 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
             fig_settings = self.main.settings_custom['dependency_parser']['fig_settings']
 
             for row in self.get_selected_rows():
-                sentence = tuple(self.model().item(row, 5).text_display)
+                sentence = tuple(self.model().item(row, 5).tokens_search)
 
                 if sentence not in sentences_rendered:
                     for file in self.settings['file_area']['files_open']:
@@ -435,11 +435,10 @@ class Wl_Table_Dependency_Parser(wl_tables.Wl_Table_Data_Search):
                         self.main,
                         inputs = sentence,
                         lang = file_selected['lang'],
-                        tagged = file_selected['tagged'],
                         show_pos_tags = fig_settings['show_pos_tags'],
                         show_fine_grained_pos_tags = fig_settings['show_fine_grained_pos_tags'],
                         show_lemmas = fig_settings['show_pos_tags'] and fig_settings['show_lemmas'],
-                        # Let "Token Settings - Punctuation marks" to decide whether to collapse punctuation marks
+                        # Handled by Token Settings - Punctuation marks
                         collapse_punc_marks = False,
                         compact_mode = fig_settings['compact_mode'],
                         show_in_separate_tab = fig_settings['show_in_separate_tab'],
@@ -468,9 +467,8 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
             settings = self.main.settings_custom['dependency_parser']
 
             for file in self.main.wl_file_area.get_selected_files():
-                text = copy.deepcopy(file['text'])
-                text = wl_token_processing.wl_process_tokens_concordancer(
-                    self.main, text,
+                text = wl_token_processing.wl_process_tokens_dependency_parser(
+                    self.main, file['text'],
                     token_settings = settings['token_settings']
                 )
 
@@ -480,7 +478,6 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                 search_terms = wl_matching.match_search_terms_tokens(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     search_settings = settings['search_settings']
                 )
@@ -491,7 +488,6 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                 ) = wl_matching.match_search_terms_context(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     context_settings = settings['context_settings']
                 )
@@ -504,12 +500,10 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                         sentence = list(wl_misc.flatten_list(sentence))
 
                         if any((token in search_terms for token in sentence)):
-                            dependencies = wl_dependency_parsing.wl_dependency_parse(
-                                self.main,
-                                inputs = sentence,
-                                lang = text.lang,
-                                tagged = text.tagged
-                            )
+                            dependencies = [
+                                (token, token.head, token.dependency_relation, token.dependency_len)
+                                for token in sentence
+                            ]
 
                             for i, (token, head, dependency_relation, dependency_len) in enumerate(dependencies):
                                 j = i_token + i
@@ -529,25 +523,20 @@ class Wl_Worker_Dependency_Parser(wl_threading.Wl_Worker):
                                     no_sentence = bisect.bisect(offsets_sentences, j)
 
                                     # Sentence
-                                    if no_sentence == len_sentences:
-                                        offset_end = None
-                                    else:
-                                        offset_end = offsets_sentences[no_sentence]
-
-                                    sentence_display = text.tokens_flat_punc_marks_merged[offsets_sentences[no_sentence - 1]:offset_end]
+                                    sentence_tokens_raw = wl_texts.to_display_texts(sentence)
                                     # Remove empty tokens for searching in results
-                                    sentence_search = [token for token in sentence if token]
+                                    sentence_tokens_search = [token for token in sentence if token]
 
                                     # Head
-                                    results[-1].append(head)
-                                    # Dependant
-                                    results[-1].append(token)
+                                    results[-1].append(head.display_text())
+                                    # Dependent
+                                    results[-1].append(token.display_text())
                                     # Dependency Relation
                                     results[-1].append(dependency_relation)
                                     # Dependency Distance
                                     results[-1].append(dependency_len)
                                     # Sentence
-                                    results[-1].extend([sentence_display, sentence_search])
+                                    results[-1].extend([sentence_tokens_raw, sentence_tokens_search])
                                     # Sentence No.
                                     results[-1].extend([no_sentence, len_sentences])
                                     # File

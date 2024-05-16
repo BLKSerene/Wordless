@@ -20,9 +20,10 @@ import random
 
 from tests import wl_test_init
 from wordless.wl_figs import wl_figs_freqs
+from wordless.wl_nlp import wl_texts
 
 def test_wl_fig_freqs():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
     for tab in [
         'wordlist_generator',
@@ -45,10 +46,13 @@ def test_wl_fig_freqs():
 
             if graph_type == 'Network Graph':
                 for node in range(10):
+                    node = wl_texts.Wl_Token(str(node))
+
                     for collocate in range(10):
+                        collocate = wl_texts.Wl_Token(str(collocate))
                         freq_1, freq_2 = random.sample(range(10000), 2)
 
-                        freq_files_items[(str(node), str(collocate))] = [
+                        freq_files_items[(node, collocate)] = [
                             max(freq_1, freq_2) - min(freq_1, freq_2),
                             min(freq_1, freq_2),
                             max(freq_1, freq_2)
@@ -56,9 +60,10 @@ def test_wl_fig_freqs():
             else:
                 if tab == 'keyword_extractor':
                     for item in range(100):
+                        item = wl_texts.Wl_Token(str(item))
                         freq_1, freq_2 = random.sample(range(100), 2)
 
-                        freq_files_items[str(item)] = [
+                        freq_files_items[item] = [
                             random.randint(0, 100),
                             max(freq_1, freq_2) - min(freq_1, freq_2),
                             min(freq_1, freq_2),
@@ -66,9 +71,10 @@ def test_wl_fig_freqs():
                         ]
                 else:
                     for item in range(100):
+                        item = wl_texts.Wl_Token(str(item))
                         freq_1, freq_2 = random.sample(range(100), 2)
 
-                        freq_files_items[str(item)] = [
+                        freq_files_items[item] = [
                             max(freq_1, freq_2) - min(freq_1, freq_2),
                             min(freq_1, freq_2),
                             max(freq_1, freq_2)

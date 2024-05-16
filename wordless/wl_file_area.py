@@ -190,11 +190,11 @@ class Wl_Table_Files(wl_tables.Wl_Table):
             drag_drop = True
         )
 
-        self.setHorizontalHeader(Wl_Table_Header_Files(Qt.Horizontal, self))
-
         self.file_area = parent
         self.file_type = self.file_area.file_type
         self.settings_suffix = self.file_area.settings_suffix
+
+        self.setHorizontalHeader(Wl_Table_Header_Files(Qt.Horizontal, self))
 
         self.setItemDelegateForColumn(1, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
         self.setItemDelegateForColumn(2, wl_item_delegates.Wl_Item_Delegate_Uneditable(self))
@@ -513,11 +513,11 @@ class Dialog_Open_Files(wl_dialogs.Wl_Dialog):
         self.load_settings()
 
     def accept(self):
-        num_files = self.main.settings_custom['file_area']['files_open'] + self.main.settings_custom['file_area']['files_open_ref']
+        num_files = len(self.main.settings_custom['file_area']['files_open'] + self.main.settings_custom['file_area']['files_open_ref'])
 
         self.main.tabs_file_area.currentWidget().table_files._open_files(files_to_open = self.table_files.files_to_open)
 
-        if num_files < self.main.settings_custom['file_area']['files_open'] + self.main.settings_custom['file_area']['files_open_ref']:
+        if num_files < len(self.main.settings_custom['file_area']['files_open'] + self.main.settings_custom['file_area']['files_open_ref']):
             super().accept()
 
     def reject(self):

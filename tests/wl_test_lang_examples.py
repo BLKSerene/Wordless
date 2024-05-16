@@ -469,6 +469,8 @@ SENTENCE_YOR = 'Èdè Yorùbá Ni èdè tí ó ṣàkójọ pọ̀ gbogbo kú o�
 SENTENCE_ZUL = 'Zulu /ˈzuːluː/, noma isiZulu wulimi lwabantu base Ningizimu neAfrika abayingxenye yamaNguni.'
 SENTENCE_OTHER = SENTENCE_ENG_US
 
+TOKENS_LONG = [str(i) for i in range(101) for j in range(10)]
+
 def check_lang_examples(main):
     settings_langs = settings_langs = [lang[0] for lang in main.settings_global['langs'].values()]
 

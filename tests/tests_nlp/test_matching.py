@@ -19,7 +19,7 @@
 import re
 
 from tests import wl_test_init
-from wordless.wl_nlp import wl_matching
+from wordless.wl_nlp import wl_matching, wl_texts
 
 main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
@@ -200,171 +200,188 @@ def test_check_search_settings():
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_5) == SEARCH_SETTINGS_5
     assert wl_matching.check_search_settings(TOKEN_SETTINGS_3, SEARCH_SETTINGS_6) == SEARCH_SETTINGS_6
 
+def compare_tokens_matched(tokens_matched, tokens_expected):
+    tokens_matched = [token.display_text() for token in tokens_matched]
+
+    print(f'Tokens matched: {sorted(tokens_matched)}')
+    print(f'Tokens expected: {sorted(tokens_expected)}\n')
+
+    assert set(tokens_matched) == set(tokens_expected)
+
+def compare_ngrams_matched(ngrams_matched, ngrams_expected):
+    ngrams_matched = [tuple(token.display_text() for token in ngram) for ngram in ngrams_matched]
+
+    print(f'Tokens matched: {sorted(ngrams_matched)}')
+    print(f'Tokens expected: {sorted(ngrams_expected)}\n')
+
+    assert set(ngrams_matched) == set(ngrams_expected)
+
+def compare_context_matched(context_matched, context_expected):
+    context_matched = (
+        {tuple(token.display_text() for token in ngram) for ngram in context_matched[0]},
+        {tuple(token.display_text() for token in ngram) for ngram in context_matched[1]}
+    )
+
+    print(f'Tokens matched: {sorted(context_matched)}')
+    print(f'Tokens expected: {sorted(context_expected)}\n')
+
+    assert context_matched == context_expected
+
 def test_match_tokens():
-    assert wl_matching.match_tokens(
+    compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['tAke'],
-        tokens = ['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'TaKEs', 'test'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'TaKEs', 'test'],
+            lang = 'eng_us',
+            tags = ['', '', '', '', '', '', '_TAKE']
+        ),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings()
-    ) == set(['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'TaKEs'])
+    ), ['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'TaKEs', 'test_TAKE'])
 
-    assert wl_matching.match_tokens(
+    compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['tAke'],
-        tokens = ['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'test'],
+        tokens = wl_texts.to_tokens(['take', 'TAKE', 'Take', 'tAke', 'TaKE', 'test'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(match_case = True)
-    ) == set(['tAke'])
+    ), ['tAke'])
 
-    assert wl_matching.match_tokens(
+    compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['take'],
-        tokens = ['take', 'takes', 'took', 'taken', 'taking', 'test'],
+        tokens = wl_texts.to_tokens(['take', 'takes', 'took', 'taken', 'taking', 'test'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(match_whole_words = True)
-    ) == set(['take'])
+    ), ['take'])
 
-    assert wl_matching.match_tokens(
+    compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['takes'],
-        tokens = ['take', 'takes', 'took', 'taken', 'taking', 'test'],
+        tokens = wl_texts.to_tokens(['take', 'takes', 'took', 'taken', 'taking', 'test'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(match_inflected_forms = True)
-    ) == set(['take', 'takes', 'took', 'taken'])
+    ), ['take', 'takes', 'took', 'taken'])
 
-    assert wl_matching.match_tokens(
+    compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['take[sn]'],
-        tokens = ['take', 'takes', 'took', 'taken', 'taking', 'test'],
+        tokens = wl_texts.to_tokens(['take', 'takes', 'took', 'taken', 'taking', 'test'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(use_regex = True)
-    ) == set(['takes', 'taken'])
+    ), ['takes', 'taken'])
 
-    assert wl_matching.match_tokens(
+    compare_tokens_matched(wl_matching.match_tokens(
         main,
-        search_terms = ['take'],
-        tokens = ['take', 'take_NN', 'taked_NN', 'test'],
+        search_terms = ['takes'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'test'],
+            lang = 'eng_us',
+            tags = ['', '_NN', '_NN', '_TAKES']
+        ),
         lang = 'eng_us',
-        tagged = True,
-        settings = init_search_settings(match_whole_words = True, match_without_tags = True)
-    ) == set(['take', 'take_NN'])
+        settings = init_search_settings(match_without_tags = True)
+    ), ['takes_NN'])
 
-    assert wl_matching.match_tokens(
-        main,
-        search_terms = ['_NN'],
-        tokens = ['take', 'take_NN', 'taked_NN', 'taked_NNP', 'test'],
-        lang = 'eng_us',
-        tagged = True,
-        settings = init_search_settings(match_whole_words = True, match_tags = True)
-    ) == set(['take_NN', 'taked_NN'])
-
-    assert wl_matching.match_tokens(
+    compare_tokens_matched(wl_matching.match_tokens(
         main,
         search_terms = ['_NN'],
-        tokens = ['take', 'take_NN', 'taked_NN', 'taked_NNP', 'test'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'taken', 'test_NN'],
+            lang = 'eng_us',
+            tags = ['', '_NN', '_NN', '_NNP', '']
+        ),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(match_whole_words = True, match_tags = True)
-    ) == set()
+    ), ['takes_NN', 'took_NN'])
 
 def test_match_ngrams():
-    assert wl_matching.match_ngrams(
+    compare_ngrams_matched(wl_matching.match_ngrams(
         main,
         search_terms = ['tAke WaLK'],
-        tokens = ['take', 'TAKE', 'WaLK', 'wAlk', 'test'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'TAKE', 'WaLK', 'test'],
+            lang = 'eng_us',
+            tags = ['', '', '', '_wAlk']
+        ),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings()
-    ) == set([('take', 'WaLK'), ('take', 'wAlk'), ('TAKE', 'WaLK'), ('TAKE', 'wAlk')])
+    ), [('take', 'WaLK'), ('take', 'test_wAlk'), ('TAKE', 'WaLK'), ('TAKE', 'test_wAlk')])
 
-    assert wl_matching.match_ngrams(
+    compare_ngrams_matched(wl_matching.match_ngrams(
         main,
         search_terms = ['tAke WaLK'],
-        tokens = ['take', 'tAke', 'WALK', 'WaLK', 'test'],
+        tokens = wl_texts.to_tokens(['take', 'tAke', 'WALK', 'WaLK', 'test'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(match_case = True)
-    ) == set([('tAke', 'WaLK')])
+    ), [('tAke', 'WaLK')])
 
-    assert wl_matching.match_ngrams(
+    compare_ngrams_matched(wl_matching.match_ngrams(
         main,
         search_terms = ['take walk'],
-        tokens = ['take', 'takes', 'walk', 'walked', 'test'],
+        tokens = wl_texts.to_tokens(['take', 'takes', 'walk', 'walked', 'test'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(match_whole_words = True)
-    ) == set([('take', 'walk')])
+    ), [('take', 'walk')])
 
-    assert wl_matching.match_ngrams(
+    compare_ngrams_matched(wl_matching.match_ngrams(
         main,
         search_terms = ['took walks'],
-        tokens = ['take', 'takes', 'walk', 'walked', 'test'],
+        tokens = wl_texts.to_tokens(['take', 'takes', 'walk', 'walked', 'test'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(match_inflected_forms = True)
-    ) == set([('take', 'walk'), ('take', 'walked'), ('takes', 'walk'), ('takes', 'walked')])
+    ), [('take', 'walk'), ('take', 'walked'), ('takes', 'walk'), ('takes', 'walked')])
 
-    assert wl_matching.match_ngrams(
+    compare_ngrams_matched(wl_matching.match_ngrams(
         main,
-        search_terms = ['take[dn] walk(s|ing)'],
-        tokens = ['taked', 'taken', 'takes', 'walks', 'walking', 'walked', 'test'],
+        search_terms = ['took|taken walk(s|ing)'],
+        tokens = wl_texts.to_tokens(['took', 'taken', 'takes', 'walks', 'walking', 'walked', 'test'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         settings = init_search_settings(use_regex = True)
-    ) == set([('taked', 'walks'), ('taked', 'walking'), ('taken', 'walks'), ('taken', 'walking')])
+    ), [('took', 'walks'), ('took', 'walking'), ('taken', 'walks'), ('taken', 'walking')])
 
-    assert wl_matching.match_ngrams(
+    compare_ngrams_matched(wl_matching.match_ngrams(
         main,
-        search_terms = ['take walk'],
-        tokens = ['take', 'take_NN', 'taked_NN', 'walk', 'walk_NN', 'walking_NN', 'test'],
+        search_terms = ['takes walks', 'took walked'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'walk', 'walks', 'walked', 'test'],
+            lang = 'eng_us',
+            tags = ['', '_NN', '_NN', '', '_NN', '_NN', '_TAKES']
+        ),
         lang = 'eng_us',
-        tagged = True,
-        settings = init_search_settings(match_whole_words = True, match_without_tags = True)
-    ) == set([('take', 'walk'), ('take', 'walk_NN'), ('take_NN', 'walk'), ('take_NN', 'walk_NN')])
+        settings = init_search_settings(match_without_tags = True)
+    ), [('takes_NN', 'walks_NN'), ('took_NN', 'walked_NN')])
 
-    assert wl_matching.match_ngrams(
+    compare_ngrams_matched(wl_matching.match_ngrams(
         main,
         search_terms = ['_NN _JJ'],
-        tokens = ['take', 'take_NN', 'taked_NN', 'taked_NNP', 'walk', 'walk_JJ', 'walked_JJ', 'walked_JJS', 'test'],
+        tokens = wl_texts.to_tokens(
+            ['take', 'takes', 'took', 'walk', 'walks', 'walked', 'test_JJ'],
+            lang = 'eng_us',
+            tags = ['', '_NN', '_NNP', '', '_JJ', '_JJS', '']
+        ),
         lang = 'eng_us',
-        tagged = True,
         settings = init_search_settings(match_whole_words = True, match_tags = True)
-    ) == set([('take_NN', 'walk_JJ'), ('take_NN', 'walked_JJ'), ('taked_NN', 'walk_JJ'), ('taked_NN', 'walked_JJ')])
-
-    assert wl_matching.match_ngrams(
-        main,
-        search_terms = ['_NN'],
-        tokens = ['take', 'take_NN', 'taked_NN', 'taked_NNP', 'walk', 'walk_JJ', 'walked_JJ', 'walked_JJS', 'test'],
-        lang = 'eng_us',
-        tagged = False,
-        settings = init_search_settings(match_whole_words = True, match_tags = True)
-    ) == set()
+    ), [('takes_NN', 'walks_JJ')])
 
 def test_match_search_terms_tokens():
-    assert wl_matching.match_search_terms_tokens(
+    compare_tokens_matched(wl_matching.match_search_terms_tokens(
         main,
-        tokens = ['take'],
+        tokens = wl_texts.to_tokens(['take'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         token_settings = init_token_settings(),
         search_settings = init_search_settings(search_term = 'take')
-    ) == set(['take'])
+    ), ['take'])
 
 def test_match_search_terms_ngrams():
-    assert wl_matching.match_search_terms_ngrams(
+    compare_ngrams_matched(wl_matching.match_search_terms_ngrams(
         main,
-        tokens = ['take', 'walk'],
+        tokens = wl_texts.to_tokens(['take', 'walk'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         token_settings = init_token_settings(),
         search_settings = init_search_settings(search_term = 'take walk')
-    ) == set([('take', 'walk')])
+    ), [('take', 'walk')])
 
 def init_context_settings(
     incl = False, incl_multi_search_mode = False, incl_search_term = '', incl_search_terms = None,
@@ -399,44 +416,40 @@ def init_context_settings(
     return context_settings
 
 def test_match_search_terms_context():
-    assert wl_matching.match_search_terms_context(
+    compare_context_matched(wl_matching.match_search_terms_context(
         main,
-        tokens = ['take'],
+        tokens = wl_texts.to_tokens(['take'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         token_settings = init_token_settings(),
         context_settings = init_context_settings()
-    ) == (set(), set())
+    ), (set(), set()))
 
-    assert wl_matching.match_search_terms_context(
+    compare_context_matched(wl_matching.match_search_terms_context(
         main,
-        tokens = ['take', 'walk'],
+        tokens = wl_texts.to_tokens(['take', 'walk'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         token_settings = init_token_settings(),
         context_settings = init_context_settings(incl = True, incl_search_term = 'take walk')
-    ) == ({('take', 'walk')}, set())
+    ), ({('take', 'walk')}, set()))
 
-    assert wl_matching.match_search_terms_context(
+    compare_context_matched(wl_matching.match_search_terms_context(
         main,
-        tokens = ['take', 'walk'],
+        tokens = wl_texts.to_tokens(['take', 'walk'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         token_settings = init_token_settings(),
         context_settings = init_context_settings(excl = True, excl_search_term = 'take walk')
-    ) == (set(), {('take', 'walk')})
+    ), (set(), {('take', 'walk')}))
 
-    assert wl_matching.match_search_terms_context(
+    compare_context_matched(wl_matching.match_search_terms_context(
         main,
-        tokens = ['take', 'walk'],
+        tokens = wl_texts.to_tokens(['take', 'walk'], lang = 'eng_us'),
         lang = 'eng_us',
-        tagged = False,
         token_settings = init_token_settings(),
         context_settings = init_context_settings(
             incl = True, incl_search_term = 'take walk',
             excl = True, excl_search_term = 'take walk'
         )
-    ) == ({('take', 'walk')}, {('take', 'walk')})
+    ), ({('take', 'walk')}, {('take', 'walk')}))
 
 def test_check_context():
     assert wl_matching.check_context(

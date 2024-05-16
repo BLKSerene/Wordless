@@ -24,7 +24,7 @@ from PyQt5.QtWidgets import QPushButton
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs, wl_dialogs_misc, wl_msg_boxes
-from wordless.wl_nlp import wl_matching, wl_nlp_utils
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_buttons, wl_layouts, wl_widgets
 
@@ -372,15 +372,20 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
             ]
 
             for col in cols_to_search:
+                # Concordancer - Left, Node, Right & Parallel Concordancer - Parallel Unit
                 if table.indexWidget(table.model().index(0, col)):
                     for row in rows_to_search:
-                        results[(row, col)] = table.indexWidget(table.model().index(row, col)).text_search
+                        results[(row, col)] = table.indexWidget(table.model().index(row, col)).tokens_search
                 else:
                     for row in rows_to_search:
+                        # Dependency Parser - Sentence / N-gram Generator - N-gram
                         try:
-                            results[(row, col)] = table.model().item(row, col).text_raw
+                            results[(row, col)] = table.model().item(row, col).tokens_search
                         except AttributeError:
-                            results[(row, col)] = [table.model().item(row, col).text()]
+                            results[(row, col)] = wl_texts.display_texts_to_tokens(
+                                self.main,
+                                [table.model().item(row, col).text()]
+                            )
 
             items = [token for text in results.values() for token in text]
 
@@ -389,7 +394,6 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
                     search_terms_file = wl_matching.match_search_terms_ngrams(
                         self.main, items,
                         lang = file['lang'],
-                        tagged = file['tagged'],
                         token_settings = table.settings[self.dialog.tab]['token_settings'],
                         search_settings = self.dialog.settings
                     )
@@ -401,7 +405,7 @@ class Wl_Worker_Results_Search(wl_threading.Wl_Worker):
 
                 for (row, col), text in results.items():
                     for ngram in wl_nlp_utils.ngrams(text, len_search_term):
-                        if ngram == search_term:
+                        if ngram == tuple(search_term):
                             self.dialog.items_found.append([table, row, col])
 
         self.dialog.items_found = sorted(

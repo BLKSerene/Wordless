@@ -44,7 +44,7 @@ def test_wordlist_generator():
             case _:
                 wl_test_init.select_test_files(main, no_files = [i + 1])
 
-        global main_global # pylint: disable=global-statement
+        global main_global
         main_global = main
 
         settings['generation_settings']['measure_dispersion'] = random.choice(measures_dispersion)

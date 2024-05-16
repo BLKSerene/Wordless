@@ -27,7 +27,7 @@ from PyQt5.QtWidgets import QGroupBox
 
 from wordless.wl_checks import wl_checks_work_area
 from wordless.wl_dialogs import wl_dialogs_misc, wl_msg_boxes
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_token_processing
+from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_texts, wl_token_processing
 from wordless.wl_utils import wl_misc, wl_threading
 from wordless.wl_widgets import wl_labels, wl_layouts, wl_tables, wl_widgets
 
@@ -317,10 +317,10 @@ class Wl_Table_Concordancer_Parallel(wl_tables.Wl_Table_Data_Search):
                     self.set_item_num(i, 0, parallel_unit_no)
                     self.set_item_num(i, 1, parallel_unit_no, len_parallel_units)
 
-                    for j, (parallel_unit_raw, parallel_unit_search) in enumerate(concordance_line[1]):
-                        label_parallel_unit = wl_labels.Wl_Label_Html(' '.join(parallel_unit_raw), self.main)
-                        label_parallel_unit.text_raw = parallel_unit_raw
-                        label_parallel_unit.text_search = parallel_unit_search
+                    for j, (parallel_unit_tokens_raw, parallel_unit_tokens_search) in enumerate(concordance_line[1]):
+                        label_parallel_unit = wl_labels.Wl_Label_Html(' '.join(parallel_unit_tokens_raw), self.main)
+                        label_parallel_unit.tokens_raw = parallel_unit_tokens_raw
+                        label_parallel_unit.tokens_search = parallel_unit_tokens_search
 
                         self.setIndexWidget(self.model().index(i, 2 + j), label_parallel_unit)
                         self.indexWidget(self.model().index(i, 2 + j)).setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
@@ -351,9 +351,8 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
 
             # Parallel Unit No.
             for file in files:
-                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens_concordancer(
-                    self.main, text,
+                    self.main, file['text'],
                     token_settings = settings['token_settings'],
                     preserve_blank_lines = True
                 )
@@ -374,7 +373,6 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     search_terms = wl_matching.match_search_terms_ngrams(
                         self.main, tokens,
                         lang = text.lang,
-                        tagged = text.tagged,
                         token_settings = settings['token_settings'],
                         search_settings = settings['search_settings']
                     )
@@ -385,7 +383,6 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     ) = wl_matching.match_search_terms_context(
                         self.main, tokens,
                         lang = text.lang,
-                        tagged = text.tagged,
                         token_settings = settings['token_settings'],
                         context_settings = settings['context_settings']
                     )
@@ -434,35 +431,24 @@ class Wl_Worker_Concordancer_Parallel_Table(wl_threading.Wl_Worker):
                     node = parallel_unit_nodes[i]
 
                     if parallel_unit_no <= len_parallel_units:
+                        parallel_unit_tokens_raw = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
+                        parallel_unit_tokens_raw = wl_nlp_utils.escape_tokens(wl_texts.to_display_texts(parallel_unit_tokens_raw))
                         # Search in Results
-                        if settings['token_settings']['punc_marks']:
-                            parallel_unit_raw = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
-                        else:
-                            offset_para_start = offsets_paras[parallel_unit_no - 1]
-
-                            if parallel_unit_no == len_parallel_units:
-                                offset_para_end = None
-                            else:
-                                offset_para_end = offsets_paras[parallel_unit_no]
-
-                            parallel_unit_raw = text.tokens_flat_punc_marks_merged[offset_para_start:offset_para_end]
-
-                        parallel_unit_raw = wl_nlp_utils.escape_tokens(parallel_unit_raw)
-                        parallel_unit_search = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
+                        parallel_unit_tokens_search = list(wl_misc.flatten_list(text.tokens_multilevel[parallel_unit_no - 1]))
 
                         # Highlight node if found
                         if node:
                             len_node = len(node)
 
-                            for j, ngram in enumerate(wl_nlp_utils.ngrams(parallel_unit_search, len_node)):
+                            for j, ngram in enumerate(wl_nlp_utils.ngrams(parallel_unit_tokens_search, len_node)):
                                 if ngram == tuple(node):
-                                    parallel_unit_raw[j] = f'<span style="color: {node_color}; font-weight: bold;">{parallel_unit_raw[j]}'
-                                    parallel_unit_raw[j + len_node - 1] += '</span>'
+                                    parallel_unit_tokens_raw[j] = f'<span style="color: {node_color}; font-weight: bold;">{parallel_unit_tokens_raw[j]}'
+                                    parallel_unit_tokens_raw[j + len_node - 1] += '</span>'
                     else:
-                        parallel_unit_raw = []
-                        parallel_unit_search = []
+                        parallel_unit_tokens_raw = []
+                        parallel_unit_tokens_search = []
 
-                    parallel_unit_nodes[i] = [parallel_unit_raw, parallel_unit_search]
+                    parallel_unit_nodes[i] = [parallel_unit_tokens_raw, parallel_unit_tokens_search]
 
             # Remove empty concordance lines
             for parallel_unit_no, parallel_units_files in parallel_units.copy().items():

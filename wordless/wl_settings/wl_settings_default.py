@@ -847,6 +847,7 @@ def init_settings_default(main):
                 'apply_lemmatization': False,
                 'filter_stop_words': False,
 
+                # Always assign POS tags
                 'assign_pos_tags': True,
                 'ignore_tags': False,
                 'use_tags': False

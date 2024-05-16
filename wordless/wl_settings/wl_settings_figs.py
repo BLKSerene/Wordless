@@ -183,7 +183,7 @@ class Wl_Settings_Figs_Word_Clouds(wl_settings.Wl_Settings_Node):
             self.tr('Monochrome'),
             self.tr('Colormap')
         ])
-        self.combo_box_font_color_colormap.addItems(matplotlib.pyplot.colormaps())
+        self.combo_box_font_color_colormap.addItems(matplotlib.pyplot.colormaps()) # pylint: disable=not-callable
         self.stacked_widget_font_color.addWidget(self.button_font_color_monochrome)
         self.stacked_widget_font_color.addWidget(self.combo_box_font_color_colormap)
 

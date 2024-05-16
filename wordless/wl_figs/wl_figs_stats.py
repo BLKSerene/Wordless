@@ -19,13 +19,40 @@
 from PyQt5.QtCore import QCoreApplication
 
 from wordless.wl_figs import wl_figs
+from wordless.wl_nlp import wl_texts
 from wordless.wl_utils import wl_sorting
 
 _tr = QCoreApplication.translate
 
 def wl_fig_stats(main, stat_files_items, tab):
-    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_figs_stats', 'Total')]
     fig_settings = main.settings_custom[tab]['fig_settings']
+
+    # Tokens / Keywords
+    if stat_files_items and isinstance(list(stat_files_items.keys())[0], str):
+        stat_files_items = {
+            item.display_text(): stat_files
+            for item, stat_files in stat_files_items.items()
+        }
+    # N-grams
+    elif stat_files_items and isinstance(list(stat_files_items.keys())[0][0], str):
+        stat_files_items = {
+            ' '.join(wl_texts.to_display_texts(item)): stat_files
+            for item, stat_files in stat_files_items.items()
+        }
+    # Collocations / Colligations
+    else:
+        if fig_settings['graph_type'] == _tr('wl_figs_freqs', 'Network graph'):
+            stat_files_items = {
+                (' '.join(wl_texts.to_display_texts(node)), collocate.display_text()): stat_files
+                for (node, collocate), stat_files in stat_files_items.items()
+            }
+        else:
+            stat_files_items = {
+                ' '.join(wl_texts.to_display_texts(node)) + ', ' + collocate.display_text(): stat_files
+                for (node, collocate), stat_files in stat_files_items.items()
+            }
+
+    file_names_selected = [*main.wl_file_area.get_selected_file_names(), _tr('wl_figs_stats', 'Total')]
     col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
 
     if fig_settings['use_data'] == _tr('wl_figs_stats', 'p-value'):

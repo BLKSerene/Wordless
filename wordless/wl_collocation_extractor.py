@@ -724,9 +724,12 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     self.set_item_num(i, 0, -1)
 
                     # Node
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(node)))
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(wl_texts.to_display_texts(node))))
+                    self.model().item(i, 1).tokens_filter = node
+
                     # Collocate
-                    self.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
+                    self.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate.display_text()))
+                    self.model().item(i, 2).tokens_filter = [collocate]
 
                     # Frequency
                     for j, freqs_file in enumerate(freqs_files):
@@ -817,78 +820,49 @@ class Wl_Table_Collocation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     else:
                         span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
 
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network graph'):
-                        collocates_freq_files = {
-                            (' '.join(node), collocate): numpy.array(freqs)[:, span_position]
-                            for (node, collocate), freqs in collocations_freqs_files.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocates_freq_files = {
-                            ', '.join([' '.join(node), collocate]): numpy.array(freqs)[:, span_position]
-                            for (node, collocate), freqs in collocations_freqs_files.items()
-                        }
+                    collocations_freq_files = {
+                        collocation: numpy.array(freqs)[:, span_position]
+                        for collocation, freqs in collocations_freqs_files.items()
+                    }
 
                     wl_figs_freqs.wl_fig_freqs(
-                        self.main, collocates_freq_files,
+                        self.main, collocations_freq_files,
                         tab = 'collocation_extractor'
                     )
                 elif settings['fig_settings']['use_data'] == self.tr('Frequency'):
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network graph'):
-                        collocates_freq_files = {
-                            (' '.join(node), collocate): numpy.array(freqs).sum(axis = 1)
-                            for (node, collocate), freqs in collocations_freqs_files.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocates_freq_files = {
-                            ', '.join([' '.join(node), collocate]): numpy.array(freqs).sum(axis = 1)
-                            for (node, collocate), freqs in collocations_freqs_files.items()
-                        }
+                    collocations_freq_files = {
+                        collocation: numpy.array(freqs).sum(axis = 1)
+                        for collocation, freqs in collocations_freqs_files.items()
+                    }
 
                     wl_figs_freqs.wl_fig_freqs(
-                        self.main, collocates_freq_files,
+                        self.main, collocations_freq_files,
                         tab = 'collocation_extractor'
                     )
                 else:
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network graph'):
-                        collocations_stats_files = {
-                            (' '.join(node), collocate): freqs
-                            for (node, collocate), freqs in collocations_stats_files.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocations_stats_files = {
-                            ', '.join([' '.join(node), collocate]): freqs
-                            for (node, collocate), freqs in collocations_stats_files.items()
-                        }
-
                     if settings['fig_settings']['use_data'] == col_text_test_stat:
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 0]
-                            for collocate, stats_files in collocations_stats_files.items()
+                        collocations_stat_files = {
+                            collocation: numpy.array(stats_files)[:, 0]
+                            for collocation, stats_files in collocations_stats_files.items()
                         }
                     elif settings['fig_settings']['use_data'] == self.tr('p-value'):
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 1]
-                            for collocate, stats_files in collocations_stats_files.items()
+                        collocations_stat_files = {
+                            collocation: numpy.array(stats_files)[:, 1]
+                            for collocation, stats_files in collocations_stats_files.items()
                         }
                     elif settings['fig_settings']['use_data'] == self.tr('Bayes factor'):
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 2]
-                            for collocate, stats_files in collocations_stats_files.items()
+                        collocations_stat_files = {
+                            collocation: numpy.array(stats_files)[:, 2]
+                            for collocation, stats_files in collocations_stats_files.items()
                         }
                     elif settings['fig_settings']['use_data'] == col_text_effect_size:
-                        collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 3]
-                            for collocate, stats_files in collocations_stats_files.items()
+                        collocations_stat_files = {
+                            collocation: numpy.array(stats_files)[:, 3]
+                            for collocation, stats_files in collocations_stats_files.items()
                         }
 
                     wl_figs_stats.wl_fig_stats(
-                        self.main, collocates_stat_files,
+                        self.main, collocations_stat_files,
                         tab = 'collocation_extractor'
                     )
 
@@ -932,9 +906,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 collocations_freqs_file = {}
                 collocations_freqs_file_all = {}
 
-                text = copy.deepcopy(file['text'])
                 text = wl_token_processing.wl_process_tokens(
-                    self.main, text,
+                    self.main, file['text'],
                     token_settings = settings['token_settings']
                 )
 
@@ -948,7 +921,6 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 search_terms = wl_matching.match_search_terms_ngrams(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     search_settings = settings['search_settings']
                 )
@@ -959,7 +931,6 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 ) = wl_matching.match_search_terms_context(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     context_settings = settings['context_settings']
                 )
@@ -974,7 +945,6 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                 len_paras = len(offsets_paras)
                 len_sentences = len(offsets_sentences)
                 len_sentence_segs = len(offsets_sentence_segs)
-                len_tokens = len(tokens)
 
                 settings_limit_searching = settings['generation_settings']['limit_searching']
 
@@ -997,7 +967,7 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
                             i_unit = bisect.bisect(offsets_unit, i) - 1
 
                             i_unit_start = offsets_unit[i_unit]
-                            i_unit_end = offsets_unit[i_unit + 1] - 1 if i_unit < len_unit - 1 else len_tokens - 1
+                            i_unit_end = offsets_unit[i_unit + 1] - 1 if i_unit < len_unit - 1 else text.num_tokens - 1
 
                         # Extract collocates
                         tokens_left = []
@@ -1119,6 +1089,8 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
             # Total
             if len(files) > 1:
+                texts.append(wl_texts.Wl_Text_Blank())
+
                 collocations_freqs_total = {}
                 collocations_freqs_total_all = {}
 
@@ -1140,8 +1112,6 @@ class Wl_Worker_Collocation_Extractor(wl_threading.Wl_Worker):
 
                 self.collocations_freqs_files.append(collocations_freqs_total)
                 collocations_freqs_files_all.append(collocations_freqs_total_all)
-
-                texts.append(wl_texts.Wl_Text_Blank())
 
             test_statistical_significance = settings['generation_settings']['test_statistical_significance']
             measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']

@@ -723,9 +723,12 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     self.set_item_num(i, 0, -1)
 
                     # Node
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(node)))
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(' '.join(wl_texts.to_display_texts(node))))
+                    self.model().item(i, 1).tokens_filter = node
+
                     # Collocate
-                    self.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate))
+                    self.model().setItem(i, 2, wl_tables.Wl_Table_Item(collocate.display_text()))
+                    self.model().item(i, 2).tokens_filter = [collocate]
 
                     # Frequency
                     for j, freqs_file in enumerate(freqs_files):
@@ -820,74 +823,45 @@ class Wl_Table_Colligation_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     else:
                         span_position = span_positions.index(int(settings['fig_settings']['use_data'][1:]))
 
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network Graph'):
-                        collocates_freq_files = {
-                            (' '.join(node), collocate): numpy.array(freqs)[:, span_position]
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocates_freq_files = {
-                            ', '.join([' '.join(node), collocate]): numpy.array(freqs)[:, span_position]
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
+                    collocates_freq_files = {
+                        colligation: numpy.array(freqs)[:, span_position]
+                        for colligation, freqs in colligations_freqs_file.items()
+                    }
 
                     wl_figs_freqs.wl_fig_freqs(
                         self.main, collocates_freq_files,
                         tab = 'colligation_extractor'
                     )
                 elif settings['fig_settings']['use_data'] == self.tr('Frequency'):
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network graph'):
-                        collocates_freq_files = {
-                            (' '.join(node), collocate): numpy.array(freqs).sum(axis = 1)
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        collocates_freq_files = {
-                            ', '.join([' '.join(node), collocate]): numpy.array(freqs).sum(axis = 1)
-                            for (node, collocate), freqs in colligations_freqs_file.items()
-                        }
+                    collocates_freq_files = {
+                        colligation: numpy.array(freqs).sum(axis = 1)
+                        for colligation, freqs in colligations_freqs_file.items()
+                    }
 
                     wl_figs_freqs.wl_fig_freqs(
                         self.main, collocates_freq_files,
                         tab = 'colligation_extractor'
                     )
                 else:
-                    # Network Graph
-                    if settings['fig_settings']['graph_type'] == self.tr('Network graph'):
-                        colligations_stats_files = {
-                            (' '.join(node), collocate): freqs
-                            for (node, collocate), freqs in colligations_stats_files.items()
-                        }
-                    # Line Chart & Word Cloud
-                    else:
-                        colligations_stats_files = {
-                            ', '.join([' '.join(node), collocate]): freqs
-                            for (node, collocate), freqs in colligations_stats_files.items()
-                        }
-
                     if settings['fig_settings']['use_data'] == col_text_test_stat:
                         collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 0]
-                            for collocate, stats_files in colligations_stats_files.items()
+                            colligation: numpy.array(stats_files)[:, 0]
+                            for colligation, stats_files in colligations_stats_files.items()
                         }
                     elif settings['fig_settings']['use_data'] == self.tr('p-value'):
                         collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 1]
-                            for collocate, stats_files in colligations_stats_files.items()
+                            colligation: numpy.array(stats_files)[:, 1]
+                            for colligation, stats_files in colligations_stats_files.items()
                         }
                     elif settings['fig_settings']['use_data'] == self.tr('Bayes factor'):
                         collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 2]
-                            for collocate, stats_files in colligations_stats_files.items()
+                            colligation: numpy.array(stats_files)[:, 2]
+                            for colligation, stats_files in colligations_stats_files.items()
                         }
                     elif settings['fig_settings']['use_data'] == col_text_effect_size:
                         collocates_stat_files = {
-                            collocate: numpy.array(stats_files)[:, 3]
-                            for collocate, stats_files in colligations_stats_files.items()
+                            colligation: numpy.array(stats_files)[:, 3]
+                            for colligation, stats_files in colligations_stats_files.items()
                         }
 
                     wl_figs_stats.wl_fig_stats(
@@ -935,10 +909,8 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 colligations_freqs_file = {}
                 colligations_freqs_file_all = {}
 
-                text = copy.deepcopy(file['text'])
-
-                text = wl_token_processing.wl_process_tokens_colligation_extractor(
-                    self.main, text,
+                text = wl_token_processing.wl_process_tokens(
+                    self.main, file['text'],
                     token_settings = settings['token_settings']
                 )
 
@@ -952,7 +924,6 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 search_terms = wl_matching.match_search_terms_ngrams(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     search_settings = settings['search_settings']
                 )
@@ -963,7 +934,6 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 ) = wl_matching.match_search_terms_context(
                     self.main, tokens,
                     lang = text.lang,
-                    tagged = text.tagged,
                     token_settings = settings['token_settings'],
                     context_settings = settings['context_settings']
                 )
@@ -978,7 +948,6 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 len_paras = len(offsets_paras)
                 len_sentences = len(offsets_sentences)
                 len_sentence_segs = len(offsets_sentence_segs)
-                len_tokens = len(tokens)
 
                 settings_limit_searching = settings['generation_settings']['limit_searching']
 
@@ -1001,27 +970,29 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                             i_unit = bisect.bisect(offsets_unit, i) - 1
 
                             i_unit_start = offsets_unit[i_unit]
-                            i_unit_end = offsets_unit[i_unit + 1] - 1 if i_unit < len_unit - 1 else len_tokens - 1
+                            i_unit_end = offsets_unit[i_unit + 1] - 1 if i_unit < len_unit - 1 else text.num_tokens - 1
 
                         # Extract collocates
                         tags_left = []
                         tags_right = []
 
+                        tags = wl_texts.to_tokens(wl_texts.get_token_properties(tokens, 'tag'), lang = file['lang'])
+
                         if window_left < 0 < window_right:
                             # Limit Searching
                             if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
-                                tags_left = text.tags[max(0, i + window_left) : i]
-                                tags_right = text.tags[i + ngram_size : i + ngram_size + window_right]
+                                tags_left = tags[max(0, i + window_left) : i]
+                                tags_right = tags[i + ngram_size : i + ngram_size + window_right]
                             else:
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), i):
                                     if i_unit_start <= position <= i_unit_end:
-                                        tags_left.append(text.tags[position])
+                                        tags_left.append(tags[position])
 
                                 # Span positions (Right)
                                 for position in range(i + ngram_size, i + ngram_size + window_right):
                                     if i_unit_start <= position <= i_unit_end:
-                                        tags_right.append(text.tags[position])
+                                        tags_right.append(tags[position])
 
                             for j, collocate in enumerate(reversed(tags_left)):
                                 if wl_matching.check_context(
@@ -1053,12 +1024,12 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         elif window_left < 0 and window_right < 0:
                             # Limit Searching
                             if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
-                                tags_left = text.tags[max(0, i + window_left) : max(0, i + window_right + 1)]
+                                tags_left = tags[max(0, i + window_left) : max(0, i + window_right + 1)]
                             else:
                                 # Span positions (Left)
                                 for position in range(max(0, i + window_left), max(0, i + window_right + 1)):
                                     if i_unit_start <= position <= i_unit_end:
-                                        tags_left.append(text.tags[position])
+                                        tags_left.append(tags[position])
 
                             for j, collocate in enumerate(reversed(tags_left)):
                                 if wl_matching.check_context(
@@ -1076,12 +1047,12 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                         elif window_left > 0 and window_right > 0:
                             # Limit Searching
                             if settings_limit_searching == _tr('wl_colligation_extractor', 'None'):
-                                tags_right = text.tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
+                                tags_right = tags[i + ngram_size + window_left - 1 : i + ngram_size + window_right]
                             else:
                                 # Span positions (Right)
                                 for position in range(i + ngram_size + window_left - 1, i + ngram_size + window_right):
                                     if i_unit_start <= position <= i_unit_end:
-                                        tags_right.append(text.tags[position])
+                                        tags_right.append(tags[position])
 
                             for j, collocate in enumerate(tags_right):
                                 if wl_matching.check_context(
@@ -1126,6 +1097,8 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                 colligations_freqs_total = {}
                 colligations_freqs_total_all = {}
 
+                texts.append(wl_texts.Wl_Text_Blank())
+
                 # Frequency
                 for colligations_freqs_file in self.colligations_freqs_files:
                     for colligation, freqs in colligations_freqs_file.items():
@@ -1133,6 +1106,7 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
                             colligations_freqs_total[colligation] = freqs
                         else:
                             colligations_freqs_total[colligation] = list(map(operator.add, colligations_freqs_total[colligation], freqs))
+
                 # Frequency (All)
                 for colligations_freqs_file_all in colligations_freqs_files_all:
                     for ngram_size, colligations_freqs in colligations_freqs_file_all.items():
@@ -1143,8 +1117,6 @@ class Wl_Worker_Colligation_Extractor(wl_threading.Wl_Worker):
 
                 self.colligations_freqs_files.append(colligations_freqs_total)
                 colligations_freqs_files_all.append(colligations_freqs_total_all)
-
-                texts.append(wl_texts.Wl_Text_Blank())
 
             test_statistical_significance = settings['generation_settings']['test_statistical_significance']
             measure_bayes_factor = settings['generation_settings']['measure_bayes_factor']
