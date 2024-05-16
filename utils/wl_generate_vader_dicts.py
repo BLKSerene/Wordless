@@ -36,7 +36,7 @@ def google_translate(words, lang_src, lang_tgt, chunk_size = 1000):
     for i in range(math.ceil(len(words) / chunk_size)):
         query = '\n'.join(words[i * chunk_size : (i + 1) * chunk_size])
         url = f"https://translate.googleapis.com/translate_a/single?client=gtx&sl={lang_src}&tl={lang_tgt}&dt=t&q={urllib.parse.quote(query)}"
-        r = requests.get(url, timeout = 10, proxies = {'https': 'http://127.0.0.1:10809'})
+        r = requests.get(url, timeout = 10)
 
         for item in r.json()[0]:
             results.append(re.sub(r'[\u200b-\u200d]+', '', item[0].strip()))

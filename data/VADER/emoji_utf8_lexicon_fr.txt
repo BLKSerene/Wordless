@@ -183,8 +183,8 @@
 👨‍⚕	homme, agent de santé
 👨🏻‍⚕️	agent de santé homme : peau claire
 👨🏻‍⚕	agent de santé homme : peau claire
-👨🏼‍⚕️	agent de santé homme : peau légèrement mate
-👨🏼‍⚕	agent de santé homme : peau légèrement mate
+👨🏼‍⚕️	agent de santé homme : peau légèrement mate
+👨🏼‍⚕	agent de santé homme : peau légèrement mate
 👨🏽‍⚕️	agent de santé homme : peau légèrement mate
 👨🏽‍⚕	agent de santé homme : peau légèrement mate
 👨🏾‍⚕️	agent de santé homme : peau légèrement mate
@@ -208,7 +208,7 @@
 👨🏼‍🎓	étudiant : peau moyennement claire
 👨🏽‍🎓	étudiant : peau légèrement mate
 👨🏾‍🎓	étudiant : peau légèrement mate
-👨🏿‍🎓	étudiant : peau foncée
+👨🏿‍🎓	étudiant : peau foncée
 👩‍🎓	étudiante
 👩🏻‍🎓	étudiante : peau claire
 👩🏼‍🎓	étudiante : peau légèrement mate
@@ -217,7 +217,7 @@
 👩🏿‍🎓	étudiante : peau foncée
 👨‍🏫	homme enseignant
 👨🏻‍🏫	professeur : peau claire
-👨🏼‍🏫	professeur : peau légèrement mate
+👨🏼‍🏫	professeur : peau moyennement claire
 👨🏽‍🏫	professeur : peau légèrement mate
 👨🏾‍🏫	professeur : peau légèrement mate
 👨🏿‍🏫	professeur : peau foncée
@@ -279,7 +279,7 @@
 👨🏻‍🔧	mécanicien homme : peau claire
 👨🏼‍🔧	mécanicien homme : peau légèrement mate
 👨🏽‍🔧	mécanicien homme : peau légèrement mate
-👨🏾‍🔧	mécanicien homme : peau légèrement mate
+👨🏾‍🔧	homme mécanicien : peau légèrement mate
 👨🏿‍🔧	mécanicien homme : peau foncée
 👩‍🔧	femme mécanicien
 👩🏻‍🔧	femme mécanicienne : peau claire
@@ -478,8 +478,8 @@
 💂🏽	garde : peau légèrement mate
 💂🏾	garde : peau légèrement mate
 💂🏿	garde : peau foncée
-💂‍♂️	homme garde
-💂‍♂	homme garde
+💂‍♂️	garde homme
+💂‍♂	garde homme
 💂🏻‍♂️	garde homme : peau claire
 💂🏻‍♂	garde homme : peau claire
 💂🏼‍♂️	garde homme : peau légèrement mate
@@ -594,7 +594,7 @@
 🧔🏿	personne barbue : peau foncée
 👱	personne aux cheveux blonds
 👱🏻	personne blonde : peau claire
-👱🏼	personne aux cheveux blonds : peau moyennement claire
+👱🏼	personne blonde : peau légèrement mate
 👱🏽	personne blonde : peau légèrement mate
 👱🏾	personne aux cheveux blonds : peau légèrement mate
 👱🏿	personne aux cheveux blonds : peau foncée
@@ -724,8 +724,8 @@
 🦸🏻‍♀	super-héros femme : peau claire
 🦸🏼‍♀️	femme super-héroïne : peau légèrement mate
 🦸🏼‍♀	femme super-héroïne : peau légèrement mate
-🦸🏽‍♀️	super-héros femme : peau légèrement mate
-🦸🏽‍♀	super-héros femme : peau légèrement mate
+🦸🏽‍♀️	super-héroïne femme : peau légèrement mate
+🦸🏽‍♀	super-héroïne femme : peau légèrement mate
 🦸🏾‍♀️	femme super-héroïne : peau légèrement mate
 🦸🏾‍♀	femme super-héroïne : peau légèrement mate
 🦸🏿‍♀️	super-héros femme : peau foncée
@@ -816,8 +816,8 @@
 🧚🏼‍♀	femme fée : peau légèrement mate
 🧚🏽‍♀️	fée femme : peau légèrement mate
 🧚🏽‍♀	fée femme : peau légèrement mate
-🧚🏾‍♀️	femme fée : peau légèrement mate
-🧚🏾‍♀	femme fée : peau légèrement mate
+🧚🏾‍♀️	fée femme : peau légèrement mate
+🧚🏾‍♀	fée femme : peau légèrement mate
 🧚🏿‍♀️	femme fée : peau foncée
 🧚🏿‍♀	femme fée : peau foncée
 🧚‍♂️	homme fée
@@ -1020,7 +1020,7 @@
 🙅🏽‍♀	femme faisant signe NON : peau légèrement mate
 🙅🏾‍♀️	femme faisant un geste NON : peau légèrement mate
 🙅🏾‍♀	femme faisant un geste NON : peau légèrement mate
-🙅🏿‍♀️	femme faisant signe NON : peau foncée
+🙅🏿‍♀️	femme faisant un geste NON : peau foncée
 🙅🏿‍♀	femme faisant signe NON : peau foncée
 🙆	personne qui fait signe OK
 🙆🏻	personne faisant un geste OK : peau claire
@@ -1344,7 +1344,7 @@
 🧖🏼	personne dans un hammam : peau légèrement mate
 🧖🏽	personne dans un hammam : peau légèrement mate
 🧖🏾	personne dans un hammam : peau légèrement mate
-🧖🏿	personne dans un hammam : peau foncée
+🧖🏿	personne dans un hammam : peau foncée
 🧖‍♀️	femme dans un hammam
 🧖‍♀	femme dans un hammam
 🧖🏻‍♀️	femme dans un hammam : peau claire
@@ -1458,7 +1458,7 @@
 🏇🏼	courses hippiques : peau moyennement claire
 🏇🏽	courses hippiques : peau légèrement mate
 🏇🏾	courses hippiques : peau légèrement mate
-🏇🏿	courses hippiques : peau foncée
+🏇🏿	courses de chevaux : peau foncée
 ⛷️	skieur
 ⛷	skieur
 🏂	snowboarder
@@ -1534,7 +1534,7 @@
 🏄🏿‍♀	femme surfant : peau foncée
 🚣	personne, bateau à rames
 🚣🏻	personne ramant un bateau : peau claire
-🚣🏼	personne ramant un bateau : peau légèrement mate
+🚣🏼	personne ramant sur un bateau : peau légèrement mate
 🚣🏽	personne ramant sur un bateau : peau légèrement mate
 🚣🏾	personne ramant sur un bateau : peau légèrement mate
 🚣🏿	personne ramant un bateau : peau foncée
@@ -1550,16 +1550,16 @@
 🚣🏾‍♂	homme ramant un bateau : peau légèrement mate
 🚣🏿‍♂️	homme ramant un bateau : peau foncée
 🚣🏿‍♂	homme ramant un bateau : peau foncée
-🚣‍♀️	bateau à rames femme
-🚣‍♀	bateau à rames femme
+🚣‍♀️	femme, bateau à rames
+🚣‍♀	femme, bateau à rames
 🚣🏻‍♀️	femme, bateau à rames : peau claire
 🚣🏻‍♀	femme, bateau à rames : peau claire
-🚣🏼‍♀️	femme ramant un bateau : peau légèrement mate
-🚣🏼‍♀	femme ramant un bateau : peau légèrement mate
+🚣🏼‍♀️	femme, bateau à rames : peau légèrement mate
+🚣🏼‍♀	femme, bateau à rames : peau légèrement mate
 🚣🏽‍♀️	femme, bateau à rames : peau légèrement mate
 🚣🏽‍♀	femme, bateau à rames : peau légèrement mate
-🚣🏾‍♀️	Femme ramant un bateau : peau légèrement mate
-🚣🏾‍♀	Femme ramant un bateau : peau légèrement mate
+🚣🏾‍♀️	femme, bateau à rames : peau légèrement mate
+🚣🏾‍♀	femme, bateau à rames : peau légèrement mate
 🚣🏿‍♀️	femme, bateau à rames : peau foncée
 🚣🏿‍♀	femme, bateau à rames : peau foncée
 🏊	personne qui nage
@@ -1572,7 +1572,7 @@
 🏊‍♂	homme nageant
 🏊🏻‍♂️	homme nageant : peau claire
 🏊🏻‍♂	homme nageant : peau claire
-🏊🏼‍♂️	homme nageant : peau légèrement mate
+🏊🏼‍♂️	homme nageant : peau moyennement claire
 🏊🏼‍♂	homme nageant : peau légèrement mate
 🏊🏽‍♂️	homme nageant : peau légèrement mate
 🏊🏽‍♂	homme nageant : peau légèrement mate
@@ -1594,7 +1594,7 @@
 🏊🏿‍♀	femme nageant : peau foncée
 ⛹️	personne qui fait rebondir une balle
 ⛹	personne qui fait rebondir une balle
-⛹🏻	personne qui rebondit sur une balle : peau claire
+⛹🏻	personne qui rebondit avec une balle : peau claire
 ⛹🏼	personne qui rebondit sur une balle : peau légèrement mate
 ⛹🏽	personne qui rebondit sur une balle : peau légèrement mate
 ⛹🏾	personne qui rebondit sur une balle : peau légèrement mate
@@ -1664,7 +1664,7 @@
 🏋🏿‍♀	femme soulevant des poids : peau foncée
 🚴	personne faisant du vélo
 🚴🏻	personne faisant du vélo : peau claire
-🚴🏼	personne faisant du vélo : peau moyennement claire
+🚴🏼	personne faisant du vélo : peau légèrement mate
 🚴🏽	personne faisant du vélo : peau légèrement mate
 🚴🏾	personne faisant du vélo : peau légèrement mate
 🚴🏿	personne faisant du vélo : peau foncée
@@ -1702,8 +1702,8 @@
 🚵‍♂	homme faisant du vélo de montagne
 🚵🏻‍♂️	homme VTT : peau claire
 🚵🏻‍♂	homme VTT : peau claire
-🚵🏼‍♂️	VTT homme : peau moyennement claire
-🚵🏼‍♂	VTT homme : peau moyennement claire
+🚵🏼‍♂️	homme faisant du VTT : peau moyennement claire
+🚵🏼‍♂	homme faisant du VTT : peau moyennement claire
 🚵🏽‍♂️	homme faisant du VTT : peau légèrement mate
 🚵🏽‍♂	homme faisant du VTT : peau légèrement mate
 🚵🏾‍♂️	homme faisant du VTT : peau légèrement mate
@@ -1791,7 +1791,7 @@
 🤽🏾‍♀	femme jouant au water-polo : peau légèrement mate
 🤽🏿‍♀️	femme jouant au water-polo : peau foncée
 🤽🏿‍♀	femme jouant au water-polo : peau foncée
-🤾	personne jouant au handball
+🤾	personne qui joue au handball
 🤾🏻	personne jouant au handball : peau claire
 🤾🏼	personne jouant au handball : peau légèrement mate
 🤾🏽	personne jouant au handball : peau légèrement mate
@@ -2034,10 +2034,10 @@
 🤛🏼	poing gauche : peau moyennement claire
 🤛🏽	poing gauche : peau légèrement mate
 🤛🏾	poing gauche : peau légèrement mate
-🤛🏿	poing orienté vers la gauche : peau foncée
+🤛🏿	poing vers la gauche : peau foncée
 🤜	poing vers la droite
 🤜🏻	poing droit : peau claire
-🤜🏼	poing droit : peau moyennement claire
+🤜🏼	poing droit : peau légèrement mate
 🤜🏽	poing droit : peau légèrement mate
 🤜🏾	poing droit : peau légèrement mate
 🤜🏿	poing droit : peau foncée
@@ -2062,7 +2062,7 @@
 ✍️	main qui écrit
 ✍	main qui écrit
 ✍🏻	main qui écrit : peau claire
-✍🏼	main qui écrit : peau moyennement claire
+✍🏼	main qui écrit : peau légèrement mate
 ✍🏽	main qui écrit : peau légèrement mate
 ✍🏾	main qui écrit : peau légèrement mate
 ✍🏿	main qui écrit : peau foncée
@@ -2083,9 +2083,9 @@
 🙌🏼	lever les mains : peau légèrement mate
 🙌🏽	lever la main : peau légèrement mate
 🙌🏾	lever les mains : peau légèrement mate
-🙌🏿	lever les mains : peau foncée
+🙌🏿	lever la main : peau foncée
 🤲	paumes vers le haut ensemble
-🤲🏻	paumes jointes : peau légèrement mate
+🤲🏻	paumes jointes : peau claire
 🤲🏼	paumes jointes : peau légèrement mate
 🤲🏽	paumes jointes : peau légèrement mate
 🤲🏾	paumes jointes : peau légèrement mate
@@ -2437,7 +2437,7 @@
 🍸	verre à cocktail
 🍹	boisson tropicale
 🍺	chope à Biere
-🍻	chopes à bière tintantes
+🍻	chopes à bière tintées
 🥂	tinter les verres
 🥃	verre à gobelet
 🥤	tasse avec de la paille
@@ -2710,7 +2710,7 @@
 🎍	décoration en pin
 🎎	poupées japonaises
 🎏	streamer de carpe
-🎐	carillon à vent
+🎐	carillon éolien
 🎑	cérémonie d'observation de la lune
 🧧	enveloppe rouge
 🎀	ruban
@@ -3064,8 +3064,8 @@
 ↩	flèche droite courbée vers la gauche
 ↪️	flèche gauche courbée vers la droite
 ↪	flèche gauche courbée vers la droite
-⤴️	flèche droite qui s'incurve vers le haut
-⤴	flèche droite qui s'incurve vers le haut
+⤴️	flèche droite s'incurvant vers le haut
+⤴	flèche droite s'incurvant vers le haut
 ⤵️	flèche droite courbée vers le bas
 ⤵	flèche droite courbée vers le bas
 🔃	flèches verticales dans le sens des aiguilles d'une montre
@@ -3140,7 +3140,7 @@
 🔅	bouton d'atténuation
 🔆	bouton lumineux
 📶	barres d'antenne
-📳	mode vibreur
+📳	mode vibration
 📴	téléphone portable éteint
 ♀️	signe féminin
 ♀	signe féminin
@@ -3172,8 +3172,8 @@
 ➗	signe de division lourde
 ➰	boucle bouclée
 ➿	double boucle bouclée
-〽️	marque d'alternance de pièce
-〽	marque d'alternance de pièce
+〽️	marque d'alternance de pièces
+〽	marque d'alternance de pièces
 ✳️	astérisque à huit branches
 ✳	astérisque à huit branches
 ✴️	étoile à huit branches
@@ -3203,27 +3203,27 @@
 0️⃣	touche : 0
 0⃣	touche : 0
 1️⃣	touche : 1
-1⃣	touche : 1
+1⃣	touche : 1
 2️⃣	touche : 2
 2⃣	touche : 2
 3️⃣	touche : 3
-3⃣	touche : 3
+3⃣	touche : 3
 4️⃣	touche : 4
 4⃣	touche : 4
 5️⃣	touche : 5
-5⃣	touche : 5
+5⃣	touche : 5
 6️⃣	touche: 6
 6⃣	touche: 6
 7️⃣	touche : 7
 7⃣	touche : 7
-8️⃣	touche : 8
-8⃣	touche : 8
+8️⃣	touche : 8
+8⃣	touche : 8
 9️⃣	touche : 9
 9⃣	touche : 9
-🔟	touche : 10
+🔟	touche : 10
 💯	cent points
 🔠	saisir une majuscule latine
-🔡	saisir des minuscules latines
+🔡	saisir une minuscule latine
 🔢	saisir des nombres
 🔣	symboles d'entrée
 🔤	saisir des lettres latines

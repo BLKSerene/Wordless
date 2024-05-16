@@ -254,7 +254,7 @@
 👨‍🌾	mężczyzna, rolnik
 👨🏻‍🌾	rolnik: karnacja jasna
 👨🏼‍🌾	mężczyzna rolnik: karnacja średnio jasna
-👨🏽‍🌾	mężczyzna rolnik: karnacja średnia
+👨🏽‍🌾	rolnik: karnacja średnia
 👨🏾‍🌾	mężczyzna rolnik: karnacja średnio ciemna
 👨🏿‍🌾	mężczyzna rolnik: karnacja ciemna
 👩‍🌾	kobieta, rolnik
@@ -265,9 +265,9 @@
 👩🏿‍🌾	kobieta-rolnik: karnacja ciemna
 👨‍🍳	mężczyzna kucharz
 👨🏻‍🍳	kucharz: karnacja jasna
-👨🏼‍🍳	kucharz: karnacja średnio jasna
+👨🏼‍🍳	mężczyzna kucharz: karnacja średnio jasna
 👨🏽‍🍳	kucharz: karnacja średnia
-👨🏾‍🍳	kucharz: karnacja średnio ciemna
+👨🏾‍🍳	mężczyzna kucharz: karnacja średnio ciemna
 👨🏿‍🍳	mężczyzna kucharz: karnacja ciemna
 👩‍🍳	kobieta, kucharz
 👩🏻‍🍳	kobieta kucharz: karnacja jasna
@@ -309,7 +309,7 @@
 👩🏻‍💼	pracownica biurowa: karnacja jasna
 👩🏼‍💼	pracownica biurowa: karnacja średnio jasna
 👩🏽‍💼	pracownica biurowa: karnacja średnia
-👩🏾‍💼	kobieta pracująca w biurze: karnacja średnio ciemna
+👩🏾‍💼	pracownica biurowa: karnacja średnio ciemna
 👩🏿‍💼	kobieta pracownica biurowa: karnacja ciemna
 👨‍🔬	człowiek-naukowiec
 👨🏻‍🔬	mężczyzna naukowiec: karnacja jasna
@@ -431,8 +431,8 @@
 👮🏻‍♀	kobieta policjant: karnacja jasna
 👮🏼‍♀️	kobieta policjant: karnacja średnio jasna
 👮🏼‍♀	kobieta policjant: karnacja średnio jasna
-👮🏽‍♀️	kobieta policjant: karnacja średnia
-👮🏽‍♀	kobieta policjant: karnacja średnia
+👮🏽‍♀️	policjantka: karnacja średnia
+👮🏽‍♀	policjantka: karnacja średnia
 👮🏾‍♀️	kobieta policjant: karnacja średnio ciemna
 👮🏾‍♀	kobieta policjant: karnacja średnio ciemna
 👮🏿‍♀️	kobieta policjant: karnacja ciemna
@@ -583,8 +583,8 @@
 🧕	kobieta z chustą
 🧕🏻	kobieta w chustce: karnacja jasna
 🧕🏼	kobieta w chustce: karnacja średnio jasna
-🧕🏽	kobieta w chustce na głowie: karnacja średnia
-🧕🏾	kobieta w chustce na głowie: karnacja średnio ciemna
+🧕🏽	kobieta w chustce: karnacja średnia
+🧕🏾	kobieta w chustce: karnacja średnio ciemna
 🧕🏿	kobieta w chustce na głowie: karnacja ciemna
 🧔	brodata osoba
 🧔🏻	osoba z brodą: karnacja jasna
@@ -632,7 +632,7 @@
 👩🏻‍🦰	kobieta o rudych włosach: karnacja jasna
 👩🏼‍🦰	kobieta, rude włosy: karnacja średnio jasna
 👩🏽‍🦰	kobieta o rudych włosach: karnacja średnia
-👩🏾‍🦰	kobieta o rudych włosach: karnacja średnio ciemna
+👩🏾‍🦰	kobieta, rude włosy: karnacja średnio ciemna
 👩🏿‍🦰	kobieta o rudych włosach: karnacja ciemna
 👨‍🦱	mężczyzna, kręcone włosy
 👨🏻‍🦱	mężczyzna, kręcone włosy: karnacja jasna
@@ -782,7 +782,7 @@
 🧙‍♀	kobieta, mag
 🧙🏻‍♀️	kobieta mag: karnacja jasna
 🧙🏻‍♀	kobieta mag: karnacja jasna
-🧙🏼‍♀️	kobieta-maga: karnacja średnio jasna
+🧙🏼‍♀️	kobieta mag: karnacja średnio jasna
 🧙🏼‍♀	kobieta-maga: karnacja średnio jasna
 🧙🏽‍♀️	kobieta-maga: karnacja średnia
 🧙🏽‍♀	kobieta-maga: karnacja średnia
@@ -862,7 +862,7 @@
 🧛🏾‍♂	mężczyzna wampir: karnacja średnio ciemna
 🧛🏿‍♂️	mężczyzna wampir: karnacja ciemna
 🧛🏿‍♂	mężczyzna wampir: karnacja ciemna
-🧜	syrenka
+🧜	syrena
 🧜🏻	merperson: karnacja jasna
 🧜🏼	merperson: karnacja średnio jasna
 🧜🏽	merperson: karnacja średnia
@@ -1028,8 +1028,8 @@
 🙆🏽	osoba gestykulująca OK: karnacja średnia
 🙆🏾	osoba gestykulująca OK: karnacja średnio ciemna
 🙆🏿	osoba gestem OK: karnacja ciemna
-🙆‍♂️	mężczyzna gestykuluje OK
-🙆‍♂	mężczyzna gestykuluje OK
+🙆‍♂️	mężczyzna gestem OK
+🙆‍♂	mężczyzna gestem OK
 🙆🏻‍♂️	mężczyzna gestem OK: karnacja jasna
 🙆🏻‍♂	mężczyzna gestem OK: karnacja jasna
 🙆🏼‍♂️	mężczyzna gestykulujący OK: karnacja średnio jasna
@@ -1113,7 +1113,7 @@
 🙋🏿‍♀️	kobieta podnosząca rękę: karnacja ciemna
 🙋🏿‍♀	kobieta podnosząca rękę: karnacja ciemna
 🙇	osoba kłaniająca się
-🙇🏻	kłaniająca się osoba: karnacja jasna
+🙇🏻	osoba kłaniająca się: karnacja jasna
 🙇🏼	kłaniająca się osoba: karnacja średnio jasna
 🙇🏽	kłaniająca się osoba: karnacja średnia
 🙇🏾	osoba się kłaniająca: karnacja średnio ciemna
@@ -1170,8 +1170,8 @@
 🤦🏽‍♀	kobieta facepalmująca: karnacja średnia
 🤦🏾‍♀️	kobieta facepalmująca: karnacja średnio ciemna
 🤦🏾‍♀	kobieta facepalmująca: karnacja średnio ciemna
-🤦🏿‍♀️	kobieta facepalmująca: karnacja ciemna
-🤦🏿‍♀	kobieta facepalmująca: karnacja ciemna
+🤦🏿‍♀️	kobieta facepalming: karnacja ciemna
+🤦🏿‍♀	kobieta facepalming: karnacja ciemna
 🤷	osoba wzruszająca ramionami
 🤷🏻	osoba wzruszająca ramionami: karnacja jasna
 🤷🏼	osoba wzruszająca ramionami: karnacja średnio jasna
@@ -1180,8 +1180,8 @@
 🤷🏿	osoba wzruszająca ramionami: karnacja ciemna
 🤷‍♂️	mężczyzna wzrusza ramionami
 🤷‍♂	mężczyzna wzrusza ramionami
-🤷🏻‍♂️	mężczyzna wzrusza ramionami: karnacja jasna
-🤷🏻‍♂	mężczyzna wzrusza ramionami: karnacja jasna
+🤷🏻‍♂️	mężczyzna wzruszający ramionami: karnacja jasna
+🤷🏻‍♂	mężczyzna wzruszający ramionami: karnacja jasna
 🤷🏼‍♂️	mężczyzna wzruszający ramionami: karnacja średnio jasna
 🤷🏼‍♂	mężczyzna wzruszający ramionami: karnacja średnio jasna
 🤷🏽‍♂️	mężczyzna wzruszający ramionami: karnacja średnia
@@ -1200,8 +1200,8 @@
 🤷🏽‍♀	kobieta wzruszająca ramionami: karnacja średnia
 🤷🏾‍♀️	kobieta wzruszająca ramionami: karnacja średnio ciemna
 🤷🏾‍♀	kobieta wzruszająca ramionami: karnacja średnio ciemna
-🤷🏿‍♀️	kobieta wzruszająca ramionami: karnacja ciemna
-🤷🏿‍♀	kobieta wzruszająca ramionami: karnacja ciemna
+🤷🏿‍♀️	kobieta wzrusza ramionami: karnacja ciemna
+🤷🏿‍♀	kobieta wzrusza ramionami: karnacja ciemna
 💆	osoba podczas masażu
 💆🏻	osoba podczas masażu: karnacja jasna
 💆🏼	osoba podczas masażu: karnacja średnio jasna
@@ -1306,10 +1306,10 @@
 🏃🏼‍♂	biegający mężczyzna: karnacja średnio jasna
 🏃🏽‍♂️	biegający mężczyzna: karnacja średnia
 🏃🏽‍♂	biegający mężczyzna: karnacja średnia
-🏃🏾‍♂️	biegnący mężczyzna: karnacja średnio ciemna
-🏃🏾‍♂	biegnący mężczyzna: karnacja średnio ciemna
-🏃🏿‍♂️	biegający mężczyzna: karnacja ciemna
-🏃🏿‍♂	biegający mężczyzna: karnacja ciemna
+🏃🏾‍♂️	biegający mężczyzna: karnacja średnio ciemna
+🏃🏾‍♂	biegający mężczyzna: karnacja średnio ciemna
+🏃🏿‍♂️	biegnący mężczyzna: karnacja ciemna
+🏃🏿‍♂	biegnący mężczyzna: karnacja ciemna
 🏃‍♀️	biegająca kobieta
 🏃‍♀	biegająca kobieta
 🏃🏻‍♀️	biegająca kobieta: karnacja jasna
@@ -1349,9 +1349,9 @@
 🧖‍♀	kobieta w zaparowanym pokoju
 🧖🏻‍♀️	kobieta w zaparowanym pomieszczeniu: karnacja jasna
 🧖🏻‍♀	kobieta w zaparowanym pomieszczeniu: karnacja jasna
-🧖🏼‍♀️	kobieta w zaparowanym pomieszczeniu: karnacja średnio jasna
-🧖🏼‍♀	kobieta w zaparowanym pomieszczeniu: karnacja średnio jasna
-🧖🏽‍♀️	kobieta w zaparowanym pomieszczeniu: karnacja średnia
+🧖🏼‍♀️	kobieta w zaparowanym pokoju: karnacja średnio jasna
+🧖🏼‍♀	kobieta w zaparowanym pokoju: karnacja średnio jasna
+🧖🏽‍♀️	kobieta w zaparowanym pokoju: karnacja średnia
 🧖🏽‍♀	kobieta w zaparowanym pomieszczeniu: karnacja średnia
 🧖🏾‍♀️	kobieta w zaparowanym pomieszczeniu: karnacja średnio ciemna
 🧖🏾‍♀	kobieta w zaparowanym pomieszczeniu: karnacja średnio ciemna
@@ -1359,14 +1359,14 @@
 🧖🏿‍♀	kobieta w zaparowanym pokoju: karnacja ciemna
 🧖‍♂️	mężczyzna w zaparowanym pokoju
 🧖‍♂	mężczyzna w zaparowanym pokoju
-🧖🏻‍♂️	mężczyzna w zaparowanym pomieszczeniu: karnacja jasna
-🧖🏻‍♂	mężczyzna w zaparowanym pomieszczeniu: karnacja jasna
-🧖🏼‍♂️	mężczyzna w zaparowanym pokoju: karnacja średnio jasna
-🧖🏼‍♂	mężczyzna w zaparowanym pokoju: karnacja średnio jasna
-🧖🏽‍♂️	mężczyzna w zaparowanym pokoju: karnacja średnia
+🧖🏻‍♂️	mężczyzna w zaparowanym pokoju: karnacja jasna
+🧖🏻‍♂	mężczyzna w zaparowanym pokoju: karnacja jasna
+🧖🏼‍♂️	mężczyzna w zaparowanym pomieszczeniu: karnacja średnio jasna
+🧖🏼‍♂	mężczyzna w zaparowanym pomieszczeniu: karnacja średnio jasna
+🧖🏽‍♂️	mężczyzna w zaparowanym pomieszczeniu: karnacja średnia
 🧖🏽‍♂	mężczyzna w zaparowanym pokoju: karnacja średnia
-🧖🏾‍♂️	mężczyzna w zaparowanym pokoju: karnacja średnio ciemna
-🧖🏾‍♂	mężczyzna w zaparowanym pokoju: karnacja średnio ciemna
+🧖🏾‍♂️	mężczyzna w zaparowanym pomieszczeniu: karnacja średnio ciemna
+🧖🏾‍♂	mężczyzna w zaparowanym pomieszczeniu: karnacja średnio ciemna
 🧖🏿‍♂️	mężczyzna w zaparowanym pokoju: karnacja ciemna
 🧖🏿‍♂	mężczyzna w zaparowanym pokoju: karnacja ciemna
 🧗	osoba wspinająca się
@@ -1452,7 +1452,7 @@
 🗣	mówiąca głowa
 👤	biust w sylwetce
 👥	biusty w sylwetce
-🤺	ogrodzenie osoby
+🤺	szermierka osobista
 🏇	wyścigi konne
 🏇🏻	wyścigi konne: karnacja jasna
 🏇🏼	wyścigi konne: karnacja średnio jasna
@@ -1542,8 +1542,8 @@
 🚣‍♂	mężczyzna, łódź wiosłowa
 🚣🏻‍♂️	mężczyzna wiosłujący na łodzi: karnacja jasna
 🚣🏻‍♂	mężczyzna wiosłujący na łodzi: karnacja jasna
-🚣🏼‍♂️	mężczyzna wiosłujący na łodzi: karnacja średnio jasna
-🚣🏼‍♂	mężczyzna wiosłujący na łodzi: karnacja średnio jasna
+🚣🏼‍♂️	mężczyzna wiosłujący w łodzi: karnacja średnio jasna
+🚣🏼‍♂	mężczyzna wiosłujący w łodzi: karnacja średnio jasna
 🚣🏽‍♂️	mężczyzna wiosłujący na łodzi: karnacja średnia
 🚣🏽‍♂	mężczyzna wiosłujący na łodzi: karnacja średnia
 🚣🏾‍♂️	mężczyzna wiosłujący w łodzi: karnacja średnio ciemna
@@ -1754,8 +1754,8 @@
 🤸🏽‍♀	kobieta na kołach: karnacja średnia
 🤸🏾‍♀️	kobieta na kołach: karnacja średnio ciemna
 🤸🏾‍♀	kobieta na kołach: karnacja średnio ciemna
-🤸🏿‍♀️	kobieta na wózku: karnacja ciemna
-🤸🏿‍♀	kobieta na wózku: karnacja ciemna
+🤸🏿‍♀️	kobieta na kołach: karnacja ciemna
+🤸🏿‍♀	kobieta na kołach: karnacja ciemna
 🤼	ludzie walczą
 🤼‍♂️	mężczyźni walczący
 🤼‍♂	mężczyźni walczący
@@ -1889,8 +1889,8 @@
 👨‍👧	rodzina: mężczyzna, dziewczyna
 👨‍👧‍👦	rodzina: mężczyzna, dziewczynka, chłopiec
 👨‍👧‍👧	rodzina: mężczyzna, dziewczyna, dziewczyna
-👩‍👦	rodzina: kobieta, chłopiec
-👩‍👦‍👦	rodzina: kobieta, chłopak, chłopak
+👩‍👦	rodzina: kobieta, chłopak
+👩‍👦‍👦	rodzina: kobieta, chłopak, chłopiec
 👩‍👧	rodzina: kobieta, dziewczynka
 👩‍👧‍👦	rodzina: kobieta, dziewczynka, chłopak
 👩‍👧‍👧	rodzina: kobieta, dziewczyna, dziewczyna
@@ -1957,7 +1957,7 @@
 👇🏿	dłoń z indeksem skierowanym w dół: karnacja ciemna
 ✌️	ręka zwycięstwa
 ✌	ręka zwycięstwa
-✌🏻	dłoń zwycięstwa: karnacja jasna
+✌🏻	ręka zwycięstwa: karnacja jasna
 ✌🏼	dłoń zwycięstwa: karnacja średnio jasna
 ✌🏽	ręka zwycięstwa: karnacja średnia
 ✌🏾	dłoń zwycięstwa: karnacja średnio ciemna
@@ -2007,16 +2007,16 @@
 👌🏿	Ręka OK: ciemna karnacja
 👍	kciuki w górę
 👍🏻	kciuk w górę: karnacja jasna
-👍🏼	kciuk w górę: karnacja średnio jasna
+👍🏼	kciuki do góry: karnacja średnio jasna
 👍🏽	kciuk w górę: karnacja średnia
-👍🏾	kciuk w górę: karnacja średnio ciemna
+👍🏾	kciuki do góry: karnacja średnio ciemna
 👍🏿	kciuk w górę: karnacja ciemna
 👎	kciuk w dół
 👎🏻	kciuk w dół: karnacja jasna
 👎🏼	kciuk w dół: karnacja średnio jasna
 👎🏽	kciuki w dół: karnacja średnia
 👎🏾	kciuk w dół: karnacja średnio ciemna
-👎🏿	kciuk w dół: karnacja ciemna
+👎🏿	kciuk w dół: ciemna karnacja
 ✊	podniesiona pięść
 ✊🏻	podniesiona pięść: karnacja jasna
 ✊🏼	podniesiona pięść: karnacja średnio jasna
@@ -2064,7 +2064,7 @@
 ✍🏻	pisząca dłoń: karnacja jasna
 ✍🏼	pisząca dłoń: karnacja średnio jasna
 ✍🏽	pisząca dłoń: karnacja średnia
-✍🏾	dłoń pisząca: karnacja średnio ciemna
+✍🏾	pisząca dłoń: karnacja średnio ciemna
 ✍🏿	pisząca dłoń: karnacja ciemna
 👏	Klaskanie
 👏🏻	klaskanie w dłonie: karnacja jasna
@@ -2404,7 +2404,7 @@
 🍜	miska do gotowania na parze
 🍝	Spaghetti
 🍠	pieczony słodki ziemniak
-🍢	oden
+🍢	Oden
 🍣	Sushi
 🍤	smażone krewetki
 🍥	ciasto rybne z wirowaniem
@@ -2448,7 +2448,7 @@
 🥄	łyżka
 🔪	nóż kuchenny
 🏺	amfora
-🌍	kula ziemska przedstawiająca Europę-Afrykę
+🌍	kula ziemska przedstawiająca Europę i Afrykę
 🌎	kula ziemska pokazująca Amerykę
 🌏	kula ziemska przedstawiająca Azję i Australię
 🌐	kula ziemska z meridianami
@@ -3460,7 +3460,7 @@
 🇲🇱	Mali
 🇲🇲	Birma (Birma)
 🇲🇳	Mongolia
-🇲🇴	Makau SRA Chiny
+🇲🇴	Makau SAR Chiny
 🇲🇵	Mariany Północne
 🇲🇶	Martynika
 🇲🇷	Mauretania

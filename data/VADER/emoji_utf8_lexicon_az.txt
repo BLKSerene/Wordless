@@ -1,7 +1,7 @@
 😀	gülən üz
 😁	gülən gözlərlə nur saçan üz
 😂	sevinc göz yaşları ilə üz
-🤣	yerə yuvarlanaraq gülür
+🤣	gülərək yerdə yuvarlanır
 😃	iri gözləri ilə gülümsəyən üz
 😄	gülümsəyən gözlərlə gülümsəyən üz
 😅	tərlə gülən üz
@@ -162,7 +162,7 @@
 👩🏾	qadın: orta-tünd dəri tonu
 👩🏿	qadın: tünd dəri tonu
 🧓	yaşlı yetkin
-🧓🏻	yaşlı yetkin: açıq dəri tonu
+🧓🏻	yaşlı: açıq dəri tonu
 🧓🏼	yaşlı: orta-açıq dəri tonu
 🧓🏽	yaşlı: orta dəri tonu
 🧓🏾	yaşlı yetkin: orta-tünd dəri tonu
@@ -444,10 +444,10 @@
 🕵🏽	detektiv: orta dəri tonu
 🕵🏾	detektiv: orta-tünd dəri tonu
 🕵🏿	detektiv: tünd dəri tonu
-🕵️‍♂️	adam detektiv
-🕵‍♂️	adam detektiv
-🕵️‍♂	adam detektiv
-🕵‍♂	adam detektiv
+🕵️‍♂️	kişi detektiv
+🕵‍♂️	kişi detektiv
+🕵️‍♂	kişi detektiv
+🕵‍♂	kişi detektiv
 🕵🏻‍♂️	kişi detektiv: açıq dəri tonu
 🕵🏻‍♂	kişi detektiv: açıq dəri tonu
 🕵🏼‍♂️	kişi detektiv: orta-açıq dəri tonu
@@ -473,9 +473,9 @@
 🕵🏿‍♀️	qadın detektiv: tünd dəri tonu
 🕵🏿‍♀	qadın detektiv: tünd dəri tonu
 💂	gözətçi
-💂🏻	gözətçi: açıq dəri tonu
+💂🏻	qoruyucu: açıq dəri tonu
 💂🏼	gözətçi: orta-açıq dəri tonu
-💂🏽	qoruyucu: orta dəri tonu
+💂🏽	gözətçi: orta dəri tonu
 💂🏾	gözətçi: orta-tünd dəri tonu
 💂🏿	qoruyucu: tünd dəri tonu
 💂‍♂️	adam qoruyucu
@@ -592,7 +592,7 @@
 🧔🏽	saqqallı adam: orta dəri tonu
 🧔🏾	saqqallı adam: orta-tünd dəri tonu
 🧔🏿	saqqallı adam: tünd dəri tonu
-👱	sarışın adam
+👱	sarı saçlı adam
 👱🏻	sarışın: açıq dəri tonu
 👱🏼	sarışın: orta-açıq dəri tonu
 👱🏽	sarışın: orta dəri tonu
@@ -640,7 +640,7 @@
 👨🏽‍🦱	kişi, buruq saçlı: orta dəri tonu
 👨🏾‍🦱	kişi, buruq saçlı: orta-tünd dəri tonu
 👨🏿‍🦱	kişi, buruq saçlı: tünd dəri tonu
-👩‍🦱	buruq saçlı qadın
+👩‍🦱	qadın, buruq saçlı
 👩🏻‍🦱	qadın, buruq saçlı: açıq dəri tonu
 👩🏼‍🦱	qadın, buruq saçlı: orta-açıq dəri tonu
 👩🏽‍🦱	qadın, buruq saçlı: orta dəri tonu
@@ -677,8 +677,8 @@
 🤵🏾	smokinli kişi: orta-tünd dəri tonu
 🤵🏿	smokinli kişi: tünd dəri tonu
 👰	duvaqlı gəlin
-👰🏻	duvaqlı gəlin: açıq dəri tonu
-👰🏼	duvaqlı gəlin: orta-açıq dəri tonu
+👰🏻	pərdəli gəlin: açıq dəri tonu
+👰🏼	pərdəli gəlin: orta-açıq dəri tonu
 👰🏽	duvaqlı gəlin: orta dəri tonu
 👰🏾	duvaqlı gəlin: orta-tünd dəri tonu
 👰🏿	duvaqlı gəlin: tünd dəri tonu
@@ -701,7 +701,7 @@
 👼🏾	körpə mələk: orta-tünd dəri tonu
 👼🏿	körpə mələk: tünd dəri tonu
 🎅	Şaxta baba
-🎅🏻	Santa Claus: açıq dəri tonu
+🎅🏻	Santa Klaus: açıq dəri tonu
 🎅🏼	Santa Klaus: orta-açıq dəri tonu
 🎅🏽	Santa Klaus: orta dəri tonu
 🎅🏾	Santa Klaus: orta-tünd dəri tonu
@@ -729,7 +729,7 @@
 🦸🏾‍♀️	qadın superqəhrəman: orta-tünd dəri tonu
 🦸🏾‍♀	qadın superqəhrəman: orta-tünd dəri tonu
 🦸🏿‍♀️	qadın superqəhrəman: tünd dəri tonu
-🦸🏿‍♀	qadın superqəhrəman: tünd dəri tonu
+🦸🏿‍♀	qadın super qəhrəman: tünd dəri tonu
 🦸‍♂️	kişi super qəhrəman
 🦸‍♂	kişi super qəhrəman
 🦸🏻‍♂️	super qəhrəman kişi: açıq dəri tonu
@@ -964,9 +964,9 @@
 🙍🏿‍♀	qaşqabaqlı qadın: tünd dəri tonu
 🙎	somurtan adam
 🙎🏻	somurtan adam: açıq dəri tonu
-🙎🏼	somurtan adam: orta-açıq dəri tonu
+🙎🏼	somurtkan: orta-açıq dəri tonu
 🙎🏽	somurtan adam: orta dəri tonu
-🙎🏾	somurtan adam: orta-tünd dəri tonu
+🙎🏾	somurtkan: orta-tünd dəri tonu
 🙎🏿	somurtan adam: tünd dəri tonu
 🙎‍♂️	somurtan adam
 🙎‍♂	somurtan adam
@@ -976,11 +976,11 @@
 🙎🏼‍♂	somurtan kişi: orta-açıq dəri tonu
 🙎🏽‍♂️	somurtan kişi: orta dəri tonu
 🙎🏽‍♂	somurtan kişi: orta dəri tonu
-🙎🏾‍♂️	somurtkan kişi: orta-tünd dəri tonu
-🙎🏾‍♂	somurtkan kişi: orta-tünd dəri tonu
+🙎🏾‍♂️	somurtan kişi: orta-tünd dəri tonu
+🙎🏾‍♂	somurtan kişi: orta-tünd dəri tonu
 🙎🏿‍♂️	somurtan kişi: tünd dəri tonu
 🙎🏿‍♂	somurtan kişi: tünd dəri tonu
-🙎‍♀️	somurtlayan qadın
+🙎‍♀️	qadın süzür
 🙎‍♀	somurtlayan qadın
 🙎🏻‍♀️	somurtan qadın: açıq dəri tonu
 🙎🏻‍♀	somurtan qadın: açıq dəri tonu
@@ -994,9 +994,9 @@
 🙎🏿‍♀	somurtan qadın: tünd dəri tonu
 🙅	YOX işarəsi ilə adam
 🙅🏻	YOX işarəsi göstərən şəxs: açıq dəri tonu
-🙅🏼	YOX işarəsi edən şəxs: orta-açıq dəri tonu
+🙅🏼	YOX işarəsi göstərən şəxs: orta-açıq dəri tonu
 🙅🏽	YOX işarəsi göstərən şəxs: orta dəri tonu
-🙅🏾	YOX işarəsi göstərən şəxs: orta-tünd dəri tonu
+🙅🏾	YOX işarəsi edən şəxs: orta-tünd dəri tonu
 🙅🏿	YOX işarəsi göstərən şəxs: tünd dəri tonu
 🙅‍♂️	kişi YOX işarəsi ilə
 🙅‍♂	kişi YOX işarəsi ilə
@@ -1018,13 +1018,13 @@
 🙅🏼‍♀	YOX işarəsi göstərən qadın: orta-açıq dəri tonu
 🙅🏽‍♀️	YOX işarəsi göstərən qadın: orta dəri tonu
 🙅🏽‍♀	YOX işarəsi göstərən qadın: orta dəri tonu
-🙅🏾‍♀️	YOX işarəsi verən qadın: orta-tünd dəri tonu
-🙅🏾‍♀	YOX işarəsi verən qadın: orta-tünd dəri tonu
+🙅🏾‍♀️	YOX işarəsi göstərən qadın: orta-tünd dəri tonu
+🙅🏾‍♀	YOX işarəsi göstərən qadın: orta-tünd dəri tonu
 🙅🏿‍♀️	YOX işarəsi ilə qadın: tünd dəri tonu
-🙅🏿‍♀	YOX işarəsi ilə qadın: tünd dəri tonu
+🙅🏿‍♀	qadın YOX işarəsi ilə: tünd dəri tonu
 🙆	adam OK işarəsi ilə
 🙆🏻	OK işarəsi edən şəxs: açıq dəri tonu
-🙆🏼	"OK" işarəsi verən şəxs: orta-açıq dəri tonu
+🙆🏼	OK işarəsi edən şəxs: orta-açıq dəri tonu
 🙆🏽	OK işarəsi edən şəxs: orta dəri tonu
 🙆🏾	OK işarəsi edən şəxs: orta-tünd dəri tonu
 🙆🏿	OK işarəsi edən şəxs: tünd dəri tonu
@@ -1037,15 +1037,15 @@
 🙆🏽‍♂️	OK jesti ilə kişi: orta dəri tonu
 🙆🏽‍♂	OK jesti ilə kişi: orta dəri tonu
 🙆🏾‍♂️	OK işarəsi edən kişi: orta-tünd dəri tonu
-🙆🏾‍♂	OK işarəsi edən kişi: orta-tünd dəri tonu
-🙆🏿‍♂️	OK jesti ilə kişi: tünd dəri tonu
-🙆🏿‍♂	OK jesti ilə kişi: tünd dəri tonu
+🙆🏾‍♂	OK işarəsi verən kişi: orta-tünd dəri tonu
+🙆🏿‍♂️	OK işarəsi edən kişi: tünd dəri tonu
+🙆🏿‍♂	OK işarəsi edən kişi: tünd dəri tonu
 🙆‍♀️	qadın OK işarəsi ilə
 🙆‍♀	qadın OK işarəsi ilə
 🙆🏻‍♀️	OK jesti ilə qadın: açıq dəri tonu
 🙆🏻‍♀	OK jesti ilə qadın: açıq dəri tonu
-🙆🏼‍♀️	OK işarəsi edən qadın: orta-açıq dəri tonu
-🙆🏼‍♀	OK işarəsi edən qadın: orta-açıq dəri tonu
+🙆🏼‍♀️	OK jesti ilə qadın: orta-açıq dəri tonu
+🙆🏼‍♀	OK jesti ilə qadın: orta-açıq dəri tonu
 🙆🏽‍♀️	OK jesti ilə qadın: orta dəri tonu
 🙆🏽‍♀	OK jesti ilə qadın: orta dəri tonu
 🙆🏾‍♀️	OK işarəsi edən qadın: orta-tünd dəri tonu
@@ -1115,7 +1115,7 @@
 🙇	adam baş əyir
 🙇🏻	təzim edən şəxs: açıq dəri tonu
 🙇🏼	təzim edən şəxs: orta-açıq dəri tonu
-🙇🏽	baş əyən adam: orta dəri tonu
+🙇🏽	təzim edən şəxs: orta dəri tonu
 🙇🏾	təzim edən şəxs: orta-tünd dəri tonu
 🙇🏿	baş əyən adam: tünd dəri tonu
 🙇‍♂️	adam baş əyir
@@ -1155,23 +1155,23 @@
 🤦🏼‍♂️	kişi üzü: orta-açıq dəri tonu
 🤦🏼‍♂	kişi üzü: orta-açıq dəri tonu
 🤦🏽‍♂️	kişi üzünə: orta dəri tonu
-🤦🏽‍♂	kişi üzünə: orta dəri tonu
-🤦🏾‍♂️	kişi üzü: orta-tünd dəri tonu
-🤦🏾‍♂	kişi üzü: orta-tünd dəri tonu
+🤦🏽‍♂	kişi üzünü ovuşdurur: orta dəri tonu
+🤦🏾‍♂️	kişi üzünü ovuşdurur: orta-tünd dəri tonu
+🤦🏾‍♂	kişi üzünü ovuşdurur: orta-tünd dəri tonu
 🤦🏿‍♂️	kişi üzü: tünd dəri tonu
 🤦🏿‍♂	kişi üzü: tünd dəri tonu
 🤦‍♀️	qadın üzünü ovuşdurur
 🤦‍♀	qadın üzünü ovuşdurur
-🤦🏻‍♀️	qadın üzünə: açıq dəri tonu
-🤦🏻‍♀	qadın üzünə: açıq dəri tonu
+🤦🏻‍♀️	qadın üzünü ovuşdurur: açıq dəri tonu
+🤦🏻‍♀	qadın üzünü ovuşdurur: açıq dəri tonu
 🤦🏼‍♀️	qadın üzünü ovuşdurur: orta-açıq dəri tonu
 🤦🏼‍♀	qadın üzünü ovuşdurur: orta-açıq dəri tonu
 🤦🏽‍♀️	qadın üzünə: orta dəri tonu
 🤦🏽‍♀	qadın üzünə: orta dəri tonu
 🤦🏾‍♀️	qadın üzü: orta-tünd dəri tonu
-🤦🏾‍♀	qadın üzü: orta-tünd dəri tonu
-🤦🏿‍♀️	qadın üzünü ovuşdurur: tünd dəri tonu
-🤦🏿‍♀	qadın üzünü ovuşdurur: tünd dəri tonu
+🤦🏾‍♀	qadın üzünü ovuşdurur: orta-tünd dəri tonu
+🤦🏿‍♀️	qadın üzünə: tünd dəri tonu
+🤦🏿‍♀	qadın üzünə: tünd dəri tonu
 🤷	çiyinlərini çəkən adam
 🤷🏻	çiyinlərini çəkən adam: açıq dəri tonu
 🤷🏼	çiyinlərini çəkən adam: orta-açıq dəri tonu
@@ -1552,12 +1552,12 @@
 🚣🏿‍♂	avarçəkən qayıq: tünd dəri tonu
 🚣‍♀️	qadın avarçəkən qayıq
 🚣‍♀	qadın avarçəkən qayıq
-🚣🏻‍♀️	qadın avarçəkən qayıq: açıq dəri tonu
-🚣🏻‍♀	qadın avarçəkən qayıq: açıq dəri tonu
+🚣🏻‍♀️	qadın qayıq: açıq dəri tonu
+🚣🏻‍♀	qadın qayıq: açıq dəri tonu
 🚣🏼‍♀️	qadın qayıq: orta-açıq dəri tonu
 🚣🏼‍♀	qadın qayıq: orta-açıq dəri tonu
-🚣🏽‍♀️	qadın avarçəkən qayıq: orta dəri tonu
-🚣🏽‍♀	qadın avarçəkən qayıq: orta dəri tonu
+🚣🏽‍♀️	qadın qayıq: orta dəri tonu
+🚣🏽‍♀	qadın qayıq: orta dəri tonu
 🚣🏾‍♀️	qadın qayıq: orta-tünd dəri tonu
 🚣🏾‍♀	qadın qayıq: orta-tünd dəri tonu
 🚣🏿‍♀️	avarçəkən qadın: tünd dəri tonu
@@ -1623,7 +1623,7 @@
 ⛹🏼‍♀	top sıçrayan qadın: orta-açıq dəri tonu
 ⛹🏽‍♀️	top sıçrayan qadın: orta dəri tonu
 ⛹🏽‍♀	top sıçrayan qadın: orta dəri tonu
-⛹🏾‍♀️	topu sıçrayan qadın: orta-tünd dəri tonu
+⛹🏾‍♀️	top sıçrayan qadın: orta-tünd dəri tonu
 ⛹🏾‍♀	topu sıçrayan qadın: orta-tünd dəri tonu
 ⛹🏿‍♀️	topu sıçrayan qadın: tünd dəri tonu
 ⛹🏿‍♀	topu sıçrayan qadın: tünd dəri tonu
@@ -1652,8 +1652,8 @@
 🏋‍♀️	ağırlıq qaldıran qadın
 🏋️‍♀	ağırlıq qaldıran qadın
 🏋‍♀	ağırlıq qaldıran qadın
-🏋🏻‍♀️	ağırlıq qaldıran qadın: açıq dəri tonu
-🏋🏻‍♀	ağırlıq qaldıran qadın: açıq dəri tonu
+🏋🏻‍♀️	çəki qaldıran qadın: açıq dəri tonu
+🏋🏻‍♀	çəki qaldıran qadın: açıq dəri tonu
 🏋🏼‍♀️	ağırlıq qaldıran qadın: orta-açıq dəri tonu
 🏋🏼‍♀	ağırlıq qaldıran qadın: orta-açıq dəri tonu
 🏋🏽‍♀️	çəki qaldıran qadın: orta dəri tonu
@@ -1665,7 +1665,7 @@
 🚴	velosiped sürən adam
 🚴🏻	velosiped sürən şəxs: açıq dəri tonu
 🚴🏼	velosiped sürən şəxs: orta-açıq dəri tonu
-🚴🏽	velosiped sürən şəxs: orta dəri tonu
+🚴🏽	velosiped sürən adam: orta dəri tonu
 🚴🏾	velosiped sürən şəxs: orta-tünd dəri tonu
 🚴🏿	velosiped sürən şəxs: tünd dəri tonu
 🚴‍♂️	velosiped sürən adam
@@ -1692,7 +1692,7 @@
 🚴🏾‍♀	velosiped sürən qadın: orta-tünd dəri tonu
 🚴🏿‍♀️	velosiped sürən qadın: tünd dəri tonu
 🚴🏿‍♀	velosiped sürən qadın: tünd dəri tonu
-🚵	dağ velosipedi sürən adam
+🚵	dağ velosipedi sürən şəxs
 🚵🏻	dağ velosipedi: açıq dəri tonu
 🚵🏼	dağ velosipedi: orta-açıq dəri tonu
 🚵🏽	dağ velosipedi: orta dəri tonu
@@ -1704,19 +1704,19 @@
 🚵🏻‍♂	dağ velosipedi: açıq dəri tonu
 🚵🏼‍♂️	kişi dağ velosipedi: orta-açıq dəri tonu
 🚵🏼‍♂	kişi dağ velosipedi: orta-açıq dəri tonu
-🚵🏽‍♂️	dağ velosipedi sürən kişi: orta dəri tonu
-🚵🏽‍♂	dağ velosipedi sürən kişi: orta dəri tonu
+🚵🏽‍♂️	kişi dağ velosipedi: orta dəri tonu
+🚵🏽‍♂	kişi dağ velosipedi: orta dəri tonu
 🚵🏾‍♂️	kişi dağ velosipedi: orta-tünd dəri tonu
 🚵🏾‍♂	kişi dağ velosipedi: orta-tünd dəri tonu
-🚵🏿‍♂️	dağ velosipedi sürən kişi: tünd dəri tonu
-🚵🏿‍♂	dağ velosipedi sürən kişi: tünd dəri tonu
+🚵🏿‍♂️	kişi dağ velosipedi: tünd dəri tonu
+🚵🏿‍♂	kişi dağ velosipedi: tünd dəri tonu
 🚵‍♀️	qadın dağ velosipedi
 🚵‍♀	qadın dağ velosipedi
 🚵🏻‍♀️	qadın dağ velosipedi: açıq dəri tonu
 🚵🏻‍♀	qadın dağ velosipedi: açıq dəri tonu
 🚵🏼‍♀️	dağ velosipedçisi qadın: orta-açıq dəri tonu
 🚵🏼‍♀	dağ velosipedçisi qadın: orta-açıq dəri tonu
-🚵🏽‍♀️	dağ velosipedçisi qadın: orta dəri tonu
+🚵🏽‍♀️	qadın dağ velosipedi: orta dəri tonu
 🚵🏽‍♀	dağ velosipedçisi qadın: orta dəri tonu
 🚵🏾‍♀️	dağ velosipedçisi qadın: orta-tünd dəri tonu
 🚵🏾‍♀	dağ velosipedçisi qadın: orta-tünd dəri tonu
@@ -1748,8 +1748,8 @@
 🤸‍♀	araba sürən qadın
 🤸🏻‍♀️	qadın arabası: açıq dəri tonu
 🤸🏻‍♀	qadın arabası: açıq dəri tonu
-🤸🏼‍♀️	qadın cartwheeling: orta-açıq dəri tonu
-🤸🏼‍♀	qadın cartwheeling: orta-açıq dəri tonu
+🤸🏼‍♀️	qadın arabası: orta-açıq dəri tonu
+🤸🏼‍♀	qadın arabası: orta-açıq dəri tonu
 🤸🏽‍♀️	qadın arabası: orta dəri tonu
 🤸🏽‍♀	qadın arabası: orta dəri tonu
 🤸🏾‍♀️	qadın cartwheeling: orta-tünd dəri tonu
@@ -1826,7 +1826,7 @@
 🤹🏼	hoqqabaz: orta-açıq dəri tonu
 🤹🏽	hoqqabaz: orta dəri tonu
 🤹🏾	hoqqabazlıq edən şəxs: orta-tünd dəri tonu
-🤹🏿	hoqqabaz: tünd dəri tonu
+🤹🏿	hoqqabazlıq edən şəxs: tünd dəri tonu
 🤹‍♂️	hoqqabazlıq edən adam
 🤹‍♂	hoqqabazlıq edən adam
 🤹🏻‍♂️	hoqqabazlıq edən kişi: açıq dəri tonu
@@ -1930,19 +1930,19 @@
 👉🏽	sağ əlin işarəsi: orta dəri tonu
 👉🏾	sağ əlin işarəsi: orta-tünd dəri tonu
 👉🏿	sağ əlin işarəsi: tünd dəri tonu
-☝️	yuxarıya işarə edən indeks
-☝	yuxarıya işarə edən indeks
+☝️	indeksi yuxarı göstərir
+☝	indeksi yuxarı göstərir
 ☝🏻	yuxarı göstərən indeks: açıq dəri tonu
 ☝🏼	yuxarı göstərən indeks: orta-açıq dəri tonu
 ☝🏽	yuxarı göstərən indeks: orta dəri tonu
 ☝🏾	yuxarı göstərən indeks: orta-tünd dəri tonu
 ☝🏿	yuxarı göstərən indeks: tünd dəri tonu
 👆	yuxarıya işarə edən arxa əl indeksi
-👆🏻	əlin yuxarı göstəricisi: açıq dəri tonu
+👆🏻	yuxarıya baxan əlin işarəsi: açıq dəri tonu
 👆🏼	yuxarıya baxan əlin işarəsi: orta-açıq dəri tonu
 👆🏽	yuxarıya baxan əlin işarəsi: orta dəri tonu
-👆🏾	yuxarıya baxan arxa əl indeksi: orta-tünd dəri tonu
-👆🏿	əlin yuxarı göstəricisi: tünd dəri tonu
+👆🏾	yuxarıya baxan əlin işarəsi: orta-tünd dəri tonu
+👆🏿	yuxarıya baxan əlin işarəsi: tünd dəri tonu
 🖕	orta barmaq
 🖕🏻	orta barmaq: açıq dəri tonu
 🖕🏼	orta barmaq: orta-açıq dəri tonu
@@ -1953,7 +1953,7 @@
 👇🏻	arxa əlin göstəricisi aşağı baxır: açıq dəri tonu
 👇🏼	arxa tərəfdən aşağıya doğru işarəsi: orta-açıq dəri tonu
 👇🏽	aşağıya baxan əlin işarəsi: orta dəri tonu
-👇🏾	aşağıya baxan arxa əl indeksi: orta-tünd dəri tonu
+👇🏾	aşağıya baxan əlin işarəsi: orta-tünd dəri tonu
 👇🏿	əlin aşağı göstəricisi: tünd dəri tonu
 ✌️	qələbə əli
 ✌	qələbə əli
@@ -1985,7 +1985,7 @@
 🤙🏼	mənə zəng et: orta-açıq dəri tonu
 🤙🏽	mənə zəng et: orta dəri tonu
 🤙🏾	mənə zəng et: orta-tünd dəri tonu
-🤙🏿	mənə zəng et: tünd dəri tonu
+🤙🏿	mənə əl zəng: tünd dəri tonu
 🖐️	barmaqları açılmış əl
 🖐	barmaqları açılmış əl
 🖐🏻	barmaqları açılmış əl: açıq dəri tonu
@@ -2008,11 +2008,11 @@
 👍	baş barmaqları yuxarı
 👍🏻	baş barmaqları yuxarı: açıq dəri tonu
 👍🏼	baş barmaqları yuxarı: orta-açıq dəri tonu
-👍🏽	baş barmaqları yuxarı: orta dəri tonu
+👍🏽	baş barmaq yuxarı: orta dəri tonu
 👍🏾	baş barmaqları yuxarı: orta-tünd dəri tonu
 👍🏿	baş barmaqları yuxarı: tünd dəri tonu
 👎	baş barmaqlarını aşağı salır
-👎🏻	baş barmaqları aşağı: açıq dəri tonu
+👎🏻	baş barmaq aşağı: açıq dəri tonu
 👎🏼	baş barmaqları aşağı: orta-açıq dəri tonu
 👎🏽	baş barmaqları aşağı: orta dəri tonu
 👎🏾	baş barmaq aşağı: orta-tünd dəri tonu
@@ -2043,9 +2043,9 @@
 🤜🏿	sağa baxan yumruq: tünd dəri tonu
 🤚	əlin arxası qaldırıldı
 🤚🏻	əlin arxası: açıq dəri tonu
-🤚🏼	əlin arxası: orta-açıq dəri tonu
+🤚🏼	əlin arxası qaldırılmış: orta-açıq dəri tonu
 🤚🏽	əlin arxası qaldırılmış: orta dəri tonu
-🤚🏾	qaldırılmış əl arxası: orta-tünd dəri tonu
+🤚🏾	yuxarı qaldırılmış əl arxası: orta-tünd dəri tonu
 🤚🏿	əlin arxası: tünd dəri tonu
 👋	yelləyən əl
 👋🏻	yelləyən əl: açıq dəri tonu
@@ -2081,7 +2081,7 @@
 🙌	əlləri qaldırmaq
 🙌🏻	əlləri qaldırmaq: açıq dəri tonu
 🙌🏼	əl qaldırmaq: orta-açıq dəri tonu
-🙌🏽	əllərin qaldırılması: orta dəri tonu
+🙌🏽	əl qaldırmaq: orta dəri tonu
 🙌🏾	əl qaldırmaq: orta-tünd dəri tonu
 🙌🏿	əl qaldırmaq: tünd dəri tonu
 🤲	ovuclarınızı birlikdə yuxarı qaldırın
@@ -2448,7 +2448,7 @@
 🥄	qaşıq
 🔪	mətbəx bıçağı
 🏺	amfora
-🌍	Avropa-Afrikanı göstərən dünya
+🌍	Avropa-Afrika göstərən dünya
 🌎	Amerikanı göstərən qlobus
 🌏	Asiya-Avstraliyanı göstərən qlobus
 🌐	meridianları olan kürə
@@ -2637,7 +2637,7 @@
 🌑	yeni ay
 🌒	böyüyən aypara
 🌓	birinci rüb ay
-🌔	böyüyən gbbous ay
+🌔	böyüyən ay
 🌕	Bütöv ay
 🌖	sönməkdə olan ay
 🌗	son rüb ay
@@ -2839,8 +2839,8 @@
 🎥	kino kamerası
 🎞️	film çərçivələri
 🎞	film çərçivələri
-📽️	kino proyektoru
-📽	kino proyektoru
+📽️	kinoproyektor
+📽	kinoproyektor
 🎬	çırpma lövhəsi
 📺	televiziya
 📷	kamera
@@ -2893,7 +2893,7 @@
 📥	gələnlər qutusu qabı
 📦	paket
 📫	qaldırılmış bayraqlı qapalı poçt qutusu
-📪	endirilmiş bayraqlı qapalı poçt qutusu
+📪	bayraq endirilmiş qapalı poçt qutusu
 📬	qaldırılmış bayraqlı açıq poçt qutusu
 📭	bayraq endirilmiş açıq poçt qutusu
 📮	Poçt qutusu
@@ -3119,8 +3119,8 @@
 ⏭	növbəti trek düyməsi
 ⏯️	oynat və ya fasilə düyməsini basın
 ⏯	oynat və ya fasilə düyməsini basın
-◀️	geri düyməsi
-◀	geri düyməsi
+◀️	əks düymə
+◀	əks düymə
 ⏪	sürətli geri düyməsi
 ⏮️	son trek düyməsi
 ⏮	son trek düyməsi
@@ -3199,7 +3199,7 @@
 #️⃣	Klaviatura qapağı: #
 #⃣	Klaviatura qapağı: #
 *️⃣	klaviatura qapağı: *
-*⃣	klaviatura qapağı: *
+*⃣	Klaviatura qapağı: *
 0️⃣	Klaviatura qapağı: 0
 0⃣	Klaviatura qapağı: 0
 1️⃣	Klaviatura qapağı: 1
@@ -3256,16 +3256,16 @@
 🈷️	Yapon “aylıq məbləğ” düyməsi
 🈷	Yapon “aylıq məbləğ” düyməsi
 🈶	Yapon "pulsuz deyil" düyməsi
-🈯	Yaponca "ehtiyat" düyməsi
+🈯	Yapon "ehtiyat" düyməsi
 🉐	Yapon "sövdələşmə" düyməsi
 🈹	Yapon “endirim” düyməsi
 🈚	Yapon "pulsuz" düyməsi
 🈲	Yapon "qadağan" düyməsi
 🉑	Yapon "məqbul" düyməsi
-🈸	Yapon "tətbiq" düyməsi
+🈸	Yapon “tətbiq” düyməsi
 🈴	Yapon “keçid qiyməti” düyməsi
 🈳	Yapon "vakansiya" düyməsi
-㊗️	Yapon "təbriklər" düyməsi
+㊗️	Yapon “təbriklər” düyməsi
 ㊗	Yapon “təbriklər” düyməsi
 ㊙️	Yapon "gizli" düyməsi
 ㊙	Yapon "gizli" düyməsi
@@ -3360,7 +3360,7 @@
 🇨🇵	Clipperton adası
 🇨🇷	Kosta Rika
 🇨🇺	Kuba
-🇨🇻	Kabo Verde
+🇨🇻	Cape Verde
 🇨🇼	Kurasao
 🇨🇽	Milad adası
 🇨🇾	Kipr

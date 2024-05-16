@@ -19,20 +19,37 @@
 import re
 
 from tests import wl_test_init
+from utils import wl_trs_translate
 
 def wl_test_supported_langs(main):
     langs_supported = [
         (lang_name, lang_code_639_3)
         for lang_name, (lang_code_639_3, _, _) in main.settings_global['langs'].items()
     ]
-    len_max_langs = max((len(lang_name) for lang_name, lang_code_639_3 in langs_supported))
+
+    # Translations
+    langs_supported_zho_cn = []
+
+    for lang_name, lang_code_639_3 in langs_supported:
+        for lang, trs in wl_trs_translate.TRS_LANGS.items():
+            if lang in lang_name:
+                lang_name = lang_name.replace(lang, trs[0])
+
+        langs_supported_zho_cn.append([lang_name, lang_code_639_3])
 
     langs_sentence_tokenizers = main.settings_global['sentence_tokenizers'].keys()
     langs_word_tokenizers = main.settings_global['word_tokenizers'].keys()
     langs_syl_tokenizers = main.settings_global['syl_tokenizers'].keys()
     langs_pos_taggers = main.settings_global['pos_taggers'].keys()
     langs_lemmatizers = main.settings_global['lemmatizers'].keys()
-    langs_stop_word_lists = main.settings_global['stop_word_lists'].keys()
+
+    # Exclude custom lists
+    langs_stop_word_lists = [
+        lang
+        for lang, stop_word_lists in main.settings_global['stop_word_lists'].items()
+        if stop_word_lists != ['custom']
+    ]
+
     langs_dependency_parsers = main.settings_global['dependency_parsers'].keys()
     langs_sentiment_analyzers = main.settings_global['sentiment_analyzers'].keys()
 
@@ -47,31 +64,35 @@ def wl_test_supported_langs(main):
         langs_sentiment_analyzers
     ]
 
-    for lang_name, lang_code_639_3 in langs_supported:
-        if any((
-            lang_code_639_3 in langs
-            for langs in langs_nlp_utils
-        )):
-            doc_supported_lang = f'{lang_name:{len_max_langs}s}'
+    for langs in [langs_supported, langs_supported_zho_cn]:
+        len_max_langs = max((len(lang_name) for lang_name, lang_code_639_3 in langs))
 
-            if lang_code_639_3 == 'other':
-                doc_supported_lang += '|⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖️'
-            else:
-                for i, langs in enumerate(langs_nlp_utils):
-                    if i <= 1:
-                        if lang_code_639_3 in langs:
-                            doc_supported_lang += '|✔'
+        for lang_name, lang_code_639_3 in langs:
+            if any((
+                lang_code_639_3 in langs
+                for langs in langs_nlp_utils
+            )):
+                doc_supported_lang = f'{lang_name:{len_max_langs}s}'
+
+                if lang_code_639_3 == 'other':
+                    doc_supported_lang += '|⭕️ |⭕️ |✖️|✖️|✖️|✖️|✖️|✖️'
+                else:
+                    for i, langs in enumerate(langs_nlp_utils):
+                        # Sentence/word tokenization
+                        if i <= 1:
+                            if lang_code_639_3 in langs:
+                                doc_supported_lang += '|✔'
+                            else:
+                                doc_supported_lang += '|⭕️ '
                         else:
-                            doc_supported_lang += '|⭕️ '
-                    else:
-                        if lang_code_639_3 in langs:
-                            doc_supported_lang += '|✔'
-                        else:
-                            doc_supported_lang += '|✖️'
+                            if lang_code_639_3 in langs:
+                                doc_supported_lang += '|✔'
+                            else:
+                                doc_supported_lang += '|✖️'
 
-            print(doc_supported_lang)
+                print(doc_supported_lang)
 
-    print()
+        print()
 
 def wl_test_supported_encodings(main):
     langs = []
@@ -84,14 +105,33 @@ def wl_test_supported_encodings(main):
         langs.append(lang)
         encodings.append(encoding)
 
-    len_max_langs = max((len(lang) for lang in langs))
-    len_max_encodings = max((len(encoding) for encoding in encodings))
+    # Translations
+    langs_zho_cn = []
+    encodings_zho_cn = []
 
-    for lang, encoding in zip(langs, encodings):
-        if encoding == 'UTF-8 with BOM':
-            print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✖️')
-        else:
-            print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✔')
+    for encoding_lang, encoding_name in zip(langs, encodings):
+        for lang, trs in wl_trs_translate.TRS_LANGS.items():
+            if lang in encoding_lang:
+                encoding_lang = encoding_lang.replace(lang, trs[0])
+
+        for encoding, trs in wl_trs_translate.TRS_ENCODINGS.items():
+            if encoding in encoding_name:
+                encoding_name = encoding_name.replace(encoding, trs[0])
+
+        langs_zho_cn.append(encoding_lang)
+        encodings_zho_cn.append(encoding_name)
+
+    for langs, encodings in [(langs, encodings), (langs_zho_cn, encodings_zho_cn)]:
+        len_max_langs = max((len(lang) for lang in langs))
+        len_max_encodings = max((len(encoding) for encoding in encodings))
+
+        for lang, encoding in zip(langs, encodings):
+            if encoding in ['UTF-8 with BOM', 'UTF-8 带签名']:
+                print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✖️')
+            else:
+                print(f'{lang:{len_max_langs}}|{encoding:{len_max_encodings}}|✔')
+
+        print()
 
 if __name__ == '__main__':
     main = wl_test_init.Wl_Test_Main()

@@ -8,7 +8,7 @@
 😆	flinande kisande ansikte
 😉	blinkande ansikte
 😊	leende ansikte med leende ögon
-😋	ansikte njuter av mat
+😋	ansikte avnjutande mat
 😎	leende ansikte med solglasögon
 😍	leende ansikte med hjärta-ögon
 😘	ansikte blåser en kyss
@@ -46,7 +46,7 @@
 😔	fundersamt ansikte
 😕	förvirrat ansikte
 🙃	upp och ner ansiktet
-🤑	pengar-mun ansikte
+🤑	penga mun ansikte
 😲	förvånat ansikte
 ☹️	rynkande ansikte
 ☹	rynkande ansikte
@@ -69,7 +69,7 @@
 🥶	kallt ansikte
 😳	spolat ansikte
 🤪	galet ansikte
-😵	yr i ansiktet
+😵	yr ansikte
 😡	pipande ansikte
 😠	argt ansikte
 🤬	ansikte med symboler på munnen
@@ -151,7 +151,7 @@
 🧑🏿	vuxen: mörk hudton
 👨	man
 👨🏻	man: ljus hudton
-👨🏼	man: medium ljus hudton
+👨🏼	man: medelljus hudton
 👨🏽	man: medium hudton
 👨🏾	man: medium-mörk hudton
 👨🏿	man: mörk hudton
@@ -245,8 +245,8 @@
 👩🏻‍⚖	kvinnlig domare: ljus hudton
 👩🏼‍⚖️	kvinnlig domare: medium-ljus hudton
 👩🏼‍⚖	kvinnlig domare: medium-ljus hudton
-👩🏽‍⚖️	kvinnlig domare: medium hudton
-👩🏽‍⚖	kvinnlig domare: medium hudton
+👩🏽‍⚖️	kvinna domare: medium hudton
+👩🏽‍⚖	kvinna domare: medium hudton
 👩🏾‍⚖️	kvinnlig domare: medium-mörk hudton
 👩🏾‍⚖	kvinnlig domare: medium-mörk hudton
 👩🏿‍⚖️	kvinna domare: mörk hudton
@@ -304,7 +304,7 @@
 👨🏼‍💼	manlig kontorsarbetare: medium-ljus hudton
 👨🏽‍💼	manlig kontorsarbetare: medium hudton
 👨🏾‍💼	manlig kontorsarbetare: medium-mörk hudton
-👨🏿‍💼	man kontorsarbetare: mörk hudton
+👨🏿‍💼	manlig kontorsarbetare: mörk hudton
 👩‍💼	kvinna kontorsarbetare
 👩🏻‍💼	kvinna kontorsarbetare: ljus hudton
 👩🏼‍💼	kvinnlig kontorsarbetare: medium-ljus hudton
@@ -375,8 +375,8 @@
 👩‍✈	kvinnlig pilot
 👩🏻‍✈️	kvinna pilot: ljus hudton
 👩🏻‍✈	kvinna pilot: ljus hudton
-👩🏼‍✈️	kvinnlig pilot: medium-ljus hudton
-👩🏼‍✈	kvinnlig pilot: medium-ljus hudton
+👩🏼‍✈️	kvinna pilot: medium-ljus hudton
+👩🏼‍✈	kvinna pilot: medium-ljus hudton
 👩🏽‍✈️	kvinna pilot: medium hudton
 👩🏽‍✈	kvinna pilot: medium hudton
 👩🏾‍✈️	kvinnlig pilot: medium-mörk hudton
@@ -385,7 +385,7 @@
 👩🏿‍✈	kvinna pilot: mörk hudton
 👨‍🚀	manlig astronaut
 👨🏻‍🚀	manlig astronaut: ljus hudton
-👨🏼‍🚀	manlig astronaut: medium-ljus hudton
+👨🏼‍🚀	manlig astronaut: medelljus hudton
 👨🏽‍🚀	manlig astronaut: medium hudton
 👨🏾‍🚀	manlig astronaut: medium-mörk hudton
 👨🏿‍🚀	man astronaut: mörk hudton
@@ -576,7 +576,7 @@
 👳🏿‍♀	kvinna som bär turban: mörk hudton
 👲	man med kinesisk mössa
 👲🏻	man med kinesisk mössa: ljus hudton
-👲🏼	man med kinesisk keps: medium-ljus hudton
+👲🏼	man med kinesisk mössa: medium-ljus hudton
 👲🏽	man med kinesisk mössa: medium hudton
 👲🏾	man med kinesisk mössa: medium-mörk hudton
 👲🏿	man med kinesisk mössa: mörk hudton
@@ -602,8 +602,8 @@
 👱‍♂	blondhårig man
 👱🏻‍♂️	blondhårig man: ljus hudton
 👱🏻‍♂	blondhårig man: ljus hudton
-👱🏼‍♂️	blondhårig man: medelljus hudton
-👱🏼‍♂	blondhårig man: medelljus hudton
+👱🏼‍♂️	blondhårig man: medium-ljus hudton
+👱🏼‍♂	blondhårig man: medium-ljus hudton
 👱🏽‍♂️	blondhårig man: medium hudton
 👱🏽‍♂	blondhårig man: medium hudton
 👱🏾‍♂️	blondhårig man: medium-mörk hudton
@@ -812,8 +812,8 @@
 🧚‍♀	kvinna fe
 🧚🏻‍♀️	kvinna fe: ljus hudton
 🧚🏻‍♀	kvinna fe: ljus hudton
-🧚🏼‍♀️	kvinna fairy: medium-ljus hudton
-🧚🏼‍♀	kvinna fairy: medium-ljus hudton
+🧚🏼‍♀️	kvinnlig fe: medium-ljus hudton
+🧚🏼‍♀	kvinnlig fe: medium-ljus hudton
 🧚🏽‍♀️	kvinna fe: medium hudton
 🧚🏽‍♀	kvinna fe: medium hudton
 🧚🏾‍♀️	kvinnlig fe: medium-mörk hudton
@@ -908,8 +908,8 @@
 🧝🏽‍♀	kvinnlig tomte: medium hudton
 🧝🏾‍♀️	kvinnlig tomte: medium-mörk hudton
 🧝🏾‍♀	kvinnlig tomte: medium-mörk hudton
-🧝🏿‍♀️	kvinnlig tomte: mörk hudton
-🧝🏿‍♀	kvinnlig tomte: mörk hudton
+🧝🏿‍♀️	kvinna tomte: mörk hudton
+🧝🏿‍♀	kvinna tomte: mörk hudton
 🧝‍♂️	man elf
 🧝‍♂	man elf
 🧝🏻‍♂️	man elf: ljus hudton
@@ -970,10 +970,10 @@
 🙎🏿	person som blåser: mörk hudton
 🙎‍♂️	man tutande
 🙎‍♂	man tutande
-🙎🏻‍♂️	man tutande: ljus hudton
-🙎🏻‍♂	man tutande: ljus hudton
-🙎🏼‍♂️	man som tjuter: medium-ljus hudton
-🙎🏼‍♂	man som tjuter: medium-ljus hudton
+🙎🏻‍♂️	man som tjuter: ljus hudton
+🙎🏻‍♂	man som tjuter: ljus hudton
+🙎🏼‍♂️	man tutande: medium-ljus hudton
+🙎🏼‍♂	man tutande: medium-ljus hudton
 🙎🏽‍♂️	man som tjuter: medium hudton
 🙎🏽‍♂	man som tjuter: medium hudton
 🙎🏾‍♂️	man som tjuter: medium-mörk hudton
@@ -988,10 +988,10 @@
 🙎🏼‍♀	kvinna som tjuter: medium-ljus hudton
 🙎🏽‍♀️	kvinna som tjuter: medium hudton
 🙎🏽‍♀	kvinna som tjuter: medium hudton
-🙎🏾‍♀️	kvinna som tjuter: medium-mörk hudton
+🙎🏾‍♀️	kvinna som gnäller: medium-mörk hudton
 🙎🏾‍♀	kvinna som tjuter: medium-mörk hudton
-🙎🏿‍♀️	kvinna som tjuter: mörk hudton
-🙎🏿‍♀	kvinna som tjuter: mörk hudton
+🙎🏿‍♀️	kvinna tutande: mörk hudton
+🙎🏿‍♀	kvinna tutande: mörk hudton
 🙅	person som gestikulerar NEJ
 🙅🏻	person som gör en gest NEJ: ljus hudton
 🙅🏼	person som gör en gest NEJ: medelljus hudton
@@ -1026,12 +1026,12 @@
 🙆🏻	person som gör en gest OK: ljus hudton
 🙆🏼	person som gör en gest OK: medelljus hudton
 🙆🏽	person som gör en gest OK: medium hudton
-🙆🏾	person som gör en gest OK: medelmörk hudton
+🙆🏾	person som gör en gest OK: medium-mörk hudton
 🙆🏿	person som gestikulerar OK: mörk hudton
 🙆‍♂️	man gestikulerar OK
 🙆‍♂	man gestikulerar OK
-🙆🏻‍♂️	man gester OK: ljus hudton
-🙆🏻‍♂	man gester OK: ljus hudton
+🙆🏻‍♂️	man gestikulerar OK: ljus hudton
+🙆🏻‍♂	man gestikulerar OK: ljus hudton
 🙆🏼‍♂️	man gestikulerar OK: medium-ljus hudton
 🙆🏼‍♂	man gestikulerar OK: medium-ljus hudton
 🙆🏽‍♂️	man gester OK: medium hudton
@@ -1039,7 +1039,7 @@
 🙆🏾‍♂️	man gestikulerar OK: medium-mörk hudton
 🙆🏾‍♂	man gestikulerar OK: medium-mörk hudton
 🙆🏿‍♂️	man gestikulerar OK: mörk hudton
-🙆🏿‍♂	man gestikulerar OK: mörk hudton
+🙆🏿‍♂	man gester OK: mörk hudton
 🙆‍♀️	kvinna som gestikulerar OK
 🙆‍♀	kvinna som gestikulerar OK
 🙆🏻‍♀️	kvinna gestikulerar OK: ljus hudton
@@ -1066,8 +1066,8 @@
 💁🏼‍♂	man tippar handen: medium-ljus hudton
 💁🏽‍♂️	man tippar handen: medium hudton
 💁🏽‍♂	man tippar handen: medium hudton
-💁🏾‍♂️	man tippar handen: medelmörk hudton
-💁🏾‍♂	man tippar handen: medelmörk hudton
+💁🏾‍♂️	man tippar handen: medium-mörk hudton
+💁🏾‍♂	man tippar handen: medium-mörk hudton
 💁🏿‍♂️	man tippar handen: mörk hudton
 💁🏿‍♂	man tippar handen: mörk hudton
 💁‍♀️	kvinna tippar handen
@@ -1078,10 +1078,10 @@
 💁🏼‍♀	kvinna som tippar handen: medium-ljus hudton
 💁🏽‍♀️	kvinna tippar handen: medium hudton
 💁🏽‍♀	kvinna tippar handen: medium hudton
-💁🏾‍♀️	kvinna som tippar handen: medelmörk hudton
-💁🏾‍♀	kvinna som tippar handen: medelmörk hudton
-💁🏿‍♀️	kvinna som tippar handen: mörk hudton
-💁🏿‍♀	kvinna som tippar handen: mörk hudton
+💁🏾‍♀️	kvinna som tippar handen: medium-mörk hudton
+💁🏾‍♀	kvinna som tippar handen: medium-mörk hudton
+💁🏿‍♀️	kvinna lutar handen: mörk hudton
+💁🏿‍♀	kvinna tippar handen: mörk hudton
 🙋	person räcker upp handen
 🙋🏻	person som räcker upp handen: ljus hudton
 🙋🏼	person som räcker upp handen: medium-ljus hudton
@@ -1220,8 +1220,8 @@
 💆🏾‍♂	man får massage: medium-mörk hudton
 💆🏿‍♂️	man får massage: mörk hudton
 💆🏿‍♂	man får massage: mörk hudton
-💆‍♀️	kvinna som får massage
-💆‍♀	kvinna som får massage
+💆‍♀️	kvinna får massage
+💆‍♀	kvinna får massage
 💆🏻‍♀️	kvinna får massage: ljus hudton
 💆🏻‍♀	kvinna får massage: ljus hudton
 💆🏼‍♀️	kvinna får massage: medium-ljus hudton
@@ -1306,22 +1306,22 @@
 🏃🏼‍♂	man springer: medium-ljus hudton
 🏃🏽‍♂️	man springer: medium hudton
 🏃🏽‍♂	man springer: medium hudton
-🏃🏾‍♂️	man springer: medium-mörk hudton
-🏃🏾‍♂	man springer: medium-mörk hudton
+🏃🏾‍♂️	springande man: medium-mörk hudton
+🏃🏾‍♂	springande man: medium-mörk hudton
 🏃🏿‍♂️	man springer: mörk hudton
 🏃🏿‍♂	man springer: mörk hudton
 🏃‍♀️	kvinna springer
 🏃‍♀	kvinna springer
-🏃🏻‍♀️	kvinna springer: ljus hudton
-🏃🏻‍♀	kvinna springer: ljus hudton
+🏃🏻‍♀️	kvinna som springer: ljus hudton
+🏃🏻‍♀	kvinna som springer: ljus hudton
 🏃🏼‍♀️	kvinna som springer: medium-ljus hudton
 🏃🏼‍♀	kvinna som springer: medium-ljus hudton
 🏃🏽‍♀️	kvinna som springer: medium hudton
 🏃🏽‍♀	kvinna som springer: medium hudton
 🏃🏾‍♀️	kvinna som springer: medium-mörk hudton
 🏃🏾‍♀	kvinna som springer: medium-mörk hudton
-🏃🏿‍♀️	kvinna springer: mörk hudton
-🏃🏿‍♀	kvinna springer: mörk hudton
+🏃🏿‍♀️	kvinna som springer: mörk hudton
+🏃🏿‍♀	kvinna som springer: mörk hudton
 💃	kvinna som dansar
 💃🏻	kvinna som dansar: ljus hudton
 💃🏼	kvinna som dansar: medium-ljus hudton
@@ -1349,8 +1349,8 @@
 🧖‍♀	kvinna i ångrum
 🧖🏻‍♀️	kvinna i ångbad: ljus hudton
 🧖🏻‍♀	kvinna i ångbad: ljus hudton
-🧖🏼‍♀️	kvinna i ångrum: medium-ljus hudton
-🧖🏼‍♀	kvinna i ångrum: medium-ljus hudton
+🧖🏼‍♀️	kvinna i ångbad: medium-ljus hudton
+🧖🏼‍♀	kvinna i ångbad: medium-ljus hudton
 🧖🏽‍♀️	kvinna i ångrum: medium hudton
 🧖🏽‍♀	kvinna i ångrum: medium hudton
 🧖🏾‍♀️	kvinna i ångrum: medium-mörk hudton
@@ -1365,13 +1365,13 @@
 🧖🏼‍♂	man i ångrum: medelljus hudton
 🧖🏽‍♂️	man i ångbad: medium hudton
 🧖🏽‍♂	man i ångbad: medium hudton
-🧖🏾‍♂️	man i ångrum: medelmörk hudton
-🧖🏾‍♂	man i ångrum: medelmörk hudton
+🧖🏾‍♂️	man i ångbad: medium-mörk hudton
+🧖🏾‍♂	man i ångbad: medium-mörk hudton
 🧖🏿‍♂️	man i ångbad: mörk hudton
 🧖🏿‍♂	man i ångbad: mörk hudton
 🧗	person som klättrar
 🧗🏻	person som klättrar: ljus hudton
-🧗🏼	person som klättrar: medium-ljus hudton
+🧗🏼	person som klättrar: medelljus hudton
 🧗🏽	person som klättrar: medium hudton
 🧗🏾	person som klättrar: medium-mörk hudton
 🧗🏿	person som klättrar: mörk hudton
@@ -1401,7 +1401,7 @@
 🧗🏿‍♂	man som klättrar: mörk hudton
 🧘	person i lotusställning
 🧘🏻	person i lotusställning: ljus hudton
-🧘🏼	person i lotusställning: medelljus hudton
+🧘🏼	person i lotusställning: medium-ljus hudton
 🧘🏽	person i lotusställning: medium hudton
 🧘🏾	person i lotusställning: medium-mörk hudton
 🧘🏿	person i lotusställning: mörk hudton
@@ -1433,7 +1433,7 @@
 🛀🏻	person som badar: ljus hudton
 🛀🏼	person som badar: medelljus hudton
 🛀🏽	person som badar: medium hudton
-🛀🏾	person som badar: medelmörk hudton
+🛀🏾	person som badar: medium-mörk hudton
 🛀🏿	person som badar: mörk hudton
 🛌	person i sängen
 🛌🏻	person i sängen: ljus hudton
@@ -1442,7 +1442,7 @@
 🛌🏾	person i sängen: medium-mörk hudton
 🛌🏿	person i sängen: mörk hudton
 🕴️	man i kostym leviterande
-🕴	man i kostym leviterande
+🕴	man i kostym svävar
 🕴🏻	man i kostym leviterande: ljus hudton
 🕴🏼	man i kostym svävande: medium-ljus hudton
 🕴🏽	man i kostym leviterande: medium hudton
@@ -1469,7 +1469,7 @@
 🏂🏿	snowboardåkare: mörk hudton
 🏌️	person som spelar golf
 🏌	person som spelar golf
-🏌🏻	person som spelar golf: ljus hudton
+🏌🏻	person som golfar: ljus hudton
 🏌🏼	person som spelar golf: medium-ljus hudton
 🏌🏽	person som spelar golf: medium hudton
 🏌🏾	person som spelar golf: medium-mörk hudton
@@ -1580,8 +1580,8 @@
 🏊🏾‍♂	man simmar: medium-mörk hudton
 🏊🏿‍♂️	man simmar: mörk hudton
 🏊🏿‍♂	man simmar: mörk hudton
-🏊‍♀️	kvinna simmar
-🏊‍♀	kvinna simmar
+🏊‍♀️	kvinna simning
+🏊‍♀	kvinna simning
 🏊🏻‍♀️	kvinna simning: ljus hudton
 🏊🏻‍♀	kvinna simning: ljus hudton
 🏊🏼‍♀️	kvinna simmar: medium-ljus hudton
@@ -1634,16 +1634,16 @@
 🏋🏽	person som lyfter vikter: medium hudton
 🏋🏾	person som lyfter vikter: medium-mörk hudton
 🏋🏿	person som lyfter vikter: mörk hudton
-🏋️‍♂️	man lyfter vikter
-🏋‍♂️	man lyfter vikter
-🏋️‍♂	man lyfter vikter
-🏋‍♂	man lyfter vikter
+🏋️‍♂️	man som lyfter vikter
+🏋‍♂️	man som lyfter vikter
+🏋️‍♂	man som lyfter vikter
+🏋‍♂	man som lyfter vikter
 🏋🏻‍♂️	man lyfter vikter: ljus hudton
 🏋🏻‍♂	man lyfter vikter: ljus hudton
 🏋🏼‍♂️	man som lyfter vikter: medium-ljus hudton
 🏋🏼‍♂	man som lyfter vikter: medium-ljus hudton
-🏋🏽‍♂️	man lyfter vikter: medium hudton
-🏋🏽‍♂	man lyfter vikter: medium hudton
+🏋🏽‍♂️	man som lyfter vikter: medium hudton
+🏋🏽‍♂	man som lyfter vikter: medium hudton
 🏋🏾‍♂️	man som lyfter vikter: medium-mörk hudton
 🏋🏾‍♂	man som lyfter vikter: medium-mörk hudton
 🏋🏿‍♂️	man lyfter vikter: mörk hudton
@@ -1733,7 +1733,7 @@
 🤸🏾	person cartwheeling: medium-mörk hudton
 🤸🏿	person cartwheeling: mörk hudton
 🤸‍♂️	man vagnande
-🤸‍♂	man vagnande
+🤸‍♂	man kör vagn
 🤸🏻‍♂️	man cartwheeling: ljus hudton
 🤸🏻‍♂	man cartwheeling: ljus hudton
 🤸🏼‍♂️	man cartwheeling: medium-ljus hudton
@@ -1750,8 +1750,8 @@
 🤸🏻‍♀	kvinna som kör: ljus hudton
 🤸🏼‍♀️	kvinna med vagn: medium-ljus hudton
 🤸🏼‍♀	kvinna med vagn: medium-ljus hudton
-🤸🏽‍♀️	kvinna som kör vagn: medium hudton
-🤸🏽‍♀	kvinna som kör vagn: medium hudton
+🤸🏽‍♀️	kvinna som kör: medium hudton
+🤸🏽‍♀	kvinna som kör: medium hudton
 🤸🏾‍♀️	kvinna med vagn: medium-mörk hudton
 🤸🏾‍♀	kvinna med vagn: medium-mörk hudton
 🤸🏿‍♀️	kvinna som kör: mörk hudton
@@ -1908,7 +1908,7 @@
 💪🏿	böjda biceps: mörk hudton
 🦵	ben
 🦵🏻	ben: ljus hudton
-🦵🏼	ben: medelljus hudton
+🦵🏼	ben: medium-ljus hudton
 🦵🏽	ben: medium hudton
 🦵🏾	ben: medium-mörk hudton
 🦵🏿	ben: mörk hudton
@@ -1939,13 +1939,13 @@
 ☝🏿	index som pekar uppåt: mörk hudton
 👆	bakhandsindex pekar uppåt
 👆🏻	bakhandsindex som pekar uppåt: ljus hudton
-👆🏼	backhand-index som pekar uppåt: medium-ljus hudton
-👆🏽	bakhandsindex som pekar uppåt: medium hudton
+👆🏼	bakhandsindex som pekar uppåt: medium-ljus hudton
+👆🏽	backhand-index som pekar uppåt: medium hudton
 👆🏾	backhand-index som pekar uppåt: medium-mörk hudton
 👆🏿	bakhandsindex som pekar uppåt: mörk hudton
 🖕	långfinger
 🖕🏻	långfinger: ljus hudton
-🖕🏼	långfinger: medium-ljus hudton
+🖕🏼	långfinger: medelljus hudton
 🖕🏽	långfinger: medium hudton
 🖕🏾	långfinger: medium-mörk hudton
 🖕🏿	långfinger: mörk hudton
@@ -2001,7 +2001,7 @@
 ✋🏿	upphöjd hand: mörk hudton
 👌	OK hand
 👌🏻	OK hand: ljus hudton
-👌🏼	OK hand: medium ljus hudton
+👌🏼	OK hand: medelljus hudton
 👌🏽	OK hand: medium hudton
 👌🏾	OK hand: medium-mörk hudton
 👌🏿	OK hand: mörk hudton
@@ -2070,17 +2070,17 @@
 👏🏻	klappande händer: ljus hudton
 👏🏼	klappande händer: medelljus hudton
 👏🏽	klappande händer: medium hudton
-👏🏾	klappande händer: medium-mörk hudton
+👏🏾	klappande händer: medelmörk hudton
 👏🏿	klappande händer: mörk hudton
 👐	öppna händer
 👐🏻	öppna händer: ljus hudton
-👐🏼	öppna händer: medelljus hudton
+👐🏼	öppna händer: medium-ljus hudton
 👐🏽	öppna händer: medium hudton
 👐🏾	öppna händer: medium-mörk hudton
 👐🏿	öppna händer: mörk hudton
 🙌	räcka upp händerna
 🙌🏻	höja händerna: ljus hudton
-🙌🏼	höja händerna: medelljus hudton
+🙌🏼	höja händerna: medium-ljus hudton
 🙌🏽	höja händerna: medium hudton
 🙌🏾	höja händerna: medium-mörk hudton
 🙌🏿	höja händerna: mörk hudton
@@ -2214,7 +2214,7 @@
 🐶	hund ansikte
 🐕	hund
 🐩	pudel
-🐺	vargansikte
+🐺	varg ansikte
 🦊	rävansikte
 🦝	tvättbjörn
 🐱	katt ansikte
@@ -2412,7 +2412,7 @@
 🍡	dango
 🥟	klimp
 🥠	lyckokaka
-🥡	avhämtning låda
+🥡	avhämtningslåda
 🍦	mjukglass
 🍧	rakad is
 🍨	glass
@@ -2833,7 +2833,7 @@
 🖲	styrkula
 💽	datorns disk
 💾	Diskett
-💿	optisk skiva
+💿	optisk disk
 📀	dvd
 🧮	kulram
 🎥	filmkamera
@@ -2889,8 +2889,8 @@
 📧	e-post
 📨	inkommande kuvert
 📩	kuvert med pil
-📤	utkorgsbricka
-📥	inkorgsfacket
+📤	utkorgsfack
+📥	inkorgsfack
 📦	paket
 📫	stängd brevlåda med höjd flagga
 📪	stängd brevlåda med sänkt flagga
@@ -2915,8 +2915,8 @@
 💼	portfölj
 📁	filmapp
 📂	öppna filmappen
-🗂️	kortregisteravdelare
-🗂	kortregisteravdelare
+🗂️	kartotekavdelare
+🗂	kartotekavdelare
 📅	kalender
 📆	avrivningskalender
 🗒️	spiral anteckningsblock
@@ -3046,8 +3046,8 @@
 ↗	upp-högerpil
 ➡️	höger pil
 ➡	höger pil
-↘️	nedåtpil
-↘	nedåtpil
+↘️	ned-högerpil
+↘	ned-högerpil
 ⬇️	nedåtpil
 ⬇	nedåtpil
 ↙️	ned-vänster pil
@@ -3127,7 +3127,7 @@
 🔼	uppåtknapp
 ⏫	snabbknapp
 🔽	nedåtknapp
-⏬	snabbknapp
+⏬	snabb ned-knapp
 ⏸️	pausknapp
 ⏸	pausknapp
 ⏹️	stoppknapp
@@ -3238,8 +3238,8 @@
 ℹ️	information
 ℹ	information
 🆔	ID-knapp
-Ⓜ️	ringde in M
-Ⓜ	ringde in M
+Ⓜ️	inringad M
+Ⓜ	inringad M
 🆕	NY knapp
 🆖	NG-knapp
 🅾️	O-knapp (blodtyp)
@@ -3511,7 +3511,7 @@
 🇸🇩	Sudan
 🇸🇪	Sverige
 🇸🇬	Singapore
-🇸🇭	S:ta Helena
+🇸🇭	S:t Helena
 🇸🇮	Slovenien
 🇸🇯	Svalbard & Jan Mayen
 🇸🇰	Slovakien

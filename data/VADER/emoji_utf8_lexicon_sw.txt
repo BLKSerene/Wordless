@@ -3,7 +3,7 @@
 😂	uso kwa machozi ya furaha
 🤣	kujiviringisha sakafuni huku akicheka
 😃	uso unaotabasamu na macho makubwa
-😄	uso unaotabasamu na macho ya tabasamu
+😄	uso unaotabasamu kwa macho ya tabasamu
 😅	uso unaotabasamu na jasho
 😆	uso unaotabasamu unaotabasamu
 😉	uso unaokonyeza
@@ -39,7 +39,7 @@
 😌	uso uliotulia
 😛	uso kwa ulimi
 😜	uso unaokonyeza kwa ulimi
-😝	uso wenye makengeza kwa ulimi
+😝	uso wa makengeza kwa ulimi
 🤤	uso unaoteleza
 😒	uso usio na furaha
 😓	uso ulioinama na jasho
@@ -55,7 +55,7 @@
 😞	uso uliokata tamaa
 😟	uso wa wasiwasi
 😤	uso na mvuke kutoka pua
-😢	uso unaolia
+😢	uso wa kulia
 😭	uso unaolia kwa sauti kubwa
 😦	uso uliokunja uso na mdomo wazi
 😧	uso wenye uchungu
@@ -88,7 +88,7 @@
 🤫	uso unaotabasamu
 🤭	uso kwa mkono juu ya mdomo
 🧐	uso na monocle
-🤓	uso wa ujinga
+🤓	uso wa kijinga
 😈	uso wenye tabasamu wenye pembe
 👿	uso wenye hasira na pembe
 🤡	uso wa clown
@@ -106,7 +106,7 @@
 😸	uso wa paka unaotabasamu na macho ya tabasamu
 😹	paka uso na machozi ya furaha
 😻	uso wa paka unaotabasamu kwa macho ya moyo
-😼	uso wa paka na tabasamu la huzuni
+😼	paka uso na tabasamu wry
 😽	kumbusu paka uso
 🙀	uso wa paka uliochoka
 😿	kulia kwa uso wa paka
@@ -181,8 +181,8 @@
 👵🏿	mwanamke mzee: ngozi nyeusi
 👨‍⚕️	mfanyakazi wa afya wa kiume
 👨‍⚕	mfanyakazi wa afya wa kiume
-👨🏻‍⚕️	mhudumu wa afya wa kiume: ngozi nyepesi
-👨🏻‍⚕	mhudumu wa afya wa kiume: ngozi nyepesi
+👨🏻‍⚕️	mhudumu wa afya wa kiume: ngozi nyeupe
+👨🏻‍⚕	mhudumu wa afya wa kiume: ngozi nyeupe
 👨🏼‍⚕️	mhudumu wa afya wa kiume: ngozi ya wastani
 👨🏼‍⚕	mhudumu wa afya wa kiume: ngozi ya wastani
 👨🏽‍⚕️	mhudumu wa afya wa kiume: ngozi ya wastani
@@ -200,7 +200,7 @@
 👩🏽‍⚕️	mwanamke mfanyakazi wa afya: ngozi ya wastani
 👩🏽‍⚕	mwanamke mfanyakazi wa afya: ngozi ya wastani
 👩🏾‍⚕️	mwanamke mfanyakazi wa afya: ngozi ya wastani-nyeusi
-👩🏾‍⚕	mwanamke mfanyakazi wa afya: ngozi ya wastani-giza
+👩🏾‍⚕	mwanamke mfanyakazi wa afya: ngozi ya wastani-nyeusi
 👩🏿‍⚕️	mwanamke mfanyakazi wa afya: ngozi nyeusi
 👩🏿‍⚕	mwanamke mfanyakazi wa afya: ngozi nyeusi
 👨‍🎓	mwanafunzi mwanaume
@@ -220,7 +220,7 @@
 👨🏼‍🏫	mwalimu wa kiume: ngozi ya wastani
 👨🏽‍🏫	mwalimu mwanaume: ngozi ya wastani
 👨🏾‍🏫	mwalimu wa kiume: ngozi ya wastani-giza
-👨🏿‍🏫	mwalimu mwanaume: ngozi nyeusi
+👨🏿‍🏫	mwalimu mwanamume: ngozi nyeusi
 👩‍🏫	mwalimu mwanamke
 👩🏻‍🏫	mwalimu mwanamke: ngozi nyepesi
 👩🏼‍🏫	mwalimu mwanamke: ngozi ya wastani
@@ -229,11 +229,11 @@
 👩🏿‍🏫	mwalimu mwanamke: ngozi nyeusi
 👨‍⚖️	mwamuzi mtu
 👨‍⚖	mwamuzi mtu
-👨🏻‍⚖️	mwamuzi mwanaume: ngozi nyepesi
-👨🏻‍⚖	mwamuzi mwanaume: ngozi nyepesi
+👨🏻‍⚖️	mwamuzi wa kiume: ngozi nyepesi
+👨🏻‍⚖	mwamuzi wa kiume: ngozi nyepesi
 👨🏼‍⚖️	mwanamume hakimu: ngozi ya wastani
 👨🏼‍⚖	mwanamume hakimu: ngozi ya wastani
-👨🏽‍⚖️	mwanaume hakimu: ngozi ya wastani
+👨🏽‍⚖️	mwanamume hakimu: ngozi ya wastani
 👨🏽‍⚖	mwanaume hakimu: ngozi ya wastani
 👨🏾‍⚖️	mwanamume hakimu: ngozi ya wastani-giza
 👨🏾‍⚖	mwanamume hakimu: ngozi ya wastani-giza
@@ -265,7 +265,7 @@
 👩🏿‍🌾	mwanamke mkulima: ngozi nyeusi
 👨‍🍳	mpishi mwanaume
 👨🏻‍🍳	mpishi wa kiume: ngozi nyepesi
-👨🏼‍🍳	mpishi wa kiume: ngozi ya wastani ya mwanga
+👨🏼‍🍳	mpishi wa kiume: ngozi ya wastani
 👨🏽‍🍳	mpishi wa kiume: ngozi ya wastani
 👨🏾‍🍳	mpishi wa kiume: ngozi ya wastani-giza
 👨🏿‍🍳	mpishi wa kiume: ngozi nyeusi
@@ -309,7 +309,7 @@
 👩🏻‍💼	mwanamke mfanyakazi wa ofisi: ngozi nyeupe
 👩🏼‍💼	mwanamke mfanyakazi wa ofisi: ngozi ya wastani
 👩🏽‍💼	mwanamke mfanyakazi wa ofisi: ngozi ya wastani
-👩🏾‍💼	mfanyakazi wa ofisi mwanamke: ngozi ya wastani ya giza
+👩🏾‍💼	mwanamke mfanyakazi wa ofisi: ngozi ya wastani ya giza
 👩🏿‍💼	mwanamke mfanyakazi wa ofisi: ngozi nyeusi
 👨‍🔬	mwanasayansi mtu
 👨🏻‍🔬	mwanasayansi mtu: ngozi nyepesi
@@ -322,12 +322,12 @@
 👩🏼‍🔬	mwanasayansi mwanamke: ngozi ya wastani
 👩🏽‍🔬	mwanasayansi mwanamke: ngozi ya wastani
 👩🏾‍🔬	mwanasayansi mwanamke: ngozi ya wastani-giza
-👩🏿‍🔬	mwanasayansi mwanamke: ngozi nyeusi
+👩🏿‍🔬	mwanamke mwanasayansi: ngozi nyeusi
 👨‍💻	mwanateknolojia
 👨🏻‍💻	mwanateknolojia: ngozi nyepesi
 👨🏼‍💻	mwanateknolojia wa kiume: ngozi ya wastani
 👨🏽‍💻	mwanateknolojia wa kiume: ngozi ya wastani
-👨🏾‍💻	mwanateknolojia wa kiume: ngozi ya wastani-giza
+👨🏾‍💻	mwanateknolojia wa kiume: ngozi ya wastani ya giza
 👨🏿‍💻	mwanateknolojia: ngozi nyeusi
 👩‍💻	mwanateknolojia mwanamke
 👩🏻‍💻	mwanateknolojia mwanamke: ngozi nyepesi
@@ -354,10 +354,10 @@
 👨🏾‍🎨	msanii wa kiume: ngozi ya wastani-nyeusi
 👨🏿‍🎨	msanii wa kiume: ngozi nyeusi
 👩‍🎨	msanii wa kike
-👩🏻‍🎨	msanii mwanamke: ngozi nyepesi
+👩🏻‍🎨	msanii wa kike: ngozi nyepesi
 👩🏼‍🎨	msanii mwanamke: ngozi ya wastani
 👩🏽‍🎨	msanii mwanamke: ngozi ya wastani
-👩🏾‍🎨	msanii mwanamke: ngozi ya wastani-nyeusi
+👩🏾‍🎨	msanii mwanamke: ngozi ya wastani ya giza
 👩🏿‍🎨	msanii wa kike: ngozi nyeusi
 👨‍✈️	rubani mtu
 👨‍✈	rubani mtu
@@ -379,10 +379,10 @@
 👩🏼‍✈	mwanamke rubani: ngozi ya wastani
 👩🏽‍✈️	mwanamke rubani: ngozi ya wastani
 👩🏽‍✈	mwanamke rubani: ngozi ya wastani
-👩🏾‍✈️	mwanamke rubani: ngozi ya wastani-nyeusi
-👩🏾‍✈	mwanamke rubani: ngozi ya wastani-nyeusi
-👩🏿‍✈️	mwanamke rubani: ngozi nyeusi kiasi
-👩🏿‍✈	mwanamke rubani: ngozi nyeusi kiasi
+👩🏾‍✈️	rubani mwanamke: ngozi ya wastani-nyeusi
+👩🏾‍✈	rubani mwanamke: ngozi ya wastani-nyeusi
+👩🏿‍✈️	rubani mwanamke: ngozi nyeusi kiasi
+👩🏿‍✈	rubani mwanamke: ngozi nyeusi kiasi
 👨‍🚀	mwanaanga mtu
 👨🏻‍🚀	mwanaanga mtu: ngozi nyeupe
 👨🏼‍🚀	mwanaanga mtu: ngozi ya wastani
@@ -397,10 +397,10 @@
 👩🏿‍🚀	mwanamke mwanaanga: ngozi nyeusi kiasi
 👨‍🚒	mtu zima moto
 👨🏻‍🚒	zimamoto mtu: ngozi nyeupe
-👨🏼‍🚒	zima moto mtu: ngozi ya wastani
+👨🏼‍🚒	zimamoto mtu: ngozi ya wastani
 👨🏽‍🚒	mtu zimamoto: ngozi ya wastani
-👨🏾‍🚒	mtu mzima wa zimamoto: ngozi ya wastani ya giza
-👨🏿‍🚒	zimamoto mtu: ngozi nyeusi kiasi
+👨🏾‍🚒	zimamoto mtu: ngozi ya wastani-giza
+👨🏿‍🚒	mtu zimamoto: ngozi nyeusi kiasi
 👩‍🚒	mwanamke zima moto
 👩🏻‍🚒	mwanamke zimamoto: ngozi nyeupe
 👩🏼‍🚒	mwanamke zimamoto: ngozi ya wastani
@@ -408,15 +408,15 @@
 👩🏾‍🚒	mwanamke zimamoto: ngozi ya wastani ya giza
 👩🏿‍🚒	mwanamke zimamoto: ngozi nyeusi kiasi
 👮	askari
-👮🏻	polisi: ngozi nyepesi
+👮🏻	polisi: ngozi nyeupe
 👮🏼	polisi: ngozi ya wastani
 👮🏽	polisi: ngozi ya wastani
 👮🏾	polisi: ngozi ya wastani ya giza
 👮🏿	polisi: ngozi nyeusi
 👮‍♂️	polisi mwanaume
 👮‍♂	polisi mwanaume
-👮🏻‍♂️	polisi mwanamume: ngozi nyepesi
-👮🏻‍♂	polisi mwanamume: ngozi nyepesi
+👮🏻‍♂️	polisi mwanamume: ngozi nyeupe
+👮🏻‍♂	polisi mwanamume: ngozi nyeupe
 👮🏼‍♂️	polisi mwanamume: ngozi ya wastani
 👮🏼‍♂	polisi mwanamume: ngozi ya wastani
 👮🏽‍♂️	polisi mwanamume: ngozi ya wastani
@@ -433,8 +433,8 @@
 👮🏼‍♀	polisi mwanamke: ngozi ya wastani
 👮🏽‍♀️	polisi mwanamke: ngozi ya wastani
 👮🏽‍♀	polisi mwanamke: ngozi ya wastani
-👮🏾‍♀️	polisi mwanamke: ngozi ya wastani ya giza
-👮🏾‍♀	polisi mwanamke: ngozi ya wastani ya giza
+👮🏾‍♀️	afisa polisi mwanamke: ngozi ya wastani ya giza
+👮🏾‍♀	afisa polisi mwanamke: ngozi ya wastani ya giza
 👮🏿‍♀️	polisi mwanamke: ngozi nyeusi
 👮🏿‍♀	polisi mwanamke: ngozi nyeusi
 🕵️	mpelelezi
@@ -458,12 +458,12 @@
 🕵🏾‍♂	mpelelezi wa kiume: ngozi ya wastani-nyeusi
 🕵🏿‍♂️	mpelelezi wa kiume: ngozi nyeusi
 🕵🏿‍♂	mpelelezi wa kiume: ngozi nyeusi
-🕵️‍♀️	mpelelezi mwanamke
-🕵‍♀️	mpelelezi mwanamke
-🕵️‍♀	mpelelezi mwanamke
-🕵‍♀	mpelelezi mwanamke
-🕵🏻‍♀️	mwanamke mpelelezi: ngozi nyepesi
-🕵🏻‍♀	mwanamke mpelelezi: ngozi nyepesi
+🕵️‍♀️	mpelelezi wa mwanamke
+🕵‍♀️	mpelelezi wa mwanamke
+🕵️‍♀	mpelelezi wa mwanamke
+🕵‍♀	mpelelezi wa mwanamke
+🕵🏻‍♀️	mpelelezi mwanamke: ngozi nyepesi
+🕵🏻‍♀	mpelelezi mwanamke: ngozi nyepesi
 🕵🏼‍♀️	mpelelezi wa mwanamke: ngozi ya wastani
 🕵🏼‍♀	mpelelezi wa mwanamke: ngozi ya wastani
 🕵🏽‍♀️	mwanamke mpelelezi: ngozi ya wastani
@@ -507,7 +507,7 @@
 👷🏼	mjenzi: ngozi ya wastani
 👷🏽	mjenzi: ngozi ya wastani
 👷🏾	mjenzi: ngozi ya wastani-giza
-👷🏿	mjenzi: ngozi nyeusi
+👷🏿	mjenzi: ngozi nyeusi kiasi
 👷‍♂️	mfanyakazi wa ujenzi
 👷‍♂	mfanyakazi wa ujenzi
 👷🏻‍♂️	mtu wa ujenzi mfanyakazi: ngozi tone
@@ -570,8 +570,8 @@
 👳🏼‍♀	mwanamke aliyevaa kilemba: ngozi ya wastani
 👳🏽‍♀️	mwanamke aliyevaa kilemba: ngozi ya wastani
 👳🏽‍♀	mwanamke aliyevaa kilemba: ngozi ya wastani
-👳🏾‍♀️	mwanamke aliyevaa kilemba: ngozi ya wastani-nyeusi
-👳🏾‍♀	mwanamke aliyevaa kilemba: ngozi ya wastani-nyeusi
+👳🏾‍♀️	mwanamke aliyevaa kilemba: ngozi ya wastani ya giza
+👳🏾‍♀	mwanamke aliyevaa kilemba: ngozi ya wastani ya giza
 👳🏿‍♀️	mwanamke aliyevaa kilemba: ngozi nyeusi
 👳🏿‍♀	mwanamke aliyevaa kilemba: ngozi nyeusi
 👲	mtu mwenye kofia ya Kichina
@@ -579,7 +579,7 @@
 👲🏼	mwanamume mwenye kofia ya Kichina: ngozi ya wastani
 👲🏽	mwanamume mwenye kofia ya Kichina: ngozi ya wastani
 👲🏾	mwanamume mwenye kofia ya Kichina: ngozi ya wastani-giza
-👲🏿	mwanamume mwenye kofia ya Kichina: ngozi nyeusi kiasi
+👲🏿	mwanamume mwenye kofia ya Kichina: ngozi nyeusi
 🧕	mwanamke mwenye hijabu
 🧕🏻	mwanamke aliyevaa hijabu: ngozi nyeupe
 🧕🏼	mwanamke aliyevaa hijabu: ngozi ya wastani
@@ -662,7 +662,7 @@
 👨🏻‍🦳	mwanamume, mwenye nywele nyeupe: ngozi nyeupe
 👨🏼‍🦳	mwanamume, mwenye nywele nyeupe: ngozi ya wastani
 👨🏽‍🦳	mwanamume, mwenye nywele nyeupe: ngozi ya wastani
-👨🏾‍🦳	mwanamume, mwenye nywele nyeupe: ngozi ya wastani ya giza
+👨🏾‍🦳	mwanamume, mwenye nywele nyeupe: ngozi ya wastani-nyeusi
 👨🏿‍🦳	mwanamume, mwenye nywele nyeupe: ngozi nyeusi
 👩‍🦳	mwanamke, mwenye nywele nyeupe
 👩🏻‍🦳	mwanamke, mwenye nywele nyeupe: ngozi nyeupe
@@ -704,14 +704,14 @@
 🎅🏻	Santa Claus: ngozi nyepesi
 🎅🏼	Santa Claus: ngozi ya wastani
 🎅🏽	Santa Claus: ngozi ya wastani
-🎅🏾	Santa Claus: ngozi ya kati-giza
+🎅🏾	Santa Claus: ngozi ya wastani-giza
 🎅🏿	Santa Claus: ngozi nyeusi
 🤶	Bibi Claus
 🤶🏻	Bibi Claus: ngozi nyepesi
 🤶🏼	Bibi Claus: ngozi ya wastani ya ngozi
 🤶🏽	Bibi Claus: ngozi ya wastani
 🤶🏾	Bibi Claus: ngozi ya kati-giza
-🤶🏿	Bibi Claus: ngozi nyeusi tone
+🤶🏿	Bibi Claus: sauti ya ngozi nyeusi
 🦸	shujaa mkuu
 🦸🏻	shujaa: ngozi nyeupe
 🦸🏼	shujaa: ngozi ya wastani
@@ -762,7 +762,7 @@
 🦹🏿‍♀	mwanamke supervillain: ngozi nyeusi
 🦹‍♂️	mtu supervillain
 🦹‍♂	mtu supervillain
-🦹🏻‍♂️	mwanamume supervillain: ngozi nyeupe
+🦹🏻‍♂️	mtu supervillain: ngozi nyeupe
 🦹🏻‍♂	mwanamume supervillain: ngozi nyeupe
 🦹🏼‍♂️	mwanamume supervillain: ngozi ya wastani
 🦹🏼‍♂	mwanamume supervillain: ngozi ya wastani
@@ -807,7 +807,7 @@
 🧚🏼	Fairy: ngozi ya wastani
 🧚🏽	Fairy: ngozi ya wastani
 🧚🏾	Fairy: ngozi ya wastani-giza
-🧚🏿	Fairy: ngozi nyeupe kiasi
+🧚🏿	Fairy: ngozi nyeusi kiasi
 🧚‍♀️	mwanamke Fairy
 🧚‍♀	mwanamke Fairy
 🧚🏻‍♀️	mwanamke Fairy: ngozi nyeupe
@@ -836,14 +836,14 @@
 🧛🏻	vampire: ngozi nyepesi
 🧛🏼	vampire: ngozi ya wastani
 🧛🏽	vampire: ngozi ya wastani
-🧛🏾	vampire: ngozi ya wastani ya giza
+🧛🏾	vampire: ngozi ya wastani-giza
 🧛🏿	vampire: ngozi nyeusi kiasi
 🧛‍♀️	vampire ya mwanamke
 🧛‍♀	vampire ya mwanamke
-🧛🏻‍♀️	mwanamke vampire: ngozi nyepesi
-🧛🏻‍♀	mwanamke vampire: ngozi nyepesi
-🧛🏼‍♀️	mwanamke vampire: ngozi ya wastani
-🧛🏼‍♀	mwanamke vampire: ngozi ya wastani
+🧛🏻‍♀️	mwanamke vampire: ngozi nyeupe
+🧛🏻‍♀	mwanamke vampire: ngozi nyeupe
+🧛🏼‍♀️	vampire ya mwanamke: ngozi ya wastani
+🧛🏼‍♀	vampire ya mwanamke: ngozi ya wastani
 🧛🏽‍♀️	mwanamke vampire: ngozi ya wastani
 🧛🏽‍♀	mwanamke vampire: ngozi ya wastani
 🧛🏾‍♀️	vampire ya mwanamke: ngozi ya wastani ya giza
@@ -896,7 +896,7 @@
 🧝🏻	elf: ngozi nyepesi
 🧝🏼	elf: ngozi ya wastani
 🧝🏽	elf: ngozi ya wastani
-🧝🏾	elf: ngozi ya wastani ya giza
+🧝🏾	elf: ngozi ya wastani-giza
 🧝🏿	elf: ngozi nyeusi
 🧝‍♀️	mwanamke elf
 🧝‍♀	mwanamke elf
@@ -937,7 +937,7 @@
 🙍🏼	mtu anayekunja kipaji: ngozi ya wastani
 🙍🏽	mtu anayekunja kipaji: ngozi ya wastani
 🙍🏾	mtu anayekunja kipaji: ngozi ya wastani-nyeusi
-🙍🏿	mtu anayekunja kipaji: ngozi nyeusi kiasi
+🙍🏿	mtu anayekunja kipaji: ngozi nyeusi
 🙍‍♂️	mwanaume kukunja uso
 🙍‍♂	mwanaume kukunja uso
 🙍🏻‍♂️	mwanaume kukunja kipaji: ngozi nyeupe
@@ -988,8 +988,8 @@
 🙎🏼‍♀	mwanamke anayechuruzika: ngozi ya wastani
 🙎🏽‍♀️	mwanamke anayechuruzika: ngozi ya wastani
 🙎🏽‍♀	mwanamke anayechuruzika: ngozi ya wastani
-🙎🏾‍♀️	mwanamke anayechuruzika: ngozi ya wastani ya giza
-🙎🏾‍♀	mwanamke anayechuruzika: ngozi ya wastani ya giza
+🙎🏾‍♀️	mwanamke anayechuruzika: ngozi ya wastani-nyeusi
+🙎🏾‍♀	mwanamke anayechuruzika: ngozi ya wastani-nyeusi
 🙎🏿‍♀️	mwanamke mkunjo: ngozi nyeusi
 🙎🏿‍♀	mwanamke mkunjo: ngozi nyeusi
 🙅	mtu anayeashiria HAPANA
@@ -1004,8 +1004,8 @@
 🙅🏻‍♂	mwanamume anayeashiria HAPANA: ngozi nyeupe
 🙅🏼‍♂️	mwanamume anayeashiria HAPANA: ngozi ya wastani
 🙅🏼‍♂	mwanamume anayeashiria HAPANA: ngozi ya wastani
-🙅🏽‍♂️	mwanamume anayeonyesha HAPANA: ngozi ya wastani
-🙅🏽‍♂	mwanamume anayeonyesha HAPANA: ngozi ya wastani
+🙅🏽‍♂️	mwanamume anayeashiria HAPANA: ngozi ya wastani
+🙅🏽‍♂	mwanamume anayeashiria HAPANA: ngozi ya wastani
 🙅🏾‍♂️	mwanamume anayeashiria HAPANA: ngozi ya wastani iliyokoza
 🙅🏾‍♂	mwanamume anayeashiria HAPANA: ngozi ya wastani iliyokoza
 🙅🏿‍♂️	mwanamume anayeashiria HAPANA: ngozi nyeusi
@@ -1019,13 +1019,13 @@
 🙅🏽‍♀️	mwanamke anayeonyesha HAPANA: ngozi ya wastani
 🙅🏽‍♀	mwanamke anayeonyesha HAPANA: ngozi ya wastani
 🙅🏾‍♀️	mwanamke anayeonyesha HAPANA: ngozi ya wastani iliyokoza
-🙅🏾‍♀	mwanamke anayeonyesha HAPANA: ngozi ya wastani iliyokoza
+🙅🏾‍♀	mwanamke anayeonyesha HAPANA: ngozi ya wastani yenye giza
 🙅🏿‍♀️	mwanamke anayeonyesha HAPANA: ngozi nyeusi
 🙅🏿‍♀	mwanamke anayeonyesha HAPANA: ngozi nyeusi
 🙆	mtu anayeonyesha ishara sawa
 🙆🏻	mtu anayeonyesha ishara Sawa: ngozi nyeupe
 🙆🏼	mtu anayeonyesha ishara Sawa: ngozi ya wastani
-🙆🏽	mtu anayeonyesha ishara Sawa: ngozi ya wastani
+🙆🏽	mtu anayeonyesha ishara sawa: ngozi ya wastani
 🙆🏾	mtu anayeonyesha ishara Sawa: ngozi ya wastani iliyokoza
 🙆🏿	mtu anayeonyesha ishara Sawa: ngozi nyeusi
 🙆‍♂️	mwanamume akiashiria sawa
@@ -1036,8 +1036,8 @@
 🙆🏼‍♂	mwanamume akionyesha ishara Sawa: ngozi ya wastani
 🙆🏽‍♂️	mwanamume akionyesha ishara sawa: ngozi ya wastani
 🙆🏽‍♂	mwanamume akionyesha ishara sawa: ngozi ya wastani
-🙆🏾‍♂️	mwanamume anayeonyesha ishara Sawa: ngozi ya wastani yenye giza
-🙆🏾‍♂	mwanamume anayeonyesha ishara Sawa: ngozi ya wastani yenye giza
+🙆🏾‍♂️	mwanamume akionyesha ishara Sawa: ngozi ya wastani yenye giza
+🙆🏾‍♂	mwanamume akionyesha ishara Sawa: ngozi ya wastani yenye giza
 🙆🏿‍♂️	mwanamume anayeonyesha ishara Sawa: ngozi nyeusi
 🙆🏿‍♂	mwanamume anayeonyesha ishara Sawa: ngozi nyeusi
 🙆‍♀️	mwanamke akiashiria sawa
@@ -1046,8 +1046,8 @@
 🙆🏻‍♀	mwanamke anayeonyesha ishara Sawa: ngozi nyeupe
 🙆🏼‍♀️	mwanamke anayeonyesha ishara Sawa: ngozi ya wastani
 🙆🏼‍♀	mwanamke anayeonyesha ishara Sawa: ngozi ya wastani
-🙆🏽‍♀️	mwanamke anayeonyesha ishara sawa: ngozi ya wastani
-🙆🏽‍♀	mwanamke anayeonyesha ishara sawa: ngozi ya wastani
+🙆🏽‍♀️	mwanamke anayeonyesha ishara Sawa: ngozi ya wastani
+🙆🏽‍♀	mwanamke anayeonyesha ishara Sawa: ngozi ya wastani
 🙆🏾‍♀️	mwanamke anayeonyesha ishara Sawa: ngozi ya wastani ya giza
 🙆🏾‍♀	mwanamke anayeonyesha ishara Sawa: ngozi ya wastani ya giza
 🙆🏿‍♀️	mwanamke anayeonyesha ishara Sawa: ngozi nyeusi
@@ -1064,8 +1064,8 @@
 💁🏻‍♂	mtu anayeonyesha mkono: ngozi nyeupe
 💁🏼‍♂️	mwanamume anayeonyesha mkono: ngozi ya wastani
 💁🏼‍♂	mwanamume anayeonyesha mkono: ngozi ya wastani
-💁🏽‍♂️	mwanamume anayeonyesha mkono: ngozi ya wastani
-💁🏽‍♂	mwanamume anayeonyesha mkono: ngozi ya wastani
+💁🏽‍♂️	mwanamume anayenyoosha mkono: ngozi ya wastani
+💁🏽‍♂	mwanamume anayenyoosha mkono: ngozi ya wastani
 💁🏾‍♂️	mwanamume anayeonyesha mkono: ngozi ya wastani ya giza
 💁🏾‍♂	mwanamume anayeonyesha mkono: ngozi ya wastani ya giza
 💁🏿‍♂️	mtu anayeonyesha mkono: ngozi nyeusi
@@ -1094,8 +1094,8 @@
 🙋🏻‍♂	mtu aliyeinua mkono: ngozi nyeupe
 🙋🏼‍♂️	mtu aliyeinua mkono: ngozi ya wastani
 🙋🏼‍♂	mtu aliyeinua mkono: ngozi ya wastani
-🙋🏽‍♂️	mtu aliyeinua mkono: ngozi ya wastani
-🙋🏽‍♂	mtu aliyeinua mkono: ngozi ya wastani
+🙋🏽‍♂️	mwanaume aliyeinua mkono: ngozi ya wastani
+🙋🏽‍♂	mwanaume aliyeinua mkono: ngozi ya wastani
 🙋🏾‍♂️	mtu aliyeinua mkono: ngozi ya wastani-nyeusi
 🙋🏾‍♂	mtu aliyeinua mkono: ngozi ya wastani-nyeusi
 🙋🏿‍♂️	mtu anayeinua mkono: ngozi nyeusi
@@ -1152,13 +1152,13 @@
 🤦‍♂	uso wa mtu
 🤦🏻‍♂️	man facepalming: ngozi nyeupe
 🤦🏻‍♂	man facepalming: ngozi nyeupe
-🤦🏼‍♂️	mwanaume usoni: ngozi ya wastani
-🤦🏼‍♂	mwanaume usoni: ngozi ya wastani
-🤦🏽‍♂️	mwanaume usoni: ngozi ya wastani
-🤦🏽‍♂	mwanaume usoni: ngozi ya wastani
+🤦🏼‍♂️	uso wa mwanaume: ngozi ya wastani
+🤦🏼‍♂	uso wa mwanaume: ngozi ya wastani
+🤦🏽‍♂️	uso wa mwanaume: ngozi ya wastani
+🤦🏽‍♂	uso wa mwanaume: ngozi ya wastani
 🤦🏾‍♂️	man facepalming: ngozi ya wastani-nyeusi
 🤦🏾‍♂	man facepalming: ngozi ya wastani-nyeusi
-🤦🏿‍♂️	uso wa mwanaume: ngozi nyeusi kiasi
+🤦🏿‍♂️	mwanaume kukunja uso: ngozi nyeusi kiasi
 🤦🏿‍♂	uso wa mwanaume: ngozi nyeusi kiasi
 🤦‍♀️	mwanamke kupiga uso
 🤦‍♀	mwanamke kupiga uso
@@ -1188,8 +1188,8 @@
 🤷🏽‍♂	mwanaume anayekunja sura: ngozi ya wastani
 🤷🏾‍♂️	mwanaume kunyata: ngozi ya wastani-nyeusi
 🤷🏾‍♂	mwanaume kunyata: ngozi ya wastani-nyeusi
-🤷🏿‍♂️	mwanamume anayelegea: ngozi nyeusi
-🤷🏿‍♂	mwanamume anayelegea: ngozi nyeusi
+🤷🏿‍♂️	mwanaume anayekunja sura: ngozi nyeusi
+🤷🏿‍♂	mwanaume anayekunja sura: ngozi nyeusi
 🤷‍♀️	mwanamke akiinua mabega
 🤷‍♀	mwanamke akiinua mabega
 🤷🏻‍♀️	mwanamke anayeteleza: ngozi nyeupe
@@ -1198,8 +1198,8 @@
 🤷🏼‍♀	mwanamke anayekunja sura: ngozi ya wastani
 🤷🏽‍♀️	mwanamke anayekunja sura: ngozi ya wastani
 🤷🏽‍♀	mwanamke anayekunja sura: ngozi ya wastani
-🤷🏾‍♀️	mwanamke anayekunja sura: ngozi ya wastani ya giza
-🤷🏾‍♀	mwanamke anayekunja sura: ngozi ya wastani ya giza
+🤷🏾‍♀️	mwanamke anayekunja sura: ngozi ya wastani-nyeusi
+🤷🏾‍♀	mwanamke anayekunja sura: ngozi ya wastani-nyeusi
 🤷🏿‍♀️	mwanamke anayeteleza: ngozi nyeusi
 🤷🏿‍♀	mwanamke anayeteleza: ngozi nyeusi
 💆	mtu akipata massage
@@ -1207,7 +1207,7 @@
 💆🏼	mtu anayepata masaji: ngozi ya wastani
 💆🏽	mtu anayepata masaji: ngozi ya wastani
 💆🏾	mtu anayepata masaji: ngozi ya wastani ya giza
-💆🏿	mtu anayepata masaji: ngozi nyeusi kiasi
+💆🏿	mtu anayekandamizwa: ngozi nyeusi kiasi
 💆‍♂️	mwanaume akipata massage
 💆‍♂	mwanaume akipata massage
 💆🏻‍♂️	mwanamume akipata masaji: ngozi nyepesi
@@ -1216,8 +1216,8 @@
 💆🏼‍♂	mwanamume akipata masaji: ngozi ya wastani
 💆🏽‍♂️	mwanamume akipata masaji: ngozi ya wastani
 💆🏽‍♂	mwanamume akipata masaji: ngozi ya wastani
-💆🏾‍♂️	mwanamume akipata masaji: ngozi ya wastani ya giza
-💆🏾‍♂	mwanamume akipata masaji: ngozi ya wastani ya giza
+💆🏾‍♂️	mwanamume akipata masaji: ngozi ya wastani-nyeusi
+💆🏾‍♂	mwanamume akipata masaji: ngozi ya wastani-nyeusi
 💆🏿‍♂️	mwanamume akipata masaji: ngozi nyeusi
 💆🏿‍♂	mwanamume akipata masaji: ngozi nyeusi
 💆‍♀️	mwanamke akipata massage
@@ -1236,7 +1236,7 @@
 💇🏻	mtu anayenyolewa nywele: ngozi nyeupe
 💇🏼	mtu anayenyolewa nywele: ngozi ya wastani
 💇🏽	mtu anayenyolewa nywele: ngozi ya wastani
-💇🏾	mtu anayenyolewa nywele: ngozi ya wastani-nyeusi
+💇🏾	mtu anayenyolewa nywele: ngozi ya wastani ya giza
 💇🏿	mtu anayenyolewa nywele: ngozi nyeusi
 💇‍♂️	mwanaume akikata nywele
 💇‍♂	mwanaume akikata nywele
@@ -1246,8 +1246,8 @@
 💇🏼‍♂	mwanamume anayenyolewa nywele: ngozi ya wastani
 💇🏽‍♂️	mwanamume anayenyolewa nywele: ngozi ya wastani
 💇🏽‍♂	mwanamume anayenyolewa nywele: ngozi ya wastani
-💇🏾‍♂️	mwanamume anayenyolewa nywele: ngozi ya wastani-nyeusi
-💇🏾‍♂	mwanamume anayenyolewa nywele: ngozi ya wastani-nyeusi
+💇🏾‍♂️	mwanamume anayekata nywele: ngozi ya wastani-nyeusi
+💇🏾‍♂	mwanamume anayekata nywele: ngozi ya wastani-nyeusi
 💇🏿‍♂️	mwanamume anayenyolewa nywele: ngozi nyeusi
 💇🏿‍♂	mwanamume anayenyolewa nywele: ngozi nyeusi
 💇‍♀️	mwanamke akikata nywele
@@ -1272,8 +1272,8 @@
 🚶‍♂	mtu akitembea
 🚶🏻‍♂️	mtu anayetembea: ngozi nyepesi
 🚶🏻‍♂	mtu anayetembea: ngozi nyepesi
-🚶🏼‍♂️	mwanaume anayetembea: ngozi ya wastani
-🚶🏼‍♂	mwanaume anayetembea: ngozi ya wastani
+🚶🏼‍♂️	mtu anayetembea: ngozi ya wastani
+🚶🏼‍♂	mtu anayetembea: ngozi ya wastani
 🚶🏽‍♂️	mwanaume anayetembea: ngozi ya wastani
 🚶🏽‍♂	mwanaume anayetembea: ngozi ya wastani
 🚶🏾‍♂️	mtu anayetembea: ngozi ya wastani-giza
@@ -1282,8 +1282,8 @@
 🚶🏿‍♂	mtu anayetembea: ngozi nyeusi
 🚶‍♀️	mwanamke akitembea
 🚶‍♀	mwanamke akitembea
-🚶🏻‍♀️	mwanamke anayetembea: ngozi nyepesi
-🚶🏻‍♀	mwanamke anayetembea: ngozi nyepesi
+🚶🏻‍♀️	mwanamke anayetembea: ngozi nyeupe
+🚶🏻‍♀	mwanamke anayetembea: ngozi nyeupe
 🚶🏼‍♀️	mwanamke anayetembea: ngozi ya wastani
 🚶🏼‍♀	mwanamke anayetembea: ngozi ya wastani
 🚶🏽‍♀️	mwanamke anayetembea: ngozi ya wastani
@@ -1306,8 +1306,8 @@
 🏃🏼‍♂	mtu anayekimbia: ngozi ya wastani
 🏃🏽‍♂️	mtu anayekimbia: ngozi ya wastani
 🏃🏽‍♂	mtu anayekimbia: ngozi ya wastani
-🏃🏾‍♂️	mtu anayekimbia: ngozi ya wastani ya giza
-🏃🏾‍♂	mtu anayekimbia: ngozi ya wastani ya giza
+🏃🏾‍♂️	mtu anayekimbia: ngozi ya wastani-nyeusi
+🏃🏾‍♂	mtu anayekimbia: ngozi ya wastani-nyeusi
 🏃🏿‍♂️	mtu anayekimbia: ngozi nyeusi
 🏃🏿‍♂	mtu anayekimbia: ngozi nyeusi
 🏃‍♀️	mwanamke kukimbia
@@ -1340,19 +1340,19 @@
 👯‍♀️	wanawake wenye masikio ya bunny
 👯‍♀	wanawake wenye masikio ya bunny
 🧖	mtu katika chumba cha mvuke
-🧖🏻	mtu katika chumba chenye mvuke: ngozi nyeupe
+🧖🏻	mtu kwenye chumba chenye mvuke: ngozi nyeupe
 🧖🏼	mtu katika chumba chenye mvuke: ngozi ya wastani
 🧖🏽	mtu katika chumba chenye mvuke: ngozi ya wastani
 🧖🏾	mtu aliye katika chumba chenye mvuke: ngozi ya wastani ya giza
-🧖🏿	mtu kwenye chumba chenye mvuke: ngozi nyeusi
+🧖🏿	mtu katika chumba chenye mvuke: ngozi nyeusi
 🧖‍♀️	mwanamke katika chumba cha mvuke
 🧖‍♀	mwanamke katika chumba cha mvuke
-🧖🏻‍♀️	mwanamke kwenye chumba chenye mvuke: ngozi nyepesi
-🧖🏻‍♀	mwanamke kwenye chumba chenye mvuke: ngozi nyepesi
+🧖🏻‍♀️	mwanamke katika chumba chenye mvuke: ngozi nyepesi
+🧖🏻‍♀	mwanamke katika chumba chenye mvuke: ngozi nyepesi
 🧖🏼‍♀️	mwanamke katika chumba chenye mvuke: ngozi ya wastani
 🧖🏼‍♀	mwanamke katika chumba chenye mvuke: ngozi ya wastani
-🧖🏽‍♀️	mwanamke katika chumba chenye mvuke: ngozi ya wastani
-🧖🏽‍♀	mwanamke katika chumba chenye mvuke: ngozi ya wastani
+🧖🏽‍♀️	mwanamke kwenye chumba chenye mvuke: ngozi ya wastani
+🧖🏽‍♀	mwanamke kwenye chumba chenye mvuke: ngozi ya wastani
 🧖🏾‍♀️	mwanamke katika chumba chenye mvuke: ngozi ya wastani ya giza
 🧖🏾‍♀	mwanamke katika chumba chenye mvuke: ngozi ya wastani ya giza
 🧖🏿‍♀️	mwanamke katika chumba chenye mvuke: ngozi nyeusi
@@ -1379,8 +1379,8 @@
 🧗‍♀	mwanamke kupanda
 🧗🏻‍♀️	mwanamke kupanda: ngozi nyeupe
 🧗🏻‍♀	mwanamke kupanda: ngozi nyeupe
-🧗🏼‍♀️	mwanamke anayepanda: ngozi ya wastani
-🧗🏼‍♀	mwanamke anayepanda: ngozi ya wastani
+🧗🏼‍♀️	mwanamke kupanda: ngozi ya wastani
+🧗🏼‍♀	mwanamke kupanda: ngozi ya wastani
 🧗🏽‍♀️	mwanamke kupanda: ngozi ya wastani
 🧗🏽‍♀	mwanamke kupanda: ngozi ya wastani
 🧗🏾‍♀️	mwanamke kupanda: ngozi ya wastani-giza
@@ -1398,7 +1398,7 @@
 🧗🏾‍♂️	mtu kupanda: ngozi ya wastani-giza
 🧗🏾‍♂	mtu kupanda: ngozi ya wastani-giza
 🧗🏿‍♂️	mwanaume kupanda: ngozi nyeusi kiasi
-🧗🏿‍♂	kupanda mtu: ngozi nyeusi kiasi
+🧗🏿‍♂	mwanaume kupanda: ngozi nyeusi kiasi
 🧘	mtu katika nafasi ya lotus
 🧘🏻	mtu aliye katika nafasi ya lotus: ngozi nyeupe
 🧘🏼	mtu aliye katika nafasi ya lotus: ngozi ya wastani
@@ -1421,8 +1421,8 @@
 🧘‍♂	mtu katika nafasi ya lotus
 🧘🏻‍♂️	mwanamume katika nafasi ya lotus: ngozi nyepesi
 🧘🏻‍♂	mwanamume katika nafasi ya lotus: ngozi nyepesi
-🧘🏼‍♂️	mtu katika nafasi ya lotus: ngozi ya wastani
-🧘🏼‍♂	mtu katika nafasi ya lotus: ngozi ya wastani
+🧘🏼‍♂️	mtu aliye katika nafasi ya lotus: ngozi ya wastani
+🧘🏼‍♂	mtu aliye katika nafasi ya lotus: ngozi ya wastani
 🧘🏽‍♂️	mwanamume katika nafasi ya lotus: ngozi ya wastani
 🧘🏽‍♂	mwanamume katika nafasi ya lotus: ngozi ya wastani
 🧘🏾‍♂️	mwanamume katika nafasi ya lotus: ngozi ya wastani ya giza
@@ -1443,7 +1443,7 @@
 🛌🏿	mtu kitandani: ngozi nyeusi
 🕴️	mtu katika suti levitating
 🕴	mtu katika suti levitating
-🕴🏻	mtu aliyevaa suti anayeteleza: ngozi nyeupe
+🕴🏻	mwanamume aliyevaa suti anayeteleza: ngozi nyeupe
 🕴🏼	mwanamume aliyevaa suti anayeteleza: ngozi ya wastani
 🕴🏽	mwanamume aliyevaa suti anayeteleza: ngozi ya wastani
 🕴🏾	mwanamume aliyevaa suti anayeteleza: ngozi ya wastani ya giza
@@ -1455,7 +1455,7 @@
 🤺	uzio wa mtu
 🏇	mbio za farasi
 🏇🏻	mbio za farasi: ngozi nyepesi
-🏇🏼	mbio za farasi: ngozi ya wastani ya mwanga
+🏇🏼	mbio za farasi: ngozi yenye mwanga wa wastani
 🏇🏽	mbio za farasi: ngozi ya wastani
 🏇🏾	mbio za farasi: ngozi ya wastani-giza
 🏇🏿	mbio za farasi: ngozi nyeusi
@@ -1474,14 +1474,14 @@
 🏌🏽	mcheza gofu: ngozi ya wastani
 🏌🏾	mtu anayecheza gofu: ngozi ya wastani ya giza
 🏌🏿	mcheza gofu: ngozi nyeusi
-🏌️‍♂️	mwana gofu
-🏌‍♂️	mwana gofu
-🏌️‍♂	mwana gofu
+🏌️‍♂️	mtu wa gofu
+🏌‍♂️	mtu wa gofu
+🏌️‍♂	mtu wa gofu
 🏌‍♂	mwana gofu
 🏌🏻‍♂️	mtu anayecheza gofu: ngozi nyeupe
 🏌🏻‍♂	mtu anayecheza gofu: ngozi nyeupe
 🏌🏼‍♂️	mtu anayecheza gofu: ngozi ya wastani
-🏌🏼‍♂	mtu anayecheza gofu: ngozi ya wastani
+🏌🏼‍♂	mwana gofu: ngozi ya wastani
 🏌🏽‍♂️	mwana gofu: ngozi ya wastani
 🏌🏽‍♂	mwana gofu: ngozi ya wastani
 🏌🏾‍♂️	mwana gofu: ngozi ya wastani-nyeusi
@@ -1498,8 +1498,8 @@
 🏌🏼‍♀	mwanamke mcheza gofu: ngozi ya wastani
 🏌🏽‍♀️	mwanamke mcheza gofu: ngozi ya wastani
 🏌🏽‍♀	mwanamke mcheza gofu: ngozi ya wastani
-🏌🏾‍♀️	mwanamke mcheza gofu: ngozi ya wastani-nyeusi
-🏌🏾‍♀	mwanamke mcheza gofu: ngozi ya wastani-nyeusi
+🏌🏾‍♀️	mwanamke mcheza gofu: ngozi ya wastani ya giza
+🏌🏾‍♀	mwanamke mcheza gofu: ngozi ya wastani ya giza
 🏌🏿‍♀️	mwanamke mcheza gofu: ngozi nyeusi kiasi
 🏌🏿‍♀	mwanamke mcheza gofu: ngozi nyeusi kiasi
 🏄	mtu anayeteleza
@@ -1522,10 +1522,10 @@
 🏄🏿‍♂	mtu anayeteleza kwenye mawimbi: ngozi nyeusi kiasi
 🏄‍♀️	mwanamke anayeteleza
 🏄‍♀	mwanamke anayeteleza
-🏄🏻‍♀️	mwanamke anayeteleza: ngozi nyeupe
-🏄🏻‍♀	mwanamke anayeteleza: ngozi nyeupe
-🏄🏼‍♀️	mwanamke anayeteleza kwenye mawimbi: ngozi ya wastani
-🏄🏼‍♀	mwanamke anayeteleza kwenye mawimbi: ngozi ya wastani
+🏄🏻‍♀️	mwanamke anayeteleza kwenye mawimbi: ngozi nyeupe
+🏄🏻‍♀	mwanamke anayeteleza kwenye mawimbi: ngozi nyeupe
+🏄🏼‍♀️	mwanamke anayeteleza: ngozi ya wastani
+🏄🏼‍♀	mwanamke anayeteleza: ngozi ya wastani
 🏄🏽‍♀️	mwanamke anayeteleza kwenye mawimbi: ngozi ya wastani
 🏄🏽‍♀	mwanamke anayeteleza kwenye mawimbi: ngozi ya wastani
 🏄🏾‍♀️	mwanamke anayeteleza kwenye mawimbi: ngozi ya wastani ya giza
@@ -1544,8 +1544,8 @@
 🚣🏻‍♂	mtu anayepiga makasia: ngozi ya kahawia
 🚣🏼‍♂️	mtu anayepiga makasia: ngozi ya wastani
 🚣🏼‍♂	mtu anayepiga makasia: ngozi ya wastani
-🚣🏽‍♂️	mtu anayepiga makasia: ngozi ya wastani
-🚣🏽‍♂	mtu anayepiga makasia: ngozi ya wastani
+🚣🏽‍♂️	mtu anayepiga makasia mashua: ngozi ya wastani
+🚣🏽‍♂	mtu anayepiga makasia mashua: ngozi ya wastani
 🚣🏾‍♂️	mtu anayepiga makasia: ngozi ya wastani ya giza
 🚣🏾‍♂	mtu anayepiga makasia: ngozi ya wastani ya giza
 🚣🏿‍♂️	mtu anayepiga makasia: ngozi nyeusi kiasi
@@ -1570,16 +1570,16 @@
 🏊🏿	mtu anayeogelea: ngozi nyeusi kiasi
 🏊‍♂️	mtu kuogelea
 🏊‍♂	mtu kuogelea
-🏊🏻‍♂️	kuogelea kwa mwanaume: ngozi nyeupe
-🏊🏻‍♂	kuogelea kwa mwanaume: ngozi nyeupe
+🏊🏻‍♂️	mwanamume kuogelea: ngozi nyeupe
+🏊🏻‍♂	mwanamume kuogelea: ngozi nyeupe
 🏊🏼‍♂️	mwanamume kuogelea: ngozi ya wastani
 🏊🏼‍♂	mwanamume kuogelea: ngozi ya wastani
 🏊🏽‍♂️	mwanamume kuogelea: ngozi ya wastani
 🏊🏽‍♂	mwanamume kuogelea: ngozi ya wastani
 🏊🏾‍♂️	kuogelea kwa mwanaume: ngozi ya wastani-nyeusi
 🏊🏾‍♂	kuogelea kwa mwanaume: ngozi ya wastani-nyeusi
-🏊🏿‍♂️	kuogelea kwa mwanaume: ngozi nyeusi kiasi
-🏊🏿‍♂	kuogelea kwa mwanaume: ngozi nyeusi kiasi
+🏊🏿‍♂️	mwanamume kuogelea: ngozi nyeusi kiasi
+🏊🏿‍♂	mwanamume kuogelea: ngozi nyeusi kiasi
 🏊‍♀️	mwanamke kuogelea
 🏊‍♀	mwanamke kuogelea
 🏊🏻‍♀️	mwanamke kuogelea: ngozi nyeupe
@@ -1603,12 +1603,12 @@
 ⛹‍♂️	mtu anayepiga mpira
 ⛹️‍♂	mtu anayepiga mpira
 ⛹‍♂	mtu anayepiga mpira
-⛹🏻‍♂️	mtu anayedunda mpira: ngozi nyeupe
-⛹🏻‍♂	mtu anayedunda mpira: ngozi nyeupe
+⛹🏻‍♂️	mtu anayedunda mpira: ngozi nyepesi
+⛹🏻‍♂	mtu anayedunda mpira: ngozi nyepesi
 ⛹🏼‍♂️	mpira unaodunda mtu: ngozi ya wastani
 ⛹🏼‍♂	mpira unaodunda mtu: ngozi ya wastani
-⛹🏽‍♂️	mtu anayedunda mpira: ngozi ya wastani
-⛹🏽‍♂	mtu anayedunda mpira: ngozi ya wastani
+⛹🏽‍♂️	man bouncing mpira: ngozi ya wastani
+⛹🏽‍♂	man bouncing mpira: ngozi ya wastani
 ⛹🏾‍♂️	mpira unaodunda mtu: ngozi ya wastani ya giza
 ⛹🏾‍♂	mpira unaodunda mtu: ngozi ya wastani ya giza
 ⛹🏿‍♂️	mtu anayedunda mpira: ngozi nyeusi kiasi
@@ -1645,7 +1645,7 @@
 🏋🏽‍♂️	mtu anayeinua uzito: ngozi ya wastani
 🏋🏽‍♂	mtu anayeinua uzito: ngozi ya wastani
 🏋🏾‍♂️	mwanamume anayeinua uzito: ngozi ya wastani ya giza
-🏋🏾‍♂	mtu anayeinua uzani: ngozi ya wastani ya giza
+🏋🏾‍♂	mwanamume anayeinua uzito: ngozi ya wastani ya giza
 🏋🏿‍♂️	mtu anayeinua uzito: ngozi nyeusi
 🏋🏿‍♂	mtu anayeinua uzito: ngozi nyeusi
 🏋️‍♀️	mwanamke kuinua uzito
@@ -1706,16 +1706,16 @@
 🚵🏼‍♂	mtu anayeendesha baiskeli milimani: ngozi ya wastani
 🚵🏽‍♂️	mtu anayeendesha baiskeli milimani: ngozi ya wastani
 🚵🏽‍♂	mtu anayeendesha baiskeli milimani: ngozi ya wastani
-🚵🏾‍♂️	mtu anayeendesha baisikeli milimani: ngozi ya wastani ya giza
-🚵🏾‍♂	mtu anayeendesha baisikeli milimani: ngozi ya wastani ya giza
+🚵🏾‍♂️	mtu anayeendesha baiskeli mlimani: ngozi ya wastani ya giza
+🚵🏾‍♂	mtu anayeendesha baiskeli mlimani: ngozi ya wastani ya giza
 🚵🏿‍♂️	mtu anayeendesha baiskeli milimani: ngozi nyeusi kiasi
 🚵🏿‍♂	mtu anayeendesha baiskeli milimani: ngozi nyeusi kiasi
 🚵‍♀️	mwanamke anayeendesha baiskeli mlimani
 🚵‍♀	mwanamke anayeendesha baiskeli mlimani
 🚵🏻‍♀️	mwanamke anayeendesha baiskeli mlimani: ngozi nyeupe
 🚵🏻‍♀	mwanamke anayeendesha baiskeli mlimani: ngozi nyeupe
-🚵🏼‍♀️	mwanamke anayeendesha baiskeli mlimani: ngozi ya wastani
-🚵🏼‍♀	mwanamke anayeendesha baiskeli mlimani: ngozi ya wastani
+🚵🏼‍♀️	mwanamke anayeendesha baiskeli milimani: ngozi ya wastani
+🚵🏼‍♀	mwanamke anayeendesha baiskeli milimani: ngozi ya wastani
 🚵🏽‍♀️	mwanamke anayeendesha baiskeli mlimani: ngozi ya wastani
 🚵🏽‍♀	mwanamke anayeendesha baiskeli mlimani: ngozi ya wastani
 🚵🏾‍♀️	mwanamke anayeendesha baiskeli mlimani: ngozi ya wastani ya giza
@@ -1759,8 +1759,8 @@
 🤼	watu wakishindana
 🤼‍♂️	wanaume wakipigana
 🤼‍♂	wanaume wakipigana
-🤼‍♀️	wanawake wakishindana
-🤼‍♀	wanawake wakishindana
+🤼‍♀️	wanawake wakipigana
+🤼‍♀	wanawake wakipigana
 🤽	mtu anayecheza polo ya maji
 🤽🏻	mtu anayecheza polo ya maji: ngozi nyeupe
 🤽🏼	mtu anayecheza polo ya maji: ngozi ya wastani
@@ -1803,8 +1803,8 @@
 🤾🏻‍♂	mtu anayecheza mpira wa mikono: ngozi nyeupe
 🤾🏼‍♂️	mtu anayecheza mpira wa mikono: ngozi ya wastani
 🤾🏼‍♂	mtu anayecheza mpira wa mikono: ngozi ya wastani
-🤾🏽‍♂️	mwanamume anayecheza mpira wa mikono: ngozi ya wastani
-🤾🏽‍♂	mwanamume anayecheza mpira wa mikono: ngozi ya wastani
+🤾🏽‍♂️	mtu anayecheza mpira wa mikono: ngozi ya wastani
+🤾🏽‍♂	mtu anayecheza mpira wa mikono: ngozi ya wastani
 🤾🏾‍♂️	mtu anayecheza mpira wa mikono: ngozi ya wastani-nyeusi
 🤾🏾‍♂	mtu anayecheza mpira wa mikono: ngozi ya wastani-nyeusi
 🤾🏿‍♂️	mtu anayecheza mpira wa mikono: ngozi nyeusi kiasi
@@ -1857,7 +1857,7 @@
 💏	busu
 👩‍❤️‍💋‍👨	busu: mwanamke, mwanaume
 👩‍❤‍💋‍👨	busu: mwanamke, mwanaume
-👨‍❤️‍💋‍👨	busu: mwanaume, mwanaume
+👨‍❤️‍💋‍👨	busu: mtu, mtu
 👨‍❤‍💋‍👨	busu: mwanaume, mwanaume
 👩‍❤️‍💋‍👩	busu: mwanamke, mwanamke
 👩‍❤‍💋‍👩	busu: mwanamke, mwanamke
@@ -1875,7 +1875,7 @@
 👨‍👩‍👦‍👦	familia: mwanamume, mwanamke, mvulana, mvulana
 👨‍👩‍👧‍👧	familia: mwanamume, mwanamke, msichana, msichana
 👨‍👨‍👦	familia: mwanaume, mwanaume, mvulana
-👨‍👨‍👧	familia: mwanaume, mwanamume, msichana
+👨‍👨‍👧	familia: mwanamume, mwanamume, msichana
 👨‍👨‍👧‍👦	familia: mwanamume, mwanamume, msichana, mvulana
 👨‍👨‍👦‍👦	familia: mwanaume, mwanaume, mvulana, mvulana
 👨‍👨‍👧‍👧	familia: mwanamume, mwanamume, msichana, msichana
@@ -1901,16 +1901,16 @@
 🤳🏾	selfie: ngozi ya wastani-nyeusi
 🤳🏿	selfie: ngozi nyeusi
 💪	biceps flexed
-💪🏻	biceps zilizopinda: ngozi nyepesi
+💪🏻	biceps iliyopinda: ngozi nyepesi
 💪🏼	biceps zilizopinda: ngozi ya wastani ya ngozi
 💪🏽	biceps zilizopinda: ngozi ya wastani
-💪🏾	biceps flexed: ngozi ya wastani-giza
+💪🏾	biceps zilizopinda: ngozi ya wastani-giza
 💪🏿	biceps flexed: ngozi nyeusi tone
 🦵	mguu
 🦵🏻	mguu: ngozi nyepesi
 🦵🏼	mguu: ngozi ya wastani ya ngozi
 🦵🏽	mguu: ngozi ya wastani
-🦵🏾	mguu: ngozi ya wastani-giza
+🦵🏾	mguu: ngozi ya kati-giza
 🦵🏿	mguu: ngozi nyeusi
 🦶	mguu
 🦶🏻	mguu: ngozi nyepesi
@@ -1922,7 +1922,7 @@
 👈🏻	index ya nyuma inayoelekeza kushoto: ngozi nyeupe
 👈🏼	index ya nyuma inayoelekeza kushoto: ngozi ya wastani
 👈🏽	index ya nyuma inayoelekeza kushoto: ngozi ya wastani
-👈🏾	kielezo cha nyuma kinachoelekeza kushoto: ngozi ya wastani-nyeusi
+👈🏾	kielezo cha nyuma kinachoelekeza kushoto: ngozi ya wastani yenye giza
 👈🏿	kielezo cha nyuma kinachoelekeza kushoto: ngozi nyeusi kiasi
 👉	faharasa ya nyuma inayoelekeza kulia
 👉🏻	index ya nyuma inayoelekeza kulia: ngozi nyeupe
@@ -1939,7 +1939,7 @@
 ☝🏿	kuelekeza juu: ngozi nyeusi kiasi
 👆	index ya backhand inayoelekeza juu
 👆🏻	index ya backhand inayoelekeza juu: ngozi nyeupe
-👆🏼	kielezo cha nyuma kinachoelekeza juu: ngozi ya wastani
+👆🏼	index ya nyuma inayoelekeza juu: ngozi ya wastani
 👆🏽	index ya nyuma inayoelekeza juu: ngozi ya wastani
 👆🏾	kielezo cha nyuma kinachoelekeza juu: ngozi ya wastani yenye giza
 👆🏿	index ya nyuma inayoelekeza juu: ngozi nyeusi kiasi
@@ -1963,8 +1963,8 @@
 ✌🏾	mkono wa ushindi: ngozi ya wastani-giza
 ✌🏿	mkono wa ushindi: ngozi nyeusi kiasi
 🤞	vidole vilivyovuka
-🤞🏻	vidole vilivyovuka: sauti ya ngozi nyepesi
-🤞🏼	vidole vilivyovuka: tone ya ngozi ya mwanga wa kati
+🤞🏻	vidole vilivyovuka: ngozi nyepesi
+🤞🏼	vidole vilivyovuka: sauti ya ngozi ya mwanga wa kati
 🤞🏽	vidole vilivyovuka: sauti ya ngozi ya kati
 🤞🏾	vidole vilivyovuka: sauti ya ngozi ya kati-giza
 🤞🏿	vidole vilivyovuka: ngozi nyeusi tone
@@ -1988,7 +1988,7 @@
 🤙🏿	niite mkono: ngozi nyeusi tone
 🖐️	mkono wenye vidole
 🖐	mkono wenye vidole
-🖐🏻	mkono wenye vidole vilivyonyooshwa: ngozi nyepesi
+🖐🏻	mkono wenye vidole vilivyonyooshwa: ngozi nyeupe
 🖐🏼	mkono wenye vidole vilivyonyooshwa: ngozi ya wastani
 🖐🏽	mkono wenye vidole vilivyonyooshwa: ngozi ya wastani
 🖐🏾	mkono wenye vidole vilivyonyooshwa: ngozi ya wastani ya giza
@@ -2014,7 +2014,7 @@
 👎	vidole gumba chini
 👎🏻	gumba chini: ngozi nyeupe
 👎🏼	dole gumba chini: ngozi ya wastani
-👎🏽	dole gumba chini: ngozi ya wastani
+👎🏽	gumba chini: ngozi ya wastani
 👎🏾	dole gumba chini: ngozi ya wastani-nyeusi
 👎🏿	gumba chini: ngozi nyeusi kiasi
 ✊	ngumi iliyoinuliwa
@@ -2052,7 +2052,7 @@
 👋🏼	mkono unaopunga: ngozi ya wastani
 👋🏽	kutikisa mkono: ngozi ya wastani
 👋🏾	kutikisa mkono: ngozi ya wastani-nyeusi
-👋🏿	mkono unaopunga: ngozi nyeusi kiasi
+👋🏿	kutikisa mkono: ngozi nyeusi kiasi
 🤟	ishara ya kukupenda
 🤟🏻	ishara ya kukupenda: ngozi nyeupe
 🤟🏼	ishara ya upendo: ngozi ya wastani
@@ -2089,7 +2089,7 @@
 🤲🏼	viganja vikiwa pamoja: ngozi ya wastani
 🤲🏽	viganja vikiwa pamoja: ngozi ya wastani
 🤲🏾	viganja vikiwa juu pamoja: ngozi ya wastani ya giza
-🤲🏿	viganja vikiwa pamoja: ngozi nyeusi kiasi
+🤲🏿	viganja vikiwa vimeshikana: ngozi nyeusi kiasi
 🙏	mikono iliyokunjwa
 🙏🏻	mikono iliyokunjwa: ngozi nyepesi
 🙏🏼	mikono iliyokunjwa: ngozi ya wastani ya mwanga
@@ -2173,7 +2173,7 @@
 🕶	miwani ya jua
 🥽	miwani
 🥼	koti la maabara
-👔	tie ya shingo
+👔	tai ya shingoni
 👕	fulana
 👖	jeans
 🧣	scarf
@@ -2337,7 +2337,7 @@
 🍀	karafuu ya majani manne
 🍁	jani la maple
 🍂	jani lililoanguka
-🍃	majani kupeperuka kwa upepo
+🍃	majani kupepea kwa upepo
 🍇	zabibu
 🍈	Tikiti
 🍉	tikiti maji
@@ -2504,8 +2504,8 @@
 ⛪	kanisa
 🕌	msikiti
 🕍	sinagogi
-⛩️	kaburi la shinto
-⛩	kaburi la shinto
+⛩️	kaburi la Shinto
+⛩	kaburi la Shinto
 🕋	kaaba
 ⛲	chemchemi
 ⛺	hema
@@ -2518,8 +2518,8 @@
 🌆	mandhari ya jiji wakati wa jioni
 🌇	machweo
 🌉	daraja usiku
-♨️	chemchemi za moto
-♨	chemchemi za moto
+♨️	chemchemi za maji ya moto
+♨	chemchemi za maji ya moto
 🌌	njia ya maziwa
 🎠	farasi wa jukwa
 🎡	Ferris gurudumu
@@ -2591,7 +2591,7 @@
 💺	kiti
 🚁	helikopta
 🚟	reli ya kusimamishwa
-🚠	njia ya waya ya mlima
+🚠	njia ya mlima
 🚡	tramway ya angani
 🛰️	satelaiti
 🛰	satelaiti
@@ -2604,12 +2604,12 @@
 ⏳	hourglass haijafanyika
 ⌚	kuangalia
 ⏰	Saa ya Kengele
-⏱️	stopwatch
-⏱	stopwatch
+⏱️	saa ya kusimama
+⏱	saa ya kusimama
 ⏲️	saa ya kipima muda
 ⏲	saa ya kipima muda
-🕰️	saa ya mantelpiece
-🕰	saa ya mantelpiece
+🕰️	saa ya maandishi
+🕰	saa ya maandishi
 🕛	saa kumi na mbili
 🕧	kumi na mbili na nusu
 🕐	saa moja
@@ -2700,7 +2700,7 @@
 🎃	jack-o-taa
 🎄	mti wa Krismasi
 🎆	fataki
-🎇	kumetameta
+🎇	mng'aro
 🧨	kifyatulia risasi
 ✨	kumeta
 🎈	puto
@@ -2738,7 +2738,7 @@
 🥏	diski ya kuruka
 🎳	kuchezea mpira
 🏏	mchezo wa kriketi
-🏑	uwanja wa magongo
+🏑	mpira wa magongo
 🏒	mchezo wa magongo unaochezewa kwenye barafu
 🥍	lacrosse
 🏓	ping pong
@@ -2800,8 +2800,8 @@
 🎙	maikrofoni ya studio
 🎚️	kitelezi cha kiwango
 🎚	kitelezi cha kiwango
-🎛️	visu za kudhibiti
-🎛	visu za kudhibiti
+🎛️	vifungo vya kudhibiti
+🎛	vifungo vya kudhibiti
 🎤	kipaza sauti
 🎧	kipaza sauti
 📻	redio
@@ -2894,7 +2894,7 @@
 📦	kifurushi
 📫	kisanduku cha barua kilichofungwa chenye bendera iliyoinuliwa
 📪	kisanduku cha barua kilichofungwa chenye bendera iliyoshushwa
-📬	fungua kisanduku cha barua kilicho na bendera iliyoinuliwa
+📬	fungua kisanduku cha barua chenye bendera iliyoinuliwa
 📭	fungua kisanduku cha barua chenye bendera iliyoshushwa
 📮	sanduku la posta
 🗳️	sanduku la kura na kura
@@ -3073,7 +3073,7 @@
 🔙	MSHALE WA NYUMA
 🔚	MSHALE WA MWISHO
 🔛	KWENYE mshale
-🔜	MSHALE WA HIVI KARIBUNI
+🔜	MSHALE WA KARIBUNI
 🔝	Mshale wa JUU
 🛐	mahali pa ibada
 ⚛️	ishara ya atomi
@@ -3139,7 +3139,7 @@
 🎦	sinema
 🔅	kitufe cha giza
 🔆	kifungo mkali
-📶	baa za antena
+📶	baa za antenna
 📳	hali ya mtetemo
 📴	simu ya mkononi imezimwa
 ♀️	ishara ya kike
@@ -3163,8 +3163,8 @@
 ☑	sanduku la kura na hundi
 ✔️	alama ya kuangalia nzito
 ✔	alama ya kuangalia nzito
-✖️	kuzidisha kwa uzito x
-✖	kuzidisha kwa uzito x
+✖️	kuzidisha nzito x
+✖	kuzidisha nzito x
 ❌	alama ya msalaba
 ❎	kitufe cha alama ya msalaba
 ➕	ishara nzito
@@ -3202,28 +3202,28 @@
 *⃣	keycap: *
 0️⃣	kofia muhimu: 0
 0⃣	kofia muhimu: 0
-1️⃣	kepi muhimu: 1
-1⃣	kepi muhimu: 1
+1️⃣	kofia muhimu: 1
+1⃣	kofia muhimu: 1
 2️⃣	kofia muhimu: 2
 2⃣	kofia muhimu: 2
 3️⃣	kofia muhimu: 3
 3⃣	kofia muhimu: 3
-4️⃣	kofia kuu: 4
-4⃣	kofia kuu: 4
+4️⃣	kofia muhimu: 4
+4⃣	kofia muhimu: 4
 5️⃣	kofia muhimu: 5
 5⃣	kofia muhimu: 5
-6️⃣	kofia kuu: 6
-6⃣	kofia kuu: 6
+6️⃣	kofia muhimu: 6
+6⃣	kofia muhimu: 6
 7️⃣	kofia muhimu: 7
 7⃣	kofia muhimu: 7
 8️⃣	kofia muhimu: 8
 8⃣	kofia muhimu: 8
-9️⃣	kofia muhimu: 9
-9⃣	kofia muhimu: 9
-🔟	kofia kuu: 10
+9️⃣	kepi muhimu: 9
+9⃣	kepi muhimu: 9
+🔟	kofia muhimu: 10
 💯	pointi mia
-🔠	ingiza herufi kubwa za Kilatini
-🔡	ingiza herufi ndogo ya Kilatini
+🔠	ingiza herufi kubwa ya Kilatini
+🔡	ingiza herufi ndogo za Kilatini
 🔢	nambari za kuingiza
 🔣	alama za pembejeo
 🔤	ingiza herufi za Kilatini
@@ -3255,7 +3255,7 @@
 🈂	Kitufe cha "malipo ya huduma" ya Kijapani
 🈷️	Kitufe cha "kiasi cha kila mwezi" cha Kijapani
 🈷	Kitufe cha "kiasi cha kila mwezi" cha Kijapani
-🈶	Kitufe cha Kijapani "si bila malipo".
+🈶	Kitufe cha "si cha bure" cha Kijapani
 🈯	Kitufe cha Kijapani "kilichohifadhiwa".
 🉐	Kitufe cha "biashara" cha Kijapani
 🈹	Kitufe cha "punguzo" cha Kijapani
@@ -3279,7 +3279,7 @@
 ◻	mraba nyeupe wa kati
 ◼️	mraba mweusi wa kati
 ◼	mraba mweusi wa kati
-◽	nyeupe kati-ndogo mraba
+◽	nyeupe kati-mraba mdogo
 ◾	mraba mweusi wa kati-ndogo
 ⬛	mraba mkubwa mweusi
 ⬜	nyeupe mraba kubwa
@@ -3297,7 +3297,7 @@
 ⚫	mduara mweusi
 🔴	mduara nyekundu
 🔵	mduara wa bluu
-🏁	bendera ya checkered
+🏁	bendera iliyotiwa alama
 🚩	bendera ya pembetatu
 🎌	bendera zilizovuka
 🏴	bendera nyeusi
@@ -3338,7 +3338,7 @@
 🇧🇳	Brunei
 🇧🇴	Bolivia
 🇧🇶	Caribbean Uholanzi
-🇧🇷	Brazil
+🇧🇷	Brazili
 🇧🇸	Bahamas
 🇧🇹	Bhutan
 🇧🇻	Kisiwa cha Bouvet
@@ -3529,7 +3529,7 @@
 🇹🇦	Tristan da Cunha
 🇹🇨	Visiwa vya Turks na Caicos
 🇹🇩	Chad
-🇹🇫	Wilaya za Kusini mwa Ufaransa
+🇹🇫	Maeneo ya Kusini mwa Ufaransa
 🇹🇬	Togo
 🇹🇭	Thailand
 🇹🇯	Tajikistan

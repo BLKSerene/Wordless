@@ -26,8 +26,8 @@
 😐	neitrāla seja
 😑	neizteiksmīga seja
 😶	seja bez mutes
-🙄	seja ar ripošām acīm
-😏	smīnoša seja
+🙄	seja ar ripām acīm
+😏	smaidoša seja
 😣	neatlaidīga seja
 😥	skumja, bet atvieglota seja
 😮	seja ar atvērtu muti
@@ -44,7 +44,7 @@
 😒	bēdīga seja
 😓	nomākta seja ar sviedriem
 😔	domīga seja
-😕	apjukusi seja
+😕	apmulsusi seja
 🙃	apgrieztu seju
 🤑	nauda-mute seja
 😲	pārsteigta seja
@@ -195,14 +195,14 @@
 👩‍⚕	sieviete veselības darbiniece
 👩🏻‍⚕️	sieviete veselības darbiniece: gaišs ādas tonis
 👩🏻‍⚕	sieviete veselības darbiniece: gaišs ādas tonis
-👩🏼‍⚕️	sieviete veselības aprūpes darbiniece: vidēji gaišs ādas tonis
-👩🏼‍⚕	sieviete veselības aprūpes darbiniece: vidēji gaišs ādas tonis
-👩🏽‍⚕️	sieviete veselības aprūpes darbiniece: vidējs ādas tonis
-👩🏽‍⚕	sieviete veselības aprūpes darbiniece: vidējs ādas tonis
+👩🏼‍⚕️	sieviete veselības darbiniece: vidēji gaišs ādas tonis
+👩🏼‍⚕	sieviete veselības darbiniece: vidēji gaišs ādas tonis
+👩🏽‍⚕️	sieviete veselības darbiniece: vidējs ādas tonis
+👩🏽‍⚕	sieviete veselības darbiniece: vidējs ādas tonis
 👩🏾‍⚕️	sieviete veselības aprūpes darbiniece: vidēji tumšs ādas tonis
 👩🏾‍⚕	sieviete veselības aprūpes darbiniece: vidēji tumšs ādas tonis
-👩🏿‍⚕️	sieviete veselības aprūpes darbiniece: tumšs ādas tonis
-👩🏿‍⚕	sieviete veselības aprūpes darbiniece: tumšs ādas tonis
+👩🏿‍⚕️	sieviete veselības darbiniece: tumšs ādas tonis
+👩🏿‍⚕	sieviete veselības darbiniece: tumšs ādas tonis
 👨‍🎓	vīrietis students
 👨🏻‍🎓	vīrietis students: gaišs ādas tonis
 👨🏼‍🎓	vīrietis students: vidēji gaišs ādas tonis
@@ -232,7 +232,7 @@
 👨🏻‍⚖️	vīrietis tiesnesis: gaišs ādas tonis
 👨🏻‍⚖	vīrietis tiesnesis: gaišs ādas tonis
 👨🏼‍⚖️	vīrietis tiesnesis: vidēji gaišs ādas tonis
-👨🏼‍⚖	vīrietis tiesnesis: vidēji gaišs ādas tonis
+👨🏼‍⚖	vīrietis: vidēji gaišs ādas tonis
 👨🏽‍⚖️	vīrietis tiesnesis: vidējs ādas tonis
 👨🏽‍⚖	vīrietis tiesnesis: vidējs ādas tonis
 👨🏾‍⚖️	vīrietis tiesnesis: vidēji tumšs ādas tonis
@@ -297,7 +297,7 @@
 👩🏻‍🏭	sieviete rūpnīcas darbiniece: gaišs ādas tonis
 👩🏼‍🏭	sieviete rūpnīcā: vidēji gaišs ādas tonis
 👩🏽‍🏭	sieviete rūpnīcas darbiniece: vidējs ādas tonis
-👩🏾‍🏭	sieviete rūpnīcas darbiniece: vidēji tumšs ādas tonis
+👩🏾‍🏭	rūpnīcas darbiniece: vidēji tumšs ādas tonis
 👩🏿‍🏭	sieviete rūpnīcas darbiniece: tumšs ādas tonis
 👨‍💼	vīrietis biroja darbinieks
 👨🏻‍💼	vīrietis biroja darbinieks: gaišs ādas tonis
@@ -564,8 +564,8 @@
 👳🏿‍♂	vīrietis valkā turbānu: tumšs ādas tonis
 👳‍♀️	sieviete, kas valkā turbānu
 👳‍♀	sieviete, kas valkā turbānu
-👳🏻‍♀️	sieviete, kas valkā turbānu: gaišs ādas tonis
-👳🏻‍♀	sieviete, kas valkā turbānu: gaišs ādas tonis
+👳🏻‍♀️	sieviete valkā turbānu: gaišs ādas tonis
+👳🏻‍♀	sieviete valkā turbānu: gaišs ādas tonis
 👳🏼‍♀️	sieviete valkā turbānu: vidēji gaišs ādas tonis
 👳🏼‍♀	sieviete valkā turbānu: vidēji gaišs ādas tonis
 👳🏽‍♀️	sieviete valkā turbānu: vidējs ādas tonis
@@ -590,7 +590,7 @@
 🧔🏻	bārdains cilvēks: gaišs ādas tonis
 🧔🏼	Bārdains cilvēks: vidēji gaišs ādas tonis
 🧔🏽	bārdains cilvēks: vidējs ādas tonis
-🧔🏾	bārdains cilvēks: vidēji tumšs ādas tonis
+🧔🏾	Bārdains cilvēks: vidēji tumšs ādas tonis
 🧔🏿	bārdains cilvēks: tumšs ādas tonis
 👱	gaišmatains cilvēks
 👱🏻	gaišmatains cilvēks: gaišs ādas tonis
@@ -623,7 +623,7 @@
 👱🏿‍♀️	blondīne: tumšs ādas tonis
 👱🏿‍♀	blondīne: tumšs ādas tonis
 👨‍🦰	vīrietis, rudmatains
-👨🏻‍🦰	vīrietis, rudi mati: gaišs ādas tonis
+👨🏻‍🦰	vīrietis, rudmatains: gaišs ādas tonis
 👨🏼‍🦰	vīrietis, rudmatains: vidēji gaišs ādas tonis
 👨🏽‍🦰	vīrietis, rudmatains: vidējs ādas tonis
 👨🏾‍🦰	vīrietis, rudmatains: vidēji tumšs ādas tonis
@@ -668,8 +668,8 @@
 👩🏻‍🦳	sieviete, balti mati: gaišs ādas tonis
 👩🏼‍🦳	sieviete, baltmataina: vidēji gaišs ādas tonis
 👩🏽‍🦳	sieviete, baltmataina: vidējs ādas tonis
-👩🏾‍🦳	sieviete, balti mati: vidēji tumšs ādas tonis
-👩🏿‍🦳	sieviete, baltmataina: tumšs ādas tonis
+👩🏾‍🦳	sieviete, baltmataina: vidēji tumšs ādas tonis
+👩🏿‍🦳	sieviete, balti mati: tumšs ādas tonis
 🤵	vīrietis smokingā
 🤵🏻	vīrietis smokingā: gaišs ādas tonis
 🤵🏼	vīrietis smokingā: vidēji gaišs ādas tonis
@@ -691,7 +691,7 @@
 🤱	barošana ar krūti
 🤱🏻	barošana ar krūti: gaišs ādas tonis
 🤱🏼	barošana ar krūti: vidēji gaišs ādas tonis
-🤱🏽	barošana ar krūti: vidējs ādas tonis
+🤱🏽	zīdīšanas periods: vidējs ādas tonis
 🤱🏾	barošana ar krūti: vidēji tumšs ādas tonis
 🤱🏿	barošana ar krūti: tumšs ādas tonis
 👼	mazulis eņģelis
@@ -809,7 +809,7 @@
 🧚🏾	pasaka: vidēji tumšs ādas tonis
 🧚🏿	pasaka: tumšs ādas tonis
 🧚‍♀️	sieviešu feja
-🧚‍♀	sieviešu feja
+🧚‍♀	sieviete feja
 🧚🏻‍♀️	sieviešu feja: gaišs ādas tonis
 🧚🏻‍♀	sieviešu feja: gaišs ādas tonis
 🧚🏼‍♀️	sieviešu feja: vidēji gaišs ādas tonis
@@ -925,8 +925,8 @@
 🧞	džins
 🧞‍♀️	sievietes džins
 🧞‍♀	sievietes džins
-🧞‍♂️	vīrs džins
-🧞‍♂	vīrs džins
+🧞‍♂️	vīrietis džinijs
+🧞‍♂	vīrietis džinijs
 🧟	zombijs
 🧟‍♀️	sieviete zombie
 🧟‍♀	sieviete zombie
@@ -966,18 +966,18 @@
 🙎🏻	cilvēks, kas pūš: gaišs ādas tonis
 🙎🏼	cilvēks, kas pūš: vidēji gaišs ādas tonis
 🙎🏽	cilvēks, kas pūš: vidējs ādas tonis
-🙎🏾	cilvēks, kas pūš: vidēji tumšs ādas tonis
-🙎🏿	cilvēks, kas pļāpā: tumšs ādas tonis
+🙎🏾	cilvēks pļāpā: vidēji tumšs ādas tonis
+🙎🏿	cilvēks, kas pūš: tumšs ādas tonis
 🙎‍♂️	vīrietis pļāpā
 🙎‍♂	vīrietis pļāpā
-🙎🏻‍♂️	vīrietis pūš: gaišs ādas tonis
-🙎🏻‍♂	vīrietis pūš: gaišs ādas tonis
+🙎🏻‍♂️	vīrietis pļāpā: gaišs ādas tonis
+🙎🏻‍♂	vīrietis pļāpā: gaišs ādas tonis
 🙎🏼‍♂️	vīrietis pūš: vidēji gaišs ādas tonis
 🙎🏼‍♂	vīrietis pūš: vidēji gaišs ādas tonis
 🙎🏽‍♂️	vīrietis pūš: vidējs ādas tonis
 🙎🏽‍♂	vīrietis pūš: vidējs ādas tonis
-🙎🏾‍♂️	vīrietis pūš: vidēji tumšs ādas tonis
-🙎🏾‍♂	vīrietis pūš: vidēji tumšs ādas tonis
+🙎🏾‍♂️	vīrietis pļāpā: vidēji tumšs ādas tonis
+🙎🏾‍♂	vīrietis pļāpā: vidēji tumšs ādas tonis
 🙎🏿‍♂️	vīrietis pļāpā: tumšs ādas tonis
 🙎🏿‍♂	vīrietis pļāpā: tumšs ādas tonis
 🙎‍♀️	sieviete pļāpā
@@ -1010,23 +1010,23 @@
 🙅🏾‍♂	vīrietis, kas žestikulē NĒ: vidēji tumšs ādas tonis
 🙅🏿‍♂️	vīrietis, kas žestikulē NĒ: tumšs ādas tonis
 🙅🏿‍♂	vīrietis, kas žestikulē NĒ: tumšs ādas tonis
-🙅‍♀️	sieviete ar žestikulāciju NĒ
-🙅‍♀	sieviete ar žestikulāciju NĒ
+🙅‍♀️	sieviete ar žestiem NĒ
+🙅‍♀	sieviete žestikulējot NĒ
 🙅🏻‍♀️	sieviete, kas žestikulē NĒ: gaišs ādas tonis
 🙅🏻‍♀	sieviete, kas žestikulē NĒ: gaišs ādas tonis
-🙅🏼‍♀️	sieviete ar žestiem NĒ: vidēji gaišs ādas tonis
-🙅🏼‍♀	sieviete ar žestiem NĒ: vidēji gaišs ādas tonis
+🙅🏼‍♀️	sieviete, kas žestikulē NĒ: vidēji gaišs ādas tonis
+🙅🏼‍♀	sieviete, kas žestikulē NĒ: vidēji gaišs ādas tonis
 🙅🏽‍♀️	sieviete, kas žestikulē NĒ: vidējs ādas tonis
 🙅🏽‍♀	sieviete, kas žestikulē NĒ: vidējs ādas tonis
-🙅🏾‍♀️	sieviete ar žestiem NĒ: vidēji tumšs ādas tonis
-🙅🏾‍♀	sieviete ar žestiem NĒ: vidēji tumšs ādas tonis
+🙅🏾‍♀️	sieviete, kas žestikulē NĒ: vidēji tumšs ādas tonis
+🙅🏾‍♀	sieviete, kas žestikulē NĒ: vidēji tumšs ādas tonis
 🙅🏿‍♀️	sieviete, kas žestikulē NĒ: tumšs ādas tonis
 🙅🏿‍♀	sieviete, kas žestikulē NĒ: tumšs ādas tonis
 🙆	persona ar žestiem labi
 🙆🏻	cilvēks žestikulē OK: gaišs ādas tonis
 🙆🏼	persona ar žestiem Labi: vidēji gaišs ādas tonis
 🙆🏽	cilvēks žestikulē OK: vidējs ādas tonis
-🙆🏾	persona ar žestiem Labi: vidēji tumšs ādas tonis
+🙆🏾	cilvēks žestikulē OK: vidēji tumšs ādas tonis
 🙆🏿	cilvēks žestikulē OK: tumšs ādas tonis
 🙆‍♂️	vīrietis žestikulējot OK
 🙆‍♂	vīrietis žestikulējot OK
@@ -1053,7 +1053,7 @@
 🙆🏿‍♀️	sieviete žestikulē OK: tumšs ādas tonis
 🙆🏿‍♀	sieviete žestikulē OK: tumšs ādas tonis
 💁	cilvēks noliec roku
-💁🏻	persona, kas noliec roku: gaišs ādas tonis
+💁🏻	cilvēks noliek roku: gaišs ādas tonis
 💁🏼	cilvēks noliek roku: vidēji gaišs ādas tonis
 💁🏽	cilvēks noliek roku: vidējs ādas tonis
 💁🏾	cilvēks noliek roku: vidēji tumšs ādas tonis
@@ -1070,8 +1070,8 @@
 💁🏾‍♂	vīrietis noliek roku: vidēji tumšs ādas tonis
 💁🏿‍♂️	vīrietis, kurš noliec roku: tumšs ādas tonis
 💁🏿‍♂	vīrietis, kurš noliec roku: tumšs ādas tonis
-💁‍♀️	sieviete, kas noliec roku
-💁‍♀	sieviete, kas noliec roku
+💁‍♀️	sieviete, kas nodod roku
+💁‍♀	sieviete, kas nodod roku
 💁🏻‍♀️	sieviete, kas noliec roku: gaišs ādas tonis
 💁🏻‍♀	sieviete, kas noliec roku: gaišs ādas tonis
 💁🏼‍♀️	sieviete, kas noliec roku: vidēji gaišs ādas tonis
@@ -1085,7 +1085,7 @@
 🙋	persona, kas paceļ roku
 🙋🏻	persona, kas paceļ roku: gaišs ādas tonis
 🙋🏼	persona, kas paceļ roku: vidēji gaišs ādas tonis
-🙋🏽	cilvēks, kas paceļ roku: vidējs ādas tonis
+🙋🏽	persona, kas paceļ roku: vidējs ādas tonis
 🙋🏾	persona, kas paceļ roku: vidēji tumšs ādas tonis
 🙋🏿	persona, kas paceļ roku: tumšs ādas tonis
 🙋‍♂️	vīrietis paceļ roku
@@ -1190,8 +1190,8 @@
 🤷🏾‍♂	vīrietis rausta plecus: vidēji tumšs ādas tonis
 🤷🏿‍♂️	vīrietis rausta plecus: tumšs ādas tonis
 🤷🏿‍♂	vīrietis rausta plecus: tumšs ādas tonis
-🤷‍♀️	sieviete paraustīja plecus
-🤷‍♀	sieviete paraustīja plecus
+🤷‍♀️	sieviete rausta plecus
+🤷‍♀	sieviete rausta plecus
 🤷🏻‍♀️	sieviete rausta plecus: gaišs ādas tonis
 🤷🏻‍♀	sieviete rausta plecus: gaišs ādas tonis
 🤷🏼‍♀️	sieviete rausta plecus: vidēji gaišs ādas tonis
@@ -1482,8 +1482,8 @@
 🏌🏻‍♂	vīrietis, kas spēlē golfu: gaišs ādas tonis
 🏌🏼‍♂️	vīrietis, kas spēlē golfu: vidēji gaišs ādas tonis
 🏌🏼‍♂	vīrietis, kas spēlē golfu: vidēji gaišs ādas tonis
-🏌🏽‍♂️	vīrietis, kurš spēlē golfu: vidējs ādas tonis
-🏌🏽‍♂	vīrietis, kurš spēlē golfu: vidējs ādas tonis
+🏌🏽‍♂️	vīrietis, kas spēlē golfu: vidējs ādas tonis
+🏌🏽‍♂	vīrietis, kas spēlē golfu: vidējs ādas tonis
 🏌🏾‍♂️	vīrietis, kas spēlē golfu: vidēji tumšs ādas tonis
 🏌🏾‍♂	vīrietis, kas spēlē golfu: vidēji tumšs ādas tonis
 🏌🏿‍♂️	vīrietis, kas spēlē golfu: tumšs ādas tonis
@@ -1567,7 +1567,7 @@
 🏊🏼	peldošs cilvēks: vidēji gaišs ādas tonis
 🏊🏽	peldošs cilvēks: vidējs ādas tonis
 🏊🏾	peldošs cilvēks: vidēji tumšs ādas tonis
-🏊🏿	peldošs cilvēks: tumšs ādas tonis
+🏊🏿	cilvēks peld: tumšs ādas tonis
 🏊‍♂️	vīrietis peld
 🏊‍♂	vīrietis peld
 🏊🏻‍♂️	vīrietis peld: gaišs ādas tonis
@@ -1592,17 +1592,17 @@
 🏊🏾‍♀	sieviete peldēšana: vidēji tumšs ādas tonis
 🏊🏿‍♀️	sieviete peldēšana: tumšs ādas tonis
 🏊🏿‍♀	sieviete peldēšana: tumšs ādas tonis
-⛹️	persona, kas atlec bumbiņā
+⛹️	cilvēks atlec bumba
 ⛹	persona, kas atlec bumbiņā
 ⛹🏻	cilvēks atsitiena bumba: gaišs ādas tonis
 ⛹🏼	cilvēks atsitiena bumba: vidēji gaišs ādas tonis
 ⛹🏽	cilvēks atsitiena bumba: vidējs ādas tonis
 ⛹🏾	persona, kas atlec bumba: vidēji tumšs ādas tonis
 ⛹🏿	persona, kas atlec bumba: tumšs ādas tonis
-⛹️‍♂️	vīrietis atsitiena bumba
-⛹‍♂️	vīrietis atsitiena bumba
+⛹️‍♂️	vīrietis atlec bumba
+⛹‍♂️	vīrietis atlec bumba
 ⛹️‍♂	vīrietis atsitiena bumba
-⛹‍♂	vīrietis atsitiena bumba
+⛹‍♂	vīrietis atlec bumba
 ⛹🏻‍♂️	vīrietis atsitiena bumba: gaišs ādas tonis
 ⛹🏻‍♂	vīrietis atsitiena bumba: gaišs ādas tonis
 ⛹🏼‍♂️	vīrietis atsitiena bumba: vidēji gaišs ādas tonis
@@ -1621,8 +1621,8 @@
 ⛹🏻‍♀	sieviete atsitiena bumbiņa: gaišs ādas tonis
 ⛹🏼‍♀️	sieviete atsitiena bumbiņa: vidēji gaišs ādas tonis
 ⛹🏼‍♀	sieviete atsitiena bumbiņa: vidēji gaišs ādas tonis
-⛹🏽‍♀️	sieviete atsitiena bumbiņa: vidējs ādas tonis
-⛹🏽‍♀	sieviete atsitiena bumbiņa: vidējs ādas tonis
+⛹🏽‍♀️	sieviete atsitiena bumba: vidējs ādas tonis
+⛹🏽‍♀	sieviete atsitiena bumba: vidējs ādas tonis
 ⛹🏾‍♀️	sieviete atsitiena bumbiņa: vidēji tumšs ādas tonis
 ⛹🏾‍♀	sieviete atsitiena bumbiņa: vidēji tumšs ādas tonis
 ⛹🏿‍♀️	sieviete, kas atlec bumba: tumšs ādas tonis
@@ -1648,14 +1648,14 @@
 🏋🏾‍♂	vīrietis cilā svarus: vidēji tumšs ādas tonis
 🏋🏿‍♂️	vīrietis cilā svarus: tumšs ādas tonis
 🏋🏿‍♂	vīrietis cilā svarus: tumšs ādas tonis
-🏋️‍♀️	sieviete, kas cilā svarus
-🏋‍♀️	sieviete, kas cilā svarus
-🏋️‍♀	sieviete, kas cilā svarus
-🏋‍♀	sieviete, kas cilā svarus
-🏋🏻‍♀️	sieviete cilā svarus: gaišs ādas tonis
-🏋🏻‍♀	sieviete cilā svarus: gaišs ādas tonis
-🏋🏼‍♀️	sieviete cilā svarus: vidēji gaišs ādas tonis
-🏋🏼‍♀	sieviete cilā svarus: vidēji gaišs ādas tonis
+🏋️‍♀️	sieviete cilā svarus
+🏋‍♀️	sieviete cilā svarus
+🏋️‍♀	sieviete cilā svarus
+🏋‍♀	sieviete cilā svarus
+🏋🏻‍♀️	sieviete, kas cilā svarus: gaišs ādas tonis
+🏋🏻‍♀	sieviete, kas cilā svarus: gaišs ādas tonis
+🏋🏼‍♀️	sieviete, kas cilā svarus: vidēji gaišs ādas tonis
+🏋🏼‍♀	sieviete, kas cilā svarus: vidēji gaišs ādas tonis
 🏋🏽‍♀️	sieviete cilā svarus: vidējs ādas tonis
 🏋🏽‍♀	sieviete cilā svarus: vidējs ādas tonis
 🏋🏾‍♀️	sieviete, kas cilā svarus: vidēji tumšs ādas tonis
@@ -1702,8 +1702,8 @@
 🚵‍♂	vīrietis kalnu riteņbraukšanā
 🚵🏻‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: gaišs ādas tonis
 🚵🏻‍♂	vīrietis, braucot ar kalnu riteņbraukšanu: gaišs ādas tonis
-🚵🏼‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: vidēji gaišs ādas tonis
-🚵🏼‍♂	vīrietis, braucot ar kalnu riteņbraukšanu: vidēji gaišs ādas tonis
+🚵🏼‍♂️	vīrietis kalnu riteņbraukšanā: vidēji gaišs ādas tonis
+🚵🏼‍♂	vīrietis kalnu riteņbraukšanā: vidēji gaišs ādas tonis
 🚵🏽‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: vidējs ādas tonis
 🚵🏽‍♂	vīrietis, braucot ar kalnu riteņbraukšanu: vidējs ādas tonis
 🚵🏾‍♂️	vīrietis, braucot ar kalnu riteņbraukšanu: vidēji tumšs ādas tonis
@@ -1726,8 +1726,8 @@
 🏎	sacīkšu mašīna
 🏍️	motocikls
 🏍	motocikls
-🤸	persona, kas brauc ar ratiem
-🤸🏻	persona, kas brauc ratos: gaišs ādas tonis
+🤸	persona ratos
+🤸🏻	cilvēks ratos: gaišs ādas tonis
 🤸🏼	cilvēks ratiņos: vidēji gaišs ādas tonis
 🤸🏽	cilvēks ratiņos: vidējs ādas tonis
 🤸🏾	cilvēks ratiņos: vidēji tumšs ādas tonis
@@ -1761,7 +1761,7 @@
 🤼‍♂	vīriešu cīkstēšanās
 🤼‍♀️	sieviešu cīkstēšanās
 🤼‍♀	sieviešu cīkstēšanās
-🤽	persona, kas spēlē ūdens polo
+🤽	cilvēks spēlē ūdenspolo
 🤽🏻	persona, kas spēlē ūdenspolo: gaišs ādas tonis
 🤽🏼	persona, kas spēlē ūdenspolo: vidēji gaišs ādas tonis
 🤽🏽	persona, kas spēlē ūdenspolo: vidējs ādas tonis
@@ -1773,8 +1773,8 @@
 🤽🏻‍♂	vīrietis, kas spēlē ūdenspolo: gaišs ādas tonis
 🤽🏼‍♂️	vīrietis, kas spēlē ūdenspolo: vidēji gaišs ādas tonis
 🤽🏼‍♂	vīrietis, kas spēlē ūdenspolo: vidēji gaišs ādas tonis
-🤽🏽‍♂️	vīrietis, kas spēlē ūdenspolo: vidējs ādas tonis
-🤽🏽‍♂	vīrietis, kas spēlē ūdenspolo: vidējs ādas tonis
+🤽🏽‍♂️	vīrietis spēlē ūdenspolo: vidējs ādas tonis
+🤽🏽‍♂	vīrietis spēlē ūdenspolo: vidējs ādas tonis
 🤽🏾‍♂️	vīrietis, kas spēlē ūdenspolo: vidēji tumšs ādas tonis
 🤽🏾‍♂	vīrietis, kas spēlē ūdenspolo: vidēji tumšs ādas tonis
 🤽🏿‍♂️	vīrietis, kas spēlē ūdenspolo: tumšs ādas tonis
@@ -1805,8 +1805,8 @@
 🤾🏼‍♂	vīrietis, kas spēlē handbolu: vidēji gaišs ādas tonis
 🤾🏽‍♂️	vīrietis, kas spēlē handbolu: vidējs ādas tonis
 🤾🏽‍♂	vīrietis, kas spēlē handbolu: vidējs ādas tonis
-🤾🏾‍♂️	vīrietis, kurš spēlē handbolu: vidēji tumšs ādas tonis
-🤾🏾‍♂	vīrietis, kurš spēlē handbolu: vidēji tumšs ādas tonis
+🤾🏾‍♂️	vīrietis, kas spēlē handbolu: vidēji tumšs ādas tonis
+🤾🏾‍♂	vīrietis, kas spēlē handbolu: vidēji tumšs ādas tonis
 🤾🏿‍♂️	vīrietis, kas spēlē handbolu: tumšs ādas tonis
 🤾🏿‍♂	vīrietis, kas spēlē handbolu: tumšs ādas tonis
 🤾‍♀️	sieviete, kas spēlē handbolu
@@ -2237,7 +2237,7 @@
 🐗	kuilis
 🐽	cūkas deguns
 🐏	auns
-🐑	aita
+🐑	mātīte
 🐐	kaza
 🐪	kamielis
 🐫	divkupru kamielis
@@ -2370,7 +2370,7 @@
 🌰	kastanis
 🍞	maize
 🥐	kruasāns
-🥖	bagete maize
+🥖	bagetes maize
 🥨	kliņģeris
 🥯	bagele
 🥞	pankūkas
@@ -2385,7 +2385,7 @@
 🌭	cīsiņš
 🥪	sviestmaize
 🌮	taco
-🌯	burrito
+🌯	burito
 🥙	pildīta plātsmaize
 🥚	olu
 🍳	ēdiena gatavošana
@@ -2461,7 +2461,7 @@
 ⛰️	kalns
 ⛰	kalns
 🌋	vulkāns
-🗻	Fudži kalns
+🗻	Fuji kalns
 🏕️	kempings
 🏕	kempings
 🏖️	pludmale ar lietussargu
@@ -2549,7 +2549,7 @@
 🚕	taksometrs
 🚖	pretimbraucošais taksometrs
 🚗	automašīna
-🚘	pretimbraucošā automašīna
+🚘	pretim braucošā automašīna
 🚙	sporta komunālo transportlīdzekli
 🚚	piegādes mašīna
 🚛	šarnīru kravas automašīna
@@ -2617,7 +2617,7 @@
 🕑	pulkstens divi
 🕝	divi trīsdesmit
 🕒	pulksten trīs
-🕞	trīs pusdesmit
+🕞	trīs trīsdesmit
 🕓	pulkstens četri
 🕟	četri trīsdesmit
 🕔	pulksten pieci
@@ -2640,7 +2640,7 @@
 🌔	augošs mēness
 🌕	pilnmēness
 🌖	dilstošs mēness
-🌗	pēdējais mēness ceturksnis
+🌗	pēdējā ceturkšņa mēness
 🌘	dilstošs pusmēness
 🌙	pusmēness
 🌚	jauna mēness seja
@@ -2725,7 +2725,7 @@
 🏆	trofeju
 🏅	sporta medaļa
 🥇	1.vietas medaļa
-🥈	2. vietas medaļa
+🥈	2.vietas medaļa
 🥉	3. vietas medaļa
 ⚽	futbola bumba
 ⚾	beisbols
@@ -2762,13 +2762,13 @@
 🕹️	kursorsviru
 🕹	kursorsviru
 🎰	automāts
-🎲	spēle mirt
+🎲	spēle mirst
 🧩	finierzāģis
 🧸	rotaļu lācītis
 ♠️	lāpstas uzvalks
 ♠	lāpstas uzvalks
-♥️	sirds uzvalks
-♥	sirds uzvalks
+♥️	sirds tērps
+♥	sirds tērps
 ♦️	dimanta uzvalks
 ♦	dimanta uzvalks
 ♣️	kluba uzvalks
@@ -3068,7 +3068,7 @@
 ⤴	labā bultiņa, kas izliekta uz augšu
 ⤵️	labā bultiņa, kas izliekta uz leju
 ⤵	labā bultiņa, kas izliekta uz leju
-🔃	vertikālās bultiņas pulksteņrādītāja virzienā
+🔃	pulksteņrādītāja virziena vertikālās bultiņas
 🔄	pretēji pulksteņrādītāja virzienam vērstas bultiņas
 🔙	ATPAKAĻ bultiņa
 🔚	BEIGAS bultiņa
@@ -3124,7 +3124,7 @@
 ⏪	ātrās atpakaļgaitas poga
 ⏮️	pēdējā ieraksta poga
 ⏮	pēdējā ieraksta poga
-🔼	pogu uz augšu
+🔼	poga uz augšu
 ⏫	ātrās uzvilkšanas poga
 🔽	pogu uz leju
 ⏬	ātrās lejupielādes poga
@@ -3164,7 +3164,7 @@
 ✔️	smaga atzīme
 ✔	smaga atzīme
 ✖️	smaga reizināšana x
-✖	smaga reizināšana x
+✖	smagais reizinājums x
 ❌	krusta atzīme
 ❎	krusta atzīmes poga
 ➕	smaga plus zīme
@@ -3440,7 +3440,7 @@
 🇰🇿	Kazahstāna
 🇱🇦	Laosa
 🇱🇧	Libāna
-🇱🇨	Svētā Lūcija
+🇱🇨	Sentlūsija
 🇱🇮	Lihtenšteina
 🇱🇰	Šrilanka
 🇱🇷	Libērija

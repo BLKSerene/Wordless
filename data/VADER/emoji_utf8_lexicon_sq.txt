@@ -55,7 +55,7 @@
 😞	fytyrë e zhgënjyer
 😟	fytyrë e shqetësuar
 😤	fytyrë me avull nga hunda
-😢	fytyrë e qarë
+😢	fytyrë duke qarë
 😭	fytyrë që qan me zë të lartë
 😦	fytyrë e vrenjtur me gojë hapur
 😧	fytyrë e vuajtur
@@ -111,7 +111,7 @@
 🙀	fytyrë e lodhur mace
 😿	fytyrë mace që qan
 😾	fytyrë mace e mpirë
-🙈	majmun shih-jo-evil
+🙈	majmun nuk shoh-e keq
 🙉	dëgjo-jo-evil majmun
 🙊	flas-jo-evil majmun
 🏻	ton i lehtë i lëkurës
@@ -121,15 +121,15 @@
 🏿	toni i errët i lëkurës
 👶	bebe
 👶🏻	bebe: nuancë lëkure e lehtë
-👶🏼	foshnjë: nuancë lëkure mesatare e çelur
+👶🏼	foshnjë: nuancë lëkure mesatare-e çelur
 👶🏽	bebe: nuancë e mesme e lëkurës
-👶🏾	foshnja: nuancë lëkure mesatare deri në errësirë
+👶🏾	bebe: nuancë lëkure mesatare deri në errësirë
 👶🏿	foshnja: ton i errët i lëkurës
 🧒	fëmijë
 🧒🏻	fëmija: ton i lehtë i lëkurës
-🧒🏼	fëmijë: nuancë lëkure mesatare e çelur
+🧒🏼	fëmijë: nuancë lëkure mesatarisht e çelur
 🧒🏽	fëmija: nuancë e mesme e lëkurës
-🧒🏾	fëmijë: nuancë lëkure mesatare deri në errësirë
+🧒🏾	fëmija: nuancë lëkure mesatare deri në errësirë
 🧒🏿	fëmija: ton i errët i lëkurës
 👦	djalë
 👦🏻	djali: nuancë lëkure e lehtë
@@ -158,20 +158,20 @@
 👩	grua
 👩🏻	grua: nuancë lëkure e lehtë
 👩🏼	grua: nuancë lëkure mesatare e çelur
-👩🏽	grua: nuancë e mesme e lëkurës
+👩🏽	grua: nuancë lëkure mesatare
 👩🏾	grua: nuancë lëkure mesatare deri në errësirë
-👩🏿	grua: ton i errët i lëkurës
+👩🏿	gruaja: ton i errët i lëkurës
 🧓	i rritur i moshuar
-🧓🏻	i rritur i moshuar: ton lëkure i hapur
+🧓🏻	i rrituri i moshuar: ton lëkure i hapur
 🧓🏼	të rriturit në moshë: ton lëkure mesatarisht i hapur
 🧓🏽	të rriturit në moshë: nuancë e mesme e lëkurës
 🧓🏾	të rriturit në moshë: nuancë lëkure mesatare deri në errësirë
-🧓🏿	i rrituri i moshuar: ton i errët i lëkurës
+🧓🏿	të rriturit në moshë: ton i errët i lëkurës
 👴	njeri i vjeter
-👴🏻	plaku: nuancë lëkure e lehtë
+👴🏻	plaku: nuancë e lehtë e lëkurës
 👴🏼	plak: nuancë lëkure mesatare e çelur
 👴🏽	plaku: nuancë e mesme e lëkurës
-👴🏾	plaku: nuancë lëkure mesatare deri në errësirë
+👴🏾	plak: nuancë lëkure mesatare deri në errësirë
 👴🏿	plaku: nuancë e errët e lëkurës
 👵	grua e vjeter
 👵🏻	grua e moshuar: nuancë lëkure e lehtë
@@ -216,15 +216,15 @@
 👩🏾‍🎓	grua studente: nuancë lëkure mesatare-e errët
 👩🏿‍🎓	grua studente: nuancë e errët e lëkurës
 👨‍🏫	njeri mësues
-👨🏻‍🏫	burrë mësues: nuancë lëkure e lehtë
+👨🏻‍🏫	njeri mësues: nuancë lëkure e lehtë
 👨🏼‍🏫	mësues mashkull: nuancë lëkure mesatare-e çelur
 👨🏽‍🏫	mësues mashkull: nuancë lëkure mesatare
 👨🏾‍🏫	mësues mashkull: nuancë lëkure mesatare-e errët
-👨🏿‍🏫	mësues mashkull: ton i errët i lëkurës
+👨🏿‍🏫	mësuesi mashkull: toni i errët i lëkurës
 👩‍🏫	mësuese grua
 👩🏻‍🏫	mësuese grua: nuancë lëkure e lehtë
 👩🏼‍🏫	mësuese grua: nuancë lëkure mesatarisht e çelur
-👩🏽‍🏫	mësuese grua: nuancë e mesme e lëkurës
+👩🏽‍🏫	mësuese grua: nuancë lëkure mesatare
 👩🏾‍🏫	mësuese grua: nuancë lëkure mesatare-e errët
 👩🏿‍🏫	mësuese grua: nuancë e errët e lëkurës
 👨‍⚖️	njeri gjyqtar
@@ -237,8 +237,8 @@
 👨🏽‍⚖	gjyqtari mashkull: nuancë e mesme e lëkurës
 👨🏾‍⚖️	gjyqtari mashkull: nuancë lëkure mesatare e errët
 👨🏾‍⚖	gjyqtari mashkull: nuancë lëkure mesatare e errët
-👨🏿‍⚖️	gjyqtari mashkull: nuancë e errët e lëkurës
-👨🏿‍⚖	gjyqtari mashkull: nuancë e errët e lëkurës
+👨🏿‍⚖️	gjyqtari mashkull: ton i errët i lëkurës
+👨🏿‍⚖	gjyqtari mashkull: ton i errët i lëkurës
 👩‍⚖️	grua gjyqtare
 👩‍⚖	grua gjyqtare
 👩🏻‍⚖️	grua gjyqtare: nuancë e lehtë e lëkurës
@@ -247,21 +247,21 @@
 👩🏼‍⚖	gjyqtare grua: nuancë lëkure mesatare e çelur
 👩🏽‍⚖️	gjyqtare grua: nuancë e mesme e lëkurës
 👩🏽‍⚖	gjyqtare grua: nuancë e mesme e lëkurës
-👩🏾‍⚖️	grua gjyqtare: nuancë lëkure mesatare deri në errësirë
-👩🏾‍⚖	grua gjyqtare: nuancë lëkure mesatare deri në errësirë
-👩🏿‍⚖️	grua gjyqtare: ton i errët i lëkurës
-👩🏿‍⚖	grua gjyqtare: ton i errët i lëkurës
+👩🏾‍⚖️	grua gjyqtare: nuancë lëkure mesatare-e errët
+👩🏾‍⚖	grua gjyqtare: nuancë lëkure mesatare-e errët
+👩🏿‍⚖️	gjykatësi grua: ton i errët i lëkurës
+👩🏿‍⚖	gjykatësi grua: ton i errët i lëkurës
 👨‍🌾	njeri bujk
-👨🏻‍🌾	burrë fermer: nuancë lëkure e lehtë
+👨🏻‍🌾	njeri fermer: nuancë lëkure e lehtë
 👨🏼‍🌾	burrë fermer: nuancë lëkure mesatarisht e çelur
-👨🏽‍🌾	burrë fermer: nuancë lëkure mesatare
+👨🏽‍🌾	njeri fermer: nuancë lëkure mesatare
 👨🏾‍🌾	burrë fermer: nuancë lëkure mesatare deri në errësirë
 👨🏿‍🌾	njeri fermer: nuancë e errët e lëkurës
 👩‍🌾	grua fermere
 👩🏻‍🌾	grua fermere: nuancë lëkure e lehtë
 👩🏼‍🌾	grua fermere: nuancë lëkure mesatarisht e çelur
 👩🏽‍🌾	grua fermere: nuancë lëkure mesatare
-👩🏾‍🌾	grua fermere: nuancë lëkure mesatarisht e errët
+👩🏾‍🌾	grua fermere: nuancë lëkure mesatare deri në errësirë
 👩🏿‍🌾	grua fermere: nuancë e errët e lëkurës
 👨‍🍳	njeri kuzhinier
 👨🏻‍🍳	man kuzhinier: nuancë lëkure e lehtë
@@ -271,13 +271,13 @@
 👨🏿‍🍳	man kuzhinier: nuancë e errët e lëkurës
 👩‍🍳	grua kuzhiniere
 👩🏻‍🍳	kuzhinier grua: nuancë lëkure e lehtë
-👩🏼‍🍳	grua kuzhiniere: nuancë lëkure mesatare e çelur
-👩🏽‍🍳	grua kuzhiniere: nuancë lëkure mesatare
-👩🏾‍🍳	kuzhinier grua: nuancë lëkure mesatare deri në errësirë
+👩🏼‍🍳	kuzhinier grua: nuancë lëkure mesatare deri në çelët
+👩🏽‍🍳	kuzhinier grua: nuancë lëkure mesatare
+👩🏾‍🍳	grua kuzhiniere: nuancë lëkure mesatare deri në errësirë
 👩🏿‍🍳	kuzhinier grua: nuancë e errët e lëkurës
 👨‍🔧	njeri mekanik
 👨🏻‍🔧	njeri mekanik: nuancë lëkure e lehtë
-👨🏼‍🔧	mekanik mashkull: nuancë lëkure mesatare-e çelur
+👨🏼‍🔧	njeri mekanik: nuancë lëkure mesatare deri në çelët
 👨🏽‍🔧	njeri mekanik: nuancë e mesme e lëkurës
 👨🏾‍🔧	mekanik mashkull: nuancë lëkure mesatare deri në errësirë
 👨🏿‍🔧	njeri mekanik: ton i errët i lëkurës
@@ -304,7 +304,7 @@
 👨🏼‍💼	burrë punonjës zyre: nuancë lëkure mesatare deri në çelët
 👨🏽‍💼	burrë punonjës zyre: nuancë lëkure mesatare
 👨🏾‍💼	burrë punonjës zyre: nuancë lëkure mesatare deri në errësirë
-👨🏿‍💼	burrë punonjës zyre: nuancë lëkure e errët
+👨🏿‍💼	burrë punonjës zyre: nuancë e errët e lëkurës
 👩‍💼	grua punonjëse zyre
 👩🏻‍💼	grua punonjëse zyre: nuancë lëkure e çelur
 👩🏼‍💼	grua punonjëse zyre: nuancë lëkure mesatarisht e çelur
@@ -312,7 +312,7 @@
 👩🏾‍💼	grua punonjëse zyre: nuancë lëkure mesatare e errët
 👩🏿‍💼	grua punonjëse zyre: nuancë e errët e lëkurës
 👨‍🔬	njeri shkencëtar
-👨🏻‍🔬	njeri shkencëtar: nuancë lëkure e çelur
+👨🏻‍🔬	njeri shkencëtar: nuancë lëkure e lehtë
 👨🏼‍🔬	burrë shkencëtar: ton lëkure mesatarisht i çelur
 👨🏽‍🔬	njeri shkencëtar: nuancë e mesme e lëkurës
 👨🏾‍🔬	njeri shkencëtar: nuancë lëkure mesatare deri në errësirë
@@ -325,7 +325,7 @@
 👩🏿‍🔬	grua shkencëtare: ton i errët i lëkurës
 👨‍💻	njeri teknolog
 👨🏻‍💻	njeri teknolog: nuancë e lehtë e lëkurës
-👨🏼‍💻	njeri teknolog: nuancë lëkure mesatare-e çelur
+👨🏼‍💻	mashkull teknolog: nuancë lëkure mesatare-e çelur
 👨🏽‍💻	njeri teknolog: nuancë e mesme e lëkurës
 👨🏾‍💻	mashkull teknolog: nuancë lëkure mesatare deri në errësirë
 👨🏿‍💻	njeri teknolog: ton i errët i lëkurës
@@ -338,20 +338,20 @@
 👨‍🎤	njeri këngëtar
 👨🏻‍🎤	njeri këngëtar: nuancë lëkure e lehtë
 👨🏼‍🎤	mashkull këngëtar: nuancë lëkure mesatare deri në çelët
-👨🏽‍🎤	njeri këngëtar: nuancë lëkure mesatare
-👨🏾‍🎤	mashkull këngëtar: nuancë lëkure mesatare-e errët
+👨🏽‍🎤	mashkull këngëtar: nuancë lëkure mesatare
+👨🏾‍🎤	mashkull këngëtar: nuancë lëkure mesatare deri në errësirë
 👨🏿‍🎤	njeri këngëtar: nuancë e errët e lëkurës
 👩‍🎤	grua këngëtare
-👩🏻‍🎤	grua këngëtare: nuancë e lehtë e lëkurës
+👩🏻‍🎤	grua këngëtare: nuancë lëkure e lehtë
 👩🏼‍🎤	grua këngëtare: nuancë lëkure mesatarisht e çelur
 👩🏽‍🎤	grua këngëtare: nuancë e mesme e lëkurës
-👩🏾‍🎤	grua këngëtare: nuancë lëkure mesatare e errët
-👩🏿‍🎤	grua këngëtare: ton i errët i lëkurës
+👩🏾‍🎤	grua këngëtare: nuancë lëkure mesatare deri në errësirë
+👩🏿‍🎤	grua këngëtare: nuancë e errët e lëkurës
 👨‍🎨	njeri artist
 👨🏻‍🎨	njeri artist: nuancë lëkure e lehtë
-👨🏼‍🎨	njeri artist: ton lëkure mesatarisht i çelur
+👨🏼‍🎨	njeri artist: nuancë lëkure mesatare-e çelur
 👨🏽‍🎨	njeri artist: nuancë lëkure mesatare
-👨🏾‍🎨	njeri artist: nuancë lëkure mesatare deri në errësirë
+👨🏾‍🎨	njeri artist: nuancë lëkure mesatare-e errët
 👨🏿‍🎨	njeri artist: nuancë e errët e lëkurës
 👩‍🎨	grua artiste
 👩🏻‍🎨	grua artiste: nuancë lëkure e lehtë
@@ -375,8 +375,8 @@
 👩‍✈	grua pilot
 👩🏻‍✈️	grua pilot: nuancë lëkure e lehtë
 👩🏻‍✈	grua pilot: nuancë lëkure e lehtë
-👩🏼‍✈️	grua pilote: nuancë lëkure mesatarisht e çelur
-👩🏼‍✈	grua pilote: nuancë lëkure mesatarisht e çelur
+👩🏼‍✈️	grua pilot: nuancë lëkure mesatare deri në çelët
+👩🏼‍✈	grua pilot: nuancë lëkure mesatare deri në çelët
 👩🏽‍✈️	grua pilot: nuancë lëkure mesatare
 👩🏽‍✈	grua pilot: nuancë lëkure mesatare
 👩🏾‍✈️	grua pilot: nuancë lëkure mesatare deri në errësirë
@@ -392,7 +392,7 @@
 👩‍🚀	grua astronaute
 👩🏻‍🚀	grua astronaute: nuancë lëkure e lehtë
 👩🏼‍🚀	grua astronaute: nuancë lëkure mesatare e çelur
-👩🏽‍🚀	grua astronaute: nuancë e mesme e lëkurës
+👩🏽‍🚀	grua astronaute: nuancë lëkure mesatare
 👩🏾‍🚀	grua astronaute: nuancë lëkure mesatare deri në errësirë
 👩🏿‍🚀	grua astronaute: ton i errët i lëkurës
 👨‍🚒	njeri zjarrfikës
@@ -409,8 +409,8 @@
 👩🏿‍🚒	grua zjarrfikëse: nuancë e errët e lëkurës
 👮	oficer policie
 👮🏻	oficeri i policisë: nuancë lëkure e çelur
-👮🏼	oficeri i policisë: nuancë lëkure mesatare e çelur
-👮🏽	punonjës policie: nuancë lëkure mesatare
+👮🏼	oficeri i policisë: nuancë lëkure mesatarisht e çelur
+👮🏽	oficeri i policisë: nuancë lëkure mesatare
 👮🏾	oficeri i policisë: nuancë lëkure mesatare deri në errësirë
 👮🏿	oficeri i policisë: nuancë e errët e lëkurës
 👮‍♂️	njeri oficer policie
@@ -431,29 +431,29 @@
 👮🏻‍♀	grua oficere policie: nuancë lëkure e çelur
 👮🏼‍♀️	grua punonjëse policie: nuancë lëkure mesatarisht e çelur
 👮🏼‍♀	grua punonjëse policie: nuancë lëkure mesatarisht e çelur
-👮🏽‍♀️	grua punonjëse policie: nuancë lëkure mesatare
-👮🏽‍♀	grua punonjëse policie: nuancë lëkure mesatare
-👮🏾‍♀️	grua punonjëse policie: nuancë lëkure mesatare e errët
-👮🏾‍♀	grua punonjëse policie: nuancë lëkure mesatare e errët
+👮🏽‍♀️	grua punonjëse policie: nuancë e mesme e lëkurës
+👮🏽‍♀	grua punonjëse policie: nuancë e mesme e lëkurës
+👮🏾‍♀️	grua punonjëse policie: nuancë lëkure mesatare deri në errësirë
+👮🏾‍♀	grua punonjëse policie: nuancë lëkure mesatare deri në errësirë
 👮🏿‍♀️	grua oficere policie: nuancë e errët e lëkurës
 👮🏿‍♀	grua oficere policie: nuancë e errët e lëkurës
 🕵️	detektiv
 🕵	detektiv
-🕵🏻	Detektiv: ton i hapur i lëkurës
+🕵🏻	Detektiv: ton i çelur i lëkurës
 🕵🏼	Detektiv: ton lëkure mesatarisht i çelur
 🕵🏽	Detektiv: ton i mesëm i lëkurës
-🕵🏾	Detektiv: ton lëkure mesatarisht e errët
-🕵🏿	Detektiv: ton i errët i lëkurës
+🕵🏾	Detektivi: ton lëkure mesatarisht i errët
+🕵🏿	Detektiv: toni i errët i lëkurës
 🕵️‍♂️	njeri detektiv
 🕵‍♂️	njeri detektiv
 🕵️‍♂	njeri detektiv
 🕵‍♂	njeri detektiv
 🕵🏻‍♂️	mashkull detektiv: nuancë lëkure e lehtë
 🕵🏻‍♂	mashkull detektiv: nuancë lëkure e lehtë
-🕵🏼‍♂️	Detektiv mashkull: nuancë lëkure mesatare e çelur
-🕵🏼‍♂	Detektiv mashkull: nuancë lëkure mesatare e çelur
-🕵🏽‍♂️	mashkull detektiv: nuancë lëkure mesatare
-🕵🏽‍♂	mashkull detektiv: nuancë lëkure mesatare
+🕵🏼‍♂️	mashkull detektiv: nuancë lëkure mesatare e çelur
+🕵🏼‍♂	mashkull detektiv: nuancë lëkure mesatare e çelur
+🕵🏽‍♂️	mashkull detektiv: nuancë e mesme e lëkurës
+🕵🏽‍♂	mashkull detektiv: nuancë e mesme e lëkurës
 🕵🏾‍♂️	Detektiv mashkull: nuancë lëkure mesatare deri në errësirë
 🕵🏾‍♂	Detektiv mashkull: nuancë lëkure mesatare deri në errësirë
 🕵🏿‍♂️	mashkull detektiv: ton i errët i lëkurës
@@ -462,10 +462,10 @@
 🕵‍♀️	grua detektive
 🕵️‍♀	grua detektive
 🕵‍♀	grua detektive
-🕵🏻‍♀️	grua detektive: nuancë lëkure e lehtë
-🕵🏻‍♀	grua detektive: nuancë lëkure e lehtë
-🕵🏼‍♀️	grua detektive: nuancë lëkure mesatare e çelur
-🕵🏼‍♀	grua detektive: nuancë lëkure mesatare e çelur
+🕵🏻‍♀️	grua detektive: nuancë e lehtë e lëkurës
+🕵🏻‍♀	grua detektive: nuancë e lehtë e lëkurës
+🕵🏼‍♀️	grua detektive: ton lëkure mesatarisht i hapur
+🕵🏼‍♀	grua detektive: ton lëkure mesatarisht i hapur
 🕵🏽‍♀️	grua detektive: nuancë e mesme e lëkurës
 🕵🏽‍♀	grua detektive: nuancë e mesme e lëkurës
 🕵🏾‍♀️	grua detektive: nuancë lëkure mesatare e errët
@@ -474,9 +474,9 @@
 🕵🏿‍♀	grua detektive: ton i errët i lëkurës
 💂	roje
 💂🏻	roje: nuancë lëkure e lehtë
-💂🏼	roje: ton lëkure mesatarisht i çelur
+💂🏼	roje: ton lëkure mesatarisht i hapur
 💂🏽	roje: nuancë lëkure mesatare
-💂🏾	roje: nuancë lëkure mesatare-e errët
+💂🏾	roje: nuancë lëkure mesatare deri në errësirë
 💂🏿	roje: ton i errët i lëkurës
 💂‍♂️	njeri roje
 💂‍♂	njeri roje
@@ -498,8 +498,8 @@
 💂🏼‍♀	roje gruaje: nuancë lëkure mesatarisht e çelur
 💂🏽‍♀️	roje gruaje: nuancë lëkure mesatare
 💂🏽‍♀	roje gruaje: nuancë lëkure mesatare
-💂🏾‍♀️	roje gruaje: nuancë lëkure mesatare deri në errësirë
-💂🏾‍♀	roje gruaje: nuancë lëkure mesatare deri në errësirë
+💂🏾‍♀️	roje gruaje: nuancë lëkure mesatarisht e errët
+💂🏾‍♀	roje gruaje: nuancë lëkure mesatarisht e errët
 💂🏿‍♀️	roje gruaje: nuancë e errët e lëkurës
 💂🏿‍♀	roje gruaje: nuancë e errët e lëkurës
 👷	Punëtor ndërtimi
@@ -532,7 +532,7 @@
 👷🏾‍♀	grua punëtore ndërtimi: nuancë lëkure mesatare deri në errësirë
 👷🏿‍♀️	grua punëtore ndërtimi: nuancë e errët e lëkurës
 👷🏿‍♀	grua punëtore ndërtimi: nuancë e errët e lëkurës
-🤴	princ
+🤴	princi
 🤴🏻	princi: nuancë e lehtë e lëkurës
 🤴🏼	princi: nuancë lëkure mesatare e çelur
 🤴🏽	princi: nuancë e mesme e lëkurës
@@ -574,9 +574,9 @@
 👳🏾‍♀	grua e veshur me çallmë: nuancë lëkure mesatare e errët
 👳🏿‍♀️	grua e veshur me çallmë: nuancë e errët e lëkurës
 👳🏿‍♀	grua e veshur me çallmë: nuancë e errët e lëkurës
-👲	njeri me kapelë kineze
+👲	njeri me kapele kineze
 👲🏻	burrë me kapelë kineze: nuancë lëkure e lehtë
-👲🏼	burrë me kapelë kineze: nuancë lëkure mesatarisht e çelur
+👲🏼	burrë me kapelë kineze: nuancë lëkure mesatare e çelur
 👲🏽	burrë me kapelë kineze: nuancë lëkure mesatare
 👲🏾	burrë me kapelë kineze: nuancë lëkure mesatare deri në errësirë
 👲🏿	burrë me kapelë kineze: nuancë e errët e lëkurës
@@ -587,7 +587,7 @@
 🧕🏾	grua me shami: nuancë lëkure mesatare deri në errësirë
 🧕🏿	grua me shami: nuancë e errët e lëkurës
 🧔	person me mjekër
-🧔🏻	person me mjekër: nuancë lëkure e lehtë
+🧔🏻	person me mjekër: nuancë lëkure e çelur
 🧔🏼	person me mjekër: nuancë lëkure mesatarisht e çelur
 🧔🏽	person me mjekër: nuancë e mesme e lëkurës
 🧔🏾	person me mjekër: nuancë lëkure mesatare deri në errësirë
@@ -634,7 +634,7 @@
 👩🏽‍🦰	grua me flokë të kuqe: nuancë lëkure mesatare
 👩🏾‍🦰	grua me flokë të kuqe: nuancë lëkure mesatare deri në errësirë
 👩🏿‍🦰	grua me flokë të kuqe: nuancë lëkure e errët
-👨‍🦱	burrë me flokë kaçurrelë
+👨‍🦱	burrë, me flokë kaçurrelë
 👨🏻‍🦱	burrë me flokë kaçurrelë: nuancë lëkure e çelur
 👨🏼‍🦱	burrë, flokë kaçurrelë: nuancë lëkure mesatare deri në çelët
 👨🏽‍🦱	burrë me flokë kaçurrelë: nuancë lëkure mesatare
@@ -653,8 +653,8 @@
 👨🏾‍🦲	burrë, tullac: nuancë lëkure mesatare deri në errësirë
 👨🏿‍🦲	burrë, tullac: nuancë e errët e lëkurës
 👩‍🦲	grua, tullac
-👩🏻‍🦲	grua, tullac: nuancë lëkure e lehtë
-👩🏼‍🦲	grua, tullac: nuancë lëkure mesatare e çelur
+👩🏻‍🦲	grua, tullac: nuancë e lehtë e lëkurës
+👩🏼‍🦲	grua, tullac: nuancë lëkure mesatarisht e çelur
 👩🏽‍🦲	grua, tullac: nuancë e mesme e lëkurës
 👩🏾‍🦲	grua, tullac: nuancë lëkure mesatare deri në errësirë
 👩🏿‍🦲	grua, tullac: nuancë e errët e lëkurës
@@ -713,17 +713,17 @@
 🤶🏾	Zonja Claus: nuancë lëkure mesatare deri në errësirë
 🤶🏿	Zonja Klaus: nuancë e errët e lëkurës
 🦸	superhero
-🦸🏻	superhero: nuancë e lehtë e lëkurës
+🦸🏻	superhero: nuancë lëkure e lehtë
 🦸🏼	superhero: nuancë lëkure mesatare e çelur
 🦸🏽	superhero: nuancë mesatare e lëkurës
 🦸🏾	superhero: nuancë lëkure mesatare e errët
 🦸🏿	superhero: toni i errët i lëkurës
 🦸‍♀️	grua superhero
 🦸‍♀	grua superhero
-🦸🏻‍♀️	grua superhero: nuancë lëkure e lehtë
-🦸🏻‍♀	grua superhero: nuancë lëkure e lehtë
-🦸🏼‍♀️	grua superhero: nuancë lëkure mesatare deri në çelët
-🦸🏼‍♀	grua superhero: nuancë lëkure mesatare deri në çelët
+🦸🏻‍♀️	superheroi i gruas: nuancë e lehtë e lëkurës
+🦸🏻‍♀	superheroi i gruas: nuancë e lehtë e lëkurës
+🦸🏼‍♀️	superheroi i gruas: ton lëkure mesatarisht i çelur
+🦸🏼‍♀	superheroi i gruas: ton lëkure mesatarisht i çelur
 🦸🏽‍♀️	superheroi i gruas: nuancë e mesme e lëkurës
 🦸🏽‍♀	superheroi i gruas: nuancë e mesme e lëkurës
 🦸🏾‍♀️	grua superhero: nuancë lëkure mesatare deri në errësirë
@@ -732,8 +732,8 @@
 🦸🏿‍♀	superheroi i gruas: toni i errët i lëkurës
 🦸‍♂️	njeri superhero
 🦸‍♂	njeri superhero
-🦸🏻‍♂️	mashkull superhero: nuancë lëkure e çelur
-🦸🏻‍♂	mashkull superhero: nuancë lëkure e çelur
+🦸🏻‍♂️	mashkull superhero: nuancë lëkure e lehtë
+🦸🏻‍♂	mashkull superhero: nuancë lëkure e lehtë
 🦸🏼‍♂️	mashkull superhero: nuancë lëkure mesatare deri në çelët
 🦸🏼‍♂	mashkull superhero: nuancë lëkure mesatare deri në çelët
 🦸🏽‍♂️	mashkull superhero: nuancë lëkure mesatare
@@ -748,15 +748,15 @@
 🦹🏽	supervillain: nuancë e mesme e lëkurës
 🦹🏾	supervillain: nuancë lëkure mesatare deri në errësirë
 🦹🏿	supervillain: nuancë e errët e lëkurës
-🦹‍♀️	grua super e keqe
-🦹‍♀	grua super e keqe
+🦹‍♀️	grua super zuzar
+🦹‍♀	grua super zuzar
 🦹🏻‍♀️	grua supervillane: nuancë lëkure e çelur
 🦹🏻‍♀	grua supervillane: nuancë lëkure e çelur
 🦹🏼‍♀️	grua supervillain: nuancë lëkure mesatare deri në çelët
 🦹🏼‍♀	grua supervillain: nuancë lëkure mesatare deri në çelët
 🦹🏽‍♀️	grua supervillane: nuancë e mesme e lëkurës
 🦹🏽‍♀	grua supervillane: nuancë e mesme e lëkurës
-🦹🏾‍♀️	grua supervillane: nuancë lëkure mesatare-e errët
+🦹🏾‍♀️	grua supervillane: nuancë lëkure mesatare deri në errësirë
 🦹🏾‍♀	grua supervillane: nuancë lëkure mesatare deri në errësirë
 🦹🏿‍♀️	grua supervillane: nuancë e errët e lëkurës
 🦹🏿‍♀	grua supervillane: nuancë e errët e lëkurës
@@ -764,17 +764,17 @@
 🦹‍♂	njeri super zuzar
 🦹🏻‍♂️	mashkull supervillain: nuancë lëkure e çelur
 🦹🏻‍♂	mashkull supervillain: nuancë lëkure e çelur
-🦹🏼‍♂️	mashkulli supervillain: nuancë lëkure mesatare-e çelur
-🦹🏼‍♂	mashkulli supervillain: nuancë lëkure mesatare-e çelur
-🦹🏽‍♂️	mashkull supervillain: nuancë e mesme e lëkurës
-🦹🏽‍♂	mashkull supervillain: nuancë e mesme e lëkurës
-🦹🏾‍♂️	mashkull supervillain: nuancë lëkure mesatare e errët
-🦹🏾‍♂	mashkull supervillain: nuancë lëkure mesatare e errët
+🦹🏼‍♂️	mashkull supervillain: nuancë lëkure mesatare deri në çelët
+🦹🏼‍♂	mashkull supervillain: nuancë lëkure mesatare deri në çelët
+🦹🏽‍♂️	mashkull supervillain: nuancë lëkure mesatare
+🦹🏽‍♂	mashkull supervillain: nuancë lëkure mesatare
+🦹🏾‍♂️	mashkull supervillain: nuancë lëkure mesatare deri në errësirë
+🦹🏾‍♂	mashkull supervillain: nuancë lëkure mesatare deri në errësirë
 🦹🏿‍♂️	mashkull supervillain: nuancë e errët e lëkurës
 🦹🏿‍♂	mashkull supervillain: nuancë e errët e lëkurës
 🧙	magjistar
 🧙🏻	magjistar: nuancë e lehtë e lëkurës
-🧙🏼	magjistar: nuancë lëkure mesatarisht e çelur
+🧙🏼	magjistar: ton lëkure mesatarisht i çelur
 🧙🏽	magjistar: nuancë e mesme e lëkurës
 🧙🏾	magjistar: nuancë lëkure mesatare deri në errësirë
 🧙🏿	magjistar: ton i errët i lëkurës
@@ -784,8 +784,8 @@
 🧙🏻‍♀	grua magjistare: nuancë lëkure e lehtë
 🧙🏼‍♀️	grua magjistare: nuancë lëkure mesatarisht e çelur
 🧙🏼‍♀	grua magjistare: nuancë lëkure mesatarisht e çelur
-🧙🏽‍♀️	grua magjistare: nuancë e mesme e lëkurës
-🧙🏽‍♀	grua magjistare: nuancë e mesme e lëkurës
+🧙🏽‍♀️	grua magjistare: nuancë lëkure mesatare
+🧙🏽‍♀	grua magjistare: nuancë lëkure mesatare
 🧙🏾‍♀️	grua magjistare: nuancë lëkure mesatare deri në errësirë
 🧙🏾‍♀	grua magjistare: nuancë lëkure mesatare deri në errësirë
 🧙🏿‍♀️	grua magjistare: nuancë e errët e lëkurës
@@ -812,8 +812,8 @@
 🧚‍♀	grua zanë
 🧚🏻‍♀️	grua zanash: nuancë lëkure e lehtë
 🧚🏻‍♀	grua zanash: nuancë lëkure e lehtë
-🧚🏼‍♀️	grua zanash: nuancë lëkure mesatare deri në çelët
-🧚🏼‍♀	grua zanash: nuancë lëkure mesatare deri në çelët
+🧚🏼‍♀️	grua zanash: nuancë lëkure mesatarisht e çelur
+🧚🏼‍♀	grua zanash: nuancë lëkure mesatarisht e çelur
 🧚🏽‍♀️	grua zanash: nuancë lëkure mesatare
 🧚🏽‍♀	grua zanash: nuancë lëkure mesatare
 🧚🏾‍♀️	grua zanash: nuancë lëkure mesatare deri në errësirë
@@ -842,8 +842,8 @@
 🧛‍♀	grua vampir
 🧛🏻‍♀️	grua vampir: nuancë lëkure e lehtë
 🧛🏻‍♀	grua vampir: nuancë lëkure e lehtë
-🧛🏼‍♀️	grua vampir: nuancë lëkure mesatare-e çelur
-🧛🏼‍♀	grua vampir: nuancë lëkure mesatare-e çelur
+🧛🏼‍♀️	grua vampir: nuancë lëkure mesatarisht e çelur
+🧛🏼‍♀	grua vampir: nuancë lëkure mesatarisht e çelur
 🧛🏽‍♀️	grua vampir: nuancë e mesme e lëkurës
 🧛🏽‍♀	grua vampir: nuancë e mesme e lëkurës
 🧛🏾‍♀️	grua vampir: nuancë lëkure mesatare e errët
@@ -852,18 +852,18 @@
 🧛🏿‍♀	grua vampir: nuancë e errët e lëkurës
 🧛‍♂️	njeri vampir
 🧛‍♂	njeri vampir
-🧛🏻‍♂️	njeri vampir: nuancë lëkure e lehtë
-🧛🏻‍♂	njeri vampir: nuancë lëkure e lehtë
-🧛🏼‍♂️	burrë vampir: nuancë lëkure mesatare e çelur
-🧛🏼‍♂	burrë vampir: nuancë lëkure mesatare e çelur
-🧛🏽‍♂️	burrë vampir: nuancë e mesme e lëkurës
-🧛🏽‍♂	burrë vampir: nuancë e mesme e lëkurës
+🧛🏻‍♂️	burrë vampir: nuancë lëkure e lehtë
+🧛🏻‍♂	burrë vampir: nuancë lëkure e lehtë
+🧛🏼‍♂️	burrë vampir: nuancë lëkure mesatare deri në çelët
+🧛🏼‍♂	burrë vampir: nuancë lëkure mesatare deri në çelët
+🧛🏽‍♂️	njeri vampir: nuancë e mesme e lëkurës
+🧛🏽‍♂	njeri vampir: nuancë e mesme e lëkurës
 🧛🏾‍♂️	burrë vampir: nuancë lëkure mesatare deri në errësirë
 🧛🏾‍♂	burrë vampir: nuancë lëkure mesatare deri në errësirë
 🧛🏿‍♂️	njeri vampir: nuancë e errët e lëkurës
 🧛🏿‍♂	njeri vampir: nuancë e errët e lëkurës
 🧜	merperson
-🧜🏻	merperson: nuancë lëkure e lehtë
+🧜🏻	merperson: nuancë e lehtë e lëkurës
 🧜🏼	merperson: ton lëkure mesatarisht i çelur
 🧜🏽	merperson: nuancë e mesme e lëkurës
 🧜🏾	merperson: nuancë lëkure mesatare deri në errësirë
@@ -879,7 +879,7 @@
 🧜🏾‍♀️	sirenë: nuancë lëkure mesatare e errët
 🧜🏾‍♀	sirenë: nuancë lëkure mesatare e errët
 🧜🏿‍♀️	sirenë: ton i errët i lëkurës
-🧜🏿‍♀	sirenë: nuancë e errët e lëkurës
+🧜🏿‍♀	sirenë: ton i errët i lëkurës
 🧜‍♂️	Merman
 🧜‍♂	Merman
 🧜🏻‍♂️	merman: nuancë e lehtë e lëkurës
@@ -894,7 +894,7 @@
 🧜🏿‍♂	merman: nuancë e errët e lëkurës
 🧝	kukudh
 🧝🏻	kukudh: nuancë e lehtë e lëkurës
-🧝🏼	kukudh: nuancë lëkure mesatarisht e çelur
+🧝🏼	kukudh: ton lëkure mesatarisht i çelur
 🧝🏽	kukudh: nuancë e mesme e lëkurës
 🧝🏾	kukudh: nuancë lëkure mesatare deri në errësirë
 🧝🏿	kukudh: nuancë e errët e lëkurës
@@ -942,18 +942,18 @@
 🙍‍♂	njeri i vrenjtur
 🙍🏻‍♂️	burrë i vrenjtur: nuancë lëkure e çelur
 🙍🏻‍♂	burrë i vrenjtur: nuancë lëkure e çelur
-🙍🏼‍♂️	burrë i vrenjtur: nuancë lëkure mesatare e çelur
-🙍🏼‍♂	burrë i vrenjtur: nuancë lëkure mesatare e çelur
+🙍🏼‍♂️	burrë i vrenjtur: nuancë lëkure mesatarisht e çelur
+🙍🏼‍♂	burrë i vrenjtur: nuancë lëkure mesatarisht e çelur
 🙍🏽‍♂️	burrë i vrenjtur: nuancë lëkure mesatare
 🙍🏽‍♂	burrë i vrenjtur: nuancë lëkure mesatare
 🙍🏾‍♂️	burrë i vrenjtur: nuancë lëkure mesatare deri në errësirë
 🙍🏾‍♂	burrë i vrenjtur: nuancë lëkure mesatare deri në errësirë
-🙍🏿‍♂️	njeri i vrenjtur: nuancë e errët e lëkurës
-🙍🏿‍♂	njeri i vrenjtur: nuancë e errët e lëkurës
+🙍🏿‍♂️	burrë i vrenjtur: nuancë e errët e lëkurës
+🙍🏿‍♂	burrë i vrenjtur: nuancë e errët e lëkurës
 🙍‍♀️	grua vrenjtur
 🙍‍♀	grua vrenjtur
-🙍🏻‍♀️	grua e rrudhur: nuancë lëkure e çelur
-🙍🏻‍♀	grua e rrudhur: nuancë lëkure e çelur
+🙍🏻‍♀️	grua vrenjtur: nuancë lëkure e çelur
+🙍🏻‍♀	grua vrenjtur: nuancë lëkure e çelur
 🙍🏼‍♀️	grua e vrenjtur: nuancë lëkure mesatare e çelur
 🙍🏼‍♀	grua e vrenjtur: nuancë lëkure mesatare e çelur
 🙍🏽‍♀️	grua e rrudhur: nuancë lëkure mesatare
@@ -986,10 +986,10 @@
 🙎🏻‍♀	Gruaja që mpihet: nuancë lëkure e çelur
 🙎🏼‍♀️	Gruaja e mprehtë: nuancë lëkure mesatare e çelur
 🙎🏼‍♀	Gruaja e mprehtë: nuancë lëkure mesatare e çelur
-🙎🏽‍♀️	Gruaja që mpihet: nuancë lëkure mesatare
-🙎🏽‍♀	Gruaja që mpihet: nuancë lëkure mesatare
-🙎🏾‍♀️	Gruaja e mprehtë: nuancë lëkure mesatare deri në errësirë
-🙎🏾‍♀	Gruaja e mprehtë: nuancë lëkure mesatare deri në errësirë
+🙎🏽‍♀️	Gruaja e mprehtë: nuancë lëkure mesatare
+🙎🏽‍♀	Gruaja e mprehtë: nuancë lëkure mesatare
+🙎🏾‍♀️	Gruaja që mpihet: nuancë lëkure mesatare deri në errësirë
+🙎🏾‍♀	Gruaja që mpihet: nuancë lëkure mesatare deri në errësirë
 🙎🏿‍♀️	Gruaja që fryn: nuancë e errët e lëkurës
 🙎🏿‍♀	Gruaja që fryn: nuancë e errët e lëkurës
 🙅	personi që tregon JO
@@ -1028,8 +1028,8 @@
 🙆🏽	personi që tregon në rregull: nuancë lëkure mesatare
 🙆🏾	personi që tregon në rregull: nuancë lëkure mesatare deri në errësirë
 🙆🏿	personi që bën gjeste OK: ton i errët i lëkurës
-🙆‍♂️	njeri duke bërë gjeste në rregull
-🙆‍♂	njeri duke bërë gjeste në rregull
+🙆‍♂️	burrë duke bërë gjeste në rregull
+🙆‍♂	burrë duke bërë gjeste në rregull
 🙆🏻‍♂️	burrë duke bërë gjeste OK: nuancë lëkure e çelur
 🙆🏻‍♂	burrë duke bërë gjeste OK: nuancë lëkure e çelur
 🙆🏼‍♂️	burrë duke bërë gjeste OK: nuancë lëkure mesatare e çelur
@@ -1040,8 +1040,8 @@
 🙆🏾‍♂	burrë duke bërë gjeste OK: nuancë lëkure mesatare deri në errësirë
 🙆🏿‍♂️	burrë duke bërë gjeste OK: nuancë e errët e lëkurës
 🙆🏿‍♂	burrë duke bërë gjeste OK: nuancë e errët e lëkurës
-🙆‍♀️	gruaja duke bërë gjeste në rregull
-🙆‍♀	gruaja duke bërë gjeste në rregull
+🙆‍♀️	grua duke bërë gjeste në rregull
+🙆‍♀	grua duke bërë gjeste në rregull
 🙆🏻‍♀️	gruaja me gjeste OK: nuancë lëkure e çelur
 🙆🏻‍♀	gruaja me gjeste OK: nuancë lëkure e çelur
 🙆🏼‍♀️	gruaja bën me gjeste OK: ton lëkure mesatarisht i çelur
@@ -1052,7 +1052,7 @@
 🙆🏾‍♀	gruaja me gjeste OK: nuancë lëkure mesatare deri në errësirë
 🙆🏿‍♀️	Gruaja bën me gjeste OK: nuancë e errët e lëkurës
 🙆🏿‍♀	Gruaja bën me gjeste OK: nuancë e errët e lëkurës
-💁	dorën majë personi
+💁	dorën majë të personit
 💁🏻	dora majë e personit: nuancë lëkure e lehtë
 💁🏼	dora majë e personit: nuancë lëkure mesatarisht e çelur
 💁🏽	dora majë e personit: nuancë lëkure mesatare
@@ -1072,8 +1072,8 @@
 💁🏿‍♂	dora maja e burrit: nuancë lëkure e errët
 💁‍♀️	dorën majë gruaje
 💁‍♀	dorën majë gruaje
-💁🏻‍♀️	dora majë gruaje: nuancë lëkure e çelur
-💁🏻‍♀	dora majë gruaje: nuancë lëkure e çelur
+💁🏻‍♀️	dora majë e gruas: nuancë lëkure e lehtë
+💁🏻‍♀	dora majë e gruas: nuancë lëkure e lehtë
 💁🏼‍♀️	dora majë e gruas: nuancë lëkure mesatare deri në çelët
 💁🏼‍♀	dora majë e gruas: nuancë lëkure mesatare deri në çelët
 💁🏽‍♀️	dora majë e gruas: nuancë lëkure mesatare
@@ -1098,8 +1098,8 @@
 🙋🏽‍♂	burrë që ngre dorën: nuancë lëkure mesatare
 🙋🏾‍♂️	burrë që ngre dorën: nuancë lëkure mesatare e errët
 🙋🏾‍♂	burrë që ngre dorën: nuancë lëkure mesatare e errët
-🙋🏿‍♂️	burrë që ngre dorën: nuancë e errët e lëkurës
-🙋🏿‍♂	burrë që ngre dorën: nuancë e errët e lëkurës
+🙋🏿‍♂️	burrë që ngre dorën: nuancë lëkure e errët
+🙋🏿‍♂	burrë që ngre dorën: nuancë lëkure e errët
 🙋‍♀️	grua që ngre dorën
 🙋‍♀	grua që ngre dorën
 🙋🏻‍♀️	grua që ngre dorën: nuancë lëkure e çelur
@@ -1134,24 +1134,24 @@
 🙇‍♀	grua që përkulet
 🙇🏻‍♀️	grua që përkulet: nuancë lëkure e lehtë
 🙇🏻‍♀	grua që përkulet: nuancë lëkure e lehtë
-🙇🏼‍♀️	grua që përkulet: nuancë lëkure mesatare e çelur
-🙇🏼‍♀	grua që përkulet: nuancë lëkure mesatare e çelur
-🙇🏽‍♀️	gruaja që përkulet: nuancë lëkure mesatare
-🙇🏽‍♀	gruaja që përkulet: nuancë lëkure mesatare
+🙇🏼‍♀️	grua që përkulet: nuancë lëkure mesatare deri në çelët
+🙇🏼‍♀	grua që përkulet: nuancë lëkure mesatare deri në çelët
+🙇🏽‍♀️	grua që përkulet: nuancë lëkure mesatare
+🙇🏽‍♀	grua që përkulet: nuancë lëkure mesatare
 🙇🏾‍♀️	grua që përkulet: nuancë lëkure mesatare deri në errësirë
 🙇🏾‍♀	grua që përkulet: nuancë lëkure mesatare deri në errësirë
-🙇🏿‍♀️	grua që përkulet: nuancë e errët e lëkurës
+🙇🏿‍♀️	grua që përkulet: ton i errët i lëkurës
 🙇🏿‍♀	grua që përkulet: ton i errët i lëkurës
 🤦	person duke shuplakuar fytyrën
-🤦🏻	personi që palmon fytyrën: nuancë lëkure e lehtë
-🤦🏼	personi me pëllëmbë të fytyrës: ton lëkure mesatarisht i çelur
+🤦🏻	personi që pëllëmbon fytyrën: nuancë lëkure e lehtë
+🤦🏼	personi që pëllëmbon fytyrën: ton lëkure mesatarisht i çelur
 🤦🏽	personi me pëllëmbë të fytyrës: nuancë lëkure mesatare
 🤦🏾	personi me pëllëmbë të fytyrës: nuancë lëkure mesatare deri në errësirë
-🤦🏿	personi me pëllëmbë të fytyrës: ton i errët i lëkurës
-🤦‍♂️	njeri që pëllëmb me fytyrë
-🤦‍♂	njeri që pëllëmb me fytyrë
-🤦🏻‍♂️	mashkulli me pëllëmbë: nuancë lëkure e lehtë
-🤦🏻‍♂	mashkulli me pëllëmbë: nuancë lëkure e lehtë
+🤦🏿	personi që pëllëmbon fytyrën: ton i errët i lëkurës
+🤦‍♂️	njeri që pëllëmbë me fytyrë
+🤦‍♂	njeri që pëllëmbë me fytyrë
+🤦🏻‍♂️	mashkulli me pëllëmbë të fytyrës: nuancë lëkure e lehtë
+🤦🏻‍♂	mashkulli me pëllëmbë të fytyrës: nuancë lëkure e lehtë
 🤦🏼‍♂️	mashkulli me pëllëmbë të fytyrës: nuancë lëkure mesatarisht e çelur
 🤦🏼‍♂	mashkulli me pëllëmbë të fytyrës: nuancë lëkure mesatarisht e çelur
 🤦🏽‍♂️	mashkulli me pëllëmbë të fytyrës: nuancë lëkure mesatare
@@ -1196,8 +1196,8 @@
 🤷🏻‍♀	grua që ngre supet: nuancë lëkure e lehtë
 🤷🏼‍♀️	grua që ngre supet: nuancë lëkure mesatare e çelur
 🤷🏼‍♀	grua që ngre supet: nuancë lëkure mesatare e çelur
-🤷🏽‍♀️	grua që ngre supet: nuancë lëkure mesatare
-🤷🏽‍♀	grua që ngre supet: nuancë lëkure mesatare
+🤷🏽‍♀️	gruaja duke ngritur supet: nuancë lëkure mesatare
+🤷🏽‍♀	gruaja duke ngritur supet: nuancë lëkure mesatare
 🤷🏾‍♀️	grua që ngre supet: nuancë lëkure mesatare deri në errësirë
 🤷🏾‍♀	grua që ngre supet: nuancë lëkure mesatare deri në errësirë
 🤷🏿‍♀️	grua që ngre supet: nuancë e errët e lëkurës
@@ -1210,8 +1210,8 @@
 💆🏿	personi që merr masazh: ton i errët i lëkurës
 💆‍♂️	njeri që merr masazh
 💆‍♂	njeri që merr masazh
-💆🏻‍♂️	burrë që merr masazh: ton i lehtë i lëkurës
-💆🏻‍♂	burrë që merr masazh: ton i lehtë i lëkurës
+💆🏻‍♂️	burrë që merr masazh: nuancë lëkure e lehtë
+💆🏻‍♂	burrë që merr masazh: nuancë lëkure e lehtë
 💆🏼‍♂️	burrë që merr masazh: ton lëkure mesatarisht i çelur
 💆🏼‍♂	burrë që merr masazh: ton lëkure mesatarisht i çelur
 💆🏽‍♂️	mashkulli që merr masazh: ton lëkure mesatare
@@ -1232,11 +1232,11 @@
 💆🏾‍♀	grua që merr masazh: nuancë lëkure mesatare deri në të errët
 💆🏿‍♀️	grua që merr masazh: ton i errët i lëkurës
 💆🏿‍♀	grua që merr masazh: ton i errët i lëkurës
-💇	personi duke prerë flokët
+💇	personi duke i prerë flokët
 💇🏻	personi që pret flokët: ton lëkure i hapur
-💇🏼	personi që prehet: ton lëkure mesatarisht i hapur
-💇🏽	personi që prehet: nuancë e mesme e lëkurës
-💇🏾	personi që prehet: nuancë lëkure mesatare deri në errësirë
+💇🏼	personi që pret flokët: ton lëkure mesatarisht i hapur
+💇🏽	personi që pret flokët: nuancë e mesme e lëkurës
+💇🏾	personi që pret flokët: nuancë lëkure mesatare deri në errësirë
 💇🏿	personi që pret flokët: ton i errët i lëkurës
 💇‍♂️	njeri duke prerë flokë
 💇‍♂	njeri duke prerë flokë
@@ -1250,8 +1250,8 @@
 💇🏾‍♂	mashkull duke prerë flokë: nuancë lëkure mesatare e errët
 💇🏿‍♂️	mashkull duke prerë flokë: ton i errët i lëkurës
 💇🏿‍♂	mashkull duke prerë flokë: ton i errët i lëkurës
-💇‍♀️	grua që pret flokët
-💇‍♀	grua që pret flokët
+💇‍♀️	grua duke prerë flokët
+💇‍♀	grua duke prerë flokët
 💇🏻‍♀️	një grua që pret flokët: nuancë lëkure e lehtë
 💇🏻‍♀	një grua që pret flokët: nuancë lëkure e lehtë
 💇🏼‍♀️	grua që pret flokët: nuancë lëkure mesatare deri në çelët
@@ -1278,23 +1278,23 @@
 🚶🏽‍♂	mashkull duke ecur: nuancë lëkure mesatare
 🚶🏾‍♂️	mashkull duke ecur: nuancë lëkure mesatare deri në errësirë
 🚶🏾‍♂	mashkull duke ecur: nuancë lëkure mesatare deri në errësirë
-🚶🏿‍♂️	njeri që ecën: ton i errët i lëkurës
-🚶🏿‍♂	njeri që ecën: ton i errët i lëkurës
+🚶🏿‍♂️	njeri që ecën: nuancë e errët e lëkurës
+🚶🏿‍♂	njeri që ecën: nuancë e errët e lëkurës
 🚶‍♀️	grua duke ecur
 🚶‍♀	grua duke ecur
 🚶🏻‍♀️	grua që ecën: nuancë lëkure e lehtë
 🚶🏻‍♀	grua që ecën: nuancë lëkure e lehtë
-🚶🏼‍♀️	grua që ecën: nuancë lëkure mesatare deri në çelët
-🚶🏼‍♀	grua që ecën: nuancë lëkure mesatare deri në çelët
+🚶🏼‍♀️	grua që ecën: nuancë lëkure mesatare-e çelur
+🚶🏼‍♀	grua që ecën: nuancë lëkure mesatare-e çelur
 🚶🏽‍♀️	grua që ecën: nuancë lëkure mesatare
 🚶🏽‍♀	grua që ecën: nuancë lëkure mesatare
-🚶🏾‍♀️	grua që ecën: nuancë lëkure mesatare e errët
-🚶🏾‍♀	grua që ecën: nuancë lëkure mesatare e errët
+🚶🏾‍♀️	grua që ecën: nuancë lëkure mesatare deri në errësirë
+🚶🏾‍♀	grua që ecën: nuancë lëkure mesatare deri në errësirë
 🚶🏿‍♀️	grua që ecën: ngjyrë e errët e lëkurës
 🚶🏿‍♀	grua që ecën: ngjyrë e errët e lëkurës
 🏃	person që vrapon
 🏃🏻	personi që vrapon: nuancë lëkure e lehtë
-🏃🏼	personi që vrapon: ton lëkure mesatarisht i çelur
+🏃🏼	personi që vrapon: nuancë lëkure mesatarisht e çelur
 🏃🏽	personi që vrapon: nuancë lëkure mesatare
 🏃🏾	personi që vrapon: nuancë lëkure mesatare deri në errësirë
 🏃🏿	personi që vrapon: nuancë e errët e lëkurës
@@ -1302,20 +1302,20 @@
 🏃‍♂	njeri që vrapon
 🏃🏻‍♂️	njeri që vrapon: nuancë lëkure e lehtë
 🏃🏻‍♂	njeri që vrapon: nuancë lëkure e lehtë
-🏃🏼‍♂️	njeri që vrapon: nuancë lëkure mesatarisht e çelur
-🏃🏼‍♂	njeri që vrapon: nuancë lëkure mesatarisht e çelur
-🏃🏽‍♂️	njeri që vrapon: nuancë lëkure mesatare
-🏃🏽‍♂	njeri që vrapon: nuancë lëkure mesatare
+🏃🏼‍♂️	njeri vrapues: ton lëkure mesatarisht i çelur
+🏃🏼‍♂	njeri vrapues: ton lëkure mesatarisht i çelur
+🏃🏽‍♂️	njeri vrapues: nuancë lëkure mesatare
+🏃🏽‍♂	njeri vrapues: nuancë lëkure mesatare
 🏃🏾‍♂️	njeri që vrapon: nuancë lëkure mesatare deri në errësirë
 🏃🏾‍♂	njeri që vrapon: nuancë lëkure mesatare deri në errësirë
-🏃🏿‍♂️	njeri vrapues: nuancë e errët e lëkurës
-🏃🏿‍♂	njeri vrapues: nuancë e errët e lëkurës
+🏃🏿‍♂️	njeri që vrapon: ton i errët i lëkurës
+🏃🏿‍♂	njeri që vrapon: ton i errët i lëkurës
 🏃‍♀️	grua që vrapon
 🏃‍♀	grua që vrapon
 🏃🏻‍♀️	grua që vrapon: nuancë lëkure e lehtë
 🏃🏻‍♀	grua që vrapon: nuancë lëkure e lehtë
 🏃🏼‍♀️	grua që vrapon: nuancë lëkure mesatarisht e çelur
-🏃🏼‍♀	grua që vrapon: nuancë lëkure mesatare deri në çelët
+🏃🏼‍♀	grua që vrapon: nuancë lëkure mesatarisht e çelur
 🏃🏽‍♀️	grua që vrapon: nuancë lëkure mesatare
 🏃🏽‍♀	grua që vrapon: nuancë lëkure mesatare
 🏃🏾‍♀️	grua që vrapon: nuancë lëkure mesatare deri në errësirë
@@ -1326,13 +1326,13 @@
 💃🏻	grua që kërcen: nuancë lëkure e lehtë
 💃🏼	grua që kërcen: nuancë lëkure mesatare deri në çelët
 💃🏽	grua që kërcen: nuancë lëkure mesatare
-💃🏾	grua që kërcen: nuancë lëkure mesatare deri në errësirë
+💃🏾	grua që kërcen: nuancë lëkure mesatare-e errët
 💃🏿	grua që kërcen: ton i errët i lëkurës
 🕺	njeri duke kërcyer
 🕺🏻	burrë që kërcen: nuancë lëkure e lehtë
 🕺🏼	burrë që kërcen: nuancë lëkure mesatarisht e çelur
 🕺🏽	burrë që kërcen: nuancë lëkure mesatare
-🕺🏾	burrë që kërcen: nuancë lëkure mesatare e errët
+🕺🏾	burrë që kërcen: nuancë lëkure mesatare deri në errësirë
 🕺🏿	burrë që kërcen: nuancë e errët e lëkurës
 👯	njerëz me veshë lepurushi
 👯‍♂️	burra me veshë lepurush
@@ -1380,7 +1380,7 @@
 🧗🏻‍♀️	grua në ngjitje: nuancë lëkure e lehtë
 🧗🏻‍♀	grua në ngjitje: nuancë lëkure e lehtë
 🧗🏼‍♀️	grua në ngjitje: nuancë lëkure mesatare-e çelur
-🧗🏼‍♀	grua në ngjitje: nuancë lëkure mesatarisht e çelur
+🧗🏼‍♀	grua në ngjitje: nuancë lëkure mesatare-e çelur
 🧗🏽‍♀️	grua në ngjitje: nuancë e mesme e lëkurës
 🧗🏽‍♀	grua në ngjitje: nuancë e mesme e lëkurës
 🧗🏾‍♀️	grua në ngjitje: nuancë lëkure mesatare e errët
@@ -1395,14 +1395,14 @@
 🧗🏼‍♂	njeri në ngjitje: nuancë lëkure mesatare-e çelur
 🧗🏽‍♂️	njeri në ngjitje: nuancë lëkure mesatare
 🧗🏽‍♂	njeri në ngjitje: nuancë lëkure mesatare
-🧗🏾‍♂️	njeri në ngjitje: nuancë lëkure mesatare e errët
-🧗🏾‍♂	njeri në ngjitje: nuancë lëkure mesatare e errët
+🧗🏾‍♂️	njeri në ngjitje: nuancë lëkure mesatare-e errët
+🧗🏾‍♂	njeri në ngjitje: nuancë lëkure mesatare-e errët
 🧗🏿‍♂️	njeri në ngjitje: ton i errët i lëkurës
 🧗🏿‍♂	njeri në ngjitje: ton i errët i lëkurës
 🧘	person në pozicion zambak uji
-🧘🏻	personi në pozicion zambak uji: nuancë lëkure e lehtë
-🧘🏼	Personi në pozicion zambak uji: ton lëkure mesatarisht i hapur
-🧘🏽	Personi në pozicion zambak uji: nuancë e mesme e lëkurës
+🧘🏻	Personi në pozicion zambak uji: nuancë lëkure e lehtë
+🧘🏼	personi në pozicion zambak uji: ton lëkure mesatarisht i çelur
+🧘🏽	Personi në pozicion zambak uji: nuancë lëkure mesatare
 🧘🏾	Personi në pozicion zambak uji: nuancë lëkure mesatare deri në errësirë
 🧘🏿	personi në pozicion zambak uji: ton i errët i lëkurës
 🧘‍♀️	grua në pozicion zambak uji
@@ -1419,14 +1419,14 @@
 🧘🏿‍♀	grua në pozicion zambak uji: ton i errët i lëkurës
 🧘‍♂️	njeri në pozicion zambak uji
 🧘‍♂	njeri në pozicion zambak uji
-🧘🏻‍♂️	burrë në pozicion zambak uji: nuancë lëkure e lehtë
-🧘🏻‍♂	burrë në pozicion zambak uji: nuancë lëkure e lehtë
+🧘🏻‍♂️	mashkull në pozicion zambak uji: nuancë lëkure e lehtë
+🧘🏻‍♂	mashkull në pozicion zambak uji: nuancë lëkure e lehtë
 🧘🏼‍♂️	burrë në pozicion zambak uji: ton lëkure mesatarisht i hapur
 🧘🏼‍♂	burrë në pozicion zambak uji: ton lëkure mesatarisht i hapur
-🧘🏽‍♂️	burrë në pozicion zambak uji: nuancë lëkure mesatare
-🧘🏽‍♂	burrë në pozicion zambak uji: nuancë lëkure mesatare
-🧘🏾‍♂️	mashkull në pozicion zambak uji: nuancë lëkure mesatare deri në errësirë
-🧘🏾‍♂	mashkull në pozicion zambak uji: nuancë lëkure mesatare deri në errësirë
+🧘🏽‍♂️	mashkull në pozicion zambak uji: nuancë lëkure mesatare
+🧘🏽‍♂	mashkull në pozicion zambak uji: nuancë lëkure mesatare
+🧘🏾‍♂️	burrë në pozicion zambak uji: nuancë lëkure mesatare deri në errësirë
+🧘🏾‍♂	burrë në pozicion zambak uji: nuancë lëkure mesatare deri në errësirë
 🧘🏿‍♂️	burrë në pozicion zambak uji: ton i errët i lëkurës
 🧘🏿‍♂	burrë në pozicion zambak uji: ton i errët i lëkurës
 🛀	personi që bën banjë
@@ -1440,13 +1440,13 @@
 🛌🏼	personi në shtrat: nuancë lëkure mesatare deri në çelët
 🛌🏽	personi në shtrat: nuancë lëkure mesatare
 🛌🏾	personi në shtrat: nuancë lëkure mesatare deri në errësirë
-🛌🏿	personi në shtrat: nuancë e errët e lëkurës
+🛌🏿	personi në shtrat: ton i errët i lëkurës
 🕴️	burrë me kostum që fluturon
 🕴	burrë me kostum që fluturon
 🕴🏻	burrë me kostum që fluturon: nuancë lëkure e çelur
 🕴🏼	burrë me kostum që ngrihet lart: nuancë lëkure mesatare e çelur
 🕴🏽	burrë me kostum që ngrihet lart: nuancë lëkure mesatare
-🕴🏾	burrë me kostum që ngrihet lart: nuancë lëkure mesatare deri në errësirë
+🕴🏾	burrë me kostum që ngrihet lart: nuancë lëkure mesatare e errët
 🕴🏿	burrë me kostum që fluturon: nuancë lëkure e errët
 🗣️	kokë që flet
 🗣	kokë që flet
@@ -1463,15 +1463,15 @@
 ⛷	skiator
 🏂	snowboarder
 🏂🏻	snowboarder: nuancë e lehtë e lëkurës
-🏂🏼	snowboarder: nuancë lëkure mesatarisht e çelur
+🏂🏼	snowboarder: nuancë lëkure mesatare e çelur
 🏂🏽	snowboarder: nuancë e mesme e lëkurës
 🏂🏾	snowboarder: nuancë lëkure mesatare deri në errësirë
 🏂🏿	snowboarder: nuancë e errët e lëkurës
 🏌️	person duke luajtur golf
 🏌	person duke luajtur golf
 🏌🏻	personi që luan golf: nuancë lëkure e lehtë
-🏌🏼	personi që luan golf: nuancë lëkure mesatare-e çelur
-🏌🏽	personi që luan golf: nuancë lëkure mesatare
+🏌🏼	personi që luan golf: nuancë lëkure mesatare deri në çelët
+🏌🏽	personi që luan golf: nuancë e mesme e lëkurës
 🏌🏾	personi që luan golf: nuancë lëkure mesatare e errët
 🏌🏿	personi që luan golf: nuancë e errët e lëkurës
 🏌️‍♂️	njeri duke luajtur golf
@@ -1480,10 +1480,10 @@
 🏌‍♂	njeri duke luajtur golf
 🏌🏻‍♂️	njeri që luan golf: nuancë lëkure e lehtë
 🏌🏻‍♂	njeri që luan golf: nuancë lëkure e lehtë
-🏌🏼‍♂️	mashkull që luan golf: nuancë lëkure mesatare-e çelur
-🏌🏼‍♂	mashkull që luan golf: nuancë lëkure mesatare-e çelur
-🏌🏽‍♂️	njeri që luan golf: nuancë lëkure mesatare
-🏌🏽‍♂	njeri që luan golf: nuancë lëkure mesatare
+🏌🏼‍♂️	mashkull që luan golf: nuancë lëkure mesatare deri në çelët
+🏌🏼‍♂	mashkull që luan golf: nuancë lëkure mesatare deri në çelët
+🏌🏽‍♂️	mashkull që luan golf: nuancë lëkure mesatare
+🏌🏽‍♂	mashkull që luan golf: nuancë lëkure mesatare
 🏌🏾‍♂️	mashkull që luan golf: nuancë lëkure mesatare deri në errësirë
 🏌🏾‍♂	mashkull që luan golf: nuancë lëkure mesatare deri në errësirë
 🏌🏿‍♂️	njeri që luan golf: nuancë e errët e lëkurës
@@ -1494,8 +1494,8 @@
 🏌‍♀	grua duke luajtur golf
 🏌🏻‍♀️	grua që luan golf: nuancë lëkure e lehtë
 🏌🏻‍♀	grua që luan golf: nuancë lëkure e lehtë
-🏌🏼‍♀️	grua që luan golf: nuancë lëkure mesatarisht e çelur
-🏌🏼‍♀	grua që luan golf: nuancë lëkure mesatarisht e çelur
+🏌🏼‍♀️	grua që luan golf: nuancë lëkure mesatare deri në çelët
+🏌🏼‍♀	grua që luan golf: nuancë lëkure mesatare deri në çelët
 🏌🏽‍♀️	grua që luan golf: nuancë lëkure mesatare
 🏌🏽‍♀	grua që luan golf: nuancë lëkure mesatare
 🏌🏾‍♀️	grua që luan golf: nuancë lëkure mesatare e errët
@@ -1503,21 +1503,21 @@
 🏌🏿‍♀️	grua që luan golf: nuancë e errët e lëkurës
 🏌🏿‍♀	grua që luan golf: nuancë e errët e lëkurës
 🏄	person duke surfuar
-🏄🏻	personi që bën surf: nuancë lëkure e lehtë
+🏄🏻	personi që bën sërf: nuancë lëkure e çelur
 🏄🏼	personi që bën sërf: ton lëkure mesatarisht i çelur
 🏄🏽	personi që bën surf: nuancë lëkure mesatare
-🏄🏾	personi që bën surf: nuancë lëkure mesatare deri në errësirë
+🏄🏾	personi që bën sërf: nuancë lëkure mesatare deri në errësirë
 🏄🏿	personi që bën surf: nuancë e errët e lëkurës
 🏄‍♂️	njeri që bën sërf
 🏄‍♂	njeri që bën sërf
-🏄🏻‍♂️	mashkull që bën surf: nuancë lëkure e çelur
-🏄🏻‍♂	mashkull që bën surf: nuancë lëkure e çelur
-🏄🏼‍♂️	mashkull që bën sërf: nuancë lëkure mesatare deri në çelët
-🏄🏼‍♂	mashkull që bën sërf: nuancë lëkure mesatare deri në çelët
+🏄🏻‍♂️	njeri që bën sërf: nuancë lëkure e lehtë
+🏄🏻‍♂	njeri që bën sërf: nuancë lëkure e lehtë
+🏄🏼‍♂️	mashkull që bën surf: nuancë lëkure mesatare deri në çelët
+🏄🏼‍♂	mashkull që bën surf: nuancë lëkure mesatare deri në çelët
 🏄🏽‍♂️	mashkull që bën sërf: nuancë lëkure mesatare
 🏄🏽‍♂	mashkull që bën sërf: nuancë lëkure mesatare
-🏄🏾‍♂️	mashkull që bën surf: nuancë lëkure mesatare deri në errësirë
-🏄🏾‍♂	mashkull që bën surf: nuancë lëkure mesatare deri në errësirë
+🏄🏾‍♂️	mashkull që bën sërf: nuancë lëkure mesatare deri në errësirë
+🏄🏾‍♂	mashkull që bën sërf: nuancë lëkure mesatare deri në errësirë
 🏄🏿‍♂️	burrë që bën sërf: nuancë e errët e lëkurës
 🏄🏿‍♂	burrë që bën sërf: nuancë e errët e lëkurës
 🏄‍♀️	grua që bën sërf
@@ -1627,8 +1627,8 @@
 ⛹🏾‍♀	top kërcimtar i gruas: nuancë lëkure mesatare e errët
 ⛹🏿‍♀️	top kërcimtar i gruas: ton i errët i lëkurës
 ⛹🏿‍♀	top kërcimtar i gruas: ton i errët i lëkurës
-🏋️	person që ngre peshë
-🏋	person që ngre peshë
+🏋️	person që ngre pesha
+🏋	person që ngre pesha
 🏋🏻	personi që ngre pesha: nuancë lëkure e lehtë
 🏋🏼	personi që ngre pesha: ton lëkure mesatarisht i hapur
 🏋🏽	personi që ngre pesha: nuancë lëkure mesatare
@@ -1670,20 +1670,20 @@
 🚴🏿	personi që lëviz me biçikletë: nuancë e errët e lëkurës
 🚴‍♂️	njeri me biçikletë
 🚴‍♂	njeri me biçikletë
-🚴🏻‍♂️	biçikletë mashkull: nuancë lëkure e çelur
-🚴🏻‍♂	biçikletë mashkull: nuancë lëkure e çelur
-🚴🏼‍♂️	mashkull duke ecur me biçikletë: nuancë lëkure mesatarisht e çelur
-🚴🏼‍♂	mashkull duke ecur me biçikletë: nuancë lëkure mesatarisht e çelur
-🚴🏽‍♂️	biçikletë mashkull: nuancë lëkure mesatare
-🚴🏽‍♂	biçikletë mashkull: nuancë lëkure mesatare
+🚴🏻‍♂️	mashkull duke ecur me biçikletë: nuancë lëkure e çelur
+🚴🏻‍♂	mashkull duke ecur me biçikletë: nuancë lëkure e çelur
+🚴🏼‍♂️	biçikletë mashkulli: nuancë lëkure mesatare deri në çelët
+🚴🏼‍♂	biçikletë mashkulli: nuancë lëkure mesatare deri në çelët
+🚴🏽‍♂️	çiklizëm mashkull: nuancë lëkure mesatare
+🚴🏽‍♂	çiklizëm mashkull: nuancë lëkure mesatare
 🚴🏾‍♂️	mashkull duke ecur me biçikletë: nuancë lëkure mesatare deri në errësirë
 🚴🏾‍♂	mashkull duke ecur me biçikletë: nuancë lëkure mesatare deri në errësirë
 🚴🏿‍♂️	mashkull duke ecur me biçikletë: nuancë e errët e lëkurës
 🚴🏿‍♂	mashkull duke ecur me biçikletë: nuancë e errët e lëkurës
 🚴‍♀️	grua me biçikletë
 🚴‍♀	grua me biçikletë
-🚴🏻‍♀️	grua duke ecur me biçikletë: nuancë lëkure e çelur
-🚴🏻‍♀	grua duke ecur me biçikletë: nuancë lëkure e çelur
+🚴🏻‍♀️	grua duke ecur me biçikletë: nuancë lëkure e lehtë
+🚴🏻‍♀	grua duke ecur me biçikletë: nuancë lëkure e lehtë
 🚴🏼‍♀️	grua që ecën me biçikletë: nuancë lëkure mesatarisht e çelur
 🚴🏼‍♀	grua që ecën me biçikletë: nuancë lëkure mesatarisht e çelur
 🚴🏽‍♀️	grua duke ecur me biçikletë: nuancë lëkure mesatare
@@ -1720,8 +1720,8 @@
 🚵🏽‍♀	biçikleta malore për grua: nuancë lëkure mesatare
 🚵🏾‍♀️	biçikleta malore për grua: nuancë lëkure mesatare-e errët
 🚵🏾‍♀	biçikleta malore për grua: nuancë lëkure mesatare-e errët
-🚵🏿‍♀️	biçikleta malore për grua: nuancë e errët e lëkurës
-🚵🏿‍♀	biçikleta malore për grua: nuancë e errët e lëkurës
+🚵🏿‍♀️	grua me biçikletë malore: nuancë e errët e lëkurës
+🚵🏿‍♀	grua me biçikletë malore: nuancë e errët e lëkurës
 🏎️	makinë garash
 🏎	makinë garash
 🏍️	motoçikleta
@@ -1795,7 +1795,7 @@
 🤾🏻	personi që luan hendboll: nuancë lëkure e çelur
 🤾🏼	personi që luan hendboll: nuancë lëkure mesatare e çelur
 🤾🏽	personi që luan hendboll: nuancë lëkure mesatare
-🤾🏾	personi që luan hendboll: nuancë lëkure mesatare e errët
+🤾🏾	personi që luan hendboll: nuancë lëkure mesatare deri në errësirë
 🤾🏿	personi që luan hendboll: nuancë e errët e lëkurës
 🤾‍♂️	njeri që luan hendboll
 🤾‍♂	njeri që luan hendboll
@@ -1824,7 +1824,7 @@
 🤹	person xhonglues
 🤹🏻	personi që dënon: nuancë lëkure e lehtë
 🤹🏼	personi që bën xhonglimin: ton lëkure mesatarisht i çelur
-🤹🏽	personi që bën xhonglimin: nuancë lëkure mesatare
+🤹🏽	personi që dënon: nuancë lëkure mesatare
 🤹🏾	personi që bën xhonglimin: nuancë lëkure mesatare deri në errësirë
 🤹🏿	personi që dënon: nuancë e errët e lëkurës
 🤹‍♂️	njeri që bën xhonglimin
@@ -1841,9 +1841,9 @@
 🤹🏿‍♂	njeri që bën xhonglimin: ton i errët i lëkurës
 🤹‍♀️	grua xhongluese
 🤹‍♀	grua xhongluese
-🤹🏻‍♀️	grua që bën xhonglimin: nuancë lëkure e lehtë
-🤹🏻‍♀	grua që bën xhonglimin: nuancë lëkure e lehtë
-🤹🏼‍♀️	Gruaja që bën xhonglimin: nuancë lëkure mesatarisht e çelur
+🤹🏻‍♀️	grua që bën xhonglimin: nuancë lëkure e çelur
+🤹🏻‍♀	grua që bën xhonglimin: nuancë lëkure e çelur
+🤹🏼‍♀️	grua që bën xhonglimin: nuancë lëkure mesatare deri në çelët
 🤹🏼‍♀	grua që bën xhonglimin: nuancë lëkure mesatare deri në çelët
 🤹🏽‍♀️	Gruaja që dënon: nuancë lëkure mesatare
 🤹🏽‍♀	Gruaja që dënon: nuancë lëkure mesatare
@@ -1899,9 +1899,9 @@
 🤳🏼	selfie: nuancë lëkure mesatare e çelur
 🤳🏽	selfie: nuancë e mesme e lëkurës
 🤳🏾	selfie: nuancë lëkure mesatare deri në errësirë
-🤳🏿	selfie: nuancë e errët e lëkurës
+🤳🏿	selfie: ton i errët i lëkurës
 💪	biceps të përkulur
-💪🏻	biceps i përkulur: nuancë e lehtë e lëkurës
+💪🏻	biceps i përkulur: ton i lehtë i lëkurës
 💪🏼	biceps të përkulur: ton lëkure mesatarisht i hapur
 💪🏽	biceps i përkulur: nuancë e mesme e lëkurës
 💪🏾	biceps të përkulur: nuancë lëkure mesatare deri në errësirë
@@ -1922,11 +1922,11 @@
 👈🏻	indeksi i dorës së pasme me drejtim majtas: nuancë lëkure e lehtë
 👈🏼	indeksi i dorës së pasme me drejtim majtas: nuancë lëkure mesatare e çelur
 👈🏽	indeksi i dorës së pasme me drejtim majtas: nuancë lëkure mesatare
-👈🏾	indeksi i dorës së pasme me drejtim majtas: nuancë lëkure mesatare deri në errësirë
+👈🏾	indeksi i dorës së pasme me drejtim majtas: nuancë lëkure mesatare-e errët
 👈🏿	indeksi i dorës së pasme me drejtim majtas: nuancë e errët e lëkurës
 👉	indeksi i dorës së pasme që tregon djathtas
 👉🏻	indeksi i dorës së pasme me drejtim djathtas: nuancë lëkure e çelur
-👉🏼	indeksi i dorës së pasme me drejtim djathtas: nuancë lëkure mesatare e çelur
+👉🏼	indeksi i dorës së pasme me drejtim djathtas: ton lëkure mesatarisht i çelur
 👉🏽	indeksi i dorës së pasme me drejtim djathtas: nuancë lëkure mesatare
 👉🏾	indeksi i dorës së pasme me drejtim djathtas: nuancë lëkure mesatare deri në errësirë
 👉🏿	indeksi i dorës së pasme me drejtim djathtas: nuancë e errët e lëkurës
@@ -1934,7 +1934,7 @@
 ☝	indeksi duke treguar lart
 ☝🏻	indeksi me drejtim lart: nuancë lëkure e lehtë
 ☝🏼	indeksi i drejtuar lart: ton lëkure mesatarisht i çelur
-☝🏽	indeksi me drejtim lart: nuancë e mesme e lëkurës
+☝🏽	indeksi i drejtuar lart: nuancë e mesme e lëkurës
 ☝🏾	indeksi i drejtuar lart: nuancë lëkure mesatare deri në errësirë
 ☝🏿	indeksi me drejtim lart: ton i errët i lëkurës
 👆	indeksi i dorës së pasme me drejtim lart
@@ -1953,7 +1953,7 @@
 👇🏻	indeksi i dorës së pasme me drejtim poshtë: nuancë lëkure e çelur
 👇🏼	indeksi i dorës së pasme me drejtim poshtë: nuancë lëkure mesatare e çelur
 👇🏽	indeksi i dorës së pasme me drejtim poshtë: nuancë lëkure mesatare
-👇🏾	indeksi i dorës së pasme me drejtim poshtë: nuancë lëkure mesatare deri në errësirë
+👇🏾	indeksi i dorës së pasme me drejtim poshtë: nuancë lëkure mesatare e errët
 👇🏿	indeksi i dorës së pasme me drejtim poshtë: nuancë e errët e lëkurës
 ✌️	dora e fitores
 ✌	dora e fitores
@@ -1961,7 +1961,7 @@
 ✌🏼	dora e fitores: nuancë lëkure mesatare deri në çelët
 ✌🏽	dora e fitores: nuancë e mesme e lëkurës
 ✌🏾	dora e fitores: nuancë lëkure mesatare-e errët
-✌🏿	dora e fitores: nuancë e errët e lëkurës
+✌🏿	dora e fitores: ton i errët i lëkurës
 🤞	gishtat e kryqëzuar
 🤞🏻	gishtat e kryqëzuar: nuancë lëkure e lehtë
 🤞🏼	gishtat e kryqëzuar: ton lëkure mesatarisht i hapur
@@ -2016,7 +2016,7 @@
 👎🏼	gishtat e mëdhenj poshtë: ton lëkure mesatarisht i hapur
 👎🏽	gishtat e mëdhenj poshtë: nuancë e mesme e lëkurës
 👎🏾	gishtat poshtë: nuancë lëkure mesatare deri në errësirë
-👎🏿	gishtat poshtë: ton i errët i lëkurës
+👎🏿	gishtat e mëdhenj poshtë: ton i errët i lëkurës
 ✊	grusht ngritur
 ✊🏻	grusht i ngritur: nuancë lëkure e lehtë
 ✊🏼	grushti i ngritur: nuancë lëkure mesatare e çelur
@@ -2059,8 +2059,8 @@
 🤟🏽	Gjesti i dashurisë: nuancë e mesme e lëkurës
 🤟🏾	Gjest të dua-ty: nuancë lëkure mesatare-e errët
 🤟🏿	gjest dashuri-ty: ton i errët i lëkurës
-✍️	dorë shkrimi
-✍	dorë shkrimi
+✍️	dora e shkrimit
+✍	dora e shkrimit
 ✍🏻	dora e shkrimit: nuancë lëkure e lehtë
 ✍🏼	dora e shkrimit: nuancë lëkure mesatarisht e çelur
 ✍🏽	dora e shkrimit: nuancë lëkure mesatare
@@ -2092,7 +2092,7 @@
 🤲🏿	pëllëmbët lart së bashku: nuancë e errët e lëkurës
 🙏	duart e palosur
 🙏🏻	duar të palosura: nuancë lëkure e lehtë
-🙏🏼	duar të palosura: nuancë lëkure mesatare deri në çelët
+🙏🏼	duar të palosura: ton lëkure mesatarisht i hapur
 🙏🏽	duar të palosura: nuancë lëkure mesatare
 🙏🏾	duar të palosura: nuancë lëkure mesatare deri në errësirë
 🙏🏿	duar të palosura: ton i errët i lëkurës
@@ -2102,7 +2102,7 @@
 💅🏼	manikyri: ton lëkure mesatarisht i çelur
 💅🏽	manikyri: nuancë e mesme e lëkurës
 💅🏾	manikyri i thonjve: nuancë lëkure mesatare deri në errësirë
-💅🏿	manikyri: ton i errët i lëkurës
+💅🏿	manikyri i thonjve: ton i errët i lëkurës
 👂	veshi
 👂🏻	veshi: nuancë e lehtë e lëkurës
 👂🏼	veshi: nuancë lëkure mesatarisht e çelur
@@ -2112,7 +2112,7 @@
 👃	hundë
 👃🏻	hundë: ton i lehtë i lëkurës
 👃🏼	hundë: ton lëkure mesatarisht i hapur
-👃🏽	hundë: ton i mesëm i lëkurës
+👃🏽	hundë: nuancë e mesme e lëkurës
 👃🏾	hundë: nuancë lëkure mesatare-e errët
 👃🏿	hundë: ton i errët i lëkurës
 🦰	flokëkuq
@@ -2212,7 +2212,7 @@
 🐒	majmuni
 🦍	gorilla
 🐶	fytyrë qeni
-🐕	qeni
+🐕	qen
 🐩	qimedredhur
 🐺	fytyrë ujku
 🦊	fytyrë dhelpre
@@ -2292,7 +2292,7 @@
 🐬	delfin
 🐟	peshku
 🐠	peshk tropikal
-🐡	peshk i fryrë
+🐡	peshk frymor
 🦈	peshkaqeni
 🐙	oktapod
 🐚	guaskë spirale
@@ -2504,8 +2504,8 @@
 ⛪	kishe
 🕌	xhamia
 🕍	sinagogë
-⛩️	faltore shintoiste
-⛩	faltore shintoiste
+⛩️	faltore shinto
+⛩	faltore shinto
 🕋	qabeja
 ⛲	Burim
 ⛺	tendë
@@ -2567,7 +2567,7 @@
 🛢	kazan vaji
 ⛽	pompë e karburantit
 🚨	drita e makinës së policisë
-🚥	semafori horizontal
+🚥	semafor horizontal
 🚦	semafor vertikal
 🛑	shenjë ndalimi
 🚧	ndërtimi
@@ -2777,7 +2777,7 @@
 ♟	peng shahu
 🃏	shakaxhi
 🀄	mahjong dragua i kuq
-🎴	letra loje me lule
+🎴	letrat e lojës me lule
 🎭	artet skenike
 🖼️	foto me kornizë
 🖼	foto me kornizë
@@ -3003,7 +3003,7 @@
 🧻	rrotull letre
 🧼	sapun
 🧽	sfungjer
-🧯	fikëse zjarri
+🧯	zjarrfikës
 🛒	karroca e blerjeve
 🚬	cigare
 ⚰️	arkivol
@@ -3052,8 +3052,8 @@
 ⬇	shigjeta poshtë
 ↙️	shigjeta poshtë majtas
 ↙	shigjeta poshtë majtas
-⬅️	shigjeta e majtë
-⬅	shigjeta e majtë
+⬅️	shigjeta majtas
+⬅	shigjeta majtas
 ↖️	shigjeta lart majtas
 ↖	shigjeta lart majtas
 ↕️	shigjeta lart-poshtë
@@ -3169,7 +3169,7 @@
 ❎	butoni i shenjës së kryqëzuar
 ➕	shenjë e rëndë plus
 ➖	shenjë e rëndë minus
-➗	shenjë e rëndë e ndarjes
+➗	shenjë e ndarjes së rëndë
 ➰	lak kaçurrelë
 ➿	lak i dyfishtë kaçurrelë
 〽️	shenjë e alternimit të pjesëve
@@ -3198,8 +3198,8 @@
 ™	markë tregtare
 #️⃣	kapëse kyçe: #
 #⃣	kapëse kyçe: #
-*️⃣	kapëse kyçe: *
-*⃣	kapëse kyçe: *
+*️⃣	kapak tastie: *
+*⃣	kapak tastie: *
 0️⃣	kapaku i çelësit: 0
 0⃣	kapaku i çelësit: 0
 1️⃣	kapaku i çelësit: 1
@@ -3264,7 +3264,7 @@
 🉑	Butoni japonez "i pranueshëm".
 🈸	Butoni "aplikimi" japonez
 🈴	Butoni japonez "notë kaluese".
-🈳	Butoni japonez "Vendet e lira".
+🈳	Butoni japonez "vend i lirë".
 ㊗️	Butoni japonez "urime".
 ㊗	Butoni japonez "urime".
 ㊙️	Butoni "sekret" japonez
@@ -3280,7 +3280,7 @@
 ◼️	katror i zi mesatar
 ◼	katror i zi mesatar
 ◽	katror i bardhë mesatar-i vogël
-◾	katror i zi mesatar-i vogel
+◾	i zi katror i mesëm i vogël
 ⬛	katror i madh i zi
 ⬜	katror i madh i bardhë
 🔶	diamant i madh portokalli
@@ -3346,7 +3346,7 @@
 🇧🇾	Bjellorusia
 🇧🇿	Belize
 🇨🇦	Kanadaja
-🇨🇨	Ishujt Cocos (Keling).
+🇨🇨	Ishujt Cocos (Keeling).
 🇨🇩	Kongo - Kinshasa
 🇨🇫	Republika e Afrikës Qendrore
 🇨🇬	Kongo - Brazavil
@@ -3417,7 +3417,7 @@
 🇮🇪	Irlanda
 🇮🇱	Izraeli
 🇮🇲	Ishulli i Manit
-🇮🇳	Indi
+🇮🇳	India
 🇮🇴	Territori Britanik i Oqeanit Indian
 🇮🇶	Iraku
 🇮🇷	Irani
@@ -3521,7 +3521,7 @@
 🇸🇴	Somali
 🇸🇷	Surinami
 🇸🇸	Sudani i Jugut
-🇸🇹	Sao Tomé & Principe
+🇸🇹	São Tomé & Principe
 🇸🇻	El Salvador
 🇸🇽	Sint Maarten
 🇸🇾	Siria
@@ -3539,7 +3539,7 @@
 🇹🇳	Tunizia
 🇹🇴	Tonga
 🇹🇷	Turqia
-🇹🇹	Trinidad & Tobago
+🇹🇹	Trinidad dhe Tobago
 🇹🇻	Tuvalu
 🇹🇼	Tajvani
 🇹🇿	Tanzania
