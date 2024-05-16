@@ -27,7 +27,7 @@ import nltk
 import pythainlp
 import underthesea
 
-from wordless.wl_nlp import wl_nlp_utils
+from wordless.wl_nlp import wl_nlp_utils, wl_texts
 from wordless.wl_utils import wl_conversion, wl_misc
 
 LANG_TEXTS_NLTK = {
@@ -141,19 +141,12 @@ def wl_sentence_tokenize(main, text, lang, sentence_tokenizer = 'default'):
             elif sentence_tokenizer == 'underthesea_vie':
                 sentences.extend(underthesea.sent_tokenize(line))
 
-    # Strip spaces
-    sentences = [
-        sentence_clean
-        for sentence in sentences
-        if (sentence_clean := sentence.strip())
-    ]
-
-    return sentences
+    return wl_texts.clean_texts(sentences)
 
 # References:
 #     https://stackoverflow.com/questions/9506869/are-there-character-collections-for-all-international-full-stop-punctuations/9508766#9508766
-#     https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=%5B%3ATerminal_Punctuation%CE%B2%3DYes%3A%5D%26%5B%3ASentence_Break%CE%B2%3D%2F%5BAS%5DTerm%2F%3A%5D&g=&i=
-SENTENCE_TERMINATORS = ''.join([
+#     https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]%26[:Sentence_Break=/[AS]Term/:]
+SENTENCE_TERMINATORS = ''.join(list(dict.fromkeys([
     '\u0021', '\u002E', '\u003F',
     '\u0589',
     '\u061D', '\u061E', '\u061F', '\u06D4',
@@ -211,7 +204,7 @@ SENTENCE_TERMINATORS = ''.join([
     '\U00016E98',
     '\U0001BC9F',
     '\U0001DA88'
-])
+])))
 
 def wl_sentence_split(main, text, terminators = SENTENCE_TERMINATORS):
     return [
@@ -219,8 +212,8 @@ def wl_sentence_split(main, text, terminators = SENTENCE_TERMINATORS):
         for sentence in re.findall(fr'.+?[{terminators}][{terminators}\s]*|.+?$', text.strip())
     ]
 
-# Reference: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation%CE%B2=Yes:]
-SENTENCE_SEG_TERMINATORS = ''.join([
+# Reference: https://util.unicode.org/UnicodeJsps/list-unicodeset.jsp?a=[:Terminal_Punctuation=Yes:]
+SENTENCE_SEG_TERMINATORS = ''.join(list(dict.fromkeys([
     '\u0021', '\u002C', '\u002E', '\u003A', '\u003B', '\u003F',
     '\u037E', '\u0387',
     '\u0589',
@@ -294,7 +287,7 @@ SENTENCE_SEG_TERMINATORS = ''.join([
     '\U00016E97', '\U00016E98',
     '\U0001BC9F',
     '\U0001DA87', '\U0001DA88', '\U0001DA89', '\U0001DA8A'
-])
+])))
 
 def wl_sentence_seg_tokenize(main, text, terminators = SENTENCE_SEG_TERMINATORS):
     return [
@@ -317,16 +310,12 @@ def wl_sentence_seg_tokenize_tokens(main, tokens, terminators = SENTENCE_SEG_TER
     text = REPLACEMENT_CHAR.join(tokens)
 
     for sentence_seg in re.findall(fr'.+?[{terminators}]+{REPLACEMENT_CHAR}|.+?$', text.strip()):
-        sentence_segs.append([
-            token_clean
-            for token in sentence_seg.split(REPLACEMENT_CHAR)
-            if (token_clean := token.strip())
-        ])
+        sentence_segs.append(wl_texts.clean_texts(sentence_seg.split(REPLACEMENT_CHAR)))
 
     # If lengths do not match (only possible in edge cases), return all tokens as 1 sentence segment
     if list(wl_misc.flatten_list(sentence_segs)) != tokens:
         sentence_segs = [tokens]
 
-        print('Warning: lengths do not match!')
+        print('[Warning] Lengths do not match!')
 
     return sentence_segs

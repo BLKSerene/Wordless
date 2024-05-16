@@ -100,13 +100,13 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             node_new = wl_labels.Wl_Label_Html(node_old.text(), self.table)
             right_new = wl_labels.Wl_Label_Html('', self.table)
 
-            left_new.text_raw = left_old.text_raw.copy()
-            node_new.text_raw = node_old.text_raw.copy()
-            right_new.text_raw = right_old.text_raw.copy()
+            left_new.tokens_raw = left_old.tokens_raw.copy()
+            node_new.tokens_raw = node_old.tokens_raw.copy()
+            right_new.tokens_raw = right_old.tokens_raw.copy()
 
-            left_new.text_search = left_old.text_search.copy()
-            node_new.text_search = node_old.text_search.copy()
-            right_new.text_search = right_old.text_search.copy()
+            left_new.tokens_search = left_old.tokens_search.copy()
+            node_new.tokens_search = node_old.tokens_search.copy()
+            right_new.tokens_search = right_old.tokens_search.copy()
 
             results[i][0] = left_new
             results[i][1] = node_new
@@ -117,7 +117,7 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             reverse = 0 if sorting_order == self.tr('Ascending') else 1
 
             if sorting_col == self.tr('Node'):
-                results.sort(key = lambda item: item[1].text_raw, reverse = reverse)
+                results.sort(key = lambda item: item[1].tokens_raw, reverse = reverse)
             # Sort first by type (strings after floats), then sort numerically or alphabetically
             elif sorting_col == self.tr('Sentiment'):
                 results.sort(key = lambda item: (str(type(item[3])), item[3]), reverse = reverse)
@@ -129,9 +129,9 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
                 span = int(sorting_col[1:])
 
                 if re.search(self.tr(r'^L\d+$'), sorting_col):
-                    results.sort(key = lambda item, span = span: item[0].text_raw[-span], reverse = reverse)
+                    results.sort(key = lambda item, span = span: item[0].tokens_raw[-span], reverse = reverse)
                 elif re.search(self.tr(r'^R\d+$'), sorting_col):
-                    results.sort(key = lambda item, span = span: item[2].text_raw[span - 1], reverse = reverse)
+                    results.sort(key = lambda item, span = span: item[2].tokens_raw[span - 1], reverse = reverse)
 
         self.table.disable_updates()
 
@@ -154,8 +154,8 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             file
         ) in enumerate(results):
             # Remove empty tokens
-            text_left = [token for token in left.text_raw if token]
-            text_right = [token for token in right.text_raw if token]
+            text_left = [token for token in left.tokens_raw if token]
+            text_right = [token for token in right.tokens_raw if token]
 
             # Re-apply node color
             node_text = re.sub(
@@ -194,13 +194,13 @@ class Wl_Dialog_Results_Sort_Concordancer(wl_dialogs.Wl_Dialog):
             self.table.indexWidget(self.table.model().index(i, 1)).setText(node_text)
             self.table.indexWidget(self.table.model().index(i, 2)).setText(' '.join(text_right))
 
-            self.table.indexWidget(self.table.model().index(i, 0)).text_raw = [token for token in left.text_raw if token]
-            self.table.indexWidget(self.table.model().index(i, 1)).text_raw = node.text_raw
-            self.table.indexWidget(self.table.model().index(i, 2)).text_raw = [token for token in right.text_raw if token]
+            self.table.indexWidget(self.table.model().index(i, 0)).tokens_raw = [token for token in left.tokens_raw if token]
+            self.table.indexWidget(self.table.model().index(i, 1)).tokens_raw = node.tokens_raw
+            self.table.indexWidget(self.table.model().index(i, 2)).tokens_raw = [token for token in right.tokens_raw if token]
 
-            self.table.indexWidget(self.table.model().index(i, 0)).text_search = left.text_search
-            self.table.indexWidget(self.table.model().index(i, 1)).text_search = node.text_search
-            self.table.indexWidget(self.table.model().index(i, 2)).text_search = right.text_search
+            self.table.indexWidget(self.table.model().index(i, 0)).tokens_search = left.tokens_search
+            self.table.indexWidget(self.table.model().index(i, 1)).tokens_search = node.tokens_search
+            self.table.indexWidget(self.table.model().index(i, 2)).tokens_search = right.tokens_search
 
             if isinstance(sentiment, float):
                 self.table.set_item_num(i, 3, sentiment)
@@ -324,11 +324,11 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                     width_right = self.table.settings['concordancer']['generation_settings']['width_right_token']
                 else:
                     width_left = max((
-                        len(self.table.indexWidget(self.table.model().index(row, 0)).text_raw)
+                        len(self.table.indexWidget(self.table.model().index(row, 0)).tokens_raw)
                         for row in range(self.table.model().rowCount())
                     ))
                     width_right = max((
-                        len(self.table.indexWidget(self.table.model().index(row, 2)).text_raw)
+                        len(self.table.indexWidget(self.table.model().index(row, 2)).tokens_raw)
                         for row in range(self.table.model().rowCount())
                     ))
 
@@ -336,11 +336,11 @@ class Wl_Table_Results_Sort_Conordancer(wl_tables.Wl_Table_Add_Ins_Del_Clr):
                 self.cols_to_sort.extend([self.tr('L') + str(i + 1) for i in range(width_left)])
             elif self.table.tab == 'concordancer_parallel':
                 width_left = max((
-                    len(self.table.indexWidget(self.table.model().index(row, 0)).text_raw)
+                    len(self.table.indexWidget(self.table.model().index(row, 0)).tokens_raw)
                     for row in range(self.table.model().rowCount())
                 ))
                 width_right = max((
-                    len(self.table.indexWidget(self.table.model().index(row, 2)).text_raw)
+                    len(self.table.indexWidget(self.table.model().index(row, 2)).tokens_raw)
                     for row in range(self.table.model().rowCount())
                 ))
 
@@ -486,10 +486,10 @@ class Wl_Worker_Results_Sort_Concordancer(wl_threading.Wl_Worker):
             node_old = self.dialog.table.indexWidget(self.dialog.table.model().index(i, 1))
             right_old = self.dialog.table.indexWidget(self.dialog.table.model().index(i, 2))
 
-            if len(left_old.text_raw) < max_left:
-                left_old.text_raw = [''] * (max_left - len(left_old.text_raw)) + left_old.text_raw
-            if len(right_old.text_raw) < max_right:
-                right_old.text_raw.extend([''] * (max_right - len(right_old.text_raw)))
+            if len(left_old.tokens_raw) < max_left:
+                left_old.tokens_raw = [''] * (max_left - len(left_old.tokens_raw)) + left_old.tokens_raw
+            if len(right_old.tokens_raw) < max_right:
+                right_old.tokens_raw.extend([''] * (max_right - len(right_old.tokens_raw)))
 
             sentiment = self.dialog.table.model().item(i, 3).read_data()
             no_token = self.dialog.table.model().item(i, 4).val

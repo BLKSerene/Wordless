@@ -546,7 +546,8 @@ class Wl_Table_Keyword_Extractor(wl_tables.Wl_Table_Data_Filter_Search):
                     self.set_item_num(i, 0, -1)
 
                     # Keyword
-                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(keyword))
+                    self.model().setItem(i, 1, wl_tables.Wl_Table_Item(keyword.display_text()))
+                    self.model().item(i, 1).tokens_filter = [keyword]
 
                     # Frequency
                     for j, freq in enumerate(freq_files):
@@ -690,52 +691,41 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
             # Frequency (Reference files)
             self.keywords_freq_files.append(collections.Counter())
             tokens_ref = []
-            len_tokens_ref = 0
 
             for file_ref in files_ref:
-                text = copy.deepcopy(file_ref['text'])
                 text = wl_token_processing.wl_process_tokens(
-                    self.main, text,
+                    self.main, file_ref['text'],
                     token_settings = settings['token_settings']
                 )
 
                 # Remove empty tokens
-                tokens_flat = text.get_tokens_flat()
-                tokens = [token for token in tokens_flat if token]
+                tokens = text.get_tokens_flat()
 
-                self.keywords_freq_files[0] += collections.Counter(tokens)
+                self.keywords_freq_files[0] += collections.Counter([token for token in tokens if token])
 
-                tokens_ref.extend(tokens_flat)
-                len_tokens_ref += len(tokens_ref)
+                tokens_ref.extend(tokens)
+
+            len_tokens_ref = len(tokens_ref)
 
             # Frequency (Observed files)
             for file_observed in files_observed:
-                text = copy.deepcopy(file_observed['text'])
                 text = wl_token_processing.wl_process_tokens(
-                    self.main, text,
+                    self.main, file_observed['text'],
                     token_settings = settings['token_settings']
                 )
 
                 # Remove empty tokens
-                tokens_flat = text.get_tokens_flat()
-                tokens = [token for token in tokens_flat if token]
+                tokens = text.get_tokens_flat()
 
-                self.keywords_freq_files.append(collections.Counter(tokens))
+                self.keywords_freq_files.append(collections.Counter([token for token in tokens if token]))
 
                 texts.append(text)
 
             # Total
             if len(files_observed) > 1:
-                text_total = wl_texts.Wl_Text_Blank()
-                text_total.tokens_multilevel = [
-                    copy.deepcopy(para)
-                    for text in texts
-                    for para in text.tokens_multilevel
-                ]
+                texts.append(wl_texts.Wl_Text_Total(texts))
 
                 self.keywords_freq_files.append(sum(self.keywords_freq_files[1:], collections.Counter()))
-
-                texts.append(text_total)
 
             # Remove tokens that do not appear in any of the observed files
             self.keywords_freq_files[0] = {
@@ -766,7 +756,6 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
 
                     keywords_freq_file_observed = self.keywords_freq_files[i + 1]
                     tokens_observed = text.get_tokens_flat()
-                    len_tokens_observed = len(tokens_observed)
 
                     if to_sections_statistical_significance:
                         freqs_sections_tokens_statistical_significance = wl_measure_utils.to_freqs_sections_statistical_significance(
@@ -790,6 +779,8 @@ class Wl_Worker_Keyword_Extractor(wl_threading.Wl_Worker):
                     o12s = numpy.empty(shape = num_keywords_all, dtype = float)
                     o21s = numpy.empty(shape = num_keywords_all, dtype = float)
                     o22s = numpy.empty(shape = num_keywords_all, dtype = float)
+
+                    len_tokens_observed = text.num_tokens
 
                     for i, token in enumerate(keywords_all):
                         o11s[i] = keywords_freq_file_observed.get(token, 0)

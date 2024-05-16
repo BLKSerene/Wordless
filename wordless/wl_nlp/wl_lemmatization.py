@@ -21,40 +21,62 @@ from PyQt5.QtCore import QCoreApplication
 import simplemma
 import spacy
 
-from wordless.wl_nlp import wl_matching, wl_nlp_utils, wl_pos_tagging, wl_word_tokenization
+from wordless.wl_nlp import wl_nlp_utils, wl_pos_tagging, wl_texts, wl_word_tokenization
 from wordless.wl_utils import wl_conversion
 
 _tr = QCoreApplication.translate
 
-def wl_lemmatize(main, inputs, lang, lemmatizer = 'default', tagged = False):
-    if inputs and lang in main.settings_global['lemmatizers']:
-        if lemmatizer == 'default':
-            lemmatizer = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
-
-        wl_nlp_utils.init_word_tokenizers(
-            main,
-            lang = lang
-        )
-        wl_nlp_utils.init_lemmatizers(
-            main,
-            lang = lang,
-            lemmatizer = lemmatizer,
-            tokenized = not isinstance(inputs, str)
-        )
-
-        if isinstance(inputs, str):
-            lemmas = wl_lemmatize_text(main, inputs, lang, lemmatizer)
-        else:
-            lemmas = wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged)
+def wl_lemmatize(main, inputs, lang, lemmatizer = 'default', force = False):
+    if (
+        not isinstance(inputs, str)
+        and inputs
+        and list(inputs)[0].lemma is not None
+        and not force
+    ):
+        return inputs
     else:
-        if isinstance(inputs, str):
-            lemmas = wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)
-        else:
-            lemmas = inputs.copy()
+        if inputs and lang in main.settings_global['lemmatizers']:
+            if lemmatizer == 'default':
+                lemmatizer = main.settings_custom['lemmatization']['lemmatizer_settings'][lang]
 
-    return lemmas
+            wl_nlp_utils.init_word_tokenizers(
+                main,
+                lang = lang
+            )
+            wl_nlp_utils.init_lemmatizers(
+                main,
+                lang = lang,
+                lemmatizer = lemmatizer,
+                tokenized = not isinstance(inputs, str)
+            )
+
+            if isinstance(inputs, str):
+                texts, lemmas = wl_lemmatize_text(main, inputs, lang, lemmatizer)
+
+                return wl_texts.to_tokens(texts, lang = lang, lemmas = lemmas)
+            else:
+                texts, token_properties = wl_texts.split_texts_properties(inputs)
+
+                lemmas = wl_lemmatize_tokens(main, texts, lang, lemmatizer)
+                tokens = wl_texts.combine_texts_properties(texts, token_properties)
+                wl_texts.set_token_properties(tokens, 'lemma', lemmas)
+
+                wl_texts.update_token_properties(inputs, tokens)
+
+                return inputs
+        else:
+            if isinstance(inputs, str):
+                tokens = wl_word_tokenization.wl_word_tokenize_flat(main, inputs, lang = lang)
+                wl_texts.set_token_properties(tokens, 'lemma', wl_texts.to_token_texts(tokens))
+
+                return tokens
+            else:
+                wl_texts.set_token_properties(inputs, 'lemma', wl_texts.to_token_texts(inputs))
+
+                return inputs
 
 def wl_lemmatize_text(main, inputs, lang, lemmatizer):
+    tokens = []
     lemmas = []
 
     # spaCy
@@ -69,6 +91,8 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
         ]):
             for doc in nlp.pipe(inputs.splitlines()):
                 for token in doc:
+                    tokens.append(token.text)
+
                     if token.lemma_:
                         lemmas.append(token.lemma_)
                     else:
@@ -84,6 +108,8 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
         for doc in nlp.bulk_process(lines):
             for sentence in doc.sentences:
                 for token in sentence.words:
+                    tokens.append(token.text)
+
                     if token.lemma is not None:
                         lemmas.append(token.lemma)
                     else:
@@ -92,87 +118,78 @@ def wl_lemmatize_text(main, inputs, lang, lemmatizer):
         for line in inputs.splitlines():
             # simplemma
             if lemmatizer.startswith('simplemma_'):
-                tokens = wl_word_tokenization.wl_word_tokenize_flat(main, line, lang = lang)
+                tokens_line = wl_word_tokenization.wl_word_tokenize_flat(main, line, lang = lang)
+                tokens_line = wl_texts.to_display_texts(tokens_line)
 
                 if lang in ['hrv', 'srp_latn']:
                     lang = 'hbs'
                 else:
                     lang = wl_conversion.to_iso_639_1(main, lang, no_suffix = True)
 
-                lemmas.extend([simplemma.lemmatize(token, lang = lang) for token in tokens])
+                tokens.extend((str(token) for token in tokens_line))
+                lemmas.extend((simplemma.lemmatize(token, lang = lang) for token in tokens_line))
             # English
             elif lemmatizer == 'nltk_wordnet':
                 word_net_lemmatizer = nltk.WordNetLemmatizer()
 
-                for token, pos in wl_pos_tagging.wl_pos_tag(
+                for token in wl_pos_tagging.wl_pos_tag(
                     main, line,
                     lang = 'eng_us',
                     pos_tagger = 'nltk_perceptron_eng',
                     tagset = 'universal'
                 ):
-                    if pos == 'ADJ':
-                        lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADJ))
-                    elif pos in ['NOUN', 'PROPN']:
-                        lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.NOUN))
-                    elif pos == 'ADV':
-                        lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADV))
-                    elif pos in ['VERB', 'AUX']:
-                        lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
-                    else:
-                        lemmas.append(word_net_lemmatizer.lemmatize(token))
+                    tokens.append(str(token))
+
+                    match token.tag[1:]:
+                        case 'ADJ':
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.ADJ))
+                        case 'NOUN' | 'PROPN':
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.NOUN))
+                        case 'ADV':
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.ADV))
+                        case 'VERB' | 'AUX':
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.VERB))
+                        case _:
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token)))
             # Japanese
             elif lemmatizer == 'sudachipy_jpn':
-                lemmas.extend([
-                    token.dictionary_form()
-                    for token in main.sudachipy_word_tokenizer.tokenize(line)
-                ])
+                for token in main.sudachipy_word_tokenizer.tokenize(line):
+                    tokens.append(token.surface())
+                    lemmas.append(token.dictionary_form())
             # Russian & Ukrainian
             elif lemmatizer == 'pymorphy3_morphological_analyzer':
-                if lang == 'rus':
-                    morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
-                elif lang == 'ukr':
-                    morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
+                match lang:
+                    case 'rus':
+                        morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
+                    case 'ukr':
+                        morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
-                tokens = wl_word_tokenization.wl_word_tokenize_flat(main, line, lang = lang)
-
-                for token in tokens:
+                for token in wl_word_tokenization.wl_word_tokenize_flat(main, line, lang = lang):
+                    tokens.append(str(token))
                     lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
             # Tibetan
             elif lemmatizer == 'botok_bod':
-                tokens = main.botok_word_tokenizer.tokenize(line)
+                for token in main.botok_word_tokenizer.tokenize(line):
+                    tokens.append(token.text)
 
-                for token in tokens:
                     if token.lemma:
                         lemmas.append(token.lemma)
                     else:
                         lemmas.append(token.text)
 
-    # Remove empty lemmas and strip whitespace in tokens
-    lemmas = [
-        lemma_clean
-        for lemma in lemmas
-        if (lemma_clean := str(lemma).strip())
-    ]
+    # Strip whitespace around lemmas and remove empty lemmas
+    for i, lemma in reversed(list(enumerate(lemmas))):
+        lemmas[i] = str(lemma).strip()
 
-    return lemmas
+        if not lemmas[i]:
+            del tokens[i]
+            del lemmas[i]
 
-def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
+    return tokens, lemmas
+
+def wl_lemmatize_tokens(main, inputs, lang, lemmatizer):
     lemma_tokens = []
     lemmas = []
-    empty_offsets = []
-
-    if tagged:
-        inputs, tags = wl_matching.split_tokens_tags(main, inputs)
-    else:
-        tags = [''] * len(inputs)
-
-    # Record positions of empty tokens and tags since spacy.tokens.Doc does not accept empty strings
-    for i, token in reversed(list(enumerate(inputs))):
-        if not token.strip():
-            empty_offsets.append(i)
-
-            del inputs[i]
-            del tags[i]
 
     # spaCy
     if lemmatizer.startswith('spacy_'):
@@ -238,36 +255,37 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
             elif lemmatizer == 'nltk_wordnet':
                 word_net_lemmatizer = nltk.WordNetLemmatizer()
 
-                for token, pos in wl_pos_tagging.wl_pos_tag(
-                    main, tokens,
+                for token in wl_pos_tagging.wl_pos_tag(
+                    main, wl_texts.to_tokens(tokens, lang = lang),
                     lang = 'eng_us',
                     pos_tagger = 'nltk_perceptron_eng',
                     tagset = 'universal'
                 ):
-                    if pos == 'ADJ':
-                        lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADJ))
-                    elif pos in ['NOUN', 'PROPN']:
-                        lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.NOUN))
-                    elif pos == 'ADV':
-                        lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.ADV))
-                    elif pos in ['VERB', 'AUX']:
-                        lemmas.append(word_net_lemmatizer.lemmatize(token, pos = nltk.corpus.wordnet.VERB))
-                    else:
-                        lemmas.append(word_net_lemmatizer.lemmatize(token))
+                    match token.tag[1:]:
+                        case 'ADJ':
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.ADJ))
+                        case 'NOUN' | 'PROPN':
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.NOUN))
+                        case 'ADV':
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.ADV))
+                        case 'VERB' | 'AUX':
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token), pos = nltk.corpus.wordnet.VERB))
+                        case _:
+                            lemmas.append(word_net_lemmatizer.lemmatize(str(token)))
 
                 lemma_tokens.extend(tokens.copy())
             # Japanese
             elif lemmatizer == 'sudachipy_jpn':
-                tokens_retokenized = main.sudachipy_word_tokenizer.tokenize(''.join(tokens))
-
-                lemma_tokens.extend([token.surface() for token in tokens_retokenized])
-                lemmas.extend([token.dictionary_form() for token in tokens_retokenized])
+                for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens)):
+                    lemma_tokens.append(token.surface())
+                    lemmas.append(token.dictionary_form())
             # Russian & Ukrainian
             elif lemmatizer == 'pymorphy3_morphological_analyzer':
-                if lang == 'rus':
-                    morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
-                elif lang == 'ukr':
-                    morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
+                match lang:
+                    case 'rus':
+                        morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
+                    case 'ukr':
+                        morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
                 for token in tokens:
                     lemmas.append(morphological_analyzer.parse(token)[0].normal_form)
@@ -285,7 +303,7 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
 
                     lemma_tokens.append(token.text)
 
-    # Remove empty lemmas and strip whitespace around lemmas
+    # Strip whitespace around lemmas and remove empty lemmas
     for i, (lemma, lemma_token) in reversed(list(enumerate(zip(lemmas, lemma_tokens)))):
         lemmas[i] = str(lemma).strip()
         lemma_tokens[i] = str(lemma_token).strip()
@@ -296,9 +314,4 @@ def wl_lemmatize_tokens(main, inputs, lang, lemmatizer, tagged):
 
     lemmas = wl_nlp_utils.align_tokens(inputs, lemma_tokens, lemmas, prefer_raw = True)
 
-    # Insert empty lemmas and their tags after alignment of input and output
-    for empty_offset in sorted(empty_offsets):
-        lemmas.insert(empty_offset, '')
-        tags.insert(empty_offset, '')
-
-    return [lemma + tag for lemma, tag in zip(lemmas, tags)]
+    return lemmas

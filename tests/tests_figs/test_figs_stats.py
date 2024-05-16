@@ -20,9 +20,10 @@ import random
 
 from tests import wl_test_init
 from wordless.wl_figs import wl_figs_stats
+from wordless.wl_nlp import wl_texts
 
 def test_wl_fig_stats():
-    main = wl_test_init.Wl_Test_Main()
+    main = wl_test_init.Wl_Test_Main(switch_lang_utils = 'fast')
 
     for tab in [
         'wordlist_generator',
@@ -55,15 +56,19 @@ def test_wl_fig_stats():
 
             if graph_type == 'Network Graph':
                 for node in range(10):
+                    node = wl_texts.Wl_Token(str(node))
+
                     for collocate in range(10):
-                        stat_files_items[(str(node), str(collocate))] = [
+                        collocate = wl_texts.Wl_Token(str(collocate))
+                        stat_files_items[(node, collocate)] = [
                             random.uniform(0, val_max),
                             random.uniform(0, val_max),
                             random.uniform(0, val_max)
                         ]
             else:
                 for item in range(100):
-                    stat_files_items[str(item)] = [
+                    item = wl_texts.Wl_Token(str(item))
+                    stat_files_items[item] = [
                         random.uniform(0, val_max),
                         random.uniform(0, val_max),
                         random.uniform(0, val_max)

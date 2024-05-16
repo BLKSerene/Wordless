@@ -16,6 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
+import copy
 import os
 import re
 
@@ -29,6 +30,153 @@ _tr = QCoreApplication.translate
 
 RE_VIE_TOKENIZED = re.compile(r'(?<!^)_(?!$)')
 
+# Tokens
+class Wl_Token(str):
+    def __new__(cls, text, **kwargs):
+        return str.__new__(cls, text)
+
+    def __init__(
+        self, text, lang = 'eng_us',
+        syls = None,
+        tag = None,
+        lemma = None,
+        head = None, dependency_relation = None, dependency_len = None,
+        punc_mark = None
+    ): # pylint: disable=unused-argument
+        self.lang = lang
+        self.syls = syls
+        self.tag = tag
+        self.lemma = lemma
+        self.head = head
+        self.dependency_relation = dependency_relation
+        self.dependency_len = dependency_len
+        self.punc_mark = punc_mark
+
+    def __hash__(self):
+        return hash(self.display_text())
+
+    def __eq__(self, other):
+        return self.display_text() == other.display_text()
+
+    def display_text(self):
+        return str(self) + (self.punc_mark or '') + (self.tag or '')
+
+    def update_properties(self, token):
+        self.lang = token.lang
+        self.syls = token.syls
+        self.tag = token.tag
+        self.lemma = token.lemma
+        self.head = token.head
+        self.dependency_relation = token.dependency_relation
+        self.dependency_len = token.dependency_len
+        self.punc_mark = token.punc_mark
+
+def to_tokens(
+    texts, lang = 'eng_us',
+    syls_tokens = None,
+    tags = None,
+    lemmas = None,
+    heads = None, dependency_relations = None, dependency_lens = None,
+    punc_marks = None
+):
+    num_tokens = len(texts)
+
+    syls_tokens = syls_tokens or [None] * num_tokens
+    tags = tags or [None] * num_tokens
+    lemmas = lemmas or [None] * num_tokens
+    heads = heads or [None] * num_tokens
+    dependency_relations = dependency_relations or [None] * num_tokens
+    dependency_lens = dependency_lens or [None] * num_tokens
+    punc_marks = punc_marks or [None] * num_tokens
+
+    return [
+        Wl_Token(
+            text, lang = lang,
+            syls = syls_tokens[i],
+            tag = tags[i],
+            lemma = lemmas[i],
+            head = heads[i], dependency_relation = dependency_relations[i], dependency_len = dependency_lens[i],
+            punc_mark = punc_marks[i]
+        )
+        for i, text in enumerate(texts)
+    ]
+
+def display_texts_to_tokens(main, display_texts, lang = 'eng_us'):
+    re_tags = wl_matching.get_re_tags(main, tag_type = 'body')
+
+    tags = [''.join(re.findall(re_tags, display_text)) for display_text in display_texts]
+    texts = [re.sub(re_tags, '', display_text) for display_text in display_texts]
+
+    return to_tokens(texts, lang = lang, tags = tags)
+
+def split_texts_properties(tokens):
+    texts = []
+    token_properties = []
+
+    for token in tokens:
+        texts.append(str(token))
+        token_properties.append({
+            'lang': token.lang,
+            'syls': token.syls,
+            'tag': token.tag,
+            'lemma': token.lemma,
+            'head': token.head,
+            'dependency_relation': token.dependency_relation,
+            'dependency_len': token.dependency_len,
+            'punc_mark': token.punc_mark
+        })
+
+    return texts, token_properties
+
+def combine_texts_properties(texts, token_properties):
+    return [Wl_Token(text, **properties) for text, properties in zip(texts, token_properties)]
+
+def to_token_texts(tokens):
+    return [str(token) for token in tokens]
+
+def to_display_texts(tokens):
+    return [token.display_text() for token in tokens]
+
+def set_token_text(token, text):
+    _, token_properties = split_texts_properties([token])
+
+    return combine_texts_properties([text], token_properties)[0]
+
+def set_token_texts(tokens, texts):
+    _, token_properties = split_texts_properties(tokens)
+
+    for i, token in enumerate(combine_texts_properties(texts, token_properties)):
+        tokens[i] = token
+
+def get_token_properties(tokens, name):
+    return [getattr(token, name) for token in tokens]
+
+def set_token_properties(tokens, name, vals):
+    if isinstance(vals, str):
+        vals = [vals] * len(tokens)
+
+    for token, val in zip(tokens, vals):
+        setattr(token, name, val)
+
+def update_token_properties(tokens, tokens_src):
+    for token, token_src in zip(tokens, tokens_src):
+        token.update_properties(token_src)
+
+def clean_texts(texts):
+    return [
+        text_clean
+        for text in texts
+        if (text_clean := text.strip())
+    ]
+
+def clean_tokens(tokens):
+    texts_clean = clean_texts(tokens)
+
+    set_token_texts(tokens, texts_clean)
+
+    return tokens
+
+# Texts
 class Wl_Text:
     def __init__(self, main, file):
         self.main = main
@@ -37,7 +185,9 @@ class Wl_Text:
         self.tagged = file['tagged']
 
         self.tokens_multilevel = []
-        self.tags = []
+        # Profiler
+        self.tokens_multilevel_with_puncs = []
+        tags_tokens = []
 
         file_ext = os.path.splitext(file['path'])[1].lower()
         re_tags = re.compile(wl_matching.get_re_tags(self.main, tag_type = 'body'))
@@ -72,20 +222,20 @@ class Wl_Text:
                         self.tokens_multilevel[0].append([[]])
 
                     self.tokens_multilevel[0][0][0].insert(0, '')
-                    self.tags.append([])
+                    tags_tokens.append([])
 
                 # Extract tags
                 tag_end = 0
 
                 for tag in re.finditer(re_tags, text):
-                    self.add_tags_tokenization(text[tag_end:tag.start()])
-                    self.tags[-1].append(tag.group())
+                    tags_tokens = self.add_tags_tokenization(text[tag_end:tag.start()], tags_tokens)
+                    tags_tokens[-1].append(tag.group())
 
                     tag_end = tag.end()
 
                 # The last part of the text
                 if (text := text[tag_end:]):
-                    self.add_tags_tokenization(text)
+                    tags_tokens = self.add_tags_tokenization(text, tags_tokens)
             # Tokenized & Untagged
             elif self.tokenized and not self.tagged:
                 for para in text.splitlines():
@@ -120,24 +270,24 @@ class Wl_Text:
 
                             self.tokens_multilevel[0][0][0].insert(0, '')
 
-                            self.tags.append([])
+                            tags_tokens.append([])
 
                         # Extract tags
                         tag_end = 0
 
                         for tag in re.finditer(re_tags, para):
-                            self.add_tags_splitting(para[tag_end:tag.start()])
-                            self.tags[-1].append(tag.group())
+                            tags_tokens = self.add_tags_splitting(para[tag_end:tag.start()], tags_tokens)
+                            tags_tokens[-1].append(tag.group())
 
                             tag_end = tag.end()
 
                         # The last part of the text
                         if (para := para[tag_end:]):
-                            self.add_tags_splitting(para)
+                            tags_tokens = self.add_tags_splitting(para, tags_tokens)
 
             # Add empty tags for untagged files
             if not self.tagged:
-                self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
+                tags_tokens.extend([None] * len(self.get_tokens_flat()))
         elif file_ext == '.xml' and self.tagged:
             tags_para = []
             tags_sentence = []
@@ -172,8 +322,9 @@ class Wl_Text:
                             for word in sentence.select(css_word)
                             if (word_clean := word.get_text().strip())
                         ]
+                        tokens = wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(self.main, tokens)
 
-                        self.tokens_multilevel[-1].append(wl_sentence_tokenization.wl_sentence_seg_tokenize_tokens(self.main, tokens))
+                        self.tokens_multilevel[-1].append(tokens)
             # XML files not tokenized or XML tags unfound or XML tags unspecified
             else:
                 text = soup.get_text()
@@ -182,7 +333,7 @@ class Wl_Text:
                 self.tokens_multilevel.extend(tokens)
 
             # Add empty tags
-            self.tags.extend([[] for _ in wl_misc.flatten_list(self.tokens_multilevel)])
+            tags_tokens.extend([None] * len(self.get_tokens_flat()))
 
         # Remove underscores in tokenized Vietnamese files
         if self.lang == 'vie' and self.tokenized:
@@ -194,32 +345,128 @@ class Wl_Text:
                             for token in sentence_seg
                         ]
 
-        # Remove whitespace around all tags
-        self.tags = [
-            [tag_clean for tag in tags if (tag_clean := tag.strip())]
-            for tags in self.tags
+        # Remove whitespace around tags
+        tags_tokens = [
+            ''.join([tag_clean for tag in tags if (tag_clean := tag.strip())])
+            for tags in tags_tokens
+            if tags is not None
         ]
+
+        i_tag = 0
+
+        for para in self.tokens_multilevel:
+            for sentence in para:
+                for i, sentence_seg in enumerate(sentence):
+                    len_sentence_seg = len(sentence_seg)
+
+                    sentence[i] = to_tokens(
+                        sentence_seg, self.lang,
+                        tags = tags_tokens[i_tag : i_tag + len_sentence_seg]
+                    )
+
+                    i_tag += len_sentence_seg
+
+        # Record number of tokens
+        self.num_tokens = len(self.get_tokens_flat())
 
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
 
-    def add_tags_tokenization(self, text):
+    def add_tags_tokenization(self, text, tags):
         if (text := text.strip()):
             tokens = wl_word_tokenization.wl_word_tokenize_flat(
                 self.main, text,
                 lang = self.lang
             )
 
-            self.tags.extend([[] for _ in tokens])
+            tags.extend([[] for _ in tokens])
 
-    def add_tags_splitting(self, text):
+        return tags
+
+    def add_tags_splitting(self, text, tags):
         if (text := text.strip()):
             tokens = text.split()
 
-            self.tags.extend([[] for _ in tokens])
+            tags.extend([[] for _ in tokens])
+
+        return tags
+
+    def update_num_tokens(self):
+        self.num_tokens = len(self.get_tokens_flat())
 
     def get_tokens_flat(self):
         return list(wl_misc.flatten_list(self.tokens_multilevel))
+
+    def set_tokens(self, tokens):
+        i_start_token = 0
+
+        for para in self.tokens_multilevel:
+            for sentence in para:
+                for sentence_seg in sentence:
+                    for i, _ in enumerate(sentence_seg):
+                        sentence_seg[i] = tokens[i_start_token + i]
+
+                    i_start_token += len(sentence_seg)
+
+    def to_token_texts(self):
+        return [
+            [
+                [
+                    [str(token) for token in sentence_seg]
+                    for sentence_seg in sentence
+                ]
+                for sentence in para
+            ]
+            for para in self.tokens_multilevel
+        ]
+
+    def to_display_texts(self):
+        return [
+            [
+                [
+                    [token.display_text() for token in sentence_seg]
+                    for sentence_seg in sentence
+                ]
+                for sentence in para
+            ]
+            for para in self.tokens_multilevel
+        ]
+
+    def set_token_texts(self, texts):
+        tokens = self.get_tokens_flat()
+
+        _, token_properties = split_texts_properties(tokens)
+        tokens = combine_texts_properties(texts, token_properties)
+
+        self.set_tokens(tokens)
+
+    def get_token_properties(self, name):
+        return [getattr(token, name) for token in self.get_tokens_flat()]
+
+    def set_token_properties(self, name, vals):
+        if isinstance(vals, str):
+            vals = [vals] * self.num_tokens
+
+        i_val = 0
+
+        for para in self.tokens_multilevel:
+            for sentence in para:
+                for sentence_seg in sentence:
+                    for token in sentence_seg:
+                        setattr(token, name, vals[i_val])
+
+                        i_val += 1
+
+    def update_token_properties(self, tokens):
+        i_start_token = 0
+
+        for para in self.tokens_multilevel:
+            for sentence in para:
+                for sentence_seg in sentence:
+                    for i, token in enumerate(sentence_seg):
+                        token.update_properties(tokens[i_start_token + i])
+
+                    i_start_token += len(sentence_seg)
 
     def get_offsets(self):
         offsets_paras = []
@@ -240,11 +487,8 @@ class Wl_Text:
 
         return offsets_paras, offsets_sentences, offsets_sentence_segs
 
-class Wl_Text_Ref():
-    get_tokens_flat = Wl_Text.get_tokens_flat
-    get_offsets = Wl_Text.get_offsets
-
-    def __init__(self, main, file):
+class Wl_Text_Ref(Wl_Text):
+    def __init__(self, main, file): # pylint: disable=super-init-not-called
         self.main = main
         self.lang = file['lang']
         self.tokenized = file['tokenized']
@@ -321,19 +565,40 @@ class Wl_Text_Ref():
                             for token in sentence_seg
                         ]
 
-        # Remove whitespace around tokens and empty tokens
+        # Remove empty tokens and whitespace around tokens
         self.tokens_multilevel[0][0][0] = [
             token_clean
             for token in self.tokens_multilevel[0][0][0]
             if (token_clean := token.strip())
         ]
+        self.tokens_multilevel[0][0][0] = to_tokens(self.tokens_multilevel[0][0][0], self.lang)
 
-        # No need to extract tags
-        self.tags = [[] for _ in self.tokens_multilevel[0][0][0]]
+        self.num_tokens = len(self.get_tokens_flat())
 
         # Remove Wl_Main object from the text since it cannot be pickled
         del self.main
 
-class Wl_Text_Blank():
-    get_tokens_flat = Wl_Text.get_tokens_flat
-    get_offsets = Wl_Text.get_offsets
+class Wl_Text_Blank(Wl_Text):
+    def __init__(self): # pylint: disable=super-init-not-called
+        pass
+
+class Wl_Text_Total(Wl_Text):
+    def __init__(self, texts): # pylint: disable=super-init-not-called
+        # Set language for the combined text only if all texts are in the same language
+        if len({text.lang for text in texts}) == 1:
+            self.lang = texts[0].lang
+        else:
+            self.lang = 'other'
+
+        self.tokens_multilevel = [
+            copy.deepcopy(para)
+            for text in texts
+            for para in text.tokens_multilevel
+        ]
+        self.tokens_multilevel_with_puncs = [
+            copy.deepcopy(para)
+            for text in texts
+            for para in text.tokens_multilevel_with_puncs
+        ]
+
+        self.update_num_tokens()

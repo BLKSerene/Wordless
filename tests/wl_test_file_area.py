@@ -118,7 +118,7 @@ def wl_test_file_area(main):
 
         assert new_file['path_original'] == wl_paths.get_normalized_path(file_path)
 
-        if i < NUM_FILES_ALL:
+        if i < NUM_FILES_ALL or new_file['name'] == '[eng_gb] Tagged':
             assert new_file['encoding'] == 'utf_8'
         else:
             assert new_file['encoding'] == 'ascii'
@@ -126,6 +126,9 @@ def wl_test_file_area(main):
         assert new_file['lang'] == 'eng_us'
         assert not new_file['tokenized']
         assert not new_file['tagged']
+
+        if new_file['name'] == '[eng_gb] Tagged':
+            new_file['tagged'] = True
 
         print(f'done! (In {round(time.time() - time_start, 2)} seconds)')
 

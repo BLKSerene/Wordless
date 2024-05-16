@@ -24,23 +24,23 @@ extension-pkg-whitelist=
 [MESSAGES CONTROL]
 
 disable=
-    # C103, C114, C115, C116
+    # C0103, C0114, C0115, C0116
     invalid-name,
     missing-module-docstring,
     missing-class-docstring,
     missing-function-docstring,
-    # C301, C302
+    # C0301, C0302
     line-too-long,
     too-many-lines,
-    # C413, C415
+    # C0413, C0415
     wrong-import-position,
     import-outside-toplevel,
 
-    # R401
+    # R0401
     cyclic-import,
-    # R801
+    # R0801
     duplicate-code,
-    # R901, R902, R903, R904, R912, R913, R914, R915, R916
+    # R0901, R0902, R0903, R0904, R0912, R0913, R0914, R0915, R0916, R0917
     too-many-ancestors,
     too-many-instance-attributes,
     too-few-public-methods,
@@ -50,21 +50,22 @@ disable=
     too-many-locals,
     too-many-statements,
     too-many-branches,
-    # R1702, R1705, R1723, R1724
+    too-many-positional,
+    # R1702, R1705, R1720, R1723, R1724
     too-many-nested-blocks,
     no-else-return,
+    no-else-raise,
     no-else-break,
     no-else-continue,
 
-    # W201, W212
+    # W0201, W0212
     attribute-defined-outside-init,
     protected-access,
-    # W511
-    fixme,
-    # W621
+    # W0603, W0621
+    global-statement,
     redefined-outer-name,
 
-    # E401
+    # E0401
     import-error,
-    # E1121
-    too-many-function-args
+    # E0606
+    possibly-used-before-assignment,

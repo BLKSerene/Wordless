@@ -19,11 +19,39 @@
 from PyQt5.QtCore import QCoreApplication
 
 from wordless.wl_figs import wl_figs
+from wordless.wl_nlp import wl_texts
 from wordless.wl_utils import wl_sorting
 
 _tr = QCoreApplication.translate
 
 def wl_fig_freqs(main, freq_files_items, tab):
+    fig_settings = main.settings_custom[tab]['fig_settings']
+
+    # Tokens / Keywords
+    if freq_files_items and isinstance(list(freq_files_items.keys())[0], str):
+        freq_files_items = {
+            item.display_text(): freq_files
+            for item, freq_files in freq_files_items.items()
+        }
+    # N-grams
+    elif freq_files_items and isinstance(list(freq_files_items.keys())[0][0], str):
+        freq_files_items = {
+            ' '.join(wl_texts.to_display_texts(item)): freq_files
+            for item, freq_files in freq_files_items.items()
+        }
+    # Collocations / Colligations
+    else:
+        if fig_settings['graph_type'] == _tr('wl_figs_freqs', 'Network graph'):
+            freq_files_items = {
+                (' '.join(wl_texts.to_display_texts(node)), collocate.display_text()): freq_files
+                for (node, collocate), freq_files in freq_files_items.items()
+            }
+        else:
+            freq_files_items = {
+                ' '.join(wl_texts.to_display_texts(node)) + ', ' + collocate.display_text(): freq_files
+                for (node, collocate), freq_files in freq_files_items.items()
+            }
+
     if tab == 'keyword_extractor':
         file_names_selected = [
             _tr('wl_figs_freqs', 'Reference files'),
@@ -36,7 +64,6 @@ def wl_fig_freqs(main, freq_files_items, tab):
             _tr('wl_figs_freqs', 'Total')
         ]
 
-    fig_settings = main.settings_custom[tab]['fig_settings']
     col_sort_by_file = file_names_selected.index(fig_settings['sort_by_file'])
 
     if tab == 'keyword_extractor':

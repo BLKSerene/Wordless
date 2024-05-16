@@ -16,8 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # ----------------------------------------------------------------------
 
-# pylint: disable=unsupported-assignment-operation
-
 import random
 
 from tests import wl_test_init

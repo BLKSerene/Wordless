@@ -23,7 +23,7 @@ import pythainlp
 import spacy
 import underthesea
 
-from wordless.wl_nlp import wl_nlp_utils, wl_word_tokenization
+from wordless.wl_nlp import wl_nlp_utils, wl_texts, wl_word_tokenization
 from wordless.wl_utils import wl_conversion
 
 UNIVERSAL_TAGSETS_SPACY = [
@@ -37,238 +37,273 @@ UNIVERSAL_TAGSETS_STANZA = [
     'stanza_rus', 'stanza_san', 'stanza_snd', 'stanza_hsb', 'stanza_tel'
 ]
 
-def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default'):
-    tokens_tagged = []
-
-    if pos_tagger == 'default':
-        pos_tagger = main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang]
-
-    if tagset == 'default' and main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags']:
-        tagset = 'universal'
-
-    wl_nlp_utils.init_word_tokenizers(
-        main,
-        lang = lang
-    )
-    wl_nlp_utils.init_pos_taggers(
-        main,
-        lang = lang,
-        pos_tagger = pos_tagger,
-        tokenized = not isinstance(inputs, str)
-    )
-
-    # Untokenized
-    if isinstance(inputs, str):
-        # spaCy
-        if pos_tagger.startswith('spacy_'):
-            lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
-            nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
-            lines = [line.strip() for line in inputs.splitlines() if line.strip()]
-
-            with nlp.select_pipes(disable = [
-                pipeline
-                for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
-                if nlp.has_pipe(pipeline)
-            ]):
-                for doc in nlp.pipe(lines):
-                    if tagset in ['default', 'raw']:
-                        tokens_tagged.extend([(token.text, token.tag_) for token in doc])
-                    elif tagset == 'universal':
-                        tokens_tagged.extend([(token.text, token.pos_) for token in doc])
-        # Stanza
-        elif pos_tagger.startswith('stanza_'):
-            if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
-                lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
-            else:
-                lang_stanza = lang
-
-            nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
-            lines = [line.strip() for line in inputs.splitlines() if line.strip()]
-
-            for doc in nlp.bulk_process(lines):
-                for sentence in doc.sentences:
-                    if tagset in ['default', 'raw']:
-                        for token in sentence.words:
-                            if token.xpos is not None:
-                                tokens_tagged.append((token.text, token.xpos))
-                            else:
-                                tokens_tagged.append((token.text, token.upos))
-                    elif tagset == 'universal':
-                        tokens_tagged.extend([(token.text, token.upos) for token in sentence.words])
-        else:
-            for line in inputs.splitlines():
-                tokens_tagged.extend(wl_pos_tag_text(main, line, lang, pos_tagger))
-    # Tokenized
-    else:
-        # Record positions of empty tokens since spacy.tokens.Doc does not accept empty strings
-        empty_offsets = []
-
-        for i, token in reversed(list(enumerate(inputs))):
-            if not token.strip():
-                empty_offsets.append(i)
-
-                del inputs[i]
-
-        # spaCy
-        if pos_tagger.startswith('spacy_'):
-            lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
-            nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
-
-            with nlp.select_pipes(disable = [
-                pipeline
-                for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
-                if nlp.has_pipe(pipeline)
-            ]):
-                docs = []
-
-                for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger):
-                    # The Japanese model do not have a tagger component and Japanese POS tags are taken directly from SudachiPy
-                    # See: https://github.com/explosion/spaCy/discussions/9983#discussioncomment-1910117
-                    if lang == 'jpn':
-                        docs.append(''.join(tokens))
-                    else:
-                        docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens)))
-
-                for doc in nlp.pipe(docs):
-                    if tagset in ['default', 'raw']:
-                        tokens_tagged.extend([(token.text, token.tag_) for token in doc])
-                    elif tagset == 'universal':
-                        tokens_tagged.extend([(token.text, token.pos_) for token in doc])
-        # Stanza
-        elif pos_tagger.startswith('stanza_'):
-            if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
-                lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
-            else:
-                lang_stanza = lang
-
-            nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
-
-            for doc in nlp.bulk_process([
-                [tokens]
-                for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger)
-            ]):
-                for sentence in doc.sentences:
-                    if tagset in ['default', 'raw']:
-                        for token in sentence.words:
-                            if token.xpos is not None:
-                                tokens_tagged.append((token.text, token.xpos))
-                            else:
-                                tokens_tagged.append((token.text, token.upos))
-                    elif tagset == 'universal':
-                        tokens_tagged.extend([(token.text, token.upos) for token in sentence.words])
-        else:
-            for tokens in wl_nlp_utils.split_token_list(main, inputs, pos_tagger):
-                tokens_tagged.extend(wl_pos_tag_tokens(main, tokens, lang, pos_tagger))
-
-    # Remove empty tokens (e.g. SudachiPy) and strip whitespace around tokens and tags
-    tokens_tagged = [
-        (token_clean, tag.strip())
-        for token, tag in tokens_tagged
-        if (token_clean := token.strip())
-    ]
-
-    if not isinstance(inputs, str):
-        tokens_tagged_tokens = [item[0] for item in tokens_tagged]
-        tokens_tagged_tags = [item[1] for item in tokens_tagged]
-        tokens_tagged_tags = wl_nlp_utils.align_tokens(inputs, tokens_tagged_tokens, tokens_tagged_tags)
-
-        tokens_tagged = list(zip(inputs, tokens_tagged_tags))
-
-        # Insert empty tokens after alignment of input and output
-        for empty_offset in sorted(empty_offsets):
-            tokens_tagged.insert(empty_offset, ('', ''))
-
-    # Convert to universal POS tags
+def wl_pos_tag(main, inputs, lang, pos_tagger = 'default', tagset = 'default', force = False):
     if (
-        tagset == 'universal'
-        and (
-            (
-                not pos_tagger.startswith('spacy_')
-                and not pos_tagger.startswith('stanza_')
-            )
-            or pos_tagger in UNIVERSAL_TAGSETS_SPACY
-            or pos_tagger in UNIVERSAL_TAGSETS_STANZA
+        not isinstance(inputs, str)
+        and inputs
+        and any(
+            list(inputs)[0].tag is not None
+            for token in inputs
         )
+        and not force
     ):
-        mappings = {
-            tag: tag_universal
-            for tag, tag_universal, _, _ in main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]
-        }
+        return inputs
+    else:
+        texts_tagged = []
+        tags = []
 
-        tokens_tagged = [
-            (token, mappings.get(tag, 'X'))
-            for token, tag in list(tokens_tagged)
-        ]
+        if pos_tagger == 'default':
+            pos_tagger = main.settings_custom['pos_tagging']['pos_tagger_settings']['pos_taggers'][lang]
 
-    return tokens_tagged
+        if tagset == 'default' and main.settings_custom['pos_tagging']['pos_tagger_settings']['to_universal_pos_tags']:
+            tagset = 'universal'
+
+        wl_nlp_utils.init_word_tokenizers(
+            main,
+            lang = lang
+        )
+        wl_nlp_utils.init_pos_taggers(
+            main,
+            lang = lang,
+            pos_tagger = pos_tagger,
+            tokenized = not isinstance(inputs, str)
+        )
+
+        if isinstance(inputs, str):
+            # spaCy
+            if pos_tagger.startswith('spacy_'):
+                lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+                nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
+                lines = [line.strip() for line in inputs.splitlines() if line.strip()]
+
+                with nlp.select_pipes(disable = [
+                    pipeline
+                    for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
+                    if nlp.has_pipe(pipeline)
+                ]):
+                    for doc in nlp.pipe(lines):
+                        for token in doc:
+                            texts_tagged.append(token.text)
+
+                            if tagset in ['default', 'raw']:
+                                tags.append(token.tag_)
+                            elif tagset == 'universal':
+                                tags.append(token.pos_)
+            # Stanza
+            elif pos_tagger.startswith('stanza_'):
+                if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+                    lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+                else:
+                    lang_stanza = lang
+
+                nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
+                lines = [line.strip() for line in inputs.splitlines() if line.strip()]
+
+                for doc in nlp.bulk_process(lines):
+                    for sentence in doc.sentences:
+                        for token in sentence.words:
+                            texts_tagged.append(token.text)
+
+                            if tagset in ['default', 'raw']:
+                                tags.append(token.xpos if token.xpos else token.upos)
+                            elif tagset == 'universal':
+                                tags.append(token.upos)
+            else:
+                for line in inputs.splitlines():
+                    tokens_tagged_line, tags_line = wl_pos_tag_text(main, line, lang, pos_tagger)
+
+                    texts_tagged.extend(tokens_tagged_line)
+                    tags.extend(tags_line)
+        else:
+            texts, token_properties = wl_texts.split_texts_properties(inputs)
+
+            # spaCy
+            if pos_tagger.startswith('spacy_'):
+                lang_spacy = wl_conversion.remove_lang_code_suffixes(main, lang)
+                nlp = main.__dict__[f'spacy_nlp_{lang_spacy}']
+
+                with nlp.select_pipes(disable = [
+                    pipeline
+                    for pipeline in ['parser', 'lemmatizer', 'senter', 'sentencizer']
+                    if nlp.has_pipe(pipeline)
+                ]):
+                    docs = []
+
+                    for tokens in wl_nlp_utils.split_token_list(main, texts, pos_tagger):
+                        # The Japanese model do not have a tagger component and Japanese POS tags are taken directly from SudachiPy
+                        # See: https://github.com/explosion/spaCy/discussions/9983#discussioncomment-1910117
+                        if lang == 'jpn':
+                            docs.append(''.join(tokens))
+                        else:
+                            docs.append(spacy.tokens.Doc(nlp.vocab, words = tokens, spaces = [True] * len(tokens)))
+
+                    for doc in nlp.pipe(docs):
+                        for token in doc:
+                            texts_tagged.append(token.text)
+
+                            if tagset in ['default', 'raw']:
+                                tags.append(token.tag_)
+                            elif tagset == 'universal':
+                                tags.append(token.pos_)
+            # Stanza
+            elif pos_tagger.startswith('stanza_'):
+                if lang not in ['zho_cn', 'zho_tw', 'srp_latn']:
+                    lang_stanza = wl_conversion.remove_lang_code_suffixes(main, lang)
+                else:
+                    lang_stanza = lang
+
+                nlp = main.__dict__[f'stanza_nlp_{lang_stanza}']
+
+                for doc in nlp.bulk_process([
+                    [tokens]
+                    for tokens in wl_nlp_utils.split_token_list(main, texts, pos_tagger)
+                ]):
+                    for sentence in doc.sentences:
+                        for token in sentence.words:
+                            texts_tagged.append(token.text)
+
+                            if tagset in ['default', 'raw']:
+                                tags.append(token.xpos if token.xpos else token.upos)
+                            elif tagset == 'universal':
+                                tags.append(token.upos)
+            else:
+                for tokens in wl_nlp_utils.split_token_list(main, texts, pos_tagger):
+                    results = wl_pos_tag_tokens(main, tokens, lang, pos_tagger)
+
+                    texts_tagged.extend(results[0])
+                    tags.extend(results[1])
+
+        # Remove empty tokens (e.g. SudachiPy) and strip whitespace around tokens and tags
+        tokens_tags = zip(texts_tagged.copy(), tags.copy())
+        texts_tagged.clear()
+        tags.clear()
+
+        for token, tag in tokens_tags:
+            if (token_clean := token.strip()):
+                texts_tagged.append(token_clean)
+                tags.append(tag.strip())
+
+        if not isinstance(inputs, str):
+            tags = wl_nlp_utils.align_tokens(texts, texts_tagged, tags)
+
+        # Convert to universal POS tags
+        if (
+            tagset == 'universal'
+            and (
+                (
+                    not pos_tagger.startswith('spacy_')
+                    and not pos_tagger.startswith('stanza_')
+                )
+                or pos_tagger in UNIVERSAL_TAGSETS_SPACY
+                or pos_tagger in UNIVERSAL_TAGSETS_STANZA
+            )
+        ):
+            mappings = {
+                tag: tag_universal
+                for tag, tag_universal, _, _ in main.settings_custom['pos_tagging']['tagsets']['mapping_settings'][lang][pos_tagger]
+            }
+
+            tags = [mappings.get(tag, 'X') for tag in tags]
+
+        # Add separators between tokens and tags
+        tags = [f'_{tag}' for tag in tags]
+
+        if isinstance(inputs, str):
+            return wl_texts.to_tokens(texts_tagged, lang = lang, tags = tags)
+        else:
+            tokens = wl_texts.combine_texts_properties(texts, token_properties)
+            wl_texts.set_token_properties(tokens, 'tag', tags)
+
+            wl_texts.update_token_properties(inputs, tokens)
+
+            return inputs
 
 def wl_pos_tag_text(main, text, lang, pos_tagger):
     tokens_tagged = []
+    tags = []
 
     # English & Russian
     if pos_tagger.startswith('nltk_perceptron_'):
+        tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+        tokens = wl_texts.to_token_texts(tokens)
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-        tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
-        tokens_tagged = nltk.pos_tag(tokens, lang = lang)
+        for token, tag in nltk.pos_tag(tokens, lang = lang):
+            tokens_tagged.append(token)
+            tags.append(tag)
     # Japanese
     elif pos_tagger == 'sudachipy_jpn':
-        tokens_tagged = [
-            (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
-            for token in main.sudachipy_word_tokenizer.tokenize(text)
-        ]
+        for token in main.sudachipy_word_tokenizer.tokenize(text):
+            tokens_tagged.append(token.surface())
+            tags.append('-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
     # Khmer
     elif pos_tagger == 'khmer_nltk_khm':
-        tokens_tagged = khmernltk.pos_tag(text)
+        for token, tag in khmernltk.pos_tag(text):
+            tokens_tagged.append(token)
+            tags.append(tag)
     # Korean
     elif pos_tagger == 'python_mecab_ko_mecab':
-        tokens_tagged = main.python_mecab_ko_mecab.pos(text)
+        for token, tag in main.python_mecab_ko_mecab.pos(text):
+            tokens_tagged.append(token)
+            tags.append(tag)
     # Lao
     elif pos_tagger.startswith('laonlp_'):
         tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+        tokens = wl_texts.to_token_texts(tokens)
 
         if pos_tagger == 'laonlp_seqlabeling':
-            tokens_tagged = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
+            results = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
         if pos_tagger == 'laonlp_yunshan_cup_2020':
-            tokens_tagged = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
+            results = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
+
+        tokens_tagged = [token for token, _ in results]
+        tags = [tag for _, tag in results]
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy3_morphological_analyzer':
-        if lang == 'rus':
-            morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
-        elif lang == 'ukr':
-            morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
+        match lang:
+            case 'rus':
+                morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
+            case 'ukr':
+                morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
         tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
 
         for token in tokens:
-            tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
+            tokens_tagged.append(token)
+            tags.append(morphological_analyzer.parse(token)[0].tag._POS)
     # Thai
     elif pos_tagger.startswith('pythainlp_'):
         tokens = wl_word_tokenization.wl_word_tokenize_flat(main, text, lang = lang)
+        tokens = wl_texts.to_token_texts(tokens)
 
-        if pos_tagger == 'pythainlp_perceptron_blackboard':
-            tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
-        elif pos_tagger == 'pythainlp_perceptron_orchid':
-            tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
-        elif pos_tagger == 'pythainlp_perceptron_pud':
-            tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
+        match pos_tagger:
+            case 'pythainlp_perceptron_blackboard':
+                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
+            case 'pythainlp_perceptron_orchid':
+                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
+            case 'pythainlp_perceptron_pud':
+                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
+
+        tokens_tagged = [token for token, _ in results]
+        tags = [tag for _, tag in results]
     # Tibetan
     elif pos_tagger == 'botok_bod':
         tokens = main.botok_word_tokenizer.tokenize(text)
 
         for token in tokens:
-            if token.pos:
-                tokens_tagged.append((token.text, token.pos))
-            else:
-                tokens_tagged.append((token.text, token.chunk_type))
+            tokens_tagged.append(token.text)
+            tags.append(token.pos if token.pos else token.chunk_type)
     # Vietnamese
     elif pos_tagger == 'underthesea_vie':
-        tokens_tagged = underthesea.pos_tag(text)
+        for token, tag in underthesea.pos_tag(text):
+            tokens_tagged.append(token)
+            tags.append(tag)
 
-    return list(tokens_tagged)
+    return tokens_tagged, tags
 
 def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
     tokens_tagged = []
+    tags = []
 
     lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
@@ -276,52 +311,63 @@ def wl_pos_tag_tokens(main, tokens, lang, pos_tagger):
     if pos_tagger.startswith('nltk_perceptron_'):
         lang = wl_conversion.remove_lang_code_suffixes(main, lang)
 
-        tokens_tagged = nltk.pos_tag(tokens, lang = lang)
+        for token, tag in nltk.pos_tag(tokens, lang = lang):
+            tokens_tagged.append(token)
+            tags.append(tag)
     # Japanese
     elif pos_tagger == 'sudachipy_jpn':
-        tokens_tagged = [
-            (token.surface(), '-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
-            for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens))
-        ]
+        for token in main.sudachipy_word_tokenizer.tokenize(''.join(tokens)):
+            tokens_tagged.append(token.surface())
+            tags.append('-'.join([pos for pos in token.part_of_speech()[:4] if pos != '*']))
     # Khmer
     elif pos_tagger == 'khmer_nltk_khm':
-        tokens_tagged = khmernltk.pos_tag(''.join(tokens))
+        for token, tag in khmernltk.pos_tag(''.join(tokens)):
+            tokens_tagged.append(token)
+            tags.append(tag)
     # Korean
     elif pos_tagger == 'python_mecab_ko_mecab':
-        tokens_tagged = wl_pos_tag_text(main, ' '.join(tokens), lang = 'kor', pos_tagger = 'python_mecab_ko_mecab')
+        tokens_tagged, tags = wl_pos_tag_text(main, ' '.join(tokens), lang = 'kor', pos_tagger = 'python_mecab_ko_mecab')
     # Lao
     elif pos_tagger.startswith('laonlp_'):
         if pos_tagger == 'laonlp_seqlabeling':
-            tokens_tagged = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
+            results = laonlp.pos_tag(tokens, corpus = 'SeqLabeling')
         if pos_tagger == 'laonlp_yunshan_cup_2020':
-            tokens_tagged = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
+            results = laonlp.pos_tag(tokens, corpus = 'yunshan_cup_2020')
+
+        tokens_tagged = [token for token, _ in results]
+        tags = [tag for _, tag in results]
     # Russian & Ukrainian
     elif pos_tagger == 'pymorphy3_morphological_analyzer':
-        if lang == 'rus':
-            morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
-        elif lang == 'ukr':
-            morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
+        match lang:
+            case 'rus':
+                morphological_analyzer = main.pymorphy3_morphological_analyzer_rus
+            case 'ukr':
+                morphological_analyzer = main.pymorphy3_morphological_analyzer_ukr
 
         for token in tokens:
-            tokens_tagged.append((token, morphological_analyzer.parse(token)[0].tag._POS))
+            tokens_tagged.append(token)
+            tags.append(morphological_analyzer.parse(token)[0].tag._POS)
     # Thai
-    elif pos_tagger == 'pythainlp_perceptron_blackboard':
-        tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
-    elif pos_tagger == 'pythainlp_perceptron_orchid':
-        tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
-    elif pos_tagger == 'pythainlp_perceptron_pud':
-        tokens_tagged = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
+    elif pos_tagger.startswith('pythainlp_'):
+        match pos_tagger:
+            case 'pythainlp_perceptron_blackboard':
+                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'blackboard')
+            case 'pythainlp_perceptron_orchid':
+                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'orchid')
+            case 'pythainlp_perceptron_pud':
+                results = pythainlp.tag.pos_tag(tokens, engine = 'perceptron', corpus = 'pud')
+
+        tokens_tagged = [token for token, _ in results]
+        tags = [tag for _, tag in results]
     # Tibetan
     elif pos_tagger == 'botok_bod':
-        tokens_retokenized = main.botok_word_tokenizer.tokenize(''.join(tokens))
-
-        for token in tokens_retokenized:
-            if token.pos:
-                tokens_tagged.append((token.text, token.pos))
-            else:
-                tokens_tagged.append((token.text, token.chunk_type))
+        for token in main.botok_word_tokenizer.tokenize(''.join(tokens)):
+            tokens_tagged.append(token.text)
+            tags.append(token.pos if token.pos else token.chunk_type)
     # Vietnamese
     elif pos_tagger == 'underthesea_vie':
-        tokens_tagged = underthesea.pos_tag(' '.join(tokens))
+        for token, tag in underthesea.pos_tag(' '.join(tokens)):
+            tokens_tagged.append(token)
+            tags.append(tag)
 
-    return list(tokens_tagged)
+    return tokens_tagged, tags
