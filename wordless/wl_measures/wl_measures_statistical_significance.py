@@ -211,26 +211,6 @@ def students_t_test_2_sample(main, freqs_x1s, freqs_x2s):
 
     return t_stats, p_vals
 
-def welchs_t_test(main, freqs_x1s, freqs_x2s):
-    direction = main.settings_custom['measures']['statistical_significance']['welchs_t_test']['direction']
-    alt = _students_t_test_2_sample_alt(direction)
-
-    num_types = len(freqs_x1s)
-    t_stats = numpy.empty(shape = num_types, dtype = numpy.float64)
-    p_vals = numpy.empty(shape = num_types, dtype = numpy.float64)
-
-    for i, (freqs_x1, freqs_x2) in enumerate(zip(freqs_x1s, freqs_x2s)):
-        if any(freqs_x1) or any(freqs_x2):
-            t_stat, p_val = scipy.stats.ttest_ind(freqs_x1, freqs_x2, equal_var = False, alternative = alt)
-        else:
-            t_stat = 0
-            p_val = 1
-
-        t_stats[i] = t_stat
-        p_vals[i] = p_val
-
-    return t_stats, p_vals
-
 def _z_score_p_val(z_scores, direction):
     p_vals = numpy.empty_like(z_scores)
 

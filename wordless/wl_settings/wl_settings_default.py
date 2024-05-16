@@ -2292,12 +2292,6 @@ def init_settings_default(main):
                     'direction': _tr('wl_settings_default', 'Two-tailed')
                 },
 
-                'welchs_t_test': {
-                    'num_sub_sections': 5,
-                    'use_data': _tr('wl_settings_default', 'Relative frequency'),
-                    'direction': _tr('wl_settings_default', 'Two-tailed')
-                },
-
                 'z_score': {
                     'direction': _tr('wl_settings_default', 'Two-tailed')
                 },

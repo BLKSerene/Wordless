@@ -207,16 +207,6 @@ def test_students_t_test_2_sample():
     numpy.testing.assert_array_equal(t_stats, numpy.array([0] * 2))
     numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
 
-def test_welchs_t_test():
-    t_stats, p_vals = wl_measures_statistical_significance.welchs_t_test(
-        main,
-        numpy.array([[0] * 5] * 2),
-        numpy.array([[0] * 5] * 2)
-    )
-
-    numpy.testing.assert_array_equal(t_stats, numpy.array([0] * 2))
-    numpy.testing.assert_array_equal(p_vals, numpy.array([1] * 2))
-
 def test__z_score_p_val():
     numpy.testing.assert_array_equal(
         wl_measures_statistical_significance._z_score_p_val(numpy.array([0] * 2), 'Two-tailed'),
@@ -260,7 +250,6 @@ if __name__ == '__main__':
 
     test__students_t_test_2_sample_alt()
     test_students_t_test_2_sample()
-    test_welchs_t_test()
 
     test__z_score_p_val()
     test_z_score()
