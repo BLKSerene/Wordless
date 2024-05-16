@@ -35,6 +35,8 @@
 - Work Area: Fix Dependency Parser - analysis of files whose first token is a punctuation mark
 
 ### ❌ Removals
+- Menu: Remove Settings - Measures - Statistical Significance - Welch's t-test
+- Work Area: Remove Collocation Extractor / Colligation Extractor / Keyword Extractor - Generation Settings - Test of Statistical Significance - Welch's t-test
 - Utils: Remove Dostoevsky's Russian sentiment analyzer
 
 ### ⏫ Dependency Changes

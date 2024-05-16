@@ -85,10 +85,6 @@ def test_to_freqs_sections_statistical_significance():
         main, ITEMS_TO_SEARCH, ITEMS_X1, ITEMS_X2,
         test_statistical_significance = 'students_t_test_2_sample'
     ) == FREQS_SECTIONS_2_SAMPLE_RELATIVE
-    assert wl_measure_utils.to_freqs_sections_statistical_significance(
-        main, ITEMS_TO_SEARCH, ITEMS_X1, ITEMS_X2,
-        test_statistical_significance = 'welchs_t_test'
-    ) == FREQS_SECTIONS_2_SAMPLE_RELATIVE
 
 def test_to_freqs_sections_bayes_factor():
     assert wl_measure_utils.to_freqs_sections_bayes_factor(

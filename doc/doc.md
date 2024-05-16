@@ -39,8 +39,8 @@
   - [4.4 Supported Measures](#doc-4-4)
     - [4.4.1 Measures of Readability](#doc-4-4-1)
     - [4.4.2 Measures of Lexical Diversity](#doc-4-4-2)
-    - [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc-4-4-3)
-    - [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc-4-4-4)
+    - [4.4.3 Measures of Dispersion and Adjusted Frequency](#doc-4-4-3)
+    - [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc-4-4-4)
 - [5 References](#doc-5)
 
 <span id="doc-1"></span>
@@ -1272,7 +1272,7 @@ Measure of Lexical Diversity|Formula
 > 1. Variants available and can be selected via **Menu - Preferences - Settings - Measures - Lexical Diversity**
 
 <span id="doc-4-4-3"></span>
-#### [4.4.3 Measures of Dispersion & Adjusted Frequency](#doc)
+#### [4.4.3 Measures of Dispersion and Adjusted Frequency](#doc)
 
 For parts-based measures, each file is divided into **n** (whose value you could modify via **Menu → Preferences → Settings → Measures → Dispersion / Adjusted Frequency → General Settings → Divide each file into subsections**) sub-sections and the frequency of the word in each part is counted and denoted by **F₁**, **F₂**, **F₃**, ..., **Fₙ** respectively. The total frequency of the word in each file is denoted by **F** and the mean value of the frequencies over all sub-sections is denoted by **F̅**.
 
@@ -1357,7 +1357,7 @@ Measure of Dispersion (Distance-based)|Measure of Adjusted Frequency (Distance-b
 <span id="ref-awt"></span>Average Waiting Time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|<span id="ref-fawt"></span>Average Waiting Time<br>([Savický & Hlaváčová, 2002](#ref-savicky-hlavacova-2002))|![Formula](/doc/measures/dispersion_adjusted_frequency/awt.svg)
 
 <span id="doc-4-4-4"></span>
-#### [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, & Measures of Effect Size](#doc)
+#### [4.4.4 Tests of Statistical Significance, Measures of Bayes Factor, and Measures of Effect Size](#doc)
 
 In order to calculate the statistical significance, Bayes factor, and effect size (except **Mann-Whitney U Test**, **Student's t-test (2-sample)**, and **Welch's t-test**) for two words in the same file (collocates) or for one specific word in two different files (keywords), two contingency tables must be constructed first, one for observed values, the other for expected values.
 
@@ -1443,7 +1443,6 @@ Test of Statistical Significance|Measure of Bayes Factor|Formula
 <span id="ref-pearsons-chi-squared-test"></span>Pearson's Chi-squared Test<br>([Hofland & Johanson, 1982](#ref-hofland-johanson-1982); [Oakes, 1998](#ref-oakes-1998))||![Formula](/doc/measures/statistical_significance/pearsons_chi_squared_test.svg)
 <span id="ref-students-t-test-1-sample"></span>Student's t-test (1-sample)<br>([Church et al., 1991](#ref-church-et-al-1991))||![Formula](/doc/measures/statistical_significance/students_t_test_1_sample.svg)
 <span id="ref-students-t-test-2-sample"></span>Student's t-test (2-sample)<br>([Paquot & Bestgen, 2009](#ref-paquot-bestgen-2009))|Student's t-test (2-sample)<br>([Wilson, 2013](#ref-wilson-2013))|![Formula](/doc/measures/statistical_significance/students_t_test_2_sample.svg)
-<span id="ref-welchs-t-test"></span>Welch's t-test||* Same as Student's t-test (2-sample), but with different degrees of freedom (hence a different p-value).
 <span id="ref-z-score"></span>z-score<br>([Dennis, 1964](#ref-dennis-1964))||![Formula](/doc/measures/statistical_significance/z_score.svg)
 <span id="ref-z-score-berry-rogghes"></span>z-score (Berry-Rogghe)<br>([Berry-Rogghe, 1973](#ref-berry-rogghe-1973))||![Formula](/doc/measures/statistical_significance/z_score_berry_rogghe.svg)<br>where **S** is the average span size on both sides of the node word.
 
